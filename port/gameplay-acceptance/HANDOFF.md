@@ -1,5 +1,32 @@
 Handoff: gameplay acceptance audit
 
+Follow-up: offline death/respawn evidence (supersedes no earlier live claims)
+Base: 1206e41cce014c2413ef1670325d20f56c9324be.
+Branch: subagent/death-respawn-evidence.
+Worktree: /home/mojo/.hermes-instances/fresh/workspace/cocs-gameplay-acceptance-audit.
+Verified git status --short empty and HEAD at audit commit before git switch -c subagent/death-respawn-evidence 1206e41cce014c2413ef1670325d20f56c9324be in this isolated worktree. No primary checkout changes.
+
+Deliverables: DEATH_RESPAWN_EVIDENCE.md defines source/schema, strict evidence levels and limitations. ../tools/gameplay_acceptance/death_respawn.py is read-only standard-library CLI; test_death_respawn.py contains explicitly synthetic projected fixtures and regressions. No runtime fixes, packages, servers, GUI, shared browser, live verifier, deployment or external services used.
+
+Executed commands from this worktree:
+python3 -B -m unittest discover -s port/tools/gameplay_acceptance -p 'test_*.py' -v
+Result: 27 tests passed (13 analyzer tests plus 14 existing specification tests). Real subprocess CLI tests exercised established exit 0, sparse incomplete exit 1 and malformed/truncated/duplicate-key invalid exit 2, deterministic JSON and input byte preservation.
+python3 -B port/tools/gameplay_acceptance/death_respawn.py godot/tests/protocol/captured.json --json
+Result: incomplete, exit 1. Seven nonduplicate full snapshots across the two receiving clients, one duplicate, zero mapped dead snapshots, four death-event receipts and sixteen spawn-event receipts. Broadcast receipts must not be mistaken for distinct world events. No same-actor same-round triple; camera reseeding and dead-input gating unobserved. The generator is sparse and accelerated; see detailed source/provenance in DEATH_RESPAWN_EVIDENCE.md.
+python3 -B port/tools/gameplay_acceptance/death_respawn.py port/reports/protocol-capture.json --json
+Result: invalid, exit 2: expected object with frames array. This file is a summary report, not another capture. Repository JSON content discovery found only the captured.json frame recording. Genuine recordings were read only.
+
+A first exploratory terminal command was blocked by the gateway command guard; a narrower read-only Python command successfully inspected the schema. No service operation was attempted. Initial implementation incorrectly discarded a lobby mapping that precedes start; source/capture inspection exposed this, corrected before commit and protected by test_lobby_before_start. Actual snapshot-delta spelling is explicitly rejected; no delta reconstruction is claimed.
+
+Limitations and unresolved issues: sparse recordings cannot prove dead-state transitions from events alone. Structurally complete truncated prefixes cannot be identified without a recorder completion marker. Existing capture lacks transport close timestamps; trust socket indices and complete boundary recording, never silently combine separate files. Analyzer is a relevant-schema evidence checker, not the primary agent's full protocol validator. Observed snapshots and event-corroborated snapshots are separate result levels. No gameplay defect was reproduced. Earlier zero-health/zero-dead classification concern remains a hypothesis; ambiguous samples fail continuity here. Quantization near interval endpoints can conservatively prevent event corroboration.
+
+Smallest next primary-owned task: add bounded full-snapshot retention to a sibling of tools/godot-fixtures/capture.mjs (not replace existing captures), and native observability alongside godot/tests/protocol/local_lifecycle.gd or a focused new harness. Record stable per-socket indices; welcome, complete lobby, start roundRevision, all full snapshots and events in receive order; explicit recorder transport-open/close/completion metadata in a documented adapter; actual clock/config/source revision. Normal simulation rate only. Do not change game rules or author debug HP/position edits. Confirm supported controlled attacker/victim session setup before running.
+
+Later live recording plan (NOT started): 30-second setup timeout, 120-second total wall-clock deadline, stop after the first same-round alive/dead/alive witness plus two seconds of post-respawn samples, or stop inconclusive on results, disconnect or missed dead interval. Preserve existing Meridian selection and normal supported inputs. Capture local assignment and actor health/dead/time/seq before lethal damage, during positive dead timer and after authority spawn, plus death/spawn event IDs/times. Record native lifecycle status, attempted input and emitted input during death, applied camera pose/look seed before/after respawn, correlated with the snapshot; packet actor yaw alone cannot prove camera reseeding or input gating. Timeout/boundary without triple is incomplete, never a pass. Redact reconnect/progress credentials; write a new bounded file, do not overwrite shared evidence. On success/error/timeout release input, close only harness-created clients and stop only its own server if authorized/created; preserve user sessions and existing services. Flush the capture and explicit completion reason before analyzer invocation. No such session or instrumentation was executed on this branch.
+
+Scope verification and commit review: git diff --check, git status --short, and staged/committed path checks must contain only port/gameplay-acceptance/ and port/tools/gameplay_acceptance/. Final response provides resulting commit ID; no merge, push or deployment.
+
+
 Base commit: 9e46ad9d0b11dc21538b8c21087c4d2205798fd8
 Verified development checkout: /home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port
 Initial branch/status: port/godot-destinations, clean (git status --short --branch).
