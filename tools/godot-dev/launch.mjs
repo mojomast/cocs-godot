@@ -15,9 +15,10 @@ try{
  const port=game.server.address().port;const health=await fetch(`http://127.0.0.1:${port}`,{signal:AbortSignal.timeout(5000)});if(!health.ok)throw Error('Server readiness failed');
  const smoke=process.argv.includes('--network-smoke');
  const sessionSmoke=process.argv.includes('--session-smoke');
- const play=sessionSmoke||process.argv.includes('--play');
- const args=smoke?['--headless','--path','godot','--script','res://tests/protocol/live.gd']: [...(sessionSmoke?['--headless']:[]),'--path','godot',...(play?['res://world/session.tscn']:[])];
- args.push('--',`--endpoint=ws://127.0.0.1:${port}`,...(sessionSmoke?['--session-smoke']:[]));
+ const lifecycleSmoke=process.argv.includes('--lifecycle-smoke');
+ const play=sessionSmoke||lifecycleSmoke||process.argv.includes('--play');
+ const args=smoke?['--headless','--path','godot','--script','res://tests/protocol/live.gd']: [...(sessionSmoke||lifecycleSmoke?['--headless']:[]),'--path','godot',...(play?['res://world/session.tscn']:[])];
+ args.push('--',`--endpoint=ws://127.0.0.1:${port}`,...(sessionSmoke?['--session-smoke']:[]),...(lifecycleSmoke?['--lifecycle-smoke']:[]));
  console.log(`Owned local server ready on loopback:${port}; ${smoke?'native transport smoke':play?'native diagnostic gameplay session':'semantic viewer'}`);
  child=spawn(binary,args,{env,stdio:'inherit'});
  process.exitCode=await new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',(code)=>resolve(code??1));});

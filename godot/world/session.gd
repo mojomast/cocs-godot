@@ -19,6 +19,9 @@ var smoke: bool = false
 var initial_position := Vector3.ZERO
 var moved: bool = false
 var fired: bool = false
+var lifecycle_smoke: bool = false
+var round_starts: int = 0
+var round_results: int = 0
 
 func _ready() -> void:
 	super._ready()
@@ -41,22 +44,34 @@ func _ready() -> void:
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
 	smoke = "--session-smoke" in OS.get_cmdline_user_args()
+	lifecycle_smoke = "--lifecycle-smoke" in OS.get_cmdline_user_args()
 	client.connection_error.connect(on_error)
 	client.lobby.connect(on_lobby)
 	client.started.connect(func(_f: Dictionary) -> void:
+		round_starts += 1
 		presentation.clear_round()
 		pickups.clear_round()
 		combat.clear_round()
 		received_pose = false
+		send_elapsed = 0.0
+		moved = false
+		fired = false
 		phase = 3)
 	client.snapshot.connect(on_snapshot)
 	client.results.connect(func(f: Dictionary) -> void:
+		round_results += 1
 		presentation.apply_state(f.state, client.actor_id)
 		pickups.apply_state(f.state)
 		phase = 4
 		combat.clear_round()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		label.text = presentation.hud_text + "\nEnter: restart")
+		label.text = presentation.hud_text + "\nEnter: restart"
+		if lifecycle_smoke:
+			if not bool(f.state.get("over", false)) or presentation.lifecycle.can_control():
+				on_error("Results did not disable controls")
+				return
+			phase = 20
+			client.send_frame({"type":"start"}))
 	if endpoint.is_empty() or client.connect_server(endpoint, catalog.entries, current_id) != OK:
 		on_error("A local launcher endpoint is required")
 		return
@@ -64,21 +79,30 @@ func _ready() -> void:
 
 func on_error(message: String) -> void:
 	phase = -1
+	presentation.clear_round()
+	pickups.clear_round()
+	combat.clear_round()
+	received_pose = false
+	client.disconnect_server()
 	label.text = message
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if smoke:
+	if smoke or lifecycle_smoke:
 		push_error(message)
 		get_tree().quit(1)
 
 func on_lobby(frame: Dictionary) -> void:
 	if phase == 1:
 		phase = 2
-		client.configure_match("deathmatch", 2)
+		if lifecycle_smoke:
+			client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":"deathmatch","botCount":2,"timeLimit":60,"fragLimit":100}})
+		else:
+			client.configure_match("deathmatch", 2)
 	elif phase == 2 and frame.get("config") != null:
 		phase = 20
 		client.send_frame({"type":"start"})
 
 func on_snapshot(frame: Dictionary) -> void:
+	if phase != 3: return
 	pickups.apply_state(frame.state)
 	presentation.apply_state(frame.state, client.actor_id)
 	var actor: Dictionary = presentation.local_actor
@@ -91,6 +115,13 @@ func on_snapshot(frame: Dictionary) -> void:
 		received_pose = true
 	moved = moved or camera.position.distance_to(initial_position) > 0.5
 	fired = fired or int(actor.get("shots", 0)) > 0
+	if lifecycle_smoke and round_starts == 2 and round_results == 1 and client.last_ack > 10:
+		if presentation.lifecycle.status != "alive" or presentation.actors.size() != 3:
+			on_error("Restart state invalid")
+			return
+		print("PORT_LIFECYCLE_LIVE_OK starts=", round_starts, " results=", round_results, " restarted_actors=", presentation.actors.size(), " restarted_ack=", client.last_ack, " map=", current_id, " normal_rate=true")
+		client.disconnect_server()
+		get_tree().quit(0)
 	label.text = "NODE-AUTHORITATIVE PROTOTYPE · diagnostic geometry, no prediction\n" + presentation.hud_text + "\nClick: capture/fire · Esc: release · WASD: move · Space: jump · R: reload\nShift: sprint · Ctrl: crouch · E: interact · F: mobility | ACK %d" % client.last_ack
 	if smoke and combat.shots > 0 and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10 and not pickups.markers.is_empty() and not world.get_node("StaticPickupMarkers").visible:
 		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true combat_shots=", combat.shots)
@@ -114,6 +145,9 @@ func _process(delta: float) -> void:
 	elapsed += delta
 	if smoke and elapsed > 20:
 		on_error("Session smoke timeout")
+		return
+	if lifecycle_smoke and elapsed > 90:
+		on_error("Lifecycle smoke timeout")
 		return
 	if phase == 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		phase = 1

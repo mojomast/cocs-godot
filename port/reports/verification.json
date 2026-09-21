@@ -111,6 +111,55 @@
       "passed": true
     },
     {
+      "gate": "round-boundaries",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/protocol/round_boundaries.gd"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "gate": "native-lifecycle",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--lifecycle-smoke"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "gate": "combat-feedback",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/protocol/combat_feedback.gd"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "gate": "local-lifecycle",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/protocol/local_lifecycle.gd"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
       "gate": "pickup-presentation",
       "command": [
         "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",

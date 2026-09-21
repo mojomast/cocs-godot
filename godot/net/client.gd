@@ -24,6 +24,7 @@ var seen_events: Dictionary = {}
 var event_order: Array = []
 var error: String = ""
 var was_open: bool = false
+var round_finished: bool = false
 
 func connect_server(endpoint: String, maps: Dictionary, map_id: String) -> Error:
 	disconnect_server()
@@ -48,6 +49,7 @@ func disconnect_server() -> void:
 	reset_round()
 
 func reset_round() -> void:
+	round_finished = false
 	input_seq = 0
 	last_ack = 0
 	last_snapshot_seq = -1
@@ -107,7 +109,9 @@ func decode_text(text: String) -> bool:
 			started.emit(frame)
 		"snapshot", "results":
 			if not frame.get("state") is Dictionary or not validate_map(frame.state.get("mapId")): return fail("Snapshot map substitution")
+			if round_finished: return true
 			if frame.type == "results":
+				round_finished = true
 				results.emit(frame)
 				return true
 			var seq: int = int(frame.get("seq", -1))
@@ -118,6 +122,7 @@ func decode_text(text: String) -> bool:
 			if snapshots.size() > 32: snapshots.pop_front()
 			snapshot.emit(frame)
 		"events":
+			if round_finished: return true
 			var fresh: Array = []
 			for item: Dictionary in frame.get("items", []):
 				if not item.has("id"): return fail("Event has no deduplication ID")
@@ -146,4 +151,7 @@ func _process(_delta: float) -> void:
 	elif state == WebSocketPeer.STATE_CLOSED and was_open:
 		was_open = false
 		reset_round()
+		room_id = ""
+		peer_id = -1
+		actor_id = -1
 		connection_error.emit("Disconnected; reconnect requires explicit fresh join")
