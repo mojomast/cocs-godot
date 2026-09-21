@@ -49,6 +49,25 @@ func _initialize() -> void:
 	check(net.actor_id == 10)
 	check(net.decode_text('{"type":"lobby","players":[]}'))
 	check(net.actor_id == -1)
+	# ACK high-water marks are actor-scoped, not roster-scoped.
+	net.input_seq = 100
+	check(net.decode_text('{"type":"lobby","players":[{"peerId":1,"actorId":7}]}'))
+	check(net.decode_text('{"type":"snapshot","seq":1,"acks":{"7":90},"state":{"mapId":"meridian-exchange"}}'))
+	check(net.last_ack == 90)
+	check(net.decode_text('{"type":"lobby","players":[{"peerId":1,"actorId":7}]}'))
+	check(net.last_ack == 90) # Unchanged identity preserves progress.
+	check(not net.decode_text('{"type":"lobby","players":[{"peerId":1,"actorId":8},{"peerId":1,"actorId":9}]}'))
+	check(net.last_ack == 90 and net.actor_id == 7)
+	check(net.decode_text('{"type":"lobby","players":[{"peerId":1,"actorId":8}]}'))
+	check(net.last_ack == 0 and net.input_seq == 100 and net.last_snapshot_seq == 1)
+	check(net.decode_text('{"type":"snapshot","seq":2,"acks":{"7":99,"8":3},"state":{"mapId":"meridian-exchange"}}'))
+	check(net.last_ack == 3)
+	check(net.decode_text('{"type":"snapshot","seq":3,"acks":{"8":2},"state":{"mapId":"meridian-exchange"}}'))
+	check(net.last_ack == 3) # Still monotonic within one assignment.
+	check(net.decode_text('{"type":"lobby","players":[]}'))
+	check(net.last_ack == 0 and net.input_seq == 100)
+	check(net.decode_text('{"type":"snapshot","seq":4,"acks":{"8":100},"state":{"mapId":"meridian-exchange"}}'))
+	check(net.last_ack == 0)
 	net.free()
 	print("PORT_ENVELOPES_OK checks=", checks, " synthetic=true")
 	quit(0)

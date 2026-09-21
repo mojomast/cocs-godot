@@ -136,9 +136,13 @@ func decode_text(text: String) -> bool:
 			if frame.get("config") != null and not validate_map(frame.get("mapId")): return fail("Lobby map substitution")
 			# A lobby is a complete roster, not a patch. Revoked/absent
 			# assignments must not retain control of a previous actor.
-			actor_id = -1
+			var next_actor_id: int = -1
 			for player: Dictionary in frame.get("players", []):
-				if int(player.peerId) == peer_id and player.get("actorId") != null: actor_id = int(player.actorId)
+				if int(player.peerId) == peer_id and player.get("actorId") != null: next_actor_id = int(player.actorId)
+			# ACKs belong to an actor; input sequences belong to this connection.
+			# Do not carry an old actor's high-water mark into a new assignment.
+			if next_actor_id != actor_id: last_ack = 0
+			actor_id = next_actor_id
 			lobby.emit(frame)
 		"start":
 			if not validate_map(frame.get("mapId")): return fail("Start map substitution")

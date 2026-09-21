@@ -176,6 +176,12 @@ The native decoder now treats each lobby as a complete roster, matching `server/
 
 The envelope suite passed 46 synthetic assertions, including 15 new assignment/revocation/reassignment and invalid-roster checks. The full verifier passed after integration, including genuine packet replay, normal-rate native results/restart, session movement/fire and two native clients. Live intentional assignment revocation and graphical acceptance remain untested. Source gameplay/server rules and nine-map scope are unchanged.
 
+## Actor-scoped acknowledgement increment
+
+Lobby reassignment or revocation now clears the previous actor's acknowledgement high-water mark. An unchanged assignment preserves it; malformed rosters leave it untouched. Connection input sequence numbers and snapshot ordering are preserved across assignment changes. This prevents an old actor's ACK from masking a new actor's lower acknowledgement value without introducing sequence reuse.
+
+Real execution passed 63 envelope assertions, including 17 new synthetic checks for reassignment, revocation, unchanged identity, invalid-roster atomicity, old-actor ACK isolation and monotonicity within an assignment. The full verifier passed, including genuine packet replay, native session movement/fire, normal-rate results/restart and two native clients. Live intentional reassignment and graphical acceptance are not established by these tests. Gameplay source, server rules and map scope remain unchanged.
+
 ## Snapshot pickup increment
 
 `world/pickups.gd` maintains diagnostic markers keyed by authoritative pickup ID, not array position. Snapshot `wait > 0` hides a collected pickup; a later authoritative `wait <= 0` reveals it. There is no local respawn countdown or client collection authority. Position uses snapshot x/y/z with an explicit one-metre diagnostic marker offset, rather than resampling terrain. Kind metadata is retained; original pickup meshes/effects are not yet implemented. Missing pickups are removed and round start clears nodes. The viewer keeps its static markers; the interactive session hides that group and consumes snapshots/results instead.
