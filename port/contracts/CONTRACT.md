@@ -1,5 +1,9 @@
 # Shared implementation contract — v0.1
 
+## Three-increment continuation contract
+
+Lead owns this serial batch: (1) authoritative local death/respawn state and safe control gating, (2) bounded server-event combat feedback, (3) terminal round/connection cleanup and restart regression gates. Work is limited to godot/, tools/godot-dev/, port/ docs/reports; existing source gameplay, dependencies and nine-map source lock remain unchanged. Protocol remains v3 JSON, coordinates remain +Y up/-Z forward. Each increment receives native targeted tests and a separate commit; integration runs the full verifier. Synthetic lifecycle/event cases are explicitly marked and never described as live kills or respawns. Headless gates do not establish graphical acceptance. No push or deployment.
+
 Source and exact nine-map allowlist: source-lock.json and map-selection.json. Source pin is the v8.8 DESTINATIONS deployed tree; branch main is descriptive, never a moving build input. The registry delta is against the parent of the authored DESTINATIONS commit. No old maps may become fallback content.
 
 No subagent facility was exposed in this session; the lead performs lanes serially. Future agents: A owns tools/godot-export and generated content; B owns godot/world, presentation, ui, audio; C owns godot/net, simulation, protocol/simulation tests and tools/godot-fixtures. Lead owns contracts, project wiring, development launcher and all existing source/config edits. Shared game/server files remain unchanged.

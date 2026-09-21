@@ -3,6 +3,8 @@ extends Node3D
 
 # Diagnostic actors only. Node simulation remains authoritative; no extrapolation.
 const RemoteMotion = preload("res://world/remote_motion.gd")
+const LocalLifecycle = preload("res://world/local_lifecycle.gd")
+var lifecycle := LocalLifecycle.new()
 var motion := RemoteMotion.new()
 var interpolate_remote: bool = false
 var local_actor_id: int = -1
@@ -24,6 +26,7 @@ var hud_text: String = "Waiting for authoritative snapshot"
 var applied: int = 0
 
 func clear_round() -> void:
+	lifecycle.clear()
 	motion.clear()
 	local_actor_id = -1
 	rendered_remote_poses = 0
@@ -71,6 +74,7 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 			node.free()
 			actors.erase(id)
 			motion.tracks.erase(id)
+	lifecycle.apply(local_actor, bool(state.get("over", false)))
 	if local_actor.is_empty():
 		hud_text = "Local actor absent — waiting"
 	else:
@@ -78,7 +82,7 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 		var weapon: int = int(a.get("weapon", 0))
 		var ammo: Array = a.get("ammo", [])
 		var rounds: String = str(ammo[weapon]) if weapon >= 0 and weapon < ammo.size() else "?"
-		hud_text = "%s | HP %s | Armor %s | Weapon %d | Ammo %s\nFrags %s · Deaths %s | %s" % [state.get("mapName", state.get("mapId", "")), a.get("health", 0), a.get("armor", 0), weapon, rounds, a.get("frags", 0), a.get("deaths", 0), "RESULTS" if state.get("over", false) else ("DEAD — server respawn pending" if float(a.get("dead", 0)) > 0 else "LIVE")]
+		hud_text = "%s | HP %s | Armor %s | Weapon %d | Ammo %s\nFrags %s · Deaths %s | %s" % [state.get("mapName", state.get("mapId", "")), a.get("health", 0), a.get("armor", 0), weapon, rounds, a.get("frags", 0), a.get("deaths", 0), lifecycle.label()]
 	applied += 1
 
 func eye_position() -> Vector3:

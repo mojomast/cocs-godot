@@ -134,6 +134,12 @@ Both clients independently require four presented actors (two humans and two exi
 
 This closes the narrow two-native-client transport/presentation smoke gate, not multiplayer playable acceptance: it is headless, loopback, a short movement run, and does not test adverse networks, full match lifecycle, graphical input, reconnect recovery or a join-menu UI. The interactive launcher is unchanged. Original models/audio, visual acceptance, pickup/death/respawn/results/restart and prediction remain open.
 
+## Local lifecycle increment
+
+`world/local_lifecycle.gd` derives alive/dead/waiting/results strictly from authoritative snapshots. Dead players send neutral movement/action controls; the HUD shows the server-provided respawn timer without locally predicting its completion. First spawn and respawn reseed mouse look from the server pose; ordinary snapshots preserve immediate local mouse look. Missing local actors gate controls, and new rounds reset transition state.
+
+The native targeted test passed 12 explicitly synthetic transition assertions. The real normal-rate session smoke also passed (three actors, movement, shots, ACK 12, 66 remote pose applications, 20 pickup markers). These are not live death/respawn acceptance or graphical evidence.
+
 ## Snapshot pickup increment
 
 `world/pickups.gd` maintains diagnostic markers keyed by authoritative pickup ID, not array position. Snapshot `wait > 0` hides a collected pickup; a later authoritative `wait <= 0` reveals it. There is no local respawn countdown or client collection authority. Position uses snapshot x/y/z with an explicit one-metre diagnostic marker offset, rather than resampling terrain. Kind metadata is retained; original pickup meshes/effects are not yet implemented. Missing pickups are removed and round start clears nodes. The viewer keeps its static markers; the interactive session hides that group and consumes snapshots/results instead.

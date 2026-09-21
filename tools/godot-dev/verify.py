@@ -25,6 +25,7 @@ commands = [
     ("packet-replay", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/replay.gd"]),
     ("native-live", ["node", "tools/godot-dev/launch.mjs", "--network-smoke"]),
     ("presentation-replay", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/presentation.gd"]),
+    ("local-lifecycle", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/local_lifecycle.gd"]),
     ("pickup-presentation", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/pickups.gd"]),
     ("native-session", ["node", "tools/godot-dev/launch.mjs", "--session-smoke"]),
     ("two-native-clients", ["node", "tools/godot-dev/two-clients.mjs"]),

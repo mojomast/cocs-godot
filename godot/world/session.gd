@@ -73,7 +73,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	var actor: Dictionary = presentation.local_actor
 	if actor.is_empty(): return
 	camera.position = presentation.eye_position()
-	if not received_pose:
+	if not received_pose or presentation.lifecycle.reseed_look:
 		yaw = float(actor.yaw)
 		pitch = float(actor.pitch)
 		initial_position = camera.position
@@ -92,7 +92,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.keycode == KEY_ENTER and phase == 4:
 			phase = 20
 			client.send_frame({"type":"start"})
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and phase == 3:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and phase == 3 and presentation.lifecycle.can_control():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		yaw -= event.relative.x * 0.003
@@ -111,7 +111,7 @@ func _process(delta: float) -> void:
 	send_elapsed += delta
 	if send_elapsed < 1.0 / 60.0: return
 	send_elapsed = fmod(send_elapsed, 1.0 / 60.0)
-	var active: bool = smoke or (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and get_window().has_focus())
+	var active: bool = presentation.lifecycle.can_control() and (smoke or (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and get_window().has_focus()))
 	var forward: float = 1.0 if smoke else float(Input.is_physical_key_pressed(KEY_W)) - float(Input.is_physical_key_pressed(KEY_S))
 	var right: float = float(Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_A))
 	var controls: Dictionary = {"x": (-sin(yaw) * forward + cos(yaw) * right) if active else 0.0, "z": (-cos(yaw) * forward - sin(yaw) * right) if active else 0.0, "yaw":yaw, "pitch":pitch, "fire":active and (smoke or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))}
