@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "base_commit": "9e46ad9d0b11dc21538b8c21087c4d2205798fd8",
+  "purpose": "Offline acceptance specification, not gameplay pass evidence. Read SPEC.md for source trace and setup constraints.",
+  "evidence": [
+    {"id":"core","classification":"source_inspection","status":"inspected","reference":"game/core.mjs: Match.useful, collect, damage, spawn, step, snapshot","claim":"Authority rules traced at base commit","limitation":"Not executed gameplay"},
+    {"id":"native","classification":"source_inspection","status":"inspected","reference":"godot/world/{pickups,combat_feedback,local_lifecycle,presentation,session}.gd","claim":"Diagnostic presentation and snapshot-owned lifecycle implemented","limitation":"Source inspection is not visual acceptance"},
+    {"id":"synthetic","classification":"synthetic","status":"inspected","reference":"godot/tests/protocol/{pickups,combat_feedback,local_lifecycle}.gd","claim":"Explicit fabricated state transitions assert marker visibility, feedback and lifecycle","limitation":"Existing tests inspected, not run in this audit"},
+    {"id":"capture","classification":"recorded_replay","status":"inspected","reference":"godot/tests/protocol/captured.json; tools/godot-fixtures/capture.mjs","claim":"Client 1 records pickup, damage and death events; sparse snapshots have no dead actor","limitation":"Accelerated server capture with two JS clients; not intentional native gameplay"},
+    {"id":"live-report","classification":"live_automated","status":"reported","reference":"port/reports/two-native-clients.json; godot/tests/protocol/two_clients.gd","claim":"Report claims two human actors moved with ACKs and remote poses","limitation":"Assertions do not require pickups, damage, death or respawn; not rerun"},
+    {"id":"manual","classification":"manual_acceptance","status":"pending","reference":"port/gameplay-acceptance/SPEC.md","claim":"Intentional normal-rate native acceptance still required","limitation":"No manual session performed"}
+  ],
+  "scenarios": [
+    {
+      "id":"PICKUP-HEALTH","title":"Useful health supply and authoritative return","map":"meridian-exchange","mode":"deathmatch","acceptance_status":"pending","depends_on":["DAMAGE"],"evidence_refs":["core","native","synthetic","capture","manual"],
+      "prerequisites":["Use native session on existing Meridian; record actual config, actor ID, maxHealth and pickup ID at x=-6,z=22 with source-derived floor y","Obtain nonlethal damage via DAMAGE; stop incoming fire; pickup wait must be zero"],
+      "actions":["Click to capture pointer, use mouse and WASD to walk within 3D distance <1.05 of health pickup; do not press E for collection","Leave the radius immediately after collection; observe at least 12 seconds of authority simulation time with no competing collector","Return at full health for negative usefulness check only if health is actually maxHealth"],
+      "authority":["On useful collection health becomes min(maxHealth,previousHealth+35); pickup event actor/kind and wait=12 before elapsed ticks","wait decreases to zero in active simulation; full-health contact does not consume health pickup"],
+      "native":["HUD health follows snapshot; marker hides while wait>0 and reappears at wait<=0","Do not expect a collection sound or kind-specific model from diagnostic implementation"],
+      "capture":["Bounded snapshots before/after contact and return with seq,time,actor health,maxHealth and pickup id/position/wait","Pickup event ID, actor and kind; screen images at available/hidden/returned states; input timestamps"],
+      "pass_criteria":"All expected authority and native transitions observed for same pickup ID; return follows authority, not a local timer.",
+      "fail_criteria":"Useful contact without transition, incorrect health cap, hidden available marker or visible unavailable marker; contested pickup or missed snapshots makes run inconclusive, not pass.",
+      "questions":["Walkable approach from actual spawn to (-6,22) needs live route confirmation; use authored corridors, not teleportation"]
+    },
+    {
+      "id":"PICKUP-WEAPON","title":"Weapon supply consumption and inventory","map":"meridian-exchange","mode":"deathmatch","acceptance_status":"pending","depends_on":[],"evidence_refs":["core","native","manual"],
+      "prerequisites":["Record starting weapon/ammo and loadout; rocket pickup x=-14,z=-19 must exist, be allowed and useful"],
+      "actions":["Walk using WASD and mouse through rocket supply radius <1.05","Leave pickup radius and observe authority return after 15 simulation seconds"],
+      "authority":["Ammo increases by weapon magazine plus Tool Use reload bonus capped at cap (or infinity under unlimitedAmmo)","If previous weapon=0 and not armsrace, selected weapon becomes rocket index 1; pickup wait becomes 15 and pickup event emitted"],
+      "native":["Snapshot weapon/ammo shown in HUD; marker hidden until wait<=0"],
+      "capture":["Before/after ammo,weapon,verbState,config and pickup ID/wait; pickup event and screen image"],
+      "pass_criteria":"Inventory matches actual loadout rules and marker follows wait; no requirement for absent weapon-switch key.",
+      "fail_criteria":"Client invents inventory or respawns marker before authoritative availability.",
+      "questions":["Confirm actual route into departure hall and current loadout ammo cap before session"]
+    },
+    {
+      "id":"DAMAGE","title":"Intentional nonlethal damage and feedback","map":"meridian-exchange","mode":"deathmatch","acceptance_status":"pending","depends_on":[],"evidence_refs":["core","native","synthetic","capture","manual"],
+      "prerequisites":["Record config, victim/source IDs, positions, health,armor,temporaryShield,juggernautShield,verbState and protection","Wait until protection=0; use ordinary deathmatch without mutators for baseline","Arrange visible opponent at an existing clear lane; controlled second-human native join path requires primary-agent investigation (current session creates its own room); bots make exact damage attribution harder"],
+      "actions":["Aim with mouse and briefly hold left click; victim stops moving; stop fire while victim remains alive","Repeat from cover as a negative line-of-sight observation only after verifying weapon behavior"],
+      "authority":["Successful damage event identifies victim actor and source; amount includes absorbed damage, not merely HP lost","Shield stages precede armor; armor absorbs min(armor,remainingDamage*0.6), remainder reduces health, floored at zero"],
+      "native":["Victim HUD follows health/armor snapshot; positive damage event shows TAKING DAMAGE locally","Source shows HIT CONFIRMED only for positive damage to another actor; shot alone is not hit confirmation"],
+      "capture":["Events shot and damage with event IDs; source/victim snapshots; weapon and distance; HUD images on both clients if available"],
+      "pass_criteria":"Nonlethal authority changes reconcile with modifiers and feedback belongs to correct actor.",
+      "fail_criteria":"Hit label from shot without damage, wrong-actor hurt, or unexplained state mismatch; unknown modifiers mean inconclusive numeric comparison.",
+      "questions":["Human join/aim setup needs primary-agent support; do not modify runtime in this audit"]
+    },
+    {
+      "id":"DEATH-RESPAWN","title":"Lethal hit followed by automatic respawn","map":"meridian-exchange","mode":"deathmatch","acceptance_status":"pending","depends_on":["DAMAGE"],"evidence_refs":["core","native","synthetic","capture","manual"],
+      "prerequisites":["Keep round below frag/time end conditions; record respawn config and identity mapping","Resolve DAMAGE setup and wait for protection to expire"],
+      "actions":["Continue supported left-click fire until victim health reaches zero; then stop firing","Victim attempts WASD and fire while dead; wait without pressing a respawn button","After authority spawn, move and aim again; click to capture if pointer was released"],
+      "authority":["Death increments deaths, sets health=0 and dead=respawnDelay; normal opponent kill increments source frags and emits death","Active simulation decrements dead; spawn restores health/loadout, dead=0, protection=1.5 and emits spawn for same actor ID; spawn location is server-selected"],
+      "native":["DEAD label uses snapshot timer; controls neutral while dead, remote victim hidden","On alive snapshot camera uses source spawn position/look, controls resume and remote body returns; results override dead if round ended"],
+      "capture":["Continuous bounded snapshot window alive->dead->alive with actor id,health,dead,position,yaw,pitch,protection,deaths,ammo","Death/spawn event IDs and round boundaries; victim control frames during dead period; before/dead/respawn screenshots"],
+      "pass_criteria":"Complete same-round same-actor lifecycle observed, no client countdown authority and no movement/fire authority while dead.",
+      "fail_criteria":"Client respawns early, retains prior pose after spawn or sends active dead controls; missing dead snapshot is inconclusive, not evidence of correct transition.",
+      "questions":["Sparse existing capture cannot verify this complete snapshot sequence","Investigate health=0 with dead<=0 snapshots and mode-specific retained dead actors before broadening acceptance"]
+    },
+    {
+      "id":"ROUND-END","title":"Lethal round-ending kill does not trigger automatic next round","map":"meridian-exchange","mode":"deathmatch","acceptance_status":"pending","depends_on":["DEATH-RESPAWN"],"evidence_refs":["core","native","synthetic","live-report","manual"],
+      "prerequisites":["Use existing actual frag limit; reach one frag below limit through legitimate play; do not change rules to simplify test"],
+      "actions":["Perform final legal kill; wait beyond configured respawn delay","Press Enter only after results, then observe authority start and fresh state"],
+      "authority":["endMatch sets over; subsequent step returns before decrementing timers or spawning","Restart is a requested start accepted by server, not death timer expiration"],
+      "native":["RESULTS gates controls and releases pointer; clear previous round presentation on start","Fresh snapshot reseeds local pose; do not equate reused IDs in a new round with same-round respawn"],
+      "capture":["Last damage/death, results.state.over, start and first fresh snapshot; pointer/control observations"],
+      "pass_criteria":"No auto-respawn during results and new round begins only through server accepted start.",
+      "fail_criteria":"Dead timer overrides results or previous-round markers/feedback persist after start.",
+      "questions":["Normal-rate manual evidence is pending; existing lifecycle smoke covers round restart, not intentional lethal transition"]
+    }
+  ]
+}
