@@ -25,7 +25,17 @@ func _initialize() -> void:
 	actor.dead = 1.0
 	view.apply_state(state, 7)
 	check(view.lifecycle.death_transitions == 1 and view.lifecycle.respawn_remaining == 1.0, "dead update no duplicate death")
+	# Genuine wire rounding boundary reproduced in native live run 4b4af664:
+	# zero timer with zero health is still dead, not a healthy respawn.
+	actor.health = 0.0
 	actor.dead = 0.0
+	view.apply_state(state, 7)
+	check(not view.lifecycle.can_control() and not view.lifecycle.reseed_look, "zero-health timer boundary remains gated")
+	check(view.lifecycle.respawn_transitions == 0, "timer rounding cannot consume respawn transition")
+	view.apply_state(state, -1)
+	check(not view.actors[7].visible, "remote zero-health actor stays hidden")
+	view.apply_state(state, 7)
+	actor.health = 100.0
 	actor.x = 50.0
 	view.apply_state(state, 7)
 	check(view.lifecycle.respawn_transitions == 1 and view.lifecycle.reseed_look, "respawn reseeds camera look")

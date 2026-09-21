@@ -15,10 +15,16 @@ func clear() -> void:
 	death_transitions = 0
 	respawn_transitions = 0
 
+static func actor_alive(actor: Dictionary) -> bool:
+	# Wire timers are rounded to three decimals and can reach zero before spawn.
+	# Healthy authority, not timer expiry alone, establishes an alive actor.
+	# Missing health retains compatibility with older projected replay fixtures.
+	return not actor.is_empty() and float(actor.get("dead", 0)) <= 0 and float(actor.get("health", 1)) > 0
+
 func apply(actor: Dictionary, over: bool) -> void:
 	var previous: String = status
 	respawn_remaining = maxf(0.0, float(actor.get("dead", 0)))
-	status = "results" if over else ("waiting" if actor.is_empty() else ("dead" if respawn_remaining > 0 else "alive"))
+	status = "results" if over else ("waiting" if actor.is_empty() else ("alive" if actor_alive(actor) else "dead"))
 	reseed_look = status == "alive" and previous != "alive"
 	if status == "dead" and previous == "alive": death_transitions += 1
 	if status == "alive" and previous == "dead": respawn_transitions += 1

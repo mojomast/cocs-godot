@@ -61,11 +61,12 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 		var visual: Node3D = actors[id]
 		var position: Vector3 = Vector3(actor.x, actor.y + 0.9, actor.z)
 		var body_yaw: float = float(actor.get("bodyYaw", actor.get("yaw", 0)))
-		motion.ingest(id, position, body_yaw, float(actor.get("dead", 0)) <= 0, now)
+		var alive: bool = LocalLifecycle.actor_alive(actor)
+		motion.ingest(id, position, body_yaw, alive, now)
 		var pose: Dictionary = motion.sample(id, now)
 		visual.position = pose.position if interpolate_remote and id != local_id else position
 		visual.rotation.y = pose.yaw if interpolate_remote and id != local_id else body_yaw
-		visual.visible = id != local_id and float(actor.get("dead", 0)) <= 0
+		visual.visible = id != local_id and alive
 		if id == local_id: local_actor = actor.duplicate(true)
 	for id: int in actors.keys():
 		if not present.has(id):
