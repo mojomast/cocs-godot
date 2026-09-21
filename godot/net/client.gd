@@ -81,8 +81,11 @@ func configure_match(mode: String, bots: int = 2) -> Error:
 	return send_frame({"type":"host", "mapId":requested_map, "config":{"mode":mode,"botCount":bots}})
 
 func send_input(controls: Dictionary) -> Error:
-	input_seq += 1
-	return send_frame({"type":"input", "seq":input_seq, "input":controls})
+	# Failed queue attempts must not consume sequence numbers.
+	var next_seq: int = input_seq + 1
+	var result: Error = send_frame({"type":"input", "seq":next_seq, "input":controls})
+	if result == OK: input_seq = next_seq
+	return result
 
 func validate_map(id: Variant) -> bool:
 	return id is String and id == requested_map and allowlist.has(id)
