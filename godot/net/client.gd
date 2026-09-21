@@ -101,8 +101,12 @@ func valid_envelope(frame: Dictionary) -> bool:
 			return frame.get("roomId") is String and wire_integer(frame.get("peerId"))
 		"lobby":
 			if not frame.get("players", []) is Array: return false
+			var peers: Dictionary = {}
 			for player: Variant in frame.get("players", []):
 				if not player is Dictionary or not wire_integer(player.get("peerId")): return false
+				var id: int = int(player.peerId)
+				if peers.has(id): return false
+				peers[id] = true
 				if player.get("actorId") != null and not wire_integer(player.actorId): return false
 		"snapshot":
 			if not wire_integer(frame.get("seq")) or not frame.get("acks", {}) is Dictionary: return false
@@ -130,6 +134,9 @@ func decode_text(text: String) -> bool:
 		"lobby":
 			# An unconfigured newly created server room has no selected content yet.
 			if frame.get("config") != null and not validate_map(frame.get("mapId")): return fail("Lobby map substitution")
+			# A lobby is a complete roster, not a patch. Revoked/absent
+			# assignments must not retain control of a previous actor.
+			actor_id = -1
 			for player: Dictionary in frame.get("players", []):
 				if int(player.peerId) == peer_id and player.get("actorId") != null: actor_id = int(player.actorId)
 			lobby.emit(frame)

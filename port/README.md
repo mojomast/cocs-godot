@@ -170,6 +170,12 @@ The full verifier passed after integration, including all new gates, existing so
 
 Remaining gates are unchanged: live intentional pickup/death/respawn acceptance, original actor/weapon/audio presentation, graphical review, actual impaired-network testing, local prediction and map-specific modes. The helper CLIs attempted at the beginning of this pass failed authentication/model access before making changes; implementation and verification were completed directly.
 
+## Lobby identity increment
+
+The native decoder now treats each lobby as a complete roster, matching `server/room.mjs` `Room.lobby()`. A null assignment, absent local peer or empty roster clears the previous local actor identity instead of retaining it. Duplicate peer IDs are rejected before any identity mutation; map-substitution rejection remains atomic. This does not implement spectator UI or automatic reconnect.
+
+The envelope suite passed 46 synthetic assertions, including 15 new assignment/revocation/reassignment and invalid-roster checks. The full verifier passed after integration, including genuine packet replay, normal-rate native results/restart, session movement/fire and two native clients. Live intentional assignment revocation and graphical acceptance remain untested. Source gameplay/server rules and nine-map scope are unchanged.
+
 ## Snapshot pickup increment
 
 `world/pickups.gd` maintains diagnostic markers keyed by authoritative pickup ID, not array position. Snapshot `wait > 0` hides a collected pickup; a later authoritative `wait <= 0` reveals it. There is no local respawn countdown or client collection authority. Position uses snapshot x/y/z with an explicit one-metre diagnostic marker offset, rather than resampling terrain. Kind metadata is retained; original pickup meshes/effects are not yet implemented. Missing pickups are removed and round start clears nodes. The viewer keeps its static markers; the interactive session hides that group and consumes snapshots/results instead.
