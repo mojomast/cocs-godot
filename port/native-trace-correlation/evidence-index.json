@@ -1,0 +1,364 @@
+{
+  "schema": 1,
+  "source_commit": "fbc8345f98c99b884abdb385403fd4f0c778fce7",
+  "source_directory": "port/native-trace-correlation/evidence",
+  "archive": "evidence.tar.gz",
+  "archive_bytes": 223383,
+  "archive_sha256": "0682bb39b32a14deb75712dfaaba821c94d47a7d4749500c6754457c591ed02f",
+  "uncompressed_file_bytes": 6273983,
+  "method": "Lossless deterministic tar/gzip; original bytes, including failed runs and duplicated summaries, retained.",
+  "runs": [
+    {
+      "run": "2e41a441-c6aa-49b2-86ac-a593192dde33",
+      "reported_status": "PASS",
+      "cases": [
+        {
+          "name": "enabled",
+          "reported_status": "PASS",
+          "error": null,
+          "cleanup": {
+            "native": {
+              "pid": 1822744,
+              "reaped": true,
+              "exitCode": 0,
+              "signal": null
+            },
+            "serverClosed": true,
+            "socketCount": 0
+          }
+        },
+        {
+          "name": "disabled",
+          "reported_status": "PASS",
+          "error": null,
+          "cleanup": {
+            "native": {
+              "pid": 1823419,
+              "reaped": true,
+              "exitCode": 0,
+              "signal": null
+            },
+            "serverClosed": true,
+            "socketCount": 0
+          }
+        }
+      ],
+      "cleanup": {
+        "import": {
+          "pid": 1822579,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "privateTempRemoved": true
+      }
+    },
+    {
+      "run": "6e7af608-fa87-4e1e-b7b2-a749ae342808",
+      "reported_status": "PASS",
+      "cases": [
+        {
+          "name": "enabled",
+          "reported_status": "PASS",
+          "error": null,
+          "cleanup": {
+            "native": {
+              "pid": 1830638,
+              "reaped": true,
+              "exitCode": 0,
+              "signal": null
+            },
+            "serverClosed": true,
+            "socketCount": 0
+          }
+        },
+        {
+          "name": "disabled",
+          "reported_status": "PASS",
+          "error": null,
+          "cleanup": {
+            "native": {
+              "pid": 1831252,
+              "reaped": true,
+              "exitCode": 0,
+              "signal": null
+            },
+            "serverClosed": true,
+            "socketCount": 0
+          }
+        }
+      ],
+      "cleanup": {
+        "import": {
+          "pid": 1830377,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "privateTempRemoved": true
+      }
+    },
+    {
+      "run": "7d1a088a-1107-4b43-9e88-c620846dff9a",
+      "reported_status": "FAIL",
+      "cases": [
+        {
+          "name": "enabled",
+          "reported_status": "FAIL",
+          "error": "Error: invalid: dead (enabled.stdout.log:7)\n    at invalid (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/validate.mjs:5:29)\n    at check (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/validate.mjs:18:33)\n    at parseTrace (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/validate.mjs:31:54)\n    at file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/run.mjs:79:18",
+          "cleanup": {
+            "native": {
+              "pid": 1817052,
+              "reaped": true,
+              "exitCode": 0,
+              "signal": null
+            },
+            "serverClosed": true,
+            "socketCount": 0
+          }
+        },
+        {
+          "name": "disabled",
+          "reported_status": "PASS",
+          "error": null,
+          "cleanup": {
+            "native": {
+              "pid": 1817760,
+              "reaped": true,
+              "exitCode": 0,
+              "signal": null
+            },
+            "serverClosed": true,
+            "socketCount": 0
+          }
+        }
+      ],
+      "cleanup": {
+        "import": {
+          "pid": 1816728,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "privateTempRemoved": true
+      }
+    },
+    {
+      "run": "a2b37402-8dab-4b13-9447-785192f4dd8a",
+      "reported_status": "FAIL",
+      "cases": [
+        {
+          "name": "enabled",
+          "reported_status": "FAIL",
+          "error": "Error: Deadline: intentional harness timeout after live join (100ms)\n    at until (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/guest_helpers.mjs:8:8)\n    at async wait (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/run.mjs:25:36)\n    at async file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/run.mjs:74:48",
+          "cleanup": {
+            "native": {
+              "pid": 1832728,
+              "reaped": true,
+              "exitCode": null,
+              "signal": "SIGTERM"
+            },
+            "serverClosed": true,
+            "socketCount": 0
+          }
+        }
+      ],
+      "cleanup": {
+        "import": {
+          "pid": 1832420,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "privateTempRemoved": true
+      }
+    }
+  ],
+  "members": [
+    {
+      "path": "evidence/2e41a441-c6aa-49b2-86ac-a593192dde33/disabled.json",
+      "bytes": 316080,
+      "sha256": "d462c56ead3cea1efe3bc90fb118ca29d5aa311b0549e18014aca9bd2e1412c4"
+    },
+    {
+      "path": "evidence/2e41a441-c6aa-49b2-86ac-a593192dde33/disabled.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/2e41a441-c6aa-49b2-86ac-a593192dde33/disabled.stdout.log",
+      "bytes": 36525,
+      "sha256": "e8ed6296abd939784cb7c19d39594b3e4da85052ae182ee13f4528213fee68d8"
+    },
+    {
+      "path": "evidence/2e41a441-c6aa-49b2-86ac-a593192dde33/enabled.json",
+      "bytes": 462521,
+      "sha256": "da690385ab60f30fe21a1a10a77a8855220eb396561668f48854ab0f2282ea74"
+    },
+    {
+      "path": "evidence/2e41a441-c6aa-49b2-86ac-a593192dde33/enabled.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/2e41a441-c6aa-49b2-86ac-a593192dde33/enabled.stdout.log",
+      "bytes": 377342,
+      "sha256": "d31a3994c91ef85958c7e597b94615006b6f80c61eb7068a05e2bb31025e70b5"
+    },
+    {
+      "path": "evidence/2e41a441-c6aa-49b2-86ac-a593192dde33/export.log",
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    {
+      "path": "evidence/2e41a441-c6aa-49b2-86ac-a593192dde33/import.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/2e41a441-c6aa-49b2-86ac-a593192dde33/import.stdout.log",
+      "bytes": 2964,
+      "sha256": "e29ec7ba1fb1055f4a8b22f8500619241b5252d6fa2fcf2170a093b982678794"
+    },
+    {
+      "path": "evidence/2e41a441-c6aa-49b2-86ac-a593192dde33/summary.json",
+      "bytes": 933309,
+      "sha256": "3ebd9283a01ef74cdfa941ea9d8cbd13187756f7afc263256210398c1208f17e"
+    },
+    {
+      "path": "evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/disabled.json",
+      "bytes": 363096,
+      "sha256": "a979c522beb33de28344462fc305c1da261c4efeddcdc8b11c580e2c6b642a41"
+    },
+    {
+      "path": "evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/disabled.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/disabled.stdout.log",
+      "bytes": 36419,
+      "sha256": "45c9176659582a4bbc7be35e02f227ba4ff130a0cc22bddfa25412fb266f92fb"
+    },
+    {
+      "path": "evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/enabled.json",
+      "bytes": 509017,
+      "sha256": "c34abdd5dd2c41bbf416b09bc3585990addf5630d64d7cb4d58b1ec14170d793"
+    },
+    {
+      "path": "evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/enabled.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/enabled.stdout.log",
+      "bytes": 377556,
+      "sha256": "49038a368ea0a057b1dc54b284b40513d6378caffda9bf4e5357ddabd3df389c"
+    },
+    {
+      "path": "evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/export.log",
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    {
+      "path": "evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/import.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/import.stdout.log",
+      "bytes": 2964,
+      "sha256": "e29ec7ba1fb1055f4a8b22f8500619241b5252d6fa2fcf2170a093b982678794"
+    },
+    {
+      "path": "evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/summary.json",
+      "bytes": 1042833,
+      "sha256": "4ffcee93e309553731ea3627a8bdc2e271ab01e89eacc58a69a4ef21146ee7c4"
+    },
+    {
+      "path": "evidence/7d1a088a-1107-4b43-9e88-c620846dff9a/disabled.json",
+      "bytes": 316584,
+      "sha256": "8f2e427a30bb4bcfb0ae1d862310118cd01fdf3a4e3c42990316c6300d9fa9ae"
+    },
+    {
+      "path": "evidence/7d1a088a-1107-4b43-9e88-c620846dff9a/disabled.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/7d1a088a-1107-4b43-9e88-c620846dff9a/disabled.stdout.log",
+      "bytes": 36410,
+      "sha256": "b6001aff050f58c1821ae182dd7ff32fd80974141a1e02519bef03e8a012b211"
+    },
+    {
+      "path": "evidence/7d1a088a-1107-4b43-9e88-c620846dff9a/enabled.json",
+      "bytes": 314068,
+      "sha256": "c697f047b0ad6d12e8316d27ec689d7e55e3dde6e575e35a30db88153e97ef56"
+    },
+    {
+      "path": "evidence/7d1a088a-1107-4b43-9e88-c620846dff9a/enabled.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/7d1a088a-1107-4b43-9e88-c620846dff9a/enabled.stdout.log",
+      "bytes": 376383,
+      "sha256": "b66750b6b7c28b24d511455edfdc2b6b46627f70d148aba76e3ebddb92af4df3"
+    },
+    {
+      "path": "evidence/7d1a088a-1107-4b43-9e88-c620846dff9a/export.log",
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    {
+      "path": "evidence/7d1a088a-1107-4b43-9e88-c620846dff9a/import.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/7d1a088a-1107-4b43-9e88-c620846dff9a/import.stdout.log",
+      "bytes": 2964,
+      "sha256": "e29ec7ba1fb1055f4a8b22f8500619241b5252d6fa2fcf2170a093b982678794"
+    },
+    {
+      "path": "evidence/7d1a088a-1107-4b43-9e88-c620846dff9a/summary.json",
+      "bytes": 757939,
+      "sha256": "86170decff325610b747a0d8dc5684ad3deee4667808d3ae87ee4adcbc451f8c"
+    },
+    {
+      "path": "evidence/a2b37402-8dab-4b13-9447-785192f4dd8a/enabled.json",
+      "bytes": 1802,
+      "sha256": "624de8bc52b3d59b1b7b0cd688caf5e8c58c97cdaed61241b653451c3c1d0d0d"
+    },
+    {
+      "path": "evidence/a2b37402-8dab-4b13-9447-785192f4dd8a/enabled.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/a2b37402-8dab-4b13-9447-785192f4dd8a/enabled.stdout.log",
+      "bytes": 375,
+      "sha256": "819e631264925103df52c0ab35441bb023ea9eeb9f694a29ddac03014c2b335a"
+    },
+    {
+      "path": "evidence/a2b37402-8dab-4b13-9447-785192f4dd8a/export.log",
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    {
+      "path": "evidence/a2b37402-8dab-4b13-9447-785192f4dd8a/import.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/a2b37402-8dab-4b13-9447-785192f4dd8a/import.stdout.log",
+      "bytes": 2964,
+      "sha256": "e29ec7ba1fb1055f4a8b22f8500619241b5252d6fa2fcf2170a093b982678794"
+    },
+    {
+      "path": "evidence/a2b37402-8dab-4b13-9447-785192f4dd8a/summary.json",
+      "bytes": 3624,
+      "sha256": "cca909af46dc39322362825c9c4139ba8295812cb2d40baecbaafc3bcd54a2d8"
+    }
+  ]
+}
