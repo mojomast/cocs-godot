@@ -178,6 +178,9 @@ func on_snapshot(frame: Dictionary) -> void:
 		initial_position = camera.position
 		received_pose = true
 	pose_actor_id = client.actor_id
+	# A respawn must not silently reactivate controls held before death.
+	# Keep the pose for authoritative camera tracking, but require recapture.
+	if not presentation.lifecycle.can_control(): release_pointer()
 	moved = moved or camera.position.distance_to(initial_position) > 0.5
 	fired = fired or int(actor.get("shots", 0)) > 0
 	if lifecycle_smoke and round_starts == 2 and round_results == 1 and client.last_ack > 10:

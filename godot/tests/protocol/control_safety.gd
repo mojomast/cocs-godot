@@ -2,6 +2,11 @@ extends SceneTree
 const Math = preload("res://world/control_math.gd")
 const Session = preload("res://world/session.gd")
 const Network = preload("res://net/client.gd")
+class SessionProbe extends Session:
+	var releases: int = 0
+	func release_pointer() -> void:
+		releases += 1
+		super.release_pointer()
 class InputProbe extends Network:
 	var packets: Array[Dictionary] = []
 	func send_input(value: Dictionary) -> Error:
@@ -95,7 +100,7 @@ func _initialize() -> void:
 		check(Vector2(s.yaw,s.pitch) == before)
 	s.free()
 	# Missing poses must keep neutral packets flowing, never retain held controls.
-	var pending := Session.new()
+	var pending := SessionProbe.new()
 	pending.client.free()
 	var probe := InputProbe.new()
 	pending.client = probe
@@ -168,6 +173,26 @@ func _initialize() -> void:
 	pending.on_lobby({})
 	check(pending.received_pose and pending.send_elapsed == 0.01)
 	check(pending.can_capture_pointer())
+	# Death releases capture; repeated dead snapshots preserve neutral cadence.
+	pending.releases = 0
+	probe.packets.clear()
+	for tick in range(3):
+		pending.on_snapshot({"state":{"actors":[{"id":12,"x":0,"y":0,"z":0,"yaw":0.7,"pitch":0.2,"dead":3-tick}],"pickups":[],"t":501+tick}})
+		check(pending.releases == tick + 1)
+		check(not pending.can_capture_pointer())
+		pending._process(1.0 / 60.0)
+		check(probe.packets.size() == tick + 1)
+		var packet: Dictionary = probe.packets.back()
+		check(packet.x == 0 and packet.z == 0)
+		for action: String in ["fire","jump","reload","sprint","crouch","interact","mobility"]:
+			check(not packet[action])
+	pending.on_snapshot({"state":{"actors":[{"id":12,"x":5,"y":0,"z":7,"yaw":-0.8,"pitch":-0.1,"dead":0}],"pickups":[],"t":504}})
+	check(pending.can_capture_pointer())
+	check(pending.releases == 3)
+	check(Input.mouse_mode == Input.MOUSE_MODE_VISIBLE)
+	check(is_equal_approx(pending.yaw,-0.8) and is_equal_approx(pending.pitch,-0.1))
+	pending._process(1.0 / 60.0)
+	check(not probe.packets.back().fire and probe.packets.back().x == 0 and probe.packets.back().z == 0)
 	pending.free()
 	if failures > 0:
 		quit(1)

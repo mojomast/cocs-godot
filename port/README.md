@@ -2,6 +2,12 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Death releases pointer capture
+
+Authoritative non-controllable local snapshots now release pointer capture while retaining the camera pose. Respawn reseeds look from the server but does not recapture the pointer: a fresh click is required before normal interactive input resumes. This prevents held pre-death controls from silently reactivating after respawn.
+
+Executed evidence: the actual-session regression failed before the fix with four release assertions (exit 1). After the fix, all 2,435 control-safety assertions and the complete verifier passed, including live movement/fire, normal-rate results/restart and two native clients. Synthetic snapshots cover repeated dead states, neutral movement and every action, uninterrupted packet cadence, and same-ID respawn look reseeding. Pointer release is instrumented through the real session method; this headless test is not graphical mouse-capture acceptance or live intentional death/respawn evidence. Both subagents' directories are untouched. Gameplay rules, dependencies and map selection are unchanged.
+
 ## Actor reassignment control-pose isolation
 
 The session now associates each received local pose with its actor ID. A validated lobby that reassigns or revokes that identity immediately clears control eligibility and releases pointer capture, rather than permitting the old pose to drive the newly assigned actor until the next snapshot. Neutral packets continue; repeated rosters do not reset their cadence. A fresh local snapshot binds the new identity and reseeds look. Unchanged identities preserve the pose and accumulator.
