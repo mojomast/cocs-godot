@@ -2,6 +2,14 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Session recovery and focus batch
+
+The actual native session now bounds each connection/create/configuration/start waiting phase to 15 seconds, clears presentation and disconnects on expiry, and reports a relaunch instruction. This is a provisional per-phase deadline, not automatic reconnect. Room creation, configuration and initial start queue failures now fail explicitly instead of advancing into a silent wait.
+
+Restart requests remain in results when transport queueing fails, preserving Enter-to-retry. Successful queueing enters the authoritative-start wait; repeat Enter events and requests outside results do not enqueue duplicate starts. Application focus loss releases pointer capture; regaining focus does not automatically capture it again. Escape remains an explicit release.
+
+Executed evidence: `session-recovery` passed 52 assertions against the actual session methods with explicitly synthetic queue outcomes, clocks and focus notifications. Tests cover failed/successful configuration and initial start, retry, duplicate suppression, all waiting-phase deadlines, phase timer reset and non-waiting phases. Focus tests verify release dispatch, not a real graphical desktop focus transition. The complete `python3 tools/godot-dev/verify.py` passed, including normal-rate live results/restart, movement/fire and two native clients. No source gameplay, lockfiles or map selection changed. Visual/playable acceptance, live pickup/death/respawn, original assets/audio and prediction remain open.
+
 ## Unassigned acknowledgement isolation
 
 Snapshot ACK lookup now requires a nonnegative assigned actor ID. The internal `-1` sentinel can no longer acquire acknowledgement progress from a wire `"-1"` key after roster revocation or connection reset. Snapshot ordering and buffering continue normally for unassigned clients, and actor zero still accepts its own ACKs.

@@ -24,6 +24,34 @@ var fired: bool = false
 var lifecycle_smoke: bool = false
 var round_starts: int = 0
 var round_results: int = 0
+var phase_elapsed: float = 0.0
+var watched_phase: int = -999
+const HANDSHAKE_TIMEOUT: float = 15.0
+
+func request_restart() -> void:
+	if phase != 4: return
+	if client.send_frame({"type":"start"}) == OK:
+		phase = 20
+		label.text = "Waiting for authoritative round start…"
+	else:
+		label.text = presentation.hud_text + "\nRestart could not be queued. Enter: retry"
+
+func release_pointer() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		release_pointer()
+
+func advance_handshake(delta: float) -> bool:
+	if phase != watched_phase:
+		watched_phase = phase
+		phase_elapsed = 0.0
+	if phase not in [0, 1, 2, 20]: return true
+	phase_elapsed += delta
+	if phase_elapsed < HANDSHAKE_TIMEOUT: return true
+	on_error("Connection/round-start timed out. Relaunch to reconnect.")
+	return false
 
 func _ready() -> void:
 	super._ready()
@@ -73,8 +101,7 @@ func _ready() -> void:
 			if not bool(f.state.get("over", false)) or presentation.lifecycle.can_control():
 				on_error("Results did not disable controls")
 				return
-			phase = 20
-			client.send_frame({"type":"start"}))
+			request_restart())
 	if endpoint.is_empty() or client.connect_server(endpoint, catalog.entries, current_id) != OK:
 		on_error("A local launcher endpoint is required")
 		return
@@ -96,14 +123,20 @@ func on_error(message: String) -> void:
 
 func on_lobby(frame: Dictionary) -> void:
 	if phase == 1:
-		phase = 2
+		var queued: Error
 		if lifecycle_smoke:
-			client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":"deathmatch","botCount":2,"timeLimit":60,"fragLimit":100}})
+			queued = client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":"deathmatch","botCount":2,"timeLimit":60,"fragLimit":100}})
 		else:
-			client.configure_match("deathmatch", 2)
+			queued = client.configure_match("deathmatch", 2)
+		if queued != OK:
+			on_error("Match configuration could not be queued. Relaunch to reconnect.")
+			return
+		phase = 2
 	elif phase == 2 and frame.get("config") != null:
+		if client.send_frame({"type":"start"}) != OK:
+			on_error("Initial round start could not be queued. Relaunch to reconnect.")
+			return
 		phase = 20
-		client.send_frame({"type":"start"})
 
 func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3: return
@@ -134,11 +167,9 @@ func on_snapshot(frame: Dictionary) -> void:
 		get_tree().quit(0)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_ESCAPE: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		if event.keycode == KEY_ENTER and phase == 4:
-			phase = 20
-			client.send_frame({"type":"start"})
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_ESCAPE: release_pointer()
+		if event.keycode == KEY_ENTER: request_restart()
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and phase == 3 and presentation.lifecycle.can_control():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -146,6 +177,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		pitch = clampf(pitch - event.relative.y * 0.003, -1.45, 1.45)
 
 func _process(delta: float) -> void:
+	if not advance_handshake(delta): return
 	combat_label.text = combat.text()
 	if phase == 3:
 		snapshot_watch.advance(delta)
@@ -158,8 +190,10 @@ func _process(delta: float) -> void:
 		on_error("Lifecycle smoke timeout")
 		return
 	if phase == 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		if client.create_room() != OK:
+			on_error("Room creation could not be queued. Relaunch to reconnect.")
+			return
 		phase = 1
-		client.create_room()
 	if phase != 3 or not received_pose: return
 	camera.rotation = Vector3(pitch, yaw, 0)
 	send_elapsed += delta
