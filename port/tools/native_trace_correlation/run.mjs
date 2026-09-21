@@ -17,7 +17,11 @@ const out=resolve(root,'port/native-trace-correlation/evidence',randomUUID());mk
 const temp=mkdtempSync(resolve(tmpdir(),'cocs-trace-'));
 const env={PATH:process.env.PATH,HOME:temp,LANG:'C.UTF-8'};
 for(const k of ['XDG_DATA_HOME','XDG_CACHE_HOME','XDG_CONFIG_HOME']){env[k]=resolve(temp,k);mkdirSync(env[k]);}
-const report={base:'6071da714cf8123da14d1947bd3e099e2c040503',guestHarness:'389561510ac7c2223a22897c963f3440304ec928',branch:'subagent/native-trace-correlation',cases:[],cleanup:{},normalRate:true,completionProven:false};
+const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8',timeout:5000}).trim();
+const report={base:git('rev-parse','HEAD'),branch:git('branch','--show-current'),executionCheckout:root,
+ originalHarnessBase:'6071da714cf8123da14d1947bd3e099e2c040503',guestHarness:'389561510ac7c2223a22897c963f3440304ec928',cases:[],cleanup:{},normalRate:true,completionProven:false};
+report.runtimeTrees=Object.fromEntries(['godot','game','server','tools/godot-export'].map(p=>[p,git('rev-parse',`HEAD:${p}`)]));
+report.executionSourceStatus=git('status','--porcelain','--','godot','game','server','tools/godot-export','port/tools/native_trace_correlation');
 report.sourceHashes=Object.fromEntries(['run.mjs','observe.gd','validate.mjs','guest_helpers.mjs','test.mjs'].map(f=>[f,createHash('sha256').update(readFileSync(resolve(here,f))).digest('hex')]));
 report.commands={live:`GODOT_BIN=${binary} GUEST_NODE_MODULES=${deps} node port/tools/native_trace_correlation/run.mjs${process.argv.includes('--fault-timeout')?' --fault-timeout':''}`,offline:'node --test port/tools/native_trace_correlation/test.mjs'};
 let child,game,host,interrupted=false;
@@ -38,6 +42,7 @@ async function cleanup(result){
  if(errors.length)throw Error(errors.join('; '));
 }
 try{
+ assert.equal(report.executionSourceStatus,'','Execution source must be committed for attributable live evidence');
  report.version=execFileSync(binary,['--version'],{encoding:'utf8',timeout:10000}).trim();assert.equal(report.version,JSON.parse(readFileSync(resolve(root,'port/contracts/source-lock.json'))).godot_version);
  for(const dir of ['godot','game','server'])cpSync(resolve(root,dir),resolve(temp,dir),{recursive:true,filter:p=>!p.includes('/.godot')});
  writeFileSync(resolve(out,'export.log'),execFileSync(process.execPath,[resolve(root,'tools/godot-export/semantic.mjs'),resolve(temp,'godot/content/generated')],{cwd:root,env,encoding:'utf8',timeout:60000}));
