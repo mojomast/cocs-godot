@@ -25,6 +25,31 @@ var presentation := Presentation.new()
 # Guest phases: 10 waits for join acknowledgement; 11 waits for host start.
 var join_room_id: String = ""
 var phase: int = 0
+# Opt-in program-state evidence, never a claim of graphical acceptance.
+var trace_enabled: bool = false
+var trace_count: int = 0
+const TRACE_LIMIT: int = 10000
+
+func trace_snapshot(reseeded: bool) -> Dictionary:
+	var actor: Dictionary = presentation.local_actor
+	return {"schema":1, "event":"snapshot", "round":round_starts,
+		"actor_id":client.actor_id, "ack":client.last_ack, "phase":phase,
+		"pose_present":received_pose, "health":actor.get("health", null),
+		"dead":actor.get("dead", null), "lifecycle":presentation.lifecycle.status,
+		"camera_reseeded":reseeded, "yaw":yaw, "pitch":pitch,
+		"camera_position":[camera.position.x,camera.position.y,camera.position.z],
+		"pointer_captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,
+		"control_eligible":can_capture_pointer(), "focused":application_focused}
+
+func emit_snapshot_trace(reseeded: bool) -> void:
+	if not trace_enabled or trace_count >= TRACE_LIMIT: return
+	var record := trace_snapshot(reseeded)
+	record["sequence"] = trace_count
+	record["monotonic_usec"] = Time.get_ticks_usec()
+	print("PORT_NATIVE_TRACE ", JSON.stringify(record))
+	trace_count += 1
+	if trace_count == TRACE_LIMIT:
+		print('PORT_NATIVE_TRACE {"schema":1,"event":"limit","complete":false}')
 
 func begin_room() -> void:
 	var result: Error = client.create_room() if join_room_id.is_empty() else client.join_room(join_room_id)
@@ -105,6 +130,7 @@ func _ready() -> void:
 			if join_room_id.is_empty():
 				on_error("Join room ID must not be empty")
 				return
+	trace_enabled = "--native-trace" in OS.get_cmdline_user_args()
 	smoke = "--session-smoke" in OS.get_cmdline_user_args()
 	lifecycle_smoke = "--lifecycle-smoke" in OS.get_cmdline_user_args()
 	if not join_room_id.is_empty() and (smoke or lifecycle_smoke):
@@ -200,9 +226,11 @@ func on_snapshot(frame: Dictionary) -> void:
 		if received_pose: send_elapsed = 0.0
 		received_pose = false
 		release_pointer()
+		emit_snapshot_trace(false)
 		return
 	camera.position = presentation.eye_position()
-	if not received_pose or presentation.lifecycle.reseed_look:
+	var reseeded: bool = not received_pose or presentation.lifecycle.reseed_look
+	if reseeded:
 		var angles := ControlMath.look(float(actor.yaw), float(actor.pitch))
 		yaw = angles.x
 		pitch = angles.y
@@ -212,6 +240,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	# A respawn must not silently reactivate controls held before death.
 	# Keep the pose for authoritative camera tracking, but require recapture.
 	if not presentation.lifecycle.can_control(): release_pointer()
+	emit_snapshot_trace(reseeded)
 	moved = moved or camera.position.distance_to(initial_position) > 0.5
 	fired = fired or int(actor.get("shots", 0)) > 0
 	if lifecycle_smoke and round_starts == 2 and round_results == 1 and client.last_ack > 10:

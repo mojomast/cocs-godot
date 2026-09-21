@@ -4,31 +4,31 @@ TAP version 13
 # Subtest: strict serializer rejects silent JSON losses
 ok 1 - strict serializer rejects silent JSON losses
   ---
-  duration_ms: 0.881099
+  duration_ms: 0.866793
   type: 'test'
   ...
 # Subtest: allowlist fails closed
 ok 2 - allowlist fails closed
   ---
-  duration_ms: 0.265046
+  duration_ms: 0.270617
   type: 'test'
   ...
 # Subtest: selected maps preserve every root field and resolve callable terrain
 ok 3 - selected maps preserve every root field and resolve callable terrain
   ---
-  duration_ms: 71.071217
+  duration_ms: 53.486028
   type: 'test'
   ...
 # Subtest: two point walls survive despite no wall triangles
 ok 4 - two point walls survive despite no wall triangles
   ---
-  duration_ms: 0.371005
+  duration_ms: 0.404177
   type: 'test'
   ...
 # Subtest: two clean builds have identical manifests and asset hashes
 ok 5 - two clean builds have identical manifests and asset hashes
   ---
-  duration_ms: 218.932547
+  duration_ms: 208.664405
   type: 'test'
   ...
 1..5
@@ -39,4 +39,4 @@ ok 5 - two clean builds have identical manifests and asset hashes
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 857.538764
+# duration_ms 852.990129
