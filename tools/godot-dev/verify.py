@@ -22,6 +22,7 @@ commands = [
     ("godot-import", [binary, "--headless", "--path", "godot", "--editor", "--import"]),
     ("viewer-smoke", [binary, "--headless", "--path", "godot", "--", "--smoke"]),
     ("glb-import", [binary, "--headless", "--path", "godot", "--script", "res://tests/import.gd"]),
+    ("protocol-envelopes", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/envelopes.gd"]),
     ("packet-replay", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/replay.gd"]),
     ("native-live", ["node", "tools/godot-dev/launch.mjs", "--network-smoke"]),
     ("presentation-replay", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/presentation.gd"]),

@@ -87,11 +87,38 @@ func send_input(controls: Dictionary) -> Error:
 func validate_map(id: Variant) -> bool:
 	return id is String and id == requested_map and allowlist.has(id)
 
+# Validate container/scalar shapes before typed iteration or integer conversion.
+# This is envelope hardening, not a complete gameplay-state schema.
+func wire_integer(value: Variant) -> bool:
+	return (value is int or value is float) and is_finite(float(value)) and float(value) >= 0 and float(value) <= 9007199254740991.0 and floorf(float(value)) == float(value)
+
+func valid_envelope(frame: Dictionary) -> bool:
+	match frame.type:
+		"welcome":
+			return frame.get("roomId") is String and wire_integer(frame.get("peerId"))
+		"lobby":
+			if not frame.get("players", []) is Array: return false
+			for player: Variant in frame.get("players", []):
+				if not player is Dictionary or not wire_integer(player.get("peerId")): return false
+				if player.get("actorId") != null and not wire_integer(player.actorId): return false
+		"snapshot":
+			if not wire_integer(frame.get("seq")) or not frame.get("acks", {}) is Dictionary: return false
+			for ack: Variant in frame.get("acks", {}).values():
+				if not wire_integer(ack): return false
+		"events":
+			if not frame.get("items", []) is Array: return false
+			for item: Variant in frame.get("items", []):
+				if not item is Dictionary: return false
+				var id: Variant = item.get("id")
+				if not ((id is String and not id.is_empty()) or wire_integer(id)): return false
+	return true
+
 func decode_text(text: String) -> bool:
 	if text.to_utf8_buffer().size() > MAX_FRAME_BYTES: return fail("Oversized frame")
 	var value: Variant = JSON.parse_string(text)
 	if not value is Dictionary or not value.get("type") is String: return fail("Malformed JSON envelope")
 	var frame: Dictionary = value
+	if not valid_envelope(frame): return fail("Malformed protocol envelope")
 	match frame.type:
 		"welcome":
 			if frame.get("v") != PROTOCOL_VERSION: return fail("Protocol version mismatch")
