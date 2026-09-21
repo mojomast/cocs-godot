@@ -1,0 +1,59 @@
+# DESTINATIONS release matrix
+
+This is an exercised port laboratory. Passing tools, headless gates or merged
+branches does not establish a completed game port. Locked scope remains
+`contracts/map-selection.json` at source `51289b79c627a26a381ba556b92bab71f93f3732`.
+
+## Evidence levels and current acceptance
+
+| Area | Synthetic/offline | Saved genuine evidence | Independently rerun live | Graphical / playable acceptance |
+|---|---|---|---|---|
+| Asset provenance/parity | Asset audit 9 tests pass; frozen source inventory and rights review integrated | Existing Meridian GLB probe | No original-art parity run in this integration | OPEN; diagnostic actors/pickups/world do not establish parity |
+| Gameplay catalog/analyzer/recorder | 29 tests pass, including loopback mock recorder | Sparse accelerated protocol capture remains insufficient for death/respawn | Pending intentional scenario acceptance | OPEN |
+| Guest workflow | 7 harness tests pass | Historical final and failed runs archived losslessly | Current-checkout rerun in progress; previous report kept separately | Guest UI/results/focus acceptance separate |
+| Trace correlation | 13 tests pass; 11 synthetic, 2 real owned-process cleanup | Final historical run replayed: 333 snapshot / 647 input receipt matches | PASS at `86ef719`: 333 snapshot / 644 input receipt matches; disabled 0 trace records; deliberate timeout fails and cleans up | Neutral headless window only; native completion unproven |
+| Death / respawn | Existing lifecycle/control regressions | No accepted intentional recording integrated yet | Isolated subagent executing real native victim / supported attacker scenario | Held-control suppression requires explicit stimulus; no inference from neutral input |
+| Focus / click / pointer | Existing synthetic notifications and control regressions | Headless fields are not graphical evidence | Private-display subagent executing actual OS input/focus checks | Owner authorized private display; shared desktop excluded |
+| Full verifier | All 29 implemented gates pass | First attempt failed at inherited occupied PORT=4332; retained | `PORT=0` rerun passes, including live movement/fire, normal-rate results/restart and two native clients | Visual/playable gates remain separate |
+| Pulse rifle preview | No completion commit available | None reviewed | Owner believes work is not finished | Pending; reserved directories untouched |
+
+The actual commands, clean execution tree hashes, source provenance, receipt vs
+ACK distinction and timeout failure are in
+`reports/native-trace-independent/README.md` and its indexed archive.
+This table is updated as new runs are actually reviewed, not from anticipated
+subagent results.
+
+## Nine-map scope (no replacements)
+
+All nine have semantic manifest/viewer coverage. That is not original-art,
+mode-specific interaction or playable acceptance. Exact supported modes remain
+the locked JSON contract; the family summary below does not narrow them.
+
+| Map | Identity retained | Current native acceptance gap |
+|---|---|---|
+| Meridian Exchange | Infantry combat/objective modes | Prototype deathmatch only; intentional pickups, full presentation and playable review open |
+| Verdant Reliquary | Infantry modes plus campaign | Native sessions/modes, original art and routes open |
+| Ember Crucible | Infantry combat/objective modes | Native sessions/modes, original art and routes open |
+| Tidal Citadel | CTF, teamdeathmatch, domination, assault, team-elimination | Vehicles/objectives/native session and visual acceptance open |
+| Sunscar Convoy | Payload, assault, combined-arms, teamdeathmatch, domination, VIP escort | Convoy/vehicles/objectives/native session and visual acceptance open |
+| Asterion Relay | LATTICE (`cocs`, `cocs-coop`) | Native LATTICE orders/economy/traversal/objectives and art open |
+| Monsoon Foundry | LATTICE (`cocs`, `cocs-coop`) | Native LATTICE orders/economy/traversal/objectives and art open |
+| Ion Speedway | `puma-race` | Native driving, checkpoints/laps, race HUD and presentation open |
+| Aurora Stadium | `puma-soccer` | Native driving, ball/goals/scoring and presentation open |
+
+## Release blockers carried forward
+
+- Original models, animations, shaders, effects, audio and visual comparison are
+  incomplete; the pulse-rifle preview has no accepted completion report.
+- Intentional health/weapon pickup, nonlethal damage, death/respawn, lethal
+  round-ending results/restart and mode-specific gameplay need scoped evidence.
+  A separate isolated subagent is executing the weapon-pickup/return scenario.
+- Native recording lacks a terminal completion marker and direct protocol IDs.
+  Current harnesses may supply explicit boundaries and limited association;
+  they cannot turn error/limit/forced exit into successful native completion.
+- Asset rights remain unresolved: missing repository redistribution grant,
+  Moth input/output rights, and OmniVoice/model/output lineage. Music has
+  documented CC0 declarations/notices that must be preserved. See
+  `asset-audit/HANDOFF.md`; inspection is not legal clearance.
+- Prediction, adverse-network behavior and cross-renderer/hardware acceptance
+  remain open. Race, soccer and LATTICE are required scope, not optional cuts.

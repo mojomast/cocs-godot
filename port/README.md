@@ -2,6 +2,17 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Current integration and release status
+
+See [RELEASE_MATRIX.md](RELEASE_MATRIX.md) for current evidence levels, all nine
+required map/mode identities, graphical acceptance and release blockers. The
+asset/gameplay audits, bounded recorder, guest integration and native trace
+correlation tools are now integrated in attributable commits. Historical guest
+and trace evidence is losslessly archived with per-file provenance; failed runs
+remain failures. The independent current-runtime trace run, commands and limits
+are in [reports/native-trace-independent/README.md](reports/native-trace-independent/README.md).
+The sections below retain the chronological implementation history.
+
 ## Focus loss gates pointer capture and look
 
 Application focus notifications now explicitly gate capture eligibility and mouse-look updates. Focus return restores eligibility, not pointer capture; a fresh click is still required. Previously release alone left capture eligibility true while unfocused.

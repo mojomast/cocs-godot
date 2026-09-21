@@ -1,0 +1,356 @@
+{
+  "classification": "independently_executed_live",
+  "execution_commit": "86ef71965e1a1e5c649bec660ab7c6660db09b89",
+  "runs": [
+    {
+      "base": "86ef71965e1a1e5c649bec660ab7c6660db09b89",
+      "branch": "integration/native-acceptance",
+      "executionCheckout": "/tmp/opencode/cocs-native-integration",
+      "originalHarnessBase": "6071da714cf8123da14d1947bd3e099e2c040503",
+      "guestHarness": "389561510ac7c2223a22897c963f3440304ec928",
+      "cleanup": {
+        "import": {
+          "pid": 1930175,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "privateTempRemoved": true
+      },
+      "normalRate": true,
+      "completionProven": false,
+      "runtimeTrees": {
+        "godot": "6795853af5ff9276914d7f26f1a1d0871eb1a155",
+        "game": "ae8015eeecec1d044cdcceaa1e5ea89d53251a90",
+        "server": "e54b6a715f46ff7e25db533ce9d1d5cc68942563",
+        "tools/godot-export": "87cba39e4328bec3dabedb5c8a1f4a4e3597a5e2"
+      },
+      "executionSourceStatus": "",
+      "sourceHashes": {
+        "run.mjs": "5b9efdf70155bbf12a2c86931ca1aa89e656d58e9abb68ad150db7fc79899f7c",
+        "observe.gd": "e6a4736eef19350d44e5657b40dffa3dc6961130ebb58cfd96e73c96ea3295de",
+        "validate.mjs": "9ce19538b1328ec89c6ed6ff8dd05bd514abec762eb2123c312b0d1b0e21639e",
+        "guest_helpers.mjs": "13cbe16ef25d41e45a31f9ad5a5f0b476c26ce49a9e09cdec243b4fed3a5c6ed",
+        "test.mjs": "b270e01498cd48b143d4e1ab85cf48e06438f2f3353ae3d080f3f7c56065e9b1"
+      },
+      "commands": {
+        "live": "GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 GUEST_NODE_MODULES=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/node_modules node port/tools/native_trace_correlation/run.mjs",
+        "offline": "node --test port/tools/native_trace_correlation/test.mjs"
+      },
+      "version": "4.5.2.stable.official.6ce3de25a",
+      "status": "PASS",
+      "run": "79fec637-27af-43cc-9372-e540d2ad79f3",
+      "cases": [
+        {
+          "name": "enabled",
+          "status": "PASS",
+          "cleanup": {
+            "native": {
+              "pid": 1930347,
+              "reaped": true,
+              "exitCode": 0,
+              "signal": null
+            },
+            "serverClosed": true,
+            "socketCount": 0
+          },
+          "port": 36853,
+          "room": "7K8L",
+          "nativeCommand": [
+            "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+            "--headless",
+            "--path",
+            "/tmp/opencode/cocs-trace-4hvoq8/godot",
+            "--script",
+            "/tmp/opencode/cocs-native-integration/port/tools/native_trace_correlation/observe.gd",
+            "--",
+            "--endpoint=ws://127.0.0.1:36853",
+            "--join-room=7K8L",
+            "--native-trace"
+          ],
+          "waiting": [
+            {
+              "ack": 0,
+              "actor": -1,
+              "error": "",
+              "phase": 11,
+              "phase_seconds": 0.392079777777777,
+              "pose": false,
+              "seconds": 0.506293,
+              "snapshots": 0,
+              "starts": 0
+            },
+            {
+              "ack": 0,
+              "actor": -1,
+              "error": "",
+              "phase": 11,
+              "phase_seconds": 0.895550666666666,
+              "pose": false,
+              "seconds": 1.009963,
+              "snapshots": 0,
+              "starts": 0
+            }
+          ],
+          "traceCount": 978,
+          "serverEmittedSnapshots": 333,
+          "serverReceivedInputs": 644,
+          "correlation": {
+            "status": "PASS",
+            "actor": 1,
+            "roundStarts": 1,
+            "unobservedQueue": [],
+            "serverReceiptOnly": true,
+            "applicationClaim": false,
+            "ackHighWater": 643,
+            "completionProven": false,
+            "snapshotMatches": 333,
+            "inputMatches": 644
+          }
+        },
+        {
+          "name": "disabled",
+          "status": "PASS",
+          "cleanup": {
+            "native": {
+              "pid": 1931146,
+              "reaped": true,
+              "exitCode": 0,
+              "signal": null
+            },
+            "serverClosed": true,
+            "socketCount": 0
+          },
+          "port": 37525,
+          "room": "S4LZ",
+          "nativeCommand": [
+            "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+            "--headless",
+            "--path",
+            "/tmp/opencode/cocs-trace-4hvoq8/godot",
+            "--script",
+            "/tmp/opencode/cocs-native-integration/port/tools/native_trace_correlation/observe.gd",
+            "--",
+            "--endpoint=ws://127.0.0.1:37525",
+            "--join-room=S4LZ"
+          ],
+          "waiting": [
+            {
+              "ack": 0,
+              "actor": -1,
+              "error": "",
+              "phase": 11,
+              "phase_seconds": 0.38763,
+              "pose": false,
+              "seconds": 0.502629999999999,
+              "snapshots": 0,
+              "starts": 0
+            },
+            {
+              "ack": 0,
+              "actor": -1,
+              "error": "",
+              "phase": 11,
+              "phase_seconds": 0.890697666666667,
+              "pose": false,
+              "seconds": 1.00595,
+              "snapshots": 0,
+              "starts": 0
+            }
+          ],
+          "traceCount": 0,
+          "serverEmittedSnapshots": 336,
+          "serverReceivedInputs": 651
+        }
+      ],
+      "independentPidAbsenceCheck": true
+    },
+    {
+      "base": "86ef71965e1a1e5c649bec660ab7c6660db09b89",
+      "branch": "integration/native-acceptance",
+      "executionCheckout": "/tmp/opencode/cocs-native-integration",
+      "originalHarnessBase": "6071da714cf8123da14d1947bd3e099e2c040503",
+      "guestHarness": "389561510ac7c2223a22897c963f3440304ec928",
+      "cleanup": {
+        "import": {
+          "pid": 1933373,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "privateTempRemoved": true
+      },
+      "normalRate": true,
+      "completionProven": false,
+      "runtimeTrees": {
+        "godot": "6795853af5ff9276914d7f26f1a1d0871eb1a155",
+        "game": "ae8015eeecec1d044cdcceaa1e5ea89d53251a90",
+        "server": "e54b6a715f46ff7e25db533ce9d1d5cc68942563",
+        "tools/godot-export": "87cba39e4328bec3dabedb5c8a1f4a4e3597a5e2"
+      },
+      "executionSourceStatus": "",
+      "sourceHashes": {
+        "run.mjs": "5b9efdf70155bbf12a2c86931ca1aa89e656d58e9abb68ad150db7fc79899f7c",
+        "observe.gd": "e6a4736eef19350d44e5657b40dffa3dc6961130ebb58cfd96e73c96ea3295de",
+        "validate.mjs": "9ce19538b1328ec89c6ed6ff8dd05bd514abec762eb2123c312b0d1b0e21639e",
+        "guest_helpers.mjs": "13cbe16ef25d41e45a31f9ad5a5f0b476c26ce49a9e09cdec243b4fed3a5c6ed",
+        "test.mjs": "b270e01498cd48b143d4e1ab85cf48e06438f2f3353ae3d080f3f7c56065e9b1"
+      },
+      "commands": {
+        "live": "GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 GUEST_NODE_MODULES=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/node_modules node port/tools/native_trace_correlation/run.mjs --fault-timeout",
+        "offline": "node --test port/tools/native_trace_correlation/test.mjs"
+      },
+      "version": "4.5.2.stable.official.6ce3de25a",
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(report.cases.every(c=>c.status==='PASS'))\n\n    at file:///tmp/opencode/cocs-native-integration/port/tools/native_trace_correlation/run.mjs:92:9",
+      "status": "FAIL",
+      "run": "bce05a27-d19a-4778-b11d-3910f4a5c9b4",
+      "cases": [
+        {
+          "name": "enabled",
+          "status": "FAIL",
+          "cleanup": {
+            "native": {
+              "pid": 1933669,
+              "reaped": true,
+              "exitCode": null,
+              "signal": "SIGTERM"
+            },
+            "serverClosed": true,
+            "socketCount": 0
+          },
+          "port": 34469,
+          "room": "G955",
+          "nativeCommand": [
+            "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+            "--headless",
+            "--path",
+            "/tmp/opencode/cocs-trace-jyA8se/godot",
+            "--script",
+            "/tmp/opencode/cocs-native-integration/port/tools/native_trace_correlation/observe.gd",
+            "--",
+            "--endpoint=ws://127.0.0.1:34469",
+            "--join-room=G955",
+            "--native-trace"
+          ],
+          "waiting": [
+            {
+              "ack": 0,
+              "actor": -1,
+              "error": "",
+              "phase": 11,
+              "phase_seconds": 0.387588666666666,
+              "pose": false,
+              "seconds": 0.502588666666666,
+              "snapshots": 0,
+              "starts": 0
+            },
+            {
+              "ack": 0,
+              "actor": -1,
+              "error": "",
+              "phase": 11,
+              "phase_seconds": 0.889460666666666,
+              "pose": false,
+              "seconds": 1.004717,
+              "snapshots": 0,
+              "starts": 0
+            }
+          ],
+          "error": "Error: Deadline: intentional harness timeout after live join (100ms)\n    at until (file:///tmp/opencode/cocs-native-integration/port/tools/native_trace_correlation/guest_helpers.mjs:8:8)\n    at async wait (file:///tmp/opencode/cocs-native-integration/port/tools/native_trace_correlation/run.mjs:29:36)\n    at async file:///tmp/opencode/cocs-native-integration/port/tools/native_trace_correlation/run.mjs:79:48",
+          "serverEmittedSnapshots": 0,
+          "serverReceivedInputs": 0
+        }
+      ],
+      "independentPidAbsenceCheck": true
+    }
+  ],
+  "members": [
+    {
+      "path": "79fec637-27af-43cc-9372-e540d2ad79f3/disabled.json",
+      "bytes": 363374,
+      "sha256": "f613967a153c96bdab30af7cb06591aea7d6e8a7d4eed4076c7510d5431a5509"
+    },
+    {
+      "path": "79fec637-27af-43cc-9372-e540d2ad79f3/disabled.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "79fec637-27af-43cc-9372-e540d2ad79f3/disabled.stdout.log",
+      "bytes": 36451,
+      "sha256": "ea821a03e5fde7ca4aca29205d7c4f185751bd4f004cae9f0dc94760cb81b4a9"
+    },
+    {
+      "path": "79fec637-27af-43cc-9372-e540d2ad79f3/enabled.json",
+      "bytes": 508147,
+      "sha256": "05ed694e6473232cb45a3e5df05cc7b4762f0d90f5493679544c0488b4771a82"
+    },
+    {
+      "path": "79fec637-27af-43cc-9372-e540d2ad79f3/enabled.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "79fec637-27af-43cc-9372-e540d2ad79f3/enabled.stdout.log",
+      "bytes": 377818,
+      "sha256": "2ed1e3debb084729ecf70a75dc0e8ca0b820315354a52b1bd6fa503eef368607"
+    },
+    {
+      "path": "79fec637-27af-43cc-9372-e540d2ad79f3/export.log",
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    {
+      "path": "79fec637-27af-43cc-9372-e540d2ad79f3/import.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "79fec637-27af-43cc-9372-e540d2ad79f3/import.stdout.log",
+      "bytes": 2964,
+      "sha256": "e29ec7ba1fb1055f4a8b22f8500619241b5252d6fa2fcf2170a093b982678794"
+    },
+    {
+      "path": "79fec637-27af-43cc-9372-e540d2ad79f3/summary.json",
+      "bytes": 1042486,
+      "sha256": "fd78a09a731ea6c20d973bf17700ce7375b1181e3aa6af6123027f5085281455"
+    },
+    {
+      "path": "bce05a27-d19a-4778-b11d-3910f4a5c9b4/enabled.json",
+      "bytes": 1664,
+      "sha256": "56b02ccfa014cf63d6cd3ccac0ee653c1c59849d01ffc0cf0be6c417b6f9f172"
+    },
+    {
+      "path": "bce05a27-d19a-4778-b11d-3910f4a5c9b4/enabled.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bce05a27-d19a-4778-b11d-3910f4a5c9b4/enabled.stdout.log",
+      "bytes": 376,
+      "sha256": "a0dea7bd0f697c9d5b9f13bae17979227683f7e451ca982d47e375ba4b2c2466"
+    },
+    {
+      "path": "bce05a27-d19a-4778-b11d-3910f4a5c9b4/export.log",
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    {
+      "path": "bce05a27-d19a-4778-b11d-3910f4a5c9b4/import.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "bce05a27-d19a-4778-b11d-3910f4a5c9b4/import.stdout.log",
+      "bytes": 2964,
+      "sha256": "e29ec7ba1fb1055f4a8b22f8500619241b5252d6fa2fcf2170a093b982678794"
+    },
+    {
+      "path": "bce05a27-d19a-4778-b11d-3910f4a5c9b4/summary.json",
+      "bytes": 3874,
+      "sha256": "9d14b1eb6db48e3846957774d9b467b418d5066a8015aef243d12891c50b6759"
+    }
+  ],
+  "archiveBytes": 88795,
+  "archiveSha256": "c2efbe9ab97c951d370d2cdb3820bb862c5b016750d7983e7fb92a2e803ae603"
+}
