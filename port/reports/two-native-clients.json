@@ -1,0 +1,34 @@
+{
+  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "godot_version": "4.5.2.stable.official.6ce3de25a",
+  "map_id": "meridian-exchange",
+  "native_clients": 2,
+  "bots": 2,
+  "clock": "normal server rate, loopback only",
+  "results": [
+    {
+      "ack": 17,
+      "actor_id": 0,
+      "actors": 4,
+      "both_moved": true,
+      "humans": [
+        0,
+        1
+      ],
+      "peer_id": 1,
+      "remote_poses": 144
+    },
+    {
+      "ack": 17,
+      "actor_id": 1,
+      "actors": 4,
+      "both_moved": true,
+      "humans": [
+        0,
+        1
+      ],
+      "peer_id": 2,
+      "remote_poses": 141
+    }
+  ]
+}

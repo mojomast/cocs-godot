@@ -121,6 +121,15 @@
       "passed": true
     },
     {
+      "gate": "two-native-clients",
+      "command": [
+        "node",
+        "tools/godot-dev/two-clients.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
       "gate": "remote-motion",
       "command": [
         "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",

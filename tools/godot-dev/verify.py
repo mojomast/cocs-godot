@@ -26,6 +26,7 @@ commands = [
     ("native-live", ["node", "tools/godot-dev/launch.mjs", "--network-smoke"]),
     ("presentation-replay", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/presentation.gd"]),
     ("native-session", ["node", "tools/godot-dev/launch.mjs", "--session-smoke"]),
+    ("two-native-clients", ["node", "tools/godot-dev/two-clients.mjs"]),
     ("remote-motion", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/remote_motion.gd"]),
 ]
 results = []

@@ -126,4 +126,12 @@ The full verifier now includes presentation replay and the native-session smoke;
 
 `tests/protocol/remote_motion.gd` exercises 14 explicit synthetic checks: interpolation, yaw wrap, startup/starvation clamps, timestamp rejection, teleport/death/respawn history, bounded storage, local-camera invariance and cleanup. The normal-rate native session smoke additionally requires remote pose application through the actual scene process loop. These gates do not constitute visual smoothness acceptance or adverse-network benchmarking.
 
+## Two-native-client increment
+
+Run `node tools/godot-dev/two-clients.mjs` with the pinned `GODOT_BIN`. The runner owns a normal-rate, ephemeral loopback server and two separate headless Godot processes. One native client creates/configures Meridian deathmatch; the other joins through the new `PortNetwork.join_room()` API. No JavaScript client substitutes for either player. Room identity is retained from welcome and cleared on disconnect; reconnect still requires an explicit fresh join.
+
+Both clients independently require four presented actors (two humans and two existing bots), distinct authoritative human identities, movement of both human actors by more than 0.5 metres, their own input acknowledgement above 15, and remote interpolation applications. The runner cross-checks both human identity lists, rejects errors/early exits/timeouts, then terminates its owned children and closes the server. Per-client XDG directories isolate runtime caches. `reports/two-native-clients.json` contains actual run evidence, without reconnect credentials. This gate is included in the full verifier.
+
+This closes the narrow two-native-client transport/presentation smoke gate, not multiplayer playable acceptance: it is headless, loopback, a short movement run, and does not test adverse networks, full match lifecycle, graphical input, reconnect recovery or a join-menu UI. The interactive launcher is unchanged. Original models/audio, visual acceptance, pickup/death/respawn/results/restart and prediction remain open.
+
 Ownership and interfaces are in `contracts/CONTRACT.md`. No subagent tool was exposed in this session; lanes were executed serially by the lead. Existing `game/`, `server/`, package manifests/lock and production services were not changed. No branch was pushed and no deployment or Orbit workspace mutation was performed.

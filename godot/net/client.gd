@@ -13,6 +13,7 @@ const MAX_FRAME_BYTES := 1048576 # bounded initial cap; capture is not all-map w
 var peer := WebSocketPeer.new()
 var allowlist: Dictionary = {}
 var requested_map: String = ""
+var room_id: String = ""
 var peer_id: int = -1
 var actor_id: int = -1
 var input_seq: int = 0
@@ -40,6 +41,7 @@ func disconnect_server() -> void:
 	if peer.get_ready_state() != WebSocketPeer.STATE_CLOSED: peer.close()
 	peer = WebSocketPeer.new()
 	was_open = false
+	room_id = ""
 	peer_id = -1
 	actor_id = -1
 	error = ""
@@ -66,6 +68,10 @@ func send_frame(frame: Dictionary) -> Error:
 func create_room() -> Error:
 	return send_frame({"type":"create", "name":"Godot port laboratory", "playerName":"Godot", "v":3, "delta":0})
 
+func join_room(id: String, player_name: String = "Godot guest") -> Error:
+	if id.is_empty(): return ERR_INVALID_PARAMETER
+	return send_frame({"type":"join", "roomId":id, "name":player_name, "v":PROTOCOL_VERSION, "delta":0})
+
 func configure_match(mode: String, bots: int = 2) -> Error:
 	if not allowlist.has(requested_map) or not mode in allowlist[requested_map].modes:
 		fail("Mode is not explicitly supported by the requested map")
@@ -87,6 +93,7 @@ func decode_text(text: String) -> bool:
 	match frame.type:
 		"welcome":
 			if frame.get("v") != PROTOCOL_VERSION: return fail("Protocol version mismatch")
+			room_id = str(frame.get("roomId", ""))
 			peer_id = int(frame.get("peerId", -1))
 		"lobby":
 			# An unconfigured newly created server room has no selected content yet.
