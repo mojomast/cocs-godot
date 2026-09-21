@@ -20,8 +20,8 @@ const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8',timeout:5
 const report={scenario:'PICKUP-WEAPON',base:git('rev-parse','HEAD'),branch:git('branch','--show-current'),executionCheckout:root,
   normalRate:true,tickDt:1/60,tickMs:1000/60,completionProven:false,status:'INCONCLUSIVE',cleanup:{},
   command:`GODOT_BIN=${binary} GUEST_NODE_MODULES=${deps} node port/tools/native_pickup_acceptance/run.mjs`,
-  runtimeTrees:Object.fromEntries(['godot','game','server'].map(p=>[p,git('rev-parse',`HEAD:${p}`)])),
-  sourceStatus:git('status','--porcelain','--','godot','game','server','port/tools/native_pickup_acceptance'),
+  runtimeTrees:Object.fromEntries(['godot','game','server','tools/godot-export'].map(p=>[p,git('rev-parse',`HEAD:${p}`)])),
+  sourceStatus:git('status','--porcelain','--','godot','game','server','tools/godot-export','port/tools/native_pickup_acceptance'),
   hashes:Object.fromEntries(['run.mjs','observe.gd','route.mjs'].map(p=>[p,createHash('sha256').update(readFileSync(resolve(here,p))).digest('hex')]))};
 const children=[],wire=[],observations=[];
 let game,host,native,display,timeout,interrupted=false,captureStart;
@@ -55,6 +55,7 @@ try {
   const req=createRequire(resolve(temp,'entry.cjs')),{WebSocket}=req('ws');
   const {createGameServer}=await import(pathToFileURL(resolve(temp,'server/game-server.mjs')));
   const {DESTINATION_COMBAT_MAPS}=await import(pathToFileURL(resolve(temp,'game/destination-combat-maps.mjs')));
+  const {WEAPONS}=await import(pathToFileURL(resolve(temp,'game/data.mjs')));
   game=createGameServer({historyPath:null,progressionPath:null});
   captureStart=performance.now();report.captureStartedAt=new Date().toISOString();
   timeout=setTimeout(()=>{interrupted=true;native?.kill('SIGKILL');},105000);
@@ -108,6 +109,14 @@ try {
   assert.equal(before.pickup.wait,0);assert.equal(before.marker_visible,true);assert.equal(after.marker_visible,false);assert.equal(returned.marker_visible,true);
   assert.equal(before.pickup.id,returned.pickup.id);assert.equal(before.marker_instance,returned.marker_instance);
   assert.ok(after.actor.ammo[1]>before.actor.ammo[1],'Rocket ammo must increase');
+  // This lane deliberately validates the observed default, unmodified loadout.
+  // Do not silently generalize the arithmetic to attachments or Tool Use.
+  assert.equal(before.actor.verbState.verb,'adaptive');
+  assert.ok(!before.actor.attachments?.items?.length,'Baseline has no weapon attachments');
+  assert.equal(report.config.unlimitedAmmo,false);
+  report.inventoryRule={weapon:1,magazine:WEAPONS[1].ammo,cap:WEAPONS[1].cap,toolUseBonus:0,
+    expectedAmmo:Math.min(WEAPONS[1].cap,before.actor.ammo[1]+WEAPONS[1].ammo),basis:'game/data.mjs WEAPONS[1]; adaptive verb means TOOL_USE.onPickup returns reload=0'};
+  assert.equal(after.actor.ammo[1],report.inventoryRule.expectedAmmo);
   if(before.actor.weapon===0)assert.equal(after.actor.weapon,1);
   assert.ok(returned.time-after.time>=14.8&&returned.time-after.time<=15.2,'Normal 15-second authority return bracket');
   assert.ok(after.pickup.wait>14.8&&after.pickup.wait<=15);
@@ -120,6 +129,10 @@ try {
   const authoritative=new Map(wire.filter(r=>r.frame.type==='snapshot').map(r=>[r.frame.seq,r.frame]));
   for(const o of snaps) {const f=authoritative.get(o.seq);assert.ok(f);assert.deepEqual(o.pickup,f.pickup);assert.equal(o.actor.weapon,f.actor.weapon);assert.deepEqual(o.actor.ammo,f.actor.ammo);}
   assert.ok(wire.some(r=>r.direction==='client'&&r.frame.type==='input'&&Math.hypot(r.frame.input.x,r.frame.input.z)>.5),'Real guest movement input received');
+  assert.ok(wire.filter(r=>r.direction==='client').every(r=>['join','input'].includes(r.frame.type)),'Guest only joins and sends shipped controls');
+  assert.ok(snaps.every(o=>o.focused&&o.actor.health>0),'Focused living native actor throughout');
+  assert.equal(native.exitCode,0);assert.equal(report.harnessEnd?.stage,'returned');
+  assert.ok(!native.text.includes('"event":"limit"'),'Native trace limit not reached');
   for(const name of ['available','hidden','left_radius','returned'])assert.ok(existsSync(resolve(out,`${name}.png`)),`Missing ${name} screenshot`);
   report.status='PASS';
 } catch(e) {report.error=e.stack;process.exitCode=1;}
@@ -127,9 +140,10 @@ finally {
   clearTimeout(timeout);
   for(const child of [...children].reverse())try{const state=await stopChild(child);await child.closed;(report.cleanup.children??=[]).push(state);}catch(e){report.cleanup.error=e.stack;process.exitCode=1;}
   host?.terminate();
-  if(game)try{for(const s of game.wss.clients)s.terminate();await Promise.race([game.close(),sleep(5000).then(()=>{throw Error('server cleanup deadline');})]);report.cleanup.serverClosed=!game.server.listening;report.cleanup.socketCount=game.wss.clients.size;}catch(e){report.cleanup.serverError=e.stack;process.exitCode=1;}
+  if(game)try{for(const s of game.wss.clients)s.terminate();await game.close();await until(()=>!game.server.listening&&game.wss.clients.size===0,5000,'owned server and sockets closed');report.cleanup.serverClosed=true;report.cleanup.socketCount=game.wss.clients.size;}catch(e){report.cleanup.serverError=e.stack;process.exitCode=1;}
   report.captureWallMs=captureStart?performance.now()-captureStart:null;
   rmSync(temp,{recursive:true,force:true});report.cleanup.privateTempRemoved=!existsSync(temp);
+  if(report.cleanup.error||report.cleanup.serverError)report.status='INCONCLUSIVE';
   writeFileSync(resolve(out,'wire.jsonl.gz'),gzipSync(wire.map(r=>JSON.stringify(r)).join('\n')+'\n'));
   writeFileSync(resolve(out,'observations.jsonl.gz'),gzipSync(observations.map(r=>JSON.stringify(r)).join('\n')+'\n'));
   writeFileSync(resolve(out,'summary.json'),JSON.stringify(report,null,2)+'\n');
