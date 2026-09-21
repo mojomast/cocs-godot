@@ -1,0 +1,26 @@
+Executed from /tmp/opencode/cocs-native-graphical-focus after attempt-06:
+
+$ python3 port/tools/graphical_acceptance/verify_evidence.py port/graphical-acceptance/attempt-06
+Evidence correlation PASS: 422 native queues match 422 consecutive server inputs; all local snapshots alive.
+Recorded acceptance status: failed; completionProven=false.
+Acceptance failure: mouse look gated during OS focus notification delay
+Exit 0 (integrity/correlation only; graphical acceptance remains failed).
+
+$ node --check port/tools/graphical_acceptance/server.mjs
+Exit 0, no output.
+
+$ python3 (ast.parse each port/tools/graphical_acceptance/*.py)
+Syntax PASS: port/tools/graphical_acceptance/verify_evidence.py
+Syntax PASS: port/tools/graphical_acceptance/run.py
+Syntax PASS: port/tools/graphical_acceptance/x11.py
+Exit 0.
+
+$ git diff --stat 1bf9832 fb4cf04 -- godot game server package.json package-lock.json
+Exit 0, empty diff.
+
+$ git diff --check
+Exit 0, no output.
+
+Initial staged whitespace check flagged the engine's final blank line in four
+raw godot.log files. Those exact logs were losslessly gzip-packed for commit
+(rather than altering captured bytes); the staged check was then repeated.

@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "harnessStarted_ms": 1790034315900.1858,
+  "completionProven": false,
+  "nativeTerminalMarker": null,
+  "status": "failed",
+  "runtime": "/tmp/opencode/graphical-private-xwevoj91",
+  "baseCommit": "fb4cf04e2460121a23329913db78f0b5924d732c",
+  "sourceCheckout": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port",
+  "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "checks": [
+    {
+      "name": "pinned Godot version",
+      "passed": true,
+      "version": "4.5.2.stable.official.6ce3de25a"
+    },
+    {
+      "name": "read-only server checkout matches worktree",
+      "passed": true
+    }
+  ],
+  "stages": [],
+  "provenance": {
+    "files": {
+      "godot/world/session.gd": "329595a42420c420f718dceea7f4fdb87a5fc26b4e41f63ed9aff5caae16a6b2",
+      "godot/world/viewer.gd": "0dd58d537c16b1e00d9499ee9fb522236bc47b8908430cca039c1e0d90240086",
+      "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+      "port/contracts/source-lock.json": "16c3ede0f0956ccd008963118bbff7a8f062beea6e30abfc4989bb652808d7ed",
+      "package-lock.json": "f71ca6ecd2d051748ebe634d42e72b73ceee579d9c9aa123bcfd7df611cd69fa"
+    },
+    "binary_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+    "version": "4.5.2.stable.official.6ce3de25a",
+    "tools": {
+      "run.py": "9a681dca20af7a1f58216fe4cb065a6cfb9eedda6abc1917ea8493078237bba1",
+      "x11.py": "dc873b5f4d25b64081dfc4ff88dd3cf95ab1cfcb5e59f22087995916a53d521a",
+      "server.mjs": "b66bc1f31bfc14290ddb47de4641ddb568ab08ebafef1f09835a9211ecb1d580"
+    }
+  },
+  "failure": {
+    "stage": "startup",
+    "type": "RuntimeError",
+    "message": "Invalid Xvfb display number"
+  },
+  "cleanup": {
+    "children": [
+      {
+        "name": "xvfb",
+        "pid": 1938853,
+        "termination_requested": false,
+        "returncode": 1,
+        "proc_absent": true
+      }
+    ],
+    "server_port_absent": true,
+    "display_socket_absent": true
+  },
+  "harnessTerminated_ms": 1790034321045.0513
+}

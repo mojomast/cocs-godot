@@ -1,0 +1,4 @@
+{"at_ms": 1790034315901.8674, "event": "harness_start", "completionProven": false}
+{"at_ms": 1790034321044.7905, "event": "harness_failure", "stage": "startup", "type": "RuntimeError", "message": "Invalid Xvfb display number"}
+{"at_ms": 1790034321044.9548, "event": "harness_termination_requested", "reason": "failed", "completionProven": false}
+{"at_ms": 1790034321045.0645, "event": "harness_terminated", "cleanup": {"children": [{"name": "xvfb", "pid": 1938853, "termination_requested": false, "returncode": 1, "proc_absent": true}], "server_port_absent": true, "display_socket_absent": true}, "completionProven": false}

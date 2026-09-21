@@ -1,0 +1,82 @@
+{"at_ms": 1790034582356.987, "event": "harness_start", "completionProven": false}
+{"at_ms": 1790034585782.324, "event": "child_start", "name": "xvfb", "pid": 1957804, "command": ["Xvfb", "-displayfd", "4", "-screen", "0", "1600x1000x24", "-nolisten", "tcp", "-nolisten", "unix", "-auth", "/tmp/opencode/graphical-private-ylidqtxb/Xauthority"]}
+{"at_ms": 1790034585799.144, "event": "private_display_start", "name": ":0", "pid": 1957804, "tcp": false, "authenticated": true, "sink": 2097153}
+{"at_ms": 1790034585801.1965, "event": "child_start", "name": "server", "pid": 1957807, "command": ["node", "/tmp/opencode/cocs-native-graphical-focus/port/tools/graphical_acceptance/server.mjs", "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port", "/tmp/opencode/cocs-native-graphical-focus/port/graphical-acceptance/attempt-06"]}
+{"at_ms": 1790034586498.5823, "event": "child_start", "name": "godot", "pid": 1957912, "command": ["/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64", "--display-driver", "x11", "--audio-driver", "Dummy", "--path", "/tmp/opencode/graphical-private-ylidqtxb/godot", "--resolution", "1100x700", "--position", "20,20", "res://world/session.tscn", "--", "--endpoint=ws://127.0.0.1:37905", "--native-trace"]}
+{"at_ms": 1790034586803.8271, "event": "XSetInputFocus", "operation": "focus", "values": [4194307]}
+{"at_ms": 1790034586804.0452, "event": "XTest", "operation": "motion", "values": [500, 400]}
+{"at_ms": 1790034587379.705, "event": "XTest", "operation": "key", "values": ["w", true]}
+{"at_ms": 1790034587379.9827, "event": "stage_start", "name": "01_before_click"}
+{"at_ms": 1790034587913.3726, "event": "stage_end", "name": "01_before_click", "start_ms": 1790034587379.9556, "end_ms": 1790034587913.053, "os": {"focus": 4194307, "pointer_root": [500, 400], "pointer_child": 4194307, "button1_down": false, "keys_down": ["w"], "competing_grab_status": 0}, "snapshots": 16, "native_inputs": 23, "wire_inputs": 23, "native_sequence_range": [3, 41], "wire_seq_range": [2, 24]}
+{"at_ms": 1790034587913.5488, "event": "XTest", "operation": "button", "values": [true]}
+{"at_ms": 1790034587994.6023, "event": "XTest", "operation": "button", "values": [false]}
+{"at_ms": 1790034587994.9465, "event": "stage_start", "name": "02_clicked_capture"}
+{"at_ms": 1790034588525.445, "event": "stage_end", "name": "02_clicked_capture", "start_ms": 1790034587994.8936, "end_ms": 1790034588525.008, "os": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": false, "keys_down": ["w"], "competing_grab_status": 1}, "snapshots": 13, "native_inputs": 26, "wire_inputs": 26, "native_sequence_range": [51, 89], "wire_seq_range": [28, 53]}
+{"at_ms": 1790034588525.5757, "event": "XTest", "operation": "key", "values": ["w", false]}
+{"at_ms": 1790034588525.6482, "event": "XTest", "operation": "key", "values": ["a", true]}
+{"at_ms": 1790034588525.6755, "event": "stage_start", "name": "move_a"}
+{"at_ms": 1790034588829.1167, "event": "stage_end", "name": "move_a", "start_ms": 1790034588525.6685, "end_ms": 1790034588828.2988, "os": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": false, "keys_down": ["a"], "competing_grab_status": 1}, "snapshots": 7, "native_inputs": 12, "wire_inputs": 12, "native_sequence_range": [101, 118], "wire_seq_range": [61, 72]}
+{"at_ms": 1790034588829.238, "event": "XTest", "operation": "key", "values": ["a", false]}
+{"at_ms": 1790034588829.2937, "event": "XTest", "operation": "key", "values": ["s", true]}
+{"at_ms": 1790034588829.3193, "event": "stage_start", "name": "move_s"}
+{"at_ms": 1790034589133.216, "event": "stage_end", "name": "move_s", "start_ms": 1790034588829.3127, "end_ms": 1790034589132.6252, "os": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": false, "keys_down": ["s"], "competing_grab_status": 1}, "snapshots": 6, "native_inputs": 12, "wire_inputs": 12, "native_sequence_range": [127, 144], "wire_seq_range": [78, 89]}
+{"at_ms": 1790034589133.3499, "event": "XTest", "operation": "key", "values": ["s", false]}
+{"at_ms": 1790034589133.4104, "event": "XTest", "operation": "key", "values": ["d", true]}
+{"at_ms": 1790034589133.4424, "event": "stage_start", "name": "move_d"}
+{"at_ms": 1790034589438.179, "event": "stage_end", "name": "move_d", "start_ms": 1790034589133.4358, "end_ms": 1790034589437.5386, "os": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": false, "keys_down": ["d"], "competing_grab_status": 1}, "snapshots": 7, "native_inputs": 13, "wire_inputs": 13, "native_sequence_range": [154, 172], "wire_seq_range": [96, 108]}
+{"at_ms": 1790034589438.3293, "event": "XTest", "operation": "key", "values": ["d", false]}
+{"at_ms": 1790034589438.4443, "event": "XTest", "operation": "motion", "values": [40, 8, true]}
+{"at_ms": 1790034589438.5396, "event": "stage_start", "name": "03_captured_look"}
+{"at_ms": 1790034589803.2104, "event": "stage_end", "name": "03_captured_look", "start_ms": 1790034589438.525, "end_ms": 1790034589802.4546, "os": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": false, "keys_down": [], "competing_grab_status": 1}, "snapshots": 8, "native_inputs": 16, "wire_inputs": 16, "native_sequence_range": [183, 206], "wire_seq_range": [115, 130]}
+{"at_ms": 1790034589803.3613, "event": "XTest", "operation": "motion", "values": [1400, 180]}
+{"at_ms": 1790034589905.2622, "event": "pointer_confinement_attempt", "target": [1400, 180], "observed": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": false, "keys_down": [], "competing_grab_status": 1}}
+{"at_ms": 1790034589905.3225, "event": "XTest", "operation": "key", "values": ["w", true]}
+{"at_ms": 1790034589905.43, "event": "XTest", "operation": "button", "values": [true]}
+{"at_ms": 1790034589905.4856, "event": "stage_start", "name": "04_fire"}
+{"at_ms": 1790034590398.125, "event": "stage_end", "name": "04_fire", "start_ms": 1790034589905.4775, "end_ms": 1790034590397.175, "os": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": true, "keys_down": ["w"], "competing_grab_status": 1}, "snapshots": 12, "native_inputs": 23, "wire_inputs": 23, "native_sequence_range": [225, 259], "wire_seq_range": [143, 165]}
+{"at_ms": 1790034590398.3123, "event": "XTest", "operation": "key", "values": ["Escape", true]}
+{"at_ms": 1790034590398.416, "event": "XTest", "operation": "key", "values": ["Escape", false]}
+{"at_ms": 1790034590480.0754, "event": "XTest", "operation": "button", "values": [false]}
+{"at_ms": 1790034590480.2131, "event": "stage_start", "name": "05_escape_release"}
+{"at_ms": 1790034591015.88, "event": "stage_end", "name": "05_escape_release", "start_ms": 1790034590480.1936, "end_ms": 1790034591014.103, "os": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": false, "keys_down": ["w"], "competing_grab_status": 0}, "snapshots": 13, "native_inputs": 25, "wire_inputs": 25, "native_sequence_range": [278, 315], "wire_seq_range": [178, 202]}
+{"at_ms": 1790034591016.176, "event": "XTest", "operation": "motion", "values": [1400, 180]}
+{"at_ms": 1790034591098.3523, "event": "pointer_escape_attempt", "target": [1400, 180], "observed": {"focus": 4194307, "pointer_root": [1400, 180], "pointer_child": 2097153, "button1_down": false, "keys_down": ["w"], "competing_grab_status": 0}}
+{"at_ms": 1790034591098.462, "event": "XTest", "operation": "motion", "values": [500, 400]}
+{"at_ms": 1790034591098.5994, "event": "stage_start", "name": "06_escape_held_key_no_click"}
+{"at_ms": 1790034591463.5535, "event": "stage_end", "name": "06_escape_held_key_no_click", "start_ms": 1790034591098.5613, "end_ms": 1790034591462.3374, "os": {"focus": 4194307, "pointer_root": [500, 400], "pointer_child": 4194307, "button1_down": false, "keys_down": ["w"], "competing_grab_status": 0}, "snapshots": 8, "native_inputs": 16, "wire_inputs": 16, "native_sequence_range": [333, 356], "wire_seq_range": [214, 229]}
+{"at_ms": 1790034591463.7686, "event": "XTest", "operation": "button", "values": [true]}
+{"at_ms": 1790034591545.055, "event": "XTest", "operation": "button", "values": [false]}
+{"at_ms": 1790034591545.8103, "event": "stage_start", "name": "07_recaptured"}
+{"at_ms": 1790034591912.405, "event": "stage_end", "name": "07_recaptured", "start_ms": 1790034591545.7566, "end_ms": 1790034591910.6394, "os": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": false, "keys_down": ["w"], "competing_grab_status": 1}, "snapshots": 8, "native_inputs": 16, "wire_inputs": 16, "native_sequence_range": [374, 397], "wire_seq_range": [241, 256]}
+{"at_ms": 1790034591912.594, "event": "XTest", "operation": "key", "values": ["d", true]}
+{"at_ms": 1790034591912.6921, "event": "XTest", "operation": "button", "values": [true]}
+{"at_ms": 1790034591912.755, "event": "stage_start", "name": "08_held_before_focus_loss"}
+{"at_ms": 1790034592218.7476, "event": "stage_end", "name": "08_held_before_focus_loss", "start_ms": 1790034591912.7405, "end_ms": 1790034592216.8416, "os": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": true, "keys_down": ["w", "d"], "competing_grab_status": 1}, "snapshots": 7, "native_inputs": 12, "wire_inputs": 12, "native_sequence_range": [407, 424], "wire_seq_range": [263, 274]}
+{"at_ms": 1790034592218.9453, "event": "XSetInputFocus", "operation": "focus", "values": [2097153]}
+{"at_ms": 1790034592219.2896, "event": "focus_out_os_immediate", "observed": {"focus": 2097153, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": true, "keys_down": ["w", "d"], "competing_grab_status": 1}}
+{"at_ms": 1790034592279.8765, "event": "XTest", "operation": "motion", "values": [40, 8, true]}
+{"at_ms": 1790034592280.159, "event": "focus_out_os_after_motion", "observed": {"focus": 2097153, "pointer_root": [610, 378], "pointer_child": 4194307, "button1_down": true, "keys_down": ["w", "d"], "competing_grab_status": 0}}
+{"at_ms": 1790034592495.8608, "event": "focus_out_settled", "latency_ms": 256.31884765625}
+{"at_ms": 1790034592495.9326, "event": "stage_start", "name": "09_focus_lost_held"}
+{"at_ms": 1790034592928.8977, "event": "stage_end", "name": "09_focus_lost_held", "start_ms": 1790034592495.918, "end_ms": 1790034592926.7625, "os": {"focus": 2097153, "pointer_root": [610, 378], "pointer_child": 4194307, "button1_down": true, "keys_down": ["w", "d"], "competing_grab_status": 0}, "snapshots": 10, "native_inputs": 20, "wire_inputs": 20, "native_sequence_range": [460, 489], "wire_seq_range": [298, 317]}
+{"at_ms": 1790034592929.1226, "event": "XTest", "operation": "motion", "values": [1400, 180]}
+{"at_ms": 1790034592929.2263, "event": "stage_start", "name": "10_focus_lost_motion"}
+{"at_ms": 1790034593297.867, "event": "stage_end", "name": "10_focus_lost_motion", "start_ms": 1790034592929.2124, "end_ms": 1790034593295.1553, "os": {"focus": 2097153, "pointer_root": [1400, 180], "pointer_child": 2097153, "button1_down": true, "keys_down": ["w", "d"], "competing_grab_status": 0}, "snapshots": 8, "native_inputs": 16, "wire_inputs": 16, "native_sequence_range": [500, 522], "wire_seq_range": [324, 339]}
+{"at_ms": 1790034593298.2112, "event": "XSetInputFocus", "operation": "focus", "values": [4194307]}
+{"at_ms": 1790034593298.2942, "event": "XTest", "operation": "motion", "values": [500, 400]}
+{"at_ms": 1790034593329.1523, "event": "stage_start", "name": "11_focus_return_held_no_click"}
+{"at_ms": 1790034593863.2844, "event": "stage_end", "name": "11_focus_return_held_no_click", "start_ms": 1790034593329.12, "end_ms": 1790034593860.981, "os": {"focus": 4194307, "pointer_root": [500, 400], "pointer_child": 4194307, "button1_down": true, "keys_down": ["w", "d"], "competing_grab_status": 0}, "snapshots": 13, "native_inputs": 26, "wire_inputs": 26, "native_sequence_range": [536, 574], "wire_seq_range": [348, 373]}
+{"at_ms": 1790034593863.6277, "event": "XTest", "operation": "button", "values": [false]}
+{"at_ms": 1790034593863.9246, "event": "XTest", "operation": "button", "values": [true]}
+{"at_ms": 1790034593863.9944, "event": "stage_start", "name": "12_fresh_click_reactivation"}
+{"at_ms": 1790034594297.0774, "event": "stage_end", "name": "12_fresh_click_reactivation", "start_ms": 1790034593863.9763, "end_ms": 1790034594294.541, "os": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": true, "keys_down": ["w", "d"], "competing_grab_status": 1}, "snapshots": 11, "native_inputs": 20, "wire_inputs": 20, "native_sequence_range": [585, 614], "wire_seq_range": [380, 399]}
+{"at_ms": 1790034594297.3052, "event": "XTest", "operation": "button", "values": [false]}
+{"at_ms": 1790034594297.3833, "event": "XTest", "operation": "key", "values": ["w", false]}
+{"at_ms": 1790034594297.422, "event": "XTest", "operation": "key", "values": ["d", false]}
+{"at_ms": 1790034594297.4495, "event": "XTest", "operation": "key", "values": ["w", true]}
+{"at_ms": 1790034594297.5981, "event": "stage_start", "name": "13_fresh_movement"}
+{"at_ms": 1790034594670.494, "event": "stage_end", "name": "13_fresh_movement", "start_ms": 1790034594297.5554, "end_ms": 1790034594663.2932, "os": {"focus": 4194307, "pointer_root": [570, 370], "pointer_child": 4194307, "button1_down": false, "keys_down": ["w"], "competing_grab_status": 1}, "snapshots": 8, "native_inputs": 16, "wire_inputs": 16, "native_sequence_range": [624, 647], "wire_seq_range": [406, 421]}
+{"at_ms": 1790034594670.6865, "event": "XTest", "operation": "key", "values": ["w", false]}
+{"at_ms": 1790034594672.4714, "event": "harness_failure", "stage": "13_fresh_movement", "type": "AssertionError", "message": "mouse look gated during OS focus notification delay"}
+{"at_ms": 1790034594672.4956, "event": "harness_termination_requested", "reason": "failed", "completionProven": false}
+{"at_ms": 1790034594723.2087, "event": "harness_terminated", "cleanup": {"children": [{"name": "godot", "pid": 1957912, "termination_requested": true, "returncode": -15, "proc_absent": true}, {"name": "server", "pid": 1957807, "termination_requested": true, "returncode": 0, "proc_absent": true}, {"name": "xvfb", "pid": 1957804, "termination_requested": true, "returncode": 0, "proc_absent": true}], "server_port_absent": true, "display_socket_absent": true, "abstract_display_socket_absent": true}, "completionProven": false}

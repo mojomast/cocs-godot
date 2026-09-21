@@ -1,0 +1,668 @@
+{
+  "schema": 1,
+  "harnessStarted_ms": 1790034335578.5137,
+  "completionProven": false,
+  "nativeTerminalMarker": null,
+  "status": "failed",
+  "runtime": "/tmp/opencode/graphical-private-zevqvzhb",
+  "baseCommit": "fb4cf04e2460121a23329913db78f0b5924d732c",
+  "sourceCheckout": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port",
+  "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "checks": [
+    {
+      "name": "pinned Godot version",
+      "passed": true,
+      "version": "4.5.2.stable.official.6ce3de25a"
+    },
+    {
+      "name": "read-only server checkout matches worktree",
+      "passed": true
+    },
+    {
+      "name": "01_before_click: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "01_before_click: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "before click: neutral native and server",
+      "passed": true
+    },
+    {
+      "name": "before click: pointer program state released",
+      "passed": true
+    },
+    {
+      "name": "before click: competing XGrabPointer",
+      "passed": true,
+      "observed": {
+        "focus": 4194307,
+        "pointer_root": [
+          500,
+          400
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "w"
+        ],
+        "competing_grab_status": 0
+      }
+    },
+    {
+      "name": "02_clicked_capture: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "02_clicked_capture: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "click captures native",
+      "passed": true
+    },
+    {
+      "name": "click captures OS: competing XGrabPointer",
+      "passed": true,
+      "observed": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "w"
+        ],
+        "competing_grab_status": 1
+      }
+    },
+    {
+      "name": "W reaches server",
+      "passed": true
+    },
+    {
+      "name": "move_a: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "move_a: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "a reaches native and server",
+      "passed": true
+    },
+    {
+      "name": "move_s: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "move_s: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "s reaches native and server",
+      "passed": true
+    },
+    {
+      "name": "move_d: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "move_d: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "d reaches native and server",
+      "passed": true
+    },
+    {
+      "name": "03_captured_look: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "03_captured_look: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "captured actual mouse look changes yaw",
+      "passed": true
+    },
+    {
+      "name": "captured pointer cannot reach outside target",
+      "passed": true
+    },
+    {
+      "name": "04_fire: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "04_fire: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "fire reaches native and server",
+      "passed": true
+    },
+    {
+      "name": "05_escape_release: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "05_escape_release: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "Escape: neutral native and server",
+      "passed": true
+    },
+    {
+      "name": "Escape: pointer program state released",
+      "passed": true
+    },
+    {
+      "name": "Escape OS released: competing XGrabPointer",
+      "passed": true,
+      "observed": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "w"
+        ],
+        "competing_grab_status": 0
+      }
+    },
+    {
+      "name": "released pointer reaches outside window",
+      "passed": true
+    },
+    {
+      "name": "06_escape_held_key_no_click: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "06_escape_held_key_no_click: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "Escape held W: neutral native and server",
+      "passed": true
+    },
+    {
+      "name": "Escape held W: pointer program state released",
+      "passed": true
+    },
+    {
+      "name": "07_recaptured: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "07_recaptured: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "recaptured OS: competing XGrabPointer",
+      "passed": true,
+      "observed": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "w"
+        ],
+        "competing_grab_status": 1
+      }
+    },
+    {
+      "name": "08_held_before_focus_loss: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "08_held_before_focus_loss: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "09_focus_lost_held: live alive snapshots and wire",
+      "passed": true
+    },
+    {
+      "name": "09_focus_lost_held: queue succeeded",
+      "passed": true
+    },
+    {
+      "name": "focus loss held W D fire: neutral native and server",
+      "passed": true
+    },
+    {
+      "name": "focus loss held W D fire: pointer program state released",
+      "passed": false
+    }
+  ],
+  "stages": [
+    {
+      "name": "01_before_click",
+      "start_ms": 1790034342078.8184,
+      "end_ms": 1790034342613.9211,
+      "os": {
+        "focus": 4194307,
+        "pointer_root": [
+          500,
+          400
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "w"
+        ],
+        "competing_grab_status": 0
+      },
+      "snapshots": 16,
+      "native_inputs": 21,
+      "wire_inputs": 21,
+      "native_sequence_range": [
+        3,
+        39
+      ],
+      "wire_seq_range": [
+        2,
+        22
+      ]
+    },
+    {
+      "name": "02_clicked_capture",
+      "start_ms": 1790034342695.9656,
+      "end_ms": 1790034343226.804,
+      "os": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "w"
+        ],
+        "competing_grab_status": 1
+      },
+      "snapshots": 13,
+      "native_inputs": 25,
+      "wire_inputs": 25,
+      "native_sequence_range": [
+        50,
+        87
+      ],
+      "wire_seq_range": [
+        27,
+        51
+      ]
+    },
+    {
+      "name": "move_a",
+      "start_ms": 1790034343227.5615,
+      "end_ms": 1790034343531.6348,
+      "os": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "a"
+        ],
+        "competing_grab_status": 1
+      },
+      "snapshots": 7,
+      "native_inputs": 13,
+      "wire_inputs": 13,
+      "native_sequence_range": [
+        97,
+        115
+      ],
+      "wire_seq_range": [
+        58,
+        70
+      ]
+    },
+    {
+      "name": "move_s",
+      "start_ms": 1790034343532.473,
+      "end_ms": 1790034343835.2559,
+      "os": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "s"
+        ],
+        "competing_grab_status": 1
+      },
+      "snapshots": 6,
+      "native_inputs": 12,
+      "wire_inputs": 13,
+      "native_sequence_range": [
+        126,
+        143
+      ],
+      "wire_seq_range": [
+        77,
+        89
+      ]
+    },
+    {
+      "name": "move_d",
+      "start_ms": 1790034343836.4158,
+      "end_ms": 1790034344140.2175,
+      "os": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "d"
+        ],
+        "competing_grab_status": 1
+      },
+      "snapshots": 7,
+      "native_inputs": 12,
+      "wire_inputs": 12,
+      "native_sequence_range": [
+        153,
+        170
+      ],
+      "wire_seq_range": [
+        95,
+        106
+      ]
+    },
+    {
+      "name": "03_captured_look",
+      "start_ms": 1790034344141.5425,
+      "end_ms": 1790034344507.5962,
+      "os": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [],
+        "competing_grab_status": 1
+      },
+      "snapshots": 8,
+      "native_inputs": 14,
+      "wire_inputs": 14,
+      "native_sequence_range": [
+        182,
+        202
+      ],
+      "wire_seq_range": [
+        114,
+        127
+      ]
+    },
+    {
+      "name": "04_fire",
+      "start_ms": 1790034344613.19,
+      "end_ms": 1790034345104.1775,
+      "os": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": true,
+        "keys_down": [
+          "w"
+        ],
+        "competing_grab_status": 1
+      },
+      "snapshots": 12,
+      "native_inputs": 23,
+      "wire_inputs": 23,
+      "native_sequence_range": [
+        224,
+        258
+      ],
+      "wire_seq_range": [
+        142,
+        164
+      ]
+    },
+    {
+      "name": "05_escape_release",
+      "start_ms": 1790034345186.9653,
+      "end_ms": 1790034345719.9866,
+      "os": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "w"
+        ],
+        "competing_grab_status": 0
+      },
+      "snapshots": 13,
+      "native_inputs": 26,
+      "wire_inputs": 26,
+      "native_sequence_range": [
+        276,
+        314
+      ],
+      "wire_seq_range": [
+        176,
+        201
+      ]
+    },
+    {
+      "name": "06_escape_held_key_no_click",
+      "start_ms": 1790034345802.9683,
+      "end_ms": 1790034346169.281,
+      "os": {
+        "focus": 4194307,
+        "pointer_root": [
+          500,
+          400
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "w"
+        ],
+        "competing_grab_status": 0
+      },
+      "snapshots": 8,
+      "native_inputs": 16,
+      "wire_inputs": 16,
+      "native_sequence_range": [
+        332,
+        355
+      ],
+      "wire_seq_range": [
+        213,
+        228
+      ]
+    },
+    {
+      "name": "07_recaptured",
+      "start_ms": 1790034346253.4448,
+      "end_ms": 1790034346618.1892,
+      "os": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": false,
+        "keys_down": [
+          "w"
+        ],
+        "competing_grab_status": 1
+      },
+      "snapshots": 8,
+      "native_inputs": 17,
+      "wire_inputs": 17,
+      "native_sequence_range": [
+        373,
+        397
+      ],
+      "wire_seq_range": [
+        240,
+        256
+      ]
+    },
+    {
+      "name": "08_held_before_focus_loss",
+      "start_ms": 1790034346620.113,
+      "end_ms": 1790034346923.1396,
+      "os": {
+        "focus": 4194307,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": true,
+        "keys_down": [
+          "w",
+          "d"
+        ],
+        "competing_grab_status": 1
+      },
+      "snapshots": 7,
+      "native_inputs": 13,
+      "wire_inputs": 13,
+      "native_sequence_range": [
+        407,
+        425
+      ],
+      "wire_seq_range": [
+        262,
+        274
+      ]
+    },
+    {
+      "name": "09_focus_lost_held",
+      "start_ms": 1790034346925.4724,
+      "end_ms": 1790034347352.5916,
+      "os": {
+        "focus": 2097153,
+        "pointer_root": [
+          570,
+          370
+        ],
+        "pointer_child": 4194307,
+        "button1_down": true,
+        "keys_down": [
+          "w",
+          "d"
+        ],
+        "competing_grab_status": 0
+      },
+      "snapshots": 10,
+      "native_inputs": 19,
+      "wire_inputs": 19,
+      "native_sequence_range": [
+        435,
+        463
+      ],
+      "wire_seq_range": [
+        281,
+        299
+      ]
+    }
+  ],
+  "provenance": {
+    "files": {
+      "godot/world/session.gd": "329595a42420c420f718dceea7f4fdb87a5fc26b4e41f63ed9aff5caae16a6b2",
+      "godot/world/viewer.gd": "0dd58d537c16b1e00d9499ee9fb522236bc47b8908430cca039c1e0d90240086",
+      "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+      "port/contracts/source-lock.json": "16c3ede0f0956ccd008963118bbff7a8f062beea6e30abfc4989bb652808d7ed",
+      "package-lock.json": "f71ca6ecd2d051748ebe634d42e72b73ceee579d9c9aa123bcfd7df611cd69fa"
+    },
+    "binary_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+    "version": "4.5.2.stable.official.6ce3de25a",
+    "tools": {
+      "run.py": "c4423f44ecdbebbef1749a2f472676ebadb182b2aaf11160787a39a1495f517f",
+      "x11.py": "dc873b5f4d25b64081dfc4ff88dd3cf95ab1cfcb5e59f22087995916a53d521a",
+      "server.mjs": "b66bc1f31bfc14290ddb47de4641ddb568ab08ebafef1f09835a9211ecb1d580"
+    }
+  },
+  "display": {
+    "name": ":0",
+    "pid": 1940981,
+    "tcp": false,
+    "authenticated": true,
+    "sink": 2097153,
+    "godot_window": 4194307
+  },
+  "server": {
+    "port": 43411,
+    "pid": 1940984,
+    "normalRate": true,
+    "historyPath": null,
+    "progressionPath": null
+  },
+  "failure": {
+    "stage": "09_focus_lost_held",
+    "type": "AssertionError",
+    "message": "focus loss held W D fire: pointer program state released"
+  },
+  "cleanup": {
+    "children": [
+      {
+        "name": "godot",
+        "pid": 1941005,
+        "termination_requested": true,
+        "returncode": -15,
+        "proc_absent": true
+      },
+      {
+        "name": "server",
+        "pid": 1940984,
+        "termination_requested": true,
+        "returncode": 0,
+        "proc_absent": true
+      },
+      {
+        "name": "xvfb",
+        "pid": 1940981,
+        "termination_requested": true,
+        "returncode": 0,
+        "proc_absent": true
+      }
+    ],
+    "server_port_absent": true,
+    "display_socket_absent": true
+  },
+  "harnessTerminated_ms": 1790034347405.594
+}
