@@ -1,6 +1,28 @@
 {
-  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "status": "passed",
   "gates": [
+    {
+      "gate": "toolchain-version",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--version"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.014
+    },
+    {
+      "gate": "gate-runner-tests",
+      "command": [
+        "/home/mojo/.hermes/releases/hermes-agent-f11558a08f/venv/bin/python3",
+        "tools/godot-dev/test_gate_runner.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.303
+    },
     {
       "gate": "export-tests",
       "command": [
@@ -9,7 +31,9 @@
         "tools/godot-export/semantic.test.mjs"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.9
     },
     {
       "gate": "semantic-export",
@@ -18,7 +42,9 @@
         "tools/godot-export/semantic.mjs"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.641
     },
     {
       "gate": "source-tests",
@@ -33,7 +59,9 @@
         "game/destination-lattice.test.mjs"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.604
     },
     {
       "gate": "godot-import",
@@ -46,7 +74,9 @@
         "--import"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.215
     },
     {
       "gate": "viewer-smoke",
@@ -59,7 +89,9 @@
         "--smoke"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.355
     },
     {
       "gate": "glb-import",
@@ -72,7 +104,9 @@
         "res://tests/import.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.15
     },
     {
       "gate": "input-queue",
@@ -85,7 +119,9 @@
         "res://tests/protocol/input_queue.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.139
     },
     {
       "gate": "protocol-envelopes",
@@ -98,7 +134,9 @@
         "res://tests/protocol/envelopes.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.153
     },
     {
       "gate": "packet-replay",
@@ -111,7 +149,9 @@
         "res://tests/protocol/replay.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.246
     },
     {
       "gate": "native-live",
@@ -121,7 +161,9 @@
         "--network-smoke"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.094
     },
     {
       "gate": "presentation-replay",
@@ -134,7 +176,9 @@
         "res://tests/protocol/presentation.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.24
     },
     {
       "gate": "round-boundaries",
@@ -147,7 +191,9 @@
         "res://tests/protocol/round_boundaries.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.15
     },
     {
       "gate": "native-lifecycle",
@@ -157,7 +203,9 @@
         "--lifecycle-smoke"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 59.494
     },
     {
       "gate": "combat-feedback",
@@ -170,7 +218,9 @@
         "res://tests/protocol/combat_feedback.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.247
     },
     {
       "gate": "local-lifecycle",
@@ -183,7 +233,9 @@
         "res://tests/protocol/local_lifecycle.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.139
     },
     {
       "gate": "pickup-presentation",
@@ -196,7 +248,9 @@
         "res://tests/protocol/pickups.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.236
     },
     {
       "gate": "control-safety",
@@ -209,7 +263,9 @@
         "res://tests/protocol/control_safety.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.14
     },
     {
       "gate": "session-recovery",
@@ -222,7 +278,9 @@
         "res://tests/protocol/session_recovery.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.14
     },
     {
       "gate": "stall-controls",
@@ -235,7 +293,9 @@
         "res://tests/protocol/stall_controls.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.149
     },
     {
       "gate": "snapshot-watch",
@@ -248,7 +308,9 @@
         "res://tests/protocol/snapshot_watch.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.148
     },
     {
       "gate": "native-session",
@@ -258,7 +320,9 @@
         "--session-smoke"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.263
     },
     {
       "gate": "two-native-clients",
@@ -267,7 +331,9 @@
         "tools/godot-dev/two-clients.mjs"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.358
     },
     {
       "gate": "motion-impairment",
@@ -280,7 +346,9 @@
         "res://tests/protocol/impairment.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.146
     },
     {
       "gate": "remote-motion",
@@ -293,11 +361,22 @@
         "res://tests/protocol/remote_motion.gd"
       ],
       "exit_code": 0,
-      "passed": true
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.142
     },
     {
       "gate": "release-refused",
-      "passed": true
+      "command": [
+        "node",
+        "tools/godot-export/semantic.mjs",
+        "--release"
+      ],
+      "exit_code": 1,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.548
     }
-  ]
+  ],
+  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732"
 }

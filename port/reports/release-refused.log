@@ -1,0 +1,11 @@
+file:///home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/tools/godot-export/semantic.mjs:73
+ if(process.argv.includes('--release'))throw Error('Release disabled: visual resources and gameplay acceptance outstanding');
+                                             ^
+
+Error: Release disabled: visual resources and gameplay acceptance outstanding
+    at file:///home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/tools/godot-export/semantic.mjs:73:46
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.23.1

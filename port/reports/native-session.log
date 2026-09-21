@@ -1,4 +1,4 @@
-Owned local server ready on loopback:39963; native diagnostic gameplay session
+Owned local server ready on loopback:39669; native diagnostic gameplay session
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=15 snapshots=9 remote_poses=74 pickups=20 static_pickups_hidden=true combat_shots=1

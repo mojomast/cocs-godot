@@ -2,6 +2,14 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Neutral cadence and durable verification batch
+
+Repeated absent-actor snapshots previously reset the send accumulator on every arrival. The new actual-session regression reproduced starvation at 120 and 240 FPS (exit 1 before the fix). Reset now occurs only when a previously available pose is lost. Tests exercise 30/60/120/240 FPS, neutral packet contents, bounded send rate and a long frame without backlog replay. Control safety now passes 2,369 synthetic assertions; this is not live actor-removal acceptance.
+
+The verification runner now writes atomic progress reports before executing gates, records individual durations and failure categories, preserves output on timeout, and terminates the timed-out command's process group so launcher children do not retain the output pipe. Launch failures and Godot error text with exit zero fail closed. The version probe and release-refusal check are bounded too. Preflight failures replace old success with explicit failure; interruption leaves a running/incomplete report rather than passed evidence.
+
+Executed evidence: six permanent runner tests passed, including a real timed-out subprocess with a child inheriting stdout. Separate full-runner preflight probes verified missing GODOT_BIN and wrong-version failure reports. The complete verifier passed after the final changes: 27 gates including toolchain check, release refusal, normal-rate live results/restart, movement/fire, recorded replay and two native clients. Reports contain actual execution output, not sample data. Source gameplay, dependencies and map scope remain unchanged. Visual/playable acceptance, original assets/audio, live pickup/death/respawn and prediction remain open.
+
 ## Missing-pose neutral input continuity
 
 Active rounds now keep sending neutral movement and action packets while the local pose is unavailable, rather than stopping input transmission. Pose availability remains required for active controls. This covers the initial snapshot wait and loss of the local actor; results still stop gameplay input. Restoring a pose restores normal eligibility without replaying prior inputs.

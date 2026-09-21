@@ -157,8 +157,10 @@ func on_snapshot(frame: Dictionary) -> void:
 	presentation.apply_state(frame.state, client.actor_id)
 	var actor: Dictionary = presentation.local_actor
 	if actor.is_empty():
+		# Reset once on loss, not on every absent-actor snapshot: otherwise
+		# frequent snapshots starve the neutral-input send cadence.
+		if received_pose: send_elapsed = 0.0
 		received_pose = false
-		send_elapsed = 0.0
 		release_pointer()
 		return
 	camera.position = presentation.eye_position()

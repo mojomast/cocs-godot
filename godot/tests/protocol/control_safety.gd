@@ -120,6 +120,25 @@ func _initialize() -> void:
 	pending.phase = 4
 	pending._process(1.0 / 60.0)
 	check(probe.packets.size() == 5)
+	# Repeated absent-actor snapshots cannot starve neutral sends at high FPS.
+	pending.phase = 3
+	pending.smoke = false
+	pending.received_pose = false
+	for fps: int in [30,60,120,240]:
+		probe.packets.clear()
+		pending.send_elapsed = 0
+		for tick in range(fps):
+			pending.on_snapshot({"state":{"actors":[],"pickups":[],"t":tick}})
+			pending._process(1.0 / fps)
+		check(probe.packets.size() >= mini(fps,60) - 1)
+		check(probe.packets.size() <= mini(fps,60))
+		for packet: Dictionary in probe.packets:
+			check(packet.x == 0 and packet.z == 0 and not packet.fire)
+	# Long frames emit one current packet rather than replaying a backlog.
+	probe.packets.clear()
+	pending._process(5.0)
+	check(probe.packets.size() == 1)
+	check(pending.send_elapsed < 1.0 / 60.0)
 	pending.free()
 	if failures > 0:
 		quit(1)
