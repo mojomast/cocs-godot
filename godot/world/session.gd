@@ -4,6 +4,9 @@ const Client = preload("res://net/client.gd")
 const ControlMath = preload("res://world/control_math.gd")
 
 func can_capture_pointer() -> bool:
+	# Application focus notifications may lag the window's focus state (X11).
+	# Detached logic probes have no window; attached sessions must check it.
+	if is_inside_tree() and not get_window().has_focus(): return false
 	return application_focused and phase == 3 and received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control()
 
 func update_look(relative: Vector2) -> void:
