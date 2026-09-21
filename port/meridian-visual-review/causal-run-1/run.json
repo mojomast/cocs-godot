@@ -1,0 +1,105 @@
+{
+  "execution_head": "e6d6483467bdebc72042a348a4b2ab9854e9e1c8",
+  "godot_binary": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "godot_binary_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "input_glb": "/tmp/opencode/cocs-meridian-visual-review/godot/content/probes/meridian-exchange/world.glb",
+  "input_glb_sha256": "a41094bdbafd7a6796d86d175982aab958e3500e8d8514f820dfa36c362d73ea",
+  "input_glb_bytes": 2060200,
+  "sky_gltf": {
+    "node_index": 56,
+    "node": {
+      "mesh": 48,
+      "children": [
+        57,
+        58,
+        59
+      ]
+    },
+    "primitive": {
+      "mode": 4,
+      "attributes": {
+        "POSITION": 198,
+        "NORMAL": 199,
+        "TEXCOORD_0": 200,
+        "COLOR_0": 201
+      },
+      "indices": 202,
+      "material": 22
+    },
+    "position_accessor": {
+      "bufferView": 198,
+      "componentType": 5126,
+      "count": 1617,
+      "max": [
+        185,
+        185,
+        185
+      ],
+      "min": [
+        -185,
+        -185,
+        -185
+      ],
+      "type": "VEC3"
+    },
+    "material_index": 22,
+    "material": {
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "roughnessFactor": 0.9
+      },
+      "extensions": {
+        "KHR_materials_unlit": {}
+      }
+    }
+  },
+  "tracked_inputs": {
+    "godot/world/viewer.gd": "0dd58d537c16b1e00d9499ee9fb522236bc47b8908430cca039c1e0d90240086",
+    "godot/project.godot": "3d8f61199a99e83d2365edd4aa9995b07e630f4d9e27e597487a53443ec8f792",
+    "godot/main.tscn": "02c31158fadd9d6f35e83e244796ba39b7c1f188b257434bcb5495f3dec6d33f",
+    "game/environment.mjs": "fe9a1e84add0d1f16ab9667cb617c5f94a1cb53e480666c79746759dcbabe0c5",
+    "game/view.mjs": "98f8aca46bece81a191760a253db68814bf4e768ee56f37be41eae09723af33d",
+    "tools/godot-export/harness.html": "3a0079d7e698e24349be199e6fccf9b54901d6fe1e826d3d518cc1a67bd2f75d",
+    "port/tools/meridian_visual_review/review.gd": "1488ba90afe946e8d4a2dc1e52e97617833367008f40053f99c7b1fe3f220be2",
+    "port/tools/meridian_visual_review/run.py": "95744c57bff3754d251ee83529f16f5bc14fffba8375f9b70902517ac46956fa"
+  },
+  "generated_inputs": {
+    "generated/manifest.json": "5c756d02edff6bb85f71c4659508d0a941d936d90787d0752957fadda65f4ccf",
+    "generated/maps/asterion-relay/map.json": "9e0b4f5e00ea8d27bb0e2c914121ae583812ca84d38c5aae8cc94e29aeb659e4",
+    "generated/maps/aurora-stadium/map.json": "ac55e0b0616648c71f648023f9057943799da6bc6459394d22962a289606baaa",
+    "generated/maps/ember-crucible/map.json": "655f140c9d660ba12c4f185278b8c15ad1b8429be34165b0b492817d21f13e08",
+    "generated/maps/ion-speedway/map.json": "7eaf4538dd8d18170f5e0c7df04a7253d2e844916c2149817bccbf207dd40231",
+    "generated/maps/meridian-exchange/map.json": "e1332aa73fddbd75e2cd3fec87c157a515572a9a27a27f130b9cd605b70bf914",
+    "generated/maps/monsoon-foundry/map.json": "49a162d043a572b575b6b79e380ff7b237135a55f46e8c1949b589b4cdf6289e",
+    "generated/maps/sunscar-convoy/map.json": "d74a3ab27cadcc8ba205cb9ca6d3e0a7b640e66b793800931d29934fea941948",
+    "generated/maps/tidal-citadel/map.json": "c53565317836fefd8daa94ed9d7e34ba76543b21c92e0087a0faf862bd30689d",
+    "generated/maps/verdant-reliquary/map.json": "628145360487798fdb9aba8f99338175a9c4fa8ba51a4d8d2769b7a0dde3605b"
+  },
+  "commands": [
+    {
+      "case": "baseline",
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/tmp/opencode/meridian-render-ahf0pfuf/godot",
+        "--script",
+        "res://review.gd",
+        "--",
+        "--visual-probe",
+        "--review-case=baseline",
+        "--review-output=/tmp/opencode/cocs-meridian-visual-review/port/meridian-visual-review/causal-run-1"
+      ],
+      "returncode": 1
+    }
+  ],
+  "production_fix": false,
+  "status": "failed",
+  "error": "AssertionError('Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org\\nOpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)\\n\\nWARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.\\n     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)\\nSCRIPT ERROR: Parse Error: Cannot infer the type of \"meshes\" variable because the value doesn\\'t have a set type.\\n          at: GDScript::reload (res://review.gd:35)\\nERROR: Failed to load script \"res://review.gd\" with error \"Parse error\".\\n   at: load (modules/gdscript/gdscript.cpp:3041)\\n')",
+  "artifacts": {
+    "baseline.log": "eb5acdedc295afcfa3a46c255b33891622d2ccaf50a561a42e65af9831bde25d"
+  }
+}

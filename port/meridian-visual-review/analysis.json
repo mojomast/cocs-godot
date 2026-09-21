@@ -1,0 +1,23 @@
+{
+  "checks_passed": [
+    "historical PNG byte-identical to new baseline",
+    "all imported inventories identical",
+    "cull-only camera unchanged",
+    "cull-only material differs only CULL_BACK -> CULL_FRONT",
+    "camera-inside materials unchanged",
+    "historical GLB SHA matches",
+    "sky winding/normals outward"
+  ],
+  "gltf_sky_triangle_winding": {
+    "outward": 2976,
+    "inward": 0,
+    "degenerate": 0
+  },
+  "gltf_sky_vertex_normals": "all outward",
+  "baseline_png_sha256": "930b9986a88517d4e7d575aae2c8c61be13c570617a738c3e77dfe9e05267611",
+  "camera_distance": 217.543106079102,
+  "sphere_radius": 185,
+  "mesh_count": 127,
+  "native_sky_path": "Node/Mesh56",
+  "visual_review": "Images must be separately read; numerical checks are causal controls, not parity acceptance."
+}

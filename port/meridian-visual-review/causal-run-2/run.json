@@ -1,0 +1,167 @@
+{
+  "execution_head": "e6d6483467bdebc72042a348a4b2ab9854e9e1c8",
+  "godot_binary": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "godot_binary_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "input_glb": "/tmp/opencode/cocs-meridian-visual-review/godot/content/probes/meridian-exchange/world.glb",
+  "input_glb_sha256": "a41094bdbafd7a6796d86d175982aab958e3500e8d8514f820dfa36c362d73ea",
+  "input_glb_bytes": 2060200,
+  "sky_gltf": {
+    "node_index": 56,
+    "node": {
+      "mesh": 48,
+      "children": [
+        57,
+        58,
+        59
+      ]
+    },
+    "primitive": {
+      "mode": 4,
+      "attributes": {
+        "POSITION": 198,
+        "NORMAL": 199,
+        "TEXCOORD_0": 200,
+        "COLOR_0": 201
+      },
+      "indices": 202,
+      "material": 22
+    },
+    "position_accessor": {
+      "bufferView": 198,
+      "componentType": 5126,
+      "count": 1617,
+      "max": [
+        185,
+        185,
+        185
+      ],
+      "min": [
+        -185,
+        -185,
+        -185
+      ],
+      "type": "VEC3"
+    },
+    "material_index": 22,
+    "material": {
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "roughnessFactor": 0.9
+      },
+      "extensions": {
+        "KHR_materials_unlit": {}
+      }
+    }
+  },
+  "tracked_inputs": {
+    "godot/world/viewer.gd": "0dd58d537c16b1e00d9499ee9fb522236bc47b8908430cca039c1e0d90240086",
+    "godot/project.godot": "3d8f61199a99e83d2365edd4aa9995b07e630f4d9e27e597487a53443ec8f792",
+    "godot/main.tscn": "02c31158fadd9d6f35e83e244796ba39b7c1f188b257434bcb5495f3dec6d33f",
+    "game/environment.mjs": "fe9a1e84add0d1f16ab9667cb617c5f94a1cb53e480666c79746759dcbabe0c5",
+    "game/view.mjs": "98f8aca46bece81a191760a253db68814bf4e768ee56f37be41eae09723af33d",
+    "tools/godot-export/harness.html": "3a0079d7e698e24349be199e6fccf9b54901d6fe1e826d3d518cc1a67bd2f75d",
+    "port/tools/meridian_visual_review/review.gd": "494e30d54344c7a5c56b96bd7b91ced9a7dd5729f1fbb9b5b6b3d14ed611666f",
+    "port/tools/meridian_visual_review/run.py": "95744c57bff3754d251ee83529f16f5bc14fffba8375f9b70902517ac46956fa"
+  },
+  "generated_inputs": {
+    "generated/manifest.json": "5c756d02edff6bb85f71c4659508d0a941d936d90787d0752957fadda65f4ccf",
+    "generated/maps/asterion-relay/map.json": "9e0b4f5e00ea8d27bb0e2c914121ae583812ca84d38c5aae8cc94e29aeb659e4",
+    "generated/maps/aurora-stadium/map.json": "ac55e0b0616648c71f648023f9057943799da6bc6459394d22962a289606baaa",
+    "generated/maps/ember-crucible/map.json": "655f140c9d660ba12c4f185278b8c15ad1b8429be34165b0b492817d21f13e08",
+    "generated/maps/ion-speedway/map.json": "7eaf4538dd8d18170f5e0c7df04a7253d2e844916c2149817bccbf207dd40231",
+    "generated/maps/meridian-exchange/map.json": "e1332aa73fddbd75e2cd3fec87c157a515572a9a27a27f130b9cd605b70bf914",
+    "generated/maps/monsoon-foundry/map.json": "49a162d043a572b575b6b79e380ff7b237135a55f46e8c1949b589b4cdf6289e",
+    "generated/maps/sunscar-convoy/map.json": "d74a3ab27cadcc8ba205cb9ca6d3e0a7b640e66b793800931d29934fea941948",
+    "generated/maps/tidal-citadel/map.json": "c53565317836fefd8daa94ed9d7e34ba76543b21c92e0087a0faf862bd30689d",
+    "generated/maps/verdant-reliquary/map.json": "628145360487798fdb9aba8f99338175a9c4fa8ba51a4d8d2769b7a0dde3605b"
+  },
+  "commands": [
+    {
+      "case": "baseline",
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/tmp/opencode/meridian-render-2vuxy4tj/godot",
+        "--script",
+        "res://review.gd",
+        "--",
+        "--visual-probe",
+        "--review-case=baseline",
+        "--review-output=/tmp/opencode/cocs-meridian-visual-review/port/meridian-visual-review/causal-run-2"
+      ],
+      "returncode": 0
+    },
+    {
+      "case": "source-cull-only",
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/tmp/opencode/meridian-render-2vuxy4tj/godot",
+        "--script",
+        "res://review.gd",
+        "--",
+        "--visual-probe",
+        "--review-case=source-cull-only",
+        "--review-output=/tmp/opencode/cocs-meridian-visual-review/port/meridian-visual-review/causal-run-2"
+      ],
+      "returncode": 0
+    },
+    {
+      "case": "camera-inside",
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/tmp/opencode/meridian-render-2vuxy4tj/godot",
+        "--script",
+        "res://review.gd",
+        "--",
+        "--visual-probe",
+        "--review-case=camera-inside",
+        "--review-output=/tmp/opencode/cocs-meridian-visual-review/port/meridian-visual-review/causal-run-2"
+      ],
+      "returncode": 0
+    },
+    {
+      "case": "semantic",
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/tmp/opencode/meridian-render-2vuxy4tj/godot",
+        "--",
+        "--capture=/tmp/opencode/cocs-meridian-visual-review/port/meridian-visual-review/causal-run-2/semantic.png"
+      ],
+      "returncode": 0
+    }
+  ],
+  "production_fix": false,
+  "status": "completed_causal_experiments_not_parity_acceptance",
+  "artifacts": {
+    "baseline.json": "75cea67ce8d7da5697bd044529c2d3f3fcf569ed216bee8092b4075aba836497",
+    "baseline.log": "1ed695c5b21e99f0a6c55c7c05c6056d7e0740e233c6d0b97294570146a286f9",
+    "baseline.png": "930b9986a88517d4e7d575aae2c8c61be13c570617a738c3e77dfe9e05267611",
+    "camera-inside.json": "ace9b287550acf21036bfc4baf918d1796545804c39404b6da725b997b7144e9",
+    "camera-inside.log": "4aad5702375338d1a6e52f577993a7f9406da4ffd2d30c6a733e3b6103fa9e6f",
+    "camera-inside.png": "86fc4f1ea4eb97576b5d24b3eb9af28f6bfee901e27e93b319074a022cec4fc1",
+    "semantic.log": "985163828c70826088cc06a83fe2736ea4c34543ad2d0322cb1c77d5f0313715",
+    "semantic.png": "1403d796eb6bfac3452a323ff136dad652e617424f6de01e226b5ffd3c839dad",
+    "source-cull-only.json": "85ebbcec8ba870bc7f38ec02145b88d57165653ba4ce3613c6c0990ca51b20a1",
+    "source-cull-only.log": "b0787e6cb1d74e89d85d2ca1535c51a6758a4e1dd17df7f259c66fddfeebea4a",
+    "source-cull-only.png": "eb49c7559baefa10820de86b12582dbb7f28f7aa287ebd1b59cbfddfe2e7b4b4"
+  }
+}
