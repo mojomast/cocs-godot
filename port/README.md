@@ -156,6 +156,20 @@ Native execution passed 13 explicitly synthetic checks including actual mesh end
 
 The native targeted test passed 12 explicitly synthetic transition assertions. The real normal-rate session smoke also passed (three actors, movement, shots, ACK 12, 66 remote pose applications, 20 pickup markers). These are not live death/respawn acceptance or graphical evidence.
 
+## Resilience batch
+
+Five implementation/test increments were exercised with the pinned Godot binary:
+
+- `860e5f2`: validate welcome/lobby/snapshot/event envelope shapes before typed iteration or integer conversion. Invalid event batches are rejected before deduplication state changes. 31 synthetic assertions passed; genuine 3,616-frame recording still replays. This is not complete nested gameplay-state schema validation.
+- `a0b536a`: reject nonfinite remote positions, yaw and receive timestamps. 1,801 deterministic assertions cover synthetic dropped delivery, duplicate/stale timestamps, outage hold, memory bounds and invalid numbers. These are receive-schedule tests, not network latency benchmarks or graphical smoothness acceptance.
+- `8a55c8c`: show receive-age warnings and send neutral controls after one second without a fresh snapshot. Normal input eligibility returns when authoritative updates resume. Eight clock checks and the real normal-rate session smoke passed. The threshold is provisional; this cannot guarantee delivery of neutral input across a broken connection and does not replace server timeout behavior.
+- `d135783`: consume input sequence numbers only after successful transport queueing. 46 assertions cover the real disconnected peer and explicitly synthetic queue failures, retry and round reset.
+- `91c24bc`: exercise the actual session process with synthetic clock/transport injection; 12 assertions verify movement/fire/all action buttons neutralize on stall, warning text appears, fresh updates recover controls, and disconnect resets the guard.
+
+The full verifier passed after integration, including all new gates, existing source/export tests, native import, genuine packet replay, normal-rate results/restart and two-native-client tests. Generated test script UIDs are retained. No gameplay source, server rules, dependency locks, map selection, deployment or workspace layout changed.
+
+Remaining gates are unchanged: live intentional pickup/death/respawn acceptance, original actor/weapon/audio presentation, graphical review, actual impaired-network testing, local prediction and map-specific modes. The helper CLIs attempted at the beginning of this pass failed authentication/model access before making changes; implementation and verification were completed directly.
+
 ## Snapshot pickup increment
 
 `world/pickups.gd` maintains diagnostic markers keyed by authoritative pickup ID, not array position. Snapshot `wait > 0` hides a collected pickup; a later authoritative `wait <= 0` reveals it. There is no local respawn countdown or client collection authority. Position uses snapshot x/y/z with an explicit one-metre diagnostic marker offset, rather than resampling terrain. Kind metadata is retained; original pickup meshes/effects are not yet implemented. Missing pickups are removed and round start clears nodes. The viewer keeps its static markers; the interactive session hides that group and consumes snapshots/results instead.
