@@ -1,0 +1,60 @@
+{
+  "name": "enabled",
+  "status": "FAIL",
+  "wire": {
+    "starts": [],
+    "snapshots": [],
+    "inputs": [],
+    "joins": 1,
+    "actor": null
+  },
+  "cleanup": {
+    "native": {
+      "pid": 1832728,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    "serverClosed": true,
+    "socketCount": 0
+  },
+  "port": 37499,
+  "room": "U7R9",
+  "nativeCommand": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "/tmp/cocs-trace-i4Azgp/godot",
+    "--script",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/observe.gd",
+    "--",
+    "--endpoint=ws://127.0.0.1:37499",
+    "--join-room=U7R9",
+    "--native-trace"
+  ],
+  "waiting": [
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 0.391873666666666,
+      "pose": false,
+      "seconds": 0.506254444444444,
+      "snapshots": 0,
+      "starts": 0
+    },
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 0.895580666666666,
+      "pose": false,
+      "seconds": 1.00992,
+      "snapshots": 0,
+      "starts": 0
+    }
+  ],
+  "error": "Error: Deadline: intentional harness timeout after live join (100ms)\n    at until (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/guest_helpers.mjs:8:8)\n    at async wait (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/run.mjs:25:36)\n    at async file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/run.mjs:74:48"
+}

@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: synthetic: valid order, source locations and correlation
+ok 1 - synthetic: valid order, source locations and correlation
+  ---
+  duration_ms: 1.844884
+  type: 'test'
+  ...
+# Subtest: synthetic: malformed JSON, schema, fields and queue result rejected
+ok 2 - synthetic: malformed JSON, schema, fields and queue result rejected
+  ---
+  duration_ms: 0.563895
+  type: 'test'
+  ...
+# Subtest: synthetic: actor mismatch rejected
+ok 3 - synthetic: actor mismatch rejected
+  ---
+  duration_ms: 0.123581
+  type: 'test'
+  ...
+# Subtest: synthetic: health/dead and input mismatches rejected
+ok 4 - synthetic: health/dead and input mismatches rejected
+  ---
+  duration_ms: 0.18676
+  type: 'test'
+  ...
+# Subtest: synthetic: absent evidence differs from invalid evidence
+ok 5 - synthetic: absent evidence differs from invalid evidence
+  ---
+  duration_ms: 0.157855
+  type: 'test'
+  ...
+# Subtest: synthetic: successful queue without receipt is NOT delivery
+ok 6 - synthetic: successful queue without receipt is NOT delivery
+  ---
+  duration_ms: 0.094217
+  type: 'test'
+  ...
+# Subtest: synthetic: sequence gap, out-of-order snapshot and malformed limit rejected
+ok 7 - synthetic: sequence gap, out-of-order snapshot and malformed limit rejected
+  ---
+  duration_ms: 0.178314
+  type: 'test'
+  ...
+# Subtest: synthetic: limit after exactly 10000 records is truncation, not completion
+ok 8 - synthetic: limit after exactly 10000 records is truncation, not completion
+  ---
+  duration_ms: 42.007634
+  type: 'test'
+  ...
+# Subtest: synthetic: observer association rejects unrelated adjacent records
+ok 9 - synthetic: observer association rejects unrelated adjacent records
+  ---
+  duration_ms: 0.620271
+  type: 'test'
+  ...
+# Subtest: synthetic: error boundary parses without sensitive message
+ok 10 - synthetic: error boundary parses without sensitive message
+  ---
+  duration_ms: 0.380773
+  type: 'test'
+  ...
+# Subtest: synthetic: disabled output contains no trace
+ok 11 - synthetic: disabled output contains no trace
+  ---
+  duration_ms: 0.539279
+  type: 'test'
+  ...
+# Subtest: real owned subprocess: failure finally reaps
+ok 12 - real owned subprocess: failure finally reaps
+  ---
+  duration_ms: 81.279015
+  type: 'test'
+  ...
+# Subtest: real owned subprocess: timeout escalation reaps SIGTERM-resistant child
+ok 13 - real owned subprocess: timeout escalation reaps SIGTERM-resistant child
+  ---
+  duration_ms: 2066.093932
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2238.316585

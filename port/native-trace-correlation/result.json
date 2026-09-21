@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "baseCommit": "6071da714cf8123da14d1947bd3e099e2c040503",
+  "guestHarnessCommit": "389561510ac7c2223a22897c963f3440304ec928",
+  "developmentBranchAtInspection": "port/godot-destinations",
+  "branch": "subagent/native-trace-correlation",
+  "worktree": "/home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation",
+  "remoteVerification": "Local Git objects and origin URL; no fetch",
+  "commands": {
+    "offline": "node --test port/tools/native_trace_correlation/test.mjs > port/native-trace-correlation/offline-tests.tap",
+    "live": "GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 GUEST_NODE_MODULES=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/node_modules node port/tools/native_trace_correlation/run.mjs",
+    "timeoutCleanup": "GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 GUEST_NODE_MODULES=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/node_modules node port/tools/native_trace_correlation/run.mjs --fault-timeout",
+    "replay": "node port/tools/native_trace_correlation/replay.mjs port/native-trace-correlation/evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/enabled.stdout.log port/native-trace-correlation/evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/enabled.json"
+  },
+  "offline": {"tests": 13, "passed": 13, "exitCode": 0, "fixtures": "Explicitly synthetic; two tests use real owned subprocesses"},
+  "liveEvidence": "evidence/6e7af608-fa87-4e1e-b7b2-a749ae342808/summary.json",
+  "enabled": {"status": "PASS", "nativeRecords": 981, "roundStarts": 1, "actor": 1, "snapshotMatches": 333, "health": 100, "deadTimer": 0, "receivedInputMatches": 647, "unobservedQueueRecords": 0, "ackHighWater": 646, "lastReceivedInputAcknowledged": false, "individualApplicationProven": false},
+  "disabled": {"status": "PASS", "joinedBeforeHostStart": true, "nativeSnapshotsObserved": 335, "serverReceivedInputs": 651, "nativeTraceRecords": 0, "performanceBenchmark": false},
+  "faultTimeout": {"evidence": "evidence/a2b37402-8dab-4b13-9447-785192f4dd8a/summary.json", "expectedExitCode": 1, "reason": "Intentional harness deadline after real native join", "nativeReaped": true, "serverClosed": true, "socketsRemaining": 0, "privateTempRemoved": true},
+  "cleanup": {"allNativeProcessesReaped": true, "importersReaped": true, "ownedServersClosed": true, "ownedSocketsRemaining": 0, "privateTempsRemoved": true, "independentNativePidAbsenceCheck": true, "finalSuccessAndTimeoutSourceHashesVerified": true},
+  "runtimeDefectsReproduced": [],
+  "harnessDefectsCorrected": ["Initial boolean dead assumption rejected genuine numeric respawn timer; corrected against runtime and protocol source. Initial failed live evidence retained."],
+  "instrumentationGaps": ["Native trace omits server snapshot seq; passive synchronous observer supplies association", "Native input trace omits input seq; complete fresh-round queue-success ordinal inference required", "No native recording-completion marker"],
+  "completionProven": false,
+  "limitations": ["Bounded observation is not native trace completion", "Receipt is not application or acknowledgement", "Neutral headless controls and alive health/death state only", "No death/respawn or results/restart orchestration", "No graphical focus or pointer acceptance", "Error and limit records tested synthetically, not forced live", "No performance benchmark", "Supervisor SIGKILL cannot run cleanup"]
+}

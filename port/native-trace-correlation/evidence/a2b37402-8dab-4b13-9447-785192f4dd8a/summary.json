@@ -1,0 +1,92 @@
+{
+  "base": "6071da714cf8123da14d1947bd3e099e2c040503",
+  "guestHarness": "389561510ac7c2223a22897c963f3440304ec928",
+  "branch": "subagent/native-trace-correlation",
+  "cases": [
+    {
+      "name": "enabled",
+      "status": "FAIL",
+      "wire": {
+        "starts": [],
+        "snapshots": [],
+        "inputs": [],
+        "joins": 1,
+        "actor": null
+      },
+      "cleanup": {
+        "native": {
+          "pid": 1832728,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        "serverClosed": true,
+        "socketCount": 0
+      },
+      "port": 37499,
+      "room": "U7R9",
+      "nativeCommand": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/cocs-trace-i4Azgp/godot",
+        "--script",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/observe.gd",
+        "--",
+        "--endpoint=ws://127.0.0.1:37499",
+        "--join-room=U7R9",
+        "--native-trace"
+      ],
+      "waiting": [
+        {
+          "ack": 0,
+          "actor": -1,
+          "error": "",
+          "phase": 11,
+          "phase_seconds": 0.391873666666666,
+          "pose": false,
+          "seconds": 0.506254444444444,
+          "snapshots": 0,
+          "starts": 0
+        },
+        {
+          "ack": 0,
+          "actor": -1,
+          "error": "",
+          "phase": 11,
+          "phase_seconds": 0.895580666666666,
+          "pose": false,
+          "seconds": 1.00992,
+          "snapshots": 0,
+          "starts": 0
+        }
+      ],
+      "error": "Error: Deadline: intentional harness timeout after live join (100ms)\n    at until (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/guest_helpers.mjs:8:8)\n    at async wait (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/run.mjs:25:36)\n    at async file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/run.mjs:74:48"
+    }
+  ],
+  "cleanup": {
+    "import": {
+      "pid": 1832420,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "privateTempRemoved": true
+  },
+  "normalRate": true,
+  "completionProven": false,
+  "sourceHashes": {
+    "run.mjs": "b324e4f3c4476f8a776081a4e6cd3186d3865ead5b25cb5574fd82cb9ebb544a",
+    "observe.gd": "e6a4736eef19350d44e5657b40dffa3dc6961130ebb58cfd96e73c96ea3295de",
+    "validate.mjs": "9ce19538b1328ec89c6ed6ff8dd05bd514abec762eb2123c312b0d1b0e21639e",
+    "guest_helpers.mjs": "13cbe16ef25d41e45a31f9ad5a5f0b476c26ce49a9e09cdec243b4fed3a5c6ed",
+    "test.mjs": "b270e01498cd48b143d4e1ab85cf48e06438f2f3353ae3d080f3f7c56065e9b1"
+  },
+  "commands": {
+    "live": "GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 GUEST_NODE_MODULES=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/node_modules node port/tools/native_trace_correlation/run.mjs --fault-timeout",
+    "offline": "node --test port/tools/native_trace_correlation/test.mjs"
+  },
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(report.cases.every(c=>c.status==='PASS'))\n\n    at file:///home/mojo/.hermes-instances/fresh/workspace/cocs-native-trace-correlation/port/tools/native_trace_correlation/run.mjs:87:9",
+  "status": "FAIL"
+}
