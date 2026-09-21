@@ -22,6 +22,7 @@ func _ready() -> void:
 	selector.disabled = true
 	add_child(client)
 	add_child(presentation)
+	presentation.interpolate_remote = true
 	camera.rotation_order = EULER_ORDER_YXZ
 	var endpoint: String = ""
 	for arg: String in OS.get_cmdline_user_args():
@@ -73,8 +74,8 @@ func on_snapshot(frame: Dictionary) -> void:
 	moved = moved or camera.position.distance_to(initial_position) > 0.5
 	fired = fired or int(actor.get("shots", 0)) > 0
 	label.text = "NODE-AUTHORITATIVE PROTOTYPE · diagnostic geometry, no prediction\n" + presentation.hud_text + "\nClick: capture/fire · Esc: release · WASD: move · Space: jump · R: reload\nShift: sprint · Ctrl: crouch · E: interact · F: mobility | ACK %d" % client.last_ack
-	if smoke and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3:
-		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=", client.last_ack, " snapshots=", presentation.applied)
+	if smoke and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10:
+		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses)
 		client.disconnect_server()
 		get_tree().quit(0)
 

@@ -2,12 +2,31 @@ class_name PortPresentation
 extends Node3D
 
 # Diagnostic actors only. Node simulation remains authoritative; no extrapolation.
+const RemoteMotion = preload("res://world/remote_motion.gd")
+var motion := RemoteMotion.new()
+var interpolate_remote: bool = false
+var local_actor_id: int = -1
 var actors: Dictionary = {}
+var rendered_remote_poses: int = 0
+
+func _process(_delta: float) -> void:
+	if not interpolate_remote: return
+	var now: float = Time.get_ticks_usec() / 1000000.0
+	for id: int in actors:
+		if id == local_actor_id: continue
+		var pose: Dictionary = motion.sample(id, now)
+		if pose.is_empty(): continue
+		actors[id].position = pose.position
+		actors[id].rotation.y = pose.yaw
+		rendered_remote_poses += 1
 var local_actor: Dictionary = {}
 var hud_text: String = "Waiting for authoritative snapshot"
 var applied: int = 0
 
 func clear_round() -> void:
+	motion.clear()
+	local_actor_id = -1
+	rendered_remote_poses = 0
 	for node: Node3D in actors.values():
 		remove_child(node)
 		node.free()
@@ -17,6 +36,8 @@ func clear_round() -> void:
 	applied = 0
 
 func apply_state(state: Dictionary, local_id: int) -> void:
+	local_actor_id = local_id
+	var now: float = Time.get_ticks_usec() / 1000000.0
 	var present: Dictionary = {}
 	local_actor = {}
 	for actor: Dictionary in state.get("actors", []):
@@ -35,8 +56,12 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 			add_child(node)
 			actors[id] = node
 		var visual: Node3D = actors[id]
-		visual.position = Vector3(actor.x, actor.y + 0.9, actor.z)
-		visual.rotation.y = float(actor.get("bodyYaw", actor.get("yaw", 0)))
+		var position: Vector3 = Vector3(actor.x, actor.y + 0.9, actor.z)
+		var body_yaw: float = float(actor.get("bodyYaw", actor.get("yaw", 0)))
+		motion.ingest(id, position, body_yaw, float(actor.get("dead", 0)) <= 0, now)
+		var pose: Dictionary = motion.sample(id, now)
+		visual.position = pose.position if interpolate_remote and id != local_id else position
+		visual.rotation.y = pose.yaw if interpolate_remote and id != local_id else body_yaw
 		visual.visible = id != local_id and float(actor.get("dead", 0)) <= 0
 		if id == local_id: local_actor = actor.duplicate(true)
 	for id: int in actors.keys():
@@ -45,6 +70,7 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 			remove_child(node)
 			node.free()
 			actors.erase(id)
+			motion.tracks.erase(id)
 	if local_actor.is_empty():
 		hud_text = "Local actor absent — waiting"
 	else:
