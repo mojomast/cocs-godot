@@ -1,0 +1,276 @@
+{
+  "runId": "b624e1aa-3c9d-4043-842d-5b50c04fd29a",
+  "base": "86ef71965e1a1e5c649bec660ab7c6660db09b89",
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "clock": "unchanged createGameServer defaults: 1/60 tickDt, 1000/60 tickMs",
+  "cleanup": {
+    "import": {
+      "pid": 1942378,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "privateTempRemoved": true
+  },
+  "harnessSha256": {
+    "run.mjs": "e4224fe578c2d5cb01ea76b8631b41d3b2ef832ad6ed6170b70e2f644becb1e3",
+    "lib.mjs": "0324d13bd073c77c0909e84a2eadea5fc404bbd4a1ef6d538edfb09ffcc3496e",
+    "observe.gd": "f375f72e7c1e6f4142ecb2cea29020bc7c2f76ae83f43196fd8d06a8a15033b7",
+    "test.mjs": "f8bbba2386c3ed48122ffd359d2498b1a84f0898560d8b75da532efeabadea4e"
+  },
+  "classification": "independently_executed_live",
+  "cases": [
+    {
+      "name": "positive",
+      "status": "PASS",
+      "wire": {
+        "guest": {
+          "join": 1,
+          "input": 12
+        },
+        "snapshots": 6,
+        "starts": 1,
+        "positiveAcks": 5
+      },
+      "cleanup": {
+        "native": {
+          "pid": 1942692,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        "serverClosed": true,
+        "rejectorClosed": true
+      },
+      "serverPort": 35015,
+      "roomId": "C9SU",
+      "hostStartAfterSampleSeconds": 2.517713,
+      "sampleCount": 6,
+      "firstActiveSample": {
+        "ack": 10,
+        "actor": 1,
+        "error": "",
+        "phase": 3,
+        "phase_seconds": 0,
+        "pose": true,
+        "seconds": 3.020407,
+        "snapshots": 6,
+        "starts": 1
+      },
+      "lastSample": {
+        "ack": 10,
+        "actor": 1,
+        "error": "",
+        "phase": 3,
+        "phase_seconds": 0,
+        "pose": true,
+        "seconds": 3.020407,
+        "snapshots": 6,
+        "starts": 1
+      }
+    },
+    {
+      "name": "invalid-room",
+      "status": "PASS",
+      "wire": {
+        "guest": {
+          "join": 1
+        },
+        "snapshots": 0,
+        "starts": 0,
+        "positiveAcks": 0,
+        "error": "room not found: absent-b624e1aa-3c9d-4043-842d-5b50c04fd29a"
+      },
+      "cleanup": {
+        "native": {
+          "pid": 1942857,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        "serverClosed": true,
+        "rejectorClosed": true
+      },
+      "serverPort": 39167,
+      "roomId": "VLVR",
+      "observedError": {
+        "ack": 0,
+        "actor": -1,
+        "error": "room not found: absent-b624e1aa-3c9d-4043-842d-5b50c04fd29a",
+        "phase": -1,
+        "phase_seconds": 0,
+        "pose": false,
+        "seconds": 0.506012333333333,
+        "snapshots": 0,
+        "starts": 0
+      },
+      "sampleCount": 1,
+      "firstActiveSample": null,
+      "lastSample": {
+        "ack": 0,
+        "actor": -1,
+        "error": "room not found: absent-b624e1aa-3c9d-4043-842d-5b50c04fd29a",
+        "phase": -1,
+        "phase_seconds": 0,
+        "pose": false,
+        "seconds": 0.506012333333333,
+        "snapshots": 0,
+        "starts": 0
+      }
+    },
+    {
+      "name": "host-not-starting",
+      "status": "PASS",
+      "wire": {
+        "guest": {
+          "join": 1
+        },
+        "snapshots": 0,
+        "starts": 0,
+        "positiveAcks": 0
+      },
+      "cleanup": {
+        "native": {
+          "pid": 1942938,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        "serverClosed": true,
+        "rejectorClosed": true
+      },
+      "serverPort": 44707,
+      "roomId": "PXT3",
+      "observedError": {
+        "ack": 0,
+        "actor": -1,
+        "error": "Connection/round-start timed out. Relaunch to reconnect.",
+        "phase": -1,
+        "phase_seconds": 0,
+        "pose": false,
+        "seconds": 120.371985999971,
+        "snapshots": 0,
+        "starts": 0
+      },
+      "sampleCount": 239,
+      "firstActiveSample": null,
+      "lastSample": {
+        "ack": 0,
+        "actor": -1,
+        "error": "Connection/round-start timed out. Relaunch to reconnect.",
+        "phase": -1,
+        "phase_seconds": 0,
+        "pose": false,
+        "seconds": 120.371985999971,
+        "snapshots": 0,
+        "starts": 0
+      }
+    },
+    {
+      "name": "connection-failure",
+      "status": "PASS",
+      "wire": {
+        "guest": {},
+        "snapshots": 0,
+        "starts": 0,
+        "positiveAcks": 0
+      },
+      "cleanup": {
+        "native": {
+          "pid": 1950562,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        "serverClosed": true,
+        "rejectorClosed": true
+      },
+      "serverPort": 36269,
+      "roomId": "6ZAT",
+      "observedError": {
+        "ack": 0,
+        "actor": -1,
+        "error": "Connection/round-start timed out. Relaunch to reconnect.",
+        "phase": -1,
+        "phase_seconds": 0,
+        "pose": false,
+        "seconds": 15.1073679999994,
+        "snapshots": 0,
+        "starts": 0
+      },
+      "sampleCount": 30,
+      "firstActiveSample": null,
+      "lastSample": {
+        "ack": 0,
+        "actor": -1,
+        "error": "Connection/round-start timed out. Relaunch to reconnect.",
+        "phase": -1,
+        "phase_seconds": 0,
+        "pose": false,
+        "seconds": 15.1073679999994,
+        "snapshots": 0,
+        "starts": 0
+      }
+    }
+  ],
+  "independentPidAbsenceCheck": true,
+  "members": [
+    {
+      "path": "b624e1aa-3c9d-4043-842d-5b50c04fd29a/connection-failure.json",
+      "bytes": 7199,
+      "sha256": "e5093b58d4a88c174df2301481fbcd850a5efd221724a674425ee0efe8c23368"
+    },
+    {
+      "path": "b624e1aa-3c9d-4043-842d-5b50c04fd29a/connection-failure.log",
+      "bytes": 4955,
+      "sha256": "e9548587d91d18625cf3490f337f56608e88038dd5f1c0ef67c0891b1d975c7e"
+    },
+    {
+      "path": "b624e1aa-3c9d-4043-842d-5b50c04fd29a/host-not-starting.json",
+      "bytes": 53875,
+      "sha256": "5f29febcba01e2177bc58e39c1e3027d107f6ed78efa55394976473e76ce6106"
+    },
+    {
+      "path": "b624e1aa-3c9d-4043-842d-5b50c04fd29a/host-not-starting.log",
+      "bytes": 36780,
+      "sha256": "b05f62cd49d699e699bf97de4854c82430b35874e2962ba1c4d780163bb6cdce"
+    },
+    {
+      "path": "b624e1aa-3c9d-4043-842d-5b50c04fd29a/import.log",
+      "bytes": 2964,
+      "sha256": "e29ec7ba1fb1055f4a8b22f8500619241b5252d6fa2fcf2170a093b982678794"
+    },
+    {
+      "path": "b624e1aa-3c9d-4043-842d-5b50c04fd29a/invalid-room.json",
+      "bytes": 1022,
+      "sha256": "951adaa8651725f1e0dab94bc452f1a0fde149580864a569b9aa87eabe5adaa2"
+    },
+    {
+      "path": "b624e1aa-3c9d-4043-842d-5b50c04fd29a/invalid-room.log",
+      "bytes": 274,
+      "sha256": "3ca3de64f332323fc7b222c0c8d088e0901f23500df9bd4db08a681bb4f96efb"
+    },
+    {
+      "path": "b624e1aa-3c9d-4043-842d-5b50c04fd29a/positive.json",
+      "bytes": 1748,
+      "sha256": "51b5267dd722b55398d1031316268a280d31016678971c53777e8203477784a5"
+    },
+    {
+      "path": "b624e1aa-3c9d-4043-842d-5b50c04fd29a/positive.log",
+      "bytes": 936,
+      "sha256": "758df13f004e7d9692e8da59c67adf3ec0e89a8ee04c2f33874fabd81b494b58"
+    },
+    {
+      "path": "b624e1aa-3c9d-4043-842d-5b50c04fd29a/semantic-export.log",
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    {
+      "path": "b624e1aa-3c9d-4043-842d-5b50c04fd29a/summary.json",
+      "bytes": 77317,
+      "sha256": "d3e526a871277e1c8004013989c408ed91f40c9e298845872ea5d23679bace9b"
+    }
+  ],
+  "archiveBytes": 18047,
+  "archiveSha256": "802af9c58fc6a33572284dd6e0a67d198930c382d6d0050e0ab87407ac432486"
+}
