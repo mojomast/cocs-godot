@@ -1,0 +1,14 @@
+test_audit_outputs_excluded (test_inventory.InventoryTests.test_audit_outputs_excluded) ... ok
+test_deterministic_and_read_only (test_inventory.InventoryTests.test_deterministic_and_read_only) ... ok
+test_javascript_never_evaluated (test_inventory.InventoryTests.test_javascript_never_evaluated) ... ok
+test_malformed_json (test_inventory.InventoryTests.test_malformed_json) ... ok
+test_missing_reference_reported (test_inventory.InventoryTests.test_missing_reference_reported) ... ok
+test_missing_required_cli (test_inventory.InventoryTests.test_missing_required_cli) ... ok
+test_symlink_rejected (test_inventory.InventoryTests.test_symlink_rejected) ... ok
+test_traversal_rejected (test_inventory.InventoryTests.test_traversal_rejected) ... ok
+test_wav_and_hash_mismatch (test_inventory.InventoryTests.test_wav_and_hash_mismatch) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.048s
+
+OK

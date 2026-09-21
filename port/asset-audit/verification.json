@@ -1,0 +1,12 @@
+{
+  "base_commit": "9e46ad9d0b11dc21538b8c21087c4d2205798fd8",
+  "deterministic_and_matches_saved": true,
+  "inventory_bytes": 392747,
+  "inventory_sha256": "4adc780f4657fda1566f7e0f9d5f2c0a608b483cdeaf17fd406ad22a5570df66",
+  "manifest_hash_mismatches": [],
+  "missing_references": [],
+  "schema_version": 1,
+  "source_hashes_rechecked": 772,
+  "test_command": "python3 -B -m unittest discover -s port/tools/asset_audit -v",
+  "tests_exit_code": 0
+}
