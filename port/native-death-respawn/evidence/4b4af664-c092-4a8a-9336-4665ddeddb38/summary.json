@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "id": "4b4af664-c092-4a8a-9336-4665ddeddb38",
+  "base": "fb4cf04e2460121a23329913db78f0b5924d732c",
+  "normalRate": true,
+  "completionProven": false,
+  "started": "2026-09-21T23:45:21.682Z",
+  "cleanup": {
+    "native": {
+      "pid": 1939402,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "xvfb": {
+      "pid": 1939399,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "import": {
+      "pid": 1939070,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "serverClosed": true,
+    "socketCount": 0,
+    "privateTempRemoved": true
+  },
+  "artifacts": {
+    "export.log.gz": {
+      "bytes": 79,
+      "sha256": "669d2d98dcb78e48d0f9742368637c64549265b89ec141bb5608239dea033dff"
+    },
+    "import.stdout.log.gz": {
+      "bytes": 552,
+      "sha256": "46d81dea5add0f051b5ac9aa3a81462c7b2e89e834fbb005849f5a0e03fe97b1"
+    },
+    "import.stderr.log.gz": {
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    },
+    "native.stdout.log.gz": {
+      "bytes": 14754,
+      "sha256": "b0955e8d8d6a3a6746d6b317ec28d4807083df4d61ac011b4b7b921ecce3f450"
+    },
+    "native.stderr.log.gz": {
+      "bytes": 160,
+      "sha256": "3223c5f8e137b40334ec34c0611015b14969ee2449af7157ab2ee8f834da7aea"
+    },
+    "xvfb.stdout.log.gz": {
+      "bytes": 22,
+      "sha256": "de76e512a414e118fc8bc46cc3043f18cb60a7aa7b997d9564d30aae0cac9eee"
+    },
+    "xvfb.stderr.log.gz": {
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    },
+    "wire.json.gz": {
+      "bytes": 12482,
+      "sha256": "b856b0eba0d5c54256ba81661d28089ca95359d5d7a0995332852855386b9a16"
+    }
+  },
+  "sourceHashes": {
+    "run.mjs": "dfb072565646518f9970d655c948d97be5f4c798ad7064c73cdf14be9727582e",
+    "observe.gd": "50c5a4406c98d6f334fac7e593b561b6f2bbfaf3ccc71681d5beed4f3f026b87",
+    "helpers.mjs": "b0d0381eac1bd60b0d5f0b8c6a6b177aaeefc88238cb15c2aee9ad3604edc6cd",
+    "analyze.mjs": "6f64ffbdc626d451c0d2066b784edc76e198c7cae42f77371e3e4a4586f88b0b"
+  },
+  "runtimeHashes": {
+    "godot/world/session.gd": "329595a42420c420f718dceea7f4fdb87a5fc26b4e41f63ed9aff5caae16a6b2",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "godot/world/presentation.gd": "a554b194f055bc208c15038a7da5c9723fe3be9f67b106e9594bb7e7da022d47",
+    "godot/world/local_lifecycle.gd": "780d4c87b1a1414b38ccad2df148d07ad1abcb5a86242e14b3f0a56fd1d1614c",
+    "server/game-server.mjs": "06e79c72d0530abf5256b803a19fbfb00582892579f27f42eae871cc28fb98b0",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/bots.mjs": "2a6d3fcd7960711fc4aeefe77aaa39dc1a318c6c36097ede7010894a411cf95a",
+    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b"
+  },
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "navigationNodes": 1180,
+  "privateDisplay": ":0",
+  "endpoint": "ws://127.0.0.1:33797",
+  "nativeCommand": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--audio-driver",
+    "Dummy",
+    "--path",
+    "/tmp/opencode/cocs-death-live-rY6xUs/godot",
+    "--script",
+    "/tmp/opencode/cocs-native-death-respawn/port/tools/native_death_respawn/observe.gd",
+    "--",
+    "--endpoint=ws://127.0.0.1:33797",
+    "--join-room=PGWD",
+    "--native-trace"
+  ],
+  "waiting": {
+    "actor": -1,
+    "camera_position": [
+      110,
+      125,
+      140
+    ],
+    "camera_rotation": [
+      -0.612113833427429,
+      0.66596919298172,
+      0
+    ],
+    "mouse_left": false,
+    "phase": 11,
+    "physical_ctrl": false,
+    "pitch": 0,
+    "pointer_captured": false,
+    "pose": false,
+    "seconds": 0.502370333333334,
+    "starts": 0,
+    "trace_next": 0,
+    "window_focus": true,
+    "yaw": 0
+  },
+  "gameplayWallSeconds": 8.970793441999998,
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: ambiguous lifecycle\n    at file:///tmp/opencode/cocs-native-death-respawn/port/tools/native_death_respawn/analyze.mjs:52:10\n    at Array.map (<anonymous>)\n    at analyze (file:///tmp/opencode/cocs-native-death-respawn/port/tools/native_death_respawn/analyze.mjs:45:26)\n    at file:///tmp/opencode/cocs-native-death-respawn/port/tools/native_death_respawn/run.mjs:115:20",
+  "finished": "2026-09-21T23:45:37.571Z"
+}

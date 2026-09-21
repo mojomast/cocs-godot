@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: genuine final recording passes bounded criteria, never native completion
+ok 1 - genuine final recording passes bounded criteria, never native completion
+  ---
+  duration_ms: 9.179666
+  type: 'test'
+  ...
+# Subtest: genuine earlier runtime failure stays failed with premature zero-HP alive state
+ok 2 - genuine earlier runtime failure stays failed with premature zero-HP alive state
+  ---
+  duration_ms: 5.328275
+  type: 'test'
+  ...
+# Subtest: missing server receipt cannot pass as successful queue
+ok 3 - missing server receipt cannot pass as successful queue
+  ---
+  duration_ms: 3.932121
+  type: 'test'
+  ...
+# Subtest: observer association requires immediate synchronous adjacency
+ok 4 - observer association requires immediate synchronous adjacency
+  ---
+  duration_ms: 1.558879
+  type: 'test'
+  ...
+# Subtest: wire camera pose mutation cannot pass native agreement
+ok 5 - wire camera pose mutation cannot pass native agreement
+  ---
+  duration_ms: 4.195484
+  type: 'test'
+  ...
+# Subtest: alternate killer cannot pass protocol attacker criterion
+ok 6 - alternate killer cannot pass protocol attacker criterion
+  ---
+  duration_ms: 3.894722
+  type: 'test'
+  ...
+# Subtest: trace reordering is rejected
+ok 7 - trace reordering is rejected
+  ---
+  duration_ms: 1.248948
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 69.888371
