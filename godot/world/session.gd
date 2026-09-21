@@ -22,7 +22,16 @@ var combat_label := Label.new()
 var pickups := Pickups.new()
 var client := Client.new()
 var presentation := Presentation.new()
+# Guest phases: 10 waits for join acknowledgement; 11 waits for host start.
+var join_room_id: String = ""
 var phase: int = 0
+
+func begin_room() -> void:
+	var result: Error = client.create_room() if join_room_id.is_empty() else client.join_room(join_room_id)
+	if result != OK:
+		on_error("Room request could not be queued. Relaunch to reconnect.")
+		return
+	phase = 1 if join_room_id.is_empty() else 10
 var elapsed: float = 0
 var send_elapsed: float = 0
 var yaw: float = 0
@@ -41,7 +50,7 @@ var watched_phase: int = -999
 const HANDSHAKE_TIMEOUT: float = 15.0
 
 func request_restart() -> void:
-	if phase != 4: return
+	if phase != 4 or not join_room_id.is_empty(): return
 	if client.send_frame({"type":"start"}) == OK:
 		phase = 20
 		label.text = "Waiting for authoritative round start…"
@@ -65,9 +74,9 @@ func advance_handshake(delta: float) -> bool:
 	if phase != watched_phase:
 		watched_phase = phase
 		phase_elapsed = 0.0
-	if phase not in [0, 1, 2, 20]: return true
+	if phase not in [0, 1, 2, 10, 11, 20]: return true
 	phase_elapsed += delta
-	if phase_elapsed < HANDSHAKE_TIMEOUT: return true
+	if phase_elapsed < (120.0 if phase == 11 else HANDSHAKE_TIMEOUT): return true
 	on_error("Connection/round-start timed out. Relaunch to reconnect.")
 	return false
 
@@ -91,8 +100,16 @@ func _ready() -> void:
 	var endpoint: String = ""
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
+		if arg.begins_with("--join-room="):
+			join_room_id = arg.trim_prefix("--join-room=").strip_edges()
+			if join_room_id.is_empty():
+				on_error("Join room ID must not be empty")
+				return
 	smoke = "--session-smoke" in OS.get_cmdline_user_args()
 	lifecycle_smoke = "--lifecycle-smoke" in OS.get_cmdline_user_args()
+	if not join_room_id.is_empty() and (smoke or lifecycle_smoke):
+		on_error("Guest mode cannot be combined with automatic smoke controls")
+		return
 	client.connection_error.connect(on_error)
 	client.lobby.connect(on_lobby)
 	client.started.connect(on_started)
@@ -104,7 +121,7 @@ func _ready() -> void:
 		phase = 4
 		combat.clear_round()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		label.text = presentation.hud_text + "\nEnter: restart"
+		label.text = presentation.hud_text + ("\nEnter: restart" if join_room_id.is_empty() else "\nWaiting for host to restart")
 		if lifecycle_smoke:
 			if not bool(f.state.get("over", false)) or presentation.lifecycle.can_control():
 				on_error("Results did not disable controls")
@@ -151,6 +168,10 @@ func on_lobby(frame: Dictionary) -> void:
 		received_pose = false
 		send_elapsed = 0.0
 		release_pointer()
+	if phase == 10:
+		phase = 11
+		label.text = "Joined room. Waiting for host start (120-second limit)…"
+		return
 	if phase == 1:
 		var queued: Error
 		if lifecycle_smoke:
@@ -232,10 +253,7 @@ func _process(delta: float) -> void:
 		on_error("Lifecycle smoke timeout")
 		return
 	if phase == 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
-		if client.create_room() != OK:
-			on_error("Room creation could not be queued. Relaunch to reconnect.")
-			return
-		phase = 1
+		begin_room()
 	if phase != 3: return
 	camera.rotation = Vector3(pitch, yaw, 0)
 	send_elapsed += delta
