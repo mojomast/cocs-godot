@@ -1,6 +1,8 @@
 extends "res://world/viewer.gd"
 
 const Client = preload("res://net/client.gd")
+const SnapshotWatch = preload("res://net/snapshot_watch.gd")
+var snapshot_watch := SnapshotWatch.new()
 const Presentation = preload("res://world/presentation.gd")
 const Pickups = preload("res://world/pickups.gd")
 const CombatFeedback = preload("res://world/combat_feedback.gd")
@@ -49,6 +51,7 @@ func _ready() -> void:
 	client.lobby.connect(on_lobby)
 	client.started.connect(func(_f: Dictionary) -> void:
 		round_starts += 1
+		snapshot_watch.reset()
 		presentation.clear_round()
 		pickups.clear_round()
 		combat.clear_round()
@@ -78,6 +81,7 @@ func _ready() -> void:
 	label.text = "Connecting to isolated Node authority…"
 
 func on_error(message: String) -> void:
+	snapshot_watch.reset()
 	phase = -1
 	presentation.clear_round()
 	pickups.clear_round()
@@ -103,6 +107,7 @@ func on_lobby(frame: Dictionary) -> void:
 
 func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3: return
+	snapshot_watch.observe()
 	pickups.apply_state(frame.state)
 	presentation.apply_state(frame.state, client.actor_id)
 	var actor: Dictionary = presentation.local_actor
@@ -142,6 +147,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	combat_label.text = combat.text()
+	if phase == 3:
+		snapshot_watch.advance(delta)
+		if snapshot_watch.stale(): combat_label.text = snapshot_watch.message()
 	elapsed += delta
 	if smoke and elapsed > 20:
 		on_error("Session smoke timeout")
@@ -157,7 +165,7 @@ func _process(delta: float) -> void:
 	send_elapsed += delta
 	if send_elapsed < 1.0 / 60.0: return
 	send_elapsed = fmod(send_elapsed, 1.0 / 60.0)
-	var active: bool = presentation.lifecycle.can_control() and (smoke or (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and get_window().has_focus()))
+	var active: bool = not snapshot_watch.stale() and presentation.lifecycle.can_control() and (smoke or (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and get_window().has_focus()))
 	var forward: float = 1.0 if smoke else float(Input.is_physical_key_pressed(KEY_W)) - float(Input.is_physical_key_pressed(KEY_S))
 	var right: float = float(Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_A))
 	var controls: Dictionary = {"x": (-sin(yaw) * forward + cos(yaw) * right) if active else 0.0, "z": (-cos(yaw) * forward - sin(yaw) * right) if active else 0.0, "yaw":yaw, "pitch":pitch, "fire":active and (smoke or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))}
