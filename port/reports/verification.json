@@ -4,13 +4,13 @@
     {
       "gate": "toolchain-version",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--version"
       ],
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.015
+      "duration_seconds": 0.014
     },
     {
       "gate": "gate-runner-tests",
@@ -21,7 +21,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.307
+      "duration_seconds": 0.32
     },
     {
       "gate": "export-tests",
@@ -33,7 +33,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.913
+      "duration_seconds": 0.912
     },
     {
       "gate": "semantic-export",
@@ -44,7 +44,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.651
+      "duration_seconds": 0.647
     },
     {
       "gate": "source-tests",
@@ -61,12 +61,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.692
+      "duration_seconds": 1.744
     },
     {
       "gate": "godot-import",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -76,12 +76,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 2.227
+      "duration_seconds": 2.504
     },
     {
       "gate": "viewer-smoke",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -91,12 +91,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.363
+      "duration_seconds": 1.356
     },
     {
       "gate": "glb-import",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -106,12 +106,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.152
+      "duration_seconds": 0.141
     },
     {
       "gate": "input-queue",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -121,12 +121,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.143
+      "duration_seconds": 0.145
     },
     {
       "gate": "protocol-envelopes",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -136,12 +136,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.151
+      "duration_seconds": 0.147
     },
     {
       "gate": "packet-replay",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -151,7 +151,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.239
+      "duration_seconds": 0.242
     },
     {
       "gate": "native-live",
@@ -163,12 +163,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.036
+      "duration_seconds": 0.973
     },
     {
       "gate": "presentation-replay",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -178,12 +178,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.339
+      "duration_seconds": 0.236
     },
     {
       "gate": "round-boundaries",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -193,7 +193,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.141
+      "duration_seconds": 0.147
     },
     {
       "gate": "native-lifecycle",
@@ -205,12 +205,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 54.247
+      "duration_seconds": 48.21
     },
     {
       "gate": "combat-feedback",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -225,7 +225,7 @@
     {
       "gate": "local-lifecycle",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -235,12 +235,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.146
+      "duration_seconds": 0.154
     },
     {
       "gate": "pickup-presentation",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -250,12 +250,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.236
+      "duration_seconds": 0.246
     },
     {
       "gate": "control-safety",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -265,12 +265,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.141
+      "duration_seconds": 0.151
     },
     {
       "gate": "session-recovery",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -280,12 +280,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.15
+      "duration_seconds": 0.146
     },
     {
       "gate": "stall-controls",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -295,12 +295,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.141
+      "duration_seconds": 0.142
     },
     {
       "gate": "snapshot-watch",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -310,7 +310,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.147
+      "duration_seconds": 0.151
     },
     {
       "gate": "native-session",
@@ -322,7 +322,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.267
+      "duration_seconds": 1.275
     },
     {
       "gate": "two-native-clients",
@@ -333,12 +333,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.431
+      "duration_seconds": 1.317
     },
     {
       "gate": "motion-impairment",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -348,12 +348,12 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.144
+      "duration_seconds": 0.147
     },
     {
       "gate": "remote-motion",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -363,7 +363,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.15
+      "duration_seconds": 0.143
     },
     {
       "gate": "release-refused",
@@ -375,7 +375,7 @@
       "exit_code": 1,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.584
+      "duration_seconds": 0.549
     }
   ],
   "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732"

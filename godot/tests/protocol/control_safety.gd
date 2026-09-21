@@ -48,6 +48,14 @@ func _initialize() -> void:
 	s.presentation.lifecycle.status = "alive"
 	s.snapshot_watch.observe()
 	check(s.can_capture_pointer())
+	# Focus notifications must gate capture/look even if a click is queued.
+	s._notification(Node.NOTIFICATION_APPLICATION_FOCUS_OUT)
+	check(not s.can_capture_pointer())
+	var unfocused_yaw := s.yaw
+	s.update_look(Vector2(100, 0))
+	check(s.yaw == unfocused_yaw)
+	s._notification(Node.NOTIFICATION_APPLICATION_FOCUS_IN)
+	check(s.can_capture_pointer())
 	# 4: each capture precondition independently fails closed.
 	for phase: int in [-1,0,1,2,4,20]:
 		s.phase = phase

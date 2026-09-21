@@ -4,7 +4,7 @@ const Client = preload("res://net/client.gd")
 const ControlMath = preload("res://world/control_math.gd")
 
 func can_capture_pointer() -> bool:
-	return phase == 3 and received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control()
+	return application_focused and phase == 3 and received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control()
 
 func update_look(relative: Vector2) -> void:
 	if not can_capture_pointer() or not relative.is_finite(): return
@@ -51,9 +51,14 @@ func request_restart() -> void:
 func release_pointer() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
+var application_focused: bool = true
+
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		application_focused = false
 		release_pointer()
+	elif what == NOTIFICATION_APPLICATION_FOCUS_IN:
+		application_focused = true
 
 func advance_handshake(delta: float) -> bool:
 	if not is_finite(delta) or delta < 0.0: return false

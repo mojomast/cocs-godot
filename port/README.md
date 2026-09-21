@@ -2,6 +2,12 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Focus loss gates pointer capture and look
+
+Application focus notifications now explicitly gate capture eligibility and mouse-look updates. Focus return restores eligibility, not pointer capture; a fresh click is still required. Previously release alone left capture eligibility true while unfocused.
+
+Executed evidence: the new synthetic notification regression failed two assertions before the fix (exit 1). Afterward all 2,489 control-safety assertions and the complete `python3 tools/godot-dev/verify.py` passed, including live movement/fire, normal-rate results/restart and two native clients. These are injected focus notifications, not graphical operating-system focus acceptance. Both subagents' directories remain untouched.
+
 ## Authoritative round starts release pointer capture
 
 Round-start handling now releases interactive pointer capture even when no local results screen preceded the start. The existing reset logic is a named signal handler so regressions exercise the actual callback. Fresh snapshots reseed camera orientation but do not recapture the pointer; neutral inputs continue while awaiting the pose and afterward until an explicit click.
