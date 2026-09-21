@@ -2,6 +2,12 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Unassigned acknowledgement isolation
+
+Snapshot ACK lookup now requires a nonnegative assigned actor ID. The internal `-1` sentinel can no longer acquire acknowledgement progress from a wire `"-1"` key after roster revocation or connection reset. Snapshot ordering and buffering continue normally for unassigned clients, and actor zero still accepts its own ACKs.
+
+Executed regression evidence: the added synthetic cases failed before the fix (assertions 87 and 90), then `protocol-envelopes` passed all 95 assertions without engine errors. The complete `python3 tools/godot-dev/verify.py` suite passed, including recorded replay, normal-rate live session/results/restart and two native clients. This is defensive handling of synthetic ACK data, not an observed live-server defect. Visual/playable acceptance remains open.
+
 ## Unique roster actor ownership
 
 The native client now rejects a full lobby roster assigning the same non-null actor ID to different peers, before emitting a lobby signal or changing actor identity, acknowledgement progress, input sequence, or snapshot ordering. Actor zero is valid and receives the same uniqueness check; multiple unassigned/null spectator entries remain valid. Reordering a valid roster remains supported.

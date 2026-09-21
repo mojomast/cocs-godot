@@ -164,7 +164,9 @@ func decode_text(text: String) -> bool:
 			var seq: int = int(frame.get("seq", -1))
 			if seq <= last_snapshot_seq: return true
 			last_snapshot_seq = seq
-			last_ack = maxi(last_ack, int(frame.get("acks", {}).get(str(actor_id), 0)))
+			# -1 is an internal unassigned sentinel, never an ACK owner.
+			if actor_id >= 0:
+				last_ack = maxi(last_ack, int(frame.get("acks", {}).get(str(actor_id), 0)))
 			snapshots.append(frame)
 			if snapshots.size() > 32: snapshots.pop_front()
 			snapshot.emit(frame)

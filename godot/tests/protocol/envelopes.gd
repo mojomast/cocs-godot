@@ -89,6 +89,20 @@ func _initialize() -> void:
 	check(net.actor_id == 0 and net.last_ack == 0 and emitted[0] == 2)
 	check(net.decode_text('{"type":"lobby","players":[{"peerId":2,"actorId":1},{"peerId":1,"actorId":0}]}'))
 	check(net.actor_id == 0 and emitted[0] == 3)
+	# Unassigned clients have no ACK owner. The internal -1 sentinel must
+	# never become a wire identity, including before welcome or after revoke.
+	for reset_connection: bool in [false, true]:
+		if reset_connection: net.disconnect_server()
+		else: check(net.decode_text('{"type":"lobby","players":[]}'))
+		var next_seq: int = net.last_snapshot_seq + 1
+		check(net.decode_text(JSON.stringify({"type":"snapshot", "seq":next_seq, "acks":{"-1":999, "0":80}, "state":{"mapId":"meridian-exchange"}})))
+		check(net.actor_id == -1 and net.last_ack == 0)
+		check(net.last_snapshot_seq == next_seq and not net.snapshots.is_empty())
+	# Actor zero remains a real identity, not an unassigned sentinel.
+	check(net.decode_text('{"type":"welcome","v":3,"roomId":"x","peerId":1}'))
+	check(net.decode_text('{"type":"lobby","players":[{"peerId":1,"actorId":0}]}'))
+	check(net.decode_text('{"type":"snapshot","seq":2,"acks":{"-1":999,"0":4},"state":{"mapId":"meridian-exchange"}}'))
+	check(net.last_ack == 4)
 	net.free()
 	print("PORT_ENVELOPES_OK checks=", checks, " synthetic=true")
 	quit(0)
