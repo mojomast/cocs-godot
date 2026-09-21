@@ -2,6 +2,8 @@ extends "res://world/viewer.gd"
 
 const Client = preload("res://net/client.gd")
 const Presentation = preload("res://world/presentation.gd")
+const Pickups = preload("res://world/pickups.gd")
+var pickups := Pickups.new()
 var client := Client.new()
 var presentation := Presentation.new()
 var phase: int = 0
@@ -19,6 +21,8 @@ func _ready() -> void:
 	super._ready()
 	if not catalog.entries.has("meridian-exchange"): return
 	load_map("meridian-exchange")
+	world.get_node("StaticPickupMarkers").hide()
+	add_child(pickups)
 	selector.disabled = true
 	add_child(client)
 	add_child(presentation)
@@ -32,11 +36,13 @@ func _ready() -> void:
 	client.lobby.connect(on_lobby)
 	client.started.connect(func(_f: Dictionary) -> void:
 		presentation.clear_round()
+		pickups.clear_round()
 		received_pose = false
 		phase = 3)
 	client.snapshot.connect(on_snapshot)
 	client.results.connect(func(f: Dictionary) -> void:
 		presentation.apply_state(f.state, client.actor_id)
+		pickups.apply_state(f.state)
 		phase = 4
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		label.text = presentation.hud_text + "\nEnter: restart")
@@ -62,6 +68,7 @@ func on_lobby(frame: Dictionary) -> void:
 		client.send_frame({"type":"start"})
 
 func on_snapshot(frame: Dictionary) -> void:
+	pickups.apply_state(frame.state)
 	presentation.apply_state(frame.state, client.actor_id)
 	var actor: Dictionary = presentation.local_actor
 	if actor.is_empty(): return
@@ -74,8 +81,8 @@ func on_snapshot(frame: Dictionary) -> void:
 	moved = moved or camera.position.distance_to(initial_position) > 0.5
 	fired = fired or int(actor.get("shots", 0)) > 0
 	label.text = "NODE-AUTHORITATIVE PROTOTYPE · diagnostic geometry, no prediction\n" + presentation.hud_text + "\nClick: capture/fire · Esc: release · WASD: move · Space: jump · R: reload\nShift: sprint · Ctrl: crouch · E: interact · F: mobility | ACK %d" % client.last_ack
-	if smoke and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10:
-		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses)
+	if smoke and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10 and not pickups.markers.is_empty() and not world.get_node("StaticPickupMarkers").visible:
+		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true")
 		client.disconnect_server()
 		get_tree().quit(0)
 

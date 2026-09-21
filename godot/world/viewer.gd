@@ -120,9 +120,12 @@ func load_map(id: String) -> bool:
 	var spawn_mat := material(Color(0.25, 1.0, 0.45))
 	for point: Array in map.get("spawns", []):
 		box(Vector3(point[0], support_height(map, point[0], point[1]) + 1.5, point[1]), Vector3(0.65, 3, 0.65), spawn_mat, world)
+	var pickup_markers := Node3D.new()
+	pickup_markers.name = "StaticPickupMarkers"
+	world.add_child(pickup_markers)
 	var pickup_mat := material(Color(1, 0.75, 0.15))
 	for pickup: Array in map.get("pickups", []):
-		box(Vector3(pickup[1], support_height(map, pickup[1], pickup[2]) + 1, pickup[2]), Vector3(0.7, 0.7, 0.7), pickup_mat, world)
+		box(Vector3(pickup[1], support_height(map, pickup[1], pickup[2]) + 1, pickup[2]), Vector3(0.7, 0.7, 0.7), pickup_mat, pickup_markers)
 	box(Vector3(5, 0.3, 0), Vector3(10, 0.3, 0.3), material(Color.RED), world)
 	box(Vector3(0, 5, 0), Vector3(0.3, 10, 0.3), material(Color.GREEN), world)
 	box(Vector3(0, 0.3, -5), Vector3(0.3, 0.3, 10), material(Color.BLUE), world)
