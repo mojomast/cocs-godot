@@ -1,0 +1,94 @@
+{
+  "name": "positive",
+  "status": "PASS",
+  "wire": {
+    "guest": {
+      "join": 1,
+      "input": 13
+    },
+    "snapshots": 7,
+    "starts": 1,
+    "positiveAcks": 6
+  },
+  "samples": [
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 0.391913666666666,
+      "pose": false,
+      "seconds": 0.505764999999999,
+      "snapshots": 0,
+      "starts": 0
+    },
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 0.89563111111111,
+      "pose": false,
+      "seconds": 1.00955088888889,
+      "snapshots": 0,
+      "starts": 0
+    },
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 1.39927766666666,
+      "pose": false,
+      "seconds": 1.51319744444444,
+      "snapshots": 0,
+      "starts": 0
+    },
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 1.90300066666666,
+      "pose": false,
+      "seconds": 2.016863,
+      "snapshots": 0,
+      "starts": 0
+    },
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 2.40679255555556,
+      "pose": false,
+      "seconds": 2.520601,
+      "snapshots": 0,
+      "starts": 0
+    },
+    {
+      "ack": 10,
+      "actor": 1,
+      "error": "",
+      "phase": 3,
+      "phase_seconds": 0,
+      "pose": true,
+      "seconds": 3.024277,
+      "snapshots": 6,
+      "starts": 1
+    }
+  ],
+  "cleanup": {
+    "native": {
+      "pid": 1763556,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    "serverClosed": true,
+    "rejectorClosed": true
+  },
+  "serverPort": 44723,
+  "roomId": "Z58H",
+  "hostStartAfterSampleSeconds": 2.521601
+}

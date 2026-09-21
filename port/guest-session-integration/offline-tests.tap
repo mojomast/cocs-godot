@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: synthetic: bounded native sample parsing
+ok 1 - synthetic: bounded native sample parsing
+  ---
+  duration_ms: 1.007416
+  type: 'test'
+  ...
+# Subtest: synthetic: role assertion rejects host/start/restart and unknown commands
+ok 2 - synthetic: role assertion rejects host/start/restart and unknown commands
+  ---
+  duration_ms: 0.871602
+  type: 'test'
+  ...
+# Subtest: synthetic: waiting alone or wire snapshots alone cannot prove positive
+ok 3 - synthetic: waiting alone or wire snapshots alone cannot prove positive
+  ---
+  duration_ms: 2.217011
+  type: 'test'
+  ...
+# Subtest: synthetic: real wall-clock deadline and predicate errors
+ok 4 - synthetic: real wall-clock deadline and predicate errors
+  ---
+  duration_ms: 52.585215
+  type: 'test'
+  ...
+# Subtest: offline: owned child cleanup after successful readiness and failed deadline
+ok 5 - offline: owned child cleanup after successful readiness and failed deadline
+  ---
+  duration_ms: 106.386256
+  type: 'test'
+  ...
+# Subtest: offline: escalation reaps only an owned SIGTERM-resistant child
+ok 6 - offline: escalation reaps only an owned SIGTERM-resistant child
+  ---
+  duration_ms: 2054.032737
+  type: 'test'
+  ...
+# Subtest: offline: cleanup tolerates missing executable
+ok 7 - offline: cleanup tolerates missing executable
+  ---
+  duration_ms: 2.810171
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2256.992908
