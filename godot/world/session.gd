@@ -62,6 +62,14 @@ func emit_native_trace(record: Dictionary) -> void:
 	if trace_count == TRACE_LIMIT:
 		print('PORT_NATIVE_TRACE {"schema":1,"event":"limit","complete":false}')
 
+func emit_boundary_trace(event: String) -> void:
+	if not trace_enabled or trace_count >= TRACE_LIMIT: return
+	# Never serialize error messages: transport details may contain credentials.
+	emit_native_trace({"schema":1, "event":event, "round":round_starts,
+		"actor_id":client.actor_id, "phase":phase, "complete":false,
+		"pose_present":received_pose,
+		"pointer_captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED})
+
 func begin_room() -> void:
 	var result: Error = client.create_room() if join_room_id.is_empty() else client.join_room(join_room_id)
 	if result != OK:
@@ -183,6 +191,7 @@ func on_started(_frame: Dictionary) -> void:
 	moved = false
 	fired = false
 	phase = 3
+	emit_boundary_trace("round_start")
 
 func on_error(message: String) -> void:
 	snapshot_watch.reset()
@@ -194,6 +203,7 @@ func on_error(message: String) -> void:
 	client.disconnect_server()
 	label.text = message
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	emit_boundary_trace("session_error")
 	if smoke or lifecycle_smoke:
 		push_error(message)
 		get_tree().quit(1)

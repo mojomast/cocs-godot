@@ -1,5 +1,12 @@
 extends SceneTree
 const Session = preload("res://world/session.gd")
+class RecordingSession extends Session:
+	var records: Array[Dictionary] = []
+	func emit_native_trace(record: Dictionary) -> void:
+		if trace_enabled and trace_count < TRACE_LIMIT:
+			records.append(record.duplicate(true))
+		super.emit_native_trace(record)
+
 var checks := 0
 var failures := 0
 func check(ok: bool) -> void:
@@ -54,5 +61,27 @@ func _initialize() -> void:
 	s.emit_snapshot_trace(false)
 	check(s.trace_count == s.TRACE_LIMIT)
 	s.free()
+	var boundary := RecordingSession.new()
+	for node: Node in [boundary.camera,boundary.label,boundary.selector,boundary.client,boundary.presentation,boundary.pickups,boundary.combat,boundary.combat_label]: boundary.add_child(node)
+	boundary.on_started({})
+	check(boundary.records.is_empty() and boundary.trace_count == 0)
+	boundary.trace_enabled = true
+	boundary.received_pose = true
+	boundary.on_started({})
+	check(boundary.records.size() == 1 and boundary.trace_count == 1)
+	var started: Dictionary = boundary.records.back()
+	check(started.event == "round_start" and started.round == 2 and started.phase == 3)
+	check(not started.pose_present and not started.pointer_captured and not started.complete)
+	boundary.on_error("secret endpoint must not appear in trace")
+	check(boundary.records.size() == 2 and boundary.trace_count == 2)
+	var failed: Dictionary = boundary.records.back()
+	check(failed.event == "session_error" and failed.phase == -1 and not failed.complete)
+	check(not failed.pose_present and not failed.pointer_captured)
+	check(not JSON.stringify(failed).contains("secret"))
+	boundary.trace_count = boundary.TRACE_LIMIT
+	boundary.on_started({})
+	boundary.on_error("another private error")
+	check(boundary.records.size() == 2 and boundary.trace_count == boundary.TRACE_LIMIT)
+	boundary.free()
 	print("PORT_NATIVE_TRACE_TEST checks=",checks," failures=",failures)
 	quit(1 if failures else 0)

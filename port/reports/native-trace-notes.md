@@ -12,4 +12,8 @@ Input queue follow-up: `input_queue` records now capture the allowlisted compute
 
 Executed `python3 tools/godot-dev/verify.py` after this follow-up: all implemented gates passed. The native-trace test now passes 19 synthetic assertions, adding input field selection, independent copied values, successful and rejected queue results, context and shared-budget emission. These exercise trace serialization; live gates still run with tracing disabled and do not establish live input-trace correlation.
 
-Next: explicit lifecycle/completion markers and live enabled-trace correlation, then coordinate normal-rate native victim acceptance. No subagent directories changed. No gameplay rules or default launch behavior changed.
+Next: recording completion and connection-boundary semantics and live enabled-trace correlation, then coordinate normal-rate native victim acceptance. No subagent directories changed. No gameplay rules or default launch behavior changed.
+
+Boundary follow-up: opt-in `round_start` and `session_error` records now share the existing sequence, monotonic clock and 10,000-record budget. They are emitted after the actual callback resets state/releases capture (and disconnects on error). They include round, actor, phase, pose and engine pointer state; they never include error message text or endpoints. Both carry `complete=false`: neither is a successful recording completion or proof of a transport-close handshake. Once capped, boundary emission is also suppressed; the existing limit marker means later boundaries are unavailable.
+
+Executed the focused native-trace script: 28 assertions passed, including disabled boundary emission, real callback state, privacy and cap suppression. Executed `python3 tools/godot-dev/verify.py`: every implemented gate passed, including live native tests with tracing disabled. Boundary tests remain synthetic; no live enabled-trace or graphical acceptance is claimed.
