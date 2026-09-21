@@ -134,6 +134,12 @@ Both clients independently require four presented actors (two humans and two exi
 
 This closes the narrow two-native-client transport/presentation smoke gate, not multiplayer playable acceptance: it is headless, loopback, a short movement run, and does not test adverse networks, full match lifecycle, graphical input, reconnect recovery or a join-menu UI. The interactive launcher is unchanged. Original models/audio, visual acceptance, pickup/death/respawn/results/restart and prediction remain open.
 
+## Combat feedback increment
+
+`world/combat_feedback.gd` consumes deduplicated server shot/damage events. It creates source-endpoint diagnostic line tracers (128 maximum, 120ms lifetime) and brief hit-confirmation/damage HUD messages. Environmental and self damage never confirm a hit on another actor. Results/new rounds clear effects. This is not original weapon presentation, projectile rendering or audio.
+
+Native execution passed 13 explicitly synthetic checks including actual mesh endpoints, decoder deduplication, event identity reuse after reset, null-source attribution, bounds and expiry. Genuine recorded events exercised 610 shots and 32 local hit confirmations. The normal-rate live session now requires event-driven feedback and passed with one confirmed shot event, movement, ACK 14 and 76 remote poses. No graphical appearance acceptance is claimed.
+
 ## Local lifecycle increment
 
 `world/local_lifecycle.gd` derives alive/dead/waiting/results strictly from authoritative snapshots. Dead players send neutral movement/action controls; the HUD shows the server-provided respawn timer without locally predicting its completion. First spawn and respawn reseed mouse look from the server pose; ordinary snapshots preserve immediate local mouse look. Missing local actors gate controls, and new rounds reset transition state.

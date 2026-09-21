@@ -3,6 +3,9 @@ extends "res://world/viewer.gd"
 const Client = preload("res://net/client.gd")
 const Presentation = preload("res://world/presentation.gd")
 const Pickups = preload("res://world/pickups.gd")
+const CombatFeedback = preload("res://world/combat_feedback.gd")
+var combat := CombatFeedback.new()
+var combat_label := Label.new()
 var pickups := Pickups.new()
 var client := Client.new()
 var presentation := Presentation.new()
@@ -26,6 +29,12 @@ func _ready() -> void:
 	selector.disabled = true
 	add_child(client)
 	add_child(presentation)
+	add_child(combat)
+	label.get_parent().add_child(combat_label)
+	combat_label.position = Vector2(24, 170)
+	combat_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	client.events.connect(func(items: Array) -> void:
+		if phase == 3: combat.apply_events(items, client.actor_id))
 	presentation.interpolate_remote = true
 	camera.rotation_order = EULER_ORDER_YXZ
 	var endpoint: String = ""
@@ -37,6 +46,7 @@ func _ready() -> void:
 	client.started.connect(func(_f: Dictionary) -> void:
 		presentation.clear_round()
 		pickups.clear_round()
+		combat.clear_round()
 		received_pose = false
 		phase = 3)
 	client.snapshot.connect(on_snapshot)
@@ -44,6 +54,7 @@ func _ready() -> void:
 		presentation.apply_state(f.state, client.actor_id)
 		pickups.apply_state(f.state)
 		phase = 4
+		combat.clear_round()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		label.text = presentation.hud_text + "\nEnter: restart")
 	if endpoint.is_empty() or client.connect_server(endpoint, catalog.entries, current_id) != OK:
@@ -81,8 +92,8 @@ func on_snapshot(frame: Dictionary) -> void:
 	moved = moved or camera.position.distance_to(initial_position) > 0.5
 	fired = fired or int(actor.get("shots", 0)) > 0
 	label.text = "NODE-AUTHORITATIVE PROTOTYPE · diagnostic geometry, no prediction\n" + presentation.hud_text + "\nClick: capture/fire · Esc: release · WASD: move · Space: jump · R: reload\nShift: sprint · Ctrl: crouch · E: interact · F: mobility | ACK %d" % client.last_ack
-	if smoke and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10 and not pickups.markers.is_empty() and not world.get_node("StaticPickupMarkers").visible:
-		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true")
+	if smoke and combat.shots > 0 and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10 and not pickups.markers.is_empty() and not world.get_node("StaticPickupMarkers").visible:
+		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true combat_shots=", combat.shots)
 		client.disconnect_server()
 		get_tree().quit(0)
 
@@ -99,6 +110,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		pitch = clampf(pitch - event.relative.y * 0.003, -1.45, 1.45)
 
 func _process(delta: float) -> void:
+	combat_label.text = combat.text()
 	elapsed += delta
 	if smoke and elapsed > 20:
 		on_error("Session smoke timeout")
