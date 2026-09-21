@@ -41,9 +41,20 @@ func trace_snapshot(reseeded: bool) -> Dictionary:
 		"pointer_captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,
 		"control_eligible":can_capture_pointer(), "focused":application_focused}
 
+func trace_input(controls: Dictionary, result: Error) -> Dictionary:
+	var selected: Dictionary = {}
+	for key: String in ["x", "z", "yaw", "pitch", "fire", "jump", "reload", "sprint", "crouch", "interact", "mobility"]:
+		selected[key] = controls.get(key, null)
+	return {"schema":1, "event":"input_queue", "round":round_starts,
+		"actor_id":client.actor_id, "ack":client.last_ack, "phase":phase,
+		"controls":selected, "queue_result":int(result), "queued":result == OK}
+
 func emit_snapshot_trace(reseeded: bool) -> void:
 	if not trace_enabled or trace_count >= TRACE_LIMIT: return
-	var record := trace_snapshot(reseeded)
+	emit_native_trace(trace_snapshot(reseeded))
+
+func emit_native_trace(record: Dictionary) -> void:
+	if not trace_enabled or trace_count >= TRACE_LIMIT: return
 	record["sequence"] = trace_count
 	record["monotonic_usec"] = Time.get_ticks_usec()
 	print("PORT_NATIVE_TRACE ", JSON.stringify(record))
@@ -295,7 +306,10 @@ func _process(delta: float) -> void:
 	var controls: Dictionary = {"x":direction.x, "z":direction.y, "yaw":yaw, "pitch":pitch, "fire":active and (smoke or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))}
 	for binding: Array in [["jump",KEY_SPACE],["reload",KEY_R],["sprint",KEY_SHIFT],["crouch",KEY_CTRL],["interact",KEY_E],["mobility",KEY_F]]:
 		controls[binding[0]] = active and Input.is_physical_key_pressed(binding[1])
-	if client.send_input(controls) != OK:
+	var queue_result: Error = client.send_input(controls)
+	if trace_enabled and trace_count < TRACE_LIMIT:
+		emit_native_trace(trace_input(controls, queue_result))
+	if queue_result != OK:
 		on_error("Input could not be queued. Relaunch to reconnect.")
 
 func _exit_tree() -> void:

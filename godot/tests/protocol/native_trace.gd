@@ -36,6 +36,18 @@ func _initialize() -> void:
 	s.phase = 4
 	s.on_snapshot({"state":{"actors":[],"pickups":[],"t":0}})
 	check(s.trace_count == 1)
+	var controls := {"x":0.0,"z":0.0,"fire":false,"private":"must not leak"}
+	var queued := s.trace_input(controls, OK)
+	check(queued.event == "input_queue" and queued.queued and queued.queue_result == OK)
+	check(queued.controls.x == 0.0 and not queued.controls.fire)
+	check(not JSON.stringify(queued).contains("private"))
+	controls.x = 1.0
+	check(queued.controls.x == 0.0)
+	var rejected := s.trace_input(controls, ERR_CONNECTION_ERROR)
+	check(not rejected.queued and rejected.queue_result == ERR_CONNECTION_ERROR)
+	check(rejected.actor_id == 7 and rejected.phase == 4)
+	s.emit_native_trace(queued)
+	check(s.trace_count == 2)
 	s.trace_count = s.TRACE_LIMIT - 1
 	s.emit_snapshot_trace(false)
 	check(s.trace_count == s.TRACE_LIMIT)
