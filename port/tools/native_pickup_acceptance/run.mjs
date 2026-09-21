@@ -47,7 +47,8 @@ try {
   symlinkSync(resolve(deps),resolve(temp,'node_modules'),'dir');
   const importer=launch(binary,['--headless','--path',resolve(temp,'godot'),'--editor','--import'],'import',60000);
   await wait(()=>importer.exitCode!==null||importer.signalCode!==null,65000,'import');await importer.closed;assert.equal(importer.exitCode,0);
-  display=launch('Xvfb',['-displayfd','3','-screen','0','960x640x24','-nolisten','tcp'],'xvfb',115000,{stdio:['ignore','pipe','pipe','pipe']});
+  // Linux abstract local socket avoids changing shared /tmp/.X11-unix permissions.
+  display=launch('Xvfb',['-displayfd','3','-screen','0','960x640x24','-nolisten','tcp','-nolisten','unix'],'xvfb',115000,{stdio:['ignore','pipe','pipe','pipe']});
   let displayNumber='';display.stdio[3].on('data',d=>displayNumber+=d);
   await wait(()=>/^\d+\n$/.test(displayNumber),5000,'private Xvfb display');
   env.DISPLAY=`:${displayNumber.trim()}`;report.privateDisplay=env.DISPLAY;
