@@ -1,6 +1,17 @@
 extends "res://world/viewer.gd"
 
 const Client = preload("res://net/client.gd")
+const ControlMath = preload("res://world/control_math.gd")
+
+func can_capture_pointer() -> bool:
+	return phase == 3 and received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control()
+
+func update_look(relative: Vector2) -> void:
+	if not can_capture_pointer() or not relative.is_finite(): return
+	var angles := ControlMath.look(yaw - relative.x * 0.003, pitch - relative.y * 0.003)
+	yaw = angles.x
+	pitch = angles.y
+
 const SnapshotWatch = preload("res://net/snapshot_watch.gd")
 var snapshot_watch := SnapshotWatch.new()
 const Presentation = preload("res://world/presentation.gd")
@@ -44,6 +55,7 @@ func _notification(what: int) -> void:
 		release_pointer()
 
 func advance_handshake(delta: float) -> bool:
+	if not is_finite(delta) or delta < 0.0: return false
 	if phase != watched_phase:
 		watched_phase = phase
 		phase_elapsed = 0.0
@@ -144,11 +156,16 @@ func on_snapshot(frame: Dictionary) -> void:
 	pickups.apply_state(frame.state)
 	presentation.apply_state(frame.state, client.actor_id)
 	var actor: Dictionary = presentation.local_actor
-	if actor.is_empty(): return
+	if actor.is_empty():
+		received_pose = false
+		send_elapsed = 0.0
+		release_pointer()
+		return
 	camera.position = presentation.eye_position()
 	if not received_pose or presentation.lifecycle.reseed_look:
-		yaw = float(actor.yaw)
-		pitch = float(actor.pitch)
+		var angles := ControlMath.look(float(actor.yaw), float(actor.pitch))
+		yaw = angles.x
+		pitch = angles.y
 		initial_position = camera.position
 		received_pose = true
 	moved = moved or camera.position.distance_to(initial_position) > 0.5
@@ -170,11 +187,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_ESCAPE: release_pointer()
 		if event.keycode == KEY_ENTER: request_restart()
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and phase == 3 and presentation.lifecycle.can_control():
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and can_capture_pointer():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		yaw -= event.relative.x * 0.003
-		pitch = clampf(pitch - event.relative.y * 0.003, -1.45, 1.45)
+		update_look(event.relative)
 
 func _process(delta: float) -> void:
 	if not advance_handshake(delta): return
@@ -202,7 +218,8 @@ func _process(delta: float) -> void:
 	var active: bool = not snapshot_watch.stale() and presentation.lifecycle.can_control() and (smoke or (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and get_window().has_focus()))
 	var forward: float = 1.0 if smoke else float(Input.is_physical_key_pressed(KEY_W)) - float(Input.is_physical_key_pressed(KEY_S))
 	var right: float = float(Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_A))
-	var controls: Dictionary = {"x": (-sin(yaw) * forward + cos(yaw) * right) if active else 0.0, "z": (-cos(yaw) * forward - sin(yaw) * right) if active else 0.0, "yaw":yaw, "pitch":pitch, "fire":active and (smoke or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))}
+	var direction := ControlMath.movement(yaw, forward, right) if active else Vector2.ZERO
+	var controls: Dictionary = {"x":direction.x, "z":direction.y, "yaw":yaw, "pitch":pitch, "fire":active and (smoke or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))}
 	for binding: Array in [["jump",KEY_SPACE],["reload",KEY_R],["sprint",KEY_SHIFT],["crouch",KEY_CTRL],["interact",KEY_E],["mobility",KEY_F]]:
 		controls[binding[0]] = active and Input.is_physical_key_pressed(binding[1])
 	client.send_input(controls)

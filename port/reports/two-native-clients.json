@@ -16,7 +16,7 @@
         1
       ],
       "peer_id": 1,
-      "remote_poses": 144
+      "remote_poses": 138
     },
     {
       "ack": 17,
@@ -28,7 +28,7 @@
         1
       ],
       "peer_id": 2,
-      "remote_poses": 144
+      "remote_poses": 141
     }
   ]
 }

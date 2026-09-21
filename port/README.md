@@ -2,6 +2,19 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Eight-part native control safety batch
+
+1. Native movement axes are normalized before rotation, so diagonal keyboard input has unit magnitude rather than exceeding cardinal input. Authority stays on Node.
+2. A shared control-math helper rejects nonfinite movement and sanitizes nonfinite look seeds.
+3. Look yaw wraps to a bounded revolution and pitch remains clamped, both on authoritative pose seeding and mouse motion.
+4. Pointer capture now requires an active round, received local pose, fresh snapshot, and controllable lifecycle.
+5. Mouse look ignores stale/dead/results/waiting states and nonfinite relative motion; fresh eligible input resumes without replaying discarded deltas.
+6. Invalid or negative frame deltas are ignored before timers or session processing can be poisoned.
+7. Missing local actors clear the pose latch and input-send accumulator and release the pointer; subsequent valid poses reseed look.
+8. Added a permanent `control-safety` verifier gate covering these boundaries and 1,000 mixed fresh/stale look cycles. Its assertion harness accumulates failures and exits nonzero rather than allowing a later success exit to mask them.
+
+Executed evidence: full `python3 tools/godot-dev/verify.py` passed, including live movement/fire, normal-rate results/restart, recorded replay and two native clients. The new suite passed 2,121 synthetic assertions. Its initial run exposed an overly strict test comparison at float32 +/-PI; a 1e-6 boundary tolerance resolved that test defect. These tests do not establish real graphical focus/mouse behavior, internet impairment, or playable acceptance. No source gameplay/server rules, dependency locks or map selection changed. Original assets/audio, live intentional pickup/death/respawn acceptance, graphical review and prediction remain open.
+
 ## Session recovery and focus batch
 
 The actual native session now bounds each connection/create/configuration/start waiting phase to 15 seconds, clears presentation and disconnects on expiry, and reports a relaunch instruction. This is a provisional per-phase deadline, not automatic reconnect. Room creation, configuration and initial start queue failures now fail explicitly instead of advancing into a silent wait.
