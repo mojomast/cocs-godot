@@ -1,0 +1,94 @@
+{
+  "name": "positive",
+  "status": "PASS",
+  "wire": {
+    "guest": {
+      "join": 1,
+      "input": 13
+    },
+    "snapshots": 7,
+    "starts": 1,
+    "positiveAcks": 6
+  },
+  "samples": [
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 0.385491666666666,
+      "pose": false,
+      "seconds": 0.500732,
+      "snapshots": 0,
+      "starts": 0
+    },
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 0.889196666666666,
+      "pose": false,
+      "seconds": 1.004435,
+      "snapshots": 0,
+      "starts": 0
+    },
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 1.39290266666667,
+      "pose": false,
+      "seconds": 1.508168,
+      "snapshots": 0,
+      "starts": 0
+    },
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 1.89660466666667,
+      "pose": false,
+      "seconds": 2.011835,
+      "snapshots": 0,
+      "starts": 0
+    },
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "",
+      "phase": 11,
+      "phase_seconds": 2.40029666666667,
+      "pose": false,
+      "seconds": 2.515524,
+      "snapshots": 0,
+      "starts": 0
+    },
+    {
+      "ack": 9,
+      "actor": 1,
+      "error": "",
+      "phase": 3,
+      "phase_seconds": 0,
+      "pose": true,
+      "seconds": 3.01927744444445,
+      "snapshots": 6,
+      "starts": 1
+    }
+  ],
+  "cleanup": {
+    "native": {
+      "pid": 1810837,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    "serverClosed": true,
+    "rejectorClosed": true
+  },
+  "serverPort": 40343,
+  "roomId": "LWV7",
+  "hostStartAfterSampleSeconds": 2.516524
+}

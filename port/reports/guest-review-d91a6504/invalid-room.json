@@ -1,0 +1,49 @@
+{
+  "name": "invalid-room",
+  "status": "PASS",
+  "wire": {
+    "guest": {
+      "join": 1
+    },
+    "snapshots": 0,
+    "starts": 0,
+    "positiveAcks": 0,
+    "error": "room not found: absent-d91a6504-971d-4b40-bb61-704258147901"
+  },
+  "samples": [
+    {
+      "ack": 0,
+      "actor": -1,
+      "error": "room not found: absent-d91a6504-971d-4b40-bb61-704258147901",
+      "phase": -1,
+      "phase_seconds": 0,
+      "pose": false,
+      "seconds": 0.505726999999999,
+      "snapshots": 0,
+      "starts": 0
+    }
+  ],
+  "cleanup": {
+    "native": {
+      "pid": 1811051,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    "serverClosed": true,
+    "rejectorClosed": true
+  },
+  "serverPort": 38973,
+  "roomId": "REMH",
+  "observedError": {
+    "ack": 0,
+    "actor": -1,
+    "error": "room not found: absent-d91a6504-971d-4b40-bb61-704258147901",
+    "phase": -1,
+    "phase_seconds": 0,
+    "pose": false,
+    "seconds": 0.505726999999999,
+    "snapshots": 0,
+    "starts": 0
+  }
+}
