@@ -139,6 +139,35 @@ func _initialize() -> void:
 	pending._process(5.0)
 	check(probe.packets.size() == 1)
 	check(pending.send_elapsed < 1.0 / 60.0)
+	# Lobby identity changes must invalidate the previous actor's control pose.
+	pending.smoke = true
+	for actor_id: int in [7, 0, -1, 12]:
+		pending.pose_actor_id = 99
+		pending.received_pose = true
+		pending.presentation.lifecycle.status = "alive"
+		pending.snapshot_watch.observe()
+		pending.client.actor_id = actor_id
+		pending.send_elapsed = 0.01
+		pending.on_lobby({})
+		check(not pending.received_pose)
+		check(not pending.can_capture_pointer())
+		check(pending.send_elapsed == 0.0)
+		probe.packets.clear()
+		pending._process(1.0 / 60.0)
+		check(probe.packets.size() == 1)
+		check(not probe.packets.back().fire and probe.packets.back().x == 0 and probe.packets.back().z == 0)
+		pending.send_elapsed = 0.01
+		pending.on_lobby({})
+		check(pending.send_elapsed == 0.01) # Repeated rosters cannot starve neutral sends.
+	# A fresh pose binds to the new identity and reseeds look; unchanged rosters preserve it.
+	pending.smoke = false
+	pending.on_snapshot({"state":{"actors":[{"id":12,"x":0,"y":0,"z":0,"yaw":0.7,"pitch":0.2,"dead":0}],"pickups":[],"t":500}})
+	check(pending.received_pose and pending.pose_actor_id == 12)
+	check(is_equal_approx(pending.yaw,0.7) and is_equal_approx(pending.pitch,0.2))
+	pending.send_elapsed = 0.01
+	pending.on_lobby({})
+	check(pending.received_pose and pending.send_elapsed == 0.01)
+	check(pending.can_capture_pointer())
 	pending.free()
 	if failures > 0:
 		quit(1)

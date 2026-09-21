@@ -28,6 +28,7 @@ var send_elapsed: float = 0
 var yaw: float = 0
 var pitch: float = 0
 var received_pose: bool = false
+var pose_actor_id: int = -1
 var smoke: bool = false
 var initial_position := Vector3.ZERO
 var moved: bool = false
@@ -134,6 +135,12 @@ func on_error(message: String) -> void:
 		get_tree().quit(1)
 
 func on_lobby(frame: Dictionary) -> void:
+	# Identity has already been updated by the validated network roster.
+	# Never use the previous actor's pose while waiting for the new snapshot.
+	if received_pose and pose_actor_id != client.actor_id:
+		received_pose = false
+		send_elapsed = 0.0
+		release_pointer()
 	if phase == 1:
 		var queued: Error
 		if lifecycle_smoke:
@@ -170,6 +177,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		pitch = angles.y
 		initial_position = camera.position
 		received_pose = true
+	pose_actor_id = client.actor_id
 	moved = moved or camera.position.distance_to(initial_position) > 0.5
 	fired = fired or int(actor.get("shots", 0)) > 0
 	if lifecycle_smoke and round_starts == 2 and round_results == 1 and client.last_ack > 10:

@@ -2,6 +2,12 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Actor reassignment control-pose isolation
+
+The session now associates each received local pose with its actor ID. A validated lobby that reassigns or revokes that identity immediately clears control eligibility and releases pointer capture, rather than permitting the old pose to drive the newly assigned actor until the next snapshot. Neutral packets continue; repeated rosters do not reset their cadence. A fresh local snapshot binds the new identity and reseeds look. Unchanged identities preserve the pose and accumulator.
+
+Executed evidence: the new synthetic actual-session regression failed before the behavior fix (exit 1). Afterward, all 2,397 control-safety assertions and the complete `python3 tools/godot-dev/verify.py` passed, including live movement/fire, normal-rate results/restart and two native clients. Added cases cover positive IDs, actor zero, revocation, neutral output, repeated rosters and fresh-pose recovery. Reassignment itself was injected through session callbacks, not exercised on the live server. Visual/playable acceptance and original assets/audio remain open; server gameplay, dependencies and map scope are unchanged.
+
 ## Neutral cadence and durable verification batch
 
 Repeated absent-actor snapshots previously reset the send accumulator on every arrival. The new actual-session regression reproduced starvation at 120 and 240 FPS (exit 1 before the fix). Reset now occurs only when a previously available pose is lost. Tests exercise 30/60/120/240 FPS, neutral packet contents, bounded send rate and a long frame without backlog replay. Control safety now passes 2,369 synthetic assertions; this is not live actor-removal acceptance.
