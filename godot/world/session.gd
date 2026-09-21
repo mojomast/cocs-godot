@@ -90,17 +90,7 @@ func _ready() -> void:
 	lifecycle_smoke = "--lifecycle-smoke" in OS.get_cmdline_user_args()
 	client.connection_error.connect(on_error)
 	client.lobby.connect(on_lobby)
-	client.started.connect(func(_f: Dictionary) -> void:
-		round_starts += 1
-		snapshot_watch.reset()
-		presentation.clear_round()
-		pickups.clear_round()
-		combat.clear_round()
-		received_pose = false
-		send_elapsed = 0.0
-		moved = false
-		fired = false
-		phase = 3)
+	client.started.connect(on_started)
 	client.snapshot.connect(on_snapshot)
 	client.results.connect(func(f: Dictionary) -> void:
 		round_results += 1
@@ -119,6 +109,21 @@ func _ready() -> void:
 		on_error("A local launcher endpoint is required")
 		return
 	label.text = "Connecting to isolated Node authority…"
+
+func on_started(_frame: Dictionary) -> void:
+	# A host can start a new round without this client visiting results.
+	# Never carry interactive capture across an authoritative round boundary.
+	release_pointer()
+	round_starts += 1
+	snapshot_watch.reset()
+	presentation.clear_round()
+	pickups.clear_round()
+	combat.clear_round()
+	received_pose = false
+	send_elapsed = 0.0
+	moved = false
+	fired = false
+	phase = 3
 
 func on_error(message: String) -> void:
 	snapshot_watch.reset()

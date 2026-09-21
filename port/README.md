@@ -2,6 +2,12 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Authoritative round starts release pointer capture
+
+Round-start handling now releases interactive pointer capture even when no local results screen preceded the start. The existing reset logic is a named signal handler so regressions exercise the actual callback. Fresh snapshots reseed camera orientation but do not recapture the pointer; neutral inputs continue while awaiting the pose and afterward until an explicit click.
+
+Executed evidence: the added synthetic session regression failed three release assertions before the fix (exit 1). Afterward, all 2,486 control-safety assertions and the complete `python3 tools/godot-dev/verify.py` passed, including normal-rate results/restart, live movement/fire and two native clients. Tests cover starts from active, results and waiting phases, reset state, neutral output and fresh-pose recovery. Headless release-dispatch assertions are not graphical mouse-capture acceptance or live host-initiated restart acceptance. Both subagents' directories remain untouched.
+
 ## Input queue failures end the session
 
 Gameplay input queue failures now enter the existing explicit error/disconnect path instead of leaving the session apparently active. This also covers neutral sends during snapshot stalls: pointer capture is released, the pose is invalidated, and later frames stop sending. This is fail-closed session handling, not automatic reconnect or proof that the server received a final neutral packet.

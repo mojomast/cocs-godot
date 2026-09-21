@@ -215,6 +215,31 @@ func _initialize() -> void:
 	check(not probe.packets.back().fire and probe.packets.back().x == 0 and probe.packets.back().z == 0)
 	pending._process(1.0)
 	check(pending.releases == 2)
+	# Authoritative starts may arrive without a preceding local results screen.
+	# Every start must release capture and invalidate the old control pose.
+	for prior_phase: int in [3,4,20]:
+		pending.phase = prior_phase
+		pending.received_pose = true
+		pending.send_elapsed = 0.01
+		pending.moved = true
+		pending.fired = true
+		var releases_before := pending.releases
+		var starts_before := pending.round_starts
+		pending.on_started({})
+		check(pending.releases == releases_before + 1)
+		check(pending.round_starts == starts_before + 1 and pending.phase == 3)
+		check(not pending.received_pose and not pending.can_capture_pointer())
+		check(pending.send_elapsed == 0 and not pending.moved and not pending.fired)
+		check(pending.presentation.lifecycle.status == "waiting")
+		pending._process(1.0 / 60.0)
+		check(not probe.packets.back().fire and probe.packets.back().x == 0 and probe.packets.back().z == 0)
+		pending.on_snapshot({"state":{"actors":[{"id":12,"x":1,"y":0,"z":2,"yaw":0.4,"pitch":0.1,"dead":0}],"pickups":[],"t":1}})
+		check(pending.can_capture_pointer())
+		check(is_equal_approx(pending.yaw,0.4) and is_equal_approx(pending.pitch,0.1))
+		check(Input.mouse_mode == Input.MOUSE_MODE_VISIBLE)
+		pending._process(1.0 / 60.0)
+		check(not probe.packets.back().fire and probe.packets.back().x == 0 and probe.packets.back().z == 0)
+	pending._process(1.0)
 	# Queue failures must end the session, including neutral sends during stalls.
 	probe.input_result = ERR_CONNECTION_ERROR
 	pending._process(1.0 / 60.0)
