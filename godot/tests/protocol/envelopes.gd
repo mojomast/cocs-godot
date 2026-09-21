@@ -68,6 +68,27 @@ func _initialize() -> void:
 	check(net.last_ack == 0 and net.input_seq == 100)
 	check(net.decode_text('{"type":"snapshot","seq":4,"acks":{"8":100},"state":{"mapId":"meridian-exchange"}}'))
 	check(net.last_ack == 0)
+	# Reject shared actor ownership atomically, including actor zero and
+	# mixed JSON integer/float spellings. No lobby signal may escape.
+	var emitted := [0]
+	net.lobby.connect(func(_frame: Dictionary): emitted[0] += 1)
+	check(net.decode_text('{"type":"lobby","players":[{"peerId":1,"actorId":7}]}'))
+	net.last_ack = 40
+	var collisions := [
+		'{"type":"lobby","players":[{"peerId":1,"actorId":8},{"peerId":2,"actorId":8}]}',
+		'{"type":"lobby","players":[{"peerId":2,"actorId":0},{"peerId":1,"actorId":0}]}',
+		'{"type":"lobby","players":[{"peerId":1,"actorId":8},{"peerId":2,"actorId":8.0}]}',
+		'{"type":"lobby","players":[{"peerId":1,"actorId":9},{"peerId":2,"actorId":8},{"peerId":3,"actorId":8}]}'
+	]
+	for text: String in collisions:
+		check(not net.decode_text(text))
+		check(net.actor_id == 7 and net.last_ack == 40)
+		check(net.input_seq == 100 and net.last_snapshot_seq == 4)
+		check(emitted[0] == 1)
+	check(net.decode_text('{"type":"lobby","players":[{"peerId":1,"actorId":0},{"peerId":2,"actorId":1},{"peerId":3,"actorId":null},{"peerId":4,"actorId":null},{"peerId":5}]}'))
+	check(net.actor_id == 0 and net.last_ack == 0 and emitted[0] == 2)
+	check(net.decode_text('{"type":"lobby","players":[{"peerId":2,"actorId":1},{"peerId":1,"actorId":0}]}'))
+	check(net.actor_id == 0 and emitted[0] == 3)
 	net.free()
 	print("PORT_ENVELOPES_OK checks=", checks, " synthetic=true")
 	quit(0)

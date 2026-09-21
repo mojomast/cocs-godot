@@ -2,6 +2,12 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Unique roster actor ownership
+
+The native client now rejects a full lobby roster assigning the same non-null actor ID to different peers, before emitting a lobby signal or changing actor identity, acknowledgement progress, input sequence, or snapshot ordering. Actor zero is valid and receives the same uniqueness check; multiple unassigned/null spectator entries remain valid. Reordering a valid roster remains supported.
+
+Executed verification: `res://tests/protocol/envelopes.gd` passed 84 synthetic assertions, including collision ordering, integer/float ID equivalence, remote-only ownership collisions, atomic rejection, and valid unassigned spectators. `python3 tools/godot-dev/verify.py` passed every implemented gate, including recorded replay, native live/session smoke, normal-rate results/restart, and two native clients. Malformed ownership tests are synthetic, not an observed server defect or a live attack test. Graphical/playable acceptance remains open.
+
 ## Locked content
 
 Source: `51289b79c627a26a381ba556b92bab71f93f3732`, the deployed v8.8 DESTINATIONS tree. Implementation branch: `port/godot-destinations`.

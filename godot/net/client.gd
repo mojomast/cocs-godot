@@ -102,12 +102,18 @@ func valid_envelope(frame: Dictionary) -> bool:
 		"lobby":
 			if not frame.get("players", []) is Array: return false
 			var peers: Dictionary = {}
+			var actors: Dictionary = {}
 			for player: Variant in frame.get("players", []):
 				if not player is Dictionary or not wire_integer(player.get("peerId")): return false
 				var id: int = int(player.peerId)
 				if peers.has(id): return false
 				peers[id] = true
-				if player.get("actorId") != null and not wire_integer(player.actorId): return false
+				if player.get("actorId") != null:
+					if not wire_integer(player.actorId): return false
+					var assigned: int = int(player.actorId)
+					# Actor ownership must be unique; unassigned spectators may repeat.
+					if actors.has(assigned): return false
+					actors[assigned] = true
 		"snapshot":
 			if not wire_integer(frame.get("seq")) or not frame.get("acks", {}) is Dictionary: return false
 			for ack: Variant in frame.get("acks", {}).values():
