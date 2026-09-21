@@ -24,6 +24,8 @@ commands = [
     ("glb-import", [binary, "--headless", "--path", "godot", "--script", "res://tests/import.gd"]),
     ("packet-replay", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/replay.gd"]),
     ("native-live", ["node", "tools/godot-dev/launch.mjs", "--network-smoke"]),
+    ("presentation-replay", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/presentation.gd"]),
+    ("native-session", ["node", "tools/godot-dev/launch.mjs", "--session-smoke"]),
 ]
 results = []
 for name, command in commands:

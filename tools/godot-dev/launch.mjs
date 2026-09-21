@@ -14,8 +14,11 @@ try{
  await new Promise((resolve,reject)=>{game.server.once('error',reject);game.server.listen(Number(process.env.PORT??0),'127.0.0.1',resolve);});
  const port=game.server.address().port;const health=await fetch(`http://127.0.0.1:${port}`,{signal:AbortSignal.timeout(5000)});if(!health.ok)throw Error('Server readiness failed');
  const smoke=process.argv.includes('--network-smoke');
- const args=smoke?['--headless','--path','godot','--script','res://tests/protocol/live.gd','--',`--endpoint=ws://127.0.0.1:${port}`]:['--path','godot','--',`--endpoint=ws://127.0.0.1:${port}`];
- console.log(`Owned local server ready on loopback:${port}; ${smoke?'native transport smoke':'viewer only: gameplay wiring not yet implemented'}`);
+ const sessionSmoke=process.argv.includes('--session-smoke');
+ const play=sessionSmoke||process.argv.includes('--play');
+ const args=smoke?['--headless','--path','godot','--script','res://tests/protocol/live.gd']: [...(sessionSmoke?['--headless']:[]),'--path','godot',...(play?['res://world/session.tscn']:[])];
+ args.push('--',`--endpoint=ws://127.0.0.1:${port}`,...(sessionSmoke?['--session-smoke']:[]));
+ console.log(`Owned local server ready on loopback:${port}; ${smoke?'native transport smoke':play?'native diagnostic gameplay session':'semantic viewer'}`);
  child=spawn(binary,args,{env,stdio:'inherit'});
  process.exitCode=await new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',(code)=>resolve(code??1));});
 }finally{stop();await game.close();process.removeListener('SIGINT',stop);process.removeListener('SIGTERM',stop);}

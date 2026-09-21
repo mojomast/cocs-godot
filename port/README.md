@@ -86,7 +86,7 @@ Capture runs the real pinned server, two WebSocket clients and two bots through 
 
 The separate native live smoke uses Godot WebSocketPeer against the normal 60Hz server: one native client, two bots, actor identity and input ACK. It exits once verified. This is not a server-backed playable match.
 
-The development launcher owns a loopback-only server, uses a free port by default, checks HTTP readiness, isolates Godot runtime files and cleans up the server when its child exits. Server history/progression are ephemeral. With no smoke flag it launches the viewer only; the viewer does not yet consume the endpoint for gameplay. Node packaging is not supplied.
+The development launcher owns a loopback-only server, uses a free port by default, checks HTTP readiness, isolates Godot runtime files and cleans up the server when its child exits. Server history/progression are ephemeral. With no flags it launches the diagnostic viewer. `--play` now launches the native server-backed Meridian session described below. Node packaging is not supplied.
 
 ## Diagnostic executable
 
@@ -103,6 +103,21 @@ This produced and exercised an actual Linux diagnostic executable using matching
 
 The first real visual gate remains OPEN: inspect matching source/Godot views, material/normal/UV behavior, winding and routes; inventory dynamic nodes, anchors, texture provenance, environments and missing effects. Export the other eight visual maps only after that interface is accepted. Do not promote the probe just because its GLB imports.
 
-Next: present recorded snapshots with exported actors/weapons/HUD; then wire one playable source-server match including shots/pickups/death/respawn/results/restart. Follow with essential audio, movement fixtures/prediction, LATTICE/vehicle/objective features required by the remaining destinations, two-native-client tests and measured latency/performance. These are not implemented here.
+## Native session increment
+
+```sh
+node tools/godot-dev/launch.mjs --play
+node tools/godot-dev/launch.mjs --session-smoke
+"$GODOT_BIN" --headless --path godot --script res://tests/protocol/presentation.gd
+```
+
+`--play` hosts Meridian deathmatch with two existing server bots. Native snapshot presentation maintains stable actor nodes, hides the local/dead actors, follows the source eye position and displays health, armor, weapon/ammo, frags/deaths and results. Click captures the pointer; Esc releases it. WASD moves; Space jumps; Shift sprints; Ctrl crouches; R reloads; E interacts; F holds mobility. Mouse aims/fires. Enter after results sends the source protocol's `start` request for another match. Uncaptured/unfocused input sends neutral controls. No local Match or client authority is introduced.
+
+This is an interactive diagnostic prototype, NOT the first-playable acceptance milestone. Actors are capsules, the level is semantic geometry, and pickup markers still show static export locations rather than live pickup availability. There is no weapon model, shot/hit presentation, dynamic obstacle presentation, audio, interpolation or prediction. Position updates arrive at snapshot cadence; local look responds immediately. The renderer has not been visually accepted. Race/soccer/LATTICE sessions are not exposed by this prototype; all nine maps remain in the separate viewer.
+
+Real `--session-smoke` execution verified three presented actors, source-authoritative camera updates, displacement greater than 0.5 metres, server-recorded shots, and more than ten acknowledged inputs. It runs the normal-rate server and actual session scene, not a separate mock implementation. Recorded-packet replay verified six states including a results state, coordinates, eye height, visibility and HUD. Additional explicitly synthetic lifecycle mutations test absent-actor and reset cleanup. These do not establish live pickup/death/respawn/restart completion, second-native-client behavior or keyboard/graphical usability. The existing transport-only smoke and captured recording used an ignored `forward` input; they remain transport evidence only. New movement input uses `x/z`, matching `game/input.mjs` and `game/protocol.mjs`.
+
+The full verifier now includes presentation replay and the native-session smoke; all implemented gates pass. Next gates: original actor/weapon presentation and visual review, live pickup/death/respawn/results/restart acceptance, two native clients, then essential audio, prediction and selected-map-specific features.
+
 
 Ownership and interfaces are in `contracts/CONTRACT.md`. No subagent tool was exposed in this session; lanes were executed serially by the lead. Existing `game/`, `server/`, package manifests/lock and production services were not changed. No branch was pushed and no deployment or Orbit workspace mutation was performed.
