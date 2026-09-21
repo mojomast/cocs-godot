@@ -9,9 +9,10 @@ class SessionProbe extends Session:
 		super.release_pointer()
 class InputProbe extends Network:
 	var packets: Array[Dictionary] = []
+	var input_result: Error = OK
 	func send_input(value: Dictionary) -> Error:
 		packets.append(value.duplicate(true))
-		return OK
+		return input_result
 var checks := 0
 var failures := 0
 func check(ok: bool) -> void:
@@ -214,6 +215,17 @@ func _initialize() -> void:
 	check(not probe.packets.back().fire and probe.packets.back().x == 0 and probe.packets.back().z == 0)
 	pending._process(1.0)
 	check(pending.releases == 2)
+	# Queue failures must end the session, including neutral sends during stalls.
+	probe.input_result = ERR_CONNECTION_ERROR
+	pending._process(1.0 / 60.0)
+	check(pending.phase == -1)
+	check(not pending.received_pose)
+	check(not pending.can_capture_pointer())
+	check("Input could not be queued" in pending.label.text)
+	check(Input.mouse_mode == Input.MOUSE_MODE_VISIBLE)
+	var failed_packet_count := probe.packets.size()
+	pending._process(1.0)
+	check(probe.packets.size() == failed_packet_count)
 	pending.free()
 	if failures > 0:
 		quit(1)

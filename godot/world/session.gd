@@ -238,7 +238,8 @@ func _process(delta: float) -> void:
 	var controls: Dictionary = {"x":direction.x, "z":direction.y, "yaw":yaw, "pitch":pitch, "fire":active and (smoke or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))}
 	for binding: Array in [["jump",KEY_SPACE],["reload",KEY_R],["sprint",KEY_SHIFT],["crouch",KEY_CTRL],["interact",KEY_E],["mobility",KEY_F]]:
 		controls[binding[0]] = active and Input.is_physical_key_pressed(binding[1])
-	client.send_input(controls)
+	if client.send_input(controls) != OK:
+		on_error("Input could not be queued. Relaunch to reconnect.")
 
 func _exit_tree() -> void:
 	client.disconnect_server()
