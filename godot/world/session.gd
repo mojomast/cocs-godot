@@ -209,7 +209,10 @@ func _process(delta: float) -> void:
 	if not advance_handshake(delta): return
 	combat_label.text = combat.text()
 	if phase == 3:
+		var was_stale := snapshot_watch.stale()
 		snapshot_watch.advance(delta)
+		# Do not silently resume held controls when snapshots recover.
+		if not was_stale and snapshot_watch.stale(): release_pointer()
 		if snapshot_watch.stale(): combat_label.text = snapshot_watch.message()
 	elapsed += delta
 	if smoke and elapsed > 20:

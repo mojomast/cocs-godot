@@ -2,6 +2,12 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Snapshot-stall recovery requires recapture
+
+When the session detects a fresh-to-stale snapshot transition, it now releases pointer capture once. Neutral packets continue during the stall. Fresh snapshots restore capture eligibility, but do not recapture the pointer or silently reactivate held interactive controls. A subsequent stall releases again.
+
+Executed evidence: the new actual-session regression failed with six release assertions before the fix (exit 1). Afterward, all 2,450 control-safety assertions and the complete `python3 tools/godot-dev/verify.py` passed, including live movement/fire, normal-rate results/restart and two native clients. The new cases use synthetic clock advancement and snapshot recovery with a recording transport; they are not live network-impairment or graphical pointer acceptance. Both subagents' directories remain untouched. Server rules, dependencies and map scope are unchanged.
+
 ## Death releases pointer capture
 
 Authoritative non-controllable local snapshots now release pointer capture while retaining the camera pose. Respawn reseeds look from the server but does not recapture the pointer: a fresh click is required before normal interactive input resumes. This prevents held pre-death controls from silently reactivating after respawn.

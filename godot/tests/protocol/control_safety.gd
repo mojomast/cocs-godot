@@ -193,6 +193,27 @@ func _initialize() -> void:
 	check(is_equal_approx(pending.yaw,-0.8) and is_equal_approx(pending.pitch,-0.1))
 	pending._process(1.0 / 60.0)
 	check(not probe.packets.back().fire and probe.packets.back().x == 0 and probe.packets.back().z == 0)
+	# A detected snapshot stall releases once; recovery must not recapture.
+	pending.releases = 0
+	pending.snapshot_watch.observe()
+	pending._process(0.01)
+	check(pending.releases == 0)
+	pending._process(1.0)
+	check(pending.snapshot_watch.stale())
+	check(pending.releases == 1)
+	check(not pending.can_capture_pointer())
+	for tick in range(3):
+		pending._process(1.0 / 60.0)
+		check(pending.releases == 1)
+		check(not probe.packets.back().fire and probe.packets.back().x == 0 and probe.packets.back().z == 0)
+	pending.on_snapshot({"state":{"actors":[{"id":12,"x":5,"y":0,"z":7,"yaw":-0.8,"pitch":-0.1,"dead":0}],"pickups":[],"t":505}})
+	check(pending.can_capture_pointer())
+	check(Input.mouse_mode == Input.MOUSE_MODE_VISIBLE)
+	pending._process(1.0 / 60.0)
+	check(pending.releases == 1)
+	check(not probe.packets.back().fire and probe.packets.back().x == 0 and probe.packets.back().z == 0)
+	pending._process(1.0)
+	check(pending.releases == 2)
 	pending.free()
 	if failures > 0:
 		quit(1)
