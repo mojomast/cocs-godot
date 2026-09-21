@@ -1,0 +1,66 @@
+<!doctype html><html><body><canvas id="canvas" width="640" height="480"></canvas><script type="module">
+import * as T from 'three';
+import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
+import {weaponModel,ArenaView} from '../../game/view.mjs';
+import {configureMothAssets} from '../../game/moth-assets.mjs';
+import {MAPS} from '../../game/maps.mjs';
+// Isolated tooling realm only: seed presentation randomness as well as map data.
+// This does not change gameplay/server RNG. Reproducibility still requires tests.
+let exportSeed=1337;
+Math.random=()=>((exportSeed=(Math.imul(exportSeed,1664525)+1013904223)>>>0)/4294967296);
+configureMothAssets();
+window.exportProbe=async()=>{
+ const root=new T.Group();root.name='AxisMaterialProbe';
+ const weapon=weaponModel(0);weapon.name='SourceWeapon0';root.add(weapon);
+ for(const [name,color,size,pos] of [['X_red',0xff0000,[3,.1,.1],[1.5,0,0]],['Y_green',0x00ff00,[.1,2,.1],[0,1,0]],['MinusZ_blue',0x0000ff,[.1,.1,1],[0,0,-.5]]]){const m=new T.Mesh(new T.BoxGeometry(...size),new T.MeshStandardMaterial({color}));m.name=name;m.position.set(...pos);root.add(m);}
+ const instance=new T.InstancedMesh(new T.BoxGeometry(.3,.3,.3),new T.MeshStandardMaterial({color:0xffcc33}),2);
+ instance.setMatrixAt(0,new T.Matrix4().makeTranslation(1,1,0));instance.setMatrixAt(1,new T.Matrix4().makeTranslation(2,1,0));instance.name='InstanceProbe';root.add(instance);
+ return await exportObject(root);
+};
+async function exportObject(root){
+ const report={meshes:0,instances:0,batchedMeshes:0,shaderMaterials:0,nodes:[],limitations:['onBeforeCompile effects and runtime animation not translated','standard-material fallback is not fidelity acceptance']};
+ const metadata=[];
+ const replacedTextures=[];
+ const textures=new Set();
+ root.traverse(o=>{for(const m of [o.material].flat().filter(Boolean))for(const value of Object.values(m))if(value?.isTexture)textures.add(value);});
+ for(const texture of textures){
+  if(!texture.isDataTexture)continue;
+  const image=texture.image;
+  if(texture.type!==T.UnsignedByteType||texture.format!==T.RGBAFormat||image.data.length!==image.width*image.height*4)throw Error('Unsupported DataTexture format; explicit conversion required');
+  const canvas=document.createElement('canvas');canvas.width=image.width;canvas.height=image.height;
+  canvas.getContext('2d').putImageData(new ImageData(new Uint8ClampedArray(image.data),image.width,image.height),0,0);
+  replacedTextures.push([texture,image]);texture.image=canvas;
+ }
+ root.traverse(o=>{metadata.push([o,o.userData]);report.nodes.push({path:o.name||o.type,type:o.type});o.userData={};if(o.isMesh)report.meshes++;if(o.isInstancedMesh)report.instances+=o.count;if(o.isBatchedMesh)report.batchedMeshes++;for(const m of [o.material].flat().filter(Boolean))if(m.isShaderMaterial)report.shaderMaterials++;});
+ try {
+  if(report.batchedMeshes)throw Error(`BatchedMesh conversion required: ${report.batchedMeshes}`);
+  const copy=root.clone(true);
+  const instanced=[];copy.traverse(o=>{if(o.isInstancedMesh)instanced.push(o);});
+  for(const object of instanced){
+   const group=new T.Group();group.name=object.name||'Instances';group.position.copy(object.position);group.quaternion.copy(object.quaternion);group.scale.copy(object.scale);group.visible=object.visible;
+   for(let i=0;i<object.count;i++){
+    const mesh=new T.Mesh(object.geometry,object.material);mesh.name=`${group.name}_instance_${i}`;
+    const matrix=new T.Matrix4();object.getMatrixAt(i,matrix);matrix.decompose(mesh.position,mesh.quaternion,mesh.scale);
+    if(object.instanceColor){const tint=new T.Color();object.getColorAt(i,tint);mesh.material=object.material.clone();mesh.material.color.multiply(tint);}
+    group.add(mesh);
+   }
+   object.parent.add(group);object.parent.remove(object);
+  }
+  report.instance_policy='expanded with transforms and colors; no EXT_mesh_gpu_instancing';
+  const buffer=await new GLTFExporter().parseAsync(copy,{binary:true,onlyVisible:true});
+  return {bytes:Array.from(new Uint8Array(buffer)),report};
+ }finally{for(const [o,data]of metadata)o.userData=data;for(const [texture,image]of replacedTextures)texture.image=image;}
+}
+// Avoid the constructor's default legacy-map build without modifying shared source.
+class ExportView extends ArenaView{buildArena(arena){if(arena)return super.buildArena(arena);}}
+window.exportMap=async(id)=>{
+ const map=MAPS.find(m=>m.id===id);if(!map)throw Error('Unknown map');
+ const view=new ExportView(document.querySelector('canvas'));
+ if(view.renderer.isSoftware)throw Error('WebGL required; software renderer rejected');
+ view.buildArena(map);
+ const result=await exportObject(view.worldGroup);
+ result.report.environment={background:view.scene.background?.getHexString?.(),fog:view.scene.fog?{type:view.scene.fog.type,color:view.scene.fog.color.getHexString(),density:view.scene.fog.density??null}:null};
+ return result;
+};
+window.ready=true;
+</script></body></html>

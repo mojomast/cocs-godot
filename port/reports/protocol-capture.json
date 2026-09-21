@@ -1,0 +1,16 @@
+{
+  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "protocol": 3,
+  "delta": 0,
+  "map_id": "meridian-exchange",
+  "clients": 2,
+  "bots": 2,
+  "actor_id": 0,
+  "peer_id": 1,
+  "largest_frame_bytes": 13209,
+  "total_received_bytes": 45655718,
+  "snapshot_count": 3600,
+  "results": true,
+  "restart": true,
+  "clock": "accelerated wall-clock: tickMs=1, unchanged dt=1/60; not latency/performance evidence"
+}

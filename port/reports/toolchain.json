@@ -1,0 +1,8 @@
+{
+  "version": "4.5.2",
+  "checksums_source": "https://github.com/godotengine/godot/releases/download/4.5.2-stable/SHA512-SUMS.txt",
+  "files": {
+    "Godot_v4.5.2-stable_linux.x86_64.zip": "e3ce6194b6d4d2dcef5e5b5136752c084d9d8b9071c10bc2d2011b947ec7439a257c8d23c541cb30699f16d9edea6dff36e6e84d2bec14a8fe9b4e9aacbe5a8d",
+    "Godot_v4.5.2-stable_export_templates.tpz": "003aa33743f58fb657717f090fc872ed3975e48d08a6012201a2259970d458a63d4d8a83090585307c23455ebfa4e6e0050e1057761c34863536095e3fcfab6c"
+  }
+}

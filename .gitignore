@@ -48,3 +48,7 @@ next-env.d.ts
 # server runtime state
 /server/history.json
 /server/progression.json
+
+# isolated native-port runtime (not content)
+/.port-runtime/
+__pycache__/

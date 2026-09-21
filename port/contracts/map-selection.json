@@ -1,0 +1,538 @@
+{
+  "schema_version": 1,
+  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "maps": [
+    {
+      "id": "meridian-exchange",
+      "name": "Meridian Exchange",
+      "source_file": "game/destination-combat-maps.mjs",
+      "relevant_commit": "3cda7d666b7c702361bad2674486bb0a229780c3",
+      "supported_modes": [
+        "deathmatch",
+        "teamdeathmatch",
+        "instagib",
+        "rockets",
+        "arsenal",
+        "armsrace",
+        "koth",
+        "domination",
+        "holdout",
+        "uplink",
+        "horde",
+        "juggernaut"
+      ],
+      "distinctive_features": {
+        "description": "A dusk-lit metropolitan interchange: six enterable civic buildings turn the archive, customs streets and market courtyards into interlocking routes around the ramped tram plaza.",
+        "landmarks": [
+          {
+            "label": "MERIDIAN INTERCHANGE",
+            "x": 0,
+            "z": 0,
+            "y": 4
+          },
+          {
+            "label": "DEPARTURE HALL",
+            "x": -14,
+            "z": -19,
+            "y": 8
+          },
+          {
+            "label": "SAFFRON MARKET",
+            "x": -23,
+            "z": 22,
+            "y": 7
+          },
+          {
+            "label": "SIGNAL HOUSE",
+            "x": 27,
+            "z": 16,
+            "y": 9
+          },
+          {
+            "label": "TRAM PLATFORM",
+            "x": 24,
+            "z": -30,
+            "y": 4
+          },
+          {
+            "label": "CIVIC ARCHIVE",
+            "x": -14,
+            "z": -35,
+            "y": 11
+          },
+          {
+            "label": "WEST CUSTOMS",
+            "x": -44,
+            "z": -10,
+            "y": 9
+          },
+          {
+            "label": "NIGHT CAFE",
+            "x": -4,
+            "z": 34,
+            "y": 10
+          }
+        ],
+        "vehicles": 0,
+        "traversal": 0
+      },
+      "required_assets_status": "pending visual resource-closure audit"
+    },
+    {
+      "id": "verdant-reliquary",
+      "name": "Verdant Reliquary",
+      "source_file": "game/destination-combat-maps.mjs",
+      "relevant_commit": "3cda7d666b7c702361bad2674486bb0a229780c3",
+      "supported_modes": [
+        "deathmatch",
+        "teamdeathmatch",
+        "instagib",
+        "rockets",
+        "arsenal",
+        "armsrace",
+        "koth",
+        "domination",
+        "holdout",
+        "uplink",
+        "horde",
+        "juggernaut",
+        "campaign"
+      ],
+      "distinctive_features": {
+        "description": "An overgrown sanctuary of memory archives, ossuary passages and a ruined astral court. Covered garden loops surround the three-mouth cavern, root cloister and ramped sun altar.",
+        "landmarks": [
+          {
+            "label": "HEART CAVERN",
+            "x": 8,
+            "z": -4,
+            "y": 14
+          },
+          {
+            "label": "ROOT CLOISTER",
+            "x": -28,
+            "z": 10,
+            "y": 8
+          },
+          {
+            "label": "SUN ALTAR",
+            "x": 8,
+            "z": 25,
+            "y": 5
+          },
+          {
+            "label": "NORTH CRYPT",
+            "x": 8,
+            "z": -24,
+            "y": 5
+          },
+          {
+            "label": "FERN WALK",
+            "x": -28,
+            "z": -24,
+            "y": 5
+          },
+          {
+            "label": "MEMORY ARCHIVE",
+            "x": -28,
+            "z": -30,
+            "y": 11.5
+          },
+          {
+            "label": "EAST OSSUARY",
+            "x": 40,
+            "z": 10,
+            "y": 12.5
+          },
+          {
+            "label": "MOSS REFECTORY",
+            "x": -43,
+            "z": 25,
+            "y": 7
+          },
+          {
+            "label": "ASTRAL COURT",
+            "x": 27,
+            "z": -25,
+            "y": 5
+          }
+        ],
+        "vehicles": 0,
+        "traversal": 0
+      },
+      "required_assets_status": "pending visual resource-closure audit"
+    },
+    {
+      "id": "ember-crucible",
+      "name": "Ember Crucible",
+      "source_file": "game/destination-combat-maps.mjs",
+      "relevant_commit": "3cda7d666b7c702361bad2674486bb0a229780c3",
+      "supported_modes": [
+        "deathmatch",
+        "teamdeathmatch",
+        "instagib",
+        "rockets",
+        "arsenal",
+        "armsrace",
+        "koth",
+        "domination",
+        "holdout",
+        "uplink",
+        "horde",
+        "juggernaut"
+      ],
+      "distinctive_features": {
+        "description": "A volcanic rocket foundry of six connected service buildings: ore processing and turbine galleries feed broad blast lanes around four furnaces, with low ramps and a covered quench-return route.",
+        "landmarks": [
+          {
+            "label": "EMBER CRUCIBLE",
+            "x": 0,
+            "z": 0,
+            "y": 5
+          },
+          {
+            "label": "FORGE CONTROL",
+            "x": -30,
+            "z": 13,
+            "y": 9
+          },
+          {
+            "label": "COOLANT HOUSE",
+            "x": 31,
+            "z": -16,
+            "y": 8
+          },
+          {
+            "label": "CINDER RAMP",
+            "x": -6,
+            "z": -27,
+            "y": 4
+          },
+          {
+            "label": "QUENCH PLATFORM",
+            "x": 8,
+            "z": 27,
+            "y": 4
+          },
+          {
+            "label": "ORE PROCESSING",
+            "x": -32,
+            "z": -27,
+            "y": 12
+          },
+          {
+            "label": "SLAG RECEIVING",
+            "x": -44,
+            "z": -13,
+            "y": 10
+          },
+          {
+            "label": "TURBINE GALLERY",
+            "x": 44,
+            "z": 11,
+            "y": 10
+          },
+          {
+            "label": "QUENCH DISPATCH",
+            "x": 12,
+            "z": 35,
+            "y": 10.5
+          }
+        ],
+        "vehicles": 0,
+        "traversal": 0
+      },
+      "required_assets_status": "pending visual resource-closure audit"
+    },
+    {
+      "id": "tidal-citadel",
+      "name": "Tidal Citadel",
+      "source_file": "game/destination-objective-maps.mjs",
+      "relevant_commit": "3cda7d666b7c702361bad2674486bb0a229780c3",
+      "supported_modes": [
+        "ctf",
+        "teamdeathmatch",
+        "domination",
+        "assault",
+        "team-elimination"
+      ],
+      "distinctive_features": {
+        "description": "Two snowbound naval forts face the Tide Engine. Carry the flag through vaulted Ice Galleries, the broad gate road, or a low ramped seawall above the frozen harbour. Cross passages turn every assault into a choice of loops.",
+        "landmarks": [
+          {
+            "label": "WEST CITADEL",
+            "x": -72,
+            "z": 0,
+            "y": 3
+          },
+          {
+            "label": "EAST CITADEL",
+            "x": 72,
+            "z": 0,
+            "y": 3
+          },
+          {
+            "label": "TIDE ENGINE",
+            "x": 0,
+            "z": -10,
+            "y": 17
+          },
+          {
+            "label": "ICE GALLERY",
+            "x": 0,
+            "z": -30,
+            "y": 3.2
+          },
+          {
+            "label": "FROZEN HARBOUR",
+            "x": 0,
+            "z": 46,
+            "y": 3
+          },
+          {
+            "label": "SEAWALL WALK",
+            "x": 0,
+            "z": 30,
+            "y": 3.2
+          },
+          {
+            "label": "WEST BOAT HOUSE",
+            "x": -44,
+            "z": 30,
+            "y": 3
+          },
+          {
+            "label": "EAST BOAT HOUSE",
+            "x": 44,
+            "z": 30,
+            "y": 3
+          }
+        ],
+        "vehicles": 4,
+        "traversal": 0
+      },
+      "required_assets_status": "pending visual resource-closure audit"
+    },
+    {
+      "id": "sunscar-convoy",
+      "name": "Sunscar Convoy",
+      "source_file": "game/destination-objective-maps.mjs",
+      "relevant_commit": "3cda7d666b7c702361bad2674486bb0a229780c3",
+      "supported_modes": [
+        "payload",
+        "assault",
+        "combined-arms",
+        "teamdeathmatch",
+        "domination",
+        "vip-escort"
+      ],
+      "distinctive_features": {
+        "description": "Escort a freight convoy from the Broken Weighbridge, weave around the towering Twin Retorts, and deliver beneath the Sun Gate ruins. Broad armour turns compete with quarry rooms, service alleys, and a ramped aqueduct flank.",
+        "landmarks": [
+          {
+            "label": "1 / BROKEN WEIGHBRIDGE",
+            "x": -78,
+            "z": -10,
+            "y": 8
+          },
+          {
+            "label": "QUARRY CUT",
+            "x": -60,
+            "z": -42,
+            "y": 3
+          },
+          {
+            "label": "2 / TWIN RETORTS",
+            "x": 0,
+            "z": 18,
+            "y": 6
+          },
+          {
+            "label": "NORTH RETORT",
+            "x": 22,
+            "z": 20,
+            "y": 19
+          },
+          {
+            "label": "SOUTH RETORT",
+            "x": -22,
+            "z": -20,
+            "y": 19
+          },
+          {
+            "label": "AQUEDUCT FLANK",
+            "x": -8,
+            "z": 43,
+            "y": 3
+          },
+          {
+            "label": "3 / SUN GATE",
+            "x": 78,
+            "z": -18,
+            "y": 11
+          },
+          {
+            "label": "RELIC COURT",
+            "x": 60,
+            "z": 24,
+            "y": 4
+          }
+        ],
+        "vehicles": 10,
+        "traversal": 0
+      },
+      "required_assets_status": "pending visual resource-closure audit"
+    },
+    {
+      "id": "asterion-relay",
+      "name": "Asterion Relay",
+      "source_file": "game/destination-lattice-maps.mjs",
+      "relevant_commit": "3cda7d666b7c702361bad2674486bb0a229780c3",
+      "supported_modes": [
+        "cocs",
+        "cocs-coop"
+      ],
+      "distinctive_features": {
+        "description": "An abandoned orbital communications observatory. Cross the open oculus, breach roofless archive halls, or climb the meridian service galleries above the freight ring. Paired transmitter fields silhouette the long outer flanks.",
+        "landmarks": [
+          {
+            "label": "WEST / FLIGHT CONTROL",
+            "x": -104,
+            "z": 0,
+            "y": 9
+          },
+          {
+            "label": "EAST / FLIGHT CONTROL",
+            "x": 104,
+            "z": 0,
+            "y": 9
+          },
+          {
+            "label": "WEST / ARCHIVE GATE",
+            "x": -52,
+            "z": -8,
+            "y": 9
+          },
+          {
+            "label": "EAST / ARCHIVE GATE",
+            "x": 52,
+            "z": 8,
+            "y": 9
+          },
+          {
+            "label": "NORTH / SOLAR EXCHANGE",
+            "x": 8,
+            "z": -32,
+            "y": 9
+          },
+          {
+            "label": "SOUTH / DEEP ARRAY",
+            "x": -8,
+            "z": 32,
+            "y": 9
+          },
+          {
+            "label": "ASTERION / OCULUS",
+            "x": 0,
+            "z": 0,
+            "y": 9
+          }
+        ],
+        "vehicles": 2,
+        "traversal": 6
+      },
+      "required_assets_status": "pending visual resource-closure audit"
+    },
+    {
+      "id": "monsoon-foundry",
+      "name": "Monsoon Foundry",
+      "source_file": "game/destination-lattice-maps.mjs",
+      "relevant_commit": "3cda7d666b7c702361bad2674486bb0a229780c3",
+      "supported_modes": [
+        "cocs",
+        "cocs-coop"
+      ],
+      "distinctive_features": {
+        "description": "Rainforest roots reclaim a hydro-industrial processing complex. Broad ramped dam crests overlook the spillway freight roads; broken filter houses and turbine courts shelter the inland approaches to the control relay.",
+        "landmarks": [
+          {
+            "label": "WEST / WATERSHED HQ",
+            "x": -104,
+            "z": 0,
+            "y": 9
+          },
+          {
+            "label": "EAST / WATERSHED HQ",
+            "x": 104,
+            "z": 0,
+            "y": 9
+          },
+          {
+            "label": "WEST / FILTER COURT",
+            "x": -52,
+            "z": 12,
+            "y": 9
+          },
+          {
+            "label": "EAST / FILTER COURT",
+            "x": 52,
+            "z": -12,
+            "y": 9
+          },
+          {
+            "label": "NORTH / INTAKE",
+            "x": -8,
+            "z": -32,
+            "y": 9
+          },
+          {
+            "label": "SOUTH / PROCESSING",
+            "x": 8,
+            "z": 32,
+            "y": 9
+          },
+          {
+            "label": "MONSOON / TURBINE CONTROL",
+            "x": 0,
+            "z": 0,
+            "y": 9
+          }
+        ],
+        "vehicles": 2,
+        "traversal": 6
+      },
+      "required_assets_status": "pending visual resource-closure audit"
+    },
+    {
+      "id": "ion-speedway",
+      "name": "Ion Speedway",
+      "source_file": "game/destination-sports-maps.mjs",
+      "relevant_commit": "3cda7d666b7c702361bad2674486bb0a229780c3",
+      "supported_modes": [
+        "puma-race"
+      ],
+      "distinctive_features": {
+        "description": "Launch past the ion gantries, thread the eastern dogleg, and sweep through a recessed grandstand straight on a purpose-built road course.",
+        "landmarks": [],
+        "vehicles": 8,
+        "traversal": 0
+      },
+      "required_assets_status": "pending visual resource-closure audit"
+    },
+    {
+      "id": "aurora-stadium",
+      "name": "Aurora Stadium",
+      "source_file": "game/destination-sports-maps.mjs",
+      "relevant_commit": "3cda7d666b7c702361bad2674486bb0a229780c3",
+      "supported_modes": [
+        "puma-soccer"
+      ],
+      "distinctive_features": {
+        "description": "A broad floodlit pitch beneath twin canopy stands, crystalline end-zone monuments, and soaring broadcast arches. Four Pumas, one ball, room to build a counterattack.",
+        "landmarks": [],
+        "vehicles": 4,
+        "traversal": 0
+      },
+      "required_assets_status": "pending visual resource-closure audit"
+    }
+  ]
+}

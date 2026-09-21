@@ -1,0 +1,42 @@
+TAP version 13
+# Exported 9 semantic maps; visual/release gate remains closed
+# Exported 9 semantic maps; visual/release gate remains closed
+# Subtest: strict serializer rejects silent JSON losses
+ok 1 - strict serializer rejects silent JSON losses
+  ---
+  duration_ms: 1.184698
+  type: 'test'
+  ...
+# Subtest: allowlist fails closed
+ok 2 - allowlist fails closed
+  ---
+  duration_ms: 0.359443
+  type: 'test'
+  ...
+# Subtest: selected maps preserve every root field and resolve callable terrain
+ok 3 - selected maps preserve every root field and resolve callable terrain
+  ---
+  duration_ms: 57.627269
+  type: 'test'
+  ...
+# Subtest: two point walls survive despite no wall triangles
+ok 4 - two point walls survive despite no wall triangles
+  ---
+  duration_ms: 0.335308
+  type: 'test'
+  ...
+# Subtest: two clean builds have identical manifests and asset hashes
+ok 5 - two clean builds have identical manifests and asset hashes
+  ---
+  duration_ms: 194.419143
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 822.493133

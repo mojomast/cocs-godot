@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "protocol_version": 3,
+  "snapshot_delta_version": 2,
+  "advertised_delta": 0,
+  "simulation_hz": 60,
+  "snapshot_hz": 30,
+  "prediction": false
+}
