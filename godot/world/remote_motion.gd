@@ -12,6 +12,8 @@ func clear() -> void:
 	tracks.clear()
 
 func ingest(id: int, position: Vector3, yaw: float, alive: bool, now: float) -> void:
+	# Invalid numbers must never poison a track or reach a Node3D transform.
+	if not position.is_finite() or not is_finite(yaw) or not is_finite(now): return
 	var samples: Array = tracks.get(id, [])
 	if not samples.is_empty():
 		var previous: Dictionary = samples.back()
