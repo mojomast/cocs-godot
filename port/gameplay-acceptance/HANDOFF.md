@@ -1,5 +1,17 @@
 Handoff: gameplay acceptance audit
 
+Bounded recorder follow-up
+Started clean on subagent/death-respawn-evidence at 2bf3df876311e4ed85730512b712db67249c3633; verified branch, HEAD and status before edits. Added record.mjs, test_record.py and RECORDING_RUNBOOK.md; extended analyzer for cocs-recording-v1 lifecycle/completion. Primary checkout untouched. No live game session, server, GUI, packages or persistent services started. An initial require.resolve('ws') check failed because the isolated worktree has no ws package; used Node 22 built-in WebSocket instead, without installation. Canonical protocol constants imported read-only.
+
+Executed: python3 -B -m unittest discover -s port/tools/gameplay_acceptance -p 'test_*.py' -v
+Final result: 29 tests passed in 3.203s. Eight ephemeral loopback mock cases run the real recorder CLI and analyzer CLI, verify exit codes, exclusive output handling and cleanup. Additional envelope tests reject invalid opening and decreasing timestamps. Synthetic artifacts live only in temporary directories. Incomplete/interrupted recordings with apparent triples remain incomplete.
+Executed: python3 -B port/tools/gameplay_acceptance/death_respawn.py godot/tests/protocol/captured.json
+Result: INCOMPLETE, zero transitions, exit 1, genuine input unchanged.
+Executed git diff --check: passed. Scoped path checks before commit and clean-status verification afterward are reported with commit in final response.
+
+RECORDING_RUNBOOK.md gives exact future commands and coordination: approved existing normal-rate server/room, permission for an idle participant, human attacker, join-before-start, 120-second bound, 10-second connection and 30-second welcome deadlines, 10000 received frames/8 MB raw payload bound, owner-only new output, SIGINT cleanup. Recorder never sends gameplay input or creates/starts a game. Native victim instrumentation remains primary-owned and is necessary for native acceptance. Camera reseeding, pointer capture and input gating remain unobserved. Native WebSocket allocates a whole message before byte-limit checks; use a trusted endpoint only. Close marker means observation ended/release requested, not close-handshake confirmation; no reconnect. Final complete window is not itself a gameplay pass. No live recording has occurred.
+
+
 Follow-up: offline death/respawn evidence (supersedes no earlier live claims)
 Base: 1206e41cce014c2413ef1670325d20f56c9324be.
 Branch: subagent/death-respawn-evidence.

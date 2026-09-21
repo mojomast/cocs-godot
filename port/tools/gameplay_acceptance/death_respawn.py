@@ -25,7 +25,7 @@ def integer(v):
 def analyze(data):
     result = {'status': 'incomplete', 'classification': 'offline_capture_analysis',
               'transitions': [], 'errors': [], 'notes': [], 'counts': {'snapshots': 0, 'dead_snapshots': 0, 'death_events': 0, 'spawn_events': 0, 'duplicates': 0},
-              'camera_reseeding': 'unobserved', 'dead_input_gating': 'unobserved'}
+              'camera_reseeding': 'unobserved', 'pointer_capture': 'unobserved', 'dead_input_gating': 'unobserved'}
     clients = {}
     segments = []
 
@@ -36,11 +36,46 @@ def analyze(data):
 
     try:
         require(isinstance(data, dict) and isinstance(data.get('frames'), list), '$', 'expected object with frames array')
+        versioned = 'format' in data
+        complete = not versioned
+        if versioned:
+            require(data['format'] == 'cocs-recording-v1', '$.format', 'unsupported recording format')
+            opened = closed = False
+            last_at = -1
+            for index, record in enumerate(data['frames']):
+                where = f'$.frames[{index}]'
+                require(isinstance(record, dict) and record.get('client') == 1, where, 'v1 requires single connection client=1')
+                at = record.get('at_ms')
+                require(number(at) and at >= last_at, where, 'invalid/decreasing receive timestamp')
+                last_at = at
+                if record.get('direction') == 'lifecycle':
+                    kind = record.get('kind')
+                    require(kind in ('open', 'close', 'round', 'completion'), where, 'unknown lifecycle marker')
+                    if kind == 'open':
+                        require(not opened and not closed, where, 'duplicate/reopened connection')
+                        opened = True
+                    elif kind == 'close':
+                        require(opened and not closed, where, 'close without open or duplicate close')
+                        closed = True
+                    elif kind == 'round':
+                        require(opened and not closed and integer(record.get('roundRevision')), where, 'invalid round marker')
+                    else:
+                        require(index == len(data['frames'])-1 and type(record.get('complete')) is bool, where, 'completion must be final with boolean complete')
+                        complete = record['complete'] and opened and closed and record.get('reason') == 'recording_window_elapsed'
+                else:
+                    require(opened and not closed, where, 'packet outside open connection')
         result['input_label'] = data.get('classification', 'unlabeled; provenance requires independent review')
         for i, r in enumerate(data['frames']):
             loc = f'$.frames[{i}]'
             require(isinstance(r, dict), loc, 'expected record object')
             require(integer(r.get('client')), loc, 'client must be a nonnegative connection index')
+            if versioned and r.get('direction') == 'lifecycle':
+                if r['kind'] == 'round' and r['client'] in clients:
+                    c = clients[r['client']]
+                    if c['round'] != r['roundRevision']:
+                        cut(c, 'recorder round boundary', loc)
+                        c.update(round=None, actor=None)
+                continue
             require(r.get('direction') in ('server', 'client'), loc, 'unsupported direction; transport records require a documented adapter')
             f = r.get('frame')
             require(isinstance(f, dict) and isinstance(f.get('type'), str), loc, 'expected typed frame object')
@@ -153,6 +188,9 @@ def analyze(data):
             result['status'] = 'established'
         else:
             result['notes'].append({'location': '$', 'reason': 'no contiguous same-mapping same-round alive/dead/alive snapshot witness'})
+        if not complete:
+            result['status'] = 'incomplete'
+            result['notes'].append({'location': '$', 'reason': 'recording completion absent or unsuccessful; witnesses are not established acceptance'})
     except Invalid as exc:
         result['status'] = 'invalid'
         result['errors'].append(str(exc))
@@ -173,7 +211,7 @@ def load(path):
                           parse_constant=lambda s: (_ for _ in ()).throw(ValueError(f'nonfinite JSON: {s}')))
         return analyze(data)
     except (OSError, ValueError, RecursionError) as exc:
-        return {'status': 'invalid', 'errors': [str(exc)], 'transitions': [], 'camera_reseeding': 'unobserved', 'dead_input_gating': 'unobserved'}
+        return {'status': 'invalid', 'errors': [str(exc)], 'transitions': [], 'camera_reseeding': 'unobserved', 'pointer_capture': 'unobserved', 'dead_input_gating': 'unobserved'}
 
 
 def main():
