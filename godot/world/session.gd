@@ -210,12 +210,12 @@ func _process(delta: float) -> void:
 			on_error("Room creation could not be queued. Relaunch to reconnect.")
 			return
 		phase = 1
-	if phase != 3 or not received_pose: return
+	if phase != 3: return
 	camera.rotation = Vector3(pitch, yaw, 0)
 	send_elapsed += delta
 	if send_elapsed < 1.0 / 60.0: return
 	send_elapsed = fmod(send_elapsed, 1.0 / 60.0)
-	var active: bool = not snapshot_watch.stale() and presentation.lifecycle.can_control() and (smoke or (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and get_window().has_focus()))
+	var active: bool = received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control() and (smoke or (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and get_window().has_focus()))
 	var forward: float = 1.0 if smoke else float(Input.is_physical_key_pressed(KEY_W)) - float(Input.is_physical_key_pressed(KEY_S))
 	var right: float = float(Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_A))
 	var direction := ControlMath.movement(yaw, forward, right) if active else Vector2.ZERO

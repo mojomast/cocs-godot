@@ -2,6 +2,12 @@
 
 This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
 
+## Missing-pose neutral input continuity
+
+Active rounds now keep sending neutral movement and action packets while the local pose is unavailable, rather than stopping input transmission. Pose availability remains required for active controls. This covers the initial snapshot wait and loss of the local actor; results still stop gameplay input. Restoring a pose restores normal eligibility without replaying prior inputs.
+
+Executed evidence: the added actual-session process regression failed before the fix (assertions 2123–2125, exit 1). After the fix, `control-safety` passed 2,149 synthetic assertions, checking held fire followed by three neutral packets, all action flags, pose recovery, and results suppression. The complete `python3 tools/godot-dev/verify.py` passed all implemented gates, including normal-rate results/restart, live movement/fire and two native clients. The regression uses a recording transport double and is not live actor-removal acceptance. Visual fidelity and playable acceptance remain open.
+
 ## Eight-part native control safety batch
 
 1. Native movement axes are normalized before rotation, so diagonal keyboard input has unit magnitude rather than exceeding cardinal input. Authority stays on Node.

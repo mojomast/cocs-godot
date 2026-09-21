@@ -1,6 +1,12 @@
 extends SceneTree
 const Math = preload("res://world/control_math.gd")
 const Session = preload("res://world/session.gd")
+const Network = preload("res://net/client.gd")
+class InputProbe extends Network:
+	var packets: Array[Dictionary] = []
+	func send_input(value: Dictionary) -> Error:
+		packets.append(value.duplicate(true))
+		return OK
 var checks := 0
 var failures := 0
 func check(ok: bool) -> void:
@@ -88,6 +94,33 @@ func _initialize() -> void:
 		s.update_look(Vector2(100,100))
 		check(Vector2(s.yaw,s.pitch) == before)
 	s.free()
+	# Missing poses must keep neutral packets flowing, never retain held controls.
+	var pending := Session.new()
+	pending.client.free()
+	var probe := InputProbe.new()
+	pending.client = probe
+	for node: Node in [pending.camera,pending.label,pending.selector,probe,pending.presentation,pending.pickups,pending.combat,pending.combat_label]: pending.add_child(node)
+	pending.phase = 3
+	pending.smoke = true
+	pending.presentation.lifecycle.status = "alive"
+	pending.snapshot_watch.observe()
+	pending.received_pose = true
+	pending._process(1.0 / 60.0)
+	check(probe.packets.size() == 1 and probe.packets[0].fire)
+	pending.received_pose = false
+	for i in range(3): pending._process(1.0 / 60.0)
+	check(probe.packets.size() == 4)
+	for packet: Dictionary in probe.packets.slice(1):
+		check(packet.x == 0 and packet.z == 0)
+		for action: String in ["fire","jump","reload","sprint","crouch","interact","mobility"]:
+			check(not packet[action])
+	pending.received_pose = true
+	pending._process(1.0 / 60.0)
+	check(probe.packets.size() == 5 and probe.packets.back().fire)
+	pending.phase = 4
+	pending._process(1.0 / 60.0)
+	check(probe.packets.size() == 5)
+	pending.free()
 	if failures > 0:
 		quit(1)
 		return

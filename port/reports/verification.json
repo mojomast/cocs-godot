@@ -38,7 +38,7 @@
     {
       "gate": "godot-import",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -51,7 +51,7 @@
     {
       "gate": "viewer-smoke",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -64,7 +64,7 @@
     {
       "gate": "glb-import",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -77,7 +77,7 @@
     {
       "gate": "input-queue",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -90,7 +90,7 @@
     {
       "gate": "protocol-envelopes",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -103,7 +103,7 @@
     {
       "gate": "packet-replay",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -126,7 +126,7 @@
     {
       "gate": "presentation-replay",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -139,7 +139,7 @@
     {
       "gate": "round-boundaries",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -162,7 +162,7 @@
     {
       "gate": "combat-feedback",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -175,7 +175,7 @@
     {
       "gate": "local-lifecycle",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -188,7 +188,7 @@
     {
       "gate": "pickup-presentation",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -201,7 +201,7 @@
     {
       "gate": "control-safety",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -214,7 +214,7 @@
     {
       "gate": "session-recovery",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -227,7 +227,7 @@
     {
       "gate": "stall-controls",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -240,7 +240,7 @@
     {
       "gate": "snapshot-watch",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -272,7 +272,7 @@
     {
       "gate": "motion-impairment",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
@@ -285,7 +285,7 @@
     {
       "gate": "remote-motion",
       "command": [
-        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
         "--headless",
         "--path",
         "godot",
