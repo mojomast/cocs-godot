@@ -213,6 +213,28 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
   exporter (`tools/godot-operators/world-weapons.mjs`) and the source post-pose
   grip helper (`godot/source_operators/hand_grips.gd`). `presentation.gd` is not
   yet switched, so gameplay still renders the legacy actor visual.
+- Visual-identity trilogy **prototype** merged from
+  `external/visual-identity-three-maps` (`8b2a33c9`, base `642acb0a`) as an additive
+  merge. Delivered artifacts: `godot/identity_maps/` (recipes, map-only builder,
+  inspection scene), `godot/tests/identity_maps/`, `tools/godot-identity-maps/`,
+  `port/native-identity-maps/` (source factories, ray oracle, bounded normal-rate
+  runs, six research/report documents, 45 dimension-verified renders). Lead visual
+  review of the 1280×800 landmark/combat/worst captures: three genuinely distinct
+  identities (chalk-indigo-copper split resonator; vermilion folded ribbons over
+  jade; pale nacre vault over ultramarine) with first-pass flat art, no textures,
+  baked lighting, trim or signature FX. Vermilion's fold silhouettes are visibly
+  jagged. This is prototype art, not identity acceptance.
+- **Prototype integration is not accepted and no route is exposed.** Mode/launcher/
+  package hooks remain parent-owned and unwritten: the native-arena schema accepts
+  only its three existing maps and Deathmatch, zone modes reject unknown IDs, and
+  the Horde adapter validates only its three maps. The handoff's own performance
+  hold also stands: exact high-detail walls cause 2.95–14.83 s cold source-match
+  construction, which must be replaced by a simplified source-compatible collision
+  representation with independently verified ray/visible-cover parity before any
+  integration acceptance.
+- Next identity step (after the current operator/arena lanes): one focused lane that
+  collision-simplifies and wires **one** complete playable slice (Lacuna Court
+  Deathmatch) end to end, then reuses the proven pattern for Domination and Horde.
 - Lead test repairs for the pickup-asset and integrated-effects contracts:
   `round_boundaries.gd`, `entity_visuals.gd` pickup section, `combined_arms/graphics.gd`.
   The `entity_visuals.gd` actor section must be rewritten against the source
