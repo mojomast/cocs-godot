@@ -1,0 +1,8 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: CINDER_CHECK: continuous floor WestDescent sample 2 / 0.72 point=(-37.40496, 16.0, -20.22198) profile=[(-35.0, 16.0, -21.0), (-35.6, 16.0, -19.5), (-39.14, 12.0, -10.65), (-41.0, 12.0, -6.0)]
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] run (res://tests/cinder_array/verify.gd:81)
+CINDER_VERIFY {"assertions":1242,"boundary_cases":4,"diagnostics":{"areas":6,"authored_triangles":23570,"built":true,"collision_shapes":103,"embers":48,"experience":"cinder-array","instanced_solids":1178,"lights":4,"mesh_nodes":90,"native_only":true,"nodes":215,"renderer":"gl_compatibility","respawns":4,"route_points":16,"steam":16},"failures":["continuous floor WestDescent sample 2 / 0.72 point=(-37.40496, 16.0, -20.22198) profile=[(-35.0, 16.0, -21.0), (-35.6, 16.0, -19.5), (-39.14, 12.0, -10.65), (-41.0, 12.0, -6.0)]"],"floor_probes":342,"max_ramp_degrees":27.6007699367574,"traversals":[{"direction":"forward","off_floor_frames":0,"physics_frames":2038,"reached":16,"speed_m_s":6.0,"waypoints":16,"worst_waypoint_height_error":0.00915908813476562},{"direction":"reverse-sprint","off_floor_frames":0,"physics_frames":1219,"reached":16,"speed_m_s":10.0,"waypoints":16,"worst_waypoint_height_error":0.00939178466796875}]}

@@ -1,0 +1,136 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"geometry": {
+		"areas": 6,
+		"authored_triangles": 23474,
+		"built": true,
+		"collision_shapes": 103,
+		"embers": 48,
+		"experience": "cinder-array",
+		"instanced_solids": 1180,
+		"lights": 4,
+		"mesh_nodes": 91,
+		"native_only": true,
+		"nodes": 216,
+		"renderer": "gl_compatibility",
+		"respawns": 0,
+		"route_points": 16,
+		"steam": 16
+	},
+	"godot": "4.5.2-stable (official)",
+	"motion": {
+		"camera_fixed": true,
+		"changed": 2099,
+		"changed_fraction": 0.0626791686574295,
+		"eye_height": 1.6,
+		"samples": 33488,
+		"seconds_apart_minimum": 2.2
+	},
+	"views": [
+		{
+			"draw_calls": 230,
+			"eye": [
+				-24.0,
+				8.60000038146973,
+				28.0
+			],
+			"fov": 76.0,
+			"frame_median_ms": 55.486,
+			"frame_p95_ms": 59.348,
+			"height": 800,
+			"rendered_objects": 685,
+			"rendered_primitives": 70946,
+			"target": [
+				16.0,
+				10.5,
+				-7.0
+			],
+			"view": "arrival-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 229,
+			"eye": [
+				-3.5,
+				11.1000003814697,
+				10.5
+			],
+			"fov": 76.0,
+			"frame_median_ms": 58.861,
+			"frame_p95_ms": 61.442,
+			"height": 800,
+			"rendered_objects": 687,
+			"rendered_primitives": 73304,
+			"target": [
+				22.0,
+				15.0,
+				-7.0
+			],
+			"view": "span-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 212,
+			"eye": [
+				-25.0,
+				17.6000003814697,
+				-20.7999992370605
+			],
+			"fov": 76.0,
+			"frame_median_ms": 60.357,
+			"frame_p95_ms": 63.915,
+			"height": 800,
+			"rendered_objects": 673,
+			"rendered_primitives": 71020,
+			"target": [
+				20.0,
+				9.0,
+				1.0
+			],
+			"view": "rim-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 192,
+			"eye": [
+				14.0,
+				13.6000003814697,
+				-31.0
+			],
+			"fov": 76.0,
+			"frame_median_ms": 71.472,
+			"frame_p95_ms": 76.661,
+			"height": 800,
+			"rendered_objects": 641,
+			"rendered_primitives": 64970,
+			"target": [
+				-22.0,
+				15.0,
+				-28.0
+			],
+			"view": "bore-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 220,
+			"eye": [
+				-49.0,
+				66.0,
+				57.0
+			],
+			"fov": 65.0,
+			"frame_median_ms": 53.741,
+			"frame_p95_ms": 57.506,
+			"height": 800,
+			"rendered_objects": 684,
+			"rendered_primitives": 53476,
+			"target": [
+				0.0,
+				7.0,
+				-6.0
+			],
+			"view": "overview",
+			"width": 1280
+		}
+	]
+}

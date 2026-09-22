@@ -1,0 +1,68 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: CINDER_CHECK: floor follows visual ramp SuspendedSpan
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] run (res://tests/cinder_array/verify.gd:83)
+ERROR: CINDER_CHECK: floor follows visual ramp SuspendedSpan
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] run (res://tests/cinder_array/verify.gd:83)
+ERROR: CINDER_CHECK: floor follows visual ramp RimAscent
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] run (res://tests/cinder_array/verify.gd:83)
+ERROR: CINDER_CHECK: floor follows visual ramp RimAscent
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] run (res://tests/cinder_array/verify.gd:83)
+ERROR: CINDER_CHECK: floor follows visual ramp RimAscent
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] run (res://tests/cinder_array/verify.gd:83)
+ERROR: CINDER_CHECK: floor follows visual ramp WestDescent
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] run (res://tests/cinder_array/verify.gd:83)
+ERROR: CINDER_CHECK: floor follows visual ramp WestDescent
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] run (res://tests/cinder_array/verify.gd:83)
+ERROR: CINDER_CHECK: floor follows visual ramp ReturnRamp
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] run (res://tests/cinder_array/verify.gd:83)
+ERROR: CINDER_CHECK: floor follows visual ramp ReturnRamp
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] run (res://tests/cinder_array/verify.gd:83)
+ERROR: CINDER_CHECK: forward physically reached (14.0, 12.0, 0.0) actual=(11.60664, 11.7188, 0.631854)
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] traverse (res://tests/cinder_array/verify.gd:149)
+ERROR: CINDER_CHECK: forward entire connected loop traversed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] traverse (res://tests/cinder_array/verify.gd:153)
+ERROR: CINDER_CHECK: reverse-sprint physically reached (-40.0, 12.0, -1.0) actual=(-32.82754, 7.813021, 18.48892)
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] traverse (res://tests/cinder_array/verify.gd:149)
+ERROR: CINDER_CHECK: reverse-sprint entire connected loop traversed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:19)
+       [1] traverse (res://tests/cinder_array/verify.gd:153)
+CINDER_VERIFY {"assertions":1214,"boundary_cases":4,"diagnostics":{"areas":6,"authored_triangles":23326,"built":true,"collision_shapes":86,"embers":48,"experience":"cinder-array","instanced_solids":1177,"lights":4,"mesh_nodes":81,"native_only":true,"nodes":189,"renderer":"gl_compatibility","respawns":4,"route_points":16,"steam":16},"failures":["floor follows visual ramp SuspendedSpan","floor follows visual ramp SuspendedSpan","floor follows visual ramp RimAscent","floor follows visual ramp RimAscent","floor follows visual ramp RimAscent","floor follows visual ramp WestDescent","floor follows visual ramp WestDescent","floor follows visual ramp ReturnRamp","floor follows visual ramp ReturnRamp","forward physically reached (14.0, 12.0, 0.0) actual=(11.60664, 11.7188, 0.631854)","forward entire connected loop traversed","reverse-sprint physically reached (-40.0, 12.0, -1.0) actual=(-32.82754, 7.813021, 18.48892)","reverse-sprint entire connected loop traversed"],"floor_probes":342,"max_ramp_degrees":20.3745268779051,"traversals":[{"direction":"forward","off_floor_frames":0,"physics_frames":1297,"reached":2,"speed_m_s":6.0,"waypoints":16,"worst_waypoint_height_error":0.000130176544189453},{"direction":"reverse-sprint","off_floor_frames":0,"physics_frames":1520,"reached":2,"speed_m_s":10.0,"waypoints":16,"worst_waypoint_height_error":0.000941276550292969}]}

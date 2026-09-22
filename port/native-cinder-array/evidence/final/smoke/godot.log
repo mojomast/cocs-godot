@@ -1,0 +1,6 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+CINDER_SMOKE {"areas":6,"authored_triangles":23474,"built":true,"camera_finite":true,"collision_shapes":103,"embers":48,"experience":"cinder-array","instanced_solids":1180,"lights":4,"mesh_nodes":91,"native_only":true,"nodes":216,"renderer":"gl_compatibility","respawns":0,"route_points":16,"steam":16,"walker_attached":true}

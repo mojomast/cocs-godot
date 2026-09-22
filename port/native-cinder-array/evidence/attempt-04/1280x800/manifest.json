@@ -1,0 +1,128 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"geometry": {
+		"areas": 6,
+		"authored_triangles": 23690,
+		"built": true,
+		"collision_shapes": 103,
+		"embers": 48,
+		"experience": "cinder-array",
+		"instanced_solids": 1188,
+		"lights": 4,
+		"mesh_nodes": 90,
+		"native_only": true,
+		"nodes": 215,
+		"renderer": "gl_compatibility",
+		"respawns": 0,
+		"route_points": 16,
+		"steam": 16
+	},
+	"godot": "4.5.2-stable (official)",
+	"views": [
+		{
+			"draw_calls": 227,
+			"eye": [
+				-24.0,
+				8.60000038146973,
+				28.0
+			],
+			"fov": 76.0,
+			"frame_median_ms": 59.8,
+			"frame_p95_ms": 62.545,
+			"height": 800,
+			"rendered_objects": 682,
+			"rendered_primitives": 71018,
+			"target": [
+				16.0,
+				10.5,
+				-7.0
+			],
+			"view": "arrival-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 225,
+			"eye": [
+				-4.0,
+				11.1000003814697,
+				10.8000001907349
+			],
+			"fov": 76.0,
+			"frame_median_ms": 60.659,
+			"frame_p95_ms": 65.932,
+			"height": 800,
+			"rendered_objects": 683,
+			"rendered_primitives": 73928,
+			"target": [
+				22.0,
+				15.0,
+				-7.0
+			],
+			"view": "span-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 219,
+			"eye": [
+				-28.0,
+				19.6000003814697,
+				-22.0
+			],
+			"fov": 76.0,
+			"frame_median_ms": 63.848,
+			"frame_p95_ms": 66.626,
+			"height": 800,
+			"rendered_objects": 680,
+			"rendered_primitives": 71996,
+			"target": [
+				20.0,
+				10.0,
+				1.0
+			],
+			"view": "rim-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 192,
+			"eye": [
+				14.0,
+				13.6000003814697,
+				-31.0
+			],
+			"fov": 76.0,
+			"frame_median_ms": 76.471,
+			"frame_p95_ms": 79.258,
+			"height": 800,
+			"rendered_objects": 641,
+			"rendered_primitives": 65870,
+			"target": [
+				-22.0,
+				15.0,
+				-28.0
+			],
+			"view": "bore-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 218,
+			"eye": [
+				-49.0,
+				66.0,
+				57.0
+			],
+			"fov": 65.0,
+			"frame_median_ms": 55.888,
+			"frame_p95_ms": 58.687,
+			"height": 800,
+			"rendered_objects": 682,
+			"rendered_primitives": 53908,
+			"target": [
+				0.0,
+				7.0,
+				-6.0
+			],
+			"view": "overview",
+			"width": 1280
+		}
+	]
+}

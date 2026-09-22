@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "/tmp/opencode/cocs-graphics-cinder-map/godot",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "1280x800",
+    "--position",
+    "0,0",
+    "--disable-vsync",
+    "res://cinder_array/demo.tscn",
+    "--",
+    "--smoke",
+    "--cinder-dev-walker"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "engine_errors": [],
+  "wall_seconds": 4.274,
+  "renderer": "gl_compatibility",
+  "software_rendering": true,
+  "llvmpipe_threads": 4,
+  "xvfb_listeners": "abstract local only; -nolisten tcp -nolisten unix",
+  "isolated_home_xdg": true
+}

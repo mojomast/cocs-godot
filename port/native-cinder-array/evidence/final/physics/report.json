@@ -1,0 +1,44 @@
+{
+	"assertions": 1244,
+	"boundary_cases": 4,
+	"diagnostics": {
+		"areas": 6,
+		"authored_triangles": 23474,
+		"built": true,
+		"collision_shapes": 103,
+		"embers": 48,
+		"experience": "cinder-array",
+		"instanced_solids": 1180,
+		"lights": 4,
+		"mesh_nodes": 91,
+		"native_only": true,
+		"nodes": 216,
+		"renderer": "gl_compatibility",
+		"respawns": 4,
+		"route_points": 16,
+		"steam": 16
+	},
+	"failures": [],
+	"floor_probes": 342,
+	"max_ramp_degrees": 27.6007699367574,
+	"traversals": [
+		{
+			"direction": "forward",
+			"off_floor_frames": 0,
+			"physics_frames": 2038,
+			"reached": 16,
+			"speed_m_s": 6.0,
+			"waypoints": 16,
+			"worst_waypoint_height_error": 0.00934982299804688
+		},
+		{
+			"direction": "reverse-sprint",
+			"off_floor_frames": 0,
+			"physics_frames": 1219,
+			"reached": 16,
+			"speed_m_s": 10.0,
+			"waypoints": 16,
+			"worst_waypoint_height_error": 0.00934028625488281
+		}
+	]
+}

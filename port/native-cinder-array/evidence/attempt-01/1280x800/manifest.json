@@ -1,0 +1,114 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"geometry": {
+
+	},
+	"godot": "4.5.2-stable (official)",
+	"views": [
+		{
+			"draw_calls": 17,
+			"eye": [
+				-29.0,
+				8.60000038146973,
+				27.0
+			],
+			"fov": 76.0,
+			"frame_median_ms": 1.395,
+			"frame_p95_ms": 2.268,
+			"height": 800,
+			"rendered_objects": 472,
+			"rendered_primitives": 964,
+			"target": [
+				18.0,
+				12.0,
+				-7.0
+			],
+			"view": "arrival-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 17,
+			"eye": [
+				-4.0,
+				11.1000003814697,
+				10.8000001907349
+			],
+			"fov": 76.0,
+			"frame_median_ms": 1.418,
+			"frame_p95_ms": 3.324,
+			"height": 800,
+			"rendered_objects": 475,
+			"rendered_primitives": 970,
+			"target": [
+				22.0,
+				15.0,
+				-7.0
+			],
+			"view": "span-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 17,
+			"eye": [
+				-23.0,
+				19.6000003814697,
+				-24.0
+			],
+			"fov": 76.0,
+			"frame_median_ms": 1.979,
+			"frame_p95_ms": 5.216,
+			"height": 800,
+			"rendered_objects": 478,
+			"rendered_primitives": 976,
+			"target": [
+				20.0,
+				12.0,
+				-4.0
+			],
+			"view": "rim-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 17,
+			"eye": [
+				14.0,
+				13.6000003814697,
+				-31.0
+			],
+			"fov": 76.0,
+			"frame_median_ms": 1.472,
+			"frame_p95_ms": 3.044,
+			"height": 800,
+			"rendered_objects": 466,
+			"rendered_primitives": 952,
+			"target": [
+				-22.0,
+				15.0,
+				-28.0
+			],
+			"view": "bore-eye",
+			"width": 1280
+		},
+		{
+			"draw_calls": 17,
+			"eye": [
+				-67.0,
+				56.0,
+				73.0
+			],
+			"fov": 65.0,
+			"frame_median_ms": 1.311,
+			"frame_p95_ms": 3.969,
+			"height": 800,
+			"rendered_objects": 472,
+			"rendered_primitives": 964,
+			"target": [
+				0.0,
+				9.0,
+				-8.0
+			],
+			"view": "overview",
+			"width": 1280
+		}
+	]
+}

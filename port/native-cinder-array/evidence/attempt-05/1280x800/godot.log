@@ -1,0 +1,11 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+CINDER_CAPTURE {"draw_calls":227,"eye":[-24.0,8.60000038146973,28.0],"fov":76.0,"frame_median_ms":56.169,"frame_p95_ms":59.992,"height":800,"rendered_objects":682,"rendered_primitives":70658,"target":[16.0,10.5,-7.0],"view":"arrival-eye","width":1280}
+CINDER_CAPTURE {"draw_calls":225,"eye":[-4.0,11.1000003814697,10.8000001907349],"fov":76.0,"frame_median_ms":61.228,"frame_p95_ms":68.004,"height":800,"rendered_objects":683,"rendered_primitives":73568,"target":[22.0,15.0,-7.0],"view":"span-eye","width":1280}
+CINDER_CAPTURE {"draw_calls":210,"eye":[-25.0,17.6000003814697,-20.7999992370605],"fov":76.0,"frame_median_ms":60.793,"frame_p95_ms":64.138,"height":800,"rendered_objects":671,"rendered_primitives":71392,"target":[20.0,9.0,1.0],"view":"rim-eye","width":1280}
+CINDER_CAPTURE {"draw_calls":192,"eye":[14.0,13.6000003814697,-31.0],"fov":76.0,"frame_median_ms":71.923,"frame_p95_ms":75.975,"height":800,"rendered_objects":641,"rendered_primitives":65510,"target":[-22.0,15.0,-28.0],"view":"bore-eye","width":1280}
+CINDER_CAPTURE {"draw_calls":218,"eye":[-49.0,66.0,57.0],"fov":65.0,"frame_median_ms":54.507,"frame_p95_ms":57.195,"height":800,"rendered_objects":682,"rendered_primitives":53668,"target":[0.0,7.0,-6.0],"view":"overview","width":1280}
+CINDER_CAPTURE_COMPLETE

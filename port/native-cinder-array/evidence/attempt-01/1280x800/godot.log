@@ -1,0 +1,33 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+SCRIPT ERROR: Parse Error: Cannot infer the type of "indices" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://cinder_array/geometry.gd:33)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://cinder_array/map.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://cinder_array/demo.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/cinder_array/capture.gd:0)
+ERROR: Failed to load script "res://tests/cinder_array/capture.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:3041)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: build (res://cinder_array/map.gd:46)
+          GDScript backtrace (most recent call first):
+              [0] build (res://cinder_array/map.gd:46)
+              [1] _ready (res://cinder_array/map.gd:40)
+              [2] _ready (res://cinder_array/demo.gd:15)
+              [3] run (res://tests/cinder_array/capture.gd:12)
+CINDER_CAPTURE {"draw_calls":17,"eye":[-29.0,8.60000038146973,27.0],"fov":76.0,"frame_median_ms":1.395,"frame_p95_ms":2.268,"height":800,"rendered_objects":472,"rendered_primitives":964,"target":[18.0,12.0,-7.0],"view":"arrival-eye","width":1280}
+CINDER_CAPTURE {"draw_calls":17,"eye":[-4.0,11.1000003814697,10.8000001907349],"fov":76.0,"frame_median_ms":1.418,"frame_p95_ms":3.324,"height":800,"rendered_objects":475,"rendered_primitives":970,"target":[22.0,15.0,-7.0],"view":"span-eye","width":1280}
+CINDER_CAPTURE {"draw_calls":17,"eye":[-23.0,19.6000003814697,-24.0],"fov":76.0,"frame_median_ms":1.979,"frame_p95_ms":5.216,"height":800,"rendered_objects":478,"rendered_primitives":976,"target":[20.0,12.0,-4.0],"view":"rim-eye","width":1280}
+CINDER_CAPTURE {"draw_calls":17,"eye":[14.0,13.6000003814697,-31.0],"fov":76.0,"frame_median_ms":1.472,"frame_p95_ms":3.044,"height":800,"rendered_objects":466,"rendered_primitives":952,"target":[-22.0,15.0,-28.0],"view":"bore-eye","width":1280}
+CINDER_CAPTURE {"draw_calls":17,"eye":[-67.0,56.0,73.0],"fov":65.0,"frame_median_ms":1.311,"frame_p95_ms":3.969,"height":800,"rendered_objects":472,"rendered_primitives":964,"target":[0.0,9.0,-8.0],"view":"overview","width":1280}
+SCRIPT ERROR: Invalid access to property or key 'meshes' on a base object of type 'Nil'.
+          at: get_diagnostics (res://cinder_array/map.gd:94)
+          GDScript backtrace (most recent call first):
+              [0] get_diagnostics (res://cinder_array/map.gd:94)
+              [1] run (res://tests/cinder_array/capture.gd:57)
+CINDER_CAPTURE_COMPLETE

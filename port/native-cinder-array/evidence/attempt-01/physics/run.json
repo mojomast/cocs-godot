@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "/tmp/opencode/cocs-graphics-cinder-map/godot",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--headless",
+    "--script",
+    "res://tests/cinder_array/verify.gd",
+    "--",
+    "/tmp/opencode/cocs-graphics-cinder-map/port/native-cinder-array/evidence/attempt-01/physics/report.json"
+  ],
+  "returncode": 1,
+  "wall_seconds": 0.164,
+  "renderer": "gl_compatibility",
+  "software_rendering": true,
+  "llvmpipe_threads": 4,
+  "xvfb_listeners": "abstract local only; -nolisten tcp -nolisten unix",
+  "isolated_home_xdg": true
+}
