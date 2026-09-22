@@ -96,6 +96,7 @@ commands = [
     ("player-fx-integration", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/integration.gd"]),
     ("benchmark-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/benchmark/contracts.gd"]),
     ("benchmark-tools", ["node", "--test", "port/native-benchmark/test.mjs"]),
+    ("release-pipeline-tools", ["node", "--test", "tools/release/options.test.mjs", "tools/release/release.test.mjs"]),
     ("blood-fx-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/blood_fx/contracts.gd"]),
     ("blood-fx-surfaces", [binary, "--headless", "--path", "godot", "--script", "res://tests/blood_fx/surfaces.gd"]),
     ("blood-fx-stress", [binary, "--headless", "--path", "godot", "--script", "res://tests/blood_fx/stress.gd"]),

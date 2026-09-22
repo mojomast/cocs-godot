@@ -133,3 +133,30 @@ the locked JSON contract; the family summary below does not narrow them.
   `asset-audit/HANDOFF.md`; inspection is not legal clearance.
 - Prediction, adverse-network behavior and cross-renderer/hardware acceptance
   remain open. Race, soccer and LATTICE are required scope, not optional cuts.
+
+## Combat expansion UI (2026-09-22)
+
+Four inherited UI defects recorded earlier in this matrix are fixed, with measured
+geometry and rendered before/after evidence in `port/native-ui-polish/`:
+
+- **Combat setup obstruction** — the autowrapping status label shaped its minimum height
+  at 1 px width, inflating the panel to `680x2401` and covering the game view at both
+  resolutions, and the map/mode pickers were `OptionButton` popups (the engine popup path
+  the lobby lane removed elsewhere). The surface is now `680x524`, popup-free, dismissible
+  and hidden once combat starts; the shared status panel can no longer inflate
+  (`620x70` in the states that previously produced `620x870` / `620x1545`).
+- **Scoreboard over the HUD** — the shared board overlapped the vitals and weapon panels
+  at 960x640 and the weapon panel plus help line at 1280x800, and the Horde specialization
+  covered vitals and weapon at 960x640. Both now derive their band from the shared HUD's
+  measured rects, re-checked every frame, and land clear at both sizes
+  (`374x354` / `694x511` shared; `374x294` / `694x444` Horde).
+- **Player-count wording** — now derived from the wire roster
+  (`13 actors · 1 player · 12 enemies`), with the legacy wording only when every actor is
+  human.
+- **Pickup captions** — the oversized caption belonged to a legacy asset production no
+  longer uses; it is tamed (`font 12`, range 6 m) and its comparison baselines re-rendered.
+
+Scoreboard coverage grew 25 -> 45 checks, match selection 95 -> 98, setup +6; no assertion
+was removed or weakened. Recorded invalidations: three lobby images and three arms-race
+result captures still show the old board geometry and are retained as labelled historical
+evidence (`port/native-ui-polish/README.md` §5.1).
