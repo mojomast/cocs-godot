@@ -1,0 +1,159 @@
+{
+  "status": "PASS",
+  "evidence": "/tmp/opencode/combined-arms-independent/port/reports/combined-arms-independent/evidence/fa2d3e19-b0a8-414b-8db2-5dfa57cda4c1",
+  "commands": [
+    [
+      "node",
+      "/tmp/opencode/combined-arms-independent/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/ca-independent-wxsskcdg/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/ca-independent-wxsskcdg/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/ca-independent-wxsskcdg/godot",
+      "--check-only",
+      "--script",
+      "res://tests/combined_arms/independent_observe.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/ca-independent-wxsskcdg/godot",
+      "--script",
+      "res://tests/combined_arms/test_controls.gd"
+    ],
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1280x800x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/ca-independent-wxsskcdg/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tests/combined_arms/gallery.gd",
+      "--",
+      "--evidence=/tmp/opencode/combined-arms-independent/port/reports/combined-arms-independent/evidence/fa2d3e19-b0a8-414b-8db2-5dfa57cda4c1"
+    ],
+    [
+      "node",
+      "/tmp/opencode/combined-arms-independent/port/reports/combined-arms-independent/server.mjs",
+      "/tmp/opencode/ca-independent-wxsskcdg",
+      "/tmp/opencode/combined-arms-independent/port/reports/combined-arms-independent/evidence/fa2d3e19-b0a8-414b-8db2-5dfa57cda4c1/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/ca-independent-wxsskcdg/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/combined_arms/independent_observe.gd",
+      "--",
+      "--map=sunscar-convoy",
+      "--endpoint=ws://127.0.0.1:44111",
+      "--evidence=/tmp/opencode/combined-arms-independent/port/reports/combined-arms-independent/evidence/fa2d3e19-b0a8-414b-8db2-5dfa57cda4c1"
+    ],
+    [
+      "/usr/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/tmp/opencode/combined-arms-independent/port/native-combined-arms",
+      "-p",
+      "test_validate.py",
+      "-v"
+    ]
+  ],
+  "base": "83e4aff",
+  "deliveries": [
+    "1126a08",
+    "613dc92"
+  ],
+  "purpose": "Independent same-route receipt/application and 960x640/1280x800 review",
+  "classification": "Harness-injected native physical key/mouse events; no human driving claim",
+  "temporaryRuntime": "/tmp/opencode/ca-independent-wxsskcdg",
+  "display": ":2",
+  "endpoint": "ws://127.0.0.1:44111",
+  "unchangedRuntimeAndSource": true,
+  "acceptance": {
+    "exactSnapshotCorrelations": 357,
+    "receivedInputs": 332,
+    "queuedInputs": 332,
+    "interactReceipts": 2,
+    "maxVehicleDisplacementMetres": 25.677999999999997,
+    "freshInfantryMetres": 3.1180000000000003,
+    "ACKNeutralSamples": 53,
+    "seconds": 15.3801013333333
+  },
+  "ownedProcesses": [
+    {
+      "pid": 3228457,
+      "returncode": 0
+    },
+    {
+      "pid": 3228489,
+      "returncode": 0
+    },
+    {
+      "pid": 3229070,
+      "returncode": 0
+    },
+    {
+      "pid": 3229135,
+      "returncode": 0
+    },
+    {
+      "pid": 3229264,
+      "returncode": 0
+    },
+    {
+      "pid": 3229267,
+      "returncode": 0
+    },
+    {
+      "pid": 3229707,
+      "returncode": 0
+    },
+    {
+      "pid": 3229789,
+      "returncode": 0
+    },
+    {
+      "pid": 3232246,
+      "returncode": 0
+    }
+  ],
+  "ownedProcessesReaped": true,
+  "authorityPortClosed": true,
+  "privateTempRemoved": true,
+  "totalWallSeconds": 29.75699376128614
+}

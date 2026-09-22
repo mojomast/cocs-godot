@@ -1,0 +1,661 @@
+{
+  "status": "PASS",
+  "deliveredReplay": {
+    "exactSnapshotCorrelations": 357,
+    "receivedInputs": 332,
+    "queuedInputs": 332,
+    "interactReceipts": 2,
+    "maxVehicleDisplacementMetres": 25.677999999999997,
+    "freshInfantryMetres": 3.1180000000000003,
+    "ACKNeutralSamples": 53,
+    "seconds": 15.3801013333333
+  },
+  "recipient": {
+    "room": "M3S6",
+    "peer": 1,
+    "roundRevision": 1
+  },
+  "actor": 0,
+  "connections": 1,
+  "allQueuedPacketsReceivedExactly": 332,
+  "allNativeSamplesCorrelated": 357,
+  "sourceSamples": 444,
+  "rootComparisons": 3570,
+  "stages": [
+    {
+      "stage": "setup",
+      "first": {
+        "snapshotSeq": 2,
+        "ack": 0,
+        "actorXYZ": {
+          "x": -86.0,
+          "y": 0.0,
+          "z": 2.0
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": false
+      },
+      "last": {
+        "snapshotSeq": 2,
+        "ack": 0,
+        "actorXYZ": {
+          "x": -86.0,
+          "y": 0.0,
+          "z": 2.0
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": false
+      }
+    },
+    {
+      "stage": "walk",
+      "first": {
+        "snapshotSeq": 3,
+        "ack": 1,
+        "actorXYZ": {
+          "x": -86.0,
+          "y": 0.0,
+          "z": 2.0
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": true
+      },
+      "last": {
+        "snapshotSeq": 182,
+        "ack": 139,
+        "actorXYZ": {
+          "x": -61.576,
+          "y": 0.0,
+          "z": -5.739
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": true
+      }
+    },
+    {
+      "stage": "mount-request",
+      "first": {
+        "snapshotSeq": 183,
+        "ack": 140,
+        "actorXYZ": {
+          "x": -61.796,
+          "y": 0.0,
+          "z": -5.515
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": true
+      },
+      "last": {
+        "snapshotSeq": 184,
+        "ack": 141,
+        "actorXYZ": {
+          "x": -61.95,
+          "y": 0.2,
+          "z": -3.6
+        },
+        "vehicleXYZ": {
+          "x": -62.0,
+          "y": 0.0,
+          "z": -4.0
+        },
+        "speed": 0.0,
+        "engaged": false
+      }
+    },
+    {
+      "stage": "mounted",
+      "first": {
+        "snapshotSeq": 185,
+        "ack": 141,
+        "actorXYZ": {
+          "x": -61.95,
+          "y": 0.2,
+          "z": -3.6
+        },
+        "vehicleXYZ": {
+          "x": -62.0,
+          "y": 0.0,
+          "z": -4.0
+        },
+        "speed": 0.0,
+        "engaged": true
+      },
+      "last": {
+        "snapshotSeq": 224,
+        "ack": 168,
+        "actorXYZ": {
+          "x": -61.95,
+          "y": 0.2,
+          "z": -3.6
+        },
+        "vehicleXYZ": {
+          "x": -62.0,
+          "y": 0.0,
+          "z": -4.0
+        },
+        "speed": 0.0,
+        "engaged": true
+      }
+    },
+    {
+      "stage": "drive",
+      "first": {
+        "snapshotSeq": 225,
+        "ack": 169,
+        "actorXYZ": {
+          "x": -61.95,
+          "y": 0.2,
+          "z": -3.6
+        },
+        "vehicleXYZ": {
+          "x": -62.0,
+          "y": 0.0,
+          "z": -4.0
+        },
+        "speed": 0.0,
+        "engaged": true
+      },
+      "last": {
+        "snapshotSeq": 267,
+        "ack": 201,
+        "actorXYZ": {
+          "x": -50.584,
+          "y": 0.2,
+          "z": -3.6
+        },
+        "vehicleXYZ": {
+          "x": -50.634,
+          "y": 0.0,
+          "z": -4.0
+        },
+        "speed": 14.792,
+        "engaged": true
+      }
+    },
+    {
+      "stage": "brake",
+      "first": {
+        "snapshotSeq": 268,
+        "ack": 202,
+        "actorXYZ": {
+          "x": -50.086,
+          "y": 0.2,
+          "z": -3.6
+        },
+        "vehicleXYZ": {
+          "x": -50.136,
+          "y": 0.0,
+          "z": -4.0
+        },
+        "speed": 15.002,
+        "engaged": true
+      },
+      "last": {
+        "snapshotSeq": 329,
+        "ack": 251,
+        "actorXYZ": {
+          "x": -36.34,
+          "y": 0.2,
+          "z": -3.6
+        },
+        "vehicleXYZ": {
+          "x": -36.39,
+          "y": 0.0,
+          "z": -4.0
+        },
+        "speed": 0.781,
+        "engaged": true
+      }
+    },
+    {
+      "stage": "released",
+      "first": {
+        "snapshotSeq": 330,
+        "ack": 252,
+        "actorXYZ": {
+          "x": -36.318,
+          "y": 0.2,
+          "z": -3.6
+        },
+        "vehicleXYZ": {
+          "x": -36.368,
+          "y": 0.0,
+          "z": -4.0
+        },
+        "speed": 0.617,
+        "engaged": false
+      },
+      "last": {
+        "snapshotSeq": 377,
+        "ack": 282,
+        "actorXYZ": {
+          "x": -36.272,
+          "y": 0.2,
+          "z": -3.6
+        },
+        "vehicleXYZ": {
+          "x": -36.322,
+          "y": 0.0,
+          "z": -4.0
+        },
+        "speed": 0.0,
+        "engaged": false
+      }
+    },
+    {
+      "stage": "exit-request",
+      "first": {
+        "snapshotSeq": 379,
+        "ack": 283,
+        "actorXYZ": {
+          "x": -36.272,
+          "y": 0.2,
+          "z": -3.6
+        },
+        "vehicleXYZ": {
+          "x": -36.322,
+          "y": 0.0,
+          "z": -4.0
+        },
+        "speed": 0.0,
+        "engaged": true
+      },
+      "last": {
+        "snapshotSeq": 381,
+        "ack": 285,
+        "actorXYZ": {
+          "x": -36.322,
+          "y": 0.0,
+          "z": -5.65
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": false
+      }
+    },
+    {
+      "stage": "exit-neutral",
+      "first": {
+        "snapshotSeq": 383,
+        "ack": 286,
+        "actorXYZ": {
+          "x": -36.322,
+          "y": 0.0,
+          "z": -5.65
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": false
+      },
+      "last": {
+        "snapshotSeq": 402,
+        "ack": 300,
+        "actorXYZ": {
+          "x": -36.322,
+          "y": 0.0,
+          "z": -5.65
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": false
+      }
+    },
+    {
+      "stage": "infantry-fresh",
+      "first": {
+        "snapshotSeq": 403,
+        "ack": 301,
+        "actorXYZ": {
+          "x": -36.322,
+          "y": 0.0,
+          "z": -5.65
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": true
+      },
+      "last": {
+        "snapshotSeq": 417,
+        "ack": 310,
+        "actorXYZ": {
+          "x": -36.322,
+          "y": 0.0,
+          "z": -8.768
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": true
+      }
+    },
+    {
+      "stage": "final-release",
+      "first": {
+        "snapshotSeq": 419,
+        "ack": 311,
+        "actorXYZ": {
+          "x": -36.322,
+          "y": 0.0,
+          "z": -9.342
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": false
+      },
+      "last": {
+        "snapshotSeq": 442,
+        "ack": 331,
+        "actorXYZ": {
+          "x": -36.322,
+          "y": 0.0,
+          "z": -10.768
+        },
+        "vehicleXYZ": null,
+        "speed": null,
+        "engaged": false
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "action": "mount",
+      "queuedSeq": 141,
+      "received": {
+        "connection": 1,
+        "actorId": 0,
+        "peer": 1,
+        "room": "M3S6",
+        "roundRevision": 1,
+        "wallSeconds": 10.362851536,
+        "seq": 141,
+        "input": {
+          "crouch": false,
+          "fire": false,
+          "interact": true,
+          "jump": false,
+          "pitch": 0,
+          "power": false,
+          "reload": false,
+          "sprint": false,
+          "x": 0,
+          "yaw": 1.87241554260254,
+          "z": 0
+        }
+      },
+      "lastPreACKSnapshot": 183,
+      "firstACKSnapshot": 184,
+      "firstACK": 141,
+      "beforeActorXYZ": {
+        "x": -61.796,
+        "y": 0,
+        "z": -5.515
+      },
+      "afterActorXYZ": {
+        "x": -61.95,
+        "y": 0.2,
+        "z": -3.6
+      },
+      "afterVehicleXYZ": {
+        "x": -62,
+        "y": 0,
+        "z": -4
+      },
+      "afterVehicleDriver": 0,
+      "nativeBoundaryReleased": true
+    },
+    {
+      "action": "exit",
+      "queuedSeq": 285,
+      "received": {
+        "connection": 1,
+        "actorId": 0,
+        "peer": 1,
+        "room": "M3S6",
+        "roundRevision": 1,
+        "wallSeconds": 16.942023235999997,
+        "seq": 285,
+        "input": {
+          "crouch": false,
+          "fire": false,
+          "interact": true,
+          "jump": false,
+          "pitch": 0,
+          "power": false,
+          "reload": false,
+          "sprint": false,
+          "x": 0,
+          "yaw": -1.571,
+          "z": 0
+        }
+      },
+      "lastPreACKSnapshot": 380,
+      "firstACKSnapshot": 381,
+      "firstACK": 285,
+      "beforeActorXYZ": {
+        "x": -36.272,
+        "y": 0.2,
+        "z": -3.6
+      },
+      "afterActorXYZ": {
+        "x": -36.322,
+        "y": 0,
+        "z": -5.65
+      },
+      "afterVehicleXYZ": {
+        "x": -36.322,
+        "y": 0,
+        "z": -4
+      },
+      "afterVehicleDriver": null,
+      "nativeBoundaryReleased": true
+    }
+  ],
+  "sourceVehicleEvents": [
+    {
+      "connection": 1,
+      "actorId": 0,
+      "peer": 1,
+      "room": "M3S6",
+      "roundRevision": 1,
+      "wallSeconds": 10.372994873,
+      "event": {
+        "type": "vehicle-enter",
+        "id": 34,
+        "time": 6.133,
+        "actor": 0,
+        "vehicle": "sunscar-0-puma",
+        "seat": "driver"
+      }
+    },
+    {
+      "connection": 1,
+      "actorId": 0,
+      "peer": 1,
+      "room": "M3S6",
+      "roundRevision": 1,
+      "wallSeconds": 16.958792133,
+      "event": {
+        "type": "vehicle-exit",
+        "id": 35,
+        "time": 12.7,
+        "actor": 0,
+        "vehicle": "sunscar-0-puma",
+        "reason": "exit"
+      }
+    }
+  ],
+  "brake": {
+    "jumpTrueSequences": [
+      204,
+      205,
+      206,
+      207,
+      208,
+      209
+    ],
+    "sourceRoomJumpRisingEdges": 1,
+    "firstFalseReleaseSeq": 210,
+    "firstReleaseACKSnapshot": 277,
+    "firstSpeed": 15.002,
+    "lastSpeed": 0.781,
+    "qualification": "Space rising-edge brake TAP with S deceleration; not isolated brake physics"
+  },
+  "neutralBoundaries": {
+    "released": {
+      "ACKNeutralSamples": 27,
+      "actorXZDisplacement": 0.045999999999999375
+    },
+    "exit-neutral": {
+      "ACKNeutralSamples": 10,
+      "actorXZDisplacement": 0.0
+    },
+    "final-release": {
+      "ACKNeutralSamples": 16,
+      "actorXZDisplacement": 1.4260000000000002
+    }
+  },
+  "mountFreshEnter": {
+    "keyEvents": [
+      {
+        "key": 87,
+        "pressed": false,
+        "seconds": 6.87013944444444
+      },
+      {
+        "key": 65,
+        "pressed": false,
+        "seconds": 6.87013944444444
+      },
+      {
+        "key": 83,
+        "pressed": false,
+        "seconds": 6.87013944444444
+      },
+      {
+        "key": 68,
+        "pressed": false,
+        "seconds": 6.87013944444444
+      },
+      {
+        "key": 32,
+        "pressed": false,
+        "seconds": 6.87013944444444
+      },
+      {
+        "key": 4194325,
+        "pressed": false,
+        "seconds": 6.87013944444444
+      },
+      {
+        "key": 69,
+        "pressed": false,
+        "seconds": 6.87013944444444
+      },
+      {
+        "key": 4194309,
+        "pressed": true,
+        "seconds": 6.87013944444444
+      },
+      {
+        "key": 4194309,
+        "pressed": false,
+        "seconds": 6.87013944444444
+      }
+    ],
+    "neutralQueuedPacketsBeforeFreshDriveW": 28
+  },
+  "freshInfantryKeyEvents": [
+    {
+      "key": 87,
+      "pressed": false,
+      "seconds": 14.0536363636364
+    },
+    {
+      "key": 65,
+      "pressed": false,
+      "seconds": 14.0536363636364
+    },
+    {
+      "key": 83,
+      "pressed": false,
+      "seconds": 14.0536363636364
+    },
+    {
+      "key": 68,
+      "pressed": false,
+      "seconds": 14.0536363636364
+    },
+    {
+      "key": 32,
+      "pressed": false,
+      "seconds": 14.0536363636364
+    },
+    {
+      "key": 4194325,
+      "pressed": false,
+      "seconds": 14.0536363636364
+    },
+    {
+      "key": 69,
+      "pressed": false,
+      "seconds": 14.0536363636364
+    },
+    {
+      "key": 4194309,
+      "pressed": true,
+      "seconds": 14.0536363636364
+    },
+    {
+      "key": 4194309,
+      "pressed": false,
+      "seconds": 14.0536363636364
+    },
+    {
+      "key": 87,
+      "pressed": true,
+      "seconds": 14.0536363636364
+    }
+  ],
+  "unappliedFinding": {
+    "file": "port/native-combined-arms/validate.py:18-20",
+    "description": "Delivered verifier accepts removal of a driving packet receipt",
+    "removedInputSeq": 171,
+    "mutatedCopyOnly": true,
+    "deliveredVerifierIncorrectlyAccepted": true,
+    "strictIndependentCheckRejects": true
+  },
+  "pngs": {
+    "mounted-960.png": {
+      "dimensions": [
+        960,
+        640
+      ],
+      "sha256": "68880dfd195645a9246b55f1572b8f2db6af9707517e0f8f8a77053b37b73221"
+    },
+    "released-1280.png": {
+      "dimensions": [
+        1280,
+        800
+      ],
+      "sha256": "37937404af5b7da45d1c6fafed864de189e7cc82d5613382b523ba521dc7f19d"
+    },
+    "silhouettes-1280.png": {
+      "dimensions": [
+        1280,
+        800
+      ],
+      "sha256": "d3d0a3fccbcbaf462992245f07f287b7207dfc6846f2f194a82251e9ccfb0914"
+    },
+    "silhouettes-960.png": {
+      "dimensions": [
+        960,
+        600
+      ],
+      "sha256": "c4ba39cacda691619a58aaafeb7e753c7e2b5ef084bcbdda559550cb11811106"
+    }
+  }
+}

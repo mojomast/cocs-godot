@@ -1,0 +1,13 @@
+diff --git a/port/native-combined-arms/validate.py b/port/native-combined-arms/validate.py
+--- a/port/native-combined-arms/validate.py
++++ b/port/native-combined-arms/validate.py
+@@ -13,6 +13,9 @@ def verify(text, wire):
+     assert wire['starts']==1 and wire['cleanup']=={'serverClosed':True,'sockets':0}
+     inputs={i['seq']:i['input'] for i in wire['inputs']}
+     assert len(inputs)==len(wire['inputs']), 'duplicate input sequence'
++    queued_sequences={q['seq'] for q in queued}
++    assert len(queued_sequences)==len(queued), 'duplicate queued sequence'
++    assert queued_sequences==set(inputs), 'queued/received sequence sets differ'
+     server={s['seq']:s for s in wire['samples']}
+     correlations=0
+     for q in queued:

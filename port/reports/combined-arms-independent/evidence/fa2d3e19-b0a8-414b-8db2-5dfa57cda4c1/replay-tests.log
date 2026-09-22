@@ -1,0 +1,13 @@
+test_changed_source_actor (test_validate.Replay.test_changed_source_actor) ... ok
+test_changed_vehicle_source_y (test_validate.Replay.test_changed_vehicle_source_y) ... ok
+test_cleanup_failure (test_validate.Replay.test_cleanup_failure) ... ok
+test_duplicate_receipt (test_validate.Replay.test_duplicate_receipt) ... ok
+test_interact_never_ACKed (test_validate.Replay.test_interact_never_ACKed) ... ok
+test_live_replay (test_validate.Replay.test_live_replay) ... ok
+test_missing_receipts (test_validate.Replay.test_missing_receipts) ... ok
+test_no_completion (test_validate.Replay.test_no_completion) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.805s
+
+OK

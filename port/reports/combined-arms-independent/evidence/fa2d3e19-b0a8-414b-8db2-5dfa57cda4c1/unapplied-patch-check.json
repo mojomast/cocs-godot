@@ -1,0 +1,8 @@
+{
+  "unappliedPatchCheck": "PASS",
+  "originalEvidence": "PASS",
+  "missingReceipt171": "REJECTED",
+  "reason": "queued/received sequence sets differ",
+  "sourceFileEdited": false,
+  "liveRuns": 1
+}
