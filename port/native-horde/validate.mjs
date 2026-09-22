@@ -98,6 +98,7 @@ export function validateRun({wire,stdout,stderr,summary,launch}) {
  for(const layout of layouts) {
   assert(layout.passive&&!layout.intersects&&!layout.scoreboard_intersects,'Horde HUD overlaps shared UI');
   if(layout.scoreboard_visible)assert(layout.scoreboard_bottom<=layout.viewport[1],'scoreboard clipped');
+  assert(Number.isFinite(layout.controls_bottom)&&layout.controls_bottom<=layout.viewport[1],'control help clipped/missing');
  }
  const trace=stdout.split('\n').filter(s=>s.startsWith('PORT_NATIVE_TRACE ')).map(s=>JSON.parse(s.slice(18)));
  assert(trace.filter(t=>t.event==='recording_end'&&t.complete===true).length===1,'native recording completion absent/truncated');

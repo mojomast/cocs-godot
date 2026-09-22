@@ -39,8 +39,9 @@ func probe() -> void:
 		var board: Node = product.get_node("Scoreboard")
 		var rect: Rect2 = board.panel.get_rect()
 		var strip: Rect2 = product.horde_label.get_rect()
-		var ok: bool = board.panel.visible and not strip.intersects(rect) and rect.end.y<=size.y
-		print("HORDE_LAYOUT_TEST ", JSON.stringify({"viewport":[size.x,size.y],"intersects":strip.intersects(rect),"bottom":rect.end.y,"page_size":board.page_size,"ok":ok}))
+		var help: Rect2 = product.get_node("GameHUD").controls.get_rect()
+		var ok: bool = board.panel.visible and not strip.intersects(rect) and rect.end.y<=size.y and help.end.y<=size.y
+		print("HORDE_LAYOUT_TEST ", JSON.stringify({"viewport":[size.x,size.y],"intersects":strip.intersects(rect),"bottom":rect.end.y,"controls_bottom":help.end.y,"page_size":board.page_size,"ok":ok}))
 		checks += 1
 		if not ok: failures += 1
 	root.remove_child(product)

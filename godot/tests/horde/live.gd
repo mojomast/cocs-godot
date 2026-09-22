@@ -64,6 +64,8 @@ func picture(tag: String) -> void:
 		"scoreboard_visible":board.panel.visible,"scoreboard":[board.panel.position.x,board.panel.position.y,board.panel.size.x,board.panel.size.y],
 		"scoreboard_intersects":board.panel.visible and strip.get_rect().intersects(board.panel.get_rect()),
 		"scoreboard_bottom":board.panel.position.y+board.panel.size.y,
+		"controls_visible":hud.controls.visible,"controls_bottom":hud.controls.position.y+hud.controls.size.y,
+		"controls":[hud.controls.position.x,hud.controls.position.y,hud.controls.size.x,hud.controls.size.y],
 		"passive":strip.mouse_filter == Control.MOUSE_FILTER_IGNORE}))
 	print("HORDE_PICTURE ", tag, " ", get_viewport().get_texture().get_image().save_png(shot_path.replace(".png", "-"+tag+".png")))
 

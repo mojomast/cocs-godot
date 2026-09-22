@@ -94,7 +94,7 @@ func _ready() -> void:
 func show_controls() -> void:
 	var hud: Node = get_node_or_null("GameHUD")
 	if hud != null:
-		hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility\nClick fire · RMB ADS · Z/MMB alt · R reload · F melee · G grenade · Q power · E use\nEsc release · Tab scores · 1–9/0 or wheel weapons"
+		hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · Q power · E use\nLMB fire · RMB ADS · Z/MMB alt · R reload · F melee · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release"
 
 func update_look(relative: Vector2) -> void:
 	if not can_capture_pointer() or not relative.is_finite(): return
