@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "normal_rate": true,
+  "trace_complete": false,
+  "sourceHashes": {
+    "godot/world/session.gd": "a501f3814e08c6ba17ac4f9bf2b2d2942241a8a48613d902387b8774a3b31554",
+    "godot/world/projectiles.gd": "1bb5e69cc6a0e1604c55c078a359316aeac6f72bc8c1129034ad73fc7ec9f94d",
+    "godot/world/combat_feedback.gd": "ba8e19c7448783e02f6468c8b2ee51daf62d840cdc801e96af9f571904114cef",
+    "godot/world/audio_feedback.gd": "253732ab9a7422303520ffc4c36c6a7ce7cd8131acee660401192d7c69a52d49",
+    "godot/ui/match_setup.gd": "05a6bf0f2fcc8272e8a23d5caf5f47ed7a70decb099d725f9b04b3cb367b123c",
+    "port/native-projectile-combat/live.gd": "9c041ae0be9253ba921ceb3a08976609b2352c7168ba985492d03673f7e00c7a",
+    "port/native-projectile-combat/run.mjs": "b1c65a5d2330bd55d3cbe4d336a1ae8bbf21025d9619fcef0713f0d8423829f5",
+    "port/native-projectile-combat/route.mjs": "c65fdabe96603b27cff2235e00e5436402a3b8fd4ee374417d84a3e5929e1dd0"
+  },
+  "runs": [
+    {
+      "ack": 1447,
+      "capture": {
+        "distance": 3.58258271217346,
+        "launches": 1,
+        "pixel": [
+          672.029479980469,
+          419.839233398438
+        ],
+        "position": [
+          -18.3490009307861,
+          1.60000002384186,
+          -19.4720001220703
+        ],
+        "projectile": "Projectile_9"
+      },
+      "combat_local_launches": 12,
+      "explosions": 10,
+      "frames": 823,
+      "local_launches": 12,
+      "map": "meridian-exchange",
+      "max_projectiles": 5,
+      "mode": "deathmatch",
+      "moved": true,
+      "play_wall_ms": 14005,
+      "rendered_projectile_samples": 1382,
+      "saved": true,
+      "shots": 0,
+      "smoke": false,
+      "snapshots": 784,
+      "trace_complete": false,
+      "inputs": {
+        "count": 1448,
+        "fire": 816,
+        "movement": 659
+      },
+      "sourceEvents": {
+        "launches": 12,
+        "pickups": 1,
+        "switches": [
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "route": {
+    "start": [
+      8,
+      0,
+      34
+    ],
+    "waypoints": [
+      [
+        16,
+        9
+      ],
+      [
+        16,
+        -7
+      ],
+      [
+        6,
+        -7
+      ],
+      [
+        6,
+        -15
+      ],
+      [
+        1,
+        -18
+      ],
+      [
+        -14,
+        -19
+      ]
+    ]
+  },
+  "cleanup": {
+    "childrenReaped": true,
+    "serverClosed": true,
+    "sockets": 0
+  }
+}

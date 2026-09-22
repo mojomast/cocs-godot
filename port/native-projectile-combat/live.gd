@@ -51,6 +51,14 @@ func fail(message: String) -> void:
 	push_error(message)
 	quit(2)
 
+func wait_weapon(index: int) -> bool:
+	var deadline := Time.get_ticks_msec() + 2000
+	while Time.get_ticks_msec() < deadline:
+		await process_frame
+		if session.presentation.local_actor.get("weapon") == index: return true
+	fail("Authority did not acknowledge native weapon selection")
+	return false
+
 func observe(frame: Dictionary) -> void:
 	observed += 1
 	var state: Dictionary = frame.state
@@ -86,8 +94,13 @@ func run() -> void:
 	button(true)
 	button(false)
 	if not route_file.is_empty():
-		while not FileAccess.file_exists(route_file): await process_frame
-		route = JSON.parse_string(FileAccess.get_file_as_string(route_file))
+		while not FileAccess.file_exists(route_file):
+			await process_frame
+			if Time.get_ticks_msec() > deadline: fail("Route file deadline"); return
+		var route_value: Variant = JSON.parse_string(FileAccess.get_file_as_string(route_file))
+		if not route_value is Array or route_value.is_empty() or route_value.size() > 128:
+			fail("Bounded ground-route planning failed"); return
+		route = route_value
 		while session.presentation.local_actor.ammo[1] == 0:
 			if Time.get_ticks_msec() > deadline:
 				print("PICKUP_ROUTE_TIMEOUT ", JSON.stringify({"waypoint":waypoint,"route":route,"position":[session.camera.position.x,session.camera.position.z],"focused":root.has_focus(),"captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,"phase":session.phase}))
@@ -98,14 +111,22 @@ func run() -> void:
 			var actor: Dictionary = session.presentation.local_actor
 			var pos := Vector2(actor.x, actor.z)
 			var target := Vector2(route[waypoint][0], route[waypoint][1])
-			if pos.distance_to(target) < 0.65 and waypoint < route.size() - 1:
+			if pos.distance_to(target) < 0.45 and waypoint < route.size() - 1:
 				waypoint += 1
 				target = Vector2(route[waypoint][0], route[waypoint][1])
 			look(atan2(-(target.x-pos.x), -(target.y-pos.y)), 0)
+			# Slow at turns so source inertia plus delayed snapshots cannot orbit
+			# a close waypoint indefinitely. This is an ordinary crouch key.
+			key(KEY_CTRL, pos.distance_to(target) < 3.0)
 			key(KEY_W, pos.distance_to(target) > 0.35)
-			await create_timer(0.1).timeout
+			await create_timer(0.05).timeout
 		key(KEY_W, false)
+		key(KEY_CTRL, false)
+		key(KEY_1, true)
+		if not await wait_weapon(0): return
+		key(KEY_1, false)
 		key(KEY_2, true)
+		if not await wait_weapon(1): return
 		key(KEY_2, false)
 		await create_timer(0.4).timeout
 	ready_at = Time.get_ticks_msec()

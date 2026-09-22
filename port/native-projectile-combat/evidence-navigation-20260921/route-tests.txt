@@ -1,0 +1,16 @@
+Focused test execution summary (not a raw TAP capture)
+Command: node --test port/native-projectile-combat/route.test.mjs
+Exit status: 0
+Tests: 12 passed, 0 failed, 0 skipped, 0 cancelled
+Reported duration: 6658.58958 ms
+
+1. Reproduces the independent [8,34] approach failure at the causeway's
+   0.0 -> 0.9 m floor discontinuity; box obstruction is false, walkEdge false.
+2-11. All ten authored Meridian spawns: finite supported/collision-clear
+   segments, then unchanged source moveActor traversal at speeds 6, 8.6,
+   and 10 with 60Hz integration, 20Hz steering, two-tick observation delay.
+12. Unsupported starts, holes, malformed coordinates and oversized arenas
+    are rejected within the planner's bounds.
+
+All 30 new-route synthetic source-movement approaches reached pickup radius.
+This fixture evidence is distinct from the real native graphical run beside it.

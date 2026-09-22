@@ -1,5 +1,10 @@
 # Native projectile combat
 
+Navigation follow-up: [NAVIGATION-FOLLOWUP.md](NAVIGATION-FOLLOWUP.md) records
+the lead's independently discovered Deathmatch route failure, the geometry-aware
+fix, all-spawn source-movement tests, and a successful real native run from the
+same `[8,34]` spawn. Original feature evidence below is retained unchanged.
+
 Base: `5ce0ae0` (compact HUD, weapon controls, TDM, native worlds/entities/audio,
 standalone Puma). Source gameplay remains locked at
 `51289b79c627a26a381ba556b92bab71f93f3732`; `git diff --quiet` against that revision
