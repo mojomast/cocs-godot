@@ -15,6 +15,8 @@ async function main() {
   // Native-only scenes and external lobby never import local authority adapters.
   const factory = plan.nativeOnly || plan.endpoint ? null : plan.nativeArena
     ? (await import('./runtime/port/native-arenas/authority.mjs')).createNativeArenaAuthority
+    : plan.identityZone
+    ? (await import('./runtime/port/native-identity-zones/authority.mjs')).createIdentityZoneAuthority
     : plan.experience === 'horde'
     ? (await import('./runtime/port/native-horde/authority.mjs')).createAuthority
     : (await import('./runtime/server/game-server.mjs')).createGameServer;
@@ -38,7 +40,7 @@ async function main() {
   const serverError = error => { serverFailure = error; stop(); };
   process.on('SIGINT', interrupt); process.on('SIGTERM', terminate);
   try {
-    game = await factory?.(plan.nativeArena ? {port:0, host:'127.0.0.1', mapId:plan.map, mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds} : plan.experience === 'horde' ? {} : {historyPath:null, progressionPath:null});
+    game = await factory?.(plan.nativeArena ? {port:0, host:'127.0.0.1', mapId:plan.map, mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds} : plan.identityZone ? {port:0, host:'127.0.0.1', mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds, fragLimit:plan.scoreLimit} : plan.experience === 'horde' ? {} : {historyPath:null, progressionPath:null});
     game?.server?.on('error', serverError);
     let endpoint = plan.endpoint;
     if (game) {
@@ -49,18 +51,24 @@ async function main() {
       const ownedEndpoint = plan.nativeArena && game.endpoint ? game.endpoint : `ws://127.0.0.1:${game.server.address().port}`;
       const owned = new URL(ownedEndpoint);
       // Accept only the authority's exact routes, including before URL normalization.
-      const allowedPath = plan.nativeArena ? [owned.origin, `${owned.origin}/`, `${owned.origin}/native-arenas`].includes(ownedEndpoint) : owned.pathname === '/';
+      const allowedPath = plan.nativeArena ? [owned.origin, `${owned.origin}/`, `${owned.origin}/native-arenas`].includes(ownedEndpoint)
+        : plan.identityZone ? [owned.origin, `${owned.origin}/`, `${owned.origin}/native-zones`].includes(ownedEndpoint)
+        : owned.pathname === '/';
       if (owned.protocol !== 'ws:' || owned.hostname !== '127.0.0.1' || !owned.port || owned.username || owned.password || !allowedPath || owned.search || owned.hash) throw Error('Owned authority must use a private loopback endpoint');
       const port = Number(owned.port);
       const health = await fetch(`http://127.0.0.1:${port}/`, {signal:AbortSignal.timeout(5000)});
       const status = await health.json();
-      const identity = plan.nativeArena ? status?.localOnly === true : plan.experience === 'horde'
+      const identity = plan.nativeArena ? status?.localOnly === true
+        : plan.identityZone ? status?.localOnly === true && status?.mode === 'domination'
+        : plan.experience === 'horde'
         ? status?.service === 'cocs-local-horde' && status.transport === 1 && status.localOnly === true
         : status?.service === 'token-arena-game-server';
       if (!health.ok || status?.port !== port || !identity) throw Error('Owned server health check failed');
       if (stopping) return signalCode || 1;
       console.log('PACKAGE_SERVER_READY ' + JSON.stringify({pid:process.pid, host:'127.0.0.1', port, experience:plan.experience, map:plan.map, mode:plan.mode, health:status}));
-      endpoint = `ws://127.0.0.1:${port}${plan.nativeArena && owned.pathname === '/native-arenas' ? '/native-arenas' : ''}`;
+      const ownedPath = plan.nativeArena && owned.pathname === '/native-arenas' ? '/native-arenas'
+        : plan.identityZone && owned.pathname === '/native-zones' ? '/native-zones' : '';
+      endpoint = `ws://127.0.0.1:${port}${ownedPath}`;
     } else if (plan.nativeOnly) {
       console.log('PACKAGE_NATIVE_ONLY ' + JSON.stringify({authority:false, experience:plan.experience}));
     } else {

@@ -34,7 +34,7 @@ export function launchOptions(argv, catalog) {
   const values = {}, flags = new Set(), sessionOptions = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['map','mode','experience','endpoint','time-limit','round-target','bots','round-seconds'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
+    const key = ['map','mode','experience','endpoint','time-limit','round-target','bots','round-seconds','score-limit'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       if (!value || value.startsWith('--')) throw Error(`--${key} requires a value`);
@@ -66,7 +66,25 @@ export function launchOptions(argv, catalog) {
       sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,...(smoke ? [smoke] : [])],
       args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),'--path','godot','res://native_arenas/demo.tscn']};
   }
-  for (const key of ['bots','round-seconds']) if (values[key] !== undefined) throw Error(`--${key} requires native-dm`);
+  if (experience === 'identity-zones') {
+    // Reviewed static one-pair route: Vermilion Fold / Domination on its own
+    // authority and scene. Mirrors port/native-identity-zones/route.mjs.
+    for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds','score-limit'].includes(key)) throw Error(`--${key} is not supported by identity-zones`);
+    for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by identity-zones`);
+    const map = values.map ?? 'vermilion-fold', mode = values.mode ?? 'domination';
+    if (map !== 'vermilion-fold') throw Error(`identity-zones does not support map ${map}`);
+    if (mode !== 'domination') throw Error('identity-zones supports only domination');
+    for (const [key, min, max, fallback] of [['bots',0,7,2],['round-seconds',60,900,120],['score-limit',1,900,30]]) {
+      values[key] ??= String(fallback);
+      if (!/^\d+$/.test(values[key]) || Number(values[key]) < min || Number(values[key]) > max) throw Error(`--${key} must be ${min}..${max}`);
+    }
+    const bots = Number(values.bots), roundSeconds = Number(values['round-seconds']), scoreLimit = Number(values['score-limit']);
+    const smoke = flags.has('--smoke') ? '--smoke' : null;
+    return {experience, identityZone:true, map, mode, bots, roundSeconds, scoreLimit, endpoint:null, smoke,
+      sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,`--score-limit=${scoreLimit}`,...(smoke ? [smoke] : [])],
+      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),'--path','godot','res://native_arenas/identity_zone_demo.tscn']};
+  }
+  for (const key of ['bots','round-seconds','score-limit']) if (values[key] !== undefined) throw Error(`--${key} requires native-dm or identity-zones`);
   if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
     for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by native-only ${experience}`);
     for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by native-only ${experience}`);

@@ -11,6 +11,8 @@ const binary=process.env.GODOT_BIN;if(!binary)throw Error('Set GODOT_BIN to pinn
 if(execFileSync(binary,['--version'],{encoding:'utf8'}).trim()!==lock.godot_version)throw Error('Godot version differs from lock');
 const factory=plan.nativeOnly||plan.endpoint ? null : plan.nativeArena
  ? (await import('../../port/native-arenas/authority.mjs')).createNativeArenaAuthority
+ : plan.identityZone
+ ? (await import('../../port/native-identity-zones/authority.mjs')).createIdentityZoneAuthority
  : plan.experience==='horde'
  ? (await import('../../port/native-horde/authority.mjs')).createAuthority
  : (await import('../../server/game-server.mjs')).createGameServer;
@@ -22,21 +24,26 @@ const stop=()=>{stopping=true;if(child&&child.exitCode===null&&child.signalCode=
 const interrupt=()=>{signalCode=130;stop();},terminate=()=>{signalCode=143;stop();},serverError=error=>{serverFailure=error;stop();};
 process.once('SIGINT',interrupt);process.once('SIGTERM',terminate);
 try{
- game=await factory?.(plan.nativeArena?{port:0,host:'127.0.0.1',mapId:plan.map,mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds}:plan.experience==='horde'?{}:{historyPath:null,progressionPath:null});
+ game=await factory?.(plan.nativeArena?{port:0,host:'127.0.0.1',mapId:plan.map,mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds}:plan.identityZone?{port:0,host:'127.0.0.1',mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds,fragLimit:plan.scoreLimit}:plan.experience==='horde'?{}:{historyPath:null,progressionPath:null});
  game?.server?.on('error',serverError);
  let endpoint=plan.endpoint;
  if(game){
-  if(!plan.nativeArena || (!game.endpoint && !game.server?.listening))await new Promise((resolve,reject)=>{game.server.once('error',reject);game.server.listen(plan.nativeArena?0:Number(process.env.PORT??0),'127.0.0.1',()=>{game.server.removeListener('error',reject);resolve();});});
-  const ownedEndpoint=plan.nativeArena&&game.endpoint?game.endpoint:`ws://127.0.0.1:${game.server.address().port}`;
+  if(!(plan.nativeArena||plan.identityZone) || (!game.endpoint && !game.server?.listening))await new Promise((resolve,reject)=>{game.server.once('error',reject);game.server.listen(plan.nativeArena?0:Number(process.env.PORT??0),'127.0.0.1',()=>{game.server.removeListener('error',reject);resolve();});});
+  const ownedEndpoint=(plan.nativeArena||plan.identityZone)&&game.endpoint?game.endpoint:`ws://127.0.0.1:${game.server.address().port}`;
   const owned=new URL(ownedEndpoint);
-  // Native authority supports exactly the root and /native-arenas routes.
-  // Check the original spelling too: URL normalization must not admit other paths.
-  const allowedPath=plan.nativeArena?[owned.origin,`${owned.origin}/`,`${owned.origin}/native-arenas`].includes(ownedEndpoint):owned.pathname==='/';
+  // Each owned authority supports exactly its own documented routes. Check the
+  // original spelling too: URL normalization must not admit other paths.
+  const allowedPath=plan.nativeArena?[owned.origin,`${owned.origin}/`,`${owned.origin}/native-arenas`].includes(ownedEndpoint)
+   :plan.identityZone?[owned.origin,`${owned.origin}/`,`${owned.origin}/native-zones`].includes(ownedEndpoint)
+   :owned.pathname==='/';
   if(owned.protocol!=='ws:'||owned.hostname!=='127.0.0.1'||!owned.port||owned.username||owned.password||!allowedPath||owned.search||owned.hash)throw Error('Owned authority must use a private loopback endpoint');
   const port=Number(owned.port);const health=await fetch(`http://127.0.0.1:${port}`,{signal:AbortSignal.timeout(5000)});if(!health.ok)throw Error('Server readiness failed');
   if(plan.nativeArena){
    const status=await health.json();
    if(status?.localOnly!==true||status.port!==port)throw Error('Native DM readiness identity failed');
+  }else if(plan.identityZone){
+   const status=await health.json();
+   if(status?.localOnly!==true||status.port!==port||status?.mode!=='domination')throw Error('Identity zone readiness identity failed');
   }else if(plan.experience==='horde'){
    const status=await health.json();
    if(status?.service!=='cocs-local-horde'||status.transport!==1||status.localOnly!==true||status.port!==port)throw Error('Horde readiness identity failed');
