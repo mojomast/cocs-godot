@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "run": "/tmp/opencode/native-pickup-sanitized-audit-wwy20mle/evidence/2026-09-21T23-55-34.524Z",
+  "executionCommit": "5e8e02e0f66be5f571649e06deb16a7f149ac71c",
+  "nativeSnapshots": 867,
+  "receivedInputs": 1666,
+  "nativeTraceRecords": 2534,
+  "actor": 1,
+  "pickup": 0,
+  "beforeSeq": 385,
+  "afterSeq": 386,
+  "returnSeq": 836,
+  "pickupEvent": {
+    "type": "pickup",
+    "id": 3,
+    "time": 12.867,
+    "actor": 1,
+    "kind": "rocket",
+    "powerup": false,
+    "economy": false
+  },
+  "returnSimulationSeconds": 15,
+  "completionProven": false,
+  "limitation": "Order-paired queue/receive controls and ACK high-water do not prove application of every individual input.",
+  "artifact_archive_sha256": "67bf58b4ff2eef64e16f7483730abc27af66fddc561cca963b37c59d7fce23c9",
+  "classification": "Offline gameplay audit of sanitized derivative; not a new live execution or proof of tightened process/error gate."
+}

@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: welcome credentials are null before retention and absent after compressed round-trip
+ok 1 - welcome credentials are null before retention and absent after compressed round-trip
+  ---
+  duration_ms: 1.203153
+  type: 'test'
+  ...
+# Subtest: redaction preserves gameplay and absent/null welcome fields
+ok 2 - redaction preserves gameplay and absent/null welcome fields
+  ---
+  duration_ms: 0.174095
+  type: 'test'
+  ...
+# Subtest: every recorder decode uses the redacting boundary, and original transport is forwarded
+ok 3 - every recorder decode uses the redacting boundary, and original transport is forwarded
+  ---
+  duration_ms: 0.267621
+  type: 'test'
+  ...
+# Subtest: positive exit cannot mask late output cap, deadline, signal, or Godot errors
+ok 4 - positive exit cannot mask late output cap, deadline, signal, or Godot errors
+  ---
+  duration_ms: 1.075784
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 37.174437

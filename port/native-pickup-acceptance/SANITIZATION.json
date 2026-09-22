@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "original_commit": "2d4e60a66761d79f79ef274cf6ba20d663ede968",
+  "original_branch_preserved": "port/native-pickup-acceptance",
+  "original_archive_path": "port/native-pickup-acceptance/evidence.tar.gz",
+  "original_archive_sha256": "979fb551a934dcb4d563693c19a320f9d58e26a4c986d6854b76657a8f04c783",
+  "original_index_sha256": "d31492ac6b0329108a444b322908c883c764c619d861e2c1b8ca6cd986093b9b",
+  "derived_archive_sha256": "67bf58b4ff2eef64e16f7483730abc27af66fddc561cca963b37c59d7fce23c9",
+  "derivation_source_commit": "f0297df40ff58213973aea5565309bf552a55721",
+  "derivation_script_sha256": "934662f2bfdb540e5bfa3d96fee7093304e63353d72f9ef03502aed568532f87",
+  "execution_provenance": "Original summaries, execution source hashes and gameplay observations are unchanged. This is offline sanitization, not a new live execution.",
+  "credential_scan": {
+    "removed_values_absent_from_all_decompressed_members": true,
+    "all_retained_welcome_credentials_null": true
+  },
+  "members_retained": 36,
+  "members_byte_identical": 34,
+  "redacted_field_count": 6,
+  "changes": [
+    {
+      "path": "evidence/2026-09-21T23-53-28.066Z/wire.jsonl.gz",
+      "redactedFields": [
+        {
+          "line": 1,
+          "jsonPointer": "/frame/token",
+          "replacement": null
+        },
+        {
+          "line": 1,
+          "jsonPointer": "/frame/progressToken",
+          "replacement": null
+        },
+        {
+          "line": 1,
+          "jsonPointer": "/frame/profile/ownerToken",
+          "replacement": null
+        }
+      ],
+      "count": 3,
+      "original_sha256": "20b0ddfd29f78032ce7fa5f53934f776ff3c886e9d5523a94c90bb640eebfa2b",
+      "derived_sha256": "f692ec7c2dd7ff5210203c6e3d05760c073fe5aaa14807b69cc19572cf6a934c",
+      "original_uncompressed_sha256": "0e11e4b65281c407ff176dfd754347959ffce8d8dc96e72bbaf045800cf562fd",
+      "derived_uncompressed_sha256": "d50a332aa68f8140229527b872b8ce6270d985d428a130fedf92b110400fe4f3"
+    },
+    {
+      "path": "evidence/2026-09-21T23-55-34.524Z/wire.jsonl.gz",
+      "redactedFields": [
+        {
+          "line": 1,
+          "jsonPointer": "/frame/token",
+          "replacement": null
+        },
+        {
+          "line": 1,
+          "jsonPointer": "/frame/progressToken",
+          "replacement": null
+        },
+        {
+          "line": 1,
+          "jsonPointer": "/frame/profile/ownerToken",
+          "replacement": null
+        }
+      ],
+      "count": 3,
+      "original_sha256": "8b929cb5106df4ff43ca5c2732c50fd8d69d9b1758154ce1c08e1dc123e90674",
+      "derived_sha256": "6122e43acca228aaa7b2a1a8a238f928b845883aeb89d789d44ddf101f0f18d2",
+      "original_uncompressed_sha256": "d2492ddd500eb0e82b85f9a3a19143401724fb62b671199dce7ea46248c8114a",
+      "derived_uncompressed_sha256": "ece7c766e04afe3012a3fdced33d1f7e9d4b4fca3c6b3d5e878f5bf89401b735"
+    }
+  ]
+}

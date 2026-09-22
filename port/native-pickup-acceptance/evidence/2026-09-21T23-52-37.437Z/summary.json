@@ -1,0 +1,43 @@
+{
+  "scenario": "PICKUP-WEAPON",
+  "base": "b15c303b404aadea37eddf88a9430b8b003c8515",
+  "branch": "port/native-pickup-acceptance",
+  "executionCheckout": "/tmp/opencode/cocs-native-pickup",
+  "normalRate": true,
+  "tickDt": 0.016666666666666666,
+  "tickMs": 16.666666666666668,
+  "completionProven": false,
+  "status": "INCONCLUSIVE",
+  "cleanup": {
+    "children": [
+      {
+        "pid": 1968935,
+        "reaped": true,
+        "exitCode": null,
+        "signal": "SIGKILL"
+      },
+      {
+        "pid": 1968634,
+        "reaped": true,
+        "exitCode": 0,
+        "signal": null
+      }
+    ],
+    "privateTempRemoved": true
+  },
+  "command": "GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 GUEST_NODE_MODULES=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/node_modules node port/tools/native_pickup_acceptance/run.mjs",
+  "runtimeTrees": {
+    "godot": "6795853af5ff9276914d7f26f1a1d0871eb1a155",
+    "game": "ae8015eeecec1d044cdcceaa1e5ea89d53251a90",
+    "server": "e54b6a715f46ff7e25db533ce9d1d5cc68942563"
+  },
+  "sourceStatus": "",
+  "hashes": {
+    "run.mjs": "f47183f7e19572a0e23a1a6a6dda26bc9911e4dbad1a388284b60ee914e0b9c0",
+    "observe.gd": "f4806397ec0e9a1dec625c01344cce5d670d3b164218118208cfe2162023cd7c",
+    "route.mjs": "20b1298ee82556a1152e74a9cce63c7e14ff456e551c928c2ca96d7feb1723c5"
+  },
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "error": "Error: Deadline: private Xvfb display (5000ms)\n    at until (file:///tmp/opencode/cocs-native-pickup/port/tools/native_trace_correlation/guest_helpers.mjs:8:8)\n    at async wait (file:///tmp/opencode/cocs-native-pickup/port/tools/native_pickup_acceptance/run.mjs:40:34)\n    at async file:///tmp/opencode/cocs-native-pickup/port/tools/native_pickup_acceptance/run.mjs:52:3",
+  "captureWallMs": null
+}
