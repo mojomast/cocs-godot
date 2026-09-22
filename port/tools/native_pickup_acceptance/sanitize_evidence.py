@@ -1,6 +1,6 @@
 """Derive sanitized evidence from original Git bytes without writing raw credentials.
 
-Only non-null welcome token/progressToken JSON values change; unchanged archive
+Only non-null welcome token/progressToken/profile.ownerToken values change; unchanged archive
 members retain exact bytes. Values are never logged, hashed individually, or
 included in the redaction manifest. The original commit/branch is untouched.
 """
@@ -62,10 +62,13 @@ def main():
             if frame.get('type') != 'welcome':
                 continue
             expected = copy.deepcopy(record)
-            for key in ('token', 'progressToken'):
-                value = frame.get(key)
+            for path in (('token',), ('progressToken',), ('profile', 'ownerToken')):
+                source_parent = frame if len(path) == 1 else (frame.get(path[0]) or {})
+                key = path[-1]
+                value = source_parent.get(key)
                 if value is None:
                     continue
+                target_parent = expected['frame'] if len(path) == 1 else expected['frame'][path[0]]
                 assert isinstance(value, str) and value, 'Unexpected welcome credential shape'
                 secrets.append(value.encode())
                 # Replace only this exact string value; leave other JSON bytes untouched.
@@ -74,8 +77,8 @@ def main():
                 new = json.dumps(key) + ':null'
                 assert line.count(old) == 1, 'Expected one exact field value'
                 line = line.replace(old, new, 1)
-                expected['frame'][key] = None
-                fields.append({'line': number, 'jsonPointer': f'/frame/{key}', 'replacement': None})
+                target_parent[key] = None
+                fields.append({'line': number, 'jsonPointer': '/frame/' + '/'.join(path), 'replacement': None})
             assert json.loads(line) == expected, 'Noncredential semantic change'
             lines[number - 1] = line
         if fields:
@@ -85,7 +88,7 @@ def main():
                             'original_sha256': sha(data), 'derived_sha256': sha(derived_members[name]),
                             'original_uncompressed_sha256': sha(original_plain),
                             'derived_uncompressed_sha256': sha(derived_plain)})
-    assert len(changes) == 2 and sum(c['count'] for c in changes) == 4, 'Unexpected original redaction count'
+    assert len(changes) == 2 and sum(c['count'] for c in changes) == 6, 'Unexpected original redaction count'
     assert len(original_members) == 36
     # Scan all retained bytes, including decompressed logs, against every removed
     # value in memory. No value or value-specific digest is written to provenance.
@@ -99,6 +102,7 @@ def main():
                 frame = json.loads(line)['frame']
                 if frame.get('type') == 'welcome':
                     assert all(frame.get(k) is None for k in ('token', 'progressToken'))
+                    assert (frame.get('profile') or {}).get('ownerToken') is None
     changed_names = {c['path'] for c in changes}
     assert all(derived_members[name] == data for name, data in original_members.items() if name not in changed_names)
 
@@ -119,7 +123,7 @@ def main():
             assert info.name == entry['path'] and len(data) == entry['bytes'] and sha(data) == entry['sha256']
     index = {'schema': 2, 'archive': archive_path.name, 'archive_bytes': len(derived_archive),
              'archive_sha256': sha(derived_archive), 'provenance': provenance_path.name,
-             'method': 'Sanitized derivative: only four welcome token/progressToken values become null in two wire logs. All 36 members and all three attempts retained; 34 members byte-identical.',
+             'method': 'Sanitized derivative: only six welcome token/progressToken/profile.ownerToken values become null in two wire logs. All 36 members and all three attempts retained; 34 members byte-identical.',
              'members': members}
     provenance = {'schema': 1, 'original_commit': ORIGINAL,
                   'original_branch_preserved': 'port/native-pickup-acceptance',
