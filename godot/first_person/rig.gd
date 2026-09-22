@@ -44,6 +44,7 @@ var wrists: Dictionary = {}
 var forearms: Dictionary = {}
 var elbows: Dictionary = {}
 var ads_pose := Transform3D.IDENTITY
+var presentation: Dictionary = {}
 var handling := Handling.new()
 
 func attach_to(camera: Camera3D) -> void:
@@ -229,6 +230,7 @@ func _select_weapon(id: int) -> void:
 			parts[name] = part
 			rest[name] = part.transform
 	current_weapon = id
+	presentation = manifest.weapons[id].get("presentation", {})
 	for name: String in manifest.weapons[id].anchors:
 		anchors[name] = weapon.find_child(name, true, false)
 		assert(anchors[name] != null, "Missing exported anchor: " + name)
@@ -300,6 +302,14 @@ func advance(delta: float) -> void:
 	var free_motion := 1.0 - aim_weight
 	pivot.position += Vector3(sin(age * 8.0) * bob * 0.004 * free_motion, (breathe + cos(age * 16.0) * bob * 0.003) * free_motion - switch_remaining * 0.32 - reload_curve * 0.045, recoil * float(info.kick[0]) * 0.45)
 	pivot.basis *= Basis.from_euler(Vector3(recoil * float(info.kick[1]) * (0.25 if reduced_motion else 0.6) + look_lag.y * free_motion, look_lag.x * free_motion, reload_curve * 0.16))
+	# Per-weapon idle sway character: presentation only, a pure function of local
+	# age and the exported profile, scaled by (1 - aim_weight) so the settled
+	# cheek weld is exactly still. Never touches aim, recoil, spread or ammo.
+	if not reduced_motion and free_motion > 0.0 and not presentation.is_empty():
+		var sway: Dictionary = presentation.get("sway", {})
+		var phase := age * float(sway.get("rate", 1.9))
+		pivot.position += Vector3(sin(phase) * float(sway.get("x", 0.0012)), cos(phase * float(sway.get("skewY", 0.83))) * float(sway.get("y", 0.0010)), 0.0) * free_motion
+		pivot.basis *= Basis.from_euler(Vector3(0.0, 0.0, sin(phase * float(sway.get("skewRoll", 0.5))) * float(sway.get("roll", 0.0014)) * free_motion))
 	flash.visible = flash_remaining > 0 and not external_muzzle_fx
 	# Presentation-only handling: bolt/slide cycle, charging handle, authoritative
 	# magazine window, barrel heat. Never writes recoil/spread/ammo authority.

@@ -22,6 +22,8 @@ var _fx_root: Node3D
 var _weapon: Node3D
 var _anchors: Dictionary = {}
 var _info: Dictionary = {}
+var _id := -1
+var _rattle := 0.18
 var _bolt: Node3D
 var _bolt_rest := Transform3D.IDENTITY
 var _feed: Node3D
@@ -100,10 +102,12 @@ func _make_material() -> StandardMaterial3D:
 	return material
 
 ## Per-weapon binding from the rig's imported parts, rest pose and anchors.
-func bind(weapon: Node3D, parts: Dictionary, rest: Dictionary, anchors: Dictionary, info: Dictionary, _id: int) -> void:
+func bind(weapon: Node3D, parts: Dictionary, rest: Dictionary, anchors: Dictionary, info: Dictionary, id: int) -> void:
 	_weapon = weapon
+	_id = id
 	_anchors = anchors
 	_info = info.get("handling", {})
+	_rattle = float(info.get("presentation", {}).get("rattle", 0.18))
 	_bolt = parts.get("bolt")
 	_bolt_rest = rest.get("bolt", Transform3D.IDENTITY) if _bolt != null else Transform3D.IDENTITY
 	_feed = parts.get("feed")
@@ -171,7 +175,13 @@ func advance(delta: float, reloading: bool, progress: float, aim_weight: float, 
 		else: charge_offset = charge_stroke * _charge_curve(charge_phase)
 	if _bolt != null and is_instance_valid(_bolt):
 		_bolt.transform = _bolt_rest
-		_bolt.position.z += maxf(bolt_offset, charge_offset)
+		var travel := maxf(bolt_offset, charge_offset)
+		_bolt.position.z += travel
+		# Visible action hardware (bright trim carrier, serrations, knob) makes the
+		# authoritative stroke read; a bounded rattle is exactly zero at rest and
+		# never adds travel. Exaggeration is legibility, not extra motion.
+		if travel > 0.0:
+			_bolt.rotation.x += travel * _rattle * (1.0 if _id % 2 == 0 else -1.0)
 	# 3. Feed/magazine handling, strictly inside the authoritative window.
 	magazine_curve = 0.0
 	var reload: Dictionary = info.get("reload", {})
@@ -180,8 +190,16 @@ func advance(delta: float, reloading: bool, progress: float, aim_weight: float, 
 		if _in_reload(reloading, progress):
 			magazine_curve = _magazine_curve(progress)
 			var amount := magazine_curve
-			_feed.position += Vector3(0.0, -float(reload.get("drop", 0.1)) * amount, float(reload.get("slide", 0.0)) * amount)
-			var roll := float(reload.get("roll", 0.0)) * amount
+			# Per-family seat flourish: a bounded rock multiplied by the same
+			# window curve, so it is exactly zero at progress 0.0 and 1.0.
+			var flourish: Dictionary = reload.get("flourish", {})
+			var rock := 0.0
+			if not flourish.is_empty():
+				rock = float(flourish.get("amount", 0.0)) * amount * sin(PI * float(flourish.get("rate", 2.0)) * progress)
+				if not reduced_motion:
+					rock += float(flourish.get("spin", 0.0)) * amount * cos(PI * float(flourish.get("rate", 2.0)) * progress)
+			_feed.position += Vector3(0.0, -float(reload.get("drop", 0.1)) * amount - absf(rock) * float(flourish.get("lift", 0.03)), float(reload.get("slide", 0.0)) * amount + rock * 0.02)
+			var roll := float(reload.get("roll", 0.0)) * amount + rock
 			var tilt := float(reload.get("tilt", 0.0)) * amount
 			if roll != 0.0 or tilt != 0.0:
 				_feed.basis = _feed_rest.basis * Basis.from_euler(Vector3(tilt, 0.0, roll))

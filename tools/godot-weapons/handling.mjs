@@ -18,14 +18,22 @@
 
 // Per-family reload behaviour. All motion is a pure function of the
 // authoritative reload progress, so it can never run outside the source
-// reloading window.
+// reloading window. `flourish` is a bounded seat/dip wobble multiplied by the
+// same window curve: exactly zero at progress 0.0 and 1.0, presentation only,
+// never a timing or ammo authority.
 export const RELOAD = {
-  magazine: {kind: 'magazine', drop: 0.17, slide: 0.035, roll: 0.14, tilt: 0.0, hinge: 0.0},
-  cell: {kind: 'cell', drop: 0.12, slide: 0.05, roll: -0.10, tilt: 0.0, hinge: 0.0},
-  drum: {kind: 'drum', drop: 0.055, slide: 0.02, roll: 0.06, tilt: 0.0, hinge: 0.0},
-  breech: {kind: 'breech', drop: 0.02, slide: -0.03, roll: 0.0, tilt: 0.30, hinge: 0.0},
-  tube: {kind: 'tube', drop: 0.015, slide: -0.02, roll: 0.0, tilt: 0.24, hinge: 0.0},
-  break: {kind: 'break', drop: 0.0, slide: 0.0, roll: 0.0, tilt: 0.18, hinge: 0.30},
+  magazine: {kind: 'magazine', drop: 0.17, slide: 0.035, roll: 0.14, tilt: 0.0, hinge: 0.0,
+    flourish: {amount: 0.055, rate: 3.0, lift: 0.05, spin: 0.30}},
+  cell: {kind: 'cell', drop: 0.12, slide: 0.05, roll: -0.10, tilt: 0.0, hinge: 0.0,
+    flourish: {amount: 0.070, rate: 2.0, lift: 0.04, spin: -0.55}},
+  drum: {kind: 'drum', drop: 0.055, slide: 0.02, roll: 0.06, tilt: 0.0, hinge: 0.0,
+    flourish: {amount: 0.090, rate: 2.0, lift: 0.02, spin: 0.85}},
+  breech: {kind: 'breech', drop: 0.02, slide: -0.03, roll: 0.0, tilt: 0.30, hinge: 0.0,
+    flourish: {amount: 0.045, rate: 2.0, lift: 0.03, spin: 0.35}},
+  tube: {kind: 'tube', drop: 0.015, slide: -0.02, roll: 0.0, tilt: 0.24, hinge: 0.0,
+    flourish: {amount: 0.035, rate: 2.0, lift: 0.02, spin: 0.30}},
+  break: {kind: 'break', drop: 0.0, slide: 0.0, roll: 0.0, tilt: 0.18, hinge: 0.30,
+    flourish: {amount: 0.030, rate: 2.0, lift: 0.01, spin: 0.20}},
 };
 
 // Weapon id -> family handling. `eject` marks a receiver-side casing port the
@@ -111,5 +119,35 @@ export function handlingProfile(id, ch, info) {
     heat: {gain: family.heat.gain, cool: family.heat.cool, cap: 1.0},
     eject: family.eject,
     barrelRadius: r,
+  };
+}
+
+// Idle sway character per weapon family: presentation only, consumed by
+// rig.gd's `advance` and multiplied by (1 - aim_weight) there, so it is exactly
+// zero at settled ADS and can never move the sight picture. Amplitudes stay
+// under 2.2 mm / 0.0032 rad: unread at hip and far below the reticle corridor
+// clearance the framing gates measure. The rate/skew pair is what makes a
+// launcher breathe slowly and heavily while the SMG jitters.
+const SWAY = [
+  {rate: 1.90, x: .0012, y: .0009, roll: .0014, skewY: .83, skewRoll: .50}, // pulse carbine: steady hum
+  {rate: 0.62, x: .0018, y: .0022, roll: .0032, skewY: .67, skewRoll: .38}, // rocket: heavy slow breathe
+  {rate: 0.78, x: .0008, y: .0006, roll: .0009, skewY: .55, skewRoll: .45}, // rail: braced long-rail drift
+  {rate: 1.08, x: .0014, y: .0012, roll: .0020, skewY: .95, skewRoll: .62}, // scattergun: break-action sway
+  {rate: 2.30, x: .0010, y: .0008, roll: .0012, skewY: 1.15, skewRoll: .70}, // plasma: fast energy flutter
+  {rate: 0.68, x: .0016, y: .0018, roll: .0026, skewY: .72, skewRoll: .40}, // grenade: drum-heavy roll
+  {rate: 2.85, x: .0009, y: .0007, roll: .0010, skewY: 1.32, skewRoll: .82}, // shock: crackling jitter
+  {rate: 0.86, x: .0017, y: .0015, roll: .0024, skewY: .78, skewRoll: .48}, // flak: breech-heavy breathe
+  {rate: 0.42, x: .0007, y: .0006, roll: .0008, skewY: .48, skewRoll: .30}, // marksman: near-still precision
+  {rate: 3.40, x: .0013, y: .0011, roll: .0022, skewY: 1.26, skewRoll: .92}, // SMG: tight fast jitter
+];
+
+export function presentationProfile(id, ch, info) {
+  const sway = SWAY[id] ?? SWAY[0];
+  const feel = info?.feel ?? {};
+  return {
+    sway: {...sway},
+    // Bolt/shroud legibility: bright action hardware plus a bounded rattle that
+    // is exactly zero at rest, so the authoritative carrier travel is untouched.
+    rattle: Number((Math.min(.35, Math.max(.10, (feel.kick?.[0] ?? .05) * 2.4))).toFixed(4)),
   };
 }

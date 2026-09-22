@@ -1,0 +1,102 @@
+[
+  {
+    "id": 0,
+    "triangles": 4484,
+    "sourceTriangles": 3512,
+    "detailTriangles": 972,
+    "batches": 8,
+    "bytes": 438908,
+    "primitives": 71,
+    "nearestHand": 0.0599
+  },
+  {
+    "id": 1,
+    "triangles": 5204,
+    "sourceTriangles": 4052,
+    "detailTriangles": 1152,
+    "batches": 8,
+    "bytes": 507936,
+    "primitives": 61,
+    "nearestHand": 0.0662
+  },
+  {
+    "id": 2,
+    "triangles": 6472,
+    "sourceTriangles": 6092,
+    "detailTriangles": 380,
+    "batches": 8,
+    "bytes": 629664,
+    "primitives": 16,
+    "nearestHand": 0.1128
+  },
+  {
+    "id": 3,
+    "triangles": 4752,
+    "sourceTriangles": 3920,
+    "detailTriangles": 832,
+    "batches": 8,
+    "bytes": 464796,
+    "primitives": 47,
+    "nearestHand": 0.0674
+  },
+  {
+    "id": 4,
+    "triangles": 5992,
+    "sourceTriangles": 5024,
+    "detailTriangles": 968,
+    "batches": 8,
+    "bytes": 583656,
+    "primitives": 53,
+    "nearestHand": 0.0605
+  },
+  {
+    "id": 5,
+    "triangles": 5152,
+    "sourceTriangles": 3980,
+    "detailTriangles": 1172,
+    "batches": 8,
+    "bytes": 503032,
+    "primitives": 61,
+    "nearestHand": 0.0769
+  },
+  {
+    "id": 6,
+    "triangles": 5640,
+    "sourceTriangles": 4448,
+    "detailTriangles": 1192,
+    "batches": 8,
+    "bytes": 549788,
+    "primitives": 51,
+    "nearestHand": 0.0891
+  },
+  {
+    "id": 7,
+    "triangles": 4828,
+    "sourceTriangles": 3812,
+    "detailTriangles": 1016,
+    "batches": 8,
+    "bytes": 471900,
+    "primitives": 59,
+    "nearestHand": 0.05
+  },
+  {
+    "id": 8,
+    "triangles": 5996,
+    "sourceTriangles": 5228,
+    "detailTriangles": 768,
+    "batches": 8,
+    "bytes": 584152,
+    "primitives": 41,
+    "nearestHand": 0.0667
+  },
+  {
+    "id": 9,
+    "triangles": 4448,
+    "sourceTriangles": 3620,
+    "detailTriangles": 828,
+    "batches": 8,
+    "bytes": 435472,
+    "primitives": 59,
+    "nearestHand": 0.0471
+  }
+]
