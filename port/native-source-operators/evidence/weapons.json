@@ -1,7 +1,9 @@
 {
+	"detailTriangles": 13400,
 	"failures": [],
 	"maximumAnchorError": 0.0,
-	"maximumBoundsError": 0.0000000897168703772877,
+	"maximumBoundsError": 0.000000076345735067207,
+	"maximumPinnedAnchorDrift": 0.0,
 	"passed": true,
 	"weapons": 10
 }
