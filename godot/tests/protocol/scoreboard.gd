@@ -19,8 +19,8 @@ class SessionStub extends Node:
 		client.results.connect(func(_frame: Dictionary) -> void: phase = 4)
 		client.connection_error.connect(func(_message: String) -> void: phase = -1)
 
-class HordeHost extends Node3D:
-	# Minimal product-shaped host: the Horde strip position and the shared GameHUD.
+class BoardHost extends Node3D:
+	# Minimal product-shaped host: an optional strip label and the shared GameHUD.
 	var horde_label := Label.new()
 	func _ready() -> void:
 		horde_label.position = Vector2(20, 190)
@@ -135,13 +135,20 @@ func run() -> void:
 	board.apply_state({"actors":[{"id":0,"name":"One"},{"id":1,"name":"Two"}]}, 0)
 	board.render()
 	check(board.summary.text.ends_with("2 players"), "all-human rosters keep the legacy player wording")
-	# The Horde specialization must stay clear of the real shared-HUD panels at
-	# both target resolutions; measured from the live control rects, not by eye.
+	# The Horde specialization and the shared board must both stay clear of the real
+	# shared-HUD panels at both target resolutions; measured from the live control
+	# rects, not by eye.
 	for size: Vector2i in [Vector2i(960, 640), Vector2i(1280, 800)]:
-		var geometry: Dictionary = await horde_geometry(size)
-		check(not geometry.panel.intersects(geometry.vitals), "horde board clear of the vitals at %d" % size.x)
-		check(not geometry.panel.intersects(geometry.weapon), "horde board clear of the weapon panel at %d" % size.x)
-		check(geometry.viewport.encloses(geometry.panel), "horde board inside the viewport at %d" % size.x)
+		var horde: Dictionary = await board_geometry(HordeScoreboard.new(), size)
+		check(not horde.panel.intersects(horde.vitals), "horde board clear of the vitals at %d" % size.x)
+		check(not horde.panel.intersects(horde.weapon), "horde board clear of the weapon panel at %d" % size.x)
+		check(horde.viewport.encloses(horde.panel), "horde board inside the viewport at %d" % size.x)
+		check(not horde.panel.intersects(horde.help), "horde board clear of the help line at %d" % size.x)
+		var shared: Dictionary = await board_geometry(Scoreboard.new(), size)
+		check(not shared.panel.intersects(shared.vitals), "shared board clear of the vitals at %d" % size.x)
+		check(not shared.panel.intersects(shared.weapon), "shared board clear of the weapon panel at %d" % size.x)
+		check(shared.viewport.encloses(shared.panel), "shared board inside the viewport at %d" % size.x)
+		check(not shared.panel.intersects(shared.help), "shared board clear of the help line at %d" % size.x)
 	# Replay stored authoritative snapshots: separately identified from synthetic cases.
 	var capture: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/protocol/captured.json"))
 	var replayed := 0
@@ -161,14 +168,13 @@ func passive_controls(node: Node) -> bool:
 		if not passive_controls(child): return false
 	return true
 
-func horde_geometry(size: Vector2i) -> Dictionary:
-	# Actual Horde board + actual shared GameHUD layout at the requested size.
+func board_geometry(board: CanvasLayer, size: Vector2i) -> Dictionary:
+	# Actual board + actual shared GameHUD layout at the requested size.
 	root.size = size
-	var host := HordeHost.new()
+	var host := BoardHost.new()
 	var hud := GameHUD.new()
 	hud.name = "GameHUD"
 	host.add_child(hud)
-	var board := HordeScoreboard.new()
 	host.add_child(board)
 	root.add_child(host)
 	await process_frame
@@ -185,7 +191,8 @@ func horde_geometry(size: Vector2i) -> Dictionary:
 	await process_frame
 	await process_frame
 	var result := {"panel":board.panel.get_global_rect(), "vitals":hud.vitals.get_global_rect(),
-		"weapon":hud.weapon_panel.get_global_rect(), "viewport":Rect2(Vector2.ZERO, Vector2(size)),
+		"weapon":hud.weapon_panel.get_global_rect(), "help":hud.controls.get_global_rect(),
+		"viewport":Rect2(Vector2.ZERO, Vector2(size)),
 		"page_size":board.page_size, "footer":board.footer.text}
 	root.remove_child(host)
 	host.free()

@@ -5,6 +5,11 @@ extends CanvasLayer
 const MAX_ACTORS := 64
 const MAX_VISIBLE := 12
 const ROW_HEIGHT := 30
+# The shared HUD's bottom panels are obstacles, not decoration: the board keeps to
+# the region the measured vitals/weapon rects and help line leave free.
+const HUD_GAP := 12.0
+const MIN_BAND_WIDTH := 340.0
+const COMPACT_BAND_WIDTH := 560.0
 const INK := Color("e5edf6")
 const MUTED := Color("94a8be")
 const ACCENT := Color("62deca")
@@ -33,6 +38,11 @@ var summary: Label
 var footer: Label
 var rows_box := VBoxContainer.new()
 var rows: Array[Dictionary] = []
+var header_row: Dictionary = {}
+var applied_cells: Array = []
+var applied_separation := 0
+var applied_band := Rect2()
+var hud_node: Node = null
 
 func _ready() -> void:
 	layer = 8
@@ -106,6 +116,11 @@ func _process(_delta: float) -> void:
 		if phase != last_phase:
 			last_phase = phase
 			dirty = true
+	# The HUD may lay out (or resize) after this board, and a text change can grow
+	# the card's chrome; recompute whenever the measured band moves or the card no
+	# longer fits it, so it can never settle over the vitals.
+	var band := layout_band()
+	if not band.is_equal_approx(applied_band) or panel.size.y > band.size.y + 0.5: resize()
 	refresh_visibility()
 	if panel.visible and dirty: render()
 
@@ -257,9 +272,9 @@ func build_ui() -> void:
 	summary = label(14, MUTED)
 	footer = label(14, MUTED)
 	for item: Label in [title, subtitle, summary]: stack.add_child(item)
-	var header := make_row()
-	stack.add_child(header.node)
-	set_row(header, ["#", "PLAYER", "TEAM", "FRAGS", "DEATHS"], MUTED)
+	header_row = make_row()
+	stack.add_child(header_row.node)
+	set_row(header_row, ["#", "PLAYER", "TEAM", "FRAGS", "DEATHS"], MUTED)
 	rows_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	rows_box.add_theme_constant_override("separation", 0)
 	stack.add_child(rows_box)
@@ -271,10 +286,27 @@ func build_ui() -> void:
 	stack.add_child(footer)
 
 func row_cell_widths() -> Array:
-	return [28, 0, 80, 58, 64]
+	return [28, 0, 52, 50, 60] if compact_band() else [28, 0, 80, 58, 64]
 
 func row_separation() -> int:
-	return 12
+	return 8 if compact_band() else 12
+
+func apply_cell_widths() -> void:
+	# Row cells are built before the HUD has laid out, so the compact decision can
+	# change afterwards; update the existing pool instead of rebuilding it.
+	var widths := row_cell_widths()
+	var separation := row_separation()
+	if widths == applied_cells and separation == applied_separation: return
+	applied_cells = widths.duplicate()
+	applied_separation = separation
+	var pool: Array[Dictionary] = []
+	if not header_row.is_empty(): pool.append(header_row)
+	pool.append_array(rows)
+	for row: Dictionary in pool:
+		var box: HBoxContainer = row.node
+		box.add_theme_constant_override("separation", separation)
+		for i: int in range(mini(row.cells.size(), widths.size())):
+			row.cells[i].custom_minimum_size.x = widths[i]
 
 func make_row() -> Dictionary:
 	var box := HBoxContainer.new()
@@ -296,24 +328,83 @@ func set_row(row: Dictionary, values: Array, color: Color) -> void:
 		row.cells[i].text = values[i]
 		row.cells[i].add_theme_color_override("font_color", color)
 
+func hud() -> Node:
+	if is_instance_valid(hud_node): return hud_node
+	var parent := get_parent()
+	hud_node = parent.get_node_or_null("GameHUD") if parent != null else null
+	return hud_node
+
+func hud_control(field: String) -> Control:
+	# Read-only geometry of the shared HUD panels this board must not cover.
+	var node: Node = hud()
+	if node == null: return null
+	var control: Control = node.get(field)
+	if control == null or not is_instance_valid(control): return null
+	return control if control.size.x > 0.0 and control.size.y > 0.0 else null
+
+func hud_available() -> bool:
+	return hud_control("vitals") != null or hud_control("weapon_panel") != null or hud_control("controls") != null
+
+func safe_band() -> Rect2:
+	# Region the shared HUD leaves free: right of the vitals panel, left of the
+	# weapon panel, above the help line and below the top reservation.
+	var viewport := get_viewport().get_visible_rect().size
+	var top := layout_top()
+	var bottom := viewport.y - 24
+	var help := hud_control("controls")
+	if help != null: bottom = minf(bottom, help.get_global_rect().position.y - HUD_GAP)
+	var blockers: Array[Rect2] = []
+	for field: String in ["vitals", "weapon_panel"]:
+		var control := hud_control(field)
+		if control != null: blockers.append(control.get_global_rect())
+	var left := 16.0
+	var right := viewport.x - 16.0
+	if blockers.size() >= 2:
+		blockers.sort_custom(func(a: Rect2, b: Rect2) -> bool: return a.position.x < b.position.x)
+		var gap_left: float = blockers[0].end.x + HUD_GAP
+		var gap_right: float = blockers[blockers.size() - 1].position.x - HUD_GAP
+		if gap_right - gap_left >= MIN_BAND_WIDTH:
+			left = gap_left
+			right = gap_right
+		else:
+			# No usable middle gap: stay fully above the bottom panels instead.
+			var panel_top := INF
+			for blocker: Rect2 in blockers: panel_top = minf(panel_top, blocker.position.y)
+			bottom = minf(bottom, panel_top - HUD_GAP)
+	elif blockers.size() == 1:
+		bottom = minf(bottom, blockers[0].position.y - HUD_GAP)
+	return Rect2(Vector2(left, top), Vector2(maxf(0.0, right - left), maxf(0.0, bottom - top)))
+
 func layout_top() -> float:
 	# Shared default: reserve the top 224 px for the diagnostic HUD, restart and error text.
 	return 224.0
 
 func layout_bottom() -> float:
-	# Shared default: 24 px viewport margin plus the historic 190 px panel/help budget.
-	return 214.0
+	if not hud_available():
+		# Bare fixtures without a shared HUD keep the historic budget: 24 px viewport
+		# margin plus the 190 px panel/help reserve.
+		return 214.0
+	var viewport := get_viewport().get_visible_rect().size
+	return maxf(0.0, viewport.y - safe_band().end.y) + panel_chrome()
 
 func layout_min_rows() -> int:
-	return 3
+	# A measured band may only allow one row, and a fixed floor would cover the
+	# vitals; bare fixtures without a shared HUD keep their historic three-row floor.
+	return 1 if hud_available() else 3
 
 func layout_width() -> float:
-	var viewport := get_viewport().get_visible_rect().size
-	return minf(760, viewport.x - 48)
+	return minf(760.0, layout_band().size.x)
 
 func layout_band() -> Rect2:
 	var viewport := get_viewport().get_visible_rect().size
-	return Rect2(Vector2(16, layout_top()), Vector2(viewport.x - 32, viewport.y - layout_bottom() - layout_top()))
+	if not hud_available():
+		return Rect2(Vector2(16, layout_top()), Vector2(viewport.x - 32, viewport.y - layout_bottom() - layout_top()))
+	return safe_band()
+
+func compact_band() -> bool:
+	# A narrower band than the historic 760 px card needs compact numeric columns
+	# and a two-line summary, so names and counts are not ellipsized away.
+	return layout_band().size.x < COMPACT_BAND_WIDTH
 
 func panel_chrome() -> float:
 	# Fixed panel height with the visible rows removed. A specialist that must fit a
@@ -327,15 +418,19 @@ func resize() -> void:
 	var viewport := get_viewport().get_visible_rect().size
 	var team_height := 0 if team_score_text.is_empty() else 28
 	page_size = clampi(int((viewport.y - layout_top() - layout_bottom() - team_height) / ROW_HEIGHT), layout_min_rows(), MAX_VISIBLE)
+	applied_band = layout_band()
+	apply_cell_widths()
 	panel.size.x = layout_width()
 	change_page(0)
 	dirty = true
 	position_panel()
 
 func position_panel() -> void:
-	var viewport := get_viewport().get_visible_rect().size
 	var band := layout_band()
-	panel.position = Vector2(band.position.x + (band.size.x - panel.size.x) / 2, maxf(layout_top(), (viewport.y - panel.size.y) / 2))
+	var viewport := get_viewport().get_visible_rect().size
+	var lowest := maxf(band.position.y, band.end.y - panel.size.y)
+	panel.position = Vector2(band.position.x + (band.size.x - panel.size.x) / 2,
+		clampf((viewport.y - panel.size.y) / 2, band.position.y, lowest))
 
 func roster_label() -> String:
 	var humans := 0
@@ -348,8 +443,8 @@ func roster_label() -> String:
 	return roster_text(entries.size(), humans, bots, npcs)
 
 func summary_text(prefix: String, roster: String) -> String:
-	# Shared board reads as one compact line; specialists may split it.
-	return "%s  ·  %s" % [prefix, roster]
+	# A narrow measured band cannot fit the full roster sentence on one line.
+	return "%s\n%s" % [prefix, roster] if compact_band() else "%s  ·  %s" % [prefix, roster]
 
 func help_text(first: int) -> String:
 	var help := "Release Tab to close"
@@ -361,6 +456,10 @@ func help_text(first: int) -> String:
 	if entries.size() > page_size:
 		help += "  ·  PgUp / PgDn: %d–%d of %d" % [first + 1, mini(first + page_size, entries.size()), entries.size()]
 	if actor_count > MAX_ACTORS: help += "  ·  Roster capped at 64"
+	if compact_band():
+		# Keep the action and the paging hint inside the narrow footer.
+		help = help.replace("Waiting for player scores  ·  ", "Scores pending · ")
+		help = help.replace("  ·  ", " · ")
 	return help
 
 func render() -> void:

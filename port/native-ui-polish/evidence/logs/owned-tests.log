@@ -1,34 +1,34 @@
-$ /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/scoreboard.gd
+$ $GODOT --headless --path godot --script res://tests/protocol/scoreboard.gd
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
-PORT_SCOREBOARD_OK checks=35 recorded_frames=6 synthetic_cases=true
+PORT_SCOREBOARD_OK checks=45 recorded_frames=6 synthetic_cases=true
 exit=0
-$ /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/team_scores.gd
+$ $GODOT --headless --path godot --script res://tests/protocol/team_scores.gd
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 PORT_TEAM_SCORES_OK checks=15 synthetic_ui_cases=true
 exit=0
-$ /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/scoreboard_session.gd
+$ $GODOT --headless --path godot --script res://tests/protocol/scoreboard_session.gd
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 PORT_SCOREBOARD_SESSION_OK actual_scene=true synthetic_signal_delivery=true captured_state=true
 exit=0
-$ /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/match_selection.gd
+$ $GODOT --headless --path godot --script res://tests/protocol/match_selection.gd
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 PORT_MATCH_SELECTION checks=98 failures=0
 exit=0
-$ /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/game_hud_session.gd -- 
+$ $GODOT --headless --path godot --script res://tests/protocol/game_hud_session.gd -- 
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 PORT_GAME_HUD_SESSION_OK actual_scene=true captured_state=true synthetic_transitions=true passive_input=true
 exit=0
-$ /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/game_hud_session.gd -- --setup
+$ $GODOT --headless --path godot --script res://tests/protocol/game_hud_session.gd -- --setup
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 PORT_GAME_HUD_SESSION_OK actual_scene=true captured_state=true synthetic_transitions=true passive_input=true
 exit=0
-$ /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/game_hud_session.gd -- --debug-hud
+$ $GODOT --headless --path godot --script res://tests/protocol/game_hud_session.gd -- --debug-hud
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 PORT_GAME_HUD_DEBUG_OK original_display=true

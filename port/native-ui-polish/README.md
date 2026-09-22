@@ -5,6 +5,11 @@ evidence.** Lane ownership: `godot/ui/**`, `godot/horde/scoreboard.gd`, the five
 named protocol UI tests and this directory. No gameplay authority, engine
 setting, package tool or other lane's file was changed.
 
+**Follow-up (lead request):** the shared (non-Horde) scoreboard also keeps clear
+of the vitals/weapon panels now, using the same measured band — see section 5.
+`godot/ui/game_hud.gd` was not touched (section 5.2 reports a separate
+pre-existing GameHUD measurement defect for the lead's decision).
+
 Baseline: detached worktree at `f9f28809` (plus the pre-existing untracked
 generated `godot/content/`), pinned Godot
 `4.5.2.stable.official.6ce3de25a`. Probe:
@@ -145,6 +150,86 @@ changes the fixture's comparison capture) or, if a labeled fallback is wanted,
 set `font_size = 12`/`pixel_size = 0.003` and `visibility_range_end = 6.0` so a
 1.6 m eye at 2 m never sees a screen-filling caption.
 
+## 5. Shared (non-Horde) board clear of the vitals (follow-up)
+
+`ui/scoreboard.gd` now derives its own band from the shared HUD's measured rects
+(the `layout_*` hooks added in the first pass), so the shared card behaves like
+the Horde specialization: it keeps to the horizontal gap between the vitals and
+weapon panels, stops above the help line, stays inside the viewport, and lowers
+its page size until the real chrome fits. A narrow band (< 560 px) also switches
+to compact numeric columns and a two-line summary so names and the roster count
+are not ellipsized. Bare fixtures without a `GameHUD` (zone modes, synthetic
+renderers) keep the historic full-width band and three-row floor, so their
+geometry is byte-identical.
+
+Measured with a real `world/session.tscn` session and a 12-actor roster
+(`evidence/{before,after}/report.json`, `shared-*` cases):
+
+| case | before | after | overlap before -> after |
+|---|---|---|---|
+| 960x640 live Tab | `(100,224) 760x361` | `(270,224) 374x354` | vitals + weapon -> none |
+| 960x640 results | `(100,224) 760x301` | `(270,224) 374x324` | vitals + weapon -> none |
+| 1280x800 live Tab | `(260,224) 760x541` | `(270,224) 694x511` | weapon + help line -> none |
+| 1280x800 results | `(260,249) 760x301` | `(270,249) 694x301` | none (4-row roster) -> none |
+
+Rendered: [`shared-960x640-live-tab.png`](evidence/after/shared-960x640-live-tab.png),
+[`shared-1280x800-live-tab.png`](evidence/after/shared-1280x800-live-tab.png),
+[`shared-960x640-results.png`](evidence/after/shared-960x640-results.png) against
+[`before`](evidence/before/shared-960x640-live-tab.png) and
+[`before 1280`](evidence/before/shared-1280x800-live-tab.png). The Horde board and
+the setup surface measurements are unchanged from the first pass (verified case by
+case against the previous `report.json`).
+
+### 5.1 Archived images this change invalidates
+
+The shared card's geometry changes only where a `GameHUD` sibling exists: the
+combat session (Deathmatch/TDM/Instagib/Rockets, host and guest), the identity
+Deathmatch route, arms race and the lobby plays/results. These archived images
+show it and are now stale; they are **not** re-rendered here (they belong to
+other lanes):
+
+| image | what changed |
+|---|---|
+| `port/reports/lobby-popup-free/full-flow/09-guest-scoreboard.png` | shared board at 960x640 is now the 374 px measured band, not the 760 px card |
+| `port/reports/lobby-popup-free/full-flow/12-host-results-960x640.png`, `13-host-results-1280x800.png`, `11b-spectator-results.png` | same board, plus these also predate the truthful roster wording from the first pass |
+| `port/reports/multiplayer-lobby-independent/{ember-crucible,meridian-exchange,verdant-reliquary}/09-host-results.png`, `10-guest-results.png` | same board and the old "N players" wording |
+| `port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/meridian-exchange/results.png` | `arms_race/scoreboard.gd` extends the shared board, so its card is now the measured band |
+| `port/native-arms-race/evidence/22d20187-937d-405e-9543-da240344fbc5/meridian-exchange/results.png`, `.../3c656705-8157-42f4-9083-54b35836ec26/meridian-exchange/results.png` | same arms-race card |
+| Horde evidence (`port/native-horde/evidence/*`, `port/reports/horde-*/evidence/*`, `port/native-identity-horde/evidence/*`) | **already invalidated by the first pass** (Horde card geometry + roster wording); this follow-up does not change the Horde card again |
+
+Checked and **not** invalidated: the identity-DM action captures
+(`port/native-identity-dm/captures/*/*-action-*.png`) show the live HUD without
+the Tab board, and the zone-modes/objective captures run scenes without a
+`GameHUD`, so their boards keep the historic band. My own first-pass captures
+that show no board (`combat-*-unobstructed.png`) and the setup/Horde captures in
+this directory were re-rendered at the follow-up baseline with identical
+measurements (the only visible difference is the benchmark lane's hint line,
+which landed in between).
+
+### 5.2 Pre-existing GameHUD finding (reported, not forced)
+
+While producing the rendered evidence at `f9f28808`/`6f098448` the shared HUD's
+**status panel** inflates from its normal 70 px to 870 px (phase-0 message) or
+1545 px (long phase-3 message) when a message is assigned while
+`status_detail.size.x` is still 1: an autowrap `Label` shapes its minimum height
+at its current width, and `refresh_status()` makes `root` visible in the same
+call that sets the long text. It recovers on the next message change. The exact
+repro is `godot/ui/match_setup.gd`-style pinning applied to
+`game_hud.gd:status_detail`; the one-line-class fix would be pinning
+`status_detail.size.x` (or clearing `status_panel.size.y` *after* a layout pass)
+before assigning the message. This is **not** required for the shared board fix
+(the board reads the vitals/weapon/controls rects, and its own layer draws above
+the HUD), so `godot/ui/game_hud.gd` is untouched as instructed. The probe's
+shared case follows the real Start path, which settles the panel back to 70 px
+before capture.
+
+### 5.3 Lead-owned observation
+
+`godot/world/pickup_visual.gd` sets `visibility_range_end = 6.0` and then
+assigns `visibility_range_end = 12.0` again a few lines later, so the tamed
+caption still appears out to 12 m. Left untouched (lead-owned); flagged here
+because it is the same asset as the first pass's defect 4.
+
 ## Assertions changed (and why)
 
 Only the tests this lane owns were touched; no check was removed or weakened.
@@ -152,7 +237,7 @@ Only the tests this lane owns were touched; no check was removed or weakened.
 | file | change | reason |
 |---|---|---|
 | `tests/protocol/game_hud_session.gd` | `--setup` branch: **+6** assertions (`popup_windows(setup) == 0`, `setup.size.y <= 620`, `dismiss()/dismissed`, reopen, and the surface is hidden with 0 popups after `start_selected_match`) | locks defect 1: the surface must be popup-free, content-sized and dismissible, and must not linger over the match. Existing "setup remains interactive" assertion is kept. |
-| `tests/protocol/scoreboard.gd` | **+4** roster-wording assertions (bot roster, NPC roster, singular, all-human legacy wording) and **+6** Horde geometry assertions (panel clear of the vitals/weapon panels and inside the viewport at both sizes, measured from the real `ui/game_hud.gd` rects via a real `horde/scoreboard.gd`) | locks defects 2 and 3 by measurement instead of eye review. |
+| `tests/protocol/scoreboard.gd` | **+4** roster-wording assertions, **+8** Horde geometry assertions and **+8** shared-board geometry assertions (panel clear of the vitals/weapon/help rects and inside the viewport at both sizes, measured from the real `ui/game_hud.gd` rects via the real `horde/scoreboard.gd` and `ui/scoreboard.gd`) | locks defects 2 and 3 and the follow-up by measurement instead of eye review. |
 | `tests/protocol/match_selection.gd` | **+3** assertions (no popup selector nodes, explicit dismissal exposed, detached panel stays content-sized) | locks the popup-free setup contract on the selection fixture. |
 | `tests/protocol/scoreboard_session.gd`, `tests/protocol/team_scores.gd` | unchanged | their assertions still hold; the all-human roster keeps the legacy `N players` wording, and the team-total line is still part of the summary. |
 
@@ -161,7 +246,7 @@ Only the tests this lane owns were touched; no check was removed or weakened.
 | command | result |
 |---|---|
 | `game_hud_session.gd` (default / `--setup` / `--debug-hud`) | PASS (`PORT_GAME_HUD_SESSION_OK`, `PORT_GAME_HUD_DEBUG_OK original_display=true`) |
-| `scoreboard.gd` | PASS, checks 25 -> **35** |
+| `scoreboard.gd` | PASS, checks 25 -> **35** -> **45** (follow-up geometry) |
 | `team_scores.gd` | PASS, checks 15 |
 | `scoreboard_session.gd` | PASS |
 | `match_selection.gd` | PASS, checks 95 -> **98**, failures 0 |
@@ -174,20 +259,26 @@ Only the tests this lane owns were touched; no check was removed or weakened.
 | `game_hud_visual.gd` at 960/1280 (`--hud-results`) | PASS |
 | `port/native-match-selection/run.mjs --menu-only` (graphical keyboard dropdown flow, unowned lane fixture) | PASS `PORT_MATCH_SELECTION_LIVE_OK`, 0 engine errors; Verdant/Instagib selected through the new control |
 | `control_safety.gd`, `stall_controls.gd`, `window_focus.gd`, `local_lifecycle.gd`, `round_boundaries.gd`, `entity_visuals.gd`, `pickups.gd` | PASS (unchanged counts) |
+| `tests/zone_modes/unit.gd`, `tests/arms_race/independent_fixtures.gd`, `tests/horde/test.gd`, `tests/horde/controls_test.gd`, `tests/horde/layout_test.gd` (follow-up sweep) | PASS 42, 55/0, 15/0, 31+3 samples, 2/2 |
 
 Logs: `evidence/logs/`. The probe run is
 `port/native-ui-polish/run.sh` (before/after datasets were produced by the same
-probe against `f9f28809` with and without the four runtime files).
+probe against the follow-up baseline `6f098448` with and without the two
+runtime files; the first-pass datasets for the setup/Horde surfaces are the same
+measurements, verified identical case by case).
 
 ## Open items the lead should decide
 
-- **Shared (non-Horde) board at 960x640:** the unchanged shared card still
-  reaches `y=585` while the live vitals start at `y=474`. This lane deliberately
-  did not change it because it would alter every non-Horde results/live board
-  image that other lanes already inspected; the hook to fix it exists
-  (`layout_*`) and would mirror the Horde band.
+- **Pre-existing GameHUD status-panel inflation** (section 5.2): a message
+  assigned before the first layout makes `status_panel` 870/1545 px until the
+  next message change. Not required for the board fix; `game_hud.gd` left
+  untouched per instruction.
+- **Invalidated images** (section 5.1): the lobby and arms-race results images
+  named there still show the old shared card; re-render or annotate them as the
+  lead prefers. The Horde evidence named there also predates the first pass.
 - **F7:** no HUD surface owned by this lane binds or advertises F7; the
   benchmark lane keeps that key.
 - No human playtest, hardware review or Windows package run is claimed here.
   The Horde state used by the probe is a documented synthetic fixture; the
-  pickup-caption finding is evidence of the composition, not of a live match.
+  shared-board roster is the stored captured frame plus documented synthetic
+  bot rows (so a full card is measured).

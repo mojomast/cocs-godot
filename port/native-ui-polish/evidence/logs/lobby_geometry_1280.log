@@ -3,5 +3,5 @@ WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by 
      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
 OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
 
-LOBBY_RESULTS_GEOMETRY {"leave":"[P: (1130.0, 70.0), S: (107.0, 31.0)]","restart":"[P: (1130.0, 112.0), S: (116.0, 31.0)]","scoreboard":"[P: (260.0, 249.5), S: (760.0, 301.0)]","size":[1280,800],"status":"[P: (330.0, 78.0), S: (620.0, 70.0)]","top":"[P: (20.0, 16.0), S: (1240.0, 44.0)]"}
+LOBBY_RESULTS_GEOMETRY {"leave":"[P: (1130.0, 70.0), S: (107.0, 31.0)]","restart":"[P: (1130.0, 112.0), S: (116.0, 31.0)]","scoreboard":"[P: (270.0, 249.5), S: (694.0, 301.0)]","size":[1280,800],"status":"[P: (330.0, 78.0), S: (620.0, 70.0)]","top":"[P: (20.0, 16.0), S: (1240.0, 44.0)]"}
 LOBBY_FOLLOWUP_GEOMETRY checks=75 failures=0 synthetic_phases=true actual_widgets=true

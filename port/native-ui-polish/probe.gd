@@ -78,12 +78,12 @@ func run() -> void:
 		root.size = size
 		await settle(4)
 		await setup_case(size)
+		await shared_case(size)
 		await horde_case(size)
 	if not report_path.is_empty():
 		var file := FileAccess.open(report_path, FileAccess.WRITE)
 		if file != null: file.store_string(JSON.stringify(report, "  "))
 	quit(0)
-
 # ---------------------------------------------------------------------------
 # Setup surface: real --setup session scene + stored authority frames.
 # ---------------------------------------------------------------------------
@@ -152,6 +152,71 @@ func setup_case(size: Vector2i) -> void:
 		"status_panel":rect_json(hud.status_panel.get_global_rect()),
 		"surface_over_vitals":menu.get_global_rect().intersects(hud_rect) if menu.visible else false})
 	await capture("combat-%dx%d-unobstructed.png" % [size.x, size.y])
+	root.remove_child(session)
+	session.free()
+	await settle()
+
+# ---------------------------------------------------------------------------
+# Shared (non-Horde) board: real session scene + real GameHUD, stored frames.
+# ---------------------------------------------------------------------------
+
+func combat_results() -> Dictionary:
+	var capture: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/protocol/captured.json"))
+	for record: Dictionary in capture.frames:
+		if record.direction == "server" and record.client == 1 and record.frame.type == "results":
+			return record.frame.duplicate(true)
+	return {}
+
+func shared_case(size: Vector2i) -> void:
+	var session := SessionScene.instantiate()
+	root.add_child(session)
+	await settle(4)
+	session.set_process(false)
+	# Follow the real Start path (setup surface -> connect -> live) instead of
+	# jumping straight from -2 to 3: the shared HUD lays its status panel out
+	# while it is visible, exactly as a player would see it.
+	session.start_selected_match("meridian-exchange", "deathmatch")
+	await settle(3)
+	var hud: CanvasLayer = session.get_node("GameHUD")
+	var board: CanvasLayer = session.get_node("Scoreboard")
+	session.client.actor_id = 0
+	session.client.started.emit({"mapId":"meridian-exchange"})
+	# Stored frame plus synthetic bot rows, so a full board is measured rather than
+	# the short captured roster.
+	var live: Dictionary = combat_snapshot()
+	if live.get("state") is Dictionary:
+		var actors: Array = live.state.get("actors", [])
+		for i: int in range(actors.size(), 12):
+			actors.append({"id":i,"name":"Bot %d" % i,"x":float(i) * 3.0,"y":0.0,"z":-6.0,"yaw":0.0,"pitch":0.0,
+				"health":100,"dead":0,"frags":i % 4,"deaths":i % 3,"weapon":0,"ammo":["∞"],"bot":{"state":"roam"}})
+	session.client.snapshot.emit(live)
+	await settle(4)
+	board.tab_held = true
+	board.refresh_visibility()
+	await settle(4)
+	var panel: Rect2 = board.panel.get_global_rect()
+	var vitals: Rect2 = hud.vitals.get_global_rect()
+	var weapon: Rect2 = hud.weapon_panel.get_global_rect()
+	var help: Rect2 = hud.controls.get_global_rect()
+	record("shared-live-%d" % size.x, {
+		"viewport":[size.x, size.y], "panel":rect_json(panel), "panel_visible":bool(board.panel.visible),
+		"vitals":rect_json(vitals), "weapon":rect_json(weapon), "help":rect_json(help),
+		"overlap_vitals":panel.intersects(vitals), "overlap_weapon":panel.intersects(weapon),
+		"overlap_help":panel.intersects(help),
+		"page_size":board.page_size, "rows":board.entries.size(),
+		"summary":board.summary.text, "footer":board.footer.text})
+	await capture("shared-%dx%d-live-tab.png" % [size.x, size.y])
+	board.tab_held = false
+	session.client.results.emit(combat_results())
+	await settle(4)
+	panel = board.panel.get_global_rect()
+	record("shared-results-%d" % size.x, {
+		"viewport":[size.x, size.y], "panel":rect_json(panel), "panel_visible":bool(board.panel.visible),
+		"overlap_vitals":panel.intersects(vitals), "overlap_weapon":panel.intersects(weapon),
+		"overlap_help":panel.intersects(help), "page_size":board.page_size,
+		"rows":board.entries.size(), "finished":bool(board.finished),
+		"summary":board.summary.text, "footer":board.footer.text})
+	await capture("shared-%dx%d-results.png" % [size.x, size.y])
 	root.remove_child(session)
 	session.free()
 	await settle()

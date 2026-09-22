@@ -77,6 +77,67 @@
       "vitals_visible": true
     },
     {
+      "case": "shared-live-960",
+      "footer": "Release Tab to close · PgUp / PgDn: 1–5 of 12",
+      "help": [
+        20.0,
+        592.0,
+        920.0,
+        40.0
+      ],
+      "overlap_help": false,
+      "overlap_vitals": false,
+      "overlap_weapon": false,
+      "page_size": 5,
+      "panel": [
+        270.0,
+        224.0,
+        374.0,
+        354.0
+      ],
+      "panel_visible": true,
+      "rows": 12,
+      "summary": "Round 1  ·  Elapsed 0:00\n12 combatants  ·  2 players  ·  10 bots",
+      "viewport": [
+        960,
+        640
+      ],
+      "vitals": [
+        20.0,
+        474.0,
+        238.0,
+        108.0
+      ],
+      "weapon": [
+        656.0,
+        474.0,
+        284.0,
+        108.0
+      ]
+    },
+    {
+      "case": "shared-results-960",
+      "finished": true,
+      "footer": "Enter: restart round",
+      "overlap_help": false,
+      "overlap_vitals": false,
+      "overlap_weapon": false,
+      "page_size": 5,
+      "panel": [
+        270.0,
+        224.0,
+        374.0,
+        324.0
+      ],
+      "panel_visible": true,
+      "rows": 4,
+      "summary": "Round 1  ·  Elapsed 1:00\n4 combatants  ·  2 players  ·  2 bots",
+      "viewport": [
+        960,
+        640
+      ]
+    },
+    {
       "case": "horde-live-960",
       "footer": "Release Tab to close · PgUp / PgDn: 1–3 of 13",
       "overlap_vitals": false,
@@ -147,7 +208,7 @@
       "world_labels": [
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_1/HordeRole",
+          "path": "@Node3D@1205/Actor_1/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -155,7 +216,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_2/HordeRole",
+          "path": "@Node3D@1205/Actor_2/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -163,7 +224,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_3/HordeRole",
+          "path": "@Node3D@1205/Actor_3/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  0",
@@ -171,7 +232,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_4/HordeRole",
+          "path": "@Node3D@1205/Actor_4/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -179,7 +240,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_5/HordeRole",
+          "path": "@Node3D@1205/Actor_5/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "BRUTE  60",
@@ -187,7 +248,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_6/HordeRole",
+          "path": "@Node3D@1205/Actor_6/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  0",
@@ -195,7 +256,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_7/HordeRole",
+          "path": "@Node3D@1205/Actor_7/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  60",
@@ -203,7 +264,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_8/HordeRole",
+          "path": "@Node3D@1205/Actor_8/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -211,7 +272,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_9/HordeRole",
+          "path": "@Node3D@1205/Actor_9/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "BRUTE  0",
@@ -219,7 +280,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_10/HordeRole",
+          "path": "@Node3D@1205/Actor_10/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -227,7 +288,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_11/HordeRole",
+          "path": "@Node3D@1205/Actor_11/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  60",
@@ -235,7 +296,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@665/Actor_12/HordeRole",
+          "path": "@Node3D@1205/Actor_12/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  0",
@@ -243,7 +304,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@775",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1315",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "MERIDIAN INTERCHANGE",
@@ -251,7 +312,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@776",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1316",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "DEPARTURE HALL",
@@ -259,7 +320,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@777",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1317",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "SAFFRON MARKET",
@@ -267,7 +328,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@778",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1318",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "SIGNAL HOUSE",
@@ -275,7 +336,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@779",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1319",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "TRAM PLATFORM",
@@ -283,7 +344,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@780",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1320",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "CIVIC ARCHIVE",
@@ -291,7 +352,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@781",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1321",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "WEST CUSTOMS",
@@ -299,7 +360,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@782",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1322",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "NIGHT CAFE",
@@ -384,6 +445,67 @@
       "vitals_visible": true
     },
     {
+      "case": "shared-live-1280",
+      "footer": "Release Tab to close  ·  PgUp / PgDn: 1–11 of 12",
+      "help": [
+        20.0,
+        752.0,
+        1240.0,
+        40.0
+      ],
+      "overlap_help": false,
+      "overlap_vitals": false,
+      "overlap_weapon": false,
+      "page_size": 11,
+      "panel": [
+        270.0,
+        224.0,
+        694.0,
+        511.0
+      ],
+      "panel_visible": true,
+      "rows": 12,
+      "summary": "Round 1  ·  Elapsed 0:00  ·  12 combatants  ·  2 players  ·  10 bots",
+      "viewport": [
+        1280,
+        800
+      ],
+      "vitals": [
+        20.0,
+        634.0,
+        238.0,
+        108.0
+      ],
+      "weapon": [
+        976.0,
+        634.0,
+        284.0,
+        108.0
+      ]
+    },
+    {
+      "case": "shared-results-1280",
+      "finished": true,
+      "footer": "Enter: restart round",
+      "overlap_help": false,
+      "overlap_vitals": false,
+      "overlap_weapon": false,
+      "page_size": 11,
+      "panel": [
+        270.0,
+        249.5,
+        694.0,
+        301.0
+      ],
+      "panel_visible": true,
+      "rows": 4,
+      "summary": "Round 1  ·  Elapsed 1:00  ·  4 combatants  ·  2 players  ·  2 bots",
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    {
       "case": "horde-live-1280",
       "footer": "Release Tab to close · PgUp / PgDn: 1–8 of 13",
       "overlap_vitals": false,
@@ -454,7 +576,7 @@
       "world_labels": [
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_1/HordeRole",
+          "path": "@Node3D@2556/Actor_1/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -462,7 +584,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_2/HordeRole",
+          "path": "@Node3D@2556/Actor_2/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -470,7 +592,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_3/HordeRole",
+          "path": "@Node3D@2556/Actor_3/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  0",
@@ -478,7 +600,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_4/HordeRole",
+          "path": "@Node3D@2556/Actor_4/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -486,7 +608,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_5/HordeRole",
+          "path": "@Node3D@2556/Actor_5/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "BRUTE  60",
@@ -494,7 +616,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_6/HordeRole",
+          "path": "@Node3D@2556/Actor_6/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  0",
@@ -502,7 +624,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_7/HordeRole",
+          "path": "@Node3D@2556/Actor_7/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  60",
@@ -510,7 +632,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_8/HordeRole",
+          "path": "@Node3D@2556/Actor_8/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -518,7 +640,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_9/HordeRole",
+          "path": "@Node3D@2556/Actor_9/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "BRUTE  0",
@@ -526,7 +648,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_10/HordeRole",
+          "path": "@Node3D@2556/Actor_10/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -534,7 +656,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_11/HordeRole",
+          "path": "@Node3D@2556/Actor_11/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  60",
@@ -542,7 +664,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1476/Actor_12/HordeRole",
+          "path": "@Node3D@2556/Actor_12/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  0",
@@ -550,7 +672,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1586",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@2666",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "MERIDIAN INTERCHANGE",
@@ -558,7 +680,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1587",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@2667",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "DEPARTURE HALL",
@@ -566,7 +688,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1588",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@2668",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "SAFFRON MARKET",
@@ -574,7 +696,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1589",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@2669",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "SIGNAL HOUSE",
@@ -582,7 +704,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1590",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@2670",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "TRAM PLATFORM",
@@ -590,7 +712,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1591",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@2671",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "CIVIC ARCHIVE",
@@ -598,7 +720,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1592",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@2672",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "WEST CUSTOMS",
@@ -606,7 +728,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1593",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@2673",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "NIGHT CAFE",
