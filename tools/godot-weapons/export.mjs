@@ -3,6 +3,7 @@ import * as T from 'three';
 import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
 import {buildWeaponBody} from '../../game/weapon-models/index.mjs';
 import {CHASSIS} from '../../game/weapon-models/chassis.mjs';
+import {handlingAnchors, handlingProfile} from './handling.mjs';
 import {WEAPONS} from '../../game/data.mjs';
 import {ADS_PROFILES} from '../../game/weapon-ads.mjs';
 import {resolveActiveSight} from '../../game/reticle.mjs';
@@ -81,11 +82,15 @@ for(let id=0;id<WEAPONS.length;id++) {
   anchor('GripSupport',[-.025,ch[4]-ch[1]*.45-.04,-ch[2]-.065],id===3?barrel:null);
   const feedPoint=id===1?[-.10,ch[4]-.16,-.30]:id===3?[-.055,ch[4]-.07,-.18]:id===5?[-.08,ch[4]-.23,-.25]:[id===7?-.09:-.025,ch[4]-ch[1]/2-.15,-.28];
   anchor('GripReload',feedPoint,parts.magazine);
+  // Authored handling stations (bolt carrier, charging paddle, casing port,
+  // feed body, heat region), rebased into the same moving assemblies.
+  const handling=handlingProfile(id,ch,info);
+  for(const station of handlingAnchors(id,ch,parts)) anchor(station.name,station.position,station.owner);
   const ads={...ADS_PROFILES[id],...resolveActiveSight({weapon:id,aiming:true}),pose:solveSightPose(sights.rear,sights.front)};
   const bytes=Buffer.from(await new GLTFExporter().parseAsync(scene,{binary:true,onlyVisible:true}));
   const file=`weapon-${id}.glb`;await writeFile(new URL(file,out),bytes);
   const bounds=new T.Box3().setFromObject(group);
-  manifest.weapons.push({id,name:info.name,file,sha256:sha(bytes),bytes:bytes.length,triangles,meshInstances:buckets.size,bounds:[bounds.min.toArray(),bounds.max.toArray()],muzzles,anchors,ads,color:info.color,kick:info.feel.kick,muzzle:info.feel.muzzle});
+  manifest.weapons.push({id,name:info.name,file,sha256:sha(bytes),bytes:bytes.length,triangles,meshInstances:buckets.size,bounds:[bounds.min.toArray(),bounds.max.toArray()],muzzles,anchors,handling,ads,color:info.color,kick:info.feel.kick,muzzle:info.feel.muzzle});
 }
 await writeFile(new URL('manifest.json',out),JSON.stringify(manifest,null,2)+'\n');
 // A native script resource is automatically included by all_resources exports.

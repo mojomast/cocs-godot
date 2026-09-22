@@ -1,6 +1,7 @@
 extends Node
 ## Cosmetic only: isolated transparent world, source snapshots/events, no input/aim writes.
 const Catalog = preload("res://first_person/generated/catalog.gd")
+const Handling = preload("res://first_person/handling.gd")
 const MAX_SEEN := 4096
 var source_camera: Camera3D
 var viewport: SubViewport
@@ -43,6 +44,7 @@ var wrists: Dictionary = {}
 var forearms: Dictionary = {}
 var elbows: Dictionary = {}
 var ads_pose := Transform3D.IDENTITY
+var handling := Handling.new()
 
 func attach_to(camera: Camera3D) -> void:
 	assert(is_inside_tree(), "Add the rig to the session before attach_to")
@@ -92,6 +94,9 @@ func attach_to(camera: Camera3D) -> void:
 	flash.name = "BarrelFlash"
 	pivot.add_child(flash)
 	flash.hide()
+	# Handling FX (heat haze/smoke at the authored HeatZone) live beside the
+	# pivot: they must not add weapon mesh instances or pivot children.
+	handling.configure(viewport)
 	overlay = CanvasLayer.new()
 	overlay.layer = 0 # World overlay; existing HUD CanvasLayers use 1 and above.
 	add_child(overlay)
@@ -183,6 +188,7 @@ func apply_events(events: Array, local_id: int) -> void:
 		recoil = minf(1.5, recoil + 1.0)
 		flash_remaining = float(manifest.weapons[kind].muzzle[1])
 		recoil_count += 1
+		handling.fire()
 
 func _remember(key: String, time: float) -> void:
 	seen[key] = time
@@ -226,6 +232,7 @@ func _select_weapon(id: int) -> void:
 	for name: String in manifest.weapons[id].anchors:
 		anchors[name] = weapon.find_child(name, true, false)
 		assert(anchors[name] != null, "Missing exported anchor: " + name)
+	handling.bind(weapon, parts, rest, anchors, manifest.weapons[id], id)
 	# Solve from the imported, actual sight nodes, rather than a shared ADS offset.
 	var rear: Vector3 = pivot.to_local(anchors.SightRear.global_position)
 	var front: Vector3 = pivot.to_local(anchors.SightFront.global_position)
@@ -294,12 +301,9 @@ func advance(delta: float) -> void:
 	pivot.position += Vector3(sin(age * 8.0) * bob * 0.004 * free_motion, (breathe + cos(age * 16.0) * bob * 0.003) * free_motion - switch_remaining * 0.32 - reload_curve * 0.045, recoil * float(info.kick[0]) * 0.45)
 	pivot.basis *= Basis.from_euler(Vector3(recoil * float(info.kick[1]) * (0.25 if reduced_motion else 0.6) + look_lag.y * free_motion, look_lag.x * free_motion, reload_curve * 0.16))
 	flash.visible = flash_remaining > 0 and not external_muzzle_fx
-	for name: String in parts:
-		var part: Node3D = parts[name]
-		part.transform = rest[name]
-		if name == "bolt": part.position.z += recoil * 0.024
-		if reloading and name == "feed": part.position.y -= reload_curve * 0.09
-		if reloading and name == "barrel-assembly" and current_weapon == 3: part.rotation.x += reload_curve * 0.25
+	# Presentation-only handling: bolt/slide cycle, charging handle, authoritative
+	# magazine window, barrel heat. Never writes recoil/spread/ammo authority.
+	handling.advance(dt, reloading, reload_progress, aim_weight, reduced_motion)
 	_update_hands()
 	# Includes break-action motion, recoil, ADS, switch and reload transforms.
 	for index: int in flash.get_child_count():
@@ -318,7 +322,7 @@ func _clear_motion() -> void:
 	reloading = false
 	reload_progress = 0.0
 	if is_instance_valid(flash): flash.hide()
-	for name: String in parts: parts[name].transform = rest[name]
+	if is_instance_valid(weapon): handling.clear()
 
 func reset() -> void:
 	_clear_motion()

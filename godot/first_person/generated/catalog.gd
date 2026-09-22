@@ -5,8 +5,8 @@ const WEAPONS = [
 		"id": 0,
 		"name": "Pulse Rifle",
 		"file": "weapon-0.glb",
-		"sha256": "041cfd05c8ee16e652052dffdb58ddcbc74fbbedb0c94a0719618b5c14f6fe22",
-		"bytes": 364148,
+		"sha256": "9c6c4329a70f1cfee5a9509c016c92ca3076e5e2ade440eb9b5491c098768671",
+		"bytes": 364560,
 		"triangles": 3704,
 		"meshInstances": 9,
 		"bounds": [
@@ -119,7 +119,93 @@ const WEAPONS = [
 					-0.225,
 					-0.28
 				]
+			},
+			"Bolt": {
+				"parent": "bolt",
+				"position": [
+					0.098,
+					0.025,
+					-0.2115
+				],
+				"weaponPosition": [
+					0.098,
+					0.025,
+					-0.2115
+				]
+			},
+			"Charging": {
+				"parent": "bolt",
+				"position": [
+					0.117,
+					0.025,
+					-0.17859999999999998
+				],
+				"weaponPosition": [
+					0.117,
+					0.025,
+					-0.17859999999999998
+				]
+			},
+			"Ejection": {
+				"parent": "weapon",
+				"position": [
+					0.095,
+					0.030400000000000003,
+					-0.188
+				],
+				"weaponPosition": [
+					0.095,
+					0.030400000000000003,
+					-0.188
+				]
+			},
+			"Magazine": {
+				"parent": "feed",
+				"position": [
+					0,
+					-0.2,
+					-0.24
+				],
+				"weaponPosition": [
+					0,
+					-0.2,
+					-0.24
+				]
+			},
+			"HeatZone": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					-0.006,
+					-0.736
+				],
+				"weaponPosition": [
+					0,
+					-0.006,
+					-0.736
+				]
 			}
+		},
+		"handling": {
+			"mechanism": "kinetic",
+			"cycle": 0.055,
+			"stroke": 0.051699999999999996,
+			"charge": 0.051699999999999996,
+			"reload": {
+				"kind": "magazine",
+				"drop": 0.17,
+				"slide": 0.035,
+				"roll": 0.14,
+				"tilt": 0,
+				"hinge": 0
+			},
+			"heat": {
+				"gain": 0.05,
+				"cool": 0.28,
+				"cap": 1
+			},
+			"eject": true,
+			"barrelRadius": 0.032
 		},
 		"ads": {
 			"enter": 15,
@@ -166,8 +252,8 @@ const WEAPONS = [
 		"id": 1,
 		"name": "Rocket Launcher",
 		"file": "weapon-1.glb",
-		"sha256": "24ca0907368181d8bcc9ecfa9774b08a00d1dd16c1a9aac0aabe1348ff8251e9",
-		"bytes": 424368,
+		"sha256": "cce9ab4e49366f51d9ba6caa55cf11c987fb88ece9b53d26292dd864bc636c6f",
+		"bytes": 424728,
 		"triangles": 4340,
 		"meshInstances": 8,
 		"bounds": [
@@ -280,7 +366,80 @@ const WEAPONS = [
 					-0.16,
 					-0.3
 				]
+			},
+			"Bolt": {
+				"parent": "bolt",
+				"position": [
+					0.14300000000000002,
+					0.015,
+					-0.24750000000000003
+				],
+				"weaponPosition": [
+					0.14300000000000002,
+					0.015,
+					-0.24750000000000003
+				]
+			},
+			"Charging": {
+				"parent": "bolt",
+				"position": [
+					0.162,
+					0.015,
+					-0.20900000000000002
+				],
+				"weaponPosition": [
+					0.162,
+					0.015,
+					-0.20900000000000002
+				]
+			},
+			"Feed": {
+				"parent": "feed",
+				"position": [
+					-0.1,
+					-0.13,
+					-0.3
+				],
+				"weaponPosition": [
+					-0.1,
+					-0.13,
+					-0.3
+				]
+			},
+			"HeatZone": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					-0.0575,
+					-0.6970000000000001
+				],
+				"weaponPosition": [
+					0,
+					-0.0575,
+					-0.6970000000000001
+				]
 			}
+		},
+		"handling": {
+			"mechanism": "launcher",
+			"cycle": 0.08800000000000001,
+			"stroke": 0.048,
+			"charge": 0.048,
+			"reload": {
+				"kind": "tube",
+				"drop": 0.015,
+				"slide": -0.02,
+				"roll": 0,
+				"tilt": 0.24,
+				"hinge": 0
+			},
+			"heat": {
+				"gain": 0.18,
+				"cool": 0.5,
+				"cap": 1
+			},
+			"eject": false,
+			"barrelRadius": 0.115
 		},
 		"ads": {
 			"enter": 9,
@@ -327,8 +486,8 @@ const WEAPONS = [
 		"id": 2,
 		"name": "Rail Lance",
 		"file": "weapon-2.glb",
-		"sha256": "f48a68f89945d275c89239570e01f1fe3ff64b6851265af9431d136cc502287d",
-		"bytes": 612596,
+		"sha256": "156d4d0a762202145d903b32ae0fc9cd040afcdac5f1586e0ddada83dd7138ef",
+		"bytes": 612872,
 		"triangles": 6284,
 		"meshInstances": 10,
 		"bounds": [
@@ -441,7 +600,80 @@ const WEAPONS = [
 					-0.205,
 					-0.28
 				]
+			},
+			"Bolt": {
+				"parent": "bolt",
+				"position": [
+					0.103,
+					0.04,
+					-0.25200000000000006
+				],
+				"weaponPosition": [
+					0.103,
+					0.04,
+					-0.25200000000000006
+				]
+			},
+			"Charging": {
+				"parent": "bolt",
+				"position": [
+					0.122,
+					0.04,
+					-0.21280000000000002
+				],
+				"weaponPosition": [
+					0.122,
+					0.04,
+					-0.21280000000000002
+				]
+			},
+			"Cell": {
+				"parent": "feed",
+				"position": [
+					0,
+					0,
+					0
+				],
+				"weaponPosition": [
+					0,
+					-0.145,
+					-0.28
+				]
+			},
+			"HeatZone": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					0.0075,
+					-0.896
+				],
+				"weaponPosition": [
+					0,
+					0.0075,
+					-0.896
+				]
 			}
+		},
+		"handling": {
+			"mechanism": "energy",
+			"cycle": 0.06769230769230769,
+			"stroke": 0.06,
+			"charge": 0.06,
+			"reload": {
+				"kind": "cell",
+				"drop": 0.12,
+				"slide": 0.05,
+				"roll": -0.1,
+				"tilt": 0,
+				"hinge": 0
+			},
+			"heat": {
+				"gain": 0.09,
+				"cool": 0.4,
+				"cap": 1
+			},
+			"eject": false,
+			"barrelRadius": 0.035
 		},
 		"ads": {
 			"enter": 10,
@@ -488,8 +720,8 @@ const WEAPONS = [
 		"id": 3,
 		"name": "Scattergun",
 		"file": "weapon-3.glb",
-		"sha256": "d9ec8cc6024963630a7f1cddd785552ea1ff71fe15250cafaeb4dc428fb99016",
-		"bytes": 421036,
+		"sha256": "83259d34061a442b3b71bdc5899b1b20d0bd68bb7101804f587f958d640440cf",
+		"bytes": 421456,
 		"triangles": 4304,
 		"meshInstances": 8,
 		"bounds": [
@@ -620,7 +852,93 @@ const WEAPONS = [
 					-0.04000000000000001,
 					-0.18
 				]
+			},
+			"Bolt": {
+				"parent": "bolt",
+				"position": [
+					0.17300000000000001,
+					0.045,
+					-0.189
+				],
+				"weaponPosition": [
+					0.17300000000000001,
+					0.045,
+					-0.189
+				]
+			},
+			"Charging": {
+				"parent": "bolt",
+				"position": [
+					0.192,
+					0.045,
+					-0.1596
+				],
+				"weaponPosition": [
+					0.192,
+					0.045,
+					-0.1596
+				]
+			},
+			"Ejection": {
+				"parent": "weapon",
+				"position": [
+					0.17,
+					0.048,
+					-0.168
+				],
+				"weaponPosition": [
+					0.17,
+					0.048,
+					-0.168
+				]
+			},
+			"Feed": {
+				"parent": "feed",
+				"position": [
+					0,
+					-0.010000000000000002,
+					-0.18
+				],
+				"weaponPosition": [
+					0,
+					-0.010000000000000002,
+					-0.18
+				]
+			},
+			"HeatZone": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					-0.033,
+					-0.27999999999999997
+				],
+				"weaponPosition": [
+					0,
+					-0.0030000000000000027,
+					-0.7
+				]
 			}
+		},
+		"handling": {
+			"mechanism": "break",
+			"cycle": 0.07333333333333333,
+			"stroke": 0.027719999999999998,
+			"charge": 0,
+			"reload": {
+				"kind": "break",
+				"drop": 0,
+				"slide": 0,
+				"roll": 0,
+				"tilt": 0.18,
+				"hinge": 0.3
+			},
+			"heat": {
+				"gain": 0.17,
+				"cool": 0.46,
+				"cap": 1
+			},
+			"eject": true,
+			"barrelRadius": 0.066
 		},
 		"ads": {
 			"enter": 12,
@@ -667,8 +985,8 @@ const WEAPONS = [
 		"id": 4,
 		"name": "Plasma Driver",
 		"file": "weapon-4.glb",
-		"sha256": "2048354b391ec86609a7b45ac582981b7a38c196d0fc142d3924ac6ca8af47f6",
-		"bytes": 565308,
+		"sha256": "526ee0e37a0c07a9b1a1e11a8eac9ffcc40bed3c14fdf12fbfaccd0420c4042e",
+		"bytes": 565732,
 		"triangles": 5792,
 		"meshInstances": 10,
 		"bounds": [
@@ -781,7 +1099,93 @@ const WEAPONS = [
 					-0.25,
 					-0.28
 				]
+			},
+			"Bolt": {
+				"parent": "bolt",
+				"position": [
+					0.123,
+					0.015,
+					-0.20700000000000002
+				],
+				"weaponPosition": [
+					0.123,
+					0.015,
+					-0.20700000000000002
+				]
+			},
+			"Charging": {
+				"parent": "bolt",
+				"position": [
+					0.14200000000000002,
+					0.015,
+					-0.1748
+				],
+				"weaponPosition": [
+					0.14200000000000002,
+					0.015,
+					-0.1748
+				]
+			},
+			"Ejection": {
+				"parent": "weapon",
+				"position": [
+					0.12,
+					0.024,
+					-0.18400000000000002
+				],
+				"weaponPosition": [
+					0.12,
+					0.024,
+					-0.18400000000000002
+				]
+			},
+			"Cell": {
+				"parent": "feed",
+				"position": [
+					0,
+					-0.19,
+					-0.28
+				],
+				"weaponPosition": [
+					0,
+					-0.19,
+					-0.28
+				]
+			},
+			"HeatZone": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					-0.0315,
+					-0.677
+				],
+				"weaponPosition": [
+					0,
+					-0.0315,
+					-0.677
+				]
 			}
+		},
+		"handling": {
+			"mechanism": "energy",
+			"cycle": 0.044000000000000004,
+			"stroke": 0.0506,
+			"charge": 0.0506,
+			"reload": {
+				"kind": "cell",
+				"drop": 0.12,
+				"slide": 0.05,
+				"roll": -0.1,
+				"tilt": 0,
+				"hinge": 0
+			},
+			"heat": {
+				"gain": 0.095,
+				"cool": 0.42,
+				"cap": 1
+			},
+			"eject": true,
+			"barrelRadius": 0.063
 		},
 		"ads": {
 			"enter": 13,
@@ -828,8 +1232,8 @@ const WEAPONS = [
 		"id": 5,
 		"name": "Grenade Launcher",
 		"file": "weapon-5.glb",
-		"sha256": "dc2a03ac290861882d1bb5b86e6d4f1dc228e09a60e0c180d0b91bcc7d967db2",
-		"bytes": 404368,
+		"sha256": "bbc07e99d1d3df0191f843448f9f516850e5aeca17ae41d0466a777eacafa63b",
+		"bytes": 404792,
 		"triangles": 4124,
 		"meshInstances": 9,
 		"bounds": [
@@ -942,7 +1346,93 @@ const WEAPONS = [
 					-0.19,
 					-0.25
 				]
+			},
+			"Bolt": {
+				"parent": "bolt",
+				"position": [
+					0.128,
+					0.055,
+					-0.1935
+				],
+				"weaponPosition": [
+					0.128,
+					0.055,
+					-0.1935
+				]
+			},
+			"Charging": {
+				"parent": "bolt",
+				"position": [
+					0.14700000000000002,
+					0.055,
+					-0.1634
+				],
+				"weaponPosition": [
+					0.14700000000000002,
+					0.055,
+					-0.1634
+				]
+			},
+			"Ejection": {
+				"parent": "weapon",
+				"position": [
+					0.125,
+					0.0628,
+					-0.17200000000000001
+				],
+				"weaponPosition": [
+					0.125,
+					0.0628,
+					-0.17200000000000001
+				]
+			},
+			"Drum": {
+				"parent": "feed",
+				"position": [
+					0,
+					-0.13,
+					-0.25
+				],
+				"weaponPosition": [
+					0,
+					-0.13,
+					-0.25
+				]
+			},
+			"HeatZone": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					-0.003499999999999996,
+					-0.78
+				],
+				"weaponPosition": [
+					0,
+					-0.003499999999999996,
+					-0.78
+				]
 			}
+		},
+		"handling": {
+			"mechanism": "drum",
+			"cycle": 0.08800000000000001,
+			"stroke": 0.02365,
+			"charge": 0.02365,
+			"reload": {
+				"kind": "drum",
+				"drop": 0.055,
+				"slide": 0.02,
+				"roll": 0.06,
+				"tilt": 0,
+				"hinge": 0
+			},
+			"heat": {
+				"gain": 0.15,
+				"cool": 0.44,
+				"cap": 1
+			},
+			"eject": true,
+			"barrelRadius": 0.087
 		},
 		"ads": {
 			"enter": 11,
@@ -989,8 +1479,8 @@ const WEAPONS = [
 		"id": 6,
 		"name": "Shock Beam",
 		"file": "weapon-6.glb",
-		"sha256": "a5ca7294b4ccaf111e67011adf0a046dfa04f761ea5f1f97f7305fcf08d3e4a0",
-		"bytes": 455424,
+		"sha256": "7cb5f29c108b8fada049f52ea31889be6a121481fee78826091d9a9333dacdf4",
+		"bytes": 455724,
 		"triangles": 4640,
 		"meshInstances": 11,
 		"bounds": [
@@ -1103,7 +1593,80 @@ const WEAPONS = [
 					-0.24,
 					-0.28
 				]
+			},
+			"Bolt": {
+				"parent": "bolt",
+				"position": [
+					0.118,
+					0.015,
+					-0.225
+				],
+				"weaponPosition": [
+					0.118,
+					0.015,
+					-0.225
+				]
+			},
+			"Charging": {
+				"parent": "bolt",
+				"position": [
+					0.137,
+					0.015,
+					-0.19
+				],
+				"weaponPosition": [
+					0.137,
+					0.015,
+					-0.19
+				]
+			},
+			"Cell": {
+				"parent": "feed",
+				"position": [
+					0,
+					-0.18,
+					-0.28
+				],
+				"weaponPosition": [
+					0,
+					-0.18,
+					-0.28
+				]
+			},
+			"HeatZone": {
+				"parent": "shock-emitter",
+				"position": [
+					0,
+					-0.019,
+					-0.843
+				],
+				"weaponPosition": [
+					0,
+					-0.019,
+					-0.843
+				]
 			}
+		},
+		"handling": {
+			"mechanism": "energy",
+			"cycle": 0.055,
+			"stroke": 0.055,
+			"charge": 0.055,
+			"reload": {
+				"kind": "cell",
+				"drop": 0.12,
+				"slide": 0.05,
+				"roll": -0.1,
+				"tilt": 0,
+				"hinge": 0
+			},
+			"heat": {
+				"gain": 0.085,
+				"cool": 0.38,
+				"cap": 1
+			},
+			"eject": false,
+			"barrelRadius": 0.038
 		},
 		"ads": {
 			"enter": 13.5,
@@ -1150,8 +1713,8 @@ const WEAPONS = [
 		"id": 7,
 		"name": "Flak Cannon",
 		"file": "weapon-7.glb",
-		"sha256": "75f45f251990299ef10414512bf4483a2701bf5fd9ed492d457f3d92a1425815",
-		"bytes": 387500,
+		"sha256": "3d561050072ca474a75029bcb859848e7e40b5e3a567f66477fdfadbe294bb91",
+		"bytes": 387944,
 		"triangles": 3956,
 		"meshInstances": 8,
 		"bounds": [
@@ -1264,7 +1827,93 @@ const WEAPONS = [
 					-0.26,
 					-0.28
 				]
+			},
+			"Bolt": {
+				"parent": "bolt",
+				"position": [
+					0.14800000000000002,
+					0.015,
+					-0.2295
+				],
+				"weaponPosition": [
+					0.14800000000000002,
+					0.015,
+					-0.2295
+				]
+			},
+			"Charging": {
+				"parent": "bolt",
+				"position": [
+					0.167,
+					0.015,
+					-0.1938
+				],
+				"weaponPosition": [
+					0.167,
+					0.015,
+					-0.1938
+				]
+			},
+			"Ejection": {
+				"parent": "weapon",
+				"position": [
+					0.14500000000000002,
+					0.0264,
+					-0.20400000000000001
+				],
+				"weaponPosition": [
+					0.14500000000000002,
+					0.0264,
+					-0.20400000000000001
+				]
+			},
+			"Feed": {
+				"parent": "feed",
+				"position": [
+					-0.07,
+					-0.21000000000000002,
+					-0.28
+				],
+				"weaponPosition": [
+					-0.07,
+					-0.21000000000000002,
+					-0.28
+				]
+			},
+			"HeatZone": {
+				"parent": "flak-barrel",
+				"position": [
+					0,
+					-0.0465,
+					-0.846
+				],
+				"weaponPosition": [
+					0,
+					-0.0465,
+					-0.846
+				]
 			}
+		},
+		"handling": {
+			"mechanism": "breech",
+			"cycle": 0.08,
+			"stroke": 0.03927,
+			"charge": 0.03927,
+			"reload": {
+				"kind": "breech",
+				"drop": 0.02,
+				"slide": -0.03,
+				"roll": 0,
+				"tilt": 0.3,
+				"hinge": 0
+			},
+			"heat": {
+				"gain": 0.16,
+				"cool": 0.48,
+				"cap": 1
+			},
+			"eject": true,
+			"barrelRadius": 0.093
 		},
 		"ads": {
 			"enter": 10.5,
@@ -1311,8 +1960,8 @@ const WEAPONS = [
 		"id": 8,
 		"name": "Marksman Rifle",
 		"file": "weapon-8.glb",
-		"sha256": "d924580da670d2dbd0e283c0fc6d93ed63c7c5c49a9595c00a05152cb2fd8816",
-		"bytes": 527924,
+		"sha256": "24bba8258ebabfca3dc7dcde435c79935cb9e82c1dbf235402c7a54df4854448",
+		"bytes": 528376,
 		"triangles": 5420,
 		"meshInstances": 8,
 		"bounds": [
@@ -1425,7 +2074,93 @@ const WEAPONS = [
 					-0.205,
 					-0.28
 				]
+			},
+			"Bolt": {
+				"parent": "bolt",
+				"position": [
+					0.088,
+					0.035,
+					-0.24300000000000002
+				],
+				"weaponPosition": [
+					0.088,
+					0.035,
+					-0.24300000000000002
+				]
+			},
+			"Charging": {
+				"parent": "bolt",
+				"position": [
+					0.107,
+					0.035,
+					-0.20520000000000002
+				],
+				"weaponPosition": [
+					0.107,
+					0.035,
+					-0.20520000000000002
+				]
+			},
+			"Ejection": {
+				"parent": "weapon",
+				"position": [
+					0.08499999999999999,
+					0.038,
+					-0.21600000000000003
+				],
+				"weaponPosition": [
+					0.08499999999999999,
+					0.038,
+					-0.21600000000000003
+				]
+			},
+			"Magazine": {
+				"parent": "feed",
+				"position": [
+					0,
+					-0.13,
+					-0.24
+				],
+				"weaponPosition": [
+					0,
+					-0.13,
+					-0.24
+				]
+			},
+			"HeatZone": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					0.006500000000000001,
+					-0.75
+				],
+				"weaponPosition": [
+					0,
+					0.006500000000000001,
+					-0.75
+				]
 			}
+		},
+		"handling": {
+			"mechanism": "kinetic",
+			"cycle": 0.06285714285714285,
+			"stroke": 0.0594,
+			"charge": 0.0594,
+			"reload": {
+				"kind": "magazine",
+				"drop": 0.17,
+				"slide": 0.035,
+				"roll": 0.14,
+				"tilt": 0,
+				"hinge": 0
+			},
+			"heat": {
+				"gain": 0.12,
+				"cool": 0.42,
+				"cap": 1
+			},
+			"eject": true,
+			"barrelRadius": 0.027
 		},
 		"ads": {
 			"enter": 11.5,
@@ -1472,8 +2207,8 @@ const WEAPONS = [
 		"id": 9,
 		"name": "Submachine Gun",
 		"file": "weapon-9.glb",
-		"sha256": "146d1a71e0fbc8307efb779612855896c942de28bd74ad7c67db78f0e11479e4",
-		"bytes": 374532,
+		"sha256": "b0277c39219ee8165d04dbb0d7b9c00d653015b78d6f0a6760e7d52ca09f07aa",
+		"bytes": 374960,
 		"triangles": 3812,
 		"meshInstances": 9,
 		"bounds": [
@@ -1586,7 +2321,93 @@ const WEAPONS = [
 					-0.18,
 					-0.28
 				]
+			},
+			"Bolt": {
+				"parent": "bolt",
+				"position": [
+					0.093,
+					0.065,
+					-0.1575
+				],
+				"weaponPosition": [
+					0.093,
+					0.065,
+					-0.1575
+				]
+			},
+			"Charging": {
+				"parent": "bolt",
+				"position": [
+					0.112,
+					0.065,
+					-0.13299999999999998
+				],
+				"weaponPosition": [
+					0.112,
+					0.065,
+					-0.13299999999999998
+				]
+			},
+			"Ejection": {
+				"parent": "weapon",
+				"position": [
+					0.09,
+					0.0692,
+					-0.13999999999999999
+				],
+				"weaponPosition": [
+					0.09,
+					0.0692,
+					-0.13999999999999999
+				]
+			},
+			"Magazine": {
+				"parent": "feed",
+				"position": [
+					0,
+					-0.155,
+					-0.24
+				],
+				"weaponPosition": [
+					0,
+					-0.155,
+					-0.24
+				]
+			},
+			"HeatZone": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					0.036000000000000004,
+					-0.6895
+				],
+				"weaponPosition": [
+					0,
+					0.036000000000000004,
+					-0.6895
+				]
 			}
+		},
+		"handling": {
+			"mechanism": "kinetic",
+			"cycle": 0.04,
+			"stroke": 0.03465,
+			"charge": 0.03465,
+			"reload": {
+				"kind": "magazine",
+				"drop": 0.17,
+				"slide": 0.035,
+				"roll": 0.14,
+				"tilt": 0,
+				"hinge": 0
+			},
+			"heat": {
+				"gain": 0.055,
+				"cool": 0.3,
+				"cap": 1
+			},
+			"eject": true,
+			"barrelRadius": 0.028
 		},
 		"ads": {
 			"enter": 20,
