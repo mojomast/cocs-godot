@@ -144,7 +144,7 @@ If the frozen commit is not yet on `godot/main`, either push it first or pass
 A staged first release is also supported and is what the rehearsal exercised:
 
 ```sh
-node tools/release/release.mjs --tag=<new-tag> --execute --stop-after=package   # exclude 2 and 3 first
+node tools/release/release.mjs --tag=<new-tag> --execute --stop-after=package   # steps 1-3, then stop
 node tools/release/release.mjs --tag=<new-tag> --resume-from=publish --execute  # publish, verify, push
 ```
 
