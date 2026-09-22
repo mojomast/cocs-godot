@@ -1,6 +1,7 @@
 """Bounded verification commands with durable, atomic progress evidence."""
 import json
 import os
+import re
 from pathlib import Path
 import signal
 import subprocess
@@ -15,7 +16,13 @@ def save_report(path, report):
     temporary.replace(path)
 
 
-def run_gate(name, command, log_path, timeout=180):
+def run_gate(name, command, log_path, timeout=180, success_marker=None, allowed_error_patterns=()):
+    """Run one gate. Any SCRIPT ERROR or ERROR line fails it unless the gate both
+    prints its declared success marker and exits 0, and the line matches one of the
+    explicitly allowed engine-teardown patterns. That keeps error detection strict
+    while permitting documented engine noise, e.g. the X11 cursor textures Godot's
+    GLES3 reports as leaked when a display run captures the pointer and exits.
+    """
     start = time.monotonic()
     reason = None
     output = ''
@@ -37,8 +44,13 @@ def run_gate(name, command, log_path, timeout=180):
     if reason is None:
         if code != 0:
             reason = 'nonzero-exit'
-        elif 'SCRIPT ERROR:' in output or 'ERROR:' in output:
-            reason = 'engine-error'
+        else:
+            errors = [line for line in output.splitlines() if 'SCRIPT ERROR:' in line or 'ERROR:' in line]
+            if success_marker and success_marker in output:
+                errors = [line for line in errors
+                          if not any(re.search(pattern, line.strip()) for pattern in allowed_error_patterns)]
+            if errors:
+                reason = 'engine-error'
     Path(log_path).parent.mkdir(parents=True, exist_ok=True)
     Path(log_path).write_text(output)
     return {'gate': name, 'command': command, 'exit_code': code,

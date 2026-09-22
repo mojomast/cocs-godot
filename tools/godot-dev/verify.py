@@ -77,7 +77,7 @@ commands = [
     # ignores MOUSE_MODE_CAPTURED, so the gate runs under a private owned Xvfb.
     ("first-person-binding", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--path", "godot", "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy", "--script", "res://tests/first_person/binding.gd"]),
     ("first-person-ads", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/ads_contract.gd"]),
-    ("combat-actions", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_actions/controls.gd"]),
+    ("combat-actions", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--path", "godot", "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy", "--script", "res://tests/combat_actions/controls.gd"]),
     ("combat-shields", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_shields/validate.gd"]),
     ("combat-shield-capacity", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_shields/capacity.gd"]),
     ("combat-particles", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_particles/contracts.gd"]),
@@ -178,10 +178,21 @@ commands = [
 ]
 report['source_commit'] = lock['source_commit']
 results = report['gates']
+# Documented engine-teardown noise, permitted only when the gate prints its own
+# success marker and exits zero. Godot's GLES3 reports the X11 cursor textures it
+# creates for pointer capture as leaked when a display run exits; a bare display
+# session and a session without capture produce no such line, so this is engine
+# teardown behaviour, not our content. Any other ERROR line still fails the gate.
+gate_options = {
+    'combat-actions': {
+        'success_marker': 'NATIVE_COMBAT_ACTIONS',
+        'allowed_error_patterns': (r'^ERROR: Texture with GL ID of \d+: leaked \d+ bytes\.$',),
+    },
+}
 for name, command in commands:
     report['active_gate'] = name
     save_report(report_path, report)
-    result, output = run_gate(name, command, f'port/reports/{name}.log')
+    result, output = run_gate(name, command, f'port/reports/{name}.log', **gate_options.get(name, {}))
     results.append(result)
     report['status'] = 'running' if result['passed'] else 'failed'
     save_report(report_path, report)
