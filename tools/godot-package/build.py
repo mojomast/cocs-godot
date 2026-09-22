@@ -277,8 +277,16 @@ ssh_remote_deploy/enabled=false
             (package / "node.exe").write_bytes(archive.read(prefix + "node.exe"))
             (notices / "Node-LICENSE.txt").write_bytes(archive.read(prefix + "LICENSE"))
         bundled_node = {"version":NODE_VERSION, "url":node_base + node_name, "archive_sha256":NODE_WINDOWS_SHA256, "executable_sha256":digest(package / "node.exe")}
-        for name in ["Play.cmd", "Demo Menu.cmd", "Operator Preview.cmd", "Graphics Showcase.cmd", "Native Deathmatch.cmd"]:
+        for name in ["Play.cmd", "Demo Menu.cmd", "Operator Preview.cmd", "Graphics Showcase.cmd", "Native Deathmatch.cmd", "Domination.cmd", "Cheats.cmd"]:
             (package / name).write_bytes((ROOT / "tools/godot-package" / name).read_text().replace("\r\n", "\n").replace("\n", "\r\n").encode())
+    else:
+        # Linux parity: the same reviewed entry points as shell scripts, copied with
+        # the executable bit. They only set the environment (cheats) and forward to
+        # run.mjs with fixed reviewed options.
+        for name in ["Domination.sh", "Cheats.sh"]:
+            path = package / name
+            path.write_bytes((ROOT / "tools/godot-package" / name).read_bytes())
+            path.chmod(0o755)
     for name in ["LICENSE.txt", "COPYRIGHT.txt"]:
         download(f"https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/{name}", notices / ("Godot-" + name))
     resources = {"content/generated/" + k:v for k,v in tree(generated).items()}

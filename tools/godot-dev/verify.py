@@ -103,6 +103,7 @@ commands = [
     ("identity-zone-route", ["node", "--test", "port/native-identity-zones/tests/route.test.mjs", "port/native-identity-zones/tests/match.test.mjs", "port/native-identity-zones/tests/authority.test.mjs"]),
     ("debug-tools", ["node", "--test", "port/native-debug/debug.test.mjs", "port/native-arenas/tests/debug.test.mjs", "port/native-horde/debug.test.mjs", "port/native-identity-zones/tests/debug.test.mjs"]),
     ("debug-panel", [binary, "--headless", "--path", "godot", "--script", "res://tests/debug/panel.gd", "--", "--debug-panel"]),
+    ("blood-live-native", ["node", "port/native-blood-fx/live.mjs"]),
     # coverage.mjs alone always exits 0; the floor wrapper makes a regression fail.
     ("material-coverage-floor", [sys.executable, "tools/godot-dev/coverage_floor.py"]),
     ("release-pipeline-tools", ["node", "--test", "tools/release/options.test.mjs", "tools/release/release.test.mjs"]),

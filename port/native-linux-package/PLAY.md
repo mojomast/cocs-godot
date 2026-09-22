@@ -20,7 +20,13 @@ node run.mjs
 ```
 
 The default opens the native combat host setup. Choose a map and mode, then click
-**Start**. Sessions own a loopback server on an OS-assigned port; closing the game
+**Start**. Two reviewed launchers skip the setup screen:
+
+```sh
+./Domination.sh    # Vermilion Fold, 2 bots, 5 minutes, 100 points
+./Cheats.sh        # the same route with the debug panel enabled (COCS_DEBUG=1)
+```
+ Sessions own a loopback server on an OS-assigned port; closing the game
 window or pressing Ctrl+C shuts that server down too. The lobby's explicit
 `--endpoint` route uses an existing authority instead and never stops it.
 

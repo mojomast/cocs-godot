@@ -62,6 +62,7 @@ var suspended := true
 var spurts := 0
 var mist_events := 0
 var arterial_hits := 0
+var absorbed_mist_events := 0
 var death_bursts := 0
 var stains_placed := 0
 var stains_rejected := 0
@@ -424,6 +425,18 @@ func _damage_event(event: Dictionary, id: int) -> void:
 	var real := _real_damage(actor, wire_damage)
 	if real <= 0.0:
 		absorbed_only += 1
+		# Owner art direction: every hit reads as a hit. Absorbed damage emits a light
+		# entry mist and nothing else: never an arterial puff, never a spurt and never
+		# surface staining. `absorbed_mist_strength = 0` disables it entirely.
+		if settings.absorbed_mist_strength > 0.0:
+			var absorbed_position := _actor_point(actor)
+			var absorbed_direction := _shot_direction(actor, Wire.identity(event.get("source")), victim, id)
+			var absorbed_entry := absorbed_position - absorbed_direction * settings.wound_offset
+			_emit(MIST, absorbed_entry, -absorbed_direction, settings.absorbed_mist_strength, victim == local_id,
+				float(posmod(id, 100000)), 1.0, _reach(absorbed_entry, -absorbed_direction, 1.6))
+			absorbed_mist_events += 1
+			last_event_id = id
+			last_event_position = absorbed_position
 		return
 	var position := _actor_point(actor)
 	var source := Wire.identity(event.get("source"))
@@ -1157,6 +1170,7 @@ func snapshot() -> Dictionary:
 		"map_id": map_id, "active": active, "suspended": _suspended, "paused": paused, "focused": focused,
 		"clock": clock, "drains": drains,
 		"events_seen": events_seen, "spurts": spurts, "mist_events": mist_events, "arterial_hits": arterial_hits,
+		"absorbed_mist_events": absorbed_mist_events,
 		"death_bursts": death_bursts, "stains_placed": stains_placed, "stains_rejected": stains_rejected,
 		"stains_recycled": stains_recycled, "duplicates": duplicates, "rejected": rejected,
 		"unknown_actors": unknown_actors, "no_bleed": no_bleed, "absorbed_only": absorbed_only,

@@ -1,0 +1,32 @@
+{
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "exit_code": 0,
+  "status": "passed",
+  "report": {
+    "absorbed_mist_events": 2,
+    "absorbed_only": 2,
+    "arterial_hits": 0,
+    "bot_hits": 3,
+    "capture": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-blood-fx/evidence/live-1790112054885/live-native-dm.png",
+    "capture_result": 0,
+    "duplicates": 0,
+    "events_seen": 17,
+    "frames": [
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-blood-fx/evidence/live-1790112054885/live-native-dm-hit1.png",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-blood-fx/evidence/live-1790112054885/live-native-dm-hit2.png",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-blood-fx/evidence/live-1790112054885/live-native-dm-hit3.png"
+    ],
+    "map": "prism-foundry/70313314176",
+    "map_error": "",
+    "mist_events": 3,
+    "no_bleed": 1,
+    "rejected": 0,
+    "self_hits": 0,
+    "spurts": 10,
+    "stains_live": 56,
+    "stains_recycled": 0,
+    "unknown_actors": 0
+  },
+  "capture": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-blood-fx/evidence/live-1790112054885/live-native-dm.png",
+  "errors": false
+}

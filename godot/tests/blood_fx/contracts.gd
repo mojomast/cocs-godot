@@ -167,9 +167,20 @@ func run() -> void:
 	controller.apply_state(state([actor(1, 0, 0, 0, 100.0, 60.0), actor(2, 0, 0, -3)], 4.0), 1)
 	controller.apply_state(state([actor(1, 0, 0, 0, 100.0, 45.0), actor(2, 0, 0, -3)], 4.1), 1)
 	var stains_before_absorb: int = controller.snapshot().stains_placed
+	var spurts_before_absorb: int = controller.snapshot().spurts
+	var pulses_before_absorb: int = controller.snapshot().arterial_hits
+	var mists_before_absorb: int = controller.snapshot().absorbed_mist_events
 	controller.apply_events([damage(20, 1, 30.0, 2)], 1)
-	check(controller.snapshot().absorbed_only == 1, "armor-only hit at unchanged health emits no fluid")
+	check(controller.snapshot().absorbed_mist_events == mists_before_absorb + 1, "an absorbed hit still emits its entry mist")
+	check(controller.snapshot().spurts == spurts_before_absorb and controller.snapshot().arterial_hits == pulses_before_absorb, "an absorbed hit never spurts or pulses")
 	check(controller.snapshot().stains_placed == stains_before_absorb, "an absorbed hit never stains a surface")
+	# The absorbed mist is a documented setting, and 0 restores "no fluid at all".
+	controller.settings.absorbed_mist_strength = 0.0
+	controller.apply_state(state([actor(1, 0, 0, 0, 100.0, 30.0), actor(2, 0, 0, -3)], 4.15), 1)
+	controller.apply_events([damage(23, 1, 30.0, 2)], 1)
+	check(controller.snapshot().absorbed_mist_events == mists_before_absorb + 1, "absorbed_mist_strength 0 disables the absorbed mist")
+	check(controller.snapshot().stains_placed == stains_before_absorb, "a disabled absorbed mist still never stains")
+	controller.settings.absorbed_mist_strength = 0.5
 	# A real drop bleeds with the observed drop as the upper bound.
 	var before: int = controller.snapshot().spurts
 	controller.apply_state(state([actor(1, 0, 0, 0, 70.0, 45.0), actor(2, 0, 0, -3)], 4.2), 1)

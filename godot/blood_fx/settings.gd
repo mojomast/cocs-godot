@@ -72,6 +72,10 @@ var full_reference: float = 45.0        # damage that maps to strength 1.0
 var min_strength: float = 0.18
 var mist_max: float = 8.0               # <= this: entry mist only
 var arterial_min: float = 45.0          # >= this: heavier arterial pulse
+## A hit that armour or an overshield fully absorbs still reads as a hit: it emits an
+## entry mist at this strength, and never an arterial jet, a spurt or surface
+## staining. Set 0.0 to restore "absorbed hits emit no fluid at all".
+var absorbed_mist_strength: float = 0.5
 var wound_offset: float = 0.26          # torso surface offset from actor centre
 var body_centre: float = 0.9            # matches world/presentation.gd actor y offset
 
@@ -204,6 +208,7 @@ func describe() -> Dictionary:
 		"viscosity": viscosity, "budgets": quality_budgets.duplicate(), "caps": concurrent_cap.duplicate(),
 		"fluid_emitters": fluid_emitters, "stain_pool": stain_pool, "stain_caps": stain_caps.duplicate(),
 		"full_reference": full_reference, "mist_max": mist_max, "arterial_min": arterial_min,
+		"absorbed_mist_strength": absorbed_mist_strength,
 		"local_coverage_limit": local_coverage_limit, "local_gain": local_gain,
 		"fan_rays": fan_rays.duplicate(), "fan_band_budget": fan_band_budget.duplicate(),
 		"death_mark_budget": death_mark_budget.duplicate(), "spurt_marks": spurt_marks.duplicate(),

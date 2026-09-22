@@ -15,6 +15,35 @@ node run.mjs
 is inside the archive. The `.tar.gz.sha256` beside the download verifies the
 archive.
 
+## Fixed in this build
+
+**Packaged Domination now starts.** The first Linux build of this tree exposed a
+packaging defect: the runtime closure never included the reviewed identity zone
+modules, so `--experience=identity-zones` failed inside an extracted package with a
+missing module, and the packaged launcher would have bound a second listener and
+dropped the `/native-zones` endpoint path. Both are fixed here, and the route now runs
+a real Domination round inside an extracted build. The same defect was fixed for
+Windows in `combat-expansion-2026-09-22-v3`.
+
+Also in this build: the runtime closure declares the three reviewed Domination
+adapters beside the horde, arena and debug families (locked source unchanged at 84
+modules, external dependency list unchanged at `ws`). Hosted Linux verification
+downloads this exact tarball, re-hashes it and runs the packaged routes, Domination
+included, on a fresh runner.
+
+**Domination and cheats are now in the menus.** The Linux tarball adds
+**Domination.sh** (Vermilion Fold, 0–6 bots, 2–5 minute rounds, 30–100 point limits),
+**Cheats.sh** (god mode, damage, difficulty, unlock-all and the rest on local
+single-player routes) both in the extracted tarball.
+
+**Every hit now reads as a hit.** Blood is emitted for real wounds as before, and a hit
+that armour or a shield fully absorbs now emits a light entry mist instead of nothing —
+controlled by a documented setting (`absorbed_mist_strength`, default 0.5, `0` restores
+the old behaviour). A bot taking fire in view visibly bleeds; the live native
+Deathmatch path is now verified by a rendered check (`port/native-blood-fx/live.mjs`)
+that fires through the ordinary input contract and reports the controller's own
+counters.
+
 ## New in this build
 
 **Domination — Vermilion Fold.** Three real capture zones (Fan, Crown, Pleat) with

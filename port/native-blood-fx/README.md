@@ -169,6 +169,12 @@ surface binding and reports `surface_error` so the host re-binds geometry.
 
 ## Art direction: one documented settings block
 
+Absorbed hits still read as hits: damage that armour or an overshield fully absorbs
+emits a light **entry mist** at `absorbed_mist_strength` (default `0.5`), and never a
+spurt, an arterial pulse or surface staining. Setting it to `0.0` restores the
+original "absorbed hits emit no fluid at all" behaviour for anyone who wants it.
+The counter `absorbed_mist_events` reports how many of those mists were emitted.
+
 `res://blood_fx/settings.gd` is the only place colours, sizes, viscosity,
 budgets, caps and thresholds live.
 
@@ -311,9 +317,13 @@ is a source-derived GLES3 estimate, not measured VRAM.
 
 ## What this lane did **not** verify
 
-* No hardware-GPU run, no packaged/exported build, and no live networked session
-  was executed: all rendering evidence is **llvmpipe software rendering** and all
-  gameplay input is fixture dictionaries, not a live server.
+* No hardware-GPU run and no packaged/exported build was executed by this lane: all
+  rendering evidence is **llvmpipe software rendering**. The live native Deathmatch
+  path is now covered by `port/native-blood-fx/live.mjs` + `godot/tests/blood_fx/live_native.gd`
+  (lead-owned): a real authority, real source damage events, the real demo scene and
+  the counter report, including `--hunt` which aims and fires through the ordinary
+  input contract so a bot takes damage in view. The packaged PCK is checked separately
+  (`res://blood_fx/*` resources resolve from the exported pack).
 * Wall spatter is proven on **one** real locked map (meridian-exchange, one
   building wall). The other eight maps use the same query backend that is
   verified headless for all nine, but no rendered wall capture was taken on them.

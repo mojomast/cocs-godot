@@ -1,0 +1,10 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+BLOOD_LIVE_STATE {"application_focused":true,"hits_target":5,"hunt":false,"hunt_target":3,"phase":3}
+BLOOD_LIVE_HIT 1
+BLOOD_LIVE_HIT 2
+BLOOD_LIVE_HIT 3
+BLOOD_LIVE_HIT 4
+BLOOD_LIVE_HIT 5
+BLOOD_LIVE_OK {"absorbed_mist_events":1,"absorbed_only":1,"arterial_hits":1,"bot_deaths":0,"bot_hits":0,"capture":"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-blood-fx/evidence/live-1790112173485/live-native-dm.png","capture_result":0,"death_bursts":0,"duplicates":0,"events_seen":11,"frames":[],"map":"prism-foundry/70313314176","map_error":"","mist_events":2,"no_bleed":0,"rejected":0,"self_hits":5,"spurts":8,"stains_live":3,"stains_recycled":0,"unknown_actors":0}
