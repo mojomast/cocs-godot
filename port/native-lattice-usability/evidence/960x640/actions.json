@@ -1,0 +1,228 @@
+[
+  {
+    "revision": "before",
+    "action": "01-released",
+    "time": 1790052017.340731,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        800,
+        500
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "before",
+    "action": "02-engaged",
+    "time": 1790052018.7474353,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        480,
+        320
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 1
+    }
+  },
+  {
+    "revision": "before",
+    "action": "03-escape",
+    "time": 1790052019.3238165,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        480,
+        320
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "01-released",
+    "time": 1790052023.7247615,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        480,
+        320
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "02-engaged",
+    "time": 1790052025.126608,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        480,
+        320
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 1
+    }
+  },
+  {
+    "revision": "after",
+    "action": "03-commands",
+    "time": 1790052025.6920862,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        480,
+        320
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "04-hold-receipt",
+    "time": 1790052027.4191017,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        246,
+        324
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "05-purchase-receipt",
+    "time": 1790052029.6487846,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        246,
+        402
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "06-close-released",
+    "time": 1790052030.2211933,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        246,
+        402
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "07-held-key-click-blocked",
+    "time": 1790052030.8250918,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        900,
+        570
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [
+        "w"
+      ],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "08-fresh-click-engaged",
+    "time": 1790052031.7296007,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        480,
+        320
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 1
+    }
+  },
+  {
+    "revision": "after",
+    "action": "09-focus-lost",
+    "time": 1790052033.0027242,
+    "x11": {
+      "focus": 2097153,
+      "pointer_root": [
+        480,
+        320
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "10-focus-return-released",
+    "time": 1790052034.2753084,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        480,
+        320
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "11-escape-released",
+    "time": 1790052035.177772,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        480,
+        320
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  }
+]

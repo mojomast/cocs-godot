@@ -1,0 +1,41 @@
+{
+  "base": "e1defc00e37c0b560ff9fa55f1e3c4ad9f853b21",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--audio-driver",
+    "Dummy",
+    "--path",
+    "/tmp/opencode/lattice-usability-baseline",
+    "--resolution",
+    "1280x800",
+    "--script",
+    "res://tests/lattice/usability_observe.gd",
+    "--",
+    "--endpoint=ws://127.0.0.1:33177",
+    "--map=monsoon-foundry",
+    "--mode=cocs-coop",
+    "--native-trace"
+  ],
+  "port": 33177,
+  "display": ":1",
+  "serverOptions": {
+    "historyPath": null,
+    "progressionPath": null
+  },
+  "normalRate": true,
+  "hashes": {
+    "godot/lattice/world_demo.gd": "1e6535cb269d28e1e53a9f6de3f6f939189e5d21d940e81e87d50a2f949a88ff",
+    "godot/lattice/world_hud.gd": "c4e7a8822d93744fd3b7be99d8499511bb633c615fe2c02b0a36b32bf7d5bc9f",
+    "godot/lattice/world_guidance.gd": "34db067488025fed5afdeed04a6e73fc8b563d6c588e2532dc1c47e91def9274",
+    "godot/lattice/world_commands.gd": "67e8203a2192cc4ba55774f34b58321797026b5613529312056d3a2c9897a0bb"
+  },
+  "observer": "90b62af01a5494802f26789afd5b92127c358db940483c8ee1668f9ac4076823",
+  "sourceHashes": {
+    "game/cocs.mjs": "a1e0f803f396b7e12ed2b09757301bd6505d11b6bc84a0166ce7f572e88cc258",
+    "game/cocs-intel.mjs": "1be460752165e06e84aaece3ef539722591d576e4d77f5a4683a28d2a2ee5de0",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2"
+  },
+  "nativePid": 3513186
+}

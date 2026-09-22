@@ -1,0 +1,29 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+USABILITY_CHECK no round means waiting and capture denied true
+USABILITY_CHECK start does not borrow a previous pose false
+USABILITY_CHECK fresh healthy wire enables click but remains released true
+USABILITY_CHECK source objective and camera-relative goal use decoded public state true
+USABILITY_CHECK confirmed HOLD and executor lease cannot alter goal ownership/progress true
+USABILITY_CHECK focus boundary labels update without a new snapshot true
+USABILITY_CHECK unfocused feedback corresponds to actual same-adapter neutral queue true
+USABILITY_CHECK focus return requires release before recapture true
+USABILITY_CHECK stale state cannot keep showing actionable old objective guidance true
+USABILITY_CHECK decoded death shows source respawn timer and hides goals true
+USABILITY_CHECK zero timer with zero health does not claim living actor true
+USABILITY_CHECK healthy respawn remains released until fresh click true
+USABILITY_CHECK only received ownership transition updates source node label true
+USABILITY_CHECK withheld progress/activity/wallet remain unknown true
+USABILITY_CHECK missing projection clears goal and control together true
+USABILITY_CHECK revoked recipient cannot retain goal true
+USABILITY_CHECK results replaces approach with restart instruction true
+USABILITY_CHECK disconnect preserves error and releases controls true
+USABILITY_CHECK 20 camera-basis bearings remain correct under yaw true
+USABILITY_CHECK missing co-op context is not a fabricated wave or closed window true
+USABILITY_CHECK co-op context reflects supplied public fields true
+USABILITY_CONTRACT checks=21 failures=1
+ERROR: start does not borrow a previous pose
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/usability_contract.gd:23)
+       [1] _initialize (res://tests/lattice/usability_contract.gd:56)

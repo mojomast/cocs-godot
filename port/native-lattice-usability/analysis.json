@@ -1,0 +1,90 @@
+{
+  "1280x800": {
+    "main_flow_passed": true,
+    "checks": {
+      "bounded": true,
+      "native_error_free": true,
+      "ordinary_host": true,
+      "01-released": true,
+      "02-engaged": true,
+      "03-commands": true,
+      "06-close-released": true,
+      "07-held-key-click-blocked": true,
+      "08-fresh-click-engaged": true,
+      "09-focus-lost": true,
+      "10-focus-return-released": true,
+      "11-escape-released": true,
+      "held_key_really_down": true,
+      "focus_transfer": true,
+      "native_engaged_label": true,
+      "native_unfocused_label": true,
+      "panel_yields_hud_space": true,
+      "neutral_06-close-released": true,
+      "stationary_06-close-released": true,
+      "neutral_09-focus-lost": true,
+      "stationary_09-focus-lost": true,
+      "source_movement": true,
+      "explicit_orders_have_source_receipts": true,
+      "hashes_intact": true,
+      "source_unchanged": true,
+      "cleanup": true
+    },
+    "final_runtime": true,
+    "explicit_actions": [
+      {
+        "type": "order",
+        "cardId": "native-r1-p1-s1",
+        "verb": "HOLD",
+        "target": "hq-0"
+      }
+    ],
+    "supplemental_small_engagement_passed": false,
+    "supplemental_limit": "Resize retained Python click default arguments (1220,730): outside 960x640. Image 13 is RELEASED, not ENGAGED. No retry beyond two scenarios."
+  },
+  "960x640": {
+    "main_flow_passed": true,
+    "checks": {
+      "bounded": true,
+      "native_error_free": true,
+      "ordinary_host": true,
+      "01-released": true,
+      "02-engaged": true,
+      "03-commands": true,
+      "06-close-released": true,
+      "07-held-key-click-blocked": true,
+      "08-fresh-click-engaged": true,
+      "09-focus-lost": true,
+      "10-focus-return-released": true,
+      "11-escape-released": true,
+      "held_key_really_down": true,
+      "focus_transfer": true,
+      "native_engaged_label": true,
+      "native_unfocused_label": true,
+      "panel_yields_hud_space": true,
+      "neutral_06-close-released": true,
+      "stationary_06-close-released": true,
+      "neutral_09-focus-lost": true,
+      "stationary_09-focus-lost": true,
+      "source_movement": true,
+      "explicit_orders_have_source_receipts": true,
+      "hashes_intact": true,
+      "source_unchanged": true,
+      "cleanup": true
+    },
+    "final_runtime": false,
+    "explicit_actions": [
+      {
+        "type": "order",
+        "cardId": "native-r1-p1-s1",
+        "verb": "HOLD",
+        "target": "hq-0"
+      },
+      {
+        "type": "economy",
+        "cardId": "native-r1-p1-s2",
+        "action": "spawn",
+        "role": "fighter"
+      }
+    ]
+  }
+}

@@ -1,0 +1,308 @@
+[
+  {
+    "revision": "before",
+    "action": "01-released",
+    "time": 1790052169.6896856,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        800,
+        500
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "before",
+    "action": "02-engaged",
+    "time": 1790052171.1168349,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        640,
+        400
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 1
+    }
+  },
+  {
+    "revision": "before",
+    "action": "03-escape",
+    "time": 1790052171.7205987,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        640,
+        400
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "01-released",
+    "time": 1790052177.6612287,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        640,
+        400
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "02-engaged",
+    "time": 1790052179.0830584,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        640,
+        400
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 1
+    }
+  },
+  {
+    "revision": "after",
+    "action": "03-commands",
+    "time": 1790052179.6644735,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        640,
+        400
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "04-hold-receipt",
+    "time": 1790052181.4071944,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        406,
+        404
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "06-close-released",
+    "time": 1790052182.0090005,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        406,
+        404
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "07-held-key-click-blocked",
+    "time": 1790052182.6275284,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        1220,
+        730
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [
+        "w"
+      ],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "08-fresh-click-engaged",
+    "time": 1790052183.551119,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        640,
+        400
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 1
+    }
+  },
+  {
+    "revision": "after",
+    "action": "09-focus-lost",
+    "time": 1790052184.8452413,
+    "x11": {
+      "focus": 2097153,
+      "pointer_root": [
+        640,
+        400
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "10-focus-return-released",
+    "time": 1790052186.1362247,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        640,
+        400
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "11-escape-released",
+    "time": 1790052187.0569556,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        640,
+        400
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "12-small-released",
+    "time": 1790052187.8435953,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        640,
+        400
+      ],
+      "pointer_child": 4194307,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "13-small-engaged",
+    "time": 1790052188.4479918,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        1220,
+        730
+      ],
+      "pointer_child": 0,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "14-small-commands",
+    "time": 1790052189.0243378,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        1220,
+        730
+      ],
+      "pointer_child": 0,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "15-small-close-released",
+    "time": 1790052189.6003323,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        1220,
+        730
+      ],
+      "pointer_child": 0,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "16-small-focus-lost",
+    "time": 1790052191.206294,
+    "x11": {
+      "focus": 2097153,
+      "pointer_root": [
+        1220,
+        730
+      ],
+      "pointer_child": 0,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  },
+  {
+    "revision": "after",
+    "action": "17-small-focus-return",
+    "time": 1790052192.4814298,
+    "x11": {
+      "focus": 4194307,
+      "pointer_root": [
+        1220,
+        730
+      ],
+      "pointer_child": 0,
+      "button1_down": false,
+      "keys_down": [],
+      "competing_grab_status": 0
+    }
+  }
+]

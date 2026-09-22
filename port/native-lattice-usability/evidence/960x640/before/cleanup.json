@@ -1,0 +1,10 @@
+{
+  "port": 39181,
+  "port_closed": true,
+  "launcher_exit": 0,
+  "pids_absent": {
+    "3495596": true,
+    "3495693": true
+  },
+  "xdg_removed": true
+}

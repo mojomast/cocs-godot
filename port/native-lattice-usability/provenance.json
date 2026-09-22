@@ -1,0 +1,31 @@
+{
+  "baseline": "e1defc00e37c0b560ff9fa55f1e3c4ad9f853b21",
+  "runtime_commit": "dfe74322091b36e5df25856d94e9ef9771135fba",
+  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "hashes": {
+    "godot/lattice/world_demo.gd": "a15e6a2c6e52ce120ea79ca2fd7b1a489b05a3b1d645795e63e0421b69ebb1fc",
+    "godot/lattice/world_hud.gd": "3e0b1e7fa8ea31b74c6fba1f7148a45e5ebc713c901c9ef3bac8d3cd461956b2",
+    "godot/lattice/world_guidance.gd": "34db067488025fed5afdeed04a6e73fc8b563d6c588e2532dc1c47e91def9274",
+    "godot/lattice/world_commands.gd": "67e8203a2192cc4ba55774f34b58321797026b5613529312056d3a2c9897a0bb",
+    "godot/tests/lattice/usability_contract.gd": "7907f1631b4b83a7fd7f05c1148c14236441ab520302991a384b5f0126b9058b",
+    "godot/tests/lattice/usability_observe.gd": "90b62af01a5494802f26789afd5b92127c358db940483c8ee1668f9ac4076823",
+    "port/native-lattice-usability/sample.py": "7db21391912906a67383d29784e6dcade8fbd34854183009600f84efd02943a1",
+    "port/native-lattice-usability/launch.mjs": "2d2757fbcc9500ea9f8ca749f33f5c26612a3a37fecc22bcda2f3c388ce2f668",
+    "godot/world/session.gd": "a501f3814e08c6ba17ac4f9bf2b2d2942241a8a48613d902387b8774a3b31554",
+    "godot/lattice/transport.gd": "d914d981c792362896f9bc6ae7480d40e754f74e337c721cab606b6c041eb783",
+    "godot/lattice/world_transport.gd": "b7feb5f87fd06f708f7ac71b2c58f6b2e5ae16600d7629004c369fbdd2bbf2ec",
+    "port/contracts/source-lock.json": "16c3ede0f0956ccd008963118bbff7a8f062beea6e30abfc4989bb652808d7ed"
+  },
+  "binary_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "fresh_png_count": 33,
+  "baseline_runtime_matches": {
+    "port/native-lattice-usability/evidence/1280x800/before/manifest.json": {
+      "godot/lattice/world_demo.gd": true,
+      "godot/lattice/world_hud.gd": true
+    },
+    "port/native-lattice-usability/evidence/960x640/before/manifest.json": {
+      "godot/lattice/world_demo.gd": true,
+      "godot/lattice/world_hud.gd": true
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "duration_seconds": 28.603712276555598,
+  "xvfb_command": [
+    "Xvfb",
+    "-displayfd",
+    "4",
+    "-screen",
+    "0",
+    "1600x1000x24",
+    "-nolisten",
+    "tcp",
+    "-nolisten",
+    "unix"
+  ],
+  "display": ":1",
+  "xvfb_pid": 3513040,
+  "xvfb_absent": true,
+  "map": "monsoon-foundry",
+  "mode": "cocs-coop"
+}
