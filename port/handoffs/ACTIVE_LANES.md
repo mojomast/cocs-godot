@@ -381,6 +381,20 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
   rendered cases on real map geometry at both sizes showing 19–29 wall marks per death and
   **0 changed pixels / 0 marks on the far face** in every case. No composition re-wiring
   needed; F10 gained wall/floor/slope and skip-reason counters.
+- **Debug/cheat tools (owner request: god mode, damage adjustment, unlock all weapons,
+  bot count and live bot modification).** Lead reconnaissance fixed the honest split before
+  the lane started: the source already supports `damage` (0.5/1/1.5/2), `speed`, `gravity`,
+  `respawn`, `unlimitedAmmo`, `startingWeapon`, `loadout`, `botCount` (0–8), `difficulty`
+  and ~15 mutators via `normalizeConfig`; **bots read `match.difficulty` every tick so it
+  changes live**, damage is read per hit through `mutators.damageMultiplier` so recomputing
+  mutators changes it live, while **botCount and spawn loadouts are construction-time** and
+  therefore restart-applied. **God mode has no source support at all** and is implemented as
+  port-side debug reconciliation of the human seat only, labelled a debug facility rather
+  than game content. Debug is **off by default, never available in the multi-human
+  lobby/room**, and displays an on-screen badge. The lane owns `godot/debug/**`,
+  `port/native-debug/**`, the two local authorities and `godot/world/session.gd`, and may
+  add exactly one adapter module to the package allowlist, reported to lead. Domination's
+  authority gets wired afterwards by lead.
 - **Asset coverage pass (owner request: use far more of the Moth assets for effects, shaders,
   bump maps and textures while growing a unique design language).** Measured baseline in
   `port/native-material-language/COVERAGE-BASELINE.md`: of 69 manifest keys only ~14 are
