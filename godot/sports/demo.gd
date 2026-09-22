@@ -7,6 +7,7 @@ const Chase = preload("res://sports/chase.gd")
 const HUD = preload("res://sports/hud.gd")
 const Guidance = preload("res://sports/guidance.gd")
 const Progression = preload("res://sports/progression.gd")
+const SoccerGuidance = preload("res://sports/soccer_guidance.gd")
 var net := Network.new()
 var world := World.new()
 var fleet := Fleet.new()
@@ -15,6 +16,7 @@ var chase := Chase.new()
 var hud := HUD.new()
 var guidance := Guidance.new()
 var progression := Progression.new()
+var soccer_guidance := SoccerGuidance.new()
 var initial_camera := Transform3D.IDENTITY
 var time_limit := 0
 var round_target := 0
@@ -37,6 +39,7 @@ var error := ""
 func _init() -> void:
 	# Own the new helper even for existing out-of-tree acceptance fixtures.
 	add_child(guidance)
+	add_child(soccer_guidance)
 
 func _ready() -> void:
 	for arg: String in OS.get_cmdline_user_args():
@@ -110,6 +113,7 @@ func clear_round() -> void:
 	ball.position = Vector3.ZERO
 	ball.scale = Vector3.ONE
 	guidance.reset()
+	soccer_guidance.reset()
 	progression.reset()
 	hud.reset()
 	send_age = 0
@@ -124,6 +128,7 @@ func on_results(frame: Dictionary) -> void:
 	if phase == "error": return
 	phase = "results"
 	guidance.reset()
+	soccer_guidance.reset()
 	progression.reset()
 
 func on_lobby(frame: Dictionary) -> void:
@@ -208,7 +213,8 @@ func _process(delta: float) -> void:
 		world.camera.position = pose.eye
 		world.camera.look_at(pose.target)
 	guidance.apply(state.get("race", {}), net.actor_id, phase == "active" and age < 0.5 and not state.get("over", false))
-	hud.update({"mode":mode, "state":state, "vehicle":vehicle, "actor_id":net.actor_id, "phase":phase, "age":age, "eligible":eligible(), "engaged":controls.engaged, "focused":controls.focused, "error":error, "message":progression.message})
+	var soccer_target := soccer_guidance.apply(state, net.actor_id, vehicle, mode == "puma-soccer" and phase == "active" and age < 0.5)
+	hud.update({"mode":mode, "state":state, "vehicle":vehicle, "actor_id":net.actor_id, "phase":phase, "age":age, "eligible":eligible(), "engaged":controls.engaged, "focused":controls.focused, "error":error, "message":progression.message, "soccer_guidance":soccer_target})
 
 func _exit_tree() -> void:
 	controls.release()

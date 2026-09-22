@@ -1,6 +1,7 @@
 extends Control
 const Guidance = preload("res://sports/guidance.gd")
 const Progression = preload("res://sports/progression.gd")
+const SoccerGuidance = preload("res://sports/soccer_guidance.gd")
 ## Passive presentation of accepted state. text remains an observer-friendly summary.
 var text := ""
 var title: Label
@@ -10,6 +11,7 @@ var speed_label: Label
 var status: Label
 var hints: Label
 var progress_label: Label
+var soccer_label: Label
 var result_panel: PanelContainer
 var result_label: Label
 
@@ -29,6 +31,10 @@ func _ready() -> void:
 	detail.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	speed_label = label(metrics, 24)
 	progress_label = label(top, 16)
+	progress_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	soccer_label = label(top, 16)
+	soccer_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	soccer_label.hide()
 	var bottom := panel(true)
 	status = label(bottom, 18)
 	hints = label(bottom, 16)
@@ -163,7 +169,8 @@ static func describe(view: Dictionary) -> Dictionary:
 func reset() -> void:
 	text = ""
 	if not is_node_ready(): return
-	for item: Label in [title, phase_label, detail, speed_label, status, hints, progress_label, result_label]: item.text = ""
+	for item: Label in [title, phase_label, detail, speed_label, status, hints, progress_label, soccer_label, result_label]: item.text = ""
+	soccer_label.hide()
 	result_panel.hide()
 
 func update(view: Dictionary) -> void:
@@ -180,6 +187,8 @@ func update(view: Dictionary) -> void:
 	var results := Progression.results(state, int(view.get("actor_id", -1)), soccer) if view.get("phase") == "results" else ""
 	text = "%s · %s\n%s · %s\n%s\n%s\n%s" % [parts.title, parts.phase, parts.detail, parts.speed, progress, parts.status, parts.hints]
 	if not results.is_empty(): text += "\n" + results
+	var soccer_text := SoccerGuidance.describe(view.get("soccer_guidance", {})) if soccer and view.get("phase") == "active" and float(view.get("age", 999)) < 0.5 and not state.get("over", false) else ""
+	if not soccer_text.is_empty(): text += "\n" + soccer_text
 	if not is_node_ready(): return
 	title.text = parts.title
 	phase_label.text = parts.phase
@@ -189,5 +198,7 @@ func update(view: Dictionary) -> void:
 	status.add_theme_color_override("font_color", parts.color)
 	hints.text = parts.hints
 	progress_label.text = progress
+	soccer_label.text = soccer_text
+	soccer_label.visible = not soccer_text.is_empty()
 	result_panel.visible = not results.is_empty()
 	result_label.text = results
