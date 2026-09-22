@@ -1,0 +1,25 @@
+[
+  {
+    "name": "monsoon-foundry",
+    "command": [
+      "node",
+      "port/native-lattice-world-coop/run.mjs",
+      "--map=monsoon-foundry",
+      "--size=1280x800",
+      "--output=/tmp/opencode/lattice-world-coop-8a58c97/port/native-lattice-world-coop/evidence/1790049900845755296/monsoon-foundry"
+    ],
+    "timeoutSeconds": 210,
+    "elapsedSeconds": 146.72291634604335,
+    "exit": 0,
+    "passed": true,
+    "cleanup": {
+      "port": 35681,
+      "httpClosed": true,
+      "nativeExited": true,
+      "xvfbExited": true,
+      "runtimeRemoved": true,
+      "elapsedSeconds": 145.50720669499998,
+      "recordedPidsGone": true
+    }
+  }
+]

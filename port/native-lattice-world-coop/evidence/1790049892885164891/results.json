@@ -1,0 +1,63 @@
+[
+  {
+    "name": "semantic",
+    "command": [
+      "node",
+      "tools/godot-export/semantic.mjs"
+    ],
+    "timeoutSeconds": 120,
+    "elapsedSeconds": 0.9530939720571041,
+    "exit": 0,
+    "passed": true,
+    "cleanup": {}
+  },
+  {
+    "name": "import",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--editor",
+      "--import"
+    ],
+    "timeoutSeconds": 120,
+    "elapsedSeconds": 3.690643249079585,
+    "exit": 0,
+    "passed": true,
+    "cleanup": {}
+  },
+  {
+    "name": "observer-parse",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--check-only",
+      "--script",
+      "res://tests/lattice/world_coop_live.gd"
+    ],
+    "timeoutSeconds": 30,
+    "elapsedSeconds": 0.15601601917296648,
+    "exit": 0,
+    "passed": true,
+    "cleanup": {}
+  },
+  {
+    "name": "separate-lease-fixture",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/lattice/world_commands_contract.gd"
+    ],
+    "timeoutSeconds": 30,
+    "elapsedSeconds": 0.34691681433469057,
+    "exit": 0,
+    "passed": true,
+    "cleanup": {}
+  }
+]

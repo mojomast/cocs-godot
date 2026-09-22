@@ -1,0 +1,81 @@
+{
+  "base": "8a58c97e48493e41903c2c9a729e753cb3579500",
+  "revision": "8a58c97e48493e41903c2c9a729e753cb3579500",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "godotSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "options": {
+    "map": "monsoon-foundry",
+    "size": "1280x800",
+    "output": "/tmp/opencode/lattice-world-coop-8a58c97/port/native-lattice-world-coop/evidence/1790049748030221118/monsoon-foundry"
+  },
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--audio-driver",
+    "Dummy",
+    "--path",
+    "godot",
+    "--resolution",
+    "1280x800",
+    "--script",
+    "res://tests/lattice/world_coop_live.gd",
+    "res://lattice/world_demo.tscn",
+    "--",
+    "--endpoint=ws://127.0.0.1:42955",
+    "--map=monsoon-foundry",
+    "--mode=cocs-coop",
+    "--world-output=/tmp/opencode/lattice-world-coop-8a58c97/port/native-lattice-world-coop/evidence/1790049748030221118/monsoon-foundry"
+  ],
+  "port": 42955,
+  "display": ":1",
+  "xvfb": {
+    "pid": 3235334,
+    "command": [
+      "Xvfb",
+      "-displayfd",
+      "3",
+      "-screen",
+      "0",
+      "1400x1000x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ]
+  },
+  "serverPid": 3235158,
+  "serverOptions": {
+    "historyPath": null,
+    "progressionPath": null
+  },
+  "deadlineSeconds": 210,
+  "simulation": "default tickDt 1/60, tickMs 1000/60, snapshotHz unchanged",
+  "input": "Godot engine events, not OS/human input",
+  "hashes": {
+    "server/game-server.mjs": "06e79c72d0530abf5256b803a19fbfb00582892579f27f42eae871cc28fb98b0",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/protocol.mjs": "362716c6b5ba222a64a76580efae1513c65eededd5a33116ff53974bf07a7fdb",
+    "game/cocs.mjs": "a1e0f803f396b7e12ed2b09757301bd6505d11b6bc84a0166ce7f572e88cc258",
+    "game/cocs-intel.mjs": "1be460752165e06e84aaece3ef539722591d576e4d77f5a4683a28d2a2ee5de0",
+    "game/cocs-coop.mjs": "00d94792020f20c4168e92147fc652d52dde3202a59d273b91b38fcb73a4007a",
+    "game/cocs-difficulty.mjs": "e3ca14ecea9333ab2d74b2ccf8f281f7a962bb67cc8c6b3d28eebbe5b37c42c0",
+    "game/cocs-economy.mjs": "2bab2c8a9d2620d4c66d7318ee3bf7056a38ea23e3aa8cf4c8c191dc1820bede",
+    "game/cocs-roles.mjs": "3edaf3207b6a54bf0600ee0fb9eee732bdd494351d67f9cc85b1c8e66ade67fa",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "godot/world/session.gd": "a501f3814e08c6ba17ac4f9bf2b2d2942241a8a48613d902387b8774a3b31554",
+    "godot/world/viewer.gd": "a1a264134e0876b2cb93382d049b20a3ae91ca65c595d397772ac383c1d2c8b7",
+    "godot/world/presentation.gd": "73fde7e91f38a302971452726adca5896208517936559954760e6385d4680240",
+    "godot/lattice/transport.gd": "d914d981c792362896f9bc6ae7480d40e754f74e337c721cab606b6c041eb783",
+    "godot/lattice/world_demo.gd": "1e6535cb269d28e1e53a9f6de3f6f939189e5d21d940e81e87d50a2f949a88ff",
+    "godot/lattice/world_transport.gd": "b7feb5f87fd06f708f7ac71b2c58f6b2e5ae16600d7629004c369fbdd2bbf2ec",
+    "godot/lattice/world_hud.gd": "c4e7a8822d93744fd3b7be99d8499511bb633c615fe2c02b0a36b32bf7d5bc9f",
+    "godot/lattice/world_commands.gd": "67e8203a2192cc4ba55774f34b58321797026b5613529312056d3a2c9897a0bb",
+    "godot/tests/lattice/world_commands_live.gd": "f254c494e08a4d9cd38f5e8f45bc968bd9d2c01a3fa908fbbe919e7283acf31d",
+    "godot/tests/lattice/world_coop_live.gd": "781a08de8eb865712af5be5dd6cce99343cd99f5151985903da4ebcde6b64184",
+    "port/native-lattice-world-coop/run.mjs": "8fc6f209d822361039b6fd24e6d91c1b4a64164691f339e665163565796d64ec",
+    "port/native-lattice-world-coop/audit.mjs": "4b6d75625b381411f785ddb02aefd37322766d1ac02ebc21d7f6ecd69f766462",
+    "port/native-lattice-world-coop/verify.py": "8512ce8230c241e790d8503299c593a8ce47e6231e7b123363d2d8ff5fe094a7"
+  },
+  "nativePid": 3235342
+}

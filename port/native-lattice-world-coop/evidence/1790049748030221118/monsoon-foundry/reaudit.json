@@ -1,0 +1,63 @@
+{
+  "passed": false,
+  "checks": {
+    "native": false,
+    "bounded": true,
+    "oneSocket": true,
+    "sameIdentity": false,
+    "ordinaryHost": true,
+    "ownWalletOnly": true,
+    "neutralWhileOpen": false,
+    "authoritativeStillWhileOpen": false,
+    "movementAfterFreshClick": false,
+    "ackHighWaterOnly": false,
+    "holdOnce": true,
+    "holdAccepted": true,
+    "naturalWindow": false,
+    "naturalLease": false,
+    "expiredConsentBlocked": false,
+    "newConsent": false,
+    "oneReinforce": false,
+    "sourcePermission": false,
+    "doneReceipt": false,
+    "sourceCostSpawnReq": false,
+    "nativeWireIdentity": false,
+    "noStaleDuplicate": false
+  },
+  "nativeExit": 1,
+  "nativeResult": {
+    "ackHighWater": 120,
+    "actor": 0,
+    "checks": 8,
+    "event": "result",
+    "failures": 1,
+    "inputSeq": 121,
+    "ms": 11328,
+    "peer": 1,
+    "snapshotSeq": 244
+  },
+  "commands": [
+    {
+      "type": "request",
+      "peer": 1,
+      "actor": 0,
+      "frame": {
+        "actionSeq": 1,
+        "cardId": "native-r1-p1-s1",
+        "roundRev": 1,
+        "target": "front-0",
+        "type": "order",
+        "verb": "HOLD"
+      },
+      "priorSeq": 89,
+      "ms": 6708
+    }
+  ],
+  "receipt": null,
+  "lease": null,
+  "authoritativeMovement": 0,
+  "ackMeaning": "Input high-water receipt only. Purchase requires matching source done/ok card and cumulative counters.",
+  "captureClaim": false,
+  "fullRoundClaim": false,
+  "humanInputClaim": false
+}

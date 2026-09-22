@@ -1,0 +1,198 @@
+{
+  "passed": true,
+  "attempts": [
+    {
+      "case": "port/native-lattice-world-coop/evidence/1790049748030221118/asterion-relay",
+      "accepted": true,
+      "checks": {
+        "manifestHashesResolved": true,
+        "reservedRuntimeMatchesBase": true,
+        "recordedPidsGone": true,
+        "tcpPortClosed": true,
+        "singleIdentityAllRequestsAndRecipients": true
+      },
+      "archivedVersions": [
+        {
+          "path": "godot/tests/lattice/world_coop_live.gd",
+          "exactArchive": "port/native-lattice-world-coop/evidence/1790049748030221118/observer-v1.gd.txt",
+          "sha256": "781a08de8eb865712af5be5dd6cce99343cd99f5151985903da4ebcde6b64184"
+        },
+        {
+          "path": "port/native-lattice-world-coop/audit.mjs",
+          "exactArchive": "port/native-lattice-world-coop/evidence/1790049748030221118/audit-v1.mjs.txt",
+          "sha256": "4b6d75625b381411f785ddb02aefd37322766d1ac02ebc21d7f6ecd69f766462"
+        }
+      ],
+      "port": 44985,
+      "pids": [
+        3225889,
+        3226074,
+        3226032
+      ],
+      "records": 3238,
+      "identities": [
+        [
+          1,
+          0
+        ]
+      ],
+      "screenshots": [
+        {
+          "path": "port/native-lattice-world-coop/evidence/1790049748030221118/asterion-relay/reopened.png",
+          "size": [
+            960,
+            640
+          ],
+          "sha256": "f9f80e732917d6b8ebfe1692083b31cdbae28c53a29091b3cc97f814de8d741a"
+        },
+        {
+          "path": "port/native-lattice-world-coop/evidence/1790049748030221118/asterion-relay/purchase-receipt.png",
+          "size": [
+            960,
+            640
+          ],
+          "sha256": "8ab27c22516ed82bcc1e1aaf9354bf3608ff204a56621a3450a0a38fc134b4c2"
+        },
+        {
+          "path": "port/native-lattice-world-coop/evidence/1790049748030221118/asterion-relay/expired-consent.png",
+          "size": [
+            960,
+            640
+          ],
+          "sha256": "ab9fab56821c1609c4b0952263bf5fb91417a145a2eec47d422ba88f5a1b6fd0"
+        },
+        {
+          "path": "port/native-lattice-world-coop/evidence/1790049748030221118/asterion-relay/authorized-old-lease.png",
+          "size": [
+            960,
+            640
+          ],
+          "sha256": "c383e9229ac7183b62ad8d7343e30bf7f546c15ba52c759d8a4ab7ecd5c85ff1"
+        },
+        {
+          "path": "port/native-lattice-world-coop/evidence/1790049748030221118/asterion-relay/waiting-window.png",
+          "size": [
+            960,
+            640
+          ],
+          "sha256": "20f8d52c0ebb006a5b41598fa696a672b944bee010829d7311d799c1dac94084"
+        }
+      ]
+    },
+    {
+      "case": "port/native-lattice-world-coop/evidence/1790049748030221118/monsoon-foundry",
+      "accepted": false,
+      "checks": {
+        "manifestHashesResolved": true,
+        "reservedRuntimeMatchesBase": true,
+        "recordedPidsGone": true,
+        "tcpPortClosed": true,
+        "singleIdentityAllRequestsAndRecipients": true
+      },
+      "archivedVersions": [
+        {
+          "path": "godot/tests/lattice/world_coop_live.gd",
+          "exactArchive": "port/native-lattice-world-coop/evidence/1790049748030221118/observer-v1.gd.txt",
+          "sha256": "781a08de8eb865712af5be5dd6cce99343cd99f5151985903da4ebcde6b64184"
+        },
+        {
+          "path": "port/native-lattice-world-coop/audit.mjs",
+          "exactArchive": "port/native-lattice-world-coop/evidence/1790049748030221118/audit-v1.mjs.txt",
+          "sha256": "4b6d75625b381411f785ddb02aefd37322766d1ac02ebc21d7f6ecd69f766462"
+        }
+      ],
+      "port": 42955,
+      "pids": [
+        3235158,
+        3235342,
+        3235334
+      ],
+      "records": 383,
+      "identities": [
+        [
+          1,
+          0
+        ]
+      ],
+      "screenshots": [
+        {
+          "path": "port/native-lattice-world-coop/evidence/1790049748030221118/monsoon-foundry/hold-failed.png",
+          "size": [
+            1280,
+            800
+          ],
+          "sha256": "ac6f974678036ae01df9259d72034526f9cccbc836ae79b376c02dcefdfb01a8"
+        }
+      ]
+    },
+    {
+      "case": "port/native-lattice-world-coop/evidence/1790049900845755296/monsoon-foundry",
+      "accepted": true,
+      "checks": {
+        "manifestHashesResolved": true,
+        "reservedRuntimeMatchesBase": true,
+        "recordedPidsGone": true,
+        "tcpPortClosed": true,
+        "singleIdentityAllRequestsAndRecipients": true
+      },
+      "archivedVersions": [],
+      "port": 35681,
+      "pids": [
+        3248998,
+        3249386,
+        3249378
+      ],
+      "records": 8619,
+      "identities": [
+        [
+          1,
+          0
+        ]
+      ],
+      "screenshots": [
+        {
+          "path": "port/native-lattice-world-coop/evidence/1790049900845755296/monsoon-foundry/reopened.png",
+          "size": [
+            1280,
+            800
+          ],
+          "sha256": "44d264090609b7fa96e7762e464084d24efa322c6636b13c640c62628376444e"
+        },
+        {
+          "path": "port/native-lattice-world-coop/evidence/1790049900845755296/monsoon-foundry/purchase-receipt.png",
+          "size": [
+            1280,
+            800
+          ],
+          "sha256": "4e1d82b3037fb939b2e23c890575fbbdd23906e41be6cb67a9ac49c18298432a"
+        },
+        {
+          "path": "port/native-lattice-world-coop/evidence/1790049900845755296/monsoon-foundry/expired-consent.png",
+          "size": [
+            1280,
+            800
+          ],
+          "sha256": "7c9a5a944f9457a2b8430b2098a991641bcaaee97b6f0ddd8c30e26ff2211287"
+        },
+        {
+          "path": "port/native-lattice-world-coop/evidence/1790049900845755296/monsoon-foundry/authorized-old-lease.png",
+          "size": [
+            1280,
+            800
+          ],
+          "sha256": "59743df3e116b1cdc2c12c70ec7de80b9f8333e824be9898a8931c79c04cf2e4"
+        },
+        {
+          "path": "port/native-lattice-world-coop/evidence/1790049900845755296/monsoon-foundry/waiting-window.png",
+          "size": [
+            1280,
+            800
+          ],
+          "sha256": "8dc8dbd66486c533d021f956afcad20e2bb62d15c6fb7fb62285027961a316e7"
+        }
+      ]
+    }
+  ],
+  "currentObserverSha256": "9f2eb317e3f48f44a250f8db73d17c93e29d9628d1e18acf16cd93e9b928d3b8",
+  "currentAuditSha256": "823eba3d7bc73c43b714e85319d456dbea6f4743328d14fabaa3b2b6be35c3d7"
+}

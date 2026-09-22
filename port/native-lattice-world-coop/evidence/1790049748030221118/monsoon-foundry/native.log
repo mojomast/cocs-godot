@@ -1,0 +1,22 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+WORLD_COMMANDS {"ackHighWater":0,"actor":0,"event":"check","inputSeq":1,"message":"ordinary world host ready","ms":3875,"ok":true,"peer":1,"snapshotSeq":1}
+WORLD_COMMANDS {"ackHighWater":0,"actor":0,"event":"check","inputSeq":1,"message":"actual co-op world and shared movement socket","ms":3876,"ok":true,"peer":1,"snapshotSeq":1}
+WORLD_COMMANDS {"ackHighWater":8,"actor":0,"event":"opened","inputSeq":10,"ms":4744,"peer":1,"snapshotSeq":45}
+WORLD_COMMANDS {"ackHighWater":8,"actor":0,"event":"check","inputSeq":10,"message":"C releases pointer with W/fire held","ms":4744,"ok":true,"peer":1,"snapshotSeq":45}
+WORLD_COMMANDS {"ackHighWater":19,"actor":0,"event":"overlay-settled","inputSeq":20,"ms":5251,"peer":1,"snapshotSeq":66}
+WORLD_COMMANDS {"ackHighWater":27,"actor":0,"event":"check","inputSeq":28,"message":"overlay stops authoritative motion with W/fire held","ms":5695,"ok":true,"peer":1,"snapshotSeq":79}
+WORLD_COMMANDS {"ackHighWater":28,"actor":0,"event":"check","inputSeq":29,"message":"own frontier listed","ms":5800,"ok":true,"peer":1,"snapshotSeq":80}
+WORLD_COMMANDS {"ackHighWater":30,"actor":0,"event":"check","inputSeq":31,"message":"selection submits nothing","ms":5916,"ok":true,"peer":1,"snapshotSeq":84}
+ERROR: one HOLD accepted by source
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/world_commands_live.gd:29)
+       [1] wait_for (res://tests/lattice/world_commands_live.gd:36)
+WORLD_COMMANDS {"ackHighWater":119,"actor":0,"event":"check","inputSeq":120,"message":"one HOLD accepted by source","ms":11203,"ok":false,"peer":1,"snapshotSeq":242}
+WORLD_COMMANDS {"ackHighWater":119,"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":"replaced","roundRev":1,"status":"confirmed","target":"front-0"}],"actor":0,"command":{"executor":0.0,"flux":132.217,"humans":1.0,"lease":{"chief":false,"executor":0.0,"humans":1.0,"requestable":false,"requests":[],"slot":0.0,"start":0.0,"until":600.0},"leaseUntil":600.0,"policy":{"0":null},"route":{"0":null},"seat":{"0":null},"slicePerPlayer":2.0,"slices":[{"allowance":66.0,"id":0.0,"remaining":66.0,"spent":0.0}],"spent":{},"threads":{"cap":2.0,"used":0.0},"votes":{"0":[]}},"consent":false,"event":"hold-failed","gate":"Wait for the between-wave recruitment window","inputSeq":120,"ms":11203,"peer":1,"recruitment":{"open":false,"peer":1,"phase":"build_up","sink":{"affordable":true,"available":true,"cost":50.0,"enabled":false},"spawned":0.0,"wave":1.0},"req":0.0,"round":1,"snapshotSeq":242,"spent":0.0}
+WORLD_COMMANDS {"ackHighWater":120,"actor":0,"event":"check","inputSeq":121,"message":"saved hold-failed","ms":11328,"ok":true,"peer":1,"snapshotSeq":244}
+WORLD_COMMANDS {"ackHighWater":120,"actor":0,"checks":8,"event":"result","failures":1,"inputSeq":121,"ms":11328,"peer":1,"snapshotSeq":244}

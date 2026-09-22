@@ -1,0 +1,65 @@
+// Offline audit of passive authority projections and engine-event observations.
+import {readFileSync, writeFileSync} from 'node:fs';
+import {resolve, join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+export function audit(records,native,{exit,overflow,timedOut,manifest}) {
+ const observations = native.split('\n').filter(line => line.startsWith('WORLD_COMMANDS ')).map(line => JSON.parse(line.slice(15)));
+ const obs = name => observations.find(r => r.event === name);
+ const result = obs('result');
+ const recipients = records.filter(r => r.type === 'recipient');
+ const at = event => recipients.find(r => r.seq === obs(event)?.snapshotSeq);
+ const requests = records.filter(r => r.type === 'request');
+ const commands = requests.filter(r => r.frame.type !== 'input');
+ const buys = commands.filter(r => r.frame.type === 'economy'), holds = commands.filter(r => r.frame.type === 'order');
+ const buy = buys[0], prior = recipients.find(r => r.seq === buy?.priorSeq);
+ const matching = r => buy && r.peer === buy.peer && r.actor === buy.actor && r.round === buy.frame.roundRev && r.cards?.some(c => c.id === buy.frame.cardId && c.actorId === buy.actor && String(c.peerId) === String(buy.peer) && c.state === 'done' && c.ok === true);
+ const done = recipients.find(matching);
+ const neutral = r => ['x','z'].every(k => r.frame.input[k] === 0) && ['fire','jump','reload','sprint','crouch','interact','mobility'].every(k => r.frame.input[k] === false) && !('weapon' in r.frame.input);
+ const paused = requests.filter(r => r.frame.type === 'input' && ((r.frame.seq >= obs('opened')?.inputSeq && r.frame.seq <= obs('resume-click')?.inputSeq) || (r.frame.seq >= obs('reopened')?.inputSeq && r.frame.seq <= obs('final-receipt')?.inputSeq)));
+ const settled = at('overlay-settled');
+ const still = recipients.filter(r => r.seq >= obs('overlay-settled')?.snapshotSeq && r.seq <= obs('closing')?.snapshotSeq);
+ const old = at('old-consent'), rotated = at('lease-rotated'), fresh = at('fresh-consent');
+ const startMove = at('movement-start'), endMove = at('movement-end');
+ const moved = startMove && endMove ? Math.hypot(endMove.own.x-startMove.own.x,endMove.own.z-startMove.own.z) : 0;
+ const checks = {
+  native:exit === 0 && result?.failures === 0 && result.checks >= 30 && !/SCRIPT ERROR|ERROR:/.test(native),
+  bounded:!overflow && !timedOut,
+  oneSocket:records.filter(r => r.type === 'welcome').length === 1,
+  sameIdentity:commands.length === 2 && [...commands,...still].every(r => r.peer === obs('opened')?.peer && r.actor === obs('opened')?.actor),
+  ordinaryHost:records.filter(r => r.type === 'start').length === 1 && records.some(r => r.type === 'start' && r.map === manifest.options.map && r.config.mode === 'cocs-coop' && r.config.botCount === 2),
+  ownWalletOnly:recipients.length > 100 && recipients.every(r => r.fluxKeys.length === 1 && r.fluxKeys[0] === String(r.own.team) && r.req.id === r.actor),
+  neutralWhileOpen:paused.length > 100 && paused.every(neutral),
+  authoritativeStillWhileOpen:still.length > 100 && still.every(r => Math.hypot(r.own.x-settled.own.x,r.own.z-settled.own.z) < 0.1 && r.own.shots === settled.own.shots),
+  movementAfterFreshClick:moved > 0.5 && requests.some(r => r.frame.type === 'input' && r.frame.seq > obs('movement-start')?.inputSeq && r.frame.seq <= obs('movement-end')?.inputSeq && Math.hypot(r.frame.input.x,r.frame.input.z) > 0),
+  ackHighWaterOnly:recipients.some(r => r.ack >= obs('movement-end')?.inputSeq),
+  holdOnce:holds.length === 1 && holds[0].frame.verb === 'HOLD' && holds[0].frame.target === 'front-0',
+  holdAccepted:holds.length === 1 && recipients.some(r => r.cards?.some(c => c.id === holds[0].frame.cardId && c.state === 'running' && c.accepted === true)),
+  naturalWindow:recipients.some(r => r.open === false) && old?.open === true && old?.phase === 'intermission' && old?.wave === 1,
+  naturalLease:old?.command.executor === old?.actor && rotated?.command.executor === old?.actor && rotated?.command.leaseUntil - old?.command.leaseUntil === 600 && rotated?.wave === old?.wave && rotated?.open === true && rotated.ms > old.ms,
+  expiredConsentBlocked:obs('old-consent')?.consent === true && obs('lease-rotated')?.consent === false && obs('old-consent-blocked')?.actions.length === 1 && buys.length === 1 && buy.priorSeq >= obs('fresh-consent')?.snapshotSeq,
+  newConsent:obs('fresh-consent')?.consent === true && fresh?.command.leaseUntil === rotated?.command.leaseUntil && obs('fresh-consent')?.ms > obs('old-consent-blocked')?.ms,
+  oneReinforce:buys.length === 1 && buy.frame.action === 'reinforce' && buy.frame.role === 'fighter',
+  sourcePermission:prior?.open === true && prior?.command.executor === buy?.actor && prior?.ownSlice.allowance >= 50 && prior?.sink.cost === 50 && prior?.sink.available === true && prior?.sink.enabled === true && prior?.sink.affordable === true && prior?.command.threads.used < prior?.command.threads.cap,
+  doneReceipt:!!done && matching(at('purchase-receipt') ?? {}),
+  sourceCostSpawnReq:!!done && done.spent - prior?.spent === 50 && done.spawned - prior?.spawned === 1 && done.req.spent === prior?.req.spent,
+  nativeWireIdentity:commands.length === 2 && commands.every(r => r.frame.cardId === `native-r${r.frame.roundRev}-p${r.peer}-s${r.frame.actionSeq}` && native.includes(r.frame.cardId)),
+  noStaleDuplicate:obs('final-receipt')?.actions.length === 2 && obs('final-receipt')?.consent === false && buys.length === 1
+ };
+ return {passed:Object.values(checks).every(Boolean),checks,nativeExit:exit,nativeResult:result,
+  commands,receipt:done ? {seq:done.seq,card:done.cards.find(c => c.id === buy.frame.cardId),spent:[prior.spent,done.spent],spawned:[prior.spawned,done.spawned],reqSpent:[prior.req.spent,done.req.spent]} : null,
+  lease:old && rotated ? {before:old.command.leaseUntil,after:rotated.command.leaseUntil,elapsedMs:rotated.ms-old.ms} : null,
+  naturalWindowMs:obs('window-open')?.ms,authoritativeMovement:moved,
+  ackMeaning:'Input high-water receipt only. Purchase requires matching source done/ok card and cumulative counters.',
+  captureClaim:false,fullRoundClaim:false,humanInputClaim:false};
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+ const out = resolve(process.argv[2]);
+ const saved = JSON.parse(readFileSync(join(out,'result.json')));
+ const records = readFileSync(join(out,'wire.jsonl'),'utf8').trim().split('\n').map(line => JSON.parse(line));
+ const result = audit(records,readFileSync(join(out,'native.log'),'utf8'),{exit:saved.nativeExit,overflow:!saved.checks.bounded,timedOut:false,manifest:JSON.parse(readFileSync(join(out,'manifest.json')))});
+ writeFileSync(join(out,'reaudit.json'),JSON.stringify(result,null,2)+'\n');
+ console.log(JSON.stringify(result,null,2));
+ process.exitCode = result.passed ? 0 : 1;
+}

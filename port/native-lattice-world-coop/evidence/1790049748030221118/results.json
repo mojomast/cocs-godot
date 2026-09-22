@@ -1,0 +1,48 @@
+[
+  {
+    "name": "asterion-relay",
+    "command": [
+      "node",
+      "port/native-lattice-world-coop/run.mjs",
+      "--map=asterion-relay",
+      "--size=960x640",
+      "--output=/tmp/opencode/lattice-world-coop-8a58c97/port/native-lattice-world-coop/evidence/1790049748030221118/asterion-relay"
+    ],
+    "timeoutSeconds": 210,
+    "elapsedSeconds": 68.18719265982509,
+    "exit": 0,
+    "passed": true,
+    "cleanup": {
+      "port": 44985,
+      "httpClosed": true,
+      "nativeExited": true,
+      "xvfbExited": true,
+      "runtimeRemoved": true,
+      "elapsedSeconds": 67.154627066,
+      "recordedPidsGone": true
+    }
+  },
+  {
+    "name": "monsoon-foundry",
+    "command": [
+      "node",
+      "port/native-lattice-world-coop/run.mjs",
+      "--map=monsoon-foundry",
+      "--size=1280x800",
+      "--output=/tmp/opencode/lattice-world-coop-8a58c97/port/native-lattice-world-coop/evidence/1790049748030221118/monsoon-foundry"
+    ],
+    "timeoutSeconds": 210,
+    "elapsedSeconds": 13.27581069432199,
+    "exit": 1,
+    "passed": false,
+    "cleanup": {
+      "port": 42955,
+      "httpClosed": true,
+      "nativeExited": true,
+      "xvfbExited": true,
+      "runtimeRemoved": true,
+      "elapsedSeconds": 12.358513614,
+      "recordedPidsGone": true
+    }
+  }
+]
