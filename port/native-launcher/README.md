@@ -15,6 +15,7 @@ PORT=0 node tools/godot-dev/launch.mjs --experience=objectives --map=tidal-citad
 PORT=0 node tools/godot-dev/launch.mjs --experience=objectives --map=sunscar-convoy
 PORT=0 node tools/godot-dev/launch.mjs --experience=lattice --map=asterion-relay --mode=cocs
 PORT=0 node tools/godot-dev/launch.mjs --experience=lattice --map=monsoon-foundry --mode=cocs-coop
+PORT=0 node tools/godot-dev/launch.mjs --experience=lattice-world --map=asterion-relay --mode=cocs
 ```
 
 Sports mode is fixed by the map; objectives likewise select CTF or Payload.
@@ -38,7 +39,7 @@ node --test tools/godot-dev/launch_options.test.mjs
 python3 -B port/native-launcher/verify.py
 ```
 
-The four routing regressions cover all supported standalone map/mode pairs,
+The five routing regressions cover all supported standalone map/mode pairs,
 actual scene-file existence, unchanged viewer/combat/smoke arguments, defaults,
 invalid/missing/duplicate options, legal sports round limits and locked-catalog exclusion.
 
@@ -54,3 +55,10 @@ interaction, long-session, result or recording-completion acceptance. Existing
 independent graphical gameplay evidence for each scene remains separately scoped.
 The combined **51-gate verifier passes** with the new routing gate and the
 existing real combat transport, session and lifecycle launcher paths.
+
+Later world integration adds `--experience=lattice-world`, keeping `lattice`
+as the command board. `python3 -B port/native-launcher/verify.py --lattice-world`
+independently passed all four new map/mode routes through the actual launcher:
+[`1790045153865842451`](evidence/1790045153865842451/summary.json).
+The latest combined run passes **62 gates**; original startup evidence above
+remains scoped to its historical build.

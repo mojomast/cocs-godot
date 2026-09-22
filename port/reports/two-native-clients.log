@@ -1,8 +1,8 @@
 [native 0] Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 [native 0] 
-[native 0] PORT_ROOM Z48K
+[native 0] PORT_ROOM MRC5
 [native 1] Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 [native 1] 
-[native 0] PORT_TWO_OK {"ack":16,"actor_id":0,"actors":4,"both_moved":true,"humans":[0,1],"peer_id":1,"remote_poses":138}
-[native 1] PORT_TWO_OK {"ack":16,"actor_id":1,"actors":4,"both_moved":true,"humans":[0,1],"peer_id":2,"remote_poses":138}
+[native 0] PORT_TWO_OK {"ack":16,"actor_id":0,"actors":4,"both_moved":true,"humans":[0,1],"peer_id":1,"remote_poses":141}
+[native 1] PORT_TWO_OK {"ack":16,"actor_id":1,"actors":4,"both_moved":true,"humans":[0,1],"peer_id":2,"remote_poses":141}
 PORT_TWO_NATIVE_CLIENTS_OK

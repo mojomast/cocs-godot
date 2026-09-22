@@ -4,6 +4,7 @@ export const EXPERIENCES = {
   sports: {scene:'res://sports/demo.tscn', map:'ion-speedway', modes:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
   objectives: {scene:'res://objectives/demo.tscn', map:'tidal-citadel', modes:{'tidal-citadel':['ctf'], 'sunscar-convoy':['payload']}},
   lattice: {scene:'res://lattice/board.tscn', map:'asterion-relay', modes:{'asterion-relay':['cocs','cocs-coop'], 'monsoon-foundry':['cocs','cocs-coop']}},
+  'lattice-world': {scene:'res://lattice/world_demo.tscn', map:'asterion-relay', modes:{'asterion-relay':['cocs','cocs-coop'], 'monsoon-foundry':['cocs','cocs-coop']}},
 };
 
 export function launchOptions(argv, catalog) {
@@ -71,6 +72,7 @@ export const HELP = `Native COCS launcher — owned loopback authority, normal s
   node tools/godot-dev/launch.mjs --experience=objectives --map=tidal-citadel
   node tools/godot-dev/launch.mjs --experience=objectives --map=sunscar-convoy
   node tools/godot-dev/launch.mjs --experience=lattice --map=asterion-relay --mode=cocs
+  node tools/godot-dev/launch.mjs --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
 
 Set GODOT_BIN to the pinned Godot 4.5.2 binary. Run semantic export and import first.
 PORT=0 (default) allocates a free port. Close the client or press Ctrl+C to stop.
@@ -82,5 +84,7 @@ Sports: ion-speedway (puma-race), aurora-stadium (puma-soccer)
 Objectives: tidal-citadel (ctf), sunscar-convoy (payload)
 LATTICE: asterion-relay or monsoon-foundry; --mode=cocs or cocs-coop
   Click Connect / start in the command board to begin.
+LATTICE world: --experience=lattice-world with the same maps/modes
+  Click to engage, WASD/mouse to move/look, Escape to release. Standalone host.
 Checks: --network-smoke, --session-smoke or --lifecycle-smoke (combat only)
 `;

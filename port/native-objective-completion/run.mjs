@@ -10,6 +10,7 @@ import {resolve} from 'node:path';
 import {randomUUID,createHash} from 'node:crypto';
 import {gzipSync} from 'node:zlib';
 const args=process.argv.slice(2),passing=args.includes('--pass'),map=passing?'tidal-citadel':'sunscar-convoy';
+const revision=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
 const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));verifySource(lock);
 const binary=process.env.GODOT_BIN;
 if(!binary||execFileSync(binary,['--version'],{encoding:'utf8',timeout:5000}).trim()!==lock.godot_version)throw Error('Pinned GODOT_BIN required');
@@ -48,7 +49,7 @@ try{
  const endpoint=`ws://127.0.0.1:${game.server.address().port}`;
  const response=await fetch(endpoint.replace('ws:','http:'),{signal:AbortSignal.timeout(5000)});if(!response.ok)throw Error('Readiness failed');
  const argv=['--audio-driver','Dummy','--resolution',args.includes('--small')?'960x640':'1280x800','--path','godot',passing?'res://tests/objectives/completion_pass.tscn':'res://tests/objectives/completion_live.tscn','--',`--map=${map}`,`--endpoint=${endpoint}`,'--objective-evidence','--objective-peer',`--round-seconds=${seconds}`,`--screenshot=${out}/gameplay.png`];
- writeFileSync(resolve(out,'launch.json'),JSON.stringify({binary,version:lock.godot_version,binarySHA256:createHash('sha256').update(readFileSync(binary)).digest('hex'),argv,display:env.DISPLAY,command:process.argv,cwd:process.cwd(),base:'ffa6aac0bc4a61a0b5e1721dbb4000066c22a474'},null,2));
+ writeFileSync(resolve(out,'launch.json'),JSON.stringify({binary,version:lock.godot_version,binarySHA256:createHash('sha256').update(readFileSync(binary)).digest('hex'),argv,display:env.DISPLAY,command:process.argv,cwd:process.cwd(),base:'ffa6aac0bc4a61a0b5e1721dbb4000066c22a474',revision},null,2));
  child=tracked(binary,argv,{env,stdio:['ignore','pipe','pipe']});
  child.stdout.on('data',b=>{stdout+=b;if(stdout.length>48*1024*1024){reason='stdout cap';child.kill('SIGTERM');}});child.stderr.on('data',b=>stderr+=b);
  reason='running';timer=setTimeout(()=>{reason='outer deadline';void terminate(child);},deadline);
@@ -68,7 +69,7 @@ finally{
  rmSync(temp,{recursive:true,force:true});
  const cleanup=children.map(p=>{let absent=false;try{process.kill(p.pid,0);}catch(e){absent=e.code==='ESRCH';}return{pid:p.pid,reaped:p.exitCode!==null||p.signalCode!==null,absent};});
  if(cleanup.some(p=>!p.absent||!p.reaped)||game?.server.listening||game?.wss.clients.size||existsSync(temp))exit=1;
- writeFileSync(resolve(out,'summary.json'),JSON.stringify({map,seconds,deadline,base:'ffa6aac',source:lock.source_commit,runtimeHashes,exit,reason,normalRate:true,nativeCompletionProven:false,cleanup,serverClosed:!game?.server.listening,sockets:game?.wss.clients.size??0,temporaryTreeRemoved:!existsSync(temp)},null,2));
+ writeFileSync(resolve(out,'summary.json'),JSON.stringify({map,seconds,deadline,base:'ffa6aac',revision,source:lock.source_commit,runtimeHashes,exit,reason,normalRate:true,nativeCompletionProven:false,cleanup,serverClosed:!game?.server.listening,sockets:game?.wss.clients.size??0,temporaryTreeRemoved:!existsSync(temp)},null,2));
  console.log(JSON.stringify({exit,reason,evidence:out,cleanup}));process.exitCode=exit;
  process.off('SIGINT',stop);process.off('SIGTERM',stop);
 }

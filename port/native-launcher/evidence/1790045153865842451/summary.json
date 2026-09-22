@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "revision": "6116f12e5e96f25c9cad693a3536bb3032074d74",
+  "editor": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "scope": "bounded headless startup and owned-process cleanup only",
+  "results": [
+    {
+      "experience": "lattice-world",
+      "map": "asterion-relay",
+      "mode": "cocs",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--experience=lattice-world",
+        "--map=asterion-relay",
+        "--mode=cocs"
+      ],
+      "exit": 0,
+      "timeout": false,
+      "nativeAbsent": true,
+      "portClosed": true,
+      "passed": true
+    },
+    {
+      "experience": "lattice-world",
+      "map": "asterion-relay",
+      "mode": "cocs-coop",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--experience=lattice-world",
+        "--map=asterion-relay",
+        "--mode=cocs-coop"
+      ],
+      "exit": 0,
+      "timeout": false,
+      "nativeAbsent": true,
+      "portClosed": true,
+      "passed": true
+    },
+    {
+      "experience": "lattice-world",
+      "map": "monsoon-foundry",
+      "mode": "cocs",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--experience=lattice-world",
+        "--map=monsoon-foundry",
+        "--mode=cocs"
+      ],
+      "exit": 0,
+      "timeout": false,
+      "nativeAbsent": true,
+      "portClosed": true,
+      "passed": true
+    },
+    {
+      "experience": "lattice-world",
+      "map": "monsoon-foundry",
+      "mode": "cocs-coop",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--experience=lattice-world",
+        "--map=monsoon-foundry",
+        "--mode=cocs-coop"
+      ],
+      "exit": 0,
+      "timeout": false,
+      "nativeAbsent": true,
+      "portClosed": true,
+      "passed": true
+    }
+  ]
+}

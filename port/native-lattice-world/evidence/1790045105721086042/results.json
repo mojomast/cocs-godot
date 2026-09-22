@@ -1,0 +1,71 @@
+[
+  {
+    "name": "semantic",
+    "command": [
+      "node",
+      "tools/godot-export/semantic.mjs"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "import",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--editor",
+      "--import"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "contract",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/lattice/world_contract.gd"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "asterion-relay-cocs",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-world/run.mjs",
+      "--map=asterion-relay",
+      "--mode=cocs",
+      "--size=1280x800",
+      "--output=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-lattice-world/evidence/1790045105721086042/asterion-relay-cocs"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "monsoon-foundry-cocs-coop",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-world/run.mjs",
+      "--map=monsoon-foundry",
+      "--mode=cocs-coop",
+      "--size=1280x800",
+      "--output=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-lattice-world/evidence/1790045105721086042/monsoon-foundry-cocs-coop"
+    ],
+    "exit": 0,
+    "passed": true
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "binary": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "binarySHA256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "argv": [
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "960x640",
+    "--path",
+    "godot",
+    "res://tests/objectives/completion_live.tscn",
+    "--",
+    "--map=sunscar-convoy",
+    "--endpoint=ws://127.0.0.1:46397",
+    "--objective-evidence",
+    "--objective-peer",
+    "--round-seconds=180",
+    "--screenshot=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-objective-completion/evidence/58399317-d086-4f6d-814d-d09b03af2afb/gameplay.png"
+  ],
+  "display": ":0",
+  "command": [
+    "/usr/bin/node",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-objective-completion/run.mjs",
+    "--small"
+  ],
+  "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port",
+  "base": "ffa6aac0bc4a61a0b5e1721dbb4000066c22a474",
+  "revision": "db0c3eed86ffcdd4a7b71d9704425a58b7febdf2"
+}

@@ -6,8 +6,8 @@ updates root documentation/shared verification and owns publication.
 
 | Lane | Owner / baseline | Reserved files |
 |---|---|---|
-| Objective completion paths | Internal follow-up; `ffa6aac` | New completion helpers/tests, narrow objective runtime only if needed, `port/native-objective-completion/` |
-| LATTICE native world traversal | Internal agent; `642c615` | New `world_` LATTICE scene/helpers/tests only, `port/native-lattice-world/` |
+| LATTICE in-world command panel | Internal follow-up; `6116f12` | New world command UI/tests, narrow world_demo/world_hud only, `port/native-lattice-world-commands/` |
+| Runnable Linux prototype bundle | Internal agent; `6116f12` | New export presets if absent, `tools/godot-package/`, new package tests, `port/native-linux-package/` |
 | Multiplayer lobby / leave / retry | External handoff; `8094d41` | New lobby-prefixed UI/tests, narrow `godot/world/session.gd` / scene and backward-compatible client hook if essential; `port/native-multiplayer-lobby/` |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
 
@@ -31,6 +31,11 @@ visual checks and archived source-goal audit pass. Local-driver scoring remains
 unaccepted after two bounded agent attempts; seven bot/own goals are preserved.
 Co-op recruitment is integrated at `642c615`; independent natural-window purchases
 pass on both maps, with prior Map/List regressions intact.
+Objective completion is integrated at `1228369` / `2077911` / `db0c3ee`;
+independent full Payload rollback/delivery and CTF pass/settled restart pass.
+World traversal is integrated at `6116f12`; both independent graphical cases
+and all four common-launcher startup routes pass. Native strategy commands
+within that world and an editor-free Linux prototype build are now delegated.
 
 External tasks have complete scope/commands in
 `external-native-objective-gameplay.md` and

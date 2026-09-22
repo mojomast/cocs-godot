@@ -113,8 +113,18 @@ evidence helpers retain their bounded observation windows. See
   return/capture and Payload contest/checkpoint, plus both modes' natural results
   and restart. See [progression evidence](reports/objective-progression-independent/README.md).
 
-**Combined verification: all 59 implemented gates pass** after co-op economy and
-soccer guidance integration at `4eb0e36` plus the new focused gates
+- **Objective completion:** full Payload delivery after banked defender rollback
+  and CTF teammate pass/capture independently pass with actual results/restart.
+  The original CTF release-timing failure stays preserved; a fresh independent
+  run supplies the missing settled-release witness. See
+  [completion evidence](reports/objective-completion-independent/README.md).
+- **LATTICE world:** the optional `--experience=lattice-world` scene adds native
+  first-person movement and recipient/public markers. Independent Asterion PvP
+  and Monsoon co-op approach/release/resume checks pass; all four launcher routes
+  start/close correctly. See [world evidence](reports/lattice-world-independent/README.md).
+
+**Combined verification: all 62 implemented gates pass** after objective completion
+and LATTICE world integration at `6116f12` plus launcher/gate changes
 recorded with this batch. Independent driving passed on both sports maps;
 the default compact HUD's nonlethal damage/+35 HP/12-second return was also
 independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).

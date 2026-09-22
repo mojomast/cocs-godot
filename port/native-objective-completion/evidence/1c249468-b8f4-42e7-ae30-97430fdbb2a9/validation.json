@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "scope": "full live acceptance",
+  "fullLiveAcceptance": true,
+  "immediatePhysicalRelease": false,
+  "settledResultPhysicalReleaseObserved": true,
+  "matches": 1870,
+  "pass": {
+    "actor": 0,
+    "to": 2,
+    "time": 20.367
+  },
+  "capture": {
+    "actor": 2,
+    "time": 37.9
+  },
+  "inputs": {
+    "peers": [
+      {
+        "connection": 0,
+        "actorId": 0,
+        "receipts": 2462,
+        "appliedSamples": 1798,
+        "appliedHighWater": 2461
+      },
+      {
+        "connection": 1,
+        "actorId": 1,
+        "receipts": 1800,
+        "appliedSamples": 1799,
+        "appliedHighWater": 1799
+      },
+      {
+        "connection": 2,
+        "actorId": 2,
+        "receipts": 1800,
+        "appliedSamples": 1799,
+        "appliedHighWater": 1799
+      }
+    ],
+    "meaning": "receipt and applied high-water only; source objective events/states establish gameplay outcomes"
+  },
+  "results": 1,
+  "restarts": 1,
+  "normalRate": true,
+  "nativeCompletionProven": false
+}

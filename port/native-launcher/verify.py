@@ -4,6 +4,7 @@ The editor wrapper adds only --headless/--quit-after; no gameplay or client code
 is replaced. These are startup/ownership checks, not interactive acceptance.
 """
 import json
+import argparse
 import os
 from pathlib import Path
 import re
@@ -24,6 +25,12 @@ cases = [('sports', 'ion-speedway', 'puma-race'),
          ('objectives', 'sunscar-convoy', 'payload'),
          ('lattice', 'asterion-relay', 'cocs'),
          ('lattice', 'monsoon-foundry', 'cocs-coop')]
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--lattice-world', action='store_true', help='Check only the four new world routes')
+options = parser.parse_args()
+if options.lattice_world:
+    cases = [('lattice-world', map_id, mode) for map_id in ['asterion-relay', 'monsoon-foundry']
+             for mode in ['cocs', 'cocs-coop']]
 results = []
 with tempfile.TemporaryDirectory(prefix='native-launcher-', dir='/tmp/opencode') as temporary:
     wrapper = Path(temporary) / 'editor'
@@ -39,7 +46,8 @@ os.execv(real,[real,*args])
 ''')
     wrapper.chmod(0o755)
     for experience, map_id, mode in cases:
-        record = out / f'{map_id}.json'
+        name = f'{map_id}-{mode}' if options.lattice_world else map_id
+        record = out / f'{name}.json'
         env = dict(os.environ, GODOT_BIN=str(wrapper), LAUNCH_REAL_EDITOR=real,
                    LAUNCH_RECORD=str(record), PORT='0')
         command = ['node', 'tools/godot-dev/launch.mjs', f'--experience={experience}',
@@ -53,7 +61,7 @@ os.execv(real,[real,*args])
             timed_out = True
             os.killpg(child.pid, signal.SIGKILL)
             output, _ = child.communicate()
-        (out / f'{map_id}.log').write_text(output)
+        (out / f'{name}.log').write_text(output)
         editor = json.loads(record.read_text()) if record.exists() else {}
         absent = False
         if editor:

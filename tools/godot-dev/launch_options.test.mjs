@@ -58,3 +58,12 @@ test('sports round options preserve legal ordinary configuration without silent 
   assert.throws(()=>launchOptions(['--time-limit=60'],catalog),/sports launcher/);
   assert.throws(()=>launchOptions(['--experience=objectives','--round-target=1'],catalog),/sports launcher/);
 });
+
+test('world traversal and command board remain distinct native scenes',()=>{
+  const world=launchOptions(['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop'],catalog);
+  assert.ok(world.args.includes('res://lattice/world_demo.tscn'));
+  assert.deepEqual(world.sessionOptions,['--map=monsoon-foundry','--mode=cocs-coop']);
+  assert.ok(launchOptions(['--experience=lattice'],catalog).args.includes('res://lattice/board.tscn'));
+  assert.throws(()=>launchOptions(['--experience=lattice-world','--map=ion-speedway'],catalog));
+  assert.throws(()=>launchOptions(['--experience=lattice-world','--session-smoke'],catalog));
+});

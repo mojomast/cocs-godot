@@ -29,16 +29,16 @@ simulation lock and verification evidence remain reproducible.
 | Combat feedback | Reticle, confirmed-hit and damage indicators, source-driven projectiles and explosion flashes, procedural sound cues |
 | HUD and controls | Health/armor bars, named weapon/ammo display, number-key and wheel weapon selection, team scores and results scoreboard |
 | Puma sports demos | Ion Speedway racing and Aurora Stadium soccer: authoritative driving, next-checkpoint guidance, compact HUD, wall-aware chase, results and F5 restart |
-| Objective demos | Tidal CTF pickup/drop/return/capture; Sunscar Payload escort/contest/checkpoint; compact objective HUD, results and restart |
+| Objective demos | Tidal CTF pickup/drop/return/pass/capture; Sunscar Payload escort/contest/banked rollback/full delivery; compact HUD, results and restart |
 | LATTICE command demo | Asterion Relay and Monsoon Foundry: synchronized objective list/map, own resources, HOLD orders, PvP Fighter and co-op REINFORCE purchases with explicit receipts |
+| LATTICE world demo | Authoritative first-person traversal on Asterion/Monsoon, recipient actors, own resources and public objective markers |
 | Session handling | Local server launcher, host setup, guest transport, stale-state handling, focus release, death/respawn and round-boundary control resets |
 
 Sports now have independent completed-lap and normal results/restart acceptance;
-local-driver soccer goals remain open. LATTICE is currently a
-standalone command board with PvP/co-op recruitment; native world interaction
-is in development. CTF/Payload have bounded progression and results/restart acceptance;
-full Payload delivery, flag passing and broader combat/objective interactions
-remain under development.
+local-driver soccer goals remain open. LATTICE offers a command board and a
+separate first-person world slice; integrated world commands and full strategy
+rounds are in development. CTF pass/capture and full Payload delivery now have
+independent normal-rate acceptance; broader combat/objective interactions remain open.
 See the [release matrix](port/RELEASE_MATRIX.md) for evidence and remaining work.
 
 <details>
@@ -160,6 +160,19 @@ layout fits the basic command and purchase receipts at 960×640; longer history
 remains scrollable. See the
 [LATTICE guide](port/native-lattice/README.md) for details and limitations.
 
+### LATTICE world traversal
+
+```sh
+PORT=0 node tools/godot-dev/launch.mjs --experience=lattice-world --map=asterion-relay --mode=cocs
+PORT=0 node tools/godot-dev/launch.mjs --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
+```
+
+Click to engage, move/look with **WASD/mouse**, and **Escape** to release. Release
+action keys before clicking again. This standalone host uses normal source
+actors and public objectives, with a diagnostic resource/status HUD. The
+command board remains a separate scene. See
+[world traversal verification](port/reports/lattice-world-independent/README.md).
+
 ### CTF and Payload demos
 
 ```sh
@@ -177,6 +190,9 @@ scoreboard. Press **Enter** at results to restart, then deliberately recapture.
 See the
 [objective guide](port/native-objective-gameplay/HANDOFF.md) and
 [independent progression verification](port/reports/objective-progression-independent/README.md).
+Full Payload delivery after checkpoint-banked rollback and CTF teammate
+pass/capture also pass independently, including results and neutral restart:
+[completion verification](port/reports/objective-completion-independent/README.md).
 
 ### Open the editor or map viewer
 
@@ -223,8 +239,8 @@ After results, **F5** starts a new round; press Enter and fresh movement keys.
 | Ember Crucible | Industrial combat arena |
 | Tidal Citadel | Team objectives and Capture the Flag |
 | Sunscar Convoy | Payload and combined-arms objectives |
-| Asterion Relay | LATTICE command gameplay |
-| Monsoon Foundry | LATTICE command gameplay |
+| Asterion Relay | LATTICE commands and native world traversal |
+| Monsoon Foundry | LATTICE commands and native world traversal |
 | Ion Speedway | Puma racing |
 | Aurora Stadium | Puma soccer |
 
@@ -246,11 +262,11 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated run passes **59 gates**, including sports and objective
+The latest integrated run passes **62 gates**, including sports and objective
 progression, LATTICE map selection, launcher routing, GLB material sides and
 projectile navigation. Native
 [GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
-also passed the same 59-gate snapshot from a fresh Ubuntu checkout.
+also passed the preceding 59-gate snapshot from a fresh Ubuntu checkout.
 
 Focused real-session and graphical evidence is documented in:
 
@@ -262,8 +278,10 @@ Focused real-session and graphical evidence is documented in:
 - [LATTICE native mouse/key acceptance](port/reports/lattice-physical-independent/README.md)
 - [LATTICE tactical-map verification](port/reports/lattice-map-independent/README.md)
 - [LATTICE co-op recruitment verification](port/reports/lattice-economy-independent/README.md)
+- [LATTICE world traversal](port/reports/lattice-world-independent/README.md)
 - [CTF and Payload independent verification](port/reports/objective-independent/README.md)
 - [CTF capture, Payload contest/checkpoint and restart](port/reports/objective-progression-independent/README.md)
+- [Full Payload delivery and CTF teammate pass](port/reports/objective-completion-independent/README.md)
 - [Exported sky material-side correction](port/reports/glb-side-independent/README.md)
 
 Passing automated checks is distinct from complete mode, human usability or

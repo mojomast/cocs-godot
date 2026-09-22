@@ -1,0 +1,2 @@
+LATTICE_WORLD {"endpoint":"ws://127.0.0.1:41221","map":"monsoon-foundry","mode":"cocs-coop","out":"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-lattice-world/evidence/1790045105721086042/monsoon-foundry-cocs-coop"}
+{"passed":true,"checks":{"native":true,"movement":true,"exactCamera":true,"exactRecipientActors":true,"ownBudgetOnly":true,"ackObserved":true,"noCommands":true,"normalHost":true},"out":"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-lattice-world/evidence/1790045105721086042/monsoon-foundry-cocs-coop"}
