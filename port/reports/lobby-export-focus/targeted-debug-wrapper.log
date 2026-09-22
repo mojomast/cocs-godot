@@ -1,0 +1,82 @@
+{
+  "map": "meridian-exchange",
+  "mode": "teamdeathmatch",
+  "startupOnly": false,
+  "normalRate": true,
+  "input": "Godot engine events; Window.grab_focus/size for test-window management, not OS input",
+  "baseline": "e9ed72f64e26fa8a7018b030659d809294540b2e",
+  "checks": [
+    "owned ephemeral port avoids 4332",
+    "host menu HUD phase visibility",
+    "guest menu HUD phase visibility",
+    "baseline-always-focus role focused item",
+    "needed-focus-role role focused item",
+    "needed-focus-map maps focused item",
+    "needed-focus-map modes focused item",
+    "targeted no room connections"
+  ],
+  "milestones": [
+    "01-host-menu-960x640",
+    "02-guest-menu-1280x800",
+    "03-always-after-role",
+    "04-needed-after-role",
+    "05-needed-map-mode",
+    "06-after-open-popup-focus"
+  ],
+  "cleanup": [
+    {
+      "name": "guest",
+      "pid": 3746927,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "host",
+      "pid": 3746589,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "xvfb",
+      "pid": 3746586,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "manifestSha256": "8f602b1cc48ab07a05378365a5890d96efea6b8b3d90e9d1c8a916ee085f40cc",
+  "manifestFiles": 112,
+  "runtimeModules": 84,
+  "artifact": "/tmp/opencode/lead-native-linux-package/builds/1790054125934591826/cocs-native-linux",
+  "binary": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "binarySha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "debugComparison": true,
+  "observerSha256": "8842c35e3079c83e30526007beabe37b3f4680fa5aa6248e9016b9d3da17be01",
+  "runnerSha256": "82c0896de4f24cd1b8a7a256bb99b35dcfa79d2d2b4e6f42bfb81d06bd2c78fa",
+  "source": "unchanged packaged authority",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "display": ":0",
+  "port": 36329,
+  "status": "TARGETED COMPLETE",
+  "serverClosed": true,
+  "sockets": 0,
+  "wire.jsonl": {
+    "bytes": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  "actions.jsonl": {
+    "bytes": 8571,
+    "sha256": "567b3d19a294f4572b4899ad9d991ddd5f35c61c5641ca56e7a54c08ca490617"
+  },
+  "witnesses.jsonl": {
+    "bytes": 122164,
+    "sha256": "ed2edb73a2c8fb3693a0bf43dd3994f44ab8b4ffe877a93580c9b9a40f35df87"
+  },
+  "packageBytesUnchanged": true,
+  "nativeErrorLines": [],
+  "cleanLogs": true,
+  "tempRemoved": true,
+  "wallMs": 16095
+}

@@ -1,0 +1,2072 @@
+{
+  "map": "meridian-exchange",
+  "mode": "teamdeathmatch",
+  "startupOnly": false,
+  "normalRate": true,
+  "input": "Godot engine events; Window.grab_focus/size for test-window management, not OS input",
+  "baseline": "e9ed72f64e26fa8a7018b030659d809294540b2e",
+  "checks": [
+    "owned ephemeral port avoids 4332",
+    "host menu HUD phase visibility",
+    "guest menu HUD phase visibility",
+    "baseline-always-focus role focused item",
+    "needed-focus-role role focused item",
+    "needed-focus-map maps focused item",
+    "needed-focus-map modes focused item",
+    "targeted no room connections"
+  ],
+  "milestones": [
+    {
+      "name": "01-host-menu-960x640",
+      "wall": 1790054864252,
+      "client": "host",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 1,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "hud_detail": "",
+        "hud_title": "",
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              100,
+              229.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              960,
+              640
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              130,
+              16,
+              700,
+              608
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              170,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              920,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 0.476451666666667,
+        "spectating": false,
+        "stage": "startup",
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              32,
+              151,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              146,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35877",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "meridian-exchange",
+                "text": "Meridian Exchange"
+              },
+              {
+                "metadata": "verdant-reliquary",
+                "text": "Verdant Reliquary"
+              },
+              {
+                "metadata": "ember-crucible",
+                "text": "Ember Crucible"
+              },
+              {
+                "metadata": "tidal-citadel",
+                "text": "Tidal Citadel — pending"
+              },
+              {
+                "metadata": "sunscar-convoy",
+                "text": "Sunscar Convoy — pending"
+              },
+              {
+                "metadata": "asterion-relay",
+                "text": "Asterion Relay — pending"
+              },
+              {
+                "metadata": "monsoon-foundry",
+                "text": "Monsoon Foundry — pending"
+              },
+              {
+                "metadata": "ion-speedway",
+                "text": "Ion Speedway — pending"
+              },
+              {
+                "metadata": "aurora-stadium",
+                "text": "Aurora Stadium — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              365,
+              668,
+              31
+            ],
+            "selected": 0,
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "deathmatch",
+                "text": "Deathmatch"
+              },
+              {
+                "metadata": "teamdeathmatch",
+                "text": "Team Deathmatch"
+              },
+              {
+                "metadata": "instagib",
+                "text": "Instagib"
+              },
+              {
+                "metadata": "rockets",
+                "text": "Rocket Arena"
+              },
+              {
+                "metadata": "arsenal",
+                "text": "arsenal — pending"
+              },
+              {
+                "metadata": "armsrace",
+                "text": "armsrace — pending"
+              },
+              {
+                "metadata": "koth",
+                "text": "koth — pending"
+              },
+              {
+                "metadata": "domination",
+                "text": "domination — pending"
+              },
+              {
+                "metadata": "holdout",
+                "text": "holdout — pending"
+              },
+              {
+                "metadata": "uplink",
+                "text": "uplink — pending"
+              },
+              {
+                "metadata": "horde",
+                "text": "horde — pending"
+              },
+              {
+                "metadata": "juggernaut",
+                "text": "juggernaut — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              431,
+              668,
+              31
+            ],
+            "selected": 1,
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              146,
+              167,
+              668,
+              31
+            ],
+            "text": "Godot player",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": null,
+                "text": "Host — create a new room"
+              },
+              {
+                "metadata": null,
+                "text": "Guest — join an existing lobby"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              233,
+              668,
+              31
+            ],
+            "selected": 0,
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              146,
+              299,
+              668,
+              31
+            ],
+            "text": "",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          960,
+          640
+        ],
+        "wall": 1790054864064.76
+      }
+    },
+    {
+      "name": "02-guest-menu-1280x800",
+      "wall": 1790054865500,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 2,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "hud_detail": "",
+        "hud_title": "",
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 0.471357666666667,
+        "spectating": false,
+        "stage": "startup",
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              151,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35877",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "meridian-exchange",
+                "text": "Meridian Exchange"
+              },
+              {
+                "metadata": "verdant-reliquary",
+                "text": "Verdant Reliquary"
+              },
+              {
+                "metadata": "ember-crucible",
+                "text": "Ember Crucible"
+              },
+              {
+                "metadata": "tidal-citadel",
+                "text": "Tidal Citadel — pending"
+              },
+              {
+                "metadata": "sunscar-convoy",
+                "text": "Sunscar Convoy — pending"
+              },
+              {
+                "metadata": "asterion-relay",
+                "text": "Asterion Relay — pending"
+              },
+              {
+                "metadata": "monsoon-foundry",
+                "text": "Monsoon Foundry — pending"
+              },
+              {
+                "metadata": "ion-speedway",
+                "text": "Ion Speedway — pending"
+              },
+              {
+                "metadata": "aurora-stadium",
+                "text": "Aurora Stadium — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "selected": 0,
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "deathmatch",
+                "text": "Deathmatch"
+              },
+              {
+                "metadata": "teamdeathmatch",
+                "text": "Team Deathmatch"
+              },
+              {
+                "metadata": "instagib",
+                "text": "Instagib"
+              },
+              {
+                "metadata": "rockets",
+                "text": "Rocket Arena"
+              },
+              {
+                "metadata": "arsenal",
+                "text": "arsenal — pending"
+              },
+              {
+                "metadata": "armsrace",
+                "text": "armsrace — pending"
+              },
+              {
+                "metadata": "koth",
+                "text": "koth — pending"
+              },
+              {
+                "metadata": "domination",
+                "text": "domination — pending"
+              },
+              {
+                "metadata": "holdout",
+                "text": "holdout — pending"
+              },
+              {
+                "metadata": "uplink",
+                "text": "uplink — pending"
+              },
+              {
+                "metadata": "horde",
+                "text": "horde — pending"
+              },
+              {
+                "metadata": "juggernaut",
+                "text": "juggernaut — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "selected": 1,
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Godot player",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": null,
+                "text": "Host — create a new room"
+              },
+              {
+                "metadata": null,
+                "text": "Guest — join an existing lobby"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "selected": 0,
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ],
+        "wall": 1790054865329.05
+      }
+    },
+    {
+      "name": "03-always-after-role",
+      "wall": 1790054875227,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 30,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "hud_detail": "",
+        "hud_title": "",
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 10.1880116666667,
+        "spectating": false,
+        "stage": "baseline-always-focus",
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              151,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35877",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "meridian-exchange",
+                "text": "Meridian Exchange"
+              },
+              {
+                "metadata": "verdant-reliquary",
+                "text": "Verdant Reliquary"
+              },
+              {
+                "metadata": "ember-crucible",
+                "text": "Ember Crucible"
+              },
+              {
+                "metadata": "tidal-citadel",
+                "text": "Tidal Citadel — pending"
+              },
+              {
+                "metadata": "sunscar-convoy",
+                "text": "Sunscar Convoy — pending"
+              },
+              {
+                "metadata": "asterion-relay",
+                "text": "Asterion Relay — pending"
+              },
+              {
+                "metadata": "monsoon-foundry",
+                "text": "Monsoon Foundry — pending"
+              },
+              {
+                "metadata": "ion-speedway",
+                "text": "Ion Speedway — pending"
+              },
+              {
+                "metadata": "aurora-stadium",
+                "text": "Aurora Stadium — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "selected": 0,
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "deathmatch",
+                "text": "Deathmatch"
+              },
+              {
+                "metadata": "teamdeathmatch",
+                "text": "Team Deathmatch"
+              },
+              {
+                "metadata": "instagib",
+                "text": "Instagib"
+              },
+              {
+                "metadata": "rockets",
+                "text": "Rocket Arena"
+              },
+              {
+                "metadata": "arsenal",
+                "text": "arsenal — pending"
+              },
+              {
+                "metadata": "armsrace",
+                "text": "armsrace — pending"
+              },
+              {
+                "metadata": "koth",
+                "text": "koth — pending"
+              },
+              {
+                "metadata": "domination",
+                "text": "domination — pending"
+              },
+              {
+                "metadata": "holdout",
+                "text": "holdout — pending"
+              },
+              {
+                "metadata": "uplink",
+                "text": "uplink — pending"
+              },
+              {
+                "metadata": "horde",
+                "text": "horde — pending"
+              },
+              {
+                "metadata": "juggernaut",
+                "text": "juggernaut — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "selected": 1,
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Focus Guest",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": null,
+                "text": "Host — create a new room"
+              },
+              {
+                "metadata": null,
+                "text": "Guest — join an existing lobby"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "selected": 1,
+            "text": "Guest — join an existing lobby",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "TEST",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ],
+        "wall": 1790054875045.58
+      }
+    },
+    {
+      "name": "04-needed-after-role",
+      "wall": 1790054881068,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 46,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "hud_detail": "",
+        "hud_title": "",
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 16.0385836666667,
+        "spectating": false,
+        "stage": "needed-focus-role",
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              151,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35877",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "meridian-exchange",
+                "text": "Meridian Exchange"
+              },
+              {
+                "metadata": "verdant-reliquary",
+                "text": "Verdant Reliquary"
+              },
+              {
+                "metadata": "ember-crucible",
+                "text": "Ember Crucible"
+              },
+              {
+                "metadata": "tidal-citadel",
+                "text": "Tidal Citadel — pending"
+              },
+              {
+                "metadata": "sunscar-convoy",
+                "text": "Sunscar Convoy — pending"
+              },
+              {
+                "metadata": "asterion-relay",
+                "text": "Asterion Relay — pending"
+              },
+              {
+                "metadata": "monsoon-foundry",
+                "text": "Monsoon Foundry — pending"
+              },
+              {
+                "metadata": "ion-speedway",
+                "text": "Ion Speedway — pending"
+              },
+              {
+                "metadata": "aurora-stadium",
+                "text": "Aurora Stadium — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "selected": 0,
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "deathmatch",
+                "text": "Deathmatch"
+              },
+              {
+                "metadata": "teamdeathmatch",
+                "text": "Team Deathmatch"
+              },
+              {
+                "metadata": "instagib",
+                "text": "Instagib"
+              },
+              {
+                "metadata": "rockets",
+                "text": "Rocket Arena"
+              },
+              {
+                "metadata": "arsenal",
+                "text": "arsenal — pending"
+              },
+              {
+                "metadata": "armsrace",
+                "text": "armsrace — pending"
+              },
+              {
+                "metadata": "koth",
+                "text": "koth — pending"
+              },
+              {
+                "metadata": "domination",
+                "text": "domination — pending"
+              },
+              {
+                "metadata": "holdout",
+                "text": "holdout — pending"
+              },
+              {
+                "metadata": "uplink",
+                "text": "uplink — pending"
+              },
+              {
+                "metadata": "horde",
+                "text": "horde — pending"
+              },
+              {
+                "metadata": "juggernaut",
+                "text": "juggernaut — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "selected": 1,
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Needed Guest",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": null,
+                "text": "Host — create a new room"
+              },
+              {
+                "metadata": null,
+                "text": "Guest — join an existing lobby"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "selected": 0,
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "TEST",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ],
+        "wall": 1790054880896.07
+      }
+    },
+    {
+      "name": "05-needed-map-mode",
+      "wall": 1790054886838,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 63,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "hud_detail": "",
+        "hud_title": "",
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 21.8080966666669,
+        "spectating": false,
+        "stage": "needed-focus-map",
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              151,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35877",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "meridian-exchange",
+                "text": "Meridian Exchange"
+              },
+              {
+                "metadata": "verdant-reliquary",
+                "text": "Verdant Reliquary"
+              },
+              {
+                "metadata": "ember-crucible",
+                "text": "Ember Crucible"
+              },
+              {
+                "metadata": "tidal-citadel",
+                "text": "Tidal Citadel — pending"
+              },
+              {
+                "metadata": "sunscar-convoy",
+                "text": "Sunscar Convoy — pending"
+              },
+              {
+                "metadata": "asterion-relay",
+                "text": "Asterion Relay — pending"
+              },
+              {
+                "metadata": "monsoon-foundry",
+                "text": "Monsoon Foundry — pending"
+              },
+              {
+                "metadata": "ion-speedway",
+                "text": "Ion Speedway — pending"
+              },
+              {
+                "metadata": "aurora-stadium",
+                "text": "Aurora Stadium — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "selected": 0,
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "deathmatch",
+                "text": "Deathmatch"
+              },
+              {
+                "metadata": "teamdeathmatch",
+                "text": "Team Deathmatch"
+              },
+              {
+                "metadata": "instagib",
+                "text": "Instagib"
+              },
+              {
+                "metadata": "rockets",
+                "text": "Rocket Arena"
+              },
+              {
+                "metadata": "arsenal",
+                "text": "arsenal — pending"
+              },
+              {
+                "metadata": "armsrace",
+                "text": "armsrace — pending"
+              },
+              {
+                "metadata": "koth",
+                "text": "koth — pending"
+              },
+              {
+                "metadata": "domination",
+                "text": "domination — pending"
+              },
+              {
+                "metadata": "holdout",
+                "text": "holdout — pending"
+              },
+              {
+                "metadata": "uplink",
+                "text": "uplink — pending"
+              },
+              {
+                "metadata": "horde",
+                "text": "horde — pending"
+              },
+              {
+                "metadata": "juggernaut",
+                "text": "juggernaut — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "selected": 1,
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Needed Guest",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": null,
+                "text": "Host — create a new room"
+              },
+              {
+                "metadata": null,
+                "text": "Guest — join an existing lobby"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "selected": 0,
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "TEST",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ],
+        "wall": 1790054886665.57
+      }
+    },
+    {
+      "name": "06-after-open-popup-focus",
+      "wall": 1790054890096,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 70,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "hud_detail": "",
+        "hud_title": "",
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 25.0445370370373,
+        "spectating": false,
+        "stage": "popup-open-redundant-root-focus",
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              151,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35877",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "meridian-exchange",
+                "text": "Meridian Exchange"
+              },
+              {
+                "metadata": "verdant-reliquary",
+                "text": "Verdant Reliquary"
+              },
+              {
+                "metadata": "ember-crucible",
+                "text": "Ember Crucible"
+              },
+              {
+                "metadata": "tidal-citadel",
+                "text": "Tidal Citadel — pending"
+              },
+              {
+                "metadata": "sunscar-convoy",
+                "text": "Sunscar Convoy — pending"
+              },
+              {
+                "metadata": "asterion-relay",
+                "text": "Asterion Relay — pending"
+              },
+              {
+                "metadata": "monsoon-foundry",
+                "text": "Monsoon Foundry — pending"
+              },
+              {
+                "metadata": "ion-speedway",
+                "text": "Ion Speedway — pending"
+              },
+              {
+                "metadata": "aurora-stadium",
+                "text": "Aurora Stadium — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "selected": 0,
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": "deathmatch",
+                "text": "Deathmatch"
+              },
+              {
+                "metadata": "teamdeathmatch",
+                "text": "Team Deathmatch"
+              },
+              {
+                "metadata": "instagib",
+                "text": "Instagib"
+              },
+              {
+                "metadata": "rockets",
+                "text": "Rocket Arena"
+              },
+              {
+                "metadata": "arsenal",
+                "text": "arsenal — pending"
+              },
+              {
+                "metadata": "armsrace",
+                "text": "armsrace — pending"
+              },
+              {
+                "metadata": "koth",
+                "text": "koth — pending"
+              },
+              {
+                "metadata": "domination",
+                "text": "domination — pending"
+              },
+              {
+                "metadata": "holdout",
+                "text": "holdout — pending"
+              },
+              {
+                "metadata": "uplink",
+                "text": "uplink — pending"
+              },
+              {
+                "metadata": "horde",
+                "text": "horde — pending"
+              },
+              {
+                "metadata": "juggernaut",
+                "text": "juggernaut — pending"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "selected": 1,
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Needed Guest",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "items": [
+              {
+                "metadata": null,
+                "text": "Host — create a new room"
+              },
+              {
+                "metadata": null,
+                "text": "Guest — join an existing lobby"
+              }
+            ],
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "selected": 0,
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "TEST",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ],
+        "wall": 1790054889907.09
+      }
+    }
+  ],
+  "cleanup": [
+    {
+      "name": "guest",
+      "pid": 3739719,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "host",
+      "pid": 3739223,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "xvfb",
+      "pid": 3739209,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "manifestSha256": "8f602b1cc48ab07a05378365a5890d96efea6b8b3d90e9d1c8a916ee085f40cc",
+  "manifestFiles": 112,
+  "runtimeModules": 85,
+  "artifact": "/tmp/opencode/lead-native-linux-package/builds/1790054125934591826/cocs-native-linux",
+  "source": "unchanged packaged authority",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "display": ":0",
+  "port": 35877,
+  "status": "TARGETED COMPLETE",
+  "serverClosed": true,
+  "sockets": 0,
+  "wire.jsonl": {
+    "bytes": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  "actions.jsonl": {
+    "bytes": 8571,
+    "sha256": "e5fe4ea7c4506eb3d87305dd601a1e7aeca0bd14e25ce358d9a574cf99b6fd6e"
+  },
+  "witnesses.jsonl": {
+    "bytes": 175522,
+    "sha256": "662ca922567b767b3e89124c3f4d2f64a194435c5234af9e6fb3ae213b62e7fb"
+  },
+  "packageBytesUnchanged": true,
+  "nativeErrorLines": [
+    {
+      "client": "guest",
+      "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'focus_entered', callable: ''."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'tree_exited', callable: ''."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Signal 'focus_entered' is already connected to given callable '' in that object."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Signal 'tree_exited' is already connected to given callable '' in that object."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'focus_entered', callable: ''."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'tree_exited', callable: ''."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'focus_entered', callable: ''."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'tree_exited', callable: ''."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'focus_entered', callable: ''."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'tree_exited', callable: ''."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Signal 'focus_entered' is already connected to given callable '' in that object."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Signal 'tree_exited' is already connected to given callable '' in that object."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'focus_entered', callable: ''."
+    },
+    {
+      "client": "guest",
+      "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'tree_exited', callable: ''."
+    }
+  ],
+  "cleanLogs": false,
+  "tempRemoved": true,
+  "wallMs": 30006
+}

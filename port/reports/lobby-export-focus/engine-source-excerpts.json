@@ -1,0 +1,116 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/scene/gui/popup.cpp",
+    "sha256FullDownloadedFile": "6565152130c587a13b42924ca1d7fa1df28f164221bf5981f1f7650316b58c83",
+    "sourceTag": "4.5.2-stable",
+    "excerpts": [
+      {
+        "firstLine": 48,
+        "lastLine": 73,
+        "text": "void Popup::_initialize_visible_parents() {\n\tif (is_embedded()) {\n\t\tvisible_parents.clear();\n\n\t\tWindow *parent_window = this;\n\t\twhile (parent_window) {\n\t\t\tparent_window = parent_window->get_parent_visible_window();\n\t\t\tif (parent_window) {\n\t\t\t\tvisible_parents.push_back(parent_window);\n\t\t\t\tparent_window->connect(SceneStringName(focus_entered), callable_mp(this, &Popup::_parent_focused));\n\t\t\t\tparent_window->connect(SceneStringName(tree_exited), callable_mp(this, &Popup::_deinitialize_visible_parents));\n\t\t\t}\n\t\t}\n\t}\n}\n\nvoid Popup::_deinitialize_visible_parents() {\n\tif (is_embedded()) {\n\t\tfor (Window *parent_window : visible_parents) {\n\t\t\tparent_window->disconnect(SceneStringName(focus_entered), callable_mp(this, &Popup::_parent_focused));\n\t\t\tparent_window->disconnect(SceneStringName(tree_exited), callable_mp(this, &Popup::_deinitialize_visible_parents));\n\t\t}\n\n\t\tvisible_parents.clear();\n\t}\n}"
+      },
+      {
+        "firstLine": 75,
+        "lastLine": 101,
+        "text": "void Popup::_notification(int p_what) {\n\tswitch (p_what) {\n\t\tcase NOTIFICATION_VISIBILITY_CHANGED: {\n\t\t\tif (!is_in_edited_scene_root()) {\n\t\t\t\tif (is_visible()) {\n\t\t\t\t\t_initialize_visible_parents();\n\t\t\t\t\tpopped_up = true;\n\t\t\t\t\thide_reason = HIDE_REASON_NONE;\n\t\t\t\t} else {\n\t\t\t\t\t_deinitialize_visible_parents();\n\t\t\t\t\tif (hide_reason == HIDE_REASON_NONE) {\n\t\t\t\t\t\thide_reason = HIDE_REASON_CANCELED;\n\t\t\t\t\t}\n\t\t\t\t\temit_signal(SNAME(\"popup_hide\"));\n\t\t\t\t\tpopped_up = false;\n\t\t\t\t}\n\t\t\t}\n\t\t} break;\n\n\t\tcase NOTIFICATION_UNPARENTED:\n\t\tcase NOTIFICATION_EXIT_TREE: {\n\t\t\tif (!is_in_edited_scene_root()) {\n\t\t\t\t_deinitialize_visible_parents();\n\t\t\t}\n\t\t} break;\n\n\t\tcase NOTIFICATION_WM_CLOSE_REQUEST: {"
+      },
+      {
+        "firstLine": 121,
+        "lastLine": 136,
+        "text": "void Popup::_parent_focused() {\n\tif (popped_up && get_flag(FLAG_POPUP)) {\n\t\tif (hide_reason == HIDE_REASON_NONE) {\n\t\t\thide_reason = HIDE_REASON_UNFOCUSED;\n\t\t}\n\t\t_close_pressed();\n\t}\n}\n\nvoid Popup::_close_pressed() {\n\tpopped_up = false;\n\n\t_deinitialize_visible_parents();\n\n\tcallable_mp((Window *)this, &Window::hide).call_deferred();\n}"
+      }
+    ]
+  },
+  {
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/scene/gui/popup_menu.cpp",
+    "sha256FullDownloadedFile": "091f886e6ef083b78883470f8d94112a972cceb3810201b71b249f08e4d6d67c",
+    "sourceTag": "4.5.2-stable",
+    "excerpts": [
+      {
+        "firstLine": 983,
+        "lastLine": 1006,
+        "text": "void PopupMenu::_minimum_lifetime_timeout() {\n\tclose_allowed = true;\n\t// If the mouse still isn't in this popup after timer expires, close.\n\tif (!activated_by_keyboard && !get_visible_rect().has_point(get_mouse_position())) {\n\t\t_close_pressed();\n\t}\n}\n\nvoid PopupMenu::_close_pressed() {\n\t// Only apply minimum lifetime to submenus.\n\tPopupMenu *parent_pum = Object::cast_to<PopupMenu>(get_parent());\n\tif (!parent_pum) {\n\t\tPopup::_close_pressed();\n\t\treturn;\n\t}\n\n\t// If the timer has expired, close. If timer is still running, do nothing.\n\tif (close_allowed) {\n\t\tclose_allowed = false;\n\t\tPopup::_close_pressed();\n\t} else if (minimum_lifetime_timer->is_stopped()) {\n\t\tminimum_lifetime_timer->start();\n\t}\n}"
+      }
+    ]
+  },
+  {
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/scene/main/window.cpp",
+    "sha256FullDownloadedFile": "2a90c518f5582935fc727615700406a59a48fe2e6dc3d7638f4ceea9ed9b6442",
+    "sourceTag": "4.5.2-stable",
+    "excerpts": [
+      {
+        "firstLine": 813,
+        "lastLine": 826,
+        "text": "\t\tcase DisplayServer::WINDOW_EVENT_FOCUS_IN: {\n\t\t\tfocused = true;\n\t\t\tfocused_window = this;\n\t\t\t_propagate_window_notification(this, NOTIFICATION_WM_WINDOW_FOCUS_IN);\n\t\t\temit_signal(SceneStringName(focus_entered));\n\t\t} break;\n\t\tcase DisplayServer::WINDOW_EVENT_FOCUS_OUT: {\n\t\t\tfocused = false;\n\t\t\tif (focused_window == this) {\n\t\t\t\tfocused_window = nullptr;\n\t\t\t}\n\t\t\t_propagate_window_notification(this, NOTIFICATION_WM_WINDOW_FOCUS_OUT);\n\t\t\temit_signal(SceneStringName(focus_exited));\n\t\t} break;"
+      },
+      {
+        "firstLine": 2141,
+        "lastLine": 2164,
+        "text": "void Window::grab_focus() {\n\tERR_MAIN_THREAD_GUARD;\n\tif (embedder) {\n\t\tembedder->_sub_window_grab_focus(this);\n\t} else if (window_id != DisplayServer::INVALID_WINDOW_ID) {\n\t\tDisplayServer::get_singleton()->window_move_to_foreground(window_id);\n\t}\n}\n\nbool Window::has_focus() const {\n\tERR_READ_THREAD_GUARD_V(false);\n\tif (window_id != DisplayServer::INVALID_WINDOW_ID) {\n\t\treturn DisplayServer::get_singleton()->window_is_focused(window_id);\n\t}\n\treturn focused;\n}\n\nbool Window::has_focus_or_active_popup() const {\n\tERR_READ_THREAD_GUARD_V(false);\n\tif (window_id != DisplayServer::INVALID_WINDOW_ID) {\n\t\treturn DisplayServer::get_singleton()->window_is_focused(window_id) || (DisplayServer::get_singleton()->window_get_active_popup() == window_id);\n\t}\n\treturn focused;\n}"
+      }
+    ]
+  },
+  {
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/scene/main/viewport.cpp",
+    "sha256FullDownloadedFile": "59b349ed4e71c37f39876cdf3eceb54fb2e91c6a41179878a87a2ce5192686fa",
+    "sourceTag": "4.5.2-stable",
+    "excerpts": [
+      {
+        "firstLine": 398,
+        "lastLine": 413,
+        "text": "void Viewport::_sub_window_grab_focus(Window *p_window) {\n\tif (p_window == nullptr) {\n\t\t// Release current focus.\n\t\tif (gui.subwindow_focused) {\n\t\t\tgui.subwindow_focused->_event_callback(DisplayServer::WINDOW_EVENT_FOCUS_OUT);\n\t\t\tgui.subwindow_focused = nullptr;\n\t\t\tgui.subwindow_drag = SUB_WINDOW_DRAG_DISABLED;\n\t\t}\n\n\t\tWindow *this_window = Object::cast_to<Window>(this);\n\t\tif (this_window) {\n\t\t\tthis_window->_event_callback(DisplayServer::WINDOW_EVENT_FOCUS_IN);\n\t\t}\n\n\t\treturn;\n\t}"
+      },
+      {
+        "firstLine": 496,
+        "lastLine": 520,
+        "text": "\tif (gui.subwindow_focused == p_window) {\n\t\tWindow *new_focused_window;\n\t\tWindow *parent_visible = p_window->get_parent_visible_window();\n\n\t\tgui.subwindow_focused->_event_callback(DisplayServer::WINDOW_EVENT_FOCUS_OUT);\n\n\t\tif (parent_visible) {\n\t\t\tnew_focused_window = parent_visible;\n\t\t} else {\n\t\t\tnew_focused_window = Object::cast_to<Window>(this);\n\t\t}\n\n\t\tif (new_focused_window) {\n\t\t\tint new_focused_index = _sub_window_find(new_focused_window);\n\t\t\tif (new_focused_index != -1) {\n\t\t\t\tgui.subwindow_focused = new_focused_window;\n\t\t\t} else {\n\t\t\t\tgui.subwindow_focused = nullptr;\n\t\t\t}\n\n\t\t\tnew_focused_window->_event_callback(DisplayServer::WINDOW_EVENT_FOCUS_IN);\n\t\t} else {\n\t\t\tgui.subwindow_focused = nullptr;\n\t\t}\n\t}"
+      }
+    ]
+  },
+  {
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/platform/linuxbsd/x11/display_server_x11.cpp",
+    "sha256FullDownloadedFile": "e87e673c3ce1603b4654f40aeddb84c794687d23644084a00fd89072da05fcf9",
+    "sourceTag": "4.5.2-stable",
+    "excerpts": [
+      {
+        "firstLine": 3317,
+        "lastLine": 3336,
+        "text": "void DisplayServerX11::window_move_to_foreground(WindowID p_window) {\n\t_THREAD_SAFE_METHOD_\n\n\tERR_FAIL_COND(!windows.has(p_window));\n\tconst WindowData &wd = windows[p_window];\n\n\tXEvent xev;\n\tAtom net_active_window = XInternAtom(x11_display, \"_NET_ACTIVE_WINDOW\", False);\n\n\tmemset(&xev, 0, sizeof(xev));\n\txev.type = ClientMessage;\n\txev.xclient.window = wd.x11_window;\n\txev.xclient.message_type = net_active_window;\n\txev.xclient.format = 32;\n\txev.xclient.data.l[0] = 1;\n\txev.xclient.data.l[1] = CurrentTime;\n\n\tXSendEvent(x11_display, DefaultRootWindow(x11_display), False, SubstructureRedirectMask | SubstructureNotifyMask, &xev);\n\tXFlush(x11_display);\n}"
+      }
+    ]
+  },
+  {
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/core/object/callable_method_pointer.h",
+    "sha256FullDownloadedFile": "a4727c79227bde56e1ec5d6e16485af38c9020ddd51ff2b36989178b64c2375e",
+    "sourceTag": "4.5.2-stable",
+    "excerpts": [
+      {
+        "firstLine": 38,
+        "lastLine": 74,
+        "text": "\nclass CallableCustomMethodPointerBase : public CallableCustom {\n\tuint32_t *comp_ptr = nullptr;\n\tuint32_t comp_size;\n\tuint32_t h;\n#ifdef DEBUG_ENABLED\n\tconst char *text = \"\";\n#endif // DEBUG_ENABLED\n\tstatic bool compare_equal(const CallableCustom *p_a, const CallableCustom *p_b);\n\tstatic bool compare_less(const CallableCustom *p_a, const CallableCustom *p_b);\n\nprotected:\n\tvoid _setup(uint32_t *p_base_ptr, uint32_t p_ptr_size);\n\npublic:\n\tvirtual StringName get_method() const {\n#ifdef DEBUG_ENABLED\n\t\treturn StringName(text);\n#else\n\t\treturn StringName();\n#endif // DEBUG_ENABLED\n\t}\n\n#ifdef DEBUG_ENABLED\n\tvoid set_text(const char *p_text) {\n\t\ttext = p_text;\n\t}\n\tvirtual String get_as_text() const {\n\t\treturn text;\n\t}\n#else\n\tvirtual String get_as_text() const {\n\t\treturn String();\n\t}\n#endif // DEBUG_ENABLED\n\tvirtual CompareEqualFunc get_compare_equal_func() const;\n\tvirtual CompareLessFunc get_compare_less_func() const;"
+      },
+      {
+        "firstLine": 78,
+        "lastLine": 115,
+        "text": "\ntemplate <typename T, typename R, typename... P>\nclass CallableCustomMethodPointer : public CallableCustomMethodPointerBase {\n\tstruct Data {\n\t\tT *instance;\n\t\tuint64_t object_id;\n\t\tR (T::*method)(P...);\n\t} data;\n\npublic:\n\tvirtual ObjectID get_object() const {\n\t\tif (ObjectDB::get_instance(ObjectID(data.object_id)) == nullptr) {\n\t\t\treturn ObjectID();\n\t\t}\n\t\treturn data.instance->get_instance_id();\n\t}\n\n\tvirtual int get_argument_count(bool &r_is_valid) const {\n\t\tr_is_valid = true;\n\t\treturn sizeof...(P);\n\t}\n\n\tvirtual void call(const Variant **p_arguments, int p_argcount, Variant &r_return_value, Callable::CallError &r_call_error) const {\n\t\tERR_FAIL_NULL_MSG(ObjectDB::get_instance(ObjectID(data.object_id)), \"Invalid Object id '\" + uitos(data.object_id) + \"', can't call method.\");\n\t\tif constexpr (std::is_same<R, void>::value) {\n\t\t\tcall_with_variant_args(data.instance, data.method, p_arguments, p_argcount, r_call_error);\n\t\t} else {\n\t\t\tcall_with_variant_args_ret(data.instance, data.method, p_arguments, p_argcount, r_return_value, r_call_error);\n\t\t}\n\t}\n\n\tCallableCustomMethodPointer(T *p_instance, R (T::*p_method)(P...)) {\n\t\tmemset(&data, 0, sizeof(Data)); // Clear beforehand, may have padding bytes.\n\t\tdata.instance = p_instance;\n\t\tdata.object_id = p_instance->get_instance_id();\n\t\tdata.method = p_method;\n\t\t_setup((uint32_t *)&data, sizeof(Data));\n\t}"
+      }
+    ]
+  },
+  {
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/core/object/callable_method_pointer.cpp",
+    "sha256FullDownloadedFile": "30ca7beeafd7c63a0cf715491e24a4e573c3d17a4b287a6219175028b17607ae",
+    "sourceTag": "4.5.2-stable",
+    "excerpts": [
+      {
+        "firstLine": 33,
+        "lastLine": 45,
+        "text": "bool CallableCustomMethodPointerBase::compare_equal(const CallableCustom *p_a, const CallableCustom *p_b) {\n\tconst CallableCustomMethodPointerBase *a = static_cast<const CallableCustomMethodPointerBase *>(p_a);\n\tconst CallableCustomMethodPointerBase *b = static_cast<const CallableCustomMethodPointerBase *>(p_b);\n\n\tif (a->comp_size != b->comp_size) {\n\t\treturn false;\n\t}\n\n\t// Avoid sorting by memory address proximity, which leads to unpredictable performance over time\n\t// due to the reuse of old addresses for newer objects. Use byte-wise comparison to leverage the\n\t// backwards encoding of little-endian systems as a way to decouple spatiality and time.\n\treturn memcmp(a->comp_ptr, b->comp_ptr, a->comp_size * 4) == 0;\n}"
+      },
+      {
+        "firstLine": 67,
+        "lastLine": 83,
+        "text": "uint32_t CallableCustomMethodPointerBase::hash() const {\n\treturn h;\n}\n\nvoid CallableCustomMethodPointerBase::_setup(uint32_t *p_base_ptr, uint32_t p_ptr_size) {\n\tcomp_ptr = p_base_ptr;\n\tcomp_size = p_ptr_size / 4;\n\n\t// Precompute hash.\n\tfor (uint32_t i = 0; i < comp_size; i++) {\n\t\tif (i == 0) {\n\t\t\th = hash_murmur3_one_32(comp_ptr[i]);\n\t\t} else {\n\t\t\th = hash_murmur3_one_32(comp_ptr[i], h);\n\t\t}\n\t}\n}"
+      }
+    ]
+  }
+]
