@@ -1,0 +1,4706 @@
+{
+  "map": "meridian-exchange",
+  "mode": "teamdeathmatch",
+  "startupOnly": false,
+  "normalRate": true,
+  "input": "Godot engine events; Window.grab_focus/size for test-window management, not OS input",
+  "baseline": "c8c1513059972adf31b2e453903f16401fac2a1a",
+  "checks": [
+    "owned ephemeral port avoids 4332",
+    "host menu HUD phase visibility",
+    "guest menu HUD phase visibility",
+    "no automatic host Start",
+    "guest popup target observed",
+    "expected authoritative map/mode",
+    "host start HUD phase visibility",
+    "host start leave_button avoids top",
+    "host start leave_button avoids score",
+    "host start leave_button avoids status",
+    "guest start HUD phase visibility",
+    "guest start leave_button avoids top",
+    "guest start leave_button avoids score",
+    "guest start leave_button avoids status",
+    "07-host-play HUD phase visibility",
+    "07-host-play leave_button avoids top",
+    "07-host-play leave_button avoids score",
+    "07-host-play leave_button avoids status",
+    "08-guest-play HUD phase visibility",
+    "08-guest-play leave_button avoids top",
+    "08-guest-play leave_button avoids score",
+    "08-guest-play leave_button avoids status",
+    "guest scoreboard HUD phase visibility",
+    "guest scoreboard leave_button avoids top",
+    "guest scoreboard leave_button avoids score",
+    "guest scoreboard leave_button avoids status",
+    "guest scoreboard leave_button avoids board",
+    "10-guest-active-leave clean state",
+    "10-guest-active-leave no auto reconnect",
+    "10-guest-active-leave HUD phase visibility",
+    "authority converts departed actor to bot",
+    "active join spectator notice fails closed",
+    "active join failure never auto reconnects",
+    "source actually assigned spectator",
+    "results 960x640 HUD phase visibility",
+    "results 960x640 leave_button avoids top",
+    "results 960x640 leave_button avoids score",
+    "results 960x640 leave_button avoids status",
+    "results 960x640 leave_button avoids board",
+    "results 960x640 restart_button avoids top",
+    "results 960x640 restart_button avoids score",
+    "results 960x640 restart_button avoids status",
+    "results 960x640 restart_button avoids board",
+    "results 960x640 actions separate",
+    "results 1280x800 HUD phase visibility",
+    "results 1280x800 leave_button avoids top",
+    "results 1280x800 leave_button avoids score",
+    "results 1280x800 leave_button avoids status",
+    "results 1280x800 leave_button avoids board",
+    "results 1280x800 restart_button avoids top",
+    "results 1280x800 restart_button avoids score",
+    "results 1280x800 restart_button avoids status",
+    "results 1280x800 restart_button avoids board",
+    "results 1280x800 actions separate",
+    "guest cannot restart",
+    "both restart uncaptured",
+    "16-guest-fresh-recapture HUD phase visibility",
+    "16-guest-fresh-recapture leave_button avoids top",
+    "16-guest-fresh-recapture leave_button avoids score",
+    "16-guest-fresh-recapture leave_button avoids status",
+    "17-guest-final-active-leave clean state",
+    "17-guest-final-active-leave no auto reconnect",
+    "17-guest-final-active-leave HUD phase visibility",
+    "18-host-final-active-leave clean state",
+    "18-host-final-active-leave no auto reconnect",
+    "18-host-final-active-leave HUD phase visibility",
+    "guest authority boundary 1",
+    "guest authority boundary 2",
+    "guest authority boundary 3",
+    "natural source clock",
+    "no native script errors"
+  ],
+  "milestones": [
+    {
+      "name": "01-host-menu-960x640",
+      "wall": 1790051707247,
+      "client": "host",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 1,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              100,
+              229.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              960,
+              640
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              130,
+              16,
+              700,
+              608
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              170,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              920,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 0.321297333333334,
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              32,
+              151,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              146,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              146,
+              167,
+              668,
+              31
+            ],
+            "text": "Godot player",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              233,
+              668,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              146,
+              299,
+              668,
+              31
+            ],
+            "text": "",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          960,
+          640
+        ]
+      }
+    },
+    {
+      "name": "02-guest-menu-1280x800",
+      "wall": 1790051708311,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 2,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 0.324965,
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              151,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Godot player",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "03-host-created",
+      "wall": 1790051710066,
+      "client": "host",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 12,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              100,
+              229.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              960,
+              640
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              130,
+              16,
+              700,
+              608
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              170,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              920,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 1,
+        "phase": 12,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · YOU · HOST · unassigned",
+        "seconds": 3.15654466666667,
+        "starts": 0,
+        "status": "Lobby ready · share room code, wait for guests, then Start.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              620,
+              660,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": true
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              146,
+              101,
+              660,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              365,
+              660,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              431,
+              660,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              146,
+              167,
+              660,
+              31
+            ],
+            "text": "Followup Host",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              233,
+              660,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              146,
+              299,
+              660,
+              31
+            ],
+            "text": "",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              578,
+              660,
+              36
+            ],
+            "text": "Start match",
+            "visible": true
+          }
+        },
+        "viewport": [
+          960,
+          640
+        ]
+      }
+    },
+    {
+      "name": "04-guest-roster",
+      "wall": 1790051714390,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 37,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 2,
+        "phase": 11,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · HOST · unassigned\nFollowup Guest · YOU · unassigned",
+        "seconds": 6.38333333333332,
+        "starts": 0,
+        "status": "Waiting for host. Active-room joins are spectators; use a fresh lobby to play again.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": true
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "05-host-start",
+      "wall": 1790051715657,
+      "client": "host",
+      "sample": {
+        "ack": 4,
+        "actor": 0,
+        "actors": 4,
+        "captured": false,
+        "command": 43,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 5,
+        "layout": {
+          "board": {
+            "rect": [
+              100,
+              229.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              960,
+              640
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              130,
+              16,
+              700,
+              608
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              704,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              170,
+              78,
+              620,
+              70
+            ],
+            "visible": true
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              920,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 1,
+        "phase": 3,
+        "pickups": 20,
+        "pose": true,
+        "results": 0,
+        "revision": 1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · YOU · HOST · actor 0.0\nFollowup Guest · actor 1.0",
+        "seconds": 8.6,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              574,
+              660,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              454,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              146,
+              29,
+              660,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": true
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              293,
+              660,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              359,
+              660,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              146,
+              95,
+              660,
+              31
+            ],
+            "text": "Followup Host",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              161,
+              660,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              146,
+              227,
+              660,
+              31
+            ],
+            "text": "",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              532,
+              660,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          960,
+          640
+        ]
+      }
+    },
+    {
+      "name": "06-guest-start",
+      "wall": 1790051715784,
+      "client": "guest",
+      "sample": {
+        "ack": 6,
+        "actor": 1,
+        "actors": 4,
+        "captured": false,
+        "command": 44,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 7,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": true
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 2,
+        "phase": 3,
+        "pickups": 20,
+        "pose": true,
+        "results": 0,
+        "revision": 1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · HOST · actor 0.0\nFollowup Guest · YOU · actor 1.0",
+        "seconds": 7.51865033333331,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": true
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "07-host-play-captured",
+      "wall": 1790051718630,
+      "client": "host",
+      "sample": {
+        "ack": 98,
+        "actor": 0,
+        "actors": 4,
+        "captured": true,
+        "command": 52,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 99,
+        "layout": {
+          "board": {
+            "rect": [
+              100,
+              229.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              960,
+              640
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              130,
+              16,
+              700,
+              608
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              704,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              170,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              920,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 1,
+        "phase": 3,
+        "pickups": 20,
+        "pose": true,
+        "results": 0,
+        "revision": 1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · YOU · HOST · actor 0.0\nFollowup Guest · actor 1.0",
+        "seconds": 11.55531,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              574,
+              660,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              454,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              146,
+              29,
+              660,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              293,
+              660,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              359,
+              660,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              146,
+              95,
+              660,
+              31
+            ],
+            "text": "Followup Host",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              161,
+              660,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              146,
+              227,
+              660,
+              31
+            ],
+            "text": "",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              532,
+              660,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          960,
+          640
+        ]
+      }
+    },
+    {
+      "name": "07-host-play-paused",
+      "wall": 1790051719120,
+      "client": "host",
+      "sample": {
+        "ack": 112,
+        "actor": 0,
+        "actors": 4,
+        "captured": false,
+        "command": 55,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 113,
+        "layout": {
+          "board": {
+            "rect": [
+              100,
+              229.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              960,
+              640
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              130,
+              16,
+              700,
+              608
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              704,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              170,
+              78,
+              620,
+              70
+            ],
+            "visible": true
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              920,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 1,
+        "phase": 3,
+        "pickups": 20,
+        "pose": true,
+        "results": 0,
+        "revision": 1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · YOU · HOST · actor 0.0\nFollowup Guest · actor 1.0",
+        "seconds": 12.0585843333333,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              574,
+              660,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              454,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              146,
+              29,
+              660,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": true
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              293,
+              660,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              359,
+              660,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              146,
+              95,
+              660,
+              31
+            ],
+            "text": "Followup Host",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              161,
+              660,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              146,
+              227,
+              660,
+              31
+            ],
+            "text": "",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              532,
+              660,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          960,
+          640
+        ]
+      }
+    },
+    {
+      "name": "08-guest-play-captured",
+      "wall": 1790051721755,
+      "client": "guest",
+      "sample": {
+        "ack": 189,
+        "actor": 1,
+        "actors": 4,
+        "captured": true,
+        "command": 63,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 190,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 2,
+        "phase": 3,
+        "pickups": 20,
+        "pose": true,
+        "results": 0,
+        "revision": 1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · HOST · actor 0.0\nFollowup Guest · YOU · actor 1.0",
+        "seconds": 13.5796486666667,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "08-guest-play-paused",
+      "wall": 1790051722266,
+      "client": "guest",
+      "sample": {
+        "ack": 201,
+        "actor": 1,
+        "actors": 4,
+        "captured": false,
+        "command": 66,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 202,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": true
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 2,
+        "phase": 3,
+        "pickups": 20,
+        "pose": true,
+        "results": 0,
+        "revision": 1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · HOST · actor 0.0\nFollowup Guest · YOU · actor 1.0",
+        "seconds": 14.0833333333333,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": true
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "09-guest-scoreboard",
+      "wall": 1790051722622,
+      "client": "guest",
+      "sample": {
+        "ack": 209,
+        "actor": 1,
+        "actors": 4,
+        "captured": false,
+        "command": 68,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 210,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              238,
+              760,
+              324
+            ],
+            "visible": true
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": true
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 2,
+        "phase": 3,
+        "pickups": 20,
+        "pose": true,
+        "results": 0,
+        "revision": 1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · HOST · actor 0.0\nFollowup Guest · YOU · actor 1.0",
+        "seconds": 14.4376806666667,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": true
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "10-guest-active-leave",
+      "wall": 1790051724640,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 73,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              238,
+              760,
+              324
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": 1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 16.45,
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "11-active-rejoin-error",
+      "wall": 1790051725275,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 77,
+        "eligible": false,
+        "error": "Match in progress — you joined as a spectator.",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              238,
+              760,
+              324
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -1,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": 1,
+        "room": "",
+        "roster": "No active room. Connect explicitly to a fresh lobby.",
+        "seconds": 17.1015796666667,
+        "starts": 0,
+        "status": "Match in progress — you joined as a spectator.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              568,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": true
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Retry with these settings",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "12-host-results-960x640",
+      "wall": 1790051774819,
+      "client": "host",
+      "sample": {
+        "ack": 1755,
+        "actor": 0,
+        "actors": 4,
+        "captured": false,
+        "command": 78,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 1757,
+        "layout": {
+          "board": {
+            "rect": [
+              100,
+              224,
+              760,
+              324
+            ],
+            "visible": true
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              960,
+              640
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              130,
+              16,
+              700,
+              608
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              704,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              170,
+              78,
+              620,
+              70
+            ],
+            "visible": true
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              920,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 1,
+        "phase": 4,
+        "pickups": 20,
+        "pose": true,
+        "results": 1,
+        "revision": 1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · YOU · HOST · actor 0.0",
+        "seconds": 67.7087419999995,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              574,
+              660,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              454,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              146,
+              29,
+              660,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": true
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              293,
+              660,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              359,
+              660,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              146,
+              95,
+              660,
+              31
+            ],
+            "text": "Followup Host",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": true
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              161,
+              660,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              146,
+              227,
+              660,
+              31
+            ],
+            "text": "",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              532,
+              660,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          960,
+          640
+        ]
+      }
+    },
+    {
+      "name": "13-host-results-1280x800",
+      "wall": 1790051775199,
+      "client": "host",
+      "sample": {
+        "ack": 1755,
+        "actor": 0,
+        "actors": 4,
+        "captured": false,
+        "command": 80,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 1757,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              238,
+              760,
+              324
+            ],
+            "visible": true
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": true
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 1,
+        "phase": 4,
+        "pickups": 20,
+        "pose": true,
+        "results": 1,
+        "revision": 1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · YOU · HOST · actor 0.0",
+        "seconds": 68.0626413333328,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              574,
+              660,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              454,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              29,
+              660,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": true
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              293,
+              660,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              359,
+              660,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              95,
+              660,
+              31
+            ],
+            "text": "Followup Host",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": true
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              161,
+              660,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              227,
+              660,
+              31
+            ],
+            "text": "",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              532,
+              660,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "14-guest-post-results-wait",
+      "wall": 1790051776037,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 84,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              238,
+              760,
+              324
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 4,
+        "phase": 11,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": 1,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · HOST · actor 0.0\nFollowup Guest · YOU · unassigned",
+        "seconds": 67.8499999999993,
+        "starts": 0,
+        "status": "Waiting for host. Active-room joins are spectators; use a fresh lobby to play again.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": true
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "15-guest-restarted-uncaptured",
+      "wall": 1790051777543,
+      "client": "guest",
+      "sample": {
+        "ack": 2,
+        "actor": 1,
+        "actors": 4,
+        "captured": false,
+        "command": 91,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 3,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              238,
+              760,
+              324
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": true
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 4,
+        "phase": 3,
+        "pickups": 20,
+        "pose": true,
+        "results": 0,
+        "revision": 2,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · HOST · actor 0.0\nFollowup Guest · YOU · actor 1.0",
+        "seconds": 69.3755646666659,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": true
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "16-guest-fresh-recapture-captured",
+      "wall": 1790051780234,
+      "client": "guest",
+      "sample": {
+        "ack": 87,
+        "actor": 1,
+        "actors": 4,
+        "captured": true,
+        "command": 99,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 88,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              238,
+              760,
+              324
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 4,
+        "phase": 3,
+        "pickups": 20,
+        "pose": true,
+        "results": 0,
+        "revision": 2,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · HOST · actor 0.0\nFollowup Guest · YOU · actor 1.0",
+        "seconds": 72.0619056666658,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "16-guest-fresh-recapture-paused",
+      "wall": 1790051780745,
+      "client": "guest",
+      "sample": {
+        "ack": 100,
+        "actor": 1,
+        "actors": 4,
+        "captured": false,
+        "command": 102,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 101,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              238,
+              760,
+              324
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": true
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": 4,
+        "phase": 3,
+        "pickups": 20,
+        "pose": true,
+        "results": 0,
+        "revision": 2,
+        "room": "MV8D",
+        "roster": "Room: MV8D · ws://127.0.0.1:35469\nmeridian-exchange / teamdeathmatch\nFollowup Host · HOST · actor 0.0\nFollowup Guest · YOU · actor 1.0",
+        "seconds": 72.5666666666658,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": true
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "17-guest-final-active-leave",
+      "wall": 1790051782531,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 106,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              238,
+              760,
+              324
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": 2,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 74.3666666666658,
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "MV8D",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "18-host-final-active-leave",
+      "wall": 1790051784243,
+      "client": "host",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 110,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              238,
+              760,
+              324
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "meridian-exchange",
+        "mode": "teamdeathmatch",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": 2,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 77.0999999999993,
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              646,
+              660,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:35469",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Meridian Exchange",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Team Deathmatch",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Host",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              660,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    }
+  ],
+  "cleanup": [
+    {
+      "name": "guest",
+      "pid": 3461854,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "host",
+      "pid": 3461395,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "xvfb",
+      "pid": 3461392,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "display": ":0",
+  "port": 35469,
+  "room": "MV8D",
+  "originalGuestPeer": 2,
+  "originalGuestActor": 1,
+  "spectator": "UNSUPPORTED in native client: source spectator assignment followed by fatal error notice",
+  "sourceResultsTime": 60.01666666666454,
+  "status": "PASS bounded checks; native active spectator rejoin OPEN",
+  "serverClosed": true,
+  "sockets": 0,
+  "wire.jsonl": {
+    "bytes": 4571912,
+    "sha256": "b603fef90347c985d9d4478f66df005b453aa97047ac42f37eaa6112a0e96c8a"
+  },
+  "actions.jsonl": {
+    "bytes": 9593,
+    "sha256": "ec6c12d76544f1df850d8b0e8a641c430d7c992d63e57b7e807418900b232f6a"
+  },
+  "tempRemoved": true,
+  "wallMs": 79903
+}

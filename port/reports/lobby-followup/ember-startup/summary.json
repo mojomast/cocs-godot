@@ -1,0 +1,1819 @@
+{
+  "map": "ember-crucible",
+  "mode": "rockets",
+  "startupOnly": true,
+  "normalRate": true,
+  "input": "Godot engine events; Window.grab_focus/size for test-window management, not OS input",
+  "baseline": "c8c1513059972adf31b2e453903f16401fac2a1a",
+  "checks": [
+    "owned ephemeral port avoids 4332",
+    "host menu HUD phase visibility",
+    "guest menu HUD phase visibility",
+    "no automatic host Start",
+    "guest popup target observed",
+    "expected authoritative map/mode",
+    "host start HUD phase visibility",
+    "host start leave_button avoids top",
+    "host start leave_button avoids score",
+    "host start leave_button avoids status",
+    "guest start HUD phase visibility",
+    "guest start leave_button avoids top",
+    "guest start leave_button avoids score",
+    "guest start leave_button avoids status",
+    "17-guest-final-active-leave clean state",
+    "17-guest-final-active-leave no auto reconnect",
+    "17-guest-final-active-leave HUD phase visibility",
+    "18-host-final-active-leave clean state",
+    "18-host-final-active-leave no auto reconnect",
+    "18-host-final-active-leave HUD phase visibility",
+    "guest authority boundary 1",
+    "no native script errors"
+  ],
+  "milestones": [
+    {
+      "name": "01-host-menu-960x640",
+      "wall": 1790051802188,
+      "client": "host",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 1,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              100,
+              229.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              960,
+              640
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              130,
+              16,
+              700,
+              608
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              170,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              920,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "ember-crucible",
+        "mode": "rockets",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 0.319195,
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              32,
+              151,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              146,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:38415",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              365,
+              668,
+              31
+            ],
+            "text": "Ember Crucible",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              431,
+              668,
+              31
+            ],
+            "text": "Rocket Arena",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              146,
+              167,
+              668,
+              31
+            ],
+            "text": "Godot player",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              233,
+              668,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              146,
+              299,
+              668,
+              31
+            ],
+            "text": "",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          960,
+          640
+        ]
+      }
+    },
+    {
+      "name": "02-guest-menu-1280x800",
+      "wall": 1790051803255,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 2,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "ember-crucible",
+        "mode": "rockets",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 0.303729333333333,
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              151,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:38415",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Ember Crucible",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Rocket Arena",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Godot player",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "03-host-created",
+      "wall": 1790051804916,
+      "client": "host",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 12,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              100,
+              229.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              960,
+              640
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              130,
+              16,
+              700,
+              608
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              170,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              920,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "ember-crucible",
+        "mode": "rockets",
+        "peer": 1,
+        "phase": 12,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "YLJ4",
+        "roster": "Room: YLJ4 · ws://127.0.0.1:38415\nember-crucible / rockets\nFollowup Host · YOU · HOST · unassigned",
+        "seconds": 3.041768,
+        "starts": 0,
+        "status": "Lobby ready · share room code, wait for guests, then Start.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              620,
+              660,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": true
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              146,
+              101,
+              660,
+              31
+            ],
+            "text": "ws://127.0.0.1:38415",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              365,
+              660,
+              31
+            ],
+            "text": "Ember Crucible",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              431,
+              660,
+              31
+            ],
+            "text": "Rocket Arena",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              146,
+              167,
+              660,
+              31
+            ],
+            "text": "Followup Host",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              233,
+              660,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              146,
+              299,
+              660,
+              31
+            ],
+            "text": "",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              578,
+              660,
+              36
+            ],
+            "text": "Start match",
+            "visible": true
+          }
+        },
+        "viewport": [
+          960,
+          640
+        ]
+      }
+    },
+    {
+      "name": "04-guest-roster",
+      "wall": 1790051809196,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 37,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              20,
+              16,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "ember-crucible",
+        "mode": "rockets",
+        "peer": 2,
+        "phase": 11,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": -1,
+        "room": "YLJ4",
+        "roster": "Room: YLJ4 · ws://127.0.0.1:38415\nember-crucible / rockets\nFollowup Host · HOST · unassigned\nFollowup Guest · YOU · unassigned",
+        "seconds": 6.26666666666666,
+        "starts": 0,
+        "status": "Waiting for host. Active-room joins are spectators; use a fresh lobby to play again.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": true
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:38415",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Ember Crucible",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Rocket Arena",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "YLJ4",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "05-host-start",
+      "wall": 1790051810332,
+      "client": "host",
+      "sample": {
+        "ack": 2,
+        "actor": 0,
+        "actors": 4,
+        "captured": false,
+        "command": 43,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 3,
+        "layout": {
+          "board": {
+            "rect": [
+              100,
+              229.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              960,
+              640
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              130,
+              16,
+              700,
+              608
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              704,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              170,
+              78,
+              620,
+              70
+            ],
+            "visible": true
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              920,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "ember-crucible",
+        "mode": "rockets",
+        "peer": 1,
+        "phase": 3,
+        "pickups": 6,
+        "pose": true,
+        "results": 0,
+        "revision": 1,
+        "room": "YLJ4",
+        "roster": "Room: YLJ4 · ws://127.0.0.1:38415\nember-crucible / rockets\nFollowup Host · YOU · HOST · actor 0.0\nFollowup Guest · actor 1.0",
+        "seconds": 8.35,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              574,
+              660,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              454,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              146,
+              29,
+              660,
+              31
+            ],
+            "text": "ws://127.0.0.1:38415",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": true
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              293,
+              660,
+              31
+            ],
+            "text": "Ember Crucible",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              359,
+              660,
+              31
+            ],
+            "text": "Rocket Arena",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              146,
+              95,
+              660,
+              31
+            ],
+            "text": "Followup Host",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              161,
+              660,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              146,
+              227,
+              660,
+              31
+            ],
+            "text": "",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              532,
+              660,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          960,
+          640
+        ]
+      }
+    },
+    {
+      "name": "06-guest-start",
+      "wall": 1790051810489,
+      "client": "guest",
+      "sample": {
+        "ack": 6,
+        "actor": 1,
+        "actors": 4,
+        "captured": false,
+        "command": 44,
+        "eligible": true,
+        "error": "",
+        "focused": true,
+        "input_seq": 7,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": true
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": false
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": true
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": true
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": true
+          }
+        },
+        "map": "ember-crucible",
+        "mode": "rockets",
+        "peer": 2,
+        "phase": 3,
+        "pickups": 6,
+        "pose": true,
+        "results": 0,
+        "revision": 1,
+        "room": "YLJ4",
+        "roster": "Room: YLJ4 · ws://127.0.0.1:38415\nember-crucible / rockets\nFollowup Host · HOST · actor 0.0\nFollowup Guest · YOU · actor 1.0",
+        "seconds": 7.41666666666667,
+        "starts": 1,
+        "status": "",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": false
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:38415",
+            "visible": false
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": true
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Ember Crucible",
+            "visible": false
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Rocket Arena",
+            "visible": false
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": false
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": false
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "YLJ4",
+            "visible": false
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "17-guest-final-active-leave",
+      "wall": 1790051812253,
+      "client": "guest",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 48,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              260,
+              309.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              290,
+              16,
+              700,
+              768
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              1024,
+              28,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              330,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              1240,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "ember-crucible",
+        "mode": "rockets",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": 1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 9.18333333333333,
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              604,
+              668,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              526,
+              668,
+              36
+            ],
+            "text": "Join lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              306,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:38415",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              365,
+              668,
+              31
+            ],
+            "text": "Ember Crucible",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              431,
+              668,
+              31
+            ],
+            "text": "Rocket Arena",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              306,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Guest",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              1130,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              306,
+              233,
+              668,
+              31
+            ],
+            "text": "Guest — join an existing lobby",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              306,
+              299,
+              668,
+              31
+            ],
+            "text": "YLJ4",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              306,
+              32,
+              99,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    },
+    {
+      "name": "18-host-final-active-leave",
+      "wall": 1790051813941,
+      "client": "host",
+      "sample": {
+        "ack": 0,
+        "actor": -1,
+        "actors": 0,
+        "captured": false,
+        "command": 52,
+        "eligible": false,
+        "error": "",
+        "focused": true,
+        "input_seq": 0,
+        "layout": {
+          "board": {
+            "rect": [
+              100,
+              229.5,
+              760,
+              181
+            ],
+            "visible": false
+          },
+          "hud": {
+            "rect": [
+              0,
+              0,
+              960,
+              640
+            ],
+            "visible": false
+          },
+          "menu": {
+            "rect": [
+              130,
+              16,
+              700,
+              608
+            ],
+            "visible": true
+          },
+          "score": {
+            "rect": [
+              704,
+              28,
+              220,
+              20
+            ],
+            "visible": false
+          },
+          "status": {
+            "rect": [
+              170,
+              78,
+              620,
+              70
+            ],
+            "visible": false
+          },
+          "top": {
+            "rect": [
+              20,
+              16,
+              920,
+              44
+            ],
+            "visible": false
+          }
+        },
+        "map": "ember-crucible",
+        "mode": "rockets",
+        "peer": -1,
+        "phase": -3,
+        "pickups": 0,
+        "pose": false,
+        "results": 0,
+        "revision": 1,
+        "room": "",
+        "roster": "No room joined. Native maps/modes marked pending cannot be started.",
+        "seconds": 11.95,
+        "starts": 0,
+        "status": "Disconnected · choose settings and connect explicitly.",
+        "ui": {
+          "back_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              646,
+              660,
+              36
+            ],
+            "text": "Back / Leave room",
+            "visible": false
+          },
+          "connect_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              526,
+              668,
+              36
+            ],
+            "text": "Create lobby",
+            "visible": true
+          },
+          "endpoint": {
+            "in_form": true,
+            "rect": [
+              146,
+              101,
+              668,
+              31
+            ],
+            "text": "ws://127.0.0.1:38415",
+            "visible": true
+          },
+          "leave_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              70,
+              107,
+              31
+            ],
+            "text": "Leave match",
+            "visible": false
+          },
+          "maps": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              365,
+              668,
+              31
+            ],
+            "text": "Ember Crucible",
+            "visible": true
+          },
+          "modes": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              431,
+              668,
+              31
+            ],
+            "text": "Rocket Arena",
+            "visible": true
+          },
+          "player_name": {
+            "in_form": true,
+            "rect": [
+              146,
+              167,
+              668,
+              31
+            ],
+            "text": "Followup Host",
+            "visible": true
+          },
+          "restart_button": {
+            "in_form": false,
+            "rect": [
+              810,
+              112,
+              116,
+              31
+            ],
+            "text": "Restart round",
+            "visible": false
+          },
+          "role": {
+            "in_form": true,
+            "popup_focused": -1,
+            "popup_visible": false,
+            "rect": [
+              146,
+              233,
+              668,
+              31
+            ],
+            "text": "Host — create a new room",
+            "visible": true
+          },
+          "room": {
+            "in_form": true,
+            "rect": [
+              146,
+              299,
+              668,
+              31
+            ],
+            "text": "",
+            "visible": true
+          },
+          "start_button": {
+            "in_form": true,
+            "rect": [
+              146,
+              604,
+              660,
+              36
+            ],
+            "text": "Start match",
+            "visible": false
+          }
+        },
+        "viewport": [
+          960,
+          640
+        ]
+      }
+    }
+  ],
+  "cleanup": [
+    {
+      "name": "guest",
+      "pid": 3472805,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "host",
+      "pid": 3472163,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "xvfb",
+      "pid": 3472160,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "display": ":0",
+  "port": 38415,
+  "room": "YLJ4",
+  "status": "PASS",
+  "serverClosed": true,
+  "sockets": 0,
+  "wire.jsonl": {
+    "bytes": 181798,
+    "sha256": "e91655397a881808d719b233a95c21ffc3f5b6bf95337b396444e3e5cca5d1dd"
+  },
+  "actions.jsonl": {
+    "bytes": 4504,
+    "sha256": "4c1fbcd2a34649759651688ed13e7ebc678d4008d46cb3f24c854dc3e67944da"
+  },
+  "tempRemoved": true,
+  "wallMs": 14449
+}
