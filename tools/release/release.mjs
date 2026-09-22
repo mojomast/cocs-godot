@@ -742,6 +742,10 @@ async function stepHostedVerify(ctx) {
     return {planned: true, workflow: options.workflow, ref, inputs: {tag: options.tag}, command: printable('gh', dispatchArgs)};
   }
   const dispatchedAt = ctx.now();
+  // Pin the remote head the run must have been created from, so a concurrent
+  // dispatch of the same workflow cannot be mistaken for ours.
+  const headsBefore = parseLsRemote(await gitOrThrow(ctx, ['ls-remote', '--heads', options.publicationRemote], 'cannot read the remote branch before dispatching'));
+  const expectedHead = headsBefore[`refs/heads/${ref}`] ?? preflight.head;
   const dispatch = await runCommand(ctx, {command: 'gh', args: dispatchArgs, sideEffect: true, timeout: 120000, label: 'dispatch'});
   if (dispatch.planned) {
     return {planned: true, workflow: options.workflow, ref, inputs: {tag: options.tag}, command: printable('gh', dispatchArgs)};
@@ -763,7 +767,7 @@ async function stepHostedVerify(ctx) {
       candidate.event === 'workflow_dispatch' && candidate.headBranch === ref &&
       Date.parse(candidate.createdAt) >= dispatchedAt - 120000);
     runs.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
-    run = runs[0] ?? null;
+    run = runs.find(candidate => candidate.headSha === expectedHead) ?? runs[0] ?? null;
     if (!run) await ctx.sleep(Math.min(options.pollSeconds, 10) * 1000);
   }
   ctx.emit(`  run      ${run.url} (id ${run.databaseId})`);
@@ -782,11 +786,15 @@ async function stepHostedVerify(ctx) {
   const detail = {
     workflow: options.workflow, ref, run_id: latest.databaseId, run_url: latest.url,
     status: latest.status, conclusion: latest.conclusion, head_sha: latest.headSha,
-    dispatched_at: iso(dispatchedAt), remote_head_at_dispatch: preflight.remote.remote_head,
+    dispatched_at: iso(dispatchedAt), remote_head_at_dispatch: expectedHead,
+    run_matches_remote_head: latest.headSha === expectedHead,
     remote_head_matches: preflight.remote.remote_head === preflight.head,
   };
   if (!detail.remote_head_matches) {
     ctx.emit(`  warn     the hosted checkout is ${String(preflight.remote.remote_head ?? '').slice(0, 12)}, not the frozen ${preflight.head.slice(0, 12)}; verification proves the release asset, not the branch bytes`);
+  }
+  if (!detail.run_matches_remote_head) {
+    ctx.emit(`  warn     the selected run was built from ${String(latest.headSha ?? '').slice(0, 12)}, not the ${expectedHead.slice(0, 12)} read at dispatch`);
   }
   if (latest.conclusion !== 'success') {
     throw Object.assign(new ReleaseError('hosted-verify-failed', `hosted run ${latest.databaseId} concluded ${latest.conclusion}`,
