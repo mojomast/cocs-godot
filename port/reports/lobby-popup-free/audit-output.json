@@ -1,0 +1,149 @@
+{
+  "verdict": "PASS scoped popup-free exported lobby; other menus and final integrated package remain separate",
+  "runs": {
+    "targeted": {
+      "wallMs": 23378,
+      "assertions": 22,
+      "clicksWithGeometry": 13,
+      "port": 46495,
+      "cleanup": [
+        {
+          "name": "guest",
+          "pid": 3808736,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "host",
+          "pid": 3808364,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "xvfb",
+          "pid": 3808337,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        }
+      ]
+    },
+    "full-flow": {
+      "wallMs": 93792,
+      "assertions": 82,
+      "clicksWithGeometry": 18,
+      "port": 45237,
+      "cleanup": [
+        {
+          "name": "guest",
+          "pid": 3817561,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "host",
+          "pid": 3817134,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "xvfb",
+          "pid": 3817131,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "wireCounts": {
+        "0": {
+          "create": 1,
+          "host": 1,
+          "start": 2,
+          "input": 2248,
+          "leave": 1
+        },
+        "1": {
+          "join": 1,
+          "input": 210,
+          "leave": 1
+        },
+        "2": {
+          "join": 1,
+          "leave": 1
+        },
+        "3": {
+          "join": 1,
+          "input": 126,
+          "leave": 1
+        }
+      },
+      "nativeApplications": {
+        "host": 1992,
+        "guest": 1855
+      },
+      "spectatorApplications": 1469,
+      "effects": {
+        "07-host-play": {
+          "livingDisplacementMetres": 18.815135317079175,
+          "shotGrowth": 16
+        },
+        "08-guest-play": {
+          "livingDisplacementMetres": 17.64447610443563,
+          "shotGrowth": 16
+        },
+        "11a-host-for-spectator": {
+          "livingDisplacementMetres": 17.619790265494082,
+          "shotGrowth": 15,
+          "spectatorRenderedDisplacementMetres": 17.78401429473735
+        },
+        "16-guest-fresh-recapture": {
+          "livingDisplacementMetres": 19.818897749370425,
+          "shotGrowth": 15
+        }
+      },
+      "sourceResultsTime": 60.01666666666454,
+      "sourceRoundWallMs": 59104
+    }
+  },
+  "truncatedFinalNativeRecords": [
+    {
+      "file": "port/reports/lobby-popup-free/targeted/host.stdout.log.gz",
+      "prefix": "LOBBY_SAMPLE ",
+      "bytes": 1344,
+      "sha256": "742b81ce10ef1f3b410a37c5abd15d7b6e7ac9e43b9b5f919a23b17c59a1fc2c"
+    },
+    {
+      "file": "port/reports/lobby-popup-free/targeted/guest.stdout.log.gz",
+      "prefix": "LOBBY_SAMPLE ",
+      "bytes": 2458,
+      "sha256": "c8ad1926f29a92b1af8ddcd870d5335821fb3f904a02173997634f7ad52c840c"
+    },
+    {
+      "file": "port/reports/lobby-popup-free/full-flow/host.stdout.log.gz",
+      "prefix": "LOBBY_SAMPLE ",
+      "bytes": 4458,
+      "sha256": "18ded210af869c6a2f34d7f71eaf9787cc7f7d9671f7ed7f676ae477df4e4531"
+    },
+    {
+      "file": "port/reports/lobby-popup-free/full-flow/guest.stdout.log.gz",
+      "prefix": "LOBBY_SAMPLE ",
+      "bytes": 3616,
+      "sha256": "f0e92b168d4e910b1a6ea1dd48e030ff9341ed7b220b4279f676987b84367362"
+    }
+  ],
+  "artifact": {
+    "package": "/tmp/opencode/lobby-popup-free-package/builds/1790055896590242802/cocs-native-linux",
+    "manifestSha256": "14fb45cdf63030a6f1ee0545cb4afe6ccc1cc0daa04aca8d067bbc9900cc5b07",
+    "pckSha256": "49eb359b24c85bf20f258c8a2523cb7d170ab8b4256fff4d759c7e8d886afc8e",
+    "binarySha256": "3c0994716982c2f557f7738a789269074520ac0c0a3f11bb7a84a34ee96c683d",
+    "portCommit": "9a816ff3eaa761820fae4a38bb32175d6cc35e44",
+    "archiveSha256": "03c796a44b8754661cf0b0b919e83dffd033898a367fba826f6a8ba707cdd8f5",
+    "manifestFiles": 111
+  },
+  "protectedPort": "State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                            \nLISTEN 0      511        127.0.0.1:4332      0.0.0.0:*    users:((\"node\",pid=1094444,fd=21))\n",
+  "assertionCount": 176
+}

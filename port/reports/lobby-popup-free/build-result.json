@@ -1,0 +1,9 @@
+{
+  "archive": "/tmp/opencode/lobby-popup-free-package/builds/1790055896590242802/cocs-native-linux.tar.gz",
+  "archive_sha256": "03c796a44b8754661cf0b0b919e83dffd033898a367fba826f6a8ba707cdd8f5",
+  "manifest_sha256": "14fb45cdf63030a6f1ee0545cb4afe6ccc1cc0daa04aca8d067bbc9900cc5b07",
+  "package": "/tmp/opencode/lobby-popup-free-package/builds/1790055896590242802/cocs-native-linux",
+  "build": "/tmp/opencode/lobby-popup-free-package/builds/1790055896590242802",
+  "inputs_sha256": "133fe02a436897e783a4d09c71c62e9ff77d46160f91793a312abcd9ac0bd4fe",
+  "generated_resources_sha256": "89f37372982af16e9afba6198944ba970d785dc046d4ccb98e9d6df2e0c2ee15"
+}

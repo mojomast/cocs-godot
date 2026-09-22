@@ -1,0 +1,95 @@
+{
+  "map": "meridian-exchange",
+  "mode": "teamdeathmatch",
+  "startupOnly": false,
+  "normalRate": true,
+  "input": "Godot engine events; Window.grab_focus/size for test-window management, not OS input",
+  "baseline": "f212a8ca404ecc2805fe14c922f51de9f05f50a4",
+  "checks": [
+    "owned ephemeral port avoids 4332",
+    "host menu HUD phase visibility",
+    "guest menu HUD phase visibility",
+    "role-buttons role selected via real buttons",
+    "guest mode disabled",
+    "disabled mode inert",
+    "row focus",
+    "Left selects Host",
+    "Right selects Guest and Escape stable",
+    "Tab Previous",
+    "Enter Previous selects Host",
+    "map Next changes",
+    "map Previous restores",
+    "mode Next changes",
+    "mode Previous restores",
+    "repeat wraparound",
+    "targeted no room connections",
+    "host no lobby popups",
+    "host no parent callbacks accumulated",
+    "guest no lobby popups",
+    "guest no parent callbacks accumulated",
+    "no native engine errors"
+  ],
+  "milestones": [
+    "01-host-menu-960x640",
+    "02-guest-menu-1280x800",
+    "03-guest-disabled-1280",
+    "04-focus-outline-1280",
+    "05-focus-outline-960"
+  ],
+  "cleanup": [
+    {
+      "name": "guest",
+      "pid": 3808736,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "host",
+      "pid": 3808364,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "xvfb",
+      "pid": 3808337,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "manifestSha256": "14fb45cdf63030a6f1ee0545cb4afe6ccc1cc0daa04aca8d067bbc9900cc5b07",
+  "manifestFiles": 111,
+  "runtimeModules": 84,
+  "artifact": "/tmp/opencode/lobby-popup-free-package/builds/1790055896590242802/cocs-native-linux",
+  "binary": "/tmp/opencode/lobby-popup-free-package/builds/1790055896590242802/cocs-native-linux/cocs.x86_64",
+  "binarySha256": "3c0994716982c2f557f7738a789269074520ac0c0a3f11bb7a84a34ee96c683d",
+  "pckSha256": "49eb359b24c85bf20f258c8a2523cb7d170ab8b4256fff4d759c7e8d886afc8e",
+  "observerSha256": "ae370498ceb8f3f6418190a87a46911c414fa4026b47bf9a50bba33891f4159b",
+  "runnerSha256": "cde90950f5e35dc41f6c5c10b58782f0bbc75a378afb5ebfc52466d7f52eb7b3",
+  "source": "unchanged packaged authority",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "display": ":0",
+  "port": 46495,
+  "status": "PASS",
+  "serverClosed": true,
+  "sockets": 0,
+  "wire.jsonl": {
+    "bytes": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  "actions.jsonl": {
+    "bytes": 8862,
+    "sha256": "48aa29c71db676fa49bf54bc759ddebe4c1fe0ff224581db9e16f9fe88e3bd4a"
+  },
+  "witnesses.jsonl": {
+    "bytes": 89491,
+    "sha256": "e6d0516cbada86b681ffe606794c0dc9406c19f756a54be9ad83fe45472fa915"
+  },
+  "packageBytesUnchanged": true,
+  "nativeErrorLines": [],
+  "cleanLogs": true,
+  "tempRemoved": true,
+  "wallMs": 23378
+}
