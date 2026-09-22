@@ -1,0 +1,41 @@
+{
+  "exit": 0,
+  "menuExit": 0,
+  "layout": [
+    {
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x640",
+        "--script",
+        "res://tests/protocol/lobby_independent_hud.gd",
+        "--",
+        "--lobby-menu"
+      ],
+      "exit": 1
+    },
+    {
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "1280x800",
+        "--script",
+        "res://tests/protocol/lobby_independent_hud.gd",
+        "--",
+        "--lobby-menu"
+      ],
+      "exit": 1
+    }
+  ],
+  "displayPid": 3329042,
+  "displayReaped": true,
+  "privateRemoved": true
+}

@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "godot",
+    "--audio-driver",
+    "Dummy",
+    "--script",
+    "res://tests/protocol/weapon_selection.gd"
+  ],
+  "exit": 0,
+  "menuCommand": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "godot",
+    "--audio-driver",
+    "Dummy",
+    "--script",
+    "res://tests/protocol/lobby_independent_menu.gd",
+    "--",
+    "--lobby-menu"
+  ],
+  "menuExit": 1,
+  "displayPid": 3307358,
+  "displayReaped": true,
+  "privateRemoved": true
+}

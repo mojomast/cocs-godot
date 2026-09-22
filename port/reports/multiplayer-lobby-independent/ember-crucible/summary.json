@@ -1,0 +1,58 @@
+{
+  "map": "ember-crucible",
+  "mode": "rockets",
+  "normalRate": true,
+  "input": "Godot Input.parse_input_event (engine input, not OS/XTest)",
+  "baseline": "37f0b9eee53d51511cfe9d8e904433aa6162e568",
+  "checks": [
+    "host waits for explicit Start",
+    "Leave clears identity/pose/entities",
+    "no automatic reconnect during disconnected observation",
+    "results release both pointers",
+    "guest Enter cannot restart",
+    "guest restart button hidden",
+    "restart requires new capture"
+  ],
+  "cleanup": [
+    {
+      "name": "guest",
+      "pid": 3315926,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "host",
+      "pid": 3315360,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "xvfb",
+      "pid": 3315335,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "display": ":0",
+  "port": 40393,
+  "room": "8WXE",
+  "status": "PARTIAL/FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: control in viewport: leave_button 810,12,107,31\n    at click (file:///tmp/opencode/lobby-independent/port/reports/multiplayer-lobby-independent/lobby_acceptance.mjs:31:333)\n    at async file:///tmp/opencode/lobby-independent/port/reports/multiplayer-lobby-independent/lobby_acceptance.mjs:57:2",
+  "serverClosed": true,
+  "sockets": 0,
+  "wire.jsonl": {
+    "bytes": 6354458,
+    "sha256": "018c3a683f876c769e0c77943bc6496a9d84ba5fa4e1ae66cd5814378294f7ed"
+  },
+  "actions.jsonl": {
+    "bytes": 9357,
+    "sha256": "b542acc1becbd8ef21776b29372c3e9a96f8b5edeb72056e5e08c6cc98729031"
+  },
+  "tempRemoved": true,
+  "wallMs": 81254
+}

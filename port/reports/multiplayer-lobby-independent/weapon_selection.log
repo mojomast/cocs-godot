@@ -1,0 +1,98 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: Weapon selection: fresh capture is active (eligible=true focused=true mode=0 age=0.0)
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/weapon_selection.gd:28)
+       [1] capture (res://tests/protocol/weapon_selection.gd:63)
+SCRIPT ERROR: Assertion failed: fresh capture is active (eligible=true focused=true mode=0 age=0.0)
+          at: check (res://tests/protocol/weapon_selection.gd:30)
+          GDScript backtrace (most recent call first):
+              [0] check (res://tests/protocol/weapon_selection.gd:30)
+              [1] capture (res://tests/protocol/weapon_selection.gd:63)
+ERROR: Weapon selection: physical 2 queues rocket via production send_input
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/weapon_selection.gd:28)
+       [1] run (res://tests/protocol/weapon_selection.gd:88)
+       [2] capture (res://tests/protocol/weapon_selection.gd:63)
+SCRIPT ERROR: Assertion failed: physical 2 queues rocket via production send_input
+          at: check (res://tests/protocol/weapon_selection.gd:30)
+          GDScript backtrace (most recent call first):
+              [0] check (res://tests/protocol/weapon_selection.gd:30)
+              [1] run (res://tests/protocol/weapon_selection.gd:88)
+              [2] capture (res://tests/protocol/weapon_selection.gd:63)
+ERROR: Weapon selection: pending request survives latest-packet coalescing
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/weapon_selection.gd:28)
+       [1] run (res://tests/protocol/weapon_selection.gd:91)
+       [2] capture (res://tests/protocol/weapon_selection.gd:63)
+SCRIPT ERROR: Assertion failed: pending request survives latest-packet coalescing
+          at: check (res://tests/protocol/weapon_selection.gd:30)
+          GDScript backtrace (most recent call first):
+              [0] check (res://tests/protocol/weapon_selection.gd:30)
+              [1] run (res://tests/protocol/weapon_selection.gd:91)
+              [2] capture (res://tests/protocol/weapon_selection.gd:63)
+ERROR: Weapon selection: physical 0 selects SMG index 9
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/weapon_selection.gd:28)
+       [1] run (res://tests/protocol/weapon_selection.gd:104)
+       [2] capture (res://tests/protocol/weapon_selection.gd:63)
+SCRIPT ERROR: Assertion failed: physical 0 selects SMG index 9
+          at: check (res://tests/protocol/weapon_selection.gd:30)
+          GDScript backtrace (most recent call first):
+              [0] check (res://tests/protocol/weapon_selection.gd:30)
+              [1] run (res://tests/protocol/weapon_selection.gd:104)
+              [2] capture (res://tests/protocol/weapon_selection.gd:63)
+ERROR: Weapon selection: rapid wheel starts at pending and skips empty slots
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/weapon_selection.gd:28)
+       [1] run (res://tests/protocol/weapon_selection.gd:108)
+       [2] capture (res://tests/protocol/weapon_selection.gd:63)
+SCRIPT ERROR: Assertion failed: rapid wheel starts at pending and skips empty slots
+          at: check (res://tests/protocol/weapon_selection.gd:30)
+          GDScript backtrace (most recent call first):
+              [0] check (res://tests/protocol/weapon_selection.gd:30)
+              [1] run (res://tests/protocol/weapon_selection.gd:108)
+              [2] capture (res://tests/protocol/weapon_selection.gd:63)
+ERROR: Weapon selection: wheel up moves backward
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/weapon_selection.gd:28)
+       [1] run (res://tests/protocol/weapon_selection.gd:112)
+       [2] capture (res://tests/protocol/weapon_selection.gd:63)
+SCRIPT ERROR: Assertion failed: wheel up moves backward
+          at: check (res://tests/protocol/weapon_selection.gd:30)
+          GDScript backtrace (most recent call first):
+              [0] check (res://tests/protocol/weapon_selection.gd:30)
+              [1] run (res://tests/protocol/weapon_selection.gd:112)
+              [2] capture (res://tests/protocol/weapon_selection.gd:63)
+ERROR: Weapon selection: infinite Pulse is available, never skipped
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/weapon_selection.gd:28)
+       [1] run (res://tests/protocol/weapon_selection.gd:115)
+       [2] capture (res://tests/protocol/weapon_selection.gd:63)
+SCRIPT ERROR: Assertion failed: infinite Pulse is available, never skipped
+          at: check (res://tests/protocol/weapon_selection.gd:30)
+          GDScript backtrace (most recent call first):
+              [0] check (res://tests/protocol/weapon_selection.gd:30)
+              [1] run (res://tests/protocol/weapon_selection.gd:115)
+              [2] capture (res://tests/protocol/weapon_selection.gd:63)
+ERROR: Weapon selection: wheel wraps 0 to 9
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/weapon_selection.gd:28)
+       [1] run (res://tests/protocol/weapon_selection.gd:118)
+       [2] capture (res://tests/protocol/weapon_selection.gd:63)
+SCRIPT ERROR: Assertion failed: wheel wraps 0 to 9
+          at: check (res://tests/protocol/weapon_selection.gd:30)
+          GDScript backtrace (most recent call first):
+              [0] check (res://tests/protocol/weapon_selection.gd:30)
+              [1] run (res://tests/protocol/weapon_selection.gd:118)
+              [2] capture (res://tests/protocol/weapon_selection.gd:63)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)

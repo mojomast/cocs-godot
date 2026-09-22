@@ -18,7 +18,9 @@ with tempfile.TemporaryDirectory(prefix='lobby-checks-', dir='/tmp/opencode') as
         print(name, p.returncode, flush=True)
     run('semantic-export', ['node','tools/godot-export/semantic.mjs'])
     run('import', [GODOT,'--headless','--path','godot','--editor','--import'],180)
-    for name in ['lobby_flow','control_safety','window_focus','stall_controls','session_recovery','round_boundaries','local_lifecycle','guest_session','native_trace','input_queue','envelopes','match_selection','match_selection_menu','game_hud_session','scoreboard_session','weapon_selection']:
+    # weapon_selection requires the private graphical helper; the existing
+    # match_selection_menu additionally needs --setup and a live authority.
+    for name in ['lobby_flow','control_safety','window_focus','stall_controls','session_recovery','round_boundaries','local_lifecycle','guest_session','native_trace','input_queue','envelopes','match_selection','game_hud_session','scoreboard_session']:
         run(name, [GODOT,'--headless','--path','godot','--script','res://tests/protocol/'+name+'.gd'])
     for name, path in [('zone-unit','zone_modes/unit'),('world-contract','lattice/world_contract'),('world-commands','lattice/world_commands_contract'),('combined-controls','combined_arms/test_controls')]:
         run(name,[GODOT,'--headless','--path','godot','--script','res://tests/'+path+'.gd'])

@@ -1,0 +1,285 @@
+[
+  {
+    "name": "semantic-export",
+    "command": [
+      "node",
+      "tools/godot-export/semantic.mjs"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "import",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--editor",
+      "--import"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "lobby_flow",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/lobby_flow.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "control_safety",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/control_safety.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "window_focus",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/window_focus.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "stall_controls",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/stall_controls.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "session_recovery",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/session_recovery.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "round_boundaries",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/round_boundaries.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "local_lifecycle",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/local_lifecycle.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "guest_session",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/guest_session.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "native_trace",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/native_trace.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "input_queue",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/input_queue.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "envelopes",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/envelopes.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "match_selection",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/match_selection.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "match_selection_menu",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/match_selection_menu.gd"
+    ],
+    "exit": 1
+  },
+  {
+    "name": "game_hud_session",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/game_hud_session.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "scoreboard_session",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/scoreboard_session.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "weapon_selection",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/weapon_selection.gd"
+    ],
+    "exit": 1
+  },
+  {
+    "name": "zone-unit",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/zone_modes/unit.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "world-contract",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/lattice/world_contract.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "world-commands",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/lattice/world_commands_contract.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "combined-controls",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/combined_arms/test_controls.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "source-lifecycle",
+    "command": [
+      "node",
+      "--test",
+      "--test-timeout=120000",
+      "server/room.test.mjs",
+      "server/rooms.test.mjs",
+      "server/spectator.test.mjs",
+      "server/network.test.mjs",
+      "server/resilience.test.mjs"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "zone-routing",
+    "command": [
+      "node",
+      "--test",
+      "port/native-zone-modes/route.test.mjs"
+    ],
+    "exit": 0
+  }
+]

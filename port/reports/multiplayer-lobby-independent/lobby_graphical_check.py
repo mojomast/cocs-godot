@@ -15,21 +15,30 @@ with tempfile.TemporaryDirectory(prefix='lobby-graphical-check-',dir='/tmp/openc
     try:
         with os.fdopen(read) as pipe: env['DISPLAY'] = ':'+pipe.readline().strip()
         report['exit'] = 0
-        if '--menu-only' not in sys.argv:
+        if '--menu-only' not in sys.argv and '--layout-only' not in sys.argv:
             command = [GODOT,'--path','godot','--audio-driver','Dummy','--script','res://tests/protocol/weapon_selection.gd']
             p = subprocess.run(command,cwd=ROOT,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=45)
             (OUT/'weapon_selection-graphical.log').write_bytes(p.stdout)
             report.update(command=command,exit=p.returncode)
-        command = [GODOT,'--path','godot','--audio-driver','Dummy','--script','res://tests/protocol/lobby_independent_menu.gd','--','--lobby-menu']
-        p = subprocess.run(command,cwd=ROOT,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=30)
-        (OUT/'lobby-menu-input.log').write_bytes(p.stdout)
-        report.update(menuCommand=command,menuExit=p.returncode)
+        report['menuExit'] = 0
+        if '--layout-only' in sys.argv:
+            report['layout'] = []
+            for size in ['960x640','1280x800']:
+                command = [GODOT,'--path','godot','--audio-driver','Dummy','--resolution',size,'--script','res://tests/protocol/lobby_independent_hud.gd','--','--lobby-menu']
+                p = subprocess.run(command,cwd=ROOT,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=30)
+                (OUT/('hud-layout-graphical-'+size+'.log')).write_bytes(p.stdout)
+                report['layout'].append(dict(command=command,exit=p.returncode))
+        else:
+            command = [GODOT,'--path','godot','--audio-driver','Dummy','--script','res://tests/protocol/lobby_independent_menu.gd','--','--lobby-menu']
+            p = subprocess.run(command,cwd=ROOT,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=30)
+            (OUT/'lobby-menu-input.log').write_bytes(p.stdout)
+            report.update(menuCommand=command,menuExit=p.returncode)
     finally:
         display.terminate()
         display.communicate(timeout=5)
         report['displayPid'] = display.pid
         report['displayReaped'] = not pathlib.Path('/proc/'+str(display.pid)).exists()
 report['privateRemoved'] = not pathlib.Path(tmp).exists()
-(OUT/'graphical-check.json').write_text(json.dumps(report,indent=2)+'\n')
+(OUT/('layout-graphical-check.json' if '--layout-only' in sys.argv else 'graphical-check.json')).write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))
-raise SystemExit(report['exit'] or report['menuExit'])
+raise SystemExit(report['exit'] or report['menuExit'] or any(c['exit'] for c in report.get('layout',[])))

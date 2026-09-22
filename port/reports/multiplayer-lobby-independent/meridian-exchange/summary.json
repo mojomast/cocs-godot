@@ -1,0 +1,52 @@
+{
+  "map": "meridian-exchange",
+  "mode": "teamdeathmatch",
+  "normalRate": true,
+  "input": "Godot Input.parse_input_event (engine input, not OS/XTest)",
+  "baseline": "0c9207698b251efbb6db89a8836899ac3aad3920",
+  "checks": [
+    "host waits for explicit Start"
+  ],
+  "cleanup": [
+    {
+      "name": "guest",
+      "pid": 3286828,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "host",
+      "pid": 3286196,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "xvfb",
+      "pid": 3286192,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "display": ":1",
+  "port": 36563,
+  "room": "ETYC",
+  "status": "PARTIAL/FAIL",
+  "error": "Error: Deadline: guest joined (10000ms)\n    at until (file:///tmp/opencode/lobby-independent/port/tools/native_trace_correlation/guest_helpers.mjs:8:8)\n    at async wait (file:///tmp/opencode/lobby-independent/port/reports/multiplayer-lobby-independent/lobby_acceptance.mjs:25:36)\n    at async file:///tmp/opencode/lobby-independent/port/reports/multiplayer-lobby-independent/lobby_acceptance.mjs:50:204",
+  "serverClosed": true,
+  "sockets": 0,
+  "wire.jsonl": {
+    "bytes": 6073,
+    "sha256": "2db44909f4b764a257d5f5f7add8ad5fcd8f5f0a1209e7791fb12ec79e026dde"
+  },
+  "actions.jsonl": {
+    "bytes": 2932,
+    "sha256": "b777db21b08b52916017bc59110af1f5928da1900a4625dfb0e49461f4022731"
+  },
+  "tempRemoved": true,
+  "wallMs": 21501
+}

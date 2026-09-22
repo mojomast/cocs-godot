@@ -1,0 +1,29 @@
+diff --git a/godot/ui/lobby_menu.gd b/godot/ui/lobby_menu.gd
+--- a/godot/ui/lobby_menu.gd
++++ b/godot/ui/lobby_menu.gd
+@@ -99,8 +99,8 @@ func resize_panel() -> void:
+ 	var viewport := get_viewport().get_visible_rect().size
+ 	panel.size = Vector2(minf(700, viewport.x - 32), viewport.y - 32)
+ 	panel.position = (viewport - panel.size) / 2
+-	leave_button.position = Vector2(viewport.x - 150, 12)
+-	restart_button.position = Vector2(viewport.x - 150, 54)
++	leave_button.position = Vector2(viewport.x - 150, 70)
++	restart_button.position = Vector2(viewport.x - 150, 112)
+ 
+ func show_roster(frame: Dictionary) -> void:
+ 	last_frame = frame.duplicate(true)
+diff --git a/godot/ui/game_hud.gd b/godot/ui/game_hud.gd
+--- a/godot/ui/game_hud.gd
++++ b/godot/ui/game_hud.gd
+@@ -149,8 +149,9 @@ func _process(delta: float) -> void:
+ func refresh_status() -> void:
+ 	if not is_instance_valid(session): return
+ 	var phase := int(session.get("phase"))
+-	root.visible = not debug_hud and phase != -2
+-	if debug_hud or phase == -2: return
++	var lobby_open: bool = "lobby_enabled" in session and session.lobby_enabled and phase not in [3, 4, 20]
++	root.visible = not debug_hud and phase != -2 and not lobby_open
++	if debug_hud or phase == -2 or lobby_open: return
+ 	var legacy: Label = session.get("label")
+ 	var message := ""
+ 	var heading := ""

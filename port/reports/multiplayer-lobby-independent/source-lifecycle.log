@@ -1,0 +1,532 @@
+TAP version 13
+# Subtest: two real WebSocket clients join, play and receive results end-to-end
+ok 1 - two real WebSocket clients join, play and receive results end-to-end
+  ---
+  duration_ms: 11921.892936
+  type: 'test'
+  ...
+# Subtest: a held altFire input crosses the real socket dispatch and clears on release
+ok 2 - a held altFire input crosses the real socket dispatch and clears on release
+  ---
+  duration_ms: 458.84372
+  type: 'test'
+  ...
+# Subtest: the loadout control message reaches the room and broadcasts the queued switch
+ok 3 - the loadout control message reaches the room and broadcasts the queued switch
+  ---
+  duration_ms: 19.838956
+  type: 'test'
+  ...
+# Subtest: a dropped NetClient reconnects to its seat and keeps playing to results
+ok 4 - a dropped NetClient reconnects to its seat and keeps playing to results
+  ---
+  duration_ms: 11708.731069
+  type: 'test'
+  ...
+# Subtest: NetClient wrapper joins, interpolates snapshots and reaches results
+ok 5 - NetClient wrapper joins, interpolates snapshots and reaches results
+  ---
+  duration_ms: 11614.658162
+  type: 'test'
+  ...
+# Subtest: two rooms play simultaneously and the browser lists both
+ok 6 - two rooms play simultaneously and the browser lists both
+  ---
+  duration_ms: 5265.244771
+  type: 'test'
+  ...
+# Subtest: a spectator receives snapshots and results without a seat
+ok 7 - a spectator receives snapshots and results without a seat
+  ---
+  duration_ms: 4760.89807
+  type: 'test'
+  ...
+# Subtest: history query returns the completed match entry
+ok 8 - history query returns the completed match entry
+  ---
+  duration_ms: 6464.936011
+  type: 'test'
+  ...
+# Subtest: create always mints a fresh room and a fresh socket sees every room
+ok 9 - create always mints a fresh room and a fresh socket sees every room
+  ---
+  duration_ms: 5.189529
+  type: 'test'
+  ...
+# Subtest: a reconnecting NetClient reattaches to its created room via stored token and chats
+ok 10 - a reconnecting NetClient reattaches to its created room via stored token and chats
+  ---
+  duration_ms: 206.645141
+  type: 'test'
+  ...
+# Subtest: abruptly abandoned rooms are retired after grace and local persists
+ok 11 - abruptly abandoned rooms are retired after grace and local persists
+  ---
+  duration_ms: 1111.508024
+  type: 'test'
+  ...
+# Subtest: create releases the previous room seat so no zombie peers linger
+ok 12 - create releases the previous room seat so no zombie peers linger
+  ---
+  duration_ms: 1110.834401
+  type: 'test'
+  ...
+# Subtest: chat is room-scoped, reaches every peer and spectator, and errors outside a room
+ok 13 - chat is room-scoped, reaches every peer and spectator, and errors outside a room
+  ---
+  duration_ms: 259.697644
+  type: 'test'
+  ...
+# Subtest: two WebSocket clients drive an OPERATIONS room: actions apply and refuses reach the peer
+ok 14 - two WebSocket clients drive an OPERATIONS room: actions apply and refuses reach the peer
+  ---
+  duration_ms: 173.64144
+  type: 'test'
+  ...
+# Subtest: a reconnect racing the old socket reattaches the seat with the newest connection
+ok 15 - a reconnect racing the old socket reattaches the seat with the newest connection
+  ---
+  duration_ms: 4.237036
+  type: 'test'
+  ...
+# Subtest: real-socket duplicate BUY applies once, a reused key and a stale round are refused
+ok 16 - real-socket duplicate BUY applies once, a reused key and a stale round are refused
+  ---
+  duration_ms: 676.407141
+  type: 'test'
+  ...
+# Subtest: a failing history write keeps the record in memory and retries later
+ok 17 - a failing history write keeps the record in memory and retries later
+  ---
+  duration_ms: 9.777161
+  type: 'test'
+  ...
+# Subtest: a failing progression write keeps the award and does not double-award
+ok 18 - a failing progression write keeps the award and does not double-award
+  ---
+  duration_ms: 4.189736
+  type: 'test'
+  ...
+# Subtest: a failing persistence write cannot stop results or other rooms
+ok 19 - a failing persistence write cannot stop results or other rooms
+  ---
+  duration_ms: 44.81287
+  type: 'test'
+  ...
+# Subtest: a throwing room does not stop the registry from ticking the rest
+ok 20 - a throwing room does not stop the registry from ticking the rest
+  ---
+  duration_ms: 2.79796
+  type: 'test'
+  ...
+# Subtest: first joiner becomes host; Claude restriction and names are applied
+ok 21 - first joiner becomes host; Claude restriction and names are applied
+  ---
+  duration_ms: 2.545136
+  type: 'test'
+  ...
+# Subtest: host sets normalized config; non-host cannot host or start
+ok 22 - host sets normalized config; non-host cannot host or start
+  ---
+  duration_ms: 1.533241
+  type: 'test'
+  ...
+# Subtest: start creates a match with one actor per peer plus bots; actor ids and names align
+ok 23 - start creates a match with one actor per peer plus bots; actor ids and names align
+  ---
+  duration_ms: 31.832248
+  type: 'test'
+  ...
+# Subtest: remote inputs drive look, fire and events stream back as deltas
+ok 24 - remote inputs drive look, fire and events stream back as deltas
+  ---
+  duration_ms: 14.427612
+  type: 'test'
+  ...
+# Subtest: start and rematch preserve every human validated loadout
+ok 25 - start and rematch preserve every human validated loadout
+  ---
+  duration_ms: 10.548175
+  type: 'test'
+  ...
+# Subtest: match completes on the timer and results broadcast once with final events delivered
+ok 26 - match completes on the timer and results broadcast once with final events delivered
+  ---
+  duration_ms: 389.680195
+  type: 'test'
+  ...
+# Subtest: leave mid-match hands the seat to a bot; pre-start leave frees the slot
+ok 27 - leave mid-match hands the seat to a bot; pre-start leave frees the slot
+  ---
+  duration_ms: 45.275666
+  type: 'test'
+  ...
+# Subtest: jump and power arrive as one-shot edges while fire stays level
+ok 28 - jump and power arrive as one-shot edges while fire stays level
+  ---
+  duration_ms: 2.906504
+  type: 'test'
+  ...
+# Subtest: short fire taps survive one tick without sticking; held fire still repeats
+ok 29 - short fire taps survive one tick without sticking; held fire still repeats
+  ---
+  duration_ms: 17.10157
+  type: 'test'
+  ...
+# Subtest: start clears pending and held fire
+ok 30 - start clears pending and held fire
+  ---
+  duration_ms: 7.271179
+  type: 'test'
+  ...
+# Subtest: disconnect clears pending and held fire
+ok 31 - disconnect clears pending and held fire
+  ---
+  duration_ms: 5.491194
+  type: 'test'
+  ...
+# Subtest: reconnect clears pending and held fire
+ok 32 - reconnect clears pending and held fire
+  ---
+  duration_ms: 4.805992
+  type: 'test'
+  ...
+# Subtest: leave clears pending and held fire
+ok 33 - leave clears pending and held fire
+  ---
+  duration_ms: 1.119407
+  type: 'test'
+  ...
+# Subtest: expireGrace clears pending and held fire
+ok 34 - expireGrace clears pending and held fire
+  ---
+  duration_ms: 0.952704
+  type: 'test'
+  ...
+# Subtest: disconnect holds the seat; token reattach restores mid-match play
+ok 35 - disconnect holds the seat; token reattach restores mid-match play
+  ---
+  duration_ms: 3.472003
+  type: 'test'
+  ...
+# Subtest: grace expiry converts the seat to a bot and migrates the host
+ok 36 - grace expiry converts the seat to a bot and migrates the host
+  ---
+  duration_ms: 1.281049
+  type: 'test'
+  ...
+# Subtest: explicit leave mid-match converts the seat to a bot immediately
+ok 37 - explicit leave mid-match converts the seat to a bot immediately
+  ---
+  duration_ms: 1.050778
+  type: 'test'
+  ...
+# Subtest: disconnected host who reconnects inside grace stays host; play resumes
+ok 38 - disconnected host who reconnects inside grace stays host; play resumes
+  ---
+  duration_ms: 5.286791
+  type: 'test'
+  ...
+# Subtest: start can rematch after a completed round; inputs ignored while round over
+ok 39 - start can rematch after a completed round; inputs ignored while round over
+  ---
+  duration_ms: 301.56193
+  type: 'test'
+  ...
+# Subtest: non-finite movement input is ignored rather than poisoning the actor state
+ok 40 - non-finite movement input is ignored rather than poisoning the actor state
+  ---
+  duration_ms: 1.031823
+  type: 'test'
+  ...
+# Subtest: reconnecting after a completed round receives the final result
+ok 41 - reconnecting after a completed round receives the final result
+  ---
+  duration_ms: 1.263667
+  type: 'test'
+  ...
+# Subtest: final results and history preserve cloned scoreStats
+ok 42 - final results and history preserve cloned scoreStats
+  ---
+  duration_ms: 1.504047
+  type: 'test'
+  ...
+# Subtest: history records the map actually played, not a pending mid-match change
+ok 43 - history records the map actually played, not a pending mid-match change
+  ---
+  duration_ms: 0.866122
+  type: 'test'
+  ...
+# Subtest: a soccer room starts, scores through the sim and records the team result
+ok 44 - a soccer room starts, scores through the sim and records the team result
+  ---
+  duration_ms: 39.813476
+  type: 'test'
+  ...
+# Subtest: snapshot broadcast rate defaults to 30 Hz and is configurable
+ok 45 - snapshot broadcast rate defaults to 30 Hz and is configurable
+  ---
+  duration_ms: 16.395587
+  type: 'test'
+  ...
+# Subtest: a spectator joining mid-match does not replay buffered events
+ok 46 - a spectator joining mid-match does not replay buffered events
+  ---
+  duration_ms: 58.031787
+  type: 'test'
+  ...
+# Subtest: mid-match player joins become spectators instead of ghost seats
+ok 47 - mid-match player joins become spectators instead of ghost seats
+  ---
+  duration_ms: 1.404841
+  type: 'test'
+  ...
+# Subtest: hosting a mode repairs an incompatible arena and start uses the repaired map
+ok 48 - hosting a mode repairs an incompatible arena and start uses the repaired map
+  ---
+  duration_ms: 27.201355
+  type: 'test'
+  ...
+# Subtest: a compatible arena is preserved when hosting
+ok 49 - a compatible arena is preserved when hosting
+  ---
+  duration_ms: 0.732812
+  type: 'test'
+  ...
+# Subtest: inputs are magnitude-clamped and cannot be poisoned by an absurd sequence jump
+ok 50 - inputs are magnitude-clamped and cannot be poisoned by an absurd sequence jump
+  ---
+  duration_ms: 2.369918
+  type: 'test'
+  ...
+# Subtest: broadcast snapshots are quantized without mutating authoritative match state
+ok 51 - broadcast snapshots are quantized without mutating authoritative match state
+  ---
+  duration_ms: 2.435702
+  type: 'test'
+  ...
+# Subtest: a melee press is forwarded as a one-shot edge and consumed on tick
+ok 52 - a melee press is forwarded as a one-shot edge and consumed on tick
+  ---
+  duration_ms: 1.418266
+  type: 'test'
+  ...
+# Subtest: game inputs are rate limited per peer
+ok 53 - game inputs are rate limited per peer
+  ---
+  duration_ms: 1.001816
+  type: 'test'
+  ...
+# Subtest: grenade is a one-shot edge and cannot auto-repeat while held
+ok 54 - grenade is a one-shot edge and cannot auto-repeat while held
+  ---
+  duration_ms: 0.920644
+  type: 'test'
+  ...
+# Subtest: mobility is forwarded as a held input, never as an edge
+ok 55 - mobility is forwarded as a held input, never as an edge
+  ---
+  duration_ms: 1.475093
+  type: 'test'
+  ...
+# Subtest: altFire is forwarded as a held input across ticks until the client releases it
+ok 56 - altFire is forwarded as a held input across ticks until the client releases it
+  ---
+  duration_ms: 1.902052
+  type: 'test'
+  ...
+# Subtest: a held altFire clears on disconnect and leave
+ok 57 - a held altFire clears on disconnect and leave
+  ---
+  duration_ms: 1.219384
+  type: 'test'
+  ...
+# Subtest: votes from a disconnected peer stop counting toward quorum
+ok 58 - votes from a disconnected peer stop counting toward quorum
+  ---
+  duration_ms: 0.253024
+  type: 'test'
+  ...
+# Subtest: a reconnecting peer must ready up again
+ok 59 - a reconnecting peer must ready up again
+  ---
+  duration_ms: 0.176089
+  type: 'test'
+  ...
+# Subtest: capable peers receive id-keyed deltas that rebuild the authoritative state
+ok 60 - capable peers receive id-keyed deltas that rebuild the authoritative state
+  ---
+  duration_ms: 27.179113
+  type: 'test'
+  ...
+# Subtest: a capable peer is sent a periodic full keyframe
+ok 61 - a capable peer is sent a periodic full keyframe
+  ---
+  duration_ms: 10.189533
+  type: 'test'
+  ...
+# Subtest: a peer without delta capability only ever receives full snapshots
+ok 62 - a peer without delta capability only ever receives full snapshots
+  ---
+  duration_ms: 12.390667
+  type: 'test'
+  ...
+# Subtest: a peer that joins after the chain started is sent a full keyframe first
+ok 63 - a peer that joins after the chain started is sent a full keyframe first
+  ---
+  duration_ms: 4.769012
+  type: 'test'
+  ...
+# Subtest: respawn switching rejects locked modes, spectators, unknown and disconnected peers
+ok 64 - respawn switching rejects locked modes, spectators, unknown and disconnected peers
+  ---
+  duration_ms: 7.669063
+  type: 'test'
+  ...
+# Subtest: a team-mode switch queues on the peer, the room and the match and lands on respawn
+ok 65 - a team-mode switch queues on the peer, the room and the match and lands on respawn
+  ---
+  duration_ms: 11.653846
+  type: 'test'
+  ...
+# Subtest: respawn switching honours the 60 s lockout and the 500 ms anti-flood floor
+ok 66 - respawn switching honours the 60 s lockout and the 500 ms anti-flood floor
+  ---
+  duration_ms: 0.895157
+  type: 'test'
+  ...
+# Subtest: sudden death and the VIP lock respawn switching
+ok 67 - sudden death and the VIP lock respawn switching
+  ---
+  duration_ms: 0.965358
+  type: 'test'
+  ...
+# Subtest: registry boots with the local room and lists summaries
+ok 68 - registry boots with the local room and lists summaries
+  ---
+  duration_ms: 0.889556
+  type: 'test'
+  ...
+# Subtest: create assigns a 4-letter code and the creator becomes host
+ok 69 - create assigns a 4-letter code and the creator becomes host
+  ---
+  duration_ms: 1.20678
+  type: 'test'
+  ...
+# Subtest: code generation avoids collisions
+ok 70 - code generation avoids collisions
+  ---
+  duration_ms: 0.187351
+  type: 'test'
+  ...
+# Subtest: unknown rooms return null and join errors at the transport layer
+ok 71 - unknown rooms return null and join errors at the transport layer
+  ---
+  duration_ms: 0.13351
+  type: 'test'
+  ...
+# Subtest: empty on-demand rooms are removed but local persists
+ok 72 - empty on-demand rooms are removed but local persists
+  ---
+  duration_ms: 0.289842
+  type: 'test'
+  ...
+# Subtest: expireAll retires abandoned on-demand rooms but never the local room
+ok 73 - expireAll retires abandoned on-demand rooms but never the local room
+  ---
+  duration_ms: 0.265287
+  type: 'test'
+  ...
+# Subtest: tick, expire and drain drivers iterate every room
+ok 74 - tick, expire and drain drivers iterate every room
+  ---
+  duration_ms: 40.708692
+  type: 'test'
+  ...
+# Subtest: created room names are sanitized and bounded
+ok 75 - created room names are sanitized and bounded
+  ---
+  duration_ms: 0.195677
+  type: 'test'
+  ...
+# Subtest: the registry evicts idle rooms and refuses to exceed its ceiling
+ok 76 - the registry evicts idle rooms and refuses to exceed its ceiling
+  ---
+  duration_ms: 0.482644
+  type: 'test'
+  ...
+# Subtest: spectators join without a seat and never become host
+ok 77 - spectators join without a seat and never become host
+  ---
+  duration_ms: 1.478489
+  type: 'test'
+  ...
+# Subtest: spectators do not count toward the player limit
+ok 78 - spectators do not count toward the player limit
+  ---
+  duration_ms: 0.54991
+  type: 'test'
+  ...
+# Subtest: start excludes spectators from humanCount and actor slots
+ok 79 - start excludes spectators from humanCount and actor slots
+  ---
+  duration_ms: 31.491781
+  type: 'test'
+  ...
+# Subtest: spectators cannot host or start
+ok 80 - spectators cannot host or start
+  ---
+  duration_ms: 0.275245
+  type: 'test'
+  ...
+# Subtest: spectator inputs are ignored while player inputs flow
+ok 81 - spectator inputs are ignored while player inputs flow
+  ---
+  duration_ms: 8.560042
+  type: 'test'
+  ...
+# Subtest: spectators receive snapshots, event deltas and results
+ok 82 - spectators receive snapshots, event deltas and results
+  ---
+  duration_ms: 347.450474
+  type: 'test'
+  ...
+# Subtest: spectator session tokens survive disconnect and reattach
+ok 83 - spectator session tokens survive disconnect and reattach
+  ---
+  duration_ms: 2.502076
+  type: 'test'
+  ...
+# Subtest: active spectator joins and reconnects receive lobby, targeted start and immediate snapshot
+ok 84 - active spectator joins and reconnects receive lobby, targeted start and immediate snapshot
+  ---
+  duration_ms: 6.109493
+  type: 'test'
+  ...
+# Subtest: spectator joins outside an active round do not receive start or snapshot
+ok 85 - spectator joins outside an active round do not receive start or snapshot
+  ---
+  duration_ms: 41.204751
+  type: 'test'
+  ...
+# Subtest: reconnecting spectator cannot claim a vacant host role
+ok 86 - reconnecting spectator cannot claim a vacant host role
+  ---
+  duration_ms: 0.553316
+  type: 'test'
+  ...
+# Subtest: spectators are capped so a room cannot be used as a fan-out amplifier
+ok 87 - spectators are capped so a room cannot be used as a fan-out amplifier
+  ---
+  duration_ms: 0.354103
+  type: 'test'
+  ...
+1..87
+# tests 87
+# suites 0
+# pass 87
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 56898.249325

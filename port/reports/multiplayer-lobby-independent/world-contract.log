@@ -1,0 +1,21 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+WORLD_CHECK valid wire accepted true
+WORLD_CHECK owned living pose enables capture true
+WORLD_CHECK camera uses exact source eye position true
+WORLD_CHECK withheld wallets remain unknown true
+WORLD_CHECK only received actors rendered true
+WORLD_CHECK focus loss blocks look/capture true
+WORLD_CHECK stale pose blocks capture true
+WORLD_CHECK absent remote retired without reconstruction true
+WORLD_CHECK missing projection clears controls and visuals true
+WORLD_CHECK revoked owner cannot retain old pose true
+WORLD_CHECK new owner absent from snapshot cannot borrow actor zero true
+WORLD_CHECK typed actor consumer guarded true
+WORLD_CHECK nonfinite pose rejected true
+WORLD_CHECK duplicate actor identity rejected true
+WORLD_CHECK malformed objective projection rejected true
+WORLD_CHECK results reset control and private projection true
+WORLD_CHECK restart requires fresh owned pose true
+WORLD_CHECK error disconnect clears identity/control true
+WORLD_CONTRACT checks=18 failures=0
