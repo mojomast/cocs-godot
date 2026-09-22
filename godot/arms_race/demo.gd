@@ -86,6 +86,7 @@ func release_pointer() -> void:
 
 func _input(event: InputEvent) -> void:
 	fresh.observe(event)
+	observe_combat_input(event)
 	# Source pins the weapon. Never queue a native selection request.
 	weapon_selection.clear()
 	if (event is InputEventKey and WeaponSelection.key_index(event.physical_keycode) >= 0) or (event is InputEventMouseButton and event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]):

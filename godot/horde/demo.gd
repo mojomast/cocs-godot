@@ -102,6 +102,9 @@ func update_look(relative: Vector2) -> void:
 	yaw = angles.x
 	pitch = angles.y
 
+func aim_requested() -> bool:
+	return can_capture_pointer() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and controls.mouse.has(MOUSE_BUTTON_RIGHT)
+
 func release_pointer() -> void:
 	controls.clear()
 	if phase == 3 and horde_client.input_epoch > 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:

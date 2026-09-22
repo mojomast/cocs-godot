@@ -312,7 +312,7 @@ func build_ui() -> void:
 	controls.add_theme_color_override("font_shadow_color", Color.BLACK)
 	controls.add_theme_constant_override("shadow_offset_x", 1)
 	controls.add_theme_constant_override("shadow_offset_y", 1)
-	controls.text = "WASD move · Space jump · Shift sprint · Ctrl crouch · E interact · F mobility\nClick fire · R reload · Esc release · Tab scores"
+	controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · E interact · X mobility · Q power\nLMB fire · RMB ADS · Z/MMB alt · R reload · F melee · G grenade · Esc release · Tab scores"
 	root.add_child(controls)
 	clear_actor()
 

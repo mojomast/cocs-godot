@@ -3,6 +3,8 @@ extends "res://world/viewer.gd"
 const Client = preload("res://net/client.gd")
 const ControlMath = preload("res://world/control_math.gd")
 const WeaponSelection = preload("res://world/weapon_selection.gd")
+const CombatActions = preload("res://world/combat_actions.gd")
+var combat_actions := CombatActions.new()
 const FirstPersonBinding = preload("res://first_person/session_binding.gd")
 var first_person: Node
 var weapon_selection := WeaponSelection.new()
@@ -107,7 +109,8 @@ func can_capture_pointer() -> bool:
 
 func update_look(relative: Vector2) -> void:
 	if not can_capture_pointer() or not relative.is_finite(): return
-	var angles := ControlMath.look(yaw - relative.x * 0.003, pitch - relative.y * 0.003)
+	var gain := 0.003 * (0.85 if aim_requested() else 1.0)
+	var angles := ControlMath.look(yaw - relative.x * gain, pitch - relative.y * gain)
 	yaw = angles.x
 	pitch = angles.y
 
@@ -142,7 +145,7 @@ func trace_snapshot(reseeded: bool) -> Dictionary:
 
 func trace_input(controls: Dictionary, result: Error) -> Dictionary:
 	var selected: Dictionary = {}
-	for key: String in ["x", "z", "yaw", "pitch", "fire", "jump", "reload", "sprint", "crouch", "interact", "mobility"]:
+	for key: String in ["x", "z", "yaw", "pitch", "fire", "jump", "reload", "sprint", "crouch", "interact", "mobility", "ads", "power", "melee", "grenade", "altFire"]:
 		selected[key] = controls.get(key, null)
 	if controls.has("weapon"): selected["weapon"] = controls.weapon
 	return {"schema":1, "event":"input_queue", "round":round_starts,
@@ -205,6 +208,7 @@ func request_restart() -> void:
 
 func release_pointer() -> void:
 	weapon_selection.clear()
+	combat_actions.clear()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 var application_focused: bool = true
@@ -438,6 +442,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		emit_snapshot_trace(false)
 		return
 	var actor: Dictionary = presentation.local_actor
+	combat_actions.observe_actor(actor)
 	if actor.is_empty():
 		# Reset once on loss, not on every absent-actor snapshot: otherwise
 		# frequent snapshots starve the neutral-input send cadence.
@@ -450,6 +455,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	var reseeded: bool = not received_pose or presentation.lifecycle.reseed_look
 	if reseeded:
 		weapon_selection.clear()
+		combat_actions.clear()
 		var angles := ControlMath.look(float(actor.yaw), float(actor.pitch))
 		yaw = angles.x
 		pitch = angles.y
@@ -469,7 +475,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		print("PORT_LIFECYCLE_LIVE_OK starts=", round_starts, " results=", round_results, " restarted_actors=", presentation.actors.size(), " restarted_ack=", client.last_ack, " map=", current_id, " normal_rate=true")
 		client.disconnect_server()
 		get_tree().quit(0)
-	label.text = "NODE-AUTHORITATIVE PROTOTYPE · %s\n" % selected_mode + presentation.hud_text + "\nClick: capture/fire · Esc: release · WASD: move · Space: jump · R: reload\nShift: sprint · Ctrl: crouch · E: interact · F: mobility · 1–9/0 or wheel: weapon | ACK %d" % client.last_ack
+	label.text = "NODE-AUTHORITATIVE PROTOTYPE · %s\n" % selected_mode + presentation.hud_text + "\nClick: capture/fire · RMB: ADS · Z/MMB: alt · Esc: release · WASD: move · Space: jump\nShift: sprint · Ctrl/C: crouch · R: reload · E: interact · X: mobility · Q: power · F: melee · G: grenade · 1–9/0 or wheel: weapon | ACK %d" % client.last_ack
 	var smoke_pickups_ok: bool = pickups.markers.is_empty() if selected_mode == "instagib" else not pickups.markers.is_empty()
 	var smoke_fire_ok: bool = combat.local_launches > 0 if selected_mode == "rockets" else combat.shots > 0
 	if smoke and smoke_fire_ok and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10 and smoke_pickups_ok and not world.get_node("StaticPickupMarkers").visible:
@@ -481,9 +487,25 @@ func on_snapshot(frame: Dictionary) -> void:
 func weapon_controls_active() -> bool:
 	return can_capture_pointer() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 
+func combat_controls_active() -> bool:
+	# Arms Race disables weapon selection, not ordinary combat or ADS.
+	return can_capture_pointer() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
+
+func aim_requested() -> bool:
+	combat_actions.observe_actor(presentation.local_actor)
+	if not combat_controls_active():
+		combat_actions.clear()
+		return false
+	return combat_actions.aiming()
+
+func observe_combat_input(event: InputEvent) -> void:
+	combat_actions.record(event, combat_controls_active(), presentation.local_actor)
+
 func _input(event: InputEvent) -> void:
 	# Observe releases even when a GUI control handles the event later.
+	observe_combat_input(event)
 	if weapon_selection.handle_event(event, weapon_controls_active(), presentation.local_actor):
+		if weapon_selection.pending >= 0: combat_actions.cancel_aim()
 		get_viewport().set_input_as_handled()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -492,6 +514,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.keycode == KEY_ENTER: request_restart()
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and can_capture_pointer():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		combat_actions.captured()
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		update_look(event.relative)
 
@@ -523,16 +546,19 @@ func _process(delta: float) -> void:
 	send_elapsed += delta
 	if send_elapsed < 1.0 / 60.0: return
 	send_elapsed = fmod(send_elapsed, 1.0 / 60.0)
-	var active: bool = received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control() and (smoke or (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and get_window().has_focus()))
-	var forward: float = 1.0 if smoke else float(Input.is_physical_key_pressed(KEY_W)) - float(Input.is_physical_key_pressed(KEY_S))
-	var right: float = float(Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_A))
-	var direction := ControlMath.movement(yaw, forward, right) if active else Vector2.ZERO
-	var controls: Dictionary = {"x":direction.x, "z":direction.y, "yaw":yaw, "pitch":pitch, "fire":active and (smoke or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))}
-	for binding: Array in [["jump",KEY_SPACE],["reload",KEY_R],["sprint",KEY_SHIFT],["crouch",KEY_CTRL],["interact",KEY_E],["mobility",KEY_F]]:
-		controls[binding[0]] = active and Input.is_physical_key_pressed(binding[1])
+	var active: bool = combat_controls_active()
+	combat_actions.observe_actor(presentation.local_actor)
+	var controls := combat_actions.sample(yaw, pitch, active)
+	# Explicit legacy smoke stimulus is isolated from ordinary event input.
+	if smoke and received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control():
+		var direction := ControlMath.movement(yaw, 1.0, 0.0)
+		controls.x = direction.x
+		controls.z = direction.y
+		controls.fire = true
 	if weapon_controls_active() and weapon_selection.pending >= 0:
 		controls["weapon"] = weapon_selection.pending
 	var queue_result: Error = client.send_input(controls)
+	if queue_result == OK: combat_actions.queued()
 	if queue_result == OK and controls.has("weapon"): weapon_selection.queued(client.input_seq)
 	if trace_enabled and trace_count < TRACE_LIMIT:
 		emit_native_trace(trace_input(controls, queue_result))

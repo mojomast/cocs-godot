@@ -4,14 +4,20 @@ var down: Dictionary = {}
 var blocked: Dictionary = {}
 var interact_pending := false
 var fire := false
+var ads := false
+
+func cancel_aim() -> void:
+	ads = false
 
 func release() -> void:
 	super.release()
 	blocked = down.duplicate()
 	interact_pending = false
 	fire = false
+	cancel_aim()
 
-func accept(event: InputEvent, eligible: bool) -> void:
+func accept(event: InputEvent, eligible: bool, infantry: bool = true) -> void:
+	if not infantry: cancel_aim()
 	if event is InputEventKey:
 		if event.echo: return
 		var code: int = event.physical_keycode
@@ -22,10 +28,19 @@ func accept(event: InputEvent, eligible: bool) -> void:
 			if down.has(code): return
 			down[code] = true
 		if blocked.has(code): return
+		if code == KEY_R and event.pressed: cancel_aim()
 		if code == KEY_E:
 			if event.pressed and engaged and focused and eligible: interact_pending = true
 			return
 		super.accept(event, eligible)
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		if not event.pressed:
+			down.erase(MOUSE_BUTTON_RIGHT)
+			blocked.erase(MOUSE_BUTTON_RIGHT)
+			cancel_aim()
+		elif not down.has(MOUSE_BUTTON_RIGHT):
+			down[MOUSE_BUTTON_RIGHT] = true
+			ads = engaged and focused and eligible and infantry and not blocked.has(MOUSE_BUTTON_RIGHT)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if not event.pressed:
 			down.erase(MOUSE_BUTTON_LEFT)
@@ -36,6 +51,7 @@ func accept(event: InputEvent, eligible: bool) -> void:
 			fire = engaged and focused and eligible and not blocked.has(MOUSE_BUTTON_LEFT)
 
 func command(yaw: float, pitch: float, eligible: bool, driving: bool) -> Dictionary:
+	if driving: cancel_aim()
 	var p := super.packet(yaw, eligible)
 	# Protocol clamps each world axis independently. Fit their common scale
 	# before sending so diagonal driving retains throttle/steer proportions.
@@ -52,4 +68,5 @@ func command(yaw: float, pitch: float, eligible: bool, driving: bool) -> Diction
 	p.fire = engaged and fire
 	p.crouch = engaged and keys.has(KEY_CTRL)
 	p.reload = engaged and keys.has(KEY_R)
+	p.ads = engaged and focused and eligible and not driving and ads
 	return p

@@ -138,7 +138,9 @@ func on_snapshot(frame: Dictionary) -> void:
 	# No standing soldiers inside vehicle hulls.
 	for a: Dictionary in state.get("actors", []):
 		if a.get("vehicleId") != null and actors.actors.has(int(a.id)): actors.actors[int(a.id)].hide()
+	var previous_weapon: int = int(actor.get("weapon", -1))
 	actor = Lease.actor_for(state, net.actor_id)
+	if previous_weapon != int(actor.get("weapon", -1)) or actor.get("reloading", false): controls.cancel_aim()
 	vehicle = Lease.vehicle_for(state, actor)
 	var next := "%s/%s/%s/%s/%s" % [net.actor_id, actor.get("vehicleId"), actor.get("vehicleSeat"), vehicle.get("id"), Lease.alive(actor)]
 	if next != identity:
@@ -154,13 +156,17 @@ func on_snapshot(frame: Dictionary) -> void:
 func eligible() -> bool:
 	return phase == "active" and Lease.permitted(state, actor, vehicle, age) and actor.get("id") == net.actor_id
 
+func aim_requested() -> bool:
+	return eligible() and not net.spectating and vehicle.is_empty() and not actor.get("reloading", false) and controls.engaged and controls.focused and get_window().has_focus() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and controls.ads
+
 func _input(event: InputEvent) -> void:
 	var focused := get_window().has_focus() and controls.focused
-	controls.accept(event, eligible() and focused)
+	controls.accept(event, eligible() and focused, vehicle.is_empty() and not actor.get("reloading", false) and not net.spectating)
 	if controls.engaged and focused: Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event is InputEventMouseMotion and controls.engaged and eligible() and focused:
-		var look := Motion.look(yaw-event.relative.x*0.003, pitch-event.relative.y*0.003)
+		var gain := 0.003 * (0.85 if aim_requested() else 1.0)
+		var look := Motion.look(yaw-event.relative.x*gain, pitch-event.relative.y*gain)
 		yaw = look.x
 		pitch = look.y
 	update_graphics()
@@ -186,6 +192,7 @@ func _process(delta: float) -> void:
 		if send_age >= 1.0/30.0:
 			send_age = 0
 			var p := controls.command(yaw, pitch, eligible(), not vehicle.is_empty() and actor.get("vehicleSeat") == "driver")
+			p.ads = aim_requested()
 			# This vertical slice accepts Puma driving. Secondary silhouettes still
 			# permit safe ordinary exit; no unaccepted flight/seat controls advertised.
 			if not vehicle.is_empty() and (vehicle.get("kind") != "puma" or actor.get("vehicleSeat") != "driver"):

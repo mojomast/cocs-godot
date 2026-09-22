@@ -109,7 +109,7 @@ func world_neutral() -> void:
 	release_pointer()
 	world_wait_release = true
 	if phase != 3 or not client.connection_open(): return
-	var controls := {"x":0.0, "z":0.0, "yaw":yaw, "pitch":pitch, "fire":false, "jump":false, "reload":false, "sprint":false, "crouch":false, "interact":false, "mobility":false}
+	var controls := {"x":0.0, "z":0.0, "yaw":yaw, "pitch":pitch, "fire":false, "jump":false, "reload":false, "sprint":false, "crouch":false, "interact":false, "mobility":false, "ads":false, "power":false, "melee":false, "grenade":false, "altFire":false}
 	var result: Error = client.send_input(controls)
 	emit_native_trace(trace_input(controls, result))
 	if result != OK: on_error("Neutral input could not be queued. Relaunch to reconnect.")

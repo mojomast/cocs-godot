@@ -1,0 +1,11 @@
+{
+  "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "synthetic_events": true,
+  "gui_acceptance": false,
+  "checks": [
+    {
+      "script": "combat_actions/controls",
+      "returncode": 0
+    }
+  ]
+}

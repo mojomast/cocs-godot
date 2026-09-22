@@ -1,0 +1,3 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ORIGINAL_COMBAT_DEFECT {"aim_contract_absent":true,"missing_fields":["ads","power","melee","grenade","altFire"],"original_packet":{"crouch":false,"fire":true,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"x":0.0,"yaw":0.0,"z":-1.0},"synthetic_transport":true}

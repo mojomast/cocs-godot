@@ -21,6 +21,7 @@ func refresh(focused: bool, captured: bool) -> void:
 	if allowed and not public_active: feedback.apply_state(session.state)
 	public_active = allowed
 	rig.apply_actor(session.actor, allowed and captured and session.controls.engaged and session.vehicle.is_empty())
+	if rig.has_method("apply_aim"): rig.call("apply_aim", session.aim_requested())
 
 func apply_state() -> void:
 	if public_active: feedback.apply_state(session.state)
@@ -33,6 +34,7 @@ func apply_events(items: Array) -> void:
 
 func hide_infantry() -> void:
 	rig.apply_actor({}, false)
+	if rig.has_method("apply_aim"): rig.call("apply_aim", false)
 
 func can_capture_pointer() -> bool:
 	return rig.showing
