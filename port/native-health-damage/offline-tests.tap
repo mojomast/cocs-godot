@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: genuine live damage, +35 health, same marker and 12-second return pass without native completion
+ok 1 - genuine live damage, +35 health, same marker and 12-second return pass without native completion
+  ---
+  duration_ms: 33.027727
+  type: 'test'
+  ...
+# Subtest: artifact lengths/hashes and executed source hashes match provenance
+ok 2 - artifact lengths/hashes and executed source hashes match provenance
+  ---
+  duration_ms: 0.942575
+  type: 'test'
+  ...
+# Subtest: credential field names and welcome packets are absent from retained evidence; projections exclude them
+ok 3 - credential field names and welcome packets are absent from retained evidence; projections exclude them
+  ---
+  duration_ms: 29.302893
+  type: 'test'
+  ...
+# Subtest: native combat text alone cannot substitute for actual UI Label text
+ok 4 - native combat text alone cannot substitute for actual UI Label text
+  ---
+  duration_ms: 23.428424
+  type: 'test'
+  ...
+# Subtest: HP-only damage accounting is rejected even if both event observations agree
+ok 5 - HP-only damage accounting is rejected even if both event observations agree
+  ---
+  duration_ms: 20.698643
+  type: 'test'
+  ...
+# Subtest: missing server input receipt does not become successful queue evidence
+ok 6 - missing server input receipt does not become successful queue evidence
+  ---
+  duration_ms: 18.492833
+  type: 'test'
+  ...
+# Subtest: observer snapshot association rejects an intervening line
+ok 7 - observer snapshot association rejects an intervening line
+  ---
+  duration_ms: 10.370026
+  type: 'test'
+  ...
+# Subtest: replacement pickup marker cannot be claimed as the same marker lifecycle
+ok 8 - replacement pickup marker cannot be claimed as the same marker lifecycle
+  ---
+  duration_ms: 22.708878
+  type: 'test'
+  ...
+# Subtest: continued attacker fire after stop cannot pass nonlethal stop criterion
+ok 9 - continued attacker fire after stop cannot pass nonlethal stop criterion
+  ---
+  duration_ms: 19.344919
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 221.584046

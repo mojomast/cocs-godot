@@ -1,0 +1,278 @@
+{
+  "schema": 1,
+  "id": "d06d6f7a-cacd-43a4-8910-97007273dc21",
+  "base": "aee6f797cdd5daecd16efde8482aaeadd5298cae",
+  "normalRate": true,
+  "completionProven": false,
+  "started": "2026-09-22T00:12:13.417Z",
+  "cleanup": {
+    "native": {
+      "pid": 2048759,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "xvfb": {
+      "pid": 2048753,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "import": {
+      "pid": 2048506,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "serverClosed": true,
+    "socketCount": 0,
+    "privateTempRemoved": true
+  },
+  "artifacts": {
+    "export.log.gz": {
+      "bytes": 79,
+      "sha256": "669d2d98dcb78e48d0f9742368637c64549265b89ec141bb5608239dea033dff"
+    },
+    "import.stdout.log.gz": {
+      "bytes": 552,
+      "sha256": "46d81dea5add0f051b5ac9aa3a81462c7b2e89e834fbb005849f5a0e03fe97b1"
+    },
+    "import.stderr.log.gz": {
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    },
+    "native.stdout.log.gz": {
+      "bytes": 58241,
+      "sha256": "0b6eb0fe22e52745324474a9c6e9b2fd9fc7e0684b0fd4e8a89ff3eb94d5d903"
+    },
+    "native.stderr.log.gz": {
+      "bytes": 160,
+      "sha256": "3223c5f8e137b40334ec34c0611015b14969ee2449af7157ab2ee8f834da7aea"
+    },
+    "xvfb.stdout.log.gz": {
+      "bytes": 22,
+      "sha256": "de76e512a414e118fc8bc46cc3043f18cb60a7aa7b997d9564d30aae0cac9eee"
+    },
+    "xvfb.stderr.log.gz": {
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    },
+    "wire.json.gz": {
+      "bytes": 41091,
+      "sha256": "0a6fcc5d0b3c4efb1859a1b054f5d8cf1918bc20768914233bcfeeef1f96d6dd"
+    }
+  },
+  "command": "GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 GUEST_NODE_MODULES=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/node_modules node port/tools/native_health_damage/run.mjs",
+  "sourceHashes": {
+    "run.mjs": "3ec2dd96f0a6494cc6b60e17bafef64071b21cb99673f38c2e26479ac956bb42",
+    "observe.gd": "dbc11215c9a67011b8dca2ab7ca79eb7ec22a0ee2731e26bd237aceba5ef242a",
+    "helpers.mjs": "b1a183454c143711e6206159ff00773aaa9bf2fb89ebc4d88f26f40153a05c0a",
+    "analyze.mjs": "73385f9301dbf74b6b750e4ecc3c612e0dbe5f088b6a57ffe46390cccef04ee0",
+    "route.mjs": "9fe3133bc9967257c42c731a018c3ea4a435c574ee84a95a2f74d75462b2e291",
+    "project.mjs": "f9dc2eaa3af53e408406f4aba229e1abdaa2a24bc11d07ad3b327b2abed046d3"
+  },
+  "runtimeHashes": {
+    "godot/world/session.gd": "329595a42420c420f718dceea7f4fdb87a5fc26b4e41f63ed9aff5caae16a6b2",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "godot/world/combat_feedback.gd": "2e4026f1628bd2d869397c42fd50fc569e63f24d28e464b45e7d0946c585e89b",
+    "godot/world/pickups.gd": "8061b96dcd73e963f6f0d251762c866974e5de57ad0f8006de5cb74a3ea15d83",
+    "godot/world/presentation.gd": "20057bc0c0b840f281029b9edbc332d892930a2f6513e5909ad3dc180e87d7b3",
+    "godot/world/local_lifecycle.gd": "2dcc606318eff11e3e19819807ff9c692f0800223e4510793ed2bc92157f995f",
+    "server/game-server.mjs": "06e79c72d0530abf5256b803a19fbfb00582892579f27f42eae871cc28fb98b0",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/quantize.mjs": "77e1e210ec9f97a0e2ca2536aee725695641fa54a40a09bd4c4440d5720e7bc0",
+    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b"
+  },
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "privateDisplay": ":0",
+  "endpoint": "ws://127.0.0.1:36689",
+  "nativeCommand": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--audio-driver",
+    "Dummy",
+    "--path",
+    "/tmp/opencode/cocs-health-live-yLNGIE/godot",
+    "--script",
+    "/tmp/opencode/cocs-native-health-damage/port/tools/native_health_damage/observe.gd",
+    "--",
+    "--endpoint=ws://127.0.0.1:36689",
+    "--join-room=H5JR",
+    "--route=/tmp/opencode/cocs-health-live-yLNGIE/route.json",
+    "--native-trace"
+  ],
+  "waiting": {
+    "actor_id": -1,
+    "captured": false,
+    "combat_text": "",
+    "elapsed": 0.266807285714286,
+    "event": "frame",
+    "focused": true,
+    "held_w": false,
+    "hud": "Waiting for authoritative snapshot",
+    "hurt_remaining": 0,
+    "hurts": 0,
+    "label": "Joined room. Waiting for host start (120-second limit)…",
+    "phase": 11,
+    "pose": false,
+    "seq": -1,
+    "stage": "damage_wait",
+    "starts": 0,
+    "trace_next": 0,
+    "ui_text": ""
+  },
+  "gameplayWallSeconds": 22.717848662,
+  "acceptance": {
+    "status": "PASS",
+    "actor": 1,
+    "attacker": 0,
+    "roundRevision": 1,
+    "completionProven": false,
+    "counts": {
+      "nativeRecords": 2028,
+      "correlatedSnapshots": 693,
+      "receivedInputs": 1334,
+      "damageEvents": 5,
+      "nativeMovementInputsBeforeCollection": 284,
+      "hiddenPickupSnapshots": 360,
+      "outsideRadiusSnapshots": 335
+    },
+    "damage": {
+      "firstEventId": 4,
+      "lastEventId": 40,
+      "eventAmountTotal": 54.447,
+      "healthLoss": 49.447,
+      "armorLoss": 5,
+      "temporaryShieldLoss": 0,
+      "juggernautShieldLoss": 0,
+      "reviewPoolLoss": 0,
+      "quantizationTolerance": 0.012,
+      "attackerStoppedAt": {
+        "time": 4.4,
+        "serverSnapshotSeq": 132,
+        "health": 50.553,
+        "maxHealth": 100,
+        "nextInputSeq": 85
+      },
+      "hurtUI": {
+        "nativeTraceNext": 349,
+        "snapshotSeq": 124,
+        "combatText": "TAKING DAMAGE",
+        "labelText": "TAKING DAMAGE",
+        "hurts": 3
+      },
+      "baseline": {
+        "snapshotSeq": 1,
+        "nativeTraceSequence": 2,
+        "time": 0.033,
+        "health": 100,
+        "maxHealth": 100,
+        "armor": 5,
+        "position": [
+          -36,
+          0,
+          -6
+        ],
+        "pickupId": 6,
+        "wait": 0,
+        "markerVisible": true,
+        "markerInstance": 39963330253,
+        "hud": "Meridian Exchange | HP 100.0 | Armor 5.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE"
+      },
+      "injured": {
+        "snapshotSeq": 163,
+        "nativeTraceSequence": 463,
+        "time": 5.433,
+        "health": 50.553,
+        "maxHealth": 100,
+        "armor": 0,
+        "position": [
+          -36,
+          0,
+          -6
+        ],
+        "pickupId": 6,
+        "wait": 0,
+        "markerVisible": true,
+        "markerInstance": 39963330253,
+        "hud": "Meridian Exchange | HP 50.553 | Armor 0.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE"
+      },
+      "modifierScope": "deathmatch damage=1; chatgpt/adaptive + openclaw; active=0, brace=0, gearDamage=1, damageMultiplier=1; no temporary/juggernaut/review pool, NPC shield, arrival modifier or mutators; actual emitted damage already includes weapon falloff/handling"
+    },
+    "healthPickup": {
+      "id": 6,
+      "eventId": 45,
+      "eventTime": 10.317,
+      "expectedGain": 35,
+      "observedGain": 35,
+      "returnSimulationSeconds": 12.015999999999998,
+      "before": {
+        "snapshotSeq": 309,
+        "nativeTraceSequence": 895,
+        "time": 10.3,
+        "health": 50.553,
+        "maxHealth": 100,
+        "armor": 0,
+        "position": [
+          -5.259,
+          0,
+          21.134
+        ],
+        "pickupId": 6,
+        "wait": 0,
+        "markerVisible": true,
+        "markerInstance": 39963330253,
+        "hud": "Meridian Exchange | HP 50.553 | Armor 0.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE"
+      },
+      "collected": {
+        "snapshotSeq": 310,
+        "nativeTraceSequence": 898,
+        "time": 10.333,
+        "health": 85.553,
+        "maxHealth": 100,
+        "armor": 0,
+        "position": [
+          -5.302,
+          0,
+          21.446
+        ],
+        "pickupId": 6,
+        "wait": 11.983,
+        "markerVisible": false,
+        "markerInstance": 39963330253,
+        "hud": "Meridian Exchange | HP 85.553 | Armor 0.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE"
+      },
+      "returned": {
+        "snapshotSeq": 670,
+        "nativeTraceSequence": 1958,
+        "time": 22.333,
+        "health": 85.553,
+        "maxHealth": 100,
+        "armor": 0,
+        "position": [
+          -3.423,
+          0,
+          22.712
+        ],
+        "pickupId": 6,
+        "wait": 0,
+        "markerVisible": true,
+        "markerInstance": 39963330253,
+        "hud": "Meridian Exchange | HP 85.553 | Armor 0.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE"
+      }
+    },
+    "ackHighWater": 1333,
+    "receiptNotIndividualApplication": true,
+    "nativeGraphicalFocusAcceptance": false,
+    "harnessBoundary": {
+      "completionProven": false,
+      "elapsed": 22.8728947777792,
+      "event": "harness_end",
+      "reason": "return_window",
+      "stage": "returned",
+      "trace_next": 2027
+    }
+  },
+  "status": "PASS",
+  "finished": "2026-09-22T00:12:42.246Z"
+}
