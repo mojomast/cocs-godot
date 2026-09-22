@@ -1,0 +1,32 @@
+{
+  "base": "8094d410fd576911f39712f91c7dc2bfc2d5d80a",
+  "classification": "real normal-rate owned server; native physical key events only; synthetic unit checks separately labeled",
+  "commands": [
+    [
+      "node",
+      "/tmp/opencode/sports-progression-8094d41/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/sports-progression-5rl0t6hr/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-5rl0t6hr/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-5rl0t6hr/godot",
+      "--script",
+      "res://tests/sports/test_controls.gd"
+    ]
+  ],
+  "cases": [],
+  "hashManifestSHA256": "eea67baaf7a2b360f2808144ae31eea10fa885c71151dc8677d0a00e055924c1",
+  "status": "FAIL",
+  "error": "/tmp/opencode/sports-progression-8094d41/port/native-sports-progression/evidence/df52063e-30b1-4143-a8ab-35750b2d35de/test_controls.log",
+  "ownedProcessesReaped": true
+}

@@ -5,12 +5,19 @@ const Fleet = preload("res://vehicles/renderer.gd")
 const Controls = preload("res://sports/controls.gd")
 const Chase = preload("res://sports/chase.gd")
 const HUD = preload("res://sports/hud.gd")
+const Guidance = preload("res://sports/guidance.gd")
+const Progression = preload("res://sports/progression.gd")
 var net := Network.new()
 var world := World.new()
 var fleet := Fleet.new()
 var controls := Controls.new()
 var chase := Chase.new()
 var hud := HUD.new()
+var guidance := Guidance.new()
+var progression := Progression.new()
+var initial_camera := Transform3D.IDENTITY
+var time_limit := 0
+var round_target := 0
 var ball := MeshInstance3D.new()
 var map_id := ""
 var endpoint := ""
@@ -27,10 +34,16 @@ var start_sent := false
 var create_sent := false
 var error := ""
 
+func _init() -> void:
+	# Own the new helper even for existing out-of-tree acceptance fixtures.
+	add_child(guidance)
+
 func _ready() -> void:
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--map="): map_id = arg.trim_prefix("--map=")
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
+		if arg.begins_with("--time-limit="): time_limit = clampi(int(arg.trim_prefix("--time-limit=")), 60, 900)
+		if arg.begins_with("--round-target="): round_target = int(arg.trim_prefix("--round-target="))
 	if not map_id in ["ion-speedway", "aurora-stadium"] or endpoint.is_empty():
 		push_error("Require --endpoint=ws://HOST:PORT --map=ion-speedway|aurora-stadium")
 		get_tree().quit(2)
@@ -45,6 +58,7 @@ func _ready() -> void:
 		get_tree().quit(2)
 		return
 	world.camera.current = true
+	initial_camera = world.camera.transform
 	if not chase.configure_map(map_id, world.catalog.resolve_map(map_id)):
 		push_error("Sports camera geometry exceeds cache budget")
 		get_tree().quit(2)
@@ -66,10 +80,9 @@ func _ready() -> void:
 	net.lobby.connect(on_lobby)
 	net.started.connect(on_started)
 	net.snapshot.connect(on_snapshot)
-	net.results.connect(func(frame: Dictionary) -> void:
-		on_snapshot(frame)
-		phase = "results"
-		controls.release())
+	net.results.connect(on_results)
+	net.events.connect(func(items: Array) -> void:
+		if phase == "active": progression.events(items, net.actor_id))
 	net.connection_error.connect(fail)
 	if net.connect_server(endpoint, world.catalog.entries, map_id) != OK: fail("Connection failed")
 
@@ -82,19 +95,48 @@ func fail(message: String) -> void:
 	error = message
 	phase = "error"
 	controls.release()
+	clear_round()
+	net.disconnect_server()
+
+func clear_round() -> void:
+	controls.release()
 	state.clear()
 	actor.clear()
 	vehicle.clear()
 	fleet.clear_round()
 	chase.reset()
+	world.camera.transform = initial_camera
 	ball.hide()
-	net.disconnect_server()
+	ball.position = Vector3.ZERO
+	ball.scale = Vector3.ONE
+	guidance.reset()
+	progression.reset()
+	hud.reset()
+	send_age = 0
+	age = 999
+
+func on_results(frame: Dictionary) -> void:
+	on_snapshot(frame)
+	if phase == "error": return
+	controls.release()
+	# A final neutral receipt is explicit, even though source results stop stepping.
+	checked(net.send_input(controls.packet(float(vehicle.get("yaw", 0))-PI, false)))
+	if phase == "error": return
+	phase = "results"
+	guidance.reset()
+	progression.reset()
 
 func on_lobby(frame: Dictionary) -> void:
 	if phase == "error": return
 	if not configured:
 		configured = true
-		checked(net.configure_match(mode, 0))
+		if time_limit > 0 or round_target > 0:
+			var config := {"mode":mode, "botCount":0}
+			if time_limit > 0: config.timeLimit = time_limit
+			if round_target > 0: config.fragLimit = clampi(round_target, 1, 10 if mode == "puma-race" else 15)
+			checked(net.send_frame({"type":"host", "mapId":map_id, "config":config}))
+		else:
+			checked(net.configure_match(mode, 0))
 	elif frame.get("config") != null and not start_sent:
 		start_sent = true
 		phase = "starting"
@@ -102,13 +144,7 @@ func on_lobby(frame: Dictionary) -> void:
 		checked(net.send_frame({"type":"start"}))
 
 func on_started(_frame: Dictionary) -> void:
-	controls.release()
-	fleet.clear_round()
-	chase.reset()
-	ball.hide()
-	state.clear()
-	actor.clear()
-	vehicle.clear()
+	clear_round()
 	age = 0
 	phase = "active"
 	phase_age = 0
@@ -143,7 +179,7 @@ func eligible() -> bool:
 func _input(event: InputEvent) -> void:
 	controls.accept(event, eligible())
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F5 and phase == "results":
-		controls.release()
+		clear_round()
 		phase = "starting"
 		phase_age = 0
 		checked(net.send_frame({"type":"start"}))
@@ -155,6 +191,7 @@ func _notification(what: int) -> void:
 func _process(delta: float) -> void:
 	phase_age += delta
 	age += delta
+	progression.advance(delta)
 	if not eligible(): controls.release()
 	if phase == "connecting" and not create_sent and net.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		create_sent = true
@@ -170,7 +207,8 @@ func _process(delta: float) -> void:
 		var pose: Dictionary = chase.follow(vehicle, delta)
 		world.camera.position = pose.eye
 		world.camera.look_at(pose.target)
-	hud.update({"mode":mode, "state":state, "vehicle":vehicle, "actor_id":net.actor_id, "phase":phase, "age":age, "eligible":eligible(), "engaged":controls.engaged, "focused":controls.focused, "error":error})
+	guidance.apply(state.get("race", {}), net.actor_id, phase == "active" and age < 0.5 and not state.get("over", false))
+	hud.update({"mode":mode, "state":state, "vehicle":vehicle, "actor_id":net.actor_id, "phase":phase, "age":age, "eligible":eligible(), "engaged":controls.engaged, "focused":controls.focused, "error":error, "message":progression.message})
 
 func _exit_tree() -> void:
 	controls.release()

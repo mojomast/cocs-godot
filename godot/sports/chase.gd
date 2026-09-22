@@ -79,6 +79,10 @@ func clear_eye(anchor: Vector3, candidate: Vector3) -> Vector3:
 func reset() -> void:
 	seeded = false
 	obstructed = false
+	eye = Vector3.ZERO
+	target = Vector3.ZERO
+	last = Vector3.ZERO
+	last_candidates = 0
 
 func follow(v: Dictionary, delta: float) -> Dictionary:
 	var p := Vector3(v.x, v.y, v.z)

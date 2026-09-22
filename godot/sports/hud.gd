@@ -1,4 +1,6 @@
 extends Control
+const Guidance = preload("res://sports/guidance.gd")
+const Progression = preload("res://sports/progression.gd")
 ## Passive presentation of accepted state. text remains an observer-friendly summary.
 var text := ""
 var title: Label
@@ -7,6 +9,9 @@ var detail: Label
 var speed_label: Label
 var status: Label
 var hints: Label
+var progress_label: Label
+var result_panel: PanelContainer
+var result_label: Label
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -23,10 +28,29 @@ func _ready() -> void:
 	detail = label(metrics, 24)
 	detail.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	speed_label = label(metrics, 24)
+	progress_label = label(top, 16)
 	var bottom := panel(true)
 	status = label(bottom, 18)
 	hints = label(bottom, 16)
 	hints.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	result_panel = PanelContainer.new()
+	add_child(result_panel)
+	result_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	result_panel.offset_left = -340
+	result_panel.offset_right = 340
+	result_panel.offset_top = -170
+	result_panel.offset_bottom = 170
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.025, 0.045, 0.075, 0.97)
+	style.border_color = Color(0.35, 1, 0.8)
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(12)
+	style.set_content_margin_all(20)
+	result_panel.add_theme_stylebox_override("panel", style)
+	result_label = label(result_panel, 21)
+	result_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	result_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	result_panel.hide()
 	make_passive(self)
 
 func panel(bottom: bool) -> VBoxContainer:
@@ -36,7 +60,7 @@ func panel(bottom: bool) -> VBoxContainer:
 	p.offset_left = 16
 	p.offset_right = -16
 	p.offset_top = -112 if bottom else 16
-	p.offset_bottom = -16 if bottom else 108
+	p.offset_bottom = -16 if bottom else 136
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.025, 0.045, 0.075, 0.94)
 	style.border_color = Color(0.25, 0.65, 0.8, 0.65)
@@ -103,7 +127,7 @@ static func describe(view: Dictionary) -> Dictionary:
 		instructions = "%s · Close this window and relaunch the demo." % view.get("error", "Connection lost")
 		color = Color(1, 0.5, 0.45)
 	elif phase == "results":
-		phase_text = "Full time" if soccer else "Race complete"
+		phase_text = "Full time" if soccer else ("Time expired" if state.get("overReason") == "time" else "Race complete")
 		status_text = "RELEASED · Round complete"
 		instructions = "F5: start a new round"
 	elif phase == "starting":
@@ -136,9 +160,26 @@ static func describe(view: Dictionary) -> Dictionary:
 			if not soccer: instructions += "\nR: request race reset (server wait)"
 	return {"title":heading, "phase":phase_text, "detail":detail_text, "speed":speed_text, "status":status_text, "hints":instructions, "color":color}
 
+func reset() -> void:
+	text = ""
+	if not is_node_ready(): return
+	for item: Label in [title, phase_label, detail, speed_label, status, hints, progress_label, result_label]: item.text = ""
+	result_panel.hide()
+
 func update(view: Dictionary) -> void:
 	var parts := describe(view)
-	text = "%s · %s\n%s · %s\n%s\n%s" % [parts.title, parts.phase, parts.detail, parts.speed, parts.status, parts.hints]
+	var state: Dictionary = view.get("state", {})
+	var race: Dictionary = state.get("race", {})
+	var soccer: bool = view.get("mode") == "puma-soccer"
+	var progress := "Elapsed %s" % Progression.clock(race.get("elapsed"))
+	var limit: Variant = race.get("timeLimit", state.get("config", {}).get("timeLimit"))
+	if limit != null: progress += " / " + Progression.clock(limit)
+	var guidance := Guidance.describe(race, int(view.get("actor_id", -1)), view.get("vehicle", {}))
+	if not guidance.is_empty() and view.get("phase") == "active" and float(view.get("age", 999)) < 0.5 and not state.get("over", false): progress += " · " + guidance
+	if not str(view.get("message", "")).is_empty(): progress += " · " + str(view.message)
+	var results := Progression.results(state, int(view.get("actor_id", -1)), soccer) if view.get("phase") == "results" else ""
+	text = "%s · %s\n%s · %s\n%s\n%s\n%s" % [parts.title, parts.phase, parts.detail, parts.speed, progress, parts.status, parts.hints]
+	if not results.is_empty(): text += "\n" + results
 	if not is_node_ready(): return
 	title.text = parts.title
 	phase_label.text = parts.phase
@@ -147,3 +188,6 @@ func update(view: Dictionary) -> void:
 	status.text = parts.status
 	status.add_theme_color_override("font_color", parts.color)
 	hints.text = parts.hints
+	progress_label.text = progress
+	result_panel.visible = not results.is_empty()
+	result_label.text = results
