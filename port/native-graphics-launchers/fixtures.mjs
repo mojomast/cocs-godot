@@ -30,6 +30,12 @@ export const rejectedOptions = [
 
 export async function verifyLifecycle(kind, experience, scenario = 'exit') {
   const root = await mkdtemp(join(tmpdir(), 'native graphics launcher stub '));
+  // The synthetic engine below is a shebanged Node script named cocs.x86_64.
+  // Node resolves the NEAREST package.json for it: an ambient
+  // {"type":"module"} anywhere above tmpdir() (a shared TMPDIR) forces ESM and
+  // kills it with ERR_UNKNOWN_FILE_EXTENSION. Pin CJS so the fixture owns its
+  // loader regardless of the environment the gates run in.
+  await writeFile(join(root, 'package.json'), '{"type":"commonjs"}\n');
   const processes = new Set();
   let result;
   try {

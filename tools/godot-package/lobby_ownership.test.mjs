@@ -15,6 +15,10 @@ for (const kind of ['package', 'dev']) {
   for (const scenario of ['exit', 'native-failure', 'missing-native']) {
     test(`${kind}: external authority ownership and cleanup on ${scenario}`, async () => {
       const root = await mkdtemp(join(tmpdir(), 'lobby-owner-test-'));
+      // Shebanged cocs.x86_64 Node stub: the nearest package.json decides its
+      // loader, so an ambient {"type":"module"} above tmpdir() (shared TMPDIR) would
+      // force ESM and kill it with ERR_UNKNOWN_FILE_EXTENSION. Pin CJS explicitly.
+      await writeFile(join(root, 'package.json'), '{"type":"commonjs"}\n');
       try {
         async function put(path, text) { await mkdir(dirname(join(root,path)), {recursive:true}); await writeFile(join(root,path), text); }
         async function copy(from, to) { await mkdir(dirname(join(root,to)), {recursive:true}); await copyFile(join(here,from), join(root,to)); }

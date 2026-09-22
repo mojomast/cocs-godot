@@ -18,6 +18,12 @@ export async function verifyFactoryBounds() {
 
 export async function verifyActualFactory(kind, bots) {
   const root = await mkdtemp('/tmp/opencode/native-arena-factory-');
+  // The synthetic engine below is a shebanged Node script named cocs.x86_64.
+  // Node resolves the NEAREST package.json for it: an ambient
+  // {"type":"module"} anywhere above tmpdir() (a shared TMPDIR) forces ESM and
+  // kills it with ERR_UNKNOWN_FILE_EXTENSION. Pin CJS so the fixture owns its
+  // loader regardless of the environment the gates run in.
+  await writeFile(join(root, 'package.json'), '{"type":"commonjs"}\n');
   const seconds = bots === 7 ? 300 : 60, valid = bots >= 1 && bots <= 7;
   try {
     const put = async (path, text) => {await mkdir(dirname(join(root,path)), {recursive:true}); await writeFile(join(root,path),text);};

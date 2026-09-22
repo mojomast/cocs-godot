@@ -30,6 +30,10 @@ export function createAuthority(options){
 for(const kind of ['package','dev'])for(const scenario of ['exit','native-failure','native-crash','missing-native','interrupt','terminate','server-failure','listen-failure','factory-failure','wrong-service','wrong-transport','string-transport','wrong-local','wrong-port','bad-args']){
  test(`${kind} Horde synthetic factory: ${scenario}`,async()=>{
   const root=await mkdtemp(join(tmpdir(),'horde-owner-synthetic-'));
+  // Shebanged cocs.x86_64 Node stub: the nearest package.json decides its
+  // loader, so an ambient {"type":"module"} above tmpdir() (shared TMPDIR) would
+  // force ESM and kill it with ERR_UNKNOWN_FILE_EXTENSION. Pin CJS explicitly.
+  await writeFile(join(root, 'package.json'), '{"type":"commonjs"}\n');
   try{
    const put=async(path,text)=>{await mkdir(dirname(join(root,path)),{recursive:true});await writeFile(join(root,path),text);};
    const copy=async(from,to)=>{await mkdir(dirname(join(root,to)),{recursive:true});await copyFile(join(here,from),join(root,to));};

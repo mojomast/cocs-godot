@@ -52,6 +52,12 @@ export const scenarios = ['exit','smoke','unstarted','root-endpoint','endpoint-o
 
 export async function verifyOwnership(kind, scenario, map = 'prism-foundry', bots = 1) {
   const root = await mkdtemp(join(tmpdir(),'native arena ownership synthetic '));
+  // The synthetic engine below is a shebanged Node script named cocs.x86_64.
+  // Node resolves the NEAREST package.json for it: an ambient
+  // {"type":"module"} anywhere above tmpdir() (a shared TMPDIR) forces ESM and
+  // kills it with ERR_UNKNOWN_FILE_EXTENSION. Pin CJS so the fixture owns its
+  // loader regardless of the environment the gates run in.
+  await writeFile(join(root, 'package.json'), '{"type":"commonjs"}\n');
   const processes = new Set();
   try {
     const put = async (path,text) => {await mkdir(dirname(join(root,path)),{recursive:true});await writeFile(join(root,path),text);};
