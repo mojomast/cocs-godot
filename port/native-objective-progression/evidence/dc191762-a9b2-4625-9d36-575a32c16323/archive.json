@@ -1,0 +1,14 @@
+{
+  "wire.jsonl": {
+    "bytes": 7772102,
+    "sha256": "b9451fa111f5f712d7d9d56f900d3575c789e8aac181af15325d69fe920219bd"
+  },
+  "native.stdout.log": {
+    "bytes": 9279455,
+    "sha256": "cca01bbaa5af91634b5c6e7ee3f10cbbf1eb49725ba257c4041507353c9f6579"
+  },
+  "native.stderr.log": {
+    "bytes": 295,
+    "sha256": "e7e1596e5a5238b474dd5106e033ff3e77bd52b997ceb6a9b22b854e10ac4b78"
+  }
+}

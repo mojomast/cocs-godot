@@ -1,0 +1,41 @@
+{
+  "map": "sunscar-convoy",
+  "seconds": 90,
+  "deadline": 150000,
+  "base": "d498479",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "runtimeHashes": {
+    "godot/objectives/demo.gd": "775a116e41ad77fe7cb056462063d0513d3d70b219e8d1e32a5d840ca8308857",
+    "godot/objectives/renderer.gd": "1f7336894a2d9a2572bc58ec26071b973e8316386b42e753a3fa77aeadea062a",
+    "godot/objectives/hud.gd": "76e7fab16fd9951a3a49bfce7de52bd4b583a5530defbb8bca83c7276b4b429e",
+    "godot/tests/objectives/progression_live.gd": "747461e0a4bb15109131eff027351e98798dcf987fbfb12817145443495187b9",
+    "godot/world/session.gd": "a501f3814e08c6ba17ac4f9bf2b2d2942241a8a48613d902387b8774a3b31554",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "server/game-server.mjs": "06e79c72d0530abf5256b803a19fbfb00582892579f27f42eae871cc28fb98b0",
+    "port/native-objective-progression/run.mjs": "1f2cfa57c6255a1985bf5b1fbe637fbe70f01702ce2312b298947128a5712f4f",
+    "port/native-objective-progression/peer.mjs": "e1f0810afbc3c818c1d53dc7869f07678a0b5429f9f4183c6335d0fe987272aa",
+    "port/native-objective-progression/validate.mjs": "13b151f53c4a1ed021b32241c5c581564daa0e505fa166908ed21da140413864"
+  },
+  "exit": 1,
+  "reason": "AssertionError [ERR_ASSERTION]: fresh cart distance bounded by fresh round time\n    at validate (file:///tmp/opencode/objective-progression/port/native-objective-progression/validate.mjs:54:10)\n    at file:///tmp/opencode/objective-progression/port/native-objective-progression/run.mjs:53:20\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+  "normalRate": true,
+  "nativeCompletionProven": false,
+  "cleanup": [
+    {
+      "pid": 2682323,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 2682336,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "serverClosed": true,
+  "sockets": 0,
+  "temporaryTreeRemoved": true
+}

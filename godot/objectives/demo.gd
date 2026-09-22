@@ -1,8 +1,14 @@
 extends "res://world/session.gd"
 ## Standalone initialization, reusing the shared session callbacks and controls.
 const Objectives = preload("res://objectives/renderer.gd")
+const ObjectiveHUD = preload("res://objectives/hud.gd")
+const Scoreboard = preload("res://ui/scoreboard.gd")
 var objectives := Objectives.new()
 var objective_label := Label.new()
+var objective_hud := ObjectiveHUD.new()
+var scoreboard := Scoreboard.new()
+var round_seconds := 0
+var wait_for_peer := false
 const PAIRS := {"tidal-citadel":"ctf", "sunscar-convoy":"payload"}
 var evidence_enabled := false
 var evidence_count := 0
@@ -36,6 +42,8 @@ func _ready() -> void:
 	add_child(combat)
 	add_child(client)
 	add_child(objectives)
+	add_child(objective_hud)
+	add_child(scoreboard)
 	panel.add_child(combat_label)
 	combat_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	presentation.interpolate_remote = true
@@ -49,6 +57,12 @@ func _ready() -> void:
 		if arg.begins_with("--map="): selected = arg.trim_prefix("--map=")
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
 		if arg == "--objective-evidence": evidence_enabled = true
+		if arg == "--objective-peer": wait_for_peer = true
+		if arg.begins_with("--round-seconds="):
+			round_seconds = arg.trim_prefix("--round-seconds=").to_int()
+			if round_seconds < 60 or round_seconds > 180:
+				on_error("Round seconds must be 60..180")
+				return
 	if not PAIRS.has(selected) or not catalog.entries.has(selected) or PAIRS[selected] not in catalog.entries[selected].modes:
 		on_error("Choose --map=tidal-citadel or --map=sunscar-convoy via the owned launcher.")
 		return
@@ -63,21 +77,29 @@ func _ready() -> void:
 	client.snapshot.connect(on_snapshot)
 	client.events.connect(func(items: Array) -> void:
 		if phase == 3: combat.apply_events(items, client.actor_id))
-	client.results.connect(func(frame: Dictionary) -> void:
-		phase = 4
-		presentation.apply_state(frame.state, client.actor_id)
-		pickups.apply_state(frame.state)
-		objectives.apply_state(frame.state, client.actor_id)
-		combat.clear_round()
-		release_pointer()
-		refresh_hud())
+	client.results.connect(on_results)
 	connect_selected_match()
+
+func on_results(frame: Dictionary) -> void:
+	round_results += 1
+	phase = 4
+	presentation.apply_state(frame.state, client.actor_id)
+	pickups.apply_state(frame.state)
+	objectives.apply_state(frame.state, client.actor_id)
+	combat.clear_round()
+	release_pointer()
+	refresh_hud()
 
 func on_lobby(frame: Dictionary) -> void:
 	if phase == 1:
-		if client.configure_match(selected_mode, 0) != OK: on_error("Configuration failed; relaunch.")
+		var result: Error
+		if round_seconds > 0:
+			result = client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":selected_mode,"botCount":0,"timeLimit":round_seconds}})
+		else: result = client.configure_match(selected_mode, 0)
+		if result != OK: on_error("Configuration failed; relaunch.")
 		else: phase = 2
 		return
+	if phase == 2 and wait_for_peer and frame.get("players", []).size() < 2: return
 	super.on_lobby(frame)
 
 func on_started(frame: Dictionary) -> void:
@@ -97,7 +119,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	objectives.apply_state(frame.state, client.actor_id)
 	refresh_hud()
 	if evidence_enabled and evidence_count < 5400:
-		print("OBJECTIVE_NATIVE ", JSON.stringify({"schema":1,"snapshot_seq":frame.seq,"actor_id":client.actor_id,"ack":client.last_ack,"actor":presentation.local_actor,"rendered":objectives.rendered,"hud":objective_label.text,"controls_captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED}))
+		print("OBJECTIVE_NATIVE ", JSON.stringify({"schema":1,"round":round_starts,"snapshot_seq":frame.seq,"actor_id":client.actor_id,"ack":client.last_ack,"actor":presentation.local_actor,"rendered":objectives.rendered,"hud":objective_label.text,"controls_captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED}))
 		evidence_count += 1
 
 func controls_released() -> bool:

@@ -1,0 +1,41 @@
+{
+  "map": "tidal-citadel",
+  "seconds": 90,
+  "deadline": 150000,
+  "base": "d498479",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "runtimeHashes": {
+    "godot/objectives/demo.gd": "775a116e41ad77fe7cb056462063d0513d3d70b219e8d1e32a5d840ca8308857",
+    "godot/objectives/renderer.gd": "fef1439d35bede4f75ff37d9ac0715bd381f1b920d988c42188b4825ab453656",
+    "godot/objectives/hud.gd": "a8e9c65140640bbb378dd9ecd23bda67296c70a707dfc5bfbbd3009fccefed07",
+    "godot/tests/objectives/progression_live.gd": "6b17d07b0875297c98878c08377af2a5c6dc79b7e67539e0f139d7f578418454",
+    "godot/world/session.gd": "a501f3814e08c6ba17ac4f9bf2b2d2942241a8a48613d902387b8774a3b31554",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "server/game-server.mjs": "06e79c72d0530abf5256b803a19fbfb00582892579f27f42eae871cc28fb98b0",
+    "port/native-objective-progression/run.mjs": "42d72548758f8c780111180091a1b2f15dad0888283232ad09131bcfbed93fc4",
+    "port/native-objective-progression/peer.mjs": "09cdcf20fcf31a8f97fe039e13c9184e62891a9f141da1eadec70bda51d690c7",
+    "port/native-objective-progression/validate.mjs": "f73f319be7ce5d5af4f574cc79237d3302175d2a627c2505d603fa131415662f"
+  },
+  "exit": 1,
+  "reason": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n3 !== 1\n\n    at validate (file:///tmp/opencode/objective-progression/port/native-objective-progression/validate.mjs:38:9)\n    at file:///tmp/opencode/objective-progression/port/native-objective-progression/run.mjs:53:20\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+  "normalRate": true,
+  "nativeCompletionProven": false,
+  "cleanup": [
+    {
+      "pid": 2605306,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 2605309,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "serverClosed": true,
+  "sockets": 0,
+  "temporaryTreeRemoved": true
+}

@@ -4,6 +4,7 @@ var markers: Dictionary = {}
 var mode := ""
 var hud_text := "Objectives unavailable"
 var rendered: Dictionary = {}
+var hud_model: Dictionary = {}
 const RED := Color("ff775f")
 const BLUE := Color("69c9ff")
 
@@ -16,10 +17,17 @@ static func point(value: Variant) -> bool:
 static func team_name(value: Variant) -> String:
 	return "RED [1]" if value == 0 else ("BLUE [2]" if value == 1 else "UNKNOWN")
 
+static func count_text(value: Variant) -> String:
+	return str(int(value)) if numeric(value) else "?"
+
+static func distance_text(value: Variant) -> String:
+	return "%.1f" % float(value) if numeric(value) else "?"
+
 func clear_round() -> void:
 	for node: Node in markers.values(): node.free()
 	markers.clear()
 	rendered.clear()
+	hud_model.clear()
 	mode = ""
 	hud_text = "Objectives unavailable"
 
@@ -54,7 +62,10 @@ func marker(key: String, kind: String, color: Color) -> Node3D:
 	var title := Label3D.new()
 	title.name = "Title"
 	title.font_size = 32
-	title.pixel_size = 0.018
+	title.pixel_size = 0.006
+	# Nearby labels yield to the panel HUD rather than filling the view.
+	title.visibility_range_begin = 3.5
+	title.visibility_range_end = 85.0
 	title.position.y = 3.2 if kind == "flag" else 2.4
 	title.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	node.add_child(title)
@@ -105,9 +116,11 @@ func apply_state(state: Dictionary, local_actor_id: int) -> void:
 			if actor is Dictionary and actor.get("id") == local_actor_id: local_team = actor.get("team")
 	var scores: Variant = state.get("teamScores")
 	var score := "? : ?"
-	if scores is Dictionary: score = "%s : %s" % [str(scores.get("0", scores.get(0, "?"))), str(scores.get("1", scores.get(1, "?")))]
+	if scores is Dictionary: score = "%s : %s" % [count_text(scores.get("0", scores.get(0))), count_text(scores.get("1", scores.get(1)))]
 	var lines: Array[String] = ["%s  |  YOU: %s  |  %s" % [mode.to_upper(), team_name(local_team), score]]
+	hud_model = {"title":"%s · YOU: %s · RED / BLUE  %s" % [mode.to_upper(), team_name(local_team), score], "detail":"", "hint":""}
 	if mode == "ctf":
+		var statuses: Array[String] = []
 		var flags: Variant = state.get("flags")
 		if flags is Array and flags.size() <= 2:
 			for flag: Variant in flags:
@@ -119,11 +132,14 @@ func apply_state(state: Dictionary, local_actor_id: int) -> void:
 				var status: String = str(flag.get("state", "unknown"))
 				if status not in ["at-base", "carried", "dropped"]: continue
 				var title := "%s / %s" % [team_name(team), status]
-				if status == "carried": title += " / actor %s" % str(flag.get("carrier", "?"))
+				if status == "carried": title += " / actor %s" % count_text(flag.get("carrier"))
 				# Snapshot position remains authoritative even if carrier was omitted.
 				put(key, "flag", flag, title, RED if team == 0 else BLUE, seen)
 				lines.append(title)
+				statuses.append(title)
 		if seen.is_empty(): lines.append("Flag state unavailable")
+		hud_model.detail = "     |     ".join(statuses) if not statuses.is_empty() else "Flag state unavailable"
+		hud_model.hint = "Touch enemy flag to carry · E: pass nearby / drop · Touch friendly dropped flag to return · Bring enemy flag home to capture"
 		lines.append("Touch enemy flag to carry; E: nearby teammate pass, otherwise drop.")
 		lines.append("Touch friendly dropped flag to return. Capture at uncontested home flag.")
 	elif mode == "payload":
@@ -140,6 +156,13 @@ func apply_state(state: Dictionary, local_actor_id: int) -> void:
 				if point(position): put("cart", "cart", position, "PAYLOAD / " + status, Color("edba59"), seen)
 				lines.append("%s | distance %s / %s | checkpoints %s / %s" % [status, str(payload.get("distance", "?")), str(payload.get("total", "?")), str(payload.get("checkpointsReached", "?")), str(payload.get("checkpointCount", "?"))])
 				lines.append("Role: " + ("ESCORT" if local_team != null and local_team == objective.get("attacker") else ("DEFEND" if local_team != null and local_team == objective.get("defender") else "UNKNOWN")))
+				var role := "ESCORT" if local_team != null and local_team == objective.get("attacker") else ("DEFEND" if local_team != null and local_team == objective.get("defender") else "UNKNOWN")
+				var display_status := "ROLLING BACK" if payload.get("pushing") != null and payload.get("pushing") == objective.get("defender") and payload.get("contested") == false else status
+				hud_model.title = "PAYLOAD · %s · YOU: %s · %s" % [role, team_name(local_team), display_status]
+				if numeric(payload.get("progress")): hud_model.progress = clampf(float(payload.progress), 0, 100)
+				var progress_text := "%.1f%%" % float(hud_model.progress) if hud_model.has("progress") else "?"
+				hud_model.detail = "%s · %s / %s m · Checkpoints %s / %s" % [progress_text, distance_text(payload.get("distance")), distance_text(payload.get("total")), count_text(payload.get("checkpointsReached")), count_text(payload.get("checkpointCount"))]
+				hud_model.hint = "Escort inside cart radius · Both teams freeze progress · Defenders roll back to last checkpoint"
 			var zones: Variant = objective.get("zones")
 			if zones is Array and zones.size() <= 6:
 				for zone: Variant in zones:
@@ -147,10 +170,24 @@ func apply_state(state: Dictionary, local_actor_id: int) -> void:
 					var label := str(zone.id) + " / " + ("BANKED" if zone.get("owner") != null and zone.get("owner") == objective.get("attacker") else "CHECKPOINT")
 					put("cp_" + zone.id, "base", zone, label, Color("bcd98c"), seen)
 		lines.append("Escort automatically in cart radius; both teams contest; defenders roll back.")
-	else: lines = ["Objectives unavailable"]
-	if state.get("over") == true: lines.append("ROUND OVER / authoritative winner: " + str(state.get("winner", "unknown")))
+	else:
+		lines = ["Objectives unavailable"]
+		hud_model.clear()
+	if state.get("over") == true:
+		lines.append("ROUND OVER / authoritative winner: " + str(state.get("winner", "unknown")))
+		hud_model.hint = "ROUND COMPLETE · " + ("Draw" if state.get("winner") == null else "Winner: " + team_name(state.winner))
 	for key: String in markers.keys():
 		if not seen.has(key) and not key.begins_with("guide_"):
 			markers[key].free()
 			markers.erase(key)
 	hud_text = "\n".join(lines)
+
+func _process(_delta: float) -> void:
+	var camera := get_viewport().get_camera_3d()
+	if camera == null or not markers.has("cart"): return
+	var cart: Node3D = markers.cart
+	var eye := camera.global_position - cart.global_position
+	# Presentation-only near-eye clipping. Root and observed coordinates stay exact.
+	var inside := absf(eye.x) < 1.8 and absf(eye.z) < 1.5 and eye.y < 2.4 and eye.y > 0
+	for child: Node in cart.get_children():
+		if child is MeshInstance3D: child.visible = not inside

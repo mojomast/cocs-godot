@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "matches": 1870,
+  "returned": true,
+  "capture": true,
+  "contestSamples": 0,
+  "pushAfter": false,
+  "idleAfter": false,
+  "checkpoint": false,
+  "results": 1,
+  "restarts": 1,
+  "normalRate": true,
+  "nativeCompletionProven": false
+}
