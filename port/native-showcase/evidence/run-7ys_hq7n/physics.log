@@ -1,0 +1,43 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRISM_FOUNDRY_READY {"animated_rings":3,"areas":4,"cpu_particles":48,"elevation_m":4,"experience":"Prism Foundry","multimesh_batches":5,"multimesh_instances":731,"network":false,"nodes":603,"renderer":"gl_compatibility","shadow_lights":1,"standalone":true,"static_bodies":86,"turbines":2,"unshadowed_omni_lights":3,"walkable_ramps":2}
+ERROR: PRISM_PHYSICS_FAIL physical Shift increases native movement speed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:70)
+       [2] frames (res://tests/showcase/physics.gd:19)
+ERROR: PRISM_PHYSICS_FAIL walk through upper portal to exterior deck
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:85)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL exterior guard collision prevents walking out of bounds
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:90)
+       [2] frames (res://tests/showcase/physics.gd:19)
+ERROR: PRISM_PHYSICS_FAIL walk into turbine hall
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:102)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL leave turbine equipment aisle
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:103)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL reach garden east wall aisle
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:110)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+PRISM_PHYSICS_RESULT {"checks":45,"details":["spawn settles on native floor","physical W walks forward with floor contact","physical Shift increases native movement speed","space produces native ballistic jump","jump lands on collision floor","walk to east ramp foot","ascend east ramp via CharacterBody move_and_slide","ramp reaches 4 m upper landing","join north mezzanine","north to east mezzanine corner","traverse upper east catwalk","walk through upper portal to exterior deck","exterior deck supports native player","exterior guard collision prevents walking out of bounds","return from exterior deck","east to south upper corner","cross south upper bridge","walk full west upper catwalk","west to north upper corner","join west ramp landing","descend west ramp to floor","descending ramp returns to ground","cross under west mezzanine","approach turbine portal","walk into turbine hall","leave turbine equipment aisle","return to atrium","walk north ground perimeter","approach coolant portal","walk into coolant garden","garden walkway supports player","reach garden east wall aisle","garden wall blocks capsule","falling below world resets to spawn","lateral out-of-bounds resets","physical R returns to arrival","focus loss clears movement sprint jump and releases capture","left click recaptures mouse","escape releases mouse and clears controls","captured relative mouse controls yaw and pitch","photo view clears movement and selects separate camera","P returns to same physical explorer","animated machinery causes no per-frame node churn","scene teardown frees map player cameras and children","teardown leaves cursor released"],"failures":["physical Shift increases native movement speed","walk through upper portal to exterior deck","exterior guard collision prevents walking out of bounds","walk into turbine hall","leave turbine equipment aisle","reach garden east wall aisle"]}

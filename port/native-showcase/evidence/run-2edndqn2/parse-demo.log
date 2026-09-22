@@ -1,0 +1,6 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: Cannot find member "REFLECTED_LIGHT_SOURCE_SKY" in base "Environment".
+          at: GDScript::reload (res://showcase/demo.gd:122)
+ERROR: Failed to load script "res://showcase/demo.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:3041)

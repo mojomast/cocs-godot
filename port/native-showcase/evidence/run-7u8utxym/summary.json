@@ -1,0 +1,20 @@
+{
+  "engine": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "software_renderer": true,
+  "steps": [
+    {
+      "name": "import",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--headless",
+        "--editor",
+        "--import"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 3.57
+    }
+  ]
+}

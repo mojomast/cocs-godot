@@ -1,0 +1,322 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "OS physical W moves native character",
+      "before": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 2,
+        "on_floor": true,
+        "pitch": 0.0,
+        "position": [
+          0.0,
+          0.000136712100356817,
+          15.0
+        ],
+        "reset_count": 1,
+        "time": 0.166666666666667,
+        "tour": -1,
+        "yaw": 0.0
+      },
+      "after": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {
+          "87": true
+        },
+        "mouse_mode": 2,
+        "on_floor": true,
+        "pitch": 0.0,
+        "position": [
+          0.0,
+          0.000838199048303068,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 0.659546,
+        "tour": -1,
+        "yaw": 0.0
+      }
+    },
+    {
+      "check": "OS focus loss clears held movement and releases cursor",
+      "before": {
+        "focus": false,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 0,
+        "on_floor": true,
+        "pitch": 0.0,
+        "position": [
+          0.0,
+          0.000838199048303068,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 0.742879333333333,
+        "tour": -1,
+        "yaw": 0.0
+      },
+      "after": {
+        "focus": false,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 0,
+        "on_floor": true,
+        "pitch": 0.0,
+        "position": [
+          0.0,
+          0.000838199048303068,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 1.22673911111111,
+        "tour": -1,
+        "yaw": 0.0
+      }
+    },
+    {
+      "check": "native click recaptures",
+      "before": {
+        "focus": false,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 0,
+        "on_floor": true,
+        "pitch": 0.0,
+        "position": [
+          0.0,
+          0.000838199048303068,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 1.22673911111111,
+        "tour": -1,
+        "yaw": 0.0
+      },
+      "after": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 2,
+        "on_floor": true,
+        "pitch": 0.0,
+        "position": [
+          0.0,
+          0.000838199048303068,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 1.46666666666667,
+        "tour": -1,
+        "yaw": 0.0
+      }
+    },
+    {
+      "check": "OS relative mouse changes yaw and pitch",
+      "before": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 2,
+        "on_floor": true,
+        "pitch": 0.0,
+        "position": [
+          0.0,
+          0.000838199048303068,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 1.46666666666667,
+        "tour": -1,
+        "yaw": 0.0
+      },
+      "after": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 2,
+        "on_floor": true,
+        "pitch": 0.0390999987721443,
+        "position": [
+          0.0,
+          0.000838199048303068,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 1.54724766666667,
+        "tour": -1,
+        "yaw": -0.101199999451637
+      }
+    },
+    {
+      "check": "OS Space jumps",
+      "before": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 2,
+        "on_floor": true,
+        "pitch": 0.0390999987721443,
+        "position": [
+          0.0,
+          0.000838199048303068,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 1.54724766666667,
+        "tour": -1,
+        "yaw": -0.101199999451637
+      },
+      "after": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {
+          "32": true
+        },
+        "mouse_mode": 2,
+        "on_floor": false,
+        "pitch": 0.0390999987721443,
+        "position": [
+          0.0,
+          0.809268772602081,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 1.70915242857143,
+        "tour": -1,
+        "yaw": -0.101199999451637
+      }
+    },
+    {
+      "check": "OS Escape releases",
+      "before": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {
+          "32": true
+        },
+        "mouse_mode": 2,
+        "on_floor": false,
+        "pitch": 0.0390999987721443,
+        "position": [
+          0.0,
+          0.809268772602081,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 1.70915242857143,
+        "tour": -1,
+        "yaw": -0.101199999451637
+      },
+      "after": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 0,
+        "on_floor": true,
+        "pitch": 0.0390999987721443,
+        "position": [
+          0.0,
+          0.000101719051599503,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 2.510526,
+        "tour": -1,
+        "yaw": -0.101199999451637
+      }
+    },
+    {
+      "check": "OS R resets to spawn",
+      "before": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 0,
+        "on_floor": true,
+        "pitch": 0.0390999987721443,
+        "position": [
+          0.0,
+          0.000101719051599503,
+          12.8499870300293
+        ],
+        "reset_count": 1,
+        "time": 2.510526,
+        "tour": -1,
+        "yaw": -0.101199999451637
+      },
+      "after": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 2,
+        "on_floor": true,
+        "pitch": 0.0,
+        "position": [
+          0.0,
+          9.1147143393755e-05,
+          15.0
+        ],
+        "reset_count": 2,
+        "time": 2.83015562962963,
+        "tour": -1,
+        "yaw": 0.0
+      }
+    },
+    {
+      "check": "OS P / bracket / P photo tour returns to exploration",
+      "before": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 2,
+        "on_floor": true,
+        "pitch": 0.0,
+        "position": [
+          0.0,
+          9.1147143393755e-05,
+          15.0
+        ],
+        "reset_count": 2,
+        "time": 2.98978525925926,
+        "tour": 0,
+        "yaw": 0.0
+      },
+      "after": {
+        "focus": true,
+        "jump_pending": false,
+        "keys": {},
+        "mouse_mode": 2,
+        "on_floor": true,
+        "pitch": 0.0,
+        "position": [
+          0.0,
+          9.1147143393755e-05,
+          15.0
+        ],
+        "reset_count": 2,
+        "time": 3.208044,
+        "tour": -1,
+        "yaw": 0.0
+      }
+    }
+  ],
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "/tmp/opencode/cocs-graphics-showcase/godot",
+    "--audio-driver",
+    "Dummy",
+    "--rendering-method",
+    "gl_compatibility",
+    "--resolution",
+    "960x640",
+    "--script",
+    "res://tests/showcase/native_controls.gd",
+    "--",
+    "--control-dir=/tmp/opencode/cocs-graphics-showcase/port/native-showcase/evidence/run-biio2y4s"
+  ]
+}

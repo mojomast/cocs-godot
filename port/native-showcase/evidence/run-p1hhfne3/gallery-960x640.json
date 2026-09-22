@@ -1,0 +1,83 @@
+{
+	"features": {
+		"animated_rings": 3,
+		"areas": 4,
+		"cpu_particles": 48,
+		"elevation_m": 4,
+		"experience": "Prism Foundry",
+		"multimesh_batches": 12,
+		"multimesh_instances": 956,
+		"network": false,
+		"nodes": 401,
+		"renderer": "gl_compatibility",
+		"shadow_lights": 1,
+		"standalone": true,
+		"static_bodies": 90,
+		"turbines": 2,
+		"unshadowed_omni_lights": 3,
+		"walkable_ramps": 2
+	},
+	"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"views": [
+		{
+			"draw_calls": 699.0,
+			"frame_wall_ms_mean": 77.7385833333333,
+			"name": "spawn",
+			"primitives": 245321.0,
+			"size": [
+				960,
+				640
+			]
+		},
+		{
+			"draw_calls": 550.0,
+			"frame_wall_ms_mean": 78.3278333333333,
+			"name": "atrium",
+			"primitives": 205786.0,
+			"size": [
+				960,
+				640
+			]
+		},
+		{
+			"draw_calls": 171.0,
+			"frame_wall_ms_mean": 51.5136666666667,
+			"name": "turbine",
+			"primitives": 105686.0,
+			"size": [
+				960,
+				640
+			]
+		},
+		{
+			"draw_calls": 290.0,
+			"frame_wall_ms_mean": 36.14525,
+			"name": "garden",
+			"primitives": 73744.0,
+			"size": [
+				960,
+				640
+			]
+		},
+		{
+			"draw_calls": 71.0,
+			"frame_wall_ms_mean": 71.142,
+			"name": "vista",
+			"primitives": 68097.0,
+			"size": [
+				960,
+				640
+			]
+		},
+		{
+			"draw_calls": 479.0,
+			"frame_wall_ms_mean": 62.7636666666667,
+			"name": "overview",
+			"primitives": 168616.0,
+			"size": [
+				960,
+				640
+			]
+		}
+	]
+}

@@ -1,0 +1,178 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PRISM_FOUNDRY_READY {"animated_rings":3,"areas":4,"cpu_particles":48,"elevation_m":4,"experience":"Prism Foundry","multimesh_batches":5,"multimesh_instances":699,"network":false,"nodes":565,"renderer":"gl_compatibility","shadow_lights":1,"standalone":true,"static_bodies":80,"turbines":2,"unshadowed_omni_lights":3,"walkable_ramps":2}
+ERROR: PRISM_PHYSICS_FAIL physical W walks forward with floor contact
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:62)
+       [2] frames (res://tests/showcase/physics.gd:19)
+ERROR: PRISM_PHYSICS_FAIL space produces native ballistic jump
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:67)
+       [2] frames (res://tests/showcase/physics.gd:19)
+ERROR: PRISM_PHYSICS_FAIL walk to east ramp foot
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:71)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL ascend east ramp via CharacterBody move_and_slide
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:72)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL ramp reaches 4 m upper landing
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:73)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL join north mezzanine
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:74)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL north to east mezzanine corner
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:75)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL traverse upper east catwalk
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:76)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL walk through upper portal to exterior deck
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:77)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL exterior deck supports native player
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:78)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL exterior guard collision prevents walking out of bounds
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:82)
+       [2] frames (res://tests/showcase/physics.gd:19)
+ERROR: PRISM_PHYSICS_FAIL return from exterior deck
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:83)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL east to south upper corner
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:84)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL cross south upper bridge
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:85)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL walk full west upper catwalk
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:86)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL west to north upper corner
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:87)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL join west ramp landing
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:88)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL descend west ramp to floor
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:89)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL cross under west mezzanine
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:92)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL approach turbine portal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:93)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL walk into turbine hall
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:94)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL leave turbine equipment aisle
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:95)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL return to atrium
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:96)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL walk north ground perimeter
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:97)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL approach coolant portal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:98)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL walk into coolant garden
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:99)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL reach garden east wall aisle
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:102)
+       [2] walk_to (res://tests/showcase/physics.gd:48)
+ERROR: PRISM_PHYSICS_FAIL left click recaptures mouse
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:128)
+       [2] frames (res://tests/showcase/physics.gd:19)
+ERROR: PRISM_PHYSICS_FAIL captured relative mouse controls yaw and pitch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/showcase/physics.gd:16)
+       [1] run (res://tests/showcase/physics.gd:139)
+       [2] frames (res://tests/showcase/physics.gd:19)
+PRISM_PHYSICS_RESULT {"checks":44,"details":["spawn settles on native floor","physical W walks forward with floor contact","space produces native ballistic jump","jump lands on collision floor","walk to east ramp foot","ascend east ramp via CharacterBody move_and_slide","ramp reaches 4 m upper landing","join north mezzanine","north to east mezzanine corner","traverse upper east catwalk","walk through upper portal to exterior deck","exterior deck supports native player","exterior guard collision prevents walking out of bounds","return from exterior deck","east to south upper corner","cross south upper bridge","walk full west upper catwalk","west to north upper corner","join west ramp landing","descend west ramp to floor","descending ramp returns to ground","cross under west mezzanine","approach turbine portal","walk into turbine hall","leave turbine equipment aisle","return to atrium","walk north ground perimeter","approach coolant portal","walk into coolant garden","garden walkway supports player","reach garden east wall aisle","garden wall blocks capsule","falling below world resets to spawn","lateral out-of-bounds resets","physical R returns to arrival","focus loss clears movement sprint jump and releases capture","left click recaptures mouse","escape releases mouse and clears controls","captured relative mouse controls yaw and pitch","photo view clears movement and selects separate camera","P returns to same physical explorer","animated machinery causes no per-frame node churn","scene teardown frees map player cameras and children","teardown leaves cursor released"],"failures":["physical W walks forward with floor contact","space produces native ballistic jump","walk to east ramp foot","ascend east ramp via CharacterBody move_and_slide","ramp reaches 4 m upper landing","join north mezzanine","north to east mezzanine corner","traverse upper east catwalk","walk through upper portal to exterior deck","exterior deck supports native player","exterior guard collision prevents walking out of bounds","return from exterior deck","east to south upper corner","cross south upper bridge","walk full west upper catwalk","west to north upper corner","join west ramp landing","descend west ramp to floor","cross under west mezzanine","approach turbine portal","walk into turbine hall","leave turbine equipment aisle","return to atrium","walk north ground perimeter","approach coolant portal","walk into coolant garden","reach garden east wall aisle","left click recaptures mouse","captured relative mouse controls yaw and pitch"]}

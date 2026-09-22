@@ -1,0 +1,2 @@
+# Native stdout is retained verbatim, including terminal blank lines.
+evidence/**/*.log -whitespace

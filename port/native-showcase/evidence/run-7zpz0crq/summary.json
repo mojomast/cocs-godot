@@ -1,0 +1,178 @@
+{
+  "engine": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "software_renderer": true,
+  "steps": [
+    {
+      "name": "import",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--editor",
+        "--import"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 3.62
+    },
+    {
+      "name": "parse-demo",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--check-only",
+        "--script",
+        "res://showcase/demo.gd"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 0.16
+    },
+    {
+      "name": "parse-physics",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--check-only",
+        "--script",
+        "res://tests/showcase/physics.gd"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 0.16
+    },
+    {
+      "name": "parse-gallery",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--check-only",
+        "--script",
+        "res://tests/showcase/gallery.gd"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 0.16
+    },
+    {
+      "name": "parse-native_controls",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--check-only",
+        "--script",
+        "res://tests/showcase/native_controls.gd"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 0.16
+    },
+    {
+      "name": "physics",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--rendering-method",
+        "gl_compatibility",
+        "--disable-render-loop",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/showcase/physics.gd"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 1.82
+    },
+    {
+      "name": "smoke",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--rendering-method",
+        "gl_compatibility",
+        "--resolution",
+        "960x640",
+        "res://showcase/demo.tscn",
+        "--",
+        "--smoke"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 8.59
+    },
+    {
+      "name": "native-input",
+      "passed": true
+    },
+    {
+      "name": "gallery-960x640",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--rendering-method",
+        "gl_compatibility",
+        "--resolution",
+        "960x640",
+        "--script",
+        "res://tests/showcase/gallery.gd",
+        "--",
+        "--output=/tmp/opencode/cocs-graphics-showcase/port/native-showcase/evidence/run-7zpz0crq",
+        "--size=960x640"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 7.66
+    },
+    {
+      "name": "gallery-1280x800",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--rendering-method",
+        "gl_compatibility",
+        "--resolution",
+        "1280x800",
+        "--script",
+        "res://tests/showcase/gallery.gd",
+        "--",
+        "--output=/tmp/opencode/cocs-graphics-showcase/port/native-showcase/evidence/run-7zpz0crq",
+        "--size=1280x800"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 9.91
+    }
+  ]
+}

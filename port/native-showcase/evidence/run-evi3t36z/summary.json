@@ -1,0 +1,70 @@
+{
+  "engine": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "software_renderer": true,
+  "steps": [
+    {
+      "name": "smoke",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--rendering-method",
+        "gl_compatibility",
+        "--resolution",
+        "960x640",
+        "res://showcase/demo.tscn",
+        "--",
+        "--smoke"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 10.6
+    },
+    {
+      "name": "gallery-960x640",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--rendering-method",
+        "gl_compatibility",
+        "--resolution",
+        "960x640",
+        "--script",
+        "res://tests/showcase/gallery.gd",
+        "--",
+        "--output=/tmp/opencode/cocs-graphics-showcase/port/native-showcase/evidence/run-evi3t36z",
+        "--size=960x640"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 9.37
+    },
+    {
+      "name": "gallery-1280x800",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-showcase/godot",
+        "--audio-driver",
+        "Dummy",
+        "--rendering-method",
+        "gl_compatibility",
+        "--resolution",
+        "1280x800",
+        "--script",
+        "res://tests/showcase/gallery.gd",
+        "--",
+        "--output=/tmp/opencode/cocs-graphics-showcase/port/native-showcase/evidence/run-evi3t36z",
+        "--size=1280x800"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 10.43
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRISM_FOUNDRY_READY {"animated_rings":3,"areas":4,"cpu_particles":48,"elevation_m":4,"experience":"Prism Foundry","multimesh_batches":12,"multimesh_instances":959,"network":false,"nodes":401,"renderer":"gl_compatibility","shadow_lights":1,"standalone":true,"static_bodies":90,"turbines":2,"unshadowed_omni_lights":3,"walkable_ramps":2}
+PRISM_FOUNDRY_SMOKE_OK {"animated_rings":3,"areas":4,"cpu_particles":48,"draw_calls":693.0,"elevation_m":4,"experience":"Prism Foundry","multimesh_batches":12,"multimesh_instances":959,"network":false,"nodes":401,"rendered_primitives":242075.0,"renderer":"gl_compatibility","sampled_frame_ms_mean":79.5648795648795,"samples":39,"shadow_lights":1,"standalone":true,"static_bodies":90,"turbines":2,"unshadowed_omni_lights":3,"walkable_ramps":2}

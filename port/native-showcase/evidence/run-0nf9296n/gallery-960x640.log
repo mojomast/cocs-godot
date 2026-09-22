@@ -1,0 +1,13 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRISM_FOUNDRY_READY {"animated_rings":3,"areas":4,"cpu_particles":48,"elevation_m":4,"experience":"Prism Foundry","multimesh_batches":12,"multimesh_instances":996,"network":false,"nodes":405,"renderer":"gl_compatibility","shadow_lights":1,"standalone":true,"static_bodies":92,"turbines":2,"unshadowed_omni_lights":3,"walkable_ramps":2}
+PRISM_SCREENSHOT /tmp/opencode/cocs-graphics-showcase/port/native-showcase/evidence/run-0nf9296n/spawn-960x640.png
+PRISM_SCREENSHOT /tmp/opencode/cocs-graphics-showcase/port/native-showcase/evidence/run-0nf9296n/atrium-960x640.png
+PRISM_SCREENSHOT /tmp/opencode/cocs-graphics-showcase/port/native-showcase/evidence/run-0nf9296n/turbine-960x640.png
+PRISM_SCREENSHOT /tmp/opencode/cocs-graphics-showcase/port/native-showcase/evidence/run-0nf9296n/garden-960x640.png
+PRISM_SCREENSHOT /tmp/opencode/cocs-graphics-showcase/port/native-showcase/evidence/run-0nf9296n/vista-960x640.png
+PRISM_SCREENSHOT /tmp/opencode/cocs-graphics-showcase/port/native-showcase/evidence/run-0nf9296n/overview-960x640.png
+PRISM_GALLERY_OK sizes_asserted=true views=6
