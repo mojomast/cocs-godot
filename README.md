@@ -31,15 +31,16 @@ simulation lock and verification evidence remain reproducible.
 | Puma sports demos | Ion Speedway racing and Aurora Stadium soccer: authoritative driving, next-checkpoint guidance, compact HUD, wall-aware chase, results and F5 restart |
 | Objective demos | Tidal CTF pickup/drop/return/pass/capture; Sunscar Payload escort/contest/banked rollback/full delivery; compact HUD, results and restart |
 | LATTICE command demo | Asterion Relay and Monsoon Foundry: synchronized objective list/map, own resources, HOLD orders, PvP Fighter and co-op REINFORCE purchases with explicit receipts |
-| LATTICE world demo | Authoritative first-person traversal on Asterion/Monsoon, recipient actors, own resources and public objective markers |
+| LATTICE world demo | Authoritative first-person traversal on Asterion/Monsoon, public objective markers and a same-connection tactical HOLD/recruitment panel |
 | Session handling | Local server launcher, host setup, guest transport, stale-state handling, focus release, death/respawn and round-boundary control resets |
 
-Sports now have independent completed-lap and normal results/restart acceptance;
-local-driver soccer goals remain open. LATTICE offers a command board and a
-separate first-person world slice; integrated world commands and full strategy
-rounds are in development. CTF pass/capture and full Payload delivery now have
+Sports now have independent one-lap target victory, local-driver soccer scoring
+and results/restart acceptance. LATTICE offers both a command board and a
+first-person world with tactical HOLD/recruitment controls; full strategy
+rounds remain open. CTF pass/capture and full Payload delivery also have
 independent normal-rate acceptance; broader combat/objective interactions remain open.
 See the [release matrix](port/RELEASE_MATRIX.md) for evidence and remaining work.
+Campaign work is deferred for substantial planning and research toward a remake.
 
 <details>
 <summary>More native screenshots</summary>
@@ -127,8 +128,9 @@ Git, npm and original checkout are build-time tools only. The package supports
 the same five experience routes. See the
 [local package guide](port/native-linux-package/README.md) for prerequisites,
 verification and launch commands. Generated archives stay outside the repository.
-The independent rebuild passed fresh-directory exported combat/world startup
-and failure cleanup; see [package verification](port/reports/linux-package-independent/README.md).
+The latest independent rebuild includes sports coaching and world commands and
+passes fresh-directory exported combat/world startup and failure cleanup; see
+[package verification](port/reports/linux-sports-world-independent/README.md).
 
 ### Puma driving demos
 
@@ -150,9 +152,11 @@ and fresh movement keys. Optional `--time-limit=60..900` and `--round-target=N`
 set ordinary match limits (1..10 laps or 1..15 goals). See
 [progression verification](port/reports/sports-progression-independent/README.md).
 Aurora also shows ball direction/distance and explicit **OWN / ATTACK** goals
-derived from your authoritative team. Real bot-goal notifications are verified;
-local-driver scoring remains unaccepted. See
-[soccer guidance and goal audit](port/reports/soccer-guidance-independent/README.md).
+derived from your authoritative team, plus passive shot-alignment coaching.
+One-lap target victory and a genuine local soccer goal now pass independently;
+see [sports victory verification](port/reports/sports-victory-independent/README.md).
+Soccer always fills to four players with bots, so zero-bot `--practice` is not
+supported by the locked source.
 
 ### LATTICE command board
 
@@ -186,11 +190,14 @@ PORT=0 node tools/godot-dev/launch.mjs --experience=lattice-world --map=asterion
 PORT=0 node tools/godot-dev/launch.mjs --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
 ```
 
-Click to engage, move/look with **WASD/mouse**, and **Escape** to release. Release
-action keys before clicking again. This standalone host uses normal source
-actors and public objectives, with a diagnostic resource/status HUD. The
-command board remains a separate scene. See
-[world traversal verification](port/reports/lattice-world-independent/README.md).
+Click to engage, move/look with **WASD/mouse**, and **Escape** to release. Press
+**C** for tactical commands: select a public objective, explicitly issue HOLD,
+or authorize one recruitment purchase. The panel pauses movement and uses your
+existing player connection. Close with **C / Escape**, release controls, then
+click the world to resume. PvP Fighter costs 12 FLUX; co-op REINFORCE requires
+50 FLUX and a source-authorized between-wave window. See
+[world commands verification](port/reports/lattice-world-commands-independent/README.md)
+and [world traversal verification](port/reports/lattice-world-independent/README.md).
 
 ### CTF and Payload demos
 
@@ -281,17 +288,21 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated run passes **63 gates**, including package routing, sports and objective
+The latest integrated local run passes **65 gates**, including soccer coaching,
+in-world LATTICE commands, package routing, sports and objective
 progression, LATTICE map selection, launcher routing, GLB material sides and
 projectile navigation. Native
 [GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
-also passed the same 63-gate snapshot from a fresh Ubuntu checkout.
+previously passed the 63-gate packaging snapshot from a fresh Ubuntu checkout;
+hosted evidence is tracked separately from newer local runs.
 
 Focused real-session and graphical evidence is documented in:
 
 - [Rocket Arena and menu verification](port/reports/projectile-independent/README.md)
 - [Sports driving, HUD and camera verification](port/reports/sports-polish-independent/README.md)
 - [Sports lap, results and restart verification](port/reports/sports-progression-independent/README.md)
+- [Sports target victory and local soccer goal](port/reports/sports-victory-independent/README.md)
+- [LATTICE in-world command panel](port/reports/lattice-world-commands-independent/README.md)
 - [Visible damage and health pickup verification](port/reports/native-health-hud-independent/README.md)
 - [LATTICE implementation and evidence](port/native-lattice/HANDOFF.md)
 - [LATTICE native mouse/key acceptance](port/reports/lattice-physical-independent/README.md)

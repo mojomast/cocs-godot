@@ -2,31 +2,31 @@ TAP version 13
 # Subtest: existing viewer, combat setup and smoke routes stay compatible
 ok 1 - existing viewer, combat setup and smoke routes stay compatible
   ---
-  duration_ms: 1.9687
+  duration_ms: 2.81499
   type: 'test'
   ...
 # Subtest: each standalone map/mode reaches its actual scene and locked identity
 ok 2 - each standalone map/mode reaches its actual scene and locked identity
   ---
-  duration_ms: 0.504646
+  duration_ms: 0.736829
   type: 'test'
   ...
 # Subtest: standalone selection rejects substitutions, unsupported modes and ignored options
 ok 3 - standalone selection rejects substitutions, unsupported modes and ignored options
   ---
-  duration_ms: 0.481933
+  duration_ms: 0.671036
   type: 'test'
   ...
 # Subtest: sports round options preserve legal ordinary configuration without silent clamping
 ok 4 - sports round options preserve legal ordinary configuration without silent clamping
   ---
-  duration_ms: 0.333345
+  duration_ms: 0.436567
   type: 'test'
   ...
 # Subtest: world traversal and command board remain distinct native scenes
 ok 5 - world traversal and command board remain distinct native scenes
   ---
-  duration_ms: 0.141956
+  duration_ms: 0.227616
   type: 'test'
   ...
 1..5
@@ -37,4 +37,4 @@ ok 5 - world traversal and command board remain distinct native scenes
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 41.205876
+# duration_ms 62.658629

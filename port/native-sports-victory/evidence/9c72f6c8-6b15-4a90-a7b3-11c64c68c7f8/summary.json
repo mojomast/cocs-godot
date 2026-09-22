@@ -1,0 +1,518 @@
+{
+  "base": "8a58c97e48493e41903c2c9a729e753cb3579500",
+  "options": {
+    "race": false,
+    "visual": false,
+    "attempt": 1
+  },
+  "commands": [
+    [
+      "node",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/sports-victory-_87kxpco/godot/content/generated"
+    ],
+    [
+      "node",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-sports-victory/source-config.mjs"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-victory-_87kxpco/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-victory-_87kxpco/godot",
+      "--script",
+      "res://tests/sports/test_controls.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-victory-_87kxpco/godot",
+      "--script",
+      "res://tests/vehicles/test_puma.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-victory-_87kxpco/godot",
+      "--script",
+      "res://tests/sports/test_polish.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-victory-_87kxpco/godot",
+      "--script",
+      "res://tests/sports/progression_test.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-victory-_87kxpco/godot",
+      "--script",
+      "res://tests/sports/soccer_test.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-victory-_87kxpco/godot",
+      "--script",
+      "res://tests/sports/practice_test.gd"
+    ],
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1280x800x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "node",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-sports-victory/server.mjs",
+      "/tmp/opencode/sports-victory-_87kxpco",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-sports-victory/evidence/9c72f6c8-6b15-4a90-a7b3-11c64c68c7f8/1280x800/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/sports-victory-_87kxpco/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/sports/practice_soccer_observe.gd",
+      "--",
+      "--map=aurora-stadium",
+      "--endpoint=ws://127.0.0.1:43999",
+      "--time-limit=180",
+      "--round-target=15",
+      "--progression-out=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-sports-victory/evidence/9c72f6c8-6b15-4a90-a7b3-11c64c68c7f8/1280x800",
+      "--soccer-attempt=1"
+    ]
+  ],
+  "cases": [
+    {
+      "resolution": "1280x800",
+      "outcome": {
+        "ack": 3125,
+        "attempt": 1,
+        "captures": {
+          "countdown": true,
+          "driving": true,
+          "end": true,
+          "goal": true
+        },
+        "elapsed": 140.033,
+        "goals": [
+          {
+            "actor": 0.0,
+            "actorId": 0.0,
+            "id": 5.0,
+            "pos": {
+              "x": 44.0,
+              "y": 1.2,
+              "z": 0.0
+            },
+            "scorerId": 0.0,
+            "team": 0.0,
+            "time": 141.867,
+            "type": "soccer-goal"
+          }
+        ],
+        "local_goal": true,
+        "recoveries": 10,
+        "seq": 4291,
+        "wallBound": 175
+      },
+      "provenLocalGoals": [
+        {
+          "event": {
+            "wallMs": 144975,
+            "round": 1,
+            "type": "soccer-goal",
+            "id": 5,
+            "time": 141.867,
+            "team": 0,
+            "actor": 0,
+            "actorId": 0,
+            "scorerId": 0,
+            "pos": {
+              "x": 44,
+              "y": 1.2,
+              "z": 0
+            }
+          },
+          "before": {
+            "wallMs": 144908,
+            "round": 1,
+            "seq": 4254,
+            "ack": 3102,
+            "time": 141.8,
+            "actor": 0,
+            "config": {
+              "mode": "puma-soccer",
+              "botCount": 3,
+              "difficulty": "easy",
+              "fragLimit": 15,
+              "timeLimit": 180,
+              "respawn": 2,
+              "speed": 1,
+              "gravity": 1,
+              "damage": 1,
+              "fastPowers": false,
+              "lifeSteal": false,
+              "unlimitedAmmo": false,
+              "suddenDeath": false,
+              "randomLoadout": false,
+              "oneShot": false,
+              "instagib": false,
+              "mirrorLoadout": false,
+              "bounty": false,
+              "berserk": false,
+              "bigHead": false,
+              "noRecoil": false,
+              "endless": false,
+              "startingWeapon": 0,
+              "playerName": "",
+              "mission": "convoy-run",
+              "loadout": null,
+              "checkpoint": null,
+              "mutators": []
+            },
+            "over": false,
+            "overReason": null,
+            "roles": [
+              {
+                "id": 0,
+                "team": 0,
+                "bot": false
+              },
+              {
+                "id": 1,
+                "team": 1,
+                "bot": true
+              },
+              {
+                "id": 2,
+                "team": 0,
+                "bot": true
+              },
+              {
+                "id": 3,
+                "team": 1,
+                "bot": true
+              }
+            ],
+            "vehicle": {
+              "id": 0,
+              "kind": "puma",
+              "x": 39.681,
+              "y": 0,
+              "z": -0.458,
+              "vx": 19.099,
+              "vy": 0,
+              "vz": 1.868,
+              "yaw": -4.858,
+              "roll": 0.044,
+              "pitchBody": 0.008,
+              "flight": false,
+              "altitude": 0,
+              "turretYaw": 0,
+              "health": 300,
+              "maxHealth": 300,
+              "driver": 0,
+              "gunner": null,
+              "passengers": [],
+              "heat": 0,
+              "overheated": false,
+              "respawnTimer": 0
+            },
+            "race": {
+              "kind": "soccer",
+              "phase": "playing",
+              "countdown": 0,
+              "elapsed": 138.8,
+              "timeLimit": 180,
+              "goalLimit": 15,
+              "scores": {
+                "0": 0,
+                "1": 0
+              },
+              "winnerTeam": null,
+              "ball": {
+                "x": 42.81,
+                "y": 1.1,
+                "z": -0.015,
+                "vx": 18.643,
+                "vz": 2.256,
+                "r": 1.1
+              },
+              "goals": [
+                {
+                  "team": 0,
+                  "x": -44,
+                  "z": 0,
+                  "nx": -1,
+                  "nz": 0,
+                  "halfWidth": 7,
+                  "height": 5,
+                  "depth": 4
+                },
+                {
+                  "team": 1,
+                  "x": 44,
+                  "z": 0,
+                  "nx": 1,
+                  "nz": 0,
+                  "halfWidth": 7,
+                  "height": 5,
+                  "depth": 4
+                }
+              ],
+              "pitch": {
+                "minX": -44,
+                "maxX": 44,
+                "minZ": -24,
+                "maxZ": 24
+              },
+              "standings": [
+                {
+                  "actorId": 0,
+                  "team": 0,
+                  "goals": 0,
+                  "vehicleId": 0
+                },
+                {
+                  "actorId": 1,
+                  "team": 1,
+                  "goals": 0,
+                  "vehicleId": 1
+                },
+                {
+                  "actorId": 2,
+                  "team": 0,
+                  "goals": 0,
+                  "vehicleId": 2
+                },
+                {
+                  "actorId": 3,
+                  "team": 1,
+                  "goals": 0,
+                  "vehicleId": 3
+                }
+              ]
+            }
+          },
+          "after": {
+            "wallMs": 145040,
+            "round": 1,
+            "seq": 4258,
+            "ack": 3105,
+            "time": 141.933,
+            "actor": 0,
+            "config": {
+              "mode": "puma-soccer",
+              "botCount": 3,
+              "difficulty": "easy",
+              "fragLimit": 15,
+              "timeLimit": 180,
+              "respawn": 2,
+              "speed": 1,
+              "gravity": 1,
+              "damage": 1,
+              "fastPowers": false,
+              "lifeSteal": false,
+              "unlimitedAmmo": false,
+              "suddenDeath": false,
+              "randomLoadout": false,
+              "oneShot": false,
+              "instagib": false,
+              "mirrorLoadout": false,
+              "bounty": false,
+              "berserk": false,
+              "bigHead": false,
+              "noRecoil": false,
+              "endless": false,
+              "startingWeapon": 0,
+              "playerName": "",
+              "mission": "convoy-run",
+              "loadout": null,
+              "checkpoint": null,
+              "mutators": []
+            },
+            "over": false,
+            "overReason": null,
+            "roles": [
+              {
+                "id": 0,
+                "team": 0,
+                "bot": false
+              },
+              {
+                "id": 1,
+                "team": 1,
+                "bot": true
+              },
+              {
+                "id": 2,
+                "team": 0,
+                "bot": true
+              },
+              {
+                "id": 3,
+                "team": 1,
+                "bot": true
+              }
+            ],
+            "vehicle": {
+              "id": 0,
+              "kind": "puma",
+              "x": 42.192,
+              "y": 0,
+              "z": -0.035,
+              "vx": 18.506,
+              "vy": 0,
+              "vz": 4.414,
+              "yaw": -5.051,
+              "roll": 0.1,
+              "pitchBody": -0.003,
+              "flight": false,
+              "altitude": 0,
+              "turretYaw": 0,
+              "health": 300,
+              "maxHealth": 300,
+              "driver": 0,
+              "gunner": null,
+              "passengers": [],
+              "heat": 0,
+              "overheated": false,
+              "respawnTimer": 0
+            },
+            "race": {
+              "kind": "soccer",
+              "phase": "playing",
+              "countdown": 0,
+              "elapsed": 138.933,
+              "timeLimit": 180,
+              "goalLimit": 15,
+              "scores": {
+                "0": 1,
+                "1": 0
+              },
+              "winnerTeam": null,
+              "ball": {
+                "x": 0,
+                "y": 1.1,
+                "z": 0,
+                "vx": 0,
+                "vz": 0,
+                "r": 1.1
+              },
+              "goals": [
+                {
+                  "team": 0,
+                  "x": -44,
+                  "z": 0,
+                  "nx": -1,
+                  "nz": 0,
+                  "halfWidth": 7,
+                  "height": 5,
+                  "depth": 4
+                },
+                {
+                  "team": 1,
+                  "x": 44,
+                  "z": 0,
+                  "nx": 1,
+                  "nz": 0,
+                  "halfWidth": 7,
+                  "height": 5,
+                  "depth": 4
+                }
+              ],
+              "pitch": {
+                "minX": -44,
+                "maxX": 44,
+                "minZ": -24,
+                "maxZ": 24
+              },
+              "standings": [
+                {
+                  "actorId": 0,
+                  "team": 0,
+                  "goals": 1,
+                  "vehicleId": 0
+                },
+                {
+                  "actorId": 1,
+                  "team": 1,
+                  "goals": 0,
+                  "vehicleId": 1
+                },
+                {
+                  "actorId": 2,
+                  "team": 0,
+                  "goals": 0,
+                  "vehicleId": 2
+                },
+                {
+                  "actorId": 3,
+                  "team": 1,
+                  "goals": 0,
+                  "vehicleId": 3
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "sourceGoals": [
+        {
+          "wallMs": 144975,
+          "round": 1,
+          "type": "soccer-goal",
+          "id": 5,
+          "time": 141.867,
+          "team": 0,
+          "actor": 0,
+          "actorId": 0,
+          "scorerId": 0,
+          "pos": {
+            "x": 44,
+            "y": 1.2,
+            "z": 0
+          }
+        }
+      ],
+      "inputReceipts": 3127,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    }
+  ],
+  "hashManifestSHA256": "720319d7d21064868bc0832b5cb3d7b981c225d84d2f02cf4434aa526871819c",
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}

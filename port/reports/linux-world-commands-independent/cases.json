@@ -1,0 +1,147 @@
+[
+  {
+    "case": "host-setup",
+    "exit": 0,
+    "scene": "res://world/session.tscn",
+    "host": "127.0.0.1",
+    "dynamic_port": 35567,
+    "health": {
+      "service": "token-arena-game-server",
+      "release": "v8.8",
+      "codename": "DESTINATIONS",
+      "commit": "unknown",
+      "buildId": "v8.8-unknown",
+      "protocol": 3,
+      "version": "v8.8",
+      "rooms": 1,
+      "players": 0,
+      "port": 35567,
+      "snapshot": {
+        "deltaFrames": 0,
+        "fullFrames": 0
+      }
+    },
+    "round_start_seen": false,
+    "pose_snapshots_seen": 0,
+    "native_pid": 3129368,
+    "native_closed": true,
+    "server_closed": true,
+    "action": "window"
+  },
+  {
+    "case": "combat",
+    "exit": 0,
+    "scene": "res://world/session.tscn",
+    "host": "127.0.0.1",
+    "dynamic_port": 46715,
+    "health": {
+      "service": "token-arena-game-server",
+      "release": "v8.8",
+      "codename": "DESTINATIONS",
+      "commit": "unknown",
+      "buildId": "v8.8-unknown",
+      "protocol": 3,
+      "version": "v8.8",
+      "rooms": 2,
+      "players": 1,
+      "port": 46715,
+      "snapshot": {
+        "deltaFrames": 0,
+        "fullFrames": 13
+      }
+    },
+    "round_start_seen": true,
+    "pose_snapshots_seen": 8,
+    "native_pid": 3131104,
+    "native_closed": true,
+    "server_closed": true,
+    "action": "window"
+  },
+  {
+    "case": "lattice-world",
+    "exit": 0,
+    "scene": "res://lattice/world_demo.tscn",
+    "host": "127.0.0.1",
+    "dynamic_port": 44875,
+    "health": {
+      "service": "token-arena-game-server",
+      "release": "v8.8",
+      "codename": "DESTINATIONS",
+      "commit": "unknown",
+      "buildId": "v8.8-unknown",
+      "protocol": 3,
+      "version": "v8.8",
+      "rooms": 2,
+      "players": 1,
+      "port": 44875,
+      "snapshot": {
+        "deltaFrames": 0,
+        "fullFrames": 23
+      }
+    },
+    "round_start_seen": true,
+    "pose_snapshots_seen": 7,
+    "native_pid": 3131979,
+    "native_closed": true,
+    "server_closed": true,
+    "action": "window"
+  },
+  {
+    "case": "interrupt",
+    "exit": 130,
+    "scene": "res://world/session.tscn",
+    "host": "127.0.0.1",
+    "dynamic_port": 40067,
+    "health": {
+      "service": "token-arena-game-server",
+      "release": "v8.8",
+      "codename": "DESTINATIONS",
+      "commit": "unknown",
+      "buildId": "v8.8-unknown",
+      "protocol": 3,
+      "version": "v8.8",
+      "rooms": 2,
+      "players": 1,
+      "port": 40067,
+      "snapshot": {
+        "deltaFrames": 0,
+        "fullFrames": 10
+      }
+    },
+    "round_start_seen": true,
+    "pose_snapshots_seen": 8,
+    "native_pid": 3133102,
+    "native_closed": true,
+    "server_closed": true,
+    "action": "interrupt"
+  },
+  {
+    "case": "native-crash",
+    "exit": 1,
+    "scene": "res://world/session.tscn",
+    "host": "127.0.0.1",
+    "dynamic_port": 46503,
+    "health": {
+      "service": "token-arena-game-server",
+      "release": "v8.8",
+      "codename": "DESTINATIONS",
+      "commit": "unknown",
+      "buildId": "v8.8-unknown",
+      "protocol": 3,
+      "version": "v8.8",
+      "rooms": 2,
+      "players": 1,
+      "port": 46503,
+      "snapshot": {
+        "deltaFrames": 0,
+        "fullFrames": 16
+      }
+    },
+    "round_start_seen": true,
+    "pose_snapshots_seen": 7,
+    "native_pid": 3134749,
+    "native_closed": true,
+    "server_closed": true,
+    "action": "crash"
+  }
+]

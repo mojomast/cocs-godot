@@ -1,0 +1,118 @@
+[
+  {
+    "name": "semantic",
+    "command": [
+      "node",
+      "tools/godot-export/semantic.mjs"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "import",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--editor",
+      "--import"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "world-contract",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/lattice/world_contract.gd"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "commands-contract",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/lattice/world_commands_contract.gd"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "commands-small",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-world-commands/run.mjs",
+      "--map=asterion-relay",
+      "--mode=cocs",
+      "--size=960x640",
+      "--output=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-lattice-world-commands/evidence/1790048714008175713/commands-small"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "commands-large",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-world-commands/run.mjs",
+      "--map=monsoon-foundry",
+      "--mode=cocs-coop",
+      "--size=1280x800",
+      "--output=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-lattice-world-commands/evidence/1790048714008175713/commands-large"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "world-asterion",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-world/run.mjs",
+      "--map=asterion-relay",
+      "--mode=cocs",
+      "--size=1280x800",
+      "--output=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-lattice-world-commands/evidence/1790048714008175713/world-asterion"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "world-monsoon",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-world/run.mjs",
+      "--map=monsoon-foundry",
+      "--mode=cocs-coop",
+      "--size=1280x800",
+      "--output=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-lattice-world-commands/evidence/1790048714008175713/world-monsoon"
+    ],
+    "exit": 0,
+    "passed": true
+  }
+]

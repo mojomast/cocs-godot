@@ -1,0 +1,2 @@
+LATTICE_WORLD {"endpoint":"ws://127.0.0.1:43205","map":"asterion-relay","mode":"cocs","out":"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-lattice-world-commands/evidence/1790048714008175713/world-asterion"}
+{"passed":true,"checks":{"native":true,"movement":true,"exactCamera":true,"exactRecipientActors":true,"ownBudgetOnly":true,"ackObserved":true,"noCommands":true,"normalHost":true},"out":"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-lattice-world-commands/evidence/1790048714008175713/world-asterion"}

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Offline attribution/config/ACK/artifact audit; never launches a match."""
+import argparse
 import hashlib
 import json
 import math
@@ -7,6 +8,9 @@ import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 HERE = ROOT/'port/native-sports-victory'
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--output', type=pathlib.Path, default=HERE/'evidence/audit.json')
+args = parser.parse_args()
 report = {'runs':[], 'scoringAttempts':0, 'localGoals':0, 'botGoals':0, 'localOwnGoals':0}
 for summary_path in sorted((HERE/'evidence').glob('*/summary.json')):
     folder = summary_path.parent
@@ -78,5 +82,6 @@ for summary_path in sorted((HERE/'evidence').glob('*/summary.json')):
     report['runs'].append(row)
 assert report['scoringAttempts']<=2
 report['auditorSHA256'] = hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest()
-(HERE/'evidence/audit.json').write_text(json.dumps(report,indent=2)+'\n')
-print(json.dumps({'runs':len(report['runs']),'attempts':report['scoringAttempts'],'localGoals':report['localGoals'],'botGoals':report['botGoals'],'localOwnGoals':report['localOwnGoals'],'auditSHA256':hashlib.sha256((HERE/'evidence/audit.json').read_bytes()).hexdigest()},indent=2))
+args.output.parent.mkdir(parents=True,exist_ok=True)
+args.output.write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps({'runs':len(report['runs']),'attempts':report['scoringAttempts'],'localGoals':report['localGoals'],'botGoals':report['botGoals'],'localOwnGoals':report['localOwnGoals'],'auditSHA256':hashlib.sha256(args.output.read_bytes()).hexdigest()},indent=2))

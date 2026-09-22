@@ -50,6 +50,9 @@ class X11:
             'XSendEvent': (C.c_int, [C.c_void_p, C.c_ulong, C.c_int, C.c_long, C.c_void_p]),
             'XFlush': (C.c_int, [C.c_void_p]),
             'XCloseDisplay': (C.c_int, [C.c_void_p]),
+            'XSetInputFocus': (C.c_int, [C.c_void_p, C.c_ulong, C.c_int, C.c_ulong]),
+            'XKeysymToKeycode': (C.c_ubyte, [C.c_void_p, C.c_ulong]),
+            'XSync': (C.c_int, [C.c_void_p, C.c_int]),
         }
         for name, (result, args) in bindings.items():
             function = getattr(self.lib, name)
@@ -114,11 +117,26 @@ class X11:
     def close(self):
         self.lib.XCloseDisplay(self.display)
 
+    def tap_key(self, window, keysym):
+        # Optional exported-UI probe only; no test code enters the production PCK.
+        library = ctypes.util.find_library('Xtst')
+        require(library, 'Optional command-panel capture requires libXtst')
+        xtest = C.CDLL(library)
+        xtest.XTestFakeKeyEvent.argtypes = [C.c_void_p, C.c_uint, C.c_int, C.c_ulong]
+        xtest.XTestFakeKeyEvent.restype = C.c_int
+        code = self.lib.XKeysymToKeycode(self.display, keysym)
+        require(code != 0, 'No keycode for the requested keysym')
+        self.lib.XSetInputFocus(self.display, window, 2, 0)
+        require(xtest.XTestFakeKeyEvent(self.display, code, 1, 0), 'Key press dispatch failed')
+        require(xtest.XTestFakeKeyEvent(self.display, code, 0, 0), 'Key release dispatch failed')
+        self.lib.XSync(self.display, 0)
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--build-result', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--world-commands-capture', action='store_true', help='Send X11 C to the exported world and save a panel image for direct review')
     args = parser.parse_args()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
@@ -211,6 +229,12 @@ def main():
             if name in ['combat', 'lattice-world', 'host-setup']:
                 shot = subprocess.run(['/usr/bin/ffmpeg', '-loglevel', 'error', '-f', 'x11grab', '-video_size', '1280x800', '-i', env['DISPLAY'], '-frames:v', '1', '-threads', '1', '-update', '1', str(output / (name + '.png'))], cwd=unrelated, env=env, capture_output=True, timeout=20)
                 require(shot.returncode == 0, f'Screenshot failed: {shot.stderr.decode()}')
+            if name == 'lattice-world' and args.world_commands_capture:
+                x11.tap_key(x11.window(native_pid), ord('c'))
+                # Image inspection, not this delay, determines panel visibility.
+                time.sleep(0.5)
+                shot = subprocess.run(['/usr/bin/ffmpeg', '-loglevel', 'error', '-f', 'x11grab', '-video_size', '1280x800', '-i', env['DISPLAY'], '-frames:v', '1', '-threads', '1', '-update', '1', str(output / 'lattice-world-commands.png')], cwd=unrelated, env=env, capture_output=True, timeout=20)
+                require(shot.returncode == 0, f'Command screenshot failed: {shot.stderr.decode()}')
             if action == 'window':
                 x11.close_window(x11.window(native_pid))
                 expected = 0

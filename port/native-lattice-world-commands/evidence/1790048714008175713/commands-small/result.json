@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "checks": {
+    "native": true,
+    "oneSocket": true,
+    "sameIdentity": true,
+    "neutralWhileOpen": true,
+    "ackHighWater": true,
+    "singleHold": true,
+    "executedHold": true,
+    "economy": true,
+    "sourceUnitDelta": true,
+    "ownBudgetOnly": true,
+    "normalHost": true
+  },
+  "nativeExit": 0,
+  "nativeResult": {
+    "ackHighWater": 0,
+    "actor": -1,
+    "checks": 25,
+    "event": "result",
+    "failures": 0,
+    "inputSeq": 0,
+    "ms": 8945,
+    "peer": -1,
+    "snapshotSeq": -1
+  },
+  "commands": [
+    {
+      "type": "request",
+      "peer": 1,
+      "actor": 0,
+      "frame": {
+        "actionSeq": 1,
+        "cardId": "native-r1-p1-s1",
+        "roundRev": 1,
+        "target": "front-0",
+        "type": "order",
+        "verb": "HOLD"
+      }
+    },
+    {
+      "type": "request",
+      "peer": 1,
+      "actor": 0,
+      "frame": {
+        "action": "spawn",
+        "actionSeq": 2,
+        "cardId": "native-r1-p1-s2",
+        "role": "fighter",
+        "roundRev": 1,
+        "type": "economy"
+      }
+    }
+  ],
+  "ackMeaning": "High-water receipt; no individual input-application claim",
+  "captureClaim": false
+}

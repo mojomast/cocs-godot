@@ -6,9 +6,12 @@ updates root documentation/shared verification and owns publication.
 
 | Lane | Owner / baseline | Reserved files |
 |---|---|---|
-| LATTICE in-world command panel | Internal follow-up; `6116f12` | New world command UI/tests, narrow world_demo/world_hud only, `port/native-lattice-world-commands/` |
-| Native KOTH / Domination | Internal agent; `013ad65` | New `godot/zone_modes/`, `godot/tests/zone_modes/`, `port/native-zone-modes/` |
-| Race victory / soccer practice | Internal agent; `013ad65` | Narrow `godot/sports/`, new practice tests, `port/native-sports-victory/` |
+| LATTICE in-world command panel | Delivered `7439f05`, integrated `511bb8d`; independent suite PASS | World panel and tests; lead owns integration/docs |
+| Native KOTH / Domination | Delivered `2b3d758` + `7238c9d`; lead integration pending | New `godot/zone_modes/`, `godot/tests/zone_modes/`, `port/native-zone-modes/` |
+| Independent zone acceptance | `ses_f38bfad3dffeCtFsekw8G6EuRS`; `8a58c97` + delivered zones | New `port/reports/zone-modes-independent/`; new independent evidence only, no runtime edits |
+| LATTICE world co-op window | `ses_f38bf686ffferVSm9YSxCZ2qBP`; `8a58c97` | New `port/native-lattice-world-coop/`, new `godot/tests/lattice/world_coop_*`; existing runtime read-only |
+| Native Arms Race | `ses_f38befeabfferVsmwNUVMxGkNX`; `8a58c97` | New `godot/arms_race/`, `godot/tests/arms_race/`, `port/native-arms-race/` |
+| Race victory / soccer practice | Delivered `33f5257`, integrated `8a58c97`; independent race victory/local goal PASS | Sports coaching/tests; zero-bot practice blocked by source |
 | Sunscar combined-arms vehicle slice | Internal agent; `013ad65` | New `godot/combined_arms/`, `godot/tests/combined_arms/`, `port/native-combined-arms/` |
 | Multiplayer lobby / leave / retry | External handoff; `8094d41` | New lobby-prefixed UI/tests, narrow `godot/world/session.gd` / scene and backward-compatible client hook if essential; `port/native-multiplayer-lobby/` |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |

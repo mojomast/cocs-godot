@@ -1,0 +1,34 @@
+{
+  "classification": "constructor inspection only; no simulation steps",
+  "requested": {
+    "mode": "puma-soccer",
+    "botCount": 0,
+    "timeLimit": 180,
+    "fragLimit": 15
+  },
+  "normalizedBotCount": 0,
+  "effectiveBotCount": 3,
+  "roles": [
+    {
+      "id": 0,
+      "team": 0,
+      "bot": false
+    },
+    {
+      "id": 1,
+      "team": 1,
+      "bot": true
+    },
+    {
+      "id": 2,
+      "team": 0,
+      "bot": true
+    },
+    {
+      "id": 3,
+      "team": 1,
+      "bot": true
+    }
+  ],
+  "conclusion": "A zero-bot solo host preset is unsupported by this source. No bot disabling or fake human seats applied."
+}

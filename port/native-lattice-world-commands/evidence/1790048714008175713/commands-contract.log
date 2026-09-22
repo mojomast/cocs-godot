@@ -1,0 +1,30 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
+WORLD_COMMANDS_CONTRACT selection and consent never enqueue automatically true
+WORLD_COMMANDS_CONTRACT one explicit purchase consumes consent before signal reentry true
+WORLD_COMMANDS_CONTRACT queued request never optimistically spends or spawns true
+WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
+WORLD_COMMANDS_CONTRACT focus loss clears selection and authorization immediately true
+WORLD_COMMANDS_CONTRACT focus loss queues neutral through same input adapter true
+WORLD_COMMANDS_CONTRACT focus return does not restore consent or recapture true
+WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
+WORLD_COMMANDS_CONTRACT stale world pose clears and disables true
+WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
+WORLD_COMMANDS_CONTRACT authoritative death clears and disables true
+WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
+WORLD_COMMANDS_CONTRACT actor reassignment clears old selection and authorization true
+WORLD_COMMANDS_CONTRACT identity change clears recipient pending actions true
+WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
+WORLD_COMMANDS_CONTRACT missing recipient projection clears and disables true
+WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
+WORLD_COMMANDS_CONTRACT results clear and disable true
+WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
+WORLD_COMMANDS_CONTRACT disconnect clears and disables true
+WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
+WORLD_COMMANDS_CONTRACT hidden panel cannot issue actions and close drops consent true
+WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
+WORLD_COMMANDS_CONTRACT co-op price and permission come from existing adapter true
+WORLD_COMMANDS_CONTRACT lease change invalidates old purchase consent true
+WORLD_COMMANDS_CONTRACT co-op purchase routes through existing activate once true
+WORLD_COMMANDS_CONTRACT checks=27 failures=0

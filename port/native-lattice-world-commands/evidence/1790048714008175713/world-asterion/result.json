@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "checks": {
+    "native": true,
+    "movement": true,
+    "exactCamera": true,
+    "exactRecipientActors": true,
+    "ownBudgetOnly": true,
+    "ackObserved": true,
+    "noCommands": true,
+    "normalHost": true
+  },
+  "nativeExit": 0,
+  "nativeResult": {
+    "checks": 17,
+    "event": "result",
+    "failures": 0,
+    "maxDisplacement": 60.8877105712891,
+    "ms": 19793,
+    "targetDistance": 0.360001981258392
+  },
+  "poses": 341
+}
