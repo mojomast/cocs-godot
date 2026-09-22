@@ -51,7 +51,9 @@ shared environment in `godot/native_arenas/identity_environment.gd` (one sun, on
   strict schema, real source-backed rounds.
 - `tools/godot-dev` and `tools/godot-package` `*.test.mjs` — routing/menu/closure.
 - `node port/native-identity-dm/verify.mjs` — the full route gate: Node suites,
-  real launcher smoke per map at HEAD, then Xvfb captures.
+  real launcher smoke per map at HEAD, then Xvfb captures. The consolidated run
+  is recorded in `evidence/verify-report.json` (all eight steps exit 0) with its
+  per-step logs.
 - `port/native-identity-dm/captures/<map>-<stamp>/` — live graphical sessions at
   960x640 and 1280x800, first-person rig active, real Node authority; the
   screenshots were visually inspected by this lane.

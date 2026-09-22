@@ -42,8 +42,9 @@ exactly one environment and one sun for every map.
 
 `port/native-identity-dm/` holds the route/package evidence: Xvfb captures at
 960x640 and 1280x800 per identity map (arena + live action, first-person rig
-active, real authority), the setup menu, and a detached Linux package built
-from a committed private worktree snapshot of the delivered bytes
+active, real authority), the setup menu, the consolidated `verify-report.json`
+(all eight steps exit 0) and a detached Linux package built from a committed
+private worktree snapshot of the delivered bytes
 (`evidence/package-staging.json`). The exported PCK probe
 (`res://native_arenas/package_inspect.gd`) resolves the three identity JSONs,
 the identity builder and the nine source-operator GLBs, and the detached
