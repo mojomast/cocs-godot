@@ -1,0 +1,210 @@
+{
+  "run": {
+    "size": [
+      960,
+      640
+    ],
+    "attempt": 1,
+    "exitCode": 0,
+    "signal": null,
+    "wireBytes": 10123475,
+    "wireSha256": "f6d654246e337186ffc7d70fc5c7484c2d4ed97aacd17243c128e7388daa52c7",
+    "scriptErrors": [],
+    "foreignScriptErrors": [],
+    "validation": {
+      "recipient": 0,
+      "mapId": "vermilion-fold",
+      "mode": "domination",
+      "correlatedSnapshots": 3601,
+      "renderedSamples": 3604,
+      "inputsReceived": 7764,
+      "capture": true,
+      "contested": true,
+      "lost": true,
+      "recovered": true,
+      "neutralized": true,
+      "heldScore": true,
+      "teamsScored": {
+        "0": true,
+        "1": true
+      },
+      "results": {
+        "over": true,
+        "overReason": "time",
+        "scores": {
+          "0": 58.09999999999798,
+          "1": 5.866666666666651
+        },
+        "winner": 0
+      },
+      "restart": {
+        "starts": 2,
+        "roundTwoSeq": 1,
+        "roundTwoTime": 0
+      },
+      "screenshots": [
+        {
+          "name": "map",
+          "size": [
+            960,
+            640
+          ],
+          "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/captures/vermilion-fold-2026-09-22T19-45-05-721Z/960x640/vermilion-fold-map-960x640.png"
+        },
+        {
+          "name": "contested",
+          "size": [
+            960,
+            640
+          ],
+          "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/captures/vermilion-fold-2026-09-22T19-45-05-721Z/960x640/vermilion-fold-contested-960x640.png"
+        },
+        {
+          "name": "zone",
+          "size": [
+            960,
+            640
+          ],
+          "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/captures/vermilion-fold-2026-09-22T19-45-05-721Z/960x640/vermilion-fold-zone-960x640.png"
+        },
+        {
+          "name": "results",
+          "size": [
+            960,
+            640
+          ],
+          "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/captures/vermilion-fold-2026-09-22T19-45-05-721Z/960x640/vermilion-fold-results-960x640.png"
+        }
+      ],
+      "live": {
+        "bearing_errors": 0,
+        "cameras": 1,
+        "capture": true,
+        "checks": 24,
+        "contested": true,
+        "environments": 1,
+        "held": true,
+        "hud_errors": 0,
+        "lights": 1,
+        "local_frags": 0,
+        "lost": true,
+        "map": "vermilion-fold",
+        "marker_errors": 0,
+        "mode": "domination",
+        "normal_rate": true,
+        "recovered": true,
+        "restart": true,
+        "results": true,
+        "samples": 3601,
+        "shots": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "size": [
+          960,
+          640
+        ]
+      }
+    },
+    "passed": true
+  },
+  "validation": {
+    "recipient": 0,
+    "mapId": "vermilion-fold",
+    "mode": "domination",
+    "correlatedSnapshots": 3601,
+    "renderedSamples": 3604,
+    "inputsReceived": 7764,
+    "capture": true,
+    "contested": true,
+    "lost": true,
+    "recovered": true,
+    "neutralized": true,
+    "heldScore": true,
+    "teamsScored": {
+      "0": true,
+      "1": true
+    },
+    "results": {
+      "over": true,
+      "overReason": "time",
+      "scores": {
+        "0": 58.09999999999798,
+        "1": 5.866666666666651
+      },
+      "winner": 0
+    },
+    "restart": {
+      "starts": 2,
+      "roundTwoSeq": 1,
+      "roundTwoTime": 0
+    },
+    "screenshots": [
+      {
+        "name": "map",
+        "size": [
+          960,
+          640
+        ],
+        "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/captures/vermilion-fold-2026-09-22T19-45-05-721Z/960x640/vermilion-fold-map-960x640.png"
+      },
+      {
+        "name": "contested",
+        "size": [
+          960,
+          640
+        ],
+        "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/captures/vermilion-fold-2026-09-22T19-45-05-721Z/960x640/vermilion-fold-contested-960x640.png"
+      },
+      {
+        "name": "zone",
+        "size": [
+          960,
+          640
+        ],
+        "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/captures/vermilion-fold-2026-09-22T19-45-05-721Z/960x640/vermilion-fold-zone-960x640.png"
+      },
+      {
+        "name": "results",
+        "size": [
+          960,
+          640
+        ],
+        "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/captures/vermilion-fold-2026-09-22T19-45-05-721Z/960x640/vermilion-fold-results-960x640.png"
+      }
+    ],
+    "live": {
+      "bearing_errors": 0,
+      "cameras": 1,
+      "capture": true,
+      "checks": 24,
+      "contested": true,
+      "environments": 1,
+      "held": true,
+      "hud_errors": 0,
+      "lights": 1,
+      "local_frags": 0,
+      "lost": true,
+      "map": "vermilion-fold",
+      "marker_errors": 0,
+      "mode": "domination",
+      "normal_rate": true,
+      "recovered": true,
+      "restart": true,
+      "results": true,
+      "samples": 3601,
+      "shots": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "size": [
+        960,
+        640
+      ]
+    }
+  }
+}

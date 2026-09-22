@@ -1,0 +1,86 @@
+{
+  "gate": "identity-zone-vermilion-fold-domination",
+  "startedAt": "2026-09-22T19:43:18.976Z",
+  "steps": [
+    {
+      "name": "identity-zone-node-tests",
+      "command": "/usr/bin/node --test port/native-identity-zones/tests/match.test.mjs port/native-identity-zones/tests/route.test.mjs port/native-identity-zones/tests/authority.test.mjs",
+      "exitCode": 0,
+      "wallSeconds": 36.198,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/evidence/identity-zone-node-tests.log"
+    },
+    {
+      "name": "native-arena-node-tests",
+      "command": "/usr/bin/node --test port/native-arenas/tests/actual-maps.mjs port/native-arenas/tests/identity-maps.mjs port/native-arenas/tests/schema.test.mjs port/native-arenas/tests/source-match.test.mjs port/native-arenas/tests/input-events.test.mjs",
+      "exitCode": 0,
+      "wallSeconds": 61.741,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/evidence/native-arena-node-tests.log"
+    },
+    {
+      "name": "zone-modes-unit",
+      "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/zone_modes/unit.gd",
+      "exitCode": 0,
+      "wallSeconds": 0.616,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/evidence/zone-modes-unit.log"
+    },
+    {
+      "name": "input-queue",
+      "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/input_queue.gd",
+      "exitCode": 0,
+      "wallSeconds": 0.144,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/evidence/input-queue.log"
+    },
+    {
+      "name": "round-boundaries",
+      "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/round_boundaries.gd",
+      "exitCode": 0,
+      "wallSeconds": 0.618,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/evidence/round-boundaries.log"
+    },
+    {
+      "name": "local-lifecycle",
+      "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/local_lifecycle.gd",
+      "exitCode": 0,
+      "wallSeconds": 0.242,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/evidence/local-lifecycle.log"
+    },
+    {
+      "name": "game-hud-session",
+      "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/game_hud_session.gd",
+      "exitCode": 0,
+      "wallSeconds": 0.9,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/evidence/game-hud-session.log"
+    },
+    {
+      "name": "scoreboard-session",
+      "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/scoreboard_session.gd",
+      "exitCode": 0,
+      "wallSeconds": 0.895,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/evidence/scoreboard-session.log"
+    },
+    {
+      "name": "team-scores",
+      "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/protocol/team_scores.gd",
+      "exitCode": 0,
+      "wallSeconds": 0.147,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/evidence/team-scores.log"
+    },
+    {
+      "name": "travel-times",
+      "command": "/usr/bin/node port/native-identity-zones/travel.mjs",
+      "exitCode": 0,
+      "wallSeconds": 4.652,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/evidence/travel-times.log"
+    },
+    {
+      "name": "graphical-capture",
+      "command": "/usr/bin/node port/native-identity-zones/capture.mjs --bots=2 --round-seconds=180 --score-limit=900",
+      "exitCode": 0,
+      "wallSeconds": 372.185,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/evidence/graphical-capture.log"
+    }
+  ],
+  "passed": true,
+  "finishedAt": "2026-09-22T19:51:17.318Z",
+  "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64"
+}

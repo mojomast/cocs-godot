@@ -45,6 +45,8 @@ func resize() -> void:
 	super.resize()
 	if not is_instance_valid(zone_panel): return
 	var viewport := get_viewport().get_visible_rect().size
-	zone_panel.position = Vector2(20, 70)
+	# The shared effect-quality line owns y=70 (world/combat_quality.gd). Keep the
+	# zone panel clear of it so the source projection is never overlapped.
+	zone_panel.position = Vector2(20, 104)
 	zone_panel.size = Vector2(minf(680, viewport.x - 40), 0)
 	status_panel.position.y = 270

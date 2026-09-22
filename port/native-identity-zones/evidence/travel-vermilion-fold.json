@@ -1,0 +1,1141 @@
+{
+  "gate": "identity-zone-travel",
+  "mapId": "vermilion-fold",
+  "mode": "domination",
+  "method": "real source Match through createIdentityZoneMatch; two local seats; zero bots; supported ground route (port/native-projectile-combat/route.mjs); standstill start; timed until the actor enters the source radius; 1/60 source ticks",
+  "geometryHash": "6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a",
+  "sourceTicks": 60,
+  "restTicks": 30,
+  "freshMatches": 6,
+  "zones": [
+    {
+      "id": "alpha",
+      "x": 0,
+      "z": -17,
+      "radius": 3.5,
+      "y": 0
+    },
+    {
+      "id": "bravo",
+      "x": 0,
+      "z": 0,
+      "radius": 3.5,
+      "y": 0
+    },
+    {
+      "id": "charlie",
+      "x": 0,
+      "z": 17,
+      "radius": 3.5,
+      "y": 0
+    }
+  ],
+  "teamSpawns": {
+    "0": [
+      [
+        -27,
+        -21
+      ],
+      [
+        -27,
+        21
+      ],
+      [
+        -27,
+        0
+      ]
+    ],
+    "1": [
+      [
+        27,
+        -21
+      ],
+      [
+        27,
+        21
+      ],
+      [
+        27,
+        0
+      ]
+    ]
+  },
+  "runs": [
+    {
+      "team": 0,
+      "spawn": 0,
+      "spawnPoint": [
+        -27,
+        -21
+      ],
+      "zone": "alpha",
+      "gait": "walk",
+      "seconds": 3.367,
+      "ticks": 202,
+      "distance": 28.52,
+      "entered": true,
+      "x": -3.363142751642013,
+      "z": -16.75208174171785,
+      "straight": 27.29,
+      "routeLength": 31.12
+    },
+    {
+      "team": 0,
+      "spawn": 0,
+      "spawnPoint": [
+        -27,
+        -21
+      ],
+      "zone": "bravo",
+      "gait": "walk",
+      "seconds": 4.783,
+      "ticks": 287,
+      "distance": 40.79,
+      "entered": true,
+      "x": 0.32507311158157726,
+      "z": -3.3884200964037183,
+      "straight": 34.21,
+      "routeLength": 43.4
+    },
+    {
+      "team": 0,
+      "spawn": 0,
+      "spawnPoint": [
+        -27,
+        -21
+      ],
+      "zone": "charlie",
+      "gait": "walk",
+      "seconds": 6.75,
+      "ticks": 405,
+      "distance": 57.7,
+      "entered": true,
+      "x": 0.10740755998773699,
+      "z": 13.51249230234843,
+      "straight": 46.62,
+      "routeLength": 60.4
+    },
+    {
+      "team": 0,
+      "spawn": 0,
+      "spawnPoint": [
+        -27,
+        -21
+      ],
+      "zone": "alpha",
+      "gait": "sprint",
+      "seconds": 2.5,
+      "ticks": 150,
+      "distance": 28.97,
+      "entered": true,
+      "x": -3.336947981556459,
+      "z": -16.68648004354798,
+      "straight": 27.29,
+      "routeLength": 31.12
+    },
+    {
+      "team": 0,
+      "spawn": 0,
+      "spawnPoint": [
+        -27,
+        -21
+      ],
+      "zone": "bravo",
+      "gait": "sprint",
+      "seconds": 3.567,
+      "ticks": 214,
+      "distance": 41.69,
+      "entered": true,
+      "x": 0.5285060703923372,
+      "z": -3.3001394767489876,
+      "straight": 34.21,
+      "routeLength": 43.4
+    },
+    {
+      "team": 0,
+      "spawn": 0,
+      "spawnPoint": [
+        -27,
+        -21
+      ],
+      "zone": "charlie",
+      "gait": "sprint",
+      "seconds": 4.967,
+      "ticks": 298,
+      "distance": 58.24,
+      "entered": true,
+      "x": 0.16298735343900048,
+      "z": 13.619797302261869,
+      "straight": 46.62,
+      "routeLength": 60.4
+    },
+    {
+      "team": 0,
+      "spawn": 1,
+      "spawnPoint": [
+        -27,
+        21
+      ],
+      "zone": "alpha",
+      "gait": "walk",
+      "seconds": 6.65,
+      "ticks": 399,
+      "distance": 56.84,
+      "entered": true,
+      "x": 0.1080586466437729,
+      "z": -13.513146519472768,
+      "straight": 46.62,
+      "routeLength": 60.4
+    },
+    {
+      "team": 0,
+      "spawn": 1,
+      "spawnPoint": [
+        -27,
+        21
+      ],
+      "zone": "bravo",
+      "gait": "walk",
+      "seconds": 4.783,
+      "ticks": 287,
+      "distance": 40.8,
+      "entered": true,
+      "x": 0.3268603161453987,
+      "z": 3.3876713004359877,
+      "straight": 34.21,
+      "routeLength": 43.4
+    },
+    {
+      "team": 0,
+      "spawn": 1,
+      "spawnPoint": [
+        -27,
+        21
+      ],
+      "zone": "charlie",
+      "gait": "walk",
+      "seconds": 3.367,
+      "ticks": 202,
+      "distance": 28.52,
+      "entered": true,
+      "x": -3.374261239010672,
+      "z": 16.760175854780396,
+      "straight": 27.29,
+      "routeLength": 31.12
+    },
+    {
+      "team": 0,
+      "spawn": 1,
+      "spawnPoint": [
+        -27,
+        21
+      ],
+      "zone": "alpha",
+      "gait": "sprint",
+      "seconds": 5.017,
+      "ticks": 301,
+      "distance": 58.81,
+      "entered": true,
+      "x": 0.183750441887827,
+      "z": -13.634065841348155,
+      "straight": 46.62,
+      "routeLength": 60.4
+    },
+    {
+      "team": 0,
+      "spawn": 1,
+      "spawnPoint": [
+        -27,
+        21
+      ],
+      "zone": "bravo",
+      "gait": "sprint",
+      "seconds": 3.55,
+      "ticks": 213,
+      "distance": 41.51,
+      "entered": true,
+      "x": 0.537237792594989,
+      "z": 3.296852542309475,
+      "straight": 34.21,
+      "routeLength": 43.4
+    },
+    {
+      "team": 0,
+      "spawn": 1,
+      "spawnPoint": [
+        -27,
+        21
+      ],
+      "zone": "charlie",
+      "gait": "sprint",
+      "seconds": 2.5,
+      "ticks": 150,
+      "distance": 28.96,
+      "entered": true,
+      "x": -3.3305810032292884,
+      "z": 16.671169637145045,
+      "straight": 27.29,
+      "routeLength": 31.12
+    },
+    {
+      "team": 0,
+      "spawn": 2,
+      "spawnPoint": [
+        -27,
+        0
+      ],
+      "zone": "alpha",
+      "gait": "walk",
+      "seconds": 4.467,
+      "ticks": 268,
+      "distance": 38.02,
+      "entered": true,
+      "x": 0.376696206329129,
+      "z": -13.572094869625598,
+      "straight": 31.91,
+      "routeLength": 42.32
+    },
+    {
+      "team": 0,
+      "spawn": 2,
+      "spawnPoint": [
+        -27,
+        0
+      ],
+      "zone": "bravo",
+      "gait": "walk",
+      "seconds": 3.767,
+      "ticks": 226,
+      "distance": 32.04,
+      "entered": true,
+      "x": 0.517418796373864,
+      "z": 3.4077248833470177,
+      "straight": 27,
+      "routeLength": 36.34
+    },
+    {
+      "team": 0,
+      "spawn": 2,
+      "spawnPoint": [
+        -27,
+        0
+      ],
+      "zone": "charlie",
+      "gait": "walk",
+      "seconds": 4.65,
+      "ticks": 279,
+      "distance": 39.58,
+      "entered": true,
+      "x": 0.3726872257083265,
+      "z": 13.572170142483365,
+      "straight": 31.91,
+      "routeLength": 42.32
+    },
+    {
+      "team": 0,
+      "spawn": 2,
+      "spawnPoint": [
+        -27,
+        0
+      ],
+      "zone": "alpha",
+      "gait": "sprint",
+      "seconds": 3.267,
+      "ticks": 196,
+      "distance": 38.09,
+      "entered": true,
+      "x": 0.6300121876155707,
+      "z": -13.652442428140333,
+      "straight": 31.91,
+      "routeLength": 42.32
+    },
+    {
+      "team": 0,
+      "spawn": 2,
+      "spawnPoint": [
+        -27,
+        0
+      ],
+      "zone": "bravo",
+      "gait": "sprint",
+      "seconds": 2.75,
+      "ticks": 165,
+      "distance": 32.02,
+      "entered": true,
+      "x": 0.6939162189828193,
+      "z": 3.3845755328823044,
+      "straight": 27,
+      "routeLength": 36.34
+    },
+    {
+      "team": 0,
+      "spawn": 2,
+      "spawnPoint": [
+        -27,
+        0
+      ],
+      "zone": "charlie",
+      "gait": "sprint",
+      "seconds": 3.467,
+      "ticks": 208,
+      "distance": 40.41,
+      "entered": true,
+      "x": 0.6239668016412903,
+      "z": 13.650031255258291,
+      "straight": 31.91,
+      "routeLength": 42.32
+    },
+    {
+      "team": 1,
+      "spawn": 0,
+      "spawnPoint": [
+        27,
+        -21
+      ],
+      "zone": "alpha",
+      "gait": "walk",
+      "seconds": 3.367,
+      "ticks": 202,
+      "distance": 28.52,
+      "entered": true,
+      "x": 3.363142751642013,
+      "z": -16.75208174171785,
+      "straight": 27.29,
+      "routeLength": 31.12
+    },
+    {
+      "team": 1,
+      "spawn": 0,
+      "spawnPoint": [
+        27,
+        -21
+      ],
+      "zone": "bravo",
+      "gait": "walk",
+      "seconds": 4.783,
+      "ticks": 287,
+      "distance": 40.79,
+      "entered": true,
+      "x": -0.32507311158157726,
+      "z": -3.3884200964037183,
+      "straight": 34.21,
+      "routeLength": 43.4
+    },
+    {
+      "team": 1,
+      "spawn": 0,
+      "spawnPoint": [
+        27,
+        -21
+      ],
+      "zone": "charlie",
+      "gait": "walk",
+      "seconds": 6.75,
+      "ticks": 405,
+      "distance": 57.7,
+      "entered": true,
+      "x": -0.10740755998773699,
+      "z": 13.51249230234843,
+      "straight": 46.62,
+      "routeLength": 60.4
+    },
+    {
+      "team": 1,
+      "spawn": 0,
+      "spawnPoint": [
+        27,
+        -21
+      ],
+      "zone": "alpha",
+      "gait": "sprint",
+      "seconds": 2.5,
+      "ticks": 150,
+      "distance": 28.97,
+      "entered": true,
+      "x": 3.336947981556459,
+      "z": -16.68648004354798,
+      "straight": 27.29,
+      "routeLength": 31.12
+    },
+    {
+      "team": 1,
+      "spawn": 0,
+      "spawnPoint": [
+        27,
+        -21
+      ],
+      "zone": "bravo",
+      "gait": "sprint",
+      "seconds": 3.567,
+      "ticks": 214,
+      "distance": 41.69,
+      "entered": true,
+      "x": -0.5285060703923372,
+      "z": -3.3001394767489876,
+      "straight": 34.21,
+      "routeLength": 43.4
+    },
+    {
+      "team": 1,
+      "spawn": 0,
+      "spawnPoint": [
+        27,
+        -21
+      ],
+      "zone": "charlie",
+      "gait": "sprint",
+      "seconds": 4.967,
+      "ticks": 298,
+      "distance": 58.24,
+      "entered": true,
+      "x": -0.16298735343900048,
+      "z": 13.619797302261869,
+      "straight": 46.62,
+      "routeLength": 60.4
+    },
+    {
+      "team": 1,
+      "spawn": 1,
+      "spawnPoint": [
+        27,
+        21
+      ],
+      "zone": "alpha",
+      "gait": "walk",
+      "seconds": 6.65,
+      "ticks": 399,
+      "distance": 56.84,
+      "entered": true,
+      "x": -0.1080586466437729,
+      "z": -13.513146519472768,
+      "straight": 46.62,
+      "routeLength": 60.4
+    },
+    {
+      "team": 1,
+      "spawn": 1,
+      "spawnPoint": [
+        27,
+        21
+      ],
+      "zone": "bravo",
+      "gait": "walk",
+      "seconds": 4.783,
+      "ticks": 287,
+      "distance": 40.8,
+      "entered": true,
+      "x": -0.3268603161453987,
+      "z": 3.3876713004359877,
+      "straight": 34.21,
+      "routeLength": 43.4
+    },
+    {
+      "team": 1,
+      "spawn": 1,
+      "spawnPoint": [
+        27,
+        21
+      ],
+      "zone": "charlie",
+      "gait": "walk",
+      "seconds": 3.367,
+      "ticks": 202,
+      "distance": 28.52,
+      "entered": true,
+      "x": 3.374261239010672,
+      "z": 16.760175854780396,
+      "straight": 27.29,
+      "routeLength": 31.12
+    },
+    {
+      "team": 1,
+      "spawn": 1,
+      "spawnPoint": [
+        27,
+        21
+      ],
+      "zone": "alpha",
+      "gait": "sprint",
+      "seconds": 5.017,
+      "ticks": 301,
+      "distance": 58.81,
+      "entered": true,
+      "x": -0.183750441887827,
+      "z": -13.634065841348155,
+      "straight": 46.62,
+      "routeLength": 60.4
+    },
+    {
+      "team": 1,
+      "spawn": 1,
+      "spawnPoint": [
+        27,
+        21
+      ],
+      "zone": "bravo",
+      "gait": "sprint",
+      "seconds": 3.55,
+      "ticks": 213,
+      "distance": 41.51,
+      "entered": true,
+      "x": -0.537237792594989,
+      "z": 3.296852542309475,
+      "straight": 34.21,
+      "routeLength": 43.4
+    },
+    {
+      "team": 1,
+      "spawn": 1,
+      "spawnPoint": [
+        27,
+        21
+      ],
+      "zone": "charlie",
+      "gait": "sprint",
+      "seconds": 2.5,
+      "ticks": 150,
+      "distance": 28.96,
+      "entered": true,
+      "x": 3.3305810032292884,
+      "z": 16.671169637145045,
+      "straight": 27.29,
+      "routeLength": 31.12
+    },
+    {
+      "team": 1,
+      "spawn": 2,
+      "spawnPoint": [
+        27,
+        0
+      ],
+      "zone": "alpha",
+      "gait": "walk",
+      "seconds": 4.467,
+      "ticks": 268,
+      "distance": 38.02,
+      "entered": true,
+      "x": -0.376696206329129,
+      "z": -13.572094869625598,
+      "straight": 31.91,
+      "routeLength": 42.32
+    },
+    {
+      "team": 1,
+      "spawn": 2,
+      "spawnPoint": [
+        27,
+        0
+      ],
+      "zone": "bravo",
+      "gait": "walk",
+      "seconds": 3.767,
+      "ticks": 226,
+      "distance": 32.04,
+      "entered": true,
+      "x": -0.517418796373864,
+      "z": 3.4077248833470177,
+      "straight": 27,
+      "routeLength": 36.34
+    },
+    {
+      "team": 1,
+      "spawn": 2,
+      "spawnPoint": [
+        27,
+        0
+      ],
+      "zone": "charlie",
+      "gait": "walk",
+      "seconds": 4.65,
+      "ticks": 279,
+      "distance": 39.58,
+      "entered": true,
+      "x": -0.3726872257083265,
+      "z": 13.572170142483365,
+      "straight": 31.91,
+      "routeLength": 42.32
+    },
+    {
+      "team": 1,
+      "spawn": 2,
+      "spawnPoint": [
+        27,
+        0
+      ],
+      "zone": "alpha",
+      "gait": "sprint",
+      "seconds": 3.267,
+      "ticks": 196,
+      "distance": 38.09,
+      "entered": true,
+      "x": -0.6300121876155707,
+      "z": -13.652442428140333,
+      "straight": 31.91,
+      "routeLength": 42.32
+    },
+    {
+      "team": 1,
+      "spawn": 2,
+      "spawnPoint": [
+        27,
+        0
+      ],
+      "zone": "bravo",
+      "gait": "sprint",
+      "seconds": 2.75,
+      "ticks": 165,
+      "distance": 32.02,
+      "entered": true,
+      "x": -0.6939162189828193,
+      "z": 3.3845755328823044,
+      "straight": 27,
+      "routeLength": 36.34
+    },
+    {
+      "team": 1,
+      "spawn": 2,
+      "spawnPoint": [
+        27,
+        0
+      ],
+      "zone": "charlie",
+      "gait": "sprint",
+      "seconds": 3.467,
+      "ticks": 208,
+      "distance": 40.41,
+      "entered": true,
+      "x": -0.6239668016412903,
+      "z": 13.650031255258291,
+      "straight": 31.91,
+      "routeLength": 42.32
+    }
+  ],
+  "summary": [
+    {
+      "zone": "alpha",
+      "gait": "walk",
+      "zoneCenter": [
+        0,
+        -17
+      ],
+      "radius": 3.5,
+      "westSpawns": [
+        {
+          "spawn": [
+            -27,
+            -21
+          ],
+          "seconds": 3.367,
+          "ticks": 202,
+          "routeLength": 31.12
+        },
+        {
+          "spawn": [
+            -27,
+            21
+          ],
+          "seconds": 6.65,
+          "ticks": 399,
+          "routeLength": 60.4
+        },
+        {
+          "spawn": [
+            -27,
+            0
+          ],
+          "seconds": 4.467,
+          "ticks": 268,
+          "routeLength": 42.32
+        }
+      ],
+      "eastSpawns": [
+        {
+          "spawn": [
+            27,
+            -21
+          ],
+          "seconds": 3.367,
+          "ticks": 202,
+          "routeLength": 31.12
+        },
+        {
+          "spawn": [
+            27,
+            21
+          ],
+          "seconds": 6.65,
+          "ticks": 399,
+          "routeLength": 60.4
+        },
+        {
+          "spawn": [
+            27,
+            0
+          ],
+          "seconds": 4.467,
+          "ticks": 268,
+          "routeLength": 42.32
+        }
+      ],
+      "westMin": 3.367,
+      "eastMin": 3.367,
+      "fastestDelta": 0,
+      "asymmetryPercent": 0
+    },
+    {
+      "zone": "alpha",
+      "gait": "sprint",
+      "zoneCenter": [
+        0,
+        -17
+      ],
+      "radius": 3.5,
+      "westSpawns": [
+        {
+          "spawn": [
+            -27,
+            -21
+          ],
+          "seconds": 2.5,
+          "ticks": 150,
+          "routeLength": 31.12
+        },
+        {
+          "spawn": [
+            -27,
+            21
+          ],
+          "seconds": 5.017,
+          "ticks": 301,
+          "routeLength": 60.4
+        },
+        {
+          "spawn": [
+            -27,
+            0
+          ],
+          "seconds": 3.267,
+          "ticks": 196,
+          "routeLength": 42.32
+        }
+      ],
+      "eastSpawns": [
+        {
+          "spawn": [
+            27,
+            -21
+          ],
+          "seconds": 2.5,
+          "ticks": 150,
+          "routeLength": 31.12
+        },
+        {
+          "spawn": [
+            27,
+            21
+          ],
+          "seconds": 5.017,
+          "ticks": 301,
+          "routeLength": 60.4
+        },
+        {
+          "spawn": [
+            27,
+            0
+          ],
+          "seconds": 3.267,
+          "ticks": 196,
+          "routeLength": 42.32
+        }
+      ],
+      "westMin": 2.5,
+      "eastMin": 2.5,
+      "fastestDelta": 0,
+      "asymmetryPercent": 0
+    },
+    {
+      "zone": "bravo",
+      "gait": "walk",
+      "zoneCenter": [
+        0,
+        0
+      ],
+      "radius": 3.5,
+      "westSpawns": [
+        {
+          "spawn": [
+            -27,
+            -21
+          ],
+          "seconds": 4.783,
+          "ticks": 287,
+          "routeLength": 43.4
+        },
+        {
+          "spawn": [
+            -27,
+            21
+          ],
+          "seconds": 4.783,
+          "ticks": 287,
+          "routeLength": 43.4
+        },
+        {
+          "spawn": [
+            -27,
+            0
+          ],
+          "seconds": 3.767,
+          "ticks": 226,
+          "routeLength": 36.34
+        }
+      ],
+      "eastSpawns": [
+        {
+          "spawn": [
+            27,
+            -21
+          ],
+          "seconds": 4.783,
+          "ticks": 287,
+          "routeLength": 43.4
+        },
+        {
+          "spawn": [
+            27,
+            21
+          ],
+          "seconds": 4.783,
+          "ticks": 287,
+          "routeLength": 43.4
+        },
+        {
+          "spawn": [
+            27,
+            0
+          ],
+          "seconds": 3.767,
+          "ticks": 226,
+          "routeLength": 36.34
+        }
+      ],
+      "westMin": 3.767,
+      "eastMin": 3.767,
+      "fastestDelta": 0,
+      "asymmetryPercent": 0
+    },
+    {
+      "zone": "bravo",
+      "gait": "sprint",
+      "zoneCenter": [
+        0,
+        0
+      ],
+      "radius": 3.5,
+      "westSpawns": [
+        {
+          "spawn": [
+            -27,
+            -21
+          ],
+          "seconds": 3.567,
+          "ticks": 214,
+          "routeLength": 43.4
+        },
+        {
+          "spawn": [
+            -27,
+            21
+          ],
+          "seconds": 3.55,
+          "ticks": 213,
+          "routeLength": 43.4
+        },
+        {
+          "spawn": [
+            -27,
+            0
+          ],
+          "seconds": 2.75,
+          "ticks": 165,
+          "routeLength": 36.34
+        }
+      ],
+      "eastSpawns": [
+        {
+          "spawn": [
+            27,
+            -21
+          ],
+          "seconds": 3.567,
+          "ticks": 214,
+          "routeLength": 43.4
+        },
+        {
+          "spawn": [
+            27,
+            21
+          ],
+          "seconds": 3.55,
+          "ticks": 213,
+          "routeLength": 43.4
+        },
+        {
+          "spawn": [
+            27,
+            0
+          ],
+          "seconds": 2.75,
+          "ticks": 165,
+          "routeLength": 36.34
+        }
+      ],
+      "westMin": 2.75,
+      "eastMin": 2.75,
+      "fastestDelta": 0,
+      "asymmetryPercent": 0
+    },
+    {
+      "zone": "charlie",
+      "gait": "walk",
+      "zoneCenter": [
+        0,
+        17
+      ],
+      "radius": 3.5,
+      "westSpawns": [
+        {
+          "spawn": [
+            -27,
+            -21
+          ],
+          "seconds": 6.75,
+          "ticks": 405,
+          "routeLength": 60.4
+        },
+        {
+          "spawn": [
+            -27,
+            21
+          ],
+          "seconds": 3.367,
+          "ticks": 202,
+          "routeLength": 31.12
+        },
+        {
+          "spawn": [
+            -27,
+            0
+          ],
+          "seconds": 4.65,
+          "ticks": 279,
+          "routeLength": 42.32
+        }
+      ],
+      "eastSpawns": [
+        {
+          "spawn": [
+            27,
+            -21
+          ],
+          "seconds": 6.75,
+          "ticks": 405,
+          "routeLength": 60.4
+        },
+        {
+          "spawn": [
+            27,
+            21
+          ],
+          "seconds": 3.367,
+          "ticks": 202,
+          "routeLength": 31.12
+        },
+        {
+          "spawn": [
+            27,
+            0
+          ],
+          "seconds": 4.65,
+          "ticks": 279,
+          "routeLength": 42.32
+        }
+      ],
+      "westMin": 3.367,
+      "eastMin": 3.367,
+      "fastestDelta": 0,
+      "asymmetryPercent": 0
+    },
+    {
+      "zone": "charlie",
+      "gait": "sprint",
+      "zoneCenter": [
+        0,
+        17
+      ],
+      "radius": 3.5,
+      "westSpawns": [
+        {
+          "spawn": [
+            -27,
+            -21
+          ],
+          "seconds": 4.967,
+          "ticks": 298,
+          "routeLength": 60.4
+        },
+        {
+          "spawn": [
+            -27,
+            21
+          ],
+          "seconds": 2.5,
+          "ticks": 150,
+          "routeLength": 31.12
+        },
+        {
+          "spawn": [
+            -27,
+            0
+          ],
+          "seconds": 3.467,
+          "ticks": 208,
+          "routeLength": 42.32
+        }
+      ],
+      "eastSpawns": [
+        {
+          "spawn": [
+            27,
+            -21
+          ],
+          "seconds": 4.967,
+          "ticks": 298,
+          "routeLength": 60.4
+        },
+        {
+          "spawn": [
+            27,
+            21
+          ],
+          "seconds": 2.5,
+          "ticks": 150,
+          "routeLength": 31.12
+        },
+        {
+          "spawn": [
+            27,
+            0
+          ],
+          "seconds": 3.467,
+          "ticks": 208,
+          "routeLength": 42.32
+        }
+      ],
+      "westMin": 2.5,
+      "eastMin": 2.5,
+      "fastestDelta": 0,
+      "asymmetryPercent": 0
+    }
+  ]
+}
