@@ -1,0 +1,23 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: Connection/round-start timed out. Relaunch to reconnect.
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] on_error (res://world/session.gd:376)
+       [1] on_error (res://native_arenas/demo.gd:249)
+       [2] advance_handshake (res://world/session.gd:232)
+       [3] _process (res://world/session.gd:522)
+
+LIVE_SMOKE_FAILURE Error: Native smoke failed: aurora-basin {"code":1,"signal":null}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: Connection/round-start timed out. Relaunch to reconnect.
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] on_error (res://world/session.gd:376)
+       [1] on_error (res://native_arenas/demo.gd:249)
+       [2] advance_handshake (res://world/session.gd:232)
+       [3] _process (res://world/session.gd:522)
+
+    at file:///home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-session/live-smoke.mjs:59:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)

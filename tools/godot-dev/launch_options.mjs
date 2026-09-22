@@ -50,7 +50,7 @@ export function launchOptions(argv, catalog) {
     const map = values.map ?? NATIVE_ARENA_MAPS[0], mode = values.mode ?? 'deathmatch';
     if (!NATIVE_ARENA_MAPS.includes(map)) throw Error(`native-dm does not support map ${map}`);
     if (mode !== 'deathmatch') throw Error('native-dm supports only deathmatch');
-    for (const [key, min, max, fallback] of [['bots',0,8,2],['round-seconds',60,300,180]]) {
+    for (const [key, min, max, fallback] of [['bots',1,7,2],['round-seconds',60,300,180]]) {
       values[key] ??= String(fallback);
       if (!/^\d+$/.test(values[key]) || Number(values[key]) < min || Number(values[key]) > max) throw Error(`--${key} must be ${min}..${max}`);
     }
@@ -149,7 +149,7 @@ Lobby: explicit Host/Create or Guest/Join, roster and host-only Start/Restart.
 
 Combat: --map, --mode, --setup, --mute, --debug-hud, --native-trace
 Native DM: prism-foundry (default), aurora-basin, cinder-array; deathmatch only.
-  Owned local loopback authority, one human plus --bots=0..8 (default 2).
+  Owned local loopback authority, one human plus --bots=1..7 (default 2).
   --round-seconds=60..300 (default 180). No endpoint, join or setup options.
   --smoke runs the scene headlessly with Dummy audio, bounded to 20 seconds.
 Horde: three combat arenas; local-only solo authority, default ten waves.

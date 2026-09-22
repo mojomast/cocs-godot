@@ -46,8 +46,11 @@ async function main() {
         game.server.once('error', reject);
         game.server.listen(0, '127.0.0.1', () => { game.server.removeListener('error', reject); resolve(); });
       });
-      const owned = new URL(plan.nativeArena && game.endpoint ? game.endpoint : `ws://127.0.0.1:${game.server.address().port}`);
-      if (owned.protocol !== 'ws:' || owned.hostname !== '127.0.0.1' || !owned.port || owned.username || owned.password || owned.pathname !== '/' || owned.search || owned.hash) throw Error('Owned authority must use a private loopback endpoint');
+      const ownedEndpoint = plan.nativeArena && game.endpoint ? game.endpoint : `ws://127.0.0.1:${game.server.address().port}`;
+      const owned = new URL(ownedEndpoint);
+      // Accept only the authority's exact routes, including before URL normalization.
+      const allowedPath = plan.nativeArena ? [owned.origin, `${owned.origin}/`, `${owned.origin}/native-arenas`].includes(ownedEndpoint) : owned.pathname === '/';
+      if (owned.protocol !== 'ws:' || owned.hostname !== '127.0.0.1' || !owned.port || owned.username || owned.password || !allowedPath || owned.search || owned.hash) throw Error('Owned authority must use a private loopback endpoint');
       const port = Number(owned.port);
       const health = await fetch(`http://127.0.0.1:${port}/`, {signal:AbortSignal.timeout(5000)});
       const status = await health.json();
@@ -57,7 +60,7 @@ async function main() {
       if (!health.ok || status?.port !== port || !identity) throw Error('Owned server health check failed');
       if (stopping) return signalCode || 1;
       console.log('PACKAGE_SERVER_READY ' + JSON.stringify({pid:process.pid, host:'127.0.0.1', port, experience:plan.experience, map:plan.map, mode:plan.mode, health:status}));
-      endpoint = `ws://127.0.0.1:${port}`;
+      endpoint = `ws://127.0.0.1:${port}${plan.nativeArena && owned.pathname === '/native-arenas' ? '/native-arenas' : ''}`;
     } else if (plan.nativeOnly) {
       console.log('PACKAGE_NATIVE_ONLY ' + JSON.stringify({authority:false, experience:plan.experience}));
     } else {

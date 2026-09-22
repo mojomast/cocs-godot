@@ -27,8 +27,12 @@ try{
  let endpoint=plan.endpoint;
  if(game){
   if(!plan.nativeArena || (!game.endpoint && !game.server?.listening))await new Promise((resolve,reject)=>{game.server.once('error',reject);game.server.listen(plan.nativeArena?0:Number(process.env.PORT??0),'127.0.0.1',()=>{game.server.removeListener('error',reject);resolve();});});
-  const owned=new URL(plan.nativeArena&&game.endpoint?game.endpoint:`ws://127.0.0.1:${game.server.address().port}`);
-  if(owned.protocol!=='ws:'||owned.hostname!=='127.0.0.1'||!owned.port||owned.username||owned.password||owned.pathname!=='/'||owned.search||owned.hash)throw Error('Owned authority must use a private loopback endpoint');
+  const ownedEndpoint=plan.nativeArena&&game.endpoint?game.endpoint:`ws://127.0.0.1:${game.server.address().port}`;
+  const owned=new URL(ownedEndpoint);
+  // Native authority supports exactly the root and /native-arenas routes.
+  // Check the original spelling too: URL normalization must not admit other paths.
+  const allowedPath=plan.nativeArena?[owned.origin,`${owned.origin}/`,`${owned.origin}/native-arenas`].includes(ownedEndpoint):owned.pathname==='/';
+  if(owned.protocol!=='ws:'||owned.hostname!=='127.0.0.1'||!owned.port||owned.username||owned.password||!allowedPath||owned.search||owned.hash)throw Error('Owned authority must use a private loopback endpoint');
   const port=Number(owned.port);const health=await fetch(`http://127.0.0.1:${port}`,{signal:AbortSignal.timeout(5000)});if(!health.ok)throw Error('Server readiness failed');
   if(plan.nativeArena){
    const status=await health.json();
@@ -37,7 +41,7 @@ try{
    const status=await health.json();
    if(status?.service!=='cocs-local-horde'||status.transport!==1||status.localOnly!==true||status.port!==port)throw Error('Horde readiness identity failed');
   }
-  endpoint=`ws://127.0.0.1:${port}`;
+  endpoint=`ws://127.0.0.1:${port}${plan.nativeArena&&owned.pathname==='/native-arenas'?'/native-arenas':''}`;
   console.log(`Owned local server ready at ${endpoint}; ${plan.smoke??plan.experience}`);
  }else if(plan.nativeOnly)console.log(`Native-only ${plan.experience}; no authority; this launcher owns the native client`);
  else console.log('Using existing authority; this launcher owns only the native client');

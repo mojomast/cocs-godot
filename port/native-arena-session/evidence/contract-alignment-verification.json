@@ -1,0 +1,15 @@
+{
+  "godotVersion": "4.5.2.stable.official.6ce3de25a",
+  "nodeVersion": "22.23.1",
+  "checks": [
+    {"scope": "Godot session with delivered native client and synthetic public frames", "checks": 98, "passed": true, "log": "contract-alignment-session.log"},
+    {"scope": "launcher options, ownership, endpoint negatives, legacy route regressions", "tests": 117, "passed": true, "log": "../../native-arena-launchers/evidence/contract-alignment-tests.log"},
+    {"scope": "actual authority factory and source Match; synthetic geometry/protocol-driving process", "tests": 9, "passed": true, "command": "node --test tools/godot-dev/native_arena_authority.test.mjs tools/godot-package/native_arena_authority.test.mjs"},
+    {"scope": "native closure fixtures", "tests": 2, "passed": true, "command": "node --test tools/godot-package/native_arena_closure.test.mjs"}
+  ],
+  "liveEvidence": "contract-alignment-live/live-smoke.json",
+  "liveResults": {"prism-foundry": "passed", "aurora-basin": "round-start timeout; integration blocker", "cinder-array": "not run after failure"},
+  "renderedPerformanceAcceptance": false,
+  "fullThreeMapAcceptance": false,
+  "historicalEvidencePreserved": true
+}

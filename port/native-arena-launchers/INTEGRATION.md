@@ -20,10 +20,19 @@ createNativeArenaAuthority({
 The owned result must expose `close()`. A ready `endpoint` string is supported,
 as is the Horde-style `{server, wss, close}` result with an unstarted HTTP server.
 When present, `server` is monitored for runtime errors and residual WebSocket
-clients are terminated before closing. The endpoint must be
-`ws://127.0.0.1:<ephemeral-port>` without credentials, query, fragment or extra
-path. HTTP readiness at that port must return a successful JSON response with
+clients are terminated before closing. The endpoint must be exactly
+`ws://127.0.0.1:<ephemeral-port>/native-arenas` (the delivered factory route),
+or the compatible root with an empty path or `/`. The native route is preserved
+when forwarded to Godot. Credentials, queries, fragments, other paths, trailing
+path slashes, percent-encoded paths and dot-segment normalization are rejected.
+HTTP readiness at the root of that port must return a successful JSON response with
 `localOnly: true` and the numeric bound `port`.
+
+Native DM accepts **1..7 bots, default 2**, matching the source/authority bounds.
+Round seconds remain **60..300, default 180**; the authority's broader 60..900
+range is not exposed by this UI. The scene requests `fragLimit:50` (the source
+maximum), verifies the echoed settings, and requires matching `start.geometryHash`
+plus the delivered native input-epoch client. There is no ordinary-client fallback.
 
 Godot receives `res://native_arenas/demo.tscn`, followed by `--`, the owned
 `--endpoint`, `--map`, `--mode=deathmatch`, `--bots` and `--round-seconds`.
@@ -102,4 +111,17 @@ ports. They cover normal exit, spawn/crash failures, readiness failures,
 interrupts, uncooperative children, independent exploration routing, and both
 real 20-second smoke deadlines. Static closure tests use private module
 fixtures and reject arbitrary helpers, data imports and dynamic loading.
-Real authority/protocol/Godot integration remains the lead's final probe.
+The new actual-factory fixtures invoke the delivered `createNativeArenaAuthority`
+and unmodified source Match, with explicitly synthetic geometry and a separate
+protocol-driving process in place of Godot. Both launchers accept 1 and 7 bots,
+preserve 60/300-second settings, and reject 0 and 8 before invoking the factory.
+The source factory is also directly checked for rejection of 0/8. Process tests
+exercise the exact `/native-arenas` route and endpoint negatives before native
+spawn, and verify owned listener/process/XDG cleanup.
+
+Contract-alignment verification: 117 option/ownership/regression tests passed
+(`evidence/contract-alignment-tests.log`), 9 actual-factory boundary tests passed,
+and 2 native closure tests passed. The Godot session's 98 synthetic checks and
+actual-map live results are documented in `../native-arena-session/HANDOFF.md`.
+Prism passed the real authority + Godot smoke; Aurora hit a round-start timeout.
+The full three-map and Windows package acceptance remains with the lead.

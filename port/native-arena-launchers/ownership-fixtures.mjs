@@ -29,17 +29,28 @@ export async function createNativeArenaAuthority(options) {
  if(scenario==='listen-failure'){server.listen=()=>queueMicrotask(()=>server.emit('error',Error('synthetic listen failure')));return result;}
  if(scenario==='unstarted')return result;
  await new Promise(r=>server.listen(options.port,options.host,r));
- result.endpoint='ws://127.0.0.1:'+server.address().port;
+ const base='ws://127.0.0.1:'+server.address().port;
+ result.endpoint=base+'/native-arenas';
+ if(scenario==='root-endpoint')result.endpoint=base+'/';
  if(scenario==='external-endpoint')result.endpoint='ws://example.invalid:12345';
+ if(scenario==='other-path')result.endpoint=base+'/other';
+ if(scenario==='trailing-path')result.endpoint=base+'/native-arenas/';
+ if(scenario==='normalized-path')result.endpoint=base+'/other/../native-arenas';
+ if(scenario==='encoded-path')result.endpoint=base+'/%6eative-arenas';
+ if(scenario==='query-endpoint')result.endpoint=base+'/native-arenas?x=1';
+ if(scenario==='fragment-endpoint')result.endpoint=base+'/native-arenas#fragment';
+ if(scenario==='credential-endpoint')result.endpoint=result.endpoint.replace('ws://','ws://user:secret@');
+ if(scenario==='tls-endpoint')result.endpoint=result.endpoint.replace('ws://','wss://');
  if(scenario==='endpoint-only'){delete result.server;delete result.wss;}
  return result;
 }`;
 
-export const scenarios = ['exit','smoke','unstarted','endpoint-only','native-failure','native-crash','missing-native',
+export const scenarios = ['exit','smoke','unstarted','root-endpoint','endpoint-only','native-failure','native-crash','missing-native',
   'spawn-failure','interrupt','terminate','uncooperative','server-failure','listen-failure','factory-failure',
-  'wrong-local','wrong-port','health-failure','external-endpoint','bad-args','native-only'];
+  'wrong-local','wrong-port','health-failure','external-endpoint','other-path','trailing-path','normalized-path','encoded-path',
+  'query-endpoint','fragment-endpoint','credential-endpoint','tls-endpoint','bad-args','native-only'];
 
-export async function verifyOwnership(kind, scenario, map = 'prism-foundry') {
+export async function verifyOwnership(kind, scenario, map = 'prism-foundry', bots = 1) {
   const root = await mkdtemp(join(tmpdir(),'native arena ownership synthetic '));
   const processes = new Set();
   try {
@@ -86,7 +97,7 @@ if(process.argv.includes('--version')){
       script = join(root,'tools/godot-dev/launch.mjs');
     }
     if (scenario === 'missing-native') await rm(native);
-    const args = scenario === 'native-only' ? ['--experience=aurora-basin'] : ['--experience=native-dm',`--map=${map}`,'--bots=0','--round-seconds=60'];
+    const args = scenario === 'native-only' ? ['--experience=aurora-basin'] : ['--experience=native-dm',`--map=${map}`,`--bots=${bots}`,'--round-seconds=60'];
     if (['smoke','smoke-timeout'].includes(scenario)) args.push('--smoke');
     if (scenario === 'bad-args') args.push('--endpoint=ws://127.0.0.1:12345');
     let result;
@@ -99,15 +110,15 @@ if(process.argv.includes('--version')){
     const line = result.stdout.split('\n').find(l=>l.startsWith('SYNTHETIC_NATIVE '));
     const child = line ? JSON.parse(line.slice('SYNTHETIC_NATIVE '.length)) : null;
     if (child) processes.add(child.pid);
-    const expected = ['exit','smoke','unstarted','endpoint-only','native-only'].includes(scenario) ? 0 : scenario==='native-failure' ? 17 : scenario==='interrupt' ? 130 : ['terminate','uncooperative'].includes(scenario) ? 143 : 1;
+    const expected = ['exit','smoke','unstarted','root-endpoint','endpoint-only','native-only'].includes(scenario) ? 0 : scenario==='native-failure' ? 17 : scenario==='interrupt' ? 130 : ['terminate','uncooperative'].includes(scenario) ? 143 : 1;
     assert.equal(result.code,expected,text);
     assert.doesNotMatch(text,/UNEXPECTED_AUTHORITY_IMPORT/);
     const constructed = !['bad-args','native-only'].includes(scenario) && !(kind==='dev'&&scenario==='missing-native');
     const factoryLine = result.stdout.split('\n').find(l=>l.startsWith('SYNTHETIC_FACTORY '));
     assert.equal(!!factoryLine,constructed,text);
-    if (constructed) assert.deepEqual(JSON.parse(factoryLine.slice('SYNTHETIC_FACTORY '.length)),{port:0,host:'127.0.0.1',mapId:map,mode:'deathmatch',bots:0,roundSeconds:60});
+    if (constructed) assert.deepEqual(JSON.parse(factoryLine.slice('SYNTHETIC_FACTORY '.length)),{port:0,host:'127.0.0.1',mapId:map,mode:'deathmatch',bots,roundSeconds:60});
     assert.equal(result.stdout.includes('SYNTHETIC_CLOSED'),constructed&&scenario!=='factory-failure',text);
-    const started = ['exit','smoke','smoke-timeout','unstarted','endpoint-only','native-failure','native-crash','interrupt','terminate','uncooperative','server-failure','native-only'].includes(scenario);
+    const started = ['exit','smoke','smoke-timeout','unstarted','root-endpoint','endpoint-only','native-failure','native-crash','interrupt','terminate','uncooperative','server-failure','native-only'].includes(scenario);
     assert.equal(!!child,started,text);
     if (child) {
       assert.equal(child.cwd,root);
@@ -116,7 +127,8 @@ if(process.argv.includes('--version')){
       const port = Number(result.stdout.match(/SYNTHETIC_PORT (\d+)/)?.[1]);
       const scene = scenario==='native-only' ? 'res://aurora_basin/demo.tscn' : 'res://native_arenas/demo.tscn';
       const prefix = kind==='package' ? [...engine,'--main-pack',join(root,'cocs.pck'),scene,'--'] : [...engine,'--path','godot',scene,'--'];
-      assert.deepEqual(child.args,[...prefix,...(scenario==='native-only'?[]:[`--endpoint=ws://127.0.0.1:${port}`,`--map=${map}`,'--mode=deathmatch','--bots=0','--round-seconds=60',...(smoke?['--smoke']:[])])]);
+      const endpointPath = ['unstarted','root-endpoint'].includes(scenario) ? '' : '/native-arenas';
+      assert.deepEqual(child.args,[...prefix,...(scenario==='native-only'?[]:[`--endpoint=ws://127.0.0.1:${port}${endpointPath}`,`--map=${map}`,'--mode=deathmatch',`--bots=${bots}`,'--round-seconds=60',...(smoke?['--smoke']:[])])]);
       assert.equal(new Set(child.xdg).size,3);
       for (const path of child.xdg) {assert.equal(dirname(dirname(path)),root);await assert.rejects(readdir(path),{code:'ENOENT'});}
       assert.throws(()=>process.kill(child.pid,0),{code:'ESRCH'},'Native child survived');

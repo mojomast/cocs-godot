@@ -1,0 +1,23 @@
+[
+  {
+    "check": "synthetic-lifecycle",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "seconds": 0.427,
+    "passed": true
+  },
+  {
+    "check": "actual-geometry-composition",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "seconds": 0.898,
+    "passed": true
+  },
+  {
+    "check": "missing-authority-smoke",
+    "exitCode": 1,
+    "expectedExitCode": 1,
+    "seconds": 15.395,
+    "passed": true
+  }
+]

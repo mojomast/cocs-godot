@@ -1,0 +1,37 @@
+{
+  "renderedPerformanceAcceptance": false,
+  "runs": [
+    {
+      "map": "prism-foundry",
+      "acks": 17,
+      "actors": 3,
+      "camera": "public-actor",
+      "fired": true,
+      "geometryHash": "9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572",
+      "localAlive": true,
+      "mode": "deathmatch",
+      "moved": true,
+      "snapshots": 7,
+      "authorityPublicSnapshots": 7,
+      "authorityActorShots": 1,
+      "authorityAppliedInputs": 17,
+      "wallSeconds": 3.02977113,
+      "evidence": "live-authority-headless",
+      "passed": true
+    },
+    {
+      "map": "aurora-basin",
+      "passed": false,
+      "error": "Native smoke failed: aurora-basin {\"code\":1,\"signal\":null}\nGodot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org\n\nERROR: Connection/round-start timed out. Relaunch to reconnect.\n   at: push_error (core/variant/variant_utility.cpp:1024)\n   GDScript backtrace (most recent call first):\n       [0] on_error (res://world/session.gd:376)\n       [1] on_error (res://native_arenas/demo.gd:249)\n       [2] advance_handshake (res://world/session.gd:232)\n       [3] _process (res://world/session.gd:522)\n",
+      "result": {
+        "code": 1,
+        "signal": null
+      },
+      "authorityPublicSnapshots": 1,
+      "authorityActorShots": 0,
+      "authorityAppliedInputs": 0,
+      "wallSeconds": 30.109683919,
+      "evidence": "live-authority-headless"
+    }
+  ]
+}

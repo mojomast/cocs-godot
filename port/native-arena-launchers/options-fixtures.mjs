@@ -12,7 +12,7 @@ export function verifyOptions(parse, experiences, nativeExperiences) {
   assert.equal(defaults.nativeArena,true);
   assert.equal(defaults.nativeOnly,undefined);
   assert.equal(defaults.endpoint,null);
-  for (const map of maps) for (const [bots,seconds] of [[0,60],[8,300],[2,180]]) {
+  for (const map of maps) for (const [bots,seconds] of [[1,60],[7,300],[2,180]]) {
     assert.ok(!catalog.maps.some(m=>m.id===map));
     const plan = parse(['--experience','native-dm','--map',map,'--mode=deathmatch',`--bots=${bots}`,'--round-seconds',String(seconds),'--smoke'],{maps:[]});
     const userArgs = plan.userArgs ?? plan.sessionOptions;
@@ -25,7 +25,7 @@ export function verifyOptions(parse, experiences, nativeExperiences) {
     '--mode=teamdeathmatch','--mode=horde','--mode=exploration','--endpoint=ws://127.0.0.1:12345',
     '--endpoint=wss://example.invalid','--setup','--play','--join','--join=ABC','--host',
     '--native-trace','--mute','--debug-hud','--time-limit=60','--round-target=1','--bots=-1',
-    '--bots=9','--bots=1.5','--bots=1e0','--bots=NaN','--bots=Infinity','--bots=0x2',
+    '--bots=0','--bots=8','--bots=9','--bots=1.5','--bots=1e0','--bots=NaN','--bots=Infinity','--bots=0x2',
     '--round-seconds=59','--round-seconds=301','--round-seconds=180.0','--round-seconds=1e2',
     '--round-seconds=Infinity','--smoke=true','--session-smoke','--network-smoke',
     '--lifecycle-smoke','--port=0','--unknown','--','--help',
