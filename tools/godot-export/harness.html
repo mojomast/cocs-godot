@@ -1,6 +1,7 @@
 <!doctype html><html><body><canvas id="canvas" width="640" height="480"></canvas><script type="module">
 import * as T from 'three';
 import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
+import {normalizeGLTFSides} from './gltf_side.mjs';
 import {weaponModel,ArenaView} from '../../game/view.mjs';
 import {configureMothAssets} from '../../game/moth-assets.mjs';
 import {MAPS} from '../../game/maps.mjs';
@@ -47,6 +48,7 @@ async function exportObject(root){
    object.parent.add(group);object.parent.remove(object);
   }
   report.instance_policy='expanded with transforms and colors; no EXT_mesh_gpu_instancing';
+  report.material_side=normalizeGLTFSides(copy);
   const buffer=await new GLTFExporter().parseAsync(copy,{binary:true,onlyVisible:true});
   return {bytes:Array.from(new Uint8Array(buffer)),report};
  }finally{for(const [o,data]of metadata)o.userData=data;for(const [texture,image]of replacedTextures)texture.image=image;}

@@ -18,5 +18,6 @@ try{
  const output=id?`godot/content/probes/${id}`:'godot/content/probes/axis-weapon';mkdirSync(output,{recursive:true});
  const bytes=Buffer.from(result.bytes);writeFileSync(`${output}/world.glb`,bytes);
  const report={source_commit:lock.source_commit,...result.report,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),messages};
- writeFileSync(`port/reports/${id??'axis-weapon'}-glb.json`,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,nodes:report.nodes.length},null,2));
+  const reportDir=process.env.GLTF_REPORT_DIR??'port/reports';mkdirSync(reportDir,{recursive:true});
+  writeFileSync(`${reportDir}/${id??'axis-weapon'}-glb.json`,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,nodes:report.nodes.length},null,2));
 }finally{await browser?.close();await server.close();}
