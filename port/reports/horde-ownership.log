@@ -2,181 +2,181 @@ TAP version 13
 # Subtest: package Horde synthetic factory: exit
 ok 1 - package Horde synthetic factory: exit
   ---
-  duration_ms: 99.080482
+  duration_ms: 69.309476
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: native-failure
 ok 2 - package Horde synthetic factory: native-failure
   ---
-  duration_ms: 69.745727
+  duration_ms: 66.094844
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: native-crash
 ok 3 - package Horde synthetic factory: native-crash
   ---
-  duration_ms: 69.862405
+  duration_ms: 67.749574
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: missing-native
 ok 4 - package Horde synthetic factory: missing-native
   ---
-  duration_ms: 48.744501
+  duration_ms: 49.539854
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: interrupt
 ok 5 - package Horde synthetic factory: interrupt
   ---
-  duration_ms: 167.751926
+  duration_ms: 168.619055
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: terminate
 ok 6 - package Horde synthetic factory: terminate
   ---
-  duration_ms: 170.799795
+  duration_ms: 176.021656
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: server-failure
 ok 7 - package Horde synthetic factory: server-failure
   ---
-  duration_ms: 343.955263
+  duration_ms: 343.064768
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: listen-failure
 ok 8 - package Horde synthetic factory: listen-failure
   ---
-  duration_ms: 42.49742
+  duration_ms: 37.895175
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: factory-failure
 ok 9 - package Horde synthetic factory: factory-failure
   ---
-  duration_ms: 34.782189
+  duration_ms: 39.091006
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: wrong-service
 ok 10 - package Horde synthetic factory: wrong-service
   ---
-  duration_ms: 50.664006
+  duration_ms: 47.350041
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: wrong-transport
 ok 11 - package Horde synthetic factory: wrong-transport
   ---
-  duration_ms: 49.644366
+  duration_ms: 50.07694
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: string-transport
 ok 12 - package Horde synthetic factory: string-transport
   ---
-  duration_ms: 49.750915
+  duration_ms: 49.471476
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: wrong-local
 ok 13 - package Horde synthetic factory: wrong-local
   ---
-  duration_ms: 48.296792
+  duration_ms: 51.810899
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: wrong-port
 ok 14 - package Horde synthetic factory: wrong-port
   ---
-  duration_ms: 48.111695
+  duration_ms: 53.804935
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: bad-args
 ok 15 - package Horde synthetic factory: bad-args
   ---
-  duration_ms: 21.729941
+  duration_ms: 21.8546
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: exit
 ok 16 - dev Horde synthetic factory: exit
   ---
-  duration_ms: 78.430443
+  duration_ms: 84.358855
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: native-failure
 ok 17 - dev Horde synthetic factory: native-failure
   ---
-  duration_ms: 84.14103
+  duration_ms: 85.12497
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: native-crash
 ok 18 - dev Horde synthetic factory: native-crash
   ---
-  duration_ms: 87.225557
+  duration_ms: 88.536573
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: missing-native
 ok 19 - dev Horde synthetic factory: missing-native
   ---
-  duration_ms: 23.525284
+  duration_ms: 26.235348
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: interrupt
 ok 20 - dev Horde synthetic factory: interrupt
   ---
-  duration_ms: 182.779123
+  duration_ms: 185.980295
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: terminate
 ok 21 - dev Horde synthetic factory: terminate
   ---
-  duration_ms: 189.075056
+  duration_ms: 187.016356
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: server-failure
 ok 22 - dev Horde synthetic factory: server-failure
   ---
-  duration_ms: 360.667045
+  duration_ms: 369.512564
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: listen-failure
 ok 23 - dev Horde synthetic factory: listen-failure
   ---
-  duration_ms: 47.891062
+  duration_ms: 53.723402
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: factory-failure
 ok 24 - dev Horde synthetic factory: factory-failure
   ---
-  duration_ms: 51.410885
+  duration_ms: 52.731715
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: wrong-service
 ok 25 - dev Horde synthetic factory: wrong-service
   ---
-  duration_ms: 60.949992
+  duration_ms: 73.566644
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: wrong-transport
 ok 26 - dev Horde synthetic factory: wrong-transport
   ---
-  duration_ms: 67.258057
+  duration_ms: 66.97877
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: string-transport
 ok 27 - dev Horde synthetic factory: string-transport
   ---
-  duration_ms: 69.843379
+  duration_ms: 65.998503
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: wrong-local
 ok 28 - dev Horde synthetic factory: wrong-local
   ---
-  duration_ms: 68.095205
+  duration_ms: 70.02654
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: wrong-port
 ok 29 - dev Horde synthetic factory: wrong-port
   ---
-  duration_ms: 69.220813
+  duration_ms: 66.377503
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: bad-args
 ok 30 - dev Horde synthetic factory: bad-args
   ---
-  duration_ms: 19.631902
+  duration_ms: 20.651635
   type: 'test'
   ...
 1..30
@@ -187,4 +187,4 @@ ok 30 - dev Horde synthetic factory: bad-args
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 2809.327358
+# duration_ms 2829.31447

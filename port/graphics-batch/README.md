@@ -81,12 +81,18 @@ routes do not create Node authorities or broaden the locked nine-map catalog.
 Massive particle counts are explicit experiment settings with measured backend,
 instance counts and frame-time results; normal combat defaults stay bounded.
 
-## Remaining integration work
+## Release verification
 
-1. Complete expanded aggregate checks after the Cinder junction repair.
-3. Rebuild after final runtime changes, inspect exact packaged resources, run
-   native Windows verification and publish a new playable artifact when accepted.
-4. Update the release matrix and ownership record with final evidence/status.
+The expanded aggregate passes **105 gates**, including production-controller
+Aurora/Cinder traversals and combined-arms graphics. The final Windows rebuild
+is 70,569,679 bytes, SHA256
+`75fed1879787f39861486e9f28e427a982c60fe87718a1cf8254a3df2ec54563`.
+Its exact PCK passed all-resource inspection and startup of all five native scenes
+under the Linux release runtime. All 603 recorded build inputs match committed
+source. Build-port provenance remains `f812c23`; the later evidence commit includes
+the documentation/verification inputs that were pending at build time.
+
+Actual Windows verification and release publication are the remaining steps.
 
 First intermediate Windows export succeeded; exact PCK was inspected with the
 pinned **Linux release template** from an unrelated working directory. It resolved

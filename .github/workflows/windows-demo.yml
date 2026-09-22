@@ -31,7 +31,7 @@ jobs:
           $extract = Join-Path $env:RUNNER_TEMP 'fresh Windows demo'
           Expand-Archive $zip $extract
           "DEMO_ROOT=$extract\cocs-native-windows" >> $env:GITHUB_ENV
-      - name: Bundled Node, real Windows export, three-map play and cleanup
+      - name: Bundled runtimes, three combat maps, five graphics routes and cleanup
         shell: pwsh
         run: |
           & "$env:DEMO_ROOT\node.exe" tools/godot-package/verify_windows.mjs "$env:DEMO_ROOT" "$env:RUNNER_TEMP\windows-evidence"

@@ -33,10 +33,11 @@ Five additional routes are standalone native exploration/material laboratories.
 | Particle Observatory | Stateful Compatibility GPUParticles3D and explicit analytic alternative; actual 8K–1M counts; 183 checks, 13 render sweeps, stable resize cycles | Hardware GPU performance; million-particle stress is ~462 ms median on software rendering |
 | Moth Shader Gallery | Three reusable materials; 68 contracts and two-resolution visual tests; actual clock/LUT/normal contributions and pause stability | Packaged shader include/resources and hardware review |
 
-Initial integrated graphics passed 96 aggregate gates. Expanded-map/scenery/lab
-gates are being integrated; historical and new failures remain archived. The first
-Windows export's exact PCK resolves all Moth/weapon resources under a Linux release
-runtime. This is not a Windows graphical capture or final expanded-release claim.
+Expanded graphics now pass **105 aggregate gates**, including production-controller
+traversals and map/scenery/lab checks; historical and new failures remain archived.
+The final Windows export's exact PCK resolves all Moth/weapon resources and starts
+all five new scenes under a Linux release runtime. Actual Windows verification and
+publication are pending; this is not Windows graphical acceptance.
 See `graphics-batch/README.md` and the per-lane reports for scope and provenance.
 
 | Area | Synthetic/offline | Saved genuine evidence | Independently rerun live | Graphical / playable acceptance |
