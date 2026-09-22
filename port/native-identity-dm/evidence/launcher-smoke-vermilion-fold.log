@@ -1,6 +1,6 @@
-Owned local server ready at ws://127.0.0.1:43693/native-arenas; --smoke
+Owned local server ready at ws://127.0.0.1:45565/native-arenas; --smoke
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
-NATIVE_DM_SMOKE_OK {"acks":17,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a","localAlive":true,"map":"vermilion-fold","mode":"deathmatch","moved":true,"snapshots":7}
+NATIVE_DM_SMOKE_OK {"acks":16,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a","localAlive":true,"map":"vermilion-fold","mode":"deathmatch","moved":true,"snapshots":7}
 WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
      at: cleanup (core/object/object.cpp:2514)

@@ -1,0 +1,64 @@
+{
+  "gate": "identity-deathmatch-route-package",
+  "startedAt": "2026-09-22T14:21:58.951Z",
+  "steps": [
+    {
+      "name": "native-arena-node-tests",
+      "command": "/usr/bin/node --test port/native-arenas/tests/actual-maps.mjs port/native-arenas/tests/authority.test.mjs port/native-arenas/tests/fixtures.mjs port/native-arenas/tests/identity-maps.mjs port/native-arenas/tests/input-events.test.mjs port/native-arenas/tests/schema.test.mjs port/native-arenas/tests/socket-helper.mjs port/native-arenas/tests/source-match.test.mjs",
+      "exitCode": 0,
+      "wallSeconds": 53.987,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/evidence/native-arena-node-tests.log"
+    },
+    {
+      "name": "launcher-package-node-tests",
+      "command": "/usr/bin/node --test tools/godot-dev/launch_options.test.mjs tools/godot-dev/native_arena_authority.test.mjs tools/godot-dev/native_arena_options.test.mjs tools/godot-dev/native_arena_ownership.test.mjs tools/godot-dev/native_identity_options.test.mjs tools/godot-dev/native_showcase_options.test.mjs tools/godot-dev/native_showcase_ownership.test.mjs tools/godot-package/horde_closure.test.mjs tools/godot-package/horde_ownership.test.mjs tools/godot-package/lobby_options.test.mjs tools/godot-package/lobby_ownership.test.mjs tools/godot-package/native_arena_authority.test.mjs tools/godot-package/native_arena_closure.test.mjs tools/godot-package/native_arena_options.test.mjs tools/godot-package/native_arena_ownership.test.mjs tools/godot-package/native_identity_options.test.mjs tools/godot-package/native_showcase_options.test.mjs tools/godot-package/native_showcase_ownership.test.mjs tools/godot-package/options.test.mjs --test-concurrency=1",
+      "exitCode": 0,
+      "wallSeconds": 26.413,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/evidence/launcher-package-node-tests.log"
+    },
+    {
+      "name": "launcher-smoke-lacuna-court",
+      "command": "/usr/bin/node tools/godot-dev/launch.mjs --experience=native-dm --map=lacuna-court --smoke",
+      "exitCode": 0,
+      "wallSeconds": 2.006,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/evidence/launcher-smoke-lacuna-court.log"
+    },
+    {
+      "name": "launcher-smoke-vermilion-fold",
+      "command": "/usr/bin/node tools/godot-dev/launch.mjs --experience=native-dm --map=vermilion-fold --smoke",
+      "exitCode": 0,
+      "wallSeconds": 2.029,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/evidence/launcher-smoke-vermilion-fold.log"
+    },
+    {
+      "name": "launcher-smoke-nacre-engine",
+      "command": "/usr/bin/node tools/godot-dev/launch.mjs --experience=native-dm --map=nacre-engine --smoke",
+      "exitCode": 0,
+      "wallSeconds": 2.124,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/evidence/launcher-smoke-nacre-engine.log"
+    },
+    {
+      "name": "capture-lacuna-court",
+      "command": "/usr/bin/node port/native-identity-dm/capture.mjs --map=lacuna-court",
+      "exitCode": 0,
+      "wallSeconds": 17.315,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/evidence/capture-lacuna-court.log"
+    },
+    {
+      "name": "capture-vermilion-fold",
+      "command": "/usr/bin/node port/native-identity-dm/capture.mjs --map=vermilion-fold",
+      "exitCode": 0,
+      "wallSeconds": 20.226,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/evidence/capture-vermilion-fold.log"
+    },
+    {
+      "name": "capture-nacre-engine",
+      "command": "/usr/bin/node port/native-identity-dm/capture.mjs --map=nacre-engine",
+      "exitCode": 0,
+      "wallSeconds": 23.412,
+      "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/evidence/capture-nacre-engine.log"
+    }
+  ],
+  "passed": true,
+  "finishedAt": "2026-09-22T14:24:26.467Z"
+}

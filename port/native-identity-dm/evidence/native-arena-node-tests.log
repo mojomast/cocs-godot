@@ -1,0 +1,209 @@
+TAP version 13
+# {"gate":"generated-source-simulation","mapId":"prism-foundry","geometryHash":"7624cffd85fc4d7f702065920829c3c2b0f02682a702ca3169fc92c634893938","nav":386,"edges":5704,"time":60.01666666666454,"reason":"time","stats":{"shots":448,"kills":2,"pickups":19,"powers":4,"respawns":7,"falls":1,"grenades":15},"frags":[1,0,1,0],"deaths":[1,1,1,0],"playerDamageEvents":38}
+# {"gate":"generated-source-simulation","mapId":"aurora-basin","geometryHash":"2bae62cd3c3cb96b001994c51a731217dd23f12c0122ede885a1edf4335bcc1a","nav":309,"edges":2252,"time":41.68333333333225,"reason":"frag","stats":{"shots":459,"kills":6,"pickups":13,"powers":4,"respawns":9,"falls":0,"grenades":9},"frags":[5,0,1,0],"deaths":[0,2,4,0],"playerDamageEvents":82}
+# {"gate":"generated-source-simulation","mapId":"cinder-array","geometryHash":"cd53b3f2f3efbc6ea428733605179c71204a0d9b4ce1c3c7d38fcab5ec51e39c","nav":369,"edges":5392,"time":29.783333333332923,"reason":"frag","stats":{"shots":294,"kills":5,"pickups":13,"powers":4,"respawns":12,"falls":4,"grenades":7},"frags":[5,0,0,0],"deaths":[0,3,3,3],"playerDamageEvents":99}
+# Subtest: GENERATED prism-foundry: source constructor, AI/combat, results and restart
+ok 1 - GENERATED prism-foundry: source constructor, AI/combat, results and restart
+  ---
+  duration_ms: 3257.698579
+  type: 'test'
+  ...
+# Subtest: GENERATED aurora-basin: source constructor, AI/combat, results and restart
+ok 2 - GENERATED aurora-basin: source constructor, AI/combat, results and restart
+  ---
+  duration_ms: 5370.806912
+  type: 'test'
+  ...
+# Subtest: GENERATED cinder-array: source constructor, AI/combat, results and restart
+ok 3 - GENERATED cinder-array: source constructor, AI/combat, results and restart
+  ---
+  duration_ms: 2050.829298
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
+ok 4 - SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
+  ---
+  duration_ms: 439.372432
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
+ok 5 - SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
+  ---
+  duration_ms: 4267.791349
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
+ok 6 - SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
+  ---
+  duration_ms: 12714.974179
+  type: 'test'
+  ...
+# Subtest: loopback ownership and transport/envelope rejection leave no listeners
+ok 7 - loopback ownership and transport/envelope rejection leave no listeners
+  ---
+  duration_ms: 14.999691
+  type: 'test'
+  ...
+# Subtest: launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
+ok 8 - launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
+  ---
+  duration_ms: 12.001381
+  type: 'test'
+  ...
+# Subtest: unknown options and unknown map ids fail before any listener opens
+ok 9 - unknown options and unknown map ids fail before any listener opens
+  ---
+  duration_ms: 0.507872
+  type: 'test'
+  ...
+# Subtest: HTTP readiness is the documented GET / probe only
+ok 10 - HTTP readiness is the documented GET / probe only
+  ---
+  duration_ms: 8.554773
+  type: 'test'
+  ...
+# Subtest: port/native-arenas/tests/fixtures.mjs
+ok 3 - port/native-arenas/tests/fixtures.mjs
+  ---
+  duration_ms: 30.431871
+  type: 'test'
+  ...
+# {"gate":"generated-identity-source-deathmatch","mapId":"lacuna-court","mode":"deathmatch","geometryHash":"a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9","nav":83,"time":60.01666666666454,"reason":"time","stats":{"shots":695,"kills":7,"pickups":15,"powers":10,"respawns":10,"falls":0,"grenades":20},"frags":[2,1,0,4],"deaths":[0,1,4,2],"botMoved":true,"routed":true}
+# {"gate":"generated-identity-source-deathmatch","mapId":"vermilion-fold","mode":"deathmatch","geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a","nav":103,"time":56.149999999998094,"reason":"frag","stats":{"shots":687,"kills":11,"pickups":9,"powers":13,"respawns":14,"falls":0,"grenades":25},"frags":[5,2,1,3],"deaths":[0,3,3,5],"botMoved":true,"routed":true}
+# {"gate":"generated-identity-source-deathmatch","mapId":"nacre-engine","mode":"deathmatch","geometryHash":"b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4","nav":78,"time":17.233333333333636,"reason":"frag","stats":{"shots":189,"kills":6,"pickups":4,"powers":3,"respawns":9,"falls":0,"grenades":9},"frags":[5,0,1,0],"deaths":[1,1,3,1],"botMoved":true,"routed":true}
+# Subtest: GENERATED lacuna-court: source Deathmatch AI/combat, results and restart
+ok 12 - GENERATED lacuna-court: source Deathmatch AI/combat, results and restart
+  ---
+  duration_ms: 402.267025
+  type: 'test'
+  ...
+# Subtest: GENERATED vermilion-fold: source Deathmatch AI/combat, results and restart
+ok 13 - GENERATED vermilion-fold: source Deathmatch AI/combat, results and restart
+  ---
+  duration_ms: 227.493368
+  type: 'test'
+  ...
+# Subtest: GENERATED nacre-engine: source Deathmatch AI/combat, results and restart
+ok 14 - GENERATED nacre-engine: source Deathmatch AI/combat, results and restart
+  ---
+  duration_ms: 194.791823
+  type: 'test'
+  ...
+# {"gate":"identity-authority-deathmatch","mapId":"lacuna-court","frags":[2,5,2],"shots":661,"kills":9,"restarted":true,"geometryHash":"a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9"}
+# Subtest: identity authority: real loopback Deathmatch, source damage/frags/results and restart
+ok 15 - identity authority: real loopback Deathmatch, source damage/frags/results and restart
+  ---
+  duration_ms: 52347.252358
+  type: 'test'
+  ...
+# Subtest: FIFO keeps press/release order, source normalization and one-step pulses
+ok 16 - FIFO keeps press/release order, source normalization and one-step pulses
+  ---
+  duration_ms: 1.418078
+  type: 'test'
+  ...
+# Subtest: queue age, held TTL, cancel and reset cannot replay ADS/actions
+ok 17 - queue age, held TTL, cancel and reset cannot replay ADS/actions
+  ---
+  duration_ms: 0.886963
+  type: 'test'
+  ...
+# Subtest: event cursor retains payload IDs, handles serial gaps and repeated events by identity
+ok 18 - event cursor retains payload IDs, handles serial gaps and repeated events by identity
+  ---
+  duration_ms: 0.319459
+  type: 'test'
+  ...
+# Subtest: only three native static asset paths; no source registry aliases
+ok 19 - only three native static asset paths; no source registry aliases
+  ---
+  duration_ms: 0.92302
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: each supported identity parses to an independent envelope
+ok 20 - SYNTHETIC: each supported identity parses to an independent envelope
+  ---
+  duration_ms: 1.851559
+  type: 'test'
+  ...
+# Subtest: strict deep generated-data validation rejects malformed/unsafe geometry
+ok 21 - strict deep generated-data validation rejects malformed/unsafe geometry
+  ---
+  duration_ms: 1.578268
+  type: 'test'
+  ...
+# Subtest: Deathmatch bounded config stays source-supported and defaults to three bots
+ok 22 - Deathmatch bounded config stays source-supported and defaults to three bots
+  ---
+  duration_ms: 0.471493
+  type: 'test'
+  ...
+# Subtest: geometryHash binds canonical arena content, independent of object key order
+ok 23 - geometryHash binds canonical arena content, independent of object key order
+  ---
+  duration_ms: 0.440796
+  type: 'test'
+  ...
+# Subtest: identity catalog adds exactly the three reviewed ids beside the native three
+ok 24 - identity catalog adds exactly the three reviewed ids beside the native three
+  ---
+  duration_ms: 0.172523
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: identity envelopes parse per family; the native parser never widens
+ok 25 - SYNTHETIC: identity envelopes parse per family; the native parser never widens
+  ---
+  duration_ms: 2.882593
+  type: 'test'
+  ...
+# Subtest: identity strict validation rejects malformed presentation/objective/team fields
+ok 26 - identity strict validation rejects malformed presentation/objective/team fields
+  ---
+  duration_ms: 2.537065
+  type: 'test'
+  ...
+# Subtest: identity objective/team fields validate strictly when authored (vermilion-fold form)
+ok 27 - identity objective/team fields validate strictly when authored (vermilion-fold form)
+  ---
+  duration_ms: 1.565684
+  type: 'test'
+  ...
+# Subtest: port/native-arenas/tests/socket-helper.mjs
+ok 7 - port/native-arenas/tests/socket-helper.mjs
+  ---
+  duration_ms: 40.885563
+  type: 'test'
+  ...
+# Subtest: source constructor seam is assignment before nav/spawns/actors, not options.arena
+ok 29 - source constructor seam is assignment before nav/spawns/actors, not options.arena
+  ---
+  duration_ms: 0.854882
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
+ok 30 - SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
+  ---
+  duration_ms: 24.83873
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
+ok 31 - SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
+  ---
+  duration_ms: 111.495339
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: source bot attacks kill idle player and source respawn restores control
+ok 32 - SYNTHETIC: source bot attacks kill idle player and source respawn restores control
+  ---
+  duration_ms: 38.218133
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 53963.979189

@@ -1,4 +1,4 @@
-Owned local server ready at ws://127.0.0.1:41995/native-arenas; --smoke
+Owned local server ready at ws://127.0.0.1:37581/native-arenas; --smoke
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 NATIVE_DM_SMOKE_OK {"acks":17,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4","localAlive":true,"map":"nacre-engine","mode":"deathmatch","moved":true,"snapshots":7}
