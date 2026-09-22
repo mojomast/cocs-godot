@@ -15,7 +15,7 @@ import {analyze} from './analyze.mjs';
 const here=dirname(fileURLToPath(import.meta.url)),root=resolve(here,'../../..');
 const binary=process.env.GODOT_BIN,deps=process.env.GUEST_NODE_MODULES;
 assert.ok(binary&&deps,'Set GODOT_BIN and GUEST_NODE_MODULES');
-const id=randomUUID(),out=resolve(root,'port/native-health-damage/evidence',id);
+const id=randomUUID(),out=resolve(root,'port/native-hud-acceptance/evidence',id);
 mkdirSync(out,{recursive:true,mode:0o700});
 const temp=mkdtempSync('/tmp/opencode/cocs-health-live-'),routeFile=resolve(temp,'route.json');
 const env={PATH:process.env.PATH,HOME:temp,LANG:'C.UTF-8',LIBGL_ALWAYS_SOFTWARE:'1'};
@@ -24,7 +24,7 @@ const hash=b=>createHash('sha256').update(b).digest('hex');
 const report={schema:1,id,base:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),normalRate:true,completionProven:false,started:new Date().toISOString(),cleanup:{},artifacts:{}};
 report.command=`GODOT_BIN=${binary} GUEST_NODE_MODULES=${deps} node port/tools/native_health_damage/run.mjs`;
 report.sourceHashes=Object.fromEntries(['run.mjs','observe.gd','helpers.mjs','analyze.mjs','route.mjs','project.mjs'].map(f=>[f,hash(readFileSync(resolve(here,f)))]));
-report.runtimeHashes=Object.fromEntries(['godot/world/session.gd','godot/net/client.gd','godot/world/combat_feedback.gd','godot/world/pickups.gd','godot/world/presentation.gd','godot/world/local_lifecycle.gd','server/game-server.mjs','server/room.mjs','game/core.mjs','game/quantize.mjs','game/destination-combat-maps.mjs'].map(f=>[f,hash(readFileSync(resolve(root,f)))]));
+report.runtimeHashes=Object.fromEntries(['godot/world/session.tscn','godot/ui/game_hud.gd','godot/world/combat_overlay.gd','godot/world/session.gd','godot/net/client.gd','godot/world/combat_feedback.gd','godot/world/pickups.gd','godot/world/presentation.gd','godot/world/local_lifecycle.gd','server/game-server.mjs','server/room.mjs','game/core.mjs','game/quantize.mjs','game/destination-combat-maps.mjs'].map(f=>[f,hash(readFileSync(resolve(root,f)))]));
 const wire={connections:0,joins:0,actor:null,attackerActor:null,mappingChanges:0,unexpected:[],starts:[],snapshots:[],inputs:[],events:[],results:0,attackerInputs:[],navigationSamples:[],routes:[],attackStop:null};
 let wireBytes=0,game,host,native,xvfb,attackerTimer,childFailure=null,interrupted=false,startWall=null;
 const children=[];
@@ -87,7 +87,7 @@ try{
  await wait(()=>host.readyState===WebSocket.OPEN,5000,'host open');host.send(JSON.stringify({type:'create',name:`native-health-${id}`,playerName:'Protocol attacker',v:3,delta:0}));
  await wait(()=>room!==null,5000,'welcome');
  host.send(JSON.stringify({type:'host',mapId:'meridian-exchange',config:{mode:'deathmatch',botCount:0,timeLimit:180,fragLimit:100}}));await wait(()=>configured,5000,'configuration');
- const args=['--audio-driver','Dummy','--path',resolve(temp,'godot'),'--script',resolve(here,'observe.gd'),'--',`--endpoint=${endpoint}`,`--join-room=${room}`,`--route=${routeFile}`,'--native-trace'];report.nativeCommand=[binary,...args];
+  const args=['--audio-driver','Dummy','--path',resolve(temp,'godot'),'--script',resolve(here,'observe.gd'),'--',`--endpoint=${endpoint}`,`--join-room=${room}`,`--route=${routeFile}`,`--evidence=${out}`,'--native-trace'];report.nativeCommand=[binary,...args];
  native=launch(binary,args,'native',125000);
  await wait(()=>observations(native).some(s=>s.event==='frame'&&s.phase===11),12000,'native joined');
  report.waiting=observations(native).find(s=>s.event==='frame'&&s.phase===11);assert.equal(wire.starts.length,0);
@@ -130,7 +130,8 @@ finally{
  const errors=[];
  for(const {c,name} of [...children].reverse())try{report.cleanup[name]=await stopChild(c);await c.closed;}catch(e){errors.push(`${name}: ${e.stack}`);}
  try{host?.terminate();if(game){for(const s of game.wss.clients)s.terminate();await Promise.race([game.close(),sleep(5000).then(()=>{throw Error('server close deadline');})]);await until(()=>!game.server.listening&&game.wss.clients.size===0,5000,'server closed');report.cleanup.serverClosed=true;report.cleanup.socketCount=game.wss.clients.size;}}catch(e){errors.push(e.stack);}
- save('wire.json.gz',gzipSync(JSON.stringify(wire)));rmSync(temp,{recursive:true,force:true});report.cleanup.privateTempRemoved=!existsSync(temp);
+  for(const name of ['baseline.png','hurt.png','collected.png'])if(existsSync(resolve(out,name)))save(name,readFileSync(resolve(out,name)));
+  save('wire.json.gz',gzipSync(JSON.stringify(wire)));rmSync(temp,{recursive:true,force:true});report.cleanup.privateTempRemoved=!existsSync(temp);
  if(errors.length){report.cleanupErrors=errors;report.status='FAIL';process.exitCode=1;}
  report.finished=new Date().toISOString();writeFileSync(resolve(out,'summary.json'),JSON.stringify(report,null,2)+'\n',{mode:0o600});
  process.removeListener('SIGINT',interrupt);process.removeListener('SIGTERM',interrupt);

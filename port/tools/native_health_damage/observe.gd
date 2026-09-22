@@ -22,6 +22,14 @@ var clicked := false
 var collected := false
 var finish_at := -1.0
 var ended := false
+var evidence := ""
+var pending_hud: Dictionary = {}
+var rendered_seq := -1
+var damage_event_id := -1
+var rendered_damage_id := -1
+var overlay_draw_frame := -1
+var overlay_draw_hurt := 0.0
+var images: Dictionary = {}
 
 func projection(value: Dictionary, keys: Array) -> Dictionary:
 	var result: Dictionary = {}
@@ -37,11 +45,16 @@ func record(event: String, data: Dictionary = {}) -> void:
 func _initialize() -> void:
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--route="): route_file = arg.trim_prefix("--route=")
+		if arg.begins_with("--evidence="): evidence = arg.trim_prefix("--evidence=")
 	call_deferred("begin")
 
 func begin() -> void:
 	session = load("res://world/session.tscn").instantiate()
 	root.add_child(session)
+	session.combat.overlay.draw.connect(func():
+		overlay_draw_frame = Engine.get_process_frames()
+		overlay_draw_hurt = session.combat.overlay.hurt_strength)
+	RenderingServer.frame_post_draw.connect(observe_rendered_hud)
 	session.client.started.connect(func(frame: Dictionary):
 		# Must immediately follow runtime round_start in synchronous signal order.
 		print("HEALTH_CORRELATE " + JSON.stringify({"event":"start","mapId":frame.mapId,"roundRevision":frame.roundRevision,"actor_id":session.client.actor_id}))
@@ -49,7 +62,10 @@ func begin() -> void:
 	session.client.snapshot.connect(observe)
 	session.client.events.connect(func(items: Array):
 		var selected: Array = []
-		for item: Dictionary in items: selected.append(projection(item,EVENT_KEYS))
+		for item: Dictionary in items:
+			selected.append(projection(item,EVENT_KEYS))
+			if item.get("type") == "damage" and item.get("actor") == session.client.actor_id and float(item.get("amount",0)) > 0:
+				damage_event_id = int(item.id)
 		record("events",{"items":selected,"hurts":session.combat.hurts,"hurt_remaining":session.combat.hurt_remaining,"combat_text":session.combat.text(),"ui_text":session.combat_label.text}))
 
 func key(down: bool) -> void:
@@ -90,6 +106,9 @@ func observe(frame: Dictionary) -> void:
 	var marker: Node3D = session.pickups.markers.get(int(target.get("id",-1)))
 	# First print stays immediately adjacent to the runtime snapshot record.
 	print("HEALTH_CORRELATE " + JSON.stringify({"event":"snapshot","seq":frame.seq,"time":frame.state.time,"over":frame.state.over,"actor_id":session.client.actor_id,"ack":session.client.last_ack,"actor":projection(a,ACTOR_KEYS),"pickup":projection(target,PICKUP_KEYS),"marker_visible":marker.visible if marker else null,"marker_instance":marker.get_instance_id() if marker else null,"marker_position":[marker.position.x,marker.position.y,marker.position.z] if marker else null,"hud":session.presentation.hud_text,"label":session.label.text,"stage":stage}))
+	# No HUD read here: its deferred binding puts its snapshot callback after ours.
+	# Multiple snapshots in one render interval supersede this pending observation.
+	pending_hud = {"seq":int(frame.seq),"native_sequence":session.trace_count-1,"actor":projection(a,ACTOR_KEYS),"time":frame.state.time}
 	if a.is_empty() or target.is_empty():
 		record("blocker",{"reason":"local actor or authored health pickup missing"})
 		stop(2)
@@ -107,6 +126,34 @@ func observe(frame: Dictionary) -> void:
 		stage = "returned"
 		finish_at = elapsed+0.75
 		record("return_boundary",{"seq":frame.seq,"time":frame.state.time,"pickup_id":target.id})
+
+func ui_control(control: Control) -> Dictionary:
+	var rect := control.get_global_rect()
+	return {"visible":control.is_visible_in_tree(),"rect":[rect.position.x,rect.position.y,rect.size.x,rect.size.y],"in_viewport":root.get_visible_rect().encloses(rect)}
+
+func observe_rendered_hud() -> void:
+	if ended or pending_hud.is_empty(): return
+	if rendered_seq == int(pending_hud.seq) and rendered_damage_id == damage_event_id: return
+	rendered_seq = int(pending_hud.seq)
+	rendered_damage_id = damage_event_id
+	var hud: CanvasLayer = session.get_node("GameHUD")
+	var overlay: Control = session.combat.overlay
+	var data := pending_hud.duplicate(true)
+	data.merge({"schema":1,"mode":"compact-default","render_frame":Engine.get_process_frames(),"post_draw":true,"root_visible":hud.root.is_visible_in_tree(),"layer_visible":hud.visible,"vitals_visible":hud.vitals.is_visible_in_tree(),"legacy_label_visible":session.label.is_visible_in_tree(),"legacy_combat_visible":session.combat_label.is_visible_in_tree(),"health_label":ui_control(hud.health_label),"armor_label":ui_control(hud.armor_label),"health_bar":ui_control(hud.health_bar),"armor_bar":ui_control(hud.armor_bar),"overlay":ui_control(overlay),"overlay_draw_frame":overlay_draw_frame,"overlay_draw_hurt":overlay_draw_hurt,"hurt_strength":overlay.hurt_strength,"hurt_remaining":session.combat.hurt_remaining,"hurts":session.combat.hurts,"damage_event_id":damage_event_id})
+	data.health_label["text"] = hud.health_label.text
+	data.armor_label["text"] = hud.armor_label.text
+	for name: String in ["health_bar","armor_bar"]:
+		data[name]["value"] = hud.get(name).value
+		data[name]["max"] = hud.get(name).max_value
+	var image_name := ""
+	if damage_event_id < 0: image_name = "baseline"
+	elif overlay.hurt_strength > 0 and overlay_draw_frame == Engine.get_process_frames(): image_name = "hurt"
+	elif collected: image_name = "collected"
+	if not image_name.is_empty() and not images.has(image_name) and not evidence.is_empty():
+		images[image_name] = true
+		data["image"] = image_name + ".png"
+		data["image_result"] = root.get_texture().get_image().save_png(evidence.path_join(data.image))
+	record("hud_render",data)
 
 func stop(code: int) -> void:
 	if ended: return

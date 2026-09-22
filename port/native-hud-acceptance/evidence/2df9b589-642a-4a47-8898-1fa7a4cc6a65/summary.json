@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "id": "2df9b589-642a-4a47-8898-1fa7a4cc6a65",
+  "base": "fe29ac3a1a5d64c9d622286bf379fae7f3d6a32f",
+  "normalRate": true,
+  "completionProven": false,
+  "started": "2026-09-22T00:50:57.784Z",
+  "cleanup": {
+    "native": {
+      "pid": 2247438,
+      "reaped": true,
+      "exitCode": null,
+      "signal": "SIGTERM"
+    },
+    "xvfb": {
+      "pid": 2247401,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "import": {
+      "pid": 2246753,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "serverClosed": true,
+    "socketCount": 0,
+    "privateTempRemoved": true
+  },
+  "artifacts": {
+    "export.log.gz": {
+      "bytes": 79,
+      "sha256": "669d2d98dcb78e48d0f9742368637c64549265b89ec141bb5608239dea033dff"
+    },
+    "import.stdout.log.gz": {
+      "bytes": 643,
+      "sha256": "0e5735374cf479f655109f6e5a877709c5ab813c201e1024ed39aa2cd0977541"
+    },
+    "import.stderr.log.gz": {
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    },
+    "native.stdout.log.gz": {
+      "bytes": 216899,
+      "sha256": "94d662b182f77122468c8729277efb3eeec91a820a767a409c5bdfd50e84d035"
+    },
+    "native.stderr.log.gz": {
+      "bytes": 160,
+      "sha256": "3223c5f8e137b40334ec34c0611015b14969ee2449af7157ab2ee8f834da7aea"
+    },
+    "xvfb.stdout.log.gz": {
+      "bytes": 22,
+      "sha256": "de76e512a414e118fc8bc46cc3043f18cb60a7aa7b997d9564d30aae0cac9eee"
+    },
+    "xvfb.stderr.log.gz": {
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    },
+    "baseline.png": {
+      "bytes": 154211,
+      "sha256": "3b80202669bcf691bcb5a63717360a598162d021c32cf1aaca782da1d26d2841"
+    },
+    "hurt.png": {
+      "bytes": 233714,
+      "sha256": "77e58f6d510085b08542269b6144ebc68b0e07fa457dad38b79c6b6bc92e9e6f"
+    },
+    "wire.json.gz": {
+      "bytes": 86197,
+      "sha256": "499ef437cfcc4cb29df5bf9449b27585167f40e45a64cc451c49e820513e04ba"
+    }
+  },
+  "command": "GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 GUEST_NODE_MODULES=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/node_modules node port/tools/native_health_damage/run.mjs",
+  "sourceHashes": {
+    "run.mjs": "eb99ede6041cd2be010402206ccb1dcfbd664753367c49561f6f45482adc5401",
+    "observe.gd": "91fdd1310801ba454fb376333fdc14a3b6e88ccec4b51bd50de40e2250ac30d2",
+    "helpers.mjs": "b1a183454c143711e6206159ff00773aaa9bf2fb89ebc4d88f26f40153a05c0a",
+    "analyze.mjs": "907301603373f6bf1317ab647326360eaa52ed0dfe214b9c33c0b2b872790c2a",
+    "route.mjs": "9fe3133bc9967257c42c731a018c3ea4a435c574ee84a95a2f74d75462b2e291",
+    "project.mjs": "f9dc2eaa3af53e408406f4aba229e1abdaa2a24bc11d07ad3b327b2abed046d3"
+  },
+  "runtimeHashes": {
+    "godot/world/session.tscn": "7489f2fc601682e1b23c656b416b023d15978f338b4e8ffa628c492ed68aa803",
+    "godot/ui/game_hud.gd": "9d96433012daee3cb121c570e4bb1a9e6f7a3375f0108f92f84004ffb54fa3b3",
+    "godot/world/combat_overlay.gd": "7ed3632c31b15e27b25c8779fd35ee419cde1730bda7ca7d8b5e21a7ba9d1db2",
+    "godot/world/session.gd": "108408963df2c6b25a9c539e4b88bec01cf8fff2588f4344a1d345831dc2d756",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "godot/world/combat_feedback.gd": "95c4eae18d9cd32bc6443677483ceaf10f624749a9747630a4caa7843d34b26c",
+    "godot/world/pickups.gd": "aefd275c96dab85c79e43082e28ca79e7dcc6616f850e087b2737d96577a96ce",
+    "godot/world/presentation.gd": "73fde7e91f38a302971452726adca5896208517936559954760e6385d4680240",
+    "godot/world/local_lifecycle.gd": "2dcc606318eff11e3e19819807ff9c692f0800223e4510793ed2bc92157f995f",
+    "server/game-server.mjs": "06e79c72d0530abf5256b803a19fbfb00582892579f27f42eae871cc28fb98b0",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/quantize.mjs": "77e1e210ec9f97a0e2ca2536aee725695641fa54a40a09bd4c4440d5720e7bc0",
+    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b"
+  },
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "privateDisplay": ":0",
+  "endpoint": "ws://127.0.0.1:45399",
+  "nativeCommand": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--audio-driver",
+    "Dummy",
+    "--path",
+    "/tmp/opencode/cocs-health-live-QfN25s/godot",
+    "--script",
+    "/tmp/opencode/live-hud-acceptance/port/tools/native_health_damage/observe.gd",
+    "--",
+    "--endpoint=ws://127.0.0.1:45399",
+    "--join-room=4FK4",
+    "--route=/tmp/opencode/cocs-health-live-QfN25s/route.json",
+    "--evidence=/tmp/opencode/live-hud-acceptance/port/native-hud-acceptance/evidence/2df9b589-642a-4a47-8898-1fa7a4cc6a65",
+    "--native-trace"
+  ],
+  "waiting": {
+    "actor_id": -1,
+    "captured": false,
+    "combat_text": "",
+    "elapsed": 0.271342,
+    "event": "frame",
+    "focused": true,
+    "held_w": false,
+    "hud": "Waiting for authoritative snapshot",
+    "hurt_remaining": 0,
+    "hurts": 0,
+    "label": "Joined room. Waiting for host start (120-second limit)…",
+    "phase": 11,
+    "pose": false,
+    "seq": -1,
+    "stage": "damage_wait",
+    "starts": 0,
+    "trace_next": 0,
+    "ui_text": ""
+  },
+  "status": "INCONCLUSIVE",
+  "error": "Error: native output cap\n    at file:///tmp/opencode/live-hud-acceptance/port/tools/native_health_damage/run.mjs:41:117\n    at until (file:///tmp/opencode/live-hud-acceptance/port/tools/native_health_damage/helpers.mjs:7:34)\n    at async wait (file:///tmp/opencode/live-hud-acceptance/port/tools/native_health_damage/run.mjs:41:36)\n    at async file:///tmp/opencode/live-hud-acceptance/port/tools/native_health_damage/run.mjs:121:2",
+  "gameplayWallSeconds": 68.682662186,
+  "finished": "2026-09-22T00:52:14.420Z"
+}
