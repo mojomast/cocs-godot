@@ -1,0 +1,75 @@
+{
+	"api": "gl_compatibility",
+	"method": "Rendered Compatibility frames, vsync-off requested (driver warns unsupported), 12 warmup pairs + 60 samples. CPU column times only native snapshot-driven animation updates for the complete roster. Host is llvmpipe, shared with concurrent agents; not hardware GPU or gameplay benchmark. Directional plus ambient, no shadows/postprocess. Entire 16/32 mixed-identity roster framed at near LOD.",
+	"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"results": [
+		{
+			"animationCpuMedianMs": 1.442,
+			"animationCpuP95Ms": 1.651,
+			"count": 16,
+			"frames": 60,
+			"height": 800,
+			"lodPopulation": [
+				0,
+				16,
+				0
+			],
+			"medianMs": 28.233,
+			"p95Ms": 32.24,
+			"viewportDrawCalls": 824,
+			"viewportPrimitives": 180622,
+			"width": 1280
+		},
+		{
+			"animationCpuMedianMs": 2.583,
+			"animationCpuP95Ms": 2.989,
+			"count": 32,
+			"frames": 60,
+			"height": 800,
+			"lodPopulation": [
+				0,
+				32,
+				0
+			],
+			"medianMs": 57.302,
+			"p95Ms": 66.058,
+			"viewportDrawCalls": 1648,
+			"viewportPrimitives": 363742,
+			"width": 1280
+		},
+		{
+			"animationCpuMedianMs": 1.411,
+			"animationCpuP95Ms": 1.672,
+			"count": 16,
+			"frames": 60,
+			"height": 1080,
+			"lodPopulation": [
+				0,
+				16,
+				0
+			],
+			"medianMs": 28.966,
+			"p95Ms": 33.108,
+			"viewportDrawCalls": 824,
+			"viewportPrimitives": 180622,
+			"width": 1920
+		},
+		{
+			"animationCpuMedianMs": 2.47,
+			"animationCpuP95Ms": 3.033,
+			"count": 32,
+			"frames": 60,
+			"height": 1080,
+			"lodPopulation": [
+				0,
+				32,
+				0
+			],
+			"medianMs": 54.927,
+			"p95Ms": 60.63,
+			"viewportDrawCalls": 1648,
+			"viewportPrimitives": 363742,
+			"width": 1920
+		}
+	]
+}
