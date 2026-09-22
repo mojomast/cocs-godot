@@ -59,3 +59,22 @@ shared environment in `godot/native_arenas/identity_environment.gd` (one sun, on
   copies the identity JSONs into the closure/PCK; `res://native_arenas/package_inspect.gd`
   runs from the exported PCK and proves the identity JSONs and the identity
   builder resolve, plus the source-operator resources.
+  `evidence/package-staging.json` records the detached run, which used a private
+  committed worktree snapshot of the art/geometry bytes. The release build must
+  be re-run from the primary checkout once those lanes commit their
+  `godot/identity_maps/**` and `godot/native_arenas/generated/**` bytes; the
+  builder deliberately refuses uncommitted runtime data.
+
+## Later waves (not this lane)
+
+- **Domination (vermilion-fold)** needs a zone-mode composition route
+  (`godot/zone_modes/demo.tscn` currently rejects map ids outside the locked
+  nine-map catalog), a domination-capable authority path (`host` currently
+  accepts `deathmatch` only), team-spawn usage, capture/contest/loss recovery
+  acceptance, plus its own package/menu entries. This lane already validates and
+  carries `arena.objectiveZones` (exactly three) and `arena.teamSpawns`.
+- **Horde (nacre-engine)** needs `port/native-horde/authority.mjs` to accept a
+  reviewed static identity map/factory hook under its existing loopback,
+  single-human, epoch and bounded-message contract, plus wave/defeat/boss/endless
+  acceptance. The identity envelope's own `mode` metadata is `horde` for this map.
+
