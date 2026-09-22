@@ -93,6 +93,10 @@ evidence helpers retain their bounded observation windows. See
   [command-board guide](native-lattice/README.md) and
   [initial evidence](reports/lattice-independent/README.md) and
   [physical-event follow-up](reports/lattice-physical-independent/README.md).
+  The optional **Map** view now offers clickable, keyboard-accessible public
+  objective markers synchronized with List selection. Both PvP maps and Asterion
+  co-op independently pass the new map path and original List regressions; see
+  [tactical-map verification](reports/lattice-map-independent/README.md).
 
 - **Objective demos:** standalone Tidal CTF and Sunscar Payload are integrated at
   `d498479`. Independent normal-rate native-input runs pass flag pickup/carry/drop
@@ -101,8 +105,8 @@ evidence helpers retain their bounded observation windows. See
   contest/delivery and objective results/restart remain open. See
   [independent evidence](reports/objective-independent/README.md).
 
-**Combined verification: all 51 implemented gates pass** after objective
-and CI integration at `a12d89f` plus common-launcher changes
+**Combined verification: all 52 implemented gates pass** after LATTICE tactical-map
+integration at `c982d25` plus the map-gate changes
 recorded with this batch. Independent driving passed on both sports maps;
 the default compact HUD's nonlethal damage/+35 HP/12-second return was also
 independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).

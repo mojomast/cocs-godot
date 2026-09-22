@@ -27,10 +27,11 @@ claims and limitations. Native presentation quality and usability still need rev
 | Weapon selection / compact HUD | 64 graphical weapon checks; HUD scene gates; 29 current/legacy health evidence tests pass | Two-resolution HUD, live Tab team scores and actual hurt/heal images inspected | Five key/wheel switches PASS; visible HUD damage/+35 HP/12s return independently PASS at `9a8d59e`: 1,065 correlated snapshots, 316 rendered observations, 1,854 receipts | Current HUD and drawn hurt pulse accepted in bounded scenario; human sound/usability and heal-to-cap OPEN |
 | Rocket combat | 27 projectile checks plus 12 navigation tests pass | Three Rocket Arena images, graphical menu and corrected DM pickup/fire image inspected | Three maps PASS Rocket Arena; DM pickup → switches `[0,1]` → 12 launches independently PASS at `cb908db`; original failed route retained | Source-aware acceptance navigation corrected; human audio/full-round rocket acceptance OPEN |
 | LATTICE command board | 38 adapter and 10 UI checks independently pass | Original failures retained; two-resolution receipt and disconnect PNGs inspected | Handler cases all four map/modes PASS; native mouse/key cases both PvP maps + Asterion co-op independently PASS at `aca52f5`, 28/28/20 checks; 12 FLUX and one Fighter confirmed | Receipts fit 960×640; engine-input path accepted, OS-device automation/co-op economy/full world interaction OPEN |
+| LATTICE map view | 23 map checks plus adapter38/UI10 pass | Independent two-resolution map receipts and disconnect images inspected | At `c982d25`, Map checks26 × both PvP maps/Asterion co-op PASS; all three original List cases PASS | Clickable public-coordinate diagram; explicit HOLD acceptance, no implied capture/topology/distance |
 | CTF / Payload demo | 19 renderer, 11 adapter-control and 8 evidence-validator checks pass | Original failures retained; original and independent 1280×800/960×640 images inspected | At `d498479`, Tidal pickup/carry/drop PASS with 609 correlated snapshots; Sunscar push/idle PASS with 118 | Standalone slice; close-up labels/HUD polish, return/capture, contest/delivery and results/restart OPEN |
 | Common launcher | Three routing regressions pass; all standalone pairs checked against locked catalog | Six native startup/cleanup logs retained | Real pinned headless scenes for all six standalone maps exit cleanly with owned processes absent and server ports closed | One command family for combat/sports/objectives/LATTICE; interactive mode has no harness deadline |
 | Native CI | Official pinned archive/hash, fresh npm install and GLB generation checked | Hosted run/report retained | Ubuntu GitHub Actions run `35677168297` passes all 50 gates at `a12d89f` | Fresh-checkout automation accepted; graphical/hardware gameplay separate |
-| Full verifier | All **51** implemented gates pass after launcher integration | Original failures and earlier pass reports retained | Complete rerun at `a12d89f` plus launcher routing passes, including objective and launcher gates | See `reports/verification.json`; graphical/playable gates separate |
+| Full verifier | All **52** implemented gates pass after tactical-map integration | Original failures and earlier pass reports retained | Complete rerun at `c982d25` plus map gate passes, including objective, launcher and LATTICE map gates | See `reports/verification.json`; graphical/playable gates separate |
 | Pulse rifle preview | No completion commit available | None reviewed | Owner believes work is not finished | Pending; reserved directories untouched |
 
 The actual commands, clean execution tree hashes, source provenance, receipt vs
@@ -67,7 +68,7 @@ the locked JSON contract; the family summary below does not narrow them.
   loss; a private culling-only experiment reveals the map, not full art parity.
   A production GLB exporter correction remains open; the default native
   environment now uses its own procedural sky and does not depend on that GLB.
-- The combined 51-gate verifier passes with rocket presentation, sports
+- The combined 52-gate verifier passes with rocket presentation, sports
   camera/HUD polish, source-aware projectile navigation and compact LATTICE
   command modules and standalone objectives. Focused native LATTICE mouse/key
   and objective interaction follow-ups also pass.

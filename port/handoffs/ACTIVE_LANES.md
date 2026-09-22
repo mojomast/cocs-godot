@@ -8,7 +8,8 @@ updates root documentation/shared verification and owns publication.
 |---|---|---|
 | Sports progression, checkpoints, results/restart | Internal agent; `8094d41` | `godot/sports/`, new progression tests in `godot/tests/sports/`, `port/native-sports-progression/` |
 | Objective progression / HUD polish | Internal follow-up; `d498479` | `godot/objectives/`, new progression tests in `godot/tests/objectives/`, `port/native-objective-progression/` |
-| LATTICE tactical map | Internal agent; `d498479` | New `godot/lattice/map_view.gd`, narrow board integration, new map tests, `port/native-lattice-map/` |
+| LATTICE co-op recruitment | Internal agent; `c982d25` | Narrow board/transport, new economy tests and tools, genuinely affected original UI expectations, `port/native-lattice-economy/` |
+| GLB material-side export correction | Internal agent; `c982d25` | Export harness/side helpers, narrow browser exporter, new side tests, `port/native-glb-side/` |
 | Multiplayer lobby / leave / retry | External handoff; `8094d41` | New lobby-prefixed UI/tests, narrow `godot/world/session.gd` / scene and backward-compatible client hook if essential; `port/native-multiplayer-lobby/` |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
 
@@ -18,6 +19,8 @@ The LATTICE command and physical-input lanes are delivered and integrated at
 The external objective slice is delivered as `91ce0bd` and integrated at
 `d498479`; its original tools/evidence stay preserved during follow-up work.
 The native CI lane is delivered as `3d6de79` and integrated at `a12d89f`.
+The LATTICE tactical map is delivered as `596325d`, integrated at `c982d25` and
+independently accepted through both Map and original List native-input paths.
 The lead owns common launcher routing, verification, root docs and publication.
 
 External tasks have complete scope/commands in

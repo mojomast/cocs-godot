@@ -70,6 +70,7 @@ commands = [
     ("sports-polish", [binary, "--headless", "--path", "godot", "--script", "res://tests/sports/test_polish.gd"]),
     ("lattice-adapter", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/adapter.gd"]),
     ("lattice-ui", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/ui.gd"]),
+    ("lattice-map", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/map_view.gd"]),
     ("objective-renderer", [binary, "--headless", "--path", "godot", "--script", "res://tests/objectives/renderer.gd"]),
     ("objective-controls", [binary, "--headless", "--path", "godot", "--script", "res://tests/objectives/controls.gd", "--", "--map=tidal-citadel"]),
     ("control-safety", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/control_safety.gd"]),

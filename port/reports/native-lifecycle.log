@@ -1,4 +1,4 @@
-Owned local server ready on loopback:36049; --lifecycle-smoke
+Owned local server ready on loopback:32809; --lifecycle-smoke
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
-PORT_LIFECYCLE_LIVE_OK starts=2 results=1 restarted_actors=3 restarted_ack=12 map=meridian-exchange normal_rate=true
+PORT_LIFECYCLE_LIVE_OK starts=2 results=1 restarted_actors=3 restarted_ack=11 map=meridian-exchange normal_rate=true
