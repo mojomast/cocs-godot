@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: release requires a safe tag and refuses to guess one
+ok 1 - release requires a safe tag and refuses to guess one
+  ---
+  duration_ms: 1.220896
+  type: 'test'
+  ...
+# Subtest: release is a dry run unless --execute is explicit and never both
+ok 2 - release is a dry run unless --execute is explicit and never both
+  ---
+  duration_ms: 0.936223
+  type: 'test'
+  ...
+# Subtest: defaults pin the toolchain, notes, landing zone and publication remote
+ok 3 - defaults pin the toolchain, notes, landing zone and publication remote
+  ---
+  duration_ms: 0.668912
+  type: 'test'
+  ...
+# Subtest: resume, stop-after and verification modes are validated before any work
+ok 4 - resume, stop-after and verification modes are validated before any work
+  ---
+  duration_ms: 0.234069
+  type: 'test'
+  ...
+# Subtest: targets, timeouts, list flags and unknown options are rejected or collected
+ok 5 - targets, timeouts, list flags and unknown options are rejected or collected
+  ---
+  duration_ms: 0.489867
+  type: 'test'
+  ...
+# Subtest: help parses without a tag and does not throw
+ok 6 - help parses without a tag and does not throw
+  ---
+  duration_ms: 0.086643
+  type: 'test'
+  ...
+# Subtest: dry run plans all six steps, writes records and performs no side effect
+ok 7 - dry run plans all six steps, writes records and performs no side effect
+  ---
+  duration_ms: 16.6395
+  type: 'test'
+  ...
+# Subtest: preflight refuses a dirty runtime tree before anything else
+ok 8 - preflight refuses a dirty runtime tree before anything else
+  ---
+  duration_ms: 3.151402
+  type: 'test'
+  ...
+# Subtest: preflight refuses an untracked runtime file but records untracked evidence
+ok 9 - preflight refuses an untracked runtime file but records untracked evidence
+  ---
+  duration_ms: 6.47172
+  type: 'test'
+  ...
+# Subtest: an existing tag or release refuses even in a dry run
+ok 10 - an existing tag or release refuses even in a dry run
+  ---
+  duration_ms: 5.01978
+  type: 'test'
+  ...
+# Subtest: an unowned or second state directory is never taken over
+ok 11 - an unowned or second state directory is never taken over
+  ---
+  duration_ms: 6.32285
+  type: 'test'
+  ...
+# Subtest: a corrupted toolchain archive refuses preflight
+ok 12 - a corrupted toolchain archive refuses preflight
+  ---
+  duration_ms: 2.508578
+  type: 'test'
+  ...
+# Subtest: a behind remote warns in a dry run and refuses an execute tag target
+ok 13 - a behind remote warns in a dry run and refuses an execute tag target
+  ---
+  duration_ms: 12.620344
+  type: 'test'
+  ...
+# Subtest: execute walks verification, package, publish, hosted verify and push in order
+ok 14 - execute walks verification, package, publish, hosted verify and push in order
+  ---
+  duration_ms: 5.654008
+  type: 'test'
+  ...
+# Subtest: a failed publish stops the pipeline and resume repeats only the publish
+ok 15 - a failed publish stops the pipeline and resume repeats only the publish
+  ---
+  duration_ms: 9.479542
+  type: 'test'
+  ...
+# Subtest: a dry-run record cannot back an execute resume and a failed step cannot be skipped
+ok 16 - a dry-run record cannot back an execute resume and a failed step cannot be skipped
+  ---
+  duration_ms: 16.540675
+  type: 'test'
+  ...
+# Subtest: a failing hosted verification is a hard stop and the branch is not pushed
+ok 17 - a failing hosted verification is a hard stop and the branch is not pushed
+  ---
+  duration_ms: 10.586555
+  type: 'test'
+  ...
+# Subtest: stop-after resumes cleanly, and push is refused until a hosted run succeeds
+ok 18 - stop-after resumes cleanly, and push is refused until a hosted run succeeds
+  ---
+  duration_ms: 7.210904
+  type: 'test'
+  ...
+# Subtest: resume without earlier records refuses and never invents state
+ok 19 - resume without earlier records refuses and never invents state
+  ---
+  duration_ms: 3.366294
+  type: 'test'
+  ...
+# Subtest: every run is appended, never overwritten, and keeps its own evidence
+ok 20 - every run is appended, never overwritten, and keeps its own evidence
+  ---
+  duration_ms: 3.335256
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 157.931333

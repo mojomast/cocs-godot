@@ -1,0 +1,39 @@
+$ git rev-parse HEAD
+095ac98e5a9c7e4354408bb79b739986082208d8
+$ git rev-parse --abbrev-ref HEAD
+port/godot-destinations
+$ git rev-parse --is-shallow-repository
+false
+$ git remote get-url godot
+https://github.com/mojomast/cocs-godot.git
+$ git status --porcelain=v1 -uall
+ M godot/world/combat_quality.gd
+ M port/native-horde/authority.mjs
+?? godot/benchmark/benchmark.tscn
+?? godot/benchmark/driver.gd
+?? godot/benchmark/driver.gd.uid
+?? godot/benchmark/frame_stats.gd
+?? godot/benchmark/frame_stats.gd.uid
+?? godot/benchmark/presentation.gd
+?? godot/benchmark/presentation.gd.uid
+?? godot/benchmark/report.gd
+?? godot/benchmark/report.gd.uid
+?? godot/benchmark/run_plan.gd
+?? godot/benchmark/run_plan.gd.uid
+?? godot/tests/benchmark/contracts.gd
+?? port/handoffs/procedural-model-generation-llm-research.md
+?? port/native-identity-horde/evidence/nacre-corridors.json
+?? port/native-identity-horde/identity-horde.test.mjs
+?? port/native-identity-horde/measure.mjs
+?? port/native-identity-maps/evidence/graybox-1790095290189.json
+?? port/native-identity-maps/evidence/ray-report-1790095291161.json
+?? port/native-identity-zones/authority.mjs
+?? port/native-identity-zones/catalog.mjs
+?? port/native-identity-zones/evidence/travel-vermilion-fold.json
+?? port/native-identity-zones/fixtures.mjs
+?? port/native-identity-zones/match.mjs
+?? port/native-identity-zones/tests/authority.test.mjs
+?? port/native-identity-zones/tests/match.test.mjs
+?? port/native-identity-zones/tests/socket.mjs
+?? port/native-identity-zones/travel.mjs
+?? port/native-release-pipeline/evidence/run-dry-run.sh

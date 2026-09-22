@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "cocs-release-run",
+  "run_id": "20260922T173409Z-2489563",
+  "tag": "pipecheck-tmp",
+  "target": "windows",
+  "mode": "dry-run",
+  "dry_run": true,
+  "argv": [
+    "--tag=pipecheck-tmp"
+  ],
+  "state": "/tmp/opencode/cocs-release-pipecheck-tmp",
+  "resume_from": null,
+  "stop_after": null,
+  "started_at": "2026-09-22T17:34:09.085Z",
+  "finished_at": "2026-09-22T17:34:09.111Z",
+  "status": "failed",
+  "exit_code": 1,
+  "head": null,
+  "branch": null,
+  "steps": [
+    {
+      "step": "preflight",
+      "status": "failed",
+      "duration_seconds": 0.03,
+      "detail": {},
+      "error": {
+        "code": "dirty-tree",
+        "message": "tracked files are modified: godot/world/combat_quality.gd, port/native-horde/authority.mjs",
+        "hint": "commit or revert them; the package build refuses uncommitted runtime bytes",
+        "detail": null
+      },
+      "reused_from": null
+    }
+  ]
+}
