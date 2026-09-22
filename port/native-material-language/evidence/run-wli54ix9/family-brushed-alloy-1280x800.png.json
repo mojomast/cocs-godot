@@ -1,14 +1,14 @@
 {
 	"ab": {
 		"glow_off": {
-			"changed_pixels": 3215,
-			"mean_rgb_delta": 0.00181522197010239,
+			"changed_pixels": 18778,
+			"mean_rgb_delta": 0.0142342633613461,
 			"sampled_pixels": 114009
 		},
 		"materials": 2,
 		"normal_off": {
-			"changed_pixels": 5225,
-			"mean_rgb_delta": 0.000695335570075116,
+			"changed_pixels": 18979,
+			"mean_rgb_delta": 0.00249926383076939,
 			"sampled_pixels": 114009
 		},
 		"sampling": "every third pixel in x and y"
@@ -530,20 +530,20 @@
 		"tiles": [
 			{
 				"draws": 18,
-				"family": "pearl-ceramic",
+				"family": "brushed-alloy",
 				"kind": "station",
 				"primitives": 3564
 			},
 			{
 				"draws": 45,
-				"family": "pearl-ceramic",
+				"family": "brushed-alloy",
 				"kind": "distance",
 				"primitives": 3576
 			}
 		]
 	},
 	"mode": "family",
-	"output": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-material-language/evidence/run-ez0umlsd/family-pearl-ceramic-1280x800.png",
+	"output": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-material-language/evidence/run-wli54ix9/family-brushed-alloy-1280x800.png",
 	"size": [
 		1280,
 		800

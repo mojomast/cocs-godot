@@ -1,7 +1,17 @@
 {
 	"ab": {
-		"materials": 16,
-		"skipped": true
+		"glow_off": {
+			"changed_pixels": 98,
+			"mean_rgb_delta": 0.0000294667720706149,
+			"sampled_pixels": 114009
+		},
+		"materials": 2,
+		"normal_off": {
+			"changed_pixels": 32186,
+			"mean_rgb_delta": 0.00525601225414682,
+			"sampled_pixels": 114009
+		},
+		"sampling": "every third pixel in x and y"
 	},
 	"budget": {
 		"bytes_measurement": "PNG length on disk; vram is IHDR RGBA8 plus a third for mipmaps",
@@ -13,7 +23,7 @@
 		"draw_calls_added": 0,
 		"families": 8,
 		"material_cap": 96,
-		"materials_cached": 24,
+		"materials_cached": 3,
 		"moth_cache": {
 			"limit": 128,
 			"textures": 48
@@ -238,7 +248,7 @@
 		"clock": 12.0,
 		"engine_clock": false,
 		"limit": 96,
-		"materials": 24,
+		"materials": 3,
 		"misses": 0,
 		"rejected": 0
 	},
@@ -284,7 +294,7 @@
 		"hazard-industrial"
 	],
 	"metrics": {
-		"ab_materials": 16,
+		"ab_materials": 2,
 		"budget": {
 			"bytes_measurement": "PNG length on disk; vram is IHDR RGBA8 plus a third for mipmaps",
 			"derived_cache": {
@@ -295,7 +305,7 @@
 			"draw_calls_added": 0,
 			"families": 8,
 			"material_cap": 96,
-			"materials_cached": 24,
+			"materials_cached": 3,
 			"moth_cache": {
 				"limit": 128,
 				"textures": 48
@@ -516,66 +526,24 @@
 			"unique_textures": 76,
 			"variants": 22
 		},
-		"materials": 24,
+		"materials": 3,
 		"tiles": [
 			{
-				"draws": 8,
-				"family": "pearl-ceramic",
-				"kind": "station",
-				"primitives": 3564
-			},
-			{
-				"draws": 8,
-				"family": "enamel-glaze",
-				"kind": "station",
-				"primitives": 3564
-			},
-			{
-				"draws": 8,
-				"family": "brushed-alloy",
-				"kind": "station",
-				"primitives": 3564
-			},
-			{
-				"draws": 8,
-				"family": "oxidised-copper",
-				"kind": "station",
-				"primitives": 3564
-			},
-			{
-				"draws": 8,
-				"family": "bioluminescent-membrane",
-				"kind": "station",
-				"primitives": 3564
-			},
-			{
-				"draws": 8,
+				"draws": 18,
 				"family": "regolith",
 				"kind": "station",
 				"primitives": 3564
 			},
 			{
-				"draws": 8,
-				"family": "polar-ice",
-				"kind": "station",
-				"primitives": 3564
-			},
-			{
-				"draws": 8,
-				"family": "hazard-industrial",
-				"kind": "station",
-				"primitives": 3564
-			},
-			{
-				"draws": 8,
-				"family": "control",
-				"kind": "plain-standard-material",
-				"primitives": 3564
+				"draws": 45,
+				"family": "regolith",
+				"kind": "distance",
+				"primitives": 3576
 			}
 		]
 	},
-	"mode": "sheet",
-	"output": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-material-language/evidence/run-ez0umlsd/sheet-1280x800.png",
+	"mode": "family",
+	"output": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-material-language/evidence/run-wli54ix9/family-regolith-1280x800.png",
 	"size": [
 		1280,
 		800

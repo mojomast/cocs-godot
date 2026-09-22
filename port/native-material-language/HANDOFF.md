@@ -96,13 +96,18 @@ full key (`data--rock`) or the bare source name (`rock`).
 
 ## 5. Evidence in this worktree
 
-`python3 tools/godot-moth/verify_material_language.py` runs, in order: derived
-tests, the literal coverage scan, the moth contract (101 planes), the
-material-language contract, the shader-lab contract, the moth-scenery verify, the
-VFX regression, the viewer smoke, Godot import, then private-Xvfb captures at
-960x640 and 1280x800 (sheet, grazing floors, four close families, viewer
-screenshot) with the normal/glow A/B measured pixel-by-pixel. Everything is
-retained under `port/native-material-language/evidence/run-*/` including failures.
+`python3 tools/godot-moth/verify_material_language.py` runs, in order: a
+parse/compile check, the derived tests, the literal coverage scan, the moth
+contract (101 planes), the material-language contract, the shader-lab contract,
+the moth-scenery verify, the VFX regression, the viewer smoke, Godot import,
+then private-Xvfb captures at 960x640 and 1280x800 (both sheets, grazing floors,
+five close families, viewer screenshots). The normal/glow A/B is measured
+pixel-by-pixel on the single-viewport family panels (the sheets skip it for
+software-render budget) and the toggled frames are saved next to each panel. Each
+step runs in its own process group so a timeout can never leave an orphan
+renderer behind. Everything is retained under
+`port/native-material-language/evidence/run-*/` including failures; the accepted
+run is referenced in the README.
 
 ## 6. Left for others
 

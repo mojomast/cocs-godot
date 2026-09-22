@@ -3,4 +3,4 @@ WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by 
      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
 OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
 
-MATERIAL_LANGUAGE_VIEWER_CAPTURE /home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-material-language/evidence/run-ez0umlsd/viewer-1280x800.png size=(1280, 800) error=0
+MATERIAL_LANGUAGE_VIEWER_CAPTURE /home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-material-language/evidence/run-wli54ix9/viewer-960x640.png size=(960, 640) error=0

@@ -1,14 +1,14 @@
 {
 	"ab": {
 		"glow_off": {
-			"changed_pixels": 7013,
-			"mean_rgb_delta": 0.0119026839935188,
+			"changed_pixels": 3215,
+			"mean_rgb_delta": 0.00181522197010239,
 			"sampled_pixels": 114009
 		},
 		"materials": 2,
 		"normal_off": {
-			"changed_pixels": 43315,
-			"mean_rgb_delta": 0.0186749275874742,
+			"changed_pixels": 5225,
+			"mean_rgb_delta": 0.000695335570075116,
 			"sampled_pixels": 114009
 		},
 		"sampling": "every third pixel in x and y"
@@ -530,20 +530,20 @@
 		"tiles": [
 			{
 				"draws": 18,
-				"family": "bioluminescent-membrane",
+				"family": "pearl-ceramic",
 				"kind": "station",
 				"primitives": 3564
 			},
 			{
 				"draws": 45,
-				"family": "bioluminescent-membrane",
+				"family": "pearl-ceramic",
 				"kind": "distance",
 				"primitives": 3576
 			}
 		]
 	},
 	"mode": "family",
-	"output": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-material-language/evidence/run-ez0umlsd/family-bioluminescent-membrane-1280x800.png",
+	"output": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-material-language/evidence/run-wli54ix9/family-pearl-ceramic-1280x800.png",
 	"size": [
 		1280,
 		800

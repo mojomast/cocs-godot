@@ -113,9 +113,9 @@ func sheet(parent: Node, size: Vector2i) -> Dictionary:
 		var description: Dictionary = Language.describe(family)
 		tiles.append({"family": family, "viewport": panel.viewport})
 		var label_origin := origin + Vector2(0, cell.y + 5)
-		_label(parent, "%s · %s" % [String(description.label).to_upper(), description.base_textures[0]], label_origin, 11, Color(description.palette[0]), cell.x)
-		_label(parent, "normal %s" % description.normal.resolved.trim_prefix("baked:"), label_origin + Vector2(0, 15), 9, Color("93aec2"), cell.x)
-		_label(parent, "accent %s @%.2f · %d px/m · rail %s" % [description.emissive.lut, description.emissive.phase, description.density.px_per_metre, variant_name_for(family)], label_origin + Vector2(0, 27), 9, Color("7e94a8"), cell.x)
+		_label(parent, "%s · %s" % [String(description.label).to_upper(), description.base_textures[0]], label_origin, 11, Color(description.palette[0]), cell.x - 8.0)
+		_label(parent, "normal %s" % description.normal.resolved.trim_prefix("baked:"), label_origin + Vector2(0, 15), 9, Color("93aec2"), cell.x - 8.0)
+		_label(parent, "accent %s @%.2f · %d px/m · rail %s" % [description.emissive.lut, description.emissive.phase, description.density.px_per_metre, variant_name_for(family)], label_origin + Vector2(0, 27), 9, Color("7e94a8"), cell.x - 8.0)
 	_measure_control(parent)
 	return {"metrics": tile_metrics()}
 
