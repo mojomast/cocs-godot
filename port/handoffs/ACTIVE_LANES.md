@@ -342,6 +342,20 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
   left palm presses flat on the receiver face and a protruding grip would break the
   zero-intersection gate. Two evidence refreshes the lane left outside its ownership were
   committed by lead (`3cd4bafa`).
+- **First-person weapon detail landed** (`e1634d2f`): new `tools/godot-weapons/detail.mjs`
+  adds 519 reusable primitives (**+9,280 triangles**) to the existing moving assemblies,
+  bringing the ten viewmodels to 4,448–6,472 triangles at a bounded 8 batches each and
+  cutting worst-case batches from 11 to 8. Six identity channels are distinct across all
+  ten weapons and asserted by both `verify.mjs` and the new `first_person/detail.gd`
+  (345 checks, now registered in the aggregate by lead). Invariants measured green:
+  anchors 0.0 drift with identical parents, settled ADS 0.0 px and 0 opaque target-gap
+  pixels, muzzle reprojection ≤8.6e-5 px, hands ≥47 mm from every detail box through the
+  live animated assemblies, hip centre clear at both sizes, byte-identical re-export.
+  Accepted disclosures: weapons 2 and 8 exceed the 6,000-triangle soft target because
+  their locked source bodies already are 6,092 / 5,228 (no decimation), and tubular ring
+  collars re-tessellate 32→16/20 segments while sight-assembly rings keep 32 so the
+  magnified optic picture is unchanged. 280 captures; lead reviewed the hip/ADS contact
+  sheet and confirmed ten visibly distinct weapons.
 - Owner asked to add detail polygons to the weapons and make the ten weapons
   visually distinct. Two coordinated pre-release lanes: **first-person weapon detail**
   (owns `tools/godot-weapons/**`, `godot/first_person/**`, `godot/tests/first_person/**`,
