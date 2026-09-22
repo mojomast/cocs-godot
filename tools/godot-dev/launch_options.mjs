@@ -4,7 +4,10 @@ export const EXPERIENCES = {
   combat: {scene:'res://world/session.tscn', map:'meridian-exchange'},
   lobby: {scene:'res://world/session.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   'arms-race': {scene:'res://arms_race/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['armsrace'], 'verdant-reliquary':['armsrace'], 'ember-crucible':['armsrace']}},
-  horde: {scene:'res://horde/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['horde'], 'verdant-reliquary':['horde'], 'ember-crucible':['horde']}},
+  horde: {scene:'res://horde/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['horde'], 'verdant-reliquary':['horde'], 'ember-crucible':['horde']},
+    // Reviewed static identity entry: the identity maps are outside the locked
+    // nine-map catalog, so the scene and mode come from this allowlist only.
+    identity:{'nacre-engine':{scene:'res://native_arenas/identity_horde_demo.tscn', modes:['horde']}}},
   zones: {scene:'res://zone_modes/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
   'combined-arms': {scene:'res://combined_arms/demo.tscn', map:'sunscar-convoy', modes:{'sunscar-convoy':['combined-arms']}},
   sports: {scene:'res://sports/demo.tscn', map:'ion-speedway', modes:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
@@ -74,6 +77,7 @@ export function launchOptions(argv, catalog) {
   if (flags.has('--smoke')) throw Error('--smoke is supported only by native-only graphics routes; combat uses --network-smoke, --session-smoke or --lifecycle-smoke');
   const selected = Object.hasOwn(EXPERIENCES, experience) ? EXPERIENCES[experience] : null;
   if (!selected) throw Error(`Unknown experience: ${experience}. Choose ${[...Object.keys(EXPERIENCES),...Object.keys(NATIVE_EXPERIENCES),'native-dm'].join(', ')}.`);
+  let selectedScene = null;
   const endpoint = lobbyEndpoint(values.endpoint, experience);
   for (const key of ['time-limit','round-target']) {
     if (values[key] === undefined) continue;
@@ -87,12 +91,16 @@ export function launchOptions(argv, catalog) {
     // Do not promise mute support for standalone scenes that do not implement it.
     if (flags.has('--mute')) throw Error('--mute is supported only by the combat launcher');
     values.map ??= selected.map;
-    const modes = Object.hasOwn(selected.modes, values.map) ? selected.modes[values.map] : null;
+    const identity = selected.identity?.[values.map] ?? null;
+    const modes = identity ? identity.modes : (Object.hasOwn(selected.modes, values.map) ? selected.modes[values.map] : null);
     if (!modes) throw Error(`${experience} does not support map ${values.map}`);
     values.mode ??= modes[0];
     if (!modes.includes(values.mode)) throw Error(`${values.map} does not support native ${experience} mode ${values.mode}`);
-    const locked = catalog.maps.find(map => map.id === values.map);
-    if (!locked?.supported_modes.includes(values.mode)) throw Error('Selected map/mode is not in the locked catalog');
+    // Identity maps are not in the locked catalog: the reviewed static entry above
+    // is the allowlist, and it carries its own scene and modes.
+    const locked = identity ? null : catalog.maps.find(map => map.id === values.map);
+    if (!identity && !locked?.supported_modes.includes(values.mode)) throw Error('Selected map/mode is not in the locked catalog');
+    if (identity) selectedScene = identity.scene;
   }
   if (values['time-limit'] !== undefined && (Number(values['time-limit']) < 60 || Number(values['time-limit']) > 900)) {
     throw Error('--time-limit must be 60..900 seconds');
@@ -107,7 +115,7 @@ export function launchOptions(argv, catalog) {
   if (experience === 'lobby') sessionOptions.push('--lobby-menu');
   const args = smoke === '--network-smoke'
     ? ['--headless','--path','godot','--script','res://tests/protocol/live.gd']
-    : [...(smoke ? ['--headless'] : []),'--path','godot',...(play ? [selected.scene] : [])];
+    : [...(smoke ? ['--headless'] : []),'--path','godot',...(play ? [selectedScene ?? selected.scene] : [])];
   if (smoke && smoke !== '--network-smoke') sessionOptions.push(smoke);
   return {args, sessionOptions, experience:play ? experience : 'viewer', smoke:smoke ?? null, endpoint};
 }

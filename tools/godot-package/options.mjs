@@ -4,7 +4,10 @@ export const EXPERIENCES = {
   combat: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   lobby: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   'arms-race': {scene:'res://arms_race/demo.tscn', maps:{'meridian-exchange':['armsrace'], 'verdant-reliquary':['armsrace'], 'ember-crucible':['armsrace']}},
-  horde: {scene:'res://horde/demo.tscn', maps:{'meridian-exchange':['horde'], 'verdant-reliquary':['horde'], 'ember-crucible':['horde']}},
+  horde: {scene:'res://horde/demo.tscn', maps:{'meridian-exchange':['horde'], 'verdant-reliquary':['horde'], 'ember-crucible':['horde']},
+    // Reviewed static identity entry: outside the locked nine-map catalog, so the
+    // scene and modes come only from this allowlist.
+    identity:{'nacre-engine':{scene:'res://native_arenas/identity_horde_demo.tscn', modes:['horde']}}},
   zones: {scene:'res://zone_modes/demo.tscn', maps:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
   'combined-arms': {scene:'res://combined_arms/demo.tscn', maps:{'sunscar-convoy':['combined-arms']}},
   sports: {scene:'res://sports/demo.tscn', maps:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
@@ -68,9 +71,14 @@ export function options(argv, catalog) {
   const endpoint = lobbyEndpoint(values.endpoint, experience);
   const selected = EXPERIENCES[experience];
   const map = values.map ?? Object.keys(selected.maps)[0];
-  if (!Object.hasOwn(selected.maps, map)) throw Error(`${experience} does not support map ${map}`);
-  const mode = values.mode ?? selected.maps[map][0];
-  if (!selected.maps[map].includes(mode) || !catalog.maps.find(m => m.id === map)?.supported_modes.includes(mode)) throw Error(`Unsupported ${map} / ${mode}`);
+  const identity = selected.identity?.[map] ?? null;
+  if (!identity && !Object.hasOwn(selected.maps, map)) throw Error(`${experience} does not support map ${map}`);
+  const allowed = identity ? identity.modes : selected.maps[map];
+  const mode = values.mode ?? allowed[0];
+  // Identity maps are outside the locked nine-map catalog; the reviewed static
+  // entry above is their allowlist and carries its own scene.
+  if (!allowed.includes(mode) || (!identity && !catalog.maps.find(m => m.id === map)?.supported_modes.includes(mode))) throw Error(`Unsupported ${map} / ${mode}`);
+  const scene = identity?.scene ?? selected.scene;
   if (flags.has('--play') && flags.has('--setup')) throw Error('Choose --play or --setup');
   if (flags.has('--smoke') && (flags.has('--play') || flags.has('--setup'))) throw Error('--smoke cannot be combined with --play or --setup');
   for (const flag of ['--play','--setup','--mute','--debug-hud','--smoke']) if (flags.has(flag) && experience !== 'combat') throw Error(`${flag} requires combat`);
@@ -88,7 +96,7 @@ export function options(argv, catalog) {
   if (flags.has('--smoke')) userArgs.push('--session-smoke');
   if (experience === 'combat' && !flags.has('--play') && !flags.has('--smoke')) userArgs.push('--setup');
   if (experience === 'lobby') userArgs.push('--lobby-menu');
-  return {experience, map, mode, scene:selected.scene, userArgs, endpoint};
+  return {experience, map, mode, scene, userArgs, endpoint};
 }
 
 export const HELP = `COCS native demo — Node >=22.13.0 (bundled on Windows)

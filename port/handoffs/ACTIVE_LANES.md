@@ -400,6 +400,45 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
     before/after renders plus a cost table.
   - Interface contract fixed in both prompts; if the library signature shifts, the applying
     lane reports to lead rather than editing library files.
+- **Identity Horde landed** (`f8c20c11`) and was routed by lead: `--experience=horde
+  --map=nacre-engine` loads `res://native_arenas/identity_horde_demo.tscn` in both the dev
+  and packaged launchers through a reviewed static allowlist entry (scene and modes only
+  from that entry; the locked nine-map check applies to every other map). No package
+  closure change: the lane kept the adapter hook inline so the shipped inventory stays as
+  reviewed. Rejections verified for a wrong mode and an unknown map.
+  - Acceptance: startup wave 1 (SWARM, 3 enemies, 209 correlated snapshots); 4 waves with
+    3 clears, 2 upgrade offers, **victory** and clean restart; **defeat** after 3 natural
+    deaths with a fresh 3-life round and no auto-capture; peak run waves 1–5 with
+    **10 simultaneous NPCs** and 27 kills. Corridors verified against the real source
+    capsule (radius 0.42 m): measured minimum traversed channel **1.31 m** versus the
+    0.84 m requirement, visual scale factors proven presentation-only.
+  - **Fixed a pre-existing shipped bug found here**: `godot/horde/controls.gd` lacked the
+    `focused` flag the shared combat stack gates on, so every Horde session — including
+    the three original maps — logged ~1,600 script errors and had a dead effect stack.
+    Zero errors after the fix.
+  - Open, stated by the lane: boss wave, endless, full ten-wave completion, and upgrade
+    *selection* (protocol v3 exposes no command for it). Peak cadence 18 fps median on
+    llvmpipe with 10 NPCs is not a hardware claim.
+- **Release pipeline landed** (`tools/release/release.mjs`, 24 tests, now an aggregate
+  gate): dry-run by default with `--execute`/`--resume-from`, append-only state, refusals
+  for dirty trees and existing tags. Rehearsal proved the real path: 138/138 gates in
+  424 s, a real Windows ZIP built, and a resume that reused records. Critically it found
+  that **the verifier was not self-contained** — gitignored GLB probes under
+  `godot/content/probes/` made a clean checkout fail at `glb-import`; the pipeline now runs
+  the export prep first, which is what makes one-command releases from a fresh clone true.
+  Steps 4–6 (release/dispatch/push) were never executed by the lane, by design.
+- **Material coverage pass** (owner request) — two lanes, see the coverage baseline entry
+  above; running.
+- **UI polish fully closed** (`94c4129b`, `7da9c42f`, `5f1a532e`): setup surface
+  `680x2401 → 680x524` and popup-free, status panel `620x870/620x1545 → 620x70`, shared
+  board `374x354`/`694x511` and Horde board `374x294`/`694x444` clear of the vitals at both
+  sizes, truthful roster wording. Scoreboard 25→45 checks, match selection 95→98, setup +6;
+  nothing weakened. Lead tamed the legacy pickup caption and honoured its range cap.
+- **Benchmark + presets landed** (`0eb1c914`): 33 s scripted benchmark through the session's
+  own input path, `BENCHMARK_RESULT` with real median/p95, `recommended_level()` presets,
+  F7 trigger. Verified monotonic on llvmpipe (Low 221.9 / High 304.1 / Extreme 499.2 ms at
+  1280x800). Owner run sheet in `port/native-benchmark/README.md`.
+- **Domination on Vermilion Fold** — still running.
 - **Tier 1/2 push (owner request: do 1–4 together, plus 5 and 6 where possible).**
   Five parallel lanes launched with disjoint ownership, lead retains all launcher and
   package routing:
