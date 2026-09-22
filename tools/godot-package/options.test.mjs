@@ -4,6 +4,19 @@ import {readFileSync} from 'node:fs';
 import {options, EXPERIENCES} from './options.mjs';
 const catalog = JSON.parse(readFileSync(new URL('../../port/contracts/map-selection.json', import.meta.url)));
 
+test('Horde package route is local-only, fixed default and rejects ignored options', () => {
+  for (const map of ['meridian-exchange','verdant-reliquary','ember-crucible']) {
+    const plan = options(['--experience=horde',`--map=${map}`], catalog);
+    assert.equal(plan.scene, 'res://horde/demo.tscn');
+    assert.deepEqual(plan.userArgs, [`--map=${map}`,'--mode=horde']);
+    assert.equal(plan.endpoint, null);
+  }
+  for (const arg of ['--map=tidal-citadel','--mode=deathmatch','--waves=1','--round-target=1','--endless','--upgrades','--endpoint=ws://127.0.0.1:1234','--time-limit=900','--setup','--play','--native-trace','--mute','--debug-hud','--horde-evidence']) {
+    assert.throws(() => options(['--experience=horde',arg], catalog), Error, arg);
+  }
+  assert.throws(() => options(['--experience=horde'], {maps:[]}), /Unsupported/);
+});
+
 test('package scene routing covers all nine locked identities and preserves native capability subsets', () => {
   const covered = new Set();
   for (const [experience, value] of Object.entries(EXPERIENCES)) {

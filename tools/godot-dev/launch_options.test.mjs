@@ -4,6 +4,19 @@ import {readFileSync,existsSync} from 'node:fs';
 import {launchOptions,EXPERIENCES} from './launch_options.mjs';
 const catalog=JSON.parse(readFileSync(new URL('../../port/contracts/map-selection.json',import.meta.url)));
 
+test('Horde is default-ten-wave local-only and refuses unsupported or ignored controls',()=>{
+  for(const map of ['meridian-exchange','verdant-reliquary','ember-crucible']){
+    const plan=launchOptions(['--experience=horde',`--map=${map}`],catalog);
+    assert.ok(plan.args.includes('res://horde/demo.tscn'));
+    assert.deepEqual(plan.sessionOptions,[`--map=${map}`,'--mode=horde']);
+    assert.equal(plan.endpoint,null);
+  }
+  for(const arg of ['--map=tidal-citadel','--mode=deathmatch','--waves=1','--round-target=1','--endless','--upgrades','--endpoint=ws://127.0.0.1:1234','--time-limit=900','--setup','--native-trace','--mute','--debug-hud','--session-smoke','--horde-evidence']){
+    assert.throws(()=>launchOptions(['--experience=horde',arg],catalog),Error,arg);
+  }
+  assert.throws(()=>launchOptions(['--experience=horde'],{maps:[]}),/locked catalog/);
+});
+
 test('existing viewer, combat setup and smoke routes stay compatible',()=>{
   assert.deepEqual(launchOptions([],catalog).args,['--path','godot']);
   const setup=launchOptions(['--play','--setup','--map','verdant-reliquary','--mode=rockets','--mute'],catalog);

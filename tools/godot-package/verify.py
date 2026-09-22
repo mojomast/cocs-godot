@@ -203,6 +203,12 @@ def main():
     manifest = json.loads((package / 'manifest.json').read_text())
     for name, checksum in manifest['files'].items():
         require(sha(package / name) == checksum, f'File checksum mismatch: {name}')
+    require(set(manifest['port_adapter_sha256']) == {'port/native-horde/authority.mjs', 'port/native-horde/input-buffer.mjs'}, 'Unexpected production adapter inventory')
+    require(not set(manifest['source_runtime_sha256']) & set(manifest['port_adapter_sha256']), 'Source and port adapter inventories overlap')
+    for group in ['source_runtime_sha256', 'port_adapter_sha256']:
+        for name, checksum in manifest[group].items():
+            require(sha(package / 'runtime' / name) == checksum, f'Runtime inventory mismatch: {name}')
+    require({p.relative_to(package / 'runtime/port').as_posix() for p in (package / 'runtime/port').rglob('*') if p.is_file()} == {'native-horde/authority.mjs', 'native-horde/input-buffer.mjs'}, 'Test/observer adapter code shipped')
     for name in ['godot','godot4','git','npm']:
         require(shutil.which(name, path=env['PATH']) is None, f'Developer tool on play PATH: {name}')
     # No original checkout paths in any packaged file, including binary/PCK.
@@ -257,7 +263,10 @@ def main():
             with urllib.request.urlopen(f"http://127.0.0.1:{ready['port']}/", timeout=5) as response:
                 health = json.load(response)
             require(health['port'] == ready['port'], 'Dynamic owned health port mismatch')
-            if active:
+            if ready.get('experience') == 'horde':
+                from horde_verify import health_identity
+                health_identity(health, ready['port'])
+            elif active:
                 require(health['players'] == 1 and health['rooms'] == ready['health']['rooms'] + 1 and health['snapshot']['fullFrames'] > 0, f'{name}: real authority did not publish snapshots')
             else:
                 require(health['players'] == 0 and health['rooms'] == ready['health']['rooms'] and health['snapshot']['fullFrames'] == 0, 'Native setup should wait for user Start')
@@ -293,7 +302,7 @@ def main():
                 with urllib.request.urlopen(f"http://127.0.0.1:{ready['port']}/", timeout=5) as response:
                     require(json.load(response)['service'] == 'token-arena-game-server', 'External authority stopped responding')
             require('SCRIPT ERROR' not in text and 'ERROR:' not in text, f'{name}: Godot error in native log')
-            result = {'case':name, 'exit':code, 'scene':native['scene'], 'host':ready['host'], 'dynamic_port':ready['port'], 'health':health, 'readiness':'setup-window' if not active else ('native-trace' if trace else 'authority-traffic-and-window; inspect PNG separately'), 'round_start_seen':any(f['event'] == 'round_start' for f in frames), 'pose_snapshots_seen':sum(f['event'] == 'snapshot' and f.get('pose_present') for f in frames), 'native_pid':native_pid, 'native_closed':True, 'authority_owned_by_launcher':not bool(external), 'server_closed':not bool(external), 'external_authority_preserved':bool(external), 'action':action}
+            result = {'case':name, 'exit':code, 'scene':native['scene'], 'host':ready['host'], 'dynamic_port':ready['port'], 'health':health, 'readiness':'local-horde-health-and-window; separate horde-product.json proves snapshots/wave' if ready.get('experience') == 'horde' else ('setup-window' if not active else ('native-trace' if trace else 'authority-traffic-and-window; inspect PNG separately')), 'round_start_seen':any(f['event'] == 'round_start' for f in frames), 'pose_snapshots_seen':sum(f['event'] == 'snapshot' and f.get('pose_present') for f in frames), 'native_pid':native_pid, 'native_closed':True, 'authority_owned_by_launcher':not bool(external), 'server_closed':not bool(external), 'external_authority_preserved':bool(external), 'action':action}
             results.append(result)
             (output / 'cases.json').write_text(json.dumps(results, indent=2) + '\n')
             print(name, 'PASS', flush=True)
@@ -344,6 +353,10 @@ process.once('SIGTERM',async()=>{for(const socket of game.wss.clients)socket.ter
         launch('soccer', ['--experience=sports','--map=aurora-stadium'], trace=False)
         launch('interrupt', ['--play','--native-trace'], action='interrupt')
         launch('native-crash', ['--play','--native-trace'], action='crash')
+        launch('horde', ['--experience=horde'], trace=False)
+        launch('horde-native-crash', ['--experience=horde'], trace=False, action='crash')
+        from horde_verify import run_cases
+        horde_results = run_cases(package, fresh, unrelated, nodebin, env, output, x11, children)
         bad = subprocess.run([nodebin / 'node', package / 'run.mjs', '--experience=sports', '--mode=deathmatch'], cwd=unrelated, env=env, capture_output=True, text=True, timeout=10)
         (output / 'invalid-argument.log').write_text(bad.stdout + bad.stderr)
         require(bad.returncode == 1 and 'PACKAGE_SERVER_READY' not in bad.stdout, 'Invalid arguments started a server')
@@ -368,6 +381,8 @@ process.once('SIGTERM',async()=>{for(const socket of game.wss.clients)socket.ter
         source_check = subprocess.run(['node', '--input-type=module', '-e', "import {verifySource} from './tools/godot-export/semantic.mjs'; import fs from 'node:fs'; verifySource(JSON.parse(fs.readFileSync('port/contracts/source-lock.json')));"], cwd=ROOT, capture_output=True, text=True, timeout=30)
         require(source_check.returncode == 0, 'Locked source changed')
         summary = {'passed':True, 'archive_sha256':build['archive_sha256'], 'manifest_sha256':build['manifest_sha256'], 'fresh_directory':str(fresh), 'play_cwd':str(unrelated), 'play_PATH':env['PATH'], 'no_git':True, 'no_editor_git_npm_on_PATH':True, 'no_package_symlinks':True, 'no_original_checkout_paths':True, 'locked_source_unchanged':True, 'package_bytes_unchanged':True, 'release_probe':records(probe.stdout, 'PACKAGE_INSPECT_OK ')[0], 'cases':results, 'invalid_arguments_rejected_before_server':True, 'spawn_failure_cleaned_up':True, 'xvfb_arguments':['-nolisten','tcp','-nolisten','unix'], 'test_audio':'private ALSA null sink', 'verification_inputs':{p:sha(ROOT / p) for p in ['tools/godot-package/verify.py','godot/tests/package_inspect.gd']}}
+        summary['horde_product'] = horde_results
+        summary['verification_inputs'].update({p:sha(ROOT / p) for p in ['tools/godot-package/horde_verify.py', 'tools/godot-package/horde_observer.gd', 'tools/godot-package/horde_authority.mjs']})
         (output / 'verification.json').write_text(json.dumps(summary, indent=2) + '\n')
         print('PACKAGE_VERIFY_OK', output, flush=True)
     finally:

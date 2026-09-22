@@ -4,6 +4,7 @@ export const EXPERIENCES = {
   combat: {scene:'res://world/session.tscn', map:'meridian-exchange'},
   lobby: {scene:'res://world/session.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   'arms-race': {scene:'res://arms_race/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['armsrace'], 'verdant-reliquary':['armsrace'], 'ember-crucible':['armsrace']}},
+  horde: {scene:'res://horde/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['horde'], 'verdant-reliquary':['horde'], 'ember-crucible':['horde']}},
   zones: {scene:'res://zone_modes/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
   'combined-arms': {scene:'res://combined_arms/demo.tscn', map:'sunscar-convoy', modes:{'sunscar-convoy':['combined-arms']}},
   sports: {scene:'res://sports/demo.tscn', map:'ion-speedway', modes:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
@@ -80,6 +81,7 @@ export const HELP = `Native COCS launcher — owned loopback authority, normal s
   node tools/godot-dev/launch.mjs --experience=zones --map=verdant-reliquary --mode=koth
   node tools/godot-dev/launch.mjs --experience=combined-arms
   node tools/godot-dev/launch.mjs --experience=arms-race --map=meridian-exchange
+  node tools/godot-dev/launch.mjs --experience=horde --map=meridian-exchange
   node tools/godot-dev/launch.mjs --experience=sports --map=ion-speedway
   node tools/godot-dev/launch.mjs --experience=sports --map=aurora-stadium
   node tools/godot-dev/launch.mjs --experience=objectives --map=tidal-citadel
@@ -96,6 +98,8 @@ Lobby: explicit Host/Create or Guest/Join, roster and host-only Start/Restart.
   Guests select the expected host map. Escape exposes Leave match.
 
 Combat: --map, --mode, --setup, --mute, --debug-hud, --native-trace
+Horde: three combat arenas; local-only solo authority, default ten waves.
+  Click to engage; Tab scores; Escape releases controls; Enter restarts results.
 Arms Race: three combat arenas; two Normal bots, ten weapons, 180-second rounds.
   Source locks weapon selection. Click to engage; Enter restarts results.
 Zones: koth/domination on the three combat arenas; domination on Tidal/Sunscar.

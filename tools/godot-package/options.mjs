@@ -4,6 +4,7 @@ export const EXPERIENCES = {
   combat: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   lobby: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   'arms-race': {scene:'res://arms_race/demo.tscn', maps:{'meridian-exchange':['armsrace'], 'verdant-reliquary':['armsrace'], 'ember-crucible':['armsrace']}},
+  horde: {scene:'res://horde/demo.tscn', maps:{'meridian-exchange':['horde'], 'verdant-reliquary':['horde'], 'ember-crucible':['horde']}},
   zones: {scene:'res://zone_modes/demo.tscn', maps:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
   'combined-arms': {scene:'res://combined_arms/demo.tscn', maps:{'sunscar-convoy':['combined-arms']}},
   sports: {scene:'res://sports/demo.tscn', maps:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
@@ -63,6 +64,7 @@ export const HELP = `Private local COCS Linux prototype — Node >=22.13.0 requi
   node run.mjs --experience=zones --map=verdant-reliquary --mode=koth
   node run.mjs --experience=combined-arms
   node run.mjs --experience=arms-race --map=meridian-exchange
+  node run.mjs --experience=horde --map=meridian-exchange
   node run.mjs --experience=sports --map=ion-speedway
   node run.mjs --experience=sports --map=aurora-stadium
   node run.mjs --experience=objectives --map=tidal-citadel
@@ -75,6 +77,8 @@ Lobby: explicit Create/Join/Start; guests select the expected host map.
   With --endpoint, no authority is created or stopped. Escape exposes Leave.
   --play skips setup; --setup, --mute, --debug-hud supported.
 Sports: --time-limit=60..900; --round-target=1..10 laps or 1..15 goals.
+Horde: three combat arenas; local-only solo authority, default ten waves.
+  Click to engage; Tab scores; Escape releases controls; Enter restarts results.
 Arms Race: three combat arenas; two Normal bots, ten weapons, 180-second rounds.
   Source locks weapons. Click to engage; Enter restarts results.
 Zones: koth/domination on combat arenas; domination on Tidal/Sunscar.

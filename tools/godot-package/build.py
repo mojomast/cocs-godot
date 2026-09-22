@@ -96,6 +96,7 @@ def main():
     closure = json.loads(run(["node", "--no-warnings", "--experimental-vm-modules", ROOT / "tools/godot-package/discover.mjs", ROOT]))
     write_json(logs / "server-closure.json", closure)
     input_paths = set(closure["modules"])
+    input_paths.update(closure["adapterModules"])
     input_paths.update(["package.json", "package-lock.json", "port/contracts/source-lock.json", "port/contracts/map-selection.json", "tools/godot-export/semantic.mjs"])
     native_files = [p for p in git("ls-files", "godot").splitlines() if not p.startswith(("godot/tests/", "godot/content/", "godot/.godot/")) and p not in ["godot/.gitignore", "godot/export_presets.cfg"]]
     input_paths.update(native_files)
@@ -107,6 +108,12 @@ def main():
         expected = subprocess.check_output(["git", "show", f"{lock['source_commit']}:{p}"], cwd=ROOT)
         if hashlib.sha256(expected).hexdigest() != inputs[p]:
             raise RuntimeError(f"Runtime source differs from lock: {p}")
+    # Port-owned adapters have separate provenance, never source-lock exemptions.
+    # Require committed reviewed bytes; record their exact hashes independently.
+    for p in closure["adapterModules"]:
+        expected = subprocess.check_output(["git", "show", f"HEAD:{p}"], cwd=ROOT)
+        if hashlib.sha256(expected).hexdigest() != inputs[p]:
+            raise RuntimeError(f"Uncommitted runtime adapter: {p}")
 
     toolchain = state / "toolchain"
     toolchain.mkdir(exist_ok=True)
@@ -180,7 +187,7 @@ ssh_remote_deploy/enabled=false
         raise RuntimeError("Expected separate PCK")
     if run([package / "cocs.x86_64", "--version"], env=env) != EXACT:
         raise RuntimeError("Exported runtime exact version mismatch")
-    for p in closure["modules"]:
+    for p in [*closure["modules"], *closure["adapterModules"]]:
         copy(ROOT / p, package / "runtime" / p)
 
     # Fetch only the already-locked ordinary ws dependency. No npm/install scripts.
@@ -233,6 +240,8 @@ ssh_remote_deploy/enabled=false
         "ws":{"version":ws["version"], "integrity":ws["integrity"], "resolved":ws["resolved"], "license":"MIT; retained in runtime/node_modules/ws/LICENSE; optional native accelerators omitted"},
         "toolchain":{"checksums_source":BASE + "SHA512-SUMS.txt", "archives":{v[0]:v[1] for v in ARCHIVES.values()}, "editor_sha256":digest(editor), "release_template_sha256":digest(templates / "linux_release.x86_64")},
         "inputs":inputs, "input_sha256":tree_hash(inputs), "generated_resources":resources,
+        "source_runtime_sha256":{p:inputs[p] for p in closure["modules"]},
+        "port_adapter_sha256":{p:inputs[p] for p in closure["adapterModules"]},
         "generated_resources_sha256":tree_hash(resources), "staged_export_preset":preset,
         "files":tree(package),
     }

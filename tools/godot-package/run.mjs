@@ -12,13 +12,16 @@ async function main() {
   if (version[0] < 22 || (version[0] === 22 && version[1] < 13)) throw Error('Node >=22.13.0 required');
   const plan = options(process.argv.slice(2), JSON.parse(readFileSync(join(root, 'catalog.json'))));
   // These paths are relative to this artifact, never to the caller's cwd/repo.
-  const {createGameServer} = await import('./runtime/server/game-server.mjs');
+  // Lazy route imports also keep external lobby independent of local adapters.
+  const factory = plan.endpoint ? null : plan.experience === 'horde'
+    ? (await import('./runtime/port/native-horde/authority.mjs')).createAuthority
+    : (await import('./runtime/server/game-server.mjs')).createGameServer;
   const runtime = mkdtempSync(join(tmpdir(), 'cocs-native-'));
   const env = {...process.env};
   for (const name of ['XDG_DATA_HOME','XDG_CONFIG_HOME','XDG_CACHE_HOME']) {
     env[name] = join(runtime, name); mkdirSync(env[name]);
   }
-  const game = plan.endpoint ? null : createGameServer({historyPath:null, progressionPath:null});
+  let game;
   let child, childDone, stopping = false, signalCode = 0, serverFailure, killTimer;
   const stop = () => {
     stopping = true;
@@ -32,8 +35,9 @@ async function main() {
   const terminate = () => { signalCode = 143; stop(); };
   const serverError = error => { serverFailure = error; stop(); };
   process.on('SIGINT', interrupt); process.on('SIGTERM', terminate);
-  game?.server.on('error', serverError);
   try {
+    game = factory?.(plan.experience === 'horde' ? {} : {historyPath:null, progressionPath:null});
+    game?.server.on('error', serverError);
     let endpoint = plan.endpoint;
     if (game) {
       await new Promise((resolve, reject) => {
@@ -43,7 +47,10 @@ async function main() {
       const port = game.server.address().port;
       const health = await fetch(`http://127.0.0.1:${port}/`, {signal:AbortSignal.timeout(5000)});
       const status = await health.json();
-      if (!health.ok || status.port !== port || status.service !== 'token-arena-game-server') throw Error('Owned server health check failed');
+      const identity = plan.experience === 'horde'
+        ? status?.service === 'cocs-local-horde' && status.transport === 1 && status.localOnly === true
+        : status?.service === 'token-arena-game-server';
+      if (!health.ok || status?.port !== port || !identity) throw Error('Owned server health check failed');
       if (stopping) return signalCode || 1;
       console.log('PACKAGE_SERVER_READY ' + JSON.stringify({pid:process.pid, host:'127.0.0.1', port, experience:plan.experience, map:plan.map, mode:plan.mode, health:status}));
       endpoint = `ws://127.0.0.1:${port}`;
