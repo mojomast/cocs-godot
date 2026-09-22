@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "scenario": "combat",
+  "correlated": 376,
+  "receipts": 1000,
+  "ackHighWater": 990,
+  "won": true,
+  "deaths": false,
+  "eventTypes": [
+    "spawn",
+    "husk",
+    "spitter",
+    "horde-wave",
+    "horde-modifier",
+    "move-blocked",
+    "shot",
+    "pickup",
+    "damage",
+    "weapon-switch",
+    "death",
+    "killstreak",
+    "horde-wave-cleared",
+    "horde-resupply",
+    "horde-summary",
+    "mission-won"
+  ],
+  "nativeTraceCompletionProven": true,
+  "steppedSamples": 997,
+  "receivedHighWater": 990,
+  "productComposition": true,
+  "harnessExit": 0,
+  "clockDiagnostic": {
+    "sourceSeconds": 18.350000000000236,
+    "wallSeconds": 18.342335415
+  },
+  "runtimeCommit": "25eae77fb593ddb0a4211850d5d1a7e0ea6b87aa"
+}

@@ -1,0 +1,24 @@
+{
+  "exit": 0,
+  "reason": "native scenario completed",
+  "map": "verdant-reliquary",
+  "scenario": "death",
+  "manual": false,
+  "attempt": 1,
+  "wallSeconds": 37.081339086,
+  "cleanup": [
+    {
+      "pid": 3634165,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 3634169,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "serverClosed": true,
+  "sockets": 0,
+  "temporaryTreeRemoved": true
+}

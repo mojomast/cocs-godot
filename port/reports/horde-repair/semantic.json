@@ -1,0 +1,8 @@
+{
+  "command": [
+    "node",
+    "tools/godot-export/semantic.mjs"
+  ],
+  "exit": 0,
+  "temporaryTreeRemoved": true
+}

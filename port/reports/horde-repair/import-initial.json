@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "--editor",
+    "--import"
+  ],
+  "exit": 0,
+  "temporaryTreeRemoved": true
+}

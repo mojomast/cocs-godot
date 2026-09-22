@@ -1,0 +1,15 @@
+{
+  "baseline": "59c2b33c3080845eb73f8490b3dc9e355117c000",
+  "fresh_repair_budget": true,
+  "max_attempts_per_case": 2,
+  "native_deadline_seconds": 170,
+  "outer_native_deadline_seconds": 180,
+  "cases": [
+    {"map":"meridian-exchange","scenario":"combat","waves":1},
+    {"map":"verdant-reliquary","scenario":"death","waves":1},
+    {"map":"ember-crucible","scenario":"startup","waves":10}
+  ],
+  "seeds": "Math.random; no selection or retries",
+  "original_attempts": "Retained unchanged under port/native-horde/evidence and port/reports/horde-independent/evidence",
+  "diagnostics": "Offline fixtures and short black-box transport/clock probes are separate; no source Match mutation or injected scheduling time."
+}

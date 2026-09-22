@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "scenario": "startup",
+  "correlated": 148,
+  "receipts": 415,
+  "ackHighWater": 413,
+  "won": false,
+  "deaths": false,
+  "eventTypes": [
+    "spawn",
+    "powerup",
+    "pickup",
+    "husk",
+    "spitter",
+    "horde-wave",
+    "horde-modifier"
+  ],
+  "nativeTraceCompletionProven": true,
+  "steppedSamples": 377,
+  "receivedHighWater": 415,
+  "productComposition": true,
+  "harnessExit": 0,
+  "clockDiagnostic": {
+    "sourceSeconds": 7.399999999999979,
+    "wallSeconds": 7.393159562000001
+  },
+  "runtimeCommit": "48d1029d7b29d730a85dfd47cd0af14f10dcc221"
+}

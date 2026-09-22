@@ -1,0 +1,947 @@
+{
+  "source": "game/input.mjs; app/page.tsx desktop press/reset rules",
+  "ammo": [
+    "∞",
+    4,
+    0,
+    8,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+  ],
+  "cases": [
+    {
+      "name": "idle",
+      "events": [],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "fire tap between sends",
+      "events": [
+        {
+          "kind": "mouse",
+          "button": 1,
+          "pressed": true
+        },
+        {
+          "kind": "mouse",
+          "button": 1,
+          "pressed": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": true,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "tap consumed",
+      "events": [],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "held fire",
+      "events": [
+        {
+          "kind": "mouse",
+          "button": 1,
+          "pressed": true
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": true,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "held fire persists",
+      "events": [],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": true,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "fire release",
+      "events": [
+        {
+          "kind": "mouse",
+          "button": 1,
+          "pressed": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "all source one-shot presses",
+      "events": [
+        {
+          "kind": "key",
+          "code": "KeyR",
+          "pressed": true,
+          "echo": false
+        },
+        {
+          "kind": "key",
+          "code": "KeyE",
+          "pressed": true,
+          "echo": false
+        },
+        {
+          "kind": "key",
+          "code": "KeyQ",
+          "pressed": true,
+          "echo": false
+        },
+        {
+          "kind": "key",
+          "code": "KeyF",
+          "pressed": true,
+          "echo": false
+        },
+        {
+          "kind": "key",
+          "code": "KeyG",
+          "pressed": true,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": true,
+        "interact": true,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": true,
+        "melee": true,
+        "grenade": true,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "holding edge keys does not repeat",
+      "events": [],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "OS key-repeat does not repeat",
+      "events": [
+        {
+          "kind": "key",
+          "code": "KeyR",
+          "pressed": true,
+          "echo": true
+        },
+        {
+          "kind": "key",
+          "code": "KeyE",
+          "pressed": true,
+          "echo": true
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "new reload press",
+      "events": [
+        {
+          "kind": "key",
+          "code": "KeyR",
+          "pressed": false,
+          "echo": false
+        },
+        {
+          "kind": "key",
+          "code": "KeyR",
+          "pressed": true,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": true,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "jump tap",
+      "events": [
+        {
+          "kind": "key",
+          "code": "Space",
+          "pressed": true,
+          "echo": false
+        },
+        {
+          "kind": "key",
+          "code": "Space",
+          "pressed": false,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": true,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "jump tap consumed",
+      "events": [],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "jump held",
+      "events": [
+        {
+          "kind": "key",
+          "code": "Space",
+          "pressed": true,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": true,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "autohop hold",
+      "events": [],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": true,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "jump released",
+      "events": [
+        {
+          "kind": "key",
+          "code": "Space",
+          "pressed": false,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "mobility held",
+      "events": [
+        {
+          "kind": "key",
+          "code": "KeyX",
+          "pressed": true,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": true,
+        "altFire": false
+      }
+    },
+    {
+      "name": "mobility hold",
+      "events": [],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": true,
+        "altFire": false
+      }
+    },
+    {
+      "name": "mobility released",
+      "events": [
+        {
+          "kind": "key",
+          "code": "KeyX",
+          "pressed": false,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "source mobility down/up between steps is released",
+      "events": [
+        {
+          "kind": "key",
+          "code": "KeyX",
+          "pressed": true,
+          "echo": false
+        },
+        {
+          "kind": "key",
+          "code": "KeyX",
+          "pressed": false,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "ADS and alt held",
+      "events": [
+        {
+          "kind": "mouse",
+          "button": 2,
+          "pressed": true
+        },
+        {
+          "kind": "key",
+          "code": "KeyZ",
+          "pressed": true,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": true,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": true
+      }
+    },
+    {
+      "name": "held ADS alt",
+      "events": [],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": true,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": true
+      }
+    },
+    {
+      "name": "MMB alternate path",
+      "events": [
+        {
+          "kind": "key",
+          "code": "KeyZ",
+          "pressed": false,
+          "echo": false
+        },
+        {
+          "kind": "mouse",
+          "button": 3,
+          "pressed": true
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": true,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": true
+      }
+    },
+    {
+      "name": "ADS alt released",
+      "events": [
+        {
+          "kind": "mouse",
+          "button": 2,
+          "pressed": false
+        },
+        {
+          "kind": "mouse",
+          "button": 3,
+          "pressed": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "diagonal world-axis direction",
+      "events": [
+        {
+          "kind": "key",
+          "code": "KeyW",
+          "pressed": true,
+          "echo": false
+        },
+        {
+          "kind": "key",
+          "code": "KeyD",
+          "pressed": true,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0.0852944019603275,
+        "z": -0.9963557923724989,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "posture alias",
+      "events": [
+        {
+          "kind": "key",
+          "code": "KeyC",
+          "pressed": true,
+          "echo": false
+        },
+        {
+          "kind": "key",
+          "code": "ShiftLeft",
+          "pressed": true,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0.0852944019603275,
+        "z": -0.9963557923724989,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": true,
+        "crouch": true,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "weapon selection",
+      "events": [
+        {
+          "kind": "key",
+          "code": "Digit2",
+          "pressed": true,
+          "echo": false
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0.0852944019603275,
+        "z": -0.9963557923724989,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "weapon": 1,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": true,
+        "crouch": true,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "weapon consumed",
+      "events": [],
+      "cancel": false,
+      "expected": {
+        "x": 0.0852944019603275,
+        "z": -0.9963557923724989,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": true,
+        "crouch": true,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "wheel skips empty weapons",
+      "events": [
+        {
+          "kind": "mouse",
+          "button": 5,
+          "pressed": true
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0.0852944019603275,
+        "z": -0.9963557923724989,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "weapon": 1,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": true,
+        "crouch": true,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "reverse wheel",
+      "events": [
+        {
+          "kind": "mouse",
+          "button": 4,
+          "pressed": true
+        }
+      ],
+      "cancel": false,
+      "expected": {
+        "x": 0.0852944019603275,
+        "z": -0.9963557923724989,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "weapon": 9,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": true,
+        "crouch": true,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "boundary clears holds and pulses",
+      "events": [],
+      "cancel": true,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    },
+    {
+      "name": "after boundary remains neutral",
+      "events": [],
+      "cancel": false,
+      "expected": {
+        "x": 0,
+        "z": 0,
+        "yaw": 0.7,
+        "pitch": 0.2,
+        "fire": false,
+        "jump": false,
+        "power": false,
+        "interact": false,
+        "sprint": false,
+        "crouch": false,
+        "ads": false,
+        "reload": false,
+        "melee": false,
+        "grenade": false,
+        "mobility": false,
+        "altFire": false
+      }
+    }
+  ]
+}

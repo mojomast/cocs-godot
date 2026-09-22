@@ -1,0 +1,10 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "port/native-horde/repair-regression.test.mjs",
+    "port/native-horde/input-buffer.test.mjs"
+  ],
+  "exit": 0,
+  "temporaryTreeRemoved": true
+}

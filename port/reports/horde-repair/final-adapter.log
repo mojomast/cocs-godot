@@ -1,0 +1,186 @@
+TAP version 13
+# Subtest: source one-shot fields are consumed once while source held fields persist
+ok 1 - source one-shot fields are consumed once while source held fields persist
+  ---
+  duration_ms: 1.202554
+  type: 'test'
+  ...
+# Subtest: FIFO preserves two distinct press/release pairs, bounds work instead of dropping commands
+ok 2 - FIFO preserves two distinct press/release pairs, bounds work instead of dropping commands
+  ---
+  duration_ms: 0.399098
+  type: 'test'
+  ...
+# Subtest: cancel and round reset clear queue/holds without falsely claiming old samples were stepped
+ok 3 - cancel and round reset clear queue/holds without falsely claiming old samples were stepped
+  ---
+  duration_ms: 0.131296
+  type: 'test'
+  ...
+# Subtest: duplicate/unsafe seq does not renew expiry; stale samples are never implicitly applied
+ok 4 - duplicate/unsafe seq does not renew expiry; stale samples are never implicitly applied
+  ---
+  duration_ms: 0.092874
+  type: 'test'
+  ...
+# Subtest: serial cursor preserves repeated opaque source IDs and detects a lost source ring
+ok 5 - serial cursor preserves repeated opaque source IDs and detects a lost source ring
+  ---
+  duration_ms: 0.221155
+  type: 'test'
+  ...
+# Subtest: outbound message and total queued-byte boundaries are inclusive and bounded
+ok 6 - outbound message and total queued-byte boundaries are inclusive and bounded
+  ---
+  duration_ms: 0.068037
+  type: 'test'
+  ...
+# TAP_DIAGNOSTIC {"shots":1,"ack":2,"input":{"receivedSeq":2,"appliedSeq":2,"cancelledThrough":0,"queueDepth":0}}
+# Subtest: received fire tap is stepped before release, not merely ACKed
+ok 7 - received fire tap is stepped before release, not merely ACKed
+  ---
+  duration_ms: 601.076262
+  type: 'test'
+  ...
+# Subtest: explicit cancellation discards pending fire, ACK names only stepped neutral sample
+ok 8 - explicit cancellation discards pending fire, ACK names only stepped neutral sample
+  ---
+  duration_ms: 519.752859
+  type: 'test'
+  ...
+# Subtest: input expiry invalidates epoch and never ACKs a late stale-epoch command
+ok 9 - input expiry invalidates epoch and never ACKs a late stale-epoch command
+  ---
+  duration_ms: 1067.105154
+  type: 'test'
+  ...
+# Subtest: source string-ID wave event gets unique serial wire identity
+ok 10 - source string-ID wave event gets unique serial wire identity
+  ---
+  duration_ms: 7080.041598
+  type: 'test'
+  ...
+# Subtest: oversized frame closes peer gracefully and listener survives
+ok 11 - oversized frame closes peer gracefully and listener survives
+  ---
+  duration_ms: 652.440867
+  type: 'test'
+  ...
+# Subtest: valid lifecycle-message flood is rate bounded
+ok 12 - valid lifecycle-message flood is rate bounded
+  ---
+  duration_ms: 7.969877
+  type: 'test'
+  ...
+# Subtest: outbound backlog limit closes peer (synthetic WebSocket backpressure, not source state)
+ok 13 - outbound backlog limit closes peer (synthetic WebSocket backpressure, not source state)
+  ---
+  duration_ms: 5.700845
+  type: 'test'
+  ...
+# CLOCK_DIAGNOSTIC {"sourceSeconds":4.499999999999989,"wallSeconds":4.501154806999999,"ratio":0.9997434420610876}
+# Subtest: normal-rate clock diagnostic uses measured wall time, not injected time
+ok 14 - normal-rate clock diagnostic uses measured wall time, not injected time
+  ---
+  duration_ms: 4567.560161
+  type: 'test'
+  ...
+# Subtest: retained failed product run cannot pass acceptance hygiene
+ok 15 - retained failed product run cannot pass acceptance hygiene
+  ---
+  duration_ms: 4.524499
+  type: 'test'
+  ...
+# Subtest: legal one-wave source preset meridian-exchange
+ok 16 - legal one-wave source preset meridian-exchange
+  ---
+  duration_ms: 0.773329
+  type: 'test'
+  ...
+# Subtest: legal one-wave source preset verdant-reliquary
+ok 17 - legal one-wave source preset verdant-reliquary
+  ---
+  duration_ms: 0.116318
+  type: 'test'
+  ...
+# Subtest: legal one-wave source preset ember-crucible
+ok 18 - legal one-wave source preset ember-crucible
+  ---
+  duration_ms: 0.057938
+  type: 'test'
+  ...
+# Subtest: invalid targets rejected rather than silently clamped
+ok 19 - invalid targets rejected rather than silently clamped
+  ---
+  duration_ms: 0.151104
+  type: 'test'
+  ...
+# Subtest: foreign maps and mode rejected
+ok 20 - foreign maps and mode rejected
+  ---
+  duration_ms: 0.107522
+  type: 'test'
+  ...
+# Subtest: default is ten waves
+ok 21 - default is ten waves
+  ---
+  duration_ms: 0.061896
+  type: 'test'
+  ...
+# Subtest: missing evidence cannot pass
+ok 22 - missing evidence cannot pass
+  ---
+  duration_ms: 0.506489
+  type: 'test'
+  ...
+# Subtest: malformed native records rejected
+ok 23 - malformed native records rejected
+  ---
+  duration_ms: 0.083206
+  type: 'test'
+  ...
+# Subtest: synthetic correlation baseline
+ok 24 - synthetic correlation baseline
+  ---
+  duration_ms: 0.912581
+  type: 'test'
+  ...
+# Subtest: mismatched actor rejected
+ok 25 - mismatched actor rejected
+  ---
+  duration_ms: 0.568045
+  type: 'test'
+  ...
+# Subtest: wrong rendered position rejected
+ok 26 - wrong rendered position rejected
+  ---
+  duration_ms: 0.192841
+  type: 'test'
+  ...
+# Subtest: snapshot gaps rejected
+ok 27 - snapshot gaps rejected
+  ---
+  duration_ms: 0.103725
+  type: 'test'
+  ...
+# Subtest: ACK/receipt cannot stand in for victory
+ok 28 - ACK/receipt cannot stand in for victory
+  ---
+  duration_ms: 0.151564
+  type: 'test'
+  ...
+# Subtest: owned local server rejects browser origins and closes listeners
+ok 29 - owned local server rejects browser origins and closes listeners
+  ---
+  duration_ms: 12.58162
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15245.489038

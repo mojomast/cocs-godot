@@ -1,0 +1,10 @@
+{
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {verifySource} from \"./tools/godot-export/semantic.mjs\"; import fs from \"node:fs\"; verifySource(JSON.parse(fs.readFileSync(\"port/contracts/source-lock.json\"))); console.log(\"SOURCE_LOCK_OK\");"
+  ],
+  "exit": 0,
+  "temporaryTreeRemoved": true
+}

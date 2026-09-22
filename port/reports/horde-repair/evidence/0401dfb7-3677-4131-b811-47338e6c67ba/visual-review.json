@@ -1,0 +1,9 @@
+{
+  "status": "SUPERSEDED_VISUAL_FAILURE",
+  "runtimeCommit": "74d0e277e193e90b860b46143857d9bda4ce060a",
+  "harnessExit": 0,
+  "scenarioValidation": "PASS at recorded runtime; default ten waves, actual enemies, source event and step correlation",
+  "directlyOpened": ["gameplay-final.png", "gameplay-alternate.png"],
+  "finding": "Third help line containing Esc, Tab and weapon controls is clipped below the viewport at both sizes.",
+  "action": "Retain unchanged run; compact help to two lines and add explicit controls bounds validation before second Ember attempt."
+}

@@ -1,0 +1,72 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: stepped controls differ from parsed source input
++ actual - expected
+... Skipped lines
+
+  {
+    ads: false,
+    altFire: false,
+    crouch: false,
+    fire: false,
+...
+    sprint: false,
+-   weapon: undefined,
+    x: 0,
+    yaw: -0.912907719612122,
+    z: 0
+  }
+
+    at validateRun (file:///tmp/opencode/horde-repair-59c2b33/port/native-horde/validate.mjs:76:10)
+    at file:///tmp/opencode/horde-repair-59c2b33/port/native-horde/validate.mjs:132:15
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: {
+    seq: 6,
+    x: 0,
+    z: 0,
+    yaw: -0.912907719612122,
+    pitch: 0,
+    fire: false,
+    jump: false,
+    power: false,
+    interact: false,
+    sprint: false,
+    crouch: false,
+    ads: false,
+    reload: false,
+    melee: false,
+    grenade: false,
+    mobility: false,
+    altFire: false
+  },
+  expected: {
+    seq: 6,
+    x: 0,
+    z: 0,
+    yaw: -0.912907719612122,
+    pitch: 0,
+    weapon: undefined,
+    fire: false,
+    jump: false,
+    power: false,
+    interact: false,
+    sprint: false,
+    crouch: false,
+    ads: false,
+    reload: false,
+    melee: false,
+    grenade: false,
+    mobility: false,
+    altFire: false
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.1
