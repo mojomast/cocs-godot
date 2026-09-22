@@ -1,0 +1,33 @@
+COMMAND /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --path /home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot --audio-driver Dummy --rendering-method gl_compatibility --resolution 960x640 --position 0,0 --script res://tests/graphics_depth/capture.gd -- /home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-depth/evidence/before/960x640 before
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":4.0,"high_pixels":0,"low_pixels":81,"mode":"low-high","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":40.0,"high_pixels":0,"low_pixels":81,"mode":"low-high","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":160.0,"high_pixels":0,"low_pixels":81,"mode":"low-high","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":4.0,"high_pixels":0,"low_pixels":81,"mode":"low-high","samples":81,"slope_degrees":35.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":40.0,"high_pixels":0,"low_pixels":81,"mode":"low-high","samples":81,"slope_degrees":35.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":160.0,"high_pixels":0,"low_pixels":81,"mode":"low-high","samples":81,"slope_degrees":35.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":4.0,"high_pixels":0,"low_pixels":81,"mode":"high-low","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":40.0,"high_pixels":0,"low_pixels":81,"mode":"high-low","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":160.0,"high_pixels":0,"low_pixels":81,"mode":"high-low","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":4.0,"high_pixels":0,"low_pixels":81,"mode":"high-low","samples":81,"slope_degrees":35.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":40.0,"high_pixels":0,"low_pixels":81,"mode":"high-low","samples":81,"slope_degrees":35.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":160.0,"high_pixels":0,"low_pixels":81,"mode":"high-low","samples":81,"slope_degrees":35.0}
+DEPTH_PIXELS {"center_rgb8":[4,216,28],"distance":4.0,"high_pixels":81,"low_pixels":0,"mode":"equal-low-high","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[4,216,28],"distance":40.0,"high_pixels":81,"low_pixels":0,"mode":"equal-low-high","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[4,216,28],"distance":160.0,"high_pixels":81,"low_pixels":0,"mode":"equal-low-high","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[4,216,28],"distance":4.0,"high_pixels":81,"low_pixels":0,"mode":"equal-low-high","samples":81,"slope_degrees":35.0}
+DEPTH_PIXELS {"center_rgb8":[4,216,28],"distance":40.0,"high_pixels":81,"low_pixels":0,"mode":"equal-low-high","samples":81,"slope_degrees":35.0}
+DEPTH_PIXELS {"center_rgb8":[4,216,28],"distance":160.0,"high_pixels":81,"low_pixels":0,"mode":"equal-low-high","samples":81,"slope_degrees":35.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":4.0,"high_pixels":0,"low_pixels":81,"mode":"equal-high-low","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":40.0,"high_pixels":0,"low_pixels":81,"mode":"equal-high-low","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":160.0,"high_pixels":0,"low_pixels":81,"mode":"equal-high-low","samples":81,"slope_degrees":0.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":4.0,"high_pixels":0,"low_pixels":81,"mode":"equal-high-low","samples":81,"slope_degrees":35.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":40.0,"high_pixels":0,"low_pixels":81,"mode":"equal-high-low","samples":81,"slope_degrees":35.0}
+DEPTH_PIXELS {"center_rgb8":[229,16,4],"distance":160.0,"high_pixels":0,"low_pixels":81,"mode":"equal-high-low","samples":81,"slope_degrees":35.0}
+DEPTH_GRAPHICAL failures=12 order_controls_pass=true
+
+EXIT_STATUS 1

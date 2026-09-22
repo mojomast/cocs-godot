@@ -78,5 +78,5 @@ void fragment() {
 		EMISSION = mix(texture(lut_r, vec2(fresnel, fract(lut_phase))).rgb, texture(lut_t, vec2(fresnel, fract(lut_phase + 0.5))).rgb, 0.5) * lut_intensity;
 	}
 	// Match semantic support-surface priority exactly. Opaque world pass; no displacement or visibility change.
-	DEPTH = FRAGCOORD.z - (vertex_tint ? UV.x * 0.000001 : 0.0);
+	DEPTH = FRAGCOORD.z + (vertex_tint ? UV.x * 0.000001 : 0.0);
 }

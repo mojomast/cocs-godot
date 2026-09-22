@@ -1,0 +1,12 @@
+COMMAND /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --path /home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot --audio-driver Dummy --rendering-method gl_compatibility --resolution 1280x800 --position 0,0 --script res://tests/graphics_depth/capture.gd -- /home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-depth/evidence/before/1280x800 before
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+SCRIPT ERROR: Parse Error: Cannot find member "REFLECTED_SOURCE_AMBIENT" in base "Environment".
+          at: GDScript::reload (res://tests/graphics_depth/capture.gd:74)
+ERROR: Failed to load script "res://tests/graphics_depth/capture.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:3041)
+
+EXIT_STATUS 1
