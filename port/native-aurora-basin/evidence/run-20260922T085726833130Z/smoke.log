@@ -1,0 +1,8 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+AURORA_CONTROLLER private test fallback (shared integration not present)
+AURORA_READY {"build_ms":71.547,"collision_shapes":206,"invalid_transforms":0,"lights":3,"mesh_triangles":45976,"meshes":87,"moth_cache":{"limit":128,"textures":11},"multimesh_instances":223,"multimesh_triangles":10302,"multimeshes":9,"nodes":525,"particle_capacity":384,"particle_emitters":3,"shadow_lights":1}
+AURORA_SMOKE_PASS frames=51

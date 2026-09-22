@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "stage": "capture",
+  "runtime": "/tmp/opencode/aurora-private-3htkh6mm",
+  "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "results": [
+    {
+      "name": "preflight",
+      "code": 0,
+      "seconds": 0.164,
+      "errors": [],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-aurora-map/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--check-only",
+        "--script",
+        "res://tests/aurora_basin/capture.gd"
+      ]
+    },
+    {
+      "name": "landing-960x640",
+      "code": 0,
+      "seconds": 8.906,
+      "errors": [],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-aurora-map/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x640",
+        "--script",
+        "res://tests/aurora_basin/capture.gd",
+        "--",
+        "--size=960x640",
+        "--view=landing",
+        "--output=/tmp/opencode/cocs-graphics-aurora-map/port/native-aurora-basin/evidence/run-20260922T084826168436Z/landing-960x640.png"
+      ]
+    },
+    {
+      "name": "fracture-960x640",
+      "code": 0,
+      "seconds": 5.035,
+      "errors": [],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-aurora-map/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x640",
+        "--script",
+        "res://tests/aurora_basin/capture.gd",
+        "--",
+        "--size=960x640",
+        "--view=fracture",
+        "--output=/tmp/opencode/cocs-graphics-aurora-map/port/native-aurora-basin/evidence/run-20260922T084826168436Z/fracture-960x640.png"
+      ]
+    },
+    {
+      "name": "vista-960x640",
+      "code": 0,
+      "seconds": 4.832,
+      "errors": [],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-aurora-map/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x640",
+        "--script",
+        "res://tests/aurora_basin/capture.gd",
+        "--",
+        "--size=960x640",
+        "--view=vista",
+        "--output=/tmp/opencode/cocs-graphics-aurora-map/port/native-aurora-basin/evidence/run-20260922T084826168436Z/vista-960x640.png"
+      ]
+    },
+    {
+      "name": "overview-960x640",
+      "code": 0,
+      "seconds": 3.977,
+      "errors": [],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-aurora-map/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x640",
+        "--script",
+        "res://tests/aurora_basin/capture.gd",
+        "--",
+        "--size=960x640",
+        "--view=overview",
+        "--output=/tmp/opencode/cocs-graphics-aurora-map/port/native-aurora-basin/evidence/run-20260922T084826168436Z/overview-960x640.png"
+      ]
+    }
+  ]
+}

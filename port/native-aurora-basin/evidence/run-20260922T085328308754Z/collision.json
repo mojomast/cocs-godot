@@ -1,0 +1,184 @@
+{
+	"checks": 591,
+	"controller": "private baseline-compatible capsule probe",
+	"engine": {
+		"build": "official",
+		"hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+		"hex": 263426,
+		"major": 4,
+		"minor": 5,
+		"patch": 2,
+		"status": "stable",
+		"string": "4.5.2-stable (official)",
+		"timestamp": 0
+	},
+	"failures": [
+		"crown_west_to_east actual capsule traversal stopped at 26/109 ((-18.19529, 2.460117, -32.26663))"
+	],
+	"mesh_vertices_checked": 119816,
+	"passed": false,
+	"resources": {
+		"build_ms": 85.637,
+		"collision_shapes": 206,
+		"invalid_transforms": 0,
+		"lights": 3,
+		"mesh_triangles": 45976,
+		"meshes": 87,
+		"moth_cache": {
+			"limit": 128,
+			"textures": 11
+		},
+		"multimesh_instances": 223,
+		"multimesh_triangles": 10302,
+		"multimeshes": 9,
+		"nodes": 525,
+		"particle_capacity": 384,
+		"particle_emitters": 3,
+		"shadow_lights": 1
+	},
+	"routes": [
+		{
+			"max_height_error_m": 0.0249998867511749,
+			"max_slope_degrees": 0.0,
+			"name": "lake_loop",
+			"support_rays": 145
+		},
+		{
+			"max_height_error_m": 0.0249998867511749,
+			"max_slope_degrees": 0.0,
+			"name": "landing_ramp",
+			"support_rays": 25
+		},
+		{
+			"max_height_error_m": 0.0000486373901367188,
+			"max_slope_degrees": 16.3617004636968,
+			"name": "crown_skywalk",
+			"support_rays": 109
+		}
+	],
+	"walks": [
+		{
+			"blocked_contacts": [],
+			"completed": true,
+			"distance_m": 13.5016947537661,
+			"end_position": [
+				-14.1568393707275,
+				0.0804882794618607,
+				20.0531558990479
+			],
+			"grounded_frames": 90,
+			"max_height_error_m": 0.0246093720197678,
+			"name": "landing_to_lake",
+			"physics_frames": 90,
+			"waypoints_reached": 25,
+			"waypoints_total": 25
+		},
+		{
+			"blocked_contacts": [],
+			"completed": true,
+			"distance_m": 169.499390140176,
+			"end_position": [
+				-17.9814281463623,
+				0.106178060173988,
+				20.1374893188477
+			],
+			"grounded_frames": 1130,
+			"max_height_error_m": 0.0261780619621277,
+			"name": "lake_circuit",
+			"physics_frames": 1130,
+			"waypoints_reached": 145,
+			"waypoints_total": 145
+		},
+		{
+			"blocked_contacts": [],
+			"completed": true,
+			"distance_m": 128.128696709871,
+			"end_position": [
+				-25.1542873382568,
+				0.080611526966095,
+				-11.1170969009399
+			],
+			"grounded_frames": 854,
+			"max_height_error_m": 0.0660333633422852,
+			"name": "crown_east_to_west",
+			"physics_frames": 854,
+			"waypoints_reached": 109,
+			"waypoints_total": 109
+		},
+		{
+			"blocked_contacts": [
+				{
+					"collider": "/root/@Node3D@2/@MeshInstance3D@402/_MeshInstance3D_402_col",
+					"normal": "(0.03203, -0.139754, 0.989668)",
+					"position": "(-18.2039, 3.958994, -32.61204)"
+				},
+				{
+					"collider": "/root/@Node3D@2/CrownSkywalk/CrownSkywalk_col",
+					"normal": "(-0.194075, 0.97843, 0.070775)",
+					"position": "(-18.12229, 2.467764, -32.28981)"
+				}
+			],
+			"completed": false,
+			"distance_m": 29.5581804662943,
+			"end_position": [
+				-18.1952896118164,
+				2.46011686325073,
+				-32.2666282653809
+			],
+			"grounded_frames": 355,
+			"max_height_error_m": 0.0447158813476562,
+			"name": "crown_west_to_east",
+			"physics_frames": 355,
+			"waypoints_reached": 26,
+			"waypoints_total": 109
+		},
+		{
+			"blocked_contacts": [],
+			"completed": true,
+			"distance_m": 4.8000373840332,
+			"end_position": [
+				16.0,
+				8.99971675872803,
+				-35.8000373840332
+			],
+			"grounded_frames": 32,
+			"max_height_error_m": 0.000283241271972656,
+			"name": "vista_walk_in",
+			"physics_frames": 32,
+			"waypoints_reached": 3,
+			"waypoints_total": 3
+		},
+		{
+			"blocked_contacts": [],
+			"completed": true,
+			"distance_m": 3.30001553893089,
+			"end_position": [
+				25.9638805389404,
+				0.0802734419703484,
+				12.4626617431641
+			],
+			"grounded_frames": 22,
+			"max_height_error_m": 0.000273443758487701,
+			"name": "lake_skywalk_junction",
+			"physics_frames": 22,
+			"waypoints_reached": 3,
+			"waypoints_total": 3
+		},
+		{
+			"blocked_contacts": [],
+			"completed": true,
+			"distance_m": 3.29998396337032,
+			"end_position": [
+				-26.3610591888428,
+				0.0802734419703484,
+				-11.5988664627075
+			],
+			"grounded_frames": 22,
+			"max_height_error_m": 0.000273443758487701,
+			"name": "lake_skywalk_junction",
+			"physics_frames": 22,
+			"waypoints_reached": 3,
+			"waypoints_total": 3
+		}
+	]
+}

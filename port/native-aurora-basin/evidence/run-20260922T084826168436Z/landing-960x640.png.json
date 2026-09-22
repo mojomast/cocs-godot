@@ -1,0 +1,61 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"draw_calls_last_frame": 233.0,
+	"engine": {
+		"build": "official",
+		"hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+		"hex": 263426,
+		"major": 4,
+		"minor": 5,
+		"patch": 2,
+		"status": "stable",
+		"string": "4.5.2-stable (official)",
+		"timestamp": 0
+	},
+	"eye": [
+		-23.0,
+		1.72000002861023,
+		34.0
+	],
+	"eye_level": true,
+	"frame_ms_mean": 49.8135333333333,
+	"frame_ms_median": 50.293,
+	"frame_ms_p95": 55.381,
+	"frames_measured": 60,
+	"height": 640,
+	"image": "/tmp/opencode/cocs-graphics-aurora-map/port/native-aurora-basin/evidence/run-20260922T084826168436Z/landing-960x640.png",
+	"map": {
+		"build_ms": 74.405,
+		"collision_shapes": 236,
+		"invalid_transforms": 0,
+		"lights": 3,
+		"mesh_triangles": 46552,
+		"meshes": 87,
+		"moth_cache": {
+			"limit": 128,
+			"textures": 11
+		},
+		"multimesh_instances": 240,
+		"multimesh_triangles": 10308,
+		"multimeshes": 9,
+		"nodes": 585,
+		"particle_capacity": 384,
+		"particle_emitters": 3,
+		"shadow_lights": 1
+	},
+	"nodes_after_warmup": 592,
+	"nodes_at_end": 592.0,
+	"rendered_primitives_last_frame": 147979.0,
+	"renderer": "gl_compatibility",
+	"resources_after_warmup": 23,
+	"resources_at_end": 23.0,
+	"target": [
+		0.0,
+		7.30000019073486,
+		-13.0
+	],
+	"video_memory_bytes_reported": 17150579.0,
+	"view": "landing",
+	"warmup_frames": 24,
+	"width": 960
+}

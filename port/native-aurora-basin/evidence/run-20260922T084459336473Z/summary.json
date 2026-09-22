@@ -1,0 +1,33 @@
+{
+  "passed": false,
+  "stage": "validate",
+  "runtime": "/tmp/opencode/aurora-private-al12os67",
+  "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "results": [
+    {
+      "name": "collision",
+      "code": 124,
+      "seconds": 180.007,
+      "errors": [
+        "SCRIPT ERROR: Parse Error: Cannot infer the type of \"p\" variable because the value doesn't have a set type.",
+        "SCRIPT ERROR: Compile Error: Failed to compile depended scripts.",
+        "ERROR: Failed to load script \"res://tests/aurora_basin/validate.gd\" with error \"Compilation failed\".",
+        "SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'."
+      ],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-aurora-map/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/aurora_basin/validate.gd",
+        "--",
+        "--output=/tmp/opencode/cocs-graphics-aurora-map/port/native-aurora-basin/evidence/run-20260922T084459336473Z/collision.json"
+      ]
+    }
+  ]
+}

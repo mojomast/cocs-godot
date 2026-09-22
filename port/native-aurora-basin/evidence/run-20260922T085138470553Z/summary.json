@@ -1,0 +1,49 @@
+{
+  "passed": false,
+  "stage": "validate",
+  "runtime": "/tmp/opencode/aurora-private-amk9lh9f",
+  "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "results": [
+    {
+      "name": "preflight",
+      "code": 0,
+      "seconds": 0.164,
+      "errors": [],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-aurora-map/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--check-only",
+        "--script",
+        "res://tests/aurora_basin/validate.gd"
+      ]
+    },
+    {
+      "name": "collision",
+      "code": 1,
+      "seconds": 22.152,
+      "errors": [
+        "ERROR: AURORA_CHECK crown_west_to_east actual capsule traversal stopped at 26/109 ((-18.19529, 2.460117, -32.26663))"
+      ],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-aurora-map/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/aurora_basin/validate.gd",
+        "--",
+        "--output=/tmp/opencode/cocs-graphics-aurora-map/port/native-aurora-basin/evidence/run-20260922T085138470553Z/collision.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+SCRIPT ERROR: Parse Error: Cannot infer the type of "p" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://aurora_basin/map.gd:284)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://aurora_basin/demo.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/aurora_basin/capture.gd:0)
+ERROR: Failed to load script "res://tests/aurora_basin/capture.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:3041)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _ready (res://aurora_basin/demo.gd:12)
+          GDScript backtrace (most recent call first):
+              [0] _ready (res://aurora_basin/demo.gd:12)
+              [1] run (res://tests/aurora_basin/capture.gd:20)
+SCRIPT ERROR: Cannot call method 'set_physics_process' on a null value.
+          at: run (res://tests/aurora_basin/capture.gd:23)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/aurora_basin/capture.gd:23)

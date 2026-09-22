@@ -1,0 +1,61 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"draw_calls_last_frame": 168.0,
+	"engine": {
+		"build": "official",
+		"hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+		"hex": 263426,
+		"major": 4,
+		"minor": 5,
+		"patch": 2,
+		"status": "stable",
+		"string": "4.5.2-stable (official)",
+		"timestamp": 0
+	},
+	"eye": [
+		84.0,
+		72.0,
+		99.0
+	],
+	"eye_level": false,
+	"frame_ms_mean": 38.1579666666667,
+	"frame_ms_median": 38.141,
+	"frame_ms_p95": 40.932,
+	"frames_measured": 60,
+	"height": 640,
+	"image": "/tmp/opencode/cocs-graphics-aurora-map/port/native-aurora-basin/evidence/run-20260922T084826168436Z/overview-960x640.png",
+	"map": {
+		"build_ms": 70.848,
+		"collision_shapes": 236,
+		"invalid_transforms": 0,
+		"lights": 3,
+		"mesh_triangles": 46552,
+		"meshes": 87,
+		"moth_cache": {
+			"limit": 128,
+			"textures": 11
+		},
+		"multimesh_instances": 240,
+		"multimesh_triangles": 10308,
+		"multimeshes": 9,
+		"nodes": 585,
+		"particle_capacity": 384,
+		"particle_emitters": 3,
+		"shadow_lights": 1
+	},
+	"nodes_after_warmup": 592,
+	"nodes_at_end": 592.0,
+	"rendered_primitives_last_frame": 118012.0,
+	"renderer": "gl_compatibility",
+	"resources_after_warmup": 23,
+	"resources_at_end": 23.0,
+	"target": [
+		0.0,
+		4.0,
+		-3.0
+	],
+	"video_memory_bytes_reported": 16304785.0,
+	"view": "overview",
+	"warmup_frames": 24,
+	"width": 960
+}

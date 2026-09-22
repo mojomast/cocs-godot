@@ -1,0 +1,33 @@
+{
+  "passed": false,
+  "stage": "validate",
+  "runtime": "/tmp/opencode/aurora-private-p32vrp0b",
+  "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "results": [
+    {
+      "name": "collision",
+      "code": 1,
+      "seconds": 11.926,
+      "errors": [
+        "ERROR: AURORA_CHECK landing_to_lake actual capsule support height error 1.139m",
+        "ERROR: AURORA_CHECK lake_circuit actual capsule traversal stopped at 1/145 ((-18.73455, 0.080943, 19.01527))",
+        "ERROR: AURORA_CHECK crown_east_to_west actual capsule traversal stopped at 43/91 ((21.63718, 8.712921, -31.08727))",
+        "ERROR: AURORA_CHECK crown_west_to_east actual capsule traversal stopped at 38/91 ((9.858637, 9.168667, -34.94304))"
+      ],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-aurora-map/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/aurora_basin/validate.gd",
+        "--",
+        "--output=/tmp/opencode/cocs-graphics-aurora-map/port/native-aurora-basin/evidence/run-20260922T084050952549Z/collision.json"
+      ]
+    }
+  ]
+}

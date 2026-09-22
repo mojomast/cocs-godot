@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "stage": "import",
+  "runtime": "/tmp/opencode/aurora-private-62trbioc",
+  "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "results": [
+    {
+      "name": "import",
+      "code": 0,
+      "seconds": 4.122,
+      "errors": [],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/cocs-graphics-aurora-map/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--editor",
+        "--import",
+        "--quit"
+      ]
+    }
+  ]
+}
