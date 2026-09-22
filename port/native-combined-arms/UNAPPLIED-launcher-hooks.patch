@@ -1,0 +1,14 @@
+diff --git a/tools/godot-dev/launch_options.mjs b/tools/godot-dev/launch_options.mjs
+--- a/tools/godot-dev/launch_options.mjs
++++ b/tools/godot-dev/launch_options.mjs
+@@ -2,2 +2,3 @@
+ export const EXPERIENCES = {
++  'combined-arms': {scene:'res://combined_arms/demo.tscn', map:'sunscar-convoy', modes:{'sunscar-convoy':['combined-arms']}},
+   combat: {scene:'res://world/session.tscn', map:'meridian-exchange'},
+diff --git a/tools/godot-package/options.mjs b/tools/godot-package/options.mjs
+--- a/tools/godot-package/options.mjs
++++ b/tools/godot-package/options.mjs
+@@ -2,2 +2,3 @@
+ export const EXPERIENCES = {
++  'combined-arms': {scene:'res://combined_arms/demo.tscn', maps:{'sunscar-convoy':['combined-arms']}},
+   combat: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},

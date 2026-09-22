@@ -1,0 +1,7 @@
+{
+  "evidence": "/tmp/opencode/combined-arms-native-013ad65/port/native-combined-arms/evidence/ab358fc4-493b-40e0-9003-606b041e0392",
+  "classification": "live default-rate server; harness native physical key/mouse events; no human driving claim",
+  "status": "FAIL",
+  "error": "Command '['/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64', '--headless', '--path', '/tmp/opencode/combined-arms-4w3srbd4/godot', '--script', 'res://tests/combined_arms/test_controls.gd']' timed out after 90 seconds",
+  "ownedProcessesReaped": true
+}

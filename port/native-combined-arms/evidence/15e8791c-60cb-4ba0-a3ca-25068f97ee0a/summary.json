@@ -1,0 +1,7 @@
+{
+  "evidence": "/tmp/opencode/combined-arms-native-013ad65/port/native-combined-arms/evidence/15e8791c-60cb-4ba0-a3ca-25068f97ee0a",
+  "classification": "live default-rate server; harness native physical key/mouse events; no human driving claim",
+  "status": "FAIL",
+  "error": "missing brake tap",
+  "ownedProcessesReaped": true
+}

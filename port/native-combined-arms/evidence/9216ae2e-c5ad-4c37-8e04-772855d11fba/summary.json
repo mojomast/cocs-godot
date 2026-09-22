@@ -1,0 +1,17 @@
+{
+  "evidence": "/tmp/opencode/combined-arms-native-013ad65/port/native-combined-arms/evidence/9216ae2e-c5ad-4c37-8e04-772855d11fba",
+  "classification": "live default-rate server; harness native physical key/mouse events; no human driving claim",
+  "acceptance": {
+    "exactSnapshotCorrelations": 393,
+    "receivedInputs": 324,
+    "queuedInputs": 324,
+    "interactReceipts": 2,
+    "maxVehicleDisplacementMetres": 26.833,
+    "freshInfantryMetres": 3.2620000000000005,
+    "ACKNeutralSamples": 70,
+    "seconds": 15.0799385555556
+  },
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}

@@ -1,0 +1,5 @@
+{
+  "classification": "standalone play.py scene startup/cleanup only; no driving input",
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}

@@ -1,0 +1,7 @@
+{
+  "evidence": "/tmp/opencode/combined-arms-native-013ad65/port/native-combined-arms/evidence/ba75ab6f-d377-40b9-8d75-0228daea2673",
+  "classification": "live default-rate server; harness native physical key/mouse events; no human driving claim",
+  "status": "FAIL",
+  "error": "controls failed; inspect retained log",
+  "ownedProcessesReaped": true
+}
