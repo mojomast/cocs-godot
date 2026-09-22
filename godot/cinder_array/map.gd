@@ -380,6 +380,32 @@ func _deck_contains(point: Vector3) -> bool:
 		if Geometry2D.is_point_in_polygon(Vector2(point.x, point.z), flat): return true
 	return false
 
+func _connection_collision(profile: Array[Vector3], side: Vector3) -> void:
+	for section in range(profile.size() - 1):
+		var from := profile[section]
+		var to := profile[section + 1]
+		var level := is_equal_approx(from.y, to.y)
+		# The upper landing belongs to the same convex solid as the incline.
+		# Separate overlapping solids expose an internal end face at the crest:
+		# capsule recovery can push against it while the incline reports a floor.
+		if level:
+			if section > 0 and profile[section - 1].y < from.y: continue
+			if section + 2 < profile.size() and profile[section + 2].y < to.y: continue
+		var overlap := (to - from).normalized() * 0.015
+		var start := from - overlap
+		var end := to + overlap
+		if from.y > to.y: start = from
+		if to.y > from.y: end = to
+		var vertices := PackedVector3Array([start - side, start + side, end + side, end - side])
+		if from.y > to.y and section > 0:
+			var upper := profile[section - 1] + (profile[section - 1] - from).normalized() * 0.015
+			vertices.append_array(PackedVector3Array([upper - side, upper + side]))
+		if to.y > from.y and section + 2 < profile.size():
+			var upper := profile[section + 2] + (profile[section + 2] - to).normalized() * 0.015
+			vertices.append_array(PackedVector3Array([upper - side, upper + side]))
+		for vertex in vertices.duplicate(): vertices.append(vertex - Vector3.UP * 0.6)
+		geo.convex(vertices)
+
 func _decks_and_route() -> void:
 	_platform("TransferDeck", Vector3(-27, 7, 25), Vector2(18, 14), 3.0)
 	_platform("ExtractorDeck", Vector3(22, 12, -6), Vector2(20, 21), 2.5)
@@ -395,18 +421,13 @@ func _decks_and_route() -> void:
 		var horizontal := Vector2(delta.x, delta.z).length()
 		var profile := _profile(connection)
 		connection.profile = profile
+		_connection_collision(profile, side)
 		for section in range(profile.size() - 1):
 			var from := profile[section]
 			var to := profile[section + 1]
 			var polygon := PackedVector3Array([from - side, from + side, to + side, to - side])
 			var label: String = connection.name + str(section)
 			geo.prism(label, polygon, 0.6, materials.deck, false)
-			# Centimetre-scale collision overlap closes exact floating-point ray seams.
-			# Visible top polygons remain abutting so there is no depth fighting.
-			var overlap := (to - from).normalized() * 0.015
-			var floor_vertices := PackedVector3Array([from - side - overlap, from + side - overlap, to + side + overlap, to - side + overlap])
-			for vertex in floor_vertices.duplicate(): floor_vertices.append(vertex - Vector3.UP * 0.6)
-			geo.convex(floor_vertices)
 			var flat_length := Vector2(to.x - from.x, to.z - from.z).length()
 			walk_surfaces.append({"name": label, "polygon": polygon, "slope": rad_to_deg(atan2(absf(to.y - from.y), flat_length)), "platform": false})
 			for sign_value in [-1.0, 1.0]:

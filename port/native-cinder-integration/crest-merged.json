@@ -1,0 +1,132 @@
+{
+	"assertions": 1246,
+	"boundary_cases": 4,
+	"connections": [
+		{
+			"a": "(-21.0, 7.0, 21.0)",
+			"b": "(14.0, 12.0, 0.0)",
+			"name": "SuspendedSpan",
+			"profile": [
+				"(-21.0, 7.0, 21.0)",
+				"(-18.9, 7.0, 19.74)",
+				"(11.9, 12.0, 1.26)",
+				"(14.0, 12.0, 0.0)"
+			],
+			"width": 5.2
+		},
+		{
+			"a": "(26.0, 12.0, -14.0)",
+			"b": "(26.0, 12.0, -29.0)",
+			"name": "ExtractorAccess",
+			"profile": [
+				"(26.0, 12.0, -14.0)",
+				"(26.0, 12.0, -29.0)"
+			],
+			"width": 5.4
+		},
+		{
+			"a": "(26.0, 12.0, -31.0)",
+			"b": "(-8.0, 12.0, -31.0)",
+			"name": "BoreFloor",
+			"profile": [
+				"(26.0, 12.0, -31.0)",
+				"(-8.0, 12.0, -31.0)"
+			],
+			"width": 7.0
+		},
+		{
+			"a": "(-7.0, 12.0, -31.0)",
+			"b": "(-23.0, 16.0, -28.0)",
+			"name": "RimAscent",
+			"profile": [
+				"(-7.0, 12.0, -31.0)",
+				"(-12.92, 12.0, -29.89)",
+				"(-20.44, 16.0, -28.48)",
+				"(-23.0, 16.0, -28.0)"
+			],
+			"width": 5.4
+		},
+		{
+			"a": "(-35.0, 16.0, -21.0)",
+			"b": "(-41.0, 12.0, -6.0)",
+			"name": "WestDescent",
+			"profile": [
+				"(-35.0, 16.0, -21.0)",
+				"(-35.6, 16.0, -19.5)",
+				"(-39.14, 12.0, -10.65)",
+				"(-41.0, 12.0, -6.0)"
+			],
+			"width": 5.4
+		},
+		{
+			"a": "(-40.0, 12.0, -1.0)",
+			"b": "(-31.0, 7.0, 22.0)",
+			"name": "ReturnRamp",
+			"profile": [
+				"(-40.0, 12.0, -1.0)",
+				"(-39.28, 12.0, 0.84)",
+				"(-32.62, 7.0, 17.86)",
+				"(-31.0, 7.0, 22.0)"
+			],
+			"width": 5.4
+		}
+	],
+	"controller": {
+		"capsule_height": 1.79999995231628,
+		"capsule_radius": 0.349999994039536,
+		"entry_point": "step",
+		"floor_constant_speed": false,
+		"floor_snap_length": 0.300000011920929,
+		"safe_margin": 0.0199999995529652,
+		"script": "res://exploration/walker.gd"
+	},
+	"diagnostics": {
+		"areas": 6,
+		"authored_triangles": 23474,
+		"built": true,
+		"collision_shapes": 99,
+		"embers": 48,
+		"experience": "cinder-array",
+		"instanced_solids": 1180,
+		"lights": 4,
+		"mesh_nodes": 91,
+		"native_only": true,
+		"nodes": 212,
+		"renderer": "gl_compatibility",
+		"respawns": 4,
+		"route_points": 16,
+		"steam": 16
+	},
+	"failures": [],
+	"floor_probes": 342,
+	"godot": "4.5.2-stable (official)",
+	"max_ramp_degrees": 27.6007699367574,
+	"traversals": [
+		{
+			"controller_resets": 0,
+			"direction": "forward",
+			"off_floor_frames": 0,
+			"physics_frames": 2022,
+			"reached": 16,
+			"speed_m_s": 6.0,
+			"stalled_contacts": {
+
+			},
+			"waypoints": 16,
+			"worst_waypoint_height_error": 0.0189476013183594
+		},
+		{
+			"controller_resets": 0,
+			"direction": "reverse-sprint",
+			"off_floor_frames": 0,
+			"physics_frames": 1216,
+			"reached": 16,
+			"speed_m_s": 10.0,
+			"stalled_contacts": {
+
+			},
+			"waypoints": 16,
+			"worst_waypoint_height_error": 0.0187835693359375
+		}
+	]
+}

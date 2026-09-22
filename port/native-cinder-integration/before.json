@@ -1,0 +1,165 @@
+{
+	"assertions": 1202,
+	"boundary_cases": 4,
+	"connections": [
+		{
+			"a": "(-21.0, 7.0, 21.0)",
+			"b": "(14.0, 12.0, 0.0)",
+			"name": "SuspendedSpan",
+			"profile": [
+				"(-21.0, 7.0, 21.0)",
+				"(-18.9, 7.0, 19.74)",
+				"(11.9, 12.0, 1.26)",
+				"(14.0, 12.0, 0.0)"
+			],
+			"width": 5.2
+		},
+		{
+			"a": "(26.0, 12.0, -14.0)",
+			"b": "(26.0, 12.0, -29.0)",
+			"name": "ExtractorAccess",
+			"profile": [
+				"(26.0, 12.0, -14.0)",
+				"(26.0, 12.0, -29.0)"
+			],
+			"width": 5.4
+		},
+		{
+			"a": "(26.0, 12.0, -31.0)",
+			"b": "(-8.0, 12.0, -31.0)",
+			"name": "BoreFloor",
+			"profile": [
+				"(26.0, 12.0, -31.0)",
+				"(-8.0, 12.0, -31.0)"
+			],
+			"width": 7.0
+		},
+		{
+			"a": "(-7.0, 12.0, -31.0)",
+			"b": "(-23.0, 16.0, -28.0)",
+			"name": "RimAscent",
+			"profile": [
+				"(-7.0, 12.0, -31.0)",
+				"(-12.92, 12.0, -29.89)",
+				"(-20.44, 16.0, -28.48)",
+				"(-23.0, 16.0, -28.0)"
+			],
+			"width": 5.4
+		},
+		{
+			"a": "(-35.0, 16.0, -21.0)",
+			"b": "(-41.0, 12.0, -6.0)",
+			"name": "WestDescent",
+			"profile": [
+				"(-35.0, 16.0, -21.0)",
+				"(-35.6, 16.0, -19.5)",
+				"(-39.14, 12.0, -10.65)",
+				"(-41.0, 12.0, -6.0)"
+			],
+			"width": 5.4
+		},
+		{
+			"a": "(-40.0, 12.0, -1.0)",
+			"b": "(-31.0, 7.0, 22.0)",
+			"name": "ReturnRamp",
+			"profile": [
+				"(-40.0, 12.0, -1.0)",
+				"(-39.28, 12.0, 0.84)",
+				"(-32.62, 7.0, 17.86)",
+				"(-31.0, 7.0, 22.0)"
+			],
+			"width": 5.4
+		}
+	],
+	"controller": {
+		"capsule_height": 1.79999995231628,
+		"capsule_radius": 0.349999994039536,
+		"entry_point": "step",
+		"floor_constant_speed": false,
+		"floor_snap_length": 0.300000011920929,
+		"safe_margin": 0.0199999995529652,
+		"script": "res://exploration/walker.gd"
+	},
+	"diagnostics": {
+		"areas": 6,
+		"authored_triangles": 23474,
+		"built": true,
+		"collision_shapes": 103,
+		"embers": 48,
+		"experience": "cinder-array",
+		"instanced_solids": 1180,
+		"lights": 4,
+		"mesh_nodes": 91,
+		"native_only": true,
+		"nodes": 216,
+		"renderer": "gl_compatibility",
+		"respawns": 4,
+		"route_points": 16,
+		"steam": 16
+	},
+	"failures": [
+		"forward physically reached (-23.0, 16.0, -28.0) actual=(-20.12536, 15.89261, -28.52951)",
+		"forward entire connected loop traversed",
+		"reverse-sprint physically reached (-24.0, 7.0, 28.0) actual=(-20.22429, 16.00088, -26.22664)",
+		"reverse-sprint entire connected loop traversed"
+	],
+	"floor_probes": 342,
+	"godot": "4.5.2-stable (official)",
+	"max_ramp_degrees": 27.6007699367574,
+	"traversals": [
+		{
+			"controller_resets": 0,
+			"direction": "forward",
+			"off_floor_frames": 0,
+			"physics_frames": 2359,
+			"reached": 9,
+			"speed_m_s": 6.0,
+			"stalled_contacts": {
+				"contacts": [
+					{
+						"collider": "/root/CinderArrayMap/WalkableCollision",
+						"depth": 0.0203248355537653,
+						"normal": "(0.455411, 0.886171, -0.085449)",
+						"position": "(-20.32115, 15.93787, -28.49294)",
+						"shape_index": 65,
+						"shape_points": "[(-12.40936, 11.99305, -27.23869), (-13.40451, 11.99305, -32.5462), (-20.95064, 16.00695, -31.13131), (-19.95548, 16.00695, -25.8238), (-12.40936, 11.39305, -27.23869), (-13.40451, 11.39305, -32.5462), (-20.95064, 15.40695, -31.13131), (-19.95548, 15.40695, -25.8238)]",
+						"shape_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, 0.0, 0.0)]"
+					}
+				],
+				"feet": "(-20.12536, 15.89261, -28.52951)",
+				"floor_normal": "(0.455411, 0.886171, -0.085449)",
+				"last_motion": "(-0.036161, 0.0, 0.006661)",
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			"waypoints": 16,
+			"worst_waypoint_height_error": 0.0188941955566406
+		},
+		{
+			"controller_resets": 0,
+			"direction": "reverse-sprint",
+			"off_floor_frames": 0,
+			"physics_frames": 1200,
+			"reached": 0,
+			"speed_m_s": 10.0,
+			"stalled_contacts": {
+				"contacts": [
+					{
+						"collider": "/root/CinderArrayMap/WalkableCollision",
+						"depth": 0.0208416376262903,
+						"normal": "(-0.184265, 0.0, -0.982877)",
+						"position": "(-20.16471, 17.28, -25.88122)",
+						"shape_index": 69,
+						"shape_points": "[(-19.92491, 16.0, -25.73287), (-19.95993, 16.0, -25.91962), (-20.56491, 16.0, -25.61287), (-20.59993, 16.0, -25.79962), (-19.92491, 17.28, -25.73287), (-19.95993, 17.28, -25.91962), (-20.56491, 17.28, -25.61287), (-20.59993, 17.28, -25.79962)]",
+						"shape_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, 0.0, 0.0)]"
+					}
+				],
+				"feet": "(-20.22429, 16.00088, -26.22664)",
+				"floor_normal": "(0.0, 1.0, 0.0)",
+				"last_motion": "(-0.00011, 0.0, 0.001585)",
+				"velocity": "(0.0, 0.0, 0.0)"
+			},
+			"waypoints": 16,
+			"worst_waypoint_height_error": 0.0
+		}
+	]
+}

@@ -1,0 +1,27 @@
+{
+  "godot_binary": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "godot_version": "4.5.2.stable.official.6ce3de25a",
+  "baseline_map_git_blob": "f76a745ea29a312111bbe993b6b6845346ff9475",
+  "baseline_map_sha256": "541affd9f84b243b32c58cea61fc1bc98d4d10837a2087e4ff28ae6649911a77",
+  "sha256": {
+    "godot/cinder_array/map.gd": "6f1bf7133631db226a58e3a729132ba7379e1699d1a8b6224cc2a41c46b708cd",
+    "godot/tests/cinder_array/verify.gd": "ba6c79b974d887b490bddb346a855b0a1ceea3c9e5690746b789427c726c9716",
+    "godot/exploration/walker.gd": "c436fcc6882156e09c356582b3561b39ad05a0919985fa71292e2f5260149f49",
+    "port/graphics-batch/evidence/expanded-preflight/cinder-production-physics.json": "4195cef8191ef8a782fe2f43f7e89c1286bc4fd46ac50aabb8c636d206083238",
+    "port/graphics-batch/evidence/expanded-preflight/cinder-production-physics.log": "3d2b543a356d85c815c70342cfa144f64049e70b0473bcff3a7016a0036af921"
+  },
+  "verification": {
+    "verified.json": {"fixed_fps": 60, "exit_code": 0},
+    "verified-realtime.json": {"fixed_fps": null, "exit_code": 0},
+    "before.json": {"fixed_fps": 60, "exit_code": 1},
+    "crest-merged.json": {"fixed_fps": 60, "exit_code": 0}
+  },
+  "captures": {
+    "display": "Xvfb",
+    "renderer": "gl_compatibility",
+    "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+    "before_exit_code": 0,
+    "after_exit_code": 0,
+    "interactive_traversal": false
+  }
+}
