@@ -331,6 +331,17 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
     F9/F10 quality and lifecycle drains.
   - Hard rule for both: existing gates stay green, no unverified commits, and each
     reports what it left out rather than trading correctness for scope.
+- **Third-person weapon detail landed** (`11b7bb5f`, `52eb21b0`): all ten world weapons
+  carry the shared six-channel identity vocabulary — 6,240 → 19,640 triangles across the
+  set, 20 → 40 draws, 220 KB → 928 KB, bounded at 4 batches each (roster cost +64 draws,
+  ~+3.9 %). Verified: **0.0 m anchor drift**, pinned-anchor gate 1e-4, 450 grip fixture
+  cases at 3.77e-7 m unchanged, exact hand-clearance analysis with **0 triangle contacts**,
+  byte-identical re-export, and a live 4-bot session at both resolutions with grips
+  attached and clean results/restart. One divergence reported rather than hidden: the
+  rocket launcher's foregrip channel is answered with a flush handguard because the fixed
+  left palm presses flat on the receiver face and a protruding grip would break the
+  zero-intersection gate. Two evidence refreshes the lane left outside its ownership were
+  committed by lead (`3cd4bafa`).
 - Owner asked to add detail polygons to the weapons and make the ten weapons
   visually distinct. Two coordinated pre-release lanes: **first-person weapon detail**
   (owns `tools/godot-weapons/**`, `godot/first_person/**`, `godot/tests/first_person/**`,
