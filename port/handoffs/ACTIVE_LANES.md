@@ -381,6 +381,31 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
   rendered cases on real map geometry at both sizes showing 19–29 wall marks per death and
   **0 changed pixels / 0 marks on the far face** in every case. No composition re-wiring
   needed; F10 gained wall/floor/slope and skip-reason counters.
+- **Tier 1/2 push (owner request: do 1–4 together, plus 5 and 6 where possible).**
+  Five parallel lanes launched with disjoint ownership, lead retains all launcher and
+  package routing:
+  - **Domination on Vermilion Fold** — owns `godot/zone_modes/**`, `tests/zone_modes/**`,
+    new `port/native-identity-zones/**` and a separate `identity_zone_demo` scene; must
+    deliver a source-backed domination authority using the validated `objectiveZones` and
+    `teamSpawns`, real capture/contest/loss/restart acceptance, spawn-to-zone travel
+    timings and rendered evidence.
+  - **Horde on Nacre Engine** — owns `port/native-horde/**`, `godot/horde/{demo,model,
+    client,controls}.gd`, `tests/horde/**`, new `port/native-identity-horde/**` and a
+    separate `identity_horde_demo` scene; reviewed static map/factory hook under the
+    loopback/epoch/single-human contract, plus wave/defeat/restart and peak-load
+    acceptance. Boss/endless must be declared open if unproven.
+  - **UI polish** — owns `godot/ui/**`, `godot/horde/scoreboard.gd`, named protocol UI
+    tests and `port/native-ui-polish/**`; fixes the setup-popup obstruction, the Horde
+    compact scoreboard overlap, the misleading player-count label and the oversized
+    result pickup captions, each with rendered before/after evidence.
+  - **Release pipeline** — owns new `tools/release/**` and `tools/godot-package/**`;
+    `release.mjs` dry-run by default, `--execute` for side effects, `--resume-from`, step
+    logs and refusals for dirty trees/existing tags; must not modify `verify.py`.
+  - **Benchmark + presets** — owns new `godot/benchmark/**`, `tests/benchmark/**`,
+    `port/native-benchmark/**` and `godot/world/combat_quality.gd`; bounded in-game
+    benchmark printing `BENCHMARK_RESULT`, recommended quality presets and a Windows
+    run sheet so the owner can measure real hardware.
+  - Owner-facing playtest checklist written: `port/combat-expansion/PLAYTEST_2026-09-22.md`.
 - Owner asked for massive particle blood spurts on hits and a messy death splatter
   that stains surroundings. **Blood/fluid FX lane** owns NEW `godot/blood_fx/**`,
   `godot/tests/blood_fx/**`, `port/native-blood-fx/**` and must not touch the
