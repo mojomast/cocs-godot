@@ -1,0 +1,151 @@
+{
+  "passed": false,
+  "platform": "Linux X11 llvmpipe",
+  "normal_rate": true,
+  "state_injection": false,
+  "checks": [
+    {
+      "name": "clean production session and unload",
+      "passed": false,
+      "returncode": 1,
+      "completion": false,
+      "script_errors": false,
+      "engine_errors": false
+    },
+    {
+      "name": "at least two remote authority actors",
+      "passed": false,
+      "remote": [],
+      "actor_count": 0
+    },
+    {
+      "name": "at least two remotes walked",
+      "passed": false,
+      "walking": []
+    },
+    {
+      "name": "at least two remotes fired",
+      "passed": false,
+      "firing": [],
+      "shots": 0
+    },
+    {
+      "name": "a remote reloaded",
+      "passed": false,
+      "reloading": []
+    },
+    {
+      "name": "snapshot stream and interpolated remote poses",
+      "passed": false,
+      "snapshots": 0,
+      "rendered_remote_poses": 0
+    },
+    {
+      "name": "presentation renders the source operator visual",
+      "passed": false,
+      "script": ""
+    },
+    {
+      "name": "world weapons mount and hide the built-in pulse",
+      "passed": true,
+      "weapons": []
+    },
+    {
+      "name": "post-pose grips track the chassis contacts",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "name": "round results observed",
+      "passed": false,
+      "results": {}
+    },
+    {
+      "name": "restart boundary rebuilt the round",
+      "passed": false,
+      "restarts": {}
+    },
+    {
+      "name": "capture actors-960x640",
+      "passed": false,
+      "size": null
+    },
+    {
+      "name": "capture actors-1280x800",
+      "passed": false,
+      "size": null
+    },
+    {
+      "name": "capture restart-1280x800",
+      "passed": false,
+      "size": null
+    },
+    {
+      "name": "two viewport resolutions rendered",
+      "passed": false
+    },
+    {
+      "name": "observer recorded no transport errors",
+      "passed": true,
+      "errors": []
+    }
+  ],
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "/tmp/opencode/source-operators-live-jhof1iz5/godot",
+    "--script",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/tools/godot-operators/live_observe.gd",
+    "--display-driver",
+    "x11",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "960x640",
+    "--position",
+    "0,0",
+    "--",
+    "--endpoint=ws://127.0.0.1:40685",
+    "--map=meridian-exchange",
+    "--mode=deathmatch",
+    "--join-room=local",
+    "--mute"
+  ],
+  "report": {
+    "actor_count": 0,
+    "applied": 0,
+    "captures": [],
+    "elapsed": 150.02323,
+    "errors": [],
+    "grip_max_error": 0.0,
+    "hud_text": "Waiting for authoritative snapshot",
+    "outcome": "watchdog",
+    "phase": -1,
+    "remote_firing": [],
+    "remote_ids": [],
+    "remote_max_shots": 0,
+    "remote_reloading": [],
+    "remote_walking": [],
+    "remote_weapons": [],
+    "rendered_remote_poses": 0,
+    "restarts": {},
+    "results": {},
+    "snapshots": 0,
+    "visual_lods": [],
+    "visual_pulse_hidden_all_match": true,
+    "visual_script": "",
+    "visual_scripts_all_match": true,
+    "visual_weapon_matches_all_match": true,
+    "visual_world_weapons_all_match": true
+  },
+  "cleanup": {
+    "client": 1,
+    "authority": 0,
+    "display": 0,
+    "peers": [
+      0
+    ]
+  }
+}

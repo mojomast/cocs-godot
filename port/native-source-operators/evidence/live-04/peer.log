@@ -1,0 +1,27 @@
+PEER_READY room=local peer=1 host=true
+PEER_GUEST_SEEN 2
+PEER_START_SENT
+PEER_STATE t=0 reloading=false ammo=∞ shots=0 x=36.0 z=4.0
+PEER_STATE t=5 reloading=false ammo=∞ shots=0 x=36.0 z=4.0
+PEER_STATE t=10 reloading=false ammo=∞ shots=0 x=38.4 z=5.1
+PEER_STATE t=16 reloading=false ammo=∞ shots=0 x=38.4 z=5.1
+PEER_STATE t=21 reloading=false ammo=∞ shots=0 x=38.4 z=5.1
+PEER_STATE t=26 reloading=false ammo=∞ shots=0 x=8.0 z=34.0
+PEER_STATE t=31 reloading=false ammo=∞ shots=0 x=8.0 z=34.0
+PEER_STATE t=36 reloading=false ammo=∞ shots=0 x=8.0 z=34.0
+PEER_STATE t=42 reloading=false ammo=∞ shots=0 x=8.0 z=34.0
+PEER_STATE t=47 reloading=false ammo=∞ shots=0 x=8.0 z=34.0
+PEER_STATE t=52 reloading=false ammo=∞ shots=0 x=8.0 z=34.0
+PEER_STATE t=57 reloading=false ammo=∞ shots=0 x=8.0 z=34.0
+PEER_RESTART_SENT
+PEER_STATE t=2 reloading=false ammo=∞ shots=0 x=44.0 z=-8.0
+PEER_STATE t=7 reloading=false ammo=∞ shots=0 x=44.0 z=-8.0
+PEER_STATE t=12 reloading=false ammo=∞ shots=0 x=44.0 z=-8.0
+PEER_STATE t=18 reloading=false ammo=∞ shots=0 x=44.0 z=-8.0
+PEER_STATE t=23 reloading=false ammo=∞ shots=0 x=44.0 z=-8.0
+PEER_STATE t=28 reloading=false ammo=∞ shots=0 x=44.0 z=-8.0
+PEER_STATE t=33 reloading=false ammo=∞ shots=0 x=44.0 z=-8.0
+PEER_STATE t=38 reloading=false ammo=∞ shots=0 x=44.0 z=-8.0
+PEER_STATE t=44 reloading=false ammo=∞ shots=0 x=44.0 z=-8.0
+PEER_STATE t=49 reloading=false ammo=∞ shots=0 x=44.0 z=-8.0
+PEER_EXIT

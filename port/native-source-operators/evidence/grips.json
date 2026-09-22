@@ -1,0 +1,10 @@
+{
+	"cases": 450,
+	"failures": [],
+	"maximumClampExcess": 0.000000359871535238199,
+	"maximumGripWorldError": 0.000000376696675630228,
+	"maximumJointError": 0.00000093196312234145,
+	"maximumReportedContactError": 0.000000259917442235746,
+	"passed": true,
+	"weapons": 10
+}

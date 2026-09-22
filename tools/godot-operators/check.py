@@ -20,6 +20,10 @@ with tempfile.TemporaryDirectory(prefix='source-operators-', dir='/tmp/opencode'
     # ~20MB owned source assets only, no repo copies or shared .godot cache.
     for path in ['source_operators', 'tests/source_operators']:
         shutil.copytree(ROOT / 'godot' / path, tmp / path)
+    # Read-only host presentation dependencies for the integration test.
+    (tmp / 'world').mkdir()
+    for name in ['presentation.gd','remote_motion.gd','local_lifecycle.gd']:
+        shutil.copy2(ROOT / 'godot/world' / name, tmp / 'world' / name)
     (tmp / 'project.godot').write_text('''config_version=5
 [application]
 config/name="Source Operators Proof"
@@ -40,11 +44,14 @@ renderer/rendering_method.mobile="gl_compatibility"
     base = [str(GODOT), '--path', str(tmp)]
     run(base + ['--headless', '--editor', '--import'], 'import.log')
     # Prevent Godot generating additional, non-source LODs or lossy compression.
-    for file in (tmp / 'source_operators/generated').glob('*.glb.import'):
+    for file in (tmp / 'source_operators/generated').rglob('*.glb.import'):
         data = file.read_text().replace('meshes/generate_lods=true','meshes/generate_lods=false').replace('meshes/force_disable_compression=false','meshes/force_disable_compression=true')
         file.write_text(data)
-        shutil.copy2(file, ROOT / 'godot/source_operators/generated' / file.name)
+        shutil.copy2(file, ROOT / 'godot/source_operators/generated' / file.relative_to(tmp / 'source_operators/generated'))
     run(base + ['--headless', '--editor', '--import'], 'import-authored-lods.log')
     run(base + ['--headless', '--script', 'tests/source_operators/check.gd'], 'check.log')
+    run(base + ['--headless', '--script', 'tests/source_operators/weapons.gd'], 'weapons.log')
+    run(base + ['--headless', '--script', 'tests/source_operators/grips.gd'], 'grips.log')
+    run(base + ['--headless', '--script', 'tests/source_operators/presentation.gd'], 'presentation.log')
     if args.render:
         run(['xvfb-run', '-a'] + base + ['--audio-driver','Dummy','--rendering-method','gl_compatibility','--script','tests/source_operators/render.gd'], 'render.log')

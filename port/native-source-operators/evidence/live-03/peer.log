@@ -1,0 +1,2 @@
+PEER_READY room=local peer=1 host=true
+PEER_EXIT

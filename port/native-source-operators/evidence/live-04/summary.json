@@ -1,0 +1,263 @@
+{
+  "passed": false,
+  "platform": "Linux X11 llvmpipe",
+  "normal_rate": true,
+  "state_injection": false,
+  "checks": [
+    {
+      "name": "clean production session and unload",
+      "passed": false,
+      "returncode": 1,
+      "completion": false,
+      "script_errors": false,
+      "engine_errors": false
+    },
+    {
+      "name": "at least two remote authority actors",
+      "passed": true,
+      "remote": [
+        0,
+        2,
+        3
+      ],
+      "actor_count": 4
+    },
+    {
+      "name": "at least two remotes walked",
+      "passed": true,
+      "walking": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "at least two remotes fired",
+      "passed": true,
+      "firing": [
+        0,
+        3,
+        2
+      ],
+      "shots": 512
+    },
+    {
+      "name": "a remote reloaded",
+      "passed": false,
+      "reloading": []
+    },
+    {
+      "name": "snapshot stream and interpolated remote poses",
+      "passed": true,
+      "snapshots": 3600,
+      "rendered_remote_poses": 1962
+    },
+    {
+      "name": "presentation renders the source operator visual",
+      "passed": true,
+      "script": "res://source_operators/operator_visual.gd"
+    },
+    {
+      "name": "world weapons mount and hide the built-in pulse",
+      "passed": true,
+      "weapons": [
+        0,
+        5,
+        2,
+        4,
+        7
+      ]
+    },
+    {
+      "name": "post-pose grips track the chassis contacts",
+      "passed": true,
+      "max_error": 1.21622688311618e-05
+    },
+    {
+      "name": "round results observed",
+      "passed": true,
+      "results": {
+        "actors": 4,
+        "count": 2,
+        "lifecycle": "results",
+        "over": true,
+        "phase": 4
+      }
+    },
+    {
+      "name": "restart boundary rebuilt the round",
+      "passed": true,
+      "restarts": {
+        "actors": 0,
+        "count": 1,
+        "phase": 3
+      }
+    },
+    {
+      "name": "capture actors-960x640",
+      "passed": true,
+      "size": [
+        960,
+        640
+      ]
+    },
+    {
+      "name": "capture actors-1280x800",
+      "passed": true,
+      "size": [
+        1280,
+        800
+      ]
+    },
+    {
+      "name": "capture restart-1280x800",
+      "passed": false,
+      "size": null
+    },
+    {
+      "name": "two viewport resolutions rendered",
+      "passed": false
+    },
+    {
+      "name": "observer recorded no transport errors",
+      "passed": true,
+      "errors": []
+    }
+  ],
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "/tmp/opencode/source-operators-live-dt26hf5z/godot",
+    "--script",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/tools/godot-operators/live_observe.gd",
+    "--display-driver",
+    "x11",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "960x640",
+    "--position",
+    "0,0",
+    "--",
+    "--endpoint=ws://127.0.0.1:44665",
+    "--map=meridian-exchange",
+    "--join-room=local",
+    "--mute"
+  ],
+  "report": {
+    "actor_count": 4,
+    "applied": 1801,
+    "captures": [
+      {
+        "camera": [
+          36.0,
+          1.45000004768372,
+          4.0
+        ],
+        "camera_yaw": 2.85502958297729,
+        "name": "actors-960x640",
+        "remote": [
+          0,
+          2,
+          3
+        ],
+        "size": [
+          960,
+          640
+        ],
+        "viewport": [
+          960,
+          640
+        ]
+      },
+      {
+        "camera": [
+          36.0,
+          1.45000004768372,
+          4.0
+        ],
+        "camera_yaw": 2.84791326522827,
+        "name": "actors-1280x800",
+        "remote": [
+          0,
+          2,
+          3
+        ],
+        "size": [
+          1280,
+          800
+        ],
+        "viewport": [
+          1280,
+          800
+        ]
+      }
+    ],
+    "elapsed": 150.116699,
+    "errors": [],
+    "grip_max_error": 1.21622688311618e-05,
+    "hud_text": "Meridian Exchange | HP 100.0 | Armor 5.0 | Weapon 0 | Ammo \u221e\nFrags 0.0 \u00b7 Deaths 0.0 | RESULTS",
+    "label_text": "Meridian Exchange | HP 100.0 | Armor 5.0 | Weapon 0 | Ammo \u221e\nFrags 0.0 \u00b7 Deaths 0.0 | RESULTS\nWaiting for host to restart",
+    "outcome": "watchdog",
+    "phase": 4,
+    "remote_firing": [
+      0,
+      3,
+      2
+    ],
+    "remote_ids": [
+      0,
+      2,
+      3
+    ],
+    "remote_max_shots": 512,
+    "remote_reloading": [],
+    "remote_walking": [
+      0,
+      2,
+      3
+    ],
+    "remote_weapons": [
+      0,
+      5,
+      2,
+      4,
+      7
+    ],
+    "rendered_remote_poses": 1962,
+    "restarts": {
+      "actors": 0,
+      "count": 1,
+      "phase": 3
+    },
+    "results": {
+      "actors": 4,
+      "count": 2,
+      "lifecycle": "results",
+      "over": true,
+      "phase": 4
+    },
+    "snapshots": 3600,
+    "spectating": false,
+    "visual_lods": [
+      2,
+      2,
+      2
+    ],
+    "visual_pulse_hidden_all_match": true,
+    "visual_script": "res://source_operators/operator_visual.gd",
+    "visual_scripts_all_match": true,
+    "visual_weapon_matches_all_match": true,
+    "visual_world_weapons_all_match": true
+  },
+  "cleanup": {
+    "client": 1,
+    "authority": 0,
+    "display": 0,
+    "peers": [
+      0
+    ]
+  }
+}

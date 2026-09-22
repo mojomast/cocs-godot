@@ -1,0 +1,16 @@
+PEER_READY role=host room=local peer=1 host=true
+PEER_GUESTS_SEEN 2,3
+PEER_START_SENT
+PEER_STATE role=host id=0 t=0 reloading=false ammo=6 shots=0 x=44.0 z=34.0
+PEER_STATE role=host id=0 t=5 reloading=false ammo=0 shots=6 x=37.3 z=18.9
+PEER_STATE role=host id=0 t=10 reloading=true ammo=3 shots=9 x=37.6 z=21.9
+PEER_STATE role=host id=0 t=16 reloading=false ammo=4 shots=14 x=47.1 z=19.9
+PEER_STATE role=host id=0 t=21 reloading=false ammo=4 shots=18 x=13.5 z=-44.0
+PEER_STATE role=host id=0 t=26 reloading=true ammo=0 shots=22 x=1.0 z=-26.9
+PEER_STATE role=host id=0 t=31 reloading=false ammo=0 shots=28 x=6.3 z=-32.3
+PEER_STATE role=host id=0 t=36 reloading=false ammo=3 shots=31 x=17.1 z=-12.5
+PEER_STATE role=host id=0 t=42 reloading=false ammo=5 shots=35 x=7.5 z=-32.1
+PEER_STATE role=host id=0 t=47 reloading=true ammo=0 shots=40 x=3.6 z=-15.8
+PEER_STATE role=host id=0 t=52 reloading=false ammo=2 shots=44 x=14.2 z=-32.0
+PEER_STATE role=host id=0 t=57 reloading=false ammo=4 shots=48 x=15.1 z=-30.7
+PEER_RESTART_SENT

@@ -1,0 +1,106 @@
+{
+	"actor_count": 4,
+	"applied": 1801,
+	"captures": [
+		{
+			"camera": [
+				36.0,
+				1.45000004768372,
+				4.0
+			],
+			"camera_yaw": 2.85502958297729,
+			"name": "actors-960x640",
+			"remote": [
+				0,
+				2,
+				3
+			],
+			"size": [
+				960,
+				640
+			],
+			"viewport": [
+				960,
+				640
+			]
+		},
+		{
+			"camera": [
+				36.0,
+				1.45000004768372,
+				4.0
+			],
+			"camera_yaw": 2.84791326522827,
+			"name": "actors-1280x800",
+			"remote": [
+				0,
+				2,
+				3
+			],
+			"size": [
+				1280,
+				800
+			],
+			"viewport": [
+				1280,
+				800
+			]
+		}
+	],
+	"elapsed": 150.116699,
+	"errors": [],
+	"grip_max_error": 0.0000121622688311618,
+	"hud_text": "Meridian Exchange | HP 100.0 | Armor 5.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | RESULTS",
+	"label_text": "Meridian Exchange | HP 100.0 | Armor 5.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | RESULTS\nWaiting for host to restart",
+	"outcome": "watchdog",
+	"phase": 4,
+	"remote_firing": [
+		0,
+		3,
+		2
+	],
+	"remote_ids": [
+		0,
+		2,
+		3
+	],
+	"remote_max_shots": 512,
+	"remote_reloading": [],
+	"remote_walking": [
+		0,
+		2,
+		3
+	],
+	"remote_weapons": [
+		0,
+		5,
+		2,
+		4,
+		7
+	],
+	"rendered_remote_poses": 1962,
+	"restarts": {
+		"actors": 0,
+		"count": 1,
+		"phase": 3
+	},
+	"results": {
+		"actors": 4,
+		"count": 2,
+		"lifecycle": "results",
+		"over": true,
+		"phase": 4
+	},
+	"snapshots": 3600,
+	"spectating": false,
+	"visual_lods": [
+		2,
+		2,
+		2
+	],
+	"visual_pulse_hidden_all_match": true,
+	"visual_script": "res://source_operators/operator_visual.gd",
+	"visual_scripts_all_match": true,
+	"visual_weapon_matches_all_match": true,
+	"visual_world_weapons_all_match": true
+}

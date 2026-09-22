@@ -2,7 +2,7 @@ class_name PortPresentation
 extends Node3D
 
 # Native visual actors only. Node simulation remains authoritative; no extrapolation.
-const ActorVisual = preload("res://world/actor_visual.gd")
+const ActorVisual = preload("res://source_operators/operator_visual.gd")
 const RemoteMotion = preload("res://world/remote_motion.gd")
 const LocalLifecycle = preload("res://world/local_lifecycle.gd")
 var lifecycle := LocalLifecycle.new()
@@ -11,6 +11,7 @@ var interpolate_remote: bool = false
 var local_actor_id: int = -1
 var actors: Dictionary = {}
 var rendered_remote_poses: int = 0
+var last_shots: Dictionary = {}
 
 func _process(_delta: float) -> void:
 	if not interpolate_remote: return
@@ -31,6 +32,7 @@ func clear_round() -> void:
 	motion.clear()
 	local_actor_id = -1
 	rendered_remote_poses = 0
+	last_shots.clear()
 	for node: Node3D in actors.values():
 		remove_child(node)
 		node.free()
@@ -50,10 +52,13 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 		if not actors.has(id):
 			var node := ActorVisual.new()
 			node.name = "Actor_%d" % id
+			node.local_id = local_id
 			add_child(node)
 			actors[id] = node
 		var visual: Node3D = actors[id]
-		visual.apply_identity(actor)
+		visual.local_id = local_id
+		# Snapshot-driven source pose; the host still owns position and body yaw.
+		visual.apply_actor(actor)
 		var position: Vector3 = Vector3(actor.x, actor.y + 0.9, actor.z)
 		var body_yaw: float = float(actor.get("bodyYaw", actor.get("yaw", 0)))
 		var alive: bool = LocalLifecycle.actor_alive(actor)
@@ -62,6 +67,13 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 		visual.position = pose.position if interpolate_remote and id != local_id else position
 		visual.rotation.y = pose.yaw if interpolate_remote and id != local_id else body_yaw
 		visual.visible = id != local_id and alive
+		# Recoil only on genuine increasing authoritative shot counts, never on
+		# round resets or snapshot reordering.
+		var shots: int = int(actor.get("shots", 0))
+		if id != local_id and alive and last_shots.has(id):
+			var delta: int = shots - int(last_shots[id])
+			if delta > 0: visual.kick(minf(2.0, float(delta)))
+		last_shots[id] = shots
 		if id == local_id: local_actor = actor.duplicate(true)
 	for id: int in actors.keys():
 		if not present.has(id):
@@ -70,6 +82,7 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 			node.free()
 			actors.erase(id)
 			motion.tracks.erase(id)
+			last_shots.erase(id)
 	lifecycle.apply(local_actor, bool(state.get("over", false)))
 	if local_actor.is_empty():
 		hud_text = "Local actor absent — waiting"

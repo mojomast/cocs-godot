@@ -1,0 +1,122 @@
+{
+  "passed": false,
+  "platform": "Linux X11 llvmpipe",
+  "normal_rate": true,
+  "state_injection": false,
+  "checks": [
+    {
+      "name": "clean production lifecycle and unload",
+      "passed": false,
+      "returncode": 1,
+      "lifecycle": false,
+      "script_errors": true,
+      "engine_errors": true
+    },
+    {
+      "name": "at least two remote authority actors",
+      "passed": false,
+      "remote": [],
+      "actor_count": null
+    },
+    {
+      "name": "at least two remotes walked",
+      "passed": false,
+      "walking": null
+    },
+    {
+      "name": "at least two remotes fired",
+      "passed": false,
+      "firing": null,
+      "shots": null
+    },
+    {
+      "name": "a remote reloaded",
+      "passed": false,
+      "reloading": null
+    },
+    {
+      "name": "snapshot stream and interpolated remote poses",
+      "passed": false,
+      "snapshots": null,
+      "rendered_remote_poses": null
+    },
+    {
+      "name": "presentation renders the source operator visual",
+      "passed": false,
+      "script": null
+    },
+    {
+      "name": "world weapons mount and hide the built-in pulse",
+      "passed": false,
+      "weapons": null
+    },
+    {
+      "name": "post-pose grips track the chassis contacts",
+      "passed": false,
+      "max_error": null
+    },
+    {
+      "name": "round results observed",
+      "passed": false,
+      "results": null
+    },
+    {
+      "name": "restart boundary rebuilt the round",
+      "passed": false,
+      "restarts": null
+    },
+    {
+      "name": "capture actors-960x640",
+      "passed": false,
+      "size": null
+    },
+    {
+      "name": "capture actors-1280x800",
+      "passed": false,
+      "size": null
+    },
+    {
+      "name": "capture restart-1280x800",
+      "passed": false,
+      "size": null
+    },
+    {
+      "name": "two viewport resolutions rendered",
+      "passed": false
+    },
+    {
+      "name": "observer recorded no transport errors",
+      "passed": true,
+      "errors": null
+    }
+  ],
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "/tmp/opencode/source-operators-live-6blbtoaz/godot",
+    "--script",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/tools/godot-operators/live_observe.gd",
+    "--display-driver",
+    "x11",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "960x640",
+    "--position",
+    "0,0",
+    "--",
+    "--endpoint=ws://127.0.0.1:43817",
+    "--map=meridian-exchange",
+    "--mode=deathmatch",
+    "--lifecycle-smoke",
+    "--mute"
+  ],
+  "report": {},
+  "cleanup": {
+    "client": 1,
+    "authority": 0,
+    "display": 0
+  }
+}

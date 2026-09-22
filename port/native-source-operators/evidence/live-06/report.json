@@ -1,0 +1,139 @@
+{
+	"actor_count": 5,
+	"applied": 1801,
+	"captures": [
+		{
+			"camera": [
+				-44.0,
+				1.45000004768372,
+				10.0
+			],
+			"camera_yaw": 0.129228949546814,
+			"name": "actors-960x640",
+			"remote": [
+				0,
+				1,
+				3,
+				4
+			],
+			"size": [
+				960,
+				640
+			],
+			"viewport": [
+				960,
+				640
+			]
+		},
+		{
+			"camera": [
+				-44.0,
+				1.45000004768372,
+				10.0
+			],
+			"camera_yaw": 0.0489772446453571,
+			"name": "actors-1280x800",
+			"remote": [
+				0,
+				1,
+				3,
+				4
+			],
+			"size": [
+				1280,
+				800
+			],
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": [
+				-44.0,
+				1.45000004768372,
+				34.0
+			],
+			"camera_yaw": 0.0418406836688519,
+			"name": "restart-1280x800",
+			"remote": [
+				0,
+				1,
+				3,
+				4
+			],
+			"size": [
+				1280,
+				800
+			],
+			"viewport": [
+				1280,
+				800
+			]
+		}
+	],
+	"elapsed": 62.367249,
+	"errors": [],
+	"grip_clamp_max": 0.0,
+	"grip_excess_max": 0.0000116630317279487,
+	"grip_max_error": 0.0000116630317279487,
+	"hud_text": "Meridian Exchange | HP 100.0 | Armor 5.0 | Weapon 1 | Ammo 6.0\nFrags 0.0 · Deaths 0.0 | LIVE",
+	"label_text": "NODE-AUTHORITATIVE PROTOTYPE · deathmatch\nMeridian Exchange | HP 100.0 | Armor 5.0 | Weapon 1 | Ammo 6.0\nFrags 0.0 · Deaths 0.0 | LIVE\nClick: capture/fire · RMB: ADS · Z/MMB: alt · Esc: release · WASD: move · Space: jump\nShift: sprint · Ctrl/C: crouch · R: reload · E: interact · X: mobility · Q: power · F: melee · G: grenade · 1–9/0 or wheel: weapon | ACK 7",
+	"outcome": "complete",
+	"phase": 3,
+	"remote_firing": [
+		0,
+		1,
+		3,
+		4
+	],
+	"remote_ids": [
+		0,
+		1,
+		3,
+		4
+	],
+	"remote_max_shots": 60,
+	"remote_reloading": [
+		0,
+		1
+	],
+	"remote_walking": [
+		0,
+		1,
+		3,
+		4
+	],
+	"remote_weapons": [
+		1,
+		0,
+		3,
+		2
+	],
+	"rendered_remote_poses": 1752,
+	"restarts": {
+		"actors": 0,
+		"count": 1,
+		"phase": 3
+	},
+	"results": {
+		"actors": 5,
+		"count": 1,
+		"lifecycle": "results",
+		"over": true,
+		"phase": 4
+	},
+	"snapshots": 1826,
+	"spectating": false,
+	"visual_lods": [
+		2,
+		2,
+		2,
+		2
+	],
+	"visual_pulse_hidden_all_match": true,
+	"visual_script": "res://source_operators/operator_visual.gd",
+	"visual_scripts_all_match": true,
+	"visual_weapon_matches_all_match": true,
+	"visual_world_weapons_all_match": true
+}

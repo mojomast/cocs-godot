@@ -1,0 +1,77 @@
+{
+	"actor_count": 3,
+	"applied": 35,
+	"captures": [
+		{
+			"name": "actors-960x640",
+			"size": [
+				960,
+				640
+			],
+			"viewport": [
+				960,
+				640
+			]
+		},
+		{
+			"name": "actors-1280x800",
+			"size": [
+				1280,
+				800
+			],
+			"viewport": [
+				1280,
+				800
+			]
+		}
+	],
+	"elapsed": 62.3469,
+	"errors": [],
+	"grip_max_error": 0.00000907557750906562,
+	"hud_text": "Meridian Exchange | HP 100.0 | Armor 5.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE",
+	"outcome": "running",
+	"phase": 3,
+	"remote_firing": [
+		2,
+		1
+	],
+	"remote_ids": [
+		1,
+		2
+	],
+	"remote_max_shots": 0,
+	"remote_reloading": [],
+	"remote_walking": [
+		1,
+		2
+	],
+	"remote_weapons": [
+		0,
+		5,
+		1,
+		4
+	],
+	"rendered_remote_poses": 18,
+	"restarts": {
+		"actors": 0,
+		"count": 1,
+		"phase": 3
+	},
+	"results": {
+		"actors": 3,
+		"count": 1,
+		"lifecycle": "results",
+		"over": true,
+		"phase": 20
+	},
+	"snapshots": 1835,
+	"visual_lods": [
+		2,
+		2
+	],
+	"visual_pulse_hidden_all_match": true,
+	"visual_script": "res://source_operators/operator_visual.gd",
+	"visual_scripts_all_match": true,
+	"visual_weapon_matches_all_match": true,
+	"visual_world_weapons_all_match": true
+}

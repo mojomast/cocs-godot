@@ -4,6 +4,9 @@ extends Node3D
 ## Source anatomy, -Z forward, and original scale are preserved exactly.
 const Catalog = preload("res://source_operators/generated/catalog.gd")
 const Rig = preload("res://source_operators/character_rig.gd")
+const WorldWeapons = preload("res://source_operators/generated/world_weapons/catalog.gd")
+const HandGrips = preload("res://source_operators/hand_grips.gd")
+const WORLD_WEAPON_DIR := "res://source_operators/generated/world_weapons/"
 var identity_key: String = ""
 var character: String = ""
 var source: Node3D
@@ -19,8 +22,13 @@ var automatic_animation: bool = true
 var team_material: StandardMaterial3D
 var neutral_armor: Color
 var team_bars: Array[MeshInstance3D] = []
+var weapon_type: int = -1
+var world_weapon: Node3D
+var grip_error: Dictionary = {}
+var grip_clamp: Dictionary = {}
 
 func apply_identity(actor: Dictionary) -> void:
+	if Catalog.OPERATORS.is_empty(): return
 	var next: String = str(actor.get("character","chatgpt"))
 	if not Catalog.OPERATORS.has(next): next = str(Catalog.OPERATORS.keys()[0])
 	var next_key: String = next + ":" + str(actor.get("team",""))
@@ -35,8 +43,23 @@ func apply_identity(actor: Dictionary) -> void:
 		remove_child(source)
 		source.free()
 	nodes.clear(); batches.clear(); snapshot.clear(); team_bars.clear(); team_material = null
+	world_weapon = null
+	weapon_type = -1
+	grip_error.clear()
+	grip_clamp.clear()
 	character = next
-	var packed: PackedScene = load("res://source_operators/generated/%s.glb" % character)
+	var path: String = "res://source_operators/generated/%s.glb" % character
+	if not ResourceLoader.exists(path):
+		# Unknown/missing character assets fall back to the first exported identity.
+		character = str(Catalog.OPERATORS.keys()[0])
+		path = "res://source_operators/generated/%s.glb" % character
+	if not ResourceLoader.exists(path):
+		push_warning("No exported source operator available for %s" % next)
+		return
+	var packed: PackedScene = load(path)
+	if packed == null:
+		push_warning("Exported source operator failed to load: %s" % path)
+		return
 	source = packed.instantiate()
 	source.position.y = -0.9
 	add_child(source)
@@ -86,14 +109,52 @@ func configure(actor: Dictionary, local_actor_id: int = -1) -> void:
 	local_id = local_actor_id
 	apply_actor(actor)
 
+func set_weapon(type: int) -> void:
+	## Third-person source weapon replacement: the actual exported source
+	## simpleWeaponModel for actor.weapon, mounted on the authored source
+	## GunMount. The built-in pulse batches stay loaded but hidden.
+	if WorldWeapons.WEAPONS.is_empty(): return
+	type = clampi(type,0,WorldWeapons.WEAPONS.size()-1)
+	if type == weapon_type and is_instance_valid(world_weapon): return
+	if is_instance_valid(world_weapon):
+		if world_weapon.get_parent() != null: world_weapon.get_parent().remove_child(world_weapon)
+		world_weapon.free()
+		world_weapon = null
+	weapon_type = -1
+	grip_error.clear()
+	grip_clamp.clear()
+	var mount: Node3D = nodes.get("gunAnchor")
+	if mount == null: return
+	if nodes.has("weapon") and nodes.weapon is Node3D: nodes.weapon.visible = false
+	var path: String = WORLD_WEAPON_DIR + str(WorldWeapons.WEAPONS[type].file)
+	if not ResourceLoader.exists(path):
+		push_warning("Exported world weapon missing: %s" % path)
+		return
+	var packed: PackedScene = load(path)
+	if packed == null: return
+	world_weapon = packed.instantiate()
+	world_weapon.name = "WorldWeapon"
+	mount.add_child(world_weapon)
+	weapon_type = type
+
+func weapon_cost() -> Dictionary:
+	if weapon_type < 0 or weapon_type >= WorldWeapons.WEAPONS.size(): return {}
+	return WorldWeapons.WEAPONS[weapon_type]
+
 func apply_actor(actor: Dictionary) -> void:
 	apply_identity(actor)
 	snapshot = actor.duplicate()
 	visible = int(actor.get("id",-2)) != local_id
+	if not is_instance_valid(source):
+		visible = false
+		return
 	if float(actor.get("health",100)) <= 0:
 		rig.apply_source_death(Catalog.OPERATORS[character].deathPose)
-	elif rig.dead:
+		return
+	if rig.dead:
 		rig.reset(); recoil = 0.0
+	# The source only replaces a living actor's held weapon; corpses keep theirs.
+	if actor.has("weapon"): set_weapon(int(actor.get("weapon",0)))
 
 func reset_pose() -> void:
 	rig.reset()
@@ -125,6 +186,10 @@ func advance(dt: float) -> void:
 	var mount: Node3D = nodes.gunAnchor
 	mount.quaternion = Quaternion.IDENTITY if state.reduced else Rig.xyz_quaternion(Vector3(clampf(float(a.get("pitch",0)),-0.7,0.7)-recoil*0.06,clampf(focus,-0.9,0.9),0))
 	mount.position = rig.bind.gunAnchor.origin + Vector3(0,0,0 if state.reduced else recoil*0.035)
+	if is_instance_valid(world_weapon):
+		# Source post-pose hand pass, after the source weapon was replaced.
+		grip_clamp.clear()
+		grip_error = HandGrips.align(nodes, world_weapon, grip_clamp)
 
 func select_distance(distance: float) -> void:
 	# Source LOD thresholds 5.8m precision / 18m anatomy, with hysteresis.
@@ -145,9 +210,14 @@ func set_lod(level: int) -> void:
 		mesh.visible = (mask & (1 << lod_level)) != 0
 
 func anchor(anchor_name: String) -> Node3D:
+	if anchor_name == "Muzzle" and is_instance_valid(world_weapon):
+		var weapon_muzzle: Node3D = world_weapon.find_child("Muzzle",true,false)
+		if weapon_muzzle != null: return weapon_muzzle
 	var key: String = {"Helmet":"head","GunMount":"gunAnchor","GripLeft":"gripL","GripRight":"gripR","FeetOrigin":"SourceOperator"}.get(anchor_name,anchor_name)
 	if nodes.has(key): return nodes[key]
+	if not is_instance_valid(source): return null
 	return source.find_child(key,true,false) as Node3D
 
 func visible_cost() -> Dictionary:
+	if not Catalog.OPERATORS.has(character): return {}
 	return Catalog.OPERATORS[character].lods[lod_level]

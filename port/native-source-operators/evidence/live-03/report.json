@@ -1,0 +1,31 @@
+{
+	"actor_count": 0,
+	"applied": 0,
+	"captures": [],
+	"elapsed": 150.02323,
+	"errors": [],
+	"grip_max_error": 0.0,
+	"hud_text": "Waiting for authoritative snapshot",
+	"outcome": "watchdog",
+	"phase": -1,
+	"remote_firing": [],
+	"remote_ids": [],
+	"remote_max_shots": 0,
+	"remote_reloading": [],
+	"remote_walking": [],
+	"remote_weapons": [],
+	"rendered_remote_poses": 0,
+	"restarts": {
+
+	},
+	"results": {
+
+	},
+	"snapshots": 0,
+	"visual_lods": [],
+	"visual_pulse_hidden_all_match": true,
+	"visual_script": "",
+	"visual_scripts_all_match": true,
+	"visual_weapon_matches_all_match": true,
+	"visual_world_weapons_all_match": true
+}
