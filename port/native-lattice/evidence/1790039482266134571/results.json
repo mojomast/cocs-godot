@@ -1,0 +1,160 @@
+[
+  {
+    "name": "adapter",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/lattice/adapter.gd"
+    ],
+    "exit": 0,
+    "passed": true,
+    "seconds": 0.13934719562530518
+  },
+  {
+    "name": "ui",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/lattice/ui.gd"
+    ],
+    "exit": 0,
+    "passed": true,
+    "seconds": 0.14956181216984987
+  },
+  {
+    "name": "semantic",
+    "command": [
+      "node",
+      "tools/godot-export/semantic.mjs"
+    ],
+    "exit": 0,
+    "passed": true,
+    "seconds": 0.6621140846982598
+  },
+  {
+    "name": "import",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--editor",
+      "--import"
+    ],
+    "exit": 0,
+    "passed": true,
+    "seconds": 2.591497402638197
+  },
+  {
+    "name": "source-tests",
+    "command": [
+      "node",
+      "--test",
+      "game/cocs-wire.test.mjs",
+      "game/cocs-spend-surface.test.mjs",
+      "game/destination-lattice.test.mjs",
+      "server/cocs-net.test.mjs"
+    ],
+    "exit": 0,
+    "passed": true,
+    "seconds": 1.8443965427577496
+  },
+  {
+    "name": "asterion-relay-cocs",
+    "command": [
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--headless",
+      "--smoke",
+      "--map=asterion-relay",
+      "--mode=cocs"
+    ],
+    "exit": 0,
+    "passed": true,
+    "seconds": 3.1058537252247334
+  },
+  {
+    "name": "asterion-relay-cocs-coop",
+    "command": [
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--headless",
+      "--smoke",
+      "--map=asterion-relay",
+      "--mode=cocs-coop"
+    ],
+    "exit": 0,
+    "passed": true,
+    "seconds": 2.5699054105207324
+  },
+  {
+    "name": "monsoon-foundry-cocs",
+    "command": [
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--headless",
+      "--smoke",
+      "--map=monsoon-foundry",
+      "--mode=cocs"
+    ],
+    "exit": 0,
+    "passed": true,
+    "seconds": 3.1106754075735807
+  },
+  {
+    "name": "monsoon-foundry-cocs-coop",
+    "command": [
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--headless",
+      "--smoke",
+      "--map=monsoon-foundry",
+      "--mode=cocs-coop"
+    ],
+    "exit": 0,
+    "passed": true,
+    "seconds": 2.50572288967669
+  },
+  {
+    "name": "asterion-relay-graphical",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp",
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--smoke",
+      "--map=asterion-relay",
+      "--size=960x640",
+      "--capture=/tmp/opencode/cocs-native-lattice-command/port/native-lattice/evidence/1790039482266134571/asterion-relay.png"
+    ],
+    "exit": 0,
+    "passed": true,
+    "seconds": 3.736031520180404
+  },
+  {
+    "name": "monsoon-foundry-graphical",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp",
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--smoke",
+      "--map=monsoon-foundry",
+      "--size=1280x800",
+      "--capture=/tmp/opencode/cocs-native-lattice-command/port/native-lattice/evidence/1790039482266134571/monsoon-foundry.png"
+    ],
+    "exit": 0,
+    "passed": true,
+    "seconds": 3.713668785057962
+  }
+]

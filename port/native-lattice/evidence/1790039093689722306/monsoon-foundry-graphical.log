@@ -1,0 +1,18 @@
+Owned loopback server ready 36795; normal simulation rate
+ERROR: Failed to open 'user://logs/godot2026-09-21T21.04.59.log'.
+   at: copy (core/io/dir_access.cpp:423)
+
+================================================================
+handle_crash: Program crashed with signal 11
+Engine version: Godot Engine v4.5.2.stable.official (6ce3de25aa58466e14ef354703ba8d9791a417da)
+Dumping the backtrace. Please include this when reporting the bug on: https://github.com/godotengine/godot/issues
+[1] /lib/x86_64-linux-gnu/libc.so.6(+0x45f60) [0x76284d845f60] (??:0)
+[2] /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64() [0x44196df] (??:0)
+[3] /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64() [0x4c22b4c] (??:0)
+[4] /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64() [0x42d14a] (??:0)
+[5] /lib/x86_64-linux-gnu/libc.so.6(+0x2a575) [0x76284d82a575] (??:0)
+[6] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x88) [0x76284d82a628] (??:0)
+[7] /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64() [0x46cb6a] (??:0)
+-- END OF C++ BACKTRACE --
+================================================================
+Owned native child exited and loopback server closed

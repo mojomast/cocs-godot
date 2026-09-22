@@ -1,0 +1,346 @@
+TAP version 13
+# Subtest: cocsPurchaseView is mode- and team-isolated
+ok 1 - cocsPurchaseView is mode- and team-isolated
+  ---
+  duration_ms: 0.748522
+  type: 'test'
+  ...
+# Subtest: the 8v8 board offers one REINFORCE per legal role plus SCAN with a real target
+ok 2 - the 8v8 board offers one REINFORCE per legal role plus SCAN with a real target
+  ---
+  duration_ms: 5.715678
+  type: 'test'
+  ...
+# Subtest: the rung, THREADS and FLUX gates disable the cards with one named reason each
+ok 3 - the rung, THREADS and FLUX gates disable the cards with one named reason each
+  ---
+  duration_ms: 0.537687
+  type: 'test'
+  ...
+# Subtest: spectators get no purchase surface at all
+ok 4 - spectators get no purchase surface at all
+  ---
+  duration_ms: 0.134532
+  type: 'test'
+  ...
+# Subtest: cocsEconomyView exposes NEGLECT as a word, a number and the passive multiplier
+ok 5 - cocsEconomyView exposes NEGLECT as a word, a number and the passive multiplier
+  ---
+  duration_ms: 0.53357
+  type: 'test'
+  ...
+# Subtest: the purchase dispatch rides net.economy with the role, target and card id
+ok 6 - the purchase dispatch rides net.economy with the role, target and card id
+  ---
+  duration_ms: 5.647009
+  type: 'test'
+  ...
+# Subtest: cocsCommandView folds the purchase view into the command bag and stays co-op dark
+ok 7 - cocsCommandView folds the purchase view into the command bag and stays co-op dark
+  ---
+  duration_ms: 2.388214
+  type: 'test'
+  ...
+# Subtest: MESSAGE declares the five C→S actions and the cocs-reject frame
+ok 8 - MESSAGE declares the five C→S actions and the cocs-reject frame
+  ---
+  duration_ms: 0.714118
+  type: 'test'
+  ...
+# Subtest: the order validator accepts canonical orders and bounds every field
+ok 9 - the order validator accepts canonical orders and bounds every field
+  ---
+  duration_ms: 0.941925
+  type: 'test'
+  ...
+# Subtest: the economy validator accepts the sink aliases and rejects bad actions/actor ids
+ok 10 - the economy validator accepts the sink aliases and rejects bad actions/actor ids
+  ---
+  duration_ms: 0.252603
+  type: 'test'
+  ...
+# Subtest: the terminal validator restricts the action allow-list
+ok 11 - the terminal validator restricts the action allow-list
+  ---
+  duration_ms: 0.16045
+  type: 'test'
+  ...
+# Subtest: the command and buy validators bound values and item ids
+ok 12 - the command and buy validators bound values and item ids
+  ---
+  duration_ms: 0.313266
+  type: 'test'
+  ...
+# Subtest: NetClient emits the five action frames and clears optimistic state on reject
+ok 13 - NetClient emits the five action frames and clears optimistic state on reject
+  ---
+  duration_ms: 2.646648
+  type: 'test'
+  ...
+# Subtest: the destination lattice collection contains both distinct registered theatres
+ok 14 - the destination lattice collection contains both distinct registered theatres
+  ---
+  duration_ms: 1.171385
+  type: 'test'
+  ...
+# Subtest: asterion-relay: complete lattice doctrine and measured spacing/arrival clearance
+ok 15 - asterion-relay: complete lattice doctrine and measured spacing/arrival clearance
+  ---
+  duration_ms: 3.02142
+  type: 'test'
+  ...
+# Subtest: asterion-relay: all authored and Operations runtime anchors connect bidirectionally on their real floor
+ok 16 - asterion-relay: all authored and Operations runtime anchors connect bidirectionally on their real floor
+  ---
+  duration_ms: 188.813275
+  type: 'test'
+  ...
+# Subtest: asterion-relay: every service deck has sampled ground ascent and descent from both ends
+ok 17 - asterion-relay: every service deck has sampled ground ascent and descent from both ends
+  ---
+  duration_ms: 79.621885
+  type: 'test'
+  ...
+# Subtest: asterion-relay: 4v4 retains authored frontier, live budget and endgame shape
+ok 18 - asterion-relay: 4v4 retains authored frontier, live budget and endgame shape
+  ---
+  duration_ms: 1.247116
+  type: 'test'
+  ...
+# Subtest: asterion-relay: 8v8 retains authored frontier, live budget and endgame shape
+ok 19 - asterion-relay: 8v8 retains authored frontier, live budget and endgame shape
+  ---
+  duration_ms: 0.360706
+  type: 'test'
+  ...
+# Subtest: asterion-relay: Operations interact banks and redeems a shard at the real HQ vault
+ok 20 - asterion-relay: Operations interact banks and redeems a shard at the real HQ vault
+  ---
+  duration_ms: 151.66975
+  type: 'test'
+  ...
+# Subtest: asterion-relay: Operations siege can damage and repair its authored HQ
+ok 21 - asterion-relay: Operations siege can damage and repair its authored HQ
+  ---
+  duration_ms: 42.244471
+  type: 'test'
+  ...
+# Subtest: asterion-relay: a bounded Operations opening replays deterministically
+ok 22 - asterion-relay: a bounded Operations opening replays deterministically
+  ---
+  duration_ms: 131.733431
+  type: 'test'
+  ...
+# Subtest: monsoon-foundry: complete lattice doctrine and measured spacing/arrival clearance
+ok 23 - monsoon-foundry: complete lattice doctrine and measured spacing/arrival clearance
+  ---
+  duration_ms: 1.39329
+  type: 'test'
+  ...
+# Subtest: monsoon-foundry: all authored and Operations runtime anchors connect bidirectionally on their real floor
+ok 24 - monsoon-foundry: all authored and Operations runtime anchors connect bidirectionally on their real floor
+  ---
+  duration_ms: 141.138401
+  type: 'test'
+  ...
+# Subtest: monsoon-foundry: every service deck has sampled ground ascent and descent from both ends
+ok 25 - monsoon-foundry: every service deck has sampled ground ascent and descent from both ends
+  ---
+  duration_ms: 84.617053
+  type: 'test'
+  ...
+# Subtest: monsoon-foundry: 4v4 retains authored frontier, live budget and endgame shape
+ok 26 - monsoon-foundry: 4v4 retains authored frontier, live budget and endgame shape
+  ---
+  duration_ms: 0.649918
+  type: 'test'
+  ...
+# Subtest: monsoon-foundry: 8v8 retains authored frontier, live budget and endgame shape
+ok 27 - monsoon-foundry: 8v8 retains authored frontier, live budget and endgame shape
+  ---
+  duration_ms: 0.239759
+  type: 'test'
+  ...
+# Subtest: monsoon-foundry: Operations interact banks and redeems a shard at the real HQ vault
+ok 28 - monsoon-foundry: Operations interact banks and redeems a shard at the real HQ vault
+  ---
+  duration_ms: 117.406682
+  type: 'test'
+  ...
+# Subtest: monsoon-foundry: Operations siege can damage and repair its authored HQ
+ok 29 - monsoon-foundry: Operations siege can damage and repair its authored HQ
+  ---
+  duration_ms: 29.909143
+  type: 'test'
+  ...
+# Subtest: monsoon-foundry: a bounded Operations opening replays deterministically
+ok 30 - monsoon-foundry: a bounded Operations opening replays deterministically
+  ---
+  duration_ms: 108.022762
+  type: 'test'
+  ...
+# Subtest: command preflight refuses impossible routes and stances before claiming acceptance
+ok 31 - command preflight refuses impossible routes and stances before claiming acceptance
+  ---
+  duration_ms: 115.267514
+  type: 'test'
+  ...
+# Subtest: a successful mutiny completes even though seating clears its vote list
+ok 32 - a successful mutiny completes even though seating clears its vote list
+  ---
+  duration_ms: 0.554128
+  type: 'test'
+  ...
+# Subtest: two-client OPERATIONS harness applies orders, spends, terminals, commands and buys
+ok 33 - two-client OPERATIONS harness applies orders, spends, terminals, commands and buys
+  ---
+  duration_ms: 309.73903
+  type: 'test'
+  ...
+# Subtest: a seeded OPERATIONS run is byte-identical across repeats with a fixed input order
+ok 34 - a seeded OPERATIONS run is byte-identical across repeats with a fixed input order
+  ---
+  duration_ms: 396.493226
+  type: 'test'
+  ...
+# Subtest: server rejects unaffordable, wrong-team, no-thread and missing-executor actions
+ok 35 - server rejects unaffordable, wrong-team, no-thread and missing-executor actions
+  ---
+  duration_ms: 19.881646
+  type: 'test'
+  ...
+# Subtest: a flood of one action kind is rate limited per peer
+ok 36 - a flood of one action kind is rate limited per peer
+  ---
+  duration_ms: 6.962404
+  type: 'test'
+  ...
+# Subtest: a reconnect resends a full snapshot including cocs command state and cards
+ok 37 - a reconnect resends a full snapshot including cocs command state and cards
+  ---
+  duration_ms: 9.032151
+  type: 'test'
+  ...
+# Subtest: the player limit is mode-aware: COCS admits 32 while default modes keep 8
+ok 38 - the player limit is mode-aware: COCS admits 32 while default modes keep 8
+  ---
+  duration_ms: 0.900247
+  type: 'test'
+  ...
+# Subtest: the rate-only snapshot budget drops to 20 Hz above 32 actors
+ok 39 - the rate-only snapshot budget drops to 20 Hz above 32 actors
+  ---
+  duration_ms: 196.767638
+  type: 'test'
+  ...
+# Subtest: transport peer ids never enter the sim: a uuid peer still orders, spends and seats
+ok 40 - transport peer ids never enter the sim: a uuid peer still orders, spends and seats
+  ---
+  duration_ms: 14.291644
+  type: 'test'
+  ...
+# Subtest: a duplicate BUY charges once and survives presentation-card eviction
+ok 41 - a duplicate BUY charges once and survives presentation-card eviction
+  ---
+  duration_ms: 25.225017
+  type: 'test'
+  ...
+# Subtest: duplicate ORDER, ECONOMY, TERMINAL and COMMAND frames have one effect
+ok 42 - duplicate ORDER, ECONOMY, TERMINAL and COMMAND frames have one effect
+  ---
+  duration_ms: 23.070701
+  type: 'test'
+  ...
+# Subtest: a reused key with a different payload and a stale round are both refused
+ok 43 - a reused key with a different payload and a stale round are both refused
+  ---
+  duration_ms: 18.700985
+  type: 'test'
+  ...
+# Subtest: cross-actor identical raw cardIds get distinct scoped identities
+ok 44 - cross-actor identical raw cardIds get distinct scoped identities
+  ---
+  duration_ms: 21.00414
+  type: 'test'
+  ...
+# Subtest: a legacy cardId-only frame is idempotent within its round and seat
+ok 45 - a legacy cardId-only frame is idempotent within its round and seat
+  ---
+  duration_ms: 15.054303
+  type: 'test'
+  ...
+# Subtest: an accepted HOLD stays running until the task is replaced or expires
+ok 46 - an accepted HOLD stays running until the task is replaced or expires
+  ---
+  duration_ms: 21.712507
+  type: 'test'
+  ...
+# Subtest: a rematch mints a new round revision and drops the previous board and ledger
+ok 47 - a rematch mints a new round revision and drops the previous board and ledger
+  ---
+  duration_ms: 35.127578
+  type: 'test'
+  ...
+# Subtest: a same-round reconnect preserves cards and never reapplies a retry
+ok 48 - a same-round reconnect preserves cards and never reapplies a retry
+  ---
+  duration_ms: 11.361445
+  type: 'test'
+  ...
+# Subtest: the mapped cut action reaches a traversal device and settles its card
+ok 49 - the mapped cut action reaches a traversal device and settles its card
+  ---
+  duration_ms: 20.646409
+  type: 'test'
+  ...
+# Subtest: an accepted ATTACK completes when the sim retires its task on capture
+ok 50 - an accepted ATTACK completes when the sim retires its task on capture
+  ---
+  duration_ms: 20.076652
+  type: 'test'
+  ...
+# Subtest: an interrupted device channel ends the card with an interruption reason
+ok 51 - an interrupted device channel ends the card with an interruption reason
+  ---
+  duration_ms: 21.244029
+  type: 'test'
+  ...
+# Subtest: round end expires an accepted in-flight card
+ok 52 - round end expires an accepted in-flight card
+  ---
+  duration_ms: 20.349584
+  type: 'test'
+  ...
+# Subtest: dead, ended, disconnected and spectator requests all answer with a reason
+ok 53 - dead, ended, disconnected and spectator requests all answer with a reason
+  ---
+  duration_ms: 23.803805
+  type: 'test'
+  ...
+# Subtest: the OPERATIONS Puma buys through Room.buy and spawns its depot vehicle
+ok 54 - the OPERATIONS Puma buys through Room.buy and spawns its depot vehicle
+  ---
+  duration_ms: 19.191905
+  type: 'test'
+  ...
+# Subtest: duplicate Puma frames charge once and one live depot Puma blocks a fresh identity
+ok 55 - duplicate Puma frames charge once and one live depot Puma blocks a fresh identity
+  ---
+  duration_ms: 20.44906
+  type: 'test'
+  ...
+# Subtest: the room gates coopLaunch to OPERATIONS and effectless catalogue rows out of both modes
+ok 56 - the room gates coopLaunch to OPERATIONS and effectless catalogue rows out of both modes
+  ---
+  duration_ms: 35.712835
+  type: 'test'
+  ...
+1..56
+# tests 56
+# suites 0
+# pass 56
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2379.309987

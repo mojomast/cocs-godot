@@ -1,0 +1,108 @@
+[
+  {
+    "name": "adapter",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/lattice/adapter.gd"
+    ],
+    "exit": -6,
+    "passed": false,
+    "seconds": 0.04765866510570049
+  },
+  {
+    "name": "asterion-relay-cocs",
+    "command": [
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--headless",
+      "--smoke",
+      "--map=asterion-relay",
+      "--mode=cocs"
+    ],
+    "exit": 1,
+    "passed": false,
+    "seconds": 1.0232134442776442
+  },
+  {
+    "name": "asterion-relay-cocs-coop",
+    "command": [
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--headless",
+      "--smoke",
+      "--map=asterion-relay",
+      "--mode=cocs-coop"
+    ],
+    "exit": 1,
+    "passed": false,
+    "seconds": 0.955324899405241
+  },
+  {
+    "name": "monsoon-foundry-cocs",
+    "command": [
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--headless",
+      "--smoke",
+      "--map=monsoon-foundry",
+      "--mode=cocs"
+    ],
+    "exit": 1,
+    "passed": false,
+    "seconds": 0.964006844907999
+  },
+  {
+    "name": "monsoon-foundry-cocs-coop",
+    "command": [
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--headless",
+      "--smoke",
+      "--map=monsoon-foundry",
+      "--mode=cocs-coop"
+    ],
+    "exit": 1,
+    "passed": false,
+    "seconds": 0.9512868653982878
+  },
+  {
+    "name": "asterion-relay-graphical",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp",
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--smoke",
+      "--map=asterion-relay",
+      "--size=960x640",
+      "--capture=/tmp/opencode/cocs-native-lattice-command/port/native-lattice/evidence/1790039093689722306/asterion-relay.png"
+    ],
+    "exit": 1,
+    "passed": false,
+    "seconds": 0.9732823325321078
+  },
+  {
+    "name": "monsoon-foundry-graphical",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp",
+      "node",
+      "port/tools/native_lattice_demo/run.mjs",
+      "--smoke",
+      "--map=monsoon-foundry",
+      "--size=1280x800",
+      "--capture=/tmp/opencode/cocs-native-lattice-command/port/native-lattice/evidence/1790039093689722306/monsoon-foundry.png"
+    ],
+    "exit": 1,
+    "passed": false,
+    "seconds": 1.0107558565214276
+  }
+]

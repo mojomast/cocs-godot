@@ -1,0 +1,10 @@
+Owned loopback server ready 43533; normal simulation rate
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+LATTICE_EVIDENCE {"actions":[],"actor":0,"event":"connected","flux":80.033,"map":"monsoon-foundry","mode":"cocs","roles":{"agents":[],"allow":["fighter","harvester","builder","scout","saboteur"],"byRole":{},"expired":0.0,"killed":0.0,"rung":null,"spawned":0.0,"team":0.0,"threads":{"cap":3.0,"used":0.0}},"round":1,"spent":0.0}
+ERROR: LATTICE smoke timed out at step 0
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] run_smoke (res://lattice/board.gd:227)
+       [1] _process (res://lattice/board.gd:215)
+Owned native child exited and loopback server closed
