@@ -5,8 +5,8 @@ const WEAPONS = [
 		"id": 0,
 		"name": "Pulse Rifle",
 		"file": "weapon-0.glb",
-		"sha256": "2026c0bb97ba483f678e910c40ad588a023369e38d1be9646358a7f95800f1cd",
-		"bytes": 363532,
+		"sha256": "041cfd05c8ee16e652052dffdb58ddcbc74fbbedb0c94a0719618b5c14f6fe22",
+		"bytes": 364148,
 		"triangles": 3704,
 		"meshInstances": 9,
 		"bounds": [
@@ -28,6 +28,129 @@ const WEAPONS = [
 				-0.85
 			]
 		],
+		"anchors": {
+			"Muzzle0": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					0.01,
+					-0.85
+				],
+				"weaponPosition": [
+					0,
+					0.01,
+					-0.85
+				]
+			},
+			"SightRear": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.16999999999999998,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.16999999999999998,
+					-0.065
+				]
+			},
+			"SightFront": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.16999999999999998,
+					-0.51
+				],
+				"weaponPosition": [
+					0,
+					0.16999999999999998,
+					-0.51
+				]
+			},
+			"OpticCenter": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.16999999999999998,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.16999999999999998,
+					-0.065
+				]
+			},
+			"GripRight": {
+				"parent": "weapon",
+				"position": [
+					0.018,
+					-0.165,
+					-0.035
+				],
+				"weaponPosition": [
+					0.018,
+					-0.165,
+					-0.035
+				]
+			},
+			"GripSupport": {
+				"parent": "weapon",
+				"position": [
+					-0.025,
+					-0.10650000000000001,
+					-0.5349999999999999
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.10650000000000001,
+					-0.5349999999999999
+				]
+			},
+			"GripReload": {
+				"parent": "feed",
+				"position": [
+					-0.025,
+					-0.225,
+					-0.28
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.225,
+					-0.28
+				]
+			}
+		},
+		"ads": {
+			"enter": 15,
+			"exit": 19,
+			"kind": "iron",
+			"source": "builtin",
+			"reticle": "dot",
+			"magnification": 1,
+			"lensWarp": false,
+			"aiming": true,
+			"label": "",
+			"pose": {
+				"position": {
+					"x": 0,
+					"y": -0.16999999999999998,
+					"z": -0.62
+				},
+				"quaternion": {
+					"x": 0,
+					"y": 0,
+					"z": 0,
+					"w": 1
+				},
+				"pitch": 0,
+				"yaw": 0,
+				"roll": 0,
+				"distance": 0.62,
+				"rearZ": -0.685,
+				"eyeRelief": 0.685
+			}
+		},
 		"color": "#70ffe6",
 		"kick": [
 			0.045,
@@ -43,8 +166,8 @@ const WEAPONS = [
 		"id": 1,
 		"name": "Rocket Launcher",
 		"file": "weapon-1.glb",
-		"sha256": "1ef50804170871e179cde215b2814979ba5ae2f014892ceb525ae968aea887a5",
-		"bytes": 423788,
+		"sha256": "24ca0907368181d8bcc9ecfa9774b08a00d1dd16c1a9aac0aabe1348ff8251e9",
+		"bytes": 424368,
 		"triangles": 4340,
 		"meshInstances": 8,
 		"bounds": [
@@ -66,6 +189,129 @@ const WEAPONS = [
 				-0.76
 			]
 		],
+		"anchors": {
+			"Muzzle0": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					0,
+					-0.76
+				],
+				"weaponPosition": [
+					0,
+					0,
+					-0.76
+				]
+			},
+			"SightRear": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.19,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.19,
+					-0.065
+				]
+			},
+			"SightFront": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.19,
+					-0.5900000000000001
+				],
+				"weaponPosition": [
+					0,
+					0.19,
+					-0.5900000000000001
+				]
+			},
+			"OpticCenter": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.19,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.19,
+					-0.065
+				]
+			},
+			"GripRight": {
+				"parent": "weapon",
+				"position": [
+					0.018,
+					-0.20500000000000002,
+					-0.035
+				],
+				"weaponPosition": [
+					0.018,
+					-0.20500000000000002,
+					-0.035
+				]
+			},
+			"GripSupport": {
+				"parent": "weapon",
+				"position": [
+					-0.025,
+					-0.14350000000000002,
+					-0.615
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.14350000000000002,
+					-0.615
+				]
+			},
+			"GripReload": {
+				"parent": "feed",
+				"position": [
+					-0.1,
+					-0.16,
+					-0.3
+				],
+				"weaponPosition": [
+					-0.1,
+					-0.16,
+					-0.3
+				]
+			}
+		},
+		"ads": {
+			"enter": 9,
+			"exit": 13,
+			"kind": "iron",
+			"source": "builtin",
+			"reticle": "dot",
+			"magnification": 1,
+			"lensWarp": false,
+			"aiming": true,
+			"label": "",
+			"pose": {
+				"position": {
+					"x": 0,
+					"y": -0.19,
+					"z": -0.62
+				},
+				"quaternion": {
+					"x": 0,
+					"y": 0,
+					"z": 0,
+					"w": 1
+				},
+				"pitch": 0,
+				"yaw": 0,
+				"roll": 0,
+				"distance": 0.62,
+				"rearZ": -0.685,
+				"eyeRelief": 0.685
+			}
+		},
 		"color": "#ffad61",
 		"kick": [
 			0.105,
@@ -81,8 +327,8 @@ const WEAPONS = [
 		"id": 2,
 		"name": "Rail Lance",
 		"file": "weapon-2.glb",
-		"sha256": "dffdb82b232f66429fba5c8490fdafa31a299a5424ca99a7272e0d0a99c5e180",
-		"bytes": 612004,
+		"sha256": "f48a68f89945d275c89239570e01f1fe3ff64b6851265af9431d136cc502287d",
+		"bytes": 612596,
 		"triangles": 6284,
 		"meshInstances": 10,
 		"bounds": [
@@ -104,6 +350,129 @@ const WEAPONS = [
 				-1.04
 			]
 		],
+		"anchors": {
+			"Muzzle0": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					0.025,
+					-1.04
+				],
+				"weaponPosition": [
+					0,
+					0.025,
+					-1.04
+				]
+			},
+			"SightRear": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.184,
+					-0.0049999999999999975
+				],
+				"weaponPosition": [
+					0,
+					0.184,
+					-0.0049999999999999975
+				]
+			},
+			"SightFront": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.184,
+					-0.375
+				],
+				"weaponPosition": [
+					0,
+					0.184,
+					-0.375
+				]
+			},
+			"OpticCenter": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.184,
+					-0.0049999999999999975
+				],
+				"weaponPosition": [
+					0,
+					0.184,
+					-0.0049999999999999975
+				]
+			},
+			"GripRight": {
+				"parent": "weapon",
+				"position": [
+					0.018,
+					-0.145,
+					-0.035
+				],
+				"weaponPosition": [
+					0.018,
+					-0.145,
+					-0.035
+				]
+			},
+			"GripSupport": {
+				"parent": "weapon",
+				"position": [
+					-0.025,
+					-0.08700000000000001,
+					-0.625
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.08700000000000001,
+					-0.625
+				]
+			},
+			"GripReload": {
+				"parent": "feed",
+				"position": [
+					-0.025,
+					-0.06,
+					0
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.205,
+					-0.28
+				]
+			}
+		},
+		"ads": {
+			"enter": 10,
+			"exit": 15,
+			"kind": "scope",
+			"source": "builtin",
+			"reticle": "cross",
+			"magnification": 3.6,
+			"lensWarp": true,
+			"aiming": true,
+			"label": "×3.6",
+			"pose": {
+				"position": {
+					"x": 0,
+					"y": -0.184,
+					"z": -0.62
+				},
+				"quaternion": {
+					"x": 0,
+					"y": 0,
+					"z": 0,
+					"w": 1
+				},
+				"pitch": 0,
+				"yaw": 0,
+				"roll": 0,
+				"distance": 0.62,
+				"rearZ": -0.625,
+				"eyeRelief": 0.625
+			}
+		},
 		"color": "#bb9aff",
 		"kick": [
 			0.075,
@@ -119,8 +488,8 @@ const WEAPONS = [
 		"id": 3,
 		"name": "Scattergun",
 		"file": "weapon-3.glb",
-		"sha256": "2dafea1b8afe757f780d14385648c9efd7e403ae0477b4088a432dcadd371272",
-		"bytes": 420344,
+		"sha256": "d9ec8cc6024963630a7f1cddd785552ea1ff71fe15250cafaeb4dc428fb99016",
+		"bytes": 421036,
 		"triangles": 4304,
 		"meshInstances": 8,
 		"bounds": [
@@ -147,6 +516,142 @@ const WEAPONS = [
 				-0.82
 			]
 		],
+		"anchors": {
+			"Muzzle0": {
+				"parent": "barrel-assembly",
+				"position": [
+					-0.12,
+					0,
+					-0.39999999999999997
+				],
+				"weaponPosition": [
+					-0.12,
+					0.03,
+					-0.82
+				]
+			},
+			"Muzzle1": {
+				"parent": "barrel-assembly",
+				"position": [
+					0.12,
+					0,
+					-0.39999999999999997
+				],
+				"weaponPosition": [
+					0.12,
+					0.03,
+					-0.82
+				]
+			},
+			"SightRear": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.18,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.18,
+					-0.065
+				]
+			},
+			"SightFront": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.18,
+					-0.45999999999999996
+				],
+				"weaponPosition": [
+					0,
+					0.18,
+					-0.45999999999999996
+				]
+			},
+			"OpticCenter": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.18,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.18,
+					-0.065
+				]
+			},
+			"GripRight": {
+				"parent": "weapon",
+				"position": [
+					0.018,
+					-0.135,
+					-0.035
+				],
+				"weaponPosition": [
+					0.018,
+					-0.135,
+					-0.035
+				]
+			},
+			"GripSupport": {
+				"parent": "barrel-assembly",
+				"position": [
+					-0.025,
+					-0.10750000000000001,
+					-0.065
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.07750000000000001,
+					-0.485
+				]
+			},
+			"GripReload": {
+				"parent": "feed",
+				"position": [
+					-0.055,
+					-0.04000000000000001,
+					-0.18
+				],
+				"weaponPosition": [
+					-0.055,
+					-0.04000000000000001,
+					-0.18
+				]
+			}
+		},
+		"ads": {
+			"enter": 12,
+			"exit": 17,
+			"kind": "iron",
+			"source": "builtin",
+			"reticle": "dot",
+			"magnification": 1,
+			"lensWarp": false,
+			"aiming": true,
+			"label": "",
+			"pose": {
+				"position": {
+					"x": 0,
+					"y": -0.18,
+					"z": -0.62
+				},
+				"quaternion": {
+					"x": 0,
+					"y": 0,
+					"z": 0,
+					"w": 1
+				},
+				"pitch": 0,
+				"yaw": 0,
+				"roll": 0,
+				"distance": 0.62,
+				"rearZ": -0.685,
+				"eyeRelief": 0.685
+			}
+		},
 		"color": "#ffde87",
 		"kick": [
 			0.12,
@@ -162,8 +667,8 @@ const WEAPONS = [
 		"id": 4,
 		"name": "Plasma Driver",
 		"file": "weapon-4.glb",
-		"sha256": "afca4305e9a082c1c905bd30ead68a0ed96f2a7b6460e1023220e4c1971a4e80",
-		"bytes": 564768,
+		"sha256": "2048354b391ec86609a7b45ac582981b7a38c196d0fc142d3924ac6ca8af47f6",
+		"bytes": 565308,
 		"triangles": 5792,
 		"meshInstances": 10,
 		"bounds": [
@@ -185,6 +690,129 @@ const WEAPONS = [
 				-0.77
 			]
 		],
+		"anchors": {
+			"Muzzle0": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					0,
+					-0.77
+				],
+				"weaponPosition": [
+					0,
+					0,
+					-0.77
+				]
+			},
+			"SightRear": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.175,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.175,
+					-0.065
+				]
+			},
+			"SightFront": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.175,
+					-0.5
+				],
+				"weaponPosition": [
+					0,
+					0.175,
+					-0.5
+				]
+			},
+			"OpticCenter": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.175,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.175,
+					-0.065
+				]
+			},
+			"GripRight": {
+				"parent": "weapon",
+				"position": [
+					0.018,
+					-0.19,
+					-0.035
+				],
+				"weaponPosition": [
+					0.018,
+					-0.19,
+					-0.035
+				]
+			},
+			"GripSupport": {
+				"parent": "weapon",
+				"position": [
+					-0.025,
+					-0.13,
+					-0.525
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.13,
+					-0.525
+				]
+			},
+			"GripReload": {
+				"parent": "feed",
+				"position": [
+					-0.025,
+					-0.25,
+					-0.28
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.25,
+					-0.28
+				]
+			}
+		},
+		"ads": {
+			"enter": 13,
+			"exit": 18,
+			"kind": "iron",
+			"source": "builtin",
+			"reticle": "dot",
+			"magnification": 1,
+			"lensWarp": false,
+			"aiming": true,
+			"label": "",
+			"pose": {
+				"position": {
+					"x": 0,
+					"y": -0.175,
+					"z": -0.62
+				},
+				"quaternion": {
+					"x": 0,
+					"y": 0,
+					"z": 0,
+					"w": 1
+				},
+				"pitch": 0,
+				"yaw": 0,
+				"roll": 0,
+				"distance": 0.62,
+				"rearZ": -0.685,
+				"eyeRelief": 0.685
+			}
+		},
 		"color": "#72cfff",
 		"kick": [
 			0.03,
@@ -200,8 +828,8 @@ const WEAPONS = [
 		"id": 5,
 		"name": "Grenade Launcher",
 		"file": "weapon-5.glb",
-		"sha256": "b3532c7b4eec2c0a99ee88fb8e9daaeaf374ebed8cee75b193390e94ebfca1dd",
-		"bytes": 403780,
+		"sha256": "dc2a03ac290861882d1bb5b86e6d4f1dc228e09a60e0c180d0b91bcc7d967db2",
+		"bytes": 404368,
 		"triangles": 4124,
 		"meshInstances": 9,
 		"bounds": [
@@ -223,6 +851,129 @@ const WEAPONS = [
 				-0.93
 			]
 		],
+		"anchors": {
+			"Muzzle0": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					0.04,
+					-0.93
+				],
+				"weaponPosition": [
+					0,
+					0.04,
+					-0.93
+				]
+			},
+			"SightRear": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.21000000000000002,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.21000000000000002,
+					-0.065
+				]
+			},
+			"SightFront": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.21000000000000002,
+					-0.47
+				],
+				"weaponPosition": [
+					0,
+					0.21000000000000002,
+					-0.47
+				]
+			},
+			"OpticCenter": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.21000000000000002,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.21000000000000002,
+					-0.065
+				]
+			},
+			"GripRight": {
+				"parent": "weapon",
+				"position": [
+					0.018,
+					-0.145,
+					-0.035
+				],
+				"weaponPosition": [
+					0.018,
+					-0.145,
+					-0.035
+				]
+			},
+			"GripSupport": {
+				"parent": "weapon",
+				"position": [
+					-0.025,
+					-0.0855,
+					-0.495
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.0855,
+					-0.495
+				]
+			},
+			"GripReload": {
+				"parent": "feed",
+				"position": [
+					-0.08,
+					-0.19,
+					-0.25
+				],
+				"weaponPosition": [
+					-0.08,
+					-0.19,
+					-0.25
+				]
+			}
+		},
+		"ads": {
+			"enter": 11,
+			"exit": 16,
+			"kind": "iron",
+			"source": "builtin",
+			"reticle": "dot",
+			"magnification": 1,
+			"lensWarp": false,
+			"aiming": true,
+			"label": "",
+			"pose": {
+				"position": {
+					"x": 0,
+					"y": -0.21000000000000002,
+					"z": -0.62
+				},
+				"quaternion": {
+					"x": 0,
+					"y": 0,
+					"z": 0,
+					"w": 1
+				},
+				"pitch": 0,
+				"yaw": 0,
+				"roll": 0,
+				"distance": 0.62,
+				"rearZ": -0.685,
+				"eyeRelief": 0.685
+			}
+		},
 		"color": "#ff806b",
 		"kick": [
 			0.095,
@@ -238,8 +989,8 @@ const WEAPONS = [
 		"id": 6,
 		"name": "Shock Beam",
 		"file": "weapon-6.glb",
-		"sha256": "f9dc531965c9d3033541a53d5ad7457afbc0a815577f60dd14f87aeb33d16b04",
-		"bytes": 454840,
+		"sha256": "a5ca7294b4ccaf111e67011adf0a046dfa04f761ea5f1f97f7305fcf08d3e4a0",
+		"bytes": 455424,
 		"triangles": 4640,
 		"meshInstances": 11,
 		"bounds": [
@@ -261,6 +1012,129 @@ const WEAPONS = [
 				-0.99
 			]
 		],
+		"anchors": {
+			"Muzzle0": {
+				"parent": "shock-emitter",
+				"position": [
+					0,
+					0,
+					-0.99
+				],
+				"weaponPosition": [
+					0,
+					0,
+					-0.99
+				]
+			},
+			"SightRear": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.16499999999999998,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.16499999999999998,
+					-0.065
+				]
+			},
+			"SightFront": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.16499999999999998,
+					-0.54
+				],
+				"weaponPosition": [
+					0,
+					0.16499999999999998,
+					-0.54
+				]
+			},
+			"OpticCenter": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.16499999999999998,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.16499999999999998,
+					-0.065
+				]
+			},
+			"GripRight": {
+				"parent": "weapon",
+				"position": [
+					0.018,
+					-0.18,
+					-0.035
+				],
+				"weaponPosition": [
+					0.018,
+					-0.18,
+					-0.035
+				]
+			},
+			"GripSupport": {
+				"parent": "weapon",
+				"position": [
+					-0.025,
+					-0.121,
+					-0.565
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.121,
+					-0.565
+				]
+			},
+			"GripReload": {
+				"parent": "feed",
+				"position": [
+					-0.025,
+					-0.24,
+					-0.28
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.24,
+					-0.28
+				]
+			}
+		},
+		"ads": {
+			"enter": 13.5,
+			"exit": 18,
+			"kind": "iron",
+			"source": "builtin",
+			"reticle": "dot",
+			"magnification": 1,
+			"lensWarp": false,
+			"aiming": true,
+			"label": "",
+			"pose": {
+				"position": {
+					"x": 0,
+					"y": -0.16499999999999998,
+					"z": -0.62
+				},
+				"quaternion": {
+					"x": 0,
+					"y": 0,
+					"z": 0,
+					"w": 1
+				},
+				"pitch": 0,
+				"yaw": 0,
+				"roll": 0,
+				"distance": 0.62,
+				"rearZ": -0.685,
+				"eyeRelief": 0.685
+			}
+		},
 		"color": "#8ce8ff",
 		"kick": [
 			0.055,
@@ -276,8 +1150,8 @@ const WEAPONS = [
 		"id": 7,
 		"name": "Flak Cannon",
 		"file": "weapon-7.glb",
-		"sha256": "360725da9ba837ade549ff538e8896b1f24ee643a0cf27bb651071de5d41986d",
-		"bytes": 386960,
+		"sha256": "75f45f251990299ef10414512bf4483a2701bf5fd9ed492d457f3d92a1425815",
+		"bytes": 387500,
 		"triangles": 3956,
 		"meshInstances": 8,
 		"bounds": [
@@ -299,6 +1173,129 @@ const WEAPONS = [
 				-0.99
 			]
 		],
+		"anchors": {
+			"Muzzle0": {
+				"parent": "flak-barrel",
+				"position": [
+					0,
+					0,
+					-0.99
+				],
+				"weaponPosition": [
+					0,
+					0,
+					-0.99
+				]
+			},
+			"SightRear": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.185,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.185,
+					-0.065
+				]
+			},
+			"SightFront": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.185,
+					-0.55
+				],
+				"weaponPosition": [
+					0,
+					0.185,
+					-0.55
+				]
+			},
+			"OpticCenter": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.185,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.185,
+					-0.065
+				]
+			},
+			"GripRight": {
+				"parent": "weapon",
+				"position": [
+					0.018,
+					-0.2,
+					-0.035
+				],
+				"weaponPosition": [
+					0.018,
+					-0.2,
+					-0.035
+				]
+			},
+			"GripSupport": {
+				"parent": "weapon",
+				"position": [
+					-0.025,
+					-0.139,
+					-0.575
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.139,
+					-0.575
+				]
+			},
+			"GripReload": {
+				"parent": "feed",
+				"position": [
+					-0.09,
+					-0.26,
+					-0.28
+				],
+				"weaponPosition": [
+					-0.09,
+					-0.26,
+					-0.28
+				]
+			}
+		},
+		"ads": {
+			"enter": 10.5,
+			"exit": 15,
+			"kind": "iron",
+			"source": "builtin",
+			"reticle": "dot",
+			"magnification": 1,
+			"lensWarp": false,
+			"aiming": true,
+			"label": "",
+			"pose": {
+				"position": {
+					"x": 0,
+					"y": -0.185,
+					"z": -0.62
+				},
+				"quaternion": {
+					"x": 0,
+					"y": 0,
+					"z": 0,
+					"w": 1
+				},
+				"pitch": 0,
+				"yaw": 0,
+				"roll": 0,
+				"distance": 0.62,
+				"rearZ": -0.685,
+				"eyeRelief": 0.685
+			}
+		},
 		"color": "#ffd166",
 		"kick": [
 			0.115,
@@ -314,8 +1311,8 @@ const WEAPONS = [
 		"id": 8,
 		"name": "Marksman Rifle",
 		"file": "weapon-8.glb",
-		"sha256": "fdca8c0d818ca881e20484f03c8ddebb60b4ca464fb80184a4da2db136fc9f78",
-		"bytes": 527340,
+		"sha256": "d924580da670d2dbd0e283c0fc6d93ed63c7c5c49a9595c00a05152cb2fd8816",
+		"bytes": 527924,
 		"triangles": 5420,
 		"meshInstances": 8,
 		"bounds": [
@@ -337,6 +1334,129 @@ const WEAPONS = [
 				-0.84
 			]
 		],
+		"anchors": {
+			"Muzzle0": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					0.02,
+					-0.84
+				],
+				"weaponPosition": [
+					0,
+					0.02,
+					-0.84
+				]
+			},
+			"SightRear": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.174,
+					-0.0049999999999999975
+				],
+				"weaponPosition": [
+					0,
+					0.174,
+					-0.0049999999999999975
+				]
+			},
+			"SightFront": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.174,
+					-0.375
+				],
+				"weaponPosition": [
+					0,
+					0.174,
+					-0.375
+				]
+			},
+			"OpticCenter": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.174,
+					-0.0049999999999999975
+				],
+				"weaponPosition": [
+					0,
+					0.174,
+					-0.0049999999999999975
+				]
+			},
+			"GripRight": {
+				"parent": "weapon",
+				"position": [
+					0.018,
+					-0.145,
+					-0.035
+				],
+				"weaponPosition": [
+					0.018,
+					-0.145,
+					-0.035
+				]
+			},
+			"GripSupport": {
+				"parent": "weapon",
+				"position": [
+					-0.025,
+					-0.0875,
+					-0.605
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.0875,
+					-0.605
+				]
+			},
+			"GripReload": {
+				"parent": "feed",
+				"position": [
+					-0.025,
+					-0.205,
+					-0.28
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.205,
+					-0.28
+				]
+			}
+		},
+		"ads": {
+			"enter": 11.5,
+			"exit": 17,
+			"kind": "scope",
+			"source": "builtin",
+			"reticle": "cross",
+			"magnification": 3,
+			"lensWarp": true,
+			"aiming": true,
+			"label": "×3.0",
+			"pose": {
+				"position": {
+					"x": 0,
+					"y": -0.174,
+					"z": -0.62
+				},
+				"quaternion": {
+					"x": 0,
+					"y": 0,
+					"z": 0,
+					"w": 1
+				},
+				"pitch": 0,
+				"yaw": 0,
+				"roll": 0,
+				"distance": 0.62,
+				"rearZ": -0.625,
+				"eyeRelief": 0.625
+			}
+		},
 		"color": "#ffd27a",
 		"kick": [
 			0.05,
@@ -352,8 +1472,8 @@ const WEAPONS = [
 		"id": 9,
 		"name": "Submachine Gun",
 		"file": "weapon-9.glb",
-		"sha256": "f1e6dc9791c5cb86eb797e32ea58df889424ed3207a74d5eca98e013da60b9c3",
-		"bytes": 373912,
+		"sha256": "146d1a71e0fbc8307efb779612855896c942de28bd74ad7c67db78f0e11479e4",
+		"bytes": 374532,
 		"triangles": 3812,
 		"meshInstances": 9,
 		"bounds": [
@@ -375,6 +1495,129 @@ const WEAPONS = [
 				-0.835
 			]
 		],
+		"anchors": {
+			"Muzzle0": {
+				"parent": "barrel-assembly",
+				"position": [
+					0,
+					0.05,
+					-0.835
+				],
+				"weaponPosition": [
+					0,
+					0.05,
+					-0.835
+				]
+			},
+			"SightRear": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.20500000000000002,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.20500000000000002,
+					-0.065
+				]
+			},
+			"SightFront": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.20500000000000002,
+					-0.38999999999999996
+				],
+				"weaponPosition": [
+					0,
+					0.20500000000000002,
+					-0.38999999999999996
+				]
+			},
+			"OpticCenter": {
+				"parent": "weapon",
+				"position": [
+					0,
+					0.20500000000000002,
+					-0.065
+				],
+				"weaponPosition": [
+					0,
+					0.20500000000000002,
+					-0.065
+				]
+			},
+			"GripRight": {
+				"parent": "weapon",
+				"position": [
+					0.018,
+					-0.12,
+					-0.035
+				],
+				"weaponPosition": [
+					0.018,
+					-0.12,
+					-0.035
+				]
+			},
+			"GripSupport": {
+				"parent": "weapon",
+				"position": [
+					-0.025,
+					-0.062000000000000006,
+					-0.415
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.062000000000000006,
+					-0.415
+				]
+			},
+			"GripReload": {
+				"parent": "feed",
+				"position": [
+					-0.025,
+					-0.18,
+					-0.28
+				],
+				"weaponPosition": [
+					-0.025,
+					-0.18,
+					-0.28
+				]
+			}
+		},
+		"ads": {
+			"enter": 20,
+			"exit": 24,
+			"kind": "iron",
+			"source": "builtin",
+			"reticle": "dot",
+			"magnification": 1,
+			"lensWarp": false,
+			"aiming": true,
+			"label": "",
+			"pose": {
+				"position": {
+					"x": 0,
+					"y": -0.20500000000000002,
+					"z": -0.62
+				},
+				"quaternion": {
+					"x": 0,
+					"y": 0,
+					"z": 0,
+					"w": 1
+				},
+				"pitch": 0,
+				"yaw": 0,
+				"roll": 0,
+				"distance": 0.62,
+				"rearZ": -0.685,
+				"eyeRelief": 0.685
+			}
+		},
 		"color": "#8affc1",
 		"kick": [
 			0.022,

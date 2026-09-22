@@ -1,0 +1,3450 @@
+{
+	"checks": 910,
+	"failures": [],
+	"metrics": [
+		{
+			"fov": 75.0,
+			"front_error_px": 77.1376647949219,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					517.770385742188,
+					389.086486816406
+				]
+			],
+			"rear_error_px": 149.595764160156,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 12.8084087174884,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 0,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					378.543853759766
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					386.907684326172
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					351.915740966797
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 4.4483642578125,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					373.697814941406
+				]
+			],
+			"rear_error_px": 0.92864990234375,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 1.03132430700437,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					378.543853759766
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 77.9243927001953,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					517.398315429688,
+					400.065673828125
+				]
+			],
+			"rear_error_px": 146.598648071289,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 12.8084053023939,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 0,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					378.543853759766
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 66.7308044433594,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					524.833801269531,
+					394.876312255859
+				]
+			],
+			"rear_error_px": 147.614303588867,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 12.8084070099411,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 1,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					394.054779052734
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					404.634582519531
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					360.371704101562
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 13.4323425292969,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.0000431583721365314,
+			"muzzle_pixels": [
+				[
+					480.0,
+					381.638214111328
+				]
+			],
+			"rear_error_px": 2.5396728515625,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 2.81895119193602,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					394.054779052734
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 66.6219253540039,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					524.833801269531,
+					406.571502685547
+				]
+			],
+			"rear_error_px": 142.350769042969,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 12.8084078637148,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 1,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					394.054779052734
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 91.9380416870117,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					505.000030517578,
+					380.76025390625
+				]
+			],
+			"rear_error_px": 163.497192382812,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 12.8084087174884,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 2,
+			"weight": 0.0
+		},
+		{
+			"fov": 24.0646591186523,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					463.800720214844
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					378.879241943359
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					348.086090087891
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 24.0646591186523,
+			"front_error_px": 24.5439758300781,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.00006103515625,
+			"muzzle_pixels": [
+				[
+					480.0,
+					426.621856689453
+				]
+			],
+			"rear_error_px": 0.1226806640625,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 2.40642228021924,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 24.0646591186523,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					463.800720214844
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 90.14013671875,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					504.154937744141,
+					390.575805664062
+				]
+			],
+			"rear_error_px": 158.044616699219,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 12.8084061561675,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 2,
+			"weight": 0.0
+		},
+		{
+			"fov": 24.0646591186523,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					463.800720214844
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 81.7191390991211,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					491.231201171875,
+					385.552612304688
+				],
+				[
+					548.103881835938,
+					385.015441894531
+				]
+			],
+			"rear_error_px": 148.593292236328,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 12.8084061561675,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 3,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					435.177368164062,
+					376.028289794922
+				],
+				[
+					524.822631835938,
+					376.028289794922
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					428.773803710938,
+					384.032745361328
+				],
+				[
+					531.226196289062,
+					384.032745361328
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					455.564514160156,
+					350.544372558594
+				],
+				[
+					504.435485839844,
+					350.544372558594
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 12.2877502441406,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.00006103515625,
+			"muzzle_pixels": [
+				[
+					433.343658447266,
+					362.082916259766
+				],
+				[
+					526.656372070312,
+					362.082916259766
+				]
+			],
+			"rear_error_px": 2.66412353515625,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 2.92208704840321,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					435.177368164062,
+					376.028289794922
+				],
+				[
+					524.822631835938,
+					376.028289794922
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 81.4368591308594,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0000682393801980652,
+			"muzzle_pixels": [
+				[
+					487.606567382812,
+					377.673126220703
+				],
+				[
+					544.391540527344,
+					367.924743652344
+				]
+			],
+			"rear_error_px": 144.659637451172,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 12.8084061561675,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 3,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					435.177368164062,
+					376.028289794922
+				],
+				[
+					524.822631835938,
+					376.028289794922
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 77.7011260986328,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					524.008117675781,
+					394.333282470703
+				]
+			],
+			"rear_error_px": 149.100997924805,
+			"right_grip_error_m": 0.0000000894069671630859,
+			"sight_axis_error_degrees": 12.8084078637148,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 4,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					387.717651367188
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					397.39208984375
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					356.916931152344
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 3.6448974609375,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					383.872772216797
+				]
+			],
+			"rear_error_px": 0.7681884765625,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 0.859436833568886,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					387.717651367188
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 77.787109375,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.00006103515625,
+			"muzzle_pixels": [
+				[
+					524.008117675781,
+					405.504180908203
+				]
+			],
+			"rear_error_px": 145.336471557617,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 12.8084095712621,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 4,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					387.717651367188
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 77.511344909668,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					512.137268066406,
+					379.954803466797
+				]
+			],
+			"rear_error_px": 145.901809692383,
+			"right_grip_error_m": 0.0000000421468477895814,
+			"sight_axis_error_degrees": 12.8084061561675,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 5,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					378.992370605469
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0000431583721365314,
+			"muzzle_pixels": [
+				[
+					480.0,
+					387.420288085938
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					352.160278320312
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 10.8526916503906,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					365.833953857422
+				]
+			],
+			"rear_error_px": 2.30490112304688,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 2.57831146120201,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					378.992370605469
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 74.341064453125,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0000431583721365314,
+			"muzzle_pixels": [
+				[
+					510.709625244141,
+					390.948547363281
+				]
+			],
+			"rear_error_px": 138.171569824219,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 12.8084061561675,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 5,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					378.992370605469
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 74.7658538818359,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					508.050964355469,
+					387.768096923828
+				]
+			],
+			"rear_error_px": 150.343078613281,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 12.8084095712621,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 6,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					375.123474121094
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					382.998657226562
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					350.051116943359
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 6.90682983398438,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					366.926483154297
+				]
+			],
+			"rear_error_px": 1.38998413085938,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 1.54698480632011,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					375.123474121094
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 75.9815521240234,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					508.050964355469,
+					397.535125732422
+				]
+			],
+			"rear_error_px": 147.712799072266,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 12.8084095712621,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 6,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					375.123474121094
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 71.1511688232422,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					508.050964355469,
+					387.596923828125
+				]
+			],
+			"rear_error_px": 147.992874145508,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 12.8084044486202,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 7,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0000431583721365314,
+			"muzzle_pixels": [
+				[
+					480.0,
+					381.805114746094
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0000682393801980652,
+			"muzzle_pixels": [
+				[
+					480.0,
+					390.634857177734
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					353.693664550781
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 14.2866821289062,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					365.455596923828
+				]
+			],
+			"rear_error_px": 2.79534912109375,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 3.09397217396117,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0000431583721365314,
+			"muzzle_pixels": [
+				[
+					480.0,
+					381.805114746094
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 71.3258438110352,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					508.050964355469,
+					398.211669921875
+				]
+			],
+			"rear_error_px": 143.536346435547,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 12.8084053023939,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 7,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0000431583721365314,
+			"muzzle_pixels": [
+				[
+					480.0,
+					381.805114746094
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 93.2030715942383,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					518.550537109375,
+					387.281890869141
+				]
+			],
+			"rear_error_px": 164.713470458984,
+			"right_grip_error_m": 0.0000000421468477895814,
+			"sight_axis_error_degrees": 12.8084087174884,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 8,
+			"weight": 0.0
+		},
+		{
+			"fov": 28.6945457458496,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					451.964965820312
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					384.839721679688
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					350.929321289062
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 28.6945457458496,
+			"front_error_px": 13.0070495605469,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					434.367523193359
+				]
+			],
+			"rear_error_px": 0.1497802734375,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 1.54698587353717,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 28.6945457458496,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					451.964965820312
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 92.2246551513672,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					517.802429199219,
+					397.874786376953
+				]
+			],
+			"rear_error_px": 160.374893188477,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 12.8084070099411,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 8,
+			"weight": 0.0
+		},
+		{
+			"fov": 28.6945457458496,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					451.964965820312
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 87.877685546875,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					519.014587402344,
+					379.643127441406
+				]
+			],
+			"rear_error_px": 146.208862304688,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 12.8084078637148,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 9,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0000431583721365314,
+			"muzzle_pixels": [
+				[
+					480.0,
+					377.299041748047
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 9,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0000431583721365314,
+			"muzzle_pixels": [
+				[
+					480.0,
+					385.485015869141
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 9,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					480.0,
+					351.237121582031
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 9,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 2.51522827148438,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					480.0,
+					373.988189697266
+				]
+			],
+			"rear_error_px": 0.611907958984375,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.687548666442316,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 9,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0000431583721365314,
+			"muzzle_pixels": [
+				[
+					480.0,
+					377.299041748047
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 9,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 84.472282409668,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					517.139770507812,
+					391.439422607422
+				]
+			],
+			"rear_error_px": 139.182464599609,
+			"right_grip_error_m": 0.0000000421468477895814,
+			"sight_axis_error_degrees": 12.8084078637148,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 9,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0000431583721365314,
+			"muzzle_pixels": [
+				[
+					480.0,
+					377.299041748047
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				960,
+				640
+			],
+			"weapon": 9,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 96.7170486450195,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					687.213012695312,
+					486.912139892578
+				]
+			],
+			"rear_error_px": 187.265625,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 12.8084087174884,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 0,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					473.179809570312
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					483.634582519531
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					439.894683837891
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 5.56045532226562,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					467.122253417969
+				]
+			],
+			"rear_error_px": 1.16079711914062,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 1.03132430700437,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					473.179809570312
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 97.3239517211914,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.00006103515625,
+			"muzzle_pixels": [
+				[
+					686.747863769531,
+					499.973449707031
+				]
+			],
+			"rear_error_px": 183.166595458984,
+			"right_grip_error_m": 0.0000000842936955791629,
+			"sight_axis_error_degrees": 12.8084053023939,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 0,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					473.179809570312
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 0,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 83.1588287353516,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					696.042236328125,
+					493.020751953125
+				]
+			],
+			"rear_error_px": 184.306869506836,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 12.8084070099411,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 1,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					492.568481445312
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					505.793212890625
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					450.464599609375
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 16.7904357910156,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.00006103515625,
+			"muzzle_pixels": [
+				[
+					640.0,
+					477.047760009766
+				]
+			],
+			"rear_error_px": 3.17462158203125,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 2.81895119193602,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					492.568481445312
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 83.3037338256836,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					696.042236328125,
+					508.253356933594
+				]
+			],
+			"rear_error_px": 177.963439941406,
+			"right_grip_error_m": 0.0000000894069671630859,
+			"sight_axis_error_degrees": 12.8084078637148,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 1,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					492.568481445312
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 1,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 115.160186767578,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					671.250061035156,
+					476.425323486328
+				]
+			],
+			"rear_error_px": 204.592498779297,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 12.8084087174884,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 2,
+			"weight": 0.0
+		},
+		{
+			"fov": 24.0646591186523,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					579.750915527344
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					473.599060058594
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					435.107635498047
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 24.0646591186523,
+			"front_error_px": 30.6799926757812,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.00006103515625,
+			"muzzle_pixels": [
+				[
+					640.0,
+					533.27734375
+				]
+			],
+			"rear_error_px": 0.153350830078125,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 2.40642228021924,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 24.0646591186523,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					579.750915527344
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 112.699699401855,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					670.193664550781,
+					488.251678466797
+				]
+			],
+			"rear_error_px": 197.580429077148,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 12.8084061561675,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 2,
+			"weight": 0.0
+		},
+		{
+			"fov": 24.0646591186523,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					579.750915527344
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 2,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 101.909492492676,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.0000682393801980652,
+			"muzzle_pixels": [
+				[
+					654.039001464844,
+					481.424896240234
+				],
+				[
+					725.1298828125,
+					480.769165039062
+				]
+			],
+			"rear_error_px": 185.523681640625,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 12.8084061561675,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 3,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0000682393801980652,
+			"muzzle_pixels": [
+				[
+					583.9716796875,
+					470.035369873047
+				],
+				[
+					696.0283203125,
+					470.035369873047
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					575.96728515625,
+					480.040924072266
+				],
+				[
+					704.03271484375,
+					480.040924072266
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					609.455627441406,
+					438.180480957031
+				],
+				[
+					670.544372558594,
+					438.180480957031
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 15.3596801757812,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					581.679565429688,
+					452.603637695312
+				],
+				[
+					698.320434570312,
+					452.603637695312
+				]
+			],
+			"rear_error_px": 3.33013916015625,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 2.92208704840321,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0000682393801980652,
+			"muzzle_pixels": [
+				[
+					583.9716796875,
+					470.035369873047
+				],
+				[
+					696.0283203125,
+					470.035369873047
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 101.718536376953,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.00006103515625,
+			"muzzle_pixels": [
+				[
+					649.508239746094,
+					471.979949951172
+				],
+				[
+					720.489440917969,
+					459.797973632812
+				]
+			],
+			"rear_error_px": 180.747406005859,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 12.8084061561675,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 3,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0000682393801980652,
+			"muzzle_pixels": [
+				[
+					583.9716796875,
+					470.035369873047
+				],
+				[
+					696.0283203125,
+					470.035369873047
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 3,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 97.3641510009766,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					695.010192871094,
+					493.402648925781
+				]
+			],
+			"rear_error_px": 186.592926025391,
+			"right_grip_error_m": 0.0000000842936955791629,
+			"sight_axis_error_degrees": 12.8084078637148,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 4,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					484.647064208984
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					496.740112304688
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					446.146179199219
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 4.55612182617188,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					479.840972900391
+				]
+			],
+			"rear_error_px": 0.960235595703125,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 0.859436833568886,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					484.647064208984
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 97.3640289306641,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.00006103515625,
+			"muzzle_pixels": [
+				[
+					695.010192871094,
+					507.065704345703
+				]
+			],
+			"rear_error_px": 181.799987792969,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 12.8084095712621,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 4,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					484.647064208984
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 4,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 96.7438583374023,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					680.171569824219,
+					474.541961669922
+				]
+			],
+			"rear_error_px": 182.259521484375,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 12.8084061561675,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 5,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					473.740478515625
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					484.275329589844
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					440.200347900391
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 13.5658874511719,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					457.292449951172
+				]
+			],
+			"rear_error_px": 2.88113403320312,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 2.57831146120201,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					473.740478515625
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 92.7739791870117,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0000682393801980652,
+			"muzzle_pixels": [
+				[
+					678.387023925781,
+					488.452484130859
+				]
+			],
+			"rear_error_px": 172.572509765625,
+			"right_grip_error_m": 0.0000000894069671630859,
+			"sight_axis_error_degrees": 12.8084061561675,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 5,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					473.740478515625
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 5,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 93.6643905639648,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					675.063720703125,
+					485.052337646484
+				]
+			],
+			"rear_error_px": 188.119979858398,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 12.8084095712621,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 6,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					468.904357910156
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					478.748352050781
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					437.563873291016
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 8.633544921875,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					458.658081054688
+				]
+			],
+			"rear_error_px": 1.73745727539062,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 1.54698480632011,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					468.904357910156
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 95.2119750976562,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					675.063720703125,
+					497.202911376953
+				]
+			],
+			"rear_error_px": 184.878189086914,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 12.8084095712621,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 6,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					468.904357910156
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 6,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 88.7904586791992,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					675.063720703125,
+					484.206726074219
+				]
+			],
+			"rear_error_px": 184.863311767578,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 12.8084044486202,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 7,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					477.256408691406
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.00006103515625,
+			"muzzle_pixels": [
+				[
+					640.0,
+					488.293579101562
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					442.117095947266
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 17.8583679199219,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					456.819519042969
+				]
+			],
+			"rear_error_px": 3.49417114257812,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 3.09397217396117,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					477.256408691406
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 88.8949890136719,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					675.063720703125,
+					497.427276611328
+				]
+			],
+			"rear_error_px": 179.16650390625,
+			"right_grip_error_m": 0.0000000596046447753906,
+			"sight_axis_error_degrees": 12.8084053023939,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 7,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					477.256408691406
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 7,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 116.628273010254,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					688.188171386719,
+					484.353912353516
+				]
+			],
+			"rear_error_px": 206.010635375977,
+			"right_grip_error_m": 0.0000000421468477895814,
+			"sight_axis_error_degrees": 12.8084087174884,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 8,
+			"weight": 0.0
+		},
+		{
+			"fov": 28.6945457458496,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.0000863167442730628,
+			"muzzle_pixels": [
+				[
+					640.0,
+					564.956176757812
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					481.049652099609
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					438.661651611328
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 28.6945457458496,
+			"front_error_px": 16.2588195800781,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					542.959411621094
+				]
+			],
+			"rear_error_px": 0.187225341796875,
+			"right_grip_error_m": 0.0000000298023223876953,
+			"sight_axis_error_degrees": 1.54698587353717,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 28.6945457458496,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.0000863167442730628,
+			"muzzle_pixels": [
+				[
+					640.0,
+					564.956176757812
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 115.583778381348,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					687.253051757812,
+					497.761444091797
+				]
+			],
+			"rear_error_px": 200.778869628906,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 12.8084070099411,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 8,
+			"weight": 0.0
+		},
+		{
+			"fov": 28.6945457458496,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.0000863167442730628,
+			"muzzle_pixels": [
+				[
+					640.0,
+					564.956176757812
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 8,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 109.782676696777,
+			"label": "hip",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					688.768249511719,
+					474.368896484375
+				]
+			],
+			"rear_error_px": 182.705093383789,
+			"right_grip_error_m": 0.000000066640019724673,
+			"sight_axis_error_degrees": 12.8084078637148,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 9,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "ads",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					471.623809814453
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"target_gap_opaque_pixels": 0,
+			"weapon": 9,
+			"weight": 1.0
+		},
+		{
+			"fov": 55.0,
+			"front_error_px": 0.0,
+			"label": "fov-55",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					481.856292724609
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 9,
+			"weight": 1.0
+		},
+		{
+			"fov": 95.0,
+			"front_error_px": 0.0,
+			"label": "fov-95",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					439.046417236328
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 9,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 3.14404296875,
+			"label": "recoil",
+			"muzzle_mapping_error_px": 0.0,
+			"muzzle_pixels": [
+				[
+					640.0,
+					467.485229492188
+				]
+			],
+			"rear_error_px": 0.764892578125,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.687548666442316,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 9,
+			"weight": 1.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					471.623809814453
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 9,
+			"weight": 1.0
+		},
+		{
+			"fov": 75.0,
+			"front_error_px": 105.30184173584,
+			"label": "reload",
+			"muzzle_mapping_error_px": 0.0000682393801980652,
+			"muzzle_pixels": [
+				[
+					686.424682617188,
+					488.835479736328
+				]
+			],
+			"rear_error_px": 173.700347900391,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 12.8084078637148,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 9,
+			"weight": 0.0
+		},
+		{
+			"fov": 61.5,
+			"front_error_px": 0.0,
+			"label": "reload-recovered",
+			"muzzle_mapping_error_px": 0.000030517578125,
+			"muzzle_pixels": [
+				[
+					640.0,
+					471.623809814453
+				]
+			],
+			"rear_error_px": 0.0,
+			"right_grip_error_m": 0.0,
+			"sight_axis_error_degrees": 0.0,
+			"size": [
+				1280,
+				800
+			],
+			"weapon": 9,
+			"weight": 1.0
+		}
+	]
+}

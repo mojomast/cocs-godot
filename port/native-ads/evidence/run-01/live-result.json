@@ -1,0 +1,26 @@
+{
+	"ads_seen": true,
+	"aim_release_seen": true,
+	"captures": [
+		"pulse",
+		"pulse-ads",
+		"weapon-1",
+		"weapon-1-ads",
+		"reload",
+		"switched-back"
+	],
+	"distance": 34.2688941955566,
+	"frame_p50_ms": 33.3333333333333,
+	"input": "engine physical-key/mouse events",
+	"max_aim_weight": 1.0,
+	"normal_rate": true,
+	"pass": true,
+	"private_adapter": true,
+	"reload_seen": true,
+	"rig_recoils": 75,
+	"snapshot_samples": 435,
+	"source_weapons": [
+		0,
+		1
+	]
+}

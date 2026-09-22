@@ -30,7 +30,11 @@ class Session extends Node3D:
 	var received_pose := true
 	var application_focused := true
 	var captured := true
-	func weapon_controls_active() -> bool: return captured
+	var aiming := false
+	# Arms Race forbids manual selection but can still aim/render its granted gun.
+	func weapon_controls_active() -> bool: return false
+	func can_capture_pointer() -> bool: return captured
+	func aim_requested() -> bool: return aiming
 	func _ready() -> void:
 		add_child(camera)
 		add_child(client)
@@ -46,12 +50,22 @@ func check(ok: bool, message: String) -> void:
 func _initialize() -> void: call_deferred("run")
 
 func run() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	var session := Session.new()
 	root.add_child(session)
 	var binding := Binding.new()
 	session.add_child(binding)
 	binding.bind_session(session)
 	check(binding.rig.showing,"bound to active source policy")
+	check(not session.weapon_controls_active() and binding.rig.showing, "Arms Race weapon selection restriction does not hide weapon")
+	session.aiming = true
+	binding.refresh()
+	check(binding.rig.aim_requested, "responsive local aim intent independent of snapshot ADS")
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	binding.refresh()
+	check(not binding.rig.showing and not binding.rig.aim_requested, "actual pointer release clears ADS")
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	binding.refresh()
 	var event := {"type":"shot","id":1,"time":1.0,"actor":7,"weapon":0}
 	session.client.events.emit([event])
 	check(binding.rig.recoil_count == 1,"source event signal hooked")

@@ -34,11 +34,21 @@ func refresh() -> void:
 		_last_actor = id
 	# Existing session owns focus, capture, snapshot freshness and lifecycle policy.
 	var allowed: bool = phase == 3 and id >= 0 and Rig.identity(session.presentation.local_actor.get("id")) == id and session.client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN and not session.client.spectating and session.received_pose and session.application_focused and not session.snapshot_watch.stale() and session.presentation.lifecycle.can_control()
-	if allowed and session.has_method("weapon_controls_active"):
-		allowed = session.weapon_controls_active()
-	elif allowed and session.has_method("can_capture_pointer"):
+	if allowed and session.has_method("can_capture_pointer"):
 		allowed = session.can_capture_pointer()
+	allowed = allowed and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 	rig.apply_actor(session.presentation.local_actor, allowed)
+	var aiming := false
+	if allowed:
+		if session.has_method("aim_requested"):
+			aiming = session.aim_requested() == true
+		elif session.has_method("weapon_aim_active"):
+			aiming = session.weapon_aim_active() == true
+		elif "aiming" in session:
+			aiming = session.aiming == true
+		else:
+			aiming = session.presentation.local_actor.get("aiming", session.presentation.local_actor.get("ads", false)) == true
+	rig.apply_aim(aiming)
 	var angles := Vector2(session.camera.rotation.y, session.camera.rotation.x)
 	if allowed and _had_angles:
 		rig.apply_look_delta(Vector2(wrapf(angles.x - _last_angles.x, -PI, PI), angles.y - _last_angles.y))
@@ -55,3 +65,15 @@ func _process(_delta: float) -> void:
 func clear_round() -> void:
 	rig.reset()
 	_had_angles = false
+
+func get_aim_state(base_fov: float = 75.0) -> Dictionary:
+	return rig.get_aim_state(base_fov)
+
+func get_muzzle_count() -> int:
+	return rig.get_muzzle_count()
+
+func get_muzzle_world_transform(index: int = 0) -> Transform3D:
+	return rig.get_muzzle_world_transform(index)
+
+func get_muzzle_screen_position(index: int = 0) -> Vector2:
+	return rig.get_muzzle_screen_position(index)

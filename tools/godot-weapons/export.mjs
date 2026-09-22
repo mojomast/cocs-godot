@@ -4,6 +4,9 @@ import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
 import {buildWeaponBody} from '../../game/weapon-models/index.mjs';
 import {CHASSIS} from '../../game/weapon-models/chassis.mjs';
 import {WEAPONS} from '../../game/data.mjs';
+import {ADS_PROFILES} from '../../game/weapon-ads.mjs';
+import {resolveActiveSight} from '../../game/reticle.mjs';
+import {solveSightPose} from '../../game/sights.mjs';
 import {mkdir, writeFile, readFile, readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 
@@ -14,8 +17,8 @@ const root=new URL('../../',import.meta.url), out=new URL('godot/first_person/ge
 await mkdir(out,{recursive:true});
 const sha=data=>createHash('sha256').update(data).digest('hex');
 const sources={};
-for(const file of ['game/data.mjs','game/model-geometry.mjs','game/sights.mjs',...(await readdir(new URL('game/weapon-models/',root))).filter(n=>n.endsWith('.mjs')).map(n=>'game/weapon-models/'+n)]) sources[file]=sha(await readFile(new URL(file,root)));
-const manifest={schema:1,sourceBaseline:'b0ac0b54aa6d815e4d61f63e929612069e2c3d11',sources,weapons:[]};
+for(const file of ['game/data.mjs','game/model-geometry.mjs','game/sights.mjs','game/weapon-ads.mjs','game/reticle.mjs',...(await readdir(new URL('game/weapon-models/',root))).filter(n=>n.endsWith('.mjs')).map(n=>'game/weapon-models/'+n)]) sources[file]=sha(await readFile(new URL(file,root)));
+const manifest={schema:2,sourceBaseline:'64da4bc',sources,weapons:[]};
 for(let id=0;id<WEAPONS.length;id++) {
   const info=WEAPONS[id], group=new T.Group();group.name='weapon';
   const materials=new Map(), geometries=new Map();
@@ -55,10 +58,34 @@ for(let id=0;id<WEAPONS.length;id++) {
     if(!assemblies.has(name)){const p=new T.Group();p.name=name;if(owner)owner.matrixWorld.decompose(p.position,p.quaternion,p.scale);baked.add(p);assemblies.set(name,p);}
     const geometry=mergeGeometries(gs), mesh=new T.Mesh(geometry,material);mesh.name=name+'-'+material.name;triangles+=geometry.attributes.position.count/3;assemblies.get(name).add(mesh);
   }
+  const ch=CHASSIS[id], sights=group.userData.sights;
+  if(!sights?.rear||!sights?.front)throw new Error(`Missing authored sight anchors: ${id}`);
+  const point=p=>[p.x,p.y,p.z];
+  const muzzles=(id===3?[-.12,.12]:[0]).map(x=>[x,ch[4],ch[3]]);
+  const barrel=parts.barrel;
+  const anchors={};
+  // Anchor coordinates are authored in weapon space, then rebased into the
+  // *same* moving assembly as the source geometry (not a static muzzle table).
+  function anchor(name,position,owner=null){
+    const p=new T.Object3D();p.name=name;p.position.fromArray(position);
+    const parent=owner?assemblies.get(owner.name):baked;
+    if(!parent)throw new Error(`Missing anchor parent: ${name}`);
+    if(owner)p.position.applyMatrix4(owner.matrixWorld.clone().invert());
+    parent.add(p);anchors[name]={parent:owner?.name||'weapon',position:p.position.toArray(),weaponPosition:position};
+  }
+  muzzles.forEach((p,i)=>anchor(`Muzzle${i}`,p,barrel));
+  anchor('SightRear',point(sights.rear));anchor('SightFront',point(sights.front));
+  anchor('OpticCenter',point(sights.rear));
+  // Contact stations follow the source chassis grip, handguard and feed shapes.
+  anchor('GripRight',[.018,ch[4]-ch[1]/2-.09,-.035]);
+  anchor('GripSupport',[-.025,ch[4]-ch[1]*.45-.04,-ch[2]-.065],id===3?barrel:null);
+  const feedPoint=id===1?[-.10,ch[4]-.16,-.30]:id===3?[-.055,ch[4]-.07,-.18]:id===5?[-.08,ch[4]-.23,-.25]:[id===7?-.09:-.025,ch[4]-ch[1]/2-.15,-.28];
+  anchor('GripReload',feedPoint,parts.magazine);
+  const ads={...ADS_PROFILES[id],...resolveActiveSight({weapon:id,aiming:true}),pose:solveSightPose(sights.rear,sights.front)};
   const bytes=Buffer.from(await new GLTFExporter().parseAsync(scene,{binary:true,onlyVisible:true}));
   const file=`weapon-${id}.glb`;await writeFile(new URL(file,out),bytes);
-  const bounds=new T.Box3().setFromObject(group), ch=CHASSIS[id];
-  manifest.weapons.push({id,name:info.name,file,sha256:sha(bytes),bytes:bytes.length,triangles,meshInstances:buckets.size,bounds:[bounds.min.toArray(),bounds.max.toArray()],muzzles:(id===3?[-.12,.12]:[0]).map(x=>[x,ch[4],ch[3]]),color:info.color,kick:info.feel.kick,muzzle:info.feel.muzzle});
+  const bounds=new T.Box3().setFromObject(group);
+  manifest.weapons.push({id,name:info.name,file,sha256:sha(bytes),bytes:bytes.length,triangles,meshInstances:buckets.size,bounds:[bounds.min.toArray(),bounds.max.toArray()],muzzles,anchors,ads,color:info.color,kick:info.feel.kick,muzzle:info.feel.muzzle});
 }
 await writeFile(new URL('manifest.json',out),JSON.stringify(manifest,null,2)+'\n');
 // A native script resource is automatically included by all_resources exports.

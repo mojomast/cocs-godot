@@ -33,6 +33,16 @@ var expired_time := -INF
 var parts: Dictionary = {}
 var rest: Dictionary = {}
 var _attached := false
+var aim_requested := false
+var aim_target := 0.0
+var aim_weight := 0.0
+var aim_blocked := false
+var external_muzzle_fx := false
+var anchors: Dictionary = {}
+var wrists: Dictionary = {}
+var forearms: Dictionary = {}
+var elbows: Dictionary = {}
+var ads_pose := Transform3D.IDENTITY
 
 func attach_to(camera: Camera3D) -> void:
 	assert(is_inside_tree(), "Add the rig to the session before attach_to")
@@ -72,11 +82,14 @@ func attach_to(camera: Camera3D) -> void:
 	rim.light_energy = 1.1
 	viewport.add_child(rim)
 	pivot = Node3D.new()
+	pivot.name = "WeaponPose"
 	viewport.add_child(pivot)
 	hands = Node3D.new()
+	hands.name = "ArmsRig"
 	pivot.add_child(hands)
 	_build_hands()
 	flash = Node3D.new()
+	flash.name = "BarrelFlash"
 	pivot.add_child(flash)
 	flash.hide()
 	overlay = CanvasLayer.new()
@@ -113,8 +126,40 @@ func apply_actor(actor: Dictionary, can_show: bool) -> void:
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS if eligible else SubViewport.UPDATE_DISABLED
 	speed = minf(12.0, Vector2(number(actor.get("vx")), number(actor.get("vz"))).length()) if eligible and actor.get("grounded", true) != false else 0.0
 	reloading = eligible and actor.get("reloading", false) == true
+	aim_blocked = reloading or actor.get("sprinting", false) == true or number(actor.get("weaponSwitch")) > 0.0
+	if aim_blocked:
+		aim_requested = false
+		aim_target = 0.0
 	var duration := number(actor.get("reloadDuration"))
 	reload_progress = clampf(1.0 - number(actor.get("reloadTimer"), duration) / duration, 0.0, 1.0) if reloading and duration > 0 else 0.0
+
+func apply_aim(active: bool, weight: float = 1.0) -> bool:
+	aim_requested = active and showing and not aim_blocked and is_finite(weight) and weight > 0.0
+	aim_target = clampf(weight, 0.0, 1.0) if aim_requested else 0.0
+	return aim_requested
+
+func get_aim_state(base_fov: float = 75.0) -> Dictionary:
+	var base := clampf(number(base_fov, 75.0), 30.0, 130.0)
+	var info: Dictionary = manifest.weapons[current_weapon].ads if current_weapon >= 0 else {}
+	var mag := float(info.get("magnification", 1.0))
+	var target_fov := maxf(55.0, base * 0.82) if mag <= 1.0001 else maxf(12.0, minf(base, rad_to_deg(2.0 * atan(tan(deg_to_rad(base) * 0.5) / mag))))
+	return {"active": aim_requested, "weight": aim_weight, "ready": showing and aim_requested and not reloading and switch_remaining <= 0.0 and aim_weight >= 0.98, "kind": info.get("kind", "iron"), "magnification": mag, "fov": lerpf(base, target_fov, aim_weight)}
+
+func get_muzzle_count() -> int:
+	return manifest.weapons[current_weapon].muzzles.size() if showing and current_weapon >= 0 else 0
+
+func get_muzzle_world_transform(index: int = 0) -> Transform3D:
+	if index < 0 or index >= get_muzzle_count() or not is_instance_valid(source_camera): return Transform3D.IDENTITY
+	# Camera transform includes Camera3D h/v offsets. Both cameras share projection.
+	return source_camera.get_camera_transform() * weapon_camera.get_camera_transform().affine_inverse() * anchors["Muzzle%d" % index].global_transform
+
+func get_muzzle_screen_position(index: int = 0) -> Vector2:
+	if index < 0 or index >= get_muzzle_count(): return Vector2(INF, INF)
+	return weapon_camera.unproject_position(anchors["Muzzle%d" % index].global_position)
+
+func get_sight_screen_positions() -> Dictionary:
+	if not showing: return {}
+	return {"rear": weapon_camera.unproject_position(anchors.SightRear.global_position), "front": weapon_camera.unproject_position(anchors.SightFront.global_position), "optic": weapon_camera.unproject_position(anchors.OpticCenter.global_position)}
 
 func apply_events(events: Array, local_id: int) -> void:
 	# Consume hidden events as well, so unfocus/stale/death recovery cannot replay fire.
@@ -162,6 +207,7 @@ func _select_weapon(id: int) -> void:
 		weapon.free()
 	parts.clear()
 	rest.clear()
+	anchors.clear()
 	if not scenes.has(id): scenes[id] = load("res://first_person/generated/weapon-%d.glb" % id)
 	weapon = scenes[id].instantiate()
 	pivot.add_child(weapon)
@@ -177,6 +223,15 @@ func _select_weapon(id: int) -> void:
 			parts[name] = part
 			rest[name] = part.transform
 	current_weapon = id
+	for name: String in manifest.weapons[id].anchors:
+		anchors[name] = weapon.find_child(name, true, false)
+		assert(anchors[name] != null, "Missing exported anchor: " + name)
+	# Solve from the imported, actual sight nodes, rather than a shared ADS offset.
+	var rear: Vector3 = pivot.to_local(anchors.SightRear.global_position)
+	var front: Vector3 = pivot.to_local(anchors.SightFront.global_position)
+	var orientation := Basis(Quaternion((front - rear).normalized(), Vector3.FORWARD))
+	var rotated_rear := orientation * rear
+	ads_pose = Transform3D(orientation, Vector3(-rotated_rear.x, -rotated_rear.y, -float(manifest.weapons[id].ads.pose.distance)))
 	build_count += 1
 	switch_remaining = 0.22
 	for child: Node in flash.get_children(): child.free()
@@ -188,12 +243,11 @@ func _select_weapon(id: int) -> void:
 	mesh.height = mesh.radius * 4.5
 	mesh.radial_segments = 8
 	mesh.rings = 4
-	for xyz: Array in manifest.weapons[id].muzzles:
+	for index: int in manifest.weapons[id].muzzles.size():
 		var flare := MeshInstance3D.new()
+		flare.name = "MuzzleFlash%d" % index
 		flare.mesh = mesh
 		flare.material_override = material
-		flare.position = Vector3(xyz[0], xyz[1], xyz[2] - 0.025)
-		flare.rotation.x = PI / 2.0
 		flare.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		flash.add_child(flare)
 
@@ -205,6 +259,9 @@ func _sync_camera() -> void:
 	if viewport.size != size: viewport.size = size.max(Vector2i(1, 1))
 	weapon_camera.fov = source_camera.fov
 	weapon_camera.keep_aspect = source_camera.keep_aspect
+	weapon_camera.projection = source_camera.projection
+	weapon_camera.size = source_camera.size
+	weapon_camera.frustum_offset = source_camera.frustum_offset
 	image.size = Vector2(size)
 
 func _process(delta: float) -> void:
@@ -220,26 +277,44 @@ func advance(delta: float) -> void:
 	recoil = move_toward(recoil, 0.0, dt * float(info.kick[2]))
 	flash_remaining = maxf(0.0, flash_remaining - dt)
 	switch_remaining = maxf(0.0, switch_remaining - dt)
+	var target := aim_target if not reloading and switch_remaining <= 0.0 else 0.0
+	var rate := float(info.ads.enter if target > aim_weight else info.ads.exit)
+	aim_weight = lerpf(aim_weight, target, 1.0 - exp(-dt * rate))
+	if absf(aim_weight - target) < 0.00001: aim_weight = target
 	look_lag *= exp(-dt * 12.0)
 	var bob := minf(speed / 8.0, 1.0) if not reduced_motion else 0.0
 	var breathe := sin(age * 1.7) * 0.0015 if not reduced_motion else 0.0
 	var reload_curve := sin(reload_progress * PI) if reloading else 0.0
 	# Hip pose: muzzle sits below/right of the center ray, receiver and arms remain above HUD.
-	pivot.position = Vector3(0.34 + sin(age * 8.0) * bob * 0.004, -0.26 + breathe + cos(age * 16.0) * bob * 0.003 - switch_remaining * 0.32 - reload_curve * 0.045, -0.88 + recoil * float(info.kick[0]) * 0.45)
-	pivot.rotation = Vector3(-0.04 + recoil * float(info.kick[1]) * (0.25 if reduced_motion else 0.6) + look_lag.y, 0.22 + look_lag.x, -0.025 + reload_curve * 0.16)
-	flash.visible = flash_remaining > 0
+	var hip := Transform3D(Basis.from_euler(Vector3(-0.04, 0.22, -0.025)), Vector3(0.34, -0.26, -0.88))
+	pivot.transform = hip.interpolate_with(ads_pose, aim_weight)
+	# Keep settled neutral sights exactly on the camera ray. Recoil is deliberately
+	# visible, then recovers; idle/locomotion/lag fade out as cheek weld completes.
+	var free_motion := 1.0 - aim_weight
+	pivot.position += Vector3(sin(age * 8.0) * bob * 0.004 * free_motion, (breathe + cos(age * 16.0) * bob * 0.003) * free_motion - switch_remaining * 0.32 - reload_curve * 0.045, recoil * float(info.kick[0]) * 0.45)
+	pivot.basis *= Basis.from_euler(Vector3(recoil * float(info.kick[1]) * (0.25 if reduced_motion else 0.6) + look_lag.y * free_motion, look_lag.x * free_motion, reload_curve * 0.16))
+	flash.visible = flash_remaining > 0 and not external_muzzle_fx
 	for name: String in parts:
 		var part: Node3D = parts[name]
 		part.transform = rest[name]
 		if name == "bolt": part.position.z += recoil * 0.024
 		if reloading and name == "feed": part.position.y -= reload_curve * 0.09
 		if reloading and name == "barrel-assembly" and current_weapon == 3: part.rotation.x += reload_curve * 0.25
+	_update_hands()
+	# Includes break-action motion, recoil, ADS, switch and reload transforms.
+	for index: int in flash.get_child_count():
+		var flare := flash.get_child(index) as Node3D
+		flare.global_transform = anchors["Muzzle%d" % index].global_transform * Transform3D(Basis(Vector3.RIGHT, PI / 2.0), Vector3(0, 0, -0.025))
 
 func _clear_motion() -> void:
 	recoil = 0.0
 	flash_remaining = 0.0
 	switch_remaining = 0.0
 	look_lag = Vector2.ZERO
+	aim_requested = false
+	aim_target = 0.0
+	aim_weight = 0.0
+	aim_blocked = false
 	reloading = false
 	reload_progress = 0.0
 	if is_instance_valid(flash): flash.hide()
@@ -270,46 +345,73 @@ func _exit_tree() -> void:
 			node.mesh = null
 
 func _build_hands() -> void:
-	# Two low-cost combined meshes: gloved palms/fingers and armored forearms/cuffs.
+	# Rigid articulated hierarchy: independent Wrist / Elbow / Forearm nodes.
+	# Grips are constrained to imported stations, not baked into one static mesh.
 	var glove := StandardMaterial3D.new()
 	glove.albedo_color = Color("26343b")
 	glove.roughness = 0.88
 	var sleeve := StandardMaterial3D.new()
 	sleeve.albedo_color = Color("506168")
 	sleeve.roughness = 0.72
-	var gloves := SurfaceTool.new()
-	var sleeves := SurfaceTool.new()
-	gloves.begin(Mesh.PRIMITIVE_TRIANGLES)
-	sleeves.begin(Mesh.PRIMITIVE_TRIANGLES)
 	for side: int in [-1, 1]:
-		var palm := Vector3(0.012, -0.16, -0.03) if side == 1 else Vector3(-0.09, -0.13, -0.44)
-		var elbow := Vector3(0.27, -0.38, 0.32) if side == 1 else Vector3(-0.30, -0.38, 0.11)
+		var limb := Node3D.new()
+		limb.name = "RightArm" if side == 1 else "LeftArm"
+		hands.add_child(limb)
+		var wrist := Node3D.new()
+		wrist.name = "Wrist"
+		limb.add_child(wrist)
+		wrists[side] = wrist
+		var elbow := Node3D.new()
+		elbow.name = "Elbow"
+		limb.add_child(elbow)
+		elbows[side] = elbow
+		var gloves := SurfaceTool.new()
+		gloves.begin(Mesh.PRIMITIVE_TRIANGLES)
 		var sphere := SphereMesh.new()
 		sphere.radius = 1.0
 		sphere.height = 2.0
 		sphere.radial_segments = 12
 		sphere.rings = 6
-		gloves.append_from(sphere, 0, Transform3D(Basis.from_scale(Vector3(0.051, 0.066, 0.057)), palm))
+		gloves.append_from(sphere, 0, Transform3D(Basis.from_scale(Vector3(0.044, 0.057, 0.047)), Vector3.ZERO))
 		for finger: int in 4:
-			gloves.append_from(sphere, 0, Transform3D(Basis.from_scale(Vector3(0.014, 0.018, 0.041)), palm + Vector3(-0.035 + finger * 0.023, 0.025, -0.027)))
-		gloves.append_from(sphere, 0, Transform3D(Basis.from_scale(Vector3(0.023, 0.043, 0.022)), palm + Vector3(side * 0.046, 0.01, 0.015)))
+			gloves.append_from(sphere, 0, Transform3D(Basis.from_scale(Vector3(0.012, 0.016, 0.034)), Vector3(-0.031 + finger * 0.021, 0.026, -0.027)))
+		gloves.append_from(sphere, 0, Transform3D(Basis.from_scale(Vector3(0.019, 0.035, 0.02)), Vector3(side * 0.037, 0.01, 0.015)))
+		var palm := MeshInstance3D.new()
+		palm.name = "Glove"
+		palm.mesh = gloves.commit()
+		palm.material_override = glove
+		palm.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		wrist.add_child(palm)
 		var arm := CylinderMesh.new()
 		arm.top_radius = 0.054
 		arm.bottom_radius = 0.075
-		arm.height = elbow.distance_to(palm)
+		arm.height = 1.0
 		arm.radial_segments = 12
-		var axis := (palm - elbow).normalized()
-		var basis := Basis(Quaternion(Vector3.UP, axis))
-		sleeves.append_from(arm, 0, Transform3D(basis, (palm + elbow) * 0.5))
-		var cuff := CylinderMesh.new()
-		cuff.top_radius = 0.058
-		cuff.bottom_radius = 0.061
-		cuff.height = 0.065
-		cuff.radial_segments = 12
-		gloves.append_from(cuff, 0, Transform3D(basis, palm - axis * 0.055))
-	for pair: Array in [[gloves, glove], [sleeves, sleeve]]:
-		var mesh := MeshInstance3D.new()
-		mesh.mesh = pair[0].commit()
-		mesh.material_override = pair[1]
-		mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		hands.add_child(mesh)
+		var forearm := MeshInstance3D.new()
+		forearm.name = "Forearm"
+		forearm.mesh = arm
+		forearm.material_override = sleeve
+		forearm.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		elbow.add_child(forearm)
+		forearms[side] = forearm
+
+func _update_hands() -> void:
+	if anchors.is_empty(): return
+	# Left hand leaves the fore-end, grips the feed through extraction/insertion,
+	# and returns. Right hand remains constrained to the pistol grip throughout.
+	var contact := 0.0
+	if reloading:
+		contact = smoothstep(0.04, 0.22, reload_progress) * (1.0 - smoothstep(0.78, 0.96, reload_progress))
+	for side: int in [-1, 1]:
+		var station: Node3D = anchors.GripRight if side == 1 else anchors.GripSupport
+		var target: Transform3D = hands.global_transform.affine_inverse() * station.global_transform
+		if side == -1 and contact > 0:
+			var feed: Transform3D = hands.global_transform.affine_inverse() * anchors.GripReload.global_transform
+			target = target.interpolate_with(feed, contact)
+		wrists[side].transform = target
+		wrists[side].basis *= Basis(Vector3.RIGHT, -0.22 if side == 1 else 0.18 * (1.0 - contact))
+		var elbow: Node3D = elbows[side]
+		elbow.position = Vector3(0.27, -0.38, 0.32) if side == 1 else Vector3(-0.30, -0.38, 0.11)
+		var delta: Vector3 = target.origin - elbow.position
+		var axis := delta.normalized()
+		forearms[side].transform = Transform3D(Basis(Quaternion(Vector3.UP, axis)) * Basis.from_scale(Vector3(1, maxf(0.01, delta.length() - 0.035), 1)), delta * 0.5)

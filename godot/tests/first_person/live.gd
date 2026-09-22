@@ -23,6 +23,10 @@ var reload_seen := false
 var first_recoil := 0
 var samples := 0
 var frame_times: Array[float] = []
+var right_down := false
+var ads_seen := false
+var aim_release_seen := false
+var max_aim := 0.0
 
 func _initialize() -> void:
 	for arg: String in OS.get_cmdline_user_args():
@@ -32,8 +36,11 @@ func _initialize() -> void:
 	call_deferred("bind")
 
 func bind() -> void:
-	binding = Binding.new()
-	session.add_child(binding) # The exact proposed shared hook; no source file modified.
+	if "first_person" in session and is_instance_valid(session.first_person):
+		binding = session.first_person
+	else:
+		binding = Binding.new()
+		session.add_child(binding)
 	grid.region = Rect2i(-51,-43,103,87)
 	grid.cell_size = Vector2.ONE
 	grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
@@ -78,6 +85,16 @@ func mouse(down: bool) -> void:
 func position_of(actor: Dictionary) -> Vector3:
 	return Vector3(actor.get("x",0),actor.get("y",0),actor.get("z",0))
 
+func aim(down: bool) -> void:
+	if right_down == down: return
+	right_down = down
+	var event := InputEventMouseButton.new()
+	event.button_index = MOUSE_BUTTON_RIGHT
+	event.pressed = down
+	event.position = root.size / 2
+	Input.parse_input_event(event)
+	Input.flush_buffered_events()
+
 func capture(tag: String) -> void:
 	if busy or captures.has(tag): return
 	busy = true
@@ -89,9 +106,10 @@ func capture(tag: String) -> void:
 func finish() -> void:
 	key(KEY_W,false)
 	mouse(false)
+	aim(false)
 	frame_times.sort()
-	var ok: bool = moved > 2.0 and switches.size() >= 2 and binding.rig.recoil_count > 3 and samples > 30
-	var report := {"normal_rate":true,"input":"engine physical-key/mouse events","private_adapter":true,"snapshot_samples":samples,"distance":moved,"source_weapons":switches.keys(),"rig_recoils":binding.rig.recoil_count,"reload_seen":reload_seen,"captures":captures.keys(),"frame_p50_ms":frame_times[frame_times.size()/2]*1000 if not frame_times.is_empty() else 0,"pass":ok}
+	var ok: bool = moved > 2.0 and switches.size() >= 2 and binding.rig.recoil_count > 3 and samples > 30 and ads_seen and aim_release_seen
+	var report := {"normal_rate":true,"input":"engine physical-key/mouse events","private_adapter":true,"snapshot_samples":samples,"distance":moved,"source_weapons":switches.keys(),"rig_recoils":binding.rig.recoil_count,"reload_seen":reload_seen,"ads_seen":ads_seen,"aim_release_seen":aim_release_seen,"max_aim_weight":max_aim,"captures":captures.keys(),"frame_p50_ms":frame_times[frame_times.size()/2]*1000 if not frame_times.is_empty() else 0,"pass":ok}
 	FileAccess.open(directory.path_join("live-result.json"),FileAccess.WRITE).store_string(JSON.stringify(report,"\t")+"\n")
 	print("FP_LIVE_RESULT ",JSON.stringify(report))
 	session.client.disconnect_server()
@@ -108,12 +126,16 @@ func _process(delta: float) -> bool:
 	if actor.is_empty() or float(actor.health) <= 0:
 		key(KEY_W,false)
 		mouse(false)
+		aim(false)
 		return false
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		mouse(false)
 		mouse(true)
 	if not session.weapon_controls_active(): return false
 	active_age += delta
+	max_aim = maxf(max_aim,binding.rig.aim_weight)
+	if binding.rig.get_aim_state().ready: ads_seen = true
+	if ads_seen and not right_down and binding.rig.aim_weight < 0.01: aim_release_seen = true
 	var pos := position_of(actor)
 	if not started:
 		started = true
@@ -130,10 +152,13 @@ func _process(delta: float) -> bool:
 				path = route
 		print("FP_LIVE_ROUTE ",target," nodes=",path.size())
 	moved = maxf(moved,pos.distance_to(origin))
-	if active_age < 1.0:
-		if active_age > 0.5: capture("pulse")
+	if active_age < 1.8:
+		if active_age > 0.3 and active_age < 0.6: capture("pulse")
+		aim(active_age > 0.6 and active_age < 1.6)
+		if active_age > 1.3 and binding.rig.get_aim_state().ready: capture("pulse-ads")
 		return false
 	if acquired < 0:
+		aim(false)
 		for i: int in range(1,10):
 			if session.weapon_selection.available(actor,i): acquired = i; break
 	if acquired < 0:
@@ -152,9 +177,11 @@ func _process(delta: float) -> bool:
 	else:
 		key(KEY_W,false)
 		switch_age += delta
+		aim(switch_age > 0.7 and switch_age < 2.5 or switch_age > 5.0 and switch_age < 6.0)
 		var code: int = KEY_0 if acquired == 9 else KEY_1+acquired
 		key(code,switch_age < 0.22)
 		if int(actor.weapon) == acquired and switch_age > 0.6: capture("weapon-%d" % acquired)
+		if int(actor.weapon) == acquired and binding.rig.get_aim_state().ready: capture("weapon-%d-ads" % acquired)
 		mouse(switch_age < 2.5 or switch_age > 5)
 		key(KEY_R,switch_age > 3 and switch_age < 3.3)
 		if switch_age > 3.5 and reload_seen: capture("reload")
