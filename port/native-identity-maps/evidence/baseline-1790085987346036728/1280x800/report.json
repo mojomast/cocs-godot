@@ -1,0 +1,116 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"engine": "4.5.2-stable (official)",
+	"maps": [
+		{
+			"build_ms": 49.148,
+			"cameras": [
+				{
+					"draw_calls": 353.0,
+					"file": "cinder-array-entrance-1280x800.png",
+					"id": "entrance",
+					"median_ms": 33.282,
+					"p95_ms": 42.071,
+					"primitives": 68402.0,
+					"video_memory_bytes": 15800003.0
+				},
+				{
+					"draw_calls": 255.0,
+					"file": "cinder-array-landmark-1280x800.png",
+					"id": "landmark",
+					"median_ms": 31.387,
+					"p95_ms": 37.298,
+					"primitives": 63302.0,
+					"video_memory_bytes": 15800003.0
+				},
+				{
+					"draw_calls": 253.0,
+					"file": "cinder-array-combat-1280x800.png",
+					"id": "combat",
+					"median_ms": 35.279,
+					"p95_ms": 40.42,
+					"primitives": 68106.0,
+					"video_memory_bytes": 15800003.0
+				},
+				{
+					"draw_calls": 276.0,
+					"file": "cinder-array-objective-1280x800.png",
+					"id": "objective",
+					"median_ms": 31.416,
+					"p95_ms": 36.548,
+					"primitives": 63776.0,
+					"video_memory_bytes": 15800003.0
+				},
+				{
+					"draw_calls": 351.0,
+					"file": "cinder-array-worst-1280x800.png",
+					"id": "worst",
+					"median_ms": 33.084,
+					"p95_ms": 36.898,
+					"primitives": 62804.0,
+					"video_memory_bytes": 15800003.0
+				}
+			],
+			"id": "cinder-array",
+			"map_class": "Node3D"
+		},
+		{
+			"build_ms": 47.557,
+			"cameras": [
+				{
+					"draw_calls": 627.0,
+					"file": "prism-foundry-entrance-1280x800.png",
+					"id": "entrance",
+					"median_ms": 123.964,
+					"p95_ms": 157.273,
+					"primitives": 195322.0,
+					"video_memory_bytes": 45638919.0
+				},
+				{
+					"draw_calls": 474.0,
+					"file": "prism-foundry-landmark-1280x800.png",
+					"id": "landmark",
+					"median_ms": 129.407,
+					"p95_ms": 136.569,
+					"primitives": 183095.0,
+					"video_memory_bytes": 45638919.0
+				},
+				{
+					"draw_calls": 510.0,
+					"file": "prism-foundry-combat-1280x800.png",
+					"id": "combat",
+					"median_ms": 166.684,
+					"p95_ms": 172.065,
+					"primitives": 190823.0,
+					"video_memory_bytes": 45638919.0
+				},
+				{
+					"draw_calls": 392.0,
+					"file": "prism-foundry-objective-1280x800.png",
+					"id": "objective",
+					"median_ms": 120.81,
+					"p95_ms": 128.543,
+					"primitives": 178530.0,
+					"video_memory_bytes": 45638919.0
+				},
+				{
+					"draw_calls": 603.0,
+					"file": "prism-foundry-worst-1280x800.png",
+					"id": "worst",
+					"median_ms": 94.912,
+					"p95_ms": 106.214,
+					"primitives": 194700.0,
+					"video_memory_bytes": 45638919.0
+				}
+			],
+			"id": "prism-foundry",
+			"map_class": "Node3D"
+		}
+	],
+	"renderer": "gl_compatibility",
+	"resolution": [
+		1280,
+		800
+	],
+	"scope": "Existing playable native DM map baseline, same warm-up/sample harness; software renderer; camera names are locations"
+}

@@ -1,0 +1,322 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"engine": "4.5.2-stable (official)",
+	"fx_quality": "High",
+	"glow": false,
+	"graybox": false,
+	"maps": [
+		{
+			"cameras": [
+				{
+					"draw_calls": 307.0,
+					"file": "lacuna-court-entrance-960x640.png",
+					"id": "entrance",
+					"median_ms": 23.193,
+					"p95_ms": 26.992,
+					"primitives": 32264.0,
+					"video_memory_bytes": 12952485.0
+				},
+				{
+					"draw_calls": 176.0,
+					"file": "lacuna-court-landmark-960x640.png",
+					"id": "landmark",
+					"median_ms": 23.517,
+					"p95_ms": 27.66,
+					"primitives": 22416.0,
+					"video_memory_bytes": 12952485.0
+				},
+				{
+					"draw_calls": 289.0,
+					"file": "lacuna-court-combat-960x640.png",
+					"id": "combat",
+					"median_ms": 32.692,
+					"p95_ms": 37.39,
+					"primitives": 34006.0,
+					"video_memory_bytes": 12952485.0
+				},
+				{
+					"draw_calls": 272.0,
+					"file": "lacuna-court-objective-960x640.png",
+					"id": "objective",
+					"median_ms": 29.959,
+					"p95_ms": 34.129,
+					"primitives": 28758.0,
+					"video_memory_bytes": 12952485.0
+				},
+				{
+					"draw_calls": 302.0,
+					"file": "lacuna-court-worst-960x640.png",
+					"id": "worst",
+					"median_ms": 27.982,
+					"p95_ms": 32.059,
+					"primitives": 27930.0,
+					"video_memory_bytes": 12952485.0
+				}
+			],
+			"environment": {
+				"ambient": "cfd6dd",
+				"ambient_energy": 0.52,
+				"backdrop": "9a917c",
+				"backdrop_darken": 0.42,
+				"disk_strength": 0.7,
+				"fog": "d8d3c4",
+				"fog_density": 0.00085,
+				"ground": "8a8271",
+				"horizon": "e8dcc2",
+				"panorama_rotation": 0.22,
+				"panorama_strength": 0.62,
+				"pitch": -46.0,
+				"scenery": "cut",
+				"scenery_dark": 0.3,
+				"silhouette": "6c6555",
+				"sky": "frost",
+				"sky_energy": 1.0,
+				"sun_color": "fff1d8",
+				"sun_energy": 1.45,
+				"yaw": -34.0,
+				"zenith": "5d7fae"
+			},
+			"geometry": {
+				"blocks": 18,
+				"build_ms": 24.29,
+				"detail_batches": 2,
+				"detail_instances": 48,
+				"fx": {
+					"active_emitters": 6,
+					"allocated": 2560,
+					"backend": "GPUParticles3D",
+					"budget": 32768,
+					"emitters": 6,
+					"gameplay_authority": false,
+					"gate_distance": 26.0,
+					"paused": false,
+					"per_frame_allocation": false,
+					"quality": "High",
+					"submitted_particles": 2560,
+					"suspended": false,
+					"texture_bytes": 0
+				},
+				"geometry_hash": "a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9",
+				"graybox": false,
+				"material_cells": 71,
+				"nodes": 117,
+				"surfaces": 5,
+				"texture_bytes": 106496,
+				"triangles": 5714,
+				"walls": 20
+			},
+			"id": "lacuna-court"
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 192.0,
+					"file": "vermilion-fold-entrance-960x640.png",
+					"id": "entrance",
+					"median_ms": 28.826,
+					"p95_ms": 32.534,
+					"primitives": 32564.0,
+					"video_memory_bytes": 12587235.0
+				},
+				{
+					"draw_calls": 215.0,
+					"file": "vermilion-fold-landmark-960x640.png",
+					"id": "landmark",
+					"median_ms": 29.639,
+					"p95_ms": 33.643,
+					"primitives": 36618.0,
+					"video_memory_bytes": 12587235.0
+				},
+				{
+					"draw_calls": 199.0,
+					"file": "vermilion-fold-combat-960x640.png",
+					"id": "combat",
+					"median_ms": 28.301,
+					"p95_ms": 32.271,
+					"primitives": 31166.0,
+					"video_memory_bytes": 12587235.0
+				},
+				{
+					"draw_calls": 189.0,
+					"file": "vermilion-fold-objective-960x640.png",
+					"id": "objective",
+					"median_ms": 31.442,
+					"p95_ms": 35.039,
+					"primitives": 30676.0,
+					"video_memory_bytes": 12587235.0
+				},
+				{
+					"draw_calls": 284.0,
+					"file": "vermilion-fold-worst-960x640.png",
+					"id": "worst",
+					"median_ms": 24.376,
+					"p95_ms": 28.076,
+					"primitives": 36513.0,
+					"video_memory_bytes": 12587235.0
+				}
+			],
+			"environment": {
+				"ambient": "d8cfc0",
+				"ambient_energy": 0.5,
+				"backdrop": "a08a71",
+				"backdrop_darken": 0.46,
+				"disk_strength": 0.55,
+				"fog": "ddc9ab",
+				"fog_density": 0.0007,
+				"ground": "87674f",
+				"horizon": "ecd0a8",
+				"panorama_rotation": 0.48,
+				"panorama_strength": 0.66,
+				"pitch": -40.0,
+				"scenery": "cut",
+				"scenery_dark": 0.34,
+				"silhouette": "6f6152",
+				"sky": "ashen",
+				"sky_energy": 0.9,
+				"sun_color": "ffdfae",
+				"sun_energy": 1.4,
+				"yaw": -24.0,
+				"zenith": "6d7590"
+			},
+			"geometry": {
+				"blocks": 14,
+				"build_ms": 23.18,
+				"detail_batches": 2,
+				"detail_instances": 52,
+				"fx": {
+					"active_emitters": 6,
+					"allocated": 650,
+					"backend": "GPUParticles3D",
+					"budget": 32768,
+					"emitters": 6,
+					"gameplay_authority": false,
+					"gate_distance": 26.0,
+					"paused": false,
+					"per_frame_allocation": false,
+					"quality": "High",
+					"submitted_particles": 650,
+					"suspended": false,
+					"texture_bytes": 0
+				},
+				"geometry_hash": "6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a",
+				"graybox": false,
+				"material_cells": 66,
+				"nodes": 84,
+				"surfaces": 1,
+				"texture_bytes": 100352,
+				"triangles": 8150,
+				"walls": 0
+			},
+			"id": "vermilion-fold"
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 406.0,
+					"file": "nacre-engine-entrance-960x640.png",
+					"id": "entrance",
+					"median_ms": 37.614,
+					"p95_ms": 41.938,
+					"primitives": 43637.0,
+					"video_memory_bytes": 13290723.0
+				},
+				{
+					"draw_calls": 255.0,
+					"file": "nacre-engine-landmark-960x640.png",
+					"id": "landmark",
+					"median_ms": 33.212,
+					"p95_ms": 36.914,
+					"primitives": 29988.0,
+					"video_memory_bytes": 13290723.0
+				},
+				{
+					"draw_calls": 401.0,
+					"file": "nacre-engine-combat-960x640.png",
+					"id": "combat",
+					"median_ms": 35.207,
+					"p95_ms": 40.524,
+					"primitives": 43039.0,
+					"video_memory_bytes": 13290723.0
+				},
+				{
+					"draw_calls": 323.0,
+					"file": "nacre-engine-objective-960x640.png",
+					"id": "objective",
+					"median_ms": 33.513,
+					"p95_ms": 35.699,
+					"primitives": 37308.0,
+					"video_memory_bytes": 13290723.0
+				},
+				{
+					"draw_calls": 407.0,
+					"file": "nacre-engine-worst-960x640.png",
+					"id": "worst",
+					"median_ms": 34.619,
+					"p95_ms": 39.865,
+					"primitives": 41907.0,
+					"video_memory_bytes": 13290723.0
+				}
+			],
+			"environment": {
+				"ambient": "9fb4c6",
+				"ambient_energy": 0.46,
+				"backdrop": "1d2733",
+				"backdrop_darken": 0.5,
+				"disk_strength": 0.0,
+				"fog": "2c3a4d",
+				"fog_density": 0.00075,
+				"ground": "222d3a",
+				"horizon": "58708a",
+				"panorama_rotation": 0.08,
+				"panorama_strength": 0.78,
+				"pitch": -52.0,
+				"scenery": "cut",
+				"scenery_dark": 0.42,
+				"silhouette": "27313d",
+				"sky": "void",
+				"sky_energy": 1.1,
+				"sun_color": "dfe9f5",
+				"sun_energy": 1.15,
+				"yaw": -30.0,
+				"zenith": "101c31"
+			},
+			"geometry": {
+				"blocks": 11,
+				"build_ms": 28.478,
+				"detail_batches": 2,
+				"detail_instances": 38,
+				"fx": {
+					"active_emitters": 7,
+					"allocated": 2450,
+					"backend": "GPUParticles3D",
+					"budget": 32768,
+					"emitters": 7,
+					"gameplay_authority": false,
+					"gate_distance": 26.0,
+					"paused": false,
+					"per_frame_allocation": false,
+					"quality": "High",
+					"submitted_particles": 2450,
+					"suspended": false,
+					"texture_bytes": 0
+				},
+				"geometry_hash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+				"graybox": false,
+				"material_cells": 94,
+				"movement_fences": 42,
+				"nodes": 235,
+				"surfaces": 1,
+				"texture_bytes": 99328,
+				"triangles": 8498,
+				"walls": 168
+			},
+			"id": "nacre-engine"
+		}
+	],
+	"renderer": "gl_compatibility",
+	"resolution": [
+		960,
+		640
+	],
+	"scope": "Static inspection renders; no actors/gameplay/AI. Camera names are locations, not observed events."
+}

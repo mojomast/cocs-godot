@@ -1,64 +1,132 @@
-# Orchestrator handoff — identity trilogy prototype milestone
+# Orchestrator handoff — identity trilogy: collision cost fixed, materials and effects delivered
 
-NOT a final playable-map delivery. Direct research and initial source-tested/renderable prototypes are delivered. Shared production integration, final art, visual acceptance and release gates remain open. Do not publish these as completed maps.
+Not a playable-release delivery. Direct research, a source-tested renderable prototype and now the
+art/performance pass are in place. Shared production integration, final visual acceptance, the
+existing-playable-map pixel review and every release gate remain open. Do not publish these maps as
+finished.
 
 ## Ownership and baseline
 
-Owner approved direct research instead of unavailable subagents and the four proposed new directories in chat. Isolated worktree /tmp/opencode/cocs-identity-maps; branch external/visual-identity-three-maps; baseline 642acb0a5ddd7d5419c71000ad6e9dce97942be7. Primary checkout and its concurrent staged/untracked files were not edited. No source game modules, nine-map catalog, shared authority, launchers, packages, credentials, shared services or reserved external weapon assets changed.
+Branch `port/godot-destinations`, working tree at `/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port`
+(HEAD includes merged prototype `f1f77347`). This pass touched only the lane's owned paths:
+`godot/identity_maps/**`, `tools/godot-identity-maps/**`, `godot/tests/identity_maps/**`,
+`port/native-identity-maps/**`. Nothing in `godot/source_operators/**`, `godot/world/presentation.gd`,
+`tools/godot-operators/**`, `port/native-source-operators/**`, `port/native-arena-review/**`,
+`godot/tests/native_arena_review/**`, `port/native-arenas/**` (read-only imports only),
+`godot/native_arenas/**`, `tools/godot-dev/**`, `tools/godot-package/**`, `game/**`, `server/**` or
+any shared document was modified. The arena lane's `schema.mjs`/`catalog.mjs` are consumed read-only.
 
-Read RESEARCH.md (three direct tracks with exact source references and renderer caveats), DESIGN.md (plans/material boards/budgets), PERFORMANCE.md (actual counters and serious load-time issue), PLAY.md (actual commands).
+## Read in this order
 
-## Implemented owned artifacts
+DESIGN.md (routes, material boards, effect boards, collision model) → PERFORMANCE.md (cost, cadence,
+baseline, budgets, what is unproven) → PLAY.md (exact commands) → `evidence/README.md` (what each
+artifact is, which failures are kept on purpose) → RESEARCH.md (three research tracks; the collision
+risk it raised is now closed).
 
-- tools/godot-identity-maps/compile.mjs: deterministic native recipe/compiler; source floors/blocks, spawns, pickups, authored objectives, route plans and fixed cameras.
-- tools/godot-identity-maps/art.mjs: original carved split resonators, folded fans/crown/pleats, elliptical shell vault and layered memory drum. These are first-pass silhouettes, not finished environment art.
-- godot/identity_maps/generated/: three reproducible JSON recipe artifacts with canonical geometryHash and earlier grayboxHash. Every architectural triangle is exported for source rays; overhead forms are nonwalkable.
-- godot/identity_maps/map.gd: map-only builder, exact source-aligned static physics, five cached materials, material/spatial-cell mesh batching, idempotent build. No bespoke movement/combat simulation.
-- godot/identity_maps/inspection.{gd,tscn}: labelled fixed-camera inspector. Tab maps / 1–5 views / Esc exit. Headless startup verified; human input/pixel review pending.
-- port/native-identity-maps/match.mjs: trusted in-process source Match factory using scoped arena accessor before source nav/spawn/objective construction. Static allowlist, mode-specific defaults, no arbitrary JSON/path network input.
-- graybox.test.mjs: actual source movement in both directions, nav connectivity, clearance, no direct DM spawn sightlines, objective position agreement.
-- ray-oracle.mjs + Godot rays.gd: independently computed source rayWorld distances compared with actual Godot physics.
-- normal-rate.mjs: bounded wall-clock source-mode exercise with ordinary controls and no state injection; exact recipe/snapshots/events archived. NOT a WebSocket/native-client test.
-- lifecycle.gd and capture.py/capture.gd: bounded cleanup/capture evidence, private owned Xvfb, explicit software-renderer counters.
+## What this pass delivered
 
-## Verified current geometry
+1. **Collision cost (blocking issue from the previous milestone) — fixed.** Cold
+   `createIdentityMatch` went from 6,059 / 2,950 / 14,828 ms to **27.4 / 19.4 / 39.2 ms** (target
+   ≤1,500 ms, ceiling 3,000 ms). Ground-level solids are exact source boxes; visible masses that need
+   rays AND movement use authored planar quads, end trapezoids, caps and two-point movement fences
+   (20 / 0 / 168 wall entries, 40 / 0 / 504 segments). Render geometry stays exact in `recipe.art[]`
+   and owns no physics. `arena.nextGen` (the existing source navigation mode the native DM arenas
+   already use) replaces the O(n²) edge build. `graybox.test.mjs` now gates cold time, segment
+   budget and a ≥10× speed-up versus the prototype baseline on every run.
+2. **Parity proven where it matters, not asserted.** `ray-oracle.mjs` rebuilt the prototype's
+   one-wall-per-art-triangle representation from the same visible triangles and compares it against
+   the shipped arena: 19,976 rays, **0 classification mismatches, 0 `visible()` mismatches, 0
+   reachable-visible-mass misses**, with 448 knife-edge rays flagged and their 104 divergences
+   counted separately. `rays.gd` re-answers every fixture in Godot physics: **0 failures, max hit
+   delta 2.1e-6 m**.
+3. **Materials/shaders.** Six shared materials per map built from the Moth registry
+   (`moth/surfaces.gd`, world-space triplanar, Compatibility-safe), one shader-backed material per
+   semantic key, no per-surface instances, palette colors authoritative in the generated JSON.
+   Texture allocation is 106,496 / 100,352 / 99,328 bytes per map — three orders of magnitude under
+   the 32 MiB budget. Trim/bevel detail is a render-only MultiMesh layer (≤52 instances, 2 draw
+   batches, ≤5 cm proud) and never owns collision or changes silhouette.
+4. **Bounded signature effects.** One pool per map, one shared draw shader/material per map, fixed
+   seeds, `visibility_aabb`, 4 Hz distance gate, focus-loss and pause suspension, `reset()` for round
+   boundaries, no per-frame allocation, no gameplay authority: High 3,360 / 1,080 / 3,830 and Low
+   880 / 320 / 1,090 against the 32,768 / 8,192 budgets.
+5. **Evidence.** 45 PNGs across three asserted resolutions, a before/after cost table, a shipped
+   native DM baseline under the same harness, cold/warm builds, draw calls, texture accounting, and
+   the intermediate failures that drove the geometry changes.
 
-Final route suite: 35,714 checks pass (mostly per-frame floor/penetration checks); connected nav for all maps, full declared routes both directions, Lacuna 1.5 m terrace ascent/descent, six protected DM spawn pair sightline checks, source-confirmed pickups/spawns, conservative Horde spawn visual clearance and exact three Domination points.
+## Generated-content contract (unchanged shape, new hashes)
 
-Final source/Godot ray comparison: 108 checks pass. This is static geometry parity for sampled cover/architecture/infill, not complete weapon eye→muzzle→target acceptance.
+The envelope is unchanged: `{schemaVersion, id, name, mode, geometryHash, arena{id,name,bounds,spawns,
+pickups,navNodes,blocks,terrain{maxSlope,surfaces,walls},voidY,ceilingY?,raised?,nextGen?}, palette,
+art[], routes, cameras, landmarks, grayboxHash, spawnPoints, colliderSources, provenance}` plus
+`artNotes[]` (new, additive: per-form collision rationale). All three recipes pass the arena lane's
+strict `parseIdentityArena` unchanged.
 
-Final headless lifecycle: 251,652 checks pass (mostly finite vertices); three full build/free cycles each return to one root node/two resources/zero orphans. No claim that this proves production match/audio/input lifecycle.
+**geometryHash changed for two maps.** Report these to the lead before any consumer caches them:
 
-Two independent final recipe rebuilds were compared against all three persisted artifacts successfully after the infill correction. Generated JSON was then serialized compactly without semantic geometry changes. Final geometry hashes are authoritative in generated JSON and capture reports.
+| Map | geometryHash |
+|---|---|
+| lacuna-court | `a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9` |
+| vermilion-fold | `6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a` (unchanged: art-only edit) |
+| nacre-engine | `b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4` |
 
-Final source-mode evidence: evidence/normal-rate-1790081542205/ includes compressed exact recipes, snapshots and events. Lacuna: 2,265 snapshots, 1 result at source60.017s, restart observed; second round incomplete at wall130s deadline. Vermilion: 1,058 snapshots, 7 capture events, 55 zone-score events, 2 objective wins with a restart. Nacre: 1,576 snapshots, six wave clears/resupplies across two actual three-wave source wins and restart. No injected kills/poses/time. These are bounded in-process source runs with concurrent scheduling and capped backlog, not real-time performance or network-client acceptance. Defeat/boss/endless and full ten-wave Horde were NOT proved.
+`arena.blocks` gained two exact Nacre boxes (the amber service organs, previously art without
+collision) and `arena.terrain.walls` is now the authored collision set instead of triangle soup.
+`objectiveZones` (3, Vermilion), `teamSpawns` (west/east), spawns, pickups, routes, cameras and
+landmarks are unchanged.
 
-45 final PNGs: evidence/render-1790081900090569141/{960x640,1280x800,1920x1080}/. Five views per map per resolution. No actors/FX; combat/objective are camera names, not live gameplay claims. Browser navigation service returned HTTP500 at localhost:9377/tabs even though the owned image HTTP endpoint returned200. Images have NOT been visually reviewed.
+## Integration seams this lane now provides (still needing lead approval to wire)
 
-## Retained failures and fixes
+1. `godot/identity_maps/map.gd`: `build(id, graybox)`, `get_arena_id()`, `get_spawn_points()`,
+   `metrics_snapshot()`, `set_fx_quality("Low"|"High")`, `reset_fx()`. Render and collision are
+   separated inside it; a session composition should use it as the environment and call `reset_fx()`
+   on round boundaries.
+2. `godot/identity_maps/style.gd`: `create(map_id, palette)` (materials),
+   `configure_environment(map_id, world_environment, sun)` (sky/light/fog; reuses the atmosphere
+   lane's `horizon.gdshader` read-only) and `decorate(...)` (render-only horizon/skyline). A viewer
+   that owns its own environment can skip 2 and keep 1.
+3. `godot/identity_maps/signature_fx.gd`: `configure(recipe, camera)`, `set_quality`, `set_paused`,
+   `reset`, `snapshot`.
+4. The DM/Domination/Horde authority hooks, launcher/menu/package routes and the production
+   client map-loading seam remain parent-owned and untouched.
 
-Capture resolution correction: only render-1790081900090569141 passes independent PNG dimensions at all three sizes. Earlier sets were all1280×800 despite filenames claiming other sizes. Godot reapplied the project window dimensions after _initialize; deferred sizing and output-size assertions fix it. Earlier 1080p/960 claims are invalid and preserved as failures; see evidence/README.md.
+**Packaging note for the package lane.** `identity_maps/map.gd` now preloads
+`identity_maps/style.gd` (which preloads `moth/surfaces.gd` + `moth/library.gd` and reads
+`res://moth/generated/manifest.json` plus the referenced 48-64 px tiles),
+`identity_maps/signature_fx.gd` (which preloads `identity_maps/signature_particle.gdshader`) and,
+through `style.gd`'s environment helper, `graphics_atmosphere/horizon.gdshader`. The capture and
+inspection scenes additionally use `style.decorate`. Any Godot resource closure for these maps must
+include those files and the Moth manifest/tiles, or the packaged maps will fail to load with a
+missing preload rather than a visible error. The native-arena composition already installs its own
+environment for identity maps (`native_arenas/identity_environment.gd`) and treats `map.gd` as
+geometry-only, which matches this builder: `map.gd` itself adds no light and no WorldEnvironment.
 
-1. Lacuna graybox nav initially disconnected (5/253 reached): widened spawn pocket openings and explicitly sampled narrow perimeter paths. Connected result retained.
-2. First art export assumed source walls honored triangle indices. game/terrain.mjs:51–61 ignores those indices and fans vertices, producing degenerate/unintended walls. Changed to one source wall per actual triangle. This fixes correctness but exposes wall-scan cost.
-3. First Godot capture failed on GDScript type inference for dictionary-derived material index. Explicit int corrected; initial invocation timed out180s, then bounded runner was added. Subsequent capture sets exit0 without script errors.
-4. Ray oracle initially started one ray inside cover: source returns0 while Godot default ray behavior didn't. Enabled hit_from_inside to match source semantics. Initial failure retained in rays-first.json.
-5. Ramp visual infill originally lacked matching collision. Added exact source/Godot infill. This then exposed an internal ramp/terrace endcap snag at Y1.428/Z−21.568. Removed both internal seam faces; final traversals/rays pass. Failed route log retained.
+## Retained failures and fixes (this pass)
 
-## Parent-owned integration hooks — agreement required before edits
+1. Nacre vault-foot proxies first used non-planar fan quads: the source fans a quad from `v0`, so a
+   non-planar quad creases and the intended face is not covered (246 reachable-mass probe misses,
+   224 classification mismatches). Fixed with planar face quads + end trapezoids + caps + fences.
+2. Nacre's joint band was radially inset but z-offset from the main rib, so one proxy could not
+   follow both without over-covering the inner face. Fixed by centring the joint band on the same z
+   and following its ellipse.
+3. A 0.3 m amber service fin proud of the housing face was art with no collision: a source ray
+   stopped at the housing face where the prototype stopped at the fin. Converted to an exact block.
+4. `colliderSources` initially emitted entries for two-point movement fences, which have no Godot
+   collider and which the strict parser rejects (`vertexCount >= 3`). Fences are now excluded.
+5. First `capture.gd` rig used `BG_COLOR` and a bare rig; the horizon/panorama looked like a smog
+   dome. Replaced with a map-styled sky (shared horizon shader + Moth panorama), linear fog and a
+   render-only distant ground/skyline.
+6. First dust/pulse effect pass read as ground smudges (0.16-1.6 m soft discs, permanent emission).
+   Now: ≤0.1 m motes, one-shot pressure bursts with a scale curve, and one shared draw material per
+   map.
+7. `map.gd` briefly set `Mesh.ARRAY_NORMALS`, which does not exist (parse error). Caught by the
+   headless contract test, not by inspection.
 
-These maps cannot enter the existing release by changing a map label:
+## Blocking work remaining before integration acceptance
 
-1. port/native-arenas/catalog.mjs + schema.mjs + match.mjs currently allow only three pre-existing native maps and Deathmatch. For Lacuna, approve a lane registry or explicit allowlisted factory hook. Do not silently feed extended recipes into the old strict envelope (teamSpawns/objectiveZones are absent from its whitelist).
-2. Domination: approved local adapter must construct source Match using this factory with mode=domination and arena.objectiveZones/teamSpawns BEFORE nav, actors and objectiveTemplate run. Source zones must remain the snapshot authority. godot/zone_modes/demo.gd:12–13/60–65 currently rejects IDs outside locked catalog; supply a separate custom-world loading path and reuse existing zone adapter/renderer/HUD.
-3. Horde: port/native-horde/authority.mjs:8–15/98 needs an explicit reviewed static map/factory hook. Retain loopback-only transport, input epochs, event cursor, bounded messages and single-human contract. Do NOT enable Horde in public Room. Upgrade selection/boss/endless/full-defeat behavior remains separate acceptance.
-4. Godot session composition: use map.gd as the environment instead of locked-map viewer geometry while preserving existing presentation, player/operator models, first-person weapons/ADS, pickups, combat events/audio/quality manager, source camera poses and round cleanup. There is no production client seam implemented in this milestone.
-5. Launcher/menu/package routing stays with parent. Add only explicit three map/mode pairs to an approved registry; bundle generated JSON, builder and required source adapter closure. Test detached Linux and Windows packages after full integration, not before.
-
-## Blocking performance/art work before integration acceptance
-
-Exact high-detail source walls cause cold Match construction ~6.06s Lacuna /2.95s Vermilion /14.83s Nacre on this host. Simplify authored collision with explicit visual/ray provenance, not locked-source edits or invisible support. Software-rendered Nacre worst-camera p95 ~52.57ms at verified1920×1080 with ZERO actors/particles is not 60Hz acceptance. See PERFORMANCE.md.
-
-The art pass does not yet satisfy final lighting/material/detail goals: no LightmapGI bake or genuine vertex AO, no trim textures, no bounded signature FX, no Low/High or occlusion/LOD comparison. Lacuna/Vermilion/Nacre now have different core silhouettes, but that is not final visual identity acceptance.
-
-Remaining mandatory gates: pixel review, existing-playable-map baseline, 10m/25m operator and ADS/FX readability, real production-client weapon kills/respawn, capture/contest/loss recovery, Horde defeat/restart/boss/endless/peak load, three complete integrated lifecycle cycles, actual-controller repeated timing/fairness under live play, exported resource/menu/input/audio checks, independent final review and representative GPU performance. No merge/push/deploy/release was performed.
+* Human pixel review of the delivered renders; this lane only checked gross defects.
+* Existing-playable-map baseline at 1920×1080 and a representative-GPU cadence pass; llvmpipe
+  numbers do not certify the hardware target.
+* Lightmap/AO decision (no bake attempted), occlusion/LOD comparisons.
+* Live actor/operator/ADS readability at 10/25 m, Horde peak load, and the ten-wave/boss/endless
+  behaviours that the prototype never proved.
+* Packaged Windows/Linux runs after the parent wires the route, launcher and session composition.

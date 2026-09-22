@@ -7,8 +7,12 @@ const dir=new URL(`./evidence/normal-rate-${Date.now()}/`,import.meta.url);mkdir
 async function run(id,limit){
  const recipe=loadRecipe(id);writeFileSync(new URL(id+'-recipe.json.gz',dir),gzipSync(JSON.stringify(recipe)));
  let m=createIdentityMatch(id,{timeLimit:60,difficulty:'easy',fragLimit:id==='nacre-engine'?3:15});
- const records=[],events=[],rounds=[];let cursor=new EventCursor(),ticks=0,round=1,restarts=0,maxWave=0,last=performance.now(),acc=0;const begin=last;
+ const records=[],events=[],rounds=[];let cursor=new EventCursor(),ticks=0,round=1,restarts=0,maxWave=0,last=performance.now(),acc=0,nextProgress=15;const begin=last;
  while(performance.now()-begin<limit*1000){
+  // Bounded heartbeat: a wall-clock deadline must be observable in the log, not
+  // inferred from a missing output file.
+  const elapsed=(performance.now()-begin)/1000;
+  if(elapsed>=nextProgress){console.log(`PROGRESS ${id} wall=${elapsed.toFixed(0)}s round=${round} ticks=${ticks} source=${m.time.toFixed(1)} over=${m.over} events=${events.length}`);nextProgress+=15;}
   const now=performance.now();acc=Math.min(acc+(now-last)/1000,5/60);last=now;
   while(acc>=1/60){
    acc-=1/60;
@@ -31,4 +35,9 @@ async function run(id,limit){
  const result={id,scope:'Normal wall-rate in-process source Match with ordinary controls. No WebSocket/Godot client integration, no pose/health/score injection.',elapsedMs:performance.now()-begin,ticks,snapshots:records.length,eventTypes:types,roundResults:rounds.map(r=>({round:r.round,time:r.sourceTime,over:r.state.over})),restarts,maxWave,final:m.snapshot()};
  writeFileSync(new URL(id+'.json',dir),JSON.stringify(result,null,2));writeFileSync(new URL(id+'-snapshots.jsonl.gz',dir),gzipSync(records.map(r=>JSON.stringify(r)).join('\n')));writeFileSync(new URL(id+'-events.jsonl.gz',dir),gzipSync(events.map(r=>JSON.stringify(r)).join('\n')));console.log(JSON.stringify({id,ticks,snapshots:records.length,eventTypes:types,restarts,maxWave,results:rounds.length}));return result;
 }
-console.log('Evidence '+dir.pathname);await Promise.all([run('lacuna-court',130),run('vermilion-fold',130),run('nacre-engine',180)]);
+// Optional per-map selection (`--maps=a,b` / NR_LIMIT) so a single map can be
+// re-run in isolation; the default stays the full bounded set.
+const only=process.argv.slice(2).flatMap(arg=>arg.startsWith('--maps=')?arg.slice(7).split(','):[]);
+console.log('Evidence '+dir.pathname);
+if(only.length)await Promise.all(only.map(id=>run(id,Number(process.env.NR_LIMIT??130))));
+else await Promise.all([run('lacuna-court',130),run('vermilion-fold',130),run('nacre-engine',180)]);

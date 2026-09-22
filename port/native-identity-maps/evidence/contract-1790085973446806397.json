@@ -1,0 +1,52 @@
+{
+	"assertions": 105,
+	"failures": [],
+	"maps": [
+		{
+			"bodies": 43,
+			"detail_batches": 2,
+			"detail_instances": 48,
+			"fx_emitters": 6,
+			"fx_high": 2560,
+			"fx_low": 700,
+			"id": "lacuna-court",
+			"materials": 6,
+			"movement_fences": 0,
+			"shapes": 43,
+			"texture_bytes": 106496,
+			"triangles": 5714,
+			"walls": 20
+		},
+		{
+			"bodies": 15,
+			"detail_batches": 2,
+			"detail_instances": 52,
+			"fx_emitters": 6,
+			"fx_high": 650,
+			"fx_low": 190,
+			"id": "vermilion-fold",
+			"materials": 6,
+			"movement_fences": 0,
+			"shapes": 15,
+			"texture_bytes": 100352,
+			"triangles": 8150,
+			"walls": 0
+		},
+		{
+			"bodies": 138,
+			"detail_batches": 2,
+			"detail_instances": 38,
+			"fx_emitters": 7,
+			"fx_high": 2450,
+			"fx_low": 690,
+			"id": "nacre-engine",
+			"materials": 6,
+			"movement_fences": 42,
+			"shapes": 138,
+			"texture_bytes": 99328,
+			"triangles": 8498,
+			"walls": 168
+		}
+	],
+	"scope": "Identity map material/collision/effect contract, headless; not visual or GPU acceptance"
+}

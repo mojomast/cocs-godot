@@ -1,0 +1,36 @@
+{
+	"checks": 6150,
+	"classification_rays": 5557,
+	"failures": [],
+	"grazing_divergence": 12,
+	"grazing_rays": 88,
+	"groups": {
+		"block-cover": {
+			"failures": 0,
+			"max_delta": 0.0,
+			"rays": 86
+		},
+		"eye-grid": {
+			"failures": 0,
+			"max_delta": 30.0520729236603,
+			"rays": 4014
+		},
+		"route-floor": {
+			"failures": 0,
+			"max_delta": 0.0000339691162105638,
+			"rays": 231
+		},
+		"sightline": {
+			"failures": 0,
+			"max_delta": 0.0000498931884749254,
+			"rays": 1543
+		},
+		"wall-face": {
+			"failures": 0,
+			"max_delta": 0.0000496506690979004,
+			"rays": 276
+		}
+	},
+	"max_hit_delta": 0.0000496506690979004,
+	"scope": "Source rayWorld vs Godot static collision; no muzzle, actor or projectile-hit proof"
+}

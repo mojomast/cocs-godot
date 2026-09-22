@@ -1,0 +1,269 @@
+[
+  {
+    "size": "960x640",
+    "code": 0,
+    "passed": true,
+    "images": 15,
+    "expected_images": 15,
+    "all_dimensions_match": true,
+    "png_sizes": {
+      "lacuna-court-entrance-960x640.png": [
+        960,
+        640
+      ],
+      "lacuna-court-landmark-960x640.png": [
+        960,
+        640
+      ],
+      "lacuna-court-combat-960x640.png": [
+        960,
+        640
+      ],
+      "lacuna-court-objective-960x640.png": [
+        960,
+        640
+      ],
+      "lacuna-court-worst-960x640.png": [
+        960,
+        640
+      ],
+      "vermilion-fold-entrance-960x640.png": [
+        960,
+        640
+      ],
+      "vermilion-fold-landmark-960x640.png": [
+        960,
+        640
+      ],
+      "vermilion-fold-combat-960x640.png": [
+        960,
+        640
+      ],
+      "vermilion-fold-objective-960x640.png": [
+        960,
+        640
+      ],
+      "vermilion-fold-worst-960x640.png": [
+        960,
+        640
+      ],
+      "nacre-engine-entrance-960x640.png": [
+        960,
+        640
+      ],
+      "nacre-engine-landmark-960x640.png": [
+        960,
+        640
+      ],
+      "nacre-engine-combat-960x640.png": [
+        960,
+        640
+      ],
+      "nacre-engine-objective-960x640.png": [
+        960,
+        640
+      ],
+      "nacre-engine-worst-960x640.png": [
+        960,
+        640
+      ]
+    },
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 960x640x24 -nolisten tcp",
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tests/identity_maps/capture.gd",
+      "--",
+      "--output=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-maps/evidence/render-final-1790085699477045605/960x640",
+      "--size=960x640",
+      "--quality=High"
+    ]
+  },
+  {
+    "size": "1280x800",
+    "code": 0,
+    "passed": true,
+    "images": 15,
+    "expected_images": 15,
+    "all_dimensions_match": true,
+    "png_sizes": {
+      "lacuna-court-entrance-1280x800.png": [
+        1280,
+        800
+      ],
+      "lacuna-court-landmark-1280x800.png": [
+        1280,
+        800
+      ],
+      "lacuna-court-combat-1280x800.png": [
+        1280,
+        800
+      ],
+      "lacuna-court-objective-1280x800.png": [
+        1280,
+        800
+      ],
+      "lacuna-court-worst-1280x800.png": [
+        1280,
+        800
+      ],
+      "vermilion-fold-entrance-1280x800.png": [
+        1280,
+        800
+      ],
+      "vermilion-fold-landmark-1280x800.png": [
+        1280,
+        800
+      ],
+      "vermilion-fold-combat-1280x800.png": [
+        1280,
+        800
+      ],
+      "vermilion-fold-objective-1280x800.png": [
+        1280,
+        800
+      ],
+      "vermilion-fold-worst-1280x800.png": [
+        1280,
+        800
+      ],
+      "nacre-engine-entrance-1280x800.png": [
+        1280,
+        800
+      ],
+      "nacre-engine-landmark-1280x800.png": [
+        1280,
+        800
+      ],
+      "nacre-engine-combat-1280x800.png": [
+        1280,
+        800
+      ],
+      "nacre-engine-objective-1280x800.png": [
+        1280,
+        800
+      ],
+      "nacre-engine-worst-1280x800.png": [
+        1280,
+        800
+      ]
+    },
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x800x24 -nolisten tcp",
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tests/identity_maps/capture.gd",
+      "--",
+      "--output=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-maps/evidence/render-final-1790085699477045605/1280x800",
+      "--size=1280x800",
+      "--quality=High"
+    ]
+  },
+  {
+    "size": "1920x1080",
+    "code": 0,
+    "passed": true,
+    "images": 15,
+    "expected_images": 15,
+    "all_dimensions_match": true,
+    "png_sizes": {
+      "lacuna-court-entrance-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "lacuna-court-landmark-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "lacuna-court-combat-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "lacuna-court-objective-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "lacuna-court-worst-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "vermilion-fold-entrance-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "vermilion-fold-landmark-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "vermilion-fold-combat-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "vermilion-fold-objective-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "vermilion-fold-worst-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "nacre-engine-entrance-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "nacre-engine-landmark-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "nacre-engine-combat-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "nacre-engine-objective-1920x1080.png": [
+        1920,
+        1080
+      ],
+      "nacre-engine-worst-1920x1080.png": [
+        1920,
+        1080
+      ]
+    },
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1920x1080x24 -nolisten tcp",
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tests/identity_maps/capture.gd",
+      "--",
+      "--output=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-maps/evidence/render-final-1790085699477045605/1920x1080",
+      "--size=1920x1080",
+      "--quality=High"
+    ]
+  }
+]

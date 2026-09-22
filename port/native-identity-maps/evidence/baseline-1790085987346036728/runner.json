@@ -1,0 +1,140 @@
+[
+  {
+    "size": "960x640",
+    "code": 0,
+    "passed": true,
+    "images": 10,
+    "expected_images": 10,
+    "all_dimensions_match": true,
+    "png_sizes": {
+      "cinder-array-entrance-960x640.png": [
+        960,
+        640
+      ],
+      "cinder-array-landmark-960x640.png": [
+        960,
+        640
+      ],
+      "cinder-array-combat-960x640.png": [
+        960,
+        640
+      ],
+      "cinder-array-objective-960x640.png": [
+        960,
+        640
+      ],
+      "cinder-array-worst-960x640.png": [
+        960,
+        640
+      ],
+      "prism-foundry-entrance-960x640.png": [
+        960,
+        640
+      ],
+      "prism-foundry-landmark-960x640.png": [
+        960,
+        640
+      ],
+      "prism-foundry-combat-960x640.png": [
+        960,
+        640
+      ],
+      "prism-foundry-objective-960x640.png": [
+        960,
+        640
+      ],
+      "prism-foundry-worst-960x640.png": [
+        960,
+        640
+      ]
+    },
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 960x640x24 -nolisten tcp",
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tests/identity_maps/baseline.gd",
+      "--",
+      "--output=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-maps/evidence/baseline-1790085987346036728/960x640",
+      "--size=960x640",
+      "--map=cinder-array,prism-foundry"
+    ]
+  },
+  {
+    "size": "1280x800",
+    "code": 0,
+    "passed": true,
+    "images": 10,
+    "expected_images": 10,
+    "all_dimensions_match": true,
+    "png_sizes": {
+      "cinder-array-entrance-1280x800.png": [
+        1280,
+        800
+      ],
+      "cinder-array-landmark-1280x800.png": [
+        1280,
+        800
+      ],
+      "cinder-array-combat-1280x800.png": [
+        1280,
+        800
+      ],
+      "cinder-array-objective-1280x800.png": [
+        1280,
+        800
+      ],
+      "cinder-array-worst-1280x800.png": [
+        1280,
+        800
+      ],
+      "prism-foundry-entrance-1280x800.png": [
+        1280,
+        800
+      ],
+      "prism-foundry-landmark-1280x800.png": [
+        1280,
+        800
+      ],
+      "prism-foundry-combat-1280x800.png": [
+        1280,
+        800
+      ],
+      "prism-foundry-objective-1280x800.png": [
+        1280,
+        800
+      ],
+      "prism-foundry-worst-1280x800.png": [
+        1280,
+        800
+      ]
+    },
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x800x24 -nolisten tcp",
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tests/identity_maps/baseline.gd",
+      "--",
+      "--output=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-maps/evidence/baseline-1790085987346036728/1280x800",
+      "--size=1280x800",
+      "--map=cinder-array,prism-foundry"
+    ]
+  }
+]

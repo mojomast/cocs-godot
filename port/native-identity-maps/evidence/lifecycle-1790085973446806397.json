@@ -1,0 +1,22 @@
+{
+	"assertions": 201333,
+	"cycles": [
+		{
+			"nodes": 1.0,
+			"orphans": 0.0,
+			"resources": 32.0
+		},
+		{
+			"nodes": 1.0,
+			"orphans": 0.0,
+			"resources": 32.0
+		},
+		{
+			"nodes": 1.0,
+			"orphans": 0.0,
+			"resources": 32.0
+		}
+	],
+	"failures": [],
+	"scope": "Headless map build/free lifecycle, not gameplay restart acceptance"
+}

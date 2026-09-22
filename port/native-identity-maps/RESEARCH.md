@@ -56,6 +56,17 @@ Lacuna uses horizontal carved crescents and an off-axis split resonator; Vermili
 
 Large opaque solids determine routes; detail never changes source collision. Skyline landmarks are static and outside movement clearances. Team/objective state comes from snapshots and uses shape/labels, not decorative palette. See DESIGN.md for route/camera/material plans.
 
+## Resolution note (this pass)
+
+The engine track's "Collision: simple static geometry, but source movement/rays remain
+authoritative" line and the handoff's blocking finding — exact high-detail triangles through the
+source wall-segment mover costing 6.1 / 3.0 / 14.8 s cold — are now closed by an authored collision
+representation, not by a source edit. The proven pattern came from this repo: the native DM arenas
+use source `nextGen` spatial navigation plus deliberately simple walls. Measurement, parity method
+and residual bounds are in PERFORMANCE.md sections 1–2; the primitives and the per-form rationale
+are in DESIGN.md and in each recipe's `artNotes[]`. The prototype's own numbers stay in the
+historical evidence rather than being deleted.
+
 ## Synthesis / order
 
 1. Deterministic declarative geometry and source-data compiler, lane-local factory, geometry/navigation/movement tests.

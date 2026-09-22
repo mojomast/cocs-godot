@@ -1,0 +1,1778 @@
+{
+  "scope": "Independent source ray audit: source vs Godot fixtures and prototype-exact vs simplified cover parity",
+  "eyeHeight": 1.6,
+  "jumpApex": 1.502436,
+  "maps": [
+    {
+      "id": "lacuna-court",
+      "geometryHash": "5f2569d6784d31cc8e9401a5422ec10000c1834d401ec7e82b731684ba6bd699",
+      "rays": 5203,
+      "checks": 5203,
+      "groups": {
+        "block-cover": {
+          "rays": 36,
+          "blockedSource": 36,
+          "blockedExact": 36,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 1.15
+        },
+        "wall-face": {
+          "rays": 16,
+          "blockedSource": 16,
+          "blockedExact": 16,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 0
+        },
+        "route-floor": {
+          "rays": 66,
+          "blockedSource": 66,
+          "blockedExact": 66,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 0
+        },
+        "sightline": {
+          "rays": 325,
+          "blockedSource": 177,
+          "blockedExact": 177,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 0
+        },
+        "eye-grid": {
+          "rays": 4760,
+          "blockedSource": 2914,
+          "blockedExact": 2914,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 0
+        }
+      },
+      "probes": {
+        "reachableBand": 1558,
+        "misses": 1546
+      },
+      "visibleChecks": 325,
+      "visibleMismatch": 0,
+      "reach": {
+        "maxFloorY": 1.5,
+        "jumpApex": 1.502436,
+        "eyeCeiling": 4.472436,
+        "excludedArtMinimumY": 0
+      }
+    },
+    {
+      "id": "vermilion-fold",
+      "geometryHash": "6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a",
+      "rays": 7878,
+      "checks": 13081,
+      "groups": {
+        "block-cover": {
+          "rays": 28,
+          "blockedSource": 28,
+          "blockedExact": 28,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 0
+        },
+        "route-floor": {
+          "rays": 117,
+          "blockedSource": 117,
+          "blockedExact": 117,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 0
+        },
+        "sightline": {
+          "rays": 893,
+          "blockedSource": 548,
+          "blockedExact": 548,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 0
+        },
+        "eye-grid": {
+          "rays": 6840,
+          "blockedSource": 4382,
+          "blockedExact": 4382,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 0
+        }
+      },
+      "probes": {
+        "reachableBand": 0,
+        "misses": 0
+      },
+      "visibleChecks": 893,
+      "visibleMismatch": 0,
+      "reach": {
+        "maxFloorY": 0,
+        "jumpApex": 1.502436,
+        "eyeCeiling": 2.972436,
+        "excludedArtMinimumY": 4
+      }
+    },
+    {
+      "id": "nacre-engine",
+      "geometryHash": "f16dbaa7a9d2dc0783d635812db43d57c4f06d6eb53654be297503662ace9be8",
+      "rays": 7299,
+      "checks": 20380,
+      "groups": {
+        "block-cover": {
+          "rays": 18,
+          "blockedSource": 18,
+          "blockedExact": 18,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 0
+        },
+        "wall-face": {
+          "rays": 28,
+          "blockedSource": 28,
+          "blockedExact": 21,
+          "classificationMismatch": 7,
+          "maxDistanceDelta": 0.75
+        },
+        "route-floor": {
+          "rays": 48,
+          "blockedSource": 48,
+          "blockedExact": 48,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 0
+        },
+        "sightline": {
+          "rays": 325,
+          "blockedSource": 127,
+          "blockedExact": 127,
+          "classificationMismatch": 0,
+          "maxDistanceDelta": 0
+        },
+        "eye-grid": {
+          "rays": 6880,
+          "blockedSource": 3826,
+          "blockedExact": 3956,
+          "classificationMismatch": 130,
+          "maxDistanceDelta": 3.889088
+        }
+      },
+      "probes": {
+        "reachableBand": 747,
+        "misses": 656
+      },
+      "visibleChecks": 325,
+      "visibleMismatch": 0,
+      "reach": {
+        "maxFloorY": 0,
+        "jumpApex": 1.502436,
+        "eyeCeiling": 2.972436,
+        "excludedArtMinimumY": 0
+      }
+    }
+  ],
+  "failures": [
+    {
+      "map": "lacuna-court",
+      "kind": "reachable-visible-mass",
+      "misses": [
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.609553,
+            1.020089,
+            -27.15
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.717891,
+            1.060268,
+            -27.15
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.551224,
+            1.060268,
+            -26.85
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.775004,
+            1.040179,
+            -26.85
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.833333,
+            1,
+            -26.95
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.666667,
+            1,
+            -27.05
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.442886,
+            1.020089,
+            -26.95
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.385772,
+            1.040179,
+            -27.05
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.49411,
+            1.080358,
+            -26.95
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.659561,
+            1.100447,
+            -27.05
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.883342,
+            1.080358,
+            -26.95
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.941671,
+            1.040179,
+            -27.05
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.323601,
+            1.100154,
+            -27.15
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.314916,
+            1.159837,
+            -27.15
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.149465,
+            1.139747,
+            -26.85
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.485425,
+            1.14004,
+            -26.85
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.659561,
+            1.100447,
+            -26.95
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.49411,
+            1.080358,
+            -27.05
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            23.15815,
+            1.080065,
+            -26.95
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "stratum-0",
+          "centre": [
+            22.987641,
+            1.099861,
+            -27.05
+          ],
+          "hit": 1.1
+        }
+      ],
+      "total": 1546
+    },
+    {
+      "map": "nacre-engine",
+      "group": "wall-face",
+      "label": "wall-vault-foot--24--1-023",
+      "kind": "classification",
+      "source": 0.75,
+      "exact": 1.5,
+      "length": 1.5
+    },
+    {
+      "map": "nacre-engine",
+      "group": "wall-face",
+      "label": "wall-vault-foot--16--1-023",
+      "kind": "classification",
+      "source": 0.75,
+      "exact": 1.5,
+      "length": 1.5
+    },
+    {
+      "map": "nacre-engine",
+      "group": "wall-face",
+      "label": "wall-vault-foot--8--1-023",
+      "kind": "classification",
+      "source": 0.75,
+      "exact": 1.5,
+      "length": 1.5
+    },
+    {
+      "map": "nacre-engine",
+      "group": "wall-face",
+      "label": "wall-vault-foot-0--1-023",
+      "kind": "classification",
+      "source": 0.75,
+      "exact": 1.5,
+      "length": 1.5
+    },
+    {
+      "map": "nacre-engine",
+      "group": "wall-face",
+      "label": "wall-vault-foot-8--1-023",
+      "kind": "classification",
+      "source": 0.75,
+      "exact": 1.5,
+      "length": 1.5
+    },
+    {
+      "map": "nacre-engine",
+      "group": "wall-face",
+      "label": "wall-vault-foot-16--1-023",
+      "kind": "classification",
+      "source": 0.75,
+      "exact": 1.5,
+      "length": 1.5
+    },
+    {
+      "map": "nacre-engine",
+      "group": "wall-face",
+      "label": "wall-vault-foot-24--1-023",
+      "kind": "classification",
+      "source": 0.75,
+      "exact": 1.5,
+      "length": 1.5
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24--24-6-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.64487,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24--20-5-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24--20-7-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24--16-6-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.64487,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24--12-5-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24--12-7-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24--8-6-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.64487,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24--4-5-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24--4-7-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24-0-6-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.64487,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24-4-5-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24-4-7-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24-8-6-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.64487,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24-12-5-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24-12-7-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24-16-6-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.64487,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24-20-5-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24-20-7-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--24-24-6-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.64487,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20--24-7-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20--16-5-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20--16-7-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20--8-5-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20--8-7-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20-0-5-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20-0-7-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20-8-5-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20-8-7-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20-16-5-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20-16-7-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20-24-5-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16--24-2-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.34246,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16--24-6-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.64487,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16--16-2-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.34246,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16--16-6-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.64487,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16--8-2-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.34246,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16--8-6-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.64487,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16-0-6-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.64487,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16-8-2-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.34246,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16-8-6-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.64487,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16-16-2-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.34246,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16-16-6-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.64487,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16-24-2-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.34246,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--16-24-6-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.64487,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--12-4-2-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 5.7,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--8--24-6-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.64487,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--8--16-6-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.64487,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--8--12-7-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 27.223611,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--8--8-6-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.64487,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--8--4-7-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 27.223611,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--8-0-6-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.64487,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--8-4-5-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 27.223611,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--8-8-6-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.64487,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--8-12-5-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 27.223611,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--8-16-6-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.64487,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--8-24-6-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.64487,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--4--24-1-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 44.194174,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--4-16-3-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 44.194174,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--4-24-3-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 44.194174,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0--24-2-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.34246,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0--24-6-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.64487,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0--16-2-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.34246,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0--16-6-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.64487,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0--8-2-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.34246,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0--8-6-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.64487,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0-8-2-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.34246,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0-8-6-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.64487,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0-16-2-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.34246,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0-16-6-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.64487,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0-24-2-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.34246,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-0-24-6-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 26.64487,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-4--24-7-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 44.194174,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-4--16-7-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 44.194174,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-4-24-5-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 44.194174,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-8--24-2-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.34246,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-8--16-2-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.34246,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-8--12-1-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 27.223611,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-8--8-2-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.34246,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-8--4-1-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 27.223611,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-8-0-2-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.34246,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-8-4-3-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 27.223611,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-8-8-2-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.34246,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-8-12-3-30",
+      "kind": "classification",
+      "source": 30,
+      "exact": 27.223611,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-8-16-2-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.34246,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-8-24-2-20",
+      "kind": "classification",
+      "source": 20,
+      "exact": 18.34246,
+      "length": 20
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-12--4-6-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 5.7,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16--24-2-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.34246,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16--24-6-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.64487,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16--16-2-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.34246,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16--16-6-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.64487,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16--8-2-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.34246,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16--8-6-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.64487,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16-0-2-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.34246,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16-8-2-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.34246,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16-8-6-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.64487,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16-16-2-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.34246,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16-16-6-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.64487,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16-24-2-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.34246,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-16-24-6-45",
+      "kind": "classification",
+      "source": 45,
+      "exact": 42.64487,
+      "length": 45
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20--24-1-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20--16-1-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20--16-3-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20--8-1-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20--8-3-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20-0-1-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20-0-3-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20-8-1-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20-8-3-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20-16-1-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20-16-3-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20-24-3-12",
+      "kind": "classification",
+      "source": 12,
+      "exact": 10.253048,
+      "length": 12
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24--24-2-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.34246,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24--20-1-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24--20-3-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24--16-2-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.34246,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24--12-1-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24--12-3-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24--8-2-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.34246,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24--4-1-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24--4-3-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24-0-2-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.34246,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24-4-1-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24-4-3-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24-8-2-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.34246,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24-12-1-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24-12-3-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24-16-2-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.34246,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24-20-1-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24-20-3-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 4.596194,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-24-24-2-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 2.34246,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "kind": "reachable-visible-mass",
+      "misses": [
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.437994,
+            0.894613,
+            -24.75
+          ],
+          "hit": 1.048204
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            26.938037,
+            0.894613,
+            -23.25
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.468165,
+            0.46795,
+            -23.25
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            26.469958,
+            0.426663,
+            -23.75
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            26.439787,
+            0.853327,
+            -24.25
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            26.907866,
+            1.321277,
+            -23.75
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.936244,
+            0.935899,
+            -23.75
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.968122,
+            0.46795,
+            -24.25
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            26.818238,
+            1.74511,
+            -24.75
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.220731,
+            2.251121,
+            -24.75
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            26.722821,
+            2.209863,
+            -23.25
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.31104,
+            1.827344,
+            -23.25
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.406456,
+            1.362591,
+            -23.75
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            26.320328,
+            1.703852,
+            -23.75
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            26.23002,
+            2.127629,
+            -24.25
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.125315,
+            2.715874,
+            -24.25
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.713533,
+            2.333355,
+            -23.75
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.808949,
+            1.868602,
+            -24.25
+          ],
+          "hit": 1.1
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.125985,
+            2.715986,
+            -23.75
+          ],
+          "hit": 1.037941
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            26.633854,
+            2.633864,
+            -24.25
+          ],
+          "hit": 1.1
+        }
+      ],
+      "total": 656
+    }
+  ],
+  "startedAt": "2026-09-22T13:34:07.188Z",
+  "checks": 20380,
+  "elapsedMs": 190.3,
+  "passed": false
+}

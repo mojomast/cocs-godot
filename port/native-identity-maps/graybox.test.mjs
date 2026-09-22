@@ -3,7 +3,14 @@ import {mkdirSync,writeFileSync} from 'node:fs';
 import {performance} from 'node:perf_hooks';
 import {createIdentityMatch,loadRecipe,CATALOG} from './match.mjs';
 import {floorAt,obstructed,navigation,moveActor,visible,nearest,walkEdge} from '../../game/core.mjs';
+import {terrainWallSegments,terrainWallTriangles,terrainTriangles} from '../../game/terrain.mjs';
 let checks=0;const check=(v,m)=>{checks++;assert.ok(v,m);};
+// Cold-construction gate for the collision simplification. Target 1500 ms,
+// hard ceiling 3000 ms; the prototype's exact-triangle walls measured
+// 6059 / 2950 / 14828 ms on this host (port/native-identity-maps/PERFORMANCE.md),
+// so these are the numbers a regression must not walk back to.
+const COLD_TARGET_MS=1500,COLD_CEILING_MS=3000,WALL_SEGMENT_BUDGET=2000;
+const PROTOTYPE_COLD_MS={'lacuna-court':6059.348,'vermilion-fold':2950.349,'nacre-engine':14827.741};
 const result={scope:'Deterministic graybox source-function fixtures, NOT normal-rate live gameplay or GPU performance',maps:[],failures:[]};
 function walk(arena,points){
  const a={x:points[0].x,y:floorAt(points[0].x,points[0].z,arena),z:points[0].z,vx:0,vy:0,vz:0,grounded:true,character:'chatgpt',harness:'openclaw',yaw:0};
@@ -25,6 +32,12 @@ for(const id of Object.keys(CATALOG)){
  try{
  const r=loadRecipe(id),a=r.arena,t=performance.now(),m=createIdentityMatch(id),constructionMs=performance.now()-t;
  check(m.actors.length===(id==='nacre-engine'?1:id==='vermilion-fold'?6:4),'actor counts');
+ const segments=terrainWallSegments(a.terrain);
+ check(segments.length<=WALL_SEGMENT_BUDGET,`${id} wall segment budget ${segments.length}`);
+ check(terrainWallTriangles(a.terrain).length+terrainTriangles(a.terrain).length>0,`${id} collision triangles exist`);
+ check(constructionMs<COLD_CEILING_MS,`${id} cold construction ${constructionMs.toFixed(1)} ms exceeds ${COLD_CEILING_MS} ms ceiling`);
+ if(constructionMs>=COLD_TARGET_MS)result.failures.push({id,kind:'cold-target',constructionMs,note:`target ${COLD_TARGET_MS} ms (soft)`});
+ check(constructionMs*10<PROTOTYPE_COLD_MS[id],`${id} cold construction is not an order of magnitude better than the prototype baseline`);
  for(const [x,z] of [...a.spawns,...a.pickups.map(p=>p.slice(1))]){
   const y=floorAt(x,z,a);check(y!==null,'spawn/pickup floor');check(!obstructed(x,y,z,.65,a),'spawn/pickup clearance');
   if(id==='nacre-engine')check(!obstructed(x,y,z,1.2,a),'conservative visual boss clearance');
@@ -40,7 +53,7 @@ for(const id of Object.keys(CATALOG)){
   check(m.objectiveState.zones.length===3,'three source zones');
   m.objectiveState.zones.forEach((z,i)=>check(Math.hypot(z.x-a.objectiveZones[i].x,z.z-a.objectiveZones[i].z)<.001,'no zone snapping'));
  }
- result.maps.push({id,geometryHash:r.geometryHash,constructionMs,navNodes:nav.nodes.length,navEdges:nav.edges.reduce((s,e)=>s+e.length,0),routes,spawnSightlines});
+ result.maps.push({id,geometryHash:r.geometryHash,constructionMs,prototypeColdMs:PROTOTYPE_COLD_MS[id],speedup:+(PROTOTYPE_COLD_MS[id]/constructionMs).toFixed(1),wallSegments:segments.length,wallEntries:a.terrain.walls.length,blocks:a.blocks.length,artTriangles:r.art.reduce((s,x)=>s+x.triangles.length,0),navNodes:nav.nodes.length,navEdges:nav.edges.reduce((s,e)=>s+e.length,0),routes,spawnSightlines});
  }catch(e){result.failures.push({id,error:e.stack});}
 }
 assert.throws(()=>loadRecipe('../x'));checks++;

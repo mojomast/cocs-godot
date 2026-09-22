@@ -1,7 +1,11 @@
 extends Node3D
 ## Deliberately an inspection scene, not a substitute combat controller.
 const MapBuilder = preload("res://identity_maps/map.gd")
+const Style = preload("res://identity_maps/style.gd")
 var map: Node3D
+var environment: WorldEnvironment
+var sun: DirectionalLight3D
+var horizon: Node3D
 var camera := Camera3D.new()
 var caption := Label.new()
 var current_map := 0
@@ -17,20 +21,9 @@ func _ready() -> void:
 	layer.add_child(caption)
 	caption.position = Vector2(18,18)
 	caption.add_theme_font_size_override("font_size",20)
-	var environment := WorldEnvironment.new()
-	environment.environment = Environment.new()
-	environment.environment.background_mode = Environment.BG_COLOR
-	environment.environment.background_color = Color("8097ab")
-	environment.environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	environment.environment.ambient_light_color = Color("c6d3e2")
-	environment.environment.ambient_light_energy = 0.6
-	environment.environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	environment = WorldEnvironment.new()
 	add_child(environment)
-	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-48,-28,0)
-	sun.light_color = Color("fff0d3")
-	sun.light_energy = 1.2
-	sun.shadow_enabled = true
+	sun = DirectionalLight3D.new()
 	add_child(sun)
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--map="):
@@ -45,6 +38,11 @@ func show_map() -> void:
 	map = MapBuilder.new()
 	add_child(map)
 	map.build(MapBuilder.IDS[current_map])
+	if is_instance_valid(horizon): remove_child(horizon); horizon.queue_free()
+	horizon = Node3D.new()
+	add_child(horizon)
+	Style.configure_environment(MapBuilder.IDS[current_map], environment, sun)
+	Style.decorate(MapBuilder.IDS[current_map], map.recipe, horizon, map.materials)
 	current_view = 0
 	show_view()
 

@@ -1,0 +1,591 @@
+{
+  "scope": "Independent source ray audit: source vs Godot fixtures and prototype-exact vs simplified cover parity",
+  "eyeHeight": 1.6,
+  "jumpApex": 1.502436,
+  "maps": [
+    {
+      "id": "lacuna-court",
+      "geometryHash": "a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9",
+      "rays": 5211,
+      "checks": 5211,
+      "groups": {
+        "block-cover": {
+          "rays": 36,
+          "blockedSource": 36,
+          "blockedExact": 36,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 1.15
+        },
+        "wall-face": {
+          "rays": 24,
+          "blockedSource": 24,
+          "blockedExact": 24,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 0.68685
+        },
+        "route-floor": {
+          "rays": 66,
+          "blockedSource": 66,
+          "blockedExact": 66,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 0
+        },
+        "sightline": {
+          "rays": 325,
+          "blockedSource": 177,
+          "blockedExact": 177,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 0
+        },
+        "eye-grid": {
+          "rays": 4760,
+          "blockedSource": 2929,
+          "blockedExact": 2929,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 0
+        }
+      },
+      "probes": {
+        "reachableBand": 12,
+        "covered": 12,
+        "misses": 0
+      },
+      "visibleChecks": 325,
+      "visibleMismatch": 0,
+      "reach": {
+        "maxFloorY": 1.5,
+        "jumpApex": 1.502436,
+        "eyeCeiling": 4.472436,
+        "excludedArtMinimumY": 0
+      }
+    },
+    {
+      "id": "vermilion-fold",
+      "geometryHash": "6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a",
+      "rays": 7878,
+      "checks": 13089,
+      "groups": {
+        "block-cover": {
+          "rays": 28,
+          "blockedSource": 28,
+          "blockedExact": 28,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 0
+        },
+        "route-floor": {
+          "rays": 117,
+          "blockedSource": 117,
+          "blockedExact": 117,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 0
+        },
+        "sightline": {
+          "rays": 893,
+          "blockedSource": 548,
+          "blockedExact": 548,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 0
+        },
+        "eye-grid": {
+          "rays": 6840,
+          "blockedSource": 4382,
+          "blockedExact": 4382,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 0
+        }
+      },
+      "probes": {
+        "reachableBand": 0,
+        "covered": 0,
+        "misses": 0
+      },
+      "visibleChecks": 893,
+      "visibleMismatch": 0,
+      "reach": {
+        "maxFloorY": 0,
+        "jumpApex": 1.502436,
+        "eyeCeiling": 2.972436,
+        "excludedArtMinimumY": 4
+      }
+    },
+    {
+      "id": "nacre-engine",
+      "geometryHash": "cd483de8a3d138150ee7a06a6ba9f40ae6e4525e2934a18d88f7d15e9fac43e3",
+      "rays": 6743,
+      "checks": 19832,
+      "groups": {
+        "block-cover": {
+          "rays": 18,
+          "blockedSource": 18,
+          "blockedExact": 18,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 0
+        },
+        "wall-face": {
+          "rays": 112,
+          "blockedSource": 112,
+          "blockedExact": 70,
+          "classificationMismatch": 0,
+          "proxyDivergence": 42,
+          "maxDistanceDelta": 0.75
+        },
+        "route-floor": {
+          "rays": 48,
+          "blockedSource": 48,
+          "blockedExact": 48,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 0
+        },
+        "sightline": {
+          "rays": 325,
+          "blockedSource": 127,
+          "blockedExact": 127,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 0
+        },
+        "eye-grid": {
+          "rays": 6240,
+          "blockedSource": 3571,
+          "blockedExact": 3551,
+          "classificationMismatch": 24,
+          "proxyDivergence": 0,
+          "maxDistanceDelta": 1.047569
+        }
+      },
+      "probes": {
+        "reachableBand": 747,
+        "covered": 501,
+        "misses": 246
+      },
+      "visibleChecks": 325,
+      "visibleMismatch": 0,
+      "reach": {
+        "maxFloorY": 0,
+        "jumpApex": 1.502436,
+        "eyeCeiling": 2.972436,
+        "excludedArtMinimumY": 0
+      }
+    }
+  ],
+  "failures": [
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20--24-6-6",
+      "kind": "classification",
+      "source": 5.597301,
+      "exact": 6,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20--16-6-6",
+      "kind": "classification",
+      "source": 5.597301,
+      "exact": 6,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20-0-6-6",
+      "kind": "classification",
+      "source": 5.597301,
+      "exact": 6,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20-16-6-6",
+      "kind": "classification",
+      "source": 5.597301,
+      "exact": 6,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--20-24-6-6",
+      "kind": "classification",
+      "source": 5.597301,
+      "exact": 6,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--12-4-2-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 5.7,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--4--24-2-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--4--16-2-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--4--8-2-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--4-8-2-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--4-16-2-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid--4-24-2-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-4--24-6-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-4--16-6-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-4--8-6-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-4-8-6-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-4-16-6-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-4-24-6-30",
+      "kind": "classification",
+      "source": 29.597301,
+      "exact": 30,
+      "length": 30
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-12--4-6-6",
+      "kind": "classification",
+      "source": 6,
+      "exact": 5.7,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20--24-2-6",
+      "kind": "classification",
+      "source": 5.597301,
+      "exact": 6,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20--16-2-6",
+      "kind": "classification",
+      "source": 5.597301,
+      "exact": 6,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20-0-2-6",
+      "kind": "classification",
+      "source": 5.597301,
+      "exact": 6,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20-16-2-6",
+      "kind": "classification",
+      "source": 5.597301,
+      "exact": 6,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "group": "eye-grid",
+      "label": "grid-20-24-2-6",
+      "kind": "classification",
+      "source": 5.597301,
+      "exact": 6,
+      "length": 6
+    },
+    {
+      "map": "nacre-engine",
+      "kind": "reachable-visible-mass",
+      "misses": [
+        {
+          "surface": "vault--24",
+          "centre": [
+            26.908547,
+            1.321333,
+            -24.25
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            27.125985,
+            2.715986,
+            -23.75
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            26.633854,
+            2.633864,
+            -24.25
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            -26.826928,
+            2.666082,
+            -23.75
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            -27.222522,
+            2.732095,
+            -24.25
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault--24",
+          "centre": [
+            -27.106333,
+            1.337722,
+            -23.75
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            25.920456,
+            0.41152,
+            -23.091667
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            25.890912,
+            0.823041,
+            -23.208333
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            26.339887,
+            0.847815,
+            -23.091667
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            26.369944,
+            0.423907,
+            -23.208333
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            26.160343,
+            1.259335,
+            -23.091667
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            26.010855,
+            1.246948,
+            -23.208333
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            25.772937,
+            1.643271,
+            -23.091667
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            25.684506,
+            2.05198,
+            -23.208333
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            26.129902,
+            2.113745,
+            -23.091667
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            26.219867,
+            1.692734,
+            -23.208333
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            25.891984,
+            2.510068,
+            -23.091667
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            25.74403,
+            2.485378,
+            -23.208333
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            25.449363,
+            2.863795,
+            -23.091667
+          ],
+          "hit": 4.5
+        },
+        {
+          "surface": "vault-inner--24",
+          "centre": [
+            25.890681,
+            2.949997,
+            -23.208333
+          ],
+          "hit": 4.5
+        }
+      ],
+      "total": 246
+    }
+  ],
+  "startedAt": "2026-09-22T13:37:17.109Z",
+  "checks": 19832,
+  "elapsedMs": 309.9,
+  "passed": false
+}
