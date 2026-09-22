@@ -1,0 +1,8 @@
+{
+  "originalFiles": 119,
+  "priorRepairFiles": 94,
+  "finalRuntimeFiles": 25,
+  "runs": 3,
+  "generatedResources": 10,
+  "result": "HOLD: event-ring cursor still replays source events; Meridian repair validator rejection retained"
+}

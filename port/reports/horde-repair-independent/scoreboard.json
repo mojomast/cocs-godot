@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "--script",
+    "res://tests/protocol/scoreboard.gd",
+    "--"
+  ],
+  "envOverrides": {},
+  "exit": 0,
+  "expectedExit": 0,
+  "temporaryTreeRemoved": true
+}

@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "scenario": "death",
+  "correlated": 588,
+  "receipts": 1149,
+  "ackHighWater": 1148,
+  "won": false,
+  "deaths": true,
+  "eventTypes": [
+    "spawn",
+    "husk",
+    "spitter",
+    "horde-wave",
+    "horde-modifier",
+    "pickup",
+    "weapon-switch",
+    "power",
+    "damage",
+    "melee",
+    "death",
+    "singleplayer-life",
+    "powerup"
+  ],
+  "nativeTraceCompletionProven": true,
+  "steppedSamples": 1024,
+  "receivedHighWater": 1149,
+  "productComposition": true,
+  "harnessExit": 0,
+  "clockDiagnostic": {
+    "sourceSeconds": 29.399999999999608,
+    "wallSeconds": 29.389702442999997
+  },
+  "runtimeCommit": "9c0f5a50c8935eecbf21cf6f0ff0e1ded57f7345"
+}

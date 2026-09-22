@@ -1,0 +1,114 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+... Skipped lines
+
+  {
+    bark: null,
+    bestWave: 0,
+    boss: null,
+    bossPhase: 0,
+...
+      active: false,
++     delay: 1.98333333333333,
+-     delay: 1.9833333333333334,
+      rate: 14
+    },
+    score: 0,
+    steps: [],
+    story: null,
+
+    at file:///tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/horde-audit.mjs:62:10
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    bark: null,
+    bestWave: 0,
+    boss: null,
+    bossPhase: 0,
+    bossPhaseName: null,
+    bossPhaseTotal: 1,
+    checkpoint: null,
+    deaths: 0,
+    defend: null,
+    elapsed: 0.05,
+    endless: false,
+    enemiesAlive: 0,
+    enemiesTotal: 0,
+    hold: null,
+    kills: 0,
+    kind: 'horde',
+    lives: 3,
+    message: '',
+    mission: null,
+    objective: 'Survive 1 hostile waves.',
+    phase: 'intermission',
+    regen: { active: false, delay: 1.98333333333333, rate: 14 },
+    score: 0,
+    steps: [],
+    story: null,
+    summary: null,
+    timeOfDay: null,
+    upgradeCount: 0,
+    upgradeSelected: null,
+    upgradeWave: null,
+    upgrades: [],
+    wave: 0,
+    waveModifier: null,
+    waveTarget: 1,
+    waveTimer: 6.95,
+    waypoint: null,
+    weather: null,
+    winner: null
+  },
+  expected: {
+    kind: 'horde',
+    phase: 'intermission',
+    elapsed: 0.05,
+    wave: 0,
+    waveTarget: 1,
+    endless: false,
+    score: 0,
+    bestWave: 0,
+    summary: null,
+    waveTimer: 6.95,
+    waveModifier: null,
+    enemiesAlive: 0,
+    enemiesTotal: 0,
+    kills: 0,
+    deaths: 0,
+    lives: 3,
+    objective: 'Survive 1 hostile waves.',
+    message: '',
+    story: null,
+    bark: null,
+    weather: null,
+    timeOfDay: null,
+    bossPhase: 0,
+    bossPhaseName: null,
+    bossPhaseTotal: 1,
+    waypoint: null,
+    winner: null,
+    mission: null,
+    steps: [],
+    hold: null,
+    boss: null,
+    checkpoint: null,
+    upgrades: [],
+    upgradeWave: null,
+    upgradeSelected: null,
+    upgradeCount: 0,
+    defend: null,
+    regen: { active: false, delay: 1.9833333333333334, rate: 14 }
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.1

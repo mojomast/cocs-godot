@@ -1,0 +1,20 @@
+{
+  "removed": [
+    "godot/.godot",
+    "godot/content/generated",
+    "godot/tests/horde-independent-product.gd.uid",
+    "godot/tests/horde/leak_subclass.gd.uid",
+    "godot/tests/horde/leak_probe.gd.uid",
+    "godot/tests/horde/layout_test.gd.uid",
+    "godot/tests/horde/controls_test.gd.uid",
+    "godot/tests/protocol/lobby_spectator_session.gd.uid",
+    "godot/tests/protocol/lobby_spectator_observer.gd.uid",
+    "godot/tests/protocol/lobby_spectator_context.gd.uid",
+    "node_modules (owned symlink only)"
+  ],
+  "primaryDependenciesPresent": true,
+  "generatedHashesPreservedIn": "provenance.json",
+  "sourceMatchSHA256": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+  "ownedLiveProcessesAndListeners": "reaped/absent and closed: provenance.json, all 3 launch summaries",
+  "protectedTrackedDiffEmpty": true
+}

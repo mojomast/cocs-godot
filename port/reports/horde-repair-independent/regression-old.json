@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "port/native-horde/repair-regression.test.mjs"
+  ],
+  "envOverrides": {
+    "HORDE_BASELINE": "59c2b33c3080845eb73f8490b3dc9e355117c000"
+  },
+  "exit": 1,
+  "expectedExit": 1,
+  "temporaryTreeRemoved": true
+}

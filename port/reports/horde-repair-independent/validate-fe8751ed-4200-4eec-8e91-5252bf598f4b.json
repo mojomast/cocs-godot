@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "port/native-horde/validate.mjs",
+    "/tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/evidence/fe8751ed-4200-4eec-8e91-5252bf598f4b"
+  ],
+  "envOverrides": {},
+  "exit": 0,
+  "expectedExit": 0,
+  "temporaryTreeRemoved": true
+}

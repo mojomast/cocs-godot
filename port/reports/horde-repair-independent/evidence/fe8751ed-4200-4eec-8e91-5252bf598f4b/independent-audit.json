@@ -1,0 +1,36 @@
+{
+  "id": "fe8751ed-4200-4eec-8e91-5252bf598f4b",
+  "scenario": "death",
+  "launchCommit": "9c0f5a50c8935eecbf21cf6f0ff0e1ded57f7345",
+  "wallSeconds": 32.327557424000005,
+  "boundedGameplay": "PASS",
+  "integrationVerdict": "HOLD: event cursor replay defect",
+  "harnessExit": 0,
+  "observerComplete": true,
+  "nativeRecordingEnd": true,
+  "correlatedSnapshots": 588,
+  "queuedNativeSamples": 1106,
+  "queuedWithReceipt": 1106,
+  "receipts": 1149,
+  "distinctSteppedSamples": 1024,
+  "sourceSteps": 1767,
+  "appliedAckHighWater": 1148,
+  "receivedHighWater": 1149,
+  "effects": {
+    "livesBefore": 3,
+    "livesAfter": 2,
+    "deadSeq": 511,
+    "respawnSeq": 551,
+    "neutralNativeInputs": 129,
+    "freshReleasedCapture": true
+  },
+  "identicalEventPayloadReplays": 0,
+  "replayExamples": [],
+  "hygieneNegativeProbes": [
+    "nonzero exit",
+    "open listener",
+    "unreaped child",
+    "resource leak",
+    "XDG leak"
+  ]
+}

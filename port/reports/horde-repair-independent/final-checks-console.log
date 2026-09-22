@@ -1,0 +1,45 @@
+product-look-old {"command": ["/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64", "--headless", "--path", "godot", "--script", "res://tests/horde-repair-independent-look.gd", "--", "--vectors=/tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/input-vectors.json", "--demo-source=/tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/horde-pre-ads-demo.gd.txt"], "envOverrides": {}, "exit": 1, "expectedExit": 1, "temporaryTreeRemoved": true} Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+HORDE_PRODUCT_LOOK {"actual":[0.5,0.0],"ads":false,"expected":[0.5,0.0],"ok":true,"source":"/tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/horde-pre-ads-demo.gd.txt"}
+HORDE_PRODUCT_LOOK {"actual":[0.5,0.0],"ads":true,"expected":[0.53,0.03],"ok":false,"source":"/tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/horde-pre-ads-demo.gd.txt"}
+HORDE_PRODUCT_LOOK {"actual":[0.5,0.0],"ads":false,"expected":[0.5,0.0],"ok":true,"source":"/tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/horde-pre-ads-demo.gd.txt"}
+HORDE_PRODUCT_LOOK_CHECKS checks=3 failures=1
+
+product-look-final {"command": ["/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64", "--headless", "--path", "godot", "--script", "res://tests/horde-repair-independent-look.gd", "--", "--vectors=/tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/input-vectors.json"], "envOverrides": {}, "exit": 0, "expectedExit": 0, "temporaryTreeRemoved": true} Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+HORDE_PRODUCT_LOOK {"actual":[0.5,0.0],"ads":false,"expected":[0.5,0.0],"ok":true,"source":"res://horde/demo.gd"}
+HORDE_PRODUCT_LOOK {"actual":[0.529999971389771,0.0299999993294477],"ads":true,"expected":[0.53,0.03],"ok":true,"source":"res://horde/demo.gd"}
+HORDE_PRODUCT_LOOK {"actual":[0.5,0.0],"ads":false,"expected":[0.5,0.0],"ok":true,"source":"res://horde/demo.gd"}
+HORDE_PRODUCT_LOOK_CHECKS checks=3 failures=0
+
+validate-b3e2a06b-5e89-46ab-a078-24cc57c91b60 {"command": ["node", "port/native-horde/validate.mjs", "/tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/evidence/b3e2a06b-5e89-46ab-a078-24cc57c91b60"], "envOverrides": {}, "exit": 1, "expectedExit": 0, "temporaryTreeRemoved": true} node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+2 !== 3
+
+    at validateRun (file:///tmp/opencode/horde-repair-independent/port/native-horde/validate.mjs:114:10)
+    at file:///tmp/opencode/horde-repair-independent/port/native-horde/validate.mjs:134:15
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 2,
+  expected: 3,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.1
+
+Traceback (most recent call last):
+  File "/tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/horde-final-checks.py", line 14, in <module>
+    checks.run('validate-' + folder.name, ['node', 'port/native-horde/validate.mjs', str(folder)])
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/horde-checks.py", line 27, in run
+    assert result.returncode == expected, name
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: validate-b3e2a06b-5e89-46ab-a078-24cc57c91b60

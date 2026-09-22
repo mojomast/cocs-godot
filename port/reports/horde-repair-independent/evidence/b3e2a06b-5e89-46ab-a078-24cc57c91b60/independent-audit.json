@@ -1,0 +1,150 @@
+{
+  "id": "b3e2a06b-5e89-46ab-a078-24cc57c91b60",
+  "scenario": "combat",
+  "launchCommit": "9c0f5a50c8935eecbf21cf6f0ff0e1ded57f7345",
+  "wallSeconds": 32.183385991,
+  "boundedGameplay": "PASS",
+  "integrationVerdict": "HOLD: event cursor replay defect",
+  "harnessExit": 0,
+  "observerComplete": true,
+  "nativeRecordingEnd": true,
+  "correlatedSnapshots": 564,
+  "queuedNativeSamples": 1411,
+  "queuedWithReceipt": 1411,
+  "receipts": 1455,
+  "distinctSteppedSamples": 1295,
+  "sourceSteps": 1692,
+  "appliedAckHighWater": 1446,
+  "receivedHighWater": 1446,
+  "effects": {
+    "enemyVictims": [
+      1,
+      2,
+      3
+    ],
+    "netSourceKills": 2,
+    "actorFrags": 2,
+    "score": 94,
+    "lives": 2,
+    "winner": 0,
+    "sourceSelfDeaths": 1,
+    "releasedRestart": true,
+    "restartSourceTime": 0.05
+  },
+  "identicalEventPayloadReplays": 8,
+  "replayExamples": [
+    {
+      "first": {
+        "type": "move-blocked",
+        "id": 75,
+        "time": 8.11666666666665,
+        "actor": 0,
+        "verb": "grapple",
+        "reason": "firing",
+        "sourceId": 75
+      },
+      "replayed": {
+        "type": "move-blocked",
+        "id": 76,
+        "time": 8.11666666666665,
+        "actor": 0,
+        "verb": "grapple",
+        "reason": "firing",
+        "sourceId": 75
+      }
+    },
+    {
+      "first": {
+        "type": "explosion",
+        "id": 133,
+        "time": 9.016666666666694,
+        "pos": {
+          "x": -20.262965891594344,
+          "y": 0.000528517255543932,
+          "z": 34.205577517095485
+        },
+        "weapon": 5,
+        "sourceId": 133
+      },
+      "replayed": {
+        "type": "explosion",
+        "id": 134,
+        "time": 9.016666666666694,
+        "pos": {
+          "x": -20.262965891594344,
+          "y": 0.000528517255543932,
+          "z": 34.205577517095485
+        },
+        "weapon": 5,
+        "sourceId": 133
+      }
+    },
+    {
+      "first": {
+        "type": "move-blocked",
+        "id": 191,
+        "time": 9.916666666666739,
+        "actor": 0,
+        "verb": "grapple",
+        "reason": "firing",
+        "sourceId": 191
+      },
+      "replayed": {
+        "type": "move-blocked",
+        "id": 192,
+        "time": 9.916666666666739,
+        "actor": 0,
+        "verb": "grapple",
+        "reason": "firing",
+        "sourceId": 191
+      }
+    },
+    {
+      "first": {
+        "type": "move-blocked",
+        "id": 249,
+        "time": 10.816666666666784,
+        "actor": 0,
+        "verb": "grapple",
+        "reason": "firing",
+        "sourceId": 249
+      },
+      "replayed": {
+        "type": "move-blocked",
+        "id": 250,
+        "time": 10.816666666666784,
+        "actor": 0,
+        "verb": "grapple",
+        "reason": "firing",
+        "sourceId": 249
+      }
+    },
+    {
+      "first": {
+        "type": "move-blocked",
+        "id": 362,
+        "time": 12.616666666666873,
+        "actor": 0,
+        "verb": "grapple",
+        "reason": "firing",
+        "sourceId": 362
+      },
+      "replayed": {
+        "type": "move-blocked",
+        "id": 363,
+        "time": 12.616666666666873,
+        "actor": 0,
+        "verb": "grapple",
+        "reason": "firing",
+        "sourceId": 362
+      }
+    }
+  ],
+  "hygieneNegativeProbes": [
+    "nonzero exit",
+    "open listener",
+    "unreaped child",
+    "resource leak",
+    "XDG leak"
+  ]
+}

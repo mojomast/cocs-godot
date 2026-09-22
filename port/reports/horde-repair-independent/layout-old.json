@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "--script",
+    "res://tests/horde/layout_test.gd",
+    "--",
+    "--legacy-layout"
+  ],
+  "envOverrides": {},
+  "exit": 1,
+  "expectedExit": 1,
+  "temporaryTreeRemoved": true
+}

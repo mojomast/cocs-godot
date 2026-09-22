@@ -1,0 +1,11 @@
+{
+  "baseline": "1a00d90227c9cf7d24a1e132b34f53e8aafcb838",
+  "runtimeExternalTip": "50521191ee6922295a50448301e929d945926ef9",
+  "maximumAttemptsPerCase": 2,
+  "nativeDeadlineSeconds": 170,
+  "outerNativeDeadlineSeconds": 180,
+  "cases": ["meridian-exchange/combat", "verdant-reliquary/death", "ember-crucible/startup"],
+  "clock": "actual monotonic elapsed; unchanged source 1/60 steps and five-step cap",
+  "steering": "existing separate observer instances actual product child; engine Input.parse_input_event",
+  "constraints": "No RNG/seed selection, state writes, physics/timing changes, public Room changes or shared services"
+}

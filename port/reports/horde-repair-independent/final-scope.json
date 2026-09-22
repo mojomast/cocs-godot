@@ -1,0 +1,11 @@
+{
+  "newFilesBeforeThisManifest": 110,
+  "onlyOwnedAdditions": true,
+  "stagedWhitespaceCheck": "PASS",
+  "unstagedDiffEmpty": true,
+  "untrackedEmpty": true,
+  "ownedGeneratedCachesRemoved": true,
+  "baseline": "1a00d90227c9cf7d24a1e132b34f53e8aafcb838",
+  "appliedTip": "9c0f5a50c8935eecbf21cf6f0ff0e1ded57f7345",
+  "verdict": "HOLD"
+}

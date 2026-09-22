@@ -1,0 +1,24 @@
+{
+  "exit": 0,
+  "reason": "native scenario completed",
+  "map": "ember-crucible",
+  "scenario": "startup",
+  "manual": false,
+  "attempt": 1,
+  "wallSeconds": 11.501622585000002,
+  "cleanup": [
+    {
+      "pid": 3714150,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 3714154,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "serverClosed": true,
+  "sockets": 0,
+  "temporaryTreeRemoved": true
+}

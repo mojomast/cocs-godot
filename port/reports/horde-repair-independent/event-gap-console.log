@@ -1,0 +1,126 @@
+{
+  "endpoint": "ws://127.0.0.1:42085",
+  "serverClosed": true,
+  "sockets": 0,
+  "ordinaryGrenadeStepped": true,
+  "grenadeEvents": [
+    {
+      "type": "grenade",
+      "id": 3,
+      "time": 0.4666666666666666,
+      "actor": 0,
+      "pos": {
+        "x": -44,
+        "y": 1.45,
+        "z": 10
+      },
+      "sourceId": 3
+    }
+  ],
+  "duplicates": [
+    {
+      "first": {
+        "type": "spawn",
+        "id": 1,
+        "time": 0,
+        "actor": 0,
+        "pos": {
+          "x": -44,
+          "y": 1,
+          "z": 10
+        },
+        "sourceId": 1
+      },
+      "replayed": {
+        "type": "spawn",
+        "id": 2,
+        "time": 0,
+        "actor": 0,
+        "pos": {
+          "x": -44,
+          "y": 1,
+          "z": 10
+        },
+        "sourceId": 1
+      }
+    }
+  ],
+  "errors": [],
+  "batches": [
+    {
+      "direction": "out",
+      "frame": {
+        "type": "events",
+        "items": [
+          {
+            "type": "spawn",
+            "id": 1,
+            "time": 0,
+            "actor": 0,
+            "pos": {
+              "x": -44,
+              "y": 1,
+              "z": 10
+            },
+            "sourceId": 1
+          }
+        ]
+      },
+      "round": 1,
+      "observedMs": 730.701608
+    },
+    {
+      "direction": "out",
+      "frame": {
+        "type": "events",
+        "items": [
+          {
+            "type": "spawn",
+            "id": 2,
+            "time": 0,
+            "actor": 0,
+            "pos": {
+              "x": -44,
+              "y": 1,
+              "z": 10
+            },
+            "sourceId": 1
+          },
+          {
+            "type": "grenade",
+            "id": 3,
+            "time": 0.4666666666666666,
+            "actor": 0,
+            "pos": {
+              "x": -44,
+              "y": 1.45,
+              "z": 10
+            },
+            "sourceId": 3
+          }
+        ]
+      },
+      "round": 1,
+      "observedMs": 1182.100861
+    }
+  ]
+}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: source event replayed under a new wire ID
+
+1 !== 0
+
+    at file:///tmp/opencode/horde-repair-independent/port/reports/horde-repair-independent/horde-event-gap.mjs:48:8
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.1
