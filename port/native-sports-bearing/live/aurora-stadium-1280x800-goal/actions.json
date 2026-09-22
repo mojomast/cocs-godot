@@ -1,0 +1,37 @@
+[
+  {
+    "elapsed": 6.632095813751221,
+    "key": "Return",
+    "hold_seconds": 0.08
+  },
+  {
+    "elapsed": 6.712712049484253,
+    "key": "d",
+    "hold_seconds": 0.2
+  },
+  {
+    "elapsed": 7.769052505493164,
+    "key": "a",
+    "hold_seconds": 0.3
+  },
+  {
+    "elapsed": 8.923485040664673,
+    "key": "a",
+    "hold_seconds": 0.3
+  },
+  {
+    "elapsed": 10.075367450714111,
+    "key": "a",
+    "hold_seconds": 0.3
+  },
+  {
+    "elapsed": 11.227307081222534,
+    "key": "a",
+    "hold_seconds": 0.3
+  },
+  {
+    "elapsed": 12.330869913101196,
+    "key": "Escape",
+    "hold_seconds": 0.08
+  }
+]

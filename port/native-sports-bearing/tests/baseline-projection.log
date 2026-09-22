@@ -1,0 +1,323 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: (960, 640) yaw=0.000000 projected=(333.4171, 272.002) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=0.000000 projected=(333.4171, 272.002) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=0.000000 projected=(626.5829, 272.002) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=0.000000 projected=(626.5829, 272.002) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=1.570796 projected=(333.4171, 272.002) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=1.570796 projected=(333.4171, 272.002) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=1.570796 projected=(626.5829, 272.002) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=1.570796 projected=(626.5829, 272.002) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=3.141593 projected=(333.4171, 272.002) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=3.141593 projected=(333.4171, 272.002) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=3.141593 projected=(626.5829, 272.002) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=3.141593 projected=(626.5829, 272.002) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-1.570796 projected=(333.4171, 272.002) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-1.570796 projected=(333.4171, 272.002) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-1.570796 projected=(626.5829, 272.002) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-1.570796 projected=(626.5829, 272.002) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=0.700000 projected=(333.4171, 272.002) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=0.700000 projected=(333.4171, 272.002) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=0.700000 projected=(626.5829, 272.002) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=0.700000 projected=(626.5829, 272.002) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-2.100000 projected=(333.4171, 272.002) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-2.100000 projected=(333.4171, 272.002) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-2.100000 projected=(626.5829, 272.002) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-2.100000 projected=(626.5829, 272.002) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=3.140593 projected=(333.4171, 272.0019) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=3.140593 projected=(333.4171, 272.0019) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=3.140593 projected=(626.5829, 272.0019) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=3.140593 projected=(626.5829, 272.0019) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-3.140593 projected=(333.4171, 272.0019) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-3.140593 projected=(333.4171, 272.0019) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-3.140593 projected=(626.5829, 272.0019) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (960, 640) yaw=-3.140593 projected=(626.5829, 272.0019) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=0.000000 projected=(456.7714, 340.0024) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=0.000000 projected=(456.7714, 340.0024) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=0.000000 projected=(823.2286, 340.0024) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=0.000000 projected=(823.2286, 340.0024) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=1.570796 projected=(456.7713, 340.0024) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=1.570796 projected=(456.7713, 340.0024) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=1.570796 projected=(823.2286, 340.0024) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=1.570796 projected=(823.2286, 340.0024) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=3.141593 projected=(456.7714, 340.0024) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=3.141593 projected=(456.7714, 340.0024) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=3.141593 projected=(823.2286, 340.0024) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=3.141593 projected=(823.2286, 340.0024) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-1.570796 projected=(456.7714, 340.0024) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-1.570796 projected=(456.7714, 340.0024) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-1.570796 projected=(823.2286, 340.0024) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-1.570796 projected=(823.2286, 340.0024) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=0.700000 projected=(456.7714, 340.0024) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=0.700000 projected=(456.7714, 340.0024) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=0.700000 projected=(823.2286, 340.0024) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=0.700000 projected=(823.2286, 340.0024) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-2.100000 projected=(456.7714, 340.0024) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-2.100000 projected=(456.7714, 340.0024) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-2.100000 projected=(823.2286, 340.0024) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-2.100000 projected=(823.2286, 340.0024) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=3.140593 projected=(456.7714, 340.0024) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=3.140593 projected=(456.7714, 340.0024) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=3.140593 projected=(823.2286, 340.0024) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=3.140593 projected=(823.2286, 340.0024) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-3.140593 projected=(456.7714, 340.0024) expected=Left got=Next gate 1 · Right · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-3.140593 projected=(456.7714, 340.0024) expected=Left got=Right · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-3.140593 projected=(823.2286, 340.0024) expected=Right got=Next gate 1 · Left · 28 m · Follow the mint arrow through
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+ERROR: (1280, 800) yaw=-3.140593 projected=(823.2286, 340.0024) expected=Right got=Left · 28 m
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/sports/bearing_projection_test.gd:14)
+       [1] run (res://tests/sports/bearing_projection_test.gd:51)
+BEARING_PROJECTION_SYNTHETIC_CHECKS 896 failures=64

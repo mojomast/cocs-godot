@@ -1,0 +1,15 @@
+{
+  "elapsed": 12.818186521530151,
+  "port": 34321,
+  "port_closed": true,
+  "pids_absent": {
+    "3380979": true,
+    "3380982": true,
+    "3381004": true
+  },
+  "exits": [
+    0,
+    0,
+    -15
+  ]
+}

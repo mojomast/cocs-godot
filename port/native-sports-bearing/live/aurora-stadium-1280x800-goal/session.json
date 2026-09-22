@@ -1,0 +1,45 @@
+{
+  "map": "aurora-stadium",
+  "resolution": "1280x800",
+  "started": 1790050940.7604833,
+  "display": ":1",
+  "port": 43703,
+  "commands": [
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1600x1000x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "node",
+      "/tmp/opencode/sports-bearing/port/native-sports-victory/server.mjs",
+      "/tmp/opencode/sports-bearing",
+      "/tmp/opencode/sports-bearing/port/native-sports-bearing/live/aurora-stadium-1280x800-goal/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/sports-bearing/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/sports/bearing_observe.gd",
+      "--",
+      "--map=aurora-stadium",
+      "--endpoint=ws://127.0.0.1:43703",
+      "--bearing-out=/tmp/opencode/sports-bearing/port/native-sports-bearing/live/aurora-stadium-1280x800-goal"
+    ]
+  ],
+  "classification": "normal-rate source; ordinary external XTest input; passive observer"
+}

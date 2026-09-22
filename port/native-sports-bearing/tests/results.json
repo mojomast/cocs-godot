@@ -1,0 +1,80 @@
+[
+  {
+    "script": "bearing_projection_test",
+    "passed": true,
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-bearing/godot",
+      "--script",
+      "res://tests/sports/bearing_projection_test.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "script": "soccer_test",
+    "passed": true,
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-bearing/godot",
+      "--script",
+      "res://tests/sports/soccer_test.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "script": "progression_test",
+    "passed": true,
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-bearing/godot",
+      "--script",
+      "res://tests/sports/progression_test.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "script": "practice_test",
+    "passed": true,
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-bearing/godot",
+      "--script",
+      "res://tests/sports/practice_test.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "script": "test_polish",
+    "passed": true,
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-bearing/godot",
+      "--script",
+      "res://tests/sports/test_polish.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "script": "test_controls",
+    "passed": true,
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-bearing/godot",
+      "--script",
+      "res://tests/sports/test_controls.gd"
+    ],
+    "exit": 0
+  }
+]

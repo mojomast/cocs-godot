@@ -1,0 +1,17 @@
+Initial receipt audit failed at:
+    if projection['source'] != source_target: raise RuntimeError('Target not from accepted race snapshot')
+RuntimeError: Target not from accepted race snapshot
+
+Diagnosis: this check incorrectly assumed the HUD selection and newest received
+snapshot are always from the same frame. The passive observer captures both.
+The soccer presentation selection uses the previous accepted ball snapshot in
+the two 02-turn goal runs, while demo.state has already received the next tick:
+1280x800: selected (15.520, -19.353), latest (15.721, -19.145), latest seq 213.
+960x640: selected (14.231, -20.697), latest (14.457, -20.461), latest seq 207.
+Original 960x640 run: selected (5.249, -10.114) matches wire seq 177 exactly;
+latest receipt seq is 178, position (5.654, -10.880).
+
+No captured files or product code were changed in response. Audit now explicitly
+reports whether the selected target matches the latest snapshot and attributes
+ball positions to the accepted selection rather than claiming latest-seq identity.
+The actual opened PNGs, HUD labels and both positions agree on the lateral side.

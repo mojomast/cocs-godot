@@ -1,0 +1,12 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+BEARING_LIVE_CAPTURE 00-spawn seq=109
+BEARING_LIVE_CAPTURE 00b-right seq=141
+BEARING_LIVE_CAPTURE 01-turn seq=175
+BEARING_LIVE_CAPTURE 02-turn seq=207
+BEARING_LIVE_CAPTURE 03-turn seq=241
+BEARING_LIVE_CAPTURE 04-turn seq=274
+BEARING_LIVE_CAPTURE 05-released seq=296

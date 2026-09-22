@@ -1,0 +1,45 @@
+{
+  "map": "ion-speedway",
+  "resolution": "1280x800",
+  "started": 1790050891.3020148,
+  "display": ":0",
+  "port": 45085,
+  "commands": [
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1600x1000x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "node",
+      "/tmp/opencode/sports-bearing/port/native-sports-victory/server.mjs",
+      "/tmp/opencode/sports-bearing",
+      "/tmp/opencode/sports-bearing/port/native-sports-bearing/live/ion-speedway-1280x800/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/sports-bearing/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/sports/bearing_observe.gd",
+      "--",
+      "--map=ion-speedway",
+      "--endpoint=ws://127.0.0.1:45085",
+      "--bearing-out=/tmp/opencode/sports-bearing/port/native-sports-bearing/live/ion-speedway-1280x800"
+    ]
+  ],
+  "classification": "normal-rate source; ordinary external XTest input; passive observer"
+}

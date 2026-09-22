@@ -1,0 +1,147 @@
+{
+  "ack": 144,
+  "camera_transform": "[X: (-0.976478, 0.0, 0.215618), Y: (0.055559, 0.966232, 0.251612), Z: (-0.208337, 0.257673, -0.943504), O: (-33.94048, 5.0, -17.78793)]",
+  "elapsed_wall": 7.01666666666666,
+  "eligible": true,
+  "hud": "Aurora Stadium · Puma Soccer · Ball in play\nRed  0     Blue  0 · 0.0 m/s\nElapsed 0:04 / 5:00\nENGAGED · Escape to release\nW/S: forward/reverse · A/D: steer · Space: brake · Shift: boost\nYou: Red · OWN Red goal · ATTACK Blue goal\nBall Left · 48 m   |   Opponent goal Left · 77 m\nShot practice · Line up car → ball → ATTACK goal; Space brakes",
+  "phase": "active",
+  "png_error": 0,
+  "projections": {
+    "ball": {
+      "behind_camera": false,
+      "pixel": [
+        -1677.43762207031,
+        388.98486328125
+      ],
+      "source": {
+        "r": 1.1,
+        "vx": 6.348,
+        "vz": 6.613,
+        "x": 15.108,
+        "y": 1.1,
+        "z": -19.783
+      }
+    },
+    "opponent": {
+      "behind_camera": false,
+      "pixel": [
+        -398.469421386719,
+        271.686187744141
+      ],
+      "source": {
+        "depth": 4.0,
+        "halfWidth": 7.0,
+        "height": 5.0,
+        "nx": 1.0,
+        "nz": 0.0,
+        "team": 1.0,
+        "x": 44.0,
+        "z": 0.0
+      }
+    }
+  },
+  "race": {
+    "ball": {
+      "r": 1.1,
+      "vx": 6.222,
+      "vz": 6.481,
+      "x": 15.316,
+      "y": 1.1,
+      "z": -19.566
+    },
+    "countdown": 0.0,
+    "elapsed": 4.033,
+    "goalLimit": 5.0,
+    "goals": [
+      {
+        "depth": 4.0,
+        "halfWidth": 7.0,
+        "height": 5.0,
+        "nx": -1.0,
+        "nz": 0.0,
+        "team": 0.0,
+        "x": -44.0,
+        "z": 0.0
+      },
+      {
+        "depth": 4.0,
+        "halfWidth": 7.0,
+        "height": 5.0,
+        "nx": 1.0,
+        "nz": 0.0,
+        "team": 1.0,
+        "x": 44.0,
+        "z": 0.0
+      }
+    ],
+    "kind": "soccer",
+    "phase": "playing",
+    "pitch": {
+      "maxX": 44.0,
+      "maxZ": 24.0,
+      "minX": -44.0,
+      "minZ": -24.0
+    },
+    "scores": {
+      "0": 0.0,
+      "1": 0.0
+    },
+    "standings": [
+      {
+        "actorId": 0.0,
+        "goals": 0.0,
+        "team": 0.0,
+        "vehicleId": 0.0
+      },
+      {
+        "actorId": 1.0,
+        "goals": 0.0,
+        "team": 1.0,
+        "vehicleId": 1.0
+      },
+      {
+        "actorId": 2.0,
+        "goals": 0.0,
+        "team": 0.0,
+        "vehicleId": 2.0
+      },
+      {
+        "actorId": 3.0,
+        "goals": 0.0,
+        "team": 1.0,
+        "vehicleId": 3.0
+      }
+    ],
+    "timeLimit": 300.0,
+    "winnerTeam": null
+  },
+  "seq": 211,
+  "vehicle": {
+    "altitude": 0.0,
+    "driver": 0.0,
+    "flight": false,
+    "gunner": null,
+    "health": 300.0,
+    "heat": 0.0,
+    "id": 0.0,
+    "kind": "puma",
+    "maxHealth": 300.0,
+    "overheated": false,
+    "passengers": [],
+    "pitchBody": 0.0,
+    "respawnTimer": 0.0,
+    "roll": 0.0,
+    "turretYaw": 0.0,
+    "vx": 0.0,
+    "vy": 0.0,
+    "vz": 0.0,
+    "x": -32.0,
+    "y": 0.0,
+    "yaw": 0.217,
+    "z": -9.0
+  },
+  "viewport": [
+    960,
+    640
+  ]
+}
