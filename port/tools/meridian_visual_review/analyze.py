@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 """Validate causal-run records and inspect the original sphere's binary winding."""
 import argparse
+import gzip
 import hashlib
 import json
 from pathlib import Path
 import struct
+
+
+def read_json(path):
+    """Fresh runs use JSON; archived inventories retain identical bytes in gzip."""
+    if path.is_file():
+        return json.loads(path.read_bytes())
+    return json.loads(gzip.decompress(path.with_suffix(path.suffix + ".gz").read_bytes()))
 
 
 def main():
@@ -13,7 +21,7 @@ def main():
     parser.add_argument("--glb", type=Path, required=True)
     parser.add_argument("--original-image", type=Path, required=True)
     args = parser.parse_args()
-    records = {name: json.loads((args.run / (name + ".json")).read_text())
+    records = {name: read_json(args.run / (name + ".json"))
                for name in ["baseline", "source-cull-only", "camera-inside"]}
     baseline, restored, inside = (records[name] for name in records)
     assert baseline["imported_inventory"] == restored["imported_inventory"] == inside["imported_inventory"]

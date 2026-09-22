@@ -1,0 +1,39 @@
+{
+  "source_commit": "adb1a3bdde40494ede3d1bc5b4981e8cc612ef6f",
+  "packaging_base": "0948e9107e2f949f92342e97f60615a786513b03",
+  "format": "gzip, compresslevel=9, mtime=0; original JSON bytes unchanged",
+  "python": "3.13.7 (main, Mar  3 2026, 12:19:54) [GCC 15.2.0]",
+  "zlib": "1.3.1",
+  "files": [
+    {
+      "original_path": "port/meridian-visual-review/causal-run-2/baseline.json",
+      "original_bytes": 122296,
+      "original_sha256": "75cea67ce8d7da5697bd044529c2d3f3fcf569ed216bee8092b4075aba836497",
+      "archive_path": "port/meridian-visual-review/causal-run-2/baseline.json.gz",
+      "archive_bytes": 13530,
+      "archive_sha256": "917d38a239fc92cbca030aa79d0adfe45f253836d23f4975a19b4828e5532e20",
+      "verified_against_source_commit": true,
+      "roundtrip_bytes_identical": true
+    },
+    {
+      "original_path": "port/meridian-visual-review/causal-run-2/source-cull-only.json",
+      "original_bytes": 122304,
+      "original_sha256": "85ebbcec8ba870bc7f38ec02145b88d57165653ba4ce3613c6c0990ca51b20a1",
+      "archive_path": "port/meridian-visual-review/causal-run-2/source-cull-only.json.gz",
+      "archive_bytes": 13548,
+      "archive_sha256": "8aed8c617a269950470fb581908e8b2fb6d4266a782b1d5acf48640b8bf7e973",
+      "verified_against_source_commit": true,
+      "roundtrip_bytes_identical": true
+    },
+    {
+      "original_path": "port/meridian-visual-review/causal-run-2/camera-inside.json",
+      "original_bytes": 122298,
+      "original_sha256": "ace9b287550acf21036bfc4baf918d1796545804c39404b6da725b997b7144e9",
+      "archive_path": "port/meridian-visual-review/causal-run-2/camera-inside.json.gz",
+      "archive_bytes": 13545,
+      "archive_sha256": "a3d7fb85d48144e82413ab196c6f11d5c46b714e98d9a546eb78f52cc138387a",
+      "verified_against_source_commit": true,
+      "roundtrip_bytes_identical": true
+    }
+  ]
+}

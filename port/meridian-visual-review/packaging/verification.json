@@ -1,0 +1,18 @@
+{
+  "verified_against_commit": "adb1a3bdde40494ede3d1bc5b4981e8cc612ef6f",
+  "historical_evidence_files_unchanged_after_transparent_decompression": 19,
+  "archives_verified": 3,
+  "analyzer_command": [
+    "python3",
+    "port/tools/meridian_visual_review/analyze.py",
+    "port/meridian-visual-review/causal-run-2",
+    "--glb",
+    "godot/content/probes/meridian-exchange/world.glb",
+    "--original-image",
+    "port/reports/meridian-glb.png"
+  ],
+  "analyzer_returncode": 0,
+  "analyzer_stderr": "",
+  "analysis_byte_identical_for_plain_gzip_and_historical": true,
+  "analysis_sha256": "7ab800020f8ae5afe35282a654809525e23e67466023479f0b6b32d6ad227ac0"
+}
