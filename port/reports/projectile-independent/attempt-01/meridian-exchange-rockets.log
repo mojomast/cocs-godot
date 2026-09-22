@@ -1,0 +1,6 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PORT_PROJECTILE_LIVE_OK {"ack":603,"capture":{"distance":5.58792591094971,"launches":1,"pixel":[651.503601074219,388.2333984375],"position":[-37.5130004882812,2.0220000743866,29.1439990997314],"projectile":"Projectile_6"},"combat_local_launches":17,"explosions":28,"frames":603,"local_launches":17,"map":"meridian-exchange","max_projectiles":4,"mode":"rockets","moved":true,"play_wall_ms":14003,"rendered_projectile_samples":549,"saved":true,"shots":0,"smoke":false,"snapshots":438,"trace_complete":false}

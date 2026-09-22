@@ -10,7 +10,7 @@ import {DESTINATION_COMBAT_MAPS} from '../../game/destination-combat-maps.mjs';
 import {planRoute} from '../tools/native_pickup_acceptance/route.mjs';
 
 const root=resolve(import.meta.dirname,'../..'), here=import.meta.dirname;
-const output=resolve(here,'evidence'); mkdirSync(output,{recursive:true});
+const output=resolve(process.argv.find(arg=>arg.startsWith('--output='))?.slice('--output='.length)||resolve(here,'evidence')); mkdirSync(output,{recursive:true});
 const binary=process.env.GODOT_BIN;
 assert.equal(execFileSync(binary,['--version'],{encoding:'utf8'}).trim(),'4.5.2.stable.official.6ce3de25a');
 const temp=mkdtempSync('/tmp/opencode/projectile-play-');

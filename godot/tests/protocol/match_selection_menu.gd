@@ -1,6 +1,7 @@
 extends SceneTree
 const Session = preload("res://world/session.gd")
 var session: Node
+var menu_mode := "instagib"
 func require(value: bool, message: String) -> bool:
 	if not value:
 		push_error(message)
@@ -17,6 +18,8 @@ func key(code: Key) -> void:
 	Input.parse_input_event(event)
 	await process_frame
 func _initialize() -> void:
+	for arg: String in OS.get_cmdline_user_args():
+		if arg.begins_with("--menu-mode="): menu_mode = arg.trim_prefix("--menu-mode=")
 	call_deferred("run")
 func run() -> void:
 	session = Session.new()
@@ -31,10 +34,11 @@ func run() -> void:
 	if not require(menu.selected_map() == "verdant-reliquary", "Map dropdown keyboard selection failed"): return
 	menu.mode_choice.grab_focus()
 	await key(KEY_SPACE)
-	await key(KEY_DOWN)
-	await key(KEY_DOWN)
+	var mode_index: int = session.MatchSetup.MODES.find(menu_mode)
+	if not require(mode_index >= 0, "Unknown graphical menu mode"): return
+	for index in range(mode_index): await key(KEY_DOWN)
 	await key(KEY_ENTER)
-	if not require(menu.selected_mode() == "instagib" and not menu.start.disabled, "Mode dropdown keyboard selection failed"): return
+	if not require(menu.selected_mode() == menu_mode and not menu.start.disabled, "Mode dropdown keyboard selection failed"): return
 	await process_frame
 	await RenderingServer.frame_post_draw
 	for arg: String in OS.get_cmdline_user_args():

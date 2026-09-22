@@ -6,6 +6,9 @@ import {resolve} from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const binary = process.env.GODOT_BIN, deps = process.env.GUEST_NODE_MODULES;
+const menuOnly = process.argv.includes('--menu-only');
+const menuMode = process.argv.find(arg=>arg.startsWith('--menu-mode='))?.slice('--menu-mode='.length) ?? 'instagib';
+assert.ok(['deathmatch','teamdeathmatch','instagib','rockets'].includes(menuMode));
 assert.ok(binary && deps, 'Set GODOT_BIN and GUEST_NODE_MODULES');
 const temp = mkdtempSync('/tmp/opencode/cocs-selection-');
 const out = resolve(process.argv.find(a=>a.startsWith('--output='))?.slice(9) ?? resolve(root, 'port/native-match-selection/runs', new Date().toISOString().replaceAll(':','-')));
@@ -51,7 +54,7 @@ try {
       return original.call(this, data, ...args);
     };
   });
-  for (const map of ['meridian-exchange','verdant-reliquary','ember-crucible']) {
+  for (const map of menuOnly ? [] : ['meridian-exchange','verdant-reliquary','ember-crucible']) {
     for (const mode of ['deathmatch','instagib']) {
       const native = launch(binary, ['--headless','--path','godot','res://world/session.tscn','--',`--endpoint=${endpoint}`,`--map=${map}`,`--mode=${mode}`,'--session-smoke']);
       const code = await native.done;
@@ -70,14 +73,14 @@ try {
     display.once('exit', () => rej(Error('Xvfb exited')));
   });
   env.DISPLAY = `:${number}`;
-  const native = launch(binary, ['--path','godot','--audio-driver','Dummy','--max-fps','60','--script','res://tests/protocol/match_selection_menu.gd','--',`--endpoint=${endpoint}`,'--setup',`--selection-evidence=${resolve(out,'menu.png')}`]);
+  const native = launch(binary, ['--path','godot','--audio-driver','Dummy','--max-fps','60','--script','res://tests/protocol/match_selection_menu.gd','--',`--endpoint=${endpoint}`,'--setup',`--menu-mode=${menuMode}`,`--selection-evidence=${resolve(out,'menu.png')}`]);
   const code = await native.done;
   writeFileSync(resolve(out, 'menu.log'), native.text + native.errors);
   assert.equal(code, 0, native.errors);
   assert.match(native.text, /PORT_MATCH_MENU_OK/);
   assert.doesNotMatch(native.errors, /SCRIPT ERROR|ERROR:/);
   assert.equal(observed.at(-1).authorityMap, 'verdant-reliquary');
-  assert.equal(observed.at(-1).authorityMode, 'instagib');
+  assert.equal(observed.at(-1).authorityMode, menuMode);
   writeFileSync(resolve(out, 'results.json'), JSON.stringify({normalRate:true, tickDt:1/60, tickMs:1000/60, observed}, null, 2) + '\n');
   console.log('PORT_MATCH_SELECTION_LIVE_OK', JSON.stringify(observed));
 } finally {

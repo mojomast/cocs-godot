@@ -1,0 +1,13 @@
+{
+  "revision": "b55861f",
+  "hashes": {
+    "godot/sports/chase.gd": "f53a98d51dfcf30405b0c51c18a1ff4026d0c8d42f4b13691b834502fd01744c",
+    "godot/sports/hud.gd": "aebff835927a259555bd0aaa0d27024726eb632feeaa37df2eaeda584c67d5a3",
+    "godot/sports/demo.gd": "d08bddc06a9cbedf40e8a15ad22869d4f4fb64db1202bf7b088ce6e6a7cd7da6",
+    "godot/sports/controls.gd": "4a577454e28d8c86a98d85c666ed344ccd802a7118d9d61f54f0650613993faf",
+    "godot/tests/sports/observe.gd": "3bb520cedd9d7afe08dcdd6344ab1edc74fdfcd8026411884f7d32ac91a683eb",
+    "godot/tests/sports/observe_polish.gd": "d9c422524ff4a2ad25cc3172ba063d86d35bc6072ff6404a83dead8f9aa82313",
+    "godot/tests/sports/run_polish.py": "d848434a11f8adc28a93d4ef993d0959fedd0b62a71e7f774933e2a6f5f65597",
+    "port/tools/native_vehicle_demo/driving.py": "74a40fae644a90ea08de0cc0492815593972047bef265fe27d79ea1e7a14a37d"
+  }
+}

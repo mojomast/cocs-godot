@@ -1,0 +1,145 @@
+{
+  "status": "FAIL",
+  "normal_rate": true,
+  "trace_complete": false,
+  "sourceHashes": {
+    "godot/world/session.gd": "a501f3814e08c6ba17ac4f9bf2b2d2942241a8a48613d902387b8774a3b31554",
+    "godot/world/projectiles.gd": "1bb5e69cc6a0e1604c55c078a359316aeac6f72bc8c1129034ad73fc7ec9f94d",
+    "godot/world/combat_feedback.gd": "ba8e19c7448783e02f6468c8b2ee51daf62d840cdc801e96af9f571904114cef",
+    "godot/world/audio_feedback.gd": "253732ab9a7422303520ffc4c36c6a7ce7cd8131acee660401192d7c69a52d49",
+    "godot/ui/match_setup.gd": "05a6bf0f2fcc8272e8a23d5caf5f47ed7a70decb099d725f9b04b3cb367b123c",
+    "port/native-projectile-combat/live.gd": "ff30197bd2982ab5542f41c6a5ea7d7fbbe38abac249a670204b52c5e77b8b76",
+    "port/native-projectile-combat/run.mjs": "8396ff0a26d2cbf2cc981b01a0aef95feb9e986cda9ed9bbb627eb8198f05930"
+  },
+  "runs": [
+    {
+      "ack": 603,
+      "capture": {
+        "distance": 5.58792591094971,
+        "launches": 1,
+        "pixel": [
+          651.503601074219,
+          388.2333984375
+        ],
+        "position": [
+          -37.5130004882812,
+          2.0220000743866,
+          29.1439990997314
+        ],
+        "projectile": "Projectile_6"
+      },
+      "combat_local_launches": 17,
+      "explosions": 28,
+      "frames": 603,
+      "local_launches": 17,
+      "map": "meridian-exchange",
+      "max_projectiles": 4,
+      "mode": "rockets",
+      "moved": true,
+      "play_wall_ms": 14003,
+      "rendered_projectile_samples": 549,
+      "saved": true,
+      "shots": 0,
+      "smoke": false,
+      "snapshots": 438,
+      "trace_complete": false,
+      "inputs": {
+        "count": 604,
+        "fire": 603,
+        "movement": 25
+      },
+      "sourceEvents": {
+        "launches": 17,
+        "pickups": 0
+      }
+    },
+    {
+      "ack": 611,
+      "capture": {
+        "distance": 2.56803131103516,
+        "launches": 1,
+        "pixel": [
+          679.3447265625,
+          425.435272216797
+        ],
+        "position": [
+          -14.1599998474121,
+          1.52999997138977,
+          -31.3889999389648
+        ],
+        "projectile": "Projectile_18"
+      },
+      "combat_local_launches": 16,
+      "explosions": 30,
+      "frames": 611,
+      "local_launches": 16,
+      "map": "verdant-reliquary",
+      "max_projectiles": 5,
+      "mode": "rockets",
+      "moved": true,
+      "play_wall_ms": 14004,
+      "rendered_projectile_samples": 1015,
+      "saved": true,
+      "shots": 0,
+      "smoke": false,
+      "snapshots": 429,
+      "trace_complete": false,
+      "inputs": {
+        "count": 612,
+        "fire": 591,
+        "movement": 50
+      },
+      "sourceEvents": {
+        "launches": 16,
+        "pickups": 0
+      }
+    },
+    {
+      "ack": 749,
+      "capture": {
+        "distance": 2.54691386222839,
+        "launches": 1,
+        "pixel": [
+          649.415710449219,
+          392.2939453125
+        ],
+        "position": [
+          -39.0559997558594,
+          1.69099998474121,
+          -8.83100032806396
+        ],
+        "projectile": "Projectile_18"
+      },
+      "combat_local_launches": 15,
+      "explosions": 25,
+      "frames": 753,
+      "local_launches": 15,
+      "map": "ember-crucible",
+      "max_projectiles": 9,
+      "mode": "rockets",
+      "moved": true,
+      "play_wall_ms": 14004,
+      "rendered_projectile_samples": 1645,
+      "saved": true,
+      "shots": 0,
+      "smoke": false,
+      "snapshots": 429,
+      "trace_complete": false,
+      "inputs": {
+        "count": 751,
+        "fire": 673,
+        "movement": 45
+      },
+      "sourceEvents": {
+        "launches": 15,
+        "pickups": 0
+      }
+    }
+  ],
+  "error": "meridian-exchange-deathmatch\n\n2 !== 0\n",
+  "cleanup": {
+    "childrenReaped": true,
+    "serverClosed": true,
+    "sockets": 0
+  }
+}

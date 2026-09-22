@@ -1,0 +1,11 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PICKUP_ROUTE_TIMEOUT {"captured":true,"focused":true,"phase":3,"position":[8.0019998550415,5.00799989700317],"route":[[10.0,24.0],[10.0,14.0],[8.0,-6.0],[6.0,-14.0],[0.0,-18.0],[-14.0,-19.0]],"waypoint":2}
+ERROR: Real rocket pickup route timed out
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] fail (/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-projectile-combat/live.gd:51)
+       [1] run (/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-projectile-combat/live.gd:94)

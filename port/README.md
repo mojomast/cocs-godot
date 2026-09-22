@@ -31,7 +31,7 @@ PORT=0 node tools/godot-dev/launch.mjs --play --map=verdant-reliquary --mode=ins
 # Add --mute to silence procedural cues.
 ```
 
-- **Host setup:** Meridian, Verdant and Ember × Deathmatch/Team Deathmatch/Instagib are enabled.
+- **Host setup:** Meridian, Verdant and Ember × Deathmatch/Team Deathmatch/Instagib/Rocket Arena are enabled.
   All nine locked maps remain visible; unsupported selections explain that they
   are pending. Setup does not connect before Start. Independent native runs of
   all six combinations and a private graphical Verdant/Instagib Start passed;
@@ -46,6 +46,9 @@ PORT=0 node tools/godot-dev/launch.mjs --play --map=verdant-reliquary --mode=ins
   authority. Independent rocket pickup/switch verification and two-resolution
   HUD renders pass; see [weapon evidence](reports/weapon-selection-independent/README.md)
   and [HUD evidence](reports/game-hud-independent/README.md).
+  Rockets now follow authoritative flight snapshots, with source-event launch
+  sounds and explosion flashes. All three Rocket Arena graphical runs and host
+  smokes pass independently; see [projectile evidence](reports/projectile-independent/README.md).
   Human audio review remains pending. Hold Tab for scores; results
   display automatically. These UI layers do not capture the pointer.
 - **World presentation:** all nine maps now have native skies, lighting,
@@ -58,6 +61,9 @@ PORT=0 node tools/godot-dev/launch.mjs --play --map=verdant-reliquary --mode=ins
   release/resume, rendered/source correspondence and Ion reset. Soccer includes
   authoritative ball/score state. See [driving instructions](native-puma-driving/HANDOFF.md)
   and [independent evidence](reports/native-sports-independent/README.md).
+  The compact sports HUD and authored-box camera clearance are integrated;
+  independent driving and near-wall checks pass at both supported resolutions.
+  See [polish evidence](reports/sports-polish-independent/README.md).
 
   ```sh
   python3 -B port/tools/native_vehicle_demo/play.py --map ion-speedway
@@ -70,8 +76,8 @@ PORT=0 node tools/godot-dev/launch.mjs --play --map=verdant-reliquary --mode=ins
   scenes remain separate from the infantry setup menu; complete laps, goals,
   results/restart and human camera usability are not yet accepted.
 
-**Combined verification: all 42 implemented gates pass** after sports and
-rendered-HUD acceptance integration at `9a8d59e` plus the gate/test changes
+**Combined verification: all 44 implemented gates pass** after rocket and
+sports-polish integration at `b55861f` plus the gate/capture changes
 recorded with this batch. Independent driving passed on both sports maps;
 the default compact HUD's nonlethal damage/+35 HP/12-second return was also
 independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).
@@ -80,8 +86,9 @@ leaving the new environment/light nodes unparented. The fixtures now own those
 nodes; production cleanup was not the cause. Setup's separate premature viewport
 access is also fixed. Failed runs and the corrected report are retained in
 [feature-batch evidence](reports/feature-batch-independent/README.md).
-Rocket Arena remains pending projectile/launch presentation. Full native
-recording completion and broader human gameplay acceptance remain open.
+The extra Deathmatch rocket pickup/fire route timed out in independent testing;
+its failed attempt is retained and a harness navigation correction is pending.
+Full native recording completion and broader human gameplay acceptance remain open.
 
 ## Focus loss gates pointer capture and look
 
