@@ -22,11 +22,13 @@ export const NATIVE_EXPERIENCES = {
   'shader-lab': {scene:'res://shader_lab/demo.tscn'},
 };
 
+export const NATIVE_ARENA_MAPS = ['prism-foundry','aurora-basin','cinder-array'];
+
 export function launchOptions(argv, catalog) {
   const values = {}, flags = new Set(), sessionOptions = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['map','mode','experience','endpoint','time-limit','round-target'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
+    const key = ['map','mode','experience','endpoint','time-limit','round-target','bots','round-seconds'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       if (!value || value.startsWith('--')) throw Error(`--${key} requires a value`);
@@ -42,6 +44,23 @@ export function launchOptions(argv, catalog) {
   const play = flags.has('--play') || flags.has('--setup') || values.experience || values.map || values.mode ||
     ['--native-trace','--mute','--debug-hud','--session-smoke','--lifecycle-smoke'].some(arg => flags.has(arg));
   const experience = values.experience ?? 'combat';
+  if (experience === 'native-dm') {
+    for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds'].includes(key)) throw Error(`--${key} is not supported by native-dm`);
+    for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by native-dm`);
+    const map = values.map ?? NATIVE_ARENA_MAPS[0], mode = values.mode ?? 'deathmatch';
+    if (!NATIVE_ARENA_MAPS.includes(map)) throw Error(`native-dm does not support map ${map}`);
+    if (mode !== 'deathmatch') throw Error('native-dm supports only deathmatch');
+    for (const [key, min, max, fallback] of [['bots',0,8,2],['round-seconds',60,300,180]]) {
+      values[key] ??= String(fallback);
+      if (!/^\d+$/.test(values[key]) || Number(values[key]) < min || Number(values[key]) > max) throw Error(`--${key} must be ${min}..${max}`);
+    }
+    const bots = Number(values.bots), roundSeconds = Number(values['round-seconds']);
+    const smoke = flags.has('--smoke') ? '--smoke' : null;
+    return {experience, nativeArena:true, map, mode, bots, roundSeconds, endpoint:null, smoke,
+      sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,...(smoke ? [smoke] : [])],
+      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),'--path','godot','res://native_arenas/demo.tscn']};
+  }
+  for (const key of ['bots','round-seconds']) if (values[key] !== undefined) throw Error(`--${key} requires native-dm`);
   if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
     for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by native-only ${experience}`);
     for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by native-only ${experience}`);
@@ -51,7 +70,7 @@ export function launchOptions(argv, catalog) {
   }
   if (flags.has('--smoke')) throw Error('--smoke is supported only by native-only graphics routes; combat uses --network-smoke, --session-smoke or --lifecycle-smoke');
   const selected = Object.hasOwn(EXPERIENCES, experience) ? EXPERIENCES[experience] : null;
-  if (!selected) throw Error(`Unknown experience: ${experience}. Choose ${[...Object.keys(EXPERIENCES),...Object.keys(NATIVE_EXPERIENCES)].join(', ')}.`);
+  if (!selected) throw Error(`Unknown experience: ${experience}. Choose ${[...Object.keys(EXPERIENCES),...Object.keys(NATIVE_EXPERIENCES),'native-dm'].join(', ')}.`);
   const endpoint = lobbyEndpoint(values.endpoint, experience);
   for (const key of ['time-limit','round-target']) {
     if (values[key] === undefined) continue;
@@ -111,6 +130,8 @@ export const HELP = `Native COCS launcher — source matches and native-only gra
   node tools/godot-dev/launch.mjs --experience=cinder-array
   node tools/godot-dev/launch.mjs --experience=particle-lab
   node tools/godot-dev/launch.mjs --experience=shader-lab --smoke
+  node tools/godot-dev/launch.mjs --experience=native-dm --map=prism-foundry
+  node tools/godot-dev/launch.mjs --experience=native-dm --map=aurora-basin --bots=4 --round-seconds=120 --smoke
 
 Set GODOT_BIN to the pinned Godot 4.5.2 binary. Run semantic export and import first.
 Source matches: PORT=0 (default) allocates a free port; normal simulation timing.
@@ -127,6 +148,10 @@ Lobby: explicit Host/Create or Guest/Join, roster and host-only Start/Restart.
   Guests select the expected host map. Escape exposes Leave match.
 
 Combat: --map, --mode, --setup, --mute, --debug-hud, --native-trace
+Native DM: prism-foundry (default), aurora-basin, cinder-array; deathmatch only.
+  Owned local loopback authority, one human plus --bots=0..8 (default 2).
+  --round-seconds=60..300 (default 180). No endpoint, join or setup options.
+  --smoke runs the scene headlessly with Dummy audio, bounded to 20 seconds.
 Horde: three combat arenas; local-only solo authority, default ten waves.
   Click to engage; Tab scores; Escape releases controls; Enter restarts results.
 Arms Race: three combat arenas; two Normal bots, ten weapons, 180-second rounds.

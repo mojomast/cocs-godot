@@ -13,7 +13,9 @@ async function main() {
   const plan = options(process.argv.slice(2), JSON.parse(readFileSync(join(root, 'catalog.json'))));
   // These paths are relative to this artifact, never to the caller's cwd/repo.
   // Native-only scenes and external lobby never import local authority adapters.
-  const factory = plan.nativeOnly || plan.endpoint ? null : plan.experience === 'horde'
+  const factory = plan.nativeOnly || plan.endpoint ? null : plan.nativeArena
+    ? (await import('./runtime/port/native-arenas/authority.mjs')).createNativeArenaAuthority
+    : plan.experience === 'horde'
     ? (await import('./runtime/port/native-horde/authority.mjs')).createAuthority
     : (await import('./runtime/server/game-server.mjs')).createGameServer;
   const runtime = mkdtempSync(join(tmpdir(), 'cocs-native-'));
@@ -22,7 +24,7 @@ async function main() {
     env[name] = join(runtime, name); mkdirSync(env[name]);
   }
   let game;
-  let child, childDone, stopping = false, signalCode = 0, serverFailure, killTimer;
+  let child, childDone, stopping = false, signalCode = 0, serverFailure, killTimer, smokeTimer;
   const stop = () => {
     stopping = true;
     if (child && child.exitCode === null && child.signalCode === null) {
@@ -36,18 +38,20 @@ async function main() {
   const serverError = error => { serverFailure = error; stop(); };
   process.on('SIGINT', interrupt); process.on('SIGTERM', terminate);
   try {
-    game = factory?.(plan.experience === 'horde' ? {} : {historyPath:null, progressionPath:null});
-    game?.server.on('error', serverError);
+    game = await factory?.(plan.nativeArena ? {port:0, host:'127.0.0.1', mapId:plan.map, mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds} : plan.experience === 'horde' ? {} : {historyPath:null, progressionPath:null});
+    game?.server?.on('error', serverError);
     let endpoint = plan.endpoint;
     if (game) {
-      await new Promise((resolve, reject) => {
+      if (!plan.nativeArena || (!game.endpoint && !game.server?.listening)) await new Promise((resolve, reject) => {
         game.server.once('error', reject);
         game.server.listen(0, '127.0.0.1', () => { game.server.removeListener('error', reject); resolve(); });
       });
-      const port = game.server.address().port;
+      const owned = new URL(plan.nativeArena && game.endpoint ? game.endpoint : `ws://127.0.0.1:${game.server.address().port}`);
+      if (owned.protocol !== 'ws:' || owned.hostname !== '127.0.0.1' || !owned.port || owned.username || owned.password || owned.pathname !== '/' || owned.search || owned.hash) throw Error('Owned authority must use a private loopback endpoint');
+      const port = Number(owned.port);
       const health = await fetch(`http://127.0.0.1:${port}/`, {signal:AbortSignal.timeout(5000)});
       const status = await health.json();
-      const identity = plan.experience === 'horde'
+      const identity = plan.nativeArena ? status?.localOnly === true : plan.experience === 'horde'
         ? status?.service === 'cocs-local-horde' && status.transport === 1 && status.localOnly === true
         : status?.service === 'token-arena-game-server';
       if (!health.ok || status?.port !== port || !identity) throw Error('Owned server health check failed');
@@ -65,6 +69,7 @@ async function main() {
     const endpointArgs = plan.nativeOnly ? [] : [`--endpoint=${endpoint}`];
     child = spawn(join(root, executable), [...engineArgs, '--main-pack',join(root, 'cocs.pck'), plan.scene, '--', ...endpointArgs, ...plan.userArgs], {cwd:root, env, stdio:'inherit'});
     childDone = new Promise((resolve, reject) => { child.once('error', reject); child.once('exit', (code, signal) => resolve({code, signal})); });
+    if (plan.nativeArena && plan.userArgs.includes('--smoke')) smokeTimer = setTimeout(() => serverError(Error('Native DM smoke exceeded 20 seconds')), 20000);
     console.log('PACKAGE_NATIVE_STARTED ' + JSON.stringify({pid:child.pid, scene:plan.scene}));
     const result = await childDone;
     if (serverFailure) throw serverFailure;
@@ -73,12 +78,13 @@ async function main() {
     stop();
     if (childDone) await childDone.catch(() => {});
     clearTimeout(killTimer);
+    clearTimeout(smokeTimer);
     // The native process is gone: terminate any residual WS close handshake.
     if (game) {
-      for (const socket of game.wss.clients) socket.terminate();
-      game.server.closeAllConnections();
+      for (const socket of game.wss?.clients ?? []) socket.terminate();
+      game.server?.closeAllConnections();
       await game.close();
-      game.server.removeListener('error', serverError);
+      game.server?.removeListener('error', serverError);
     }
     process.removeListener('SIGINT', interrupt); process.removeListener('SIGTERM', terminate);
     rmSync(runtime, {recursive:true, force:true, maxRetries:5, retryDelay:100});

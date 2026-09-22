@@ -22,11 +22,13 @@ export const NATIVE_EXPERIENCES = {
   'shader-lab': {scene:'res://shader_lab/demo.tscn'},
 };
 
+export const NATIVE_ARENA_MAPS = ['prism-foundry','aurora-basin','cinder-array'];
+
 export function options(argv, catalog) {
   const values = {}, flags = new Set();
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['experience','map','mode','endpoint','time-limit','round-target'].find(k => arg === `--${k}` || arg.startsWith(`--${k}=`));
+    const key = ['experience','map','mode','endpoint','time-limit','round-target','bots','round-seconds'].find(k => arg === `--${k}` || arg.startsWith(`--${k}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       const maxLength = key === 'endpoint' ? 2048 : 64;
@@ -39,6 +41,21 @@ export function options(argv, catalog) {
     } else throw Error(`Unknown option ${arg}. Use --help.`);
   }
   const experience = values.experience ?? 'combat';
+  if (experience === 'native-dm') {
+    for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds'].includes(key)) throw Error(`--${key} is not supported by native-dm`);
+    for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by native-dm`);
+    const map = values.map ?? NATIVE_ARENA_MAPS[0], mode = values.mode ?? 'deathmatch';
+    if (!NATIVE_ARENA_MAPS.includes(map)) throw Error(`native-dm does not support map ${map}`);
+    if (mode !== 'deathmatch') throw Error('native-dm supports only deathmatch');
+    for (const [key, min, max, fallback] of [['bots',0,8,2],['round-seconds',60,300,180]]) {
+      values[key] ??= String(fallback);
+      if (!/^\d+$/.test(values[key]) || Number(values[key]) < min || Number(values[key]) > max) throw Error(`--${key} must be ${min}..${max}`);
+    }
+    const bots = Number(values.bots), roundSeconds = Number(values['round-seconds']);
+    return {experience, nativeArena:true, map, mode, bots, roundSeconds, endpoint:null, scene:'res://native_arenas/demo.tscn',
+      userArgs:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,...(flags.has('--smoke') ? ['--smoke'] : [])]};
+  }
+  for (const key of ['bots','round-seconds']) if (values[key] !== undefined) throw Error(`--${key} requires native-dm`);
   if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
     for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by native-only ${experience}`);
     for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by native-only ${experience}`);
@@ -92,6 +109,8 @@ export const HELP = `COCS native demo — Node >=22.13.0 (bundled on Windows)
   node run.mjs --experience=cinder-array
   node run.mjs --experience=particle-lab
   node run.mjs --experience=shader-lab --smoke
+  node run.mjs --experience=native-dm --map=prism-foundry
+  node run.mjs --experience=native-dm --map=cinder-array --bots=4 --round-seconds=120 --smoke
 
 Native-only graphics: showcase, aurora-basin, cinder-array, particle-lab, shader-lab.
   Standalone exploration/labs; no Node authority, network endpoint or source match.
@@ -100,6 +119,10 @@ Native-only graphics: showcase, aurora-basin, cinder-array, particle-lab, shader
   --map, --mode, --endpoint and source-match controls are rejected.
 
 Combat: 3 combat maps; deathmatch/teamdeathmatch/instagib/rockets.
+Native DM: prism-foundry (default), aurora-basin, cinder-array; deathmatch only.
+  Owned local loopback authority, one human plus --bots=0..8 (default 2).
+  --round-seconds=60..300 (default 180). No endpoint, join or setup options.
+  --smoke runs the scene headlessly with Dummy audio, bounded to 20 seconds.
 Lobby: explicit Create/Join/Start; guests select the expected host map.
   With --endpoint, no authority is created or stopped. Escape exposes Leave.
   --play skips setup; --setup, --mute, --debug-hud supported.
