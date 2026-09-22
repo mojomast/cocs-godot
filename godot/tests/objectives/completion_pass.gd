@@ -29,6 +29,8 @@ func completion_success() -> bool:
 
 func drive_objective(position: Vector2) -> void:
 	var a: Dictionary = presentation.local_actor
+	# End the E pulse even if the successful pass already advanced the stage.
+	if pass_time > 0 and state.time > pass_time + 0.2: key(KEY_E, false)
 	if route.is_empty(): route.assign([Vector2(-72,0),Vector2(-54,0),Vector2(-26,0),Vector2(0,8),Vector2(26,0),Vector2(54,0),Vector2(72,0)])
 	if stage == "approach" and a.get("carryingFlag", false): stage = "rendezvous"
 	if stage == "rendezvous":
@@ -42,7 +44,6 @@ func drive_objective(position: Vector2) -> void:
 				pass_time = state.time
 		return
 	if stage == "pass":
-		if state.time > pass_time + 0.2: key(KEY_E, false)
 		if pass_seen:
 			stage = "home"
 			route.assign([Vector2(54,0),Vector2(26,0),Vector2(0,8),Vector2(-26,0),Vector2(-54,0),Vector2(-68,3)])

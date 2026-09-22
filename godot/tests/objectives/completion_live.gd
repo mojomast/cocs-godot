@@ -96,6 +96,10 @@ func on_results(frame: Dictionary) -> void:
 	neutral()
 	print("COMPLETION_RESULT ", JSON.stringify({"delivered":delivered,"hud":objective_label.text,"model":objectives.hud_model,"released":controls_released(),"phase":phase,"captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,"eligible":can_capture_pointer(),"rendered":objectives.rendered}))
 	screenshot("results")
+	# Input.parse_input_event queues physical releases; observe after they flush.
+	await get_tree().process_frame
+	await get_tree().process_frame
+	print("COMPLETION_SETTLED ", JSON.stringify({"phase":phase,"released":controls_released(),"captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,"eligible":can_capture_pointer()}))
 
 func _process(delta: float) -> void:
 	super._process(delta)

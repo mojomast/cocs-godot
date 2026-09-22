@@ -1,0 +1,119 @@
+{
+  "base": "ffa6aac0bc4a61a0b5e1721dbb4000066c22a474",
+  "evidence": [
+    {
+      "id": "2d6b7e66-6adc-43f2-b29e-9d26fed86387",
+      "originalExit": 0,
+      "exactLiveCommit": "460674e4833b193a5eda5c50abac95eb724c238d",
+      "runtimeHashesMatched": 15,
+      "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+      "binarySHA256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+      "cleanupIndependentlyAbsent": true,
+      "files": {
+        "archive.json": {
+          "bytes": 392,
+          "sha256": "cb2b343791f0f4951b7f9bfe442559426b89784a32f3a7dfdee78c340b13d905"
+        },
+        "gameplay-banked.png": {
+          "bytes": 223431,
+          "sha256": "f00086a34e2d150be3b98ee0c775b30fdd105408521a0313bbf49b41bde05225"
+        },
+        "gameplay-checkpoint1.png": {
+          "bytes": 229990,
+          "sha256": "f699fbbd1c148c0d481905f29ea7418ca85c21c9a517df82aa4dd3105bacf865"
+        },
+        "gameplay-checkpoint2.png": {
+          "bytes": 240044,
+          "sha256": "14e545b1c500103be5d380eae87728369c98cf895159b6da2d13454293f19dc8"
+        },
+        "gameplay-restart.png": {
+          "bytes": 247859,
+          "sha256": "74a318dd75fa7ae0b10c2441b0a7e67fe2b594a9cba0824dcd8e504983f43a66"
+        },
+        "gameplay-results.png": {
+          "bytes": 148736,
+          "sha256": "38564c29100531323dd0334a89816176beb7570e1023eaffb95c13d065b595c4"
+        },
+        "gameplay-rollback.png": {
+          "bytes": 212884,
+          "sha256": "46efc3982b94ae6da52c643139fb536fba173f2775b226ba9e1fce800c8c6dba"
+        },
+        "launch.json": {
+          "bytes": 991,
+          "sha256": "5f0c135280de1725edb05f30371fba4b6a5e30c9585d7be9cdb7760a5b52521a"
+        },
+        "native.stderr.log.gz": {
+          "bytes": 160,
+          "sha256": "3223c5f8e137b40334ec34c0611015b14969ee2449af7157ab2ee8f834da7aea"
+        },
+        "native.stdout.log.gz": {
+          "bytes": 270616,
+          "sha256": "64257d14ec711b195e3c892d58d0290fca152e7af003407e84cc90f156a597f4"
+        },
+        "summary.json": {
+          "bytes": 2082,
+          "sha256": "b4face30af67349c056ecf01693a81c11b3819695c8843105529e5288dfb669e"
+        },
+        "validation.json": {
+          "bytes": 453,
+          "sha256": "479bc98e9d5d0d3d7e5084ce5ccf424ef4b237e5d56c64454bdaf5acc4123461"
+        },
+        "wire.jsonl.gz": {
+          "bytes": 345584,
+          "sha256": "7b42be73de1ad34b6789bf621e748883a2ba4ee0a47b53d79e278b0083986a83"
+        }
+      }
+    },
+    {
+      "id": "cfb8c298-c0e0-4337-9951-75b7bcc734a3",
+      "originalExit": 1,
+      "exactLiveCommit": "12e07079673bd0d7ba2c3f1d2e7182d75c87b5c7",
+      "runtimeHashesMatched": 19,
+      "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+      "binarySHA256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+      "cleanupIndependentlyAbsent": true,
+      "files": {
+        "archive.json": {
+          "bytes": 390,
+          "sha256": "7569da3b21fdb4acb50c107e32836d6abaad0d1d6037337243902ebd0870743b"
+        },
+        "gameplay-capture.png": {
+          "bytes": 395957,
+          "sha256": "7d7a46c14d0281bc8e6e4a507098152feb3aa02c2bc33bee7b91e2a106acdb77"
+        },
+        "gameplay-pass.png": {
+          "bytes": 275363,
+          "sha256": "2734a6fe77d2d583821adf0067cab67393d213973f5d31bb225e69bb95a49255"
+        },
+        "gameplay-restart.png": {
+          "bytes": 360685,
+          "sha256": "850e2caf4814524dae45610dcc99e4a691b8deae2c049a495b93b4e9f2814d7c"
+        },
+        "gameplay-results.png": {
+          "bytes": 258660,
+          "sha256": "5c8a05b64c7159d5375bbbbbb93ab0a8c79b142e423f3220a9c66cda1e1b6483"
+        },
+        "launch.json": {
+          "bytes": 989,
+          "sha256": "42d3f87c686bb92c38b94e3b99f939ed47d90f50928f0bb2c73a7a485e603bbb"
+        },
+        "native.stderr.log.gz": {
+          "bytes": 160,
+          "sha256": "3223c5f8e137b40334ec34c0611015b14969ee2449af7157ab2ee8f834da7aea"
+        },
+        "native.stdout.log.gz": {
+          "bytes": 89717,
+          "sha256": "0d275cf5f8ea8a68344e518114a63c30055420eb31e39833209039d32ed2be21"
+        },
+        "summary.json": {
+          "bytes": 2935,
+          "sha256": "53f3c3833dba056c8c042ea627841589d981335deb129bb95111a5d2a5b343f5"
+        },
+        "wire.jsonl.gz": {
+          "bytes": 245315,
+          "sha256": "41dbc65e57a3dcec962a0d1709a7089183ff143289a83a57aa69a6cf6a40ba4c"
+        }
+      }
+    }
+  ]
+}

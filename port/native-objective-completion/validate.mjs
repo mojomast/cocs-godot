@@ -18,7 +18,7 @@ export function validate(wire,stdout,map,seconds){
  assert.ok(results[0].wall-starts[0].wall>=end.time*950,'normal wall elapsed');
  for(const [key,value]of Object.entries({timeLimit:seconds,botCount:0,speed:1,gravity:1,damage:1,respawn:2}))assert.equal(end.config[key],value,'ordinary config '+key);
  const snapshots=new Map(host.filter(f=>f.type==='snapshot').map(f=>[`${f.round}:${f.seq}`,f])),previousSeq=new Map();
- let matches=0,rollbackSamples=0,bankSamples=0,resumed=false,bankStart=null,bankEnd=null,prev=null;
+ let matches=0,rollbackSamples=0,bankSamples=0,resumed=false,bankStart=null,bankEnd=null,prev=null,previousTime=null;
  const events=host.filter(f=>f.type==='events'&&f.round===1).flatMap(f=>f.items);
  for(const row of native){
   const f=snapshots.get(`${row.round}:${row.snapshot_seq}`);assert.ok(f,'recipient/round/sequence');
@@ -33,12 +33,14 @@ export function validate(wire,stdout,map,seconds){
    if(p.checkpointsReached>=1)assert.ok(p.distance>=bank-.001,'bank never crossed');
    if(prev&&p.pushing===1&&p.distance<prev.distance-.001){
     rollbackSamples++;assert.equal(p.checkpointsReached,1);assert.equal(p.contested,false);assert.ok(models.get(`${row.round}:${row.snapshot_seq}`).title.includes('ROLLING BACK'));
+    assert.equal(f.state.objectives.zones[0].owner,0);assert.equal(f.state.objectives.zones[0].progress,100);assert.equal(f.state.teamScores['0'],1);
+    if(prev.pushing===1){const expected=Math.max(bank,prev.distance-p.speed*.5*(f.state.time-previousTime));assert.ok(Math.abs(p.distance-expected)<.004,'unchanged half-speed rollback with codec uncertainty');}
     const inside=a=>a.health>0&&Math.hypot(a.x-p.position.x,a.z-p.position.z)<=p.radius+.01&&Math.abs(a.y-p.position.y)<=5;
     assert.ok(f.state.actors.some(a=>a.team===1&&inside(a)));assert.ok(!f.state.actors.some(a=>a.team===0&&inside(a)),'defender alone');
    }
    if(rollbackSamples>0&&p.pushing===1&&Math.abs(p.distance-bank)<.002){bankSamples++;bankStart??=f.state.time;bankEnd=f.state.time;}
    if(bankSamples>10&&p.pushing===0&&p.distance>bank+4){resumed=true;assert.ok(actor.health>0&&Math.hypot(actor.x-p.position.x,actor.z-p.position.z)<=p.radius+.01,'native primary resumed escort');}
-   prev=p;
+   prev=p;previousTime=f.state.time;
   }
   matches++;
  }
@@ -46,7 +48,7 @@ export function validate(wire,stdout,map,seconds){
  const cps=events.filter(e=>e.type==='payload-checkpoint');assert.deepEqual(cps.map(e=>e.index),[1,2,3]);
  assert.equal(events.filter(e=>e.type==='payload-delivered').length,1,'one source delivered event');assert.equal(events.find(e=>e.type==='payload-delivered').team,0);
  assert.ok(!events.some(e=>e.type==='payload-hold'),'not time-limit hold');
- assert.equal(resultRows.length,1);const r=resultRows[0];assert.equal(r.delivered,true);assert.equal(r.released,true);assert.equal(r.captured,false);assert.equal(r.eligible,false);assert.ok(r.hud.includes('DELIVERED'));
+ assert.equal(resultRows.length,1);const r=resultRows[0];assert.equal(r.delivered,true);const settled=parse('COMPLETION_SETTLED ');assert.ok(r.released===true||(settled.length===1&&settled[0].released===true&&settled[0].phase===4&&!settled[0].captured&&!settled[0].eligible),'result physical release');assert.equal(r.captured,false);assert.equal(r.eligible,false);assert.ok(r.hud.includes('DELIVERED'));
  for(const axis of ['x','y','z'])assert.ok(Math.abs(r.rendered.cart[axis]-pEnd.position[axis])<1e-4);
  const restart=boundaries.find(b=>b.event==='start'&&b.round===2);assert.ok(restart);assert.deepEqual(restart.dynamic,[]);assert.equal(restart.captured,false);assert.equal(restart.pose,false);assert.equal(restart.hud,'Objectives unavailable');
  const fresh=host.find(f=>f.type==='snapshot'&&f.round===2).state;assert.equal(fresh.over,false);assert.equal(fresh.teamScores['0'],0);assert.equal(fresh.teamScores['1'],0);

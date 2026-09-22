@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
 import {load} from './validate.mjs';
 import {inputEvidence} from './inputs.mjs';
-export function validatePass(wire,stdout,map,seconds){
+export function validatePass(wire,stdout,map,seconds,{gameplayOnly=false}={}){
  assert.equal(map,'tidal-citadel');assert.equal(seconds,60);
  const parse=prefix=>stdout.split('\n').filter(l=>l.startsWith(prefix)).map(l=>JSON.parse(l.slice(prefix.length)));
  const native=parse('OBJECTIVE_NATIVE '),boundaries=parse('COMPLETION_BOUNDARY '),done=parse('COMPLETION_DONE '),nativeEvents=parse('COMPLETION_PASS_EVENT '),resultRows=parse('COMPLETION_RESULT ');
@@ -36,10 +36,13 @@ export function validatePass(wire,stdout,map,seconds){
  assert.equal(from.team,to.team);assert.ok(from.health>0&&to.health>0);assert.ok(Math.hypot(from.x-to.x,from.y-to.y,from.z-to.z)<2.6,'ordinary eligible receiver near carrier');
  const interact=host.filter(f=>f.type==='received'&&f.round===1&&f.frame.type==='input'&&f.frame.input.interact===true);assert.ok(interact.length>0,'native E reached source');
  const carryingFrame=host.find(f=>f.type==='snapshot'&&f.round===1&&f.state.flags.some(flag=>flag.team===1&&flag.carrier===2));assert.ok(carryingFrame.acks['0']>=interact[0].frame.seq,'pass follows applied interact high-water');
- assert.equal(resultRows.length,1);const r=resultRows[0];assert.equal(r.released,true);assert.equal(r.captured,false);assert.equal(r.eligible,false);assert.ok(r.model.hint.includes('RED'));
+ assert.equal(resultRows.length,1);const r=resultRows[0];assert.equal(r.phase,4);assert.equal(r.captured,false);assert.equal(r.eligible,false);assert.ok(r.model.hint.includes('RED'));
+ const settled=parse('COMPLETION_SETTLED '),settledRelease=settled.length===1&&settled[0].phase===4&&settled[0].released===true&&settled[0].captured===false&&settled[0].eligible===false;
+ if(!gameplayOnly)assert.ok(r.released===true||settledRelease,'settled result physical release required for full live acceptance');
  const restart=boundaries.find(b=>b.event==='start'&&b.round===2);assert.deepEqual(restart.dynamic,[]);assert.equal(restart.captured,false);assert.equal(restart.pose,false);assert.equal(restart.hud,'Objectives unavailable');
  const fresh=host.find(f=>f.type==='snapshot'&&f.round===2).state;assert.equal(fresh.over,false);assert.equal(fresh.teamScores['0'],0);assert.equal(fresh.teamScores['1'],0);assert.ok(fresh.flags.every(f=>f.state==='at-base'&&f.carrier===null));
  assert.equal(done.length,1);assert.equal(done[0].ok,true);assert.equal(done[0].fresh_capture,true);
- return{status:'PASS',matches,pass:{actor:pass.actor,to:pass.to,time:pass.time},capture:{actor:captures[0].actor,time:captures[0].time},inputs:inputEvidence(wire,native),results:1,restarts:1,normalRate:true,nativeCompletionProven:false};
+ const freshInputs=host.filter(f=>f.type==='received'&&f.round===2&&f.frame.type==='input');assert.ok(freshInputs.length>10);for(const row of freshInputs){const i=row.frame.input;assert.equal(i.x,0);assert.equal(i.z,0);for(const key of ['interact','fire','jump','sprint','crouch','reload','mobility'])assert.ok(!i[key],'neutral input after restart');}
+ return{status:'PASS',scope:gameplayOnly?'source pass/capture; result input suppression; neutral restart':'full live acceptance',fullLiveAcceptance:!gameplayOnly,immediatePhysicalRelease:r.released,settledResultPhysicalReleaseObserved:settledRelease,matches,pass:{actor:pass.actor,to:pass.to,time:pass.time},capture:{actor:captures[0].actor,time:captures[0].time},inputs:inputEvidence(wire,native),results:1,restarts:1,normalRate:true,nativeCompletionProven:false};
 }
-if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){const {wire,stdout,summary}=load(process.argv[2]);console.log(JSON.stringify(validatePass(wire,stdout,summary.map,summary.seconds),null,2));}
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){const {wire,stdout,summary}=load(process.argv[2]);console.log(JSON.stringify({originalRunExit:summary.exit,...validatePass(wire,stdout,summary.map,summary.seconds,{gameplayOnly:process.argv.includes('--gameplay')})},null,2));}

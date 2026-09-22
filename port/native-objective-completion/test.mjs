@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {load,validate} from './validate.mjs';
+import {validatePass} from './pass-validate.mjs';
 const payload='port/native-objective-completion/evidence/2d6b7e66-6adc-43f2-b29e-9d26fed86387';
 const fixture=()=>load(payload);
 const run=f=>validate(f.wire,f.stdout,f.summary.map,f.summary.seconds);
@@ -22,3 +23,19 @@ reject('result retains native capture',f=>rewrite(f,'COMPLETION_RESULT ',r=>{r.c
 reject('stale checkpoint after round clear',f=>rewrite(f,'COMPLETION_BOUNDARY ',r=>{if(r.round===2)r.dynamic=['cp_cp1'];return true;}));
 reject('completion marker duplicated',f=>{f.stdout+='\n'+f.stdout.split('\n').find(l=>l.startsWith('COMPLETION_DONE '));});
 reject('ACK without an input receipt',f=>{for(const r of f.wire)if(r.connection===0&&r.type==='snapshot'&&r.round===1)r.acks['0']=999999;},/prior same-peer receipt/);
+reject('faster-than-source rollback',f=>{const rows=host(f).filter(r=>r.type==='snapshot'&&r.round===1&&r.state.objectives.payload.pushing===1);rows[2].state.objectives.payload.distance-=.1;},/half-speed rollback/);
+
+const passFixture=()=>load('port/native-objective-completion/evidence/cfb8c298-c0e0-4337-9951-75b7bcc734a3');
+const runPass=f=>validatePass(f.wire,f.stdout,f.summary.map,f.summary.seconds,{gameplayOnly:true});
+test('single CTF archive proves pass/capture but retains original failed full acceptance',()=>{
+ const f=passFixture();assert.equal(f.summary.exit,1);const result=runPass(f);assert.equal(result.status,'PASS');assert.equal(result.fullLiveAcceptance,false);assert.equal(result.settledResultPhysicalReleaseObserved,false);assert.equal(result.immediatePhysicalRelease,false);
+ assert.throws(()=>validatePass(f.wire,f.stdout,f.summary.map,f.summary.seconds),/settled result physical release/);
+});
+function rejectPass(name,mutate,pattern){test('reject CTF '+name,()=>{const f=passFixture();mutate(f);assert.throws(()=>runPass(f),pattern);});}
+rejectPass('missing source flag-pass',f=>{for(const r of f.wire)if(r.type==='events')r.items=r.items.filter(e=>e.type!=='flag-pass');});
+rejectPass('drop relabeled as pass',f=>{for(const r of f.wire)if(r.type==='events'&&r.items.some(e=>e.type==='flag-pass'))r.items.push({type:'flag-drop',actor:0,time:20});},/not drop\/pickup/);
+rejectPass('wrong pass recipient',f=>{for(const r of f.wire)if(r.type==='events')for(const e of r.items)if(e.type==='flag-pass')e.to=1;});
+rejectPass('actor zero erased',f=>{for(const r of f.wire)if(r.type==='events')for(const e of r.items)if(e.type==='flag-pass')e.actor=null;});
+rejectPass('missing native E receipt',f=>{for(const r of f.wire)if(r.connection===0&&r.type==='received'&&r.frame.type==='input')r.frame.input.interact=false;},/native E/);
+rejectPass('results continue transmitting movement',f=>{const r=structuredClone(host(f).find(r=>r.type==='received'&&r.frame.type==='input'));r.wall=result(f).wall+500;r.frame.seq=999999;f.wire.push(r);},/stops primary input/);
+rejectPass('restart retains interaction',f=>{host(f).find(r=>r.round===2&&r.type==='received'&&r.frame.type==='input').frame.input.interact=true;},/neutral input after restart/);

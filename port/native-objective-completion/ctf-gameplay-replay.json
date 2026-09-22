@@ -1,0 +1,48 @@
+{
+  "originalRunExit": 1,
+  "status": "PASS",
+  "scope": "source pass/capture; result input suppression; neutral restart",
+  "fullLiveAcceptance": false,
+  "immediatePhysicalRelease": false,
+  "settledResultPhysicalReleaseObserved": false,
+  "matches": 1869,
+  "pass": {
+    "actor": 0,
+    "to": 2,
+    "time": 20.867
+  },
+  "capture": {
+    "actor": 2,
+    "time": 38.367
+  },
+  "inputs": {
+    "peers": [
+      {
+        "connection": 0,
+        "actorId": 0,
+        "receipts": 3324,
+        "appliedSamples": 1799,
+        "appliedHighWater": 3323
+      },
+      {
+        "connection": 1,
+        "actorId": 1,
+        "receipts": 1800,
+        "appliedSamples": 1799,
+        "appliedHighWater": 1799
+      },
+      {
+        "connection": 2,
+        "actorId": 2,
+        "receipts": 1800,
+        "appliedSamples": 1799,
+        "appliedHighWater": 1799
+      }
+    ],
+    "meaning": "receipt and applied high-water only; source objective events/states establish gameplay outcomes"
+  },
+  "results": 1,
+  "restarts": 1,
+  "normalRate": true,
+  "nativeCompletionProven": false
+}

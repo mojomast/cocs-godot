@@ -56,3 +56,65 @@ All six Payload PNGs were opened directly with the image-capable `read` tool at 
 - `gameplay-restart.png`: fresh round, checkpoint 0/3. The naturally chosen attacker spawn is within escort radius, so source advances to 3.2 m by this two-second screenshot; the first new-round snapshot is separately bounded by fresh elapsed time × unchanged speed (including codec rounding).
 
 The HUD distinguishes source rollback/delivery correctly without product changes. There is no inferred route drawn as authoritative. Art quality and human route usability are not claimed. Source profile/wallet data does not establish any of these results.
+
+## CTF: genuine pass/capture proven; original full gate retained as failed
+
+Single allowed attempt: [`evidence/cfb8c298-c0e0-4337-9951-75b7bcc734a3/`](evidence/cfb8c298-c0e0-4337-9951-75b7bcc734a3/). Exact live files are preserved at **`12e0707`**. Three ordinary source-assigned actors are 0/1/2, teams 0/1/0. Native primary picks up at **19.483 s**, presses E near its teammate, and receives exact source **`flag-pass {actor:0,to:2,time:20.867}`**. The enemy flag stays carried and switches directly to actor 2; there is **no drop and no second pickup**. Recipient actor 2 captures at **38.367 s**. Results arrive naturally at 60 s with Red 1:0, followed by Enter/restart and deliberate fresh capture.
+
+The narrowed gameplay replay passes **1,869 source-root-correlated native snapshots**, source pass event recipient, ordinary E receipt/application high-water, source capture, actual results input suppression, all-neutral new-round inputs and cleared flags/scores. Primary receipts **3,324**, applied-ACK samples **1,799**, high-water **3,323**; each secondary peer has **1,800** receipts and **1,799** applied-ACK samples/high-water.
+
+**Original run exit remains 1.** Its strict assertion observed `controls_released=false` immediately after queuing native key-up events at results. Capture was false and input eligibility false. A pinned native synthetic probe (`completion_inputs.gd`) confirms physical E remains held in the same callback after `Input.parse_input_event(key_up)` and is released after two process frames. The pass driver's stage-dependent E release also let a fast successful pass leave E held until results neutralization. Source rising-edge handling prevented repeated passes.
+
+The final helper corrects the E pulse independently of stage and adds a two-process-frame `COMPLETION_SETTLED` observer. It passes the script check; **these final helper changes were not followed by another live CTF run**. The archived run has no settled result-frame physical-key witness, and full acceptance still rejects it. `--gameplay` explicitly reports `fullLiveAcceptance:false`, `immediatePhysicalRelease:false`, `settledResultPhysicalReleaseObserved:false`; it does not relabel the original failed summary. Input suppression during results and neutral input after restart are independently checked from the wire. See [`ATTEMPTS.md`](ATTEMPTS.md).
+
+All four 1280×800 CTF PNGs were read directly with the image-capable tool: `gameplay-pass.png` visibly shows the teammate carrying Blue's flag and the HUD **carried / actor 2**; `gameplay-capture.png` shows **1:0**, both flags at base; `gameplay-results.png` shows the actual 1:00 three-player scoreboard and Red winner; `gameplay-restart.png` shows **0:0** and reset flags. The large inherited WEST CITADEL landmark is visible behind the results, with objective and scoreboard panels readable.
+
+Executed once, after the source plan:
+
+```sh
+"$GODOT_BIN" --headless --path godot --script res://tests/objectives/completion_pass.gd --check-only
+node --loader ./port/tools/native_objective_demo/dependencies.mjs port/native-objective-completion/run.mjs --pass
+```
+
+Replay the actual archived outcome without another gameplay run:
+
+```sh
+node port/native-objective-completion/pass-validate.mjs port/native-objective-completion/evidence/cfb8c298-c0e0-4337-9951-75b7bcc734a3 --gameplay
+# Omitting --gameplay intentionally rejects this archive's missing settled release witness.
+```
+
+## Final verification and provenance
+
+All changes stay in `port/native-objective-completion/` and `godot/tests/objectives/completion*`. The inherited HUD/lifecycle/source required no changes to support full delivery or flag pass. The aggregate verifier/57-gate suite was not run or modified in this isolated lane.
+
+| Check | Result / retained log |
+| --- | --- |
+| Completion replay/corruption tests | **22 passed**, `validator-tests.tap` |
+| Original progression replay suite | **10 passed**, `progression-validator-tests.tap` |
+| Accepted objective HUD | **33 assertions**, `hud-tests.log` |
+| Original objective controls | **11 assertions**, `controls-tests.log` |
+| Original objective renderer | **19 assertions**, `renderer-tests.log` |
+| Pinned synthetic parsed-key release timing | Passed, `input-timing.log` |
+| Final completion/pass driver parse check | Passed, `driver-check.log` |
+| Current strengthened Payload replay | PASS, `payload-replay.json` |
+| CTF scoped gameplay replay | PASS with full-live-acceptance=false, `ctf-gameplay-replay.json` |
+| Exact live code/image/binary provenance and independent PID absence | Passed, `evidence-index.json` |
+
+The corruption suite rejects missing delivery, time-limit hold mislabeled delivery, wrong winner, accelerated clock, rollback crossing bank, missing defender, excessive rollback speed, wrong source-root height, missing rollback HUD, retained capture, stale marker, duplicate completion marker, ACK without receipt, missing/wrong pass event, drop mislabeled pass, erased actor zero, absent E input, post-results movement and held interaction after restart. It also requires the original CTF full acceptance to remain rejected. The first expanded test run caught a test-fixture mistake (a deliberately injected late receipt reused an existing sequence and therefore correctly failed ACK validation before the intended result-input assertion); the fixture now uses a unique sequence. Original failed TAP is preserved in `validator-tests-initial-expanded.tap`.
+
+Additional exact commands, using the environment above:
+
+```sh
+"$GODOT_BIN" --headless --path godot --script res://tests/objectives/completion_inputs.gd
+"$GODOT_BIN" --headless --path godot --script res://tests/objectives/progression_hud.gd -- --map=tidal-citadel
+"$GODOT_BIN" --headless --path godot --script res://tests/objectives/controls.gd -- --map=tidal-citadel
+"$GODOT_BIN" --headless --path godot --script res://tests/objectives/renderer.gd
+node --test port/native-objective-progression/test.mjs
+node --test port/native-objective-completion/test.mjs
+node port/native-objective-completion/provenance.mjs
+git diff --check
+```
+
+Source lock: **`51289b79c627a26a381ba556b92bab71f93f3732`**. Pinned engine binary SHA256: **`5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae`**. `provenance.mjs` verifies every recorded runtime/helper hash against its exact live commit (**15 Payload files / 19 CTF files**), verifies unchanged product/source modules against current files, verifies the pinned binary hash and all archived log checksums, and independently checks every owned PID is absent. It outputs hashes and byte sizes for every screenshot, log and metadata file. The current final helper's delayed release observer is compile/synthetic-checked only; archived live behavior is tied to the two explicit historical helper commits.
+
+No push, merge or deployment. No recording-finalization, finished-art, human-input or adversarial-network acceptance claim. The source-rate full Payload completion objective is closed; the CTF source pass/capture objective is demonstrated with its explicit full-run witness limitation preserved.
