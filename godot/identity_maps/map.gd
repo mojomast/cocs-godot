@@ -10,8 +10,42 @@ extends Node3D
 ## decorative surface silently losing its ray or gaining false cover.
 const Style = preload("res://identity_maps/style.gd")
 const SignatureFx = preload("res://identity_maps/signature_fx.gd")
+const EnvironmentStyle = preload("res://world/environment_style.gd")
 const IDS := ["lacuna-court", "vermilion-fold", "nacre-engine"]
 const CELL := 12.0
+
+# Surface roles for the six shared identity materials. The recipe's four-entry
+# palette stays the colour authority: `palette` / `mix` / `tint` are read here
+# exactly like the pre-pass style table, but the surface (base + baked bump +
+# finish) comes from the material language, keyed by published family names.
+# Six keys, one shared material each, no per-surface instance.
+const IDENTITY_ROLES := {
+	"lacuna-court": {
+		"floor": {"role": "floor", "palette": 0, "mix": "fff3dd", "mix_amount": 0.35, "options": {"tiles_per_metre": 0.55, "texture_strength": 0.52, "albedo_gain": 2.25}},
+		"shell": {"role": "wall", "palette": 1, "mix": "fff8ea", "mix_amount": 0.34, "options": {"tiles_per_metre": 0.55, "texture_strength": 0.38, "albedo_gain": 2.4}},
+		"cut": {"role": "wall-worn", "palette": 1, "mix": "cfc3a8", "mix_amount": 0.30, "options": {"tiles_per_metre": 0.6, "texture_strength": 0.38, "albedo_gain": 2.4}},
+		"enamel": {"role": "wall-panel", "palette": 2, "options": {"tiles_per_metre": 0.45, "roughness": 0.34, "metallic": 0.18, "lut_gain": 0.14}},
+		"accent": {"role": "pipe", "palette": 3, "options": {"tiles_per_metre": 0.55, "roughness": 0.38, "metallic": 0.55}},
+		"trim": {"role": "rail", "tint": "5a5346", "palette_mix": 3, "palette_mix_amount": 0.25, "options": {"tiles_per_metre": 0.7, "metallic": 0.55, "lut_gain": 0.0}},
+	},
+	"vermilion-fold": {
+		"floor": {"role": "floor", "palette": 0, "mix": "b3a68a", "mix_amount": 0.4, "options": {"tiles_per_metre": 0.55, "texture_strength": 0.52, "albedo_gain": 2.25}},
+		"shell": {"role": "wall-stucco", "palette": 0, "options": {"tiles_per_metre": 0.55, "texture_strength": 0.40, "albedo_gain": 2.2}},
+		"cut": {"role": "wall-worn", "palette": 1, "options": {"tiles_per_metre": 0.6, "texture_strength": 0.38, "albedo_gain": 2.4}},
+		"enamel": {"role": "wall-panel", "palette": 2, "options": {"tiles_per_metre": 0.45, "roughness": 0.30, "metallic": 0.12, "lut_gain": 0.14}},
+		"accent": {"role": "wall-worn", "palette": 3, "mix": "ffd9cd", "mix_amount": 0.16, "options": {"tiles_per_metre": 0.42, "texture_strength": 0.38, "albedo_gain": 2.4}},
+		"trim": {"role": "riveted", "tint": "343943", "options": {"tiles_per_metre": 0.8, "metallic": 0.60}},
+	},
+	"nacre-engine": {
+		"floor": {"role": "floor-built", "palette": 0, "mix": "e8e2d4", "mix_amount": 0.45, "options": {"tiles_per_metre": 0.55, "texture_strength": 0.45, "albedo_gain": 2.5}},
+		"shell": {"role": "wall-stucco", "palette": 0, "mix": "f4eee1", "mix_amount": 0.36, "options": {"tiles_per_metre": 0.55, "texture_strength": 0.42, "albedo_gain": 2.2, "roughness": 0.62, "lut_gain": 0.10}},
+		"cut": {"role": "grating", "palette": 1, "options": {"tiles_per_metre": 0.6, "metallic": 0.30, "lut_gain": 0.0}},
+		"enamel": {"role": "wall-panel", "palette": 2, "options": {"tiles_per_metre": 0.42, "roughness": 0.30, "metallic": 0.20, "lut_gain": 0.16}},
+		"accent": {"role": "pipe", "palette": 3, "options": {"tiles_per_metre": 0.55, "roughness": 0.36, "metallic": 0.55}},
+		"trim": {"role": "rail", "tint": "394a55", "options": {"tiles_per_metre": 0.8, "metallic": 0.62, "lut_gain": 0.0}},
+	},
+}
+var identity_plan: Dictionary = {}
 var recipe: Dictionary = {}
 var materials: Dictionary = {}
 var batches: Dictionary = {}
@@ -77,6 +111,7 @@ func _count_counters() -> void:
 
 func _make_materials() -> void:
 	materials = Style.create(str(recipe.id), recipe.palette)
+	identity_plan = _apply_identity_roles()
 	if graybox:
 		for key: String in materials.keys():
 			var flat := StandardMaterial3D.new()
@@ -85,6 +120,55 @@ func _make_materials() -> void:
 			flat.metallic = 0.45 if key == "accent" else 0.0
 			flat.cull_mode = BaseMaterial3D.CULL_DISABLED
 			materials[key] = flat
+		identity_plan = {}
+		return
+	metrics.texture_bytes = texture_bytes_of(materials.values())
+
+## One shared family material per key, tinted from the recipe palette with the
+## same palette/mix rules the pre-pass style table used. A role whose family is
+## not published keeps the pre-pass material for that key.
+func _apply_identity_roles() -> Dictionary:
+	var plan: Dictionary = {}
+	var table: Dictionary = IDENTITY_ROLES.get(str(recipe.id), {})
+	var palette: Array = recipe.get("palette", [])
+	for key: String in materials.keys():
+		if not table.has(key): continue
+		var spec: Dictionary = table[key]
+		var material: Material = EnvironmentStyle.role_material(str(spec.role), _identity_tint(spec, palette), spec.get("options", {}), str(recipe.id))
+		if material == null: continue
+		materials[key] = material
+		plan[key] = EnvironmentStyle.ROLE_TABLE[spec.role].family
+	return plan
+
+static func _identity_tint(spec: Dictionary, palette: Array) -> Color:
+	var tint := Color.WHITE
+	if palette.size() >= 4:
+		var index: int = int(spec.get("palette", -1))
+		if index >= 0 and index < palette.size(): tint = Color(str(palette[index]))
+		var mix_index: int = int(spec.get("palette_mix", -1))
+		if mix_index >= 0 and mix_index < palette.size():
+			tint = tint.lerp(Color(str(palette[mix_index])), float(spec.get("palette_mix_amount", 0.0)))
+	if spec.has("tint"): tint = Color(str(spec.tint))
+	if spec.has("mix"): tint = tint.lerp(Color(str(spec.mix)), float(spec.get("mix_amount", 0.0)))
+	return tint
+
+## Unique texture bytes actually bound by these materials, counted once per
+## resource: the honest number the contract gate budgets, instead of the
+## pre-pass table's estimate.
+static func texture_bytes_of(bound: Array) -> int:
+	var seen: Dictionary = {}
+	for material: Material in bound:
+		if not material is ShaderMaterial: continue
+		var shader_material := material as ShaderMaterial
+		if shader_material.shader == null: continue
+		for uniform: Dictionary in shader_material.shader.get_shader_uniform_list():
+			var value: Variant = shader_material.get_shader_parameter(StringName(str(uniform.get("name", ""))))
+			if value is Texture2D:
+				var texture := value as Texture2D
+				seen[texture.get_instance_id()] = texture.get_width() * texture.get_height() * 4
+	var total := 0
+	for size: int in seen.values(): total += size
+	return total
 
 func _material_for(key: String) -> Material:
 	if materials.has(key): return materials[key]
@@ -218,7 +302,7 @@ func _build_detail() -> void:
 		detail.add_child(bolts)
 	metrics.detail_instances = data.count
 	metrics.detail_batches = detail.get_child_count()
-	metrics.texture_bytes = Style.texture_bytes(str(recipe.id))
+	metrics.texture_bytes = texture_bytes_of(materials.values())
 
 func _build_fx() -> void:
 	fx = SignatureFx.new()

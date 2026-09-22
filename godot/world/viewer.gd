@@ -162,6 +162,9 @@ func load_map(id: String) -> bool:
 		# Sports arenas intentionally have implicit zero-height support.
 		box(Vector3(0, -0.1, 0), Vector3(260, 0.2, 220), style.surface_material("sports-floor", style.leaves if id == "aurora-stadium" else style.ground), world)
 	style.decorate(map, world)
+	# The presentation/material families this map ended up with, recorded on the
+	# scene so evidence and review can read them without re-deriving anything.
+	world.set_meta("material_families", style.role_summary())
 	var scenery := MothScenery.create(map, world)
 	if is_inside_tree():
 		if not is_instance_valid(scenery_settings):

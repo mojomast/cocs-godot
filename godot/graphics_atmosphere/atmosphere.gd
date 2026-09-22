@@ -4,6 +4,7 @@ extends RefCounted
 
 const SKY_SHADER = preload("res://graphics_atmosphere/horizon.gdshader")
 const GROUND_SHADER = preload("res://graphics_atmosphere/distant_ground.gdshader")
+const MaterialLanguage = preload("res://material_language/library.gd")
 
 # Source identities are explicit; biome alone misclassifies the orbital relay.
 # Colors: zenith / horizon / lower hemisphere / key / ambient fill.
@@ -120,6 +121,11 @@ func configure(map: Dictionary, environment: WorldEnvironment, sun: DirectionalL
 	sky_material.set_shader_parameter("sun_direction", sun.basis.z.normalized())
 	ground_material.set_shader_parameter("ground", Color(colors[2]).darkened(0.18))
 	ground_material.set_shader_parameter("horizon", Color(colors[1]))
+	# The material language's derived data bucket is the only texture this
+	# controller binds: distant ground grain that fades out with the sky blend.
+	var grain := MaterialLanguage.derived("data--sand")
+	ground_material.set_shader_parameter("grain_map", grain)
+	ground_material.set_shader_parameter("has_grain", grain != null)
 	var bounds: Dictionary = map.get("bounds", {})
 	var extent := 100.0
 	for key: String in ["minX", "maxX", "minZ", "maxZ"]:

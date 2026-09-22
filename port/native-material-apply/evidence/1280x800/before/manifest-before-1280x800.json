@@ -1,0 +1,1802 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"engine": "4.5.2-stable (official)",
+	"glow": false,
+	"maps": [
+		{
+			"cameras": [
+				{
+					"draw_calls": 626,
+					"file": "prism-foundry-atrium-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 299.068125,
+					"frame_ms_median": 295.405,
+					"frame_ms_p95": 339.241,
+					"glow": false,
+					"height": 800,
+					"map": "prism-foundry",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 17
+					},
+					"nodes": 434,
+					"phase": "before",
+					"position": [
+						11.5,
+						7.19999980926514,
+						12.5
+					],
+					"primitives": 209762,
+					"resources": 42,
+					"target": [
+						-1.0,
+						4.90000009536743,
+						-2.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 204800,
+						"unique_materials": 15,
+						"unique_shaders": 3,
+						"unique_textures": 17
+					},
+					"video_memory_bytes": 45020063,
+					"view": "atrium",
+					"width": 1280
+				},
+				{
+					"draw_calls": 189,
+					"file": "prism-foundry-turbine-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 249.3968,
+					"frame_ms_median": 254.168,
+					"frame_ms_p95": 271.097,
+					"glow": false,
+					"height": 800,
+					"map": "prism-foundry",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 17
+					},
+					"nodes": 434,
+					"phase": "before",
+					"position": [
+						-21.0,
+						2.09999990463257,
+						7.0
+					],
+					"primitives": 114166,
+					"resources": 42,
+					"target": [
+						-29.0,
+						2.70000004768372,
+						-4.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 204800,
+						"unique_materials": 15,
+						"unique_shaders": 3,
+						"unique_textures": 17
+					},
+					"video_memory_bytes": 45020063,
+					"view": "turbine",
+					"width": 1280
+				},
+				{
+					"draw_calls": 355,
+					"file": "prism-foundry-garden-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 206.852175,
+					"frame_ms_median": 206.67,
+					"frame_ms_p95": 216.192,
+					"glow": false,
+					"height": 800,
+					"map": "prism-foundry",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 17
+					},
+					"nodes": 434,
+					"phase": "before",
+					"position": [
+						1.79999995231628,
+						1.75,
+						-20.0
+					],
+					"primitives": 79528,
+					"resources": 42,
+					"target": [
+						-1.0,
+						1.29999995231628,
+						-31.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 204800,
+						"unique_materials": 15,
+						"unique_shaders": 3,
+						"unique_textures": 17
+					},
+					"video_memory_bytes": 45020063,
+					"view": "garden",
+					"width": 1280
+				},
+				{
+					"draw_calls": 540,
+					"file": "prism-foundry-overview-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 173.96605,
+					"frame_ms_median": 173.541,
+					"frame_ms_p95": 188.051,
+					"glow": false,
+					"height": 800,
+					"map": "prism-foundry",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 17
+					},
+					"nodes": 434,
+					"phase": "before",
+					"position": [
+						47.0,
+						35.0,
+						-49.0
+					],
+					"primitives": 171112,
+					"resources": 42,
+					"target": [
+						-3.0,
+						2.40000009536743,
+						-7.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 204800,
+						"unique_materials": 15,
+						"unique_shaders": 3,
+						"unique_textures": 17
+					},
+					"video_memory_bytes": 45020063,
+					"view": "overview",
+					"width": 1280
+				}
+			],
+			"kind": "arena"
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 774,
+					"file": "aurora-basin-landing-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 124.9093,
+					"frame_ms_median": 123.872,
+					"frame_ms_p95": 146.779,
+					"glow": false,
+					"height": 800,
+					"map": "aurora-basin",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 22
+					},
+					"nodes": 1047,
+					"phase": "before",
+					"position": [
+						-23.0,
+						1.70500004291534,
+						34.0
+					],
+					"primitives": 151518,
+					"resources": 53,
+					"target": [
+						0.0,
+						7.30000019073486,
+						-13.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 90112,
+						"unique_materials": 15,
+						"unique_shaders": 4,
+						"unique_textures": 10
+					},
+					"video_memory_bytes": 31648033,
+					"view": "landing",
+					"width": 1280
+				},
+				{
+					"draw_calls": 521,
+					"file": "aurora-basin-fracture-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 118.603925,
+					"frame_ms_median": 119.071,
+					"frame_ms_p95": 129.756,
+					"glow": false,
+					"height": 800,
+					"map": "aurora-basin",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 22
+					},
+					"nodes": 1047,
+					"phase": "before",
+					"position": [
+						15.0,
+						1.63999998569489,
+						17.0
+					],
+					"primitives": 142410,
+					"resources": 53,
+					"target": [
+						-4.0,
+						7.80000019073486,
+						-12.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 90112,
+						"unique_materials": 15,
+						"unique_shaders": 4,
+						"unique_textures": 10
+					},
+					"video_memory_bytes": 31648033,
+					"view": "fracture",
+					"width": 1280
+				},
+				{
+					"draw_calls": 298,
+					"file": "aurora-basin-observatory-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 116.4653,
+					"frame_ms_median": 116.396,
+					"frame_ms_p95": 132.037,
+					"glow": false,
+					"height": 800,
+					"map": "aurora-basin",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 22
+					},
+					"nodes": 1047,
+					"phase": "before",
+					"position": [
+						-17.0,
+						1.70500004291534,
+						34.0
+					],
+					"primitives": 134930,
+					"resources": 53,
+					"target": [
+						-33.0,
+						5.0,
+						12.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 90112,
+						"unique_materials": 15,
+						"unique_shaders": 4,
+						"unique_textures": 10
+					},
+					"video_memory_bytes": 31648033,
+					"view": "observatory",
+					"width": 1280
+				},
+				{
+					"draw_calls": 686,
+					"file": "aurora-basin-overview-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 85.67435,
+					"frame_ms_median": 85.569,
+					"frame_ms_p95": 99.16,
+					"glow": false,
+					"height": 800,
+					"map": "aurora-basin",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 22
+					},
+					"nodes": 1047,
+					"phase": "before",
+					"position": [
+						84.0,
+						72.0,
+						99.0
+					],
+					"primitives": 133926,
+					"resources": 53,
+					"target": [
+						0.0,
+						4.0,
+						-3.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 90112,
+						"unique_materials": 15,
+						"unique_shaders": 4,
+						"unique_textures": 10
+					},
+					"video_memory_bytes": 31648033,
+					"view": "overview",
+					"width": 1280
+				}
+			],
+			"kind": "arena",
+			"resources": {
+				"build_ms": 108.659,
+				"collision_shapes": 324,
+				"invalid_transforms": 0,
+				"lights": 3,
+				"mesh_triangles": 49612,
+				"meshes": 370,
+				"moth_cache": {
+					"limit": 128,
+					"textures": 22
+				},
+				"multimesh_instances": 223,
+				"multimesh_triangles": 10302,
+				"multimeshes": 9,
+				"nodes": 1044,
+				"particle_capacity": 384,
+				"particle_emitters": 3,
+				"shadow_lights": 1
+			}
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 329,
+					"file": "cinder-array-deck-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 49.47775,
+					"frame_ms_median": 49.655,
+					"frame_ms_p95": 55.698,
+					"glow": false,
+					"height": 800,
+					"map": "cinder-array",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 26
+					},
+					"nodes": 292,
+					"phase": "before",
+					"position": [
+						-25.5,
+						8.89999961853027,
+						31.0
+					],
+					"primitives": 67708,
+					"resources": 64,
+					"target": [
+						6.0,
+						11.5,
+						-2.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 126976,
+						"unique_materials": 12,
+						"unique_shaders": 3,
+						"unique_textures": 10
+					},
+					"video_memory_bytes": 28396545,
+					"view": "deck",
+					"width": 1280
+				},
+				{
+					"draw_calls": 256,
+					"file": "cinder-array-gantry-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 47.12305,
+					"frame_ms_median": 47.921,
+					"frame_ms_p95": 52.952,
+					"glow": false,
+					"height": 800,
+					"map": "cinder-array",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 26
+					},
+					"nodes": 292,
+					"phase": "before",
+					"position": [
+						20.0,
+						13.8999996185303,
+						-8.0
+					],
+					"primitives": 63764,
+					"resources": 64,
+					"target": [
+						-20.0,
+						11.0,
+						6.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 126976,
+						"unique_materials": 12,
+						"unique_shaders": 3,
+						"unique_textures": 10
+					},
+					"video_memory_bytes": 28396545,
+					"view": "gantry",
+					"width": 1280
+				},
+				{
+					"draw_calls": 252,
+					"file": "cinder-array-bore-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 54.7139,
+					"frame_ms_median": 54.451,
+					"frame_ms_p95": 59.78,
+					"glow": false,
+					"height": 800,
+					"map": "cinder-array",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 26
+					},
+					"nodes": 292,
+					"phase": "before",
+					"position": [
+						7.0,
+						13.6999998092651,
+						-27.0
+					],
+					"primitives": 61190,
+					"resources": 64,
+					"target": [
+						-20.0,
+						15.0,
+						-27.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 126976,
+						"unique_materials": 12,
+						"unique_shaders": 3,
+						"unique_textures": 10
+					},
+					"video_memory_bytes": 28396545,
+					"view": "bore",
+					"width": 1280
+				},
+				{
+					"draw_calls": 333,
+					"file": "cinder-array-overview-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 42.48415,
+					"frame_ms_median": 42.856,
+					"frame_ms_p95": 51.687,
+					"glow": false,
+					"height": 800,
+					"map": "cinder-array",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 26
+					},
+					"nodes": 292,
+					"phase": "before",
+					"position": [
+						64.0,
+						56.0,
+						62.0
+					],
+					"primitives": 51452,
+					"resources": 64,
+					"target": [
+						-2.0,
+						9.0,
+						-4.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 126976,
+						"unique_materials": 12,
+						"unique_shaders": 3,
+						"unique_textures": 10
+					},
+					"video_memory_bytes": 28396545,
+					"view": "overview",
+					"width": 1280
+				}
+			],
+			"kind": "arena"
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 308,
+					"file": "lacuna-court-entrance-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 71.680675,
+					"frame_ms_median": 64.948,
+					"frame_ms_p95": 95.949,
+					"glow": false,
+					"height": 800,
+					"map": "lacuna-court",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 28
+					},
+					"nodes": 176,
+					"phase": "before",
+					"position": [
+						-16.0,
+						1.70000004768372,
+						12.0
+					],
+					"primitives": 32282,
+					"resources": 66,
+					"target": [
+						0.0,
+						5.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 36864,
+						"unique_materials": 10,
+						"unique_shaders": 1,
+						"unique_textures": 3
+					},
+					"video_memory_bytes": 29361039,
+					"view": "entrance",
+					"width": 1280
+				},
+				{
+					"draw_calls": 184,
+					"file": "lacuna-court-landmark-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 67.99175,
+					"frame_ms_median": 66.382,
+					"frame_ms_p95": 81.586,
+					"glow": false,
+					"height": 800,
+					"map": "lacuna-court",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 28
+					},
+					"nodes": 176,
+					"phase": "before",
+					"position": [
+						17.0,
+						5.0,
+						17.0
+					],
+					"primitives": 22947,
+					"resources": 66,
+					"target": [
+						0.0,
+						6.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 36864,
+						"unique_materials": 10,
+						"unique_shaders": 1,
+						"unique_textures": 3
+					},
+					"video_memory_bytes": 29361039,
+					"view": "landmark",
+					"width": 1280
+				},
+				{
+					"draw_calls": 289,
+					"file": "lacuna-court-combat-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 108.831975,
+					"frame_ms_median": 108.42,
+					"frame_ms_p95": 124.171,
+					"glow": false,
+					"height": 800,
+					"map": "lacuna-court",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 28
+					},
+					"nodes": 176,
+					"phase": "before",
+					"position": [
+						0.0,
+						1.70000004768372,
+						12.0
+					],
+					"primitives": 34006,
+					"resources": 66,
+					"target": [
+						0.0,
+						2.0,
+						-12.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 36864,
+						"unique_materials": 10,
+						"unique_shaders": 1,
+						"unique_textures": 3
+					},
+					"video_memory_bytes": 29361039,
+					"view": "combat",
+					"width": 1280
+				},
+				{
+					"draw_calls": 298,
+					"file": "lacuna-court-worst-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 59.093425,
+					"frame_ms_median": 58.67,
+					"frame_ms_p95": 66.077,
+					"glow": false,
+					"height": 800,
+					"map": "lacuna-court",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 28
+					},
+					"nodes": 176,
+					"phase": "before",
+					"position": [
+						31.0,
+						30.0,
+						33.0
+					],
+					"primitives": 27900,
+					"resources": 66,
+					"target": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 36864,
+						"unique_materials": 10,
+						"unique_shaders": 1,
+						"unique_textures": 3
+					},
+					"video_memory_bytes": 29361039,
+					"view": "worst",
+					"width": 1280
+				}
+			],
+			"geometry": {
+				"blocks": 18,
+				"build_ms": 29.292,
+				"detail_batches": 2,
+				"detail_instances": 48,
+				"fx": {
+					"active_emitters": 6,
+					"allocated": 2560,
+					"backend": "GPUParticles3D",
+					"budget": 32768,
+					"emitters": 6,
+					"gameplay_authority": false,
+					"gate_distance": 26.0,
+					"paused": false,
+					"per_frame_allocation": false,
+					"quality": "High",
+					"submitted_particles": 2560,
+					"suspended": false,
+					"texture_bytes": 0
+				},
+				"geometry_hash": "a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9",
+				"graybox": false,
+				"material_cells": 71,
+				"nodes": 117,
+				"surfaces": 5,
+				"texture_bytes": 106496,
+				"triangles": 5714,
+				"walls": 20
+			},
+			"kind": "identity"
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 209,
+					"file": "vermilion-fold-entrance-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 79.949525,
+					"frame_ms_median": 80.711,
+					"frame_ms_p95": 85.903,
+					"glow": false,
+					"height": 800,
+					"map": "vermilion-fold",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 30
+					},
+					"nodes": 115,
+					"phase": "before",
+					"position": [
+						-18.0,
+						1.70000004768372,
+						-17.0
+					],
+					"primitives": 32644,
+					"resources": 68,
+					"target": [
+						0.0,
+						7.0,
+						-4.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 13312,
+						"unique_materials": 9,
+						"unique_shaders": 1,
+						"unique_textures": 2
+					},
+					"video_memory_bytes": 28922063,
+					"view": "entrance",
+					"width": 1280
+				},
+				{
+					"draw_calls": 230,
+					"file": "vermilion-fold-landmark-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 87.585575,
+					"frame_ms_median": 85.454,
+					"frame_ms_p95": 109.025,
+					"glow": false,
+					"height": 800,
+					"map": "vermilion-fold",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 30
+					},
+					"nodes": 115,
+					"phase": "before",
+					"position": [
+						13.0,
+						4.0,
+						13.0
+					],
+					"primitives": 37019,
+					"resources": 68,
+					"target": [
+						0.0,
+						10.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 13312,
+						"unique_materials": 9,
+						"unique_shaders": 1,
+						"unique_textures": 2
+					},
+					"video_memory_bytes": 28922063,
+					"view": "landmark",
+					"width": 1280
+				},
+				{
+					"draw_calls": 200,
+					"file": "vermilion-fold-combat-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 102.599125,
+					"frame_ms_median": 100.106,
+					"frame_ms_p95": 119.722,
+					"glow": false,
+					"height": 800,
+					"map": "vermilion-fold",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 30
+					},
+					"nodes": 115,
+					"phase": "before",
+					"position": [
+						-18.0,
+						1.70000004768372,
+						0.0
+					],
+					"primitives": 31562,
+					"resources": 68,
+					"target": [
+						0.0,
+						2.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 13312,
+						"unique_materials": 9,
+						"unique_shaders": 1,
+						"unique_textures": 2
+					},
+					"video_memory_bytes": 28922063,
+					"view": "combat",
+					"width": 1280
+				},
+				{
+					"draw_calls": 283,
+					"file": "vermilion-fold-worst-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 52.0112,
+					"frame_ms_median": 49.26,
+					"frame_ms_p95": 62.998,
+					"glow": false,
+					"height": 800,
+					"map": "vermilion-fold",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 30
+					},
+					"nodes": 115,
+					"phase": "before",
+					"position": [
+						37.0,
+						34.0,
+						38.0
+					],
+					"primitives": 36509,
+					"resources": 68,
+					"target": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 13312,
+						"unique_materials": 9,
+						"unique_shaders": 1,
+						"unique_textures": 2
+					},
+					"video_memory_bytes": 28922063,
+					"view": "worst",
+					"width": 1280
+				}
+			],
+			"geometry": {
+				"blocks": 14,
+				"build_ms": 30.395,
+				"detail_batches": 2,
+				"detail_instances": 52,
+				"fx": {
+					"active_emitters": 6,
+					"allocated": 650,
+					"backend": "GPUParticles3D",
+					"budget": 32768,
+					"emitters": 6,
+					"gameplay_authority": false,
+					"gate_distance": 26.0,
+					"paused": false,
+					"per_frame_allocation": false,
+					"quality": "High",
+					"submitted_particles": 650,
+					"suspended": false,
+					"texture_bytes": 0
+				},
+				"geometry_hash": "6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a",
+				"graybox": false,
+				"material_cells": 66,
+				"nodes": 84,
+				"surfaces": 1,
+				"texture_bytes": 100352,
+				"triangles": 8150,
+				"walls": 0
+			},
+			"kind": "identity"
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 404,
+					"file": "nacre-engine-entrance-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 107.40785,
+					"frame_ms_median": 102.785,
+					"frame_ms_p95": 119.48,
+					"glow": false,
+					"height": 800,
+					"map": "nacre-engine",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 35
+					},
+					"nodes": 390,
+					"phase": "before",
+					"position": [
+						-23.0,
+						1.70000004768372,
+						19.0
+					],
+					"primitives": 43597,
+					"resources": 73,
+					"target": [
+						0.0,
+						7.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 36864,
+						"unique_materials": 11,
+						"unique_shaders": 1,
+						"unique_textures": 3
+					},
+					"video_memory_bytes": 29603707,
+					"view": "entrance",
+					"width": 1280
+				},
+				{
+					"draw_calls": 255,
+					"file": "nacre-engine-landmark-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 113.918425,
+					"frame_ms_median": 115.692,
+					"frame_ms_p95": 128.297,
+					"glow": false,
+					"height": 800,
+					"map": "nacre-engine",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 35
+					},
+					"nodes": 390,
+					"phase": "before",
+					"position": [
+						19.0,
+						4.0,
+						17.0
+					],
+					"primitives": 29988,
+					"resources": 73,
+					"target": [
+						0.0,
+						8.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 36864,
+						"unique_materials": 11,
+						"unique_shaders": 1,
+						"unique_textures": 3
+					},
+					"video_memory_bytes": 29603707,
+					"view": "landmark",
+					"width": 1280
+				},
+				{
+					"draw_calls": 402,
+					"file": "nacre-engine-combat-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 122.9831,
+					"frame_ms_median": 122.825,
+					"frame_ms_p95": 136.099,
+					"glow": false,
+					"height": 800,
+					"map": "nacre-engine",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 35
+					},
+					"nodes": 390,
+					"phase": "before",
+					"position": [
+						-23.0,
+						1.70000004768372,
+						0.0
+					],
+					"primitives": 43084,
+					"resources": 73,
+					"target": [
+						0.0,
+						3.0,
+						-15.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 36864,
+						"unique_materials": 11,
+						"unique_shaders": 1,
+						"unique_textures": 3
+					},
+					"video_memory_bytes": 29603707,
+					"view": "combat",
+					"width": 1280
+				},
+				{
+					"draw_calls": 407,
+					"file": "nacre-engine-worst-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 114.68205,
+					"frame_ms_median": 114.38,
+					"frame_ms_p95": 136.977,
+					"glow": false,
+					"height": 800,
+					"map": "nacre-engine",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 35
+					},
+					"nodes": 390,
+					"phase": "before",
+					"position": [
+						32.0,
+						25.0,
+						34.0
+					],
+					"primitives": 41907,
+					"resources": 73,
+					"target": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 36864,
+						"unique_materials": 11,
+						"unique_shaders": 1,
+						"unique_textures": 3
+					},
+					"video_memory_bytes": 29603707,
+					"view": "worst",
+					"width": 1280
+				}
+			],
+			"geometry": {
+				"blocks": 11,
+				"build_ms": 40.944,
+				"detail_batches": 2,
+				"detail_instances": 38,
+				"fx": {
+					"active_emitters": 7,
+					"allocated": 2450,
+					"backend": "GPUParticles3D",
+					"budget": 32768,
+					"emitters": 7,
+					"gameplay_authority": false,
+					"gate_distance": 26.0,
+					"paused": false,
+					"per_frame_allocation": false,
+					"quality": "High",
+					"submitted_particles": 2450,
+					"suspended": false,
+					"texture_bytes": 0
+				},
+				"geometry_hash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+				"graybox": false,
+				"material_cells": 94,
+				"movement_fences": 42,
+				"nodes": 235,
+				"surfaces": 1,
+				"texture_bytes": 99328,
+				"triangles": 8498,
+				"walls": 168
+			},
+			"kind": "identity"
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 387,
+					"file": "meridian-exchange-authored-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 38.598725,
+					"frame_ms_median": 34.048,
+					"frame_ms_p95": 60.998,
+					"glow": false,
+					"height": 800,
+					"map": "meridian-exchange",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 41
+					},
+					"nodes": 163,
+					"phase": "before",
+					"position": [
+						65.0,
+						48.0,
+						70.0
+					],
+					"primitives": 14875,
+					"resources": 79,
+					"target": [
+						0.0,
+						2.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 165376,
+						"unique_materials": 16,
+						"unique_shaders": 4,
+						"unique_textures": 16
+					},
+					"video_memory_bytes": 29281603,
+					"view": "authored",
+					"width": 1280
+				},
+				{
+					"draw_calls": 449,
+					"file": "meridian-exchange-street-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 100.240625,
+					"frame_ms_median": 99.22,
+					"frame_ms_p95": 115.607,
+					"glow": false,
+					"height": 800,
+					"map": "meridian-exchange",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 41
+					},
+					"nodes": 163,
+					"phase": "before",
+					"position": [
+						0.0,
+						3.0,
+						34.0
+					],
+					"primitives": 16623,
+					"resources": 79,
+					"target": [
+						0.0,
+						3.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 165376,
+						"unique_materials": 16,
+						"unique_shaders": 4,
+						"unique_textures": 16
+					},
+					"video_memory_bytes": 29281603,
+					"view": "street",
+					"width": 1280
+				}
+			],
+			"kind": "locked",
+			"surface_kinds": []
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 569,
+					"file": "verdant-reliquary-authored-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 48.578775,
+					"frame_ms_median": 46.736,
+					"frame_ms_p95": 67.389,
+					"glow": false,
+					"height": 800,
+					"map": "verdant-reliquary",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 42
+					},
+					"nodes": 226,
+					"phase": "before",
+					"position": [
+						65.0,
+						48.0,
+						70.0
+					],
+					"primitives": 17866,
+					"resources": 80,
+					"target": [
+						0.0,
+						2.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 189440,
+						"unique_materials": 18,
+						"unique_shaders": 4,
+						"unique_textures": 18
+					},
+					"video_memory_bytes": 29400781,
+					"view": "authored",
+					"width": 1280
+				},
+				{
+					"draw_calls": 697,
+					"file": "verdant-reliquary-street-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 94.6853,
+					"frame_ms_median": 95.665,
+					"frame_ms_p95": 110.959,
+					"glow": false,
+					"height": 800,
+					"map": "verdant-reliquary",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 42
+					},
+					"nodes": 226,
+					"phase": "before",
+					"position": [
+						0.0,
+						3.0,
+						34.0
+					],
+					"primitives": 20174,
+					"resources": 80,
+					"target": [
+						0.0,
+						3.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 189440,
+						"unique_materials": 18,
+						"unique_shaders": 4,
+						"unique_textures": 18
+					},
+					"video_memory_bytes": 29400781,
+					"view": "street",
+					"width": 1280
+				}
+			],
+			"kind": "locked",
+			"surface_kinds": []
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 415,
+					"file": "ember-crucible-authored-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 47.7352,
+					"frame_ms_median": 48.785,
+					"frame_ms_p95": 65.684,
+					"glow": false,
+					"height": 800,
+					"map": "ember-crucible",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 47
+					},
+					"nodes": 170,
+					"phase": "before",
+					"position": [
+						65.0,
+						48.0,
+						70.0
+					],
+					"primitives": 15158,
+					"resources": 85,
+					"target": [
+						0.0,
+						2.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 174592,
+						"unique_materials": 16,
+						"unique_shaders": 4,
+						"unique_textures": 17
+					},
+					"video_memory_bytes": 29415977,
+					"view": "authored",
+					"width": 1280
+				},
+				{
+					"draw_calls": 436,
+					"file": "ember-crucible-street-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 93.48805,
+					"frame_ms_median": 91.635,
+					"frame_ms_p95": 122.71,
+					"glow": false,
+					"height": 800,
+					"map": "ember-crucible",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 47
+					},
+					"nodes": 170,
+					"phase": "before",
+					"position": [
+						0.0,
+						3.0,
+						34.0
+					],
+					"primitives": 16410,
+					"resources": 85,
+					"target": [
+						0.0,
+						3.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 174592,
+						"unique_materials": 16,
+						"unique_shaders": 4,
+						"unique_textures": 17
+					},
+					"video_memory_bytes": 29415977,
+					"view": "street",
+					"width": 1280
+				}
+			],
+			"kind": "locked",
+			"surface_kinds": []
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 466,
+					"file": "tidal-citadel-authored-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 64.8984,
+					"frame_ms_median": 58.579,
+					"frame_ms_p95": 106.859,
+					"glow": false,
+					"height": 800,
+					"map": "tidal-citadel",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 50
+					},
+					"nodes": 196,
+					"phase": "before",
+					"position": [
+						65.0,
+						48.0,
+						70.0
+					],
+					"primitives": 18340,
+					"resources": 88,
+					"target": [
+						0.0,
+						2.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 178176,
+						"unique_materials": 17,
+						"unique_shaders": 4,
+						"unique_textures": 17
+					},
+					"video_memory_bytes": 29542933,
+					"view": "authored",
+					"width": 1280
+				},
+				{
+					"draw_calls": 390,
+					"file": "tidal-citadel-street-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 79.2095,
+					"frame_ms_median": 76.926,
+					"frame_ms_p95": 101.95,
+					"glow": false,
+					"height": 800,
+					"map": "tidal-citadel",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 50
+					},
+					"nodes": 196,
+					"phase": "before",
+					"position": [
+						0.0,
+						3.0,
+						34.0
+					],
+					"primitives": 16573,
+					"resources": 88,
+					"target": [
+						0.0,
+						3.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 178176,
+						"unique_materials": 17,
+						"unique_shaders": 4,
+						"unique_textures": 17
+					},
+					"video_memory_bytes": 29542933,
+					"view": "street",
+					"width": 1280
+				}
+			],
+			"kind": "locked",
+			"surface_kinds": []
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 363,
+					"file": "sunscar-convoy-authored-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 62.492275,
+					"frame_ms_median": 61.562,
+					"frame_ms_p95": 79.031,
+					"glow": false,
+					"height": 800,
+					"map": "sunscar-convoy",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 52
+					},
+					"nodes": 180,
+					"phase": "before",
+					"position": [
+						65.0,
+						48.0,
+						70.0
+					],
+					"primitives": 14018,
+					"resources": 90,
+					"target": [
+						0.0,
+						2.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 165376,
+						"unique_materials": 15,
+						"unique_shaders": 4,
+						"unique_textures": 16
+					},
+					"video_memory_bytes": 29562625,
+					"view": "authored",
+					"width": 1280
+				},
+				{
+					"draw_calls": 337,
+					"file": "sunscar-convoy-street-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 81.7651,
+					"frame_ms_median": 82.109,
+					"frame_ms_p95": 95.147,
+					"glow": false,
+					"height": 800,
+					"map": "sunscar-convoy",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 52
+					},
+					"nodes": 180,
+					"phase": "before",
+					"position": [
+						0.0,
+						3.0,
+						34.0
+					],
+					"primitives": 13730,
+					"resources": 90,
+					"target": [
+						0.0,
+						3.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 165376,
+						"unique_materials": 15,
+						"unique_shaders": 4,
+						"unique_textures": 16
+					},
+					"video_memory_bytes": 29562625,
+					"view": "street",
+					"width": 1280
+				}
+			],
+			"kind": "locked",
+			"surface_kinds": []
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 477,
+					"file": "asterion-relay-authored-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 64.35915,
+					"frame_ms_median": 63.62,
+					"frame_ms_p95": 78.297,
+					"glow": false,
+					"height": 800,
+					"map": "asterion-relay",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 53
+					},
+					"nodes": 246,
+					"phase": "before",
+					"position": [
+						65.0,
+						48.0,
+						70.0
+					],
+					"primitives": 22674,
+					"resources": 91,
+					"target": [
+						0.0,
+						2.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 183808,
+						"unique_materials": 17,
+						"unique_shaders": 4,
+						"unique_textures": 18
+					},
+					"video_memory_bytes": 29922735,
+					"view": "authored",
+					"width": 1280
+				},
+				{
+					"draw_calls": 486,
+					"file": "asterion-relay-street-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 80.57305,
+					"frame_ms_median": 82.764,
+					"frame_ms_p95": 103.228,
+					"glow": false,
+					"height": 800,
+					"map": "asterion-relay",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 53
+					},
+					"nodes": 246,
+					"phase": "before",
+					"position": [
+						0.0,
+						3.0,
+						34.0
+					],
+					"primitives": 22250,
+					"resources": 91,
+					"target": [
+						0.0,
+						3.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 183808,
+						"unique_materials": 17,
+						"unique_shaders": 4,
+						"unique_textures": 18
+					},
+					"video_memory_bytes": 29922735,
+					"view": "street",
+					"width": 1280
+				}
+			],
+			"kind": "locked",
+			"surface_kinds": []
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 637,
+					"file": "monsoon-foundry-authored-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 76.548725,
+					"frame_ms_median": 76.327,
+					"frame_ms_p95": 90.514,
+					"glow": false,
+					"height": 800,
+					"map": "monsoon-foundry",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 53
+					},
+					"nodes": 290,
+					"phase": "before",
+					"position": [
+						65.0,
+						48.0,
+						70.0
+					],
+					"primitives": 30022,
+					"resources": 91,
+					"target": [
+						0.0,
+						2.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 174592,
+						"unique_materials": 18,
+						"unique_shaders": 4,
+						"unique_textures": 17
+					},
+					"video_memory_bytes": 30011661,
+					"view": "authored",
+					"width": 1280
+				},
+				{
+					"draw_calls": 535,
+					"file": "monsoon-foundry-street-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 97.5956,
+					"frame_ms_median": 95.142,
+					"frame_ms_p95": 116.002,
+					"glow": false,
+					"height": 800,
+					"map": "monsoon-foundry",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 53
+					},
+					"nodes": 290,
+					"phase": "before",
+					"position": [
+						0.0,
+						3.0,
+						34.0
+					],
+					"primitives": 26330,
+					"resources": 91,
+					"target": [
+						0.0,
+						3.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 174592,
+						"unique_materials": 18,
+						"unique_shaders": 4,
+						"unique_textures": 17
+					},
+					"video_memory_bytes": 30011661,
+					"view": "street",
+					"width": 1280
+				}
+			],
+			"kind": "locked",
+			"surface_kinds": []
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 866,
+					"file": "ion-speedway-authored-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 167.122225,
+					"frame_ms_median": 168.969,
+					"frame_ms_p95": 187.414,
+					"glow": false,
+					"height": 800,
+					"map": "ion-speedway",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 53
+					},
+					"nodes": 424,
+					"phase": "before",
+					"position": [
+						65.0,
+						48.0,
+						70.0
+					],
+					"primitives": 14254,
+					"resources": 91,
+					"target": [
+						0.0,
+						2.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 136704,
+						"unique_materials": 12,
+						"unique_shaders": 3,
+						"unique_textures": 15
+					},
+					"video_memory_bytes": 29469727,
+					"view": "authored",
+					"width": 1280
+				},
+				{
+					"draw_calls": 533,
+					"file": "ion-speedway-street-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 271.046075,
+					"frame_ms_median": 270.578,
+					"frame_ms_p95": 295.59,
+					"glow": false,
+					"height": 800,
+					"map": "ion-speedway",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 53
+					},
+					"nodes": 424,
+					"phase": "before",
+					"position": [
+						0.0,
+						3.0,
+						34.0
+					],
+					"primitives": 10258,
+					"resources": 91,
+					"target": [
+						0.0,
+						3.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 136704,
+						"unique_materials": 12,
+						"unique_shaders": 3,
+						"unique_textures": 15
+					},
+					"video_memory_bytes": 29469727,
+					"view": "street",
+					"width": 1280
+				}
+			],
+			"kind": "locked",
+			"surface_kinds": []
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 195,
+					"file": "aurora-stadium-authored-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 96.68585,
+					"frame_ms_median": 96.383,
+					"frame_ms_p95": 107.094,
+					"glow": false,
+					"height": 800,
+					"map": "aurora-stadium",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 53
+					},
+					"nodes": 88,
+					"phase": "before",
+					"position": [
+						65.0,
+						48.0,
+						70.0
+					],
+					"primitives": 3646,
+					"resources": 91,
+					"target": [
+						0.0,
+						2.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 99328,
+						"unique_materials": 11,
+						"unique_shaders": 3,
+						"unique_textures": 11
+					},
+					"video_memory_bytes": 29211999,
+					"view": "authored",
+					"width": 1280
+				},
+				{
+					"draw_calls": 159,
+					"file": "aurora-stadium-street-1280x800-before.png",
+					"fov": 70.0,
+					"frame_ms_mean": 143.716825,
+					"frame_ms_median": 147.545,
+					"frame_ms_p95": 171.422,
+					"glow": false,
+					"height": 800,
+					"map": "aurora-stadium",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 53
+					},
+					"nodes": 88,
+					"phase": "before",
+					"position": [
+						0.0,
+						3.0,
+						34.0
+					],
+					"primitives": 3214,
+					"resources": 91,
+					"target": [
+						0.0,
+						3.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 99328,
+						"unique_materials": 11,
+						"unique_shaders": 3,
+						"unique_textures": 11
+					},
+					"video_memory_bytes": 29211999,
+					"view": "street",
+					"width": 1280
+				}
+			],
+			"kind": "locked",
+			"surface_kinds": []
+		}
+	],
+	"phase": "before",
+	"renderer": "gl_compatibility",
+	"resolution": [
+		1280,
+		800
+	],
+	"scope": "Fixed-camera material-apply evidence; static inspection, no actors or gameplay.",
+	"views_total": 42
+}

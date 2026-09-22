@@ -1,5 +1,18 @@
 extends "res://cinder_array/map.gd"
 const DM = preload("res://native_arenas/maps/geometry.gd")
+const EnvironmentStyle = preload("res://world/environment_style.gd")
+# Volcanic kit: oxidised/scorched metal decks, brushed steel rails, a rust
+# hazard band for the orange service steel and scoured basalt for the rock.
+# The gold/ivory/teal/lamp/rust marker colours and the lava/strata shaders stay
+# authored: they are beacons, molten rock and strata, not surfaces.
+const ROLES := {
+	"deck": {"role": "grating", "options": {"tiles_per_metre": 0.9}},
+	"metal": {"role": "rail"},
+	"dark": {"role": "prop", "options": {"metallic": 0.5}},
+	"orange": {"role": "hazard", "options": {"tiles_per_metre": 1.4, "lut_gain": 0.12}},
+	"rock": {"role": "ash", "options": {"albedo_gain": 12.0, "tiles_per_metre": 0.30}},
+}
+var material_plan: Dictionary = {}
 var dm_built := false
 var collider_sources: Array = []
 
@@ -8,6 +21,10 @@ func get_arena_id() -> String:
 
 func configure_dm() -> void:
 	build()
+
+func _make_materials() -> void:
+	super._make_materials()
+	material_plan = EnvironmentStyle.apply_roles(materials, ROLES, get_arena_id())
 
 func build() -> void:
 	if dm_built: return

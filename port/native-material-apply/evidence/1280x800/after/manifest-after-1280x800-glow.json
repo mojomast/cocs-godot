@@ -1,0 +1,97 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"engine": "4.5.2-stable (official)",
+	"glow": true,
+	"maps": [
+		{
+			"cameras": [
+				{
+					"draw_calls": 415,
+					"file": "ember-crucible-authored-1280x800-after-glow.png",
+					"fov": 70.0,
+					"frame_ms_mean": 31.009975,
+					"frame_ms_median": 31.268,
+					"frame_ms_p95": 36.273,
+					"glow": true,
+					"height": 800,
+					"map": "ember-crucible",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 40
+					},
+					"nodes": 170,
+					"phase": "after",
+					"position": [
+						65.0,
+						48.0,
+						70.0
+					],
+					"primitives": 15158,
+					"resources": 77,
+					"target": [
+						0.0,
+						2.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 291840,
+						"unique_materials": 16,
+						"unique_shaders": 4,
+						"unique_textures": 30
+					},
+					"video_memory_bytes": 17071077,
+					"view": "authored",
+					"width": 1280
+				},
+				{
+					"draw_calls": 436,
+					"file": "ember-crucible-street-1280x800-after-glow.png",
+					"fov": 70.0,
+					"frame_ms_mean": 48.1259,
+					"frame_ms_median": 47.799,
+					"frame_ms_p95": 55.172,
+					"glow": true,
+					"height": 800,
+					"map": "ember-crucible",
+					"moth_cache": {
+						"limit": 128,
+						"textures": 40
+					},
+					"nodes": 170,
+					"phase": "after",
+					"position": [
+						0.0,
+						3.0,
+						34.0
+					],
+					"primitives": 16410,
+					"resources": 77,
+					"target": [
+						0.0,
+						3.0,
+						0.0
+					],
+					"textures": {
+						"texture_bytes_rgba8": 291840,
+						"unique_materials": 16,
+						"unique_shaders": 4,
+						"unique_textures": 30
+					},
+					"video_memory_bytes": 17071077,
+					"view": "street",
+					"width": 1280
+				}
+			],
+			"kind": "locked",
+			"surface_kinds": []
+		}
+	],
+	"phase": "after",
+	"renderer": "gl_compatibility",
+	"resolution": [
+		1280,
+		800
+	],
+	"scope": "Fixed-camera material-apply evidence; static inspection, no actors or gameplay.",
+	"views_total": 2
+}

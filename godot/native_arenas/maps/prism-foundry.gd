@@ -1,5 +1,21 @@
 extends "res://showcase/demo.gd"
 const DM = preload("res://native_arenas/maps/geometry.gd")
+const EnvironmentStyle = preload("res://world/environment_style.gd")
+# Surface roles for this arena's own material keys. The tint stays whatever
+# `_make_materials` authored; the family supplies base + baked bump + finish.
+const ROLES := {
+	"concrete": {"role": "wall"},
+	"warm": {"role": "wall-stucco"},
+	"floor": {"role": "floor-built"},
+	"dark": {"role": "prop", "options": {"metallic": 0.45}},
+	"metal": {"role": "rail"},
+	"copper": {"role": "pipe"},
+	"tread": {"role": "grating"},
+	"sand": {"role": "sand"},
+	"rock": {"role": "rock"},
+	"foliage": {"role": "foliage"},
+}
+var material_plan: Dictionary = {}
 var built := false
 var collider_sources: Array = []
 
@@ -11,6 +27,12 @@ func get_arena_id() -> String:
 
 func configure_dm() -> void:
 	build()
+
+## Applied inside `build()` before any geometry is created, so every surface in
+## the arena (including the DM additions below) uses the family material.
+func _make_materials() -> void:
+	super._make_materials()
+	material_plan = EnvironmentStyle.apply_roles(materials, ROLES, get_arena_id())
 
 func build() -> void:
 	if built: return

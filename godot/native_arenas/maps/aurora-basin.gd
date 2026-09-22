@@ -1,5 +1,21 @@
 extends "res://aurora_basin/map.gd"
 const DM = preload("res://native_arenas/maps/geometry.gd")
+const EnvironmentStyle = preload("res://world/environment_style.gd")
+# Polar kit: ice for snow/ice/lake, grating for the crown deck, brushed alloy
+# for the station metal. Tints stay the basin's authored palette. The dark,
+# teal and warm marker colours and the fissure shader stay authored: they are
+# beacons/water, not surfaces.
+const ROLES := {
+	"snow": {"role": "snow", "options": {"tiles_per_metre": 0.26, "texture_strength": 0.30, "albedo_gain": 8.0, "normal_strength": 0.16, "roughness": 0.88, "lut_gain": 0.0}},
+	"ice": {"role": "ice", "options": {"albedo_gain": 2.1}},
+	"lake": {"role": "ice", "options": {"tiles_per_metre": 0.26, "texture_strength": 0.30, "albedo_gain": 2.4, "roughness": 0.27, "metallic": 0.15}},
+	"deck": {"role": "grating", "options": {"tiles_per_metre": 0.9}},
+	"metal": {"role": "rail"},
+	"shell": {"role": "wall", "options": {"albedo_gain": 1.5}},
+	"gold": {"role": "rail", "options": {"metallic": 0.55, "roughness": 0.42}},
+}
+var material_plan: Dictionary = {}
+var moth_cache_after: Dictionary = {}
 var dm_built := false
 var collider_sources: Array = []
 
@@ -11,6 +27,13 @@ func get_arena_id() -> String:
 
 func configure_dm() -> void:
 	build()
+
+func _make_materials() -> void:
+	super._make_materials()
+	material_plan = EnvironmentStyle.apply_roles(materials, ROLES, get_arena_id())
+	# The basin gate budgets the inherited Moth texture cache; record what this
+	# pass left in it for the arena's own diagnostics.
+	moth_cache_after = Library.cache_stats()
 
 func terrain_height(x: float, z: float) -> float:
 	# A shallow snow datum removes the exploration loop's 32cm cliff lip.

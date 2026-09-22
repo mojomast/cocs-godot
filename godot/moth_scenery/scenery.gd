@@ -7,6 +7,7 @@ const Library = preload("res://moth/library.gd")
 const Profiles = preload("res://moth_scenery/profiles.gd")
 const PanelShader = preload("res://moth_scenery/panel.gdshader")
 const MoteShader = preload("res://moth_scenery/motes.gdshader")
+const MaterialLanguage = preload("res://material_language/library.gd")
 enum Detail { OFF, LOW, FULL }
 const OWNER_META := "moth_scenery_owner"
 const FACE_OFFSET := 0.032
@@ -21,6 +22,7 @@ const WALLS := ["building", "base-wall", "base-hq", "base-bastion", "wall", "dam
 var _profile: Dictionary = {}
 var _plates: Array[Dictionary] = []
 var _pockets: Array[Dictionary] = []
+var _panel_normals: Dictionary = {}
 var _detail := -1
 var _clock := -1.0
 var _counts: Dictionary = {}
@@ -91,6 +93,13 @@ func set_detail(level: int) -> void:
 func stats() -> Dictionary:
 	return _counts.duplicate(true)
 
+## Which baked (or derived) normal each mounted plate kind resolved to, for the
+## coverage evidence: the material language decides, this only reports it.
+func normal_report() -> Dictionary:
+	var report: Dictionary = {}
+	for kind: String in _panel_normals: report[kind] = _panel_normals[kind]
+	return report
+
 func placement_snapshot() -> Dictionary:
 	# Diagnostics are caller-owned; no reference to the source dictionary is kept.
 	return {"plates": _plates.duplicate(true), "pockets": _pockets.duplicate(true)}
@@ -131,33 +140,43 @@ func _panel_material(kind: String) -> ShaderMaterial:
 	material.shader = PanelShader
 	var texture_key: String = _profile.panel
 	var normal_key := "holographic_grid"
+	var normal_depth := 0.16
 	var style := 0
 	match kind:
 		"circuit":
 			texture_key = "circuit_board-etch"
 			normal_key = "metal"
+			normal_depth = 0.18
 			style = 1
 		"feed":
 			texture_key = "circuit_board"
 			normal_key = "metal"
+			normal_depth = 0.18
 			style = 1
 		"vent":
 			texture_key = "corrugated_metal"
 			normal_key = "corrugated_metal"
+			normal_depth = 0.24
 			style = 2
 		"strip":
 			texture_key = "holographic_grid"
+			normal_depth = 0.10
 			style = 3
 		"inlay":
 			texture_key = "alien_chitin"
 			normal_key = "rough_stucco"
+			normal_depth = 0.12
 			style = 4
 	material.set_shader_parameter("baked_tile", Library.texture(texture_key))
 	material.set_shader_parameter("circuit_tile", Library.texture("circuit_board" if kind == "feed" else "circuit_board-etch"))
 	material.set_shader_parameter("housing_tile", Library.texture("carbon_fiber" if kind in ["circuit", "feed"] else "brushed_metal"))
-	var normal := Library.normal(normal_key)
+	# Baked bump first, derived bump when the bake has none: the plate normal is
+	# resolved by the material language, not by a per-plate choice here.
+	var normal := MaterialLanguage.normal_map(normal_key)
 	material.set_shader_parameter("normal_tile", normal)
 	material.set_shader_parameter("has_normal", normal != null)
+	material.set_shader_parameter("normal_depth", normal_depth)
+	_panel_normals[kind] = {"key": normal_key, "resolved": "missing" if normal == null else ("derived" if normal == MaterialLanguage.derived(normal_key) else "baked"), "depth": normal_depth}
 	var lut := Library.material_lut(_profile.lut)
 	material.set_shader_parameter("has_lut", not lut.is_empty())
 	if not lut.is_empty():

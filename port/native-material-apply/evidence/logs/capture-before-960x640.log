@@ -1,0 +1,22 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MATERIAL_APPLY_CAPTURE {"maps":1,"phase":"before","size":[960,640],"views":4}
+MATERIAL_APPLY_CAPTURE {"maps":2,"phase":"before","size":[960,640],"views":8}
+MATERIAL_APPLY_CAPTURE {"maps":3,"phase":"before","size":[960,640],"views":12}
+MATERIAL_APPLY_CAPTURE {"maps":4,"phase":"before","size":[960,640],"views":16}
+MATERIAL_APPLY_CAPTURE {"maps":5,"phase":"before","size":[960,640],"views":20}
+MATERIAL_APPLY_CAPTURE {"maps":6,"phase":"before","size":[960,640],"views":24}
+MATERIAL_APPLY_CAPTURE {"maps":7,"phase":"before","size":[960,640],"views":26}
+MATERIAL_APPLY_CAPTURE {"maps":8,"phase":"before","size":[960,640],"views":28}
+MATERIAL_APPLY_CAPTURE {"maps":9,"phase":"before","size":[960,640],"views":30}
+MATERIAL_APPLY_CAPTURE {"maps":10,"phase":"before","size":[960,640],"views":32}
+MATERIAL_APPLY_CAPTURE {"maps":11,"phase":"before","size":[960,640],"views":34}
+MATERIAL_APPLY_CAPTURE {"maps":12,"phase":"before","size":[960,640],"views":36}
+MATERIAL_APPLY_CAPTURE {"maps":13,"phase":"before","size":[960,640],"views":38}
+MATERIAL_APPLY_CAPTURE {"maps":14,"phase":"before","size":[960,640],"views":40}
+MATERIAL_APPLY_CAPTURE {"maps":15,"phase":"before","size":[960,640],"views":42}
+MATERIAL_APPLY_CAPTURE {"maps":15,"phase":"before","size":[960,640],"views":42}
+MATERIAL_APPLY_CAPTURE_DONE {"glow":false,"maps":15,"phase":"before","size":[960,640],"views":42}

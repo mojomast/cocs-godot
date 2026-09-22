@@ -1,0 +1,14 @@
+{
+  "before": {
+    "prism-foundry": "c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13",
+    "aurora-basin": "94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d",
+    "cinder-array": "f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca"
+  },
+  "after": {
+    "prism-foundry": "c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13",
+    "aurora-basin": "94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d",
+    "cinder-array": "f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca"
+  },
+  "identical": true,
+  "command": "node --test port/native-arenas/tests/actual-maps.mjs"
+}

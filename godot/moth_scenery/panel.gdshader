@@ -11,6 +11,7 @@ uniform sampler2D lut_t : filter_linear, repeat_enable;
 uniform vec4 tint : source_color = vec4(0.5, 0.6, 0.6, 1.0);
 uniform vec4 light_tint : source_color = vec4(0.7, 0.7, 0.6, 1.0);
 uniform bool has_normal = false;
+uniform float normal_depth = 0.16;
 uniform bool has_lut = false;
 uniform float lut_strength = 0.10;
 uniform float emission_strength = 0.24;
@@ -69,7 +70,7 @@ void fragment() {
 	}
 	if (has_normal) {
 		NORMAL_MAP = texture(normal_tile, UV).rgb;
-		NORMAL_MAP_DEPTH = 0.16 * interior;
+		NORMAL_MAP_DEPTH = normal_depth * interior;
 	}
 	ROUGHNESS = style == 2 ? 0.78 : 0.56;
 	METALLIC = 0.22;

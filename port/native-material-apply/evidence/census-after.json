@@ -1,0 +1,581 @@
+{
+	"cache": {
+		"limit": 128,
+		"textures": 32
+	},
+	"coverage": {
+		"derived": 28,
+		"families": 8,
+		"materials": 5,
+		"normals": 13,
+		"textures": 25,
+		"unused_total": 11
+	},
+	"derived_cache": {
+		"keys": 28,
+		"limit": 64,
+		"textures": 20
+	},
+	"engine": "4.5.2-stable (official)",
+	"library": {
+		"clock": -1.0,
+		"engine_clock": true,
+		"limit": 96,
+		"materials": 64,
+		"misses": 0,
+		"rejected": 0
+	},
+	"library_budget": {
+		"bytes_measurement": "PNG length on disk; vram is IHDR RGBA8 plus a third for mipmaps",
+		"derived_cache": {
+			"keys": 28,
+			"limit": 64,
+			"textures": 28
+		},
+		"draw_calls_added": 0,
+		"families": 8,
+		"material_cap": 96,
+		"materials_cached": 64,
+		"moth_cache": {
+			"limit": 128,
+			"textures": 51
+		},
+		"per_family": {
+			"bioluminescent-membrane": {
+				"bases": [
+					"alien_chitin",
+					"macro-organic"
+				],
+				"bytes": 36679,
+				"paths": [
+					"res://moth/generated/textures/alien_chitin.png",
+					"res://moth/derived/data/alien_chitin.png",
+					"res://moth/derived/normals/alien_chitin.png",
+					"res://moth/generated/textures/flow-field.png",
+					"res://moth/generated/materials/entanglement-arcane-r.png",
+					"res://moth/generated/materials/entanglement-arcane-t.png",
+					"res://moth/generated/normals/grass.png",
+					"res://moth/generated/textures/macro-organic.png",
+					"res://moth/derived/data/macro-organic.png",
+					"res://moth/generated/normals/rough_stucco.png"
+				],
+				"unique_textures": 10,
+				"variants": 4,
+				"vram_bytes": 148136
+			},
+			"brushed-alloy": {
+				"bases": [
+					"brushed_metal",
+					"circuit_board-etch",
+					"metal_grating",
+					"diamond_plate"
+				],
+				"bytes": 51646,
+				"paths": [
+					"res://moth/generated/textures/brushed_metal.png",
+					"res://moth/derived/data/brushed_metal.png",
+					"res://moth/generated/normals/metal.png",
+					"res://moth/generated/materials/entanglement-r.png",
+					"res://moth/generated/materials/entanglement-t.png",
+					"res://moth/generated/textures/circuit_board-etch.png",
+					"res://moth/derived/data/circuit_board-etch.png",
+					"res://moth/derived/masks/circuit_board.png",
+					"res://moth/generated/textures/metal_grating.png",
+					"res://moth/derived/data/metal_grating.png",
+					"res://moth/generated/normals/metal_grating.png",
+					"res://moth/generated/textures/diamond_plate.png",
+					"res://moth/derived/data/diamond_plate.png",
+					"res://moth/generated/normals/diamond_plate.png"
+				],
+				"unique_textures": 14,
+				"variants": 4,
+				"vram_bytes": 171347
+			},
+			"enamel-glaze": {
+				"bases": [
+					"hex_paneling",
+					"ice-cracked",
+					"weathered_concrete-damp",
+					"rough_stucco-weathered"
+				],
+				"bytes": 53051,
+				"paths": [
+					"res://moth/generated/textures/hex_paneling.png",
+					"res://moth/derived/data/hex_paneling.png",
+					"res://moth/generated/normals/holographic_grid.png",
+					"res://moth/generated/materials/entanglement-ceramic-r.png",
+					"res://moth/generated/materials/entanglement-ceramic-t.png",
+					"res://moth/generated/textures/ice-cracked.png",
+					"res://moth/derived/data/ice-cracked.png",
+					"res://moth/generated/normals/ice.png",
+					"res://moth/generated/textures/weathered_concrete-damp.png",
+					"res://moth/derived/data/weathered_concrete-damp.png",
+					"res://moth/generated/normals/weathered_concrete.png",
+					"res://moth/generated/textures/rough_stucco-weathered.png",
+					"res://moth/derived/data/rough_stucco-weathered.png",
+					"res://moth/generated/normals/rough_stucco.png"
+				],
+				"unique_textures": 14,
+				"variants": 4,
+				"vram_bytes": 188412
+			},
+			"hazard-industrial": {
+				"bases": [
+					"hazard_stripes",
+					"corrugated_metal",
+					"diamond_plate",
+					"metal_grating"
+				],
+				"bytes": 58120,
+				"paths": [
+					"res://moth/generated/textures/hazard_stripes.png",
+					"res://moth/derived/data/hazard_stripes.png",
+					"res://moth/generated/normals/hazard_stripes.png",
+					"res://moth/derived/masks/hazard_stripes.png",
+					"res://moth/generated/textures/flow-field.png",
+					"res://moth/generated/materials/entanglement-ember-r.png",
+					"res://moth/generated/materials/entanglement-ember-t.png",
+					"res://moth/generated/textures/corrugated_metal.png",
+					"res://moth/derived/data/corrugated_metal.png",
+					"res://moth/generated/normals/corrugated_metal.png",
+					"res://moth/generated/textures/diamond_plate.png",
+					"res://moth/derived/data/diamond_plate.png",
+					"res://moth/generated/normals/diamond_plate.png",
+					"res://moth/generated/textures/metal_grating.png",
+					"res://moth/derived/data/metal_grating.png",
+					"res://moth/generated/normals/metal_grating.png"
+				],
+				"unique_textures": 16,
+				"variants": 4,
+				"vram_bytes": 179539
+			},
+			"oxidised-copper": {
+				"bases": [
+					"metal-oxide",
+					"metal",
+					"riveted_armor",
+					"riveted_armor-scorched"
+				],
+				"bytes": 63655,
+				"paths": [
+					"res://moth/generated/textures/metal-oxide.png",
+					"res://moth/derived/data/metal-oxide.png",
+					"res://moth/generated/normals/metal_grating.png",
+					"res://moth/generated/materials/entanglement-void-r.png",
+					"res://moth/generated/materials/entanglement-void-t.png",
+					"res://moth/generated/textures/metal.png",
+					"res://moth/derived/data/metal.png",
+					"res://moth/generated/textures/riveted_armor.png",
+					"res://moth/derived/data/riveted_armor.png",
+					"res://moth/derived/normals/riveted_armor.png",
+					"res://moth/generated/textures/riveted_armor-scorched.png",
+					"res://moth/derived/data/riveted_armor-scorched.png"
+				],
+				"unique_textures": 12,
+				"variants": 4,
+				"vram_bytes": 184317
+			},
+			"pearl-ceramic": {
+				"bases": [
+					"hex_paneling-mottle",
+					"weathered_concrete",
+					"hex_paneling",
+					"weathered_concrete-worn"
+				],
+				"bytes": 49331,
+				"paths": [
+					"res://moth/generated/textures/hex_paneling-mottle.png",
+					"res://moth/derived/data/hex_paneling-mottle.png",
+					"res://moth/generated/normals/hex_paneling.png",
+					"res://moth/generated/materials/entanglement-ceramic-r.png",
+					"res://moth/generated/materials/entanglement-ceramic-t.png",
+					"res://moth/generated/textures/weathered_concrete.png",
+					"res://moth/derived/data/weathered_concrete.png",
+					"res://moth/generated/normals/weathered_concrete.png",
+					"res://moth/generated/textures/hex_paneling.png",
+					"res://moth/derived/data/hex_paneling.png",
+					"res://moth/generated/textures/weathered_concrete-worn.png",
+					"res://moth/derived/data/weathered_concrete-worn.png"
+				],
+				"unique_textures": 12,
+				"variants": 4,
+				"vram_bytes": 177490
+			},
+			"polar-ice": {
+				"bases": [
+					"ice-cracked",
+					"ice"
+				],
+				"bytes": 24503,
+				"paths": [
+					"res://moth/generated/textures/ice-cracked.png",
+					"res://moth/derived/data/ice-cracked.png",
+					"res://moth/generated/normals/ice.png",
+					"res://moth/generated/materials/entanglement-r.png",
+					"res://moth/generated/materials/entanglement-t.png",
+					"res://moth/generated/textures/ice.png",
+					"res://moth/derived/data/ice.png"
+				],
+				"unique_textures": 7,
+				"variants": 2,
+				"vram_bytes": 98985
+			},
+			"regolith": {
+				"bases": [
+					"sand",
+					"rock-moss",
+					"rock",
+					"grass"
+				],
+				"bytes": 45655,
+				"paths": [
+					"res://moth/generated/textures/sand.png",
+					"res://moth/derived/data/sand.png",
+					"res://moth/generated/normals/sand.png",
+					"res://moth/generated/materials/entanglement-void-r.png",
+					"res://moth/generated/materials/entanglement-void-t.png",
+					"res://moth/generated/textures/rock-moss.png",
+					"res://moth/derived/data/rock-moss.png",
+					"res://moth/generated/normals/rock.png",
+					"res://moth/generated/textures/rock.png",
+					"res://moth/derived/data/rock.png",
+					"res://moth/generated/textures/grass.png",
+					"res://moth/derived/data/grass.png",
+					"res://moth/generated/normals/grass.png"
+				],
+				"unique_textures": 13,
+				"variants": 4,
+				"vram_bytes": 202065
+			}
+		},
+		"samplers_per_material": 7,
+		"shaders": 1,
+		"shared_materials_only": true,
+		"total_bytes": 382640,
+		"total_vram_bytes": 1350291,
+		"unique_textures": 76,
+		"variants": 22
+	},
+	"maps": [
+		{
+			"census": {
+				"derived": {
+					"keys": 28,
+					"limit": 64,
+					"textures": 8
+				},
+				"materials": 15,
+				"moth": {
+					"limit": 128,
+					"textures": 27
+				},
+				"shaders": [
+					"res://material_language/family.gdshader",
+					"res://showcase/coolant.gdshader",
+					"res://showcase/prism.gdshader"
+				],
+				"texture_bytes_rgba8": 313856,
+				"textures": 30
+			},
+			"id": "prism-foundry",
+			"kind": "arena"
+		},
+		{
+			"census": {
+				"derived": {
+					"keys": 28,
+					"limit": 64,
+					"textures": 9
+				},
+				"materials": 12,
+				"moth": {
+					"limit": 128,
+					"textures": 16
+				},
+				"shaders": [
+					"res://aurora_basin/aurora.gdshader",
+					"res://aurora_basin/fissure.gdshader",
+					"res://material_language/family.gdshader"
+				],
+				"texture_bytes_rgba8": 145920,
+				"textures": 16
+			},
+			"id": "aurora-basin",
+			"kind": "arena"
+		},
+		{
+			"census": {
+				"derived": {
+					"keys": 28,
+					"limit": 64,
+					"textures": 12
+				},
+				"materials": 10,
+				"moth": {
+					"limit": 128,
+					"textures": 22
+				},
+				"shaders": [
+					"res://cinder_array/molten.gdshader",
+					"res://cinder_array/strata.gdshader",
+					"res://material_language/family.gdshader"
+				],
+				"texture_bytes_rgba8": 194560,
+				"textures": 22
+			},
+			"id": "cinder-array",
+			"kind": "arena"
+		},
+		{
+			"census": {
+				"derived": {
+					"keys": 28,
+					"limit": 64,
+					"textures": 14
+				},
+				"materials": 6,
+				"moth": {
+					"limit": 128,
+					"textures": 20
+				},
+				"shaders": [
+					"res://material_language/family.gdshader"
+				],
+				"texture_bytes_rgba8": 223744,
+				"textures": 23
+			},
+			"geometry": {
+				"blocks": 18,
+				"build_ms": 26.771,
+				"detail_batches": 2,
+				"detail_instances": 48,
+				"fx": {
+					"active_emitters": 6,
+					"allocated": 2560,
+					"backend": "GPUParticles3D",
+					"budget": 32768,
+					"emitters": 6,
+					"gameplay_authority": false,
+					"gate_distance": 26.0,
+					"paused": false,
+					"per_frame_allocation": false,
+					"quality": "High",
+					"submitted_particles": 2560,
+					"suspended": false,
+					"texture_bytes": 0
+				},
+				"geometry_hash": "a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9",
+				"graybox": false,
+				"material_cells": 71,
+				"nodes": 117,
+				"surfaces": 5,
+				"texture_bytes": 223744,
+				"triangles": 5714,
+				"walls": 20
+			},
+			"id": "lacuna-court",
+			"kind": "identity"
+		},
+		{
+			"census": {
+				"derived": {
+					"keys": 28,
+					"limit": 64,
+					"textures": 16
+				},
+				"materials": 5,
+				"moth": {
+					"limit": 128,
+					"textures": 16
+				},
+				"shaders": [
+					"res://material_language/family.gdshader"
+				],
+				"texture_bytes_rgba8": 177152,
+				"textures": 19
+			},
+			"geometry": {
+				"blocks": 14,
+				"build_ms": 33.854,
+				"detail_batches": 2,
+				"detail_instances": 52,
+				"fx": {
+					"active_emitters": 6,
+					"allocated": 650,
+					"backend": "GPUParticles3D",
+					"budget": 32768,
+					"emitters": 6,
+					"gameplay_authority": false,
+					"gate_distance": 26.0,
+					"paused": false,
+					"per_frame_allocation": false,
+					"quality": "High",
+					"submitted_particles": 650,
+					"suspended": false,
+					"texture_bytes": 0
+				},
+				"geometry_hash": "6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a",
+				"graybox": false,
+				"material_cells": 66,
+				"nodes": 84,
+				"surfaces": 1,
+				"texture_bytes": 177152,
+				"triangles": 8150,
+				"walls": 0
+			},
+			"id": "vermilion-fold",
+			"kind": "identity"
+		},
+		{
+			"census": {
+				"derived": {
+					"keys": 28,
+					"limit": 64,
+					"textures": 16
+				},
+				"materials": 6,
+				"moth": {
+					"limit": 128,
+					"textures": 20
+				},
+				"shaders": [
+					"res://material_language/family.gdshader"
+				],
+				"texture_bytes_rgba8": 209408,
+				"textures": 23
+			},
+			"geometry": {
+				"blocks": 11,
+				"build_ms": 39.824,
+				"detail_batches": 2,
+				"detail_instances": 38,
+				"fx": {
+					"active_emitters": 7,
+					"allocated": 2450,
+					"backend": "GPUParticles3D",
+					"budget": 32768,
+					"emitters": 7,
+					"gameplay_authority": false,
+					"gate_distance": 26.0,
+					"paused": false,
+					"per_frame_allocation": false,
+					"quality": "High",
+					"submitted_particles": 2450,
+					"suspended": false,
+					"texture_bytes": 0
+				},
+				"geometry_hash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+				"graybox": false,
+				"material_cells": 94,
+				"movement_fences": 42,
+				"nodes": 235,
+				"surfaces": 1,
+				"texture_bytes": 209408,
+				"triangles": 8498,
+				"walls": 168
+			},
+			"id": "nacre-engine",
+			"kind": "identity"
+		},
+		{
+			"census": {
+				"derived": {
+					"keys": 28,
+					"limit": 64,
+					"textures": 18
+				},
+				"materials": 19,
+				"moth": {
+					"limit": 128,
+					"textures": 33
+				},
+				"shaders": [
+					"res://graphics_atmosphere/distant_ground.gdshader",
+					"res://material_language/family.gdshader",
+					"res://moth/surface.gdshader",
+					"res://moth_scenery/motes.gdshader",
+					"res://moth_scenery/panel.gdshader"
+				],
+				"surface_kinds": [],
+				"texture_bytes_rgba8": 370176,
+				"textures": 41
+			},
+			"id": "meridian-exchange",
+			"kind": "locked"
+		},
+		{
+			"census": {
+				"derived": {
+					"keys": 28,
+					"limit": 64,
+					"textures": 20
+				},
+				"materials": 19,
+				"moth": {
+					"limit": 128,
+					"textures": 31
+				},
+				"shaders": [
+					"res://graphics_atmosphere/distant_ground.gdshader",
+					"res://material_language/family.gdshader",
+					"res://moth/surface.gdshader",
+					"res://moth_scenery/motes.gdshader",
+					"res://moth_scenery/panel.gdshader"
+				],
+				"surface_kinds": [],
+				"texture_bytes_rgba8": 340992,
+				"textures": 33
+			},
+			"id": "ember-crucible",
+			"kind": "locked"
+		},
+		{
+			"census": {
+				"derived": {
+					"keys": 28,
+					"limit": 64,
+					"textures": 20
+				},
+				"materials": 13,
+				"moth": {
+					"limit": 128,
+					"textures": 36
+				},
+				"shaders": [
+					"res://graphics_atmosphere/distant_ground.gdshader",
+					"res://material_language/family.gdshader",
+					"res://moth_scenery/panel.gdshader"
+				],
+				"surface_kinds": [],
+				"texture_bytes_rgba8": 265728,
+				"textures": 34
+			},
+			"id": "ion-speedway",
+			"kind": "locked"
+		},
+		{
+			"census": {
+				"derived": {
+					"keys": 28,
+					"limit": 64,
+					"textures": 20
+				},
+				"materials": 13,
+				"moth": {
+					"limit": 128,
+					"textures": 32
+				},
+				"shaders": [
+					"res://graphics_atmosphere/distant_ground.gdshader",
+					"res://material_language/family.gdshader",
+					"res://moth_scenery/panel.gdshader"
+				],
+				"surface_kinds": [],
+				"texture_bytes_rgba8": 295936,
+				"textures": 34
+			},
+			"id": "aurora-stadium",
+			"kind": "locked"
+		}
+	]
+}
