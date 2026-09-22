@@ -1,0 +1,2228 @@
+{
+  "method": "literal substring scan of godot/**/*.{gd,gdshader,gdshaderinc,tscn,tres}; conservative lower bound",
+  "generated_at_manifest": "80dc8c0eb1ea8d78ce91b5775a0cb2cf71f549b4b63384a11290f389d20f3eb6",
+  "totals": {
+    "keys": 64,
+    "referenced": 61,
+    "unreferenced": 3,
+    "coverage": 95.3,
+    "strict_referenced": 61,
+    "strict_coverage": 95.3,
+    "derived_keys": 28,
+    "derived_referenced": 4
+  },
+  "buckets": {
+    "textures": {
+      "alien_chitin": {
+        "literal": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "moth_scenery/scenery.gd",
+          "tests/material_language/validate.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "moth_scenery/scenery.gd",
+          "tests/material_language/validate.gd"
+        ]
+      },
+      "brushed_metal": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "cinder_array/map.gd",
+          "combat_pickup_assets/pickup_visual.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "aurora_basin/map.gd",
+          "cinder_array/map.gd",
+          "combat_pickup_assets/pickup_visual.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "carbon_fiber": {
+        "literal": [
+          "moth_scenery/scenery.gd"
+        ],
+        "strict": [
+          "moth_scenery/scenery.gd"
+        ]
+      },
+      "circuit_board": {
+        "literal": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "moth_scenery/scenery.gd",
+          "shader_lab/factory.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "moth_scenery/scenery.gd",
+          "shader_lab/factory.gd"
+        ]
+      },
+      "circuit_board-etch": {
+        "literal": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "moth_scenery/scenery.gd",
+          "shader_lab/factory.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "moth_scenery/scenery.gd",
+          "shader_lab/factory.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "corrugated_metal": {
+        "literal": [
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd"
+        ]
+      },
+      "diamond_plate": {
+        "literal": [
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "dust-field": {
+        "literal": [
+          "cinder_array/map.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd"
+        ],
+        "strict": [
+          "cinder_array/map.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd"
+        ]
+      },
+      "flow-field": {
+        "literal": [
+          "blood_fx/controller.gd",
+          "cinder_array/map.gd",
+          "combat_particles/manager.gd",
+          "combat_pickup_assets/pickup_visual.gd",
+          "material_language/library.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "particle_lab/field.gd",
+          "particle_lab/trajectories.gdshaderinc",
+          "shader_lab/factory.gd",
+          "showcase/demo.gd",
+          "tests/particle_lab/verify.gd"
+        ],
+        "strict": [
+          "blood_fx/controller.gd",
+          "cinder_array/map.gd",
+          "combat_particles/manager.gd",
+          "combat_pickup_assets/pickup_visual.gd",
+          "material_language/library.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "particle_lab/field.gd",
+          "particle_lab/trajectories.gdshaderinc",
+          "shader_lab/factory.gd",
+          "showcase/demo.gd",
+          "tests/particle_lab/verify.gd"
+        ]
+      },
+      "grass": {
+        "literal": [
+          "material_language/families.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd",
+          "world/viewer.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "hazard_stripes": {
+        "literal": [
+          "material_language/families.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "hex_paneling": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "showcase/demo.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "hex_paneling-mottle": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "aurora_basin/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "holographic_grid": {
+        "literal": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "moth_scenery/scenery.gd",
+          "shader_lab/factory.gd",
+          "tests/shader_lab/validate.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "moth_scenery/scenery.gd",
+          "shader_lab/factory.gd",
+          "tests/shader_lab/validate.gd"
+        ]
+      },
+      "ice": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "blood_fx/surface_query.gd",
+          "cinder_array/geometry.gd",
+          "cinder_array/map.gd",
+          "combat_particles/manager.gd",
+          "combat_particles/occupancy.gd",
+          "combat_particles/simulation.gdshader",
+          "combat_shields/controller.gd",
+          "combined_arms/demo.gd",
+          "combined_arms/hud.gd",
+          "first_person/generated/catalog.gd",
+          "identity_maps/map.gd",
+          "identity_maps/style.gd",
+          "lattice/board.gd",
+          "lattice/board.tscn",
+          "lattice/transport.gd",
+          "lattice/world_commands.gd",
+          "lattice/world_demo.gd",
+          "lattice/world_demo.tscn",
+          "lattice/world_hud.gd",
+          "lattice/world_transport.gd",
+          "material_language/families.gd",
+          "material_language/library.gd",
+          "material_language/sheet.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/detail_control.gd",
+          "moth_scenery/panel.gdshader",
+          "moth_scenery/scenery.gd",
+          "native_arenas/catalog.gd",
+          "native_arenas/maps/aurora-basin.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/geometry.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "net/client.gd",
+          "particle_lab/demo.gd",
+          "particle_lab/frame_metrics.gd",
+          "player_fx/director.gd",
+          "player_fx/impacts.gd",
+          "player_fx/surface.gd",
+          "player_models/builder.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "showcase/demo.gd",
+          "sports/demo.gd",
+          "sports/hud.gd",
+          "sports/practice.gd",
+          "tests/aurora_basin/validate.gd",
+          "tests/blood_fx/contracts.gd",
+          "tests/blood_fx/curve.gd",
+          "tests/blood_fx/render.gd",
+          "tests/blood_fx/spatter.gd",
+          "tests/blood_fx/stress.gd",
+          "tests/blood_fx/surfaces.gd",
+          "tests/combat_expansion_independent/review.gd",
+          "tests/combat_pickup_assets/graphics.gd",
+          "tests/combined_arms/graphics.gd",
+          "tests/first_person/detail.gd",
+          "tests/first_person/framing.gd",
+          "tests/glb_side_import.gd",
+          "tests/graphics_batch/live.gd",
+          "tests/graphics_batch/terrain_contract.gd",
+          "tests/graphics_depth/capture.gd",
+          "tests/graphics_fx/live.gd",
+          "tests/horde/identity_live.gd",
+          "tests/lattice/adapter.gd",
+          "tests/lattice/economy.gd",
+          "tests/lattice/economy_physical.gd",
+          "tests/lattice/map_view.gd",
+          "tests/lattice/map_view_physical.gd",
+          "tests/lattice/physical.gd",
+          "tests/lattice/ui.gd",
+          "tests/lattice/usability_contract.gd",
+          "tests/lattice/usability_observe.gd",
+          "tests/lattice/world_commands_contract.gd",
+          "tests/lattice/world_contract.gd",
+          "tests/lattice/world_coop_live.gd",
+          "tests/lattice/world_walk.gd",
+          "tests/material_language/validate.gd",
+          "tests/moth_scenery/capture.gd",
+          "tests/native_arena_review/probe_visual_collision.gd",
+          "tests/native_arenas/geometry/probe.gd",
+          "tests/native_arenas/session/test.gd",
+          "tests/package_inspect.gd",
+          "tests/particle_lab/capture.gd",
+          "tests/player_fx/capture.gd",
+          "tests/player_fx/impacts.gd",
+          "tests/player_fx/lifecycle.gd",
+          "tests/player_models/baseline.gd",
+          "tests/player_models/geometry.gd",
+          "tests/protocol/audio_feedback.gd",
+          "tests/protocol/control_safety.gd",
+          "tests/protocol/lobby_popup_free.gd",
+          "tests/protocol/lobby_spectator_context.gd",
+          "tests/protocol/match_selection.gd",
+          "tests/protocol/match_selection_menu.gd",
+          "tests/protocol/scoreboard_visual.gd",
+          "tests/protocol/window_focus.gd",
+          "tests/showcase/gallery.gd",
+          "tests/showcase/native_controls.gd",
+          "tests/source_operators/check.gd",
+          "tests/sports/practice_soccer_observe.gd",
+          "tests/sports/practice_test.gd",
+          "ui/lobby_choice.gd",
+          "ui/lobby_menu.gd",
+          "ui/match_setup.gd",
+          "weapon_effects/controller.gd",
+          "world/audio_feedback.gd",
+          "world/combat_feedback.gd",
+          "world/combat_occlusion.gd",
+          "world/environment_style.gd",
+          "world/projectiles.gd",
+          "world/session.gd",
+          "world/viewer.gd"
+        ],
+        "strict": [
+          "aurora_basin/map.gd",
+          "combat_particles/simulation.gdshader",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "native_arenas/maps/aurora-basin.gd",
+          "player_fx/impacts.gd",
+          "player_fx/surface.gd",
+          "tests/player_fx/capture.gd",
+          "tests/player_fx/impacts.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "ice-cracked": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "aurora_basin/map.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "industrial_mesh": {
+        "literal": [],
+        "strict": []
+      },
+      "macro-organic": {
+        "literal": [
+          "material_language/families.gd",
+          "material_language/family.gdshader",
+          "moth/surfaces.gd",
+          "shader_lab/factory.gd",
+          "tests/moth/validate.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "material_language/family.gdshader",
+          "moth/surfaces.gd",
+          "shader_lab/factory.gd",
+          "tests/moth/validate.gd"
+        ]
+      },
+      "metal": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "cinder_array/map.gd",
+          "cinder_array/opaque_surface.gdshader",
+          "combat_pickup_assets/catalog.gd",
+          "combat_pickup_assets/pickup_visual.gd",
+          "identity_maps/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "material_language/family.gdshader",
+          "material_language/gallery.gd",
+          "material_language/library.gd",
+          "moth/surface.gdshader",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "native_arenas/maps/aurora-basin.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/impacts.gd",
+          "player_fx/surface.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "showcase/demo.gd",
+          "source_operators/generated/catalog.gd",
+          "tests/player_fx/capture.gd",
+          "tests/player_fx/impacts.gd",
+          "tests/source_operators/check.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "aurora_basin/map.gd",
+          "cinder_array/map.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "native_arenas/maps/aurora-basin.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/impacts.gd",
+          "player_fx/surface.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "showcase/demo.gd",
+          "tests/player_fx/capture.gd",
+          "tests/player_fx/impacts.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "metal-oxide": {
+        "literal": [
+          "cinder_array/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "cinder_array/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "metal_grating": {
+        "literal": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "riveted_armor": {
+        "literal": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "shader_lab/factory.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "shader_lab/factory.gd"
+        ]
+      },
+      "riveted_armor-scorched": {
+        "literal": [
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "rock": {
+        "literal": [
+          "cinder_array/map.gd",
+          "cinder_array/molten.gdshader",
+          "cinder_array/strata.gdshader",
+          "combat_particles/manager.gd",
+          "combat_particles/simulation.gdshader",
+          "combat_pickup_assets/catalog.gd",
+          "first_person/handling.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "tests/combat_integration/contracts.gd",
+          "tests/combat_particles/contracts.gd",
+          "tests/combat_particles/live.gd",
+          "tests/combat_particles/occlusion.gd",
+          "tests/combat_particles/replay.gd",
+          "tests/combined_arms/graphics.gd",
+          "tests/first_person/live.gd",
+          "tests/moth/gallery.gd",
+          "tests/moth/validate.gd",
+          "tests/player_fx/capture.gd",
+          "tests/protocol/entity_visuals.gd",
+          "tests/protocol/lobby_flow.gd",
+          "tests/protocol/match_selection.gd",
+          "tests/protocol/native_modes_live.gd",
+          "tests/protocol/projectiles.gd",
+          "tests/protocol/team_scores.gd",
+          "tests/protocol/weapon_selection.gd",
+          "ui/match_setup.gd",
+          "world/environment_style.gd",
+          "world/pickup_visual.gd",
+          "world/projectiles.gd",
+          "world/session.gd"
+        ],
+        "strict": [
+          "cinder_array/map.gd",
+          "cinder_array/molten.gdshader",
+          "first_person/handling.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "tests/moth/gallery.gd",
+          "tests/moth/validate.gd",
+          "tests/player_fx/capture.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "rock-moss": {
+        "literal": [
+          "cinder_array/map.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "cinder_array/map.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "rough_stucco": {
+        "literal": [
+          "cinder_array/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "cinder_array/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "rough_stucco-weathered": {
+        "literal": [
+          "cinder_array/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "cinder_array/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "sand": {
+        "literal": [
+          "blood_fx/controller.gd",
+          "graphics_atmosphere/atmosphere.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "material_language/library.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "source_operators/generated/world_weapons/catalog.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "material_language/library.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "weathered_concrete": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "weathered_concrete-damp": {
+        "literal": [
+          "material_language/families.gd",
+          "moth/surfaces.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth/surfaces.gd"
+        ]
+      },
+      "weathered_concrete-worn": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "aurora_basin/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ]
+      }
+    },
+    "normals": {
+      "corrugated_metal": {
+        "literal": [
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd"
+        ]
+      },
+      "diamond_plate": {
+        "literal": [
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "grass": {
+        "literal": [
+          "material_language/families.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd",
+          "world/viewer.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "hazard_stripes": {
+        "literal": [
+          "material_language/families.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "hex_paneling": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "showcase/demo.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "holographic_grid": {
+        "literal": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "moth_scenery/scenery.gd",
+          "shader_lab/factory.gd",
+          "tests/shader_lab/validate.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "moth_scenery/scenery.gd",
+          "shader_lab/factory.gd",
+          "tests/shader_lab/validate.gd"
+        ]
+      },
+      "ice": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "blood_fx/surface_query.gd",
+          "cinder_array/geometry.gd",
+          "cinder_array/map.gd",
+          "combat_particles/manager.gd",
+          "combat_particles/occupancy.gd",
+          "combat_particles/simulation.gdshader",
+          "combat_shields/controller.gd",
+          "combined_arms/demo.gd",
+          "combined_arms/hud.gd",
+          "first_person/generated/catalog.gd",
+          "identity_maps/map.gd",
+          "identity_maps/style.gd",
+          "lattice/board.gd",
+          "lattice/board.tscn",
+          "lattice/transport.gd",
+          "lattice/world_commands.gd",
+          "lattice/world_demo.gd",
+          "lattice/world_demo.tscn",
+          "lattice/world_hud.gd",
+          "lattice/world_transport.gd",
+          "material_language/families.gd",
+          "material_language/library.gd",
+          "material_language/sheet.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/detail_control.gd",
+          "moth_scenery/panel.gdshader",
+          "moth_scenery/scenery.gd",
+          "native_arenas/catalog.gd",
+          "native_arenas/maps/aurora-basin.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/geometry.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "net/client.gd",
+          "particle_lab/demo.gd",
+          "particle_lab/frame_metrics.gd",
+          "player_fx/director.gd",
+          "player_fx/impacts.gd",
+          "player_fx/surface.gd",
+          "player_models/builder.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "showcase/demo.gd",
+          "sports/demo.gd",
+          "sports/hud.gd",
+          "sports/practice.gd",
+          "tests/aurora_basin/validate.gd",
+          "tests/blood_fx/contracts.gd",
+          "tests/blood_fx/curve.gd",
+          "tests/blood_fx/render.gd",
+          "tests/blood_fx/spatter.gd",
+          "tests/blood_fx/stress.gd",
+          "tests/blood_fx/surfaces.gd",
+          "tests/combat_expansion_independent/review.gd",
+          "tests/combat_pickup_assets/graphics.gd",
+          "tests/combined_arms/graphics.gd",
+          "tests/first_person/detail.gd",
+          "tests/first_person/framing.gd",
+          "tests/glb_side_import.gd",
+          "tests/graphics_batch/live.gd",
+          "tests/graphics_batch/terrain_contract.gd",
+          "tests/graphics_depth/capture.gd",
+          "tests/graphics_fx/live.gd",
+          "tests/horde/identity_live.gd",
+          "tests/lattice/adapter.gd",
+          "tests/lattice/economy.gd",
+          "tests/lattice/economy_physical.gd",
+          "tests/lattice/map_view.gd",
+          "tests/lattice/map_view_physical.gd",
+          "tests/lattice/physical.gd",
+          "tests/lattice/ui.gd",
+          "tests/lattice/usability_contract.gd",
+          "tests/lattice/usability_observe.gd",
+          "tests/lattice/world_commands_contract.gd",
+          "tests/lattice/world_contract.gd",
+          "tests/lattice/world_coop_live.gd",
+          "tests/lattice/world_walk.gd",
+          "tests/material_language/validate.gd",
+          "tests/moth_scenery/capture.gd",
+          "tests/native_arena_review/probe_visual_collision.gd",
+          "tests/native_arenas/geometry/probe.gd",
+          "tests/native_arenas/session/test.gd",
+          "tests/package_inspect.gd",
+          "tests/particle_lab/capture.gd",
+          "tests/player_fx/capture.gd",
+          "tests/player_fx/impacts.gd",
+          "tests/player_fx/lifecycle.gd",
+          "tests/player_models/baseline.gd",
+          "tests/player_models/geometry.gd",
+          "tests/protocol/audio_feedback.gd",
+          "tests/protocol/control_safety.gd",
+          "tests/protocol/lobby_popup_free.gd",
+          "tests/protocol/lobby_spectator_context.gd",
+          "tests/protocol/match_selection.gd",
+          "tests/protocol/match_selection_menu.gd",
+          "tests/protocol/scoreboard_visual.gd",
+          "tests/protocol/window_focus.gd",
+          "tests/showcase/gallery.gd",
+          "tests/showcase/native_controls.gd",
+          "tests/source_operators/check.gd",
+          "tests/sports/practice_soccer_observe.gd",
+          "tests/sports/practice_test.gd",
+          "ui/lobby_choice.gd",
+          "ui/lobby_menu.gd",
+          "ui/match_setup.gd",
+          "weapon_effects/controller.gd",
+          "world/audio_feedback.gd",
+          "world/combat_feedback.gd",
+          "world/combat_occlusion.gd",
+          "world/environment_style.gd",
+          "world/projectiles.gd",
+          "world/session.gd",
+          "world/viewer.gd"
+        ],
+        "strict": [
+          "aurora_basin/map.gd",
+          "combat_particles/simulation.gdshader",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "native_arenas/maps/aurora-basin.gd",
+          "player_fx/impacts.gd",
+          "player_fx/surface.gd",
+          "tests/player_fx/capture.gd",
+          "tests/player_fx/impacts.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "metal": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "cinder_array/map.gd",
+          "cinder_array/opaque_surface.gdshader",
+          "combat_pickup_assets/catalog.gd",
+          "combat_pickup_assets/pickup_visual.gd",
+          "identity_maps/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "material_language/family.gdshader",
+          "material_language/gallery.gd",
+          "material_language/library.gd",
+          "moth/surface.gdshader",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "native_arenas/maps/aurora-basin.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/impacts.gd",
+          "player_fx/surface.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "showcase/demo.gd",
+          "source_operators/generated/catalog.gd",
+          "tests/player_fx/capture.gd",
+          "tests/player_fx/impacts.gd",
+          "tests/source_operators/check.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "aurora_basin/map.gd",
+          "cinder_array/map.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "native_arenas/maps/aurora-basin.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/impacts.gd",
+          "player_fx/surface.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "showcase/demo.gd",
+          "tests/player_fx/capture.gd",
+          "tests/player_fx/impacts.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "metal_grating": {
+        "literal": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "rock": {
+        "literal": [
+          "cinder_array/map.gd",
+          "cinder_array/molten.gdshader",
+          "cinder_array/strata.gdshader",
+          "combat_particles/manager.gd",
+          "combat_particles/simulation.gdshader",
+          "combat_pickup_assets/catalog.gd",
+          "first_person/handling.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "tests/combat_integration/contracts.gd",
+          "tests/combat_particles/contracts.gd",
+          "tests/combat_particles/live.gd",
+          "tests/combat_particles/occlusion.gd",
+          "tests/combat_particles/replay.gd",
+          "tests/combined_arms/graphics.gd",
+          "tests/first_person/live.gd",
+          "tests/moth/gallery.gd",
+          "tests/moth/validate.gd",
+          "tests/player_fx/capture.gd",
+          "tests/protocol/entity_visuals.gd",
+          "tests/protocol/lobby_flow.gd",
+          "tests/protocol/match_selection.gd",
+          "tests/protocol/native_modes_live.gd",
+          "tests/protocol/projectiles.gd",
+          "tests/protocol/team_scores.gd",
+          "tests/protocol/weapon_selection.gd",
+          "ui/match_setup.gd",
+          "world/environment_style.gd",
+          "world/pickup_visual.gd",
+          "world/projectiles.gd",
+          "world/session.gd"
+        ],
+        "strict": [
+          "cinder_array/map.gd",
+          "cinder_array/molten.gdshader",
+          "first_person/handling.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "tests/moth/gallery.gd",
+          "tests/moth/validate.gd",
+          "tests/player_fx/capture.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "rough_stucco": {
+        "literal": [
+          "cinder_array/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "cinder_array/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "moth_scenery/scenery.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "sand": {
+        "literal": [
+          "blood_fx/controller.gd",
+          "graphics_atmosphere/atmosphere.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "material_language/library.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "source_operators/generated/world_weapons/catalog.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "material_language/library.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "player_fx/surface.gd",
+          "showcase/demo.gd",
+          "world/environment_style.gd"
+        ]
+      },
+      "weathered_concrete": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth/surfaces.gd",
+          "showcase/demo.gd",
+          "tests/moth/gallery.gd",
+          "world/environment_style.gd"
+        ]
+      }
+    },
+    "sky": {
+      "ashen": {
+        "literal": [
+          "cinder_array/map.gd",
+          "graphics_atmosphere/atmosphere.gd",
+          "identity_maps/style.gd"
+        ],
+        "strict": [
+          "cinder_array/map.gd",
+          "graphics_atmosphere/atmosphere.gd",
+          "identity_maps/style.gd"
+        ]
+      },
+      "ember": {
+        "literal": [
+          "arms_race/demo.gd",
+          "cinder_array/map.gd",
+          "cinder_array/molten.gdshader",
+          "combat_particles/manager.gd",
+          "first_person/rig.gd",
+          "graphics_atmosphere/atmosphere.gd",
+          "horde/demo.gd",
+          "identity_maps/style.gd",
+          "lattice/transport.gd",
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "moth_scenery/scenery.gd",
+          "native_arenas/demo.gd",
+          "player_fx/director.gd",
+          "player_fx/surface.gd",
+          "shader_lab/factory.gd",
+          "sports/chase.gd",
+          "tests/cinder_array/verify.gd",
+          "tests/graphics_atmosphere/capture.gd",
+          "tests/lattice/adapter.gd",
+          "tests/moth_scenery/capture.gd",
+          "tests/moth_scenery/verify.gd",
+          "tests/package_inspect.gd",
+          "tests/protocol/match_selection.gd",
+          "ui/match_setup.gd",
+          "weapon_effects/controller.gd",
+          "world/combat_feedback.gd",
+          "world/environment_style.gd"
+        ],
+        "strict": [
+          "cinder_array/molten.gdshader",
+          "combat_particles/manager.gd",
+          "graphics_atmosphere/atmosphere.gd"
+        ]
+      },
+      "frost": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "aurora_basin/sky.gdshader",
+          "graphics_atmosphere/atmosphere.gd",
+          "identity_maps/style.gd",
+          "player_fx/surface.gd"
+        ],
+        "strict": [
+          "aurora_basin/map.gd",
+          "graphics_atmosphere/atmosphere.gd",
+          "identity_maps/style.gd",
+          "player_fx/surface.gd"
+        ]
+      },
+      "nebula": {
+        "literal": [
+          "graphics_atmosphere/atmosphere.gd",
+          "graphics_atmosphere/horizon.gdshader",
+          "tests/graphics_atmosphere/verify.gd"
+        ],
+        "strict": [
+          "graphics_atmosphere/atmosphere.gd",
+          "graphics_atmosphere/horizon.gdshader",
+          "tests/graphics_atmosphere/verify.gd"
+        ]
+      },
+      "void": {
+        "literal": [
+          "arms_race/demo.gd",
+          "arms_race/fresh_input.gd",
+          "arms_race/hud.gd",
+          "arms_race/progress.gd",
+          "arms_race/scoreboard.gd",
+          "aurora_basin/aurora.gdshader",
+          "aurora_basin/demo.gd",
+          "aurora_basin/fissure.gdshader",
+          "aurora_basin/hud.gd",
+          "aurora_basin/map.gd",
+          "aurora_basin/sky.gdshader",
+          "aurora_basin/snow.gdshader",
+          "benchmark/driver.gd",
+          "benchmark/frame_stats.gd",
+          "benchmark/presentation.gd",
+          "blood_fx/controller.gd",
+          "blood_fx/fluid.gdshader",
+          "blood_fx/fluid_draw.gdshader",
+          "blood_fx/settings.gd",
+          "blood_fx/stain.gdshader",
+          "blood_fx/surface_query.gd",
+          "cinder_array/caldera_sky.gdshader",
+          "cinder_array/demo.gd",
+          "cinder_array/geometry.gd",
+          "cinder_array/hud.gd",
+          "cinder_array/map.gd",
+          "cinder_array/molten.gdshader",
+          "cinder_array/opaque_surface.gdshader",
+          "cinder_array/strata.gdshader",
+          "combat_particles/draw.gdshader",
+          "combat_particles/manager.gd",
+          "combat_particles/occupancy.gd",
+          "combat_particles/simulation.gdshader",
+          "combat_pickup_assets/catalog.gd",
+          "combat_pickup_assets/energy.gdshader",
+          "combat_pickup_assets/pickup_visual.gd",
+          "combat_shields/controller.gd",
+          "combat_shields/interference.gdshader",
+          "combined_arms/chassis.gd",
+          "combined_arms/controls.gd",
+          "combined_arms/demo.gd",
+          "combined_arms/fleet.gd",
+          "combined_arms/graphics.gd",
+          "combined_arms/hud.gd",
+          "exploration/walker.gd",
+          "first_person/handling.gd",
+          "first_person/rig.gd",
+          "first_person/session_binding.gd",
+          "graphics_atmosphere/atmosphere.gd",
+          "graphics_atmosphere/distant_ground.gdshader",
+          "graphics_atmosphere/horizon.gdshader",
+          "graphics_fx/moth_world.gd",
+          "graphics_fx/moth_world.gdshader",
+          "horde/client.gd",
+          "horde/controls.gd",
+          "horde/demo.gd",
+          "horde/model.gd",
+          "identity_maps/inspection.gd",
+          "identity_maps/map.gd",
+          "identity_maps/signature_fx.gd",
+          "identity_maps/signature_particle.gdshader",
+          "identity_maps/style.gd",
+          "lattice/board.gd",
+          "lattice/map_view.gd",
+          "lattice/transport.gd",
+          "lattice/world_commands.gd",
+          "lattice/world_demo.gd",
+          "lattice/world_hud.gd",
+          "material_language/families.gd",
+          "material_language/family.gdshader",
+          "material_language/gallery.gd",
+          "material_language/library.gd",
+          "material_language/sheet.gd",
+          "moth/library.gd",
+          "moth/surface.gdshader",
+          "moth/surfaces.gd",
+          "moth_scenery/detail_control.gd",
+          "moth_scenery/motes.gdshader",
+          "moth_scenery/panel.gdshader",
+          "moth_scenery/scenery.gd",
+          "native_arenas/capture.gd",
+          "native_arenas/client.gd",
+          "native_arenas/demo.gd",
+          "native_arenas/hud.gd",
+          "native_arenas/identity_horde_demo.gd",
+          "native_arenas/identity_zone_demo.gd",
+          "native_arenas/maps/aurora-basin.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/geometry.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "native_arenas/package_inspect.gd",
+          "net/client.gd",
+          "net/snapshot_watch.gd",
+          "objectives/demo.gd",
+          "objectives/hud.gd",
+          "objectives/renderer.gd",
+          "particle_lab/demo.gd",
+          "particle_lab/field.gd",
+          "particle_lab/frame_metrics.gd",
+          "particle_lab/particles.gdshader",
+          "particle_lab/simulation.gdshader",
+          "particle_lab/stage.gdshader",
+          "player_fx/director.gd",
+          "player_fx/impacts.gd",
+          "player_models/builder.gd",
+          "player_models/candidate.gd",
+          "player_models/preview.gd",
+          "shader_lab/conduit.gdshader",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "shader_lab/moth_common.gdshaderinc",
+          "shader_lab/phase.gdshader",
+          "shader_lab/shield.gdshader",
+          "showcase/coolant.gdshader",
+          "showcase/demo.gd",
+          "showcase/player.gd",
+          "showcase/prism.gdshader",
+          "source_operators/character_rig.gd",
+          "source_operators/operator_visual.gd",
+          "sports/chase.gd",
+          "sports/controls.gd",
+          "sports/demo.gd",
+          "sports/guidance.gd",
+          "sports/hud.gd",
+          "sports/progression.gd",
+          "sports/soccer_guidance.gd",
+          "tests/arms_race/fixtures.gd",
+          "tests/arms_race/independent_fixtures.gd",
+          "tests/arms_race/observe.gd",
+          "tests/aurora_basin/capture.gd",
+          "tests/aurora_basin/test_walker.gd",
+          "tests/aurora_basin/validate.gd",
+          "tests/benchmark/contracts.gd",
+          "tests/blood_fx/contracts.gd",
+          "tests/blood_fx/curve.gd",
+          "tests/blood_fx/render.gd",
+          "tests/blood_fx/spatter.gd",
+          "tests/blood_fx/stress.gd",
+          "tests/blood_fx/surfaces.gd",
+          "tests/blood_fx/wall.gd",
+          "tests/cinder_array/capture.gd",
+          "tests/cinder_array/test_walker.gd",
+          "tests/cinder_array/verify.gd",
+          "tests/combat_actions/baseline.gd",
+          "tests/combat_actions/controls.gd",
+          "tests/combat_actions/live.gd",
+          "tests/combat_expansion_independent/review.gd",
+          "tests/combat_integration/combined_adapter.gd",
+          "tests/combat_integration/contracts.gd",
+          "tests/combat_particles/contracts.gd",
+          "tests/combat_particles/live.gd",
+          "tests/combat_particles/native_geometry.gd",
+          "tests/combat_particles/occlusion.gd",
+          "tests/combat_particles/replay.gd",
+          "tests/combat_pickup_assets/graphics.gd",
+          "tests/combat_pickup_assets/validate.gd",
+          "tests/combat_shields/capacity.gd",
+          "tests/combat_shields/graphics.gd",
+          "tests/combat_shields/live.gd",
+          "tests/combat_shields/validate.gd",
+          "tests/combined_arms/gallery.gd",
+          "tests/combined_arms/graphics.gd",
+          "tests/combined_arms/observe.gd",
+          "tests/combined_arms/test_controls.gd",
+          "tests/first_person/ads.gd",
+          "tests/first_person/ads_contract.gd",
+          "tests/first_person/binding.gd",
+          "tests/first_person/detail.gd",
+          "tests/first_person/framing.gd",
+          "tests/first_person/handling.gd",
+          "tests/first_person/handling_capture.gd",
+          "tests/first_person/lifecycle.gd",
+          "tests/first_person/live.gd",
+          "tests/glb_side_images.gd",
+          "tests/glb_side_import.gd",
+          "tests/graphics_atmosphere/capture.gd",
+          "tests/graphics_atmosphere/verify.gd",
+          "tests/graphics_batch/gallery.gd",
+          "tests/graphics_batch/live.gd",
+          "tests/graphics_batch/terrain_contract.gd",
+          "tests/graphics_batch/walker.gd",
+          "tests/graphics_depth/capture.gd",
+          "tests/graphics_fx/live.gd",
+          "tests/graphics_fx/regression.gd",
+          "tests/graphics_fx/visual.gd",
+          "tests/horde-independent-product.gd",
+          "tests/horde-repair-independent-look.gd",
+          "tests/horde/controls_test.gd",
+          "tests/horde/identity_composition_test.gd",
+          "tests/horde/identity_live.gd",
+          "tests/horde/layout_test.gd",
+          "tests/horde/leak_probe.gd",
+          "tests/horde/live.gd",
+          "tests/horde/test.gd",
+          "tests/identity_maps/baseline.gd",
+          "tests/identity_maps/capture.gd",
+          "tests/identity_maps/contract.gd",
+          "tests/identity_maps/lifecycle.gd",
+          "tests/identity_maps/rays.gd",
+          "tests/import.gd",
+          "tests/lattice/adapter.gd",
+          "tests/lattice/economy.gd",
+          "tests/lattice/economy_physical.gd",
+          "tests/lattice/map_view.gd",
+          "tests/lattice/map_view_physical.gd",
+          "tests/lattice/physical.gd",
+          "tests/lattice/ui.gd",
+          "tests/lattice/usability_contract.gd",
+          "tests/lattice/usability_observe.gd",
+          "tests/lattice/world_commands_contract.gd",
+          "tests/lattice/world_commands_live.gd",
+          "tests/lattice/world_contract.gd",
+          "tests/lattice/world_coop_live.gd",
+          "tests/lattice/world_walk.gd",
+          "tests/material_language/gallery_capture.gd",
+          "tests/material_language/parse_check.gd",
+          "tests/material_language/validate.gd",
+          "tests/moth/gallery.gd",
+          "tests/moth/validate.gd",
+          "tests/moth_scenery/capture.gd",
+          "tests/moth_scenery/verify.gd",
+          "tests/native_arena_review/capture_review.gd",
+          "tests/native_arena_review/diag_batch.gd",
+          "tests/native_arena_review/diag_near.gd",
+          "tests/native_arena_review/diag_scene.gd",
+          "tests/native_arena_review/probe_visual_collision.gd",
+          "tests/native_arenas/geometry/capture.gd",
+          "tests/native_arenas/geometry/inspect_sites.gd",
+          "tests/native_arenas/geometry/probe.gd",
+          "tests/native_arenas/geometry/unsupported.gd",
+          "tests/native_arenas/protocol/client_contract.gd",
+          "tests/native_arenas/protocol/live_client.gd",
+          "tests/native_arenas/session/fixture_client.gd",
+          "tests/native_arenas/session/fixture_map.gd",
+          "tests/native_arenas/session/fixture_session.gd",
+          "tests/native_arenas/session/geometry_composition.gd",
+          "tests/native_arenas/session/test.gd",
+          "tests/native_arenas/session/visual_fixture.gd",
+          "tests/objectives/completion_inputs.gd",
+          "tests/objectives/completion_live.gd",
+          "tests/objectives/completion_pass.gd",
+          "tests/objectives/controls.gd",
+          "tests/objectives/guidance_fixtures.gd",
+          "tests/objectives/guidance_hud.gd",
+          "tests/objectives/guidance_live.gd",
+          "tests/objectives/guidance_replay.gd",
+          "tests/objectives/live.gd",
+          "tests/objectives/progression_hud.gd",
+          "tests/objectives/progression_live.gd",
+          "tests/objectives/renderer.gd",
+          "tests/package_inspect.gd",
+          "tests/particle_lab/capture.gd",
+          "tests/particle_lab/stress_lifecycle.gd",
+          "tests/particle_lab/verify.gd",
+          "tests/player_fx/capture.gd",
+          "tests/player_fx/direction.gd",
+          "tests/player_fx/impacts.gd",
+          "tests/player_fx/integration.gd",
+          "tests/player_fx/lifecycle.gd",
+          "tests/player_fx/low_health.gd",
+          "tests/player_fx/overlay.gd",
+          "tests/player_models/baseline.gd",
+          "tests/player_models/geometry.gd",
+          "tests/player_models/live.gd",
+          "tests/protocol/audio_feedback.gd",
+          "tests/protocol/combat_feedback.gd",
+          "tests/protocol/control_safety.gd",
+          "tests/protocol/entity_visuals.gd",
+          "tests/protocol/envelopes.gd",
+          "tests/protocol/game_hud_live_capture.gd",
+          "tests/protocol/game_hud_session.gd",
+          "tests/protocol/game_hud_visual.gd",
+          "tests/protocol/guest_session.gd",
+          "tests/protocol/impairment.gd",
+          "tests/protocol/input_queue.gd",
+          "tests/protocol/live.gd",
+          "tests/protocol/lobby_flow.gd",
+          "tests/protocol/lobby_followup_geometry.gd",
+          "tests/protocol/lobby_followup_observer.gd",
+          "tests/protocol/lobby_independent_hud.gd",
+          "tests/protocol/lobby_independent_menu.gd",
+          "tests/protocol/lobby_independent_observer.gd",
+          "tests/protocol/lobby_popup_free.gd",
+          "tests/protocol/lobby_spectator_context.gd",
+          "tests/protocol/lobby_spectator_observer.gd",
+          "tests/protocol/lobby_spectator_session.gd",
+          "tests/protocol/local_lifecycle.gd",
+          "tests/protocol/match_selection.gd",
+          "tests/protocol/match_selection_menu.gd",
+          "tests/protocol/native_modes_live.gd",
+          "tests/protocol/native_trace.gd",
+          "tests/protocol/pickups.gd",
+          "tests/protocol/presentation.gd",
+          "tests/protocol/projectiles.gd",
+          "tests/protocol/remote_motion.gd",
+          "tests/protocol/replay.gd",
+          "tests/protocol/round_boundaries.gd",
+          "tests/protocol/scoreboard.gd",
+          "tests/protocol/scoreboard_session.gd",
+          "tests/protocol/scoreboard_visual.gd",
+          "tests/protocol/session_recovery.gd",
+          "tests/protocol/snapshot_watch.gd",
+          "tests/protocol/stall_controls.gd",
+          "tests/protocol/team_scores.gd",
+          "tests/protocol/two_clients.gd",
+          "tests/protocol/weapon_selection.gd",
+          "tests/protocol/window_focus.gd",
+          "tests/shader_lab/graphics.gd",
+          "tests/shader_lab/validate.gd",
+          "tests/showcase/gallery.gd",
+          "tests/showcase/native_controls.gd",
+          "tests/showcase/physics.gd",
+          "tests/source_operators/check.gd",
+          "tests/source_operators/grips.gd",
+          "tests/source_operators/presentation.gd",
+          "tests/source_operators/render.gd",
+          "tests/source_operators/weapon_detail_render.gd",
+          "tests/source_operators/weapons.gd",
+          "tests/sports/bearing_observe.gd",
+          "tests/sports/bearing_projection_test.gd",
+          "tests/sports/observe.gd",
+          "tests/sports/observe_polish.gd",
+          "tests/sports/practice_race_observe.gd",
+          "tests/sports/practice_soccer_observe.gd",
+          "tests/sports/practice_test.gd",
+          "tests/sports/progression_observe.gd",
+          "tests/sports/progression_test.gd",
+          "tests/sports/soccer_observe.gd",
+          "tests/sports/soccer_test.gd",
+          "tests/sports/test_controls.gd",
+          "tests/sports/test_polish.gd",
+          "tests/vehicles/test_puma.gd",
+          "tests/weapon_effects/contact_sheet.gd",
+          "tests/weapon_effects/framing.gd",
+          "tests/weapon_effects/lifecycle.gd",
+          "tests/weapon_effects/moth_coverage.gd",
+          "tests/weapon_effects/rig_integration.gd",
+          "tests/zone_modes/identity_live.gd",
+          "tests/zone_modes/live.gd",
+          "tests/zone_modes/unit.gd",
+          "ui/game_hud.gd",
+          "ui/lobby_choice.gd",
+          "ui/lobby_menu.gd",
+          "ui/match_setup.gd",
+          "ui/scoreboard.gd",
+          "vehicles/demo.gd",
+          "vehicles/puma.gd",
+          "vehicles/renderer.gd",
+          "weapon_effects/controller.gd",
+          "weapon_effects/flash.gdshader",
+          "world/actor_visual.gd",
+          "world/audio_feedback.gd",
+          "world/combat_actions.gd",
+          "world/combat_feedback.gd",
+          "world/combat_occlusion.gd",
+          "world/combat_overlay.gd",
+          "world/combat_quality.gd",
+          "world/environment_style.gd",
+          "world/local_lifecycle.gd",
+          "world/pickup_visual.gd",
+          "world/pickups.gd",
+          "world/presentation.gd",
+          "world/projectiles.gd",
+          "world/remote_motion.gd",
+          "world/scenery_settings.gd",
+          "world/session.gd",
+          "world/viewer.gd",
+          "world/weapon_selection.gd",
+          "zone_modes/adapter.gd",
+          "zone_modes/demo.gd",
+          "zone_modes/hud.gd",
+          "zone_modes/renderer.gd"
+        ],
+        "strict": [
+          "arms_race/demo.gd",
+          "arms_race/fresh_input.gd",
+          "arms_race/hud.gd",
+          "arms_race/progress.gd",
+          "arms_race/scoreboard.gd",
+          "aurora_basin/aurora.gdshader",
+          "aurora_basin/demo.gd",
+          "aurora_basin/fissure.gdshader",
+          "aurora_basin/hud.gd",
+          "aurora_basin/map.gd",
+          "aurora_basin/sky.gdshader",
+          "aurora_basin/snow.gdshader",
+          "benchmark/driver.gd",
+          "benchmark/frame_stats.gd",
+          "benchmark/presentation.gd",
+          "blood_fx/controller.gd",
+          "blood_fx/fluid.gdshader",
+          "blood_fx/fluid_draw.gdshader",
+          "blood_fx/stain.gdshader",
+          "blood_fx/surface_query.gd",
+          "cinder_array/caldera_sky.gdshader",
+          "cinder_array/demo.gd",
+          "cinder_array/geometry.gd",
+          "cinder_array/hud.gd",
+          "cinder_array/map.gd",
+          "cinder_array/molten.gdshader",
+          "cinder_array/opaque_surface.gdshader",
+          "cinder_array/strata.gdshader",
+          "combat_particles/draw.gdshader",
+          "combat_particles/manager.gd",
+          "combat_particles/occupancy.gd",
+          "combat_particles/simulation.gdshader",
+          "combat_pickup_assets/catalog.gd",
+          "combat_pickup_assets/energy.gdshader",
+          "combat_pickup_assets/pickup_visual.gd",
+          "combat_shields/controller.gd",
+          "combat_shields/interference.gdshader",
+          "combined_arms/chassis.gd",
+          "combined_arms/controls.gd",
+          "combined_arms/demo.gd",
+          "combined_arms/fleet.gd",
+          "combined_arms/graphics.gd",
+          "combined_arms/hud.gd",
+          "exploration/walker.gd",
+          "first_person/handling.gd",
+          "first_person/rig.gd",
+          "first_person/session_binding.gd",
+          "graphics_atmosphere/atmosphere.gd",
+          "graphics_atmosphere/distant_ground.gdshader",
+          "graphics_atmosphere/horizon.gdshader",
+          "graphics_fx/moth_world.gd",
+          "graphics_fx/moth_world.gdshader",
+          "horde/client.gd",
+          "horde/controls.gd",
+          "horde/demo.gd",
+          "horde/model.gd",
+          "identity_maps/inspection.gd",
+          "identity_maps/map.gd",
+          "identity_maps/signature_fx.gd",
+          "identity_maps/signature_particle.gdshader",
+          "identity_maps/style.gd",
+          "lattice/board.gd",
+          "lattice/map_view.gd",
+          "lattice/transport.gd",
+          "lattice/world_commands.gd",
+          "lattice/world_demo.gd",
+          "lattice/world_hud.gd",
+          "material_language/family.gdshader",
+          "material_language/gallery.gd",
+          "material_language/library.gd",
+          "material_language/sheet.gd",
+          "moth/library.gd",
+          "moth/surface.gdshader",
+          "moth/surfaces.gd",
+          "moth_scenery/detail_control.gd",
+          "moth_scenery/motes.gdshader",
+          "moth_scenery/panel.gdshader",
+          "moth_scenery/scenery.gd",
+          "native_arenas/capture.gd",
+          "native_arenas/client.gd",
+          "native_arenas/demo.gd",
+          "native_arenas/hud.gd",
+          "native_arenas/identity_horde_demo.gd",
+          "native_arenas/identity_zone_demo.gd",
+          "native_arenas/maps/aurora-basin.gd",
+          "native_arenas/maps/cinder-array.gd",
+          "native_arenas/maps/geometry.gd",
+          "native_arenas/maps/prism-foundry.gd",
+          "native_arenas/package_inspect.gd",
+          "net/client.gd",
+          "net/snapshot_watch.gd",
+          "objectives/demo.gd",
+          "objectives/hud.gd",
+          "objectives/renderer.gd",
+          "particle_lab/demo.gd",
+          "particle_lab/field.gd",
+          "particle_lab/frame_metrics.gd",
+          "particle_lab/particles.gdshader",
+          "particle_lab/simulation.gdshader",
+          "particle_lab/stage.gdshader",
+          "player_fx/director.gd",
+          "player_fx/impacts.gd",
+          "player_models/builder.gd",
+          "player_models/candidate.gd",
+          "player_models/preview.gd",
+          "shader_lab/conduit.gdshader",
+          "shader_lab/factory.gd",
+          "shader_lab/gallery.gd",
+          "shader_lab/moth_common.gdshaderinc",
+          "shader_lab/phase.gdshader",
+          "shader_lab/shield.gdshader",
+          "showcase/coolant.gdshader",
+          "showcase/demo.gd",
+          "showcase/player.gd",
+          "showcase/prism.gdshader",
+          "source_operators/character_rig.gd",
+          "source_operators/operator_visual.gd",
+          "sports/chase.gd",
+          "sports/controls.gd",
+          "sports/demo.gd",
+          "sports/guidance.gd",
+          "sports/hud.gd",
+          "sports/progression.gd",
+          "sports/soccer_guidance.gd",
+          "tests/arms_race/fixtures.gd",
+          "tests/arms_race/independent_fixtures.gd",
+          "tests/arms_race/observe.gd",
+          "tests/aurora_basin/capture.gd",
+          "tests/aurora_basin/test_walker.gd",
+          "tests/aurora_basin/validate.gd",
+          "tests/benchmark/contracts.gd",
+          "tests/blood_fx/contracts.gd",
+          "tests/blood_fx/curve.gd",
+          "tests/blood_fx/render.gd",
+          "tests/blood_fx/spatter.gd",
+          "tests/blood_fx/stress.gd",
+          "tests/blood_fx/surfaces.gd",
+          "tests/blood_fx/wall.gd",
+          "tests/cinder_array/capture.gd",
+          "tests/cinder_array/test_walker.gd",
+          "tests/cinder_array/verify.gd",
+          "tests/combat_actions/baseline.gd",
+          "tests/combat_actions/controls.gd",
+          "tests/combat_actions/live.gd",
+          "tests/combat_expansion_independent/review.gd",
+          "tests/combat_integration/combined_adapter.gd",
+          "tests/combat_integration/contracts.gd",
+          "tests/combat_particles/contracts.gd",
+          "tests/combat_particles/live.gd",
+          "tests/combat_particles/native_geometry.gd",
+          "tests/combat_particles/occlusion.gd",
+          "tests/combat_particles/replay.gd",
+          "tests/combat_pickup_assets/graphics.gd",
+          "tests/combat_pickup_assets/validate.gd",
+          "tests/combat_shields/capacity.gd",
+          "tests/combat_shields/graphics.gd",
+          "tests/combat_shields/live.gd",
+          "tests/combat_shields/validate.gd",
+          "tests/combined_arms/gallery.gd",
+          "tests/combined_arms/graphics.gd",
+          "tests/combined_arms/observe.gd",
+          "tests/combined_arms/test_controls.gd",
+          "tests/first_person/ads.gd",
+          "tests/first_person/ads_contract.gd",
+          "tests/first_person/binding.gd",
+          "tests/first_person/detail.gd",
+          "tests/first_person/framing.gd",
+          "tests/first_person/handling.gd",
+          "tests/first_person/handling_capture.gd",
+          "tests/first_person/lifecycle.gd",
+          "tests/first_person/live.gd",
+          "tests/glb_side_images.gd",
+          "tests/glb_side_import.gd",
+          "tests/graphics_atmosphere/capture.gd",
+          "tests/graphics_atmosphere/verify.gd",
+          "tests/graphics_batch/gallery.gd",
+          "tests/graphics_batch/live.gd",
+          "tests/graphics_batch/terrain_contract.gd",
+          "tests/graphics_batch/walker.gd",
+          "tests/graphics_depth/capture.gd",
+          "tests/graphics_fx/live.gd",
+          "tests/graphics_fx/regression.gd",
+          "tests/graphics_fx/visual.gd",
+          "tests/horde-independent-product.gd",
+          "tests/horde-repair-independent-look.gd",
+          "tests/horde/controls_test.gd",
+          "tests/horde/identity_composition_test.gd",
+          "tests/horde/identity_live.gd",
+          "tests/horde/layout_test.gd",
+          "tests/horde/leak_probe.gd",
+          "tests/horde/live.gd",
+          "tests/horde/test.gd",
+          "tests/identity_maps/baseline.gd",
+          "tests/identity_maps/capture.gd",
+          "tests/identity_maps/contract.gd",
+          "tests/identity_maps/lifecycle.gd",
+          "tests/identity_maps/rays.gd",
+          "tests/import.gd",
+          "tests/lattice/adapter.gd",
+          "tests/lattice/economy.gd",
+          "tests/lattice/economy_physical.gd",
+          "tests/lattice/map_view.gd",
+          "tests/lattice/map_view_physical.gd",
+          "tests/lattice/physical.gd",
+          "tests/lattice/ui.gd",
+          "tests/lattice/usability_contract.gd",
+          "tests/lattice/usability_observe.gd",
+          "tests/lattice/world_commands_contract.gd",
+          "tests/lattice/world_commands_live.gd",
+          "tests/lattice/world_contract.gd",
+          "tests/lattice/world_coop_live.gd",
+          "tests/lattice/world_walk.gd",
+          "tests/material_language/gallery_capture.gd",
+          "tests/material_language/parse_check.gd",
+          "tests/material_language/validate.gd",
+          "tests/moth/gallery.gd",
+          "tests/moth/validate.gd",
+          "tests/moth_scenery/capture.gd",
+          "tests/moth_scenery/verify.gd",
+          "tests/native_arena_review/capture_review.gd",
+          "tests/native_arena_review/diag_batch.gd",
+          "tests/native_arena_review/diag_near.gd",
+          "tests/native_arena_review/diag_scene.gd",
+          "tests/native_arena_review/probe_visual_collision.gd",
+          "tests/native_arenas/geometry/capture.gd",
+          "tests/native_arenas/geometry/inspect_sites.gd",
+          "tests/native_arenas/geometry/probe.gd",
+          "tests/native_arenas/geometry/unsupported.gd",
+          "tests/native_arenas/protocol/client_contract.gd",
+          "tests/native_arenas/protocol/live_client.gd",
+          "tests/native_arenas/session/fixture_client.gd",
+          "tests/native_arenas/session/fixture_map.gd",
+          "tests/native_arenas/session/fixture_session.gd",
+          "tests/native_arenas/session/geometry_composition.gd",
+          "tests/native_arenas/session/test.gd",
+          "tests/native_arenas/session/visual_fixture.gd",
+          "tests/objectives/completion_inputs.gd",
+          "tests/objectives/completion_live.gd",
+          "tests/objectives/completion_pass.gd",
+          "tests/objectives/controls.gd",
+          "tests/objectives/guidance_fixtures.gd",
+          "tests/objectives/guidance_hud.gd",
+          "tests/objectives/guidance_live.gd",
+          "tests/objectives/guidance_replay.gd",
+          "tests/objectives/live.gd",
+          "tests/objectives/progression_hud.gd",
+          "tests/objectives/progression_live.gd",
+          "tests/objectives/renderer.gd",
+          "tests/package_inspect.gd",
+          "tests/particle_lab/capture.gd",
+          "tests/particle_lab/stress_lifecycle.gd",
+          "tests/particle_lab/verify.gd",
+          "tests/player_fx/capture.gd",
+          "tests/player_fx/direction.gd",
+          "tests/player_fx/impacts.gd",
+          "tests/player_fx/integration.gd",
+          "tests/player_fx/lifecycle.gd",
+          "tests/player_fx/low_health.gd",
+          "tests/player_fx/overlay.gd",
+          "tests/player_models/baseline.gd",
+          "tests/player_models/geometry.gd",
+          "tests/player_models/live.gd",
+          "tests/protocol/audio_feedback.gd",
+          "tests/protocol/combat_feedback.gd",
+          "tests/protocol/control_safety.gd",
+          "tests/protocol/entity_visuals.gd",
+          "tests/protocol/envelopes.gd",
+          "tests/protocol/game_hud_live_capture.gd",
+          "tests/protocol/game_hud_session.gd",
+          "tests/protocol/game_hud_visual.gd",
+          "tests/protocol/guest_session.gd",
+          "tests/protocol/impairment.gd",
+          "tests/protocol/input_queue.gd",
+          "tests/protocol/live.gd",
+          "tests/protocol/lobby_flow.gd",
+          "tests/protocol/lobby_followup_geometry.gd",
+          "tests/protocol/lobby_followup_observer.gd",
+          "tests/protocol/lobby_independent_hud.gd",
+          "tests/protocol/lobby_independent_menu.gd",
+          "tests/protocol/lobby_independent_observer.gd",
+          "tests/protocol/lobby_popup_free.gd",
+          "tests/protocol/lobby_spectator_context.gd",
+          "tests/protocol/lobby_spectator_observer.gd",
+          "tests/protocol/lobby_spectator_session.gd",
+          "tests/protocol/local_lifecycle.gd",
+          "tests/protocol/match_selection.gd",
+          "tests/protocol/match_selection_menu.gd",
+          "tests/protocol/native_modes_live.gd",
+          "tests/protocol/native_trace.gd",
+          "tests/protocol/pickups.gd",
+          "tests/protocol/presentation.gd",
+          "tests/protocol/projectiles.gd",
+          "tests/protocol/remote_motion.gd",
+          "tests/protocol/replay.gd",
+          "tests/protocol/round_boundaries.gd",
+          "tests/protocol/scoreboard.gd",
+          "tests/protocol/scoreboard_session.gd",
+          "tests/protocol/scoreboard_visual.gd",
+          "tests/protocol/session_recovery.gd",
+          "tests/protocol/snapshot_watch.gd",
+          "tests/protocol/stall_controls.gd",
+          "tests/protocol/team_scores.gd",
+          "tests/protocol/two_clients.gd",
+          "tests/protocol/weapon_selection.gd",
+          "tests/protocol/window_focus.gd",
+          "tests/shader_lab/graphics.gd",
+          "tests/shader_lab/validate.gd",
+          "tests/showcase/gallery.gd",
+          "tests/showcase/native_controls.gd",
+          "tests/showcase/physics.gd",
+          "tests/source_operators/check.gd",
+          "tests/source_operators/grips.gd",
+          "tests/source_operators/presentation.gd",
+          "tests/source_operators/render.gd",
+          "tests/source_operators/weapon_detail_render.gd",
+          "tests/source_operators/weapons.gd",
+          "tests/sports/bearing_observe.gd",
+          "tests/sports/bearing_projection_test.gd",
+          "tests/sports/observe.gd",
+          "tests/sports/observe_polish.gd",
+          "tests/sports/practice_race_observe.gd",
+          "tests/sports/practice_soccer_observe.gd",
+          "tests/sports/practice_test.gd",
+          "tests/sports/progression_observe.gd",
+          "tests/sports/progression_test.gd",
+          "tests/sports/soccer_observe.gd",
+          "tests/sports/soccer_test.gd",
+          "tests/sports/test_controls.gd",
+          "tests/sports/test_polish.gd",
+          "tests/vehicles/test_puma.gd",
+          "tests/weapon_effects/contact_sheet.gd",
+          "tests/weapon_effects/framing.gd",
+          "tests/weapon_effects/lifecycle.gd",
+          "tests/weapon_effects/moth_coverage.gd",
+          "tests/weapon_effects/rig_integration.gd",
+          "tests/zone_modes/identity_live.gd",
+          "tests/zone_modes/live.gd",
+          "tests/zone_modes/unit.gd",
+          "ui/game_hud.gd",
+          "ui/lobby_choice.gd",
+          "ui/lobby_menu.gd",
+          "ui/match_setup.gd",
+          "ui/scoreboard.gd",
+          "vehicles/demo.gd",
+          "vehicles/puma.gd",
+          "vehicles/renderer.gd",
+          "weapon_effects/controller.gd",
+          "weapon_effects/flash.gdshader",
+          "world/actor_visual.gd",
+          "world/audio_feedback.gd",
+          "world/combat_actions.gd",
+          "world/combat_feedback.gd",
+          "world/combat_occlusion.gd",
+          "world/combat_overlay.gd",
+          "world/combat_quality.gd",
+          "world/environment_style.gd",
+          "world/local_lifecycle.gd",
+          "world/pickup_visual.gd",
+          "world/pickups.gd",
+          "world/presentation.gd",
+          "world/projectiles.gd",
+          "world/remote_motion.gd",
+          "world/scenery_settings.gd",
+          "world/session.gd",
+          "world/viewer.gd",
+          "world/weapon_selection.gd",
+          "zone_modes/adapter.gd",
+          "zone_modes/demo.gd",
+          "zone_modes/hud.gd",
+          "zone_modes/renderer.gd"
+        ]
+      }
+    },
+    "materials": {
+      "entanglement": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "combat_pickup_assets/pickup_visual.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "particle_lab/field.gd",
+          "shader_lab/factory.gd",
+          "tests/moth/gallery.gd",
+          "tests/moth/validate.gd",
+          "tests/particle_lab/verify.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "particle_lab/field.gd",
+          "shader_lab/factory.gd",
+          "tests/moth/validate.gd",
+          "tests/particle_lab/verify.gd"
+        ]
+      },
+      "entanglement-arcane": {
+        "literal": [
+          "combat_pickup_assets/pickup_visual.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "shader_lab/factory.gd",
+          "tests/moth/gallery.gd"
+        ],
+        "strict": [
+          "combat_pickup_assets/pickup_visual.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "shader_lab/factory.gd",
+          "tests/moth/gallery.gd"
+        ]
+      },
+      "entanglement-ceramic": {
+        "literal": [
+          "aurora_basin/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "shader_lab/factory.gd"
+        ],
+        "strict": [
+          "aurora_basin/map.gd",
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "shader_lab/factory.gd"
+        ]
+      },
+      "entanglement-ember": {
+        "literal": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "shader_lab/factory.gd"
+        ],
+        "strict": [
+          "material_language/families.gd",
+          "moth_scenery/profiles.gd",
+          "shader_lab/factory.gd"
+        ]
+      },
+      "entanglement-void": {
+        "literal": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "shader_lab/factory.gd"
+        ],
+        "strict": [
+          "identity_maps/style.gd",
+          "material_language/families.gd",
+          "shader_lab/factory.gd"
+        ]
+      }
+    },
+    "effects": {
+      "arc-burst": {
+        "literal": [
+          "particle_lab/field.gd",
+          "tests/particle_lab/verify.gd",
+          "world/combat_feedback.gd"
+        ],
+        "strict": [
+          "particle_lab/field.gd",
+          "tests/particle_lab/verify.gd",
+          "world/combat_feedback.gd"
+        ]
+      },
+      "effect-capture-ring": {
+        "literal": [],
+        "strict": []
+      },
+      "effect-explosion": {
+        "literal": [
+          "graphics_fx/moth_world.gd",
+          "material_language/library.gd",
+          "tests/graphics_fx/live.gd"
+        ],
+        "strict": [
+          "graphics_fx/moth_world.gd",
+          "material_language/library.gd",
+          "tests/graphics_fx/live.gd"
+        ]
+      },
+      "effect-heal": {
+        "literal": [
+          "graphics_fx/moth_world.gd",
+          "material_language/library.gd"
+        ],
+        "strict": [
+          "graphics_fx/moth_world.gd",
+          "material_language/library.gd"
+        ]
+      },
+      "effect-shield": {
+        "literal": [
+          "material_language/library.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/shield.gdshader",
+          "tests/shader_lab/validate.gd"
+        ],
+        "strict": [
+          "material_language/library.gd",
+          "shader_lab/factory.gd",
+          "shader_lab/shield.gdshader",
+          "tests/shader_lab/validate.gd"
+        ]
+      },
+      "effect-teleport": {
+        "literal": [
+          "graphics_fx/moth_world.gd",
+          "material_language/library.gd"
+        ],
+        "strict": [
+          "graphics_fx/moth_world.gd",
+          "material_language/library.gd"
+        ]
+      },
+      "effect-weather-snow": {
+        "literal": [
+          "moth_scenery/scenery.gd"
+        ],
+        "strict": [
+          "moth_scenery/scenery.gd"
+        ]
+      },
+      "qrc-glyphs": {
+        "literal": [
+          "tests/moth/validate.gd"
+        ],
+        "strict": [
+          "tests/moth/validate.gd"
+        ]
+      },
+      "quantum-rift": {
+        "literal": [],
+        "strict": []
+      },
+      "spark-impact": {
+        "literal": [
+          "graphics_fx/moth_world.gd",
+          "material_language/library.gd",
+          "world/combat_feedback.gd"
+        ],
+        "strict": [
+          "graphics_fx/moth_world.gd",
+          "material_language/library.gd",
+          "world/combat_feedback.gd"
+        ]
+      }
+    }
+  },
+  "derived": {
+    "data--alien_chitin": {
+      "literal": [],
+      "strict": []
+    },
+    "data--brushed_metal": {
+      "literal": [],
+      "strict": []
+    },
+    "data--circuit_board-etch": {
+      "literal": [],
+      "strict": []
+    },
+    "data--corrugated_metal": {
+      "literal": [],
+      "strict": []
+    },
+    "data--diamond_plate": {
+      "literal": [],
+      "strict": []
+    },
+    "data--grass": {
+      "literal": [],
+      "strict": []
+    },
+    "data--hazard_stripes": {
+      "literal": [],
+      "strict": []
+    },
+    "data--hex_paneling": {
+      "literal": [],
+      "strict": []
+    },
+    "data--hex_paneling-mottle": {
+      "literal": [],
+      "strict": []
+    },
+    "data--ice": {
+      "literal": [],
+      "strict": []
+    },
+    "data--ice-cracked": {
+      "literal": [],
+      "strict": []
+    },
+    "data--macro-organic": {
+      "literal": [],
+      "strict": []
+    },
+    "data--metal": {
+      "literal": [],
+      "strict": []
+    },
+    "data--metal-oxide": {
+      "literal": [],
+      "strict": []
+    },
+    "data--metal_grating": {
+      "literal": [],
+      "strict": []
+    },
+    "data--riveted_armor": {
+      "literal": [],
+      "strict": []
+    },
+    "data--riveted_armor-scorched": {
+      "literal": [],
+      "strict": []
+    },
+    "data--rock": {
+      "literal": [],
+      "strict": []
+    },
+    "data--rock-moss": {
+      "literal": [],
+      "strict": []
+    },
+    "data--rough_stucco-weathered": {
+      "literal": [],
+      "strict": []
+    },
+    "data--sand": {
+      "literal": [
+        "graphics_atmosphere/atmosphere.gd",
+        "material_language/library.gd"
+      ],
+      "strict": [
+        "graphics_atmosphere/atmosphere.gd",
+        "material_language/library.gd"
+      ]
+    },
+    "data--weathered_concrete": {
+      "literal": [],
+      "strict": []
+    },
+    "data--weathered_concrete-damp": {
+      "literal": [],
+      "strict": []
+    },
+    "data--weathered_concrete-worn": {
+      "literal": [],
+      "strict": []
+    },
+    "mask--circuit_board": {
+      "literal": [
+        "material_language/families.gd"
+      ],
+      "strict": [
+        "material_language/families.gd"
+      ]
+    },
+    "mask--hazard_stripes": {
+      "literal": [
+        "material_language/families.gd"
+      ],
+      "strict": [
+        "material_language/families.gd"
+      ]
+    },
+    "normal--alien_chitin": {
+      "literal": [
+        "tests/material_language/validate.gd"
+      ],
+      "strict": [
+        "tests/material_language/validate.gd"
+      ]
+    },
+    "normal--riveted_armor": {
+      "literal": [],
+      "strict": []
+    }
+  }
+}

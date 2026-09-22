@@ -1,0 +1,1505 @@
+{
+  "version": 1,
+  "provenance": {
+    "tool": "tools/godot-moth/derive.mjs",
+    "tool_sha256": "8193559232be3cdf0774a6f5c80fa1d50d551127bf5b92071370e9f6cf769570",
+    "source_manifest": "godot/moth/generated/manifest.json",
+    "source_manifest_sha256": "f3f97a24e142229e48a58a91d162298b8ca7b945adba46a8a917c5d926f0b323",
+    "source_bake": "game/moth-baked.mjs",
+    "derived_version": 1,
+    "encoder": "tools/godot-moth/export.mjs encodePng (untagged linear, deflate level 9)",
+    "rights": "Unresolved; see port/asset-audit/HANDOFF.md. Conversion is not clearance.",
+    "determinism": "integer kernels, IEEE sqrt/round, no timestamps, no RNG"
+  },
+  "calibration": {
+    "chosen_green_sign": 1,
+    "positive_sign": {
+      "samples": {
+        "rock": {
+          "normal_x": 0.2774,
+          "normal_y": 0.2688,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.0293,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "sand": {
+          "normal_x": 0.0067,
+          "normal_y": 0.0689,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.1973,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "metal": {
+          "normal_x": -0.13,
+          "normal_y": -0.1178,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.0353,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "weathered_concrete": {
+          "normal_x": -0.0945,
+          "normal_y": 0.0021,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.0495,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "hex_paneling": {
+          "normal_x": -0.0421,
+          "normal_y": -0.0438,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.014,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "hazard_stripes": {
+          "normal_x": 0.0552,
+          "normal_y": 0.067,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.019,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "ice": {
+          "normal_x": 0.2254,
+          "normal_y": 0.2175,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.012,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "grass": {
+          "normal_x": 0.0109,
+          "normal_y": 0.0432,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.0291,
+          "height_mode": "luminance",
+          "pixels": 1024
+        }
+      },
+      "mean_correlation": 0.0509
+    },
+    "negative_sign": {
+      "samples": {
+        "rock": {
+          "normal_x": 0.2774,
+          "normal_y": -0.2688,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.0293,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "sand": {
+          "normal_x": 0.0067,
+          "normal_y": -0.0689,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.1973,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "metal": {
+          "normal_x": -0.13,
+          "normal_y": 0.1178,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.0353,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "weathered_concrete": {
+          "normal_x": -0.0945,
+          "normal_y": -0.0021,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.0495,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "hex_paneling": {
+          "normal_x": -0.0421,
+          "normal_y": 0.0438,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.014,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "hazard_stripes": {
+          "normal_x": 0.0552,
+          "normal_y": -0.067,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.019,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "ice": {
+          "normal_x": 0.2254,
+          "normal_y": -0.2175,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.012,
+          "height_mode": "luminance",
+          "pixels": 1024
+        },
+        "grass": {
+          "normal_x": 0.0109,
+          "normal_y": -0.0432,
+          "mean_magnitude_derived": 0.25,
+          "mean_magnitude_baked": 0.0291,
+          "height_mode": "luminance",
+          "pixels": 1024
+        }
+      },
+      "mean_correlation": -0.0123
+    },
+    "method": "pearson correlation of derived vs baked normal X/Y at baked resolution across calibration keys",
+    "caveat": "baked normals are sparse and 8-bit quantised, so correlations are weak; the sign choice only fixes texture-space orientation"
+  },
+  "derived": {
+    "data--alien_chitin": {
+      "path": "res://moth/derived/data/alien_chitin.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "alien_chitin",
+          "pixel_sha256": "98e70c6c05e1feeb5f7604f4c3b48c4983d49e7c30a3236bab6ca961234d5f12",
+          "png_sha256": "bea0cf2ebcd1b2add885e3f3615941c0a66db12dc47e077bb34d4e1176c284fe"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.45,
+        "height_channel": "max-mix",
+        "height_channel_note": "mean of rec709 luminance and the max channel",
+        "height_stddev_luminance": 1.387,
+        "height_stddev_max_mix": 2.593
+      },
+      "stats": {
+        "ao_mean": 0.9941,
+        "roughness_mean": 0.4187,
+        "detail_stddev": 2.03
+      },
+      "pixel_sha256": "cf348c58c0a60d08b7f933f24d771206fcc4fd38c3b89fc1989aceee7718c1a8",
+      "png_sha256": "6ddbe514a33749221ae77d54b2d59f8bace8e78114637df0105785af25c306b0"
+    },
+    "data--brushed_metal": {
+      "path": "res://moth/derived/data/brushed_metal.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "brushed_metal",
+          "pixel_sha256": "3abeb6cb89b6f5ce0a4595d6f099872212ad0b238dd799736672f447e674de31",
+          "png_sha256": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.34,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 6.153,
+        "height_stddev_max_mix": 6.49
+      },
+      "stats": {
+        "ao_mean": 0.9473,
+        "roughness_mean": 0.3183,
+        "detail_stddev": 8.92
+      },
+      "pixel_sha256": "6680e902f0a0f9be0c127740880451b834ee9a92ed6b9135b743d7f6a7d7e802",
+      "png_sha256": "30f483144c7aa89f45eb3856040929b9e2269da24b696bc5bc905d1bf07a4169"
+    },
+    "data--circuit_board-etch": {
+      "path": "res://moth/derived/data/circuit_board-etch.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "circuit_board-etch",
+          "pixel_sha256": "795a3651cee0f6ec92e7e1e71ea644d6e91e64991fa27a126501c237879fcf65",
+          "png_sha256": "21a89925e0030d3fdb28c9194022c5941e07247ffaa1e6e0a8ff496e340955ff"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.35,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 18.248,
+        "height_stddev_max_mix": 20.072
+      },
+      "stats": {
+        "ao_mean": 0.8948,
+        "roughness_mean": 0.3393,
+        "detail_stddev": 26.78
+      },
+      "pixel_sha256": "fc524ef2dc7a8fab984b403477c43c8e07d898091c0aeb08893ccd71d583f284",
+      "png_sha256": "9a2943ff221bc54aaac1d4457a04419d76e5b777455bb09179b2313e1e4ddc1c"
+    },
+    "data--corrugated_metal": {
+      "path": "res://moth/derived/data/corrugated_metal.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "corrugated_metal",
+          "pixel_sha256": "8ae1639022215752919ed469e5f63fafe56d4cfe9c8e3195963f5f81fca3257e",
+          "png_sha256": "29324dcc77787d2fe2adfc9ea5e1cb9db510bdb36d81174dc64cafd2fb7509ad"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.5,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 33.682,
+        "height_stddev_max_mix": 35.013
+      },
+      "stats": {
+        "ao_mean": 0.855,
+        "roughness_mean": 0.5382,
+        "detail_stddev": 58.72
+      },
+      "pixel_sha256": "2c98be223d1fdce756137b65c801f47448c5284a708f5cabe0e811d00e2e3af0",
+      "png_sha256": "adc8717bc9d3a0231da2bd3de63bf39997c64e05b0cff8ca3eb26e61d6418927"
+    },
+    "data--diamond_plate": {
+      "path": "res://moth/derived/data/diamond_plate.png",
+      "kind": "data",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "diamond_plate",
+          "pixel_sha256": "170de4d16dbdc1e9b1577e9d200d257d997b813aef979a88cfe77c9ccfd9853f",
+          "png_sha256": "73c360a156a11b7b13a99adfd33c5ee057f00cfa28e6c684d27fe032a8d601cf"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.4,
+        "height_channel": "max-mix",
+        "height_channel_note": "mean of rec709 luminance and the max channel",
+        "height_stddev_luminance": 8.702,
+        "height_stddev_max_mix": 23.528
+      },
+      "stats": {
+        "ao_mean": 0.8995,
+        "roughness_mean": 0.4153,
+        "detail_stddev": 37.7
+      },
+      "pixel_sha256": "851933e9d713a4cbf8d881b60fc7c00a341e22d448397988bfed6c93870b7ba1",
+      "png_sha256": "2e74499a47cbc968c18fa2107826a76ae4603280fdbad0d8fc66ffda0262bbdd"
+    },
+    "data--grass": {
+      "path": "res://moth/derived/data/grass.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "grass",
+          "pixel_sha256": "b06615e8f8d7a8ec415e5176791ec22e24fe06e793e773260a9b0b49c8fda009",
+          "png_sha256": "b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.82,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 4.52,
+        "height_stddev_max_mix": 4.721
+      },
+      "stats": {
+        "ao_mean": 0.9709,
+        "roughness_mean": 0.7923,
+        "detail_stddev": 4.93
+      },
+      "pixel_sha256": "d1eaf1da66d9aa2b4e9d6c4d539373c0bf825215480c0f03bec5ed71b55d5c2f",
+      "png_sha256": "c97abfe4504283f5e21477f9f4fdd95a90bcdf86937abb478bc603e1df83f651"
+    },
+    "data--hazard_stripes": {
+      "path": "res://moth/derived/data/hazard_stripes.png",
+      "kind": "data",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "hazard_stripes",
+          "pixel_sha256": "da43889b1a11de640d7372c0ae20c7dbef9eeac55bdd7d8286bc0a444e7a599f",
+          "png_sha256": "4f2bfb3fd45f16c485749606ba7cfb49b32d86c28c3fd1b0d942d69d613cff44"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.62,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 21.239,
+        "height_stddev_max_mix": 22.5
+      },
+      "stats": {
+        "ao_mean": 0.8778,
+        "roughness_mean": 0.6278,
+        "detail_stddev": 33.87
+      },
+      "pixel_sha256": "5a56f358b25bec59b6153b89f7a890cfb1a0588a664f29eef3f6bf7108572d0b",
+      "png_sha256": "5149082b715620d1227ea1867f3bc50c908e7571c84057d6e9053bc3e7e55a94"
+    },
+    "data--hex_paneling": {
+      "path": "res://moth/derived/data/hex_paneling.png",
+      "kind": "data",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "hex_paneling",
+          "pixel_sha256": "651a713e6f7051134a0f2247b6679ed2426dd1489d409c8ece36165139a975d1",
+          "png_sha256": "725a587331a74d235254e64b7f5d9a605e2de8cc28f16eec3c92577c3ddeea40"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.3,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 8.106,
+        "height_stddev_max_mix": 6.967
+      },
+      "stats": {
+        "ao_mean": 0.9552,
+        "roughness_mean": 0.286,
+        "detail_stddev": 15.2
+      },
+      "pixel_sha256": "eacacd173334f227d301bb9485d2fc26e645ef606f15ebbf4dc92b29509239bd",
+      "png_sha256": "aae91de481d4cfef0b5a753a31311a12ba640b5b6929dcef4c6057b8c5935a7d"
+    },
+    "data--hex_paneling-mottle": {
+      "path": "res://moth/derived/data/hex_paneling-mottle.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "hex_paneling-mottle",
+          "pixel_sha256": "eae7bd8b07848aae6854693704866dd253f98a08a6d586a397023bfdd0cbb671",
+          "png_sha256": "d9d5473425b71f7d829a2db984dcfe7f9ea845a91e4b745798c4533190059a4d"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.35,
+        "height_channel": "max-mix",
+        "height_channel_note": "mean of rec709 luminance and the max channel",
+        "height_stddev_luminance": 16.916,
+        "height_stddev_max_mix": 19.756
+      },
+      "stats": {
+        "ao_mean": 0.8043,
+        "roughness_mean": 0.3465,
+        "detail_stddev": 26.9
+      },
+      "pixel_sha256": "c306cc13fdc26891770f8612eeba29af32ffc2d80cb0a695df2d440a8a3c591b",
+      "png_sha256": "b2112f993b8d604cf518ca9d30d07378cda4adc97f8a30f988edd3d37bfedfce"
+    },
+    "data--ice": {
+      "path": "res://moth/derived/data/ice.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "ice",
+          "pixel_sha256": "9219ed3d9dfdf0fbe812afe3f565830ba276ff92dbdb4fa2d255ef211c7bc7e2",
+          "png_sha256": "2740e16c94f3c24fb1d87689af40556a0d8461242040fee9124e8285c9bbb933"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.2,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 8.502,
+        "height_stddev_max_mix": 9.432
+      },
+      "stats": {
+        "ao_mean": 0.8259,
+        "roughness_mean": 0.1805,
+        "detail_stddev": 12.02
+      },
+      "pixel_sha256": "a1112658929b3e32965001025d51a10be5551dee959f32730398385360bdbd51",
+      "png_sha256": "b4715fee1c0106924f781af9c12037a00bb56e3161676a0a0aa002c8030b6e4a"
+    },
+    "data--ice-cracked": {
+      "path": "res://moth/derived/data/ice-cracked.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "ice-cracked",
+          "pixel_sha256": "da1fdb2a6e13fa2cd931fc5a8deb1b9a1cf0684d15b3df8f24d8121356ebcbde",
+          "png_sha256": "2ebe487943a7835bef5ca43bf362d8ab8ed17ab656928ca1756ff2cb9738f945"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.24,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 8.948,
+        "height_stddev_max_mix": 9.744
+      },
+      "stats": {
+        "ao_mean": 0.9716,
+        "roughness_mean": 0.2139,
+        "detail_stddev": 5.28
+      },
+      "pixel_sha256": "fb4b24f3b57eca38f77bf4df373d48079120dabfa3b19da9a47d40e49b508990",
+      "png_sha256": "3b87798d6bef79e26f5754fc695d089feaccd6a59e8defa87669efb6e3ffe88f"
+    },
+    "data--macro-organic": {
+      "path": "res://moth/derived/data/macro-organic.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "macro-organic",
+          "pixel_sha256": "a11dffc90b37cc2209ee9857e4616dd5b09a9b20380dbdd5fecb93c40b79ac59",
+          "png_sha256": "de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.5,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 9.4,
+        "height_stddev_max_mix": 9.637
+      },
+      "stats": {
+        "ao_mean": 0.9665,
+        "roughness_mean": 0.4759,
+        "detail_stddev": 7.8
+      },
+      "pixel_sha256": "5522beccd3ce56dfd4112626bb9b1fa94216ed4ab1e4b523a365c606d42ddd14",
+      "png_sha256": "851d461a4c3467970f59fc95db598b72350c4ccc9aaeb8aaf5bc4c36e6d37df7"
+    },
+    "data--metal": {
+      "path": "res://moth/derived/data/metal.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "metal",
+          "pixel_sha256": "edda675d99ba52e3538cee8c2b664f7c8005a3d05a391508ea99e098aa077480",
+          "png_sha256": "1edff202b4755b6d8bd84f6e2499d9052df804e40a17d30cd0ee68926e3a7f46"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.38,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 15.089,
+        "height_stddev_max_mix": 15.803
+      },
+      "stats": {
+        "ao_mean": 0.9157,
+        "roughness_mean": 0.3717,
+        "detail_stddev": 24.71
+      },
+      "pixel_sha256": "e95cffc8c4e0d1fb2076444a41bd860284980f38c491edb41d8ea8e8e692cd5a",
+      "png_sha256": "b632154f203f3934796a5865d5a201cb74f967de012b6566800a857767dc6d7f"
+    },
+    "data--metal-oxide": {
+      "path": "res://moth/derived/data/metal-oxide.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "metal-oxide",
+          "pixel_sha256": "bbb111708d24226fd1ebe24fbdfc7e339a4f5f1edcff38884cc6e9b535e26e6c",
+          "png_sha256": "82ac59a91f7be9a0fd4182a8b83d7b2b7cf07d7bb6e98ae5b5ff006eedcb8257"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.72,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 6.245,
+        "height_stddev_max_mix": 6.247
+      },
+      "stats": {
+        "ao_mean": 0.9759,
+        "roughness_mean": 0.6927,
+        "detail_stddev": 5.38
+      },
+      "pixel_sha256": "0e69624625c2cea5d2d81ce82352fbb4f35f11ff4c4f5f57cd9017c4a6b2230d",
+      "png_sha256": "da3cd588f2f813ea41eff828feea084fb12b83fabff8ef6632b4f6583907cb08"
+    },
+    "data--metal_grating": {
+      "path": "res://moth/derived/data/metal_grating.png",
+      "kind": "data",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "metal_grating",
+          "pixel_sha256": "e693a20eb8ee6ddccffe4ba89921ddbb868656242d6fec6a674099b25536a971",
+          "png_sha256": "a9c19f1b0c7ebfb59a079a7a9780390baffcf5f0f593e2c6b5bc8c4977ab9372"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.45,
+        "height_channel": "max-mix",
+        "height_channel_note": "mean of rec709 luminance and the max channel",
+        "height_stddev_luminance": 22.876,
+        "height_stddev_max_mix": 30.317
+      },
+      "stats": {
+        "ao_mean": 0.8477,
+        "roughness_mean": 0.4919,
+        "detail_stddev": 55.97
+      },
+      "pixel_sha256": "0d5519c4d2ad2f03ef37e39b82cb1eacd75d69d1503b7703c4f67b9d0eb3ac53",
+      "png_sha256": "d6486b4612c45669e271534abe331c41a31d997805cc9249d16d9a324786b8a5"
+    },
+    "data--riveted_armor": {
+      "path": "res://moth/derived/data/riveted_armor.png",
+      "kind": "data",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "riveted_armor",
+          "pixel_sha256": "3df636ee97cd6569e880ff73d46e52527db3efa5840896fbd6a0f1b99e38bd80",
+          "png_sha256": "2afc1402d3438a9ffdea671d8b40b3d97811408613402c4f66c228e8621efdb9"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.58,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 10.111,
+        "height_stddev_max_mix": 7.658
+      },
+      "stats": {
+        "ao_mean": 0.9507,
+        "roughness_mean": 0.5645,
+        "detail_stddev": 17.88
+      },
+      "pixel_sha256": "1a0ff6dad3e2ac434370ed331d0e6f86a1b9c2c016cdd160474726ca9d6fcd10",
+      "png_sha256": "9b3f3ec5c69b36def42c2bdb536ce92a93c4ad92fe8610950b7ef49899dfced5"
+    },
+    "data--riveted_armor-scorched": {
+      "path": "res://moth/derived/data/riveted_armor-scorched.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "riveted_armor-scorched",
+          "pixel_sha256": "231709cd2e8eca18f98e835a484c1874e307a870472b408d0a695e5dd4b3b72e",
+          "png_sha256": "a7e8f11847cd2b402e9cc631039c28fd6d4e1d851e1555af58143fc820a511ec"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.66,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 37.57,
+        "height_stddev_max_mix": 39.576
+      },
+      "stats": {
+        "ao_mean": 0.85,
+        "roughness_mean": 0.6893,
+        "detail_stddev": 59.12
+      },
+      "pixel_sha256": "d29b640be9931bdb2586c2808d79299a18688fd3fd4c5e73f05a73312a172e46",
+      "png_sha256": "031722622b2bdb4afc76b208b8f3088bd3d57c3df6e4fb21e9f6c62fddf381f6"
+    },
+    "data--rock": {
+      "path": "res://moth/derived/data/rock.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "rock",
+          "pixel_sha256": "1c7e0a72a07f6a70c3f9bec34f1c9260c4a55f215a0c9da73b759d57524074f6",
+          "png_sha256": "aad5e455978fdae96d8a6784908c0019e33083f809cfcf606c7c84b13ca35504"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.95,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 2.888,
+        "height_stddev_max_mix": 3.112
+      },
+      "stats": {
+        "ao_mean": 0.9372,
+        "roughness_mean": 0.9224,
+        "detail_stddev": 4.48
+      },
+      "pixel_sha256": "30a9f290241df2290ab3f2f7cccfe350b6743aec0c39b1c7cda3103aa17bb4a6",
+      "png_sha256": "8b400da2a0313be935baa99d9422d577b4bd28eac1e330971e061b97be40ed90"
+    },
+    "data--rock-moss": {
+      "path": "res://moth/derived/data/rock-moss.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "rock-moss",
+          "pixel_sha256": "022e248a992780d478b970260ae6a9eed79ac58b68063fdb227b9e8ecec4904c",
+          "png_sha256": "80c63f01502fa13b0deb309c9d90a38104cde1b6877075d00d273b8a80dfdbda"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.92,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 9.137,
+        "height_stddev_max_mix": 9.223
+      },
+      "stats": {
+        "ao_mean": 0.9465,
+        "roughness_mean": 0.8952,
+        "detail_stddev": 7.21
+      },
+      "pixel_sha256": "be1f248f7815206e31132569dfeb7873e105baed23dc67a6fe319f3b8e686861",
+      "png_sha256": "ec5d3e90773537cb91ae4f7aaa5a90d13037336bf75cbd58a237da12f17907c8"
+    },
+    "data--rough_stucco-weathered": {
+      "path": "res://moth/derived/data/rough_stucco-weathered.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "rough_stucco-weathered",
+          "pixel_sha256": "69741890836220d011357b7fe3fb293095c3e22011785bfeda997c896c082331",
+          "png_sha256": "f74639c6eb1736a65e3eeda2705fcf55c3be1a6c21acd33b72cd76c4466ea593"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.86,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 5.754,
+        "height_stddev_max_mix": 5.812
+      },
+      "stats": {
+        "ao_mean": 0.9751,
+        "roughness_mean": 0.8336,
+        "detail_stddev": 5.73
+      },
+      "pixel_sha256": "52dcc397bbcfea8ef9add3a32141049e0f9a28a5430c15e532935bc589b576bc",
+      "png_sha256": "fd8cd1bc6f7e081835012968b1dcd1e04c28a591164fcd578e1daaebdb78e80a"
+    },
+    "data--sand": {
+      "path": "res://moth/derived/data/sand.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "sand",
+          "pixel_sha256": "4c924f108fa5000306682b81fb47033a66b07b2a7ac520fd7bf6f20b2ef05de0",
+          "png_sha256": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.95,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 3.654,
+        "height_stddev_max_mix": 3.804
+      },
+      "stats": {
+        "ao_mean": 0.986,
+        "roughness_mean": 0.9217,
+        "detail_stddev": 3.82
+      },
+      "pixel_sha256": "4aa3ea5f2ddc00465bfa343da03a9b69b99f30dad5ca3d2f1848bd6bcb209b68",
+      "png_sha256": "d8cb046449243f2817c8771aec533ca70aafa0b26e7fde64ef3a04f98ac536ca"
+    },
+    "data--weathered_concrete": {
+      "path": "res://moth/derived/data/weathered_concrete.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "weathered_concrete",
+          "pixel_sha256": "3585ee539d38d8daec3660239e1d9d86b2e1ae53bb589a8447b09d0fe1594aa8",
+          "png_sha256": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.88,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 10.64,
+        "height_stddev_max_mix": 11.249
+      },
+      "stats": {
+        "ao_mean": 0.9598,
+        "roughness_mean": 0.8541,
+        "detail_stddev": 5.86
+      },
+      "pixel_sha256": "a1fb6f8242eca2c33f51529929ef4e42df146c34171dbe0c630342e917723c43",
+      "png_sha256": "75af09daa0a49fb90419f9c23e68b1c8ebac0c082a7f90c5d84f2983b49a7951"
+    },
+    "data--weathered_concrete-damp": {
+      "path": "res://moth/derived/data/weathered_concrete-damp.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "weathered_concrete-damp",
+          "pixel_sha256": "8ebbc8fdf547d22f5152a177c3d1c9f5c8e5c08b3d639ce54598c5f01bdc60c9",
+          "png_sha256": "8a143f57858a26d6ea5ab81badc60cb0ea154294b9fe180c505cb1b472bd0fab"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.8,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 27.58,
+        "height_stddev_max_mix": 28.977
+      },
+      "stats": {
+        "ao_mean": 0.82,
+        "roughness_mean": 0.7886,
+        "detail_stddev": 19.38
+      },
+      "pixel_sha256": "33135be27459a5de7c4f09a93d0e483b88662375e7aecc476e58b5a071688775",
+      "png_sha256": "bdcdde3249e6479c91253fa646185a8232e5995b724ab8fd953a78241371eb3f"
+    },
+    "data--weathered_concrete-worn": {
+      "path": "res://moth/derived/data/weathered_concrete-worn.png",
+      "kind": "data",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "ao",
+        "g": "roughness",
+        "b": "detail",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "weathered_concrete-worn",
+          "pixel_sha256": "896b617ad27e9b881d393fd0b74280d94a13335b03e11d6ff5655691c875f576",
+          "png_sha256": "fc6707d6bf6ae6dc6dfec746100f83015ce74885976b20688280f29bcdf111cf"
+        }
+      ],
+      "algorithm": "luminance-ao-roughness-detail",
+      "parameters": {
+        "ao_radius": 6,
+        "ao_relative_gain": 1.6,
+        "ao_reference_floor": 24,
+        "ao_floor": 80,
+        "ao_ceiling": 255,
+        "roughness_hf_radius": 1,
+        "roughness_hf_smooth_radius": 2,
+        "roughness_hf_pivot": 12,
+        "roughness_hf_scale": 0.7,
+        "roughness_floor": 20,
+        "roughness_ceiling": 250,
+        "detail_radius": 2,
+        "detail_scale": 2,
+        "roughness_prior": 0.9,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded",
+        "height_stddev_luminance": 10.89,
+        "height_stddev_max_mix": 11.516
+      },
+      "stats": {
+        "ao_mean": 0.9572,
+        "roughness_mean": 0.8753,
+        "detail_stddev": 6.58
+      },
+      "pixel_sha256": "d92e16c808123e58da5e32dcc7c84d36f31d040705445bab6bf75c3e76d7292e",
+      "png_sha256": "9b7622f9280625dbb70ce45676c91b65214d443e84317ff1fd5ace7cc8fa1368"
+    },
+    "mask--circuit_board": {
+      "path": "res://moth/derived/masks/circuit_board.png",
+      "kind": "mask",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "accent_mask",
+        "g": "accent_mask",
+        "b": "accent_mask",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "circuit_board",
+          "pixel_sha256": "8b3d1bb46800246bb5efba399c878609f09582e35bcf70ad052ddf12fa418ad6",
+          "png_sha256": "7c932561546a3c38a1b78ae5b75a7842b85f238f9ed63b091e22fd58f18f809f"
+        }
+      ],
+      "algorithm": "mask-trace",
+      "parameters": {
+        "signal": "(g+b)/2-r",
+        "normalisation": "min/max of the raw signal",
+        "raw_signal_range": [
+          96.5,
+          116.5
+        ]
+      },
+      "stats": {
+        "mask_on_fraction": 0.8438
+      },
+      "pixel_sha256": "1b8fe0a07f3e148e81f41b66f47431084476e3527cba10cf5f76be3ca2a2097a",
+      "png_sha256": "4af14f7299d0763f6b6baeecba7e2b7a80fa3096300d4f192e646b1923d8c780"
+    },
+    "mask--hazard_stripes": {
+      "path": "res://moth/derived/masks/hazard_stripes.png",
+      "kind": "mask",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "accent_mask",
+        "g": "accent_mask",
+        "b": "accent_mask",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "hazard_stripes",
+          "pixel_sha256": "da43889b1a11de640d7372c0ae20c7dbef9eeac55bdd7d8286bc0a444e7a599f",
+          "png_sha256": "4f2bfb3fd45f16c485749606ba7cfb49b32d86c28c3fd1b0d942d69d613cff44"
+        }
+      ],
+      "algorithm": "mask-yellow-band",
+      "parameters": {
+        "signal": "(r+g)/2-b",
+        "normalisation": "min/max of the raw signal",
+        "raw_signal_range": [
+          51.5,
+          140.5
+        ]
+      },
+      "stats": {
+        "mask_on_fraction": 0.4826
+      },
+      "pixel_sha256": "90eb42970e217ec175e3487bd6d1890fee2ed9f3eabe0c421f9ed479cfd5c87a",
+      "png_sha256": "edce2dee413ad9343c685fadd1d0632247851098ac5ca92e3279043151d368a7"
+    },
+    "normal--alien_chitin": {
+      "path": "res://moth/derived/normals/alien_chitin.png",
+      "kind": "normal",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "alien_chitin",
+          "pixel_sha256": "98e70c6c05e1feeb5f7604f4c3b48c4983d49e7c30a3236bab6ca961234d5f12",
+          "png_sha256": "bea0cf2ebcd1b2add885e3f3615941c0a66db12dc47e077bb34d4e1176c284fe"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": 1,
+        "target_magnitude": 0.3,
+        "applied_scale": 85.578042,
+        "mean_slope": 0.003506,
+        "green_sign": 1,
+        "height_channel": "max-mix",
+        "height_channel_note": "mean of rec709 luminance and the max channel"
+      },
+      "stats": {
+        "mean_magnitude": 0.3
+      },
+      "pixel_sha256": "2798a17155719d821d377bb1ef0c3e0a50461a9e15e34ed882f269e9c8930b66",
+      "png_sha256": "c1bf5e853f75695bdad4e543c3c237ee3d6d934b5c29daace916e0a74a460eee"
+    },
+    "normal--riveted_armor": {
+      "path": "res://moth/derived/normals/riveted_armor.png",
+      "kind": "normal",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "riveted_armor",
+          "pixel_sha256": "3df636ee97cd6569e880ff73d46e52527db3efa5840896fbd6a0f1b99e38bd80",
+          "png_sha256": "2afc1402d3438a9ffdea671d8b40b3d97811408613402c4f66c228e8621efdb9"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": 1,
+        "target_magnitude": 0.55,
+        "applied_scale": 37.872308,
+        "mean_slope": 0.014522,
+        "green_sign": 1,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded"
+      },
+      "stats": {
+        "mean_magnitude": 0.55
+      },
+      "pixel_sha256": "59ed3bb38363f2b46eb8c22e81c9ecd6448e13afea1405a3846013ebe9b0a188",
+      "png_sha256": "86e039e81c256d1c32ba2cc5a1e73106f39cbca1ff0a3ba89c0e989569c6d699"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+MOTH_COVERAGE referenced=61/64 (95.3%) strict=61/64 derived=4/28
+  textures   30/31 strict 30  unused: industrial_mesh
+  normals    13/13 strict 13  unused: none
+  sky        5/5 strict 5  unused: none
+  materials  5/5 strict 5  unused: none
+  effects    8/10 strict 8  unused: effect-capture-ring, quantum-rift
+  derived     4/28 literal; never named: data--alien_chitin, data--brushed_metal, data--circuit_board-etch, data--corrugated_metal, data--diamond_plate, data--grass, data--hazard_stripes, data--hex_paneling, data--hex_paneling-mottle, data--ice, data--ice-cracked, data--macro-organic, data--metal, data--metal-oxide, data--metal_grating, data--riveted_armor, data--riveted_armor-scorched, data--rock, data--rock-moss, data--rough_stucco-weathered, data--weathered_concrete, data--weathered_concrete-damp, data--weathered_concrete-worn, normal--riveted_armor
