@@ -65,6 +65,8 @@ commands = [
     ("puma-presentation", [binary, "--headless", "--path", "godot", "--script", "res://tests/vehicles/test_puma.gd"]),
     ("sports-controls", [binary, "--headless", "--path", "godot", "--script", "res://tests/sports/test_controls.gd"]),
     ("sports-polish", [binary, "--headless", "--path", "godot", "--script", "res://tests/sports/test_polish.gd"]),
+    ("lattice-adapter", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/adapter.gd"]),
+    ("lattice-ui", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/ui.gd"]),
     ("control-safety", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/control_safety.gd"]),
     ("window-focus", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/window_focus.gd"]),
     ("session-recovery", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/session_recovery.gd"]),

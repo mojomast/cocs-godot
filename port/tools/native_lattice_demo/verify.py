@@ -21,7 +21,7 @@ if '--live' in sys.argv:
 if '--graphical' in sys.argv:
     for map_id, size in [('asterion-relay', '960x640'), ('monsoon-foundry', '1280x800')]:
         screenshot = (out / (map_id + '.png')).resolve()
-        cases.append((map_id + '-graphical', ['xvfb-run', '-a', '-s', '-screen 0 1400x1000x24 -nolisten tcp', 'node', 'port/tools/native_lattice_demo/run.mjs', '--smoke', '--map=' + map_id, '--size=' + size, '--capture=' + str(screenshot)]))
+        cases.append((map_id + '-graphical', ['xvfb-run', '-a', '-s', '-screen 0 1400x1000x24 -nolisten tcp -nolisten unix', 'node', 'port/tools/native_lattice_demo/run.mjs', '--smoke', '--map=' + map_id, '--size=' + size, '--capture=' + str(screenshot)]))
 results = []
 for name, command in cases:
     started = time.monotonic()

@@ -76,8 +76,16 @@ PORT=0 node tools/godot-dev/launch.mjs --play --map=verdant-reliquary --mode=ins
   scenes remain separate from the infantry setup menu; complete laps, goals,
   results/restart and human camera usability are not yet accepted.
 
-**Combined verification: all 44 implemented gates pass** after rocket and
-sports-polish integration at `b55861f` plus the gate/capture changes
+- **LATTICE command board:** standalone Asterion Relay and Monsoon Foundry UI
+  supports recipient-visible objectives/resources, HOLD orders and PvP Fighter
+  recruitment for 12 FLUX. Independent PvP/co-op UI-handler runs pass on both
+  maps; graphical captures were inspected. Co-op economy, physical-input
+  acceptance and full world interaction remain open. See the
+  [command-board guide](native-lattice/README.md) and
+  [independent evidence](reports/lattice-independent/README.md).
+
+**Combined verification: all 46 implemented gates pass** after LATTICE
+integration at `658b4e7` plus the gate/helper changes
 recorded with this batch. Independent driving passed on both sports maps;
 the default compact HUD's nonlethal damage/+35 HP/12-second return was also
 independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).
