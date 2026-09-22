@@ -255,6 +255,15 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
     files.
   - **Medium — stale Aurora evidence images** (old hash 909daa29, pre-navigation)
     and **Low — missing post-fix Prism images**; both assigned to the trap-fix lane.
+  - **Trap fix delivered and accepted** (`bdfa4203`): compiler now buries/terraces/
+    overhangs movement bands and Prism+Aurora guard rails carry walkable caps, so the
+    contact band cannot strand an actor; visible geometry and ray collision unchanged,
+    Cinder keeps its safety walls. Lead re-ran the real launcher smoke on the new hashes
+    (prism `1901d0ae…` ack16, aurora `8457812f…` ack13, cinder `2d5e5cfa…` ack17) and
+    `actual-maps.mjs` 3/3; the flagged `probe.gd` sealed-volume retarget is reviewed and
+    accepted. Residual Cinder caldera-step locks at seed 20260922 (97.5 s / 22 s / ≤2 s,
+    pre-existing natural-terrain class) went back to the same lane for authored terrain
+    reshaping and is a release blocker if it cannot be bounded below 1.5 s.
   - **Low — unknown authority options silently ignored and readiness answering on
     any path**; assigned to the route lane as cheap strictness work.
   - **Low — concurrent operator-lane import noise** in review runs, expected to
