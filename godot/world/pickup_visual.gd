@@ -60,7 +60,7 @@ func apply_kind(value: String) -> void:
 	label.outline_modulate = Color("172030")
 	label.outline_size = 6
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	label.visibility_range_end = 12.0
+	label.visibility_range_end = 6.0
 	label.visibility_range_end_margin = 2.0
 	add_child(label)
 	set_meta("kind", kind)
