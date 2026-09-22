@@ -1,0 +1,322 @@
+TAP version 13
+# Subtest: Horde is default-ten-wave local-only and refuses unsupported or ignored controls
+ok 1 - Horde is default-ten-wave local-only and refuses unsupported or ignored controls
+  ---
+  duration_ms: 2.554937
+  type: 'test'
+  ...
+# Subtest: existing viewer, combat setup and smoke routes stay compatible
+ok 2 - existing viewer, combat setup and smoke routes stay compatible
+  ---
+  duration_ms: 0.208491
+  type: 'test'
+  ...
+# Subtest: each standalone map/mode reaches its actual scene and locked identity
+ok 3 - each standalone map/mode reaches its actual scene and locked identity
+  ---
+  duration_ms: 0.77418
+  type: 'test'
+  ...
+# Subtest: standalone selection rejects substitutions, unsupported modes and ignored options
+ok 4 - standalone selection rejects substitutions, unsupported modes and ignored options
+  ---
+  duration_ms: 0.371376
+  type: 'test'
+  ...
+# Subtest: sports round options preserve legal ordinary configuration without silent clamping
+ok 5 - sports round options preserve legal ordinary configuration without silent clamping
+  ---
+  duration_ms: 0.981419
+  type: 'test'
+  ...
+# Subtest: world traversal and command board remain distinct native scenes
+ok 6 - world traversal and command board remain distinct native scenes
+  ---
+  duration_ms: 0.11204
+  type: 'test'
+  ...
+# Subtest: actual Horde transitive closure is classified separately and source-byte locked
+ok 7 - actual Horde transitive closure is classified separately and source-byte locked
+  ---
+  duration_ms: 304.147678
+  type: 'test'
+  ...
+# Subtest: closure rejects unreviewed adapter imports, external dependencies and runtime imports
+ok 8 - closure rejects unreviewed adapter imports, external dependencies and runtime imports
+  ---
+  duration_ms: 79.292752
+  type: 'test'
+  ...
+# Subtest: unchanged public Room still rejects Horde configuration
+ok 9 - unchanged public Room still rejects Horde configuration
+  ---
+  duration_ms: 1.356441
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: exit
+ok 10 - package Horde synthetic factory: exit
+  ---
+  duration_ms: 72.413604
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: native-failure
+ok 11 - package Horde synthetic factory: native-failure
+  ---
+  duration_ms: 72.421709
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: native-crash
+ok 12 - package Horde synthetic factory: native-crash
+  ---
+  duration_ms: 74.807228
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: missing-native
+ok 13 - package Horde synthetic factory: missing-native
+  ---
+  duration_ms: 58.347532
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: interrupt
+ok 14 - package Horde synthetic factory: interrupt
+  ---
+  duration_ms: 186.502474
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: terminate
+ok 15 - package Horde synthetic factory: terminate
+  ---
+  duration_ms: 176.670615
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: server-failure
+ok 16 - package Horde synthetic factory: server-failure
+  ---
+  duration_ms: 341.736549
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: listen-failure
+ok 17 - package Horde synthetic factory: listen-failure
+  ---
+  duration_ms: 34.935581
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: factory-failure
+ok 18 - package Horde synthetic factory: factory-failure
+  ---
+  duration_ms: 34.479456
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: wrong-service
+ok 19 - package Horde synthetic factory: wrong-service
+  ---
+  duration_ms: 45.331316
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: wrong-transport
+ok 20 - package Horde synthetic factory: wrong-transport
+  ---
+  duration_ms: 48.076429
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: string-transport
+ok 21 - package Horde synthetic factory: string-transport
+  ---
+  duration_ms: 43.279953
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: wrong-local
+ok 22 - package Horde synthetic factory: wrong-local
+  ---
+  duration_ms: 48.294337
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: wrong-port
+ok 23 - package Horde synthetic factory: wrong-port
+  ---
+  duration_ms: 47.884059
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: bad-args
+ok 24 - package Horde synthetic factory: bad-args
+  ---
+  duration_ms: 22.166668
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: exit
+ok 25 - dev Horde synthetic factory: exit
+  ---
+  duration_ms: 80.710909
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: native-failure
+ok 26 - dev Horde synthetic factory: native-failure
+  ---
+  duration_ms: 81.898814
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: native-crash
+ok 27 - dev Horde synthetic factory: native-crash
+  ---
+  duration_ms: 83.937083
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: missing-native
+ok 28 - dev Horde synthetic factory: missing-native
+  ---
+  duration_ms: 23.336029
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: interrupt
+ok 29 - dev Horde synthetic factory: interrupt
+  ---
+  duration_ms: 186.245323
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: terminate
+ok 30 - dev Horde synthetic factory: terminate
+  ---
+  duration_ms: 192.67023
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: server-failure
+ok 31 - dev Horde synthetic factory: server-failure
+  ---
+  duration_ms: 362.450206
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: listen-failure
+ok 32 - dev Horde synthetic factory: listen-failure
+  ---
+  duration_ms: 50.417164
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: factory-failure
+ok 33 - dev Horde synthetic factory: factory-failure
+  ---
+  duration_ms: 51.119951
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: wrong-service
+ok 34 - dev Horde synthetic factory: wrong-service
+  ---
+  duration_ms: 59.436933
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: wrong-transport
+ok 35 - dev Horde synthetic factory: wrong-transport
+  ---
+  duration_ms: 71.961487
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: string-transport
+ok 36 - dev Horde synthetic factory: string-transport
+  ---
+  duration_ms: 67.955512
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: wrong-local
+ok 37 - dev Horde synthetic factory: wrong-local
+  ---
+  duration_ms: 60.734083
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: wrong-port
+ok 38 - dev Horde synthetic factory: wrong-port
+  ---
+  duration_ms: 73.44696
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: bad-args
+ok 39 - dev Horde synthetic factory: bad-args
+  ---
+  duration_ms: 24.19586
+  type: 'test'
+  ...
+# Subtest: package: opt-in lobby distinguishes owned and explicit external authority
+ok 40 - package: opt-in lobby distinguishes owned and explicit external authority
+  ---
+  duration_ms: 1.140427
+  type: 'test'
+  ...
+# Subtest: package: invalid lobby configuration fails before starting anything
+ok 41 - package: invalid lobby configuration fails before starting anything
+  ---
+  duration_ms: 0.580517
+  type: 'test'
+  ...
+# Subtest: dev: opt-in lobby distinguishes owned and explicit external authority
+ok 42 - dev: opt-in lobby distinguishes owned and explicit external authority
+  ---
+  duration_ms: 0.404117
+  type: 'test'
+  ...
+# Subtest: dev: invalid lobby configuration fails before starting anything
+ok 43 - dev: invalid lobby configuration fails before starting anything
+  ---
+  duration_ms: 0.235301
+  type: 'test'
+  ...
+# Subtest: package: external authority ownership and cleanup on exit
+ok 44 - package: external authority ownership and cleanup on exit
+  ---
+  duration_ms: 49.410097
+  type: 'test'
+  ...
+# Subtest: package: external authority ownership and cleanup on native-failure
+ok 45 - package: external authority ownership and cleanup on native-failure
+  ---
+  duration_ms: 47.686268
+  type: 'test'
+  ...
+# Subtest: package: external authority ownership and cleanup on missing-native
+ok 46 - package: external authority ownership and cleanup on missing-native
+  ---
+  duration_ms: 30.364617
+  type: 'test'
+  ...
+# Subtest: dev: external authority ownership and cleanup on exit
+ok 47 - dev: external authority ownership and cleanup on exit
+  ---
+  duration_ms: 61.173907
+  type: 'test'
+  ...
+# Subtest: dev: external authority ownership and cleanup on native-failure
+ok 48 - dev: external authority ownership and cleanup on native-failure
+  ---
+  duration_ms: 62.268808
+  type: 'test'
+  ...
+# Subtest: dev: external authority ownership and cleanup on missing-native
+ok 49 - dev: external authority ownership and cleanup on missing-native
+  ---
+  duration_ms: 25.828148
+  type: 'test'
+  ...
+# Subtest: Horde package route is local-only, fixed default and rejects ignored options
+ok 50 - Horde package route is local-only, fixed default and rejects ignored options
+  ---
+  duration_ms: 2.439721
+  type: 'test'
+  ...
+# Subtest: package scene routing covers all nine locked identities and preserves native capability subsets
+ok 51 - package scene routing covers all nine locked identities and preserves native capability subsets
+  ---
+  duration_ms: 0.571931
+  type: 'test'
+  ...
+# Subtest: bad package arguments fail before opening an owned server; no silent scene/mode fallback
+ok 52 - bad package arguments fail before opening an owned server; no silent scene/mode fallback
+  ---
+  duration_ms: 0.566081
+  type: 'test'
+  ...
+1..52
+# tests 52
+# suites 0
+# pass 52
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2816.266659

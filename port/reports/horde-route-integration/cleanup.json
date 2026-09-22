@@ -1,0 +1,198 @@
+{
+  "checks": [
+    {
+      "case": "host-setup",
+      "port": 45317,
+      "listener_closed": true,
+      "pids": {
+        "3914259": true
+      }
+    },
+    {
+      "case": "lobby-menu",
+      "port": 38197,
+      "listener_closed": true,
+      "pids": {
+        "3914990": true
+      }
+    },
+    {
+      "case": "lobby-external",
+      "port": 42819,
+      "listener_closed": true,
+      "pids": {
+        "3915935": true
+      }
+    },
+    {
+      "case": "lobby-external-interrupt",
+      "port": 42819,
+      "listener_closed": true,
+      "pids": {
+        "3916627": true
+      }
+    },
+    {
+      "case": "combat",
+      "port": 39451,
+      "listener_closed": true,
+      "pids": {
+        "3917366": true
+      }
+    },
+    {
+      "case": "lattice-world",
+      "port": 42225,
+      "listener_closed": true,
+      "pids": {
+        "3917885": true
+      }
+    },
+    {
+      "case": "domination",
+      "port": 43199,
+      "listener_closed": true,
+      "pids": {
+        "3918353": true
+      }
+    },
+    {
+      "case": "koth",
+      "port": 43607,
+      "listener_closed": true,
+      "pids": {
+        "3919196": true
+      }
+    },
+    {
+      "case": "combined-arms",
+      "port": 46015,
+      "listener_closed": true,
+      "pids": {
+        "3919934": true
+      }
+    },
+    {
+      "case": "arms-race",
+      "port": 44087,
+      "listener_closed": true,
+      "pids": {
+        "3920656": true
+      }
+    },
+    {
+      "case": "race",
+      "port": 42719,
+      "listener_closed": true,
+      "pids": {
+        "3921485": true
+      }
+    },
+    {
+      "case": "soccer",
+      "port": 32777,
+      "listener_closed": true,
+      "pids": {
+        "3922189": true
+      }
+    },
+    {
+      "case": "interrupt",
+      "port": 37571,
+      "listener_closed": true,
+      "pids": {
+        "3922919": true
+      }
+    },
+    {
+      "case": "native-crash",
+      "port": 45677,
+      "listener_closed": true,
+      "pids": {
+        "3923366": true
+      }
+    },
+    {
+      "case": "horde",
+      "port": 39493,
+      "listener_closed": true,
+      "pids": {
+        "3923808": true
+      }
+    },
+    {
+      "case": "horde-native-crash",
+      "port": 38319,
+      "listener_closed": true,
+      "pids": {
+        "3924648": true
+      }
+    },
+    {
+      "case": "horde-product-meridian-exchange-960",
+      "port": 39515,
+      "listener_closed": true,
+      "pids": {
+        "3925278": true,
+        "3925270": true
+      }
+    },
+    {
+      "case": "horde-product-meridian-exchange-1280",
+      "port": 35805,
+      "listener_closed": true,
+      "pids": {
+        "3926159": true,
+        "3926096": true
+      }
+    },
+    {
+      "case": "horde-product-verdant-reliquary-960",
+      "port": 32917,
+      "listener_closed": true,
+      "pids": {
+        "3927142": true,
+        "3927122": true
+      }
+    },
+    {
+      "case": "horde-product-verdant-reliquary-1280",
+      "port": 38761,
+      "listener_closed": true,
+      "pids": {
+        "3927978": true,
+        "3927960": true
+      }
+    },
+    {
+      "case": "horde-product-ember-crucible-960",
+      "port": 45917,
+      "listener_closed": true,
+      "pids": {
+        "3928875": true,
+        "3928753": true
+      }
+    },
+    {
+      "case": "horde-product-ember-crucible-1280",
+      "port": 39899,
+      "listener_closed": true,
+      "pids": {
+        "3929776": true,
+        "3929738": true
+      }
+    }
+  ],
+  "xdg_and_home_removed": [
+    "/tmp/opencode/cocs-package-play-dv_6knmc/home",
+    "/tmp/opencode/cocs-package-play-dv_6knmc/XDG_DATA_HOME",
+    "/tmp/opencode/cocs-package-play-dv_6knmc/XDG_CONFIG_HOME",
+    "/tmp/opencode/cocs-package-play-dv_6knmc/XDG_CACHE_HOME",
+    "/tmp/opencode/cocs-package-play-dv_6knmc/XDG_RUNTIME_DIR"
+  ],
+  "private_observer_directories_absent": true,
+  "temporary_launcher_directories_absent": true,
+  "owned_live_processes": [],
+  "xvfb_reaped": "verifier finally calls terminate + wait(timeout=10); successful verifier exit 0",
+  "preserved_extraction": "/tmp/opencode/cocs-package-play-dv_6knmc"
+}

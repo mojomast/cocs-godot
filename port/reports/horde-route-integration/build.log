@@ -1,0 +1,9 @@
+{
+  "archive": "/tmp/opencode/horde-route-package/builds/1790057444475947148/cocs-native-linux.tar.gz",
+  "archive_sha256": "cc34790c0356b9b5c9cea177a4dd2d4ea740e3d905ba44dfb34554fbb8a30089",
+  "manifest_sha256": "27e6c8ef82b3c40fa0b2c61a28b84470252aa7392325afaefcb9ca0ebe6e2f67",
+  "package": "/tmp/opencode/horde-route-package/builds/1790057444475947148/cocs-native-linux",
+  "build": "/tmp/opencode/horde-route-package/builds/1790057444475947148",
+  "inputs_sha256": "89fa4ea0334666b9e89517a806e6a40cedd89adbc36a840bd0a8f3f9c74ddc37",
+  "generated_resources_sha256": "a4a3ce285829458b9ecd92183902e51e5dece937729d32ef7e8d5f20d8ad97df"
+}

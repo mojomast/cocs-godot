@@ -1,0 +1,587 @@
+{
+  "adapterModules": {
+    "port/native-horde/authority.mjs": [
+      "node:http",
+      "ws",
+      "../../game/core.mjs",
+      "../../game/config.mjs",
+      "../../game/protocol.mjs",
+      "./input-buffer.mjs"
+    ],
+    "port/native-horde/input-buffer.mjs": []
+  },
+  "entry": "server/game-server.mjs",
+  "external": [
+    "ws"
+  ],
+  "hordeAdditionalSource": [],
+  "hordeEntry": "port/native-horde/authority.mjs",
+  "modules": {
+    "game/alt-fire.mjs": [],
+    "game/arenas.mjs": [
+      "./maps.mjs",
+      "./config.mjs"
+    ],
+    "game/arsenal-maps.mjs": [
+      "./map-schema.mjs"
+    ],
+    "game/assault.mjs": [],
+    "game/attachments.mjs": [],
+    "game/battle-maps.mjs": [
+      "./map-schema.mjs"
+    ],
+    "game/blood-gulch.mjs": [
+      "./terrain.mjs",
+      "./map-schema.mjs"
+    ],
+    "game/bot-personalities.mjs": [
+      "./operator-profiles.mjs",
+      "./harness-profiles.mjs"
+    ],
+    "game/bots.mjs": [
+      "./core.mjs",
+      "./data.mjs",
+      "./config.mjs",
+      "./harness-profiles.mjs",
+      "./operator-profiles.mjs",
+      "./bot-personalities.mjs",
+      "./kits.mjs",
+      "./enemy-types.mjs",
+      "./character-anim.mjs",
+      "./payload.mjs",
+      "./alt-fire.mjs",
+      "./cocs-bots.mjs",
+      "./vehicles.mjs"
+    ],
+    "game/build-identity.mjs": [
+      "./changelog.mjs",
+      "./protocol.mjs"
+    ],
+    "game/campaign-anchors.mjs": [],
+    "game/campaign-data.mjs": [],
+    "game/changelog.mjs": [],
+    "game/character-anim.mjs": [
+      "./math.mjs",
+      "./deaths.mjs",
+      "./ragdoll.mjs"
+    ],
+    "game/cocs-bots.mjs": [
+      "./cocs.mjs",
+      "./cocs-economy.mjs"
+    ],
+    "game/cocs-coop.mjs": [
+      "./data.mjs",
+      "./cocs-squads.mjs",
+      "./cocs-economy.mjs",
+      "./cocs.mjs",
+      "./cocs-traversal.mjs",
+      "./singleplayer.mjs",
+      "./cocs-difficulty.mjs",
+      "./cocs-director.mjs",
+      "./cocs-roles.mjs",
+      "./cocs-terminals.mjs",
+      "./lattice-support.mjs"
+    ],
+    "game/cocs-difficulty.mjs": [],
+    "game/cocs-director.mjs": [
+      "./cocs-difficulty.mjs"
+    ],
+    "game/cocs-economy.mjs": [
+      "./progression.mjs"
+    ],
+    "game/cocs-intel.mjs": [],
+    "game/cocs-roles.mjs": [
+      "./cocs-economy.mjs"
+    ],
+    "game/cocs-squads.mjs": [],
+    "game/cocs-terminals.mjs": [
+      "./data.mjs",
+      "./lattice-support.mjs",
+      "./cocs.mjs",
+      "./cocs-roles.mjs"
+    ],
+    "game/cocs-traversal.mjs": [
+      "./cocs-economy.mjs",
+      "./data.mjs",
+      "./movement.mjs",
+      "./vehicles.mjs"
+    ],
+    "game/cocs.mjs": [
+      "./config.mjs",
+      "./data.mjs",
+      "./cocs-squads.mjs",
+      "./terrain.mjs",
+      "./cocs-economy.mjs",
+      "./cocs-roles.mjs",
+      "./cocs-traversal.mjs",
+      "./cocs-terminals.mjs",
+      "./cocs-difficulty.mjs",
+      "./cocs-coop.mjs",
+      "./lattice-support.mjs"
+    ],
+    "game/config.mjs": [
+      "./data.mjs",
+      "./campaign-data.mjs",
+      "./cocs-difficulty.mjs"
+    ],
+    "game/core.mjs": [
+      "./data.mjs",
+      "./alt-fire.mjs",
+      "./maps.mjs",
+      "./config.mjs",
+      "./cocs-difficulty.mjs",
+      "./harness-profiles.mjs",
+      "./spec-effects.mjs",
+      "./movement.mjs",
+      "./operator-verbs.mjs",
+      "./character-anim.mjs",
+      "./progression.mjs",
+      "./attachments.mjs",
+      "./terrain.mjs",
+      "./terrain-bvh.mjs",
+      "./floor-lattice.mjs",
+      "./spatial.mjs",
+      "./vehicles.mjs",
+      "./mode-data.mjs",
+      "./cocs.mjs",
+      "./cocs-coop.mjs",
+      "./cocs-squads.mjs",
+      "./lattice-support.mjs",
+      "./cocs-traversal.mjs",
+      "./cocs-bots.mjs",
+      "./deaths.mjs",
+      "./payload.mjs",
+      "./race.mjs",
+      "./soccer.mjs",
+      "./singleplayer.mjs",
+      "./outcome.mjs",
+      "./spawn-placement.mjs",
+      "./bots.mjs",
+      "./objectives.mjs"
+    ],
+    "game/cosmetics.mjs": [],
+    "game/ctf-maps.mjs": [
+      "./terrain.mjs",
+      "./map-schema.mjs"
+    ],
+    "game/data.mjs": [],
+    "game/deaths.mjs": [],
+    "game/destination-combat-maps.mjs": [
+      "./levelgen.mjs",
+      "./map-schema.mjs",
+      "./structures.mjs",
+      "./terrain.mjs"
+    ],
+    "game/destination-lattice-maps.mjs": [
+      "./map-schema.mjs",
+      "./floor-lattice.mjs"
+    ],
+    "game/destination-maps.mjs": [
+      "./destination-combat-maps.mjs",
+      "./destination-objective-maps.mjs",
+      "./destination-lattice-maps.mjs",
+      "./destination-sports-maps.mjs",
+      "./map-schema.mjs"
+    ],
+    "game/destination-objective-maps.mjs": [
+      "./levelgen.mjs",
+      "./map-schema.mjs"
+    ],
+    "game/destination-sports-maps.mjs": [
+      "./map-schema.mjs",
+      "./structures.mjs"
+    ],
+    "game/enemy-types.mjs": [
+      "./bot-personalities.mjs"
+    ],
+    "game/expansion-maps.mjs": [
+      "./map-schema.mjs"
+    ],
+    "game/floor-lattice.mjs": [
+      "./terrain.mjs"
+    ],
+    "game/harness-profiles.mjs": [
+      "./data.mjs",
+      "./math.mjs"
+    ],
+    "game/island-maps.mjs": [
+      "./map-schema.mjs"
+    ],
+    "game/kits.mjs": [
+      "./data.mjs",
+      "./harness-profiles.mjs",
+      "./progression.mjs",
+      "./lattice-roles.mjs"
+    ],
+    "game/lattice-foundry.mjs": [
+      "./floor-lattice.mjs"
+    ],
+    "game/lattice-maps.mjs": [
+      "./map-schema.mjs",
+      "./lattice-foundry.mjs"
+    ],
+    "game/lattice-roles.mjs": [
+      "./data.mjs"
+    ],
+    "game/lattice-support.mjs": [
+      "./data.mjs",
+      "./kits.mjs",
+      "./operator-verbs.mjs"
+    ],
+    "game/levelgen.mjs": [
+      "./structures.mjs",
+      "./terrain.mjs",
+      "./data.mjs",
+      "./math.mjs",
+      "./map-schema.mjs"
+    ],
+    "game/map-schema.mjs": [
+      "./cocs-economy.mjs"
+    ],
+    "game/maps.mjs": [
+      "./island-maps.mjs",
+      "./blood-gulch.mjs",
+      "./expansion-maps.mjs",
+      "./ctf-maps.mjs",
+      "./battle-maps.mjs",
+      "./arsenal-maps.mjs",
+      "./nextgen-maps.mjs",
+      "./race-maps.mjs",
+      "./soccer-maps.mjs",
+      "./lattice-maps.mjs",
+      "./destination-maps.mjs",
+      "./map-schema.mjs"
+    ],
+    "game/math.mjs": [],
+    "game/mode-data.mjs": [
+      "./config.mjs",
+      "./terrain.mjs",
+      "./assault.mjs",
+      "./payload.mjs",
+      "./cocs.mjs"
+    ],
+    "game/moth-assets.mjs": [
+      "./moth-baked.mjs"
+    ],
+    "game/moth-baked.mjs": [],
+    "game/moth-maps.mjs": [
+      "./levelgen.mjs",
+      "./moth-assets.mjs"
+    ],
+    "game/movement.mjs": [
+      "./kits.mjs",
+      "./math.mjs"
+    ],
+    "game/nextgen-maps.mjs": [
+      "./levelgen.mjs",
+      "./terrain.mjs",
+      "./moth-maps.mjs",
+      "./moth-assets.mjs",
+      "./moth-baked.mjs"
+    ],
+    "game/objectives.mjs": [
+      "./data.mjs",
+      "./core.mjs",
+      "./config.mjs",
+      "./assault.mjs",
+      "./payload.mjs",
+      "./cocs.mjs",
+      "./operator-verbs.mjs"
+    ],
+    "game/operator-profiles.mjs": [
+      "./data.mjs",
+      "./kits.mjs"
+    ],
+    "game/operator-verbs.mjs": [
+      "./kits.mjs"
+    ],
+    "game/outcome.mjs": [
+      "./config.mjs"
+    ],
+    "game/payload.mjs": [
+      "./floor-lattice.mjs"
+    ],
+    "game/progression.mjs": [
+      "./attachments.mjs",
+      "./cosmetics.mjs"
+    ],
+    "game/protocol.mjs": [
+      "./math.mjs"
+    ],
+    "game/quantize.mjs": [],
+    "game/race-maps.mjs": [],
+    "game/race.mjs": [
+      "./vehicles.mjs",
+      "./math.mjs"
+    ],
+    "game/ragdoll.mjs": [
+      "./math.mjs",
+      "./deaths.mjs"
+    ],
+    "game/ranked.mjs": [],
+    "game/singleplayer.mjs": [
+      "./campaign-anchors.mjs",
+      "./data.mjs",
+      "./config.mjs",
+      "./campaign-data.mjs",
+      "./enemy-types.mjs",
+      "./bots.mjs",
+      "./story.mjs"
+    ],
+    "game/soccer-maps.mjs": [
+      "./race-maps.mjs",
+      "./map-schema.mjs"
+    ],
+    "game/soccer.mjs": [
+      "./vehicles.mjs",
+      "./race.mjs",
+      "./math.mjs"
+    ],
+    "game/spatial.mjs": [
+      "./data.mjs",
+      "./floor-lattice.mjs",
+      "./terrain.mjs"
+    ],
+    "game/spawn-placement.mjs": [],
+    "game/spec-effects.mjs": [
+      "./data.mjs",
+      "./kits.mjs"
+    ],
+    "game/story.mjs": [],
+    "game/structures.mjs": [],
+    "game/terrain-bvh.mjs": [
+      "./terrain.mjs"
+    ],
+    "game/terrain.mjs": [
+      "./floor-lattice.mjs",
+      "./terrain-bvh.mjs"
+    ],
+    "game/vehicles.mjs": [
+      "./math.mjs"
+    ],
+    "server/game-server.mjs": [
+      "node:http",
+      "node:url",
+      "ws",
+      "./rooms.mjs",
+      "./history.mjs",
+      "./progression.mjs",
+      "../game/protocol.mjs",
+      "../game/build-identity.mjs",
+      "../game/config.mjs",
+      "../game/outcome.mjs",
+      "../game/ranked.mjs",
+      "node:crypto"
+    ],
+    "server/history.mjs": [
+      "node:fs",
+      "node:fs/promises",
+      "node:path",
+      "node:crypto",
+      "../game/config.mjs",
+      "../game/outcome.mjs"
+    ],
+    "server/progression.mjs": [
+      "node:fs",
+      "node:fs/promises",
+      "node:path",
+      "node:crypto",
+      "../game/progression.mjs",
+      "../game/attachments.mjs",
+      "../game/cosmetics.mjs",
+      "../game/protocol.mjs",
+      "../game/ranked.mjs"
+    ],
+    "server/room.mjs": [
+      "../game/core.mjs",
+      "../game/config.mjs",
+      "../game/movement.mjs",
+      "../game/singleplayer.mjs",
+      "../game/outcome.mjs",
+      "../game/maps.mjs",
+      "../game/arenas.mjs",
+      "../game/data.mjs",
+      "../game/cocs.mjs",
+      "../game/cocs-coop.mjs",
+      "../game/cocs-difficulty.mjs",
+      "../game/cocs-terminals.mjs",
+      "../game/cocs-roles.mjs",
+      "../game/cocs-economy.mjs",
+      "../game/cocs-traversal.mjs",
+      "node:crypto",
+      "../game/protocol.mjs",
+      "../game/cocs-squads.mjs",
+      "../game/cocs-intel.mjs",
+      "../game/quantize.mjs"
+    ],
+    "server/rooms.mjs": [
+      "./room.mjs",
+      "../game/config.mjs"
+    ]
+  },
+  "routes": {
+    "horde": [
+      "game/alt-fire.mjs",
+      "game/arsenal-maps.mjs",
+      "game/assault.mjs",
+      "game/attachments.mjs",
+      "game/battle-maps.mjs",
+      "game/blood-gulch.mjs",
+      "game/bot-personalities.mjs",
+      "game/bots.mjs",
+      "game/campaign-anchors.mjs",
+      "game/campaign-data.mjs",
+      "game/character-anim.mjs",
+      "game/cocs-bots.mjs",
+      "game/cocs-coop.mjs",
+      "game/cocs-difficulty.mjs",
+      "game/cocs-director.mjs",
+      "game/cocs-economy.mjs",
+      "game/cocs-roles.mjs",
+      "game/cocs-squads.mjs",
+      "game/cocs-terminals.mjs",
+      "game/cocs-traversal.mjs",
+      "game/cocs.mjs",
+      "game/config.mjs",
+      "game/core.mjs",
+      "game/cosmetics.mjs",
+      "game/ctf-maps.mjs",
+      "game/data.mjs",
+      "game/deaths.mjs",
+      "game/destination-combat-maps.mjs",
+      "game/destination-lattice-maps.mjs",
+      "game/destination-maps.mjs",
+      "game/destination-objective-maps.mjs",
+      "game/destination-sports-maps.mjs",
+      "game/enemy-types.mjs",
+      "game/expansion-maps.mjs",
+      "game/floor-lattice.mjs",
+      "game/harness-profiles.mjs",
+      "game/island-maps.mjs",
+      "game/kits.mjs",
+      "game/lattice-foundry.mjs",
+      "game/lattice-maps.mjs",
+      "game/lattice-roles.mjs",
+      "game/lattice-support.mjs",
+      "game/levelgen.mjs",
+      "game/map-schema.mjs",
+      "game/maps.mjs",
+      "game/math.mjs",
+      "game/mode-data.mjs",
+      "game/moth-assets.mjs",
+      "game/moth-baked.mjs",
+      "game/moth-maps.mjs",
+      "game/movement.mjs",
+      "game/nextgen-maps.mjs",
+      "game/objectives.mjs",
+      "game/operator-profiles.mjs",
+      "game/operator-verbs.mjs",
+      "game/outcome.mjs",
+      "game/payload.mjs",
+      "game/progression.mjs",
+      "game/protocol.mjs",
+      "game/race-maps.mjs",
+      "game/race.mjs",
+      "game/ragdoll.mjs",
+      "game/singleplayer.mjs",
+      "game/soccer-maps.mjs",
+      "game/soccer.mjs",
+      "game/spatial.mjs",
+      "game/spawn-placement.mjs",
+      "game/spec-effects.mjs",
+      "game/story.mjs",
+      "game/structures.mjs",
+      "game/terrain-bvh.mjs",
+      "game/terrain.mjs",
+      "game/vehicles.mjs",
+      "port/native-horde/authority.mjs",
+      "port/native-horde/input-buffer.mjs"
+    ],
+    "ordinary": [
+      "game/alt-fire.mjs",
+      "game/arenas.mjs",
+      "game/arsenal-maps.mjs",
+      "game/assault.mjs",
+      "game/attachments.mjs",
+      "game/battle-maps.mjs",
+      "game/blood-gulch.mjs",
+      "game/bot-personalities.mjs",
+      "game/bots.mjs",
+      "game/build-identity.mjs",
+      "game/campaign-anchors.mjs",
+      "game/campaign-data.mjs",
+      "game/changelog.mjs",
+      "game/character-anim.mjs",
+      "game/cocs-bots.mjs",
+      "game/cocs-coop.mjs",
+      "game/cocs-difficulty.mjs",
+      "game/cocs-director.mjs",
+      "game/cocs-economy.mjs",
+      "game/cocs-intel.mjs",
+      "game/cocs-roles.mjs",
+      "game/cocs-squads.mjs",
+      "game/cocs-terminals.mjs",
+      "game/cocs-traversal.mjs",
+      "game/cocs.mjs",
+      "game/config.mjs",
+      "game/core.mjs",
+      "game/cosmetics.mjs",
+      "game/ctf-maps.mjs",
+      "game/data.mjs",
+      "game/deaths.mjs",
+      "game/destination-combat-maps.mjs",
+      "game/destination-lattice-maps.mjs",
+      "game/destination-maps.mjs",
+      "game/destination-objective-maps.mjs",
+      "game/destination-sports-maps.mjs",
+      "game/enemy-types.mjs",
+      "game/expansion-maps.mjs",
+      "game/floor-lattice.mjs",
+      "game/harness-profiles.mjs",
+      "game/island-maps.mjs",
+      "game/kits.mjs",
+      "game/lattice-foundry.mjs",
+      "game/lattice-maps.mjs",
+      "game/lattice-roles.mjs",
+      "game/lattice-support.mjs",
+      "game/levelgen.mjs",
+      "game/map-schema.mjs",
+      "game/maps.mjs",
+      "game/math.mjs",
+      "game/mode-data.mjs",
+      "game/moth-assets.mjs",
+      "game/moth-baked.mjs",
+      "game/moth-maps.mjs",
+      "game/movement.mjs",
+      "game/nextgen-maps.mjs",
+      "game/objectives.mjs",
+      "game/operator-profiles.mjs",
+      "game/operator-verbs.mjs",
+      "game/outcome.mjs",
+      "game/payload.mjs",
+      "game/progression.mjs",
+      "game/protocol.mjs",
+      "game/quantize.mjs",
+      "game/race-maps.mjs",
+      "game/race.mjs",
+      "game/ragdoll.mjs",
+      "game/ranked.mjs",
+      "game/singleplayer.mjs",
+      "game/soccer-maps.mjs",
+      "game/soccer.mjs",
+      "game/spatial.mjs",
+      "game/spawn-placement.mjs",
+      "game/spec-effects.mjs",
+      "game/story.mjs",
+      "game/structures.mjs",
+      "game/terrain-bvh.mjs",
+      "game/terrain.mjs",
+      "game/vehicles.mjs",
+      "server/game-server.mjs",
+      "server/history.mjs",
+      "server/progression.mjs",
+      "server/room.mjs",
+      "server/rooms.mjs"
+    ]
+  }
+}
