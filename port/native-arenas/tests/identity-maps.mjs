@@ -67,7 +67,7 @@ test('identity authority: real loopback Deathmatch, source damage/frags/results 
   const welcome = await client.wait(f => f.type === 'welcome');
   assert.equal(welcome.nativeArenaInput, 1);
   await client.wait(f => f.type === 'lobby');
-  client.send({type:'host', mapId:'lacuna-court', config:{mode:'deathmatch', botCount:2, difficulty:'easy', timeLimit:60, fragLimit:5}});
+  client.send({type:'host', mapId:'lacuna-court', config:{mode:'deathmatch', botCount:2, difficulty:'hard', timeLimit:60, fragLimit:5}});
   const configured = await client.wait(f => f.type === 'lobby' && f.config);
   assert.equal(configured.config.mode, 'deathmatch');
   client.send({type:'start'});
