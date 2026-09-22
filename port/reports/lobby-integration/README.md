@@ -61,3 +61,23 @@ logged Godot focus/tree signal-disconnect errors. An isolated triage owns that
 remaining clean-log gap. The first generic package run separately hit an Xlib
 BadWindow verifier race, now reproduced/fixed with a real destroyed-window
 regression; its failed run is preserved with all recorded PIDs/ports closed.
+
+## Release popup attribution and next repair
+
+Independent focus triage `c3a9067` / `7f703a1` is integrated. Identical72-command
+sequences against the same PCK produced14 release-engine errors and zero debug
+errors. Ordinary Enter selection, popup reopening and Escape dismissal retained
+popup callbacks in release. Avoiding redundant `Window.grab_focus()` calls did
+not resolve the issue. Exact C++/compiler causality remains unproven.
+
+The lead reran all194 offline assertions on a temporary evidence copy, recording
+the output in `focus-reaudit/`. Its final preservation check compares the three
+reviewed lobby runtime files and source to the triage baseline; newer independent
+world/Payload/tool changes are intentionally outside that check. Original reports
+were not rewritten. All112 package files,33 original lead evidence files and
+2,572 archived native/source applications match. This confirms the **HOLD** verdict,
+not clean exported play.
+
+A narrow popup-free lobby selector is now authorized in isolation, with actual
+release testing required. Combat setup and board popup findings remain separate;
+this does not justify suppressing engine errors or changing global engine flags.

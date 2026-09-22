@@ -1,0 +1,114 @@
+{
+  "verdict": "HOLD full exported package play: release embedded-popup connection cleanup errors reproduced",
+  "assertions": 194,
+  "runs": {
+    "targeted": {
+      "durationMs": 30006,
+      "functionalAssertions": 8,
+      "engineErrorCount": 14,
+      "commands": 72,
+      "cleanup": [
+        {
+          "name": "guest",
+          "pid": 3739719,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "host",
+          "pid": 3739223,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "xvfb",
+          "pid": 3739209,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "port": 35877
+    },
+    "targeted-debug": {
+      "durationMs": 16095,
+      "functionalAssertions": 8,
+      "engineErrorCount": 0,
+      "commands": 72,
+      "cleanup": [
+        {
+          "name": "guest",
+          "pid": 3746927,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "host",
+          "pid": 3746589,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "xvfb",
+          "pid": 3746586,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "port": 36329
+    }
+  },
+  "archivedLeadFlow": {
+    "notFreshExecution": true,
+    "wallMs": 93605,
+    "milestones": 22,
+    "wireCounts": {
+      "0": {
+        "create": 1,
+        "host": 1,
+        "start": 2,
+        "input": 2417,
+        "leave": 1
+      },
+      "1": {
+        "join": 1,
+        "input": 307,
+        "leave": 1
+      },
+      "2": {
+        "join": 1,
+        "leave": 1
+      },
+      "3": {
+        "join": 1,
+        "input": 161,
+        "leave": 1
+      }
+    },
+    "nativeApplicationsMatched": {
+      "host": 2035,
+      "guest": 537
+    },
+    "effects": {
+      "host-round1": {
+        "livingDisplacementMetres": 17.200666644057726,
+        "shotGrowth": 16
+      },
+      "guest-round1": {
+        "livingDisplacementMetres": 16.626193460921836,
+        "shotGrowth": 15
+      },
+      "fresh-guest-round2": {
+        "livingDisplacementMetres": 16.33948619143209,
+        "shotGrowth": 15
+      }
+    },
+    "verdict": "PARTIAL/FAIL",
+    "truncatedFinalGuestSampleLines": 1
+  }
+}

@@ -46,3 +46,26 @@ input semantics, actual-product live outcomes and cleanup on the latest shared
 runtime. This is separate from the repair author's29/70/15/31/3 checks and fresh
 one-wave/death/startup claims. The final ADS sensitivity fix has fixture coverage
 but was not exercised by the recorded repair gameplay runs. HOLD continues.
+
+## Second independent review: event cursor still blocks integration
+
+Review `3dbcceb91c2e1542c91e7e2e3fda55ff43a94cb2` passed the29 adapter tests and
+nine old-fail/new-pass differentials,70 source/UI tests,15 Horde assertions,
+31 input/3 look vectors and inherited controls. It nevertheless reproduced a
+genuine missing case: `Match.serial` also allocates projectile/grenade/sentry IDs,
+so deriving event positions from serial minus ring length replays old events.
+An ordinary grenade input duplicated spawn; fresh Meridian recorded eight
+duplicated event payloads. Native wire-ID deduplication cannot remove those.
+
+The same review's Meridian run killed three NPCs and won a legal one-wave match,
+but a self-kill reduced net frags/`singleplayer.kills` to2. The validator wrongly
+required net kills==3. This remains a retained validation failure; source NPC
+kills and net-frag totals need distinct predicates, not blanket relaxed counts.
+
+The reviewer is authorized a per-round append-object event cursor with separate
+adapter ordinals/preserved source IDs, explicit cursor-loss failure, mixed-serial
+regressions, and a validator based on distinct actual local NPC-kill events.
+New evidence belongs in `port/reports/horde-event-repair/`. Original119 evidence
+files and94 repair-report files were independently verified unchanged. Public
+Room's Horde rejection remains intact. No Horde runtime/package claim is made
+until the remaining changes are independently reviewed.

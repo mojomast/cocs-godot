@@ -1,0 +1,572 @@
+{
+  "verdict": "HOLD full exported package play: release embedded-popup connection cleanup errors reproduced",
+  "checks": [
+    "primary report unchanged 01-host-menu-960x640.png",
+    "primary report unchanged 02-guest-menu-1280x800.png",
+    "primary report unchanged 03-host-created.png",
+    "primary report unchanged 04-guest-roster.png",
+    "primary report unchanged 05-host-start.png",
+    "primary report unchanged 06-guest-start.png",
+    "primary report unchanged 07-host-play-captured.png",
+    "primary report unchanged 07-host-play-paused.png",
+    "primary report unchanged 08-guest-play-captured.png",
+    "primary report unchanged 08-guest-play-paused.png",
+    "primary report unchanged 09-guest-scoreboard.png",
+    "primary report unchanged 10-guest-active-leave.png",
+    "primary report unchanged 11-active-rejoin-spectator.png",
+    "primary report unchanged 11b-spectator-leave.png",
+    "primary report unchanged 12-host-results-960x640.png",
+    "primary report unchanged 13-host-results-1280x800.png",
+    "primary report unchanged 14-guest-post-results-wait.png",
+    "primary report unchanged 15-guest-restarted-uncaptured.png",
+    "primary report unchanged 16-guest-fresh-recapture-captured.png",
+    "primary report unchanged 16-guest-fresh-recapture-paused.png",
+    "primary report unchanged 17-guest-final-active-leave.png",
+    "primary report unchanged 18-host-final-active-leave.png",
+    "primary report unchanged guest.stdout.log.gz",
+    "primary report unchanged guest.stderr.log",
+    "primary report unchanged host.stdout.log.gz",
+    "primary report unchanged host.stderr.log",
+    "primary report unchanged wire.jsonl.gz",
+    "primary report unchanged actions.jsonl.gz",
+    "primary report unchanged summary.json",
+    "primary report unchanged wrapper.log",
+    "primary report unchanged external-observer.gd.txt",
+    "primary report unchanged package-provenance.json",
+    "primary report unchanged adapted-flow.mjs.txt",
+    "manifest unchanged",
+    "package unchanged README.md",
+    "package unchanged catalog.json",
+    "package unchanged cocs.pck",
+    "package unchanged cocs.x86_64",
+    "package unchanged endpoint.mjs",
+    "package unchanged licenses/Godot-COPYRIGHT.txt",
+    "package unchanged licenses/Godot-LICENSE.txt",
+    "package unchanged options.mjs",
+    "package unchanged run.mjs",
+    "package unchanged runtime/game/alt-fire.mjs",
+    "package unchanged runtime/game/arenas.mjs",
+    "package unchanged runtime/game/arsenal-maps.mjs",
+    "package unchanged runtime/game/assault.mjs",
+    "package unchanged runtime/game/attachments.mjs",
+    "package unchanged runtime/game/battle-maps.mjs",
+    "package unchanged runtime/game/blood-gulch.mjs",
+    "package unchanged runtime/game/bot-personalities.mjs",
+    "package unchanged runtime/game/bots.mjs",
+    "package unchanged runtime/game/build-identity.mjs",
+    "package unchanged runtime/game/campaign-anchors.mjs",
+    "package unchanged runtime/game/campaign-data.mjs",
+    "package unchanged runtime/game/changelog.mjs",
+    "package unchanged runtime/game/character-anim.mjs",
+    "package unchanged runtime/game/cocs-bots.mjs",
+    "package unchanged runtime/game/cocs-coop.mjs",
+    "package unchanged runtime/game/cocs-difficulty.mjs",
+    "package unchanged runtime/game/cocs-director.mjs",
+    "package unchanged runtime/game/cocs-economy.mjs",
+    "package unchanged runtime/game/cocs-intel.mjs",
+    "package unchanged runtime/game/cocs-roles.mjs",
+    "package unchanged runtime/game/cocs-squads.mjs",
+    "package unchanged runtime/game/cocs-terminals.mjs",
+    "package unchanged runtime/game/cocs-traversal.mjs",
+    "package unchanged runtime/game/cocs.mjs",
+    "package unchanged runtime/game/config.mjs",
+    "package unchanged runtime/game/core.mjs",
+    "package unchanged runtime/game/cosmetics.mjs",
+    "package unchanged runtime/game/ctf-maps.mjs",
+    "package unchanged runtime/game/data.mjs",
+    "package unchanged runtime/game/deaths.mjs",
+    "package unchanged runtime/game/destination-combat-maps.mjs",
+    "package unchanged runtime/game/destination-lattice-maps.mjs",
+    "package unchanged runtime/game/destination-maps.mjs",
+    "package unchanged runtime/game/destination-objective-maps.mjs",
+    "package unchanged runtime/game/destination-sports-maps.mjs",
+    "package unchanged runtime/game/enemy-types.mjs",
+    "package unchanged runtime/game/expansion-maps.mjs",
+    "package unchanged runtime/game/floor-lattice.mjs",
+    "package unchanged runtime/game/harness-profiles.mjs",
+    "package unchanged runtime/game/island-maps.mjs",
+    "package unchanged runtime/game/kits.mjs",
+    "package unchanged runtime/game/lattice-foundry.mjs",
+    "package unchanged runtime/game/lattice-maps.mjs",
+    "package unchanged runtime/game/lattice-roles.mjs",
+    "package unchanged runtime/game/lattice-support.mjs",
+    "package unchanged runtime/game/levelgen.mjs",
+    "package unchanged runtime/game/map-schema.mjs",
+    "package unchanged runtime/game/maps.mjs",
+    "package unchanged runtime/game/math.mjs",
+    "package unchanged runtime/game/mode-data.mjs",
+    "package unchanged runtime/game/moth-assets.mjs",
+    "package unchanged runtime/game/moth-baked.mjs",
+    "package unchanged runtime/game/moth-maps.mjs",
+    "package unchanged runtime/game/movement.mjs",
+    "package unchanged runtime/game/nextgen-maps.mjs",
+    "package unchanged runtime/game/objectives.mjs",
+    "package unchanged runtime/game/operator-profiles.mjs",
+    "package unchanged runtime/game/operator-verbs.mjs",
+    "package unchanged runtime/game/outcome.mjs",
+    "package unchanged runtime/game/payload.mjs",
+    "package unchanged runtime/game/progression.mjs",
+    "package unchanged runtime/game/protocol.mjs",
+    "package unchanged runtime/game/quantize.mjs",
+    "package unchanged runtime/game/race-maps.mjs",
+    "package unchanged runtime/game/race.mjs",
+    "package unchanged runtime/game/ragdoll.mjs",
+    "package unchanged runtime/game/ranked.mjs",
+    "package unchanged runtime/game/singleplayer.mjs",
+    "package unchanged runtime/game/soccer-maps.mjs",
+    "package unchanged runtime/game/soccer.mjs",
+    "package unchanged runtime/game/spatial.mjs",
+    "package unchanged runtime/game/spawn-placement.mjs",
+    "package unchanged runtime/game/spec-effects.mjs",
+    "package unchanged runtime/game/story.mjs",
+    "package unchanged runtime/game/structures.mjs",
+    "package unchanged runtime/game/terrain-bvh.mjs",
+    "package unchanged runtime/game/terrain.mjs",
+    "package unchanged runtime/game/vehicles.mjs",
+    "package unchanged runtime/node_modules/ws/LICENSE",
+    "package unchanged runtime/node_modules/ws/README.md",
+    "package unchanged runtime/node_modules/ws/browser.js",
+    "package unchanged runtime/node_modules/ws/index.js",
+    "package unchanged runtime/node_modules/ws/lib/buffer-util.js",
+    "package unchanged runtime/node_modules/ws/lib/constants.js",
+    "package unchanged runtime/node_modules/ws/lib/event-target.js",
+    "package unchanged runtime/node_modules/ws/lib/extension.js",
+    "package unchanged runtime/node_modules/ws/lib/limiter.js",
+    "package unchanged runtime/node_modules/ws/lib/permessage-deflate.js",
+    "package unchanged runtime/node_modules/ws/lib/receiver.js",
+    "package unchanged runtime/node_modules/ws/lib/sender.js",
+    "package unchanged runtime/node_modules/ws/lib/stream.js",
+    "package unchanged runtime/node_modules/ws/lib/subprotocol.js",
+    "package unchanged runtime/node_modules/ws/lib/validation.js",
+    "package unchanged runtime/node_modules/ws/lib/websocket-server.js",
+    "package unchanged runtime/node_modules/ws/lib/websocket.js",
+    "package unchanged runtime/node_modules/ws/package.json",
+    "package unchanged runtime/node_modules/ws/wrapper.mjs",
+    "package unchanged runtime/server/game-server.mjs",
+    "package unchanged runtime/server/history.mjs",
+    "package unchanged runtime/server/progression.mjs",
+    "package unchanged runtime/server/room.mjs",
+    "package unchanged runtime/server/rooms.mjs",
+    "targeted scenario completed",
+    "targeted bounded",
+    "targeted isolated environment removed",
+    "targeted authority closed without clients",
+    "targeted all owned children reaped",
+    "targeted former owned port closed",
+    "targeted protected port not owned",
+    "targeted no room/gameplay messages",
+    "targeted archive wire.jsonl",
+    "targeted archive actions.jsonl",
+    "targeted archive witnesses.jsonl",
+    "targeted all popup types covered",
+    "targeted needed policy skipped redundant calls",
+    "targeted Enter and Escape paths exercised",
+    "release reproduces fourteen engine errors",
+    "release first error is ordinary Enter selection",
+    "release errors also occur with needed-only focus",
+    "release errors not emitted on grab-focus commands",
+    "release leaked connections retained after popup hides",
+    "release never disconnects three popup callbacks",
+    "targeted-debug scenario completed",
+    "targeted-debug bounded",
+    "targeted-debug isolated environment removed",
+    "targeted-debug authority closed without clients",
+    "targeted-debug all owned children reaped",
+    "targeted-debug former owned port closed",
+    "targeted-debug protected port not owned",
+    "targeted-debug no room/gameplay messages",
+    "targeted-debug archive wire.jsonl",
+    "targeted-debug archive actions.jsonl",
+    "targeted-debug archive witnesses.jsonl",
+    "targeted-debug all popup types covered",
+    "targeted-debug needed policy skipped redundant calls",
+    "targeted-debug Enter and Escape paths exercised",
+    "debug comparison has no engine errors",
+    "debug removes popup callbacks after every hide",
+    "same external observer",
+    "identical action sequences across release and debug",
+    "archived lead spectator only joins/leaves",
+    "archived lead fresh guest is another connection",
+    "archived host native/source correlation",
+    "archived guest native/source correlation",
+    "archived host-round1 source applied movement/fire",
+    "archived guest-round1 source applied movement/fire",
+    "archived fresh-guest-round2 source applied movement/fire",
+    "archived full flow remains failed clean-log acceptance",
+    "protected service still original Node PID",
+    "reviewed lobby runtime and source unchanged at integration"
+  ],
+  "runs": {
+    "targeted": {
+      "durationMs": 30006,
+      "functionalAssertions": 8,
+      "engineErrorCount": 14,
+      "errorWitnesses": [
+        {
+          "wall": 1790054872431,
+          "client": "guest",
+          "stage": "baseline-always-focus",
+          "command": {
+            "id": 22,
+            "stage": "baseline-always-focus",
+            "op": "key",
+            "key": "Enter",
+            "pressed": true
+          },
+          "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'focus_entered', callable: ''."
+        },
+        {
+          "wall": 1790054872431,
+          "client": "guest",
+          "stage": "baseline-always-focus",
+          "command": {
+            "id": 22,
+            "stage": "baseline-always-focus",
+            "op": "key",
+            "key": "Enter",
+            "pressed": true
+          },
+          "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'tree_exited', callable: ''."
+        },
+        {
+          "wall": 1790054876251,
+          "client": "guest",
+          "stage": "needed-focus-role",
+          "command": {
+            "id": 34,
+            "stage": "needed-focus-role",
+            "op": "mouse",
+            "x": 640,
+            "y": 248.5,
+            "pressed": true
+          },
+          "text": "ERROR: Signal 'focus_entered' is already connected to given callable '' in that object."
+        },
+        {
+          "wall": 1790054876251,
+          "client": "guest",
+          "stage": "needed-focus-role",
+          "command": {
+            "id": 34,
+            "stage": "needed-focus-role",
+            "op": "mouse",
+            "x": 640,
+            "y": 248.5,
+            "pressed": true
+          },
+          "text": "ERROR: Signal 'tree_exited' is already connected to given callable '' in that object."
+        },
+        {
+          "wall": 1790054877527,
+          "client": "guest",
+          "stage": "needed-focus-role",
+          "command": {
+            "id": 38,
+            "stage": "needed-focus-role",
+            "op": "key",
+            "key": "Enter",
+            "pressed": true
+          },
+          "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'focus_entered', callable: ''."
+        },
+        {
+          "wall": 1790054877527,
+          "client": "guest",
+          "stage": "needed-focus-role",
+          "command": {
+            "id": 38,
+            "stage": "needed-focus-role",
+            "op": "key",
+            "key": "Enter",
+            "pressed": true
+          },
+          "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'tree_exited', callable: ''."
+        },
+        {
+          "wall": 1790054882718,
+          "client": "guest",
+          "stage": "needed-focus-map",
+          "command": {
+            "id": 52,
+            "stage": "needed-focus-map",
+            "op": "key",
+            "key": "Enter",
+            "pressed": true
+          },
+          "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'focus_entered', callable: ''."
+        },
+        {
+          "wall": 1790054882718,
+          "client": "guest",
+          "stage": "needed-focus-map",
+          "command": {
+            "id": 52,
+            "stage": "needed-focus-map",
+            "op": "key",
+            "key": "Enter",
+            "pressed": true
+          },
+          "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'tree_exited', callable: ''."
+        },
+        {
+          "wall": 1790054885943,
+          "client": "guest",
+          "stage": "needed-focus-map",
+          "command": {
+            "id": 61,
+            "stage": "needed-focus-map",
+            "op": "key",
+            "key": "Enter",
+            "pressed": true
+          },
+          "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'focus_entered', callable: ''."
+        },
+        {
+          "wall": 1790054885943,
+          "client": "guest",
+          "stage": "needed-focus-map",
+          "command": {
+            "id": 61,
+            "stage": "needed-focus-map",
+            "op": "key",
+            "key": "Enter",
+            "pressed": true
+          },
+          "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'tree_exited', callable: ''."
+        },
+        {
+          "wall": 1790054887196,
+          "client": "guest",
+          "stage": "popup-open-redundant-root-focus",
+          "command": {
+            "id": 65,
+            "stage": "popup-open-redundant-root-focus",
+            "op": "mouse",
+            "x": 640,
+            "y": 248.5,
+            "pressed": true
+          },
+          "text": "ERROR: Signal 'focus_entered' is already connected to given callable '' in that object."
+        },
+        {
+          "wall": 1790054887196,
+          "client": "guest",
+          "stage": "popup-open-redundant-root-focus",
+          "command": {
+            "id": 65,
+            "stage": "popup-open-redundant-root-focus",
+            "op": "mouse",
+            "x": 640,
+            "y": 248.5,
+            "pressed": true
+          },
+          "text": "ERROR: Signal 'tree_exited' is already connected to given callable '' in that object."
+        },
+        {
+          "wall": 1790054888677,
+          "client": "guest",
+          "stage": "popup-open-redundant-root-focus",
+          "command": {
+            "id": 68,
+            "stage": "popup-open-redundant-root-focus",
+            "op": "key",
+            "key": "Escape",
+            "pressed": true
+          },
+          "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'focus_entered', callable: ''."
+        },
+        {
+          "wall": 1790054888677,
+          "client": "guest",
+          "stage": "popup-open-redundant-root-focus",
+          "command": {
+            "id": 68,
+            "stage": "popup-open-redundant-root-focus",
+            "op": "key",
+            "key": "Escape",
+            "pressed": true
+          },
+          "text": "ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'tree_exited', callable: ''."
+        }
+      ],
+      "commands": 72,
+      "popupHideReceipts": [
+        {
+          "command": 22,
+          "event": "role-popup-hide",
+          "wall": 1790054872431.01,
+          "retainedTreeExitCallbacks": 1
+        },
+        {
+          "command": 38,
+          "event": "role-popup-hide",
+          "wall": 1790054877527,
+          "retainedTreeExitCallbacks": 1
+        },
+        {
+          "command": 52,
+          "event": "maps-popup-hide",
+          "wall": 1790054882717.51,
+          "retainedTreeExitCallbacks": 2
+        },
+        {
+          "command": 61,
+          "event": "modes-popup-hide",
+          "wall": 1790054885943.48,
+          "retainedTreeExitCallbacks": 3
+        },
+        {
+          "command": 68,
+          "event": "role-popup-hide",
+          "wall": 1790054888677.67,
+          "retainedTreeExitCallbacks": 3
+        }
+      ],
+      "cleanup": [
+        {
+          "name": "guest",
+          "pid": 3739719,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "host",
+          "pid": 3739223,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "xvfb",
+          "pid": 3739209,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "port": 35877
+    },
+    "targeted-debug": {
+      "durationMs": 16095,
+      "functionalAssertions": 8,
+      "engineErrorCount": 0,
+      "errorWitnesses": [],
+      "commands": 72,
+      "popupHideReceipts": [
+        {
+          "command": 22,
+          "event": "role-popup-hide",
+          "wall": 1790054980831.32,
+          "retainedTreeExitCallbacks": 0
+        },
+        {
+          "command": 38,
+          "event": "role-popup-hide",
+          "wall": 1790054983202.9,
+          "retainedTreeExitCallbacks": 0
+        },
+        {
+          "command": 52,
+          "event": "maps-popup-hide",
+          "wall": 1790054985589.81,
+          "retainedTreeExitCallbacks": 0
+        },
+        {
+          "command": 61,
+          "event": "modes-popup-hide",
+          "wall": 1790054987052.21,
+          "retainedTreeExitCallbacks": 0
+        },
+        {
+          "command": 68,
+          "event": "role-popup-hide",
+          "wall": 1790054988670.36,
+          "retainedTreeExitCallbacks": 0
+        }
+      ],
+      "cleanup": [
+        {
+          "name": "guest",
+          "pid": 3746927,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "host",
+          "pid": 3746589,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "xvfb",
+          "pid": 3746586,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "port": 36329
+    }
+  },
+  "package": {
+    "path": "/tmp/opencode/lead-native-linux-package/builds/1790054125934591826/cocs-native-linux",
+    "manifestSha256": "8f602b1cc48ab07a05378365a5890d96efea6b8b3d90e9d1c8a916ee085f40cc",
+    "filesVerified": 112,
+    "authorityModules": 84,
+    "releaseSha256": "3c0994716982c2f557f7738a789269074520ac0c0a3f11bb7a84a34ee96c683d",
+    "pckSha256": "54124ec449e8b5d0c6b243b8f4d88b1ed05b0c03a7c30fc24c152c0698fcbe49"
+  },
+  "archivedLeadFlow": {
+    "notFreshExecution": true,
+    "wallMs": 93605,
+    "milestones": 22,
+    "wireCounts": {
+      "0": {
+        "create": 1,
+        "host": 1,
+        "start": 2,
+        "input": 2417,
+        "leave": 1
+      },
+      "1": {
+        "join": 1,
+        "input": 307,
+        "leave": 1
+      },
+      "2": {
+        "join": 1,
+        "leave": 1
+      },
+      "3": {
+        "join": 1,
+        "input": 161,
+        "leave": 1
+      }
+    },
+    "nativeApplicationsMatched": {
+      "host": 2035,
+      "guest": 537
+    },
+    "effects": {
+      "host-round1": {
+        "livingDisplacementMetres": 17.200666644057726,
+        "shotGrowth": 16
+      },
+      "guest-round1": {
+        "livingDisplacementMetres": 16.626193460921836,
+        "shotGrowth": 15
+      },
+      "fresh-guest-round2": {
+        "livingDisplacementMetres": 16.33948619143209,
+        "shotGrowth": 15
+      }
+    },
+    "verdict": "PARTIAL/FAIL",
+    "truncatedFinalGuestSampleLines": 1
+  },
+  "protectedPort": "State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                            \nLISTEN 0      511        127.0.0.1:4332      0.0.0.0:*    users:((\"node\",pid=1094444,fd=21))\n",
+  "assertionCount": 194
+}

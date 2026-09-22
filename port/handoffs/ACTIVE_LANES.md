@@ -21,10 +21,11 @@ updates root documentation/shared verification and owns publication.
 | Multiplayer lobby / leave / retry | `3b96206` integrated locally as `ddf166a`; original absent external evidence remains unrecovered | Opt-in lobby; lead owns nine-route launcher and endpoint ownership integration; package acceptance pending |
 | Independent lobby review / layout follow-up | Original reviews integrated; `f762639` / `c8c1513` / `12e770d` integrated as `bd20785` / `e88b5a6` / `5a87f19`; bounded lifecycle PASS | Original failed/partial evidence preserved;75 actual-scene geometry checks per size |
 | Active spectator notice repair | `f92b0ef` / `de6f9f9` integrated as `17d3657` / `96542c2`; review `e9ed72f` integrated `1a00d90`;80 aggregate PASS | Strict validated informational notice and read-only state; lead31 actual-scene and75×2 layout checks PASS |
-| Exported lobby focus triage | `ses_f38b68670ffexH4SE93QXRWRVd` running | New `port/reports/lobby-export-focus/`; first exported2client functional flow reached all milestones but clean-log gate failed on Godot popup/focus disconnect errors |
+| Exported lobby focus triage | Delivered `c3a9067` / `7f703a1`, integrated; lead194-assertion replay PASS for HOLD verdict | Release embedded-popup cleanup reproduced14 errors vs debug0 with identical72 actions; no generic focus-call workaround accepted |
+| Popup-free lobby selectors | `ses_f38b68670ffexH4SE93QXRWRVd` running | New `godot/ui/lobby_choice.gd`, narrow lobby_menu selector substitution, new tests and `port/reports/lobby-popup-free/`; actual release verification required; other menus untouched |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
 | Player/operator model improvement | External prompt prepared at `2af744f`; not launched by lead | New `godot/player_models/`, `godot/tests/player_models/`, `port/native-player-models/`; shared actor/presentation hooks returned unapplied |
-| Native Horde survival | Repairs `74d0e27` / `25eae77` / `48d1029` / `5052119`, report `272558e` delivered; fresh independent review `ses_f3874c776ffehVOLnjfMUkhZsl` running | New `port/reports/horde-repair-independent/`; local adapter/common/package integration remains HOLD pending independent repair acceptance |
+| Native Horde survival | Independent `3dbcceb` returns HOLD: mixed entity/event serial allocation replays events; same reviewer repairing cursor and NPC-kill/net-frag validation | Narrow `port/native-horde/authority.mjs` / validator / tests, new `port/reports/horde-event-repair/`; common/package integration still HOLD |
 
 The LATTICE command and physical-input lanes are delivered and integrated at
 `658b4e7` and `aca52f5`. The projectile navigation follow-up is integrated at
