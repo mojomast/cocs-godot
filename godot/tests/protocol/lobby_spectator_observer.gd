@@ -19,5 +19,7 @@ func _process(delta: float) -> bool:
 	if elapsed - spectator_sampled < 0.15 or not is_instance_valid(session): return result
 	spectator_sampled = elapsed
 	var hud: Node = session.get_node("GameHUD")
+	if session.client.spectating:
+		print("SPECTATOR_LAYOUT ",JSON.stringify({"command":last_command,"viewport":[root.size.x,root.size.y],"phase":session.phase,"panel":rect(hud.status_panel),"detail":rect(hud.status_detail),"contained":hud.status_panel.get_global_rect().encloses(hud.status_detail.get_global_rect())}))
 	print("SPECTATOR_SAMPLE ",JSON.stringify({"seconds":elapsed,"command":last_command,"revision":revision,"spectating":session.client.spectating,"phase":session.phase,"peer":session.client.peer_id,"actor":session.client.actor_id,"ack":session.client.last_ack,"input_seq":session.client.input_seq,"pose":session.received_pose,"captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,"eligible":session.can_capture_pointer(),"title":hud.status_title.text,"detail":hud.status_detail.text,"controls_visible":hud.controls.is_visible_in_tree(),"score":hud.score_label.text,"snapshots":session.presentation.applied,"rendered_remote_poses":session.presentation.rendered_remote_poses,"camera":[session.camera.position.x,session.camera.position.y,session.camera.position.z]}))
 	return result

@@ -2,6 +2,11 @@
 import json,os,pathlib,subprocess,tempfile,sys
 ROOT=pathlib.Path(__file__).resolve().parents[3]
 OUT=pathlib.Path(__file__).resolve().parent
+if '--out' in sys.argv:
+    OUT=pathlib.Path(sys.argv[sys.argv.index('--out')+1]).resolve()
+    OUT.mkdir(parents=True,exist_ok=False)
+elif (OUT/'checks.json').exists():
+    raise SystemExit('Existing checks protected; pass --out with a new directory')
 GODOT='/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64'
 old='--old-context' in sys.argv
 checks=[]

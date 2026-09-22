@@ -10,7 +10,7 @@ import {verifySource} from '../../../tools/godot-export/semantic.mjs';
 import {sleep,until,stopChild} from '../../tools/native_trace_correlation/guest_helpers.mjs';
 const binary='/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64';
 const startup=false,map='meridian-exchange',mode='teamdeathmatch';
-const out=resolve('port/reports/lobby-spectator','active-spectator');
+const out=resolve(process.argv[2] || 'port/reports/lobby-spectator/active-spectator');
 assert.ok(!existsSync(out),'Preserve existing captures');mkdirSync(out);
 const temp=mkdtempSync('/tmp/opencode/lobby-spectator-live-'),children=[],wire=[],actions=[];
 const env={...process.env,HOME:temp,LIBGL_ALWAYS_SOFTWARE:'1',PORT:'0'};

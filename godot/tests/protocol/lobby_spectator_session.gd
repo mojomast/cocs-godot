@@ -53,6 +53,10 @@ func run() -> void:
 	check(session.camera.position == camera,"fixed camera policy")
 	check(hud.status_title.text == "SPECTATING · READ ONLY" and hud.score_label.text == "SPECTATOR","explicit spectator UI")
 	check("Local actor absent" not in hud.status_detail.text and "No player controls" in hud.status_detail.text,"not missing-player UI")
+	for size: Vector2i in [Vector2i(960,640),Vector2i(1280,800)]:
+		root.size = size
+		await create_timer(0.15).timeout
+		check(hud.status_panel.get_global_rect().encloses(hud.status_detail.get_global_rect()),"active status text contained at "+str(size))
 	check(not hud.controls.visible and not hud.vitals.visible and not hud.weapon_panel.visible,"no player controls/equipment advertised")
 	client.sent.clear()
 	await key(KEY_W,true)
@@ -78,6 +82,10 @@ func run() -> void:
 	await create_timer(0.1).timeout
 	check(session.phase == 4 and board.panel.visible,"results render")
 	check("SPECTATOR" in hud.status_title.text and not session.lobby_menu.restart_button.visible,"results explicitly read-only")
+	for size: Vector2i in [Vector2i(960,640),Vector2i(1280,800)]:
+		root.size = size
+		await create_timer(0.15).timeout
+		check(hud.status_panel.get_global_rect().encloses(hud.status_detail.get_global_rect()),"results status text contained at "+str(size))
 	await key(KEY_ENTER,true)
 	await key(KEY_ENTER,false)
 	check(client.sent.is_empty() and session.phase == 4,"guest Enter does not start")
