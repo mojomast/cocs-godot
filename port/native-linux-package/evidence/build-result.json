@@ -1,0 +1,9 @@
+{
+  "archive": "/tmp/opencode/cocs-linux-package-state/builds/1790046335078279470/cocs-native-linux.tar.gz",
+  "archive_sha256": "212ca8c45d26b6256c874d3e0fafed8fb00ad1d18603a26174f8c032ae56b304",
+  "build": "/tmp/opencode/cocs-linux-package-state/builds/1790046335078279470",
+  "generated_resources_sha256": "808e37774f0d4b5b6195aa7b1a4b08ad10847e31759cd1897fb57e434059b9bb",
+  "inputs_sha256": "b7cd951accdd3e105120c84cdaab1c1489046fe04986a7cab9bc42bca6c03227",
+  "manifest_sha256": "e4070207865ec30deb39dcc4297c2b1de0edc0cb9f18d5479ae1893c76e685b2",
+  "package": "/tmp/opencode/cocs-linux-package-state/builds/1790046335078279470/cocs-native-linux"
+}
