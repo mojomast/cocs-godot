@@ -1,0 +1,42 @@
+{
+  "base": "809ef2697463f1665f335f8602e71ecdc6d6b55a",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "binary": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "engineSHA256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "hashes": {
+    "port/reports/horde-independent/horde-run.mjs": "9b77682c9f7be0358c724f553e050d679c4d7ce4afa938462c9445b5ed6907e3",
+    "game/protocol.mjs": "362716c6b5ba222a64a76580efae1513c65eededd5a33116ff53974bf07a7fdb",
+    "godot/world/session.gd": "a501f3814e08c6ba17ac4f9bf2b2d2942241a8a48613d902387b8774a3b31554",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/singleplayer.mjs": "817e1e5c955d52f85dce4f003c68a6f0bd93b68c38029a43e902aaa0078d2aea",
+    "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/horde/demo.gd": "df070a309cb5a421f27c074da610b358e15d0bd3706a90e2f459756cfe9cbb12",
+    "godot/horde/model.gd": "9f38d9156617a8138ff8fed06f1e821a4a7651dfa402a99622da32d545721dee",
+    "godot/tests/horde/live.gd": "2316c259b71e866306306ed6414e8f3d51d6d4de75c0553b10e799829f170064",
+    "port/native-horde/authority.mjs": "864b79258f1bce1b633283f8679584cb528a7f944dc3f4e7a581262e491588d1",
+    "port/native-horde/run.mjs": "59019bf49968b8cb844b3438efbdb028280b55d9671a11a22ba72a0548eab445"
+  },
+  "argv": [
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "1280x800",
+    "--path",
+    "godot",
+    "res://tests/horde/live.tscn",
+    "--",
+    "--map=meridian-exchange",
+    "--endpoint=ws://127.0.0.1:37497",
+    "--waves=1",
+    "--horde-evidence",
+    "--native-trace",
+    "--scenario=combat",
+    "--screenshot=/tmp/opencode/horde-independent-5445295/port/reports/horde-independent/evidence/72e82b9e-00f1-4132-b274-123f109115bb/gameplay.png"
+  ],
+  "normalRate": true,
+  "localOnly": true,
+  "scenario": "combat",
+  "map": "meridian-exchange"
+}

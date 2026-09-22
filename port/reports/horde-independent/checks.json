@@ -1,0 +1,87 @@
+{
+  "results": [
+    {
+      "command": [
+        "node",
+        "tools/godot-export/semantic.mjs"
+      ],
+      "exit": 0,
+      "ok": true,
+      "log": "check-0.log"
+    },
+    {
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--editor",
+        "--import"
+      ],
+      "exit": 0,
+      "ok": true,
+      "log": "check-1.log"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "port/native-horde/test.mjs"
+      ],
+      "exit": 0,
+      "ok": true,
+      "log": "check-2.log"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "game/singleplayer.test.mjs",
+        "game/singleplayer-ui.test.mjs"
+      ],
+      "exit": 0,
+      "ok": true,
+      "log": "check-3.log"
+    },
+    {
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/horde/test.gd"
+      ],
+      "exit": 0,
+      "ok": true,
+      "log": "check-4.log"
+    },
+    {
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/protocol/control_safety.gd"
+      ],
+      "exit": 0,
+      "ok": true,
+      "log": "check-5.log"
+    },
+    {
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/protocol/game_hud_session.gd"
+      ],
+      "exit": 0,
+      "ok": true,
+      "log": "check-6.log"
+    }
+  ],
+  "temporaryTreeRemoved": true
+}

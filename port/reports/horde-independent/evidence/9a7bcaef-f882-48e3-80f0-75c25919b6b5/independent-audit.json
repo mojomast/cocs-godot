@@ -1,0 +1,45 @@
+{
+  "id": "9a7bcaef-f882-48e3-80f0-75c25919b6b5",
+  "map": "ember-crucible",
+  "scenario": "startup",
+  "harnessExit": 0,
+  "cleanup": [
+    {
+      "pid": 3335607,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 3335611,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "deliveryValidator": {
+    "status": "PASS",
+    "scenario": "startup",
+    "correlated": 147,
+    "receipts": 349,
+    "ackHighWater": 346,
+    "won": false,
+    "deaths": false,
+    "eventTypes": [
+      "spawn",
+      "husk",
+      "spitter",
+      "horde-wave"
+    ],
+    "nativeTraceCompletionProven": false
+  },
+  "clock": {
+    "sourceSeconds": 7.349999999999979,
+    "wallSeconds": 7.255794191000001,
+    "ratio": 1.0129835282699764
+  },
+  "maxKills": 0,
+  "minLives": 3,
+  "maxActors": 4,
+  "maxSnapshotBytes": 13464,
+  "localKillEvents": [],
+  "status": "PASS"
+}

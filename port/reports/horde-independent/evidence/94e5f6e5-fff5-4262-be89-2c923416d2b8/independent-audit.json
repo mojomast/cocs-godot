@@ -1,0 +1,63 @@
+{
+  "id": "94e5f6e5-fff5-4262-be89-2c923416d2b8",
+  "map": "verdant-reliquary",
+  "scenario": "death",
+  "harnessExit": 0,
+  "cleanup": [
+    {
+      "pid": 3321989,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 3321997,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "deliveryValidator": {
+    "status": "PASS",
+    "scenario": "death",
+    "correlated": 612,
+    "receipts": 802,
+    "ackHighWater": 801,
+    "won": false,
+    "deaths": true,
+    "eventTypes": [
+      "spawn",
+      "husk",
+      "spitter",
+      "horde-wave",
+      "pickup",
+      "weapon-switch",
+      "shot",
+      "grenade",
+      "explosion",
+      "power",
+      "damage",
+      "melee",
+      "death",
+      "singleplayer-life",
+      "powerup"
+    ],
+    "nativeTraceCompletionProven": false
+  },
+  "clock": {
+    "sourceSeconds": 30.549999999999542,
+    "wallSeconds": 30.158228204,
+    "ratio": 1.0129905441841434
+  },
+  "maxKills": 0,
+  "minLives": 2,
+  "maxActors": 4,
+  "maxSnapshotBytes": 14213,
+  "localKillEvents": [],
+  "death": {
+    "deadSeq": 532,
+    "respawnSeq": 572,
+    "recapturedSeq": 598,
+    "preDeathHeldInputSeq": 630,
+    "neutralWireInputs": 87
+  },
+  "status": "PASS"
+}

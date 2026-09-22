@@ -1,0 +1,515 @@
+[
+  {
+    "id": "5f80cc71-f9f8-4315-a26c-223395de1d9c",
+    "map": "meridian-exchange",
+    "scenario": "combat",
+    "harnessExit": 1,
+    "cleanup": [
+      {
+        "pid": 3347805,
+        "reaped": true,
+        "absent": true
+      },
+      {
+        "pid": 3347887,
+        "reaped": true,
+        "absent": true
+      }
+    ],
+    "deliveryValidator": {
+      "status": "PASS",
+      "scenario": "combat",
+      "correlated": 487,
+      "receipts": 1191,
+      "ackHighWater": 1179,
+      "won": true,
+      "deaths": false,
+      "eventTypes": [
+        "spawn",
+        "husk",
+        "spitter",
+        "horde-wave",
+        "move-blocked",
+        "shot",
+        "pickup",
+        "damage",
+        "weapon-switch",
+        "grenade",
+        "death",
+        "explosion",
+        "killstreak",
+        "horde-wave-cleared",
+        "horde-resupply",
+        "horde-summary",
+        "mission-won"
+      ],
+      "nativeTraceCompletionProven": false
+    },
+    "clock": {
+      "sourceSeconds": 23.933333333333252,
+      "wallSeconds": 23.484255438,
+      "ratio": 1.0191225093986414
+    },
+    "maxKills": 3,
+    "minLives": 3,
+    "maxActors": 4,
+    "maxSnapshotBytes": 14351,
+    "localKillEvents": [
+      {
+        "type": "death",
+        "id": 385,
+        "time": 12.43333333333353,
+        "actor": 1,
+        "pos": {
+          "x": 1.3536126496231273,
+          "y": 1,
+          "z": -33.35949002478822
+        },
+        "character": "chatgpt",
+        "killer": 0,
+        "killerName": "ChatGPT",
+        "killerCharacter": "chatgpt",
+        "killerHarness": "openclaw",
+        "self": false,
+        "weapon": 0,
+        "ability": false,
+        "abilityName": null,
+        "overkill": 3,
+        "direction": {
+          "x": 0.99624445612839,
+          "y": 0,
+          "z": -0.08658512362668642
+        },
+        "seed": 20,
+        "style": "headpop"
+      },
+      {
+        "type": "death",
+        "id": 1014,
+        "time": 21.416666666666732,
+        "actor": 2,
+        "pos": {
+          "x": -44.48489845545869,
+          "y": 1,
+          "z": -19.196166536369695
+        },
+        "character": "chatgpt",
+        "killer": 0,
+        "killerName": "ChatGPT",
+        "killerCharacter": "chatgpt",
+        "killerHarness": "openclaw",
+        "self": false,
+        "weapon": 0,
+        "ability": false,
+        "abilityName": null,
+        "overkill": 0.17454495728734454,
+        "direction": {
+          "x": -0.9983659587739827,
+          "y": 0,
+          "z": 0.05714378672529915
+        },
+        "seed": 27,
+        "style": "ragdoll"
+      },
+      {
+        "type": "death",
+        "id": 1198,
+        "time": 23.983333333333253,
+        "actor": 3,
+        "pos": {
+          "x": -45.15029231456138,
+          "y": 1,
+          "z": 16.22558264797682
+        },
+        "character": "meta",
+        "killer": 0,
+        "killerName": "ChatGPT",
+        "killerCharacter": "chatgpt",
+        "killerHarness": "openclaw",
+        "self": false,
+        "weapon": 0,
+        "ability": false,
+        "abilityName": null,
+        "overkill": 6.988450870941222,
+        "direction": {
+          "x": -0.3713277428748304,
+          "y": 0,
+          "z": 0.9285018618029173
+        },
+        "seed": 34,
+        "style": "ragdoll"
+      }
+    ],
+    "result": {
+      "kind": "horde",
+      "phase": "won",
+      "elapsed": 23.983333333333253,
+      "wave": 1,
+      "waveTarget": 1,
+      "endless": false,
+      "score": 94,
+      "bestWave": 1,
+      "summary": {
+        "outcome": "won",
+        "wave": 1,
+        "target": 1,
+        "endless": false,
+        "score": 94,
+        "bestWave": 1,
+        "kills": 3,
+        "deaths": 0,
+        "elapsed": 23.983333333333253,
+        "lives": 3,
+        "upgrades": 0
+      },
+      "waveTimer": 0,
+      "waveModifier": {
+        "id": "swarm",
+        "name": "SWARM",
+        "description": "A fast, fragile rush with no heavy support."
+      },
+      "enemiesAlive": 0,
+      "enemiesTotal": 3,
+      "kills": 3,
+      "deaths": 0,
+      "lives": 3,
+      "objective": "Survive 1 hostile waves.",
+      "message": "You survived 1 waves.",
+      "story": null,
+      "bark": null,
+      "weather": null,
+      "timeOfDay": null,
+      "bossPhase": 0,
+      "bossPhaseName": null,
+      "bossPhaseTotal": 1,
+      "waypoint": null,
+      "winner": 0,
+      "mission": null,
+      "steps": [],
+      "hold": null,
+      "boss": null,
+      "checkpoint": null,
+      "upgrades": [],
+      "upgradeWave": null,
+      "upgradeSelected": null,
+      "upgradeCount": 0,
+      "defend": null,
+      "regen": {
+        "active": false,
+        "delay": 0,
+        "rate": 14
+      }
+    },
+    "status": "FAIL",
+    "error": "AssertionError [ERR_ASSERTION]: harness failed even if gameplay validator passed\n\n1 !== 0\n\n    at file:///tmp/opencode/horde-independent-5445295/port/reports/horde-independent/horde-audit-evidence.mjs:64:10\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)"
+  },
+  {
+    "id": "72e82b9e-00f1-4132-b274-123f109115bb",
+    "map": "meridian-exchange",
+    "scenario": "combat",
+    "harnessExit": 0,
+    "cleanup": [
+      {
+        "pid": 3318366,
+        "reaped": true,
+        "absent": true
+      },
+      {
+        "pid": 3318374,
+        "reaped": true,
+        "absent": true
+      }
+    ],
+    "deliveryValidator": {
+      "status": "PASS",
+      "scenario": "combat",
+      "correlated": 359,
+      "receipts": 395,
+      "ackHighWater": 387,
+      "won": true,
+      "deaths": false,
+      "eventTypes": [
+        "spawn",
+        "husk",
+        "spitter",
+        "horde-wave",
+        "move-blocked",
+        "shot",
+        "pickup",
+        "powerup",
+        "damage",
+        "death",
+        "killstreak",
+        "horde-wave-cleared",
+        "horde-resupply",
+        "horde-summary",
+        "mission-won"
+      ],
+      "nativeTraceCompletionProven": false
+    },
+    "clock": {
+      "sourceSeconds": 17.40000000000029,
+      "wallSeconds": 17.596795774,
+      "ratio": 0.9888163858621076
+    },
+    "maxKills": 3,
+    "minLives": 3,
+    "maxActors": 4,
+    "maxSnapshotBytes": 14369,
+    "localKillEvents": [
+      {
+        "type": "death",
+        "id": 314,
+        "time": 11.616666666666823,
+        "actor": 1,
+        "pos": {
+          "x": -10.04262904217633,
+          "y": 1,
+          "z": 7.374496949490588
+        },
+        "character": "chatgpt",
+        "killer": 0,
+        "killerName": "ChatGPT",
+        "killerCharacter": "chatgpt",
+        "killerHarness": "openclaw",
+        "self": false,
+        "weapon": 0,
+        "ability": false,
+        "abilityName": null,
+        "overkill": 3,
+        "direction": {
+          "x": 0.8026833071545145,
+          "y": 0,
+          "z": -0.5964054899273574
+        },
+        "seed": 20,
+        "style": "headpop"
+      },
+      {
+        "type": "death",
+        "id": 634,
+        "time": 16.05000000000037,
+        "actor": 2,
+        "pos": {
+          "x": -3.589260452745034,
+          "y": 1,
+          "z": 16.896492284163124
+        },
+        "character": "chatgpt",
+        "killer": 0,
+        "killerName": "ChatGPT",
+        "killerCharacter": "chatgpt",
+        "killerHarness": "openclaw",
+        "self": false,
+        "weapon": 0,
+        "ability": false,
+        "abilityName": null,
+        "overkill": 8.400000000000002,
+        "direction": {
+          "x": 0.902915095463089,
+          "y": 0,
+          "z": 0.4298189507046904
+        },
+        "seed": 27,
+        "style": "ragdoll"
+      },
+      {
+        "type": "death",
+        "id": 738,
+        "time": 17.45000000000029,
+        "actor": 3,
+        "pos": {
+          "x": -13.74527278148354,
+          "y": 1,
+          "z": -27.445964086163404
+        },
+        "character": "meta",
+        "killer": 0,
+        "killerName": "ChatGPT",
+        "killerCharacter": "chatgpt",
+        "killerHarness": "openclaw",
+        "self": false,
+        "weapon": 0,
+        "ability": false,
+        "abilityName": null,
+        "overkill": 6.038388693322528,
+        "direction": {
+          "x": 0.057690827180130175,
+          "y": 0,
+          "z": -0.9983344972799809
+        },
+        "seed": 34,
+        "style": "crumple"
+      }
+    ],
+    "result": {
+      "kind": "horde",
+      "phase": "won",
+      "elapsed": 17.45000000000029,
+      "wave": 1,
+      "waveTarget": 1,
+      "endless": false,
+      "score": 94,
+      "bestWave": 1,
+      "summary": {
+        "outcome": "won",
+        "wave": 1,
+        "target": 1,
+        "endless": false,
+        "score": 94,
+        "bestWave": 1,
+        "kills": 3,
+        "deaths": 0,
+        "elapsed": 17.45000000000029,
+        "lives": 3,
+        "upgrades": 0
+      },
+      "waveTimer": 0,
+      "waveModifier": {
+        "id": "swarm",
+        "name": "SWARM",
+        "description": "A fast, fragile rush with no heavy support."
+      },
+      "enemiesAlive": 0,
+      "enemiesTotal": 3,
+      "kills": 3,
+      "deaths": 0,
+      "lives": 3,
+      "objective": "Survive 1 hostile waves.",
+      "message": "You survived 1 waves.",
+      "story": null,
+      "bark": null,
+      "weather": null,
+      "timeOfDay": null,
+      "bossPhase": 0,
+      "bossPhaseName": null,
+      "bossPhaseTotal": 1,
+      "waypoint": null,
+      "winner": 0,
+      "mission": null,
+      "steps": [],
+      "hold": null,
+      "boss": null,
+      "checkpoint": null,
+      "upgrades": [],
+      "upgradeWave": null,
+      "upgradeSelected": null,
+      "upgradeCount": 0,
+      "defend": null,
+      "regen": {
+        "active": false,
+        "delay": 0,
+        "rate": 14
+      }
+    },
+    "status": "PASS"
+  },
+  {
+    "id": "94e5f6e5-fff5-4262-be89-2c923416d2b8",
+    "map": "verdant-reliquary",
+    "scenario": "death",
+    "harnessExit": 0,
+    "cleanup": [
+      {
+        "pid": 3321989,
+        "reaped": true,
+        "absent": true
+      },
+      {
+        "pid": 3321997,
+        "reaped": true,
+        "absent": true
+      }
+    ],
+    "deliveryValidator": {
+      "status": "PASS",
+      "scenario": "death",
+      "correlated": 612,
+      "receipts": 802,
+      "ackHighWater": 801,
+      "won": false,
+      "deaths": true,
+      "eventTypes": [
+        "spawn",
+        "husk",
+        "spitter",
+        "horde-wave",
+        "pickup",
+        "weapon-switch",
+        "shot",
+        "grenade",
+        "explosion",
+        "power",
+        "damage",
+        "melee",
+        "death",
+        "singleplayer-life",
+        "powerup"
+      ],
+      "nativeTraceCompletionProven": false
+    },
+    "clock": {
+      "sourceSeconds": 30.549999999999542,
+      "wallSeconds": 30.158228204,
+      "ratio": 1.0129905441841434
+    },
+    "maxKills": 0,
+    "minLives": 2,
+    "maxActors": 4,
+    "maxSnapshotBytes": 14213,
+    "localKillEvents": [],
+    "death": {
+      "deadSeq": 532,
+      "respawnSeq": 572,
+      "recapturedSeq": 598,
+      "preDeathHeldInputSeq": 630,
+      "neutralWireInputs": 87
+    },
+    "status": "PASS"
+  },
+  {
+    "id": "9a7bcaef-f882-48e3-80f0-75c25919b6b5",
+    "map": "ember-crucible",
+    "scenario": "startup",
+    "harnessExit": 0,
+    "cleanup": [
+      {
+        "pid": 3335607,
+        "reaped": true,
+        "absent": true
+      },
+      {
+        "pid": 3335611,
+        "reaped": true,
+        "absent": true
+      }
+    ],
+    "deliveryValidator": {
+      "status": "PASS",
+      "scenario": "startup",
+      "correlated": 147,
+      "receipts": 349,
+      "ackHighWater": 346,
+      "won": false,
+      "deaths": false,
+      "eventTypes": [
+        "spawn",
+        "husk",
+        "spitter",
+        "horde-wave"
+      ],
+      "nativeTraceCompletionProven": false
+    },
+    "clock": {
+      "sourceSeconds": 7.349999999999979,
+      "wallSeconds": 7.255794191000001,
+      "ratio": 1.0129835282699764
+    },
+    "maxKills": 0,
+    "minLives": 3,
+    "maxActors": 4,
+    "maxSnapshotBytes": 13464,
+    "localKillEvents": [],
+    "status": "PASS"
+  }
+]

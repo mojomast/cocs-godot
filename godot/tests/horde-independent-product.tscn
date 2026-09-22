@@ -1,0 +1,5 @@
+[gd_scene load_steps=3 format=3]
+[ext_resource type="PackedScene" path="res://horde/demo.tscn" id="1"]
+[ext_resource type="Script" path="res://tests/horde-independent-product.gd" id="2"]
+[node name="HordeIndependentProduct" instance=ExtResource("1")]
+script = ExtResource("2")

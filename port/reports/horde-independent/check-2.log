@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: legal one-wave source preset meridian-exchange
+ok 1 - legal one-wave source preset meridian-exchange
+  ---
+  duration_ms: 1.154292
+  type: 'test'
+  ...
+# Subtest: legal one-wave source preset verdant-reliquary
+ok 2 - legal one-wave source preset verdant-reliquary
+  ---
+  duration_ms: 0.185648
+  type: 'test'
+  ...
+# Subtest: legal one-wave source preset ember-crucible
+ok 3 - legal one-wave source preset ember-crucible
+  ---
+  duration_ms: 0.074359
+  type: 'test'
+  ...
+# Subtest: invalid targets rejected rather than silently clamped
+ok 4 - invalid targets rejected rather than silently clamped
+  ---
+  duration_ms: 0.184015
+  type: 'test'
+  ...
+# Subtest: foreign maps and mode rejected
+ok 5 - foreign maps and mode rejected
+  ---
+  duration_ms: 0.113452
+  type: 'test'
+  ...
+# Subtest: default is ten waves
+ok 6 - default is ten waves
+  ---
+  duration_ms: 0.062918
+  type: 'test'
+  ...
+# Subtest: missing evidence cannot pass
+ok 7 - missing evidence cannot pass
+  ---
+  duration_ms: 0.662441
+  type: 'test'
+  ...
+# Subtest: malformed native records rejected
+ok 8 - malformed native records rejected
+  ---
+  duration_ms: 0.118622
+  type: 'test'
+  ...
+# Subtest: synthetic correlation baseline
+ok 9 - synthetic correlation baseline
+  ---
+  duration_ms: 1.171905
+  type: 'test'
+  ...
+# Subtest: mismatched actor rejected
+ok 10 - mismatched actor rejected
+  ---
+  duration_ms: 0.627946
+  type: 'test'
+  ...
+# Subtest: wrong rendered position rejected
+ok 11 - wrong rendered position rejected
+  ---
+  duration_ms: 0.207629
+  type: 'test'
+  ...
+# Subtest: snapshot gaps rejected
+ok 12 - snapshot gaps rejected
+  ---
+  duration_ms: 0.10721
+  type: 'test'
+  ...
+# Subtest: ACK/receipt cannot stand in for victory
+ok 13 - ACK/receipt cannot stand in for victory
+  ---
+  duration_ms: 0.151755
+  type: 'test'
+  ...
+# Subtest: owned local server rejects browser origins and closes listeners
+ok 14 - owned local server rejects browser origins and closes listeners
+  ---
+  duration_ms: 17.126466
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 738.600261

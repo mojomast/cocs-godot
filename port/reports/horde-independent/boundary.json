@@ -1,0 +1,84 @@
+{
+  "scope": "black-box transport, no native/human input or full-run acceptance",
+  "findings": [
+    {
+      "name": "same-turn fire press/release coalescing",
+      "ack": 2,
+      "shots": 0,
+      "yaw": 0.2
+    },
+    {
+      "name": "held fire applied then 250ms expiry stops firing",
+      "firstShots": 1,
+      "settledShots": 3,
+      "ack": 3
+    },
+    {
+      "name": "wave modifier snapshot present but source event missing",
+      "modifier": {
+        "id": "swarm",
+        "name": "SWARM",
+        "description": "A fast, fragile rush with no heavy support."
+      },
+      "eventTypes": [
+        "spawn",
+        "move-blocked",
+        "shot",
+        "husk",
+        "spitter",
+        "horde-wave"
+      ]
+    }
+  ],
+  "clock": {
+    "sourceSeconds": 6.9999999999999805,
+    "wallSeconds": 6.824626836999999,
+    "ratio": 1.025697106550821
+  },
+  "reconnect": {
+    "round": 2,
+    "seq": 1,
+    "ack": 0,
+    "waveTarget": 1
+  },
+  "secondClientClose": 1008,
+  "defaultConfig": {
+    "mode": "horde",
+    "botCount": 0,
+    "difficulty": "easy",
+    "fragLimit": 10,
+    "timeLimit": 900,
+    "respawn": 2,
+    "speed": 1,
+    "gravity": 1,
+    "damage": 1,
+    "fastPowers": false,
+    "lifeSteal": false,
+    "unlimitedAmmo": false,
+    "suddenDeath": false,
+    "randomLoadout": false,
+    "oneShot": false,
+    "instagib": false,
+    "mirrorLoadout": false,
+    "bounty": false,
+    "berserk": false,
+    "bigHead": false,
+    "noRecoil": false,
+    "endless": false,
+    "startingWeapon": 0,
+    "playerName": "",
+    "mission": "convoy-run",
+    "loadout": null,
+    "checkpoint": null,
+    "mutators": []
+  },
+  "cleanup": {
+    "serverClosed": true,
+    "sockets": 0
+  },
+  "oversize": {
+    "exit": 1,
+    "signal": null,
+    "unhandledError": true
+  }
+}

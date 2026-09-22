@@ -1,0 +1,201 @@
+{
+  "id": "72e82b9e-00f1-4132-b274-123f109115bb",
+  "map": "meridian-exchange",
+  "scenario": "combat",
+  "harnessExit": 0,
+  "cleanup": [
+    {
+      "pid": 3318366,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 3318374,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "deliveryValidator": {
+    "status": "PASS",
+    "scenario": "combat",
+    "correlated": 359,
+    "receipts": 395,
+    "ackHighWater": 387,
+    "won": true,
+    "deaths": false,
+    "eventTypes": [
+      "spawn",
+      "husk",
+      "spitter",
+      "horde-wave",
+      "move-blocked",
+      "shot",
+      "pickup",
+      "powerup",
+      "damage",
+      "death",
+      "killstreak",
+      "horde-wave-cleared",
+      "horde-resupply",
+      "horde-summary",
+      "mission-won"
+    ],
+    "nativeTraceCompletionProven": false
+  },
+  "clock": {
+    "sourceSeconds": 17.40000000000029,
+    "wallSeconds": 17.596795774,
+    "ratio": 0.9888163858621076
+  },
+  "maxKills": 3,
+  "minLives": 3,
+  "maxActors": 4,
+  "maxSnapshotBytes": 14369,
+  "localKillEvents": [
+    {
+      "type": "death",
+      "id": 314,
+      "time": 11.616666666666823,
+      "actor": 1,
+      "pos": {
+        "x": -10.04262904217633,
+        "y": 1,
+        "z": 7.374496949490588
+      },
+      "character": "chatgpt",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 3,
+      "direction": {
+        "x": 0.8026833071545145,
+        "y": 0,
+        "z": -0.5964054899273574
+      },
+      "seed": 20,
+      "style": "headpop"
+    },
+    {
+      "type": "death",
+      "id": 634,
+      "time": 16.05000000000037,
+      "actor": 2,
+      "pos": {
+        "x": -3.589260452745034,
+        "y": 1,
+        "z": 16.896492284163124
+      },
+      "character": "chatgpt",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 8.400000000000002,
+      "direction": {
+        "x": 0.902915095463089,
+        "y": 0,
+        "z": 0.4298189507046904
+      },
+      "seed": 27,
+      "style": "ragdoll"
+    },
+    {
+      "type": "death",
+      "id": 738,
+      "time": 17.45000000000029,
+      "actor": 3,
+      "pos": {
+        "x": -13.74527278148354,
+        "y": 1,
+        "z": -27.445964086163404
+      },
+      "character": "meta",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 6.038388693322528,
+      "direction": {
+        "x": 0.057690827180130175,
+        "y": 0,
+        "z": -0.9983344972799809
+      },
+      "seed": 34,
+      "style": "crumple"
+    }
+  ],
+  "result": {
+    "kind": "horde",
+    "phase": "won",
+    "elapsed": 17.45000000000029,
+    "wave": 1,
+    "waveTarget": 1,
+    "endless": false,
+    "score": 94,
+    "bestWave": 1,
+    "summary": {
+      "outcome": "won",
+      "wave": 1,
+      "target": 1,
+      "endless": false,
+      "score": 94,
+      "bestWave": 1,
+      "kills": 3,
+      "deaths": 0,
+      "elapsed": 17.45000000000029,
+      "lives": 3,
+      "upgrades": 0
+    },
+    "waveTimer": 0,
+    "waveModifier": {
+      "id": "swarm",
+      "name": "SWARM",
+      "description": "A fast, fragile rush with no heavy support."
+    },
+    "enemiesAlive": 0,
+    "enemiesTotal": 3,
+    "kills": 3,
+    "deaths": 0,
+    "lives": 3,
+    "objective": "Survive 1 hostile waves.",
+    "message": "You survived 1 waves.",
+    "story": null,
+    "bark": null,
+    "weather": null,
+    "timeOfDay": null,
+    "bossPhase": 0,
+    "bossPhaseName": null,
+    "bossPhaseTotal": 1,
+    "waypoint": null,
+    "winner": 0,
+    "mission": null,
+    "steps": [],
+    "hold": null,
+    "boss": null,
+    "checkpoint": null,
+    "upgrades": [],
+    "upgradeWave": null,
+    "upgradeSelected": null,
+    "upgradeCount": 0,
+    "defend": null,
+    "regen": {
+      "active": false,
+      "delay": 0,
+      "rate": 14
+    }
+  },
+  "status": "PASS"
+}
