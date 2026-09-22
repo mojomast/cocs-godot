@@ -1,0 +1,275 @@
+{
+  "schema": 1,
+  "id": "40493827-d3a6-4a7e-923f-6dc3c391f92c",
+  "base": "7e505f2e173402412a56a0aff3e2d77e53f1afb7",
+  "normalRate": true,
+  "completionProven": false,
+  "started": "2026-09-21T23:58:15.331Z",
+  "cleanup": {
+    "native": {
+      "pid": 1992635,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "xvfb": {
+      "pid": 1992632,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "import": {
+      "pid": 1992280,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "serverClosed": true,
+    "socketCount": 0,
+    "privateTempRemoved": true
+  },
+  "artifacts": {
+    "export.log.gz": {
+      "bytes": 79,
+      "sha256": "669d2d98dcb78e48d0f9742368637c64549265b89ec141bb5608239dea033dff"
+    },
+    "import.stdout.log.gz": {
+      "bytes": 552,
+      "sha256": "46d81dea5add0f051b5ac9aa3a81462c7b2e89e834fbb005849f5a0e03fe97b1"
+    },
+    "import.stderr.log.gz": {
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    },
+    "native.stdout.log.gz": {
+      "bytes": 16632,
+      "sha256": "750bec13fac5d42215f2cee8c61bdafab86e8adae661ad934a06e0e28eb62864"
+    },
+    "native.stderr.log.gz": {
+      "bytes": 160,
+      "sha256": "3223c5f8e137b40334ec34c0611015b14969ee2449af7157ab2ee8f834da7aea"
+    },
+    "xvfb.stdout.log.gz": {
+      "bytes": 22,
+      "sha256": "de76e512a414e118fc8bc46cc3043f18cb60a7aa7b997d9564d30aae0cac9eee"
+    },
+    "xvfb.stderr.log.gz": {
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    },
+    "wire.json.gz": {
+      "bytes": 15277,
+      "sha256": "cd8a85c8cf83613e864c9714d9b258783b10f467b29ef7c079ac46d6f93408de"
+    }
+  },
+  "command": "GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 GUEST_NODE_MODULES=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/node_modules node port/tools/native_death_respawn/run.mjs",
+  "sourceHashes": {
+    "run.mjs": "b42159cf3d3a1608ade2a0d031e1fa4b4ee0a6c3200a7ae47ccedf7e2d5c34dc",
+    "observe.gd": "5102a1954f5f6021a0288b01510c74804bab3e0c1424182f2a0c57e2aa47f190",
+    "helpers.mjs": "b0d0381eac1bd60b0d5f0b8c6a6b177aaeefc88238cb15c2aee9ad3604edc6cd",
+    "analyze.mjs": "51840c43e5c35a4fadcfa4ed1943bd178d03d2760f54fc0532e4e77718d515fb"
+  },
+  "runtimeHashes": {
+    "godot/world/session.gd": "329595a42420c420f718dceea7f4fdb87a5fc26b4e41f63ed9aff5caae16a6b2",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "godot/world/presentation.gd": "20057bc0c0b840f281029b9edbc332d892930a2f6513e5909ad3dc180e87d7b3",
+    "godot/world/local_lifecycle.gd": "2dcc606318eff11e3e19819807ff9c692f0800223e4510793ed2bc92157f995f",
+    "server/game-server.mjs": "06e79c72d0530abf5256b803a19fbfb00582892579f27f42eae871cc28fb98b0",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/bots.mjs": "2a6d3fcd7960711fc4aeefe77aaa39dc1a318c6c36097ede7010894a411cf95a",
+    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b"
+  },
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "navigationNodes": 1180,
+  "privateDisplay": ":0",
+  "endpoint": "ws://127.0.0.1:44619",
+  "nativeCommand": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--audio-driver",
+    "Dummy",
+    "--path",
+    "/tmp/opencode/cocs-death-live-0PtnZj/godot",
+    "--script",
+    "/tmp/opencode/cocs-native-integration/port/tools/native_death_respawn/observe.gd",
+    "--",
+    "--endpoint=ws://127.0.0.1:44619",
+    "--join-room=9SHM",
+    "--native-trace"
+  ],
+  "waiting": {
+    "actor": -1,
+    "camera_position": [
+      110,
+      125,
+      140
+    ],
+    "camera_rotation": [
+      -0.612113833427429,
+      0.66596919298172,
+      0
+    ],
+    "mouse_left": false,
+    "phase": 11,
+    "physical_ctrl": false,
+    "pitch": 0,
+    "pointer_captured": false,
+    "pose": false,
+    "seconds": 0.501716428571428,
+    "starts": 0,
+    "trace_next": 0,
+    "window_focus": true,
+    "yaw": 0
+  },
+  "gameplayWallSeconds": 10.132317363000002,
+  "acceptance": {
+    "status": "PASS",
+    "actor": 1,
+    "roundRevision": 1,
+    "completionProven": false,
+    "counts": {
+      "records": 876,
+      "snapshots": 303,
+      "receivedInputs": 572,
+      "deadNeutralInputs": 117,
+      "postRespawnNeutralInputs": 120,
+      "predeathActiveInputs": 223,
+      "postClickActiveInputs": 90
+    },
+    "criteria": {
+      "observedSameActorAliveDeadAlive": true,
+      "healthAwareLifecycleContinuity": true,
+      "protocolAttackerKill": true,
+      "eventCorroborated": true,
+      "deadNeutralOutput": true,
+      "deadLifecycleGated": true,
+      "cameraPositionAuthority": true,
+      "cameraReseed": true,
+      "cameraAnglesMatchAuthority": true,
+      "cameraRotationAfterProcess": true,
+      "pointerReleasedProgramState": true,
+      "heldControlsDoNotAutoResume": true,
+      "predeathNonneutral": true,
+      "freshClickResumes": true
+    },
+    "strictTimerContinuity": true,
+    "ambiguousSnapshots": [],
+    "witness": {
+      "alive": {
+        "nativeTraceSequence": 377,
+        "serverSnapshotSeq": 134,
+        "time": 4.467,
+        "health": 6.505,
+        "dead": 0,
+        "pose": [
+          8,
+          0,
+          34
+        ],
+        "camera": [
+          8,
+          0.949999988079071,
+          34
+        ],
+        "authorityYaw": -0.57,
+        "authorityPitch": 1.05,
+        "nativeYaw": -0.569999992847443,
+        "nativePitch": 1.04999995231628,
+        "reseeded": false
+      },
+      "dead": {
+        "nativeTraceSequence": 380,
+        "serverSnapshotSeq": 135,
+        "time": 4.5,
+        "health": 0,
+        "dead": 1.983,
+        "pose": [
+          8,
+          0,
+          34
+        ],
+        "camera": [
+          8,
+          0.949999988079071,
+          34
+        ],
+        "authorityYaw": -0.57,
+        "authorityPitch": 1.05,
+        "nativeYaw": -0.569999992847443,
+        "nativePitch": 1.04999995231628,
+        "reseeded": false
+      },
+      "respawn": {
+        "nativeTraceSequence": 557,
+        "serverSnapshotSeq": 195,
+        "time": 6.5,
+        "health": 100,
+        "dead": 0,
+        "pose": [
+          44,
+          0,
+          -34
+        ],
+        "camera": [
+          44,
+          1.45000004768372,
+          -34
+        ],
+        "authorityYaw": 2.229,
+        "authorityPitch": 0,
+        "nativeYaw": 2.22900009155273,
+        "nativePitch": 0,
+        "reseeded": true
+      }
+    },
+    "deathEvent": {
+      "type": "death",
+      "id": 371,
+      "time": 4.5,
+      "actor": 1,
+      "pos": {
+        "x": 8,
+        "y": 1,
+        "z": 34
+      },
+      "character": "chatgpt",
+      "killer": 0,
+      "killerName": "Protocol attacker",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 4.495,
+      "direction": {
+        "x": -0.469,
+        "y": 0,
+        "z": 0.883
+      },
+      "seed": 20,
+      "style": "ragdoll"
+    },
+    "spawnEvent": {
+      "type": "spawn",
+      "id": 376,
+      "time": 6.5,
+      "actor": 1,
+      "pos": {
+        "x": 44,
+        "y": 1,
+        "z": -34
+      }
+    },
+    "eventCorroborated": true,
+    "ackHighWater": 571,
+    "receiptNotIndividualApplication": true,
+    "harnessBoundary": {
+      "native_completion_proven": false,
+      "reason": "post_respawn_window",
+      "seconds": 10.4030236666669
+    }
+  },
+  "status": "PASS",
+  "finished": "2026-09-21T23:58:31.828Z"
+}

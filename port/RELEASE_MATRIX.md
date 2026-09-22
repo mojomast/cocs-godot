@@ -9,12 +9,12 @@ branches does not establish a completed game port. Locked scope remains
 | Area | Synthetic/offline | Saved genuine evidence | Independently rerun live | Graphical / playable acceptance |
 |---|---|---|---|---|
 | Asset provenance/parity | Asset audit 9 tests pass; frozen source inventory and rights review integrated | Existing Meridian GLB probe | No original-art parity run in this integration | OPEN; diagnostic actors/pickups/world do not establish parity |
-| Gameplay catalog/analyzer/recorder | 29 tests pass, including loopback mock recorder | Sparse accelerated protocol capture remains insufficient for death/respawn | Pending intentional scenario acceptance | OPEN |
+| Gameplay catalog/analyzer/recorder | 29 tests pass, including loopback mock recorder | Sparse accelerated capture insufficient; new native death evidence below | Death milestone independently rerun; native rocket pickup reported PASS, sanitization review pending | Health pickup, nonlethal damage and broader playable scenarios OPEN |
 | Guest workflow | 7 harness tests pass | Historical final and failed runs archived losslessly | All four cases PASS at `86ef719`: positive, invalid room, actual 120s host wait timeout and HTTP-rejected handshake | Guest UI/results/focus acceptance separate |
 | Trace correlation | 13 tests pass; 11 synthetic, 2 real owned-process cleanup | Final historical run replayed: 333 snapshot / 647 input receipt matches | PASS at `86ef719`: 333 snapshot / 644 input receipt matches; disabled 0 trace records; deliberate timeout fails and cleans up | Neutral headless window only; native completion unproven |
-| Death / respawn | Existing lifecycle/control regressions | No accepted intentional recording integrated yet | Isolated subagent executing real native victim / supported attacker scenario | Held-control suppression requires explicit stimulus; no inference from neutral input |
-| Focus / click / pointer | Existing synthetic notifications and control regressions | Headless fields are not graphical evidence | Private-display subagent executing actual OS input/focus checks | Owner authorized private display; shared desktop excluded |
-| Full verifier | All 29 implemented gates pass | First attempt failed at inherited occupied PORT=4332; retained | `PORT=0` rerun passes, including live movement/fire, normal-rate results/restart and two native clients | Visual/playable gates remain separate |
+| Death / respawn | Real defect regression failed 10 assertions before fix; now 2,497 control / 15 lifecycle checks pass | Original passing run and genuine premature-respawn failure retained | Two independent normal-rate runs PASS at `7e505f2`, with held Ctrl/fire, authoritative camera reseed and fresh-click gating | Programmatic input-path milestone established; OS focus/hardware acceptance separate |
+| Focus / click / pointer | Existing synthetic notifications and control regressions | Private X11 run reproduced look leak during delayed application-focus notification | Subagent implementing/rerunning targeted correction | Click, confinement, Escape, settled focus and held-control return exercised; transition look still OPEN |
+| Full verifier | All 29 implemented gates pass after healthy-respawn correction | First attempt failed at inherited occupied PORT=4332; retained | `PORT=0` rerun passes, including live movement/fire, normal-rate results/restart and two native clients | Visual/playable gates remain separate |
 | Pulse rifle preview | No completion commit available | None reviewed | Owner believes work is not finished | Pending; reserved directories untouched |
 
 The actual commands, clean execution tree hashes, source provenance, receipt vs
@@ -45,6 +45,9 @@ the locked JSON contract; the family summary below does not narrow them.
 
 - Original models, animations, shaders, effects, audio and visual comparison are
   incomplete; the pulse-rifle preview has no accepted completion report.
+  Meridian's blank GLB preview is now traced to exported sky `BackSide` semantic
+  loss; a private culling-only experiment reveals the map, not full art parity.
+  A production exporter correction and environment behavior remain open.
 - Intentional health/weapon pickup, nonlethal damage, death/respawn, lethal
   round-ending results/restart and mode-specific gameplay need scoped evidence.
   A separate isolated subagent is executing the weapon-pickup/return scenario.
