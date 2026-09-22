@@ -1,5 +1,6 @@
 extends Node3D
 ## Public objective markers only; no capture simulation or missing-node inference.
+const Guidance = preload("res://lattice/world_guidance.gd")
 var markers: Dictionary = {}
 var heights: Dictionary = {}
 var nearest: Dictionary = {}
@@ -46,10 +47,32 @@ func apply_projection(projection: Dictionary, actor: Dictionary) -> void:
 func known(value: Variant) -> String:
 	return "unknown" if value == null else "%.1f" % float(value)
 
-func text(projection: Dictionary) -> String:
+func approach_node(projection: Dictionary, actor: Dictionary) -> Dictionary:
+	# Public live is a useful exploration hint, not team-specific capture legality.
+	# Prefer an unowned/enemy live objective to repeatedly coaching own HQ.
+	var target: Dictionary = {}
+	var closest := INF
+	if actor.is_empty(): return nearest
+	for node: Dictionary in projection.get("nodes", []):
+		if node.get("live") != true or node.get("owner") == projection.get("team"): continue
+		var d := Vector2(actor.x, actor.z).distance_to(Vector2(node.x, node.z))
+		if d < closest:
+			closest = d
+			target = node
+	return nearest if target.is_empty() else target
+
+func text(projection: Dictionary, actor: Dictionary = {}, yaw: float = 0.0) -> String:
 	if projection.is_empty(): return "Recipient projection unavailable — controls released"
-	var result := "Team %d  |  FLUX %s  |  own REQ %s" % [int(projection.team), known(projection.get("flux")), known(projection.get("req"))]
-	if not nearest.is_empty():
-		var progress: Array = nearest.get("progress", [])
-		result += "\nNearby: %s · %.1fm · %s\n%s · progress %s" % [nearest.get("label", nearest.id), distance, "Neutral" if nearest.get("owner") == null else "Team %d" % int(nearest.owner), "CONTESTED" if nearest.get("contested") == true else "live" if nearest.get("live") == true else "inactive", "%.0f%%" % (float(progress[int(projection.team)]) * 100) if progress.size() == 2 else "unknown"]
+	var result := "Goal: explore toward a public node; C opens tactical commands."
+	var target := approach_node(projection, actor)
+	if not target.is_empty():
+		var progress: Array = target.get("progress", [])
+		var range_m := Vector2(actor.x, actor.z).distance_to(Vector2(target.x, target.z)) if not actor.is_empty() else distance
+		result = "Goal: approach %s · %s · %.0f m (planar)" % [target.get("label", target.id), Guidance.bearing(actor, target, yaw) if not actor.is_empty() else "bearing unknown", range_m]
+		var activity := "CONTESTED" if target.get("contested") == true else "live" if target.get("live") == true else "inactive" if target.get("live") == false else "activity unknown"
+		result += "\nSource node: %s · %s · team progress %s" % ["Neutral" if target.get("owner") == null else "Team %d" % int(target.owner), activity, "%.0f%%" % (float(progress[int(projection.team)]) * 100) if progress.size() == 2 else "unknown"]
+	result += "\nTeam %d · FLUX %s · own REQ %s\nC: HOLD / recruitment. HOLD receipt ≠ node capture." % [int(projection.team), known(projection.get("flux")), known(projection.get("req"))]
+	if projection.get("coop") == true:
+		var recruitment: Dictionary = projection.get("recruitment", {})
+		result += "\nWave %s · %s · recruitment window %s" % [str(recruitment.get("wave")) if recruitment.get("wave") != null else "unknown", str(recruitment.get("phase")) if recruitment.get("phase") != null else "phase unknown", "open" if recruitment.get("open") == true else "closed" if recruitment.get("open") == false else "unknown"]
 	return result

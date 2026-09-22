@@ -3,11 +3,14 @@ extends "res://world/session.gd"
 const WorldTransport = preload("res://lattice/world_transport.gd")
 const WorldHUD = preload("res://lattice/world_hud.gd")
 const WorldCommands = preload("res://lattice/world_commands.gd")
+const WorldGuidance = preload("res://lattice/world_guidance.gd")
 const WORLD_MAPS := ["asterion-relay", "monsoon-foundry"]
 var lattice_hud := WorldHUD.new()
 var world_label := Label.new()
 var world_commands: Control
 var world_wait_release := false
+var world_panel: PanelContainer
+var world_error := ""
 
 func _init() -> void:
 	# Replace before attachment: the transport's _init signal observers run before
@@ -23,14 +26,22 @@ func _ready() -> void:
 	camera.rotation_order = EULER_ORDER_YXZ
 	var layer := CanvasLayer.new()
 	add_child(layer)
+	world_panel = PanelContainer.new()
+	world_panel.position = Vector2(18, 14)
+	world_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var backing := StyleBoxFlat.new()
+	backing.bg_color = Color(0.025, 0.045, 0.07, 0.9)
+	backing.set_content_margin_all(10)
+	world_panel.add_theme_stylebox_override("panel", backing)
+	layer.add_child(world_panel)
 	var panel := VBoxContainer.new()
-	panel.position = Vector2(18, 14)
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	layer.add_child(panel)
+	world_panel.add_child(panel)
 	for item: Label in [label, world_label, combat_label]:
 		panel.add_child(item)
 		item.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		item.add_theme_font_size_override("font_size", 17)
+		item.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		item.add_theme_font_size_override("font_size", 16)
 		item.add_theme_color_override("font_shadow_color", Color.BLACK)
 		item.add_theme_constant_override("shadow_offset_x", 2)
 		item.add_theme_constant_override("shadow_offset_y", 2)
@@ -152,6 +163,7 @@ func on_started(frame: Dictionary) -> void:
 	super.on_started(frame)
 
 func on_error(message: String) -> void:
+	world_error = message
 	if is_instance_valid(world_commands): world_commands.world_clear()
 	lattice_hud.clear_round()
 	super.on_error(message)
@@ -188,9 +200,14 @@ func on_results(frame: Dictionary) -> void:
 	refresh_world_hud()
 
 func refresh_world_hud() -> void:
-	label.text = "LATTICE / WORLD · %s · %s\n%s · HP %s · ACK %d (input high-water receipt)\nClick: engage/fire · Esc: release · C: tactical commands\nWASD: move · mouse: look · Shift: sprint · Space: jump\nR: reload · E: interact · F: mobility" % [current_id, selected_mode, presentation.lifecycle.label(), presentation.local_actor.get("health", "unknown"), client.last_ack]
-	world_label.text = lattice_hud.text(client.projection) + "\nRelease movement/action keys before clicking to resume."
-	if phase == 4: world_label.text = "RESULTS · Enter: request another round"
+	var status := WorldGuidance.control_state(self)
+	label.text = "LATTICE / WORLD · %s · HP %s\n%s\n%s" % ["Co-op Operations" if selected_mode == "cocs-coop" else "PvP", presentation.local_actor.get("health", "unknown"), status.title, status.hint]
+	world_label.text = lattice_hud.text(client.projection, presentation.local_actor, yaw) if status.id in ["engaged", "released", "commands"] else ""
+	if phase == -1: world_label.text = world_error
+	combat_label.visible = not combat_label.text.is_empty()
+	if is_instance_valid(world_panel):
+		world_panel.visible = not (is_instance_valid(world_commands) and world_commands.visible)
+		world_panel.size = Vector2(minf(590, get_viewport().get_visible_rect().size.x - 36), 0)
 
 func _process(delta: float) -> void:
 	if is_instance_valid(world_commands) and world_commands.visible: release_pointer()
@@ -199,4 +216,4 @@ func _process(delta: float) -> void:
 	if phase == 3 and snapshot_watch.stale():
 		if is_instance_valid(world_commands): world_commands.world_clear()
 		lattice_hud.clear_round()
-		world_label.text = "State stale — release keys, wait for state, then click to resume."
+	refresh_world_hud()
