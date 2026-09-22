@@ -153,6 +153,57 @@ Node authority, collision/support geometry, all nine maps and campaign deferral
 remain the integration constraints. Final evidence must distinguish fixtures,
 normal-rate live operation, graphical review and Windows package execution.
 
+## Combat expansion — second parallel pass
+
+Owner requested showcase shields/effects in real combat, additional weapon effects,
+massive in-match particles (million-particle lab ran smoothly on their GPU), rigged
+and aligned ADS, barrel-tip presentation, and deathmatch on all three new maps.
+Baseline `64da4bc`. These agents work in primary with **exclusive path ownership**;
+each must commit only its own paths. Lead owns integration/review/package rebuilds.
+
+| Lane | Owned paths |
+|---|---|
+| ADS and sight/weapon rig | `godot/first_person/`, `tools/godot-weapons/`, `godot/tests/first_person/`, `port/native-ads/` |
+| Showcase shields and actor effects | New `godot/combat_shields/`, matching tests, `port/native-combat-shields/` |
+| Massive in-game particles | New `godot/combat_particles/`, matching tests, `port/native-combat-particles/` |
+| Muzzle/weapon effects | New `godot/weapon_effects/`, matching tests, `port/native-weapon-effects/` |
+| Complete input/ADS controls | `godot/world/session.gd`, new `combat_actions.gd`, Horde demo aim hook, combined-arms controls/demo/graphics aim hooks, Arms Race input, LATTICE neutral input, shared HUD hints; new action tests/report |
+| Native DM geometry | `godot/native_arenas/maps/`, `generated/`, geometry tests, `tools/godot-native-arenas/`, `port/native-arena-geometry/`; Prism demo map-only seam if needed |
+| Native DM authority | `port/native-arenas/`; optional native-arena client and protocol tests |
+| Native DM scene | `godot/native_arenas/{demo.gd,demo.tscn,catalog.gd,hud.gd}`, session tests, `port/native-arena-session/` |
+| Native DM launchers | Common/package launchers/options, package discovery, new native-arena tests, `Native Deathmatch.cmd`, `port/native-arena-launchers/` |
+
+Lead reserves `godot/world/combat_feedback.gd`, new shared FX composition/settings,
+package build/export/Windows verification, aggregate gates, release docs and final
+live acceptance. Shared session/combined-arms hooks are integrated **after** the
+input lane completes. Do not overwrite another lane or stage unrelated primary work.
+
+### Agreed contracts
+
+- `session.aim_requested()` gives eligible local ADS intent; source `controls.ads`
+  already exists. Rig owns animated/FOV response. Weapon selection being disabled
+  (Arms Race) must not hide the rig or disable ADS.
+- Native DM uses `--experience=native-dm --map=prism-foundry|aurora-basin|cinder-array`.
+  Original exploration routes stay available. Existing nine-map catalog stays
+  source-locked; the native arenas use a separate registry and port-owned authority.
+- Generated arena envelope: `schemaVersion:1`, `id`, `name`, `geometryHash`,
+  `arena` (source-consumable geometry/spawns/pickups/nav), `spawnPoints`, `routes`.
+  Files: `godot/native_arenas/generated/<id>.json`.
+- Map-only wrappers: `godot/native_arenas/maps/<id>.gd`, `build()`,
+  `get_spawn_points()`, `get_arena_id()`. Gameplay cameras use source actor poses.
+- Source Match uses highest-floor XZ navigation. DM variants deliberately author
+  compatible routes and **visible** under-deck infill; a collider dump must not
+  claim unsupported multi-layer traversal. Preserve exploration layouts separately.
+- Source shots already ray-test camera→simulation muzzle→target. Visual muzzle
+  effects attach to animated barrel anchors and converge to source-confirmed paths;
+  they must not manufacture hits, ignore near-wall obstruction or change damage.
+- Particle quality is explicit and bounded across the whole live pool, with an
+  extreme setting up to one million. Report actual allocated/emitting counts and
+  rendered performance, distinguishing fixtures, normal live sessions and hardware.
+
+No campaign work, paid generation, edits to locked source simulation, external
+pulse-rifle assets, user research, or shared-service changes are part of this pass.
+
 ## Deferred campaign
 
 The owner wants a campaign remake, then explicitly deferred it for substantial
