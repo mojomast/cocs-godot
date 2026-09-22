@@ -1,0 +1,32 @@
+{
+  "platform": "win32",
+  "status": "passed",
+  "cases": [
+    {
+      "map": "meridian-exchange",
+      "passed": true,
+      "port": 58460,
+      "native_pid": 6532,
+      "cleanup": true
+    },
+    {
+      "map": "verdant-reliquary",
+      "passed": true,
+      "port": 58465,
+      "native_pid": 2404,
+      "cleanup": true
+    },
+    {
+      "map": "ember-crucible",
+      "passed": true,
+      "port": 58469,
+      "native_pid": 10076,
+      "cleanup": true
+    }
+  ],
+  "graphical": false,
+  "manifest_sha256": "ff17e08eecb17cc5af3574800908006ef2f6c96a4ff71a948cacde864a7d6a26",
+  "port_commit": "fc318528fee9be04f74d5e82fe023a2adab95d1a",
+  "files_verified": 119,
+  "preview_load": true
+}

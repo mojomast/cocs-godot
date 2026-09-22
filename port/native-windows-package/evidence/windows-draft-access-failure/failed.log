@@ -1,0 +1,22 @@
+windows-smoke	Download exact release asset and extract into a path with spaces	﻿2026-09-22T07:33:28.4962061Z ##[group]Run $download = Join-Path $env:RUNNER_TEMP 'cocs-download'
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.4962980Z [36;1m$download = Join-Path $env:RUNNER_TEMP 'cocs-download'[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.4963671Z [36;1mgh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern 'cocs-native-windows.zip*' --dir $download[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.4964335Z [36;1mif ($LASTEXITCODE -ne 0) { throw 'Release download failed' }[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.4964752Z [36;1m$zip = Join-Path $download 'cocs-native-windows.zip'[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.4965164Z [36;1m$expected = ((Get-Content "$zip.sha256").Split(' ')[0]).ToLower()[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.4965744Z [36;1mif ((Get-FileHash $zip -Algorithm SHA256).Hash.ToLower() -ne $expected) { throw 'ZIP checksum mismatch' }[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.4966314Z [36;1m$extract = Join-Path $env:RUNNER_TEMP 'fresh Windows demo'[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.4966667Z [36;1mExpand-Archive $zip $extract[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.4966994Z [36;1m"DEMO_ROOT=$extract\cocs-native-windows" >> $env:GITHUB_ENV[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.5578972Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.5579473Z env:
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.5583516Z   GH_TOKEN: ***
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.5583785Z   RELEASE_TAG: windows-demo-2026-09-22
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:28.5584104Z ##[endgroup]
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:32.8542655Z release not found
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:33.0920905Z [31;1mException: [0mD:\a\_temp\430a98e0-18bb-4afc-a9e7-20b24e0b6033.ps1:4[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:33.0921815Z [31;1m[0m[36;1mLine |[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:33.0922732Z [31;1m[0m[36;1m[36;1m   4 | [0m if ($LASTEXITCODE -ne 0) { [36;1mthrow 'Release download failed'[0m }[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:33.0923545Z [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:33.0924186Z [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mRelease download failed[0m
+windows-smoke	Download exact release asset and extract into a path with spaces	2026-09-22T07:33:33.1486078Z ##[error]Process completed with exit code 1.

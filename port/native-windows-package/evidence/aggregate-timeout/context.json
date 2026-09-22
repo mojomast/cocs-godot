@@ -1,0 +1,5 @@
+{
+  "status": "incomplete",
+  "reason": "Outer shell was given 120 seconds; terminated while the normal-rate lifecycle gate was running. Completed gates passed. This is not an aggregate pass.",
+  "rerun_timeout_seconds": 600
+}

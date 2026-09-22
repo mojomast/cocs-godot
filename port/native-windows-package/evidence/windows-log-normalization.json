@@ -1,0 +1,30 @@
+{
+  "note": "Readable .log copies normalize CRLF and final blank lines. Original downloaded bytes are preserved losslessly in adjacent .log.gz files.",
+  "files": [
+    {
+      "path": "windows-native/ember-crucible.log",
+      "raw_sha256": "56fada8e0bcfaa5a83a4ad4ca166e4180514057cf3155a36c3ee4fc77173b80e",
+      "normalized_sha256": "8ffa6960500e77dc845843adc71f4897249963712da68462faee4b43fe8e9b6d"
+    },
+    {
+      "path": "windows-native/meridian-exchange.log",
+      "raw_sha256": "79230944cf56e18843b98954e8959f78a6d8a4b17319f9359af9a7ce234c7f4c",
+      "normalized_sha256": "49d227924ceb9fcc0edcb3b3fc1280e8a338f8f7379e8b35fab99fa66ddd215c"
+    },
+    {
+      "path": "windows-native/preview.log",
+      "raw_sha256": "0128ddad978d36908225bdc629895e642b711d9b24fc420a130912682711ec15",
+      "normalized_sha256": "77c04064f43fc7f89cce87f09400260ed264443bb3ccfed821c00c6dc5d6327b"
+    },
+    {
+      "path": "windows-native/verdant-reliquary.log",
+      "raw_sha256": "031e18cf4d4b631a7fb73ca9f92fc4f75e2506a794bc86df03c7151c71e9152b",
+      "normalized_sha256": "6384131357f3619085da8269290c942d56f0e512ea89162a562b1562020162dc"
+    },
+    {
+      "path": "windows-quoting-failure/meridian-exchange.log",
+      "raw_sha256": "7fa25068737045e37b1ac89615074ec40eca43016368b8e744785e0279786140",
+      "normalized_sha256": "63f9899fb9f1715245707a34487a0fc3050d865293852eb0520f485fa3030136"
+    }
+  ]
+}

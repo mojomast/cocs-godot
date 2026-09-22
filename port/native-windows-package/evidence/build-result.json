@@ -1,0 +1,9 @@
+{
+  "archive": "/tmp/opencode/cocs-windows-demo-release/builds/1790062216157485434/cocs-native-windows.zip",
+  "archive_sha256": "fd02b9de5bc454acb5a2b4d20502016e72ea45a1aef82cfe39915eb94aa6281d",
+  "build": "/tmp/opencode/cocs-windows-demo-release/builds/1790062216157485434",
+  "generated_resources_sha256": "a134079480726f43be859ee63c16370aaba5afa953d89a8e353d1bbb86a517e0",
+  "inputs_sha256": "0cd17b83aabf90251e4bc3e85f1c16e3eac996a2b30298b6c5ae459e3a5de20c",
+  "manifest_sha256": "ff17e08eecb17cc5af3574800908006ef2f6c96a4ff71a948cacde864a7d6a26",
+  "package": "/tmp/opencode/cocs-windows-demo-release/builds/1790062216157485434/cocs-native-windows"
+}

@@ -1,0 +1,9 @@
+PACKAGE_SERVER_READY {"pid":4568,"host":"127.0.0.1","port":58460,"experience":"combat","map":"meridian-exchange","mode":"deathmatch","health":{"service":"token-arena-game-server","release":"v8.8","codename":"DESTINATIONS","commit":"unknown","buildId":"v8.8-unknown","protocol":3,"version":"v8.8","rooms":1,"players":0,"port":58460,"snapshot":{"deltaFrames":0,"fullFrames":0}}}
+PACKAGE_NATIVE_STARTED {"pid":6532,"scene":"res://world/session.tscn"}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PORT_OPERATOR_MODEL res://player_models/candidate.gd
+PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true fired=true ack=18 snapshots=9 remote_poses=70 pickups=20 static_pickups_hidden=true combat_shots=1 combat_launches=0 local_launches=0 map=meridian-exchange mode=deathmatch
+PACKAGE_STOPPED
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)

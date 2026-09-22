@@ -1,0 +1,30 @@
+{
+  "archive_sha256": "fd02b9de5bc454acb5a2b4d20502016e72ea45a1aef82cfe39915eb94aa6281d",
+  "platform": "linux",
+  "target": "windows",
+  "note": "Exact Windows PCK exercised with a Linux release template. This is not native Windows execution.",
+  "cases": [
+    {
+      "map": "meridian-exchange",
+      "passed": true,
+      "owned_port_closed": 38747
+    },
+    {
+      "map": "verdant-reliquary",
+      "passed": true,
+      "owned_port_closed": 40165
+    },
+    {
+      "map": "ember-crucible",
+      "passed": true,
+      "owned_port_closed": 41335
+    }
+  ],
+  "files_verified": 119,
+  "port_commit": "fc318528fee9be04f74d5e82fe023a2adab95d1a",
+  "preview_sizes": [
+    "960x640",
+    "1280x800"
+  ],
+  "passed": true
+}

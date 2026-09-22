@@ -2,373 +2,373 @@ TAP version 13
 # Subtest: cardinal and diagonal starts accelerate equally on ground and in air
 ok 1 - cardinal and diagonal starts accelerate equally on ground and in air
   ---
-  duration_ms: 10.367693
+  duration_ms: 11.469669
   type: 'test'
   ...
 # Subtest: ground release stops finitely and reversal is sharp and direction independent
 ok 2 - ground release stops finitely and reversal is sharp and direction independent
   ---
-  duration_ms: 1.519968
+  duration_ms: 7.355384
   type: 'test'
   ...
 # Subtest: air projection preserves perpendicular momentum, coasts, and bounds repeated steering
 ok 3 - air projection preserves perpendicular momentum, coasts, and bounds repeated steering
   ---
-  duration_ms: 13.520309
+  duration_ms: 16.123444
   type: 'test'
   ...
 # Subtest: air reversal changes only the requested projection and external momentum is preserved
 ok 4 - air reversal changes only the requested projection and external momentum is preserved
   ---
-  duration_ms: 0.384109
+  duration_ms: 0.503893
   type: 'test'
   ...
 # Subtest: ground speed respects analog input and all existing speed modifiers
 ok 5 - ground speed respects analog input and all existing speed modifiers
   ---
-  duration_ms: 1.535186
+  duration_ms: 1.960251
   type: 'test'
   ...
 # Subtest: sprint, crouch and slide compose with the base speed
 ok 6 - sprint, crouch and slide compose with the base speed
   ---
-  duration_ms: 3.593723
+  duration_ms: 6.800365
   type: 'test'
   ...
 # Subtest: launcher speed coasts unchanged and steering cannot compound external momentum
 ok 7 - launcher speed coasts unchanged and steering cannot compound external momentum
   ---
-  duration_ms: 9.059443
+  duration_ms: 8.075984
   type: 'test'
   ...
 # Subtest: bunny hopping preserves cruise speed and strafe hops build speed
 ok 8 - bunny hopping preserves cruise speed and strafe hops build speed
   ---
-  duration_ms: 18.41008
+  duration_ms: 6.559964
   type: 'test'
   ...
 # Subtest: variable jump trims a held release but keeps tap and coyote jumps
 ok 9 - variable jump trims a held release but keeps tap and coyote jumps
   ---
-  duration_ms: 0.629038
+  duration_ms: 0.457948
   type: 'test'
   ...
 # Subtest: coyote time and buffered landing jumps remain available
 ok 10 - coyote time and buffered landing jumps remain available
   ---
-  duration_ms: 0.408575
+  duration_ms: 0.493414
   type: 'test'
   ...
 # Subtest: the destination lattice collection contains both distinct registered theatres
 ok 11 - the destination lattice collection contains both distinct registered theatres
   ---
-  duration_ms: 1.35044
+  duration_ms: 1.19642
   type: 'test'
   ...
 # Subtest: asterion-relay: complete lattice doctrine and measured spacing/arrival clearance
 ok 12 - asterion-relay: complete lattice doctrine and measured spacing/arrival clearance
   ---
-  duration_ms: 2.409063
+  duration_ms: 2.164303
   type: 'test'
   ...
 # Subtest: asterion-relay: all authored and Operations runtime anchors connect bidirectionally on their real floor
 ok 13 - asterion-relay: all authored and Operations runtime anchors connect bidirectionally on their real floor
   ---
-  duration_ms: 135.524808
+  duration_ms: 134.543655
   type: 'test'
   ...
 # Subtest: asterion-relay: every service deck has sampled ground ascent and descent from both ends
 ok 14 - asterion-relay: every service deck has sampled ground ascent and descent from both ends
   ---
-  duration_ms: 32.060353
+  duration_ms: 31.468961
   type: 'test'
   ...
 # Subtest: asterion-relay: 4v4 retains authored frontier, live budget and endgame shape
 ok 15 - asterion-relay: 4v4 retains authored frontier, live budget and endgame shape
   ---
-  duration_ms: 1.052232
+  duration_ms: 1.079672
   type: 'test'
   ...
 # Subtest: asterion-relay: 8v8 retains authored frontier, live budget and endgame shape
 ok 16 - asterion-relay: 8v8 retains authored frontier, live budget and endgame shape
   ---
-  duration_ms: 0.324187
+  duration_ms: 0.307626
   type: 'test'
   ...
 # Subtest: asterion-relay: Operations interact banks and redeems a shard at the real HQ vault
 ok 17 - asterion-relay: Operations interact banks and redeems a shard at the real HQ vault
   ---
-  duration_ms: 126.6385
+  duration_ms: 123.812589
   type: 'test'
   ...
 # Subtest: asterion-relay: Operations siege can damage and repair its authored HQ
 ok 18 - asterion-relay: Operations siege can damage and repair its authored HQ
   ---
-  duration_ms: 35.316303
+  duration_ms: 35.125227
   type: 'test'
   ...
 # Subtest: asterion-relay: a bounded Operations opening replays deterministically
 ok 19 - asterion-relay: a bounded Operations opening replays deterministically
   ---
-  duration_ms: 101.808732
+  duration_ms: 106.118625
   type: 'test'
   ...
 # Subtest: monsoon-foundry: complete lattice doctrine and measured spacing/arrival clearance
 ok 20 - monsoon-foundry: complete lattice doctrine and measured spacing/arrival clearance
   ---
-  duration_ms: 0.920324
+  duration_ms: 0.868656
   type: 'test'
   ...
 # Subtest: monsoon-foundry: all authored and Operations runtime anchors connect bidirectionally on their real floor
 ok 21 - monsoon-foundry: all authored and Operations runtime anchors connect bidirectionally on their real floor
   ---
-  duration_ms: 98.272217
+  duration_ms: 95.207642
   type: 'test'
   ...
 # Subtest: monsoon-foundry: every service deck has sampled ground ascent and descent from both ends
 ok 22 - monsoon-foundry: every service deck has sampled ground ascent and descent from both ends
   ---
-  duration_ms: 41.712676
+  duration_ms: 42.612138
   type: 'test'
   ...
 # Subtest: monsoon-foundry: 4v4 retains authored frontier, live budget and endgame shape
 ok 23 - monsoon-foundry: 4v4 retains authored frontier, live budget and endgame shape
   ---
-  duration_ms: 0.45378
+  duration_ms: 0.623547
   type: 'test'
   ...
 # Subtest: monsoon-foundry: 8v8 retains authored frontier, live budget and endgame shape
 ok 24 - monsoon-foundry: 8v8 retains authored frontier, live budget and endgame shape
   ---
-  duration_ms: 0.153006
+  duration_ms: 0.237395
   type: 'test'
   ...
 # Subtest: monsoon-foundry: Operations interact banks and redeems a shard at the real HQ vault
 ok 25 - monsoon-foundry: Operations interact banks and redeems a shard at the real HQ vault
   ---
-  duration_ms: 89.414312
+  duration_ms: 90.832749
   type: 'test'
   ...
 # Subtest: monsoon-foundry: Operations siege can damage and repair its authored HQ
 ok 26 - monsoon-foundry: Operations siege can damage and repair its authored HQ
   ---
-  duration_ms: 23.142146
+  duration_ms: 24.877266
   type: 'test'
   ...
 # Subtest: monsoon-foundry: a bounded Operations opening replays deterministically
 ok 27 - monsoon-foundry: a bounded Operations opening replays deterministically
   ---
-  duration_ms: 83.59503
+  duration_ms: 83.498935
   type: 'test'
   ...
 # Subtest: the nine destination maps are registered once, immutable and explicitly classified
 ok 28 - the nine destination maps are registered once, immutable and explicitly classified
   ---
-  duration_ms: 1.666462
+  duration_ms: 1.340962
   type: 'test'
   ...
 # Subtest: destination eligibility covers all 23 modes without implicit fallback permissions
 ok 29 - destination eligibility covers all 23 modes without implicit fallback permissions
   ---
-  duration_ms: 27.837291
+  duration_ms: 21.390648
   type: 'test'
   ...
 # Subtest: destination schema and static geometry budget: meridian-exchange
 ok 30 - destination schema and static geometry budget: meridian-exchange
   ---
-  duration_ms: 1.20091
+  duration_ms: 1.152889
   type: 'test'
   ...
 # Subtest: destination schema and static geometry budget: verdant-reliquary
 ok 31 - destination schema and static geometry budget: verdant-reliquary
   ---
-  duration_ms: 3.412964
+  duration_ms: 1.162166
   type: 'test'
   ...
 # Subtest: destination schema and static geometry budget: ember-crucible
 ok 32 - destination schema and static geometry budget: ember-crucible
   ---
-  duration_ms: 0.927728
+  duration_ms: 3.176358
   type: 'test'
   ...
 # Subtest: destination schema and static geometry budget: tidal-citadel
 ok 33 - destination schema and static geometry budget: tidal-citadel
   ---
-  duration_ms: 1.300817
+  duration_ms: 1.304533
   type: 'test'
   ...
 # Subtest: destination schema and static geometry budget: sunscar-convoy
 ok 34 - destination schema and static geometry budget: sunscar-convoy
   ---
-  duration_ms: 1.701547
+  duration_ms: 1.474351
   type: 'test'
   ...
 # Subtest: destination schema and static geometry budget: asterion-relay
 ok 35 - destination schema and static geometry budget: asterion-relay
   ---
-  duration_ms: 4.340131
+  duration_ms: 4.070683
   type: 'test'
   ...
 # Subtest: destination schema and static geometry budget: monsoon-foundry
 ok 36 - destination schema and static geometry budget: monsoon-foundry
   ---
-  duration_ms: 5.375741
+  duration_ms: 3.552323
   type: 'test'
   ...
 # Subtest: destination schema and static geometry budget: ion-speedway
 ok 37 - destination schema and static geometry budget: ion-speedway
   ---
-  duration_ms: 0.644808
+  duration_ms: 0.498874
   type: 'test'
   ...
 # Subtest: destination schema and static geometry budget: aurora-stadium
 ok 38 - destination schema and static geometry budget: aurora-stadium
   ---
-  duration_ms: 0.295103
+  duration_ms: 0.356207
   type: 'test'
   ...
 # Subtest: destination sports are exclusive and leave the established fallback maps intact
 ok 39 - destination sports are exclusive and leave the established fallback maps intact
   ---
-  duration_ms: 1.193887
+  duration_ms: 1.091885
   type: 'test'
   ...
 # Subtest: Ion Speedway authors ordered gates, a full grid and finite track furniture
 ok 40 - Ion Speedway authors ordered gates, a full grid and finite track furniture
   ---
-  duration_ms: 0.476483
+  duration_ms: 0.423623
   type: 'test'
   ...
 # Subtest: Aurora Stadium supplies centered kickoff, opposing goals and two slots per team
 ok 41 - Aurora Stadium supplies centered kickoff, opposing goals and two slots per team
   ---
-  duration_ms: 0.183995
+  duration_ms: 0.17133
   type: 'test'
   ...
 # Subtest: both destination theatres supply real lattices and the Operations HQ contract
 ok 42 - both destination theatres supply real lattices and the Operations HQ contract
   ---
-  duration_ms: 9.561884
+  duration_ms: 9.696558
   type: 'test'
   ...
 # Subtest: destination sports metadata admits only the corresponding sport, including single-player exclusions
 ok 43 - destination sports metadata admits only the corresponding sport, including single-player exclusions
   ---
-  duration_ms: 5.474436
+  duration_ms: 10.099263
   type: 'test'
   ...
 # Subtest: Ion Speedway: complete centerline, corner sweeps, furniture and grid clear a 2.1 m chassis
 ok 44 - Ion Speedway: complete centerline, corner sweeps, furniture and grid clear a 2.1 m chassis
   ---
-  duration_ms: 19.860748
+  duration_ms: 16.921538
   type: 'test'
   ...
 # Subtest: Ion Speedway: the full mounted grid remains in its authored slots throughout kickoff
 ok 45 - Ion Speedway: the full mounted grid remains in its authored slots throughout kickoff
   ---
-  duration_ms: 26.711081
+  duration_ms: 18.146993
   type: 'test'
   ...
 # Subtest: Aurora Stadium: complete centerline, corner sweeps, furniture and grid clear a 2.1 m chassis
 ok 46 - Aurora Stadium: complete centerline, corner sweeps, furniture and grid clear a 2.1 m chassis
   ---
-  duration_ms: 1.608353
+  duration_ms: 1.894087
   type: 'test'
   ...
 # Subtest: Aurora Stadium: the full mounted grid remains in its authored slots throughout kickoff
 ok 47 - Aurora Stadium: the full mounted grid remains in its authored slots throughout kickoff
   ---
-  duration_ms: 3.137468
+  duration_ms: 3.217816
   type: 'test'
   ...
 # Subtest: Ion Speedway gates face forward and reject reverse, missed, airborne and out-of-order crossings
 ok 48 - Ion Speedway gates face forward and reject reverse, missed, airborne and out-of-order crossings
   ---
-  duration_ms: 7.140087
+  duration_ms: 7.050062
   type: 'test'
   ...
 # Subtest: Ion Speedway keeps both reverse-curvature sections contained and seals infield and outside cutoffs
 ok 49 - Ion Speedway keeps both reverse-curvature sections contained and seals infield and outside cutoffs
   ---
-  duration_ms: 19.813088
+  duration_ms: 25.18338
   type: 'test'
   ...
 # Subtest: Ion Speedway eight real collision-aware bots finish driving laps deterministically within 10,000 ticks
 ok 50 - Ion Speedway eight real collision-aware bots finish driving laps deterministically within 10,000 ticks
   ---
-  duration_ms: 448.606687
+  duration_ms: 453.364619
   type: 'test'
   ...
 # Subtest: Aurora Stadium keeps an empty symmetric play surface and matching board/goal collisions
 ok 51 - Aurora Stadium keeps an empty symmetric play surface and matching board/goal collisions
   ---
-  duration_ms: 0.862536
+  duration_ms: 1.152538
   type: 'test'
   ...
 # Subtest: Aurora goal 0: central and near-post shots score for the opponent and reset the ball
 ok 52 - Aurora goal 0: central and near-post shots score for the opponent and reset the ball
   ---
-  duration_ms: 3.856976
+  duration_ms: 5.151597
   type: 'test'
   ...
 # Subtest: Aurora goal 0: posts, end boards and all three net walls reject invalid shots
 ok 53 - Aurora goal 0: posts, end boards and all three net walls reject invalid shots
   ---
-  duration_ms: 6.44795
+  duration_ms: 6.06066
   type: 'test'
   ...
 # Subtest: Aurora goal 1: central and near-post shots score for the opponent and reset the ball
 ok 54 - Aurora goal 1: central and near-post shots score for the opponent and reset the ball
   ---
-  duration_ms: 1.654931
+  duration_ms: 1.679014
   type: 'test'
   ...
 # Subtest: Aurora goal 1: posts, end boards and all three net walls reject invalid shots
 ok 55 - Aurora goal 1: posts, end boards and all three net walls reject invalid shots
   ---
-  duration_ms: 7.172186
+  duration_ms: 4.810749
   type: 'test'
   ...
 # Subtest: Aurora touchline boards reflect the ball at both analytic pitch limits
 ok 56 - Aurora touchline boards reflect the ball at both analytic pitch limits
   ---
-  duration_ms: 1.365949
+  duration_ms: 1.571683
   type: 'test'
   ...
 # Subtest: both destination sports bypass infantry combat, damage, pickups and dismounting
 ok 57 - both destination sports bypass infantry combat, damage, pickups and dismounting
   ---
-  duration_ms: 5.271576
+  duration_ms: 7.653573
   type: 'test'
   ...
 # Subtest: freeze deeply freezes objects and arrays and returns the value
 ok 58 - freeze deeply freezes objects and arrays and returns the value
   ---
-  duration_ms: 0.559067
+  duration_ms: 0.569506
   type: 'test'
   ...
 # Subtest: wall and cover builders emit the canonical schema defaults
 ok 59 - wall and cover builders emit the canonical schema defaults
   ---
-  duration_ms: 0.429845
+  duration_ms: 0.545612
   type: 'test'
   ...
 # Subtest: coverBuilder parameterizes the default height while keeping explicit overrides
 ok 60 - coverBuilder parameterizes the default height while keeping explicit overrides
   ---
-  duration_ms: 0.097463
+  duration_ms: 0.102352
   type: 'test'
   ...
 # Subtest: platform and pad builders preserve field defaults
 ok 61 - platform and pad builders preserve field defaults
   ---
-  duration_ms: 0.120515
+  duration_ms: 0.122119
   type: 'test'
   ...
 # Subtest: tp emits target as the canonical teleporter destination
 ok 62 - tp emits target as the canonical teleporter destination
   ---
-  duration_ms: 0.077946
+  duration_ms: 0.072155
   type: 'test'
   ...
 # Subtest: teleporter normalizes authored to into canonical target
@@ -380,151 +380,151 @@ ok 63 - teleporter normalizes authored to into canonical target
 # Subtest: zone keeps label optional
 ok 64 - zone keeps label optional
   ---
-  duration_ms: 0.100699
+  duration_ms: 0.098405
   type: 'test'
   ...
 # Subtest: team and flag spawn builders emit numeric and colour aliases
 ok 65 - team and flag spawn builders emit numeric and colour aliases
   ---
-  duration_ms: 0.081653
+  duration_ms: 0.086262
   type: 'test'
   ...
 # Subtest: validateMapSchema accepts a well-formed map and reports structural errors
 ok 66 - validateMapSchema accepts a well-formed map and reports structural errors
   ---
-  duration_ms: 0.424234
+  duration_ms: 0.440565
   type: 'test'
   ...
 # Subtest: validateMapSchema rejects out-of-bounds placements and degenerate blocks
 ok 67 - validateMapSchema rejects out-of-bounds placements and degenerate blocks
   ---
-  duration_ms: 0.267541
+  duration_ms: 0.25623
   type: 'test'
   ...
 # Subtest: validateMapSchema checks team and flag spawn bounds
 ok 68 - validateMapSchema checks team and flag spawn bounds
   ---
-  duration_ms: 0.224821
+  duration_ms: 0.250018
   type: 'test'
   ...
 # Subtest: lattice builders emit the frozen interface shape
 ok 69 - lattice builders emit the frozen interface shape
   ---
-  duration_ms: 0.186299
+  duration_ms: 0.196488
   type: 'test'
   ...
 # Subtest: legacy maps keep the v2 contract and the schema version is unchanged
 ok 70 - legacy maps keep the v2 contract and the schema version is unchanged
   ---
-  duration_ms: 0.432531
+  duration_ms: 0.448149
   type: 'test'
   ...
 # Subtest: validateMapSchema accepts an opted-in lattice map
 ok 71 - validateMapSchema accepts an opted-in lattice map
   ---
-  duration_ms: 0.44835
+  duration_ms: 0.512831
   type: 'test'
   ...
 # Subtest: validateMapSchema rejects malformed playBounds, nodes, edges, terminals and lanes
 ok 72 - validateMapSchema rejects malformed playBounds, nodes, edges, terminals and lanes
   ---
-  duration_ms: 0.346499
+  duration_ms: 0.372477
   type: 'test'
   ...
 # Subtest: validateLattice enforces graph doctrine beyond structure
 ok 73 - validateLattice enforces graph doctrine beyond structure
   ---
-  duration_ms: 0.679794
+  duration_ms: 0.695482
   type: 'test'
   ...
 # Subtest: message types expose the canonical wire vocabulary
 ok 74 - message types expose the canonical wire vocabulary
   ---
-  duration_ms: 0.529412
+  duration_ms: 0.757208
   type: 'test'
   ...
 # Subtest: player ids accept only the canonical uuid-like shape
 ok 75 - player ids accept only the canonical uuid-like shape
   ---
-  duration_ms: 0.177643
+  duration_ms: 0.21878
   type: 'test'
   ...
 # Subtest: progress tokens are bounded and url-safe
 ok 76 - progress tokens are bounded and url-safe
   ---
-  duration_ms: 0.123902
+  duration_ms: 0.177352
   type: 'test'
   ...
 # Subtest: sanitizeText strips control characters, trims and truncates names and chat
 ok 77 - sanitizeText strips control characters, trims and truncates names and chat
   ---
-  duration_ms: 0.121247
+  duration_ms: 0.124904
   type: 'test'
   ...
 # Subtest: parseInputEnvelope validates and clamps the nested wire envelope
 ok 78 - parseInputEnvelope validates and clamps the nested wire envelope
   ---
-  duration_ms: 0.192231
+  duration_ms: 0.208871
   type: 'test'
   ...
 # Subtest: parseInputEnvelope accepts the flattened ext payload used by the room
 ok 79 - parseInputEnvelope accepts the flattened ext payload used by the room
   ---
-  duration_ms: 0.159439
+  duration_ms: 0.12843
   type: 'test'
   ...
 # Subtest: parseInputEnvelope prefers the envelope sequence over the inner one
 ok 80 - parseInputEnvelope prefers the envelope sequence over the inner one
   ---
-  duration_ms: 0.150863
+  duration_ms: 0.263774
   type: 'test'
   ...
 # Subtest: parseInputEnvelope tolerates malformed frames with safe defaults
 ok 81 - parseInputEnvelope tolerates malformed frames with safe defaults
   ---
-  duration_ms: 0.142607
+  duration_ms: 0.212628
   type: 'test'
   ...
 # Subtest: parseInputEnvelope accepts a held altFire and ignores junk values
 ok 82 - parseInputEnvelope accepts a held altFire and ignores junk values
   ---
-  duration_ms: 0.246321
+  duration_ms: 0.260027
   type: 'test'
   ...
 # Subtest: the parsed altFire field round-trips through controlsFromState
 ok 83 - the parsed altFire field round-trips through controlsFromState
   ---
-  duration_ms: 0.452828
+  duration_ms: 0.421219
   type: 'test'
   ...
 # Subtest: snapshotDelta round-trips through applySnapshotDelta and marks deletions
 ok 84 - snapshotDelta round-trips through applySnapshotDelta and marks deletions
   ---
-  duration_ms: 0.783327
+  duration_ms: 0.716562
   type: 'test'
   ...
 # Subtest: snapshotDelta v2 diffs id-keyed arrays element-wise and round-trips
 ok 85 - snapshotDelta v2 diffs id-keyed arrays element-wise and round-trips
   ---
-  duration_ms: 0.255098
+  duration_ms: 0.281618
   type: 'test'
   ...
 # Subtest: snapshotDelta keeps non-id arrays opaque and preserves empty arrays
 ok 86 - snapshotDelta keeps non-id arrays opaque and preserves empty arrays
   ---
-  duration_ms: 0.119684
+  duration_ms: 0.706844
   type: 'test'
   ...
 # Subtest: snapshotDelta v2 cuts a real combat frame by at least 80%
 ok 87 - snapshotDelta v2 cuts a real combat frame by at least 80%
   ---
-  duration_ms: 944.211303
+  duration_ms: 975.025353
   type: 'test'
   ...
 # Subtest: wireSize and BandwidthMeter report bytes and a sliding rate
 ok 88 - wireSize and BandwidthMeter report bytes and a sliding rate
   ---
-  duration_ms: 0.327133
+  duration_ms: 0.244769
   type: 'test'
   ...
 1..88
@@ -535,4 +535,4 @@ ok 88 - wireSize and BandwidthMeter report bytes and a sliding rate
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 1769.537602
+# duration_ms 1710.514205
