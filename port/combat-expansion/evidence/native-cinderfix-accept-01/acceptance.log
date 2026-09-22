@@ -1,0 +1,21 @@
+### launcher smoke prism-foundry
+NATIVE_DM_SMOKE_OK {"acks":17,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13","localAlive":true,"map":"prism-foundry","mode":"deathmatch","moved":true,"snapshots":7}
+### launcher smoke aurora-basin
+NATIVE_DM_SMOKE_OK {"acks":13,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d","localAlive":true,"map":"aurora-basin","mode":"deathmatch","moved":true,"snapshots":8}
+### launcher smoke cinder-array
+NATIVE_DM_SMOKE_OK {"acks":16,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca","localAlive":true,"map":"cinder-array","mode":"deathmatch","moved":true,"snapshots":7}
+
+### actual-maps
+ok 1 - GENERATED prism-foundry: source constructor, AI/combat, results and restart
+ok 2 - GENERATED aurora-basin: source constructor, AI/combat, results and restart
+ok 3 - GENERATED cinder-array: source constructor, AI/combat, results and restart
+# pass 3
+# fail 0
+
+### movers + parity
+{"id":"prism-foundry","geometryHash":"c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13","constructionMs":1458,"navNodes":429,"routes":[{"id":"reactor-ring","finished":true,"ticks":921},{"id":"west-ascent","finished":true,"ticks":852},{"id":"east-ascent","finished":true,"ticks":791},{"id":"garden-link","finished":true,"ticks":386},{"id":"west-coolant-loop","finished":true,"ticks":250},{"id":"east-coolant-loop","finished":true,"ticks":250},{"id":"upper-loop","finished":true,"ticks":1820}],"errors":[]}
+{"id":"aurora-basin","geometryHash":"94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d","constructionMs":1412,"navNodes":311,"routes":[{"id":"crown-ascent","finished":true,"ticks":1939},{"id":"lake-circuit","finished":true,"ticks":2594},{"id":"landing-link","finished":true,"ticks":216},{"id":"eastern-snow-flank","finished":true,"ticks":586}],"errors":[]}
+{"id":"cinder-array","geometryHash":"f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca","constructionMs":78,"navNodes":234,"routes":[{"id":"SuspendedSpan","finished":true,"ticks":625},{"id":"ExtractorAccess","finished":true,"ticks":232},{"id":"BoreFloor","finished":true,"ticks":522},{"id":"RimAscent","finished":true,"ticks":251},{"id":"WestDescent","finished":true,"ticks":249},{"id":"ReturnRamp","finished":true,"ticks":380},{"id":"cooling-crosslink","finished":true,"ticks":857},{"id":"transfer-chord","finished":true,"ticks":385},{"id":"observatory-console-flank","finished":true,"ticks":92}],"errors":[]}
+{"id":"prism-foundry","geometryHash":"c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13","spawns":6,"routes":7,"floors":255,"rays":1276,"navigationNodes":429,"navigationConnected":true,"errors":[]}
+{"id":"aurora-basin","geometryHash":"94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d","spawns":6,"routes":4,"floors":313,"rays":1566,"navigationNodes":311,"navigationConnected":true,"errors":[]}
+{"id":"cinder-array","geometryHash":"f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca","spawns":6,"routes":9,"floors":181,"rays":906,"navigationNodes":234,"navigationConnected":true,"errors":[]}

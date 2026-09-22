@@ -255,6 +255,17 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
     files.
   - **Medium — stale Aurora evidence images** (old hash 909daa29, pre-navigation)
     and **Low — missing post-fix Prism images**; both assigned to the trap-fix lane.
+  - **Cinder residual fixed in `5ebef3b0`** (re-accepted by lead): causeway safety walls
+    and service covers carry walkable caps, low thin guard bands are trimmed to a
+    jump-clearable lip, burial tolerance rises to 0.45, and Cinder opts into the source
+    spatial navigation (Aurora precedent; the caps would otherwise bake isolated nav
+    islands and pruning removes exactly those). Band counts: prism 590→580,
+    aurora 4,849→4,842, cinder 848→138. Audits: 0 landed locks on Cinder at 4 seeds,
+    prism 3, aurora 2, kills/respawns/results/restart intact. Accepted consequences,
+    recorded deliberately: a player can now hop a thin guard rail (previously an
+    unrecoverable trap), and one 3.5 s bouncing window remains at the bore causeway lip
+    (seed 777, maxRadius 0.04, one-hop escape, no landed lock) because removing that band
+    would open a fall-through hole into the sealed bore. Linux/llvmpipe measurements.
   - **Trap fix delivered and accepted** (`bdfa4203`): compiler now buries/terraces/
     overhangs movement bands and Prism+Aurora guard rails carry walkable caps, so the
     contact band cannot strand an actor; visible geometry and ray collision unchanged,
