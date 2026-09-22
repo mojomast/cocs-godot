@@ -1,0 +1,6 @@
+{
+  "mutation": "test-only subclass erases cue cooldown before production _play_cue",
+  "expected_failure": true,
+  "detected": false,
+  "exit": 0
+}

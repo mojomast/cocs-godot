@@ -63,9 +63,25 @@ func run() -> void:
 	feedback.apply_events([{"type":"damage","actor":0,"source":null,"amount":2}], 0)
 	feedback.apply_events([{"type":"pickup","actor":0}], 0)
 	check(playing(feedback, "hurt") == 1 and playing(feedback, "pickup") == 1, "environmental hurt and local pickup cues")
+	var burst_started := Time.get_ticks_usec()
+	var cooldowns_valid := true
+	var pool_bounded := true
+	var accepted_retriggers := 0
 	for index: int in range(100):
+		var previous_starts: Dictionary = feedback._last_play_usec.duplicate()
 		feedback.apply_events([{"type":"shot","actor":0},{"type":"damage","actor":1,"source":0,"amount":2},{"type":"damage","actor":0,"amount":2},{"type":"pickup","actor":0}], 0)
-	check(playing(feedback) == 4 and feedback.get_child_count() == 8, "event burst rate caps preserve bounded mix")
+		for cue: String in previous_starts:
+			var interval: int = feedback._last_play_usec[cue] - previous_starts[cue]
+			if interval != 0:
+				accepted_retriggers += 1
+				cooldowns_valid = cooldowns_valid and interval >= int(Feedback.INTERVAL_USEC[cue])
+		pool_bounded = pool_bounded and playing(feedback) <= Feedback.MAX_VOICES and feedback.get_child_count() == Feedback.MAX_VOICES
+		# Optional scheduler-stall reproduction keeps production audio clocks real.
+		if "--audio-burst-stalls" in OS.get_cmdline_user_args() and index % 20 == 0: OS.delay_msec(100)
+	# Audio runs on its own thread. Cues may end or legitimately retrigger while
+	# a hosted runner is descheduled; an exact surviving-voice count is not a cap.
+	check(cooldowns_valid and pool_bounded, "event burst respects every monotonic cue interval and the fixed voice cap")
+	print("AUDIO_BURST elapsed_usec=", Time.get_ticks_usec() - burst_started, " accepted_retriggers=", accepted_retriggers, " voices_remaining=", playing(feedback))
 	check(await wait_for(func() -> bool:
 		return playing(feedback, "shot") == 0 and Time.get_ticks_usec() - int(feedback._last_play_usec.shot) >= int(Feedback.INTERVAL_USEC.shot)
 	), "original shot naturally ends and real monotonic cooldown expires within two seconds")

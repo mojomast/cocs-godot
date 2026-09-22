@@ -1,0 +1,6 @@
+{
+  "mutation": "temporary private copy of audio script with cooldown guard removed; production unchanged",
+  "expected_failure": true,
+  "detected": true,
+  "exit": 1
+}

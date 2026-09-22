@@ -103,6 +103,12 @@ The first hosted Linux run failed because the exporter test hard-coded the local
 `/tmp/opencode` directory. It now uses Node's configured `tmpdir()`; a fresh-directory
 test passes, and the hosted aggregate is being rerun. No packaged runtime bytes
 changed. The original hosted failure is retained in `evidence/hosted-first-failure/`.
+The next hosted run passed the new graphics/traversal gates but exposed an
+inherited exact-surviving-audio-voices timing assumption. The test now checks real
+monotonic replay intervals and the fixed pool bound, passing both normal and
+500 ms stalled bursts; a removed-cooldown mutation is rejected. Original failure
+and correction evidence are in `evidence/hosted-audio-timing-failure/` and
+`evidence/audio-timing-fix/`. Production/package audio bytes are unchanged.
 
 First intermediate Windows export succeeded; exact PCK was inspected with the
 pinned **Linux release template** from an unrelated working directory. It resolved

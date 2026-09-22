@@ -1,0 +1,72 @@
+gate-runner-tests: PASS
+ci-artifact-tests: PASS
+export-tests: PASS
+moth-export: PASS
+gltf-sides: PASS
+health-hud-evidence: PASS
+projectile-navigation: PASS
+objective-evidence: PASS
+objective-progression-evidence: PASS
+objective-completion-evidence: PASS
+launcher-options: PASS
+package-options: PASS
+native-graphics-options: PASS
+native-graphics-ownership: PASS
+lobby-options: PASS
+lobby-ownership: PASS
+horde-closure: PASS
+horde-ownership: PASS
+zone-routing: PASS
+combined-arms-evidence: PASS
+semantic-export: PASS
+source-tests: PASS
+arms-race-source: PASS
+horde-source: PASS
+horde-adapter: PASS
+horde-input-oracle: PASS
+godot-import: PASS
+viewer-smoke: PASS
+graphics-terrain: PASS
+moth-resources: PASS
+graphics-atmosphere: PASS
+graphics-fx: PASS
+moth-scenery: PASS
+shader-lab: PASS
+particle-lab: PASS
+showcase-startup: PASS
+aurora-traversal: PASS
+cinder-traversal: PASS
+exploration-walker: PASS
+first-person-rig: PASS
+first-person-binding: PASS
+glb-import: PASS
+glb-sides: PASS
+input-queue: PASS
+protocol-envelopes: PASS
+packet-replay: PASS
+native-live: PASS
+presentation-replay: PASS
+round-boundaries: PASS
+native-lifecycle: PASS
+combat-feedback: PASS
+projectiles: PASS
+audio-feedback: FAIL
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PCM shot seconds=0.10997732426304 peak=0.5316162109375 rms=0.10717500076192 zero_crossings=792
+PCM hit seconds=0.07496598639456 peak=0.57061767578125 rms=0.15401745476953 zero_crossings=191
+PCM hurt seconds=0.18 peak=0.5377197265625 rms=0.17532022072056 zero_crossings=40
+PCM pickup seconds=0.22 peak=0.60476684570312 rms=0.19847535271152 zero_crossings=435
+ERROR: event burst rate caps preserve bounded mix
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/audio_feedback.gd:10)
+       [1] run (res://tests/protocol/audio_feedback.gd:68)
+SCRIPT ERROR: Assertion failed: event burst rate caps preserve bounded mix
+          at: check (res://tests/protocol/audio_feedback.gd:12)
+          GDScript backtrace (most recent call first):
+              [0] check (res://tests/protocol/audio_feedback.gd:12)
+              [1] run (res://tests/protocol/audio_feedback.gd:68)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+
