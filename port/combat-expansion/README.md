@@ -39,7 +39,33 @@ Source primary/alternate fire already tests eye→simulation muzzle obstruction 
 muzzle→target convergence. The new first-person effects must start at animated
 visible barrel anchors while retaining source-confirmed impacts and collision.
 
-## Acceptance
+## Integrated ADS acceptance
 
-Implementation in progress. No new gameplay, ADS alignment, million-particle
-combat performance or native-arena kill/respawn acceptance is claimed yet.
+`evidence/input-01/` records a normal-rate production Deathmatch session with
+actual X11/XTest mouse and keyboard input and a passive snapshot observer.
+All seven checks pass: authoritative RMB ADS and camera FOV response, release,
+Escape cancellation with RMB held, real focus-loss cancellation, fresh input
+after refocus, clean native exit, and source-confirmed local fire.
+The camera starts at 75° and was observed narrowing to 67.8769° during entry;
+this is an intermediate animated observation, not the final zoom target.
+The lead inspected the 960×640 hip and 1280×800 ADS captures directly.
+
+Reproduce into a fresh directory:
+
+```sh
+python3 port/combat-expansion/input_review.py --output /tmp/opencode/combat-input-review-new
+```
+
+The first-person session binding applies the rig's recommended FOV against an
+immutable unzoomed baseline. Combined Arms does the same and restores it when
+leaving infantry presentation. The overlay fades its hip reticle during ADS so
+the exported sight geometry remains the aiming reference.
+
+## Acceptance remaining
+
+Combined effects integration, native-arena live combat, final resource checks and
+package publication remain in progress. Component fixture/benchmark results are
+documented in their individual reports and do not imply full-match acceptance.
+The Three.js operator import proof is a newly requested parallel lane. The
+separate three-map visual-identity assignment is a delivered prompt at
+`port/handoffs/visual-identity-three-maps.md`, not three additional implemented maps.

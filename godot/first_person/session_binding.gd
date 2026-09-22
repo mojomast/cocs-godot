@@ -8,6 +8,7 @@ var _last_phase := -999
 var _last_actor := -999
 var _last_angles := Vector2.ZERO
 var _had_angles := false
+var _base_fov := 75.0
 
 func _ready() -> void:
 	call_deferred("bind_session", get_parent())
@@ -16,6 +17,7 @@ func bind_session(target: Node) -> void:
 	if session != null: return
 	if target == null or not "camera" in target or not "client" in target or not "presentation" in target: return
 	session = target
+	_base_fov = session.camera.fov
 	add_child(rig)
 	rig.attach_to(session.camera)
 	session.client.events.connect(_events)
@@ -49,6 +51,7 @@ func refresh() -> void:
 		else:
 			aiming = session.presentation.local_actor.get("aiming", session.presentation.local_actor.get("ads", false)) == true
 	rig.apply_aim(aiming)
+	session.camera.fov = float(rig.get_aim_state(_base_fov).fov)
 	var angles := Vector2(session.camera.rotation.y, session.camera.rotation.x)
 	if allowed and _had_angles:
 		rig.apply_look_delta(Vector2(wrapf(angles.x - _last_angles.x, -PI, PI), angles.y - _last_angles.y))
@@ -64,6 +67,8 @@ func _process(_delta: float) -> void:
 
 func clear_round() -> void:
 	rig.reset()
+	if is_instance_valid(session) and is_instance_valid(session.camera):
+		session.camera.fov = _base_fov
 	_had_angles = false
 
 func get_aim_state(base_fov: float = 75.0) -> Dictionary:

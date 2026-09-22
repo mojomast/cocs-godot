@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "graphical": true,
+  "platform": "Linux X11 / llvmpipe",
+  "input": "XTest OS events",
+  "state_injection": false,
+  "checks": [
+    {
+      "name": "RMB reaches authoritative ADS and narrows production FOV",
+      "passed": true,
+      "hip_fov": 75.0,
+      "ads_fov": 67.8769454956055
+    },
+    {
+      "name": "RMB release reaches authoritative hip state",
+      "passed": true
+    },
+    {
+      "name": "Escape cancels ADS with RMB held",
+      "passed": true
+    },
+    {
+      "name": "Real focus loss cancels source ADS",
+      "passed": true
+    },
+    {
+      "name": "Refocus requires fresh ADS input",
+      "passed": true
+    },
+    {
+      "name": "Clean native exit",
+      "passed": true
+    },
+    {
+      "name": "Public snapshots and local source fire observed",
+      "passed": true
+    }
+  ],
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+    "--script",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/combat-expansion/observe.gd",
+    "--display-driver",
+    "x11",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "960x640",
+    "--position",
+    "0,0",
+    "--",
+    "--endpoint=ws://127.0.0.1:36639",
+    "--map=meridian-exchange",
+    "--mode=deathmatch",
+    "--mute"
+  ],
+  "cleanup": {
+    "client": 0,
+    "authority": 0,
+    "display": 0
+  }
+}

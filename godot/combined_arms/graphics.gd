@@ -6,10 +6,12 @@ var session: Node
 var rig := Rig.new()
 var feedback := Feedback.new()
 var public_active := false
+var base_fov := 75.0
 
 func attach_to(target: Node) -> void:
 	if session != null: return
 	session = target
+	base_fov = session.world.camera.fov
 	add_child(rig)
 	rig.attach_to(session.world.camera)
 	add_child(feedback)
@@ -22,6 +24,7 @@ func refresh(focused: bool, captured: bool) -> void:
 	public_active = allowed
 	rig.apply_actor(session.actor, allowed and captured and session.controls.engaged and session.vehicle.is_empty())
 	if rig.has_method("apply_aim"): rig.call("apply_aim", session.aim_requested())
+	session.world.camera.fov = float(rig.get_aim_state(base_fov).fov)
 
 func apply_state() -> void:
 	if public_active: feedback.apply_state(session.state)
@@ -35,11 +38,13 @@ func apply_events(items: Array) -> void:
 func hide_infantry() -> void:
 	rig.apply_actor({}, false)
 	if rig.has_method("apply_aim"): rig.call("apply_aim", false)
+	if is_instance_valid(session): session.world.camera.fov = base_fov
 
 func can_capture_pointer() -> bool:
 	return rig.showing
 
 func reset() -> void:
 	rig.reset()
+	if is_instance_valid(session): session.world.camera.fov = base_fov
 	feedback.clear_round()
 	public_active = false
