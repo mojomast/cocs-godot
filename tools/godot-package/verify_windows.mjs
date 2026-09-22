@@ -65,6 +65,25 @@ try {
   await writeFile(join(output,'preview.log'),preview.stdout+preview.stderr);
   assert.doesNotMatch(preview.stdout+preview.stderr,/SCRIPT ERROR|ERROR:/);
   report.preview_load = true;
+  for (const map of ['prism-foundry','aurora-basin','cinder-array']) {
+    let result;
+    try {
+      result = await exec(process.env.ComSpec || 'cmd.exe', ['/d','/s','/c',`""${join(root,'Native Deathmatch.cmd')}" --experience=native-dm --map=${map} --smoke"`], {cwd:sandbox,env,windowsVerbatimArguments:true,timeout:45000,maxBuffer:4*1024*1024});
+    } catch (error) {
+      await writeFile(join(output,'native-dm-'+map+'.log'),(error.stdout || '')+(error.stderr || '')+'\n'+error.message);
+      throw error;
+    }
+    const text = result.stdout + result.stderr;
+    await writeFile(join(output,'native-dm-'+map+'.log'),text);
+    assert.doesNotMatch(text,/SCRIPT ERROR|ERROR:|Assertion failed/);
+    assert.match(text,/NATIVE_DM_SMOKE_OK/);
+    assert.match(text,/PACKAGE_STOPPED/);
+    const ready = JSON.parse(result.stdout.split(/\r?\n/).find(line=>line.startsWith('PACKAGE_SERVER_READY ')).slice(21));
+    const native = JSON.parse(result.stdout.split(/\r?\n/).find(line=>line.startsWith('PACKAGE_NATIVE_STARTED ')).slice(23));
+    assert.ok(await closed(ready.port), 'Native arena authority listener closed');
+    assert.throws(()=>process.kill(native.pid,0), 'Native arena process exited');
+    report.cases.push({experience:'native-dm',map,passed:true,port:ready.port,native_pid:native.pid,cleanup:true});
+  }
   // Exercise the native graphics routes with bundled runtimes and no authority.
   for (const experience of ['showcase','aurora-basin','cinder-array','particle-lab','shader-lab']) {
     let nativeOnly;

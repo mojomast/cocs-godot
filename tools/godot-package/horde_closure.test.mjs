@@ -11,7 +11,11 @@ const discover = path => JSON.parse(execFileSync(process.execPath, ['--no-warnin
 test('actual Horde transitive closure is classified separately and source-byte locked', () => {
   const closure = discover(root);
   const lock = JSON.parse(readFileSync(join(root,'port/contracts/source-lock.json')));
-  assert.deepEqual(Object.keys(closure.adapterModules), ['port/native-horde/authority.mjs','port/native-horde/input-buffer.mjs']);
+  assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-horde/')), ['port/native-horde/authority.mjs','port/native-horde/input-buffer.mjs']);
+  assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-arenas/')).sort(), [
+    'authority','catalog','event-cursor','input-buffer','match','schema',
+  ].map(name=>`port/native-arenas/${name}.mjs`).sort());
+  assert.deepEqual(closure.dataFiles, ['prism-foundry','aurora-basin','cinder-array'].map(id=>`godot/native_arenas/generated/${id}.json`));
   assert.equal(Object.keys(closure.modules).length,84);
   assert.deepEqual(closure.hordeAdditionalSource,[]);
   assert.ok(closure.routes.horde.includes('game/singleplayer.mjs'));

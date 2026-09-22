@@ -8,7 +8,8 @@ const root = resolve(process.argv[2]);
 const hordeAdapters = ['port/native-horde/authority.mjs', 'port/native-horde/input-buffer.mjs'];
 // Reviewed port-owned runtime inputs only. New helpers require a manifest edit.
 const nativeArenaAdapters = ['port/native-arenas/authority.mjs', 'port/native-arenas/match.mjs',
-  'port/native-arenas/schema.mjs', 'port/native-arenas/catalog.mjs'];
+  'port/native-arenas/schema.mjs', 'port/native-arenas/catalog.mjs',
+  'port/native-arenas/input-buffer.mjs', 'port/native-arenas/event-cursor.mjs'];
 const adapters = [...hordeAdapters, ...nativeArenaAdapters];
 // Explicit dynamic data-read manifest: the builder hashes committed bytes and
 // copies these paths under runtime/, preserving catalog.mjs URL resolution.

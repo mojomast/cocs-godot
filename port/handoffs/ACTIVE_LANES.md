@@ -167,6 +167,8 @@ each must commit only its own paths. Lead owns integration/review/package rebuil
 | Showcase shields and actor effects | New `godot/combat_shields/`, matching tests, `port/native-combat-shields/` |
 | Massive in-game particles | New `godot/combat_particles/`, matching tests, `port/native-combat-particles/` |
 | Muzzle/weapon effects | New `godot/weapon_effects/`, matching tests, `port/native-weapon-effects/` |
+| Combat pickup assets | Visual-only `godot/world/pickups.gd`, new `godot/combat_pickup_assets/`, matching tests and report |
+| Original Three.js operator import | New `tools/godot-operators/`, `godot/source_operators/`, matching tests, `port/native-source-operators/`; original geometry/joints/LOD and native animation proof, requested as a better route than candidate art iteration |
 | Complete input/ADS controls | `godot/world/session.gd`, new `combat_actions.gd`, Horde demo aim hook, combined-arms controls/demo/graphics aim hooks, Arms Race input, LATTICE neutral input, shared HUD hints; new action tests/report |
 | Native DM geometry | `godot/native_arenas/maps/`, `generated/`, geometry tests, `tools/godot-native-arenas/`, `port/native-arena-geometry/`; Prism demo map-only seam if needed |
 | Native DM authority | `port/native-arenas/`; optional native-arena client and protocol tests |
@@ -177,6 +179,29 @@ Lead reserves `godot/world/combat_feedback.gd`, new shared FX composition/settin
 package build/export/Windows verification, aggregate gates, release docs and final
 live acceptance. Shared session/combined-arms hooks are integrated **after** the
 input lane completes. Do not overwrite another lane or stage unrelated primary work.
+
+### Integration assignments after component delivery
+
+- ADS `da6a8ab`, controls `b7b9e09`, weapon effects `6a4fea5`, particles `91d4982`,
+  pickups `2a43136`, shields `c8cae07`, authority `435b276`, launchers `4dd1f08`.
+- Lead ADS/FOV integration and actual OS-input acceptance: `642acb0`.
+- Independent review `f80c93c`: ADS checks pass; shield pool starvation with
+  unprotected actors ahead of a protected actor is assigned back to shield owner.
+- **Shared combat integration agent now owns** `combat_feedback.gd`,
+  `combat_quality.gd`, `combat_overlay.gd`, `projectiles.gd`, new semantic occlusion
+  helper, and its new tests/report. It inherits the lead's pending composition
+  edits and connects all three effect systems without duplicate legacy rendering.
+- **Native contract integration agent now owns** the completed launcher/options
+  paths and native scene/catalog/HUD/session-test paths. Reconcile endpoint
+  `/native-arenas` and actual source bot bounds 1–7, then run live smoke.
+- Native geometry owner retains maps/generated/exporter through canonical-hash,
+  strict schema and actual source-round acceptance. No other lane may rewrite
+  those outputs while the owner is reconciling the delivered authority contract.
+- Original Three.js operator import proof remains its own active lane.
+- Lead retains package discovery/build/Windows verification, aggregate checks,
+  final integrated review and release. The visual-identity trilogy prompt is
+  delivered (`f1dd672`); those three additional maps have not been commissioned
+  into this checkout's active ownership by this lead.
 
 ### Agreed contracts
 

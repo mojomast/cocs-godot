@@ -8,6 +8,8 @@
 4. Click inside the game window to engage the mouse and controls.
 
 **Graphics Showcase.cmd** opens the new map and effects menu (details below).
+**Native Deathmatch.cmd** selects bot combat on Prism Foundry, Aurora Basin or
+Cinder Array, with weapons, scoring, respawns and round restart.
 **Demo Menu.cmd** offers other arenas, Horde, Arms Race, the lobby, vehicles,
 racing, graphics showcases and the operator viewer. **Operator Preview.cmd** opens the static
 three-model lineup. Close a game window to end that session. The console belongs
@@ -22,14 +24,18 @@ not cocs.exe, so the local authoritative server is started and cleaned up.
 
 - **WASD** move, **mouse** look, **left click** fire
 - **Space** jump, **Shift** sprint, **Ctrl** crouch
+- **RMB** aim down sights; release to return to hip fire
 - **R** reload, **1–9 / 0 / wheel** change weapon
-- **E** interact, **F** mobility (Horde uses its own source controls below)
+- **E** interact, **X** mobility, **Q** power, **F** melee, **G** grenade
+- **Z / MMB** alternate fire
 - **Tab** scores, **Escape** release mouse; the match keeps running
 - **Enter** restart after results, then release keys and click to resume
 - **F8** cycle Moth scenery detail: Full → Off → Low
+- **F9** cycle combat effects: Low → High → Extreme
+- **F10** toggle combat-effect resource metrics
 
-Horde: **Q** power, **X** mobility, **F** melee, **G** grenade, **RMB** ADS,
-**Z / MMB** alternate fire. Vehicles: **Enter** engage, **E** mount/exit,
+These source combat controls also apply to Horde. Arms Race keeps weapon selection
+locked to the authoritative ladder while allowing ADS. Vehicles: **Enter** engage, **E** mount/exit,
 **WASD** drive and **Space** brake tap. Sports restart uses **F5**.
 
 ## More maps and modes
@@ -40,6 +46,9 @@ From a terminal opened in the extracted folder:
 Play.cmd --play --map=verdant-reliquary --mode=instagib
 Play.cmd --experience=zones --map=meridian-exchange --mode=domination
 Play.cmd --experience=zones --map=verdant-reliquary --mode=koth
+Play.cmd --experience=native-dm --map=prism-foundry --bots=2 --round-seconds=180
+Play.cmd --experience=native-dm --map=aurora-basin
+Play.cmd --experience=native-dm --map=cinder-array
 Play.cmd --experience=sports --map=aurora-stadium
 Play.cmd --experience=objectives --map=tidal-citadel
 Play.cmd --experience=objectives --map=sunscar-convoy
@@ -49,11 +58,27 @@ Play.cmd --help
 ```
 
 All nine original maps and ten source experience routes are retained, plus five
-native-only graphics routes. Lobby defaults to an owned
+native-only graphics routes and the three-map native Deathmatch route. Lobby defaults to an owned
 loopback server, usable by clients on this computer. A separately hosted reachable
 server can be selected with `--experience=lobby --endpoint=ws://HOST:PORT`.
 
 ## New native maps and effects
+
+**Native Deathmatch.cmd** opens the combat variants of all three maps. Each match
+has one local human and 1–7 bots. Choose the map in the launcher, then start the
+match in the native setup screen. Close and relaunch to change maps. Source
+movement, weapon damage, scoring and bot AI remain authoritative. The combat
+layouts have visible architectural changes to support that mover's routes;
+the original exploration versions remain available in Graphics Showcase.
+
+Combat effects include source-state shields/armor reactions, animated barrel-tip
+weapon presentation, compact pickup miniatures and world-space GPU particles.
+High allocates a shared 32,768 particle slots on original arenas and 131,072 on
+native arenas; Extreme explicitly raises the whole pool to 1,000,000. Allocated
+or submitted slots are not a count of distinct visible particles. Use F10 to
+inspect current resource metrics. The user's GPU ran the million-particle lab
+smoothly; software-renderer measurements here do not establish hardware combat
+performance. Reduce the setting with F9 if needed.
 
 Double-click **Graphics Showcase.cmd** and choose:
 

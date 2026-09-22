@@ -1,7 +1,7 @@
 extends SceneTree
 ## External release-runtime probe; never exported into the production PCK.
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible", "tidal-citadel", "sunscar-convoy", "asterion-relay", "monsoon-foundry", "ion-speedway", "aurora-stadium"]
-const SCENES := ["world/session", "sports/demo", "objectives/demo", "lattice/board", "lattice/world_demo", "zone_modes/demo", "combined_arms/demo", "arms_race/demo", "horde/demo"]
+const SCENES := ["world/session", "sports/demo", "objectives/demo", "lattice/board", "lattice/world_demo", "zone_modes/demo", "combined_arms/demo", "arms_race/demo", "horde/demo", "native_arenas/demo"]
 const NATIVE_SCENES := ["showcase/demo", "aurora_basin/demo", "cinder_array/demo", "particle_lab/demo", "shader_lab/demo"]
 var assertion_ran := false
 
@@ -73,6 +73,20 @@ func inspect() -> void:
 		if not load("res://first_person/generated/weapon-%d.glb" % index) is PackedScene:
 			fail("Missing first-person weapon " + str(index))
 			return
+	var native_catalog = load("res://native_arenas/catalog.gd").new()
+	if not native_catalog.open():
+		fail("Native arena catalog failed: " + native_catalog.error)
+		return
+	for id: String in ["prism-foundry", "aurora-basin", "cinder-array"]:
+		if native_catalog.resolve_map(id).is_empty() or not load("res://native_arenas/maps/" + id + ".gd") is GDScript:
+			fail("Missing native arena resources " + id)
+			return
+	for path: String in ["combat_shields/controller", "combat_particles/manager", "weapon_effects/controller", "combat_pickup_assets/pickup_visual"]:
+		var resource = load("res://" + path + ".gd")
+		if not resource is GDScript or not resource.can_instantiate():
+			fail("Missing combat resource " + path)
+			return
 	print("PACKAGE_GRAPHICS_OK moth_planes=101 first_person_weapons=10")
+	print("PACKAGE_COMBAT_EXPANSION_OK native_arenas=3 combat_resources=4")
 	print("PACKAGE_INSPECT_OK ", JSON.stringify({"maps":MAPS, "scenes":SCENES.size(), "editor":OS.has_feature("editor"), "debug":OS.is_debug_build(), "assertion_ran":assertion_ran, "tests_in_pck":false, "probes_in_pck":false}))
 	quit(0)

@@ -1,0 +1,22 @@
+[
+  {
+    "test": "first_person/ads_contract",
+    "passed": true,
+    "seconds": 0.398
+  },
+  {
+    "test": "weapon_effects/rig_integration",
+    "passed": true,
+    "seconds": 0.241
+  },
+  {
+    "test": "combat_particles/contracts",
+    "passed": true,
+    "seconds": 0.148
+  },
+  {
+    "test": "combat_pickup_assets/validate",
+    "passed": true,
+    "seconds": 0.15
+  }
+]

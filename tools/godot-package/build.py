@@ -105,8 +105,15 @@ def main():
     run(["node", "--input-type=module", "-e", verify])
     closure = json.loads(run(["node", "--no-warnings", "--experimental-vm-modules", ROOT / "tools/godot-package/discover.mjs", ROOT]))
     write_json(logs / "server-closure.json", closure)
+    arena_data = closure.get("dataFiles", [])
+    allowed_arena_data = {f"godot/native_arenas/generated/{name}.json" for name in ["prism-foundry", "aurora-basin", "cinder-array"]}
+    if not isinstance(arena_data, list) or any(not isinstance(p, str) or p not in allowed_arena_data for p in arena_data) or len(arena_data) != len(set(arena_data)):
+        raise RuntimeError("Unexpected native-arena data closure")
+    if any(p.startswith("port/native-arenas/") for p in closure["adapterModules"]) and set(arena_data) != allowed_arena_data:
+        raise RuntimeError("Native deathmatch adapter requires all three committed arena data files")
     input_paths = set(closure["modules"])
     input_paths.update(closure["adapterModules"])
+    input_paths.update(arena_data)
     input_paths.update(["package.json", "package-lock.json", "port/contracts/source-lock.json", "port/contracts/map-selection.json", "tools/godot-export/semantic.mjs"])
     native_files = [p for p in git("ls-files", "godot").splitlines() if not p.startswith(("godot/tests/", "godot/content/", "godot/.godot/")) and p not in ["godot/.gitignore", "godot/export_presets.cfg"]]
     input_paths.update(native_files)
@@ -122,10 +129,10 @@ def main():
             raise RuntimeError(f"Runtime source differs from lock: {p}")
     # Port-owned adapters have separate provenance, never source-lock exemptions.
     # Require committed reviewed bytes; record their exact hashes independently.
-    for p in closure["adapterModules"]:
+    for p in [*closure["adapterModules"], *arena_data]:
         expected = subprocess.check_output(["git", "show", f"HEAD:{p}"], cwd=ROOT)
         if hashlib.sha256(expected).hexdigest() != inputs[p]:
-            raise RuntimeError(f"Uncommitted runtime adapter: {p}")
+            raise RuntimeError(f"Uncommitted runtime adapter/data: {p}")
 
     toolchain = state / "toolchain"
     toolchain.mkdir(exist_ok=True)
@@ -186,7 +193,7 @@ advanced_options=false
 dedicated_server=false
 custom_features="private_local_prototype"
 export_filter="all_resources"
-include_filter="content/generated/*.json,content/generated/maps/*/*.json,moth/generated/*.json,first_person/*.json,first_person/generated/*.json"
+include_filter="content/generated/*.json,content/generated/maps/*/*.json,moth/generated/*.json,first_person/*.json,first_person/generated/*.json,native_arenas/generated/*.json"
 exclude_filter="tests/*,content/probes/*"
 export_path=""
 script_export_mode=2
@@ -214,7 +221,7 @@ ssh_remote_deploy/enabled=false
         raise RuntimeError("Expected separate PCK")
     if not windows and run([package / executable, "--version"], env=env) != EXACT:
         raise RuntimeError("Exported runtime exact version mismatch")
-    for p in [*closure["modules"], *closure["adapterModules"]]:
+    for p in [*closure["modules"], *closure["adapterModules"], *arena_data]:
         copy(ROOT / p, package / "runtime" / p)
 
     # Fetch only the already-locked ordinary ws dependency. No npm/install scripts.
@@ -264,7 +271,7 @@ ssh_remote_deploy/enabled=false
             (package / "node.exe").write_bytes(archive.read(prefix + "node.exe"))
             (notices / "Node-LICENSE.txt").write_bytes(archive.read(prefix + "LICENSE"))
         bundled_node = {"version":NODE_VERSION, "url":node_base + node_name, "archive_sha256":NODE_WINDOWS_SHA256, "executable_sha256":digest(package / "node.exe")}
-        for name in ["Play.cmd", "Demo Menu.cmd", "Operator Preview.cmd", "Graphics Showcase.cmd"]:
+        for name in ["Play.cmd", "Demo Menu.cmd", "Operator Preview.cmd", "Graphics Showcase.cmd", "Native Deathmatch.cmd"]:
             (package / name).write_bytes((ROOT / "tools/godot-package" / name).read_text().replace("\r\n", "\n").replace("\n", "\r\n").encode())
     for name in ["LICENSE.txt", "COPYRIGHT.txt"]:
         download(f"https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/{name}", notices / ("Godot-" + name))
@@ -284,12 +291,13 @@ ssh_remote_deploy/enabled=false
         "worktree_status":git("status", "--short"), "full_history":True, "godot_version":EXACT,
         "godot_export":"release template; assertions disabled; no test fixtures in production PCK",
         "build_node":run(["node", "--version"]), "play_node":f"{NODE_VERSION} (bundled)" if windows else ">=22.13.0 (external prerequisite)", "bundled_node":bundled_node,
-        "maps":lock["map_ids"], "server_closure":closure, "server_data_reads":"Only optional history/progression stores; both null. Map/data modules included in closure.",
+        "maps":lock["map_ids"], "native_arenas":[Path(p).stem for p in arena_data], "server_closure":closure, "server_data_reads":"Optional history/progression stores are null. Locked map modules and explicitly hashed native-arena JSON are included in the runtime closure.",
         "ws":{"version":ws["version"], "integrity":ws["integrity"], "resolved":ws["resolved"], "license":"MIT; retained in runtime/node_modules/ws/LICENSE; optional native accelerators omitted"},
         "toolchain":{"checksums_source":BASE + "SHA512-SUMS.txt", "archives":{v[0]:v[1] for v in ARCHIVES.values()}, "editor_sha256":digest(editor), "release_template_sha256":digest(templates / template_name)},
         "inputs":inputs, "input_sha256":tree_hash(inputs), "generated_resources":resources,
         "source_runtime_sha256":{p:inputs[p] for p in closure["modules"]},
         "port_adapter_sha256":{p:inputs[p] for p in closure["adapterModules"]},
+        "native_arena_data_sha256":{p:inputs[p] for p in arena_data},
         "generated_resources_sha256":tree_hash(resources), "staged_export_preset":preset,
         "files":tree(package),
     }
