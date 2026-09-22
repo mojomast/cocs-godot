@@ -3,7 +3,7 @@
 // takes Node.js >=22.13.0 as an external prerequisite instead of bundling it, and
 // every entry point that Windows reaches through a .cmd reaches the same run.mjs here.
 import assert from 'node:assert/strict';
-import {readFile, writeFile, mkdir, mkdtemp, rm, readdir} from 'node:fs/promises';
+import {readFile, writeFile, mkdir, mkdtemp, rm, readdir, stat} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {execFile} from 'node:child_process';
 import {promisify} from 'node:util';
@@ -59,6 +59,13 @@ try {
   report.port_commit = manifest.port_commit;
   report.files_verified = Object.keys(manifest.files).length;
   assert.equal((await exec(join(root,'cocs.x86_64'), ['--headless','--version'])).stdout.trim(), manifest.godot_version);
+  // The reviewed Linux launchers are part of the release surface.
+  for (const [name, marker] of [['Domination.sh',/--experience=identity-zones/],['Cheats.sh',/COCS_DEBUG=1/]]) {
+    const info = await stat(join(root, name));
+    assert.ok(info.isFile() && info.size > 0, `${name} present`);
+    assert.ok((info.mode & 0o111) !== 0, `${name} executable`);
+    assert.match(await readFile(join(root, name), 'utf8'), marker, `${name} route`);
+  }
   for (const map of ['meridian-exchange','verdant-reliquary','ember-crucible']) {
     const result = await runManager(['--smoke', `--map=${map}`], 'source-'+map, 60000);
     const text = result.stdout+result.stderr;

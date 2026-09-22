@@ -39,6 +39,14 @@ try {
   const node = join(root,'node.exe');
   assert.equal((await exec(node,['--version'])).stdout.trim(), 'v'+manifest.bundled_node.version);
   assert.equal((await exec(join(root,'cocs.exe'),['--headless','--version'])).stdout.trim(), manifest.godot_version);
+  // The reviewed Windows launchers are part of the release surface.
+  for (const [name, marker] of [['Domination.cmd',/--experience=identity-zones/],['Cheats.cmd',/COCS_DEBUG=1/]]) {
+    const text = await readFile(join(root, name), 'utf8');
+    assert.ok(text.length > 0, `${name} present`);
+    assert.match(text, marker, `${name} route`);
+  }
+  const demoMenu = await readFile(join(root,'Demo Menu.cmd'), 'utf8');
+  for (const name of ['Domination.cmd', 'Cheats.cmd']) assert.ok(demoMenu.includes(name), `${name} on the demo menu`);
   for (const map of ['meridian-exchange','verdant-reliquary','ember-crucible']) {
     // cmd.exe exercises the actual double-click entry point and path quoting.
     let stdout = '', stderr = '';
