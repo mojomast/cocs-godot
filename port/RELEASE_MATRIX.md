@@ -13,8 +13,8 @@ branches does not establish a completed game port. Locked scope remains
 | Guest workflow | 7 harness tests pass | Historical final and failed runs archived losslessly | All four cases PASS at `86ef719`: positive, invalid room, actual 120s host wait timeout and HTTP-rejected handshake | Guest UI/results/focus acceptance separate |
 | Trace correlation | 13 tests pass; 11 synthetic, 2 real owned-process cleanup | Final historical run replayed: 333 snapshot / 647 input receipt matches | PASS at `86ef719`: 333 snapshot / 644 input receipt matches; disabled 0 trace records; deliberate timeout fails and cleans up | Neutral headless window only; native completion unproven |
 | Death / respawn | Real defect regression failed 10 assertions before fix; now 2,497 control / 15 lifecycle checks pass | Original passing run and genuine premature-respawn failure retained | Two independent normal-rate runs PASS at `7e505f2`, with held Ctrl/fire, authoritative camera reseed and fresh-click gating | Programmatic input-path milestone established; OS focus/hardware acceptance separate |
-| Focus / click / pointer | Existing synthetic notifications and control regressions | Private X11 run reproduced look leak during delayed application-focus notification | Subagent implementing/rerunning targeted correction | Click, confinement, Escape, settled focus and held-control return exercised; transition look still OPEN |
-| Full verifier | All 29 implemented gates pass after healthy-respawn correction | First attempt failed at inherited occupied PORT=4332; retained | `PORT=0` rerun passes, including live movement/fire, normal-rate results/restart and two native clients | Visual/playable gates remain separate |
+| Focus / click / pointer | Attached-window regression fails before fix, passes 7/7 after | Original focus leak and passing corrected subagent run retained | Independent combined-runtime private X11 run PASS at `5e8136d`: 76/76, 424 queue/receipt matches | Click, confinement, Escape, transition/settled focus, held-control return and fresh-click recovery pass; hardware/Wayland/human review OPEN |
+| Full verifier | All 30 implemented gates pass after both runtime corrections | First attempt failed at inherited occupied PORT=4332; retained | `PORT=0` rerun passes, including new window-focus gate, live movement/fire, normal-rate results/restart and two native clients | Visual/playable gates remain separate |
 | Pulse rifle preview | No completion commit available | None reviewed | Owner believes work is not finished | Pending; reserved directories untouched |
 
 The actual commands, clean execution tree hashes, source provenance, receipt vs
@@ -48,9 +48,10 @@ the locked JSON contract; the family summary below does not narrow them.
   Meridian's blank GLB preview is now traced to exported sky `BackSide` semantic
   loss; a private culling-only experiment reveals the map, not full art parity.
   A production exporter correction and environment behavior remain open.
-- Intentional health/weapon pickup, nonlethal damage, death/respawn, lethal
-  round-ending results/restart and mode-specific gameplay need scoped evidence.
-  A separate isolated subagent is executing the weapon-pickup/return scenario.
+- Bounded native death/respawn and private-X11 focus milestones now have
+  independent acceptance. Intentional weapon pickup is awaiting sanitized
+  evidence review; nonlethal damage/health pickup is executing in isolation.
+  Lethal round-ending results/restart and mode-specific gameplay remain open.
 - Native recording lacks a terminal completion marker and direct protocol IDs.
   Current harnesses may supply explicit boundaries and limited association;
   they cannot turn error/limit/forced exit into successful native completion.

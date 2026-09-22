@@ -1,0 +1,85 @@
+{
+  "members": [
+    {
+      "path": "01_before_click.png",
+      "bytes": 53024,
+      "sha256": "99f8c1f5b65e2bc5df104eb1c4a61670adfd03bbe98e21d8c72f379497171bdd"
+    },
+    {
+      "path": "02_clicked_capture.png",
+      "bytes": 54834,
+      "sha256": "9ce02def8e359ede0d3d1ff97457d4cdc8f52478826b4f012446834c00c72fb5"
+    },
+    {
+      "path": "04_fire.png",
+      "bytes": 42259,
+      "sha256": "d3e474439e8385492fcc8ae82532face5f2a5fdbd469a4820eb8694027e55a6d"
+    },
+    {
+      "path": "05_escape_release.png",
+      "bytes": 44005,
+      "sha256": "13fe1819c52105978727ded1dd534d2ff3a5c51ee90b22c61e5e54dc3116e55a"
+    },
+    {
+      "path": "09_focus_lost_held.png",
+      "bytes": 73485,
+      "sha256": "fd80444b692ecc8aba99c5febc50c50ee0807d1211f5605ad2dfb9926d407ffc"
+    },
+    {
+      "path": "11_focus_return_held_no_click.png",
+      "bytes": 73590,
+      "sha256": "d59c080ccef36072c97b298af9f2d69bef07ebb7aa70b10c26010a541c574e85"
+    },
+    {
+      "path": "12_fresh_click_reactivation.png",
+      "bytes": 74869,
+      "sha256": "e813e9eccbec2a7901474effd64fe41c6d00d7e8786c020ea5f9e3404b0fd840"
+    },
+    {
+      "path": "actions.jsonl",
+      "bytes": 14367,
+      "sha256": "017f46323e4bbbd11bb5caf8c9813eabc9edd303a272b332779d39ba3320bdd2"
+    },
+    {
+      "path": "godot.log",
+      "bytes": 375,
+      "sha256": "7d736ef709f498353bb42273ac556e9948b7eb6ce89f19bb90657a5ca00c5cad"
+    },
+    {
+      "path": "native.jsonl.gz",
+      "bytes": 14885,
+      "sha256": "bb16ffbb69c7ce427a8ecea7728eef6f977a1530a1931723cf609167c3f31ea7"
+    },
+    {
+      "path": "prepare.log",
+      "bytes": 3083,
+      "sha256": "57d0aba46b6b3082b9889ef1671e998c3c5bdfe2ed5f6dadad862e92bd723a1e"
+    },
+    {
+      "path": "result.json",
+      "bytes": 21295,
+      "sha256": "d12eb2bbd1aec53d8277f8711eaae3783763ac403f291d5c0ea47e182780d4ce"
+    },
+    {
+      "path": "server-ready.json",
+      "bytes": 88,
+      "sha256": "c4ddd074edf4a6e7d67df689e3e27fb398e337a491678f25ba3e3974eba4ffe9"
+    },
+    {
+      "path": "server.log",
+      "bytes": 94,
+      "sha256": "72e57cc780b9906f71b3a208eb827b0e898b1703d2c1f91680cb87c521b383bb"
+    },
+    {
+      "path": "wire.jsonl.gz",
+      "bytes": 9593,
+      "sha256": "2bbbac19eff955a78acdc3c9858a955b1809d52dd964ce5dd3dc5d6bf3386603"
+    },
+    {
+      "path": "xvfb.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "independentPidAbsenceCheck": true
+}

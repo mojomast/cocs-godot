@@ -10,7 +10,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.013
+      "duration_seconds": 0.014
     },
     {
       "gate": "gate-runner-tests",
@@ -21,7 +21,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.312
+      "duration_seconds": 0.324
     },
     {
       "gate": "export-tests",
@@ -33,7 +33,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.872
+      "duration_seconds": 0.927
     },
     {
       "gate": "semantic-export",
@@ -44,7 +44,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.713
+      "duration_seconds": 0.64
     },
     {
       "gate": "source-tests",
@@ -61,7 +61,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.643
+      "duration_seconds": 1.641
     },
     {
       "gate": "godot-import",
@@ -76,7 +76,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 2.21
+      "duration_seconds": 2.511
     },
     {
       "gate": "viewer-smoke",
@@ -91,7 +91,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.357
+      "duration_seconds": 2.01
     },
     {
       "gate": "glb-import",
@@ -106,7 +106,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.153
+      "duration_seconds": 0.151
     },
     {
       "gate": "input-queue",
@@ -121,7 +121,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.149
+      "duration_seconds": 0.151
     },
     {
       "gate": "protocol-envelopes",
@@ -136,7 +136,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.139
+      "duration_seconds": 0.155
     },
     {
       "gate": "packet-replay",
@@ -151,7 +151,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.238
+      "duration_seconds": 0.339
     },
     {
       "gate": "native-live",
@@ -163,7 +163,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.979
+      "duration_seconds": 1.167
     },
     {
       "gate": "presentation-replay",
@@ -178,7 +178,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.339
+      "duration_seconds": 0.341
     },
     {
       "gate": "round-boundaries",
@@ -193,7 +193,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.149
+      "duration_seconds": 0.246
     },
     {
       "gate": "native-lifecycle",
@@ -205,7 +205,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 59.448
+      "duration_seconds": 59.593
     },
     {
       "gate": "combat-feedback",
@@ -220,7 +220,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.239
+      "duration_seconds": 0.251
     },
     {
       "gate": "local-lifecycle",
@@ -235,7 +235,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.142
+      "duration_seconds": 0.149
     },
     {
       "gate": "pickup-presentation",
@@ -265,7 +265,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.149
+      "duration_seconds": 0.144
     },
     {
       "gate": "guest-session",
@@ -280,7 +280,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.144
+      "duration_seconds": 0.148
     },
     {
       "gate": "control-safety",
@@ -295,7 +295,22 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.241
+      "duration_seconds": 0.243
+    },
+    {
+      "gate": "window-focus",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/protocol/window_focus.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.139
     },
     {
       "gate": "session-recovery",
@@ -310,7 +325,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.148
+      "duration_seconds": 0.14
     },
     {
       "gate": "stall-controls",
@@ -325,7 +340,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.15
+      "duration_seconds": 0.149
     },
     {
       "gate": "snapshot-watch",
@@ -340,7 +355,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.151
+      "duration_seconds": 0.138
     },
     {
       "gate": "native-session",
@@ -352,7 +367,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.274
+      "duration_seconds": 1.297
     },
     {
       "gate": "two-native-clients",
@@ -363,7 +378,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.322
+      "duration_seconds": 1.324
     },
     {
       "gate": "motion-impairment",
@@ -378,7 +393,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.137
+      "duration_seconds": 0.142
     },
     {
       "gate": "remote-motion",
@@ -393,7 +408,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.145
+      "duration_seconds": 0.14
     },
     {
       "gate": "release-refused",
@@ -405,7 +420,7 @@
       "exit_code": 1,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.6
+      "duration_seconds": 0.54
     }
   ],
   "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732"
