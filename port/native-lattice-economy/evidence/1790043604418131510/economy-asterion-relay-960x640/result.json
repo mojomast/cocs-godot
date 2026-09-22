@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": {
+    "nativeExit": true,
+    "bounded": true,
+    "holdExactlyOnce": true,
+    "holdRunning": true,
+    "recipientKeys": true,
+    "spendExactlyOnce": true,
+    "sourcePermission": true,
+    "spendDoneAndCost": true,
+    "nativeWireIdentity": true
+  },
+  "nativeExit": 0,
+  "inboundCount": 2,
+  "records": 24
+}

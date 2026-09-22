@@ -91,7 +91,7 @@ evidence helpers retain their bounded observation windows. See
   recruitment for 12 FLUX. Independent PvP/co-op UI-handler runs pass on both
   maps; graphical captures were inspected. Native mouse/key GUI-dispatch
   acceptance now passes on both PvP maps and Asterion co-op; receipts fit at
-  960×640. Co-op economy, OS-input acceptance and full world interaction remain open. See the
+  960×640. OS-input acceptance and full world interaction remain open. See the
   [command-board guide](native-lattice/README.md) and
   [initial evidence](reports/lattice-independent/README.md) and
   [physical-event follow-up](reports/lattice-physical-independent/README.md).
@@ -99,6 +99,10 @@ evidence helpers retain their bounded observation windows. See
   objective markers synchronized with List selection. Both PvP maps and Asterion
   co-op independently pass the new map path and original List regressions; see
   [tactical-map verification](reports/lattice-map-independent/README.md).
+  Co-op **REINFORCE** now uses the actual between-wave permission window and
+  costs **50 team FLUX, no REQ**. Both maps independently pass confirmed purchase,
+  +50 cumulative spending and +1 spawn, with all prior input regressions passing.
+  See [co-op verification](reports/lattice-economy-independent/README.md).
 
 - **Objective demos:** standalone Tidal CTF and Sunscar Payload are integrated at
   `d498479`. Independent normal-rate native-input runs pass flag pickup/carry/drop
@@ -109,8 +113,8 @@ evidence helpers retain their bounded observation windows. See
   return/capture and Payload contest/checkpoint, plus both modes' natural results
   and restart. See [progression evidence](reports/objective-progression-independent/README.md).
 
-**Combined verification: all 57 implemented gates pass** after objective progression
-and GLB-side integration at `ffa6aac` plus the new focused gates
+**Combined verification: all 59 implemented gates pass** after co-op economy and
+soccer guidance integration at `4eb0e36` plus the new focused gates
 recorded with this batch. Independent driving passed on both sports maps;
 the default compact HUD's nonlethal damage/+35 HP/12-second return was also
 independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).

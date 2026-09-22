@@ -30,13 +30,13 @@ simulation lock and verification evidence remain reproducible.
 | HUD and controls | Health/armor bars, named weapon/ammo display, number-key and wheel weapon selection, team scores and results scoreboard |
 | Puma sports demos | Ion Speedway racing and Aurora Stadium soccer: authoritative driving, next-checkpoint guidance, compact HUD, wall-aware chase, results and F5 restart |
 | Objective demos | Tidal CTF pickup/drop/return/capture; Sunscar Payload escort/contest/checkpoint; compact objective HUD, results and restart |
-| LATTICE command demo | Asterion Relay and Monsoon Foundry: synchronized objective list/map, recipient-authorized resources, HOLD orders and PvP Fighter recruitment with explicit action receipts |
+| LATTICE command demo | Asterion Relay and Monsoon Foundry: synchronized objective list/map, own resources, HOLD orders, PvP Fighter and co-op REINFORCE purchases with explicit receipts |
 | Session handling | Local server launcher, host setup, guest transport, stale-state handling, focus release, death/respawn and round-boundary control resets |
 
 Sports now have independent completed-lap and normal results/restart acceptance;
 local-driver soccer goals remain open. LATTICE is currently a
-standalone command board, with co-op orders but no co-op economy or native world
-interaction. CTF/Payload have bounded progression and results/restart acceptance;
+standalone command board with PvP/co-op recruitment; native world interaction
+is in development. CTF/Payload have bounded progression and results/restart acceptance;
 full Payload delivery, flag passing and broader combat/objective interactions
 remain under development.
 See the [release matrix](port/RELEASE_MATRIX.md) for evidence and remaining work.
@@ -130,6 +130,10 @@ display authoritative results and support **F5** restart, followed by **Enter**
 and fresh movement keys. Optional `--time-limit=60..900` and `--round-target=N`
 set ordinary match limits (1..10 laps or 1..15 goals). See
 [progression verification](port/reports/sports-progression-independent/README.md).
+Aurora also shows ball direction/distance and explicit **OWN / ATTACK** goals
+derived from your authoritative team. Real bot-goal notifications are verified;
+local-driver scoring remains unaccepted. See
+[soccer guidance and goal audit](port/reports/soccer-guidance-independent/README.md).
 
 ### LATTICE command board
 
@@ -139,14 +143,18 @@ PORT=0 node tools/godot-dev/launch.mjs \
 ```
 
 Click **Connect / start**, select an objective, and issue a HOLD order. In PvP,
-authorize one **12 FLUX** purchase and click **Recruit Fighter**. The UI separates
+authorize one **12 FLUX** purchase and click **PvP Fighter**. The UI separates
 locally queued commands, server acceptance, confirmation and rejection.
 Use the **List / Map** selector to see a clickable public-objective diagram;
 selecting a marker does not issue an order. The diagram fits both axes to the
 panel and represents neither terrain distances nor topology links.
 
-Use `--map=monsoon-foundry` for the second map or `--mode=cocs-coop` for co-op
-orders. The common launcher has no harness deadline; the separate evidence
+Use `--map=monsoon-foundry` for the second map or `--mode=cocs-coop` for co-op.
+Co-op **REINFORCE** costs **50 team FLUX and no REQ**, during a naturally opened
+between-wave window (about two minutes in the verified runs). Wait for permission,
+authorize a fresh purchase and activate REINFORCE. The UI explains unavailable
+windows or budgets. See [co-op verification](port/reports/lattice-economy-independent/README.md).
+The common launcher has no harness deadline; the separate original evidence
 launcher retains its **120-second** bound. The compact
 layout fits the basic command and purchase receipts at 960×640; longer history
 remains scrollable. See the
@@ -238,11 +246,11 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated run passes **57 gates**, including sports and objective
+The latest integrated run passes **59 gates**, including sports and objective
 progression, LATTICE map selection, launcher routing, GLB material sides and
 projectile navigation. Native
 [GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
-also passed the preceding 53-gate snapshot from a fresh Ubuntu checkout.
+also passed the preceding 57-gate snapshot from a fresh Ubuntu checkout.
 
 Focused real-session and graphical evidence is documented in:
 
@@ -253,6 +261,7 @@ Focused real-session and graphical evidence is documented in:
 - [LATTICE implementation and evidence](port/native-lattice/HANDOFF.md)
 - [LATTICE native mouse/key acceptance](port/reports/lattice-physical-independent/README.md)
 - [LATTICE tactical-map verification](port/reports/lattice-map-independent/README.md)
+- [LATTICE co-op recruitment verification](port/reports/lattice-economy-independent/README.md)
 - [CTF and Payload independent verification](port/reports/objective-independent/README.md)
 - [CTF capture, Payload contest/checkpoint and restart](port/reports/objective-progression-independent/README.md)
 - [Exported sky material-side correction](port/reports/glb-side-independent/README.md)

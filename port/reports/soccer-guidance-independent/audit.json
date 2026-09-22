@@ -1,0 +1,843 @@
+{
+  "classification": "offline source/hash/goal receipt audit; no simulation",
+  "runs": [
+    {
+      "directory": "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1",
+      "attempt": 2,
+      "hashManifestSHA256": "f71efd183482cfe24d093b27883309fb6ad7468285ae4ef463f63493e5a7f5bc",
+      "currentToolDifferences": [
+        "godot/lattice/board.gd",
+        "godot/lattice/transport.gd",
+        "godot/objectives/demo.gd",
+        "godot/objectives/renderer.gd",
+        "godot/tests/lattice/adapter.gd",
+        "godot/tests/lattice/physical.gd",
+        "godot/tests/protocol/audio_feedback.gd"
+      ],
+      "productionDifferences": [],
+      "goals": [
+        {
+          "resolution": "960x640",
+          "event": {
+            "wallMs": 74048,
+            "type": "soccer-goal",
+            "id": 5,
+            "time": 73.4,
+            "team": 1,
+            "actor": 2,
+            "actorId": 2,
+            "scorerId": 2,
+            "pos": {
+              "x": -44,
+              "y": 1.2,
+              "z": 0
+            }
+          },
+          "lastTouchRole": {
+            "id": 2,
+            "team": 0,
+            "bot": true
+          },
+          "localRole": {
+            "id": 0,
+            "team": 0,
+            "bot": false
+          },
+          "localScoringAcceptance": false,
+          "ownGoal": true,
+          "before": {
+            "seq": 2201,
+            "ack": 1858,
+            "time": 73.367,
+            "scores": {
+              "0": 0,
+              "1": 0
+            }
+          },
+          "after": {
+            "seq": 2205,
+            "ack": 1860,
+            "time": 73.5,
+            "scores": {
+              "0": 0,
+              "1": 1
+            },
+            "ball": {
+              "x": 0,
+              "y": 1.1,
+              "z": 0,
+              "vx": 0,
+              "vz": 0,
+              "r": 1.1
+            }
+          }
+        },
+        {
+          "resolution": "960x640",
+          "event": {
+            "wallMs": 98376,
+            "type": "soccer-goal",
+            "id": 6,
+            "time": 98.317,
+            "team": 1,
+            "actor": 2,
+            "actorId": 2,
+            "scorerId": 2,
+            "pos": {
+              "x": -44,
+              "y": 1.2,
+              "z": 0
+            }
+          },
+          "lastTouchRole": {
+            "id": 2,
+            "team": 0,
+            "bot": true
+          },
+          "localRole": {
+            "id": 0,
+            "team": 0,
+            "bot": false
+          },
+          "localScoringAcceptance": false,
+          "ownGoal": true,
+          "before": {
+            "seq": 2948,
+            "ack": 2469,
+            "time": 98.267,
+            "scores": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "after": {
+            "seq": 2952,
+            "ack": 2472,
+            "time": 98.4,
+            "scores": {
+              "0": 0,
+              "1": 2
+            },
+            "ball": {
+              "x": 0,
+              "y": 1.1,
+              "z": 0,
+              "vx": 0,
+              "vz": 0,
+              "r": 1.1
+            }
+          }
+        }
+      ],
+      "timings": [
+        {
+          "resolution": "960x640",
+          "lastServerWallMs": 177066,
+          "sourceSecondsPerWallSecond": 1.0208086801923089
+        }
+      ],
+      "cleanupVerified": true
+    },
+    {
+      "directory": "1f0df218-abe4-49ff-b51b-4bff058cfdcc",
+      "attempt": null,
+      "hashManifestSHA256": "a191c9a48c9bee850fb52b5e95aa2ffaf78f3d098c4f01b72759eaf55dc50060",
+      "currentToolDifferences": [
+        "godot/lattice/board.gd",
+        "godot/lattice/transport.gd",
+        "godot/objectives/demo.gd",
+        "godot/objectives/renderer.gd",
+        "godot/tests/lattice/adapter.gd",
+        "godot/tests/lattice/physical.gd",
+        "godot/tests/protocol/audio_feedback.gd",
+        "godot/tests/sports/soccer_observe.gd",
+        "port/native-soccer-play/run.py"
+      ],
+      "productionDifferences": [],
+      "goals": [],
+      "timings": [
+        {
+          "resolution": "1280x800",
+          "lastServerWallMs": 7626,
+          "sourceSecondsPerWallSecond": 1.0126453488372094
+        },
+        {
+          "resolution": "960x640",
+          "lastServerWallMs": 9686,
+          "sourceSecondsPerWallSecond": 1.0198713366690493
+        }
+      ],
+      "cleanupVerified": true
+    },
+    {
+      "directory": "5e2e60d8-ca26-41e5-8b36-3857b9916291",
+      "attempt": null,
+      "hashManifestSHA256": "122eaa909feb5aa114c93f755e66f5801d1171f83561c09c6b429ca1919fa49b",
+      "currentToolDifferences": [
+        "port/native-soccer-play/audit.py"
+      ],
+      "productionDifferences": [],
+      "goals": [],
+      "timings": [
+        {
+          "resolution": "1280x800",
+          "lastServerWallMs": 7566,
+          "sourceSecondsPerWallSecond": 1.014484272128749
+        },
+        {
+          "resolution": "960x640",
+          "lastServerWallMs": 9493,
+          "sourceSecondsPerWallSecond": 1.0133986457282813
+        }
+      ],
+      "cleanupVerified": true
+    },
+    {
+      "directory": "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7",
+      "attempt": 1,
+      "hashManifestSHA256": "a191c9a48c9bee850fb52b5e95aa2ffaf78f3d098c4f01b72759eaf55dc50060",
+      "currentToolDifferences": [
+        "godot/lattice/board.gd",
+        "godot/lattice/transport.gd",
+        "godot/objectives/demo.gd",
+        "godot/objectives/renderer.gd",
+        "godot/tests/lattice/adapter.gd",
+        "godot/tests/lattice/physical.gd",
+        "godot/tests/protocol/audio_feedback.gd",
+        "godot/tests/sports/soccer_observe.gd",
+        "port/native-soccer-play/run.py"
+      ],
+      "productionDifferences": [],
+      "goals": [
+        {
+          "resolution": "1280x800",
+          "event": {
+            "wallMs": 34224,
+            "type": "soccer-goal",
+            "id": 5,
+            "time": 31.917,
+            "team": 1,
+            "actor": 1,
+            "actorId": 1,
+            "scorerId": 1,
+            "pos": {
+              "x": -44,
+              "y": 1.2,
+              "z": 0
+            }
+          },
+          "lastTouchRole": {
+            "id": 1,
+            "team": 1,
+            "bot": true
+          },
+          "localRole": {
+            "id": 0,
+            "team": 0,
+            "bot": false
+          },
+          "localScoringAcceptance": false,
+          "ownGoal": false,
+          "before": {
+            "seq": 954,
+            "ack": 585,
+            "time": 31.8,
+            "scores": {
+              "0": 0,
+              "1": 0
+            }
+          },
+          "after": {
+            "seq": 958,
+            "ack": 587,
+            "time": 31.933,
+            "scores": {
+              "0": 0,
+              "1": 1
+            },
+            "ball": {
+              "x": 0,
+              "y": 1.1,
+              "z": 0,
+              "vx": 0,
+              "vz": 0,
+              "r": 1.1
+            }
+          }
+        },
+        {
+          "resolution": "1280x800",
+          "event": {
+            "wallMs": 107372,
+            "type": "soccer-goal",
+            "id": 6,
+            "time": 105.45,
+            "team": 0,
+            "actor": 2,
+            "actorId": 2,
+            "scorerId": 2,
+            "pos": {
+              "x": 44,
+              "y": 1.2,
+              "z": 0
+            }
+          },
+          "lastTouchRole": {
+            "id": 2,
+            "team": 0,
+            "bot": true
+          },
+          "localRole": {
+            "id": 0,
+            "team": 0,
+            "bot": false
+          },
+          "localScoringAcceptance": false,
+          "ownGoal": false,
+          "before": {
+            "seq": 3162,
+            "ack": 2104,
+            "time": 105.4,
+            "scores": {
+              "0": 0,
+              "1": 1
+            }
+          },
+          "after": {
+            "seq": 3165,
+            "ack": 2107,
+            "time": 105.5,
+            "scores": {
+              "0": 1,
+              "1": 1
+            },
+            "ball": {
+              "x": 0,
+              "y": 1.1,
+              "z": 0,
+              "vx": 0,
+              "vz": 0,
+              "r": 1.1
+            }
+          }
+        },
+        {
+          "resolution": "1280x800",
+          "event": {
+            "wallMs": 146023,
+            "type": "soccer-goal",
+            "id": 7,
+            "time": 144.05,
+            "team": 0,
+            "actor": 2,
+            "actorId": 2,
+            "scorerId": 2,
+            "pos": {
+              "x": 44,
+              "y": 1.2,
+              "z": 0
+            }
+          },
+          "lastTouchRole": {
+            "id": 2,
+            "team": 0,
+            "bot": true
+          },
+          "localRole": {
+            "id": 0,
+            "team": 0,
+            "bot": false
+          },
+          "localScoringAcceptance": false,
+          "ownGoal": false,
+          "before": {
+            "seq": 4319,
+            "ack": 2991,
+            "time": 143.967,
+            "scores": {
+              "0": 1,
+              "1": 1
+            }
+          },
+          "after": {
+            "seq": 4322,
+            "ack": 2993,
+            "time": 144.067,
+            "scores": {
+              "0": 2,
+              "1": 1
+            },
+            "ball": {
+              "x": 0,
+              "y": 1.1,
+              "z": 0,
+              "vx": 0,
+              "vz": 0,
+              "r": 1.1
+            }
+          }
+        },
+        {
+          "resolution": "1280x800",
+          "event": {
+            "wallMs": 153275,
+            "type": "soccer-goal",
+            "id": 8,
+            "time": 151.367,
+            "team": 1,
+            "actor": 1,
+            "actorId": 1,
+            "scorerId": 1,
+            "pos": {
+              "x": -44,
+              "y": 1.2,
+              "z": 0
+            }
+          },
+          "lastTouchRole": {
+            "id": 1,
+            "team": 1,
+            "bot": true
+          },
+          "localRole": {
+            "id": 0,
+            "team": 0,
+            "bot": false
+          },
+          "localScoringAcceptance": false,
+          "ownGoal": false,
+          "before": {
+            "seq": 4538,
+            "ack": 3140,
+            "time": 151.267,
+            "scores": {
+              "0": 2,
+              "1": 1
+            }
+          },
+          "after": {
+            "seq": 4542,
+            "ack": 3142,
+            "time": 151.4,
+            "scores": {
+              "0": 2,
+              "1": 2
+            },
+            "ball": {
+              "x": 0,
+              "y": 1.1,
+              "z": 0,
+              "vx": 0,
+              "vz": 0,
+              "r": 1.1
+            }
+          }
+        },
+        {
+          "resolution": "1280x800",
+          "event": {
+            "wallMs": 158692,
+            "type": "soccer-goal",
+            "id": 9,
+            "time": 156.833,
+            "team": 0,
+            "actor": 3,
+            "actorId": 3,
+            "scorerId": 3,
+            "pos": {
+              "x": 44,
+              "y": 1.2,
+              "z": 0
+            }
+          },
+          "lastTouchRole": {
+            "id": 3,
+            "team": 1,
+            "bot": true
+          },
+          "localRole": {
+            "id": 0,
+            "team": 0,
+            "bot": false
+          },
+          "localScoringAcceptance": false,
+          "ownGoal": true,
+          "before": {
+            "seq": 4703,
+            "ack": 3235,
+            "time": 156.767,
+            "scores": {
+              "0": 2,
+              "1": 2
+            }
+          },
+          "after": {
+            "seq": 4707,
+            "ack": 3237,
+            "time": 156.9,
+            "scores": {
+              "0": 3,
+              "1": 2
+            },
+            "ball": {
+              "x": 0,
+              "y": 1.1,
+              "z": 0,
+              "vx": 0,
+              "vz": 0,
+              "r": 1.1
+            }
+          }
+        }
+      ],
+      "timings": [
+        {
+          "resolution": "1280x800",
+          "lastServerWallMs": 177639,
+          "sourceSecondsPerWallSecond": 1.0053763440860215
+        }
+      ],
+      "cleanupVerified": true
+    }
+  ],
+  "files": {
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/960x640/countdown.png": {
+      "sha256": "e4442b7f504837261cdecfaa19741c3e6a182250a3467a96148f524345b7d0ba",
+      "bytes": 321879
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/960x640/driving.png": {
+      "sha256": "4e0caded1633a06b12b03c59fc9facd70179d240a62fd29572eb75f0fd62ece2",
+      "bytes": 330122
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/960x640/end.png": {
+      "sha256": "3030b5ac94b2b3bdd97a2b59e00796ff86c06bfe08872ab1b0c3ec8bb60788d8",
+      "bytes": 280607
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/960x640/goal.png": {
+      "sha256": "5e8aa373b83fddd6da0ab2039e6e7b74a4a43e4c0d631bcd2f9c516f5c6f490f",
+      "bytes": 351067
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/960x640/native.log": {
+      "sha256": "646a8fb10d521496fdeee10176ce187ed5b5a02f83435da9054a507f01fb6548",
+      "bytes": 99370
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/960x640/server.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/960x640/wire.json": {
+      "sha256": "89ba79f26a460a437a1a35538e21b110b11978861afdc14120526f9be8f7c1f1",
+      "bytes": 2435058
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/export.log": {
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4",
+      "bytes": 61
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/generated-hashes.json": {
+      "sha256": "db21b8a3991eab17c58d9ba3eae58e07bef16a083b8fd9281e3328e0dc03497b",
+      "bytes": 1192
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/hashes.json": {
+      "sha256": "f71efd183482cfe24d093b27883309fb6ad7468285ae4ef463f63493e5a7f5bc",
+      "bytes": 57889
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/import.log": {
+      "sha256": "b4fadbfe103d55372ca7ce618f8d023289510c26051e4074d00ffc985f0668d1",
+      "bytes": 6418
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/progression_test.log": {
+      "sha256": "971ae7e3449fd9e10e3deb06250d93da358dc0f3aa8115e6582d31d402fd5724",
+      "bytes": 123
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/soccer_test.log": {
+      "sha256": "0f5f81fc1997dd95c71606b8173f6aedd45e8a88f42fceaffac529a357f8886e",
+      "bytes": 111
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/summary.json": {
+      "sha256": "184e91fa38e478338e7106e53916779caed75b7ce6b0075fe05a2531cfbb22cb",
+      "bytes": 5089
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/test_controls.log": {
+      "sha256": "ac54d47c136756f407e8e72c1e47f88482084e1cb977a76a3982174e9bef1bb5",
+      "bytes": 100
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/test_polish.log": {
+      "sha256": "c8c11f8cbf69bec55d2190f952a19d5ae1b32d522efe3d6601e9f2ac5039ff30",
+      "bytes": 118
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/test_puma.log": {
+      "sha256": "11636fad60d43061a38063dbee282262400fb0166ef66e9896c44e8804bc9e96",
+      "bytes": 120
+    },
+    "1249d656-97f3-4ca2-92f0-5bb0a5aadfd1/xvfb.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/1280x800/countdown.png": {
+      "sha256": "4ea6212cb73d5c13f9b9286a02b9e46749a5b8fa3d3b80ec7a9f007ca3ebde28",
+      "bytes": 511870
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/1280x800/end.png": {
+      "sha256": "4f22810d3ed63ec4cc1b59ac32bdd3d3cd1bc29557b1d673bce652f700087e4c",
+      "bytes": 517896
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/1280x800/guidance.png": {
+      "sha256": "2cc0643047376243fb5626cab27d817430d998882a207de0b1159b776dc2e020",
+      "bytes": 520987
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/1280x800/native.log": {
+      "sha256": "fddce09a6e9501cd4f98898f9a7b01e32708e0819c542d48c705c3d22915819b",
+      "bytes": 5169
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/1280x800/server.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/1280x800/wire.json": {
+      "sha256": "634ce097ad0ca7da268985c364922c4645453edd7e7ab0f5704ed64c16185ffa",
+      "bytes": 81556
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/960x640/countdown.png": {
+      "sha256": "fa6fc9ee7fb3183b240027745632e3291a8f5ae6986e4b71d4cfabd9f802d934",
+      "bytes": 321776
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/960x640/end.png": {
+      "sha256": "1711681a54cba8ca2a483a259aaa57477995362032051851885699ec4fe932b2",
+      "bytes": 327364
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/960x640/guidance.png": {
+      "sha256": "ad5abe322a979d36be1ab65e8f64823ef3b563d1a139bd65c5b5f6fa08e7273a",
+      "bytes": 329172
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/960x640/native.log": {
+      "sha256": "d47f3a44db8271278b3bd4127e1b76c29f482828753ef2a71a6c2ec24afd2a86",
+      "bytes": 5167
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/960x640/server.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/960x640/wire.json": {
+      "sha256": "9976e44bc7266d79ae9483fd6e4e6545d4eabfde609b94b93c8710f58c7cce7d",
+      "bytes": 86383
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/export.log": {
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4",
+      "bytes": 61
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/generated-hashes.json": {
+      "sha256": "db21b8a3991eab17c58d9ba3eae58e07bef16a083b8fd9281e3328e0dc03497b",
+      "bytes": 1192
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/hashes.json": {
+      "sha256": "a191c9a48c9bee850fb52b5e95aa2ffaf78f3d098c4f01b72759eaf55dc50060",
+      "bytes": 57889
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/import.log": {
+      "sha256": "b4fadbfe103d55372ca7ce618f8d023289510c26051e4074d00ffc985f0668d1",
+      "bytes": 6418
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/progression_test.log": {
+      "sha256": "971ae7e3449fd9e10e3deb06250d93da358dc0f3aa8115e6582d31d402fd5724",
+      "bytes": 123
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/soccer_test.log": {
+      "sha256": "0f5f81fc1997dd95c71606b8173f6aedd45e8a88f42fceaffac529a357f8886e",
+      "bytes": 111
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/summary.json": {
+      "sha256": "0f7c7e227058a64ff3468d6183a5a2e0ad926f315c68b2031526bd10441f9cee",
+      "bytes": 5268
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/test_controls.log": {
+      "sha256": "ac54d47c136756f407e8e72c1e47f88482084e1cb977a76a3982174e9bef1bb5",
+      "bytes": 100
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/test_polish.log": {
+      "sha256": "c8c11f8cbf69bec55d2190f952a19d5ae1b32d522efe3d6601e9f2ac5039ff30",
+      "bytes": 118
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/test_puma.log": {
+      "sha256": "11636fad60d43061a38063dbee282262400fb0166ef66e9896c44e8804bc9e96",
+      "bytes": 120
+    },
+    "1f0df218-abe4-49ff-b51b-4bff058cfdcc/xvfb.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/1280x800/countdown.png": {
+      "sha256": "4ea6212cb73d5c13f9b9286a02b9e46749a5b8fa3d3b80ec7a9f007ca3ebde28",
+      "bytes": 511870
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/1280x800/end.png": {
+      "sha256": "4f22810d3ed63ec4cc1b59ac32bdd3d3cd1bc29557b1d673bce652f700087e4c",
+      "bytes": 517896
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/1280x800/guidance.png": {
+      "sha256": "2cc0643047376243fb5626cab27d817430d998882a207de0b1159b776dc2e020",
+      "bytes": 520987
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/1280x800/native.log": {
+      "sha256": "84bcd47fa4d9dd610779775faab53cccd6dd4c7af76d31444a4f4b0d5f03229e",
+      "bytes": 5253
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/1280x800/server.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/1280x800/wire.json": {
+      "sha256": "438168f4c7236347e24b0d2f46d9c7ac288d6ed58297067bc7a37e54b58f3190",
+      "bytes": 81706
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/960x640/countdown.png": {
+      "sha256": "e4442b7f504837261cdecfaa19741c3e6a182250a3467a96148f524345b7d0ba",
+      "bytes": 321879
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/960x640/end.png": {
+      "sha256": "4208694365d70a7bcefc7252138ef99f249f674240383a2baf84da561aeffbd2",
+      "bytes": 327438
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/960x640/guidance.png": {
+      "sha256": "d8e466a162d318ab96c45064c9720eacc89a3aebfe3abd1c87b4c1f157bae281",
+      "bytes": 328249
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/960x640/native.log": {
+      "sha256": "a00b82e6a2c7e215d69b1b0a921a46e93d5f0902b23e26f357700e1a432e121a",
+      "bytes": 5254
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/960x640/server.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/960x640/wire.json": {
+      "sha256": "df1a30d88538179b64b3dce14c13b71130db80a4730db93217455c9241e2ba78",
+      "bytes": 87122
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/export.log": {
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4",
+      "bytes": 61
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/generated-hashes.json": {
+      "sha256": "db21b8a3991eab17c58d9ba3eae58e07bef16a083b8fd9281e3328e0dc03497b",
+      "bytes": 1192
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/hashes.json": {
+      "sha256": "122eaa909feb5aa114c93f755e66f5801d1171f83561c09c6b429ca1919fa49b",
+      "bytes": 58748
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/import.log": {
+      "sha256": "ac90a553ca11830e66f8e1e997f8d27a2d907f67200a67717490d3147d6c508d",
+      "bytes": 70843
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/progression_test.log": {
+      "sha256": "971ae7e3449fd9e10e3deb06250d93da358dc0f3aa8115e6582d31d402fd5724",
+      "bytes": 123
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/soccer_test.log": {
+      "sha256": "0f5f81fc1997dd95c71606b8173f6aedd45e8a88f42fceaffac529a357f8886e",
+      "bytes": 111
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/summary.json": {
+      "sha256": "041f90fca2c9778976db6cb6f3e4d558024bddbfd823eb0711c9d9224ca7d0fa",
+      "bytes": 5464
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/test_controls.log": {
+      "sha256": "ac54d47c136756f407e8e72c1e47f88482084e1cb977a76a3982174e9bef1bb5",
+      "bytes": 100
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/test_polish.log": {
+      "sha256": "c8c11f8cbf69bec55d2190f952a19d5ae1b32d522efe3d6601e9f2ac5039ff30",
+      "bytes": 118
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/test_puma.log": {
+      "sha256": "11636fad60d43061a38063dbee282262400fb0166ef66e9896c44e8804bc9e96",
+      "bytes": 120
+    },
+    "5e2e60d8-ca26-41e5-8b36-3857b9916291/xvfb.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/1280x800/countdown.png": {
+      "sha256": "4ea6212cb73d5c13f9b9286a02b9e46749a5b8fa3d3b80ec7a9f007ca3ebde28",
+      "bytes": 511870
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/1280x800/driving.png": {
+      "sha256": "fb70779a0a128aec0ba59d6477c6b7afa73141513400922243bff9a651a2f114",
+      "bytes": 512299
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/1280x800/end.png": {
+      "sha256": "86cb3fb5bcd3885119288b4f73da68718f0f63a00430e3c41bbd21cf3c1d1f53",
+      "bytes": 406376
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/1280x800/goal.png": {
+      "sha256": "d948d74f48903a0c1dd559c4888770b28c4eb6718f072b6486a1f42c89ffe918",
+      "bytes": 520383
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/1280x800/native.log": {
+      "sha256": "a3bb6f7f2d8de7ea70ae4c2734aee47ffd9e5984afa6f7f99101a10669ca1883",
+      "bytes": 97877
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/1280x800/server.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/1280x800/wire.json": {
+      "sha256": "058ae0441ebe8f4a0930e1b49d217de594c7c94f603da6a3ad58a943ed1d4b01",
+      "bytes": 2336800
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/export.log": {
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4",
+      "bytes": 61
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/generated-hashes.json": {
+      "sha256": "db21b8a3991eab17c58d9ba3eae58e07bef16a083b8fd9281e3328e0dc03497b",
+      "bytes": 1192
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/hashes.json": {
+      "sha256": "a191c9a48c9bee850fb52b5e95aa2ffaf78f3d098c4f01b72759eaf55dc50060",
+      "bytes": 57889
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/import.log": {
+      "sha256": "b4fadbfe103d55372ca7ce618f8d023289510c26051e4074d00ffc985f0668d1",
+      "bytes": 6418
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/progression_test.log": {
+      "sha256": "971ae7e3449fd9e10e3deb06250d93da358dc0f3aa8115e6582d31d402fd5724",
+      "bytes": 123
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/soccer_test.log": {
+      "sha256": "0f5f81fc1997dd95c71606b8173f6aedd45e8a88f42fceaffac529a357f8886e",
+      "bytes": 111
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/summary.json": {
+      "sha256": "9ebc4dac4e618074605c3dd69b3e4f564817d9291fff086e47fa75ee4215efce",
+      "bytes": 7014
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/test_controls.log": {
+      "sha256": "ac54d47c136756f407e8e72c1e47f88482084e1cb977a76a3982174e9bef1bb5",
+      "bytes": 100
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/test_polish.log": {
+      "sha256": "c8c11f8cbf69bec55d2190f952a19d5ae1b32d522efe3d6601e9f2ac5039ff30",
+      "bytes": 118
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/test_puma.log": {
+      "sha256": "11636fad60d43061a38063dbee282262400fb0166ef66e9896c44e8804bc9e96",
+      "bytes": 120
+    },
+    "8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/xvfb.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "runtime": {
+    "godotVersion": "4.5.2.stable.official.6ce3de25a",
+    "godotSHA256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+    "nodeVersion": "v22.23.1",
+    "nodeSHA256": "93956de2e59480474a7b46571da1651180b1a050cdf32641ebec4ce6e478e068",
+    "wsVersion": "8.21.3",
+    "wsTreeSHA256": "c0dc2e2d4228652d0f4f653026eb2f85a0777177d34ec9a485260ebf82b9ef8d"
+  },
+  "status": "PASS",
+  "auditorSHA256": "a78d032ea4aa4f607b192624fb792bb6ec8165a8e5eabfd0079b00adb44f4df3"
+}

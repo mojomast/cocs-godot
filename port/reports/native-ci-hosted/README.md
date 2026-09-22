@@ -36,3 +36,12 @@ Run <https://github.com/mojomast/cocs-godot/actions/runs/35678348846> at
 This includes sports progression and the bounded actual-playback/cooldown
 fixture. `35678348846/` retains the downloaded report, artifact manifest and
 audio/combined logs. The lead watched completion and checked the report count.
+
+## Objective progression and GLB repair
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35679051417> at
+`bfcc9eda96dfa1b1e6b0791db31be9cc83e40676` **PASS**, all **57 gates**, in 2m53s.
+The fresh runner generated the repaired Meridian GLB and passed inward-sky
+checks, side-geometry tests and objective progression/corruption gates.
+Downloaded report, console, artifact manifest and native side log are in
+`35679051417/`. The lead watched actual completion and validated the gate count.

@@ -4,11 +4,18 @@ import hashlib
 import json
 import pathlib
 import subprocess
+import argparse
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 EVIDENCE = ROOT / 'port/native-soccer-play/evidence'
 BIN = pathlib.Path('/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64')
 WS = pathlib.Path('/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/node_modules/ws')
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--output', type=pathlib.Path, help='Fresh audit destination; preserves the original delivered audit')
+options = parser.parse_args()
+destination = options.output if options.output else EVIDENCE / 'audit.json'
+if options.output and destination.exists():
+    parser.error('Explicit audit destination already exists')
 
 
 def sha(path):
@@ -74,6 +81,7 @@ report['runtime'] = {'godotVersion':subprocess.check_output([str(BIN),'--version
                      'wsVersion':json.loads((WS/'package.json').read_text())['version'], 'wsTreeSHA256':hashlib.sha256(ws_manifest.encode()).hexdigest()}
 report['status'] = 'PASS'
 report['auditorSHA256'] = sha(pathlib.Path(__file__))
-(EVIDENCE / 'audit.json').write_text(json.dumps(report, indent=2)+'\n')
+destination.parent.mkdir(parents=True, exist_ok=True)
+destination.write_text(json.dumps(report, indent=2)+'\n')
 print(json.dumps({'status':report['status'], 'runs':len(report['runs']), 'goals':sum(len(r['goals']) for r in report['runs']),
-                  'localGoals':sum(g['localScoringAcceptance'] for r in report['runs'] for g in r['goals']), 'auditSHA256':sha(EVIDENCE/'audit.json')}, indent=2))
+                  'localGoals':sum(g['localScoringAcceptance'] for r in report['runs'] for g in r['goals']), 'auditSHA256':sha(destination)}, indent=2))

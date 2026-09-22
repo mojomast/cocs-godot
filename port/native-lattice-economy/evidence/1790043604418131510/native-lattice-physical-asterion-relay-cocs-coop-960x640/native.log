@@ -1,0 +1,38 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PHYSICAL {"event":"check","message":"actual board.tscn loaded by engine","ms":9,"ok":true}
+PHYSICAL {"event":"check","message":"built-in signal smoke is off","ms":9,"ok":true}
+PHYSICAL {"event":"check","message":"initial controls disabled","ms":212,"ok":true}
+PHYSICAL {"control":"Connect / start","event":"mouse","ms":212,"x":79.5,"y":150.5}
+PHYSICAL {"event":"check","message":"physical Connect reaches live recipient state","ms":484,"ok":true}
+PHYSICAL {"actions":[],"actor":0,"event":"connected","flux":120.05,"history":"No actions submitted.","map":"asterion-relay","mode":"cocs-coop","ms":484,"peer":1,"round":1,"selected":"","spawned":null,"spent":0.0,"team":0}
+PHYSICAL {"event":"check","message":"recipient contains own-front objective","ms":484,"ok":true}
+PHYSICAL {"control":"ItemList front-0","event":"mouse","ms":484,"x":476.0,"y":346.5}
+PHYSICAL {"event":"check","message":"real ItemList mouse selection selects own front","ms":494,"ok":true}
+PHYSICAL {"code":4194320,"event":"key","ms":494}
+PHYSICAL {"event":"check","message":"ItemList Up keyboard changes selection","ms":498,"ok":true}
+PHYSICAL {"code":4194322,"event":"key","ms":498}
+PHYSICAL {"event":"check","message":"ItemList Down keyboard returns to own front","ms":502,"ok":true}
+PHYSICAL {"event":"check","message":"HOLD enabled for selected target","ms":502,"ok":true}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":502,"x":86.0,"y":461.5}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":508,"x":86.0,"y":461.5}
+PHYSICAL {"event":"check","message":"rapid repeated HOLD click submits one action","ms":517,"ok":true}
+PHYSICAL {"event":"check","message":"HOLD authoritative running acceptance","ms":517,"ok":true}
+PHYSICAL {"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":null,"roundRev":1,"status":"pending (server accepted)","target":"front-0"}],"actor":0,"event":"hold-accepted","flux":120.2,"history":"native-r1-p1-s1 • hold • pending (server accepted)","map":"asterion-relay","mode":"cocs-coop","ms":517,"peer":1,"round":1,"selected":"front-0","spawned":null,"spent":0.0,"team":0}
+PHYSICAL {"event":"check","message":"co-op recruitment disabled during initial deployment","ms":517,"ok":true}
+PHYSICAL {"event":"check","message":"action receipts fully inside initial viewport without scroll","ms":1317,"ok":true}
+PHYSICAL {"event":"check","message":"resources inside viewport","ms":1317,"ok":true}
+PHYSICAL {"event":"check","message":"action controls inside viewport","ms":1317,"ok":true}
+PHYSICAL {"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":null,"roundRev":1,"status":"pending (server accepted)","target":"front-0"}],"actor":0,"event":"visible-receipts","flux":121.4,"history":"native-r1-p1-s1 • hold • pending (server accepted)","map":"asterion-relay","mode":"cocs-coop","ms":1317,"peer":1,"round":1,"selected":"front-0","spawned":null,"spent":0.0,"team":0}
+PHYSICAL {"event":"check","message":"saved receipts","ms":1337,"ok":true}
+PHYSICAL {"control":"Disconnect","event":"mouse","ms":1337,"x":192.0,"y":150.5}
+PHYSICAL {"event":"check","message":"physical Disconnect clears recipient state, selection and receipts","ms":1359,"ok":true}
+PHYSICAL {"event":"check","message":"real disconnected controls disabled","ms":1359,"ok":true}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":1359,"x":86.0,"y":487.5}
+PHYSICAL {"control":"Co-op REINFORCE","event":"mouse","ms":1364,"x":512.0,"y":487.5}
+PHYSICAL {"event":"check","message":"disabled disconnected clicks submit nothing","ms":1369,"ok":true}
+PHYSICAL {"event":"check","message":"saved disconnected","ms":1386,"ok":true}
+PHYSICAL {"checks":20,"event":"result","failures":0,"input":"Input.parse_input_event mouse and physical-key events; not OS input","ms":1386}

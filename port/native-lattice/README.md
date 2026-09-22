@@ -1,5 +1,20 @@
 # Native LATTICE command board
 
+## Current integration
+
+The original command-board delivery below has since gained a clickable
+[Map view](../native-lattice-map/README.md) and recipient-authorized
+[co-op REINFORCE](../native-lattice-economy/HANDOFF.md). Co-op purchases cost
+50 team FLUX, no REQ, during a source-opened between-wave window; initial
+deployment is not a purchase window. Both maps independently pass the new
+purchase and original input paths. Use the unbounded common launcher:
+
+```sh
+PORT=0 node tools/godot-dev/launch.mjs --experience=lattice --map=asterion-relay --mode=cocs-coop
+```
+
+The following sections retain the original implementation/evidence scope.
+
 Standalone Godot-native, recipient-only command UI for Asterion Relay and Monsoon Foundry. Source rules and shared port modules are unchanged.
 
 ## Launch

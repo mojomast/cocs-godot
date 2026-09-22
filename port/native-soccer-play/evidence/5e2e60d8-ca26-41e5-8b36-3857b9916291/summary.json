@@ -1,0 +1,180 @@
+{
+  "base": "4eb0e36c161ee8a9e612a42c90d052e236465065",
+  "attempt": null,
+  "classification": "synthetic checks plus explicitly selected normal-rate native visual/scoring checks",
+  "commands": [
+    [
+      "node",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/soccer-play-iycg47dm/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-iycg47dm/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-iycg47dm/godot",
+      "--script",
+      "res://tests/sports/test_controls.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-iycg47dm/godot",
+      "--script",
+      "res://tests/vehicles/test_puma.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-iycg47dm/godot",
+      "--script",
+      "res://tests/sports/test_polish.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-iycg47dm/godot",
+      "--script",
+      "res://tests/sports/progression_test.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-iycg47dm/godot",
+      "--script",
+      "res://tests/sports/soccer_test.gd"
+    ],
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1280x800x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "node",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-soccer-play/server.mjs",
+      "/tmp/opencode/soccer-play-iycg47dm",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-soccer-play/evidence/5e2e60d8-ca26-41e5-8b36-3857b9916291/960x640/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/soccer-play-iycg47dm/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "960x640",
+      "--script",
+      "res://tests/sports/soccer_observe.gd",
+      "--",
+      "--map=aurora-stadium",
+      "--endpoint=ws://127.0.0.1:39515",
+      "--time-limit=180",
+      "--round-target=15",
+      "--progression-out=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-soccer-play/evidence/5e2e60d8-ca26-41e5-8b36-3857b9916291/960x640",
+      "--soccer-attempt=0"
+    ],
+    [
+      "node",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-soccer-play/server.mjs",
+      "/tmp/opencode/soccer-play-iycg47dm",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-soccer-play/evidence/5e2e60d8-ca26-41e5-8b36-3857b9916291/1280x800/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/soccer-play-iycg47dm/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/sports/soccer_observe.gd",
+      "--",
+      "--map=aurora-stadium",
+      "--endpoint=ws://127.0.0.1:41855",
+      "--time-limit=180",
+      "--round-target=15",
+      "--progression-out=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-soccer-play/evidence/5e2e60d8-ca26-41e5-8b36-3857b9916291/1280x800",
+      "--soccer-attempt=0"
+    ]
+  ],
+  "cases": [
+    {
+      "resolution": "960x640",
+      "outcome": {
+        "ack": 153,
+        "attempt": 0,
+        "captures": {
+          "countdown": true,
+          "end": true,
+          "guidance": true
+        },
+        "elapsed": 4.033,
+        "goals": [],
+        "local_goal": false,
+        "recoveries": 0,
+        "seq": 211,
+        "wallBound": 175
+      },
+      "sourceGoals": [],
+      "provenLocalGoals": [],
+      "inputReceipts": 155,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    },
+    {
+      "resolution": "1280x800",
+      "outcome": {
+        "ack": 125,
+        "attempt": 0,
+        "captures": {
+          "countdown": true,
+          "end": true,
+          "guidance": true
+        },
+        "elapsed": 3.867,
+        "goals": [],
+        "local_goal": false,
+        "recoveries": 0,
+        "seq": 206,
+        "wallBound": 175
+      },
+      "sourceGoals": [],
+      "provenLocalGoals": [],
+      "inputReceipts": 127,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    }
+  ],
+  "hashManifestSHA256": "122eaa909feb5aa114c93f755e66f5801d1171f83561c09c6b429ca1919fa49b",
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}
