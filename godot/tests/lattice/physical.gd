@@ -130,7 +130,7 @@ func run() -> void:
 		check(not board.confirm_spend.button_pressed and board.spend_button.disabled, "purchase authorization consumed")
 		observed("purchase-confirmed")
 	else:
-		check(board.confirm_spend.disabled and board.spend_button.disabled, "co-op economy disabled")
+		check(board.confirm_spend.disabled and board.spend_button.disabled, "co-op recruitment disabled during initial deployment")
 	await create_timer(0.8).timeout
 	check(root.get_visible_rect().encloses(board.history.get_global_rect()), "action receipts fully inside initial viewport without scroll")
 	check(root.get_visible_rect().encloses(board.resources.get_global_rect()), "resources inside viewport")

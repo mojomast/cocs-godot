@@ -1,0 +1,53 @@
+{
+  "base": "d498479",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "revision": "c982d25ca335da3983df48ea37f7602bf8ded1f2",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "options": {
+    "map": "asterion-relay",
+    "mode": "cocs-coop",
+    "size": "960x640",
+    "output": "/tmp/opencode/native-lattice-economy/port/native-lattice-economy/evidence/1790042899113625211/native-lattice-map-asterion-relay-cocs-coop-960x640"
+  },
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--audio-driver",
+    "Dummy",
+    "--path",
+    "godot",
+    "--resolution",
+    "960x640",
+    "--script",
+    "res://tests/lattice/map_view_physical.gd",
+    "res://lattice/board.tscn",
+    "--",
+    "--endpoint=ws://127.0.0.1:41261",
+    "--map=asterion-relay",
+    "--mode=cocs-coop",
+    "--physical-output=/tmp/opencode/native-lattice-economy/port/native-lattice-economy/evidence/1790042899113625211/native-lattice-map-asterion-relay-cocs-coop-960x640"
+  ],
+  "port": 41261,
+  "display": ":100",
+  "serverOptions": {
+    "historyPath": null,
+    "progressionPath": null
+  },
+  "simulation": "defaults: tickDt=1/60; tickMs=1000/60; snapshotHz unmodified",
+  "hashes": {
+    "game/protocol.mjs": "362716c6b5ba222a64a76580efae1513c65eededd5a33116ff53974bf07a7fdb",
+    "game/cocs-intel.mjs": "1be460752165e06e84aaece3ef539722591d576e4d77f5a4683a28d2a2ee5de0",
+    "game/cocs.mjs": "a1e0f803f396b7e12ed2b09757301bd6505d11b6bc84a0166ce7f572e88cc258",
+    "game/cocs-coop.mjs": "00d94792020f20c4168e92147fc652d52dde3202a59d273b91b38fcb73a4007a",
+    "game/cocs-orders.mjs": "47ea48c6ae026378caa90a27e703982ec62313624d225cc350f684de55285d8a",
+    "game/destination-lattice-maps.mjs": "a7110177c2e4dca4b56f88f7e0d768b96df935661e0d4dfe87ba2970be8b1966",
+    "server/game-server.mjs": "06e79c72d0530abf5256b803a19fbfb00582892579f27f42eae871cc28fb98b0",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "godot/lattice/transport.gd": "d914d981c792362896f9bc6ae7480d40e754f74e337c721cab606b6c041eb783",
+    "godot/lattice/board.gd": "862d9241b98b8d37e4e52fac828cc866b52a2b69daf68c0677057dbaefebc103",
+    "godot/lattice/map_view.gd": "ee2f2752c362be7617d08ce9c4be033c723252b8d1324fa1244c3f2b042c3fdd",
+    "godot/lattice/board.tscn": "44fd30ffe80b911ec8da36c0efdff2b3ab8d979525623867b81bc844e5345eb4",
+    "godot/tests/lattice/physical.gd": "474ddab61e05beda060712b6a14b0eb8d77406585a272f28ff3ec0f1fee6ce06",
+    "godot/tests/lattice/map_view_physical.gd": "e538d2dcc4c72a6b64660546d653b82c34d01f3f6b18bf49eb37dcb7ce53585b",
+    "port/native-lattice-map/run.mjs": "0f8c64e1ec13307c281da2883405bc7efdb698a8358902beb761b205d78e2021"
+  }
+}

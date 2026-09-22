@@ -96,7 +96,7 @@ func _initialize() -> void:
 	check(not fake.action_gate("hold", "front-0").is_empty(), "unknown co-op membership disabled")
 	fake.projection.command.slices = [{"id":0}]
 	check(fake.action_gate("hold", "front-0").is_empty(), "known ordinary co-op membership enables HOLD")
-	check(not fake.action_gate("fighter").is_empty(), "co-op economy intentionally disabled")
+	check(not fake.action_gate("fighter").is_empty(), "co-op cannot reuse the PvP Fighter purchase")
 	fake.mode = "cocs"
 	for i: int in range(32): fake.actions.append({"kind":"hold", "status":"pending (server accepted)"})
 	check(not fake.activate("fighter").is_empty(), "bounded history retains unresolved actions")

@@ -1,0 +1,42 @@
+{
+  "ports": [
+    {
+      "port": 35591,
+      "closed": true
+    },
+    {
+      "port": 36481,
+      "closed": true
+    },
+    {
+      "port": 37135,
+      "closed": true
+    },
+    {
+      "port": 37439,
+      "closed": true
+    },
+    {
+      "port": 38403,
+      "closed": true
+    },
+    {
+      "port": 39495,
+      "closed": true
+    },
+    {
+      "port": 41261,
+      "closed": true
+    },
+    {
+      "port": 42887,
+      "closed": true
+    },
+    {
+      "port": 46207,
+      "closed": true
+    }
+  ],
+  "ownedRuntimeChildren": [],
+  "passed": true
+}

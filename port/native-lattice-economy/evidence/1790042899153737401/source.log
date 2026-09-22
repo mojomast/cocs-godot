@@ -1,0 +1,377 @@
+TAP version 13
+# Subtest: a friendly role ability targets every team-0 actor in radius, not just actor 0
+ok 1 - a friendly role ability targets every team-0 actor in radius, not just actor 0
+  ---
+  duration_ms: 171.886569
+  type: 'test'
+  ...
+# Subtest: PRIME targets owned economy nodes and resolves through the role action
+ok 2 - PRIME targets owned economy nodes and resolves through the role action
+  ---
+  duration_ms: 18.757964
+  type: 'test'
+  ...
+# Subtest: the prime completes after 8 s and pays +50% FLUX and a faster capture
+ok 3 - the prime completes after 8 s and pays +50% FLUX and a faster capture
+  ---
+  duration_ms: 315.769165
+  type: 'test'
+  ...
+# Subtest: the per-player slice cap, executor lease and THREADS gate two humans
+ok 4 - the per-player slice cap, executor lease and THREADS gate two humans
+  ---
+  duration_ms: 27.803115
+  type: 'test'
+  ...
+# Subtest: no humans falls back to the duty Chief and auto-spend; a human seat disables it
+ok 5 - no humans falls back to the duty Chief and auto-spend; a human seat disables it
+  ---
+  duration_ms: 23.682524
+  type: 'test'
+  ...
+# Subtest: the between-wave spend window applies the same slice/executor gates as orders
+ok 6 - the between-wave spend window applies the same slice/executor gates as orders
+  ---
+  duration_ms: 22.648514
+  type: 'test'
+  ...
+# Subtest: terminals expose HACK/DEPLOY/VAULT/SABOTAGE lifecycles and a snapshot
+ok 7 - terminals expose HACK/DEPLOY/VAULT/SABOTAGE lifecycles and a snapshot
+  ---
+  duration_ms: 369.238496
+  type: 'test'
+  ...
+# Subtest: the HACK window doubles capture progress and expires on the tick clock
+ok 8 - the HACK window doubles capture progress and expires on the tick clock
+  ---
+  duration_ms: 61.258906
+  type: 'test'
+  ...
+# Subtest: NO BREACH derives its gate from hq-0 adjacency, not a hardcoded id
+ok 9 - NO BREACH derives its gate from hq-0 adjacency, not a hardcoded id
+  ---
+  duration_ms: 24.443501
+  type: 'test'
+  ...
+# Subtest: roles spawn with the right envelope and register on the subagent roster
+ok 10 - roles spawn with the right envelope and register on the subagent roster
+  ---
+  duration_ms: 23.522444
+  type: 'test'
+  ...
+# Subtest: REPAIR also restores a cut terminal and a destroyed depot loaner
+ok 11 - REPAIR also restores a cut terminal and a destroyed depot loaner
+  ---
+  duration_ms: 22.573072
+  type: 'test'
+  ...
+# Subtest: D3/D4 ship their published bands and tuned plans
+ok 12 - D3/D4 ship their published bands and tuned plans
+  ---
+  duration_ms: 0.251863
+  type: 'test'
+  ...
+# Subtest: D3/D4 denial cuts a team link and the hardened front resists a recapture
+ok 13 - D3/D4 denial cuts a team link and the hardened front resists a recapture
+  ---
+  duration_ms: 22.10256
+  type: 'test'
+  ...
+# Subtest: the engine order/spend path enforces the gates end to end
+ok 14 - the engine order/spend path enforces the gates end to end
+  ---
+  duration_ms: 46.409064
+  type: 'test'
+  ...
+# Subtest: the D1-D4 gate table reports each tier band and flags out-of-band tiers
+ok 15 - the D1-D4 gate table reports each tier band and flags out-of-band tiers
+  ---
+  duration_ms: 2.762713
+  type: 'test'
+  ...
+# Subtest: D1-D4 sampled win rates sit inside their published bands
+ok 16 - D1-D4 sampled win rates sit inside their published bands # SKIP
+  ---
+  duration_ms: 0.068739
+  type: 'test'
+  ...
+# Subtest: O1c terminals/roles/command stay out of PvPvE `cocs` snapshots
+ok 17 - O1c terminals/roles/command stay out of PvPvE `cocs` snapshots
+  ---
+  duration_ms: 192.088592
+  type: 'test'
+  ...
+# Subtest: the co-op snapshot feeds the terminal/role UI views end to end
+ok 18 - the co-op snapshot feeds the terminal/role UI views end to end
+  ---
+  duration_ms: 23.351914
+  type: 'test'
+  ...
+# Subtest: cocsPurchaseView is mode- and team-isolated
+ok 19 - cocsPurchaseView is mode- and team-isolated
+  ---
+  duration_ms: 0.765867
+  type: 'test'
+  ...
+# Subtest: the 8v8 board offers one REINFORCE per legal role plus SCAN with a real target
+ok 20 - the 8v8 board offers one REINFORCE per legal role plus SCAN with a real target
+  ---
+  duration_ms: 6.875931
+  type: 'test'
+  ...
+# Subtest: the rung, THREADS and FLUX gates disable the cards with one named reason each
+ok 21 - the rung, THREADS and FLUX gates disable the cards with one named reason each
+  ---
+  duration_ms: 0.712026
+  type: 'test'
+  ...
+# Subtest: spectators get no purchase surface at all
+ok 22 - spectators get no purchase surface at all
+  ---
+  duration_ms: 0.215154
+  type: 'test'
+  ...
+# Subtest: cocsEconomyView exposes NEGLECT as a word, a number and the passive multiplier
+ok 23 - cocsEconomyView exposes NEGLECT as a word, a number and the passive multiplier
+  ---
+  duration_ms: 0.658626
+  type: 'test'
+  ...
+# Subtest: the purchase dispatch rides net.economy with the role, target and card id
+ok 24 - the purchase dispatch rides net.economy with the role, target and card id
+  ---
+  duration_ms: 5.435728
+  type: 'test'
+  ...
+# Subtest: cocsCommandView folds the purchase view into the command bag and stays co-op dark
+ok 25 - cocsCommandView folds the purchase view into the command bag and stays co-op dark
+  ---
+  duration_ms: 2.210918
+  type: 'test'
+  ...
+# Subtest: command preflight refuses impossible routes and stances before claiming acceptance
+ok 26 - command preflight refuses impossible routes and stances before claiming acceptance
+  ---
+  duration_ms: 107.927567
+  type: 'test'
+  ...
+# Subtest: a successful mutiny completes even though seating clears its vote list
+ok 27 - a successful mutiny completes even though seating clears its vote list
+  ---
+  duration_ms: 0.606788
+  type: 'test'
+  ...
+# Subtest: two-client OPERATIONS harness applies orders, spends, terminals, commands and buys
+ok 28 - two-client OPERATIONS harness applies orders, spends, terminals, commands and buys
+  ---
+  duration_ms: 259.363365
+  type: 'test'
+  ...
+# Subtest: a seeded OPERATIONS run is byte-identical across repeats with a fixed input order
+ok 29 - a seeded OPERATIONS run is byte-identical across repeats with a fixed input order
+  ---
+  duration_ms: 433.32646
+  type: 'test'
+  ...
+# Subtest: server rejects unaffordable, wrong-team, no-thread and missing-executor actions
+ok 30 - server rejects unaffordable, wrong-team, no-thread and missing-executor actions
+  ---
+  duration_ms: 25.569525
+  type: 'test'
+  ...
+# Subtest: a flood of one action kind is rate limited per peer
+ok 31 - a flood of one action kind is rate limited per peer
+  ---
+  duration_ms: 9.043578
+  type: 'test'
+  ...
+# Subtest: a reconnect resends a full snapshot including cocs command state and cards
+ok 32 - a reconnect resends a full snapshot including cocs command state and cards
+  ---
+  duration_ms: 12.325275
+  type: 'test'
+  ...
+# Subtest: the player limit is mode-aware: COCS admits 32 while default modes keep 8
+ok 33 - the player limit is mode-aware: COCS admits 32 while default modes keep 8
+  ---
+  duration_ms: 0.912392
+  type: 'test'
+  ...
+# Subtest: the rate-only snapshot budget drops to 20 Hz above 32 actors
+ok 34 - the rate-only snapshot budget drops to 20 Hz above 32 actors
+  ---
+  duration_ms: 220.214994
+  type: 'test'
+  ...
+# Subtest: transport peer ids never enter the sim: a uuid peer still orders, spends and seats
+ok 35 - transport peer ids never enter the sim: a uuid peer still orders, spends and seats
+  ---
+  duration_ms: 13.630614
+  type: 'test'
+  ...
+# Subtest: a duplicate BUY charges once and survives presentation-card eviction
+ok 36 - a duplicate BUY charges once and survives presentation-card eviction
+  ---
+  duration_ms: 24.095047
+  type: 'test'
+  ...
+# Subtest: duplicate ORDER, ECONOMY, TERMINAL and COMMAND frames have one effect
+ok 37 - duplicate ORDER, ECONOMY, TERMINAL and COMMAND frames have one effect
+  ---
+  duration_ms: 23.741475
+  type: 'test'
+  ...
+# Subtest: a reused key with a different payload and a stale round are both refused
+ok 38 - a reused key with a different payload and a stale round are both refused
+  ---
+  duration_ms: 17.63101
+  type: 'test'
+  ...
+# Subtest: cross-actor identical raw cardIds get distinct scoped identities
+ok 39 - cross-actor identical raw cardIds get distinct scoped identities
+  ---
+  duration_ms: 22.372796
+  type: 'test'
+  ...
+# Subtest: a legacy cardId-only frame is idempotent within its round and seat
+ok 40 - a legacy cardId-only frame is idempotent within its round and seat
+  ---
+  duration_ms: 14.930192
+  type: 'test'
+  ...
+# Subtest: an accepted HOLD stays running until the task is replaced or expires
+ok 41 - an accepted HOLD stays running until the task is replaced or expires
+  ---
+  duration_ms: 24.185488
+  type: 'test'
+  ...
+# Subtest: a rematch mints a new round revision and drops the previous board and ledger
+ok 42 - a rematch mints a new round revision and drops the previous board and ledger
+  ---
+  duration_ms: 37.627879
+  type: 'test'
+  ...
+# Subtest: a same-round reconnect preserves cards and never reapplies a retry
+ok 43 - a same-round reconnect preserves cards and never reapplies a retry
+  ---
+  duration_ms: 11.292798
+  type: 'test'
+  ...
+# Subtest: the mapped cut action reaches a traversal device and settles its card
+ok 44 - the mapped cut action reaches a traversal device and settles its card
+  ---
+  duration_ms: 20.982118
+  type: 'test'
+  ...
+# Subtest: an accepted ATTACK completes when the sim retires its task on capture
+ok 45 - an accepted ATTACK completes when the sim retires its task on capture
+  ---
+  duration_ms: 19.173954
+  type: 'test'
+  ...
+# Subtest: an interrupted device channel ends the card with an interruption reason
+ok 46 - an interrupted device channel ends the card with an interruption reason
+  ---
+  duration_ms: 20.820183
+  type: 'test'
+  ...
+# Subtest: round end expires an accepted in-flight card
+ok 47 - round end expires an accepted in-flight card
+  ---
+  duration_ms: 19.883505
+  type: 'test'
+  ...
+# Subtest: dead, ended, disconnected and spectator requests all answer with a reason
+ok 48 - dead, ended, disconnected and spectator requests all answer with a reason
+  ---
+  duration_ms: 22.58809
+  type: 'test'
+  ...
+# Subtest: the OPERATIONS Puma buys through Room.buy and spawns its depot vehicle
+ok 49 - the OPERATIONS Puma buys through Room.buy and spawns its depot vehicle
+  ---
+  duration_ms: 18.085643
+  type: 'test'
+  ...
+# Subtest: duplicate Puma frames charge once and one live depot Puma blocks a fresh identity
+ok 50 - duplicate Puma frames charge once and one live depot Puma blocks a fresh identity
+  ---
+  duration_ms: 17.204419
+  type: 'test'
+  ...
+# Subtest: the room gates coopLaunch to OPERATIONS and effectless catalogue rows out of both modes
+ok 51 - the room gates coopLaunch to OPERATIONS and effectless catalogue rows out of both modes
+  ---
+  duration_ms: 34.863242
+  type: 'test'
+  ...
+# [cocs-visibility] team-0 egress before=1132638B (110.6 KiB/s, key 26.1 KiB, delta 3.5 KiB) after=985867B (96.3 KiB/s, key 24.1 KiB, delta 3.0 KiB)
+# Subtest: a team-1 peer cannot read team-0 private sections while shared fields still arrive
+ok 52 - a team-1 peer cannot read team-0 private sections while shared fields still arrive
+  ---
+  duration_ms: 160.989793
+  type: 'test'
+  ...
+# Subtest: a spectator receives shared truth only and can never be an oracle
+ok 53 - a spectator receives shared truth only and can never be an oracle
+  ---
+  duration_ms: 29.029366
+  type: 'test'
+  ...
+# Subtest: the OPERATIONS command board is team 0 only and redacted for spectators
+ok 54 - the OPERATIONS command board is team 0 only and redacted for spectators
+  ---
+  duration_ms: 16.87466
+  type: 'test'
+  ...
+# Subtest: team-private COCS events never cross teams; world events reach both
+ok 55 - team-private COCS events never cross teams; world events reach both
+  ---
+  duration_ms: 20.151889
+  type: 'test'
+  ...
+# Subtest: dominance and operations outcome are public to both peers and spectators
+ok 56 - dominance and operations outcome are public to both peers and spectators
+  ---
+  duration_ms: 21.61775
+  type: 'test'
+  ...
+# Subtest: both peers resolve the permitted objective stream through the shared beat adapter
+ok 57 - both peers resolve the permitted objective stream through the shared beat adapter
+  ---
+  duration_ms: 22.517578
+  type: 'test'
+  ...
+# Subtest: delta chains stay isolated per team, apply cleanly, and rebuild redacted states
+ok 58 - delta chains stay isolated per team, apply cleanly, and rebuild redacted states
+  ---
+  duration_ms: 327.069057
+  type: 'test'
+  ...
+# Subtest: the same seed and actions produce byte-identical per-team frame streams
+ok 59 - the same seed and actions produce byte-identical per-team frame streams
+  ---
+  duration_ms: 355.685367
+  type: 'test'
+  ...
+# Subtest: per-peer bandwidth drops after filtering (before vs after)
+ok 60 - per-peer bandwidth drops after filtering (before vs after)
+  ---
+  duration_ms: 631.400843
+  type: 'test'
+  ...
+# Subtest: offline/local and non-COCS rooms are byte-identical at the seam
+ok 61 - offline/local and non-COCS rooms are byte-identical at the seam
+  ---
+  duration_ms: 19.270616
+  type: 'test'
+  ...
+1..61
+# tests 61
+# suites 0
+# pass 60
+# fail 0
+# cancelled 0
+# skipped 1
+# todo 0
+# duration_ms 2446.59327

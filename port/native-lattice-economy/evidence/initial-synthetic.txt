@@ -1,0 +1,13 @@
+Initial direct synthetic invocation (before evidence wrapper existed):
+/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/lattice/economy.gd
+
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+LATTICE_ECONOMY_SYNTHETIC 86 checks, 0 failures
+WARNING: 1 RID of type "CanvasItem" was leaked.
+ERROR: 4 RID allocations of type 'PN13RendererDummy14TextureStorage12DummyTextureE' were leaked at exit.
+ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+Exit code 0, but NOT accepted because of resource errors.
+
+Cause: economy_help had a provisional Label.new(), overwritten by the real attached
+footer label. Fixed by declaring a typed Label without allocating the unused node.

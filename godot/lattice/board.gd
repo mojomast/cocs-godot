@@ -19,6 +19,8 @@ var resources := Label.new()
 var selection := Label.new()
 var history := Label.new()
 var notice := Label.new()
+var economy_help: Label
+var authorization_context := ""
 var phase := "idle"
 var phase_at := 0
 var selected := ""
@@ -123,7 +125,7 @@ func _ready() -> void:
 	label("ACTION RECEIPTS — queued ≠ accepted ≠ completed", column, 17)
 	history.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(history)
-	label("Co-op: HOLD where authorized; economy intentionally disabled. No hidden enemy wallets or movement inference.", column, 14)
+	economy_help = label("", column, 14)
 	add_child(client)
 	client.changed.connect(refresh)
 	client.lobby.connect(on_lobby)
@@ -181,7 +183,7 @@ func disconnect_session() -> void:
 func buy_fighter() -> void:
 	if not confirm_spend.button_pressed: return
 	confirm_spend.button_pressed = false
-	notice.text = client.activate("fighter")
+	notice.text = client.activate(client.purchase_kind())
 	refresh()
 
 func known(value: Variant) -> String:
@@ -225,7 +227,17 @@ func refresh() -> void:
 		nodes.set_item_tooltip(i, "Node %s • x %s / z %s" % [node.id, known(node.get("x")), known(node.get("z"))])
 	selection.text = "Selected: " + (selected if not selected.is_empty() else "none")
 	var hold_gate: String = client.action_gate("hold", selected)
-	var spend_gate: String = client.action_gate("fighter")
+	var spend_gate: String = client.action_gate(client.purchase_kind())
+	var command: Dictionary = client.dictionary(p.get("command"))
+	var recruitment: Dictionary = client.dictionary(p.get("recruitment"))
+	var authorization := "%s/%s/%s/%s/%s/%s/%s/%s" % [client.mode, client.revision, client.peer_id,
+		client.actor_id, p.get("team"), recruitment.get("wave"), command.get("executor"), command.get("leaseUntil")]
+	if authorization != authorization_context or not spend_gate.is_empty(): confirm_spend.set_pressed_no_signal(false)
+	authorization_context = authorization
+	var coop: bool = client.mode == "cocs-coop"
+	confirm_spend.text = "Authorize one %s FLUX purchase" % ("50" if coop else "12")
+	spend_button.text = "Co-op REINFORCE" if coop else "PvP Fighter"
+	economy_help.text = ("Co-op: Fighter + 1 THREAD • 50 team FLUX, no REQ. " if coop else "PvP: Fighter • 12 team FLUX. ") + (spend_gate if not spend_gate.is_empty() else "Authorize, then purchase once; the server decides.")
 	hold_button.disabled = not hold_gate.is_empty()
 	hold_button.tooltip_text = hold_gate
 	spend_button.disabled = not spend_gate.is_empty() or not confirm_spend.button_pressed
@@ -236,7 +248,7 @@ func refresh() -> void:
 	if not client.actions.is_empty():
 		var lines: PackedStringArray = []
 		for action: Dictionary in client.actions.slice(maxi(0, client.actions.size() - 6)):
-			lines.append("%s • %s • %s%s" % [action.cardId, action.kind, action.status, " — " + str(action.reason) if action.reason != null else ""])
+			lines.append("%s • %s • %s%s" % [action.cardId, action.kind, action.status, " — " + client.rejection_text(action.reason) if action.reason != null else ""])
 		history.text = "\n".join(lines)
 
 func _process(_delta: float) -> void:

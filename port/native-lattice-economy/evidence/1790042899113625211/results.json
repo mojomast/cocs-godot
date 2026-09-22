@@ -1,0 +1,104 @@
+[
+  {
+    "name": "native-lattice-map-asterion-relay-cocs-960x640",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-map/run.mjs",
+      "--map=asterion-relay",
+      "--mode=cocs",
+      "--size=960x640",
+      "--output=/tmp/opencode/native-lattice-economy/port/native-lattice-economy/evidence/1790042899113625211/native-lattice-map-asterion-relay-cocs-960x640"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "native-lattice-map-monsoon-foundry-cocs-1280x800",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-map/run.mjs",
+      "--map=monsoon-foundry",
+      "--mode=cocs",
+      "--size=1280x800",
+      "--output=/tmp/opencode/native-lattice-economy/port/native-lattice-economy/evidence/1790042899113625211/native-lattice-map-monsoon-foundry-cocs-1280x800"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "native-lattice-map-asterion-relay-cocs-coop-960x640",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-map/run.mjs",
+      "--map=asterion-relay",
+      "--mode=cocs-coop",
+      "--size=960x640",
+      "--output=/tmp/opencode/native-lattice-economy/port/native-lattice-economy/evidence/1790042899113625211/native-lattice-map-asterion-relay-cocs-coop-960x640"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "native-lattice-physical-asterion-relay-cocs-960x640",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-physical/run.mjs",
+      "--map=asterion-relay",
+      "--mode=cocs",
+      "--size=960x640",
+      "--output=/tmp/opencode/native-lattice-economy/port/native-lattice-economy/evidence/1790042899113625211/native-lattice-physical-asterion-relay-cocs-960x640"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "native-lattice-physical-monsoon-foundry-cocs-1280x800",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-physical/run.mjs",
+      "--map=monsoon-foundry",
+      "--mode=cocs",
+      "--size=1280x800",
+      "--output=/tmp/opencode/native-lattice-economy/port/native-lattice-economy/evidence/1790042899113625211/native-lattice-physical-monsoon-foundry-cocs-1280x800"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "native-lattice-physical-asterion-relay-cocs-coop-960x640",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-physical/run.mjs",
+      "--map=asterion-relay",
+      "--mode=cocs-coop",
+      "--size=960x640",
+      "--output=/tmp/opencode/native-lattice-economy/port/native-lattice-economy/evidence/1790042899113625211/native-lattice-physical-asterion-relay-cocs-coop-960x640"
+    ],
+    "exit": 0,
+    "passed": true
+  }
+]

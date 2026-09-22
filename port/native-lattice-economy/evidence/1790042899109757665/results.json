@@ -1,0 +1,34 @@
+[
+  {
+    "name": "economy-asterion-relay-960x640",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-economy/run.mjs",
+      "--map=asterion-relay",
+      "--size=960x640",
+      "--output=/tmp/opencode/native-lattice-economy/port/native-lattice-economy/evidence/1790042899109757665/economy-asterion-relay-960x640"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "economy-monsoon-foundry-960x640",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-economy/run.mjs",
+      "--map=monsoon-foundry",
+      "--size=960x640",
+      "--output=/tmp/opencode/native-lattice-economy/port/native-lattice-economy/evidence/1790042899109757665/economy-monsoon-foundry-960x640"
+    ],
+    "exit": 0,
+    "passed": true
+  }
+]

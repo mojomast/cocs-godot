@@ -1,0 +1,52 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PHYSICAL {"event":"check","message":"actual board scene","ms":9,"ok":true}
+PHYSICAL {"event":"check","message":"no smoke activation; purchase disabled initially","ms":227,"ok":true}
+PHYSICAL {"control":"Connect / start","event":"mouse","ms":227,"x":79.5,"y":150.5}
+PHYSICAL {"event":"check","message":"Connect reaches recipient projection","ms":507,"ok":true}
+PHYSICAL {"actions":[],"actor":0,"event":"connected","flux":120.05,"gate":"Wait for the between-wave recruitment window","map":"monsoon-foundry","ms":507,"peer":1,"recruitment":{"open":false,"peer":1,"phase":"intermission","sink":{"affordable":true,"available":true,"cost":50.0,"enabled":false},"spawned":0.0,"wave":0.0},"req":0.0,"round":1,"spent":0.0}
+PHYSICAL {"control":"List","event":"mouse","ms":507,"x":908.5,"y":251.5}
+PHYSICAL {"code":4194322,"event":"key","ms":598}
+PHYSICAL {"code":4194322,"event":"key","ms":608}
+PHYSICAL {"code":4194309,"event":"key","ms":614}
+PHYSICAL {"event":"check","message":"physical Map choice","ms":647,"ok":true}
+PHYSICAL {"event":"check","message":"recipient frontier on map","ms":647,"ok":true}
+PHYSICAL {"control":"front-0 marker","event":"mouse","ms":647,"x":293.0,"y":382.625}
+PHYSICAL {"code":4194320,"event":"key","ms":676}
+PHYSICAL {"event":"check","message":"map key changes selection","ms":684,"ok":true}
+PHYSICAL {"code":4194322,"event":"key","ms":684}
+PHYSICAL {"event":"check","message":"map and list share recipient selection","ms":689,"ok":true}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":689,"x":86.0,"y":513.5}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":698,"x":86.0,"y":513.5}
+PHYSICAL {"event":"check","message":"co-op HOLD still accepted exactly once","ms":732,"ok":true}
+PHYSICAL {"event":"check","message":"initial deployment is not a spend window","ms":732,"ok":true}
+PHYSICAL {"event":"check","message":"saved waiting-window","ms":1549,"ok":true}
+PHYSICAL {"event":"check","message":"natural between-wave window authorizes recruitment","ms":132497,"ok":true}
+PHYSICAL {"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":"ttl","roundRev":1,"status":"rejected","target":"front-0"}],"actor":0,"event":"before-purchase","flux":300.0,"gate":"","map":"monsoon-foundry","ms":132497,"peer":1,"recruitment":{"open":true,"peer":1,"phase":"intermission","sink":{"affordable":true,"available":true,"cost":50.0,"enabled":true},"spawned":0.0,"wave":1.0},"req":50.0,"round":1,"spent":28.0}
+PHYSICAL {"event":"check","message":"new window needs fresh explicit consent","ms":132497,"ok":true}
+PHYSICAL {"event":"check","message":"co-op label and 50 FLUX cost visible","ms":132498,"ok":true}
+PHYSICAL {"control":"Authorize one 50 FLUX purchase","event":"mouse","ms":132498,"x":297.0,"y":513.5}
+PHYSICAL {"event":"check","message":"mouse authorizes one purchase","ms":132545,"ok":true}
+PHYSICAL {"code":4194306,"event":"key","ms":132545}
+PHYSICAL {"event":"check","message":"Tab focuses co-op purchase","ms":132596,"ok":true}
+PHYSICAL {"code":4194309,"event":"key","ms":132596}
+PHYSICAL {"control":"Co-op REINFORCE","event":"mouse","ms":132641,"x":512.0,"y":513.5}
+PHYSICAL {"control":"Co-op REINFORCE","event":"mouse","ms":132673,"x":512.0,"y":513.5}
+PHYSICAL {"event":"check","message":"Enter and repeated clicks send exactly one purchase","ms":132726,"ok":true}
+PHYSICAL {"event":"check","message":"source done receipt confirms recruitment","ms":132726,"ok":true}
+PHYSICAL {"event":"check","message":"source cumulative spent increases exactly 50","ms":132726,"ok":true}
+PHYSICAL {"event":"check","message":"source spawned counter increases exactly one","ms":132726,"ok":true}
+PHYSICAL {"event":"check","message":"consent consumed after purchase","ms":132726,"ok":true}
+PHYSICAL {"event":"check","message":"both receipts inside viewport","ms":133557,"ok":true}
+PHYSICAL {"event":"check","message":"resources and purchase visible","ms":133557,"ok":true}
+PHYSICAL {"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":"ttl","roundRev":1,"status":"rejected","target":"front-0"},{"actionSeq":2,"cardId":"native-r1-p1-s2","kind":"reinforce","reason":null,"roundRev":1,"status":"confirmed","target":""}],"actor":0,"event":"purchase-confirmed","flux":257.496,"gate":"","map":"monsoon-foundry","ms":133557,"peer":1,"recruitment":{"open":true,"peer":1,"phase":"intermission","sink":{"affordable":true,"available":true,"cost":50.0,"enabled":true},"spawned":1.0,"wave":1.0},"req":50.0,"round":1,"spent":78.0}
+PHYSICAL {"event":"check","message":"saved economy-receipts","ms":133605,"ok":true}
+PHYSICAL {"control":"Disconnect","event":"mouse","ms":133606,"x":192.0,"y":150.5}
+PHYSICAL {"event":"check","message":"disconnect clears receipts and recipient map","ms":133724,"ok":true}
+PHYSICAL {"control":"Co-op REINFORCE","event":"mouse","ms":133724,"x":512.0,"y":539.5}
+PHYSICAL {"event":"check","message":"disconnected click cannot purchase","ms":133743,"ok":true}
+PHYSICAL {"event":"check","message":"saved economy-disconnected","ms":133792,"ok":true}
+PHYSICAL {"checks":26,"event":"result","failures":0,"input":"engine mouse and physical-key events; not OS input","ms":133793}
