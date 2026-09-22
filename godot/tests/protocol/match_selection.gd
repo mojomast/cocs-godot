@@ -15,6 +15,12 @@ func check(value: bool) -> void:
 	if not value:
 		failures += 1
 		push_error("Selection assertion " + str(checks))
+func popup_nodes(node: Node) -> int:
+	var count := 0
+	for child: Node in node.get_children(true):
+		if child is OptionButton or child is PopupMenu or child is Window: count += 1
+		count += popup_nodes(child)
+	return count
 func _initialize() -> void:
 	call_deferred("run")
 
@@ -50,6 +56,8 @@ func run() -> void:
 	root.add_child(menu)
 	menu.configure(catalog.entries, "verdant-reliquary", "instagib")
 	check(menu.map_choice.item_count == 9 and menu.selected_map() == "verdant-reliquary" and menu.selected_mode() == "instagib" and not menu.start.disabled)
+	check(popup_nodes(menu) == 0)
+	check(menu.has_method("dismiss") and not menu.dismissed)
 	menu.populate_modes("teamdeathmatch")
 	check(menu.selected_mode() == "teamdeathmatch" and not menu.start.disabled and "Friendly fire off" in menu.status.text)
 	check(menu.mode_choice.get_item_text(menu.mode_choice.selected) == "Team Deathmatch")
@@ -69,6 +77,7 @@ func run() -> void:
 	await process_frame
 	check(detached_menu.position.is_equal_approx(((root.get_visible_rect().size - detached_menu.size) * 0.5).max(Vector2(16, 16))))
 	check(root.size_changed.is_connected(detached_menu.center_panel))
+	check(detached_menu.size.y <= 620.0)
 	detached_menu.free()
 	var session := Session.new()
 	session.client.free()

@@ -18,6 +18,14 @@ func check_passive(node: Node) -> void:
 		assert(node.focus_mode == Control.FOCUS_NONE, "HUD cannot take keyboard focus")
 	for child: Node in node.get_children(): check_passive(child)
 
+func popup_windows(node: Node) -> int:
+	# Nothing in this surface may create an OptionButton/PopupMenu/popup Window.
+	var count := 0
+	for child: Node in node.get_children(true):
+		if child is OptionButton or child is PopupMenu or child is Window: count += 1
+		count += popup_windows(child)
+	return count
+
 func run() -> void:
 	var session := SessionScene.instantiate()
 	root.add_child(session)
@@ -31,8 +39,18 @@ func run() -> void:
 		assert(session.phase == -2 and session.setup_menu.visible and not hud.root.visible)
 		hud.refresh_status()
 		assert(session.setup_menu.visible and not hud.root.visible, "setup remains interactive")
+		# Popup-free, content-sized surface: the old OptionButton dropdowns and the
+		# first-wrap measurement defect both made this panel obstruct the view.
+		var setup: Variant = session.setup_menu
+		assert(popup_windows(setup) == 0, "setup creates no popup windows")
+		assert(setup.size.y <= 620.0, "setup stays content-sized")
+		setup.dismiss()
+		assert(setup.dismissed and not setup.body.visible and setup.hint.visible, "setup is dismissible")
+		setup.reopen()
+		assert(not setup.dismissed and setup.body.visible and not setup.hint.visible, "setup reopens")
 		session.start_selected_match("meridian-exchange", "deathmatch")
 		hud.refresh_status()
+		assert(not session.setup_menu.visible and popup_windows(setup) == 0, "setup cannot linger over the match")
 	if "--debug-hud" in OS.get_cmdline_user_args():
 		assert(not hud.root.visible and session.label.visible and session.selector.visible)
 		print("PORT_GAME_HUD_DEBUG_OK original_display=true")

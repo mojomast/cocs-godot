@@ -1,6 +1,8 @@
 extends SceneTree
 
 const Scoreboard = preload("res://ui/scoreboard.gd")
+const HordeScoreboard = preload("res://horde/scoreboard.gd")
+const GameHUD = preload("res://ui/game_hud.gd")
 const Client = preload("res://net/client.gd")
 var checks := 0
 
@@ -16,6 +18,14 @@ class SessionStub extends Node:
 			phase = 3)
 		client.results.connect(func(_frame: Dictionary) -> void: phase = 4)
 		client.connection_error.connect(func(_message: String) -> void: phase = -1)
+
+class HordeHost extends Node3D:
+	# Minimal product-shaped host: the Horde strip position and the shared GameHUD.
+	var horde_label := Label.new()
+	func _ready() -> void:
+		horde_label.position = Vector2(20, 190)
+		horde_label.size = Vector2(240, 78)
+		add_child(horde_label)
 
 func check(ok: bool, message: String) -> void:
 	checks += 1
@@ -107,6 +117,31 @@ func run() -> void:
 	session.client.connection_error.emit("synthetic disconnect")
 	check(not board.panel.visible and board.entries.is_empty(), "client disconnect clears scoreboard")
 	check(passive_controls(board), "all overlay controls ignore mouse and keyboard focus")
+	# Roster wording is derived from the wire roster, never from the actor count
+	# alone: bots and Horde NPCs must not be reported as players.
+	board.apply_state({"actors":[{"id":0,"name":"Human","frags":1,"deaths":0},
+		{"id":1,"name":"Bot","frags":0,"deaths":1,"bot":{"state":"roam"}},
+		{"id":2,"name":"Bot","frags":0,"deaths":2,"bot":{"state":"roam"}}]}, 0)
+	board.render()
+	check(board.summary.text.ends_with("3 combatants  ·  1 player  ·  2 bots"), "bot rosters are named, not counted as players")
+	board.apply_state({"actors":[{"id":0,"name":"Human","frags":1,"deaths":0},
+		{"id":1,"name":"Husk","frags":0,"deaths":1,"isNpc":true},
+		{"id":2,"name":"Spitter","frags":0,"deaths":2,"isNpc":true}]}, 0)
+	board.render()
+	check(board.summary.text.ends_with("3 actors  ·  1 player  ·  2 enemies"), "NPC rosters are named as enemies")
+	board.apply_state({"actors":[{"id":0,"name":"Human","frags":1,"deaths":0}]}, 0)
+	board.render()
+	check(board.summary.text.ends_with("1 player") and not "players" in board.summary.text, "a single human keeps singular wording")
+	board.apply_state({"actors":[{"id":0,"name":"One"},{"id":1,"name":"Two"}]}, 0)
+	board.render()
+	check(board.summary.text.ends_with("2 players"), "all-human rosters keep the legacy player wording")
+	# The Horde specialization must stay clear of the real shared-HUD panels at
+	# both target resolutions; measured from the live control rects, not by eye.
+	for size: Vector2i in [Vector2i(960, 640), Vector2i(1280, 800)]:
+		var geometry: Dictionary = await horde_geometry(size)
+		check(not geometry.panel.intersects(geometry.vitals), "horde board clear of the vitals at %d" % size.x)
+		check(not geometry.panel.intersects(geometry.weapon), "horde board clear of the weapon panel at %d" % size.x)
+		check(geometry.viewport.encloses(geometry.panel), "horde board inside the viewport at %d" % size.x)
 	# Replay stored authoritative snapshots: separately identified from synthetic cases.
 	var capture: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/protocol/captured.json"))
 	var replayed := 0
@@ -125,3 +160,34 @@ func passive_controls(node: Node) -> bool:
 	for child: Node in node.get_children():
 		if not passive_controls(child): return false
 	return true
+
+func horde_geometry(size: Vector2i) -> Dictionary:
+	# Actual Horde board + actual shared GameHUD layout at the requested size.
+	root.size = size
+	var host := HordeHost.new()
+	var hud := GameHUD.new()
+	hud.name = "GameHUD"
+	host.add_child(hud)
+	var board := HordeScoreboard.new()
+	host.add_child(board)
+	root.add_child(host)
+	await process_frame
+	await process_frame
+	hud.resize()
+	var actors: Array = [{"id":0,"name":"Operator","frags":3,"deaths":0}]
+	for i: int in range(12):
+		actors.append({"id":i + 1,"name":"Husk","frags":0,"deaths":1,"isNpc":true,"npcType":"husk"})
+	board.apply_state({"mapName":"Meridian Exchange","modeName":"Horde","time":83.9,
+		"config":{"mode":"horde"},"actors":actors}, 0)
+	board.tab_held = true
+	board.refresh_visibility()
+	board.resize()
+	await process_frame
+	await process_frame
+	var result := {"panel":board.panel.get_global_rect(), "vitals":hud.vitals.get_global_rect(),
+		"weapon":hud.weapon_panel.get_global_rect(), "viewport":Rect2(Vector2.ZERO, Vector2(size)),
+		"page_size":board.page_size, "footer":board.footer.text}
+	root.remove_child(host)
+	host.free()
+	await process_frame
+	return result

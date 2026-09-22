@@ -1,0 +1,15 @@
+{
+  "normalRate": true,
+  "tickDt": 0.016666666666666666,
+  "tickMs": 16.666666666666668,
+  "observed": [
+    {
+      "requestedMap": "verdant-reliquary",
+      "requestedMode": "instagib",
+      "authorityMap": "verdant-reliquary",
+      "authorityMode": "instagib",
+      "actors": 3,
+      "snapshots": 74
+    }
+  ]
+}

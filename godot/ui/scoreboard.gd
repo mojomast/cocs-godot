@@ -158,6 +158,22 @@ static func team_label(value: Variant) -> String:
 		if value.to_lower() in ["1", "blue"]: return "Blue"
 	return plain(value, "—", 16)
 
+static func plural(count: int, singular: String, plural_word: String) -> String:
+	return "%d %s" % [count, singular if absi(count) == 1 else plural_word]
+
+static func roster_text(total: int, humans: int, bots: int, npcs: int) -> String:
+	# The wire roster is not the human roster: bots carry a `bot` object and Horde
+	# NPCs carry isNpc. Name each class that was actually counted so a bot or NPC
+	# row can never be read as a human player.
+	if npcs > 0:
+		var parts := PackedStringArray([plural(total, "actor", "actors"), plural(humans, "player", "players")])
+		if bots > 0: parts.append(plural(bots, "bot", "bots"))
+		parts.append(plural(npcs, "enemy", "enemies"))
+		return "  ·  ".join(parts)
+	if bots > 0:
+		return "%s  ·  %s  ·  %s" % [plural(total, "combatant", "combatants"), plural(humans, "player", "players"), plural(bots, "bot", "bots")]
+	return plural(total, "player", "players")
+
 static func team_totals(state: Dictionary) -> String:
 	var config: Variant = state.get("config")
 	# Source emits teamScores even in FFA. Only expose totals for the enabled team mode.
@@ -183,7 +199,9 @@ func apply_state(state: Dictionary, local_id: int, is_results: bool = false) -> 
 		next.append({"order":i, "player_name":plain(actor.get("name"), "Player %s" % (str(id) if id != null else "?")),
 			"local":id != null and local_id >= 0 and id == local_id, "team":team_text,
 			"frags":str(frags) if frags != null else "—", "deaths":str(deaths) if deaths != null else "—",
-			"frags_sort":frags if frags != null else 0, "deaths_sort":deaths if deaths != null else 0})
+			"frags_sort":frags if frags != null else 0, "deaths_sort":deaths if deaths != null else 0,
+			"npc":actor.get("isNpc") == true,
+			"bot":actor.get("isNpc") != true and actor.get("bot") != null})
 	next.sort_custom(ranked_before)
 	var config: Dictionary = state.get("config", {}) if state.get("config", {}) is Dictionary else {}
 	var next_map_mode := "%s  ·  %s" % [plain(state.get("mapName"), plain(state.get("mapId"), "Map unknown")), plain(state.get("modeName"), plain(config.get("mode"), "Mode unknown"))]
@@ -252,13 +270,19 @@ func build_ui() -> void:
 		row.node.hide()
 	stack.add_child(footer)
 
+func row_cell_widths() -> Array:
+	return [28, 0, 80, 58, 64]
+
+func row_separation() -> int:
+	return 12
+
 func make_row() -> Dictionary:
 	var box := HBoxContainer.new()
 	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	box.custom_minimum_size.y = ROW_HEIGHT
-	box.add_theme_constant_override("separation", 12)
+	box.add_theme_constant_override("separation", row_separation())
 	var cells: Array[Label] = []
-	for width: int in [28, 0, 80, 58, 64]:
+	for width: int in row_cell_widths():
 		var cell := label(15)
 		cell.custom_minimum_size.x = width
 		if width == 0: cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -272,33 +296,62 @@ func set_row(row: Dictionary, values: Array, color: Color) -> void:
 		row.cells[i].text = values[i]
 		row.cells[i].add_theme_color_override("font_color", color)
 
+func layout_top() -> float:
+	# Shared default: reserve the top 224 px for the diagnostic HUD, restart and error text.
+	return 224.0
+
+func layout_bottom() -> float:
+	# Shared default: 24 px viewport margin plus the historic 190 px panel/help budget.
+	return 214.0
+
+func layout_min_rows() -> int:
+	return 3
+
+func layout_width() -> float:
+	var viewport := get_viewport().get_visible_rect().size
+	return minf(760, viewport.x - 48)
+
+func layout_band() -> Rect2:
+	var viewport := get_viewport().get_visible_rect().size
+	return Rect2(Vector2(16, layout_top()), Vector2(viewport.x - 32, viewport.y - layout_bottom() - layout_top()))
+
+func panel_chrome() -> float:
+	# Fixed panel height with the visible rows removed. A specialist that must fit a
+	# measured band sizes its page from this real chrome instead of the constant.
+	var visible_rows := 0
+	for row: Dictionary in rows:
+		if row.node.visible: visible_rows += 1
+	return maxf(0.0, panel.get_combined_minimum_size().y - float(visible_rows) * ROW_HEIGHT)
+
 func resize() -> void:
 	var viewport := get_viewport().get_visible_rect().size
-	# Reserve the top 224 px for the existing diagnostic HUD and restart/error text.
 	var team_height := 0 if team_score_text.is_empty() else 28
-	page_size = clampi(int((viewport.y - 224 - 24 - 190 - team_height) / ROW_HEIGHT), 3, MAX_VISIBLE)
-	panel.size.x = minf(760, viewport.x - 48)
+	page_size = clampi(int((viewport.y - layout_top() - layout_bottom() - team_height) / ROW_HEIGHT), layout_min_rows(), MAX_VISIBLE)
+	panel.size.x = layout_width()
 	change_page(0)
 	dirty = true
 	position_panel()
 
 func position_panel() -> void:
 	var viewport := get_viewport().get_visible_rect().size
-	panel.position = Vector2((viewport.x - panel.size.x) / 2, maxf(224, (viewport.y - panel.size.y) / 2))
+	var band := layout_band()
+	panel.position = Vector2(band.position.x + (band.size.x - panel.size.x) / 2, maxf(layout_top(), (viewport.y - panel.size.y) / 2))
 
-func render() -> void:
-	title.text = "ROUND COMPLETE" if finished else "SCOREBOARD"
-	subtitle.text = map_mode
-	var round_text := "Round %d  ·  " % round_number if round_number > 0 else ""
-	summary.text = "%s%s  ·  %d players" % [round_text, clock_text, actor_count]
-	if not team_score_text.is_empty(): summary.text += "\n" + team_score_text
-	var first := page * page_size
-	for i: int in range(rows.size()):
-		var row: Dictionary = rows[i]
-		row.node.visible = i < page_size and first + i < entries.size()
-		if not row.node.visible: continue
-		var entry: Dictionary = entries[first + i]
-		set_row(row, [str(first + i + 1), entry.player_name + ("  · YOU" if entry.local else ""), entry.team, entry.frags, entry.deaths], ACCENT if entry.local else INK)
+func roster_label() -> String:
+	var humans := 0
+	var bots := 0
+	var npcs := 0
+	for entry: Dictionary in entries:
+		if entry.npc: npcs += 1
+		elif entry.bot: bots += 1
+		else: humans += 1
+	return roster_text(entries.size(), humans, bots, npcs)
+
+func summary_text(prefix: String, roster: String) -> String:
+	# Shared board reads as one compact line; specialists may split it.
+	return "%s  ·  %s" % [prefix, roster]
+
+func help_text(first: int) -> String:
 	var help := "Release Tab to close"
 	if finished:
 		help = "Waiting for host to restart" if guest else "Enter: restart round"
@@ -308,7 +361,22 @@ func render() -> void:
 	if entries.size() > page_size:
 		help += "  ·  PgUp / PgDn: %d–%d of %d" % [first + 1, mini(first + page_size, entries.size()), entries.size()]
 	if actor_count > MAX_ACTORS: help += "  ·  Roster capped at 64"
-	footer.text = help
-	panel.size = Vector2(minf(760, get_viewport().get_visible_rect().size.x - 48), 0)
+	return help
+
+func render() -> void:
+	title.text = "ROUND COMPLETE" if finished else "SCOREBOARD"
+	subtitle.text = map_mode
+	var round_text := "Round %d  ·  " % round_number if round_number > 0 else ""
+	summary.text = summary_text(round_text + clock_text, roster_label())
+	if not team_score_text.is_empty(): summary.text += "\n" + team_score_text
+	var first := page * page_size
+	for i: int in range(rows.size()):
+		var row: Dictionary = rows[i]
+		row.node.visible = i < page_size and first + i < entries.size()
+		if not row.node.visible: continue
+		var entry: Dictionary = entries[first + i]
+		set_row(row, [str(first + i + 1), entry.player_name + ("  · YOU" if entry.local else ""), entry.team, entry.frags, entry.deaths], ACCENT if entry.local else INK)
+	footer.text = help_text(first)
+	panel.size = Vector2(layout_width(), 0)
 	position_panel()
 	dirty = false
