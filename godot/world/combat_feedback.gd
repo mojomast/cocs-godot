@@ -10,6 +10,10 @@ var launches: int = 0
 var local_launches: int = 0
 var explosions: int = 0
 const Projectiles = preload("res://world/projectiles.gd")
+const MothEffects = preload("res://graphics_fx/moth_world.gd")
+const MothLibrary = preload("res://moth/library.gd")
+var moth_effects: Node3D
+var public_actors: Array = []
 const MAX_BLASTS := 32
 const BLAST_SECONDS := 0.32
 var projectiles: Node3D
@@ -32,12 +36,16 @@ func _init() -> void:
 	blast_mesh.rings = 6
 
 func apply_state(state: Dictionary) -> void:
+	public_actors = state.get("actors", [])
 	if not is_instance_valid(projectiles):
 		projectiles = Projectiles.new()
 		add_child(projectiles)
 	projectiles.apply_state(state)
 
 func _ready() -> void:
+	moth_effects = MothEffects.new()
+	add_child(moth_effects)
+	moth_effects.configure(Callable(MothLibrary, "effect"))
 	audio_feedback = AudioFeedback.new()
 	add_child(audio_feedback)
 	audio_feedback.set_muted("--mute" in OS.get_cmdline_user_args())
@@ -56,6 +64,7 @@ func point(value: Variant) -> Variant:
 	return Vector3(value.x, value.y, value.z)
 
 func apply_events(items: Array, local_id: int) -> void:
+	if is_instance_valid(moth_effects): moth_effects.consume(items, local_id, public_actors)
 	if is_instance_valid(audio_feedback): audio_feedback.apply_events(items, local_id)
 	for value: Variant in items:
 		if not value is Dictionary: continue
@@ -153,6 +162,8 @@ func text() -> String:
 	return ("HIT CONFIRMED " if hit_remaining > 0 else "") + ("TAKING DAMAGE" if hurt_remaining > 0 else "")
 
 func clear_round() -> void:
+	public_actors = [] # Never mutate the snapshot-owned array.
+	if is_instance_valid(moth_effects): moth_effects.reset()
 	if is_instance_valid(projectiles): projectiles.clear_round()
 	while not blasts.is_empty(): remove_blast(0)
 	launches = 0

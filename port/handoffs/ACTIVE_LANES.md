@@ -90,6 +90,19 @@ owns shared runtime composition, package/CI hooks, integration review and releas
 | First-person weapon rig | `/tmp/opencode/cocs-graphics-viewmodels`, `graphics/viewmodels` | `tools/godot-weapons/`, `godot/first_person/`, `godot/tests/first_person/`, `port/native-first-person/` |
 | Map atmosphere/lighting | `/tmp/opencode/cocs-graphics-atmosphere`, `graphics/atmosphere` | `godot/graphics_atmosphere/`, `godot/tests/graphics_atmosphere/`, `port/native-atmosphere/` |
 | Source-event Moth effects | `/tmp/opencode/cocs-graphics-vfx`, `graphics/vfx` | `godot/graphics_fx/`, `godot/tests/graphics_fx/`, `port/native-moth-vfx/` |
+| New native showcase map | `/tmp/opencode/cocs-graphics-showcase`, `graphics/showcase` | `godot/showcase/`, `godot/tests/showcase/`, `port/native-showcase/` |
+| Aurora Basin map | `/tmp/opencode/cocs-graphics-aurora-map`, `graphics/aurora-map` | `godot/aurora_basin/`, matching tests and `port/native-aurora-basin/` |
+| Cinder Array map | `/tmp/opencode/cocs-graphics-cinder-map`, `graphics/cinder-map` | `godot/cinder_array/`, matching tests and `port/native-cinder-array/` |
+| Massive particle lab | `/tmp/opencode/cocs-graphics-particle-lab`, `graphics/particle-lab` | `godot/particle_lab/`, matching tests and `port/native-particle-lab/` |
+| Moth shader lab | `/tmp/opencode/cocs-graphics-shader-lab`, `graphics/shader-lab` | `godot/shader_lab/`, matching tests and `port/native-shader-lab/` |
+| Existing-map Moth scenery | `/tmp/opencode/cocs-graphics-moth-scenery`, `graphics/moth-scenery` | `godot/moth_scenery/`, matching tests and `port/native-moth-scenery/` |
+| Native-only launch routes | `/tmp/opencode/cocs-graphics-native-routes`, `graphics/native-routes` | Package/dev option and launcher modules, new native route tests, Graphics Showcase.cmd; lead retains build.py/verify.py |
+
+Initial lanes delivered and cherry-picked: Moth `606192a` → `a95f856`, world FX
+`6cd1643` → `8a9abce`, atmosphere `45f3d5c` → `7bfb473`, first person
+`8336be3` → `b9ad0e6`. Shared composition acceptance is in progress.
+The expanded maps/labs are additive native exploration scenes, independent of
+the locked nine-map source simulation. Lead owns `godot/exploration/walker.gd`.
 
 The existing source/baked assets are read-only. No generation service is needed.
 The first-person lane may read/export source weapon geometry, including weapon0;

@@ -123,7 +123,9 @@ func load_map(id: String) -> bool:
 		for index in [2, 1, 0]:
 			var vertex: Array = triangle.vertices[index]
 			surface.set_normal(Vector3(normal[0], normal[1], normal[2]))
-			surface.set_color(style.terrain_color(triangle).srgb_to_linear())
+			# Compatibility shader colors use the display-space semantic palette.
+			# Pre-linearizing the packed vertex color crushes dark terrain twice.
+			surface.set_color(style.terrain_color(triangle))
 			surface.set_uv(Vector2(priority, 0))
 			surface.add_vertex(Vector3(vertex[0], vertex[1], vertex[2]))
 			if casts_shadow:

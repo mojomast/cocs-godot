@@ -40,5 +40,34 @@ func inspect() -> void:
 		if not script is GDScript or not script.can_instantiate():
 			fail("Missing compiled script " + scene)
 			return
+	var moth = load("res://moth/library.gd")
+	var manifest: Dictionary = moth.manifest()
+	var planes := 0
+	for bucket: String in ["textures", "normals", "sky"]:
+		for key: String in manifest.get(bucket, {}):
+			var method := "texture" if bucket == "textures" else ("normal" if bucket == "normals" else "sky")
+			if not moth.call(method, key) is Texture2D:
+				fail("Missing Moth resource " + bucket + "/" + key)
+				return
+			planes += 1
+	for key: String in manifest.get("effects", {}):
+		var effect: Dictionary = moth.effect(key)
+		if effect.is_empty():
+			fail("Missing Moth effect " + key)
+			return
+		planes += effect.frames.size()
+	for key: String in manifest.get("materials", {}):
+		if moth.material_lut(key).is_empty():
+			fail("Missing Moth LUT " + key)
+			return
+		planes += 2
+	if planes != 101:
+		fail("Moth resource inventory mismatch")
+		return
+	for index in range(10):
+		if not load("res://first_person/generated/weapon-%d.glb" % index) is PackedScene:
+			fail("Missing first-person weapon " + str(index))
+			return
+	print("PACKAGE_GRAPHICS_OK moth_planes=101 first_person_weapons=10")
 	print("PACKAGE_INSPECT_OK ", JSON.stringify({"maps":MAPS, "scenes":SCENES.size(), "editor":OS.has_feature("editor"), "debug":OS.is_debug_build(), "assertion_ran":assertion_ran, "tests_in_pck":false, "probes_in_pck":false}))
 	quit(0)

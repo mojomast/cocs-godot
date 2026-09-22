@@ -3,6 +3,8 @@ extends "res://world/viewer.gd"
 const Client = preload("res://net/client.gd")
 const ControlMath = preload("res://world/control_math.gd")
 const WeaponSelection = preload("res://world/weapon_selection.gd")
+const FirstPersonBinding = preload("res://first_person/session_binding.gd")
+var first_person: Node
 var weapon_selection := WeaponSelection.new()
 const MatchSetup = preload("res://ui/match_setup.gd")
 var selected_mode: String = "deathmatch"
@@ -423,6 +425,11 @@ func on_snapshot(frame: Dictionary) -> void:
 	pickups.apply_state(frame.state)
 	combat.apply_state(frame.state)
 	presentation.apply_state(frame.state, client.actor_id)
+	if is_inside_tree() and not is_instance_valid(first_person):
+		first_person = FirstPersonBinding.new()
+		first_person.name = "FirstPerson"
+		add_child(first_person)
+		first_person.bind_session(self)
 	if client.spectating:
 		received_pose = false
 		pose_actor_id = -1

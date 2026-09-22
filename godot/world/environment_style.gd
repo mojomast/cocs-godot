@@ -1,6 +1,10 @@
 extends RefCounted
 
-# Native, texture-free art direction. Source geometry remains the gameplay contract.
+# Native art direction using the original baked Moth pixels. Source geometry
+# remains the gameplay contract; texture mapping never displaces surfaces.
+const MothSurfaces = preload("res://moth/surfaces.gd")
+const Moth = preload("res://moth/library.gd")
+const Atmosphere = preload("res://graphics_atmosphere/atmosphere.gd")
 # Palette order: masonry, dark metal, vegetation, horizon, sun.
 const PALETTES := {
 	"meridian-exchange": ["a9b6b5", "34444f", "44796d", "d2a997", "ffdbb5"],
@@ -14,52 +18,15 @@ const PALETTES := {
 	"aurora-stadium": ["a0b8c9", "34445f", "30695e", "586d8b", "d6e6ff"],
 }
 
-# World-space seams give large surfaces scale without textures, UV assumptions,
-# external assets, time-dependent effects, or Forward+-only features.
-const SURFACE_SHADER := """
-shader_type spatial;
-render_mode cull_disabled;
-uniform vec4 tint : source_color = vec4(1.0);
-uniform float seams = 0.12;
-uniform bool vertex_tint = false;
-varying vec3 world_position;
-varying vec3 world_normal;
-void vertex() {
-	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	world_normal = normalize(MODEL_NORMAL_MATRIX * NORMAL);
-}
-void fragment() {
-	if (!FRONT_FACING) { NORMAL = -NORMAL; }
-	vec3 n = abs(world_normal);
-	vec2 p = n.y > 0.65 ? world_position.xz : (n.x > n.z ? world_position.zy : world_position.xy);
-	vec2 tile = p / 3.0;
-	vec2 edge = min(fract(tile), 1.0 - fract(tile));
-	vec2 aa = max(fwidth(tile), vec2(0.001));
-	vec2 line = 1.0 - smoothstep(vec2(0.006), vec2(0.006) + aa, edge);
-	float joint = max(line.x, line.y);
-	float variation = fract(sin(dot(floor(tile), vec2(12.9898, 78.233))) * 43758.5453);
-	vec3 base = tint.rgb * (vertex_tint ? COLOR.rgb : vec3(1.0));
-	ALBEDO = base * (0.97 + variation * 0.06) * (1.0 - joint * seams);
-	ROUGHNESS = 0.87;
-	SPECULAR = 0.22;
-	// Presentation-only depth priority for coplanar authored support surfaces.
-	// No vertex displacement: collision/support coordinates stay exact.
-	DEPTH = FRAGCOORD.z - (vertex_tint ? UV.x * 0.000001 : 0.0);
-}
-"""
-
 var wall: Color
 var dark: Color
 var leaves: Color
 var accent: Color
 var ground: Color
-var shader := Shader.new()
 var materials: Dictionary = {}
 var detail_batches: Dictionary = {}
 var map_id: String
-var sky_material := ProceduralSkyMaterial.new()
-var sky := Sky.new()
-var env := Environment.new()
+var atmosphere := Atmosphere.new()
 
 func configure(map: Dictionary, environment: WorldEnvironment, sun: DirectionalLight3D) -> void:
 	map_id = map.id
@@ -69,47 +36,25 @@ func configure(map: Dictionary, environment: WorldEnvironment, sun: DirectionalL
 	leaves = Color(palette[2]).darkened(0.18)
 	accent = Color(map.color)
 	ground = Color(map.floorColor)
-	if shader.code.is_empty(): shader.code = SURFACE_SHADER
 	materials.clear()
 	detail_batches.clear()
-	var horizon := Color(palette[3])
-	var night: bool = map.sky == "night"
-	sky_material.sky_top_color = Color(map.background).lightened(0.06)
-	sky_material.sky_horizon_color = horizon
-	sky_material.ground_horizon_color = horizon
-	sky_material.ground_bottom_color = horizon.darkened(0.25)
-	sky_material.sky_curve = 0.18
-	sky_material.sun_angle_max = 4.0
-	sky.sky_material = sky_material
-	sky.radiance_size = Sky.RADIANCE_SIZE_128
-	env.background_mode = Environment.BG_SKY
-	env.sky = sky
-	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = horizon.lerp(Color.WHITE, 0.4)
-	env.ambient_light_energy = 0.5
-	env.ambient_light_sky_contribution = 0.0
-	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
-	env.fog_enabled = true
-	env.fog_light_color = horizon
-	env.fog_light_energy = 0.65
-	env.fog_density = 0.0025 if night else 0.002
-	env.fog_sky_affect = 0.12
-	environment.environment = env
-	sun.rotation_degrees = Vector3(-32 if map.sky == "dusk" else -48, -32, 0)
-	sun.light_color = Color(palette[4])
-	sun.light_energy = 0.35 if night else 0.5
-	sun.shadow_enabled = true
-	sun.directional_shadow_max_distance = 220
-	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
-	sun.shadow_bias = 0.1
-	sun.shadow_normal_bias = 1.0
+	atmosphere.configure(map, environment, sun, Moth.sky(Atmosphere.sky_name(map)))
 
-func surface_material(key: String, color: Color, seams: float = 0.12) -> ShaderMaterial:
+func surface_material(key: String, color: Color, _seams: float = 0.12) -> ShaderMaterial:
 	if not materials.has(key):
-		var mat := ShaderMaterial.new()
-		mat.shader = shader
-		mat.set_shader_parameter("tint", color)
-		mat.set_shader_parameter("seams", seams)
+		var texture_key := "weathered_concrete-worn"
+		match key:
+			"bark", "rock": texture_key = "rock-moss"
+			"equipment": texture_key = "riveted_armor-scorched" if map_id == "ember-crucible" else "metal"
+			"structure": texture_key = "brushed_metal"
+			"infield": texture_key = "grass"
+			"masonry":
+				if map_id == "sunscar-convoy": texture_key = "rough_stucco"
+				elif map_id in ["asterion-relay", "ion-speedway"]: texture_key = "hex_paneling-mottle"
+		var mat := MothSurfaces.create_surface(texture_key, color)
+		mat.set_shader_parameter("texture_strength", 0.5)
+		mat.set_shader_parameter("texture_saturation", 0.25)
+		mat.set_shader_parameter("repeat_scale", 0.35)
 		materials[key] = mat
 	return materials[key]
 
@@ -151,10 +96,23 @@ func terrain_color(triangle: Dictionary) -> Color:
 		"stone": return wall.darkened(0.17)
 	return ground
 
-func terrain_material(_kind: String = "concrete") -> Material:
-	var mat := surface_material("terrain", Color.WHITE, 0.10)
-	mat.set_shader_parameter("vertex_tint", true)
-	return mat
+func terrain_material(kind: String = "concrete") -> Material:
+	var key := "terrain/" + kind
+	if not materials.has(key):
+		var texture_key := "weathered_concrete"
+		match kind:
+			"snow", "ice": texture_key = "ice-cracked"
+			"grass": texture_key = "grass"
+			"sand", "dirt": texture_key = "sand"
+			"rock", "stone": texture_key = "rock-moss"
+			"ash": texture_key = "rough_stucco-weathered"
+			"metal": texture_key = "metal"
+		var mat := MothSurfaces.create_surface(texture_key, Color.WHITE, true)
+		mat.set_shader_parameter("texture_strength", 0.48)
+		mat.set_shader_parameter("texture_saturation", 0.2)
+		mat.set_shader_parameter("repeat_scale", 0.4)
+		materials[key] = mat
+	return materials[key]
 
 func detail_box(key: String, pos: Vector3, size: Vector3, rotation: float = 0.0) -> void:
 	if not detail_batches.has(key): detail_batches[key] = []
@@ -253,6 +211,7 @@ func decorate(map: Dictionary, parent: Node3D) -> void:
 			_: instances.material_override = solid_material("trim", dark)
 		instances.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		detail.add_child(instances)
+	atmosphere.decorate(parent)
 
 func line(a: Vector3, b: Vector3, width: float, key: String = "marking") -> void:
 	var delta := b - a
