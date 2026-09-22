@@ -39,7 +39,7 @@ world_fx.consume(items, client.actor_id, public_fx_actors)
 
 # At authoritative start / results / disconnect / teardown:
 world_fx.reset()
-public_fx_actors.clear()
+public_fx_actors = [] # Release our reference without mutating the public snapshot.
 ```
 
 For a library exposing static methods, pass its script resource as `moth_library`,

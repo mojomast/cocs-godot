@@ -44,6 +44,8 @@ commands = [
     ("objective-completion-evidence", ["node", "--test", "port/native-objective-completion/test.mjs"]),
     ("launcher-options", ["node", "--test", "tools/godot-dev/launch_options.test.mjs"]),
     ("package-options", ["node", "--test", "tools/godot-package/options.test.mjs"]),
+    ("native-graphics-options", ["node", "--test", "tools/godot-package/native_showcase_options.test.mjs", "tools/godot-dev/native_showcase_options.test.mjs"]),
+    ("native-graphics-ownership", ["node", "--test", "tools/godot-package/native_showcase_ownership.test.mjs", "tools/godot-dev/native_showcase_ownership.test.mjs"]),
     ("lobby-options", ["node", "--test", "tools/godot-package/lobby_options.test.mjs"]),
     ("lobby-ownership", ["node", "--test", "tools/godot-package/lobby_ownership.test.mjs"]),
     ("horde-closure", ["node", "--test", "tools/godot-package/horde_closure.test.mjs"]),

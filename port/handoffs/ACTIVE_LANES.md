@@ -104,6 +104,21 @@ Initial lanes delivered and cherry-picked: Moth `606192a` → `a95f856`, world F
 The expanded maps/labs are additive native exploration scenes, independent of
 the locked nine-map source simulation. Lead owns `godot/exploration/walker.gd`.
 
+Launcher delivery `ecd2592` integrated as `508c2fc`. Completed first-wave and
+launcher worktrees were removed after clean-status checks to reclaim temporary
+storage; branches, committed files and evidence remain. All active map/lab/scenery
+worktrees are retained. Two narrowly scoped follow-ups work in primary directly:
+
+- Combined-arms graphics agent: `godot/combined_arms/demo.gd`, optional new
+  `graphics.gd`, new `godot/tests/combined_arms/graphics.gd`, and
+  `port/native-combined-arms-graphics/` only.
+- Depth convention agent: `godot/moth/surface.gdshader` only if a real graphical
+  fixture proves the correction, new `godot/tests/graphics_depth/`, and
+  `port/native-graphics-depth/` only.
+
+These agents must commit only their exact owned paths; all other primary work
+and report files belong to the lead.
+
 The existing source/baked assets are read-only. No generation service is needed.
 The first-person lane may read/export source weapon geometry, including weapon0;
 it does not edit the separately reserved external pulse-rifle preview or assets.
