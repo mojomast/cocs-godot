@@ -4,6 +4,7 @@ extends Node3D
 const Factory = preload("res://shader_lab/factory.gd")
 const Interference = preload("res://combat_shields/interference.gdshader")
 const MAX_ACTORS := 32
+const MAX_OBSERVATIONS := 256 # CPU history is independent of the shell budget.
 const MAX_BURSTS := 16
 const EVENT_WINDOW := 2048
 const MAX_PENDING := 64
@@ -78,11 +79,12 @@ func set_quality(level: Variant) -> void:
 	# Shrinking actually releases nodes and factory registrations immediately.
 	while slots.size() > actor_limit():
 		var slot: Dictionary = slots.pop_back()
-		tracks.erase(slot.owner)
+		if tracks.has(slot.owner): tracks[slot.owner].slot = {}
 		_destroy_slot(slot)
 	while bursts.size() > burst_limit(): _destroy_slot(bursts.pop_back())
 	for slot: Dictionary in slots + bursts:
 		slot.material.set_shader_parameter("low_quality", quality == 0)
+	_render()
 
 func actor_limit() -> int: return 16 if quality == 0 else MAX_ACTORS
 func burst_limit() -> int: return 8 if quality == 0 else MAX_BURSTS
@@ -151,15 +153,42 @@ func _claim(id: int) -> Dictionary:
 		slots.append(slot)
 	return slot
 
-func _release(id: int) -> void:
+func _unassign(id: int) -> void:
 	var slot: Dictionary = tracks[id].slot
-	slot.owner = -1
-	slot.node.visible = false
+	if not slot.is_empty():
+		slot.owner = -1
+		slot.node.visible = false
+	tracks[id].slot = {}
+
+func _release(id: int) -> void:
+	_unassign(id)
 	tracks.erase(id)
 	for burst: Dictionary in bursts:
 		if burst.owner == id:
 			burst.until = -1.0
 			burst.node.visible = false
+
+func _priority(id: int, kind: String, pos: Vector3, alive: bool, seated: bool) -> Dictionary:
+	var visual: Variant = actor_visuals.get(id)
+	var visible_actor := true
+	if is_instance_valid(visual) and visual is Node3D:
+		pos = to_local(visual.global_position)
+		visible_actor = visual.is_visible_in_tree()
+	var eligible := alive and not seated and id != local_actor_id and not kind.is_empty() and visible_actor and not _near_camera(pos)
+	var distance := 0.0
+	var on_screen := true
+	if is_instance_valid(camera):
+		var world_position := to_global(pos)
+		distance = camera.global_position.distance_squared_to(world_position)
+		eligible = eligible and not camera.is_position_behind(world_position)
+		on_screen = camera.is_position_in_frustum(world_position)
+	return {"id":id, "position":pos, "eligible":eligible, "rank":(1 if kind == "armor energy" else 0) if eligible else 2, "on_screen":on_screen, "distance":distance}
+
+static func _priority_before(a: Dictionary, b: Dictionary) -> bool:
+	if a.rank != b.rank: return a.rank < b.rank
+	if a.on_screen != b.on_screen: return a.on_screen
+	if a.distance != b.distance: return a.distance < b.distance
+	return a.id < b.id
 
 func apply_state(state: Dictionary, local_id: int) -> void:
 	if state.get("over") == true:
@@ -176,8 +205,11 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 	map_id = next_map
 	local_actor_id = local_id
 	last_state = clock
+	if sphere == null: configure(camera)
 	var present := {}
-	# Validate before acquiring slots; capped storage even for hostile actor arrays.
+	var observations: Array[Dictionary] = []
+	# Sort a private list of references, never the authoritative actor array. CPU
+	# history has a separate generous bound; no mesh is needed to observe changes.
 	for actor: Variant in actors:
 		if not actor is Dictionary or not wire_id(actor.get("id")): continue
 		var pos: Variant = point(actor)
@@ -185,18 +217,30 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 		var id := int(actor.id)
 		if present.has(id): continue
 		present[id] = true
+		var height := clampf(number(actor.get("baseHeight"), 1.8), 0.8, 4.0)
+		var alive := number(actor.get("health")) > 0.0 and number(actor.get("dead")) <= 0.0
+		var candidate := _priority(id, protection_kind(actor), pos + Vector3.UP * height * 0.5, alive, actor.get("vehicleId") != null)
+		candidate.actor = actor
+		observations.append(candidate)
+	observations.sort_custom(_priority_before)
+	present.clear()
+	for candidate: Dictionary in observations.slice(0, MAX_OBSERVATIONS):
+		var actor: Dictionary = candidate.actor
+		var id: int = candidate.id
+		present[id] = true
 		if not tracks.has(id):
-			var slot := _claim(id)
-			if slot.is_empty(): continue
-			tracks[id] = {"slot": slot, "alive": false, "observed": false, "armor": 0.0, "previous_armor": 0.0, "health": 0.0, "grounded": false, "last_hit": -10.0, "last_break": -10.0, "last_phase": -10.0, "last_heal": -10.0}
+			tracks[id] = {"slot": {}, "alive": false, "observed": false, "armor": 0.0, "previous_armor": 0.0, "health": 0.0, "grounded": false, "last_hit": -10.0, "last_break": -10.0, "last_phase": -10.0, "last_heal": -10.0, "hit_direction":Vector3.FORWARD, "hit_direction_known":false}
 		var track: Dictionary = tracks[id]
 		var alive := number(actor.get("health")) > 0.0 and number(actor.get("dead")) <= 0.0
 		var height := clampf(number(actor.get("baseHeight"), 1.8), 0.8, 4.0)
-		var center: Vector3 = pos + Vector3.UP * height * 0.5
+		var center := Vector3(actor.x, actor.y, actor.z) + Vector3.UP * height * 0.5
 		track.position = center
 		track.scale = Vector3(height * 0.40, height * 0.61, height * 0.36)
 		track.yaw = number(actor.get("yaw"))
 		track.kind = protection_kind(actor)
+		track.seated = actor.get("vehicleId") != null
+		var npc: Variant = actor.get("npcShield")
+		track.arc_cos = cos(clampf(number(npc.get("arc"), 0.6), 0.05, PI)) if npc is Dictionary else 0.8
 		track.previous_armor = track.armor
 		track.armor = maxf(0.0, number(actor.get("armor")))
 		if alive and track.observed:
@@ -209,22 +253,22 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 		track.grounded = actor.get("grounded") == true
 		track.alive = alive
 		track.observed = true
-		var slot: Dictionary = track.slot
-		slot.node.position = center
-		slot.node.scale = track.scale
-		slot.node.rotation.y = track.yaw
-		slot.material.set_shader_parameter("style", 0.0)
-		slot.material.set_shader_parameter("opacity", 0.12 if track.kind == "armor energy" else 0.43)
-		slot.material.set_shader_parameter("accent", Color("ffcf7b") if track.kind in ["armor energy", "juggernaut shield"] else Color("65ecff"))
-		slot.material.set_shader_parameter("secondary", Color("a67cff"))
-		slot.material.set_shader_parameter("directional", 1.0 if track.kind == "directional damage reduction" else 0.0)
-		var npc: Variant = actor.get("npcShield")
-		slot.material.set_shader_parameter("arc_cos", cos(clampf(number(npc.get("arc"), 0.6), 0.05, PI)) if npc is Dictionary else 0.8)
-		track.seated = actor.get("vehicleId") != null
+		if not track.slot.is_empty(): _update_slot(track)
 	for id: int in tracks.keys():
 		if not present.has(id): _release(id)
 	_drain_pending()
 	_render()
+
+func _update_slot(track: Dictionary) -> void:
+	var slot: Dictionary = track.slot
+	slot.node.scale = track.scale
+	slot.node.rotation.y = track.yaw
+	slot.material.set_shader_parameter("style", 0.0)
+	slot.material.set_shader_parameter("opacity", 0.12 if track.kind == "armor energy" else 0.43)
+	slot.material.set_shader_parameter("accent", Color("ffcf7b") if track.kind in ["armor energy", "juggernaut shield"] else Color("65ecff"))
+	slot.material.set_shader_parameter("secondary", Color("a67cff"))
+	slot.material.set_shader_parameter("directional", 1.0 if track.kind == "directional damage reduction" else 0.0)
+	slot.material.set_shader_parameter("arc_cos", track.arc_cos)
 
 func apply_events(items: Array, local_id: int) -> void:
 	local_actor_id = local_id
@@ -269,8 +313,8 @@ func _event(event: Dictionary) -> void:
 				direction = tracks[int(event.source)].position - track.position
 				direction_known = direction.length_squared() >= 0.0001
 			if direction.length_squared() < 0.0001: direction = Vector3.FORWARD
-			track.slot.material.set_shader_parameter("hit_direction", direction.normalized().rotated(Vector3.UP, -track.yaw))
-			track.slot.material.set_shader_parameter("hit_direction_known", direction_known)
+			track.hit_direction = direction.normalized().rotated(Vector3.UP, -track.yaw)
+			track.hit_direction_known = direction_known
 			if not track.kind.is_empty() and id != local_actor_id: counters.ripples += 1
 			if event.get("shieldBreak") == true or (track.previous_armor > 0.0 and track.armor <= 0.0): _shatter(id, track)
 		"spawn": _phase(id, track, track.position)
@@ -341,15 +385,29 @@ func _near_camera(pos: Vector3) -> bool:
 	return is_instance_valid(camera) and camera.global_position.distance_squared_to(to_global(pos)) < 5.0
 
 func _render() -> void:
+	var candidates: Array[Dictionary] = []
 	for id: int in tracks:
 		var track: Dictionary = tracks[id]
-		var display_position: Vector3 = track.position
-		var visual: Variant = actor_visuals.get(id)
-		if is_instance_valid(visual) and visual is Node3D:
-			display_position = to_local(visual.global_position)
-		track.slot.node.position = display_position
-		track.slot.node.visible = not suspended and not finished and track.alive and not track.seated and id != local_actor_id and not track.kind.is_empty() and not _near_camera(display_position)
+		var candidate := _priority(id, track.kind, track.position, track.alive, track.seated)
+		if candidate.eligible and not suspended and not finished: candidates.append(candidate)
+	candidates.sort_custom(_priority_before)
+	var selected := {}
+	for candidate: Dictionary in candidates.slice(0, actor_limit()): selected[candidate.id] = candidate
+	# Release losers before claiming winners, so array order and last frame's
+	# owners cannot starve a newly eligible shield. Keep observation history.
+	for id: int in tracks:
+		if not selected.has(id): _unassign(id)
+	for id: int in selected:
+		var track: Dictionary = tracks[id]
+		if track.slot.is_empty():
+			track.slot = _claim(id)
+			if track.slot.is_empty(): continue
+			_update_slot(track)
+		track.slot.node.position = selected[id].position
+		track.slot.node.visible = true
 		track.slot.material.set_shader_parameter("hit_age", clampf(clock - track.last_hit, 0.0, 2.0))
+		track.slot.material.set_shader_parameter("hit_direction", track.hit_direction)
+		track.slot.material.set_shader_parameter("hit_direction_known", track.hit_direction_known)
 	for slot: Dictionary in bursts:
 		var owner_alive: bool = tracks.has(slot.owner) and tracks[slot.owner].alive and not tracks[slot.owner].seated
 		var active: bool = owner_alive and not suspended and not finished and slot.until > clock and slot.owner != local_actor_id and not _near_camera(slot.origin)
@@ -375,7 +433,7 @@ func debug_state() -> Dictionary:
 	var kinds := {}
 	for id: int in tracks:
 		kinds[id] = tracks[id].kind
-		if tracks[id].slot.node.visible: visible_shells += 1
+		if not tracks[id].slot.is_empty() and tracks[id].slot.node.visible: visible_shells += 1
 	for slot: Dictionary in bursts:
 		if slot.node.visible: active_bursts += 1
-	return {"actors": tracks.size(), "slots": slots.size(), "pool": bursts.size(), "visible_shells": visible_shells, "active_bursts": active_bursts, "materials": slots.size() + bursts.size(), "seen": seen.size(), "pending": pending.size(), "clock": clock, "kinds": kinds, "counters": counters.duplicate(), "quality": quality}
+	return {"actors": tracks.size(), "observation_limit":MAX_OBSERVATIONS, "slots": slots.size(), "pool": bursts.size(), "visible_shells": visible_shells, "active_bursts": active_bursts, "materials": slots.size() + bursts.size(), "seen": seen.size(), "pending": pending.size(), "clock": clock, "kinds": kinds, "counters": counters.duplicate(), "quality": quality}

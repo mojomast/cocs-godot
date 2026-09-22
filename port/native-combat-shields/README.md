@@ -6,6 +6,11 @@ Owned changes are confined to `godot/combat_shields/`,
 The source simulation, network adapters, maps, and existing presentations are
 read-only in this contribution. Lead session owns attaching the controller.
 
+**SHIELD-CAP-ORDER P2 fixed:** actor observation is now independent of render-slot
+ownership. The sole protected actor renders after either a 16-actor Low or
+32-actor High unprotected prefix, in either array order, with just one material.
+See [capacity fix, independent re-checks and new evidence](CAPACITY-FIX.md).
+
 ## Exact hooks
 
 ```gdscript
@@ -146,6 +151,16 @@ showcase static prop's opaque dissolve material on gameplay bodies.
 - High: 32 actor slots + 16 pooled transient slots, max 48 independent materials.
   Low: 16 + 8, max 24; fewer sphere triangles, fewer dash echoes, skips expensive
   triplanar Moth field/normal/LUT/motif work in the fragment shader.
+- Up to 256 CPU-only actor observations are retained independently of both
+  quality budgets. `tracks[id].slot` can be empty; `debug_state().actors` counts
+  observations, while `slots` counts allocated shell nodes. Only eligible
+  remote actors claim shell slots. Allocation ranks real protection ahead of
+  ordinary armor, then in-frustum centers, camera distance, and numeric ID.
+  Local, dead, seated, hidden-bound-visual, camera-adjacent and behind-camera
+  actors reserve no shell slots. Source arrays are never sorted in place.
+- Slots can be recycled without resetting history. Quality downsizing only
+  evicts render ownership; armor breaks, health recovery and dead-to-alive
+  transitions remain observed for actors outside the material budget.
 - Geometry is shared. Independent materials avoid one actor's hit affecting all
   actors. Pool exhaustion drops visual bursts; it never allocates above budget.
 - Death, despawn, stale state, focus, results and reset remove/hide effects.

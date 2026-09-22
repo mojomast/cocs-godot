@@ -16,6 +16,7 @@ const run=(label,command,args)=>{
 };
 run('source','node',['port/native-combat-shields/source-fixtures.mjs']);
 run('headless',godot,['--headless','--path','godot','--script','res://tests/combat_shields/validate.gd']);
+run('capacity',godot,['--headless','--path','godot','--script','res://tests/combat_shields/capacity.gd']);
 run('live','node',['port/native-combat-shields/live-oracle.mjs']);
 for(const size of ['960x640','1280x720']) {
   mkdirSync(`${evidence}/${size}`,{recursive:true});

@@ -69,8 +69,10 @@ func run() -> void:
 	fx.apply_state(state(many), 0)
 	check(fx.tracks.size() == 16 and fx.debug_state().visible_shells == 15, "16 actors and local first-person shell excluded")
 	var material_ids := {}
-	for track: Dictionary in fx.tracks.values(): material_ids[track.slot.material.get_instance_id()] = true
-	check(material_ids.size() == 16, "independent actor materials")
+	for track: Dictionary in fx.tracks.values():
+		if not track.slot.is_empty(): material_ids[track.slot.material.get_instance_id()] = true
+	check(material_ids.size() == 15, "independent materials for the 15 eligible remote actors")
+	check(fx.tracks[0].slot.is_empty(), "local actor observed without reserving a render slot")
 	for id in range(1,17):
 		fx.apply_events([{"id":id,"sourceId":"same-pad","type":"teleport","actor":1,"from":{"x":1,"y":1,"z":-5},"to":{"x":5,"y":1,"z":-5}}],0)
 	check(fx.counters.events == 16 and fx.bursts.size() <= 16, "equal Horde source IDs retain distinct numeric wire events; pool bounded")
