@@ -1,59 +1,58 @@
-# COCS: DESTINATIONS — combat expansion (development prerelease)
+# COCS: DESTINATIONS — Domination, Horde, debug tools and the material pass
 
-This build turns the graphics demo into something you can actually play: six deathmatch
-arenas, the original source operators, detailed weapons, and a full combat-effects pass.
+Second combat-expansion prerelease. The previous build gave you six deathmatch arenas,
+the original operators, detailed weapons and the effects pass; this one adds the other
+two modes, debug tools, a benchmark, and a coherent material language across every map.
 
-## Download
+## New in this build
 
-- `cocs-native-windows.zip` (checksum in the adjacent `.sha256`)
-- Windows 10/11 x64, OpenGL 3.3 driver, no install or account needed. Godot 4.5.2 and
-  Node 22.22.0 are bundled.
+**Domination — Vermilion Fold.** Three real capture zones (Fan, Crown, Pleat) with
+west/east team spawns, capture → contest → neutralize → lose → recover, both teams
+scoring, score-limit results and restart. Verified with a live socket round and rendered
+captures where every zone marker matched the authority's own snapshot. Spawn-to-zone
+travel is symmetric once both seats use the same loadout (0.00 s delta).
 
-## Play
+**Horde — Nacre Engine.** Waves with real enemy approaches, wave clears, upgrade offers,
+**victory**, and **defeat** with lives running 3→2→1→0 and a clean restart. Peak run held
+ten simultaneous enemies. Enemy reachability measured against the actual source capsule:
+narrowest traversed channel 1.31 m against a 0.84 m requirement. Not yet included: boss
+wave, endless mode, full ten-wave completion, upgrade *selection*.
 
-1. Extract the ZIP, open the `cocs-native-windows` folder.
-2. **Play.cmd** — Meridian Exchange deathmatch with bots.
-3. **Native Deathmatch.cmd** — choose any of six maps:
-   - Prism Foundry, Aurora Basin, Cinder Array (native arena variants)
-   - Lacuna Court, Vermilion Fold, Nacre Engine (new visual-identity maps)
-4. **Graphics Showcase.cmd** — the standalone exploration and effects labs.
-5. **Demo Menu.cmd** — everything else: Horde, Arms Race, zone modes, vehicles, sports,
-   Lattice and the operator viewer.
+**Debug tools (off by default).** Enable with `COCS_DEBUG=1`; an on-screen `DEBUG` badge
+appears. Live: god mode (human seat only), damage multiplier, take-less-damage scale,
+difficulty (bots change behaviour immediately), speed, gravity, respawn timer, unlock all
+weapons, and 14 source mutators including instagib, one-shot, no-recoil, berserk, bounty
+and life steal. Restart-applied: bot count and starting weapon. Debug is deliberately
+unavailable in human-vs-human rooms.
 
-## What is new
+**Benchmark.** A 33-second scripted run prints one pasteable line with real median/p95
+frame times, draw calls, quality level and particle allocation. Run it with:
 
-**Six playable deathmatch maps.** Three arenas (Prism Foundry, Aurora Basin, Cinder Array)
-plus three new visual identities: Lacuna Court (sunlit mineral court with a split
-resonator), Vermilion Fold (folded civic ribbons over jade), Nacre Engine (pearl vaults
-over ultramarine). All six run the authoritative source simulation with bots, pickups,
-scoring, respawns, results and restart. Domination and Horde layouts for the new maps are
-wired but not yet released.
+```bat
+set COCS_BENCHMARK=1
+Play.cmd --experience=native-dm --map=prism-foundry --bots=4
+```
 
-**The original operators.** The high-detail source models now appear in matches with their
-articulated rigs, real third-person weapons, and post-pose hand grips solved against the
-actual weapon contacts.
+**Material language.** Eight named families with 22 variants now dress every playable map
+and the nine original arenas by surface role, using the baked Moth assets that had gone
+unused: **13/13 normals, 5/5 material LUTs, 61/64 asset keys**. Draw calls unchanged on
+all 84 matched cameras and arena collision hashes identical — a render-only change.
+Derived roughness/AO/detail maps are generated offline and re-derive byte-identically.
 
-**Detailed, distinct weapons.** All ten weapons were rebuilt with real geometry —
-519 reusable detail primitives adding ~9,280 first-person triangles and tripling the
-third-person models — and each commits to a distinct identity: receiver massing, feed type,
-muzzle device, stock and grip, sight family, and a signature accent motif. Handling detail
-includes animated bolts, charging handles, authored magazine motion driven strictly by the
-authoritative reload, pooled casings for the weapons that eject them, and barrel heat that
-never occludes the sights. ADS sight alignment remains exact.
+**UI fixes.** The setup surface no longer inflates to a full-screen slab or uses engine
+popups; the scoreboard no longer covers the vitals or weapon panel at 960×640; the
+player-count label tells the truth (`13 actors · 1 player · 12 enemies`); the legacy
+oversized pickup caption is tamed.
 
-**Combat effects.** Interference shields on real protection/armor state, directional
-damage indicator, low-health state, shield-break cue, death and respawn feedback,
-material-aware impacts, animated barrel-tip weapon effects with wall occlusion, and
-bounded world particles. F9 cycles Low/High/Extreme; F10 shows real allocations.
+## Still true from the previous build
 
-**Blood and splatter.** Hits produce directional spurts scaled by real health damage;
-deaths produce a dense burst, a growing pool and clusters of stains on floors and walls,
-never through geometry. Shield- and armor-only hits never bleed. The fluid colour and
-scale are tunable at one documented point (default crimson).
-
-**Massive particles.** The particle pool supports Low 8K / High 32K (131K on native
-arenas) / Extreme 1,000,000 total slots. The owner's GPU ran the million-particle lab
-smoothly; this build's own measurements are software-renderer only.
+Six deathmatch maps (Prism Foundry, Aurora Basin, Cinder Array, Lacuna Court, Vermilion
+Fold, Nacre Engine), the imported original source operators with real third-person weapons
+and solved hand grips, ten detailed and visually distinct weapons, and the full effects
+stack — barrel-tip weapon effects with wall occlusion, interference shields, particle
+budgets up to a million shared slots, directional damage, low health, shield break,
+death/respawn feedback, material impacts, and blood spurts with death splatter that stains
+floors and walls.
 
 ## Controls
 
@@ -61,24 +60,22 @@ smoothly; this build's own measurements are software-renderer only.
 - **Space** jump, **Shift** sprint, **Ctrl/C** crouch, **R** reload
 - **Q** power, **F** melee, **G** grenade, **E** interact, **X** mobility, **Z/MMB** alt fire
 - **1–9 / 0 / wheel** weapons, **Tab** scores, **Esc** release the mouse
-- **Enter** restart after results, **F8** scenery detail, **F9** combat effects quality,
-  **F10** resource metrics
+- **Enter** restart after results, **F8** scenery detail, **F9** effects quality,
+  **F10** resource metrics, **F7** benchmark
+- Horde: same controls; Domination runs through `--experience=identity-zones`
 
 ## Honest limitations
 
-- All performance numbers in this project's evidence are Linux OpenGL Compatibility on
-  **llvmpipe software rendering** — not hardware-GPU acceptance. Measure on your machine.
-- The three new maps are stylized first-pass art: no baked lightmaps, no textures beyond
-  the shared Moth palette.
-- Domination (Vermilion Fold) and Horde (Nacre Engine) are not in this release; their
-  layouts and data exist, the mode routes do not.
-- Campaign remains deferred. Full Horde progression and the full Arms Race ladder are
-  still open, as are the inherited combat setup popup, some small-resolution HUD
-  overlaps, and mounted-combat acceptance.
+- Every performance figure in this project is **Linux OpenGL Compatibility on llvmpipe
+  software rendering**, not hardware-GPU acceptance. Use the benchmark on your machine.
+- The new maps are stylized first-pass art: no baked lightmaps, and the baked normals are
+  shallow, so bump contribution reads as dents rather than deep relief.
+- Horde is playable to victory and defeat but has no boss, endless or upgrade selection.
+- Campaign remains deferred; the full Arms Race ladder and broader LATTICE rounds are open.
 - The source asset-rights audit remains unresolved; this package does not establish new
   rights to the original assets.
 
 ## Diagnostics
 
-`Play.cmd --smoke` runs a headless network check. `manifest.json` records source and port
-commits, every packaged file's SHA256, the runtime closure and the feature inventory.
+`Play.cmd --smoke` runs a headless network check. `manifest.json` records the source and
+port commits, every packaged file's SHA256, the runtime closure and the feature inventory.
