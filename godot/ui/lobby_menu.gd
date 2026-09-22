@@ -99,8 +99,8 @@ func resize_panel() -> void:
 	var viewport := get_viewport().get_visible_rect().size
 	panel.size = Vector2(minf(700, viewport.x - 32), viewport.y - 32)
 	panel.position = (viewport - panel.size) / 2
-	leave_button.position = Vector2(viewport.x - 150, 12)
-	restart_button.position = Vector2(viewport.x - 150, 54)
+	leave_button.position = Vector2(viewport.x - 150, 70)
+	restart_button.position = Vector2(viewport.x - 150, 112)
 
 func show_roster(frame: Dictionary) -> void:
 	last_frame = frame.duplicate(true)

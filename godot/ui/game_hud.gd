@@ -149,8 +149,9 @@ func _process(delta: float) -> void:
 func refresh_status() -> void:
 	if not is_instance_valid(session): return
 	var phase := int(session.get("phase"))
-	root.visible = not debug_hud and phase != -2
-	if debug_hud or phase == -2: return
+	var lobby_open: bool = "lobby_enabled" in session and session.lobby_enabled and phase not in [3, 4, 20]
+	root.visible = not debug_hud and phase != -2 and not lobby_open
+	if debug_hud or phase == -2 or lobby_open: return
 	var legacy: Label = session.get("label")
 	var message := ""
 	var heading := ""
