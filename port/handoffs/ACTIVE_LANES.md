@@ -311,6 +311,21 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
     F9/F10 quality and lifecycle drains.
   - Hard rule for both: existing gates stay green, no unverified commits, and each
     reports what it left out rather than trading correctness for scope.
+- Owner asked for massive particle blood spurts on hits and a messy death splatter
+  that stains surroundings. **Blood/fluid FX lane** owns NEW `godot/blood_fx/**`,
+  `godot/tests/blood_fx/**`, `port/native-blood-fx/**` and must not touch the
+  integration file (`godot/world/combat_feedback.gd`) that the player-state lane
+  currently holds — it delivers a `configure/apply_state/apply_events/reset/
+  set_quality/snapshot` controller and lead performs the single wiring call.
+  Requirements recorded in the lane brief: authoritative health-damage only (no
+  bleed on shield/armor-only hits, derived as `amount - shield`), directional
+  spurts scaled by real damage, death burst with ramp/airborne-correct surface
+  staining, compatibility-safe pooled stain quads (no Decal nodes) that never pass
+  through walls, bounded totals inside the existing Low/High/Extreme vocabulary,
+  lifecycle drains and dedup, and a documented single-point fluid override (default
+  crimson blood) since the operators are armored machines. Every other pre-release
+  lane is untouched; the identity art lane's own commit (`e140e489`, `e17d6022`)
+  is landed with cold construction at 27/19/39 ms per map.
 - Lead test repairs for the pickup-asset and integrated-effects contracts:
   `round_boundaries.gd`, `entity_visuals.gd` pickup section, `combined_arms/graphics.gd`.
   The `entity_visuals.gd` actor section must be rewritten against the source
