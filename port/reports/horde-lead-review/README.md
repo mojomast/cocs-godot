@@ -23,3 +23,10 @@ The earlier reports remain HOLD for their historical runtime versions; the
 historical Meridian self-kill recording still contains known duplicate events.
 Common/package integration is now delegated separately. Full ten-wave completion,
 boss, defeat, upgrades, hardware/audio and packaged Horde acceptance remain open.
+
+After integrating the full history into primary, pinned import and focused
+source70/model15/input31/look3 checks pass again on the combined runtime; exact
+commands/logs are in `integrated-native/`. The lead opened fresh event-repair
+results960×640 and released-restart1280×800 PNGs. Lives/score/one-wave victory sit
+above the complete product Scoreboard; restart shows clear help and neutral
+equipment/score. The inherited roster caption still counts NPCs as “players.”

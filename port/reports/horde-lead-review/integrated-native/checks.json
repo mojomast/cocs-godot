@@ -1,0 +1,64 @@
+[
+  {
+    "name": "source-ui",
+    "command": [
+      "node",
+      "--test",
+      "game/singleplayer.test.mjs",
+      "game/singleplayer-ui.test.mjs"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "import",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--editor",
+      "--import"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "model",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/horde/test.gd"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "oracle",
+    "command": [
+      "node",
+      "port/native-horde/input-oracle.mjs",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/reports/horde-lead-review/integrated-native/source-vectors.json"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "controls",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/horde/controls_test.gd",
+      "--",
+      "--vectors=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/reports/horde-lead-review/integrated-native/source-vectors.json"
+    ],
+    "exit": 0,
+    "passed": true
+  }
+]

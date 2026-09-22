@@ -69,3 +69,25 @@ New evidence belongs in `port/reports/horde-event-repair/`. Original119 evidence
 files and94 repair-report files were independently verified unchanged. Public
 Room's Horde rejection remains intact. No Horde runtime/package claim is made
 until the remaining changes are independently reviewed.
+
+## Final cursor fix independently reviewed; bounded integration accepted
+
+`c64762a` replaces global-serial arithmetic with a per-Match append-object cursor,
+and repairs the NPC-kill predicate. New evidence `2b0fbf5` retains old-fail/new-pass
+ordinary-grenade and self-kill-recording checks, plus one fresh24.239s product
+run. The lead independently reviewed both predicates, reran50 adapter/validator
+tests and replayed the fresh archive:810 distinct source objects exactly match
+810 wire events across restart, with378 native-correlated snapshots and a genuine
+three-NPC-kill one-wave victory. Actual960 results/1280 restart PNGs were opened.
+
+The complete runtime/review history is now integrated locally: external delivery
+as `d7444c2`, first HOLD `a93b597`, repairs `9c2bbe7`/`82fda8f`/`21a4d34`/`388ef49`,
+repair report `c4f9b79`, second HOLD `e9076c6`, final fix `6255352`, evidence `5fc1975`.
+On the combined primary runtime, the lead also passed70 source/UI tests,
+15 Horde model checks and31 input/3 look-vector contracts after pinned import.
+Evidence is in `port/reports/horde-lead-review/`.
+
+The final adapter is accepted for **bounded local integration**. Historical HOLDs
+remain valid for their tested older versions. Common/package wiring and exported
+Horde acceptance are delegated separately; ten-wave/boss/defeat/upgrades and full
+action-effect/hardware/audio acceptance remain open. Public Room is unchanged.
