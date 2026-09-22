@@ -83,8 +83,9 @@ gives to all ten weapons).
 
 ## Identity channels (world side)
 
-`WEAPON_IDENTITY_WORLD.md` transcribes the shared document's six channels per weapon and records
-the reconciliation. Summary of the world-side read:
+`WEAPON_IDENTITY_WORLD.md` transcribes the shared document's six channels per weapon, records the
+reconciliation and lists, weapon by weapon, the sub-features the shared document names that this
+budget deliberately leaves out. Summary of the world-side read:
 
 * receiver massing — rail/riser, carry handle or fork frame per weapon, plus a real ejection port
   treatment (kinetic deflector and carrier race, or louvred vents on the energy weapons);
