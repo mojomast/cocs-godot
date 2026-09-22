@@ -1,0 +1,68 @@
+{
+  "scope": "offline authored-label presentation; no gameplay authority",
+  "styleSHA256": "92bfcb72ab5c4a4b85a5b6ef8c89aa309e51cd900719f0d0141adbf4f159ac5c",
+  "results": [
+    {
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "-s",
+        "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x640",
+        "--script",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/reports/landmark-label-independent/capture.gd",
+        "--",
+        "--label-out=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/reports/landmark-label-independent/before/960x640"
+      ],
+      "timed_out": false,
+      "signals": [],
+      "observed_pids": [
+        2832785
+      ],
+      "remaining_pids": [],
+      "cleanup_complete": true,
+      "pgid": 2832775,
+      "returncode": 0,
+      "duration_seconds": 2.882121030241251
+    },
+    {
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "-s",
+        "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "1280x800",
+        "--script",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/reports/landmark-label-independent/capture.gd",
+        "--",
+        "--label-out=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/reports/landmark-label-independent/before/1280x800"
+      ],
+      "timed_out": false,
+      "signals": [],
+      "observed_pids": [
+        2833378
+      ],
+      "remaining_pids": [],
+      "cleanup_complete": true,
+      "pgid": 2833367,
+      "returncode": 0,
+      "duration_seconds": 1.1282744649797678
+    }
+  ]
+}

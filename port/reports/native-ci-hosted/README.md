@@ -45,3 +45,11 @@ The fresh runner generated the repaired Meridian GLB and passed inward-sky
 checks, side-geometry tests and objective progression/corruption gates.
 Downloaded report, console, artifact manifest and native side log are in
 `35679051417/`. The lead watched actual completion and validated the gate count.
+
+## Co-op economy and soccer guidance
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35679675460> at
+`424f74f305d2ae06b102e97257c6947bb863e652` **PASS**, all **59 gates**, including
+co-op economy91 and soccer guidance45. The lead checked completed success and
+downloaded the report/console/artifact manifest to `35679675460/`; gate count
+and report status were validated before recording this result.

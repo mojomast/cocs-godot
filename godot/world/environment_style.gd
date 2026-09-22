@@ -222,6 +222,8 @@ func decorate(map: Dictionary, parent: Node3D) -> void:
 		sign.outline_size = 12
 		sign.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		sign.no_depth_test = false
+		# Navigational landmarks should not fill the view when walking past them.
+		sign.visibility_range_begin = 10
 		sign.visibility_range_end = 120
 		detail.add_child(sign)
 	if map.has("race"): decorate_sport(map.race)

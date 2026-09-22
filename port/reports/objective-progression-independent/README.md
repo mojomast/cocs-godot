@@ -30,7 +30,9 @@ The lead directly opened CTF capture/results and Payload contest/checkpoint/
 results/restart PNGs. Panel-backed objective and combat HUDs are readable and
 separate from the results scoreboard at both resolutions. Flags no longer
 dominate the close-up; the inherited WEST CITADEL landmark is still oversized
-at close range. Payload mesh presentation no longer masks the objective text.
+at close range in these original captures. A later
+[landmark-only correction](../landmark-label-independent/README.md) hides names
+within 10 m; controlled far views remain byte-identical. Payload mesh presentation no longer masks the objective text.
 The cart remains a simple bright model; human/art acceptance is separate.
 
 Both summaries confirm native/display reaping and absence, server closed, zero
