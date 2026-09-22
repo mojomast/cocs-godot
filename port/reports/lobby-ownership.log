@@ -2,37 +2,37 @@ TAP version 13
 # Subtest: package: external authority ownership and cleanup on exit
 ok 1 - package: external authority ownership and cleanup on exit
   ---
-  duration_ms: 48.789474
+  duration_ms: 52.251062
   type: 'test'
   ...
 # Subtest: package: external authority ownership and cleanup on native-failure
 ok 2 - package: external authority ownership and cleanup on native-failure
   ---
-  duration_ms: 36.068625
+  duration_ms: 43.160053
   type: 'test'
   ...
 # Subtest: package: external authority ownership and cleanup on missing-native
 ok 3 - package: external authority ownership and cleanup on missing-native
   ---
-  duration_ms: 22.766758
+  duration_ms: 23.599474
   type: 'test'
   ...
 # Subtest: dev: external authority ownership and cleanup on exit
 ok 4 - dev: external authority ownership and cleanup on exit
   ---
-  duration_ms: 62.147316
+  duration_ms: 57.673399
   type: 'test'
   ...
 # Subtest: dev: external authority ownership and cleanup on native-failure
 ok 5 - dev: external authority ownership and cleanup on native-failure
   ---
-  duration_ms: 59.790391
+  duration_ms: 60.496236
   type: 'test'
   ...
 # Subtest: dev: external authority ownership and cleanup on missing-native
 ok 6 - dev: external authority ownership and cleanup on missing-native
   ---
-  duration_ms: 23.654931
+  duration_ms: 24.05111
   type: 'test'
   ...
 1..6
@@ -43,4 +43,4 @@ ok 6 - dev: external authority ownership and cleanup on missing-native
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 284.227544
+# duration_ms 299.371976

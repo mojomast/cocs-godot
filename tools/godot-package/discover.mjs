@@ -14,7 +14,11 @@ const nativeArenaAdapters = ['port/native-arenas/authority.mjs', 'port/native-ar
 // the ordinary/multi-human route. One reviewed adapter module, listed here so
 // the shipped closure stays explicit.
 const debugAdapters = ['port/native-debug/debug.mjs'];
-const adapters = [...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters];
+// The reviewed Domination route on Vermilion Fold: its own authority, match
+// adapter and static catalog, exactly like the native-arena family.
+const identityZoneAdapters = ['port/native-identity-zones/authority.mjs',
+  'port/native-identity-zones/match.mjs', 'port/native-identity-zones/catalog.mjs'];
+const adapters = [...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters, ...identityZoneAdapters];
 // Explicit dynamic data-read manifest: the builder hashes committed bytes and
 // copies these paths under runtime/, preserving catalog.mjs URL resolution.
 // `dataFiles` stays the original native-arena family (existing consumers);
@@ -48,16 +52,24 @@ const nativeArenaEntry = nativeArenaAdapters[0];
 // During parallel implementation the entry may be absent; an existing entry
 // must have a complete static closure. Data existence is checked by the builder.
 const nativeArena = existsSync(resolve(root, nativeArenaEntry)) ? discover(nativeArenaEntry) : null;
-const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules};
+const identityZoneEntry = identityZoneAdapters[0];
+const identityZones = existsSync(resolve(root, identityZoneEntry)) ? discover(identityZoneEntry) : null;
+const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules};
 const dataFiles = nativeArena ? nativeArenaData : [];
-const identityDataFiles = nativeArena ? identityArenaData : [];
+const identityDataFiles = nativeArena || identityZones ? identityArenaData : [];
 const sorted = value => Object.fromEntries(Object.entries(value).sort());
 const sourceModules = {}, adapterModules = {};
 for (const [path, dependencies] of Object.entries(all)) (adapters.includes(path) ? adapterModules : sourceModules)[path] = dependencies;
 console.log(JSON.stringify({entry:'server/game-server.mjs', hordeEntry:hordeAdapters[0], nativeArenaEntry,
+  identityZoneEntry,
   modules:sorted(sourceModules), adapterModules:sorted(adapterModules), external:ordinary.external,
   dataFiles, identityDataFiles,
-  dataReads:nativeArena ? {'port/native-arenas/catalog.mjs':[...dataFiles, ...identityDataFiles]} : {},
-  routes:{ordinary:Object.keys(ordinary.modules).sort(), horde:Object.keys(horde.modules).sort(), nativeArena:Object.keys(nativeArena?.modules ?? {}).sort()},
+  dataReads:Object.fromEntries([
+    ...(nativeArena ? [['port/native-arenas/catalog.mjs', [...dataFiles, ...identityDataFiles]]] : []),
+    ...(identityZones ? [['port/native-identity-zones/catalog.mjs', [...identityDataFiles]]] : []),
+  ]),
+  routes:{ordinary:Object.keys(ordinary.modules).sort(), horde:Object.keys(horde.modules).sort(), nativeArena:Object.keys(nativeArena?.modules ?? {}).sort(),
+    identityZones:Object.keys(identityZones?.modules ?? {}).sort()},
   nativeArenaAdditionalSource:Object.keys(nativeArena?.modules ?? {}).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p)).sort(),
+  identityZoneAdditionalSource:Object.keys(identityZones?.modules ?? {}).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p) && !Object.hasOwn(horde.modules,p)).sort(),
   hordeAdditionalSource:Object.keys(horde.modules).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p)).sort()}, null, 2));

@@ -2,49 +2,49 @@ TAP version 13
 # Subtest: explicitly synthetic valid push/idle correlation
 ok 1 - explicitly synthetic valid push/idle correlation
   ---
-  duration_ms: 0.816229
+  duration_ms: 0.841056
   type: 'test'
   ...
 # Subtest: reject wrong actor
 ok 2 - reject wrong actor
   ---
-  duration_ms: 0.430637
+  duration_ms: 0.413014
   type: 'test'
   ...
 # Subtest: reject wrong height
 ok 3 - reject wrong height
   ---
-  duration_ms: 0.102372
+  duration_ms: 0.11203
   type: 'test'
   ...
 # Subtest: reject missing render
 ok 4 - reject missing render
   ---
-  duration_ms: 0.093856
+  duration_ms: 0.086663
   type: 'test'
   ...
 # Subtest: reject wrong sequence
 ok 5 - reject wrong sequence
   ---
-  duration_ms: 0.118823
+  duration_ms: 0.119534
   type: 'test'
   ...
 # Subtest: reject missing movement receipt
 ok 6 - reject missing movement receipt
   ---
-  duration_ms: 0.110507
+  duration_ms: 0.105288
   type: 'test'
   ...
 # Subtest: reject incorrect HUD
 ok 7 - reject incorrect HUD
   ---
-  duration_ms: 2.719124
+  duration_ms: 3.754101
   type: 'test'
   ...
 # Subtest: reject short evidence
 ok 8 - reject short evidence
   ---
-  duration_ms: 0.100808
+  duration_ms: 0.125104
   type: 'test'
   ...
 1..8
@@ -55,4 +55,4 @@ ok 8 - reject short evidence
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 41.378751
+# duration_ms 41.671305

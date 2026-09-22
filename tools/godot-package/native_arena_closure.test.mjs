@@ -30,6 +30,12 @@ function addNative(put) {
   put('port/native-arenas/schema.mjs','');
   put('port/native-arenas/catalog.mjs',"import {readFileSync} from 'node:fs'; import './schema.mjs';");
 }
+function addIdentityZones(put) {
+  put('port/native-identity-zones/authority.mjs',"import 'ws'; import './match.mjs'; import './catalog.mjs'; import '../native-debug/debug.mjs';");
+  put('port/native-identity-zones/match.mjs',"import {Match} from '../../game/core.mjs'; import './catalog.mjs'; import '../native-arenas/schema.mjs';");
+  put('port/native-identity-zones/catalog.mjs',"import {readFileSync} from 'node:fs'; import '../native-arenas/catalog.mjs';");
+  put('port/native-debug/debug.mjs','');
+}
 
 test('Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON',()=>fixture((root,put)=>{
   const before = discover(root);
@@ -53,6 +59,29 @@ test('Native DM SYNTHETIC closure separates exact reviewed adapters from locked 
   assert.deepEqual(closure.external,['ws']);
   assert.ok(closure.routes.nativeArena.includes('game/core.mjs'));
   assert.ok(!closure.routes.nativeArena.includes('server/game-server.mjs'));
+}));
+
+test('Identity zone SYNTHETIC closure keeps Domination adapters explicit and separate from locked source',()=>fixture((root,put)=>{
+  addNative(put); addIdentityZones(put);
+  const closure = discover(root);
+  assert.equal(closure.identityZoneEntry,'port/native-identity-zones/authority.mjs');
+  for (const path of ['port/native-identity-zones/authority.mjs','port/native-identity-zones/catalog.mjs',
+    'port/native-identity-zones/match.mjs','port/native-debug/debug.mjs']) {
+    assert.ok(Object.hasOwn(closure.adapterModules,path),path);
+    assert.ok(!Object.hasOwn(closure.modules,path),path);
+  }
+  assert.ok(closure.routes.identityZones.includes('game/core.mjs'));
+  assert.ok(!closure.routes.identityZones.includes('server/game-server.mjs'));
+  assert.deepEqual(closure.identityZoneAdditionalSource,[]);
+  assert.deepEqual(closure.dataReads['port/native-identity-zones/catalog.mjs'],identityDataFiles);
+  assert.deepEqual(closure.external,['ws']);
+}));
+
+test('Identity zone SYNTHETIC closure rejects unreviewed route helpers',()=>fixture((root,put)=>{
+  addNative(put); addIdentityZones(put);
+  put('port/native-identity-zones/route.mjs','');
+  put('port/native-identity-zones/authority.mjs',"import 'ws'; import './match.mjs'; import './catalog.mjs'; import './route.mjs';");
+  assert.throws(()=>discover(root),/route.mjs/);
 }));
 
 test('Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules',()=>fixture((root,put)=>{

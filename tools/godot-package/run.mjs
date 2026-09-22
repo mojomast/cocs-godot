@@ -44,11 +44,11 @@ async function main() {
     game?.server?.on('error', serverError);
     let endpoint = plan.endpoint;
     if (game) {
-      if (!plan.nativeArena || (!game.endpoint && !game.server?.listening)) await new Promise((resolve, reject) => {
+      if (!(plan.nativeArena || plan.identityZone) || (!game.endpoint && !game.server?.listening)) await new Promise((resolve, reject) => {
         game.server.once('error', reject);
         game.server.listen(0, '127.0.0.1', () => { game.server.removeListener('error', reject); resolve(); });
       });
-      const ownedEndpoint = plan.nativeArena && game.endpoint ? game.endpoint : `ws://127.0.0.1:${game.server.address().port}`;
+      const ownedEndpoint = (plan.nativeArena || plan.identityZone) && game.endpoint ? game.endpoint : `ws://127.0.0.1:${game.server.address().port}`;
       const owned = new URL(ownedEndpoint);
       // Accept only the authority's exact routes, including before URL normalization.
       const allowedPath = plan.nativeArena ? [owned.origin, `${owned.origin}/`, `${owned.origin}/native-arenas`].includes(ownedEndpoint)

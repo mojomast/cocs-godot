@@ -2,14 +2,14 @@ TAP version 13
 # Subtest: identity zone authority rejects unsupported launch options before binding
 ok 1 - identity zone authority rejects unsupported launch options before binding
   ---
-  duration_ms: 1.897204
+  duration_ms: 2.26336
   type: 'test'
   ...
-# {"gate":"identity-zone-authority","mapId":"vermilion-fold","mode":"domination","actors":3,"snapshots":503,"inputSeq":501,"replans":35,"contested":true,"transitions":[{"seq":154,"id":"alpha","from":null,"to":0},{"seq":179,"id":"bravo","from":null,"to":0},{"seq":408,"id":"charlie","from":null,"to":0}],"finalScores":{"0":12.016666666666843,"1":0},"winner":0,"overReason":"objective","restartSeq":1,"geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a"}
+# {"gate":"identity-zone-authority","mapId":"vermilion-fold","mode":"domination","actors":3,"snapshots":397,"inputSeq":395,"replans":36,"contested":false,"transitions":[{"seq":157,"id":"bravo","from":null,"to":0},{"seq":390,"id":"alpha","from":null,"to":1}],"finalScores":{"0":12.000000000000176,"1":0.3333333333333333},"winner":0,"overReason":"objective","restartSeq":1,"geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a"}
 # Subtest: identity zone authority: loopback readiness, allowlist rejection and full live round
 ok 2 - identity zone authority: loopback readiness, allowlist rejection and full live round
   ---
-  duration_ms: 25203.876259
+  duration_ms: 19907.285336
   type: 'test'
   ...
 # {"gate":"identity-zone-factory","mapId":"vermilion-fold","geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a","zones":[{"id":"alpha","x":0,"z":-17,"radius":3.5,"y":0},{"id":"bravo","x":0,"z":0,"radius":3.5,"y":0},{"id":"charlie","x":0,"z":17,"radius":3.5,"y":0}],"teamSpawns":{"0":[[-27,-21],[-27,21],[-27,0]],"1":[[27,-21],[27,21],[27,0]]},"nav":103}
@@ -17,37 +17,37 @@ ok 2 - identity zone authority: loopback readiness, allowlist rejection and full
 # Subtest: identity zone allowlist pins one reviewed map/mode pair and its identity entry
 ok 3 - identity zone allowlist pins one reviewed map/mode pair and its identity entry
   ---
-  duration_ms: 0.719477
+  duration_ms: 0.960749
   type: 'test'
   ...
 # Subtest: identity zone config accepts only ordinary source domination rules
 ok 4 - identity zone config accepts only ordinary source domination rules
   ---
-  duration_ms: 0.923611
+  duration_ms: 0.958696
   type: 'test'
   ...
 # Subtest: identity zone factory builds a real source domination Match from the validated arena
 ok 5 - identity zone factory builds a real source domination Match from the validated arena
   ---
-  duration_ms: 62.326882
+  duration_ms: 75.147489
   type: 'test'
   ...
 # Subtest: identity zone domination rules: capture, contest, lose, recover, both teams score, results, restart
 ok 6 - identity zone domination rules: capture, contest, lose, recover, both teams score, results, restart
   ---
-  duration_ms: 303.876601
+  duration_ms: 279.014273
   type: 'test'
   ...
 # Subtest: launcher route contract matches the composition scene and the authority
 ok 7 - launcher route contract matches the composition scene and the authority
   ---
-  duration_ms: 0.898413
+  duration_ms: 0.871663
   type: 'test'
   ...
 # Subtest: every authored team spawn routes to every zone, mirrored in length
 ok 8 - every authored team spawn routes to every zone, mirrored in length
   ---
-  duration_ms: 5797.714391
+  duration_ms: 5813.917647
   type: 'test'
   ...
 1..8
@@ -58,4 +58,4 @@ ok 8 - every authored team spawn routes to every zone, mirrored in length
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 25975.187151
+# duration_ms 20665.19351

@@ -1,17 +1,17 @@
-# Private local Linux prototype
+# COCS: DESTINATIONS — Linux x86_64 prototype
 
-This package is a local prototype of the existing native scenes, with the original
-Node authority. It is not a public release. Source asset redistribution rights
-remain unresolved; this package does not establish or grant those rights.
+## Requirements
 
-## Requirements and start
+- Linux x86_64 with an **OpenGL 3.3-compatible graphics driver** (X11 or Wayland)
+  and the usual Godot 4.5.2 Linux runtime libraries.
+- **Node.js >= 22.13.0 available as `node`.** Node is an external prerequisite on
+  Linux; it is not bundled. `runtime/node_modules/ws` is an ordinary copied
+  directory with its MIT license, and the authority uses the Node standard library
+  plus that one dependency.
+- No Godot editor, Git, npm or account is needed, and local bot matches work
+  offline.
 
-- Linux x86_64 desktop with OpenGL 3.3-compatible graphics and the normal Godot
-  4.5.2 Linux runtime libraries (X11/Wayland, graphics/audio system libraries).
-- **Node.js >=22.13.0** available as `node`. Node is an external prerequisite.
-- No Godot editor, git, npm, project checkout, network download or install step at
-  play time. `runtime/node_modules/ws` is an ordinary copied directory with its MIT
-  license. The server uses the Node standard library and that dependency only.
+## Start
 
 ```sh
 tar -xzf cocs-native-linux.tar.gz
@@ -19,130 +19,111 @@ cd cocs-native-linux
 node run.mjs
 ```
 
-The default opens native combat host setup. Choose a map/mode and click **Start**.
-By default, sessions own a new `127.0.0.1` port allocated by the OS. Closing the
-native window or Ctrl+C shuts down that owned server too. The lobby's explicit
-`--endpoint` route instead uses an existing authority and never stops it. Match history
-and progression are memory-only, and temporary native settings are removed on
-exit. Interactive play has no harness deadline.
+The default opens the native combat host setup. Choose a map and mode, then click
+**Start**. Sessions own a loopback server on an OS-assigned port; closing the game
+window or pressing Ctrl+C shuts that server down too. The lobby's explicit
+`--endpoint` route uses an existing authority instead and never stops it.
 
 ```sh
 node run.mjs --play --map=meridian-exchange --mode=deathmatch
-node run.mjs --play --map=verdant-reliquary --mode=teamdeathmatch
-node run.mjs --play --map=ember-crucible --mode=rockets
-node run.mjs --experience=zones --map=meridian-exchange --mode=domination
-node run.mjs --experience=zones --map=verdant-reliquary --mode=koth
-node run.mjs --experience=combined-arms
-node run.mjs --experience=arms-race --map=meridian-exchange
-node run.mjs --experience=horde --map=verdant-reliquary
-node run.mjs --experience=lobby
-node run.mjs --experience=lobby --endpoint=ws://127.0.0.1:PORT
-node run.mjs --experience=sports --map=ion-speedway --round-target=3
-node run.mjs --experience=sports --map=aurora-stadium --round-target=5
-node run.mjs --experience=objectives --map=tidal-citadel
-node run.mjs --experience=objectives --map=sunscar-convoy
-node run.mjs --experience=lattice --map=asterion-relay --mode=cocs
-node run.mjs --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
+node run.mjs --experience=native-dm --map=prism-foundry --bots=2 --round-seconds=180
+node run.mjs --experience=native-dm --map=vermilion-fold
+node run.mjs --experience=identity-zones
+node run.mjs --experience=horde --map=nacre-engine
 node run.mjs --experience=showcase
-node run.mjs --experience=aurora-basin
-node run.mjs --experience=cinder-array
-node run.mjs --experience=particle-lab
-node run.mjs --experience=shader-lab
+node run.mjs --experience=lobby
 node run.mjs --help
 ```
 
-LATTICE command board requires **Connect / start**; LATTICE world starts its
-ordinary host directly. Combat and LATTICE world capture controls on click; Escape
-releases the pointer. Scene UI describes its own controls. Unsupported map/mode
-combinations and out-of-range options fail explicitly rather than falling back.
-The semantic catalog retains all nine locked map identities. This is the current
-procedural/semantic presentation, not a claim of complete visual/gameplay parity.
+All nine original maps and ten source experience routes are retained, plus the
+three-map original native Deathmatch family (Prism Foundry, Aurora Basin, Cinder
+Array), the three identity arenas (Lacuna Court, Vermilion Fold, Nacre Engine),
+five native-only graphics routes, Domination on Vermilion Fold and Horde on Nacre
+Engine.
 
-The five graphics routes are standalone native experiences and start no authority.
-Prism Foundry, Aurora Basin and Cinder Array use **WASD/mouse**, **Shift** sprint,
-**Space** jump, **R** reset, **Escape** release and **click** capture. Particle and
-shader labs show their controls on screen. Particle counts begin at 32K; the
-optional million-particle setting is a stress experiment with measured frame
-cadence, not a hardware performance promise. Existing gameplay's bounded Moth
-scenery supports **F8** Full/Off/Low detail switching.
+## Controls
 
-Combat setup lists supported standalone routes as **separate demos** and shows
-their relaunch options. Zone modes use click-to-engage infantry controls and
-Enter to restart after results. Their defaults are two bots and 60-second rounds.
-Combined arms is Sunscar's zero-bot Puma slice: Enter engages, E mounts/exits,
-WASD moves/drives and Space requests a brake tap. After each seat change, press
-Enter and fresh movement keys. Secondary chassis are visual/exit-only previews.
+- **WASD** move, **mouse** look, **left click** fire
+- **Space** jump, **Shift** sprint, **Ctrl** crouch
+- **RMB** aim down sights; release to return to hip fire
+- **R** reload, **1–9 / 0 / wheel** change weapon
+- **E** interact, **X** mobility, **Q** power, **F** melee, **G** grenade
+- **Z / MMB** alternate fire
+- **Tab** scores, **Escape** release the mouse; the match keeps running
+- **Enter** restart after results, then release keys and click to resume
+- **F8** cycle Moth scenery detail: Full → Off → Low
+- **F9** cycle combat effects: Low → High → Extreme
+- **F10** toggle combat-effect resource metrics
+- **F7** run the benchmark
 
-Arms Race: three combat arenas, two Normal bots, ten source weapons and default
-180-second rounds. Click to engage. Weapon selection follows source promotion;
-number keys and wheel cannot change it. Enter restarts after results, then release
-held controls and click to resume. A kill-to-promotion and timed restart are
-independently verified; full ten-rung live victory remains open.
+## Modes
 
-Horde: local solo survival on Meridian, Verdant or Ember, with **10 waves** and
-source-default Easy difficulty. This route starts its own local-only adapter
-around unchanged source Match rules; it does not create a public multiplayer
-room. Click to engage. **Q** power, **X** mobility, **F** melee, **G** grenade,
-**RMB** ADS, **Z/MMB** alternate fire; **1–9/0/wheel** select owned weapons.
-**Escape** releases controls but the match continues. **Enter** restarts after
-results; release held controls and click again. The common route has no wave,
-upgrade, endless or external-endpoint option. A legal one-wave victory/restart,
-death/lives/respawn and default-ten startup have separate bounded evidence;
-full ten-wave/boss/defeat/upgrades remain open. At960×640 the held-Tab board can
-cover parts of the lower health/ammo panels; release Tab to see them.
+**Deathmatch** (`--experience=native-dm`) has one local human and 1–7 bots on six
+reviewed arenas. Source movement, weapon damage, scoring and bot AI remain
+authoritative.
 
-LATTICE world: **C** opens tactical commands on your existing player connection.
-Select an objective and explicitly issue HOLD, or authorize one recruitment
-purchase. Co-op REINFORCE costs 50 FLUX during a natural between-wave window;
-expired consent requires new authorization. Close with C/Escape, release controls
-and click the world to resume. Full strategy rounds remain under development.
+**Domination** (`--experience=identity-zones`) is the reviewed one-pair route:
+Vermilion Fold with three authored capture zones (Fan, Crown, Pleat), contest and
+neutralize behaviour, both teams scoring, score-limit results and restart. Options
+are `--bots=0..7`, `--round-seconds=60..900` and `--score-limit=1..900`; any other
+map, mode or out-of-range value is refused.
 
-Its backed HUD distinguishes ENGAGED, RELEASED, unfocused and stale state, with
-public-node bearing/planar range and team progress. HOLD receipts do not establish
-node capture. Payload similarly shows cart bearing, horizontal distance and the
-source escort radius separately from route progress and banked checkpoints.
-Standing in range can affect the cart even while controls are released.
+**Horde** (`--experience=horde --map=nacre-engine`) runs waves with real enemy
+approaches, wave clears, upgrade offers, victory and defeat with lives 3→2→1→0.
+A boss wave, endless mode, full ten-wave completion and upgrade selection are not
+implemented.
 
-## Multiplayer lobby
+**Graphics Showcase** (`--experience=showcase`, `--experience=aurora-basin`,
+`--experience=cinder-array`, `--experience=particle-lab`,
+`--experience=shader-lab`) opens standalone unarmed exploration, including the
+particle observatory with explicit 8K–1M settings and the Moth shader gallery.
+**P** photo views, **1–4** particle presets, **Space** pause, **Escape** release.
 
-Use `--experience=lobby` to open the form. Host: choose one of the three combat
-arenas with inline Previous / Next buttons or Left / Right keys; Tab moves focus.
-Choose its supported combat mode, Create, share the printed WebSocket endpoint
-and room code, then Start when guests arrive. Defaults are two bots/60-second rounds.
-The owned endpoint is loopback and reachable from clients on this machine only.
-For an already configured reachable authority, supply its explicit `--endpoint`.
+## Debug tools (off by default)
 
-Guest: run the lobby against that same endpoint, select Guest, the room code and
-the expected host map, then Join. The authority supplies the actual match mode.
-Guests cannot configure, start or restart the match. Escape releases controls and
-exposes **Leave match**, returning to the form without automatically reconnecting.
-Leaving a room keeps the launcher open; closing the owner window stops its server.
+Set `COCS_DEBUG=1` before starting, or pass the game's `--debug-panel` flag, and a
+`DEBUG` badge appears. Live knobs: god mode (human seat only), damage multiplier,
+debug-only incoming damage scale, difficulty (bots change behaviour immediately),
+speed, gravity, respawn timer, unlock all weapons and 14 source mutators including
+instagib, one-shot, no-recoil, berserk, bounty and life steal. Bot count and
+starting weapon apply on restart. The channel is never available in
+human-vs-human rooms.
 
-Joining an active match gives a **read-only spectator** with a fixed camera and
-Tab scoreboard. Spectators send no gameplay inputs and stay spectators through
-host restart. To request a player seat, Leave and explicitly join between rounds;
-there is no automatic promotion or guarantee of an available seat.
-
-## Direct scene invocation
-
-For an already running compatible authority, the exported executable accepts the
-same native user arguments after `--` as the source scene. This bypasses ownership
-by `run.mjs`, so that external server must be stopped separately:
+## Benchmark
 
 ```sh
-./cocs.x86_64 --main-pack ./cocs.pck res://lattice/world_demo.tscn -- --endpoint=ws://127.0.0.1:YOUR_PORT --map=asterion-relay --mode=cocs
+COCS_BENCHMARK=1 node run.mjs --experience=native-dm --map=prism-foundry --bots=4
 ```
 
-## Package contents and checks
+One `BENCHMARK_RESULT` line reports real median/p95 frame times, draw calls,
+quality level and particle allocation. All recorded project numbers are Linux
+OpenGL Compatibility on the llvmpipe software renderer; run this on your own
+machine for a real measurement.
 
-`cocs.x86_64` is the official Godot 4.5.2 release export runtime; `cocs.pck` contains
-the native runtime scenes, scripts and generated semantic JSON. Release exports
-disable GDScript `assert`, so evidence checks use explicit failures. Test fixtures,
-GLB CI probes, source/editor project caches, and the editor are not in this package.
+## Diagnostics and provenance
 
-`manifest.json` records per-file SHA256s, build input and generated-resource hash
-inventories, source/port commits, the 84-module server import closure, locked `ws`
-integrity, and official Godot archive SHA512s. `licenses/` retains Godot notices;
-`runtime/node_modules/ws/LICENSE` retains the dependency license. The adjacent
-archive `.sha256` file checks the tarball; the external build result records the
-manifest hash (a manifest cannot include its own hash).
+`node run.mjs --smoke` runs a headless normal-rate combat network check and exits.
+It checks loading, snapshots, movement, firing and server cleanup — not graphics,
+audio or human usability. Report a launch problem together with the console output.
+
+`manifest.json` records the source and port commits, every packaged file's SHA256,
+the runtime closure with its reviewed adapters, official Godot checksums and the
+staged operator-model override. The adjacent `.tar.gz.sha256` verifies the
+download.
+
+This is a development prerelease. **The source asset-rights audit remains
+unresolved; this package does not establish or grant new rights to the original
+assets.** Godot, Node and ws notices are included under `licenses/` and
+`runtime/node_modules/ws/LICENSE`.
+
+## Rebuild
+
+```sh
+python3 tools/godot-package/build.py --target linux --operator-models source-operators \
+  --state /tmp/opencode/cocs-linux-build \
+  --archive-directory /path/to/pinned/godot-archives
+```
+
+The archive directory is optional and must contain the verified `editor.zip` and
+`templates.tpz`. Generated binaries stay outside Git and are attached to a GitHub
+release; source, build tooling and verification reports are committed.

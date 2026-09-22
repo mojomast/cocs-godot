@@ -79,11 +79,26 @@ test('sports round options preserve legal ordinary configuration without silent 
   assert.throws(()=>launchOptions(['--experience=objectives','--round-target=1'],catalog),/sports launcher/);
 });
 
-test('world traversal and command board remain distinct native scenes',()=>{
-  const world=launchOptions(['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop'],catalog);
+test('world traversal and command board remain distinct native scenes',()=>{  const world=launchOptions(['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop'],catalog);
   assert.ok(world.args.includes('res://lattice/world_demo.tscn'));
   assert.deepEqual(world.sessionOptions,['--map=monsoon-foundry','--mode=cocs-coop']);
   assert.ok(launchOptions(['--experience=lattice'],catalog).args.includes('res://lattice/board.tscn'));
   assert.throws(()=>launchOptions(['--experience=lattice-world','--map=ion-speedway'],catalog));
   assert.throws(()=>launchOptions(['--experience=lattice-world','--session-smoke'],catalog));
+});
+
+test('identity-zones routes Domination on Vermilion Fold only',()=>{
+  const plan=launchOptions(['--experience=identity-zones'],catalog);
+  assert.ok(plan.args.includes('res://native_arenas/identity_zone_demo.tscn'));
+  assert.equal(plan.identityZone,true);
+  assert.equal(plan.endpoint,null);
+  assert.deepEqual(plan.sessionOptions,['--map=vermilion-fold','--mode=domination','--bots=2','--round-seconds=120','--score-limit=30']);
+  // Solo practice is a reviewed bound on this route, unlike native-dm.
+  const solo=launchOptions(['--experience=identity-zones','--bots=0','--smoke'],catalog);
+  assert.deepEqual(solo.sessionOptions,['--map=vermilion-fold','--mode=domination','--bots=0','--round-seconds=120','--score-limit=30','--smoke']);
+  assert.equal(solo.smoke,'--smoke');
+  assert.equal(solo.args.includes('--headless'),true);
+  for(const args of [['--map=lacuna-court'],['--mode=koth'],['--bots=8'],['--round-seconds=59'],['--score-limit=0'],['--score-limit=901'],['--time-limit=60'],['--round-target=5'],['--play']]){
+    assert.throws(()=>launchOptions(['--experience=identity-zones',...args],catalog),Error,args.join(' '));
+  }
 });

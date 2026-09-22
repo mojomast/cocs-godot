@@ -1,0 +1,44 @@
+name: Linux demo verification
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag containing cocs-native-linux.tar.gz
+        required: true
+        type: string
+permissions:
+  # GitHub requires write access to see unpublished draft release assets.
+  # This job only downloads; it never publishes or modifies a release.
+  contents: write
+jobs:
+  linux-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Download exact release asset and extract into a path with spaces
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          download="$RUNNER_TEMP/cocs-download"
+          extract="$RUNNER_TEMP/fresh Linux demo"
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --pattern 'cocs-native-linux.tar.gz*' --dir "$download"
+          mkdir -p "$extract"
+          tar -xzf "$download/cocs-native-linux.tar.gz" -C "$extract"
+          cd "$download"
+          sha256sum -c cocs-native-linux.tar.gz.sha256
+          echo "DEMO_ROOT=$extract/cocs-native-linux" >> "$GITHUB_ENV"
+      - name: Fresh-directory package verification
+        run: |
+          node tools/godot-package/verify_linux.mjs "$DEMO_ROOT" "$RUNNER_TEMP/linux-evidence"
+          test "$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["status"])' "$RUNNER_TEMP/linux-evidence/result.json")" = "passed"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linux-demo-verification
+          path: ${{ runner.temp }}/linux-evidence/
+          if-no-files-found: warn

@@ -1,0 +1,19 @@
+- status: **passed**, cases: 16, hash-verified files: 130, node: v22.23.1
+- port commit: `e82bc36242778b409b8c4800f25a4cec25606d1f`
+- Domination case: packed geometryHash `6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a`, identical to the authority echo and the lane's travel evidence
+  - meridian-exchange meridian-exchange passed=True cleanup=True
+  - verdant-reliquary verdant-reliquary passed=True cleanup=True
+  - ember-crucible ember-crucible passed=True cleanup=True
+  - native-dm prism-foundry passed=True cleanup=True
+  - native-dm aurora-basin passed=True cleanup=True
+  - native-dm cinder-array passed=True cleanup=True
+  - native-dm lacuna-court passed=True cleanup=True
+  - native-dm vermilion-fold passed=True cleanup=True
+  - native-dm nacre-engine passed=True cleanup=True
+  - identity-zones vermilion-fold passed=True cleanup=True
+  - native-dm-identity-resources  passed=True cleanup=None
+  - showcase  passed=True cleanup=True
+  - aurora-basin  passed=True cleanup=True
+  - cinder-array  passed=True cleanup=True
+  - particle-lab  passed=True cleanup=True
+  - shader-lab  passed=True cleanup=True

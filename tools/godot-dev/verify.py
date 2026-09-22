@@ -49,6 +49,8 @@ commands = [
     ("lobby-options", ["node", "--test", "tools/godot-package/lobby_options.test.mjs"]),
     ("lobby-ownership", ["node", "--test", "tools/godot-package/lobby_ownership.test.mjs"]),
     ("horde-closure", ["node", "--test", "tools/godot-package/horde_closure.test.mjs"]),
+    ("native-arena-closure", ["node", "--test", "tools/godot-package/native_arena_closure.test.mjs"]),
+    ("package-identity-routes", ["node", "--test", "tools/godot-package/native_identity_options.test.mjs"]),
     ("native-arena-authority", ["node", "--test", "port/native-arenas/tests/authority.test.mjs", "port/native-arenas/tests/input-events.test.mjs", "port/native-arenas/tests/source-match.test.mjs", "port/native-arenas/tests/schema.test.mjs"]),
     ("horde-ownership", ["node", "--test", "tools/godot-package/horde_ownership.test.mjs"]),
     ("zone-routing", ["node", "--test", "port/native-zone-modes/route.test.mjs"]),

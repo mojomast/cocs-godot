@@ -21,8 +21,14 @@ test('package native-dm routes the three identity maps to the Deathmatch scene',
   }
 });
 test('package identity ids are rejected where they are not reviewed routes', () => {
+  // Reviewed exception: Horde runs on Nacre Engine through its own identity scene.
+  const horde = options(['--experience=horde', '--map=nacre-engine'], catalog);
+  assert.equal(horde.scene, 'res://native_arenas/identity_horde_demo.tscn');
+  for (const map of ['lacuna-court', 'vermilion-fold']) {
+    assert.throws(() => options(['--experience=horde', `--map=${map}`], catalog), Error, `horde ${map}`);
+  }
   for (const map of ['lacuna-court', 'vermilion-fold', 'nacre-engine']) {
-    for (const experience of ['combat', 'lobby', 'horde', 'zones', 'sports', 'objectives', 'lattice', 'combined-arms', 'arms-race']) {
+    for (const experience of ['combat', 'lobby', 'zones', 'sports', 'objectives', 'lattice', 'combined-arms', 'arms-race']) {
       assert.throws(() => options([`--experience=${experience}`, `--map=${map}`], catalog), Error, `${experience} ${map}`);
     }
   }
@@ -31,6 +37,27 @@ test('package identity ids are rejected where they are not reviewed routes', () 
   }
   assert.throws(() => options(['--experience=native-dm', '--map=lacuna-court', '--mode=domination'], catalog));
   assert.throws(() => options(['--experience=native-dm', '--map=lacuna-court', '--play'], catalog));
+});
+test('package identity-zones routes Domination on Vermilion Fold only', () => {
+  const plan = options(['--experience=identity-zones', '--smoke'], catalog);
+  assert.equal(plan.identityZone, true);
+  assert.equal(plan.map, 'vermilion-fold');
+  assert.equal(plan.mode, 'domination');
+  assert.equal(plan.scene, 'res://native_arenas/identity_zone_demo.tscn');
+  assert.deepEqual(plan.userArgs, ['--map=vermilion-fold', '--mode=domination', '--bots=2',
+    '--round-seconds=120', '--score-limit=30', '--smoke']);
+  // The reviewed bounds come from the scene and the authority, not from a wider guess.
+  const relaxed = options(['--experience=identity-zones', '--bots=7', '--round-seconds=900', '--score-limit=900'], catalog);
+  assert.deepEqual(relaxed.userArgs, ['--map=vermilion-fold', '--mode=domination', '--bots=7',
+    '--round-seconds=900', '--score-limit=900']);
+  // Solo practice is a reviewed bound on this route: zero bots, unlike native-dm.
+  const solo = options(['--experience=identity-zones', '--bots=0'], catalog);
+  assert.deepEqual(solo.userArgs, ['--map=vermilion-fold', '--mode=domination', '--bots=0',
+    '--round-seconds=120', '--score-limit=30']);
+  for (const argv of [['--map=lacuna-court'], ['--map=vermilion-fold', '--mode=koth'],
+    ['--bots=8'], ['--round-seconds=59'], ['--score-limit=901'], ['--time-limit=60'], ['--round-target=5']]) {
+    assert.throws(() => options(['--experience=identity-zones', ...argv], catalog), Error, argv.join(' '));
+  }
 });
 test('Windows menus present all six maps as Deathmatch', () => {
   const menu = readFileSync(new URL('./Native Deathmatch.cmd', import.meta.url), 'utf8');
