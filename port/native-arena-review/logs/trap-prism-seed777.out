@@ -1,0 +1,104 @@
+{
+ "mapId": "prism-foundry",
+ "seed": 777,
+ "simSeconds": 180.00000000003539,
+ "over": true,
+ "reason": "time",
+ "frags": [
+  0,
+  1,
+  3,
+  5,
+  2,
+  8,
+  5,
+  1
+ ],
+ "traps": [
+  {
+   "actor": 4,
+   "first": 52.5,
+   "last": 55.5,
+   "duration": 3,
+   "center": [
+    8.969704037919186,
+    3.5982560795394014
+   ],
+   "maxRadius": 0,
+   "maxHeight": 1.28,
+   "minFloor": 0.76,
+   "samples": 7,
+   "botState": "engage",
+   "routeLen": 5,
+   "stuck": 1.2333333333333338
+  },
+  {
+   "actor": 4,
+   "first": 59,
+   "last": 61.5,
+   "duration": 2.5,
+   "center": [
+    8.969704037919186,
+    3.5982560795394014
+   ],
+   "maxRadius": 0,
+   "maxHeight": 1.28,
+   "minFloor": 0.76,
+   "samples": 6,
+   "botState": "roam",
+   "routeLen": 8,
+   "stuck": 0.733333333333334
+  },
+  {
+   "actor": 4,
+   "first": 49.5,
+   "last": 51.5,
+   "duration": 2,
+   "center": [
+    8.969704037919186,
+    3.5982560795394014
+   ],
+   "maxRadius": 0,
+   "maxHeight": 1.05,
+   "minFloor": 0.76,
+   "samples": 5,
+   "botState": "engage",
+   "routeLen": 7,
+   "stuck": 1.1333333333333342
+  },
+  {
+   "actor": 4,
+   "first": 56.5,
+   "last": 58,
+   "duration": 1.5,
+   "center": [
+    8.969704037919186,
+    3.5982560795394014
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.96,
+   "minFloor": 0.76,
+   "samples": 4,
+   "botState": "pursue",
+   "routeLen": 7,
+   "stuck": 1.1333333333333342
+  },
+  {
+   "actor": 2,
+   "first": 49,
+   "last": 50,
+   "duration": 1,
+   "center": [
+    -3.4968976369777915,
+    -25.688963204611607
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.1,
+   "minFloor": 0,
+   "samples": 3,
+   "botState": "pursue",
+   "routeLen": 4,
+   "stuck": 0.4333333333333333
+  }
+ ]
+}

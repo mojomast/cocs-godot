@@ -1,0 +1,70 @@
+{
+ "mapId": "cinder-array",
+ "seed": 777,
+ "simSeconds": 180.00000000003539,
+ "over": true,
+ "reason": "time",
+ "frags": [
+  0,
+  9,
+  7,
+  8,
+  6,
+  5,
+  4,
+  2
+ ],
+ "traps": [
+  {
+   "actor": 7,
+   "first": 69.5,
+   "last": 71.5,
+   "duration": 2,
+   "center": [
+    -20.622426242627935,
+    -23.528762568585567
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.71,
+   "minFloor": 16,
+   "samples": 5,
+   "botState": "engage",
+   "routeLen": 0,
+   "stuck": 0.08333333333333333
+  },
+  {
+   "actor": 1,
+   "first": 23.5,
+   "last": 25,
+   "duration": 1.5,
+   "center": [
+    -7.8370551466160085,
+    -26.132326998078454
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0,
+   "minFloor": 12,
+   "samples": 4,
+   "botState": "engage",
+   "routeLen": 1,
+   "stuck": 1.1500000000000008
+  },
+  {
+   "actor": 2,
+   "first": 113.5,
+   "last": 115,
+   "duration": 1.5,
+   "center": [
+    -10.339917036618589,
+    -26.135748010115737
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.69,
+   "minFloor": 12,
+   "samples": 4,
+   "botState": "engage",
+   "routeLen": 15,
+   "stuck": 1.2833333333333337
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+{
+  "mapId": "aurora-basin",
+  "bots": 3,
+  "roundSeconds": 180,
+  "sizes": "960x640,1280x800",
+  "endpoint": "ws://127.0.0.1:34947/native-arenas",
+  "captureRoot": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-review/captures/aurora-basin-2026-09-22T13-17-26-579Z",
+  "exitCode": 0,
+  "geometryHash": "2a8c06ba5b3a893135a3a6aef906a36f016107b5153fe5ec3b8a9efbfee66c86"
+}

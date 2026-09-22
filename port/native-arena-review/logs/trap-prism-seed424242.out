@@ -1,0 +1,36 @@
+{
+ "mapId": "prism-foundry",
+ "seed": 424242,
+ "simSeconds": 180.00000000003539,
+ "over": true,
+ "reason": "time",
+ "frags": [
+  0,
+  2,
+  4,
+  2,
+  2,
+  4,
+  2,
+  4
+ ],
+ "traps": [
+  {
+   "actor": 4,
+   "first": 151,
+   "last": 151.5,
+   "duration": 0.5,
+   "center": [
+    -8.890057960584008,
+    -12.33020274642684
+   ],
+   "maxRadius": 0,
+   "maxHeight": 2.76,
+   "minFloor": 0,
+   "samples": 2,
+   "botState": "seek",
+   "routeLen": 3,
+   "stuck": 0.5166666666666666
+  }
+ ]
+}

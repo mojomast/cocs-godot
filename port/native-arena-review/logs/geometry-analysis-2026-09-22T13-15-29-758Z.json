@@ -1,0 +1,3222 @@
+{
+  "prism-foundry": {
+    "mapId": "prism-foundry",
+    "geometryHash": "9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572",
+    "hashVerified": true,
+    "nextGen": false,
+    "counts": {
+      "surfaces": 123,
+      "wallSegments": 1081,
+      "wallMeshes": 0,
+      "navNodes": 249,
+      "spawns": 6,
+      "pickups": 16,
+      "routes": 7,
+      "colliderSources": 101
+    },
+    "support": {
+      "gridStep": 0.5,
+      "cols": 146,
+      "rows": 110,
+      "supportedCells": 8410,
+      "unsupportedCells": 7650,
+      "enclosedHoleGroups": [
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            -11,
+            -27
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            -11,
+            -20
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            11,
+            -27
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            11,
+            -20
+          ]
+        }
+      ],
+      "enclosedHoleTotal": 4,
+      "largestEnclosedHoleArea": 0.25
+    },
+    "spawns": [
+      {
+        "index": 0,
+        "x": -7,
+        "z": 8,
+        "floor": 0,
+        "authoredY": 0,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "x": 7,
+        "z": -8,
+        "floor": 0,
+        "authoredY": 0,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "x": -30,
+        "z": 0,
+        "floor": 0,
+        "authoredY": 0,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "x": 0,
+        "z": -29,
+        "floor": 0,
+        "authoredY": 0,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "x": 26,
+        "z": 0,
+        "floor": 4,
+        "authoredY": 4,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "x": 0,
+        "z": 14.5,
+        "floor": 4,
+        "authoredY": 4,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "pickups": [
+      {
+        "index": 0,
+        "kind": "rocket",
+        "x": -30,
+        "z": 0,
+        "floor": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "kind": "rail",
+        "x": 26,
+        "z": 0,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "kind": "scatter",
+        "x": -1.34,
+        "z": -29,
+        "floor": 0.114,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "kind": "plasma",
+        "x": -2.185714,
+        "z": 14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "kind": "grenade",
+        "x": 5.6,
+        "z": -8,
+        "floor": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "kind": "shock",
+        "x": -15.3,
+        "z": -14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 6,
+        "kind": "flak",
+        "x": 15.3,
+        "z": 14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 7,
+        "kind": "marksman",
+        "x": -15.3,
+        "z": 5.8,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 8,
+        "kind": "smg",
+        "x": -7,
+        "z": -3.636364,
+        "floor": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 9,
+        "kind": "ammo",
+        "x": 7,
+        "z": 5.090909,
+        "floor": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 10,
+        "kind": "health",
+        "x": 15.3,
+        "z": -14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 11,
+        "kind": "health",
+        "x": -3.642857,
+        "z": -14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 12,
+        "kind": "health",
+        "x": 15.3,
+        "z": -2.9,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 13,
+        "kind": "armor",
+        "x": 6.7,
+        "z": -21.799999,
+        "floor": 0.84,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 14,
+        "kind": "armor",
+        "x": -12.385714,
+        "z": 14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 15,
+        "kind": "armor",
+        "x": 6.557143,
+        "z": 14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "nav": {
+      "nodes": 378,
+      "edges": 5516,
+      "components": [
+        378
+      ],
+      "componentCount": 1,
+      "botUsableNodes": 378,
+      "authoredNavNodesUnsupported": 0
+    },
+    "routes": [
+      {
+        "id": "reactor-ring",
+        "points": 43,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "west-ascent",
+        "points": 41,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "east-ascent",
+        "points": 38,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "garden-link",
+        "points": 18,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "west-coolant-loop",
+        "points": 13,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "east-coolant-loop",
+        "points": 13,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "upper-loop",
+        "points": 83,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      }
+    ],
+    "wallBands": {
+      "sampled": 5401,
+      "withoutNearbyColliderGeometry": 0,
+      "sampleShare": 0,
+      "samples": []
+    },
+    "wallProbes": {
+      "probed": 669,
+      "movementBlockedRayClear": 40,
+      "samples": [
+        {
+          "x": -15,
+          "y": 0,
+          "z": -17.38,
+          "to": [
+            -15,
+            0,
+            -16.55
+          ],
+          "bandY": [
+            -1,
+            0
+          ]
+        },
+        {
+          "x": 15,
+          "y": 0,
+          "z": -17.38,
+          "to": [
+            15,
+            0,
+            -16.55
+          ],
+          "bandY": [
+            -1,
+            0
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "z": 17.38,
+          "to": [
+            0,
+            0,
+            16.55
+          ],
+          "bandY": [
+            -1,
+            0
+          ]
+        },
+        {
+          "x": -17,
+          "y": 0,
+          "z": -16.62,
+          "to": [
+            -17,
+            0,
+            -17.45
+          ],
+          "bandY": [
+            0,
+            0.6
+          ]
+        },
+        {
+          "x": -17,
+          "y": 0,
+          "z": 16.62,
+          "to": [
+            -17,
+            0,
+            17.45
+          ],
+          "bandY": [
+            0,
+            0.6
+          ]
+        },
+        {
+          "x": 17,
+          "y": 0,
+          "z": -16.62,
+          "to": [
+            17,
+            0,
+            -17.45
+          ],
+          "bandY": [
+            0,
+            0.6
+          ]
+        },
+        {
+          "x": 18.45,
+          "y": 4,
+          "z": -6.25,
+          "to": [
+            19.28,
+            4,
+            -6.25
+          ],
+          "bandY": [
+            0,
+            0.6
+          ]
+        },
+        {
+          "x": 18.45,
+          "y": 4,
+          "z": 6.25,
+          "to": [
+            19.28,
+            4,
+            6.25
+          ],
+          "bandY": [
+            0,
+            0.6
+          ]
+        },
+        {
+          "x": 17,
+          "y": 0,
+          "z": 16.62,
+          "to": [
+            17,
+            0,
+            17.45
+          ],
+          "bandY": [
+            0,
+            0.6
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "z": 16.98,
+          "to": [
+            0,
+            0,
+            16.15
+          ],
+          "bandY": [
+            7.2,
+            9.6
+          ]
+        },
+        {
+          "x": -15.3,
+          "y": 0,
+          "z": -16.62,
+          "to": [
+            -15.3,
+            0,
+            -17.45
+          ],
+          "bandY": [
+            3.6,
+            4
+          ]
+        },
+        {
+          "x": -15.3,
+          "y": 0,
+          "z": 16.62,
+          "to": [
+            -15.3,
+            0,
+            17.45
+          ],
+          "bandY": [
+            3.6,
+            4
+          ]
+        },
+        {
+          "x": -8.4,
+          "y": 0,
+          "z": -16.62,
+          "to": [
+            -8.4,
+            0,
+            -17.45
+          ],
+          "bandY": [
+            3.6,
+            4
+          ]
+        },
+        {
+          "x": 8.4,
+          "y": 0,
+          "z": -16.62,
+          "to": [
+            8.4,
+            0,
+            -17.45
+          ],
+          "bandY": [
+            3.6,
+            4
+          ]
+        },
+        {
+          "x": -12.9,
+          "y": 0,
+          "z": -12.38,
+          "to": [
+            -12.9,
+            0,
+            -11.55
+          ],
+          "bandY": [
+            3.6,
+            4
+          ]
+        },
+        {
+          "x": 12.9,
+          "y": 0,
+          "z": -12.38,
+          "to": [
+            12.9,
+            0,
+            -11.55
+          ],
+          "bandY": [
+            3.6,
+            4
+          ]
+        },
+        {
+          "x": -8.28,
+          "y": 0,
+          "z": -1.1,
+          "to": [
+            -7.45,
+            0,
+            -1.1
+          ],
+          "bandY": [
+            -0.3,
+            1.87
+          ]
+        },
+        {
+          "x": -8.28,
+          "y": 0,
+          "z": -0.5,
+          "to": [
+            -7.45,
+            0,
+            -0.5
+          ],
+          "bandY": [
+            -0.3,
+            1.73
+          ]
+        },
+        {
+          "x": -8.28,
+          "y": 0,
+          "z": 0.1,
+          "to": [
+            -7.45,
+            0,
+            0.1
+          ],
+          "bandY": [
+            -0.3,
+            1.6
+          ]
+        },
+        {
+          "x": -8.28,
+          "y": 0,
+          "z": 0.7,
+          "to": [
+            -7.45,
+            0,
+            0.7
+          ],
+          "bandY": [
+            -0.3,
+            1.47
+          ]
+        },
+        {
+          "x": -8.28,
+          "y": 0,
+          "z": 1.3,
+          "to": [
+            -7.45,
+            0,
+            1.3
+          ],
+          "bandY": [
+            -0.3,
+            1.33
+          ]
+        },
+        {
+          "x": -8.28,
+          "y": 0,
+          "z": 1.9,
+          "to": [
+            -7.45,
+            0,
+            1.9
+          ],
+          "bandY": [
+            -0.3,
+            1.2
+          ]
+        },
+        {
+          "x": -8.28,
+          "y": 0,
+          "z": 2.5,
+          "to": [
+            -7.45,
+            0,
+            2.5
+          ],
+          "bandY": [
+            -0.3,
+            1.07
+          ]
+        },
+        {
+          "x": -8.28,
+          "y": 0,
+          "z": 3.1,
+          "to": [
+            -7.45,
+            0,
+            3.1
+          ],
+          "bandY": [
+            -0.3,
+            0.93
+          ]
+        },
+        {
+          "x": -8.28,
+          "y": 0,
+          "z": 3.7,
+          "to": [
+            -7.45,
+            0,
+            3.7
+          ],
+          "bandY": [
+            -0.3,
+            0.8
+          ]
+        },
+        {
+          "x": -8.28,
+          "y": 0,
+          "z": 4.3,
+          "to": [
+            -7.45,
+            0,
+            4.3
+          ],
+          "bandY": [
+            -0.3,
+            0.67
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 0.06,
+          "z": 6.75,
+          "to": [
+            -10.75,
+            0.06,
+            6.75
+          ],
+          "bandY": [
+            0.06,
+            1.46
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 0.19,
+          "z": 6.16,
+          "to": [
+            -10.75,
+            0.19,
+            6.16
+          ],
+          "bandY": [
+            0.12,
+            1.59
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 0.32,
+          "z": 5.58,
+          "to": [
+            -10.75,
+            0.32,
+            5.58
+          ],
+          "bandY": [
+            0.25,
+            1.72
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 0.45,
+          "z": 4.99,
+          "to": [
+            -10.75,
+            0.45,
+            4.99
+          ],
+          "bandY": [
+            0.39,
+            1.85
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 0.71,
+          "z": 3.82,
+          "to": [
+            -10.75,
+            0.71,
+            3.82
+          ],
+          "bandY": [
+            0.65,
+            2.11
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 1.36,
+          "z": 0.88,
+          "to": [
+            -10.75,
+            1.36,
+            0.88
+          ],
+          "bandY": [
+            1.3,
+            2.77
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 2.01,
+          "z": -2.05,
+          "to": [
+            -10.75,
+            2.01,
+            -2.05
+          ],
+          "bandY": [
+            1.96,
+            3.42
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 2.66,
+          "z": -4.98,
+          "to": [
+            -10.75,
+            2.66,
+            -4.98
+          ],
+          "bandY": [
+            2.61,
+            4.08
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 2.79,
+          "z": -5.57,
+          "to": [
+            -10.75,
+            2.79,
+            -5.57
+          ],
+          "bandY": [
+            2.74,
+            4.21
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 2.92,
+          "z": -6.16,
+          "to": [
+            -10.75,
+            2.92,
+            -6.16
+          ],
+          "bandY": [
+            2.88,
+            4.34
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 3.05,
+          "z": -6.74,
+          "to": [
+            -10.75,
+            3.05,
+            -6.74
+          ],
+          "bandY": [
+            3.01,
+            4.47
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 3.18,
+          "z": -7.33,
+          "to": [
+            -10.75,
+            3.18,
+            -7.33
+          ],
+          "bandY": [
+            3.14,
+            4.6
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 3.31,
+          "z": -7.92,
+          "to": [
+            -10.75,
+            3.31,
+            -7.92
+          ],
+          "bandY": [
+            3.27,
+            4.73
+          ]
+        },
+        {
+          "x": -11.58,
+          "y": 3.44,
+          "z": -8.5,
+          "to": [
+            -10.75,
+            3.44,
+            -8.5
+          ],
+          "bandY": [
+            3.4,
+            4.86
+          ]
+        }
+      ],
+      "walkableRayBlocked": 0,
+      "walkableSamples": []
+    },
+    "durationMs": 1965,
+    "issueCount": 1,
+    "issues": [
+      {
+        "kind": "movement-barrier-without-boundary",
+        "count": 40,
+        "samples": [
+          {
+            "x": -15,
+            "y": 0,
+            "z": -17.38,
+            "to": [
+              -15,
+              0,
+              -16.55
+            ],
+            "bandY": [
+              -1,
+              0
+            ]
+          },
+          {
+            "x": 15,
+            "y": 0,
+            "z": -17.38,
+            "to": [
+              15,
+              0,
+              -16.55
+            ],
+            "bandY": [
+              -1,
+              0
+            ]
+          },
+          {
+            "x": 0,
+            "y": 0,
+            "z": 17.38,
+            "to": [
+              0,
+              0,
+              16.55
+            ],
+            "bandY": [
+              -1,
+              0
+            ]
+          },
+          {
+            "x": -17,
+            "y": 0,
+            "z": -16.62,
+            "to": [
+              -17,
+              0,
+              -17.45
+            ],
+            "bandY": [
+              0,
+              0.6
+            ]
+          },
+          {
+            "x": -17,
+            "y": 0,
+            "z": 16.62,
+            "to": [
+              -17,
+              0,
+              17.45
+            ],
+            "bandY": [
+              0,
+              0.6
+            ]
+          },
+          {
+            "x": 17,
+            "y": 0,
+            "z": -16.62,
+            "to": [
+              17,
+              0,
+              -17.45
+            ],
+            "bandY": [
+              0,
+              0.6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "aurora-basin": {
+    "mapId": "aurora-basin",
+    "geometryHash": "2a8c06ba5b3a893135a3a6aef906a36f016107b5153fe5ec3b8a9efbfee66c86",
+    "hashVerified": true,
+    "nextGen": true,
+    "counts": {
+      "surfaces": 441,
+      "wallSegments": 7398,
+      "wallMeshes": 0,
+      "navNodes": 143,
+      "spawns": 6,
+      "pickups": 16,
+      "routes": 4,
+      "colliderSources": 324
+    },
+    "support": {
+      "gridStep": 0.5,
+      "cols": 171,
+      "rows": 171,
+      "supportedCells": 26315,
+      "unsupportedCells": 2926,
+      "enclosedHoleGroups": [
+        {
+          "cells": 3,
+          "approxArea": 0.75,
+          "center": [
+            -21.5,
+            -28.5
+          ]
+        },
+        {
+          "cells": 3,
+          "approxArea": 0.75,
+          "center": [
+            37.5,
+            9
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            -26.5,
+            -30.5
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            -25,
+            -31.5
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            33.5,
+            7.5
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            34,
+            6
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            36,
+            11.5
+          ]
+        }
+      ],
+      "enclosedHoleTotal": 7,
+      "largestEnclosedHoleArea": 0.75
+    },
+    "spawns": [
+      {
+        "index": 0,
+        "x": -23,
+        "z": 29,
+        "floor": 0.105,
+        "authoredY": 0.105,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "x": 20,
+        "z": 19,
+        "floor": 0.08,
+        "authoredY": 0.08,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "x": 29,
+        "z": -4,
+        "floor": 0.08,
+        "authoredY": 0.08,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "x": -24,
+        "z": -19,
+        "floor": -0.15,
+        "authoredY": -0.15,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "x": 16,
+        "z": -34,
+        "floor": 9,
+        "authoredY": 9,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "x": -6,
+        "z": 15,
+        "floor": 0.04,
+        "authoredY": 0.04,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "pickups": [
+      {
+        "index": 0,
+        "kind": "rocket",
+        "x": 40.299999,
+        "z": 12,
+        "floor": -0.15,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "kind": "rail",
+        "x": -27.728395,
+        "z": -25.964334,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "kind": "scatter",
+        "x": -23,
+        "z": 30,
+        "floor": 0.105,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "kind": "plasma",
+        "x": 19.133059,
+        "z": -30.696844,
+        "floor": 9,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "kind": "grenade",
+        "x": 9.455599,
+        "z": 25.29015,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "kind": "shock",
+        "x": -26.875698,
+        "z": 2.587835,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 6,
+        "kind": "flak",
+        "x": 34.751713,
+        "z": -12.36214,
+        "floor": 5.089,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 7,
+        "kind": "marksman",
+        "x": -5.33882,
+        "z": -33.120712,
+        "floor": 5.933,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 8,
+        "kind": "smg",
+        "x": 22.897299,
+        "z": 14.30782,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 9,
+        "kind": "ammo",
+        "x": -6.76026,
+        "z": 26.139986,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 10,
+        "kind": "health",
+        "x": 26.998972,
+        "z": -0.235616,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 11,
+        "kind": "health",
+        "x": -25.928669,
+        "z": -11.659808,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 12,
+        "kind": "health",
+        "x": 21.276291,
+        "z": -16.62286,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 13,
+        "kind": "armor",
+        "x": -21.981119,
+        "z": 15.67898,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 14,
+        "kind": "armor",
+        "x": -14.705254,
+        "z": -22.644106,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 15,
+        "kind": "armor",
+        "x": 6.76026,
+        "z": -26.139986,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "nav": {
+      "nodes": 303,
+      "edges": 2230,
+      "components": [
+        303
+      ],
+      "componentCount": 1,
+      "botUsableNodes": 303,
+      "authoredNavNodesUnsupported": 0
+    },
+    "routes": [
+      {
+        "id": "crown-ascent",
+        "points": 109,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "lake-circuit",
+        "points": 145,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "landing-link",
+        "points": 25,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "eastern-snow-flank",
+        "points": 28,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      }
+    ],
+    "wallBands": {
+      "sampled": 20931,
+      "withoutNearbyColliderGeometry": 3,
+      "sampleShare": 0.0001,
+      "samples": [
+        {
+          "x": 42.5,
+          "y": 7.4,
+          "z": -25.01,
+          "nearestColliderDistance": 0.91
+        },
+        {
+          "x": 42.5,
+          "y": 7.28,
+          "z": -25.01,
+          "nearestColliderDistance": 0.91
+        },
+        {
+          "x": 33.89,
+          "y": 11.47,
+          "z": -41.69,
+          "nearestColliderDistance": 0.96
+        }
+      ]
+    },
+    "wallProbes": {
+      "probed": 2022,
+      "movementBlockedRayClear": 40,
+      "samples": [
+        {
+          "x": -26.33,
+          "y": 0.08,
+          "z": 11.86,
+          "to": [
+            -25.57,
+            0.08,
+            11.52
+          ],
+          "bandY": [
+            -0.24,
+            -0.03
+          ]
+        },
+        {
+          "x": -26.5,
+          "y": 0.08,
+          "z": 11.47,
+          "to": [
+            -25.74,
+            0.08,
+            11.13
+          ],
+          "bandY": [
+            -0.24,
+            -0.13
+          ]
+        },
+        {
+          "x": -26.66,
+          "y": 0.08,
+          "z": 11.1,
+          "to": [
+            -25.89,
+            0.08,
+            10.79
+          ],
+          "bandY": [
+            -0.24,
+            0.08
+          ]
+        },
+        {
+          "x": -26.82,
+          "y": 0.08,
+          "z": 10.7,
+          "to": [
+            -26.05,
+            0.08,
+            10.39
+          ],
+          "bandY": [
+            -0.24,
+            -0.03
+          ]
+        },
+        {
+          "x": -27.12,
+          "y": 0.08,
+          "z": 9.92,
+          "to": [
+            -26.33,
+            0.08,
+            9.65
+          ],
+          "bandY": [
+            -0.24,
+            0.08
+          ]
+        },
+        {
+          "x": -27.26,
+          "y": 0.08,
+          "z": 9.52,
+          "to": [
+            -26.48,
+            0.08,
+            9.25
+          ],
+          "bandY": [
+            -0.24,
+            -0.03
+          ]
+        },
+        {
+          "x": -27.4,
+          "y": 0.08,
+          "z": 9.11,
+          "to": [
+            -26.62,
+            0.08,
+            8.84
+          ],
+          "bandY": [
+            -0.24,
+            -0.13
+          ]
+        },
+        {
+          "x": -27.52,
+          "y": 0.08,
+          "z": 8.73,
+          "to": [
+            -26.73,
+            0.08,
+            8.49
+          ],
+          "bandY": [
+            -0.24,
+            0.08
+          ]
+        },
+        {
+          "x": 34.62,
+          "y": 0.51,
+          "z": 12.35,
+          "to": [
+            34.03,
+            0.51,
+            11.76
+          ],
+          "bandY": [
+            0.3,
+            0.53
+          ]
+        },
+        {
+          "x": 34.96,
+          "y": 0.56,
+          "z": 11.98,
+          "to": [
+            34.33,
+            0.57,
+            11.44
+          ],
+          "bandY": [
+            0.18,
+            0.59
+          ]
+        },
+        {
+          "x": 35.32,
+          "y": 0.62,
+          "z": 11.56,
+          "to": [
+            34.7,
+            0.62,
+            11.02
+          ],
+          "bandY": [
+            0.41,
+            0.65
+          ]
+        },
+        {
+          "x": 35.64,
+          "y": 0.68,
+          "z": 11.16,
+          "to": [
+            34.97,
+            0.68,
+            10.67
+          ],
+          "bandY": [
+            0.3,
+            0.7
+          ]
+        },
+        {
+          "x": 35.98,
+          "y": 0.73,
+          "z": 10.7,
+          "to": [
+            35.31,
+            0.74,
+            10.21
+          ],
+          "bandY": [
+            0.53,
+            0.76
+          ]
+        },
+        {
+          "x": 36.27,
+          "y": 0.79,
+          "z": 10.27,
+          "to": [
+            35.57,
+            0.79,
+            9.83
+          ],
+          "bandY": [
+            0.41,
+            0.82
+          ]
+        },
+        {
+          "x": 36.58,
+          "y": 0.85,
+          "z": 9.77,
+          "to": [
+            35.87,
+            0.85,
+            9.34
+          ],
+          "bandY": [
+            0.64,
+            0.87
+          ]
+        },
+        {
+          "x": 36.83,
+          "y": 0.9,
+          "z": 9.31,
+          "to": [
+            36.09,
+            0.91,
+            8.94
+          ],
+          "bandY": [
+            0.52,
+            0.93
+          ]
+        },
+        {
+          "x": 37.09,
+          "y": 0.96,
+          "z": 8.79,
+          "to": [
+            36.35,
+            0.97,
+            8.42
+          ],
+          "bandY": [
+            0.76,
+            0.99
+          ]
+        },
+        {
+          "x": 37.3,
+          "y": 1.02,
+          "z": 8.3,
+          "to": [
+            36.53,
+            1.02,
+            8.01
+          ],
+          "bandY": [
+            0.64,
+            1.04
+          ]
+        },
+        {
+          "x": 37.51,
+          "y": 1.08,
+          "z": 7.74,
+          "to": [
+            36.73,
+            1.08,
+            7.45
+          ],
+          "bandY": [
+            0.87,
+            1.1
+          ]
+        },
+        {
+          "x": 37.74,
+          "y": 1.23,
+          "z": 6.95,
+          "to": [
+            36.94,
+            1.24,
+            6.75
+          ],
+          "bandY": [
+            0.95,
+            1.26
+          ]
+        },
+        {
+          "x": 37.84,
+          "y": 1.31,
+          "z": 6.56,
+          "to": [
+            37.03,
+            1.32,
+            6.36
+          ],
+          "bandY": [
+            1.15,
+            1.34
+          ]
+        },
+        {
+          "x": 37.9,
+          "y": 1.39,
+          "z": 6.23,
+          "to": [
+            37.08,
+            1.38,
+            6.11
+          ],
+          "bandY": [
+            0.99,
+            1.43
+          ]
+        },
+        {
+          "x": 38.02,
+          "y": 1.55,
+          "z": 5.43,
+          "to": [
+            37.2,
+            1.56,
+            5.31
+          ],
+          "bandY": [
+            1.39,
+            1.59
+          ]
+        },
+        {
+          "x": 34.72,
+          "y": 1.66,
+          "z": 4.66,
+          "to": [
+            35.55,
+            1.67,
+            4.72
+          ],
+          "bandY": [
+            1.24,
+            1.59
+          ]
+        },
+        {
+          "x": 34.75,
+          "y": 1.78,
+          "z": 4.22,
+          "to": [
+            35.58,
+            1.78,
+            4.27
+          ],
+          "bandY": [
+            1.36,
+            1.54
+          ]
+        },
+        {
+          "x": 38.06,
+          "y": 1.63,
+          "z": 5.08,
+          "to": [
+            37.23,
+            1.63,
+            5.03
+          ],
+          "bandY": [
+            1.24,
+            1.67
+          ]
+        },
+        {
+          "x": 38.08,
+          "y": 1.71,
+          "z": 4.68,
+          "to": [
+            37.26,
+            1.72,
+            4.63
+          ],
+          "bandY": [
+            1.44,
+            1.75
+          ]
+        },
+        {
+          "x": 34.77,
+          "y": 1.9,
+          "z": 3.71,
+          "to": [
+            35.6,
+            1.91,
+            3.72
+          ],
+          "bandY": [
+            1.48,
+            1.83
+          ]
+        },
+        {
+          "x": 34.77,
+          "y": 2.02,
+          "z": 3.22,
+          "to": [
+            35.6,
+            2.02,
+            3.23
+          ],
+          "bandY": [
+            1.61,
+            1.78
+          ]
+        },
+        {
+          "x": 38.12,
+          "y": 1.88,
+          "z": 3.91,
+          "to": [
+            37.29,
+            1.87,
+            3.91
+          ],
+          "bandY": [
+            1.48,
+            1.91
+          ]
+        },
+        {
+          "x": 38.13,
+          "y": 1.96,
+          "z": 3.51,
+          "to": [
+            37.3,
+            1.96,
+            3.5
+          ],
+          "bandY": [
+            1.68,
+            2
+          ]
+        },
+        {
+          "x": 38.13,
+          "y": 2.04,
+          "z": 3.1,
+          "to": [
+            37.3,
+            2.04,
+            3.1
+          ],
+          "bandY": [
+            1.88,
+            2.08
+          ]
+        },
+        {
+          "x": 34.76,
+          "y": 2.14,
+          "z": 2.69,
+          "to": [
+            35.59,
+            2.15,
+            2.66
+          ],
+          "bandY": [
+            1.73,
+            2.08
+          ]
+        },
+        {
+          "x": 34.74,
+          "y": 2.26,
+          "z": 2.16,
+          "to": [
+            35.57,
+            2.27,
+            2.13
+          ],
+          "bandY": [
+            1.85,
+            2.02
+          ]
+        },
+        {
+          "x": 38.13,
+          "y": 2.12,
+          "z": 2.72,
+          "to": [
+            37.3,
+            2.12,
+            2.75
+          ],
+          "bandY": [
+            1.73,
+            2.16
+          ]
+        },
+        {
+          "x": 38.1,
+          "y": 2.28,
+          "z": 1.91,
+          "to": [
+            37.27,
+            2.29,
+            1.94
+          ],
+          "bandY": [
+            2.12,
+            2.32
+          ]
+        },
+        {
+          "x": 34.71,
+          "y": 2.39,
+          "z": 1.6,
+          "to": [
+            35.54,
+            2.39,
+            1.54
+          ],
+          "bandY": [
+            1.97,
+            2.32
+          ]
+        },
+        {
+          "x": 34.68,
+          "y": 2.51,
+          "z": 1.04,
+          "to": [
+            35.51,
+            2.51,
+            0.99
+          ],
+          "bandY": [
+            2.09,
+            2.27
+          ]
+        },
+        {
+          "x": 38.08,
+          "y": 2.36,
+          "z": 1.52,
+          "to": [
+            37.25,
+            2.36,
+            1.57
+          ],
+          "bandY": [
+            1.97,
+            2.4
+          ]
+        },
+        {
+          "x": 38.05,
+          "y": 2.45,
+          "z": 1.11,
+          "to": [
+            37.22,
+            2.45,
+            1.16
+          ],
+          "bandY": [
+            2.17,
+            2.49
+          ]
+        }
+      ],
+      "walkableRayBlocked": 0,
+      "walkableSamples": []
+    },
+    "durationMs": 3284,
+    "issueCount": 1,
+    "issues": [
+      {
+        "kind": "movement-barrier-without-boundary",
+        "count": 40,
+        "samples": [
+          {
+            "x": -26.33,
+            "y": 0.08,
+            "z": 11.86,
+            "to": [
+              -25.57,
+              0.08,
+              11.52
+            ],
+            "bandY": [
+              -0.24,
+              -0.03
+            ]
+          },
+          {
+            "x": -26.5,
+            "y": 0.08,
+            "z": 11.47,
+            "to": [
+              -25.74,
+              0.08,
+              11.13
+            ],
+            "bandY": [
+              -0.24,
+              -0.13
+            ]
+          },
+          {
+            "x": -26.66,
+            "y": 0.08,
+            "z": 11.1,
+            "to": [
+              -25.89,
+              0.08,
+              10.79
+            ],
+            "bandY": [
+              -0.24,
+              0.08
+            ]
+          },
+          {
+            "x": -26.82,
+            "y": 0.08,
+            "z": 10.7,
+            "to": [
+              -26.05,
+              0.08,
+              10.39
+            ],
+            "bandY": [
+              -0.24,
+              -0.03
+            ]
+          },
+          {
+            "x": -27.12,
+            "y": 0.08,
+            "z": 9.92,
+            "to": [
+              -26.33,
+              0.08,
+              9.65
+            ],
+            "bandY": [
+              -0.24,
+              0.08
+            ]
+          },
+          {
+            "x": -27.26,
+            "y": 0.08,
+            "z": 9.52,
+            "to": [
+              -26.48,
+              0.08,
+              9.25
+            ],
+            "bandY": [
+              -0.24,
+              -0.03
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cinder-array": {
+    "mapId": "cinder-array",
+    "geometryHash": "e4b7763a5dae391cfcc0e9a13b5202a054cdfd9761c449cf6a4bf2fd4765ab8c",
+    "hashVerified": true,
+    "nextGen": false,
+    "counts": {
+      "surfaces": 129,
+      "wallSegments": 1588,
+      "wallMeshes": 0,
+      "navNodes": 175,
+      "spawns": 6,
+      "pickups": 16,
+      "routes": 9,
+      "colliderSources": 101
+    },
+    "support": {
+      "gridStep": 0.5,
+      "cols": 161,
+      "rows": 141,
+      "supportedCells": 8429,
+      "unsupportedCells": 14272,
+      "enclosedHoleGroups": [
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            -34,
+            -31.5
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            -24,
+            -31.5
+          ]
+        }
+      ],
+      "enclosedHoleTotal": 2,
+      "largestEnclosedHoleArea": 0.25
+    },
+    "spawns": [
+      {
+        "index": 0,
+        "x": -24,
+        "z": 28,
+        "floor": 7,
+        "authoredY": 7,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "x": 25,
+        "z": -8,
+        "floor": 12,
+        "authoredY": 12,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "x": 26,
+        "z": -30,
+        "floor": 12,
+        "authoredY": 12,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "x": -8,
+        "z": -31,
+        "floor": 12,
+        "authoredY": 12,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "x": -29,
+        "z": -26,
+        "floor": 16,
+        "authoredY": 16,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "x": -41,
+        "z": -5,
+        "floor": 12,
+        "authoredY": 12,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "pickups": [
+      {
+        "index": 0,
+        "kind": "rocket",
+        "x": -36,
+        "z": -30,
+        "floor": 16,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "kind": "rail",
+        "x": 26,
+        "z": -14,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "kind": "scatter",
+        "x": -21,
+        "z": 21,
+        "floor": 7,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "kind": "plasma",
+        "x": -2.666667,
+        "z": -31,
+        "floor": 14.667,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "kind": "grenade",
+        "x": 4.200001,
+        "z": 5.88,
+        "floor": 10.75,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "kind": "shock",
+        "x": -40,
+        "z": -1,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 6,
+        "kind": "flak",
+        "x": -16.421053,
+        "z": -5,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 7,
+        "kind": "marksman",
+        "x": 17,
+        "z": -31,
+        "floor": 15,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 8,
+        "kind": "smg",
+        "x": -19.186666,
+        "z": -28.715,
+        "floor": 15.333,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 9,
+        "kind": "ammo",
+        "x": -34.156922,
+        "z": 13.932308,
+        "floor": 8.154,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 10,
+        "kind": "health",
+        "x": 14.526316,
+        "z": -5,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 11,
+        "kind": "health",
+        "x": -8.633333,
+        "z": 13.58,
+        "floor": 8.667,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 12,
+        "kind": "health",
+        "x": -37.117141,
+        "z": -15.707143,
+        "floor": 14.286,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 13,
+        "kind": "armor",
+        "x": -3.157895,
+        "z": -5,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 14,
+        "kind": "armor",
+        "x": -25.5,
+        "z": 5,
+        "floor": 10.571,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 15,
+        "kind": "armor",
+        "x": -29.684211,
+        "z": -5,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "nav": {
+      "nodes": 369,
+      "edges": 5392,
+      "components": [
+        369
+      ],
+      "componentCount": 1,
+      "botUsableNodes": 369,
+      "authoredNavNodesUnsupported": 0
+    },
+    "routes": [
+      {
+        "id": "SuspendedSpan",
+        "points": 29,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "ExtractorAccess",
+        "points": 11,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "BoreFloor",
+        "points": 25,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "RimAscent",
+        "points": 14,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "WestDescent",
+        "points": 14,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "ReturnRamp",
+        "points": 19,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "cooling-crosslink",
+        "points": 39,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "transfer-chord",
+        "points": 18,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "observatory-console-flank",
+        "points": 6,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      }
+    ],
+    "wallBands": {
+      "sampled": 5684,
+      "withoutNearbyColliderGeometry": 0,
+      "sampleShare": 0,
+      "samples": []
+    },
+    "wallProbes": {
+      "probed": 601,
+      "movementBlockedRayClear": 40,
+      "samples": [
+        {
+          "x": -35.13,
+          "y": 7,
+          "z": 20.87,
+          "to": [
+            -34.54,
+            7,
+            21.46
+          ],
+          "bandY": [
+            7,
+            8.28
+          ]
+        },
+        {
+          "x": 14.62,
+          "y": 12,
+          "z": 3.88,
+          "to": [
+            15.21,
+            12,
+            3.29
+          ],
+          "bandY": [
+            12,
+            13.28
+          ]
+        },
+        {
+          "x": 22.14,
+          "y": 13.29,
+          "z": -34.26,
+          "to": [
+            22.73,
+            13.09,
+            -33.67
+          ],
+          "bandY": [
+            11.2,
+            12
+          ]
+        },
+        {
+          "x": 21.12,
+          "y": 12,
+          "z": -27.08,
+          "to": [
+            21.95,
+            12,
+            -27.08
+          ],
+          "bandY": [
+            11.2,
+            12
+          ]
+        },
+        {
+          "x": -4.87,
+          "y": 12,
+          "z": -35.13,
+          "to": [
+            -5.46,
+            12,
+            -34.54
+          ],
+          "bandY": [
+            12,
+            13.28
+          ]
+        },
+        {
+          "x": -4.87,
+          "y": 12,
+          "z": -26.87,
+          "to": [
+            -5.46,
+            12,
+            -27.46
+          ],
+          "bandY": [
+            12,
+            13.28
+          ]
+        },
+        {
+          "x": -11.13,
+          "y": 12,
+          "z": -26.87,
+          "to": [
+            -10.54,
+            12,
+            -27.46
+          ],
+          "bandY": [
+            12,
+            13.28
+          ]
+        },
+        {
+          "x": -23.01,
+          "y": 16,
+          "z": -31.99,
+          "to": [
+            -23.59,
+            16,
+            -31.41
+          ],
+          "bandY": [
+            16,
+            17.28
+          ]
+        },
+        {
+          "x": -27.82,
+          "y": 16,
+          "z": -19.03,
+          "to": [
+            -27.82,
+            16,
+            -19.86
+          ],
+          "bandY": [
+            16,
+            17.28
+          ]
+        },
+        {
+          "x": -36.78,
+          "y": 16,
+          "z": -26.75,
+          "to": [
+            -35.95,
+            16,
+            -26.75
+          ],
+          "bandY": [
+            16,
+            17.28
+          ]
+        },
+        {
+          "x": -45.88,
+          "y": 12,
+          "z": -5,
+          "to": [
+            -45.05,
+            12,
+            -5
+          ],
+          "bandY": [
+            11.2,
+            12
+          ]
+        },
+        {
+          "x": -45.06,
+          "y": 12,
+          "z": -0.94,
+          "to": [
+            -44.47,
+            12,
+            -1.53
+          ],
+          "bandY": [
+            11.2,
+            12
+          ]
+        },
+        {
+          "x": -43.72,
+          "y": 12,
+          "z": -9.98,
+          "to": [
+            -43.72,
+            12,
+            -9.15
+          ],
+          "bandY": [
+            12,
+            13.28
+          ]
+        },
+        {
+          "x": -36.12,
+          "y": 12,
+          "z": -8.38,
+          "to": [
+            -36.71,
+            12,
+            -7.79
+          ],
+          "bandY": [
+            12,
+            13.28
+          ]
+        },
+        {
+          "x": -36.37,
+          "y": 12,
+          "z": -1.37,
+          "to": [
+            -36.96,
+            12,
+            -1.96
+          ],
+          "bandY": [
+            12,
+            13.28
+          ]
+        },
+        {
+          "x": -20.42,
+          "y": 7,
+          "z": 18.23,
+          "to": [
+            -19.99,
+            7,
+            18.94
+          ],
+          "bandY": [
+            7,
+            8.28
+          ]
+        },
+        {
+          "x": -18.68,
+          "y": 7.21,
+          "z": 17.19,
+          "to": [
+            -18.26,
+            7.21,
+            17.9
+          ],
+          "bandY": [
+            7.17,
+            8.53
+          ]
+        },
+        {
+          "x": -14.58,
+          "y": 7.87,
+          "z": 14.73,
+          "to": [
+            -14.15,
+            7.87,
+            15.44
+          ],
+          "bandY": [
+            7.83,
+            9.2
+          ]
+        },
+        {
+          "x": -12.01,
+          "y": 8.29,
+          "z": 13.19,
+          "to": [
+            -11.58,
+            8.29,
+            13.9
+          ],
+          "bandY": [
+            8.25,
+            9.61
+          ]
+        },
+        {
+          "x": -7.9,
+          "y": 8.96,
+          "z": 10.72,
+          "to": [
+            -7.48,
+            8.96,
+            11.43
+          ],
+          "bandY": [
+            8.92,
+            10.28
+          ]
+        },
+        {
+          "x": -5.34,
+          "y": 9.37,
+          "z": 9.18,
+          "to": [
+            -4.91,
+            9.37,
+            9.89
+          ],
+          "bandY": [
+            9.33,
+            10.7
+          ]
+        },
+        {
+          "x": -4.31,
+          "y": 9.54,
+          "z": 8.57,
+          "to": [
+            -3.88,
+            9.54,
+            9.28
+          ],
+          "bandY": [
+            9.5,
+            10.86
+          ]
+        },
+        {
+          "x": -3.28,
+          "y": 9.71,
+          "z": 7.95,
+          "to": [
+            -2.86,
+            9.71,
+            8.66
+          ],
+          "bandY": [
+            9.67,
+            11.03
+          ]
+        },
+        {
+          "x": -2.77,
+          "y": 9.79,
+          "z": 7.64,
+          "to": [
+            -2.34,
+            9.79,
+            8.35
+          ],
+          "bandY": [
+            9.75,
+            11.11
+          ]
+        },
+        {
+          "x": -1.23,
+          "y": 10.04,
+          "z": 6.72,
+          "to": [
+            -0.8,
+            10.04,
+            7.43
+          ],
+          "bandY": [
+            10,
+            11.36
+          ]
+        },
+        {
+          "x": 5.44,
+          "y": 11.12,
+          "z": 2.71,
+          "to": [
+            5.87,
+            11.12,
+            3.43
+          ],
+          "bandY": [
+            11.08,
+            12.45
+          ]
+        },
+        {
+          "x": -12.44,
+          "y": 7.87,
+          "z": 18.29,
+          "to": [
+            -12.87,
+            7.87,
+            17.57
+          ],
+          "bandY": [
+            7.83,
+            9.2
+          ]
+        },
+        {
+          "x": -8.34,
+          "y": 8.54,
+          "z": 15.82,
+          "to": [
+            -8.76,
+            8.54,
+            15.11
+          ],
+          "bandY": [
+            8.5,
+            9.86
+          ]
+        },
+        {
+          "x": -5.77,
+          "y": 8.96,
+          "z": 14.28,
+          "to": [
+            -6.2,
+            8.96,
+            13.57
+          ],
+          "bandY": [
+            8.92,
+            10.28
+          ]
+        },
+        {
+          "x": -4.23,
+          "y": 9.21,
+          "z": 13.36,
+          "to": [
+            -4.66,
+            9.21,
+            12.65
+          ],
+          "bandY": [
+            9.17,
+            10.53
+          ]
+        },
+        {
+          "x": -1.66,
+          "y": 9.63,
+          "z": 11.82,
+          "to": [
+            -2.09,
+            9.63,
+            11.11
+          ],
+          "bandY": [
+            9.58,
+            10.95
+          ]
+        },
+        {
+          "x": 0.9,
+          "y": 10.04,
+          "z": 10.28,
+          "to": [
+            0.48,
+            10.04,
+            9.57
+          ],
+          "bandY": [
+            10,
+            11.36
+          ]
+        },
+        {
+          "x": 5.01,
+          "y": 10.71,
+          "z": 7.81,
+          "to": [
+            4.58,
+            10.71,
+            7.1
+          ],
+          "bandY": [
+            10.67,
+            12.03
+          ]
+        },
+        {
+          "x": 7.58,
+          "y": 11.12,
+          "z": 6.27,
+          "to": [
+            7.15,
+            11.12,
+            5.56
+          ],
+          "bandY": [
+            11.08,
+            12.45
+          ]
+        },
+        {
+          "x": 11.68,
+          "y": 11.79,
+          "z": 3.81,
+          "to": [
+            11.26,
+            11.79,
+            3.1
+          ],
+          "bandY": [
+            11.75,
+            13.11
+          ]
+        },
+        {
+          "x": 21.58,
+          "y": 12,
+          "z": -26.88,
+          "to": [
+            21.58,
+            12,
+            -26.05
+          ],
+          "bandY": [
+            12.03,
+            13.57
+          ]
+        },
+        {
+          "x": -18.01,
+          "y": 14.92,
+          "z": -26.72,
+          "to": [
+            -18.17,
+            14.92,
+            -27.54
+          ],
+          "bandY": [
+            14.77,
+            16.36
+          ]
+        },
+        {
+          "x": -15.7,
+          "y": 13.69,
+          "z": -27.16,
+          "to": [
+            -15.85,
+            13.69,
+            -27.97
+          ],
+          "bandY": [
+            13.54,
+            15.13
+          ]
+        },
+        {
+          "x": -12.81,
+          "y": 12.15,
+          "z": -27.7,
+          "to": [
+            -12.96,
+            12.15,
+            -28.51
+          ],
+          "bandY": [
+            12,
+            13.59
+          ]
+        },
+        {
+          "x": -19.97,
+          "y": 15.54,
+          "z": -30.78,
+          "to": [
+            -19.82,
+            15.54,
+            -29.96
+          ],
+          "bandY": [
+            15.38,
+            16.97
+          ]
+        }
+      ],
+      "walkableRayBlocked": 0,
+      "walkableSamples": []
+    },
+    "durationMs": 1590,
+    "issueCount": 1,
+    "issues": [
+      {
+        "kind": "movement-barrier-without-boundary",
+        "count": 40,
+        "samples": [
+          {
+            "x": -35.13,
+            "y": 7,
+            "z": 20.87,
+            "to": [
+              -34.54,
+              7,
+              21.46
+            ],
+            "bandY": [
+              7,
+              8.28
+            ]
+          },
+          {
+            "x": 14.62,
+            "y": 12,
+            "z": 3.88,
+            "to": [
+              15.21,
+              12,
+              3.29
+            ],
+            "bandY": [
+              12,
+              13.28
+            ]
+          },
+          {
+            "x": 22.14,
+            "y": 13.29,
+            "z": -34.26,
+            "to": [
+              22.73,
+              13.09,
+              -33.67
+            ],
+            "bandY": [
+              11.2,
+              12
+            ]
+          },
+          {
+            "x": 21.12,
+            "y": 12,
+            "z": -27.08,
+            "to": [
+              21.95,
+              12,
+              -27.08
+            ],
+            "bandY": [
+              11.2,
+              12
+            ]
+          },
+          {
+            "x": -4.87,
+            "y": 12,
+            "z": -35.13,
+            "to": [
+              -5.46,
+              12,
+              -34.54
+            ],
+            "bandY": [
+              12,
+              13.28
+            ]
+          },
+          {
+            "x": -4.87,
+            "y": 12,
+            "z": -26.87,
+            "to": [
+              -5.46,
+              12,
+              -27.46
+            ],
+            "bandY": [
+              12,
+              13.28
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

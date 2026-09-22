@@ -1,0 +1,121 @@
+{
+ "mapId": "cinder-array",
+ "seed": 20260922,
+ "simSeconds": 180.00000000003539,
+ "over": true,
+ "reason": "time",
+ "frags": [
+  0,
+  3,
+  9,
+  5,
+  2,
+  12,
+  9,
+  4
+ ],
+ "traps": [
+  {
+   "actor": 1,
+   "first": 153.5,
+   "last": 158.5,
+   "duration": 5,
+   "center": [
+    -17.3951931083366,
+    21.707501008203785
+   ],
+   "maxRadius": 0,
+   "maxHeight": 1.26,
+   "minFloor": 7.04,
+   "samples": 11,
+   "botState": "seek",
+   "routeLen": 3,
+   "stuck": 0.2833333333333333
+  },
+  {
+   "actor": 1,
+   "first": 150,
+   "last": 152.5,
+   "duration": 2.5,
+   "center": [
+    -17.3951931083366,
+    21.707501008203785
+   ],
+   "maxRadius": 0,
+   "maxHeight": 1.32,
+   "minFloor": 7.04,
+   "samples": 6,
+   "botState": "seek",
+   "routeLen": 0,
+   "stuck": 0.7833333333333341
+  },
+  {
+   "actor": 4,
+   "first": 16.5,
+   "last": 18.5,
+   "duration": 2,
+   "center": [
+    -11.145841482594978,
+    -26.333506400519095
+   ],
+   "maxRadius": 0,
+   "maxHeight": 1.04,
+   "minFloor": 12,
+   "samples": 5,
+   "botState": "seek",
+   "routeLen": 0,
+   "stuck": 0.15
+  },
+  {
+   "actor": 2,
+   "first": 39,
+   "last": 41,
+   "duration": 2,
+   "center": [
+    -4.484690645958108,
+    8.230744977712204
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.89,
+   "minFloor": 9.54,
+   "samples": 5,
+   "botState": "engage",
+   "routeLen": 0,
+   "stuck": 0.11666666666666665
+  },
+  {
+   "actor": 5,
+   "first": 7.5,
+   "last": 8,
+   "duration": 0.5,
+   "center": [
+    11.975577600350963,
+    -8.782328568580095
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0,
+   "minFloor": 11.45,
+   "samples": 2,
+   "botState": "seek",
+   "routeLen": 7,
+   "stuck": 0.21666666666666665
+  },
+  {
+   "actor": 1,
+   "first": 121.5,
+   "last": 122,
+   "duration": 0.5,
+   "center": [
+    -35.46796208162698,
+    -2.3669272770555034
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0,
+   "minFloor": 11.7,
+   "samples": 2,
+   "botState": "hold",
+   "routeLen": 5,
+   "stuck": 0.2333333333333333
+  }
+ ]
+}

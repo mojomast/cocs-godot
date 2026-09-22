@@ -1,0 +1,428 @@
+{
+  "prism-foundry": {
+    "trials": [
+      {
+        "from": [
+          -15,
+          0,
+          -17.38
+        ],
+        "intended": [
+          -15,
+          -16.55
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          15,
+          0,
+          -17.38
+        ],
+        "intended": [
+          15,
+          -16.55
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          0,
+          0,
+          17.38
+        ],
+        "intended": [
+          0,
+          16.55
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          -17,
+          0,
+          -16.62
+        ],
+        "intended": [
+          -17,
+          -17.45
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          -17,
+          0,
+          16.62
+        ],
+        "intended": [
+          -17,
+          17.45
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          17,
+          0,
+          -16.62
+        ],
+        "intended": [
+          17,
+          -17.45
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          18.45,
+          4,
+          -6.25
+        ],
+        "intended": [
+          19.28,
+          -6.25
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          18.45,
+          4,
+          6.25
+        ],
+        "intended": [
+          19.28,
+          6.25
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      }
+    ],
+    "passed": 0,
+    "total": 8
+  },
+  "aurora-basin": {
+    "trials": [
+      {
+        "from": [
+          -26.33,
+          0.08,
+          11.86
+        ],
+        "intended": [
+          -25.57,
+          11.52
+        ],
+        "distance": 0.83,
+        "maxAdvance": 11.35,
+        "finalAdvance": 11.35,
+        "blockedSteps": 0,
+        "airborneSteps": 0,
+        "passed": true
+      },
+      {
+        "from": [
+          -26.5,
+          0.08,
+          11.47
+        ],
+        "intended": [
+          -25.74,
+          11.13
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          -26.66,
+          0.08,
+          11.1
+        ],
+        "intended": [
+          -25.89,
+          10.79
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          -26.82,
+          0.08,
+          10.7
+        ],
+        "intended": [
+          -26.05,
+          10.39
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          -27.12,
+          0.08,
+          9.92
+        ],
+        "intended": [
+          -26.33,
+          9.65
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          -27.26,
+          0.08,
+          9.52
+        ],
+        "intended": [
+          -26.48,
+          9.25
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          -27.4,
+          0.08,
+          9.11
+        ],
+        "intended": [
+          -26.62,
+          8.84
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0.61,
+        "finalAdvance": 0.61,
+        "blockedSteps": 52,
+        "airborneSteps": 7,
+        "passed": false
+      },
+      {
+        "from": [
+          -27.52,
+          0.08,
+          8.73
+        ],
+        "intended": [
+          -26.73,
+          8.49
+        ],
+        "distance": 0.83,
+        "maxAdvance": 11.9,
+        "finalAdvance": 11.9,
+        "blockedSteps": 0,
+        "airborneSteps": 0,
+        "passed": true
+      }
+    ],
+    "passed": 2,
+    "total": 8
+  },
+  "cinder-array": {
+    "trials": [
+      {
+        "from": [
+          -35.13,
+          7,
+          20.87
+        ],
+        "intended": [
+          -34.54,
+          21.46
+        ],
+        "distance": 0.83,
+        "maxAdvance": 8.79,
+        "finalAdvance": 8.79,
+        "blockedSteps": 0,
+        "airborneSteps": 0,
+        "passed": true
+      },
+      {
+        "from": [
+          14.62,
+          12,
+          3.88
+        ],
+        "intended": [
+          15.21,
+          3.29
+        ],
+        "distance": 0.83,
+        "maxAdvance": 8.79,
+        "finalAdvance": 8.79,
+        "blockedSteps": 0,
+        "airborneSteps": 0,
+        "passed": true
+      },
+      {
+        "from": [
+          22.14,
+          13.29,
+          -34.26
+        ],
+        "intended": [
+          22.73,
+          -33.67
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          21.12,
+          12,
+          -27.08
+        ],
+        "intended": [
+          21.95,
+          -27.08
+        ],
+        "distance": 0.83,
+        "maxAdvance": 9.86,
+        "finalAdvance": 9.86,
+        "blockedSteps": 0,
+        "airborneSteps": 0,
+        "passed": true
+      },
+      {
+        "from": [
+          -4.87,
+          12,
+          -35.13
+        ],
+        "intended": [
+          -5.46,
+          -34.54
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          -4.87,
+          12,
+          -26.87
+        ],
+        "intended": [
+          -5.46,
+          -27.46
+        ],
+        "distance": 0.83,
+        "maxAdvance": 0,
+        "finalAdvance": 0,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      },
+      {
+        "from": [
+          -11.13,
+          12,
+          -26.87
+        ],
+        "intended": [
+          -10.54,
+          -27.46
+        ],
+        "distance": 0.83,
+        "maxAdvance": 4.43,
+        "finalAdvance": 4.43,
+        "blockedSteps": 0,
+        "airborneSteps": 0,
+        "passed": true
+      },
+      {
+        "from": [
+          -23.01,
+          16,
+          -31.99
+        ],
+        "intended": [
+          -23.59,
+          -31.41
+        ],
+        "distance": 0.82,
+        "maxAdvance": 0,
+        "finalAdvance": -0.2,
+        "blockedSteps": 59,
+        "airborneSteps": 0,
+        "passed": false
+      }
+    ],
+    "passed": 4,
+    "total": 8
+  }
+}

@@ -1,0 +1,53 @@
+{
+ "mapId": "prism-foundry",
+ "seed": 20260922,
+ "simSeconds": 180.00000000003539,
+ "over": true,
+ "reason": "time",
+ "frags": [
+  0,
+  2,
+  3,
+  6,
+  4,
+  1,
+  4,
+  3
+ ],
+ "traps": [
+  {
+   "actor": 6,
+   "first": 62,
+   "last": 133,
+   "duration": 71,
+   "center": [
+    -8.96014187697342,
+    -8.401263933546813
+   ],
+   "maxRadius": 0,
+   "maxHeight": 1.4,
+   "minFloor": 3.42,
+   "samples": 143,
+   "botState": "engage",
+   "routeLen": 7,
+   "stuck": 1.0833333333333344
+  },
+  {
+   "actor": 2,
+   "first": 48.5,
+   "last": 49.5,
+   "duration": 1,
+   "center": [
+    3.463146327480292,
+    -26.993971911741227
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.65,
+   "minFloor": 0,
+   "samples": 3,
+   "botState": "seek",
+   "routeLen": 1,
+   "stuck": 0.21666666666666665
+  }
+ ]
+}

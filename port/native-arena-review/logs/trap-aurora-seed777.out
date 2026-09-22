@@ -1,0 +1,18 @@
+{
+ "mapId": "aurora-basin",
+ "seed": 777,
+ "simSeconds": 180.00000000003539,
+ "over": true,
+ "reason": "time",
+ "frags": [
+  0,
+  2,
+  4,
+  12,
+  6,
+  5,
+  7,
+  4
+ ],
+ "traps": []
+}

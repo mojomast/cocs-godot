@@ -1,0 +1,19 @@
+{
+ "mapId": "meridian-exchange",
+ "seed": 20260922,
+ "seconds": 120,
+ "over": true,
+ "reason": "sudden-death",
+ "frags": [
+  0,
+  0,
+  1,
+  1,
+  0,
+  1,
+  1,
+  2
+ ],
+ "trapWindows": [],
+ "log": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-review/logs/trap-source-meridian-exchange-20260922.jsonl"
+}

@@ -1,0 +1,10 @@
+{
+  "mapId": "cinder-array",
+  "bots": 3,
+  "roundSeconds": 180,
+  "sizes": "960x640,1280x800",
+  "endpoint": "ws://127.0.0.1:41501/native-arenas",
+  "captureRoot": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-review/captures/cinder-array-2026-09-22T13-17-56-923Z",
+  "exitCode": 0,
+  "geometryHash": "e4b7763a5dae391cfcc0e9a13b5202a054cdfd9761c449cf6a4bf2fd4765ab8c"
+}

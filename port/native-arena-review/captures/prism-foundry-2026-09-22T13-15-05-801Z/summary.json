@@ -1,0 +1,10 @@
+{
+  "mapId": "prism-foundry",
+  "bots": 3,
+  "roundSeconds": 180,
+  "sizes": "960x640,1280x800",
+  "endpoint": "ws://127.0.0.1:44625/native-arenas",
+  "captureRoot": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-review/captures/prism-foundry-2026-09-22T13-15-05-801Z",
+  "exitCode": 1,
+  "geometryHash": "9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572"
+}

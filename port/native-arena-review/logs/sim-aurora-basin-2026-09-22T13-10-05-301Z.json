@@ -1,0 +1,6490 @@
+{
+  "review": "native-arena-review/sim.mjs",
+  "mapId": "aurora-basin",
+  "geometryHash": "2a8c06ba5b3a893135a3a6aef906a36f016107b5153fe5ec3b8a9efbfee66c86",
+  "arenaHashRecomputed": null,
+  "config": {
+    "mode": "deathmatch",
+    "botCount": 7,
+    "difficulty": "normal",
+    "timeLimit": 180,
+    "fragLimit": 50
+  },
+  "seed": 20260922,
+  "constructMs": 2482,
+  "nav": {
+    "nodes": 303,
+    "edges": 2230
+  },
+  "initialEventIds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "initialSpawnCount": 8,
+  "round": {
+    "simulatedSeconds": 155,
+    "wallSeconds": 155,
+    "over": true,
+    "overReason": "frag",
+    "leaders": [
+      "ChatGPT"
+    ],
+    "winner": null,
+    "frags": [
+      {
+        "id": 0,
+        "name": "ChatGPT",
+        "bot": false,
+        "frags": 50,
+        "deaths": 1,
+        "shots": 1215,
+        "pickups": 0
+      },
+      {
+        "id": 1,
+        "name": "Claude",
+        "bot": false,
+        "frags": 7,
+        "deaths": 3,
+        "shots": 255,
+        "pickups": 0
+      },
+      {
+        "id": 2,
+        "name": "Grok",
+        "bot": false,
+        "frags": 7,
+        "deaths": 13,
+        "shots": 169,
+        "pickups": 0
+      },
+      {
+        "id": 3,
+        "name": "Meta",
+        "bot": false,
+        "frags": 3,
+        "deaths": 14,
+        "shots": 171,
+        "pickups": 0
+      },
+      {
+        "id": 4,
+        "name": "Gemini",
+        "bot": false,
+        "frags": 2,
+        "deaths": 11,
+        "shots": 165,
+        "pickups": 0
+      },
+      {
+        "id": 5,
+        "name": "DeepSeek",
+        "bot": false,
+        "frags": 7,
+        "deaths": 11,
+        "shots": 188,
+        "pickups": 0
+      },
+      {
+        "id": 6,
+        "name": "Mistral",
+        "bot": false,
+        "frags": 2,
+        "deaths": 15,
+        "shots": 212,
+        "pickups": 0
+      },
+      {
+        "id": 7,
+        "name": "Kimi",
+        "bot": false,
+        "frags": 4,
+        "deaths": 18,
+        "shots": 156,
+        "pickups": 0
+      }
+    ],
+    "stats": {
+      "shots": 2531,
+      "kills": 83,
+      "pickups": 115,
+      "powers": 106,
+      "respawns": 85,
+      "falls": 2,
+      "grenades": 143,
+      "ticks": 9300,
+      "deaths": 86,
+      "humanDamageDealt": 6287.943168868164,
+      "humanDamageTaken": 138.50321156438875,
+      "humanDeaths": 1,
+      "humanKills": 51,
+      "illegalTicks": 0,
+      "blockedVolumeTicks": 0
+    }
+  },
+  "legality": {
+    "issueCount": 6343,
+    "byKind": {
+      "solid-overlap": 6343
+    },
+    "counters": {
+      "solidOverlap": 6343,
+      "wallContact": 289,
+      "noFloorAirborne": 95,
+      "noFloorGrounded": 0,
+      "voidGrounded": 0,
+      "voidAirborne": 2
+    },
+    "uniquePositions": [
+      {
+        "kind": "solid-overlap",
+        "t": 1.217,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.999,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.233,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.993,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.25,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.983,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.267,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.967,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.283,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.948,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.3,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.924,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.317,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.896,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.333,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.863,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.35,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.827,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.367,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.785,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.383,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.74,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.4,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.687,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.417,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.627,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.433,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.56,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.45,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.486,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.467,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.404,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.483,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.315,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.5,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.219,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.517,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.116,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.533,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 8.005,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.55,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 7.888,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.567,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 7.763,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.583,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 7.631,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.6,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 7.491,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.617,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 7.345,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.633,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 7.191,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.65,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 7.03,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.667,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 6.861,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.683,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 6.686,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.7,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 6.505,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.717,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 6.317,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.733,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 6.122,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.75,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 5.919,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.767,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 5.709,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.783,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 5.492,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.8,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 5.268,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.817,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 5.036,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.833,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 4.798,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.85,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 4.552,
+        "z": -28.234,
+        "grounded": false
+      },
+      {
+        "kind": "solid-overlap",
+        "t": 1.867,
+        "phase": "live",
+        "actor": 1,
+        "x": 14.193,
+        "y": 4.299,
+        "z": -28.234,
+        "grounded": false
+      }
+    ]
+  },
+  "spawns": {
+    "authored": [
+      {
+        "x": -23,
+        "y": 0.105,
+        "z": 29
+      },
+      {
+        "x": 20,
+        "y": 0.08,
+        "z": 19
+      },
+      {
+        "x": 29,
+        "y": 0.08,
+        "z": -4
+      },
+      {
+        "x": -24,
+        "y": -0.15,
+        "z": -19
+      },
+      {
+        "x": 16,
+        "y": 9,
+        "z": -34
+      },
+      {
+        "x": -6,
+        "y": 0.04,
+        "z": 15
+      }
+    ],
+    "attribution": {
+      "0": 26,
+      "1": 11,
+      "2": 21,
+      "3": 3,
+      "4": 22,
+      "5": 10
+    },
+    "samples": 93,
+    "illegalDeduped": []
+  },
+  "movement": {
+    "humanMaxDisplacement": 51.12,
+    "bots": {
+      "1": 74.75,
+      "2": 67.44,
+      "3": 62.92,
+      "4": 82.64,
+      "5": 74.99,
+      "6": 74.09,
+      "7": 67.99
+    }
+  },
+  "damageByType": {
+    "bot-bot": 5482.7693913993235,
+    "human-dealt": 6287.943168868164,
+    "human-taken": 101.02461496566305
+  },
+  "deaths": [
+    {
+      "type": "death",
+      "id": 196,
+      "time": 1.7833333333333319,
+      "actor": 4,
+      "pos": {
+        "x": 24.55112851099021,
+        "y": 1.08,
+        "z": 10.771177805406516
+      },
+      "character": "gemini",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 10.01570028625568,
+      "direction": {
+        "x": 0.7876919461462685,
+        "y": 0,
+        "z": -0.6160693126396606
+      },
+      "seed": 41,
+      "style": "ragdoll",
+      "sourceId": 201
+    },
+    {
+      "type": "death",
+      "id": 328,
+      "time": 2.5999999999999956,
+      "actor": 2,
+      "pos": {
+        "x": 33.56456348613827,
+        "y": 1.5583333333333331,
+        "z": 5.467193516488967
+      },
+      "character": "grok",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 1.7531681783635786,
+      "direction": {
+        "x": 0.5221915704685328,
+        "y": 0,
+        "z": -0.8528282146667095
+      },
+      "seed": 27,
+      "style": "headpop",
+      "sourceId": 334
+    },
+    {
+      "type": "death",
+      "id": 863,
+      "time": 5.649999999999985,
+      "actor": 7,
+      "pos": {
+        "x": 21.919188014576594,
+        "y": 1.08,
+        "z": -14.94596741067028
+      },
+      "character": "kimi",
+      "killer": 1,
+      "killerName": "Claude",
+      "killerCharacter": "claude",
+      "killerHarness": "claudecode",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 7.94903513055068,
+      "direction": {
+        "x": 0.5026540245736627,
+        "y": 0,
+        "z": 0.8644876699987685
+      },
+      "seed": 91,
+      "style": "crumple",
+      "sourceId": 875
+    },
+    {
+      "type": "death",
+      "id": 897,
+      "time": 5.866666666666651,
+      "actor": 2,
+      "pos": {
+        "x": 15.968221330531208,
+        "y": 1.08,
+        "z": 21.90341350477435
+      },
+      "character": "grok",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 1.2208568135439268,
+      "direction": {
+        "x": -0.9985661223072088,
+        "y": 0,
+        "z": -0.053532227492837696
+      },
+      "seed": 40,
+      "style": "crumple",
+      "sourceId": 909
+    },
+    {
+      "type": "death",
+      "id": 1173,
+      "time": 8.166666666666652,
+      "actor": 6,
+      "pos": {
+        "x": -24.570062025315544,
+        "y": 1.08,
+        "z": 6.554899100199837
+      },
+      "character": "mistral",
+      "killer": 5,
+      "killerName": "DeepSeek",
+      "killerCharacter": "deepseek",
+      "killerHarness": "hermes",
+      "self": false,
+      "weapon": 3,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 0.6945967784110696,
+      "direction": {
+        "x": -0.24751102511196432,
+        "y": 0,
+        "z": -0.9688850770076007
+      },
+      "seed": 209,
+      "style": "gibs",
+      "sourceId": 1185
+    },
+    {
+      "type": "death",
+      "id": 1553,
+      "time": 10.300000000000091,
+      "actor": 7,
+      "pos": {
+        "x": 30.44141228460137,
+        "y": 0.85,
+        "z": 8.55685822095136
+      },
+      "character": "kimi",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 8.398868242464204,
+      "direction": {
+        "x": -0.5822709505459217,
+        "y": 0,
+        "z": -0.8129947971237876
+      },
+      "seed": 75,
+      "style": "splatter",
+      "sourceId": 1573
+    },
+    {
+      "type": "death",
+      "id": 1717,
+      "time": 11.700000000000161,
+      "actor": 3,
+      "pos": {
+        "x": -8.362132735003676,
+        "y": 1.04,
+        "z": 12.193234275790894
+      },
+      "character": "meta",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 4.681498729360646,
+      "direction": {
+        "x": -0.981826349107155,
+        "y": 0,
+        "z": -0.1897815064723507
+      },
+      "seed": 34,
+      "style": "ragdoll",
+      "sourceId": 1738
+    },
+    {
+      "type": "death",
+      "id": 1743,
+      "time": 11.916666666666838,
+      "actor": 4,
+      "pos": {
+        "x": -25.800642490745044,
+        "y": 1.08,
+        "z": -25.281460808365324
+      },
+      "character": "gemini",
+      "killer": 2,
+      "killerName": "Grok",
+      "killerCharacter": "grok",
+      "killerHarness": "hermes",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 2.9799999999999933,
+      "direction": {
+        "x": -0.7370591777561266,
+        "y": 0,
+        "z": -0.6758282092998653
+      },
+      "seed": 112,
+      "style": "ragdoll",
+      "sourceId": 1764
+    },
+    {
+      "type": "death",
+      "id": 2248,
+      "time": 15.166666666667,
+      "actor": 2,
+      "pos": {
+        "x": 5.3113349449092855,
+        "y": 1.04,
+        "z": -17.82956452397578
+      },
+      "character": "grok",
+      "killer": 1,
+      "killerName": "Claude",
+      "killerCharacter": "claude",
+      "killerHarness": "claudecode",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 7.416465638771385,
+      "direction": {
+        "x": -0.6492250489431949,
+        "y": 0,
+        "z": 0.760596368532421
+      },
+      "seed": 82,
+      "style": "ragdoll",
+      "sourceId": 2273
+    },
+    {
+      "type": "death",
+      "id": 2266,
+      "time": 15.250000000000338,
+      "actor": 5,
+      "pos": {
+        "x": -3.6393578014585817,
+        "y": 1.04,
+        "z": -17.86937287044739
+      },
+      "character": "deepseek",
+      "killer": 1,
+      "killerName": "Claude",
+      "killerCharacter": "claude",
+      "killerHarness": "claudecode",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 4.959999999999994,
+      "direction": {
+        "x": -0.8645576228581195,
+        "y": 0,
+        "z": 0.5025336971367367
+      },
+      "seed": 77,
+      "style": "splatter",
+      "sourceId": 2291
+    },
+    {
+      "type": "death",
+      "id": 2489,
+      "time": 16.716666666667,
+      "actor": 3,
+      "pos": {
+        "x": 26.296773605475156,
+        "y": 1.08,
+        "z": 4.340143469464638
+      },
+      "character": "meta",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 0.020199950072800732,
+      "direction": {
+        "x": -0.5414496207689536,
+        "y": 0,
+        "z": -0.8407331967807363
+      },
+      "seed": 47,
+      "style": "crumple",
+      "sourceId": 2515
+    },
+    {
+      "type": "death",
+      "id": 2819,
+      "time": 19.28333333333352,
+      "actor": 2,
+      "pos": {
+        "x": 29.564848575430435,
+        "y": 0.85,
+        "z": 9.229326803108208
+      },
+      "character": "grok",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 9.86749937942256,
+      "direction": {
+        "x": -0.5351879852940374,
+        "y": 0,
+        "z": -0.8447329876339084
+      },
+      "seed": 66,
+      "style": "ragdoll",
+      "sourceId": 2853
+    },
+    {
+      "type": "death",
+      "id": 3353,
+      "time": 22.55,
+      "actor": 2,
+      "pos": {
+        "x": 11.844597033920804,
+        "y": 1.08,
+        "z": 23.960478633123397
+      },
+      "character": "grok",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 0.06614141018418174,
+      "direction": {
+        "x": -0.9965242471840778,
+        "y": 0,
+        "z": -0.08330320986737016
+      },
+      "seed": 79,
+      "style": "ragdoll",
+      "sourceId": 3391
+    },
+    {
+      "type": "death",
+      "id": 3534,
+      "time": 23.59999999999994,
+      "actor": 7,
+      "pos": {
+        "x": -4.6316056656865054,
+        "y": 1.04,
+        "z": 17.451224723776726
+      },
+      "character": "kimi",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 7.3293131124097055,
+      "direction": {
+        "x": -0.9649492349443424,
+        "y": 0,
+        "z": -0.26243660945136527
+      },
+      "seed": 88,
+      "style": "splatter",
+      "sourceId": 3572
+    },
+    {
+      "type": "death",
+      "id": 4056,
+      "time": 27.449999999999722,
+      "actor": 7,
+      "pos": {
+        "x": 32.33379124359433,
+        "y": 0.85,
+        "z": 18.591089484832068
+      },
+      "character": "kimi",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 9.819296694465557,
+      "direction": {
+        "x": -0.5968767809186707,
+        "y": 0,
+        "z": -0.802332916188888
+      },
+      "seed": 101,
+      "style": "splatter",
+      "sourceId": 4101
+    },
+    {
+      "type": "death",
+      "id": 4174,
+      "time": 28.499999999999662,
+      "actor": 5,
+      "pos": {
+        "x": 30.618632228432542,
+        "y": 0.85,
+        "z": 10.543602176663368
+      },
+      "character": "deepseek",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 6.969790894053814,
+      "direction": {
+        "x": -0.47282609339075554,
+        "y": 0,
+        "z": -0.8811557668249336
+      },
+      "seed": 61,
+      "style": "ragdoll",
+      "sourceId": 4221
+    },
+    {
+      "type": "death",
+      "id": 4512,
+      "time": 30.316666666666226,
+      "actor": 3,
+      "pos": {
+        "x": -24.642607125996847,
+        "y": 0.85,
+        "z": -23.78153293811551
+      },
+      "character": "meta",
+      "killer": 2,
+      "killerName": "Grok",
+      "killerCharacter": "grok",
+      "killerHarness": "hermes",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 41.10000000000004,
+      "direction": {
+        "x": -0.9944930420892232,
+        "y": 0,
+        "z": -0.10480262036858906
+      },
+      "seed": 118,
+      "style": "splatter",
+      "sourceId": 4560
+    },
+    {
+      "type": "death",
+      "id": 5159,
+      "time": 34.09999999999935,
+      "actor": 5,
+      "pos": {
+        "x": 22.93536766272486,
+        "y": 1.08,
+        "z": 14.200758992670586
+      },
+      "character": "deepseek",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 6.419656363520671,
+      "direction": {
+        "x": -0.858486095529542,
+        "y": 0,
+        "z": -0.5128368393382462
+      },
+      "seed": 74,
+      "style": "ragdoll",
+      "sourceId": 5211
+    },
+    {
+      "type": "death",
+      "id": 5215,
+      "time": 34.366666666666,
+      "actor": 6,
+      "pos": {
+        "x": -28.866451331347974,
+        "y": 1.08,
+        "z": -20.921114909575362
+      },
+      "character": "mistral",
+      "killer": 7,
+      "killerName": "Kimi",
+      "killerCharacter": "kimi",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 7.20680000000003,
+      "direction": {
+        "x": 0.1628763070088854,
+        "y": 0,
+        "z": -0.9866464962767301
+      },
+      "seed": 271,
+      "style": "crumple",
+      "sourceId": 5267
+    },
+    {
+      "type": "death",
+      "id": 5585,
+      "time": 37.416666666665826,
+      "actor": 6,
+      "pos": {
+        "x": 28.45921358594353,
+        "y": 1.08,
+        "z": 12.382830602255806
+      },
+      "character": "mistral",
+      "killer": 5,
+      "killerName": "DeepSeek",
+      "killerCharacter": "deepseek",
+      "killerHarness": "hermes",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 30.365710081687677,
+      "direction": {
+        "x": -0.9975515952996841,
+        "y": 0,
+        "z": 0.06993436004608446
+      },
+      "seed": 226,
+      "style": "splatter",
+      "sourceId": 5641
+    },
+    {
+      "type": "death",
+      "id": 5738,
+      "time": 38.29999999999911,
+      "actor": 7,
+      "pos": {
+        "x": -33.57676601150737,
+        "y": 0.85,
+        "z": -20.0547339203831
+      },
+      "character": "kimi",
+      "killer": 2,
+      "killerName": "Grok",
+      "killerCharacter": "grok",
+      "killerHarness": "hermes",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 5.2847694940166505,
+      "direction": {
+        "x": -0.8216479777355256,
+        "y": 0,
+        "z": 0.5699952637374467
+      },
+      "seed": 172,
+      "style": "ragdoll",
+      "sourceId": 5794
+    },
+    {
+      "type": "death",
+      "id": 5793,
+      "time": 38.64999999999909,
+      "actor": 5,
+      "pos": {
+        "x": 40.09404748823388,
+        "y": 0.85,
+        "z": 14.503103100255954
+      },
+      "character": "deepseek",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 6.431064943356326,
+      "direction": {
+        "x": -0.05166874706568319,
+        "y": 0,
+        "z": -0.998664278211984
+      },
+      "seed": 87,
+      "style": "splatter",
+      "sourceId": 5849
+    },
+    {
+      "type": "death",
+      "id": 5973,
+      "time": 40.39999999999899,
+      "actor": 4,
+      "pos": {
+        "x": 28.613241136772263,
+        "y": 1.08,
+        "z": 4.311898825381714
+      },
+      "character": "gemini",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 1.1474448830100883,
+      "direction": {
+        "x": -0.4284646750241225,
+        "y": 0,
+        "z": -0.9035585328336361
+      },
+      "seed": 67,
+      "style": "ragdoll",
+      "sourceId": 6030
+    },
+    {
+      "type": "death",
+      "id": 6082,
+      "time": 40.98333333333229,
+      "actor": 3,
+      "pos": {
+        "x": 8.242690166167293,
+        "y": 1.08,
+        "z": 26.74208369008907
+      },
+      "character": "meta",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 0.28120536889836956,
+      "direction": {
+        "x": -0.995413463526127,
+        "y": 0,
+        "z": -0.09566627739658144
+      },
+      "seed": 73,
+      "style": "crumple",
+      "sourceId": 6140
+    },
+    {
+      "type": "death",
+      "id": 6465,
+      "time": 43.08333333333217,
+      "actor": 5,
+      "pos": {
+        "x": 40.586056538321046,
+        "y": 0.85,
+        "z": 13.66891425168292
+      },
+      "character": "deepseek",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 2.499227219144423,
+      "direction": {
+        "x": -0.024875462965209302,
+        "y": 0,
+        "z": -0.9996905577938939
+      },
+      "seed": 100,
+      "style": "ragdoll",
+      "sourceId": 6527
+    },
+    {
+      "type": "death",
+      "id": 6790,
+      "time": 44.59999999999875,
+      "actor": 6,
+      "pos": {
+        "x": 6.474152213614997,
+        "y": 1.04,
+        "z": 22.79791979388833
+      },
+      "character": "mistral",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 3.9484509181602014,
+      "direction": {
+        "x": -0.9977124865802582,
+        "y": 0,
+        "z": 0.06760025237998743
+      },
+      "seed": 94,
+      "style": "ragdoll",
+      "sourceId": 6853
+    },
+    {
+      "type": "death",
+      "id": 6857,
+      "time": 44.94999999999873,
+      "actor": 7,
+      "pos": {
+        "x": 35.6718509456839,
+        "y": 6.574085059160872,
+        "z": -15.406925622904035
+      },
+      "character": "kimi",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 1.4880241349058387,
+      "direction": {
+        "x": -0.14728736015924668,
+        "y": 0,
+        "z": -0.9890937435538253
+      },
+      "seed": 127,
+      "style": "ragdoll",
+      "sourceId": 6921
+    },
+    {
+      "type": "death",
+      "id": 7488,
+      "time": 49.84999999999845,
+      "actor": 5,
+      "pos": {
+        "x": 26.99772701642677,
+        "y": 1.08,
+        "z": 2.5482202883465725
+      },
+      "character": "deepseek",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 3.2601954120840286,
+      "direction": {
+        "x": -0.5432367661559401,
+        "y": 0,
+        "z": -0.8395795470927317
+      },
+      "seed": 113,
+      "style": "ragdoll",
+      "sourceId": 7559
+    },
+    {
+      "type": "death",
+      "id": 7679,
+      "time": 50.83333333333173,
+      "actor": 7,
+      "pos": {
+        "x": -11.332535441223515,
+        "y": 5.293985851478454,
+        "z": -32.4860724804226
+      },
+      "character": "kimi",
+      "killer": 4,
+      "killerName": "Gemini",
+      "killerCharacter": "gemini",
+      "killerHarness": "opencode",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 34.4136,
+      "direction": {
+        "x": 0.6728504602515524,
+        "y": 0,
+        "z": 0.73977851965252
+      },
+      "seed": 256,
+      "style": "ragdoll",
+      "sourceId": 7750
+    },
+    {
+      "type": "death",
+      "id": 7784,
+      "time": 51.59999999999835,
+      "actor": 3,
+      "pos": {
+        "x": 35.56670138183391,
+        "y": 3.7910731866371883,
+        "z": -0.4049853963762125
+      },
+      "character": "meta",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 6.619398440742328,
+      "direction": {
+        "x": -0.271024620229074,
+        "y": 0,
+        "z": -0.9625724155769717
+      },
+      "seed": 86,
+      "style": "ragdoll",
+      "sourceId": 7857
+    },
+    {
+      "type": "death",
+      "id": 8074,
+      "time": 53.44999999999825,
+      "actor": 6,
+      "pos": {
+        "x": -12.655366044633817,
+        "y": 1.04,
+        "z": 18.31128366928886
+      },
+      "character": "mistral",
+      "killer": 5,
+      "killerName": "DeepSeek",
+      "killerCharacter": "deepseek",
+      "killerHarness": "hermes",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 8.975900762882572,
+      "direction": {
+        "x": 0.18068997346888344,
+        "y": 0,
+        "z": -0.9835401026332452
+      },
+      "seed": 252,
+      "style": "headpop",
+      "sourceId": 8148
+    },
+    {
+      "type": "death",
+      "id": 8364,
+      "time": 54.8333333333315,
+      "actor": 3,
+      "pos": {
+        "x": 24.283976643055226,
+        "y": 1.08,
+        "z": 12.459279854775733
+      },
+      "character": "meta",
+      "killer": 7,
+      "killerName": "Kimi",
+      "killerCharacter": "kimi",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": true,
+      "abilityName": "Claw Burst",
+      "overkill": 11.340416613852152,
+      "direction": {
+        "x": -0.4844004780067662,
+        "y": 0,
+        "z": 0.8748463733175194
+      },
+      "seed": 302,
+      "style": "splatter",
+      "sourceId": 8440
+    },
+    {
+      "type": "death",
+      "id": 8559,
+      "time": 55.916666666664774,
+      "actor": 7,
+      "pos": {
+        "x": 31.32418392068805,
+        "y": 1.407920847194478,
+        "z": 10.019689948237144
+      },
+      "character": "kimi",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 9.755990399724695,
+      "direction": {
+        "x": -0.6629319338077954,
+        "y": 0,
+        "z": -0.7486796719144022
+      },
+      "seed": 153,
+      "style": "ragdoll",
+      "sourceId": 8635
+    },
+    {
+      "type": "death",
+      "id": 8858,
+      "time": 58.61666666666462,
+      "actor": 1,
+      "pos": {
+        "x": 14.192650147465352,
+        "y": 1.7366666666666664,
+        "z": -28.2344250601671
+      },
+      "character": "claude",
+      "killer": 2,
+      "killerName": "Grok",
+      "killerCharacter": "grok",
+      "killerHarness": "hermes",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 17.44884140687202,
+      "direction": {
+        "x": 0.04175698589233977,
+        "y": 0,
+        "z": -0.9991277966952912
+      },
+      "seed": 78,
+      "style": "ragdoll",
+      "sourceId": 8940
+    },
+    {
+      "type": "death",
+      "id": 9035,
+      "time": 59.649999999997895,
+      "actor": 3,
+      "pos": {
+        "x": 30.821242736329033,
+        "y": 0.9800088655508075,
+        "z": 9.561466952543368
+      },
+      "character": "meta",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 6.8030249627865835,
+      "direction": {
+        "x": -0.6015952342137934,
+        "y": 0,
+        "z": -0.7988010854845226
+      },
+      "seed": 112,
+      "style": "crumple",
+      "sourceId": 9117
+    },
+    {
+      "type": "death",
+      "id": 9338,
+      "time": 61.283333333331136,
+      "actor": 5,
+      "pos": {
+        "x": 8.082864563016333,
+        "y": 1.08,
+        "z": 25.35186727103437
+      },
+      "character": "deepseek",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 4.229433186094079,
+      "direction": {
+        "x": -0.9987348123763922,
+        "y": 0,
+        "z": -0.05028692223126101
+      },
+      "seed": 126,
+      "style": "splatter",
+      "sourceId": 9421
+    },
+    {
+      "type": "death",
+      "id": 9786,
+      "time": 64.08333333333098,
+      "actor": 4,
+      "pos": {
+        "x": 27.545788140606167,
+        "y": 1.08,
+        "z": 4.5289974840612075
+      },
+      "character": "gemini",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 3.475932620993939,
+      "direction": {
+        "x": -0.5452070145136824,
+        "y": 0,
+        "z": -0.8383014441864438
+      },
+      "seed": 80,
+      "style": "ragdoll",
+      "sourceId": 9871
+    },
+    {
+      "type": "death",
+      "id": 9856,
+      "time": 64.78333333333094,
+      "actor": 2,
+      "pos": {
+        "x": 25.371540339775784,
+        "y": 1.802361111111105,
+        "z": -6.028604464570893
+      },
+      "character": "grok",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 0.5278045620268834,
+      "direction": {
+        "x": -0.4197580893073834,
+        "y": 0,
+        "z": -0.907636020914229
+      },
+      "seed": 92,
+      "style": "ragdoll",
+      "sourceId": 9941
+    },
+    {
+      "type": "death",
+      "id": 9902,
+      "time": 65.08333333333093,
+      "actor": 6,
+      "pos": {
+        "x": -28.10434705134817,
+        "y": 1.105,
+        "z": 23.735519045588827
+      },
+      "character": "mistral",
+      "fall": true,
+      "weapon": null,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 0,
+      "direction": null,
+      "seed": 120,
+      "style": "ragdoll",
+      "sourceId": 9987
+    },
+    {
+      "type": "death",
+      "id": 9910,
+      "time": 65.13333333333092,
+      "actor": 7,
+      "pos": {
+        "x": -2.6187748401992614,
+        "y": 1.04,
+        "z": 20.23189620799751
+      },
+      "character": "kimi",
+      "killer": 0,
+      "killerName": "ChatGPT",
+      "killerCharacter": "chatgpt",
+      "killerHarness": "openclaw",
+      "self": false,
+      "weapon": 0,
+      "ability": false,
+      "abilityName": null,
+      "overkill": 5.325121592335146,
+      "direction": {
+        "x": -0.979941295043034,
+        "y": 0,
+        "z": -0.19928637251297796
+      },
+      "seed": 166,
+      "style": "headpop",
+      "sourceId": 9995
+    }
+  ],
+  "perSecond": [
+    {
+      "t": 1,
+      "alive": 8,
+      "frags": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "shots": 9,
+      "pickups": 4,
+      "falls": 0,
+      "respawns": 8,
+      "tickMs": 5,
+      "queue": 1
+    },
+    {
+      "t": 2,
+      "alive": 7,
+      "frags": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "shots": 31,
+      "pickups": 5,
+      "falls": 0,
+      "respawns": 8,
+      "tickMs": 3,
+      "queue": 2
+    },
+    {
+      "t": 3,
+      "alive": 6,
+      "frags": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "shots": 46,
+      "pickups": 7,
+      "falls": 0,
+      "respawns": 8,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 4,
+      "alive": 7,
+      "frags": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "shots": 68,
+      "pickups": 7,
+      "falls": 0,
+      "respawns": 9,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 5,
+      "alive": 8,
+      "frags": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "shots": 89,
+      "pickups": 7,
+      "falls": 0,
+      "respawns": 10,
+      "tickMs": 3,
+      "queue": 3
+    },
+    {
+      "t": 6,
+      "alive": 6,
+      "frags": [
+        3,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "shots": 111,
+      "pickups": 9,
+      "falls": 0,
+      "respawns": 10,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 7,
+      "alive": 6,
+      "frags": [
+        3,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "shots": 124,
+      "pickups": 9,
+      "falls": 0,
+      "respawns": 10,
+      "tickMs": 1,
+      "queue": 1
+    },
+    {
+      "t": 8,
+      "alive": 8,
+      "frags": [
+        3,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "shots": 136,
+      "pickups": 9,
+      "falls": 0,
+      "respawns": 12,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 9,
+      "alive": 7,
+      "frags": [
+        3,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        2,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "shots": 149,
+      "pickups": 9,
+      "falls": 0,
+      "respawns": 12,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 10,
+      "alive": 7,
+      "frags": [
+        3,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        2,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "shots": 170,
+      "pickups": 9,
+      "falls": 0,
+      "respawns": 12,
+      "tickMs": 2,
+      "queue": 3
+    },
+    {
+      "t": 11,
+      "alive": 7,
+      "frags": [
+        4,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        2,
+        0,
+        1,
+        0,
+        1,
+        2
+      ],
+      "shots": 186,
+      "pickups": 10,
+      "falls": 0,
+      "respawns": 13,
+      "tickMs": 2,
+      "queue": 5
+    },
+    {
+      "t": 12,
+      "alive": 5,
+      "frags": [
+        5,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        2,
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "shots": 203,
+      "pickups": 10,
+      "falls": 0,
+      "respawns": 13,
+      "tickMs": 1,
+      "queue": 1
+    },
+    {
+      "t": 13,
+      "alive": 6,
+      "frags": [
+        5,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        2,
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "shots": 215,
+      "pickups": 11,
+      "falls": 0,
+      "respawns": 14,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 14,
+      "alive": 8,
+      "frags": [
+        5,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        2,
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "shots": 233,
+      "pickups": 12,
+      "falls": 0,
+      "respawns": 16,
+      "tickMs": 2,
+      "queue": 3
+    },
+    {
+      "t": 15,
+      "alive": 8,
+      "frags": [
+        5,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        2,
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "shots": 250,
+      "pickups": 12,
+      "falls": 0,
+      "respawns": 16,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 16,
+      "alive": 6,
+      "frags": [
+        5,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        3,
+        1,
+        2,
+        1,
+        1,
+        2
+      ],
+      "shots": 265,
+      "pickups": 13,
+      "falls": 0,
+      "respawns": 16,
+      "tickMs": 2,
+      "queue": 3
+    },
+    {
+      "t": 17,
+      "alive": 5,
+      "frags": [
+        6,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "shots": 281,
+      "pickups": 13,
+      "falls": 0,
+      "respawns": 16,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 18,
+      "alive": 7,
+      "frags": [
+        6,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "shots": 296,
+      "pickups": 15,
+      "falls": 0,
+      "respawns": 18,
+      "tickMs": 3,
+      "queue": 3
+    },
+    {
+      "t": 19,
+      "alive": 8,
+      "frags": [
+        6,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "shots": 306,
+      "pickups": 16,
+      "falls": 0,
+      "respawns": 19,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 20,
+      "alive": 7,
+      "frags": [
+        7,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        4,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "shots": 327,
+      "pickups": 17,
+      "falls": 0,
+      "respawns": 19,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 21,
+      "alive": 7,
+      "frags": [
+        7,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        4,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "shots": 347,
+      "pickups": 17,
+      "falls": 0,
+      "respawns": 19,
+      "tickMs": 5,
+      "queue": 2
+    },
+    {
+      "t": 22,
+      "alive": 8,
+      "frags": [
+        7,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        4,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "shots": 365,
+      "pickups": 19,
+      "falls": 0,
+      "respawns": 20,
+      "tickMs": 3,
+      "queue": 2
+    },
+    {
+      "t": 23,
+      "alive": 7,
+      "frags": [
+        8,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "shots": 387,
+      "pickups": 20,
+      "falls": 0,
+      "respawns": 20,
+      "tickMs": 1,
+      "queue": 5
+    },
+    {
+      "t": 24,
+      "alive": 6,
+      "frags": [
+        9,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        2,
+        2,
+        1,
+        1,
+        3
+      ],
+      "shots": 409,
+      "pickups": 20,
+      "falls": 0,
+      "respawns": 20,
+      "tickMs": 1,
+      "queue": 1
+    },
+    {
+      "t": 25,
+      "alive": 7,
+      "frags": [
+        9,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        2,
+        2,
+        1,
+        1,
+        3
+      ],
+      "shots": 427,
+      "pickups": 20,
+      "falls": 0,
+      "respawns": 21,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 26,
+      "alive": 8,
+      "frags": [
+        9,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        2,
+        2,
+        1,
+        1,
+        3
+      ],
+      "shots": 449,
+      "pickups": 22,
+      "falls": 0,
+      "respawns": 22,
+      "tickMs": 2,
+      "queue": 5
+    },
+    {
+      "t": 27,
+      "alive": 8,
+      "frags": [
+        9,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        2,
+        2,
+        1,
+        1,
+        3
+      ],
+      "shots": 470,
+      "pickups": 22,
+      "falls": 0,
+      "respawns": 22,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 28,
+      "alive": 7,
+      "frags": [
+        10,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        2,
+        2,
+        1,
+        1,
+        4
+      ],
+      "shots": 488,
+      "pickups": 22,
+      "falls": 0,
+      "respawns": 22,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 29,
+      "alive": 6,
+      "frags": [
+        11,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        2,
+        2,
+        2,
+        1,
+        4
+      ],
+      "shots": 500,
+      "pickups": 22,
+      "falls": 0,
+      "respawns": 22,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 30,
+      "alive": 7,
+      "frags": [
+        11,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        2,
+        2,
+        2,
+        1,
+        4
+      ],
+      "shots": 516,
+      "pickups": 23,
+      "falls": 0,
+      "respawns": 23,
+      "tickMs": 2,
+      "queue": 4
+    },
+    {
+      "t": 31,
+      "alive": 7,
+      "frags": [
+        11,
+        3,
+        2,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        3,
+        2,
+        2,
+        1,
+        4
+      ],
+      "shots": 529,
+      "pickups": 23,
+      "falls": 0,
+      "respawns": 24,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 32,
+      "alive": 7,
+      "frags": [
+        11,
+        3,
+        2,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        3,
+        2,
+        2,
+        1,
+        4
+      ],
+      "shots": 544,
+      "pickups": 23,
+      "falls": 0,
+      "respawns": 24,
+      "tickMs": 2,
+      "queue": 4
+    },
+    {
+      "t": 33,
+      "alive": 8,
+      "frags": [
+        11,
+        3,
+        2,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        3,
+        2,
+        2,
+        1,
+        4
+      ],
+      "shots": 566,
+      "pickups": 24,
+      "falls": 0,
+      "respawns": 25,
+      "tickMs": 3,
+      "queue": 2
+    },
+    {
+      "t": 34,
+      "alive": 8,
+      "frags": [
+        11,
+        3,
+        2,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        3,
+        2,
+        2,
+        1,
+        4
+      ],
+      "shots": 591,
+      "pickups": 26,
+      "falls": 0,
+      "respawns": 25,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 35,
+      "alive": 6,
+      "frags": [
+        12,
+        3,
+        2,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        3,
+        2,
+        3,
+        2,
+        4
+      ],
+      "shots": 607,
+      "pickups": 27,
+      "falls": 0,
+      "respawns": 25,
+      "tickMs": 1,
+      "queue": 1
+    },
+    {
+      "t": 36,
+      "alive": 6,
+      "frags": [
+        12,
+        3,
+        2,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        3,
+        2,
+        3,
+        2,
+        4
+      ],
+      "shots": 622,
+      "pickups": 29,
+      "falls": 0,
+      "respawns": 25,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 37,
+      "alive": 8,
+      "frags": [
+        12,
+        3,
+        2,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        3,
+        2,
+        3,
+        2,
+        4
+      ],
+      "shots": 639,
+      "pickups": 29,
+      "falls": 0,
+      "respawns": 27,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 38,
+      "alive": 7,
+      "frags": [
+        12,
+        3,
+        2,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        3,
+        2,
+        3,
+        3,
+        4
+      ],
+      "shots": 658,
+      "pickups": 30,
+      "falls": 0,
+      "respawns": 27,
+      "tickMs": 2,
+      "queue": 4
+    },
+    {
+      "t": 39,
+      "alive": 5,
+      "frags": [
+        13,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        3,
+        2,
+        4,
+        3,
+        5
+      ],
+      "shots": 673,
+      "pickups": 30,
+      "falls": 0,
+      "respawns": 27,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 40,
+      "alive": 6,
+      "frags": [
+        13,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        3,
+        2,
+        4,
+        3,
+        5
+      ],
+      "shots": 684,
+      "pickups": 31,
+      "falls": 0,
+      "respawns": 28,
+      "tickMs": 3,
+      "queue": 1
+    },
+    {
+      "t": 41,
+      "alive": 6,
+      "frags": [
+        15,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "shots": 699,
+      "pickups": 33,
+      "falls": 0,
+      "respawns": 30,
+      "tickMs": 4,
+      "queue": 2
+    },
+    {
+      "t": 42,
+      "alive": 6,
+      "frags": [
+        15,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "shots": 712,
+      "pickups": 34,
+      "falls": 0,
+      "respawns": 30,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 43,
+      "alive": 8,
+      "frags": [
+        15,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "shots": 730,
+      "pickups": 34,
+      "falls": 0,
+      "respawns": 32,
+      "tickMs": 6,
+      "queue": 2
+    },
+    {
+      "t": 44,
+      "alive": 7,
+      "frags": [
+        16,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        5,
+        3,
+        5
+      ],
+      "shots": 743,
+      "pickups": 35,
+      "falls": 0,
+      "respawns": 32,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 45,
+      "alive": 5,
+      "frags": [
+        18,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        5,
+        4,
+        6
+      ],
+      "shots": 761,
+      "pickups": 35,
+      "falls": 0,
+      "respawns": 32,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 46,
+      "alive": 6,
+      "frags": [
+        18,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        5,
+        4,
+        6
+      ],
+      "shots": 772,
+      "pickups": 35,
+      "falls": 0,
+      "respawns": 33,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 47,
+      "alive": 8,
+      "frags": [
+        18,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        5,
+        4,
+        6
+      ],
+      "shots": 784,
+      "pickups": 36,
+      "falls": 0,
+      "respawns": 35,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 48,
+      "alive": 8,
+      "frags": [
+        18,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        5,
+        4,
+        6
+      ],
+      "shots": 797,
+      "pickups": 37,
+      "falls": 0,
+      "respawns": 35,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 49,
+      "alive": 8,
+      "frags": [
+        18,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        5,
+        4,
+        6
+      ],
+      "shots": 812,
+      "pickups": 38,
+      "falls": 0,
+      "respawns": 35,
+      "tickMs": 4,
+      "queue": 2
+    },
+    {
+      "t": 50,
+      "alive": 7,
+      "frags": [
+        19,
+        3,
+        3,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        6,
+        4,
+        6
+      ],
+      "shots": 829,
+      "pickups": 39,
+      "falls": 0,
+      "respawns": 35,
+      "tickMs": 2,
+      "queue": 5
+    },
+    {
+      "t": 51,
+      "alive": 6,
+      "frags": [
+        19,
+        3,
+        3,
+        0,
+        1,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        6,
+        4,
+        7
+      ],
+      "shots": 847,
+      "pickups": 39,
+      "falls": 0,
+      "respawns": 35,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 52,
+      "alive": 6,
+      "frags": [
+        20,
+        3,
+        3,
+        0,
+        1,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        5,
+        3,
+        6,
+        4,
+        7
+      ],
+      "shots": 863,
+      "pickups": 40,
+      "falls": 0,
+      "respawns": 36,
+      "tickMs": 4,
+      "queue": 1
+    },
+    {
+      "t": 53,
+      "alive": 7,
+      "frags": [
+        20,
+        3,
+        3,
+        0,
+        1,
+        2,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        5,
+        3,
+        6,
+        4,
+        7
+      ],
+      "shots": 878,
+      "pickups": 40,
+      "falls": 0,
+      "respawns": 37,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 54,
+      "alive": 7,
+      "frags": [
+        20,
+        3,
+        3,
+        0,
+        1,
+        3,
+        0,
+        1
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        5,
+        3,
+        6,
+        5,
+        7
+      ],
+      "shots": 894,
+      "pickups": 42,
+      "falls": 0,
+      "respawns": 38,
+      "tickMs": 4,
+      "queue": 2
+    },
+    {
+      "t": 55,
+      "alive": 6,
+      "frags": [
+        20,
+        3,
+        3,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        6,
+        3,
+        6,
+        5,
+        7
+      ],
+      "shots": 911,
+      "pickups": 44,
+      "falls": 0,
+      "respawns": 38,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 56,
+      "alive": 6,
+      "frags": [
+        21,
+        3,
+        3,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        6,
+        3,
+        6,
+        5,
+        8
+      ],
+      "shots": 926,
+      "pickups": 44,
+      "falls": 0,
+      "respawns": 39,
+      "tickMs": 4,
+      "queue": 1
+    },
+    {
+      "t": 57,
+      "alive": 7,
+      "frags": [
+        21,
+        3,
+        3,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        6,
+        3,
+        6,
+        5,
+        8
+      ],
+      "shots": 947,
+      "pickups": 45,
+      "falls": 0,
+      "respawns": 40,
+      "tickMs": 2,
+      "queue": 3
+    },
+    {
+      "t": 58,
+      "alive": 8,
+      "frags": [
+        21,
+        3,
+        3,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        0,
+        5,
+        6,
+        3,
+        6,
+        5,
+        8
+      ],
+      "shots": 964,
+      "pickups": 46,
+      "falls": 0,
+      "respawns": 41,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 59,
+      "alive": 7,
+      "frags": [
+        21,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        5,
+        6,
+        3,
+        6,
+        5,
+        8
+      ],
+      "shots": 979,
+      "pickups": 46,
+      "falls": 0,
+      "respawns": 41,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 60,
+      "alive": 6,
+      "frags": [
+        22,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        5,
+        7,
+        3,
+        6,
+        5,
+        8
+      ],
+      "shots": 1001,
+      "pickups": 46,
+      "falls": 0,
+      "respawns": 41,
+      "tickMs": 2,
+      "queue": 5
+    },
+    {
+      "t": 61,
+      "alive": 7,
+      "frags": [
+        22,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        5,
+        7,
+        3,
+        6,
+        5,
+        8
+      ],
+      "shots": 1021,
+      "pickups": 46,
+      "falls": 0,
+      "respawns": 42,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 62,
+      "alive": 7,
+      "frags": [
+        23,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        5,
+        7,
+        3,
+        7,
+        5,
+        8
+      ],
+      "shots": 1043,
+      "pickups": 48,
+      "falls": 0,
+      "respawns": 43,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 63,
+      "alive": 7,
+      "frags": [
+        23,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        5,
+        7,
+        3,
+        7,
+        5,
+        8
+      ],
+      "shots": 1064,
+      "pickups": 49,
+      "falls": 0,
+      "respawns": 43,
+      "tickMs": 4,
+      "queue": 4
+    },
+    {
+      "t": 64,
+      "alive": 8,
+      "frags": [
+        23,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        5,
+        7,
+        3,
+        7,
+        5,
+        8
+      ],
+      "shots": 1084,
+      "pickups": 50,
+      "falls": 0,
+      "respawns": 44,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 65,
+      "alive": 6,
+      "frags": [
+        25,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        7,
+        4,
+        7,
+        5,
+        8
+      ],
+      "shots": 1098,
+      "pickups": 50,
+      "falls": 0,
+      "respawns": 44,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 66,
+      "alive": 4,
+      "frags": [
+        26,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        7,
+        4,
+        7,
+        6,
+        9
+      ],
+      "shots": 1107,
+      "pickups": 51,
+      "falls": 1,
+      "respawns": 44,
+      "tickMs": 3,
+      "queue": 1
+    },
+    {
+      "t": 67,
+      "alive": 6,
+      "frags": [
+        26,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        7,
+        4,
+        7,
+        6,
+        9
+      ],
+      "shots": 1117,
+      "pickups": 52,
+      "falls": 1,
+      "respawns": 46,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 68,
+      "alive": 7,
+      "frags": [
+        27,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        7,
+        4,
+        8,
+        6,
+        9
+      ],
+      "shots": 1126,
+      "pickups": 53,
+      "falls": 1,
+      "respawns": 48,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 69,
+      "alive": 7,
+      "frags": [
+        27,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        7,
+        4,
+        8,
+        6,
+        9
+      ],
+      "shots": 1146,
+      "pickups": 54,
+      "falls": 1,
+      "respawns": 48,
+      "tickMs": 4,
+      "queue": 6
+    },
+    {
+      "t": 70,
+      "alive": 8,
+      "frags": [
+        27,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        2
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        7,
+        4,
+        8,
+        6,
+        9
+      ],
+      "shots": 1167,
+      "pickups": 55,
+      "falls": 1,
+      "respawns": 49,
+      "tickMs": 4,
+      "queue": 6
+    },
+    {
+      "t": 71,
+      "alive": 6,
+      "frags": [
+        28,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        8,
+        4,
+        8,
+        7,
+        9
+      ],
+      "shots": 1186,
+      "pickups": 56,
+      "falls": 1,
+      "respawns": 49,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 72,
+      "alive": 6,
+      "frags": [
+        28,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        8,
+        4,
+        8,
+        7,
+        9
+      ],
+      "shots": 1204,
+      "pickups": 57,
+      "falls": 1,
+      "respawns": 49,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 73,
+      "alive": 8,
+      "frags": [
+        28,
+        3,
+        4,
+        0,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        8,
+        4,
+        8,
+        7,
+        9
+      ],
+      "shots": 1218,
+      "pickups": 57,
+      "falls": 1,
+      "respawns": 51,
+      "tickMs": 3,
+      "queue": 1
+    },
+    {
+      "t": 74,
+      "alive": 7,
+      "frags": [
+        28,
+        3,
+        5,
+        0,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        8,
+        4,
+        8,
+        7,
+        10
+      ],
+      "shots": 1234,
+      "pickups": 58,
+      "falls": 1,
+      "respawns": 51,
+      "tickMs": 2,
+      "queue": 3
+    },
+    {
+      "t": 75,
+      "alive": 6,
+      "frags": [
+        29,
+        3,
+        5,
+        0,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        9,
+        4,
+        8,
+        7,
+        10
+      ],
+      "shots": 1248,
+      "pickups": 59,
+      "falls": 1,
+      "respawns": 51,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 76,
+      "alive": 7,
+      "frags": [
+        29,
+        3,
+        5,
+        0,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        9,
+        4,
+        8,
+        7,
+        10
+      ],
+      "shots": 1262,
+      "pickups": 60,
+      "falls": 1,
+      "respawns": 52,
+      "tickMs": 2,
+      "queue": 3
+    },
+    {
+      "t": 77,
+      "alive": 8,
+      "frags": [
+        29,
+        3,
+        5,
+        0,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        9,
+        4,
+        8,
+        7,
+        10
+      ],
+      "shots": 1276,
+      "pickups": 60,
+      "falls": 1,
+      "respawns": 53,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 78,
+      "alive": 8,
+      "frags": [
+        29,
+        3,
+        5,
+        0,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        9,
+        4,
+        8,
+        7,
+        10
+      ],
+      "shots": 1300,
+      "pickups": 60,
+      "falls": 1,
+      "respawns": 53,
+      "tickMs": 2,
+      "queue": 3
+    },
+    {
+      "t": 79,
+      "alive": 8,
+      "frags": [
+        29,
+        3,
+        5,
+        0,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        9,
+        4,
+        8,
+        7,
+        10
+      ],
+      "shots": 1322,
+      "pickups": 61,
+      "falls": 1,
+      "respawns": 53,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 80,
+      "alive": 8,
+      "frags": [
+        29,
+        3,
+        5,
+        0,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        9,
+        4,
+        8,
+        7,
+        10
+      ],
+      "shots": 1344,
+      "pickups": 61,
+      "falls": 1,
+      "respawns": 53,
+      "tickMs": 6,
+      "queue": 3
+    },
+    {
+      "t": 81,
+      "alive": 5,
+      "frags": [
+        30,
+        3,
+        6,
+        1,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        10,
+        5,
+        9,
+        7,
+        10
+      ],
+      "shots": 1358,
+      "pickups": 62,
+      "falls": 1,
+      "respawns": 53,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 82,
+      "alive": 5,
+      "frags": [
+        30,
+        3,
+        6,
+        1,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        10,
+        5,
+        9,
+        7,
+        10
+      ],
+      "shots": 1368,
+      "pickups": 64,
+      "falls": 1,
+      "respawns": 53,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 83,
+      "alive": 8,
+      "frags": [
+        30,
+        3,
+        6,
+        1,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        10,
+        5,
+        9,
+        7,
+        10
+      ],
+      "shots": 1379,
+      "pickups": 65,
+      "falls": 1,
+      "respawns": 56,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 84,
+      "alive": 7,
+      "frags": [
+        31,
+        3,
+        6,
+        1,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        10,
+        5,
+        9,
+        8,
+        10
+      ],
+      "shots": 1404,
+      "pickups": 66,
+      "falls": 1,
+      "respawns": 56,
+      "tickMs": 1,
+      "queue": 6
+    },
+    {
+      "t": 85,
+      "alive": 7,
+      "frags": [
+        31,
+        3,
+        6,
+        1,
+        1,
+        3,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        6,
+        10,
+        5,
+        9,
+        8,
+        10
+      ],
+      "shots": 1428,
+      "pickups": 67,
+      "falls": 1,
+      "respawns": 56,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 86,
+      "alive": 6,
+      "frags": [
+        31,
+        3,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        7,
+        10,
+        6,
+        9,
+        8,
+        10
+      ],
+      "shots": 1443,
+      "pickups": 67,
+      "falls": 1,
+      "respawns": 57,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 87,
+      "alive": 6,
+      "frags": [
+        31,
+        3,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        7,
+        10,
+        6,
+        9,
+        8,
+        10
+      ],
+      "shots": 1456,
+      "pickups": 67,
+      "falls": 1,
+      "respawns": 57,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 88,
+      "alive": 7,
+      "frags": [
+        32,
+        3,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        7,
+        10,
+        6,
+        9,
+        9,
+        10
+      ],
+      "shots": 1469,
+      "pickups": 67,
+      "falls": 1,
+      "respawns": 59,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 89,
+      "alive": 7,
+      "frags": [
+        32,
+        3,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        7,
+        10,
+        6,
+        9,
+        9,
+        10
+      ],
+      "shots": 1487,
+      "pickups": 67,
+      "falls": 1,
+      "respawns": 59,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 90,
+      "alive": 7,
+      "frags": [
+        33,
+        3,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        8,
+        10,
+        6,
+        9,
+        9,
+        10
+      ],
+      "shots": 1504,
+      "pickups": 70,
+      "falls": 1,
+      "respawns": 60,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 91,
+      "alive": 5,
+      "frags": [
+        34,
+        4,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        8,
+        11,
+        6,
+        9,
+        9,
+        11
+      ],
+      "shots": 1515,
+      "pickups": 71,
+      "falls": 1,
+      "respawns": 60,
+      "tickMs": 0,
+      "queue": 3
+    },
+    {
+      "t": 92,
+      "alive": 6,
+      "frags": [
+        34,
+        4,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        8,
+        11,
+        6,
+        9,
+        9,
+        11
+      ],
+      "shots": 1525,
+      "pickups": 71,
+      "falls": 1,
+      "respawns": 61,
+      "tickMs": 1,
+      "queue": 1
+    },
+    {
+      "t": 93,
+      "alive": 8,
+      "frags": [
+        34,
+        4,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        8,
+        11,
+        6,
+        9,
+        9,
+        11
+      ],
+      "shots": 1539,
+      "pickups": 71,
+      "falls": 1,
+      "respawns": 63,
+      "tickMs": 2,
+      "queue": 4
+    },
+    {
+      "t": 94,
+      "alive": 7,
+      "frags": [
+        35,
+        4,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        9,
+        11,
+        6,
+        9,
+        9,
+        11
+      ],
+      "shots": 1555,
+      "pickups": 73,
+      "falls": 1,
+      "respawns": 63,
+      "tickMs": 3,
+      "queue": 3
+    },
+    {
+      "t": 95,
+      "alive": 6,
+      "frags": [
+        36,
+        4,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        9,
+        11,
+        7,
+        9,
+        9,
+        11
+      ],
+      "shots": 1573,
+      "pickups": 73,
+      "falls": 1,
+      "respawns": 63,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 96,
+      "alive": 7,
+      "frags": [
+        36,
+        4,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        9,
+        11,
+        7,
+        9,
+        9,
+        11
+      ],
+      "shots": 1589,
+      "pickups": 73,
+      "falls": 1,
+      "respawns": 64,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 97,
+      "alive": 8,
+      "frags": [
+        36,
+        4,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        9,
+        11,
+        7,
+        9,
+        9,
+        11
+      ],
+      "shots": 1605,
+      "pickups": 75,
+      "falls": 1,
+      "respawns": 65,
+      "tickMs": 4,
+      "queue": 3
+    },
+    {
+      "t": 98,
+      "alive": 8,
+      "frags": [
+        36,
+        4,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        9,
+        11,
+        7,
+        9,
+        9,
+        11
+      ],
+      "shots": 1618,
+      "pickups": 77,
+      "falls": 1,
+      "respawns": 65,
+      "tickMs": 3,
+      "queue": 3
+    },
+    {
+      "t": 99,
+      "alive": 6,
+      "frags": [
+        37,
+        5,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        11,
+        7,
+        9,
+        10,
+        11
+      ],
+      "shots": 1632,
+      "pickups": 77,
+      "falls": 1,
+      "respawns": 65,
+      "tickMs": 2,
+      "queue": 4
+    },
+    {
+      "t": 100,
+      "alive": 6,
+      "frags": [
+        37,
+        5,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        11,
+        7,
+        9,
+        10,
+        11
+      ],
+      "shots": 1644,
+      "pickups": 77,
+      "falls": 1,
+      "respawns": 65,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 101,
+      "alive": 8,
+      "frags": [
+        37,
+        5,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        11,
+        7,
+        9,
+        10,
+        11
+      ],
+      "shots": 1665,
+      "pickups": 77,
+      "falls": 1,
+      "respawns": 67,
+      "tickMs": 4,
+      "queue": 2
+    },
+    {
+      "t": 102,
+      "alive": 8,
+      "frags": [
+        37,
+        5,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        11,
+        7,
+        9,
+        10,
+        11
+      ],
+      "shots": 1692,
+      "pickups": 79,
+      "falls": 1,
+      "respawns": 67,
+      "tickMs": 3,
+      "queue": 4
+    },
+    {
+      "t": 103,
+      "alive": 7,
+      "frags": [
+        38,
+        5,
+        6,
+        2,
+        1,
+        4,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        11,
+        7,
+        9,
+        11,
+        11
+      ],
+      "shots": 1705,
+      "pickups": 79,
+      "falls": 1,
+      "respawns": 67,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 104,
+      "alive": 6,
+      "frags": [
+        38,
+        5,
+        6,
+        2,
+        1,
+        5,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        12,
+        7,
+        9,
+        11,
+        11
+      ],
+      "shots": 1720,
+      "pickups": 79,
+      "falls": 1,
+      "respawns": 67,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 105,
+      "alive": 7,
+      "frags": [
+        38,
+        5,
+        6,
+        2,
+        1,
+        5,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        12,
+        7,
+        9,
+        11,
+        11
+      ],
+      "shots": 1737,
+      "pickups": 79,
+      "falls": 1,
+      "respawns": 68,
+      "tickMs": 1,
+      "queue": 5
+    },
+    {
+      "t": 106,
+      "alive": 7,
+      "frags": [
+        39,
+        5,
+        6,
+        2,
+        1,
+        5,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        12,
+        7,
+        9,
+        12,
+        11
+      ],
+      "shots": 1757,
+      "pickups": 79,
+      "falls": 1,
+      "respawns": 69,
+      "tickMs": 3,
+      "queue": 1
+    },
+    {
+      "t": 107,
+      "alive": 6,
+      "frags": [
+        39,
+        5,
+        6,
+        2,
+        1,
+        6,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        12,
+        7,
+        9,
+        12,
+        12
+      ],
+      "shots": 1773,
+      "pickups": 80,
+      "falls": 1,
+      "respawns": 69,
+      "tickMs": 1,
+      "queue": 1
+    },
+    {
+      "t": 108,
+      "alive": 7,
+      "frags": [
+        39,
+        5,
+        6,
+        2,
+        1,
+        6,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        12,
+        7,
+        9,
+        12,
+        12
+      ],
+      "shots": 1793,
+      "pickups": 80,
+      "falls": 1,
+      "respawns": 70,
+      "tickMs": 6,
+      "queue": 2
+    },
+    {
+      "t": 109,
+      "alive": 7,
+      "frags": [
+        40,
+        5,
+        6,
+        2,
+        1,
+        6,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        13,
+        7,
+        9,
+        12,
+        12
+      ],
+      "shots": 1812,
+      "pickups": 82,
+      "falls": 1,
+      "respawns": 71,
+      "tickMs": 3,
+      "queue": 3
+    },
+    {
+      "t": 110,
+      "alive": 7,
+      "frags": [
+        40,
+        5,
+        6,
+        2,
+        1,
+        6,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        13,
+        7,
+        9,
+        12,
+        12
+      ],
+      "shots": 1835,
+      "pickups": 84,
+      "falls": 1,
+      "respawns": 71,
+      "tickMs": 2,
+      "queue": 4
+    },
+    {
+      "t": 111,
+      "alive": 8,
+      "frags": [
+        40,
+        5,
+        6,
+        2,
+        1,
+        6,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        13,
+        7,
+        9,
+        12,
+        12
+      ],
+      "shots": 1855,
+      "pickups": 85,
+      "falls": 1,
+      "respawns": 72,
+      "tickMs": 5,
+      "queue": 3
+    },
+    {
+      "t": 112,
+      "alive": 8,
+      "frags": [
+        40,
+        5,
+        6,
+        2,
+        1,
+        6,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        13,
+        7,
+        9,
+        12,
+        12
+      ],
+      "shots": 1877,
+      "pickups": 87,
+      "falls": 1,
+      "respawns": 72,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 113,
+      "alive": 7,
+      "frags": [
+        41,
+        5,
+        6,
+        2,
+        1,
+        6,
+        0,
+        3
+      ],
+      "deaths": [
+        0,
+        1,
+        10,
+        13,
+        7,
+        9,
+        12,
+        13
+      ],
+      "shots": 1894,
+      "pickups": 87,
+      "falls": 1,
+      "respawns": 72,
+      "tickMs": 1,
+      "queue": 1
+    },
+    {
+      "t": 114,
+      "alive": 6,
+      "frags": [
+        41,
+        5,
+        6,
+        2,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        10,
+        13,
+        7,
+        9,
+        12,
+        13
+      ],
+      "shots": 1918,
+      "pickups": 88,
+      "falls": 1,
+      "respawns": 72,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 115,
+      "alive": 7,
+      "frags": [
+        41,
+        5,
+        6,
+        2,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        10,
+        13,
+        7,
+        9,
+        12,
+        13
+      ],
+      "shots": 1931,
+      "pickups": 89,
+      "falls": 1,
+      "respawns": 73,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 116,
+      "alive": 8,
+      "frags": [
+        41,
+        5,
+        6,
+        2,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        10,
+        13,
+        7,
+        9,
+        12,
+        13
+      ],
+      "shots": 1946,
+      "pickups": 89,
+      "falls": 1,
+      "respawns": 74,
+      "tickMs": 3,
+      "queue": 4
+    },
+    {
+      "t": 117,
+      "alive": 8,
+      "frags": [
+        41,
+        5,
+        6,
+        2,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        10,
+        13,
+        7,
+        9,
+        12,
+        13
+      ],
+      "shots": 1955,
+      "pickups": 90,
+      "falls": 1,
+      "respawns": 74,
+      "tickMs": 2,
+      "queue": 3
+    },
+    {
+      "t": 118,
+      "alive": 7,
+      "frags": [
+        41,
+        6,
+        6,
+        2,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        10,
+        13,
+        8,
+        9,
+        12,
+        13
+      ],
+      "shots": 1967,
+      "pickups": 91,
+      "falls": 1,
+      "respawns": 74,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 119,
+      "alive": 7,
+      "frags": [
+        41,
+        6,
+        6,
+        2,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        10,
+        13,
+        8,
+        9,
+        12,
+        13
+      ],
+      "shots": 1983,
+      "pickups": 91,
+      "falls": 1,
+      "respawns": 74,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 120,
+      "alive": 8,
+      "frags": [
+        41,
+        6,
+        6,
+        2,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        10,
+        13,
+        8,
+        9,
+        12,
+        13
+      ],
+      "shots": 1990,
+      "pickups": 91,
+      "falls": 1,
+      "respawns": 75,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 121,
+      "alive": 8,
+      "frags": [
+        41,
+        6,
+        6,
+        2,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        10,
+        13,
+        8,
+        9,
+        12,
+        13
+      ],
+      "shots": 1999,
+      "pickups": 92,
+      "falls": 1,
+      "respawns": 75,
+      "tickMs": 2,
+      "queue": 4
+    },
+    {
+      "t": 122,
+      "alive": 8,
+      "frags": [
+        41,
+        6,
+        6,
+        2,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        10,
+        13,
+        8,
+        9,
+        12,
+        13
+      ],
+      "shots": 2002,
+      "pickups": 94,
+      "falls": 1,
+      "respawns": 75,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 123,
+      "alive": 8,
+      "frags": [
+        41,
+        6,
+        6,
+        2,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        10,
+        13,
+        8,
+        9,
+        12,
+        13
+      ],
+      "shots": 2013,
+      "pickups": 94,
+      "falls": 1,
+      "respawns": 75,
+      "tickMs": 2,
+      "queue": 3
+    },
+    {
+      "t": 124,
+      "alive": 8,
+      "frags": [
+        41,
+        6,
+        6,
+        2,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        10,
+        13,
+        8,
+        9,
+        12,
+        13
+      ],
+      "shots": 2025,
+      "pickups": 95,
+      "falls": 1,
+      "respawns": 75,
+      "tickMs": 2,
+      "queue": 4
+    },
+    {
+      "t": 125,
+      "alive": 7,
+      "frags": [
+        41,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        11,
+        13,
+        8,
+        9,
+        12,
+        13
+      ],
+      "shots": 2033,
+      "pickups": 96,
+      "falls": 1,
+      "respawns": 75,
+      "tickMs": 1,
+      "queue": 5
+    },
+    {
+      "t": 126,
+      "alive": 7,
+      "frags": [
+        41,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        0,
+        2,
+        11,
+        13,
+        8,
+        9,
+        12,
+        13
+      ],
+      "shots": 2045,
+      "pickups": 96,
+      "falls": 1,
+      "respawns": 75,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 127,
+      "alive": 7,
+      "frags": [
+        40,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        8,
+        9,
+        12,
+        13
+      ],
+      "shots": 2060,
+      "pickups": 97,
+      "falls": 1,
+      "respawns": 76,
+      "tickMs": 2,
+      "queue": 1
+    },
+    {
+      "t": 128,
+      "alive": 7,
+      "frags": [
+        40,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        3
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        8,
+        9,
+        12,
+        13
+      ],
+      "shots": 2072,
+      "pickups": 97,
+      "falls": 1,
+      "respawns": 76,
+      "tickMs": 4,
+      "queue": 1
+    },
+    {
+      "t": 129,
+      "alive": 7,
+      "frags": [
+        40,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        9,
+        9,
+        12,
+        13
+      ],
+      "shots": 2083,
+      "pickups": 98,
+      "falls": 1,
+      "respawns": 77,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 130,
+      "alive": 5,
+      "frags": [
+        41,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        9,
+        9,
+        13,
+        14
+      ],
+      "shots": 2096,
+      "pickups": 98,
+      "falls": 2,
+      "respawns": 77,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 131,
+      "alive": 5,
+      "frags": [
+        42,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        9,
+        10,
+        13,
+        14
+      ],
+      "shots": 2111,
+      "pickups": 99,
+      "falls": 2,
+      "respawns": 78,
+      "tickMs": 1,
+      "queue": 1
+    },
+    {
+      "t": 132,
+      "alive": 7,
+      "frags": [
+        42,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        9,
+        10,
+        13,
+        14
+      ],
+      "shots": 2125,
+      "pickups": 99,
+      "falls": 2,
+      "respawns": 80,
+      "tickMs": 5,
+      "queue": 2
+    },
+    {
+      "t": 133,
+      "alive": 8,
+      "frags": [
+        42,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        9,
+        10,
+        13,
+        14
+      ],
+      "shots": 2142,
+      "pickups": 100,
+      "falls": 2,
+      "respawns": 81,
+      "tickMs": 4,
+      "queue": 3
+    },
+    {
+      "t": 134,
+      "alive": 7,
+      "frags": [
+        43,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        9,
+        10,
+        14,
+        14
+      ],
+      "shots": 2159,
+      "pickups": 101,
+      "falls": 2,
+      "respawns": 81,
+      "tickMs": 1,
+      "queue": 8
+    },
+    {
+      "t": 135,
+      "alive": 6,
+      "frags": [
+        44,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        10,
+        10,
+        14,
+        14
+      ],
+      "shots": 2178,
+      "pickups": 101,
+      "falls": 2,
+      "respawns": 81,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 136,
+      "alive": 6,
+      "frags": [
+        45,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        10,
+        10,
+        14,
+        15
+      ],
+      "shots": 2196,
+      "pickups": 101,
+      "falls": 2,
+      "respawns": 82,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 137,
+      "alive": 7,
+      "frags": [
+        45,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        10,
+        10,
+        14,
+        15
+      ],
+      "shots": 2213,
+      "pickups": 102,
+      "falls": 2,
+      "respawns": 83,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 138,
+      "alive": 8,
+      "frags": [
+        45,
+        6,
+        6,
+        3,
+        1,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        13,
+        10,
+        10,
+        14,
+        15
+      ],
+      "shots": 2233,
+      "pickups": 103,
+      "falls": 2,
+      "respawns": 84,
+      "tickMs": 3,
+      "queue": 2
+    },
+    {
+      "t": 139,
+      "alive": 7,
+      "frags": [
+        45,
+        6,
+        7,
+        3,
+        1,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        14,
+        10,
+        10,
+        14,
+        15
+      ],
+      "shots": 2254,
+      "pickups": 104,
+      "falls": 2,
+      "respawns": 84,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 140,
+      "alive": 5,
+      "frags": [
+        46,
+        6,
+        7,
+        3,
+        2,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        14,
+        10,
+        10,
+        15,
+        16
+      ],
+      "shots": 2271,
+      "pickups": 104,
+      "falls": 2,
+      "respawns": 84,
+      "tickMs": 3,
+      "queue": 1
+    },
+    {
+      "t": 141,
+      "alive": 6,
+      "frags": [
+        46,
+        6,
+        7,
+        3,
+        2,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        14,
+        10,
+        10,
+        15,
+        16
+      ],
+      "shots": 2287,
+      "pickups": 105,
+      "falls": 2,
+      "respawns": 85,
+      "tickMs": 0,
+      "queue": 2
+    },
+    {
+      "t": 142,
+      "alive": 8,
+      "frags": [
+        46,
+        6,
+        7,
+        3,
+        2,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        14,
+        10,
+        10,
+        15,
+        16
+      ],
+      "shots": 2305,
+      "pickups": 105,
+      "falls": 2,
+      "respawns": 87,
+      "tickMs": 4,
+      "queue": 5
+    },
+    {
+      "t": 143,
+      "alive": 7,
+      "frags": [
+        46,
+        7,
+        7,
+        3,
+        2,
+        6,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        11,
+        14,
+        11,
+        10,
+        15,
+        16
+      ],
+      "shots": 2322,
+      "pickups": 106,
+      "falls": 2,
+      "respawns": 87,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 144,
+      "alive": 5,
+      "frags": [
+        47,
+        7,
+        7,
+        3,
+        2,
+        7,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        12,
+        14,
+        11,
+        10,
+        15,
+        17
+      ],
+      "shots": 2333,
+      "pickups": 107,
+      "falls": 2,
+      "respawns": 87,
+      "tickMs": 1,
+      "queue": 1
+    },
+    {
+      "t": 145,
+      "alive": 6,
+      "frags": [
+        47,
+        7,
+        7,
+        3,
+        2,
+        7,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        12,
+        14,
+        11,
+        10,
+        15,
+        17
+      ],
+      "shots": 2347,
+      "pickups": 108,
+      "falls": 2,
+      "respawns": 88,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 146,
+      "alive": 8,
+      "frags": [
+        47,
+        7,
+        7,
+        3,
+        2,
+        7,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        12,
+        14,
+        11,
+        10,
+        15,
+        17
+      ],
+      "shots": 2362,
+      "pickups": 109,
+      "falls": 2,
+      "respawns": 90,
+      "tickMs": 1,
+      "queue": 1
+    },
+    {
+      "t": 147,
+      "alive": 8,
+      "frags": [
+        47,
+        7,
+        7,
+        3,
+        2,
+        7,
+        1,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        12,
+        14,
+        11,
+        10,
+        15,
+        17
+      ],
+      "shots": 2383,
+      "pickups": 109,
+      "falls": 2,
+      "respawns": 90,
+      "tickMs": 4,
+      "queue": 2
+    },
+    {
+      "t": 148,
+      "alive": 7,
+      "frags": [
+        47,
+        7,
+        7,
+        3,
+        2,
+        7,
+        2,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        12,
+        14,
+        11,
+        11,
+        15,
+        17
+      ],
+      "shots": 2401,
+      "pickups": 111,
+      "falls": 2,
+      "respawns": 90,
+      "tickMs": 2,
+      "queue": 4
+    },
+    {
+      "t": 149,
+      "alive": 6,
+      "frags": [
+        48,
+        7,
+        7,
+        3,
+        2,
+        7,
+        2,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        12,
+        14,
+        11,
+        11,
+        15,
+        18
+      ],
+      "shots": 2415,
+      "pickups": 111,
+      "falls": 2,
+      "respawns": 90,
+      "tickMs": 1,
+      "queue": 4
+    },
+    {
+      "t": 150,
+      "alive": 7,
+      "frags": [
+        48,
+        7,
+        7,
+        3,
+        2,
+        7,
+        2,
+        4
+      ],
+      "deaths": [
+        1,
+        2,
+        12,
+        14,
+        11,
+        11,
+        15,
+        18
+      ],
+      "shots": 2430,
+      "pickups": 112,
+      "falls": 2,
+      "respawns": 91,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 151,
+      "alive": 7,
+      "frags": [
+        49,
+        7,
+        7,
+        3,
+        2,
+        7,
+        2,
+        4
+      ],
+      "deaths": [
+        1,
+        3,
+        12,
+        14,
+        11,
+        11,
+        15,
+        18
+      ],
+      "shots": 2447,
+      "pickups": 113,
+      "falls": 2,
+      "respawns": 92,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 152,
+      "alive": 7,
+      "frags": [
+        49,
+        7,
+        7,
+        3,
+        2,
+        7,
+        2,
+        4
+      ],
+      "deaths": [
+        1,
+        3,
+        12,
+        14,
+        11,
+        11,
+        15,
+        18
+      ],
+      "shots": 2465,
+      "pickups": 113,
+      "falls": 2,
+      "respawns": 92,
+      "tickMs": 2,
+      "queue": 2
+    },
+    {
+      "t": 153,
+      "alive": 8,
+      "frags": [
+        49,
+        7,
+        7,
+        3,
+        2,
+        7,
+        2,
+        4
+      ],
+      "deaths": [
+        1,
+        3,
+        12,
+        14,
+        11,
+        11,
+        15,
+        18
+      ],
+      "shots": 2485,
+      "pickups": 113,
+      "falls": 2,
+      "respawns": 93,
+      "tickMs": 1,
+      "queue": 3
+    },
+    {
+      "t": 154,
+      "alive": 8,
+      "frags": [
+        49,
+        7,
+        7,
+        3,
+        2,
+        7,
+        2,
+        4
+      ],
+      "deaths": [
+        1,
+        3,
+        12,
+        14,
+        11,
+        11,
+        15,
+        18
+      ],
+      "shots": 2511,
+      "pickups": 114,
+      "falls": 2,
+      "respawns": 93,
+      "tickMs": 1,
+      "queue": 2
+    },
+    {
+      "t": 155,
+      "alive": 7,
+      "frags": [
+        50,
+        7,
+        7,
+        3,
+        2,
+        7,
+        2,
+        4
+      ],
+      "deaths": [
+        1,
+        3,
+        13,
+        14,
+        11,
+        11,
+        15,
+        18
+      ],
+      "shots": 2531,
+      "pickups": 115,
+      "falls": 2,
+      "respawns": 93,
+      "tickMs": 1,
+      "queue": 4
+    }
+  ],
+  "restart": {
+    "constructorMs": 612,
+    "time": 29.999999999999577,
+    "frags": [
+      0,
+      0,
+      2,
+      3,
+      1,
+      0,
+      1,
+      1
+    ],
+    "deaths": [
+      1,
+      0,
+      2,
+      2,
+      1,
+      1,
+      0,
+      1
+    ],
+    "firstEvents": [
+      {
+        "id": 1,
+        "type": "spawn",
+        "actor": 0
+      },
+      {
+        "id": 2,
+        "type": "spawn",
+        "actor": 1
+      },
+      {
+        "id": 3,
+        "type": "spawn",
+        "actor": 2
+      },
+      {
+        "id": 4,
+        "type": "spawn",
+        "actor": 3
+      },
+      {
+        "id": 5,
+        "type": "spawn",
+        "actor": 4
+      },
+      {
+        "id": 6,
+        "type": "spawn",
+        "actor": 5
+      },
+      {
+        "id": 7,
+        "type": "spawn",
+        "actor": 6
+      },
+      {
+        "id": 8,
+        "type": "spawn",
+        "actor": 7
+      }
+    ],
+    "simulatedTicks": 1800,
+    "illegalActorTicks": 1725
+  },
+  "claimsChecked": {
+    "humanKills": 51,
+    "humanDeaths": 1,
+    "humanDamageDealt": 6287.9,
+    "humanDamageTaken": 138.5,
+    "botShots": 1316,
+    "botMaxDisplacement": 82.6428866045184
+  }
+}
