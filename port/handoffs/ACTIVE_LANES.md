@@ -14,7 +14,7 @@ updates root documentation/shared verification and owns publication.
 | Player-facing usability audit | Delivered `29b0a59`, integrated `2af744f` | `port/native-usability-audit/`; lead fixed setup copy; sports bearing correction delegated |
 | Sports bearing correction | Delivered `99c0a93` / `6350cc4`, integrated `0b820c9` / `e1defc0` | Camera-projection regression896; real two-sided images inspected; exported startup PASS,73 aggregate gates PASS |
 | LATTICE world usability | Delivered `dfe7432` / `6667569`, integrated locally;24 contracts and77 aggregate gates PASS | World control-state guidance and public approach/progress cues; agent's failed resized click remains disclosed |
-| Payload approach guidance | `ses_f389ccf0fffemWcROQEWgGdXtC` running | Narrow objective guidance HUD; new guidance tests and `port/native-payload-guidance/`; source/shared session/combined arms untouched |
+| Payload approach guidance | Delivered `20f85f2`, integrated locally; lead823 guidance/99 HUD and current-renderer historical replay PASS | Objective bearing/radius/role guidance;3792 historical snapshot matches, not new full-delivery acceptance; package update pending |
 | Race victory / soccer practice | Delivered `33f5257`, integrated `8a58c97`; independent race victory/local goal PASS | Sports coaching/tests; zero-bot practice blocked by source |
 | Sunscar combined-arms vehicle slice | Delivered `1126a08` + `613dc92`, integrated `88cd514` + `fc5795c` | New `godot/combined_arms/`, `godot/tests/combined_arms/`, `port/native-combined-arms/` |
 | Independent combined-arms acceptance | Delivered `9b1cdcd`, integrated `51f555f`; full Puma route PASS | `port/reports/combined-arms-independent/`; lead strengthened receipt-set validator |

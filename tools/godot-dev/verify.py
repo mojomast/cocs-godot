@@ -98,6 +98,8 @@ commands = [
     ("objective-controls", [binary, "--headless", "--path", "godot", "--script", "res://tests/objectives/controls.gd", "--", "--map=tidal-citadel"]),
     ("objective-progression", [binary, "--headless", "--path", "godot", "--script", "res://tests/objectives/progression_hud.gd", "--", "--map=tidal-citadel"]),
     ("objective-input-timing", [binary, "--headless", "--path", "godot", "--script", "res://tests/objectives/completion_inputs.gd"]),
+    ("payload-guidance", [binary, "--headless", "--path", "godot", "--script", "res://tests/objectives/guidance_fixtures.gd"]),
+    ("payload-guidance-hud", [binary, "--headless", "--path", "godot", "--script", "res://tests/objectives/guidance_hud.gd", "--", "--map=tidal-citadel"]),
     ("control-safety", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/control_safety.gd"]),
     ("window-focus", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/window_focus.gd"]),
     ("session-recovery", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/session_recovery.gd"]),
