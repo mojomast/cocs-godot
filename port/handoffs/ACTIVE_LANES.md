@@ -320,6 +320,21 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
     F9/F10 quality and lifecycle drains.
   - Hard rule for both: existing gates stay green, no unverified commits, and each
     reports what it left out rather than trading correctness for scope.
+- Owner asked to add detail polygons to the weapons and make the ten weapons
+  visually distinct. Two coordinated pre-release lanes: **first-person weapon detail**
+  (owns `tools/godot-weapons/**`, `godot/first_person/**`, `godot/tests/first_person/**`,
+  `port/native-weapon-detail/**`; target 3,000–6,000 tris, ≤8 batches, writes
+  `WEAPON_IDENTITY.md` as the single source of truth) and **third-person weapon detail**
+  (owns `tools/godot-operators/world-weapons.mjs`,
+  `godot/source_operators/generated/world_weapons/**`, `godot/tests/source_operators/**`,
+  `port/native-weapon-detail-world/**`; target 1,200–2,500 tris, ≤4 batches, must match the
+  identity document). Shared six-channel identity framework: receiver massing, feed
+  identity, muzzle device, stock/grip treatment, sight family, accent + signature greeble.
+  Hard invariants: anchors within 1e-4, satisfied 0.0 px sight alignment with 0 opaque
+  target-gap pixels, no hand/grip intersection, hip framing clearance, byte-identical
+  re-export, and every existing ADS/handling/weapon-effects/combat-integration gate green.
+  Source `game/**` stays locked and read-only; both lanes must report per-weapon if a
+  design cannot pass rather than trading correctness for detail.
 - Owner asked for massive particle blood spurts on hits and a messy death splatter
   that stains surroundings. **Blood/fluid FX lane** owns NEW `godot/blood_fx/**`,
   `godot/tests/blood_fx/**`, `port/native-blood-fx/**` and must not touch the
