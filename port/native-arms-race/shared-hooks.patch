@@ -1,0 +1,16 @@
+diff --git a/tools/godot-dev/launch_options.mjs b/tools/godot-dev/launch_options.mjs
+--- a/tools/godot-dev/launch_options.mjs
++++ b/tools/godot-dev/launch_options.mjs
+@@ -2,3 +2,4 @@
+ export const EXPERIENCES = {
+   combat: {scene:'res://world/session.tscn', map:'meridian-exchange'},
++  'arms-race': {scene:'res://arms_race/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['armsrace'], 'verdant-reliquary':['armsrace'], 'ember-crucible':['armsrace']}},
+   sports: {scene:'res://sports/demo.tscn', map:'ion-speedway', modes:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
+diff --git a/tools/godot-package/options.mjs b/tools/godot-package/options.mjs
+--- a/tools/godot-package/options.mjs
++++ b/tools/godot-package/options.mjs
+@@ -2,3 +2,4 @@
+ export const EXPERIENCES = {
+   combat: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
++  'arms-race': {scene:'res://arms_race/demo.tscn', maps:{'meridian-exchange':['armsrace'], 'verdant-reliquary':['armsrace'], 'ember-crucible':['armsrace']}},
+   sports: {scene:'res://sports/demo.tscn', maps:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
