@@ -1,0 +1,16 @@
+$ git rev-parse HEAD
+13b9372da4d69ab96d9bfd691549abffb39b4764
+$ git status --porcelain=v1 -uall
+ M port/reports/ci-artifact-tests.log
+ M port/reports/export-tests.log
+ M port/reports/gate-runner-tests.log
+ M port/reports/gltf-sides.log
+ M port/reports/moth-export.log
+ M port/reports/verification.json
+$ python3 tools/godot-dev/verify.py
+gate-runner-tests: PASS
+ci-artifact-tests: PASS
+export-tests: PASS
+moth-export: PASS
+gltf-sides: PASS
+health-hud-evidence: PASS

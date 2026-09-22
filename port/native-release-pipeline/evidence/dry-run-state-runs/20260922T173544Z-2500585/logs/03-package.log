@@ -1,0 +1,1 @@
+DRY-RUN python3 tools/godot-package/build.py --target windows --state /tmp/opencode/cocs-release-release-pipeline-rehearsal-worktree-2026-09-22-2/package-state --archive-directory /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain --operator-models source-operators

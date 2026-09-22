@@ -1,0 +1,18 @@
+COCS release pipeline — tag=release-pipeline-build-rehearsal-2026-09-22-c target=windows mode=EXECUTE
+  state    /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-c (created, append-only)
+  run      runs/20260922T173738Z-2515118
+[1/6] preflight
+  warn     HEAD is detached; releasing the commit directly (no local branch recorded)
+  HEAD     bfa29e8cfa24 (detached)
+  tag      release-pipeline-build-rehearsal-2026-09-22-c is free on godot and in mojomast/cocs-godot
+  tree     clean (7 verification report file(s) exempt, 0 untracked recorded)
+  godot    4.5.2.stable.official.6ce3de25a (/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64)
+  archive  editor.zip 67.3 MiB sha512 ✓
+  archive  templates.tpz 1290.4 MiB sha512 ✓
+  notes    port/combat-expansion/RELEASE_NOTES.md (4573 bytes) title "COCS: DESTINATIONS — combat expansion (development prerelease)"
+  workflow windows-demo.yml on ref main (tag input present)
+  warn     frozen commit bfa29e8cfa24 is not on godot yet; the tag would target refs/heads/main instead
+  ✔ preflight 2.79s (ok)
+[2/6] verification
+  freeze   bfa29e8cfa24 unchanged since preflight
+  env      GODOT_BIN, PORT=0, TMPDIR=/tmp/opencode, XDG_* under runtime

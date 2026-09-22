@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "step": "verification",
+  "index": 2,
+  "status": "failed",
+  "dry_run": false,
+  "started_at": "2026-09-22T17:36:59.440Z",
+  "finished_at": "2026-09-22T17:37:03.062Z",
+  "duration_seconds": 3.62,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.01,
+      "timed_out": false
+    },
+    {
+      "command": "python3",
+      "args": [
+        "tools/godot-dev/verify.py"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": null,
+      "duration_seconds": 3.61,
+      "timed_out": true
+    }
+  ],
+  "detail": {},
+  "error": {
+    "code": "command-timeout",
+    "message": "python3 tools/godot-dev/verify.py exceeded 3600 ms",
+    "hint": "inspect the step log; raise the matching --*-timeout only if the work is genuinely still running",
+    "detail": null
+  }
+}

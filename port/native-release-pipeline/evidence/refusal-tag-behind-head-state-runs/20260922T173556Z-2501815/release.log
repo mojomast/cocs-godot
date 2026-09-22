@@ -1,0 +1,53 @@
+COCS release pipeline — tag=release-pipeline-build-rehearsal-2026-09-22 target=windows mode=EXECUTE
+  state    /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22 (created, append-only)
+  run      runs/20260922T173556Z-2501815
+[1/6] preflight
+  warn     HEAD is detached; releasing the commit directly (no local branch recorded)
+  HEAD     13b9372da4d6 (detached)
+  tag      release-pipeline-build-rehearsal-2026-09-22 is free on godot and in mojomast/cocs-godot
+  tree     clean (0 verification report file(s) exempt, 0 untracked recorded)
+  godot    4.5.2.stable.official.6ce3de25a (/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64)
+  archive  editor.zip 67.3 MiB sha512 ✓
+  archive  templates.tpz 1290.4 MiB sha512 ✓
+  notes    port/combat-expansion/RELEASE_NOTES.md (4573 bytes) title "COCS: DESTINATIONS — combat expansion (development prerelease)"
+  workflow windows-demo.yml on ref main (tag input present)
+
+{
+  "schema_version": 1,
+  "kind": "cocs-release-run",
+  "run_id": "20260922T173556Z-2501815",
+  "tag": "release-pipeline-build-rehearsal-2026-09-22",
+  "target": "windows",
+  "mode": "execute",
+  "dry_run": false,
+  "argv": [
+    "--tag=release-pipeline-build-rehearsal-2026-09-22",
+    "--execute",
+    "--verification=always",
+    "--stop-after=package"
+  ],
+  "state": "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22",
+  "resume_from": null,
+  "stop_after": "package",
+  "started_at": "2026-09-22T17:35:56.319Z",
+  "finished_at": "2026-09-22T17:35:58.412Z",
+  "status": "failed",
+  "exit_code": 1,
+  "head": null,
+  "branch": null,
+  "steps": [
+    {
+      "step": "preflight",
+      "status": "failed",
+      "duration_seconds": 2.09,
+      "detail": {},
+      "error": {
+        "code": "tag-target-behind-head",
+        "message": "frozen commit 13b9372da4d6 is not on godot yet; the tag would target refs/heads/main instead",
+        "hint": "push the commit first (git push godot 13b9372da4d6:refs/heads/main) or pass --allow-tag-behind-head to tag the published branch head",
+        "detail": null
+      },
+      "reused_from": null
+    }
+  ]
+}

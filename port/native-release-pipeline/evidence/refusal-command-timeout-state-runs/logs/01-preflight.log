@@ -1,0 +1,25 @@
+$ git rev-parse HEAD
+13b9372da4d69ab96d9bfd691549abffb39b4764
+$ git rev-parse --abbrev-ref HEAD
+HEAD
+$ git rev-parse --is-shallow-repository
+false
+$ git remote get-url godot
+https://github.com/mojomast/cocs-godot.git
+$ git tag --list release-pipeline-build-rehearsal-2026-09-22-b
+$ git ls-remote --tags godot refs/tags/release-pipeline-build-rehearsal-2026-09-22-b
+$ gh release view release-pipeline-build-rehearsal-2026-09-22-b --repo mojomast/cocs-godot --json tagName
+release not found
+$ git status --porcelain=v1 -uall
+ M port/reports/ci-artifact-tests.log
+ M port/reports/export-tests.log
+ M port/reports/gate-runner-tests.log
+ M port/reports/gltf-sides.log
+ M port/reports/moth-export.log
+ M port/reports/verification.json
+$ /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --version
+4.5.2.stable.official.6ce3de25a
+$ git ls-remote --heads godot
+a3fc3a0cc6c43dddff49ca7d5644f36c78e78336	refs/heads/main
+$ git cat-file -e "a3fc3a0cc6c43dddff49ca7d5644f36c78e78336^{commit}"
+$ git merge-base --is-ancestor 13b9372da4d69ab96d9bfd691549abffb39b4764 a3fc3a0cc6c43dddff49ca7d5644f36c78e78336

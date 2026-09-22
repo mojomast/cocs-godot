@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "step": "verification",
+  "index": 2,
+  "status": "failed",
+  "dry_run": false,
+  "started_at": "2026-09-22T17:36:25.203Z",
+  "finished_at": "2026-09-22T17:36:26.899Z",
+  "duration_seconds": 1.7,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.01,
+      "timed_out": false
+    },
+    {
+      "command": "python3",
+      "args": [
+        "tools/godot-dev/verify.py"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 1,
+      "duration_seconds": 1.68,
+      "timed_out": false
+    }
+  ],
+  "detail": {},
+  "error": {
+    "code": "verification-failed",
+    "message": "verify.py exit 1; 1 gate(s) failed: gltf-sides",
+    "hint": "the frozen tree is not verifiable; fix or revert and re-run. Reports live in port/reports/.",
+    "detail": {
+      "exit_code": 1,
+      "status": "failed",
+      "gates_total": 6,
+      "gates_passed": 5,
+      "failing_gates": [
+        {
+          "gate": "gltf-sides",
+          "reason": "nonzero-exit"
+        }
+      ],
+      "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+      "report": "evidence/verification.json"
+    }
+  }
+}

@@ -1,0 +1,191 @@
+COCS release pipeline — tag=release-pipeline-rehearsal-worktree-2026-09-22-2 target=windows mode=DRY-RUN
+  state    /tmp/opencode/cocs-release-release-pipeline-rehearsal-worktree-2026-09-22-2 (created, append-only)
+  run      runs/20260922T173544Z-2500585
+[1/6] preflight
+  warn     HEAD is detached; releasing the commit directly (no local branch recorded)
+  HEAD     13b9372da4d6 (detached)
+  tag      release-pipeline-rehearsal-worktree-2026-09-22-2 is free on godot and in mojomast/cocs-godot
+  tree     clean (0 verification report file(s) exempt, 0 untracked recorded)
+  godot    4.5.2.stable.official.6ce3de25a (/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64)
+  archive  editor.zip 67.3 MiB sha512 ✓
+  archive  templates.tpz 1290.4 MiB sha512 ✓
+  notes    port/combat-expansion/RELEASE_NOTES.md (4573 bytes) title "COCS: DESTINATIONS — combat expansion (development prerelease)"
+  workflow windows-demo.yml on ref main (tag input present)
+  warn     frozen commit 13b9372da4d6 is not on godot yet; the tag would target refs/heads/main instead
+  ✔ preflight 2.09s (ok)
+[2/6] verification
+  env      GODOT_BIN, PORT=0, TMPDIR=/tmp/opencode, XDG_* under runtime
+  DRY-RUN  python3 tools/godot-dev/verify.py
+  ○ verification 0s (skipped-dry-run)
+[3/6] package
+  state    /tmp/opencode/cocs-release-release-pipeline-rehearsal-worktree-2026-09-22-2/package-state
+  DRY-RUN  python3 tools/godot-package/build.py --target windows --state /tmp/opencode/cocs-release-release-pipeline-rehearsal-worktree-2026-09-22-2/package-state --archive-directory /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain --operator-models source-operators
+  ○ package 0s (skipped-dry-run)
+[4/6] publish
+  archive  (planned by the package step; no bytes to publish in a dry run)
+  target   refs/heads/main
+  DRY-RUN  gh release create release-pipeline-rehearsal-worktree-2026-09-22-2 "cocs-native-<target>.zip" "cocs-native-<target>.zip.sha256" --repo mojomast/cocs-godot --title "COCS: DESTINATIONS — combat expansion (development prerelease)" --notes-file /tmp/opencode/cocs-release-rehearsal/port/combat-expansion/RELEASE_NOTES.md --prerelease --target refs/heads/main
+  ○ publish 0s (skipped-dry-run)
+[5/6] verify
+  DRY-RUN  gh workflow run windows-demo.yml --repo mojomast/cocs-godot --ref main -f tag=release-pipeline-rehearsal-worktree-2026-09-22-2
+  note     dry run: the hosted run URL only exists after an --execute publish
+  ○ verify 0s (skipped-dry-run)
+[6/6] push
+  DRY-RUN  git push godot 13b9372da4d69ab96d9bfd691549abffb39b4764:refs/heads/main
+  note     dry run: the push above is planned and only happens after a passing hosted run
+  ○ push 0s (skipped-dry-run)
+
+{
+  "schema_version": 1,
+  "kind": "cocs-release-run",
+  "run_id": "20260922T173544Z-2500585",
+  "tag": "release-pipeline-rehearsal-worktree-2026-09-22-2",
+  "target": "windows",
+  "mode": "dry-run",
+  "dry_run": true,
+  "argv": [
+    "--tag=release-pipeline-rehearsal-worktree-2026-09-22-2"
+  ],
+  "state": "/tmp/opencode/cocs-release-release-pipeline-rehearsal-worktree-2026-09-22-2",
+  "resume_from": null,
+  "stop_after": null,
+  "started_at": "2026-09-22T17:35:44.798Z",
+  "finished_at": "2026-09-22T17:35:46.895Z",
+  "status": "ok",
+  "exit_code": 0,
+  "head": "13b9372da4d69ab96d9bfd691549abffb39b4764",
+  "branch": null,
+  "steps": [
+    {
+      "step": "preflight",
+      "status": "ok",
+      "duration_seconds": 2.09,
+      "detail": {
+        "detached": true,
+        "head": "13b9372da4d69ab96d9bfd691549abffb39b4764",
+        "branch": null,
+        "package_state": "/tmp/opencode/cocs-release-release-pipeline-rehearsal-worktree-2026-09-22-2/package-state",
+        "publication_remote": "godot",
+        "remote_url": "https://github.com/mojomast/cocs-godot.git",
+        "repository": "mojomast/cocs-godot",
+        "tag": {
+          "name": "release-pipeline-rehearsal-worktree-2026-09-22-2",
+          "free": true
+        },
+        "tree": {
+          "modified": [],
+          "exempted": [],
+          "untracked": [],
+          "allowed": [
+            "port/handoffs/procedural-model-generation-llm-research.md"
+          ],
+          "port_runtime_present": false
+        },
+        "godot_bin": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "godot_version": "4.5.2.stable.official.6ce3de25a",
+        "toolchain": {
+          "archives": {
+            "editor.zip": {
+              "path": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/editor.zip",
+              "bytes": 70517423,
+              "sha512": "e3ce6194b6d4d2dcef5e5b5136752c084d9d8b9071c10bc2d2011b947ec7439a257c8d23c541cb30699f16d9edea6dff36e6e84d2bec14a8fe9b4e9aacbe5a8d",
+              "official": "Godot_v{VERSION}-stable_linux.x86_64.zip"
+            },
+            "templates.tpz": {
+              "path": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/templates.tpz",
+              "bytes": 1353063159,
+              "sha512": "003aa33743f58fb657717f090fc872ed3975e48d08a6012201a2259970d458a63d4d8a83090585307c23455ebfa4e6e0050e1057761c34863536095e3fcfab6c",
+              "official": "Godot_v{VERSION}-stable_export_templates.tpz"
+            }
+          }
+        },
+        "notes": {
+          "path": "port/combat-expansion/RELEASE_NOTES.md",
+          "title": "COCS: DESTINATIONS — combat expansion (development prerelease)",
+          "bytes": 4573,
+          "sha256": "ff0f502c41a5b9a62d413b8c0c17decda9c6b9c37c08f6ef68b21e45b90958d8"
+        },
+        "workflow": {
+          "file": "windows-demo.yml",
+          "ref": "main"
+        },
+        "remote": {
+          "publish_branch": "main",
+          "remote_head": "a3fc3a0cc6c43dddff49ca7d5644f36c78e78336",
+          "head_on_remote": false,
+          "tag_target": "refs/heads/main"
+        }
+      },
+      "error": null,
+      "reused_from": null
+    },
+    {
+      "step": "verification",
+      "status": "skipped-dry-run",
+      "duration_seconds": 0,
+      "detail": {
+        "planned": true,
+        "command": "python3 tools/godot-dev/verify.py"
+      },
+      "error": null,
+      "reused_from": null
+    },
+    {
+      "step": "package",
+      "status": "skipped-dry-run",
+      "duration_seconds": 0,
+      "detail": {
+        "planned": true,
+        "target": "windows",
+        "command": "python3 tools/godot-package/build.py --target windows --state /tmp/opencode/cocs-release-release-pipeline-rehearsal-worktree-2026-09-22-2/package-state --archive-directory /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain --operator-models source-operators"
+      },
+      "error": null,
+      "reused_from": null
+    },
+    {
+      "step": "publish",
+      "status": "skipped-dry-run",
+      "duration_seconds": 0,
+      "detail": {
+        "planned": true,
+        "tag": "release-pipeline-rehearsal-worktree-2026-09-22-2",
+        "command": "gh release create release-pipeline-rehearsal-worktree-2026-09-22-2 \"cocs-native-<target>.zip\" \"cocs-native-<target>.zip.sha256\" --repo mojomast/cocs-godot --title \"COCS: DESTINATIONS — combat expansion (development prerelease)\" --notes-file /tmp/opencode/cocs-release-rehearsal/port/combat-expansion/RELEASE_NOTES.md --prerelease --target refs/heads/main",
+        "assets": [
+          "cocs-native-<target>.zip",
+          "cocs-native-<target>.zip.sha256"
+        ]
+      },
+      "error": null,
+      "reused_from": null
+    },
+    {
+      "step": "verify",
+      "status": "skipped-dry-run",
+      "duration_seconds": 0,
+      "detail": {
+        "planned": true,
+        "workflow": "windows-demo.yml",
+        "ref": "main",
+        "inputs": {
+          "tag": "release-pipeline-rehearsal-worktree-2026-09-22-2"
+        },
+        "command": "gh workflow run windows-demo.yml --repo mojomast/cocs-godot --ref main -f tag=release-pipeline-rehearsal-worktree-2026-09-22-2"
+      },
+      "error": null,
+      "reused_from": null
+    },
+    {
+      "step": "push",
+      "status": "skipped-dry-run",
+      "duration_seconds": 0,
+      "detail": {
+        "planned": true,
+        "remote": "godot",
+        "refspec": "13b9372da4d69ab96d9bfd691549abffb39b4764:refs/heads/main",
+        "commit": "13b9372da4d69ab96d9bfd691549abffb39b4764"
+      },
+      "error": null,
+      "reused_from": null
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+COCS release pipeline — tag=release-pipeline-build-rehearsal-2026-09-22-b target=windows mode=EXECUTE
+  state    /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-b (created, append-only)
+  run      runs/20260922T173657Z-2509099
+[1/6] preflight
+  warn     HEAD is detached; releasing the commit directly (no local branch recorded)
+  HEAD     13b9372da4d6 (detached)
+  tag      release-pipeline-build-rehearsal-2026-09-22-b is free on godot and in mojomast/cocs-godot
+  tree     clean (6 verification report file(s) exempt, 0 untracked recorded)
+  godot    4.5.2.stable.official.6ce3de25a (/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64)
+  archive  editor.zip 67.3 MiB sha512 ✓
+  archive  templates.tpz 1290.4 MiB sha512 ✓
+  notes    port/combat-expansion/RELEASE_NOTES.md (4573 bytes) title "COCS: DESTINATIONS — combat expansion (development prerelease)"
+  workflow windows-demo.yml on ref main (tag input present)
+  warn     frozen commit 13b9372da4d6 is not on godot yet; the tag would target refs/heads/main instead
+  ✔ preflight 2.16s (ok)
+[2/6] verification
+  freeze   13b9372da4d6 unchanged since preflight
+  env      GODOT_BIN, PORT=0, TMPDIR=/tmp/opencode, XDG_* under runtime
+
+HARD STOP [verification] command-timeout: python3 tools/godot-dev/verify.py exceeded 3600 ms
+  hint: inspect the step log; raise the matching --*-timeout only if the work is genuinely still running
+  step log: runs/20260922T173657Z-2509099/logs/02-verification.log
+  summary:  runs/20260922T173657Z-2509099/summary.json
+  resume with: --resume-from=verification --state=/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-b --execute
+summary: /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-b/runs/20260922T173657Z-2509099/summary.json
+COCS release pipeline — tag=release-pipeline-build-rehearsal-2026-09-22-b target=windows mode=DRY-RUN
+  state    /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-b (resuming, append-only)
+  run      runs/20260922T173703Z-2510228
+[1/6] preflight — resumed from runs/20260922T173657Z-2509099/steps/01-preflight.json (ok)
+
+HARD STOP [verification] resume-after-failure: the previous verification record failed; resume from verification itself or from an earlier step
+  hint: record: runs/20260922T173657Z-2509099/steps/02-verification.json
+  step log: runs/20260922T173703Z-2510228/logs/02-verification.log
+  summary:  runs/20260922T173703Z-2510228/summary.json
+  resume with: --resume-from=verification --state=/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-b
+summary: /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-b/runs/20260922T173703Z-2510228/summary.json

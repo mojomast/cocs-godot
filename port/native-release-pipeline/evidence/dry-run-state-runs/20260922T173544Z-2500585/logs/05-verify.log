@@ -1,0 +1,1 @@
+DRY-RUN gh workflow run windows-demo.yml --repo mojomast/cocs-godot --ref main -f tag=release-pipeline-rehearsal-worktree-2026-09-22-2

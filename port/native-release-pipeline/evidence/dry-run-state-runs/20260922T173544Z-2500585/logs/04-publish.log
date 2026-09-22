@@ -1,0 +1,1 @@
+DRY-RUN gh release create release-pipeline-rehearsal-worktree-2026-09-22-2 "cocs-native-<target>.zip" "cocs-native-<target>.zip.sha256" --repo mojomast/cocs-godot --title "COCS: DESTINATIONS — combat expansion (development prerelease)" --notes-file /tmp/opencode/cocs-release-rehearsal/port/combat-expansion/RELEASE_NOTES.md --prerelease --target refs/heads/main

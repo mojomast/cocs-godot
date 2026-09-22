@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "step": "preflight",
+  "index": 1,
+  "status": "failed",
+  "dry_run": false,
+  "started_at": "2026-09-22T17:35:56.319Z",
+  "finished_at": "2026-09-22T17:35:58.412Z",
+  "duration_seconds": 2.09,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "--abbrev-ref",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "--is-shallow-repository"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "remote",
+        "get-url",
+        "godot"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "tag",
+        "--list",
+        "release-pipeline-build-rehearsal-2026-09-22"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "ls-remote",
+        "--tags",
+        "godot",
+        "refs/tags/release-pipeline-build-rehearsal-2026-09-22"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.24,
+      "timed_out": false
+    },
+    {
+      "command": "gh",
+      "args": [
+        "release",
+        "view",
+        "release-pipeline-build-rehearsal-2026-09-22",
+        "--repo",
+        "mojomast/cocs-godot",
+        "--json",
+        "tagName"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 1,
+      "duration_seconds": 0.33,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.02,
+      "timed_out": false
+    },
+    {
+      "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "args": [
+        "--version"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.02,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "ls-remote",
+        "--heads",
+        "godot"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.19,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "cat-file",
+        "-e",
+        "a3fc3a0cc6c43dddff49ca7d5644f36c78e78336^{commit}"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "merge-base",
+        "--is-ancestor",
+        "13b9372da4d69ab96d9bfd691549abffb39b4764",
+        "a3fc3a0cc6c43dddff49ca7d5644f36c78e78336"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 1,
+      "duration_seconds": 0,
+      "timed_out": false
+    }
+  ],
+  "detail": {},
+  "error": {
+    "code": "tag-target-behind-head",
+    "message": "frozen commit 13b9372da4d6 is not on godot yet; the tag would target refs/heads/main instead",
+    "hint": "push the commit first (git push godot 13b9372da4d6:refs/heads/main) or pass --allow-tag-behind-head to tag the published branch head",
+    "detail": null
+  }
+}

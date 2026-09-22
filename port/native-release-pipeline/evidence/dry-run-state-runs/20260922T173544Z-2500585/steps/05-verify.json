@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "step": "verify",
+  "index": 5,
+  "status": "skipped-dry-run",
+  "dry_run": true,
+  "started_at": "2026-09-22T17:35:46.895Z",
+  "finished_at": "2026-09-22T17:35:46.895Z",
+  "duration_seconds": 0,
+  "commands": [
+    {
+      "command": "gh",
+      "args": [
+        "workflow",
+        "run",
+        "windows-demo.yml",
+        "--repo",
+        "mojomast/cocs-godot",
+        "--ref",
+        "main",
+        "-f",
+        "tag=release-pipeline-rehearsal-worktree-2026-09-22-2"
+      ],
+      "side_effect": true,
+      "executed": false,
+      "planned": true,
+      "exit_code": null,
+      "duration_seconds": null,
+      "timed_out": false
+    }
+  ],
+  "detail": {
+    "planned": true,
+    "workflow": "windows-demo.yml",
+    "ref": "main",
+    "inputs": {
+      "tag": "release-pipeline-rehearsal-worktree-2026-09-22-2"
+    },
+    "command": "gh workflow run windows-demo.yml --repo mojomast/cocs-godot --ref main -f tag=release-pipeline-rehearsal-worktree-2026-09-22-2"
+  }
+}
