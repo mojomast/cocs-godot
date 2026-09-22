@@ -77,6 +77,7 @@ commands = [
     ("first-person-ads", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/ads_contract.gd"]),
     ("combat-actions", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_actions/controls.gd"]),
     ("combat-shields", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_shields/validate.gd"]),
+    ("combat-shield-capacity", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_shields/capacity.gd"]),
     ("combat-particles", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_particles/contracts.gd"]),
     ("combat-pickup-assets", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_pickup_assets/validate.gd"]),
     ("weapon-effects", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/lifecycle.gd"]),

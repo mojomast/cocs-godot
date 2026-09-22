@@ -186,7 +186,8 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
   pickups `2a43136`, shields `c8cae07`, authority `435b276`, launchers `4dd1f08`.
 - Lead ADS/FOV integration and actual OS-input acceptance: `642acb0`.
 - Independent review `f80c93c`: ADS checks pass; shield pool starvation with
-  unprotected actors ahead of a protected actor is assigned back to shield owner.
+  unprotected actors ahead of a protected actor fixed in `d27f594`. Independent
+  ordering/depth checks pass after separating bounded observation from shell slots.
 - **Shared combat integration agent now owns** `combat_feedback.gd`,
   `combat_quality.gd`, `combat_overlay.gd`, `projectiles.gd`, new semantic occlusion
   helper, and its new tests/report. It inherits the lead's pending composition
