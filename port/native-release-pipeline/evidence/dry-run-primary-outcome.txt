@@ -1,0 +1,17 @@
+Primary-checkout dry run: not captured during this lane.
+
+run-dry-run.sh requires 10 seconds with no modified tracked file and no untracked
+runtime file before planning the run. It polled every 10 s for ~20 minutes and made
+0 attempts: at the end of that window the primary carried 16 modified tracked files and
+1252 untracked paths, all in-flight work from other lanes (godot/horde/**, godot/moth/**,
+godot/identity_maps/**, godot/native_arenas/**, port/native-horde/**, benchmark and
+identity sources). A frozen tree never existed on the primary while this lane ran.
+
+The pipeline's required behaviour on that tree is refusal, and refusal-dirty-tree*
+records the real refusal, naming the offending runtime paths. Preflight itself was
+therefore exercised against the primary (git status parsing, tag/release lookup,
+remote reads); the checks that a dry run would add beyond the refusal were exercised at
+the same commit from a clean worktree, which is what package-rehearsal-* and
+dry-run-worktree-console.log record.
+
+Written 2026-09-22T18:39:59Z.

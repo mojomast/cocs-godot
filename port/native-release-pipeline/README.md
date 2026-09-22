@@ -44,7 +44,7 @@ Every file under `evidence/` is a real run against this checkout, not a fixture.
 |---|---|
 | `unit-tests.log` | 24 tests pass (6 argument, 18 state machine) with the runner stubbed |
 | `dry-run-worktree-console.log`, `dry-run-state-runs/` | the full six-step dry run: real preflight (HEAD, toolchain hashes, free tag), steps 2–6 printed and skipped, in 2.1 s, no side effect |
-| `dry-run-primary-*.log` | the same dry run on the primary working tree (see the note below) |
+| `dry-run-primary-outcome.txt` | why the primary-checkout dry run could not be captured: no frozen window existed (16 modified files, 1252 untracked paths at the end), and refusing that tree is the required behaviour |
 | `refusal-dirty-tree.log`, `.json`, `-console.log` | a real refusal: two lanes' uncommitted runtime files stopped preflight before any side effect |
 | `refusal-existing-tag.*` | a real refusal: the published `combat-expansion-2026-09-22` tag/release is never reused |
 | `refusal-tag-behind-head-console.log`, `refusal-tag-behind-head-state-runs/` | an `--execute` refusal because the frozen commit is not on the publication remote yet; it must be pushed first or tagged deliberately with `--allow-tag-behind-head` |
@@ -97,20 +97,22 @@ four are fixed and covered by tests.
 ### Where the rehearsal ran, and why
 
 The primary checkout carried other lanes' in-flight runtime files for the whole
-rehearsal window (`godot/horde/**`, `godot/world/combat_quality.gd`,
-`port/native-horde/**`, the benchmark and identity lanes, and others), so the pipeline
-refused it — correctly. `refusal-dirty-tree*` is that real refusal. The end-to-end
-rehearsal therefore ran from a clean worktree of the same frozen commit
-(`git worktree add --detach /tmp/opencode/cocs-release-rehearsal <HEAD>`), which is the
-same tree with nothing uncommitted. The worktree needed a `node_modules` symlink to the
-primary's locked dependency tree, because a fresh worktree has none — the
-`gltf-sides` failure that exposed it is in `refusal-verification-failed-state-runs/`.
+rehearsal window — at the end it held 16 modified tracked files and 1252 untracked paths
+(`godot/horde/**`, `godot/moth/**`, `godot/identity_maps/**`,
+`godot/native_arenas/**`, `port/native-horde/**`, the benchmark and identity lanes).
+A frozen tree never existed there, so the pipeline refused it — correctly.
+`refusal-dirty-tree*` is that real refusal, and `dry-run-primary-outcome.txt` records
+the wait and its outcome.
 
-A waiter (`run-dry-run.sh`) also polled the primary for a frozen window so the dry run
-could be recorded against the primary working tree itself; if it reports "no frozen
-window within the wait budget", that is the honest outcome of two lanes committing
-throughout the lane, not a pipeline failure. The pipeline's required behaviour on a
-dirty primary is to refuse, which the evidence shows.
+The end-to-end rehearsal therefore ran from a clean worktree of the same frozen commit
+(`git worktree add --detach /tmp/opencode/cocs-release-rehearsal <HEAD>`), which is the
+same tree with nothing uncommitted. The primary still exercised preflight's own checks
+(git status parsing, tag/release lookup, remote reads) through the refusals; the
+worktree exercised everything a dry run would add, plus a real verification and build.
+
+The worktree needed a `node_modules` symlink to the primary's locked dependency tree,
+because a fresh worktree has none — the `gltf-sides` failure that exposed it is in
+`refusal-verification-failed-state-runs/`.
 
 ## Honest limits
 
