@@ -97,13 +97,20 @@ func load_map(id: String) -> bool:
 	style.configure(map, environment, sun)
 	for b: Dictionary in map.get("blocks", []):
 		box(Vector3(b.x, b.h / 2.0, b.z), Vector3(b.w, b.h, b.d), style.block_material(b), world)
-	var surface := SurfaceTool.new()
-	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	# Keep surface identity for native texture selection. Geometry and winding
+	# remain the locked support triangles, grouped only for rendering materials.
+	var surfaces: Dictionary = {}
 	var shadow_surface := SurfaceTool.new()
 	shadow_surface.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var shadow_triangles := 0
 	var triangle_count: int = 0
 	for triangle: Dictionary in map.get("terrain", {}).get("support_triangles", []):
+		var kind := str(triangle.get("material", "concrete"))
+		if not surfaces.has(kind):
+			var builder := SurfaceTool.new()
+			builder.begin(Mesh.PRIMITIVE_TRIANGLES)
+			surfaces[kind] = builder
+		var surface: SurfaceTool = surfaces[kind]
 		# Source uses CCW faces; Godot uses CW. Explicit source normals also
 		# prevent unrelated support surfaces from being smoothed together.
 		var normal: Array = triangle.normal
@@ -127,8 +134,15 @@ func load_map(id: String) -> bool:
 	if triangle_count > 0:
 		var terrain := MeshInstance3D.new()
 		terrain.name = "SemanticTerrain"
-		terrain.mesh = surface.commit()
-		terrain.material_override = style.terrain_material()
+		var terrain_mesh := ArrayMesh.new()
+		var kinds: Array = surfaces.keys()
+		kinds.sort()
+		for kind: String in kinds:
+			var surface: SurfaceTool = surfaces[kind]
+			surface.set_material(style.terrain_material(kind))
+			surface.commit(terrain_mesh)
+		terrain.mesh = terrain_mesh
+		terrain.set_meta("surface_kinds", kinds)
 		# The camera depth-priority shader must not bias the shadow map too.
 		terrain.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		world.add_child(terrain)

@@ -151,7 +151,7 @@ func terrain_color(triangle: Dictionary) -> Color:
 		"stone": return wall.darkened(0.17)
 	return ground
 
-func terrain_material() -> Material:
+func terrain_material(_kind: String = "concrete") -> Material:
 	var mat := surface_material("terrain", Color.WHITE, 0.10)
 	mat.set_shader_parameter("vertex_tint", true)
 	return mat

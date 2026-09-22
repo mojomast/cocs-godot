@@ -79,6 +79,32 @@ network, common launcher, package pipeline, verifier, locked source or contracts
 The lead reviews integration hooks, reproduces important live claims, updates
 evidence and rebuilds the Linux artifact after accepted runtime changes.
 
+## Graphics restoration batch — owner requested parallel implementation
+
+Baseline `b0ac0b5`. Four isolated agents are implementing this batch; the lead
+owns shared runtime composition, package/CI hooks, integration review and release.
+
+| Lane | Worktree / branch | Exclusive implementation paths |
+|---|---|---|
+| Baked Moth registry/materials | `/tmp/opencode/cocs-graphics-moth`, `graphics/moth` | `tools/godot-moth/`, `godot/moth/`, `godot/tests/moth/`, `port/native-moth-graphics/` |
+| First-person weapon rig | `/tmp/opencode/cocs-graphics-viewmodels`, `graphics/viewmodels` | `tools/godot-weapons/`, `godot/first_person/`, `godot/tests/first_person/`, `port/native-first-person/` |
+| Map atmosphere/lighting | `/tmp/opencode/cocs-graphics-atmosphere`, `graphics/atmosphere` | `godot/graphics_atmosphere/`, `godot/tests/graphics_atmosphere/`, `port/native-atmosphere/` |
+| Source-event Moth effects | `/tmp/opencode/cocs-graphics-vfx`, `graphics/vfx` | `godot/graphics_fx/`, `godot/tests/graphics_fx/`, `port/native-moth-vfx/` |
+
+The existing source/baked assets are read-only. No generation service is needed.
+The first-person lane may read/export source weapon geometry, including weapon0;
+it does not edit the separately reserved external pulse-rifle preview or assets.
+The player-model candidate remains separate. Agents return shared composition
+hooks unapplied, commit their owned paths, and preserve actual failures/evidence.
+
+Moth interchange contract: `res://moth/generated/{textures,normals,sky}/<key>.png`,
+`materials/<key>-{r,t}.png`, `effects/<key>-<zero-based-index>.png`, plus a hashed
+`manifest.json`. `res://moth/library.gd` supplies cached texture/normal/sky/effect/
+material_lut lookups. Other graphics lanes accept injected textures/resources.
+Node authority, collision/support geometry, all nine maps and campaign deferral
+remain the integration constraints. Final evidence must distinguish fixtures,
+normal-rate live operation, graphical review and Windows package execution.
+
 ## Deferred campaign
 
 The owner wants a campaign remake, then explicitly deferred it for substantial

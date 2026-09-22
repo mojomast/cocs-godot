@@ -1,0 +1,68 @@
+{
+  "kind": "static matched-camera baseline",
+  "baseline_commit": "b0ac0b54aa6d815e4d61f63e929612069e2c3d11",
+  "maps": 9,
+  "views": [
+    "overview",
+    "spawn"
+  ],
+  "sizes": [
+    [
+      960,
+      640
+    ],
+    [
+      1280,
+      800
+    ]
+  ],
+  "images": {
+    "asterion-relay-overview-1280x800.png": "78a4f76e3415b74b34bcc76c3042c6ac33db41ec0956928ea62b71c6938306f0",
+    "asterion-relay-overview-960x640.png": "185ab1b0153450dbeb9e53214d39ac9832f2419de6b367c4c2a55e79e88a0d10",
+    "asterion-relay-spawn-1280x800.png": "3b7ac547c690b3214832bfb5f1b1032e90e7e234066236472b056301383889f4",
+    "asterion-relay-spawn-960x640.png": "0c271b8aaf62fd605f6d8315de92321a4753ef69299671c6165b861503ccaa42",
+    "aurora-stadium-overview-1280x800.png": "1cd2f17e944f0a847793a304b6b58f323f07d0ac8f58b7f554c306cffed0bcdf",
+    "aurora-stadium-overview-960x640.png": "d3614cb3f0fad2735a0524d0033231b66e276e21c89939c062aeaff7b379ebcb",
+    "aurora-stadium-spawn-1280x800.png": "e48e25d923e6431ea51d15f8291c4fb049a8d539a1f458111b05e3730b9b267c",
+    "aurora-stadium-spawn-960x640.png": "199aeb6e146fed7d53f07eb462a5cbd2cd3522b9819ad59734cf8b9e16ace46f",
+    "ember-crucible-overview-1280x800.png": "2fa8b8fc30f8349906964ec198259c1a6de19290dcd6239e0392c0f3dde2fb77",
+    "ember-crucible-overview-960x640.png": "48f513561ae410675ffef3880bbd9ce8188c5fd96d4370c214f7ed2fa7d3267a",
+    "ember-crucible-spawn-1280x800.png": "38fc8f2e6a31fce14a571b1e8c08f5440b1f6a9812b40d48ae4a38abafc93be3",
+    "ember-crucible-spawn-960x640.png": "8e2a61e161249c37eec9d1ffe8b47966710734ea90b6bf549da7519f1bad8434",
+    "ion-speedway-overview-1280x800.png": "61f9b47eccfdff70eacf71e6959b842e596c43abf1c8555ea5de07ac7a065018",
+    "ion-speedway-overview-960x640.png": "ebbcb18e3850efff632a4dcffb6aa8c24ab3349ce7cdc0305a61526ee97d70c3",
+    "ion-speedway-spawn-1280x800.png": "92bf5869678c411358f0e8bead5b743ac8ef33fd2704448356c36bc7bd92cf80",
+    "ion-speedway-spawn-960x640.png": "27af90562a48473e44e2b575eb7bfdde3e76d3fb8a26f9f94674fbdfd72a5897",
+    "meridian-exchange-overview-1280x800.png": "b6db55dd8a555cdb31447c00a7c3671cc86072860ce99c1d87078b3dddf140e9",
+    "meridian-exchange-overview-960x640.png": "e8b253415b554cd234a9b8e85da7488622545cdb90d2e7e7495fa7dd364aaca6",
+    "meridian-exchange-spawn-1280x800.png": "deb90c7b37ece16eac7b0917c4e71372edcb7691624fe1b53b083a515833b7c1",
+    "meridian-exchange-spawn-960x640.png": "3d7ad80985ddc1b2ff1dcae13ed47e6473068fec007f4eeeada7709f8e776cb1",
+    "monsoon-foundry-overview-1280x800.png": "31f1a3183db91fb249a1441752cbae879fc45f4b77a781690f176037e1b2409d",
+    "monsoon-foundry-overview-960x640.png": "cd7e558ecbccc9c254461dd0a8e95faf3ad160061dbcfc68e9d31e3ac48199cb",
+    "monsoon-foundry-spawn-1280x800.png": "b3e2716f31068bb05135d39f242f52a87acd7385f691f4c8b3fc2886ec2095e6",
+    "monsoon-foundry-spawn-960x640.png": "8f5d22cb2b9af55c7728bda5ae1b399270d07d85b3893eebf06f460ce2dc2107",
+    "sunscar-convoy-overview-1280x800.png": "2e3a5f0946edb972993cae09374e008610622189ac55be949b1a4b65c5f38135",
+    "sunscar-convoy-overview-960x640.png": "a97521f82a7960a9c11688328b6405c120b9a00724f6a054a8ff774303808b5a",
+    "sunscar-convoy-spawn-1280x800.png": "aa3dd9fe353920573a1ab610db1639a883c27a8b289b98fb677d96d331d78d76",
+    "sunscar-convoy-spawn-960x640.png": "778fcb27529a7be6f2f50cb84c52a74a79e5b075c948ab856f6d341d8da2b74b",
+    "tidal-citadel-overview-1280x800.png": "46ffd680525944ed7e6f358f81a8d45dcd65cd33667cf0b9a9d45895702d1f4f",
+    "tidal-citadel-overview-960x640.png": "eb5b143bf53d0e5f6a9fb1b420c514e1c004ddae51f0f0d599de2350ef62adf9",
+    "tidal-citadel-spawn-1280x800.png": "f438279af9ef4c39723c280f2c77ab3b04bfd262ab8d2366b436b29d7b06e32e",
+    "tidal-citadel-spawn-960x640.png": "7a37b9539df78e319069268f068508acfaf1c844b7ed05ded619f0e0901d6bea",
+    "verdant-reliquary-overview-1280x800.png": "2f48356b15ee94f7efd3063cd69e41bdfac3b7e971d8aef5771757cb92a28118",
+    "verdant-reliquary-overview-960x640.png": "6290586888740eb30f14f1eefa2d539d47878cc1b9337ee7b931a2c62d855a0c",
+    "verdant-reliquary-spawn-1280x800.png": "5c83b1ed50bb655505cdff4208e7315a8e9f02ebf26f7a0e0b8beb32117ca787",
+    "verdant-reliquary-spawn-960x640.png": "920f4640f458a549412c3a8c4e8eb7fa4462189b322a0f92636c76651903fcbb"
+  },
+  "live": false,
+  "reviewed_at_capture": [
+    "meridian-exchange-spawn-1280x800.png",
+    "ember-crucible-spawn-1280x800.png",
+    "asterion-relay-spawn-1280x800.png",
+    "verdant-reliquary-overview-960x640.png"
+  ],
+  "source_files": {
+    "godot/world/viewer.gd": "a1a264134e0876b2cb93382d049b20a3ae91ca65c595d397772ac383c1d2c8b7",
+    "godot/world/environment_style.gd": "eda39ef99563966b99d41fbe1a403ed53d628839fa8f50a86c362f24c2f93ba8"
+  }
+}
