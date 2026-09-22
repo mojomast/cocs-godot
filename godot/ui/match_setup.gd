@@ -8,9 +8,9 @@ const MODE_NAMES := {"deathmatch":"Deathmatch", "teamdeathmatch":"Team Deathmatc
 const DEFAULT_MAP := "meridian-exchange"
 const DEFAULT_MODE := "deathmatch"
 const STANDALONE := {
-	"meridian-exchange":{"domination":"zones", "koth":"zones"},
-	"verdant-reliquary":{"domination":"zones", "koth":"zones"},
-	"ember-crucible":{"domination":"zones", "koth":"zones"},
+	"meridian-exchange":{"domination":"zones", "koth":"zones", "armsrace":"arms-race"},
+	"verdant-reliquary":{"domination":"zones", "koth":"zones", "armsrace":"arms-race"},
+	"ember-crucible":{"domination":"zones", "koth":"zones", "armsrace":"arms-race"},
 	"tidal-citadel":{"ctf":"objectives", "domination":"zones"},
 	"sunscar-convoy":{"payload":"objectives", "domination":"zones", "combined-arms":"combined-arms"},
 	"asterion-relay":{"cocs":"lattice-world", "cocs-coop":"lattice-world"},

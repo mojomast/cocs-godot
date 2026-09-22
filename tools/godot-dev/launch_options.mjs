@@ -1,6 +1,7 @@
 // Scene routing only: capability and protocol checks still belong to each client.
 export const EXPERIENCES = {
   combat: {scene:'res://world/session.tscn', map:'meridian-exchange'},
+  'arms-race': {scene:'res://arms_race/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['armsrace'], 'verdant-reliquary':['armsrace'], 'ember-crucible':['armsrace']}},
   zones: {scene:'res://zone_modes/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
   'combined-arms': {scene:'res://combined_arms/demo.tscn', map:'sunscar-convoy', modes:{'sunscar-convoy':['combined-arms']}},
   sports: {scene:'res://sports/demo.tscn', map:'ion-speedway', modes:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
@@ -72,6 +73,7 @@ export const HELP = `Native COCS launcher — owned loopback authority, normal s
   node tools/godot-dev/launch.mjs --experience=zones --map=meridian-exchange --mode=domination
   node tools/godot-dev/launch.mjs --experience=zones --map=verdant-reliquary --mode=koth
   node tools/godot-dev/launch.mjs --experience=combined-arms
+  node tools/godot-dev/launch.mjs --experience=arms-race --map=meridian-exchange
   node tools/godot-dev/launch.mjs --experience=sports --map=ion-speedway
   node tools/godot-dev/launch.mjs --experience=sports --map=aurora-stadium
   node tools/godot-dev/launch.mjs --experience=objectives --map=tidal-citadel
@@ -84,6 +86,8 @@ PORT=0 (default) allocates a free port. Close the client or press Ctrl+C to stop
 Interactive sessions have no harness deadline. With no options, open the map viewer.
 
 Combat: --map, --mode, --setup, --mute, --debug-hud, --native-trace
+Arms Race: three combat arenas; two Normal bots, ten weapons, 180-second rounds.
+  Source locks weapon selection. Click to engage; Enter restarts results.
 Zones: koth/domination on the three combat arenas; domination on Tidal/Sunscar.
   Click to engage; Enter restarts results. Two source bots, 60-second rounds.
 Combined arms: Sunscar Puma driving slice; Enter engages, E mounts/exits.

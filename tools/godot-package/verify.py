@@ -268,6 +268,7 @@ def main():
         launch('domination', ['--experience=zones','--map=meridian-exchange','--mode=domination'], trace=False)
         launch('koth', ['--experience=zones','--map=verdant-reliquary','--mode=koth'], trace=False)
         launch('combined-arms', ['--experience=combined-arms'], trace=False)
+        launch('arms-race', ['--experience=arms-race'], trace=False)
         launch('race', ['--experience=sports','--map=ion-speedway'], trace=False)
         launch('soccer', ['--experience=sports','--map=aurora-stadium'], trace=False)
         launch('interrupt', ['--play','--native-trace'], action='interrupt')

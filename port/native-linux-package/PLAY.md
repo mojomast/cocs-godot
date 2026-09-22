@@ -32,6 +32,7 @@ node run.mjs --play --map=ember-crucible --mode=rockets
 node run.mjs --experience=zones --map=meridian-exchange --mode=domination
 node run.mjs --experience=zones --map=verdant-reliquary --mode=koth
 node run.mjs --experience=combined-arms
+node run.mjs --experience=arms-race --map=meridian-exchange
 node run.mjs --experience=sports --map=ion-speedway --round-target=3
 node run.mjs --experience=sports --map=aurora-stadium --round-target=5
 node run.mjs --experience=objectives --map=tidal-citadel
@@ -54,6 +55,12 @@ Enter to restart after results. Their defaults are two bots and 60-second rounds
 Combined arms is Sunscar's zero-bot Puma slice: Enter engages, E mounts/exits,
 WASD moves/drives and Space requests a brake tap. After each seat change, press
 Enter and fresh movement keys. Secondary chassis are visual/exit-only previews.
+
+Arms Race: three combat arenas, two Normal bots, ten source weapons and default
+180-second rounds. Click to engage. Weapon selection follows source promotion;
+number keys and wheel cannot change it. Enter restarts after results, then release
+held controls and click to resume. A kill-to-promotion and timed restart are
+independently verified; full ten-rung live victory remains open.
 
 LATTICE world: **C** opens tactical commands on your existing player connection.
 Select an objective and explicitly issue HOLD, or authorize one recruitment

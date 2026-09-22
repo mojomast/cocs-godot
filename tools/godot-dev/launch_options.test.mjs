@@ -46,6 +46,9 @@ test('standalone selection rejects substitutions, unsupported modes and ignored 
     ['--experience=zones','--map=aurora-stadium'],
     ['--experience=combined-arms','--map=tidal-citadel'],
     ['--experience=combined-arms','--mode=payload'],
+    ['--experience=arms-race','--map=ion-speedway'],
+    ['--experience=arms-race','--mode=deathmatch'],
+    ['--experience=arms-race','--time-limit=60'],
   ])assert.throws(()=>launchOptions(args,catalog),Error,args.join(' '));
   assert.throws(()=>launchOptions(['--experience=sports'],{maps:[]}),/locked catalog/);
 });

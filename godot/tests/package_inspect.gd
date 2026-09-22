@@ -1,7 +1,7 @@
 extends SceneTree
 ## External release-runtime probe; never exported into the production PCK.
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible", "tidal-citadel", "sunscar-convoy", "asterion-relay", "monsoon-foundry", "ion-speedway", "aurora-stadium"]
-const SCENES := ["world/session", "sports/demo", "objectives/demo", "lattice/board", "lattice/world_demo", "zone_modes/demo", "combined_arms/demo"]
+const SCENES := ["world/session", "sports/demo", "objectives/demo", "lattice/board", "lattice/world_demo", "zone_modes/demo", "combined_arms/demo", "arms_race/demo"]
 var assertion_ran := false
 
 func assertion_witness() -> bool:

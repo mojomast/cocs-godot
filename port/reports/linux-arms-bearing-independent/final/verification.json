@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "kind": "fresh final extraction and byte-equivalence to previously exercised package",
+  "fresh_directory": "/tmp/opencode/cocs-final-arms-play-bp_3jss5",
+  "archive_sha256": "28aa12761bfa854a5cde1d9b7fb5b24997c1e69e68675f15f47118d5643c1172",
+  "manifest_sha256": "37609fd630a23e2739238c688e9947ba23535d1297b5a664f91d65877e1ed086",
+  "identical_runtime_files": 111,
+  "original_live_verification": "../verification.json",
+  "all_packaged_bytes_identical_except_manifest": true,
+  "new_live_runs": 0,
+  "reason": "Only five Arms Race UID build inputs were added; all 111 exported/package files including PCK and executable remain identical. Prior live startup evidence applies to the identical bytes; no duplicate live run claimed."
+}

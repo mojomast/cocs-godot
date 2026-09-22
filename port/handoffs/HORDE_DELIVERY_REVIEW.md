@@ -23,3 +23,18 @@ These are reviewed delivery screenshots, not a fresh gameplay run, human review,
 or acceptance of all three maps' final layout. The independent reviewer owns
 fresh gameplay, source/adapter semantics and new evidence. Full ten-wave,
 boss/defeat, upgrades and release-package acceptance remain open.
+
+## Independent review returned: HOLD
+
+Review/evidence commit `59c2b33` independently reproduces the narrow gameplay
+outcomes but finds six material issues: overwritten input edges/misleading ACK,
+lost string-ID modifier events, oversized-input crash and missing traffic bounds,
+interval clock drift, actual product Scoreboard/Horde overlap at960×640, and a
+validator that can accept resource-error/harness-failed runs. Its product-scene
+Meridian attempt remains FAIL despite reaching victory/restart.
+
+The same isolated lane is authorized narrow Horde runtime/helper repairs and new
+`port/reports/horde-repair/` evidence. Original runs/failures stay untouched. Public
+Room's local-only restriction stays intact. Runtime/review commits are retained
+outside primary until fixes are reviewed; original review helper preloads depend
+on the unintegrated Horde scene. Common/package routing remains on HOLD.

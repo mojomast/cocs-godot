@@ -10,9 +10,11 @@ updates root documentation/shared verification and owns publication.
 | Native KOTH / Domination | Delivered `2b3d758` + `7238c9d`, integrated `8344544` + `c95f5ca`; independent acceptance PASS | New `godot/zone_modes/`, `godot/tests/zone_modes/`, `port/native-zone-modes/` |
 | Independent zone acceptance | Delivered `60ebf1c`; both capture/scoring/results/restart runs PASS | `port/reports/zone-modes-independent/`; lead corrected helper partial-pass and provenance issues |
 | LATTICE world co-op window | Delivered `e5d862e`, integrated `163e528`; both natural-window/expired-consent cases PASS | `port/native-lattice-world-coop/`, `godot/tests/lattice/world_coop_*`; no runtime change |
-| Native Arms Race | Delivered `52de3b9` / `21fbd93`; independent `a7cbc12` PASS, integration next | New `godot/arms_race/`, `godot/tests/arms_race/`, `port/native-arms-race/`; full ladder victory open |
+| Native Arms Race | Integrated `2335279` / `99e4413`; independent `a7cbc12` integrated `879342e` | Native scene plus eight-route common/package hooks; full ladder victory open |
 | Player-facing usability audit | Delivered `29b0a59`, integrated `2af744f` | `port/native-usability-audit/`; lead fixed setup copy; sports bearing correction delegated |
-| Sports bearing correction | `ses_f38ac0012ffeMU3D9MW8Fnn9iE` running | Narrow sports guidance bearing functions/tests; new `port/native-sports-bearing/` |
+| Sports bearing correction | Delivered `99c0a93` / `6350cc4`, integrated `0b820c9` / `e1defc0` | Camera-projection regression896; real two-sided images inspected; exported startup PASS,73 aggregate gates PASS |
+| LATTICE world usability | `ses_f389d0fdfffe7qsHhGK70aP2jC` running | Narrow world HUD/control-state guidance; new usability tests and `port/native-lattice-usability/`; no source/session/economy changes |
+| Payload approach guidance | `ses_f389ccf0fffemWcROQEWgGdXtC` running | Narrow objective guidance HUD; new guidance tests and `port/native-payload-guidance/`; source/shared session/combined arms untouched |
 | Race victory / soccer practice | Delivered `33f5257`, integrated `8a58c97`; independent race victory/local goal PASS | Sports coaching/tests; zero-bot practice blocked by source |
 | Sunscar combined-arms vehicle slice | Delivered `1126a08` + `613dc92`, integrated `88cd514` + `fc5795c` | New `godot/combined_arms/`, `godot/tests/combined_arms/`, `port/native-combined-arms/` |
 | Independent combined-arms acceptance | Delivered `9b1cdcd`, integrated `51f555f`; full Puma route PASS | `port/reports/combined-arms-independent/`; lead strengthened receipt-set validator |
@@ -20,7 +22,7 @@ updates root documentation/shared verification and owns publication.
 | Independent lobby review / layout follow-up | Delivered `0c92076` / `37f0b9e` / `0cc3b8e`; PARTIAL live; same agent authorized minimal layout fixes and new bounded leave/rejoin acceptance | Narrow `lobby_menu.gd` / `game_hud.gd`, lobby-prefixed checks and reports; original failed/partial evidence preserved |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
 | Player/operator model improvement | External prompt prepared at `2af744f`; not launched by lead | New `godot/player_models/`, `godot/tests/player_models/`, `port/native-player-models/`; shared actor/presentation hooks returned unapplied |
-| Native Horde survival | External delivery `94690b6`; independent review `ses_f38b0ffbbffe0wHBE1r8SUSnjM` running | New `port/reports/horde-independent/` / horde-prefixed observers; local-only adapter needs launcher/package review; lead opened final delivered 960/1280 Verdant PNGs |
+| Native Horde survival | External `94690b6`; independent `59c2b33` HOLD; same reviewer now repairing six concrete defects in isolation | `godot/horde/`, `godot/tests/horde/`, `port/native-horde/`, new `port/reports/horde-repair/`; no shared hooks/package integration until repair accepted |
 
 The LATTICE command and physical-input lanes are delivered and integrated at
 `658b4e7` and `aca52f5`. The projectile navigation follow-up is integrated at

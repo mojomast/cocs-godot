@@ -115,6 +115,20 @@ Supported combat map IDs: `meridian-exchange`, `verdant-reliquary`,
 `rockets`. Add `--mute` to silence procedural cues or `--debug-hud` to show
 diagnostic labels.
 
+### Arms Race
+
+```sh
+PORT=0 node tools/godot-dev/launch.mjs --experience=arms-race --map=meridian-exchange
+```
+
+Available on all three combat arenas with two Normal bots, ten weapons and a
+180-second round. Click to engage; source kills promote the locked loadout.
+The HUD shows your current rung/weapon and next weapon. **Enter** restarts at
+results; release held controls and click again to resume. An independent run
+verified a Pulse Rifle kill → Rocket Launcher promotion, plus a separate natural
+timed round and restart. Full ten-rung victory remains open. See
+[Arms Race acceptance](port/reports/arms-race-independent/README.md).
+
 ### Build an editor-free Linux prototype
 
 The local packaging pipeline exports a Linux x86_64 executable/PCK and includes
@@ -128,12 +142,12 @@ The builder prints the archive path and integrity hashes. Extract the archive,
 enter `cocs-native-linux`, then run **`node run.mjs`** for native combat setup.
 Playing requires Node **22.13+** and normal Linux desktop libraries; the editor,
 Git, npm and original checkout are build-time tools only. The package supports
-the same seven experience routes. See the
+the same eight experience routes. See the
 [local package guide](port/native-linux-package/README.md) for prerequisites,
 verification and launch commands. Generated archives stay outside the repository.
-The latest independent rebuild includes zone and vehicle scenes and passes
-fresh-directory exported combat/world/zones/vehicle/sports startup and failure
-cleanup; see [package verification](port/reports/linux-zone-vehicle-independent/README.md).
+The latest independent rebuild includes Arms Race and corrected sports guidance,
+with fresh-directory exported startup and failure cleanup; see
+[package verification](port/reports/linux-arms-bearing-independent/README.md).
 
 ### Zone control and combined arms
 
@@ -318,7 +332,8 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated local run passes **70 gates**, including CI artifact retention, zone controls,
+The latest integrated local run passes **73 gates**, including Arms Race, sports bearing projection,
+CI artifact retention, zone controls,
 vehicle controls and evidence replay, soccer coaching,
 in-world LATTICE commands, package routing, sports and objective
 progression, LATTICE map selection, launcher routing, GLB material sides and
