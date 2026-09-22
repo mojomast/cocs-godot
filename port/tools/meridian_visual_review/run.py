@@ -3,12 +3,12 @@
 import argparse
 import hashlib
 import json
-import os
 from pathlib import Path
 import shutil
 import struct
 import subprocess
 import tempfile
+from owned_process import private_environment, run_owned
 
 ROOT = Path(__file__).resolve().parents[3]
 SHA = "a41094bdbafd7a6796d86d175982aab958e3500e8d8514f820dfa36c362d73ea"
@@ -51,7 +51,8 @@ def main():
     }
     for relative in ["godot/world/viewer.gd", "godot/project.godot", "godot/main.tscn",
                      "game/environment.mjs", "game/view.mjs", "tools/godot-export/harness.html",
-                     "port/tools/meridian_visual_review/review.gd", "port/tools/meridian_visual_review/run.py"]:
+                      "port/tools/meridian_visual_review/review.gd", "port/tools/meridian_visual_review/run.py",
+                      "port/tools/meridian_visual_review/owned_process.py"]:
         summary["tracked_inputs"][relative] = sha(ROOT / relative)
     for path in sorted((content / "generated").rglob("*.json")):
         summary["generated_inputs"][str(path.relative_to(content))] = sha(path)
@@ -69,11 +70,7 @@ def main():
             (project / "content/probes/meridian-exchange").mkdir(parents=True)
             shutil.copyfile(glb, project / "content/probes/meridian-exchange/world.glb")
             shutil.copyfile(ROOT / "port/tools/meridian_visual_review/review.gd", project / "review.gd")
-            env = dict(os.environ)
-            for name in ["DATA", "CONFIG", "CACHE"]:
-                path = private / ("xdg-" + name.lower())
-                path.mkdir()
-                env["XDG_" + name + "_HOME"] = str(path)
+            env = private_environment(private / "environment")
             for case in ["baseline", "source-cull-only", "camera-inside", "semantic"]:
                 command = ["xvfb-run", "-a", args.godot, "--audio-driver", "Dummy", "--path", str(project)]
                 if case == "semantic":
@@ -81,12 +78,15 @@ def main():
                 else:
                     command += ["--script", "res://review.gd", "--", "--visual-probe",
                                 "--review-case=" + case, "--review-output=" + str(output)]
-                completed = subprocess.run(command, env=env, cwd=ROOT, capture_output=True, text=True, timeout=120)
-                text = completed.stdout + completed.stderr
+                completed = run_owned(command, env=env, cwd=ROOT, timeout=120)
+                text = completed.pop("stdout") + completed.pop("stderr")
                 (output / (case + ".log")).write_text(text)
-                summary["commands"].append({"case": case, "argv": command, "returncode": completed.returncode})
+                summary["commands"].append({"case": case, **completed})
                 save()
-                assert completed.returncode == 0 and "SCRIPT ERROR" not in text and "ERROR:" not in text, text
+                assert completed["cleanup_complete"], completed
+                if completed["timed_out"]:
+                    raise TimeoutError(f"{case} exceeded 120s; owned group cleanup recorded")
+                assert completed["returncode"] == 0 and "SCRIPT ERROR" not in text and "ERROR:" not in text, text
                 assert (output / (case + ".png")).is_file()
             summary["status"] = "completed_causal_experiments_not_parity_acceptance"
     except BaseException as error:
