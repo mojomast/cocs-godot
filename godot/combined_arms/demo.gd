@@ -8,6 +8,7 @@ const CameraRig = preload("res://combined_arms/camera.gd")
 const HUD = preload("res://combined_arms/hud.gd")
 const Lease = preload("res://combined_arms/lease.gd")
 const Motion = preload("res://world/control_math.gd")
+const Graphics = preload("res://combined_arms/graphics.gd")
 var net := Network.new()
 var world := World.new()
 var fleet := Fleet.new()
@@ -15,6 +16,7 @@ var actors := Actors.new()
 var controls := Controls.new()
 var chase := CameraRig.new()
 var hud := HUD.new()
+var graphics := Graphics.new()
 var map_id := "sunscar-convoy"
 var endpoint := ""
 var phase := "connecting"
@@ -52,6 +54,8 @@ func _ready() -> void:
 	world.camera.current = true
 	add_child(fleet)
 	add_child(actors)
+	add_child(graphics)
+	graphics.attach_to(self)
 	var layer := CanvasLayer.new()
 	add_child(layer)
 	layer.add_child(hud)
@@ -59,6 +63,7 @@ func _ready() -> void:
 	net.lobby.connect(on_lobby)
 	net.started.connect(on_started)
 	net.snapshot.connect(on_snapshot)
+	net.events.connect(on_events)
 	net.results.connect(on_results)
 	net.connection_error.connect(fail)
 	checked(net.connect_server(endpoint, world.catalog.entries, map_id))
@@ -66,6 +71,14 @@ func _ready() -> void:
 func release() -> void:
 	controls.release()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	graphics.hide_infantry()
+
+func update_graphics() -> void:
+	graphics.refresh(get_window().has_focus(), Input.mouse_mode == Input.MOUSE_MODE_CAPTURED)
+
+func on_events(items: Array) -> void:
+	update_graphics()
+	graphics.apply_events(items)
 
 func clear_round() -> void:
 	release()
@@ -76,6 +89,7 @@ func clear_round() -> void:
 	fleet.clear_round()
 	actors.clear_round()
 	chase.reset()
+	graphics.reset()
 	age = 0
 	send_age = 0
 
@@ -100,6 +114,7 @@ func on_lobby(frame: Dictionary) -> void:
 		phase = "starting"
 		phase_age = 0
 		checked(net.send_frame({"type":"start"}))
+	update_graphics()
 
 func on_started(_frame: Dictionary) -> void:
 	clear_round()
@@ -111,6 +126,7 @@ func on_results(frame: Dictionary) -> void:
 	release()
 	checked(net.send_input(controls.command(yaw, pitch, false, false)))
 	if phase != "error": phase = "results"
+	graphics.reset()
 
 func on_snapshot(frame: Dictionary) -> void:
 	state = frame.state
@@ -132,6 +148,8 @@ func on_snapshot(frame: Dictionary) -> void:
 		pitch = float(actor.get("pitch", 0))
 		identity = next
 	if not eligible(): release()
+	update_graphics()
+	graphics.apply_state()
 
 func eligible() -> bool:
 	return phase == "active" and Lease.permitted(state, actor, vehicle, age) and actor.get("id") == net.actor_id
@@ -145,12 +163,14 @@ func _input(event: InputEvent) -> void:
 		var look := Motion.look(yaw-event.relative.x*0.003, pitch-event.relative.y*0.003)
 		yaw = look.x
 		pitch = look.y
+	update_graphics()
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		controls.focus(false)
 		release()
 	if what == NOTIFICATION_APPLICATION_FOCUS_IN: controls.focus(true)
+	if what in [NOTIFICATION_APPLICATION_FOCUS_OUT, NOTIFICATION_APPLICATION_FOCUS_IN]: update_graphics()
 
 func _process(delta: float) -> void:
 	age += delta
@@ -179,6 +199,7 @@ func _process(delta: float) -> void:
 		var pose := chase.follow(vehicle, delta) if not vehicle.is_empty() else chase.infantry(actor, yaw, pitch)
 		world.camera.position = pose.eye
 		world.camera.look_at(pose.target)
+	update_graphics()
 	hud.update(actor, vehicle, Lease.nearby(state, actor), controls.engaged, phase, age, error)
 
 func _exit_tree() -> void:
