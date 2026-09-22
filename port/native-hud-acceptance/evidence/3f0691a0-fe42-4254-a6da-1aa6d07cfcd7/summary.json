@@ -1,0 +1,771 @@
+{
+  "schema": 1,
+  "id": "3f0691a0-fe42-4254-a6da-1aa6d07cfcd7",
+  "base": "60880a96e9cd05eddcf6957fdb2f13d9af6e11a0",
+  "normalRate": true,
+  "completionProven": false,
+  "started": "2026-09-22T00:54:37.441Z",
+  "cleanup": {
+    "native": {
+      "pid": 2271448,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "xvfb": {
+      "pid": 2271445,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "import": {
+      "pid": 2270956,
+      "reaped": true,
+      "exitCode": 0,
+      "signal": null
+    },
+    "serverClosed": true,
+    "socketCount": 0,
+    "privateTempRemoved": true
+  },
+  "artifacts": {
+    "export.log.gz": {
+      "bytes": 79,
+      "sha256": "669d2d98dcb78e48d0f9742368637c64549265b89ec141bb5608239dea033dff"
+    },
+    "import.stdout.log.gz": {
+      "bytes": 643,
+      "sha256": "0e5735374cf479f655109f6e5a877709c5ab813c201e1024ed39aa2cd0977541"
+    },
+    "import.stderr.log.gz": {
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    },
+    "native.stdout.log.gz": {
+      "bytes": 59341,
+      "sha256": "00d66d03671999dab82067049e5ce81713e01e8888421bb680ca3c7ae114e310"
+    },
+    "native.stderr.log.gz": {
+      "bytes": 160,
+      "sha256": "3223c5f8e137b40334ec34c0611015b14969ee2449af7157ab2ee8f834da7aea"
+    },
+    "xvfb.stdout.log.gz": {
+      "bytes": 22,
+      "sha256": "de76e512a414e118fc8bc46cc3043f18cb60a7aa7b997d9564d30aae0cac9eee"
+    },
+    "xvfb.stderr.log.gz": {
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    },
+    "baseline.png": {
+      "bytes": 343078,
+      "sha256": "311ea774e873de8b6c47e34c18dc8b3a305cb5e52590040994a1a1f97f409087"
+    },
+    "hurt.png": {
+      "bytes": 351707,
+      "sha256": "52249de60f0e22476457573939ef1c90b7a4c1458c76520cae706935203d1b76"
+    },
+    "collected.png": {
+      "bytes": 374528,
+      "sha256": "9ec6a5023c3132a93969b2b24bb8872ae493510410000fbda77f8302e5607922"
+    },
+    "wire.json.gz": {
+      "bytes": 38301,
+      "sha256": "eb74b74893b423d29f7bf6661f6cd2df12edfcf9649650581e97b4fa049b197e"
+    }
+  },
+  "command": "GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 GUEST_NODE_MODULES=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/node_modules node port/tools/native_health_damage/run.mjs",
+  "sourceHashes": {
+    "run.mjs": "eb99ede6041cd2be010402206ccb1dcfbd664753367c49561f6f45482adc5401",
+    "observe.gd": "6c553829af63b12733d09ad72af698af0d023b758ca7f3249bd9f675645cf873",
+    "helpers.mjs": "b1a183454c143711e6206159ff00773aaa9bf2fb89ebc4d88f26f40153a05c0a",
+    "analyze.mjs": "8b2f8f3755c2594c7a7dc5f15cf25da0cdc8c6c61b5b7f607cf3ad0e495a01d3",
+    "route.mjs": "9fe3133bc9967257c42c731a018c3ea4a435c574ee84a95a2f74d75462b2e291",
+    "project.mjs": "f9dc2eaa3af53e408406f4aba229e1abdaa2a24bc11d07ad3b327b2abed046d3"
+  },
+  "runtimeHashes": {
+    "godot/world/session.tscn": "7489f2fc601682e1b23c656b416b023d15978f338b4e8ffa628c492ed68aa803",
+    "godot/ui/game_hud.gd": "9d96433012daee3cb121c570e4bb1a9e6f7a3375f0108f92f84004ffb54fa3b3",
+    "godot/world/combat_overlay.gd": "7ed3632c31b15e27b25c8779fd35ee419cde1730bda7ca7d8b5e21a7ba9d1db2",
+    "godot/world/session.gd": "108408963df2c6b25a9c539e4b88bec01cf8fff2588f4344a1d345831dc2d756",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "godot/world/combat_feedback.gd": "95c4eae18d9cd32bc6443677483ceaf10f624749a9747630a4caa7843d34b26c",
+    "godot/world/pickups.gd": "aefd275c96dab85c79e43082e28ca79e7dcc6616f850e087b2737d96577a96ce",
+    "godot/world/presentation.gd": "73fde7e91f38a302971452726adca5896208517936559954760e6385d4680240",
+    "godot/world/local_lifecycle.gd": "2dcc606318eff11e3e19819807ff9c692f0800223e4510793ed2bc92157f995f",
+    "server/game-server.mjs": "06e79c72d0530abf5256b803a19fbfb00582892579f27f42eae871cc28fb98b0",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/quantize.mjs": "77e1e210ec9f97a0e2ca2536aee725695641fa54a40a09bd4c4440d5720e7bc0",
+    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b"
+  },
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "privateDisplay": ":0",
+  "endpoint": "ws://127.0.0.1:40269",
+  "nativeCommand": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--audio-driver",
+    "Dummy",
+    "--path",
+    "/tmp/opencode/cocs-health-live-thD6hB/godot",
+    "--script",
+    "/tmp/opencode/live-hud-acceptance/port/tools/native_health_damage/observe.gd",
+    "--",
+    "--endpoint=ws://127.0.0.1:40269",
+    "--join-room=PU7Q",
+    "--route=/tmp/opencode/cocs-health-live-thD6hB/route.json",
+    "--evidence=/tmp/opencode/live-hud-acceptance/port/native-hud-acceptance/evidence/3f0691a0-fe42-4254-a6da-1aa6d07cfcd7",
+    "--native-trace"
+  ],
+  "waiting": {
+    "actor_id": -1,
+    "captured": false,
+    "combat_text": "",
+    "elapsed": 0.277641,
+    "event": "frame",
+    "focused": true,
+    "held_w": false,
+    "hud": "Waiting for authoritative snapshot",
+    "hurt_remaining": 0,
+    "hurts": 0,
+    "label": "Joined room. Waiting for host start (120-second limit)…",
+    "phase": 11,
+    "pose": false,
+    "seq": -1,
+    "stage": "damage_wait",
+    "starts": 0,
+    "trace_next": 0,
+    "ui_text": ""
+  },
+  "gameplayWallSeconds": 22.226151326,
+  "acceptance": {
+    "status": "PASS",
+    "hudAcceptance": {
+      "mode": "compact-default-rendered",
+      "currentHUDProven": true,
+      "legacyVisibilityProven": false,
+      "renderedObservations": 199,
+      "images": [
+        {
+          "actor": {
+            "active": 0,
+            "armor": 5,
+            "braceMitigation": 0,
+            "braceTimer": 0,
+            "character": "chatgpt",
+            "cocsArrival": null,
+            "damageMultiplier": 1,
+            "dead": 0,
+            "eyeHeight": 1.45,
+            "gearDamage": 1,
+            "gearSpread": 1,
+            "harness": "openclaw",
+            "health": 100,
+            "id": 1,
+            "juggernautShield": 0,
+            "maxHealth": 100,
+            "npcShield": null,
+            "pitch": 0,
+            "powerups": {},
+            "protection": 1.467,
+            "shots": 0,
+            "temporaryShield": 0,
+            "verbState": {
+              "active": true,
+              "open": false,
+              "shotsLeft": 0,
+              "verb": "adaptive",
+              "windowIn": 0
+            },
+            "weapon": 0,
+            "x": 8,
+            "y": 0,
+            "yaw": 0.231,
+            "z": 34
+          },
+          "armor_bar": {
+            "in_viewport": true,
+            "max": 100,
+            "rect": [
+              36,
+              717,
+              206,
+              6
+            ],
+            "step": 0.01,
+            "value": 5,
+            "visible": true
+          },
+          "armor_label": {
+            "in_viewport": true,
+            "rect": [
+              36,
+              689,
+              206,
+              24
+            ],
+            "text": "ARMOR  5",
+            "visible": true
+          },
+          "damage_event_id": -1,
+          "elapsed": 0.440806259259259,
+          "event": "hud_render",
+          "health_bar": {
+            "in_viewport": true,
+            "max": 100,
+            "rect": [
+              36,
+              679,
+              206,
+              6
+            ],
+            "step": 0.01,
+            "value": 100,
+            "visible": true
+          },
+          "health_label": {
+            "in_viewport": true,
+            "rect": [
+              36,
+              644,
+              206,
+              31
+            ],
+            "text": "HEALTH  100",
+            "visible": true
+          },
+          "hurt_remaining": 0,
+          "hurt_strength": 0,
+          "hurts": 0,
+          "image": "baseline.png",
+          "image_result": 0,
+          "layer_visible": true,
+          "legacy_combat_visible": false,
+          "legacy_label_visible": false,
+          "mode": "compact-default",
+          "native_sequence": 1,
+          "overlay": {
+            "in_viewport": true,
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": false
+          },
+          "overlay_draw_frame": -1,
+          "overlay_draw_hurt": 0,
+          "post_draw": true,
+          "render_frame": 19,
+          "root_visible": true,
+          "schema": 1,
+          "seq": 1,
+          "time": 0.033,
+          "trace_next": 2,
+          "vitals_visible": true
+        },
+        {
+          "actor": {
+            "active": 0,
+            "armor": 5,
+            "braceMitigation": 0,
+            "braceTimer": 0,
+            "character": "chatgpt",
+            "cocsArrival": null,
+            "damageMultiplier": 1,
+            "dead": 0,
+            "eyeHeight": 1.45,
+            "gearDamage": 1,
+            "gearSpread": 1,
+            "harness": "openclaw",
+            "health": 100,
+            "id": 1,
+            "juggernautShield": 0,
+            "maxHealth": 100,
+            "npcShield": null,
+            "pitch": 0,
+            "powerups": {},
+            "protection": 0,
+            "shots": 0,
+            "temporaryShield": 0,
+            "verbState": {
+              "active": true,
+              "open": false,
+              "shotsLeft": 0,
+              "verb": "adaptive",
+              "windowIn": 0
+            },
+            "weapon": 0,
+            "x": 8,
+            "y": 0,
+            "yaw": 0.231,
+            "z": 34
+          },
+          "armor_bar": {
+            "in_viewport": true,
+            "max": 100,
+            "rect": [
+              36,
+              717,
+              206,
+              6
+            ],
+            "step": 0.01,
+            "value": 5,
+            "visible": true
+          },
+          "armor_label": {
+            "in_viewport": true,
+            "rect": [
+              36,
+              689,
+              206,
+              24
+            ],
+            "text": "ARMOR  5",
+            "visible": true
+          },
+          "damage_event_id": 4,
+          "elapsed": 5.6753261111111,
+          "event": "hud_render",
+          "health_bar": {
+            "in_viewport": true,
+            "max": 100,
+            "rect": [
+              36,
+              679,
+              206,
+              6
+            ],
+            "step": 0.01,
+            "value": 100,
+            "visible": true
+          },
+          "health_label": {
+            "in_viewport": true,
+            "rect": [
+              36,
+              644,
+              206,
+              31
+            ],
+            "text": "HEALTH  100",
+            "visible": true
+          },
+          "hurt_remaining": 0.327777777777778,
+          "hurt_strength": 0.936507936507937,
+          "hurts": 1,
+          "image": "hurt.png",
+          "image_result": 0,
+          "layer_visible": true,
+          "legacy_combat_visible": false,
+          "legacy_label_visible": false,
+          "mode": "compact-default",
+          "native_sequence": 395,
+          "overlay": {
+            "in_viewport": true,
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": true
+          },
+          "overlay_draw_frame": 248,
+          "overlay_draw_hurt": 0.936507936507937,
+          "post_draw": true,
+          "render_frame": 248,
+          "root_visible": true,
+          "schema": 1,
+          "seq": 167,
+          "time": 5.567,
+          "trace_next": 397,
+          "vitals_visible": true
+        },
+        {
+          "actor": {
+            "active": 0,
+            "armor": 0,
+            "braceMitigation": 0,
+            "braceTimer": 0,
+            "character": "chatgpt",
+            "cocsArrival": null,
+            "damageMultiplier": 1,
+            "dead": 0,
+            "eyeHeight": 1.45,
+            "gearDamage": 1,
+            "gearSpread": 1,
+            "harness": "openclaw",
+            "health": 85,
+            "id": 1,
+            "juggernautShield": 0,
+            "maxHealth": 100,
+            "npcShield": null,
+            "pitch": 0,
+            "powerups": {},
+            "protection": 0,
+            "shots": 0,
+            "temporaryShield": 0,
+            "verbState": {
+              "active": true,
+              "open": false,
+              "shotsLeft": 0,
+              "verb": "adaptive",
+              "windowIn": 0
+            },
+            "weapon": 0,
+            "x": -6.245,
+            "y": 0,
+            "yaw": -0.216,
+            "z": 22.826
+          },
+          "armor_bar": {
+            "in_viewport": true,
+            "max": 100,
+            "rect": [
+              36,
+              717,
+              206,
+              6
+            ],
+            "step": 0.01,
+            "value": 0,
+            "visible": true
+          },
+          "armor_label": {
+            "in_viewport": true,
+            "rect": [
+              36,
+              689,
+              206,
+              24
+            ],
+            "text": "ARMOR  0",
+            "visible": true
+          },
+          "damage_event_id": 40,
+          "elapsed": 9.44558651515151,
+          "event": "hud_render",
+          "health_bar": {
+            "in_viewport": true,
+            "max": 100,
+            "rect": [
+              36,
+              679,
+              206,
+              6
+            ],
+            "step": 0.01,
+            "value": 85,
+            "visible": true
+          },
+          "health_label": {
+            "in_viewport": true,
+            "rect": [
+              36,
+              644,
+              206,
+              31
+            ],
+            "text": "HEALTH  85",
+            "visible": true
+          },
+          "hurt_remaining": 0,
+          "hurt_strength": 0,
+          "hurts": 5,
+          "image": "collected.png",
+          "image_result": 0,
+          "layer_visible": true,
+          "legacy_combat_visible": false,
+          "legacy_label_visible": false,
+          "mode": "compact-default",
+          "native_sequence": 691,
+          "overlay": {
+            "in_viewport": true,
+            "rect": [
+              0,
+              0,
+              1280,
+              800
+            ],
+            "visible": true
+          },
+          "overlay_draw_frame": 425,
+          "overlay_draw_hurt": 0,
+          "post_draw": true,
+          "render_frame": 425,
+          "root_visible": true,
+          "schema": 1,
+          "seq": 286,
+          "time": 9.533,
+          "trace_next": 693,
+          "vitals_visible": true
+        }
+      ]
+    },
+    "actor": 1,
+    "attacker": 0,
+    "roundRevision": 1,
+    "completionProven": false,
+    "counts": {
+      "nativeRecords": 1810,
+      "correlatedSnapshots": 669,
+      "receivedInputs": 1140,
+      "damageEvents": 5,
+      "nativeMovementInputsBeforeCollection": 122,
+      "hiddenPickupSnapshots": 360,
+      "outsideRadiusSnapshots": 340
+    },
+    "damage": {
+      "firstEventId": 4,
+      "lastEventId": 40,
+      "eventAmountTotal": 55,
+      "healthLoss": 50,
+      "armorLoss": 5,
+      "temporaryShieldLoss": 0,
+      "juggernautShieldLoss": 0,
+      "reviewPoolLoss": 0,
+      "quantizationTolerance": 0.012,
+      "attackerStoppedAt": {
+        "time": 6.067,
+        "serverSnapshotSeq": 182,
+        "health": 50,
+        "maxHealth": 100,
+        "nextInputSeq": 118
+      },
+      "hurtUI": {
+        "actor": {
+          "active": 0,
+          "armor": 5,
+          "braceMitigation": 0,
+          "braceTimer": 0,
+          "character": "chatgpt",
+          "cocsArrival": null,
+          "damageMultiplier": 1,
+          "dead": 0,
+          "eyeHeight": 1.45,
+          "gearDamage": 1,
+          "gearSpread": 1,
+          "harness": "openclaw",
+          "health": 100,
+          "id": 1,
+          "juggernautShield": 0,
+          "maxHealth": 100,
+          "npcShield": null,
+          "pitch": 0,
+          "powerups": {},
+          "protection": 0,
+          "shots": 0,
+          "temporaryShield": 0,
+          "verbState": {
+            "active": true,
+            "open": false,
+            "shotsLeft": 0,
+            "verb": "adaptive",
+            "windowIn": 0
+          },
+          "weapon": 0,
+          "x": 8,
+          "y": 0,
+          "yaw": 0.231,
+          "z": 34
+        },
+        "armor_bar": {
+          "in_viewport": true,
+          "max": 100,
+          "rect": [
+            36,
+            717,
+            206,
+            6
+          ],
+          "step": 0.01,
+          "value": 5,
+          "visible": true
+        },
+        "armor_label": {
+          "in_viewport": true,
+          "rect": [
+            36,
+            689,
+            206,
+            24
+          ],
+          "text": "ARMOR  5",
+          "visible": true
+        },
+        "damage_event_id": 4,
+        "elapsed": 5.6753261111111,
+        "event": "hud_render",
+        "health_bar": {
+          "in_viewport": true,
+          "max": 100,
+          "rect": [
+            36,
+            679,
+            206,
+            6
+          ],
+          "step": 0.01,
+          "value": 100,
+          "visible": true
+        },
+        "health_label": {
+          "in_viewport": true,
+          "rect": [
+            36,
+            644,
+            206,
+            31
+          ],
+          "text": "HEALTH  100",
+          "visible": true
+        },
+        "hurt_remaining": 0.327777777777778,
+        "hurt_strength": 0.936507936507937,
+        "hurts": 1,
+        "image": "hurt.png",
+        "image_result": 0,
+        "layer_visible": true,
+        "legacy_combat_visible": false,
+        "legacy_label_visible": false,
+        "mode": "compact-default",
+        "native_sequence": 395,
+        "overlay": {
+          "in_viewport": true,
+          "rect": [
+            0,
+            0,
+            1280,
+            800
+          ],
+          "visible": true
+        },
+        "overlay_draw_frame": 248,
+        "overlay_draw_hurt": 0.936507936507937,
+        "post_draw": true,
+        "render_frame": 248,
+        "root_visible": true,
+        "schema": 1,
+        "seq": 167,
+        "time": 5.567,
+        "trace_next": 397,
+        "vitals_visible": true
+      },
+      "baseline": {
+        "snapshotSeq": 1,
+        "nativeTraceSequence": 1,
+        "time": 0.033,
+        "health": 100,
+        "maxHealth": 100,
+        "armor": 5,
+        "position": [
+          8,
+          0,
+          34
+        ],
+        "pickupId": 6,
+        "wait": 0,
+        "markerVisible": true,
+        "markerInstance": 50079991889,
+        "hud": "Meridian Exchange | HP 100.0 | Armor 5.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE"
+      },
+      "injured": {
+        "snapshotSeq": 212,
+        "nativeTraceSequence": 494,
+        "time": 7.067,
+        "health": 50,
+        "maxHealth": 100,
+        "armor": 0,
+        "position": [
+          8,
+          0,
+          34
+        ],
+        "pickupId": 6,
+        "wait": 0,
+        "markerVisible": true,
+        "markerInstance": 50079991889,
+        "hud": "Meridian Exchange | HP 50.0 | Armor 0.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE"
+      },
+      "modifierScope": "deathmatch damage=1; chatgpt/adaptive + openclaw; active=0, brace=0, gearDamage=1, damageMultiplier=1; no temporary/juggernaut/review pool, NPC shield, arrival modifier or mutators; actual emitted damage already includes weapon falloff/handling"
+    },
+    "healthPickup": {
+      "id": 6,
+      "eventId": 44,
+      "eventTime": 9.517,
+      "expectedGain": 35,
+      "observedGain": 35,
+      "returnSimulationSeconds": 12.016000000000002,
+      "before": {
+        "snapshotSeq": 285,
+        "nativeTraceSequence": 689,
+        "time": 9.5,
+        "health": 50,
+        "maxHealth": 100,
+        "armor": 0,
+        "position": [
+          -6.278,
+          0,
+          23.111
+        ],
+        "pickupId": 6,
+        "wait": 0,
+        "markerVisible": true,
+        "markerInstance": 50079991889,
+        "hud": "Meridian Exchange | HP 50.0 | Armor 0.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE"
+      },
+      "collected": {
+        "snapshotSeq": 286,
+        "nativeTraceSequence": 691,
+        "time": 9.533,
+        "health": 85,
+        "maxHealth": 100,
+        "armor": 0,
+        "position": [
+          -6.245,
+          0,
+          22.826
+        ],
+        "pickupId": 6,
+        "wait": 11.983,
+        "markerVisible": false,
+        "markerInstance": 50079991889,
+        "hud": "Meridian Exchange | HP 85.0 | Armor 0.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE"
+      },
+      "returned": {
+        "snapshotSeq": 646,
+        "nativeTraceSequence": 1742,
+        "time": 21.533,
+        "health": 85,
+        "maxHealth": 100,
+        "armor": 0,
+        "position": [
+          -0.591,
+          0,
+          22.252
+        ],
+        "pickupId": 6,
+        "wait": 0,
+        "markerVisible": true,
+        "markerInstance": 50079991889,
+        "hud": "Meridian Exchange | HP 85.0 | Armor 0.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE"
+      }
+    },
+    "ackHighWater": 1138,
+    "receiptNotIndividualApplication": true,
+    "nativeGraphicalFocusAcceptance": false,
+    "harnessBoundary": {
+      "completionProven": false,
+      "elapsed": 21.9786033333333,
+      "event": "harness_end",
+      "reason": "return_window",
+      "stage": "returned",
+      "trace_next": 1809
+    }
+  },
+  "status": "PASS",
+  "finished": "2026-09-22T00:55:07.383Z"
+}

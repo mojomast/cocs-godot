@@ -30,6 +30,7 @@ var rendered_damage_id := -1
 var overlay_draw_frame := -1
 var overlay_draw_hurt := 0.0
 var images: Dictionary = {}
+var hud_sample_at := -1.0
 
 func projection(value: Dictionary, keys: Array) -> Dictionary:
 	var result: Dictionary = {}
@@ -134,6 +135,8 @@ func ui_control(control: Control) -> Dictionary:
 func observe_rendered_hud() -> void:
 	if ended or pending_hud.is_empty(): return
 	if rendered_seq == int(pending_hud.seq) and rendered_damage_id == damage_event_id: return
+	if elapsed-hud_sample_at < 0.1 and rendered_damage_id == damage_event_id: return
+	hud_sample_at = elapsed
 	rendered_seq = int(pending_hud.seq)
 	rendered_damage_id = damage_event_id
 	var hud: CanvasLayer = session.get_node("GameHUD")
@@ -145,6 +148,7 @@ func observe_rendered_hud() -> void:
 	for name: String in ["health_bar","armor_bar"]:
 		data[name]["value"] = hud.get(name).value
 		data[name]["max"] = hud.get(name).max_value
+		data[name]["step"] = hud.get(name).step
 	var image_name := ""
 	if damage_event_id < 0: image_name = "baseline"
 	elif overlay.hurt_strength > 0 and overlay_draw_frame == Engine.get_process_frames(): image_name = "hurt"

@@ -11,7 +11,7 @@ const target=p=>p.kind==='health'&&p.x===-6&&p.z===22;
 const distance=(a,p)=>Math.hypot(a.x-p.x,a.y-p.y,a.z-p.z);
 export function analyze(stdout,wire,{hudMode='current'}={}){
  assert.ok(['current','legacy'].includes(hudMode));
- const records=[],associated=[],observations=[];let monotonic=-1,previous=null,latestSnapshot=null;
+ const records=[],associated=[],observations=[];let monotonic=-1,previous=null,latestSnapshot=null,latestDamageId=-1;
  for(const [i,line] of stdout.split('\n').entries()){
   if(line.startsWith('PORT_NATIVE_TRACE ')){
    const r=JSON.parse(line.slice(18));assert.equal(r.schema,1);assert.equal(r.sequence,records.length,'trace sequence gap/limit');
@@ -25,9 +25,11 @@ export function analyze(stdout,wire,{hudMode='current'}={}){
    if(o.event==='snapshot')latestSnapshot=associated.at(-1);
   }else if(line.startsWith('HEALTH_OBSERVE ')){
    const o=JSON.parse(line.slice(15));
+   if(o.event==='events')for(const e of o.items)if(e.type==='damage'&&e.actor===wire.actor&&e.amount>0)latestDamageId=e.id;
    if(o.event==='hud_render'){
     assert.equal(o.seq,latestSnapshot?.seq,'HUD observation must associate with latest snapshot at rendered frame');
     assert.equal(o.native_sequence,latestSnapshot?.nativeSequence,'HUD native trace association');
+    assert.equal(o.damage_event_id,latestDamageId,'HUD damage event association');
    }
    observations.push(o);
   }
@@ -76,11 +78,14 @@ export function analyze(stdout,wire,{hudMode='current'}={}){
     assert.equal(h.health_label.text,`HEALTH  ${Math.trunc(w.actor.health)}`,'HUD health integer value');
     assert.equal(h.armor_label.text,`ARMOR  ${Math.trunc(w.actor.armor)}`,'HUD armor integer value');
     assert.equal(h.health_bar.max,Math.max(1,w.actor.maxHealth??100),'HUD health maximum');assert.equal(h.armor_bar.max,100,'HUD armor reference maximum');
-    assert.ok(near(h.health_bar.value,Math.min(h.health_bar.max,Math.max(0,w.actor.health))), 'HUD health bar authority');
-    assert.ok(near(h.armor_bar.value,Math.min(100,Math.max(0,w.actor.armor))), 'HUD armor bar authority');
+    // Godot Range's stock 0.01 step rounds gauges, not authoritative actors.
+    // Bound the half-step tolerance explicitly; evidence cannot widen it.
+    for(const k of ['health_bar','armor_bar'])assert.ok(h[k].step===0||h[k].step===0.01,`HUD ${k} supported precision`);
+    assert.ok(near(h.health_bar.value,Math.min(h.health_bar.max,Math.max(0,w.actor.health)),h.health_bar.step/2+1e-5), 'HUD health bar authority');
+    assert.ok(near(h.armor_bar.value,Math.min(100,Math.max(0,w.actor.armor)),h.armor_bar.step/2+1e-5), 'HUD armor bar authority');
     if(h.image){assert.ok(['baseline.png','hurt.png','collected.png'].includes(h.image));assert.equal(h.image_result,0,'HUD image save');}
    }
-   hurtUI=hudFrames.find(h=>h.overlay?.visible===true&&h.overlay.in_viewport===true&&h.overlay.rect[2]>0&&h.overlay.rect[3]>0&&h.hurts>0&&h.hurt_remaining>0&&h.hurt_strength>0&&h.overlay_draw_hurt>0&&h.overlay_draw_frame===h.render_frame&&damage.some(e=>e.id===h.damage_event_id)&&h.image==='hurt.png');
+   hurtUI=hudFrames.find(h=>h.overlay?.visible===true&&h.overlay.in_viewport===true&&h.overlay.rect[2]>0&&h.overlay.rect[3]>0&&h.hurts>0&&h.hurt_remaining>0&&h.hurt_strength>0&&h.hurt_strength<=1&&near(h.overlay_draw_hurt,h.hurt_strength)&&h.overlay_draw_frame===h.render_frame&&damage.some(e=>e.id===h.damage_event_id)&&h.image==='hurt.png');
    assert.ok(hurtUI,'actual combat overlay hurt must be visible and drawn in captured rendered frame');
   }else{
    assert.equal(hudFrames.length,0,'current HUD evidence cannot be downgraded to legacy');
