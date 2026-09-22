@@ -10,6 +10,16 @@ var hits: int = 0
 var hurts: int = 0
 var hit_remaining: float = 0.0
 var hurt_remaining: float = 0.0
+const Overlay = preload("res://world/combat_overlay.gd")
+var overlay: Control
+
+func _ready() -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 2
+	add_child(layer)
+	overlay = Overlay.new()
+	overlay.visible = false
+	layer.add_child(overlay)
 
 func point(value: Variant) -> Variant:
 	if not value is Dictionary: return null
@@ -66,6 +76,10 @@ func advance(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	advance(delta)
+	if is_instance_valid(overlay):
+		var session := get_parent()
+		var aiming: bool = session != null and session.has_method("can_capture_pointer") and session.can_capture_pointer() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
+		overlay.update_feedback(aiming, hit_remaining, hurt_remaining)
 
 func text() -> String:
 	return ("HIT CONFIRMED " if hit_remaining > 0 else "") + ("TAKING DAMAGE" if hurt_remaining > 0 else "")
@@ -77,3 +91,4 @@ func clear_round() -> void:
 	hurts = 0
 	hit_remaining = 0.0
 	hurt_remaining = 0.0
+	if is_instance_valid(overlay): overlay.update_feedback(false, 0.0, 0.0)
