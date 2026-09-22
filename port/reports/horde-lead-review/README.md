@@ -30,3 +30,9 @@ commands/logs are in `integrated-native/`. The lead opened fresh event-repair
 results960×640 and released-restart1280×800 PNGs. Lives/score/one-wave victory sit
 above the complete product Scoreboard; restart shows clear help and neutral
 equipment/score. The inherited roster caption still counts NPCs as “players.”
+
+The final primary aggregate now passes **87 gates**, including adapter50,
+source/UI70, model15, source-input31/look3, import-closure/public-Room3 and
+synthetic launcher-ownership30. This includes inherited lobby, world, sports,
+combat and objective regressions. Final extracted-package verification is
+separate from these gates.

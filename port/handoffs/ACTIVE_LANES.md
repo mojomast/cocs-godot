@@ -26,7 +26,7 @@ updates root documentation/shared verification and owns publication.
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
 | Player/operator model improvement | External prompt prepared at `2af744f`; not launched by lead | New `godot/player_models/`, `godot/tests/player_models/`, `port/native-player-models/`; shared actor/presentation hooks returned unapplied |
 | Native Horde survival | Event/kill fix `c64762a`, evidence `2b0fbf5` delivered; lead isolated50 tests and exact810event/378snapshot replay PASS | Local adapter accepted for bounded integration; full10waves/boss/defeat/upgrades remain OPEN |
-| Horde common/package integration | `ses_f384b7a26ffeCOcWIpqBSI7UNk` running | Owns devlaunch/options and package build/discovery/run/options/verify plus scene inventory/newHorde tools; lead owns verify_lobby.py, main verifier/setup/PLAY/root docs |
+| Horde common/package integration | Delivered `24d2e4a` / `f29ef21`, integrated `de138d8` / `fda4f32`; lead87 gates,16 launcher cases,6 exported Horde startups PASS | Ten routes/nine scenes;84 locked source +2 adapter modules;881 public startup snapshots; full10wave completion remains OPEN |
 
 The LATTICE command and physical-input lanes are delivered and integrated at
 `658b4e7` and `aca52f5`. The projectile navigation follow-up is integrated at

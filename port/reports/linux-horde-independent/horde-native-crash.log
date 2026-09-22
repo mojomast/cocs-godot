@@ -1,0 +1,6 @@
+PACKAGE_SERVER_READY {"pid":3961031,"host":"127.0.0.1","port":38181,"experience":"horde","map":"meridian-exchange","mode":"horde","health":{"service":"cocs-local-horde","transport":1,"localOnly":true,"port":38181}}
+PACKAGE_NATIVE_STARTED {"pid":3961053,"scene":"res://horde/demo.tscn"}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+PACKAGE_STOPPED

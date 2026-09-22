@@ -45,6 +45,8 @@ commands = [
     ("package-options", ["node", "--test", "tools/godot-package/options.test.mjs"]),
     ("lobby-options", ["node", "--test", "tools/godot-package/lobby_options.test.mjs"]),
     ("lobby-ownership", ["node", "--test", "tools/godot-package/lobby_ownership.test.mjs"]),
+    ("horde-closure", ["node", "--test", "tools/godot-package/horde_closure.test.mjs"]),
+    ("horde-ownership", ["node", "--test", "tools/godot-package/horde_ownership.test.mjs"]),
     ("zone-routing", ["node", "--test", "port/native-zone-modes/route.test.mjs"]),
     ("combined-arms-evidence", [sys.executable, "-B", "-m", "unittest", "discover", "-s", "port/native-combined-arms", "-p", "test_validate.py"]),
     ("semantic-export", ["node", "tools/godot-export/semantic.mjs"]),

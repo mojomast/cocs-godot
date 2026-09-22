@@ -1,0 +1,8 @@
+PACKAGE_SERVER_READY {"pid":3949721,"host":"127.0.0.1","port":34519,"experience":"combat","map":"meridian-exchange","mode":"deathmatch","health":{"service":"token-arena-game-server","release":"v8.8","codename":"DESTINATIONS","commit":"unknown","buildId":"v8.8-unknown","protocol":3,"version":"v8.8","rooms":1,"players":0,"port":34519,"snapshot":{"deltaFrames":0,"fullFrames":0}}}
+PACKAGE_NATIVE_STARTED {"pid":3949813,"scene":"res://world/session.tscn"}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PACKAGE_STOPPED

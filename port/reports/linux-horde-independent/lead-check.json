@@ -1,0 +1,128 @@
+{
+  "passed": true,
+  "primary_build_inputs_match": 256,
+  "packaged_files": 114,
+  "source_modules": 84,
+  "adapter_modules": {
+    "port/native-horde/authority.mjs": "0feff165159708c8d0a32b4092c7dfb34374fde4c16d2d414d09571dff4b442e",
+    "port/native-horde/input-buffer.mjs": "d69f83140765a1476557d0df7a1b633ac2009bb80e4ef753421251420be1265a"
+  },
+  "post_run_cleanup": [
+    {
+      "case": "host-setup",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "lobby-menu",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "lobby-external",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "lobby-external-interrupt",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "combat",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "lattice-world",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "domination",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "koth",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "combined-arms",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "arms-race",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "race",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "soccer",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "interrupt",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "native-crash",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "horde",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "horde-native-crash",
+      "native_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "horde-product-meridian-exchange-960",
+      "native_absent": true,
+      "authority_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "horde-product-meridian-exchange-1280",
+      "native_absent": true,
+      "authority_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "horde-product-verdant-reliquary-960",
+      "native_absent": true,
+      "authority_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "horde-product-verdant-reliquary-1280",
+      "native_absent": true,
+      "authority_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "horde-product-ember-crucible-960",
+      "native_absent": true,
+      "authority_absent": true,
+      "port_closed": true
+    },
+    {
+      "case": "horde-product-ember-crucible-1280",
+      "native_absent": true,
+      "authority_absent": true,
+      "port_closed": true
+    }
+  ]
+}

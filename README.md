@@ -10,7 +10,7 @@ weapons, damage, objectives and match rules. The goal is a good Godot-native
 game that preserves all nine DESTINATIONS maps and their gameplay identity.
 
 **Status: actively developed, playable prototype.** Combat is available through
-the native setup menu; sports, objectives, zones, combined arms and LATTICE have
+the native setup menu; Arms Race, local Horde, sports, objectives, zones, combined arms and LATTICE have
 standalone routes through the common launcher.
 This repository includes the original source and development history so the
 simulation lock and verification evidence remain reproducible.
@@ -26,6 +26,9 @@ simulation lock and verification evidence remain reproducible.
 | Area | Available now |
 |---|---|
 | Arena combat | Meridian Exchange, Verdant Reliquary and Ember Crucible; Deathmatch, Team Deathmatch, Instagib and Rocket Arena |
+| Multiplayer lobby | Popup-free host/join controls, roster, host-only start/restart, explicit Leave and read-only active-match spectators |
+| Arms Race | Three combat arenas, source-controlled ten-weapon ladder; independent kill-to-promotion and timed results/restart acceptance |
+| Local Horde | Three combat arenas, local-only source Match adapter, wave/enemy/lives/score HUD and source-default solo controls; ten-wave default |
 | Zone-control demo | KOTH / Domination HUD, objective rings, source capture/scoring, results and restart; independently exercised on Verdant / Meridian |
 | Combined-arms demo | Sunscar infantry and Puma mount / drive / brake tap / exit, with fresh controls after seat changes |
 | Native presentation | All nine map environments, operator and pickup models, skies, lighting and landmarks |
@@ -156,6 +159,29 @@ verified a Pulse Rifle kill → Rocket Launcher promotion, plus a separate natur
 timed round and restart. Full ten-rung victory remains open. See
 [Arms Race acceptance](port/reports/arms-race-independent/README.md).
 
+### Local Horde survival
+
+```sh
+PORT=0 node tools/godot-dev/launch.mjs --experience=horde --map=verdant-reliquary
+```
+
+Available on Meridian, Verdant and Ember. The launcher owns a separate loopback
+adapter around unchanged source `Match`, with **10 waves**, Easy difficulty and
+three starting lives. Public multiplayer rooms still reject Horde. The common
+route has no external-endpoint, wave-count, upgrade or endless option.
+
+Click to engage. Horde uses source-default bindings: **Q** power, **X** mobility,
+**F** melee, **G** grenade, **RMB** aim, **Z/MMB** alternate fire and
+**1–9/0/wheel** owned weapons. **Escape** releases input without pausing the match;
+**Enter** restarts results, followed by released controls and a fresh click.
+
+Independent bounded evidence establishes a legal one-wave victory/restart,
+death/lives loss/respawn and default-ten-wave startup. Full ten-wave completion,
+bosses, defeat and upgrades remain open. At960×640, holding Tab covers portions
+of health/ammo; releasing Tab restores the unobstructed HUD. See
+[Horde repair and acceptance](port/reports/horde-event-repair/README.md) and
+[lead review](port/reports/horde-lead-review/README.md).
+
 ### Build an editor-free Linux prototype
 
 The local packaging pipeline exports a Linux x86_64 executable/PCK and includes
@@ -169,13 +195,14 @@ The builder prints the archive path and integrity hashes. Extract the archive,
 enter `cocs-native-linux`, then run **`node run.mjs`** for native combat setup.
 Playing requires Node **22.13+** and normal Linux desktop libraries; the editor,
 Git, npm and original checkout are build-time tools only. The package supports
-the same nine experience routes (eight native scenes). See the
+the same ten experience routes (nine native scenes). See the
 [local package guide](port/native-linux-package/README.md) for prerequisites,
 verification and launch commands. Generated archives stay outside the repository.
-The latest rebuild includes the popup-free lobby and new world/cart guidance.
-All14 exported startup/ownership/cleanup cases and a fresh full two-client lobby
-flow pass, with zero engine errors. Original failed popup runs remain preserved.
-See [package verification](port/reports/linux-popup-free-independent/README.md).
+The latest rebuild adds local Horde: all16 launcher/ownership/cleanup cases and
+six exported Horde startup checks pass. The prior rebuilt popup-free lobby also
+passed a full two-client flow with zero engine errors. Original failures remain
+preserved. See [latest package verification](port/reports/linux-horde-independent/README.md)
+and [lobby gameplay verification](port/reports/linux-popup-free-independent/README.md).
 
 ### Zone control and combined arms
 
@@ -368,7 +395,7 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated local run passes **80 gates**, including lobby authority ownership,
+The latest integrated local run passes **87 gates**, including Horde source/input/event/closure checks, lobby authority ownership,
 spectator context, LATTICE/Payload guidance, Arms Race, sports bearing projection,
 CI artifact retention, zone controls,
 vehicle controls and evidence replay, soccer coaching,

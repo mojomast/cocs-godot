@@ -34,6 +34,7 @@ node run.mjs --experience=zones --map=meridian-exchange --mode=domination
 node run.mjs --experience=zones --map=verdant-reliquary --mode=koth
 node run.mjs --experience=combined-arms
 node run.mjs --experience=arms-race --map=meridian-exchange
+node run.mjs --experience=horde --map=verdant-reliquary
 node run.mjs --experience=lobby
 node run.mjs --experience=lobby --endpoint=ws://127.0.0.1:PORT
 node run.mjs --experience=sports --map=ion-speedway --round-target=3
@@ -65,6 +66,18 @@ number keys and wheel cannot change it. Enter restarts after results, then relea
 held controls and click to resume. A kill-to-promotion and timed restart are
 independently verified; full ten-rung live victory remains open.
 
+Horde: local solo survival on Meridian, Verdant or Ember, with **10 waves** and
+source-default Easy difficulty. This route starts its own local-only adapter
+around unchanged source Match rules; it does not create a public multiplayer
+room. Click to engage. **Q** power, **X** mobility, **F** melee, **G** grenade,
+**RMB** ADS, **Z/MMB** alternate fire; **1–9/0/wheel** select owned weapons.
+**Escape** releases controls but the match continues. **Enter** restarts after
+results; release held controls and click again. The common route has no wave,
+upgrade, endless or external-endpoint option. A legal one-wave victory/restart,
+death/lives/respawn and default-ten startup have separate bounded evidence;
+full ten-wave/boss/defeat/upgrades remain open. At960×640 the held-Tab board can
+cover parts of the lower health/ammo panels; release Tab to see them.
+
 LATTICE world: **C** opens tactical commands on your existing player connection.
 Select an objective and explicitly issue HOLD, or authorize one recruitment
 purchase. Co-op REINFORCE costs 50 FLUX during a natural between-wave window;
@@ -80,7 +93,8 @@ Standing in range can affect the cart even while controls are released.
 ## Multiplayer lobby
 
 Use `--experience=lobby` to open the form. Host: choose one of the three combat
-arenas and its supported combat mode, Create, share the printed WebSocket endpoint
+arenas with inline Previous / Next buttons or Left / Right keys; Tab moves focus.
+Choose its supported combat mode, Create, share the printed WebSocket endpoint
 and room code, then Start when guests arrive. Defaults are two bots/60-second rounds.
 The owned endpoint is loopback and reachable from clients on this machine only.
 For an already configured reachable authority, supply its explicit `--endpoint`.
