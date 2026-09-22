@@ -1,0 +1,12 @@
+{
+	"checks": 104,
+	"failures": [
+		{
+			"godot": 2.0,
+			"label": "east-boundary-cover",
+			"map": "lacuna-court",
+			"source": 0.0
+		}
+	],
+	"scope": "Source rayWorld vs Godot static collision, no muzzle/actor hit proof"
+}

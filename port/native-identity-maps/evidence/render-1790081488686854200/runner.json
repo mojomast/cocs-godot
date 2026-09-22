@@ -1,0 +1,71 @@
+[
+  {
+    "size": "960x640",
+    "code": 0,
+    "passed": true,
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 960x640x24 -nolisten tcp",
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/cocs-identity-maps/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tests/identity_maps/capture.gd",
+      "--",
+      "--output=/tmp/opencode/cocs-identity-maps/port/native-identity-maps/evidence/render-1790081488686854200/960x640",
+      "--size=960x640"
+    ]
+  },
+  {
+    "size": "1280x800",
+    "code": 0,
+    "passed": true,
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x800x24 -nolisten tcp",
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/cocs-identity-maps/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tests/identity_maps/capture.gd",
+      "--",
+      "--output=/tmp/opencode/cocs-identity-maps/port/native-identity-maps/evidence/render-1790081488686854200/1280x800",
+      "--size=1280x800"
+    ]
+  },
+  {
+    "size": "1920x1080",
+    "code": 0,
+    "passed": true,
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1920x1080x24 -nolisten tcp",
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/cocs-identity-maps/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tests/identity_maps/capture.gd",
+      "--",
+      "--output=/tmp/opencode/cocs-identity-maps/port/native-identity-maps/evidence/render-1790081488686854200/1920x1080",
+      "--size=1920x1080"
+    ]
+  }
+]
