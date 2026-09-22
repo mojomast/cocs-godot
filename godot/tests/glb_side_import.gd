@@ -3,6 +3,15 @@ extends SceneTree
 # Structural regression on the exported assets; no material/camera overrides.
 func _initialize() -> void:
 	var ids: Array = JSON.parse_string(FileAccess.get_file_as_string("res://content/generated/manifest.json")).maps
+	# CI generates the Meridian probe; the dedicated exporter suite covers all nine.
+	var selected := ""
+	for arg: String in OS.get_cmdline_user_args():
+		assert(arg.begins_with("--map=") and selected.is_empty())
+		selected = arg.trim_prefix("--map=")
+		assert(not selected.is_empty())
+	if not selected.is_empty():
+		ids = ids.filter(func(entry: Dictionary) -> bool: return entry.id == selected)
+		assert(ids.size() == 1)
 	for entry: Dictionary in ids:
 		var document := GLTFDocument.new()
 		var state := GLTFState.new()

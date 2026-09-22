@@ -29,15 +29,16 @@ simulation lock and verification evidence remain reproducible.
 | Combat feedback | Reticle, confirmed-hit and damage indicators, source-driven projectiles and explosion flashes, procedural sound cues |
 | HUD and controls | Health/armor bars, named weapon/ammo display, number-key and wheel weapon selection, team scores and results scoreboard |
 | Puma sports demos | Ion Speedway racing and Aurora Stadium soccer: authoritative driving, next-checkpoint guidance, compact HUD, wall-aware chase, results and F5 restart |
-| Objective demos | Tidal Citadel CTF flag pickup/carry/drop and Sunscar Convoy Payload escort/idle, with source-driven objective markers and status |
+| Objective demos | Tidal CTF pickup/drop/return/capture; Sunscar Payload escort/contest/checkpoint; compact objective HUD, results and restart |
 | LATTICE command demo | Asterion Relay and Monsoon Foundry: synchronized objective list/map, recipient-authorized resources, HOLD orders and PvP Fighter recruitment with explicit action receipts |
 | Session handling | Local server launcher, host setup, guest transport, stale-state handling, focus release, death/respawn and round-boundary control resets |
 
 Sports now have independent completed-lap and normal results/restart acceptance;
 local-driver soccer goals remain open. LATTICE is currently a
 standalone command board, with co-op orders but no co-op economy or native world
-interaction. CTF/Payload have bounded interaction acceptance; flag return/capture,
-payload contest/delivery and objective results/restart remain under development.
+interaction. CTF/Payload have bounded progression and results/restart acceptance;
+full Payload delivery, flag passing and broader combat/objective interactions
+remain under development.
 See the [release matrix](port/RELEASE_MATRIX.md) for evidence and remaining work.
 
 <details>
@@ -163,9 +164,11 @@ the opposing flag to pick it up; **E** passes or drops it. In Payload, move clos
 to the cart to escort it. The common launcher has no harness deadline. The
 separate evidence launcher has a **180-second outer deadline**, which is
 separate from authoritative results.
-The objective HUD and close-up markers are still being polished. See the
+The panel-backed objective HUD composes with the combat HUD and results
+scoreboard. Press **Enter** at results to restart, then deliberately recapture.
+See the
 [objective guide](port/native-objective-gameplay/HANDOFF.md) and
-[independent verification](port/reports/objective-independent/README.md).
+[independent progression verification](port/reports/objective-progression-independent/README.md).
 
 ### Open the editor or map viewer
 
@@ -235,10 +238,11 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated run passes **53 gates**, including sports progression, LATTICE map selection, common launcher routing,
-objective rendering/control/evidence, LATTICE and projectile navigation. Native
+The latest integrated run passes **57 gates**, including sports and objective
+progression, LATTICE map selection, launcher routing, GLB material sides and
+projectile navigation. Native
 [GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
-also passed the preceding 50-gate snapshot from a fresh Ubuntu checkout.
+also passed the preceding 53-gate snapshot from a fresh Ubuntu checkout.
 
 Focused real-session and graphical evidence is documented in:
 
@@ -250,6 +254,8 @@ Focused real-session and graphical evidence is documented in:
 - [LATTICE native mouse/key acceptance](port/reports/lattice-physical-independent/README.md)
 - [LATTICE tactical-map verification](port/reports/lattice-map-independent/README.md)
 - [CTF and Payload independent verification](port/reports/objective-independent/README.md)
+- [CTF capture, Payload contest/checkpoint and restart](port/reports/objective-progression-independent/README.md)
+- [Exported sky material-side correction](port/reports/glb-side-independent/README.md)
 
 Passing automated checks is distinct from complete mode, human usability or
 hardware acceptance. Failed attempts are retained alongside their resolutions.

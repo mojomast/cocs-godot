@@ -24,3 +24,8 @@ Focused runs pass under the normal clock and synthetic `--fixed-fps 240` and
 Those two fixtures deliberately decouple engine delta from wall time; they do
 not run or accelerate an authoritative gameplay server. Hosted resolution
 requires a new observed Actions run rather than relabeling the failed one.
+
+**Hosted resolution observed:** run
+<https://github.com/mojomast/cocs-godot/actions/runs/35678348846> at `7df027f`
+passes all **53 gates**, including the corrected 38-check audio fixture. The
+downloaded report/logs are retained in `../native-ci-hosted/35678348846/`.

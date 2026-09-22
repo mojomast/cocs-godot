@@ -14,7 +14,7 @@ claims and limitations. Native presentation quality and usability still need rev
 
 | Area | Synthetic/offline | Saved genuine evidence | Independently rerun live | Graphical / playable acceptance |
 |---|---|---|---|---|
-| Asset provenance/parity | Asset audit 9 tests pass; frozen inventory/rights review; owned-render cleanup 4 tests pass | Original blank GLB and causal culling experiments retained | Meridian blank-sky cause independently reproduced at `70e9075`; four private graphical cases and numerical audit pass | Production export correction and original-art parity OPEN |
+| Asset provenance/parity | Asset audit9, cleanup4 and GLB-side6 geometry checks pass | Original blank GLB, experiments and repaired matched captures retained | At `0af3c51`, ten fresh exports/nine sky imports and historical/current before/after independently PASS; 1,057 source hashes unchanged | Production BackSide export loss fixed; hard sky/haze edges, original-art fidelity and rights remain OPEN |
 | Gameplay catalog/analyzer/recorder | 29 catalog/recorder, 5 rocket recorder/navigation, 9 health/damage checks pass | Original and independent recordings retained, including failed rocket approach | Rocket/15s return PASS at `3991990`; nonlethal damage/+35 health/12s return PASS at `f7b586d` with 876 snapshots | Maximum-HP cap, modifier variants and broader playable scenarios OPEN |
 | Guest workflow | 7 harness tests pass | Historical final and failed runs archived losslessly | All four cases PASS at `86ef719`: positive, invalid room, actual 120s host wait timeout and HTTP-rejected handshake | Guest UI/results/focus acceptance separate |
 | Trace correlation | 13 tests pass; 11 synthetic, 2 real owned-process cleanup | Final historical run replayed: 333 snapshot / 647 input receipt matches | PASS at `86ef719`: 333 snapshot / 644 input receipt matches; disabled 0 trace records; deliberate timeout fails and cleans up | Neutral headless window only; native completion unproven |
@@ -28,10 +28,11 @@ claims and limitations. Native presentation quality and usability still need rev
 | Rocket combat | 27 projectile checks plus 12 navigation tests pass | Three Rocket Arena images, graphical menu and corrected DM pickup/fire image inspected | Three maps PASS Rocket Arena; DM pickup → switches `[0,1]` → 12 launches independently PASS at `cb908db`; original failed route retained | Source-aware acceptance navigation corrected; human audio/full-round rocket acceptance OPEN |
 | LATTICE command board | 38 adapter and 10 UI checks independently pass | Original failures retained; two-resolution receipt and disconnect PNGs inspected | Handler cases all four map/modes PASS; native mouse/key cases both PvP maps + Asterion co-op independently PASS at `aca52f5`, 28/28/20 checks; 12 FLUX and one Fighter confirmed | Receipts fit 960×640; engine-input path accepted, OS-device automation/co-op economy/full world interaction OPEN |
 | LATTICE map view | 23 map checks plus adapter38/UI10 pass | Independent two-resolution map receipts and disconnect images inspected | At `c982d25`, Map checks26 × both PvP maps/Asterion co-op PASS; all three original List cases PASS | Clickable public-coordinate diagram; explicit HOLD acceptance, no implied capture/topology/distance |
-| CTF / Payload demo | 19 renderer, 11 adapter-control and 8 evidence-validator checks pass | Original failures retained; original and independent 1280×800/960×640 images inspected | At `d498479`, Tidal pickup/carry/drop PASS with 609 correlated snapshots; Sunscar push/idle PASS with 118 | Standalone slice; close-up labels/HUD polish, return/capture, contest/delivery and results/restart OPEN |
+| CTF / Payload initial slice | 19 renderer, 11 adapter-control and 8 evidence-validator checks pass | Original failures and initial two-resolution images retained | At `d498479`, Tidal pickup/carry/drop PASS with 609 correlated snapshots; Sunscar push/idle PASS with 118 | Historical baseline; later progression/HUD acceptance is recorded below |
+| Objective progression / HUD | 33 HUD/lifecycle and 10 replay/corruption checks pass | Independent panel HUD, capture, contest, checkpoint, results and restart PNGs inspected | At `ffa6aac`, CTF return/capture/60s results/restart PASS, 1,871 correlations; Payload 80 contest snapshots/checkpoint1/90s results/restart PASS, 2,767 correlations | Compact HUD and bounded progression accepted; full delivery, live rollback, passing and combat/death interactions OPEN |
 | Common launcher | Three routing regressions pass; all standalone pairs checked against locked catalog | Six native startup/cleanup logs retained | Real pinned headless scenes for all six standalone maps exit cleanly with owned processes absent and server ports closed | One command family for combat/sports/objectives/LATTICE; interactive mode has no harness deadline |
-| Native CI | Official pinned archive/hash, fresh npm install and GLB generation checked | Hosted run/report retained | Ubuntu GitHub Actions run `35677168297` passes all 50 gates at `a12d89f` | Fresh-checkout automation accepted; graphical/hardware gameplay separate |
-| Full verifier | All **53** implemented gates pass after sports progression integration | Original failures and earlier pass reports retained, including hosted audio timing failure | Complete rerun at `e76acdb` plus sports configuration and bounded audio-finish fixture passes | See `reports/verification.json`; graphical/playable gates separate |
+| Native CI | Official pinned archive/hash, fresh npm install and GLB generation checked | Hosted successes and original audio failure retained | Ubuntu GitHub Actions run `35678348846` passes all 53 gates at `7df027f`, including corrected bounded audio fixture | Fresh-checkout automation accepted; graphical/hardware gameplay separate |
+| Full verifier | All **57** implemented gates pass after objective progression and GLB-side integration | Original failures and earlier pass reports retained | Complete rerun at `ffa6aac` plus side/progression gates passes | See `reports/verification.json`; graphical/playable gates separate |
 | Pulse rifle preview | No completion commit available | None reviewed | Owner believes work is not finished | Pending; reserved directories untouched |
 
 The actual commands, clean execution tree hashes, source provenance, receipt vs
@@ -51,8 +52,8 @@ the locked JSON contract; the family summary below does not narrow them.
 | Meridian Exchange | Infantry combat/objective modes | Native rocket/health pickups, nonlethal damage and death/respawn accepted; presentation quality and broader playable review open |
 | Verdant Reliquary | Infantry modes plus campaign | Deathmatch/Instagib native movement/fire/ACK and graphical menu Start pass; broader modes/campaign and routes open |
 | Ember Crucible | Infantry combat/objective modes | Deathmatch/Instagib native movement/fire/ACK pass; broader modes and routes open |
-| Tidal Citadel | CTF, teamdeathmatch, domination, assault, team-elimination | Standalone CTF pickup/carry/drop independently pass; return/capture, vehicles and other modes open |
-| Sunscar Convoy | Payload, assault, combined-arms, teamdeathmatch, domination, VIP escort | Standalone Payload push/idle independently pass; contest/delivery, vehicles and other modes open |
+| Tidal Citadel | CTF, teamdeathmatch, domination, assault, team-elimination | Standalone CTF pickup/drop/return/capture and results/restart independently pass; passing, vehicles and other modes open |
+| Sunscar Convoy | Payload, assault, combined-arms, teamdeathmatch, domination, VIP escort | Standalone Payload push/contest/checkpoint1/idle and results/restart independently pass; full delivery, vehicles and other modes open |
 | Asterion Relay | LATTICE (`cocs`, `cocs-coop`) | Native mouse/key command-board/HOLD/PvP Fighter acceptance; co-op economy, traversal and full objective gameplay open |
 | Monsoon Foundry | LATTICE (`cocs`, `cocs-coop`) | Native mouse/key PvP command acceptance; co-op physical input/economy, traversal and full objective gameplay open |
 | Ion Speedway | `puma-race` | Source checkpoint guidance, full lap and natural time-limit results/F5 restart independently pass; target-lap victory and human play open |
@@ -66,9 +67,10 @@ the locked JSON contract; the family summary below does not narrow them.
   preview has no accepted completion report.
   Meridian's blank GLB preview is now traced to exported sky `BackSide` semantic
   loss; a private culling-only experiment reveals the map, not full art parity.
-  A production GLB exporter correction remains open; the default native
-  environment now uses its own procedural sky and does not depend on that GLB.
-- The combined 53-gate verifier passes with rocket presentation, sports
+  The production GLB exporter correction now passes independent matched-camera
+  review and all-nine-map imports; hard sky/haze boundaries remain. The default
+  native environment uses its own procedural sky and does not depend on that GLB.
+- The combined 57-gate verifier passes with rocket presentation, sports
   camera/HUD polish, source-aware projectile navigation and compact LATTICE
   command modules and standalone objectives. Focused native LATTICE mouse/key
   and objective interaction follow-ups also pass.

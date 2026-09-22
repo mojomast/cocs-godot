@@ -1,0 +1,264 @@
+{
+  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "meshes": 43,
+  "instances": 2,
+  "batchedMeshes": 0,
+  "shaderMaterials": 0,
+  "nodes": [
+    {
+      "path": "AxisMaterialProbe",
+      "type": "Group"
+    },
+    {
+      "path": "SourceWeapon0",
+      "type": "Group"
+    },
+    {
+      "path": "receiver",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "grip",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "stock",
+      "type": "Group"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "barrel-assembly",
+      "type": "Group"
+    },
+    {
+      "path": "barrel",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "machined-barrel-hardware",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "magazine",
+      "type": "Group"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "bolt",
+      "type": "Group"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "machined-receiver-inlays",
+      "type": "Mesh"
+    },
+    {
+      "path": "sight-rail",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "sight-assembly",
+      "type": "Group"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "alt-salvo",
+      "type": "Group"
+    },
+    {
+      "path": "alt-salvo-prong-l",
+      "type": "Mesh"
+    },
+    {
+      "path": "alt-salvo-prong-c",
+      "type": "Mesh"
+    },
+    {
+      "path": "alt-salvo-prong-r",
+      "type": "Mesh"
+    },
+    {
+      "path": "alt-salvo-fins",
+      "type": "Mesh"
+    },
+    {
+      "path": "rearSight",
+      "type": "Group"
+    },
+    {
+      "path": "frontSight",
+      "type": "Group"
+    },
+    {
+      "path": "leftGrip",
+      "type": "Group"
+    },
+    {
+      "path": "rightGrip",
+      "type": "Group"
+    },
+    {
+      "path": "hinge",
+      "type": "Group"
+    },
+    {
+      "path": "support-hand",
+      "type": "Group"
+    },
+    {
+      "path": "support-palm",
+      "type": "Mesh"
+    },
+    {
+      "path": "muzzle",
+      "type": "Group"
+    },
+    {
+      "path": "Group",
+      "type": "Group"
+    },
+    {
+      "path": "muzzle-flare",
+      "type": "Mesh"
+    },
+    {
+      "path": "muzzle-flash",
+      "type": "Group"
+    },
+    {
+      "path": "flash-cone",
+      "type": "Mesh"
+    },
+    {
+      "path": "flash-petal",
+      "type": "Mesh"
+    },
+    {
+      "path": "flash-petal",
+      "type": "Mesh"
+    },
+    {
+      "path": "heat-glow",
+      "type": "Mesh"
+    },
+    {
+      "path": "X_red",
+      "type": "Mesh"
+    },
+    {
+      "path": "Y_green",
+      "type": "Mesh"
+    },
+    {
+      "path": "MinusZ_blue",
+      "type": "Mesh"
+    },
+    {
+      "path": "InstanceProbe",
+      "type": "Mesh"
+    }
+  ],
+  "limitations": [
+    "onBeforeCompile effects and runtime animation not translated",
+    "standard-material fallback is not fidelity acceptance"
+  ],
+  "instance_policy": "expanded with transforms and colors; no EXT_mesh_gpu_instancing",
+  "material_side": {
+    "policy": "BackSide: reversed triangles, negated normals, tangent handedness; FrontSide glTF material",
+    "meshes": 0,
+    "triangles": 0
+  },
+  "bytes": 158776,
+  "sha256": "fc9af5f80d6137feba014db9f2e1f9c1c477ed141bcbb1cd8add5ea7d3061d94",
+  "messages": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

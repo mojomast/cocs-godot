@@ -103,12 +103,14 @@ evidence helpers retain their bounded observation windows. See
 - **Objective demos:** standalone Tidal CTF and Sunscar Payload are integrated at
   `d498479`. Independent normal-rate native-input runs pass flag pickup/carry/drop
   and payload escort/idle with exact source/rendered correlation. Screenshots
-  were inspected; close-up labels and HUD contrast need polish. Return/capture,
-  contest/delivery and objective results/restart remain open. See
+  and initial presentation issues were inspected and retained. See
   [independent evidence](reports/objective-independent/README.md).
+  The subsequent compact HUD/progression slice independently passes CTF defender
+  return/capture and Payload contest/checkpoint, plus both modes' natural results
+  and restart. See [progression evidence](reports/objective-progression-independent/README.md).
 
-**Combined verification: all 53 implemented gates pass** after sports progression
-integration at `e76acdb` plus sports configuration and audio-fixture changes
+**Combined verification: all 57 implemented gates pass** after objective progression
+and GLB-side integration at `ffa6aac` plus the new focused gates
 recorded with this batch. Independent driving passed on both sports maps;
 the default compact HUD's nonlethal damage/+35 HP/12-second return was also
 independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).

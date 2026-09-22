@@ -1,9 +1,9 @@
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
-PORT_NATIVE_TRACE {"ack":0,"actor_id":7,"camera_position":[0.0,0.0,0.0],"camera_reseeded":false,"control_eligible":false,"dead":null,"event":"snapshot","focused":false,"health":null,"lifecycle":"waiting","monotonic_usec":178961,"phase":3,"pitch":0.0,"pointer_captured":false,"pose_present":false,"round":0,"schema":1,"sequence":0,"yaw":0.0}
-PORT_NATIVE_TRACE {"ack":0,"actor_id":7,"controls":{"crouch":null,"fire":false,"interact":null,"jump":null,"mobility":null,"pitch":null,"reload":null,"sprint":null,"x":0.0,"yaw":null,"z":0.0},"event":"input_queue","monotonic_usec":179056,"phase":4,"queue_result":0,"queued":true,"round":0,"schema":1,"sequence":1}
-PORT_NATIVE_TRACE {"ack":0,"actor_id":7,"camera_position":[0.0,0.0,0.0],"camera_reseeded":false,"control_eligible":false,"dead":null,"event":"snapshot","focused":false,"health":null,"lifecycle":"waiting","monotonic_usec":179072,"phase":4,"pitch":0.0,"pointer_captured":false,"pose_present":false,"round":0,"schema":1,"sequence":9999,"yaw":0.0}
+PORT_NATIVE_TRACE {"ack":0,"actor_id":7,"camera_position":[0.0,0.0,0.0],"camera_reseeded":false,"control_eligible":false,"dead":null,"event":"snapshot","focused":false,"health":null,"lifecycle":"waiting","monotonic_usec":135787,"phase":3,"pitch":0.0,"pointer_captured":false,"pose_present":false,"round":0,"schema":1,"sequence":0,"yaw":0.0}
+PORT_NATIVE_TRACE {"ack":0,"actor_id":7,"controls":{"crouch":null,"fire":false,"interact":null,"jump":null,"mobility":null,"pitch":null,"reload":null,"sprint":null,"x":0.0,"yaw":null,"z":0.0},"event":"input_queue","monotonic_usec":135856,"phase":4,"queue_result":0,"queued":true,"round":0,"schema":1,"sequence":1}
+PORT_NATIVE_TRACE {"ack":0,"actor_id":7,"camera_position":[0.0,0.0,0.0],"camera_reseeded":false,"control_eligible":false,"dead":null,"event":"snapshot","focused":false,"health":null,"lifecycle":"waiting","monotonic_usec":135870,"phase":4,"pitch":0.0,"pointer_captured":false,"pose_present":false,"round":0,"schema":1,"sequence":9999,"yaw":0.0}
 PORT_NATIVE_TRACE {"schema":1,"event":"limit","complete":false}
-PORT_NATIVE_TRACE {"actor_id":-1,"complete":false,"event":"round_start","monotonic_usec":179538,"phase":3,"pointer_captured":false,"pose_present":false,"round":2,"schema":1,"sequence":0}
-PORT_NATIVE_TRACE {"actor_id":-1,"complete":false,"event":"session_error","monotonic_usec":179574,"phase":-1,"pointer_captured":false,"pose_present":false,"round":2,"schema":1,"sequence":1}
+PORT_NATIVE_TRACE {"actor_id":-1,"complete":false,"event":"round_start","monotonic_usec":136118,"phase":3,"pointer_captured":false,"pose_present":false,"round":2,"schema":1,"sequence":0}
+PORT_NATIVE_TRACE {"actor_id":-1,"complete":false,"event":"session_error","monotonic_usec":136151,"phase":-1,"pointer_captured":false,"pose_present":false,"round":2,"schema":1,"sequence":1}
 PORT_NATIVE_TRACE_TEST checks=28 failures=0

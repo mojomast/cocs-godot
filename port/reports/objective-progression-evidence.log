@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: replay genuine tidal-citadel
+ok 1 - replay genuine tidal-citadel
+  ---
+  duration_ms: 125.32898
+  type: 'test'
+  ...
+# Subtest: replay genuine sunscar-convoy
+ok 2 - replay genuine sunscar-convoy
+  ---
+  duration_ms: 173.397579
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: missing source return
+ok 3 - tampered fixture rejected: missing source return
+  ---
+  duration_ms: 120.413873
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: forced early result
+ok 4 - tampered fixture rejected: forced early result
+  ---
+  duration_ms: 99.016267
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: accelerated wall time
+ok 5 - tampered fixture rejected: accelerated wall time
+  ---
+  duration_ms: 89.627441
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: stale dynamic marker after restart
+ok 6 - tampered fixture rejected: stale dynamic marker after restart
+  ---
+  duration_ms: 118.420695
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: duplicate completion marker
+ok 7 - tampered fixture rejected: duplicate completion marker
+  ---
+  duration_ms: 113.415478
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: wrong rendered height
+ok 8 - tampered fixture rejected: wrong rendered height
+  ---
+  duration_ms: 137.002339
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: contest without opposing occupant
+ok 9 - tampered fixture rejected: contest without opposing occupant
+  ---
+  duration_ms: 150.784644
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: old cart progress on new round
+ok 10 - tampered fixture rejected: old cart progress on new round
+  ---
+  duration_ms: 153.428362
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1363.899331

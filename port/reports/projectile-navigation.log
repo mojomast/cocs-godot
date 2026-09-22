@@ -2,73 +2,73 @@ TAP version 13
 # Subtest: reported [8,34] route fails at the source causeway side, not box collision
 ok 1 - reported [8,34] route fails at the source causeway side, not box collision
   ---
-  duration_ms: 50.892837
+  duration_ms: 72.847034
   type: 'test'
   ...
 # Subtest: ground route from authored Meridian spawn -44,-34
 ok 2 - ground route from authored Meridian spawn -44,-34
   ---
-  duration_ms: 461.630414
+  duration_ms: 657.685435
   type: 'test'
   ...
 # Subtest: ground route from authored Meridian spawn 44,34
 ok 3 - ground route from authored Meridian spawn 44,34
   ---
-  duration_ms: 1900.647942
+  duration_ms: 2758.186787
   type: 'test'
   ...
 # Subtest: ground route from authored Meridian spawn -44,34
 ok 4 - ground route from authored Meridian spawn -44,34
   ---
-  duration_ms: 739.22176
+  duration_ms: 1037.199397
   type: 'test'
   ...
 # Subtest: ground route from authored Meridian spawn 44,-34
 ok 5 - ground route from authored Meridian spawn 44,-34
   ---
-  duration_ms: 491.638046
+  duration_ms: 764.69392
   type: 'test'
   ...
 # Subtest: ground route from authored Meridian spawn -36,-6
 ok 6 - ground route from authored Meridian spawn -36,-6
   ---
-  duration_ms: 263.878186
+  duration_ms: 389.475432
   type: 'test'
   ...
 # Subtest: ground route from authored Meridian spawn 36,4
 ok 7 - ground route from authored Meridian spawn 36,4
   ---
-  duration_ms: 891.702238
+  duration_ms: 1298.388394
   type: 'test'
   ...
 # Subtest: ground route from authored Meridian spawn 4,-34
 ok 8 - ground route from authored Meridian spawn 4,-34
   ---
-  duration_ms: 203.485686
+  duration_ms: 307.869634
   type: 'test'
   ...
 # Subtest: ground route from authored Meridian spawn 8,34
 ok 9 - ground route from authored Meridian spawn 8,34
   ---
-  duration_ms: 915.289403
+  duration_ms: 1341.200786
   type: 'test'
   ...
 # Subtest: ground route from authored Meridian spawn -44,10
 ok 10 - ground route from authored Meridian spawn -44,10
   ---
-  duration_ms: 587.548596
+  duration_ms: 857.473732
   type: 'test'
   ...
 # Subtest: ground route from authored Meridian spawn 44,-8
 ok 11 - ground route from authored Meridian spawn 44,-8
   ---
-  duration_ms: 707.327269
+  duration_ms: 1015.668051
   type: 'test'
   ...
 # Subtest: bounded planner rejects unsupported starts, holes, malformed coordinates and oversized arenas
 ok 12 - bounded planner rejects unsupported starts, holes, malformed coordinates and oversized arenas
   ---
-  duration_ms: 0.721474
+  duration_ms: 1.26956
   type: 'test'
   ...
 1..12
@@ -79,4 +79,4 @@ ok 12 - bounded planner rejects unsupported starts, holes, malformed coordinates
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 7950.564102
+# duration_ms 11698.639982

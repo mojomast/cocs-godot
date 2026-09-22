@@ -24,3 +24,15 @@ original missing-probes failure stay historically accurate and unchanged.
 
 Hosted CI exercises headless authority/transport/presentation regressions; it
 does not establish graphical, audio, hardware or full-mode acceptance.
+
+## Sports integration and audio fixture follow-up
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35677813370> at `da1f571`
+failed the inherited fixed-delay audio fixture. Its original log/report and
+diagnosis are retained in `../audio-ci-followup/`; it remains FAILED.
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35678348846> at
+`7df027f5aaeea619d2f7bd9a7ed714b1f4137122` **PASS**, all **53 gates**, in 3m21s.
+This includes sports progression and the bounded actual-playback/cooldown
+fixture. `35678348846/` retains the downloaded report, artifact manifest and
+audio/combined logs. The lead watched completion and checked the report count.

@@ -7,9 +7,8 @@ updates root documentation/shared verification and owns publication.
 | Lane | Owner / baseline | Reserved files |
 |---|---|---|
 | Soccer targeting / local goal play | Internal follow-up; `e76acdb` | New sports soccer guidance with narrow HUD/demo integration, new soccer tests, `port/native-soccer-play/` |
-| Objective progression / HUD polish | Internal follow-up; `d498479` | `godot/objectives/`, new progression tests in `godot/tests/objectives/`, `port/native-objective-progression/` |
+| Objective completion paths | Internal follow-up; `ffa6aac` | New completion helpers/tests, narrow objective runtime only if needed, `port/native-objective-completion/` |
 | LATTICE co-op recruitment | Internal agent; `c982d25` | Narrow board/transport, new economy tests and tools, genuinely affected original UI expectations, `port/native-lattice-economy/` |
-| GLB material-side export correction | Internal agent; `c982d25` | Export harness/side helpers, narrow browser exporter, new side tests, `port/native-glb-side/` |
 | Multiplayer lobby / leave / retry | External handoff; `8094d41` | New lobby-prefixed UI/tests, narrow `godot/world/session.gd` / scene and backward-compatible client hook if essential; `port/native-multiplayer-lobby/` |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
 
@@ -24,6 +23,10 @@ independently accepted through both Map and original List native-input paths.
 The lead owns common launcher routing, verification, root docs and publication.
 The sports progression lane is delivered as `0a07f5c` and integrated at
 `e76acdb`; the lead is reproducing full-lap and round-lifecycle claims separately.
+That independent sports verification passed. Objective progression is integrated
+at `ffa6aac` and independently passes CTF return/capture and Payload contest/
+checkpoint/results/restart. GLB-side repair at `0149cbb` / `0af3c51` independently
+passes all-nine export/import and matched-camera review.
 
 External tasks have complete scope/commands in
 `external-native-objective-gameplay.md` and
