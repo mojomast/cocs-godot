@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
+ok 1 - SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
+  ---
+  duration_ms: 463.865305
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
+ok 2 - SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
+  ---
+  duration_ms: 4259.90716
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
+ok 3 - SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
+  ---
+  duration_ms: 12711.048702
+  type: 'test'
+  ...
+# Subtest: loopback ownership and transport/envelope rejection leave no listeners
+ok 4 - loopback ownership and transport/envelope rejection leave no listeners
+  ---
+  duration_ms: 18.393596
+  type: 'test'
+  ...
+# Subtest: launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
+ok 5 - launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
+  ---
+  duration_ms: 12.593404
+  type: 'test'
+  ...
+# Subtest: FIFO keeps press/release order, source normalization and one-step pulses
+ok 6 - FIFO keeps press/release order, source normalization and one-step pulses
+  ---
+  duration_ms: 1.022955
+  type: 'test'
+  ...
+# Subtest: queue age, held TTL, cancel and reset cannot replay ADS/actions
+ok 7 - queue age, held TTL, cancel and reset cannot replay ADS/actions
+  ---
+  duration_ms: 0.838451
+  type: 'test'
+  ...
+# Subtest: event cursor retains payload IDs, handles serial gaps and repeated events by identity
+ok 8 - event cursor retains payload IDs, handles serial gaps and repeated events by identity
+  ---
+  duration_ms: 0.340157
+  type: 'test'
+  ...
+# Subtest: only three native static asset paths; no source registry aliases
+ok 9 - only three native static asset paths; no source registry aliases
+  ---
+  duration_ms: 0.9394
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: each supported identity parses to an independent envelope
+ok 10 - SYNTHETIC: each supported identity parses to an independent envelope
+  ---
+  duration_ms: 2.29068
+  type: 'test'
+  ...
+# Subtest: strict deep generated-data validation rejects malformed/unsafe geometry
+ok 11 - strict deep generated-data validation rejects malformed/unsafe geometry
+  ---
+  duration_ms: 1.733797
+  type: 'test'
+  ...
+# Subtest: Deathmatch bounded config stays source-supported and defaults to three bots
+ok 12 - Deathmatch bounded config stays source-supported and defaults to three bots
+  ---
+  duration_ms: 0.570358
+  type: 'test'
+  ...
+# Subtest: geometryHash binds canonical arena content, independent of object key order
+ok 13 - geometryHash binds canonical arena content, independent of object key order
+  ---
+  duration_ms: 0.364834
+  type: 'test'
+  ...
+# Subtest: source constructor seam is assignment before nav/spawns/actors, not options.arena
+ok 14 - source constructor seam is assignment before nav/spawns/actors, not options.arena
+  ---
+  duration_ms: 1.424878
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
+ok 15 - SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
+  ---
+  duration_ms: 24.11446
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
+ok 16 - SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
+  ---
+  duration_ms: 100.964231
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: source bot attacks kill idle player and source respawn restores control
+ok 17 - SYNTHETIC: source bot attacks kill idle player and source respawn restores control
+  ---
+  duration_ms: 35.786879
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18206.240493

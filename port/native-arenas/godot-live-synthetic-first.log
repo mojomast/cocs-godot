@@ -1,0 +1,8 @@
+{"gate":"godot-live-protocol","data":"SYNTHETIC","mapId":"prism-foundry","ordinary":false}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+NATIVE_ARENA_LIVE_PROTOCOL {"ack":3,"adsPressReleaseStale":true,"epoch":2.0,"eventIds":6,"mapId":"prism-foundry","ok":true,"ordinary":false,"snapshots":9}
+{"gate":"godot-live-protocol","data":"SYNTHETIC","mapId":"prism-foundry","ordinary":true}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+NATIVE_ARENA_LIVE_PROTOCOL {"ack":3,"adsPressReleaseStale":true,"epoch":2.0,"eventIds":6,"mapId":"prism-foundry","ok":true,"ordinary":true,"snapshots":8}

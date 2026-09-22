@@ -1,0 +1,113 @@
+TAP version 13
+# Subtest: SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
+not ok 1 - SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
+  ---
+  duration_ms: 442.991218
+  type: 'test'
+  location: '/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arenas/tests/authority.test.mjs:24:1'
+  failureType: 'testCodeFailure'
+  error: 'Expected "actual" to be strictly unequal to: 1'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 1
+  operator: 'notStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arenas/tests/authority.test.mjs:48:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
+ok 2 - SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
+  ---
+  duration_ms: 4263.506266
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
+ok 3 - SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
+  ---
+  duration_ms: 12706.798891
+  type: 'test'
+  ...
+# Subtest: loopback ownership and transport/envelope rejection leave no listeners
+ok 4 - loopback ownership and transport/envelope rejection leave no listeners
+  ---
+  duration_ms: 14.561238
+  type: 'test'
+  ...
+# Subtest: FIFO keeps press/release order, source normalization and one-step pulses
+ok 5 - FIFO keeps press/release order, source normalization and one-step pulses
+  ---
+  duration_ms: 1.305044
+  type: 'test'
+  ...
+# Subtest: queue age, held TTL, cancel and reset cannot replay ADS/actions
+ok 6 - queue age, held TTL, cancel and reset cannot replay ADS/actions
+  ---
+  duration_ms: 0.604331
+  type: 'test'
+  ...
+# Subtest: event cursor retains payload IDs, handles serial gaps and repeated events by identity
+ok 7 - event cursor retains payload IDs, handles serial gaps and repeated events by identity
+  ---
+  duration_ms: 0.224901
+  type: 'test'
+  ...
+# Subtest: only three native static asset paths; no source registry aliases
+ok 8 - only three native static asset paths; no source registry aliases
+  ---
+  duration_ms: 0.934039
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: each supported identity parses to an independent envelope
+ok 9 - SYNTHETIC: each supported identity parses to an independent envelope
+  ---
+  duration_ms: 1.779362
+  type: 'test'
+  ...
+# Subtest: strict deep generated-data validation rejects malformed/unsafe geometry
+ok 10 - strict deep generated-data validation rejects malformed/unsafe geometry
+  ---
+  duration_ms: 1.306767
+  type: 'test'
+  ...
+# Subtest: Deathmatch bounded config stays source-supported and defaults to three bots
+ok 11 - Deathmatch bounded config stays source-supported and defaults to three bots
+  ---
+  duration_ms: 0.493986
+  type: 'test'
+  ...
+# Subtest: source constructor seam is assignment before nav/spawns/actors, not options.arena
+ok 12 - source constructor seam is assignment before nav/spawns/actors, not options.arena
+  ---
+  duration_ms: 0.964666
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
+ok 13 - SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
+  ---
+  duration_ms: 24.140587
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
+ok 14 - SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
+  ---
+  duration_ms: 92.344438
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: source bot attacks kill idle player and source respawn restores control
+ok 15 - SYNTHETIC: source bot attacks kill idle player and source respawn restores control
+  ---
+  duration_ms: 35.100181
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 14
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18178.022569

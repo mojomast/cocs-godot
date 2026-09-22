@@ -1,0 +1,96 @@
+TAP version 13
+# Subtest: FIFO keeps press/release order, source normalization and one-step pulses
+ok 1 - FIFO keeps press/release order, source normalization and one-step pulses
+  ---
+  duration_ms: 1.310965
+  type: 'test'
+  ...
+# Subtest: queue age, held TTL, cancel and reset cannot replay ADS/actions
+ok 2 - queue age, held TTL, cancel and reset cannot replay ADS/actions
+  ---
+  duration_ms: 0.622165
+  type: 'test'
+  ...
+# Subtest: event cursor retains payload IDs, handles serial gaps and repeated events by identity
+ok 3 - event cursor retains payload IDs, handles serial gaps and repeated events by identity
+  ---
+  duration_ms: 0.218349
+  type: 'test'
+  ...
+# Subtest: only three native static asset paths; no source registry aliases
+ok 4 - only three native static asset paths; no source registry aliases
+  ---
+  duration_ms: 0.961331
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: each supported identity parses to an independent envelope
+ok 5 - SYNTHETIC: each supported identity parses to an independent envelope
+  ---
+  duration_ms: 1.728647
+  type: 'test'
+  ...
+# Subtest: strict deep generated-data validation rejects malformed/unsafe geometry
+ok 6 - strict deep generated-data validation rejects malformed/unsafe geometry
+  ---
+  duration_ms: 1.472006
+  type: 'test'
+  ...
+# Subtest: Deathmatch bounded config stays source-supported and defaults to three bots
+ok 7 - Deathmatch bounded config stays source-supported and defaults to three bots
+  ---
+  duration_ms: 0.49152
+  type: 'test'
+  ...
+# Subtest: source constructor seam is assignment before nav/spawns/actors, not options.arena
+ok 8 - source constructor seam is assignment before nav/spawns/actors, not options.arena
+  ---
+  duration_ms: 0.901257
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
+ok 9 - SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
+  ---
+  duration_ms: 24.670179
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
+not ok 10 - SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
+  ---
+  duration_ms: 100.348418
+  type: 'test'
+  location: '/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arenas/tests/source-match.test.mjs:42:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+
+      assert.ok(events.some(e => e.type === 'kill'))
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arenas/tests/source-match.test.mjs:60:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SYNTHETIC: source bot attacks kill idle player and source respawn restores control
+ok 11 - SYNTHETIC: source bot attacks kill idle player and source respawn restores control
+  ---
+  duration_ms: 42.175891
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 10
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 915.775688
