@@ -1,0 +1,99 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: Imported bytes differ: res://moth/generated/textures/dust-field.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/textures/flow-field.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/textures/macro-organic.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/corrugated_metal.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/diamond_plate.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/grass.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/hazard_stripes.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/hex_paneling.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/holographic_grid.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/ice.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/metal.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/metal_grating.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/rock.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/rough_stucco.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/sand.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+ERROR: Imported bytes differ: res://moth/generated/normals/weathered_concrete.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/moth/validate.gd:10)
+       [1] check_plane (res://tests/moth/validate.gd:21)
+       [2] _initialize (res://tests/moth/validate.gd:33)
+MOTH_VALIDATION {"failures":["Imported bytes differ: res://moth/generated/textures/dust-field.png","Imported bytes differ: res://moth/generated/textures/flow-field.png","Imported bytes differ: res://moth/generated/textures/macro-organic.png","Imported bytes differ: res://moth/generated/normals/corrugated_metal.png","Imported bytes differ: res://moth/generated/normals/diamond_plate.png","Imported bytes differ: res://moth/generated/normals/grass.png","Imported bytes differ: res://moth/generated/normals/hazard_stripes.png","Imported bytes differ: res://moth/generated/normals/hex_paneling.png","Imported bytes differ: res://moth/generated/normals/holographic_grid.png","Imported bytes differ: res://moth/generated/normals/ice.png","Imported bytes differ: res://moth/generated/normals/metal.png","Imported bytes differ: res://moth/generated/normals/metal_grating.png","Imported bytes differ: res://moth/generated/normals/rock.png","Imported bytes differ: res://moth/generated/normals/rough_stucco.png","Imported bytes differ: res://moth/generated/normals/sand.png","Imported bytes differ: res://moth/generated/normals/weathered_concrete.png"],"planes":101}

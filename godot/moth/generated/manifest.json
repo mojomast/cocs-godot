@@ -1,0 +1,1125 @@
+{
+  "version": 1,
+  "provenance": {
+    "source": "game/moth-baked.mjs",
+    "source_sha256": "80dc8c0eb1ea8d78ce91b5775a0cb2cf71f549b4b63384a11290f389d20f3eb6",
+    "baked_version": 2,
+    "exporter": "tools/godot-moth/export.mjs",
+    "rights": "Unresolved; see port/asset-audit/HANDOFF.md. Conversion is not clearance."
+  },
+  "textures": {
+    "alien_chitin": {
+      "path": "res://moth/generated/textures/alien_chitin.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "98e70c6c05e1feeb5f7604f4c3b48c4983d49e7c30a3236bab6ca961234d5f12",
+      "png_sha256": "bea0cf2ebcd1b2add885e3f3615941c0a66db12dc47e077bb34d4e1176c284fe"
+    },
+    "brushed_metal": {
+      "path": "res://moth/generated/textures/brushed_metal.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "3abeb6cb89b6f5ce0a4595d6f099872212ad0b238dd799736672f447e674de31",
+      "png_sha256": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51"
+    },
+    "carbon_fiber": {
+      "path": "res://moth/generated/textures/carbon_fiber.png",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "6b5cc23a99bbd541429f464411cf2180765cbf0388db41677c0d236c9d0f01bb",
+      "png_sha256": "b5fb0bacb31aa31edc99f2b44d57021183a9b8d5f3d763cfa34946bcc565dfb4"
+    },
+    "circuit_board": {
+      "path": "res://moth/generated/textures/circuit_board.png",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "8b3d1bb46800246bb5efba399c878609f09582e35bcf70ad052ddf12fa418ad6",
+      "png_sha256": "7c932561546a3c38a1b78ae5b75a7842b85f238f9ed63b091e22fd58f18f809f"
+    },
+    "circuit_board-etch": {
+      "path": "res://moth/generated/textures/circuit_board-etch.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "795a3651cee0f6ec92e7e1e71ea644d6e91e64991fa27a126501c237879fcf65",
+      "png_sha256": "21a89925e0030d3fdb28c9194022c5941e07247ffaa1e6e0a8ff496e340955ff"
+    },
+    "corrugated_metal": {
+      "path": "res://moth/generated/textures/corrugated_metal.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "8ae1639022215752919ed469e5f63fafe56d4cfe9c8e3195963f5f81fca3257e",
+      "png_sha256": "29324dcc77787d2fe2adfc9ea5e1cb9db510bdb36d81174dc64cafd2fb7509ad"
+    },
+    "diamond_plate": {
+      "path": "res://moth/generated/textures/diamond_plate.png",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "170de4d16dbdc1e9b1577e9d200d257d997b813aef979a88cfe77c9ccfd9853f",
+      "png_sha256": "73c360a156a11b7b13a99adfd33c5ee057f00cfa28e6c684d27fe032a8d601cf"
+    },
+    "dust-field": {
+      "path": "res://moth/generated/textures/dust-field.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "83cfd47c885ab5075a68d3e9b8589ad07b2859c03985bcffc07c75ff1d3b0ab6",
+      "png_sha256": "91e45cbbabf25909d0adc3905de7cb5a736188ffd48c02a99caf8879a1749a9f"
+    },
+    "flow-field": {
+      "path": "res://moth/generated/textures/flow-field.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "5acf89e236a4009822e16b444a7c9bbedb8be491e9c3c9c24ec69710590068c0",
+      "png_sha256": "7d1b69a545ca4ac13b57a5606863def80e586604f7b4c56fd5c1b368feb1299a"
+    },
+    "grass": {
+      "path": "res://moth/generated/textures/grass.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "b06615e8f8d7a8ec415e5176791ec22e24fe06e793e773260a9b0b49c8fda009",
+      "png_sha256": "b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64"
+    },
+    "hazard_stripes": {
+      "path": "res://moth/generated/textures/hazard_stripes.png",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "da43889b1a11de640d7372c0ae20c7dbef9eeac55bdd7d8286bc0a444e7a599f",
+      "png_sha256": "4f2bfb3fd45f16c485749606ba7cfb49b32d86c28c3fd1b0d942d69d613cff44"
+    },
+    "hex_paneling": {
+      "path": "res://moth/generated/textures/hex_paneling.png",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "651a713e6f7051134a0f2247b6679ed2426dd1489d409c8ece36165139a975d1",
+      "png_sha256": "725a587331a74d235254e64b7f5d9a605e2de8cc28f16eec3c92577c3ddeea40"
+    },
+    "hex_paneling-mottle": {
+      "path": "res://moth/generated/textures/hex_paneling-mottle.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "eae7bd8b07848aae6854693704866dd253f98a08a6d586a397023bfdd0cbb671",
+      "png_sha256": "d9d5473425b71f7d829a2db984dcfe7f9ea845a91e4b745798c4533190059a4d"
+    },
+    "holographic_grid": {
+      "path": "res://moth/generated/textures/holographic_grid.png",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "d8f4782d7c1ec4c7eac711fe45d14d1e636799cf0612d1c4c30ab67ec7ca4437",
+      "png_sha256": "31a2987bf4a52beeb2130734a131c9629a35d5583c072f8b7706f249fc9d0ce9"
+    },
+    "ice": {
+      "path": "res://moth/generated/textures/ice.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "9219ed3d9dfdf0fbe812afe3f565830ba276ff92dbdb4fa2d255ef211c7bc7e2",
+      "png_sha256": "2740e16c94f3c24fb1d87689af40556a0d8461242040fee9124e8285c9bbb933"
+    },
+    "ice-cracked": {
+      "path": "res://moth/generated/textures/ice-cracked.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "da1fdb2a6e13fa2cd931fc5a8deb1b9a1cf0684d15b3df8f24d8121356ebcbde",
+      "png_sha256": "2ebe487943a7835bef5ca43bf362d8ab8ed17ab656928ca1756ff2cb9738f945"
+    },
+    "industrial_mesh": {
+      "path": "res://moth/generated/textures/industrial_mesh.png",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "d717c1ec07cd5b3c207c0dc92185be6fd79a492c441a50a76a126dd54f635bd4",
+      "png_sha256": "88a39b80d69806a721bc024678e86e609f85f0387c2fc8c4e7a67fd5f713751f"
+    },
+    "macro-organic": {
+      "path": "res://moth/generated/textures/macro-organic.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "a11dffc90b37cc2209ee9857e4616dd5b09a9b20380dbdd5fecb93c40b79ac59",
+      "png_sha256": "de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a"
+    },
+    "metal": {
+      "path": "res://moth/generated/textures/metal.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "edda675d99ba52e3538cee8c2b664f7c8005a3d05a391508ea99e098aa077480",
+      "png_sha256": "1edff202b4755b6d8bd84f6e2499d9052df804e40a17d30cd0ee68926e3a7f46"
+    },
+    "metal-oxide": {
+      "path": "res://moth/generated/textures/metal-oxide.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "bbb111708d24226fd1ebe24fbdfc7e339a4f5f1edcff38884cc6e9b535e26e6c",
+      "png_sha256": "82ac59a91f7be9a0fd4182a8b83d7b2b7cf07d7bb6e98ae5b5ff006eedcb8257"
+    },
+    "metal_grating": {
+      "path": "res://moth/generated/textures/metal_grating.png",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "e693a20eb8ee6ddccffe4ba89921ddbb868656242d6fec6a674099b25536a971",
+      "png_sha256": "a9c19f1b0c7ebfb59a079a7a9780390baffcf5f0f593e2c6b5bc8c4977ab9372"
+    },
+    "riveted_armor": {
+      "path": "res://moth/generated/textures/riveted_armor.png",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "3df636ee97cd6569e880ff73d46e52527db3efa5840896fbd6a0f1b99e38bd80",
+      "png_sha256": "2afc1402d3438a9ffdea671d8b40b3d97811408613402c4f66c228e8621efdb9"
+    },
+    "riveted_armor-scorched": {
+      "path": "res://moth/generated/textures/riveted_armor-scorched.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "231709cd2e8eca18f98e835a484c1874e307a870472b408d0a695e5dd4b3b72e",
+      "png_sha256": "a7e8f11847cd2b402e9cc631039c28fd6d4e1d851e1555af58143fc820a511ec"
+    },
+    "rock": {
+      "path": "res://moth/generated/textures/rock.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "1c7e0a72a07f6a70c3f9bec34f1c9260c4a55f215a0c9da73b759d57524074f6",
+      "png_sha256": "aad5e455978fdae96d8a6784908c0019e33083f809cfcf606c7c84b13ca35504"
+    },
+    "rock-moss": {
+      "path": "res://moth/generated/textures/rock-moss.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "022e248a992780d478b970260ae6a9eed79ac58b68063fdb227b9e8ecec4904c",
+      "png_sha256": "80c63f01502fa13b0deb309c9d90a38104cde1b6877075d00d273b8a80dfdbda"
+    },
+    "rough_stucco": {
+      "path": "res://moth/generated/textures/rough_stucco.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "6b69f56afb7fae01bf03dae061312a430fa3d63cba5b21d8fa668f7fea19873d",
+      "png_sha256": "26e2dd4bd5aeed6cbb5ea7113a9a210d5658dffb35fffacbd9e80f08d19ab779"
+    },
+    "rough_stucco-weathered": {
+      "path": "res://moth/generated/textures/rough_stucco-weathered.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "69741890836220d011357b7fe3fb293095c3e22011785bfeda997c896c082331",
+      "png_sha256": "f74639c6eb1736a65e3eeda2705fcf55c3be1a6c21acd33b72cd76c4466ea593"
+    },
+    "sand": {
+      "path": "res://moth/generated/textures/sand.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "4c924f108fa5000306682b81fb47033a66b07b2a7ac520fd7bf6f20b2ef05de0",
+      "png_sha256": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+    },
+    "weathered_concrete": {
+      "path": "res://moth/generated/textures/weathered_concrete.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "3585ee539d38d8daec3660239e1d9d86b2e1ae53bb589a8447b09d0fe1594aa8",
+      "png_sha256": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+    },
+    "weathered_concrete-damp": {
+      "path": "res://moth/generated/textures/weathered_concrete-damp.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "8ebbc8fdf547d22f5152a177c3d1c9f5c8e5c08b3d639ce54598c5f01bdc60c9",
+      "png_sha256": "8a143f57858a26d6ea5ab81badc60cb0ea154294b9fe180c505cb1b472bd0fab"
+    },
+    "weathered_concrete-worn": {
+      "path": "res://moth/generated/textures/weathered_concrete-worn.png",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "896b617ad27e9b881d393fd0b74280d94a13335b03e11d6ff5655691c875f576",
+      "png_sha256": "fc6707d6bf6ae6dc6dfec746100f83015ce74885976b20688280f29bcdf111cf"
+    }
+  },
+  "normals": {
+    "corrugated_metal": {
+      "path": "res://moth/generated/normals/corrugated_metal.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "75a7e28414ad20bc887994534526d21190a0310033f2155a6c1534f4cdafce2b",
+      "png_sha256": "02ec3b06ce0ccba6761a45f4e9b158c5d5aab53de5d429279ee9cd3e592aa666"
+    },
+    "diamond_plate": {
+      "path": "res://moth/generated/normals/diamond_plate.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "bc30f5289d5514ca98840d031937dba904682d6f514d4afa857a173e4b18ddfb",
+      "png_sha256": "a5e7278ae283da8f879e9393ffc16179385bad12c31f876327e8ba0eacc6e106"
+    },
+    "grass": {
+      "path": "res://moth/generated/normals/grass.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "8ecc3f3c5e926640fc39a49b5ab2d22ba15bf032eb7245cf50ca2976a3c8fac2",
+      "png_sha256": "788b9d3a410db0afdb0b730d7017d2eaed1e72cbcfc7c48e32411de620886a7b"
+    },
+    "hazard_stripes": {
+      "path": "res://moth/generated/normals/hazard_stripes.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "f52e1f66e878e66909a31ccba17e19a57089640a57bda17356f61365da0bcf8a",
+      "png_sha256": "1378386bfb3db7afb9abf1ffe920ad5745d8080423dc863d4b7c86acf12a15b1"
+    },
+    "hex_paneling": {
+      "path": "res://moth/generated/normals/hex_paneling.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "bc30f5289d5514ca98840d031937dba904682d6f514d4afa857a173e4b18ddfb",
+      "png_sha256": "a5e7278ae283da8f879e9393ffc16179385bad12c31f876327e8ba0eacc6e106"
+    },
+    "holographic_grid": {
+      "path": "res://moth/generated/normals/holographic_grid.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "feaa0ff2ea7e1679b43ca7ed94f8092ec5798f50e7a5e70eefe9ba45645d0f87",
+      "png_sha256": "5f690df0c385963f5116129d0098b6b5e07d03586467a86ea8c59e4e6ba6a634"
+    },
+    "ice": {
+      "path": "res://moth/generated/normals/ice.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "d778d18e53f50620d7ad265e4ff348eeb399c13e8de77a2609a4a725757e9f7c",
+      "png_sha256": "ec3b44f1d4c1fe8bf98f5b4d6271625d2b6adf36576992048f577cc0343d507f"
+    },
+    "metal": {
+      "path": "res://moth/generated/normals/metal.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "85d4fefb9f18cb24db0d423c8104f7ff38abdb85eee9e75ec44a5fe0febb3463",
+      "png_sha256": "8b38d1a9fc8452f6e7704640ea3b428d6981f3c9fff83803a60ddcaf8c081505"
+    },
+    "metal_grating": {
+      "path": "res://moth/generated/normals/metal_grating.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "5967211ea2966e77a017076679d4c9c5931d69cd57b3c6b165f56fec76261aad",
+      "png_sha256": "368eba4fe09e99b69789a6ebf990ab92d4b1405c57b61114e5a4294aa8329b4d"
+    },
+    "rock": {
+      "path": "res://moth/generated/normals/rock.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "7982dda9905e56313839d1dc620b03fb7fcabbe8aa53b5de19a966d0f4e5137b",
+      "png_sha256": "42054e8e6ed44f3664289ee15df50b3d7ef682236905c7d7c3a17093d47822cb"
+    },
+    "rough_stucco": {
+      "path": "res://moth/generated/normals/rough_stucco.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "807e9d8e801b2ba2f071b81f610c499eb02d713bd70241b6bc1fec8f9c730294",
+      "png_sha256": "7a47c5852180321e84994c1c3e615dce7daff239be3bb84fb0835f21c066c133"
+    },
+    "sand": {
+      "path": "res://moth/generated/normals/sand.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "aadcf8ab76c3a47caf1350f30ee47beb4998678af9cfcd32960c89a84fc8000f",
+      "png_sha256": "28c2411b535ffc028925955844768cd8405b9ec83c3480bb8286b5b724b01f87"
+    },
+    "weathered_concrete": {
+      "path": "res://moth/generated/normals/weathered_concrete.png",
+      "width": 32,
+      "height": 32,
+      "channels": 4,
+      "color_space": "linear",
+      "alpha": "straight",
+      "pixel_sha256": "9c12daa4b2349823d32178ad65d94f9dfc7a53d55db070cd13985312503fdf4f",
+      "png_sha256": "aba8343349ed69036b25b165ce2eb05d5a66fc1dd5254fac0aaab5783e5a81d4"
+    }
+  },
+  "sky": {
+    "ashen": {
+      "path": "res://moth/generated/sky/ashen.png",
+      "width": 128,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "553adf5e2172fa9f343d4748253ce0b6f2b264f154270a1edd3cf7330bad59ce",
+      "png_sha256": "af02ccc06572cfe6343c2b066b198f812b6f1d96860e304fdd566beada0f9a23",
+      "equirect": true
+    },
+    "ember": {
+      "path": "res://moth/generated/sky/ember.png",
+      "width": 128,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "14b646bf649b98428824e2be13cf4c032694ffa8c754a75dc133d979ca9b8781",
+      "png_sha256": "3dcb75eca02bab5df1ce7239d2f0651fd9c98bfe81e5fe61ace8e0f6dd47347b",
+      "equirect": true
+    },
+    "frost": {
+      "path": "res://moth/generated/sky/frost.png",
+      "width": 128,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "e2f02e2cb12e9a5266297b2595bb736289cdcec1a32c81bd154b1b94d97135d4",
+      "png_sha256": "ade9fed8524a4e482fd1cbd01a3c0c76090213884b68548efe5dbb68047dda24",
+      "equirect": true
+    },
+    "nebula": {
+      "path": "res://moth/generated/sky/nebula.png",
+      "width": 128,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "14b646bf649b98428824e2be13cf4c032694ffa8c754a75dc133d979ca9b8781",
+      "png_sha256": "3dcb75eca02bab5df1ce7239d2f0651fd9c98bfe81e5fe61ace8e0f6dd47347b",
+      "equirect": true
+    },
+    "void": {
+      "path": "res://moth/generated/sky/void.png",
+      "width": 128,
+      "height": 64,
+      "channels": 4,
+      "color_space": "srgb",
+      "alpha": "straight",
+      "pixel_sha256": "a7b8c6d38bb2f9f77bd200b35e9ef724eada7d84f34d993b2a8fe3aad63c96a2",
+      "png_sha256": "854f14b91c145ac842203621ebb93ae6e6f130f2c163dd1f24a30a20ea71aedb",
+      "equirect": true
+    }
+  },
+  "materials": {
+    "entanglement": {
+      "width": 24,
+      "height": 24,
+      "r": {
+        "path": "res://moth/generated/materials/entanglement-r.png",
+        "width": 24,
+        "height": 24,
+        "channels": 3,
+        "color_space": "linear",
+        "alpha": "opaque",
+        "pixel_sha256": "a2fc4eab5a3e6f71e9e665deb18c5d58acd617a43b7e98d16917f68f34367c0a",
+        "png_sha256": "2c6d587cc75a3ca178c61c31eb820909db2070cb637622d1f84975422ba71d13"
+      },
+      "t": {
+        "path": "res://moth/generated/materials/entanglement-t.png",
+        "width": 24,
+        "height": 24,
+        "channels": 3,
+        "color_space": "linear",
+        "alpha": "opaque",
+        "pixel_sha256": "7636c9f8da9a82f9a9fcd804a25795a9c900e1c7e19f7442a7b113c8ccd64eb2",
+        "png_sha256": "7214592bdf129c0e147216d789c3b0d32cdd75311af2b4473f7be40825a72612"
+      }
+    },
+    "entanglement-arcane": {
+      "width": 24,
+      "height": 24,
+      "r": {
+        "path": "res://moth/generated/materials/entanglement-arcane-r.png",
+        "width": 24,
+        "height": 24,
+        "channels": 3,
+        "color_space": "linear",
+        "alpha": "opaque",
+        "pixel_sha256": "55b65a9c44ebd29eb66bdb332d90ee60d141223596e03ad5a569473c7cdf062a",
+        "png_sha256": "498053e80c26b97235b12df58830602dfa63aadcf959bc46dad7e7aaf45eed4c"
+      },
+      "t": {
+        "path": "res://moth/generated/materials/entanglement-arcane-t.png",
+        "width": 24,
+        "height": 24,
+        "channels": 3,
+        "color_space": "linear",
+        "alpha": "opaque",
+        "pixel_sha256": "7636c9f8da9a82f9a9fcd804a25795a9c900e1c7e19f7442a7b113c8ccd64eb2",
+        "png_sha256": "7214592bdf129c0e147216d789c3b0d32cdd75311af2b4473f7be40825a72612"
+      }
+    },
+    "entanglement-ceramic": {
+      "width": 32,
+      "height": 32,
+      "r": {
+        "path": "res://moth/generated/materials/entanglement-ceramic-r.png",
+        "width": 32,
+        "height": 32,
+        "channels": 3,
+        "color_space": "linear",
+        "alpha": "opaque",
+        "pixel_sha256": "c1115196cf0cc17cf6f121b3f237ece449831785697c9677b472e59a27bd9fea",
+        "png_sha256": "e5de4f53a1abec7ec724e406cc792dbb482e54a582447b3967751658ba31ae15"
+      },
+      "t": {
+        "path": "res://moth/generated/materials/entanglement-ceramic-t.png",
+        "width": 32,
+        "height": 32,
+        "channels": 3,
+        "color_space": "linear",
+        "alpha": "opaque",
+        "pixel_sha256": "e80232b4d18d0bb7e794be263ba937626f383f9917d4b8a737ba893a8f752293",
+        "png_sha256": "31e579b975d3f691455245c2140e8f911d2f5d0afc09de2c264c9c0f423a90c9"
+      }
+    },
+    "entanglement-ember": {
+      "width": 24,
+      "height": 24,
+      "r": {
+        "path": "res://moth/generated/materials/entanglement-ember-r.png",
+        "width": 24,
+        "height": 24,
+        "channels": 3,
+        "color_space": "linear",
+        "alpha": "opaque",
+        "pixel_sha256": "bc369614da07990ec5db26221b617566227ddcec54776b2424f852ce158ae14b",
+        "png_sha256": "36ad9ff17f76f3894f35a17f23d8421de7897e85f6d2e6b31735c17b21ecbeec"
+      },
+      "t": {
+        "path": "res://moth/generated/materials/entanglement-ember-t.png",
+        "width": 24,
+        "height": 24,
+        "channels": 3,
+        "color_space": "linear",
+        "alpha": "opaque",
+        "pixel_sha256": "7636c9f8da9a82f9a9fcd804a25795a9c900e1c7e19f7442a7b113c8ccd64eb2",
+        "png_sha256": "7214592bdf129c0e147216d789c3b0d32cdd75311af2b4473f7be40825a72612"
+      }
+    },
+    "entanglement-void": {
+      "width": 32,
+      "height": 32,
+      "r": {
+        "path": "res://moth/generated/materials/entanglement-void-r.png",
+        "width": 32,
+        "height": 32,
+        "channels": 3,
+        "color_space": "linear",
+        "alpha": "opaque",
+        "pixel_sha256": "388aa0f0f1b1d1f419a408b23f9b2eb7cc767d5bf04995def3ff319c5cfd00b8",
+        "png_sha256": "cae2038e38c16d09daff4ca70ccdaf929cd1d343ff2ba26bc9430b13a4589757"
+      },
+      "t": {
+        "path": "res://moth/generated/materials/entanglement-void-t.png",
+        "width": 32,
+        "height": 32,
+        "channels": 3,
+        "color_space": "linear",
+        "alpha": "opaque",
+        "pixel_sha256": "e80232b4d18d0bb7e794be263ba937626f383f9917d4b8a737ba893a8f752293",
+        "png_sha256": "31e579b975d3f691455245c2140e8f911d2f5d0afc09de2c264c9c0f423a90c9"
+      }
+    }
+  },
+  "effects": {
+    "arc-burst": {
+      "width": 48,
+      "height": 48,
+      "fps": 10,
+      "frames": [
+        {
+          "path": "res://moth/generated/effects/arc-burst-0.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "0010b810528b9ab64094bc862cefcff215470f620998986e877f899ec43a70f9",
+          "png_sha256": "d0a056ddbc889a71f56f9dc4da2ee40bdcdad9179d9c5193cd5c8158fcf17fe1"
+        },
+        {
+          "path": "res://moth/generated/effects/arc-burst-1.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "03b5cb224305ccbc6b22012a27508084394675a607a308f5f91a1077748fd5ed",
+          "png_sha256": "2d6c02a63ab23b56a29b8f91a31953d4e040f27c7a5a30e8e158195f3987afa2"
+        },
+        {
+          "path": "res://moth/generated/effects/arc-burst-2.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "82067035810c8ae491ca3cff2361aa194bb7e416326e6b827f066544441775ec",
+          "png_sha256": "15259d99c4a8c72e329e6062bd271ed3741bbc76ceaa71fb038196eb6b1785a0"
+        }
+      ]
+    },
+    "effect-capture-ring": {
+      "width": 48,
+      "height": 48,
+      "fps": 12,
+      "frames": [
+        {
+          "path": "res://moth/generated/effects/effect-capture-ring-0.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "54432a3bf20fc09c6c4f1e905301c7d49b8dd639358c73567e1b75a0a8bed318",
+          "png_sha256": "8c365ad780bf74f9b303abee24415fbc1490b7f1903e6745465cc63fbf870104"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-capture-ring-1.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "3c5be027490b5c12293b541ea4036f44479c8338c7ed8cf424670b328e6ca7f3",
+          "png_sha256": "fc1990479f63ec08caf4adbc6ed23afe96c76fca8f59ea35f13875ffb90e73f4"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-capture-ring-2.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "ae3e7b9ee23e3a776697358e5b039c24865ba00a605b0e40a62f0d158c89d8ab",
+          "png_sha256": "51814738a7d1c99c664758c108a45b216fc0b42a8b78fdc95a3d43e511f910ad"
+        }
+      ]
+    },
+    "effect-explosion": {
+      "width": 48,
+      "height": 48,
+      "fps": 14,
+      "frames": [
+        {
+          "path": "res://moth/generated/effects/effect-explosion-0.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "c679fdeb30a2b009fb4440618b7f1f2690aa643780cabe2b46a6e0cdf0c65a6f",
+          "png_sha256": "7113e28e45486128b1db364b79d6c1fdd27d3dde90d2822679866c708bc923ef"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-explosion-1.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "f61ee6fba6ff7212e69fd215bb3647be05163c00b7c8819c196ed2b5a58da0af",
+          "png_sha256": "5d0fb8bdd9fcfd9984e520921139e18b1c8671cc11004a70f927bb0efdaa4936"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-explosion-2.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "9fbb973ee10bbd4374701d72af5f474d6344399df067752b1a738bf1af493580",
+          "png_sha256": "05b30ae43be4cf71891764ccf4af4fa66bab252c456561949fb66297cd4c13da"
+        }
+      ]
+    },
+    "effect-heal": {
+      "width": 48,
+      "height": 48,
+      "fps": 10,
+      "frames": [
+        {
+          "path": "res://moth/generated/effects/effect-heal-0.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "be61d9cc3363d2d89a7c4ff6baf73d53c62f860fbdd9182e3be93090a7be9cfe",
+          "png_sha256": "cec8d187a64e9e147380ee7335aff756d368f689e2b99f2e016952bfbf4c555e"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-heal-1.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "6a4dbee13113cdcfe35c025d5820e1072e63d0daa44945942b376aceb31422a3",
+          "png_sha256": "ded277e2a1e000eb834401040e6a388c4e38b203dbde66d2eb11e9a4ab5553bf"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-heal-2.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "f47b996e9057f646b1654c974b6ca4cf254951b63baeff96ece9fea7a4a400cb",
+          "png_sha256": "f002480c1e1991794a3aed69b9b26f5e2182af732fcf61ddfb1000f66fcdaacf"
+        }
+      ]
+    },
+    "effect-shield": {
+      "width": 48,
+      "height": 48,
+      "fps": 12,
+      "frames": [
+        {
+          "path": "res://moth/generated/effects/effect-shield-0.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "e0fd40d3c63381481988cededd64c41a7f6e9ba9b4800a99fef5c0eb3b8ff38a",
+          "png_sha256": "ee088ed92fad3ab212e28a5aad045c81dd4ddaeb2af591178911b306157d3a5b"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-shield-1.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "7770ae4067a9abbd5a22df84a1a2a079afbafb22b78649bc58f7f23874f34b9d",
+          "png_sha256": "ac0a8d65597894ecd56dbaf8e6bed6c094b053e7d2b5e7d1adabc91d4071693b"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-shield-2.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "e419fdf83e3ffbc9426fa9113b4c3ae392a63415035d63a7ee5f08dcb7f140bf",
+          "png_sha256": "1bea8507dc3dd622efc86597306dd948f9d6af7ae2656f1fbf3922bdef3ed66d"
+        }
+      ]
+    },
+    "effect-teleport": {
+      "width": 48,
+      "height": 48,
+      "fps": 12,
+      "frames": [
+        {
+          "path": "res://moth/generated/effects/effect-teleport-0.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "bd1545ea3b05020216c930849b301b56dbaa1843e30e097e521c989a44fb185d",
+          "png_sha256": "22da74f265415fa1f7186860120ea55ff38bf7aa688b3feb57bcafd375b8e170"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-teleport-1.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "e6d49ab976193df9ef72a8d69f518614b241ee06130e2f00407a11a85f3e4b87",
+          "png_sha256": "f68aa7f399f054474eb592cba8a8d9b5a509a568aa1a24b83636d0df047f4c71"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-teleport-2.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "6ae9a75f84598e9ce348911e4f28eb93c6a4df248f0982d0d294515187fbc6fe",
+          "png_sha256": "84b55944c3dc085f4c5b0ee7f4f5df638f90b28a73be7423eae851740b667119"
+        }
+      ]
+    },
+    "effect-weather-snow": {
+      "width": 48,
+      "height": 48,
+      "fps": 10,
+      "frames": [
+        {
+          "path": "res://moth/generated/effects/effect-weather-snow-0.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "177bc6223d81814a345eaab44f9493e775804a2fc624a257392e04fc9563f900",
+          "png_sha256": "7dce1bc4ca324e35eb4cd615723c6380894c8f5036ee288f35205ed48f336c7c"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-weather-snow-1.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "002c965825caf4676858de1ba2ad95ad32a4c97f5eb432d00d4b8fba6f35d1b9",
+          "png_sha256": "a70f25794256e9c5beedf208c167a37514c88ad4f0e8d0c41b03075cc5133412"
+        },
+        {
+          "path": "res://moth/generated/effects/effect-weather-snow-2.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "49012acc8462d0f59ef2e047e9c6a928a94983052e64c94bb0d5aa1de39888ba",
+          "png_sha256": "f4d7b3c0a71f169d2836c34df59b0d2f3764d34933f41673cdb37b0c7529e6a4"
+        }
+      ]
+    },
+    "qrc-glyphs": {
+      "width": 64,
+      "height": 64,
+      "fps": 8,
+      "frames": [
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-0.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "6deb4d2607560315d0b497a7ee2726290015442ee122c3bf2f7eac2e9e565e65",
+          "png_sha256": "35a16a951b08993099ce348dd43efcf01108a986b99f34c2fd36aecc8be833b3"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-1.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "2d371d12983ac32b33a0c8c057b4ccc6277fd91f98e2a8be52b363fb91e87b0a",
+          "png_sha256": "9444c976ce54673f598e66177d742ae877dded158ee5a2d1f0eba4a06a74ac6d"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-2.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "6d83f93835c15f16b7798c37c4b8d46548d60ae4ced1f34dd9697b537272b071",
+          "png_sha256": "20f93be1e4e2ad0184126ab3dc9bbcbd35e8ddd71a92e78ace147bad52425b3f"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-3.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "c4eb63d942bc117abaab331ac09c376edab5e1f4681417a1495215ac95b7e93a",
+          "png_sha256": "542c20a7459251456767b1fd02c492da849166c59b2c6043d76c7a384550400c"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-4.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "cb233e650cb6e6b51c9d2bc8fb92a452f410d04a9a34cbf74be2f406fa2899f4",
+          "png_sha256": "8f6f48fea298d47363541364ecde6503e6a98d86690837e1824d0b6c4a514016"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-5.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "6deb4d2607560315d0b497a7ee2726290015442ee122c3bf2f7eac2e9e565e65",
+          "png_sha256": "35a16a951b08993099ce348dd43efcf01108a986b99f34c2fd36aecc8be833b3"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-6.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "2d371d12983ac32b33a0c8c057b4ccc6277fd91f98e2a8be52b363fb91e87b0a",
+          "png_sha256": "9444c976ce54673f598e66177d742ae877dded158ee5a2d1f0eba4a06a74ac6d"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-7.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "6d83f93835c15f16b7798c37c4b8d46548d60ae4ced1f34dd9697b537272b071",
+          "png_sha256": "20f93be1e4e2ad0184126ab3dc9bbcbd35e8ddd71a92e78ace147bad52425b3f"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-8.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "c399e41c049354abb987c0b5259da883da79fbd4cf6951aa21ba28f8ea6e56cd",
+          "png_sha256": "761cbfff64011b4ba6e4369f3fd42a6e7e2a124e4c0e5927f9ac795ba298cad8"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-9.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "8fac38744672cfa8660591973f639b0093ff4bf92b16a5a1dbc31197372ebd7b",
+          "png_sha256": "c3120db31409e72f74f06bf4fe25cbf33293021724bcaa56043444994145af0a"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-10.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "917d04ccb7c43e149ca1bc12ee9d12c39a43b19e31912b22c0190d8dcffa2230",
+          "png_sha256": "cd39879208ce9c9b4b36cf2be718945f7219067b49039af9b300d5b229375f90"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-11.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "68e8d152f4e91a92f6f39d9bf561be7b49ffcf21b248834cc58328e778b2a13e",
+          "png_sha256": "24efefcd822c0a5e30514b497c7be2a0fe1d5c91c7404e9eda45d32c395a5446"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-12.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "d0527ce7f6f183d1b0e7c6edbad3b9484a8556902e86c2027cf6b3b0b1c616ac",
+          "png_sha256": "51deba1148766a4e412005a96f8c6189db7af12167f51d28bc8804c5d5c83d00"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-13.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "6d83f93835c15f16b7798c37c4b8d46548d60ae4ced1f34dd9697b537272b071",
+          "png_sha256": "20f93be1e4e2ad0184126ab3dc9bbcbd35e8ddd71a92e78ace147bad52425b3f"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-14.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "c399e41c049354abb987c0b5259da883da79fbd4cf6951aa21ba28f8ea6e56cd",
+          "png_sha256": "761cbfff64011b4ba6e4369f3fd42a6e7e2a124e4c0e5927f9ac795ba298cad8"
+        },
+        {
+          "path": "res://moth/generated/effects/qrc-glyphs-15.png",
+          "width": 64,
+          "height": 64,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "8fac38744672cfa8660591973f639b0093ff4bf92b16a5a1dbc31197372ebd7b",
+          "png_sha256": "c3120db31409e72f74f06bf4fe25cbf33293021724bcaa56043444994145af0a"
+        }
+      ]
+    },
+    "quantum-rift": {
+      "width": 48,
+      "height": 48,
+      "fps": 10,
+      "frames": [
+        {
+          "path": "res://moth/generated/effects/quantum-rift-0.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "0cc7871b732fe699e8cc4953bbfc543be26fa6f71c47dd2cb25101aaa908a5b0",
+          "png_sha256": "33d30f50ddb68130f322347377ffb8e3a20961ca7f899a93f653b4b562899fd7"
+        },
+        {
+          "path": "res://moth/generated/effects/quantum-rift-1.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "42d354f1ef23fe8fe75d18a5474af1926187626de95b97524246955be13a877e",
+          "png_sha256": "e96ec9550921238830e65279e11ed466a91f1640485f662a4b5b6ccead78644d"
+        },
+        {
+          "path": "res://moth/generated/effects/quantum-rift-2.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "a38616ea542c0adbb3b2fc1af25156dd76ad48c884038c45b11eef106a5f0662",
+          "png_sha256": "747dff5018efc09f16b0bb0b7c24a952b6b351e4326b55df2d8a431548af0487"
+        }
+      ]
+    },
+    "spark-impact": {
+      "width": 48,
+      "height": 48,
+      "fps": 14,
+      "frames": [
+        {
+          "path": "res://moth/generated/effects/spark-impact-0.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "4cab5c4ce23e721cbe3a0f2b7f5647b52f2f62f4cd42751008c3c814ce577f70",
+          "png_sha256": "8d398b145b319f4cb1eb848d2d24992660f83525693f1d127b0e5ead5fae1088"
+        },
+        {
+          "path": "res://moth/generated/effects/spark-impact-1.png",
+          "width": 48,
+          "height": 48,
+          "channels": 4,
+          "color_space": "srgb",
+          "alpha": "straight",
+          "pixel_sha256": "58977229a354d3fa2a222fe660cfc0de1e9ebe741e156b757a3c612429853e6f",
+          "png_sha256": "31d236bc16ef2654b2b1fe603850117364bd590e0ae7b4de1b5d3935e22dba52"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+	"lut_ab": [
+		{
+			"changed_pixels": 1807,
+			"mean_rgb_absolute_delta": 0.000365011407430077,
+			"row": 0
+		},
+		{
+			"changed_pixels": 1746,
+			"mean_rgb_absolute_delta": 0.000349251667506241,
+			"row": 1
+		},
+		{
+			"changed_pixels": 1687,
+			"mean_rgb_absolute_delta": 0.000319468426217217,
+			"row": 2
+		},
+		{
+			"changed_pixels": 1955,
+			"mean_rgb_absolute_delta": 0.000678892728494755,
+			"row": 3
+		}
+	],
+	"normal_ab": [
+		{
+			"changed_pixels": 4907,
+			"mean_rgb_absolute_delta": 0.000454984378760565,
+			"row": 0
+		},
+		{
+			"changed_pixels": 1124,
+			"mean_rgb_absolute_delta": 0.000153879972997584,
+			"row": 1
+		},
+		{
+			"changed_pixels": 1150,
+			"mean_rgb_absolute_delta": 0.000149583878272879,
+			"row": 2
+		},
+		{
+			"changed_pixels": 1893,
+			"mean_rgb_absolute_delta": 0.000187937034703966,
+			"row": 3
+		}
+	],
+	"size": [
+		1280,
+		800
+	],
+	"vertex_tint_ab": [
+		{
+			"changed_pixels": 16308,
+			"mean_rgb_absolute_delta": 0.0140762232954289,
+			"row": 0
+		},
+		{
+			"changed_pixels": 16296,
+			"mean_rgb_absolute_delta": 0.0132244400404118,
+			"row": 1
+		},
+		{
+			"changed_pixels": 16331,
+			"mean_rgb_absolute_delta": 0.0139556415562378,
+			"row": 2
+		},
+		{
+			"changed_pixels": 16089,
+			"mean_rgb_absolute_delta": 0.00729190378970959,
+			"row": 3
+		}
+	]
+}

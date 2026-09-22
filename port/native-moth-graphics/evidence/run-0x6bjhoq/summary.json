@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "name": "offline-export",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "name": "import",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "name": "runtime",
+      "returncode": 1,
+      "passed": false
+    }
+  ],
+  "renderer": "Godot 4.5.2 GL Compatibility / software Mesa / private Xvfb",
+  "private_state": "/tmp/opencode/moth-native-kbgsf7c5"
+}

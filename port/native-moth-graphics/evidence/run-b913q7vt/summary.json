@@ -1,0 +1,41 @@
+{
+  "results": [
+    {
+      "name": "offline-export",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "name": "import",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "name": "runtime",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "name": "materials-960x640",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "name": "materials-1280x800",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "name": "textures-1280x800",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "name": "extras-1280x800",
+      "returncode": 0,
+      "passed": true
+    }
+  ],
+  "renderer": "Godot 4.5.2 GL Compatibility / software Mesa / private Xvfb",
+  "private_state": "/tmp/opencode/moth-native-1u141hl0"
+}

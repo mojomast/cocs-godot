@@ -1,0 +1,28 @@
+{
+	"normal_ab": [
+		{
+			"changed_pixels": 7071,
+			"mean_rgb_absolute_delta": 0.000746784155819117,
+			"row": 0
+		},
+		{
+			"changed_pixels": 1351,
+			"mean_rgb_absolute_delta": 0.000174536785115853,
+			"row": 1
+		},
+		{
+			"changed_pixels": 1078,
+			"mean_rgb_absolute_delta": 0.000147714081412091,
+			"row": 2
+		},
+		{
+			"changed_pixels": 1955,
+			"mean_rgb_absolute_delta": 0.00018653468069361,
+			"row": 3
+		}
+	],
+	"size": [
+		1280,
+		800
+	]
+}
