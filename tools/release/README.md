@@ -73,7 +73,8 @@ node tools/release/release.mjs --tag=<tag> \
   [--publication-remote=godot] [--publish-branch=main] [--branch=<name>] \
   [--repository=<owner/repo>] [--workflow=windows-demo.yml] [--workflow-ref=<ref>] \
   [--push-ref=<src>:<dst>] [--resume-from=<step>] [--stop-after=<step>] \
-  [--verification=auto|always|never] [--verify-timeout=<s>] [--package-timeout=<s>] \
+  [--verification=auto|always|never] [--prepare=auto|never] \
+  [--verify-timeout=<s>] [--package-timeout=<s>] \
   [--hosted-timeout=<s>] [--poll-seconds=<s>] [--allow-untracked=<path>] \
   [--allow-tag-behind-head] [--allow-non-fast-forward] [--execute] [--help]
 ```

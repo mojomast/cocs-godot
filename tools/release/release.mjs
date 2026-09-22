@@ -582,6 +582,12 @@ async function stepVerification(ctx) {
   };
   for (const dir of [env.XDG_DATA_HOME, env.XDG_CONFIG_HOME, env.XDG_CACHE_HOME]) await mkdir(dir, {recursive: true});
   ctx.emit(`  env      GODOT_BIN, PORT=0, TMPDIR=${DEFAULT_LANDING_ZONE}, XDG_* under ${relative(ctx.runDir, runtime)}`);
+  // Redirecting XDG_CACHE_HOME moves Playwright's default browser cache, so probe
+  // generation must be told where the browsers actually are (CI sets this explicitly).
+  const playwrightBrowsers = env.PLAYWRIGHT_BROWSERS_PATH
+    ?? (env.HOME && existsSync(join(env.HOME, '.cache/ms-playwright')) ? join(env.HOME, '.cache/ms-playwright') : null);
+  const prepareEnv = playwrightBrowsers ? {...env, PLAYWRIGHT_BROWSERS_PATH: playwrightBrowsers} : env;
+  if (playwrightBrowsers) ctx.emit(`  prepare  Playwright browsers: ${playwrightBrowsers}`);
   // The aggregate verifier imports GLB probes under godot/content, which .gitignore
   // excludes; the hosted Linux workflow generates them with browser-export.mjs before
   // verify.py. Mirror that here so a frozen tree really is verifiable from one command.
@@ -594,10 +600,11 @@ async function stepVerification(ctx) {
   for (const probe of missing.filter(() => options.prepare === 'auto')) {
     const args = ['tools/godot-export/browser-export.mjs', ...probe.args];
     ctx.emit(`  prepare  generating the missing ${probe.id} GLB probe (as the CI workflow does)`);
-    const generated = await runCommand(ctx, {command: 'node', args, env, sideEffect: true, timeout: 600000, label: 'prepare'});
+    const generated = await runCommand(ctx, {command: 'node', args, env: prepareEnv, sideEffect: true, timeout: 600000, label: 'prepare'});
     if (!generated.planned && !existsSync(join(ctx.root, 'godot/content/probes', probe.id, 'world.glb'))) {
       throw new ReleaseError('probe-generation-failed', `browser-export.mjs ran but did not write the ${probe.id} probe`,
-        'regenerate with `node tools/godot-export/browser-export.mjs`, or fix the GLB exporter before releasing');
+        'regenerate with `node tools/godot-export/browser-export.mjs`, install the browser with `npx playwright install chromium`, ' +
+        'or pass --prepare=never and accept a failing glb-import gate');
     }
     prepared.push({probe: probe.id, planned: !!generated.planned, command: printable('node', args)});
   }
