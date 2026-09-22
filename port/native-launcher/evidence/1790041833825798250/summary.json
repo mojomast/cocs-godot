@@ -1,0 +1,110 @@
+{
+  "status": "PASS",
+  "revision": "a12d89f8c815297feb187b4bedbb27c247bfa328",
+  "editor": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "scope": "bounded headless startup and owned-process cleanup only",
+  "results": [
+    {
+      "experience": "sports",
+      "map": "ion-speedway",
+      "mode": "puma-race",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--experience=sports",
+        "--map=ion-speedway",
+        "--mode=puma-race"
+      ],
+      "exit": 0,
+      "timeout": false,
+      "nativeAbsent": true,
+      "portClosed": true,
+      "passed": true
+    },
+    {
+      "experience": "sports",
+      "map": "aurora-stadium",
+      "mode": "puma-soccer",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--experience=sports",
+        "--map=aurora-stadium",
+        "--mode=puma-soccer"
+      ],
+      "exit": 0,
+      "timeout": false,
+      "nativeAbsent": true,
+      "portClosed": true,
+      "passed": true
+    },
+    {
+      "experience": "objectives",
+      "map": "tidal-citadel",
+      "mode": "ctf",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--experience=objectives",
+        "--map=tidal-citadel",
+        "--mode=ctf"
+      ],
+      "exit": 0,
+      "timeout": false,
+      "nativeAbsent": true,
+      "portClosed": true,
+      "passed": true
+    },
+    {
+      "experience": "objectives",
+      "map": "sunscar-convoy",
+      "mode": "payload",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--experience=objectives",
+        "--map=sunscar-convoy",
+        "--mode=payload"
+      ],
+      "exit": 0,
+      "timeout": false,
+      "nativeAbsent": true,
+      "portClosed": true,
+      "passed": true
+    },
+    {
+      "experience": "lattice",
+      "map": "asterion-relay",
+      "mode": "cocs",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--experience=lattice",
+        "--map=asterion-relay",
+        "--mode=cocs"
+      ],
+      "exit": 0,
+      "timeout": false,
+      "nativeAbsent": true,
+      "portClosed": true,
+      "passed": true
+    },
+    {
+      "experience": "lattice",
+      "map": "monsoon-foundry",
+      "mode": "cocs-coop",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--experience=lattice",
+        "--map=monsoon-foundry",
+        "--mode=cocs-coop"
+      ],
+      "exit": 0,
+      "timeout": false,
+      "nativeAbsent": true,
+      "portClosed": true,
+      "passed": true
+    }
+  ]
+}

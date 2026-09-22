@@ -115,20 +115,21 @@ diagnostic labels.
 With the environment above configured, run either:
 
 ```sh
-python3 -B port/tools/native_vehicle_demo/play.py --map ion-speedway
-python3 -B port/tools/native_vehicle_demo/play.py --map aurora-stadium
+PORT=0 node tools/godot-dev/launch.mjs --experience=sports --map=ion-speedway
+PORT=0 node tools/godot-dev/launch.mjs --experience=sports --map=aurora-stadium
 ```
 
-Each launcher uses a private project copy and an owned local server. Demo
-sessions are bounded to **80 seconds**. See the
+The common launcher uses an owned local server and runs until you close the
+client or press Ctrl+C. The separate Python evidence launcher still uses a
+private project copy and an **80-second** bound. See the
 [driving handoff](port/native-puma-driving/HANDOFF.md) and
 [camera/HUD notes](port/native-sports-polish/HANDOFF.md).
 
 ### LATTICE command board
 
 ```sh
-PORT=0 node port/tools/native_lattice_demo/run.mjs \
-  --map=asterion-relay --mode=cocs --size=1280x800
+PORT=0 node tools/godot-dev/launch.mjs \
+  --experience=lattice --map=asterion-relay --mode=cocs
 ```
 
 Click **Connect / start**, select an objective, and issue a HOLD order. In PvP,
@@ -136,7 +137,8 @@ authorize one **12 FLUX** purchase and click **Recruit Fighter**. The UI separat
 locally queued commands, server acceptance, confirmation and rejection.
 
 Use `--map=monsoon-foundry` for the second map or `--mode=cocs-coop` for co-op
-orders. This development launcher is bounded to **120 seconds**. The compact
+orders. The common launcher has no harness deadline; the separate evidence
+launcher retains its **120-second** bound. The compact
 layout fits the basic command and purchase receipts at 960×640; longer history
 remains scrollable. See the
 [LATTICE guide](port/native-lattice/README.md) for details and limitations.
@@ -144,14 +146,15 @@ remains scrollable. See the
 ### CTF and Payload demos
 
 ```sh
-PORT=0 node port/tools/native_objective_demo/run.mjs --map=tidal-citadel
-PORT=0 node port/tools/native_objective_demo/run.mjs --map=sunscar-convoy
+PORT=0 node tools/godot-dev/launch.mjs --experience=objectives --map=tidal-citadel
+PORT=0 node tools/godot-dev/launch.mjs --experience=objectives --map=sunscar-convoy
 ```
 
 These standalone, zero-bot demos use ordinary infantry controls. In CTF, approach
 the opposing flag to pick it up; **E** passes or drops it. In Payload, move close
-to the cart to escort it. Add `--small` for 960×640. The development launcher has
-a **180-second outer deadline**, which is separate from authoritative results.
+to the cart to escort it. The common launcher has no harness deadline. The
+separate evidence launcher has a **180-second outer deadline**, which is
+separate from authoritative results.
 The objective HUD and close-up markers are still being polished. See the
 [objective guide](port/native-objective-gameplay/HANDOFF.md) and
 [independent verification](port/reports/objective-independent/README.md).
@@ -210,6 +213,11 @@ The complete required mode set is recorded in the
 
 ## Verification
 
+For a fresh clone, follow the [native CI bootstrap](port/native-ci/README.md)
+first. Verification needs full Git history and both generated GLB probes in
+addition to semantic map export. The bootstrap pins and checks the official
+Godot editor and documents the required Chromium build dependency.
+
 ```sh
 PORT=0 python3 tools/godot-dev/verify.py
 ```
@@ -218,8 +226,10 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated run passes **50 gates**, including objective rendering,
-control and evidence checks, LATTICE and source-aware projectile navigation.
+The latest integrated run passes **51 gates**, including common launcher routing,
+objective rendering/control/evidence, LATTICE and projectile navigation. Native
+[GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
+also passed the preceding 50-gate snapshot from a fresh Ubuntu checkout.
 
 Focused real-session and graphical evidence is documented in:
 

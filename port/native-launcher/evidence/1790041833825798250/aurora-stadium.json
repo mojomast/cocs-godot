@@ -1,0 +1,1 @@
+{"pid": 2624142, "args": ["--headless", "--quit-after", "180", "--path", "godot", "res://sports/demo.tscn", "--", "--endpoint=ws://127.0.0.1:41737", "--map=aurora-stadium", "--mode=puma-soccer"]}

@@ -1,0 +1,1 @@
+{"pid": 2623932, "args": ["--headless", "--quit-after", "180", "--path", "godot", "res://sports/demo.tscn", "--", "--endpoint=ws://127.0.0.1:41297", "--map=ion-speedway", "--mode=puma-race"]}

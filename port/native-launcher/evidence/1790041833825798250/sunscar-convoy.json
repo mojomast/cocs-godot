@@ -1,0 +1,1 @@
+{"pid": 2624645, "args": ["--headless", "--quit-after", "180", "--path", "godot", "res://objectives/demo.tscn", "--", "--endpoint=ws://127.0.0.1:33621", "--map=sunscar-convoy", "--mode=payload"]}

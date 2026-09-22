@@ -1,0 +1,1 @@
+{"pid": 2624988, "args": ["--headless", "--quit-after", "180", "--path", "godot", "res://lattice/board.tscn", "--", "--endpoint=ws://127.0.0.1:37493", "--map=asterion-relay", "--mode=cocs"]}

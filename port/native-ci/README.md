@@ -84,6 +84,10 @@ needed for these editor/headless gates.
 
 ## Workflow boundaries and evidence
 
+The integrated snapshot now has an independently observed successful
+[GitHub-hosted 50-gate run](../reports/native-ci-hosted/README.md). The original
+agent's local fresh-checkout evidence below remains scoped to its earlier base.
+
 Triggers are pushes to `main`, pull requests, and manual dispatch. Permissions
 are `contents: read`; checkout does not persist credentials. The job has a
 30-minute timeout, and a newer run cancels an older run on the same ref.

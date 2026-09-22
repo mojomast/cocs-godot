@@ -1,0 +1,1 @@
+{"pid": 2625247, "args": ["--headless", "--quit-after", "180", "--path", "godot", "res://lattice/board.tscn", "--", "--endpoint=ws://127.0.0.1:35007", "--map=monsoon-foundry", "--mode=cocs-coop"]}

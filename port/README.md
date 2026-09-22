@@ -28,8 +28,16 @@ The sections below retain the chronological implementation history.
 export GODOT_BIN="$PWD/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64"
 PORT=0 node tools/godot-dev/launch.mjs --play --setup
 PORT=0 node tools/godot-dev/launch.mjs --play --map=verdant-reliquary --mode=instagib
+PORT=0 node tools/godot-dev/launch.mjs --experience=sports --map=ion-speedway
+PORT=0 node tools/godot-dev/launch.mjs --experience=objectives --map=tidal-citadel
+PORT=0 node tools/godot-dev/launch.mjs --experience=lattice --map=asterion-relay
 # Add --mute to silence procedural cues.
 ```
+
+The common launcher now routes all four native experience families. Interactive
+play has no harness deadline; close the client or use Ctrl+C. The separate
+evidence helpers retain their bounded observation windows. See
+[launcher verification](native-launcher/README.md).
 
 - **Host setup:** Meridian, Verdant and Ember × Deathmatch/Team Deathmatch/Instagib/Rocket Arena are enabled.
   All nine locked maps remain visible; unsupported selections explain that they
@@ -93,8 +101,8 @@ PORT=0 node tools/godot-dev/launch.mjs --play --map=verdant-reliquary --mode=ins
   contest/delivery and objective results/restart remain open. See
   [independent evidence](reports/objective-independent/README.md).
 
-**Combined verification: all 50 implemented gates pass** after objective
-integration at `d498479` plus the gate/helper changes
+**Combined verification: all 51 implemented gates pass** after objective
+and CI integration at `a12d89f` plus common-launcher changes
 recorded with this batch. Independent driving passed on both sports maps;
 the default compact HUD's nonlethal damage/+35 HP/12-second return was also
 independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).

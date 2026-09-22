@@ -37,6 +37,7 @@ commands = [
     ("health-hud-evidence", ["node", "--test", "port/tools/native_health_damage/analyze.test.mjs", "port/tools/native_health_damage/test.mjs"]),
     ("projectile-navigation", ["node", "--test", "port/native-projectile-combat/route.test.mjs"]),
     ("objective-evidence", ["node", "--test", "port/tools/native_objective_demo/test.mjs"]),
+    ("launcher-options", ["node", "--test", "tools/godot-dev/launch_options.test.mjs"]),
     ("semantic-export", ["node", "tools/godot-export/semantic.mjs"]),
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),
     ("godot-import", [binary, "--headless", "--path", "godot", "--editor", "--import"]),

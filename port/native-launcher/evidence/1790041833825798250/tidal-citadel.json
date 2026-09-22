@@ -1,0 +1,1 @@
+{"pid": 2624444, "args": ["--headless", "--quit-after", "180", "--path", "godot", "res://objectives/demo.tscn", "--", "--endpoint=ws://127.0.0.1:38209", "--map=tidal-citadel", "--mode=ctf"]}
