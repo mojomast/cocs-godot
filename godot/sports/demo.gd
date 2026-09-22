@@ -4,12 +4,13 @@ const World = preload("res://world/viewer.gd")
 const Fleet = preload("res://vehicles/renderer.gd")
 const Controls = preload("res://sports/controls.gd")
 const Chase = preload("res://sports/chase.gd")
+const HUD = preload("res://sports/hud.gd")
 var net := Network.new()
 var world := World.new()
 var fleet := Fleet.new()
 var controls := Controls.new()
 var chase := Chase.new()
-var hud := Label.new()
+var hud := HUD.new()
 var ball := MeshInstance3D.new()
 var map_id := ""
 var endpoint := ""
@@ -44,6 +45,10 @@ func _ready() -> void:
 		get_tree().quit(2)
 		return
 	world.camera.current = true
+	if not chase.configure_map(map_id, world.catalog.resolve_map(map_id)):
+		push_error("Sports camera geometry exceeds cache budget")
+		get_tree().quit(2)
+		return
 	add_child(fleet)
 	add_child(ball)
 	ball.visible = false
@@ -57,11 +62,6 @@ func _ready() -> void:
 	var layer := CanvasLayer.new()
 	add_child(layer)
 	layer.add_child(hud)
-	hud.position = Vector2(20, 20)
-	hud.add_theme_font_size_override("font_size", 22)
-	hud.add_theme_color_override("font_shadow_color", Color.BLACK)
-	hud.add_theme_constant_override("shadow_offset_x", 2)
-	hud.add_theme_constant_override("shadow_offset_y", 2)
 	add_child(net)
 	net.lobby.connect(on_lobby)
 	net.started.connect(on_started)
@@ -170,15 +170,7 @@ func _process(delta: float) -> void:
 		var pose: Dictionary = chase.follow(vehicle, delta)
 		world.camera.position = pose.eye
 		world.camera.look_at(pose.target)
-	var race: Dictionary = state.get("race", {})
-	var speed := Vector2(float(vehicle.get("vx", 0)), float(vehicle.get("vz", 0))).length()
-	var detail := ""
-	if mode == "puma-soccer": detail = "Score: %s" % str(race.get("scores", "unavailable"))
-	else:
-		detail = "Lap/checkpoint: unavailable"
-		for row: Dictionary in race.get("standings", []):
-			if row.get("actorId") == net.actor_id: detail = "Lap %s/%s · next checkpoint %s" % [row.get("lap", "?"), race.get("laps", "?"), row.get("nextGate", "?")]
-	hud.text = "%s · %s %0.1f\n%0.1f m/s · %s\n%s\nEnter: engage · WASD: drive · Space: brake · Shift: boost\nEscape: release · R: race reset · F5: restart after results%s" % [map_id, race.get("phase", phase), float(race.get("countdown", 0)), speed, detail, "DRIVING" if controls.engaged else "RELEASED — fresh Enter after countdown", "\n" + error if not error.is_empty() else ""]
+	hud.update({"mode":mode, "state":state, "vehicle":vehicle, "actor_id":net.actor_id, "phase":phase, "age":age, "eligible":eligible(), "engaged":controls.engaged, "focused":controls.focused, "error":error})
 
 func _exit_tree() -> void:
 	controls.release()

@@ -1,0 +1,70 @@
+{
+  "classification": "focused real normal-rate demo; native key events only; synthetic unit checks separately labeled",
+  "cases": [
+    {
+      "map": "ion-speedway",
+      "resolution": "960x640",
+      "captures": [
+        "countdown",
+        "driving",
+        "released"
+      ],
+      "receivedInputs": 291,
+      "maxCameraCandidates": 0,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    },
+    {
+      "map": "ion-speedway",
+      "resolution": "1280x800",
+      "captures": [
+        "countdown",
+        "driving",
+        "released"
+      ],
+      "receivedInputs": 239,
+      "maxCameraCandidates": 0,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    },
+    {
+      "map": "aurora-stadium",
+      "resolution": "960x640",
+      "captures": [
+        "countdown",
+        "near-wall",
+        "driving",
+        "released"
+      ],
+      "receivedInputs": 218,
+      "maxCameraCandidates": 4,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    },
+    {
+      "map": "aurora-stadium",
+      "resolution": "1280x800",
+      "captures": [
+        "countdown",
+        "near-wall",
+        "driving",
+        "released"
+      ],
+      "receivedInputs": 269,
+      "maxCameraCandidates": 4,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    }
+  ],
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}
