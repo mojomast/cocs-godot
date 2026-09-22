@@ -33,11 +33,14 @@ var audio_feedback: Node
 var player_fx: Node
 var impacts: Node3D
 const CombatShields = preload("res://combat_shields/controller.gd")
+const BloodFX = preload("res://blood_fx/controller.gd")
+const BloodSurfaces = preload("res://blood_fx/surface_query.gd")
 const CombatQuality = preload("res://world/combat_quality.gd")
 const WeaponEffects = preload("res://weapon_effects/controller.gd")
 const WorldParticles = preload("res://combat_particles/manager.gd")
 const Occlusion = preload("res://world/combat_occlusion.gd")
 var shields: Node3D
+var blood_fx: Node3D
 var weapon_effects: Node3D
 var world_particles: Node3D
 var occlusion := Occlusion.new()
@@ -86,6 +89,9 @@ func configure_effects(camera: Camera3D, session: Node) -> void:
 		impacts = Impacts.new()
 		add_child(impacts)
 		impacts.configure(camera, occlusion)
+	if not is_instance_valid(blood_fx):
+		blood_fx = BloodFX.new()
+		add_child(blood_fx)
 	_quality_changed(quality_controls.quality)
 	_attach_rig()
 
@@ -96,6 +102,7 @@ func _quality_changed(level: int) -> void:
 	if is_instance_valid(world_particles): world_particles.set_quality(CombatQuality.LEVELS[level])
 	if is_instance_valid(player_fx): player_fx.set_quality(level)
 	if is_instance_valid(impacts): impacts.set_quality(level)
+	if is_instance_valid(blood_fx): blood_fx.set_quality(CombatQuality.LEVELS[level])
 	_update_metrics()
 
 func _attach_rig() -> void:
@@ -134,7 +141,15 @@ func _configure_map(state: Dictionary) -> void:
 	if not map.is_empty():
 		var result: Dictionary = world_particles.configure(effect_camera, map)
 		if not result.get("ok", false): map_error = str(result.get("error", "Particle map configuration failed"))
-	else: world_particles.reset()
+		if is_instance_valid(blood_fx):
+			# Semantic exports for the locked nine maps; StaticBody3D roots for
+			# native/identity maps. Both are real surface queries, never guessed planes.
+			var blood_source: Variant = map if map.has("collision_root") else BloodSurfaces.semantic_provider(map)
+			var blood_result: Dictionary = blood_fx.configure(effect_camera, blood_source)
+			if not blood_result.get("ok", false): map_error = str(blood_result.get("error", map_error))
+	else:
+		world_particles.reset()
+		if is_instance_valid(blood_fx): blood_fx.reset()
 	if is_instance_valid(projectiles): projectiles.configure_occlusion(occlusion.segment_blocked)
 
 func _allowed() -> bool:
@@ -162,9 +177,11 @@ func _sync_activity() -> void:
 		if is_instance_valid(audio_feedback): audio_feedback.clear_round()
 		if is_instance_valid(player_fx): player_fx.clear_transient()
 		if is_instance_valid(impacts): impacts.reset()
+		if is_instance_valid(blood_fx): blood_fx.reset()
 		hit_remaining = 0.0
 		hurt_remaining = 0.0
 	if is_instance_valid(world_particles): world_particles.set_paused(not active)
+	if is_instance_valid(blood_fx): blood_fx.set_paused(not active)
 	if is_instance_valid(quality_controls): quality_controls.set_active(active)
 
 func _fresh_events(items: Array) -> Array:
@@ -205,6 +222,7 @@ func flush_effects() -> void:
 			projectiles.cache_launch(event, weapon_effects.resolve_launch_origin(event, effect_local_id), effect_local_id)
 	shields.apply_events(events, effect_local_id)
 	world_particles.consume(events, effect_local_id)
+	if is_instance_valid(blood_fx): blood_fx.apply_events(events, effect_local_id)
 	if is_instance_valid(player_fx): player_fx.apply_events(safe, effect_local_id)
 	if is_instance_valid(impacts): impacts.consume(safe, effect_local_id)
 
@@ -236,6 +254,10 @@ func _update_metrics() -> void:
 		metrics["impact_active"] = impact_state.active
 		metrics["impact_family"] = impact_state.family if not str(impact_state.family).is_empty() else "none"
 		metrics["impact_counters"] = JSON.stringify(impact_state.counters)
+	if is_instance_valid(blood_fx):
+		var blood_state: Dictionary = blood_fx.snapshot()
+		for key in ["allocated_slots", "submitted_slots", "active_emitters", "concurrent_cap", "stains_live", "stains_recycled", "no_bleed", "absorbed_only", "duplicates"]:
+			if blood_state.has(key): metrics["blood_%s" % key] = blood_state[key]
 	metrics["occlusion"] = occlusion.snapshot().backend
 	if not map_error.is_empty(): metrics["map_error"] = map_error
 	quality_controls.set_metrics(metrics)
@@ -294,6 +316,7 @@ func apply_state(state: Dictionary) -> void:
 			shields.bind_actor_visuals(effect_session.actors.actors)
 		shields.apply_state(state, effect_local_id)
 	if is_instance_valid(world_particles) and map_error.is_empty(): world_particles.apply_state(state, effect_local_id)
+	if is_instance_valid(blood_fx) and map_error.is_empty(): blood_fx.apply_state(state, effect_local_id)
 	if not is_instance_valid(projectiles):
 		projectiles = Projectiles.new()
 		add_child(projectiles)
@@ -460,6 +483,7 @@ func clear_round() -> void:
 	if is_instance_valid(projectiles): projectiles.clear_round()
 	if is_instance_valid(player_fx): player_fx.clear_round()
 	if is_instance_valid(impacts): impacts.reset()
+	if is_instance_valid(blood_fx): blood_fx.reset()
 	while not blasts.is_empty(): remove_blast(0)
 	launches = 0
 	local_launches = 0

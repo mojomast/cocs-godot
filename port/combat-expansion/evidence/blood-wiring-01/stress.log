@@ -1,0 +1,2 @@
+BLOOD_FX_STRESS PASS checks=20
+BLOOD_FX_STRESS_METRICS {"active_emitters":14,"allocated_slots":24576,"callback_usec_440_events":24603,"concurrent_cap":14,"dropped":756,"frame_max_us":125.0,"frame_median_us":65.0,"pool_nodes":24,"quality":"High","recycled":1080,"stains_cap":80,"stains_live":80,"stains_placed":835,"stains_recycled":755,"submitted_slots":10972}
