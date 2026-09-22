@@ -43,7 +43,7 @@ try {
     // cmd.exe exercises the actual double-click entry point and path quoting.
     let stdout = '', stderr = '';
     try {
-      ({stdout,stderr} = await exec(process.env.ComSpec || 'cmd.exe', ['/d','/s','/c',`""${join(root,'Play.cmd')}" --smoke --map=${map}"`], {cwd:sandbox, env, timeout:45000, maxBuffer:4*1024*1024}));
+      ({stdout,stderr} = await exec(process.env.ComSpec || 'cmd.exe', ['/d','/s','/c',`""${join(root,'Play.cmd')}" --smoke --map=${map}"`], {cwd:sandbox, env, windowsVerbatimArguments:true, timeout:45000, maxBuffer:4*1024*1024}));
     } catch (error) {
       await writeFile(join(output,map+'.log'), (error.stdout || '')+(error.stderr || '')+'\n'+error.message);
       throw error;
