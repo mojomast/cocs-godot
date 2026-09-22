@@ -2,6 +2,7 @@ extends Control
 const Guidance = preload("res://sports/guidance.gd")
 const Progression = preload("res://sports/progression.gd")
 const SoccerGuidance = preload("res://sports/soccer_guidance.gd")
+const Practice = preload("res://sports/practice.gd")
 ## Passive presentation of accepted state. text remains an observer-friendly summary.
 var text := ""
 var title: Label
@@ -188,6 +189,7 @@ func update(view: Dictionary) -> void:
 	text = "%s · %s\n%s · %s\n%s\n%s\n%s" % [parts.title, parts.phase, parts.detail, parts.speed, progress, parts.status, parts.hints]
 	if not results.is_empty(): text += "\n" + results
 	var soccer_text := SoccerGuidance.describe(view.get("soccer_guidance", {})) if soccer and view.get("phase") == "active" and float(view.get("age", 999)) < 0.5 and not state.get("over", false) else ""
+	if not soccer_text.is_empty(): soccer_text += "\n" + Practice.describe(view.soccer_guidance, race.get("pitch", {}))
 	if not soccer_text.is_empty(): text += "\n" + soccer_text
 	if not is_node_ready(): return
 	title.text = parts.title

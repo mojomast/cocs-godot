@@ -8,6 +8,7 @@ const HUD = preload("res://sports/hud.gd")
 const Guidance = preload("res://sports/guidance.gd")
 const Progression = preload("res://sports/progression.gd")
 const SoccerGuidance = preload("res://sports/soccer_guidance.gd")
+const Practice = preload("res://sports/practice.gd")
 var net := Network.new()
 var world := World.new()
 var fleet := Fleet.new()
@@ -42,6 +43,11 @@ func _init() -> void:
 	add_child(soccer_guidance)
 
 func _ready() -> void:
+	var option_error := Practice.option_error(OS.get_cmdline_user_args())
+	if not option_error.is_empty():
+		push_error(option_error)
+		get_tree().quit(2)
+		return
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--map="): map_id = arg.trim_prefix("--map=")
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
