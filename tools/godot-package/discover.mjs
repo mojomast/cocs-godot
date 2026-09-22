@@ -10,7 +10,11 @@ const hordeAdapters = ['port/native-horde/authority.mjs', 'port/native-horde/inp
 const nativeArenaAdapters = ['port/native-arenas/authority.mjs', 'port/native-arenas/match.mjs',
   'port/native-arenas/schema.mjs', 'port/native-arenas/catalog.mjs',
   'port/native-arenas/input-buffer.mjs', 'port/native-arenas/event-cursor.mjs'];
-const adapters = [...hordeAdapters, ...nativeArenaAdapters];
+// Debug reconciliation is imported by BOTH local authorities and by nothing on
+// the ordinary/multi-human route. One reviewed adapter module, listed here so
+// the shipped closure stays explicit.
+const debugAdapters = ['port/native-debug/debug.mjs'];
+const adapters = [...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters];
 // Explicit dynamic data-read manifest: the builder hashes committed bytes and
 // copies these paths under runtime/, preserving catalog.mjs URL resolution.
 // `dataFiles` stays the original native-arena family (existing consumers);

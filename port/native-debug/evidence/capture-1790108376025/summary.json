@@ -1,0 +1,48 @@
+{
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "results": [
+    {
+      "width": 960,
+      "height": 640,
+      "code": 0,
+      "png": "port/native-debug/evidence/capture-1790108376025/debug-panel-960x640.png",
+      "bytes": 513371,
+      "panel": {
+        "damage": 2,
+        "god": true,
+        "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-debug/evidence/capture-1790108376025/debug-panel-960x640.png",
+        "phase": 3,
+        "result": 0,
+        "size": [
+          960,
+          640
+        ]
+      },
+      "rounds": 1,
+      "stimulus": 1,
+      "errors": false
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "code": 0,
+      "png": "port/native-debug/evidence/capture-1790108376025/debug-panel-1280x800.png",
+      "bytes": 774972,
+      "panel": {
+        "damage": 2,
+        "god": true,
+        "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-debug/evidence/capture-1790108376025/debug-panel-1280x800.png",
+        "phase": 3,
+        "result": 0,
+        "size": [
+          1280,
+          800
+        ]
+      },
+      "rounds": 1,
+      "stimulus": 1,
+      "errors": false
+    }
+  ],
+  "command": "COCS_DEBUG=1 GODOT_BIN=<pinned> node port/native-debug/capture.mjs"
+}

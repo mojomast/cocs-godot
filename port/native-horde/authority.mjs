@@ -7,6 +7,8 @@ import {Match, floorAt, obstructed} from '../../game/core.mjs';
 import {normalizeConfig} from '../../game/config.mjs';
 import {parseInputEnvelope} from '../../game/protocol.mjs';
 import {InputBuffer} from './input-buffer.mjs';
+import {applyDebugFrame, applyLiveOverrides, createDebugState, debugEcho, installHumanGuard,
+  parseDebugFrame, reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT} from '../native-debug/debug.mjs';
 export const MAPS = ['meridian-exchange','verdant-reliquary','ember-crucible'];
 // ---------------------------------------------------------------------------
 // Identity-family hook (Nacre Engine).
@@ -209,7 +211,11 @@ export class EventCursor {
 export function outboundAllowed(bytes, buffered) {
  return bytes <= LIMITS.frame && buffered + bytes <= LIMITS.outbound;
 }
-export function createAuthority({observe=()=>{}}={}) {
+export function createAuthority({observe=()=>{}, debug} = {}) {
+ if (debug !== undefined && typeof debug !== 'boolean') throw new TypeError('Debug flag must be boolean');
+ // Off by default; explicit constructor flag or the operator's own COCS_DEBUG=1.
+ const debugEnabled = debug === true || (debug === undefined && process.env.COCS_DEBUG === '1');
+ const debugState = createDebugState({enabled:debugEnabled});
  const server = http.createServer({maxHeaderSize:8192}, (req,res) => {
   res.writeHead(200, {'Content-Type':'application/json'});
   res.end(JSON.stringify({service:'cocs-local-horde', transport:1, localOnly:true, port:server.address()?.port}));
@@ -219,13 +225,34 @@ export function createAuthority({observe=()=>{}}={}) {
  const wss = new WebSocketServer({noServer:true, maxPayload:LIMITS.payload, perMessageDeflate:false});
  const inputs = new InputBuffer();
  let socket=null, config=null, mapId=null, match=null, created=false, finished=false;
+ let baseConfig=null;
  let round=0, seq=0, epoch=0, eventCursor=null, ticks=0, wall=performance.now(), accumulator=0, closing=false, closePromise;
  let tokens=LIMITS.burst, tokenAt=wall;
  const record = value => observe({...value, round, observedMs:performance.now()});
+ function debugReset() {
+  debugState.live = {godMode:false, playerIncomingScale:1, unlockAllWeapons:false};
+  debugState.config = {}; debugState.queued = {}; debugState.autoUnlimited = false;
+  debugState.constructed = {};
+  baseConfig = null;
+ }
+ function debugReject(reason) {
+  debugState.rejected++; debugState.lastReject = reason;
+  record({direction:'debug-reject', reason});
+  send({type:'debug-reject', reason});
+ }
+ // The solo Horde route constructs a fixed reviewed config every round, so it
+ // has no construction-time debug knobs: only live knobs are advertised.
+ function applyDebugToMatch(active) {
+  if (!debugState.enabled || !active) return;
+  applyLiveOverrides(active, debugState.config, baseConfig);
+  installHumanGuard(active, debugState.live, HUMAN_SEAT);
+  reconcileHuman(active, debugState);
+ }
  function detach(ws) {
   if (socket !== ws) return;
   socket=null; match=null; config=null; mapId=null; created=false; finished=false;
   inputs.reset(); accumulator=0; eventCursor=null;
+  debugReset();
  }
  function terminate(reason) {
   record({direction:'transport-error', reason});
@@ -240,7 +267,9 @@ export function createAuthority({observe=()=>{}}={}) {
   const ws=socket;
   ws.send(text, error => { if (error && socket === ws) terminate('Send failed'); });
  }
- const lobby = () => send({type:'lobby',mapId,config,players:[{peerId:0,actorId:0,name:'Local player'}]});
+ const lobby = () => send({type:'lobby',mapId,config,players:[{peerId:0,actorId:0,name:'Local player'}],
+  // Additive debug capability echo; absent for every ordinary connection.
+  ...(debugEnabled ? {debug:debugEcho(debugState)} : {})});
  function cancelControls(reason) {
   inputs.cancel(); epoch++;
   send({type:'horde-input-reset',inputEpoch:epoch,reason});
@@ -277,6 +306,11 @@ export function createAuthority({observe=()=>{}}={}) {
      // historical source constructor and the static identity hook above.
      match=createHordeMatch({mapId,config,random:Math.random});
      if (match.arena.id !== mapId || match.config.mode !== 'horde') throw Error('Source substituted map/mode');
+     baseConfig={...match.config};
+     debugState.constructed={...debugState.queued};
+     // Round boundary: god mode is round-scoped and always clears here.
+     debugState.live.godMode=false;
+     applyDebugToMatch(match);
      round++; seq=0; epoch++; eventCursor=new EventCursor(); ticks=0; finished=false; inputs.reset();
      // Consume construction's ring before any step can shift it. The supported
      // solo preset constructs one spawn event; no historical events are inferred.
@@ -292,6 +326,32 @@ export function createAuthority({observe=()=>{}}={}) {
      inputs.receive(f.seq,parsed,now,f.cancel === true);
      // A dying actor's queued actions must not execute on a later respawn.
      if (match.actors[0].health <= 0) inputs.cancel();
+    } else if (f.type === 'debug' && created) {
+     // Additive debug frame. With the channel disabled this falls through to the
+     // unchanged rejection path (error + terminate).
+     if (!debugEnabled) throw Error('Invalid local lifecycle command');
+     let parsed;
+     try { parsed = parseDebugFrame(f); }
+     catch (error) { debugReject(error.message); return; }
+     if (parsed.set.botCount !== undefined || parsed.set.startingWeapon !== undefined) {
+      debugReject('construction-time knobs are not supported on the solo Horde route');
+      return;
+     }
+     if (parsed.set.testDamage !== undefined && (!match || match.over)) {
+      debugReject('testDamage requires a live round');
+      return;
+     }
+     const touched=applyDebugFrame(debugState,parsed);
+     if (match && !match.over) {
+      applyDebugToMatch(match);
+      if (touched.includes('unlockAllWeapons') && debugState.live.unlockAllWeapons !== true) {
+       restoreSpawnAmmo(match,match.actors[HUMAN_SEAT]);
+      }
+      if (parsed.set.testDamage !== undefined) {
+       match.damage(match.actors[HUMAN_SEAT],parsed.set.testDamage,undefined,false);
+      }
+     }
+     send({type:'debug-state',debug:debugEcho(debugState)});
     } else throw Error('Invalid local lifecycle command');
    } catch (error) {
     send({type:'error',message:error.message}); terminate(error.message);
@@ -311,6 +371,13 @@ export function createAuthority({observe=()=>{}}={}) {
     const sample=inputs.take(), active=match;
     const alive=active.actors[0].health > 0;
     active.step(1/60,{inputs:{0:sample.input}});
+    // Port-only human-seat reconciliation before the death/cancel decision.
+    if (debugEnabled) {
+     const applied=reconcileHuman(active,debugState);
+     if (applied && (applied.restoredDeath || applied.healthLost > 0 || applied.grantedAmmo)) {
+      record({direction:'debug-reconcile',...applied,sourceTime:active.time});
+     }
+    }
     inputs.stepped(sample.seq);
     record({direction:'step',inputSeq:sample.seq,inputEpoch:epoch,controls:sample.input,
      sourceTime:active.time,...inputs.status()});

@@ -6,8 +6,17 @@ import {keys, record, readNativeArena, parseArenaEnvelope} from './schema.mjs';
 import {createNativeMatch, validateNativeConfig} from './match.mjs';
 import {InputBuffer} from './input-buffer.mjs';
 import {EventCursor} from './event-cursor.mjs';
+import {applyDebugFrame, applyLiveOverrides, createDebugState, debugEcho, installHumanGuard,
+  parseDebugFrame, reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT, RESTART_KNOBS} from '../native-debug/debug.mjs';
 
 export {EventCursor, createNativeMatch, validateNativeConfig};
+// Reviewed bounds for the construction-time debug knobs on THIS route. The
+// source accepts botCount 0..8; the native Deathmatch validator this adapter
+// ships accepts 1..7, so the debug channel advertises the reviewed bound rather
+// than pretending a wider one exists.
+export const DEBUG_RESTART_BOUNDS = Object.freeze({
+  botCount:[1, 7], startingWeapon:[RESTART_KNOBS.startingWeapon[0], RESTART_KNOBS.startingWeapon[1]],
+});
 export {readNativeArena, parseNativeArena, parseIdentityArena, parseArenaEnvelope} from './schema.mjs';
 export const LIMITS = Object.freeze({payload:16384, frame:1048576, outbound:2097152,
   messagesPerSecond:120, burst:128, connections:8});
@@ -27,12 +36,18 @@ const minimalConfig = config => Object.fromEntries(ruleFields.map(key => [key, c
 export function createAuthority(options = {}) {
   if (!record(options)) throw new TypeError('Native arena options must be an object');
   const allowed = ['mapId', 'config', 'random', 'observe', 'arenaData', 'botCount', 'timeLimit',
-    'fragLimit', 'difficulty', 'mode', 'bots', 'roundSeconds'];
+    'fragLimit', 'difficulty', 'mode', 'bots', 'roundSeconds', 'debug'];
   const unknown = Object.keys(options).filter(key => !allowed.includes(key));
   if (unknown.length) throw new TypeError(`Unsupported native arena option: ${unknown[0]}`);
   const {mapId = 'prism-foundry', config = {}, random = Math.random,
     observe = () => {}, arenaData, botCount, timeLimit, fragLimit, difficulty,
-    mode, bots, roundSeconds} = options;
+    mode, bots, roundSeconds, debug} = options;
+  if (debug !== undefined && typeof debug !== 'boolean') throw new TypeError('Debug flag must be boolean');
+  // Debug is off by default and needs an explicit switch: the constructor flag
+  // or the operator's own COCS_DEBUG=1 environment. An explicit `debug:false`
+  // wins over the environment so a test can always force the fair path.
+  const debugEnabled = debug === true || (debug === undefined && process.env.COCS_DEBUG === '1');
+  const debugState = createDebugState({enabled:debugEnabled});
   nativeArenaEntry(mapId);
   if (typeof random !== 'function' || typeof observe !== 'function') throw new TypeError('RNG/observer must be functions');
   if (bots !== undefined && botCount !== undefined && bots !== botCount) throw new TypeError('Conflicting bot counts');
@@ -62,14 +77,43 @@ export function createAuthority(options = {}) {
   const wss = new WebSocketServer({noServer:true, maxPayload:LIMITS.payload, perMessageDeflate:false});
   const inputs = new InputBuffer();
   let socket = null, match = null, selectedConfig = null, created = false, finished = false;
+  let baseConfig = null;
   let round = 0, seq = 0, epoch = 0, eventCursor = null, ticks = 0;
   let wall = performance.now(), accumulator = 0, closing = false, closePromise;
   let tokens = LIMITS.burst, tokenAt = wall, epochRequired = false, playerName = 'Local player';
   const report = value => observe({...value, round, observedMs:performance.now()});
+  // Debug channel helpers. `debugState.enabled` is fixed at construction; every
+  // other field is per-connection state and is dropped with the socket.
+  const debugLimits = () => ({botCount:[...DEBUG_RESTART_BOUNDS.botCount],
+    startingWeapon:[...DEBUG_RESTART_BOUNDS.startingWeapon]});
+  function resetDebugChannel() {
+    debugState.live = {godMode:false, playerIncomingScale:1, unlockAllWeapons:false};
+    debugState.config = {}; debugState.queued = {}; debugState.autoUnlimited = false;
+    debugState.constructed = {};
+    baseConfig = null;
+  }
+  function debugReject(reason) {
+    debugState.rejected++; debugState.lastReject = reason;
+    report({direction:'debug-reject', reason});
+    send({type:'debug-reject', reason});
+  }
+  // LIVE application: the locked source reads config/mutators/difficulty every
+  // tick, so these take effect on the next step. Only knobs the running round
+  // was actually constructed with are folded into the live config, so a queued
+  // bot count never makes the public config echo claim a roster it does not
+  // have. The guard and the post-step reconcile only ever inspect the single
+  // human seat.
+  function applyDebugToMatch(active) {
+    if (!debugState.enabled || !active) return;
+    applyLiveOverrides(active, {...debugState.constructed, ...debugState.config}, baseConfig);
+    installHumanGuard(active, debugState.live, HUMAN_SEAT);
+    reconcileHuman(active, debugState);
+  }
   function detach(ws) {
     if (socket !== ws) return;
     socket = null; match = null; selectedConfig = null; created = false; finished = false;
     epochRequired = false; inputs.reset(); accumulator = 0; eventCursor = null;
+    resetDebugChannel();
   }
   function terminate(reason) {
     report({direction:'transport-error', reason});
@@ -88,6 +132,9 @@ export function createAuthority(options = {}) {
   const lobby = () => send({type:'lobby', roomId:'local-native-arena', hostId:0,
     mapId:selectedConfig ? mapId : null, config:selectedConfig,
     started:!!match && !finished, roundRevision:round,
+    // Additive debug capability echo: only present when the operator enabled
+    // the channel, so an ordinary lobby frame is byte-identical to before.
+    ...(debugEnabled ? {debug:debugEcho(debugState, debugLimits())} : {}),
     players:[{peerId:0, actorId:0, name:playerName, connected:true, spectate:false}]});
   function cancelControls(reason) {
     inputs.cancel(); epoch++;
@@ -134,7 +181,18 @@ export function createAuthority(options = {}) {
           match = null; finished = false; lobby();
         } else if (f.type === 'start' && selectedConfig && (!match || match.over)) {
           keys(f, ['type'], 'start frame');
-          match = createNativeMatch({mapId, config:minimalConfig(selectedConfig), random, arenaData:data});
+          // Construction-time debug knobs ride the reviewed config validator, so
+          // a queued botCount/startingWeapon can never escape its bound. The
+          // base config is the reviewed construction config, kept debug-free:
+          // clearing an override restores the source value instead of freezing
+          // the last debug value.
+          const constructed = minimalConfig(validateNativeConfig({...minimalConfig(selectedConfig), ...debugState.queued}));
+          // Round boundary: god mode is round-scoped and always clears here.
+          debugState.live.godMode = false;
+          match = createNativeMatch({mapId, config:constructed, random, arenaData:data});
+          baseConfig = {...match.config};
+          debugState.constructed = {...debugState.queued};
+          applyDebugToMatch(match);
           round++; seq = 0; epoch++; ticks = 0; finished = false; inputs.reset();
           eventCursor = new EventCursor();
           const initialEvents = eventCursor.take(match);
@@ -156,6 +214,36 @@ export function createAuthority(options = {}) {
           const parsed = parseInputEnvelope(f);
           inputs.receive(f.seq, parsed, now, f.cancel === true);
           if (match.actors[0].health <= 0) inputs.cancel();
+        } else if (f.type === 'debug' && created) {
+          // Additive debug frame. With the channel disabled this falls through
+          // to the unchanged rejection path below (error + terminate), so an
+          // ordinary authority never gains a debug surface.
+          if (!debugEnabled) throw new Error('Invalid local native arena lifecycle command');
+          let parsed;
+          try { parsed = parseDebugFrame(f); }
+          catch (error) { debugReject(error.message); return; }
+          const bound = DEBUG_RESTART_BOUNDS.botCount;
+          if (parsed.set.botCount !== undefined && (parsed.set.botCount < bound[0] || parsed.set.botCount > bound[1])) {
+            debugReject(`botCount must be ${bound[0]}..${bound[1]} on this route`);
+            return;
+          }
+          if (parsed.set.testDamage !== undefined && (!match || match.over)) {
+            debugReject('testDamage requires a live round');
+            return;
+          }
+          const touched = applyDebugFrame(debugState, parsed);
+          if (match && !match.over) {
+            applyDebugToMatch(match);
+            // Reversibility: switching unlock-all off restores the source's
+            // spawn ammo belt on the human seat.
+            if (touched.includes('unlockAllWeapons') && debugState.live.unlockAllWeapons !== true) {
+              restoreSpawnAmmo(match, match.actors[HUMAN_SEAT]);
+            }
+            if (parsed.set.testDamage !== undefined) {
+              match.damage(match.actors[HUMAN_SEAT], parsed.set.testDamage, undefined, false);
+            }
+          }
+          send({type:'debug-state', debug:debugEcho(debugState, debugLimits())});
         } else if (f.type === 'ping' && created) {
           keys(f, ['type', 't'], 'ping frame');
           send({type:'pong', ...(Number.isFinite(f.t) ? {t:f.t} : {})});
@@ -175,6 +263,14 @@ export function createAuthority(options = {}) {
         if (inputs.expired(now)) cancelControls('stale-input');
         const sample = inputs.take(), active = match, alive = active.actors[0].health > 0;
         active.step(1 / 60, {inputs:{0:sample.input}});
+        // Port-only human-seat reconciliation runs before the authority's own
+        // death/cancel decision, so god mode never surrenders the round.
+        if (debugEnabled) {
+          const applied = reconcileHuman(active, debugState);
+          if (applied && (applied.restoredDeath || applied.healthLost > 0 || applied.grantedAmmo)) {
+            report({direction:'debug-reconcile', ...applied, sourceTime:active.time});
+          }
+        }
         inputs.stepped(sample.seq);
         report({direction:'step', inputSeq:sample.seq, inputEpoch:epoch,
           controls:{...sample.input}, sourceTime:active.time, ...inputs.status()});

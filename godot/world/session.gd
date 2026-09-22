@@ -17,6 +17,33 @@ var lobby_menu: CanvasLayer
 var lobby_enabled := false
 var lobby_player_name := "Godot"
 var lobby_roster: Dictionary = {}
+# Debug facility: OFF by default, only created for a local single-human route
+# whose authority echoed a debug channel. Never in the multi-human lobby/guest
+# path (those are source-locked and stay fair).
+const DebugPanelScene = preload("res://debug/debug_panel.tscn")
+var debug_panel: CanvasLayer
+var debug_authority_echo: Dictionary = {}
+
+func debug_requested() -> bool:
+	return OS.get_environment("COCS_DEBUG") == "1" or "--debug-panel" in OS.get_cmdline_user_args()
+
+func debug_available() -> bool:
+	return debug_requested() and not lobby_enabled and join_room_id.is_empty()
+
+func ensure_debug_panel() -> void:
+	if not debug_available() or is_instance_valid(debug_panel): return
+	debug_panel = DebugPanelScene.instantiate()
+	add_child(debug_panel)
+	debug_panel.bind_session(self)
+	if not debug_authority_echo.is_empty(): debug_panel.acknowledge(debug_authority_echo)
+
+func debug_send(frame: Dictionary) -> Error:
+	if not debug_available() or not is_instance_valid(debug_panel): return ERR_UNAUTHORIZED
+	if debug_authority_echo.get("enabled", false) != true: return ERR_CONNECTION_ERROR
+	return client.send_frame(frame)
+
+func debug_restart() -> bool:
+	return _request_restart()
 
 func spectator_status() -> String:
 	if phase == 4:
@@ -197,14 +224,18 @@ var watched_phase: int = -999
 const HANDSHAKE_TIMEOUT: float = 15.0
 
 func request_restart() -> void:
-	if client.spectating: return
-	if phase != 4 or not join_room_id.is_empty(): return
-	if lobby_enabled and not lobby_host_allowed(): return
+	_request_restart()
+
+func _request_restart() -> bool:
+	if client.spectating: return false
+	if phase != 4 or not join_room_id.is_empty(): return false
+	if lobby_enabled and not lobby_host_allowed(): return false
 	if client.send_frame({"type":"start"}) == OK:
 		phase = 20
 		label.text = "Waiting for authoritative round start…"
-	else:
-		label.text = presentation.hud_text + "\nRestart could not be queued. Enter: retry"
+		return true
+	label.text = presentation.hud_text + "\nRestart could not be queued. Enter: retry"
+	return false
 
 func release_pointer() -> void:
 	weapon_selection.clear()
@@ -274,6 +305,7 @@ func _ready() -> void:
 	if not join_room_id.is_empty() and (smoke or lifecycle_smoke):
 		on_error("Guest mode cannot be combined with automatic smoke controls")
 		return
+	ensure_debug_panel()
 	client.connection_error.connect(on_error)
 	client.lobby.connect(on_lobby)
 	client.started.connect(on_started)
@@ -342,6 +374,7 @@ func on_started(_frame: Dictionary) -> void:
 	# A host can start a new round without this client visiting results.
 	# Never carry interactive capture across an authoritative round boundary.
 	release_pointer()
+	if is_instance_valid(debug_panel): debug_panel.round_started()
 	round_starts += 1
 	snapshot_watch.reset()
 	presentation.clear_round()
@@ -377,6 +410,13 @@ func on_error(message: String) -> void:
 		get_tree().quit(1)
 
 func on_lobby(frame: Dictionary) -> void:
+	# Additive debug capability echo. It only ever arrives from a port-owned
+	# local authority with the channel enabled; the panel is created here so
+	# native routes (which skip session _ready) get it without scene edits.
+	if frame.get("debug") is Dictionary:
+		debug_authority_echo = frame.debug
+		ensure_debug_panel()
+		if is_instance_valid(debug_panel): debug_panel.acknowledge(debug_authority_echo)
 	if lobby_enabled:
 		if phase not in [1, 2, 10, 11, 12, 20, 3, 4]: return
 		lobby_roster = frame.duplicate(true)
@@ -425,6 +465,7 @@ func on_lobby(frame: Dictionary) -> void:
 
 func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3: return
+	if is_instance_valid(debug_panel): debug_panel.observe_config(frame.state.get("config", {}))
 	snapshot_watch.observe()
 	pickups.apply_state(frame.state)
 	combat.apply_state(frame.state)
