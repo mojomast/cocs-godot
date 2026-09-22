@@ -296,6 +296,21 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
     contract, plus wave/defeat/boss/endless acceptance). Both remain unstarted.
   - Wave 3: full aggregate verification, Windows package rebuild and publication.
     Toolchain archives for the build are present and SHA-512 verified locally.
+- Owner asked for more effects before the build; two pre-release FX lanes are
+  active while the art lane finishes (both must land before packaging):
+  - **Weapon-handling FX** owns `godot/first_person/**`, `tools/godot-weapons/**`,
+    `godot/tests/first_person/**`, `port/native-weapon-handling/**`: authored
+    `Ejection`/bolt/magazine/heat anchors for all ten weapons, cyclic bolt/slide
+    animation, authoritative reload magazine handling, pooled casings, barrel heat
+    that never occludes the sight picture.
+  - **Impact + player-state FX** owns `godot/world/combat_overlay.gd`,
+    `godot/world/combat_feedback.gd`, new `godot/player_fx/**`,
+    `godot/tests/player_fx/**`, `port/native-player-fx/**`: directional damage
+    indicator, bounded low-health state, authority-backed shield-break cue,
+    death/respawn feedback, material-aware pooled impacts, all inside the existing
+    F9/F10 quality and lifecycle drains.
+  - Hard rule for both: existing gates stay green, no unverified commits, and each
+    reports what it left out rather than trading correctness for scope.
 - Lead test repairs for the pickup-asset and integrated-effects contracts:
   `round_boundaries.gd`, `entity_visuals.gd` pickup section, `combined_arms/graphics.gd`.
   The `entity_visuals.gd` actor section must be rewritten against the source
