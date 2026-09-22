@@ -1,0 +1,12 @@
+[
+  {
+    "name": "round_boundaries",
+    "passed": true,
+    "exit": 0
+  },
+  {
+    "name": "entity_visuals",
+    "passed": true,
+    "exit": 0
+  }
+]

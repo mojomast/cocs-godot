@@ -69,9 +69,14 @@ func run() -> void:
 	pickups.apply_state({"pickups": source})
 	var marker: Node3D = pickups.markers[0]
 	var marker_id: int = marker.get_instance_id()
-	var case_id: int = marker.get_node("MedicalCase").get_instance_id()
-	check(pickups.markers[1].has_node("ShieldPoint") and pickups.markers[2].has_node("RocketNose") and pickups.markers[3].has_node("SupplyCase") and pickups.markers[4].has_node("PowerCore"), "distinct class silhouettes")
-	check(marker.get_node("CloseLabel").visibility_range_end == 12 and not marker.get_node("CloseLabel").no_depth_test, "labels are close-range and occluded")
+	var case_id: int = marker.get_node("Housing").get_instance_id()
+	var health_mesh: Mesh = marker.get_node("IdentityIcon").mesh
+	var icons := {}
+	for pickup: Node in pickups.markers.values():
+		icons[pickup.get_node("IdentityIcon").mesh.get_instance_id()] = true
+		check(pickup.find_children("*", "Label3D", true, false).is_empty(), "compact pickup art has no obstructing captions")
+	check(icons.size() == source.size(), "health, armor, rocket, rail and haste retain distinct icon geometry")
+	check(marker.get_node("Housing").visibility_range_end == 45, "pickup geometry has bounded visibility range")
 	source[0].wait = 0.01
 	pickups.apply_state({"pickups": source})
 	await create_timer(0.05).timeout
@@ -79,10 +84,10 @@ func run() -> void:
 	source[0].wait = 0
 	source.reverse()
 	pickups.apply_state({"pickups": source})
-	check(marker.visible and marker.get_instance_id() == marker_id and marker.get_node("MedicalCase").get_instance_id() == case_id, "snapshot return and reorder preserve root and geometry")
+	check(marker.visible and marker.get_instance_id() == marker_id and marker.get_node("Housing").get_instance_id() == case_id and marker.get_node("IdentityIcon").mesh == health_mesh, "snapshot return and reorder preserve root and geometry")
 	source[4].kind = "armor"
 	pickups.apply_state({"pickups": source})
-	check(marker.get_instance_id() == marker_id and marker.has_node("ShieldPoint") and not marker.has_node("MedicalCase"), "authoritative kind changes refresh same marker")
+	check(marker.get_instance_id() == marker_id and marker.get_node("Housing").get_instance_id() == case_id and marker.get_node("IdentityIcon").mesh == pickups.markers[1].get_node("IdentityIcon").mesh and marker.get_node("IdentityIcon").mesh != health_mesh, "authoritative kind changes refresh geometry on the same marker and render nodes")
 	pickups.clear_round()
 	check(pickups.markers.is_empty() and pickups.get_child_count() == 0, "pickup round cleanup")
 	pickups.free()

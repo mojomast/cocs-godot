@@ -1,0 +1,30 @@
+[
+  {
+    "test": "combined_arms/graphics",
+    "passed": true
+  },
+  {
+    "test": "protocol/window_focus",
+    "passed": true
+  },
+  {
+    "test": "protocol/round_boundaries",
+    "passed": true
+  },
+  {
+    "test": "protocol/entity_visuals",
+    "passed": true
+  },
+  {
+    "test": "protocol/combat_feedback",
+    "passed": true
+  },
+  {
+    "test": "protocol/audio_feedback",
+    "passed": true
+  },
+  {
+    "test": "protocol/projectiles",
+    "passed": true
+  }
+]

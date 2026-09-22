@@ -104,10 +104,10 @@ func run() -> void:
 	check(g.feedback.projectiles.markers.has(8), "snapshot rocket reaches shared public feedback")
 	events([shot(1), {"type":"explosion","id":2,"pos":{"x":0,"y":1,"z":-3}}, {"type":"damage","id":3,"actor":0,"source":1,"amount":5}])
 	check(g.rig.recoil_count == 1 and g.feedback.shots == 1 and g.feedback.explosions == 1 and g.feedback.hurts == 1, "source events reach rig and shared combat feedback")
-	check(g.feedback.moth_effects.active_count() == 2, "shared Moth explosion and damage cues")
+	check(is_instance_valid(g.feedback.weapon_effects) and is_instance_valid(g.feedback.world_particles) and is_instance_valid(g.feedback.shields) and g.feedback.moth_effects.active_count() == 0, "production composition uses integrated effects instead of legacy Moth cues")
 	check(not g.feedback.audio_feedback._last_play_usec.is_empty(), "shared source audio dispatch")
 	events([shot(1), {"type":"explosion","id":2,"pos":{"x":0,"y":1,"z":-3}}])
-	check(g.rig.recoil_count == 1 and g.feedback.shots == 1 and g.feedback.explosions == 1 and g.feedback.moth_effects.active_count() == 2, "decoder duplicate IDs do not repeat effects")
+	check(g.rig.recoil_count == 1 and g.feedback.shots == 1 and g.feedback.explosions == 1 and g.feedback.event_ids.size() == 3, "decoder duplicate IDs are not re-queued as fresh effects")
 	var source_before := JSON.stringify(demo.state)
 	var aim_before := Vector2(demo.yaw, demo.pitch)
 	var camera_before := demo.world.camera.transform

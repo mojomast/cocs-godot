@@ -1,0 +1,8 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SCRIPT ERROR: Cannot call method 'get_visible_rect' on a null value.
+          at: _layout (res://world/combat_quality.gd:28)
+          GDScript backtrace (most recent call first):
+              [0] _layout (res://world/combat_quality.gd:28)
+              [1] run (res://tests/protocol/window_focus.gd:54)
+PORT_WINDOW_FOCUS checks=7 failures=0 attached_unfocused_window=true synthetic_application_latch=true

@@ -1,0 +1,15 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: shared Moth explosion and damage cues
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combined_arms/graphics.gd:40)
+       [1] run (res://tests/combined_arms/graphics.gd:107)
+ERROR: decoder duplicate IDs do not repeat effects
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combined_arms/graphics.gd:40)
+       [1] run (res://tests/combined_arms/graphics.gd:110)
+COMBINED_ARMS_GRAPHICS {"checks":65,"failures":["shared Moth explosion and damage cues","decoder duplicate IDs do not repeat effects"],"synthetic":true}
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)

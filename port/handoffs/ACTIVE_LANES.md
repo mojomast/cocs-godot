@@ -192,12 +192,32 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
   `combat_quality.gd`, `combat_overlay.gd`, `projectiles.gd`, new semantic occlusion
   helper, and its new tests/report. It inherits the lead's pending composition
   edits and connects all three effect systems without duplicate legacy rendering.
+  Delivered `9370275`; ownership released to lead. 1,013 contracts, 12 Combined Arms
+  checks and live production OS-input/quality/FX review pass.
 - **Native contract integration agent now owns** the completed launcher/options
   paths and native scene/catalog/HUD/session-test paths. Reconcile endpoint
   `/native-arenas` and actual source bot bounds 1–7, then run live smoke.
+  Delivered `f6427dd`; ownership released to lead. Prism and subsequent lead Cinder
+  live smoke pass; Aurora cold navigation construction is assigned to geometry.
 - Native geometry owner retains maps/generated/exporter through canonical-hash,
   strict schema and actual source-round acceptance. No other lane may rewrite
   those outputs while the owner is reconciling the delivered authority contract.
+  The geometry lane hit its usage limit after measuring the Aurora candidate:
+  unchanged exact geometry plus source `nextGen` spatial navigation and 3 m
+  authored route chords gives 303 connected nodes / 2,230 edges in 1.9 s cold
+  navigation versus 948 / 17,166 / 39 s. That one-line schema adoption and the
+  regenerated assets are lead-integrated now.
+- Original-operator production integration is **reassigned to a fresh lane**.
+  The prior agent hit its usage limit after exporting the full nine-operator
+  roster (`4f05b4c`) and authoring, but never running, the third-person weapon
+  exporter (`tools/godot-operators/world-weapons.mjs`) and the source post-pose
+  grip helper (`godot/source_operators/hand_grips.gd`). `presentation.gd` is not
+  yet switched, so gameplay still renders the legacy actor visual.
+- Lead test repairs for the pickup-asset and integrated-effects contracts:
+  `round_boundaries.gd`, `entity_visuals.gd` pickup section, `combined_arms/graphics.gd`.
+  The `entity_visuals.gd` actor section must be rewritten against the source
+  operator hierarchy once presentation switches; it currently still asserts the
+  legacy direct-child `Helmet`/`Muzzle`/primitive-bounds contract.
 - Original Three.js operator import proof remains its own active lane.
 - Lead retains package discovery/build/Windows verification, aggregate checks,
   final integrated review and release. The visual-identity trilogy prompt is

@@ -61,6 +61,29 @@ immutable unzoomed baseline. Combined Arms does the same and restores it when
 leaving infantry presentation. The overlay fades its hip reticle during ADS so
 the exported sight geometry remains the aiming reference.
 
+## Integration repairs (lead)
+
+The first broad shared-session regression selection is retained in
+`evidence/shared-regression-01/` and `-02/`. Three genuine contract breaks were
+found and fixed rather than suppressed:
+
+- The pickup asset lane replaced the legacy `CloseLabel`/primitive parts with four
+  fixed render nodes. `round_boundaries.gd` and `entity_visuals.gd` still asserted
+  the removed nodes; they now check the real `Housing`/`IdentityIcon` descendants,
+  distinct per-kind icon resources, bounded visibility, and caption-free art.
+- Combined Arms still asserted the legacy Moth world cues that production
+  composition intentionally supersedes. It now asserts the integrated
+  weapon/particle/shield composition and composition-level event dedup.
+- The F9/F10 quality overlay touched a viewport during window teardown; it now
+  returns safely when the layer has left the tree.
+- One first-run selection gate timed out because a Godot process outlived its
+  120-second shell deadline. The orphaned `entity_visuals.gd` probe was identified
+  by `/proc` command line and terminated; the re-run passes.
+
+Verified after the fixes in `evidence/fix-verify-01/`: `combined_arms/graphics`,
+`protocol/window_focus`, `protocol/round_boundaries`, `protocol/entity_visuals`,
+`protocol/combat_feedback`, `protocol/audio_feedback` and `protocol/projectiles`.
+
 ## Acceptance remaining
 
 Native route integration `f6427dd` corrected the authority endpoint path, source
@@ -77,9 +100,18 @@ same run. These are development-host CPU diagnostics under current load, not
 rendering benchmarks. Geometry/navigation optimization is assigned to the map
 owner; the failure is retained rather than hidden by extending the timeout.
 
-Combined effects integration, native-arena live combat, final resource checks and
-package publication remain in progress. Component fixture/benchmark results are
-documented in their individual reports and do not imply full-match acceptance.
+Shared combat integration landed in `9370275`: weapon/shield/particle composition,
+semantic/native occlusion, exact-ID projectile visual convergence, F9/F10, and
+lifecycle cleanup. The owner reports 1,013 integration checks, 12 Combined Arms
+checks, and a real-OS-input production run with 393 snapshots, 65 shots, three
+explosions and five damage events. Lead directly inspected both rendered ADS/fire
+sizes and the High metrics capture in `port/native-combat-integration/evidence/`.
+These images show clear sightlines, bounded ambient coverage and readable HUD;
+software rendering remains distinct from hardware acceptance.
+
+Native-arena full live combat, expanded regression/resource checks and package
+publication remain in progress. Component fixture/benchmark results are documented
+in their individual reports and do not imply full-match acceptance.
 The Three.js operator import proof is a newly requested parallel lane. The
 separate three-map visual-identity assignment is a delivered prompt at
 `port/handoffs/visual-identity-three-maps.md`, not three additional implemented maps.
