@@ -43,6 +43,7 @@ async function fixture(overrides = {}) {
 
   const world = {
     tag: TAG,
+    branch: 'port/godot-destinations',
     status: '',
     remoteHeads: [{sha: HEAD, ref: 'refs/heads/main'}],
     isAncestor: (a, b) => a === REMOTE_HEAD && b === HEAD,
@@ -93,7 +94,7 @@ async function fixture(overrides = {}) {
   const gitStub = async (world, args) => {
     if (args[0] === 'status') return done(0, world.status);
     if (args[0] === 'rev-parse' && args[1] === 'HEAD') return done(0, `${HEAD}\n`);
-    if (args[0] === 'rev-parse' && args[1] === '--abbrev-ref') return done(0, 'port/godot-destinations\n');
+    if (args[0] === 'rev-parse' && args[1] === '--abbrev-ref') return done(0, `${world.branch}\n`);
     if (args[0] === 'rev-parse' && args[1] === '--is-shallow-repository') return done(0, 'false\n');
     if (args[0] === 'remote' && args[1] === 'get-url') return done(0, 'https://github.com/mojomast/cocs-godot.git\n');
     if (args[0] === 'tag' && args[1] === '--list') return done(0, world.tagExists ? `${world.tag}\n` : '');
@@ -224,6 +225,23 @@ test('preflight refuses an untracked runtime file but records untracked evidence
     assert.deepEqual(detail.tree.untracked, ['port/native-identity-maps/evidence/ray.json', 'reports/notes.md']);
   } finally {
     await recorded.cleanup();
+  }
+});
+
+test('a detached HEAD is a recorded warning, but --branch stays strict', async () => {
+  const fx = await fixture({branch: 'HEAD'});
+  try {
+    const result = await fx.run([`--tag=${TAG}`]);
+    assert.equal(result.exitCode, 0, fx.outputs.join('\n'));
+    const detail = (await fx.readSummary(result)).steps[0].detail;
+    assert.equal(detail.detached, true);
+    assert.equal(detail.branch, null);
+    assert.match(fx.outputs.join('\n'), /HEAD is detached/);
+    const strict = await fx.run([`--tag=${TAG}`, '--branch=main', '--resume-from=preflight']);
+    assert.equal(strict.exitCode, 1);
+    assert.equal((await fx.readSummary(strict)).steps[0].error.code, 'branch-mismatch');
+  } finally {
+    await fx.cleanup();
   }
 });
 

@@ -359,15 +359,6 @@ async function assertStillFrozen(ctx, where) {
   ctx.emit(`  freeze   ${head.slice(0, 12)} unchanged since preflight`);
 }
 
-function requireDetail(ctx, step, predicate, reason) {
-  const detail = ctx.results.get(step);
-  if (!detail || !predicate(detail)) {
-    throw new ReleaseError('missing-artifact', `${reason} (step ${step} has no usable record)`,
-      `resume from ${step} with --execute so the step actually runs`);
-  }
-  return detail;
-}
-
 // ---------------------------------------------------------------- the six steps
 
 async function stepPreflight(ctx) {
@@ -377,17 +368,24 @@ async function stepPreflight(ctx) {
   if (!/^[0-9a-f]{40}$/.test(head)) {
     throw new ReleaseError('no-commit', 'git rev-parse HEAD did not return a commit', 'run the pipeline from the repository checkout');
   }
-  const branch = await gitOrThrow(ctx, ['rev-parse', '--abbrev-ref', 'HEAD'], 'cannot read the branch');
-  if (branch === 'HEAD') {
-    throw new ReleaseError('detached-head', 'the checkout is in detached HEAD state', 'check out the release branch first');
-  }
-  if (options.branch && options.branch !== branch) {
-    throw new ReleaseError('branch-mismatch', `expected branch ${options.branch} but HEAD is on ${branch}`,
+  const branchRef = await gitOrThrow(ctx, ['rev-parse', '--abbrev-ref', 'HEAD'], 'cannot read the branch');
+  let branch = branchRef;
+  if (branchRef === 'HEAD') {
+    // A tag or CI checkout is a legal release source: the freeze is the commit.
+    if (options.branch) {
+      throw new ReleaseError('branch-mismatch', `--branch=${options.branch} was requested but HEAD is detached`,
+        'check out that branch, or drop --branch to release the detached commit');
+    }
+    branch = null;
+    detail.detached = true;
+    ctx.emit('  warn     HEAD is detached; releasing the commit directly (no local branch recorded)');
+  } else if (options.branch && options.branch !== branchRef) {
+    throw new ReleaseError('branch-mismatch', `expected branch ${options.branch} but HEAD is on ${branchRef}`,
       'release from the branch you named, or drop --branch');
   }
   detail.head = head;
   detail.branch = branch;
-  ctx.emit(`  HEAD     ${head.slice(0, 12)} on ${branch}`);
+  ctx.emit(`  HEAD     ${head.slice(0, 12)}${branch ? ` on ${branch}` : ' (detached)'}`);
 
   const shallow = await gitOrThrow(ctx, ['rev-parse', '--is-shallow-repository'], 'cannot read the repository depth');
   if (shallow !== 'false') {

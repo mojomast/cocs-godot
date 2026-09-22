@@ -31,7 +31,9 @@ Six ordered steps, each with a hard stop and a machine-readable record:
   refused. An existing tag or release is always refused.
 - **One frozen commit.** Preflight records HEAD; every later step re-checks HEAD and the
   tracked tree before acting, and refuses to continue if the tree moved. The push pushes
-  the recorded commit, not whatever the branch happens to be.
+  the recorded commit, not whatever the branch happens to be. A detached HEAD (a tag or
+  CI checkout) is accepted and recorded with a warning; naming a branch with `--branch`
+  and then being detached is refused.
 - **Resume, never restart.** `--resume-from=<step>` reloads the earlier step records from
   the state directory. A step can only back a continuation when it actually ran: a
   dry-run record cannot back an `--execute` resume, a failed record cannot be skipped,
