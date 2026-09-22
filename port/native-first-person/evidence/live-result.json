@@ -1,0 +1,21 @@
+{
+	"captures": [
+		"pulse",
+		"weapon-8",
+		"reload",
+		"switched-back"
+	],
+	"distance": 9.38756847381592,
+	"frame_p50_ms": 24.2424242424242,
+	"input": "engine physical-key/mouse events",
+	"normal_rate": true,
+	"pass": true,
+	"private_adapter": true,
+	"reload_seen": true,
+	"rig_recoils": 45,
+	"snapshot_samples": 318,
+	"source_weapons": [
+		0,
+		8
+	]
+}

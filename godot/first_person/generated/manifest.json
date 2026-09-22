@@ -1,0 +1,410 @@
+{
+  "schema": 1,
+  "sourceBaseline": "b0ac0b54aa6d815e4d61f63e929612069e2c3d11",
+  "sources": {
+    "game/data.mjs": "08daae39f17980a38eaa6de9b549aea00a8852793dd995d5bc71f4d3b7bdb93d",
+    "game/model-geometry.mjs": "a9f3f074c40ff94f332babd6b347a214aeffa283e674903ca40b03b4bb30c591",
+    "game/sights.mjs": "e57877966c60c7bad54f56992e854c9c070fe9be936da4829c090d0482bf5938",
+    "game/weapon-models/alt-parts.mjs": "9001f9426ef69299587f920f9ede5f80e2597ebc3c19f7a00c28d1a9c1024583",
+    "game/weapon-models/chassis.mjs": "78ede021d7068763febadd6a6966debbf46494a217aa481b043e25b94b526dd6",
+    "game/weapon-models/flak-cannon.mjs": "68d7bccfb13db9e9dc0f3425fdac3a881d844970b097caed49ae22aa54874ace",
+    "game/weapon-models/grenade-launcher.mjs": "54a56b63c51c7e7fc35b15782a7e50eefec3df28417c94dcccd48cdb64550d6a",
+    "game/weapon-models/index.mjs": "c5ed2bb62171efb0fe67f37d8f71592437b0c158b52fd0ea4af4ee29bb9de7b7",
+    "game/weapon-models/legacy.mjs": "6258edfb095298709208ef97fc51105a3b85fb01e2c03d5250b3aaae1d2059c7",
+    "game/weapon-models/marksman-rifle.mjs": "b5a532299e4728c990795556466d3c31a570df48958e46281c47aea54866e5b6",
+    "game/weapon-models/plasma-driver.mjs": "9d7b7e9772bed38a8a16417e1940b6e5570f476227b21dca43e0c91102e88fab",
+    "game/weapon-models/pulse-rifle.mjs": "10f2809eb6c69f011f5dd7ff2bcf696127b351554f2115e45ba6fb8c9d99f9d9",
+    "game/weapon-models/rail-lance.mjs": "8cc48715cff0f1fc82dfb740429916f43dac111b11e09066890429c465eeb98b",
+    "game/weapon-models/rocket-launcher.mjs": "23771b60e686c046d7c2f8511c2aaa048d7bb1f17212622f46a28462990c76cf",
+    "game/weapon-models/scattergun.mjs": "aae51b2966ecac492948430e370cd4a6285d7109f42f052d9e98f104b38773b2",
+    "game/weapon-models/shock-beam.mjs": "fce8d5a81b6301b2faf5f0df06931d34100f57746cf7f2a693927fb6588f1234",
+    "game/weapon-models/submachine-gun.mjs": "735c7074059d8214da57d974cee68681f911fcc9020f4d53f48904c4897d1963"
+  },
+  "weapons": [
+    {
+      "id": 0,
+      "name": "Pulse Rifle",
+      "file": "weapon-0.glb",
+      "sha256": "2026c0bb97ba483f678e910c40ad588a023369e38d1be9646358a7f95800f1cd",
+      "bytes": 363532,
+      "triangles": 3704,
+      "meshInstances": 9,
+      "bounds": [
+        [
+          -0.0949999988079071,
+          -0.3375000001862645,
+          -0.8499999999999999
+        ],
+        [
+          0.1404999991953373,
+          0.19250000089406966,
+          0.2280000002682209
+        ]
+      ],
+      "muzzles": [
+        [
+          0,
+          0.01,
+          -0.85
+        ]
+      ],
+      "color": "#70ffe6",
+      "kick": [
+        0.045,
+        0.03,
+        16
+      ],
+      "muzzle": [
+        0.12,
+        0.06
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Rocket Launcher",
+      "file": "weapon-1.glb",
+      "sha256": "1ef50804170871e179cde215b2814979ba5ae2f014892ceb525ae968aea887a5",
+      "bytes": 423788,
+      "triangles": 4340,
+      "meshInstances": 8,
+      "bounds": [
+        [
+          -0.14250000044703484,
+          -0.3031966808961021,
+          -0.76
+        ],
+        [
+          0.1854999991953373,
+          0.21250000089406967,
+          0.15800000026822092
+        ]
+      ],
+      "muzzles": [
+        [
+          0,
+          0,
+          -0.76
+        ]
+      ],
+      "color": "#ffad61",
+      "kick": [
+        0.105,
+        0.082,
+        10
+      ],
+      "muzzle": [
+        0.2,
+        0.1
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Rail Lance",
+      "file": "weapon-2.glb",
+      "sha256": "dffdb82b232f66429fba5c8490fdafa31a299a5424ca99a7272e0d0a99c5e180",
+      "bytes": 612004,
+      "triangles": 6284,
+      "meshInstances": 10,
+      "bounds": [
+        [
+          -0.10000000149011612,
+          -0.24319668089610202,
+          -1.04
+        ],
+        [
+          0.1454999991953373,
+          0.24700000101327896,
+          0.2380000002682209
+        ]
+      ],
+      "muzzles": [
+        [
+          0,
+          0.025,
+          -1.04
+        ]
+      ],
+      "color": "#bb9aff",
+      "kick": [
+        0.075,
+        0.07,
+        13
+      ],
+      "muzzle": [
+        0.16,
+        0.09
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Scattergun",
+      "file": "weapon-3.glb",
+      "sha256": "2dafea1b8afe757f780d14385648c9efd7e403ae0477b4088a432dcadd371272",
+      "bytes": 420344,
+      "triangles": 4304,
+      "meshInstances": 8,
+      "bounds": [
+        [
+          -0.19999999821186065,
+          -0.23319668089610207,
+          -0.8200000000000001
+        ],
+        [
+          0.2154999991953373,
+          0.20250000089406966,
+          0.2380000002682209
+        ]
+      ],
+      "muzzles": [
+        [
+          -0.12,
+          0.03,
+          -0.82
+        ],
+        [
+          0.12,
+          0.03,
+          -0.82
+        ]
+      ],
+      "color": "#ffde87",
+      "kick": [
+        0.12,
+        0.085,
+        12
+      ],
+      "muzzle": [
+        0.24,
+        0.12
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Plasma Driver",
+      "file": "weapon-4.glb",
+      "sha256": "afca4305e9a082c1c905bd30ead68a0ed96f2a7b6460e1023220e4c1971a4e80",
+      "bytes": 564768,
+      "triangles": 5792,
+      "meshInstances": 10,
+      "bounds": [
+        [
+          -0.11999999731779099,
+          -0.28819668089610206,
+          -0.77
+        ],
+        [
+          0.1654999991953373,
+          0.19750000089406966,
+          0.1780000002682209
+        ]
+      ],
+      "muzzles": [
+        [
+          0,
+          0,
+          -0.77
+        ]
+      ],
+      "color": "#72cfff",
+      "kick": [
+        0.03,
+        0.025,
+        20
+      ],
+      "muzzle": [
+        0.14,
+        0.07
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Grenade Launcher",
+      "file": "weapon-5.glb",
+      "sha256": "b3532c7b4eec2c0a99ee88fb8e9daaeaf374ebed8cee75b193390e94ebfca1dd",
+      "bytes": 403780,
+      "triangles": 4124,
+      "meshInstances": 9,
+      "bounds": [
+        [
+          -0.125,
+          -0.2590000033378601,
+          -0.93
+        ],
+        [
+          0.17049999919533732,
+          0.2325000008940697,
+          0.2080000002682209
+        ]
+      ],
+      "muzzles": [
+        [
+          0,
+          0.04,
+          -0.93
+        ]
+      ],
+      "color": "#ff806b",
+      "kick": [
+        0.095,
+        0.075,
+        10
+      ],
+      "muzzle": [
+        0.21,
+        0.1
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Shock Beam",
+      "file": "weapon-6.glb",
+      "sha256": "f9dc531965c9d3033541a53d5ad7457afbc0a815577f60dd14f87aeb33d16b04",
+      "bytes": 454840,
+      "triangles": 4640,
+      "meshInstances": 11,
+      "bounds": [
+        [
+          -0.11500000208616257,
+          -0.27819668089610206,
+          -0.99
+        ],
+        [
+          0.1604999991953373,
+          0.18750000089406965,
+          0.1680000002682209
+        ]
+      ],
+      "muzzles": [
+        [
+          0,
+          0,
+          -0.99
+        ]
+      ],
+      "color": "#8ce8ff",
+      "kick": [
+        0.055,
+        0.045,
+        16
+      ],
+      "muzzle": [
+        0.15,
+        0.08
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Flak Cannon",
+      "file": "weapon-7.glb",
+      "sha256": "360725da9ba837ade549ff538e8896b1f24ee643a0cf27bb651071de5d41986d",
+      "bytes": 386960,
+      "triangles": 3956,
+      "meshInstances": 8,
+      "bounds": [
+        [
+          -0.1600000035762787,
+          -0.3049999988079071,
+          -0.99
+        ],
+        [
+          0.1904999991953373,
+          0.20750000089406967,
+          0.18800000026822092
+        ]
+      ],
+      "muzzles": [
+        [
+          0,
+          0,
+          -0.99
+        ]
+      ],
+      "color": "#ffd166",
+      "kick": [
+        0.115,
+        0.09,
+        11
+      ],
+      "muzzle": [
+        0.26,
+        0.13
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Marksman Rifle",
+      "file": "weapon-8.glb",
+      "sha256": "fdca8c0d818ca881e20484f03c8ddebb60b4ca464fb80184a4da2db136fc9f78",
+      "bytes": 527340,
+      "triangles": 5420,
+      "meshInstances": 8,
+      "bounds": [
+        [
+          -0.08500000089406967,
+          -0.24319668089610202,
+          -0.8399999999999999
+        ],
+        [
+          0.13049999919533728,
+          0.23700000101327895,
+          0.2680000002682209
+        ]
+      ],
+      "muzzles": [
+        [
+          0,
+          0.02,
+          -0.84
+        ]
+      ],
+      "color": "#ffd27a",
+      "kick": [
+        0.05,
+        0.045,
+        14
+      ],
+      "muzzle": [
+        0.14,
+        0.07
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Submachine Gun",
+      "file": "weapon-9.glb",
+      "sha256": "f1e6dc9791c5cb86eb797e32ea58df889424ed3207a74d5eca98e013da60b9c3",
+      "bytes": 373912,
+      "triangles": 3812,
+      "meshInstances": 9,
+      "bounds": [
+        [
+          -0.09000000357627869,
+          -0.29250000018626454,
+          -0.835
+        ],
+        [
+          0.13549999919533728,
+          0.2275000008940697,
+          0.1480000002682209
+        ]
+      ],
+      "muzzles": [
+        [
+          0,
+          0.05,
+          -0.835
+        ]
+      ],
+      "color": "#8affc1",
+      "kick": [
+        0.022,
+        0.02,
+        22
+      ],
+      "muzzle": [
+        0.1,
+        0.05
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 0,
+    "bytes": 363532,
+    "triangles": 3704,
+    "meshInstances": 9
+  },
+  {
+    "id": 1,
+    "bytes": 423788,
+    "triangles": 4340,
+    "meshInstances": 8
+  },
+  {
+    "id": 2,
+    "bytes": 612004,
+    "triangles": 6284,
+    "meshInstances": 10
+  },
+  {
+    "id": 3,
+    "bytes": 420344,
+    "triangles": 4304,
+    "meshInstances": 8
+  },
+  {
+    "id": 4,
+    "bytes": 564768,
+    "triangles": 5792,
+    "meshInstances": 10
+  },
+  {
+    "id": 5,
+    "bytes": 403780,
+    "triangles": 4124,
+    "meshInstances": 9
+  },
+  {
+    "id": 6,
+    "bytes": 454840,
+    "triangles": 4640,
+    "meshInstances": 11
+  },
+  {
+    "id": 7,
+    "bytes": 386960,
+    "triangles": 3956,
+    "meshInstances": 8
+  },
+  {
+    "id": 8,
+    "bytes": 527340,
+    "triangles": 5420,
+    "meshInstances": 8
+  },
+  {
+    "id": 9,
+    "bytes": 373912,
+    "triangles": 3812,
+    "meshInstances": 9
+  }
+]

@@ -1,0 +1,21 @@
+diff --git a/godot/world/session.tscn b/godot/world/session.tscn
+--- a/godot/world/session.tscn
++++ b/godot/world/session.tscn
+@@ -1,8 +1,9 @@
+-[gd_scene load_steps=4 format=3]
++[gd_scene load_steps=5 format=3]
+
+ [ext_resource type="Script" path="res://world/session.gd" id="1"]
+ [ext_resource type="Script" path="res://ui/scoreboard.gd" id="2"]
+ [ext_resource type="Script" path="res://ui/game_hud.gd" id="3"]
++[ext_resource type="Script" path="res://first_person/session_binding.gd" id="4"]
+
+ [node name="NativeSession" type="Node3D"]
+ script = ExtResource("1")
+@@ -12,3 +13,6 @@
+
+ [node name="GameHUD" type="CanvasLayer" parent="."]
+ script = ExtResource("3")
++
++[node name="FirstPerson" type="Node" parent="."]
++script = ExtResource("4")

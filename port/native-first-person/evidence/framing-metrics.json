@@ -1,0 +1,202 @@
+[
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 12,
+		"size": [
+			960,
+			640
+		],
+		"triangles_with_hands_flash": 6376,
+		"weapon": 0
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 11,
+		"size": [
+			960,
+			640
+		],
+		"triangles_with_hands_flash": 7012,
+		"weapon": 1
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 13,
+		"size": [
+			960,
+			640
+		],
+		"triangles_with_hands_flash": 8956,
+		"weapon": 2
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 12,
+		"size": [
+			960,
+			640
+		],
+		"triangles_with_hands_flash": 7056,
+		"weapon": 3
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 13,
+		"size": [
+			960,
+			640
+		],
+		"triangles_with_hands_flash": 8464,
+		"weapon": 4
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 12,
+		"size": [
+			960,
+			640
+		],
+		"triangles_with_hands_flash": 6796,
+		"weapon": 5
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 14,
+		"size": [
+			960,
+			640
+		],
+		"triangles_with_hands_flash": 7312,
+		"weapon": 6
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 11,
+		"size": [
+			960,
+			640
+		],
+		"triangles_with_hands_flash": 6628,
+		"weapon": 7
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 11,
+		"size": [
+			960,
+			640
+		],
+		"triangles_with_hands_flash": 8092,
+		"weapon": 8
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 12,
+		"size": [
+			960,
+			640
+		],
+		"triangles_with_hands_flash": 6484,
+		"weapon": 9
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 12,
+		"size": [
+			1280,
+			800
+		],
+		"triangles_with_hands_flash": 6376,
+		"weapon": 0
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 11,
+		"size": [
+			1280,
+			800
+		],
+		"triangles_with_hands_flash": 7012,
+		"weapon": 1
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 13,
+		"size": [
+			1280,
+			800
+		],
+		"triangles_with_hands_flash": 8956,
+		"weapon": 2
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 12,
+		"size": [
+			1280,
+			800
+		],
+		"triangles_with_hands_flash": 7056,
+		"weapon": 3
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 13,
+		"size": [
+			1280,
+			800
+		],
+		"triangles_with_hands_flash": 8464,
+		"weapon": 4
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 12,
+		"size": [
+			1280,
+			800
+		],
+		"triangles_with_hands_flash": 6796,
+		"weapon": 5
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 14,
+		"size": [
+			1280,
+			800
+		],
+		"triangles_with_hands_flash": 7312,
+		"weapon": 6
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 11,
+		"size": [
+			1280,
+			800
+		],
+		"triangles_with_hands_flash": 6628,
+		"weapon": 7
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 11,
+		"size": [
+			1280,
+			800
+		],
+		"triangles_with_hands_flash": 8092,
+		"weapon": 8
+	},
+	{
+		"center_48px_occupied": 0,
+		"mesh_instances": 12,
+		"size": [
+			1280,
+			800
+		],
+		"triangles_with_hands_flash": 6484,
+		"weapon": 9
+	}
+]
