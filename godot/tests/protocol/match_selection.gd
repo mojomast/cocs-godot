@@ -28,14 +28,15 @@ func run() -> void:
 			check(Setup.validate(catalog.entries, map_id, mode).is_empty())
 	var options := Setup.parse_args(["--map", "ember-crucible", "--mode=instagib", "--setup"], catalog.entries)
 	check(options.error.is_empty() and options.map == "ember-crucible" and options.mode == "instagib" and options.setup)
-	for args: PackedStringArray in [["--map=unknown"], ["--map="], ["--map"], ["--map", "--setup"], ["--mode"], ["--mode="], ["--mode=bogus"], ["--map=ion-speedway", "--mode=puma-race"], ["--map=aurora-stadium", "--mode=puma-soccer"], ["--map=asterion-relay", "--mode=cocs"], ["--mode=rockets"], ["--mode=campaign"], ["--setup", "--session-smoke"], ["--setup", "--join-room=test"], ["--mode=instagib", "--join-room=test"]]:
+	for args: PackedStringArray in [["--map=unknown"], ["--map="], ["--map"], ["--map", "--setup"], ["--mode"], ["--mode="], ["--mode=bogus"], ["--map=ion-speedway", "--mode=puma-race"], ["--map=aurora-stadium", "--mode=puma-soccer"], ["--map=asterion-relay", "--mode=cocs"], ["--mode=campaign"], ["--setup", "--session-smoke"], ["--setup", "--join-room=test"], ["--mode=instagib", "--join-room=test"]]:
 		check(not Setup.parse_args(args, catalog.entries).error.is_empty())
 	check(Setup.parse_args(["--join-room=test"], catalog.entries).error.is_empty())
 	check(Setup.parse_args(["--join-room=test", "--map=verdant-reliquary"], catalog.entries).error.is_empty())
 	for map_id: String in Setup.MAPS:
 		var team_options := Setup.parse_args(["--map=" + map_id, "--mode=teamdeathmatch"], catalog.entries)
 		check(team_options.error.is_empty() and team_options.mode == "teamdeathmatch")
-		check("projectile" in Setup.validate(catalog.entries, map_id, "rockets"))
+		var rocket_options := Setup.parse_args(["--map=" + map_id, "--mode=rockets"], catalog.entries)
+		check(rocket_options.error.is_empty() and rocket_options.mode == "rockets")
 	for map_id: String in catalog.entries:
 		for mode: String in catalog.entries[map_id].modes:
 			if map_id not in Setup.MAPS or mode not in Setup.MODES:
@@ -44,6 +45,7 @@ func run() -> void:
 	narrower["ember-crucible"].modes = ["deathmatch"]
 	check(not Setup.validate(narrower, "ember-crucible", "instagib").is_empty())
 	check(not Setup.validate(narrower, "ember-crucible", "teamdeathmatch").is_empty())
+	check(not Setup.validate(narrower, "ember-crucible", "rockets").is_empty())
 	var menu := Setup.new()
 	root.add_child(menu)
 	menu.configure(catalog.entries, "verdant-reliquary", "instagib")
@@ -52,7 +54,8 @@ func run() -> void:
 	check(menu.selected_mode() == "teamdeathmatch" and not menu.start.disabled and "Friendly fire off" in menu.status.text)
 	check(menu.mode_choice.get_item_text(menu.mode_choice.selected) == "Team Deathmatch")
 	menu.populate_modes("rockets")
-	check(menu.start.disabled and "projectile" in menu.status.text)
+	check(not menu.start.disabled and "Unlimited ammo" in menu.status.text and "Health / armor" in menu.status.text)
+	check(menu.mode_choice.get_item_text(menu.mode_choice.selected) == "Rocket Arena")
 	menu.map_choice.select(7) # Ion Speedway retains its actual race identity.
 	menu.map_choice.item_selected.emit(7)
 	check(menu.selected_map() == "ion-speedway" and menu.selected_mode() == "puma-race" and menu.start.disabled and "pending" in menu.status.text)

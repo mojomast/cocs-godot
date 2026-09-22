@@ -3,7 +3,7 @@ extends PanelContainer
 # Native capability subset; the locked semantic catalog remains the identity authority.
 signal start_requested(map_id: String, mode: String)
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible"]
-const MODES := ["deathmatch", "teamdeathmatch", "instagib"]
+const MODES := ["deathmatch", "teamdeathmatch", "instagib", "rockets"]
 const MODE_NAMES := {"deathmatch":"Deathmatch", "teamdeathmatch":"Team Deathmatch", "instagib":"Instagib", "rockets":"Rocket Arena"}
 const DEFAULT_MAP := "meridian-exchange"
 const DEFAULT_MODE := "deathmatch"
@@ -25,7 +25,6 @@ static func validate(maps: Dictionary, map_id: String, mode: String) -> String:
 	if mode not in maps[map_id].get("modes", []):
 		return "Mode '%s' is not supported by %s in the locked catalog." % [mode, map_id]
 	if map_id not in MAPS: return "Native gameplay pending for " + map_id
-	if mode == "rockets": return "Rocket Arena pending: native projectile and launch feedback are not yet presented."
 	if mode not in MODES: return "Native mode pending: " + mode
 	return ""
 
@@ -93,7 +92,7 @@ func configure(maps: Dictionary, map_id: String, mode: String) -> void:
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	status.custom_minimum_size = Vector2(620, 70)
 	var pending := Label.new()
-	pending.text = "Native: Deathmatch, Team Deathmatch and Instagib on 3 arenas.\nOther maps and modes remain selectable for their pending status."
+	pending.text = "Native: Deathmatch, Team Deathmatch, Instagib and Rocket Arena on 3 arenas.\nOther maps and modes remain selectable for their pending status."
 	box.add_child(pending)
 	start.text = "Start"
 	start.custom_minimum_size.y = 44
@@ -131,3 +130,5 @@ func update_status() -> void:
 	status.text = problem if start.disabled else "Ready: %s / %s\nClick to capture in-game; Esc releases the pointer." % [entries[selected_map()].name, MODE_NAMES.get(selected_mode(), selected_mode())]
 	if not start.disabled and selected_mode() == "teamdeathmatch":
 		status.text += "\nRed vs Blue · Shared team score · Friendly fire off · Tab: scores"
+	if not start.disabled and selected_mode() == "rockets":
+		status.text += "\nFree for all · Rocket Launcher · Unlimited ammo · Health / armor supplies"

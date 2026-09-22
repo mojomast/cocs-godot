@@ -7,7 +7,9 @@ const MAX_VOICES: int = 8
 const SAMPLE_RATE: int = 22050
 const DEFAULT_VOLUME_DB: float = -16.0
 const CUE_SECONDS: Dictionary = {"shot": 0.11, "hit": 0.075, "hurt": 0.18, "pickup": 0.22}
-const INTERVAL_USEC: Dictionary = {"shot": 65000, "hit": 80000, "hurt": 140000, "pickup": 180000}
+const PROJECTILE_SECONDS: Dictionary = {"launch": 0.22, "explosion": 0.3}
+const INTERVAL_USEC: Dictionary = {"shot": 65000, "hit": 80000, "hurt": 140000, "pickup": 180000, "launch": 120000, "explosion": 180000}
+const Projectiles = preload("res://world/projectiles.gd")
 
 var _muted: bool = false
 var _sounds: Dictionary = {}
@@ -35,9 +37,15 @@ func apply_events(items: Array, local_id: int) -> void:
 	for value: Variant in items:
 		if not value is Dictionary: continue
 		var item: Dictionary = value
+		# Primary explosions have no actor/owner. Quiet event cue, not hit feedback.
+		if item.get("type") == "explosion":
+			if Projectiles.point(item.get("pos")) != null: _play_cue("explosion")
+			continue
 		var actor: int = _identity(item.get("actor"))
 		if actor < 0: continue
 		match item.get("type", ""):
+			"launch":
+				if actor == local_id and _identity(item.get("weapon")) >= 0 and Projectiles.point(item.get("pos")) != null: _play_cue("launch")
 			"shot":
 				if actor == local_id: _play_cue("shot")
 			"damage":
@@ -60,6 +68,8 @@ func _identity(value: Variant) -> int:
 	return int(number)
 
 func _play_cue(cue: String) -> void:
+	# Cache the extra cues only when projectile combat first needs them.
+	if not _sounds.has(cue): _sounds[cue] = _make_sound(cue, float(PROJECTILE_SECONDS[cue]))
 	var now: int = Time.get_ticks_usec()
 	if _last_play_usec.has(cue) and now - int(_last_play_usec[cue]) < int(INTERVAL_USEC[cue]): return
 	for voice: AudioStreamPlayer in _voices:
@@ -96,6 +106,14 @@ func _make_sound(cue: String, duration: float) -> AudioStreamWAV:
 		var progress: float = float(index) / float(count - 1)
 		var sample: float = 0.0
 		match cue:
+			"launch":
+				phase += TAU * lerpf(130.0, 55.0, progress) / SAMPLE_RATE
+				smooth_noise = lerpf(smooth_noise, rng.randf_range(-1.0, 1.0), 0.4)
+				sample = (0.5 * smooth_noise + 0.4 * sin(phase)) * exp(-10.0 * t)
+			"explosion":
+				phase += TAU * lerpf(75.0, 30.0, progress) / SAMPLE_RATE
+				smooth_noise = lerpf(smooth_noise, rng.randf_range(-1.0, 1.0), 0.25)
+				sample = (0.35 * smooth_noise + 0.25 * sin(phase)) * exp(-12.0 * t)
 			"shot":
 				phase += TAU * lerpf(190.0, 65.0, progress) / SAMPLE_RATE
 				smooth_noise = lerpf(smooth_noise, rng.randf_range(-1.0, 1.0), 0.65)

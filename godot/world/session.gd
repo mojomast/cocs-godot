@@ -298,6 +298,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3: return
 	snapshot_watch.observe()
 	pickups.apply_state(frame.state)
+	combat.apply_state(frame.state)
 	presentation.apply_state(frame.state, client.actor_id)
 	var actor: Dictionary = presentation.local_actor
 	if actor.is_empty():
@@ -333,8 +334,9 @@ func on_snapshot(frame: Dictionary) -> void:
 		get_tree().quit(0)
 	label.text = "NODE-AUTHORITATIVE PROTOTYPE · %s\n" % selected_mode + presentation.hud_text + "\nClick: capture/fire · Esc: release · WASD: move · Space: jump · R: reload\nShift: sprint · Ctrl: crouch · E: interact · F: mobility · 1–9/0 or wheel: weapon | ACK %d" % client.last_ack
 	var smoke_pickups_ok: bool = pickups.markers.is_empty() if selected_mode == "instagib" else not pickups.markers.is_empty()
-	if smoke and combat.shots > 0 and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10 and smoke_pickups_ok and not world.get_node("StaticPickupMarkers").visible:
-		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true combat_shots=", combat.shots, " map=", current_id, " mode=", selected_mode)
+	var smoke_fire_ok: bool = combat.local_launches > 0 if selected_mode == "rockets" else combat.shots > 0
+	if smoke and smoke_fire_ok and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10 and smoke_pickups_ok and not world.get_node("StaticPickupMarkers").visible:
+		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true fired=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true combat_shots=", combat.shots, " combat_launches=", combat.launches, " local_launches=", combat.local_launches, " map=", current_id, " mode=", selected_mode)
 		client.disconnect_server()
 		get_tree().quit(0)
 
