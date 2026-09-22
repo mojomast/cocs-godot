@@ -112,3 +112,17 @@ omitted. `35687499645/` retains the downloaded summary, console, artifact manife
 collector regression log and run/job metadata. The prior69-gate run's missing
 summary remains a historical limitation, not retroactively repaired evidence.
 Exported startup, gameplay milestones and direct PNG review remain separate.
+
+## Lobby, spectator and world/cart guidance
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35690697596> at
+`b2eef7c2d29b4615b75776684f6d468c4ee8873b` **PASS**, all **80 gates**, in4m12s.
+The lead watched completion, downloaded the artifact and validated its exact
+revision, success status,80-gate count and every gate's pass flag. Complete
+verification JSON, console, artifact manifest and run/job metadata are retained
+in `35690697596/`.
+
+This covers lobby routing/ownership, strict spectator notice context and the new
+LATTICE/Payload guidance fixtures alongside inherited source/transport/control
+checks. It does not close the separate exported full-lobby focus-signal gap or
+establish Horde acceptance. Those independent reviews remain active.
