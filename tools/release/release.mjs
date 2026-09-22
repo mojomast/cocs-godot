@@ -351,7 +351,7 @@ async function assertStillFrozen(ctx, where) {
       'commit or revert the change and re-run; the release ships one frozen tree');
   }
   const allowed = new Set([...DEFAULT_ALLOW_UNTRACKED, ...ctx.options.allowUntracked]);
-  const untracked = status.untracked.filter(path => isRuntimePath(path) && !allowed.has(path));
+  const untracked = status.untracked.filter(path => isRuntimePath(path) && !isExemptPath(path) && !allowed.has(path));
   if (untracked.length) {
     throw new ReleaseError('tree-changed', `${where}: new untracked runtime files: ${untracked.slice(0, 8).join(', ')}`,
       'commit or remove them, or allow them explicitly with --allow-untracked');
@@ -400,8 +400,9 @@ async function stepPreflight(ctx) {
   const allowed = new Set([...DEFAULT_ALLOW_UNTRACKED, ...options.allowUntracked]);
   const modified = status.modified.filter(path => !isExemptPath(path));
   const exempted = status.modified.filter(path => isExemptPath(path));
-  const untrackedBlocking = status.untracked.filter(path => isRuntimePath(path) && !allowed.has(path));
-  const untrackedWarn = status.untracked.filter(path => !isRuntimePath(path) && !allowed.has(path));
+  const blocked = path => isRuntimePath(path) && !isExemptPath(path) && !allowed.has(path);
+  const untrackedBlocking = status.untracked.filter(blocked);
+  const untrackedWarn = status.untracked.filter(path => !allowed.has(path) && !blocked(path));
   if (modified.length) {
     throw new ReleaseError('dirty-tree', `tracked files are modified: ${modified.slice(0, 8).join(', ')}${modified.length > 8 ? ` (+${modified.length - 8} more)` : ''}`,
       'commit or revert them; the package build refuses uncommitted runtime bytes');

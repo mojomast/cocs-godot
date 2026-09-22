@@ -201,18 +201,23 @@ test('preflight refuses a dirty runtime tree before anything else', async () => 
   }
 });
 
-test('preflight refuses an untracked runtime file but records a non-runtime one', async () => {
-  const fx = await fixture({status: '?? godot/benchmark/frame_stats.gd\n?? reports/notes.md\n'});
+test('preflight refuses an untracked runtime file but records untracked evidence', async () => {
+  const fx = await fixture({status: '?? godot/benchmark/frame_stats.gd\n?? port/native-identity-zones/authority.mjs\n?? reports/notes.md\n'});
   try {
     const refused = await fx.run([`--tag=${TAG}`]);
     assert.equal(refused.exitCode, 1);
     assert.equal((await fx.readSummary(refused)).steps[0].error.code, 'dirty-tree');
-    const allowed = await fx.run([`--tag=${TAG}`, '--allow-untracked=godot/benchmark/frame_stats.gd', '--resume-from=preflight']);
-    assert.equal(allowed.exitCode, 0);
-    const detail = (await fx.readSummary(allowed)).steps[0].detail;
-    assert.deepEqual(detail.tree.untracked, ['godot/benchmark/frame_stats.gd', 'reports/notes.md']);
   } finally {
     await fx.cleanup();
+  }
+  const recorded = await fixture({status: '?? port/native-identity-maps/evidence/ray.json\n?? reports/notes.md\n'});
+  try {
+    const result = await recorded.run([`--tag=${TAG}`]);
+    assert.equal(result.exitCode, 0, recorded.outputs.join('\n'));
+    const detail = (await recorded.readSummary(result)).steps[0].detail;
+    assert.deepEqual(detail.tree.untracked, ['port/native-identity-maps/evidence/ray.json', 'reports/notes.md']);
+  } finally {
+    await recorded.cleanup();
   }
 });
 

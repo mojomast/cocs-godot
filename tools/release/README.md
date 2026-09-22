@@ -45,9 +45,12 @@ Six ordered steps, each with a hard stop and a machine-readable record:
   step record.
 - Untracked files under `godot/`, `game/`, `server/`, `port/`, `tools/`, `package.json`
   or `package-lock.json` refuse the run (they could enter the build closure or the
-  recorded worktree status). `port/handoffs/procedural-model-generation-llm-research.md`
-  is allow-listed by default; add more with `--allow-untracked=<path>`. Untracked files
-  anywhere else are recorded and warned about, never silently ignored.
+  recorded worktree status) — except `port/**/evidence/**`, `port/reports/**` and
+  `port/handoffs/**`, which are recorded and warned about but cannot be shipped:
+  they are not in the build closure and the builder independently refuses uncommitted
+  runtime bytes. `port/handoffs/procedural-model-generation-llm-research.md` is
+  allow-listed by default; add more with `--allow-untracked=<path>`. Untracked files
+  anywhere else are also recorded and warned about, never silently ignored.
 - A build state marker (`.cocs-package-state`, `.cocs-release-state`, `cocs-release-*`,
   `cocs-rebuild-*`, `cocs-package-*`) anywhere inside the checkout refuses the run.
 - `gh` must be authenticated (`gh auth status`) with `workflow` and `repo` scopes: the
