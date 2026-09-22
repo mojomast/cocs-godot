@@ -2,13 +2,13 @@ TAP version 13
 # Subtest: every shipped PNG reproduces locked source bytes; exports deterministic and committed current
 ok 1 - every shipped PNG reproduces locked source bytes; exports deterministic and committed current
   ---
-  duration_ms: 183.771897
+  duration_ms: 180.178354
   type: 'test'
   ...
 # Subtest: invalid dimensions, channels, payloads and timing fail before writes
 ok 2 - invalid dimensions, channels, payloads and timing fail before writes
   ---
-  duration_ms: 59.52307
+  duration_ms: 54.716802
   type: 'test'
   ...
 1..2
@@ -19,4 +19,4 @@ ok 2 - invalid dimensions, channels, payloads and timing fail before writes
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 291.140737
+# duration_ms 281.795177

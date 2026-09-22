@@ -1,4 +1,4 @@
-Owned local server ready at ws://127.0.0.1:38539; --lifecycle-smoke
+Owned local server ready at ws://127.0.0.1:33201; --lifecycle-smoke
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 PORT_LIFECYCLE_LIVE_OK starts=2 results=1 restarted_actors=3 restarted_ack=12 map=meridian-exchange normal_rate=true

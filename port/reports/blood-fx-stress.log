@@ -1,0 +1,4 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+BLOOD_FX_STRESS PASS checks=22
+BLOOD_FX_STRESS_METRICS {"active_emitters":14,"allocated_slots":24576,"callback_usec_440_events":79748,"clusters_placed":993,"concurrent_cap":14,"dropped":1146,"fan_rays_cast":794,"frame_max_us":158.0,"frame_median_us":104.0,"marks_floor":1261,"marks_skipped_edge":0,"marks_skipped_facing":0,"marks_wall":3521,"pool_nodes":24,"quality":"High","recycled":1110,"stains_cap":128,"stains_live":128,"stains_placed":4782,"stains_recycled":4654,"submitted_slots":6753,"usec_per_death":1275,"usec_per_impact":69}

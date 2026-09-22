@@ -1,0 +1,10 @@
+{
+  "checks": 19976,
+  "failures": 0,
+  "elapsedMs": 377.7,
+  "evidence": "ray-report-1790095291161.json",
+  "fixtures": 6150
+}
+lacuna-court: 5211 rays, groups={"block-cover":36,"wall-face":24,"route-floor":66,"sightline":325,"eye-grid":4760}, probeMisses=0, visibleMismatch=0, eyeCeiling=4.472436, excludedMinY=0
+vermilion-fold: 7878 rays, groups={"block-cover":28,"route-floor":117,"sightline":893,"eye-grid":6840}, probeMisses=0, visibleMismatch=0, eyeCeiling=2.972436, excludedMinY=4
+nacre-engine: 6887 rays, groups={"block-cover":22,"wall-face":252,"route-floor":48,"sightline":325,"eye-grid":6240}, probeMisses=0, visibleMismatch=0, eyeCeiling=2.972436, excludedMinY=0
