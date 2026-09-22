@@ -1,0 +1,12 @@
+file:///home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/authority.mjs:34
+  if (unknown.length) throw new TypeError(`Unsupported identity zone authority option: ${unknown[0]}`);
+                            ^
+
+TypeError: Unsupported identity zone authority option: score
+    at createAuthority (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/authority.mjs:34:29)
+    at createIdentityZoneAuthority (file:///home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-zones/authority.mjs:212:21)
+    at file:///home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/tools/godot-dev/launch.mjs:27:22
+
+Node.js v22.23.1
+launcher exit=1 (124 = bounded timeout while a live round ran)
+script errors: 0

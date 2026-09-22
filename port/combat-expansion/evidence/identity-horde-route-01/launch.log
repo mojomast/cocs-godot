@@ -1,0 +1,19 @@
+Owned local server ready at ws://127.0.0.1:40391; horde
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+ERROR: X11 Display is not available
+   at: DisplayServerX11 (platform/linuxbsd/x11/display_server_x11.cpp:6844)
+WARNING: Display driver x11 failed, falling back to wayland.
+     at: setup2 (main/main.cpp:3220)
+ERROR: Can't connect to a Wayland display.
+   at: init (platform/linuxbsd/wayland/wayland_thread.cpp:4335)
+ERROR: Could not initialize the Wayland thread.
+   at: DisplayServerWayland (platform/linuxbsd/wayland/display_server_wayland.cpp:1905)
+ERROR: Can't create the Wayland display server.
+   at: create_func (platform/linuxbsd/wayland/display_server_wayland.cpp:1875)
+ERROR: Unable to create DisplayServer, all display drivers failed.
+Use "--headless" command line argument to run the engine in headless mode if this is desired (e.g. for continuous integration).
+   at: setup2 (main/main.cpp:3230)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+launcher exit=1 (124 = bounded timeout while running a live match)
+script errors: 5
