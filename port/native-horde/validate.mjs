@@ -72,7 +72,9 @@ export function validateRun({wire,stdout,stderr,summary,launch}) {
   assert(receipt,'stepped input has no receipt');
   assert(!applied.has(key),'input sample stepped more than once');
   assert.equal(receipt.frame.inputEpoch,step.inputEpoch,'stale epoch stepped');
-  const controls=receipt.frame.cancel?{}:parseInputEnvelope(receipt.frame);
+  // Evidence is JSON: the source parser's optional weapon:undefined is omitted
+  // by recording, just as it is on the wire. Compare the same representation.
+  const controls=receipt.frame.cancel?{}:JSON.parse(JSON.stringify(parseInputEnvelope(receipt.frame)));
   assert.deepEqual(step.controls,controls,'stepped controls differ from parsed source input');
   assert.equal(step.appliedSeq,step.inputSeq);
   applied.set(key,step);
