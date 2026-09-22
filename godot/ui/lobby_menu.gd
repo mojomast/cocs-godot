@@ -2,15 +2,16 @@ extends CanvasLayer
 
 const Setup = preload("res://ui/match_setup.gd")
 const Names = preload("res://ui/scoreboard.gd")
+const Choice = preload("res://ui/lobby_choice.gd")
 var session: Node
 var panel := PanelContainer.new()
 var form := VBoxContainer.new()
 var endpoint := LineEdit.new()
 var player_name := LineEdit.new()
 var room := LineEdit.new()
-var role := OptionButton.new()
-var maps := OptionButton.new()
-var modes := OptionButton.new()
+var role := Choice.new()
+var maps := Choice.new()
+var modes := Choice.new()
 var status := Label.new()
 var roster := Label.new()
 var connect_button := Button.new()
@@ -38,6 +39,7 @@ func _ready() -> void:
 		style.set("content_margin_" + edge, 16.0)
 	panel.add_theme_stylebox_override("panel", style)
 	var scroll := ScrollContainer.new()
+	scroll.follow_focus = true
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	panel.add_child(scroll)
 	form.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -139,7 +141,7 @@ func refresh() -> void:
 			hud.controls.hide()
 	var editable := phase in [-3, -1]
 	for control: LineEdit in [endpoint, player_name, room]: control.editable = editable
-	for control: OptionButton in [role, maps, modes]: control.disabled = not editable
+	for control: Control in [role, maps, modes]: control.disabled = not editable
 	modes.disabled = not editable or role.selected == 1
 	room.editable = editable and role.selected == 1
 	connect_button.visible = editable
