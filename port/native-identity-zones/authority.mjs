@@ -16,6 +16,13 @@ import {parseInputEnvelope} from '../../game/protocol.mjs';
 import {LIMITS, EventCursor, outboundAllowed} from '../native-arenas/authority.mjs';
 import {keys, record, readNativeArena, parseArenaEnvelope} from '../native-arenas/schema.mjs';
 import {InputBuffer} from '../native-arenas/input-buffer.mjs';
+import {applyDebugFrame, applyLiveOverrides, createDebugState, debugEcho, installHumanGuard,
+  parseDebugFrame, reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT, RESTART_KNOBS} from '../native-debug/debug.mjs';
+// Reviewed bounds for the construction-time debug knobs on THIS route. The zone
+// scene advertises bots 0..7, so the debug channel advertises exactly that.
+export const DEBUG_RESTART_BOUNDS = Object.freeze({
+  botCount:[0, 7], startingWeapon:[RESTART_KNOBS.startingWeapon[0], RESTART_KNOBS.startingWeapon[1]],
+});
 import {IDENTITY_ZONE_MAP_ID, IDENTITY_ZONE_MODE, identityZoneAllowed, identityZoneEntry} from './catalog.mjs';
 import {createIdentityZoneMatch, validateIdentityZoneConfig} from './match.mjs';
 
@@ -29,11 +36,18 @@ const minimalConfig = config => Object.fromEntries(ruleFields.map(key => [key, c
 export function createAuthority(options = {}) {
   if (!record(options)) throw new TypeError('Identity zone authority options must be an object');
   const allowed = ['mapId', 'config', 'random', 'observe', 'arenaData', 'botCount', 'timeLimit',
-    'fragLimit', 'difficulty', 'mode', 'bots', 'roundSeconds'];
+    'fragLimit', 'difficulty', 'mode', 'bots', 'roundSeconds', 'debug'];
   const unknown = Object.keys(options).filter(key => !allowed.includes(key));
   if (unknown.length) throw new TypeError(`Unsupported identity zone authority option: ${unknown[0]}`);
   const {mapId = IDENTITY_ZONE_MAP_ID, config = {}, random = Math.random, observe = () => {},
-    arenaData, botCount, timeLimit, fragLimit, difficulty, mode, bots, roundSeconds} = options;
+    arenaData, botCount, timeLimit, fragLimit, difficulty, mode, bots, roundSeconds, debug} = options;
+  if (debug !== undefined && typeof debug !== 'boolean') throw new TypeError('Debug flag must be boolean');
+  // Debug is off by default and needs an explicit switch: the constructor flag
+  // or the operator's own COCS_DEBUG=1 environment. An explicit `debug:false`
+  // overrides the environment so a scripted run can force the channel off.
+  const debugEnabled = debug === true || (debug === undefined && process.env.COCS_DEBUG === '1');
+  const debugState = createDebugState({enabled:debugEnabled});
+  const debugLimits = () => ({botCount:[...DEBUG_RESTART_BOUNDS.botCount], startingWeapon:[...DEBUG_RESTART_BOUNDS.startingWeapon]});
   const entry = identityZoneEntry(mapId);
   if (mode !== undefined && mode !== IDENTITY_ZONE_MODE) throw new TypeError('Identity zone authority supports domination only');
   if (typeof random !== 'function' || typeof observe !== 'function') throw new TypeError('RNG/observer must be functions');
@@ -67,10 +81,32 @@ export function createAuthority(options = {}) {
   let wall = performance.now(), accumulator = 0, closing = false, closePromise;
   let tokens = LIMITS.burst, tokenAt = wall, epochRequired = false, playerName = 'Local player';
   const report = value => observe({...value, round, observedMs:performance.now()});
+  function resetDebugChannel() {
+    debugState.live = {godMode:false, playerIncomingScale:1, unlockAllWeapons:false};
+    debugState.config = {}; debugState.queued = {}; debugState.autoUnlimited = false;
+    debugState.constructed = {};
+  }
+  function debugReject(reason) {
+    debugState.rejected++; debugState.lastReject = reason;
+    report({direction:'debug-reject', reason});
+    send({type:'debug-reject', reason});
+  }
+  // LIVE application: the locked source reads config/mutators/difficulty every tick,
+  // so these take effect on the next step. Only knobs the running round was actually
+  // constructed with are folded into the live config, so a queued bot count never makes
+  // the public config echo claim a roster it does not have. The guard and the post-step
+  // reconcile only ever inspect the single human seat.
+  function applyDebugToMatch(active) {
+    if (!debugState.enabled || !active) return;
+    applyLiveOverrides(active, {...debugState.constructed, ...debugState.config}, defaults);
+    installHumanGuard(active, debugState.live, HUMAN_SEAT);
+    reconcileHuman(active, debugState);
+  }
   function detach(ws) {
     if (socket !== ws) return;
     socket = null; match = null; selectedConfig = null; created = false; finished = false;
     epochRequired = false; inputs.reset(); accumulator = 0; eventCursor = null;
+    resetDebugChannel();
   }
   function terminate(reason) {
     report({direction:'transport-error', reason});
@@ -88,6 +124,9 @@ export function createAuthority(options = {}) {
   const lobby = () => send({type:'lobby', roomId:'local-identity-zone', hostId:0,
     mapId:selectedConfig ? entry.id : null, config:selectedConfig,
     started:!!match && !finished, roundRevision:round,
+    // Additive debug capability echo: only present when the operator enabled the
+    // channel, so an ordinary lobby frame is byte-identical to before.
+    ...(debugEnabled ? {debug:debugEcho(debugState, debugLimits())} : {}),
     players:[{peerId:0, actorId:0, name:playerName, connected:true, spectate:false}]});
   function cancelControls(reason) {
     inputs.cancel(); epoch++;
@@ -135,6 +174,8 @@ export function createAuthority(options = {}) {
         } else if (f.type === 'start' && selectedConfig && (!match || match.over)) {
           keys(f, ['type'], 'start frame');
           match = createIdentityZoneMatch({mapId:entry.id, config:minimalConfig(selectedConfig), random, arenaData:data});
+          debugState.constructed = {...debugState.config};
+          applyDebugToMatch(match);
           round++; seq = 0; epoch++; ticks = 0; finished = false; inputs.reset();
           eventCursor = new EventCursor();
           const initialEvents = eventCursor.take(match);
@@ -157,6 +198,35 @@ export function createAuthority(options = {}) {
           const parsed = parseInputEnvelope(f);
           inputs.receive(f.seq, parsed, now, f.cancel === true);
           if (match.actors[0].health <= 0) inputs.cancel();
+        } else if (f.type === 'debug' && created) {
+          // Additive debug frame. With the channel disabled this falls through to the
+          // unchanged rejection path below (error + terminate), so an ordinary
+          // authority never gains a debug surface.
+          if (!debugEnabled) throw new Error('Invalid local identity zone lifecycle command');
+          let parsed;
+          try { parsed = parseDebugFrame(f); }
+          catch (error) { debugReject(error.message); return; }
+          const bound = DEBUG_RESTART_BOUNDS.botCount;
+          if (parsed.set.botCount !== undefined && (parsed.set.botCount < bound[0] || parsed.set.botCount > bound[1])) {
+            debugReject(`botCount must be ${bound[0]}..${bound[1]} on this route`);
+            return;
+          }
+          if (parsed.set.testDamage !== undefined && (!match || match.over)) {
+            debugReject('testDamage requires a live round');
+            return;
+          }
+          const touched = applyDebugFrame(debugState, parsed);
+          if (match && !match.over) {
+            applyDebugToMatch(match);
+            // Reversibility: switching unlock-all off restores the source's spawn ammo belt.
+            if (touched.includes('unlockAllWeapons') && debugState.live.unlockAllWeapons !== true) {
+              restoreSpawnAmmo(match, match.actors[HUMAN_SEAT]);
+            }
+            if (parsed.set.testDamage !== undefined) {
+              match.damage(match.actors[HUMAN_SEAT], parsed.set.testDamage, undefined, false);
+            }
+          }
+          send({type:'debug-state', debug:debugEcho(debugState, debugLimits())});
         } else if (f.type === 'ping' && created) {
           keys(f, ['type', 't'], 'ping frame');
           send({type:'pong', ...(Number.isFinite(f.t) ? {t:f.t} : {})});
@@ -176,6 +246,7 @@ export function createAuthority(options = {}) {
         if (inputs.expired(now)) cancelControls('stale-input');
         const sample = inputs.take(), active = match, alive = active.actors[0].health > 0;
         active.step(1 / 60, {inputs:{0:sample.input}});
+        const reconciled = reconcileHuman(active, debugState);
         inputs.stepped(sample.seq);
         report({direction:'step', inputSeq:sample.seq, inputEpoch:epoch,
           controls:{...sample.input}, sourceTime:active.time, ...inputs.status()});
