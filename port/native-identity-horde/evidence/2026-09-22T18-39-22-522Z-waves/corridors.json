@@ -1,0 +1,254 @@
+{
+  "static": {
+    "mapId": "nacre-engine",
+    "geometryHash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+    "capsule": {
+      "radius": 0.42,
+      "height": 1.8,
+      "neededWidth": 0.84,
+      "source": "game/data.mjs RULES via game/core.mjs obstructed(); identical for humans and NPCs"
+    },
+    "navProbeWidth": 1.04,
+    "nav": {
+      "nodes": 78,
+      "edges": 136,
+      "edgesBelowCapsule": 0,
+      "narrowestEdgeWidth": 4.0718749999999995,
+      "at": {
+        "x": -24,
+        "z": -23.25
+      },
+      "verdict": "passes-nav-probe"
+    },
+    "spawnClearance": [
+      {
+        "spawn": [
+          -23,
+          -19
+        ],
+        "width": 6
+      },
+      {
+        "spawn": [
+          23,
+          19
+        ],
+        "width": 6
+      },
+      {
+        "spawn": [
+          -23,
+          19
+        ],
+        "width": 6
+      },
+      {
+        "spawn": [
+          23,
+          -19
+        ],
+        "width": 6
+      },
+      {
+        "spawn": [
+          0,
+          -21
+        ],
+        "width": 6
+      },
+      {
+        "spawn": [
+          0,
+          21
+        ],
+        "width": 6
+      }
+    ],
+    "approaches": {
+      "center": {
+        "x": 0,
+        "z": 0
+      },
+      "approaches": [
+        {
+          "spawn": [
+            -23,
+            -19
+          ],
+          "reachable": true,
+          "hops": 5,
+          "pathLength": 29.099019513592786,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": -11.5
+          }
+        },
+        {
+          "spawn": [
+            23,
+            19
+          ],
+          "reachable": true,
+          "hops": 9,
+          "pathLength": 53.099019513592786,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": 11.5
+          }
+        },
+        {
+          "spawn": [
+            -23,
+            19
+          ],
+          "reachable": true,
+          "hops": 5,
+          "pathLength": 29.099019513592786,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": 11.5
+          }
+        },
+        {
+          "spawn": [
+            23,
+            -19
+          ],
+          "reachable": true,
+          "hops": 9,
+          "pathLength": 53.099019513592786,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": -11.5
+          }
+        },
+        {
+          "spawn": [
+            0,
+            -21
+          ],
+          "reachable": true,
+          "hops": 6,
+          "pathLength": 33,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": -11.5
+          }
+        },
+        {
+          "spawn": [
+            0,
+            21
+          ],
+          "reachable": true,
+          "hops": 6,
+          "pathLength": 33,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": 11.5
+          }
+        }
+      ]
+    },
+    "narrowestApproach": {
+      "spawn": [
+        -23,
+        -19
+      ],
+      "minWidth": 5.481250000000001,
+      "at": {
+        "x": -12,
+        "z": -11.5
+      }
+    },
+    "footprintScan": {
+      "grid": 1,
+      "free": 2944,
+      "blocked": 176,
+      "touching": 64,
+      "belowCapsule": 94,
+      "belowNavProbe": 356,
+      "narrowest": [
+        {
+          "x": -25.5,
+          "z": -23.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": -15.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": -7.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": 0.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": 8.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": 16.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": 24.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": 25.5,
+          "z": -23.5,
+          "width": 0.36012375354766846
+        }
+      ],
+      "widest": [
+        {
+          "x": 24.5,
+          "z": 20.5,
+          "width": 6
+        },
+        {
+          "x": 24.5,
+          "z": 12.5,
+          "width": 6
+        },
+        {
+          "x": 24.5,
+          "z": 4.5,
+          "width": 6
+        }
+      ]
+    },
+    "displayScaleNote": "enemy npcProfile.scale is presentation-only; every measurement above uses RULES.radius"
+  },
+  "traversed": {
+    "npcCount": 0,
+    "samples": 0,
+    "contacts": 0,
+    "minimumTraversed": null,
+    "tightestChannel": null,
+    "perNpc": [],
+    "perWave": []
+  }
+}

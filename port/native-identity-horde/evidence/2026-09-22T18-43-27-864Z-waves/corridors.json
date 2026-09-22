@@ -1,0 +1,530 @@
+{
+  "static": {
+    "mapId": "nacre-engine",
+    "geometryHash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+    "capsule": {
+      "radius": 0.42,
+      "height": 1.8,
+      "neededWidth": 0.84,
+      "source": "game/data.mjs RULES via game/core.mjs obstructed(); identical for humans and NPCs"
+    },
+    "navProbeWidth": 1.04,
+    "nav": {
+      "nodes": 78,
+      "edges": 136,
+      "edgesBelowCapsule": 0,
+      "narrowestEdgeWidth": 4.0718749999999995,
+      "at": {
+        "x": -24,
+        "z": -23.25
+      },
+      "verdict": "passes-nav-probe"
+    },
+    "spawnClearance": [
+      {
+        "spawn": [
+          -23,
+          -19
+        ],
+        "width": 6
+      },
+      {
+        "spawn": [
+          23,
+          19
+        ],
+        "width": 6
+      },
+      {
+        "spawn": [
+          -23,
+          19
+        ],
+        "width": 6
+      },
+      {
+        "spawn": [
+          23,
+          -19
+        ],
+        "width": 6
+      },
+      {
+        "spawn": [
+          0,
+          -21
+        ],
+        "width": 6
+      },
+      {
+        "spawn": [
+          0,
+          21
+        ],
+        "width": 6
+      }
+    ],
+    "approaches": {
+      "center": {
+        "x": 0,
+        "z": 0
+      },
+      "approaches": [
+        {
+          "spawn": [
+            -23,
+            -19
+          ],
+          "reachable": true,
+          "hops": 5,
+          "pathLength": 29.099019513592786,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": -11.5
+          }
+        },
+        {
+          "spawn": [
+            23,
+            19
+          ],
+          "reachable": true,
+          "hops": 9,
+          "pathLength": 53.099019513592786,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": 11.5
+          }
+        },
+        {
+          "spawn": [
+            -23,
+            19
+          ],
+          "reachable": true,
+          "hops": 5,
+          "pathLength": 29.099019513592786,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": 11.5
+          }
+        },
+        {
+          "spawn": [
+            23,
+            -19
+          ],
+          "reachable": true,
+          "hops": 9,
+          "pathLength": 53.099019513592786,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": -11.5
+          }
+        },
+        {
+          "spawn": [
+            0,
+            -21
+          ],
+          "reachable": true,
+          "hops": 6,
+          "pathLength": 33,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": -11.5
+          }
+        },
+        {
+          "spawn": [
+            0,
+            21
+          ],
+          "reachable": true,
+          "hops": 6,
+          "pathLength": 33,
+          "minWidth": 5.481250000000001,
+          "minClearanceWidth": 4.9999998807907104,
+          "at": {
+            "x": -12,
+            "z": 11.5
+          }
+        }
+      ]
+    },
+    "narrowestApproach": {
+      "spawn": [
+        -23,
+        -19
+      ],
+      "minWidth": 5.481250000000001,
+      "at": {
+        "x": -12,
+        "z": -11.5
+      }
+    },
+    "footprintScan": {
+      "grid": 1,
+      "free": 2944,
+      "blocked": 176,
+      "touching": 64,
+      "belowCapsule": 94,
+      "belowNavProbe": 356,
+      "narrowest": [
+        {
+          "x": -25.5,
+          "z": -23.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": -15.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": -7.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": 0.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": 8.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": 16.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": -25.5,
+          "z": 24.5,
+          "width": 0.36012375354766846
+        },
+        {
+          "x": 25.5,
+          "z": -23.5,
+          "width": 0.36012375354766846
+        }
+      ],
+      "widest": [
+        {
+          "x": 24.5,
+          "z": 20.5,
+          "width": 6
+        },
+        {
+          "x": 24.5,
+          "z": 12.5,
+          "width": 6
+        },
+        {
+          "x": 24.5,
+          "z": 4.5,
+          "width": 6
+        }
+      ]
+    },
+    "displayScaleNote": "enemy npcProfile.scale is presentation-only; every measurement above uses RULES.radius"
+  },
+  "traversed": {
+    "npcCount": 19,
+    "samples": 5177,
+    "contacts": 21,
+    "minimumTraversed": {
+      "clearance": 0.4200350046157837,
+      "clearanceWidth": 0.8400700092315674,
+      "channelWidth": 3.4015625,
+      "capped": false,
+      "npc": 14,
+      "npcType": "husk",
+      "wave": 4,
+      "x": 14.079964982401,
+      "z": -9.8537851378198,
+      "freeWidth": 0.8400700092315674
+    },
+    "tightestChannel": {
+      "clearance": 0.4234294295310974,
+      "clearanceWidth": 0.8468588590621948,
+      "channelWidth": 2.0656250000000003,
+      "capped": false,
+      "npc": 15,
+      "npcType": "husk",
+      "wave": 4,
+      "x": 29.576570432266628,
+      "z": 7.3358416717859525
+    },
+    "perNpc": [
+      {
+        "clearance": 0.4234294295310974,
+        "clearanceWidth": 0.8468588590621948,
+        "channelWidth": 2.0656250000000003,
+        "capped": false,
+        "npc": 15,
+        "npcType": "husk",
+        "wave": 4,
+        "x": 29.576570432266628,
+        "z": 7.3358416717859525
+      },
+      {
+        "clearance": 0.4212319850921631,
+        "clearanceWidth": 0.8424639701843262,
+        "channelWidth": 3.4015625,
+        "capped": false,
+        "npc": 2,
+        "npcType": "husk",
+        "wave": 1,
+        "x": -14.078767885020689,
+        "z": -10.733482929921527
+      },
+      {
+        "clearance": 0.4200350046157837,
+        "clearanceWidth": 0.8400700092315674,
+        "channelWidth": 3.4015625,
+        "capped": false,
+        "npc": 14,
+        "npcType": "husk",
+        "wave": 4,
+        "x": 14.079964982401,
+        "z": -9.8537851378198
+      },
+      {
+        "clearance": 0.4246721863746643,
+        "clearanceWidth": 0.8493443727493286,
+        "channelWidth": 3.40625,
+        "capped": false,
+        "npc": 1,
+        "npcType": "husk",
+        "wave": 1,
+        "x": -26.792055728631063,
+        "z": -14.856281750134581
+      },
+      {
+        "clearance": 0.4272034764289856,
+        "clearanceWidth": 0.8544069528579712,
+        "channelWidth": 3.4078125,
+        "capped": false,
+        "npc": 16,
+        "npcType": "husk",
+        "wave": 4,
+        "x": -6.727203497337626,
+        "z": 3.1671058202904794
+      },
+      {
+        "clearance": 0.4230555295944214,
+        "clearanceWidth": 0.8461110591888428,
+        "channelWidth": 3.4375,
+        "capped": false,
+        "npc": 19,
+        "npcType": "bulwark",
+        "wave": 4,
+        "x": 14.792985355066955,
+        "z": -8.076944397973959
+      },
+      {
+        "clearance": 0.42892080545425415,
+        "clearanceWidth": 0.8578416109085083,
+        "channelWidth": 3.44375,
+        "capped": false,
+        "npc": 4,
+        "npcType": "husk",
+        "wave": 2,
+        "x": -5.282144374116794,
+        "z": -6.428920899311889
+      },
+      {
+        "clearance": 0.46731340885162354,
+        "clearanceWidth": 0.9346268177032471,
+        "channelWidth": 3.45,
+        "capped": false,
+        "npc": 3,
+        "npcType": "spitter",
+        "wave": 1,
+        "x": -24.766192676473242,
+        "z": -6.914320619019839
+      },
+      {
+        "clearance": 0.4215497374534607,
+        "clearanceWidth": 0.8430994749069214,
+        "channelWidth": 3.4921875,
+        "capped": false,
+        "npc": 7,
+        "npcType": "spitter",
+        "wave": 2,
+        "x": -24.71330167365113,
+        "z": 0.5634149099610053
+      },
+      {
+        "clearance": 0.8341589570045471,
+        "clearanceWidth": 1.6683179140090942,
+        "channelWidth": 3.8812499999999996,
+        "capped": false,
+        "npc": 17,
+        "npcType": "spitter",
+        "wave": 4,
+        "x": -6.135984794470153,
+        "z": -6.834158966462069
+      },
+      {
+        "clearance": 1.0795742869377136,
+        "clearanceWidth": 2.1591485738754272,
+        "channelWidth": 4.1484375,
+        "capped": false,
+        "npc": 18,
+        "npcType": "mender",
+        "wave": 4,
+        "x": 8.853796832905218,
+        "z": -24.92042561678183
+      },
+      {
+        "clearance": 1.5790860056877136,
+        "clearanceWidth": 3.1581720113754272,
+        "channelWidth": 4.559375,
+        "capped": false,
+        "npc": 5,
+        "npcType": "husk",
+        "wave": 2,
+        "x": 7.579086181770419,
+        "z": -5.863664443903372
+      },
+      {
+        "clearance": 1.4427056908607483,
+        "clearanceWidth": 2.8854113817214966,
+        "channelWidth": 4.7703125,
+        "capped": false,
+        "npc": 11,
+        "npcType": "sapper",
+        "wave": 3,
+        "x": -23.968404941087986,
+        "z": 23.842024705439936
+      },
+      {
+        "clearance": 1.8074841499328613,
+        "clearanceWidth": 3.6149682998657227,
+        "channelWidth": 4.7875000000000005,
+        "capped": false,
+        "npc": 10,
+        "npcType": "husk",
+        "wave": 3,
+        "x": -12.692515828465107,
+        "z": 10.473596287052024
+      },
+      {
+        "clearance": 2.0525627732276917,
+        "clearanceWidth": 4.105125546455383,
+        "channelWidth": 5.0328125,
+        "capped": false,
+        "npc": 12,
+        "npcType": "mortar",
+        "wave": 3,
+        "x": -12.44743708859064,
+        "z": 11.352373136818764
+      },
+      {
+        "clearance": 2.1933460235595703,
+        "clearanceWidth": 4.386692047119141,
+        "channelWidth": 5.353125,
+        "capped": false,
+        "npc": 13,
+        "npcType": "husk",
+        "wave": 4,
+        "x": -6.769670044748436,
+        "z": -8.193346190477712
+      },
+      {
+        "clearance": 2.7348339557647705,
+        "clearanceWidth": 5.469667911529541,
+        "channelWidth": 5.715625000000001,
+        "capped": false,
+        "npc": 9,
+        "npcType": "husk",
+        "wave": 3,
+        "x": 11.7651659908066,
+        "z": 8.557516004755804
+      },
+      {
+        "clearance": 3,
+        "clearanceWidth": 6,
+        "channelWidth": 6,
+        "capped": true,
+        "npc": 6,
+        "npcType": "husk",
+        "wave": 2,
+        "x": 0,
+        "z": 21
+      },
+      {
+        "clearance": 3,
+        "clearanceWidth": 6,
+        "channelWidth": 6,
+        "capped": true,
+        "npc": 8,
+        "npcType": "husk",
+        "wave": 3,
+        "x": 22.920303309727696,
+        "z": -18.9691236534134
+      }
+    ],
+    "perWave": [
+      {
+        "wave": 1,
+        "clearance": 0.4212319850921631,
+        "clearanceWidth": 0.8424639701843262,
+        "channelWidth": 3.4015625,
+        "capped": false,
+        "npc": 2,
+        "npcType": "husk",
+        "x": -14.078767885020689,
+        "z": -10.733482929921527
+      },
+      {
+        "wave": 2,
+        "clearance": 0.42892080545425415,
+        "clearanceWidth": 0.8578416109085083,
+        "channelWidth": 3.44375,
+        "capped": false,
+        "npc": 4,
+        "npcType": "husk",
+        "x": -5.282144374116794,
+        "z": -6.428920899311889
+      },
+      {
+        "wave": 3,
+        "clearance": 1.4427056908607483,
+        "clearanceWidth": 2.8854113817214966,
+        "channelWidth": 4.7703125,
+        "capped": false,
+        "npc": 11,
+        "npcType": "sapper",
+        "x": -23.968404941087986,
+        "z": 23.842024705439936
+      },
+      {
+        "wave": 4,
+        "clearance": 0.4234294295310974,
+        "clearanceWidth": 0.8468588590621948,
+        "channelWidth": 2.0656250000000003,
+        "capped": false,
+        "npc": 15,
+        "npcType": "husk",
+        "x": 29.576570432266628,
+        "z": 7.3358416717859525
+      }
+    ]
+  }
+}

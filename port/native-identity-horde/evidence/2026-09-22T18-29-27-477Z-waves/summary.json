@@ -1,0 +1,49 @@
+{
+  "exit": 1,
+  "reason": "identity horde scenario failed",
+  "scenario": "waves",
+  "map": "nacre-engine",
+  "waves": 4,
+  "resolution": "1280x800",
+  "rendering": "engine-default",
+  "wallSeconds": 183.36117666899997,
+  "records": 23659,
+  "cleanup": [
+    {
+      "pid": 2827979,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 2827983,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "serverClosed": true,
+  "sockets": 0,
+  "temporaryTreeRemoved": true,
+  "traversedMinimum": {
+    "clearance": 0.4200015664100647,
+    "clearanceWidth": 0.8400031328201294,
+    "channelWidth": 0.9562499999999999,
+    "capped": false,
+    "npc": 3,
+    "npcType": "spitter",
+    "wave": 1,
+    "x": 27.760153026941286,
+    "z": 0.29292552076658046,
+    "freeWidth": 0.8400031328201294
+  },
+  "traversedChannel": {
+    "clearance": 0.42116421461105347,
+    "clearanceWidth": 0.8423284292221069,
+    "channelWidth": 0.9453125,
+    "capped": false,
+    "npc": 3,
+    "npcType": "spitter",
+    "wave": 1,
+    "x": 27.753726077730267,
+    "z": 0.3046754460721747
+  }
+}

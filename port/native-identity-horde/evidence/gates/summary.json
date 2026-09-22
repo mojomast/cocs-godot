@@ -1,0 +1,29 @@
+{
+  "lane": "native-identity-horde",
+  "scope": "Nacre Engine Horde: identity-family map hook, composition scene, acceptance",
+  "engine": "4.5.2.stable.official.6ce3de25a",
+  "recordedAt": "2026-09-22T18:47:00Z",
+  "commands": [
+    {"command": "node --test port/native-horde/test.mjs port/native-horde/input-buffer.test.mjs port/native-horde/repair-regression.test.mjs port/native-horde/event-cursor.test.mjs port/native-horde/npc-kills.test.mjs port/native-identity-horde/identity-horde.test.mjs", "exit": 0, "log": "node-tests.log", "detail": "61 pass, 0 fail (11 of them identity-family tests)"},
+    {"command": "node port/native-horde/input-oracle.mjs evidence/gates/input-vectors.json", "exit": 0, "log": "input-oracle.log"},
+    {"command": "godot --headless --path godot --script res://tests/horde/controls_test.gd -- --vectors=<abs>/input-vectors.json", "exit": 0, "log": "controls_test.log", "detail": "HORDE_SOURCE_INPUT_OK 31, HORDE_SOURCE_LOOK_OK 3, HORDE_FOCUS_OK"},
+    {"command": "godot --headless --path godot --script res://tests/horde/test.gd", "exit": 0, "log": "test.log", "detail": "HORDE_TESTS checks=15 failures=0"},
+    {"command": "godot --headless --path godot --script res://tests/horde/identity_composition_test.gd", "exit": 0, "log": "identity_composition_test.log", "detail": "HORDE_IDENTITY_COMPOSITION checks=22 failures=0"},
+    {"command": "godot --headless --path godot --script res://tests/horde/layout_test.gd", "exit": 0, "log": "layout_test.log", "detail": "HORDE_LAYOUT_CHECKS checks=2 failures=0"},
+    {"command": "godot --headless --path godot --script res://tests/protocol/control_safety.gd", "exit": 0, "log": "control_safety.log", "detail": "PORT_CONTROL_SAFETY_OK checks=2497"},
+    {"command": "godot --headless --path godot --script res://tests/protocol/game_hud_session.gd", "exit": 0, "log": "game_hud_session.log", "detail": "PORT_GAME_HUD_SESSION_OK"},
+    {"command": "godot --headless --path godot --script res://tests/protocol/scoreboard.gd", "exit": 0, "log": "scoreboard.log", "detail": "PORT_SCOREBOARD_OK checks=45"},
+    {"command": "godot --headless --path godot --script res://tests/protocol/scoreboard_session.gd", "exit": 0, "log": "scoreboard_session.log", "detail": "PORT_SCOREBOARD_SESSION_OK"}
+  ],
+  "acceptedRuns": {
+    "startup": {"evidence": "2026-09-22T18-29-01-418Z-startup", "validation": "PASS"},
+    "waves": {"evidence": "2026-09-22T18-43-27-864Z-waves", "validation": "PASS"},
+    "defeat": {"evidence": "2026-09-22T18-32-32-209Z-defeat", "validation": "PASS"},
+    "peak": {"evidence": "2026-09-22T18-33-51-321Z-peak", "validation": "PASS"}
+  },
+  "retainedFailures": [
+    {"evidence": "2026-09-22T18-29-27-477Z-waves", "reason": "1280x800-primary 4-wave attempt hit its bounded window with zero clears (automated aimbot at ~9 fps)"},
+    {"evidence": "2026-09-22T18-39-22-522Z-waves", "reason": "integrating tree had an uncommitted parse error in godot/moth_scenery/scenery.gd while another lane edited it"}
+  ],
+  "openItems": ["boss wave (not reached)", "endless (no adapter contract)", "ten-wave completion (not reached)", "upgrade selection (protocol has no command)", "human feel/audio/focus", "hardware frame cadence"]
+}

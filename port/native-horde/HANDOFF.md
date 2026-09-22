@@ -92,9 +92,36 @@ Manual default is ten waves, not the harness's one-wave preset. Click to engage/
 
 Manual acceptance checklist: engage and fire; Esc releases controls while enemies continue; release held keys and click to resume; verify death/life loss or victory; Enter from results; verify old enemies/effects cleared and no automatic capture. Inspect both sizes and actual audio/focus. Not yet completed by a human.
 
+## Identity-family hook (Nacre Engine) — added after this delivery
+
+The authority now also owns one frozen identity entry so Horde can play Nacre
+Engine through the same loopback transport:
+
+- `IDENTITY_MAPS = Object.freeze(['nacre-engine'])`, `HORDE_MAPS` = the three
+  source maps plus that entry. `validateConfig` accepts both families; the
+  single-human, epoch, event-cursor, bounded-message and loopback-only contract
+  is unchanged.
+- `readIdentityMap`/`validateIdentityEnvelope` resolve one literal
+  package-relative path (`godot/identity_maps/generated/nacre-engine.json`),
+  re-validate the envelope (schema, id, `mode: 'horde'`, bounds, spawns, blocks,
+  pickups, terrain meshes) and recompute the canonical `arena` SHA-256. No wire
+  frame, CLI argument or environment variable can select a map, path or document.
+- `createHordeMatch({mapId, config, random})` is the single map/factory hook.
+  Source maps keep the historical constructor; the identity family installs its
+  validated arena through a reviewed local constructor accessor and re-checks
+  arena identity, horde mode, single human and a supported spawn.
+- The hook is inline in `authority.mjs` on purpose: the package closure
+  (`tools/godot-package/discover.mjs`) derives the shipped adapter inventory from
+  the static import graph and rejects unreviewed runtime inputs, so a new
+  imported helper would change the package inventory without a package-lane
+  review. `game/core.mjs` was already in the closure.
+- Acceptance for the identity route (runs, screenshots, corridor measurement,
+  open items) lives in `port/native-identity-horde/HANDOFF.md`. Existing
+  source-map Horde evidence above is unchanged and still valid.
+
 ## Integration proposal (NOT applied)
 
-- Common launcher --experience=horde should route only the three validated maps to res://horde/demo.tscn and launch this local-only adapter, not createGameServer/Room.
+- Common launcher --experience=horde should route only the three validated maps to res://horde/demo.tscn and launch this local-only adapter, not createGameServer/Room. The identity route (`--map=nacre-engine`) uses the same authority and the identity composition `res://native_arenas/identity_horde_demo.tscn`; see `port/native-identity-horde/HANDOFF.md` for the map/hook and package notes.
 - Prefer a reviewed local-authority abstraction for singleplayer rather than weakening public room security. If the lead wants shared-network Horde instead, that is a distinct server/protocol design change and is outside this delivery.
 - Carry default ten-wave settings; explicitly forward optional legal wave target. No campaign route.
 - Linux resource allowlist must include godot/horde scenes/scripts, their existing shared session/UI/combat/audio dependencies, generated three-map semantics and existing map visual resources. Runtime Node packaging must include authority.mjs, unchanged imported game modules and existing ws runtime dependency. Exclude godot/tests/horde live steering and port/native-horde/evidence from product resources.

@@ -7,6 +7,17 @@ var keys := {}
 var mouse := {}
 var pulses := {}
 var weapon := -1
+# Shared combat composition gates its effect stack on
+# `session.controls.focused` (godot/world/combat_feedback.gd `_allowed`). The
+# sports adapters express window/input focus the same way; Horde keeps the same
+# contract so blood, impacts and weapon effects stay live while the window is
+# focused and stop, without replay, when it is not.
+var focused := true
+
+func focus(value: bool) -> void:
+	# Never auto-resume held controls after a focus transition.
+	focused = value
+	clear()
 
 func clear() -> void:
 	keys.clear()

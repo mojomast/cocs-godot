@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "scenario": "startup",
+  "map": "nacre-engine",
+  "waves": 10,
+  "correlated": 209,
+  "receipts": 86,
+  "ackHighWater": 85,
+  "steppedSamples": 81,
+  "clockDiagnostic": {
+    "sourceSeconds": 10.500000000000103,
+    "wallSeconds": 10.511579406999997
+  },
+  "wavesSeen": 1,
+  "cleared": 0,
+  "upgradeOffers": 0,
+  "approaches": [
+    {
+      "wave": 1,
+      "from": 23.02347746107184,
+      "to": 8.69872806942892,
+      "samples": 71
+    }
+  ],
+  "capsule": {
+    "radius": 0.42,
+    "height": 1.8,
+    "neededWidth": 0.84,
+    "source": "game/data.mjs RULES via game/core.mjs obstructed(); identical for humans and NPCs"
+  },
+  "navNarrowestEdgeWidth": 4.0718749999999995,
+  "approachMinWidth": 5.481250000000001,
+  "traversedMinimum": {
+    "clearance": 1.0180063247680664,
+    "clearanceWidth": 2.036012649536133,
+    "channelWidth": 3.9984374999999996,
+    "capped": false,
+    "npc": 2,
+    "npcType": "husk",
+    "wave": 1,
+    "x": -7.018006354837023,
+    "z": -5.387979545901604,
+    "freeWidth": 2.036012649536133
+  },
+  "traversedChannel": {
+    "clearance": 1.0180063247680664,
+    "clearanceWidth": 2.036012649536133,
+    "channelWidth": 3.9984374999999996,
+    "capped": false,
+    "npc": 2,
+    "npcType": "husk",
+    "wave": 1,
+    "x": -7.018006354837023,
+    "z": -5.387979545901604
+  },
+  "cadence": {
+    "fps_at_peak_avg": 0,
+    "fps_at_peak_samples": 0,
+    "fps_avg": 10,
+    "fps_median": 12,
+    "fps_min": 1,
+    "peak_actors": 0,
+    "peak_alive": 0,
+    "resolution": [
+      960,
+      640
+    ],
+    "samples": 11,
+    "snapshots_applied_high_water": 135,
+    "snapshots_received": 141,
+    "software_xvfb": true,
+    "wall": 6.49754566666667
+  },
+  "waveSummary": {
+    "cleared": 0,
+    "cleared_waves": [],
+    "deaths": 0,
+    "life_losses": [],
+    "outcome": "",
+    "upgrade_offers": [],
+    "waves_seen": [
+      {
+        "alive": 3,
+        "lives": 3,
+        "modifier": "SWARM",
+        "t": 6.86221533333333,
+        "total": 3,
+        "wave": 1
+      }
+    ]
+  },
+  "open": [],
+  "nativeTraceCompletionProven": true,
+  "productComposition": true
+}

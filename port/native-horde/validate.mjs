@@ -80,7 +80,7 @@ export function validate(wire,stdout,scenario='startup') {
  }
  return {status:'PASS',scenario,correlated,receipts:receipts.length,ackHighWater:Math.max(...rows.map(r=>r.ack)),won,deaths,eventTypes:[...new Set(events.map(e=>e.type))],nativeTraceCompletionProven:false};
 }
-export function validateRun({wire,stdout,stderr,summary,launch}) {
+export function validateRun({wire,stdout,stderr,summary,launch,expected={scene:'res://horde/demo.tscn',script:'res://horde/demo.gd'}}) {
  validateHygiene(summary,stdout,stderr);
  const result=validate(wire,stdout,summary.scenario);
  const outputs=wire.filter(r=>r.direction==='out');
@@ -114,7 +114,7 @@ export function validateRun({wire,stdout,stderr,summary,launch}) {
   assert.equal(row.ack,frame.acks[0],'native ACK does not equal stepped high-water');
  }
  const products=stdout.split('\n').filter(s=>s.startsWith('HORDE_PRODUCT ')).map(s=>JSON.parse(s.slice(14)));
- assert(products.length===1&&products[0].scene==='res://horde/demo.tscn'&&products[0].script==='res://horde/demo.gd'&&products[0].scoreboard,'observer did not instantiate actual product scene');
+ assert(products.length===1&&products[0].scene===expected.scene&&products[0].script===expected.script&&products[0].scoreboard,'observer did not instantiate actual product scene');
  const layouts=stdout.split('\n').filter(s=>s.startsWith('HORDE_LAYOUT ')).map(s=>JSON.parse(s.slice(13)));
  for(const size of [[960,640],[1280,800]]) assert(layouts.some(l=>JSON.stringify(l.viewport)===JSON.stringify(size)),'both product viewport sizes required');
  for(const layout of layouts) {

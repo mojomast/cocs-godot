@@ -1,0 +1,147 @@
+{
+  "status": "PASS",
+  "scenario": "waves",
+  "map": "nacre-engine",
+  "waves": 4,
+  "correlated": 2353,
+  "receipts": 1660,
+  "ackHighWater": 1651,
+  "steppedSamples": 1500,
+  "clockDiagnostic": {
+    "sourceSeconds": 116.74999999999466,
+    "wallSeconds": 116.75528417
+  },
+  "wavesSeen": 4,
+  "cleared": 3,
+  "upgradeOffers": 2,
+  "approaches": [
+    {
+      "wave": 1,
+      "from": 45.88335924248981,
+      "to": 35.739433751977636,
+      "samples": 421
+    },
+    {
+      "wave": 2,
+      "from": 30.03710423846105,
+      "to": 28.25440875017011,
+      "samples": 173
+    },
+    {
+      "wave": 3,
+      "from": 31.57449575625618,
+      "to": 13.687089520157267,
+      "samples": 177
+    },
+    {
+      "wave": 4,
+      "from": 28.6183815316464,
+      "to": 12.055663368258031,
+      "samples": 923
+    }
+  ],
+  "capsule": {
+    "radius": 0.42,
+    "height": 1.8,
+    "neededWidth": 0.84,
+    "source": "game/data.mjs RULES via game/core.mjs obstructed(); identical for humans and NPCs"
+  },
+  "navNarrowestEdgeWidth": 4.0718749999999995,
+  "approachMinWidth": 5.481250000000001,
+  "traversedMinimum": {
+    "clearance": 0.4200350046157837,
+    "clearanceWidth": 0.8400700092315674,
+    "channelWidth": 3.4015625,
+    "capped": false,
+    "npc": 14,
+    "npcType": "husk",
+    "wave": 4,
+    "x": 14.079964982401,
+    "z": -9.8537851378198,
+    "freeWidth": 0.8400700092315674
+  },
+  "traversedChannel": {
+    "clearance": 0.4234294295310974,
+    "clearanceWidth": 0.8468588590621948,
+    "channelWidth": 2.0656250000000003,
+    "capped": false,
+    "npc": 15,
+    "npcType": "husk",
+    "wave": 4,
+    "x": 29.576570432266628,
+    "z": 7.3358416717859525
+  },
+  "cadence": {
+    "fps_at_peak_avg": 10.4166666666667,
+    "fps_at_peak_samples": 12,
+    "fps_avg": 13.5217391304348,
+    "fps_median": 13,
+    "fps_min": 3,
+    "peak_actors": 8,
+    "peak_alive": 7,
+    "resolution": [
+      960,
+      640
+    ],
+    "samples": 207,
+    "snapshots_applied_high_water": 2333,
+    "snapshots_received": 3,
+    "software_xvfb": true,
+    "wall": 113.365381
+  },
+  "waveSummary": {
+    "cleared": 3,
+    "cleared_waves": [
+      1,
+      2,
+      3
+    ],
+    "deaths": 2,
+    "life_losses": [
+      2,
+      1
+    ],
+    "outcome": "won",
+    "upgrade_offers": [
+      3,
+      4
+    ],
+    "waves_seen": [
+      {
+        "alive": 3,
+        "lives": 3,
+        "modifier": "SWARM",
+        "t": 6.29693899999999,
+        "total": 3,
+        "wave": 1
+      },
+      {
+        "alive": 4,
+        "lives": 1,
+        "modifier": "MIXED",
+        "t": 36.4,
+        "total": 4,
+        "wave": 2
+      },
+      {
+        "alive": 5,
+        "lives": 1,
+        "modifier": "ARTILLERY",
+        "t": 51.9943190000001,
+        "total": 5,
+        "wave": 3
+      },
+      {
+        "alive": 7,
+        "lives": 1,
+        "modifier": "SHIELDED",
+        "t": 67.6166666666668,
+        "total": 7,
+        "wave": 4
+      }
+    ]
+  },
+  "open": [],
+  "nativeTraceCompletionProven": true,
+  "productComposition": true
+}

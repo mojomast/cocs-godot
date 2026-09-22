@@ -22,11 +22,7 @@ func _init() -> void:
 	horde_client = client
 
 func _ready() -> void:
-	add_child(camera)
-	add_child(sun)
-	add_child(environment)
-	camera.far = 2000
-	camera.rotation_order = EULER_ORDER_YXZ
+	build_view_layers()
 	var layer := CanvasLayer.new()
 	add_child(layer)
 	var panel := VBoxContainer.new()
@@ -54,12 +50,12 @@ func _ready() -> void:
 	add_child(combat)
 	add_child(client)
 	presentation.interpolate_remote = false # exact received positions, no prediction
-	if not catalog.open():
+	if not open_catalog():
 		on_error(catalog.error)
 		return
-	ids = catalog.entries.keys()
+	ids = map_ids()
 	for id: String in ids: selector.add_item(catalog.entries[id].name)
-	var selected := MAPS[0]
+	var selected := default_map_id()
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--map="): selected = arg.trim_prefix("--map=")
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
@@ -71,11 +67,11 @@ func _ready() -> void:
 			waves = value.to_int()
 		if arg == "--horde-evidence": evidence = true
 	trace_enabled = "--native-trace" in OS.get_cmdline_user_args()
-	if selected not in MAPS or waves < 1 or waves > 30 or not catalog.entries.has(selected) or "horde" not in catalog.entries[selected].modes:
+	if waves < 1 or waves > 30 or not map_supports_horde(selected):
 		on_error("Horde requires a supported map and waves 1..30")
 		return
 	selected_mode = "horde"
-	if not load_map(selected):
+	if not load_selected_map(selected):
 		on_error(catalog.error)
 		return
 	world.get_node("StaticPickupMarkers").hide()
@@ -96,6 +92,32 @@ func show_controls() -> void:
 	if hud != null:
 		hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · Q power · E use\nLMB fire · RMB ADS · Z/MMB alt · R reload · F melee · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release"
 
+## Map-family seams. The base scene composes the three source Horde maps. The
+## identity composition (res://native_arenas/identity_horde_demo.gd) overrides
+## these and the view layers only, so presentation, first person/ADS, pickups,
+## combat, effects and HUD remain the shared session's code.
+func build_view_layers() -> void:
+	add_child(camera)
+	add_child(sun)
+	add_child(environment)
+	camera.far = 2000
+	camera.rotation_order = EULER_ORDER_YXZ
+
+func open_catalog() -> bool:
+	return catalog.open()
+
+func map_ids() -> Array:
+	return catalog.entries.keys()
+
+func default_map_id() -> String:
+	return MAPS[0]
+
+func map_supports_horde(id: String) -> bool:
+	return id in MAPS and catalog.entries.has(id) and "horde" in catalog.entries[id].modes
+
+func load_selected_map(id: String) -> bool:
+	return load_map(id)
+
 func update_look(relative: Vector2) -> void:
 	if not can_capture_pointer() or not relative.is_finite(): return
 	var angles := controls.look(yaw, pitch, relative)
@@ -106,7 +128,7 @@ func aim_requested() -> bool:
 	return can_capture_pointer() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and controls.mouse.has(MOUSE_BUTTON_RIGHT)
 
 func release_pointer() -> void:
-	controls.clear()
+	controls.focus(false)
 	if phase == 3 and horde_client.input_epoch > 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		horde_client.send_controls({}, true) # immediate FIFO cancellation, not a fire release
 	super.release_pointer()
@@ -183,6 +205,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	# Local specialization of session's handshake/watch/send loop. Shared session
 	# keeps its old contract; this scene samples source press/hold controls instead.
+	controls.focused = application_focused
 	if not advance_handshake(delta): return
 	elapsed += delta
 	if phase == 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN: begin_room()

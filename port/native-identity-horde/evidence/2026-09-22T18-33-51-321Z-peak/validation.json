@@ -1,0 +1,169 @@
+{
+  "status": "PASS",
+  "scenario": "peak",
+  "map": "nacre-engine",
+  "waves": 10,
+  "correlated": 2670,
+  "receipts": 2693,
+  "ackHighWater": 2683,
+  "steppedSamples": 2515,
+  "clockDiagnostic": {
+    "sourceSeconds": 132.78333333333117,
+    "wallSeconds": 132.76937521
+  },
+  "wavesSeen": 5,
+  "cleared": 4,
+  "upgradeOffers": 3,
+  "approaches": [
+    {
+      "wave": 1,
+      "from": 45.88859925067895,
+      "to": 9.502679897451749,
+      "samples": 308
+    },
+    {
+      "wave": 2,
+      "from": 27.56157378762554,
+      "to": 16.099955669363613,
+      "samples": 142
+    },
+    {
+      "wave": 3,
+      "from": 24.85140207424462,
+      "to": 15.885280206922562,
+      "samples": 230
+    },
+    {
+      "wave": 4,
+      "from": 13.327686628371813,
+      "to": 8.510107778619727,
+      "samples": 790
+    },
+    {
+      "wave": 5,
+      "from": 25.510595549384412,
+      "to": 17.463446625510294,
+      "samples": 403
+    }
+  ],
+  "capsule": {
+    "radius": 0.42,
+    "height": 1.8,
+    "neededWidth": 0.84,
+    "source": "game/data.mjs RULES via game/core.mjs obstructed(); identical for humans and NPCs"
+  },
+  "navNarrowestEdgeWidth": 4.0718749999999995,
+  "approachMinWidth": 5.481250000000001,
+  "traversedMinimum": {
+    "clearance": 0.4200841784477234,
+    "clearanceWidth": 0.8401683568954468,
+    "channelWidth": 3.4984375,
+    "capped": false,
+    "npc": 1,
+    "npcType": "husk",
+    "wave": 1,
+    "x": -25.211019122266556,
+    "z": -16.118709825745448,
+    "freeWidth": 0.8401683568954468
+  },
+  "traversedChannel": {
+    "clearance": 0.9248034954071045,
+    "clearanceWidth": 1.849606990814209,
+    "channelWidth": 2.0171875,
+    "capped": false,
+    "npc": 2,
+    "npcType": "husk",
+    "wave": 1,
+    "x": -29.07519637638111,
+    "z": -16.762484565797617
+  },
+  "cadence": {
+    "fps_at_peak_avg": 16.4,
+    "fps_at_peak_samples": 5,
+    "fps_avg": 19.8174273858921,
+    "fps_median": 18,
+    "fps_min": 3,
+    "peak_actors": 11,
+    "peak_alive": 10,
+    "resolution": [
+      960,
+      640
+    ],
+    "samples": 241,
+    "snapshots_applied_high_water": 2651,
+    "snapshots_received": 2,
+    "software_xvfb": true,
+    "wall": 129.621861471862
+  },
+  "waveSummary": {
+    "cleared": 4,
+    "cleared_waves": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "deaths": 3,
+    "life_losses": [
+      2,
+      1,
+      0
+    ],
+    "outcome": "lost",
+    "upgrade_offers": [
+      3,
+      4,
+      5
+    ],
+    "waves_seen": [
+      {
+        "alive": 3,
+        "lives": 3,
+        "modifier": "SWARM",
+        "t": 6.35900866666666,
+        "total": 3,
+        "wave": 1
+      },
+      {
+        "alive": 4,
+        "lives": 2,
+        "modifier": "MIXED",
+        "t": 29.0807896666666,
+        "total": 4,
+        "wave": 2
+      },
+      {
+        "alive": 5,
+        "lives": 2,
+        "modifier": "ARTILLERY",
+        "t": 42.9333333333335,
+        "total": 5,
+        "wave": 3
+      },
+      {
+        "alive": 7,
+        "lives": 2,
+        "modifier": "SHIELDED",
+        "t": 61.3663993333331,
+        "total": 7,
+        "wave": 4
+      },
+      {
+        "alive": 10,
+        "lives": 1,
+        "modifier": "MIXED",
+        "t": 109.896677666667,
+        "total": 10,
+        "wave": 5
+      }
+    ]
+  },
+  "open": [
+    "peak-load cadence 16.4 fps at 10 simultaneous NPCs vs 19.8 fps overall (software Xvfb, no GPU)",
+    "endless (no adapter contract)",
+    "boss wave (not reached inside the bound)",
+    "ten-wave completion (not reached inside the bound)"
+  ],
+  "nativeTraceCompletionProven": true,
+  "productComposition": true
+}

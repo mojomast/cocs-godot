@@ -44,6 +44,27 @@ func _initialize() -> void:
 			push_error("Source default ADS look gain differs")
 			quit(1)
 			return
+	# Shared combat composition gates its effect stack on `controls.focused`
+	# (godot/world/combat_feedback.gd `_allowed`); a focus transition must also
+	# drop held controls rather than resuming them silently.
+	var focus_model := Controls.new()
+	if not focus_model.focused:
+		push_error("Horde controls must start focused")
+		quit(1)
+		return
+	focus_model.keys[KEY_W] = true
+	focus_model.mouse[MOUSE_BUTTON_LEFT] = true
+	focus_model.focus(false)
+	if focus_model.focused or not focus_model.keys.is_empty() or not focus_model.mouse.is_empty():
+		push_error("Focus transition must clear held controls")
+		quit(1)
+		return
+	focus_model.focus(true)
+	if not focus_model.focused:
+		push_error("Focus transition did not restore focus")
+		quit(1)
+		return
+	print("HORDE_FOCUS_OK samples=1 focused=", focus_model.focused)
 	print("HORDE_SOURCE_INPUT_OK samples=", count)
 	print("HORDE_SOURCE_LOOK_OK samples=", vectors.lookCases.size())
 	quit()
