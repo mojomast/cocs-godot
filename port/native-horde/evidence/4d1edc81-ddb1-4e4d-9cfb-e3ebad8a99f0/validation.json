@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scenario": "combat",
+  "correlated": 399,
+  "receipts": 358,
+  "ackHighWater": 351,
+  "won": true,
+  "deaths": false,
+  "eventTypes": [
+    "spawn",
+    "husk",
+    "spitter",
+    "horde-wave",
+    "move-blocked",
+    "shot",
+    "pickup",
+    "damage",
+    "weapon-switch",
+    "grenade",
+    "death",
+    "explosion",
+    "killstreak",
+    "horde-wave-cleared",
+    "horde-resupply",
+    "horde-summary",
+    "mission-won"
+  ],
+  "nativeTraceCompletionProven": false
+}

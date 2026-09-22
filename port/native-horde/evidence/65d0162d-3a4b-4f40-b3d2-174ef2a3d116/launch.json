@@ -1,0 +1,38 @@
+{
+  "base": "3645efdab87870d1dea1548729e2269fbc9ba8f1",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "binary": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "engineSHA256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "hashes": {
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/singleplayer.mjs": "817e1e5c955d52f85dce4f003c68a6f0bd93b68c38029a43e902aaa0078d2aea",
+    "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/horde/demo.gd": "353887336d5b2f9b5fc51e3c29008b6785ab4ed577204c572573ef64c38c8abb",
+    "godot/horde/model.gd": "9f38d9156617a8138ff8fed06f1e821a4a7651dfa402a99622da32d545721dee",
+    "godot/tests/horde/live.gd": "58d169f92d4cb8fc278296da9b32f25d91a04366557d03dad616468cad340303",
+    "port/native-horde/authority.mjs": "7a9b4d7f74c592132c12c926be4c5b765b661e1b9e18905ccc72289c4110bcff",
+    "port/native-horde/run.mjs": "22b4e78815e08319095c1f37377d23e3720ff05009baa1c6b88eca4b49617883"
+  },
+  "argv": [
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "960x640",
+    "--path",
+    "godot",
+    "res://tests/horde/live.tscn",
+    "--",
+    "--map=ember-crucible",
+    "--endpoint=ws://127.0.0.1:40455",
+    "--waves=1",
+    "--horde-evidence",
+    "--native-trace",
+    "--scenario=startup",
+    "--screenshot=/tmp/opencode/cocs-native-horde/port/native-horde/evidence/65d0162d-3a4b-4f40-b3d2-174ef2a3d116/gameplay.png"
+  ],
+  "normalRate": true,
+  "localOnly": true,
+  "scenario": "startup",
+  "map": "ember-crucible"
+}

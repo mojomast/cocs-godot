@@ -1,0 +1,296 @@
+[
+  {
+    "id": "0a9bf1c1-444b-42af-87c0-db9c7a25ce9b",
+    "exit": 0,
+    "reason": "native scenario completed",
+    "map": "ember-crucible",
+    "scenario": "startup",
+    "cleanup": [
+      {
+        "pid": 3187906,
+        "reaped": true,
+        "absent": true
+      },
+      {
+        "pid": 3187910,
+        "reaped": true,
+        "absent": true
+      }
+    ],
+    "serverClosed": true,
+    "sockets": 0,
+    "temporaryTreeRemoved": true,
+    "done": [
+      {
+        "blocked_seen": false,
+        "dead_seen": false,
+        "message": "received actual wave and enemies",
+        "ok": true,
+        "respawn_seen": false,
+        "scenario": "startup"
+      }
+    ],
+    "validation": {
+      "status": "PASS",
+      "scenario": "startup",
+      "correlated": 149,
+      "receipts": 124,
+      "ackHighWater": 123,
+      "won": false,
+      "deaths": false,
+      "eventTypes": [
+        "spawn",
+        "husk",
+        "spitter",
+        "horde-wave",
+        "powerup",
+        "pickup"
+      ],
+      "nativeTraceCompletionProven": false
+    }
+  },
+  {
+    "id": "267efa5b-8bfe-4870-9c18-c559f3322787",
+    "exit": 1,
+    "reason": "native scenario failed",
+    "map": "meridian-exchange",
+    "scenario": "combat",
+    "cleanup": [
+      {
+        "pid": 3171834,
+        "reaped": true,
+        "absent": true
+      },
+      {
+        "pid": 3171840,
+        "reaped": true,
+        "absent": true
+      }
+    ],
+    "serverClosed": true,
+    "sockets": 0,
+    "temporaryTreeRemoved": true,
+    "done": [
+      {
+        "blocked_seen": false,
+        "dead_seen": false,
+        "message": "Invalid local lifecycle command",
+        "ok": false,
+        "respawn_seen": false,
+        "scenario": "combat"
+      }
+    ],
+    "validation": null
+  },
+  {
+    "id": "4d1edc81-ddb1-4e4d-9cfb-e3ebad8a99f0",
+    "exit": 0,
+    "reason": "native scenario completed",
+    "map": "meridian-exchange",
+    "scenario": "combat",
+    "cleanup": [
+      {
+        "pid": 3187449,
+        "reaped": true,
+        "absent": true
+      },
+      {
+        "pid": 3187458,
+        "reaped": true,
+        "absent": true
+      }
+    ],
+    "serverClosed": true,
+    "sockets": 0,
+    "temporaryTreeRemoved": true,
+    "done": [
+      {
+        "blocked_seen": false,
+        "dead_seen": false,
+        "message": "results and clean restart observed",
+        "ok": true,
+        "respawn_seen": false,
+        "scenario": "combat"
+      }
+    ],
+    "validation": {
+      "status": "PASS",
+      "scenario": "combat",
+      "correlated": 399,
+      "receipts": 358,
+      "ackHighWater": 351,
+      "won": true,
+      "deaths": false,
+      "eventTypes": [
+        "spawn",
+        "husk",
+        "spitter",
+        "horde-wave",
+        "move-blocked",
+        "shot",
+        "pickup",
+        "damage",
+        "weapon-switch",
+        "grenade",
+        "death",
+        "explosion",
+        "killstreak",
+        "horde-wave-cleared",
+        "horde-resupply",
+        "horde-summary",
+        "mission-won"
+      ],
+      "nativeTraceCompletionProven": false
+    }
+  },
+  {
+    "id": "5771ef43-a3d5-4bcb-b63b-7759fcb47824",
+    "exit": 0,
+    "reason": "native scenario completed",
+    "map": "verdant-reliquary",
+    "scenario": "death",
+    "cleanup": [
+      {
+        "pid": 3214055,
+        "reaped": true,
+        "absent": true
+      },
+      {
+        "pid": 3214063,
+        "reaped": true,
+        "absent": true
+      }
+    ],
+    "serverClosed": true,
+    "sockets": 0,
+    "temporaryTreeRemoved": true,
+    "done": [
+      {
+        "blocked_seen": true,
+        "dead_seen": true,
+        "message": "natural life loss and fresh respawn capture",
+        "ok": true,
+        "respawn_seen": true,
+        "scenario": "death"
+      }
+    ],
+    "validation": {
+      "status": "PASS",
+      "scenario": "death",
+      "correlated": 553,
+      "receipts": 1487,
+      "ackHighWater": 1486,
+      "won": false,
+      "deaths": true,
+      "eventTypes": [
+        "spawn",
+        "husk",
+        "spitter",
+        "horde-wave",
+        "pickup",
+        "grenade",
+        "power",
+        "damage",
+        "melee",
+        "explosion",
+        "shot",
+        "weapon-switch",
+        "death",
+        "singleplayer-life"
+      ],
+      "nativeTraceCompletionProven": false
+    }
+  },
+  {
+    "id": "65d0162d-3a4b-4f40-b3d2-174ef2a3d116",
+    "exit": 1,
+    "reason": "native scenario failed",
+    "map": "ember-crucible",
+    "scenario": "startup",
+    "cleanup": [
+      {
+        "pid": 3157678,
+        "reaped": true,
+        "absent": true
+      },
+      {
+        "pid": 3157682,
+        "reaped": true,
+        "absent": true
+      }
+    ],
+    "serverClosed": true,
+    "sockets": 0,
+    "temporaryTreeRemoved": true,
+    "done": [
+      {
+        "blocked_seen": false,
+        "dead_seen": false,
+        "message": "received actual wave and enemies",
+        "ok": true,
+        "respawn_seen": false,
+        "scenario": "startup"
+      }
+    ],
+    "validation": null
+  },
+  {
+    "id": "88ba2aa4-7b04-495e-9bb7-f75d8f9db012",
+    "exit": 0,
+    "reason": "native scenario completed",
+    "map": "verdant-reliquary",
+    "scenario": "death",
+    "cleanup": [
+      {
+        "pid": 3182607,
+        "reaped": true,
+        "absent": true
+      },
+      {
+        "pid": 3182626,
+        "reaped": true,
+        "absent": true
+      }
+    ],
+    "serverClosed": true,
+    "sockets": 0,
+    "temporaryTreeRemoved": true,
+    "done": [
+      {
+        "blocked_seen": true,
+        "dead_seen": true,
+        "message": "natural life loss and fresh respawn capture",
+        "ok": true,
+        "respawn_seen": true,
+        "scenario": "death"
+      }
+    ],
+    "validation": {
+      "status": "PASS",
+      "scenario": "death",
+      "correlated": 518,
+      "receipts": 759,
+      "ackHighWater": 757,
+      "won": false,
+      "deaths": true,
+      "eventTypes": [
+        "spawn",
+        "husk",
+        "spitter",
+        "horde-wave",
+        "pickup",
+        "powerup",
+        "weapon-switch",
+        "power",
+        "damage",
+        "melee",
+        "grenade",
+        "shot",
+        "death",
+        "singleplayer-life",
+        "explosion"
+      ],
+      "nativeTraceCompletionProven": false
+    }
+  }
+]

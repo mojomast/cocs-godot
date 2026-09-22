@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "status": "implemented-partial-acceptance",
+  "base": "3645efdab87870d1dea1548729e2269fbc9ba8f1",
+  "branch": "subagent/native-horde",
+  "authority": "new local-only adapter around unchanged source Match; public Room rejects Horde and is unchanged",
+  "offline": {"node_adapter_validator": 14, "source_ui": 70, "native_horde": 15, "inherited_control_safety": 2497, "inherited_game_hud_session": "PASS", "aggregate_run": false},
+  "accepted_evidence": {
+    "meridian_one_wave_combat_restart": "evidence/4d1edc81-ddb1-4e4d-9cfb-e3ebad8a99f0",
+    "verdant_life_loss_held_input_respawn": "evidence/5771ef43-a3d5-4bcb-b63b-7759fcb47824",
+    "ember_wave_startup": "evidence/0a9bf1c1-444b-42af-87c0-db9c7a25ce9b"
+  },
+  "attempts_per_scenario": {"combat": 2, "death": 2, "startup": 2},
+  "failed_or_superseded": {
+    "65d0162d-3a4b-4f40-b3d2-174ef2a3d116": "hidden selector initialization error, fixed",
+    "267efa5b-8bfe-4870-9c18-c559f3322787": "source victory then adapter rejected in-flight input at results, fixed",
+    "88ba2aa4-7b04-495e-9bb7-f75d8f9db012": "successful natural death but pre-death held-action criterion not exercised; superseded"
+  },
+  "normal_rate": true,
+  "one_wave_is_not_full_run": true,
+  "native_trace_completion_proven": false,
+  "visual_review": "BLOCKED: browser image-capable service HTTP 500",
+  "final_image_dimensions": [[960,640],[1280,800]],
+  "product_scene_headless_startup": "PASS; see product-smoke.json",
+  "limitations": ["human graphical playthrough pending", "actual OS focus and hardware audio pending", "ten-wave/endless/boss/defeat acceptance pending", "optional upgrade selection unsupported", "public multiplayer Horde unsupported", "common launcher/package integration proposed only", "no aggregate or Linux package build"],
+  "cleanup": "all owned native/display processes reaped and absent; listeners closed; sockets zero; private runtime trees removed"
+}

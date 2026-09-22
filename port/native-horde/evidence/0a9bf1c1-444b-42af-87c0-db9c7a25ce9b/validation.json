@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "scenario": "startup",
+  "correlated": 149,
+  "receipts": 124,
+  "ackHighWater": 123,
+  "won": false,
+  "deaths": false,
+  "eventTypes": [
+    "spawn",
+    "husk",
+    "spitter",
+    "horde-wave",
+    "powerup",
+    "pickup"
+  ],
+  "nativeTraceCompletionProven": false
+}

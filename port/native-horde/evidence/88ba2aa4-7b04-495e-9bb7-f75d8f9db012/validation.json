@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "scenario": "death",
+  "correlated": 518,
+  "receipts": 759,
+  "ackHighWater": 757,
+  "won": false,
+  "deaths": true,
+  "eventTypes": [
+    "spawn",
+    "husk",
+    "spitter",
+    "horde-wave",
+    "pickup",
+    "powerup",
+    "weapon-switch",
+    "power",
+    "damage",
+    "melee",
+    "grenade",
+    "shot",
+    "death",
+    "singleplayer-life",
+    "explosion"
+  ],
+  "nativeTraceCompletionProven": false
+}

@@ -1,0 +1,21 @@
+{
+  "exit": 1,
+  "reason": "native scenario failed",
+  "map": "meridian-exchange",
+  "scenario": "combat",
+  "cleanup": [
+    {
+      "pid": 3171834,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 3171840,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "serverClosed": true,
+  "sockets": 0,
+  "temporaryTreeRemoved": true
+}
