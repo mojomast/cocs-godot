@@ -8,7 +8,7 @@ branches does not establish a completed game port. Locked scope remains
 
 | Area | Synthetic/offline | Saved genuine evidence | Independently rerun live | Graphical / playable acceptance |
 |---|---|---|---|---|
-| Asset provenance/parity | Asset audit 9 tests pass; frozen source inventory and rights review integrated | Existing Meridian GLB probe | No original-art parity run in this integration | OPEN; diagnostic actors/pickups/world do not establish parity |
+| Asset provenance/parity | Asset audit 9 tests pass; frozen inventory/rights review; owned-render cleanup 4 tests pass | Original blank GLB and causal culling experiments retained | Meridian blank-sky cause independently reproduced at `70e9075`; four private graphical cases and numerical audit pass | Production export correction and original-art parity OPEN |
 | Gameplay catalog/analyzer/recorder | 29 tests pass, including loopback mock recorder | Sparse accelerated capture insufficient; new native death evidence below | Death milestone independently rerun; native rocket pickup reported PASS, sanitization review pending | Health pickup, nonlethal damage and broader playable scenarios OPEN |
 | Guest workflow | 7 harness tests pass | Historical final and failed runs archived losslessly | All four cases PASS at `86ef719`: positive, invalid room, actual 120s host wait timeout and HTTP-rejected handshake | Guest UI/results/focus acceptance separate |
 | Trace correlation | 13 tests pass; 11 synthetic, 2 real owned-process cleanup | Final historical run replayed: 333 snapshot / 647 input receipt matches | PASS at `86ef719`: 333 snapshot / 644 input receipt matches; disabled 0 trace records; deliberate timeout fails and cleans up | Neutral headless window only; native completion unproven |

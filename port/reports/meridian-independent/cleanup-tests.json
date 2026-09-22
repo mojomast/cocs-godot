@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "tests_run": 4,
+  "failures": [],
+  "errors": [],
+  "commands": [
+    {
+      "test": "test_normal_leader_exit_cleans_orphan",
+      "argv": [
+        "/usr/bin/python3",
+        "-c",
+        "import subprocess,sys; p=subprocess.Popen([sys.executable,'-c','import time; time.sleep(30)']); print(p.pid,flush=True)"
+      ],
+      "timed_out": false,
+      "signals": [
+        "SIGTERM"
+      ],
+      "observed_pids": [
+        2027902
+      ],
+      "remaining_pids": [],
+      "cleanup_complete": true,
+      "pgid": 2027901,
+      "returncode": 0,
+      "stdout": "2027902\n",
+      "stderr": "",
+      "duration_seconds": 0.06958456430584192
+    },
+    {
+      "test": "test_representative_private_native_command",
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/tmp/opencode/meridian-cleanup-test-2vss_snw/project",
+        "--script",
+        "res://bounded.gd"
+      ],
+      "timed_out": false,
+      "signals": [],
+      "observed_pids": [
+        2027913
+      ],
+      "remaining_pids": [],
+      "cleanup_complete": true,
+      "pgid": 2027903,
+      "returncode": 0,
+      "stdout": "Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org\nOpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)\n\nBOUNDED_NATIVE_OK\n",
+      "stderr": "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.\n     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)\n",
+      "duration_seconds": 0.4296534340828657
+    },
+    {
+      "test": "test_timeout_kills_and_reaps_real_xvfb_descendants",
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/usr/bin/python3",
+        "/tmp/opencode/meridian-cleanup-test-jcevzuw_/descendants.py",
+        "2"
+      ],
+      "timed_out": true,
+      "signals": [
+        "SIGTERM",
+        "SIGKILL"
+      ],
+      "observed_pids": [
+        2028172,
+        2028182,
+        2028185,
+        2028186,
+        2028187
+      ],
+      "remaining_pids": [],
+      "cleanup_complete": true,
+      "pgid": 2028172,
+      "returncode": -15,
+      "stdout": "FIXTURE_PID=2028185\nFIXTURE_PID=2028186\nFIXTURE_PID=2028187\n",
+      "stderr": "",
+      "duration_seconds": 1.75616043061018
+    }
+  ]
+}

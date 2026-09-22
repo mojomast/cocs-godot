@@ -1,0 +1,67 @@
+{
+  "execution_commit": "70e9075dfb93a5cc25be8229d362d0e9f9a66835",
+  "archive_sha256": "25e13c4bf315aabc4d90efd10c105944a1ba6ce3d11b98f79553ef0dca5c7e82",
+  "archive_bytes": 808344,
+  "members": [
+    {
+      "path": "baseline.json",
+      "bytes": 122296,
+      "sha256": "75cea67ce8d7da5697bd044529c2d3f3fcf569ed216bee8092b4075aba836497"
+    },
+    {
+      "path": "baseline.log",
+      "bytes": 444,
+      "sha256": "1ed695c5b21e99f0a6c55c7c05c6056d7e0740e233c6d0b97294570146a286f9"
+    },
+    {
+      "path": "baseline.png",
+      "bytes": 46266,
+      "sha256": "930b9986a88517d4e7d575aae2c8c61be13c570617a738c3e77dfe9e05267611"
+    },
+    {
+      "path": "camera-inside.json",
+      "bytes": 122298,
+      "sha256": "ace9b287550acf21036bfc4baf918d1796545804c39404b6da725b997b7144e9"
+    },
+    {
+      "path": "camera-inside.log",
+      "bytes": 449,
+      "sha256": "4aad5702375338d1a6e52f577993a7f9406da4ffd2d30c6a733e3b6103fa9e6f"
+    },
+    {
+      "path": "camera-inside.png",
+      "bytes": 381493,
+      "sha256": "86fc4f1ea4eb97576b5d24b3eb9af28f6bfee901e27e93b319074a022cec4fc1"
+    },
+    {
+      "path": "run.json",
+      "bytes": 7570,
+      "sha256": "afc2dfa90de29680ecf6b0230153b67f39e9de5c83d98eafc621ba86889f120e"
+    },
+    {
+      "path": "semantic.log",
+      "bytes": 375,
+      "sha256": "985163828c70826088cc06a83fe2736ea4c34543ad2d0322cb1c77d5f0313715"
+    },
+    {
+      "path": "semantic.png",
+      "bytes": 57669,
+      "sha256": "1403d796eb6bfac3452a323ff136dad652e617424f6de01e226b5ffd3c839dad"
+    },
+    {
+      "path": "source-cull-only.json",
+      "bytes": 122304,
+      "sha256": "85ebbcec8ba870bc7f38ec02145b88d57165653ba4ce3613c6c0990ca51b20a1"
+    },
+    {
+      "path": "source-cull-only.log",
+      "bytes": 452,
+      "sha256": "b0787e6cb1d74e89d85d2ca1535c51a6758a4e1dd17df7f259c66fddfeebea4a"
+    },
+    {
+      "path": "source-cull-only.png",
+      "bytes": 287716,
+      "sha256": "eb49c7559baefa10820de86b12582dbb7f28f7aa287ebd1b59cbfddfe2e7b4b4"
+    }
+  ]
+}
