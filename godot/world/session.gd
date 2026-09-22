@@ -2,6 +2,10 @@ extends "res://world/viewer.gd"
 
 const Client = preload("res://net/client.gd")
 const ControlMath = preload("res://world/control_math.gd")
+const MatchSetup = preload("res://ui/match_setup.gd")
+var selected_mode: String = "deathmatch"
+var endpoint: String = ""
+var setup_menu: Control
 
 func can_capture_pointer() -> bool:
 	# Application focus notifications may lag the window's focus state (X11).
@@ -130,10 +134,11 @@ func advance_handshake(delta: float) -> bool:
 func _ready() -> void:
 	super._ready()
 	if not catalog.entries.has("meridian-exchange"): return
-	load_map("meridian-exchange")
-	world.get_node("StaticPickupMarkers").hide()
 	add_child(pickups)
 	selector.disabled = true
+	selector.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.get_parent().mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(client)
 	add_child(presentation)
 	add_child(combat)
@@ -144,7 +149,19 @@ func _ready() -> void:
 		if phase == 3: combat.apply_events(items, client.actor_id))
 	presentation.interpolate_remote = true
 	camera.rotation_order = EULER_ORDER_YXZ
-	var endpoint: String = ""
+	trace_enabled = "--native-trace" in OS.get_cmdline_user_args()
+	smoke = "--session-smoke" in OS.get_cmdline_user_args()
+	lifecycle_smoke = "--lifecycle-smoke" in OS.get_cmdline_user_args()
+	var options := MatchSetup.parse_args(OS.get_cmdline_user_args(), catalog.entries)
+	if not options.error.is_empty():
+		on_error(options.error)
+		return
+	selected_mode = options.mode
+	if not load_map(options.map):
+		on_error(catalog.error)
+		return
+	world.get_node("StaticPickupMarkers").hide()
+	selector.select(ids.find(current_id))
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
 		if arg.begins_with("--join-room="):
@@ -152,9 +169,6 @@ func _ready() -> void:
 			if join_room_id.is_empty():
 				on_error("Join room ID must not be empty")
 				return
-	trace_enabled = "--native-trace" in OS.get_cmdline_user_args()
-	smoke = "--session-smoke" in OS.get_cmdline_user_args()
-	lifecycle_smoke = "--lifecycle-smoke" in OS.get_cmdline_user_args()
 	if not join_room_id.is_empty() and (smoke or lifecycle_smoke):
 		on_error("Guest mode cannot be combined with automatic smoke controls")
 		return
@@ -175,6 +189,36 @@ func _ready() -> void:
 				on_error("Results did not disable controls")
 				return
 			request_restart())
+	if options.setup:
+		phase = -2 # Waiting for local choice: no connection and no handshake timer.
+		setup_menu = MatchSetup.new()
+		label.get_parent().get_parent().add_child(setup_menu)
+		setup_menu.configure(catalog.entries, current_id, selected_mode)
+		setup_menu.start_requested.connect(start_selected_match)
+		label.hide()
+		selector.hide()
+	else:
+		connect_selected_match()
+
+func start_selected_match(map_id: String, mode: String) -> void:
+	if phase != -2: return
+	var problem := MatchSetup.validate(catalog.entries, map_id, mode)
+	if not problem.is_empty():
+		on_error(problem)
+		return
+	if not load_map(map_id):
+		on_error(catalog.error)
+		return
+	world.get_node("StaticPickupMarkers").hide()
+	selected_mode = mode
+	selector.select(ids.find(current_id))
+	setup_menu.hide()
+	label.show()
+	selector.show()
+	connect_selected_match()
+
+func connect_selected_match() -> void:
+	phase = 0
 	if endpoint.is_empty() or client.connect_server(endpoint, catalog.entries, current_id) != OK:
 		on_error("A local launcher endpoint is required")
 		return
@@ -197,6 +241,8 @@ func on_started(_frame: Dictionary) -> void:
 	emit_boundary_trace("round_start")
 
 func on_error(message: String) -> void:
+	if is_instance_valid(setup_menu): setup_menu.hide()
+	label.show()
 	snapshot_watch.reset()
 	phase = -1
 	presentation.clear_round()
@@ -218,6 +264,8 @@ func on_lobby(frame: Dictionary) -> void:
 		received_pose = false
 		send_elapsed = 0.0
 		release_pointer()
+	if not join_room_id.is_empty() and frame.get("config") is Dictionary:
+		selected_mode = str(frame.config.get("mode", selected_mode))
 	if phase == 10:
 		phase = 11
 		label.text = "Joined room. Waiting for host start (120-second limit)…"
@@ -225,14 +273,18 @@ func on_lobby(frame: Dictionary) -> void:
 	if phase == 1:
 		var queued: Error
 		if lifecycle_smoke:
-			queued = client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":"deathmatch","botCount":2,"timeLimit":60,"fragLimit":100}})
+			queued = client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":selected_mode,"botCount":2,"timeLimit":60,"fragLimit":100}})
 		else:
-			queued = client.configure_match("deathmatch", 2)
+			queued = client.configure_match(selected_mode, 2)
 		if queued != OK:
 			on_error("Match configuration could not be queued. Relaunch to reconnect.")
 			return
 		phase = 2
 	elif phase == 2 and frame.get("config") != null:
+		# Check an echoed mode without broadening the existing partial-envelope contract.
+		if not frame.config is Dictionary or (frame.config.has("mode") and frame.config.mode != selected_mode):
+			on_error("Authority returned a different match mode; start cancelled.")
+			return
 		if client.send_frame({"type":"start"}) != OK:
 			on_error("Initial round start could not be queued. Relaunch to reconnect.")
 			return
@@ -274,9 +326,10 @@ func on_snapshot(frame: Dictionary) -> void:
 		print("PORT_LIFECYCLE_LIVE_OK starts=", round_starts, " results=", round_results, " restarted_actors=", presentation.actors.size(), " restarted_ack=", client.last_ack, " map=", current_id, " normal_rate=true")
 		client.disconnect_server()
 		get_tree().quit(0)
-	label.text = "NODE-AUTHORITATIVE PROTOTYPE · diagnostic geometry, no prediction\n" + presentation.hud_text + "\nClick: capture/fire · Esc: release · WASD: move · Space: jump · R: reload\nShift: sprint · Ctrl: crouch · E: interact · F: mobility | ACK %d" % client.last_ack
-	if smoke and combat.shots > 0 and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10 and not pickups.markers.is_empty() and not world.get_node("StaticPickupMarkers").visible:
-		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true combat_shots=", combat.shots)
+	label.text = "NODE-AUTHORITATIVE PROTOTYPE · %s\n" % selected_mode + presentation.hud_text + "\nClick: capture/fire · Esc: release · WASD: move · Space: jump · R: reload\nShift: sprint · Ctrl: crouch · E: interact · F: mobility | ACK %d" % client.last_ack
+	var smoke_pickups_ok: bool = pickups.markers.is_empty() if selected_mode == "instagib" else not pickups.markers.is_empty()
+	if smoke and combat.shots > 0 and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10 and smoke_pickups_ok and not world.get_node("StaticPickupMarkers").visible:
+		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true combat_shots=", combat.shots, " map=", current_id, " mode=", selected_mode)
 		client.disconnect_server()
 		get_tree().quit(0)
 

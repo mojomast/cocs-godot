@@ -1,0 +1,63 @@
+{
+  "normalRate": true,
+  "tickDt": 0.016666666666666666,
+  "tickMs": 16.666666666666668,
+  "observed": [
+    {
+      "requestedMap": "meridian-exchange",
+      "requestedMode": "deathmatch",
+      "authorityMap": "meridian-exchange",
+      "authorityMode": "deathmatch",
+      "actors": 3,
+      "snapshots": 9
+    },
+    {
+      "requestedMap": "meridian-exchange",
+      "requestedMode": "instagib",
+      "authorityMap": "meridian-exchange",
+      "authorityMode": "instagib",
+      "actors": 3,
+      "snapshots": 9
+    },
+    {
+      "requestedMap": "verdant-reliquary",
+      "requestedMode": "deathmatch",
+      "authorityMap": "verdant-reliquary",
+      "authorityMode": "deathmatch",
+      "actors": 3,
+      "snapshots": 9
+    },
+    {
+      "requestedMap": "verdant-reliquary",
+      "requestedMode": "instagib",
+      "authorityMap": "verdant-reliquary",
+      "authorityMode": "instagib",
+      "actors": 3,
+      "snapshots": 9
+    },
+    {
+      "requestedMap": "ember-crucible",
+      "requestedMode": "deathmatch",
+      "authorityMap": "ember-crucible",
+      "authorityMode": "deathmatch",
+      "actors": 3,
+      "snapshots": 9
+    },
+    {
+      "requestedMap": "ember-crucible",
+      "requestedMode": "instagib",
+      "authorityMap": "ember-crucible",
+      "authorityMode": "instagib",
+      "actors": 3,
+      "snapshots": 9
+    },
+    {
+      "requestedMap": "verdant-reliquary",
+      "requestedMode": "instagib",
+      "authorityMap": "verdant-reliquary",
+      "authorityMode": "instagib",
+      "actors": 3,
+      "snapshots": 13
+    }
+  ]
+}
