@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "kind": "cocs-release-run",
+  "run_id": "20260922T175153Z-2604162",
+  "tag": "release-pipeline-build-rehearsal-2026-09-22-e",
+  "target": "windows",
+  "mode": "dry-run",
+  "dry_run": true,
+  "argv": [
+    "--tag=release-pipeline-build-rehearsal-2026-09-22-e",
+    "--resume-from=publish"
+  ],
+  "state": "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-e",
+  "resume_from": "publish",
+  "stop_after": null,
+  "started_at": "2026-09-22T17:51:53.095Z",
+  "finished_at": "2026-09-22T17:51:53.096Z",
+  "status": "failed",
+  "exit_code": 1,
+  "head": "f6116818a8adbf0bae6148496099700fbbe5295c",
+  "branch": null,
+  "steps": [
+    {
+      "step": "preflight",
+      "status": "skipped-resume",
+      "duration_seconds": 0,
+      "detail": {
+        "detached": true,
+        "head": "f6116818a8adbf0bae6148496099700fbbe5295c",
+        "branch": null,
+        "package_state": "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-e/package-state",
+        "publication_remote": "godot",
+        "remote_url": "https://github.com/mojomast/cocs-godot.git",
+        "repository": "mojomast/cocs-godot",
+        "tag": {
+          "name": "release-pipeline-build-rehearsal-2026-09-22-e",
+          "free": true
+        },
+        "tree": {
+          "modified": [],
+          "exempted": [
+            "port/reports/arms-race-source.log",
+            "port/reports/aurora-traversal.json",
+            "port/reports/aurora-traversal.log",
+            "port/reports/blood-fx-stress.log",
+            "port/reports/ci-artifact-tests.log",
+            "port/reports/combined-arms-evidence.log",
+            "port/reports/export-tests.log",
+            "port/reports/gate-runner-tests.log",
+            "port/reports/glb-import.log",
+            "port/reports/gltf-sides.log",
+            "port/reports/godot-import.log",
+            "port/reports/graphics-fx.log",
+            "port/reports/health-hud-evidence.log",
+            "port/reports/horde-adapter.log",
+            "port/reports/horde-closure.log",
+            "port/reports/horde-ownership.log",
+            "port/reports/horde-source.log",
+            "port/reports/identity-prototype-graybox.log",
+            "port/reports/identity-prototype-oracle.log",
+            "port/reports/launcher-options.log",
+            "port/reports/lobby-options.log",
+            "port/reports/lobby-ownership.log",
+            "port/reports/moth-export.log",
+            "port/reports/native-arena-aurora.log",
+            "port/reports/native-arena-authority.log",
+            "port/reports/native-arena-cinder.log",
+            "port/reports/native-arena-maps.log",
+            "port/reports/native-arena-prism.log",
+            "port/reports/native-graphics-options.log",
+            "port/reports/native-graphics-ownership.log",
+            "port/reports/objective-completion-evidence.log",
+            "port/reports/objective-evidence.log",
+            "port/reports/objective-progression-evidence.log",
+            "port/reports/package-options.log",
+            "port/reports/particle-lab.log",
+            "port/reports/projectile-navigation.log",
+            "port/reports/showcase-startup.log",
+            "port/reports/source-tests.log",
+            "port/reports/verification.json",
+            "port/reports/zone-routing.log"
+          ],
+          "untracked": [
+            "port/native-identity-maps/evidence/graybox-1790098947366.json",
+            "port/native-identity-maps/evidence/ray-report-1790098949024.json"
+          ],
+          "allowed": [
+            "port/handoffs/procedural-model-generation-llm-research.md"
+          ],
+          "port_runtime_present": false
+        },
+        "godot_bin": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "godot_version": "4.5.2.stable.official.6ce3de25a",
+        "toolchain": {
+          "archives": {
+            "editor.zip": {
+              "path": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/editor.zip",
+              "bytes": 70517423,
+              "sha512": "e3ce6194b6d4d2dcef5e5b5136752c084d9d8b9071c10bc2d2011b947ec7439a257c8d23c541cb30699f16d9edea6dff36e6e84d2bec14a8fe9b4e9aacbe5a8d",
+              "official": "Godot_v{VERSION}-stable_linux.x86_64.zip"
+            },
+            "templates.tpz": {
+              "path": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/templates.tpz",
+              "bytes": 1353063159,
+              "sha512": "003aa33743f58fb657717f090fc872ed3975e48d08a6012201a2259970d458a63d4d8a83090585307c23455ebfa4e6e0050e1057761c34863536095e3fcfab6c",
+              "official": "Godot_v{VERSION}-stable_export_templates.tpz"
+            }
+          }
+        },
+        "notes": {
+          "path": "port/combat-expansion/RELEASE_NOTES.md",
+          "title": "COCS: DESTINATIONS — combat expansion (development prerelease)",
+          "bytes": 4573,
+          "sha256": "ff0f502c41a5b9a62d413b8c0c17decda9c6b9c37c08f6ef68b21e45b90958d8"
+        },
+        "workflow": {
+          "file": "windows-demo.yml",
+          "ref": "main"
+        },
+        "remote": {
+          "publish_branch": "main",
+          "remote_head": "a3fc3a0cc6c43dddff49ca7d5644f36c78e78336",
+          "head_on_remote": false,
+          "tag_target": "refs/heads/main"
+        }
+      },
+      "error": null,
+      "reused_from": "runs/20260922T175148Z-2603667/steps/01-preflight.json"
+    },
+    {
+      "step": "verification",
+      "status": "skipped-resume",
+      "duration_seconds": 0,
+      "detail": {},
+      "error": null,
+      "reused_from": "runs/20260922T175148Z-2603667/steps/02-verification.json"
+    }
+  ]
+}

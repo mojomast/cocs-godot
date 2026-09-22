@@ -1,18 +1,60 @@
-COCS release pipeline — tag=release-pipeline-build-rehearsal-2026-09-22-c target=windows mode=EXECUTE
-  state    /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-c (created, append-only)
-  run      runs/20260922T173738Z-2515118
+COCS release pipeline — tag=release-pipeline-build-rehearsal-2026-09-22-f target=windows mode=EXECUTE
+  state    /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f (created, append-only)
+  run      runs/20260922T175402Z-2615107
 [1/6] preflight
   warn     HEAD is detached; releasing the commit directly (no local branch recorded)
-  HEAD     bfa29e8cfa24 (detached)
-  tag      release-pipeline-build-rehearsal-2026-09-22-c is free on godot and in mojomast/cocs-godot
-  tree     clean (7 verification report file(s) exempt, 0 untracked recorded)
+  HEAD     0b12f97da096 (detached)
+  tag      release-pipeline-build-rehearsal-2026-09-22-f is free on godot and in mojomast/cocs-godot
+  warn     2 untracked non-runtime path(s) recorded: port/native-identity-maps/evidence/graybox-1790098947366.json, port/native-identity-maps/evidence/ray-report-1790098949024.json
+  tree     clean (40 verification report file(s) exempt, 2 untracked recorded)
   godot    4.5.2.stable.official.6ce3de25a (/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64)
   archive  editor.zip 67.3 MiB sha512 ✓
   archive  templates.tpz 1290.4 MiB sha512 ✓
   notes    port/combat-expansion/RELEASE_NOTES.md (4573 bytes) title "COCS: DESTINATIONS — combat expansion (development prerelease)"
   workflow windows-demo.yml on ref main (tag input present)
-  warn     frozen commit bfa29e8cfa24 is not on godot yet; the tag would target refs/heads/main instead
-  ✔ preflight 2.79s (ok)
+  warn     frozen commit 0b12f97da096 is not on godot yet; the tag would target refs/heads/main instead
+  ✔ preflight 2.74s (ok)
 [2/6] verification
-  freeze   bfa29e8cfa24 unchanged since preflight
+  freeze   0b12f97da096 unchanged since preflight
   env      GODOT_BIN, PORT=0, TMPDIR=/tmp/opencode, XDG_* under runtime
+  prepare  Playwright browsers: /home/mojo/.cache/ms-playwright
+  prepare  generating the missing axis-weapon GLB probe (as the CI workflow does)
+  prepare  generating the missing meridian-exchange GLB probe (as the CI workflow does)
+  prepare  axis-weapon, meridian-exchange ready
+  gates    138/138 passed on source 51289b79c627 (51 report files rewritten)
+  ✔ verification 424.33s (ok)
+[3/6] package
+  freeze   0b12f97da096 unchanged since preflight
+  state    /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state
+  archive  /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip
+  size     76.1 MiB  sha256 66aac17a8b4417ac…
+  manifest sha256 48884e866635335f…  port 0b12f97da096
+  ✔ package 26.65s (ok)
+  stopped after package as requested (--stop-after)
+
+Stopped after package as requested. Resume with:
+  node tools/release/release.mjs --tag=release-pipeline-build-rehearsal-2026-09-22-f --state=/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f --resume-from=<next-step> --execute
+summary: /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/runs/20260922T175402Z-2615107/summary.json
+COCS release pipeline — tag=release-pipeline-build-rehearsal-2026-09-22-f target=windows mode=DRY-RUN
+  state    /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f (resuming, append-only)
+  run      runs/20260922T180136Z-2664543
+[1/6] preflight — resumed from runs/20260922T175402Z-2615107/steps/01-preflight.json (ok)
+[2/6] verification — resumed from runs/20260922T175402Z-2615107/steps/02-verification.json (ok)
+[3/6] package — resumed from runs/20260922T175402Z-2615107/steps/03-package.json (ok)
+[4/6] publish
+  archive  /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip
+  target   refs/heads/main
+  DRY-RUN  gh release create release-pipeline-build-rehearsal-2026-09-22-f /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip.sha256 --repo mojomast/cocs-godot --title "COCS: DESTINATIONS — combat expansion (development prerelease)" --notes-file /tmp/opencode/cocs-release-rehearsal/port/combat-expansion/RELEASE_NOTES.md --prerelease --target refs/heads/main
+  ○ publish 0.33s (skipped-dry-run)
+[5/6] verify
+  DRY-RUN  gh workflow run windows-demo.yml --repo mojomast/cocs-godot --ref main -f tag=release-pipeline-build-rehearsal-2026-09-22-f
+  note     dry run: the hosted run URL only exists after an --execute publish
+  ○ verify 0s (skipped-dry-run)
+[6/6] push
+  DRY-RUN  git push godot 0b12f97da0963499f56a6914fb96bb192593e2f1:refs/heads/main
+  note     dry run: the push above is planned and only happens after a passing hosted run
+  ○ push 0s (skipped-dry-run)
+
+DRY RUN complete — no build, release, workflow dispatch or push was performed.
+Re-run with --execute to perform the 6 steps.
+summary: /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/runs/20260922T180136Z-2664543/summary.json

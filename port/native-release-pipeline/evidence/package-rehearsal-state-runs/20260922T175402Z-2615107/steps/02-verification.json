@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "step": "verification",
+  "index": 2,
+  "status": "ok",
+  "dry_run": false,
+  "started_at": "2026-09-22T17:54:05.674Z",
+  "finished_at": "2026-09-22T18:01:10.005Z",
+  "duration_seconds": 424.33,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.02,
+      "timed_out": false
+    },
+    {
+      "command": "node",
+      "args": [
+        "tools/godot-export/browser-export.mjs"
+      ],
+      "side_effect": true,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 5.56,
+      "timed_out": false
+    },
+    {
+      "command": "node",
+      "args": [
+        "tools/godot-export/browser-export.mjs",
+        "meridian-exchange"
+      ],
+      "side_effect": true,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 14.78,
+      "timed_out": false
+    },
+    {
+      "command": "python3",
+      "args": [
+        "tools/godot-dev/verify.py"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 403.94,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.03,
+      "timed_out": false
+    }
+  ],
+  "detail": {
+    "exit_code": 0,
+    "status": "passed",
+    "gates_total": 138,
+    "gates_passed": 138,
+    "failing_gates": [],
+    "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+    "report": "evidence/verification.json",
+    "probes_prepared": [
+      {
+        "probe": "axis-weapon",
+        "planned": false,
+        "command": "node tools/godot-export/browser-export.mjs"
+      },
+      {
+        "probe": "meridian-exchange",
+        "planned": false,
+        "command": "node tools/godot-export/browser-export.mjs meridian-exchange"
+      }
+    ],
+    "reports_rewritten": 51
+  }
+}

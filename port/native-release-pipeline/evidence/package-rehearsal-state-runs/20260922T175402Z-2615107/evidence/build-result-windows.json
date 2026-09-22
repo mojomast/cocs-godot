@@ -1,0 +1,9 @@
+{
+  "archive": "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip",
+  "archive_sha256": "66aac17a8b4417ac33381422e31a99f43c775973c0710cbc7da9045966f4fd25",
+  "manifest_sha256": "48884e866635335ff9b1c3d7381187679fc548e923a796ad09c8479232366d64",
+  "package": "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows",
+  "build": "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515",
+  "inputs_sha256": "99f5c8686b8c68b325ee4a4e96e4aeb9e00d1bc6f57211daaf38ad44a6803eb3",
+  "generated_resources_sha256": "c070b980cf555f17f39f4472b3200e58a1558ddcbae4613fc7b27664956a7be1"
+}

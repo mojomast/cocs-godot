@@ -1,0 +1,301 @@
+$ git rev-parse HEAD
+0b12f97da0963499f56a6914fb96bb192593e2f1
+$ git status --porcelain=v1 -uall
+ M port/reports/arms-race-source.log
+ M port/reports/aurora-traversal.json
+ M port/reports/aurora-traversal.log
+ M port/reports/blood-fx-stress.log
+ M port/reports/ci-artifact-tests.log
+ M port/reports/combined-arms-evidence.log
+ M port/reports/export-tests.log
+ M port/reports/gate-runner-tests.log
+ M port/reports/glb-import.log
+ M port/reports/gltf-sides.log
+ M port/reports/godot-import.log
+ M port/reports/graphics-fx.log
+ M port/reports/health-hud-evidence.log
+ M port/reports/horde-adapter.log
+ M port/reports/horde-closure.log
+ M port/reports/horde-ownership.log
+ M port/reports/horde-source.log
+ M port/reports/identity-prototype-graybox.log
+ M port/reports/identity-prototype-oracle.log
+ M port/reports/launcher-options.log
+ M port/reports/lobby-options.log
+ M port/reports/lobby-ownership.log
+ M port/reports/moth-export.log
+ M port/reports/native-arena-aurora.log
+ M port/reports/native-arena-authority.log
+ M port/reports/native-arena-cinder.log
+ M port/reports/native-arena-maps.log
+ M port/reports/native-arena-prism.log
+ M port/reports/native-graphics-options.log
+ M port/reports/native-graphics-ownership.log
+ M port/reports/objective-completion-evidence.log
+ M port/reports/objective-evidence.log
+ M port/reports/objective-progression-evidence.log
+ M port/reports/package-options.log
+ M port/reports/particle-lab.log
+ M port/reports/projectile-navigation.log
+ M port/reports/showcase-startup.log
+ M port/reports/source-tests.log
+ M port/reports/verification.json
+ M port/reports/zone-routing.log
+?? port/native-identity-maps/evidence/graybox-1790098947366.json
+?? port/native-identity-maps/evidence/ray-report-1790098949024.json
+$ node tools/godot-export/browser-export.mjs
+{
+  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "meshes": 43,
+  "instances": 2,
+  "batchedMeshes": 0,
+  "shaderMaterials": 0,
+  "nodes": 60,
+  "limitations": [
+    "onBeforeCompile effects and runtime animation not translated",
+    "standard-material fallback is not fidelity acceptance"
+  ],
+  "instance_policy": "expanded with transforms and colors; no EXT_mesh_gpu_instancing",
+  "material_side": {
+    "policy": "BackSide: reversed triangles, negated normals, tangent handedness; FrontSide glTF material",
+    "meshes": 0,
+    "triangles": 0
+  },
+  "bytes": 158776,
+  "sha256": "fc9af5f80d6137feba014db9f2e1f9c1c477ed141bcbb1cd8add5ea7d3061d94",
+  "messages": []
+}
+$ node tools/godot-export/browser-export.mjs meridian-exchange
+{
+  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "meshes": 86,
+  "instances": 68,
+  "batchedMeshes": 0,
+  "shaderMaterials": 0,
+  "nodes": 88,
+  "limitations": [
+    "onBeforeCompile effects and runtime animation not translated",
+    "standard-material fallback is not fidelity acceptance"
+  ],
+  "instance_policy": "expanded with transforms and colors; no EXT_mesh_gpu_instancing",
+  "material_side": {
+    "policy": "BackSide: reversed triangles, negated normals, tangent handedness; FrontSide glTF material",
+    "meshes": 2,
+    "triangles": 3488
+  },
+  "environment": {
+    "background": "575777",
+    "fog": {
+      "color": "575777",
+      "density": 0.0045
+    }
+  },
+  "bytes": 2060200,
+  "sha256": "f777aeb151e4724758742dcc9d15e7d94e47e7cc80bfaf4948b4dc770844e0e7",
+  "messages": [
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "GLTFExporter: Use MeshStandardMaterial or MeshBasicMaterial for best results.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "[.WebGL-0x2fac01309c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+  ]
+}
+$ python3 tools/godot-dev/verify.py
+gate-runner-tests: PASS
+ci-artifact-tests: PASS
+export-tests: PASS
+moth-export: PASS
+gltf-sides: PASS
+health-hud-evidence: PASS
+projectile-navigation: PASS
+objective-evidence: PASS
+objective-progression-evidence: PASS
+objective-completion-evidence: PASS
+launcher-options: PASS
+package-options: PASS
+native-graphics-options: PASS
+native-graphics-ownership: PASS
+lobby-options: PASS
+lobby-ownership: PASS
+horde-closure: PASS
+native-arena-authority: PASS
+horde-ownership: PASS
+zone-routing: PASS
+combined-arms-evidence: PASS
+semantic-export: PASS
+source-tests: PASS
+arms-race-source: PASS
+horde-source: PASS
+horde-adapter: PASS
+horde-input-oracle: PASS
+godot-import: PASS
+viewer-smoke: PASS
+graphics-terrain: PASS
+moth-resources: PASS
+graphics-atmosphere: PASS
+graphics-fx: PASS
+moth-scenery: PASS
+shader-lab: PASS
+particle-lab: PASS
+showcase-startup: PASS
+aurora-traversal: PASS
+cinder-traversal: PASS
+exploration-walker: PASS
+first-person-rig: PASS
+first-person-binding: PASS
+first-person-ads: PASS
+combat-actions: PASS
+combat-shields: PASS
+combat-shield-capacity: PASS
+combat-particles: PASS
+combat-pickup-assets: PASS
+weapon-effects: PASS
+weapon-effects-rig: PASS
+weapon-handling: PASS
+weapon-detail: PASS
+player-fx-direction: PASS
+player-fx-low-health: PASS
+player-fx-lifecycle: PASS
+player-fx-impacts: PASS
+player-fx-overlay: PASS
+player-fx-integration: PASS
+blood-fx-contracts: PASS
+blood-fx-surfaces: PASS
+blood-fx-stress: PASS
+combat-integration-oracle: PASS
+combat-integration: PASS
+combat-combined-integration: PASS
+native-arena-maps: PASS
+native-arena-session: PASS
+native-arena-composition: PASS
+identity-prototype-graybox: PASS
+identity-prototype-oracle: PASS
+identity-prototype-rays: PASS
+identity-prototype-lifecycle: PASS
+native-arena-prism: PASS
+native-arena-aurora: PASS
+native-arena-cinder: PASS
+glb-import: PASS
+glb-sides: PASS
+input-queue: PASS
+protocol-envelopes: PASS
+packet-replay: PASS
+native-live: PASS
+presentation-replay: PASS
+round-boundaries: PASS
+native-lifecycle: PASS
+combat-feedback: PASS
+projectiles: PASS
+audio-feedback: PASS
+local-lifecycle: PASS
+pickup-presentation: PASS
+entity-visuals: PASS
+operator-geometry: PASS
+native-trace: PASS
+guest-session: PASS
+lobby-flow: PASS
+lobby-spectator-context: PASS
+match-selection: PASS
+scoreboard: PASS
+team-scores: PASS
+scoreboard-session: PASS
+game-hud: PASS
+game-hud-setup: PASS
+game-hud-debug: PASS
+puma-presentation: PASS
+zone-modes: PASS
+combined-arms-controls: PASS
+combined-arms-graphics: PASS
+arms-race: PASS
+horde-model: PASS
+horde-controls: PASS
+sports-controls: PASS
+sports-polish: PASS
+sports-progression: PASS
+soccer-guidance: PASS
+soccer-coaching: PASS
+sports-bearing: PASS
+lattice-adapter: PASS
+lattice-ui: PASS
+lattice-map: PASS
+lattice-economy: PASS
+lattice-world: PASS
+lattice-world-commands: PASS
+lattice-world-usability: PASS
+objective-renderer: PASS
+objective-controls: PASS
+objective-progression: PASS
+objective-input-timing: PASS
+payload-guidance: PASS
+payload-guidance-hud: PASS
+control-safety: PASS
+window-focus: PASS
+session-recovery: PASS
+stall-controls: PASS
+snapshot-watch: PASS
+native-session: PASS
+two-native-clients: PASS
+motion-impairment: PASS
+remote-motion: PASS
+All implemented gates passed. Visual fidelity and playable acceptance remain OPEN.
+$ git status --porcelain=v1 -uall
+ M port/reports/arms-race-source.log
+ M port/reports/audio-feedback.log
+ M port/reports/aurora-traversal.json
+ M port/reports/aurora-traversal.log
+ M port/reports/axis-weapon-glb.json
+ M port/reports/blood-fx-stress.log
+ M port/reports/ci-artifact-tests.log
+ M port/reports/combined-arms-evidence.log
+ M port/reports/combined-arms-graphics.log
+ M port/reports/export-tests.log
+ M port/reports/gate-runner-tests.log
+ M port/reports/gltf-sides.log
+ M port/reports/godot-import.log
+ M port/reports/graphics-fx.log
+ M port/reports/health-hud-evidence.log
+ M port/reports/horde-adapter.log
+ M port/reports/horde-closure.log
+ M port/reports/horde-ownership.log
+ M port/reports/horde-source.log
+ M port/reports/identity-prototype-graybox.log
+ M port/reports/identity-prototype-oracle.log
+ M port/reports/launcher-options.log
+ M port/reports/lobby-options.log
+ M port/reports/lobby-ownership.log
+ M port/reports/meridian-exchange-glb.json
+ M port/reports/moth-export.log
+ M port/reports/native-arena-aurora.log
+ M port/reports/native-arena-authority.log
+ M port/reports/native-arena-cinder.log
+ M port/reports/native-arena-maps.log
+ M port/reports/native-arena-prism.log
+ M port/reports/native-graphics-options.log
+ M port/reports/native-graphics-ownership.log
+ M port/reports/native-lifecycle.log
+ M port/reports/native-live.log
+ M port/reports/native-session.log
+ M port/reports/native-trace.log
+ M port/reports/objective-completion-evidence.log
+ M port/reports/objective-evidence.log
+ M port/reports/objective-progression-evidence.log
+ M port/reports/operator-geometry.log
+ M port/reports/package-options.log
+ M port/reports/particle-lab.log
+ M port/reports/projectile-navigation.log
+ M port/reports/release-refused.log
+ M port/reports/showcase-startup.log
+ M port/reports/source-tests.log
+ M port/reports/two-native-clients.json
+ M port/reports/two-native-clients.log
+ M port/reports/verification.json
+ M port/reports/zone-routing.log
+?? port/native-identity-maps/evidence/graybox-1790098947366.json
+?? port/native-identity-maps/evidence/graybox-1790099951471.json
+?? port/native-identity-maps/evidence/ray-report-1790098949024.json
+?? port/native-identity-maps/evidence/ray-report-1790099952873.json

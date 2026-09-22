@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "step": "package",
+  "index": 3,
+  "status": "ok",
+  "dry_run": false,
+  "started_at": "2026-09-22T18:01:10.006Z",
+  "finished_at": "2026-09-22T18:01:36.653Z",
+  "duration_seconds": 26.65,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.02,
+      "timed_out": false
+    },
+    {
+      "command": "python3",
+      "args": [
+        "tools/godot-package/build.py",
+        "--target",
+        "windows",
+        "--state",
+        "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state",
+        "--archive-directory",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain",
+        "--operator-models",
+        "source-operators"
+      ],
+      "side_effect": true,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 26.54,
+      "timed_out": false
+    }
+  ],
+  "detail": {
+    "target": "windows",
+    "archive": "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip",
+    "archive_bytes": 79827738,
+    "archive_sha256": "66aac17a8b4417ac33381422e31a99f43c775973c0710cbc7da9045966f4fd25",
+    "manifest_sha256": "48884e866635335ff9b1c3d7381187679fc548e923a796ad09c8479232366d64",
+    "port_commit": "0b12f97da0963499f56a6914fb96bb192593e2f1",
+    "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+    "inputs_sha256": "99f5c8686b8c68b325ee4a4e96e4aeb9e00d1bc6f57211daaf38ad44a6803eb3",
+    "generated_resources_sha256": "c070b980cf555f17f39f4472b3200e58a1558ddcbae4613fc7b27664956a7be1",
+    "build": "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515",
+    "command": "python3 tools/godot-package/build.py --target windows --state /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state --archive-directory /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain --operator-models source-operators",
+    "evidence": [
+      "evidence/build-result-windows.json",
+      "evidence/manifest.json",
+      "evidence/archive.sha256"
+    ]
+  }
+}

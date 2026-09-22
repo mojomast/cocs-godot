@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "step": "preflight",
+  "index": 1,
+  "status": "ok",
+  "dry_run": false,
+  "started_at": "2026-09-22T17:37:38.272Z",
+  "finished_at": "2026-09-22T17:37:41.065Z",
+  "duration_seconds": 2.79,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "--abbrev-ref",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.01,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "--is-shallow-repository"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "remote",
+        "get-url",
+        "godot"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "tag",
+        "--list",
+        "release-pipeline-build-rehearsal-2026-09-22-c"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "ls-remote",
+        "--tags",
+        "godot",
+        "refs/tags/release-pipeline-build-rehearsal-2026-09-22-c"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.25,
+      "timed_out": false
+    },
+    {
+      "command": "gh",
+      "args": [
+        "release",
+        "view",
+        "release-pipeline-build-rehearsal-2026-09-22-c",
+        "--repo",
+        "mojomast/cocs-godot",
+        "--json",
+        "tagName"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 1,
+      "duration_seconds": 0.4,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.04,
+      "timed_out": false
+    },
+    {
+      "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "args": [
+        "--version"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.02,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "ls-remote",
+        "--heads",
+        "godot"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.22,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "cat-file",
+        "-e",
+        "a3fc3a0cc6c43dddff49ca7d5644f36c78e78336^{commit}"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.01,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "merge-base",
+        "--is-ancestor",
+        "bfa29e8cfa2461763be7cd71c18e070a733d2540",
+        "a3fc3a0cc6c43dddff49ca7d5644f36c78e78336"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 1,
+      "duration_seconds": 0,
+      "timed_out": false
+    }
+  ],
+  "detail": {
+    "detached": true,
+    "head": "bfa29e8cfa2461763be7cd71c18e070a733d2540",
+    "branch": null,
+    "package_state": "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-c/package-state",
+    "publication_remote": "godot",
+    "remote_url": "https://github.com/mojomast/cocs-godot.git",
+    "repository": "mojomast/cocs-godot",
+    "tag": {
+      "name": "release-pipeline-build-rehearsal-2026-09-22-c",
+      "free": true
+    },
+    "tree": {
+      "modified": [],
+      "exempted": [
+        "port/reports/ci-artifact-tests.log",
+        "port/reports/export-tests.log",
+        "port/reports/gate-runner-tests.log",
+        "port/reports/gltf-sides.log",
+        "port/reports/health-hud-evidence.log",
+        "port/reports/moth-export.log",
+        "port/reports/verification.json"
+      ],
+      "untracked": [],
+      "allowed": [
+        "port/handoffs/procedural-model-generation-llm-research.md"
+      ],
+      "port_runtime_present": false
+    },
+    "godot_bin": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "godot_version": "4.5.2.stable.official.6ce3de25a",
+    "toolchain": {
+      "archives": {
+        "editor.zip": {
+          "path": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/editor.zip",
+          "bytes": 70517423,
+          "sha512": "e3ce6194b6d4d2dcef5e5b5136752c084d9d8b9071c10bc2d2011b947ec7439a257c8d23c541cb30699f16d9edea6dff36e6e84d2bec14a8fe9b4e9aacbe5a8d",
+          "official": "Godot_v{VERSION}-stable_linux.x86_64.zip"
+        },
+        "templates.tpz": {
+          "path": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/templates.tpz",
+          "bytes": 1353063159,
+          "sha512": "003aa33743f58fb657717f090fc872ed3975e48d08a6012201a2259970d458a63d4d8a83090585307c23455ebfa4e6e0050e1057761c34863536095e3fcfab6c",
+          "official": "Godot_v{VERSION}-stable_export_templates.tpz"
+        }
+      }
+    },
+    "notes": {
+      "path": "port/combat-expansion/RELEASE_NOTES.md",
+      "title": "COCS: DESTINATIONS — combat expansion (development prerelease)",
+      "bytes": 4573,
+      "sha256": "ff0f502c41a5b9a62d413b8c0c17decda9c6b9c37c08f6ef68b21e45b90958d8"
+    },
+    "workflow": {
+      "file": "windows-demo.yml",
+      "ref": "main"
+    },
+    "remote": {
+      "publish_branch": "main",
+      "remote_head": "a3fc3a0cc6c43dddff49ca7d5644f36c78e78336",
+      "head_on_remote": false,
+      "tag_target": "refs/heads/main"
+    }
+  }
+}

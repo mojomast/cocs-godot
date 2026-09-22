@@ -1,0 +1,5 @@
+$ git rev-parse HEAD
+0b12f97da0963499f56a6914fb96bb192593e2f1
+$ git tag --list release-pipeline-build-rehearsal-2026-09-22-f
+$ git ls-remote --tags godot refs/tags/release-pipeline-build-rehearsal-2026-09-22-f
+DRY-RUN gh release create release-pipeline-build-rehearsal-2026-09-22-f /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip.sha256 --repo mojomast/cocs-godot --title "COCS: DESTINATIONS — combat expansion (development prerelease)" --notes-file /tmp/opencode/cocs-release-rehearsal/port/combat-expansion/RELEASE_NOTES.md --prerelease --target refs/heads/main

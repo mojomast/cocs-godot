@@ -1,0 +1,61 @@
+$ git rev-parse HEAD
+c8ef0979695f2d6db21610a8f02e43872b2e6353
+$ git rev-parse --abbrev-ref HEAD
+HEAD
+$ git rev-parse --is-shallow-repository
+false
+$ git remote get-url godot
+https://github.com/mojomast/cocs-godot.git
+$ git tag --list release-pipeline-build-rehearsal-2026-09-22-d
+$ git ls-remote --tags godot refs/tags/release-pipeline-build-rehearsal-2026-09-22-d
+$ gh release view release-pipeline-build-rehearsal-2026-09-22-d --repo mojomast/cocs-godot --json tagName
+release not found
+$ git status --porcelain=v1 -uall
+ M port/reports/arms-race-source.log
+ M port/reports/aurora-traversal.json
+ M port/reports/aurora-traversal.log
+ M port/reports/blood-fx-stress.log
+ M port/reports/ci-artifact-tests.log
+ M port/reports/combined-arms-evidence.log
+ M port/reports/export-tests.log
+ M port/reports/gate-runner-tests.log
+ M port/reports/glb-import.log
+ M port/reports/gltf-sides.log
+ M port/reports/godot-import.log
+ M port/reports/graphics-fx.log
+ M port/reports/health-hud-evidence.log
+ M port/reports/horde-adapter.log
+ M port/reports/horde-closure.log
+ M port/reports/horde-ownership.log
+ M port/reports/horde-source.log
+ M port/reports/identity-prototype-graybox.log
+ M port/reports/identity-prototype-oracle.log
+ M port/reports/launcher-options.log
+ M port/reports/lobby-options.log
+ M port/reports/lobby-ownership.log
+ M port/reports/moth-export.log
+ M port/reports/native-arena-aurora.log
+ M port/reports/native-arena-authority.log
+ M port/reports/native-arena-cinder.log
+ M port/reports/native-arena-maps.log
+ M port/reports/native-arena-prism.log
+ M port/reports/native-graphics-options.log
+ M port/reports/native-graphics-ownership.log
+ M port/reports/objective-completion-evidence.log
+ M port/reports/objective-evidence.log
+ M port/reports/objective-progression-evidence.log
+ M port/reports/package-options.log
+ M port/reports/particle-lab.log
+ M port/reports/projectile-navigation.log
+ M port/reports/showcase-startup.log
+ M port/reports/source-tests.log
+ M port/reports/verification.json
+ M port/reports/zone-routing.log
+?? port/native-identity-maps/evidence/graybox-1790098947366.json
+?? port/native-identity-maps/evidence/ray-report-1790098949024.json
+$ /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --version
+4.5.2.stable.official.6ce3de25a
+$ git ls-remote --heads godot
+a3fc3a0cc6c43dddff49ca7d5644f36c78e78336	refs/heads/main
+$ git cat-file -e "a3fc3a0cc6c43dddff49ca7d5644f36c78e78336^{commit}"
+$ git merge-base --is-ancestor c8ef0979695f2d6db21610a8f02e43872b2e6353 a3fc3a0cc6c43dddff49ca7d5644f36c78e78336

@@ -10,7 +10,7 @@
 set -u
 WT=/tmp/opencode/cocs-release-rehearsal
 EVID=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-release-pipeline/evidence
-TAG=release-pipeline-build-rehearsal-2026-09-22-c
+TAG=release-pipeline-build-rehearsal-2026-09-22-f
 mkdir -p "$EVID"
 cd "$WT"
 date -u +%Y-%m-%dT%H:%M:%SZ > "$EVID/package-rehearsal-started-at.txt"

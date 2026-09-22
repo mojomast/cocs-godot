@@ -11,7 +11,7 @@ the current checkout, recording every run under `evidence/`.
 | `tools/release/release.mjs` | the six-step pipeline (preflight, verification, package, publish, verify, push) |
 | `tools/release/options.mjs` | argument parsing, defaults, `--help` |
 | `tools/release/options.test.mjs` | 6 argument tests |
-| `tools/release/release.test.mjs` | 17 state-machine tests with an injectable stub runner |
+| `tools/release/release.test.mjs` | 18 state-machine tests with an injectable stub runner |
 | `tools/release/README.md` | usage, safety model, state layout, manual fallback, what is not yet exercised |
 
 The pipeline calls `tools/godot-dev/verify.py` and `tools/godot-package/build.py` and
@@ -42,7 +42,7 @@ Every file under `evidence/` is a real run against this checkout, not a fixture.
 
 | File | Proves |
 |---|---|
-| `unit-tests.log` | 23 tests pass (6 argument, 17 state machine) with the runner stubbed |
+| `unit-tests.log` | 24 tests pass (6 argument, 18 state machine) with the runner stubbed |
 | `dry-run-worktree-console.log`, `dry-run-state-runs/` | the full six-step dry run: real preflight (HEAD, toolchain hashes, free tag), steps 2–6 printed and skipped, in 2.1 s, no side effect |
 | `dry-run-primary-*.log` | the same dry run on the primary working tree (see the note below) |
 | `refusal-dirty-tree.log`, `.json`, `-console.log` | a real refusal: two lanes' uncommitted runtime files stopped preflight before any side effect |
@@ -50,13 +50,33 @@ Every file under `evidence/` is a real run against this checkout, not a fixture.
 | `refusal-tag-behind-head-console.log`, `refusal-tag-behind-head-state-runs/` | an `--execute` refusal because the frozen commit is not on the publication remote yet; it must be pushed first or tagged deliberately with `--allow-tag-behind-head` |
 | `refusal-verification-failed-state-runs/` | a real gate failure (`gltf-sides` in a fresh worktree without `node_modules`) hard-stopped the pipeline with the failing gate named |
 | `refusal-command-timeout-*` | a real hard stop: the rehearsal caught `--verify-timeout` reaching the process layer as milliseconds |
-| `package-rehearsal-console.log`, `-state-runs/` | the real verifier and the real builder: 138/138 gates, ZIP + sidecar + manifest re-hashed, port commit checked, then a dry-run resume from `publish` |
+| `probe-generation-failures-state-runs/` | the three probe-generation failures that exposed finding 4: `glb-import` missing probes, then Chromium absent for the locked Playwright revision, then the redirected `XDG_CACHE_HOME` hiding it |
+| `package-rehearsal-console.log`, `-state-runs/` | the real thing: **138/138 gates** in 424 s (both GLB probes generated first), a **76.13 MiB** Windows ZIP whose SHA-256, sidecar and manifest were re-verified by the pipeline, the frozen port commit recorded, then a dry-run resume from `publish` that reused those records |
 | `run-dry-run.sh`, `run-package-rehearsal.sh` | the exact driver scripts, so every record can be reproduced |
+
+### The measured rehearsal, in numbers
+
+From the frozen commit `0b12f97d` (checked out clean in a worktree), one `--execute` run
+with `--stop-after=package`:
+
+| Step | Result | Time |
+|---|---|---|
+| preflight | HEAD recorded, 1.42 GiB of toolchain archives SHA-512 verified, tag free | 2.7 s |
+| verification | **138/138 gates passed**, exit 0, source `51289b79` | 424.3 s |
+| package | `cocs-native-windows.zip` 79,827,738 bytes (76.13 MiB), SHA-256 `66aac17a…`, manifest SHA-256 `48884e86…`, port commit `0b12f97d…`, inputs `99f5c868…`, generated resources `c070b980…` | 26.7 s |
+
+Then `--resume-from=publish` in the default dry run reused those three records — and
+none of the earlier work repeated — before printing the `gh release create`,
+`gh workflow run` and `git push` commands it deliberately did not run.
+
+The built archive stays outside git in the release state directory
+(`/tmp/opencode/cocs-release-<tag>/package-state/builds/<ns>/`); only its hashes are
+recorded here, and it is regenerable from the same commit.
 
 ### What the rehearsal found
 
-Three real defects were found by running the pipeline rather than only testing it, and
-all three are fixed and covered by tests:
+Four real defects were found by running the pipeline rather than only testing it; all
+four are fixed and covered by tests.
 
 1. `--verify-timeout`/`--package-timeout` were passed to the process layer as
    milliseconds instead of seconds, so the verifier was killed after 3.6 s. The exact
@@ -66,6 +86,12 @@ all three are fixed and covered by tests:
 3. A `--target=linux` release would have created the release and then used the Windows
    verification workflow and asset names. It now refuses at preflight unless a workflow
    is named explicitly or the run stops deliberately after `publish`.
+4. The aggregate verifier is not self-contained: it imports GLB probes under
+   `godot/content/probes/`, which `.gitignore` excludes, so a clean checkout dies at the
+   `glb-import` gate. The verification step now runs the same `browser-export.mjs` calls
+   as `.github/workflows/godot-native.yml` before the aggregate (`--prepare=never` opts
+   out), which is what makes "one command from a frozen tree" true on a fresh clone.
+   `refusal-verification-failed-state-runs/` is the original failure that exposed it.
 
 ### Where the rehearsal ran, and why
 

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "step": "publish",
+  "index": 4,
+  "status": "skipped-dry-run",
+  "dry_run": true,
+  "started_at": "2026-09-22T18:01:36.694Z",
+  "finished_at": "2026-09-22T18:01:37.026Z",
+  "duration_seconds": 0.33,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.01,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "tag",
+        "--list",
+        "release-pipeline-build-rehearsal-2026-09-22-f"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.01,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "ls-remote",
+        "--tags",
+        "godot",
+        "refs/tags/release-pipeline-build-rehearsal-2026-09-22-f"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.25,
+      "timed_out": false
+    },
+    {
+      "command": "gh",
+      "args": [
+        "release",
+        "create",
+        "release-pipeline-build-rehearsal-2026-09-22-f",
+        "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip",
+        "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip.sha256",
+        "--repo",
+        "mojomast/cocs-godot",
+        "--title",
+        "COCS: DESTINATIONS — combat expansion (development prerelease)",
+        "--notes-file",
+        "/tmp/opencode/cocs-release-rehearsal/port/combat-expansion/RELEASE_NOTES.md",
+        "--prerelease",
+        "--target",
+        "refs/heads/main"
+      ],
+      "side_effect": true,
+      "executed": false,
+      "planned": true,
+      "exit_code": null,
+      "duration_seconds": null,
+      "timed_out": false
+    }
+  ],
+  "detail": {
+    "planned": true,
+    "tag": "release-pipeline-build-rehearsal-2026-09-22-f",
+    "command": "gh release create release-pipeline-build-rehearsal-2026-09-22-f /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip.sha256 --repo mojomast/cocs-godot --title \"COCS: DESTINATIONS — combat expansion (development prerelease)\" --notes-file /tmp/opencode/cocs-release-rehearsal/port/combat-expansion/RELEASE_NOTES.md --prerelease --target refs/heads/main",
+    "assets": [
+      "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip",
+      "/tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-f/package-state/builds/1790100070068748515/cocs-native-windows.zip.sha256"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "step": "push",
+  "index": 6,
+  "status": "skipped-dry-run",
+  "dry_run": true,
+  "started_at": "2026-09-22T18:01:37.031Z",
+  "finished_at": "2026-09-22T18:01:37.035Z",
+  "duration_seconds": 0,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "push",
+        "godot",
+        "0b12f97da0963499f56a6914fb96bb192593e2f1:refs/heads/main"
+      ],
+      "side_effect": true,
+      "executed": false,
+      "planned": true,
+      "exit_code": null,
+      "duration_seconds": null,
+      "timed_out": false
+    }
+  ],
+  "detail": {
+    "planned": true,
+    "remote": "godot",
+    "refspec": "0b12f97da0963499f56a6914fb96bb192593e2f1:refs/heads/main",
+    "commit": "0b12f97da0963499f56a6914fb96bb192593e2f1"
+  }
+}

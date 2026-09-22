@@ -1,0 +1,3 @@
+$ git rev-parse HEAD
+0b12f97da0963499f56a6914fb96bb192593e2f1
+DRY-RUN git push godot 0b12f97da0963499f56a6914fb96bb192593e2f1:refs/heads/main

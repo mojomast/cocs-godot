@@ -1,0 +1,97 @@
+$ git rev-parse HEAD
+bfa29e8cfa2461763be7cd71c18e070a733d2540
+$ git status --porcelain=v1 -uall
+ M port/reports/ci-artifact-tests.log
+ M port/reports/export-tests.log
+ M port/reports/gate-runner-tests.log
+ M port/reports/gltf-sides.log
+ M port/reports/health-hud-evidence.log
+ M port/reports/moth-export.log
+ M port/reports/verification.json
+$ python3 tools/godot-dev/verify.py
+gate-runner-tests: PASS
+ci-artifact-tests: PASS
+export-tests: PASS
+moth-export: PASS
+gltf-sides: PASS
+health-hud-evidence: PASS
+projectile-navigation: PASS
+objective-evidence: PASS
+objective-progression-evidence: PASS
+objective-completion-evidence: PASS
+launcher-options: PASS
+package-options: PASS
+native-graphics-options: PASS
+native-graphics-ownership: PASS
+lobby-options: PASS
+lobby-ownership: PASS
+horde-closure: PASS
+native-arena-authority: PASS
+horde-ownership: PASS
+zone-routing: PASS
+combined-arms-evidence: PASS
+semantic-export: PASS
+source-tests: PASS
+arms-race-source: PASS
+horde-source: PASS
+horde-adapter: PASS
+horde-input-oracle: PASS
+godot-import: PASS
+viewer-smoke: PASS
+graphics-terrain: PASS
+moth-resources: PASS
+graphics-atmosphere: PASS
+graphics-fx: PASS
+moth-scenery: PASS
+shader-lab: PASS
+particle-lab: PASS
+showcase-startup: PASS
+aurora-traversal: PASS
+cinder-traversal: PASS
+exploration-walker: PASS
+first-person-rig: PASS
+first-person-binding: PASS
+first-person-ads: PASS
+combat-actions: PASS
+combat-shields: PASS
+combat-shield-capacity: PASS
+combat-particles: PASS
+combat-pickup-assets: PASS
+weapon-effects: PASS
+weapon-effects-rig: PASS
+weapon-handling: PASS
+weapon-detail: PASS
+player-fx-direction: PASS
+player-fx-low-health: PASS
+player-fx-lifecycle: PASS
+player-fx-impacts: PASS
+player-fx-overlay: PASS
+player-fx-integration: PASS
+blood-fx-contracts: PASS
+blood-fx-surfaces: PASS
+blood-fx-stress: PASS
+combat-integration-oracle: PASS
+combat-integration: PASS
+combat-combined-integration: PASS
+native-arena-maps: PASS
+native-arena-session: PASS
+native-arena-composition: PASS
+identity-prototype-graybox: PASS
+identity-prototype-oracle: PASS
+identity-prototype-rays: PASS
+identity-prototype-lifecycle: PASS
+native-arena-prism: PASS
+native-arena-aurora: PASS
+native-arena-cinder: PASS
+glb-import: FAIL
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: Can't open file at path "res://content/probes/axis-weapon/world.glb"
+   at: append_from_file (modules/gltf/gltf_document.cpp:8973)
+   GDScript backtrace (most recent call first):
+       [0] _initialize (res://tests/import.gd:7)
+ERROR: GLB import failed: axis-weapon
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] _initialize (res://tests/import.gd:9)
+

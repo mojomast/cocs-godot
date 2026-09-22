@@ -1,0 +1,64 @@
+$ git rev-parse HEAD
+c8ef0979695f2d6db21610a8f02e43872b2e6353
+$ git status --porcelain=v1 -uall
+ M port/reports/arms-race-source.log
+ M port/reports/aurora-traversal.json
+ M port/reports/aurora-traversal.log
+ M port/reports/blood-fx-stress.log
+ M port/reports/ci-artifact-tests.log
+ M port/reports/combined-arms-evidence.log
+ M port/reports/export-tests.log
+ M port/reports/gate-runner-tests.log
+ M port/reports/glb-import.log
+ M port/reports/gltf-sides.log
+ M port/reports/godot-import.log
+ M port/reports/graphics-fx.log
+ M port/reports/health-hud-evidence.log
+ M port/reports/horde-adapter.log
+ M port/reports/horde-closure.log
+ M port/reports/horde-ownership.log
+ M port/reports/horde-source.log
+ M port/reports/identity-prototype-graybox.log
+ M port/reports/identity-prototype-oracle.log
+ M port/reports/launcher-options.log
+ M port/reports/lobby-options.log
+ M port/reports/lobby-ownership.log
+ M port/reports/moth-export.log
+ M port/reports/native-arena-aurora.log
+ M port/reports/native-arena-authority.log
+ M port/reports/native-arena-cinder.log
+ M port/reports/native-arena-maps.log
+ M port/reports/native-arena-prism.log
+ M port/reports/native-graphics-options.log
+ M port/reports/native-graphics-ownership.log
+ M port/reports/objective-completion-evidence.log
+ M port/reports/objective-evidence.log
+ M port/reports/objective-progression-evidence.log
+ M port/reports/package-options.log
+ M port/reports/particle-lab.log
+ M port/reports/projectile-navigation.log
+ M port/reports/showcase-startup.log
+ M port/reports/source-tests.log
+ M port/reports/verification.json
+ M port/reports/zone-routing.log
+?? port/native-identity-maps/evidence/graybox-1790098947366.json
+?? port/native-identity-maps/evidence/ray-report-1790098949024.json
+$ node tools/godot-export/browser-export.mjs
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+browserType.launch: Executable doesn't exist at /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-d/runs/20260922T175121Z-2600668/runtime/cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell
+╔═════════════════════════════════════════════════════════════════════════╗
+║ Looks like Playwright Test or Playwright was just installed or updated. ║
+║ Please run the following command to download new browsers:              ║
+║                                                                         ║
+║     npx playwright install                                              ║
+║                                                                         ║
+║ <3 Playwright Team                                                      ║
+╚═════════════════════════════════════════════════════════════════════════╝
+    at /tmp/opencode/cocs-release-rehearsal/tools/godot-export/browser-export.mjs:12:25 {
+  name: 'Error'
+}
+
+Node.js v22.23.1

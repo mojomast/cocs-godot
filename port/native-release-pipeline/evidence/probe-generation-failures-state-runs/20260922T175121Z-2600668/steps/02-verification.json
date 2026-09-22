@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "step": "verification",
+  "index": 2,
+  "status": "failed",
+  "dry_run": false,
+  "started_at": "2026-09-22T17:51:24.466Z",
+  "finished_at": "2026-09-22T17:51:26.593Z",
+  "duration_seconds": 2.13,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.01,
+      "timed_out": false
+    },
+    {
+      "command": "git",
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0.03,
+      "timed_out": false
+    },
+    {
+      "command": "node",
+      "args": [
+        "tools/godot-export/browser-export.mjs"
+      ],
+      "side_effect": true,
+      "executed": true,
+      "planned": false,
+      "exit_code": 1,
+      "duration_seconds": 2.09,
+      "timed_out": false
+    }
+  ],
+  "detail": {},
+  "error": {
+    "code": "command-failed",
+    "message": "node tools/godot-export/browser-export.mjs exited 1",
+    "hint": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nbrowserType.launch: Executable doesn't exist at /tmp/opencode/cocs-release-release-pipeline-build-rehearsal-2026-09-22-d/runs/20260922T175121Z-2600668/runtime/cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝\n    at /tmp/opencode/cocs-release-rehearsal/tools/godot-export/browser-export.mjs:12:25 {\n  name: 'Error'\n}\n\nNode.js v22.23.1",
+    "detail": null
+  }
+}
