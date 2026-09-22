@@ -36,8 +36,10 @@ Five additional routes are standalone native exploration/material laboratories.
 Expanded graphics now pass **105 aggregate gates**, including production-controller
 traversals and map/scenery/lab checks; historical and new failures remain archived.
 The final Windows export's exact PCK resolves all Moth/weapon resources and starts
-all five new scenes under a Linux release runtime. Actual Windows verification and
-publication are pending; this is not Windows graphical acceptance.
+all five new scenes under a Linux release runtime. Actual Windows run `35714103892`
+also passes three combat maps, all five native graphics routes, resource checks
+and cleanup. This is headless Windows acceptance; graphics/audio/human review
+remains open. Fresh hosted Linux verification is being rerun after a test-temp-path fix.
 See `graphics-batch/README.md` and the per-lane reports for scope and provenance.
 
 | Area | Synthetic/offline | Saved genuine evidence | Independently rerun live | Graphical / playable acceptance |

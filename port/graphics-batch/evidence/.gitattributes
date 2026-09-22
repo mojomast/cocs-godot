@@ -1,0 +1,3 @@
+# Preserve raw CI console bytes, including Windows CRLF and terminal progress.
+hosted-*/**/*.log -text -whitespace
+windows-native-verification/*.log -text -whitespace

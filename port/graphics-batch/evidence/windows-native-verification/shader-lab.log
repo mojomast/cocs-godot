@@ -1,0 +1,6 @@
+PACKAGE_NATIVE_ONLY {"authority":false,"experience":"shader-lab"}
+PACKAGE_NATIVE_STARTED {"pid":4416,"scene":"res://shader_lab/demo.tscn"}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SHADER_LAB_SMOKE_OK effects=3 authority=false graphical=false
+PACKAGE_STOPPED

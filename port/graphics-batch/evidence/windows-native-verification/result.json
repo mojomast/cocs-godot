@@ -1,0 +1,68 @@
+{
+  "platform": "win32",
+  "status": "passed",
+  "cases": [
+    {
+      "map": "meridian-exchange",
+      "passed": true,
+      "port": 62052,
+      "native_pid": 2900,
+      "cleanup": true
+    },
+    {
+      "map": "verdant-reliquary",
+      "passed": true,
+      "port": 62060,
+      "native_pid": 6916,
+      "cleanup": true
+    },
+    {
+      "map": "ember-crucible",
+      "passed": true,
+      "port": 62064,
+      "native_pid": 7160,
+      "cleanup": true
+    },
+    {
+      "experience": "showcase",
+      "passed": true,
+      "authority": false,
+      "native_pid": 1328,
+      "cleanup": true
+    },
+    {
+      "experience": "aurora-basin",
+      "passed": true,
+      "authority": false,
+      "native_pid": 5976,
+      "cleanup": true
+    },
+    {
+      "experience": "cinder-array",
+      "passed": true,
+      "authority": false,
+      "native_pid": 6512,
+      "cleanup": true
+    },
+    {
+      "experience": "particle-lab",
+      "passed": true,
+      "authority": false,
+      "native_pid": 6844,
+      "cleanup": true
+    },
+    {
+      "experience": "shader-lab",
+      "passed": true,
+      "authority": false,
+      "native_pid": 4416,
+      "cleanup": true
+    }
+  ],
+  "graphical": false,
+  "manifest_sha256": "ed0578325655bceba27dc44b49963d0d0f3a05faf8e32aa2236d744399f1d836",
+  "port_commit": "f812c23b388f4edb4327c48abb6f2bc5efdabaa4",
+  "files_verified": 120,
+  "preview_load": true,
+  "graphics_resources": true
+}

@@ -2,13 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, readFile, readdir, rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { tmpdir } from 'node:os';
 import { MOTH_BAKED as source } from '../../game/moth-baked.mjs';
 // Independent, existing decoder handles PNG filters and RGB expansion.
 import { decodePng } from '../../scripts/moth-bake.mjs';
 import { exportAssets, sha256, encodePng } from './export.mjs';
 
 test('every shipped PNG reproduces locked source bytes; exports deterministic and committed current', async () => {
-  const dir = await mkdtemp('/tmp/opencode/moth-export-test-');
+  const dir = await mkdtemp(resolve(tmpdir(), 'moth-export-test-'));
   try {
     const a = resolve(dir, 'a'), b = resolve(dir, 'b');
     const manifest = await exportAssets(a);
@@ -51,8 +52,8 @@ test('invalid dimensions, channels, payloads and timing fail before writes', asy
   assert.throws(() => encodePng(1, 1, 3, Buffer.alloc(4), 'linear'), /length/);
   const invalid = structuredClone(source);
   invalid.effects['quantum-rift'].fps = NaN;
-  await assert.rejects(exportAssets('/tmp/opencode/moth-must-not-write', invalid), /Invalid effect/);
+  await assert.rejects(exportAssets(resolve(tmpdir(), 'moth-must-not-write'), invalid), /Invalid effect/);
   invalid.effects['quantum-rift'].fps = 10;
   invalid.textures.rock.data = '!!';
-  await assert.rejects(exportAssets('/tmp/opencode/moth-must-not-write', invalid), /base64/);
+  await assert.rejects(exportAssets(resolve(tmpdir(), 'moth-must-not-write'), invalid), /base64/);
 });

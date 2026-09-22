@@ -1,0 +1,31 @@
+TAP version 13
+# Subtest: every shipped PNG reproduces locked source bytes; exports deterministic and committed current
+not ok 1 - every shipped PNG reproduces locked source bytes; exports deterministic and committed current
+  ---
+  duration_ms: 1.9196
+  type: 'test'
+  location: '/home/runner/work/cocs-godot/cocs-godot/tools/godot-moth/export.test.mjs:10:1'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, mkdtemp '/tmp/opencode/moth-export-test-pmcikY'"
+  code: 'ENOENT'
+  stack: |-
+    async mkdtemp (node:internal/fs/promises:1192:10)
+    async TestContext.<anonymous> (file:///home/runner/work/cocs-godot/cocs-godot/tools/godot-moth/export.test.mjs:11:15)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: invalid dimensions, channels, payloads and timing fail before writes
+ok 2 - invalid dimensions, channels, payloads and timing fail before writes
+  ---
+  duration_ms: 72.176952
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 125.156144

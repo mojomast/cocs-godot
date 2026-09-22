@@ -92,7 +92,17 @@ under the Linux release runtime. All 603 recorded build inputs match committed
 source. Build-port provenance remains `f812c23`; the later evidence commit includes
 the documentation/verification inputs that were pending at build time.
 
-Actual Windows verification and release publication are the remaining steps.
+Actual Windows run [35714103892](https://github.com/mojomast/cocs-godot/actions/runs/35714103892)
+passed against this exact ZIP extracted into a path containing spaces: 120
+manifest files, bundled runtime versions, three combat maps, five authority-free
+graphics routes, preview, graphics resources and process/listener cleanup. This
+is native Windows **headless** execution, not graphical/audio/human acceptance.
+Evidence is in `evidence/windows-native-verification/`.
+
+The first hosted Linux run failed because the exporter test hard-coded the local
+`/tmp/opencode` directory. It now uses Node's configured `tmpdir()`; a fresh-directory
+test passes, and the hosted aggregate is being rerun. No packaged runtime bytes
+changed. The original hosted failure is retained in `evidence/hosted-first-failure/`.
 
 First intermediate Windows export succeeded; exact PCK was inspected with the
 pinned **Linux release template** from an unrelated working directory. It resolved
