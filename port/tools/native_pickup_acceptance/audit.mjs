@@ -73,7 +73,14 @@ const picked=events.filter(e=>e.type==='pickup'&&e.kind==='rocket');
 assert.equal(picked.length,1);assert.equal(picked[0].actor,summary.actorId);
 assert.ok(picked[0].time>before.time&&picked[0].time<=after.time);
 assert.ok(obs.some(o=>o.event==='physical_key'&&o.pressed));assert.ok(obs.some(o=>o.event==='mouse_motion'));
-assert.equal(obs.at(-1).event,'harness_end');assert.equal(obs.at(-1).stage,'returned');
+const ends=obs.filter(o=>o.event==='harness_end');
+assert.equal(ends.length,1);assert.equal(ends[0].stage,'returned');
+assert.equal(ends[0].completionProven,false);
+// SceneTree.quit is deferred: already-pending snapshots can follow the explicit
+// harness boundary. Retain and correlate them, rather than calling this a native
+// completion marker or requiring timing-dependent last-line placement.
+assert.ok(obs.slice(obs.indexOf(ends[0])+1).every(o=>
+  o.event==='snapshot'&&o.stage==='returned'&&o.pickup.wait===0&&o.marker_visible));
 console.log(JSON.stringify({status:'PASS',run:dir,executionCommit:summary.base,nativeSnapshots:native.length,
   receivedInputs:input.length,nativeTraceRecords:trace.length,actor:summary.actorId,pickup:0,
   beforeSeq:before.seq,afterSeq:after.seq,returnSeq:returned.seq,pickupEvent:picked[0],
