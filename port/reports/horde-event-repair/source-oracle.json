@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "port/native-horde/input-oracle.mjs",
+    "/tmp/opencode/horde-repair-independent/port/reports/horde-event-repair/input-vectors.json"
+  ],
+  "envOverrides": {},
+  "exit": 0,
+  "expectedExit": 0,
+  "temporaryTreeRemoved": true
+}

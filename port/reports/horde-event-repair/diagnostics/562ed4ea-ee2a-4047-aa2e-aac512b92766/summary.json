@@ -1,0 +1,18 @@
+{
+  "baseline": "3dbcceb91c2e1542c91e7e2e3fda55ff43a94cb2",
+  "endpoint": "ws://127.0.0.1:38313",
+  "error": null,
+  "ordinaryGrenadeStepped": true,
+  "sourceObjectOracle": {
+    "matchCount": 1,
+    "calls": 45,
+    "emptyCalls": 43,
+    "batches": 2,
+    "sourceObjects": 2,
+    "mismatches": 1,
+    "passed": false
+  },
+  "serverClosed": true,
+  "sockets": 0,
+  "authoritySHA256": "30a2dff03ba9a916cf7ff126b3de49f0cf5a11f0d50341eb49a578285b735f7a"
+}

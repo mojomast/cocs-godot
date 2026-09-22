@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "port/reports/horde-event-repair/horde-grenade.mjs",
+    "--baseline=3dbcceb91c2e1542c91e7e2e3fda55ff43a94cb2"
+  ],
+  "envOverrides": {},
+  "exit": 1,
+  "expectedExit": 1,
+  "temporaryTreeRemoved": true
+}

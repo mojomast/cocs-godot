@@ -1,0 +1,18 @@
+{
+  "baseline": "working final repair",
+  "endpoint": "ws://127.0.0.1:42291",
+  "error": null,
+  "ordinaryGrenadeStepped": true,
+  "sourceObjectOracle": {
+    "matchCount": 1,
+    "calls": 46,
+    "emptyCalls": 44,
+    "batches": 2,
+    "sourceObjects": 2,
+    "mismatches": 0,
+    "passed": true
+  },
+  "serverClosed": true,
+  "sockets": 0,
+  "authoritySHA256": "0feff165159708c8d0a32b4092c7dfb34374fde4c16d2d414d09571dff4b442e"
+}

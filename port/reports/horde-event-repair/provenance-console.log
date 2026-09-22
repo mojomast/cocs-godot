@@ -1,0 +1,22 @@
+{
+  "priorFilesVerified": 323,
+  "runtimeFiles": 5,
+  "diagnostics": 2,
+  "freshRuns": 1,
+  "generatedResources": 10,
+  "removed": [
+    "godot/.godot",
+    "godot/content/generated",
+    "godot/tests/horde-independent-product.gd.uid",
+    "godot/tests/horde-repair-independent-look.gd.uid",
+    "godot/tests/horde/controls_test.gd.uid",
+    "godot/tests/horde/layout_test.gd.uid",
+    "godot/tests/horde/leak_probe.gd.uid",
+    "godot/tests/horde/leak_subclass.gd.uid",
+    "godot/tests/protocol/lobby_spectator_context.gd.uid",
+    "godot/tests/protocol/lobby_spectator_observer.gd.uid",
+    "godot/tests/protocol/lobby_spectator_session.gd.uid",
+    "node_modules (owned symlink only)"
+  ],
+  "result": "NARROW_REPAIR_PASS; INTEGRATION_HOLD_PENDING_LEAD_REVIEW"
+}

@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "scope": "predicate replay only; historical event defect remains",
+  "originalRecording": "port/reports/horde-repair-independent/evidence/b3e2a06b-5e89-46ab-a078-24cc57c91b60",
+  "validation": {
+    "status": "PASS",
+    "scenario": "combat",
+    "correlated": 564,
+    "receipts": 1455,
+    "ackHighWater": 1446,
+    "won": true,
+    "deaths": true,
+    "eventTypes": [
+      "spawn",
+      "husk",
+      "spitter",
+      "horde-wave",
+      "horde-modifier",
+      "move-blocked",
+      "shot",
+      "pickup",
+      "launch",
+      "explosion",
+      "damage",
+      "reload",
+      "death",
+      "singleplayer-life",
+      "weapon-switch",
+      "killstreak",
+      "horde-wave-cleared",
+      "horde-resupply",
+      "horde-summary",
+      "mission-won"
+    ],
+    "nativeTraceCompletionProven": true,
+    "steppedSamples": 1295,
+    "receivedHighWater": 1446,
+    "productComposition": true,
+    "harnessExit": 0,
+    "clockDiagnostic": {
+      "sourceSeconds": 27.733333333333036,
+      "wallSeconds": 27.719627152
+    },
+    "runtimeCommit": "9c0f5a50c8935eecbf21cf6f0ff0e1ded57f7345",
+    "combatKills": {
+      "npcKills": 3,
+      "npcVictims": [
+        1,
+        2,
+        3
+      ],
+      "netFrags": 2,
+      "lives": 2,
+      "selfDeaths": 1
+    }
+  }
+}

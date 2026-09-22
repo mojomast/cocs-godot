@@ -1,0 +1,2 @@
+{"exit":0,"reason":"native scenario completed","evidence":"/tmp/opencode/horde-repair-independent/port/reports/horde-event-repair/evidence/d8cef3a2-e928-499b-8b41-41c6ba0a9b74","cleanup":[{"pid":3818324,"reaped":true,"absent":true},{"pid":3818328,"reaped":true,"absent":true}]}
+SOURCE_OBJECT_ORACLE {"matchCount":2,"calls":1136,"emptyCalls":467,"batches":669,"sourceObjects":810,"mismatches":0,"passed":true}

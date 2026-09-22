@@ -1,0 +1,10 @@
+{
+  "runtimeCommit": "c64762ad8104c1976ba7d08051a305009eb95782",
+  "newReportFilesIncludingThisManifest": 68,
+  "onlyNewReportTreeStaged": true,
+  "stagedWhitespaceCheck": "PASS",
+  "unstagedDiffEmpty": true,
+  "ownedCachesAndSymlinkRemoved": true,
+  "priorFilesVerified": 323,
+  "verdict": "NARROW_REPAIR_PASS; LEAD_INTEGRATION_HOLD"
+}

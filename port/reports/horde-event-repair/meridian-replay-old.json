@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "port/reports/horde-event-repair/horde-replay.mjs",
+    "--old"
+  ],
+  "envOverrides": {},
+  "exit": 1,
+  "expectedExit": 1,
+  "temporaryTreeRemoved": true
+}

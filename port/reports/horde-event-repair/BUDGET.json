@@ -1,0 +1,10 @@
+{
+  "baseline": "3dbcceb91c2e1542c91e7e2e3fda55ff43a94cb2",
+  "maximumFreshMeridianAttempts": 2,
+  "nativeDeadlineSeconds": 170,
+  "outerNativeDeadlineSeconds": 180,
+  "case": "meridian-exchange/combat; legal one-wave victory and released restart",
+  "clock": "unchanged actual monotonic elapsed; 1/60 source step, five-step backlog cap",
+  "constraints": "No seed retries, source state writes in live runs, physics/timing/restriction changes, shared listeners or services",
+  "oracle": "Read source event object identities at the adapter cursor boundary; never payload deduplication"
+}

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "game/singleplayer.test.mjs",
+    "game/singleplayer-ui.test.mjs"
+  ],
+  "envOverrides": {},
+  "exit": 0,
+  "expectedExit": 0,
+  "temporaryTreeRemoved": true
+}

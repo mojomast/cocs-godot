@@ -1,0 +1,95 @@
+{
+  "id": "d8cef3a2-e928-499b-8b41-41c6ba0a9b74",
+  "status": "BOUNDED_REPAIR_PASS; LEAD_INTEGRATION_HOLD",
+  "wallSeconds": 24.239233626,
+  "observerComplete": true,
+  "nativeTraceComplete": true,
+  "harnessExit": 0,
+  "sourceObjectOracle": {
+    "matchCount": 2,
+    "calls": 1136,
+    "emptyCalls": 467,
+    "batches": 669,
+    "sourceObjects": 810,
+    "mismatches": 0,
+    "passed": true
+  },
+  "sourceObjectsEqualWire": 810,
+  "sourceModifierPreserved": true,
+  "correlatedNativeSnapshots": 378,
+  "nativeQueued": 511,
+  "nativeQueuedWithReceipt": 511,
+  "wireReceipts": 513,
+  "distinctStepped": 510,
+  "appliedAckHighWater": 505,
+  "combatKills": {
+    "npcKills": 3,
+    "npcVictims": [
+      1,
+      2,
+      3
+    ],
+    "netFrags": 3,
+    "lives": 3,
+    "selfDeaths": 0
+  },
+  "restart": {
+    "sourceTime": 0.05,
+    "kills": 0,
+    "shots": 0,
+    "score": 0,
+    "released": true
+  },
+  "engineAndRuntimeCommit": "c64762ad8104c1976ba7d08051a305009eb95782",
+  "validation": {
+    "status": "PASS",
+    "scenario": "combat",
+    "correlated": 378,
+    "receipts": 513,
+    "ackHighWater": 505,
+    "won": true,
+    "deaths": false,
+    "eventTypes": [
+      "spawn",
+      "husk",
+      "spitter",
+      "horde-wave",
+      "horde-modifier",
+      "move-blocked",
+      "shot",
+      "pickup",
+      "powerup",
+      "weapon-switch",
+      "grenade",
+      "damage",
+      "explosion",
+      "death",
+      "killstreak",
+      "horde-wave-cleared",
+      "horde-resupply",
+      "horde-summary",
+      "mission-won"
+    ],
+    "nativeTraceCompletionProven": true,
+    "steppedSamples": 510,
+    "receivedHighWater": 505,
+    "productComposition": true,
+    "harnessExit": 0,
+    "clockDiagnostic": {
+      "sourceSeconds": 18.316666666666904,
+      "wallSeconds": 18.314473604000003
+    },
+    "runtimeCommit": "c64762ad8104c1976ba7d08051a305009eb95782",
+    "combatKills": {
+      "npcKills": 3,
+      "npcVictims": [
+        1,
+        2,
+        3
+      ],
+      "netFrags": 3,
+      "lives": 3,
+      "selfDeaths": 0
+    }
+  }
+}
