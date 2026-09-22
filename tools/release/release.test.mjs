@@ -64,7 +64,7 @@ async function fixture(overrides = {}) {
 
   const exec = async spec => {
     const {command, args} = spec;
-    calls.push({command, args: [...args], sideEffect: !!spec.sideEffect, dryRun: !!spec.dryRun});
+    calls.push({command, args: [...args], sideEffect: !!spec.sideEffect, dryRun: !!spec.dryRun, timeout: spec.timeout ?? null});
     if (command === godotBin) return done(0, `${GODOT_VERSION}\n`);
     if (command === 'git') return gitStub(world, args);
     if (command === 'gh') return ghStub(world, args);
@@ -363,6 +363,21 @@ test('execute walks verification, package, publish, hosted verify and push in or
     assert.equal(summary.steps[5].detail.commit, HEAD);
     assert.deepEqual(summary.steps[5].detail.branch_after, HEAD);
     assert.ok(existsSync(join(result.summaryPath, '..', 'evidence/manifest.json')));
+  } finally {
+    await fx.cleanup();
+  }
+});
+
+test('step timeouts are seconds and reach the process layer as milliseconds', async () => {
+  const fx = await fixture();
+  try {
+    const result = await fx.run([`--tag=${TAG}`, '--execute', '--verification=never', '--stop-after=publish']);
+    assert.equal(result.exitCode, 2, fx.outputs.join('\\n'));
+    const verification = fx.calls.find(call => call.command === 'python3' && call.args[0] === 'tools/godot-dev/verify.py');
+    const packaging = fx.calls.find(call => call.command === 'python3' && call.args[0] === 'tools/godot-package/build.py');
+    assert.equal(verification, undefined, 'verification never must not run the verifier');
+    assert.ok(packaging, 'the package step still runs');
+    assert.ok(packaging.timeout >= 60000, `package timeout ${packaging.timeout} ms is not seconds-scaled`);
   } finally {
     await fx.cleanup();
   }

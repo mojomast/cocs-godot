@@ -12,7 +12,7 @@ import {createReadStream, existsSync} from 'node:fs';
 import {copyFile, mkdir, readFile, readdir, stat, writeFile} from 'node:fs/promises';
 import {dirname, join, relative, resolve, sep} from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
-import {parseArgs, STEPS, HELP, DEFAULT_LANDING_ZONE, UsageError} from './options.mjs';
+import {parseArgs, STEPS, HELP, DEFAULT_LANDING_ZONE, DEFAULT_WORKFLOW, UsageError} from './options.mjs';
 
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const RUNTIME_PREFIXES = ['godot/', 'game/', 'server/', 'port/', 'tools/'];
@@ -517,6 +517,11 @@ async function stepPreflight(ctx) {
     throw new ReleaseError('workflow-input-missing', `${options.workflow} has no workflow_dispatch tag input`,
       'the hosted verification must accept the release tag');
   }
+  if (options.target === 'linux' && options.workflow === DEFAULT_WORKFLOW) {
+    throw new ReleaseError('workflow-target-mismatch',
+      `${DEFAULT_WORKFLOW} verifies the Windows ZIP, not the ${options.target} archive`,
+      'pass --workflow=<file> with a workflow that can verify this target, or release deliberately with --stop-after=publish');
+  }
   detail.workflow = {file: options.workflow, ref: options.workflowRef};
   ctx.emit(`  workflow ${options.workflow} on ref ${options.workflowRef} (tag input present)`);
 
@@ -571,7 +576,7 @@ async function stepVerification(ctx) {
   // auto runs the verifier only with --execute; always rehearses it even in a dry run.
   const result = await runCommand(ctx, {
     command: 'python3', args: ['tools/godot-dev/verify.py'], env, sideEffect: options.verification === 'auto',
-    timeout: options.verifyTimeout, label: 'verify', allowFailure: true,
+    timeout: options.verifyTimeout * 1000, label: 'verify', allowFailure: true,
   });
   if (result.planned) {
     return {planned: true, command: 'python3 tools/godot-dev/verify.py'};
@@ -618,7 +623,7 @@ async function stepPackage(ctx) {
     '--archive-directory', options.archiveDirectory, '--operator-models', 'source-operators'];
   ctx.emit(`  state    ${buildState}`);
   const result = await runCommand(ctx, {
-    command: 'python3', args, sideEffect: true, timeout: options.packageTimeout, label: 'package',
+    command: 'python3', args, sideEffect: true, timeout: options.packageTimeout * 1000, label: 'package',
   });
   if (result.planned) {
     return {planned: true, target: options.target, command: printable('python3', args)};
@@ -717,7 +722,8 @@ async function stepPublish(ctx) {
   });
   const release = JSON.parse(view.stdout);
   const names = (release.assets ?? []).map(asset => asset.name);
-  for (const expected of ['cocs-native-windows.zip', 'cocs-native-windows.zip.sha256']) {
+  const expectedAssets = [built.archive.split('/').pop(), `${built.archive.split('/').pop()}.sha256`];
+  for (const expected of expectedAssets) {
     if (!names.includes(expected)) {
       throw new ReleaseError('release-asset-missing', `release ${options.tag} has no ${expected} asset`,
         'the release was created but is incomplete; do not dispatch hosted verification');
