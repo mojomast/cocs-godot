@@ -15,7 +15,7 @@ claims and limitations. Native presentation quality and usability still need rev
 | Area | Synthetic/offline | Saved genuine evidence | Independently rerun live | Graphical / playable acceptance |
 |---|---|---|---|---|
 | Asset provenance/parity | Asset audit 9 tests pass; frozen inventory/rights review; owned-render cleanup 4 tests pass | Original blank GLB and causal culling experiments retained | Meridian blank-sky cause independently reproduced at `70e9075`; four private graphical cases and numerical audit pass | Production export correction and original-art parity OPEN |
-| Gameplay catalog/analyzer/recorder | 29 tests pass; pickup recorder/navigation 5 checks pass | Historical rocket evidence sanitized with exact six-field provenance; independent failed approach retained | Rocket pickup/15s return PASS at `3991990`: 656 snapshots, 1,260 receipts, weapon 0→1/ammo 0→6 | Health pickup, nonlethal damage and broader playable scenarios OPEN |
+| Gameplay catalog/analyzer/recorder | 29 catalog/recorder, 5 rocket recorder/navigation, 9 health/damage checks pass | Original and independent recordings retained, including failed rocket approach | Rocket/15s return PASS at `3991990`; nonlethal damage/+35 health/12s return PASS at `f7b586d` with 876 snapshots | Maximum-HP cap, modifier variants and broader playable scenarios OPEN |
 | Guest workflow | 7 harness tests pass | Historical final and failed runs archived losslessly | All four cases PASS at `86ef719`: positive, invalid room, actual 120s host wait timeout and HTTP-rejected handshake | Guest UI/results/focus acceptance separate |
 | Trace correlation | 13 tests pass; 11 synthetic, 2 real owned-process cleanup | Final historical run replayed: 333 snapshot / 647 input receipt matches | PASS at `86ef719`: 333 snapshot / 644 input receipt matches; disabled 0 trace records; deliberate timeout fails and cleans up | Neutral headless window only; native completion unproven |
 | Death / respawn | Real defect regression failed 10 assertions before fix; now 2,497 control / 15 lifecycle checks pass | Original passing run and genuine premature-respawn failure retained | Two runs PASS at `7e505f2`; combined focus/lifecycle confirmation PASS at `bda5af2`: 352 snapshots, held Ctrl/fire, authoritative camera reseed and fresh-click gating | Programmatic input-path milestone established; OS focus/hardware acceptance separate |
@@ -37,7 +37,7 @@ the locked JSON contract; the family summary below does not narrow them.
 
 | Map | Identity retained | Current native acceptance gap |
 |---|---|---|
-| Meridian Exchange | Infantry combat/objective modes | Native default rocket pickup/return and death/respawn accepted; health/damage, presentation quality and broader playable review open |
+| Meridian Exchange | Infantry combat/objective modes | Native rocket/health pickups, nonlethal damage and death/respawn accepted; presentation quality and broader playable review open |
 | Verdant Reliquary | Infantry modes plus campaign | Native sessions/modes, original art and routes open |
 | Ember Crucible | Infantry combat/objective modes | Native sessions/modes, original art and routes open |
 | Tidal Citadel | CTF, teamdeathmatch, domination, assault, team-elimination | Vehicles/objectives/native session and visual acceptance open |
@@ -57,7 +57,7 @@ the locked JSON contract; the family summary below does not narrow them.
   A production exporter correction and environment behavior remain open.
 - Bounded native death/respawn and private-X11 focus milestones now have
   independent acceptance. Default weapon pickup/15s return also independently
-  passes; nonlethal damage/health pickup is executing in isolation.
+  passes, as do nonlethal damage and health pickup/12s return.
   Lethal round-ending results/restart and mode-specific gameplay remain open.
 - Native recording lacks a terminal completion marker and direct protocol IDs.
   Current harnesses may supply explicit boundaries and limited association;
