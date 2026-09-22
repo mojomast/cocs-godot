@@ -1,0 +1,24 @@
+=== presentation: exit 0 ===
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PORT_PRESENTATION_REPLAY_OK states=6 results=1 coordinates=source camera=eye death_visibility=true cleanup=true
+
+=== local_lifecycle: exit 0 ===
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PORT_LOCAL_LIFECYCLE_OK synthetic_checks=15
+
+=== pickups: exit 0 ===
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PORT_PICKUPS_OK recorded_states=6 checks=374 synthetic_lifecycle=true
+
+=== remote_motion: exit 0 ===
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PORT_REMOTE_MOTION_OK checks=14 synthetic_timing=true authority=unchanged
+
+=== entity_visuals: exit 0 ===
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PORT_ENTITY_VISUALS_OK checks=52 synthetic=true

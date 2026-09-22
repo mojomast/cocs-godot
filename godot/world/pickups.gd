@@ -1,8 +1,9 @@
 class_name PortPickups
 extends Node3D
 
-# Diagnostic markers, keyed by authority IDs (never array order).
+# Native supply visuals, keyed by authority IDs (never array order).
 # Snapshot wait controls visibility. No local countdown or collection authority.
+const PickupVisual = preload("res://world/pickup_visual.gd")
 var markers: Dictionary = {}
 
 func clear_round() -> void:
@@ -17,17 +18,12 @@ func apply_state(state: Dictionary) -> void:
 		var id: int = int(pickup.id)
 		present[id] = true
 		if not markers.has(id):
-			var marker := MeshInstance3D.new()
+			var marker := PickupVisual.new()
 			marker.name = "Pickup_%d" % id
-			var mesh := BoxMesh.new()
-			mesh.size = Vector3(0.7, 0.7, 0.7)
-			marker.mesh = mesh
-			var material := StandardMaterial3D.new()
-			material.albedo_color = Color(1, 0.75, 0.15)
-			marker.material_override = material
 			add_child(marker)
 			markers[id] = marker
 		var node: Node3D = markers[id]
+		node.apply_kind(str(pickup.kind))
 		node.position = Vector3(pickup.x, float(pickup.get("y", 0)) + 1.0, pickup.z)
 		node.visible = float(pickup.get("wait", 0)) <= 0
 		node.set_meta("kind", str(pickup.kind))

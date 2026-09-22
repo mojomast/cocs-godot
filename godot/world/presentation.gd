@@ -1,7 +1,8 @@
 class_name PortPresentation
 extends Node3D
 
-# Diagnostic actors only. Node simulation remains authoritative; no extrapolation.
+# Native visual actors only. Node simulation remains authoritative; no extrapolation.
+const ActorVisual = preload("res://world/actor_visual.gd")
 const RemoteMotion = preload("res://world/remote_motion.gd")
 const LocalLifecycle = preload("res://world/local_lifecycle.gd")
 var lifecycle := LocalLifecycle.new()
@@ -47,18 +48,12 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 		var id: int = int(actor.id)
 		present[id] = true
 		if not actors.has(id):
-			var node := MeshInstance3D.new()
+			var node := ActorVisual.new()
 			node.name = "Actor_%d" % id
-			var mesh := CapsuleMesh.new()
-			mesh.radius = 0.35
-			mesh.height = 1.8
-			node.mesh = mesh
-			var mat := StandardMaterial3D.new()
-			mat.albedo_color = Color(0.95, 0.35, 0.2)
-			node.material_override = mat
 			add_child(node)
 			actors[id] = node
 		var visual: Node3D = actors[id]
+		visual.apply_identity(actor)
 		var position: Vector3 = Vector3(actor.x, actor.y + 0.9, actor.z)
 		var body_yaw: float = float(actor.get("bodyYaw", actor.get("yaw", 0)))
 		var alive: bool = LocalLifecycle.actor_alive(actor)
