@@ -1,8 +1,8 @@
-PACKAGE_SERVER_READY {"pid":1560376,"host":"127.0.0.1","port":40003,"experience":"native-dm","map":"vermilion-fold","mode":"deathmatch","health":{"service":"cocs-native-arenas","v":3,"localOnly":true,"humanCount":1,"mapId":"vermilion-fold","geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a","port":40003}}
-PACKAGE_NATIVE_STARTED {"pid":1560398,"scene":"res://native_arenas/demo.tscn"}
+PACKAGE_SERVER_READY {"pid":1674703,"host":"127.0.0.1","port":39077,"experience":"native-dm","map":"vermilion-fold","mode":"deathmatch","health":{"service":"cocs-native-arenas","v":3,"localOnly":true,"humanCount":1,"mapId":"vermilion-fold","geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a","port":39077}}
+PACKAGE_NATIVE_STARTED {"pid":1674776,"scene":"res://native_arenas/demo.tscn"}
 WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
      at: cleanup (core/object/object.cpp:2514)
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
-NATIVE_DM_SMOKE_OK {"acks":16,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a","localAlive":true,"map":"vermilion-fold","mode":"deathmatch","moved":true,"snapshots":7}
+NATIVE_DM_SMOKE_OK {"acks":17,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a","localAlive":true,"map":"vermilion-fold","mode":"deathmatch","moved":true,"snapshots":7}
 PACKAGE_STOPPED

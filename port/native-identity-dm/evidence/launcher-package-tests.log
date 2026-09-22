@@ -1,0 +1,1060 @@
+TAP version 13
+# Subtest: Horde is default-ten-wave local-only and refuses unsupported or ignored controls
+ok 1 - Horde is default-ten-wave local-only and refuses unsupported or ignored controls
+  ---
+  duration_ms: 2.061424
+  type: 'test'
+  ...
+# Subtest: existing viewer, combat setup and smoke routes stay compatible
+ok 2 - existing viewer, combat setup and smoke routes stay compatible
+  ---
+  duration_ms: 0.276117
+  type: 'test'
+  ...
+# Subtest: each standalone map/mode reaches its actual scene and locked identity
+ok 3 - each standalone map/mode reaches its actual scene and locked identity
+  ---
+  duration_ms: 0.783478
+  type: 'test'
+  ...
+# Subtest: standalone selection rejects substitutions, unsupported modes and ignored options
+ok 4 - standalone selection rejects substitutions, unsupported modes and ignored options
+  ---
+  duration_ms: 1.140959
+  type: 'test'
+  ...
+# Subtest: sports round options preserve legal ordinary configuration without silent clamping
+ok 5 - sports round options preserve legal ordinary configuration without silent clamping
+  ---
+  duration_ms: 0.472906
+  type: 'test'
+  ...
+# Subtest: world traversal and command board remain distinct native scenes
+ok 6 - world traversal and command board remain distinct native scenes
+  ---
+  duration_ms: 0.17062
+  type: 'test'
+  ...
+# Subtest: delivered authority rejects source-clamped bot counts 0 and 8
+ok 7 - delivered authority rejects source-clamped bot counts 0 and 8
+  ---
+  duration_ms: 1.938743
+  type: 'test'
+  ...
+# Subtest: dev Native DM actual factory, synthetic geometry/process: bots=1
+ok 8 - dev Native DM actual factory, synthetic geometry/process: bots=1
+  ---
+  duration_ms: 870.34294
+  type: 'test'
+  ...
+# Subtest: dev Native DM actual factory, synthetic geometry/process: bots=7
+ok 9 - dev Native DM actual factory, synthetic geometry/process: bots=7
+  ---
+  duration_ms: 860.767213
+  type: 'test'
+  ...
+# Subtest: dev Native DM actual factory, synthetic geometry/process: bots=0
+ok 10 - dev Native DM actual factory, synthetic geometry/process: bots=0
+  ---
+  duration_ms: 18.92647
+  type: 'test'
+  ...
+# Subtest: dev Native DM actual factory, synthetic geometry/process: bots=8
+ok 11 - dev Native DM actual factory, synthetic geometry/process: bots=8
+  ---
+  duration_ms: 22.845514
+  type: 'test'
+  ...
+# Subtest: dev Native DM strict options and source/exploration route separation
+ok 12 - dev Native DM strict options and source/exploration route separation
+  ---
+  duration_ms: 5.408727
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: exit
+ok 13 - dev Native DM SYNTHETIC ownership: exit
+  ---
+  duration_ms: 121.598824
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: smoke
+ok 14 - dev Native DM SYNTHETIC ownership: smoke
+  ---
+  duration_ms: 112.159114
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: unstarted
+ok 15 - dev Native DM SYNTHETIC ownership: unstarted
+  ---
+  duration_ms: 105.235599
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: root-endpoint
+ok 16 - dev Native DM SYNTHETIC ownership: root-endpoint
+  ---
+  duration_ms: 103.992629
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: endpoint-only
+ok 17 - dev Native DM SYNTHETIC ownership: endpoint-only
+  ---
+  duration_ms: 109.059665
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: native-failure
+ok 18 - dev Native DM SYNTHETIC ownership: native-failure
+  ---
+  duration_ms: 104.856799
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: native-crash
+ok 19 - dev Native DM SYNTHETIC ownership: native-crash
+  ---
+  duration_ms: 97.099721
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: missing-native
+ok 20 - dev Native DM SYNTHETIC ownership: missing-native
+  ---
+  duration_ms: 31.085707
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: spawn-failure
+ok 21 - dev Native DM SYNTHETIC ownership: spawn-failure
+  ---
+  duration_ms: 71.482613
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: interrupt
+ok 22 - dev Native DM SYNTHETIC ownership: interrupt
+  ---
+  duration_ms: 200.386077
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: terminate
+ok 23 - dev Native DM SYNTHETIC ownership: terminate
+  ---
+  duration_ms: 188.702611
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: uncooperative
+ok 24 - dev Native DM SYNTHETIC ownership: uncooperative
+  ---
+  duration_ms: 3205.140703
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: server-failure
+ok 25 - dev Native DM SYNTHETIC ownership: server-failure
+  ---
+  duration_ms: 573.410208
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: listen-failure
+ok 26 - dev Native DM SYNTHETIC ownership: listen-failure
+  ---
+  duration_ms: 59.748072
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: factory-failure
+ok 27 - dev Native DM SYNTHETIC ownership: factory-failure
+  ---
+  duration_ms: 62.871525
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: wrong-local
+ok 28 - dev Native DM SYNTHETIC ownership: wrong-local
+  ---
+  duration_ms: 77.826893
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: wrong-port
+ok 29 - dev Native DM SYNTHETIC ownership: wrong-port
+  ---
+  duration_ms: 77.23881
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: health-failure
+ok 30 - dev Native DM SYNTHETIC ownership: health-failure
+  ---
+  duration_ms: 77.375437
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: external-endpoint
+ok 31 - dev Native DM SYNTHETIC ownership: external-endpoint
+  ---
+  duration_ms: 66.117548
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: other-path
+ok 32 - dev Native DM SYNTHETIC ownership: other-path
+  ---
+  duration_ms: 69.379832
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: trailing-path
+ok 33 - dev Native DM SYNTHETIC ownership: trailing-path
+  ---
+  duration_ms: 66.025255
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: normalized-path
+ok 34 - dev Native DM SYNTHETIC ownership: normalized-path
+  ---
+  duration_ms: 67.140596
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: encoded-path
+ok 35 - dev Native DM SYNTHETIC ownership: encoded-path
+  ---
+  duration_ms: 69.073538
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: query-endpoint
+ok 36 - dev Native DM SYNTHETIC ownership: query-endpoint
+  ---
+  duration_ms: 66.566831
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: fragment-endpoint
+ok 37 - dev Native DM SYNTHETIC ownership: fragment-endpoint
+  ---
+  duration_ms: 66.460742
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: credential-endpoint
+ok 38 - dev Native DM SYNTHETIC ownership: credential-endpoint
+  ---
+  duration_ms: 65.231148
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: tls-endpoint
+ok 39 - dev Native DM SYNTHETIC ownership: tls-endpoint
+  ---
+  duration_ms: 68.787092
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: bad-args
+ok 40 - dev Native DM SYNTHETIC ownership: bad-args
+  ---
+  duration_ms: 24.167652
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC ownership: native-only
+ok 41 - dev Native DM SYNTHETIC ownership: native-only
+  ---
+  duration_ms: 65.743959
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC map routing: aurora-basin
+ok 42 - dev Native DM SYNTHETIC map routing: aurora-basin
+  ---
+  duration_ms: 104.251604
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC map routing: cinder-array
+ok 43 - dev Native DM SYNTHETIC map routing: cinder-array
+  ---
+  duration_ms: 102.494892
+  type: 'test'
+  ...
+# Subtest: dev Native DM SYNTHETIC hung smoke has a 20-second deadline
+ok 44 - dev Native DM SYNTHETIC hung smoke has a 20-second deadline
+  ---
+  duration_ms: 20093.634131
+  type: 'test'
+  ...
+# Subtest: dev native-dm routes the three identity maps to the Deathmatch scene
+ok 45 - dev native-dm routes the three identity maps to the Deathmatch scene
+  ---
+  duration_ms: 2.321541
+  type: 'test'
+  ...
+# Subtest: identity ids are rejected where they are not reviewed routes
+ok 46 - identity ids are rejected where they are not reviewed routes
+  ---
+  duration_ms: 0.885289
+  type: 'test'
+  ...
+# Subtest: source graphics routes are native-only, headless only on request, outside the map catalog
+ok 47 - source graphics routes are native-only, headless only on request, outside the map catalog
+  ---
+  duration_ms: 4.109
+  type: 'test'
+  ...
+# Subtest: source native-only stub: showcase exit
+ok 48 - source native-only stub: showcase exit
+  ---
+  duration_ms: 88.174634
+  type: 'test'
+  ...
+# Subtest: source native-only stub: showcase smoke
+ok 49 - source native-only stub: showcase smoke
+  ---
+  duration_ms: 90.157651
+  type: 'test'
+  ...
+# Subtest: source native-only stub: aurora-basin exit
+ok 50 - source native-only stub: aurora-basin exit
+  ---
+  duration_ms: 68.08207
+  type: 'test'
+  ...
+# Subtest: source native-only stub: aurora-basin smoke
+ok 51 - source native-only stub: aurora-basin smoke
+  ---
+  duration_ms: 70.190101
+  type: 'test'
+  ...
+# Subtest: source native-only stub: cinder-array exit
+ok 52 - source native-only stub: cinder-array exit
+  ---
+  duration_ms: 72.342926
+  type: 'test'
+  ...
+# Subtest: source native-only stub: cinder-array smoke
+ok 53 - source native-only stub: cinder-array smoke
+  ---
+  duration_ms: 67.055306
+  type: 'test'
+  ...
+# Subtest: source native-only stub: particle-lab exit
+ok 54 - source native-only stub: particle-lab exit
+  ---
+  duration_ms: 68.599329
+  type: 'test'
+  ...
+# Subtest: source native-only stub: particle-lab smoke
+ok 55 - source native-only stub: particle-lab smoke
+  ---
+  duration_ms: 70.880284
+  type: 'test'
+  ...
+# Subtest: source native-only stub: shader-lab exit
+ok 56 - source native-only stub: shader-lab exit
+  ---
+  duration_ms: 67.010893
+  type: 'test'
+  ...
+# Subtest: source native-only stub: shader-lab smoke
+ok 57 - source native-only stub: shader-lab smoke
+  ---
+  duration_ms: 70.195571
+  type: 'test'
+  ...
+# Subtest: source native-only stub ownership: native-failure
+ok 58 - source native-only stub ownership: native-failure
+  ---
+  duration_ms: 70.756914
+  type: 'test'
+  ...
+# Subtest: source native-only stub ownership: native-crash
+ok 59 - source native-only stub ownership: native-crash
+  ---
+  duration_ms: 61.246701
+  type: 'test'
+  ...
+# Subtest: source native-only stub ownership: missing-native
+ok 60 - source native-only stub ownership: missing-native
+  ---
+  duration_ms: 27.965179
+  type: 'test'
+  ...
+# Subtest: source native-only stub ownership: spawn-failure
+ok 61 - source native-only stub ownership: spawn-failure
+  ---
+  duration_ms: 48.916814
+  type: 'test'
+  ...
+# Subtest: source native-only stub ownership: wrong-version
+ok 62 - source native-only stub ownership: wrong-version
+  ---
+  duration_ms: 48.06671
+  type: 'test'
+  ...
+# Subtest: source native-only stub ownership: invalid-lock
+ok 63 - source native-only stub ownership: invalid-lock
+  ---
+  duration_ms: 23.998585
+  type: 'test'
+  ...
+# Subtest: source native-only stub ownership: interrupt
+ok 64 - source native-only stub ownership: interrupt
+  ---
+  duration_ms: 165.603722
+  type: 'test'
+  ...
+# Subtest: source native-only stub ownership: terminate
+ok 65 - source native-only stub ownership: terminate
+  ---
+  duration_ms: 166.618203
+  type: 'test'
+  ...
+# Subtest: source native-only stub ownership: uncooperative
+ok 66 - source native-only stub ownership: uncooperative
+  ---
+  duration_ms: 3174.004351
+  type: 'test'
+  ...
+# Subtest: source native-only stub ownership: bad-args
+ok 67 - source native-only stub ownership: bad-args
+  ---
+  duration_ms: 22.595035
+  type: 'test'
+  ...
+# Subtest: source native-only stub ownership: ambiguous-help
+ok 68 - source native-only stub ownership: ambiguous-help
+  ---
+  duration_ms: 27.314088
+  type: 'test'
+  ...
+# Subtest: actual Horde transitive closure is classified separately and source-byte locked
+ok 69 - actual Horde transitive closure is classified separately and source-byte locked
+  ---
+  duration_ms: 366.465791
+  type: 'test'
+  ...
+# Subtest: closure rejects unreviewed adapter imports, external dependencies and runtime imports
+ok 70 - closure rejects unreviewed adapter imports, external dependencies and runtime imports
+  ---
+  duration_ms: 86.675706
+  type: 'test'
+  ...
+# Subtest: unchanged public Room still rejects Horde configuration
+ok 71 - unchanged public Room still rejects Horde configuration
+  ---
+  duration_ms: 1.578708
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: exit
+ok 72 - package Horde synthetic factory: exit
+  ---
+  duration_ms: 86.871292
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: native-failure
+ok 73 - package Horde synthetic factory: native-failure
+  ---
+  duration_ms: 107.617192
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: native-crash
+ok 74 - package Horde synthetic factory: native-crash
+  ---
+  duration_ms: 90.207265
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: missing-native
+ok 75 - package Horde synthetic factory: missing-native
+  ---
+  duration_ms: 66.808073
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: interrupt
+ok 76 - package Horde synthetic factory: interrupt
+  ---
+  duration_ms: 182.510106
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: terminate
+ok 77 - package Horde synthetic factory: terminate
+  ---
+  duration_ms: 191.510734
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: server-failure
+ok 78 - package Horde synthetic factory: server-failure
+  ---
+  duration_ms: 349.210733
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: listen-failure
+ok 79 - package Horde synthetic factory: listen-failure
+  ---
+  duration_ms: 42.430127
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: factory-failure
+ok 80 - package Horde synthetic factory: factory-failure
+  ---
+  duration_ms: 42.881633
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: wrong-service
+ok 81 - package Horde synthetic factory: wrong-service
+  ---
+  duration_ms: 60.557418
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: wrong-transport
+ok 82 - package Horde synthetic factory: wrong-transport
+  ---
+  duration_ms: 62.863239
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: string-transport
+ok 83 - package Horde synthetic factory: string-transport
+  ---
+  duration_ms: 58.405386
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: wrong-local
+ok 84 - package Horde synthetic factory: wrong-local
+  ---
+  duration_ms: 59.901539
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: wrong-port
+ok 85 - package Horde synthetic factory: wrong-port
+  ---
+  duration_ms: 64.533691
+  type: 'test'
+  ...
+# Subtest: package Horde synthetic factory: bad-args
+ok 86 - package Horde synthetic factory: bad-args
+  ---
+  duration_ms: 25.033494
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: exit
+ok 87 - dev Horde synthetic factory: exit
+  ---
+  duration_ms: 98.055663
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: native-failure
+ok 88 - dev Horde synthetic factory: native-failure
+  ---
+  duration_ms: 91.77952
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: native-crash
+ok 89 - dev Horde synthetic factory: native-crash
+  ---
+  duration_ms: 98.537917
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: missing-native
+ok 90 - dev Horde synthetic factory: missing-native
+  ---
+  duration_ms: 21.336356
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: interrupt
+ok 91 - dev Horde synthetic factory: interrupt
+  ---
+  duration_ms: 193.976625
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: terminate
+ok 92 - dev Horde synthetic factory: terminate
+  ---
+  duration_ms: 195.336453
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: server-failure
+ok 93 - dev Horde synthetic factory: server-failure
+  ---
+  duration_ms: 373.302493
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: listen-failure
+ok 94 - dev Horde synthetic factory: listen-failure
+  ---
+  duration_ms: 60.244071
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: factory-failure
+ok 95 - dev Horde synthetic factory: factory-failure
+  ---
+  duration_ms: 58.917475
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: wrong-service
+ok 96 - dev Horde synthetic factory: wrong-service
+  ---
+  duration_ms: 66.320529
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: wrong-transport
+ok 97 - dev Horde synthetic factory: wrong-transport
+  ---
+  duration_ms: 72.162347
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: string-transport
+ok 98 - dev Horde synthetic factory: string-transport
+  ---
+  duration_ms: 73.270233
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: wrong-local
+ok 99 - dev Horde synthetic factory: wrong-local
+  ---
+  duration_ms: 70.314844
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: wrong-port
+ok 100 - dev Horde synthetic factory: wrong-port
+  ---
+  duration_ms: 69.171442
+  type: 'test'
+  ...
+# Subtest: dev Horde synthetic factory: bad-args
+ok 101 - dev Horde synthetic factory: bad-args
+  ---
+  duration_ms: 27.893124
+  type: 'test'
+  ...
+# Subtest: package: opt-in lobby distinguishes owned and explicit external authority
+ok 102 - package: opt-in lobby distinguishes owned and explicit external authority
+  ---
+  duration_ms: 1.09939
+  type: 'test'
+  ...
+# Subtest: package: invalid lobby configuration fails before starting anything
+ok 103 - package: invalid lobby configuration fails before starting anything
+  ---
+  duration_ms: 0.493305
+  type: 'test'
+  ...
+# Subtest: dev: opt-in lobby distinguishes owned and explicit external authority
+ok 104 - dev: opt-in lobby distinguishes owned and explicit external authority
+  ---
+  duration_ms: 0.402194
+  type: 'test'
+  ...
+# Subtest: dev: invalid lobby configuration fails before starting anything
+ok 105 - dev: invalid lobby configuration fails before starting anything
+  ---
+  duration_ms: 0.462487
+  type: 'test'
+  ...
+# Subtest: package: external authority ownership and cleanup on exit
+ok 106 - package: external authority ownership and cleanup on exit
+  ---
+  duration_ms: 56.746828
+  type: 'test'
+  ...
+# Subtest: package: external authority ownership and cleanup on native-failure
+ok 107 - package: external authority ownership and cleanup on native-failure
+  ---
+  duration_ms: 54.214782
+  type: 'test'
+  ...
+# Subtest: package: external authority ownership and cleanup on missing-native
+ok 108 - package: external authority ownership and cleanup on missing-native
+  ---
+  duration_ms: 35.022163
+  type: 'test'
+  ...
+# Subtest: dev: external authority ownership and cleanup on exit
+ok 109 - dev: external authority ownership and cleanup on exit
+  ---
+  duration_ms: 79.21264
+  type: 'test'
+  ...
+# Subtest: dev: external authority ownership and cleanup on native-failure
+ok 110 - dev: external authority ownership and cleanup on native-failure
+  ---
+  duration_ms: 72.505761
+  type: 'test'
+  ...
+# Subtest: dev: external authority ownership and cleanup on missing-native
+ok 111 - dev: external authority ownership and cleanup on missing-native
+  ---
+  duration_ms: 27.633527
+  type: 'test'
+  ...
+# Subtest: package Native DM actual factory, synthetic geometry/process: bots=1
+ok 112 - package Native DM actual factory, synthetic geometry/process: bots=1
+  ---
+  duration_ms: 844.073619
+  type: 'test'
+  ...
+# Subtest: package Native DM actual factory, synthetic geometry/process: bots=7
+ok 113 - package Native DM actual factory, synthetic geometry/process: bots=7
+  ---
+  duration_ms: 862.337076
+  type: 'test'
+  ...
+# Subtest: package Native DM actual factory, synthetic geometry/process: bots=0
+ok 114 - package Native DM actual factory, synthetic geometry/process: bots=0
+  ---
+  duration_ms: 24.803303
+  type: 'test'
+  ...
+# Subtest: package Native DM actual factory, synthetic geometry/process: bots=8
+ok 115 - package Native DM actual factory, synthetic geometry/process: bots=8
+  ---
+  duration_ms: 25.204925
+  type: 'test'
+  ...
+# Subtest: Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
+ok 116 - Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
+  ---
+  duration_ms: 61.834051
+  type: 'test'
+  ...
+# Subtest: Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules
+ok 117 - Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules
+  ---
+  duration_ms: 242.203876
+  type: 'test'
+  ...
+# Subtest: package Native DM strict options and source/exploration route separation
+ok 118 - package Native DM strict options and source/exploration route separation
+  ---
+  duration_ms: 3.925407
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: exit
+ok 119 - package Native DM SYNTHETIC ownership: exit
+  ---
+  duration_ms: 103.024825
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: smoke
+ok 120 - package Native DM SYNTHETIC ownership: smoke
+  ---
+  duration_ms: 103.99305
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: unstarted
+ok 121 - package Native DM SYNTHETIC ownership: unstarted
+  ---
+  duration_ms: 89.130847
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: root-endpoint
+ok 122 - package Native DM SYNTHETIC ownership: root-endpoint
+  ---
+  duration_ms: 83.316079
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: endpoint-only
+ok 123 - package Native DM SYNTHETIC ownership: endpoint-only
+  ---
+  duration_ms: 80.242109
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: native-failure
+ok 124 - package Native DM SYNTHETIC ownership: native-failure
+  ---
+  duration_ms: 79.343424
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: native-crash
+ok 125 - package Native DM SYNTHETIC ownership: native-crash
+  ---
+  duration_ms: 79.422342
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: missing-native
+ok 126 - package Native DM SYNTHETIC ownership: missing-native
+  ---
+  duration_ms: 61.394597
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: spawn-failure
+ok 127 - package Native DM SYNTHETIC ownership: spawn-failure
+  ---
+  duration_ms: 67.541678
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: interrupt
+ok 128 - package Native DM SYNTHETIC ownership: interrupt
+  ---
+  duration_ms: 181.292855
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: terminate
+ok 129 - package Native DM SYNTHETIC ownership: terminate
+  ---
+  duration_ms: 179.495126
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: uncooperative
+ok 130 - package Native DM SYNTHETIC ownership: uncooperative
+  ---
+  duration_ms: 3173.956291
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: server-failure
+ok 131 - package Native DM SYNTHETIC ownership: server-failure
+  ---
+  duration_ms: 553.094255
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: listen-failure
+ok 132 - package Native DM SYNTHETIC ownership: listen-failure
+  ---
+  duration_ms: 44.410569
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: factory-failure
+ok 133 - package Native DM SYNTHETIC ownership: factory-failure
+  ---
+  duration_ms: 43.246967
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: wrong-local
+ok 134 - package Native DM SYNTHETIC ownership: wrong-local
+  ---
+  duration_ms: 57.325121
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: wrong-port
+ok 135 - package Native DM SYNTHETIC ownership: wrong-port
+  ---
+  duration_ms: 59.655248
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: health-failure
+ok 136 - package Native DM SYNTHETIC ownership: health-failure
+  ---
+  duration_ms: 54.559458
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: external-endpoint
+ok 137 - package Native DM SYNTHETIC ownership: external-endpoint
+  ---
+  duration_ms: 51.37491
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: other-path
+ok 138 - package Native DM SYNTHETIC ownership: other-path
+  ---
+  duration_ms: 50.095502
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: trailing-path
+ok 139 - package Native DM SYNTHETIC ownership: trailing-path
+  ---
+  duration_ms: 48.778384
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: normalized-path
+ok 140 - package Native DM SYNTHETIC ownership: normalized-path
+  ---
+  duration_ms: 45.025932
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: encoded-path
+ok 141 - package Native DM SYNTHETIC ownership: encoded-path
+  ---
+  duration_ms: 49.364583
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: query-endpoint
+ok 142 - package Native DM SYNTHETIC ownership: query-endpoint
+  ---
+  duration_ms: 46.517277
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: fragment-endpoint
+ok 143 - package Native DM SYNTHETIC ownership: fragment-endpoint
+  ---
+  duration_ms: 51.403904
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: credential-endpoint
+ok 144 - package Native DM SYNTHETIC ownership: credential-endpoint
+  ---
+  duration_ms: 44.159397
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: tls-endpoint
+ok 145 - package Native DM SYNTHETIC ownership: tls-endpoint
+  ---
+  duration_ms: 49.275195
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: bad-args
+ok 146 - package Native DM SYNTHETIC ownership: bad-args
+  ---
+  duration_ms: 25.442892
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC ownership: native-only
+ok 147 - package Native DM SYNTHETIC ownership: native-only
+  ---
+  duration_ms: 45.705465
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC map routing: aurora-basin
+ok 148 - package Native DM SYNTHETIC map routing: aurora-basin
+  ---
+  duration_ms: 78.083013
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC map routing: cinder-array
+ok 149 - package Native DM SYNTHETIC map routing: cinder-array
+  ---
+  duration_ms: 79.15979
+  type: 'test'
+  ...
+# Subtest: package Native DM SYNTHETIC hung smoke has a 20-second deadline
+ok 150 - package Native DM SYNTHETIC hung smoke has a 20-second deadline
+  ---
+  duration_ms: 20080.088615
+  type: 'test'
+  ...
+# Subtest: package native-dm routes the three identity maps to the Deathmatch scene
+ok 151 - package native-dm routes the three identity maps to the Deathmatch scene
+  ---
+  duration_ms: 2.054521
+  type: 'test'
+  ...
+# Subtest: package identity ids are rejected where they are not reviewed routes
+ok 152 - package identity ids are rejected where they are not reviewed routes
+  ---
+  duration_ms: 0.778569
+  type: 'test'
+  ...
+# Subtest: Windows menus present all six maps as Deathmatch
+ok 153 - Windows menus present all six maps as Deathmatch
+  ---
+  duration_ms: 0.266269
+  type: 'test'
+  ...
+# Subtest: package graphics routes are independent of the ten source routes and nine map identities
+ok 154 - package graphics routes are independent of the ten source routes and nine map identities
+  ---
+  duration_ms: 4.565836
+  type: 'test'
+  ...
+# Subtest: package native-only stub: showcase exit
+ok 155 - package native-only stub: showcase exit
+  ---
+  duration_ms: 64.904646
+  type: 'test'
+  ...
+# Subtest: package native-only stub: showcase smoke
+ok 156 - package native-only stub: showcase smoke
+  ---
+  duration_ms: 49.655087
+  type: 'test'
+  ...
+# Subtest: package native-only stub: aurora-basin exit
+ok 157 - package native-only stub: aurora-basin exit
+  ---
+  duration_ms: 57.295476
+  type: 'test'
+  ...
+# Subtest: package native-only stub: aurora-basin smoke
+ok 158 - package native-only stub: aurora-basin smoke
+  ---
+  duration_ms: 53.901385
+  type: 'test'
+  ...
+# Subtest: package native-only stub: cinder-array exit
+ok 159 - package native-only stub: cinder-array exit
+  ---
+  duration_ms: 50.212201
+  type: 'test'
+  ...
+# Subtest: package native-only stub: cinder-array smoke
+ok 160 - package native-only stub: cinder-array smoke
+  ---
+  duration_ms: 49.625461
+  type: 'test'
+  ...
+# Subtest: package native-only stub: particle-lab exit
+ok 161 - package native-only stub: particle-lab exit
+  ---
+  duration_ms: 50.915499
+  type: 'test'
+  ...
+# Subtest: package native-only stub: particle-lab smoke
+ok 162 - package native-only stub: particle-lab smoke
+  ---
+  duration_ms: 50.093359
+  type: 'test'
+  ...
+# Subtest: package native-only stub: shader-lab exit
+ok 163 - package native-only stub: shader-lab exit
+  ---
+  duration_ms: 45.72416
+  type: 'test'
+  ...
+# Subtest: package native-only stub: shader-lab smoke
+ok 164 - package native-only stub: shader-lab smoke
+  ---
+  duration_ms: 48.426234
+  type: 'test'
+  ...
+# Subtest: package native-only stub ownership: native-failure
+ok 165 - package native-only stub ownership: native-failure
+  ---
+  duration_ms: 59.000541
+  type: 'test'
+  ...
+# Subtest: package native-only stub ownership: native-crash
+ok 166 - package native-only stub ownership: native-crash
+  ---
+  duration_ms: 49.524813
+  type: 'test'
+  ...
+# Subtest: package native-only stub ownership: missing-native
+ok 167 - package native-only stub ownership: missing-native
+  ---
+  duration_ms: 31.133155
+  type: 'test'
+  ...
+# Subtest: package native-only stub ownership: interrupt
+ok 168 - package native-only stub ownership: interrupt
+  ---
+  duration_ms: 150.785262
+  type: 'test'
+  ...
+# Subtest: package native-only stub ownership: terminate
+ok 169 - package native-only stub ownership: terminate
+  ---
+  duration_ms: 146.984528
+  type: 'test'
+  ...
+# Subtest: package native-only stub ownership: uncooperative
+ok 170 - package native-only stub ownership: uncooperative
+  ---
+  duration_ms: 3152.167687
+  type: 'test'
+  ...
+# Subtest: package native-only stub ownership: bad-args
+ok 171 - package native-only stub ownership: bad-args
+  ---
+  duration_ms: 27.197089
+  type: 'test'
+  ...
+# Subtest: package native-only stub ownership: ambiguous-help
+ok 172 - package native-only stub ownership: ambiguous-help
+  ---
+  duration_ms: 22.428352
+  type: 'test'
+  ...
+# Subtest: Horde package route is local-only, fixed default and rejects ignored options
+ok 173 - Horde package route is local-only, fixed default and rejects ignored options
+  ---
+  duration_ms: 2.472794
+  type: 'test'
+  ...
+# Subtest: package scene routing covers all nine locked identities and preserves native capability subsets
+ok 174 - package scene routing covers all nine locked identities and preserves native capability subsets
+  ---
+  duration_ms: 0.518632
+  type: 'test'
+  ...
+# Subtest: bad package arguments fail before opening an owned server; no silent scene/mode fallback
+ok 175 - bad package arguments fail before opening an owned server; no silent scene/mode fallback
+  ---
+  duration_ms: 0.89626
+  type: 'test'
+  ...
+1..175
+# tests 175
+# suites 0
+# pass 175
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 26423.887196
