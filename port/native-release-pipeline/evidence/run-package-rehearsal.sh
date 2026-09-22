@@ -19,6 +19,9 @@ node tools/release/release.mjs --tag="$TAG" --execute --verification=always --st
 echo "$?" > "$EVID/package-rehearsal-exit-code.txt"
 node tools/release/release.mjs --tag="$TAG" --resume-from=publish >> "$EVID/package-rehearsal-console.log" 2>&1
 echo "$?" > "$EVID/package-rehearsal-resume-exit-code.txt"
-cp -r "/tmp/opencode/cocs-release-$TAG/runs/." "$EVID/package-rehearsal-state-runs/"
+mkdir -p "$EVID/package-rehearsal-state-runs"
+# Copy the records without Godot's runtime caches; the state directory itself is untouched.
+tar -C "/tmp/opencode/cocs-release-$TAG/runs" --exclude='*/runtime' -cf - . \
+  | tar -C "$EVID/package-rehearsal-state-runs" -xf -
 date -u +%Y-%m-%dT%H:%M:%SZ > "$EVID/package-rehearsal-finished-at.txt"
 echo done > "$EVID/package-rehearsal-status.txt"

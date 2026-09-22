@@ -34,7 +34,10 @@ git status --porcelain=v1 -uall > "$EVID/dry-run-primary-status-before.txt"
 date -u +%Y-%m-%dT%H:%M:%SZ > "$EVID/dry-run-primary-started-at.txt"
 node tools/release/release.mjs --tag="$TAG" > "$EVID/dry-run-primary-console.log" 2>&1
 echo "$?" > "$EVID/dry-run-primary-exit-code.txt"
-cp -r "/tmp/opencode/cocs-release-$TAG/runs/." "$EVID/dry-run-primary-state-runs/"
+rm -rf "/tmp/opencode/cocs-release-$TAG/runs"/*/runtime 2>/dev/null
+mkdir -p "$EVID/dry-run-primary-state-runs"
+tar -C "/tmp/opencode/cocs-release-$TAG/runs" --exclude='*/runtime' -cf - . \
+  | tar -C "$EVID/dry-run-primary-state-runs" -xf -
 git status --porcelain=v1 -uall > "$EVID/dry-run-primary-status-after.txt"
 date -u +%Y-%m-%dT%H:%M:%SZ > "$EVID/dry-run-primary-finished-at.txt"
 echo done > "$EVID/dry-run-primary-status.txt"
