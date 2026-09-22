@@ -23,6 +23,7 @@ var actor_count := 0
 var local_actor_id := -1
 var map_mode := ""
 var clock_text := ""
+var team_score_text := ""
 var dirty := true
 var last_phase := -999
 var panel := PanelContainer.new()
@@ -87,6 +88,7 @@ func clear_round() -> void:
 	local_actor_id = -1
 	map_mode = ""
 	clock_text = ""
+	team_score_text = ""
 	dirty = true
 	panel.hide()
 	for row: Dictionary in rows: row.node.hide()
@@ -146,6 +148,25 @@ static func ranked_before(a: Dictionary, b: Dictionary) -> bool:
 	if name_order != 0: return name_order < 0
 	return a.order < b.order
 
+static func team_label(value: Variant) -> String:
+	# Wire team IDs are JSON numbers. Do not round malformed fractions into a team.
+	if value is int or value is float:
+		if value == 0: return "Red"
+		if value == 1: return "Blue"
+	if value is String:
+		if value.to_lower() in ["0", "red"]: return "Red"
+		if value.to_lower() in ["1", "blue"]: return "Blue"
+	return plain(value, "—", 16)
+
+static func team_totals(state: Dictionary) -> String:
+	var config: Variant = state.get("config")
+	# Source emits teamScores even in FFA. Only expose totals for the enabled team mode.
+	if not config is Dictionary or config.get("mode") != "teamdeathmatch": return ""
+	var scores: Variant = state.get("teamScores")
+	var red: Variant = number(scores.get("0")) if scores is Dictionary else null
+	var blue: Variant = number(scores.get("1")) if scores is Dictionary else null
+	return "Team totals  ·  Red %s  ·  Blue %s" % [str(red) if red != null else "—", str(blue) if blue != null else "—"]
+
 func apply_state(state: Dictionary, local_id: int, is_results: bool = false) -> void:
 	# Keep only presentation scalars, never the large simulation snapshot.
 	var next: Array[Dictionary] = []
@@ -157,8 +178,7 @@ func apply_state(state: Dictionary, local_id: int, is_results: bool = false) -> 
 		var actor: Dictionary = actors[i]
 		var frags: Variant = number(actor.get("frags"))
 		var deaths: Variant = number(actor.get("deaths"))
-		var team: Variant = actor.get("team")
-		var team_text := plain(team, "—", 16) if team is String else (str(number(team)) if number(team) != null else "—")
+		var team_text := team_label(actor.get("team"))
 		var id: Variant = number(actor.get("id"))
 		next.append({"order":i, "player_name":plain(actor.get("name"), "Player %s" % (str(id) if id != null else "?")),
 			"local":id != null and local_id >= 0 and id == local_id, "team":team_text,
@@ -169,17 +189,21 @@ func apply_state(state: Dictionary, local_id: int, is_results: bool = false) -> 
 	var next_map_mode := "%s  ·  %s" % [plain(state.get("mapName"), plain(state.get("mapId"), "Map unknown")), plain(state.get("modeName"), plain(config.get("mode"), "Mode unknown"))]
 	var elapsed: Variant = number(state.get("time"))
 	var next_clock := "Elapsed —"
+	var next_team_scores := team_totals(state)
+	var team_height_changed := team_score_text.is_empty() != next_team_scores.is_empty()
 	if elapsed != null:
 		var seconds: int = maxi(0, elapsed)
 		next_clock = "Elapsed %d:%02d" % [seconds / 60, seconds % 60]
-	if entries != next or map_mode != next_map_mode or clock_text != next_clock or finished != is_results or local_actor_id != local_id:
+	if entries != next or map_mode != next_map_mode or clock_text != next_clock or team_score_text != next_team_scores or finished != is_results or local_actor_id != local_id:
 		dirty = true
 	entries = next
 	map_mode = next_map_mode
 	clock_text = next_clock
+	team_score_text = next_team_scores
 	local_actor_id = local_id
 	active = true
 	finished = is_results
+	if team_height_changed: resize()
 	change_page(0)
 	refresh_visibility()
 
@@ -251,7 +275,8 @@ func set_row(row: Dictionary, values: Array, color: Color) -> void:
 func resize() -> void:
 	var viewport := get_viewport().get_visible_rect().size
 	# Reserve the top 224 px for the existing diagnostic HUD and restart/error text.
-	page_size = clampi(int((viewport.y - 224 - 24 - 190) / ROW_HEIGHT), 3, MAX_VISIBLE)
+	var team_height := 0 if team_score_text.is_empty() else 28
+	page_size = clampi(int((viewport.y - 224 - 24 - 190 - team_height) / ROW_HEIGHT), 3, MAX_VISIBLE)
 	panel.size.x = minf(760, viewport.x - 48)
 	change_page(0)
 	dirty = true
@@ -266,6 +291,7 @@ func render() -> void:
 	subtitle.text = map_mode
 	var round_text := "Round %d  ·  " % round_number if round_number > 0 else ""
 	summary.text = "%s%s  ·  %d players" % [round_text, clock_text, actor_count]
+	if not team_score_text.is_empty(): summary.text += "\n" + team_score_text
 	var first := page * page_size
 	for i: int in range(rows.size()):
 		var row: Dictionary = rows[i]

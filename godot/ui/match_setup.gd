@@ -3,7 +3,8 @@ extends PanelContainer
 # Native capability subset; the locked semantic catalog remains the identity authority.
 signal start_requested(map_id: String, mode: String)
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible"]
-const MODES := ["deathmatch", "instagib"]
+const MODES := ["deathmatch", "teamdeathmatch", "instagib"]
+const MODE_NAMES := {"deathmatch":"Deathmatch", "teamdeathmatch":"Team Deathmatch", "instagib":"Instagib", "rockets":"Rocket Arena"}
 const DEFAULT_MAP := "meridian-exchange"
 const DEFAULT_MODE := "deathmatch"
 var entries: Dictionary = {}
@@ -12,11 +13,19 @@ var mode_choice := OptionButton.new()
 var status := Label.new()
 var start := Button.new()
 
+func _ready() -> void:
+	# configure() is also used before attachment by fixtures/scene builders.
+	# The viewport only exists after entering the tree.
+	get_viewport().size_changed.connect(center_panel)
+	resized.connect(center_panel)
+	call_deferred("center_panel")
+
 static func validate(maps: Dictionary, map_id: String, mode: String) -> String:
 	if not maps.has(map_id): return "Unknown locked map: " + map_id
 	if mode not in maps[map_id].get("modes", []):
 		return "Mode '%s' is not supported by %s in the locked catalog." % [mode, map_id]
 	if map_id not in MAPS: return "Native gameplay pending for " + map_id
+	if mode == "rockets": return "Rocket Arena pending: native projectile and launch feedback are not yet presented."
 	if mode not in MODES: return "Native mode pending: " + mode
 	return ""
 
@@ -84,7 +93,7 @@ func configure(maps: Dictionary, map_id: String, mode: String) -> void:
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	status.custom_minimum_size = Vector2(620, 70)
 	var pending := Label.new()
-	pending.text = "All 9 locked maps retained. Race, soccer, LATTICE,\nobjective/team modes and additional loadouts: pending."
+	pending.text = "Native: Deathmatch, Team Deathmatch and Instagib on 3 arenas.\nOther maps and modes remain selectable for their pending status."
 	box.add_child(pending)
 	start.text = "Start"
 	start.custom_minimum_size.y = 44
@@ -95,11 +104,10 @@ func configure(maps: Dictionary, map_id: String, mode: String) -> void:
 		if validate(entries, selected_map(), selected_mode()).is_empty():
 			start_requested.emit(selected_map(), selected_mode()))
 	populate_modes(mode)
-	get_viewport().size_changed.connect(center_panel)
-	resized.connect(center_panel)
-	call_deferred("center_panel")
+	if is_inside_tree(): call_deferred("center_panel")
 
 func center_panel() -> void:
+	if not is_inside_tree(): return
 	position = ((get_viewport_rect().size - size) * 0.5).max(Vector2(16, 16))
 
 func selected_map() -> String:
@@ -112,7 +120,7 @@ func populate_modes(preferred: String = DEFAULT_MODE) -> void:
 	mode_choice.clear()
 	for mode: String in entries[selected_map()].modes:
 		var pending := selected_map() not in MAPS or mode not in MODES
-		mode_choice.add_item(mode.capitalize() + (" — pending" if pending else ""))
+		mode_choice.add_item(MODE_NAMES.get(mode, mode.capitalize()) + (" — pending" if pending else ""))
 		mode_choice.set_item_metadata(mode_choice.item_count - 1, mode)
 		if mode == preferred: mode_choice.select(mode_choice.item_count - 1)
 	update_status()
@@ -120,4 +128,6 @@ func populate_modes(preferred: String = DEFAULT_MODE) -> void:
 func update_status() -> void:
 	var problem := validate(entries, selected_map(), selected_mode())
 	start.disabled = not problem.is_empty()
-	status.text = problem if start.disabled else "Ready: %s / %s\nClick to capture in-game; Esc releases the pointer." % [entries[selected_map()].name, selected_mode()]
+	status.text = problem if start.disabled else "Ready: %s / %s\nClick to capture in-game; Esc releases the pointer." % [entries[selected_map()].name, MODE_NAMES.get(selected_mode(), selected_mode())]
+	if not start.disabled and selected_mode() == "teamdeathmatch":
+		status.text += "\nRed vs Blue · Shared team score · Friendly fire off · Tab: scores"

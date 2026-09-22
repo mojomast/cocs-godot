@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: modes and mode-specific defaults preserve explicit limits
+ok 1 - modes and mode-specific defaults preserve explicit limits
+  ---
+  duration_ms: 1.036191
+  type: 'test'
+  ...
+# Subtest: new modes register distinct mechanics without disturbing existing mode IDs
+ok 2 - new modes register distinct mechanics without disturbing existing mode IDs
+  ---
+  duration_ms: 0.283591
+  type: 'test'
+  ...
+# Subtest: instagib, rockets and arsenal pin explicit FFA sudden-death defaults
+ok 3 - instagib, rockets and arsenal pin explicit FFA sudden-death defaults
+  ---
+  duration_ms: 0.249377
+  type: 'test'
+  ...
+# Subtest: CTF assigns teams, flag lifecycle and capture preconditions
+ok 4 - CTF assigns teams, flag lifecycle and capture preconditions
+  ---
+  duration_ms: 33.774012
+  type: 'test'
+  ...
+# Subtest: CTF drops a carried flag on death and emits lifecycle events
+ok 5 - CTF drops a carried flag on death and emits lifecycle events
+  ---
+  duration_ms: 1.972553
+  type: 'test'
+  ...
+# Subtest: CTF scoreStats records the complete flag lifecycle
+ok 6 - CTF scoreStats records the complete flag lifecycle
+  ---
+  duration_ms: 1.320914
+  type: 'test'
+  ...
+# Subtest: team deathmatch wins by team score without changing deathmatch scoring
+ok 7 - team deathmatch wins by team score without changing deathmatch scoring
+  ---
+  duration_ms: 2.870485
+  type: 'test'
+  ...
+# Subtest: CTF carriers move slower and cannot activate powers
+ok 8 - CTF carriers move slower and cannot activate powers
+  ---
+  duration_ms: 3.28417
+  type: 'test'
+  ...
+# Subtest: bots pick only weapons the mode loadout allows
+ok 9 - bots pick only weapons the mode loadout allows
+  ---
+  duration_ms: 13.280348
+  type: 'test'
+  ...
+# Subtest: a sniper-only loadout strips disallowed weapon pickups from the map
+ok 10 - a sniper-only loadout strips disallowed weapon pickups from the map
+  ---
+  duration_ms: 1.006244
+  type: 'test'
+  ...
+# Subtest: a no-ADS loadout suppresses aim-down-sights for bots and humans
+ok 11 - a no-ADS loadout suppresses aim-down-sights for bots and humans
+  ---
+  duration_ms: 1.562005
+  type: 'test'
+  ...
+# Subtest: bots raise their retreat threshold when a one-shot mutator is active
+ok 12 - bots raise their retreat threshold when a one-shot mutator is active
+  ---
+  duration_ms: 1.962524
+  type: 'test'
+  ...
+# Subtest: bounds and traversal launch are deterministic, swept and cooldown gated
+ok 13 - bounds and traversal launch are deterministic, swept and cooldown gated
+  ---
+  duration_ms: 1.481504
+  type: 'test'
+  ...
+# Subtest: CTF flag relay hands the flag to the nearest living teammate by distance then id
+ok 14 - CTF flag relay hands the flag to the nearest living teammate by distance then id
+  ---
+  duration_ms: 4.176561
+  type: 'test'
+  ...
+# Subtest: CTF carriers drop the flag at their feet when no teammate is in relay range
+ok 15 - CTF carriers drop the flag at their feet when no teammate is in relay range
+  ---
+  duration_ms: 2.047865
+  type: 'test'
+  ...
+# Subtest: CTF captures are blocked by a living enemy in the home ring and announce each contest entry once
+ok 16 - CTF captures are blocked by a living enemy in the home ring and announce each contest entry once
+  ---
+  duration_ms: 1.824977
+  type: 'test'
+  ...
+# Subtest: projectile free flight travels at weapon speed independent of step frequency
+ok 17 - projectile free flight travels at weapon speed independent of step frequency
+  ---
+  duration_ms: 161.975981
+  type: 'test'
+  ...
+# Subtest: swept wall impacts keep clearance and cannot tunnel
+ok 18 - swept wall impacts keep clearance and cannot tunnel
+  ---
+  duration_ms: 5.01483
+  type: 'test'
+  ...
+# Subtest: team splash damages and boosts shooter and enemies, never teammates
+ok 19 - team splash damages and boosts shooter and enemies, never teammates
+  ---
+  duration_ms: 5.100461
+  type: 'test'
+  ...
+# Subtest: self splash uses normal protection, armor and suicide scoring
+ok 20 - self splash uses normal protection, armor and suicide scoring
+  ---
+  duration_ms: 1.439836
+  type: 'test'
+  ...
+# Subtest: rockets strike vehicle bodies instead of passing through them
+ok 21 - rockets strike vehicle bodies instead of passing through them
+  ---
+  duration_ms: 9.44701
+  type: 'test'
+  ...
+# Subtest: rockets never damage their own or a friendly vehicle
+ok 22 - rockets never damage their own or a friendly vehicle
+  ---
+  duration_ms: 22.56295
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 860.780868

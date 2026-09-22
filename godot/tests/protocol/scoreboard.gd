@@ -59,7 +59,7 @@ func run() -> void:
 	await process_frame
 	check(board.panel.visible and Input.mouse_mode == pointer_mode, "Tab opens without changing capture")
 	check(board.rows[0].cells[1].text == "[b]YOU[/b] Player  · YOU", "plain Label preserves markup literally, collapses newline")
-	check(board.clock_text == "Elapsed 1:23" and board.entries[1].team == "0", "authoritative elapsed seconds and numeric team zero")
+	check(board.clock_text == "Elapsed 1:23" and board.entries[1].team == "Red", "authoritative elapsed seconds and readable numeric team zero")
 	var row_id: int = board.rows[0].node.get_instance_id()
 	board.dirty = false
 	session.client.snapshot.emit({"state":state})
