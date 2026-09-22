@@ -1,0 +1,30 @@
+{
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "exit_code": 0,
+  "status": "passed",
+  "report": {
+    "absorbed_mist_events": 5,
+    "absorbed_only": 5,
+    "arterial_hits": 1,
+    "bot_deaths": 0,
+    "bot_hits": 0,
+    "capture": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-blood-fx/evidence/live-1790113603275/live-native-dm.png",
+    "capture_result": 0,
+    "death_bursts": 1,
+    "duplicates": 0,
+    "events_seen": 11,
+    "frames": [],
+    "map": "prism-foundry/70313314176",
+    "map_error": "",
+    "mist_events": 1,
+    "no_bleed": 1,
+    "rejected": 0,
+    "self_hits": 5,
+    "spurts": 3,
+    "stains_live": 22,
+    "stains_recycled": 0,
+    "unknown_actors": 0
+  },
+  "capture": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-blood-fx/evidence/live-1790113603275/live-native-dm.png",
+  "errors": false
+}
