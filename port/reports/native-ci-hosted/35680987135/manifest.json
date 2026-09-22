@@ -1,0 +1,377 @@
+{
+  "max_files": 80,
+  "max_bytes_per_file": 131072,
+  "files": [
+    {
+      "path": "setup/axis-export.log",
+      "source_bytes": 688,
+      "truncated": false
+    },
+    {
+      "path": "setup/bootstrap.log",
+      "source_bytes": 844,
+      "truncated": false
+    },
+    {
+      "path": "setup/chromium-install.log",
+      "source_bytes": 19274,
+      "truncated": false
+    },
+    {
+      "path": "setup/git-diff-check.log",
+      "source_bytes": 0,
+      "truncated": false
+    },
+    {
+      "path": "setup/meridian-export.log",
+      "source_bytes": 1615,
+      "truncated": false
+    },
+    {
+      "path": "setup/npm-ci.log",
+      "source_bytes": 27,
+      "truncated": false
+    },
+    {
+      "path": "setup/semantic-export.log",
+      "source_bytes": 61,
+      "truncated": false
+    },
+    {
+      "path": "setup/verify.log",
+      "source_bytes": 1405,
+      "truncated": false
+    },
+    {
+      "path": "gates/audio-feedback.log",
+      "source_bytes": 464,
+      "truncated": false
+    },
+    {
+      "path": "gates/combat-feedback.log",
+      "source_bytes": 153,
+      "truncated": false
+    },
+    {
+      "path": "gates/control-safety.log",
+      "source_bytes": 131,
+      "truncated": false
+    },
+    {
+      "path": "gates/entity-visuals.log",
+      "source_bytes": 121,
+      "truncated": false
+    },
+    {
+      "path": "gates/export-tests.log",
+      "source_bytes": 1085,
+      "truncated": false
+    },
+    {
+      "path": "gates/game-hud-debug.log",
+      "source_bytes": 118,
+      "truncated": false
+    },
+    {
+      "path": "gates/game-hud-setup.log",
+      "source_bytes": 182,
+      "truncated": false
+    },
+    {
+      "path": "gates/game-hud.log",
+      "source_bytes": 182,
+      "truncated": false
+    },
+    {
+      "path": "gates/gate-runner-tests.log",
+      "source_bytes": 104,
+      "truncated": false
+    },
+    {
+      "path": "gates/glb-import.log",
+      "source_bytes": 187,
+      "truncated": false
+    },
+    {
+      "path": "gates/glb-sides.log",
+      "source_bytes": 160,
+      "truncated": false
+    },
+    {
+      "path": "gates/gltf-sides.log",
+      "source_bytes": 1396,
+      "truncated": false
+    },
+    {
+      "path": "gates/godot-import.log",
+      "source_bytes": 8881,
+      "truncated": false
+    },
+    {
+      "path": "gates/guest-session.log",
+      "source_bytes": 113,
+      "truncated": false
+    },
+    {
+      "path": "gates/health-hud-evidence.log",
+      "source_bytes": 5717,
+      "truncated": false
+    },
+    {
+      "path": "gates/input-queue.log",
+      "source_bytes": 154,
+      "truncated": false
+    },
+    {
+      "path": "gates/lattice-adapter.log",
+      "source_bytes": 113,
+      "truncated": false
+    },
+    {
+      "path": "gates/lattice-economy.log",
+      "source_bytes": 121,
+      "truncated": false
+    },
+    {
+      "path": "gates/lattice-map.log",
+      "source_bytes": 117,
+      "truncated": false
+    },
+    {
+      "path": "gates/lattice-ui.log",
+      "source_bytes": 145,
+      "truncated": false
+    },
+    {
+      "path": "gates/lattice-world.log",
+      "source_bytes": 1058,
+      "truncated": false
+    },
+    {
+      "path": "gates/launcher-options.log",
+      "source_bytes": 1187,
+      "truncated": false
+    },
+    {
+      "path": "gates/local-lifecycle.log",
+      "source_bytes": 117,
+      "truncated": false
+    },
+    {
+      "path": "gates/match-selection.log",
+      "source_bytes": 115,
+      "truncated": false
+    },
+    {
+      "path": "gates/motion-impairment.log",
+      "source_bytes": 154,
+      "truncated": false
+    },
+    {
+      "path": "gates/native-lifecycle.log",
+      "source_bytes": 252,
+      "truncated": false
+    },
+    {
+      "path": "gates/native-live.log",
+      "source_bytes": 202,
+      "truncated": false
+    },
+    {
+      "path": "gates/native-session.log",
+      "source_bytes": 495,
+      "truncated": false
+    },
+    {
+      "path": "gates/native-trace.log",
+      "source_bytes": 1557,
+      "truncated": false
+    },
+    {
+      "path": "gates/objective-completion-evidence.log",
+      "source_bytes": 3514,
+      "truncated": false
+    },
+    {
+      "path": "gates/objective-controls.log",
+      "source_bytes": 133,
+      "truncated": false
+    },
+    {
+      "path": "gates/objective-evidence.log",
+      "source_bytes": 1084,
+      "truncated": false
+    },
+    {
+      "path": "gates/objective-input-timing.log",
+      "source_bytes": 190,
+      "truncated": false
+    },
+    {
+      "path": "gates/objective-progression-evidence.log",
+      "source_bytes": 1809,
+      "truncated": false
+    },
+    {
+      "path": "gates/objective-progression.log",
+      "source_bytes": 131,
+      "truncated": false
+    },
+    {
+      "path": "gates/objective-renderer.log",
+      "source_bytes": 125,
+      "truncated": false
+    },
+    {
+      "path": "gates/packet-replay.log",
+      "source_bytes": 168,
+      "truncated": false
+    },
+    {
+      "path": "gates/pickup-presentation.log",
+      "source_bytes": 143,
+      "truncated": false
+    },
+    {
+      "path": "gates/presentation-replay.log",
+      "source_bytes": 185,
+      "truncated": false
+    },
+    {
+      "path": "gates/projectile-navigation.log",
+      "source_bytes": 2286,
+      "truncated": false
+    },
+    {
+      "path": "gates/projectiles.log",
+      "source_bytes": 103,
+      "truncated": false
+    },
+    {
+      "path": "gates/protocol-envelopes.log",
+      "source_bytes": 116,
+      "truncated": false
+    },
+    {
+      "path": "gates/puma-presentation.log",
+      "source_bytes": 120,
+      "truncated": false
+    },
+    {
+      "path": "gates/release-refused.log",
+      "source_bytes": 682,
+      "truncated": false
+    },
+    {
+      "path": "gates/remote-motion.log",
+      "source_bytes": 147,
+      "truncated": false
+    },
+    {
+      "path": "gates/round-boundaries.log",
+      "source_bytes": 118,
+      "truncated": false
+    },
+    {
+      "path": "gates/scoreboard-session.log",
+      "source_bytes": 169,
+      "truncated": false
+    },
+    {
+      "path": "gates/scoreboard.log",
+      "source_bytes": 141,
+      "truncated": false
+    },
+    {
+      "path": "gates/semantic-export.log",
+      "source_bytes": 61,
+      "truncated": false
+    },
+    {
+      "path": "gates/session-recovery.log",
+      "source_bytes": 145,
+      "truncated": false
+    },
+    {
+      "path": "gates/snapshot-watch.log",
+      "source_bytes": 126,
+      "truncated": false
+    },
+    {
+      "path": "gates/soccer-guidance.log",
+      "source_bytes": 111,
+      "truncated": false
+    },
+    {
+      "path": "gates/source-tests.log",
+      "source_bytes": 19014,
+      "truncated": false
+    },
+    {
+      "path": "gates/sports-controls.log",
+      "source_bytes": 100,
+      "truncated": false
+    },
+    {
+      "path": "gates/sports-polish.log",
+      "source_bytes": 118,
+      "truncated": false
+    },
+    {
+      "path": "gates/sports-progression.log",
+      "source_bytes": 123,
+      "truncated": false
+    },
+    {
+      "path": "gates/stall-controls.log",
+      "source_bytes": 169,
+      "truncated": false
+    },
+    {
+      "path": "gates/team-scores.log",
+      "source_bytes": 127,
+      "truncated": false
+    },
+    {
+      "path": "gates/toolchain-version.log",
+      "source_bytes": 32,
+      "truncated": false
+    },
+    {
+      "path": "gates/two-native-clients.log",
+      "source_bytes": 487,
+      "truncated": false
+    },
+    {
+      "path": "gates/viewer-smoke.log",
+      "source_bytes": 127,
+      "truncated": false
+    },
+    {
+      "path": "gates/window-focus.log",
+      "source_bytes": 175,
+      "truncated": false
+    },
+    {
+      "path": "reports/axis-weapon-glb.json",
+      "source_bytes": 4322,
+      "truncated": false
+    },
+    {
+      "path": "reports/meridian-exchange-glb.json",
+      "source_bytes": 6563,
+      "truncated": false
+    },
+    {
+      "path": "reports/two-native-clients.json",
+      "source_bytes": 636,
+      "truncated": false
+    },
+    {
+      "path": "reports/verification.json",
+      "source_bytes": 22747,
+      "truncated": false
+    }
+  ],
+  "omitted_files": 0
+}

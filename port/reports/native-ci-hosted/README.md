@@ -53,3 +53,12 @@ Run <https://github.com/mojomast/cocs-godot/actions/runs/35679675460> at
 co-op economy91 and soccer guidance45. The lead checked completed success and
 downloaded the report/console/artifact manifest to `35679675460/`; gate count
 and report status were validated before recording this result.
+
+## Objective completion and LATTICE world
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35680987135> at
+`3600791f8a98b287b2005fad9f83645d983b2ae8` **PASS**, all **62 gates**, in 3m26s.
+This includes completion replay/corruption22, queued-key release timing,
+LATTICE world contract18 and all five launcher routing tests. The lead watched
+completion and validated the downloaded report count/status. The report,
+console and artifact manifest are retained in `35680987135/`.
