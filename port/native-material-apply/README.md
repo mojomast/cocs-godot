@@ -94,7 +94,22 @@ data was touched.
 | `aurora-traversal` | `AURORA_VALIDATION checks=593 failures=[]` |
 | `cinder-traversal` | `CINDER_VERIFY assertions=1246 failures=[]` |
 | `viewer-smoke` | `PORT_VIEWER_SMOKE_OK maps=9 cycles=2 unknown=rejected` |
+| `identity-prototype-rays` | `identity_maps/rays.gd` exit 0 |
+| `identity-prototype-lifecycle` | `identity_maps/lifecycle.gd` exit 0 |
+| `identity baseline harness` | `IDENTITY_BASELINE` exit 0 (1280×800, both DM arenas) |
+| `exploration-walker` | `graphics_batch/walker.gd` exit 0 |
+| `particle-lab` | `particle_lab/verify.gd` exit 0 |
+| `zone-modes` | `zone_modes/unit.gd` exit 0 |
+| `horde-model` | `horde/test.gd` exit 0 |
+| `combined-arms-graphics` | exit 0 |
+| `showcase-startup` | `PRISM_FOUNDRY_SMOKE_OK` |
 | `actual-maps` (node) | 3/3 pass, geometry hashes unchanged |
+
+Not run by this lane because they are driven by an external harness or server:
+`graphics-live` / `native_modes_live` (need a live loopback authority),
+`graphics-batch gallery` (needs `--gallery-output`), `horde-controls` (needs the
+input-vector file), and the full aggregate `tools/godot-dev/verify.py` (lead
+owns it). Logs for everything this lane ran are in `evidence/gates/`.
 
 ## Evidence
 
@@ -173,3 +188,15 @@ python3 port/native-material-apply/run.py --phase after --glow --maps=ember-cruc
    their own material languages; this pass is world surfaces only. The
    `explosion`/`heal`/`teleport`/`capture-ring`/`weather-snow`/`quantum-rift`/
    `qrc-glyphs` effect planes are the effects lane's scope, not this one.
+9. **Two library features are wired but not yet switched by a quality setting.**
+   `MaterialLanguage.set_glow(bool)` is the library's intended user-facing glow
+   switch (it strips the LUT accents from every cached material) and
+   `apply_to(node, family)` assigns a family to a whole subtree. This pass uses
+   neither: the environment glow A/B is `Environment.glow_enabled` (bloom), and
+   materials are assigned per role so the mapping stays explicit. Wiring
+   `set_glow` to `godot/world/combat_quality.gd` (another lane's file) would give
+   the owner a real material-side quality lever — recommended, not done here.
+10. **No interface mismatch to report.** Every contracted call behaved as
+    documented (`families()`, `material()`, `normal_map()`, `derived()`,
+    `coverage()`, `budget()`, `cache_stats()`), the cache never rejected a
+    request (0/96), and no library file was edited by this lane.
