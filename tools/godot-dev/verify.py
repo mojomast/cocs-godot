@@ -73,7 +73,9 @@ commands = [
     ("cinder-traversal", [binary, "--headless", "--path", "godot", "--script", "res://tests/cinder_array/verify.gd", "--", str(root / "port/reports/cinder-traversal.json")]),
     ("exploration-walker", [binary, "--headless", "--path", "godot", "--script", "res://tests/graphics_batch/walker.gd"]),
     ("first-person-rig", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/lifecycle.gd"]),
-    ("first-person-binding", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/binding.gd"]),
+    # Real pointer capture is required by this fixture; the dummy display server
+    # ignores MOUSE_MODE_CAPTURED, so the gate runs under a private owned Xvfb.
+    ("first-person-binding", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--path", "godot", "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy", "--script", "res://tests/first_person/binding.gd"]),
     ("first-person-ads", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/ads_contract.gd"]),
     ("combat-actions", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_actions/controls.gd"]),
     ("combat-shields", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_shields/validate.gd"]),
@@ -82,6 +84,7 @@ commands = [
     ("combat-pickup-assets", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_pickup_assets/validate.gd"]),
     ("weapon-effects", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/lifecycle.gd"]),
     ("weapon-effects-rig", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/rig_integration.gd"]),
+    ("weapon-handling", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/handling.gd"]),
     ("combat-integration-oracle", ["node", "port/native-combat-integration/export-fixtures.mjs"]),
     ("combat-integration", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_integration/contracts.gd"]),
     ("combat-combined-integration", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_integration/combined_adapter.gd"]),

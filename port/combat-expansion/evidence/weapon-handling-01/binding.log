@@ -1,0 +1,33 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: bound to active source policy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/first_person/binding.gd:48)
+       [1] run (res://tests/first_person/binding.gd:59)
+ERROR: Arms Race weapon selection restriction does not hide weapon
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/first_person/binding.gd:48)
+       [1] run (res://tests/first_person/binding.gd:60)
+ERROR: responsive local aim intent independent of snapshot ADS
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/first_person/binding.gd:48)
+       [1] run (res://tests/first_person/binding.gd:63)
+ERROR: source event signal hooked
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/first_person/binding.gd:48)
+       [1] run (res://tests/first_person/binding.gd:71)
+ERROR: stale source events consumed once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/first_person/binding.gd:48)
+       [1] run (res://tests/first_person/binding.gd:87)
+ERROR: matching source identity restored
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/first_person/binding.gd:48)
+       [1] run (res://tests/first_person/binding.gd:113)
+FIRST_PERSON_BINDING {"checks":18,"failures":["bound to active source policy","Arms Race weapon selection restriction does not hide weapon","responsive local aim intent independent of snapshot ADS","source event signal hooked","stale source events consumed once","matching source identity restored"]}
