@@ -25,6 +25,24 @@ var event_order: Array = []
 var error: String = ""
 var was_open: bool = false
 var round_finished: bool = false
+var spectating := false # Connection identity, not round state; never implies an actor.
+const ACTIVE_SPECTATOR_NOTICE := "Match in progress — you joined as a spectator."
+var joined_room_request := ""
+# One adjacent handshake only: queued join -> spectator welcome -> active roster -> notice.
+var spectator_notice_stage := 0
+
+func clear_join_context() -> void:
+	spectating = false
+	joined_room_request = ""
+	spectator_notice_stage = 0
+
+func spectator_assignment(frame: Dictionary, player: Dictionary) -> bool:
+	return frame.get("roomId") == room_id and not room_id.is_empty() and player.get("spectate") is bool and player.spectate and player.get("connected") is bool and player.connected and player.has("actorId") and player.actorId == null
+
+func active_spectator_roster(frame: Dictionary) -> bool:
+	var config: Variant = frame.get("config")
+	var lifecycle: Variant = frame.get("lifecycle")
+	return frame.get("started") is bool and frame.started and wire_integer(frame.get("hostId")) and frame.hostId != peer_id and wire_integer(frame.get("roundRevision")) and frame.roundRevision > 0 and lifecycle is Dictionary and lifecycle.get("phase") == "live" and validate_map(frame.get("mapId")) and config is Dictionary and config.get("mode") is String and config.mode in allowlist[requested_map].get("modes", [])
 
 func connect_server(endpoint: String, maps: Dictionary, map_id: String) -> Error:
 	disconnect_server()
@@ -46,9 +64,11 @@ func disconnect_server() -> void:
 	peer_id = -1
 	actor_id = -1
 	error = ""
+	clear_join_context()
 	reset_round()
 
 func reset_round() -> void:
+	spectator_notice_stage = 0
 	round_finished = false
 	input_seq = 0
 	last_ack = 0
@@ -58,12 +78,14 @@ func reset_round() -> void:
 	event_order.clear()
 
 func fail(message: String) -> bool:
+	spectator_notice_stage = 0
 	error = message
 	connection_error.emit(message)
 	if peer.get_ready_state() == WebSocketPeer.STATE_OPEN: peer.close(1008, "Port contract violation")
 	return false
 
 func send_frame(frame: Dictionary) -> Error:
+	if spectating and frame.get("type") in ["create", "join", "host", "start", "input"]: return ERR_UNAUTHORIZED
 	if peer.get_ready_state() != WebSocketPeer.STATE_OPEN: return ERR_CONNECTION_ERROR
 	return peer.send_text(JSON.stringify(frame))
 
@@ -72,7 +94,11 @@ func create_room(player_name: String = "Godot") -> Error:
 
 func join_room(id: String, player_name: String = "Godot guest") -> Error:
 	if id.is_empty(): return ERR_INVALID_PARAMETER
-	return send_frame({"type":"join", "roomId":id, "name":player_name, "v":PROTOCOL_VERSION, "delta":0})
+	var result := send_frame({"type":"join", "roomId":id, "name":player_name, "v":PROTOCOL_VERSION, "delta":0})
+	if result == OK:
+		joined_room_request = id
+		spectator_notice_stage = 1
+	return result
 
 func configure_match(mode: String, bots: int = 2) -> Error:
 	if not allowlist.has(requested_map) or not mode in allowlist[requested_map].modes:
@@ -98,6 +124,8 @@ func wire_integer(value: Variant) -> bool:
 func valid_envelope(frame: Dictionary) -> bool:
 	match frame.type:
 		"welcome":
+			for flag: String in ["spectate", "host", "reconnected"]:
+				if frame.has(flag) and not frame[flag] is bool: return false
 			return frame.get("roomId") is String and wire_integer(frame.get("peerId"))
 		"lobby":
 			if not frame.get("players", []) is Array: return false
@@ -105,6 +133,8 @@ func valid_envelope(frame: Dictionary) -> bool:
 			var actors: Dictionary = {}
 			for player: Variant in frame.get("players", []):
 				if not player is Dictionary or not wire_integer(player.get("peerId")): return false
+				for flag: String in ["spectate", "connected"]:
+					if player.has(flag) and not player[flag] is bool: return false
 				var id: int = int(player.peerId)
 				if peers.has(id): return false
 				peers[id] = true
@@ -132,19 +162,29 @@ func decode_text(text: String) -> bool:
 	if not value is Dictionary or not value.get("type") is String: return fail("Malformed JSON envelope")
 	var frame: Dictionary = value
 	if not valid_envelope(frame): return fail("Malformed protocol envelope")
+	if frame.type not in ["welcome", "lobby", "error"]: spectator_notice_stage = 0
 	match frame.type:
 		"welcome":
 			if frame.get("v") != PROTOCOL_VERSION: return fail("Protocol version mismatch")
+			if spectating: return fail("Unexpected welcome during spectator connection")
 			room_id = str(frame.get("roomId", ""))
 			peer_id = int(frame.get("peerId", -1))
+			spectator_notice_stage = 2 if spectator_notice_stage == 1 and room_id == joined_room_request and frame.get("spectate") == true and frame.get("host") == false and not frame.get("reconnected", false) else 0
 		"lobby":
 			# An unconfigured newly created server room has no selected content yet.
 			if frame.get("config") != null and not validate_map(frame.get("mapId")): return fail("Lobby map substitution")
 			# A lobby is a complete roster, not a patch. Revoked/absent
 			# assignments must not retain control of a previous actor.
 			var next_actor_id: int = -1
+			var self_player: Dictionary = {}
 			for player: Dictionary in frame.get("players", []):
-				if int(player.peerId) == peer_id and player.get("actorId") != null: next_actor_id = int(player.actorId)
+				if int(player.peerId) == peer_id:
+					self_player = player
+					if player.get("actorId") != null: next_actor_id = int(player.actorId)
+			var readonly := spectator_assignment(frame, self_player)
+			if spectating and not readonly: return fail("Spectator assignment changed; leave and join explicitly")
+			if spectator_notice_stage == 2 and readonly: spectating = true
+			spectator_notice_stage = 3 if spectator_notice_stage == 2 and spectating and readonly and active_spectator_roster(frame) else 0
 			# ACKs belong to an actor; input sequences belong to this connection.
 			# Do not carry an old actor's high-water mark into a new assignment.
 			if next_actor_id != actor_id: last_ack = 0
@@ -183,7 +223,11 @@ func decode_text(text: String) -> bool:
 				fresh.append(item)
 			events.emit(fresh)
 		"snapshot-delta": return fail("Unexpected delta frame; negotiated delta=0")
-		"error": return fail(str(frame.get("message", "Server error")))
+		"error":
+			var informational: bool = spectator_notice_stage == 3 and spectating and actor_id == -1 and frame.size() == 2 and frame.get("message") == ACTIVE_SPECTATOR_NOTICE
+			spectator_notice_stage = 0
+			if informational: return true
+			return fail(str(frame.get("message", "Server error")))
 	return true
 
 func _process(_delta: float) -> void:
@@ -203,4 +247,5 @@ func _process(_delta: float) -> void:
 		room_id = ""
 		peer_id = -1
 		actor_id = -1
+		clear_join_context()
 		connection_error.emit("Disconnected; reconnect requires explicit fresh join")

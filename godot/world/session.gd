@@ -14,7 +14,15 @@ var lobby_enabled := false
 var lobby_player_name := "Godot"
 var lobby_roster: Dictionary = {}
 
+func spectator_status() -> String:
+	if phase == 4:
+		return "Host restart keeps you a spectator.\nLeave and join between rounds to request a player seat."
+	if snapshot_watch.stale():
+		return snapshot_watch.message() + "\nRead-only fixed view · No player controls."
+	return "Read-only fixed view · Tab: scores · No player controls.\nRestart keeps you a spectator; Leave and join between rounds to request play."
+
 func lobby_host_allowed() -> bool:
+	if client.spectating: return false
 	if not lobby_enabled or not join_room_id.is_empty(): return false
 	if client.peer_id < 0 or lobby_roster.get("hostId", -2) != client.peer_id: return false
 	for player: Dictionary in lobby_roster.get("players", []):
@@ -89,6 +97,7 @@ func lobby_start() -> void:
 	phase = 20
 
 func can_capture_pointer() -> bool:
+	if client.spectating: return false
 	# Application focus notifications may lag the window's focus state (X11).
 	# Detached logic probes have no window; attached sessions must check it.
 	if is_inside_tree() and not get_window().has_focus(): return false
@@ -183,6 +192,7 @@ var watched_phase: int = -999
 const HANDSHAKE_TIMEOUT: float = 15.0
 
 func request_restart() -> void:
+	if client.spectating: return
 	if phase != 4 or not join_room_id.is_empty(): return
 	if lobby_enabled and not lobby_host_allowed(): return
 	if client.send_frame({"type":"start"}) == OK:
@@ -271,6 +281,7 @@ func _ready() -> void:
 		combat.clear_round()
 		release_pointer()
 		label.text = presentation.hud_text + ("\nEnter: restart" if join_room_id.is_empty() else "\nWaiting for host to restart")
+		if client.spectating: label.text = "SPECTATOR · ROUND COMPLETE\n" + spectator_status()
 		if lifecycle_smoke:
 			if not bool(f.state.get("over", false)) or presentation.lifecycle.can_control():
 				on_error("Results did not disable controls")
@@ -412,6 +423,13 @@ func on_snapshot(frame: Dictionary) -> void:
 	pickups.apply_state(frame.state)
 	combat.apply_state(frame.state)
 	presentation.apply_state(frame.state, client.actor_id)
+	if client.spectating:
+		received_pose = false
+		pose_actor_id = -1
+		release_pointer()
+		label.text = "SPECTATING\n" + spectator_status()
+		emit_snapshot_trace(false)
+		return
 	var actor: Dictionary = presentation.local_actor
 	if actor.is_empty():
 		# Reset once on loss, not on every absent-actor snapshot: otherwise
@@ -489,6 +507,10 @@ func _process(delta: float) -> void:
 	if phase == 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		begin_room()
 	if phase != 3: return
+	if client.spectating:
+		release_pointer()
+		send_elapsed = 0.0
+		return # Read-only recipients do not even queue neutral player inputs.
 	camera.rotation = Vector3(pitch, yaw, 0)
 	send_elapsed += delta
 	if send_elapsed < 1.0 / 60.0: return

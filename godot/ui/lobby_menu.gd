@@ -124,6 +124,16 @@ func refresh() -> void:
 	panel.visible = not playing
 	leave_button.visible = playing and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED
 	restart_button.visible = phase == 4 and session.lobby_host_allowed()
+	# Spectator presentation belongs to this opt-in lobby. Keep the shared HUD's
+	# missing-player behavior intact for ordinary sessions and lost actor poses.
+	if session.client.spectating and playing:
+		var hud := session.get_node_or_null("GameHUD")
+		if hud != null:
+			hud.status_title.text = "ROUND COMPLETE · SPECTATOR" if phase == 4 else "SPECTATING · READ ONLY"
+			hud.status_detail.text = session.spectator_status()
+			hud.status_panel.show()
+			hud.score_label.text = "SPECTATOR"
+			hud.controls.hide()
 	var editable := phase in [-3, -1]
 	for control: LineEdit in [endpoint, player_name, room]: control.editable = editable
 	for control: OptionButton in [role, maps, modes]: control.disabled = not editable
@@ -134,7 +144,7 @@ func refresh() -> void:
 	start_button.visible = phase == 12
 	start_button.disabled = not session.lobby_host_allowed()
 	back_button.visible = phase != -3
-	var messages := {-3:"Disconnected · choose settings and connect explicitly.", 0:"Connecting…", 1:"Creating room…", 2:"Configuring…", 10:"Joining…", 11:"Waiting for host. Active-room joins are spectators; use a fresh lobby to play again.", 12:"Lobby ready · share room code, wait for guests, then Start."}
+	var messages := {-3:"Disconnected · choose settings and connect explicitly.", 0:"Connecting…", 1:"Creating room…", 2:"Configuring…", 10:"Joining…", 11:"Waiting for host. Active-room joins stay read-only through restart. Leave and join between rounds to request play.", 12:"Lobby ready · share room code, wait for guests, then Start."}
 	status.text = session.label.text if phase == -1 else str(messages.get(phase, ""))
 	if phase == -3:
 		roster.text = "No room joined. Native maps/modes marked pending cannot be started."
