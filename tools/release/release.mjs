@@ -600,7 +600,15 @@ async function stepVerification(ctx) {
   for (const probe of missing.filter(() => options.prepare === 'auto')) {
     const args = ['tools/godot-export/browser-export.mjs', ...probe.args];
     ctx.emit(`  prepare  generating the missing ${probe.id} GLB probe (as the CI workflow does)`);
-    const generated = await runCommand(ctx, {command: 'node', args, env: prepareEnv, sideEffect: true, timeout: 600000, label: 'prepare'});
+    let generated;
+    try {
+      generated = await runCommand(ctx, {command: 'node', args, env: prepareEnv, sideEffect: true, timeout: 600000, label: 'prepare'});
+    } catch (error) {
+      if (!(error instanceof ReleaseError) || error.code !== 'command-failed') throw error;
+      throw Object.assign(new ReleaseError('probe-generation-failed', `cannot generate the ${probe.id} GLB probe: ${error.message}`,
+        'run `npx --no-install playwright install chromium` for the locked browser revision, or set PLAYWRIGHT_BROWSERS_PATH, ' +
+        'or pass --prepare=never and accept a failing glb-import gate'), {detail: {probe: probe.id}});
+    }
     if (!generated.planned && !existsSync(join(ctx.root, 'godot/content/probes', probe.id, 'world.glb'))) {
       throw new ReleaseError('probe-generation-failed', `browser-export.mjs ran but did not write the ${probe.id} probe`,
         'regenerate with `node tools/godot-export/browser-export.mjs`, install the browser with `npx playwright install chromium`, ' +
