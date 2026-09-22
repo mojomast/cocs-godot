@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "platform": "Linux X11 llvmpipe",
+  "normal_rate": true,
+  "state_injection": false,
+  "checks": [
+    {
+      "name": "actual source fire reaches animated FX 800x600",
+      "passed": true,
+      "flashes": 6,
+      "tracers": 8
+    },
+    {
+      "name": "actual source fire reaches animated FX 1280x800",
+      "passed": true,
+      "flashes": 15,
+      "tracers": 34
+    },
+    {
+      "name": "OS F9 High/Extreme/Low/High resizes one pool",
+      "passed": true
+    },
+    {
+      "name": "focus drains effects and ADS does not resume held",
+      "passed": true
+    },
+    {
+      "name": "clean native exit",
+      "passed": true
+    },
+    {
+      "name": "live source evidence saved",
+      "passed": true
+    }
+  ],
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+    "--script",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-combat-integration/observe.gd",
+    "--display-driver",
+    "x11",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "800x600",
+    "--position",
+    "0,0",
+    "--",
+    "--endpoint=ws://127.0.0.1:46075",
+    "--map=meridian-exchange",
+    "--mode=deathmatch",
+    "--mute"
+  ],
+  "cleanup": {
+    "client": 0,
+    "authority": 0,
+    "display": 0
+  }
+}

@@ -1,0 +1,18 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: source rayWorld parity ion-speedway 23.885/33.563
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity aurora-stadium 27.255/35.311
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: stale snapshots drain
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:144)
+COMBAT_INTEGRATION_RESULT {"checks":997,"failures":["source rayWorld parity ion-speedway 23.885/33.563","source rayWorld parity aurora-stadium 27.255/35.311","stale snapshots drain"],"max_projection_error_px":0.000026702880859375}

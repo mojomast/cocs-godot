@@ -1,0 +1,2135 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SCRIPT ERROR: Invalid call. Nonexistent function 'create' in base 'TriangleMesh'.
+          at: configure (res://world/combat_occlusion.gd:39)
+          GDScript backtrace (most recent call first):
+              [0] configure (res://world/combat_occlusion.gd:39)
+              [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: semantic geometry config meridian-exchange
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: source rayWorld parity meridian-exchange 19.939/19.939
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 26.025/26.025
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 34.473/34.473
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 26.402/26.402
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 14.577/14.577
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 14.494/14.494
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 26.920/26.920
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 16.222/16.222
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 22.202/22.202
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 34.009/34.009
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 35.233/35.233
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 33.245/33.245
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 21.523/21.523
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 9.352/9.352
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 21.961/21.961
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 8.806/8.806
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 24.977/24.977
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 34.997/34.997
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 35.676/35.676
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 33.840/33.840
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 37.093/37.093
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 35.284/35.284
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 10.801/10.801
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 33.367/33.367
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 30.476/30.476
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 31.994/31.994
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 33.542/33.542
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 23.773/23.773
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 39.584/39.584
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 7.129/7.129
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 11.882/11.882
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 34.442/34.442
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 36.835/36.835
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 25.639/25.639
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 17.146/17.146
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 15.935/15.935
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 14.882/14.882
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 36.831/36.831
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 14.631/14.631
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 11.747/11.747
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 36.796/36.796
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 23.552/23.552
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 32.022/32.022
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 38.607/38.607
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 25.484/25.484
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 36.802/36.802
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 31.866/31.866
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 43.617/43.617
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 23.662/23.662
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 38.675/38.675
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 28.645/28.645
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 36.146/36.146
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 21.857/21.857
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 40.268/40.268
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity meridian-exchange 13.465/13.465
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+SCRIPT ERROR: Invalid call. Nonexistent function 'create' in base 'TriangleMesh'.
+          at: configure (res://world/combat_occlusion.gd:39)
+          GDScript backtrace (most recent call first):
+              [0] configure (res://world/combat_occlusion.gd:39)
+              [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: semantic geometry config verdant-reliquary
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: source rayWorld parity verdant-reliquary 26.784/26.784
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 21.915/21.915
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 31.991/31.991
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 45.940/45.940
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 16.065/16.065
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 25.802/25.802
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 36.542/36.542
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 25.948/25.948
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 23.955/23.955
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 8.983/8.983
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 31.815/31.815
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 19.779/19.779
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 44.134/44.134
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 28.053/28.053
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 34.313/34.313
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 33.414/33.414
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 15.809/15.809
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 24.809/24.809
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 28.641/28.641
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 20.810/20.810
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 35.258/35.258
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 45.529/45.529
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 33.005/33.005
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 41.829/41.829
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 36.165/36.165
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 38.836/38.836
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 26.186/26.186
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 11.918/11.918
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 21.330/21.330
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 31.922/31.922
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 7.476/7.476
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 17.657/17.657
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 26.666/26.666
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 24.779/24.779
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 30.448/30.448
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 11.924/11.924
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 2.539/2.539
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 27.295/27.295
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 34.107/34.107
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 32.465/32.465
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 34.064/34.064
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 39.320/39.320
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 27.528/27.528
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 36.035/36.035
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 23.987/23.987
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 15.780/15.780
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 34.127/34.127
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 15.665/15.665
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 16.764/16.764
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 36.427/36.427
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 12.576/12.576
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 16.676/16.676
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 20.253/20.253
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 31.837/31.837
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 31.605/31.605
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 32.773/32.773
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 30.965/30.965
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 16.880/16.880
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 25.083/25.083
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity verdant-reliquary 20.032/20.032
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+SCRIPT ERROR: Invalid call. Nonexistent function 'create' in base 'TriangleMesh'.
+          at: configure (res://world/combat_occlusion.gd:39)
+          GDScript backtrace (most recent call first):
+              [0] configure (res://world/combat_occlusion.gd:39)
+              [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: semantic geometry config ember-crucible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: source rayWorld parity ember-crucible 40.282/40.282
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 8.024/8.024
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 7.587/7.587
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 39.501/39.501
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 30.738/30.738
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 16.232/16.232
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 33.244/33.244
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 33.569/33.569
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 38.534/38.534
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 29.356/29.356
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 35.880/35.880
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 28.276/28.276
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 44.220/44.220
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 29.182/29.182
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 9.961/9.961
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 7.269/7.269
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 29.191/29.191
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 21.362/21.362
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 41.008/41.008
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 30.045/30.045
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 38.240/38.240
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 36.984/36.984
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 31.886/31.886
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 33.358/33.358
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 44.431/44.431
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 44.829/44.829
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 14.535/14.535
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 27.690/27.690
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 30.118/30.118
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 8.213/8.213
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 27.641/27.641
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 36.886/36.886
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 16.770/16.770
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 24.223/24.223
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 38.352/38.352
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 14.029/14.029
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 10.604/10.604
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 29.732/29.732
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 23.610/23.610
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 14.136/14.136
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 16.646/16.646
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 39.765/39.765
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 35.429/35.429
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 17.725/17.725
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 9.639/9.639
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 40.298/40.298
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 19.566/19.566
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 12.201/12.201
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 27.276/27.276
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 26.339/26.339
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 39.266/39.266
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 18.400/18.400
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 32.048/32.048
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 35.069/35.069
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 16.080/16.080
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 32.488/32.488
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ember-crucible 20.380/20.380
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+SCRIPT ERROR: Invalid call. Nonexistent function 'create' in base 'TriangleMesh'.
+          at: configure (res://world/combat_occlusion.gd:39)
+          GDScript backtrace (most recent call first):
+              [0] configure (res://world/combat_occlusion.gd:39)
+              [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: semantic geometry config tidal-citadel
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: source rayWorld parity tidal-citadel 6.321/6.321
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 12.533/12.533
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 37.080/37.080
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 21.165/21.165
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 33.524/33.524
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 36.159/36.159
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 15.801/15.801
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 9.577/9.577
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 17.206/17.206
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 26.177/26.177
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 26.433/26.433
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 29.427/29.427
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 22.909/22.909
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 21.604/21.604
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 42.113/42.113
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 46.364/46.364
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 25.025/25.025
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 31.900/31.900
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 40.808/40.808
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 34.380/34.380
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 32.086/32.086
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 34.392/34.392
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 33.484/33.484
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 29.494/29.494
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 17.874/17.874
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 31.202/31.202
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 30.154/30.154
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 38.754/38.754
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 31.917/31.917
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 29.614/29.614
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 33.353/33.353
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 29.973/29.973
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 18.425/18.425
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 10.359/10.359
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 26.219/26.219
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 35.394/35.394
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 28.714/28.714
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 14.314/14.314
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 27.760/27.760
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 33.852/33.852
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 10.478/10.478
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 35.307/35.307
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 42.165/42.165
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 35.147/35.147
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 28.530/28.530
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 46.008/46.008
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 22.375/22.375
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 20.856/20.856
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 42.718/42.718
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 31.366/31.366
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 33.804/33.804
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 27.659/27.659
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 31.300/31.300
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 35.209/35.209
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 37.551/37.551
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 37.801/37.801
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 22.706/22.706
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 30.067/30.067
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity tidal-citadel 36.075/36.075
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+SCRIPT ERROR: Invalid call. Nonexistent function 'create' in base 'TriangleMesh'.
+          at: configure (res://world/combat_occlusion.gd:39)
+          GDScript backtrace (most recent call first):
+              [0] configure (res://world/combat_occlusion.gd:39)
+              [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: semantic geometry config sunscar-convoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: source rayWorld parity sunscar-convoy 19.170/19.170
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 35.977/35.977
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 33.611/33.611
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 21.084/21.084
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 45.851/45.851
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 29.813/29.813
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 14.672/14.672
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 16.829/16.829
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 32.973/32.973
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 35.617/35.617
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 27.819/27.819
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 16.928/16.928
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 26.887/26.887
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 16.500/16.500
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 40.537/40.537
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 36.968/36.968
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 35.196/35.196
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 11.979/11.979
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 22.438/22.438
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 18.628/18.628
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 18.585/18.585
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 31.057/31.057
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 11.828/11.828
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 19.999/19.999
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 25.994/25.994
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 35.271/35.271
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 38.933/38.933
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 36.507/36.507
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 25.028/25.028
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 35.387/35.387
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 22.320/22.320
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 31.357/31.357
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 11.024/11.024
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 28.415/28.415
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 47.629/47.629
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 8.099/8.099
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 30.680/30.680
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 17.091/17.091
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 32.040/32.040
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 28.528/28.528
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 33.491/33.491
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 22.801/22.801
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 20.412/20.412
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 28.263/28.263
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 14.900/14.900
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 26.331/26.331
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity sunscar-convoy 16.186/16.186
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+SCRIPT ERROR: Invalid call. Nonexistent function 'create' in base 'TriangleMesh'.
+          at: configure (res://world/combat_occlusion.gd:39)
+          GDScript backtrace (most recent call first):
+              [0] configure (res://world/combat_occlusion.gd:39)
+              [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: semantic geometry config asterion-relay
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: source rayWorld parity asterion-relay 34.732/34.732
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 31.172/31.172
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 33.317/33.317
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 33.623/33.623
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 27.229/27.229
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 36.483/36.483
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 28.570/28.570
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 15.321/15.321
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 10.442/10.442
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 28.369/28.369
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 42.471/42.471
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 25.367/25.367
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 45.207/45.207
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 34.561/34.561
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 16.239/16.239
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 18.106/18.106
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 3.924/3.924
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 37.378/37.378
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 45.656/45.656
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 43.787/43.787
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 40.568/40.568
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 29.884/29.884
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 41.895/41.895
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 30.150/30.150
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 35.244/35.244
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 19.353/19.353
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 30.394/30.394
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 18.235/18.235
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 33.158/33.158
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 21.551/21.551
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 17.481/17.481
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 19.713/19.713
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 31.554/31.554
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 23.981/23.981
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 30.202/30.202
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 25.601/25.601
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 33.262/33.262
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 28.534/28.534
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 31.991/31.991
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 31.566/31.566
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 32.039/32.039
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 43.873/43.873
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 8.407/8.407
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 29.604/29.604
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 21.399/21.399
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 26.095/26.095
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 19.821/19.821
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 13.816/13.816
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 35.222/35.222
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 13.217/13.217
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 40.825/40.825
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 32.319/32.319
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 37.439/37.439
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 37.158/37.158
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 25.828/25.828
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 43.850/43.850
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 12.970/12.970
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 19.018/19.018
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 24.320/24.320
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 15.133/15.133
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 23.862/23.862
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity asterion-relay 29.703/29.703
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+SCRIPT ERROR: Invalid call. Nonexistent function 'create' in base 'TriangleMesh'.
+          at: configure (res://world/combat_occlusion.gd:39)
+          GDScript backtrace (most recent call first):
+              [0] configure (res://world/combat_occlusion.gd:39)
+              [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: semantic geometry config monsoon-foundry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:56)
+ERROR: source rayWorld parity monsoon-foundry 17.225/17.225
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 19.066/19.066
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 31.039/31.039
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 18.423/18.423
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 34.582/34.582
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 46.660/46.660
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 28.596/28.596
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 8.228/8.228
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 26.929/26.929
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 22.503/22.503
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 25.427/25.427
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 21.864/21.864
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 23.533/23.533
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 15.303/15.303
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 16.220/16.220
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 20.553/20.553
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 18.722/18.722
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 18.992/18.992
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 18.003/18.003
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 25.861/25.861
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 40.608/40.608
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 33.543/33.543
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 37.403/37.403
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 32.407/32.407
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 30.931/30.931
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 13.436/13.436
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 18.681/18.681
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 30.367/30.367
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 15.929/15.929
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 32.677/32.677
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 25.555/25.555
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 32.599/32.599
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 42.842/42.842
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 40.577/40.577
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 26.524/26.524
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 30.890/30.890
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 21.432/21.432
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 20.615/20.615
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 16.844/16.844
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 39.747/39.747
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 25.320/25.320
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 35.685/35.685
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 20.942/20.942
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 15.991/15.991
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 24.699/24.699
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 31.043/31.043
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 11.379/11.379
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 34.009/34.009
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 18.172/18.172
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 21.826/21.826
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 9.201/9.201
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 31.738/31.738
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 38.731/38.731
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity monsoon-foundry 28.370/28.370
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity ion-speedway 23.885/33.563
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+ERROR: source rayWorld parity aurora-stadium 27.255/35.311
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:58)
+SCRIPT ERROR: Invalid call. Nonexistent function 'create' in base 'TriangleMesh'.
+          at: configure (res://world/combat_occlusion.gd:39)
+          GDScript backtrace (most recent call first):
+              [0] configure (res://world/combat_occlusion.gd:39)
+              [1] _configure_map (res://world/combat_feedback.gd:114)
+              [2] apply_state (res://world/combat_feedback.gd:240)
+              [3] run (res://tests/combat_integration/contracts.gd:66)
+ERROR: actual source volley flashes all real barrels weapon 0
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:74)
+ERROR: actual source volley flashes all real barrels weapon 1
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:74)
+ERROR: sourceId launch association exact
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:88)
+ERROR: actual source volley flashes all real barrels weapon 2
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:74)
+ERROR: actual source volley flashes all real barrels weapon 3
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:74)
+ERROR: actual source volley flashes all real barrels weapon 4
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:74)
+ERROR: sourceId launch association exact
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:88)
+ERROR: actual source volley flashes all real barrels weapon 5
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:74)
+ERROR: sourceId launch association exact
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:88)
+ERROR: actual source volley flashes all real barrels weapon 6
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:74)
+ERROR: actual source volley flashes all real barrels weapon 7
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:74)
+ERROR: actual source volley flashes all real barrels weapon 8
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:74)
+ERROR: actual source volley flashes all real barrels weapon 9
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:74)
+ERROR: particles shields and local actual-damage HUD integrated
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:120)
+ERROR: stale snapshots drain
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/combat_integration/contracts.gd:26)
+       [1] run (res://tests/combat_integration/contracts.gd:144)
+COMBAT_INTEGRATION_RESULT {"checks":944,"failures":["semantic geometry config meridian-exchange","source rayWorld parity meridian-exchange 19.939/19.939","source rayWorld parity meridian-exchange 26.025/26.025","source rayWorld parity meridian-exchange 34.473/34.473","source rayWorld parity meridian-exchange 26.402/26.402","source rayWorld parity meridian-exchange 14.577/14.577","source rayWorld parity meridian-exchange 14.494/14.494","source rayWorld parity meridian-exchange 26.920/26.920","source rayWorld parity meridian-exchange 16.222/16.222","source rayWorld parity meridian-exchange 22.202/22.202","source rayWorld parity meridian-exchange 34.009/34.009","source rayWorld parity meridian-exchange 35.233/35.233","source rayWorld parity meridian-exchange 33.245/33.245","source rayWorld parity meridian-exchange 21.523/21.523","source rayWorld parity meridian-exchange 9.352/9.352","source rayWorld parity meridian-exchange 21.961/21.961","source rayWorld parity meridian-exchange 8.806/8.806","source rayWorld parity meridian-exchange 24.977/24.977","source rayWorld parity meridian-exchange 34.997/34.997","source rayWorld parity meridian-exchange 35.676/35.676","source rayWorld parity meridian-exchange 33.840/33.840","source rayWorld parity meridian-exchange 37.093/37.093","source rayWorld parity meridian-exchange 35.284/35.284","source rayWorld parity meridian-exchange 10.801/10.801","source rayWorld parity meridian-exchange 33.367/33.367","source rayWorld parity meridian-exchange 30.476/30.476","source rayWorld parity meridian-exchange 31.994/31.994","source rayWorld parity meridian-exchange 33.542/33.542","source rayWorld parity meridian-exchange 23.773/23.773","source rayWorld parity meridian-exchange 39.584/39.584","source rayWorld parity meridian-exchange 7.129/7.129","source rayWorld parity meridian-exchange 11.882/11.882","source rayWorld parity meridian-exchange 34.442/34.442","source rayWorld parity meridian-exchange 36.835/36.835","source rayWorld parity meridian-exchange 25.639/25.639","source rayWorld parity meridian-exchange 17.146/17.146","source rayWorld parity meridian-exchange 15.935/15.935","source rayWorld parity meridian-exchange 14.882/14.882","source rayWorld parity meridian-exchange 36.831/36.831","source rayWorld parity meridian-exchange 14.631/14.631","source rayWorld parity meridian-exchange 11.747/11.747","source rayWorld parity meridian-exchange 36.796/36.796","source rayWorld parity meridian-exchange 23.552/23.552","source rayWorld parity meridian-exchange 32.022/32.022","source rayWorld parity meridian-exchange 38.607/38.607","source rayWorld parity meridian-exchange 25.484/25.484","source rayWorld parity meridian-exchange 36.802/36.802","source rayWorld parity meridian-exchange 31.866/31.866","source rayWorld parity meridian-exchange 43.617/43.617","source rayWorld parity meridian-exchange 23.662/23.662","source rayWorld parity meridian-exchange 38.675/38.675","source rayWorld parity meridian-exchange 28.645/28.645","source rayWorld parity meridian-exchange 36.146/36.146","source rayWorld parity meridian-exchange 21.857/21.857","source rayWorld parity meridian-exchange 40.268/40.268","source rayWorld parity meridian-exchange 13.465/13.465","semantic geometry config verdant-reliquary","source rayWorld parity verdant-reliquary 26.784/26.784","source rayWorld parity verdant-reliquary 21.915/21.915","source rayWorld parity verdant-reliquary 31.991/31.991","source rayWorld parity verdant-reliquary 45.940/45.940","source rayWorld parity verdant-reliquary 16.065/16.065","source rayWorld parity verdant-reliquary 25.802/25.802","source rayWorld parity verdant-reliquary 36.542/36.542","source rayWorld parity verdant-reliquary 25.948/25.948","source rayWorld parity verdant-reliquary 23.955/23.955","source rayWorld parity verdant-reliquary 8.983/8.983","source rayWorld parity verdant-reliquary 31.815/31.815","source rayWorld parity verdant-reliquary 19.779/19.779","source rayWorld parity verdant-reliquary 44.134/44.134","source rayWorld parity verdant-reliquary 28.053/28.053","source rayWorld parity verdant-reliquary 34.313/34.313","source rayWorld parity verdant-reliquary 33.414/33.414","source rayWorld parity verdant-reliquary 15.809/15.809","source rayWorld parity verdant-reliquary 24.809/24.809","source rayWorld parity verdant-reliquary 28.641/28.641","source rayWorld parity verdant-reliquary 20.810/20.810","source rayWorld parity verdant-reliquary 35.258/35.258","source rayWorld parity verdant-reliquary 45.529/45.529","source rayWorld parity verdant-reliquary 33.005/33.005","source rayWorld parity verdant-reliquary 41.829/41.829","source rayWorld parity verdant-reliquary 36.165/36.165","source rayWorld parity verdant-reliquary 38.836/38.836","source rayWorld parity verdant-reliquary 26.186/26.186","source rayWorld parity verdant-reliquary 11.918/11.918","source rayWorld parity verdant-reliquary 21.330/21.330","source rayWorld parity verdant-reliquary 31.922/31.922","source rayWorld parity verdant-reliquary 7.476/7.476","source rayWorld parity verdant-reliquary 17.657/17.657","source rayWorld parity verdant-reliquary 26.666/26.666","source rayWorld parity verdant-reliquary 24.779/24.779","source rayWorld parity verdant-reliquary 30.448/30.448","source rayWorld parity verdant-reliquary 11.924/11.924","source rayWorld parity verdant-reliquary 2.539/2.539","source rayWorld parity verdant-reliquary 27.295/27.295","source rayWorld parity verdant-reliquary 34.107/34.107","source rayWorld parity verdant-reliquary 32.465/32.465","source rayWorld parity verdant-reliquary 34.064/34.064","source rayWorld parity verdant-reliquary 39.320/39.320","source rayWorld parity verdant-reliquary 27.528/27.528","source rayWorld parity verdant-reliquary 36.035/36.035","source rayWorld parity verdant-reliquary 23.987/23.987","source rayWorld parity verdant-reliquary 15.780/15.780","source rayWorld parity verdant-reliquary 34.127/34.127","source rayWorld parity verdant-reliquary 15.665/15.665","source rayWorld parity verdant-reliquary 16.764/16.764","source rayWorld parity verdant-reliquary 36.427/36.427","source rayWorld parity verdant-reliquary 12.576/12.576","source rayWorld parity verdant-reliquary 16.676/16.676","source rayWorld parity verdant-reliquary 20.253/20.253","source rayWorld parity verdant-reliquary 31.837/31.837","source rayWorld parity verdant-reliquary 31.605/31.605","source rayWorld parity verdant-reliquary 32.773/32.773","source rayWorld parity verdant-reliquary 30.965/30.965","source rayWorld parity verdant-reliquary 16.880/16.880","source rayWorld parity verdant-reliquary 25.083/25.083","source rayWorld parity verdant-reliquary 20.032/20.032","semantic geometry config ember-crucible","source rayWorld parity ember-crucible 40.282/40.282","source rayWorld parity ember-crucible 8.024/8.024","source rayWorld parity ember-crucible 7.587/7.587","source rayWorld parity ember-crucible 39.501/39.501","source rayWorld parity ember-crucible 30.738/30.738","source rayWorld parity ember-crucible 16.232/16.232","source rayWorld parity ember-crucible 33.244/33.244","source rayWorld parity ember-crucible 33.569/33.569","source rayWorld parity ember-crucible 38.534/38.534","source rayWorld parity ember-crucible 29.356/29.356","source rayWorld parity ember-crucible 35.880/35.880","source rayWorld parity ember-crucible 28.276/28.276","source rayWorld parity ember-crucible 44.220/44.220","source rayWorld parity ember-crucible 29.182/29.182","source rayWorld parity ember-crucible 9.961/9.961","source rayWorld parity ember-crucible 7.269/7.269","source rayWorld parity ember-crucible 29.191/29.191","source rayWorld parity ember-crucible 21.362/21.362","source rayWorld parity ember-crucible 41.008/41.008","source rayWorld parity ember-crucible 30.045/30.045","source rayWorld parity ember-crucible 38.240/38.240","source rayWorld parity ember-crucible 36.984/36.984","source rayWorld parity ember-crucible 31.886/31.886","source rayWorld parity ember-crucible 33.358/33.358","source rayWorld parity ember-crucible 44.431/44.431","source rayWorld parity ember-crucible 44.829/44.829","source rayWorld parity ember-crucible 14.535/14.535","source rayWorld parity ember-crucible 27.690/27.690","source rayWorld parity ember-crucible 30.118/30.118","source rayWorld parity ember-crucible 8.213/8.213","source rayWorld parity ember-crucible 27.641/27.641","source rayWorld parity ember-crucible 36.886/36.886","source rayWorld parity ember-crucible 16.770/16.770","source rayWorld parity ember-crucible 24.223/24.223","source rayWorld parity ember-crucible 38.352/38.352","source rayWorld parity ember-crucible 14.029/14.029","source rayWorld parity ember-crucible 10.604/10.604","source rayWorld parity ember-crucible 29.732/29.732","source rayWorld parity ember-crucible 23.610/23.610","source rayWorld parity ember-crucible 14.136/14.136","source rayWorld parity ember-crucible 16.646/16.646","source rayWorld parity ember-crucible 39.765/39.765","source rayWorld parity ember-crucible 35.429/35.429","source rayWorld parity ember-crucible 17.725/17.725","source rayWorld parity ember-crucible 9.639/9.639","source rayWorld parity ember-crucible 40.298/40.298","source rayWorld parity ember-crucible 19.566/19.566","source rayWorld parity ember-crucible 12.201/12.201","source rayWorld parity ember-crucible 27.276/27.276","source rayWorld parity ember-crucible 26.339/26.339","source rayWorld parity ember-crucible 39.266/39.266","source rayWorld parity ember-crucible 18.400/18.400","source rayWorld parity ember-crucible 32.048/32.048","source rayWorld parity ember-crucible 35.069/35.069","source rayWorld parity ember-crucible 16.080/16.080","source rayWorld parity ember-crucible 32.488/32.488","source rayWorld parity ember-crucible 20.380/20.380","semantic geometry config tidal-citadel","source rayWorld parity tidal-citadel 6.321/6.321","source rayWorld parity tidal-citadel 12.533/12.533","source rayWorld parity tidal-citadel 37.080/37.080","source rayWorld parity tidal-citadel 21.165/21.165","source rayWorld parity tidal-citadel 33.524/33.524","source rayWorld parity tidal-citadel 36.159/36.159","source rayWorld parity tidal-citadel 15.801/15.801","source rayWorld parity tidal-citadel 9.577/9.577","source rayWorld parity tidal-citadel 17.206/17.206","source rayWorld parity tidal-citadel 26.177/26.177","source rayWorld parity tidal-citadel 26.433/26.433","source rayWorld parity tidal-citadel 29.427/29.427","source rayWorld parity tidal-citadel 22.909/22.909","source rayWorld parity tidal-citadel 21.604/21.604","source rayWorld parity tidal-citadel 42.113/42.113","source rayWorld parity tidal-citadel 46.364/46.364","source rayWorld parity tidal-citadel 25.025/25.025","source rayWorld parity tidal-citadel 31.900/31.900","source rayWorld parity tidal-citadel 40.808/40.808","source rayWorld parity tidal-citadel 34.380/34.380","source rayWorld parity tidal-citadel 32.086/32.086","source rayWorld parity tidal-citadel 34.392/34.392","source rayWorld parity tidal-citadel 33.484/33.484","source rayWorld parity tidal-citadel 29.494/29.494","source rayWorld parity tidal-citadel 17.874/17.874","source rayWorld parity tidal-citadel 31.202/31.202","source rayWorld parity tidal-citadel 30.154/30.154","source rayWorld parity tidal-citadel 38.754/38.754","source rayWorld parity tidal-citadel 31.917/31.917","source rayWorld parity tidal-citadel 29.614/29.614","source rayWorld parity tidal-citadel 33.353/33.353","source rayWorld parity tidal-citadel 29.973/29.973","source rayWorld parity tidal-citadel 18.425/18.425","source rayWorld parity tidal-citadel 10.359/10.359","source rayWorld parity tidal-citadel 26.219/26.219","source rayWorld parity tidal-citadel 35.394/35.394","source rayWorld parity tidal-citadel 28.714/28.714","source rayWorld parity tidal-citadel 14.314/14.314","source rayWorld parity tidal-citadel 27.760/27.760","source rayWorld parity tidal-citadel 33.852/33.852","source rayWorld parity tidal-citadel 10.478/10.478","source rayWorld parity tidal-citadel 35.307/35.307","source rayWorld parity tidal-citadel 42.165/42.165","source rayWorld parity tidal-citadel 35.147/35.147","source rayWorld parity tidal-citadel 28.530/28.530","source rayWorld parity tidal-citadel 46.008/46.008","source rayWorld parity tidal-citadel 22.375/22.375","source rayWorld parity tidal-citadel 20.856/20.856","source rayWorld parity tidal-citadel 42.718/42.718","source rayWorld parity tidal-citadel 31.366/31.366","source rayWorld parity tidal-citadel 33.804/33.804","source rayWorld parity tidal-citadel 27.659/27.659","source rayWorld parity tidal-citadel 31.300/31.300","source rayWorld parity tidal-citadel 35.209/35.209","source rayWorld parity tidal-citadel 37.551/37.551","source rayWorld parity tidal-citadel 37.801/37.801","source rayWorld parity tidal-citadel 22.706/22.706","source rayWorld parity tidal-citadel 30.067/30.067","source rayWorld parity tidal-citadel 36.075/36.075","semantic geometry config sunscar-convoy","source rayWorld parity sunscar-convoy 19.170/19.170","source rayWorld parity sunscar-convoy 35.977/35.977","source rayWorld parity sunscar-convoy 33.611/33.611","source rayWorld parity sunscar-convoy 21.084/21.084","source rayWorld parity sunscar-convoy 45.851/45.851","source rayWorld parity sunscar-convoy 29.813/29.813","source rayWorld parity sunscar-convoy 14.672/14.672","source rayWorld parity sunscar-convoy 16.829/16.829","source rayWorld parity sunscar-convoy 32.973/32.973","source rayWorld parity sunscar-convoy 35.617/35.617","source rayWorld parity sunscar-convoy 27.819/27.819","source rayWorld parity sunscar-convoy 16.928/16.928","source rayWorld parity sunscar-convoy 26.887/26.887","source rayWorld parity sunscar-convoy 16.500/16.500","source rayWorld parity sunscar-convoy 40.537/40.537","source rayWorld parity sunscar-convoy 36.968/36.968","source rayWorld parity sunscar-convoy 35.196/35.196","source rayWorld parity sunscar-convoy 11.979/11.979","source rayWorld parity sunscar-convoy 22.438/22.438","source rayWorld parity sunscar-convoy 18.628/18.628","source rayWorld parity sunscar-convoy 18.585/18.585","source rayWorld parity sunscar-convoy 31.057/31.057","source rayWorld parity sunscar-convoy 11.828/11.828","source rayWorld parity sunscar-convoy 19.999/19.999","source rayWorld parity sunscar-convoy 25.994/25.994","source rayWorld parity sunscar-convoy 35.271/35.271","source rayWorld parity sunscar-convoy 38.933/38.933","source rayWorld parity sunscar-convoy 36.507/36.507","source rayWorld parity sunscar-convoy 25.028/25.028","source rayWorld parity sunscar-convoy 35.387/35.387","source rayWorld parity sunscar-convoy 22.320/22.320","source rayWorld parity sunscar-convoy 31.357/31.357","source rayWorld parity sunscar-convoy 11.024/11.024","source rayWorld parity sunscar-convoy 28.415/28.415","source rayWorld parity sunscar-convoy 47.629/47.629","source rayWorld parity sunscar-convoy 8.099/8.099","source rayWorld parity sunscar-convoy 30.680/30.680","source rayWorld parity sunscar-convoy 17.091/17.091","source rayWorld parity sunscar-convoy 32.040/32.040","source rayWorld parity sunscar-convoy 28.528/28.528","source rayWorld parity sunscar-convoy 33.491/33.491","source rayWorld parity sunscar-convoy 22.801/22.801","source rayWorld parity sunscar-convoy 20.412/20.412","source rayWorld parity sunscar-convoy 28.263/28.263","source rayWorld parity sunscar-convoy 14.900/14.900","source rayWorld parity sunscar-convoy 26.331/26.331","source rayWorld parity sunscar-convoy 16.186/16.186","semantic geometry config asterion-relay","source rayWorld parity asterion-relay 34.732/34.732","source rayWorld parity asterion-relay 31.172/31.172","source rayWorld parity asterion-relay 33.317/33.317","source rayWorld parity asterion-relay 33.623/33.623","source rayWorld parity asterion-relay 27.229/27.229","source rayWorld parity asterion-relay 36.483/36.483","source rayWorld parity asterion-relay 28.570/28.570","source rayWorld parity asterion-relay 15.321/15.321","source rayWorld parity asterion-relay 10.442/10.442","source rayWorld parity asterion-relay 28.369/28.369","source rayWorld parity asterion-relay 42.471/42.471","source rayWorld parity asterion-relay 25.367/25.367","source rayWorld parity asterion-relay 45.207/45.207","source rayWorld parity asterion-relay 34.561/34.561","source rayWorld parity asterion-relay 16.239/16.239","source rayWorld parity asterion-relay 18.106/18.106","source rayWorld parity asterion-relay 3.924/3.924","source rayWorld parity asterion-relay 37.378/37.378","source rayWorld parity asterion-relay 45.656/45.656","source rayWorld parity asterion-relay 43.787/43.787","source rayWorld parity asterion-relay 40.568/40.568","source rayWorld parity asterion-relay 29.884/29.884","source rayWorld parity asterion-relay 41.895/41.895","source rayWorld parity asterion-relay 30.150/30.150","source rayWorld parity asterion-relay 35.244/35.244","source rayWorld parity asterion-relay 19.353/19.353","source rayWorld parity asterion-relay 30.394/30.394","source rayWorld parity asterion-relay 18.235/18.235","source rayWorld parity asterion-relay 33.158/33.158","source rayWorld parity asterion-relay 21.551/21.551","source rayWorld parity asterion-relay 17.481/17.481","source rayWorld parity asterion-relay 19.713/19.713","source rayWorld parity asterion-relay 31.554/31.554","source rayWorld parity asterion-relay 23.981/23.981","source rayWorld parity asterion-relay 30.202/30.202","source rayWorld parity asterion-relay 25.601/25.601","source rayWorld parity asterion-relay 33.262/33.262","source rayWorld parity asterion-relay 28.534/28.534","source rayWorld parity asterion-relay 31.991/31.991","source rayWorld parity asterion-relay 31.566/31.566","source rayWorld parity asterion-relay 32.039/32.039","source rayWorld parity asterion-relay 43.873/43.873","source rayWorld parity asterion-relay 8.407/8.407","source rayWorld parity asterion-relay 29.604/29.604","source rayWorld parity asterion-relay 21.399/21.399","source rayWorld parity asterion-relay 26.095/26.095","source rayWorld parity asterion-relay 19.821/19.821","source rayWorld parity asterion-relay 13.816/13.816","source rayWorld parity asterion-relay 35.222/35.222","source rayWorld parity asterion-relay 13.217/13.217","source rayWorld parity asterion-relay 40.825/40.825","source rayWorld parity asterion-relay 32.319/32.319","source rayWorld parity asterion-relay 37.439/37.439","source rayWorld parity asterion-relay 37.158/37.158","source rayWorld parity asterion-relay 25.828/25.828","source rayWorld parity asterion-relay 43.850/43.850","source rayWorld parity asterion-relay 12.970/12.970","source rayWorld parity asterion-relay 19.018/19.018","source rayWorld parity asterion-relay 24.320/24.320","source rayWorld parity asterion-relay 15.133/15.133","source rayWorld parity asterion-relay 23.862/23.862","source rayWorld parity asterion-relay 29.703/29.703","semantic geometry config monsoon-foundry","source rayWorld parity monsoon-foundry 17.225/17.225","source rayWorld parity monsoon-foundry 19.066/19.066","source rayWorld parity monsoon-foundry 31.039/31.039","source rayWorld parity monsoon-foundry 18.423/18.423","source rayWorld parity monsoon-foundry 34.582/34.582","source rayWorld parity monsoon-foundry 46.660/46.660","source rayWorld parity monsoon-foundry 28.596/28.596","source rayWorld parity monsoon-foundry 8.228/8.228","source rayWorld parity monsoon-foundry 26.929/26.929","source rayWorld parity monsoon-foundry 22.503/22.503","source rayWorld parity monsoon-foundry 25.427/25.427","source rayWorld parity monsoon-foundry 21.864/21.864","source rayWorld parity monsoon-foundry 23.533/23.533","source rayWorld parity monsoon-foundry 15.303/15.303","source rayWorld parity monsoon-foundry 16.220/16.220","source rayWorld parity monsoon-foundry 20.553/20.553","source rayWorld parity monsoon-foundry 18.722/18.722","source rayWorld parity monsoon-foundry 18.992/18.992","source rayWorld parity monsoon-foundry 18.003/18.003","source rayWorld parity monsoon-foundry 25.861/25.861","source rayWorld parity monsoon-foundry 40.608/40.608","source rayWorld parity monsoon-foundry 33.543/33.543","source rayWorld parity monsoon-foundry 37.403/37.403","source rayWorld parity monsoon-foundry 32.407/32.407","source rayWorld parity monsoon-foundry 30.931/30.931","source rayWorld parity monsoon-foundry 13.436/13.436","source rayWorld parity monsoon-foundry 18.681/18.681","source rayWorld parity monsoon-foundry 30.367/30.367","source rayWorld parity monsoon-foundry 15.929/15.929","source rayWorld parity monsoon-foundry 32.677/32.677","source rayWorld parity monsoon-foundry 25.555/25.555","source rayWorld parity monsoon-foundry 32.599/32.599","source rayWorld parity monsoon-foundry 42.842/42.842","source rayWorld parity monsoon-foundry 40.577/40.577","source rayWorld parity monsoon-foundry 26.524/26.524","source rayWorld parity monsoon-foundry 30.890/30.890","source rayWorld parity monsoon-foundry 21.432/21.432","source rayWorld parity monsoon-foundry 20.615/20.615","source rayWorld parity monsoon-foundry 16.844/16.844","source rayWorld parity monsoon-foundry 39.747/39.747","source rayWorld parity monsoon-foundry 25.320/25.320","source rayWorld parity monsoon-foundry 35.685/35.685","source rayWorld parity monsoon-foundry 20.942/20.942","source rayWorld parity monsoon-foundry 15.991/15.991","source rayWorld parity monsoon-foundry 24.699/24.699","source rayWorld parity monsoon-foundry 31.043/31.043","source rayWorld parity monsoon-foundry 11.379/11.379","source rayWorld parity monsoon-foundry 34.009/34.009","source rayWorld parity monsoon-foundry 18.172/18.172","source rayWorld parity monsoon-foundry 21.826/21.826","source rayWorld parity monsoon-foundry 9.201/9.201","source rayWorld parity monsoon-foundry 31.738/31.738","source rayWorld parity monsoon-foundry 38.731/38.731","source rayWorld parity monsoon-foundry 28.370/28.370","source rayWorld parity ion-speedway 23.885/33.563","source rayWorld parity aurora-stadium 27.255/35.311","actual source volley flashes all real barrels weapon 0","actual source volley flashes all real barrels weapon 1","sourceId launch association exact","actual source volley flashes all real barrels weapon 2","actual source volley flashes all real barrels weapon 3","actual source volley flashes all real barrels weapon 4","sourceId launch association exact","actual source volley flashes all real barrels weapon 5","sourceId launch association exact","actual source volley flashes all real barrels weapon 6","actual source volley flashes all real barrels weapon 7","actual source volley flashes all real barrels weapon 8","actual source volley flashes all real barrels weapon 9","particles shields and local actual-damage HUD integrated","stale snapshots drain"],"max_projection_error_px":0.0}

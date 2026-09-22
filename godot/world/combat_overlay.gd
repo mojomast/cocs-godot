@@ -5,6 +5,11 @@ extends Control
 var hit_strength: float = 0.0
 var hurt_strength: float = 0.0
 var aiming: bool = false
+var ads_weight := 0.0
+
+func set_ads_weight(value: float) -> void:
+	ads_weight = clampf(value, 0.0, 1.0) if is_finite(value) else 0.0
+	queue_redraw()
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -25,12 +30,12 @@ func _draw() -> void:
 			var inset := float(step * 5)
 			var tint := Color(0.9, 0.12, 0.08, hurt_strength * 0.16 * (1.0 - step / 6.0))
 			draw_rect(Rect2(Vector2(inset, inset), size - Vector2.ONE * inset * 2), tint, false, 5.0)
-	if aiming:
+	if aiming and ads_weight < 0.98:
 		for direction: Vector2 in [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]:
 			var start := center + direction * 5.0
 			var end := center + direction * 11.0
-			draw_line(start, end, Color(0.02, 0.04, 0.05, 0.9), 4.0)
-			draw_line(start, end, Color(0.86, 0.96, 1.0, 0.95), 2.0)
+			draw_line(start, end, Color(0.02, 0.04, 0.05, 0.9 * (1.0-ads_weight)), 4.0)
+			draw_line(start, end, Color(0.86, 0.96, 1.0, 0.95 * (1.0-ads_weight)), 2.0)
 	if hit_strength > 0:
 		for direction: Vector2 in [Vector2(-1,-1), Vector2(1,-1), Vector2(-1,1), Vector2(1,1)]:
 			var start := center + direction * 8.0

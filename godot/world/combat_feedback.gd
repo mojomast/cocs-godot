@@ -1,7 +1,8 @@
 class_name PortCombatFeedback
 extends Node3D
 
-# Diagnostic feedback only. Damage/shot confirmation comes from server events.
+# Shared passive combat composition. Damage/shot confirmation comes only from
+# authority events. Detached diagnostic consumers retain their minimal fallback.
 const MAX_TRACERS: int = 128
 const TRACER_SECONDS: float = 0.12
 var tracers: Array[Dictionary] = []
@@ -27,8 +28,200 @@ const Overlay = preload("res://world/combat_overlay.gd")
 const AudioFeedback = preload("res://world/audio_feedback.gd")
 var overlay: Control
 var audio_feedback: Node
+const CombatShields = preload("res://combat_shields/controller.gd")
+const CombatQuality = preload("res://world/combat_quality.gd")
+const WeaponEffects = preload("res://weapon_effects/controller.gd")
+const WorldParticles = preload("res://combat_particles/manager.gd")
+const Occlusion = preload("res://world/combat_occlusion.gd")
+var shields: Node3D
+var weapon_effects: Node3D
+var world_particles: Node3D
+var occlusion := Occlusion.new()
+var quality_controls: CanvasLayer
+var effect_camera: Camera3D
+var effect_session: Node
+var effect_local_id := -1
+var attached_rig: Node
+var map_key := ""
+var source_time := -1.0
+var effects_active := false
+var last_state_usec := 0
+var pending_events: Array = []
+var event_ids: Dictionary = {}
+var highest_event := -1
+const EVENT_WINDOW := 4096
+var metrics_age := 0.0
+var map_error := ""
+
+func configure_effects(camera: Camera3D, session: Node) -> void:
+	effect_camera = camera
+	effect_session = session
+	if not is_instance_valid(weapon_effects):
+		weapon_effects = WeaponEffects.new()
+		add_child(weapon_effects)
+		weapon_effects.configure_occlusion(occlusion.segment_blocked)
+		weapon_effects.configure_moth(func(key: String) -> Dictionary:
+			return MothLibrary.effect({"pulse":"spark-impact", "plasma":"arc-burst", "shock":"arc-burst"}.get(key, "")))
+	if not is_instance_valid(world_particles):
+		world_particles = WorldParticles.new()
+		add_child(world_particles)
+	if not is_instance_valid(shields):
+		shields = CombatShields.new()
+		add_child(shields)
+		shields.configure(camera)
+		shields.set_quality("high")
+	if not is_instance_valid(quality_controls):
+		quality_controls = CombatQuality.new()
+		add_child(quality_controls)
+		quality_controls.quality_changed.connect(_quality_changed)
+	_quality_changed(quality_controls.quality)
+	_attach_rig()
+
+func _quality_changed(level: int) -> void:
+	if is_instance_valid(shields): shields.set_quality("low" if level == 0 else "high")
+	# Low retains essential weapon cues, dropping secondary smoke/casings.
+	if is_instance_valid(weapon_effects): weapon_effects.set_quality(1 if level == 0 else 2)
+	if is_instance_valid(world_particles): world_particles.set_quality(CombatQuality.LEVELS[level])
+	_update_metrics()
+
+func _attach_rig() -> void:
+	var rig := _effect_rig()
+	if not is_instance_valid(rig) or rig == attached_rig or not is_instance_valid(weapon_effects): return
+	attached_rig = rig
+	weapon_effects.attach_rig(rig)
+	if "flash" in rig: rig.flash.hide()
+
+func _configure_map(state: Dictionary) -> void:
+	if not is_instance_valid(effect_camera): return
+	var id := str(state.get("mapId", ""))
+	var world: Node
+	if is_instance_valid(effect_session):
+		if id.is_empty() and "current_id" in effect_session: id = effect_session.current_id
+		if id.is_empty() and "map_id" in effect_session: id = effect_session.map_id
+		if "world" in effect_session: world = effect_session.world
+	var key := "%s/%s" % [id, world.get_instance_id() if is_instance_valid(world) else 0]
+	if key == map_key: return
+	if not map_key.is_empty(): clear_round()
+	map_key = key
+	var map := {}
+	var native := Occlusion.native_root(world, id)
+	if native != null:
+		var bounds := AABB(Vector3(-100, -4, -100), Vector3(200, 90, 200))
+		if id == "cinder-array": bounds = AABB(Vector3(-92, -2, -82), Vector3(184, 87, 164))
+		map = {"id":id, "bounds":bounds, "collision_root":native}
+	else:
+		var catalog := Occlusion.Catalog.new()
+		if catalog.open() and catalog.entries.has(id): map = catalog.resolve_map(id)
+	occlusion.configure(effect_camera, map)
+	map_error = "" if occlusion.ready else "No authoritative map geometry: " + id
+	if not map.is_empty():
+		var result: Dictionary = world_particles.configure(effect_camera, map)
+		if not result.get("ok", false): map_error = str(result.get("error", "Particle map configuration failed"))
+	else: world_particles.reset()
+	if is_instance_valid(projectiles): projectiles.configure_occlusion(occlusion.segment_blocked)
+
+func _allowed() -> bool:
+	if not is_instance_valid(effect_session): return true
+	if last_state_usec <= 0: return false # A reset requires a fresh public frame.
+	if get_tree().paused or not is_visible_in_tree(): return false
+	if "phase" in effect_session and effect_session.phase not in [3, "active"]: return false
+	if "snapshot_watch" in effect_session and effect_session.snapshot_watch.stale(): return false
+	if "application_focused" in effect_session and not effect_session.application_focused: return false
+	if "controls" in effect_session and not effect_session.controls.focused: return false
+	if last_state_usec > 0 and Time.get_ticks_usec()-last_state_usec > 800000: return false
+	return true
+
+func _sync_activity() -> void:
+	var active := _allowed()
+	if active == effects_active: return
+	effects_active = active
+	if is_instance_valid(shields): shields.set_suspended(not active)
+	if not active:
+		# Drain, rather than freeze/replay held bursts when focus/freshness returns.
+		pending_events.clear()
+		if is_instance_valid(weapon_effects): weapon_effects.reset()
+		if is_instance_valid(world_particles): world_particles.reset()
+		if is_instance_valid(projectiles): projectiles.clear_round()
+		if is_instance_valid(audio_feedback): audio_feedback.clear_round()
+		hit_remaining = 0.0
+		hurt_remaining = 0.0
+	if is_instance_valid(world_particles): world_particles.set_paused(not active)
+	if is_instance_valid(quality_controls): quality_controls.set_active(active)
+
+func _fresh_events(items: Array) -> Array:
+	var fresh: Array = []
+	for item: Variant in items.slice(0, 512):
+		if not item is Dictionary: continue
+		var id := WeaponEffects.identity(item.get("id"))
+		if id < 0 or id <= highest_event-EVENT_WINDOW or event_ids.has(id): continue
+		highest_event = maxi(highest_event, id)
+		event_ids[id] = true
+		fresh.append(item)
+	for id: int in event_ids.keys():
+		if id <= highest_event-EVENT_WINDOW: event_ids.erase(id)
+	return fresh
+
+func flush_effects() -> void:
+	_sync_activity()
+	_attach_rig()
+	if pending_events.is_empty(): return
+	var events := pending_events
+	pending_events = []
+	if not effects_active: return
+	# Session listeners run before first-person listeners. This pass runs at 40,
+	# after network/rig processing (0), before weapon animation (50). Combined
+	# Arms creates its rig before its network node, so refresh transforms at zero
+	# elapsed time too: current recoil/camera, without applying recoil twice.
+	if is_instance_valid(attached_rig): attached_rig.advance(0.0)
+	var safe: Array = []
+	for event: Dictionary in events:
+		if event.get("type") == "shot":
+			var from: Variant = point(event.get("from"))
+			var to: Variant = point(event.get("to"))
+			if from == null or to == null or occlusion.segment_blocked(from, to): continue
+		safe.append(event)
+	weapon_effects.consume(safe, effect_local_id, public_actors)
+	for event: Dictionary in safe:
+		if event.get("type") == "launch" and WeaponEffects.numeric(event.get("time")) and absf(float(event.time)-source_time) <= 0.25 and is_instance_valid(projectiles):
+			projectiles.cache_launch(event, weapon_effects.resolve_launch_origin(event, effect_local_id), effect_local_id)
+	shields.apply_events(events, effect_local_id)
+	world_particles.consume(events, effect_local_id)
+
+func _update_metrics() -> void:
+	if not is_instance_valid(quality_controls): return
+	var metrics := {}
+	if is_instance_valid(world_particles):
+		var data: Dictionary = world_particles.snapshot()
+		for key in ["backend", "budget", "allocated_slots", "draw_slots", "active_emitters", "pool_nodes", "buffer_payload_estimate_bytes", "collision_shapes", "unsupported_collision_shapes"]: metrics[key] = data[key]
+		metrics["capacity_note"] = "Submitted capacity, not live GPU readback; buffer bytes are an estimate"
+	if is_instance_valid(weapon_effects):
+		var allocated := 0
+		for slot: Dictionary in weapon_effects.slots + weapon_effects.lines:
+			if is_instance_valid(slot.node): allocated += 1
+		metrics["weapon_pool_nodes"] = allocated
+		metrics["weapon_flashes"] = weapon_effects.flashes
+		metrics["weapon_tracers"] = weapon_effects.tracer_count
+	if is_instance_valid(shields): metrics["shield_materials"] = shields.debug_state().materials
+	metrics["occlusion"] = occlusion.snapshot().backend
+	if not map_error.is_empty(): metrics["map_error"] = map_error
+	quality_controls.set_metrics(metrics)
+
+func _effect_identity() -> int:
+	if not is_instance_valid(effect_session): return -1
+	if "client" in effect_session: return effect_session.client.actor_id
+	if "net" in effect_session: return effect_session.net.actor_id
+	return -1
+
+func _effect_rig() -> Node:
+	var parent := get_parent()
+	if parent == null: return null
+	if "rig" in parent: return parent.rig
+	if "first_person" in parent and is_instance_valid(parent.first_person): return parent.first_person.rig
+	return null
 
 func _init() -> void:
+	process_priority = 40
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	blast_mesh = SphereMesh.new()
 	blast_mesh.radius = 1.0
 	blast_mesh.height = 2.0
@@ -36,10 +229,40 @@ func _init() -> void:
 	blast_mesh.rings = 6
 
 func apply_state(state: Dictionary) -> void:
-	public_actors = state.get("actors", [])
+	var next_id := _effect_identity()
+	var time: Variant = state.get("time")
+	if is_instance_valid(effect_camera):
+		if WeaponEffects.numeric(time) and source_time >= 0 and float(time) < source_time-0.001:
+			clear_round()
+		elif next_id != effect_local_id:
+			# Seat/identity changes drain old anchors; only a round boundary permits
+			# public event IDs to be reused.
+			var remembered := event_ids.duplicate()
+			var highest := highest_event
+			clear_round()
+			event_ids = remembered
+			highest_event = highest
+		if state.get("over", false):
+			clear_round()
+			return
+		_configure_map(state)
+	effect_local_id = next_id
+	if WeaponEffects.numeric(time): source_time = float(time)
+	last_state_usec = Time.get_ticks_usec()
+	public_actors = state.get("actors", []) if state.get("actors", []) is Array else []
+	_sync_activity()
+	if is_instance_valid(effect_camera) and not effects_active: return
+	if is_instance_valid(shields):
+		if is_instance_valid(effect_session) and "presentation" in effect_session:
+			shields.bind_actor_visuals(effect_session.presentation.actors)
+		elif is_instance_valid(effect_session) and "actors" in effect_session:
+			shields.bind_actor_visuals(effect_session.actors.actors)
+		shields.apply_state(state, effect_local_id)
+	if is_instance_valid(world_particles) and map_error.is_empty(): world_particles.apply_state(state, effect_local_id)
 	if not is_instance_valid(projectiles):
 		projectiles = Projectiles.new()
 		add_child(projectiles)
+		projectiles.configure_occlusion(occlusion.segment_blocked)
 	projectiles.apply_state(state)
 
 func _ready() -> void:
@@ -55,6 +278,11 @@ func _ready() -> void:
 	overlay = Overlay.new()
 	overlay.visible = false
 	layer.add_child(overlay)
+	var parent := get_parent()
+	if parent != null and "camera" in parent:
+		configure_effects(parent.camera, parent)
+	elif parent != null and "session" in parent and is_instance_valid(parent.session) and "world" in parent.session:
+		configure_effects(parent.session.world.camera, parent.session)
 
 func point(value: Variant) -> Variant:
 	if not value is Dictionary: return null
@@ -64,8 +292,15 @@ func point(value: Variant) -> Variant:
 	return Vector3(value.x, value.y, value.z)
 
 func apply_events(items: Array, local_id: int) -> void:
-	if is_instance_valid(moth_effects): moth_effects.consume(items, local_id, public_actors)
-	if is_instance_valid(audio_feedback): audio_feedback.apply_events(items, local_id)
+	var integrated := is_instance_valid(weapon_effects)
+	if integrated:
+		items = _fresh_events(items)
+		_sync_activity()
+		if effects_active:
+			pending_events.append_array(items.slice(0, maxi(0,512-pending_events.size())))
+	else:
+		if is_instance_valid(moth_effects): moth_effects.consume(items, local_id, public_actors)
+	if is_instance_valid(audio_feedback) and (not integrated or effects_active): audio_feedback.apply_events(items, local_id)
 	for value: Variant in items:
 		if not value is Dictionary: continue
 		var item: Dictionary = value
@@ -78,6 +313,7 @@ func apply_events(items: Array, local_id: int) -> void:
 				var pos: Variant = Projectiles.point(item.get("pos"))
 				if pos == null: continue
 				explosions += 1
+				if integrated: continue
 				if blasts.size() >= MAX_BLASTS: remove_blast(0)
 				var material := StandardMaterial3D.new()
 				material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
@@ -96,6 +332,7 @@ func apply_events(items: Array, local_id: int) -> void:
 				var to: Variant = point(item.get("to"))
 				if from == null or to == null: continue
 				shots += 1
+				if integrated: continue
 				if tracers.size() >= MAX_TRACERS: remove_tracer(0)
 				var mesh := ImmediateMesh.new()
 				var material := StandardMaterial3D.new()
@@ -119,10 +356,10 @@ func apply_events(items: Array, local_id: int) -> void:
 				var source: Variant = item.get("source")
 				if local_id >= 0 and victim == local_id:
 					hurts += 1
-					hurt_remaining = 0.35
+					if not integrated or effects_active: hurt_remaining = 0.35
 				if local_id >= 0 and Projectiles.identity(source) == local_id and victim != local_id:
 					hits += 1
-					hit_remaining = 0.2
+					if not integrated or effects_active: hit_remaining = 0.2
 
 func remove_tracer(index: int) -> void:
 	var node: Node = tracers[index].node
@@ -153,6 +390,14 @@ func remove_blast(index: int) -> void:
 
 func _process(delta: float) -> void:
 	advance(delta)
+	flush_effects()
+	var rig := _effect_rig()
+	if is_instance_valid(overlay):
+		overlay.set_ads_weight(float(rig.get_aim_state().weight) if is_instance_valid(rig) else 0.0)
+	metrics_age += delta
+	if metrics_age >= 0.25:
+		metrics_age = 0.0
+		_update_metrics()
 	if is_instance_valid(overlay):
 		var session := get_parent()
 		var aiming: bool = session != null and session.has_method("can_capture_pointer") and session.can_capture_pointer() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
@@ -162,7 +407,18 @@ func text() -> String:
 	return ("HIT CONFIRMED " if hit_remaining > 0 else "") + ("TAKING DAMAGE" if hurt_remaining > 0 else "")
 
 func clear_round() -> void:
+	pending_events.clear()
+	event_ids.clear()
+	highest_event = -1
+	source_time = -1.0
+	last_state_usec = 0
+	effect_local_id = -1
+	effects_active = false
+	if is_instance_valid(weapon_effects): weapon_effects.reset()
+	if is_instance_valid(world_particles): world_particles.reset()
 	public_actors = [] # Never mutate the snapshot-owned array.
+	if is_instance_valid(shields): shields.reset()
+	if is_instance_valid(quality_controls): quality_controls.set_active(false)
 	if is_instance_valid(moth_effects): moth_effects.reset()
 	if is_instance_valid(projectiles): projectiles.clear_round()
 	while not blasts.is_empty(): remove_blast(0)

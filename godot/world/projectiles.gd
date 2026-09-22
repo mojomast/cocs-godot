@@ -8,6 +8,62 @@ const MAX_SCAN := 512
 var markers: Dictionary = {}
 var rocket_mesh: ArrayMesh
 var generic_mesh: SphereMesh
+const ORIGIN_SECONDS := 0.12
+const MAX_ORIGINS := 128
+var launch_origins: Dictionary = {}
+var authoritative: Dictionary = {}
+var occlusion: Callable
+var clock := 0.0
+
+func configure_occlusion(provider: Callable) -> void:
+	occlusion = provider
+
+## Primary fire in game/core.mjs increments the rocket serial immediately before
+## emit('launch'); alt fire explicitly publishes projectile. sourceId preserves
+## that serial on ordinal-ID Horde/native transports. Never match by proximity,
+## event ordinal, volley, weapon alone, or pellet number.
+static func launch_projectile_id(event: Dictionary) -> int:
+	if event.get("type") != "launch": return -1
+	if event.has("projectile"): return identity(event.projectile)
+	if event.get("alt", false) or identity(event.get("weapon")) not in [1, 4, 5]: return -1
+	var source := identity(event.get("sourceId", event.get("id")))
+	return source - 1 if source > 0 else -1
+
+func cache_launch(event: Dictionary, origin: Dictionary, local_id: int) -> void:
+	var time: Variant = event.get("time")
+	if not (time is float or time is int) or not is_finite(float(time)) or float(time) < 0: return
+	var id := launch_projectile_id(event)
+	var pos: Variant = point(event.get("pos"))
+	if id < 0 or identity(event.get("actor")) != local_id or pos == null or not origin.get("position") is Vector3: return
+	if launch_origins.has(id) or launch_origins.size() >= MAX_ORIGINS: return
+	var muzzle: Vector3 = origin.position
+	if muzzle.distance_to(pos) > 3.0 or _blocked(muzzle, pos): return
+	launch_origins[id] = {"muzzle":muzzle, "launch":pos, "owner":local_id, "weapon":identity(event.get("weapon")), "until":clock+ORIGIN_SECONDS}
+	_render_origins()
+
+func _blocked(from: Vector3, to: Vector3) -> bool:
+	return not occlusion.is_valid() or occlusion.call(from, to) != false
+
+func _render_origins() -> void:
+	for id: int in launch_origins.keys():
+		var record: Dictionary = launch_origins[id]
+		if clock >= record.until:
+			launch_origins.erase(id)
+			if markers.has(id) and authoritative.has(id): markers[id].position = authoritative[id].pos
+			continue
+		if not markers.has(id) or not authoritative.has(id): continue
+		var sample: Dictionary = authoritative[id]
+		if sample.owner != record.owner or sample.weapon != record.weapon or sample.pos.distance_to(record.launch) > 8.0 or _blocked(record.muzzle, sample.pos):
+			launch_origins.erase(id)
+			markers[id].position = sample.pos
+			continue
+		var weight := clampf(1.0-(record.until-clock)/ORIGIN_SECONDS, 0.0, 1.0)
+		markers[id].position = record.muzzle.lerp(sample.pos, weight)
+
+func _process(delta: float) -> void:
+	if not is_finite(delta) or delta < 0: return
+	clock += delta
+	_render_origins()
 
 static func identity(value: Variant) -> int:
 	if not (value is int or value is float): return -1
@@ -70,6 +126,9 @@ func append_part(primitive: PrimitiveMesh, offset: Vector3, color: Color) -> voi
 	rocket_mesh.surface_set_material(rocket_mesh.get_surface_count() - 1, material(color))
 
 func apply_state(state: Dictionary) -> void:
+	if state.get("over", false):
+		clear_round()
+		return
 	var present: Dictionary = {}
 	var items: Variant = state.get("rockets", [])
 	if items is Array and not state.get("over", false):
@@ -91,6 +150,8 @@ func apply_state(state: Dictionary) -> void:
 		if not present.has(id):
 			markers[id].free()
 			markers.erase(id)
+			launch_origins.erase(id)
+	authoritative = present
 	for id: int in present:
 		var item: Dictionary = present[id]
 		if not markers.has(id):
@@ -107,7 +168,11 @@ func apply_state(state: Dictionary) -> void:
 		node.basis = Basis.looking_at(forward, up)
 		node.set_meta("owner", item.owner)
 		node.set_meta("weapon", item.weapon)
+	_render_origins()
 
 func clear_round() -> void:
 	for node: Node in markers.values(): node.free()
 	markers.clear()
+	launch_origins.clear()
+	authoritative.clear()
+	clock = 0.0
