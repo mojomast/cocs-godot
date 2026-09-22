@@ -50,10 +50,10 @@ func _ready() -> void:
 	add_child(scroll)
 	var margin := MarginContainer.new()
 	margin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	for edge: String in ["left", "right", "top", "bottom"]: margin.add_theme_constant_override("margin_" + edge, 22)
+	for edge: String in ["left", "right", "top", "bottom"]: margin.add_theme_constant_override("margin_" + edge, 18)
 	scroll.add_child(margin)
 	var column := VBoxContainer.new()
-	column.add_theme_constant_override("separation", 12)
+	column.add_theme_constant_override("separation", 8)
 	margin.add_child(column)
 	label("LATTICE / COMMAND", column, 28)
 	label("Recipient-authorized state • Node orders • Team recruitment", column, 16)
@@ -80,11 +80,12 @@ func _ready() -> void:
 	disconnect_button.text = "Disconnect"
 	disconnect_button.pressed.connect(disconnect_session)
 	controls.add_child(disconnect_button)
+	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(status)
 	resources.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(resources)
 	label("OBJECTIVES — select a node; the server decides final order legality", column, 17)
-	nodes.custom_minimum_size.y = 185
+	nodes.custom_minimum_size.y = 132
 	nodes.item_selected.connect(func(index: int) -> void: selected = node_ids[index]; refresh())
 	column.add_child(nodes)
 	selection.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -167,7 +168,13 @@ func buy_fighter() -> void:
 	refresh()
 
 func known(value: Variant) -> String:
-	return "unknown / hidden" if value == null else str(value)
+	if value == null: return "unknown / hidden"
+	if value is float: return ("%.2f" % value).trim_suffix("0").trim_suffix("0").trim_suffix(".")
+	return str(value)
+
+func team_name(value: Variant) -> String:
+	if value == null: return "unknown / hidden"
+	return "Team %d" % int(value)
 
 func refresh() -> void:
 	if not is_instance_valid(status): return
@@ -180,7 +187,7 @@ func refresh() -> void:
 	room.editable = not connected
 	connect_button.disabled = connected
 	status.text = "%s  |  %s / %s  |  round %s  |  %s" % [phase.to_upper(), client.requested_map, client.mode, known(client.revision if client.revision >= 0 else null), client.gate()]
-	resources.text = "Team %s  •  FLUX %s  •  spent %s  •  income/s %s  •  upkeep %s  •  REQ %s" % [known(p.get("team")), known(p.get("flux")), known(p.get("spent")), known(p.get("income")), known(p.get("upkeep")), known(p.get("req"))]
+	resources.text = "%s  •  FLUX %s  •  spent %s  •  income/s %s  •  upkeep %s  •  REQ %s" % [team_name(p.get("team")), known(p.get("flux")), known(p.get("spent")), known(p.get("income")), known(p.get("upkeep")), known(p.get("req"))]
 	var ids: Array[String] = []
 	for node: Dictionary in p.get("nodes", []): ids.append(node.id)
 	if ids != node_ids:
@@ -190,7 +197,7 @@ func refresh() -> void:
 	if selected not in node_ids: selected = ""
 	for i: int in range(node_ids.size()):
 		var node: Dictionary = p.nodes[i]
-		nodes.set_item_text(i, "%s  |  %s  |  owner %s  |  %s" % [node.get("label", node.id), node.get("archetype", "unknown"), "neutral" if node.has("owner") and node.owner == null else known(node.get("owner")), "CONTESTED" if node.get("contested") == true else "live" if node.get("live") == true else "inactive"])
+		nodes.set_item_text(i, "%s  |  %s  |  owner %s  |  %s" % [node.get("label", node.id), node.get("archetype", "unknown"), "neutral" if node.has("owner") and node.owner == null else team_name(node.get("owner")), "CONTESTED" if node.get("contested") == true else "live" if node.get("live") == true else "inactive"])
 		nodes.set_item_tooltip(i, "Node %s • x %s / z %s" % [node.id, known(node.get("x")), known(node.get("z"))])
 	selection.text = "Selected: " + (selected if not selected.is_empty() else "none")
 	var hold_gate: String = client.action_gate("hold", selected)
@@ -200,6 +207,7 @@ func refresh() -> void:
 	spend_button.disabled = not spend_gate.is_empty() or not confirm_spend.button_pressed
 	spend_button.tooltip_text = spend_gate
 	confirm_spend.disabled = not spend_gate.is_empty()
+	notice.visible = not notice.text.is_empty()
 	history.text = "No actions submitted."
 	if not client.actions.is_empty():
 		var lines: PackedStringArray = []

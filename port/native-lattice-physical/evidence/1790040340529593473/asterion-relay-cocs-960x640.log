@@ -1,0 +1,34 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PHYSICAL {"event":"check","message":"actual board.tscn loaded by engine","ms":12,"ok":true}
+PHYSICAL {"event":"check","message":"built-in signal smoke is off","ms":12,"ok":true}
+PHYSICAL {"event":"check","message":"initial controls disabled","ms":196,"ok":true}
+PHYSICAL {"control":"Connect / start","event":"mouse","ms":196,"x":79.5,"y":150.5}
+PHYSICAL {"event":"check","message":"physical Connect reaches live recipient state","ms":496,"ok":true}
+PHYSICAL {"actions":[],"actor":0,"event":"connected","flux":80.033,"history":"No actions submitted.","map":"asterion-relay","mode":"cocs","ms":496,"peer":1,"round":1,"selected":"","spawned":0.0,"spent":0.0,"team":0}
+PHYSICAL {"event":"check","message":"recipient contains own-front objective","ms":496,"ok":true}
+PHYSICAL {"control":"ItemList front-0","event":"mouse","ms":496,"x":476.0,"y":339.5}
+PHYSICAL {"event":"check","message":"real ItemList mouse selection selects own front","ms":504,"ok":true}
+PHYSICAL {"code":4194317,"event":"key","ms":504}
+PHYSICAL {"code":4194322,"event":"key","ms":508}
+PHYSICAL {"code":4194322,"event":"key","ms":511}
+ERROR: ItemList Home/Down keyboard selection
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/physical.gd:25)
+       [1] run (res://tests/lattice/physical.gd:99)
+       [2] key (res://tests/lattice/physical.gd:63)
+PHYSICAL {"event":"check","message":"ItemList Home/Down keyboard selection","ms":515,"ok":false}
+PHYSICAL {"event":"check","message":"HOLD enabled for selected target","ms":515,"ok":true}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":515,"x":86.0,"y":454.5}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":521,"x":86.0,"y":454.5}
+PHYSICAL {"event":"check","message":"rapid repeated HOLD click submits one action","ms":528,"ok":true}
+ERROR: HOLD authoritative running acceptance
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/physical.gd:25)
+       [1] wait_for (res://tests/lattice/physical.gd:33)
+PHYSICAL {"event":"check","message":"HOLD authoritative running acceptance","ms":15528,"ok":false}

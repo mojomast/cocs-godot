@@ -1,0 +1,53 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PHYSICAL {"event":"check","message":"actual board.tscn loaded by engine","ms":9,"ok":true}
+PHYSICAL {"event":"check","message":"built-in signal smoke is off","ms":9,"ok":true}
+PHYSICAL {"event":"check","message":"initial controls disabled","ms":198,"ok":true}
+PHYSICAL {"control":"Connect / start","event":"mouse","ms":198,"x":79.5,"y":150.5}
+PHYSICAL {"event":"check","message":"physical Connect reaches live recipient state","ms":481,"ok":true}
+PHYSICAL {"actions":[],"actor":0,"event":"connected","flux":80.033,"history":"No actions submitted.","map":"asterion-relay","mode":"cocs","ms":481,"peer":1,"round":1,"selected":"","spawned":0.0,"spent":0.0,"team":0}
+PHYSICAL {"event":"check","message":"recipient contains own-front objective","ms":481,"ok":true}
+PHYSICAL {"control":"ItemList front-0","event":"mouse","ms":481,"x":476.0,"y":339.5}
+PHYSICAL {"event":"check","message":"real ItemList mouse selection selects own front","ms":490,"ok":true}
+PHYSICAL {"code":4194320,"event":"key","ms":490}
+PHYSICAL {"event":"check","message":"ItemList Up keyboard changes selection","ms":493,"ok":true}
+PHYSICAL {"code":4194322,"event":"key","ms":493}
+PHYSICAL {"event":"check","message":"ItemList Down keyboard returns to own front","ms":497,"ok":true}
+PHYSICAL {"event":"check","message":"HOLD enabled for selected target","ms":497,"ok":true}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":497,"x":86.0,"y":454.5}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":502,"x":86.0,"y":454.5}
+PHYSICAL {"event":"check","message":"rapid repeated HOLD click submits one action","ms":508,"ok":true}
+PHYSICAL {"event":"check","message":"HOLD authoritative running acceptance","ms":523,"ok":true}
+PHYSICAL {"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":null,"roundRev":1,"status":"pending (server accepted)","target":"front-0"}],"actor":0,"event":"hold-accepted","flux":80.133,"history":"native-r1-p1-s1 • hold • pending (server accepted)","map":"asterion-relay","mode":"cocs","ms":523,"peer":1,"round":1,"selected":"front-0","spawned":0.0,"spent":0.0,"team":0}
+PHYSICAL {"event":"check","message":"Fighter authorization available","ms":1105,"ok":true}
+PHYSICAL {"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":null,"roundRev":1,"status":"pending (server accepted)","target":"front-0"}],"actor":0,"event":"before-purchase","flux":80.733,"history":"native-r1-p1-s1 • hold • pending (server accepted)","map":"asterion-relay","mode":"cocs","ms":1105,"peer":1,"round":1,"selected":"front-0","spawned":0.0,"spent":0.0,"team":0}
+PHYSICAL {"event":"check","message":"purchase requires fresh explicit checkbox","ms":1105,"ok":true}
+PHYSICAL {"control":"Authorize one 12 FLUX purchase","event":"mouse","ms":1105,"x":297.0,"y":454.5}
+PHYSICAL {"event":"check","message":"physical checkbox authorizes one purchase","ms":1111,"ok":true}
+PHYSICAL {"code":4194306,"event":"key","ms":1111}
+PHYSICAL {"event":"check","message":"Tab from authorization focuses Recruit Fighter","ms":1114,"ok":true}
+PHYSICAL {"code":4194309,"event":"key","ms":1114}
+PHYSICAL {"control":"Recruit Fighter","event":"mouse","ms":1118,"x":501.0,"y":454.5}
+PHYSICAL {"control":"Recruit Fighter","event":"mouse","ms":1124,"x":501.0,"y":454.5}
+PHYSICAL {"event":"check","message":"Enter plus repeated Recruit clicks submit one spend","ms":1129,"ok":true}
+PHYSICAL {"event":"check","message":"Fighter confirmed by authoritative done card","ms":1144,"ok":true}
+PHYSICAL {"event":"check","message":"exact cumulative fluxSpent increase 12","ms":1144,"ok":true}
+PHYSICAL {"event":"check","message":"exactly one Fighter spawned","ms":1144,"ok":true}
+PHYSICAL {"event":"check","message":"purchase authorization consumed","ms":1144,"ok":true}
+PHYSICAL {"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":null,"roundRev":1,"status":"pending (server accepted)","target":"front-0"},{"actionSeq":2,"cardId":"native-r1-p1-s2","kind":"fighter","reason":null,"roundRev":1,"status":"confirmed","target":""}],"actor":0,"event":"purchase-confirmed","flux":68.75,"history":"native-r1-p1-s1 • hold • pending (server accepted)\nnative-r1-p1-s2 • fighter • confirmed","map":"asterion-relay","mode":"cocs","ms":1144,"peer":1,"round":1,"selected":"front-0","spawned":1.0,"spent":12.0,"team":0}
+PHYSICAL {"event":"check","message":"action receipts fully inside initial viewport without scroll","ms":1942,"ok":true}
+PHYSICAL {"event":"check","message":"resources inside viewport","ms":1942,"ok":true}
+PHYSICAL {"event":"check","message":"action controls inside viewport","ms":1942,"ok":true}
+PHYSICAL {"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":null,"roundRev":1,"status":"pending (server accepted)","target":"front-0"},{"actionSeq":2,"cardId":"native-r1-p1-s2","kind":"fighter","reason":null,"roundRev":1,"status":"confirmed","target":""}],"actor":0,"event":"visible-receipts","flux":68.75,"history":"native-r1-p1-s1 • hold • pending (server accepted)\nnative-r1-p1-s2 • fighter • confirmed","map":"asterion-relay","mode":"cocs","ms":1942,"peer":1,"round":1,"selected":"front-0","spawned":1.0,"spent":12.0,"team":0}
+PHYSICAL {"event":"check","message":"saved receipts","ms":1962,"ok":true}
+PHYSICAL {"control":"Disconnect","event":"mouse","ms":1962,"x":192.0,"y":150.5}
+PHYSICAL {"event":"check","message":"physical Disconnect clears recipient state, selection and receipts","ms":1975,"ok":true}
+PHYSICAL {"event":"check","message":"real disconnected controls disabled","ms":1975,"ok":true}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":1975,"x":86.0,"y":454.5}
+PHYSICAL {"control":"Recruit Fighter","event":"mouse","ms":1980,"x":501.0,"y":480.5}
+PHYSICAL {"event":"check","message":"disabled disconnected clicks submit nothing","ms":1986,"ok":true}
+PHYSICAL {"event":"check","message":"saved disconnected","ms":2003,"ok":true}
+PHYSICAL {"checks":28,"event":"result","failures":0,"input":"Input.parse_input_event mouse and physical-key events; not OS input","ms":2003}

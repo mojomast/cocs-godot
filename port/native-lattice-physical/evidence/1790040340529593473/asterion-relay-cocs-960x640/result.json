@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "checks": {
+    "nativeExit": false,
+    "holdExactlyOnce": false,
+    "holdRunning": false,
+    "recipientKeys": true,
+    "spendExactlyOnce": false,
+    "spendDoneAndCost": false,
+    "nativeWireIdentity": false
+  },
+  "nativeExit": 1,
+  "inboundCount": 1
+}

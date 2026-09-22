@@ -1,0 +1,67 @@
+[
+  {
+    "name": "semantic",
+    "command": [
+      "node",
+      "tools/godot-export/semantic.mjs"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "import",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--editor",
+      "--import"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "adapter",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/lattice/adapter.gd"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "ui",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/lattice/ui.gd"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "asterion-relay-cocs-960x640",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1400x1000x24 -nolisten tcp -nolisten unix",
+      "node",
+      "port/native-lattice-physical/run.mjs",
+      "--map=asterion-relay",
+      "--mode=cocs",
+      "--size=960x640",
+      "--output=/tmp/opencode/lattice-physical-658b4e7/port/native-lattice-physical/evidence/1790040340529593473/asterion-relay-cocs-960x640"
+    ],
+    "exit": 1,
+    "passed": false
+  }
+]
