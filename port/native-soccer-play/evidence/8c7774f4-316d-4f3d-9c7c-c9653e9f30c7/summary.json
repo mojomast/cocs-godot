@@ -1,0 +1,277 @@
+{
+  "base": "e76acdbb48385c638b01a24e3c5997d6e1ce8353",
+  "attempt": 1,
+  "classification": "synthetic checks plus explicitly selected normal-rate native visual/scoring checks",
+  "commands": [
+    [
+      "node",
+      "/tmp/opencode/native-soccer-play/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/soccer-play-sba6wk7j/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-sba6wk7j/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-sba6wk7j/godot",
+      "--script",
+      "res://tests/sports/test_controls.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-sba6wk7j/godot",
+      "--script",
+      "res://tests/vehicles/test_puma.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-sba6wk7j/godot",
+      "--script",
+      "res://tests/sports/test_polish.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-sba6wk7j/godot",
+      "--script",
+      "res://tests/sports/progression_test.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/soccer-play-sba6wk7j/godot",
+      "--script",
+      "res://tests/sports/soccer_test.gd"
+    ],
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1280x800x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "node",
+      "/tmp/opencode/native-soccer-play/port/native-soccer-play/server.mjs",
+      "/tmp/opencode/soccer-play-sba6wk7j",
+      "/tmp/opencode/native-soccer-play/port/native-soccer-play/evidence/8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/1280x800/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/soccer-play-sba6wk7j/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/sports/soccer_observe.gd",
+      "--",
+      "--map=aurora-stadium",
+      "--endpoint=ws://127.0.0.1:36003",
+      "--time-limit=180",
+      "--round-target=15",
+      "--progression-out=/tmp/opencode/native-soccer-play/port/native-soccer-play/evidence/8c7774f4-316d-4f3d-9c7c-c9653e9f30c7/1280x800",
+      "--soccer-attempt=1"
+    ]
+  ],
+  "cases": [
+    {
+      "resolution": "1280x800",
+      "outcome": {
+        "ack": 3592,
+        "attempt": 1,
+        "captures": {
+          "countdown": true,
+          "driving": true,
+          "end": true,
+          "goal": true
+        },
+        "elapsed": 172.9,
+        "goals": [
+          {
+            "actor": 1.0,
+            "actorId": 1.0,
+            "id": 5.0,
+            "pos": {
+              "x": -44.0,
+              "y": 1.2,
+              "z": 0.0
+            },
+            "scorerId": 1.0,
+            "team": 1.0,
+            "time": 31.917,
+            "type": "soccer-goal"
+          },
+          {
+            "actor": 2.0,
+            "actorId": 2.0,
+            "id": 6.0,
+            "pos": {
+              "x": 44.0,
+              "y": 1.2,
+              "z": 0.0
+            },
+            "scorerId": 2.0,
+            "team": 0.0,
+            "time": 105.45,
+            "type": "soccer-goal"
+          },
+          {
+            "actor": 2.0,
+            "actorId": 2.0,
+            "id": 7.0,
+            "pos": {
+              "x": 44.0,
+              "y": 1.2,
+              "z": 0.0
+            },
+            "scorerId": 2.0,
+            "team": 0.0,
+            "time": 144.05,
+            "type": "soccer-goal"
+          },
+          {
+            "actor": 1.0,
+            "actorId": 1.0,
+            "id": 8.0,
+            "pos": {
+              "x": -44.0,
+              "y": 1.2,
+              "z": 0.0
+            },
+            "scorerId": 1.0,
+            "team": 1.0,
+            "time": 151.367,
+            "type": "soccer-goal"
+          },
+          {
+            "actor": 3.0,
+            "actorId": 3.0,
+            "id": 9.0,
+            "pos": {
+              "x": 44.0,
+              "y": 1.2,
+              "z": 0.0
+            },
+            "scorerId": 3.0,
+            "team": 0.0,
+            "time": 156.833,
+            "type": "soccer-goal"
+          }
+        ],
+        "local_goal": false,
+        "recoveries": 18,
+        "seq": 5277,
+        "wallBound": 175
+      },
+      "sourceGoals": [
+        {
+          "wallMs": 34224,
+          "type": "soccer-goal",
+          "id": 5,
+          "time": 31.917,
+          "team": 1,
+          "actor": 1,
+          "actorId": 1,
+          "scorerId": 1,
+          "pos": {
+            "x": -44,
+            "y": 1.2,
+            "z": 0
+          }
+        },
+        {
+          "wallMs": 107372,
+          "type": "soccer-goal",
+          "id": 6,
+          "time": 105.45,
+          "team": 0,
+          "actor": 2,
+          "actorId": 2,
+          "scorerId": 2,
+          "pos": {
+            "x": 44,
+            "y": 1.2,
+            "z": 0
+          }
+        },
+        {
+          "wallMs": 146023,
+          "type": "soccer-goal",
+          "id": 7,
+          "time": 144.05,
+          "team": 0,
+          "actor": 2,
+          "actorId": 2,
+          "scorerId": 2,
+          "pos": {
+            "x": 44,
+            "y": 1.2,
+            "z": 0
+          }
+        },
+        {
+          "wallMs": 153275,
+          "type": "soccer-goal",
+          "id": 8,
+          "time": 151.367,
+          "team": 1,
+          "actor": 1,
+          "actorId": 1,
+          "scorerId": 1,
+          "pos": {
+            "x": -44,
+            "y": 1.2,
+            "z": 0
+          }
+        },
+        {
+          "wallMs": 158692,
+          "type": "soccer-goal",
+          "id": 9,
+          "time": 156.833,
+          "team": 0,
+          "actor": 3,
+          "actorId": 3,
+          "scorerId": 3,
+          "pos": {
+            "x": 44,
+            "y": 1.2,
+            "z": 0
+          }
+        }
+      ],
+      "provenLocalGoals": [],
+      "inputReceipts": 3594,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    }
+  ],
+  "hashManifestSHA256": "a191c9a48c9bee850fb52b5e95aa2ffaf78f3d098c4f01b72759eaf55dc50060",
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}
