@@ -7,8 +7,9 @@
 3. Double-click **Play.cmd** for Meridian Team Deathmatch with bots.
 4. Click inside the game window to engage the mouse and controls.
 
+**Graphics Showcase.cmd** opens the new map and effects menu (details below).
 **Demo Menu.cmd** offers other arenas, Horde, Arms Race, the lobby, vehicles,
-racing and the operator viewer. **Operator Preview.cmd** opens the static
+racing, graphics showcases and the operator viewer. **Operator Preview.cmd** opens the static
 three-model lineup. Close a game window to end that session. The console belongs
 to its local server; leave it open while playing.
 
@@ -25,6 +26,7 @@ not cocs.exe, so the local authoritative server is started and cleaned up.
 - **E** interact, **F** mobility (Horde uses its own source controls below)
 - **Tab** scores, **Escape** release mouse; the match keeps running
 - **Enter** restart after results, then release keys and click to resume
+- **F8** cycle Moth scenery detail: Full → Off → Low
 
 Horde: **Q** power, **X** mobility, **F** melee, **G** grenade, **RMB** ADS,
 **Z / MMB** alternate fire. Vehicles: **Enter** engage, **E** mount/exit,
@@ -46,9 +48,39 @@ Play.cmd --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
 Play.cmd --help
 ```
 
-All nine maps and ten experience routes are retained. Lobby defaults to an owned
+All nine original maps and ten source experience routes are retained, plus five
+native-only graphics routes. Lobby defaults to an owned
 loopback server, usable by clients on this computer. A separately hosted reachable
 server can be selected with `--experience=lobby --endpoint=ws://HOST:PORT`.
+
+## New native maps and effects
+
+Double-click **Graphics Showcase.cmd** and choose:
+
+1. **Prism Foundry:** reactor atrium, turbine hall, coolant garden, upper loop and
+   observation deck. **P** photo views, **[ / ]** change view, **F1** help.
+2. **Aurora Basin:** polar observatory, frozen lake circuit, ice arches and a
+   raised skywalk beneath animated aurora curtains.
+3. **Cinder Array:** volcanic caldera, suspended bridge, extractor gantry,
+   basalt tunnel and observation deck.
+4. **Particle Observatory:** four effects and **8K / 32K / 128K / 512K / 1M**
+   particle settings. **1–4** presets, **+/−** count, **B** backend, **Space** pause,
+   **R** reset, **V** render scale, **L** low-energy view, **F** freeflight.
+5. **Moth Shader Gallery:** interference shell, energy reactor and phase prop.
+   **1–3** effects, **Space** pause, **A/D or drag** orbit, **+/−** intensity,
+   **[ / ]** phase amount, **R** reset.
+
+Maps use **WASD / mouse**, **Shift** sprint, **Space** jump, **R** return to spawn,
+**Escape** release, **click** recapture. They are standalone, unarmed exploration
+showcases with native collision; no server or account is needed.
+
+The particle lab starts at **32K**, using actual GPU particle simulation. Massive
+counts are explicit stress experiments. The million-particle case measured about
+**462 ms/frame on the Linux software renderer**; your GPU must be measured directly.
+The lab displays actual counts, backend, memory estimates and median/p95 cadence.
+
+Terminal equivalents: `Play.cmd --experience=showcase`, `--experience=aurora-basin`,
+`--experience=cinder-array`, `--experience=particle-lab`, `--experience=shader-lab`.
 
 ## Candidate models and demo status
 

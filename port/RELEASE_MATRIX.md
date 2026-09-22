@@ -16,6 +16,29 @@ campaign is not the new design specification; the draft handoff is inactive.
 
 ## Evidence levels and current acceptance
 
+### Graphics expansion — September 22, 2026
+
+The owner requested parallel graphics development, new native showcase maps and
+massive-particle experiments. The original nine-map gameplay catalog is retained.
+Five additional routes are standalone native exploration/material laboratories.
+
+| Addition | Implemented and exercised | Remaining acceptance |
+|---|---|---|
+| Moth resources/world | 101 exact pixel planes; triplanar albedo/normals; all-nine atmosphere/scenery; 36 integrated map captures; bounded scenery with popup-free F8 detail cycling | Final expanded package and broad hardware/human readability |
+| First-person weapons | Ten source-derived weapon GLBs; hands, isolated viewport, source recoil/reload; 57 rig/15 binding fixtures; original switching live runs; shared three-map rounds/results/restarts | Broader weapons/modes, hardware/mouse/audio review; skeletal hand IK/ADS not implemented |
+| Combined-arms graphics | 65 composition checks, 43 inherited control checks and 68 synthetic graphical checks; infantry/Puma transitions | Live combined-arms graphics and package review |
+| Prism Foundry | Three-room reactor complex, mezzanine/ramp loop and deck; 49 native physics/lifecycle checks, eight real X11 input checks and 12 inspected captures | Final exported route, hardware and human exploration |
+| Aurora Basin | Landing/lake/crown routes and aurora; 593 lane checks; shared production walker traversal rerun passes | Final exported route and independent desktop usability |
+| Cinder Array | Six-area caldera/bridge/gantry/tunnel loop; 1244 lane assertions and original capsule traversal; production walker integrated | Shared-controller rerun and final exported route |
+| Particle Observatory | Stateful Compatibility GPUParticles3D and explicit analytic alternative; actual 8K–1M counts; 183 checks, 13 render sweeps, stable resize cycles | Hardware GPU performance; million-particle stress is ~462 ms median on software rendering |
+| Moth Shader Gallery | Three reusable materials; 68 contracts and two-resolution visual tests; actual clock/LUT/normal contributions and pause stability | Packaged shader include/resources and hardware review |
+
+Initial integrated graphics passed 96 aggregate gates. Expanded-map/scenery/lab
+gates are being integrated; historical and new failures remain archived. The first
+Windows export's exact PCK resolves all Moth/weapon resources under a Linux release
+runtime. This is not a Windows graphical capture or final expanded-release claim.
+See `graphics-batch/README.md` and the per-lane reports for scope and provenance.
+
 | Area | Synthetic/offline | Saved genuine evidence | Independently rerun live | Graphical / playable acceptance |
 |---|---|---|---|---|
 | Asset provenance/parity | Asset audit9, cleanup4 and GLB-side6 geometry checks pass | Original blank GLB, experiments and repaired matched captures retained | At `0af3c51`, ten fresh exports/nine sky imports and historical/current before/after independently PASS; 1,057 source hashes unchanged | Production BackSide export loss fixed; hard sky/haze edges, original-art fidelity and rights remain OPEN |

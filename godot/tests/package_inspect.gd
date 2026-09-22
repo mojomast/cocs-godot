@@ -2,6 +2,7 @@ extends SceneTree
 ## External release-runtime probe; never exported into the production PCK.
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible", "tidal-citadel", "sunscar-convoy", "asterion-relay", "monsoon-foundry", "ion-speedway", "aurora-stadium"]
 const SCENES := ["world/session", "sports/demo", "objectives/demo", "lattice/board", "lattice/world_demo", "zone_modes/demo", "combined_arms/demo", "arms_race/demo", "horde/demo"]
+const NATIVE_SCENES := ["showcase/demo", "aurora_basin/demo", "cinder_array/demo", "particle_lab/demo", "shader_lab/demo"]
 var assertion_ran := false
 
 func assertion_witness() -> bool:
@@ -41,6 +42,10 @@ func inspect() -> void:
 			fail("Missing compiled script " + scene)
 			return
 	var moth = load("res://moth/library.gd")
+	for scene: String in NATIVE_SCENES:
+		if not load("res://" + scene + ".tscn") is PackedScene:
+			fail("Missing native scene " + scene)
+			return
 	var manifest: Dictionary = moth.manifest()
 	var planes := 0
 	for bucket: String in ["textures", "normals", "sky"]:

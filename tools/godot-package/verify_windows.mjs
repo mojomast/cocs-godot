@@ -65,6 +65,24 @@ try {
   await writeFile(join(output,'preview.log'),preview.stdout+preview.stderr);
   assert.doesNotMatch(preview.stdout+preview.stderr,/SCRIPT ERROR|ERROR:/);
   report.preview_load = true;
+  // Exercise the native graphics routes with bundled runtimes and no authority.
+  for (const experience of ['showcase','aurora-basin','cinder-array','particle-lab','shader-lab']) {
+    const nativeOnly = await exec(process.env.ComSpec || 'cmd.exe', ['/d','/s','/c',`""${join(root,'Graphics Showcase.cmd')}" --experience=${experience} --smoke"`], {cwd:sandbox,env,windowsVerbatimArguments:true,timeout:60000,maxBuffer:4*1024*1024});
+    const text = nativeOnly.stdout + nativeOnly.stderr;
+    await writeFile(join(output,experience+'.log'),text);
+    assert.doesNotMatch(text,/SCRIPT ERROR|ERROR:|Assertion failed/);
+    assert.match(text,/PACKAGE_NATIVE_ONLY/);
+    assert.doesNotMatch(text,/PACKAGE_SERVER_READY/);
+    assert.match(text,/PACKAGE_STOPPED/);
+    const started = JSON.parse(nativeOnly.stdout.split(/\r?\n/).find(l=>l.startsWith('PACKAGE_NATIVE_STARTED ')).slice(23));
+    assert.throws(()=>process.kill(started.pid,0), 'Native-only process exited');
+    report.cases.push({experience,passed:true,authority:false,native_pid:started.pid,cleanup:true});
+  }
+  const inspection = await exec(join(root,'cocs.exe'), ['--headless','--audio-driver','Dummy','--main-pack',join(root,'cocs.pck'),'--script',resolve('godot/tests/package_inspect.gd')], {cwd:sandbox,env,timeout:45000});
+  await writeFile(join(output,'graphics-resources.log'),inspection.stdout+inspection.stderr);
+  assert.doesNotMatch(inspection.stdout+inspection.stderr,/SCRIPT ERROR|ERROR:|Assertion failed/);
+  assert.match(inspection.stdout,/PACKAGE_GRAPHICS_OK moth_planes=101 first_person_weapons=10/);
+  report.graphics_resources = true;
   report.status = 'passed';
 } catch (error) {
   report.status = 'failed'; report.error = error.stack; process.exitCode = 1;

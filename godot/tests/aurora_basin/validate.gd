@@ -1,6 +1,13 @@
 extends SceneTree
 const Basin = preload("res://aurora_basin/map.gd")
-const Walker = preload("res://tests/aurora_basin/test_walker.gd")
+class Walker extends "res://exploration/walker.gd":
+	var test_driving := true
+	var test_direction := Vector3.ZERO
+	var travelled := 0.0
+	func _physics_process(delta: float) -> void:
+		var before := position
+		step(delta, Vector2(test_direction.x,-test_direction.z))
+		travelled += position.distance_to(before)
 var output := "/tmp/opencode/aurora-validation.json"
 var failures: Array[String] = []
 var checks := 0
@@ -97,7 +104,7 @@ func run() -> void:
 	check(absf(walker.position.y - 0.08) < 0.08, "spawn is on landing platform")
 	check(absf(walker.camera.global_position.y - walker.global_position.y - 1.6) < 0.001, "native eye height is 1.6m")
 	check(map.resource_report().nodes == before.nodes, "no map node creation during traversal")
-	var report := {"passed": failures.is_empty(), "checks": checks, "failures": failures, "resources": before, "mesh_vertices_checked": mesh_vertices, "routes": route_reports, "walks": walks, "engine": Engine.get_version_info(), "controller": "private baseline-compatible capsule probe"}
+	var report := {"passed": failures.is_empty(), "checks": checks, "failures": failures, "resources": before, "mesh_vertices_checked": mesh_vertices, "routes": route_reports, "walks": walks, "engine": Engine.get_version_info(), "controller": "production exploration/walker.gd step with automated route directions"}
 	var file := FileAccess.open(output, FileAccess.WRITE)
 	file.store_string(JSON.stringify(report, "\t") + "\n")
 	print("AURORA_VALIDATION ", JSON.stringify(report))

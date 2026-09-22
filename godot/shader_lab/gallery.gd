@@ -43,6 +43,19 @@ func _ready() -> void:
 	_update_camera()
 	get_viewport().size_changed.connect(_layout_hud)
 	_layout_hud()
+	if "--smoke" in OS.get_cmdline_user_args(): call_deferred("_smoke")
+
+func _smoke() -> void:
+	for index in range(KEYS.size()):
+		select_effect(index)
+		factory.update_time(1.0)
+		for frame in range(3): await get_tree().process_frame
+		if materials[index] == null or materials[index].shader == null:
+			push_error("Shader lab material failed to load")
+			get_tree().quit(1)
+			return
+	print("SHADER_LAB_SMOKE_OK effects=3 authority=false graphical=false")
+	get_tree().quit(0)
 
 func _build_environment() -> void:
 	var world := WorldEnvironment.new()

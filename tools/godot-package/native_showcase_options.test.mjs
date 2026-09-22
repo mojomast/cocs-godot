@@ -22,9 +22,6 @@ test('package graphics routes are independent of the ten source routes and nine 
   assert.match(HELP,/not source map catalog choices/);
 });
 
-test('Windows graphics entry defaults only without arguments and forwards explicit choices once', () => {
-  const cmd = readFileSync(new URL('./Graphics Showcase.cmd',import.meta.url),'utf8');
-  assert.match(cmd,/if "%~1"=="" \(\s+call "%~dp0Play.cmd" --experience=showcase\s+\) else \(\s+call "%~dp0Play.cmd" %\*/);
-  assert.match(cmd,/exit \/b %errorlevel%/);
-  for (const experience of Object.keys(nativeScenes)) assert.ok(cmd.includes(experience));
-});
+// Batch forwarding/exit behavior is exercised by verify_windows.mjs using the
+// real Graphics Showcase.cmd. The no-argument path now opens a five-route menu;
+// matching its source layout with a regular expression is not execution proof.

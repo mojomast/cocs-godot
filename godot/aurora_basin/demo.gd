@@ -1,6 +1,7 @@
 extends Node3D
 const Basin = preload("res://aurora_basin/map.gd")
 const Hud = preload("res://aurora_basin/hud.gd")
+const Walker = preload("res://exploration/walker.gd")
 var map: Node3D
 var walker: CharacterBody3D
 var hud: Control
@@ -14,14 +15,7 @@ func _ready() -> void:
 	map.name = "Map"
 	add_child(map)
 	map.build()
-	# The lead owns the reusable controller. Resolve it only at runtime so this
-	# scene also imports on the baseline before the integration commit exists.
-	var walker_path := "res://exploration/walker.gd"
-	if not ResourceLoader.exists(walker_path):
-		walker_path = "res://tests/aurora_basin/test_walker.gd"
-		print("AURORA_CONTROLLER private test fallback (shared integration not present)")
-	var walker_script := load(walker_path) as Script
-	walker = walker_script.new() as CharacterBody3D
+	walker = Walker.new()
 	walker.name = "Walker"
 	add_child(walker)
 	walker.set_spawn(map.get_spawn(), Basin.SPAWN_YAW, Basin.SPAWN_PITCH)

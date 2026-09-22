@@ -61,4 +61,10 @@ Tests cover independent PNG decoding against all source planes, source-pixel has
 
 ## Source rights
 
+Lead integration correction `fecc5f0`: the inherited semantic depth formula now
+adds `UV.x * 0.000001` rather than subtracting it. Real Compatibility raster
+fixtures proved that higher authored priorities previously lost; see
+`port/native-graphics-depth/README.md`. Original lane descriptions above record
+the delivered behavior, not the corrected reversed-depth convention.
+
 Existing findings in `port/asset-audit/HANDOFF.md` remain open: Moth recipes/job metadata identify provenance, not input/output redistribution rights; missing repository redistribution grant is unresolved. This offline conversion establishes no new clearance. No external assets or paid services are used.

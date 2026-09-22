@@ -2,7 +2,13 @@ extends SceneTree
 ## Native collision/locomotion acceptance; does not teleport between route waypoints.
 
 const Map = preload("res://cinder_array/map.gd")
-const Walker = preload("res://tests/cinder_array/test_walker.gd")
+class Walker extends "res://exploration/walker.gd":
+	var automatic := true
+	var wish_direction := Vector3.ZERO
+	var speed := 6.0
+	func _physics_process(delta: float) -> void:
+		var local_direction := basis.inverse() * wish_direction
+		step(delta, Vector2(local_direction.x,-local_direction.z), speed > WALK_SPEED)
 var failures: Array[String] = []
 var assertions := 0
 var map: Node3D

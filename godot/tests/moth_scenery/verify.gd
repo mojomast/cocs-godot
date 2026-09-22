@@ -89,6 +89,10 @@ func verify() -> void:
 	var results: Array = []
 	for id: String in catalog.entries:
 		check(viewer.load_map(id), "actual viewer load " + id)
+		check(viewer.world.get_node_or_null("MothScenery") != null, "production viewer composes scenery")
+		# The integrated viewer already creates this layer. Establish the geometry
+		# baseline without it before testing repeated create/clear ownership.
+		Scenery.clear(viewer.world)
 		var map: Dictionary = catalog.resolve_map(id)
 		var source_hash := JSON.stringify(map).sha256_text()
 		freeze(map)

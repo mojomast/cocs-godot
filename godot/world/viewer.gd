@@ -2,6 +2,9 @@ extends Node3D
 
 const Catalog = preload("res://world/catalog.gd")
 const EnvironmentStyle = preload("res://world/environment_style.gd")
+const MothScenery = preload("res://moth_scenery/scenery.gd")
+const ScenerySettings = preload("res://world/scenery_settings.gd")
+var scenery_settings: Node
 var catalog := Catalog.new()
 var world: Node3D
 var camera := Camera3D.new()
@@ -159,6 +162,12 @@ func load_map(id: String) -> bool:
 		# Sports arenas intentionally have implicit zero-height support.
 		box(Vector3(0, -0.1, 0), Vector3(260, 0.2, 220), style.surface_material("sports-floor", style.leaves if id == "aurora-stadium" else style.ground), world)
 	style.decorate(map, world)
+	var scenery := MothScenery.create(map, world)
+	if is_inside_tree():
+		if not is_instance_valid(scenery_settings):
+			scenery_settings = ScenerySettings.new()
+			add_child(scenery_settings)
+		scenery_settings.bind_scenery(scenery)
 	world.set_meta("semantic_block_count", map.get("blocks", []).size())
 	world.set_meta("semantic_triangle_count", triangle_count)
 	var pickup_markers := Node3D.new()
