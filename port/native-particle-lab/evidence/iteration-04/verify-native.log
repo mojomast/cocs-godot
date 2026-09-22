@@ -1,0 +1,6 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PARTICLE_LAB_VERIFY {"checks":183,"display":"X11","failures":[],"memory_cycles":[{"cycle":0,"objects":1411,"render_buffer_bytes":6405544,"resources":12,"static_bytes":32361649},{"cycle":1,"objects":1411,"render_buffer_bytes":6405544,"resources":12,"static_bytes":32361649},{"cycle":2,"objects":1411,"render_buffer_bytes":6405544,"resources":12,"static_bytes":32361649},{"cycle":3,"objects":1411,"render_buffer_bytes":6405544,"resources":12,"static_bytes":32361649},{"cycle":4,"objects":1411,"render_buffer_bytes":6405544,"resources":12,"static_bytes":32361649},{"cycle":5,"objects":1411,"render_buffer_bytes":6405544,"resources":12,"static_bytes":32361649},{"cycle":6,"objects":1411,"render_buffer_bytes":6405544,"resources":12,"static_bytes":32361649},{"cycle":7,"objects":1411,"render_buffer_bytes":6405544,"resources":12,"static_bytes":32361649}],"ok":true,"renderer":"gl_compatibility","source_alpha_max":1.0,"source_alpha_min":1.0,"source_pixels_checked":6912}

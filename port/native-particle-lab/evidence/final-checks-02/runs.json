@@ -1,0 +1,123 @@
+[
+  {
+    "ok": true,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 3.62,
+    "log": "/tmp/opencode/cocs-graphics-particle-lab/port/native-particle-lab/evidence/final-checks-02/import.log",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/particle-lab-95g3q7_v/godot",
+      "--audio-driver",
+      "Dummy",
+      "--headless",
+      "--editor",
+      "--import",
+      "--quit"
+    ]
+  },
+  {
+    "ok": true,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 0.165,
+    "log": "/tmp/opencode/cocs-graphics-particle-lab/port/native-particle-lab/evidence/final-checks-02/smoke.log",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/particle-lab-95g3q7_v/godot",
+      "--audio-driver",
+      "Dummy",
+      "--headless",
+      "--",
+      "--smoke"
+    ]
+  },
+  {
+    "ok": true,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 0.815,
+    "log": "/tmp/opencode/cocs-graphics-particle-lab/port/native-particle-lab/evidence/final-checks-02/verify-headless.log",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/particle-lab-95g3q7_v/godot",
+      "--audio-driver",
+      "Dummy",
+      "--headless",
+      "--script",
+      "res://tests/particle_lab/verify.gd"
+    ]
+  },
+  {
+    "ok": true,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 1.116,
+    "log": "/tmp/opencode/cocs-graphics-particle-lab/port/native-particle-lab/evidence/final-checks-02/verify-native.log",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/particle-lab-95g3q7_v/godot",
+      "--audio-driver",
+      "Dummy",
+      "--rendering-method",
+      "gl_compatibility",
+      "--rendering-driver",
+      "opengl3",
+      "--script",
+      "res://tests/particle_lab/verify.gd"
+    ]
+  },
+  {
+    "ok": true,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 14.907,
+    "log": "/tmp/opencode/cocs-graphics-particle-lab/port/native-particle-lab/evidence/final-checks-02/stress-lifecycle.log",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/particle-lab-95g3q7_v/godot",
+      "--audio-driver",
+      "Dummy",
+      "--rendering-method",
+      "gl_compatibility",
+      "--rendering-driver",
+      "opengl3",
+      "--script",
+      "res://tests/particle_lab/stress_lifecycle.gd"
+    ]
+  },
+  {
+    "ok": true,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 3.521,
+    "log": "/tmp/opencode/cocs-graphics-particle-lab/port/native-particle-lab/evidence/final-checks-02/960x640-vortex-gpu-32768-1x/capture.log",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/particle-lab-95g3q7_v/godot",
+      "--audio-driver",
+      "Dummy",
+      "--rendering-method",
+      "gl_compatibility",
+      "--rendering-driver",
+      "opengl3",
+      "--resolution",
+      "960x640",
+      "--script",
+      "res://tests/particle_lab/capture.gd",
+      "--",
+      "/tmp/opencode/cocs-graphics-particle-lab/port/native-particle-lab/evidence/final-checks-02/960x640-vortex-gpu-32768-1x",
+      "32768",
+      "vortex",
+      "gpu",
+      "1.0",
+      "0.85"
+    ]
+  }
+]

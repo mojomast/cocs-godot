@@ -1,0 +1,275 @@
+[
+  {
+    "case": "1280x800-burst-gpu-32768-1x",
+    "actual": 32768,
+    "backend": "gpu",
+    "preset": "burst",
+    "window": [
+      1280,
+      800
+    ],
+    "target": [
+      1280,
+      800
+    ],
+    "n": 119,
+    "median_ms": 18.617,
+    "p95_ms": 21.693,
+    "max_ms": 23.806,
+    "engine_buffer_mib": 16.35,
+    "primitives": 72650,
+    "ok": true
+  },
+  {
+    "case": "1280x800-fountain-gpu-32768-1x",
+    "actual": 32768,
+    "backend": "gpu",
+    "preset": "fountain",
+    "window": [
+      1280,
+      800
+    ],
+    "target": [
+      1280,
+      800
+    ],
+    "n": 119,
+    "median_ms": 20.035,
+    "p95_ms": 22.731,
+    "max_ms": 24.011,
+    "engine_buffer_mib": 16.35,
+    "primitives": 72648,
+    "ok": true
+  },
+  {
+    "case": "1280x800-galaxy-analytic-1048576-1x",
+    "actual": 1048576,
+    "backend": "analytic",
+    "preset": "galaxy",
+    "window": [
+      1280,
+      800
+    ],
+    "target": [
+      1280,
+      800
+    ],
+    "n": 24,
+    "median_ms": 603.752,
+    "p95_ms": 620.572,
+    "max_ms": 631.282,
+    "engine_buffer_mib": 54.34,
+    "primitives": 2104284,
+    "ok": true
+  },
+  {
+    "case": "1280x800-galaxy-analytic-32768-1x",
+    "actual": 32768,
+    "backend": "analytic",
+    "preset": "galaxy",
+    "window": [
+      1280,
+      800
+    ],
+    "target": [
+      1280,
+      800
+    ],
+    "n": 119,
+    "median_ms": 19.644,
+    "p95_ms": 22.494,
+    "max_ms": 24.547,
+    "engine_buffer_mib": 7.84,
+    "primitives": 72640,
+    "ok": true
+  },
+  {
+    "case": "1280x800-galaxy-gpu-1048576-1x",
+    "actual": 1048576,
+    "backend": "gpu",
+    "preset": "galaxy",
+    "window": [
+      1280,
+      800
+    ],
+    "target": [
+      1280,
+      800
+    ],
+    "n": 32,
+    "median_ms": 462.036,
+    "p95_ms": 476.692,
+    "max_ms": 476.839,
+    "engine_buffer_mib": 326.35,
+    "primitives": 2104278,
+    "ok": true
+  },
+  {
+    "case": "1280x800-galaxy-gpu-131072-1x",
+    "actual": 131072,
+    "backend": "gpu",
+    "preset": "galaxy",
+    "window": [
+      1280,
+      800
+    ],
+    "target": [
+      1280,
+      800
+    ],
+    "n": 119,
+    "median_ms": 57.276,
+    "p95_ms": 62.127,
+    "max_ms": 63.849,
+    "engine_buffer_mib": 46.35,
+    "primitives": 269254,
+    "ok": true
+  },
+  {
+    "case": "1280x800-galaxy-gpu-32768-1x",
+    "actual": 32768,
+    "backend": "gpu",
+    "preset": "galaxy",
+    "window": [
+      1280,
+      800
+    ],
+    "target": [
+      1280,
+      800
+    ],
+    "n": 119,
+    "median_ms": 18.364,
+    "p95_ms": 25.237,
+    "max_ms": 41.792,
+    "engine_buffer_mib": 16.35,
+    "primitives": 72640,
+    "ok": true
+  },
+  {
+    "case": "1280x800-galaxy-gpu-524288-1x",
+    "actual": 524288,
+    "backend": "gpu",
+    "preset": "galaxy",
+    "window": [
+      1280,
+      800
+    ],
+    "target": [
+      1280,
+      800
+    ],
+    "n": 70,
+    "median_ms": 211.345,
+    "p95_ms": 219.689,
+    "max_ms": 224.112,
+    "engine_buffer_mib": 166.35,
+    "primitives": 1055696,
+    "ok": true
+  },
+  {
+    "case": "1280x800-galaxy-gpu-8192-1x",
+    "actual": 8192,
+    "backend": "gpu",
+    "preset": "galaxy",
+    "window": [
+      1280,
+      800
+    ],
+    "target": [
+      1280,
+      800
+    ],
+    "n": 119,
+    "median_ms": 6.855,
+    "p95_ms": 9.125,
+    "max_ms": 10.804,
+    "engine_buffer_mib": 8.85,
+    "primitives": 23476,
+    "ok": true
+  },
+  {
+    "case": "1280x800-vortex-gpu-32768-1x",
+    "actual": 32768,
+    "backend": "gpu",
+    "preset": "vortex",
+    "window": [
+      1280,
+      800
+    ],
+    "target": [
+      1280,
+      800
+    ],
+    "n": 119,
+    "median_ms": 19.532,
+    "p95_ms": 33.355,
+    "max_ms": 48.668,
+    "engine_buffer_mib": 16.35,
+    "primitives": 72648,
+    "ok": true
+  },
+  {
+    "case": "960x640-galaxy-analytic-1048576-0.5x",
+    "actual": 1048576,
+    "backend": "analytic",
+    "preset": "galaxy",
+    "window": [
+      960,
+      640
+    ],
+    "target": [
+      480,
+      320
+    ],
+    "n": 34,
+    "median_ms": 424.672,
+    "p95_ms": 499.187,
+    "max_ms": 508.988,
+    "engine_buffer_mib": 54.34,
+    "primitives": 2104278,
+    "ok": true
+  },
+  {
+    "case": "960x640-vortex-gpu-32768-1x",
+    "actual": 32768,
+    "backend": "gpu",
+    "preset": "vortex",
+    "window": [
+      960,
+      640
+    ],
+    "target": [
+      960,
+      640
+    ],
+    "n": 119,
+    "median_ms": 20.927,
+    "p95_ms": 32.717,
+    "max_ms": 36.092,
+    "engine_buffer_mib": 16.35,
+    "primitives": 72646,
+    "ok": true
+  },
+  {
+    "case": "960x640-vortex-gpu-524288-1x",
+    "actual": 524288,
+    "backend": "gpu",
+    "preset": "vortex",
+    "window": [
+      960,
+      640
+    ],
+    "target": [
+      960,
+      640
+    ],
+    "n": 70,
+    "median_ms": 213.28,
+    "p95_ms": 219.848,
+    "max_ms": 222.234,
+    "engine_buffer_mib": 166.35,
+    "primitives": 1055702,
+    "ok": true
+  }
+]

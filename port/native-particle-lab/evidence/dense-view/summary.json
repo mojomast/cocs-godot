@@ -1,0 +1,23 @@
+[
+  {
+    "case": "1280x800-galaxy-gpu-1048576-1x",
+    "actual": 1048576,
+    "backend": "gpu",
+    "preset": "galaxy",
+    "window": [
+      1280,
+      800
+    ],
+    "target": [
+      1280,
+      800
+    ],
+    "n": 32,
+    "median_ms": 434.998,
+    "p95_ms": 518.795,
+    "max_ms": 519.124,
+    "engine_buffer_mib": 326.36,
+    "primitives": 2104640,
+    "ok": true
+  }
+]

@@ -1,0 +1,75 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+ERROR: Inactive GPU allocation released
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/particle_lab/verify.gd:14)
+       [1] _run (res://tests/particle_lab/verify.gd:58)
+       [2] settle (res://tests/particle_lab/verify.gd:19)
+PARTICLE_LAB_VERIFY {"checks":183,"display":"headless","failures":["Inactive GPU allocation released","Inactive GPU allocation released","Inactive GPU allocation released","Inactive GPU allocation released","Inactive GPU allocation released","Inactive GPU allocation released","Inactive GPU allocation released","Inactive GPU allocation released","Inactive GPU allocation released","Inactive GPU allocation released","Inactive GPU allocation released","Inactive GPU allocation released"],"memory_cycles":[{"cycle":0,"objects":1415,"render_buffer_bytes":0,"resources":12,"static_bytes":22880882},{"cycle":1,"objects":1415,"render_buffer_bytes":0,"resources":12,"static_bytes":22881654},{"cycle":2,"objects":1415,"render_buffer_bytes":0,"resources":12,"static_bytes":22882410},{"cycle":3,"objects":1415,"render_buffer_bytes":0,"resources":12,"static_bytes":22883198},{"cycle":4,"objects":1415,"render_buffer_bytes":0,"resources":12,"static_bytes":22883922},{"cycle":5,"objects":1415,"render_buffer_bytes":0,"resources":12,"static_bytes":22884646},{"cycle":6,"objects":1415,"render_buffer_bytes":0,"resources":12,"static_bytes":22885498},{"cycle":7,"objects":1415,"render_buffer_bytes":0,"resources":12,"static_bytes":22886222}],"ok":false,"renderer":"gl_compatibility","source_alpha_max":1.0,"source_alpha_min":1.0,"source_pixels_checked":6912}

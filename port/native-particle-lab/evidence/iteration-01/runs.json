@@ -1,0 +1,20 @@
+[
+  {
+    "ok": false,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 3.822,
+    "log": "/tmp/opencode/cocs-graphics-particle-lab/port/native-particle-lab/evidence/iteration-01/import.log",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/particle-lab-tagot7ik/godot",
+      "--audio-driver",
+      "Dummy",
+      "--headless",
+      "--editor",
+      "--import",
+      "--quit"
+    ]
+  }
+]
