@@ -1,14 +1,14 @@
 // Focused, normal-rate native selection acceptance. No authority state mutation.
 import assert from 'node:assert/strict';
 import {spawn, execFileSync} from 'node:child_process';
-import {cpSync, mkdirSync, mkdtempSync, symlinkSync, writeFileSync} from 'node:fs';
+import {cpSync, mkdirSync, mkdtempSync, symlinkSync, writeFileSync, rmSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const binary = process.env.GODOT_BIN, deps = process.env.GUEST_NODE_MODULES;
 assert.ok(binary && deps, 'Set GODOT_BIN and GUEST_NODE_MODULES');
 const temp = mkdtempSync('/tmp/opencode/cocs-selection-');
-const out = resolve(root, 'port/native-match-selection/evidence');
+const out = resolve(process.argv.find(a=>a.startsWith('--output='))?.slice(9) ?? resolve(root, 'port/native-match-selection/runs', new Date().toISOString().replaceAll(':','-')));
 mkdirSync(out, {recursive:true});
 const env = {PATH:process.env.PATH, HOME:temp, LANG:'C.UTF-8', LIBGL_ALWAYS_SOFTWARE:'1'};
 for (const key of ['XDG_DATA_HOME','XDG_CONFIG_HOME','XDG_CACHE_HOME']) {
@@ -85,4 +85,5 @@ try {
   for (const child of children) if (child.exitCode === null && child.signalCode === null) child.kill('SIGTERM');
   await game.close();
   await Promise.allSettled(children.map(child => child.done));
+  rmSync(temp, {recursive:true, force:true});
 }

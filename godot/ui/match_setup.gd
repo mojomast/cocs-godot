@@ -95,6 +95,12 @@ func configure(maps: Dictionary, map_id: String, mode: String) -> void:
 		if validate(entries, selected_map(), selected_mode()).is_empty():
 			start_requested.emit(selected_map(), selected_mode()))
 	populate_modes(mode)
+	get_viewport().size_changed.connect(center_panel)
+	resized.connect(center_panel)
+	call_deferred("center_panel")
+
+func center_panel() -> void:
+	position = ((get_viewport_rect().size - size) * 0.5).max(Vector2(16, 16))
 
 func selected_map() -> String:
 	return str(map_choice.get_selected_metadata())

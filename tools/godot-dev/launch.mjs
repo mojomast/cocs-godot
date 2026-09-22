@@ -16,9 +16,18 @@ try{
  const smoke=process.argv.includes('--network-smoke');
  const sessionSmoke=process.argv.includes('--session-smoke');
  const lifecycleSmoke=process.argv.includes('--lifecycle-smoke');
- const play=sessionSmoke||lifecycleSmoke||process.argv.includes('--play');
+ const sessionOptions=[];
+ for(let i=2;i<process.argv.length;i++){
+  const arg=process.argv[i];
+  if(arg==='--map'||arg==='--mode'){
+   const value=process.argv[i+1];
+   if(!value||value.startsWith('--'))throw Error(`${arg} requires a value`);
+   sessionOptions.push(`${arg}=${value}`);i++;
+  }else if(arg==='--setup'||arg==='--native-trace'||arg==='--mute'||arg.startsWith('--map=')||arg.startsWith('--mode='))sessionOptions.push(arg);
+ }
+ const play=sessionSmoke||lifecycleSmoke||process.argv.includes('--play')||sessionOptions.length>0;
  const args=smoke?['--headless','--path','godot','--script','res://tests/protocol/live.gd']: [...(sessionSmoke||lifecycleSmoke?['--headless']:[]),'--path','godot',...(play?['res://world/session.tscn']:[])];
- args.push('--',`--endpoint=ws://127.0.0.1:${port}`,...(sessionSmoke?['--session-smoke']:[]),...(lifecycleSmoke?['--lifecycle-smoke']:[]));
+ args.push('--',`--endpoint=ws://127.0.0.1:${port}`,...(sessionSmoke?['--session-smoke']:[]),...(lifecycleSmoke?['--lifecycle-smoke']:[]),...sessionOptions);
  console.log(`Owned local server ready on loopback:${port}; ${smoke?'native transport smoke':play?'native diagnostic gameplay session':'semantic viewer'}`);
  child=spawn(binary,args,{env,stdio:'inherit'});
  process.exitCode=await new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',(code)=>resolve(code??1));});

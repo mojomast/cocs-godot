@@ -81,3 +81,11 @@ endpoints. These establish non-silence and source/mix headroom, not perceived
 sound quality. **No human listening, live-server audio integration, or physical
 audio-device acceptance is claimed.** The project uses Compatibility rendering;
 the focused check runs headlessly with Dummy audio and needs no GPU/audio device.
+# Integration status
+
+The lead connected this module to `combat_feedback.gd`: active deduplicated
+authority events now drive native cues, and round/session cleanup stops voices.
+Use Godot's `--mute` user argument to silence these cues. The full verifier now
+includes the audio gate. Independent module and attached-combat integration
+checks pass **37/37** with Dummy audio; existing combat replay passes too.
+Human listening remains pending.
