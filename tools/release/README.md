@@ -140,7 +140,6 @@ the full state machine — dry-run suppression, the dirty-tree and existing-tag 
 resume after a failed publish, resume refusals, hosted-verification failure, push
 gating, append-only state — without touching git, GitHub or the builder. The real
 `gh`/`git` invocations only happen behind `--execute` in `release.mjs`.
-
 ### What has not been exercised for real
 
 - Steps 3–6 have never been run against live infrastructure: no release was created,

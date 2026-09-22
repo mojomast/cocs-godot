@@ -337,9 +337,18 @@ async function walkForStateMarkers(root, limit = {depth: 4, entries: 20000}) {
 // ---------------------------------------------------------------- shared checks
 
 async function assertStillFrozen(ctx, where) {
-  if (ctx.dryRun) return;
   const head = await gitOrThrow(ctx, ['rev-parse', 'HEAD'], 'cannot read HEAD');
   const recorded = ctx.results.get('preflight')?.head;
+  if (ctx.dryRun) {
+    // Nothing to protect in a plan, but a long --verification=always rehearsal must
+    // not silently report a plan for a tree that moved under it.
+    if (recorded && head !== recorded) {
+      const note = `  warn     ${where}: HEAD moved from ${recorded} to ${head} during this dry run; the plan describes the earlier commit`;
+      ctx.emit(note);
+      ctx.stepLog.push(`${note}\n`);
+    }
+    return;
+  }
   if (recorded && head !== recorded) {
     throw new ReleaseError('tree-moved', `${where}: HEAD moved from ${recorded} to ${head} since preflight`,
       'aborting before any side effect; re-run the pipeline on the new commit');
