@@ -29,7 +29,12 @@ func _layout() -> void:
 	# has no viewport and must never raise a script error during cleanup.
 	var viewport := get_viewport()
 	if viewport == null: return
-	text.size.x = maxf(200, viewport.get_visible_rect().size.x - 40)
+	var rect := viewport.get_visible_rect().size
+	text.size.x = maxf(200, rect.x - 40)
+	# F10 telemetry can be long; clip it inside the window instead of drawing off
+	# the bottom edge, and shrink the font when the line count grows.
+	text.size.y = maxf(80, rect.y - text.position.y - 16)
+	text.clip_text = true
 
 func set_active(value: bool) -> void:
 	if value and not active: remaining = 4.0
