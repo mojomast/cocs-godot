@@ -1,0 +1,108 @@
+{
+  "verdict": "PASS integrated exported lobby bounded full flow; other menus remain separate",
+  "runs": {
+    "full-flow": {
+      "wallMs": 95343,
+      "assertions": 82,
+      "clicksWithGeometry": 18,
+      "port": 42459,
+      "cleanup": [
+        {
+          "name": "guest",
+          "pid": 3858593,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "host",
+          "pid": 3857519,
+          "reaped": true,
+          "exitCode": null,
+          "signal": "SIGTERM"
+        },
+        {
+          "name": "xvfb",
+          "pid": 3857515,
+          "reaped": true,
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "wireCounts": {
+        "0": {
+          "create": 1,
+          "host": 1,
+          "start": 2,
+          "input": 1908,
+          "leave": 1
+        },
+        "1": {
+          "join": 1,
+          "input": 197,
+          "leave": 1
+        },
+        "2": {
+          "join": 1,
+          "leave": 1
+        },
+        "3": {
+          "join": 1,
+          "input": 92,
+          "leave": 1
+        }
+      },
+      "nativeApplications": {
+        "host": 1998,
+        "guest": 1857
+      },
+      "spectatorApplications": 1464,
+      "effects": {
+        "07-host-play": {
+          "livingDisplacementMetres": 18.985050171121486,
+          "shotGrowth": 15
+        },
+        "08-guest-play": {
+          "livingDisplacementMetres": 18.6984252812904,
+          "shotGrowth": 15
+        },
+        "11a-host-for-spectator": {
+          "livingDisplacementMetres": 15.624735837766984,
+          "shotGrowth": 14,
+          "spectatorRenderedDisplacementMetres": 15.756217889607512
+        },
+        "16-guest-fresh-recapture": {
+          "livingDisplacementMetres": 17.407479570575404,
+          "shotGrowth": 15
+        }
+      },
+      "sourceResultsTime": 60.01666666666454,
+      "sourceRoundWallMs": 59365
+    }
+  },
+  "truncatedFinalNativeRecords": [
+    {
+      "file": "port/reports/linux-popup-free-independent/full-flow/host.stdout.log.gz",
+      "prefix": "LOBBY_SAMPLE ",
+      "bytes": 4864,
+      "sha256": "0930934735e8a84eed55f2836cbc3d1e621ba5cec264f972bb5555486ed4d858"
+    },
+    {
+      "file": "port/reports/linux-popup-free-independent/full-flow/guest.stdout.log.gz",
+      "prefix": "LOBBY_SAMPLE ",
+      "bytes": 2213,
+      "sha256": "e9b0e64e671d1e11403a33d270bed281fa27ddf07adbe7a6133f8188f08673c7"
+    }
+  ],
+  "artifact": {
+    "package": "/tmp/opencode/lead-native-linux-package/builds/1790056603963977358/cocs-native-linux",
+    "manifestSha256": "6384152923e1667e1e3a9839199d95431fd85faac7ede7fc83d02ef49cbbee54",
+    "pckSha256": "c4852ea41be27e2cab82c5954770a51308e6ca952e399d535781b4305a699262",
+    "binarySha256": "3c0994716982c2f557f7738a789269074520ac0c0a3f11bb7a84a34ee96c683d",
+    "portCommit": "bc13a79db2f1fda5e4ffb5f125b9f34550949316",
+    "archiveSha256": "bb8cbf1a83304f69cd850004abf5e209074626f5da19d36e4118cff65df6ee0d",
+    "manifestFiles": 112
+  },
+  "protectedPort": "State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                            \nLISTEN 0      511        127.0.0.1:4332      0.0.0.0:*    users:((\"node\",pid=1094444,fd=21))\n",
+  "assertionCount": 156
+}

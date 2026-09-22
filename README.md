@@ -129,6 +129,9 @@ Host: choose a combat map/mode, Create, share the room code, then Start. Guest:
 select Guest, the room code and expected host map, then Join. Guests use the
 authority's mode and cannot configure/start/restart. **Escape** exposes Leave
 match, which returns to the form. Default rounds use two bots and 60 seconds.
+Role/map/mode use inline **Previous / Next** buttons or **Left / Right** keys;
+**Tab** moves focus. This avoids the release engine's embedded-popup defect in
+the lobby. Other combat/board popup issues remain open.
 
 Active-room joins become **read-only spectators**, with a fixed camera and Tab
 scoreboard. Spectators stay spectators through restart. Leave and join between
@@ -169,10 +172,10 @@ Git, npm and original checkout are build-time tools only. The package supports
 the same nine experience routes (eight native scenes). See the
 [local package guide](port/native-linux-package/README.md) for prerequisites,
 verification and launch commands. Generated archives stay outside the repository.
-The latest rebuild includes the opt-in lobby and new world/cart guidance. Fresh
-exported startup and ownership/cleanup checks pass; the first full exported lobby
-flow reached its gameplay milestones but failed on focus-signal errors, now under
-triage. See [package verification](port/reports/linux-lobby-guidance-independent/README.md).
+The latest rebuild includes the popup-free lobby and new world/cart guidance.
+All14 exported startup/ownership/cleanup cases and a fresh full two-client lobby
+flow pass, with zero engine errors. Original failed popup runs remain preserved.
+See [package verification](port/reports/linux-popup-free-independent/README.md).
 
 ### Zone control and combined arms
 

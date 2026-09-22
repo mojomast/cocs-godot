@@ -1,0 +1,4 @@
+PACKAGE_SERVER_READY {"pid":3870698,"host":"127.0.0.1","port":37935,"experience":"combat","map":"meridian-exchange","mode":"deathmatch","health":{"service":"token-arena-game-server","release":"v8.8","codename":"DESTINATIONS","commit":"unknown","buildId":"v8.8-unknown","protocol":3,"version":"v8.8","rooms":1,"players":0,"port":37935,"snapshot":{"deltaFrames":0,"fullFrames":0}}}
+PACKAGE_NATIVE_STARTED {"scene":"res://world/session.tscn"}
+PACKAGE_STOPPED
+Package launch failed: spawn /tmp/opencode/cocs-package-play-0l_4p9qk/cocs-native-linux/cocs.x86_64 ENOENT

@@ -22,10 +22,11 @@ updates root documentation/shared verification and owns publication.
 | Independent lobby review / layout follow-up | Original reviews integrated; `f762639` / `c8c1513` / `12e770d` integrated as `bd20785` / `e88b5a6` / `5a87f19`; bounded lifecycle PASS | Original failed/partial evidence preserved;75 actual-scene geometry checks per size |
 | Active spectator notice repair | `f92b0ef` / `de6f9f9` integrated as `17d3657` / `96542c2`; review `e9ed72f` integrated `1a00d90`;80 aggregate PASS | Strict validated informational notice and read-only state; lead31 actual-scene and75×2 layout checks PASS |
 | Exported lobby focus triage | Delivered `c3a9067` / `7f703a1`, integrated; lead194-assertion replay PASS for HOLD verdict | Release embedded-popup cleanup reproduced14 errors vs debug0 with identical72 actions; no generic focus-call workaround accepted |
-| Popup-free lobby selectors | `ses_f38b68670ffexH4SE93QXRWRVd` running | New `godot/ui/lobby_choice.gd`, narrow lobby_menu selector substitution, new tests and `port/reports/lobby-popup-free/`; actual release verification required; other menus untouched |
+| Popup-free lobby selectors | `9a816ff` / `f212a8c` / `ee64535` integrated; lead63 graphical checks,80 aggregate,14 package cases and clean full exported lobby flow PASS | Inline choices replace only lobby popups; other menus untouched; original release failures preserved |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
 | Player/operator model improvement | External prompt prepared at `2af744f`; not launched by lead | New `godot/player_models/`, `godot/tests/player_models/`, `port/native-player-models/`; shared actor/presentation hooks returned unapplied |
-| Native Horde survival | Independent `3dbcceb` returns HOLD: mixed entity/event serial allocation replays events; same reviewer repairing cursor and NPC-kill/net-frag validation | Narrow `port/native-horde/authority.mjs` / validator / tests, new `port/reports/horde-event-repair/`; common/package integration still HOLD |
+| Native Horde survival | Event/kill fix `c64762a`, evidence `2b0fbf5` delivered; lead isolated50 tests and exact810event/378snapshot replay PASS | Local adapter accepted for bounded integration; full10waves/boss/defeat/upgrades remain OPEN |
+| Horde common/package integration | `ses_f384b7a26ffeCOcWIpqBSI7UNk` running | Owns devlaunch/options and package build/discovery/run/options/verify plus scene inventory/newHorde tools; lead owns verify_lobby.py, main verifier/setup/PLAY/root docs |
 
 The LATTICE command and physical-input lanes are delivered and integrated at
 `658b4e7` and `aca52f5`. The projectile navigation follow-up is integrated at

@@ -51,7 +51,8 @@ See [PLAY.md](PLAY.md) for all nine experience routes and direct exported-scene
 commands, including `--experience=zones` and `--experience=combined-arms`.
 Current commands and controls are also in the root
 [README](../../README.md#zone-control-and-combined-arms). The nine-route/eight-scene
-rebuild is verified in [the integration report](../reports/linux-lobby-guidance-independent/README.md).
+rebuild is verified in [the integration report](../reports/linux-popup-free-independent/README.md),
+including the popup-free lobby's clean exported two-client flow.
 Only Node and normal Linux desktop runtime libraries are prerequisites at play
 time. All runtime dependency files are already copied; no installation is needed.
 

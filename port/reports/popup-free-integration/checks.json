@@ -1,0 +1,19 @@
+{
+  "command": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24 -nolisten tcp -nolisten unix",
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "godot",
+    "--audio-driver",
+    "Dummy",
+    "--script",
+    "res://tests/protocol/lobby_popup_free.gd",
+    "--",
+    "--lobby-menu"
+  ],
+  "exit": 0,
+  "passed": true
+}

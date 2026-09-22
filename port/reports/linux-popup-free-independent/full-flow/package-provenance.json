@@ -1,0 +1,26 @@
+{
+  "kind": "exported product scene; external engine-event observer",
+  "build": {
+    "archive": "/tmp/opencode/lead-native-linux-package/builds/1790056603963977358/cocs-native-linux.tar.gz",
+    "archive_sha256": "bb8cbf1a83304f69cd850004abf5e209074626f5da19d36e4118cff65df6ee0d",
+    "build": "/tmp/opencode/lead-native-linux-package/builds/1790056603963977358",
+    "generated_resources_sha256": "d51ea5df8f050ef384694afc4db06fcad67c4f9b30238898c343b93aca7e2e3c",
+    "inputs_sha256": "dce281b29a961698e56e9e2699ee92a5ad986a26e4f6dcc28ceca94058511321",
+    "manifest_sha256": "6384152923e1667e1e3a9839199d95431fd85faac7ede7fc83d02ef49cbbee54",
+    "package": "/tmp/opencode/lead-native-linux-package/builds/1790056603963977358/cocs-native-linux"
+  },
+  "flow_sha256": "cde90950f5e35dc41f6c5c10b58782f0bbc75a378afb5ebfc52466d7f52eb7b3",
+  "observer_sha256": "ae370498ceb8f3f6418190a87a46911c414fa4026b47bf9a50bba33891f4159b",
+  "wrapper_sha256": "d8c11ddd6f581f6eeb9f6e160881ec1ac564df1a7832320feec94ce3cbd2d4cf",
+  "wrapper_exit": 0,
+  "timed_out": false,
+  "command": [
+    "node",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/reports/lobby-popup-free/lobby_live.mjs",
+    "full",
+    "/tmp/opencode/lead-native-linux-package/builds/1790056603963977358/build-result.json",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/reports/linux-popup-free-independent/full-flow"
+  ],
+  "source": "unchanged packaged authority",
+  "limits": "Not OS-input or packaged-launcher automation; no tests added to production PCK."
+}
