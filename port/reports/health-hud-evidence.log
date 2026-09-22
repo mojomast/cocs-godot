@@ -2,175 +2,175 @@ TAP version 13
 # Subtest: current real default HUD, nonlethal damage, +35 health and 12s return
 ok 1 - current real default HUD, nonlethal damage, +35 health and 12s return
   ---
-  duration_ms: 37.11455
+  duration_ms: 36.862324
   type: 'test'
   ...
 # Subtest: genuine historical recording stays legacy text-only and cannot establish current HUD
 ok 2 - genuine historical recording stays legacy text-only and cannot establish current HUD
   ---
-  duration_ms: 67.478026
+  duration_ms: 70.891618
   type: 'test'
   ...
 # Subtest: old/new artifact hashes; executed historical sources checked at immutable pre-update commit
 ok 3 - old/new artifact hashes; executed historical sources checked at immutable pre-update commit
   ---
-  duration_ms: 58.262261
+  duration_ms: 56.861479
   type: 'test'
   ...
 # Subtest: inconclusive route/output-cap run remains intact and cannot pass acceptance
 ok 4 - inconclusive route/output-cap run remains intact and cannot pass acceptance
   ---
-  duration_ms: 79.332787
+  duration_ms: 87.54294
   type: 'test'
   ...
 # Subtest: reject hidden HUD layer_visible
 ok 5 - reject hidden HUD layer_visible
   ---
-  duration_ms: 24.52422
+  duration_ms: 25.417357
   type: 'test'
   ...
 # Subtest: reject hidden HUD root_visible
 ok 6 - reject hidden HUD root_visible
   ---
-  duration_ms: 21.921251
+  duration_ms: 26.527127
   type: 'test'
   ...
 # Subtest: reject hidden HUD vitals_visible
 ok 7 - reject hidden HUD vitals_visible
   ---
-  duration_ms: 21.129627
+  duration_ms: 22.137312
   type: 'test'
   ...
 # Subtest: reject hidden HUD health_label
 ok 8 - reject hidden HUD health_label
   ---
-  duration_ms: 21.463323
+  duration_ms: 25.202095
   type: 'test'
   ...
 # Subtest: reject hidden HUD armor_label
 ok 9 - reject hidden HUD armor_label
   ---
-  duration_ms: 33.423651
+  duration_ms: 34.030818
   type: 'test'
   ...
 # Subtest: reject hidden HUD health_bar
 ok 10 - reject hidden HUD health_bar
   ---
-  duration_ms: 22.236301
+  duration_ms: 22.497287
   type: 'test'
   ...
 # Subtest: reject hidden HUD armor_bar
 ok 11 - reject hidden HUD armor_bar
   ---
-  duration_ms: 22.804937
+  duration_ms: 22.41413
   type: 'test'
   ...
 # Subtest: reject offscreen and empty label geometry
 ok 12 - reject offscreen and empty label geometry
   ---
-  duration_ms: 48.054798
+  duration_ms: 44.534069
   type: 'test'
   ...
 # Subtest: reject wrong integer labels, gauges and maxima
 ok 13 - reject wrong integer labels, gauges and maxima
   ---
-  duration_ms: 160.521203
+  duration_ms: 166.394965
   type: 'test'
   ...
 # Subtest: reject missing, stale, wrong-authority and wrong-trace rendered observations
 ok 14 - reject missing, stale, wrong-authority and wrong-trace rendered observations
   ---
-  duration_ms: 118.658973
+  duration_ms: 118.829566
   type: 'test'
   ...
 # Subtest: reject missing collected and return HUD observations
 ok 15 - reject missing collected and return HUD observations
   ---
-  duration_ms: 73.070168
+  duration_ms: 68.045155
   type: 'test'
   ...
 # Subtest: hidden text or positive feedback alone cannot replace visible rendered hurt
 ok 16 - hidden text or positive feedback alone cannot replace visible rendered hurt
   ---
-  duration_ms: 152.405831
+  duration_ms: 159.092381
   type: 'test'
   ...
 # Subtest: synchronous authority adjacency remains mandatory
 ok 17 - synchronous authority adjacency remains mandatory
   ---
-  duration_ms: 10.465327
+  duration_ms: 10.174555
   type: 'test'
   ...
 # Subtest: strict receipt, marker lifecycle and stopped incoming fire checks remain
 ok 18 - strict receipt, marker lifecycle and stopped incoming fire checks remain
   ---
-  duration_ms: 57.501074
+  duration_ms: 63.556193
   type: 'test'
   ...
 # Subtest: HP-only accounting is rejected even when event observations agree
 ok 19 - HP-only accounting is rejected even when event observations agree
   ---
-  duration_ms: 29.992109
+  duration_ms: 26.744405
   type: 'test'
   ...
 # Subtest: retained evidence excludes credentials and welcome packets
 ok 20 - retained evidence excludes credentials and welcome packets
   ---
-  duration_ms: 141.906911
+  duration_ms: 147.322918
   type: 'test'
   ...
 # Subtest: genuine live damage, +35 health, same marker and 12-second return pass without native completion
 ok 21 - genuine live damage, +35 health, same marker and 12-second return pass without native completion
   ---
-  duration_ms: 32.328138
+  duration_ms: 35.073071
   type: 'test'
   ...
 # Subtest: artifact lengths/hashes and executed source hashes match provenance
 ok 22 - artifact lengths/hashes and executed source hashes match provenance
   ---
-  duration_ms: 16.252425
+  duration_ms: 15.088924
   type: 'test'
   ...
 # Subtest: credential field names and welcome packets are absent from retained evidence; projections exclude them
 ok 23 - credential field names and welcome packets are absent from retained evidence; projections exclude them
   ---
-  duration_ms: 32.806095
+  duration_ms: 36.75364
   type: 'test'
   ...
 # Subtest: historical combat text alone cannot substitute for recorded Label text
 ok 24 - historical combat text alone cannot substitute for recorded Label text
   ---
-  duration_ms: 25.648757
+  duration_ms: 25.346996
   type: 'test'
   ...
 # Subtest: HP-only damage accounting is rejected even if both event observations agree
 ok 25 - HP-only damage accounting is rejected even if both event observations agree
   ---
-  duration_ms: 20.055193
+  duration_ms: 21.130094
   type: 'test'
   ...
 # Subtest: missing server input receipt does not become successful queue evidence
 ok 26 - missing server input receipt does not become successful queue evidence
   ---
-  duration_ms: 18.544632
+  duration_ms: 18.316392
   type: 'test'
   ...
 # Subtest: observer snapshot association rejects an intervening line
 ok 27 - observer snapshot association rejects an intervening line
   ---
-  duration_ms: 11.953617
+  duration_ms: 10.157393
   type: 'test'
   ...
 # Subtest: replacement pickup marker cannot be claimed as the same marker lifecycle
 ok 28 - replacement pickup marker cannot be claimed as the same marker lifecycle
   ---
-  duration_ms: 23.438605
+  duration_ms: 28.590994
   type: 'test'
   ...
 # Subtest: continued attacker fire after stop cannot pass nonlethal stop criterion
 ok 29 - continued attacker fire after stop cannot pass nonlethal stop criterion
   ---
-  duration_ms: 17.907027
+  duration_ms: 21.453
   type: 'test'
   ...
 1..29
@@ -181,4 +181,4 @@ ok 29 - continued attacker fire after stop cannot pass nonlethal stop criterion
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 1254.872656
+# duration_ms 1291.030568

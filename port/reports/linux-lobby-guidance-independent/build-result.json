@@ -1,0 +1,9 @@
+{
+  "archive": "/tmp/opencode/lead-native-linux-package/builds/1790054125934591826/cocs-native-linux.tar.gz",
+  "archive_sha256": "ee3839f59f56ee82eb4b8f810daa6dacb9ceb9fe34043850659b2e7e5b7dad44",
+  "build": "/tmp/opencode/lead-native-linux-package/builds/1790054125934591826",
+  "generated_resources_sha256": "6d844c385a4f3fc9f5f60edffe5b7a78e3e9a45a3873f487c645404a3100194f",
+  "inputs_sha256": "c6063243cedb645445391a4e9704380658f35ea204a6e56abc21ca32a9c80df6",
+  "manifest_sha256": "8f602b1cc48ab07a05378365a5890d96efea6b8b3d90e9d1c8a916ee085f40cc",
+  "package": "/tmp/opencode/lead-native-linux-package/builds/1790054125934591826/cocs-native-linux"
+}

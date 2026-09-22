@@ -2,13 +2,13 @@ TAP version 13
 # Subtest: package scene routing covers all nine locked identities and preserves native capability subsets
 ok 1 - package scene routing covers all nine locked identities and preserves native capability subsets
   ---
-  duration_ms: 2.367598
+  duration_ms: 1.843865
   type: 'test'
   ...
 # Subtest: bad package arguments fail before opening an owned server; no silent scene/mode fallback
 ok 2 - bad package arguments fail before opening an owned server; no silent scene/mode fallback
   ---
-  duration_ms: 0.855544
+  duration_ms: 0.567353
   type: 'test'
   ...
 1..2
@@ -19,4 +19,4 @@ ok 2 - bad package arguments fail before opening an owned server; no silent scen
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 41.829388
+# duration_ms 35.880985

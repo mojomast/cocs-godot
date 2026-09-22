@@ -1,0 +1,6 @@
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'focus_entered', callable: ''.
+   at: _disconnect (core/object/object.cpp:1621)
+ERROR: Attempt to disconnect a nonexistent connection from 'root:<Window#23404217612>'. Signal: 'tree_exited', callable: ''.
+   at: _disconnect (core/object/object.cpp:1621)

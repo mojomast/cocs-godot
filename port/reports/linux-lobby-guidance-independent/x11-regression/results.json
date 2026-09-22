@@ -1,0 +1,7 @@
+{
+  "old_exit": 1,
+  "old_expected_failure": "Xlib BadWindow on destroyed window discovered before property read",
+  "new_exit": 0,
+  "new_checks": "Real dead-window lookup tolerates only discovery errors; same error outside discovery raises RuntimeError",
+  "private_displays": true
+}

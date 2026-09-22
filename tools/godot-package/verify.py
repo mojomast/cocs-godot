@@ -38,6 +38,21 @@ class X11:
     """Only the verifier uses Xlib; the artifact has no automation dependency."""
     def __init__(self, display):
         self.lib = C.CDLL(ctypes.util.find_library('X11'))
+        # Helper windows can disappear after XQueryTree and before property reads.
+        # Xlib's default handler exits the process, bypassing owned cleanup. Keep
+        # that expected discovery race nonfatal and surface other errors in Python.
+        class ErrorEvent(C.Structure):
+            _fields_ = [('type', C.c_int), ('display', C.c_void_p), ('resourceid', C.c_ulong), ('serial', C.c_ulong), ('error_code', C.c_ubyte), ('request_code', C.c_ubyte), ('minor_code', C.c_ubyte)]
+        self.errors = []
+        self.discovering = False
+        def error_handler(_display, event):
+            e = event.contents
+            if not (self.discovering and e.error_code == 3 and e.request_code in [14, 15, 20]):
+                self.errors.append((e.error_code, e.request_code, e.resourceid))
+            return 0
+        self.error_handler = C.CFUNCTYPE(C.c_int, C.c_void_p, C.POINTER(ErrorEvent))(error_handler)
+        self.lib.XSetErrorHandler.argtypes = [C.c_void_p]
+        self.lib.XSetErrorHandler.restype = C.c_void_p
         bindings = {
             'XOpenDisplay': (C.c_void_p, [C.c_char_p]),
             'XDefaultRootWindow': (C.c_ulong, [C.c_void_p]),
@@ -59,6 +74,7 @@ class X11:
             function.restype, function.argtypes = result, args
         self.display = self.lib.XOpenDisplay(display.encode())
         require(self.display, 'Cannot open private Xvfb display')
+        self.previous_error_handler = self.lib.XSetErrorHandler(C.cast(self.error_handler, C.c_void_p))
         self.root = self.lib.XDefaultRootWindow(self.display)
         # No WM runs on this private display. Godot queries WM_DELETE_WINDOW
         # with only_if_exists=true during initialization, so register the normal
@@ -88,7 +104,20 @@ class X11:
             self.lib.XFree(value)
         return result
 
+    def check_errors(self):
+        require(not self.errors, f'Unexpected X11 error(s): {self.errors}')
+
     def window(self, pid):
+        self.discovering = True
+        try:
+            window = self.find_window(pid)
+            self.lib.XSync(self.display, 0)
+        finally:
+            self.discovering = False
+        self.check_errors()
+        return window
+
+    def find_window(self, pid):
         for window in self.windows():
             name = C.c_char_p()
             self.lib.XFetchName(self.display, window, C.byref(name))
@@ -113,9 +142,12 @@ class X11:
         C.memmove(buffer, C.byref(event), C.sizeof(event))
         require(self.lib.XSendEvent(self.display, window, 0, 0, buffer), 'WM_DELETE_WINDOW failed')
         self.lib.XFlush(self.display)
+        self.lib.XSync(self.display, 0)
+        self.check_errors()
 
     def close(self):
         self.lib.XCloseDisplay(self.display)
+        self.lib.XSetErrorHandler(self.previous_error_handler)
 
     def tap_key(self, window, keysym):
         # Optional exported-UI probe only; no test code enters the production PCK.
@@ -130,6 +162,7 @@ class X11:
         require(xtest.XTestFakeKeyEvent(self.display, code, 1, 0), 'Key press dispatch failed')
         require(xtest.XTestFakeKeyEvent(self.display, code, 0, 0), 'Key release dispatch failed')
         self.lib.XSync(self.display, 0)
+        self.check_errors()
 
 
 def main():

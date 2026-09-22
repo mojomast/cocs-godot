@@ -20,8 +20,9 @@ node run.mjs
 ```
 
 The default opens native combat host setup. Choose a map/mode and click **Start**.
-All sessions own a new `127.0.0.1` port allocated by the OS; no shared service is
-used. Closing the native window or Ctrl+C shuts down the server too. Match history
+By default, sessions own a new `127.0.0.1` port allocated by the OS. Closing the
+native window or Ctrl+C shuts down that owned server too. The lobby's explicit
+`--endpoint` route instead uses an existing authority and never stops it. Match history
 and progression are memory-only, and temporary native settings are removed on
 exit. Interactive play has no harness deadline.
 
@@ -33,6 +34,8 @@ node run.mjs --experience=zones --map=meridian-exchange --mode=domination
 node run.mjs --experience=zones --map=verdant-reliquary --mode=koth
 node run.mjs --experience=combined-arms
 node run.mjs --experience=arms-race --map=meridian-exchange
+node run.mjs --experience=lobby
+node run.mjs --experience=lobby --endpoint=ws://127.0.0.1:PORT
 node run.mjs --experience=sports --map=ion-speedway --round-target=3
 node run.mjs --experience=sports --map=aurora-stadium --round-target=5
 node run.mjs --experience=objectives --map=tidal-citadel
@@ -67,6 +70,31 @@ Select an objective and explicitly issue HOLD, or authorize one recruitment
 purchase. Co-op REINFORCE costs 50 FLUX during a natural between-wave window;
 expired consent requires new authorization. Close with C/Escape, release controls
 and click the world to resume. Full strategy rounds remain under development.
+
+Its backed HUD distinguishes ENGAGED, RELEASED, unfocused and stale state, with
+public-node bearing/planar range and team progress. HOLD receipts do not establish
+node capture. Payload similarly shows cart bearing, horizontal distance and the
+source escort radius separately from route progress and banked checkpoints.
+Standing in range can affect the cart even while controls are released.
+
+## Multiplayer lobby
+
+Use `--experience=lobby` to open the form. Host: choose one of the three combat
+arenas and its supported combat mode, Create, share the printed WebSocket endpoint
+and room code, then Start when guests arrive. Defaults are two bots/60-second rounds.
+The owned endpoint is loopback and reachable from clients on this machine only.
+For an already configured reachable authority, supply its explicit `--endpoint`.
+
+Guest: run the lobby against that same endpoint, select Guest, the room code and
+the expected host map, then Join. The authority supplies the actual match mode.
+Guests cannot configure, start or restart the match. Escape releases controls and
+exposes **Leave match**, returning to the form without automatically reconnecting.
+Leaving a room keeps the launcher open; closing the owner window stops its server.
+
+Joining an active match gives a **read-only spectator** with a fixed camera and
+Tab scoreboard. Spectators send no gameplay inputs and stay spectators through
+host restart. To request a player seat, Leave and explicitly join between rounds;
+there is no automatic promotion or guarantee of an available seat.
 
 ## Direct scene invocation
 

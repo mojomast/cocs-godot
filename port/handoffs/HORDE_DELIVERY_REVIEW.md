@@ -38,3 +38,11 @@ The same isolated lane is authorized narrow Horde runtime/helper repairs and new
 Room's local-only restriction stays intact. Runtime/review commits are retained
 outside primary until fixes are reviewed; original review helper preloads depend
 on the unintegrated Horde scene. Common/package routing remains on HOLD.
+
+Repairs have now arrived as `74d0e27`, `25eae77`, `48d1029`, `5052119`, with
+evidence/report `272558e`. A fresh independent reviewer
+`ses_f3874c776ffehVOLnjfMUkhZsl` is checking all six defects, differential source
+input semantics, actual-product live outcomes and cleanup on the latest shared
+runtime. This is separate from the repair author's29/70/15/31/3 checks and fresh
+one-wave/death/startup claims. The final ADS sensitivity fix has fixture coverage
+but was not exercised by the recorded repair gameplay runs. HOLD continues.

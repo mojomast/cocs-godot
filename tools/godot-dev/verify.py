@@ -70,6 +70,7 @@ commands = [
     ("native-trace", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/native_trace.gd"]),
     ("guest-session", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/guest_session.gd"]),
     ("lobby-flow", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/lobby_flow.gd"]),
+    ("lobby-spectator-context", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/lobby_spectator_context.gd"]),
     ("match-selection", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/match_selection.gd"]),
     ("scoreboard", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/scoreboard.gd"]),
     ("team-scores", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/team_scores.gd"]),

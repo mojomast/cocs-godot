@@ -115,6 +115,30 @@ Supported combat map IDs: `meridian-exchange`, `verdant-reliquary`,
 `rockets`. Add `--mute` to silence procedural cues or `--debug-hud` to show
 diagnostic labels.
 
+### Native multiplayer lobby
+
+```sh
+# Start your own loopback authority and open the lobby form.
+PORT=0 node tools/godot-dev/launch.mjs --experience=lobby
+
+# Open another client against the same printed endpoint.
+node tools/godot-dev/launch.mjs --experience=lobby --endpoint=ws://127.0.0.1:PORT
+```
+
+Host: choose a combat map/mode, Create, share the room code, then Start. Guest:
+select Guest, the room code and expected host map, then Join. Guests use the
+authority's mode and cannot configure/start/restart. **Escape** exposes Leave
+match, which returns to the form. Default rounds use two bots and 60 seconds.
+
+Active-room joins become **read-only spectators**, with a fixed camera and Tab
+scoreboard. Spectators stay spectators through restart. Leave and join between
+rounds to request a player seat; no automatic promotion is promised. See
+[spectator acceptance](port/reports/lobby-spectator/README.md).
+
+The owned server is loopback-only. An explicit endpoint can select an existing
+reachable authority; that server is never stopped by this client launcher.
+Closing the owner window stops its owned server; leaving its room does not.
+
 ### Arms Race
 
 ```sh
@@ -142,12 +166,13 @@ The builder prints the archive path and integrity hashes. Extract the archive,
 enter `cocs-native-linux`, then run **`node run.mjs`** for native combat setup.
 Playing requires Node **22.13+** and normal Linux desktop libraries; the editor,
 Git, npm and original checkout are build-time tools only. The package supports
-the same eight experience routes. See the
+the same nine experience routes (eight native scenes). See the
 [local package guide](port/native-linux-package/README.md) for prerequisites,
 verification and launch commands. Generated archives stay outside the repository.
-The latest independent rebuild includes Arms Race and corrected sports guidance,
-with fresh-directory exported startup and failure cleanup; see
-[package verification](port/reports/linux-arms-bearing-independent/README.md).
+The latest rebuild includes the opt-in lobby and new world/cart guidance. Fresh
+exported startup and ownership/cleanup checks pass; the first full exported lobby
+flow reached its gameplay milestones but failed on focus-signal errors, now under
+triage. See [package verification](port/reports/linux-lobby-guidance-independent/README.md).
 
 ### Zone control and combined arms
 
@@ -242,6 +267,10 @@ and [world traversal verification](port/reports/lattice-world-independent/README
 Both maps also pass real world-panel REINFORCE purchases after natural window
 and consent expiry: exactly 50 additional FLUX spent, one spawn and no REQ spend.
 See [world co-op acceptance](port/native-lattice-world-coop/HANDOFF.md).
+The world HUD now shows ENGAGED/RELEASED/focus/stale state and public-node bearing,
+planar distance and team progress. These are approach cues, not obstacle-aware
+navigation or evidence of local capture. See
+[world usability](port/native-lattice-usability/README.md).
 
 ### CTF and Payload demos
 
@@ -263,6 +292,10 @@ See the
 Full Payload delivery after checkpoint-banked rollback and CTF teammate
 pass/capture also pass independently, including results and neutral restart:
 [completion verification](port/reports/objective-completion-independent/README.md).
+Payload also shows camera-relative cart bearing, horizontal distance and the
+source escort radius separately from route progress and banked checkpoints.
+Released controls do not stop an actor's source occupancy near the cart. See
+[cart guidance](port/native-payload-guidance/HANDOFF.md).
 
 ### Open the editor or map viewer
 
@@ -332,7 +365,8 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated local run passes **73 gates**, including Arms Race, sports bearing projection,
+The latest integrated local run passes **80 gates**, including lobby authority ownership,
+spectator context, LATTICE/Payload guidance, Arms Race, sports bearing projection,
 CI artifact retention, zone controls,
 vehicle controls and evidence replay, soccer coaching,
 in-world LATTICE commands, package routing, sports and objective

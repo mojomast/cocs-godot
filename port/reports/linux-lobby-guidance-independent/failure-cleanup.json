@@ -1,0 +1,83 @@
+{
+  "status": "FAILED",
+  "failure": "Xlib BadWindow during race startup metadata lookup; ten earlier cases passed",
+  "authorities": [
+    {
+      "log": "host-setup.log",
+      "port": 38063,
+      "launcher_pid": 3686449,
+      "port_closed": true,
+      "launcher_absent": true
+    },
+    {
+      "log": "lobby-menu.log",
+      "port": 39307,
+      "launcher_pid": 3687553,
+      "port_closed": true,
+      "launcher_absent": true
+    },
+    {
+      "log": "combat.log",
+      "port": 40197,
+      "launcher_pid": 3691406,
+      "port_closed": true,
+      "launcher_absent": true
+    },
+    {
+      "log": "lattice-world.log",
+      "port": 44587,
+      "launcher_pid": 3692591,
+      "port_closed": true,
+      "launcher_absent": true
+    },
+    {
+      "log": "domination.log",
+      "port": 37679,
+      "launcher_pid": 3693855,
+      "port_closed": true,
+      "launcher_absent": true
+    },
+    {
+      "log": "koth.log",
+      "port": 45915,
+      "launcher_pid": 3694704,
+      "port_closed": true,
+      "launcher_absent": true
+    },
+    {
+      "log": "combined-arms.log",
+      "port": 39991,
+      "launcher_pid": 3695584,
+      "port_closed": true,
+      "launcher_absent": true
+    },
+    {
+      "log": "arms-race.log",
+      "port": 40385,
+      "launcher_pid": 3696616,
+      "port_closed": true,
+      "launcher_absent": true
+    },
+    {
+      "log": "race.log",
+      "port": 38135,
+      "launcher_pid": 3697229,
+      "port_closed": true,
+      "launcher_absent": true
+    }
+  ],
+  "native_pids_absent": [
+    3686538,
+    3687580,
+    3689029,
+    3689957,
+    3691647,
+    3692644,
+    3693937,
+    3694716,
+    3695710,
+    3696652,
+    3697314
+  ],
+  "cleanup_verification": "Post-failure inspection only; no unrelated/shared processes signalled"
+}

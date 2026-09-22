@@ -1,0 +1,6 @@
+PACKAGE_EXTERNAL_AUTHORITY {"owned":false,"experience":"lobby"}
+PACKAGE_NATIVE_STARTED {"pid":3715637,"scene":"res://world/session.tscn"}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+PACKAGE_STOPPED

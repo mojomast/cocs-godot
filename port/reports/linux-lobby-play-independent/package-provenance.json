@@ -1,0 +1,23 @@
+{
+  "kind": "exported product scene; external engine-event observer",
+  "build": {
+    "archive": "/tmp/opencode/lead-native-linux-package/builds/1790054125934591826/cocs-native-linux.tar.gz",
+    "archive_sha256": "ee3839f59f56ee82eb4b8f810daa6dacb9ceb9fe34043850659b2e7e5b7dad44",
+    "build": "/tmp/opencode/lead-native-linux-package/builds/1790054125934591826",
+    "generated_resources_sha256": "6d844c385a4f3fc9f5f60edffe5b7a78e3e9a45a3873f487c645404a3100194f",
+    "inputs_sha256": "c6063243cedb645445391a4e9704380658f35ea204a6e56abc21ca32a9c80df6",
+    "manifest_sha256": "8f602b1cc48ab07a05378365a5890d96efea6b8b3d90e9d1c8a916ee085f40cc",
+    "package": "/tmp/opencode/lead-native-linux-package/builds/1790054125934591826/cocs-native-linux"
+  },
+  "flow_sha256": "4a3fb38c9300deef369498f7619756e491e5dc8b247b69bda6a2751898a0390d",
+  "observer_sha256": "cdfde43482ad23b4dc5fa803083a06a4706931803a868efe3368b3e100fd249f",
+  "adapted_flow_sha256": "4e6218ce30b845a92c895c1a35f0b1d9265772e1333dbe584b10ab4704bd9b8e",
+  "wrapper_exit": 1,
+  "source": "unchanged packaged authority",
+  "package_bytes_unchanged": true,
+  "command": [
+    "node",
+    "/tmp/opencode/exported-lobby-observer-ceujptat/flow.mjs"
+  ],
+  "limits": "Not an OS-input or packaged-launcher UI automation run; no test code added to production PCK."
+}

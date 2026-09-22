@@ -47,11 +47,11 @@ node run.mjs
 ```
 
 The output directory for verification must be new, preserving earlier attempts.
-See [PLAY.md](PLAY.md) for all eight experience routes and direct exported-scene
+See [PLAY.md](PLAY.md) for all nine experience routes and direct exported-scene
 commands, including `--experience=zones` and `--experience=combined-arms`.
 Current commands and controls are also in the root
-[README](../../README.md#zone-control-and-combined-arms). The expanded eight-scene
-rebuild is verified in [the integration report](../reports/linux-arms-bearing-independent/README.md).
+[README](../../README.md#zone-control-and-combined-arms). The nine-route/eight-scene
+rebuild is verified in [the integration report](../reports/linux-lobby-guidance-independent/README.md).
 Only Node and normal Linux desktop runtime libraries are prerequisites at play
 time. All runtime dependency files are already copied; no installation is needed.
 

@@ -20,9 +20,19 @@ passed separately. The lead directly opened the actual960×640 and1280×800 resu
 PNGs: Leave, Restart, compact top HUD and four-row team scoreboard are separate
 and readable. This is engine-event acceptance, not physical-device/human testing.
 
-Active-room rejoin exposed the source informational spectator notice being
-treated as fatal. That path remains OPEN pending a separately reviewed narrow
-client/session repair. No general server-error suppression is approved.
+Active-room rejoin initially exposed the source informational spectator notice
+being treated as fatal. Runtime repairs `f92b0ef`/`de6f9f9` are now integrated as
+`17d3657`/`96542c2`, with independent evidence `e9ed72f` as `1a00d90`. The lead
+reviewed the exact queued-join → matching spectator welcome → full active roster
+→ single two-field notice allowance. Unrelated, late, duplicate and malformed
+errors remain fatal. Spectators retain actor−1, send no inputs/config/start and
+stay spectators through restart. There is no generic server-error suppression.
+
+Lead actual-scene checks pass **31 spectator checks** plus **75 layout checks at
+each size**, using private graphical windows and synthetic transport. Directly
+opened final active960 and results1280 PNGs show both status lines contained,
+separate Leave/scoreboard, and no missing-local-player guidance. Live source
+application and fixed-camera evidence remains in the independent report.
 
 ## Lead launch integration
 
@@ -39,10 +49,15 @@ ninth launcher route reusing `world/session.tscn`, not a ninth native scene.
 The host's owned server stops when its launcher/window exits, not when merely
 leaving its room through the UI.
 
-The integrated77-gate suite passes (including LATTICE usability24). Four focused
+The integrated80-gate suite passes (including LATTICE usability24, Payload823/99
+and spectator context66). Four focused
 option tests and six process tests pass for external-authority ownership across
 ordinary exit, native failure and missing executable. The latter deliberately
 use a stub executable and a factory that fails if called; they are process-boundary
 regressions, not live multiplayer evidence. Fresh exported-client ownership and
-two-client product-scene checks are prepared in the package tools and remain
-pending the spectator repair/final runtime build.
+two-client product-scene checks are now underway. The first exported full flow
+reached all gameplay/lifecycle assertions but remains FAILED because its guest
+logged Godot focus/tree signal-disconnect errors. An isolated triage owns that
+remaining clean-log gap. The first generic package run separately hit an Xlib
+BadWindow verifier race, now reproduced/fixed with a real destroyed-window
+regression; its failed run is preserved with all recorded PIDs/ports closed.
