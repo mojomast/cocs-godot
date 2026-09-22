@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: debug is off by default and a debug frame is the unchanged protocol error
+ok 1 - debug is off by default and a debug frame is the unchanged protocol error
+  ---
+  duration_ms: 70.065829
+  type: 'test'
+  ...
+# Subtest: DEBUG_RESTART_BOUNDS is the reviewed route bound, not the source maximum
+ok 2 - DEBUG_RESTART_BOUNDS is the reviewed route bound, not the source maximum
+  ---
+  duration_ms: 0.163927
+  type: 'test'
+  ...
+# Subtest: live source damage multiplier: applied amounts and real pool deltas at 1.0 vs 2.0
+ok 3 - live source damage multiplier: applied amounts and real pool deltas at 1.0 vs 2.0
+  ---
+  duration_ms: 4334.986906
+  type: 'test'
+  ...
+# Subtest: god mode survives lethal damage, is reversible, and clears at the round boundary
+ok 4 - god mode survives lethal damage, is reversible, and clears at the round boundary
+  ---
+  duration_ms: 26560.093855
+  type: 'test'
+  ...
+# Subtest: unlock all weapons grants every slot, the source runs it, and it is reversible
+ok 5 - unlock all weapons grants every slot, the source runs it, and it is reversible
+  ---
+  duration_ms: 3877.012785
+  type: 'test'
+  ...
+# Subtest: the remaining source mutators are live, echoed in the public snapshot config, and respawn is live
+ok 6 - the remaining source mutators are live, echoed in the public snapshot config, and respawn is live
+  ---
+  duration_ms: 2908.989565
+  type: 'test'
+  ...
+# Subtest: malformed debug frames change nothing and never take the socket down
+ok 7 - malformed debug frames change nothing and never take the socket down
+  ---
+  duration_ms: 2158.177563
+  type: 'test'
+  ...
+# Subtest: a debug frame without a live round queues restart knobs and refuses self-damage
+ok 8 - a debug frame without a live round queues restart knobs and refuses self-damage
+  ---
+  duration_ms: 2.84567
+  type: 'test'
+  ...
+# Subtest: debug frame validation refuses unknown, malformed, unbounded and prototype keys
+ok 9 - debug frame validation refuses unknown, malformed, unbounded and prototype keys
+  ---
+  duration_ms: 1.684415
+  type: 'test'
+  ...
+# Subtest: debug state partitions live, queued and port-only knobs; clear resets all
+ok 10 - debug state partitions live, queued and port-only knobs; clear resets all
+  ---
+  duration_ms: 0.362319
+  type: 'test'
+  ...
+# Subtest: live config overrides rebuild from the reviewed base and restore on clear
+ok 11 - live config overrides rebuild from the reviewed base and restore on clear
+  ---
+  duration_ms: 0.60344
+  type: 'test'
+  ...
+# Subtest: human guard scales and caps only the human seat; bots pass through untouched
+ok 12 - human guard scales and caps only the human seat; bots pass through untouched
+  ---
+  duration_ms: 0.257913
+  type: 'test'
+  ...
+# Subtest: post-step reconcile restores the human seat, clears death and grants the ammo belt
+ok 13 - post-step reconcile restores the human seat, clears death and grants the ammo belt
+  ---
+  duration_ms: 0.233417
+  type: 'test'
+  ...
+# Subtest: debug echo publishes live, queued and route restart bounds
+ok 14 - debug echo publishes live, queued and route restart bounds
+  ---
+  duration_ms: 0.163066
+  type: 'test'
+  ...
+# Subtest: solo Horde debug is off by default and refuses construction-time knobs when on
+ok 15 - solo Horde debug is off by default and refuses construction-time knobs when on
+  ---
+  duration_ms: 314.529355
+  type: 'test'
+  ...
+# Subtest: solo Horde god mode, live damage multiplier, incoming scale and unlock-all
+ok 16 - solo Horde god mode, live damage multiplier, incoming scale and unlock-all
+  ---
+  duration_ms: 4059.740505
+  type: 'test'
+  ...
+# Subtest: identity zone debug channel: capability echo, live knobs, god mode, refusal
+ok 17 - identity zone debug channel: capability echo, live knobs, god mode, refusal
+  ---
+  duration_ms: 483.380022
+  type: 'test'
+  ...
+# Subtest: debug channel stays closed by default and the two-human room is untouched
+ok 18 - debug channel stays closed by default and the two-human room is untouched
+  ---
+  duration_ms: 40.721972
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 40633.12834

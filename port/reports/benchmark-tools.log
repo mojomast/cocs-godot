@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: a complete, controlled run validates
+ok 1 - a complete, controlled run validates
+  ---
+  duration_ms: 0.584144
+  type: 'test'
+  ...
+# Subtest: missing or dishonest fields are rejected
+ok 2 - missing or dishonest fields are rejected
+  ---
+  duration_ms: 0.634118
+  type: 'test'
+  ...
+# Subtest: a software result must carry the hardware caveat
+ok 3 - a software result must carry the hardware caveat
+  ---
+  duration_ms: 0.126707
+  type: 'test'
+  ...
+# Subtest: an unknown renderer class is neither software nor hardware
+ok 4 - an unknown renderer class is neither software nor hardware
+  ---
+  duration_ms: 0.104205
+  type: 'test'
+  ...
+# Subtest: console output is parsed from the last BENCHMARK_RESULT line
+ok 5 - console output is parsed from the last BENCHMARK_RESULT line
+  ---
+  duration_ms: 0.205705
+  type: 'test'
+  ...
+# Subtest: lineSummary names resolution, quality and renderer class
+ok 6 - lineSummary names resolution, quality and renderer class
+  ---
+  duration_ms: 0.154188
+  type: 'test'
+  ...
+# Subtest: comparison refuses mismatched compositions
+ok 7 - comparison refuses mismatched compositions
+  ---
+  duration_ms: 0.322224
+  type: 'test'
+  ...
+# Subtest: a level change that does not slow the frame down is reported as not slower
+ok 8 - a level change that does not slow the frame down is reported as not slower
+  ---
+  duration_ms: 0.078377
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 32.984047

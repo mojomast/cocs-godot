@@ -1,0 +1,61 @@
+TAP version 13
+# Subtest: identity zone authority rejects unsupported launch options before binding
+ok 1 - identity zone authority rejects unsupported launch options before binding
+  ---
+  duration_ms: 1.897204
+  type: 'test'
+  ...
+# {"gate":"identity-zone-authority","mapId":"vermilion-fold","mode":"domination","actors":3,"snapshots":503,"inputSeq":501,"replans":35,"contested":true,"transitions":[{"seq":154,"id":"alpha","from":null,"to":0},{"seq":179,"id":"bravo","from":null,"to":0},{"seq":408,"id":"charlie","from":null,"to":0}],"finalScores":{"0":12.016666666666843,"1":0},"winner":0,"overReason":"objective","restartSeq":1,"geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a"}
+# Subtest: identity zone authority: loopback readiness, allowlist rejection and full live round
+ok 2 - identity zone authority: loopback readiness, allowlist rejection and full live round
+  ---
+  duration_ms: 25203.876259
+  type: 'test'
+  ...
+# {"gate":"identity-zone-factory","mapId":"vermilion-fold","geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a","zones":[{"id":"alpha","x":0,"z":-17,"radius":3.5,"y":0},{"id":"bravo","x":0,"z":0,"radius":3.5,"y":0},{"id":"charlie","x":0,"z":17,"radius":3.5,"y":0}],"teamSpawns":{"0":[[-27,-21],[-27,21],[-27,0]],"1":[[27,-21],[27,21],[27,0]]},"nav":103}
+# {"gate":"identity-zone-rules","mapId":"vermilion-fold","mode":"domination","events":["capture-team-0","hold-team-0","contested","capture-team-1","recover-team-0","both-teams-score","results"],"sourceTime":43.89999999999879,"finalScores":{"0":12.000000000000176,"1":7.183333333333313},"winner":0,"restartClean":true,"deterministicSeats":2,"bots":0}
+# Subtest: identity zone allowlist pins one reviewed map/mode pair and its identity entry
+ok 3 - identity zone allowlist pins one reviewed map/mode pair and its identity entry
+  ---
+  duration_ms: 0.719477
+  type: 'test'
+  ...
+# Subtest: identity zone config accepts only ordinary source domination rules
+ok 4 - identity zone config accepts only ordinary source domination rules
+  ---
+  duration_ms: 0.923611
+  type: 'test'
+  ...
+# Subtest: identity zone factory builds a real source domination Match from the validated arena
+ok 5 - identity zone factory builds a real source domination Match from the validated arena
+  ---
+  duration_ms: 62.326882
+  type: 'test'
+  ...
+# Subtest: identity zone domination rules: capture, contest, lose, recover, both teams score, results, restart
+ok 6 - identity zone domination rules: capture, contest, lose, recover, both teams score, results, restart
+  ---
+  duration_ms: 303.876601
+  type: 'test'
+  ...
+# Subtest: launcher route contract matches the composition scene and the authority
+ok 7 - launcher route contract matches the composition scene and the authority
+  ---
+  duration_ms: 0.898413
+  type: 'test'
+  ...
+# Subtest: every authored team spawn routes to every zone, mirrored in length
+ok 8 - every authored team spawn routes to every zone, mirrored in length
+  ---
+  duration_ms: 5797.714391
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25975.187151

@@ -2,235 +2,235 @@ TAP version 13
 # Subtest: source native-only stub: showcase exit
 ok 1 - source native-only stub: showcase exit
   ---
-  duration_ms: 72.202233
+  duration_ms: 71.595434
   type: 'test'
   ...
 # Subtest: source native-only stub: showcase smoke
 ok 2 - source native-only stub: showcase smoke
   ---
-  duration_ms: 59.087363
+  duration_ms: 60.120589
   type: 'test'
   ...
 # Subtest: source native-only stub: aurora-basin exit
 ok 3 - source native-only stub: aurora-basin exit
   ---
-  duration_ms: 54.721681
+  duration_ms: 62.459581
   type: 'test'
   ...
 # Subtest: source native-only stub: aurora-basin smoke
 ok 4 - source native-only stub: aurora-basin smoke
   ---
-  duration_ms: 57.338595
+  duration_ms: 55.880097
   type: 'test'
   ...
 # Subtest: source native-only stub: cinder-array exit
 ok 5 - source native-only stub: cinder-array exit
   ---
-  duration_ms: 58.213966
+  duration_ms: 61.209049
   type: 'test'
   ...
 # Subtest: source native-only stub: cinder-array smoke
 ok 6 - source native-only stub: cinder-array smoke
   ---
-  duration_ms: 55.135456
+  duration_ms: 57.014711
   type: 'test'
   ...
 # Subtest: source native-only stub: particle-lab exit
 ok 7 - source native-only stub: particle-lab exit
   ---
-  duration_ms: 60.200359
+  duration_ms: 57.335242
   type: 'test'
   ...
 # Subtest: source native-only stub: particle-lab smoke
 ok 8 - source native-only stub: particle-lab smoke
   ---
-  duration_ms: 55.638088
+  duration_ms: 58.521203
   type: 'test'
   ...
 # Subtest: source native-only stub: shader-lab exit
 ok 9 - source native-only stub: shader-lab exit
   ---
-  duration_ms: 58.313673
+  duration_ms: 58.132826
   type: 'test'
   ...
 # Subtest: source native-only stub: shader-lab smoke
 ok 10 - source native-only stub: shader-lab smoke
   ---
-  duration_ms: 64.615573
+  duration_ms: 51.735372
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: native-failure
 ok 11 - source native-only stub ownership: native-failure
   ---
-  duration_ms: 59.108973
+  duration_ms: 58.628083
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: native-crash
 ok 12 - source native-only stub ownership: native-crash
   ---
-  duration_ms: 59.213028
+  duration_ms: 56.513763
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: missing-native
 ok 13 - source native-only stub ownership: missing-native
   ---
-  duration_ms: 28.47047
+  duration_ms: 23.974109
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: spawn-failure
 ok 14 - source native-only stub ownership: spawn-failure
   ---
-  duration_ms: 40.671147
+  duration_ms: 36.412869
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: wrong-version
 ok 15 - source native-only stub ownership: wrong-version
   ---
-  duration_ms: 40.788557
+  duration_ms: 46.758079
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: invalid-lock
 ok 16 - source native-only stub ownership: invalid-lock
   ---
-  duration_ms: 24.249539
+  duration_ms: 19.278203
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: interrupt
 ok 17 - source native-only stub ownership: interrupt
   ---
-  duration_ms: 167.966977
+  duration_ms: 152.967142
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: terminate
 ok 18 - source native-only stub ownership: terminate
   ---
-  duration_ms: 161.01077
+  duration_ms: 158.719388
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: uncooperative
 ok 19 - source native-only stub ownership: uncooperative
   ---
-  duration_ms: 3172.204081
+  duration_ms: 3166.103238
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: bad-args
 ok 20 - source native-only stub ownership: bad-args
   ---
-  duration_ms: 19.726531
+  duration_ms: 22.060474
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: ambiguous-help
 ok 21 - source native-only stub ownership: ambiguous-help
   ---
-  duration_ms: 22.127943
+  duration_ms: 25.4537
   type: 'test'
   ...
 # Subtest: package native-only stub: showcase exit
 ok 22 - package native-only stub: showcase exit
   ---
-  duration_ms: 44.222393
+  duration_ms: 52.779248
   type: 'test'
   ...
 # Subtest: package native-only stub: showcase smoke
 ok 23 - package native-only stub: showcase smoke
   ---
-  duration_ms: 46.090424
+  duration_ms: 41.242136
   type: 'test'
   ...
 # Subtest: package native-only stub: aurora-basin exit
 ok 24 - package native-only stub: aurora-basin exit
   ---
-  duration_ms: 39.022918
+  duration_ms: 44.503415
   type: 'test'
   ...
 # Subtest: package native-only stub: aurora-basin smoke
 ok 25 - package native-only stub: aurora-basin smoke
   ---
-  duration_ms: 35.877533
+  duration_ms: 44.792877
   type: 'test'
   ...
 # Subtest: package native-only stub: cinder-array exit
 ok 26 - package native-only stub: cinder-array exit
   ---
-  duration_ms: 43.110678
+  duration_ms: 41.218983
   type: 'test'
   ...
 # Subtest: package native-only stub: cinder-array smoke
 ok 27 - package native-only stub: cinder-array smoke
   ---
-  duration_ms: 40.60897
+  duration_ms: 38.165563
   type: 'test'
   ...
 # Subtest: package native-only stub: particle-lab exit
 ok 28 - package native-only stub: particle-lab exit
   ---
-  duration_ms: 38.385373
+  duration_ms: 41.461156
   type: 'test'
   ...
 # Subtest: package native-only stub: particle-lab smoke
 ok 29 - package native-only stub: particle-lab smoke
   ---
-  duration_ms: 40.218268
+  duration_ms: 46.659093
   type: 'test'
   ...
 # Subtest: package native-only stub: shader-lab exit
 ok 30 - package native-only stub: shader-lab exit
   ---
-  duration_ms: 43.796184
+  duration_ms: 40.593872
   type: 'test'
   ...
 # Subtest: package native-only stub: shader-lab smoke
 ok 31 - package native-only stub: shader-lab smoke
   ---
-  duration_ms: 39.811997
+  duration_ms: 39.000397
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: native-failure
 ok 32 - package native-only stub ownership: native-failure
   ---
-  duration_ms: 39.86202
+  duration_ms: 36.676263
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: native-crash
 ok 33 - package native-only stub ownership: native-crash
   ---
-  duration_ms: 38.043321
+  duration_ms: 36.075798
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: missing-native
 ok 34 - package native-only stub ownership: missing-native
   ---
-  duration_ms: 24.358473
+  duration_ms: 26.608043
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: interrupt
 ok 35 - package native-only stub ownership: interrupt
   ---
-  duration_ms: 139.02888
+  duration_ms: 140.318228
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: terminate
 ok 36 - package native-only stub ownership: terminate
   ---
-  duration_ms: 139.576548
+  duration_ms: 148.59391
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: uncooperative
 ok 37 - package native-only stub ownership: uncooperative
   ---
-  duration_ms: 3148.17185
+  duration_ms: 3144.710615
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: bad-args
 ok 38 - package native-only stub ownership: bad-args
   ---
-  duration_ms: 25.52017
+  duration_ms: 25.04226
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: ambiguous-help
 ok 39 - package native-only stub ownership: ambiguous-help
   ---
-  duration_ms: 22.90541
+  duration_ms: 23.598506
   type: 'test'
   ...
 1..39
@@ -241,4 +241,4 @@ ok 39 - package native-only stub ownership: ambiguous-help
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 4425.687737
+# duration_ms 4399.719935

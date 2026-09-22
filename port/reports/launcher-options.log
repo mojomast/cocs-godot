@@ -2,37 +2,37 @@ TAP version 13
 # Subtest: Horde is default-ten-wave local-only and refuses unsupported or ignored controls
 ok 1 - Horde is default-ten-wave local-only and refuses unsupported or ignored controls
   ---
-  duration_ms: 1.44629
+  duration_ms: 1.839697
   type: 'test'
   ...
 # Subtest: existing viewer, combat setup and smoke routes stay compatible
 ok 2 - existing viewer, combat setup and smoke routes stay compatible
   ---
-  duration_ms: 0.192802
+  duration_ms: 0.226734
   type: 'test'
   ...
 # Subtest: each standalone map/mode reaches its actual scene and locked identity
 ok 3 - each standalone map/mode reaches its actual scene and locked identity
   ---
-  duration_ms: 0.591258
+  duration_ms: 0.614191
   type: 'test'
   ...
 # Subtest: standalone selection rejects substitutions, unsupported modes and ignored options
 ok 4 - standalone selection rejects substitutions, unsupported modes and ignored options
   ---
-  duration_ms: 0.911779
+  duration_ms: 1.042272
   type: 'test'
   ...
 # Subtest: sports round options preserve legal ordinary configuration without silent clamping
 ok 5 - sports round options preserve legal ordinary configuration without silent clamping
   ---
-  duration_ms: 0.349525
+  duration_ms: 0.440224
   type: 'test'
   ...
 # Subtest: world traversal and command board remain distinct native scenes
 ok 6 - world traversal and command board remain distinct native scenes
   ---
-  duration_ms: 0.131606
+  duration_ms: 0.130915
   type: 'test'
   ...
 1..6
@@ -43,4 +43,4 @@ ok 6 - world traversal and command board remain distinct native scenes
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 36.829066
+# duration_ms 45.559544

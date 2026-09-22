@@ -2,303 +2,303 @@ TAP version 13
 # Subtest: all supported source constructors expose their initial spawn before stepping
 ok 1 - all supported source constructors expose their initial spawn before stepping
   ---
-  duration_ms: 235.437642
+  duration_ms: 252.858181
   type: 'test'
   ...
 # Subtest: empty cursor reads are inert, and same ring can be read without replay
 ok 2 - empty cursor reads are inert, and same ring can be read without replay
   ---
-  duration_ms: 9.790099
+  duration_ms: 9.717854
   type: 'test'
   ...
 # Subtest: real source projectile, grenade and sentry serial allocations never replay retained events
 ok 3 - real source projectile, grenade and sentry serial allocations never replay retained events
   ---
-  duration_ms: 23.897128
+  duration_ms: 20.250123
   type: 'test'
   ...
 # Subtest: source emit may repeat identical string IDs/payloads and overwrite type: both objects must be delivered
 ok 4 - source emit may repeat identical string IDs/payloads and overwrite type: both objects must be delivered
   ---
-  duration_ms: 16.034372
+  duration_ms: 14.197746
   type: 'test'
   ...
 # Subtest: source ring growth and shift retain the last object even at the oldest retained slot
 ok 5 - source ring growth and shift retain the last object even at the oldest retained slot
   ---
-  duration_ms: 9.935722
+  duration_ms: 12.154007
   type: 'test'
   ...
 # Subtest: source ring eviction fails closed without advancing cursor or ordinal
 ok 6 - source ring eviction fails closed without advancing cursor or ordinal
   ---
-  duration_ms: 10.019248
+  duration_ms: 10.22324
   type: 'test'
   ...
 # Subtest: lost source ring cursor terminates authority peer and listener accepts a fresh client
 ok 7 - lost source ring cursor terminates authority peer and listener accepts a fresh client
   ---
-  duration_ms: 142.532066
+  duration_ms: 122.668836
   type: 'test'
   ...
 # Subtest: actual source endMatch lifecycle fixture resets cursor at restart before the first step
 ok 8 - actual source endMatch lifecycle fixture resets cursor at restart before the first step
   ---
-  duration_ms: 100.029237
+  duration_ms: 100.187154
   type: 'test'
   ...
 # Subtest: new client has fresh ordinal and cannot replay prior client grenade events
 ok 9 - new client has fresh ordinal and cannot replay prior client grenade events
   ---
-  duration_ms: 166.788389
+  duration_ms: 169.107958
   type: 'test'
   ...
 # Subtest: source one-shot fields are consumed once while source held fields persist
 ok 10 - source one-shot fields are consumed once while source held fields persist
   ---
-  duration_ms: 1.225838
+  duration_ms: 1.118145
   type: 'test'
   ...
 # Subtest: FIFO preserves two distinct press/release pairs, bounds work instead of dropping commands
 ok 11 - FIFO preserves two distinct press/release pairs, bounds work instead of dropping commands
   ---
-  duration_ms: 0.36307
+  duration_ms: 0.317205
   type: 'test'
   ...
 # Subtest: cancel and round reset clear queue/holds without falsely claiming old samples were stepped
 ok 12 - cancel and round reset clear queue/holds without falsely claiming old samples were stepped
   ---
-  duration_ms: 0.130785
+  duration_ms: 0.129132
   type: 'test'
   ...
 # Subtest: duplicate/unsafe seq does not renew expiry; stale samples are never implicitly applied
 ok 13 - duplicate/unsafe seq does not renew expiry; stale samples are never implicitly applied
   ---
-  duration_ms: 0.0908
+  duration_ms: 0.087463
   type: 'test'
   ...
 # Subtest: object cursor preserves repeated opaque source IDs and detects a lost source ring
 ok 14 - object cursor preserves repeated opaque source IDs and detects a lost source ring
   ---
-  duration_ms: 0.208581
+  duration_ms: 0.200456
   type: 'test'
   ...
 # Subtest: outbound message and total queued-byte boundaries are inclusive and bounded
 ok 15 - outbound message and total queued-byte boundaries are inclusive and bounded
   ---
-  duration_ms: 0.061194
+  duration_ms: 0.058008
   type: 'test'
   ...
 # Subtest: preserved real Meridian three-NPC victory accepts net frags 2 and one legitimate self-kill
 ok 16 - preserved real Meridian three-NPC victory accepts net frags 2 and one legitimate self-kill
   ---
-  duration_ms: 39.167939
+  duration_ms: 40.923759
   type: 'test'
   ...
 # Subtest: missing NPC death cannot be supplied by the legitimate local self-kill
 ok 17 - missing NPC death cannot be supplied by the legitimate local self-kill
   ---
-  duration_ms: 1.044979
+  duration_ms: 1.491324
   type: 'test'
   ...
 # Subtest: duplicating another NPC death does not replace a missing target
 ok 18 - duplicating another NPC death does not replace a missing target
   ---
-  duration_ms: 0.411882
+  duration_ms: 0.637725
   type: 'test'
   ...
 # Subtest: extra repeated NPC death is not silently payload-deduplicated
 ok 19 - extra repeated NPC death is not silently payload-deduplicated
   ---
-  duration_ms: 0.330199
+  duration_ms: 0.526587
   type: 'test'
   ...
 # Subtest: nonlocal credited death cannot stand in for a local NPC kill
 ok 20 - nonlocal credited death cannot stand in for a local NPC kill
   ---
-  duration_ms: 0.239539
+  duration_ms: 0.474519
   type: 'test'
   ...
 # Subtest: NPC self-death cannot stand in for a local NPC kill even with killer 0
 ok 21 - NPC self-death cannot stand in for a local NPC kill even with killer 0
   ---
-  duration_ms: 0.210344
+  duration_ms: 0.453079
   type: 'test'
   ...
 # Subtest: local actor death cannot stand in for a missing NPC victim
 ok 22 - local actor death cannot stand in for a missing NPC victim
   ---
-  duration_ms: 0.365885
+  duration_ms: 0.472214
   type: 'test'
   ...
 # Subtest: unknown victim is rejected instead of trusting hard-coded actor IDs
 ok 23 - unknown victim is rejected instead of trusting hard-coded actor IDs
   ---
-  duration_ms: 0.285966
+  duration_ms: 0.398887
   type: 'test'
   ...
 # Subtest: NPC identities must be established by received snapshots, not death payload claims
 ok 24 - NPC identities must be established by received snapshots, not death payload claims
   ---
-  duration_ms: 0.799679
+  duration_ms: 1.450126
   type: 'test'
   ...
 # Subtest: snapshot NPC identities are not hard-coded to 1,2,3
 ok 25 - snapshot NPC identities are not hard-coded to 1,2,3
   ---
-  duration_ms: 1.501694
+  duration_ms: 2.514139
   type: 'test'
   ...
 # Subtest: source net-frag projection remains independently checked
 ok 26 - source net-frag projection remains independently checked
   ---
-  duration_ms: 0.374071
+  duration_ms: 0.67785
   type: 'test'
   ...
 # Subtest: full validator still rejects dirty exit and absent NPC evidence after predicate correction
 ok 27 - full validator still rejects dirty exit and absent NPC evidence after predicate correction
   ---
-  duration_ms: 22.993024
+  duration_ms: 30.718422
   type: 'test'
   ...
 # TAP_DIAGNOSTIC {"shots":1,"ack":2,"input":{"receivedSeq":2,"appliedSeq":2,"cancelledThrough":0,"queueDepth":0}}
 # Subtest: received fire tap is stepped before release, not merely ACKed
 ok 28 - received fire tap is stepped before release, not merely ACKed
   ---
-  duration_ms: 626.677882
+  duration_ms: 600.410066
   type: 'test'
   ...
 # Subtest: explicit cancellation discards pending fire, ACK names only stepped neutral sample
 ok 29 - explicit cancellation discards pending fire, ACK names only stepped neutral sample
   ---
-  duration_ms: 489.986814
+  duration_ms: 522.385789
   type: 'test'
   ...
 # Subtest: input expiry invalidates epoch and never ACKs a late stale-epoch command
 ok 30 - input expiry invalidates epoch and never ACKs a late stale-epoch command
   ---
-  duration_ms: 1069.025199
+  duration_ms: 1024.790018
   type: 'test'
   ...
 # Subtest: source string-ID wave event gets unique serial wire identity
 ok 31 - source string-ID wave event gets unique serial wire identity
   ---
-  duration_ms: 7079.089028
+  duration_ms: 7083.709145
   type: 'test'
   ...
 # Subtest: oversized frame closes peer gracefully and listener survives
 ok 32 - oversized frame closes peer gracefully and listener survives
   ---
-  duration_ms: 655.706519
+  duration_ms: 629.553107
   type: 'test'
   ...
 # Subtest: valid lifecycle-message flood is rate bounded
 ok 33 - valid lifecycle-message flood is rate bounded
   ---
-  duration_ms: 8.870926
+  duration_ms: 8.122996
   type: 'test'
   ...
 # Subtest: outbound backlog limit closes peer (synthetic WebSocket backpressure, not source state)
 ok 34 - outbound backlog limit closes peer (synthetic WebSocket backpressure, not source state)
   ---
-  duration_ms: 6.58376
+  duration_ms: 6.301935
   type: 'test'
   ...
-# CLOCK_DIAGNOSTIC {"sourceSeconds":4.4499999999999895,"wallSeconds":4.457332576999999,"ratio":0.9983549405674044}
+# CLOCK_DIAGNOSTIC {"sourceSeconds":4.4499999999999895,"wallSeconds":4.455021166999999,"ratio":0.998872919608732}
 # Subtest: normal-rate clock diagnostic uses measured wall time, not injected time
 ok 35 - normal-rate clock diagnostic uses measured wall time, not injected time
   ---
-  duration_ms: 4567.891008
+  duration_ms: 4567.900436
   type: 'test'
   ...
 # Subtest: retained failed product run cannot pass acceptance hygiene
 ok 36 - retained failed product run cannot pass acceptance hygiene
   ---
-  duration_ms: 4.533788
+  duration_ms: 5.337217
   type: 'test'
   ...
 # Subtest: legal one-wave source preset meridian-exchange
 ok 37 - legal one-wave source preset meridian-exchange
   ---
-  duration_ms: 0.824395
+  duration_ms: 0.796092
   type: 'test'
   ...
 # Subtest: legal one-wave source preset verdant-reliquary
 ok 38 - legal one-wave source preset verdant-reliquary
   ---
-  duration_ms: 0.148729
+  duration_ms: 0.139401
   type: 'test'
   ...
 # Subtest: legal one-wave source preset ember-crucible
 ok 39 - legal one-wave source preset ember-crucible
   ---
-  duration_ms: 0.060123
+  duration_ms: 0.058891
   type: 'test'
   ...
 # Subtest: invalid targets rejected rather than silently clamped
 ok 40 - invalid targets rejected rather than silently clamped
   ---
-  duration_ms: 0.177673
+  duration_ms: 0.154349
   type: 'test'
   ...
 # Subtest: foreign maps and mode rejected
 ok 41 - foreign maps and mode rejected
   ---
-  duration_ms: 0.118291
+  duration_ms: 0.109445
   type: 'test'
   ...
 # Subtest: default is ten waves
 ok 42 - default is ten waves
   ---
-  duration_ms: 0.066565
+  duration_ms: 0.062076
   type: 'test'
   ...
 # Subtest: missing evidence cannot pass
 ok 43 - missing evidence cannot pass
   ---
-  duration_ms: 0.540863
+  duration_ms: 0.545612
   type: 'test'
   ...
 # Subtest: malformed native records rejected
 ok 44 - malformed native records rejected
   ---
-  duration_ms: 0.088656
+  duration_ms: 0.085881
   type: 'test'
   ...
 # Subtest: synthetic correlation baseline
 ok 45 - synthetic correlation baseline
   ---
-  duration_ms: 1.028558
+  duration_ms: 0.929431
   type: 'test'
   ...
 # Subtest: mismatched actor rejected
 ok 46 - mismatched actor rejected
   ---
-  duration_ms: 0.536516
+  duration_ms: 0.710802
   type: 'test'
   ...
 # Subtest: wrong rendered position rejected
 ok 47 - wrong rendered position rejected
   ---
-  duration_ms: 0.202239
+  duration_ms: 0.3153
   type: 'test'
   ...
 # Subtest: snapshot gaps rejected
 ok 48 - snapshot gaps rejected
   ---
-  duration_ms: 0.125105
+  duration_ms: 0.18188
   type: 'test'
   ...
 # Subtest: ACK/receipt cannot stand in for victory
 ok 49 - ACK/receipt cannot stand in for victory
   ---
-  duration_ms: 0.203491
+  duration_ms: 0.243035
   type: 'test'
   ...
 # Subtest: owned local server rejects browser origins and closes listeners
 ok 50 - owned local server rejects browser origins and closes listeners
   ---
-  duration_ms: 12.040356
+  duration_ms: 13.508564
   type: 'test'
   ...
 1..50
@@ -309,4 +309,4 @@ ok 50 - owned local server rejects browser origins and closes listeners
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 15305.916212
+# duration_ms 15285.558993

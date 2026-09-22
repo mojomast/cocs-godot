@@ -5,19 +5,19 @@ TAP version 13
 # Subtest: GENERATED prism-foundry: source constructor, AI/combat, results and restart
 ok 1 - GENERATED prism-foundry: source constructor, AI/combat, results and restart
   ---
-  duration_ms: 3013.033003
+  duration_ms: 3131.996629
   type: 'test'
   ...
 # Subtest: GENERATED aurora-basin: source constructor, AI/combat, results and restart
 ok 2 - GENERATED aurora-basin: source constructor, AI/combat, results and restart
   ---
-  duration_ms: 3345.205148
+  duration_ms: 3552.992198
   type: 'test'
   ...
 # Subtest: GENERATED cinder-array: source constructor, AI/combat, results and restart
 ok 3 - GENERATED cinder-array: source constructor, AI/combat, results and restart
   ---
-  duration_ms: 391.151576
+  duration_ms: 383.728115
   type: 'test'
   ...
 1..3
@@ -28,4 +28,4 @@ ok 3 - GENERATED cinder-array: source constructor, AI/combat, results and restar
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 7380.762203
+# duration_ms 7705.928016
