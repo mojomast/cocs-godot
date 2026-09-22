@@ -13,6 +13,15 @@ export const EXPERIENCES = {
   'lattice-world': {scene:'res://lattice/world_demo.tscn', map:'asterion-relay', modes:{'asterion-relay':['cocs','cocs-coop'], 'monsoon-foundry':['cocs','cocs-coop']}},
 };
 
+// Standalone exploration/labs, deliberately outside the source map routes.
+export const NATIVE_EXPERIENCES = {
+  showcase: {scene:'res://showcase/demo.tscn'},
+  'aurora-basin': {scene:'res://aurora_basin/demo.tscn'},
+  'cinder-array': {scene:'res://cinder_array/demo.tscn'},
+  'particle-lab': {scene:'res://particle_lab/demo.tscn'},
+  'shader-lab': {scene:'res://shader_lab/demo.tscn'},
+};
+
 export function launchOptions(argv, catalog) {
   const values = {}, flags = new Set(), sessionOptions = [];
   for (let i = 0; i < argv.length; i++) {
@@ -23,7 +32,8 @@ export function launchOptions(argv, catalog) {
       if (!value || value.startsWith('--')) throw Error(`--${key} requires a value`);
       if (values[key] !== undefined) throw Error(`--${key} must be supplied once`);
       values[key] = value;
-    } else if (['--play','--setup','--native-trace','--mute','--debug-hud','--network-smoke','--session-smoke','--lifecycle-smoke'].includes(arg)) {
+    } else if (['--play','--setup','--native-trace','--mute','--debug-hud','--smoke','--network-smoke','--session-smoke','--lifecycle-smoke'].includes(arg)) {
+      if (arg === '--smoke' && flags.has(arg)) throw Error(`Duplicate ${arg}`);
       flags.add(arg);
     } else throw Error(`Unknown launcher option: ${arg}. Use --help.`);
   }
@@ -32,8 +42,16 @@ export function launchOptions(argv, catalog) {
   const play = flags.has('--play') || flags.has('--setup') || values.experience || values.map || values.mode ||
     ['--native-trace','--mute','--debug-hud','--session-smoke','--lifecycle-smoke'].some(arg => flags.has(arg));
   const experience = values.experience ?? 'combat';
+  if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
+    for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by native-only ${experience}`);
+    for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by native-only ${experience}`);
+    const smoke = flags.has('--smoke') ? '--smoke' : null;
+    return {experience, nativeOnly:true, endpoint:null, smoke, sessionOptions:smoke ? [smoke] : [],
+      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),'--path','godot',NATIVE_EXPERIENCES[experience].scene]};
+  }
+  if (flags.has('--smoke')) throw Error('--smoke is supported only by native-only graphics routes; combat uses --network-smoke, --session-smoke or --lifecycle-smoke');
   const selected = Object.hasOwn(EXPERIENCES, experience) ? EXPERIENCES[experience] : null;
-  if (!selected) throw Error(`Unknown experience: ${experience}. Choose ${Object.keys(EXPERIENCES).join(', ')}.`);
+  if (!selected) throw Error(`Unknown experience: ${experience}. Choose ${[...Object.keys(EXPERIENCES),...Object.keys(NATIVE_EXPERIENCES)].join(', ')}.`);
   const endpoint = lobbyEndpoint(values.endpoint, experience);
   for (const key of ['time-limit','round-target']) {
     if (values[key] === undefined) continue;
@@ -72,7 +90,7 @@ export function launchOptions(argv, catalog) {
   return {args, sessionOptions, experience:play ? experience : 'viewer', smoke:smoke ?? null, endpoint};
 }
 
-export const HELP = `Native COCS launcher — owned loopback authority, normal simulation timing
+export const HELP = `Native COCS launcher — source matches and native-only graphics
 
   node tools/godot-dev/launch.mjs --play --setup
   node tools/godot-dev/launch.mjs --experience=lobby
@@ -88,10 +106,21 @@ export const HELP = `Native COCS launcher — owned loopback authority, normal s
   node tools/godot-dev/launch.mjs --experience=objectives --map=sunscar-convoy
   node tools/godot-dev/launch.mjs --experience=lattice --map=asterion-relay --mode=cocs
   node tools/godot-dev/launch.mjs --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
+  node tools/godot-dev/launch.mjs --experience=showcase
+  node tools/godot-dev/launch.mjs --experience=aurora-basin
+  node tools/godot-dev/launch.mjs --experience=cinder-array
+  node tools/godot-dev/launch.mjs --experience=particle-lab
+  node tools/godot-dev/launch.mjs --experience=shader-lab --smoke
 
 Set GODOT_BIN to the pinned Godot 4.5.2 binary. Run semantic export and import first.
-PORT=0 (default) allocates a free port. Close the client or press Ctrl+C to stop.
+Source matches: PORT=0 (default) allocates a free port; normal simulation timing.
+Close the client or press Ctrl+C to stop the owned native process.
 Interactive sessions have no harness deadline. With no options, open the map viewer.
+Native-only graphics: showcase, aurora-basin, cinder-array, particle-lab, shader-lab.
+  Standalone exploration/labs; no Node authority, network endpoint or source match.
+  These are not source map catalog choices. Only --smoke is supported in addition
+  to --experience: runs the scene's own diagnostic headlessly with Dummy audio.
+  --map, --mode, --endpoint and source-match controls are rejected.
 Lobby: explicit Host/Create or Guest/Join, roster and host-only Start/Restart.
   Without --endpoint, owns a loopback authority; share its printed endpoint/code.
   With --endpoint, uses the existing authority and never starts or closes it.

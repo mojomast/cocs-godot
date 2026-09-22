@@ -12,8 +12,8 @@ async function main() {
   if (version[0] < 22 || (version[0] === 22 && version[1] < 13)) throw Error('Node >=22.13.0 required');
   const plan = options(process.argv.slice(2), JSON.parse(readFileSync(join(root, 'catalog.json'))));
   // These paths are relative to this artifact, never to the caller's cwd/repo.
-  // Lazy route imports also keep external lobby independent of local adapters.
-  const factory = plan.endpoint ? null : plan.experience === 'horde'
+  // Native-only scenes and external lobby never import local authority adapters.
+  const factory = plan.nativeOnly || plan.endpoint ? null : plan.experience === 'horde'
     ? (await import('./runtime/port/native-horde/authority.mjs')).createAuthority
     : (await import('./runtime/server/game-server.mjs')).createGameServer;
   const runtime = mkdtempSync(join(tmpdir(), 'cocs-native-'));
@@ -54,13 +54,16 @@ async function main() {
       if (stopping) return signalCode || 1;
       console.log('PACKAGE_SERVER_READY ' + JSON.stringify({pid:process.pid, host:'127.0.0.1', port, experience:plan.experience, map:plan.map, mode:plan.mode, health:status}));
       endpoint = `ws://127.0.0.1:${port}`;
+    } else if (plan.nativeOnly) {
+      console.log('PACKAGE_NATIVE_ONLY ' + JSON.stringify({authority:false, experience:plan.experience}));
     } else {
       console.log('PACKAGE_EXTERNAL_AUTHORITY ' + JSON.stringify({owned:false, experience:plan.experience}));
     }
     if (stopping) return signalCode || 1;
     const executable = process.platform === 'win32' ? 'cocs.exe' : 'cocs.x86_64';
-    const engineArgs = plan.userArgs.includes('--session-smoke') ? ['--headless','--audio-driver','Dummy'] : [];
-    child = spawn(join(root, executable), [...engineArgs, '--main-pack',join(root, 'cocs.pck'), plan.scene, '--', `--endpoint=${endpoint}`, ...plan.userArgs], {cwd:root, env, stdio:'inherit'});
+    const engineArgs = plan.userArgs.some(arg => ['--session-smoke','--smoke'].includes(arg)) ? ['--headless','--audio-driver','Dummy'] : [];
+    const endpointArgs = plan.nativeOnly ? [] : [`--endpoint=${endpoint}`];
+    child = spawn(join(root, executable), [...engineArgs, '--main-pack',join(root, 'cocs.pck'), plan.scene, '--', ...endpointArgs, ...plan.userArgs], {cwd:root, env, stdio:'inherit'});
     childDone = new Promise((resolve, reject) => { child.once('error', reject); child.once('exit', (code, signal) => resolve({code, signal})); });
     console.log('PACKAGE_NATIVE_STARTED ' + JSON.stringify({pid:child.pid, scene:plan.scene}));
     const result = await childDone;

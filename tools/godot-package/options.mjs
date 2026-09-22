@@ -13,6 +13,15 @@ export const EXPERIENCES = {
   'lattice-world': {scene:'res://lattice/world_demo.tscn', maps:{'asterion-relay':['cocs','cocs-coop'], 'monsoon-foundry':['cocs','cocs-coop']}},
 };
 
+// Standalone exploration/labs, deliberately outside the source map routes.
+export const NATIVE_EXPERIENCES = {
+  showcase: {scene:'res://showcase/demo.tscn'},
+  'aurora-basin': {scene:'res://aurora_basin/demo.tscn'},
+  'cinder-array': {scene:'res://cinder_array/demo.tscn'},
+  'particle-lab': {scene:'res://particle_lab/demo.tscn'},
+  'shader-lab': {scene:'res://shader_lab/demo.tscn'},
+};
+
 export function options(argv, catalog) {
   const values = {}, flags = new Set();
   for (let i = 0; i < argv.length; i++) {
@@ -30,6 +39,11 @@ export function options(argv, catalog) {
     } else throw Error(`Unknown option ${arg}. Use --help.`);
   }
   const experience = values.experience ?? 'combat';
+  if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
+    for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by native-only ${experience}`);
+    for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by native-only ${experience}`);
+    return {experience, scene:NATIVE_EXPERIENCES[experience].scene, nativeOnly:true, endpoint:null, userArgs:flags.has('--smoke') ? ['--smoke'] : []};
+  }
   if (!Object.hasOwn(EXPERIENCES, experience)) throw Error(`Unknown experience: ${experience}`);
   const endpoint = lobbyEndpoint(values.endpoint, experience);
   const selected = EXPERIENCES[experience];
@@ -73,6 +87,17 @@ export const HELP = `COCS native demo — Node >=22.13.0 (bundled on Windows)
   node run.mjs --experience=objectives --map=sunscar-convoy
   node run.mjs --experience=lattice --map=asterion-relay --mode=cocs
   node run.mjs --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
+  node run.mjs --experience=showcase
+  node run.mjs --experience=aurora-basin
+  node run.mjs --experience=cinder-array
+  node run.mjs --experience=particle-lab
+  node run.mjs --experience=shader-lab --smoke
+
+Native-only graphics: showcase, aurora-basin, cinder-array, particle-lab, shader-lab.
+  Standalone exploration/labs; no Node authority, network endpoint or source match.
+  These are not source map catalog choices. Only --smoke is supported in addition
+  to --experience: runs the scene's own diagnostic headlessly with Dummy audio.
+  --map, --mode, --endpoint and source-match controls are rejected.
 
 Combat: 3 combat maps; deathmatch/teamdeathmatch/instagib/rockets.
 Lobby: explicit Create/Join/Start; guests select the expected host map.
@@ -88,8 +113,9 @@ Zones: koth/domination on combat arenas; domination on Tidal/Sunscar.
 Combined arms: Sunscar Puma slice. Enter engages; E mounts/exits; Space brake tap.
 LATTICE board: click Connect / start. LATTICE world starts directly.
 --native-trace is available for combat and lattice-world.
---smoke runs the combat network diagnostic headlessly and exits automatically.
-An ordinary server owns a fresh loopback port. Close the window or Ctrl+C to stop.
+Combat --smoke runs the network diagnostic headlessly and exits automatically.
+Source-match routes own a fresh loopback port unless using an external lobby.
+Close the window or Ctrl+C to stop the owned native process.
 No editor, git, npm, installation, or source checkout is needed to play.
 Private prototype only; source asset redistribution rights remain unresolved.
 `;
