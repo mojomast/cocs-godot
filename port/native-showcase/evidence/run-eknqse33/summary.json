@@ -1,0 +1,26 @@
+{
+  "engine": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "software_renderer": true,
+  "steps": [
+    {
+      "name": "physics",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+        "--audio-driver",
+        "Dummy",
+        "--rendering-method",
+        "gl_compatibility",
+        "--disable-render-loop",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/showcase/physics.gd"
+      ],
+      "exit_code": 0,
+      "errors": false,
+      "wall_seconds": 1.72
+    }
+  ]
+}

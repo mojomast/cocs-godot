@@ -1,0 +1,36 @@
+{
+  "platform": "Linux release runtime loading exact Windows PCK",
+  "graphical": false,
+  "cases": [
+    {
+      "case": "resources",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "case": "showcase",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "case": "aurora_basin",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "case": "cinder_array",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "case": "particle_lab",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "case": "shader_lab",
+      "passed": true,
+      "exit": 0
+    }
+  ]
+}

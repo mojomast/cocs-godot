@@ -119,6 +119,19 @@ worktrees are retained. Two narrowly scoped follow-ups work in primary directly:
 These agents must commit only their exact owned paths; all other primary work
 and report files belong to the lead.
 
+Expanded deliveries are now integrated: Prism `9a1d5c8` → `4a5ddee`, Aurora
+`302c4e2` → `08ac73a`, Cinder `f16282d` → `4b3ce01`, particle lab `6a1af42` →
+`23bbe04`, shader lab `fab8f7d` → `e184026`, scenery `1684f89` → `b3da71c`.
+Shared map/lab/menu integration is `f9c45dd`; independent native input review is
+`e5d6fd3`. Combined-arms and depth follow-ups completed as `87ea91f`/`fecc5f0`.
+Clean completed map/particle/scenery worktrees were reclaimed. Shader worktree
+retains untracked import-generated UIDs and was left intact.
+
+Cinder production-controller junction follow-up completed as `f812c23`, with
+1,246 assertions and both full circuits passing. All graphics implementation and
+review lanes have completed. Lead retains aggregate/package/release ownership.
+User research remains untracked.
+
 The existing source/baked assets are read-only. No generation service is needed.
 The first-person lane may read/export source weapon geometry, including weapon0;
 it does not edit the separately reserved external pulse-rifle preview or assets.

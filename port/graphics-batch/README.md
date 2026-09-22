@@ -2,7 +2,8 @@
 
 Owner requested parallel implementation, then expanded scope to multiple new
 maps, Moth scenery, shaders and massive-particle experiments, with autonomous
-overnight continuation. This report is an in-progress integration record.
+overnight continuation. All development lanes are integrated; release verification
+is in progress.
 
 ## Integrated first wave
 
@@ -50,6 +51,7 @@ it never inserts simulation state. Each run reaches natural results and restarts
 | `live-meridian-centered` | 1862 | 1810 | 5893 | 2 |
 | `live-verdant-reliquary` | 1861 | 48 | 6038 | 2 |
 | `live-ember-crucible` | 1863 | 1785 | 5836 | 2 |
+| `live-final-scenery` | 1862 | 1820 | 4598 | 2 |
 
 The first automated path wandered outside useful map framing. The second uses
 ordinary steering toward the arena centre; both image pairs and full compressed
@@ -64,24 +66,24 @@ there, so its 48 movement transitions are startup/movement coverage, not a map
 traversal claim. Wall contact did not clip the isolated first-person rig. Ember
 retained readable dark-map surfaces and HUD. All four shared runs observed only
 the Pulse Rifle; do not infer all-weapon live coverage from their event counts.
+The fifth run adds final production scenery composition; both screenshots were
+directly inspected, with readable HUD/weapon framing and clean results/restart.
 
-## Active expanded lanes
+## Integrated expanded delivery
 
 See `port/handoffs/ACTIVE_LANES.md` for exclusive ownership and branches:
 Prism Foundry showcase, Aurora Basin, Cinder Array, massive particle laboratory,
 Moth shader laboratory, existing-map Moth scenery, standalone launcher routes,
 and independent shared-runtime review.
 
-The new maps are additive native exploration scenes. The five planned native-only
+The new maps are additive native exploration scenes. The five native-only
 routes do not create Node authorities or broaden the locked nine-map catalog.
 Massive particle counts are explicit experiment settings with measured backend,
 instance counts and frame-time results; normal combat defaults stay bounded.
 
 ## Remaining integration work
 
-1. Review and integrate each remaining lane, preserving failures and provenance.
-2. Complete scene/resource and lifecycle checks, inspect new maps at eye level,
-   and report actual particle count/performance limits.
+1. Complete expanded aggregate checks after the Cinder junction repair.
 3. Rebuild after final runtime changes, inspect exact packaged resources, run
    native Windows verification and publish a new playable artifact when accepted.
 4. Update the release matrix and ownership record with final evidence/status.
@@ -114,3 +116,65 @@ failure in the nine maps or verification on other hardware/backends.
 
 Campaign remains deferred. The external pulse-rifle preview reservation and the
 user's untracked procedural-model research remain preserved.
+
+## New-map and laboratory acceptance
+
+- **Prism Foundry:** reactor atrium, turbine hall, coolant garden and deck, with
+  a raised circulation loop. The delivered 49-check physics/input fixture was
+  rerun successfully with its documented graphical Xvfb harness in
+  `port/native-showcase/evidence/run-eknqse33/`.
+- **Aurora Basin:** landing, fractured frozen lake and Crown observatory, linked
+  by a lake circuit and raised skywalk. The complete map traversal now runs with
+  the production shared walker's `step()` and passes, replacing the lane's private
+  baseline-compatible controller. Production fallback-to-test code was removed.
+- **Cinder Array:** volcanic six-area loop. Full production traversal exposed an
+  upper-junction snag; `f812c23` merges overlapping ramp/landing collision solids.
+  Both directions now reach all 16 waypoints with zero off-floor frames and zero
+  controller resets. All 1,246 assertions pass with production physics, including
+  342 floor probes and rail/tunnel/boundary checks. Collision shapes decrease
+  103 → 99. Failed JSON/log and collision-contact evidence remain preserved in
+  `evidence/expanded-preflight/` and `port/native-cinder-integration/`.
+- **Moth Shader Gallery:** three materials, 68 contracts and native visual probes.
+  The integrated native launcher and three-material headless smoke pass.
+- **Particle Observatory:** 183 contracts, actual stateful GPU simulation on
+  Compatibility and a distinct analytic MultiMesh backend. All 13 lane render
+  sweeps passed; selectable counts reach 1,048,576, with stable return-to-32K cycles.
+- **Existing maps:** bounded Moth scenery is now composed by the production
+  viewer. F8 cycles Full/Off/Low without popups; source geometry stays unchanged.
+  All 36 final static captures are in `evidence/scenery-integrated-world/`.
+
+Independent review `e5d6fd3` passed **58/58 actual-X11 checks** and directly
+inspected 18 images. OS-level synthetic keyboard/mouse input exercised the real
+production scenes/controllers, focus loss with movement held, recapture, 128K
+particle controls, shader controls and three unload cycles. No orphan accumulation
+or increasing final-pair resource counts was observed. See
+`port/native-graphics-independent/REPORT.md` for exact bounds; this is short
+native Linux desktop acceptance, not hardware timing or full-map traversal.
+
+The particle lane's 1280×800 galaxy measurements on llvmpipe were:
+
+| Actual GPU amount | Median | p95 |
+|---:|---:|---:|
+| 8,192 | 6.86 ms | 9.12 ms |
+| 32,768 | 18.36 ms | 25.24 ms |
+| 131,072 | 57.28 ms | 62.13 ms |
+| 524,288 | 211.34 ms | 219.69 ms |
+| 1,048,576 | 462.04 ms | 476.69 ms |
+
+The million-particle case submitted 2,097,152 particle triangles. It is an explicit
+stress setting, not a playable software-renderer default or hardware-GPU promise.
+
+### Integration failures preserved
+
+- Scenery ownership fixture assumed the production viewer did not already own a
+  scenery root. It now verifies production composition, clears that layer, then
+  establishes its original-geometry baseline for create/clear assertions.
+- The Windows entry was expanded from a default-launch shortcut into a five-choice
+  menu. An implementation-mirroring source regex failed; batch forwarding is now
+  verified by executing the actual `.cmd` on Windows, rather than matching layout.
+- A lead headless invocation of Prism's graphical physics fixture timed out. The
+  documented Xvfb invocation passed; aggregate startup and graphical traversal are
+  recorded with their correct distinct scopes.
+- Relocating a completed build-state tree to disk made its old symlink fail the
+  builder's dedicated `/tmp/opencode` check. The next build uses a new owned state
+  directory; the build-path validation remains intact.

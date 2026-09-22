@@ -19,7 +19,7 @@ simulation lock and verification evidence remain reproducible.
 [Controls](#controls) · [Verification](#verification) ·
 [Detailed release matrix](port/RELEASE_MATRIX.md)
 
-![Native combat with compact health, armor and weapon HUD](port/reports/game-hud-team-independent/live-1280x800.png)
+![Native combat with first-person weapon and restored Moth world graphics](port/graphics-batch/evidence/live-final-scenery/live-1280x800.png)
 
 ## Current features
 
@@ -31,7 +31,9 @@ simulation lock and verification evidence remain reproducible.
 | Local Horde | Three combat arenas, local-only source Match adapter, wave/enemy/lives/score HUD and source-default solo controls; ten-wave default |
 | Zone-control demo | KOTH / Domination HUD, objective rings, source capture/scoring, results and restart; independently exercised on Verdant / Meridian |
 | Combined-arms demo | Sunscar infantry and Puma mount / drive / brake tap / exit, with fresh controls after seat changes |
-| Native presentation | All nine map environments, operator and pickup models, skies, lighting and landmarks |
+| Native presentation | All nine map environments, 101 restored Moth texture planes, map-specific atmosphere, bounded scenery and ten first-person weapon models |
+| Native exploration maps | Prism Foundry reactor complex, Aurora Basin polar observatory and Cinder Array volcanic loop; local Godot collision and movement |
+| Shader and particle labs | Three interactive Moth materials; four particle effects, stateful GPU simulation and explicit analytic backend, selectable 8K–1M counts with measured frame cadence |
 | Combat feedback | Reticle, confirmed-hit and damage indicators, source-driven projectiles and explosion flashes, procedural sound cues |
 | HUD and controls | Health/armor bars, named weapon/ammo display, number-key and wheel weapon selection, team scores and results scoreboard |
 | Puma sports demos | Ion Speedway racing and Aurora Stadium soccer: authoritative driving, next-checkpoint guidance, compact HUD, wall-aware chase, results and F5 restart |
@@ -79,6 +81,26 @@ candidate operator models. **Demo Menu.cmd** opens other demos and the model vie
 Node and the Godot runtime are bundled; no development tools are required.
 Windows 10/11 x64 and OpenGL 3.3-compatible graphics are required.
 See [Windows play instructions](port/native-windows-package/PLAY.md).
+
+### New native graphics experiences
+
+After the development setup below, launch any of these standalone scenes:
+
+```sh
+node tools/godot-dev/launch.mjs --experience=showcase
+node tools/godot-dev/launch.mjs --experience=aurora-basin
+node tools/godot-dev/launch.mjs --experience=cinder-array
+node tools/godot-dev/launch.mjs --experience=particle-lab
+node tools/godot-dev/launch.mjs --experience=shader-lab
+```
+
+The three maps are unarmed native exploration showcases. The labs have on-screen
+controls; the particle lab starts at 32K, with one million available as an explicit
+stress option. These routes create no Node authority. See the
+[graphics development report](port/graphics-batch/README.md) for visual evidence,
+actual measured counts and software-renderer performance qualifications.
+
+![Aurora Basin production native view](port/native-graphics-independent/evidence/aurora_basin/capture-02.png)
 
 ### Requirements
 

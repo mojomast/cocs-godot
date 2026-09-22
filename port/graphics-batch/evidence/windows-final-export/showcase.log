@@ -1,0 +1,4 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PRISM_FOUNDRY_READY {"animated_rings":3,"areas":4,"cpu_particles":48,"elevation_m":4,"experience":"Prism Foundry","multimesh_batches":12,"multimesh_instances":996,"network":false,"nodes":405,"renderer":"gl_compatibility","shadow_lights":1,"standalone":true,"static_bodies":92,"turbines":2,"unshadowed_omni_lights":3,"walkable_ramps":2}
+PRISM_FOUNDRY_SMOKE_OK {"animated_rings":3,"areas":4,"cpu_particles":48,"draw_calls":0.0,"elevation_m":4,"experience":"Prism Foundry","multimesh_batches":12,"multimesh_instances":996,"network":false,"nodes":405,"rendered_primitives":0.0,"renderer":"gl_compatibility","sampled_frame_ms_mean":6.89997935779816,"samples":436,"shadow_lights":1,"standalone":true,"static_bodies":92,"turbines":2,"unshadowed_omni_lights":3,"walkable_ramps":2}

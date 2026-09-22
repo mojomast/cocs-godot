@@ -29,7 +29,7 @@ Five additional routes are standalone native exploration/material laboratories.
 | Combined-arms graphics | 65 composition checks, 43 inherited control checks and 68 synthetic graphical checks; infantry/Puma transitions | Live combined-arms graphics and package review |
 | Prism Foundry | Three-room reactor complex, mezzanine/ramp loop and deck; 49 native physics/lifecycle checks, eight real X11 input checks and 12 inspected captures | Final exported route, hardware and human exploration |
 | Aurora Basin | Landing/lake/crown routes and aurora; 593 lane checks; shared production walker traversal rerun passes | Final exported route and independent desktop usability |
-| Cinder Array | Six-area caldera/bridge/gantry/tunnel loop; 1244 lane assertions and original capsule traversal; production walker integrated | Shared-controller rerun and final exported route |
+| Cinder Array | Six-area caldera/bridge/gantry/tunnel loop; production ramp-junction repair; 1246 assertions and both 16-waypoint circuits with zero off-floor frames/resets | Final exported route and hardware/human exploration |
 | Particle Observatory | Stateful Compatibility GPUParticles3D and explicit analytic alternative; actual 8K–1M counts; 183 checks, 13 render sweeps, stable resize cycles | Hardware GPU performance; million-particle stress is ~462 ms median on software rendering |
 | Moth Shader Gallery | Three reusable materials; 68 contracts and two-resolution visual tests; actual clock/LUT/normal contributions and pause stability | Packaged shader include/resources and hardware review |
 

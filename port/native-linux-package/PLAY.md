@@ -43,6 +43,11 @@ node run.mjs --experience=objectives --map=tidal-citadel
 node run.mjs --experience=objectives --map=sunscar-convoy
 node run.mjs --experience=lattice --map=asterion-relay --mode=cocs
 node run.mjs --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
+node run.mjs --experience=showcase
+node run.mjs --experience=aurora-basin
+node run.mjs --experience=cinder-array
+node run.mjs --experience=particle-lab
+node run.mjs --experience=shader-lab
 node run.mjs --help
 ```
 
@@ -52,6 +57,14 @@ releases the pointer. Scene UI describes its own controls. Unsupported map/mode
 combinations and out-of-range options fail explicitly rather than falling back.
 The semantic catalog retains all nine locked map identities. This is the current
 procedural/semantic presentation, not a claim of complete visual/gameplay parity.
+
+The five graphics routes are standalone native experiences and start no authority.
+Prism Foundry, Aurora Basin and Cinder Array use **WASD/mouse**, **Shift** sprint,
+**Space** jump, **R** reset, **Escape** release and **click** capture. Particle and
+shader labs show their controls on screen. Particle counts begin at 32K; the
+optional million-particle setting is a stress experiment with measured frame
+cadence, not a hardware performance promise. Existing gameplay's bounded Moth
+scenery supports **F8** Full/Off/Low detail switching.
 
 Combat setup lists supported standalone routes as **separate demos** and shows
 their relaunch options. Zone modes use click-to-engage infantry controls and

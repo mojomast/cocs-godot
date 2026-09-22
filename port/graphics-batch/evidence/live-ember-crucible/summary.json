@@ -1,0 +1,17 @@
+{
+  "automated_protocol_inputs": true,
+  "elapsed_seconds": 61.0626240000003,
+  "events": 5836,
+  "movement_transitions": 1785,
+  "passed": true,
+  "pictures": [
+    "live-960x640.png",
+    "live-1280x800.png"
+  ],
+  "round_starts": 2,
+  "snapshots": 1863,
+  "state_injection": false,
+  "weapons": [
+    "0.0"
+  ]
+}

@@ -67,7 +67,13 @@ try {
   report.preview_load = true;
   // Exercise the native graphics routes with bundled runtimes and no authority.
   for (const experience of ['showcase','aurora-basin','cinder-array','particle-lab','shader-lab']) {
-    const nativeOnly = await exec(process.env.ComSpec || 'cmd.exe', ['/d','/s','/c',`""${join(root,'Graphics Showcase.cmd')}" --experience=${experience} --smoke"`], {cwd:sandbox,env,windowsVerbatimArguments:true,timeout:60000,maxBuffer:4*1024*1024});
+    let nativeOnly;
+    try {
+      nativeOnly = await exec(process.env.ComSpec || 'cmd.exe', ['/d','/s','/c',`""${join(root,'Graphics Showcase.cmd')}" --experience=${experience} --smoke"`], {cwd:sandbox,env,windowsVerbatimArguments:true,timeout:60000,maxBuffer:4*1024*1024});
+    } catch (error) {
+      await writeFile(join(output,experience+'.log'),(error.stdout || '')+(error.stderr || '')+'\n'+error.message);
+      throw error;
+    }
     const text = nativeOnly.stdout + nativeOnly.stderr;
     await writeFile(join(output,experience+'.log'),text);
     assert.doesNotMatch(text,/SCRIPT ERROR|ERROR:|Assertion failed/);

@@ -1,0 +1,23 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: CINDER_CHECK: forward physically reached (-23.0, 16.0, -28.0) actual=(-20.12536, 15.89261, -28.52951)
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:25)
+       [1] traverse (res://tests/cinder_array/verify.gd:155)
+ERROR: CINDER_CHECK: forward entire connected loop traversed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:25)
+       [1] traverse (res://tests/cinder_array/verify.gd:159)
+ERROR: CINDER_CHECK: reverse-sprint physically reached (-24.0, 7.0, 28.0) actual=(-20.22429, 16.00088, -26.22664)
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:25)
+       [1] traverse (res://tests/cinder_array/verify.gd:155)
+ERROR: CINDER_CHECK: reverse-sprint entire connected loop traversed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/cinder_array/verify.gd:25)
+       [1] traverse (res://tests/cinder_array/verify.gd:159)
+CINDER_VERIFY {"assertions":1200,"boundary_cases":4,"diagnostics":{"areas":6,"authored_triangles":23474,"built":true,"collision_shapes":103,"embers":48,"experience":"cinder-array","instanced_solids":1180,"lights":4,"mesh_nodes":91,"native_only":true,"nodes":216,"renderer":"gl_compatibility","respawns":4,"route_points":16,"steam":16},"failures":["forward physically reached (-23.0, 16.0, -28.0) actual=(-20.12536, 15.89261, -28.52951)","forward entire connected loop traversed","reverse-sprint physically reached (-24.0, 7.0, 28.0) actual=(-20.22429, 16.00088, -26.22664)","reverse-sprint entire connected loop traversed"],"floor_probes":342,"max_ramp_degrees":27.6007699367574,"traversals":[{"direction":"forward","off_floor_frames":0,"physics_frames":2359,"reached":9,"speed_m_s":6.0,"waypoints":16,"worst_waypoint_height_error":0.0188941955566406},{"direction":"reverse-sprint","off_floor_frames":0,"physics_frames":1200,"reached":0,"speed_m_s":10.0,"waypoints":16,"worst_waypoint_height_error":0.0}]}
