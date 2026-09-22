@@ -339,8 +339,9 @@ in-world LATTICE commands, package routing, sports and objective
 progression, LATTICE map selection, launcher routing, GLB material sides and
 projectile navigation. Native
 [GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
-passed the prior 69-gate zone/vehicle snapshot from a fresh Ubuntu checkout;
-hosted evidence is tracked separately from newer local runs.
+also passed all 73 gates at `9c9e5de` from a fresh Ubuntu checkout;
+the complete downloaded summary is retained in
+[hosted evidence](port/reports/native-ci-hosted/README.md).
 
 Focused real-session and graphical evidence is documented in:
 

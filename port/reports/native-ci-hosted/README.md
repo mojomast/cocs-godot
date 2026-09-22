@@ -97,3 +97,18 @@ follow-up collector stages current JSON reports ahead of optional per-gate logs,
 with a regression using 90 logs plus a stale historical report. The stale report
 is excluded and the current summary survives the cap. Local aggregate now passes
 70 gates; hosted confirmation of the collector change is pending.
+
+## Arms Race, sports bearing and complete hosted summary
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35687499645> at
+`9c9e5dec4a0d245d0f3052b7c99ff503e491a69e` **PASS**, all **73 gates**, in4m03s.
+The lead watched actual completion, downloaded the artifact and checked status,
+count and every gate's pass flag. This includes Arms Race source38/native55,
+camera-projection bearing896 and the CI artifact-cap regression.
+
+The revised collector successfully retained the complete, untruncated current
+`reports/verification.json` within the80-file cap; five optional logs were
+omitted. `35687499645/` retains the downloaded summary, console, artifact manifest,
+collector regression log and run/job metadata. The prior69-gate run's missing
+summary remains a historical limitation, not retroactively repaired evidence.
+Exported startup, gameplay milestones and direct PNG review remain separate.
