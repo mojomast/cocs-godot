@@ -67,8 +67,8 @@ func send_frame(frame: Dictionary) -> Error:
 	if peer.get_ready_state() != WebSocketPeer.STATE_OPEN: return ERR_CONNECTION_ERROR
 	return peer.send_text(JSON.stringify(frame))
 
-func create_room() -> Error:
-	return send_frame({"type":"create", "name":"Godot port laboratory", "playerName":"Godot", "v":3, "delta":0})
+func create_room(player_name: String = "Godot") -> Error:
+	return send_frame({"type":"create", "name":"Godot port laboratory", "playerName":player_name, "v":3, "delta":0})
 
 func join_room(id: String, player_name: String = "Godot guest") -> Error:
 	if id.is_empty(): return ERR_INVALID_PARAMETER

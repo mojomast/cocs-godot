@@ -8,6 +8,85 @@ const MatchSetup = preload("res://ui/match_setup.gd")
 var selected_mode: String = "deathmatch"
 var endpoint: String = ""
 var setup_menu: Control
+const LobbyMenu = preload("res://ui/lobby_menu.gd")
+var lobby_menu: CanvasLayer
+var lobby_enabled := false
+var lobby_player_name := "Godot"
+var lobby_roster: Dictionary = {}
+
+func lobby_host_allowed() -> bool:
+	if not lobby_enabled or not join_room_id.is_empty(): return false
+	if client.peer_id < 0 or lobby_roster.get("hostId", -2) != client.peer_id: return false
+	for player: Dictionary in lobby_roster.get("players", []):
+		if player.peerId == client.peer_id:
+			return bool(player.get("connected", false)) and not bool(player.get("spectate", false))
+	return false
+
+func lobby_clear() -> void:
+	release_pointer()
+	client.disconnect_server()
+	snapshot_watch.reset()
+	presentation.clear_round()
+	pickups.clear_round()
+	combat.clear_round()
+	received_pose = false
+	pose_actor_id = -1
+	send_elapsed = 0
+	elapsed = 0
+	phase_elapsed = 0
+	watched_phase = -999
+	yaw = 0
+	pitch = 0
+	round_starts = 0
+	round_results = 0
+	moved = false
+	fired = false
+	lobby_roster.clear()
+	if is_instance_valid(lobby_menu):
+		lobby_menu.last_frame.clear()
+		lobby_menu.roster.text = "No active room. Connect explicitly to a fresh lobby."
+	for child: Node in get_children():
+		if child.has_method("clear_round") and child not in [presentation, pickups, combat]: child.clear_round()
+
+func lobby_leave() -> void:
+	if not lobby_enabled: return
+	client.send_frame({"type":"leave"})
+	lobby_clear()
+	phase = -3
+	label.text = "Disconnected"
+
+func lobby_connect(url: String, player_name: String, room: String, map_id: String, mode: String, guest: bool) -> void:
+	if not lobby_enabled or phase not in [-3, -1]: return
+	lobby_clear()
+	var problem := MatchSetup.validate(catalog.entries, map_id, mode if not guest else MatchSetup.DEFAULT_MODE)
+	if not problem.is_empty():
+		on_error(problem)
+		return
+	if not (url.begins_with("ws://") or url.begins_with("wss://")) or url.contains("@") or url.contains("\n"):
+		on_error("Use an explicit ws:// or wss:// endpoint without embedded credentials.")
+		return
+	if player_name.is_empty() or (guest and room.is_empty()):
+		on_error("Enter a display name and, for guests, a room code.")
+		return
+	if current_id != map_id and not load_map(map_id):
+		on_error(catalog.error)
+		return
+	world.get_node("StaticPickupMarkers").hide()
+	endpoint = url
+	lobby_player_name = player_name.left(32)
+	join_room_id = room if guest else ""
+	selected_mode = mode if not guest else MatchSetup.DEFAULT_MODE
+	for child: Node in get_children():
+		if "guest" in child: child.guest = guest
+	connect_selected_match()
+
+func lobby_start() -> void:
+	if phase != 12 or not lobby_host_allowed(): return
+	if not MatchSetup.validate(catalog.entries, current_id, selected_mode).is_empty(): return
+	if client.send_frame({"type":"start"}) != OK:
+		on_error("Start could not be queued. Retry explicitly.")
+		return
+	phase = 20
 
 func can_capture_pointer() -> bool:
 	# Application focus notifications may lag the window's focus state (X11).
@@ -81,7 +160,7 @@ func emit_boundary_trace(event: String) -> void:
 		"pointer_captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED})
 
 func begin_room() -> void:
-	var result: Error = client.create_room() if join_room_id.is_empty() else client.join_room(join_room_id)
+	var result: Error = client.create_room(lobby_player_name) if join_room_id.is_empty() else client.join_room(join_room_id, lobby_player_name if lobby_enabled else "Godot guest")
 	if result != OK:
 		on_error("Room request could not be queued. Relaunch to reconnect.")
 		return
@@ -105,6 +184,7 @@ const HANDSHAKE_TIMEOUT: float = 15.0
 
 func request_restart() -> void:
 	if phase != 4 or not join_room_id.is_empty(): return
+	if lobby_enabled and not lobby_host_allowed(): return
 	if client.send_frame({"type":"start"}) == OK:
 		phase = 20
 		label.text = "Waiting for authoritative round start…"
@@ -126,6 +206,7 @@ func _notification(what: int) -> void:
 
 func advance_handshake(delta: float) -> bool:
 	if not is_finite(delta) or delta < 0.0: return false
+	if lobby_enabled and phase == 11: return true
 	if phase != watched_phase:
 		watched_phase = phase
 		phase_elapsed = 0.0
@@ -156,6 +237,7 @@ func _ready() -> void:
 	trace_enabled = "--native-trace" in OS.get_cmdline_user_args()
 	smoke = "--session-smoke" in OS.get_cmdline_user_args()
 	lifecycle_smoke = "--lifecycle-smoke" in OS.get_cmdline_user_args()
+	lobby_enabled = "--lobby-menu" in OS.get_cmdline_user_args()
 	var options := MatchSetup.parse_args(OS.get_cmdline_user_args(), catalog.entries)
 	if not options.error.is_empty():
 		on_error(options.error)
@@ -181,6 +263,7 @@ func _ready() -> void:
 	client.started.connect(on_started)
 	client.snapshot.connect(on_snapshot)
 	client.results.connect(func(f: Dictionary) -> void:
+		if lobby_enabled and phase != 3: return
 		round_results += 1
 		presentation.apply_state(f.state, client.actor_id)
 		pickups.apply_state(f.state)
@@ -193,7 +276,16 @@ func _ready() -> void:
 				on_error("Results did not disable controls")
 				return
 			request_restart())
-	if options.setup:
+	if lobby_enabled:
+		phase = -3
+		smoke = false
+		lifecycle_smoke = false
+		lobby_menu = LobbyMenu.new()
+		add_child(lobby_menu)
+		label.hide()
+		selector.hide()
+		combat_label.hide()
+	elif options.setup:
 		phase = -2 # Waiting for local choice: no connection and no handshake timer.
 		setup_menu = MatchSetup.new()
 		label.get_parent().get_parent().add_child(setup_menu)
@@ -229,6 +321,7 @@ func connect_selected_match() -> void:
 	label.text = "Connecting to isolated Node authority…"
 
 func on_started(_frame: Dictionary) -> void:
+	if lobby_enabled and phase not in [11, 12, 20, 3, 4]: return
 	# A host can start a new round without this client visiting results.
 	# Never carry interactive capture across an authoritative round boundary.
 	release_pointer()
@@ -253,8 +346,13 @@ func on_error(message: String) -> void:
 	pickups.clear_round()
 	combat.clear_round()
 	received_pose = false
+	if lobby_enabled and not client.room_id.is_empty(): client.send_frame({"type":"leave"})
 	client.disconnect_server()
 	label.text = message
+	if lobby_enabled:
+		lobby_clear()
+		phase = -1
+		label.hide()
 	release_pointer()
 	emit_boundary_trace("session_error")
 	if smoke or lifecycle_smoke:
@@ -262,6 +360,15 @@ func on_error(message: String) -> void:
 		get_tree().quit(1)
 
 func on_lobby(frame: Dictionary) -> void:
+	if lobby_enabled:
+		if phase not in [1, 2, 10, 11, 12, 20, 3, 4]: return
+		lobby_roster = frame.duplicate(true)
+		if is_instance_valid(lobby_menu): lobby_menu.show_roster(frame)
+		if frame.get("config") is Dictionary:
+			var problem := MatchSetup.validate(catalog.entries, current_id, str(frame.config.get("mode", "")))
+			if not problem.is_empty():
+				on_error(problem)
+				return
 	# Identity has already been updated by the validated network roster.
 	# Never use the previous actor's pose while waiting for the new snapshot.
 	if received_pose and pose_actor_id != client.actor_id:
@@ -278,6 +385,8 @@ func on_lobby(frame: Dictionary) -> void:
 		var queued: Error
 		if lifecycle_smoke:
 			queued = client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":selected_mode,"botCount":2,"timeLimit":60,"fragLimit":100}})
+		elif lobby_enabled:
+			queued = client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":selected_mode,"botCount":2,"timeLimit":60,"fragLimit":100}})
 		else:
 			queued = client.configure_match(selected_mode, 2)
 		if queued != OK:
@@ -288,6 +397,9 @@ func on_lobby(frame: Dictionary) -> void:
 		# Check an echoed mode without broadening the existing partial-envelope contract.
 		if not frame.config is Dictionary or (frame.config.has("mode") and frame.config.mode != selected_mode):
 			on_error("Authority returned a different match mode; start cancelled.")
+			return
+		if lobby_enabled:
+			phase = 12
 			return
 		if client.send_frame({"type":"start"}) != OK:
 			on_error("Initial round start could not be queued. Relaunch to reconnect.")
