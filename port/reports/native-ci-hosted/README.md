@@ -62,3 +62,13 @@ This includes completion replay/corruption22, queued-key release timing,
 LATTICE world contract18 and all five launcher routing tests. The lead watched
 completion and validated the downloaded report count/status. The report,
 console and artifact manifest are retained in `35680987135/`.
+
+## Linux package integration
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35682361375> at
+`e76e3b244d0a67272980b84368d7f700fac44633` **PASS**, all **63 gates**, in 3m32s.
+The new package-routing gate passes with the existing native suite. Actual
+release export, fresh-directory play and artifact cleanup remain independently
+verified in `../linux-package-independent/`, not attributed to this CI job.
+The lead watched completion, downloaded the artifact and checked report status
+and gate count. Report, console and manifest are retained in `35682361375/`.

@@ -285,7 +285,7 @@ The latest integrated run passes **63 gates**, including package routing, sports
 progression, LATTICE map selection, launcher routing, GLB material sides and
 projectile navigation. Native
 [GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
-also passed the preceding 62-gate snapshot from a fresh Ubuntu checkout.
+also passed the same 63-gate snapshot from a fresh Ubuntu checkout.
 
 Focused real-session and graphical evidence is documented in:
 
