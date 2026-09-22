@@ -1,0 +1,5 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true shots=true ack=15 snapshots=9 remote_poses=74 pickups=0 static_pickups_hidden=true combat_shots=1 map=ember-crucible mode=instagib
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)

@@ -53,9 +53,9 @@ static func parse_args(args: PackedStringArray, maps: Dictionary) -> Dictionary:
 
 func configure(maps: Dictionary, map_id: String, mode: String) -> void:
 	entries = maps
-	set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	position = Vector2(300, 150)
+	set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	custom_minimum_size = Vector2(680, 460)
+	size = custom_minimum_size
 	var background := StyleBoxFlat.new()
 	background.bg_color = Color(0.055, 0.07, 0.09, 1.0)
 	add_theme_stylebox_override("panel", background)
