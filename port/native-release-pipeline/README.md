@@ -51,6 +51,7 @@ Every file under `evidence/` is a real run against this checkout, not a fixture.
 | `refusal-verification-failed-state-runs/` | a real gate failure (`gltf-sides` in a fresh worktree without `node_modules`) hard-stopped the pipeline with the failing gate named |
 | `refusal-command-timeout-*` | a real hard stop: the rehearsal caught `--verify-timeout` reaching the process layer as milliseconds |
 | `probe-generation-failures-state-runs/` | the three probe-generation failures that exposed finding 4: `glb-import` missing probes, then Chromium absent for the locked Playwright revision, then the redirected `XDG_CACHE_HOME` hiding it |
+| `hosted-query-probe.log` | read-only proof that step 5's `gh run list`/`gh run view` fields match the real API; it also shows the last release needed three dispatches (two failures, then success), which is exactly what `--resume-from=verify` is for |
 | `package-rehearsal-console.log`, `-state-runs/` | the real thing: **138/138 gates** in 424 s (both GLB probes generated first), a **76.13 MiB** Windows ZIP whose SHA-256, sidecar and manifest were re-verified by the pipeline, the frozen port commit recorded, then a dry-run resume from `publish` that reused those records |
 | `run-dry-run.sh`, `run-package-rehearsal.sh` | the exact driver scripts, so every record can be reproduced |
 
