@@ -45,3 +45,16 @@ test('standalone selection rejects substitutions, unsupported modes and ignored 
   ])assert.throws(()=>launchOptions(args,catalog),Error,args.join(' '));
   assert.throws(()=>launchOptions(['--experience=sports'],{maps:[]}),/locked catalog/);
 });
+
+test('sports round options preserve legal ordinary configuration without silent clamping',()=>{
+  const race=launchOptions(['--experience=sports','--time-limit=90','--round-target=10'],catalog);
+  assert.deepEqual(race.sessionOptions,['--map=ion-speedway','--mode=puma-race','--time-limit=90','--round-target=10']);
+  const soccer=launchOptions(['--experience=sports','--map=aurora-stadium','--round-target','15','--time-limit','60'],catalog);
+  assert.deepEqual(soccer.sessionOptions,['--map=aurora-stadium','--mode=puma-soccer','--time-limit=60','--round-target=15']);
+  for(const extra of ['--time-limit=59','--time-limit=901','--time-limit=60.5','--round-target=0','--round-target=11','--round-target=abc']){
+    assert.throws(()=>launchOptions(['--experience=sports',extra],catalog));
+  }
+  assert.throws(()=>launchOptions(['--experience=sports','--map=aurora-stadium','--round-target=16'],catalog));
+  assert.throws(()=>launchOptions(['--time-limit=60'],catalog),/sports launcher/);
+  assert.throws(()=>launchOptions(['--experience=objectives','--round-target=1'],catalog),/sports launcher/);
+});

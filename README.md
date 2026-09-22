@@ -28,13 +28,13 @@ simulation lock and verification evidence remain reproducible.
 | Native presentation | All nine map environments, operator and pickup models, skies, lighting and landmarks |
 | Combat feedback | Reticle, confirmed-hit and damage indicators, source-driven projectiles and explosion flashes, procedural sound cues |
 | HUD and controls | Health/armor bars, named weapon/ammo display, number-key and wheel weapon selection, team scores and results scoreboard |
-| Puma sports demos | Ion Speedway racing and Aurora Stadium soccer: authoritative driving, compact sports HUD and wall-aware chase camera |
+| Puma sports demos | Ion Speedway racing and Aurora Stadium soccer: authoritative driving, next-checkpoint guidance, compact HUD, wall-aware chase, results and F5 restart |
 | Objective demos | Tidal Citadel CTF flag pickup/carry/drop and Sunscar Convoy Payload escort/idle, with source-driven objective markers and status |
 | LATTICE command demo | Asterion Relay and Monsoon Foundry: synchronized objective list/map, recipient-authorized resources, HOLD orders and PvP Fighter recruitment with explicit action receipts |
 | Session handling | Local server launcher, host setup, guest transport, stale-state handling, focus release, death/respawn and round-boundary control resets |
 
-The sports demos have bounded driving acceptance; completed laps, scored goals
-and sports results/restart remain work in progress. LATTICE is currently a
+Sports now have independent completed-lap and normal results/restart acceptance;
+local-driver soccer goals remain open. LATTICE is currently a
 standalone command board, with co-op orders but no co-op economy or native world
 interaction. CTF/Payload have bounded interaction acceptance; flag return/capture,
 payload contest/delivery and objective results/restart remain under development.
@@ -124,6 +124,11 @@ client or press Ctrl+C. The separate Python evidence launcher still uses a
 private project copy and an **80-second** bound. See the
 [driving handoff](port/native-puma-driving/HANDOFF.md) and
 [camera/HUD notes](port/native-sports-polish/HANDOFF.md).
+Ion shows the next source checkpoint and a mint directional frame. Both sports
+display authoritative results and support **F5** restart, followed by **Enter**
+and fresh movement keys. Optional `--time-limit=60..900` and `--round-target=N`
+set ordinary match limits (1..10 laps or 1..15 goals). See
+[progression verification](port/reports/sports-progression-independent/README.md).
 
 ### LATTICE command board
 
@@ -196,6 +201,7 @@ controls are not automatically replayed.
 Wait for the countdown, then press **Enter** to engage. Use **W/S** for
 forward/reverse, **A/D** to steer, **Space** to brake, **Shift** to boost and
 **Escape** to release. **R** requests a race reset on Ion Speedway.
+After results, **F5** starts a new round; press Enter and fresh movement keys.
 
 ## All nine DESTINATIONS maps
 
@@ -229,7 +235,7 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated run passes **52 gates**, including LATTICE map selection, common launcher routing,
+The latest integrated run passes **53 gates**, including sports progression, LATTICE map selection, common launcher routing,
 objective rendering/control/evidence, LATTICE and projectile navigation. Native
 [GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
 also passed the preceding 50-gate snapshot from a fresh Ubuntu checkout.
@@ -238,6 +244,7 @@ Focused real-session and graphical evidence is documented in:
 
 - [Rocket Arena and menu verification](port/reports/projectile-independent/README.md)
 - [Sports driving, HUD and camera verification](port/reports/sports-polish-independent/README.md)
+- [Sports lap, results and restart verification](port/reports/sports-progression-independent/README.md)
 - [Visible damage and health pickup verification](port/reports/native-health-hud-independent/README.md)
 - [LATTICE implementation and evidence](port/native-lattice/HANDOFF.md)
 - [LATTICE native mouse/key acceptance](port/reports/lattice-physical-independent/README.md)

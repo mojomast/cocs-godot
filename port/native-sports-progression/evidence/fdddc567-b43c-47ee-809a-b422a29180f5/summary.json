@@ -1,0 +1,118 @@
+{
+  "base": "e76acdbb48385c638b01a24e3c5997d6e1ce8353",
+  "classification": "real normal-rate owned server; native physical key events only; synthetic unit checks separately labeled",
+  "commands": [
+    [
+      "node",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/sports-progression-qrdklbel/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-qrdklbel/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-qrdklbel/godot",
+      "--script",
+      "res://tests/sports/test_controls.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-qrdklbel/godot",
+      "--script",
+      "res://tests/vehicles/test_puma.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-qrdklbel/godot",
+      "--script",
+      "res://tests/sports/test_polish.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-qrdklbel/godot",
+      "--script",
+      "res://tests/sports/progression_test.gd"
+    ],
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1280x800x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "node",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-sports-progression/server.mjs",
+      "/tmp/opencode/sports-progression-qrdklbel",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-sports-progression/evidence/fdddc567-b43c-47ee-809a-b422a29180f5/aurora-stadium-1280x800/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/sports-progression-qrdklbel/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/sports/progression_observe.gd",
+      "--",
+      "--map=aurora-stadium",
+      "--endpoint=ws://127.0.0.1:33827",
+      "--time-limit=60",
+      "--round-target=15",
+      "--progression-out=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-sports-progression/evidence/fdddc567-b43c-47ee-809a-b422a29180f5/aurora-stadium-1280x800"
+    ]
+  ],
+  "cases": [
+    {
+      "map": "aurora-stadium",
+      "resolution": "1280x800",
+      "timeLimit": 60,
+      "captures": [
+        "countdown",
+        "driving",
+        "results",
+        "restart-countdown",
+        "restart-held-blocked",
+        "restart-enter-neutral",
+        "restart-fresh-driving"
+      ],
+      "receivedInputs": 1699,
+      "neutralBeforeFresh": 117,
+      "neutralAfterResults": 2,
+      "sourceElapsedPerWallSecond": 1.0029268129515654,
+      "maxLaps": 0,
+      "goals": [],
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    }
+  ],
+  "hashManifestSHA256": "121afbbd5e0cdb3d9d77f4d15f628fd266b8b90db0cbad14c2ad06bbfe2cdde0",
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}

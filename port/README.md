@@ -81,8 +81,10 @@ evidence helpers retain their bounded observation windows. See
   On your deliberately selected display: wait for countdown, Enter to engage,
   WASD to drive, Space brake, Shift boost, Escape release, R race reset.
   The standalone launcher is bounded to 80 seconds by default. These sports
-  scenes remain separate from the infantry setup menu; complete laps, goals,
-  results/restart and human camera usability are not yet accepted.
+  scenes remain separate from the infantry setup menu. Next-checkpoint guidance,
+  completed Ion laps and natural time-limit results/F5 restart now independently
+  pass; local-driver soccer goals and human camera usability remain open. See
+  [progression evidence](reports/sports-progression-independent/README.md).
 
 - **LATTICE command board:** standalone Asterion Relay and Monsoon Foundry UI
   supports recipient-visible objectives/resources, HOLD orders and PvP Fighter
@@ -105,8 +107,8 @@ evidence helpers retain their bounded observation windows. See
   contest/delivery and objective results/restart remain open. See
   [independent evidence](reports/objective-independent/README.md).
 
-**Combined verification: all 52 implemented gates pass** after LATTICE tactical-map
-integration at `c982d25` plus the map-gate changes
+**Combined verification: all 53 implemented gates pass** after sports progression
+integration at `e76acdb` plus sports configuration and audio-fixture changes
 recorded with this batch. Independent driving passed on both sports maps;
 the default compact HUD's nonlethal damage/+35 HP/12-second return was also
 independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).

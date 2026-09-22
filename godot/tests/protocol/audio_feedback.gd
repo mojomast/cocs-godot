@@ -20,6 +20,14 @@ func playing(feedback: Node, cue: String = "") -> int:
 func _initialize() -> void:
 	call_deferred("run")
 
+func wait_for(condition: Callable, timeout_ms: int = 2000) -> bool:
+	# Audio mixing uses its own clock/thread. A SceneTree timer does not prove
+	# that Dummy playback has drained, especially on a contended hosted runner.
+	var deadline := Time.get_ticks_msec() + timeout_ms
+	while not condition.call() and Time.get_ticks_msec() < deadline:
+		await process_frame
+	return condition.call()
+
 func run() -> void:
 	var feedback := Feedback.new()
 	root.add_child(feedback)
@@ -58,7 +66,9 @@ func run() -> void:
 	for index: int in range(100):
 		feedback.apply_events([{"type":"shot","actor":0},{"type":"damage","actor":1,"source":0,"amount":2},{"type":"damage","actor":0,"amount":2},{"type":"pickup","actor":0}], 0)
 	check(playing(feedback) == 4 and feedback.get_child_count() == 8, "event burst rate caps preserve bounded mix")
-	await create_timer(0.16).timeout
+	check(await wait_for(func() -> bool:
+		return playing(feedback, "shot") == 0 and Time.get_ticks_usec() - int(feedback._last_play_usec.shot) >= int(Feedback.INTERVAL_USEC.shot)
+	), "original shot naturally ends and real monotonic cooldown expires within two seconds")
 	feedback.apply_events([{"type":"shot","actor":0}], 0)
 	check(playing(feedback, "shot") == 1, "shot available again after original ends and monotonic cooldown")
 	feedback.clear_round()
@@ -74,8 +84,7 @@ func run() -> void:
 	feedback.set_muted(false)
 	feedback.apply_events([{"type":"pickup","actor":0}], 0)
 	check(playing(feedback, "pickup") == 1, "unmute resumes feedback")
-	await create_timer(0.35).timeout
-	check(playing(feedback) == 0, "one-shot playback naturally finishes with Dummy driver")
+	check(await wait_for(func() -> bool: return playing(feedback) == 0), "one-shot playback naturally finishes with Dummy driver within two seconds")
 	for voice: AudioStreamPlayer in feedback.get_children():
 		voice.stream = feedback._sounds.pickup
 		voice.play()

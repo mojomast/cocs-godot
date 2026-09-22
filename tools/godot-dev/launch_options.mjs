@@ -10,7 +10,7 @@ export function launchOptions(argv, catalog) {
   const values = {}, flags = new Set(), sessionOptions = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['map','mode','experience'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
+    const key = ['map','mode','experience','time-limit','round-target'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       if (!value || value.startsWith('--')) throw Error(`--${key} requires a value`);
@@ -27,6 +27,11 @@ export function launchOptions(argv, catalog) {
   const experience = values.experience ?? 'combat';
   const selected = Object.hasOwn(EXPERIENCES, experience) ? EXPERIENCES[experience] : null;
   if (!selected) throw Error(`Unknown experience: ${experience}. Choose ${Object.keys(EXPERIENCES).join(', ')}.`);
+  for (const key of ['time-limit','round-target']) {
+    if (values[key] === undefined) continue;
+    if (experience !== 'sports') throw Error(`--${key} is supported only by the sports launcher`);
+    if (!/^\d+$/.test(values[key])) throw Error(`--${key} must be a whole number`);
+  }
   if (experience !== 'combat') {
     for (const arg of ['--setup','--native-trace','--debug-hud',...smokeFlags]) {
       if (flags.has(arg)) throw Error(`${arg} is supported only by the combat launcher`);
@@ -41,7 +46,14 @@ export function launchOptions(argv, catalog) {
     const locked = catalog.maps.find(map => map.id === values.map);
     if (!locked?.supported_modes.includes(values.mode)) throw Error('Selected map/mode is not in the locked catalog');
   }
-  for (const key of ['map','mode']) if (values[key]) sessionOptions.push(`--${key}=${values[key]}`);
+  if (values['time-limit'] !== undefined && (Number(values['time-limit']) < 60 || Number(values['time-limit']) > 900)) {
+    throw Error('--time-limit must be 60..900 seconds');
+  }
+  const maxTarget = values.map === 'ion-speedway' ? 10 : 15;
+  if (values['round-target'] !== undefined && (Number(values['round-target']) < 1 || Number(values['round-target']) > maxTarget)) {
+    throw Error(`--round-target must be 1..${maxTarget} for the selected sports map`);
+  }
+  for (const key of ['map','mode','time-limit','round-target']) if (values[key]) sessionOptions.push(`--${key}=${values[key]}`);
   for (const flag of ['--setup','--native-trace','--mute','--debug-hud']) if (flags.has(flag)) sessionOptions.push(flag);
   const smoke = smokeFlags[0];
   const args = smoke === '--network-smoke'
@@ -66,6 +78,7 @@ Interactive sessions have no harness deadline. With no options, open the map vie
 
 Combat: --map, --mode, --setup, --mute, --debug-hud, --native-trace
 Sports: ion-speedway (puma-race), aurora-stadium (puma-soccer)
+  Optional --time-limit=60..900 and --round-target=1..10 laps or 1..15 goals
 Objectives: tidal-citadel (ctf), sunscar-convoy (payload)
 LATTICE: asterion-relay or monsoon-foundry; --mode=cocs or cocs-coop
   Click Connect / start in the command board to begin.

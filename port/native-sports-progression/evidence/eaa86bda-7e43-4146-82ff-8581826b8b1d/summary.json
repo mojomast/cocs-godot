@@ -1,0 +1,120 @@
+{
+  "base": "e76acdbb48385c638b01a24e3c5997d6e1ce8353",
+  "classification": "real normal-rate owned server; native physical key events only; synthetic unit checks separately labeled",
+  "commands": [
+    [
+      "node",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/sports-progression-hgdccsz6/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-hgdccsz6/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-hgdccsz6/godot",
+      "--script",
+      "res://tests/sports/test_controls.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-hgdccsz6/godot",
+      "--script",
+      "res://tests/vehicles/test_puma.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-hgdccsz6/godot",
+      "--script",
+      "res://tests/sports/test_polish.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/sports-progression-hgdccsz6/godot",
+      "--script",
+      "res://tests/sports/progression_test.gd"
+    ],
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1280x800x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "node",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-sports-progression/server.mjs",
+      "/tmp/opencode/sports-progression-hgdccsz6",
+      "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-sports-progression/evidence/eaa86bda-7e43-4146-82ff-8581826b8b1d/ion-speedway-960x640/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/sports-progression-hgdccsz6/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "960x640",
+      "--script",
+      "res://tests/sports/progression_observe.gd",
+      "--",
+      "--map=ion-speedway",
+      "--endpoint=ws://127.0.0.1:45469",
+      "--time-limit=90",
+      "--round-target=10",
+      "--progression-out=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-sports-progression/evidence/eaa86bda-7e43-4146-82ff-8581826b8b1d/ion-speedway-960x640"
+    ]
+  ],
+  "cases": [
+    {
+      "map": "ion-speedway",
+      "resolution": "960x640",
+      "timeLimit": 90,
+      "captures": [
+        "countdown",
+        "checkpoint",
+        "driving",
+        "lap",
+        "results",
+        "restart-countdown",
+        "restart-held-blocked",
+        "restart-enter-neutral",
+        "restart-fresh-driving"
+      ],
+      "receivedInputs": 2171,
+      "neutralBeforeFresh": 99,
+      "neutralAfterResults": 1,
+      "sourceElapsedPerWallSecond": 1.0055069284323164,
+      "maxLaps": 1,
+      "goals": [],
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    }
+  ],
+  "hashManifestSHA256": "121afbbd5e0cdb3d9d77f4d15f628fd266b8b90db0cbad14c2ad06bbfe2cdde0",
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}

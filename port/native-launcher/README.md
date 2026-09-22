@@ -18,6 +18,9 @@ PORT=0 node tools/godot-dev/launch.mjs --experience=lattice --map=monsoon-foundr
 ```
 
 Sports mode is fixed by the map; objectives likewise select CTF or Payload.
+Sports additionally accepts ordinary host options `--time-limit=60..900` and
+`--round-target=N` (1..10 laps for Ion, 1..15 goals for Aurora). The launcher
+rejects out-of-range/non-integer values instead of silently changing them.
 LATTICE defaults to PvP (`cocs`); Connect / start remains an explicit native UI
 action. No new map/mode is enabled in the infantry setup menu. Omitting all
 arguments still opens the offline map viewer. `--help` works without a Godot
@@ -35,9 +38,9 @@ node --test tools/godot-dev/launch_options.test.mjs
 python3 -B port/native-launcher/verify.py
 ```
 
-The three routing regressions cover all supported standalone map/mode pairs,
+The four routing regressions cover all supported standalone map/mode pairs,
 actual scene-file existence, unchanged viewer/combat/smoke arguments, defaults,
-invalid/missing/duplicate options and locked-catalog exclusion.
+invalid/missing/duplicate options, legal sports round limits and locked-catalog exclusion.
 
 Startup evidence: [`1790041833825798250`](evidence/1790041833825798250/summary.json).
 All **six standalone maps passed** against the actual launcher and pinned native

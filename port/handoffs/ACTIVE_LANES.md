@@ -6,7 +6,7 @@ updates root documentation/shared verification and owns publication.
 
 | Lane | Owner / baseline | Reserved files |
 |---|---|---|
-| Sports progression, checkpoints, results/restart | Internal agent; `8094d41` | `godot/sports/`, new progression tests in `godot/tests/sports/`, `port/native-sports-progression/` |
+| Soccer targeting / local goal play | Internal follow-up; `e76acdb` | New sports soccer guidance with narrow HUD/demo integration, new soccer tests, `port/native-soccer-play/` |
 | Objective progression / HUD polish | Internal follow-up; `d498479` | `godot/objectives/`, new progression tests in `godot/tests/objectives/`, `port/native-objective-progression/` |
 | LATTICE co-op recruitment | Internal agent; `c982d25` | Narrow board/transport, new economy tests and tools, genuinely affected original UI expectations, `port/native-lattice-economy/` |
 | GLB material-side export correction | Internal agent; `c982d25` | Export harness/side helpers, narrow browser exporter, new side tests, `port/native-glb-side/` |
@@ -22,6 +22,8 @@ The native CI lane is delivered as `3d6de79` and integrated at `a12d89f`.
 The LATTICE tactical map is delivered as `596325d`, integrated at `c982d25` and
 independently accepted through both Map and original List native-input paths.
 The lead owns common launcher routing, verification, root docs and publication.
+The sports progression lane is delivered as `0a07f5c` and integrated at
+`e76acdb`; the lead is reproducing full-lap and round-lifecycle claims separately.
 
 External tasks have complete scope/commands in
 `external-native-objective-gameplay.md` and

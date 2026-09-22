@@ -1,0 +1,51 @@
+[
+  {
+    "name": "normal",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/audio_feedback.gd"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "fixed-240",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/audio_feedback.gd",
+      "--fixed-fps",
+      "240"
+    ],
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "name": "fixed-30",
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/audio_feedback.gd",
+      "--fixed-fps",
+      "30"
+    ],
+    "exit": 0,
+    "passed": true
+  }
+]
