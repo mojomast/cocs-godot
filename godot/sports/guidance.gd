@@ -82,7 +82,9 @@ static func describe(race: Dictionary, actor_id: int, vehicle: Dictionary) -> St
 	if target.is_empty() or vehicle.is_empty(): return ""
 	var gate: Dictionary = target.gate
 	var offset := Vector2(float(gate.x)-float(vehicle.x), float(gate.z)-float(vehicle.z))
-	var bearing := wrapf(atan2(offset.x, offset.y)-float(vehicle.yaw), -PI, PI)
+	var yaw := float(vehicle.yaw)
+	# Chase looks along (sin(yaw), 0, cos(yaw)); screen-right is (-cos, 0, sin).
+	var bearing := atan2(offset.dot(Vector2(-cos(yaw), sin(yaw))), offset.dot(Vector2(sin(yaw), cos(yaw))))
 	var direction := "Ahead" if absf(bearing) < 0.22 else ("Right" if bearing > 0 else "Left")
 	if absf(bearing) > 2.4: direction = "Behind"
 	return "Next gate %d · %s · %.0f m · Follow the mint arrow through" % [target.index+1, direction, offset.length()]

@@ -77,7 +77,9 @@ static func select(state: Dictionary, actor_id: int, vehicle: Dictionary, active
 
 static func bearing(target: Dictionary, vehicle: Dictionary) -> String:
 	var offset := Vector2(float(target.x)-float(vehicle.x), float(target.z)-float(vehicle.z))
-	var angle := wrapf(atan2(offset.x, offset.y)-float(vehicle.yaw), -PI, PI)
+	var yaw := float(vehicle.yaw)
+	# Chase looks along (sin(yaw), 0, cos(yaw)); screen-right is (-cos, 0, sin).
+	var angle := atan2(offset.dot(Vector2(-cos(yaw), sin(yaw))), offset.dot(Vector2(sin(yaw), cos(yaw))))
 	var direction := "Ahead" if absf(angle) < 0.22 else ("Right" if angle > 0 else "Left")
 	if absf(angle) > 2.4: direction = "Behind"
 	return "%s · %.0f m" % [direction, offset.length()]

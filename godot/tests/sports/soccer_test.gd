@@ -66,8 +66,9 @@ func run() -> void:
 		marker.apply(bad, 7, v, true)
 		check(not marker.visible and marker.selection.is_empty(), "invalid/missing replacement clears old target: " + mutation)
 	check(Guidance.bearing({"x":-20,"z":0}, v).begins_with("Behind"), "behind ball not forward arrow")
-	check(Guidance.bearing({"x":-10,"z":10}, v).begins_with("Left"), "heading-relative left")
-	check(Guidance.bearing({"x":-10,"z":-10}, v).begins_with("Right"), "heading-relative right")
+	# At yaw PI/2 the chase camera looks +X: +Z is screen-right, -Z screen-left.
+	check(Guidance.bearing({"x":-10,"z":10}, v).begins_with("Right"), "+X heading: +Z projects right")
+	check(Guidance.bearing({"x":-10,"z":-10}, v).begins_with("Left"), "+X heading: -Z projects left")
 	var hud := HUD.new()
 	root.add_child(hud)
 	var view := {"mode":"puma-soccer", "state":state, "phase":"active", "age":0, "soccer_guidance":Guidance.select(state, 7, v, true)}
