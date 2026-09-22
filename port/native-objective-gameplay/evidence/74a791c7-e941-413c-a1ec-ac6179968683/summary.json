@@ -1,0 +1,25 @@
+{
+  "map": "tidal-citadel",
+  "base": "8e91969ca0d55938c25198c34ff158dd7195be20",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "acceptance": true,
+  "exit": 0,
+  "reason": "bounded observation passed",
+  "snapshots": 597,
+  "inputs": 1134,
+  "normalRate": true,
+  "nativeCompletionProven": false,
+  "cleanup": [
+    {
+      "pid": 2445433,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 2445440,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "sockets": 0
+}

@@ -1,0 +1,39 @@
+{
+  "map": "sunscar-convoy",
+  "runtimeHashes": {
+    "godot/objectives/demo.gd": "b51103f838bcdb7e637334abd4ac4cf60edd2d6228901131eabb1309cb1f29d0",
+    "godot/objectives/renderer.gd": "9af0da9befea063568f46a6836d34d0b6a4ae9fdb9c3c35b649a659e510e7eb4",
+    "godot/tests/objectives/live.gd": "7378ea5f6cd05d900b0871beb5658cd40e9d9d1f50429d36a1d9d0d99562303d",
+    "godot/world/session.gd": "e95488d806259967f0688a246b633c63fa16a685fa83ff7f7f530ad2a5992f41",
+    "godot/world/viewer.gd": "a1a264134e0876b2cb93382d049b20a3ae91ca65c595d397772ac383c1d2c8b7",
+    "godot/world/presentation.gd": "73fde7e91f38a302971452726adca5896208517936559954760e6385d4680240",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb"
+  },
+  "deadline": 180000,
+  "base": "8e91969ca0d55938c25198c34ff158dd7195be20",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "acceptance": true,
+  "exit": 0,
+  "reason": "bounded observation passed",
+  "snapshots": 55,
+  "inputs": 68,
+  "normalRate": true,
+  "nativeCompletionProven": false,
+  "cleanup": [
+    {
+      "pid": 2516398,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 2516405,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "serverClosed": true,
+  "temporaryTreeRemoved": true,
+  "sockets": 0
+}

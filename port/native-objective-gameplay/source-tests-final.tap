@@ -1,0 +1,370 @@
+TAP version 13
+# (node:2510176) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./port/tools/native_objective_demo/dependencies.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the nine destination maps are registered once, immutable and explicitly classified
+ok 1 - the nine destination maps are registered once, immutable and explicitly classified
+  ---
+  duration_ms: 1.130889
+  type: 'test'
+  ...
+# Subtest: destination eligibility covers all 23 modes without implicit fallback permissions
+ok 2 - destination eligibility covers all 23 modes without implicit fallback permissions
+  ---
+  duration_ms: 32.423886
+  type: 'test'
+  ...
+# Subtest: destination schema and static geometry budget: meridian-exchange
+ok 3 - destination schema and static geometry budget: meridian-exchange
+  ---
+  duration_ms: 1.144545
+  type: 'test'
+  ...
+# Subtest: destination schema and static geometry budget: verdant-reliquary
+ok 4 - destination schema and static geometry budget: verdant-reliquary
+  ---
+  duration_ms: 1.090103
+  type: 'test'
+  ...
+# Subtest: destination schema and static geometry budget: ember-crucible
+ok 5 - destination schema and static geometry budget: ember-crucible
+  ---
+  duration_ms: 0.751308
+  type: 'test'
+  ...
+# Subtest: destination schema and static geometry budget: tidal-citadel
+ok 6 - destination schema and static geometry budget: tidal-citadel
+  ---
+  duration_ms: 1.148883
+  type: 'test'
+  ...
+# Subtest: destination schema and static geometry budget: sunscar-convoy
+ok 7 - destination schema and static geometry budget: sunscar-convoy
+  ---
+  duration_ms: 1.236117
+  type: 'test'
+  ...
+# Subtest: destination schema and static geometry budget: asterion-relay
+ok 8 - destination schema and static geometry budget: asterion-relay
+  ---
+  duration_ms: 3.438774
+  type: 'test'
+  ...
+# Subtest: destination schema and static geometry budget: monsoon-foundry
+ok 9 - destination schema and static geometry budget: monsoon-foundry
+  ---
+  duration_ms: 2.859888
+  type: 'test'
+  ...
+# Subtest: destination schema and static geometry budget: ion-speedway
+ok 10 - destination schema and static geometry budget: ion-speedway
+  ---
+  duration_ms: 0.304771
+  type: 'test'
+  ...
+# Subtest: destination schema and static geometry budget: aurora-stadium
+ok 11 - destination schema and static geometry budget: aurora-stadium
+  ---
+  duration_ms: 0.113843
+  type: 'test'
+  ...
+# Subtest: destination sports are exclusive and leave the established fallback maps intact
+ok 12 - destination sports are exclusive and leave the established fallback maps intact
+  ---
+  duration_ms: 0.627957
+  type: 'test'
+  ...
+# Subtest: Ion Speedway authors ordered gates, a full grid and finite track furniture
+ok 13 - Ion Speedway authors ordered gates, a full grid and finite track furniture
+  ---
+  duration_ms: 0.308278
+  type: 'test'
+  ...
+# Subtest: Aurora Stadium supplies centered kickoff, opposing goals and two slots per team
+ok 14 - Aurora Stadium supplies centered kickoff, opposing goals and two slots per team
+  ---
+  duration_ms: 0.131446
+  type: 'test'
+  ...
+# Subtest: both destination theatres supply real lattices and the Operations HQ contract
+ok 15 - both destination theatres supply real lattices and the Operations HQ contract
+  ---
+  duration_ms: 7.178661
+  type: 'test'
+  ...
+# (node:2510177) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./port/tools/native_objective_demo/dependencies.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: objective floor markers are depth-tested so bots occlude them
+ok 16 - objective floor markers are depth-tested so bots occlude them
+  ---
+  duration_ms: 3.13803
+  type: 'test'
+  ...
+# Subtest: a contested zone pulses and never hides its owner mark
+ok 17 - a contested zone pulses and never hides its owner mark
+  ---
+  duration_ms: 1.290178
+  type: 'test'
+  ...
+# Subtest: a thin always-visible beacon cue survives the depth fix
+ok 18 - a thin always-visible beacon cue survives the depth fix
+  ---
+  duration_ms: 4.30679
+  type: 'test'
+  ...
+# (node:2510178) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./port/tools/native_objective_demo/dependencies.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: payload swept ground route: launchpad
+ok 19 - payload swept ground route: launchpad
+  ---
+  duration_ms: 34.927597
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: citadel
+ok 20 - payload swept ground route: citadel
+  ---
+  duration_ms: 14.35599
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: blood-gulch
+ok 21 - payload swept ground route: blood-gulch
+  ---
+  duration_ms: 361.837079
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: sunscar-canyon
+ok 22 - payload swept ground route: sunscar-canyon
+  ---
+  duration_ms: 68.473735
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: frostline
+ok 23 - payload swept ground route: frostline
+  ---
+  duration_ms: 427.192081
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: derelict-station
+ok 24 - payload swept ground route: derelict-station
+  ---
+  duration_ms: 327.398849
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: ashen-rift
+ok 25 - payload swept ground route: ashen-rift
+  ---
+  duration_ms: 376.869807
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: neon-vertical
+ok 26 - payload swept ground route: neon-vertical
+  ---
+  duration_ms: 50.485479
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: substation
+ok 27 - payload swept ground route: substation
+  ---
+  duration_ms: 47.377546
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: warfront
+ok 28 - payload swept ground route: warfront
+  ---
+  duration_ms: 82.792707
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: skyfall-basin
+ok 29 - payload swept ground route: skyfall-basin
+  ---
+  duration_ms: 118.63592
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: trenchline
+ok 30 - payload swept ground route: trenchline
+  ---
+  duration_ms: 123.258832
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: signal-ridge
+ok 31 - payload swept ground route: signal-ridge
+  ---
+  duration_ms: 111.700655
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: frost-gate
+ok 32 - payload swept ground route: frost-gate
+  ---
+  duration_ms: 73.952282
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: sunken-hill
+ok 33 - payload swept ground route: sunken-hill
+  ---
+  duration_ms: 42.36337
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: riverbend
+ok 34 - payload swept ground route: riverbend
+  ---
+  duration_ms: 53.881303
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: atrium
+ok 35 - payload swept ground route: atrium
+  ---
+  duration_ms: 47.669643
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: titan-valley
+ok 36 - payload swept ground route: titan-valley
+  ---
+  duration_ms: 86.488662
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: convoy-line
+ok 37 - payload swept ground route: convoy-line
+  ---
+  duration_ms: 77.961694
+  type: 'test'
+  ...
+# Subtest: payload swept ground route: sunscar-convoy
+ok 38 - payload swept ground route: sunscar-convoy
+  ---
+  duration_ms: 140.906921
+  type: 'test'
+  ...
+# Subtest: payload detours around a solid deck and rejects a traversal shortcut
+ok 39 - payload detours around a solid deck and rejects a traversal shortcut
+  ---
+  duration_ms: 6.965912
+  type: 'test'
+  ...
+# Subtest: payload rejects disconnected walking routes instead of crossing a wall
+ok 40 - payload rejects disconnected walking routes instead of crossing a wall
+  ---
+  duration_ms: 0.498093
+  type: 'test'
+  ...
+# Subtest: payload samples curved ground at the current position, not interpolated anchor heights
+ok 41 - payload samples curved ground at the current position, not interpolated anchor heights
+  ---
+  duration_ms: 0.519574
+  type: 'test'
+  ...
+# Subtest: static route cache skips validation while keeping match state and checkpoint counts independent
+ok 42 - static route cache skips validation while keeping match state and checkpoint counts independent
+  ---
+  duration_ms: 8.78415
+  type: 'test'
+  ...
+# Subtest: mutable fixture navigation does not cache changing arena geometry
+ok 43 - mutable fixture navigation does not cache changing arena geometry
+  ---
+  duration_ms: 4.27488
+  type: 'test'
+  ...
+# (node:2510180) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./port/tools/native_objective_demo/dependencies.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: payload config exposes the mode with sane checkpoint limits
+ok 44 - payload config exposes the mode with sane checkpoint limits
+  ---
+  duration_ms: 1.27017
+  type: 'test'
+  ...
+# Subtest: launcher-only island maps remain available for combat but not payload selection
+ok 45 - launcher-only island maps remain available for combat but not payload selection
+  ---
+  duration_ms: 3.462348
+  type: 'test'
+  ...
+# Subtest: payload template builds an anchored route with ordered checkpoints
+ok 46 - payload template builds an anchored route with ordered checkpoints
+  ---
+  duration_ms: 2.707273
+  type: 'test'
+  ...
+# Subtest: payload pace targets a 90-240s unopposed route and is never instant
+ok 47 - payload pace targets a 90-240s unopposed route and is never instant
+  ---
+  duration_ms: 15.251809
+  type: 'test'
+  ...
+# Subtest: attackers advance the cart and bank checkpoints
+ok 48 - attackers advance the cart and bank checkpoints
+  ---
+  duration_ms: 13.332011
+  type: 'test'
+  ...
+# Subtest: core accumulates cart time for attackers standing on the payload
+ok 49 - core accumulates cart time for attackers standing on the payload
+  ---
+  duration_ms: 116.390592
+  type: 'test'
+  ...
+# Subtest: payload objective credit requires an actor at cart height
+ok 50 - payload objective credit requires an actor at cart height
+  ---
+  duration_ms: 0.375934
+  type: 'test'
+  ...
+# Subtest: defenders stall the cart and roll it back to the last checkpoint
+ok 51 - defenders stall the cart and roll it back to the last checkpoint
+  ---
+  duration_ms: 4.987676
+  type: 'test'
+  ...
+# Subtest: a contested cart freezes until one side holds it
+ok 52 - a contested cart freezes until one side holds it
+  ---
+  duration_ms: 0.356478
+  type: 'test'
+  ...
+# Subtest: delivery reaches the total distance and declares the attacker winner
+ok 53 - delivery reaches the total distance and declares the attacker winner
+  ---
+  duration_ms: 2.830143
+  type: 'test'
+  ...
+# Subtest: payload matches run to completion on supported arenas and publish a payload snapshot
+ok 54 - payload matches run to completion on supported arenas and publish a payload snapshot
+  ---
+  duration_ms: 1432.013091
+  type: 'test'
+  ...
+# Subtest: payload checkpoints never sit at zero distance or score while idle
+ok 55 - payload checkpoints never sit at zero distance or score while idle
+  ---
+  duration_ms: 72.319662
+  type: 'test'
+  ...
+# Subtest: a payload timeout hands the round to the defenders
+ok 56 - a payload timeout hands the round to the defenders
+  ---
+  duration_ms: 74.214863
+  type: 'test'
+  ...
+# Subtest: defenders bank the same cart objective time as attackers while contested
+ok 57 - defenders bank the same cart objective time as attackers while contested
+  ---
+  duration_ms: 6.459614
+  type: 'test'
+  ...
+# Subtest: a payload contest announces one bucketed beat per entry
+ok 58 - a payload contest announces one bucketed beat per entry
+  ---
+  duration_ms: 5.372697
+  type: 'test'
+  ...
+1..58
+# tests 58
+# suites 0
+# pass 58
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3499.329321

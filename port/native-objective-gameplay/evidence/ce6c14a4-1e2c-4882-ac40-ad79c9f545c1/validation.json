@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "matches": 55,
+  "carried": false,
+  "dropped": false,
+  "push": true,
+  "idle": true,
+  "ackHighWater": 70,
+  "receivedInputs": 72,
+  "nativeCompletionProven": false
+}
