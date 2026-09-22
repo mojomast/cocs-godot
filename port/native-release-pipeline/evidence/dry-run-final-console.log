@@ -1,0 +1,43 @@
+COCS release pipeline — tag=release-pipeline-final-2026-09-22 target=windows mode=DRY-RUN
+  state    /tmp/opencode/cocs-release-release-pipeline-final-2026-09-22 (created, append-only)
+  run      runs/20260922T184226Z-2874419
+[1/6] preflight
+  warn     HEAD is detached; releasing the commit directly (no local branch recorded)
+  HEAD     37b1151c92f6 (detached)
+  tag      release-pipeline-final-2026-09-22 is free on godot and in mojomast/cocs-godot
+  warn     4 untracked non-runtime path(s) recorded: port/native-identity-maps/evidence/graybox-1790098947366.json, port/native-identity-maps/evidence/graybox-1790099951471.json, port/native-identity-maps/evidence/ray-report-1790098949024.json, port/native-identity-maps/evidence/ray-report-1790099952873.json
+  tree     clean (51 verification report file(s) exempt, 4 untracked recorded)
+  warn     .port-runtime exists (gitignored verification default); this run overrides XDG_* into its own state
+  godot    4.5.2.stable.official.6ce3de25a (/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64)
+  archive  editor.zip 67.3 MiB sha512 ✓
+  archive  templates.tpz 1290.4 MiB sha512 ✓
+  notes    port/combat-expansion/RELEASE_NOTES.md (4573 bytes) title "COCS: DESTINATIONS — combat expansion (development prerelease)"
+  workflow windows-demo.yml on ref main (tag input present)
+  warn     frozen commit 37b1151c92f6 is not on godot yet; the tag would target refs/heads/main instead
+  ✔ preflight 2.55s (ok)
+[2/6] verification
+  env      GODOT_BIN, PORT=0, TMPDIR=/tmp/opencode, XDG_* under runtime
+  prepare  Playwright browsers: /home/mojo/.cache/ms-playwright
+  DRY-RUN  python3 tools/godot-dev/verify.py
+  ○ verification 0.01s (skipped-dry-run)
+[3/6] package
+  state    /tmp/opencode/cocs-release-release-pipeline-final-2026-09-22/package-state
+  DRY-RUN  python3 tools/godot-package/build.py --target windows --state /tmp/opencode/cocs-release-release-pipeline-final-2026-09-22/package-state --archive-directory /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain --operator-models source-operators
+  ○ package 0.01s (skipped-dry-run)
+[4/6] publish
+  archive  (planned by the package step; no bytes to publish in a dry run)
+  target   refs/heads/main
+  DRY-RUN  gh release create release-pipeline-final-2026-09-22 "cocs-native-<target>.zip" "cocs-native-<target>.zip.sha256" --repo mojomast/cocs-godot --title "COCS: DESTINATIONS — combat expansion (development prerelease)" --notes-file /tmp/opencode/cocs-release-rehearsal/port/combat-expansion/RELEASE_NOTES.md --prerelease --target refs/heads/main
+  ○ publish 0s (skipped-dry-run)
+[5/6] verify
+  DRY-RUN  gh workflow run windows-demo.yml --repo mojomast/cocs-godot --ref main -f tag=release-pipeline-final-2026-09-22
+  note     dry run: the hosted run URL only exists after an --execute publish
+  ○ verify 0.01s (skipped-dry-run)
+[6/6] push
+  DRY-RUN  git push godot 37b1151c92f681e959617564510a034e0d54953b:refs/heads/main
+  note     dry run: the push above is planned and only happens after a passing hosted run
+  ○ push 0s (skipped-dry-run)
+
+DRY RUN complete — no build, release, workflow dispatch or push was performed.
+Re-run with --execute to perform the 6 steps.
+summary: /tmp/opencode/cocs-release-release-pipeline-final-2026-09-22/runs/20260922T184226Z-2874419/summary.json

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "step": "package",
+  "index": 3,
+  "status": "skipped-dry-run",
+  "dry_run": true,
+  "started_at": "2026-09-22T18:42:28.590Z",
+  "finished_at": "2026-09-22T18:42:28.595Z",
+  "duration_seconds": 0.01,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "python3",
+      "args": [
+        "tools/godot-package/build.py",
+        "--target",
+        "windows",
+        "--state",
+        "/tmp/opencode/cocs-release-release-pipeline-final-2026-09-22/package-state",
+        "--archive-directory",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain",
+        "--operator-models",
+        "source-operators"
+      ],
+      "side_effect": true,
+      "executed": false,
+      "planned": true,
+      "exit_code": null,
+      "duration_seconds": null,
+      "timed_out": false
+    }
+  ],
+  "detail": {
+    "planned": true,
+    "target": "windows",
+    "command": "python3 tools/godot-package/build.py --target windows --state /tmp/opencode/cocs-release-release-pipeline-final-2026-09-22/package-state --archive-directory /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain --operator-models source-operators"
+  }
+}

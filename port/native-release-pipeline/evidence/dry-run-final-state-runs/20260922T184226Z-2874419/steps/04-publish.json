@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "step": "publish",
+  "index": 4,
+  "status": "skipped-dry-run",
+  "dry_run": true,
+  "started_at": "2026-09-22T18:42:28.595Z",
+  "finished_at": "2026-09-22T18:42:28.599Z",
+  "duration_seconds": 0,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "gh",
+      "args": [
+        "release",
+        "create",
+        "release-pipeline-final-2026-09-22",
+        "cocs-native-<target>.zip",
+        "cocs-native-<target>.zip.sha256",
+        "--repo",
+        "mojomast/cocs-godot",
+        "--title",
+        "COCS: DESTINATIONS — combat expansion (development prerelease)",
+        "--notes-file",
+        "/tmp/opencode/cocs-release-rehearsal/port/combat-expansion/RELEASE_NOTES.md",
+        "--prerelease",
+        "--target",
+        "refs/heads/main"
+      ],
+      "side_effect": true,
+      "executed": false,
+      "planned": true,
+      "exit_code": null,
+      "duration_seconds": null,
+      "timed_out": false
+    }
+  ],
+  "detail": {
+    "planned": true,
+    "tag": "release-pipeline-final-2026-09-22",
+    "command": "gh release create release-pipeline-final-2026-09-22 \"cocs-native-<target>.zip\" \"cocs-native-<target>.zip.sha256\" --repo mojomast/cocs-godot --title \"COCS: DESTINATIONS — combat expansion (development prerelease)\" --notes-file /tmp/opencode/cocs-release-rehearsal/port/combat-expansion/RELEASE_NOTES.md --prerelease --target refs/heads/main",
+    "assets": [
+      "cocs-native-<target>.zip",
+      "cocs-native-<target>.zip.sha256"
+    ]
+  }
+}

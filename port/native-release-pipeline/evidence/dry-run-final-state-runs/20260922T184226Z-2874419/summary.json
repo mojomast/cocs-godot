@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "kind": "cocs-release-run",
+  "run_id": "20260922T184226Z-2874419",
+  "tag": "release-pipeline-final-2026-09-22",
+  "target": "windows",
+  "mode": "dry-run",
+  "dry_run": true,
+  "argv": [
+    "--tag=release-pipeline-final-2026-09-22"
+  ],
+  "state": "/tmp/opencode/cocs-release-release-pipeline-final-2026-09-22",
+  "resume_from": null,
+  "stop_after": null,
+  "started_at": "2026-09-22T18:42:26.036Z",
+  "finished_at": "2026-09-22T18:42:28.610Z",
+  "status": "ok",
+  "exit_code": 0,
+  "head": "37b1151c92f681e959617564510a034e0d54953b",
+  "branch": null,
+  "steps": [
+    {
+      "step": "preflight",
+      "status": "ok",
+      "duration_seconds": 2.55,
+      "detail": {
+        "detached": true,
+        "head": "37b1151c92f681e959617564510a034e0d54953b",
+        "branch": null,
+        "package_state": "/tmp/opencode/cocs-release-release-pipeline-final-2026-09-22/package-state",
+        "publication_remote": "godot",
+        "remote_url": "https://github.com/mojomast/cocs-godot.git",
+        "repository": "mojomast/cocs-godot",
+        "tag": {
+          "name": "release-pipeline-final-2026-09-22",
+          "free": true
+        },
+        "tree": {
+          "modified": [],
+          "exempted": [
+            "port/reports/arms-race-source.log",
+            "port/reports/audio-feedback.log",
+            "port/reports/aurora-traversal.json",
+            "port/reports/aurora-traversal.log",
+            "port/reports/axis-weapon-glb.json",
+            "port/reports/blood-fx-stress.log",
+            "port/reports/ci-artifact-tests.log",
+            "port/reports/combined-arms-evidence.log",
+            "port/reports/combined-arms-graphics.log",
+            "port/reports/export-tests.log",
+            "port/reports/gate-runner-tests.log",
+            "port/reports/gltf-sides.log",
+            "port/reports/godot-import.log",
+            "port/reports/graphics-fx.log",
+            "port/reports/health-hud-evidence.log",
+            "port/reports/horde-adapter.log",
+            "port/reports/horde-closure.log",
+            "port/reports/horde-ownership.log",
+            "port/reports/horde-source.log",
+            "port/reports/identity-prototype-graybox.log",
+            "port/reports/identity-prototype-oracle.log",
+            "port/reports/launcher-options.log",
+            "port/reports/lobby-options.log",
+            "port/reports/lobby-ownership.log",
+            "port/reports/meridian-exchange-glb.json",
+            "port/reports/moth-export.log",
+            "port/reports/native-arena-aurora.log",
+            "port/reports/native-arena-authority.log",
+            "port/reports/native-arena-cinder.log",
+            "port/reports/native-arena-maps.log",
+            "port/reports/native-arena-prism.log",
+            "port/reports/native-graphics-options.log",
+            "port/reports/native-graphics-ownership.log",
+            "port/reports/native-lifecycle.log",
+            "port/reports/native-live.log",
+            "port/reports/native-session.log",
+            "port/reports/native-trace.log",
+            "port/reports/objective-completion-evidence.log",
+            "port/reports/objective-evidence.log",
+            "port/reports/objective-progression-evidence.log",
+            "port/reports/operator-geometry.log",
+            "port/reports/package-options.log",
+            "port/reports/particle-lab.log",
+            "port/reports/projectile-navigation.log",
+            "port/reports/release-refused.log",
+            "port/reports/showcase-startup.log",
+            "port/reports/source-tests.log",
+            "port/reports/two-native-clients.json",
+            "port/reports/two-native-clients.log",
+            "port/reports/verification.json",
+            "port/reports/zone-routing.log"
+          ],
+          "untracked": [
+            "port/native-identity-maps/evidence/graybox-1790098947366.json",
+            "port/native-identity-maps/evidence/graybox-1790099951471.json",
+            "port/native-identity-maps/evidence/ray-report-1790098949024.json",
+            "port/native-identity-maps/evidence/ray-report-1790099952873.json"
+          ],
+          "allowed": [
+            "port/handoffs/procedural-model-generation-llm-research.md"
+          ],
+          "port_runtime_present": true
+        },
+        "godot_bin": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "godot_version": "4.5.2.stable.official.6ce3de25a",
+        "toolchain": {
+          "archives": {
+            "editor.zip": {
+              "path": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/editor.zip",
+              "bytes": 70517423,
+              "sha512": "e3ce6194b6d4d2dcef5e5b5136752c084d9d8b9071c10bc2d2011b947ec7439a257c8d23c541cb30699f16d9edea6dff36e6e84d2bec14a8fe9b4e9aacbe5a8d",
+              "official": "Godot_v{VERSION}-stable_linux.x86_64.zip"
+            },
+            "templates.tpz": {
+              "path": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/templates.tpz",
+              "bytes": 1353063159,
+              "sha512": "003aa33743f58fb657717f090fc872ed3975e48d08a6012201a2259970d458a63d4d8a83090585307c23455ebfa4e6e0050e1057761c34863536095e3fcfab6c",
+              "official": "Godot_v{VERSION}-stable_export_templates.tpz"
+            }
+          }
+        },
+        "notes": {
+          "path": "port/combat-expansion/RELEASE_NOTES.md",
+          "title": "COCS: DESTINATIONS — combat expansion (development prerelease)",
+          "bytes": 4573,
+          "sha256": "ff0f502c41a5b9a62d413b8c0c17decda9c6b9c37c08f6ef68b21e45b90958d8"
+        },
+        "workflow": {
+          "file": "windows-demo.yml",
+          "ref": "main"
+        },
+        "remote": {
+          "publish_branch": "main",
+          "remote_head": "a3fc3a0cc6c43dddff49ca7d5644f36c78e78336",
+          "head_on_remote": false,
+          "tag_target": "refs/heads/main"
+        }
+      },
+      "error": null,
+      "reused_from": null
+    },
+    {
+      "step": "verification",
+      "status": "skipped-dry-run",
+      "duration_seconds": 0.01,
+      "detail": {
+        "planned": true,
+        "command": "python3 tools/godot-dev/verify.py"
+      },
+      "error": null,
+      "reused_from": null
+    },
+    {
+      "step": "package",
+      "status": "skipped-dry-run",
+      "duration_seconds": 0.01,
+      "detail": {
+        "planned": true,
+        "target": "windows",
+        "command": "python3 tools/godot-package/build.py --target windows --state /tmp/opencode/cocs-release-release-pipeline-final-2026-09-22/package-state --archive-directory /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain --operator-models source-operators"
+      },
+      "error": null,
+      "reused_from": null
+    },
+    {
+      "step": "publish",
+      "status": "skipped-dry-run",
+      "duration_seconds": 0,
+      "detail": {
+        "planned": true,
+        "tag": "release-pipeline-final-2026-09-22",
+        "command": "gh release create release-pipeline-final-2026-09-22 \"cocs-native-<target>.zip\" \"cocs-native-<target>.zip.sha256\" --repo mojomast/cocs-godot --title \"COCS: DESTINATIONS — combat expansion (development prerelease)\" --notes-file /tmp/opencode/cocs-release-rehearsal/port/combat-expansion/RELEASE_NOTES.md --prerelease --target refs/heads/main",
+        "assets": [
+          "cocs-native-<target>.zip",
+          "cocs-native-<target>.zip.sha256"
+        ]
+      },
+      "error": null,
+      "reused_from": null
+    },
+    {
+      "step": "verify",
+      "status": "skipped-dry-run",
+      "duration_seconds": 0.01,
+      "detail": {
+        "planned": true,
+        "workflow": "windows-demo.yml",
+        "ref": "main",
+        "inputs": {
+          "tag": "release-pipeline-final-2026-09-22"
+        },
+        "command": "gh workflow run windows-demo.yml --repo mojomast/cocs-godot --ref main -f tag=release-pipeline-final-2026-09-22"
+      },
+      "error": null,
+      "reused_from": null
+    },
+    {
+      "step": "push",
+      "status": "skipped-dry-run",
+      "duration_seconds": 0,
+      "detail": {
+        "planned": true,
+        "remote": "godot",
+        "refspec": "37b1151c92f681e959617564510a034e0d54953b:refs/heads/main",
+        "commit": "37b1151c92f681e959617564510a034e0d54953b"
+      },
+      "error": null,
+      "reused_from": null
+    }
+  ]
+}

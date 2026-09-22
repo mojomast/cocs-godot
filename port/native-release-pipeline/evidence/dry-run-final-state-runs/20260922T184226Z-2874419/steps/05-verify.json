@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "step": "verify",
+  "index": 5,
+  "status": "skipped-dry-run",
+  "dry_run": true,
+  "started_at": "2026-09-22T18:42:28.600Z",
+  "finished_at": "2026-09-22T18:42:28.605Z",
+  "duration_seconds": 0.01,
+  "commands": [
+    {
+      "command": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "side_effect": false,
+      "executed": true,
+      "planned": false,
+      "exit_code": 0,
+      "duration_seconds": 0,
+      "timed_out": false
+    },
+    {
+      "command": "gh",
+      "args": [
+        "workflow",
+        "run",
+        "windows-demo.yml",
+        "--repo",
+        "mojomast/cocs-godot",
+        "--ref",
+        "main",
+        "-f",
+        "tag=release-pipeline-final-2026-09-22"
+      ],
+      "side_effect": true,
+      "executed": false,
+      "planned": true,
+      "exit_code": null,
+      "duration_seconds": null,
+      "timed_out": false
+    }
+  ],
+  "detail": {
+    "planned": true,
+    "workflow": "windows-demo.yml",
+    "ref": "main",
+    "inputs": {
+      "tag": "release-pipeline-final-2026-09-22"
+    },
+    "command": "gh workflow run windows-demo.yml --repo mojomast/cocs-godot --ref main -f tag=release-pipeline-final-2026-09-22"
+  }
+}

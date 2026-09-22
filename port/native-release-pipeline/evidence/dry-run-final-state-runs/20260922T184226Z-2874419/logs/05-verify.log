@@ -1,0 +1,3 @@
+$ git rev-parse HEAD
+37b1151c92f681e959617564510a034e0d54953b
+DRY-RUN gh workflow run windows-demo.yml --repo mojomast/cocs-godot --ref main -f tag=release-pipeline-final-2026-09-22

@@ -1,0 +1,3 @@
+$ git rev-parse HEAD
+37b1151c92f681e959617564510a034e0d54953b
+DRY-RUN python3 tools/godot-dev/verify.py
