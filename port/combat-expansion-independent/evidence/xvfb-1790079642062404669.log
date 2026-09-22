@@ -1,0 +1,3 @@
+_XSERVTransSocketOpenCOTSServer: Socket for inet6 unsupported on this system.
+_XSERVTransOpen: transport open failed for inet6/Kimi:241
+_XSERVTransMakeAllCOTSServerListeners: failed to open listener for inet6

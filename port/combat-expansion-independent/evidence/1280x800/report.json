@@ -1,0 +1,2225 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"checks": [
+		{
+			"label": "source weapon muzzle count 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "muzzle at real imported bore rim 0/0",
+			"passed": true,
+			"value": {
+				"front_of_assembly_relative_to_tip_m": -0.000000119209289550781,
+				"nearest_rim_radius_m": 0.0249589513987303,
+				"nearest_vertex_plane_m": 0.0
+			}
+		},
+		{
+			"label": "offset camera/world muzzle projection 0/0",
+			"passed": true,
+			"value": 0.00006103515625
+		},
+		{
+			"label": "executed JS FOV oracle 0/55.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 0/75.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 0/95.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS API leaves source camera under caller authority 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "settled real sights align after caller FOV 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "actual source volley drives exactly one physical recoil 0",
+			"passed": true,
+			"value": 0.0256328675895929
+		},
+		{
+			"label": "actual source volley replay coalesces 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS barrel recovers after source recoil 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload rejects held ADS 0 (source=false)",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload exits ADS and restores FOV recommendation 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 0 { \"health\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 0 { \"dead\": 1 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 0 { \"vehicleId\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 0 { \"spectating\": true }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "visibility/focus contract immediately clears held ADS 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "fire received while unfocused cannot replay on recovery 0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source weapon muzzle count 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "muzzle at real imported bore rim 1/0",
+			"passed": true,
+			"value": {
+				"front_of_assembly_relative_to_tip_m": 0.0,
+				"nearest_rim_radius_m": 0.0896963775157928,
+				"nearest_vertex_plane_m": 0.0
+			}
+		},
+		{
+			"label": "offset camera/world muzzle projection 1/0",
+			"passed": true,
+			"value": 0.00006103515625
+		},
+		{
+			"label": "executed JS FOV oracle 1/55.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 1/75.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 1/95.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS API leaves source camera under caller authority 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "settled real sights align after caller FOV 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "actual source volley drives exactly one physical recoil 1",
+			"passed": true,
+			"value": 0.0609701238572598
+		},
+		{
+			"label": "actual source volley replay coalesces 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS barrel recovers after source recoil 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload rejects held ADS 1 (source=true)",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload exits ADS and restores FOV recommendation 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 1 { \"health\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 1 { \"dead\": 1 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 1 { \"vehicleId\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 1 { \"spectating\": true }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "visibility/focus contract immediately clears held ADS 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "fire received while unfocused cannot replay on recovery 1",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source weapon muzzle count 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "muzzle at real imported bore rim 2/0",
+			"passed": true,
+			"value": {
+				"front_of_assembly_relative_to_tip_m": 0.0,
+				"nearest_rim_radius_m": 0.0272981524467468,
+				"nearest_vertex_plane_m": 0.0
+			}
+		},
+		{
+			"label": "offset camera/world muzzle projection 2/0",
+			"passed": true,
+			"value": 0.00006103515625
+		},
+		{
+			"label": "executed JS FOV oracle 2/55.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 2/75.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 2/95.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS API leaves source camera under caller authority 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "settled real sights align after caller FOV 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "actual source volley drives exactly one physical recoil 2",
+			"passed": true,
+			"value": 0.0563966743648052
+		},
+		{
+			"label": "actual source volley replay coalesces 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS barrel recovers after source recoil 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload rejects held ADS 2 (source=true)",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload exits ADS and restores FOV recommendation 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 2 { \"health\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 2 { \"dead\": 1 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 2 { \"vehicleId\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 2 { \"spectating\": true }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "visibility/focus contract immediately clears held ADS 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "fire received while unfocused cannot replay on recovery 2",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source weapon muzzle count 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "muzzle at real imported bore rim 3/0",
+			"passed": true,
+			"value": {
+				"front_of_assembly_relative_to_tip_m": -0.000000238418579101562,
+				"nearest_rim_radius_m": 0.0514761991798878,
+				"nearest_vertex_plane_m": 0.0
+			}
+		},
+		{
+			"label": "offset camera/world muzzle projection 3/0",
+			"passed": true,
+			"value": 0.000030517578125
+		},
+		{
+			"label": "muzzle at real imported bore rim 3/1",
+			"passed": true,
+			"value": {
+				"front_of_assembly_relative_to_tip_m": 0.0,
+				"nearest_rim_radius_m": 0.0514752864837646,
+				"nearest_vertex_plane_m": 0.0
+			}
+		},
+		{
+			"label": "offset camera/world muzzle projection 3/1",
+			"passed": true,
+			"value": 0.0
+		},
+		{
+			"label": "executed JS FOV oracle 3/55.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 3/75.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 3/95.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS API leaves source camera under caller authority 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "settled real sights align after caller FOV 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "actual source volley drives exactly one physical recoil 3",
+			"passed": true,
+			"value": 0.07033621519804
+		},
+		{
+			"label": "actual source volley replay coalesces 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS barrel recovers after source recoil 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload rejects held ADS 3 (source=true)",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload exits ADS and restores FOV recommendation 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "break-action barrel direction follows opened geometry",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 3 { \"health\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 3 { \"dead\": 1 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 3 { \"vehicleId\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 3 { \"spectating\": true }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "visibility/focus contract immediately clears held ADS 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "fire received while unfocused cannot replay on recovery 3",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source weapon muzzle count 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "muzzle at real imported bore rim 4/0",
+			"passed": true,
+			"value": {
+				"front_of_assembly_relative_to_tip_m": -0.000000238418579101562,
+				"nearest_rim_radius_m": 0.0491380244493484,
+				"nearest_vertex_plane_m": 0.0
+			}
+		},
+		{
+			"label": "offset camera/world muzzle projection 4/0",
+			"passed": true,
+			"value": 0.0000682393801980652
+		},
+		{
+			"label": "executed JS FOV oracle 4/55.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 4/75.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 4/95.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS API leaves source camera under caller authority 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "settled real sights align after caller FOV 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "actual source volley drives exactly one physical recoil 4",
+			"passed": true,
+			"value": 0.0178322922438383
+		},
+		{
+			"label": "actual source volley replay coalesces 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS barrel recovers after source recoil 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload rejects held ADS 4 (source=true)",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload exits ADS and restores FOV recommendation 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 4 { \"health\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 4 { \"dead\": 1 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 4 { \"vehicleId\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 4 { \"spectating\": true }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "visibility/focus contract immediately clears held ADS 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "fire received while unfocused cannot replay on recovery 4",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source weapon muzzle count 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "muzzle at real imported bore rim 5/0",
+			"passed": true,
+			"value": {
+				"front_of_assembly_relative_to_tip_m": 0.0,
+				"nearest_rim_radius_m": 0.0678573027253151,
+				"nearest_vertex_plane_m": 0.0
+			}
+		},
+		{
+			"label": "offset camera/world muzzle projection 5/0",
+			"passed": true,
+			"value": 0.0000682393801980652
+		},
+		{
+			"label": "executed JS FOV oracle 5/55.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 5/75.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 5/95.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS API leaves source camera under caller authority 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "settled real sights align after caller FOV 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "actual source volley drives exactly one physical recoil 5",
+			"passed": true,
+			"value": 0.0617759451270103
+		},
+		{
+			"label": "actual source volley replay coalesces 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS barrel recovers after source recoil 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload rejects held ADS 5 (source=true)",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload exits ADS and restores FOV recommendation 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 5 { \"health\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 5 { \"dead\": 1 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 5 { \"vehicleId\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 5 { \"spectating\": true }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "visibility/focus contract immediately clears held ADS 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "fire received while unfocused cannot replay on recovery 5",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source weapon muzzle count 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "muzzle at real imported bore rim 6/0",
+			"passed": true,
+			"value": {
+				"front_of_assembly_relative_to_tip_m": -0.000000238418579101562,
+				"nearest_rim_radius_m": 0.0296371579170227,
+				"nearest_vertex_plane_m": 0.0
+			}
+		},
+		{
+			"label": "offset camera/world muzzle projection 6/0",
+			"passed": true,
+			"value": 0.00006103515625
+		},
+		{
+			"label": "executed JS FOV oracle 6/55.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 6/75.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 6/95.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS API leaves source camera under caller authority 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "settled real sights align after caller FOV 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "actual source volley drives exactly one physical recoil 6",
+			"passed": true,
+			"value": 0.0366725474596024
+		},
+		{
+			"label": "actual source volley replay coalesces 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS barrel recovers after source recoil 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload rejects held ADS 6 (source=true)",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload exits ADS and restores FOV recommendation 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 6 { \"health\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 6 { \"dead\": 1 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 6 { \"vehicleId\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 6 { \"spectating\": true }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "visibility/focus contract immediately clears held ADS 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "fire received while unfocused cannot replay on recovery 6",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source weapon muzzle count 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "muzzle at real imported bore rim 7/0",
+			"passed": true,
+			"value": {
+				"front_of_assembly_relative_to_tip_m": -0.000000238418579101562,
+				"nearest_rim_radius_m": 0.0725370645523071,
+				"nearest_vertex_plane_m": 0.0
+			}
+		},
+		{
+			"label": "offset camera/world muzzle projection 7/0",
+			"passed": true,
+			"value": 0.00006103515625
+		},
+		{
+			"label": "executed JS FOV oracle 7/55.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 7/75.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 7/95.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS API leaves source camera under caller authority 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "settled real sights align after caller FOV 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "actual source volley drives exactly one physical recoil 7",
+			"passed": true,
+			"value": 0.0753967463970184
+		},
+		{
+			"label": "actual source volley replay coalesces 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS barrel recovers after source recoil 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload rejects held ADS 7 (source=true)",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload exits ADS and restores FOV recommendation 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 7 { \"health\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 7 { \"dead\": 1 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 7 { \"vehicleId\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 7 { \"spectating\": true }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "visibility/focus contract immediately clears held ADS 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "fire received while unfocused cannot replay on recovery 7",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source weapon muzzle count 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "muzzle at real imported bore rim 8/0",
+			"passed": true,
+			"value": {
+				"front_of_assembly_relative_to_tip_m": -0.000000119209289550781,
+				"nearest_rim_radius_m": 0.0210591293871403,
+				"nearest_vertex_plane_m": 0.0
+			}
+		},
+		{
+			"label": "offset camera/world muzzle projection 8/0",
+			"passed": true,
+			"value": 0.0
+		},
+		{
+			"label": "executed JS FOV oracle 8/55.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 8/75.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 8/95.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS API leaves source camera under caller authority 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "settled real sights align after caller FOV 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "actual source volley drives exactly one physical recoil 8",
+			"passed": true,
+			"value": 0.0325418263673782
+		},
+		{
+			"label": "actual source volley replay coalesces 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS barrel recovers after source recoil 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload rejects held ADS 8 (source=true)",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload exits ADS and restores FOV recommendation 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 8 { \"health\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 8 { \"dead\": 1 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 8 { \"vehicleId\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 8 { \"spectating\": true }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "visibility/focus contract immediately clears held ADS 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "fire received while unfocused cannot replay on recovery 8",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source weapon muzzle count 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "muzzle at real imported bore rim 9/0",
+			"passed": true,
+			"value": {
+				"front_of_assembly_relative_to_tip_m": -0.000000119209289550781,
+				"nearest_rim_radius_m": 0.0218390822410583,
+				"nearest_vertex_plane_m": 0.0
+			}
+		},
+		{
+			"label": "offset camera/world muzzle projection 9/0",
+			"passed": true,
+			"value": 0.00006103515625
+		},
+		{
+			"label": "executed JS FOV oracle 9/55.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 9/75.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "executed JS FOV oracle 9/95.0",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS API leaves source camera under caller authority 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "settled real sights align after caller FOV 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "actual source volley drives exactly one physical recoil 9",
+			"passed": true,
+			"value": 0.0145547250285745
+		},
+		{
+			"label": "actual source volley replay coalesces 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "ADS barrel recovers after source recoil 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload rejects held ADS 9 (source=true)",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reload exits ADS and restores FOV recommendation 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 9 { \"health\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 9 { \"dead\": 1 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 9 { \"vehicleId\": 0 }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden source transition resets API 9 { \"spectating\": true }",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "hidden muzzle sentinels 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "visibility/focus contract immediately clears held ADS 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "fire received while unfocused cannot replay on recovery 9",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "held-ADS weapon switch lowers before new sight",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "held-ADS switch resolves new integrated scope",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "round reset clears scope zoom recommendation",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "save independent-all-ten-hip-ads",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source damage semantics spawn-immunity",
+			"passed": true,
+			"value": 0.0
+		},
+		{
+			"label": "numeric source event replay spawn-immunity",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "shield presentation preserves source snapshot/events spawn-immunity",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source damage semantics active-is-not-immunity",
+			"passed": true,
+			"value": 40.0
+		},
+		{
+			"label": "numeric source event replay active-is-not-immunity",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "shield presentation preserves source snapshot/events active-is-not-immunity",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source damage semantics expired-overshield-pool",
+			"passed": true,
+			"value": 40.0
+		},
+		{
+			"label": "numeric source event replay expired-overshield-pool",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "shield presentation preserves source snapshot/events expired-overshield-pool",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source damage semantics temporary-absorb",
+			"passed": true,
+			"value": 15.0
+		},
+		{
+			"label": "numeric source event replay temporary-absorb",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "shield presentation preserves source snapshot/events temporary-absorb",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "genuine source pool depletion renders break once temporary-absorb",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source damage semantics armor-is-partial",
+			"passed": true,
+			"value": 16.0
+		},
+		{
+			"label": "numeric source event replay armor-is-partial",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "shield presentation preserves source snapshot/events armor-is-partial",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source damage semantics juggernaut-absorb",
+			"passed": true,
+			"value": 15.0
+		},
+		{
+			"label": "numeric source event replay juggernaut-absorb",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "shield presentation preserves source snapshot/events juggernaut-absorb",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "genuine source pool depletion renders break once juggernaut-absorb",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source damage semantics bulwark-front",
+			"passed": true,
+			"value": 12.0
+		},
+		{
+			"label": "numeric source event replay bulwark-front",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "shield presentation preserves source snapshot/events bulwark-front",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source damage semantics bulwark-rear",
+			"passed": true,
+			"value": 56.0
+		},
+		{
+			"label": "numeric source event replay bulwark-rear",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "shield presentation preserves source snapshot/events bulwark-rear",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source damage semantics bulwark-yaw-quarter",
+			"passed": true,
+			"value": 12.0
+		},
+		{
+			"label": "numeric source event replay bulwark-yaw-quarter",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "shield presentation preserves source snapshot/events bulwark-yaw-quarter",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "source damage semantics armor-depleted",
+			"passed": true,
+			"value": 30.0
+		},
+		{
+			"label": "numeric source event replay armor-depleted",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "shield presentation preserves source snapshot/events armor-depleted",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "genuine source pool depletion renders break once armor-depleted",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "actual transparent render has bounded nonopaque shell",
+			"passed": true,
+			"value": {
+				"max_alpha": 0.396078437566757,
+				"partial_pixels": 99092
+			}
+		},
+		{
+			"label": "save shield-alpha",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "save shield-before",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "save shield-after",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "opaque wall blocks real shader fragments exactly",
+			"passed": true,
+			"value": {
+				"changed": 0,
+				"max": 0.0,
+				"mean": 0.0
+			}
+		},
+		{
+			"label": "opaque body remains visible through actual alpha",
+			"passed": true,
+			"value": {
+				"changed": 3900,
+				"max": 0.117647066712379,
+				"mean": 0.0229693309275004
+			}
+		},
+		{
+			"label": "rendered bulwark cone follows actual source damage-facing convention",
+			"passed": true,
+			"value": {
+				"front": {
+					"changed": 61103,
+					"max": 0.270588248968124,
+					"mean": 0.00169949060298677
+				},
+				"rear": {
+					"changed": 0,
+					"max": 0.0,
+					"mean": 0.0
+				}
+			}
+		},
+		{
+			"label": "save shield-order-defect-left-starved-right-reversed",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "string event IDs do not alias numeric source serials",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "numeric event zero and remote actor zero are valid",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "string actor IDs do not alias remote actor zero",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "OS focus out hides actual controller",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "OS focus in requires fresh state",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "fresh snapshot restores post-focus shield",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "snapshot staleness removes shields",
+			"passed": true,
+			"value": null
+		},
+		{
+			"label": "reset releases registered materials AND render nodes",
+			"passed": true,
+			"value": {
+				"limit": 64,
+				"materials": 0,
+				"moth_cache": {
+					"limit": 128,
+					"textures": 8
+				},
+				"shared_shaders": 3,
+				"time": 0.0
+			}
+		},
+		{
+			"label": "tree teardown releases factory registrations",
+			"passed": true,
+			"value": {
+				"limit": 64,
+				"materials": 0,
+				"moth_cache": {
+					"limit": 128,
+					"textures": 8
+				},
+				"shared_shaders": 3,
+				"time": 0.0
+			}
+		}
+	],
+	"failures": [],
+	"measurements": {
+		"ads": [
+			{
+				"fov": [
+					{
+						"actual": 55.0,
+						"base": 55.0,
+						"source": 55.0
+					},
+					{
+						"actual": 61.5,
+						"base": 75.0,
+						"source": 61.5
+					},
+					{
+						"actual": 77.9,
+						"base": 95.0,
+						"source": 77.9
+					}
+				],
+				"id": 0,
+				"recoil_tip_travel_m": 0.0256328675895929,
+				"tips": [
+					{
+						"front_of_assembly_relative_to_tip_m": -0.000000119209289550781,
+						"nearest_rim_radius_m": 0.0249589513987303,
+						"nearest_vertex_plane_m": 0.0
+					}
+				]
+			},
+			{
+				"fov": [
+					{
+						"actual": 55.0,
+						"base": 55.0,
+						"source": 55.0
+					},
+					{
+						"actual": 61.5,
+						"base": 75.0,
+						"source": 61.5
+					},
+					{
+						"actual": 77.9,
+						"base": 95.0,
+						"source": 77.9
+					}
+				],
+				"id": 1,
+				"recoil_tip_travel_m": 0.0609701238572598,
+				"tips": [
+					{
+						"front_of_assembly_relative_to_tip_m": 0.0,
+						"nearest_rim_radius_m": 0.0896963775157928,
+						"nearest_vertex_plane_m": 0.0
+					}
+				]
+			},
+			{
+				"fov": [
+					{
+						"actual": 16.4560989858514,
+						"base": 55.0,
+						"source": 16.4560989858514
+					},
+					{
+						"actual": 24.0646593940449,
+						"base": 75.0,
+						"source": 24.0646593940449
+					},
+					{
+						"actual": 33.7284415271517,
+						"base": 95.0,
+						"source": 33.7284415271517
+					}
+				],
+				"id": 2,
+				"recoil_tip_travel_m": 0.0563966743648052,
+				"tips": [
+					{
+						"front_of_assembly_relative_to_tip_m": 0.0,
+						"nearest_rim_radius_m": 0.0272981524467468,
+						"nearest_vertex_plane_m": 0.0
+					}
+				]
+			},
+			{
+				"fov": [
+					{
+						"actual": 55.0,
+						"base": 55.0,
+						"source": 55.0
+					},
+					{
+						"actual": 61.5,
+						"base": 75.0,
+						"source": 61.5
+					},
+					{
+						"actual": 77.9,
+						"base": 95.0,
+						"source": 77.9
+					}
+				],
+				"id": 3,
+				"recoil_tip_travel_m": 0.07033621519804,
+				"tips": [
+					{
+						"front_of_assembly_relative_to_tip_m": -0.000000238418579101562,
+						"nearest_rim_radius_m": 0.0514761991798878,
+						"nearest_vertex_plane_m": 0.0
+					},
+					{
+						"front_of_assembly_relative_to_tip_m": 0.0,
+						"nearest_rim_radius_m": 0.0514752864837646,
+						"nearest_vertex_plane_m": 0.0
+					}
+				]
+			},
+			{
+				"fov": [
+					{
+						"actual": 55.0,
+						"base": 55.0,
+						"source": 55.0
+					},
+					{
+						"actual": 61.5,
+						"base": 75.0,
+						"source": 61.5
+					},
+					{
+						"actual": 77.9,
+						"base": 95.0,
+						"source": 77.9
+					}
+				],
+				"id": 4,
+				"recoil_tip_travel_m": 0.0178322922438383,
+				"tips": [
+					{
+						"front_of_assembly_relative_to_tip_m": -0.000000238418579101562,
+						"nearest_rim_radius_m": 0.0491380244493484,
+						"nearest_vertex_plane_m": 0.0
+					}
+				]
+			},
+			{
+				"fov": [
+					{
+						"actual": 55.0,
+						"base": 55.0,
+						"source": 55.0
+					},
+					{
+						"actual": 61.5,
+						"base": 75.0,
+						"source": 61.5
+					},
+					{
+						"actual": 77.9,
+						"base": 95.0,
+						"source": 77.9
+					}
+				],
+				"id": 5,
+				"recoil_tip_travel_m": 0.0617759451270103,
+				"tips": [
+					{
+						"front_of_assembly_relative_to_tip_m": 0.0,
+						"nearest_rim_radius_m": 0.0678573027253151,
+						"nearest_vertex_plane_m": 0.0
+					}
+				]
+			},
+			{
+				"fov": [
+					{
+						"actual": 55.0,
+						"base": 55.0,
+						"source": 55.0
+					},
+					{
+						"actual": 61.5,
+						"base": 75.0,
+						"source": 61.5
+					},
+					{
+						"actual": 77.9,
+						"base": 95.0,
+						"source": 77.9
+					}
+				],
+				"id": 6,
+				"recoil_tip_travel_m": 0.0366725474596024,
+				"tips": [
+					{
+						"front_of_assembly_relative_to_tip_m": -0.000000238418579101562,
+						"nearest_rim_radius_m": 0.0296371579170227,
+						"nearest_vertex_plane_m": 0.0
+					}
+				]
+			},
+			{
+				"fov": [
+					{
+						"actual": 55.0,
+						"base": 55.0,
+						"source": 55.0
+					},
+					{
+						"actual": 61.5,
+						"base": 75.0,
+						"source": 61.5
+					},
+					{
+						"actual": 77.9,
+						"base": 95.0,
+						"source": 77.9
+					}
+				],
+				"id": 7,
+				"recoil_tip_travel_m": 0.0753967463970184,
+				"tips": [
+					{
+						"front_of_assembly_relative_to_tip_m": -0.000000238418579101562,
+						"nearest_rim_radius_m": 0.0725370645523071,
+						"nearest_vertex_plane_m": 0.0
+					}
+				]
+			},
+			{
+				"fov": [
+					{
+						"actual": 19.6881552215069,
+						"base": 55.0,
+						"source": 19.6881552215069
+					},
+					{
+						"actual": 28.6945457470948,
+						"base": 75.0,
+						"source": 28.6945457470948
+					},
+					{
+						"actual": 39.9796870490752,
+						"base": 95.0,
+						"source": 39.9796870490752
+					}
+				],
+				"id": 8,
+				"recoil_tip_travel_m": 0.0325418263673782,
+				"tips": [
+					{
+						"front_of_assembly_relative_to_tip_m": -0.000000119209289550781,
+						"nearest_rim_radius_m": 0.0210591293871403,
+						"nearest_vertex_plane_m": 0.0
+					}
+				]
+			},
+			{
+				"fov": [
+					{
+						"actual": 55.0,
+						"base": 55.0,
+						"source": 55.0
+					},
+					{
+						"actual": 61.5,
+						"base": 75.0,
+						"source": 61.5
+					},
+					{
+						"actual": 77.9,
+						"base": 95.0,
+						"source": 77.9
+					}
+				],
+				"id": 9,
+				"recoil_tip_travel_m": 0.0145547250285745,
+				"tips": [
+					{
+						"front_of_assembly_relative_to_tip_m": -0.000000119209289550781,
+						"nearest_rim_radius_m": 0.0218390822410583,
+						"nearest_vertex_plane_m": 0.0
+					}
+				]
+			}
+		],
+		"directional_render": {
+			"front": {
+				"changed": 61103,
+				"max": 0.270588248968124,
+				"mean": 0.00169949060298677
+			},
+			"rear": {
+				"changed": 0,
+				"max": 0.0,
+				"mean": 0.0
+			}
+		},
+		"shield_render": {
+			"body": {
+				"changed": 3900,
+				"max": 0.117647066712379,
+				"mean": 0.0229693309275004
+			},
+			"max_alpha": 0.396078437566757,
+			"partial_pixels": 99092,
+			"wall": {
+				"changed": 0,
+				"max": 0.0,
+				"mean": 0.0
+			},
+			"whole": {
+				"changed": 82832,
+				"max": 0.278431385755539,
+				"mean": 0.00406443381326972
+			}
+		},
+		"source_cases": [
+			{
+				"case": "spawn-immunity",
+				"controller": {
+					"active_bursts": 0,
+					"actors": 2,
+					"clock": 0.0,
+					"counters": {
+						"dash": 0,
+						"dropped": 0,
+						"events": 0,
+						"phase": 0,
+						"recovery": 0,
+						"ripples": 0,
+						"shatters": 0
+					},
+					"kinds": {
+						"0": "spawn protection",
+						"1": ""
+					},
+					"materials": 2,
+					"pending": 0,
+					"pool": 0,
+					"quality": 1,
+					"seen": 0,
+					"slots": 2,
+					"visible_shells": 1
+				},
+				"health_loss": 0.0
+			},
+			{
+				"case": "active-is-not-immunity",
+				"controller": {
+					"active_bursts": 0,
+					"actors": 2,
+					"clock": 0.0,
+					"counters": {
+						"dash": 0,
+						"dropped": 0,
+						"events": 1,
+						"phase": 0,
+						"recovery": 0,
+						"ripples": 0,
+						"shatters": 0
+					},
+					"kinds": {
+						"0": "",
+						"1": ""
+					},
+					"materials": 2,
+					"pending": 0,
+					"pool": 0,
+					"quality": 1,
+					"seen": 1,
+					"slots": 2,
+					"visible_shells": 0
+				},
+				"health_loss": 40.0
+			},
+			{
+				"case": "expired-overshield-pool",
+				"controller": {
+					"active_bursts": 0,
+					"actors": 2,
+					"clock": 0.0,
+					"counters": {
+						"dash": 0,
+						"dropped": 0,
+						"events": 1,
+						"phase": 0,
+						"recovery": 0,
+						"ripples": 0,
+						"shatters": 0
+					},
+					"kinds": {
+						"0": "",
+						"1": ""
+					},
+					"materials": 2,
+					"pending": 0,
+					"pool": 0,
+					"quality": 1,
+					"seen": 1,
+					"slots": 2,
+					"visible_shells": 0
+				},
+				"health_loss": 40.0
+			},
+			{
+				"case": "temporary-absorb",
+				"controller": {
+					"active_bursts": 1,
+					"actors": 2,
+					"clock": 0.0,
+					"counters": {
+						"dash": 0,
+						"dropped": 0,
+						"events": 1,
+						"phase": 0,
+						"recovery": 0,
+						"ripples": 1,
+						"shatters": 1
+					},
+					"kinds": {
+						"0": "",
+						"1": ""
+					},
+					"materials": 3,
+					"pending": 0,
+					"pool": 1,
+					"quality": 1,
+					"seen": 1,
+					"slots": 2,
+					"visible_shells": 0
+				},
+				"health_loss": 15.0
+			},
+			{
+				"case": "armor-is-partial",
+				"controller": {
+					"active_bursts": 0,
+					"actors": 2,
+					"clock": 0.0,
+					"counters": {
+						"dash": 0,
+						"dropped": 0,
+						"events": 1,
+						"phase": 0,
+						"recovery": 0,
+						"ripples": 1,
+						"shatters": 0
+					},
+					"kinds": {
+						"0": "armor energy",
+						"1": ""
+					},
+					"materials": 2,
+					"pending": 0,
+					"pool": 0,
+					"quality": 1,
+					"seen": 1,
+					"slots": 2,
+					"visible_shells": 1
+				},
+				"health_loss": 16.0
+			},
+			{
+				"case": "juggernaut-absorb",
+				"controller": {
+					"active_bursts": 1,
+					"actors": 2,
+					"clock": 0.0,
+					"counters": {
+						"dash": 0,
+						"dropped": 0,
+						"events": 1,
+						"phase": 0,
+						"recovery": 0,
+						"ripples": 1,
+						"shatters": 1
+					},
+					"kinds": {
+						"0": "",
+						"1": ""
+					},
+					"materials": 3,
+					"pending": 0,
+					"pool": 1,
+					"quality": 1,
+					"seen": 1,
+					"slots": 2,
+					"visible_shells": 0
+				},
+				"health_loss": 15.0
+			},
+			{
+				"case": "bulwark-front",
+				"controller": {
+					"active_bursts": 0,
+					"actors": 2,
+					"clock": 0.0,
+					"counters": {
+						"dash": 0,
+						"dropped": 0,
+						"events": 1,
+						"phase": 0,
+						"recovery": 0,
+						"ripples": 1,
+						"shatters": 0
+					},
+					"kinds": {
+						"0": "directional damage reduction",
+						"1": ""
+					},
+					"materials": 2,
+					"pending": 0,
+					"pool": 0,
+					"quality": 1,
+					"seen": 1,
+					"slots": 2,
+					"visible_shells": 1
+				},
+				"health_loss": 12.0
+			},
+			{
+				"case": "bulwark-rear",
+				"controller": {
+					"active_bursts": 0,
+					"actors": 2,
+					"clock": 0.0,
+					"counters": {
+						"dash": 0,
+						"dropped": 0,
+						"events": 1,
+						"phase": 0,
+						"recovery": 0,
+						"ripples": 1,
+						"shatters": 0
+					},
+					"kinds": {
+						"0": "directional damage reduction",
+						"1": ""
+					},
+					"materials": 2,
+					"pending": 0,
+					"pool": 0,
+					"quality": 1,
+					"seen": 1,
+					"slots": 2,
+					"visible_shells": 1
+				},
+				"health_loss": 56.0
+			},
+			{
+				"case": "bulwark-yaw-quarter",
+				"controller": {
+					"active_bursts": 0,
+					"actors": 2,
+					"clock": 0.0,
+					"counters": {
+						"dash": 0,
+						"dropped": 0,
+						"events": 1,
+						"phase": 0,
+						"recovery": 0,
+						"ripples": 1,
+						"shatters": 0
+					},
+					"kinds": {
+						"0": "directional damage reduction",
+						"1": ""
+					},
+					"materials": 2,
+					"pending": 0,
+					"pool": 0,
+					"quality": 1,
+					"seen": 1,
+					"slots": 2,
+					"visible_shells": 1
+				},
+				"health_loss": 12.0
+			},
+			{
+				"case": "armor-depleted",
+				"controller": {
+					"active_bursts": 1,
+					"actors": 2,
+					"clock": 0.0,
+					"counters": {
+						"dash": 0,
+						"dropped": 0,
+						"events": 1,
+						"phase": 0,
+						"recovery": 0,
+						"ripples": 1,
+						"shatters": 1
+					},
+					"kinds": {
+						"0": "",
+						"1": ""
+					},
+					"materials": 3,
+					"pending": 0,
+					"pool": 1,
+					"quality": 1,
+					"seen": 1,
+					"slots": 2,
+					"visible_shells": 0
+				},
+				"health_loss": 30.0
+			}
+		]
+	},
+	"observations": [
+		{
+			"first_16_unprotected": {
+				"active_bursts": 0,
+				"actors": 16,
+				"clock": 0.0,
+				"counters": {
+					"dash": 0,
+					"dropped": 0,
+					"events": 0,
+					"phase": 0,
+					"recovery": 0,
+					"ripples": 0,
+					"shatters": 0
+				},
+				"kinds": {
+					"0": "",
+					"1": "",
+					"2": "",
+					"3": "",
+					"4": "",
+					"5": "",
+					"6": "",
+					"7": "",
+					"8": "",
+					"9": "",
+					"10": "",
+					"11": "",
+					"12": "",
+					"13": "",
+					"14": "",
+					"15": ""
+				},
+				"materials": 16,
+				"pending": 0,
+				"pool": 0,
+				"quality": 0,
+				"seen": 0,
+				"slots": 16,
+				"visible_shells": 0
+			},
+			"id": "SHIELD-CAP-ORDER",
+			"protected_first": {
+				"active_bursts": 0,
+				"actors": 16,
+				"clock": 0.0,
+				"counters": {
+					"dash": 0,
+					"dropped": 0,
+					"events": 0,
+					"phase": 0,
+					"recovery": 0,
+					"ripples": 0,
+					"shatters": 0
+				},
+				"kinds": {
+					"1": "",
+					"2": "",
+					"3": "",
+					"4": "",
+					"5": "",
+					"6": "",
+					"7": "",
+					"8": "",
+					"9": "",
+					"10": "",
+					"11": "",
+					"12": "",
+					"13": "",
+					"14": "",
+					"15": "",
+					"16": "spawn protection"
+				},
+				"materials": 16,
+				"pending": 0,
+				"pool": 0,
+				"quality": 0,
+				"seen": 0,
+				"slots": 16,
+				"visible_shells": 1
+			}
+		}
+	],
+	"renderer": "gl_compatibility",
+	"size": [
+		1280,
+		800
+	]
+}

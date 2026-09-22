@@ -1,0 +1,169 @@
+{
+  "cases": [
+    {
+      "label": "spawn-immunity",
+      "healthLoss": 0,
+      "events": []
+    },
+    {
+      "label": "active-is-not-immunity",
+      "healthLoss": 40,
+      "events": [
+        {
+          "type": "damage",
+          "amount": 40,
+          "shield": 0,
+          "shieldBreak": false
+        }
+      ]
+    },
+    {
+      "label": "expired-overshield-pool",
+      "healthLoss": 40,
+      "events": [
+        {
+          "type": "damage",
+          "amount": 40,
+          "shield": 0,
+          "shieldBreak": false
+        }
+      ]
+    },
+    {
+      "label": "temporary-absorb",
+      "healthLoss": 15,
+      "events": [
+        {
+          "type": "damage",
+          "amount": 40,
+          "shield": 25,
+          "shieldBreak": true
+        }
+      ]
+    },
+    {
+      "label": "armor-is-partial",
+      "healthLoss": 16,
+      "events": [
+        {
+          "type": "damage",
+          "amount": 40,
+          "shield": 0,
+          "shieldBreak": false
+        }
+      ]
+    },
+    {
+      "label": "juggernaut-absorb",
+      "healthLoss": 15,
+      "events": [
+        {
+          "type": "damage",
+          "amount": 40,
+          "shield": 0,
+          "shieldBreak": true
+        }
+      ]
+    },
+    {
+      "label": "bulwark-front",
+      "healthLoss": 12,
+      "events": [
+        {
+          "type": "damage",
+          "amount": 12.000000000000002,
+          "shield": 0,
+          "shieldBreak": false
+        }
+      ]
+    },
+    {
+      "label": "bulwark-rear",
+      "healthLoss": 56,
+      "events": [
+        {
+          "type": "damage",
+          "amount": 56,
+          "shield": 0,
+          "shieldBreak": false
+        }
+      ]
+    },
+    {
+      "label": "bulwark-yaw-quarter",
+      "healthLoss": 12,
+      "events": [
+        {
+          "type": "damage",
+          "amount": 12.000000000000002,
+          "shield": 0,
+          "shieldBreak": false
+        }
+      ]
+    },
+    {
+      "label": "armor-depleted",
+      "healthLoss": 30,
+      "events": [
+        {
+          "type": "damage",
+          "amount": 40,
+          "shield": 0,
+          "shieldBreak": true
+        }
+      ]
+    }
+  ],
+  "weapons": [
+    {
+      "id": 0,
+      "fireEvents": 1,
+      "reloadDuration": 0
+    },
+    {
+      "id": 1,
+      "fireEvents": 1,
+      "reloadDuration": 2.5
+    },
+    {
+      "id": 2,
+      "fireEvents": 1,
+      "reloadDuration": 2.2
+    },
+    {
+      "id": 3,
+      "fireEvents": 8,
+      "reloadDuration": 1.9
+    },
+    {
+      "id": 4,
+      "fireEvents": 1,
+      "reloadDuration": 1.7
+    },
+    {
+      "id": 5,
+      "fireEvents": 1,
+      "reloadDuration": 2.5
+    },
+    {
+      "id": 6,
+      "fireEvents": 1,
+      "reloadDuration": 1.9
+    },
+    {
+      "id": 7,
+      "fireEvents": 12,
+      "reloadDuration": 2
+    },
+    {
+      "id": 8,
+      "fireEvents": 1,
+      "reloadDuration": 2
+    },
+    {
+      "id": 9,
+      "fireEvents": 1,
+      "reloadDuration": 1.4
+    }
+  ]
+}
