@@ -85,6 +85,7 @@ commands = [
     ("weapon-effects", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/lifecycle.gd"]),
     ("weapon-effects-rig", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/rig_integration.gd"]),
     ("weapon-handling", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/handling.gd"]),
+    ("weapon-detail", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/detail.gd"]),
     # Impact/player-state feedback contracts. The lane's own runner additionally
     # performs rendered captures and is kept as its full evidence harness.
     ("player-fx-direction", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/direction.gd"]),
