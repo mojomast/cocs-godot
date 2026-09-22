@@ -381,6 +381,25 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
   rendered cases on real map geometry at both sizes showing 19–29 wall marks per death and
   **0 changed pixels / 0 marks on the far face** in every case. No composition re-wiring
   needed; F10 gained wall/floor/slope and skip-reason counters.
+- **Asset coverage pass (owner request: use far more of the Moth assets for effects, shaders,
+  bump maps and textures while growing a unique design language).** Measured baseline in
+  `port/native-material-language/COVERAGE-BASELINE.md`: of 69 manifest keys only ~14 are
+  literally referenced — **all 13 baked normal maps are effectively unused**, along with most
+  textures, 3 of 5 material LUTs and 7 of 10 effects. Two coordinated lanes:
+  - **Material-language library** owns `godot/moth/**` (+ new `godot/moth/derived/**`),
+    new `godot/material_language/**`, `tools/godot-moth/**`, its tests and
+    `port/native-material-language/**`; publishes a six-to-eight family library
+    (base + normal + roughness + LUT emissive per family), a deterministic offline
+    derivation tool for missing maps, a design-language document, and a gallery scene for
+    review. Must not change the 101-plane inventory that the package probes assert.
+  - **Material application** owns `godot/world/{viewer,environment_style,scenery_settings}.gd`,
+    `godot/native_arenas/maps/*.gd`, `godot/identity_maps/map.gd`, `godot/moth_scenery/**`,
+    `godot/graphics_atmosphere/**` and `port/native-material-apply/**`; applies the families
+    by surface role across the six playable maps and the locked nine-map presentation with
+    real bump maps, render-only (arena geometry hashes must not change) and with
+    before/after renders plus a cost table.
+  - Interface contract fixed in both prompts; if the library signature shifts, the applying
+    lane reports to lead rather than editing library files.
 - **Tier 1/2 push (owner request: do 1–4 together, plus 5 and 6 where possible).**
   Five parallel lanes launched with disjoint ownership, lead retains all launcher and
   package routing:
