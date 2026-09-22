@@ -4,6 +4,7 @@ extends "res://world/session.gd"
 const NativeCatalog = preload("res://native_arenas/catalog.gd")
 const NativeHUD = preload("res://native_arenas/hud.gd")
 const NativeClient = preload("res://native_arenas/client.gd")
+const IdentityEnvironment = preload("res://native_arenas/identity_environment.gd")
 const GameHUD = preload("res://ui/game_hud.gd")
 const Scoreboard = preload("res://ui/scoreboard.gd")
 var native_hud: Control
@@ -40,10 +41,10 @@ func _ready() -> void:
 	round_seconds = options.seconds
 	auto_start = options.autostart or smoke
 	selected_mode = "deathmatch"
-	if not catalog.open():
+	if not catalog.open_dm():
 		on_error(catalog.error)
 		return
-	ids = NativeCatalog.MAP_IDS.duplicate()
+	ids = NativeCatalog.DM_MAP_IDS.duplicate()
 	if not load_map(selected_native_map):
 		on_error(catalog.error)
 		return
@@ -110,7 +111,8 @@ static func parse_options(args: PackedStringArray) -> Dictionary:
 			if value.is_empty() or not value.is_valid_int() or value.contains("+") or value != value.strip_edges():
 				options.error = option + " must be an integer."
 			else: options["bots" if option == "bots" else "seconds"] = value.to_int()
-	if options.map not in NativeCatalog.MAP_IDS: options.error = "Choose Prism Foundry, Aurora Basin or Cinder Array."
+	if options.map not in NativeCatalog.DM_MAP_IDS:
+		options.error = "Choose Prism Foundry, Aurora Basin, Cinder Array, Lacuna Court, Vermilion Fold or Nacre Engine."
 	if options.bots < 1 or options.bots > 7: options.error = "bots must be 1..7."
 	if options.seconds < 60 or options.seconds > 300: options.error = "round-seconds must be 60..300."
 	var url: String = options.endpoint
@@ -123,9 +125,15 @@ func renderer_path(id: String) -> String:
 	return "res://native_arenas/maps/" + id + ".gd"
 
 func load_map(id: String) -> bool:
-	var map := catalog.resolve_map(id)
-	if map.is_empty(): return false
-	var path := renderer_path(id)
+	if not catalog.entries.has(id):
+		catalog.error = "Native Deathmatch map is not allowlisted: " + id
+		return false
+	var family: String = catalog.entries[id].family
+	var data: Dictionary = catalog.resolve_envelope(id)
+	if data.is_empty(): return false
+	# Native maps keep their fixture-overridable builder seam; identity maps load
+	# the shared identity recipe builder (map.gd) that the package ships.
+	var path := str(catalog.entries[id].renderer) if family == "identity" else renderer_path(id)
 	if not ResourceLoader.exists(path):
 		catalog.error = "Native Deathmatch renderer is missing: " + id
 		return false
@@ -143,7 +151,7 @@ func load_map(id: String) -> bool:
 			builder.free()
 			catalog.error = "Native renderer contract is incomplete: " + id
 			return false
-	if builder.get_arena_id() != id:
+	if family == "native" and builder.get_arena_id() != id:
 		builder.free()
 		catalog.error = "Native renderer identity mismatch: " + id
 		return false
@@ -153,7 +161,27 @@ func load_map(id: String) -> bool:
 	# Their build() is idempotent, including when _ready has already invoked it.
 	add_child(next)
 	next.add_child(builder)
-	builder.build()
+	if family == "identity":
+		# identity_maps/map.gd build(id) is idempotent and reports refusal.
+		if builder.build(id) != true:
+			next.free()
+			catalog.error = "Identity Deathmatch renderer refused: " + id
+			return false
+		if builder.get_arena_id() != id:
+			next.free()
+			catalog.error = "Identity renderer identity mismatch: " + id
+			return false
+		# The identity builder ships geometry only (viewer defaults are freed in
+		# _init), so composition installs exactly one documented shared environment
+		# and sun derived from the validated recipe palette.
+		var identity_environment := IdentityEnvironment.new()
+		next.add_child(identity_environment)
+		if not identity_environment.build(data):
+			next.free()
+			catalog.error = "Identity Deathmatch environment failed: " + id
+			return false
+	else:
+		builder.build()
 	# Empty hidden compatibility hook; pickups are created only from public state.
 	var markers := Node3D.new()
 	markers.name = "StaticPickupMarkers"
@@ -171,7 +199,7 @@ func load_map(id: String) -> bool:
 
 func launch_match(map_id: String, player_name: String, bots: int, seconds: int) -> void:
 	if phase != -2: return
-	if map_id not in NativeCatalog.MAP_IDS or bots < 1 or bots > 7 or seconds < 60 or seconds > 300 or player_name.strip_edges().is_empty():
+	if map_id not in NativeCatalog.DM_MAP_IDS or bots < 1 or bots > 7 or seconds < 60 or seconds > 300 or player_name.strip_edges().is_empty():
 		on_error("Invalid native Deathmatch setup.")
 		return
 	if current_id != map_id and not load_map(map_id):

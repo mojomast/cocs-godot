@@ -1,0 +1,151 @@
+{
+  "mapId": "nacre-engine",
+  "mode": "deathmatch",
+  "bots": 3,
+  "roundSeconds": 180,
+  "sizes": "960x640,1280x800",
+  "geometryHash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+  "authorityPort": 36661,
+  "exitCode": 0,
+  "captureRoot": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/captures/nacre-engine-2026-09-22T13-52-52-156Z",
+  "captures": [
+    {
+      "actor": {
+        "x": -0.509792348888758,
+        "y": 0.212083333333333,
+        "z": 21.6294535415855
+      },
+      "actors": 4,
+      "eye": [
+        -0.509792327880859,
+        1.66208338737488,
+        21.6294536590576
+      ],
+      "firstPerson": true,
+      "framebuffer": [
+        960,
+        640
+      ],
+      "geometryHash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+      "map": "nacre-engine",
+      "mode": "deathmatch",
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/captures/nacre-engine-2026-09-22T13-52-52-156Z/nacre-engine-arena-960x640.png",
+      "phase": 3,
+      "physics": {
+        "collider": "court",
+        "downDistance": 1.66208338737488,
+        "downY": 0
+      },
+      "pointer": true,
+      "size": [
+        960,
+        640
+      ],
+      "snapshots": 60
+    },
+    {
+      "actor": {
+        "x": -23,
+        "y": 0.501111111111111,
+        "z": -19
+      },
+      "actors": 4,
+      "eye": [
+        -23,
+        1.95111107826233,
+        -19
+      ],
+      "firstPerson": true,
+      "framebuffer": [
+        960,
+        640
+      ],
+      "geometryHash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+      "map": "nacre-engine",
+      "mode": "deathmatch",
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/captures/nacre-engine-2026-09-22T13-52-52-156Z/nacre-engine-action-960x640.png",
+      "phase": 3,
+      "physics": {
+        "collider": "court",
+        "downDistance": 1.95111107826233,
+        "downY": 0
+      },
+      "pointer": true,
+      "size": [
+        960,
+        640
+      ],
+      "snapshots": 152
+    },
+    {
+      "actor": {
+        "x": -23,
+        "y": 0,
+        "z": -19
+      },
+      "actors": 4,
+      "eye": [
+        -23,
+        1.45000004768372,
+        -19
+      ],
+      "firstPerson": true,
+      "framebuffer": [
+        1280,
+        800
+      ],
+      "geometryHash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+      "map": "nacre-engine",
+      "mode": "deathmatch",
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/captures/nacre-engine-2026-09-22T13-52-52-156Z/nacre-engine-arena-1280x800.png",
+      "phase": 3,
+      "physics": {
+        "collider": "court",
+        "downDistance": 1.44999992847443,
+        "downY": 1.19209289550781e-7
+      },
+      "pointer": true,
+      "size": [
+        1280,
+        800
+      ],
+      "snapshots": 193
+    },
+    {
+      "actor": {
+        "x": -13.7180777691213,
+        "y": 1.713,
+        "z": 9.18247242617704
+      },
+      "actors": 4,
+      "eye": [
+        -13.7180776596069,
+        3.16300010681152,
+        9.18247222900391
+      ],
+      "firstPerson": true,
+      "framebuffer": [
+        1280,
+        800
+      ],
+      "geometryHash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+      "map": "nacre-engine",
+      "mode": "deathmatch",
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/captures/nacre-engine-2026-09-22T13-52-52-156Z/nacre-engine-action-1280x800.png",
+      "phase": 3,
+      "physics": {
+        "collider": "court",
+        "downDistance": 3.16300010681152,
+        "downY": 0
+      },
+      "pointer": true,
+      "size": [
+        1280,
+        800
+      ],
+      "snapshots": 303
+    }
+  ],
+  "passed": true,
+  "logTail": "Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org\nWARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.\n     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)\nOpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)\n\nNATIVE_DM_CAPTURE {\"actor\":{\"x\":-0.509792348888758,\"y\":0.212083333333333,\"z\":21.6294535415855},\"actors\":4,\"eye\":[-0.509792327880859,1.66208338737488,21.6294536590576],\"firstPerson\":true,\"framebuffer\":[960,640],\"geometryHash\":\"b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4\",\"map\":\"nacre-engine\",\"mode\":\"deathmatch\",\"path\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/captures/nacre-engine-2026-09-22T13-52-52-156Z/nacre-engine-arena-960x640.png\",\"phase\":3,\"physics\":{\"collider\":\"court\",\"downDistance\":1.66208338737488,\"downY\":0.0},\"pointer\":true,\"size\":[960,640],\"snapshots\":60}\nNATIVE_DM_CAPTURE {\"actor\":{\"x\":-23.0,\"y\":0.501111111111111,\"z\":-19.0},\"actors\":4,\"eye\":[-23.0,1.95111107826233,-19.0],\"firstPerson\":true,\"framebuffer\":[960,640],\"geometryHash\":\"b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4\",\"map\":\"nacre-engine\",\"mode\":\"deathmatch\",\"path\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/captures/nacre-engine-2026-09-22T13-52-52-156Z/nacre-engine-action-960x640.png\",\"phase\":3,\"physics\":{\"collider\":\"court\",\"downDistance\":1.95111107826233,\"downY\":0.0},\"pointer\":true,\"size\":[960,640],\"snapshots\":152}\nNATIVE_DM_CAPTURE {\"actor\":{\"x\":-23.0,\"y\":0.0,\"z\":-19.0},\"actors\":4,\"eye\":[-23.0,1.45000004768372,-19.0],\"firstPerson\":true,\"framebuffer\":[1280,800],\"geometryHash\":\"b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4\",\"map\":\"nacre-engine\",\"mode\":\"deathmatch\",\"path\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/captures/nacre-engine-2026-09-22T13-52-52-156Z/nacre-engine-arena-1280x800.png\",\"phase\":3,\"physics\":{\"collider\":\"court\",\"downDistance\":1.44999992847443,\"downY\":0.000000119209289550781},\"pointer\":true,\"size\":[1280,800],\"snapshots\":193}\nNATIVE_DM_CAPTURE {\"actor\":{\"x\":-13.7180777691213,\"y\":1.713,\"z\":9.18247242617704},\"actors\":4,\"eye\":[-13.7180776596069,3.16300010681152,9.18247222900391],\"firstPerson\":true,\"framebuffer\":[1280,800],\"geometryHash\":\"b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4\",\"map\":\"nacre-engine\",\"mode\":\"deathmatch\",\"path\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-identity-dm/captures/nacre-engine-2026-09-22T13-52-52-156Z/nacre-engine-action-1280x800.png\",\"phase\":3,\"physics\":{\"collider\":\"court\",\"downDistance\":3.16300010681152,\"downY\":0.0},\"pointer\":true,\"size\":[1280,800],\"snapshots\":303}\n"
+}

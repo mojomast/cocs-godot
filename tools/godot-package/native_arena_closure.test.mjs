@@ -11,6 +11,7 @@ import {fileURLToPath} from 'node:url';
 const script = fileURLToPath(new URL('./discover.mjs',import.meta.url));
 const discover = root => JSON.parse(execFileSync(process.execPath,['--no-warnings','--experimental-vm-modules',script,root],{encoding:'utf8',stdio:['ignore','pipe','pipe']}));
 const dataFiles = ['prism-foundry','aurora-basin','cinder-array'].map(id=>`godot/native_arenas/generated/${id}.json`);
+const identityDataFiles = ['lacuna-court','vermilion-fold','nacre-engine'].map(id=>`godot/identity_maps/generated/${id}.json`);
 function fixture(run) {
   const root = mkdtempSync(join(tmpdir(),'native arena closure synthetic '));
   const put = (path,text) => {mkdirSync(dirname(join(root,path)),{recursive:true});writeFileSync(join(root,path),text);};
@@ -33,6 +34,7 @@ function addNative(put) {
 test('Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON',()=>fixture((root,put)=>{
   const before = discover(root);
   assert.deepEqual(before.dataFiles,[]);
+  assert.deepEqual(before.identityDataFiles,[]);
   assert.deepEqual(before.routes.nativeArena,[]);
   addNative(put);
   const closure = discover(root);
@@ -45,7 +47,8 @@ test('Native DM SYNTHETIC closure separates exact reviewed adapters from locked 
   ]);
   assert.equal(closure.nativeArenaEntry,'port/native-arenas/authority.mjs');
   assert.deepEqual(closure.dataFiles,dataFiles);
-  assert.deepEqual(closure.dataReads,{'port/native-arenas/catalog.mjs':dataFiles});
+  assert.deepEqual(closure.identityDataFiles,identityDataFiles);
+  assert.deepEqual(closure.dataReads,{'port/native-arenas/catalog.mjs':[...dataFiles,...identityDataFiles]});
   assert.deepEqual(closure.nativeArenaAdditionalSource,[]);
   assert.deepEqual(closure.external,['ws']);
   assert.ok(closure.routes.nativeArena.includes('game/core.mjs'));

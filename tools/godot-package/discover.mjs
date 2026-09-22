@@ -13,8 +13,12 @@ const nativeArenaAdapters = ['port/native-arenas/authority.mjs', 'port/native-ar
 const adapters = [...hordeAdapters, ...nativeArenaAdapters];
 // Explicit dynamic data-read manifest: the builder hashes committed bytes and
 // copies these paths under runtime/, preserving catalog.mjs URL resolution.
+// `dataFiles` stays the original native-arena family (existing consumers);
+// `identityDataFiles` is the identity-map family added beside it.
 const nativeArenaData = ['prism-foundry','aurora-basin','cinder-array']
   .map(id => `godot/native_arenas/generated/${id}.json`);
+const identityArenaData = ['lacuna-court','vermilion-fold','nacre-engine']
+  .map(id => `godot/identity_maps/generated/${id}.json`);
 function discover(entry) {
   const pending = [entry], modules = {}, external = new Set();
   while (pending.length) {
@@ -42,12 +46,14 @@ const nativeArenaEntry = nativeArenaAdapters[0];
 const nativeArena = existsSync(resolve(root, nativeArenaEntry)) ? discover(nativeArenaEntry) : null;
 const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules};
 const dataFiles = nativeArena ? nativeArenaData : [];
+const identityDataFiles = nativeArena ? identityArenaData : [];
 const sorted = value => Object.fromEntries(Object.entries(value).sort());
 const sourceModules = {}, adapterModules = {};
 for (const [path, dependencies] of Object.entries(all)) (adapters.includes(path) ? adapterModules : sourceModules)[path] = dependencies;
 console.log(JSON.stringify({entry:'server/game-server.mjs', hordeEntry:hordeAdapters[0], nativeArenaEntry,
   modules:sorted(sourceModules), adapterModules:sorted(adapterModules), external:ordinary.external,
-  dataFiles, dataReads:nativeArena ? {'port/native-arenas/catalog.mjs':dataFiles} : {},
+  dataFiles, identityDataFiles,
+  dataReads:nativeArena ? {'port/native-arenas/catalog.mjs':[...dataFiles, ...identityDataFiles]} : {},
   routes:{ordinary:Object.keys(ordinary.modules).sort(), horde:Object.keys(horde.modules).sort(), nativeArena:Object.keys(nativeArena?.modules ?? {}).sort()},
   nativeArenaAdditionalSource:Object.keys(nativeArena?.modules ?? {}).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p)).sort(),
   hordeAdditionalSource:Object.keys(horde.modules).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p)).sort()}, null, 2));

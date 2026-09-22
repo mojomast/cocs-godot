@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {NATIVE_ARENA_IDS, nativeArenaEntry} from '../catalog.mjs';
-import {parseNativeArena, readNativeArena, canonicalArenaJSON, nativeArenaGeometryHash} from '../schema.mjs';
+import {NATIVE_ARENA_IDS, IDENTITY_ARENA_IDS, DEATHMATCH_ARENA_IDS, ARENA_CATALOG, nativeArenaEntry} from '../catalog.mjs';
+import {parseNativeArena, parseIdentityArena, parseArenaEnvelope, readNativeArena, canonicalArenaJSON, nativeArenaGeometryHash} from '../schema.mjs';
 import {validateNativeConfig} from '../match.mjs';
-import {syntheticArena} from './fixtures.mjs';
+import {syntheticArena, syntheticIdentityArena} from './fixtures.mjs';
 
 test('only three native static asset paths; no source registry aliases', () => {
   assert.deepEqual(NATIVE_ARENA_IDS, ['prism-foundry', 'aurora-basin', 'cinder-array']);
@@ -57,4 +57,106 @@ test('geometryHash binds canonical arena content, independent of object key orde
   assert.equal(nativeArenaGeometryHash(reordered), data.geometryHash);
   data.arena.name = data.name = 'Tampered valid name';
   assert.throws(() => parseNativeArena(data), /geometryHash/);
+});
+test('identity catalog adds exactly the three reviewed ids beside the native three', () => {
+  assert.deepEqual(IDENTITY_ARENA_IDS, ['lacuna-court', 'vermilion-fold', 'nacre-engine']);
+  assert.deepEqual(DEATHMATCH_ARENA_IDS, ['prism-foundry', 'aurora-basin', 'cinder-array',
+    'lacuna-court', 'vermilion-fold', 'nacre-engine']);
+  assert.equal(ARENA_CATALOG.length, 6);
+  assert.ok(ARENA_CATALOG.every(entry => ['native', 'identity'].includes(entry.family)));
+  for (const id of DEATHMATCH_ARENA_IDS) assert.equal(nativeArenaEntry(id).id, id);
+  for (const id of ['lacuna-court.json', '../lacuna-court', 'Lacuna-Court', 'lacuna court', 'identity', '']) {
+    assert.throws(() => nativeArenaEntry(id)); assert.throws(() => readNativeArena(id));
+  }
+});
+test('SYNTHETIC: identity envelopes parse per family; the native parser never widens', () => {
+  for (const id of IDENTITY_ARENA_IDS) {
+    const data = syntheticIdentityArena(id);
+    const parsed = parseIdentityArena(JSON.stringify(data), id);
+    assert.deepEqual(parsed, data); assert.notEqual(parsed, data);
+    assert.equal(parseArenaEnvelope(data, id).arena.id, id);
+    assert.equal(parseArenaEnvelope(JSON.parse(JSON.stringify(data))).arena.id, id);
+    // The lock-step native schema keeps its own envelope allowlist.
+    assert.throws(() => parseNativeArena(data, id), /envelope/);
+  }
+  // Native maps still dispatch to the native parser through the family seam.
+  const native = syntheticArena();
+  assert.deepEqual(parseArenaEnvelope(native, 'prism-foundry'), native);
+  assert.throws(() => parseIdentityArena(native, 'prism-foundry'), /not an identity map/);
+  assert.throws(() => parseArenaEnvelope(syntheticIdentityArena(), 'vermilion-fold'), /ID mismatch/);
+});
+test('identity strict validation rejects malformed presentation/objective/team fields', () => {
+  const mutations = [
+    d => d.schemaVersion = 2, d => d.mode = 'ctf', d => d.mode = 'koth',
+    d => d.palette[0] = 'not-a-color', d => d.palette[0] = 'abcd', d => d.palette[3] = '#aabbcc',
+    d => d.palette.push('aabbcc'), d => delete d.art, d => d.art[0].walkable = 'no',
+    d => d.art.push({id:'trim', material:'accent', walkable:false, vertices:[[0,0,0],[1,0,0],[0,1,0]], triangles:[[0,1,2]]}),
+    d => d.art[0].triangles[0] = [0, 1, 9], d => d.cameras[0].at[1] = '8',
+    d => d.cameras = [], d => d.cameras.push({id:'bad'}), d => d.landmarks[0].kind = '',
+    d => d.landmarks[0].scale = [1, 0, 1], d => d.landmarks[0] = {kind:'beacon', x:0},
+    d => d.grayboxHash = 'XYZ', d => d.geometryHash = '0'.repeat(64),
+    d => d.routes[0].points[0].x = 999, d => d.spawnPoints[0].y = 5, d => d.spawnPoints.pop(),
+    d => d.spawnPoints[0].w = 1, d => d.colliderSources = [{id:'x', kind:'nope', path:'p', walkable:true, low:[0,0,0], high:[1,1,1], vertexCount:3}],
+    d => d.provenance = {godot:1}, d => d.arena.unknown = true, d => d.unknown = true,
+    d => d.artNotes = [{id:'x', collision:'none', reason:1}], d => d.artNotes = 'notes',
+    d => d.arena.spawns[0][0] = 500, d => d.arena.navNodes.push([NaN, 0]),
+    d => d.arena.terrain.surfaces[0].triangles[0] = [0, 1, 99],
+    d => d.arena.teamSpawns = {0:[[-14, 0],[-14, 12]], 1:[[14, 0]]},
+    d => d.arena.teamSpawns = {west:[[-14, 0],[-14, 12]]},
+    d => d.arena.teamSpawns = {0:[[-14, 0],[-14, 12]], 1:[[14, 0],[999, -12]]},
+    d => d.arena.teamSpawns = {0:[[-14, 0],[-14, 12]], red:[[14, 0],[14, -12]]},
+    d => d.arena.objectiveZones = [{x:0, z:0, radius:0.1}, {x:0, z:10}, {x:0, z:-10}],
+    d => d.arena.objectiveZones = [{x:999, z:0}, {x:0, z:0}, {x:0, z:10}],
+    d => d.arena.objectiveZones = [{x:0, z:0, y:'zero'}, {x:0, z:10}, {x:0, z:-10}],
+  ];
+  for (const mutate of mutations) {
+    const data = syntheticIdentityArena('prism-foundry');
+    mutate(data);
+    data.geometryHash = nativeArenaGeometryHash(data.arena);
+    assert.throws(() => parseIdentityArena(data), String(mutate));
+  }
+  // Empty navNodes is valid for identity maps and still invalid for native ones.
+  const empty = syntheticIdentityArena();
+  empty.arena.navNodes = [];
+  empty.geometryHash = nativeArenaGeometryHash(empty.arena);
+  assert.equal(parseIdentityArena(empty).arena.navNodes.length, 0);
+  assert.throws(() => parseNativeArena({...syntheticArena(), arena:{...syntheticArena().arena, navNodes:[]}}), /navNodes/);
+});
+test('identity objective/team fields validate strictly when authored (vermilion-fold form)', () => {
+  const data = syntheticIdentityArena('vermilion-fold');
+  data.arena.navNodes = [];
+  data.geometryHash = nativeArenaGeometryHash(data.arena);
+  const parsed = parseIdentityArena(data, 'vermilion-fold');
+  assert.equal(parsed.arena.objectiveZones.length, 3);
+  assert.deepEqual(Object.keys(parsed.arena.teamSpawns).sort(), ['0', '1']);
+  // Source teamPoints also consumes red/blue and west/east spellings.
+  for (const keys of [['red', 'blue'], ['west', 'east']]) {
+    const alias = syntheticIdentityArena('vermilion-fold');
+    alias.arena.teamSpawns = {[keys[0]]:alias.arena.teamSpawns[0], [keys[1]]:alias.arena.teamSpawns[1]};
+    alias.geometryHash = nativeArenaGeometryHash(alias.arena);
+    assert.deepEqual(Object.keys(parseIdentityArena(alias).arena.teamSpawns).sort(), [...keys].sort());
+  }
+  for (const bad of [
+    {0:[[-14, 0],[-14, 12]], 1:[[14, 0]]},
+    {0:[[-14, 0],[-14, 12]], 1:[[14, 0],[999, -12]]},
+    {0:[[-14, 0],[-14, 12]], 1:[[14, 0],[0, -1000]]},
+    {0:[[-14, 0],[-14, 12]], 1:[[14, 0],[14, -12]], 2:[[0, 0],[1, 1]]},
+    {0:[[-14, 0],[-14, 12]]},
+  ]) {
+    const alias = syntheticIdentityArena('vermilion-fold');
+    alias.arena.teamSpawns = bad;
+    alias.geometryHash = nativeArenaGeometryHash(alias.arena);
+    assert.throws(() => parseIdentityArena(alias), 'bad team pool ' + JSON.stringify(bad));
+  }
+  for (const badZones of [
+    [{x:0, z:-10}, {x:0, z:0}],
+    [{x:0, z:-10, radius:3}, {x:0, z:0, radius:3}, {x:0, z:10, radius:99}],
+    [{x:0, z:-10, y:'zero'}, {x:0, z:0}, {x:0, z:10}],
+    [{x:0, z:-10}, {x:0, z:0}, {x:0, z:10}, {x:0, z:0}],
+  ]) {
+    const alias = syntheticIdentityArena('vermilion-fold');
+    alias.arena.objectiveZones = badZones;
+    alias.geometryHash = nativeArenaGeometryHash(alias.arena);
+    assert.throws(() => parseIdentityArena(alias), 'bad zones');
+  }
 });

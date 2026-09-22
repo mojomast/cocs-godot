@@ -2,13 +2,13 @@ import http from 'node:http';
 import {WebSocketServer, WebSocket} from 'ws';
 import {parseInputEnvelope} from '../../game/protocol.mjs';
 import {nativeArenaEntry} from './catalog.mjs';
-import {keys, record, readNativeArena, parseNativeArena} from './schema.mjs';
+import {keys, record, readNativeArena, parseArenaEnvelope} from './schema.mjs';
 import {createNativeMatch, validateNativeConfig} from './match.mjs';
 import {InputBuffer} from './input-buffer.mjs';
 import {EventCursor} from './event-cursor.mjs';
 
 export {EventCursor, createNativeMatch, validateNativeConfig};
-export {readNativeArena, parseNativeArena} from './schema.mjs';
+export {readNativeArena, parseNativeArena, parseIdentityArena, parseArenaEnvelope} from './schema.mjs';
 export const LIMITS = Object.freeze({payload:16384, frame:1048576, outbound:2097152,
   messagesPerSecond:120, burst:128, connections:8});
 const LOOPBACK = ['127.0.0.1', '::1', '::ffff:127.0.0.1'];
@@ -24,9 +24,15 @@ const minimalConfig = config => Object.fromEntries(ruleFields.map(key => [key, c
  * actor/peer 0, all other seats are genuine source bots. arenaData is a trusted
  * in-process synthetic test seam, never a wire field or filesystem override.
  */
-export function createAuthority({mapId = 'prism-foundry', config = {}, random = Math.random,
-  observe = () => {}, arenaData, botCount, timeLimit, fragLimit, difficulty,
-  mode, bots, roundSeconds} = {}) {
+export function createAuthority(options = {}) {
+  if (!record(options)) throw new TypeError('Native arena options must be an object');
+  const allowed = ['mapId', 'config', 'random', 'observe', 'arenaData', 'botCount', 'timeLimit',
+    'fragLimit', 'difficulty', 'mode', 'bots', 'roundSeconds'];
+  const unknown = Object.keys(options).filter(key => !allowed.includes(key));
+  if (unknown.length) throw new TypeError(`Unsupported native arena option: ${unknown[0]}`);
+  const {mapId = 'prism-foundry', config = {}, random = Math.random,
+    observe = () => {}, arenaData, botCount, timeLimit, fragLimit, difficulty,
+    mode, bots, roundSeconds} = options;
   nativeArenaEntry(mapId);
   if (typeof random !== 'function' || typeof observe !== 'function') throw new TypeError('RNG/observer must be functions');
   if (bots !== undefined && botCount !== undefined && bots !== botCount) throw new TypeError('Conflicting bot counts');
@@ -35,8 +41,18 @@ export function createAuthority({mapId = 'prism-foundry', config = {}, random = 
     timeLimit:timeLimit !== undefined ? timeLimit : roundSeconds, fragLimit, difficulty}).filter(([, v]) => v !== undefined));
   const defaults = minimalConfig(validateNativeConfig({...config, ...overrides}));
   // Resolve only the launch-selected static asset, before opening any socket.
-  const data = arenaData === undefined ? readNativeArena(mapId) : parseNativeArena(arenaData, mapId);
-  const server = http.createServer({maxHeaderSize:8192}, (_req, res) => {
+  const data = arenaData === undefined ? readNativeArena(mapId) : parseArenaEnvelope(arenaData, mapId);
+  // HTTP serves the documented loopback readiness probe on GET / only. HTTP
+  // paths/methods are not a second protocol surface.
+  const server = http.createServer({maxHeaderSize:8192}, (req, res) => {
+    if (req.method !== 'GET' && req.method !== 'HEAD') {
+      res.writeHead(405, {'Content-Type':'application/json', 'Allow':'GET, HEAD'});
+      res.end('{"error":"method not allowed"}'); return;
+    }
+    if ((req.url ?? '/') !== '/') {
+      res.writeHead(404, {'Content-Type':'application/json'});
+      res.end('{"error":"not found"}'); return;
+    }
     res.writeHead(200, {'Content-Type':'application/json'});
     res.end(JSON.stringify({service:'cocs-native-arenas', v:3, localOnly:true,
       humanCount:1, mapId, geometryHash:data.geometryHash, port:server.address()?.port}));

@@ -2,7 +2,7 @@ import {Match, floorAt, obstructed} from '../../game/core.mjs';
 import {normalizeConfig} from '../../game/config.mjs';
 import {CHARACTERS, HARNESSES} from '../../game/data.mjs';
 import {nativeArenaEntry} from './catalog.mjs';
-import {keys, parseNativeArena, readNativeArena} from './schema.mjs';
+import {keys, parseArenaEnvelope, readNativeArena} from './schema.mjs';
 
 export const DEFAULT_NATIVE_CONFIG = Object.freeze({mode:'deathmatch', botCount:3,
   difficulty:'normal', timeLimit:180, fragLimit:15});
@@ -28,7 +28,10 @@ export function createNativeMatch({mapId = 'prism-foundry', config = {}, random 
   const options = validateNativeConfig(config);
   if (typeof random !== 'function') throw new TypeError('RNG must be a function');
   if (!CHARACTERS.some(c => c.id === character) || !HARNESSES.some(h => h.id === harness)) throw new TypeError('Unsupported loadout');
-  const data = arenaData === undefined ? readNativeArena(mapId) : parseNativeArena(arenaData, mapId);
+  // Both reviewed families run the unmodified source Deathmatch rules against
+  // their own spawns/pickups/nav/blocks. Identity maps are constructed through
+  // the same scoped accessor; their non-DM recipe mode is metadata, not a gate.
+  const data = arenaData === undefined ? readNativeArena(mapId) : parseArenaEnvelope(arenaData, mapId);
   const arena = data.arena;
   let assigned = false;
   class NativeMatch extends Match {

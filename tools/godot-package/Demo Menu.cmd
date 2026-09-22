@@ -15,7 +15,7 @@ echo 7. Sunscar vehicle demo
 echo 8. Ion Speedway race
 echo 9. Operator model viewer
 echo G. New maps, shaders and particle experiments
-echo D. Native Deathmatch - Prism, Aurora and Cinder
+echo D. Native Deathmatch - Prism, Aurora, Cinder, Lacuna, Vermilion, Nacre
 echo 0. Exit
 choice /c 123456789GD0 /n /m "Choose a demo: "
 if errorlevel 12 exit /b 0

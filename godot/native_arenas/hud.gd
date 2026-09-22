@@ -63,11 +63,13 @@ func build_ui() -> void:
 	stack.add_child(text("NATIVE ARENAS  /  DEATHMATCH", 14, ACCENT))
 	stack.add_child(text("Your battleground", 32))
 	stack.add_child(text("Source-authoritative combat, bots and respawns. Your launch selects the arena; relaunch to choose another.", 16, MUTED))
-	var maps := HBoxContainer.new()
-	maps.add_theme_constant_override("separation", 12)
+	var maps := GridContainer.new()
+	maps.columns = 3
+	maps.add_theme_constant_override("h_separation", 12)
+	maps.add_theme_constant_override("v_separation", 12)
 	stack.add_child(maps)
 	var number := 1
-	for id: String in CatalogData.MAP_IDS:
+	for id: String in CatalogData.DM_MAP_IDS:
 		var card := Button.new()
 		card.text = "0%d\n%s\nDEATHMATCH" % [number, CatalogData.TITLES[id]]
 		card.toggle_mode = true

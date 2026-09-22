@@ -143,3 +143,25 @@ test('launcher aliases mode/bots/roundSeconds and HTTP readiness use the deliver
   await assert.rejects(createNativeArenaAuthority({...options(), bots:null}), /botCount/);
   await assert.rejects(createNativeArenaAuthority({...options(), roundSeconds:null}), /timeLimit/);
 });
+test('unknown options and unknown map ids fail before any listener opens', async () => {
+  for (const bad of [{...options(), url:'http://evil'}, {...options(), arenaPath:'/etc/passwd'},
+    {...options(), config:{mode:'deathmatch'}, extra:1}, {...options(), mapId:'lacuna-court.json'}]) {
+    await assert.rejects(createNativeArenaAuthority(bad), /Unsupported native arena (option|ID)/);
+  }
+  await assert.rejects(createNativeArenaAuthority({...options(), mapId:'__proto__'}), /Unsupported native arena ID/);
+  await assert.rejects(createNativeArenaAuthority({...options(), mapId:''}), /Unsupported native arena ID/);
+});
+test('HTTP readiness is the documented GET / probe only', async t => {
+  const authority = await createNativeArenaAuthority(options()); t.after(() => authority.close());
+  const root = await fetch(`http://127.0.0.1:${authority.port}/`);
+  assert.equal(root.status, 200);
+  assert.equal((await root.json()).localOnly, true);
+  const wrong = await fetch(`http://127.0.0.1:${authority.port}/wrong-path`);
+  assert.equal(wrong.status, 404);
+  const wsPath = await fetch(`http://127.0.0.1:${authority.port}/native-arenas`);
+  assert.equal(wsPath.status, 404);
+  const post = await fetch(`http://127.0.0.1:${authority.port}/`, {method:'POST', body:'{}'});
+  assert.equal(post.status, 405);
+  const del = await fetch(`http://127.0.0.1:${authority.port}/`, {method:'DELETE'});
+  assert.equal(del.status, 405);
+});

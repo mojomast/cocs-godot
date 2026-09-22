@@ -22,7 +22,10 @@ export const NATIVE_EXPERIENCES = {
   'shader-lab': {scene:'res://shader_lab/demo.tscn'},
 };
 
-export const NATIVE_ARENA_MAPS = ['prism-foundry','aurora-basin','cinder-array'];
+// Deathmatch roster: the three original native arenas plus the three identity
+// maps. Every entry is a reviewed static asset resolved by id only.
+export const IDENTITY_ARENA_MAPS = ['lacuna-court','vermilion-fold','nacre-engine'];
+export const NATIVE_ARENA_MAPS = ['prism-foundry','aurora-basin','cinder-array',...IDENTITY_ARENA_MAPS];
 
 export function options(argv, catalog) {
   const values = {}, flags = new Set();
@@ -111,6 +114,9 @@ export const HELP = `COCS native demo — Node >=22.13.0 (bundled on Windows)
   node run.mjs --experience=shader-lab --smoke
   node run.mjs --experience=native-dm --map=prism-foundry
   node run.mjs --experience=native-dm --map=cinder-array --bots=4 --round-seconds=120 --smoke
+  node run.mjs --experience=native-dm --map=lacuna-court
+  node run.mjs --experience=native-dm --map=vermilion-fold --smoke
+  node run.mjs --experience=native-dm --map=nacre-engine
 
 Native-only graphics: showcase, aurora-basin, cinder-array, particle-lab, shader-lab.
   Standalone exploration/labs; no Node authority, network endpoint or source match.
@@ -119,7 +125,8 @@ Native-only graphics: showcase, aurora-basin, cinder-array, particle-lab, shader
   --map, --mode, --endpoint and source-match controls are rejected.
 
 Combat: 3 combat maps; deathmatch/teamdeathmatch/instagib/rockets.
-Native DM: prism-foundry (default), aurora-basin, cinder-array; deathmatch only.
+Native DM: prism-foundry (default), aurora-basin, cinder-array, lacuna-court,
+  vermilion-fold, nacre-engine; Deathmatch only.
   Owned local loopback authority, one human plus --bots=1..7 (default 2).
   --round-seconds=60..300 (default 180). No endpoint, join or setup options.
   --smoke runs the scene headlessly with Dummy audio, bounded to 20 seconds.

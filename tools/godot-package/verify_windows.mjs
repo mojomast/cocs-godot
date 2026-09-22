@@ -28,8 +28,8 @@ async function closed(port) {
 try {
   const manifest = JSON.parse(await readFile(join(root,'manifest.json')));
   assert.equal(manifest.target, 'windows');
-  assert.equal(manifest.operator_models, 'candidate');
-  assert.ok(manifest.staged_native_overrides['world/presentation.gd']);
+  assert.equal(manifest.operator_models, 'source-operators');
+  assert.deepEqual(manifest.staged_native_overrides, {});
   for (const [name, expected] of Object.entries(manifest.files)) {
     assert.equal(sha(await readFile(join(root,name))), expected, name);
   }
@@ -51,7 +51,7 @@ try {
     await writeFile(join(output,map+'.log'), stdout+stderr);
     assert.doesNotMatch(stdout+stderr, /SCRIPT ERROR|ERROR:|Assertion failed/);
     assert.match(stdout, /PORT_SESSION_SMOKE_OK actors=3/);
-    assert.match(stdout, /PORT_OPERATOR_MODEL res:\/\/player_models\/candidate.gd/);
+    assert.match(stdout, /PORT_OPERATOR_MODEL res:\/\/source_operators\/operator_visual\.gd/);
     assert.match(stdout, /PACKAGE_STOPPED/);
     const ready = JSON.parse(stdout.split(/\r?\n/).find(l=>l.startsWith('PACKAGE_SERVER_READY ')).slice(21));
     const native = JSON.parse(stdout.split(/\r?\n/).find(l=>l.startsWith('PACKAGE_NATIVE_STARTED ')).slice(23));
@@ -65,7 +65,7 @@ try {
   await writeFile(join(output,'preview.log'),preview.stdout+preview.stderr);
   assert.doesNotMatch(preview.stdout+preview.stderr,/SCRIPT ERROR|ERROR:/);
   report.preview_load = true;
-  for (const map of ['prism-foundry','aurora-basin','cinder-array']) {
+  for (const map of ['prism-foundry','aurora-basin','cinder-array','lacuna-court','vermilion-fold','nacre-engine']) {
     let result;
     try {
       result = await exec(process.env.ComSpec || 'cmd.exe', ['/d','/s','/c',`""${join(root,'Native Deathmatch.cmd')}" --experience=native-dm --map=${map} --smoke"`], {cwd:sandbox,env,windowsVerbatimArguments:true,timeout:45000,maxBuffer:4*1024*1024});
@@ -84,6 +84,15 @@ try {
     assert.throws(()=>process.kill(native.pid,0), 'Native arena process exited');
     report.cases.push({experience:'native-dm',map,passed:true,port:ready.port,native_pid:native.pid,cleanup:true});
   }
+  // The identity JSONs and the shared identity builder must resolve from the
+  // exported PCK with no project directory present.
+  const identityResources = await exec(join(root,'cocs.exe'), ['--headless','--audio-driver','Dummy','--main-pack',join(root,'cocs.pck'),'--script','res://native_arenas/package_inspect.gd'], {cwd:sandbox,env,timeout:60000});
+  await writeFile(join(output,'identity-resources.log'),identityResources.stdout+identityResources.stderr);
+  assert.doesNotMatch(identityResources.stdout+identityResources.stderr,/SCRIPT ERROR|ERROR:/);
+  assert.match(identityResources.stdout,/SOURCE_OPERATOR_PACKAGE_OK /);
+  assert.match(identityResources.stdout,/NATIVE_IDENTITY_PACKAGE_OK /);
+  report.identity_resources = true;
+  report.cases.push({experience:'native-dm-identity-resources',passed:true,pck:true});
   // Exercise the native graphics routes with bundled runtimes and no authority.
   for (const experience of ['showcase','aurora-basin','cinder-array','particle-lab','shader-lab']) {
     let nativeOnly;
