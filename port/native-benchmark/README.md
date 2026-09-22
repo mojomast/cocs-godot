@@ -208,3 +208,15 @@ llvmpipe numbers and what was inspected by hand.
   at all as `unusable`, even when the JSON looks complete.
 * Software-renderer runs (`llvmpipe`) in this repository are load-change proof and
   regression evidence only. Never quote them as the owner's performance.
+
+## Lead verification (post-lane)
+
+- `res://tests/benchmark/contracts.gd` — **158 checks, 0 failures** (re-run by lead).
+- `node --test port/native-benchmark/test.mjs` — pass (re-run by lead).
+- Both are now registered in `tools/godot-dev/verify.py` as `benchmark-contracts` and
+  `benchmark-tools`, so they run in the aggregate sweep.
+- Reported llvmpipe separation is real and monotonic: Low 221.9 ms / High 304.1 ms /
+  Extreme 499.2 ms at 1280x800 (x2.25), and 154.4 / 244.1 / 575.4 ms at 960x640 (x3.73).
+  Those are software-renderer figures and are not hardware claims.
+- F7 is claimed by the benchmark; the UI lane was told so it does not bind it.
+- Adding `--benchmark` to the packaged launchers remains lead-owned routing.
