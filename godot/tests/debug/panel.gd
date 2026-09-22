@@ -38,7 +38,14 @@ func _initialize() -> void:
 	call_deferred("run")
 
 func run() -> void:
-	check("--debug-panel" in OS.get_cmdline_user_args(), "test process runs with the explicit debug flag")
+	# Fail fast when the required user arg is missing: without it the facility is
+	# disabled, the panel never exists, and the fixture would otherwise await a
+	# frame that can never arrive (observed as a hang rather than a failure).
+	if not ("--debug-panel" in OS.get_cmdline_user_args()):
+		push_error("DEBUG_PANEL requires the --debug-panel user arg after --")
+		quit(1)
+		return
+	check(true, "test process runs with the explicit debug flag")
 	var session := SessionProbe.new()
 	root.add_child(session)
 	await process_frame
