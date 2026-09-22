@@ -1,0 +1,175 @@
+{
+  "runs": [
+    {
+      "run": "2026-09-22T00-09-25.115Z",
+      "execution_commit": "6a6582af2f52cf103c9e70bbee8ecd35199833d6",
+      "original_harness_status": "PASS",
+      "independent_acceptance": "FAIL: incidental SMG breaks required weapon-0 baseline",
+      "captureWallMs": 21049.119067,
+      "counts": {
+        "wire": 1763,
+        "observations": 658,
+        "nativeSnapshots": 602,
+        "nativeTrace": 1755
+      }
+    },
+    {
+      "run": "2026-09-22T00-10-59.236Z",
+      "execution_commit": "3991990f1c1ec8d78c3a0cd089d2d442a184a5db",
+      "original_harness_status": "PASS",
+      "independent_acceptance": "PASS after deferred-boundary audit correction 497555d",
+      "captureWallMs": 22891.945842,
+      "counts": {
+        "wire": 1923,
+        "observations": 725,
+        "nativeSnapshots": 656,
+        "nativeTrace": 1917
+      }
+    }
+  ],
+  "archive_sha256": "fe6317ac7b4c9227062646cfe1e86ef0076d71161849c0e725e2974bbaefc056",
+  "archive_bytes": 777414,
+  "members": [
+    {
+      "path": "2026-09-22T00-09-25.115Z/available.png",
+      "bytes": 59184,
+      "sha256": "48489440972ecdd0fc0c4f199015aad6b8ee7135540aa4bfd90d2fa0ef0b9b3c"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/export.log",
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/hidden.png",
+      "bytes": 60319,
+      "sha256": "fe213df524fad28c59a8cd3993333e2baf843118b52dd5708f23db6727900640"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/import.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/import.stdout.log.gz",
+      "bytes": 563,
+      "sha256": "3ca5dd509b5f4a6bb7181715d10604ce2a88a95a7842faa244c4c6152d3dc60b"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/left_radius.png",
+      "bytes": 69272,
+      "sha256": "c188b941a7c0da86a769b218ed1c49632a54d4ce7741868ceb7fafb4081bacf5"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/native.stderr.log",
+      "bytes": 171,
+      "sha256": "12bab35d551a3e20a027c0a1164acc445f84527e1e857d5d898cfa9e45f3a5b0"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/native.stdout.log.gz",
+      "bytes": 64949,
+      "sha256": "fe79f23275dc17911d13e4a44565100cee05a461f86f3d9cfbff6bb19bbbefd6"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/observations.jsonl.gz",
+      "bytes": 35927,
+      "sha256": "587fec0ce944a243119e4177e3203264da5fc12925d6cbe1ab7752e6bc84002e"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/returned.png",
+      "bytes": 68245,
+      "sha256": "695183eb02f14ed6312a43d914a82d5d20ca6a3beb77b326315ad9c2e39c2479"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/summary.json",
+      "bytes": 31085,
+      "sha256": "802f851e6ab3b2b29b275374106ec091fbe523aecedf0ce6723184ff680d2c78"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/wire.jsonl.gz",
+      "bytes": 44578,
+      "sha256": "b868e272606a2a345371fea3df8ddcdc80251acd1baeebdaa70e3eefd8d0b485"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/xvfb.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "2026-09-22T00-09-25.115Z/xvfb.stdout.log.gz",
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/available.png",
+      "bytes": 62482,
+      "sha256": "b9548983171aa8213fb70ea50723aa62527a04de213b5b3097a251d250621787"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/export.log",
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/hidden.png",
+      "bytes": 62706,
+      "sha256": "76d357c19693e1d2b492e5a46da0a8d5c1fa58b4f93761c35a6e4e84a0aed7b3"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/import.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/import.stdout.log.gz",
+      "bytes": 563,
+      "sha256": "3ca5dd509b5f4a6bb7181715d10604ce2a88a95a7842faa244c4c6152d3dc60b"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/left_radius.png",
+      "bytes": 68693,
+      "sha256": "4feb6cbc46b834546998f181f433590797f7c3508a1bf0ecba0d36d9ce0428bf"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/native.stderr.log",
+      "bytes": 171,
+      "sha256": "12bab35d551a3e20a027c0a1164acc445f84527e1e857d5d898cfa9e45f3a5b0"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/native.stdout.log.gz",
+      "bytes": 73522,
+      "sha256": "ed891988d7e58926019bf586a1efa3ac06216320a4a2d045b28261bbb5271234"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/observations.jsonl.gz",
+      "bytes": 40331,
+      "sha256": "efefab6b82df90fd0caf6e44c4ea70b6c82fc3f237d2e7995f8509678a06917f"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/returned.png",
+      "bytes": 67820,
+      "sha256": "148b5dd8264934884f24e140c494d9fb565191e17ad1a45c803d9d27fe2e90c5"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/summary.json",
+      "bytes": 31144,
+      "sha256": "2a1a0be4a531776a58ad11b98eb64c90975fe4a101179fac0fc7b35e49cccf37"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/wire.jsonl.gz",
+      "bytes": 49281,
+      "sha256": "ac233888765f9c0030868ae7d38e39680b5b42975f0708690faab106ddd6553b"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/xvfb.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "2026-09-22T00-10-59.236Z/xvfb.stdout.log.gz",
+      "bytes": 20,
+      "sha256": "59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2"
+    }
+  ],
+  "independentPidAbsenceCheck": true
+}

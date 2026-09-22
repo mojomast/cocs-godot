@@ -4,6 +4,15 @@ This is an exercised port laboratory, not a completed game port. It preserves th
 
 ## Current integration and release status
 
+**Porting direction:** prioritize a good native Godot game over a 1:1 recreation.
+Use simpler or better Godot-native implementations when they improve quality or
+save development time. Preserve the locked map/mode scope, recognizable map
+identity, and gameplay intent; document meaningful behavior or presentation
+changes. Source visuals are a reference, not a requirement to reproduce every
+shader, effect, UI layout, or technical mechanism. Acceptance should establish
+correct gameplay and a coherent, usable presentation. Focus verification on
+real regressions and release risks rather than incidental implementation parity.
+
 See [RELEASE_MATRIX.md](RELEASE_MATRIX.md) for current evidence levels, all nine
 required map/mode identities, graphical acceptance and release blockers. The
 asset/gameplay audits, bounded recorder, guest integration and native trace
