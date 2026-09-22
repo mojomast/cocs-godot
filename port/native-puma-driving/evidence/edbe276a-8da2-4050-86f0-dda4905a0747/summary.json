@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "map": "ion-speedway",
+      "status": "PASS",
+      "snapshots": 93,
+      "inputReceipts": 435,
+      "ackHighWater": 431,
+      "maxDisplacement": 30.972748182878444,
+      "maxHeadingChange": 2.442,
+      "renderMatches": true,
+      "neutralSamples": 30,
+      "nativeCompletionProven": false
+    },
+    {
+      "map": "aurora-stadium",
+      "status": "PASS",
+      "snapshots": 92,
+      "inputReceipts": 446,
+      "ackHighWater": 442,
+      "maxDisplacement": 33.65343587213644,
+      "maxHeadingChange": 2.7560000000000002,
+      "renderMatches": true,
+      "neutralSamples": 30,
+      "nativeCompletionProven": false
+    }
+  ],
+  "evidence": "/home/mojo/.hermes-instances/fresh/workspace/cocs-native-puma-presentation/port/native-puma-driving/evidence/edbe276a-8da2-4050-86f0-dda4905a0747",
+  "classification": "real normal-rate server; injected native physical key events; focus notifications synthetic",
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}

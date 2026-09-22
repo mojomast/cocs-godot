@@ -1,0 +1,21 @@
+{
+  "cases": [
+    {
+      "map": "ion-speedway",
+      "status": "PASS",
+      "snapshots": 93,
+      "inputReceipts": 434,
+      "ackHighWater": 430,
+      "maxDisplacement": 31.375559660347097,
+      "maxHeadingChange": 2.455,
+      "renderMatches": true,
+      "neutralSamples": 30,
+      "nativeCompletionProven": false
+    }
+  ],
+  "evidence": "/home/mojo/.hermes-instances/fresh/workspace/cocs-native-puma-presentation/port/native-puma-driving/evidence/bc239695-1a7b-4c7e-967e-999e75f081a5",
+  "classification": "real normal-rate server; injected native physical key events; focus notifications synthetic",
+  "status": "FAIL",
+  "error": "aurora-stadium failed; inspect log",
+  "ownedProcessesReaped": true
+}
