@@ -1,0 +1,76 @@
+{
+  "headless": true,
+  "runtime": "/tmp/opencode/graphical-focused-0heju2l4",
+  "commands": [
+    {
+      "name": "semantic",
+      "command": [
+        "node",
+        "tools/godot-export/semantic.mjs",
+        "/tmp/opencode/graphical-focused-0heju2l4/godot/content/generated"
+      ],
+      "exit": 0,
+      "engine_error": false
+    },
+    {
+      "name": "import",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--editor",
+        "--path",
+        "/tmp/opencode/graphical-focused-0heju2l4/godot",
+        "--import"
+      ],
+      "exit": 0,
+      "engine_error": false
+    },
+    {
+      "name": "window_focus",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/graphical-focused-0heju2l4/godot",
+        "--script",
+        "res://tests/protocol/window_focus.gd"
+      ],
+      "exit": 0,
+      "engine_error": false
+    },
+    {
+      "name": "control_safety",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/graphical-focused-0heju2l4/godot",
+        "--script",
+        "res://tests/protocol/control_safety.gd"
+      ],
+      "exit": 0,
+      "engine_error": false
+    },
+    {
+      "name": "session_recovery",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/graphical-focused-0heju2l4/godot",
+        "--script",
+        "res://tests/protocol/session_recovery.gd"
+      ],
+      "exit": 0,
+      "engine_error": false
+    }
+  ],
+  "hashes": {
+    "godot/world/session.gd": "0d67921af8ba272b242b641cf95b01b4de921d2be9450d5175c254216379b33c",
+    "godot/tests/protocol/window_focus.gd": "6af454b9f01231fd38dd8d38b314238804cb25708ea334e583e2ce3740f57d8a",
+    "godot/tests/protocol/control_safety.gd": "2a6bfc9632da2374dcefbe43744230e16b551a5c32f72a117894ef52c44001db",
+    "godot/tests/protocol/session_recovery.gd": "d95d405f965e0108f568fbe68576b8984168615de7e3ee1d139715c56d43f877"
+  },
+  "runtime_removed": true,
+  "passed": true
+}

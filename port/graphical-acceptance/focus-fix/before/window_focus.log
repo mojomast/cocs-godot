@@ -1,0 +1,18 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: Window focus: window focus gates capture before application notice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/window_focus.gd:17)
+       [1] run (res://tests/protocol/window_focus.gd:43)
+ERROR: Window focus: look ignored during notice delay
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/window_focus.gd:17)
+       [1] run (res://tests/protocol/window_focus.gd:45)
+ERROR: Window focus: application focus alone cannot override unfocused window
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/window_focus.gd:17)
+       [1] run (res://tests/protocol/window_focus.gd:53)
+PORT_WINDOW_FOCUS checks=7 failures=3 attached_unfocused_window=true synthetic_application_latch=true
