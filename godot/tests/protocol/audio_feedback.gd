@@ -1,6 +1,7 @@
 extends SceneTree
 
 const Feedback = preload("res://world/audio_feedback.gd")
+const Combat = preload("res://world/combat_feedback.gd")
 var checks: int = 0
 
 func check(ok: bool, message: String) -> void:
@@ -83,6 +84,16 @@ func run() -> void:
 	var reference: WeakRef = weakref(feedback.get_child(0))
 	feedback.free()
 	check(reference.get_ref() == null, "free releases owned players during active playback")
+	var combat := Combat.new()
+	root.add_child(combat)
+	combat.apply_events([{"type":"pickup","actor":0}], 0)
+	check(playing(combat.audio_feedback, "pickup") == 1, "attached combat forwards authoritative pickup to audio")
+	combat.clear_round()
+	check(playing(combat.audio_feedback) == 0, "combat round reset stops audio")
+	combat.audio_feedback.set_muted(true)
+	combat.apply_events([{"type":"damage","actor":0,"source":null,"amount":5}], 0)
+	check(combat.hurts == 1 and playing(combat.audio_feedback) == 0, "mute preserves non-audio feedback")
+	combat.free()
 	# AudioServer releases stopped playback references on its next mix iteration.
 	await create_timer(0.1).timeout
 	print("PORT_AUDIO_FEEDBACK_OK checks=", checks)

@@ -11,9 +11,14 @@ var hurts: int = 0
 var hit_remaining: float = 0.0
 var hurt_remaining: float = 0.0
 const Overlay = preload("res://world/combat_overlay.gd")
+const AudioFeedback = preload("res://world/audio_feedback.gd")
 var overlay: Control
+var audio_feedback: Node
 
 func _ready() -> void:
+	audio_feedback = AudioFeedback.new()
+	add_child(audio_feedback)
+	audio_feedback.set_muted("--mute" in OS.get_cmdline_user_args())
 	var layer := CanvasLayer.new()
 	layer.layer = 2
 	add_child(layer)
@@ -29,6 +34,7 @@ func point(value: Variant) -> Variant:
 	return Vector3(value.x, value.y, value.z)
 
 func apply_events(items: Array, local_id: int) -> void:
+	if is_instance_valid(audio_feedback): audio_feedback.apply_events(items, local_id)
 	for item: Dictionary in items:
 		match item.get("type", ""):
 			"shot":
@@ -85,6 +91,7 @@ func text() -> String:
 	return ("HIT CONFIRMED " if hit_remaining > 0 else "") + ("TAKING DAMAGE" if hurt_remaining > 0 else "")
 
 func clear_round() -> void:
+	if is_instance_valid(audio_feedback): audio_feedback.clear_round()
 	while not tracers.is_empty(): remove_tracer(0)
 	shots = 0
 	hits = 0
