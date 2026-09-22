@@ -1,0 +1,26 @@
+[
+  {
+    "map": "meridian-exchange",
+    "attempt": 1,
+    "command": [
+      "node",
+      "port/native-zone-modes/run.mjs",
+      "--map=meridian-exchange"
+    ],
+    "exit": 0,
+    "xdgRuntime": "/tmp/opencode/zone-independent-xdg-lnur3bjv",
+    "xdgRuntimeRemoved": true
+  },
+  {
+    "map": "verdant-reliquary",
+    "attempt": 1,
+    "command": [
+      "node",
+      "port/native-zone-modes/run.mjs",
+      "--map=verdant-reliquary"
+    ],
+    "exit": 0,
+    "xdgRuntime": "/tmp/opencode/zone-independent-xdg-mt6s05zt",
+    "xdgRuntimeRemoved": true
+  }
+]

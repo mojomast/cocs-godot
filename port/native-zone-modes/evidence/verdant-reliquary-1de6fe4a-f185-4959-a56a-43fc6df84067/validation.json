@@ -1,0 +1,28 @@
+{
+  "recipient": 0,
+  "map": "verdant-reliquary",
+  "mode": "koth",
+  "correlatedSnapshots": 1802,
+  "queuedInputs": 1868,
+  "receivedInputs": 1867,
+  "ackHighwater": 1865,
+  "ackMeaning": "input receipt only",
+  "nativeCapture": true,
+  "nativeHeldScore": true,
+  "captureTransition": true,
+  "scoredInside": true,
+  "naturalResults": 1,
+  "restartStarts": 2,
+  "finalScore": {
+    "0": 17.250000000000302,
+    "1": 0
+  },
+  "winner": 0,
+  "sourceTime": 60.01666666666454,
+  "centers": [
+    "alpha:8:0:-4",
+    "bravo:-28:0:10"
+  ],
+  "contestedLive": false,
+  "traceComplete": false
+}

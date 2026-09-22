@@ -1,0 +1,48 @@
+{
+  "map": "meridian-exchange",
+  "mode": "domination",
+  "exit": 0,
+  "reason": "source-correlated capture + held score + natural results/restart",
+  "base": "013ad65",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "runtimeHashes": {
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/objectives.mjs": "3e92ad1f85fb785362e15fd836d2b80f95060e0670e9f58a766f79ffa60742ec",
+    "game/mode-data.mjs": "7598bfa2d5fb0495bbfcb615c3083245d4dff632a13aa1a42593da8023e91548",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "server/game-server.mjs": "06e79c72d0530abf5256b803a19fbfb00582892579f27f42eae871cc28fb98b0",
+    "godot/world/session.gd": "a501f3814e08c6ba17ac4f9bf2b2d2942241a8a48613d902387b8774a3b31554",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "godot/ui/game_hud.gd": "9d96433012daee3cb121c570e4bb1a9e6f7a3375f0108f92f84004ffb54fa3b3",
+    "godot/ui/scoreboard.gd": "b5ff5b2bf3065b423bd7e06ef2dabf461ce0d0b74faf1738205d7e01dec274e1",
+    "godot/zone_modes/demo.gd": "fee243ad6be287b3dc911128e966213f90ff1a9c61a6229c1df91c65db89d2e8",
+    "godot/zone_modes/adapter.gd": "2319c54cda053b6ce2e4552c5bdd907114f8ba91bf2fde21b9f824edd78815d5",
+    "godot/zone_modes/renderer.gd": "7c14b6d848feb161cc397d91571533fe2515f9e747c1411b2369e964bd8d39fb",
+    "godot/zone_modes/hud.gd": "b6c4625147c1e58d8bdb0b1237813f380b33b55af7c0803390a7e88d846643bf",
+    "godot/tests/zone_modes/live.gd": "598f1b271215954164ae9899c5a22adbf8b13fa7e747175d450daf9bfe1ffc2e",
+    "port/native-zone-modes/run.mjs": "3cc8237e49e12d5ff47c923571623be1c5bd53d82792fd820f1d354edcf84010",
+    "port/native-zone-modes/route.mjs": "454694bc10da7b89b012ef58c3418002308ee93901eae0ad1001d6ceef426f14",
+    "port/native-zone-modes/validate.mjs": "e17590983d4bff0f7aca82754d329503335388c359fa0ecc5125bc40f300d503",
+    "port/native-projectile-combat/route.mjs": "c65fdabe96603b27cff2235e00e5436402a3b8fd4ee374417d84a3e5929e1dd0"
+  },
+  "wall_ms": 68669,
+  "normalRate": true,
+  "botCount": 0,
+  "timeLimit": 60,
+  "cleanup": [
+    {
+      "pid": 3186590,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 3186599,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "serverClosed": true,
+  "sockets": 0,
+  "temporaryTreeRemoved": true
+}

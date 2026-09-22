@@ -1,0 +1,10 @@
+{
+  "kind": "independent-review",
+  "session": "ses_f38bfad3dffeCtFsekw8G6EuRS",
+  "integrationBase": "8a58c97e48493e41903c2c9a729e753cb3579500",
+  "testedHead": "70f4b8f726cf202776b1e7a2fc49e66e5da184ed",
+  "attempt": 1,
+  "runtimeUnmodified": true,
+  "report": "port/reports/zone-modes-independent/README.md",
+  "summaryBaseFieldNote": "Original runner hardcodes 013ad65; use testedHead here and full runtime hashes. Original summary preserved."
+}
