@@ -1,0 +1,3 @@
+PRIVATE DIAGNOSTIC ONLY, not applied to shared code
+- surface.set_color(style.terrain_color(triangle).srgb_to_linear())
++ surface.set_color(style.terrain_color(triangle))

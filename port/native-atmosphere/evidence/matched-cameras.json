@@ -1,0 +1,210 @@
+{
+  "matched_pairs": 12,
+  "all_nine_overviews": 9,
+  "cameras": [
+    {
+      "map": "meridian-exchange",
+      "view": "overview",
+      "position": [
+        43.0,
+        24.0,
+        49.0
+      ],
+      "target": [
+        -4.0,
+        3.0,
+        -7.0
+      ],
+      "fov": 72,
+      "width": 960,
+      "height": 640
+    },
+    {
+      "map": "meridian-exchange",
+      "view": "street",
+      "position": [
+        9.0,
+        2.20000004768372,
+        21.0
+      ],
+      "target": [
+        -13.0,
+        4.0,
+        -19.0
+      ],
+      "fov": 72,
+      "width": 960,
+      "height": 640
+    },
+    {
+      "map": "ember-crucible",
+      "view": "overview",
+      "position": [
+        75.0,
+        32.0,
+        73.0
+      ],
+      "target": [
+        -4.0,
+        3.0,
+        -7.0
+      ],
+      "fov": 72,
+      "width": 960,
+      "height": 640
+    },
+    {
+      "map": "ember-crucible",
+      "view": "street",
+      "position": [
+        -38.0,
+        2.20000004768372,
+        27.0
+      ],
+      "target": [
+        4.0,
+        5.0,
+        -8.0
+      ],
+      "fov": 72,
+      "width": 960,
+      "height": 640
+    },
+    {
+      "map": "asterion-relay",
+      "view": "overview",
+      "position": [
+        75.0,
+        32.0,
+        73.0
+      ],
+      "target": [
+        -4.0,
+        3.0,
+        -7.0
+      ],
+      "fov": 72,
+      "width": 960,
+      "height": 640
+    },
+    {
+      "map": "asterion-relay",
+      "view": "street",
+      "position": [
+        -84.0,
+        2.20000004768372,
+        18.0
+      ],
+      "target": [
+        0.0,
+        5.0,
+        -5.0
+      ],
+      "fov": 72,
+      "width": 960,
+      "height": 640
+    },
+    {
+      "map": "meridian-exchange",
+      "view": "overview",
+      "position": [
+        43.0,
+        24.0,
+        49.0
+      ],
+      "target": [
+        -4.0,
+        3.0,
+        -7.0
+      ],
+      "fov": 72,
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "map": "meridian-exchange",
+      "view": "street",
+      "position": [
+        9.0,
+        2.20000004768372,
+        21.0
+      ],
+      "target": [
+        -13.0,
+        4.0,
+        -19.0
+      ],
+      "fov": 72,
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "map": "ember-crucible",
+      "view": "overview",
+      "position": [
+        75.0,
+        32.0,
+        73.0
+      ],
+      "target": [
+        -4.0,
+        3.0,
+        -7.0
+      ],
+      "fov": 72,
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "map": "ember-crucible",
+      "view": "street",
+      "position": [
+        -38.0,
+        2.20000004768372,
+        27.0
+      ],
+      "target": [
+        4.0,
+        5.0,
+        -8.0
+      ],
+      "fov": 72,
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "map": "asterion-relay",
+      "view": "overview",
+      "position": [
+        75.0,
+        32.0,
+        73.0
+      ],
+      "target": [
+        -4.0,
+        3.0,
+        -7.0
+      ],
+      "fov": 72,
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "map": "asterion-relay",
+      "view": "street",
+      "position": [
+        -84.0,
+        2.20000004768372,
+        18.0
+      ],
+      "target": [
+        0.0,
+        5.0,
+        -5.0
+      ],
+      "fov": 72,
+      "width": 1280,
+      "height": 800
+    }
+  ]
+}

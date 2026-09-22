@@ -1,0 +1,35 @@
+diff --git a/godot/world/viewer.gd b/godot/world/viewer.gd
+--- a/godot/world/viewer.gd
++++ b/godot/world/viewer.gd
+@@ -2,6 +2,7 @@ extends Node3D
+ 
+ const Catalog = preload("res://world/catalog.gd")
+ const EnvironmentStyle = preload("res://world/environment_style.gd")
++const Atmosphere = preload("res://graphics_atmosphere/atmosphere.gd")
+ var catalog := Catalog.new()
+ var world: Node3D
+ var camera := Camera3D.new()
+@@ -12,6 +13,7 @@ var current_id: String = ""
+ var environment := WorldEnvironment.new()
+ var sun := DirectionalLight3D.new()
+ var style := EnvironmentStyle.new()
++var atmosphere := Atmosphere.new()
+ 
+ func _ready() -> void:
+ 	add_child(camera)
+@@ -95,6 +97,7 @@ func load_map(id: String) -> bool:
+ 	add_child(world)
+ 	current_id = id
+ 	style.configure(map, environment, sun)
++	atmosphere.configure(map, environment, sun)
+ 	for b: Dictionary in map.get("blocks", []):
+ 		box(Vector3(b.x, b.h / 2.0, b.z), Vector3(b.w, b.h, b.d), style.block_material(b), world)
+ 	var surface := SurfaceTool.new()
+@@ -143,6 +146,7 @@ func load_map(id: String) -> bool:
+ 		# Sports arenas intentionally have implicit zero-height support.
+ 		box(Vector3(0, -0.1, 0), Vector3(260, 0.2, 220), style.surface_material("sports-floor", style.leaves if id == "aurora-stadium" else style.ground), world)
+ 	style.decorate(map, world)
++	atmosphere.decorate(world)
+ 	world.set_meta("semantic_block_count", map.get("blocks", []).size())
+ 	world.set_meta("semantic_triangle_count", triangle_count)
+ 	var pickup_markers := Node3D.new()

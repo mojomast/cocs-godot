@@ -1,0 +1,2 @@
+# Unified-diff context requires a space prefix before blank/tab-indented lines.
+*.patch -whitespace

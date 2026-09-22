@@ -1,0 +1,27 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+ATMOSPHERE_CAPTURE meridian-exchange after overview (960, 640)
+ATMOSPHERE_CAPTURE meridian-exchange after street (960, 640)
+ATMOSPHERE_HORIZON map=meridian-exchange max_channel_jump=0.0
+ATMOSPHERE_CAPTURE verdant-reliquary after overview (960, 640)
+ATMOSPHERE_HORIZON map=verdant-reliquary max_channel_jump=0.0
+ATMOSPHERE_CAPTURE ember-crucible after overview (960, 640)
+ATMOSPHERE_CAPTURE ember-crucible after street (960, 640)
+ATMOSPHERE_HORIZON map=ember-crucible max_channel_jump=0.0
+ATMOSPHERE_CAPTURE tidal-citadel after overview (960, 640)
+ATMOSPHERE_HORIZON map=tidal-citadel max_channel_jump=0.0
+ATMOSPHERE_CAPTURE sunscar-convoy after overview (960, 640)
+ATMOSPHERE_HORIZON map=sunscar-convoy max_channel_jump=0.0
+ATMOSPHERE_CAPTURE asterion-relay after overview (960, 640)
+ATMOSPHERE_CAPTURE asterion-relay after street (960, 640)
+ATMOSPHERE_HORIZON map=asterion-relay max_channel_jump=0.0
+ATMOSPHERE_CAPTURE monsoon-foundry after overview (960, 640)
+ATMOSPHERE_HORIZON map=monsoon-foundry max_channel_jump=0.0
+ATMOSPHERE_CAPTURE ion-speedway after overview (960, 640)
+ATMOSPHERE_HORIZON map=ion-speedway max_channel_jump=0.0
+ATMOSPHERE_CAPTURE aurora-stadium after overview (960, 640)
+ATMOSPHERE_HORIZON map=aurora-stadium max_channel_jump=0.0
+ATMOSPHERE_GRAPHICAL_SMOKE phase=after captures=12

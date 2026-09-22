@@ -1,0 +1,44 @@
+[
+	{
+		"ambient": 0.720000028610229,
+		"fog_density": 0.000899999984540045,
+		"fov": 72,
+		"height": 800,
+		"key": 0.620000004768372,
+		"map": "ember-crucible",
+		"phase": "after",
+		"position": [
+			75.0,
+			32.0,
+			73.0
+		],
+		"target": [
+			-4.0,
+			3.0,
+			-7.0
+		],
+		"view": "overview",
+		"width": 1280
+	},
+	{
+		"ambient": 0.720000028610229,
+		"fog_density": 0.000899999984540045,
+		"fov": 72,
+		"height": 800,
+		"key": 0.620000004768372,
+		"map": "ember-crucible",
+		"phase": "after",
+		"position": [
+			-38.0,
+			2.20000004768372,
+			27.0
+		],
+		"target": [
+			4.0,
+			5.0,
+			-8.0
+		],
+		"view": "street",
+		"width": 1280
+	}
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "nebula",
+    "source": "assets/moth/sources/nebula.png",
+    "sha256": "26d7825de52b9f7609f63018a25c904986685844d67bb6003fe14c69723653af",
+    "bytes": 23501
+  },
+  {
+    "name": "ashen",
+    "source": "assets/moth/sources/sky-ashen.png",
+    "sha256": "f67df975dec9b94d9ecbaa9d242177552e96e92bb46d42f5b8e88b9da9488691",
+    "bytes": 30559
+  },
+  {
+    "name": "frost",
+    "source": "assets/moth/sources/sky-frost.png",
+    "sha256": "fec6dc0c21f76367180d3f7f013a4b79f96c6447921942783cd21b2a4930ae9b",
+    "bytes": 38871
+  },
+  {
+    "name": "void",
+    "source": "assets/moth/sources/sky-void.png",
+    "sha256": "613a62d6df3d180995a68b061f0044b9a74ba6871ddd953e05234b649dd9f20b",
+    "bytes": 20934
+  },
+  {
+    "name": "ember",
+    "source": "assets/moth/sources/sky-ember.png",
+    "sha256": "04485878a0a802a5a6f72bd8a00c312e09e223cdf0de6acb0e4df0aa7b796d1b",
+    "bytes": 48981
+  }
+]
