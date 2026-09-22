@@ -96,6 +96,10 @@ commands = [
     ("player-fx-integration", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/integration.gd"]),
     ("benchmark-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/benchmark/contracts.gd"]),
     ("benchmark-tools", ["node", "--test", "port/native-benchmark/test.mjs"]),
+    ("material-language", [binary, "--headless", "--path", "godot", "--script", "res://tests/material_language/validate.gd"]),
+    ("material-derived", ["node", "--test", "tools/godot-moth/derive.test.mjs"]),
+    # coverage.mjs alone always exits 0; the floor wrapper makes a regression fail.
+    ("material-coverage-floor", [sys.executable, "tools/godot-dev/coverage_floor.py"]),
     ("release-pipeline-tools", ["node", "--test", "tools/release/options.test.mjs", "tools/release/release.test.mjs"]),
     ("blood-fx-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/blood_fx/contracts.gd"]),
     ("blood-fx-surfaces", [binary, "--headless", "--path", "godot", "--script", "res://tests/blood_fx/surfaces.gd"]),

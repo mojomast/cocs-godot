@@ -1,0 +1,10 @@
+{
+  "keys": 64,
+  "referenced": 61,
+  "unreferenced": 3,
+  "coverage": 95.3,
+  "strict_referenced": 61,
+  "strict_coverage": 95.3,
+  "derived_keys": 28,
+  "derived_referenced": 4
+}
