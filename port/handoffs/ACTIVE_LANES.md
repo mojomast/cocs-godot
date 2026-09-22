@@ -12,6 +12,7 @@ updates root documentation/shared verification and owns publication.
 | Sunscar combined-arms vehicle slice | Internal agent; `013ad65` | New `godot/combined_arms/`, `godot/tests/combined_arms/`, `port/native-combined-arms/` |
 | Multiplayer lobby / leave / retry | External handoff; `8094d41` | New lobby-prefixed UI/tests, narrow `godot/world/session.gd` / scene and backward-compatible client hook if essential; `port/native-multiplayer-lobby/` |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
+| Native Horde survival | External prompt prepared; `8ff2e7c`; not launched | New `godot/horde/`, `godot/tests/horde/`, `port/native-horde/` |
 
 The LATTICE command and physical-input lanes are delivered and integrated at
 `658b4e7` and `aca52f5`. The projectile navigation follow-up is integrated at
@@ -63,6 +64,17 @@ These lanes may propose launcher/package routes but do not edit shared session,
 network, common launcher, package pipeline, verifier, locked source or contracts.
 The lead reviews integration hooks, reproduces important live claims, updates
 evidence and rebuilds the Linux artifact after accepted runtime changes.
+
+## Deferred campaign
+
+The owner wants a campaign remake, then explicitly deferred it for substantial
+planning and research. **No campaign implementation is authorized by this lane
+record and no campaign agent was launched.** `external-native-campaign-remake.md`
+is retained only as an inactive preliminary draft; its architecture and mission
+count are not agreed requirements. Schedule a dedicated planning task later.
+
+`external-native-horde.md` is the replacement ready-to-copy development task.
+Horde is an existing standalone source mode, separate from campaign design.
 
 External tasks have complete scope/commands in
 `external-native-objective-gameplay.md` and
