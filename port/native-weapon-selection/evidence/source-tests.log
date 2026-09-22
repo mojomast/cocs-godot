@@ -1,0 +1,214 @@
+TAP version 13
+# Subtest: mouse and touch holds are independent and short touch taps survive release
+ok 1 - mouse and touch holds are independent and short touch taps survive release
+  ---
+  duration_ms: 0.744574
+  type: 'test'
+  ...
+# Subtest: cycling accepts live and serialized unlimited ammo, skips empty slots and wraps
+ok 2 - cycling accepts live and serialized unlimited ammo, skips empty slots and wraps
+  ---
+  duration_ms: 0.137968
+  type: 'test'
+  ...
+# Subtest: rapid cycling starts from pending selection and ignores zero or invalid delta
+ok 3 - rapid cycling starts from pending selection and ignores zero or invalid delta
+  ---
+  duration_ms: 0.060213
+  type: 'test'
+  ...
+# Subtest: posture reads sprint and crouch from held keys in sets or arrays
+ok 4 - posture reads sprint and crouch from held keys in sets or arrays
+  ---
+  duration_ms: 0.391994
+  type: 'test'
+  ...
+# Subtest: controlsFromState builds movement and only sets active flags
+ok 5 - controlsFromState builds movement and only sets active flags
+  ---
+  duration_ms: 0.163707
+  type: 'test'
+  ...
+# Subtest: holding jump produces autohop while a one-shot tap still jumps
+ok 6 - holding jump produces autohop while a one-shot tap still jumps
+  ---
+  duration_ms: 0.089227
+  type: 'test'
+  ...
+# Subtest: controlsFromState treats fireTap as fire and ignores negative weapon ids
+ok 7 - controlsFromState treats fireTap as fire and ignores negative weapon ids
+  ---
+  duration_ms: 0.130204
+  type: 'test'
+  ...
+# Subtest: chat, spectator and editable focus or targets block gameplay
+ok 8 - chat, spectator and editable focus or targets block gameplay
+  ---
+  duration_ms: 0.129543
+  type: 'test'
+  ...
+# Subtest: analog touch move overrides keys and explicit posture flags register
+ok 9 - analog touch move overrides keys and explicit posture flags register
+  ---
+  duration_ms: 0.209322
+  type: 'test'
+  ...
+# Subtest: melee registers as a provided one-shot control
+ok 10 - melee registers as a provided one-shot control
+  ---
+  duration_ms: 0.197921
+  type: 'test'
+  ...
+# Subtest: mobility is a held control from the keyboard, touch or an explicit flag
+ok 11 - mobility is a held control from the keyboard, touch or an explicit flag
+  ---
+  duration_ms: 0.123201
+  type: 'test'
+  ...
+# Subtest: altFire is a held control from an explicit flag, touch or a remap
+ok 12 - altFire is a held control from an explicit flag, touch or a remap
+  ---
+  duration_ms: 0.070832
+  type: 'test'
+  ...
+# Subtest: an idle joystick does not suppress keyboard movement
+ok 13 - an idle joystick does not suppress keyboard movement
+  ---
+  duration_ms: 0.073448
+  type: 'test'
+  ...
+# Subtest: an active joystick still drives analog movement
+ok 14 - an active joystick still drives analog movement
+  ---
+  duration_ms: 0.052108
+  type: 'test'
+  ...
+# Subtest: custom keybinds remap movement and one-shot actions
+ok 15 - custom keybinds remap movement and one-shot actions
+  ---
+  duration_ms: 0.042349
+  type: 'test'
+  ...
+# Subtest: message types expose the canonical wire vocabulary
+ok 16 - message types expose the canonical wire vocabulary
+  ---
+  duration_ms: 0.5075
+  type: 'test'
+  ...
+# Subtest: player ids accept only the canonical uuid-like shape
+ok 17 - player ids accept only the canonical uuid-like shape
+  ---
+  duration_ms: 0.216174
+  type: 'test'
+  ...
+# Subtest: progress tokens are bounded and url-safe
+ok 18 - progress tokens are bounded and url-safe
+  ---
+  duration_ms: 0.115997
+  type: 'test'
+  ...
+# Subtest: sanitizeText strips control characters, trims and truncates names and chat
+ok 19 - sanitizeText strips control characters, trims and truncates names and chat
+  ---
+  duration_ms: 0.111229
+  type: 'test'
+  ...
+# Subtest: parseInputEnvelope validates and clamps the nested wire envelope
+ok 20 - parseInputEnvelope validates and clamps the nested wire envelope
+  ---
+  duration_ms: 0.201227
+  type: 'test'
+  ...
+# Subtest: parseInputEnvelope accepts the flattened ext payload used by the room
+ok 21 - parseInputEnvelope accepts the flattened ext payload used by the room
+  ---
+  duration_ms: 0.094227
+  type: 'test'
+  ...
+# Subtest: parseInputEnvelope prefers the envelope sequence over the inner one
+ok 22 - parseInputEnvelope prefers the envelope sequence over the inner one
+  ---
+  duration_ms: 0.102172
+  type: 'test'
+  ...
+# Subtest: parseInputEnvelope tolerates malformed frames with safe defaults
+ok 23 - parseInputEnvelope tolerates malformed frames with safe defaults
+  ---
+  duration_ms: 0.094808
+  type: 'test'
+  ...
+# Subtest: parseInputEnvelope accepts a held altFire and ignores junk values
+ok 24 - parseInputEnvelope accepts a held altFire and ignores junk values
+  ---
+  duration_ms: 0.168014
+  type: 'test'
+  ...
+# Subtest: the parsed altFire field round-trips through controlsFromState
+ok 25 - the parsed altFire field round-trips through controlsFromState
+  ---
+  duration_ms: 0.320991
+  type: 'test'
+  ...
+# Subtest: snapshotDelta round-trips through applySnapshotDelta and marks deletions
+ok 26 - snapshotDelta round-trips through applySnapshotDelta and marks deletions
+  ---
+  duration_ms: 0.649466
+  type: 'test'
+  ...
+# Subtest: snapshotDelta v2 diffs id-keyed arrays element-wise and round-trips
+ok 27 - snapshotDelta v2 diffs id-keyed arrays element-wise and round-trips
+  ---
+  duration_ms: 0.709388
+  type: 'test'
+  ...
+# Subtest: snapshotDelta keeps non-id arrays opaque and preserves empty arrays
+ok 28 - snapshotDelta keeps non-id arrays opaque and preserves empty arrays
+  ---
+  duration_ms: 0.099045
+  type: 'test'
+  ...
+# Subtest: snapshotDelta v2 cuts a real combat frame by at least 80%
+ok 29 - snapshotDelta v2 cuts a real combat frame by at least 80%
+  ---
+  duration_ms: 761.77604
+  type: 'test'
+  ...
+# Subtest: wireSize and BandwidthMeter report bytes and a sliding rate
+ok 30 - wireSize and BandwidthMeter report bytes and a sliding rate
+  ---
+  duration_ms: 0.37411
+  type: 'test'
+  ...
+# Subtest: switchWeapon validates, delays, cancels reload and emits one shared event
+ok 31 - switchWeapon validates, delays, cancels reload and emits one shared event
+  ---
+  duration_ms: 31.28981
+  type: 'test'
+  ...
+# Subtest: bots switch through the shared operation instead of assigning weapon directly
+ok 32 - bots switch through the shared operation instead of assigning weapon directly
+  ---
+  duration_ms: 726.980114
+  type: 'test'
+  ...
+# Subtest: explicit weapon selection keeps index zero as a deliberate choice
+ok 33 - explicit weapon selection keeps index zero as a deliberate choice
+  ---
+  duration_ms: 0.132098
+  type: 'test'
+  ...
+# Subtest: weapon-selection hysteresis stops threshold oscillation but allows empty magazines
+ok 34 - weapon-selection hysteresis stops threshold oscillation but allows empty magazines
+  ---
+  duration_ms: 0.104295
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1397.61378
