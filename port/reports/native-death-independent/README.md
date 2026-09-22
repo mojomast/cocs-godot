@@ -67,3 +67,18 @@ python3 tools/godot-dev/verify.py
 
 Exit 0, all 29 implemented gates pass on the corrected runtime. Actual results
 and logs are in `port/reports/verification.json` and the named gate logs.
+
+## Combined focus/lifecycle runtime confirmation
+
+After the immediate-window-focus correction was integrated and graphically
+accepted, the lead reran the same live death command on private integration at
+`bda5af2` (same runtime as graphical acceptance at `5e8136d`). Run
+`a1e4d13d-b2a6-4db4-a36a-8d6a5b91be5b` exited 0, all 14 criteria pass: 352
+correlated snapshots, 669 queue/receipt matches, ACK high-water 669, 320 predeath
+active inputs, 117 dead-neutral, 120 postrespawn neutral and 90 active after the
+fresh click. Samples 183/184/244 establish the same actor's lifecycle. Healthy
+respawn reseeds at eye `[-44,1.45,10]`, yaw -1.347, pitch 0. No zero-health/zero-timer
+sample occurred in this run. Native completion is still unproven. Raw artifacts
+and summary are retained with original hashes; owned PIDs were independently
+checked absent. The combined full verifier now has 30 passing gates; see
+`../graphical-independent/README.md`.
