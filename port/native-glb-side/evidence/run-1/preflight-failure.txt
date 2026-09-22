@@ -1,0 +1,9 @@
+Initial verify.py invocation failed before executing any export/import/capture:
+AssertionError at original GLB SHA equality against the historical byte hash.
+Fresh unmodified harness export: 241fb1bdb06e6edebdebd1e482fbf4ab7d71ea1850e448a5abb6fa6222900606
+Historical export: a41094bdbafd7a6796d86d175982aab958e3500e8d8514f820dfa36c362d73ea
+Both are 2060200 bytes. JSON differs only in image bufferView references and
+image buffer placement. Async image serialization order is not stable. Removed
+the inappropriate byte-identical GLB precondition; fresh original and repaired
+accessors/images must instead be compared by logical references. Historical
+failure PNG identity remains a required graphical assertion.

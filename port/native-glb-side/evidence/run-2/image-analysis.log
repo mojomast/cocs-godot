@@ -1,0 +1,20 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+{
+  "current": {
+    "changed_pixels": 835603,
+    "dominant_color_pixels_after": 22243,
+    "dominant_color_pixels_before": 208225,
+    "pixels_below_ui": 870400,
+    "unique_colors_after": 10581,
+    "unique_colors_before": 5475
+  },
+  "historical": {
+    "changed_pixels": 870343,
+    "dominant_color_pixels_after": 119471,
+    "dominant_color_pixels_before": 42657,
+    "pixels_below_ui": 870400,
+    "unique_colors_after": 3687,
+    "unique_colors_before": 160
+  }
+}

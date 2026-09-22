@@ -1,0 +1,58 @@
+{
+  "repair": {
+    "before_sha256": "241fb1bdb06e6edebdebd1e482fbf4ab7d71ea1850e448a5abb6fa6222900606",
+    "after_sha256": "f777aeb151e4724758742dcc9d15e7d94e47e7cc80bfaf4948b4dc770844e0e7",
+    "changed_accessors": [
+      199,
+      202,
+      212,
+      214
+    ],
+    "affected_meshes": [
+      {
+        "mesh": 48,
+        "triangles": 2976,
+        "position_bounds": {
+          "min": [
+            -185,
+            -185,
+            -185
+          ],
+          "max": [
+            185,
+            185,
+            185
+          ]
+        }
+      },
+      {
+        "mesh": 51,
+        "triangles": 512,
+        "position_bounds": {
+          "min": [
+            -182.1350860595703,
+            -45.3175163269043,
+            -182.1350860595703
+          ],
+          "max": [
+            182.1350860595703,
+            87.78755950927734,
+            182.1350860595703
+          ]
+        }
+      }
+    ],
+    "unchanged_accessors": 243,
+    "unchanged_images": 30,
+    "hierarchy_materials_transforms_uvs_colors_positions_identical": true
+  },
+  "historical_vs_fresh_original": {
+    "before_sha256": "a41094bdbafd7a6796d86d175982aab958e3500e8d8514f820dfa36c362d73ea",
+    "after_sha256": "241fb1bdb06e6edebdebd1e482fbf4ab7d71ea1850e448a5abb6fa6222900606",
+    "changed_accessors": [],
+    "affected_meshes": [],
+    "unchanged_accessors": 247,
+    "unchanged_images": 30,
+    "hierarchy_materials_transforms_uvs_colors_positions_identical": true
+  }
+}

@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: BackSide clone isolation and UV tangent basis (indexed)
+ok 1 - BackSide clone isolation and UV tangent basis (indexed)
+  ---
+  duration_ms: 3.558667
+  type: 'test'
+  ...
+# Subtest: BackSide clone isolation and UV tangent basis (nonindexed)
+ok 2 - BackSide clone isolation and UV tangent basis (nonindexed)
+  ---
+  duration_ms: 0.857399
+  type: 'test'
+  ...
+# Subtest: expanded instances sharing source geometry each get isolated BackSide copies
+ok 3 - expanded instances sharing source geometry each get isolated BackSide copies
+  ---
+  duration_ms: 0.772019
+  type: 'test'
+  ...
+# Subtest: closed sphere faces inward after conversion with original exterior intact
+ok 4 - closed sphere faces inward after conversion with original exterior intact
+  ---
+  duration_ms: 8.8477
+  type: 'test'
+  ...
+# Subtest: homogeneous BackSide arrays preserve groups; mixed-side arrays fail explicitly
+ok 5 - homogeneous BackSide arrays preserve groups; mixed-side arrays fail explicitly
+  ---
+  duration_ms: 0.534092
+  type: 'test'
+  ...
+# Subtest: unsupported BackSide shader/object-space normal and partial triangles fail explicitly
+ok 6 - unsupported BackSide shader/object-space normal and partial triangles fail explicitly
+  ---
+  duration_ms: 0.488226
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 80.898735

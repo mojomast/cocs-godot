@@ -1,0 +1,441 @@
+{
+  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "meshes": 97,
+  "instances": 60,
+  "batchedMeshes": 0,
+  "shaderMaterials": 0,
+  "nodes": [
+    {
+      "path": "Group",
+      "type": "Group"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "LineSegments",
+      "type": "LineSegments"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Points",
+      "type": "Points"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    },
+    {
+      "path": "Mesh",
+      "type": "Mesh"
+    }
+  ],
+  "limitations": [
+    "onBeforeCompile effects and runtime animation not translated",
+    "standard-material fallback is not fidelity acceptance"
+  ],
+  "instance_policy": "expanded with transforms and colors; no EXT_mesh_gpu_instancing",
+  "material_side": {
+    "policy": "BackSide: reversed triangles, negated normals, tangent handedness; FrontSide glTF material",
+    "meshes": 2,
+    "triangles": 3488
+  },
+  "environment": {
+    "background": "291a25",
+    "fog": {
+      "color": "291a25",
+      "density": 0.006
+    }
+  },
+  "bytes": 2418768,
+  "sha256": "4bd967f62c6b41a659ad186ec066eeffa779b555295eca5179f84052d8aef6f9",
+  "messages": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "GLTFExporter: Use MeshStandardMaterial or MeshBasicMaterial for best results.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "GLTFExporter: Use MeshStandardMaterial or MeshBasicMaterial for best results.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "[.WebGL-0x3b7404057100]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+  ]
+}

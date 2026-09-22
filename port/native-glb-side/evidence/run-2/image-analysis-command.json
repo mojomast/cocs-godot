@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "--script",
+    "res://tests/glb_side_images.gd",
+    "--",
+    "/tmp/opencode/cocs-glb-material-side/port/native-glb-side/evidence/run-2"
+  ],
+  "timed_out": false,
+  "signals": [],
+  "observed_pids": [],
+  "remaining_pids": [],
+  "cleanup_complete": true,
+  "pgid": 2703735,
+  "returncode": 0,
+  "duration_seconds": 0.6892054071649909
+}
