@@ -31,6 +31,8 @@ var status_detail: Label
 var controls: Label
 var actor_present := false
 var poll_elapsed := 0.0
+var status_text := ""
+var status_refit_pending := false
 
 func _ready() -> void:
 	layer = 3
@@ -146,6 +148,28 @@ func _process(delta: float) -> void:
 	poll_elapsed = 0
 	refresh_status()
 
+func status_panel_width() -> float:
+	return minf(620.0, get_viewport().get_visible_rect().size.x - 80.0)
+
+func status_content_width() -> float:
+	# The panel stylebox reserves 16 px on each side.
+	return maxf(120.0, status_panel_width() - 32.0)
+
+func pin_status_width() -> void:
+	# An autowrap Label shapes its minimum height at its current width. While the
+	# HUD root is hidden the status stack is never laid out, so pin the real
+	# content width before assigning a message; otherwise the message wraps at
+	# 1 px and inflates this panel to near-full-screen until the next change.
+	status_detail.size.x = status_content_width()
+
+func refit_status() -> void:
+	status_refit_pending = false
+	# Another presenter may have replaced this message in the same frame.
+	if status_detail.text != status_text or not status_panel.visible: return
+	pin_status_width()
+	var minimum := status_panel.get_combined_minimum_size().y
+	if status_panel.size.y > minimum + 0.5: status_panel.size.y = minimum
+
 func refresh_status() -> void:
 	if not is_instance_valid(session): return
 	var phase := int(session.get("phase"))
@@ -207,8 +231,13 @@ func refresh_status() -> void:
 	status_title.text = heading
 	status_title.add_theme_color_override("font_color", WARNING if warning else ACCENT)
 	if status_detail.text != message:
+		pin_status_width()
 		status_detail.text = message
+		status_text = message
 		status_panel.size.y = 0
+		if not status_refit_pending:
+			status_refit_pending = true
+			call_deferred("refit_status")
 	status_panel.visible = not heading.is_empty()
 	vitals.visible = phase == 3 and actor_present
 	weapon_panel.visible = vitals.visible
@@ -322,7 +351,8 @@ func resize() -> void:
 	top.position = Vector2(20, 16)
 	top.size = Vector2(viewport.x - 40, 44)
 	status_panel.position = Vector2((viewport.x - minf(620, viewport.x - 80)) / 2, 78)
-	status_panel.size = Vector2(minf(620, viewport.x - 80), 0)
+	pin_status_width()
+	status_panel.size = Vector2(status_panel_width(), 0)
 	vitals.position = Vector2(20, viewport.y - 166)
 	vitals.size = Vector2(238, 108)
 	weapon_panel.position = Vector2(viewport.x - 304, viewport.y - 166)

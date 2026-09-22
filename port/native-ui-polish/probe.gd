@@ -78,6 +78,7 @@ func run() -> void:
 		root.size = size
 		await settle(4)
 		await setup_case(size)
+		await hud_stress_case(size)
 		await shared_case(size)
 		await horde_case(size)
 	if not report_path.is_empty():
@@ -134,24 +135,60 @@ func setup_case(size: Vector2i) -> void:
 		record("setup-click-reopened-%d" % size.x, {
 			"dismissed":menu.get("dismissed") == true, "panel":rect_json(menu.get_global_rect()),
 			"body_visible":bool(menu.body.visible), "hint_visible":bool(menu.hint.visible)})
-	# Start the match from the setup surface itself, then deliver a stored live
-	# snapshot so the rendered view is actual combat with the surface gone.
+	# Start the match from the setup surface itself. The connecting/error phase is
+	# captured raw: this is where the shared HUD's status panel used to inflate.
 	session.start_selected_match("meridian-exchange", "deathmatch")
-	await settle(2)
+	await settle(6)
+	var hud: CanvasLayer = session.get_node("GameHUD")
+	record("setup-transition-%d" % size.x, {
+		"phase":session.phase, "setup_visible":bool(menu.visible),
+		"status_panel":rect_json(hud.status_panel.get_global_rect()),
+		"status_detail":rect_json(hud.status_detail.get_global_rect()),
+		"status_title":hud.status_title.text, "status_text":hud.status_detail.text.left(80),
+		"status_bottom":hud.status_panel.get_global_rect().end.y,
+		"reservation_clear":hud.status_panel.get_global_rect().end.y < 224.0})
+	await capture("setup-%dx%d-start-transition.png" % [size.x, size.y])
 	session.client.actor_id = 0
 	session.client.started.emit({"mapId":"meridian-exchange"})
 	session.client.snapshot.emit(combat_snapshot())
 	await settle(4)
-	var hud: CanvasLayer = session.get_node("GameHUD")
 	var hud_rect: Rect2 = hud.vitals.get_global_rect()
 	record("setup-after-start-%d" % size.x, {
 		"menu_visible":bool(menu.visible), "menu_dismissed":menu.get("dismissed") == true,
 		"popups_in_surface":popup_count(menu), "phase":session.phase,
 		"hud_visible":bool(hud.root.visible), "vitals_visible":bool(hud.vitals.visible),
-		"vitals":rect_json(hud_rect),
-		"status_panel":rect_json(hud.status_panel.get_global_rect()),
+		"vitals":rect_json(hud_rect), "status_panel":rect_json(hud.status_panel.get_global_rect()),
+		"status_bottom":hud.status_panel.get_global_rect().end.y,
 		"surface_over_vitals":menu.get_global_rect().intersects(hud_rect) if menu.visible else false})
 	await capture("combat-%dx%d-unobstructed.png" % [size.x, size.y])
+	root.remove_child(session)
+	session.free()
+	await settle()
+
+# ---------------------------------------------------------------------------
+# Status-panel stress: long message assigned while the HUD has never laid out.
+# ---------------------------------------------------------------------------
+
+func hud_stress_case(size: Vector2i) -> void:
+	var session := SessionScene.instantiate()
+	root.add_child(session)
+	await settle(4)
+	session.set_process(false)
+	if session.setup_menu != null: session.setup_menu.hide()
+	var hud: CanvasLayer = session.get_node("GameHUD")
+	session.client.actor_id = 0
+	session.client.started.emit({"mapId":"meridian-exchange"})
+	session.client.snapshot.emit(combat_snapshot())
+	await settle(5)
+	var panel: Rect2 = hud.status_panel.get_global_rect()
+	record("hud-stress-%d" % size.x, {
+		"viewport":[size.x, size.y], "phase":session.phase,
+		"status_panel":rect_json(panel), "status_bottom":panel.end.y,
+		"status_detail":rect_json(hud.status_detail.get_global_rect()),
+		"status_text":hud.status_detail.text.left(80),
+		"reservation_clear":panel.end.y < 224.0,
+		"in_viewport":Rect2(Vector2.ZERO, Vector2(size)).encloses(panel)})
+	await capture("hud-%dx%d-long-message.png" % [size.x, size.y])
 	root.remove_child(session)
 	session.free()
 	await settle()

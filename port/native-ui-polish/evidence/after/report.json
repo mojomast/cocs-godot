@@ -55,12 +55,34 @@
       ]
     },
     {
+      "case": "setup-transition-960",
+      "phase": -1,
+      "reservation_clear": true,
+      "setup_visible": false,
+      "status_bottom": 148.0,
+      "status_detail": [
+        186.0,
+        116.0,
+        588.0,
+        22.0
+      ],
+      "status_panel": [
+        170.0,
+        78.0,
+        620.0,
+        70.0
+      ],
+      "status_text": "A local launcher endpoint is required",
+      "status_title": "CONNECTION ERROR"
+    },
+    {
       "case": "setup-after-start-960",
       "hud_visible": true,
       "menu_dismissed": false,
       "menu_visible": false,
       "phase": 3,
       "popups_in_surface": 0,
+      "status_bottom": 148.0,
       "status_panel": [
         170.0,
         78.0,
@@ -75,6 +97,30 @@
         108.0
       ],
       "vitals_visible": true
+    },
+    {
+      "case": "hud-stress-960",
+      "in_viewport": true,
+      "phase": 3,
+      "reservation_clear": true,
+      "status_bottom": 148.0,
+      "status_detail": [
+        186.0,
+        116.0,
+        588.0,
+        22.0
+      ],
+      "status_panel": [
+        170.0,
+        78.0,
+        620.0,
+        70.0
+      ],
+      "status_text": "Esc releases the mouse  ·  The match continues while controls are paused",
+      "viewport": [
+        960,
+        640
+      ]
     },
     {
       "case": "shared-live-960",
@@ -208,7 +254,7 @@
       "world_labels": [
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_1/HordeRole",
+          "path": "@Node3D@1622/Actor_1/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -216,7 +262,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_2/HordeRole",
+          "path": "@Node3D@1622/Actor_2/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -224,7 +270,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_3/HordeRole",
+          "path": "@Node3D@1622/Actor_3/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  0",
@@ -232,7 +278,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_4/HordeRole",
+          "path": "@Node3D@1622/Actor_4/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -240,7 +286,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_5/HordeRole",
+          "path": "@Node3D@1622/Actor_5/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "BRUTE  60",
@@ -248,7 +294,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_6/HordeRole",
+          "path": "@Node3D@1622/Actor_6/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  0",
@@ -256,7 +302,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_7/HordeRole",
+          "path": "@Node3D@1622/Actor_7/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  60",
@@ -264,7 +310,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_8/HordeRole",
+          "path": "@Node3D@1622/Actor_8/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -272,7 +318,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_9/HordeRole",
+          "path": "@Node3D@1622/Actor_9/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "BRUTE  0",
@@ -280,7 +326,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_10/HordeRole",
+          "path": "@Node3D@1622/Actor_10/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -288,7 +334,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_11/HordeRole",
+          "path": "@Node3D@1622/Actor_11/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  60",
@@ -296,7 +342,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@1205/Actor_12/HordeRole",
+          "path": "@Node3D@1622/Actor_12/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  0",
@@ -304,7 +350,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1315",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1732",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "MERIDIAN INTERCHANGE",
@@ -312,7 +358,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1316",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1733",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "DEPARTURE HALL",
@@ -320,7 +366,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1317",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1734",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "SAFFRON MARKET",
@@ -328,7 +374,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1318",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1735",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "SIGNAL HOUSE",
@@ -336,7 +382,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1319",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1736",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "TRAM PLATFORM",
@@ -344,7 +390,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1320",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1737",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "CIVIC ARCHIVE",
@@ -352,7 +398,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1321",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1738",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "WEST CUSTOMS",
@@ -360,7 +406,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@1322",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@1739",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "NIGHT CAFE",
@@ -423,12 +469,34 @@
       ]
     },
     {
+      "case": "setup-transition-1280",
+      "phase": -1,
+      "reservation_clear": true,
+      "setup_visible": false,
+      "status_bottom": 148.0,
+      "status_detail": [
+        346.0,
+        116.0,
+        588.0,
+        22.0
+      ],
+      "status_panel": [
+        330.0,
+        78.0,
+        620.0,
+        70.0
+      ],
+      "status_text": "A local launcher endpoint is required",
+      "status_title": "CONNECTION ERROR"
+    },
+    {
       "case": "setup-after-start-1280",
       "hud_visible": true,
       "menu_dismissed": false,
       "menu_visible": false,
       "phase": 3,
       "popups_in_surface": 0,
+      "status_bottom": 148.0,
       "status_panel": [
         330.0,
         78.0,
@@ -443,6 +511,30 @@
         108.0
       ],
       "vitals_visible": true
+    },
+    {
+      "case": "hud-stress-1280",
+      "in_viewport": true,
+      "phase": 3,
+      "reservation_clear": true,
+      "status_bottom": 148.0,
+      "status_detail": [
+        346.0,
+        116.0,
+        588.0,
+        22.0
+      ],
+      "status_panel": [
+        330.0,
+        78.0,
+        620.0,
+        70.0
+      ],
+      "status_text": "Esc releases the mouse  ·  The match continues while controls are paused",
+      "viewport": [
+        1280,
+        800
+      ]
     },
     {
       "case": "shared-live-1280",
@@ -576,7 +668,7 @@
       "world_labels": [
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_1/HordeRole",
+          "path": "@Node3D@3390/Actor_1/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -584,7 +676,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_2/HordeRole",
+          "path": "@Node3D@3390/Actor_2/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -592,7 +684,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_3/HordeRole",
+          "path": "@Node3D@3390/Actor_3/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  0",
@@ -600,7 +692,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_4/HordeRole",
+          "path": "@Node3D@3390/Actor_4/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -608,7 +700,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_5/HordeRole",
+          "path": "@Node3D@3390/Actor_5/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "BRUTE  60",
@@ -616,7 +708,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_6/HordeRole",
+          "path": "@Node3D@3390/Actor_6/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  0",
@@ -624,7 +716,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_7/HordeRole",
+          "path": "@Node3D@3390/Actor_7/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  60",
@@ -632,7 +724,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_8/HordeRole",
+          "path": "@Node3D@3390/Actor_8/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -640,7 +732,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_9/HordeRole",
+          "path": "@Node3D@3390/Actor_9/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "BRUTE  0",
@@ -648,7 +740,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_10/HordeRole",
+          "path": "@Node3D@3390/Actor_10/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  60",
@@ -656,7 +748,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_11/HordeRole",
+          "path": "@Node3D@3390/Actor_11/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "SPITTER  60",
@@ -664,7 +756,7 @@
         },
         {
           "font_size": 28,
-          "path": "@Node3D@2556/Actor_12/HordeRole",
+          "path": "@Node3D@3390/Actor_12/HordeRole",
           "pickup": false,
           "pixel_size": 0.0120000001043081,
           "text": "HUSK  0",
@@ -672,7 +764,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@2666",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@3500",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "MERIDIAN INTERCHANGE",
@@ -680,7 +772,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@2667",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@3501",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "DEPARTURE HALL",
@@ -688,7 +780,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@2668",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@3502",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "SAFFRON MARKET",
@@ -696,7 +788,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@2669",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@3503",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "SIGNAL HOUSE",
@@ -704,7 +796,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@2670",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@3504",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "TRAM PLATFORM",
@@ -712,7 +804,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@2671",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@3505",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "CIVIC ARCHIVE",
@@ -720,7 +812,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@2672",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@3506",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "WEST CUSTOMS",
@@ -728,7 +820,7 @@
         },
         {
           "font_size": 48,
-          "path": "SelectedMap/NativeWorldDetail/@Label3D@2673",
+          "path": "SelectedMap/NativeWorldDetail/@Label3D@3507",
           "pickup": false,
           "pixel_size": 0.0140000004321337,
           "text": "NIGHT CAFE",
