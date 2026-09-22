@@ -44,6 +44,7 @@ Every file under `evidence/` is a real run against this checkout, not a fixture.
 |---|---|
 | `unit-tests.log` | 24 tests pass (6 argument, 18 state machine) with the runner stubbed |
 | `dry-run-worktree-console.log`, `dry-run-state-runs/` | the full six-step dry run: real preflight (HEAD, toolchain hashes, free tag), steps 2–6 printed and skipped, in 2.1 s, no side effect |
+| `dry-run-final-console.log`, `dry-run-final-state-runs/` | the last dry run, on the final lane commit `37b1151c`: all six steps, five planned and skipped, exit 0 |
 | `dry-run-primary-outcome.txt` | why the primary-checkout dry run could not be captured: no frozen window existed (16 modified files, 1252 untracked paths at the end), and refusing that tree is the required behaviour |
 | `refusal-dirty-tree.log`, `.json`, `-console.log` | a real refusal: two lanes' uncommitted runtime files stopped preflight before any side effect |
 | `refusal-existing-tag.*` | a real refusal: the published `combat-expansion-2026-09-22` tag/release is never reused |
