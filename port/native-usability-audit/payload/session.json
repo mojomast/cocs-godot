@@ -1,0 +1,17 @@
+{
+  "flow": "payload",
+  "display": ":0",
+  "xvfb_pid": 3241156,
+  "launcher_pid": 3241159,
+  "width": 960,
+  "height": 640,
+  "command": [
+    "node",
+    "/tmp/opencode/usability-package-83e4aff/run.mjs",
+    "--experience=objectives",
+    "--map=sunscar-convoy"
+  ],
+  "started": 1790049856.6402893,
+  "window": 4194307,
+  "sink": 2097153
+}

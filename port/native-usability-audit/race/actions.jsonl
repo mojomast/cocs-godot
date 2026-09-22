@@ -1,0 +1,18 @@
+{"time": 1790049717.0937219, "action": "shot", "values": ["01-start"]}
+{"time": 1790049717.211785, "action": "key", "values": ["Return"]}
+{"time": 1790049719.2507856, "action": "key", "values": ["w", "2"]}
+{"time": 1790049719.338085, "action": "shot", "values": ["02-driving"]}
+{"time": 1790049719.4540656, "action": "key", "values": ["Escape"]}
+{"time": 1790049749.5657444, "action": "shot", "values": ["03-results"]}
+{"time": 1790049749.688871, "action": "key", "values": ["F5"]}
+{"time": 1790049769.8493028, "action": "key", "values": ["Return"]}
+{"time": 1790049770.9026492, "action": "focus-away", "values": []}
+{"time": 1790049771.3094196, "action": "shot", "values": ["04-focus-away"]}
+{"time": 1790049772.3640664, "action": "focus-back", "values": []}
+{"time": 1790049772.784704, "action": "shot", "values": ["05-focus-return"]}
+{"time": 1790049784.7750762, "action": "shot", "values": ["06-time-results"]}
+{"time": 1790049784.8981776, "action": "key", "values": ["F5"]}
+{"time": 1790049795.571721, "action": "shot", "values": ["07-restart"]}
+{"time": 1790049795.6957853, "action": "key", "values": ["Return"]}
+{"time": 1790049796.743229, "action": "key", "values": ["w", "1"]}
+{"time": 1790049797.1508696, "action": "shot", "values": ["08-resumed"]}

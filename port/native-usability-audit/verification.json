@@ -1,0 +1,11 @@
+{
+  "report_links_checked": 71,
+  "missing_links": [],
+  "source_anchors_in_range": true,
+  "python_ast_ok": true,
+  "png_dimensions_checked": 46,
+  "cleanup_receipts_pass": 6,
+  "unchanged_tracked_files": true,
+  "package_files_match": 111,
+  "baseline_build_inputs_match": 189
+}

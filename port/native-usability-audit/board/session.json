@@ -1,0 +1,18 @@
+{
+  "flow": "board",
+  "display": ":0",
+  "xvfb_pid": 3248512,
+  "launcher_pid": 3248515,
+  "width": 960,
+  "height": 640,
+  "command": [
+    "node",
+    "/tmp/opencode/usability-package-83e4aff/run.mjs",
+    "--experience=lattice",
+    "--map=asterion-relay",
+    "--mode=cocs"
+  ],
+  "started": 1790049899.6717055,
+  "window": 4194307,
+  "sink": 2097153
+}

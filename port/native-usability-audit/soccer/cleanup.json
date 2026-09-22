@@ -1,0 +1,13 @@
+{
+  "launcher_exit": 130,
+  "xvfb_exit": 0,
+  "package_stopped": true,
+  "port": 34585,
+  "port_closed": true,
+  "pids_absent": {
+    "3233893": true,
+    "3233890": true,
+    "3233938": true
+  },
+  "ended": 1790049846.097431
+}

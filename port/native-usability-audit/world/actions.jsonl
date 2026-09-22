@@ -1,0 +1,19 @@
+{"time": 1790050002.6419344, "action": "shot", "values": ["01-ready"]}
+{"time": 1790050002.7612321, "action": "click", "values": ["640", "400"]}
+{"time": 1790050003.8056822, "action": "key", "values": ["w", "1"]}
+{"time": 1790050003.9300358, "action": "key", "values": ["Escape"]}
+{"time": 1790050004.3191562, "action": "shot", "values": ["02-release"]}
+{"time": 1790050004.4373887, "action": "key", "values": ["c"]}
+{"time": 1790050004.8172636, "action": "shot", "values": ["03-commands"]}
+{"time": 1790050026.612168, "action": "click", "values": ["532", "294"]}
+{"time": 1790050026.744925, "action": "click", "values": ["642", "405"]}
+{"time": 1790050027.1472178, "action": "shot", "values": ["04-hold"]}
+{"time": 1790050027.2811673, "action": "key", "values": ["c"]}
+{"time": 1790050027.7176476, "action": "shot", "values": ["05-panel-closed"]}
+{"time": 1790050027.847557, "action": "click", "values": ["640", "400"]}
+{"time": 1790050028.8953483, "action": "key", "values": ["w", "1"]}
+{"time": 1790050029.3033085, "action": "shot", "values": ["06-resumed"]}
+{"time": 1790050030.3377361, "action": "focus-away", "values": []}
+{"time": 1790050030.7364533, "action": "shot", "values": ["07-unfocused"]}
+{"time": 1790050031.777926, "action": "focus-back", "values": []}
+{"time": 1790050032.1729608, "action": "shot", "values": ["08-returned"]}

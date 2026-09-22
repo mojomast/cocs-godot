@@ -1,0 +1,7 @@
+{"time": 1790049817.6069458, "action": "shot", "values": ["01-ready"]}
+{"time": 1790049817.725795, "action": "key", "values": ["Return"]}
+{"time": 1790049819.7714663, "action": "key", "values": ["w", "2"]}
+{"time": 1790049820.1411572, "action": "shot", "values": ["02-driving"]}
+{"time": 1790049820.2558365, "action": "key", "values": ["Escape"]}
+{"time": 1790049820.6260211, "action": "shot", "values": ["03-release"]}
+{"time": 1790049845.8904674, "action": "shot", "values": ["04-stationary-bearing"]}

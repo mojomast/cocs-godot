@@ -1,0 +1,351 @@
+{
+  "baseline": "83e4aff175eeef47c9ceab5714bad162ce9b32a6",
+  "checkout_head": "83e4aff175eeef47c9ceab5714bad162ce9b32a6",
+  "baseline_runtime_trees": {
+    "godot": "3a3d958df6ab426dfb3cfaf13fe23217088a24bc",
+    "game": "ae8015eeecec1d044cdcceaa1e5ea89d53251a90",
+    "server": "e54b6a715f46ff7e25db533ce9d1d5cc68942563"
+  },
+  "package_build_commit": "8a58c97e48493e41903c2c9a729e753cb3579500",
+  "package_manifest_metadata": {
+    "build_node": "v22.23.1",
+    "full_history": true,
+    "generated_resources_sha256": "49981847fb6a1fe3e0b3892af06a247a31c9a134bb2210d648f78a80ef3ffd0a",
+    "godot_export": "release template; assertions disabled; no test fixtures in production PCK",
+    "godot_version": "4.5.2.stable.official.6ce3de25a",
+    "input_sha256": "acb7ec42ae6c50229dd40e851f54831d474b1a11e830c58d43e8e2cd21639cbe",
+    "kind": "private-local-linux-prototype",
+    "maps": [
+      "meridian-exchange",
+      "verdant-reliquary",
+      "ember-crucible",
+      "tidal-citadel",
+      "sunscar-convoy",
+      "asterion-relay",
+      "monsoon-foundry",
+      "ion-speedway",
+      "aurora-stadium"
+    ],
+    "play_node": ">=22.13.0 (external prerequisite)",
+    "port_commit": "8a58c97e48493e41903c2c9a729e753cb3579500",
+    "redistribution_rights": "unresolved; local use only; no asset rights asserted",
+    "release_ready": false,
+    "schema_version": 1,
+    "server_data_reads": "Only optional history/progression stores; both null. Map/data modules included in closure.",
+    "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+    "staged_export_preset": "[preset.0]\nname=\"Private Linux Prototype\"\nplatform=\"Linux\"\nrunnable=true\nadvanced_options=false\ndedicated_server=false\ncustom_features=\"private_local_prototype\"\nexport_filter=\"all_resources\"\ninclude_filter=\"content/generated/*.json,content/generated/maps/*/*.json\"\nexclude_filter=\"tests/*,content/probes/*\"\nexport_path=\"\"\nscript_export_mode=2\n\n[preset.0.options]\ncustom_template/debug=\"\"\ncustom_template/release=\"\"\nbinary_format/embed_pck=false\nbinary_format/architecture=\"x86_64\"\ntexture_format/s3tc_bptc=true\ntexture_format/etc2_astc=false\nssh_remote_deploy/enabled=false\n",
+    "toolchain": {
+      "archives": {
+        "Godot_v4.5.2-stable_export_templates.tpz": "003aa33743f58fb657717f090fc872ed3975e48d08a6012201a2259970d458a63d4d8a83090585307c23455ebfa4e6e0050e1057761c34863536095e3fcfab6c",
+        "Godot_v4.5.2-stable_linux.x86_64.zip": "e3ce6194b6d4d2dcef5e5b5136752c084d9d8b9071c10bc2d2011b947ec7439a257c8d23c541cb30699f16d9edea6dff36e6e84d2bec14a8fe9b4e9aacbe5a8d"
+      },
+      "checksums_source": "https://github.com/godotengine/godot/releases/download/4.5.2-stable/SHA512-SUMS.txt",
+      "editor_sha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+      "release_template_sha256": "3c0994716982c2f557f7738a789269074520ac0c0a3f11bb7a84a34ee96c683d"
+    },
+    "worktree_status": "M README.md\n M port/handoffs/ACTIVE_LANES.md\n M port/reports/export-tests.log\n M port/reports/gate-runner-tests.log\n M port/reports/gltf-sides.log\n M port/reports/health-hud-evidence.log\n M port/reports/launcher-options.log\n M port/reports/native-lifecycle.log\n M port/reports/native-live.log\n M port/reports/native-session.log\n M port/reports/native-trace.log\n M port/reports/objective-completion-evidence.log\n M port/reports/objective-evidence.log\n M port/reports/objective-progression-evidence.log\n M port/reports/package-options.log\n M port/reports/projectile-navigation.log\n M port/reports/source-tests.log\n M port/reports/two-native-clients.json\n M port/reports/two-native-clients.log\n M port/reports/verification.json\n M tools/godot-dev/verify.py\n M tools/godot-package/verify.py\n?? port/native-lattice-world-commands/evidence/1790048714008175713/\n?? port/native-sports-victory/evidence/9c72f6c8-6b15-4a90-a7b3-11c64c68c7f8/\n?? port/native-sports-victory/evidence/dea1d370-7fba-4280-8e4c-8e06850b9159/\n?? port/reports/lattice-world-commands-independent/\n?? port/reports/lattice-world-commands.log\n?? port/reports/linux-world-commands-independent/",
+    "ws": {
+      "integrity": "sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw==",
+      "license": "MIT; retained in runtime/node_modules/ws/LICENSE; optional native accelerators omitted",
+      "resolved": "https://registry.npmjs.org/ws/-/ws-8.21.3.tgz",
+      "version": "8.21.3"
+    }
+  },
+  "package": "/tmp/opencode/usability-package-83e4aff",
+  "package_manifest_sha256": "babb513fe1ad519aa929dadd1a3a0d8347d747934358b1dc94ce9b21192d0814",
+  "runtime_hashes": {
+    "cocs.pck": "4d7b8eb47afc7bce5f63d349dec817d348b0b0eac809c8f2e0f3fc568a6b51f4",
+    "cocs.x86_64": "3c0994716982c2f557f7738a789269074520ac0c0a3f11bb7a84a34ee96c683d",
+    "run.mjs": "f2e051eb005cdac5c7298f346028d1992eb72f75e5a5c52eabdde3f9d45604fa",
+    "options.mjs": "495243169cea78fe2ece0e5285d5ba26dd4028b982fd3b0b9b251a21d10fa9ca"
+  },
+  "package_files_checked": 111,
+  "package_file_mismatches": {},
+  "build_inputs_checked_against_checkout": 189,
+  "build_input_mismatches": {},
+  "build_inputs_missing_in_checkout": [],
+  "changes_since_packaged_revision": "godot/sports/practice.gd.uid                      |  1 +\n godot/tests/sports/practice_race_observe.gd.uid   |  1 +\n godot/tests/sports/practice_soccer_observe.gd.uid |  1 +\n godot/tests/sports/practice_test.gd.uid           |  1 +\n tools/godot-dev/verify.py                         |  2 ++\n tools/godot-package/verify.py                     | 24 +++++++++++++++++++++++\n 6 files changed, 30 insertions(+)",
+  "environment": {
+    "uname": {
+      "system": "Linux",
+      "node": "Kimi",
+      "release": "6.17.0-41-generic",
+      "version": "#41-Ubuntu SMP PREEMPT_DYNAMIC Sat Jun 20 18:01:40 UTC 2026",
+      "machine": "x86_64",
+      "processor": ""
+    },
+    "python": "3.13.7",
+    "node": "v22.23.1",
+    "node_path": "/usr/bin/node",
+    "Xvfb_path": "/usr/bin/Xvfb",
+    "display_screen": "1600x1000x24",
+    "display_flags": [
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    "audio": "ALSA unavailable; runtime falls back to dummy",
+    "input": "ordinary XTest/XSetInputFocus, no state/physics/time mutation",
+    "x11_helper_sha256": "dc873b5f4d25b64081dfc4ff88dd3cf95ab1cfcb5e59f22087995916a53d521a"
+  },
+  "flows": {
+    "combat": {
+      "session": {
+        "flow": "combat",
+        "display": ":0",
+        "xvfb_pid": 3210529,
+        "launcher_pid": 3210532,
+        "width": 960,
+        "height": 640,
+        "command": [
+          "node",
+          "/tmp/opencode/usability-package-83e4aff/run.mjs"
+        ],
+        "started": 1790049609.7860508,
+        "window": 4194307,
+        "sink": 2097153
+      },
+      "cleanup": {
+        "launcher_exit": 130,
+        "xvfb_exit": 0,
+        "package_stopped": true,
+        "port": 34077,
+        "port_closed": true,
+        "pids_absent": {
+          "3210532": true,
+          "3210529": true,
+          "3210609": true
+        },
+        "ended": 1790049699.499452
+      },
+      "duration_seconds": 89.71,
+      "screenshots": {
+        "01-setup.png": "51919fea4f7db46f7032d34f720c4b4b7b4e691433f94a2f2f4204f2de6d1bf3",
+        "02-map-options.png": "7621f8f8495b7e15cf22fb8730f51e18797149316340017bc27c3b8352541145",
+        "03-ion-pending.png": "42f4b2e94363c7c51b13385d700f1ad0e33b6a088c91302154616a23f7ea1aba",
+        "04-start.png": "2ddd9adfe2afdbfa6805531b63199c46e5d13f39ab695a33f978b302deedc0eb",
+        "05-play.png": "2ddd9adfe2afdbfa6805531b63199c46e5d13f39ab695a33f978b302deedc0eb",
+        "06-release.png": "2ddd9adfe2afdbfa6805531b63199c46e5d13f39ab695a33f978b302deedc0eb",
+        "07-reopen.png": "6b4d26729cbebbfa9aad924c0697298e41f0afc6fc5f75f952bb544d1afe77ae",
+        "08-started.png": "386a5b89fa7609271398a2e9d4e1c49d97e550976ce1bf27650bd496ddfffc40",
+        "09-engaged.png": "c5a2e928d1a3aabb5cfd39f7af1470aa4880a538eff7f5956e53c013e7ad72c5",
+        "10-unfocused.png": "61772149452b50693cd087eef223ae3b5a715a8cf40df9e3d7987f552253d830",
+        "11-returned.png": "b50c4e36bed658df75a184491a42324d4cb898ae5d1289d24fe74408b2672041",
+        "12-return-settled.png": "cdfe429f2a34f5b72637c2cd51b1c4a05237deeb0ee67240328949c61cd06866",
+        "13-escape.png": "c3186cae61af7ab5a9203d8e4f45a1ab7de4f4e8a8f7183d4ee448a6006cfabb"
+      }
+    },
+    "race": {
+      "session": {
+        "flow": "race",
+        "display": ":0",
+        "xvfb_pid": 3221206,
+        "launcher_pid": 3221220,
+        "width": 1280,
+        "height": 800,
+        "command": [
+          "node",
+          "/tmp/opencode/usability-package-83e4aff/run.mjs",
+          "--experience=sports",
+          "--map=ion-speedway",
+          "--time-limit=60"
+        ],
+        "started": 1790049708.9437916,
+        "window": 4194307,
+        "sink": 2097153
+      },
+      "cleanup": {
+        "launcher_exit": 130,
+        "xvfb_exit": 0,
+        "package_stopped": true,
+        "port": 46299,
+        "port_closed": true,
+        "pids_absent": {
+          "3221220": true,
+          "3221206": true,
+          "3221339": true
+        },
+        "ended": 1790049797.4194934
+      },
+      "duration_seconds": 88.48,
+      "screenshots": {
+        "01-start.png": "1a529c1733e35371f29c7ac02ff71bc2650b4f1d85ae9dc8f2297100600c42ac",
+        "02-driving.png": "c90ae3fc64f94fb89e066ef0328cbd7d5e3f2fb48fc80c008c6e5138d6f2fbfb",
+        "03-results.png": "cf7f7ec1ea6988f5713f1333aa628715737fad1ad4a2a4168be35a1d45d82d11",
+        "04-focus-away.png": "5763b6fb0d4db934e9926199de43b29b54f6449a72aa5a3d5f8ed466dc5fafa2",
+        "05-focus-return.png": "167adfae396455bda3a0d4914de5971d8f9d091482ee169e1ed0e02b22c399fb",
+        "06-time-results.png": "3c785a5d21cb98947b5616114c5c396ab922153013c187d6ce590912325d3902",
+        "07-restart.png": "44ed052b04344e9fab768a9af7a278a24af99fd63a846c2f5d40b5f7906cf744",
+        "08-resumed.png": "a44664a783111103721a7fdd54b1a6d4e20a4a44c7172b33f1eb6082300a1aac"
+      }
+    },
+    "soccer": {
+      "session": {
+        "flow": "soccer",
+        "display": ":0",
+        "xvfb_pid": 3233890,
+        "launcher_pid": 3233893,
+        "width": 960,
+        "height": 640,
+        "command": [
+          "node",
+          "/tmp/opencode/usability-package-83e4aff/run.mjs",
+          "--experience=sports",
+          "--map=aurora-stadium"
+        ],
+        "started": 1790049806.554101,
+        "window": 4194307,
+        "sink": 2097153
+      },
+      "cleanup": {
+        "launcher_exit": 130,
+        "xvfb_exit": 0,
+        "package_stopped": true,
+        "port": 34585,
+        "port_closed": true,
+        "pids_absent": {
+          "3233893": true,
+          "3233890": true,
+          "3233938": true
+        },
+        "ended": 1790049846.097431
+      },
+      "duration_seconds": 39.54,
+      "screenshots": {
+        "01-ready.png": "89a9190e53e21ef5a8bd022ade831e737ecb4c5c10de873c5152fb5b1c0e42f8",
+        "02-driving.png": "0ec47120a03df80ce118c5fd825e2edfe76d1fc588bd73ca6fe56a986f293473",
+        "03-release.png": "22011080ac579fe286833c2b0953c26f63ab6a772c4421dfb75ffb8aa14466da",
+        "04-stationary-bearing.png": "28dfa123b4c1f84348b845c5a7ac4afcf0ce35fe4f9ba5f8149813c1db0a4114"
+      }
+    },
+    "payload": {
+      "session": {
+        "flow": "payload",
+        "display": ":0",
+        "xvfb_pid": 3241156,
+        "launcher_pid": 3241159,
+        "width": 960,
+        "height": 640,
+        "command": [
+          "node",
+          "/tmp/opencode/usability-package-83e4aff/run.mjs",
+          "--experience=objectives",
+          "--map=sunscar-convoy"
+        ],
+        "started": 1790049856.6402893,
+        "window": 4194307,
+        "sink": 2097153
+      },
+      "cleanup": {
+        "launcher_exit": 130,
+        "xvfb_exit": 0,
+        "package_stopped": true,
+        "port": 45307,
+        "port_closed": true,
+        "pids_absent": {
+          "3241159": true,
+          "3241156": true,
+          "3241312": true
+        },
+        "ended": 1790049889.1111639
+      },
+      "duration_seconds": 32.47,
+      "screenshots": {
+        "01-ready.png": "1a2e56763a3e9b1c8554ba03fdade1af4fee937222fc18852701aee25641993b",
+        "02-engaged.png": "e66f8fb0c17086b4970140c5d157c7e208d34de3c13250c2240b6c7744a72cf1",
+        "03-release.png": "49f0bc321f1855aae71e4142a15cb91f6d40a79d08a41f8af8516a553285f5e8",
+        "04-unfocused.png": "415c891b4ef7bdb37d7878fbfeb722b25ae12dcecb8ce96178c594d5ef3f7de4",
+        "05-returned.png": "49f0bc321f1855aae71e4142a15cb91f6d40a79d08a41f8af8516a553285f5e8"
+      }
+    },
+    "board": {
+      "session": {
+        "flow": "board",
+        "display": ":0",
+        "xvfb_pid": 3248512,
+        "launcher_pid": 3248515,
+        "width": 960,
+        "height": 640,
+        "command": [
+          "node",
+          "/tmp/opencode/usability-package-83e4aff/run.mjs",
+          "--experience=lattice",
+          "--map=asterion-relay",
+          "--mode=cocs"
+        ],
+        "started": 1790049899.6717055,
+        "window": 4194307,
+        "sink": 2097153
+      },
+      "cleanup": {
+        "launcher_exit": 130,
+        "xvfb_exit": 0,
+        "package_stopped": true,
+        "port": 40665,
+        "port_closed": true,
+        "pids_absent": {
+          "3248515": true,
+          "3248512": true,
+          "3248756": true
+        },
+        "ended": 1790049984.9383752
+      },
+      "duration_seconds": 85.27,
+      "screenshots": {
+        "01-idle.png": "c1a474597423629467a588a9f7b45ef2928439f689b794443708ad94d552f034",
+        "02-connected.png": "14cb045beaeb76903955a175e5009a055bf6385c3a44aaac7f80c54bff508714",
+        "03-receipts.png": "935191fd2c0d462bbc4af5d51e200e37b9bf222c88756a967cdcf826d42852e3",
+        "04-view-options.png": "00ad7045639cc57340f88d8fa87b630b47a498e45d273228a9b81f3a4d6ca321",
+        "05-map.png": "20f9719f12cdddb7ef5b8ab2a43507dc50acd60a563f6cc13a53cc089ef0f7aa",
+        "06-purchase.png": "7b312c45f5959a5c42ec7c7a602f08250134624d1f7034fb973c70865f813950",
+        "07-disconnected.png": "7dcfe8866e825544f9a13112108be804501e04493216cf8af19e3bf92fe97163",
+        "08-coop-switched.png": "f21d3974d1c4da34972a7fd3789c27c294f1ca3443537b55bfc78718d8ffc468"
+      }
+    },
+    "world": {
+      "session": {
+        "flow": "world",
+        "display": ":0",
+        "xvfb_pid": 3264230,
+        "launcher_pid": 3264233,
+        "width": 1280,
+        "height": 800,
+        "command": [
+          "node",
+          "/tmp/opencode/usability-package-83e4aff/run.mjs",
+          "--experience=lattice-world",
+          "--map=monsoon-foundry",
+          "--mode=cocs-coop"
+        ],
+        "started": 1790049994.9135818,
+        "window": 4194307,
+        "sink": 2097153
+      },
+      "cleanup": {
+        "launcher_exit": 130,
+        "xvfb_exit": 0,
+        "package_stopped": true,
+        "port": 36665,
+        "port_closed": true,
+        "pids_absent": {
+          "3264233": true,
+          "3264230": true,
+          "3264371": true
+        },
+        "ended": 1790050032.2915943
+      },
+      "duration_seconds": 37.38,
+      "screenshots": {
+        "01-ready.png": "6d7dc220fb4b6de2cf097e7a1dbf4272213f687c3899e6f6125889676e656bcd",
+        "02-release.png": "f16fa1a1da81051d2c879464272c13c309d168f0daa7ab632cdcf93aea29b180",
+        "03-commands.png": "a4cdf48b53eb12fd37eafb48ba64b60130b7c55ba794399478ca08446ff92ace",
+        "04-hold.png": "450463f26552de7c414ee7c2571d37b1828b07f2bde7ee47678a79a37214f06f",
+        "05-panel-closed.png": "5eee398d96ab39cb9d3d673d4fc0b098d1d21c5cb26420c72cf49c9279a9c8e5",
+        "06-resumed.png": "5c39bfe2aed2dbe531b9aa13cbb948f6b955a3a57276081e85ea4de750267eba",
+        "07-unfocused.png": "6ebf46b600d9abb499e0bde033ec8ca9ef3e218d0a68a838a6ee6507aae0cd71",
+        "08-returned.png": "e8528c0804b4d65833bf3271fc360c3e449c1ba67dbf92831836a562194e5a1c"
+      }
+    }
+  }
+}

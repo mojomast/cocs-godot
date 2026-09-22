@@ -1,0 +1,33 @@
+{"time": 1790049614.118548, "action": "shot", "values": ["01-setup"]}
+{"time": 1790049621.2377856, "action": "click", "values": ["475", "170"]}
+{"time": 1790049621.2901297, "action": "shot", "values": ["02-map-options"]}
+{"time": 1790049632.2957046, "action": "click", "values": ["360", "391"]}
+{"time": 1790049632.3467972, "action": "shot", "values": ["03-ion-pending"]}
+{"time": 1790049632.4660356, "action": "click", "values": ["480", "170"]}
+{"time": 1790049632.5883334, "action": "key", "values": ["Home"]}
+{"time": 1790049632.708502, "action": "key", "values": ["Return"]}
+{"time": 1790049632.8266387, "action": "click", "values": ["480", "412"]}
+{"time": 1790049644.1214123, "action": "shot", "values": ["04-start"]}
+{"time": 1790049644.2424288, "action": "click", "values": ["480", "320"]}
+{"time": 1790049645.2816904, "action": "key", "values": ["w", "1"]}
+{"time": 1790049645.4036975, "action": "click", "values": ["480", "320"]}
+{"time": 1790049645.4581828, "action": "shot", "values": ["05-play"]}
+{"time": 1790049645.5882795, "action": "key", "values": ["Escape"]}
+{"time": 1790049645.6491036, "action": "shot", "values": ["06-release"]}
+{"time": 1790049661.698804, "action": "click", "values": ["470", "170"]}
+{"time": 1790049661.7554202, "action": "shot", "values": ["07-reopen"]}
+{"time": 1790049672.9010506, "action": "click", "values": ["360", "201"]}
+{"time": 1790049673.023076, "action": "click", "values": ["480", "412"]}
+{"time": 1790049682.76242, "action": "shot", "values": ["08-started"]}
+{"time": 1790049682.8793147, "action": "click", "values": ["480", "320"]}
+{"time": 1790049683.9175217, "action": "key", "values": ["w", "1"]}
+{"time": 1790049684.0380795, "action": "click", "values": ["480", "320"]}
+{"time": 1790049684.0867105, "action": "shot", "values": ["09-engaged"]}
+{"time": 1790049684.1256282, "action": "focus-away", "values": []}
+{"time": 1790049684.1712382, "action": "shot", "values": ["10-unfocused"]}
+{"time": 1790049684.209582, "action": "focus-back", "values": []}
+{"time": 1790049684.2567024, "action": "shot", "values": ["11-returned"]}
+{"time": 1790049698.9219134, "action": "shot", "values": ["12-return-settled"]}
+{"time": 1790049699.0382288, "action": "click", "values": ["480", "320"]}
+{"time": 1790049699.154497, "action": "key", "values": ["Escape"]}
+{"time": 1790049699.2041786, "action": "shot", "values": ["13-escape"]}

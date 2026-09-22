@@ -1,0 +1,22 @@
+{"time": 1790049904.9806883, "action": "shot", "values": ["01-idle"]}
+{"time": 1790049905.1021113, "action": "click", "values": ["90", "157"]}
+{"time": 1790049916.3117774, "action": "shot", "values": ["02-connected"]}
+{"time": 1790049927.8220127, "action": "click", "values": ["330", "348"]}
+{"time": 1790049927.9465773, "action": "click", "values": ["90", "460"]}
+{"time": 1790049928.0713503, "action": "click", "values": ["170", "460"]}
+{"time": 1790049928.20411, "action": "click", "values": ["490", "460"]}
+{"time": 1790049928.5662954, "action": "shot", "values": ["03-receipts"]}
+{"time": 1790049928.698386, "action": "click", "values": ["902", "251"]}
+{"time": 1790049937.9047027, "action": "shot", "values": ["04-view-options"]}
+{"time": 1790049946.8443463, "action": "click", "values": ["915", "310"]}
+{"time": 1790049947.2050726, "action": "shot", "values": ["05-map"]}
+{"time": 1790049961.861939, "action": "click", "values": ["170", "514"]}
+{"time": 1790049961.9951591, "action": "click", "values": ["490", "514"]}
+{"time": 1790049962.3523476, "action": "shot", "values": ["06-purchase"]}
+{"time": 1790049962.474243, "action": "click", "values": ["193", "151"]}
+{"time": 1790049962.8346364, "action": "shot", "values": ["07-disconnected"]}
+{"time": 1790049977.4159646, "action": "click", "values": ["253", "111"]}
+{"time": 1790049977.5402937, "action": "key", "values": ["Down"]}
+{"time": 1790049977.6600938, "action": "key", "values": ["Return"]}
+{"time": 1790049977.79061, "action": "click", "values": ["80", "151"]}
+{"time": 1790049984.7447436, "action": "shot", "values": ["08-coop-switched"]}

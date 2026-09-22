@@ -1,0 +1,11 @@
+{"time": 1790049867.8365436, "action": "shot", "values": ["01-ready"]}
+{"time": 1790049867.9611163, "action": "click", "values": ["480", "320"]}
+{"time": 1790049869.0051417, "action": "key", "values": ["w", "1"]}
+{"time": 1790049869.3701854, "action": "shot", "values": ["02-engaged"]}
+{"time": 1790049869.4998965, "action": "key", "values": ["Escape"]}
+{"time": 1790049869.863595, "action": "shot", "values": ["03-release"]}
+{"time": 1790049885.9794366, "action": "click", "values": ["480", "320"]}
+{"time": 1790049887.0241487, "action": "focus-away", "values": []}
+{"time": 1790049887.3954356, "action": "shot", "values": ["04-unfocused"]}
+{"time": 1790049888.4447556, "action": "focus-back", "values": []}
+{"time": 1790049888.8174994, "action": "shot", "values": ["05-returned"]}

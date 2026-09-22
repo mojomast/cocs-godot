@@ -1,0 +1,18 @@
+{
+  "flow": "race",
+  "display": ":0",
+  "xvfb_pid": 3221206,
+  "launcher_pid": 3221220,
+  "width": 1280,
+  "height": 800,
+  "command": [
+    "node",
+    "/tmp/opencode/usability-package-83e4aff/run.mjs",
+    "--experience=sports",
+    "--map=ion-speedway",
+    "--time-limit=60"
+  ],
+  "started": 1790049708.9437916,
+  "window": 4194307,
+  "sink": 2097153
+}

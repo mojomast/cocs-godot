@@ -1,0 +1,18 @@
+{
+  "flow": "world",
+  "display": ":0",
+  "xvfb_pid": 3264230,
+  "launcher_pid": 3264233,
+  "width": 1280,
+  "height": 800,
+  "command": [
+    "node",
+    "/tmp/opencode/usability-package-83e4aff/run.mjs",
+    "--experience=lattice-world",
+    "--map=monsoon-foundry",
+    "--mode=cocs-coop"
+  ],
+  "started": 1790049994.9135818,
+  "window": 4194307,
+  "sink": 2097153
+}
