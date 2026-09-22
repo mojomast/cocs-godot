@@ -276,9 +276,26 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
     three identity maps, keeping the existing three arenas byte-compatible.
   - Envelope and canonical-hash contract is fixed in both prompts; the route lane
     validates strictly and re-runs after art hashes are regenerated.
+  - **Identity route/package lane landed** (`2c80979f` + follow-ups): identity
+    family in the native registry with a strict second schema (mode/palette/art/
+    cameras/landmarks, `objectiveZones`, `teamSpawns`), source `Match` construction
+    per identity map, `demo.tscn` loading `identity_maps/map.gd`, six-map Deathmatch
+    cards with one sun/environment each, launcher `--map=` acceptance, hashed
+    identity JSON in the package closure and menus. Verified: 32/32 arena tests,
+    175/175 tool tests, 6/6 launcher smokes, 12 visually audited Xvfb captures,
+    detached package probe and smoke. Authority strictness items done (unknown
+    options reject; readiness `GET /` only).
+  - **Release blocker (expected):** the release build refuses uncommitted runtime
+    data, and the art lane has not yet committed `godot/identity_maps/**` and
+    `godot/native_arenas/generated/**`. Re-run the package build only after their
+    commit; the same flow already passes from a staging snapshot.
   - Wave 2 (later, one lane per mode): Domination on Vermilion Fold through
-    `zone_modes` and Horde on Nacre Engine through the native Horde adapter.
+    `zone_modes` (zone composition route, domination authority path, team spawns,
+    capture/loss acceptance) and Horde on Nacre Engine through the native Horde
+    adapter (reviewed static map/factory hook under its loopback/single-human/epoch
+    contract, plus wave/defeat/boss/endless acceptance). Both remain unstarted.
   - Wave 3: full aggregate verification, Windows package rebuild and publication.
+    Toolchain archives for the build are present and SHA-512 verified locally.
 - Lead test repairs for the pickup-asset and integrated-effects contracts:
   `round_boundaries.gd`, `entity_visuals.gd` pickup section, `combined_arms/graphics.gd`.
   The `entity_visuals.gd` actor section must be rewritten against the source
