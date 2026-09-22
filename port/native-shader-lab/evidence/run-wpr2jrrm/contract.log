@@ -1,0 +1,246 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+--Main Shader--
+    1 | shader_type spatial;
+    2 | render_mode blend_mix, depth_draw_never, cull_back, unshaded;
+    3 | #include "res://shader_lab/moth_common.gdshaderinc"
+    4 | 
+    5 | 
+    6 | uniform sampler2D motif_map : source_color, filter_linear_mipmap, repeat_enable;
+    7 | uniform float opacity : hint_range(0.0, 0.8) = 0.68;
+    8 | 
+    9 | void fragment() {
+   10 |  vec3 n = normalize(object_normal);
+   11 |  vec3 p = object_position * texture_scale;
+   12 |  NORMAL = normalize(object_to_view * moth_local_normal(p, n));
+E  13->  float rim = pow(1.0 - clamp(dot(normalize(VIEW), NORMAL), 0.0, 1.0), 1.7);
+   14 |  vec3 field = tri_sample(field_map, p * 0.7, n);
+   15 |  float distortion = (field.r - 0.5) * field_strength;
+   16 |  float t = effect_time;
+   17 |  float scan = band(sin(object_position.y * 9.0 - t * 2.4 + distortion), 0.12);
+   18 |  float interference = 0.5 + 0.5 * sin(object_position.y * 23.0 + object_position.x * 11.0 + t * 1.8);
+   19 |  vec2 cells = UV * vec2(24.0, 12.0);
+   20 |  float grid = max(band(sin(cells.x * 3.141593), 0.045), band(sin(cells.y * 3.141593), 0.045));
+   21 |  
+   22 |  vec3 motif = texture(motif_map, UV * vec2(3.0, 2.0) + vec2(t * 0.025, 0.0)).rgb;
+   23 |  float source_detail = clamp(dot(motif, vec3(0.2126, 0.7152, 0.0722)) * 12.0, 0.0, 1.0);
+   24 |  float tile = dot(tri_sample(base_map, p, n), vec3(0.333333));
+   25 |  float lut = moth_lut(rim * rim);
+   26 |  vec3 color = mix(accent.rgb, secondary.rgb, clamp(rim * 0.65 + interference * 0.18, 0.0, 1.0));
+   27 |  float detail = grid * 0.24 + scan * 0.3 + source_detail * 0.4;
+   28 |  float enabled = effect_enabled ? 1.0 : 0.0;
+   29 |  ALBEDO = clamp(color * (0.65 + detail + tile * texture_gain), vec3(0.0), vec3(1.0));
+   30 |  EMISSION = clamp(color * (0.2 + lut * 2.0) * intensity, vec3(0.0), vec3(3.0));
+   31 |  
+   32 |  
+   33 |  ALPHA = clamp(opacity * (0.035 + rim * 0.7 + detail + lut) * intensity * enabled, 0.0, 0.8);
+   34 | }
+   35 | 
+--res://shader_lab/moth_common.gdshaderinc--
+    1 | 
+    2 | 
+    3 | uniform sampler2D base_map : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
+    4 | uniform sampler2D normal_map : filter_linear_mipmap_anisotropic, repeat_enable;
+    5 | uniform sampler2D field_map : filter_linear_mipmap, repeat_enable;
+    6 | uniform sampler2D lut_r : filter_linear, repeat_disable;
+    7 | uniform sampler2D lut_t : filter_linear, repeat_disable;
+    8 | uniform vec4 body_color : source_color = vec4(0.38, 0.46, 0.55, 1.0);
+    9 | uniform vec4 accent : source_color = vec4(0.12, 0.85, 1.0, 1.0);
+   10 | uniform vec4 secondary : source_color = vec4(0.64, 0.35, 1.0, 1.0);
+   11 | uniform float effect_time = 0.0;
+   12 | uniform float intensity : hint_range(0.0, 2.5) = 1.0;
+   13 | uniform float texture_scale : hint_range(0.1, 4.0) = 1.0;
+   14 | uniform float texture_gain : hint_range(0.0, 8.0) = 2.2;
+   15 | uniform float normal_strength : hint_range(0.0, 0.65) = 0.2;
+   16 | uniform float field_strength : hint_range(0.0, 1.0) = 1.0;
+   17 | uniform float lut_strength : hint_range(0.0, 2.0) = 0.65;
+   18 | uniform float lut_phase : hint_range(0.0, 1.0) = 0.8;
+   19 | uniform bool effect_enabled = true;
+   20 | varying vec3 object_position;
+   21 | varying vec3 object_normal;
+   22 | varying mat3 object_to_view;
+   23 | 
+   24 | void vertex() {
+   25 |  object_position = VERTEX;
+   26 |  object_normal = NORMAL;
+   27 |  object_to_view = mat3(VIEW_MATRIX) * MODEL_NORMAL_MATRIX;
+   28 | }
+   29 | 
+   30 | vec3 tri_weights(vec3 n) {
+   31 |  vec3 w = pow(abs(n), vec3(4.0));
+   32 |  return w / max(dot(w, vec3(1.0)), 0.00001);
+   33 | }
+   34 | 
+   35 | vec3 tri_sample(sampler2D tex, vec3 p, vec3 n) {
+   36 |  vec3 w = tri_weights(n);
+   37 |  vec3 s = step(vec3(0.0), n) * 2.0 - 1.0;
+   38 |  return texture(tex, vec2(p.z * s.x, -p.y)).rgb * w.x
+   39 |  + texture(tex, vec2(p.x * s.y, -p.z)).rgb * w.y
+   40 |  + texture(tex, vec2(p.x * s.z, p.y)).rgb * w.z;
+   41 | }
+   42 | 
+   43 | vec3 moth_local_normal(vec3 p, vec3 n) {
+   44 |  vec3 w = tri_weights(n);
+   45 |  vec3 s = step(vec3(0.0), n) * 2.0 - 1.0;
+   46 |  vec3 nx = texture(normal_map, vec2(p.z * s.x, -p.y)).xyz * 2.0 - 1.0;
+   47 |  vec3 ny = texture(normal_map, vec2(p.x * s.y, -p.z)).xyz * 2.0 - 1.0;
+   48 |  vec3 nz = texture(normal_map, vec2(p.x * s.z, p.y)).xyz * 2.0 - 1.0;
+   49 |  nx.xy /= max(nx.z, 0.2);
+   50 |  ny.xy /= max(ny.z, 0.2);
+   51 |  nz.xy /= max(nz.z, 0.2);
+   52 |  vec3 detail = vec3(0.0, -nx.y, nx.x * s.x) * w.x
+   53 |  + vec3(ny.x * s.y, 0.0, -ny.y) * w.y
+   54 |  + vec3(nz.x * s.z, nz.y, 0.0) * w.z;
+   55 |  detail -= n * dot(n, detail);
+   56 |  return normalize(n + detail * normal_strength);
+   57 | }
+   58 | 
+   59 | vec3 moth_body(vec3 p, vec3 n) {
+   60 |  vec3 tile = tri_sample(base_map, p, n);
+   61 |  return clamp(body_color.rgb * mix(vec3(0.6), tile * texture_gain, 0.7), vec3(0.0), vec3(1.0));
+   62 | }
+   63 | 
+   64 | float moth_lut(float fresnel) {
+   65 |  
+   66 |  
+   67 |  vec3 r = texture(lut_r, vec2(fresnel, lut_phase)).rgb;
+   68 |  vec3 t = texture(lut_t, vec2(fresnel, fract(lut_phase + 0.5))).rgb;
+   69 |  return clamp(dot(mix(r, t, 0.5), vec3(0.333333)) * lut_strength, 0.0, 2.0);
+   70 | }
+   71 | 
+   72 | float band(float wave, float width) {
+   73 |  float aa = max(fwidth(wave), 0.002);
+   74 |  return 1.0 - smoothstep(width - aa, width + aa, abs(wave));
+   75 | }
+   76 | 
+SHADER ERROR: Sampler argument 0 of function 'tri_sample' called more than once using textures that differ in either filter, repeat, or texture hint setting.
+          at: (null) (:13)
+          GDScript backtrace (most recent call first):
+              [0] create_material (res://shader_lab/factory.gd:52)
+              [1] validate (res://tests/shader_lab/validate.gd:19)
+ERROR: Shader compilation failed.
+   at: shader_set_code (servers/rendering/dummy/storage/material_storage.cpp:190)
+   GDScript backtrace (most recent call first):
+       [0] create_material (res://shader_lab/factory.gd:52)
+       [1] validate (res://tests/shader_lab/validate.gd:19)
+--Main Shader--
+    1 | shader_type spatial;
+    2 | render_mode depth_draw_opaque, cull_back;
+    3 | #include "res://shader_lab/moth_common.gdshaderinc"
+    4 | 
+    5 | 
+    6 | uniform float dissolve : hint_range(0.0, 1.0) = 0.43;
+    7 | uniform float edge_width : hint_range(0.015, 0.2) = 0.065;
+    8 | uniform float height_span : hint_range(0.1, 20.0) = 2.4;
+    9 | 
+   10 | void fragment() {
+   11 |  vec3 n = normalize(object_normal);
+   12 |  vec3 p = object_position * texture_scale;
+E  13->  NORMAL = normalize(object_to_view * moth_local_normal(p, n));
+   14 |  vec3 noise = tri_sample(field_map, p * 0.75, n);
+   15 |  float height = clamp(object_position.y / height_span + 0.5, 0.0, 1.0);
+   16 |  float field = clamp(mix(height, noise.r, 0.35 * field_strength), 0.001, 0.999);
+   17 |  float amount = effect_enabled ? dissolve : 0.0;
+   18 |  if (amount >= 1.0 || (amount > 0.0 && field < amount)) { discard; }
+   19 |  float edge = (1.0 - smoothstep(0.0, edge_width, field - amount)) * step(0.00001, amount);
+   20 |  float fringe = (1.0 - smoothstep(edge_width, edge_width * 2.8, field - amount)) * step(0.00001, amount);
+   21 |  float scan = 0.65 + 0.35 * sin(object_position.y * 55.0 + object_position.x * 7.0 - effect_time * 4.0);
+   22 |  float fresnel = pow(1.0 - clamp(dot(normalize(VIEW), NORMAL), 0.0, 1.0), 3.0);
+   23 |  float lut = moth_lut(fresnel);
+   24 |  ALBEDO = moth_body(p, n) * mix(1.0, 0.3, fringe);
+   25 |  ROUGHNESS = 0.64;
+   26 |  METALLIC = 0.16;
+   27 |  SPECULAR = 0.32;
+   28 |  EMISSION = clamp((accent.rgb * edge * (1.3 + scan) + secondary.rgb * fringe * scan * 0.2 + accent.rgb * lut * edge) * intensity, vec3(0.0), vec3(4.0));
+   29 |  
+   30 |  
+   31 | }
+   32 | 
+--res://shader_lab/moth_common.gdshaderinc--
+    1 | 
+    2 | 
+    3 | uniform sampler2D base_map : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
+    4 | uniform sampler2D normal_map : filter_linear_mipmap_anisotropic, repeat_enable;
+    5 | uniform sampler2D field_map : filter_linear_mipmap, repeat_enable;
+    6 | uniform sampler2D lut_r : filter_linear, repeat_disable;
+    7 | uniform sampler2D lut_t : filter_linear, repeat_disable;
+    8 | uniform vec4 body_color : source_color = vec4(0.38, 0.46, 0.55, 1.0);
+    9 | uniform vec4 accent : source_color = vec4(0.12, 0.85, 1.0, 1.0);
+   10 | uniform vec4 secondary : source_color = vec4(0.64, 0.35, 1.0, 1.0);
+   11 | uniform float effect_time = 0.0;
+   12 | uniform float intensity : hint_range(0.0, 2.5) = 1.0;
+   13 | uniform float texture_scale : hint_range(0.1, 4.0) = 1.0;
+   14 | uniform float texture_gain : hint_range(0.0, 8.0) = 2.2;
+   15 | uniform float normal_strength : hint_range(0.0, 0.65) = 0.2;
+   16 | uniform float field_strength : hint_range(0.0, 1.0) = 1.0;
+   17 | uniform float lut_strength : hint_range(0.0, 2.0) = 0.65;
+   18 | uniform float lut_phase : hint_range(0.0, 1.0) = 0.8;
+   19 | uniform bool effect_enabled = true;
+   20 | varying vec3 object_position;
+   21 | varying vec3 object_normal;
+   22 | varying mat3 object_to_view;
+   23 | 
+   24 | void vertex() {
+   25 |  object_position = VERTEX;
+   26 |  object_normal = NORMAL;
+   27 |  object_to_view = mat3(VIEW_MATRIX) * MODEL_NORMAL_MATRIX;
+   28 | }
+   29 | 
+   30 | vec3 tri_weights(vec3 n) {
+   31 |  vec3 w = pow(abs(n), vec3(4.0));
+   32 |  return w / max(dot(w, vec3(1.0)), 0.00001);
+   33 | }
+   34 | 
+   35 | vec3 tri_sample(sampler2D tex, vec3 p, vec3 n) {
+   36 |  vec3 w = tri_weights(n);
+   37 |  vec3 s = step(vec3(0.0), n) * 2.0 - 1.0;
+   38 |  return texture(tex, vec2(p.z * s.x, -p.y)).rgb * w.x
+   39 |  + texture(tex, vec2(p.x * s.y, -p.z)).rgb * w.y
+   40 |  + texture(tex, vec2(p.x * s.z, p.y)).rgb * w.z;
+   41 | }
+   42 | 
+   43 | vec3 moth_local_normal(vec3 p, vec3 n) {
+   44 |  vec3 w = tri_weights(n);
+   45 |  vec3 s = step(vec3(0.0), n) * 2.0 - 1.0;
+   46 |  vec3 nx = texture(normal_map, vec2(p.z * s.x, -p.y)).xyz * 2.0 - 1.0;
+   47 |  vec3 ny = texture(normal_map, vec2(p.x * s.y, -p.z)).xyz * 2.0 - 1.0;
+   48 |  vec3 nz = texture(normal_map, vec2(p.x * s.z, p.y)).xyz * 2.0 - 1.0;
+   49 |  nx.xy /= max(nx.z, 0.2);
+   50 |  ny.xy /= max(ny.z, 0.2);
+   51 |  nz.xy /= max(nz.z, 0.2);
+   52 |  vec3 detail = vec3(0.0, -nx.y, nx.x * s.x) * w.x
+   53 |  + vec3(ny.x * s.y, 0.0, -ny.y) * w.y
+   54 |  + vec3(nz.x * s.z, nz.y, 0.0) * w.z;
+   55 |  detail -= n * dot(n, detail);
+   56 |  return normalize(n + detail * normal_strength);
+   57 | }
+   58 | 
+   59 | vec3 moth_body(vec3 p, vec3 n) {
+   60 |  vec3 tile = tri_sample(base_map, p, n);
+   61 |  return clamp(body_color.rgb * mix(vec3(0.6), tile * texture_gain, 0.7), vec3(0.0), vec3(1.0));
+   62 | }
+   63 | 
+   64 | float moth_lut(float fresnel) {
+   65 |  
+   66 |  
+   67 |  vec3 r = texture(lut_r, vec2(fresnel, lut_phase)).rgb;
+   68 |  vec3 t = texture(lut_t, vec2(fresnel, fract(lut_phase + 0.5))).rgb;
+   69 |  return clamp(dot(mix(r, t, 0.5), vec3(0.333333)) * lut_strength, 0.0, 2.0);
+   70 | }
+   71 | 
+   72 | float band(float wave, float width) {
+   73 |  float aa = max(fwidth(wave), 0.002);
+   74 |  return 1.0 - smoothstep(width - aa, width + aa, abs(wave));
+   75 | }
+   76 | 
+SHADER ERROR: Sampler argument 0 of function 'tri_sample' called more than once using textures that differ in either filter, repeat, or texture hint setting.
+          at: (null) (:13)
+          GDScript backtrace (most recent call first):
+              [0] create_material (res://shader_lab/factory.gd:52)
+              [1] validate (res://tests/shader_lab/validate.gd:52)
+ERROR: Shader compilation failed.
+   at: shader_set_code (servers/rendering/dummy/storage/material_storage.cpp:190)
+   GDScript backtrace (most recent call first):
+       [0] create_material (res://shader_lab/factory.gd:52)
+       [1] validate (res://tests/shader_lab/validate.gd:52)
+SHADER_LAB_CONTRACT_OK checks=68 shaders=3 cap=64 caller_clock=true

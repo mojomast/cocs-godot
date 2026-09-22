@@ -1,0 +1,17 @@
+Recovered from the isolated native app log after the initial verifier timed out.
+The verifier now retains stdout on timeout and requires completion markers.
+
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+   at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+SCRIPT ERROR: Parse Error: Cannot find member "REFLECTED_SOURCE_DISABLED" in base "Environment".
+   at: GDScript::reload (res://shader_lab/gallery.gd:54)
+ERROR: Failed to load script "res://shader_lab/gallery.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:3041)
+SCRIPT ERROR: Invalid access to property or key 'selected' on a base object of type 'Node3D'.
+   at: capture (res://tests/shader_lab/graphics.gd:61)
+   GDScript backtrace (most recent call first):
+       [0] capture (res://tests/shader_lab/graphics.gd:61)
+       [1] key (res://tests/shader_lab/graphics.gd:51)

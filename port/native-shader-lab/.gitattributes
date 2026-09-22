@@ -1,0 +1,2 @@
+# Preserve original engine diagnostics, including whitespace in shader listings.
+evidence/**/*.log -whitespace

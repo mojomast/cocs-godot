@@ -1,0 +1,207 @@
+{
+	"alpha_depth": {
+		"center_rgb": [
+			0.858823537826538,
+			0.858823537826538,
+			0.725490212440491
+		],
+		"corners": [
+			{
+				"changed_pixels": 0,
+				"max_delta": 0.0,
+				"mean_max_channel_delta": 0.0,
+				"rect": [
+					271,
+					518,
+					10,
+					10
+				]
+			},
+			{
+				"changed_pixels": 0,
+				"max_delta": 0.0,
+				"mean_max_channel_delta": 0.0,
+				"rect": [
+					271,
+					111,
+					10,
+					10
+				]
+			},
+			{
+				"changed_pixels": 0,
+				"max_delta": 0.0,
+				"mean_max_channel_delta": 0.0,
+				"rect": [
+					678,
+					518,
+					10,
+					10
+				]
+			},
+			{
+				"changed_pixels": 0,
+				"max_delta": 0.0,
+				"mean_max_channel_delta": 0.0,
+				"rect": [
+					678,
+					111,
+					10,
+					10
+				]
+			}
+		],
+		"foreground_occluder": {
+			"changed_pixels": 0,
+			"max_delta": 0.0,
+			"mean_max_channel_delta": 0.0,
+			"rect": [
+				560,
+				160,
+				16,
+				320
+			]
+		}
+	},
+	"conduit": {
+		"effect": {
+			"changed_pixels": 18829,
+			"max_delta": 0.882352940738201,
+			"mean_max_channel_delta": 0.0182990366100092,
+			"rect": [
+				30,
+				112,
+				672,
+				415
+			]
+		},
+		"pause": {
+			"changed_pixels": 0,
+			"max_delta": 0.0,
+			"mean_max_channel_delta": 0.0,
+			"rect": [
+				30,
+				112,
+				672,
+				415
+			]
+		},
+		"time": {
+			"changed_pixels": 20749,
+			"max_delta": 0.874509796500206,
+			"mean_max_channel_delta": 0.0181811419526693,
+			"rect": [
+				30,
+				112,
+				672,
+				415
+			]
+		}
+	},
+	"passed": true,
+	"phase": {
+		"effect": {
+			"changed_pixels": 65567,
+			"max_delta": 0.85490195453167,
+			"mean_max_channel_delta": 0.0869111313135564,
+			"rect": [
+				30,
+				112,
+				672,
+				415
+			]
+		},
+		"pause": {
+			"changed_pixels": 0,
+			"max_delta": 0.0,
+			"mean_max_channel_delta": 0.0,
+			"rect": [
+				30,
+				112,
+				672,
+				415
+			]
+		},
+		"time": {
+			"changed_pixels": 9369,
+			"max_delta": 0.588235303759575,
+			"mean_max_channel_delta": 0.0038710021726708,
+			"rect": [
+				30,
+				112,
+				672,
+				415
+			]
+		}
+	},
+	"proxy": {
+		"conduit": {
+			"draw_calls": 165.0,
+			"median_frame_ms": 31.196,
+			"note": "Software llvmpipe wall-clock proxy with HUD; not hardware acceptance or GPU timestamp.",
+			"p95_frame_ms": 36.55,
+			"primitives": 46410.0,
+			"samples": 60
+		},
+		"phase": {
+			"draw_calls": 89.0,
+			"median_frame_ms": 26.345,
+			"note": "Software llvmpipe wall-clock proxy with HUD; not hardware acceptance or GPU timestamp.",
+			"p95_frame_ms": 34.654,
+			"primitives": 35866.0,
+			"samples": 60
+		},
+		"shield": {
+			"draw_calls": 121.0,
+			"median_frame_ms": 24.544,
+			"note": "Software llvmpipe wall-clock proxy with HUD; not hardware acceptance or GPU timestamp.",
+			"p95_frame_ms": 31.571,
+			"primitives": 47036.0,
+			"samples": 60
+		}
+	},
+	"renderer": {
+		"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+		"api": "4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2",
+		"method": "gl_compatibility",
+		"size": [
+			960,
+			640
+		]
+	},
+	"shield": {
+		"effect": {
+			"changed_pixels": 93966,
+			"max_delta": 0.749019615352154,
+			"mean_max_channel_delta": 0.0975020136828847,
+			"rect": [
+				30,
+				112,
+				672,
+				415
+			]
+		},
+		"pause": {
+			"changed_pixels": 0,
+			"max_delta": 0.0,
+			"mean_max_channel_delta": 0.0,
+			"rect": [
+				30,
+				112,
+				672,
+				415
+			]
+		},
+		"time": {
+			"changed_pixels": 42847,
+			"max_delta": 0.588235303759575,
+			"mean_max_channel_delta": 0.0135159128336866,
+			"rect": [
+				30,
+				112,
+				672,
+				415
+			]
+		}
+	}
+}

@@ -1,0 +1,306 @@
+{
+	"alpha_depth": {
+		"center_rgb": [
+			0.866666674613953,
+			0.87058824300766,
+			0.745098054409027
+		],
+		"corners": [
+			{
+				"changed_pixels": 0,
+				"max_delta": 0.0,
+				"mean_max_channel_delta": 0.0,
+				"rect": [
+					381,
+					649,
+					10,
+					10
+				]
+			},
+			{
+				"changed_pixels": 0,
+				"max_delta": 0.0,
+				"mean_max_channel_delta": 0.0,
+				"rect": [
+					381,
+					141,
+					10,
+					10
+				]
+			},
+			{
+				"changed_pixels": 0,
+				"max_delta": 0.0,
+				"mean_max_channel_delta": 0.0,
+				"rect": [
+					889,
+					649,
+					10,
+					10
+				]
+			},
+			{
+				"changed_pixels": 0,
+				"max_delta": 0.0,
+				"mean_max_channel_delta": 0.0,
+				"rect": [
+					889,
+					141,
+					10,
+					10
+				]
+			}
+		],
+		"foreground_occluder": {
+			"changed_pixels": 0,
+			"max_delta": 0.0,
+			"mean_max_channel_delta": 0.0,
+			"rect": [
+				742,
+				240,
+				16,
+				320
+			]
+		}
+	},
+	"conduit": {
+		"effect": {
+			"changed_pixels": 24447,
+			"max_delta": 0.890196077525616,
+			"mean_max_channel_delta": 0.0120811151653247,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"field_strength": {
+			"changed_pixels": 23155,
+			"max_delta": 0.886274509131908,
+			"mean_max_channel_delta": 0.0102538555218344,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"lut_strength": {
+			"changed_pixels": 147,
+			"max_delta": 0.611764699220657,
+			"mean_max_channel_delta": 0.000121691061471049,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"normal_strength": {
+			"changed_pixels": 201,
+			"max_delta": 0.541176468133926,
+			"mean_max_channel_delta": 0.000300873140239097,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"pause": {
+			"changed_pixels": 0,
+			"max_delta": 0.0,
+			"mean_max_channel_delta": 0.0,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"time": {
+			"changed_pixels": 22338,
+			"max_delta": 0.878431372344494,
+			"mean_max_channel_delta": 0.0100539122999052,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		}
+	},
+	"passed": true,
+	"phase": {
+		"effect": {
+			"changed_pixels": 80184,
+			"max_delta": 0.788235291838646,
+			"mean_max_channel_delta": 0.0520729222718787,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"field_strength": {
+			"changed_pixels": 28537,
+			"max_delta": 0.882352940738201,
+			"mean_max_channel_delta": 0.0136833418626045,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"lut_strength": {
+			"changed_pixels": 17926,
+			"max_delta": 0.0901960730552673,
+			"mean_max_channel_delta": 0.00267771350216028,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"normal_strength": {
+			"changed_pixels": 202,
+			"max_delta": 0.0784313678741455,
+			"mean_max_channel_delta": 0.000402954772986455,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"pause": {
+			"changed_pixels": 0,
+			"max_delta": 0.0,
+			"mean_max_channel_delta": 0.0,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"time": {
+			"changed_pixels": 17216,
+			"max_delta": 0.349019587039948,
+			"mean_max_channel_delta": 0.00413820714738545,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		}
+	},
+	"proxy": {
+		"conduit": {
+			"draw_calls": 72,
+			"median_frame_ms": 19.971,
+			"note": "Software llvmpipe wall-clock proxy with HUD; not hardware acceptance or GPU timestamp. Viewport visible-pass counters, not delayed Performance monitors.",
+			"p95_frame_ms": 33.093,
+			"primitives": 6316,
+			"samples": 60
+		},
+		"phase": {
+			"draw_calls": 37,
+			"median_frame_ms": 19.404,
+			"note": "Software llvmpipe wall-clock proxy with HUD; not hardware acceptance or GPU timestamp. Viewport visible-pass counters, not delayed Performance monitors.",
+			"p95_frame_ms": 33.298,
+			"primitives": 4776,
+			"samples": 60
+		},
+		"shield": {
+			"draw_calls": 50,
+			"median_frame_ms": 20.13,
+			"note": "Software llvmpipe wall-clock proxy with HUD; not hardware acceptance or GPU timestamp. Viewport visible-pass counters, not delayed Performance monitors.",
+			"p95_frame_ms": 39.205,
+			"primitives": 10036,
+			"samples": 60
+		}
+	},
+	"renderer": {
+		"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+		"api": "4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2",
+		"method": "gl_compatibility",
+		"size": [
+			1280,
+			800
+		]
+	},
+	"shield": {
+		"effect": {
+			"changed_pixels": 125447,
+			"max_delta": 0.749019615352154,
+			"mean_max_channel_delta": 0.0776836824620854,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"field_strength": {
+			"changed_pixels": 20495,
+			"max_delta": 0.274509787559509,
+			"mean_max_channel_delta": 0.00496248972212449,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"lut_strength": {
+			"changed_pixels": 5045,
+			"max_delta": 0.184313714504242,
+			"mean_max_channel_delta": 0.00116222530664498,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"normal_strength": {
+			"changed_pixels": 701,
+			"max_delta": 0.26274511218071,
+			"mean_max_channel_delta": 0.000335794395098398,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"pause": {
+			"changed_pixels": 0,
+			"max_delta": 0.0,
+			"mean_max_channel_delta": 0.0,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		},
+		"time": {
+			"changed_pixels": 57664,
+			"max_delta": 0.317647069692612,
+			"mean_max_channel_delta": 0.0104012545616725,
+			"rect": [
+				30,
+				112,
+				906,
+				560
+			]
+		}
+	}
+}

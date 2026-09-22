@@ -1,0 +1,23 @@
+{
+  "results": [
+    {
+      "name": "import",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "name": "contract",
+      "returncode": 0,
+      "passed": true
+    },
+    {
+      "name": "960x640",
+      "returncode": 0,
+      "passed": true
+    }
+  ],
+  "private_state": "/tmp/opencode/shader-lab-private-zjs00mtc",
+  "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "renderer": "native GL Compatibility / software Mesa llvmpipe / isolated Xvfb",
+  "quick": true
+}
