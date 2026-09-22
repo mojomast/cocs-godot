@@ -8,6 +8,7 @@ import {createHash} from 'node:crypto';
 import {gzipSync} from 'node:zlib';
 import {until,sleep,stopChild} from '../native_trace_correlation/guest_helpers.mjs';
 import {planRoute} from './route.mjs';
+import {decodeRecordedFrame,assertGodotSuccess} from './recording.mjs';
 const here=dirname(fileURLToPath(import.meta.url)),root=resolve(here,'../../..');
 const binary=process.env.GODOT_BIN,deps=process.env.GUEST_NODE_MODULES;
 assert.ok(binary&&deps,'Set GODOT_BIN and GUEST_NODE_MODULES');
@@ -22,7 +23,7 @@ const report={scenario:'PICKUP-WEAPON',base:git('rev-parse','HEAD'),branch:git('
   command:`GODOT_BIN=${binary} GUEST_NODE_MODULES=${deps} node port/tools/native_pickup_acceptance/run.mjs`,
   runtimeTrees:Object.fromEntries(['godot','game','server','tools/godot-export'].map(p=>[p,git('rev-parse',`HEAD:${p}`)])),
   sourceStatus:git('status','--porcelain','--','godot','game','server','tools/godot-export','port/tools/native_pickup_acceptance'),
-  hashes:Object.fromEntries(['run.mjs','observe.gd','route.mjs'].map(p=>[p,createHash('sha256').update(readFileSync(resolve(here,p))).digest('hex')]))};
+  hashes:Object.fromEntries(['run.mjs','observe.gd','route.mjs','recording.mjs'].map(p=>[p,createHash('sha256').update(readFileSync(resolve(here,p))).digest('hex')]))};
 const children=[],wire=[],observations=[];
 let game,host,native,display,timeout,interrupted=false,captureStart;
 const interrupt=()=>{interrupted=true;native?.kill('SIGTERM');};
@@ -46,7 +47,7 @@ try {
   writeFileSync(resolve(out,'export.log'),execFileSync(process.execPath,[resolve(root,'tools/godot-export/semantic.mjs'),resolve(temp,'godot/content/generated')],{cwd:root,env,encoding:'utf8',timeout:60000}));
   symlinkSync(resolve(deps),resolve(temp,'node_modules'),'dir');
   const importer=launch(binary,['--headless','--path',resolve(temp,'godot'),'--editor','--import'],'import',60000);
-  await wait(()=>importer.exitCode!==null||importer.signalCode!==null,65000,'import');await importer.closed;assert.equal(importer.exitCode,0);
+  await wait(()=>importer.exitCode!==null||importer.signalCode!==null,65000,'import');await importer.closed;assertGodotSuccess(importer,'import');
   // Linux abstract local socket avoids changing shared /tmp/.X11-unix permissions.
   display=launch('Xvfb',['-displayfd','3','-screen','0','960x640x24','-nolisten','tcp','-nolisten','unix'],'xvfb',115000,{stdio:['ignore','pipe','pipe','pipe']});
   let displayNumber='';display.stdio[3].on('data',d=>displayNumber+=d);
@@ -64,9 +65,9 @@ try {
   let connections=0,peer=null,actorId=null,planned=false;
   game.wss.on('connection',socket=>{
     const guest=++connections===2;if(!guest)return;
-    socket.on('message',raw=>wire.push({direction:'client',wallMs:performance.now()-captureStart,frame:JSON.parse(raw)}));
+    socket.on('message',raw=>wire.push({direction:'client',wallMs:performance.now()-captureStart,frame:decodeRecordedFrame(raw)}));
     const send=socket.send;socket.send=function(data,...args) {
-      const f=JSON.parse(data);
+      const f=decodeRecordedFrame(data);
       if(f.type==='welcome')peer=f.peerId;
       if(f.type==='lobby'&&peer!==null)actorId=f.players.find(p=>p.peerId===peer)?.actorId??actorId;
       const wallMs=performance.now()-captureStart;
@@ -83,20 +84,22 @@ try {
       return send.call(this,data,...args);
     };
   });
-  const frames=[];host=new WebSocket(endpoint);host.on('error',()=>{});host.on('message',raw=>frames.push(JSON.parse(raw)));
+  const frames=[];host=new WebSocket(endpoint);host.on('error',()=>{});host.on('message',raw=>frames.push(decodeRecordedFrame(raw)));
   await wait(()=>host.readyState===WebSocket.OPEN,5000,'host open');
   host.send(JSON.stringify({type:'create',name:'Isolated native pickup',playerName:'Passive host',v:3,delta:0}));
   await wait(()=>frames.some(f=>f.type==='welcome'),5000,'host welcome');
   report.room=frames.find(f=>f.type==='welcome').roomId;
   host.send(JSON.stringify({type:'host',mapId:'meridian-exchange',config:{mode:'deathmatch',botCount:0}}));
   await wait(()=>frames.some(f=>f.type==='lobby'&&f.config),5000,'configuration');
-  const args=['--path',resolve(temp,'godot'),'--rendering-method','gl_compatibility','--resolution','960x640','--max-fps','60','--script',resolve(here,'observe.gd'),'--',`--endpoint=${endpoint}`,`--join-room=${report.room}`,'--native-trace',`--evidence=${out}`,`--route=${resolve(temp,'route.json')}`];
+  // This graphical pickup lane makes no audio claim; avoid unavailable ALSA hardware errors.
+  const args=['--path',resolve(temp,'godot'),'--rendering-method','gl_compatibility','--audio-driver','Dummy','--resolution','960x640','--max-fps','60','--script',resolve(here,'observe.gd'),'--',`--endpoint=${endpoint}`,`--join-room=${report.room}`,'--native-trace',`--evidence=${out}`,`--route=${resolve(temp,'route.json')}`];
   report.nativeCommand=[binary,...args];native=launch(binary,args,'native',95000);
   await wait(()=>wire.some(r=>r.direction==='client'&&r.frame.type==='join')||native.exitCode!==null,15000,'native joined');
   assert.equal(native.exitCode,null,'Native exited during startup');await sleep(500);
   host.send(JSON.stringify({type:'start'}));report.hostStartWallMs=performance.now()-captureStart;
   await wait(()=>native.exitCode!==null||native.signalCode!==null,92000,'bounded native pickup capture');await native.closed;
-  report.nativeExit={code:native.exitCode,signal:native.signalCode};
+  report.nativeExit={code:native.exitCode,signal:native.signalCode,failure:native.failure};
+  assertGodotSuccess(native,'native');
   for(const line of native.text.split('\n'))if(line.startsWith('PICKUP_OBSERVE '))observations.push(JSON.parse(line.slice(15)));
   const snaps=observations.filter(o=>o.event==='snapshot');
   const consumed=snaps.findIndex(o=>o.pickup.wait>0&&o.stage==='approach');
