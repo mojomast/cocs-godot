@@ -121,12 +121,12 @@ contents; current executed observer/runner/analyzer hashes match the final files
 Runtime hashes are checked against `fe29ac3`, rather than requiring future runtime
 edits to match an old capture.
 
-**Lead integration:** use `analyze.test.mjs` as the health-analyzer test target.
-The explicitly out-of-scope old `test.mjs` still assumes default legacy analysis
-and compares frozen historical source hashes to mutable working files. Its old
-command is superseded by the new suite, which carries forward those meaningful
-checks with explicit legacy classification and immutable historical provenance.
-Root docs and the shared verifier are lead-owned.
+**Lead integration:** the shared verifier now runs `analyze.test.mjs` and the
+original `test.mjs`. The latter explicitly selects legacy text-only analysis;
+both suites verify historical source hashes against immutable commits rather
+than mutable working files. Current captured harness sources are pinned to
+`9a8d59e` (the integrated copy of `1823029`), original harness sources/runtime to `fe29ac3`. This preserves old
+commands without treating old hidden-label evidence as current visual acceptance.
 
 ## Bounds and limitations
 

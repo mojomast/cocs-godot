@@ -53,3 +53,10 @@ release-refusal. `corrected-verification.json` preserves the complete report.
 The executed tree is `5ce0ae0` plus the fixture-ownership/gate/launcher changes
 committed with this report. Live lifecycle/restart, movement/fire and two-client
 checks pass with the compact HUD and weapon-selection code integrated.
+
+The later combined run at `9a8d59e` plus the sports/HUD gate and historical-test
+integration changes passes **42 gates**. It includes sports controls and
+29 rendered/current-versus-legacy health-evidence checks; current raw report is
+`../verification.json`. The health evidence provenance check was subsequently
+rerun successfully using the equivalent integrated primary-ancestry commit
+instead of requiring the source agent's branch object.

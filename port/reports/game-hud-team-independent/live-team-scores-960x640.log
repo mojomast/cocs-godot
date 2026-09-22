@@ -1,0 +1,9 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PORT_TEAM_SCOREBOARD_CAPTURE {"ack":49,"rows":3,"team_totals":"Team totals  ·  Red 0  ·  Blue 0"}
+PORT_GAME_HUD_LIVE_CAPTURE_OK {"ack":49,"ammo":"AMMO  ∞","armor":"ARMOR  5","captured":true,"health":"HEALTH  100","map":"meridian-exchange","shots":6.0,"viewport":[960,640],"weapon":"Pulse Rifle"}
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)

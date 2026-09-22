@@ -1,0 +1,12 @@
+test_cleanup_failure_rejected (test_validate.ValidationTests.test_cleanup_failure_rejected) ... ok
+test_duplicate_sequence_rejected (test_validate.ValidationTests.test_duplicate_sequence_rejected) ... ok
+test_genuine_replay (test_validate.ValidationTests.test_genuine_replay) ... ok
+test_mismatched_actor_rejected (test_validate.ValidationTests.test_mismatched_actor_rejected) ... ok
+test_mismatched_server_positions_rejected (test_validate.ValidationTests.test_mismatched_server_positions_rejected) ... ok
+test_missing_receipts_rejected (test_validate.ValidationTests.test_missing_receipts_rejected) ... ok
+test_non_neutral_release_rejected (test_validate.ValidationTests.test_non_neutral_release_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.010s
+
+OK

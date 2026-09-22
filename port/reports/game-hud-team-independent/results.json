@@ -1,0 +1,40 @@
+{
+  "godot": "4.5.2",
+  "normalRate": true,
+  "tickDt": 0.016666666666666666,
+  "tickMs": 16.666666666666668,
+  "renderer": "Mesa llvmpipe",
+  "audio": "Dummy",
+  "evidence": [
+    {
+      "name": "live-960x640",
+      "resolution": "960x640",
+      "synthetic": false,
+      "exit": 0
+    },
+    {
+      "name": "live-1280x800",
+      "resolution": "1280x800",
+      "synthetic": false,
+      "exit": 0
+    },
+    {
+      "name": "live-team-scores-960x640",
+      "resolution": "960x640",
+      "synthetic": false,
+      "exit": 0
+    },
+    {
+      "name": "synthetic-respawn-960x640",
+      "resolution": "960x640",
+      "synthetic": true,
+      "exit": 0
+    },
+    {
+      "name": "synthetic-results-1280x800",
+      "resolution": "1280x800",
+      "synthetic": true,
+      "exit": 0
+    }
+  ]
+}

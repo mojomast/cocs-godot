@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "map": "ion-speedway",
+      "status": "PASS",
+      "snapshots": 93,
+      "serverSnapshotCorrelations": 18,
+      "inputReceipts": 439,
+      "ackHighWater": 438,
+      "maxDisplacement": 31.542847889814894,
+      "maxHeadingChange": 2.4080000000000004,
+      "renderMatches": true,
+      "neutralAckSamples": 27,
+      "minimumReverseSpeed": -6.00002126118374,
+      "raceResetObserved": true,
+      "nativeCompletionProven": false
+    },
+    {
+      "map": "aurora-stadium",
+      "status": "PASS",
+      "snapshots": 92,
+      "serverSnapshotCorrelations": 19,
+      "inputReceipts": 432,
+      "ackHighWater": 427,
+      "maxDisplacement": 33.02290951748498,
+      "maxHeadingChange": 2.7640000000000002,
+      "renderMatches": true,
+      "neutralAckSamples": 26,
+      "minimumReverseSpeed": -5.764569103423217,
+      "raceResetObserved": false,
+      "nativeCompletionProven": false
+    }
+  ],
+  "evidence": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-puma-driving/evidence/ca24ec1d-e9e5-41c0-91d8-db16af415f40",
+  "classification": "real normal-rate server; injected native physical key events; focus notifications synthetic",
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}

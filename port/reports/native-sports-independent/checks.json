@@ -1,0 +1,39 @@
+{
+  "revision": "a34054e",
+  "gates": [
+    {
+      "gate": "sports-controls",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/sports/test_controls.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.27
+    },
+    {
+      "gate": "sports-evidence-validator",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "port/tools/native_vehicle_demo",
+        "-p",
+        "test_validate.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.053
+    }
+  ]
+}

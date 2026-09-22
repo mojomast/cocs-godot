@@ -34,6 +34,7 @@ for key, suffix in [("XDG_DATA_HOME", "data"), ("XDG_CONFIG_HOME", "config"), ("
 commands = [
     ("gate-runner-tests", [sys.executable, "tools/godot-dev/test_gate_runner.py"]),
     ("export-tests", ["node", "--test", "tools/godot-export/semantic.test.mjs"]),
+    ("health-hud-evidence", ["node", "--test", "port/tools/native_health_damage/analyze.test.mjs", "port/tools/native_health_damage/test.mjs"]),
     ("semantic-export", ["node", "tools/godot-export/semantic.mjs"]),
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),
     ("godot-import", [binary, "--headless", "--path", "godot", "--editor", "--import"]),
@@ -61,6 +62,7 @@ commands = [
     ("game-hud-setup", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/game_hud_session.gd", "--", "--setup"]),
     ("game-hud-debug", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/game_hud_session.gd", "--", "--debug-hud"]),
     ("puma-presentation", [binary, "--headless", "--path", "godot", "--script", "res://tests/vehicles/test_puma.gd"]),
+    ("sports-controls", [binary, "--headless", "--path", "godot", "--script", "res://tests/sports/test_controls.gd"]),
     ("control-safety", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/control_safety.gd"]),
     ("window-focus", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/window_focus.gd"]),
     ("session-recovery", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/session_recovery.gd"]),

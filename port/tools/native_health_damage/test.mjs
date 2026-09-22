@@ -5,10 +5,13 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {createHash} from 'node:crypto';
-import {analyze} from './analyze.mjs';
+import {execFileSync} from 'node:child_process';
+import {analyze as analyzeCurrent} from './analyze.mjs';
 import * as projection from './project.mjs';
 const directory=new URL('../../native-health-damage/evidence/d06d6f7a-cacd-43a4-8910-97007273dc21/',import.meta.url);
 const read=name=>readFileSync(new URL(name,directory));
+// Historical recording: preserved label text is not current HUD visibility.
+const analyze=(stdout,wire)=>analyzeCurrent(stdout,wire,{hudMode:'legacy'});
 function recording(){return {stdout:gunzipSync(read('native.stdout.log.gz')).toString(),wire:JSON.parse(gunzipSync(read('wire.json.gz')))};}
 function rewriteRecords(stdout,prefix,edit){return stdout.split('\n').map(line=>{if(!line.startsWith(prefix))return line;const r=JSON.parse(line.slice(prefix.length));edit(r);return prefix+JSON.stringify(r);}).join('\n');}
 test('genuine live damage, +35 health, same marker and 12-second return pass without native completion',()=>{
@@ -19,7 +22,7 @@ test('genuine live damage, +35 health, same marker and 12-second return pass wit
 test('artifact lengths/hashes and executed source hashes match provenance',()=>{
  const summary=JSON.parse(read('summary.json'));
  for(const [name,entry] of Object.entries(summary.artifacts)){const b=read(name);assert.equal(b.length,entry.bytes);assert.equal(createHash('sha256').update(b).digest('hex'),entry.sha256,name);}
- for(const [name,hash] of Object.entries(summary.sourceHashes))assert.equal(createHash('sha256').update(readFileSync(new URL(name,import.meta.url))).digest('hex'),hash,name);
+ for(const [name,hash] of Object.entries(summary.sourceHashes))assert.equal(createHash('sha256').update(execFileSync('git',['show',`fe29ac3:port/tools/native_health_damage/${name}`])).digest('hex'),hash,name);
 });
 test('credential field names and welcome packets are absent from retained evidence; projections exclude them',()=>{
  const forbidden=new Set(['token','progressToken','resumeToken','reconnectToken']);
@@ -29,7 +32,7 @@ test('credential field names and welcome packets are absent from retained eviden
  const fake={token:'SYNTHETIC_SECRET',progressToken:'SYNTHETIC_SECRET',id:1};
  for(const fn of [projection.actor,projection.pickup,projection.event])assert.ok(!JSON.stringify(fn(fake)).includes('SYNTHETIC_SECRET'));
 });
-test('native combat text alone cannot substitute for actual UI Label text',()=>{
+test('historical combat text alone cannot substitute for recorded Label text',()=>{
  const {stdout,wire}=recording();const mutated=rewriteRecords(stdout,'HEALTH_OBSERVE ',o=>{if(o.event==='frame')o.ui_text='';});
  assert.throws(()=>analyze(mutated,wire),/actual combat Label/);
 });

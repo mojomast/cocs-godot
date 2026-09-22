@@ -51,11 +51,14 @@ try:
         run([BIN,'--headless','--path',str(temp/'godot'),'--script','res://tests/vehicles/test_puma.gd'],'vehicles',env)
         readfd,writefd=os.pipe()
         with (OUT/'xvfb.log').open('w') as xlog:
-            xvfb=subprocess.Popen(['Xvfb','-displayfd',str(writefd),'-screen','0','1280x800x24','-nolisten','tcp'],pass_fds=(writefd,),stdout=xlog,stderr=xlog)
+            # Use Linux abstract X sockets; the shared pathname socket directory
+            # can be unwritable. Never change permissions on the shared directory.
+            xvfb=subprocess.Popen(['Xvfb','-displayfd',str(writefd),'-screen','0','1280x800x24','-nolisten','tcp','-nolisten','unix'],pass_fds=(writefd,),stdout=xlog,stderr=xlog)
             children.append(xvfb);os.close(writefd)
             sel=selectors.DefaultSelector();sel.register(readfd,selectors.EVENT_READ)
             assert sel.select(10), 'Xvfb startup timeout'
             display=os.read(readfd,100).decode().strip();os.close(readfd);sel.close()
+            assert display.isdigit() and xvfb.poll() is None, 'private Xvfb did not provide a live display'
             env['DISPLAY']=':'+display
             for map_id in ['ion-speedway','aurora-stadium']:
                 wirepath=OUT/(map_id+'-wire.json')

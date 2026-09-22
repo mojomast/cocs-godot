@@ -53,14 +53,28 @@ PORT=0 node tools/godot-dev/launch.mjs --play --map=verdant-reliquary --mode=ins
   stays authoritative. The integrated Meridian client was independently captured
   on a private display. See [world notes](native-world-presentation/README.md)
   and [entity notes](native-entity-presentation/NOTES.md).
-- **Puma component:** the standalone snapshot renderer is integrated at
-  `e2fd1d3`; its 19 synthetic checks and private render were independently rerun
-  and the image inspected. It is not yet wired into the infantry session or
-  accepted as live driving. Follow-up work is scoped in
-  [the driving handoff](handoffs/external-native-puma-driving.md).
+- **Puma driving demo:** standalone Ion Speedway and Aurora Stadium driving is
+  integrated. Independent normal-rate runs verified movement, turning, reverse,
+  release/resume, rendered/source correspondence and Ion reset. Soccer includes
+  authoritative ball/score state. See [driving instructions](native-puma-driving/HANDOFF.md)
+  and [independent evidence](reports/native-sports-independent/README.md).
 
-**Combined verification: all 40 implemented gates pass** after integration at
-`5ce0ae0` plus the fixture-ownership and gate/launcher changes in this batch.
+  ```sh
+  python3 -B port/tools/native_vehicle_demo/play.py --map ion-speedway
+  python3 -B port/tools/native_vehicle_demo/play.py --map aurora-stadium
+  ```
+
+  On your deliberately selected display: wait for countdown, Enter to engage,
+  WASD to drive, Space brake, Shift boost, Escape release, R race reset.
+  The standalone launcher is bounded to 80 seconds by default. These sports
+  scenes remain separate from the infantry setup menu; complete laps, goals,
+  results/restart and human camera usability are not yet accepted.
+
+**Combined verification: all 42 implemented gates pass** after sports and
+rendered-HUD acceptance integration at `9a8d59e` plus the gate/test changes
+recorded with this batch. Independent driving passed on both sports maps;
+the default compact HUD's nonlethal damage/+35 HP/12-second return was also
+independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).
 The earlier render-instance leaks came from fixtures skipping `_ready()` and
 leaving the new environment/light nodes unparented. The fixtures now own those
 nodes; production cleanup was not the cause. Setup's separate premature viewport

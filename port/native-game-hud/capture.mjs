@@ -53,6 +53,7 @@ try {
   for (const [name, resolution, script, args] of [
     ['live-960x640', '960x640', 'game_hud_live_capture', [`--endpoint=${endpoint}`]],
     ['live-1280x800', '1280x800', 'game_hud_live_capture', [`--endpoint=${endpoint}`]],
+    ['live-team-scores-960x640', '960x640', 'game_hud_live_capture', [`--endpoint=${endpoint}`, '--mode=teamdeathmatch', '--hud-scoreboard']],
     ['synthetic-respawn-960x640', '960x640', 'game_hud_visual', []],
     ['synthetic-results-1280x800', '1280x800', 'game_hud_visual', ['--hud-results']],
   ]) {

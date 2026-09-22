@@ -21,7 +21,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.294
+      "duration_seconds": 0.315
     },
     {
       "gate": "export-tests",
@@ -33,7 +33,20 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.893
+      "duration_seconds": 0.932
+    },
+    {
+      "gate": "health-hud-evidence",
+      "command": [
+        "node",
+        "--test",
+        "port/tools/native_health_damage/analyze.test.mjs",
+        "port/tools/native_health_damage/test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.64
     },
     {
       "gate": "semantic-export",
@@ -44,7 +57,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.748
+      "duration_seconds": 0.995
     },
     {
       "gate": "source-tests",
@@ -61,7 +74,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.657
+      "duration_seconds": 2.242
     },
     {
       "gate": "godot-import",
@@ -76,7 +89,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 2.211
+      "duration_seconds": 3.077
     },
     {
       "gate": "viewer-smoke",
@@ -91,7 +104,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.447
+      "duration_seconds": 2.112
     },
     {
       "gate": "glb-import",
@@ -106,7 +119,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.149
+      "duration_seconds": 0.15
     },
     {
       "gate": "input-queue",
@@ -121,7 +134,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.137
+      "duration_seconds": 0.153
     },
     {
       "gate": "protocol-envelopes",
@@ -136,7 +149,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.14
+      "duration_seconds": 0.152
     },
     {
       "gate": "packet-replay",
@@ -151,7 +164,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.23
+      "duration_seconds": 0.349
     },
     {
       "gate": "native-live",
@@ -163,7 +176,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.002
+      "duration_seconds": 1.254
     },
     {
       "gate": "presentation-replay",
@@ -178,7 +191,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.234
+      "duration_seconds": 0.345
     },
     {
       "gate": "round-boundaries",
@@ -193,7 +206,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.235
+      "duration_seconds": 0.247
     },
     {
       "gate": "native-lifecycle",
@@ -205,7 +218,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 53.679
+      "duration_seconds": 59.604
     },
     {
       "gate": "combat-feedback",
@@ -220,7 +233,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.243
+      "duration_seconds": 0.234
     },
     {
       "gate": "audio-feedback",
@@ -237,7 +250,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.791
+      "duration_seconds": 0.804
     },
     {
       "gate": "local-lifecycle",
@@ -252,7 +265,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.14
+      "duration_seconds": 0.149
     },
     {
       "gate": "pickup-presentation",
@@ -267,7 +280,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.233
+      "duration_seconds": 0.243
     },
     {
       "gate": "entity-visuals",
@@ -282,7 +295,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.233
+      "duration_seconds": 0.243
     },
     {
       "gate": "native-trace",
@@ -297,7 +310,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.243
+      "duration_seconds": 0.242
     },
     {
       "gate": "guest-session",
@@ -312,7 +325,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.235
+      "duration_seconds": 0.243
     },
     {
       "gate": "match-selection",
@@ -327,7 +340,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.241
+      "duration_seconds": 0.244
     },
     {
       "gate": "scoreboard",
@@ -342,7 +355,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.335
+      "duration_seconds": 0.24
     },
     {
       "gate": "team-scores",
@@ -357,7 +370,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.144
+      "duration_seconds": 0.148
     },
     {
       "gate": "scoreboard-session",
@@ -372,7 +385,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.336
+      "duration_seconds": 0.333
     },
     {
       "gate": "game-hud",
@@ -387,7 +400,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.336
+      "duration_seconds": 0.339
     },
     {
       "gate": "game-hud-setup",
@@ -404,7 +417,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.429
+      "duration_seconds": 0.326
     },
     {
       "gate": "game-hud-debug",
@@ -421,7 +434,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.242
+      "duration_seconds": 0.234
     },
     {
       "gate": "puma-presentation",
@@ -436,7 +449,22 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.141
+      "duration_seconds": 0.139
+    },
+    {
+      "gate": "sports-controls",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/sports/test_controls.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.242
     },
     {
       "gate": "control-safety",
@@ -451,7 +479,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.234
+      "duration_seconds": 0.231
     },
     {
       "gate": "window-focus",
@@ -466,7 +494,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.24
+      "duration_seconds": 0.23
     },
     {
       "gate": "session-recovery",
@@ -481,7 +509,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.238
+      "duration_seconds": 0.233
     },
     {
       "gate": "stall-controls",
@@ -496,7 +524,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.231
+      "duration_seconds": 0.237
     },
     {
       "gate": "snapshot-watch",
@@ -511,7 +539,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.144
+      "duration_seconds": 0.149
     },
     {
       "gate": "native-session",
@@ -523,7 +551,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.376
+      "duration_seconds": 1.377
     },
     {
       "gate": "two-native-clients",
@@ -534,7 +562,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 1.392
+      "duration_seconds": 1.37
     },
     {
       "gate": "motion-impairment",
@@ -549,7 +577,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.146
+      "duration_seconds": 0.14
     },
     {
       "gate": "remote-motion",
@@ -564,7 +592,7 @@
       "exit_code": 0,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.149
+      "duration_seconds": 0.148
     },
     {
       "gate": "release-refused",
@@ -576,7 +604,7 @@
       "exit_code": 1,
       "passed": true,
       "failure_reason": null,
-      "duration_seconds": 0.6
+      "duration_seconds": 0.594
     }
   ],
   "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732"

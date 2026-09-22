@@ -23,9 +23,9 @@ claims and limitations. Native presentation quality and usability still need rev
 | Host setup / map selection | 94 selection checks, 25 scoreboard checks and 15 team-score checks pass | Six original automatic combinations and graphical menu logs retained | All three maps × DM/Instagib PASS; TDM native session smoke independently PASS on all three, plus three normal TDM rounds/scoreboard checks at `5ce0ae0` | TDM enabled with authoritative Red/Blue totals; Rocket authority also checked but its native projectile presentation remains pending |
 | Native world / entities | All-nine-map smoke and 1,341 solids / 17,166 triangle compatibility independently pass; 52 entity checks pass | All nine overview renders independently captured and image-inspected at `e2fd1d3`; real native Meridian capture after integration | Integrated Meridian authority-backed capture at `edc222f` | Distinct palettes, landmark geometry and sports markings visible; broad route/hardware review OPEN |
 | Combat overlay / audio / scoreboard | Overlay fixture inspected; 37 audio/integration checks and scoreboard fixtures pass | Synthetic render previews and audio notes retained | Authority event integration exercised by current session captures; no human listening acceptance | Human sound mix and broader HUD usability review OPEN |
-| Puma presentation | 19 synthetic checks independently PASS at `e2fd1d3` | Independent private-Xvfb render inspected | No live driving acceptance | Standalone renderer integrated; sports session/chase-camera follow-up assigned externally |
-| Weapon selection / compact HUD | 64 graphical actual-session weapon checks; HUD ordinary/setup/debug scene gates pass | Two-resolution native HUD renders and synthetic lifecycle previews independently image-inspected | At `3a049d5`: real rocket pickup and five key/wheel switches, 470 input receipts / 14 weapon commands; held-key recapture suppression passes | Current visible HUD health/damage acceptance update in progress; old hidden labels no longer prove visibility |
-| Full verifier | All **40** implemented gates pass after setup/fixture corrections | Original `edc222f` failure and subsequent 7-failure continuation retained; unparented fixture environment/light diagnosed | Complete rerun at `5ce0ae0` plus this integration batch passes, including HUD/setup/debug, team scores, Puma, live lifecycle/restart and two clients | See `reports/feature-batch-independent/`; graphical/playable gates separate |
+| Puma driving / sports | 19 Puma checks, 27 sports checks and 7 evidence-validator tests independently pass | Original failures plus independent display-start failure retained; four live sports screenshots inspected | Independent Ion/Aurora normal-rate driving PASS at `a34054e` plus private-Xvfb launcher correction; reverse, turn, brake/boost receipts, release/resume and Ion reset | Standalone demo; completed laps, goals, human camera usability and sports results/restart OPEN |
+| Weapon selection / compact HUD | 64 graphical weapon checks; HUD scene gates; 29 current/legacy health evidence tests pass | Two-resolution HUD, live Tab team scores and actual hurt/heal images inspected | Five key/wheel switches PASS; visible HUD damage/+35 HP/12s return independently PASS at `9a8d59e`: 1,065 correlated snapshots, 316 rendered observations, 1,854 receipts | Current HUD and drawn hurt pulse accepted in bounded scenario; human sound/usability and heal-to-cap OPEN |
+| Full verifier | All **42** implemented gates pass after sports/HUD evidence integration | Original failures and corrected 40-gate report retained | Complete rerun at `9a8d59e` plus this gate/test batch passes, including sports controls and rendered-health evidence | See `reports/verification.json`; graphical/playable gates separate |
 | Pulse rifle preview | No completion commit available | None reviewed | Owner believes work is not finished | Pending; reserved directories untouched |
 
 The actual commands, clean execution tree hashes, source provenance, receipt vs
@@ -49,8 +49,8 @@ the locked JSON contract; the family summary below does not narrow them.
 | Sunscar Convoy | Payload, assault, combined-arms, teamdeathmatch, domination, VIP escort | Convoy/vehicles/objectives/native session and visual acceptance open |
 | Asterion Relay | LATTICE (`cocs`, `cocs-coop`) | Native LATTICE orders/economy/traversal/objectives and art open |
 | Monsoon Foundry | LATTICE (`cocs`, `cocs-coop`) | Native LATTICE orders/economy/traversal/objectives and art open |
-| Ion Speedway | `puma-race` | Native driving, checkpoints/laps, race HUD and presentation open |
-| Aurora Stadium | `puma-soccer` | Native driving, ball/goals/scoring and presentation open |
+| Ion Speedway | `puma-race` | Standalone native driving/chase and source reset independently pass; lap completion, polished HUD/camera and results/restart open |
+| Aurora Stadium | `puma-soccer` | Standalone native driving/chase and ball/score state independently pass; goal scoring, polished HUD/camera and results/restart open |
 
 ## Release blockers carried forward
 
@@ -62,9 +62,9 @@ the locked JSON contract; the family summary below does not narrow them.
   loss; a private culling-only experiment reveals the map, not full art parity.
   A production GLB exporter correction remains open; the default native
   environment now uses its own procedural sky and does not depend on that GLB.
-- The combined 40-gate verifier passes after fixture ownership and setup fixes.
-  Rocket Arena remains pending real projectile and launch/explosion feedback;
-  stronger default-HUD health/damage acceptance is being integrated separately.
+- The combined 42-gate verifier passes after fixture/setup fixes and sports/HUD
+  evidence integration. Rocket Arena remains pending real projectile and
+  launch/explosion feedback; sports camera/HUD polish is in progress.
 - Bounded native death/respawn and private-X11 focus milestones now have
   independent acceptance. Default weapon pickup/15s return also independently
   passes, as do nonlethal damage and health pickup/12s return.

@@ -37,7 +37,8 @@ test('old/new artifact hashes; executed historical sources checked at immutable 
   const summary=JSON.parse(read(dir,'summary.json'));
   for(const [name,entry] of Object.entries(summary.artifacts)){const b=read(dir,name);assert.equal(b.length,entry.bytes);assert.equal(hash(b),entry.sha256,name);}
   for(const [name,expected] of Object.entries(summary.sourceHashes)){
-   const bytes=dir===historical?execFileSync('git',['show',`fe29ac3:port/tools/native_health_damage/${name}`]):readFileSync(new URL(name,import.meta.url));
+    const revision=dir===historical?'fe29ac3':'9a8d59e';
+    const bytes=execFileSync('git',['show',`${revision}:port/tools/native_health_damage/${name}`]);
    assert.equal(hash(bytes),expected,name);
   }
  }
