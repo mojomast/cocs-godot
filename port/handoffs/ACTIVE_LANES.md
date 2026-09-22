@@ -232,6 +232,21 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
   construction, which must be replaced by a simplified source-compatible collision
   representation with independently verified ray/visible-cover parity before any
   integration acceptance.
+- Independent arena review `33b650cc` (own harnesses, 98 files) passed geometry,
+  real-source rounds, launcher matrix and graphical captures, and found:
+  - **High — wall-contact trap on both Prism ramps.** A bot landed 0.06 m inside a
+    ramp edge and was immobile for 71 s of a 180 s round; mirror case on the east
+    ramp. Escaping requires geometry change, not a source edit. A dedicated
+    **trap-fix lane** now owns the three arena builders + `tools/godot-native-arenas/**`
+    and must reproduce, fix, regenerate hashes, re-run mover/actual-map/live gates
+    and refresh stale/missing arena evidence. The route lane was carved out of those
+    files.
+  - **Medium — stale Aurora evidence images** (old hash 909daa29, pre-navigation)
+    and **Low — missing post-fix Prism images**; both assigned to the trap-fix lane.
+  - **Low — unknown authority options silently ignored and readiness answering on
+    any path**; assigned to the route lane as cheap strictness work.
+  - **Low — concurrent operator-lane import noise** in review runs, expected to
+    clear once that lane commits.
 - Owner has asked for the identity maps to be populated with assets, shaders and
   effects and made playable for the next Windows release. Sequencing (wave 1 active):
   - **Identity art/performance lane** owns `godot/identity_maps/**`,
