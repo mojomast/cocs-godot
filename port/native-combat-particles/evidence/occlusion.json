@@ -1,0 +1,11 @@
+{
+	"behind_wall_changed_pixels": 0,
+	"frames": 210,
+	"front_control_changed_pixels": 4678,
+	"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"viewport": [
+		320,
+		240
+	],
+	"wall_collision_cells": 7308
+}

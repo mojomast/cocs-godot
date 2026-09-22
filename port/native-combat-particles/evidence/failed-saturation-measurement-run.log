@@ -1,0 +1,11 @@
+{"quality": "Extreme", "baseline": true, "viewport": [1280.0, 800.0], "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)", "sample_count": 72, "median_ms": 22.841, "p95_ms": 27.825, "max_ms": 235.816, "allocated_slots": 1000000, "draw_slots": 0, "scene_primitives": 13549, "scene_draw_calls": 299}
+{"quality": "Extreme", "baseline": true, "viewport": [800.0, 600.0], "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)", "sample_count": 72, "median_ms": 17.655, "p95_ms": 21.549, "max_ms": 121.64, "allocated_slots": 1000000, "draw_slots": 0, "scene_primitives": 13365, "scene_draw_calls": 291}
+{"quality": "High", "baseline": false, "viewport": [1280.0, 800.0], "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)", "sample_count": 72, "median_ms": 39.804, "p95_ms": 43.559, "max_ms": 255.484, "allocated_slots": 32768, "draw_slots": 28672, "scene_primitives": 70911, "scene_draw_calls": 327}
+{"quality": "High", "baseline": false, "viewport": [800.0, 600.0], "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)", "sample_count": 72, "median_ms": 37.309, "p95_ms": 40.512, "max_ms": 144.386, "allocated_slots": 32768, "draw_slots": 26624, "scene_primitives": 66631, "scene_draw_calls": 317}
+Traceback (most recent call last):
+  File "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-combat-particles/measure.py", line 65, in <module>
+    main()
+    ~~~~^^
+  File "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-combat-particles/measure.py", line 55, in main
+    raise RuntimeError("Extreme did not submit one million world-space quads")
+RuntimeError: Extreme did not submit one million world-space quads

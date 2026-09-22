@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-combat-particles/measure.py", line 63, in <module>
+    main()
+    ~~~~^^
+  File "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-combat-particles/measure.py", line 32, in main
+    raise RuntimeError("private Xvfb did not allocate a display")
+RuntimeError: private Xvfb did not allocate a display
