@@ -1,0 +1,623 @@
+[
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.70929408073425,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.000030517578125,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 0
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.75,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.000030517578125,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 0
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.62108874320984,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 1
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.6599999666214,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 1
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.89523315429688,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 2
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.93999993801117,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 2
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 2,
+		"isolated_depth_m": 1.65486752986908,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.000030517578125,
+		"tracers": 8,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 3
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 2,
+		"isolated_depth_m": 1.72000002861023,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.000030517578125,
+		"tracers": 8,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 3
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.63083982467651,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 4
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.66999995708466,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 4
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.78863739967346,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 5
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.82999992370605,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 5
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.84536564350128,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 6
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.88999998569489,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 6
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.84536564350128,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 12,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 7
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.88999998569489,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 12,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 7
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.69998741149902,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 8
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.74000000953674,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 8
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.69644594192505,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 9
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.73499989509583,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			960,
+			640
+		],
+		"tracer_start_error_px": 0.000030517578125,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 9
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.70929408073425,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.00006103515625,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.00006103515625,
+		"weapon": 0
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.75,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 0
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.62108874320984,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 1
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.6599999666214,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 1
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.89523315429688,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 2
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.93999993801117,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 2
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 2,
+		"isolated_depth_m": 1.65486752986908,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0000682393801980652,
+		"tracers": 8,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 3
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 2,
+		"isolated_depth_m": 1.72000002861023,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 8,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 3
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.63083982467651,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 4
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.66999995708466,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 4
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.78863739967346,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 5
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.82999992370605,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 0,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 5
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.84536564350128,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 6
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.88999998569489,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 6
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.84536564350128,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 12,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 7
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.88999998569489,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 12,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 7
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.69998741149902,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.000030517578125,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 8
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.74000000953674,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 8
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.69644594192505,
+		"pose": "hip",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.0,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.0,
+		"weapon": 9
+	},
+	{
+		"authoritative_endpoint_delta_m": 0.0,
+		"flash_instances": 1,
+		"isolated_depth_m": 1.73499989509583,
+		"pose": "ads-stub",
+		"simulation_origin_match_claimed": false,
+		"size": [
+			1280,
+			800
+		],
+		"tracer_start_error_px": 0.000030517578125,
+		"tracers": 1,
+		"visual_tip_projection_error_px": 0.000030517578125,
+		"weapon": 9
+	},
+	{
+		"last_source_time": 1.98333333333333,
+		"rendered_volleys": 18,
+		"source_nominal_interval": 0.1,
+		"source_shots": 18,
+		"source_weapon": 0.0,
+		"tracers": 18
+	},
+	{
+		"last_source_time": 1.93333333333333,
+		"rendered_volleys": 30,
+		"source_nominal_interval": 0.058,
+		"source_shots": 30,
+		"source_weapon": 9.0,
+		"tracers": 30
+	},
+	{
+		"fixture": "near-wall-semantic",
+		"flashes": 0,
+		"tracers": 0
+	}
+]
