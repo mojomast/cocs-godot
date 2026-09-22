@@ -1,0 +1,264 @@
+{
+  "scope": "Deterministic graybox source-function fixtures, NOT normal-rate live gameplay or GPU performance",
+  "maps": [
+    {
+      "id": "lacuna-court",
+      "geometryHash": "a89f186f87f647f3ed488accda349719483912769083e240f5aecf6c3b831524",
+      "constructionMs": 44.982842000000005,
+      "navNodes": 281,
+      "navEdges": 2766,
+      "routes": [
+        {
+          "id": "outer-loop",
+          "forward": {
+            "seconds": 13.133333333333333,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 13.133333333333333,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "court-crossing",
+          "forward": {
+            "seconds": 8.9,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 8.883333333333333,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "terrace-ascent--1",
+          "forward": {
+            "seconds": 1.3,
+            "minY": 0,
+            "maxY": 1.5
+          },
+          "reverse": {
+            "seconds": 1.3,
+            "minY": 0,
+            "maxY": 1.5
+          }
+        },
+        {
+          "id": "terrace-ascent-1",
+          "forward": {
+            "seconds": 1.3,
+            "minY": 0,
+            "maxY": 1.5
+          },
+          "reverse": {
+            "seconds": 1.3,
+            "minY": 0,
+            "maxY": 1.5
+          }
+        }
+      ],
+      "spawnSightlines": [
+        {
+          "i": 0,
+          "j": 1,
+          "sight": false
+        },
+        {
+          "i": 0,
+          "j": 2,
+          "sight": false
+        },
+        {
+          "i": 0,
+          "j": 3,
+          "sight": false
+        },
+        {
+          "i": 1,
+          "j": 2,
+          "sight": false
+        },
+        {
+          "i": 1,
+          "j": 3,
+          "sight": false
+        },
+        {
+          "i": 2,
+          "j": 3,
+          "sight": false
+        }
+      ]
+    },
+    {
+      "id": "vermilion-fold",
+      "geometryHash": "116e44854f117e7d64343a3ff17354afc1d759b29f1c4edf470f0aa647809f77",
+      "constructionMs": 29.832649999999944,
+      "navNodes": 371,
+      "navEdges": 3720,
+      "routes": [
+        {
+          "id": "west-rotation",
+          "forward": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "east-rotation",
+          "forward": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "objective-axis",
+          "forward": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach--1--17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach--1-0",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach--1-17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach-1--17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach-1-0",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach-1-17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        }
+      ],
+      "spawnSightlines": []
+    },
+    {
+      "id": "nacre-engine",
+      "geometryHash": "e24e20b2e088f53267daa9efa4d8cd2db5cdd46e7846c6dc7240f9354af2d94f",
+      "constructionMs": 18.351448000000005,
+      "navNodes": 290,
+      "navEdges": 3036,
+      "routes": [
+        {
+          "id": "retreat-loop",
+          "forward": {
+            "seconds": 20.566666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 20.566666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "inner-retreat",
+          "forward": {
+            "seconds": 12.2,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 12.2,
+            "minY": 0,
+            "maxY": 0
+          }
+        }
+      ],
+      "spawnSightlines": []
+    }
+  ],
+  "failures": [],
+  "checks": 35690,
+  "passed": true
+}

@@ -1,0 +1,176 @@
+{
+  "scope": "Deterministic graybox source-function fixtures, NOT normal-rate live gameplay or GPU performance",
+  "maps": [
+    {
+      "id": "vermilion-fold",
+      "geometryHash": "6775f12bb333307ca0be8b943d27fe4e356f8c1cb027642835b5846e0e4f01b4",
+      "constructionMs": 2509.5376699999997,
+      "navNodes": 371,
+      "navEdges": 3720,
+      "routes": [
+        {
+          "id": "west-rotation",
+          "forward": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "east-rotation",
+          "forward": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "objective-axis",
+          "forward": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach--1--17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach--1-0",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach--1-17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach-1--17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach-1-0",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach-1-17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        }
+      ],
+      "spawnSightlines": []
+    },
+    {
+      "id": "nacre-engine",
+      "geometryHash": "26d455adf6d917b6f2800d04a7525370f802e0656feb607631e68704f7d06599",
+      "constructionMs": 12500.731872,
+      "navNodes": 276,
+      "navEdges": 2788,
+      "routes": [
+        {
+          "id": "retreat-loop",
+          "forward": {
+            "seconds": 20.566666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 20.566666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "inner-retreat",
+          "forward": {
+            "seconds": 12.2,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 12.2,
+            "minY": 0,
+            "maxY": 0
+          }
+        }
+      ],
+      "spawnSightlines": []
+    }
+  ],
+  "failures": [
+    {
+      "id": "lacuna-court",
+      "error": "AssertionError [ERR_ASSERTION]: Route stalled to {\"x\":-12,\"y\":0,\"z\":-22} from {\"x\":-12,\"y\":1.4280591805555596,\"z\":-21.56835508333336}\n    at check (file:///tmp/opencode/cocs-identity-maps/port/native-identity-maps/graybox.test.mjs:6:50)\n    at walk (file:///tmp/opencode/cocs-identity-maps/port/native-identity-maps/graybox.test.mjs:20:3)\n    at file:///tmp/opencode/cocs-identity-maps/port/native-identity-maps/graybox.test.mjs:34:57\n    at Array.map (<anonymous>)\n    at file:///tmp/opencode/cocs-identity-maps/port/native-identity-maps/graybox.test.mjs:34:24\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)"
+    }
+  ],
+  "checks": 38365,
+  "passed": false
+}

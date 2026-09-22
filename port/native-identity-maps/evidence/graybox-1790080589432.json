@@ -1,0 +1,144 @@
+{
+  "scope": "Deterministic graybox source-function fixtures, NOT normal-rate live gameplay or GPU performance",
+  "maps": [
+    {
+      "id": "vermilion-fold",
+      "geometryHash": "b5b8344374824416bf3b9a556d1c4c192f051ee85550f02bde4b603ce262df0d",
+      "constructionMs": 1442.470205,
+      "navNodes": 371,
+      "navEdges": 3720,
+      "routes": [
+        {
+          "id": "west-rotation",
+          "forward": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "east-rotation",
+          "forward": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "objective-axis",
+          "forward": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 3.9833333333333334,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach--1--17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach--1-0",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach--1-17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach-1--17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach-1-0",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        },
+        {
+          "id": "approach-1-17",
+          "forward": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          },
+          "reverse": {
+            "seconds": 4.866666666666666,
+            "minY": 0,
+            "maxY": 0
+          }
+        }
+      ],
+      "spawnSightlines": []
+    }
+  ],
+  "failures": [
+    {
+      "id": "lacuna-court",
+      "error": "RangeError: Degenerate terrain triangle\n    at normalOf (file:///tmp/opencode/cocs-identity-maps/game/terrain.mjs:17:28)\n    at file:///tmp/opencode/cocs-identity-maps/game/terrain.mjs:60:105\n    at Function.from (<anonymous>)\n    at file:///tmp/opencode/cocs-identity-maps/game/terrain.mjs:58:16\n    at Array.flatMap (<anonymous>)\n    at wallTriangles (file:///tmp/opencode/cocs-identity-maps/game/terrain.mjs:51:62)\n    at terrainWallTriangles (file:///tmp/opencode/cocs-identity-maps/game/terrain.mjs:73:19)\n    at terrainRayTriangles (file:///tmp/opencode/cocs-identity-maps/game/terrain-bvh.mjs:71:44)\n    at bakeTerrainBvh (file:///tmp/opencode/cocs-identity-maps/game/terrain-bvh.mjs:84:21)\n    at ensureTerrainBvh (file:///tmp/opencode/cocs-identity-maps/game/terrain-bvh.mjs:204:21)"
+    },
+    {
+      "id": "nacre-engine",
+      "error": "AssertionError [ERR_ASSERTION]: conservative visual boss clearance\n    at check (file:///tmp/opencode/cocs-identity-maps/port/native-identity-maps/graybox.test.mjs:6:50)\n    at file:///tmp/opencode/cocs-identity-maps/port/native-identity-maps/graybox.test.mjs:30:26\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)"
+    }
+  ],
+  "checks": 14925,
+  "passed": false
+}

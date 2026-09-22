@@ -1,0 +1,5 @@
+{
+	"checks": 108,
+	"failures": [],
+	"scope": "Source rayWorld vs Godot static collision, no muzzle/actor hit proof"
+}

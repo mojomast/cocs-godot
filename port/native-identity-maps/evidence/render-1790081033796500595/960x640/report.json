@@ -1,0 +1,190 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"engine": "4.5.2-stable (official)",
+	"glow": false,
+	"maps": [
+		{
+			"cameras": [
+				{
+					"draw_calls": 236.0,
+					"file": "lacuna-court-entrance-960x640.png",
+					"id": "entrance",
+					"median_ms": 13.417,
+					"p95_ms": 16.548,
+					"primitives": 28109.0,
+					"video_memory_bytes": 15059539.0
+				},
+				{
+					"draw_calls": 180.0,
+					"file": "lacuna-court-landmark-960x640.png",
+					"id": "landmark",
+					"median_ms": 13.274,
+					"p95_ms": 16.047,
+					"primitives": 24009.0,
+					"video_memory_bytes": 15059539.0
+				},
+				{
+					"draw_calls": 219.0,
+					"file": "lacuna-court-combat-960x640.png",
+					"id": "combat",
+					"median_ms": 14.857,
+					"p95_ms": 18.241,
+					"primitives": 31334.0,
+					"video_memory_bytes": 15059539.0
+				},
+				{
+					"draw_calls": 216.0,
+					"file": "lacuna-court-objective-960x640.png",
+					"id": "objective",
+					"median_ms": 14.139,
+					"p95_ms": 18.022,
+					"primitives": 25413.0,
+					"video_memory_bytes": 15059539.0
+				},
+				{
+					"draw_calls": 220.0,
+					"file": "lacuna-court-worst-960x640.png",
+					"id": "worst",
+					"median_ms": 11.557,
+					"p95_ms": 14.588,
+					"primitives": 21774.0,
+					"video_memory_bytes": 15059539.0
+				}
+			],
+			"geometry": {
+				"build_ms": 20.889,
+				"geometry_hash": "e358795c6ad5f46e4fa4429a789a6a98f3130225f8d5e31fe67225a0036529a4",
+				"graybox": false,
+				"material_cells": 67,
+				"materials": 5,
+				"nodes": 106,
+				"triangles": 7234
+			},
+			"id": "lacuna-court"
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 138.0,
+					"file": "vermilion-fold-entrance-960x640.png",
+					"id": "entrance",
+					"median_ms": 13.267,
+					"p95_ms": 16.465,
+					"primitives": 10940.0,
+					"video_memory_bytes": 14822899.0
+				},
+				{
+					"draw_calls": 129.0,
+					"file": "vermilion-fold-landmark-960x640.png",
+					"id": "landmark",
+					"median_ms": 13.858,
+					"p95_ms": 16.878,
+					"primitives": 12868.0,
+					"video_memory_bytes": 14822899.0
+				},
+				{
+					"draw_calls": 148.0,
+					"file": "vermilion-fold-combat-960x640.png",
+					"id": "combat",
+					"median_ms": 14.849,
+					"p95_ms": 19.191,
+					"primitives": 12452.0,
+					"video_memory_bytes": 14822899.0
+				},
+				{
+					"draw_calls": 132.0,
+					"file": "vermilion-fold-objective-960x640.png",
+					"id": "objective",
+					"median_ms": 14.932,
+					"p95_ms": 18.656,
+					"primitives": 11152.0,
+					"video_memory_bytes": 14822899.0
+				},
+				{
+					"draw_calls": 155.0,
+					"file": "vermilion-fold-worst-960x640.png",
+					"id": "worst",
+					"median_ms": 8.939,
+					"p95_ms": 12.682,
+					"primitives": 9898.0,
+					"video_memory_bytes": 14822899.0
+				}
+			],
+			"geometry": {
+				"build_ms": 10.658,
+				"geometry_hash": "6775f12bb333307ca0be8b943d27fe4e356f8c1cb027642835b5846e0e4f01b4",
+				"graybox": false,
+				"material_cells": 48,
+				"materials": 5,
+				"nodes": 82,
+				"triangles": 3290
+			},
+			"id": "vermilion-fold"
+		},
+		{
+			"cameras": [
+				{
+					"draw_calls": 326.0,
+					"file": "nacre-engine-entrance-960x640.png",
+					"id": "entrance",
+					"median_ms": 21.326,
+					"p95_ms": 25.936,
+					"primitives": 69257.0,
+					"video_memory_bytes": 15671779.0
+				},
+				{
+					"draw_calls": 248.0,
+					"file": "nacre-engine-landmark-960x640.png",
+					"id": "landmark",
+					"median_ms": 20.848,
+					"p95_ms": 24.146,
+					"primitives": 59538.0,
+					"video_memory_bytes": 15671779.0
+				},
+				{
+					"draw_calls": 303.0,
+					"file": "nacre-engine-combat-960x640.png",
+					"id": "combat",
+					"median_ms": 24.786,
+					"p95_ms": 28.24,
+					"primitives": 70737.0,
+					"video_memory_bytes": 15671779.0
+				},
+				{
+					"draw_calls": 281.0,
+					"file": "nacre-engine-objective-960x640.png",
+					"id": "objective",
+					"median_ms": 22.425,
+					"p95_ms": 25.877,
+					"primitives": 75186.0,
+					"video_memory_bytes": 15671779.0
+				},
+				{
+					"draw_calls": 302.0,
+					"file": "nacre-engine-worst-960x640.png",
+					"id": "worst",
+					"median_ms": 18.286,
+					"p95_ms": 21.926,
+					"primitives": 56695.0,
+					"video_memory_bytes": 15671779.0
+				}
+			],
+			"geometry": {
+				"build_ms": 51.871,
+				"geometry_hash": "26d455adf6d917b6f2800d04a7525370f802e0656feb607631e68704f7d06599",
+				"graybox": false,
+				"material_cells": 88,
+				"materials": 5,
+				"nodes": 125,
+				"triangles": 17438
+			},
+			"id": "nacre-engine"
+		}
+	],
+	"renderer": "gl_compatibility",
+	"resolution": [
+		960,
+		640
+	],
+	"scope": "Static inspection renders; no actors/gameplay/particles"
+}
