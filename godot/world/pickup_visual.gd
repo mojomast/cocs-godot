@@ -53,8 +53,9 @@ func apply_kind(value: String) -> void:
 	label.name = "CloseLabel"
 	label.text = kind.to_upper().left(24)
 	label.position.y = 0.58
-	label.font_size = 32
-	label.pixel_size = 0.005
+	label.font_size = 12
+	label.pixel_size = 0.003
+	label.visibility_range_end = 6.0
 	label.modulate = color.lightened(0.3)
 	label.outline_modulate = Color("172030")
 	label.outline_size = 6

@@ -115,3 +115,17 @@ static `is` checks / untyped `weakref`, then an ArrayMesh-only count method used
 on TorusMesh. Those were corrected to generic mesh array inspection and explicit
 types. Final runs have no script, shader, resource-leak, or assertion errors.
 Xvfb/llvmpipe prints its normal unsupported V-Sync-mode warning.
+
+## Lead follow-up: legacy caption taming
+
+The retained legacy comparison asset (`godot/world/pickup_visual.gd`) still carried the
+32 px / 0.005 pixel-size caption that the release matrix recorded as oversized. Production
+does not use that file at all — `godot/world/pickups.gd` preloads the caption-free
+`combat_pickup_assets/pickup_visual.gd` — so the defect was already obsolete in the shipped
+game, but the legacy asset could still render a giant caption if it were ever reused.
+
+Lead applied the taming suggested by the UI lane: `font_size 12`, `pixel_size 0.003`,
+`visibility_range_end 6.0`. The comparison fixture was re-run at **960x640 and 1280x720**
+and both `before-legacy.png` images were refreshed, so the "before" baseline now shows the
+legacy shapes with a small, close-range-only caption. The archived originals are described
+in the UI lane's report (`port/native-ui-polish/README.md`).
