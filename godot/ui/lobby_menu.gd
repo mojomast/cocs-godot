@@ -131,6 +131,9 @@ func refresh() -> void:
 		if hud != null:
 			hud.status_title.text = "ROUND COMPLETE · SPECTATOR" if phase == 4 else "SPECTATING · READ ONLY"
 			hud.status_detail.text = session.spectator_status()
+			# The shared HUD resets this panel for its one-line missing-player
+			# message. Reserve room for both read-only guidance lines this frame.
+			hud.status_panel.size.y = maxf(94.0, hud.status_panel.get_combined_minimum_size().y)
 			hud.status_panel.show()
 			hud.score_label.text = "SPECTATOR"
 			hud.controls.hide()
