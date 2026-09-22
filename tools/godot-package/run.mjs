@@ -58,7 +58,9 @@ async function main() {
       console.log('PACKAGE_EXTERNAL_AUTHORITY ' + JSON.stringify({owned:false, experience:plan.experience}));
     }
     if (stopping) return signalCode || 1;
-    child = spawn(join(root, 'cocs.x86_64'), ['--main-pack',join(root, 'cocs.pck'), plan.scene, '--', `--endpoint=${endpoint}`, ...plan.userArgs], {cwd:root, env, stdio:'inherit'});
+    const executable = process.platform === 'win32' ? 'cocs.exe' : 'cocs.x86_64';
+    const engineArgs = plan.userArgs.includes('--session-smoke') ? ['--headless','--audio-driver','Dummy'] : [];
+    child = spawn(join(root, executable), [...engineArgs, '--main-pack',join(root, 'cocs.pck'), plan.scene, '--', `--endpoint=${endpoint}`, ...plan.userArgs], {cwd:root, env, stdio:'inherit'});
     childDone = new Promise((resolve, reject) => { child.once('error', reject); child.once('exit', (code, signal) => resolve({code, signal})); });
     console.log('PACKAGE_NATIVE_STARTED ' + JSON.stringify({pid:child.pid, scene:plan.scene}));
     const result = await childDone;
@@ -76,7 +78,7 @@ async function main() {
       game.server.removeListener('error', serverError);
     }
     process.removeListener('SIGINT', interrupt); process.removeListener('SIGTERM', terminate);
-    rmSync(runtime, {recursive:true, force:true});
+    rmSync(runtime, {recursive:true, force:true, maxRetries:5, retryDelay:100});
     console.log('PACKAGE_STOPPED');
   }
 }

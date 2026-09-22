@@ -72,6 +72,7 @@ commands = [
     ("local-lifecycle", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/local_lifecycle.gd"]),
     ("pickup-presentation", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/pickups.gd"]),
     ("entity-visuals", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/entity_visuals.gd"]),
+    ("operator-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_models/geometry.gd"]),
     ("native-trace", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/native_trace.gd"]),
     ("guest-session", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/guest_session.gd"]),
     ("lobby-flow", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/lobby_flow.gd"]),

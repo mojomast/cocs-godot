@@ -24,7 +24,7 @@ export function options(argv, catalog) {
       if (!value || value.startsWith('--') || value.length > maxLength) throw Error(`--${key} requires a value of 1..${maxLength} characters`);
       if (Object.hasOwn(values, key)) throw Error(`Duplicate --${key}`);
       values[key] = value;
-    } else if (['--play','--setup','--native-trace','--mute','--debug-hud'].includes(arg)) {
+    } else if (['--play','--setup','--native-trace','--mute','--debug-hud','--smoke'].includes(arg)) {
       if (flags.has(arg)) throw Error(`Duplicate ${arg}`);
       flags.add(arg);
     } else throw Error(`Unknown option ${arg}. Use --help.`);
@@ -38,7 +38,8 @@ export function options(argv, catalog) {
   const mode = values.mode ?? selected.maps[map][0];
   if (!selected.maps[map].includes(mode) || !catalog.maps.find(m => m.id === map)?.supported_modes.includes(mode)) throw Error(`Unsupported ${map} / ${mode}`);
   if (flags.has('--play') && flags.has('--setup')) throw Error('Choose --play or --setup');
-  for (const flag of ['--play','--setup','--mute','--debug-hud']) if (flags.has(flag) && experience !== 'combat') throw Error(`${flag} requires combat`);
+  if (flags.has('--smoke') && (flags.has('--play') || flags.has('--setup'))) throw Error('--smoke cannot be combined with --play or --setup');
+  for (const flag of ['--play','--setup','--mute','--debug-hud','--smoke']) if (flags.has(flag) && experience !== 'combat') throw Error(`${flag} requires combat`);
   if (flags.has('--native-trace') && !['combat','lattice-world'].includes(experience)) throw Error('--native-trace requires combat or lattice-world');
   for (const key of ['time-limit','round-target']) {
     if (values[key] === undefined) continue;
@@ -50,12 +51,13 @@ export function options(argv, catalog) {
   const userArgs = [`--map=${map}`, `--mode=${mode}`];
   for (const key of ['time-limit','round-target']) if (values[key] !== undefined) userArgs.push(`--${key}=${values[key]}`);
   for (const flag of ['--native-trace','--mute','--debug-hud']) if (flags.has(flag)) userArgs.push(flag);
-  if (experience === 'combat' && !flags.has('--play')) userArgs.push('--setup');
+  if (flags.has('--smoke')) userArgs.push('--session-smoke');
+  if (experience === 'combat' && !flags.has('--play') && !flags.has('--smoke')) userArgs.push('--setup');
   if (experience === 'lobby') userArgs.push('--lobby-menu');
   return {experience, map, mode, scene:selected.scene, userArgs, endpoint};
 }
 
-export const HELP = `Private local COCS Linux prototype — Node >=22.13.0 required
+export const HELP = `COCS native demo — Node >=22.13.0 (bundled on Windows)
   node run.mjs                              Native combat host setup
   node run.mjs --experience=lobby            Multiplayer lobby, owned loopback server
   node run.mjs --experience=lobby --endpoint=ws://127.0.0.1:PORT
@@ -86,6 +88,7 @@ Zones: koth/domination on combat arenas; domination on Tidal/Sunscar.
 Combined arms: Sunscar Puma slice. Enter engages; E mounts/exits; Space brake tap.
 LATTICE board: click Connect / start. LATTICE world starts directly.
 --native-trace is available for combat and lattice-world.
+--smoke runs the combat network diagnostic headlessly and exits automatically.
 An ordinary server owns a fresh loopback port. Close the window or Ctrl+C to stop.
 No editor, git, npm, installation, or source checkout is needed to play.
 Private prototype only; source asset redistribution rights remain unresolved.

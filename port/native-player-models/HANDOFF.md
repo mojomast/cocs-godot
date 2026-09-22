@@ -1,6 +1,11 @@
 # Player/operator model candidate — orchestrator handoff
 
 Status: RECOVERED, REVERIFIED AND VISUALLY REVIEWED CANDIDATE; GAMEPLAY INTEGRATION ON HOLD.
+Update: the user subsequently requested a playable Windows demo. Recovery commit
+`72a58c9` is included in the primary branch as `e396106`; package builds can now
+explicitly select `--operator-models candidate`, applying the preload only in
+staging. The default source renderer and the remaining visual/performance findings
+are unchanged. See `../native-windows-package/PLAY.md` for the demo.
 The lead inspected all 40 matched PNGs directly, plus the fresh live screenshot and both fresh release-preview images. Close-range form is improved; distant variant/team-stripe readability and rendering cost keep this candidate off the gameplay path. See REVIEW.md for the decision and evidence scope. Full animated-character, full game package and hardware performance acceptance remain open.
 
 Original baseline: 2af744f8f2eef2087d056844dd7f973336215de2

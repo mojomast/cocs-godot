@@ -33,6 +33,8 @@ test('package scene routing covers all nine locked identities and preserves nati
   assert.deepEqual([...covered].sort(), catalog.maps.map(m => m.id).sort());
   assert.ok(options([], catalog).userArgs.includes('--setup'));
   assert.ok(!options(['--play'], catalog).userArgs.includes('--setup'));
+  assert.ok(options(['--smoke'], catalog).userArgs.includes('--session-smoke'));
+  assert.ok(!options(['--smoke'], catalog).userArgs.includes('--setup'));
 });
 
 test('bad package arguments fail before opening an owned server; no silent scene/mode fallback', () => {
@@ -50,6 +52,8 @@ test('bad package arguments fail before opening an owned server; no silent scene
     ['--experience=arms-race','--mode=deathmatch'],
     ['--experience=arms-race','--time-limit=60'],
     ['--play','--setup'], ['--play','--play'], ['--map=a','--map=b'],
+    ['--smoke','--setup'], ['--smoke','--play'], ['--smoke','--smoke'],
+    ['--experience=horde','--smoke'], ['--experience=lobby','--smoke'],
     ['--experience'], ['--experience','--play'], ['--map='], ['--endpoint=ws://elsewhere'],
     ['--time-limit=60'], ['--experience=sports','--time-limit=59'],
     ['--experience=sports','--time-limit=901'], ['--experience=sports','--time-limit=60.5'],

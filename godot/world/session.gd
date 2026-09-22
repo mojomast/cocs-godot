@@ -466,6 +466,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	var smoke_pickups_ok: bool = pickups.markers.is_empty() if selected_mode == "instagib" else not pickups.markers.is_empty()
 	var smoke_fire_ok: bool = combat.local_launches > 0 if selected_mode == "rockets" else combat.shots > 0
 	if smoke and smoke_fire_ok and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10 and smoke_pickups_ok and not world.get_node("StaticPickupMarkers").visible:
+		print("PORT_OPERATOR_MODEL ", presentation.actors.values()[0].get_script().resource_path)
 		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true fired=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true combat_shots=", combat.shots, " combat_launches=", combat.launches, " local_launches=", combat.local_launches, " map=", current_id, " mode=", selected_mode)
 		client.disconnect_server()
 		get_tree().quit(0)

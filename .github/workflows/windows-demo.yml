@@ -1,0 +1,42 @@
+name: Windows demo verification
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag containing cocs-native-windows.zip
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  windows-smoke:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download exact release asset and extract into a path with spaces
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          $download = Join-Path $env:RUNNER_TEMP 'cocs-download'
+          gh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern 'cocs-native-windows.zip*' --dir $download
+          if ($LASTEXITCODE -ne 0) { throw 'Release download failed' }
+          $zip = Join-Path $download 'cocs-native-windows.zip'
+          $expected = ((Get-Content "$zip.sha256").Split(' ')[0]).ToLower()
+          if ((Get-FileHash $zip -Algorithm SHA256).Hash.ToLower() -ne $expected) { throw 'ZIP checksum mismatch' }
+          $extract = Join-Path $env:RUNNER_TEMP 'fresh Windows demo'
+          Expand-Archive $zip $extract
+          "DEMO_ROOT=$extract\cocs-native-windows" >> $env:GITHUB_ENV
+      - name: Bundled Node, real Windows export, three-map play and cleanup
+        shell: pwsh
+        run: |
+          & "$env:DEMO_ROOT\node.exe" tools/godot-package/verify_windows.mjs "$env:DEMO_ROOT" "$env:RUNNER_TEMP\windows-evidence"
+          if ($LASTEXITCODE -ne 0) { throw 'Native Windows smoke failed' }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-demo-verification
+          path: ${{ runner.temp }}/windows-evidence/
+          if-no-files-found: warn
