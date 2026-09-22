@@ -1,0 +1,125 @@
+{
+	"ads_direction": {
+		"changed_bounds": [
+			333,
+			0,
+			140,
+			128
+		],
+		"changed_pixels": 3867,
+		"max_delta": 0.878431372344494,
+		"mean_delta": 0.0268897120945845
+	},
+	"ads_rig": {
+		"mouse_mode": 2,
+		"overlay_visible": true,
+		"state": {
+			"active": true,
+			"fov": 61.5,
+			"kind": "iron",
+			"magnification": 1.0,
+			"ready": true,
+			"weight": 1.0
+		}
+	},
+	"checked": 40,
+	"failures": [],
+	"impact_ground": {
+		"changed_bounds": [
+			415,
+			244,
+			107,
+			91
+		],
+		"changed_pixels": 1073,
+		"max_delta": 0.125490203499794,
+		"mean_delta": 0.00349528008175117
+	},
+	"low_health": {
+		"changed_bounds": [
+			60,
+			28,
+			839,
+			551
+		],
+		"changed_pixels": 18455,
+		"max_delta": 1.0,
+		"mean_delta": 0.00432305091956096
+	},
+	"low_health_centre": {
+		"changed_bounds": [
+			0,
+			0,
+			0,
+			0
+		],
+		"changed_pixels": 0,
+		"max_delta": 0.0,
+		"mean_delta": 0.0
+	},
+	"materials": {
+		"changed_bounds": [
+			84,
+			28,
+			663,
+			310
+		],
+		"changed_pixels": 8514,
+		"max_delta": 1.0,
+		"mean_delta": 0.00342659196262124
+	},
+	"noise_floor": {
+		"centre": {
+			"changed_bounds": [
+				0,
+				0,
+				0,
+				0
+			],
+			"changed_pixels": 0,
+			"max_delta": 0.0,
+			"mean_delta": 0.0
+		},
+		"whole": {
+			"changed_bounds": [
+				210,
+				28,
+				35,
+				41
+			],
+			"changed_pixels": 246,
+			"max_delta": 1.0,
+			"mean_delta": 0.000142010060439285
+		}
+	},
+	"rendering": {
+		"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+		"method": "gl_compatibility"
+	},
+	"shield_break": {
+		"changed_bounds": [
+			0,
+			0,
+			960,
+			640
+		],
+		"changed_pixels": 142057,
+		"max_delta": 1.0,
+		"mean_delta": 0.0385448281098305
+	},
+	"sight_picture": {
+		"changed_bounds": [
+			0,
+			0,
+			0,
+			0
+		],
+		"changed_pixels": 0,
+		"max_delta": 0.0,
+		"mean_delta": 0.0
+	},
+	"size": [
+		960,
+		640
+	]
+}

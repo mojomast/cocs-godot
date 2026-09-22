@@ -26,8 +26,12 @@ var hit_remaining: float = 0.0
 var hurt_remaining: float = 0.0
 const Overlay = preload("res://world/combat_overlay.gd")
 const AudioFeedback = preload("res://world/audio_feedback.gd")
+const PlayerFx = preload("res://player_fx/director.gd")
+const Impacts = preload("res://player_fx/impacts.gd")
 var overlay: Control
 var audio_feedback: Node
+var player_fx: Node
+var impacts: Node3D
 const CombatShields = preload("res://combat_shields/controller.gd")
 const CombatQuality = preload("res://world/combat_quality.gd")
 const WeaponEffects = preload("res://weapon_effects/controller.gd")
@@ -74,6 +78,14 @@ func configure_effects(camera: Camera3D, session: Node) -> void:
 		quality_controls = CombatQuality.new()
 		add_child(quality_controls)
 		quality_controls.quality_changed.connect(_quality_changed)
+	if not is_instance_valid(player_fx):
+		player_fx = PlayerFx.new()
+		add_child(player_fx)
+		player_fx.configure(camera)
+	if not is_instance_valid(impacts):
+		impacts = Impacts.new()
+		add_child(impacts)
+		impacts.configure(camera, occlusion)
 	_quality_changed(quality_controls.quality)
 	_attach_rig()
 
@@ -82,6 +94,8 @@ func _quality_changed(level: int) -> void:
 	# Low retains essential weapon cues, dropping secondary smoke/casings.
 	if is_instance_valid(weapon_effects): weapon_effects.set_quality(1 if level == 0 else 2)
 	if is_instance_valid(world_particles): world_particles.set_quality(CombatQuality.LEVELS[level])
+	if is_instance_valid(player_fx): player_fx.set_quality(level)
+	if is_instance_valid(impacts): impacts.set_quality(level)
 	_update_metrics()
 
 func _attach_rig() -> void:
@@ -114,6 +128,9 @@ func _configure_map(state: Dictionary) -> void:
 		if catalog.open() and catalog.entries.has(id): map = catalog.resolve_map(id)
 	occlusion.configure(effect_camera, map)
 	map_error = "" if occlusion.ready else "No authoritative map geometry: " + id
+	if is_instance_valid(impacts):
+		impacts.configure(effect_camera, occlusion)
+		impacts.set_map(map)
 	if not map.is_empty():
 		var result: Dictionary = world_particles.configure(effect_camera, map)
 		if not result.get("ok", false): map_error = str(result.get("error", "Particle map configuration failed"))
@@ -143,6 +160,8 @@ func _sync_activity() -> void:
 		if is_instance_valid(world_particles): world_particles.reset()
 		if is_instance_valid(projectiles): projectiles.clear_round()
 		if is_instance_valid(audio_feedback): audio_feedback.clear_round()
+		if is_instance_valid(player_fx): player_fx.clear_transient()
+		if is_instance_valid(impacts): impacts.reset()
 		hit_remaining = 0.0
 		hurt_remaining = 0.0
 	if is_instance_valid(world_particles): world_particles.set_paused(not active)
@@ -186,6 +205,8 @@ func flush_effects() -> void:
 			projectiles.cache_launch(event, weapon_effects.resolve_launch_origin(event, effect_local_id), effect_local_id)
 	shields.apply_events(events, effect_local_id)
 	world_particles.consume(events, effect_local_id)
+	if is_instance_valid(player_fx): player_fx.apply_events(safe, effect_local_id)
+	if is_instance_valid(impacts): impacts.consume(safe, effect_local_id)
 
 func _update_metrics() -> void:
 	if not is_instance_valid(quality_controls): return
@@ -202,6 +223,19 @@ func _update_metrics() -> void:
 		metrics["weapon_flashes"] = weapon_effects.flashes
 		metrics["weapon_tracers"] = weapon_effects.tracer_count
 	if is_instance_valid(shields): metrics["shield_materials"] = shields.debug_state().materials
+	if is_instance_valid(player_fx):
+		var fx_state: Dictionary = player_fx.snapshot()
+		metrics["player_fx_low"] = fx_state.low_health
+		metrics["player_fx_heartbeat"] = snappedf(fx_state.heartbeat, 0.01)
+		metrics["player_fx_direction"] = "actor" if fx_state.direction_known else ("environmental" if fx_state.damage_environmental else "none")
+		metrics["player_fx_protection"] = fx_state.protection
+		metrics["player_fx_cues"] = JSON.stringify(fx_state.counters)
+	if is_instance_valid(impacts):
+		var impact_state: Dictionary = impacts.snapshot()
+		metrics["impact_pool"] = impact_state.pool
+		metrics["impact_active"] = impact_state.active
+		metrics["impact_family"] = impact_state.family if not str(impact_state.family).is_empty() else "none"
+		metrics["impact_counters"] = JSON.stringify(impact_state.counters)
 	metrics["occlusion"] = occlusion.snapshot().backend
 	if not map_error.is_empty(): metrics["map_error"] = map_error
 	quality_controls.set_metrics(metrics)
@@ -252,6 +286,7 @@ func apply_state(state: Dictionary) -> void:
 	public_actors = state.get("actors", []) if state.get("actors", []) is Array else []
 	_sync_activity()
 	if is_instance_valid(effect_camera) and not effects_active: return
+	if is_instance_valid(player_fx): player_fx.apply_state(state, effect_local_id)
 	if is_instance_valid(shields):
 		if is_instance_valid(effect_session) and "presentation" in effect_session:
 			shields.bind_actor_visuals(effect_session.presentation.actors)
@@ -371,6 +406,8 @@ func advance(delta: float) -> void:
 	if not is_finite(delta) or delta < 0.0: return
 	hit_remaining = maxf(0.0, hit_remaining - maxf(delta, 0.0))
 	hurt_remaining = maxf(0.0, hurt_remaining - maxf(delta, 0.0))
+	if is_instance_valid(player_fx): player_fx.advance(delta)
+	if is_instance_valid(impacts): impacts.advance(delta)
 	for index: int in range(tracers.size() - 1, -1, -1):
 		tracers[index].remaining -= maxf(delta, 0.0)
 		if tracers[index].remaining <= 0: remove_tracer(index)
@@ -401,7 +438,7 @@ func _process(delta: float) -> void:
 	if is_instance_valid(overlay):
 		var session := get_parent()
 		var aiming: bool = session != null and session.has_method("can_capture_pointer") and session.can_capture_pointer() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
-		overlay.update_feedback(aiming, hit_remaining, hurt_remaining)
+		overlay.update_feedback(aiming, hit_remaining, hurt_remaining, player_fx.model() if is_instance_valid(player_fx) else {})
 
 func text() -> String:
 	return ("HIT CONFIRMED " if hit_remaining > 0 else "") + ("TAKING DAMAGE" if hurt_remaining > 0 else "")
@@ -421,6 +458,8 @@ func clear_round() -> void:
 	if is_instance_valid(quality_controls): quality_controls.set_active(false)
 	if is_instance_valid(moth_effects): moth_effects.reset()
 	if is_instance_valid(projectiles): projectiles.clear_round()
+	if is_instance_valid(player_fx): player_fx.clear_round()
+	if is_instance_valid(impacts): impacts.reset()
 	while not blasts.is_empty(): remove_blast(0)
 	launches = 0
 	local_launches = 0
