@@ -1,25 +1,26 @@
-COCS release pipeline — tag=pipecheck-tmp target=windows mode=DRY-RUN
-  state    /tmp/opencode/cocs-release-pipecheck-tmp (created, append-only)
-  run      runs/20260922T173409Z-2489563
+COCS release pipeline — tag=refusal-dirty-tree-demo target=windows mode=DRY-RUN
+  state    /tmp/opencode/cocs-release-refusal-dirty-tree-demo (created, append-only)
+  run      runs/20260922T173501Z-2495706
 [1/6] preflight
-  HEAD     095ac98e5a9c on port/godot-destinations
+  HEAD     ff2e15001ca4 on port/godot-destinations
+  tag      refusal-dirty-tree-demo is free on godot and in mojomast/cocs-godot
 
 {
   "schema_version": 1,
   "kind": "cocs-release-run",
-  "run_id": "20260922T173409Z-2489563",
-  "tag": "pipecheck-tmp",
+  "run_id": "20260922T173501Z-2495706",
+  "tag": "refusal-dirty-tree-demo",
   "target": "windows",
   "mode": "dry-run",
   "dry_run": true,
   "argv": [
-    "--tag=pipecheck-tmp"
+    "--tag=refusal-dirty-tree-demo"
   ],
-  "state": "/tmp/opencode/cocs-release-pipecheck-tmp",
+  "state": "/tmp/opencode/cocs-release-refusal-dirty-tree-demo",
   "resume_from": null,
   "stop_after": null,
-  "started_at": "2026-09-22T17:34:09.085Z",
-  "finished_at": "2026-09-22T17:34:09.111Z",
+  "started_at": "2026-09-22T17:35:01.383Z",
+  "finished_at": "2026-09-22T17:35:02.045Z",
   "status": "failed",
   "exit_code": 1,
   "head": null,
@@ -28,11 +29,11 @@ COCS release pipeline — tag=pipecheck-tmp target=windows mode=DRY-RUN
     {
       "step": "preflight",
       "status": "failed",
-      "duration_seconds": 0.03,
+      "duration_seconds": 0.66,
       "detail": {},
       "error": {
         "code": "dirty-tree",
-        "message": "tracked files are modified: godot/world/combat_quality.gd, port/native-horde/authority.mjs",
+        "message": "tracked files are modified: godot/world/combat_quality.gd, port/native-horde/authority.mjs, tools/release/release.mjs, tools/release/release.test.mjs",
         "hint": "commit or revert them; the package build refuses uncommitted runtime bytes",
         "detail": null
       },

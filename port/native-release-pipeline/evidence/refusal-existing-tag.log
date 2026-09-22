@@ -1,0 +1,11 @@
+$ git rev-parse HEAD
+ff2e15001ca467d9d03f49a38ee0e4af1860e42c
+$ git rev-parse --abbrev-ref HEAD
+port/godot-destinations
+$ git rev-parse --is-shallow-repository
+false
+$ git remote get-url godot
+https://github.com/mojomast/cocs-godot.git
+$ git tag --list combat-expansion-2026-09-22
+$ git ls-remote --tags godot refs/tags/combat-expansion-2026-09-22
+64da4bc57c2657aec522d95984e2ddbd79cee7f0	refs/tags/combat-expansion-2026-09-22

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "cocs-release-run",
+  "run_id": "20260922T173452Z-2494991",
+  "tag": "combat-expansion-2026-09-22",
+  "target": "windows",
+  "mode": "dry-run",
+  "dry_run": true,
+  "argv": [
+    "--tag=combat-expansion-2026-09-22"
+  ],
+  "state": "/tmp/opencode/cocs-release-combat-expansion-2026-09-22",
+  "resume_from": null,
+  "stop_after": null,
+  "started_at": "2026-09-22T17:34:52.567Z",
+  "finished_at": "2026-09-22T17:34:52.855Z",
+  "status": "failed",
+  "exit_code": 1,
+  "head": null,
+  "branch": null,
+  "steps": [
+    {
+      "step": "preflight",
+      "status": "failed",
+      "duration_seconds": 0.28,
+      "detail": {},
+      "error": {
+        "code": "tag-exists",
+        "message": "tag combat-expansion-2026-09-22 already exists on godot",
+        "hint": "releases are never overwritten; choose a new tag",
+        "detail": null
+      },
+      "reused_from": null
+    }
+  ]
+}

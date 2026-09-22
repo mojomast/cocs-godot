@@ -408,6 +408,30 @@ async function stepPreflight(ctx) {
   detail.remote_url = remoteUrl;
   detail.repository = repository;
 
+  // The tag/release check is cheap and it is the most common refusal on a re-run, so
+  // it fires before the toolchain hashes.
+  const localTag = (await git(ctx, ['tag', '--list', options.tag])).stdout;
+  if (localTag) throw new ReleaseError('tag-exists', `local tag ${options.tag} already exists`, 'releases are never overwritten; choose a new tag');
+  const remoteTag = await gitOrThrow(ctx, ['ls-remote', '--tags', options.publicationRemote, `refs/tags/${options.tag}`], 'cannot list remote tags');
+  if (remoteTag) {
+    throw new ReleaseError('tag-exists', `tag ${options.tag} already exists on ${options.publicationRemote}`,
+      'releases are never overwritten; choose a new tag');
+  }
+  const view = await runCommand(ctx, {
+    command: 'gh', args: ['release', 'view', options.tag, '--repo', repository, '--json', 'tagName'],
+    allowFailure: true, label: 'release-lookup', timeout: 60000,
+  });
+  if (view.code === 0) {
+    throw new ReleaseError('release-exists', `release ${options.tag} already exists in ${repository}`,
+      'releases are never overwritten; choose a new tag');
+  }
+  if (!/not found/i.test(`${view.stdout}${view.stderr}`)) {
+    throw new ReleaseError('release-lookup-failed', `cannot confirm that ${options.tag} is free in ${repository}`,
+      `${(view.stderr ?? '').trim()} — check gh authentication`);
+  }
+  detail.tag = {name: options.tag, free: true};
+  ctx.emit(`  tag      ${options.tag} is free on ${options.publicationRemote} and in ${repository}`);
+
   const status = await readGitStatus(ctx);
   const allowed = new Set([...DEFAULT_ALLOW_UNTRACKED, ...options.allowUntracked]);
   const modified = status.modified.filter(path => !isExemptPath(path));
@@ -472,28 +496,6 @@ async function stepPreflight(ctx) {
     ctx.emit(`  archive  ${local} ${(archives[local].bytes / 1048576).toFixed(1)} MiB sha512 ✓`);
   }
   detail.toolchain = {archives};
-
-  const localTag = (await git(ctx, ['tag', '--list', options.tag])).stdout;
-  if (localTag) throw new ReleaseError('tag-exists', `local tag ${options.tag} already exists`, 'releases are never overwritten; choose a new tag');
-  const remoteTag = await gitOrThrow(ctx, ['ls-remote', '--tags', options.publicationRemote, `refs/tags/${options.tag}`], 'cannot list remote tags');
-  if (remoteTag) {
-    throw new ReleaseError('tag-exists', `tag ${options.tag} already exists on ${options.publicationRemote}`,
-      'releases are never overwritten; choose a new tag');
-  }
-  const view = await runCommand(ctx, {
-    command: 'gh', args: ['release', 'view', options.tag, '--repo', repository, '--json', 'tagName'],
-    allowFailure: true, label: 'release-lookup', timeout: 60000,
-  });
-  if (view.code === 0) {
-    throw new ReleaseError('release-exists', `release ${options.tag} already exists in ${repository}`,
-      'releases are never overwritten; choose a new tag');
-  }
-  if (!/not found/i.test(`${view.stdout}${view.stderr}`)) {
-    throw new ReleaseError('release-lookup-failed', `cannot confirm that ${options.tag} is free in ${repository}`,
-      `${(view.stderr ?? '').trim()} — check gh authentication`);
-  }
-  detail.tag = {name: options.tag, free: true};
-  ctx.emit(`  tag      ${options.tag} is free on ${options.publicationRemote} and in ${repository}`);
 
   const notesPath = resolve(ctx.root, options.notesFile);
   if (!existsSync(notesPath)) {

@@ -201,7 +201,7 @@ test('preflight refuses a dirty runtime tree before anything else', async () => 
     assert.equal(summary.steps[0].error.code, 'dirty-tree');
     assert.match(summary.steps[0].error.message, /godot\/world\/session\.gd/);
     assert.equal(fx.sideEffects().length, 0);
-    assert.equal(fx.calls.filter(call => call.command === 'gh').length, 0, 'gh must not run after a dirty-tree refusal');
+    assert.equal(fx.calls.filter(call => call.command === 'gh' && call.args[1] === 'create').length, 0, 'no release after a dirty-tree refusal');
   } finally {
     await fx.cleanup();
   }
@@ -234,7 +234,7 @@ test('an existing tag or release refuses even in a dry run', async () => {
     assert.equal(result.exitCode, 1);
     const summary = await existing.readSummary(result);
     assert.equal(summary.steps[0].error.code, 'tag-exists');
-    assert.equal(existing.calls.filter(call => call.command === 'gh').length, 0);
+    assert.equal(existing.calls.filter(call => call.command === 'gh' && call.args[1] === 'create').length, 0);
   } finally {
     await existing.cleanup();
   }

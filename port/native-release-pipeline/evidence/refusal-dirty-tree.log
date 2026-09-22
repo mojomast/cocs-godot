@@ -1,14 +1,20 @@
 $ git rev-parse HEAD
-095ac98e5a9c7e4354408bb79b739986082208d8
+ff2e15001ca467d9d03f49a38ee0e4af1860e42c
 $ git rev-parse --abbrev-ref HEAD
 port/godot-destinations
 $ git rev-parse --is-shallow-repository
 false
 $ git remote get-url godot
 https://github.com/mojomast/cocs-godot.git
+$ git tag --list refusal-dirty-tree-demo
+$ git ls-remote --tags godot refs/tags/refusal-dirty-tree-demo
+$ gh release view refusal-dirty-tree-demo --repo mojomast/cocs-godot --json tagName
+release not found
 $ git status --porcelain=v1 -uall
  M godot/world/combat_quality.gd
  M port/native-horde/authority.mjs
+ M tools/release/release.mjs
+ M tools/release/release.test.mjs
 ?? godot/benchmark/benchmark.tscn
 ?? godot/benchmark/driver.gd
 ?? godot/benchmark/driver.gd.uid
@@ -36,4 +42,6 @@ $ git status --porcelain=v1 -uall
 ?? port/native-identity-zones/tests/match.test.mjs
 ?? port/native-identity-zones/tests/socket.mjs
 ?? port/native-identity-zones/travel.mjs
-?? port/native-release-pipeline/evidence/run-dry-run.sh
+?? port/native-release-pipeline/evidence/refusal-existing-tag-console.log
+?? port/native-release-pipeline/evidence/refusal-existing-tag-summary.json
+?? port/native-release-pipeline/evidence/refusal-existing-tag.log
