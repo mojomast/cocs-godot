@@ -35,6 +35,7 @@ commands = [
     ("gate-runner-tests", [sys.executable, "tools/godot-dev/test_gate_runner.py"]),
     ("export-tests", ["node", "--test", "tools/godot-export/semantic.test.mjs"]),
     ("health-hud-evidence", ["node", "--test", "port/tools/native_health_damage/analyze.test.mjs", "port/tools/native_health_damage/test.mjs"]),
+    ("projectile-navigation", ["node", "--test", "port/native-projectile-combat/route.test.mjs"]),
     ("semantic-export", ["node", "tools/godot-export/semantic.mjs"]),
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),
     ("godot-import", [binary, "--headless", "--path", "godot", "--editor", "--import"]),

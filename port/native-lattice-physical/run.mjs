@@ -66,8 +66,9 @@ try {
  const args = ['--audio-driver','Dummy','--path','godot','--resolution',options.size,
   '--script','res://tests/lattice/physical.gd','res://lattice/board.tscn','--',
   `--endpoint=ws://127.0.0.1:${port}`,`--map=${options.map}`,`--mode=${options.mode}`,`--physical-output=${out}`];
- const sourceFiles = ['game/protocol.mjs','game/cocs-intel.mjs','game/cocs.mjs','game/cocs-coop.mjs','game/cocs-orders.mjs','game/cocs-roles.mjs','server/game-server.mjs','server/room.mjs','godot/lattice/transport.gd'];
+ const sourceFiles = ['game/protocol.mjs','game/cocs-intel.mjs','game/cocs.mjs','game/cocs-coop.mjs','game/cocs-orders.mjs','game/cocs-roles.mjs','server/game-server.mjs','server/room.mjs','godot/lattice/transport.gd','godot/lattice/board.gd','godot/lattice/board.tscn','godot/tests/lattice/physical.gd','port/native-lattice-physical/run.mjs'];
  writeFileSync(join(out, 'manifest.json'), JSON.stringify({base:'658b4e76a65e7ca37489a948ed466cd8a2872d98', source:lock.source_commit,
+  revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
   godot:lock.godot_version, options, command:[bin,...args], port, display:env.DISPLAY,
   serverOptions:{historyPath:null,progressionPath:null}, simulation:'defaults: tickDt=1/60; tickMs=1000/60; snapshotHz unmodified',
   hashes:Object.fromEntries(sourceFiles.map(path => [path, createHash('sha256').update(readFileSync(path)).digest('hex')]))}, null, 2) + '\n');

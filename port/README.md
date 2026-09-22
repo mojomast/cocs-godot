@@ -79,13 +79,15 @@ PORT=0 node tools/godot-dev/launch.mjs --play --map=verdant-reliquary --mode=ins
 - **LATTICE command board:** standalone Asterion Relay and Monsoon Foundry UI
   supports recipient-visible objectives/resources, HOLD orders and PvP Fighter
   recruitment for 12 FLUX. Independent PvP/co-op UI-handler runs pass on both
-  maps; graphical captures were inspected. Co-op economy, physical-input
-  acceptance and full world interaction remain open. See the
+  maps; graphical captures were inspected. Native mouse/key GUI-dispatch
+  acceptance now passes on both PvP maps and Asterion co-op; receipts fit at
+  960×640. Co-op economy, OS-input acceptance and full world interaction remain open. See the
   [command-board guide](native-lattice/README.md) and
-  [independent evidence](reports/lattice-independent/README.md).
+  [initial evidence](reports/lattice-independent/README.md) and
+  [physical-event follow-up](reports/lattice-physical-independent/README.md).
 
-**Combined verification: all 46 implemented gates pass** after LATTICE
-integration at `658b4e7` plus the gate/helper changes
+**Combined verification: all 47 implemented gates pass** after LATTICE
+physical-input/layout and projectile-navigation integration at `aca52f5` plus the gate/helper changes
 recorded with this batch. Independent driving passed on both sports maps;
 the default compact HUD's nonlethal damage/+35 HP/12-second return was also
 independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).
@@ -94,8 +96,8 @@ leaving the new environment/light nodes unparented. The fixtures now own those
 nodes; production cleanup was not the cause. Setup's separate premature viewport
 access is also fixed. Failed runs and the corrected report are retained in
 [feature-batch evidence](reports/feature-batch-independent/README.md).
-The extra Deathmatch rocket pickup/fire route timed out in independent testing;
-its failed attempt is retained and a harness navigation correction is pending.
+The extra Deathmatch rocket pickup/fire route now independently passes after
+a source-aware navigation correction. Its original failed attempt is retained.
 Full native recording completion and broader human gameplay acceptance remain open.
 
 ## Focus loss gates pointer capture and look

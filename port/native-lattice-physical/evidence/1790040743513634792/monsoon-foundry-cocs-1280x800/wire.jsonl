@@ -1,0 +1,10 @@
+{"direction":"out","type":"welcome","peer":1}
+{"direction":"out","type":"lobby","peer":1,"actor":null,"map":"exchange","round":0}
+{"direction":"out","type":"lobby","peer":1,"actor":null,"map":"monsoon-foundry","mode":"cocs","round":0}
+{"direction":"out","type":"lobby","peer":1,"actor":0,"map":"monsoon-foundry","mode":"cocs","round":1}
+{"direction":"out","type":"start","peer":1,"actor":0,"map":"monsoon-foundry","mode":"cocs","round":1}
+{"direction":"out","type":"recipient-snapshot","peer":1,"actor":0,"team":0,"seq":1,"map":"monsoon-foundry","round":1,"fluxKeys":["0"],"spent":0,"spawned":0,"ownFront":{"id":"front-0","owner":null,"live":true},"cards":[]}
+{"direction":"in","peer":1,"actor":0,"type":"order","cardId":"native-r1-p1-s1","roundRev":1,"actionSeq":1,"verb":"HOLD","target":"front-0","priorRecipient":{"seq":4,"spent":0,"spawned":0,"team":0}}
+{"direction":"out","type":"recipient-snapshot","peer":1,"actor":0,"team":0,"seq":5,"map":"monsoon-foundry","round":1,"fluxKeys":["0"],"spent":0,"spawned":0,"ownFront":{"id":"front-0","owner":null,"live":true},"cards":[{"id":"native-r1-p1-s1","actorId":0,"peerId":"1","team":0,"verb":"HOLD","target":"front-0","state":"running","accepted":true,"ok":true,"reason":null}]}
+{"direction":"in","peer":1,"actor":0,"type":"economy","cardId":"native-r1-p1-s2","roundRev":1,"actionSeq":2,"action":"spawn","role":"fighter","priorRecipient":{"seq":23,"spent":0,"spawned":0,"team":0}}
+{"direction":"out","type":"recipient-snapshot","peer":1,"actor":0,"team":0,"seq":24,"map":"monsoon-foundry","round":1,"fluxKeys":["0"],"spent":12,"spawned":1,"ownFront":{"id":"front-0","owner":null,"live":true},"cards":[{"id":"native-r1-p1-s1","actorId":0,"peerId":"1","team":0,"verb":"HOLD","target":"front-0","state":"running","accepted":true,"ok":true,"reason":null},{"id":"native-r1-p1-s2","actorId":0,"peerId":"1","team":0,"verb":"REINFORCE","target":null,"role":"fighter","state":"done","accepted":true,"ok":true,"reason":null}]}

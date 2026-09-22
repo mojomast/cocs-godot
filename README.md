@@ -51,7 +51,7 @@ See the [release matrix](port/RELEASE_MATRIX.md) for evidence and remaining work
 
 **LATTICE command board**
 
-![LATTICE objectives, resources and action receipts](port/native-lattice/evidence/1790039644232228736/monsoon-foundry.png)
+![LATTICE objectives, resources and action receipts](port/native-lattice-physical/evidence/1790040743513634792/monsoon-foundry-cocs-1280x800/receipts.png)
 
 These are native-client captures from real source-server sessions. They represent
 the revisions described in their accompanying evidence directories.
@@ -134,8 +134,9 @@ authorize one **12 FLUX** purchase and click **Recruit Fighter**. The UI separat
 locally queued commands, server acceptance, confirmation and rejection.
 
 Use `--map=monsoon-foundry` for the second map or `--mode=cocs-coop` for co-op
-orders. This development launcher is bounded to **120 seconds**. At smaller
-window sizes, scroll to see action receipts. See the
+orders. This development launcher is bounded to **120 seconds**. The compact
+layout fits the basic command and purchase receipts at 960×640; longer history
+remains scrollable. See the
 [LATTICE guide](port/native-lattice/README.md) for details and limitations.
 
 ### Open the editor or map viewer
@@ -200,8 +201,8 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated run passes **46 gates**, including the LATTICE adapter
-and command-board regressions.
+The latest integrated run passes **47 gates**, including the LATTICE adapter,
+command-board regressions and source-aware projectile navigation.
 
 Focused real-session and graphical evidence is documented in:
 
@@ -209,6 +210,7 @@ Focused real-session and graphical evidence is documented in:
 - [Sports driving, HUD and camera verification](port/reports/sports-polish-independent/README.md)
 - [Visible damage and health pickup verification](port/reports/native-health-hud-independent/README.md)
 - [LATTICE implementation and evidence](port/native-lattice/HANDOFF.md)
+- [LATTICE native mouse/key acceptance](port/reports/lattice-physical-independent/README.md)
 
 Passing automated checks is distinct from complete mode, human usability or
 hardware acceptance. Failed attempts are retained alongside their resolutions.

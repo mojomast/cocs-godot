@@ -54,3 +54,32 @@ the result/log/image. Other map identities remain pending in setup.
 
 `rocket-verification.json` preserves the **43-gate full pass** before sports
 polish integration, including 27 projectile assertions and prior shared features.
+
+## Corrected Deathmatch route — independent pass
+
+The follow-up integrated at `cb908db` diagnoses the missing geometry: Meridian's
+causeway side steps from floor 0 to 0.9 m. The original planner saw no box, but
+source movement correctly refused the step. The harness now uses source floor,
+obstruction and walk-edge queries, stays on supported ground and slows near
+turns through ordinary native crouch input. No runtime gameplay rule changed.
+
+The lead reran all **12 navigation tests**, including all ten authored spawn
+routes and the original rejected side approach. They pass. Then:
+
+```sh
+PORT=0 TMPDIR=/tmp/opencode GODOT_BIN="$PINNED_GODOT" \
+node port/native-projectile-combat/run.mjs --case=deathmatch --output=/tmp/opencode/projectile-deathmatch-independent-fixed
+```
+
+**PASS**. `attempt-02/` retains its exact output, source hashes and image. This
+independent run naturally spawned at `[-44,0,-34]`; the agent's preserved run
+used the exact originally failing `[8,0,34]` spawn. The independent result has
+one source rocket pickup, requested source weapon switches `[0,1]`, **12 local
+launches**, 12 explosion events, 414 exact-position flight samples, 616 accepted
+snapshots, **1,013 input receipts** and ACK high-water 1,012. The 14-second firing
+window passed; queued/received input is not asserted individually applied.
+
+The lead directly opened the PNG: a real in-flight rocket and finite Rocket
+Launcher ammo are visible. Owned children reaped, server closed, zero sockets.
+The original failed attempt remains FAILED. Full-round rocket and recording
+completion acceptance remain separate.

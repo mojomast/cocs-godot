@@ -25,9 +25,9 @@ claims and limitations. Native presentation quality and usability still need rev
 | Combat overlay / audio / scoreboard | Overlay fixture inspected; 37 audio/integration checks and scoreboard fixtures pass | Synthetic render previews and audio notes retained | Authority event integration exercised by current session captures; no human listening acceptance | Human sound mix and broader HUD usability review OPEN |
 | Puma driving / sports | 19 Puma, 27 controls, 41 polish checks and 7 evidence-validator tests independently pass | Both resolutions × both maps near-wall PNGs inspected after polish | Independent driving rerun PASS at `b55861f`; reverse, turn, brake/boost receipts, release/resume and Ion reset | Compact HUD and box-aware camera; completed laps, goals, human camera usability and sports results/restart OPEN |
 | Weapon selection / compact HUD | 64 graphical weapon checks; HUD scene gates; 29 current/legacy health evidence tests pass | Two-resolution HUD, live Tab team scores and actual hurt/heal images inspected | Five key/wheel switches PASS; visible HUD damage/+35 HP/12s return independently PASS at `9a8d59e`: 1,065 correlated snapshots, 316 rendered observations, 1,854 receipts | Current HUD and drawn hurt pulse accepted in bounded scenario; human sound/usability and heal-to-cap OPEN |
-| Rocket combat | 27 projectile checks pass; stable identities, source directions, event separation and cleanup | Three actual Rocket Arena images and graphical Verdant menu Start independently inspected | Three maps PASS graphical and host smoke at `23530f1`; zero ordinary shots; DM pickup route attempt FAILED before pickup and retained | Rocket Arena enabled; DM pickup/fire harness navigation follow-up pending, human audio/full-round rocket acceptance OPEN |
-| LATTICE command board | 38 adapter and 10 UI checks independently pass | Original failures retained; original and independent two-resolution PNGs inspected | Both maps × PvP/co-op independently PASS through native UI handlers at `658b4e7`; HOLD accepted, PvP Fighter confirmed / 12 FLUX spent, genuine no-sink rejection | Standalone command board; 960×640 receipts require scrolling; physical-input, co-op economy and full world interaction OPEN |
-| Full verifier | All **46** implemented gates pass after LATTICE integration | Original failures and earlier pass reports retained | Complete rerun at `658b4e7` plus this gate/helper batch passes, including both LATTICE gates | See `reports/verification.json`; graphical/playable gates separate |
+| Rocket combat | 27 projectile checks plus 12 navigation tests pass | Three Rocket Arena images, graphical menu and corrected DM pickup/fire image inspected | Three maps PASS Rocket Arena; DM pickup → switches `[0,1]` → 12 launches independently PASS at `cb908db`; original failed route retained | Source-aware acceptance navigation corrected; human audio/full-round rocket acceptance OPEN |
+| LATTICE command board | 38 adapter and 10 UI checks independently pass | Original failures retained; two-resolution receipt and disconnect PNGs inspected | Handler cases all four map/modes PASS; native mouse/key cases both PvP maps + Asterion co-op independently PASS at `aca52f5`, 28/28/20 checks; 12 FLUX and one Fighter confirmed | Receipts fit 960×640; engine-input path accepted, OS-device automation/co-op economy/full world interaction OPEN |
+| Full verifier | All **47** implemented gates pass after LATTICE layout and projectile-navigation integration | Original failures and earlier pass reports retained | Complete rerun at `aca52f5` plus this gate/helper batch passes, including source-aware route and both LATTICE gates | See `reports/verification.json`; graphical/playable gates separate |
 | Pulse rifle preview | No completion commit available | None reviewed | Owner believes work is not finished | Pending; reserved directories untouched |
 
 The actual commands, clean execution tree hashes, source provenance, receipt vs
@@ -49,8 +49,8 @@ the locked JSON contract; the family summary below does not narrow them.
 | Ember Crucible | Infantry combat/objective modes | Deathmatch/Instagib native movement/fire/ACK pass; broader modes and routes open |
 | Tidal Citadel | CTF, teamdeathmatch, domination, assault, team-elimination | Vehicles/objectives/native session and visual acceptance open |
 | Sunscar Convoy | Payload, assault, combined-arms, teamdeathmatch, domination, VIP escort | Convoy/vehicles/objectives/native session and visual acceptance open |
-| Asterion Relay | LATTICE (`cocs`, `cocs-coop`) | Standalone command board/HOLD/PvP Fighter acceptance; co-op economy, physical input, traversal and full objective gameplay open |
-| Monsoon Foundry | LATTICE (`cocs`, `cocs-coop`) | Standalone command board/HOLD/PvP Fighter acceptance; co-op economy, physical input, traversal and full objective gameplay open |
+| Asterion Relay | LATTICE (`cocs`, `cocs-coop`) | Native mouse/key command-board/HOLD/PvP Fighter acceptance; co-op economy, traversal and full objective gameplay open |
+| Monsoon Foundry | LATTICE (`cocs`, `cocs-coop`) | Native mouse/key PvP command acceptance; co-op physical input/economy, traversal and full objective gameplay open |
 | Ion Speedway | `puma-race` | Standalone native driving, compact HUD, box-aware chase and source reset independently pass; lap completion and results/restart open |
 | Aurora Stadium | `puma-soccer` | Standalone native driving, compact HUD, box-aware chase and ball/score state independently pass; goal scoring and results/restart open |
 
@@ -64,9 +64,9 @@ the locked JSON contract; the family summary below does not narrow them.
   loss; a private culling-only experiment reveals the map, not full art parity.
   A production GLB exporter correction remains open; the default native
   environment now uses its own procedural sky and does not depend on that GLB.
-- The combined 46-gate verifier passes with rocket presentation, sports
-  camera/HUD polish and LATTICE command modules. The independent extra Deathmatch pickup/fire route failed
-  before pickup; a harness-only navigation correction is pending.
+- The combined 47-gate verifier passes with rocket presentation, sports
+  camera/HUD polish, source-aware projectile navigation and compact LATTICE
+  command modules. Focused native LATTICE mouse/key follow-ups also pass.
 - Bounded native death/respawn and private-X11 focus milestones now have
   independent acceptance. Default weapon pickup/15s return also independently
   passes, as do nonlethal damage and health pickup/12s return.
