@@ -1,0 +1,122 @@
+{
+  "platform": "win32",
+  "status": "passed",
+  "cases": [
+    {
+      "map": "meridian-exchange",
+      "passed": true,
+      "port": 50066,
+      "native_pid": 3404,
+      "cleanup": true
+    },
+    {
+      "map": "verdant-reliquary",
+      "passed": true,
+      "port": 50071,
+      "native_pid": 3480,
+      "cleanup": true
+    },
+    {
+      "map": "ember-crucible",
+      "passed": true,
+      "port": 50080,
+      "native_pid": 6996,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "prism-foundry",
+      "passed": true,
+      "port": 50084,
+      "native_pid": 2412,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "aurora-basin",
+      "passed": true,
+      "port": 60664,
+      "native_pid": 6396,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "cinder-array",
+      "passed": true,
+      "port": 60673,
+      "native_pid": 4796,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "lacuna-court",
+      "passed": true,
+      "port": 60678,
+      "native_pid": 4336,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "vermilion-fold",
+      "passed": true,
+      "port": 60682,
+      "native_pid": 4440,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "nacre-engine",
+      "passed": true,
+      "port": 60687,
+      "native_pid": 6380,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm-identity-resources",
+      "passed": true,
+      "pck": true
+    },
+    {
+      "experience": "showcase",
+      "passed": true,
+      "authority": false,
+      "native_pid": 8272,
+      "cleanup": true
+    },
+    {
+      "experience": "aurora-basin",
+      "passed": true,
+      "authority": false,
+      "native_pid": 8176,
+      "cleanup": true
+    },
+    {
+      "experience": "cinder-array",
+      "passed": true,
+      "authority": false,
+      "native_pid": 5540,
+      "cleanup": true
+    },
+    {
+      "experience": "particle-lab",
+      "passed": true,
+      "authority": false,
+      "native_pid": 8520,
+      "cleanup": true
+    },
+    {
+      "experience": "shader-lab",
+      "passed": true,
+      "authority": false,
+      "native_pid": 5732,
+      "cleanup": true
+    }
+  ],
+  "graphical": false,
+  "manifest_sha256": "94e490a59de978e5a513ad286af5a1bc08f107f83b5317e0f9e4ab966945a6a4",
+  "port_commit": "d55da6b570e7adc4511e62a244e72ea1152d9825",
+  "files_verified": 133,
+  "preview_load": true,
+  "identity_resources": true,
+  "graphics_resources": true
+}

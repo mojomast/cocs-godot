@@ -1,0 +1,7 @@
+PACKAGE_NATIVE_ONLY {"authority":false,"experience":"aurora-basin"}
+PACKAGE_NATIVE_STARTED {"pid":8176,"scene":"res://aurora_basin/demo.tscn"}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+AURORA_READY {"build_ms":125.296,"collision_shapes":206,"invalid_transforms":0,"lights":3,"mesh_triangles":45976,"meshes":87,"moth_cache":{"limit":128,"textures":11},"multimesh_instances":223,"multimesh_triangles":10302,"multimeshes":9,"nodes":525,"particle_capacity":384,"particle_emitters":3,"shadow_lights":1}
+AURORA_SMOKE_PASS frames=0
+PACKAGE_STOPPED

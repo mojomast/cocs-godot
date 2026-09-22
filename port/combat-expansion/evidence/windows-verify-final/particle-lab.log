@@ -1,0 +1,6 @@
+PACKAGE_NATIVE_ONLY {"authority":false,"experience":"particle-lab"}
+PACKAGE_NATIVE_STARTED {"pid":8520,"scene":"res://particle_lab/demo.tscn"}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PARTICLE_LAB_SMOKE {"error":"","field":{"amount_ratio":1.0,"backend":"gpu","backend_label":"GPUParticles3D / GPU transform feedback","budget":1048576,"buffer_payload_estimate_bytes":10485760,"capacity":32768,"clock_seconds":0.0833333333333333,"disposed":false,"draw_slots":32768,"effect_frames":3,"emitter_amount":32768,"instance_count":0,"intensity":0.85,"moth_cached_textures":6,"moth_resources_ready":true,"particle_draw_passes":1,"particle_size":0.34,"paused":false,"preset":"vortex","requested_count":32768,"visible_instance_count":0},"gpu_performance_test":false,"ok":true}
+PACKAGE_STOPPED
