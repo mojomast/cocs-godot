@@ -1,0 +1,122 @@
+{
+  "provenance": "Source-informed fixture: actual Match.emit + Horde EventCursor, manually supplied payloads; not a live match",
+  "events": [
+    {
+      "type": "damage",
+      "id": 1,
+      "time": 1,
+      "actor": 7,
+      "source": 2,
+      "amount": 25,
+      "shield": 0,
+      "shieldBreak": false,
+      "sourceId": 1
+    },
+    {
+      "type": "explosion",
+      "id": 2,
+      "time": 1,
+      "pos": {
+        "x": -1.8,
+        "y": 1.5,
+        "z": 0
+      },
+      "weapon": 1,
+      "sourceId": 2
+    },
+    {
+      "type": "teleport",
+      "id": 3,
+      "time": 1,
+      "actor": 7,
+      "from": {
+        "x": 1.8,
+        "y": 1.5,
+        "z": 0
+      },
+      "to": {
+        "x": 1.8,
+        "y": 1.5,
+        "z": -8
+      },
+      "sourceId": "fixture-pad"
+    },
+    {
+      "type": "pickup",
+      "id": 4,
+      "time": 1,
+      "actor": 8,
+      "kind": "health",
+      "powerup": false,
+      "economy": false,
+      "sourceId": 4
+    },
+    {
+      "type": "mender-heal",
+      "id": 5,
+      "time": 1,
+      "actor": 9,
+      "x": 5.4,
+      "z": -8,
+      "radius": 3,
+      "healed": 2,
+      "sourceId": 5
+    }
+  ],
+  "duplicates": [
+    {
+      "type": "teleport",
+      "id": 6,
+      "time": 1,
+      "actor": 7,
+      "from": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "to": {
+        "x": 1,
+        "y": 0,
+        "z": 0
+      },
+      "sourceId": "same-pad"
+    },
+    {
+      "type": "teleport",
+      "id": 7,
+      "time": 1,
+      "actor": 7,
+      "from": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "to": {
+        "x": 1,
+        "y": 0,
+        "z": 0
+      },
+      "sourceId": "same-pad"
+    }
+  ],
+  "actors": [
+    {
+      "id": 7,
+      "x": -5.4,
+      "y": 0.5,
+      "z": 0
+    },
+    {
+      "id": 8,
+      "x": 5.4,
+      "y": 0.5,
+      "z": 0
+    },
+    {
+      "id": 9,
+      "x": 5.4,
+      "y": 0.5,
+      "z": -8
+    }
+  ]
+}

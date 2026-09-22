@@ -1,0 +1,134 @@
+[
+  {
+    "name": "spark-impact",
+    "index": 0,
+    "width": 48,
+    "height": 48,
+    "fps": 14,
+    "colors": 36,
+    "alpha": [
+      255
+    ],
+    "sha256": "4cab5c4ce23e721cbe3a0f2b7f5647b52f2f62f4cd42751008c3c814ce577f70"
+  },
+  {
+    "name": "spark-impact",
+    "index": 1,
+    "width": 48,
+    "height": 48,
+    "fps": 14,
+    "colors": 34,
+    "alpha": [
+      255
+    ],
+    "sha256": "58977229a354d3fa2a222fe660cfc0de1e9ebe741e156b757a3c612429853e6f"
+  },
+  {
+    "name": "effect-explosion",
+    "index": 0,
+    "width": 48,
+    "height": 48,
+    "fps": 14,
+    "colors": 30,
+    "alpha": [
+      255
+    ],
+    "sha256": "c679fdeb30a2b009fb4440618b7f1f2690aa643780cabe2b46a6e0cdf0c65a6f"
+  },
+  {
+    "name": "effect-explosion",
+    "index": 1,
+    "width": 48,
+    "height": 48,
+    "fps": 14,
+    "colors": 30,
+    "alpha": [
+      255
+    ],
+    "sha256": "f61ee6fba6ff7212e69fd215bb3647be05163c00b7c8819c196ed2b5a58da0af"
+  },
+  {
+    "name": "effect-explosion",
+    "index": 2,
+    "width": 48,
+    "height": 48,
+    "fps": 14,
+    "colors": 27,
+    "alpha": [
+      255
+    ],
+    "sha256": "9fbb973ee10bbd4374701d72af5f474d6344399df067752b1a738bf1af493580"
+  },
+  {
+    "name": "effect-teleport",
+    "index": 0,
+    "width": 48,
+    "height": 48,
+    "fps": 12,
+    "colors": 45,
+    "alpha": [
+      255
+    ],
+    "sha256": "bd1545ea3b05020216c930849b301b56dbaa1843e30e097e521c989a44fb185d"
+  },
+  {
+    "name": "effect-teleport",
+    "index": 1,
+    "width": 48,
+    "height": 48,
+    "fps": 12,
+    "colors": 45,
+    "alpha": [
+      255
+    ],
+    "sha256": "e6d49ab976193df9ef72a8d69f518614b241ee06130e2f00407a11a85f3e4b87"
+  },
+  {
+    "name": "effect-teleport",
+    "index": 2,
+    "width": 48,
+    "height": 48,
+    "fps": 12,
+    "colors": 40,
+    "alpha": [
+      255
+    ],
+    "sha256": "6ae9a75f84598e9ce348911e4f28eb93c6a4df248f0982d0d294515187fbc6fe"
+  },
+  {
+    "name": "effect-heal",
+    "index": 0,
+    "width": 48,
+    "height": 48,
+    "fps": 10,
+    "colors": 114,
+    "alpha": [
+      255
+    ],
+    "sha256": "be61d9cc3363d2d89a7c4ff6baf73d53c62f860fbdd9182e3be93090a7be9cfe"
+  },
+  {
+    "name": "effect-heal",
+    "index": 1,
+    "width": 48,
+    "height": 48,
+    "fps": 10,
+    "colors": 88,
+    "alpha": [
+      255
+    ],
+    "sha256": "6a4dbee13113cdcfe35c025d5820e1072e63d0daa44945942b376aceb31422a3"
+  },
+  {
+    "name": "effect-heal",
+    "index": 2,
+    "width": 48,
+    "height": 48,
+    "fps": 10,
+    "colors": 110,
+    "alpha": [
+      255
+    ],
+    "sha256": "f47b996e9057f646b1654c974b6ca4cf254951b63baeff96ece9fea7a4a400cb"
+  }
+]

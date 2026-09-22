@@ -1,0 +1,14 @@
+{
+  "alpha_color_tones": 545,
+  "angled_changed_pixels": 2581,
+  "failures": 0,
+  "far_changed_pixels": 667,
+  "fixture": true,
+  "method": "gl_compatibility",
+  "near_changed_pixels": 2581,
+  "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+  "size": [
+    960,
+    540
+  ]
+}

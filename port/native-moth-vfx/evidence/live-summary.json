@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "normal_rate": true,
+  "state_injection": false,
+  "correlated_events": 23,
+  "spawned": 23,
+  "snapshots": 446,
+  "steps": 1341,
+  "source_seconds": 22.333333333333346,
+  "play_wall_seconds": 22.0,
+  "authority_closed": true,
+  "private_staging_removed": true
+}
