@@ -2,6 +2,15 @@ import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {pathToFileURL} from 'node:url';
+import {parseInputEnvelope} from '../../game/protocol.mjs';
+export function validateHygiene(summary, stdout, stderr) {
+ assert.equal(summary.exit,0,'native harness failed');
+ assert.equal(summary.serverClosed,true,'listener leaked');
+ assert.equal(summary.sockets,0,'sockets leaked');
+ assert.equal(summary.temporaryTreeRemoved,true,'private XDG leaked');
+ assert(summary.cleanup?.length===2&&summary.cleanup.every(p=>p.reaped&&p.absent),'owned native/Xvfb cleanup missing');
+ assert(!/SCRIPT ERROR|Parse Error|ERROR:|ObjectDB instances leaked|resources still in use|RIDs? of type.*leaked/.test(stdout+stderr),'native resource/script errors');
+}
 export function validate(wire,stdout,scenario='startup') {
  const frames=wire.filter(r=>r.direction==='out'),rows=stdout.split('\n').filter(l=>l.startsWith('HORDE_NATIVE ')).map(l=>JSON.parse(l.slice(13)));
  assert(rows.length>0,'no native evidence');
@@ -51,4 +60,75 @@ export function validate(wire,stdout,scenario='startup') {
  }
  return {status:'PASS',scenario,correlated,receipts:receipts.length,ackHighWater:Math.max(...rows.map(r=>r.ack)),won,deaths,eventTypes:[...new Set(events.map(e=>e.type))],nativeTraceCompletionProven:false};
 }
-if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){const dir=process.argv[2];const read=n=>gunzipSync(readFileSync(`${dir}/${n}.gz`)).toString();const summary=JSON.parse(readFileSync(`${dir}/summary.json`));const result=validate(read('wire.jsonl').trim().split('\n').map(JSON.parse),read('native.stdout.log'),summary.scenario);writeFileSync(`${dir}/validation.json`,JSON.stringify(result,null,2));console.log(JSON.stringify(result));}
+export function validateRun({wire,stdout,stderr,summary,launch}) {
+ validateHygiene(summary,stdout,stderr);
+ const result=validate(wire,stdout,summary.scenario);
+ const outputs=wire.filter(r=>r.direction==='out');
+ const snapshots=outputs.filter(r=>r.frame.type==='snapshot');
+ const receipts=new Map(wire.filter(r=>r.direction==='in'&&r.frame.type==='input').map(r=>[`${r.round}:${r.frame.seq}`,r]));
+ const applied=new Map();
+ for(const step of wire.filter(r=>r.direction==='step'&&r.inputSeq!==null)) {
+  const key=`${step.round}:${step.inputSeq}`,receipt=receipts.get(key);
+  assert(receipt,'stepped input has no receipt');
+  assert(!applied.has(key),'input sample stepped more than once');
+  assert.equal(receipt.frame.inputEpoch,step.inputEpoch,'stale epoch stepped');
+  const controls=receipt.frame.cancel?{}:parseInputEnvelope(receipt.frame);
+  assert.deepEqual(step.controls,controls,'stepped controls differ from parsed source input');
+  assert.equal(step.appliedSeq,step.inputSeq);
+  applied.set(key,step);
+ }
+ assert(applied.size>0,'no actual stepped-input evidence');
+ for(const snapshot of snapshots) {
+  const f=snapshot.frame,status=f.hordeInput;
+  assert(status&&status.appliedSeq===f.acks[0]&&status.receivedSeq>=status.appliedSeq,'receipt/applied metadata invalid');
+  if(f.acks[0]>0) {
+   const step=applied.get(`${snapshot.round}:${f.acks[0]}`);
+   assert(step&&step.observedMs<=snapshot.observedMs,'ACK was not stepped before snapshot');
+  }
+ }
+ const rows=stdout.split('\n').filter(s=>s.startsWith('HORDE_NATIVE ')).map(s=>JSON.parse(s.slice(13)));
+ for(const row of rows.filter(r=>r.seq>=0)) {
+  const frame=snapshots.find(s=>s.round===row.round&&s.frame.seq===row.seq).frame;
+  assert.equal(row.ack,frame.acks[0],'native ACK does not equal stepped high-water');
+ }
+ const products=stdout.split('\n').filter(s=>s.startsWith('HORDE_PRODUCT ')).map(s=>JSON.parse(s.slice(14)));
+ assert(products.length===1&&products[0].scene==='res://horde/demo.tscn'&&products[0].script==='res://horde/demo.gd'&&products[0].scoreboard,'observer did not instantiate actual product scene');
+ const layouts=stdout.split('\n').filter(s=>s.startsWith('HORDE_LAYOUT ')).map(s=>JSON.parse(s.slice(13)));
+ for(const size of [[960,640],[1280,800]]) assert(layouts.some(l=>JSON.stringify(l.viewport)===JSON.stringify(size)),'both product viewport sizes required');
+ for(const layout of layouts) {
+  assert(layout.passive&&!layout.intersects&&!layout.scoreboard_intersects,'Horde HUD overlaps shared UI');
+  if(layout.scoreboard_visible)assert(layout.scoreboard_bottom<=layout.viewport[1],'scoreboard clipped');
+ }
+ const trace=stdout.split('\n').filter(s=>s.startsWith('PORT_NATIVE_TRACE ')).map(s=>JSON.parse(s.slice(18)));
+ assert(trace.filter(t=>t.event==='recording_end'&&t.complete===true).length===1,'native recording completion absent/truncated');
+ assert(!trace.some(t=>t.event==='limit'),'native trace truncated');
+ const events=outputs.filter(r=>r.frame.type==='events').flatMap(r=>r.frame.items);
+ assert(events.some(e=>e.type==='horde-modifier'&&e.sourceId==='swarm'&&Number.isSafeInteger(e.id)),'source string-ID event missing');
+ if(summary.scenario==='startup')assert(snapshots.every(r=>r.frame.state.singleplayer.waveTarget===10),'default-ten startup required');
+ if(summary.scenario==='combat') {
+  const state=outputs.find(r=>r.frame.type==='results')?.frame.state;
+  assert(state?.over&&state.singleplayer.winner===0&&state.singleplayer.waveTarget===1&&state.singleplayer.enemiesAlive===0,'legal one-wave source outcome required');
+  assert.equal(state.singleplayer.kills,3);
+  assert.deepEqual([...new Set(events.filter(e=>e.type==='death'&&e.killer===0).map(e=>e.actor))].sort(),[1,2,3]);
+  assert(layouts.filter(l=>l.tag.startsWith('results')&&l.scoreboard_visible).length>=2,'results scoreboard not seen at both sizes');
+ }
+ if(summary.scenario==='death') {
+  const dead=snapshots.find(r=>r.frame.state.actors.some(a=>a.id===0&&a.health<=0&&a.dead>0));
+  assert(dead&&dead.frame.state.singleplayer.lives===2,'real dead actor/life loss missing');
+  assert(snapshots.some(r=>r.observedMs>dead.observedMs&&r.frame.state.singleplayer.lives===2&&r.frame.state.actors.some(a=>a.id===0&&a.health>0&&a.dead<=0)),'living respawn missing');
+  assert(wire.some(r=>r.direction==='step'&&r.observedMs<dead.observedMs&&r.controls.crouch),'source-held pre-death action missing');
+  assert(events.some(e=>e.type==='death'&&e.actor===0&&e.killer!==0));
+  assert(events.some(e=>e.type==='singleplayer-life'&&e.lives===2));
+ }
+ const first=snapshots[0],last=snapshots.filter(r=>r.round===1).at(-1);
+ return {...result,steppedSamples:applied.size,receivedHighWater:Math.max(...snapshots.map(r=>r.frame.hordeInput.receivedSeq)),
+  nativeTraceCompletionProven:true,productComposition:true,harnessExit:summary.exit,
+  clockDiagnostic:{sourceSeconds:last.frame.state.time-first.frame.state.time,wallSeconds:(last.observedMs-first.observedMs)/1000},
+  runtimeCommit:launch.base};
+}
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
+ const dir=process.argv[2],read=n=>gunzipSync(readFileSync(`${dir}/${n}.gz`)).toString();
+ const result=validateRun({wire:read('wire.jsonl').trim().split('\n').map(JSON.parse),stdout:read('native.stdout.log'),stderr:read('native.stderr.log'),
+  summary:JSON.parse(readFileSync(`${dir}/summary.json`)),launch:JSON.parse(readFileSync(`${dir}/launch.json`))});
+ writeFileSync(`${dir}/validation.json`,JSON.stringify(result,null,2));console.log(JSON.stringify(result));
+}

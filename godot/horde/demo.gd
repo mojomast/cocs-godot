@@ -1,5 +1,8 @@
 extends "res://world/session.gd"
 const HordeModel = preload("res://horde/model.gd")
+const HordeClient = preload("res://horde/client.gd")
+const HordeControls = preload("res://horde/controls.gd")
+const LOOK_GAIN := 0.002 # default source mouse sensitivity, app/page.tsx
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible"]
 var horde := HordeModel.new()
 var horde_label := Label.new()
@@ -7,6 +10,16 @@ var waves := 10
 var evidence := false
 var evidence_rows := 0
 var latest: Dictionary = {}
+var controls := HordeControls.new()
+var trace_ended := false
+var horde_client: Node
+
+func _init() -> void:
+	# The inherited field creates a detached Node. Free it before specializing;
+	# never override the script of an already-instantiated product scene.
+	client.free()
+	client = HordeClient.new()
+	horde_client = client
 
 func _ready() -> void:
 	add_child(camera)
@@ -67,6 +80,7 @@ func _ready() -> void:
 		return
 	world.get_node("StaticPickupMarkers").hide()
 	client.connection_error.connect(on_error)
+	horde_client.input_reset.connect(func(_reason: String) -> void: release_pointer())
 	client.lobby.connect(on_lobby)
 	client.started.connect(on_started)
 	client.snapshot.connect(on_snapshot)
@@ -74,6 +88,25 @@ func _ready() -> void:
 	client.events.connect(func(items: Array) -> void:
 		if phase == 3: combat.apply_events(items, client.actor_id))
 	connect_selected_match()
+	# Horde's source-default desktop bindings, localized to this composition.
+	call_deferred("show_controls")
+
+func show_controls() -> void:
+	var hud: Node = get_node_or_null("GameHUD")
+	if hud != null:
+		hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility\nClick fire · RMB ADS · Z/MMB alt · R reload · F melee · G grenade · Q power · E use\nEsc release · Tab scores · 1–9/0 or wheel weapons"
+
+func update_look(relative: Vector2) -> void:
+	if not can_capture_pointer() or not relative.is_finite(): return
+	var angles := ControlMath.look(yaw - relative.x * LOOK_GAIN, pitch - relative.y * LOOK_GAIN)
+	yaw = angles.x
+	pitch = angles.y
+
+func release_pointer() -> void:
+	controls.clear()
+	if phase == 3 and horde_client.input_epoch > 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		horde_client.send_controls({}, true) # immediate FIFO cancellation, not a fire release
+	super.release_pointer()
 
 func on_lobby(frame: Dictionary) -> void:
 	if phase == 1:
@@ -133,20 +166,56 @@ func on_error(message: String) -> void:
 	super.on_error(message)
 
 func controls_released() -> bool:
-	for key: int in [KEY_W,KEY_A,KEY_S,KEY_D,KEY_SPACE,KEY_E,KEY_R,KEY_F,KEY_SHIFT,KEY_CTRL]:
+	for key: int in [KEY_W,KEY_A,KEY_S,KEY_D,KEY_SPACE,KEY_E,KEY_R,KEY_F,KEY_G,KEY_Q,KEY_X,KEY_Z,KEY_C,KEY_SHIFT,KEY_CTRL]:
 		if Input.is_physical_key_pressed(key): return false
-	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
+	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
+
+func _input(event: InputEvent) -> void:
+	controls.record(event, weapon_controls_active(), presentation.local_actor)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not controls_released(): return
 	super._unhandled_input(event)
 
 func _process(delta: float) -> void:
-	super._process(delta)
+	# Local specialization of session's handshake/watch/send loop. Shared session
+	# keeps its old contract; this scene samples source press/hold controls instead.
+	if not advance_handshake(delta): return
+	elapsed += delta
+	if phase == 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN: begin_room()
+	if phase == 3:
+		var was_stale := snapshot_watch.stale()
+		snapshot_watch.advance(delta)
+		if not was_stale and snapshot_watch.stale(): release_pointer()
+		camera.rotation = Vector3(pitch, yaw, 0)
+		send_elapsed += delta
+		if send_elapsed >= 1.0 / 60.0:
+			send_elapsed = fmod(send_elapsed, 1.0 / 60.0)
+			var active := weapon_controls_active()
+			if not active: controls.clear()
+			var sample: Dictionary = controls.sample(yaw, pitch) if active else {}
+			var result: Error = horde_client.send_controls(sample, not active)
+			if result == OK: controls.queued()
+			if trace_enabled: emit_native_trace(trace_input(sample, result))
+			if result != OK: on_error("Input could not be queued. Relaunch to reconnect.")
 	horde_label.custom_minimum_size.x = maxf(240, get_viewport().get_visible_rect().size.x - 40)
 	if phase == 3 and snapshot_watch.stale():
 		horde.apply({}, true)
 		horde_label.text = horde.text
+
+func trace_input(sample: Dictionary, result: Error) -> Dictionary:
+	var record := super.trace_input(sample, result)
+	for key: String in ["power", "melee", "grenade", "ads", "altFire"]: record.controls[key] = sample.get(key, false)
+	record["input_seq"] = client.input_seq
+	record["input_epoch"] = horde_client.input_epoch
+	record["received_input"] = horde_client.received_input
+	return record
+
+func _exit_tree() -> void:
+	if trace_enabled and not trace_ended:
+		trace_ended = true
+		emit_native_trace({"event":"recording_end", "complete":trace_count < TRACE_LIMIT, "phase":phase})
+	super._exit_tree()
 
 func record_state(seq: int) -> void:
 	if not evidence or evidence_rows >= 5500: return
@@ -154,5 +223,5 @@ func record_state(seq: int) -> void:
 	for id: int in presentation.actors:
 		var visual: Node3D = presentation.actors[id]
 		rendered[str(id)] = {"position":[visual.position.x,visual.position.y,visual.position.z],"visible":visual.visible}
-	print("HORDE_NATIVE ", JSON.stringify({"round":round_starts,"seq":seq,"actor_id":client.actor_id,"ack":client.last_ack,"model":horde.state,"hud":horde_label.text,"rendered":rendered,"captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,"phase":phase}))
+	print("HORDE_NATIVE ", JSON.stringify({"round":round_starts,"seq":seq,"actor_id":client.actor_id,"ack":client.last_ack,"input_epoch":horde_client.input_epoch,"input_status":horde_client.input_status,"model":horde.state,"hud":horde_label.text,"rendered":rendered,"captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,"phase":phase}))
 	evidence_rows += 1

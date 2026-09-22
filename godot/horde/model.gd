@@ -30,5 +30,5 @@ func apply(snapshot: Dictionary, stale: bool = false) -> void:
 	if boss is Dictionary and boss.get("alive") == true:
 		text += "\n%s · HP %d/%d · PHASE %d" % [str(boss.get("name", "Boss")), int(number(boss.get("hp"))), int(number(boss.get("maxHp"))), int(number(boss.get("phase")))]
 	if state.get("upgrades") is Array and not state.upgrades.is_empty():
-		text += "\nOptional upgrades available in source; selection not supported by this native transport."
+		text += "\nUPGRADES AVAILABLE · selection unsupported"
 	if snapshot.get("over") == true: text += "\nEnter: restart · release held controls, then click to engage"
