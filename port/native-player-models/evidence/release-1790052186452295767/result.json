@@ -1,0 +1,12 @@
+{
+  "files": {
+    "candidate.pck": "679cc3add034011708fd469d6055f020cf71a982f3652573190bfdacc2f3e002",
+    "candidate.x86_64": "3c0994716982c2f557f7738a789269074520ac0c0a3f11bb7a84a34ee96c683d"
+  },
+  "template_sha256": "3c0994716982c2f557f7738a789269074520ac0c0a3f11bb7a84a34ee96c683d",
+  "fresh_extraction": true,
+  "source_project_removed": true,
+  "candidate_preview_only": true,
+  "full_game_package": false,
+  "xvfb_exit": 0
+}

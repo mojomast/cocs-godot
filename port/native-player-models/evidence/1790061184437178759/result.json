@@ -1,0 +1,274 @@
+{
+  "engine": "4.5.2.stable.official.6ce3de25a",
+  "inputs": {
+    "godot/player_models/builder.gd": "36871df836cdfb70e7940aaa7e9abb6b97e4c74b293b95c9a7b1cff31ebbc508",
+    "godot/player_models/candidate.gd": "60f492cb6091cf1d382d4dd34f42ebcb33b973bc717ebd19483d015492dd8403",
+    "godot/player_models/preview.gd": "136446848bd43160e2f5a09b235b96e21b85ff08fab13588b231123c6c6e95ed",
+    "godot/player_models/preview.tscn": "24a2eb611b254941da97df0773bbe7327edd680051100811011787fb5e0a4137",
+    "godot/player_models/recipes.json": "47d97194dfcbe65a78cfae69a79705c87aabf94ed23dea996e7d9ed0558a3f49",
+    "godot/tests/player_models/baseline.gd": "64db4db40fb55b6eb7028cad10c3129a58ee415ea2b4d0583f4d7bea20dd793a",
+    "godot/tests/player_models/geometry.gd": "c1a79face88d06cb3d7fd470e8ccb0abcbd41620e37f200233a7afb3cc5e372b",
+    "godot/tests/player_models/live.gd": "7deab7349c7d434a433a99a013d51991658375e535a6c2652d0d3c46c3a01642"
+  },
+  "patch_sha256": "6158f7795f1d6d6ccd6b8fe275e381aeed1fd218499a204c2a650453e49def4b",
+  "clean_rebuilds": 2,
+  "geometry": [
+    {
+      "cache_meshes": 47,
+      "checks": 112013,
+      "passed": true,
+      "synthetic_cpu_construction_only": [
+        {
+          "construction_usec": [
+            812,
+            504,
+            485,
+            521,
+            492,
+            493,
+            478,
+            479,
+            499,
+            478,
+            481
+          ],
+          "count": 1
+        },
+        {
+          "construction_usec": [
+            8836,
+            7706,
+            7844,
+            10217,
+            8465,
+            8525,
+            7646,
+            7727,
+            7700,
+            7644,
+            7707
+          ],
+          "count": 16
+        },
+        {
+          "construction_usec": [
+            15876,
+            16278,
+            19456,
+            15318,
+            15344,
+            15271,
+            15348,
+            20181,
+            16244,
+            16828,
+            15281
+          ],
+          "count": 32
+        }
+      ],
+      "variants": [
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "claude",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "622fb4663406a288edbf4b3d13ad1920d6e1cac360623bd1af3471b4345e99f1",
+          "id": "grok",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "979e579b70ca78587240781dd31dad9e2c71054bdae67343c6168cf359d21e65",
+          "id": "meta",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "chatgpt",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "gemini",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "deepseek",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "mistral",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "kimi",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "qwen",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "unknown",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        }
+      ]
+    },
+    {
+      "cache_meshes": 47,
+      "checks": 112013,
+      "passed": true,
+      "synthetic_cpu_construction_only": [
+        {
+          "construction_usec": [
+            817,
+            491,
+            484,
+            477,
+            476,
+            478,
+            475,
+            478,
+            545,
+            480,
+            474
+          ],
+          "count": 1
+        },
+        {
+          "construction_usec": [
+            8095,
+            7634,
+            7673,
+            7630,
+            10383,
+            8671,
+            7729,
+            7612,
+            8366,
+            7677,
+            7639
+          ],
+          "count": 16
+        },
+        {
+          "construction_usec": [
+            15747,
+            15401,
+            20347,
+            15520,
+            16106,
+            15533,
+            16588,
+            16939,
+            16291,
+            19289,
+            22360
+          ],
+          "count": 32
+        }
+      ],
+      "variants": [
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "claude",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "622fb4663406a288edbf4b3d13ad1920d6e1cac360623bd1af3471b4345e99f1",
+          "id": "grok",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "979e579b70ca78587240781dd31dad9e2c71054bdae67343c6168cf359d21e65",
+          "id": "meta",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "chatgpt",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "gemini",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "deepseek",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "mistral",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "kimi",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "qwen",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        },
+        {
+          "canonical_sha256": "2b00816d8cc7b9094e2ffaf30d35052a113e7fe9529d6284a50fe88ba8ef4dbf",
+          "id": "unknown",
+          "meshes": 46,
+          "nodes": 47,
+          "triangles": 2760
+        }
+      ]
+    }
+  ],
+  "staged_inherited_gates": true,
+  "live": false,
+  "export": false
+}

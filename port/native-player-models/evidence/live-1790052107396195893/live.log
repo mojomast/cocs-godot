@@ -1,0 +1,16 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+ERROR: PLAYER_MODEL_LIVE: normal-rate deadline
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/player_models/live.gd:26)
+       [1] _process (res://tests/player_models/live.gd:54)
+ERROR: PLAYER_MODEL_LIVE: natural results and restart
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/player_models/live.gd:26)
+       [1] finish (res://tests/player_models/live.gd:84)
+PLAYER_MODEL_LIVE_RESULT {"elapsed_seconds":85.0000000000011,"moving_transitions":5047,"passed":false,"round_starts":1,"snapshots":2569,"synthetic":false,"turning_transitions":3564}

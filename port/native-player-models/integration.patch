@@ -1,0 +1,10 @@
+--- a/godot/world/presentation.gd
++++ b/godot/world/presentation.gd
+@@ -5 +5 @@
+-const ActorVisual = preload("res://world/actor_visual.gd")
++const ActorVisual = preload("res://player_models/candidate.gd")
+--- a/tools/godot-package/build.py
++++ b/tools/godot-package/build.py
+@@ -167 +167 @@
+-include_filter="content/generated/*.json,content/generated/maps/*/*.json"
++include_filter="content/generated/*.json,content/generated/maps/*/*.json,player_models/*.json"

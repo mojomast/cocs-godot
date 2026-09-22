@@ -1,0 +1,31 @@
+{
+  "review_baseline": "d3062057cbfe433b8d953f1dc6fd51398b05ba1f",
+  "recovered_files": 230,
+  "original_index_sha256": "40d779800e32cc841fde892762078856c57a907af71a387875b2c3999af08b57",
+  "runtime_and_test_inputs_match_recovered_verification": true,
+  "canonical_geometry_matches_recovered_verification": true,
+  "patch_sha256": "6158f7795f1d6d6ccd6b8fe275e381aeed1fd218499a204c2a650453e49def4b",
+  "numerical_evidence": "1790061184437178759",
+  "live_evidence": "live-1790061203072908510",
+  "release_evidence": "release-1790061295968348521",
+  "live_summary": {
+    "elapsed_seconds": 59.0221969999984,
+    "moving_transitions": 3430,
+    "passed": true,
+    "round_starts": 2,
+    "snapshots": 1800,
+    "synthetic": false,
+    "turning_transitions": 2440
+  },
+  "clean_restarts": 1,
+  "owned_port": 43401,
+  "owned_port_closed": true,
+  "visual_matched_images_reviewed": 40,
+  "new_release_images_reviewed": 2,
+  "new_live_images_reviewed": 1,
+  "integration_decision": "HOLD: distant variant/team-stripe readability and rendering cost",
+  "historical_metrics_rerun": false,
+  "full_game_package": false,
+  "staged_whitespace_check_passed": true,
+  "zero_context_patch_apply_check_passed": true
+}

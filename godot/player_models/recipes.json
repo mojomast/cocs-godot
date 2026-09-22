@@ -1,0 +1,2635 @@
+{
+  "generator": "faceted-operator-1",
+  "seed": 0,
+  "variants": {
+    "claude": [
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "BootL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.805,
+          -0.055
+        ],
+        "size": [
+          0.205,
+          0.19,
+          0.35
+        ],
+        "upper": 0.78,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ToeL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.805,
+          -0.205
+        ],
+        "size": [
+          0.18,
+          0.12,
+          0.075
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ShinL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.615,
+          0.005
+        ],
+        "size": [
+          0.15,
+          0.21,
+          0.19
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "armor",
+        "name": "ShinPlateL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.585,
+          -0.1
+        ],
+        "size": [
+          0.135,
+          0.2,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "KneeL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.445,
+          -0.03
+        ],
+        "size": [
+          0.165,
+          0.12,
+          0.22
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.76,
+        "material": "dark",
+        "name": "ThighL",
+        "op": "prism",
+        "position": [
+          -0.135,
+          -0.3,
+          0.015
+        ],
+        "size": [
+          0.19,
+          0.21,
+          0.235
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.72,
+        "material": "armor",
+        "name": "ThighPlateL",
+        "op": "prism",
+        "position": [
+          -0.135,
+          -0.295,
+          -0.105
+        ],
+        "size": [
+          0.15,
+          0.19,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.78,
+        "material": "armor",
+        "name": "ShoulderL",
+        "op": "prism",
+        "position": [
+          -0.27749999999999997,
+          0.305,
+          0
+        ],
+        "size": [
+          0.145,
+          0.205,
+          0.29
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.82,
+        "material": "dark",
+        "name": "UpperArmL",
+        "op": "prism",
+        "position": [
+          -0.28,
+          0.13,
+          -0.025
+        ],
+        "size": [
+          0.125,
+          0.23,
+          0.16
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ElbowL",
+        "op": "prism",
+        "position": [
+          -0.265,
+          0.015,
+          -0.06
+        ],
+        "size": [
+          0.12,
+          0.105,
+          0.15
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ForearmL",
+        "op": "prism",
+        "position": [
+          -0.04250000000000001,
+          0.015,
+          -0.245
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.5787270513808733
+        ],
+        "upper": 0.85,
+        "yaw": -0.8771642448372547
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "armor",
+        "name": "GauntletL",
+        "op": "prism",
+        "position": [
+          -0.04250000000000001,
+          0.06,
+          -0.245
+        ],
+        "size": [
+          0.115,
+          0.045,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": -0.8771642448372547
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "HandL",
+        "op": "prism",
+        "position": [
+          0.18,
+          0.015,
+          -0.43
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.105
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "BootR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.805,
+          -0.055
+        ],
+        "size": [
+          0.205,
+          0.19,
+          0.35
+        ],
+        "upper": 0.78,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ToeR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.805,
+          -0.205
+        ],
+        "size": [
+          0.18,
+          0.12,
+          0.075
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ShinR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.615,
+          0.005
+        ],
+        "size": [
+          0.15,
+          0.21,
+          0.19
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "armor",
+        "name": "ShinPlateR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.585,
+          -0.1
+        ],
+        "size": [
+          0.135,
+          0.2,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "KneeR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.445,
+          -0.03
+        ],
+        "size": [
+          0.165,
+          0.12,
+          0.22
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.76,
+        "material": "dark",
+        "name": "ThighR",
+        "op": "prism",
+        "position": [
+          0.135,
+          -0.3,
+          0.015
+        ],
+        "size": [
+          0.19,
+          0.21,
+          0.235
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.72,
+        "material": "armor",
+        "name": "ThighPlateR",
+        "op": "prism",
+        "position": [
+          0.135,
+          -0.295,
+          -0.105
+        ],
+        "size": [
+          0.15,
+          0.19,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.78,
+        "material": "armor",
+        "name": "ShoulderR",
+        "op": "prism",
+        "position": [
+          0.27749999999999997,
+          0.305,
+          0
+        ],
+        "size": [
+          0.145,
+          0.205,
+          0.29
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.82,
+        "material": "dark",
+        "name": "UpperArmR",
+        "op": "prism",
+        "position": [
+          0.28,
+          0.13,
+          -0.025
+        ],
+        "size": [
+          0.125,
+          0.23,
+          0.16
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ElbowR",
+        "op": "prism",
+        "position": [
+          0.265,
+          0.015,
+          -0.06
+        ],
+        "size": [
+          0.12,
+          0.105,
+          0.15
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ForearmR",
+        "op": "prism",
+        "position": [
+          0.2475,
+          0.015,
+          -0.1575
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.1981161275615895
+        ],
+        "upper": 0.85,
+        "yaw": 0.1775961672834879
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "armor",
+        "name": "GauntletR",
+        "op": "prism",
+        "position": [
+          0.2475,
+          0.06,
+          -0.1575
+        ],
+        "size": [
+          0.115,
+          0.045,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": 0.1775961672834879
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "HandR",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.015,
+          -0.255
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.105
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.78,
+        "material": "dark",
+        "name": "Hip",
+        "op": "prism",
+        "position": [
+          0,
+          -0.15,
+          0.005
+        ],
+        "size": [
+          0.38,
+          0.16,
+          0.27
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.67,
+        "material": "armor",
+        "name": "Torso",
+        "op": "prism",
+        "position": [
+          0,
+          0.125,
+          0.01
+        ],
+        "size": [
+          0.42,
+          0.4,
+          0.29
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.68,
+        "material": "dark",
+        "name": "ChestInset",
+        "op": "prism",
+        "position": [
+          0,
+          0.19,
+          -0.14
+        ],
+        "size": [
+          0.3066,
+          0.23,
+          0.055
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.52,
+        "material": "armor",
+        "name": "ChestPlateL",
+        "op": "prism",
+        "position": [
+          -0.095,
+          0.225,
+          -0.177
+        ],
+        "size": [
+          0.16,
+          0.21,
+          0.065
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.52,
+        "material": "armor",
+        "name": "ChestPlateR",
+        "op": "prism",
+        "position": [
+          0.095,
+          0.225,
+          -0.177
+        ],
+        "size": [
+          0.16,
+          0.21,
+          0.065
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "identity",
+        "name": "CharacterBadge",
+        "op": "prism",
+        "position": [
+          0,
+          0.23,
+          -0.215
+        ],
+        "size": [
+          0.032,
+          0.14,
+          0.018
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "BackpackL",
+        "op": "prism",
+        "position": [
+          -0.09,
+          0.18,
+          0.185
+        ],
+        "size": [
+          0.17,
+          0.25,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "BackpackR",
+        "op": "prism",
+        "position": [
+          0.09,
+          0.18,
+          0.185
+        ],
+        "size": [
+          0.17,
+          0.25,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "identity",
+        "name": "BackBadge",
+        "op": "prism",
+        "position": [
+          0,
+          0.23,
+          0.277
+        ],
+        "size": [
+          0.16,
+          0.045,
+          0.018
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "Neck",
+        "op": "prism",
+        "position": [
+          0,
+          0.43,
+          0.01
+        ],
+        "size": [
+          0.14,
+          0.2,
+          0.15
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "dark",
+        "name": "Helmet",
+        "op": "prism",
+        "position": [
+          0,
+          0.665,
+          0.005
+        ],
+        "size": [
+          0.31,
+          0.35,
+          0.3
+        ],
+        "upper": 0.87,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "armor",
+        "name": "Crown",
+        "op": "prism",
+        "position": [
+          0,
+          0.845,
+          0.005
+        ],
+        "size": [
+          0.33,
+          0.11,
+          0.29
+        ],
+        "upper": 0.88,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "identity",
+        "name": "Visor",
+        "op": "prism",
+        "position": [
+          0,
+          0.71,
+          -0.151
+        ],
+        "size": [
+          0.2635,
+          0.08,
+          0.044
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "trim",
+        "name": "Jaw",
+        "op": "prism",
+        "position": [
+          0,
+          0.565,
+          -0.1
+        ],
+        "size": [
+          0.22319999999999998,
+          0.1,
+          0.12
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "WeaponGrip",
+        "op": "prism",
+        "position": [
+          0.23,
+          -0.035,
+          -0.24
+        ],
+        "size": [
+          0.095,
+          0.18,
+          0.11
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "Weapon",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.095,
+          -0.3
+        ],
+        "size": [
+          0.15,
+          0.15,
+          0.43
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "trim",
+        "name": "Muzzle",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.1,
+          -0.555
+        ],
+        "size": [
+          0.09,
+          0.09,
+          0.12
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "identity",
+        "name": "WeaponSight",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.195,
+          -0.31
+        ],
+        "size": [
+          0.05,
+          0.05,
+          0.09
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "trim",
+        "name": "TeamStripe0",
+        "op": "prism",
+        "position": [
+          -0.07,
+          0.15,
+          -0.223
+        ],
+        "size": [
+          0.065,
+          0.085,
+          0.025
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "trim",
+        "name": "TeamStripe1",
+        "op": "prism",
+        "position": [
+          0.07,
+          0.15,
+          -0.223
+        ],
+        "size": [
+          0.065,
+          0.085,
+          0.025
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      }
+    ],
+    "grok": [
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "BootL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.805,
+          -0.055
+        ],
+        "size": [
+          0.205,
+          0.19,
+          0.35
+        ],
+        "upper": 0.78,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ToeL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.805,
+          -0.205
+        ],
+        "size": [
+          0.18,
+          0.12,
+          0.075
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ShinL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.615,
+          0.005
+        ],
+        "size": [
+          0.15,
+          0.21,
+          0.19
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "armor",
+        "name": "ShinPlateL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.585,
+          -0.1
+        ],
+        "size": [
+          0.135,
+          0.2,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "KneeL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.445,
+          -0.03
+        ],
+        "size": [
+          0.165,
+          0.12,
+          0.22
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.76,
+        "material": "dark",
+        "name": "ThighL",
+        "op": "prism",
+        "position": [
+          -0.135,
+          -0.3,
+          0.015
+        ],
+        "size": [
+          0.19,
+          0.21,
+          0.235
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.72,
+        "material": "armor",
+        "name": "ThighPlateL",
+        "op": "prism",
+        "position": [
+          -0.135,
+          -0.295,
+          -0.105
+        ],
+        "size": [
+          0.15,
+          0.19,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.78,
+        "material": "armor",
+        "name": "ShoulderL",
+        "op": "prism",
+        "position": [
+          -0.295,
+          0.305,
+          0
+        ],
+        "size": [
+          0.11,
+          0.205,
+          0.29
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.82,
+        "material": "dark",
+        "name": "UpperArmL",
+        "op": "prism",
+        "position": [
+          -0.28,
+          0.13,
+          -0.025
+        ],
+        "size": [
+          0.125,
+          0.23,
+          0.16
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ElbowL",
+        "op": "prism",
+        "position": [
+          -0.265,
+          0.015,
+          -0.06
+        ],
+        "size": [
+          0.12,
+          0.105,
+          0.15
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ForearmL",
+        "op": "prism",
+        "position": [
+          -0.04250000000000001,
+          0.015,
+          -0.245
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.5787270513808733
+        ],
+        "upper": 0.85,
+        "yaw": -0.8771642448372547
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "armor",
+        "name": "GauntletL",
+        "op": "prism",
+        "position": [
+          -0.04250000000000001,
+          0.06,
+          -0.245
+        ],
+        "size": [
+          0.115,
+          0.045,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": -0.8771642448372547
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "HandL",
+        "op": "prism",
+        "position": [
+          0.18,
+          0.015,
+          -0.43
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.105
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "BootR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.805,
+          -0.055
+        ],
+        "size": [
+          0.205,
+          0.19,
+          0.35
+        ],
+        "upper": 0.78,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ToeR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.805,
+          -0.205
+        ],
+        "size": [
+          0.18,
+          0.12,
+          0.075
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ShinR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.615,
+          0.005
+        ],
+        "size": [
+          0.15,
+          0.21,
+          0.19
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "armor",
+        "name": "ShinPlateR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.585,
+          -0.1
+        ],
+        "size": [
+          0.135,
+          0.2,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "KneeR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.445,
+          -0.03
+        ],
+        "size": [
+          0.165,
+          0.12,
+          0.22
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.76,
+        "material": "dark",
+        "name": "ThighR",
+        "op": "prism",
+        "position": [
+          0.135,
+          -0.3,
+          0.015
+        ],
+        "size": [
+          0.19,
+          0.21,
+          0.235
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.72,
+        "material": "armor",
+        "name": "ThighPlateR",
+        "op": "prism",
+        "position": [
+          0.135,
+          -0.295,
+          -0.105
+        ],
+        "size": [
+          0.15,
+          0.19,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.78,
+        "material": "armor",
+        "name": "ShoulderR",
+        "op": "prism",
+        "position": [
+          0.27749999999999997,
+          0.305,
+          0
+        ],
+        "size": [
+          0.145,
+          0.205,
+          0.29
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.82,
+        "material": "dark",
+        "name": "UpperArmR",
+        "op": "prism",
+        "position": [
+          0.28,
+          0.13,
+          -0.025
+        ],
+        "size": [
+          0.125,
+          0.23,
+          0.16
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ElbowR",
+        "op": "prism",
+        "position": [
+          0.265,
+          0.015,
+          -0.06
+        ],
+        "size": [
+          0.12,
+          0.105,
+          0.15
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ForearmR",
+        "op": "prism",
+        "position": [
+          0.2475,
+          0.015,
+          -0.1575
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.1981161275615895
+        ],
+        "upper": 0.85,
+        "yaw": 0.1775961672834879
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "armor",
+        "name": "GauntletR",
+        "op": "prism",
+        "position": [
+          0.2475,
+          0.06,
+          -0.1575
+        ],
+        "size": [
+          0.115,
+          0.045,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": 0.1775961672834879
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "HandR",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.015,
+          -0.255
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.105
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.78,
+        "material": "dark",
+        "name": "Hip",
+        "op": "prism",
+        "position": [
+          0,
+          -0.15,
+          0.005
+        ],
+        "size": [
+          0.38,
+          0.16,
+          0.27
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.67,
+        "material": "armor",
+        "name": "Torso",
+        "op": "prism",
+        "position": [
+          0,
+          0.125,
+          0.01
+        ],
+        "size": [
+          0.36,
+          0.4,
+          0.29
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.68,
+        "material": "dark",
+        "name": "ChestInset",
+        "op": "prism",
+        "position": [
+          0,
+          0.19,
+          -0.14
+        ],
+        "size": [
+          0.2628,
+          0.23,
+          0.055
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.52,
+        "material": "armor",
+        "name": "ChestPlateL",
+        "op": "prism",
+        "position": [
+          -0.095,
+          0.225,
+          -0.177
+        ],
+        "size": [
+          0.16,
+          0.13,
+          0.065
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.52,
+        "material": "armor",
+        "name": "ChestPlateR",
+        "op": "prism",
+        "position": [
+          0.095,
+          0.225,
+          -0.177
+        ],
+        "size": [
+          0.16,
+          0.21,
+          0.065
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "identity",
+        "name": "CharacterBadge",
+        "op": "prism",
+        "position": [
+          0,
+          0.23,
+          -0.215
+        ],
+        "size": [
+          0.032,
+          0.14,
+          0.018
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "BackpackL",
+        "op": "prism",
+        "position": [
+          -0.09,
+          0.18,
+          0.185
+        ],
+        "size": [
+          0.17,
+          0.25,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "BackpackR",
+        "op": "prism",
+        "position": [
+          0.09,
+          0.18,
+          0.185
+        ],
+        "size": [
+          0.17,
+          0.25,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "identity",
+        "name": "BackBadge",
+        "op": "prism",
+        "position": [
+          0,
+          0.23,
+          0.277
+        ],
+        "size": [
+          0.16,
+          0.045,
+          0.018
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "Neck",
+        "op": "prism",
+        "position": [
+          0,
+          0.43,
+          0.01
+        ],
+        "size": [
+          0.14,
+          0.2,
+          0.15
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "dark",
+        "name": "Helmet",
+        "op": "prism",
+        "position": [
+          0,
+          0.665,
+          0.005
+        ],
+        "size": [
+          0.27,
+          0.35,
+          0.3
+        ],
+        "upper": 0.87,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "armor",
+        "name": "Crown",
+        "op": "prism",
+        "position": [
+          0,
+          0.845,
+          0.005
+        ],
+        "size": [
+          0.29000000000000004,
+          0.11,
+          0.29
+        ],
+        "upper": 0.68,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "identity",
+        "name": "Visor",
+        "op": "prism",
+        "position": [
+          0,
+          0.71,
+          -0.151
+        ],
+        "size": [
+          0.2295,
+          0.08,
+          0.044
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "trim",
+        "name": "Jaw",
+        "op": "prism",
+        "position": [
+          0,
+          0.565,
+          -0.1
+        ],
+        "size": [
+          0.19440000000000002,
+          0.1,
+          0.12
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "WeaponGrip",
+        "op": "prism",
+        "position": [
+          0.23,
+          -0.035,
+          -0.24
+        ],
+        "size": [
+          0.095,
+          0.18,
+          0.11
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "Weapon",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.095,
+          -0.3
+        ],
+        "size": [
+          0.15,
+          0.15,
+          0.43
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "trim",
+        "name": "Muzzle",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.1,
+          -0.555
+        ],
+        "size": [
+          0.09,
+          0.09,
+          0.12
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "identity",
+        "name": "WeaponSight",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.195,
+          -0.31
+        ],
+        "size": [
+          0.05,
+          0.05,
+          0.09
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "trim",
+        "name": "TeamStripe0",
+        "op": "prism",
+        "position": [
+          -0.07,
+          0.15,
+          -0.223
+        ],
+        "size": [
+          0.065,
+          0.085,
+          0.025
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "trim",
+        "name": "TeamStripe1",
+        "op": "prism",
+        "position": [
+          0.07,
+          0.15,
+          -0.223
+        ],
+        "size": [
+          0.065,
+          0.085,
+          0.025
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      }
+    ],
+    "meta": [
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "BootL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.805,
+          -0.055
+        ],
+        "size": [
+          0.205,
+          0.19,
+          0.35
+        ],
+        "upper": 0.78,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ToeL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.805,
+          -0.205
+        ],
+        "size": [
+          0.18,
+          0.12,
+          0.075
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ShinL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.615,
+          0.005
+        ],
+        "size": [
+          0.15,
+          0.21,
+          0.19
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "armor",
+        "name": "ShinPlateL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.585,
+          -0.1
+        ],
+        "size": [
+          0.135,
+          0.2,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "KneeL",
+        "op": "prism",
+        "position": [
+          -0.145,
+          -0.445,
+          -0.03
+        ],
+        "size": [
+          0.165,
+          0.12,
+          0.22
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.76,
+        "material": "dark",
+        "name": "ThighL",
+        "op": "prism",
+        "position": [
+          -0.135,
+          -0.3,
+          0.015
+        ],
+        "size": [
+          0.19,
+          0.21,
+          0.235
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.72,
+        "material": "armor",
+        "name": "ThighPlateL",
+        "op": "prism",
+        "position": [
+          -0.135,
+          -0.295,
+          -0.105
+        ],
+        "size": [
+          0.15,
+          0.19,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.78,
+        "material": "armor",
+        "name": "ShoulderL",
+        "op": "prism",
+        "position": [
+          -0.26999999999999996,
+          0.305,
+          0
+        ],
+        "size": [
+          0.16,
+          0.205,
+          0.29
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.82,
+        "material": "dark",
+        "name": "UpperArmL",
+        "op": "prism",
+        "position": [
+          -0.28,
+          0.13,
+          -0.025
+        ],
+        "size": [
+          0.125,
+          0.23,
+          0.16
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ElbowL",
+        "op": "prism",
+        "position": [
+          -0.265,
+          0.015,
+          -0.06
+        ],
+        "size": [
+          0.12,
+          0.105,
+          0.15
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ForearmL",
+        "op": "prism",
+        "position": [
+          -0.04250000000000001,
+          0.015,
+          -0.245
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.5787270513808733
+        ],
+        "upper": 0.85,
+        "yaw": -0.8771642448372547
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "armor",
+        "name": "GauntletL",
+        "op": "prism",
+        "position": [
+          -0.04250000000000001,
+          0.06,
+          -0.245
+        ],
+        "size": [
+          0.115,
+          0.045,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": -0.8771642448372547
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "HandL",
+        "op": "prism",
+        "position": [
+          0.18,
+          0.015,
+          -0.43
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.105
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "BootR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.805,
+          -0.055
+        ],
+        "size": [
+          0.205,
+          0.19,
+          0.35
+        ],
+        "upper": 0.78,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ToeR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.805,
+          -0.205
+        ],
+        "size": [
+          0.18,
+          0.12,
+          0.075
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ShinR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.615,
+          0.005
+        ],
+        "size": [
+          0.15,
+          0.21,
+          0.19
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "armor",
+        "name": "ShinPlateR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.585,
+          -0.1
+        ],
+        "size": [
+          0.135,
+          0.2,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "KneeR",
+        "op": "prism",
+        "position": [
+          0.145,
+          -0.445,
+          -0.03
+        ],
+        "size": [
+          0.165,
+          0.12,
+          0.22
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.76,
+        "material": "dark",
+        "name": "ThighR",
+        "op": "prism",
+        "position": [
+          0.135,
+          -0.3,
+          0.015
+        ],
+        "size": [
+          0.19,
+          0.21,
+          0.235
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.72,
+        "material": "armor",
+        "name": "ThighPlateR",
+        "op": "prism",
+        "position": [
+          0.135,
+          -0.295,
+          -0.105
+        ],
+        "size": [
+          0.15,
+          0.19,
+          0.05
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.78,
+        "material": "armor",
+        "name": "ShoulderR",
+        "op": "prism",
+        "position": [
+          0.26999999999999996,
+          0.305,
+          0
+        ],
+        "size": [
+          0.16,
+          0.205,
+          0.29
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.82,
+        "material": "dark",
+        "name": "UpperArmR",
+        "op": "prism",
+        "position": [
+          0.28,
+          0.13,
+          -0.025
+        ],
+        "size": [
+          0.125,
+          0.23,
+          0.16
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "ElbowR",
+        "op": "prism",
+        "position": [
+          0.265,
+          0.015,
+          -0.06
+        ],
+        "size": [
+          0.12,
+          0.105,
+          0.15
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "ForearmR",
+        "op": "prism",
+        "position": [
+          0.2475,
+          0.015,
+          -0.1575
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.1981161275615895
+        ],
+        "upper": 0.85,
+        "yaw": 0.1775961672834879
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "armor",
+        "name": "GauntletR",
+        "op": "prism",
+        "position": [
+          0.2475,
+          0.06,
+          -0.1575
+        ],
+        "size": [
+          0.115,
+          0.045,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": 0.1775961672834879
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "HandR",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.015,
+          -0.255
+        ],
+        "size": [
+          0.105,
+          0.105,
+          0.105
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.78,
+        "material": "dark",
+        "name": "Hip",
+        "op": "prism",
+        "position": [
+          0,
+          -0.15,
+          0.005
+        ],
+        "size": [
+          0.38,
+          0.16,
+          0.27
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.67,
+        "material": "armor",
+        "name": "Torso",
+        "op": "prism",
+        "position": [
+          0,
+          0.125,
+          0.01
+        ],
+        "size": [
+          0.46,
+          0.4,
+          0.29
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.68,
+        "material": "dark",
+        "name": "ChestInset",
+        "op": "prism",
+        "position": [
+          0,
+          0.19,
+          -0.14
+        ],
+        "size": [
+          0.3358,
+          0.23,
+          0.055
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.52,
+        "material": "armor",
+        "name": "ChestPlateL",
+        "op": "prism",
+        "position": [
+          -0.095,
+          0.225,
+          -0.177
+        ],
+        "size": [
+          0.16,
+          0.21,
+          0.065
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.52,
+        "material": "armor",
+        "name": "ChestPlateR",
+        "op": "prism",
+        "position": [
+          0.095,
+          0.225,
+          -0.177
+        ],
+        "size": [
+          0.16,
+          0.21,
+          0.065
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "identity",
+        "name": "CharacterBadge",
+        "op": "prism",
+        "position": [
+          0,
+          0.23,
+          -0.215
+        ],
+        "size": [
+          0.032,
+          0.14,
+          0.018
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "BackpackL",
+        "op": "prism",
+        "position": [
+          -0.09,
+          0.18,
+          0.185
+        ],
+        "size": [
+          0.17,
+          0.31,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "dark",
+        "name": "BackpackR",
+        "op": "prism",
+        "position": [
+          0.09,
+          0.18,
+          0.185
+        ],
+        "size": [
+          0.17,
+          0.31,
+          0.16
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "identity",
+        "name": "BackBadge",
+        "op": "prism",
+        "position": [
+          0,
+          0.23,
+          0.277
+        ],
+        "size": [
+          0.16,
+          0.045,
+          0.018
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "trim",
+        "name": "Neck",
+        "op": "prism",
+        "position": [
+          0,
+          0.43,
+          0.01
+        ],
+        "size": [
+          0.14,
+          0.2,
+          0.15
+        ],
+        "upper": 0.85,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "dark",
+        "name": "Helmet",
+        "op": "prism",
+        "position": [
+          0,
+          0.665,
+          0.005
+        ],
+        "size": [
+          0.34,
+          0.35,
+          0.3
+        ],
+        "upper": 0.87,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "armor",
+        "name": "Crown",
+        "op": "prism",
+        "position": [
+          0,
+          0.845,
+          0.005
+        ],
+        "size": [
+          0.36000000000000004,
+          0.11,
+          0.29
+        ],
+        "upper": 0.88,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.85,
+        "material": "identity",
+        "name": "Visor",
+        "op": "prism",
+        "position": [
+          0,
+          0.71,
+          -0.151
+        ],
+        "size": [
+          0.28900000000000003,
+          0.08,
+          0.044
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 0.65,
+        "material": "trim",
+        "name": "Jaw",
+        "op": "prism",
+        "position": [
+          0,
+          0.565,
+          -0.1
+        ],
+        "size": [
+          0.24480000000000002,
+          0.1,
+          0.12
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "WeaponGrip",
+        "op": "prism",
+        "position": [
+          0.23,
+          -0.035,
+          -0.24
+        ],
+        "size": [
+          0.095,
+          0.18,
+          0.11
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "dark",
+        "name": "Weapon",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.095,
+          -0.3
+        ],
+        "size": [
+          0.15,
+          0.15,
+          0.43
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "trim",
+        "name": "Muzzle",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.1,
+          -0.555
+        ],
+        "size": [
+          0.09,
+          0.09,
+          0.12
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "identity",
+        "name": "WeaponSight",
+        "op": "prism",
+        "position": [
+          0.23,
+          0.195,
+          -0.31
+        ],
+        "size": [
+          0.05,
+          0.05,
+          0.09
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "trim",
+        "name": "TeamStripe0",
+        "op": "prism",
+        "position": [
+          -0.07,
+          0.15,
+          -0.223
+        ],
+        "size": [
+          0.065,
+          0.085,
+          0.025
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      },
+      {
+        "bevel": 0.12,
+        "lower": 1,
+        "material": "trim",
+        "name": "TeamStripe1",
+        "op": "prism",
+        "position": [
+          0.07,
+          0.15,
+          -0.223
+        ],
+        "size": [
+          0.065,
+          0.085,
+          0.025
+        ],
+        "upper": 1,
+        "yaw": 0.0
+      }
+    ]
+  },
+  "version": 1
+}

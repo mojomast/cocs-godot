@@ -1,0 +1,205 @@
+{
+  "note": "Synthetic software-rendered frame intervals, not GPU hardware timings. Shared host is not a controlled benchmark machine. No inferential confidence claim.",
+  "render_source": "evidence/render-1790052439614620418/render-metrics.json",
+  "construction": [
+    {
+      "actors": 1,
+      "baseline_median_usec": 113,
+      "candidate_median_usec": 493,
+      "ratio": 4.3628318584070795
+    },
+    {
+      "actors": 16,
+      "baseline_median_usec": 1735,
+      "candidate_median_usec": 7900,
+      "ratio": 4.553314121037464
+    },
+    {
+      "actors": 32,
+      "baseline_median_usec": 3518,
+      "candidate_median_usec": 16070,
+      "ratio": 4.567936327458783
+    }
+  ],
+  "geometry": {
+    "baseline_triangles": 312,
+    "candidate_triangles": 2760,
+    "triangle_ratio": 8.846153846153847,
+    "baseline_meshes": 26,
+    "candidate_meshes": 46,
+    "baseline_nodes": 27,
+    "candidate_nodes": 47,
+    "materials_per_actor": 4,
+    "texture_bytes": 0
+  },
+  "render": [
+    {
+      "resolution": [
+        960,
+        640
+      ],
+      "baseline": true,
+      "actors": 1,
+      "samples": 100,
+      "median_frame_ms": 1.668,
+      "p95_frame_ms": 2.911,
+      "median_draw_calls": 28.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    },
+    {
+      "resolution": [
+        960,
+        640
+      ],
+      "baseline": true,
+      "actors": 16,
+      "samples": 100,
+      "median_frame_ms": 3.257,
+      "p95_frame_ms": 5.042,
+      "median_draw_calls": 411.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    },
+    {
+      "resolution": [
+        960,
+        640
+      ],
+      "baseline": true,
+      "actors": 32,
+      "samples": 100,
+      "median_frame_ms": 5.0465,
+      "p95_frame_ms": 6.963,
+      "median_draw_calls": 819.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    },
+    {
+      "resolution": [
+        960,
+        640
+      ],
+      "baseline": false,
+      "actors": 1,
+      "samples": 100,
+      "median_frame_ms": 1.806,
+      "p95_frame_ms": 2.944,
+      "median_draw_calls": 48.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    },
+    {
+      "resolution": [
+        960,
+        640
+      ],
+      "baseline": false,
+      "actors": 16,
+      "samples": 100,
+      "median_frame_ms": 7.994,
+      "p95_frame_ms": 10.305,
+      "median_draw_calls": 731.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    },
+    {
+      "resolution": [
+        960,
+        640
+      ],
+      "baseline": false,
+      "actors": 32,
+      "samples": 100,
+      "median_frame_ms": 14.0505,
+      "p95_frame_ms": 16.373,
+      "median_draw_calls": 1459.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    },
+    {
+      "resolution": [
+        1280,
+        800
+      ],
+      "baseline": true,
+      "actors": 1,
+      "samples": 100,
+      "median_frame_ms": 2.004,
+      "p95_frame_ms": 3.468,
+      "median_draw_calls": 28.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    },
+    {
+      "resolution": [
+        1280,
+        800
+      ],
+      "baseline": true,
+      "actors": 16,
+      "samples": 100,
+      "median_frame_ms": 3.7015,
+      "p95_frame_ms": 5.573,
+      "median_draw_calls": 411.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    },
+    {
+      "resolution": [
+        1280,
+        800
+      ],
+      "baseline": true,
+      "actors": 32,
+      "samples": 100,
+      "median_frame_ms": 6.153,
+      "p95_frame_ms": 8.65,
+      "median_draw_calls": 819.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    },
+    {
+      "resolution": [
+        1280,
+        800
+      ],
+      "baseline": false,
+      "actors": 1,
+      "samples": 100,
+      "median_frame_ms": 2.364,
+      "p95_frame_ms": 3.713,
+      "median_draw_calls": 48.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    },
+    {
+      "resolution": [
+        1280,
+        800
+      ],
+      "baseline": false,
+      "actors": 16,
+      "samples": 100,
+      "median_frame_ms": 8.3705,
+      "p95_frame_ms": 10.128,
+      "median_draw_calls": 731.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    },
+    {
+      "resolution": [
+        1280,
+        800
+      ],
+      "baseline": false,
+      "actors": 32,
+      "samples": 100,
+      "median_frame_ms": 14.865,
+      "p95_frame_ms": 16.995,
+      "median_draw_calls": 1459.0,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "method": "gl_compatibility"
+    }
+  ]
+}
