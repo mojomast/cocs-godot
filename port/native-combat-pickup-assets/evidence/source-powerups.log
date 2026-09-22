@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: current weapons use ten inventory slots and map every pickup
+ok 1 - current weapons use ten inventory slots and map every pickup
+  ---
+  duration_ms: 22.309
+  type: 'test'
+  ...
+# Subtest: powerups apply, refresh without stacking, expire, and reset on respawn
+ok 2 - powerups apply, refresh without stacking, expire, and reset on respawn
+  ---
+  duration_ms: 34.367392
+  type: 'test'
+  ...
+# Subtest: overshield absorbs before armor and health and expires deterministically
+ok 3 - overshield absorbs before armor and health and expires deterministically
+  ---
+  duration_ms: 25.74803
+  type: 'test'
+  ...
+# Subtest: unrelated powerups never refill a depleted overshield
+ok 4 - unrelated powerups never refill a depleted overshield
+  ---
+  duration_ms: 2.017409
+  type: 'test'
+  ...
+# Subtest: red and blue CTF metadata normalizes into numeric teams
+ok 5 - red and blue CTF metadata normalizes into numeric teams
+  ---
+  duration_ms: 18.683239
+  type: 'test'
+  ...
+# Subtest: expansion map floors, traversal routes and pickups are safe
+ok 6 - expansion map floors, traversal routes and pickups are safe
+  ---
+  duration_ms: 0.397945
+  type: 'test'
+  ...
+# Subtest: new projectile weapons fire and explode with source overcharge
+ok 7 - new projectile weapons fire and explode with source overcharge
+  ---
+  duration_ms: 5.856117
+  type: 'test'
+  ...
+# Subtest: instagib and rocket locks keep their original mode invariants
+ok 8 - instagib and rocket locks keep their original mode invariants
+  ---
+  duration_ms: 2.508147
+  type: 'test'
+  ...
+# Subtest: the recon pickup applies a timed reveal effect
+ok 9 - the recon pickup applies a timed reveal effect
+  ---
+  duration_ms: 32.971598
+  type: 'test'
+  ...
+# Subtest: cloak applies a timed stealth effect
+ok 10 - cloak applies a timed stealth effect
+  ---
+  duration_ms: 17.710167
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 887.652233

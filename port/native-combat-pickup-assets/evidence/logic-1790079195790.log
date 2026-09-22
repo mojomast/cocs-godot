@@ -1,0 +1,6 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SCRIPT ERROR: Invalid call. Nonexistent function 'surface_get_array_index_len' in base 'TorusMesh'.
+          at: run (res://tests/combat_pickup_assets/validate.gd:37)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/combat_pickup_assets/validate.gd:37)

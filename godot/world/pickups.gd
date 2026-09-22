@@ -3,7 +3,7 @@ extends Node3D
 
 # Native supply visuals, keyed by authority IDs (never array order).
 # Snapshot wait controls visibility. No local countdown or collection authority.
-const PickupVisual = preload("res://world/pickup_visual.gd")
+const PickupVisual = preload("res://combat_pickup_assets/pickup_visual.gd")
 var markers: Dictionary = {}
 
 func clear_round() -> void:

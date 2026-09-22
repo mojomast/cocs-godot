@@ -1,0 +1,38 @@
+{
+	"animation": {
+		"changed_pixels": 10373,
+		"max_delta": 0.960784312337637
+	},
+	"budget": {
+		"draws": 80,
+		"eye_height": 1.6,
+		"labels": 0,
+		"particles": 0,
+		"pickups": 20,
+		"render_nodes": 80,
+		"size": [
+			960,
+			640
+		]
+	},
+	"clear": {
+		"changed_pixels": 0,
+		"max_delta": 0.0
+	},
+	"collection": {
+		"changed_pixels": 2277,
+		"max_delta": 0.760784313082695
+	},
+	"occlusion": {
+		"changed_pixels": 0,
+		"max_delta": 0.0
+	},
+	"unavailable": {
+		"changed_pixels": 0,
+		"max_delta": 0.0
+	},
+	"visible": {
+		"changed_pixels": 15682,
+		"max_delta": 0.937254898250103
+	}
+}

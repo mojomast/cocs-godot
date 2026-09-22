@@ -1,0 +1,2280 @@
+{
+  "provenance": "Arranged private Match fixture; actual source collect/step/snapshot/events. Not natural multiplayer play.",
+  "kinds": [
+    "health",
+    "armor",
+    "ammo",
+    "rocket",
+    "megahealth",
+    "rail",
+    "scatter",
+    "plasma",
+    "grenade",
+    "shock",
+    "flak",
+    "marksman",
+    "smg",
+    "haste",
+    "overcharge",
+    "overshield",
+    "recon",
+    "cloak",
+    "weaponUpgrade",
+    "deployable"
+  ],
+  "frames": [
+    {
+      "label": "available",
+      "state": {
+        "config": {
+          "mode": "deathmatch",
+          "botCount": 0,
+          "difficulty": "easy",
+          "fragLimit": 15,
+          "timeLimit": 300,
+          "respawn": 2,
+          "speed": 1,
+          "gravity": 1,
+          "damage": 1,
+          "fastPowers": false,
+          "lifeSteal": false,
+          "unlimitedAmmo": false,
+          "suddenDeath": false,
+          "randomLoadout": false,
+          "oneShot": false,
+          "instagib": false,
+          "mirrorLoadout": false,
+          "bounty": false,
+          "berserk": false,
+          "bigHead": false,
+          "noRecoil": false,
+          "endless": false,
+          "startingWeapon": 0,
+          "playerName": "",
+          "mission": "convoy-run",
+          "loadout": null,
+          "checkpoint": null,
+          "mutators": []
+        },
+        "modeName": "Deathmatch",
+        "mapId": "meridian-exchange",
+        "mapName": "Meridian Exchange",
+        "time": 0,
+        "over": false,
+        "overReason": null,
+        "suddenDeath": false,
+        "feed": [],
+        "actors": [
+          {
+            "id": 0,
+            "character": "chatgpt",
+            "harness": "openclaw",
+            "name": "ChatGPT",
+            "frags": 0,
+            "deaths": 0,
+            "streak": 0,
+            "ladder": 0,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            },
+            "x": 100,
+            "y": 0,
+            "z": 100,
+            "lastValid": {
+              "x": -44,
+              "y": 0,
+              "z": -34
+            },
+            "vx": 0,
+            "vy": 0,
+            "vz": 0,
+            "yaw": -2.2286849319771065,
+            "pitch": 0,
+            "bodyYaw": -2.2286849319771065,
+            "grounded": true,
+            "coyote": 0,
+            "jumpBuffer": 0,
+            "health": 20,
+            "armor": 0,
+            "spawnArmor": 5,
+            "dead": 0,
+            "vehicleId": null,
+            "vehicleSeat": null,
+            "vehicleSeatIndex": 0,
+            "weapon": 0,
+            "ammo": [
+              "∞",
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cooldown": 0,
+            "active": 0,
+            "slow": 0,
+            "slowMultiplier": 0.55,
+            "shotWait": 0.25,
+            "grenadeCooldown": 0,
+            "protection": 0,
+            "shots": 0,
+            "traversalCooldown": 0,
+            "traversalPad": null,
+            "traversalTarget": null,
+            "zipRide": null,
+            "carryingFlag": false,
+            "carrySpeedMultiplier": 1,
+            "spread": 0,
+            "punchYaw": 0,
+            "punchPitch": 0,
+            "punchVelYaw": 0,
+            "punchVelPitch": 0,
+            "reloading": false,
+            "reloadTimer": 0,
+            "reloadDuration": 0,
+            "reloadWeapon": -1,
+            "melee": 0,
+            "weaponSwitch": 0,
+            "burst": 0,
+            "burstTimer": 0,
+            "sprinting": false,
+            "crouching": false,
+            "sliding": false,
+            "slideTimer": 0,
+            "slideCooldown": 0,
+            "eyeHeight": 1.45,
+            "baseHeight": 1.8,
+            "ads": false,
+            "jumpHeld": false,
+            "jumpCutArmed": false,
+            "powerups": {},
+            "speedMultiplier": 1,
+            "damageMultiplier": 1,
+            "cooldownMultiplier": 1,
+            "temporaryShield": 0,
+            "activeSpeedMultiplier": 1,
+            "hitScale": 1,
+            "juggernaut": false,
+            "juggernautShield": 0,
+            "juggernautDamage": 1,
+            "upgradeWeapon": null,
+            "upgradeTimer": 0,
+            "upgradeBase": -1,
+            "movement": {
+              "v": 1,
+              "verb": "grapple",
+              "phase": "ready",
+              "enabled": true,
+              "charges": 0,
+              "maxCharges": 0,
+              "cooldown": 0,
+              "fuel": 0,
+              "maxFuel": 0,
+              "fuelRecharge": 0,
+              "windup": 0,
+              "recovery": 0,
+              "activeTime": 0,
+              "landingArmed": false,
+              "chains": 0,
+              "miss": 0,
+              "anchor": null,
+              "grapple": null,
+              "grappleLanding": null
+            },
+            "verbState": {
+              "verb": "adaptive",
+              "active": true,
+              "open": false,
+              "windowIn": 0,
+              "shotsLeft": 0
+            },
+            "threatPing": 0,
+            "riderSpeedBonus": 0,
+            "riderSpeedTimer": 0,
+            "holsterSkip": 0,
+            "braceTimer": 0,
+            "braceMitigation": 0,
+            "braceKnockbackScale": 1,
+            "alt": false,
+            "firingThisTick": false,
+            "movementLanded": false,
+            "glideSteer": 0,
+            "inputJump": false,
+            "inputCrouch": false,
+            "inputMobility": false,
+            "bot": null,
+            "botScan": 39.1305790917335,
+            "gear": null,
+            "attachments": null,
+            "finish": null,
+            "maxHealth": 100,
+            "moveSpeed": 8.6,
+            "gearSpeed": 1,
+            "gearDamage": 1,
+            "gearSpread": 1,
+            "burstLeft": 0,
+            "traversalFlight": false,
+            "traversalEvent": null
+          }
+        ],
+        "vehicles": [],
+        "pickups": [
+          {
+            "id": 0,
+            "kind": "health",
+            "x": -2.6,
+            "y": 0,
+            "z": 0,
+            "wait": 0
+          },
+          {
+            "id": 1,
+            "kind": "armor",
+            "x": -1.3,
+            "y": 0,
+            "z": 0,
+            "wait": 0
+          },
+          {
+            "id": 2,
+            "kind": "ammo",
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "wait": 0,
+            "weapon": "rail"
+          },
+          {
+            "id": 3,
+            "kind": "rocket",
+            "x": 1.3,
+            "y": 0,
+            "z": 0,
+            "wait": 0
+          },
+          {
+            "id": 4,
+            "kind": "megahealth",
+            "x": 2.6,
+            "y": 0,
+            "z": 0,
+            "wait": 0
+          },
+          {
+            "id": 5,
+            "kind": "rail",
+            "x": -2.6,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 6,
+            "kind": "scatter",
+            "x": -1.3,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 7,
+            "kind": "plasma",
+            "x": 0,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 8,
+            "kind": "grenade",
+            "x": 1.3,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 9,
+            "kind": "shock",
+            "x": 2.6,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 10,
+            "kind": "flak",
+            "x": -2.6,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 11,
+            "kind": "marksman",
+            "x": -1.3,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 12,
+            "kind": "smg",
+            "x": 0,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 13,
+            "kind": "haste",
+            "x": 1.3,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 14,
+            "kind": "overcharge",
+            "x": 2.6,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 15,
+            "kind": "overshield",
+            "x": -2.6,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 16,
+            "kind": "recon",
+            "x": -1.3,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 17,
+            "kind": "cloak",
+            "x": 0,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 18,
+            "kind": "weaponUpgrade",
+            "x": 1.3,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 19,
+            "kind": "deployable",
+            "x": 2.6,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          }
+        ],
+        "deployables": [],
+        "flags": [],
+        "teamScores": {
+          "0": 0,
+          "1": 0
+        },
+        "winner": null,
+        "objectives": null,
+        "projectiles": 0,
+        "rockets": [],
+        "stats": {
+          "shots": 0,
+          "kills": 0,
+          "pickups": 0,
+          "powers": 0,
+          "respawns": 1,
+          "falls": 0
+        },
+        "leaders": [
+          "ChatGPT"
+        ],
+        "singleplayer": null
+      },
+      "events": [
+        {
+          "type": "spawn",
+          "id": 1,
+          "time": 0,
+          "actor": 0,
+          "pos": {
+            "x": -44,
+            "y": 1,
+            "z": -34
+          }
+        }
+      ]
+    },
+    {
+      "label": "health-collected",
+      "state": {
+        "config": {
+          "mode": "deathmatch",
+          "botCount": 0,
+          "difficulty": "easy",
+          "fragLimit": 15,
+          "timeLimit": 300,
+          "respawn": 2,
+          "speed": 1,
+          "gravity": 1,
+          "damage": 1,
+          "fastPowers": false,
+          "lifeSteal": false,
+          "unlimitedAmmo": false,
+          "suddenDeath": false,
+          "randomLoadout": false,
+          "oneShot": false,
+          "instagib": false,
+          "mirrorLoadout": false,
+          "bounty": false,
+          "berserk": false,
+          "bigHead": false,
+          "noRecoil": false,
+          "endless": false,
+          "startingWeapon": 0,
+          "playerName": "",
+          "mission": "convoy-run",
+          "loadout": null,
+          "checkpoint": null,
+          "mutators": []
+        },
+        "modeName": "Deathmatch",
+        "mapId": "meridian-exchange",
+        "mapName": "Meridian Exchange",
+        "time": 0,
+        "over": false,
+        "overReason": null,
+        "suddenDeath": false,
+        "feed": [],
+        "actors": [
+          {
+            "id": 0,
+            "character": "chatgpt",
+            "harness": "openclaw",
+            "name": "ChatGPT",
+            "frags": 0,
+            "deaths": 0,
+            "streak": 0,
+            "ladder": 0,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            },
+            "x": 100,
+            "y": 0,
+            "z": 100,
+            "lastValid": {
+              "x": -44,
+              "y": 0,
+              "z": -34
+            },
+            "vx": 0,
+            "vy": 0,
+            "vz": 0,
+            "yaw": -2.2286849319771065,
+            "pitch": 0,
+            "bodyYaw": -2.2286849319771065,
+            "grounded": true,
+            "coyote": 0,
+            "jumpBuffer": 0,
+            "health": 55,
+            "armor": 0,
+            "spawnArmor": 5,
+            "dead": 0,
+            "vehicleId": null,
+            "vehicleSeat": null,
+            "vehicleSeatIndex": 0,
+            "weapon": 0,
+            "ammo": [
+              "∞",
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cooldown": 0,
+            "active": 0,
+            "slow": 0,
+            "slowMultiplier": 0.55,
+            "shotWait": 0.25,
+            "grenadeCooldown": 0,
+            "protection": 0,
+            "shots": 0,
+            "traversalCooldown": 0,
+            "traversalPad": null,
+            "traversalTarget": null,
+            "zipRide": null,
+            "carryingFlag": false,
+            "carrySpeedMultiplier": 1,
+            "spread": 0,
+            "punchYaw": 0,
+            "punchPitch": 0,
+            "punchVelYaw": 0,
+            "punchVelPitch": 0,
+            "reloading": false,
+            "reloadTimer": 0,
+            "reloadDuration": 0,
+            "reloadWeapon": -1,
+            "melee": 0,
+            "weaponSwitch": 0,
+            "burst": 0,
+            "burstTimer": 0,
+            "sprinting": false,
+            "crouching": false,
+            "sliding": false,
+            "slideTimer": 0,
+            "slideCooldown": 0,
+            "eyeHeight": 1.45,
+            "baseHeight": 1.8,
+            "ads": false,
+            "jumpHeld": false,
+            "jumpCutArmed": false,
+            "powerups": {},
+            "speedMultiplier": 1,
+            "damageMultiplier": 1,
+            "cooldownMultiplier": 1,
+            "temporaryShield": 0,
+            "activeSpeedMultiplier": 1,
+            "hitScale": 1,
+            "juggernaut": false,
+            "juggernautShield": 0,
+            "juggernautDamage": 1,
+            "upgradeWeapon": null,
+            "upgradeTimer": 0,
+            "upgradeBase": -1,
+            "movement": {
+              "v": 1,
+              "verb": "grapple",
+              "phase": "ready",
+              "enabled": true,
+              "charges": 0,
+              "maxCharges": 0,
+              "cooldown": 0,
+              "fuel": 0,
+              "maxFuel": 0,
+              "fuelRecharge": 0,
+              "windup": 0,
+              "recovery": 0,
+              "activeTime": 0,
+              "landingArmed": false,
+              "chains": 0,
+              "miss": 0,
+              "anchor": null,
+              "grapple": null,
+              "grappleLanding": null
+            },
+            "verbState": {
+              "verb": "adaptive",
+              "active": true,
+              "open": false,
+              "windowIn": 0,
+              "shotsLeft": 0
+            },
+            "threatPing": 0,
+            "riderSpeedBonus": 0,
+            "riderSpeedTimer": 0,
+            "holsterSkip": 0,
+            "braceTimer": 0,
+            "braceMitigation": 0,
+            "braceKnockbackScale": 1,
+            "alt": false,
+            "firingThisTick": false,
+            "movementLanded": false,
+            "glideSteer": 0,
+            "inputJump": false,
+            "inputCrouch": false,
+            "inputMobility": false,
+            "bot": null,
+            "botScan": 39.1305790917335,
+            "gear": null,
+            "attachments": null,
+            "finish": null,
+            "maxHealth": 100,
+            "moveSpeed": 8.6,
+            "gearSpeed": 1,
+            "gearDamage": 1,
+            "gearSpread": 1,
+            "burstLeft": 0,
+            "traversalFlight": false,
+            "traversalEvent": null
+          }
+        ],
+        "vehicles": [],
+        "pickups": [
+          {
+            "id": 0,
+            "kind": "health",
+            "x": -2.6,
+            "y": 0,
+            "z": 0,
+            "wait": 12
+          },
+          {
+            "id": 1,
+            "kind": "armor",
+            "x": -1.3,
+            "y": 0,
+            "z": 0,
+            "wait": 0
+          },
+          {
+            "id": 2,
+            "kind": "ammo",
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "wait": 0,
+            "weapon": "rail"
+          },
+          {
+            "id": 3,
+            "kind": "rocket",
+            "x": 1.3,
+            "y": 0,
+            "z": 0,
+            "wait": 0
+          },
+          {
+            "id": 4,
+            "kind": "megahealth",
+            "x": 2.6,
+            "y": 0,
+            "z": 0,
+            "wait": 0
+          },
+          {
+            "id": 5,
+            "kind": "rail",
+            "x": -2.6,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 6,
+            "kind": "scatter",
+            "x": -1.3,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 7,
+            "kind": "plasma",
+            "x": 0,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 8,
+            "kind": "grenade",
+            "x": 1.3,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 9,
+            "kind": "shock",
+            "x": 2.6,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 10,
+            "kind": "flak",
+            "x": -2.6,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 11,
+            "kind": "marksman",
+            "x": -1.3,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 12,
+            "kind": "smg",
+            "x": 0,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 13,
+            "kind": "haste",
+            "x": 1.3,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 14,
+            "kind": "overcharge",
+            "x": 2.6,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 15,
+            "kind": "overshield",
+            "x": -2.6,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 16,
+            "kind": "recon",
+            "x": -1.3,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 17,
+            "kind": "cloak",
+            "x": 0,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 18,
+            "kind": "weaponUpgrade",
+            "x": 1.3,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 19,
+            "kind": "deployable",
+            "x": 2.6,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          }
+        ],
+        "deployables": [],
+        "flags": [],
+        "teamScores": {
+          "0": 0,
+          "1": 0
+        },
+        "winner": null,
+        "objectives": null,
+        "projectiles": 0,
+        "rockets": [],
+        "stats": {
+          "shots": 0,
+          "kills": 0,
+          "pickups": 1,
+          "powers": 0,
+          "respawns": 1,
+          "falls": 0
+        },
+        "leaders": [
+          "ChatGPT"
+        ],
+        "singleplayer": null
+      },
+      "events": [
+        {
+          "type": "spawn",
+          "id": 1,
+          "time": 0,
+          "actor": 0,
+          "pos": {
+            "x": -44,
+            "y": 1,
+            "z": -34
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 2,
+          "time": 0,
+          "actor": 0,
+          "kind": "health",
+          "powerup": false,
+          "economy": false
+        }
+      ]
+    },
+    {
+      "label": "all-unavailable",
+      "state": {
+        "config": {
+          "mode": "deathmatch",
+          "botCount": 0,
+          "difficulty": "easy",
+          "fragLimit": 15,
+          "timeLimit": 300,
+          "respawn": 2,
+          "speed": 1,
+          "gravity": 1,
+          "damage": 1,
+          "fastPowers": false,
+          "lifeSteal": false,
+          "unlimitedAmmo": false,
+          "suddenDeath": false,
+          "randomLoadout": false,
+          "oneShot": false,
+          "instagib": false,
+          "mirrorLoadout": false,
+          "bounty": false,
+          "berserk": false,
+          "bigHead": false,
+          "noRecoil": false,
+          "endless": false,
+          "startingWeapon": 0,
+          "playerName": "",
+          "mission": "convoy-run",
+          "loadout": null,
+          "checkpoint": null,
+          "mutators": []
+        },
+        "modeName": "Deathmatch",
+        "mapId": "meridian-exchange",
+        "mapName": "Meridian Exchange",
+        "time": 0,
+        "over": false,
+        "overReason": null,
+        "suddenDeath": false,
+        "feed": [],
+        "actors": [
+          {
+            "id": 0,
+            "character": "chatgpt",
+            "harness": "openclaw",
+            "name": "ChatGPT",
+            "frags": 0,
+            "deaths": 0,
+            "streak": 0,
+            "ladder": 0,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            },
+            "x": 100,
+            "y": 0,
+            "z": 100,
+            "lastValid": {
+              "x": -44,
+              "y": 0,
+              "z": -34
+            },
+            "vx": 0,
+            "vy": 0,
+            "vz": 0,
+            "yaw": -2.2286849319771065,
+            "pitch": 0,
+            "bodyYaw": -2.2286849319771065,
+            "grounded": true,
+            "coyote": 0,
+            "jumpBuffer": 0,
+            "health": 20,
+            "armor": 0,
+            "spawnArmor": 5,
+            "dead": 0,
+            "vehicleId": null,
+            "vehicleSeat": null,
+            "vehicleSeatIndex": 0,
+            "weapon": 3,
+            "ammo": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cooldown": 0,
+            "active": 0,
+            "slow": 0,
+            "slowMultiplier": 0.55,
+            "shotWait": 0.25,
+            "grenadeCooldown": 0,
+            "protection": 0,
+            "shots": 0,
+            "traversalCooldown": 0,
+            "traversalPad": null,
+            "traversalTarget": null,
+            "zipRide": null,
+            "carryingFlag": false,
+            "carrySpeedMultiplier": 1,
+            "spread": 0,
+            "punchYaw": 0,
+            "punchPitch": 0,
+            "punchVelYaw": 0,
+            "punchVelPitch": 0,
+            "reloading": false,
+            "reloadTimer": 0,
+            "reloadDuration": 0,
+            "reloadWeapon": -1,
+            "melee": 0,
+            "weaponSwitch": 0.2,
+            "burst": 0,
+            "burstTimer": 0,
+            "sprinting": false,
+            "crouching": false,
+            "sliding": false,
+            "slideTimer": 0,
+            "slideCooldown": 0,
+            "eyeHeight": 1.45,
+            "baseHeight": 1.8,
+            "ads": false,
+            "jumpHeld": false,
+            "jumpCutArmed": false,
+            "powerups": {
+              "haste": 6,
+              "overcharge": 5,
+              "overshield": 8,
+              "recon": 10,
+              "cloak": 7
+            },
+            "speedMultiplier": 1.35,
+            "damageMultiplier": 1.35,
+            "cooldownMultiplier": 0.7,
+            "temporaryShield": 60,
+            "activeSpeedMultiplier": 1,
+            "hitScale": 1,
+            "juggernaut": false,
+            "juggernautShield": 0,
+            "juggernautDamage": 1,
+            "upgradeWeapon": 3,
+            "upgradeTimer": 12,
+            "upgradeBase": 2,
+            "movement": {
+              "v": 1,
+              "verb": "grapple",
+              "phase": "ready",
+              "enabled": true,
+              "charges": 0,
+              "maxCharges": 0,
+              "cooldown": 0,
+              "fuel": 0,
+              "maxFuel": 0,
+              "fuelRecharge": 0,
+              "windup": 0,
+              "recovery": 0,
+              "activeTime": 0,
+              "landingArmed": false,
+              "chains": 0,
+              "miss": 0,
+              "anchor": null,
+              "grapple": null,
+              "grappleLanding": null
+            },
+            "verbState": {
+              "verb": "adaptive",
+              "active": true,
+              "open": false,
+              "windowIn": 0,
+              "shotsLeft": 0
+            },
+            "threatPing": 0,
+            "riderSpeedBonus": 0,
+            "riderSpeedTimer": 0,
+            "holsterSkip": 0,
+            "braceTimer": 0,
+            "braceMitigation": 0,
+            "braceKnockbackScale": 1,
+            "alt": false,
+            "firingThisTick": false,
+            "movementLanded": false,
+            "glideSteer": 0,
+            "inputJump": false,
+            "inputCrouch": false,
+            "inputMobility": false,
+            "bot": null,
+            "botScan": 39.1305790917335,
+            "gear": null,
+            "attachments": null,
+            "finish": null,
+            "maxHealth": 100,
+            "moveSpeed": 8.6,
+            "gearSpeed": 1,
+            "gearDamage": 1,
+            "gearSpread": 1,
+            "burstLeft": 0,
+            "traversalFlight": false,
+            "traversalEvent": null
+          }
+        ],
+        "vehicles": [],
+        "pickups": [
+          {
+            "id": 0,
+            "kind": "health",
+            "x": -2.6,
+            "y": 0,
+            "z": 0,
+            "wait": 12
+          },
+          {
+            "id": 1,
+            "kind": "armor",
+            "x": -1.3,
+            "y": 0,
+            "z": 0,
+            "wait": 12
+          },
+          {
+            "id": 2,
+            "kind": "ammo",
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "wait": 15,
+            "weapon": "rail"
+          },
+          {
+            "id": 3,
+            "kind": "rocket",
+            "x": 1.3,
+            "y": 0,
+            "z": 0,
+            "wait": 15
+          },
+          {
+            "id": 4,
+            "kind": "megahealth",
+            "x": 2.6,
+            "y": 0,
+            "z": 0,
+            "wait": 15
+          },
+          {
+            "id": 5,
+            "kind": "rail",
+            "x": -2.6,
+            "y": 0,
+            "z": -2,
+            "wait": 15
+          },
+          {
+            "id": 6,
+            "kind": "scatter",
+            "x": -1.3,
+            "y": 0,
+            "z": -2,
+            "wait": 15
+          },
+          {
+            "id": 7,
+            "kind": "plasma",
+            "x": 0,
+            "y": 0,
+            "z": -2,
+            "wait": 15
+          },
+          {
+            "id": 8,
+            "kind": "grenade",
+            "x": 1.3,
+            "y": 0,
+            "z": -2,
+            "wait": 15
+          },
+          {
+            "id": 9,
+            "kind": "shock",
+            "x": 2.6,
+            "y": 0,
+            "z": -2,
+            "wait": 15
+          },
+          {
+            "id": 10,
+            "kind": "flak",
+            "x": -2.6,
+            "y": 0,
+            "z": -4,
+            "wait": 15
+          },
+          {
+            "id": 11,
+            "kind": "marksman",
+            "x": -1.3,
+            "y": 0,
+            "z": -4,
+            "wait": 15
+          },
+          {
+            "id": 12,
+            "kind": "smg",
+            "x": 0,
+            "y": 0,
+            "z": -4,
+            "wait": 15
+          },
+          {
+            "id": 13,
+            "kind": "haste",
+            "x": 1.3,
+            "y": 0,
+            "z": -4,
+            "wait": 15
+          },
+          {
+            "id": 14,
+            "kind": "overcharge",
+            "x": 2.6,
+            "y": 0,
+            "z": -4,
+            "wait": 15
+          },
+          {
+            "id": 15,
+            "kind": "overshield",
+            "x": -2.6,
+            "y": 0,
+            "z": -6,
+            "wait": 15
+          },
+          {
+            "id": 16,
+            "kind": "recon",
+            "x": -1.3,
+            "y": 0,
+            "z": -6,
+            "wait": 15
+          },
+          {
+            "id": 17,
+            "kind": "cloak",
+            "x": 0,
+            "y": 0,
+            "z": -6,
+            "wait": 15
+          },
+          {
+            "id": 18,
+            "kind": "weaponUpgrade",
+            "x": 1.3,
+            "y": 0,
+            "z": -6,
+            "wait": 15
+          },
+          {
+            "id": 19,
+            "kind": "deployable",
+            "x": 2.6,
+            "y": 0,
+            "z": -6,
+            "wait": 15
+          }
+        ],
+        "deployables": [
+          {
+            "id": 27,
+            "owner": 0,
+            "team": null,
+            "x": 100,
+            "y": 0,
+            "z": 100,
+            "life": 18,
+            "cooldown": 0,
+            "range": 22,
+            "damage": 9,
+            "interval": 0.5,
+            "health": 80
+          }
+        ],
+        "flags": [],
+        "teamScores": {
+          "0": 0,
+          "1": 0
+        },
+        "winner": null,
+        "objectives": null,
+        "projectiles": 0,
+        "rockets": [],
+        "stats": {
+          "shots": 0,
+          "kills": 0,
+          "pickups": 20,
+          "powers": 0,
+          "respawns": 1,
+          "falls": 0
+        },
+        "leaders": [
+          "ChatGPT"
+        ],
+        "singleplayer": null
+      },
+      "events": [
+        {
+          "type": "spawn",
+          "id": 1,
+          "time": 0,
+          "actor": 0,
+          "pos": {
+            "x": -44,
+            "y": 1,
+            "z": -34
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 2,
+          "time": 0,
+          "actor": 0,
+          "kind": "health",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 3,
+          "time": 0,
+          "actor": 0,
+          "kind": "armor",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 4,
+          "time": 0,
+          "actor": 0,
+          "kind": "ammo",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 5,
+          "time": 0,
+          "actor": 0,
+          "kind": "rocket",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 6,
+          "time": 0,
+          "actor": 0,
+          "kind": "megahealth",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 7,
+          "time": 0,
+          "actor": 0,
+          "kind": "rail",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 8,
+          "time": 0,
+          "actor": 0,
+          "kind": "scatter",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 9,
+          "time": 0,
+          "actor": 0,
+          "kind": "plasma",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 10,
+          "time": 0,
+          "actor": 0,
+          "kind": "grenade",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 11,
+          "time": 0,
+          "actor": 0,
+          "kind": "shock",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 12,
+          "time": 0,
+          "actor": 0,
+          "kind": "flak",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 13,
+          "time": 0,
+          "actor": 0,
+          "kind": "marksman",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 14,
+          "time": 0,
+          "actor": 0,
+          "kind": "smg",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "powerup",
+          "id": 15,
+          "time": 0,
+          "actor": 0,
+          "kind": "haste",
+          "duration": 6,
+          "effect": {
+            "speedMultiplier": 1.35,
+            "cooldownMultiplier": 0.7
+          },
+          "pos": {
+            "x": 100,
+            "y": 1.45,
+            "z": 100
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 16,
+          "time": 0,
+          "actor": 0,
+          "kind": "haste",
+          "powerup": true,
+          "economy": false
+        },
+        {
+          "type": "powerup",
+          "id": 17,
+          "time": 0,
+          "actor": 0,
+          "kind": "overcharge",
+          "duration": 5,
+          "effect": {
+            "damageMultiplier": 1.35
+          },
+          "pos": {
+            "x": 100,
+            "y": 1.45,
+            "z": 100
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 18,
+          "time": 0,
+          "actor": 0,
+          "kind": "overcharge",
+          "powerup": true,
+          "economy": false
+        },
+        {
+          "type": "powerup",
+          "id": 19,
+          "time": 0,
+          "actor": 0,
+          "kind": "overshield",
+          "duration": 8,
+          "effect": {
+            "armor": 60
+          },
+          "pos": {
+            "x": 100,
+            "y": 1.45,
+            "z": 100
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 20,
+          "time": 0,
+          "actor": 0,
+          "kind": "overshield",
+          "powerup": true,
+          "economy": false
+        },
+        {
+          "type": "powerup",
+          "id": 21,
+          "time": 0,
+          "actor": 0,
+          "kind": "recon",
+          "duration": 10,
+          "effect": {
+            "reveal": true
+          },
+          "pos": {
+            "x": 100,
+            "y": 1.45,
+            "z": 100
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 22,
+          "time": 0,
+          "actor": 0,
+          "kind": "recon",
+          "powerup": true,
+          "economy": false
+        },
+        {
+          "type": "powerup",
+          "id": 23,
+          "time": 0,
+          "actor": 0,
+          "kind": "cloak",
+          "duration": 7,
+          "effect": {
+            "cloak": true
+          },
+          "pos": {
+            "x": 100,
+            "y": 1.45,
+            "z": 100
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 24,
+          "time": 0,
+          "actor": 0,
+          "kind": "cloak",
+          "powerup": true,
+          "economy": false
+        },
+        {
+          "type": "weapon-upgrade",
+          "id": 25,
+          "time": 0,
+          "actor": 0,
+          "weapon": 3,
+          "from": 2,
+          "duration": 12
+        },
+        {
+          "type": "pickup",
+          "id": 26,
+          "time": 0,
+          "actor": 0,
+          "kind": "weaponUpgrade",
+          "powerup": false,
+          "economy": true
+        },
+        {
+          "type": "deployable",
+          "id": 28,
+          "time": 0,
+          "actor": 0,
+          "sentry": 27,
+          "x": 100,
+          "y": 0,
+          "z": 100,
+          "duration": 18
+        },
+        {
+          "type": "pickup",
+          "id": 29,
+          "time": 0,
+          "actor": 0,
+          "kind": "deployable",
+          "powerup": false,
+          "economy": true
+        }
+      ]
+    },
+    {
+      "label": "source-respawn",
+      "state": {
+        "config": {
+          "mode": "deathmatch",
+          "botCount": 0,
+          "difficulty": "easy",
+          "fragLimit": 15,
+          "timeLimit": 300,
+          "respawn": 2,
+          "speed": 1,
+          "gravity": 1,
+          "damage": 1,
+          "fastPowers": false,
+          "lifeSteal": false,
+          "unlimitedAmmo": false,
+          "suddenDeath": false,
+          "randomLoadout": false,
+          "oneShot": false,
+          "instagib": false,
+          "mirrorLoadout": false,
+          "bounty": false,
+          "berserk": false,
+          "bigHead": false,
+          "noRecoil": false,
+          "endless": false,
+          "startingWeapon": 0,
+          "playerName": "",
+          "mission": "convoy-run",
+          "loadout": null,
+          "checkpoint": null,
+          "mutators": []
+        },
+        "modeName": "Deathmatch",
+        "mapId": "meridian-exchange",
+        "mapName": "Meridian Exchange",
+        "time": 15.016666666666993,
+        "over": false,
+        "overReason": null,
+        "suddenDeath": false,
+        "feed": [],
+        "actors": [
+          {
+            "id": 0,
+            "character": "chatgpt",
+            "harness": "openclaw",
+            "name": "ChatGPT",
+            "frags": 0,
+            "deaths": 0,
+            "streak": 0,
+            "ladder": 0,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            },
+            "x": 52,
+            "y": 0,
+            "z": 44,
+            "lastValid": {
+              "x": 52,
+              "y": 0,
+              "z": 44
+            },
+            "vx": 0,
+            "vy": 0,
+            "vz": 0,
+            "yaw": -2.2286849319771065,
+            "pitch": 0,
+            "bodyYaw": -2.2286849319771065,
+            "grounded": true,
+            "coyote": 0.1,
+            "jumpBuffer": 0,
+            "health": 20,
+            "armor": 0,
+            "spawnArmor": 5,
+            "dead": 0,
+            "vehicleId": null,
+            "vehicleSeat": null,
+            "vehicleSeatIndex": 0,
+            "weapon": 2,
+            "ammo": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cooldown": 0,
+            "active": 0,
+            "slow": 0,
+            "slowMultiplier": 0.55,
+            "shotWait": 0,
+            "grenadeCooldown": 0,
+            "protection": 0,
+            "shots": 0,
+            "traversalCooldown": 0,
+            "traversalPad": null,
+            "traversalTarget": null,
+            "zipRide": null,
+            "carryingFlag": false,
+            "carrySpeedMultiplier": 1,
+            "spread": 0,
+            "punchYaw": 0,
+            "punchPitch": 0,
+            "punchVelYaw": 0,
+            "punchVelPitch": 0,
+            "reloading": false,
+            "reloadTimer": 0,
+            "reloadDuration": 0,
+            "reloadWeapon": -1,
+            "melee": 0,
+            "weaponSwitch": 0,
+            "burst": 0,
+            "burstTimer": 0,
+            "sprinting": false,
+            "crouching": false,
+            "sliding": false,
+            "slideTimer": 0,
+            "slideCooldown": 0,
+            "eyeHeight": 1.45,
+            "baseHeight": 1.8,
+            "ads": false,
+            "jumpHeld": false,
+            "jumpCutArmed": false,
+            "powerups": {},
+            "speedMultiplier": 1,
+            "damageMultiplier": 1,
+            "cooldownMultiplier": 1,
+            "temporaryShield": 0,
+            "activeSpeedMultiplier": 1,
+            "hitScale": 1,
+            "juggernaut": false,
+            "juggernautShield": 0,
+            "juggernautDamage": 1,
+            "upgradeWeapon": null,
+            "upgradeTimer": 0,
+            "upgradeBase": -1,
+            "movement": {
+              "v": 1,
+              "verb": "grapple",
+              "phase": "ready",
+              "enabled": true,
+              "charges": 0,
+              "maxCharges": 0,
+              "cooldown": 0,
+              "fuel": 0,
+              "maxFuel": 0,
+              "fuelRecharge": 0,
+              "windup": 0,
+              "recovery": 0,
+              "activeTime": 0,
+              "landingArmed": false,
+              "chains": 0,
+              "miss": 0,
+              "anchor": null,
+              "grapple": null,
+              "grappleLanding": null
+            },
+            "verbState": {
+              "verb": "adaptive",
+              "active": true,
+              "open": false,
+              "windowIn": 0,
+              "shotsLeft": 0
+            },
+            "threatPing": 0,
+            "riderSpeedBonus": 0,
+            "riderSpeedTimer": 0,
+            "holsterSkip": 0,
+            "braceTimer": 0,
+            "braceMitigation": 0,
+            "braceKnockbackScale": 1,
+            "alt": false,
+            "firingThisTick": false,
+            "movementLanded": false,
+            "glideSteer": 0,
+            "inputJump": false,
+            "inputCrouch": false,
+            "inputMobility": false,
+            "bot": null,
+            "botScan": 39.1305790917335,
+            "gear": null,
+            "attachments": null,
+            "finish": null,
+            "maxHealth": 100,
+            "moveSpeed": 8.6,
+            "gearSpeed": 1,
+            "gearDamage": 1,
+            "gearSpread": 1,
+            "burstLeft": 0,
+            "traversalFlight": false,
+            "traversalEvent": null
+          }
+        ],
+        "vehicles": [],
+        "pickups": [
+          {
+            "id": 0,
+            "kind": "health",
+            "x": -2.6,
+            "y": 0,
+            "z": 0,
+            "wait": 0
+          },
+          {
+            "id": 1,
+            "kind": "armor",
+            "x": -1.3,
+            "y": 0,
+            "z": 0,
+            "wait": 0
+          },
+          {
+            "id": 2,
+            "kind": "ammo",
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "wait": 0,
+            "weapon": "rail"
+          },
+          {
+            "id": 3,
+            "kind": "rocket",
+            "x": 1.3,
+            "y": 0,
+            "z": 0,
+            "wait": 0
+          },
+          {
+            "id": 4,
+            "kind": "megahealth",
+            "x": 2.6,
+            "y": 0,
+            "z": 0,
+            "wait": 0
+          },
+          {
+            "id": 5,
+            "kind": "rail",
+            "x": -2.6,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 6,
+            "kind": "scatter",
+            "x": -1.3,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 7,
+            "kind": "plasma",
+            "x": 0,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 8,
+            "kind": "grenade",
+            "x": 1.3,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 9,
+            "kind": "shock",
+            "x": 2.6,
+            "y": 0,
+            "z": -2,
+            "wait": 0
+          },
+          {
+            "id": 10,
+            "kind": "flak",
+            "x": -2.6,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 11,
+            "kind": "marksman",
+            "x": -1.3,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 12,
+            "kind": "smg",
+            "x": 0,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 13,
+            "kind": "haste",
+            "x": 1.3,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 14,
+            "kind": "overcharge",
+            "x": 2.6,
+            "y": 0,
+            "z": -4,
+            "wait": 0
+          },
+          {
+            "id": 15,
+            "kind": "overshield",
+            "x": -2.6,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 16,
+            "kind": "recon",
+            "x": -1.3,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 17,
+            "kind": "cloak",
+            "x": 0,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 18,
+            "kind": "weaponUpgrade",
+            "x": 1.3,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          },
+          {
+            "id": 19,
+            "kind": "deployable",
+            "x": 2.6,
+            "y": 0,
+            "z": -6,
+            "wait": 0
+          }
+        ],
+        "deployables": [
+          {
+            "id": 27,
+            "owner": 0,
+            "team": null,
+            "x": 100,
+            "y": 0,
+            "z": 100,
+            "life": 2.983333333333068,
+            "cooldown": 0,
+            "range": 22,
+            "damage": 9,
+            "interval": 0.5,
+            "health": 80
+          }
+        ],
+        "flags": [],
+        "teamScores": {
+          "0": 0,
+          "1": 0
+        },
+        "winner": null,
+        "objectives": null,
+        "projectiles": 0,
+        "rockets": [],
+        "stats": {
+          "shots": 0,
+          "kills": 0,
+          "pickups": 20,
+          "powers": 0,
+          "respawns": 1,
+          "falls": 0
+        },
+        "leaders": [
+          "ChatGPT"
+        ],
+        "singleplayer": null
+      },
+      "events": [
+        {
+          "type": "spawn",
+          "id": 1,
+          "time": 0,
+          "actor": 0,
+          "pos": {
+            "x": -44,
+            "y": 1,
+            "z": -34
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 2,
+          "time": 0,
+          "actor": 0,
+          "kind": "health",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 3,
+          "time": 0,
+          "actor": 0,
+          "kind": "armor",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 4,
+          "time": 0,
+          "actor": 0,
+          "kind": "ammo",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 5,
+          "time": 0,
+          "actor": 0,
+          "kind": "rocket",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 6,
+          "time": 0,
+          "actor": 0,
+          "kind": "megahealth",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 7,
+          "time": 0,
+          "actor": 0,
+          "kind": "rail",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 8,
+          "time": 0,
+          "actor": 0,
+          "kind": "scatter",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 9,
+          "time": 0,
+          "actor": 0,
+          "kind": "plasma",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 10,
+          "time": 0,
+          "actor": 0,
+          "kind": "grenade",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 11,
+          "time": 0,
+          "actor": 0,
+          "kind": "shock",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 12,
+          "time": 0,
+          "actor": 0,
+          "kind": "flak",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 13,
+          "time": 0,
+          "actor": 0,
+          "kind": "marksman",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "pickup",
+          "id": 14,
+          "time": 0,
+          "actor": 0,
+          "kind": "smg",
+          "powerup": false,
+          "economy": false
+        },
+        {
+          "type": "powerup",
+          "id": 15,
+          "time": 0,
+          "actor": 0,
+          "kind": "haste",
+          "duration": 6,
+          "effect": {
+            "speedMultiplier": 1.35,
+            "cooldownMultiplier": 0.7
+          },
+          "pos": {
+            "x": 100,
+            "y": 1.45,
+            "z": 100
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 16,
+          "time": 0,
+          "actor": 0,
+          "kind": "haste",
+          "powerup": true,
+          "economy": false
+        },
+        {
+          "type": "powerup",
+          "id": 17,
+          "time": 0,
+          "actor": 0,
+          "kind": "overcharge",
+          "duration": 5,
+          "effect": {
+            "damageMultiplier": 1.35
+          },
+          "pos": {
+            "x": 100,
+            "y": 1.45,
+            "z": 100
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 18,
+          "time": 0,
+          "actor": 0,
+          "kind": "overcharge",
+          "powerup": true,
+          "economy": false
+        },
+        {
+          "type": "powerup",
+          "id": 19,
+          "time": 0,
+          "actor": 0,
+          "kind": "overshield",
+          "duration": 8,
+          "effect": {
+            "armor": 60
+          },
+          "pos": {
+            "x": 100,
+            "y": 1.45,
+            "z": 100
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 20,
+          "time": 0,
+          "actor": 0,
+          "kind": "overshield",
+          "powerup": true,
+          "economy": false
+        },
+        {
+          "type": "powerup",
+          "id": 21,
+          "time": 0,
+          "actor": 0,
+          "kind": "recon",
+          "duration": 10,
+          "effect": {
+            "reveal": true
+          },
+          "pos": {
+            "x": 100,
+            "y": 1.45,
+            "z": 100
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 22,
+          "time": 0,
+          "actor": 0,
+          "kind": "recon",
+          "powerup": true,
+          "economy": false
+        },
+        {
+          "type": "powerup",
+          "id": 23,
+          "time": 0,
+          "actor": 0,
+          "kind": "cloak",
+          "duration": 7,
+          "effect": {
+            "cloak": true
+          },
+          "pos": {
+            "x": 100,
+            "y": 1.45,
+            "z": 100
+          }
+        },
+        {
+          "type": "pickup",
+          "id": 24,
+          "time": 0,
+          "actor": 0,
+          "kind": "cloak",
+          "powerup": true,
+          "economy": false
+        },
+        {
+          "type": "weapon-upgrade",
+          "id": 25,
+          "time": 0,
+          "actor": 0,
+          "weapon": 3,
+          "from": 2,
+          "duration": 12
+        },
+        {
+          "type": "pickup",
+          "id": 26,
+          "time": 0,
+          "actor": 0,
+          "kind": "weaponUpgrade",
+          "powerup": false,
+          "economy": true
+        },
+        {
+          "type": "deployable",
+          "id": 28,
+          "time": 0,
+          "actor": 0,
+          "sentry": 27,
+          "x": 100,
+          "y": 0,
+          "z": 100,
+          "duration": 18
+        },
+        {
+          "type": "pickup",
+          "id": 29,
+          "time": 0,
+          "actor": 0,
+          "kind": "deployable",
+          "powerup": false,
+          "economy": true
+        },
+        {
+          "type": "weapon-upgrade",
+          "id": 30,
+          "time": 12.000000000000176,
+          "actor": 0,
+          "weapon": 2,
+          "from": 3,
+          "duration": 0,
+          "expired": true
+        }
+      ]
+    }
+  ]
+}
