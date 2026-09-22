@@ -1,0 +1,937 @@
+{
+  "schema": 1,
+  "stamp": "2026-09-22T17-49-47-908Z",
+  "label": "llvmpipe-verified",
+  "resolution": "1280x800",
+  "map": "prism-foundry",
+  "bots": 4,
+  "round_seconds": 180,
+  "runs": [
+    {
+      "label": "llvmpipe-verified",
+      "level": "low",
+      "resolution": "1280x800",
+      "map": "prism-foundry",
+      "bots": 4,
+      "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "command": "python3 tools/godot-dev/xvfb_run.py /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --audio-driver Dummy --resolution 1280x800 res://native_arenas/demo.tscn -- --map=prism-foundry --mode=deathmatch --bots=4 --round-seconds=180 --endpoint=ws://127.0.0.1:35703/native-arenas --benchmark",
+      "exit_code": 0,
+      "endpoint_scheme": "ws://127.0.0.1:PORT/native-arenas",
+      "window_pixels": 1024000,
+      "directory": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low",
+      "result_file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low/result.json",
+      "line": "BENCHMARK_RESULT {\"aggregate\":{\"fps_from_median\":4.50687975194134,\"max_ms\":592.951,\"mean_ms\":236.552403361345,\"median_ms\":221.883,\"p95_ms\":420.677,\"samples\":119},\"artifacts\":{\"captures\":[{\"file\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low/benchmark-2026-09-22T17-49-49-combat.png\",\"height\":800,\"phase\":\"combat\",\"width\":1280},{\"file\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low/benchmark-2026-09-22T17-49-49-burst.png\",\"height\":800,\"phase\":\"burst\",\"width\":1280},{\"file\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low/benchmark-2026-09-22T17-49-49-sustained.png\",\"height\":800,\"phase\":\"sustained\",\"width\":1280}],\"directory\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low\",\"json\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low/benchmark-2026-09-22T17-49-49.json\",\"json_written\":true,\"write_error\":\"\"},\"combat\":{\"explosions\":44,\"hits\":0,\"hurts\":12,\"launches\":26,\"local_ammo\":\"∞,6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0\",\"local_deaths\":2,\"local_launches\":0,\"local_weapon\":1,\"local_weapon_name\":\"Rocket Launcher\",\"shots\":68},\"command\":\"/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 res://native_arenas/demo.tscn -- --map=prism-foundry --mode=deathmatch --bots=4 --round-seconds=180 --endpoint=ws://127.0.0.1:35703/native-arenas --benchmark\",\"complete\":true,\"controls_seconds\":15.3088647070707,\"engine\":{\"draw_calls_max\":1654,\"draw_calls_mean\":1099.22857142857,\"object_nodes_peak\":1877,\"primitives_max\":117392,\"primitives_mean\":90102.0714285714,\"render_frames\":133,\"sample_seconds\":0.25,\"source\":\"Viewport.get_render_info(RENDER_INFO_TYPE_VISIBLE) and Performance monitors; 0 means the GL compatibility renderer did not report it\",\"video_mem_peak_bytes\":97867659},\"environment\":{\"adapter\":\"llvmpipe (LLVM 20.1.8, 256 bits)\",\"adapter_api\":\"4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2\",\"cpu\":\"AMD RYZEN AI MAX+ 395 w/ Radeon 8060S\",\"cpu_count\":32,\"display_server\":\"X11\",\"driver_info\":[\"\",\"\"],\"godot\":\"4.5.2-stable (official)\",\"headless\":false,\"max_fps\":0,\"os\":\"Linux\",\"os_version\":\"25.10\",\"physics_ticks_per_second\":60,\"renderer_driver\":\"opengl3\",\"renderer_method\":\"gl_compatibility\",\"screen_refresh_hz\":-1.0,\"vsync_before\":0,\"vsync_changed_by_benchmark\":false,\"vsync_during\":0,\"vsync_restored\":0},\"generated\":\"2026-09-22T17:50:33Z\",\"honesty\":{\"notes\":[\"SOFTWARE RENDERER (llvmpipe (LLVM 20.1.8, 256 bits)): these are CPU rasterizer numbers, not hardware GPU figures, and must not be quoted as the owner's performance.\",\"Frame times are wall-clock intervals between real RenderingServer frame_post_draws, with display buffering included. They are not GPU timestamps.\",\"Engine draw calls and primitive counts are best-effort engine counters; the GL compatibility renderer can report zero.\",\"Particle allocated/submitted slots are submitted capacity, not a live GPU count and not a count of visible particles.\",\"Part of the measured window ran without benchmark input control (death, respawn or lost focus); effect load is lower than a fully controlled run.\"],\"renderer_class\":\"software\",\"software_renderer\":true},\"launch\":{\"automatic\":true,\"env\":{\"COCS_BENCHMARK\":\"1\",\"COCS_BENCHMARK_LEVEL\":\"low\",\"COCS_BENCHMARK_OUT\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low\"},\"trigger\":\"environment\",\"windows_run\":\"set COCS_BENCHMARK=1 && set COCS_BENCHMARK_LEVEL=low && Play.cmd --experience=native-dm --map=prism-foundry --bots=4 --round-seconds=180\"},\"measured_seconds\":28.0,\"particles\":{\"active_emitters\":31,\"allocated_slots\":8192,\"backend\":\"GPUParticles3D\",\"budget\":8192,\"buffer_payload_estimate_bytes\":2621440,\"draw_slots\":7936,\"metrics\":{\"active_emitters\":31,\"allocated_slots\":8192,\"backend\":\"GPUParticles3D\",\"blood_absorbed_only\":9,\"blood_active_emitters\":8,\"blood_allocated_slots\":4096,\"blood_concurrent_cap\":8,\"blood_duplicates\":0,\"blood_no_bleed\":11,\"blood_stains_live\":48,\"blood_stains_recycled\":19,\"blood_submitted_slots\":706,\"budget\":8192,\"buffer_payload_estimate_bytes\":2621440,\"capacity_note\":\"Submitted capacity, not live GPU readback; buffer bytes are an estimate\",\"collision_shapes\":101,\"draw_slots\":7936,\"impact_active\":0,\"impact_counters\":\"{\\\"actor_hits\\\":26,\\\"confirmed\\\":4,\\\"deduped\\\":0,\\\"dropped\\\":0,\\\"legacy\\\":0,\\\"no_geometry\\\":5,\\\"occluded\\\":17,\\\"probes\\\":26,\\\"shown\\\":4,\\\"too_far\\\":0}\",\"impact_family\":\"metal\",\"impact_pool\":1,\"occlusion\":\"native physics\",\"player_fx_cues\":\"{\\\"break\\\":2,\\\"damage\\\":8,\\\"death\\\":2,\\\"dedup\\\":0,\\\"environmental\\\":0,\\\"respawn\\\":2,\\\"suppressed\\\":0}\",\"player_fx_direction\":\"none\",\"player_fx_heartbeat\":0.0,\"player_fx_low\":0.0,\"player_fx_protection\":0.0,\"pool_nodes\":32,\"shield_materials\":8,\"unsupported_collision_shapes\":0,\"weapon_flashes\":0,\"weapon_pool_nodes\":9,\"weapon_tracers\":59},\"pool_nodes\":32,\"quality\":\"Low\",\"source\":\"F10 combat metrics and the world particle pool snapshot\"},\"phases\":[{\"fps_from_median\":5.70353048537044,\"frames\":14,\"max_ms\":856.027,\"mean_ms\":229.548,\"measured\":false,\"median_ms\":175.33,\"name\":\"warmup\",\"p95_ms\":856.027,\"samples\":13},{\"fps_from_median\":4.34795841612571,\"frames\":49,\"max_ms\":592.951,\"mean_ms\":247.14712244898,\"measured\":true,\"median_ms\":229.993,\"name\":\"combat\",\"p95_ms\":420.677,\"samples\":49},{\"fps_from_median\":4.78269811131252,\"frames\":26,\"max_ms\":465.568,\"mean_ms\":226.473076923077,\"measured\":true,\"median_ms\":209.087,\"name\":\"burst\",\"p95_ms\":378.185,\"samples\":26},{\"fps_from_median\":4.56752399091976,\"frames\":44,\"max_ms\":471.981,\"mean_ms\":230.709704545455,\"measured\":true,\"median_ms\":218.937,\"name\":\"sustained\",\"p95_ms\":390.385,\"samples\":44}],\"quality\":{\"level\":0,\"levels\":[\"Low\",\"High\",\"Extreme\"],\"levels_seen\":[\"Low\"],\"name\":\"Low\",\"per_phase\":[\"Low\",\"Low\",\"Low\",\"Low\"],\"stable\":true},\"recommendation\":{\"applied_level\":0,\"applied_name\":\"Low\",\"applied_note\":\"the reported frame times were measured before this preset was applied\",\"basis\":\"p95 wall-clock frame time measured by the in-match benchmark\",\"confirm\":\"re-run the benchmark at the recommended level to confirm; F9 still cycles every level\",\"level\":0,\"measured_level\":0,\"measured_name\":\"Low\",\"name\":\"Low\",\"p95_ms\":420.677,\"reason\":\"p95 420.7 ms misses the 60 Hz budget at the measured level; Low is the supported load\",\"thresholds_ms\":{\"extreme\":8.3,\"high\":16.7}},\"scene\":{\"acks\":149,\"actor_count\":5,\"authority\":\"owned-loopback\",\"autostart\":true,\"bots\":4,\"interactive\":false,\"map\":\"prism-foundry\",\"mode\":\"deathmatch\",\"round_seconds\":180,\"round_starts\":1,\"snapshots\":728},\"schema\":1,\"startup_seconds\":3.34971833333333,\"tool\":\"cocs-native-benchmark\",\"verdict\":\"partial\",\"verdict_reasons\":[\"the actor was under benchmark control for 55% of the measured window\"],\"version\":\"1.0.0\",\"window\":{\"mode\":\"windowed\",\"scaling_3d\":1.0,\"size\":[1280,800],\"viewport_size\":[1280,800]}}",
+      "validation": {
+        "ok": true,
+        "problems": []
+      },
+      "result": {
+        "aggregate": {
+          "fps_from_median": 4.50687975194134,
+          "max_ms": 592.951,
+          "mean_ms": 236.552403361345,
+          "median_ms": 221.883,
+          "p95_ms": 420.677,
+          "samples": 119
+        },
+        "artifacts": {
+          "captures": [
+            {
+              "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low/benchmark-2026-09-22T17-49-49-combat.png",
+              "height": 800,
+              "phase": "combat",
+              "width": 1280
+            },
+            {
+              "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low/benchmark-2026-09-22T17-49-49-burst.png",
+              "height": 800,
+              "phase": "burst",
+              "width": 1280
+            },
+            {
+              "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low/benchmark-2026-09-22T17-49-49-sustained.png",
+              "height": 800,
+              "phase": "sustained",
+              "width": 1280
+            }
+          ],
+          "directory": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low",
+          "json": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low/benchmark-2026-09-22T17-49-49.json",
+          "json_written": true,
+          "write_error": ""
+        },
+        "combat": {
+          "explosions": 44,
+          "hits": 0,
+          "hurts": 12,
+          "launches": 26,
+          "local_ammo": "∞,6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0",
+          "local_deaths": 2,
+          "local_launches": 0,
+          "local_weapon": 1,
+          "local_weapon_name": "Rocket Launcher",
+          "shots": 68
+        },
+        "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 res://native_arenas/demo.tscn -- --map=prism-foundry --mode=deathmatch --bots=4 --round-seconds=180 --endpoint=ws://127.0.0.1:35703/native-arenas --benchmark",
+        "complete": true,
+        "controls_seconds": 15.3088647070707,
+        "engine": {
+          "draw_calls_max": 1654,
+          "draw_calls_mean": 1099.22857142857,
+          "object_nodes_peak": 1877,
+          "primitives_max": 117392,
+          "primitives_mean": 90102.0714285714,
+          "render_frames": 133,
+          "sample_seconds": 0.25,
+          "source": "Viewport.get_render_info(RENDER_INFO_TYPE_VISIBLE) and Performance monitors; 0 means the GL compatibility renderer did not report it",
+          "video_mem_peak_bytes": 97867659
+        },
+        "environment": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_api": "4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2",
+          "cpu": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S",
+          "cpu_count": 32,
+          "display_server": "X11",
+          "driver_info": [
+            "",
+            ""
+          ],
+          "godot": "4.5.2-stable (official)",
+          "headless": false,
+          "max_fps": 0,
+          "os": "Linux",
+          "os_version": "25.10",
+          "physics_ticks_per_second": 60,
+          "renderer_driver": "opengl3",
+          "renderer_method": "gl_compatibility",
+          "screen_refresh_hz": -1,
+          "vsync_before": 0,
+          "vsync_changed_by_benchmark": false,
+          "vsync_during": 0,
+          "vsync_restored": 0
+        },
+        "generated": "2026-09-22T17:50:33Z",
+        "honesty": {
+          "notes": [
+            "SOFTWARE RENDERER (llvmpipe (LLVM 20.1.8, 256 bits)): these are CPU rasterizer numbers, not hardware GPU figures, and must not be quoted as the owner's performance.",
+            "Frame times are wall-clock intervals between real RenderingServer frame_post_draws, with display buffering included. They are not GPU timestamps.",
+            "Engine draw calls and primitive counts are best-effort engine counters; the GL compatibility renderer can report zero.",
+            "Particle allocated/submitted slots are submitted capacity, not a live GPU count and not a count of visible particles.",
+            "Part of the measured window ran without benchmark input control (death, respawn or lost focus); effect load is lower than a fully controlled run."
+          ],
+          "renderer_class": "software",
+          "software_renderer": true
+        },
+        "launch": {
+          "automatic": true,
+          "env": {
+            "COCS_BENCHMARK": "1",
+            "COCS_BENCHMARK_LEVEL": "low",
+            "COCS_BENCHMARK_OUT": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-low"
+          },
+          "trigger": "environment",
+          "windows_run": "set COCS_BENCHMARK=1 && set COCS_BENCHMARK_LEVEL=low && Play.cmd --experience=native-dm --map=prism-foundry --bots=4 --round-seconds=180"
+        },
+        "measured_seconds": 28,
+        "particles": {
+          "active_emitters": 31,
+          "allocated_slots": 8192,
+          "backend": "GPUParticles3D",
+          "budget": 8192,
+          "buffer_payload_estimate_bytes": 2621440,
+          "draw_slots": 7936,
+          "metrics": {
+            "active_emitters": 31,
+            "allocated_slots": 8192,
+            "backend": "GPUParticles3D",
+            "blood_absorbed_only": 9,
+            "blood_active_emitters": 8,
+            "blood_allocated_slots": 4096,
+            "blood_concurrent_cap": 8,
+            "blood_duplicates": 0,
+            "blood_no_bleed": 11,
+            "blood_stains_live": 48,
+            "blood_stains_recycled": 19,
+            "blood_submitted_slots": 706,
+            "budget": 8192,
+            "buffer_payload_estimate_bytes": 2621440,
+            "capacity_note": "Submitted capacity, not live GPU readback; buffer bytes are an estimate",
+            "collision_shapes": 101,
+            "draw_slots": 7936,
+            "impact_active": 0,
+            "impact_counters": "{\"actor_hits\":26,\"confirmed\":4,\"deduped\":0,\"dropped\":0,\"legacy\":0,\"no_geometry\":5,\"occluded\":17,\"probes\":26,\"shown\":4,\"too_far\":0}",
+            "impact_family": "metal",
+            "impact_pool": 1,
+            "occlusion": "native physics",
+            "player_fx_cues": "{\"break\":2,\"damage\":8,\"death\":2,\"dedup\":0,\"environmental\":0,\"respawn\":2,\"suppressed\":0}",
+            "player_fx_direction": "none",
+            "player_fx_heartbeat": 0,
+            "player_fx_low": 0,
+            "player_fx_protection": 0,
+            "pool_nodes": 32,
+            "shield_materials": 8,
+            "unsupported_collision_shapes": 0,
+            "weapon_flashes": 0,
+            "weapon_pool_nodes": 9,
+            "weapon_tracers": 59
+          },
+          "pool_nodes": 32,
+          "quality": "Low",
+          "source": "F10 combat metrics and the world particle pool snapshot"
+        },
+        "phases": [
+          {
+            "fps_from_median": 5.70353048537044,
+            "frames": 14,
+            "max_ms": 856.027,
+            "mean_ms": 229.548,
+            "measured": false,
+            "median_ms": 175.33,
+            "name": "warmup",
+            "p95_ms": 856.027,
+            "samples": 13
+          },
+          {
+            "fps_from_median": 4.34795841612571,
+            "frames": 49,
+            "max_ms": 592.951,
+            "mean_ms": 247.14712244898,
+            "measured": true,
+            "median_ms": 229.993,
+            "name": "combat",
+            "p95_ms": 420.677,
+            "samples": 49
+          },
+          {
+            "fps_from_median": 4.78269811131252,
+            "frames": 26,
+            "max_ms": 465.568,
+            "mean_ms": 226.473076923077,
+            "measured": true,
+            "median_ms": 209.087,
+            "name": "burst",
+            "p95_ms": 378.185,
+            "samples": 26
+          },
+          {
+            "fps_from_median": 4.56752399091976,
+            "frames": 44,
+            "max_ms": 471.981,
+            "mean_ms": 230.709704545455,
+            "measured": true,
+            "median_ms": 218.937,
+            "name": "sustained",
+            "p95_ms": 390.385,
+            "samples": 44
+          }
+        ],
+        "quality": {
+          "level": 0,
+          "levels": [
+            "Low",
+            "High",
+            "Extreme"
+          ],
+          "levels_seen": [
+            "Low"
+          ],
+          "name": "Low",
+          "per_phase": [
+            "Low",
+            "Low",
+            "Low",
+            "Low"
+          ],
+          "stable": true
+        },
+        "recommendation": {
+          "applied_level": 0,
+          "applied_name": "Low",
+          "applied_note": "the reported frame times were measured before this preset was applied",
+          "basis": "p95 wall-clock frame time measured by the in-match benchmark",
+          "confirm": "re-run the benchmark at the recommended level to confirm; F9 still cycles every level",
+          "level": 0,
+          "measured_level": 0,
+          "measured_name": "Low",
+          "name": "Low",
+          "p95_ms": 420.677,
+          "reason": "p95 420.7 ms misses the 60 Hz budget at the measured level; Low is the supported load",
+          "thresholds_ms": {
+            "extreme": 8.3,
+            "high": 16.7
+          }
+        },
+        "scene": {
+          "acks": 149,
+          "actor_count": 5,
+          "authority": "owned-loopback",
+          "autostart": true,
+          "bots": 4,
+          "interactive": false,
+          "map": "prism-foundry",
+          "mode": "deathmatch",
+          "round_seconds": 180,
+          "round_starts": 1,
+          "snapshots": 728
+        },
+        "schema": 1,
+        "startup_seconds": 3.34971833333333,
+        "tool": "cocs-native-benchmark",
+        "verdict": "partial",
+        "verdict_reasons": [
+          "the actor was under benchmark control for 55% of the measured window"
+        ],
+        "version": "1.0.0",
+        "window": {
+          "mode": "windowed",
+          "scaling_3d": 1,
+          "size": [
+            1280,
+            800
+          ],
+          "viewport_size": [
+            1280,
+            800
+          ]
+        }
+      },
+      "summary": "prism-foundry 1280x800 Low median 221.9 ms · p95 420.7 ms · 119 frames · draw calls 1099 · llvmpipe (LLVM 20.1.8, 256 bits) (software)"
+    },
+    {
+      "label": "llvmpipe-verified",
+      "level": "high",
+      "resolution": "1280x800",
+      "map": "prism-foundry",
+      "bots": 4,
+      "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "command": "python3 tools/godot-dev/xvfb_run.py /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --audio-driver Dummy --resolution 1280x800 res://native_arenas/demo.tscn -- --map=prism-foundry --mode=deathmatch --bots=4 --round-seconds=180 --endpoint=ws://127.0.0.1:35703/native-arenas --benchmark",
+      "exit_code": 0,
+      "endpoint_scheme": "ws://127.0.0.1:PORT/native-arenas",
+      "window_pixels": 1024000,
+      "directory": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high",
+      "result_file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high/result.json",
+      "line": "BENCHMARK_RESULT {\"aggregate\":{\"fps_from_median\":3.28819193833982,\"max_ms\":613.659,\"mean_ms\":316.438056818182,\"median_ms\":304.1185,\"p95_ms\":470.15,\"samples\":88},\"artifacts\":{\"captures\":[{\"file\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high/benchmark-2026-09-22T17-50-39-combat.png\",\"height\":800,\"phase\":\"combat\",\"width\":1280},{\"file\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high/benchmark-2026-09-22T17-50-39-burst.png\",\"height\":800,\"phase\":\"burst\",\"width\":1280},{\"file\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high/benchmark-2026-09-22T17-50-39-sustained.png\",\"height\":800,\"phase\":\"sustained\",\"width\":1280}],\"directory\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high\",\"json\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high/benchmark-2026-09-22T17-50-39.json\",\"json_written\":true,\"write_error\":\"\"},\"combat\":{\"explosions\":27,\"hits\":0,\"hurts\":10,\"launches\":10,\"local_ammo\":\"∞,0.0,18.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0\",\"local_deaths\":1,\"local_launches\":0,\"local_weapon\":2,\"local_weapon_name\":\"Rail Lance\",\"shots\":123},\"command\":\"/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 res://native_arenas/demo.tscn -- --map=prism-foundry --mode=deathmatch --bots=4 --round-seconds=180 --endpoint=ws://127.0.0.1:35703/native-arenas --benchmark\",\"complete\":true,\"controls_seconds\":12.1142546666667,\"engine\":{\"draw_calls_max\":1427,\"draw_calls_mean\":1206.06315789474,\"object_nodes_peak\":1892,\"primitives_max\":367931,\"primitives_mean\":273223.863157895,\"render_frames\":97,\"sample_seconds\":0.25,\"source\":\"Viewport.get_render_info(RENDER_INFO_TYPE_VISIBLE) and Performance monitors; 0 means the GL compatibility renderer did not report it\",\"video_mem_peak_bytes\":136873543},\"environment\":{\"adapter\":\"llvmpipe (LLVM 20.1.8, 256 bits)\",\"adapter_api\":\"4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2\",\"cpu\":\"AMD RYZEN AI MAX+ 395 w/ Radeon 8060S\",\"cpu_count\":32,\"display_server\":\"X11\",\"driver_info\":[\"\",\"\"],\"godot\":\"4.5.2-stable (official)\",\"headless\":false,\"max_fps\":0,\"os\":\"Linux\",\"os_version\":\"25.10\",\"physics_ticks_per_second\":60,\"renderer_driver\":\"opengl3\",\"renderer_method\":\"gl_compatibility\",\"screen_refresh_hz\":-1.0,\"vsync_before\":0,\"vsync_changed_by_benchmark\":false,\"vsync_during\":0,\"vsync_restored\":0},\"generated\":\"2026-09-22T17:51:22Z\",\"honesty\":{\"notes\":[\"SOFTWARE RENDERER (llvmpipe (LLVM 20.1.8, 256 bits)): these are CPU rasterizer numbers, not hardware GPU figures, and must not be quoted as the owner's performance.\",\"Frame times are wall-clock intervals between real RenderingServer frame_post_draws, with display buffering included. They are not GPU timestamps.\",\"Engine draw calls and primitive counts are best-effort engine counters; the GL compatibility renderer can report zero.\",\"Particle allocated/submitted slots are submitted capacity, not a live GPU count and not a count of visible particles.\",\"Part of the measured window ran without benchmark input control (death, respawn or lost focus); effect load is lower than a fully controlled run.\"],\"renderer_class\":\"software\",\"software_renderer\":true},\"launch\":{\"automatic\":true,\"env\":{\"COCS_BENCHMARK\":\"1\",\"COCS_BENCHMARK_LEVEL\":\"high\",\"COCS_BENCHMARK_OUT\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high\"},\"trigger\":\"environment\",\"windows_run\":\"set COCS_BENCHMARK=1 && set COCS_BENCHMARK_LEVEL=high && Play.cmd --experience=native-dm --map=prism-foundry --bots=4 --round-seconds=180\"},\"measured_seconds\":28.0,\"particles\":{\"active_emitters\":28,\"allocated_slots\":131072,\"backend\":\"GPUParticles3D\",\"budget\":131072,\"buffer_payload_estimate_bytes\":41943040,\"draw_slots\":114688,\"metrics\":{\"active_emitters\":28,\"allocated_slots\":131072,\"backend\":\"GPUParticles3D\",\"blood_absorbed_only\":5,\"blood_active_emitters\":4,\"blood_allocated_slots\":24576,\"blood_concurrent_cap\":14,\"blood_duplicates\":0,\"blood_no_bleed\":5,\"blood_stains_live\":80,\"blood_stains_recycled\":0,\"blood_submitted_slots\":2306,\"budget\":131072,\"buffer_payload_estimate_bytes\":41943040,\"capacity_note\":\"Submitted capacity, not live GPU readback; buffer bytes are an estimate\",\"collision_shapes\":101,\"draw_slots\":114688,\"impact_active\":0,\"impact_counters\":\"{\\\"actor_hits\\\":39,\\\"confirmed\\\":12,\\\"deduped\\\":0,\\\"dropped\\\":0,\\\"legacy\\\":0,\\\"no_geometry\\\":17,\\\"occluded\\\":47,\\\"probes\\\":76,\\\"shown\\\":12,\\\"too_far\\\":0}\",\"impact_family\":\"metal\",\"impact_pool\":6,\"occlusion\":\"native physics\",\"player_fx_cues\":\"{\\\"break\\\":1,\\\"damage\\\":7,\\\"death\\\":1,\\\"dedup\\\":0,\\\"environmental\\\":0,\\\"respawn\\\":1,\\\"suppressed\\\":0}\",\"player_fx_direction\":\"none\",\"player_fx_heartbeat\":0.0,\"player_fx_low\":0.0,\"player_fx_protection\":0.0,\"pool_nodes\":32,\"shield_materials\":9,\"unsupported_collision_shapes\":0,\"weapon_flashes\":0,\"weapon_pool_nodes\":15,\"weapon_tracers\":122},\"pool_nodes\":32,\"quality\":\"High\",\"source\":\"F10 combat metrics and the world particle pool snapshot\"},\"phases\":[{\"fps_from_median\":3.49077910698889,\"frames\":9,\"max_ms\":697.862,\"mean_ms\":384.900125,\"measured\":false,\"median_ms\":286.469,\"name\":\"warmup\",\"p95_ms\":697.862,\"samples\":8},{\"fps_from_median\":3.28819193833982,\"frames\":38,\"max_ms\":613.659,\"mean_ms\":318.146473684211,\"measured\":true,\"median_ms\":304.1185,\"name\":\"combat\",\"p95_ms\":500.583,\"samples\":38},{\"fps_from_median\":3.29822918075285,\"frames\":19,\"max_ms\":492.049,\"mean_ms\":311.093631578947,\"measured\":true,\"median_ms\":303.193,\"name\":\"burst\",\"p95_ms\":492.049,\"samples\":19},{\"fps_from_median\":3.25059485885917,\"frames\":31,\"max_ms\":522.128,\"mean_ms\":317.619483870968,\"measured\":true,\"median_ms\":307.636,\"name\":\"sustained\",\"p95_ms\":459.485,\"samples\":31}],\"quality\":{\"level\":1,\"levels\":[\"Low\",\"High\",\"Extreme\"],\"levels_seen\":[\"High\"],\"name\":\"High\",\"per_phase\":[\"High\",\"High\",\"High\",\"High\"],\"stable\":true},\"recommendation\":{\"applied_level\":0,\"applied_name\":\"Low\",\"applied_note\":\"the reported frame times were measured before this preset was applied\",\"basis\":\"p95 wall-clock frame time measured by the in-match benchmark\",\"confirm\":\"re-run the benchmark at the recommended level to confirm; F9 still cycles every level\",\"level\":0,\"measured_level\":1,\"measured_name\":\"High\",\"name\":\"Low\",\"p95_ms\":470.15,\"reason\":\"p95 470.1 ms misses the 60 Hz budget at the measured level; Low is the supported load\",\"thresholds_ms\":{\"extreme\":8.3,\"high\":16.7}},\"scene\":{\"acks\":171,\"actor_count\":5,\"authority\":\"owned-loopback\",\"autostart\":true,\"bots\":4,\"interactive\":false,\"map\":\"prism-foundry\",\"mode\":\"deathmatch\",\"round_seconds\":180,\"round_starts\":1,\"snapshots\":724},\"schema\":1,\"startup_seconds\":1.08333333333333,\"tool\":\"cocs-native-benchmark\",\"verdict\":\"partial\",\"verdict_reasons\":[\"the actor was under benchmark control for 43% of the measured window\"],\"version\":\"1.0.0\",\"window\":{\"mode\":\"windowed\",\"scaling_3d\":1.0,\"size\":[1280,800],\"viewport_size\":[1280,800]}}",
+      "validation": {
+        "ok": true,
+        "problems": []
+      },
+      "result": {
+        "aggregate": {
+          "fps_from_median": 3.28819193833982,
+          "max_ms": 613.659,
+          "mean_ms": 316.438056818182,
+          "median_ms": 304.1185,
+          "p95_ms": 470.15,
+          "samples": 88
+        },
+        "artifacts": {
+          "captures": [
+            {
+              "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high/benchmark-2026-09-22T17-50-39-combat.png",
+              "height": 800,
+              "phase": "combat",
+              "width": 1280
+            },
+            {
+              "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high/benchmark-2026-09-22T17-50-39-burst.png",
+              "height": 800,
+              "phase": "burst",
+              "width": 1280
+            },
+            {
+              "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high/benchmark-2026-09-22T17-50-39-sustained.png",
+              "height": 800,
+              "phase": "sustained",
+              "width": 1280
+            }
+          ],
+          "directory": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high",
+          "json": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high/benchmark-2026-09-22T17-50-39.json",
+          "json_written": true,
+          "write_error": ""
+        },
+        "combat": {
+          "explosions": 27,
+          "hits": 0,
+          "hurts": 10,
+          "launches": 10,
+          "local_ammo": "∞,0.0,18.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0",
+          "local_deaths": 1,
+          "local_launches": 0,
+          "local_weapon": 2,
+          "local_weapon_name": "Rail Lance",
+          "shots": 123
+        },
+        "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 res://native_arenas/demo.tscn -- --map=prism-foundry --mode=deathmatch --bots=4 --round-seconds=180 --endpoint=ws://127.0.0.1:35703/native-arenas --benchmark",
+        "complete": true,
+        "controls_seconds": 12.1142546666667,
+        "engine": {
+          "draw_calls_max": 1427,
+          "draw_calls_mean": 1206.06315789474,
+          "object_nodes_peak": 1892,
+          "primitives_max": 367931,
+          "primitives_mean": 273223.863157895,
+          "render_frames": 97,
+          "sample_seconds": 0.25,
+          "source": "Viewport.get_render_info(RENDER_INFO_TYPE_VISIBLE) and Performance monitors; 0 means the GL compatibility renderer did not report it",
+          "video_mem_peak_bytes": 136873543
+        },
+        "environment": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_api": "4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2",
+          "cpu": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S",
+          "cpu_count": 32,
+          "display_server": "X11",
+          "driver_info": [
+            "",
+            ""
+          ],
+          "godot": "4.5.2-stable (official)",
+          "headless": false,
+          "max_fps": 0,
+          "os": "Linux",
+          "os_version": "25.10",
+          "physics_ticks_per_second": 60,
+          "renderer_driver": "opengl3",
+          "renderer_method": "gl_compatibility",
+          "screen_refresh_hz": -1,
+          "vsync_before": 0,
+          "vsync_changed_by_benchmark": false,
+          "vsync_during": 0,
+          "vsync_restored": 0
+        },
+        "generated": "2026-09-22T17:51:22Z",
+        "honesty": {
+          "notes": [
+            "SOFTWARE RENDERER (llvmpipe (LLVM 20.1.8, 256 bits)): these are CPU rasterizer numbers, not hardware GPU figures, and must not be quoted as the owner's performance.",
+            "Frame times are wall-clock intervals between real RenderingServer frame_post_draws, with display buffering included. They are not GPU timestamps.",
+            "Engine draw calls and primitive counts are best-effort engine counters; the GL compatibility renderer can report zero.",
+            "Particle allocated/submitted slots are submitted capacity, not a live GPU count and not a count of visible particles.",
+            "Part of the measured window ran without benchmark input control (death, respawn or lost focus); effect load is lower than a fully controlled run."
+          ],
+          "renderer_class": "software",
+          "software_renderer": true
+        },
+        "launch": {
+          "automatic": true,
+          "env": {
+            "COCS_BENCHMARK": "1",
+            "COCS_BENCHMARK_LEVEL": "high",
+            "COCS_BENCHMARK_OUT": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-high"
+          },
+          "trigger": "environment",
+          "windows_run": "set COCS_BENCHMARK=1 && set COCS_BENCHMARK_LEVEL=high && Play.cmd --experience=native-dm --map=prism-foundry --bots=4 --round-seconds=180"
+        },
+        "measured_seconds": 28,
+        "particles": {
+          "active_emitters": 28,
+          "allocated_slots": 131072,
+          "backend": "GPUParticles3D",
+          "budget": 131072,
+          "buffer_payload_estimate_bytes": 41943040,
+          "draw_slots": 114688,
+          "metrics": {
+            "active_emitters": 28,
+            "allocated_slots": 131072,
+            "backend": "GPUParticles3D",
+            "blood_absorbed_only": 5,
+            "blood_active_emitters": 4,
+            "blood_allocated_slots": 24576,
+            "blood_concurrent_cap": 14,
+            "blood_duplicates": 0,
+            "blood_no_bleed": 5,
+            "blood_stains_live": 80,
+            "blood_stains_recycled": 0,
+            "blood_submitted_slots": 2306,
+            "budget": 131072,
+            "buffer_payload_estimate_bytes": 41943040,
+            "capacity_note": "Submitted capacity, not live GPU readback; buffer bytes are an estimate",
+            "collision_shapes": 101,
+            "draw_slots": 114688,
+            "impact_active": 0,
+            "impact_counters": "{\"actor_hits\":39,\"confirmed\":12,\"deduped\":0,\"dropped\":0,\"legacy\":0,\"no_geometry\":17,\"occluded\":47,\"probes\":76,\"shown\":12,\"too_far\":0}",
+            "impact_family": "metal",
+            "impact_pool": 6,
+            "occlusion": "native physics",
+            "player_fx_cues": "{\"break\":1,\"damage\":7,\"death\":1,\"dedup\":0,\"environmental\":0,\"respawn\":1,\"suppressed\":0}",
+            "player_fx_direction": "none",
+            "player_fx_heartbeat": 0,
+            "player_fx_low": 0,
+            "player_fx_protection": 0,
+            "pool_nodes": 32,
+            "shield_materials": 9,
+            "unsupported_collision_shapes": 0,
+            "weapon_flashes": 0,
+            "weapon_pool_nodes": 15,
+            "weapon_tracers": 122
+          },
+          "pool_nodes": 32,
+          "quality": "High",
+          "source": "F10 combat metrics and the world particle pool snapshot"
+        },
+        "phases": [
+          {
+            "fps_from_median": 3.49077910698889,
+            "frames": 9,
+            "max_ms": 697.862,
+            "mean_ms": 384.900125,
+            "measured": false,
+            "median_ms": 286.469,
+            "name": "warmup",
+            "p95_ms": 697.862,
+            "samples": 8
+          },
+          {
+            "fps_from_median": 3.28819193833982,
+            "frames": 38,
+            "max_ms": 613.659,
+            "mean_ms": 318.146473684211,
+            "measured": true,
+            "median_ms": 304.1185,
+            "name": "combat",
+            "p95_ms": 500.583,
+            "samples": 38
+          },
+          {
+            "fps_from_median": 3.29822918075285,
+            "frames": 19,
+            "max_ms": 492.049,
+            "mean_ms": 311.093631578947,
+            "measured": true,
+            "median_ms": 303.193,
+            "name": "burst",
+            "p95_ms": 492.049,
+            "samples": 19
+          },
+          {
+            "fps_from_median": 3.25059485885917,
+            "frames": 31,
+            "max_ms": 522.128,
+            "mean_ms": 317.619483870968,
+            "measured": true,
+            "median_ms": 307.636,
+            "name": "sustained",
+            "p95_ms": 459.485,
+            "samples": 31
+          }
+        ],
+        "quality": {
+          "level": 1,
+          "levels": [
+            "Low",
+            "High",
+            "Extreme"
+          ],
+          "levels_seen": [
+            "High"
+          ],
+          "name": "High",
+          "per_phase": [
+            "High",
+            "High",
+            "High",
+            "High"
+          ],
+          "stable": true
+        },
+        "recommendation": {
+          "applied_level": 0,
+          "applied_name": "Low",
+          "applied_note": "the reported frame times were measured before this preset was applied",
+          "basis": "p95 wall-clock frame time measured by the in-match benchmark",
+          "confirm": "re-run the benchmark at the recommended level to confirm; F9 still cycles every level",
+          "level": 0,
+          "measured_level": 1,
+          "measured_name": "High",
+          "name": "Low",
+          "p95_ms": 470.15,
+          "reason": "p95 470.1 ms misses the 60 Hz budget at the measured level; Low is the supported load",
+          "thresholds_ms": {
+            "extreme": 8.3,
+            "high": 16.7
+          }
+        },
+        "scene": {
+          "acks": 171,
+          "actor_count": 5,
+          "authority": "owned-loopback",
+          "autostart": true,
+          "bots": 4,
+          "interactive": false,
+          "map": "prism-foundry",
+          "mode": "deathmatch",
+          "round_seconds": 180,
+          "round_starts": 1,
+          "snapshots": 724
+        },
+        "schema": 1,
+        "startup_seconds": 1.08333333333333,
+        "tool": "cocs-native-benchmark",
+        "verdict": "partial",
+        "verdict_reasons": [
+          "the actor was under benchmark control for 43% of the measured window"
+        ],
+        "version": "1.0.0",
+        "window": {
+          "mode": "windowed",
+          "scaling_3d": 1,
+          "size": [
+            1280,
+            800
+          ],
+          "viewport_size": [
+            1280,
+            800
+          ]
+        }
+      },
+      "summary": "prism-foundry 1280x800 High median 304.1 ms · p95 470.1 ms · 88 frames · draw calls 1206 · llvmpipe (LLVM 20.1.8, 256 bits) (software)"
+    },
+    {
+      "label": "llvmpipe-verified",
+      "level": "extreme",
+      "resolution": "1280x800",
+      "map": "prism-foundry",
+      "bots": 4,
+      "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "command": "python3 tools/godot-dev/xvfb_run.py /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --audio-driver Dummy --resolution 1280x800 res://native_arenas/demo.tscn -- --map=prism-foundry --mode=deathmatch --bots=4 --round-seconds=180 --endpoint=ws://127.0.0.1:35703/native-arenas --benchmark",
+      "exit_code": 0,
+      "endpoint_scheme": "ws://127.0.0.1:PORT/native-arenas",
+      "window_pixels": 1024000,
+      "directory": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme",
+      "result_file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme/result.json",
+      "line": "BENCHMARK_RESULT {\"aggregate\":{\"fps_from_median\":2.00314895014964,\"max_ms\":1325.94,\"mean_ms\":508.121727272727,\"median_ms\":499.214,\"p95_ms\":758.162,\"samples\":55},\"artifacts\":{\"captures\":[{\"file\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme/benchmark-2026-09-22T17-51-29-combat.png\",\"height\":800,\"phase\":\"combat\",\"width\":1280},{\"file\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme/benchmark-2026-09-22T17-51-29-burst.png\",\"height\":800,\"phase\":\"burst\",\"width\":1280},{\"file\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme/benchmark-2026-09-22T17-51-29-sustained.png\",\"height\":800,\"phase\":\"sustained\",\"width\":1280}],\"directory\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme\",\"json\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme/benchmark-2026-09-22T17-51-29.json\",\"json_written\":true,\"write_error\":\"\"},\"combat\":{\"explosions\":19,\"hits\":0,\"hurts\":22,\"launches\":3,\"local_ammo\":\"∞,0.0,12.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0\",\"local_deaths\":2,\"local_launches\":0,\"local_weapon\":2,\"local_weapon_name\":\"Rail Lance\",\"shots\":211},\"command\":\"/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 res://native_arenas/demo.tscn -- --map=prism-foundry --mode=deathmatch --bots=4 --round-seconds=180 --endpoint=ws://127.0.0.1:35703/native-arenas --benchmark\",\"complete\":true,\"controls_seconds\":7.87125233333333,\"engine\":{\"draw_calls_max\":1574,\"draw_calls_mean\":1225.09677419355,\"object_nodes_peak\":1895,\"primitives_max\":1391264,\"primitives_mean\":905537.983870968,\"render_frames\":70,\"sample_seconds\":0.25,\"source\":\"Viewport.get_render_info(RENDER_INFO_TYPE_VISIBLE) and Performance monitors; 0 means the GL compatibility renderer did not report it\",\"video_mem_peak_bytes\":311186427},\"environment\":{\"adapter\":\"llvmpipe (LLVM 20.1.8, 256 bits)\",\"adapter_api\":\"4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2\",\"cpu\":\"AMD RYZEN AI MAX+ 395 w/ Radeon 8060S\",\"cpu_count\":32,\"display_server\":\"X11\",\"driver_info\":[\"\",\"\"],\"godot\":\"4.5.2-stable (official)\",\"headless\":false,\"max_fps\":0,\"os\":\"Linux\",\"os_version\":\"25.10\",\"physics_ticks_per_second\":60,\"renderer_driver\":\"opengl3\",\"renderer_method\":\"gl_compatibility\",\"screen_refresh_hz\":-1.0,\"vsync_before\":0,\"vsync_changed_by_benchmark\":false,\"vsync_during\":0,\"vsync_restored\":0},\"generated\":\"2026-09-22T17:52:13Z\",\"honesty\":{\"notes\":[\"SOFTWARE RENDERER (llvmpipe (LLVM 20.1.8, 256 bits)): these are CPU rasterizer numbers, not hardware GPU figures, and must not be quoted as the owner's performance.\",\"Frame times are wall-clock intervals between real RenderingServer frame_post_draws, with display buffering included. They are not GPU timestamps.\",\"Engine draw calls and primitive counts are best-effort engine counters; the GL compatibility renderer can report zero.\",\"Particle allocated/submitted slots are submitted capacity, not a live GPU count and not a count of visible particles.\",\"Part of the measured window ran without benchmark input control (death, respawn or lost focus); effect load is lower than a fully controlled run.\"],\"renderer_class\":\"software\",\"software_renderer\":true},\"launch\":{\"automatic\":true,\"env\":{\"COCS_BENCHMARK\":\"1\",\"COCS_BENCHMARK_LEVEL\":\"extreme\",\"COCS_BENCHMARK_OUT\":\"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme\"},\"trigger\":\"environment\",\"windows_run\":\"set COCS_BENCHMARK=1 && set COCS_BENCHMARK_LEVEL=extreme && Play.cmd --experience=native-dm --map=prism-foundry --bots=4 --round-seconds=180\"},\"measured_seconds\":28.0,\"particles\":{\"active_emitters\":4,\"allocated_slots\":1000000,\"backend\":\"GPUParticles3D\",\"budget\":1000000,\"buffer_payload_estimate_bytes\":320000000,\"draw_slots\":125000,\"metrics\":{\"active_emitters\":4,\"allocated_slots\":1000000,\"backend\":\"GPUParticles3D\",\"blood_absorbed_only\":10,\"blood_active_emitters\":0,\"blood_allocated_slots\":98304,\"blood_concurrent_cap\":20,\"blood_duplicates\":0,\"blood_no_bleed\":17,\"blood_stains_live\":0,\"blood_stains_recycled\":0,\"blood_submitted_slots\":0,\"budget\":1000000,\"buffer_payload_estimate_bytes\":320000000,\"capacity_note\":\"Submitted capacity, not live GPU readback; buffer bytes are an estimate\",\"collision_shapes\":101,\"draw_slots\":125000,\"impact_active\":0,\"impact_counters\":\"{\\\"actor_hits\\\":44,\\\"confirmed\\\":11,\\\"deduped\\\":0,\\\"dropped\\\":0,\\\"legacy\\\":0,\\\"no_geometry\\\":15,\\\"occluded\\\":102,\\\"probes\\\":128,\\\"shown\\\":11,\\\"too_far\\\":0}\",\"impact_family\":\"metal\",\"impact_pool\":7,\"occlusion\":\"native physics\",\"player_fx_cues\":\"{\\\"break\\\":2,\\\"damage\\\":19,\\\"death\\\":2,\\\"dedup\\\":0,\\\"environmental\\\":0,\\\"respawn\\\":2,\\\"suppressed\\\":0}\",\"player_fx_direction\":\"none\",\"player_fx_heartbeat\":0.0,\"player_fx_low\":0.0,\"player_fx_protection\":0.0,\"pool_nodes\":32,\"shield_materials\":13,\"unsupported_collision_shapes\":0,\"weapon_flashes\":0,\"weapon_pool_nodes\":14,\"weapon_tracers\":173},\"pool_nodes\":32,\"quality\":\"Extreme\",\"source\":\"F10 combat metrics and the world particle pool snapshot\"},\"phases\":[{\"fps_from_median\":4.1345635037945,\"frames\":15,\"max_ms\":312.419,\"mean_ms\":240.881571428571,\"measured\":false,\"median_ms\":241.8635,\"name\":\"warmup\",\"p95_ms\":312.419,\"samples\":14},{\"fps_from_median\":1.98823956298494,\"frames\":22,\"max_ms\":1325.94,\"mean_ms\":541.458090909091,\"measured\":true,\"median_ms\":502.9575,\"name\":\"combat\",\"p95_ms\":758.162,\"samples\":22},{\"fps_from_median\":1.89065223720879,\"frames\":11,\"max_ms\":754.14,\"mean_ms\":538.109727272727,\"measured\":true,\"median_ms\":528.918,\"name\":\"burst\",\"p95_ms\":754.14,\"samples\":11},{\"fps_from_median\":2.28909167697712,\"frames\":22,\"max_ms\":763.172,\"mean_ms\":459.791363636364,\"measured\":true,\"median_ms\":436.8545,\"name\":\"sustained\",\"p95_ms\":743.027,\"samples\":22}],\"quality\":{\"level\":2,\"levels\":[\"Low\",\"High\",\"Extreme\"],\"levels_seen\":[\"Extreme\"],\"name\":\"Extreme\",\"per_phase\":[\"Extreme\",\"Extreme\",\"Extreme\",\"Extreme\"],\"stable\":true},\"recommendation\":{\"applied_level\":0,\"applied_name\":\"Low\",\"applied_note\":\"the reported frame times were measured before this preset was applied\",\"basis\":\"p95 wall-clock frame time measured by the in-match benchmark\",\"confirm\":\"re-run the benchmark at the recommended level to confirm; F9 still cycles every level\",\"level\":0,\"measured_level\":2,\"measured_name\":\"Extreme\",\"name\":\"Low\",\"p95_ms\":758.162,\"reason\":\"p95 758.2 ms misses the 60 Hz budget at the measured level; Low is the supported load\",\"thresholds_ms\":{\"extreme\":8.3,\"high\":16.7}},\"scene\":{\"acks\":117,\"actor_count\":5,\"authority\":\"owned-loopback\",\"autostart\":true,\"bots\":4,\"interactive\":false,\"map\":\"prism-foundry\",\"mode\":\"deathmatch\",\"round_seconds\":180,\"round_starts\":1,\"snapshots\":735},\"schema\":1,\"startup_seconds\":1.08333333333333,\"tool\":\"cocs-native-benchmark\",\"verdict\":\"partial\",\"verdict_reasons\":[\"the actor was under benchmark control for 28% of the measured window\"],\"version\":\"1.0.0\",\"window\":{\"mode\":\"windowed\",\"scaling_3d\":1.0,\"size\":[1280,800],\"viewport_size\":[1280,800]}}",
+      "validation": {
+        "ok": true,
+        "problems": []
+      },
+      "result": {
+        "aggregate": {
+          "fps_from_median": 2.00314895014964,
+          "max_ms": 1325.94,
+          "mean_ms": 508.121727272727,
+          "median_ms": 499.214,
+          "p95_ms": 758.162,
+          "samples": 55
+        },
+        "artifacts": {
+          "captures": [
+            {
+              "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme/benchmark-2026-09-22T17-51-29-combat.png",
+              "height": 800,
+              "phase": "combat",
+              "width": 1280
+            },
+            {
+              "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme/benchmark-2026-09-22T17-51-29-burst.png",
+              "height": 800,
+              "phase": "burst",
+              "width": 1280
+            },
+            {
+              "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme/benchmark-2026-09-22T17-51-29-sustained.png",
+              "height": 800,
+              "phase": "sustained",
+              "width": 1280
+            }
+          ],
+          "directory": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme",
+          "json": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme/benchmark-2026-09-22T17-51-29.json",
+          "json_written": true,
+          "write_error": ""
+        },
+        "combat": {
+          "explosions": 19,
+          "hits": 0,
+          "hurts": 22,
+          "launches": 3,
+          "local_ammo": "∞,0.0,12.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0",
+          "local_deaths": 2,
+          "local_launches": 0,
+          "local_weapon": 2,
+          "local_weapon_name": "Rail Lance",
+          "shots": 211
+        },
+        "command": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 res://native_arenas/demo.tscn -- --map=prism-foundry --mode=deathmatch --bots=4 --round-seconds=180 --endpoint=ws://127.0.0.1:35703/native-arenas --benchmark",
+        "complete": true,
+        "controls_seconds": 7.87125233333333,
+        "engine": {
+          "draw_calls_max": 1574,
+          "draw_calls_mean": 1225.09677419355,
+          "object_nodes_peak": 1895,
+          "primitives_max": 1391264,
+          "primitives_mean": 905537.983870968,
+          "render_frames": 70,
+          "sample_seconds": 0.25,
+          "source": "Viewport.get_render_info(RENDER_INFO_TYPE_VISIBLE) and Performance monitors; 0 means the GL compatibility renderer did not report it",
+          "video_mem_peak_bytes": 311186427
+        },
+        "environment": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_api": "4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2",
+          "cpu": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S",
+          "cpu_count": 32,
+          "display_server": "X11",
+          "driver_info": [
+            "",
+            ""
+          ],
+          "godot": "4.5.2-stable (official)",
+          "headless": false,
+          "max_fps": 0,
+          "os": "Linux",
+          "os_version": "25.10",
+          "physics_ticks_per_second": 60,
+          "renderer_driver": "opengl3",
+          "renderer_method": "gl_compatibility",
+          "screen_refresh_hz": -1,
+          "vsync_before": 0,
+          "vsync_changed_by_benchmark": false,
+          "vsync_during": 0,
+          "vsync_restored": 0
+        },
+        "generated": "2026-09-22T17:52:13Z",
+        "honesty": {
+          "notes": [
+            "SOFTWARE RENDERER (llvmpipe (LLVM 20.1.8, 256 bits)): these are CPU rasterizer numbers, not hardware GPU figures, and must not be quoted as the owner's performance.",
+            "Frame times are wall-clock intervals between real RenderingServer frame_post_draws, with display buffering included. They are not GPU timestamps.",
+            "Engine draw calls and primitive counts are best-effort engine counters; the GL compatibility renderer can report zero.",
+            "Particle allocated/submitted slots are submitted capacity, not a live GPU count and not a count of visible particles.",
+            "Part of the measured window ran without benchmark input control (death, respawn or lost focus); effect load is lower than a fully controlled run."
+          ],
+          "renderer_class": "software",
+          "software_renderer": true
+        },
+        "launch": {
+          "automatic": true,
+          "env": {
+            "COCS_BENCHMARK": "1",
+            "COCS_BENCHMARK_LEVEL": "extreme",
+            "COCS_BENCHMARK_OUT": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-benchmark/evidence/2026-09-22T17-49-47-908Z-1280x800-extreme"
+          },
+          "trigger": "environment",
+          "windows_run": "set COCS_BENCHMARK=1 && set COCS_BENCHMARK_LEVEL=extreme && Play.cmd --experience=native-dm --map=prism-foundry --bots=4 --round-seconds=180"
+        },
+        "measured_seconds": 28,
+        "particles": {
+          "active_emitters": 4,
+          "allocated_slots": 1000000,
+          "backend": "GPUParticles3D",
+          "budget": 1000000,
+          "buffer_payload_estimate_bytes": 320000000,
+          "draw_slots": 125000,
+          "metrics": {
+            "active_emitters": 4,
+            "allocated_slots": 1000000,
+            "backend": "GPUParticles3D",
+            "blood_absorbed_only": 10,
+            "blood_active_emitters": 0,
+            "blood_allocated_slots": 98304,
+            "blood_concurrent_cap": 20,
+            "blood_duplicates": 0,
+            "blood_no_bleed": 17,
+            "blood_stains_live": 0,
+            "blood_stains_recycled": 0,
+            "blood_submitted_slots": 0,
+            "budget": 1000000,
+            "buffer_payload_estimate_bytes": 320000000,
+            "capacity_note": "Submitted capacity, not live GPU readback; buffer bytes are an estimate",
+            "collision_shapes": 101,
+            "draw_slots": 125000,
+            "impact_active": 0,
+            "impact_counters": "{\"actor_hits\":44,\"confirmed\":11,\"deduped\":0,\"dropped\":0,\"legacy\":0,\"no_geometry\":15,\"occluded\":102,\"probes\":128,\"shown\":11,\"too_far\":0}",
+            "impact_family": "metal",
+            "impact_pool": 7,
+            "occlusion": "native physics",
+            "player_fx_cues": "{\"break\":2,\"damage\":19,\"death\":2,\"dedup\":0,\"environmental\":0,\"respawn\":2,\"suppressed\":0}",
+            "player_fx_direction": "none",
+            "player_fx_heartbeat": 0,
+            "player_fx_low": 0,
+            "player_fx_protection": 0,
+            "pool_nodes": 32,
+            "shield_materials": 13,
+            "unsupported_collision_shapes": 0,
+            "weapon_flashes": 0,
+            "weapon_pool_nodes": 14,
+            "weapon_tracers": 173
+          },
+          "pool_nodes": 32,
+          "quality": "Extreme",
+          "source": "F10 combat metrics and the world particle pool snapshot"
+        },
+        "phases": [
+          {
+            "fps_from_median": 4.1345635037945,
+            "frames": 15,
+            "max_ms": 312.419,
+            "mean_ms": 240.881571428571,
+            "measured": false,
+            "median_ms": 241.8635,
+            "name": "warmup",
+            "p95_ms": 312.419,
+            "samples": 14
+          },
+          {
+            "fps_from_median": 1.98823956298494,
+            "frames": 22,
+            "max_ms": 1325.94,
+            "mean_ms": 541.458090909091,
+            "measured": true,
+            "median_ms": 502.9575,
+            "name": "combat",
+            "p95_ms": 758.162,
+            "samples": 22
+          },
+          {
+            "fps_from_median": 1.89065223720879,
+            "frames": 11,
+            "max_ms": 754.14,
+            "mean_ms": 538.109727272727,
+            "measured": true,
+            "median_ms": 528.918,
+            "name": "burst",
+            "p95_ms": 754.14,
+            "samples": 11
+          },
+          {
+            "fps_from_median": 2.28909167697712,
+            "frames": 22,
+            "max_ms": 763.172,
+            "mean_ms": 459.791363636364,
+            "measured": true,
+            "median_ms": 436.8545,
+            "name": "sustained",
+            "p95_ms": 743.027,
+            "samples": 22
+          }
+        ],
+        "quality": {
+          "level": 2,
+          "levels": [
+            "Low",
+            "High",
+            "Extreme"
+          ],
+          "levels_seen": [
+            "Extreme"
+          ],
+          "name": "Extreme",
+          "per_phase": [
+            "Extreme",
+            "Extreme",
+            "Extreme",
+            "Extreme"
+          ],
+          "stable": true
+        },
+        "recommendation": {
+          "applied_level": 0,
+          "applied_name": "Low",
+          "applied_note": "the reported frame times were measured before this preset was applied",
+          "basis": "p95 wall-clock frame time measured by the in-match benchmark",
+          "confirm": "re-run the benchmark at the recommended level to confirm; F9 still cycles every level",
+          "level": 0,
+          "measured_level": 2,
+          "measured_name": "Extreme",
+          "name": "Low",
+          "p95_ms": 758.162,
+          "reason": "p95 758.2 ms misses the 60 Hz budget at the measured level; Low is the supported load",
+          "thresholds_ms": {
+            "extreme": 8.3,
+            "high": 16.7
+          }
+        },
+        "scene": {
+          "acks": 117,
+          "actor_count": 5,
+          "authority": "owned-loopback",
+          "autostart": true,
+          "bots": 4,
+          "interactive": false,
+          "map": "prism-foundry",
+          "mode": "deathmatch",
+          "round_seconds": 180,
+          "round_starts": 1,
+          "snapshots": 735
+        },
+        "schema": 1,
+        "startup_seconds": 1.08333333333333,
+        "tool": "cocs-native-benchmark",
+        "verdict": "partial",
+        "verdict_reasons": [
+          "the actor was under benchmark control for 28% of the measured window"
+        ],
+        "version": "1.0.0",
+        "window": {
+          "mode": "windowed",
+          "scaling_3d": 1,
+          "size": [
+            1280,
+            800
+          ],
+          "viewport_size": [
+            1280,
+            800
+          ]
+        }
+      },
+      "summary": "prism-foundry 1280x800 Extreme median 499.2 ms · p95 758.2 ms · 55 frames · draw calls 1225 · llvmpipe (LLVM 20.1.8, 256 bits) (software)"
+    }
+  ],
+  "comparisons": [
+    {
+      "low_vs_extreme": {
+        "baseline": "Low",
+        "candidate": "Extreme",
+        "median_ratio": 2.2498974684856434,
+        "p95_ratio": 1.8022425756578087,
+        "frames": [
+          119,
+          55
+        ],
+        "particles": [
+          8192,
+          1000000
+        ],
+        "slower": true,
+        "threshold": 1.25
+      }
+    },
+    {
+      "high_vs_extreme": {
+        "baseline": "High",
+        "candidate": "Extreme",
+        "median_ratio": 1.6415114503063775,
+        "p95_ratio": 1.6125959800063812,
+        "frames": [
+          88,
+          55
+        ],
+        "particles": [
+          131072,
+          1000000
+        ],
+        "slower": true,
+        "threshold": 1.25
+      }
+    },
+    {
+      "low_vs_high": {
+        "baseline": "Low",
+        "candidate": "High",
+        "median_ratio": 1.3706255098407718,
+        "p95_ratio": 1.1176032918367298,
+        "frames": [
+          119,
+          88
+        ],
+        "particles": [
+          8192,
+          131072
+        ],
+        "slower": true,
+        "threshold": 1.25
+      }
+    }
+  ]
+}
