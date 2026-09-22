@@ -83,7 +83,12 @@ for(const source of JSON.parse(fs.readFileSync(input,'utf8'))){
     }
     for(const b of Object.values(batches))if(b.triangles.length)surfaces.push(b);
   }
-  const arena={id:source.id,name:spec.name,description:'Native deathmatch adaptation; single-support routes with visible sealed foundations.',tag:'NATIVE / DM',color:spec.color,background:'#101b28',bounds,...bounds,nextGen:source.id==='aurora-basin',raised:false,voidY:spec.voidY,ceilingY:64,spawns:[],pickups:[],navNodes:[],blocks:[],terrain:{maxSlope:Math.PI/4,surfaces,walls}};
+  // Cinder Array opts into the source spatial navigation as well: the adapted
+  // causeway guard rails are walkable-topped (so their movement bands drop and
+  // a landed actor can never be trapped), and their thin caps would otherwise
+  // bake as isolated nav islands. The source builder's pruneToLargestComponent
+  // removes exactly those islands; the authored route nodes stay dense.
+  const arena={id:source.id,name:spec.name,description:'Native deathmatch adaptation; single-support routes with visible sealed foundations.',tag:'NATIVE / DM',color:spec.color,background:'#101b28',bounds,...bounds,nextGen:source.id==='aurora-basin'||source.id==='cinder-array',raised:false,voidY:spec.voidY,ceilingY:64,spawns:[],pickups:[],navNodes:[],blocks:[],terrain:{maxSlope:Math.PI/4,surfaces,walls}};
   // Source movement walls are segment-height bands, unlike triangle ray tests.
   // Split their projection into short face pieces, removing buried seams and
   // joins to nearby slope support. walkEdge still enforces source's 30cm step
@@ -91,6 +96,22 @@ for(const source of JSON.parse(fs.readFileSync(input,'utf8'))){
   const supportCache=new Map();
   const support=(x,z)=>{const key=`${round(x)},${round(z)}`;if(!supportCache.has(key))supportCache.set(key,terrainSupportAt(x,z,arena.terrain,Math.PI/4)?.y??null);return supportCache.get(key);};
   const wallStats=new Map();
+  // Debug aid (never written unless explicitly requested): the source collider
+  // path for each emitted movement band, index-aligned with arena.terrain.walls.
+  const wallSources=[];
+  let trimCount=0;
+  // Guard-rail eligibility for the low-barrier trim below: source colliders
+  // whose horizontal footprint is thin along its length (a rail, including
+  // diagonal runs, not a cover volume). Width = footprint area / length.
+  const thinWidth=r=>{
+    const hull=hullXZ(r.vertices),n=hull.length;
+    if(n<3)return Infinity;
+    let area=0,length=0;
+    for(let i=0;i<n;i++){const a=hull[i],b=hull[(i+1)%n];area+=a[0]*b[1]-b[0]*a[1];length=Math.max(length,Math.hypot(b[0]-a[0],b[1]-a[1]));}
+    return Math.abs(area)/2/Math.max(length,1e-9);
+  };
+  const thinSources=new Set(records.filter(r=>r.high[1]-r.low[1]>=.9&&thinWidth(r)<=.6).map(r=>r.path));
+  if(process.env.NATIVE_DM_WALL_STATS==='1')console.log('THIN_SOURCES',source.id,thinSources.size,records.length);
   for(const face of wallFaces){
     const ps=face.vertices;let pair=[ps[0],ps[1]],length=0;
     for(const a of ps)for(const b of ps){const l=Math.hypot(a[0]-b[0],a[2]-b[2]);if(l>length){length=l;pair=[a,b];}}
@@ -103,7 +124,7 @@ for(const source of JSON.parse(fs.readFileSync(input,'utf8'))){
       let piece=clip(ps,p,[p[0]+dz,p[1]-dx]);
       piece=clip(piece,q,[q[0]-dz,q[1]+dx]);
       if(piece.length<3)continue;
-      const top=Math.max(...piece.map(p=>p[1]));
+      let top=Math.max(...piece.map(p=>p[1]));
       let bottom=Math.min(...piece.map(p=>p[1]));
       const x=(p[0]+q[0])/2,z=(p[1]+q[1])/2;
       const left=support(x-dz*.6,z+dx*.6),right=support(x+dz*.6,z-dx*.6);
@@ -143,7 +164,11 @@ for(const source of JSON.parse(fs.readFileSync(input,'utf8'))){
       for(const ox of [0,.15,-.15])for(const oz of [0,.15,-.15])atMid=Math.max(atMid,support(x+ox,z+oz)??-Infinity);
       const flatShort=(side)=>side!==null&&side<=top+1e-6&&top-side<=.3&&top-bottom<=2.2;
       const cappedShort=atMid>=top-.3&&top-bottom<=2.2;
-      if((leftLow!==null&&leftLow<top-1e-6&&top-leftLow<=.3)||(rightLow!==null&&rightLow<top-1e-6&&top-rightLow<=.3)||flatShort(leftLow)||flatShort(rightLow)||cappedShort){previous=null;continue;}
+      // Tolerance 0.45 spans the source 30 cm step limit plus band rounding: an
+      // obstacle this low is either stepped over (walkable top) or walked
+      // through with a sub-body-height visual overlap; either way a landing
+      // beside it must never be a permanent refusal pocket.
+      if((leftLow!==null&&leftLow<top-1e-6&&top-leftLow<=.45)||(rightLow!==null&&rightLow<top-1e-6&&top-rightLow<=.45)||flatShort(leftLow)||flatShort(rightLow)||cappedShort){previous=null;continue;}
       // Terrace skirt: a band whose inner side is walkable support at its own
       // top level is a solid volume that stands under a walkable terrace
       // (service banks, crown buttresses). Entry from the lower side is already
@@ -177,15 +202,33 @@ for(const source of JSON.parse(fs.readFileSync(input,'utf8'))){
         const lo=Math.min(left??Infinity,right??Infinity);
         if(Number.isFinite(lo)&&bottom>lo+1e-6&&bottom<lo+1.8-1e-6&&top>lo+1.85+1e-6)bottom=lo+1.85;
       }
+      // Low thin guard rails: a rail up to ~a jump above its walkable side
+      // still blocks walkers (their body spans the band), but an actor that
+      // lands inside the 0.42 m contact strip is refused every axis step while
+      // its feet sit more than a jump below the piece's (sloped) top -- the
+      // unrecoverable Cinder cause-way rail trap. Trim the band's top to the
+      // higher adjacent support + 0.35 m: walking through stays refused, while
+      // a single hop clears the band so a landed actor always escapes. Only
+      // source colliders thinner than 0.6 m are eligible; thick cover volumes
+      // keep their full band so a jump can never enter their footprint.
+      if(thinSources.has(face.source)){
+        const hiSide=Math.max(left??-Infinity,right??-Infinity);
+        if(Number.isFinite(hiSide)&&top-hiSide>.45&&top-hiSide<=1.55){
+          const trimmed=hiSide+.35;
+          if(trimmed<top-1e-5){top=trimmed;trimCount++;}
+        }
+      }
       if(top-bottom<1e-5)continue;
       // Two-point terrain walls are movement proxies only. Full faces above
       // carry bullet, projectile, splash, ceiling and native ray collision.
       const wall={a:[round(p[0]),round(bottom),round(p[1])],b:[round(q[0]),round(top),round(q[1])],material:'native'};
       if(previous&&previous.a[1]===wall.a[1]&&previous.b[1]===wall.b[1]&&previous.b[0]===wall.a[0]&&previous.b[2]===wall.a[2])previous.b=wall.b;
-      else{walls.push(wall);previous=wall;wallStats.set(face.source,(wallStats.get(face.source)??0)+1);}
+      else{walls.push(wall);wallSources.push(face.source);previous=wall;wallStats.set(face.source,(wallStats.get(face.source)??0)+1);}
     }
   }
+  if(process.env.NATIVE_DM_WALL_STATS==='1')console.log('TRIMMED_BANDS',source.id,trimCount);
   if(process.env.NATIVE_DM_WALL_STATS==='1')console.log('WALL_STATS',source.id,JSON.stringify([...wallStats].sort((a,b)=>b[1]-a[1]).slice(0,25)));
+  if(process.env.NATIVE_DM_WALL_SOURCES)fs.writeFileSync(`${process.env.NATIVE_DM_WALL_SOURCES.replace(/\.json$/, '')}-${source.id}.json`,JSON.stringify(wallSources));
   const safe=(x,z,r=.65)=>{const y=floorAt(x,z,arena);return y!==null&&!obstructed(x,y,z,r,arena);};
   const point=(x,z)=>({x:round(x),y:round(floorAt(x,z,arena)),z:round(z)});
   const routes=source.routes.map(route=>{

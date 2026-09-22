@@ -5,77 +5,77 @@
   "bots": 7,
   "results": {
     "over": true,
-    "reason": "time",
-    "time": 180,
+    "reason": "sudden-death",
+    "time": 174.4,
     "actors": [
       {
         "id": 0,
         "frags": 0,
-        "deaths": 9
+        "deaths": 12
       },
       {
         "id": 1,
-        "frags": 6,
-        "deaths": 8
+        "frags": 5,
+        "deaths": 12
       },
       {
         "id": 2,
-        "frags": 9,
-        "deaths": 17
+        "frags": 5,
+        "deaths": 9
       },
       {
         "id": 3,
-        "frags": 7,
-        "deaths": 13
+        "frags": 5,
+        "deaths": 14
       },
       {
         "id": 4,
-        "frags": 3,
-        "deaths": 10
+        "frags": 5,
+        "deaths": 15
       },
       {
         "id": 5,
-        "frags": 7,
-        "deaths": 16
+        "frags": 5,
+        "deaths": 13
       },
       {
         "id": 6,
-        "frags": 10,
-        "deaths": 11
+        "frags": 6,
+        "deaths": 9
       },
       {
         "id": 7,
-        "frags": 4,
-        "deaths": 15
+        "frags": 2,
+        "deaths": 16
       }
     ]
   },
-  "kills": 46,
-  "deaths": 99,
-  "respawns": 97,
-  "falls": 53,
-  "pickups": 138,
+  "kills": 33,
+  "deaths": 100,
+  "respawns": 98,
+  "falls": 67,
+  "pickups": 127,
   "humanKills": 0,
-  "humanDeaths": 9,
+  "humanDeaths": 12,
   "restart": {
     "time": 30,
     "over": false,
     "frags": [
       0,
-      2,
-      1,
       0,
-      2,
       0,
       1,
-      2
+      1,
+      1,
+      0,
+      3
     ],
     "simulatedTicks": 1800,
     "events": {
-      "kills": 8,
-      "deaths": 16,
-      "respawns": 16,
-      "pickups": 26
+      "kills": 6,
+      "deaths": 19,
+      "respawns": 19,
+      "pickups": 22
     }
   },
   "detectors": {
@@ -86,23 +86,23 @@
     "fallSlide": [
       {
         "actor": 4,
-        "first": 43.25,
-        "last": 45,
-        "duration": 1.75,
+        "first": 23.75,
+        "last": 25.75,
+        "duration": 2,
         "center": [
-          -14.92,
-          -2.5
+          3.16,
+          -27.43
         ],
         "maxRadius": 0,
         "trappedAll": true,
-        "inside06": true,
+        "inside06": false,
         "groundedBlocked": false,
         "botStates": [
           "engage"
         ],
-        "maxStuck": 1.12
+        "maxStuck": 1.1
       }
     ],
-    "hold": 11
+    "hold": 14
   }
 }

@@ -3,18 +3,18 @@
   "results": [
     {
       "id": "prism-foundry",
-      "geometryHash": "1901d0aed12c5cfb3be5b7a62519bce108d1f0d51f79a726f4e14620544ae91b",
+      "geometryHash": "c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13",
       "spawns": 6,
       "routes": 7,
       "floors": 255,
       "rays": 1276,
-      "navigationNodes": 427,
+      "navigationNodes": 429,
       "navigationConnected": true,
       "errors": []
     },
     {
       "id": "aurora-basin",
-      "geometryHash": "8457812f7845475378e0f99616ca91b3dac3aa4bff3a396a9e6739e9b8917a21",
+      "geometryHash": "94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d",
       "spawns": 6,
       "routes": 4,
       "floors": 313,
@@ -25,12 +25,12 @@
     },
     {
       "id": "cinder-array",
-      "geometryHash": "2d5e5cfa445383db4f6a3009a0f7500e423ec17dfe800d35cafa2fd8272da4f2",
+      "geometryHash": "f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca",
       "spawns": 6,
       "routes": 9,
       "floors": 181,
       "rays": 906,
-      "navigationNodes": 372,
+      "navigationNodes": 234,
       "navigationConnected": true,
       "errors": []
     }

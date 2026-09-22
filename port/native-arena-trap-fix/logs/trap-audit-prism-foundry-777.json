@@ -15,46 +15,46 @@
       },
       {
         "id": 1,
-        "frags": 4,
-        "deaths": 2
+        "frags": 2,
+        "deaths": 3
       },
       {
         "id": 2,
-        "frags": 4,
+        "frags": 3,
         "deaths": 3
       },
       {
         "id": 3,
-        "frags": 0,
-        "deaths": 1
+        "frags": 1,
+        "deaths": 0
       },
       {
         "id": 4,
-        "frags": 1,
-        "deaths": 4
+        "frags": 2,
+        "deaths": 2
       },
       {
         "id": 5,
-        "frags": 4,
-        "deaths": 3
+        "frags": 1,
+        "deaths": 6
       },
       {
         "id": 6,
-        "frags": 10,
-        "deaths": 5
+        "frags": 3,
+        "deaths": 2
       },
       {
         "id": 7,
-        "frags": 0,
-        "deaths": 9
+        "frags": 3,
+        "deaths": 2
       }
     ]
   },
-  "kills": 26,
-  "deaths": 31,
-  "respawns": 30,
-  "falls": 2,
-  "pickups": 90,
+  "kills": 18,
+  "deaths": 22,
+  "respawns": 22,
+  "falls": 1,
+  "pickups": 70,
   "humanKills": 0,
   "humanDeaths": 4,
   "restart": {
@@ -84,6 +84,6 @@
     "lock": [],
     "inside06": [],
     "fallSlide": [],
-    "hold": 9
+    "hold": 8
   }
 }

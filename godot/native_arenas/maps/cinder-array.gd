@@ -17,8 +17,13 @@ func build() -> void:
 	DM.prism(self, "CoolingCrosslink", PackedVector3Array([Vector3(-40, 12, -7.5), Vector3(-40, 12, -2.5), Vector3(16, 12, -2.5), Vector3(16, 12, -7.5)]), 0.5, materials.dark)
 	DM.prism(self, "TransferCrosslinkRamp", PackedVector3Array([Vector3(-28, 7, 20), Vector3(-23, 7, 20), Vector3(-23, 12, -1), Vector3(-28, 12, -1)]), 0.5, materials.deck)
 	DM.box(self, "TransferCrosslinkLanding", Vector3(-25.5, 6.25, -3), Vector3(5, 11.5, 4), materials.deck, true)
+	# Walkable-topped covers: the cap is support, so the source step limit
+	# refuses crossing them (same barrier as the safety walls) while the
+	# compiler drops their movement bands. A landed actor beside a cover walks
+	# free, and a fall onto a cover lands on its visible top instead of falling
+	# through the footprint hole a non-walkable solid leaves in the deck.
 	for p in [Vector3(-28, 8, 27), Vector3(21, 13, -3), Vector3(-27, 17, -30.5), Vector3(-14, 13, -6.7), Vector3(2, 13, -3.3)]:
-		DM.box(self, "ReactorServiceCover", p, Vector3(2.6, 2, 1.8), materials.orange)
+		DM.box(self, "ReactorServiceCover", p, Vector3(2.6, 2, 1.8), materials.orange, true)
 	collider_sources = DM.collect(self, get_arena_id())
 
 func _profile(connection: Dictionary) -> Array[Vector3]:
@@ -40,6 +45,7 @@ func _rail(a: Vector3, b: Vector3) -> void:
 	# Crosslink gateways on the west/east platforms and transfer deck.
 	if (a.y > 11.9 and a.y < 12.1 and b.y > 11.9 and b.y < 12.1 and minf(a.z, b.z) < -2 and maxf(a.z, b.z) > -8): return
 	if a.y == 7 and b.y == 7 and minf(a.x, b.x) < -22 and maxf(a.x, b.x) > -29 and minf(a.z, b.z) < 20: return
+	var shapes_before: int = geo.body.get_child_count()
 	super._rail(a, b)
 	var side := Vector3(-(b - a).z, 0, (b - a).x).normalized() * 0.095
 	var st := SurfaceTool.new()
@@ -48,6 +54,13 @@ func _rail(a: Vector3, b: Vector3) -> void:
 		Geometry.quad(st, a + side * sign_value, b + side * sign_value, b + side * sign_value + Vector3.UP * 1.28, a + side * sign_value + Vector3.UP * 1.28)
 	st.generate_normals()
 	geo.add_mesh("SolidSafetyPanel", st.commit(), materials.dark)
+	# DM adaptation: the safety wall's cap is walkable support. The source step
+	# limit then refuses walking across it (the cap is 1.28 m up), so the
+	# compiler drops the wall's movement band instead of leaving a 0.42 m
+	# contact strip where a landed actor is refused every axis step forever.
+	# Ray/projectile collision and the visible panels are unchanged.
+	for i in range(shapes_before, geo.body.get_child_count()):
+		geo.body.get_child(i).set_meta("dm_walkable", true)
 
 func get_spawn_points() -> Array[Vector3]:
 	return DM.spawns(get_arena_id(), get_authoring_spawns())

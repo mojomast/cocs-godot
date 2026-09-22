@@ -50,3 +50,17 @@
 {"t":111.5,"actor":1,"x":33.988,"y":0.275,"z":0.286,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.6500000000000004,"wallContact":true}
 {"t":112.5,"actor":1,"x":33.994,"y":-0.017,"z":0.288,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.35,"wallContact":true}
 {"t":113.5,"actor":1,"x":33.994,"y":0.237,"z":0.275,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.05,"wallContact":true}
+{"t":101,"actor":1,"x":33.995,"y":-0.045,"z":0.417,"grounded":false,"botState":"seek","routeLen":4,"stuck":0.55,"wallContact":true}
+{"t":103.5,"actor":1,"x":33.945,"y":0.115,"z":0.369,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.44999999999999996,"wallContact":true}
+{"t":104,"actor":1,"x":33.983,"y":0.406,"z":0.345,"grounded":false,"botState":"seek","routeLen":4,"stuck":0.9500000000000013,"wallContact":true}
+{"t":104.5,"actor":1,"x":33.989,"y":0.331,"z":0.329,"grounded":false,"botState":"seek","routeLen":7,"stuck":0.15,"wallContact":true}
+{"t":105,"actor":1,"x":33.988,"y":0.176,"z":0.366,"grounded":false,"botState":"seek","routeLen":7,"stuck":0.6500000000000004,"wallContact":true}
+{"t":106,"actor":1,"x":33.994,"y":-0.016,"z":0.283,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.35,"wallContact":true}
+{"t":107,"actor":1,"x":33.994,"y":0.237,"z":0.283,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.05,"wallContact":true}
+{"t":107.5,"actor":1,"x":33.994,"y":0.429,"z":0.277,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.55,"wallContact":true}
+{"t":108.5,"actor":1,"x":33.987,"y":0.187,"z":0.251,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.24999999999999997,"wallContact":true}
+{"t":109,"actor":1,"x":33.947,"y":0.08,"z":0.207,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.7500000000000007,"wallContact":true}
+{"t":111,"actor":1,"x":33.984,"y":0.379,"z":0.228,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.15,"wallContact":true}
+{"t":111.5,"actor":1,"x":33.988,"y":0.275,"z":0.286,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.6500000000000004,"wallContact":true}
+{"t":112.5,"actor":1,"x":33.994,"y":-0.017,"z":0.288,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.35,"wallContact":true}
+{"t":113.5,"actor":1,"x":33.994,"y":0.237,"z":0.275,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.05,"wallContact":true}

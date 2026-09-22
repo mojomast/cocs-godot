@@ -7,6 +7,30 @@
     {
       "reason": "stale-input",
       "epoch": 3
+    },
+    {
+      "reason": "stale-input",
+      "epoch": 4
+    },
+    {
+      "reason": "stale-input",
+      "epoch": 5
+    },
+    {
+      "reason": "stale-input",
+      "epoch": 6
+    },
+    {
+      "reason": "stale-input",
+      "epoch": 7
+    },
+    {
+      "reason": "stale-input",
+      "epoch": 8
+    },
+    {
+      "reason": "stale-input",
+      "epoch": 9
     }
   ]
 }

@@ -11,52 +11,52 @@
       {
         "id": 0,
         "frags": 0,
-        "deaths": 4
+        "deaths": 3
       },
       {
         "id": 1,
-        "frags": 4,
-        "deaths": 2
+        "frags": 3,
+        "deaths": 3
       },
       {
         "id": 2,
         "frags": 4,
-        "deaths": 5
-      },
-      {
-        "id": 3,
-        "frags": 2,
-        "deaths": 4
-      },
-      {
-        "id": 4,
-        "frags": 4,
         "deaths": 8
       },
       {
-        "id": 5,
-        "frags": 3,
+        "id": 3,
+        "frags": 6,
+        "deaths": 3
+      },
+      {
+        "id": 4,
+        "frags": 6,
         "deaths": 5
+      },
+      {
+        "id": 5,
+        "frags": 5,
+        "deaths": 4
       },
       {
         "id": 6,
         "frags": 0,
-        "deaths": 2
+        "deaths": 5
       },
       {
         "id": 7,
-        "frags": 8,
-        "deaths": 5
+        "frags": 7,
+        "deaths": 6
       }
     ]
   },
-  "kills": 28,
-  "deaths": 35,
-  "respawns": 34,
+  "kills": 32,
+  "deaths": 37,
+  "respawns": 37,
   "falls": 4,
-  "pickups": 67,
+  "pickups": 90,
   "humanKills": 0,
-  "humanDeaths": 4,
+  "humanDeaths": 3,
   "restart": {
     "time": 30,
     "over": false,
@@ -64,18 +64,18 @@
       0,
       0,
       0,
-      2,
+      1,
       0,
       0,
       0,
-      2
+      0
     ],
     "simulatedTicks": 1800,
     "events": {
-      "kills": 5,
-      "deaths": 6,
-      "respawns": 6,
-      "pickups": 17
+      "kills": 2,
+      "deaths": 3,
+      "respawns": 3,
+      "pickups": 15
     }
   },
   "detectors": {
@@ -84,6 +84,6 @@
     "lock": [],
     "inside06": [],
     "fallSlide": [],
-    "hold": 9
+    "hold": 10
   }
 }

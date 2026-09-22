@@ -1,0 +1,2251 @@
+{
+  "prism-foundry": {
+    "mapId": "prism-foundry",
+    "geometryHash": "c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13",
+    "hashVerified": true,
+    "nextGen": false,
+    "counts": {
+      "surfaces": 135,
+      "wallSegments": 580,
+      "wallMeshes": 0,
+      "navNodes": 249,
+      "spawns": 6,
+      "pickups": 16,
+      "routes": 7,
+      "colliderSources": 101
+    },
+    "support": {
+      "gridStep": 0.5,
+      "cols": 146,
+      "rows": 110,
+      "supportedCells": 8509,
+      "unsupportedCells": 7551,
+      "enclosedHoleGroups": [
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            -11,
+            -27
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            -11,
+            -20
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            11,
+            -27
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            11,
+            -20
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            22,
+            -6
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            22,
+            6
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            30,
+            -6
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            30,
+            6
+          ]
+        }
+      ],
+      "enclosedHoleTotal": 8,
+      "largestEnclosedHoleArea": 0.25
+    },
+    "spawns": [
+      {
+        "index": 0,
+        "x": -7,
+        "z": 8,
+        "floor": 0,
+        "authoredY": 0,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "x": 7,
+        "z": -8,
+        "floor": 0,
+        "authoredY": 0,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "x": -30,
+        "z": 0,
+        "floor": 0,
+        "authoredY": 0,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "x": 0,
+        "z": -29,
+        "floor": 0,
+        "authoredY": 0,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "x": 26,
+        "z": 0,
+        "floor": 4,
+        "authoredY": 4,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "x": 0,
+        "z": 14.5,
+        "floor": 4,
+        "authoredY": 4,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "pickups": [
+      {
+        "index": 0,
+        "kind": "rocket",
+        "x": -30,
+        "z": 0,
+        "floor": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "kind": "rail",
+        "x": 26,
+        "z": 0,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "kind": "scatter",
+        "x": -1.34,
+        "z": -29,
+        "floor": 0.114,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "kind": "plasma",
+        "x": -2.185714,
+        "z": 14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "kind": "grenade",
+        "x": 5.6,
+        "z": -8,
+        "floor": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "kind": "shock",
+        "x": -15.3,
+        "z": -14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 6,
+        "kind": "flak",
+        "x": 15.3,
+        "z": 14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 7,
+        "kind": "marksman",
+        "x": -15.3,
+        "z": 5.8,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 8,
+        "kind": "smg",
+        "x": -7,
+        "z": -3.636364,
+        "floor": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 9,
+        "kind": "ammo",
+        "x": 7,
+        "z": 5.090909,
+        "floor": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 10,
+        "kind": "health",
+        "x": 15.3,
+        "z": -14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 11,
+        "kind": "health",
+        "x": -3.642857,
+        "z": -14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 12,
+        "kind": "health",
+        "x": 15.3,
+        "z": -2.9,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 13,
+        "kind": "armor",
+        "x": 6.7,
+        "z": -21.799999,
+        "floor": 0.84,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 14,
+        "kind": "armor",
+        "x": -12.385714,
+        "z": 14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 15,
+        "kind": "armor",
+        "x": 6.557143,
+        "z": 14.5,
+        "floor": 4,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "nav": {
+      "nodes": 429,
+      "edges": 6858,
+      "components": [
+        429
+      ],
+      "componentCount": 1,
+      "botUsableNodes": 429,
+      "authoredNavNodesUnsupported": 0
+    },
+    "routes": [
+      {
+        "id": "reactor-ring",
+        "points": 43,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "west-ascent",
+        "points": 41,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "east-ascent",
+        "points": 38,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "garden-link",
+        "points": 18,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "west-coolant-loop",
+        "points": 13,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "east-coolant-loop",
+        "points": 13,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "upper-loop",
+        "points": 83,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      }
+    ],
+    "wallBands": {
+      "sampled": 2406,
+      "withoutNearbyColliderGeometry": 0,
+      "sampleShare": 0,
+      "samples": []
+    },
+    "wallProbes": {
+      "probed": 169,
+      "movementBlockedRayClear": 19,
+      "samples": [
+        {
+          "x": -17.92,
+          "y": 0,
+          "z": 5.63,
+          "to": [
+            -18.75,
+            0,
+            5.63
+          ],
+          "bandY": [
+            3.6,
+            4
+          ]
+        },
+        {
+          "x": -17.92,
+          "y": 0,
+          "z": -6.22,
+          "to": [
+            -18.75,
+            0,
+            -6.22
+          ],
+          "bandY": [
+            3.6,
+            4
+          ]
+        },
+        {
+          "x": -27,
+          "y": 0,
+          "z": -9.38,
+          "to": [
+            -27,
+            0,
+            -8.55
+          ],
+          "bandY": [
+            7.3,
+            7.7
+          ]
+        },
+        {
+          "x": -27,
+          "y": 0,
+          "z": 9.38,
+          "to": [
+            -27,
+            0,
+            8.55
+          ],
+          "bandY": [
+            7.3,
+            7.7
+          ]
+        },
+        {
+          "x": -2.82,
+          "y": 0,
+          "z": -33,
+          "to": [
+            -3.65,
+            0.84,
+            -33
+          ],
+          "bandY": [
+            0,
+            1.1
+          ]
+        },
+        {
+          "x": 2.82,
+          "y": 0,
+          "z": -33,
+          "to": [
+            3.65,
+            0.84,
+            -33
+          ],
+          "bandY": [
+            0,
+            1.1
+          ]
+        },
+        {
+          "x": 16.33,
+          "y": 4,
+          "z": 5.61,
+          "to": [
+            15.5,
+            4,
+            5.61
+          ],
+          "bandY": [
+            3.4,
+            4
+          ]
+        },
+        {
+          "x": 16.33,
+          "y": 4,
+          "z": -6.2,
+          "to": [
+            15.5,
+            4,
+            -6.2
+          ],
+          "bandY": [
+            3.4,
+            4
+          ]
+        },
+        {
+          "x": 30,
+          "y": 4,
+          "z": -4.62,
+          "to": [
+            30,
+            4,
+            -5.45
+          ],
+          "bandY": [
+            4,
+            5
+          ]
+        },
+        {
+          "x": 30,
+          "y": 4,
+          "z": 4.62,
+          "to": [
+            30,
+            4,
+            5.45
+          ],
+          "bandY": [
+            4,
+            5
+          ]
+        },
+        {
+          "x": -15.3,
+          "y": 0,
+          "z": -16.62,
+          "to": [
+            -15.3,
+            0,
+            -17.45
+          ],
+          "bandY": [
+            1.85,
+            3.6
+          ]
+        },
+        {
+          "x": -15.3,
+          "y": 0,
+          "z": 16.62,
+          "to": [
+            -15.3,
+            0,
+            17.45
+          ],
+          "bandY": [
+            1.85,
+            3.6
+          ]
+        },
+        {
+          "x": -8.4,
+          "y": 0,
+          "z": -16.62,
+          "to": [
+            -8.4,
+            0,
+            -17.45
+          ],
+          "bandY": [
+            1.85,
+            3.6
+          ]
+        },
+        {
+          "x": 8.4,
+          "y": 0,
+          "z": -16.62,
+          "to": [
+            8.4,
+            0,
+            -17.45
+          ],
+          "bandY": [
+            1.85,
+            3.6
+          ]
+        },
+        {
+          "x": 15.3,
+          "y": 0,
+          "z": -16.62,
+          "to": [
+            15.3,
+            0,
+            -17.45
+          ],
+          "bandY": [
+            1.85,
+            3.6
+          ]
+        },
+        {
+          "x": 15.3,
+          "y": 0,
+          "z": 16.62,
+          "to": [
+            15.3,
+            0,
+            17.45
+          ],
+          "bandY": [
+            1.85,
+            3.6
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "z": 16.62,
+          "to": [
+            0,
+            0,
+            17.45
+          ],
+          "bandY": [
+            1.85,
+            3.6
+          ]
+        },
+        {
+          "x": 17.54,
+          "y": 0,
+          "z": -7.12,
+          "to": [
+            17.54,
+            0,
+            -7.95
+          ],
+          "bandY": [
+            1.85,
+            3.4
+          ]
+        },
+        {
+          "x": 17.54,
+          "y": 0,
+          "z": 7.12,
+          "to": [
+            17.54,
+            0,
+            7.95
+          ],
+          "bandY": [
+            1.85,
+            3.4
+          ]
+        }
+      ],
+      "walkableRayBlocked": 0,
+      "walkableSamples": []
+    },
+    "durationMs": 1548,
+    "issueCount": 1,
+    "issues": [
+      {
+        "kind": "movement-barrier-without-boundary",
+        "count": 19,
+        "samples": [
+          {
+            "x": -17.92,
+            "y": 0,
+            "z": 5.63,
+            "to": [
+              -18.75,
+              0,
+              5.63
+            ],
+            "bandY": [
+              3.6,
+              4
+            ]
+          },
+          {
+            "x": -17.92,
+            "y": 0,
+            "z": -6.22,
+            "to": [
+              -18.75,
+              0,
+              -6.22
+            ],
+            "bandY": [
+              3.6,
+              4
+            ]
+          },
+          {
+            "x": -27,
+            "y": 0,
+            "z": -9.38,
+            "to": [
+              -27,
+              0,
+              -8.55
+            ],
+            "bandY": [
+              7.3,
+              7.7
+            ]
+          },
+          {
+            "x": -27,
+            "y": 0,
+            "z": 9.38,
+            "to": [
+              -27,
+              0,
+              8.55
+            ],
+            "bandY": [
+              7.3,
+              7.7
+            ]
+          },
+          {
+            "x": -2.82,
+            "y": 0,
+            "z": -33,
+            "to": [
+              -3.65,
+              0.84,
+              -33
+            ],
+            "bandY": [
+              0,
+              1.1
+            ]
+          },
+          {
+            "x": 2.82,
+            "y": 0,
+            "z": -33,
+            "to": [
+              3.65,
+              0.84,
+              -33
+            ],
+            "bandY": [
+              0,
+              1.1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "aurora-basin": {
+    "mapId": "aurora-basin",
+    "geometryHash": "94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d",
+    "hashVerified": true,
+    "nextGen": true,
+    "counts": {
+      "surfaces": 606,
+      "wallSegments": 4842,
+      "wallMeshes": 0,
+      "navNodes": 143,
+      "spawns": 6,
+      "pickups": 16,
+      "routes": 4,
+      "colliderSources": 324
+    },
+    "support": {
+      "gridStep": 0.5,
+      "cols": 171,
+      "rows": 171,
+      "supportedCells": 26331,
+      "unsupportedCells": 2910,
+      "enclosedHoleGroups": [],
+      "enclosedHoleTotal": 0,
+      "largestEnclosedHoleArea": 0
+    },
+    "spawns": [
+      {
+        "index": 0,
+        "x": -23,
+        "z": 29,
+        "floor": 0.105,
+        "authoredY": 0.105,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "x": 20,
+        "z": 19,
+        "floor": 0.08,
+        "authoredY": 0.08,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "x": 29,
+        "z": -4,
+        "floor": 0.08,
+        "authoredY": 0.08,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "x": -24,
+        "z": -19,
+        "floor": -0.15,
+        "authoredY": -0.15,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "x": 16,
+        "z": -34,
+        "floor": 9,
+        "authoredY": 9,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "x": -6,
+        "z": 15,
+        "floor": 0.04,
+        "authoredY": 0.04,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "pickups": [
+      {
+        "index": 0,
+        "kind": "rocket",
+        "x": 40.299999,
+        "z": 12,
+        "floor": -0.15,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "kind": "rail",
+        "x": -27.728395,
+        "z": -25.964334,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "kind": "scatter",
+        "x": -23,
+        "z": 30,
+        "floor": 0.105,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "kind": "plasma",
+        "x": 19.133059,
+        "z": -30.696844,
+        "floor": 9,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "kind": "grenade",
+        "x": 9.455599,
+        "z": 25.29015,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "kind": "shock",
+        "x": -26.875698,
+        "z": 2.587835,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 6,
+        "kind": "flak",
+        "x": 34.751713,
+        "z": -12.36214,
+        "floor": 5.089,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 7,
+        "kind": "marksman",
+        "x": -5.33882,
+        "z": -33.120712,
+        "floor": 5.933,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 8,
+        "kind": "smg",
+        "x": 22.897299,
+        "z": 14.30782,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 9,
+        "kind": "ammo",
+        "x": -6.76026,
+        "z": 26.139986,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 10,
+        "kind": "health",
+        "x": 26.998972,
+        "z": -0.235616,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 11,
+        "kind": "health",
+        "x": -25.928669,
+        "z": -11.659808,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 12,
+        "kind": "health",
+        "x": 21.276291,
+        "z": -16.62286,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 13,
+        "kind": "armor",
+        "x": -21.981119,
+        "z": 15.67898,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 14,
+        "kind": "armor",
+        "x": -14.705254,
+        "z": -22.644106,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 15,
+        "kind": "armor",
+        "x": 6.76026,
+        "z": -26.139986,
+        "floor": 0.08,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "nav": {
+      "nodes": 311,
+      "edges": 2272,
+      "components": [
+        311
+      ],
+      "componentCount": 1,
+      "botUsableNodes": 311,
+      "authoredNavNodesUnsupported": 0
+    },
+    "routes": [
+      {
+        "id": "crown-ascent",
+        "points": 109,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "lake-circuit",
+        "points": 145,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "landing-link",
+        "points": 25,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "eastern-snow-flank",
+        "points": 28,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      }
+    ],
+    "wallBands": {
+      "sampled": 14100,
+      "withoutNearbyColliderGeometry": 3,
+      "sampleShare": 0.0002,
+      "samples": [
+        {
+          "x": 42.5,
+          "y": 7.4,
+          "z": -25.01,
+          "nearestColliderDistance": 0.91
+        },
+        {
+          "x": 42.5,
+          "y": 7.28,
+          "z": -25.01,
+          "nearestColliderDistance": 0.91
+        },
+        {
+          "x": 33.89,
+          "y": 11.47,
+          "z": -41.69,
+          "nearestColliderDistance": 0.96
+        }
+      ]
+    },
+    "wallProbes": {
+      "probed": 1154,
+      "movementBlockedRayClear": 40,
+      "samples": [
+        {
+          "x": -26.5,
+          "y": 0.08,
+          "z": 11.47,
+          "to": [
+            -25.74,
+            0.08,
+            11.13
+          ],
+          "bandY": [
+            -0.24,
+            -0.13
+          ]
+        },
+        {
+          "x": -26.82,
+          "y": 0.08,
+          "z": 10.7,
+          "to": [
+            -26.05,
+            0.08,
+            10.39
+          ],
+          "bandY": [
+            -0.24,
+            -0.03
+          ]
+        },
+        {
+          "x": -27.26,
+          "y": 0.08,
+          "z": 9.52,
+          "to": [
+            -26.48,
+            0.08,
+            9.25
+          ],
+          "bandY": [
+            -0.24,
+            -0.03
+          ]
+        },
+        {
+          "x": -27.4,
+          "y": 0.08,
+          "z": 9.11,
+          "to": [
+            -26.62,
+            0.08,
+            8.84
+          ],
+          "bandY": [
+            -0.24,
+            -0.13
+          ]
+        },
+        {
+          "x": -40.35,
+          "y": -0.15,
+          "z": 8.29,
+          "to": [
+            -41.02,
+            -0.15,
+            7.79
+          ],
+          "bandY": [
+            -0.23,
+            0.93
+          ]
+        },
+        {
+          "x": -40.79,
+          "y": -0.15,
+          "z": 8.93,
+          "to": [
+            -41.5,
+            -0.15,
+            8.51
+          ],
+          "bandY": [
+            -0.23,
+            0.93
+          ]
+        },
+        {
+          "x": -40.79,
+          "y": -0.15,
+          "z": 17.07,
+          "to": [
+            -41.5,
+            -0.15,
+            17.49
+          ],
+          "bandY": [
+            -0.23,
+            0.93
+          ]
+        },
+        {
+          "x": -40.35,
+          "y": -0.15,
+          "z": 17.71,
+          "to": [
+            -41.02,
+            -0.15,
+            18.21
+          ],
+          "bandY": [
+            -0.23,
+            0.93
+          ]
+        },
+        {
+          "x": 14.79,
+          "y": 0.04,
+          "z": -8.36,
+          "to": [
+            14.06,
+            0.04,
+            -7.96
+          ],
+          "bandY": [
+            0.2,
+            0.71
+          ]
+        },
+        {
+          "x": 14.53,
+          "y": 0.04,
+          "z": -8.85,
+          "to": [
+            13.8,
+            0.04,
+            -8.46
+          ],
+          "bandY": [
+            -0.23,
+            0.79
+          ]
+        },
+        {
+          "x": 13.91,
+          "y": 0.04,
+          "z": -8.99,
+          "to": [
+            13.65,
+            0.04,
+            -8.2
+          ],
+          "bandY": [
+            -0.23,
+            0.75
+          ]
+        },
+        {
+          "x": 13.11,
+          "y": 0.04,
+          "z": -9.45,
+          "to": [
+            12.39,
+            0.04,
+            -9.85
+          ],
+          "bandY": [
+            -0.03,
+            0.72
+          ]
+        },
+        {
+          "x": 12.08,
+          "y": 0.04,
+          "z": -7.21,
+          "to": [
+            11.27,
+            0.04,
+            -7
+          ],
+          "bandY": [
+            0.14,
+            1.13
+          ]
+        },
+        {
+          "x": 13.09,
+          "y": 0.04,
+          "z": -7.44,
+          "to": [
+            13.84,
+            0.04,
+            -7.8
+          ],
+          "bandY": [
+            0.51,
+            1.13
+          ]
+        },
+        {
+          "x": 13.34,
+          "y": 0.04,
+          "z": -6.93,
+          "to": [
+            14.09,
+            0.04,
+            -7.29
+          ],
+          "bandY": [
+            0.03,
+            1.05
+          ]
+        },
+        {
+          "x": 13.04,
+          "y": 0.04,
+          "z": -5.89,
+          "to": [
+            12.88,
+            0.04,
+            -5.07
+          ],
+          "bandY": [
+            0.03,
+            0.97
+          ]
+        },
+        {
+          "x": 13.21,
+          "y": 0.04,
+          "z": -7,
+          "to": [
+            13.27,
+            0.04,
+            -7.83
+          ],
+          "bandY": [
+            0.52,
+            1.01
+          ]
+        },
+        {
+          "x": 13.67,
+          "y": 0.04,
+          "z": -5.73,
+          "to": [
+            13.62,
+            0.04,
+            -4.9
+          ],
+          "bandY": [
+            0.07,
+            1.05
+          ]
+        },
+        {
+          "x": 14.19,
+          "y": 0.04,
+          "z": -5.57,
+          "to": [
+            14.23,
+            0.04,
+            -4.74
+          ],
+          "bandY": [
+            0.07,
+            1.05
+          ]
+        },
+        {
+          "x": 14.35,
+          "y": 0.04,
+          "z": -6.69,
+          "to": [
+            14.6,
+            0.04,
+            -7.48
+          ],
+          "bandY": [
+            0.54,
+            1.08
+          ]
+        },
+        {
+          "x": 15.34,
+          "y": 0.04,
+          "z": -5.44,
+          "to": [
+            15.75,
+            0.04,
+            -4.71
+          ],
+          "bandY": [
+            0.11,
+            1.1
+          ]
+        },
+        {
+          "x": 16.11,
+          "y": 0.04,
+          "z": -5.86,
+          "to": [
+            16.51,
+            0.04,
+            -5.14
+          ],
+          "bandY": [
+            0.25,
+            1.32
+          ]
+        },
+        {
+          "x": 15.5,
+          "y": 0.04,
+          "z": -6.94,
+          "to": [
+            15.1,
+            0.04,
+            -7.67
+          ],
+          "bandY": [
+            0.25,
+            1.32
+          ]
+        },
+        {
+          "x": 15.3,
+          "y": 0.04,
+          "z": -6.58,
+          "to": [
+            14.47,
+            0.04,
+            -6.67
+          ],
+          "bandY": [
+            0.25,
+            1.32
+          ]
+        },
+        {
+          "x": 15.39,
+          "y": 0.04,
+          "z": -7.47,
+          "to": [
+            14.56,
+            0.04,
+            -7.55
+          ],
+          "bandY": [
+            0.4,
+            0.77
+          ]
+        },
+        {
+          "x": 16.3,
+          "y": 0.04,
+          "z": -7.86,
+          "to": [
+            17.09,
+            0.04,
+            -8.11
+          ],
+          "bandY": [
+            0.5,
+            1.54
+          ]
+        },
+        {
+          "x": 14.6,
+          "y": 0.04,
+          "z": -8.71,
+          "to": [
+            14.54,
+            0.04,
+            -7.88
+          ],
+          "bandY": [
+            0.75,
+            1.8
+          ]
+        },
+        {
+          "x": 14.11,
+          "y": 0.04,
+          "z": -9.98,
+          "to": [
+            14.17,
+            0.04,
+            -10.81
+          ],
+          "bandY": [
+            0.72,
+            1.3
+          ]
+        },
+        {
+          "x": 14.03,
+          "y": 0.04,
+          "z": -8.75,
+          "to": [
+            13.98,
+            0.04,
+            -7.92
+          ],
+          "bandY": [
+            0.72,
+            1.3
+          ]
+        },
+        {
+          "x": 13.92,
+          "y": 0.04,
+          "z": -9.71,
+          "to": [
+            13.82,
+            0.04,
+            -10.54
+          ],
+          "bandY": [
+            0.72,
+            1.71
+          ]
+        },
+        {
+          "x": 13.58,
+          "y": 0.04,
+          "z": -7.84,
+          "to": [
+            14.22,
+            0.04,
+            -7.32
+          ],
+          "bandY": [
+            0.36,
+            1.39
+          ]
+        },
+        {
+          "x": 14.11,
+          "y": 0.04,
+          "z": -6.56,
+          "to": [
+            14.18,
+            0.04,
+            -7.39
+          ],
+          "bandY": [
+            1.89,
+            2.01
+          ]
+        },
+        {
+          "x": 16.12,
+          "y": 0.04,
+          "z": -7.54,
+          "to": [
+            16.94,
+            0.04,
+            -7.63
+          ],
+          "bandY": [
+            1.89,
+            2.56
+          ]
+        },
+        {
+          "x": 16.06,
+          "y": 0.04,
+          "z": -8.05,
+          "to": [
+            16.89,
+            0.04,
+            -8.14
+          ],
+          "bandY": [
+            1.89,
+            2.11
+          ]
+        },
+        {
+          "x": 15.66,
+          "y": 0.04,
+          "z": -8.92,
+          "to": [
+            16.41,
+            0.04,
+            -9.28
+          ],
+          "bandY": [
+            1.89,
+            2.4
+          ]
+        },
+        {
+          "x": 13.71,
+          "y": 0.04,
+          "z": -9.41,
+          "to": [
+            13.47,
+            0.04,
+            -10.21
+          ],
+          "bandY": [
+            1.89,
+            2.65
+          ]
+        },
+        {
+          "x": 12.72,
+          "y": 0.04,
+          "z": -7.24,
+          "to": [
+            13.34,
+            0.04,
+            -7.79
+          ],
+          "bandY": [
+            2.37,
+            2.86
+          ]
+        },
+        {
+          "x": 13.2,
+          "y": 0.04,
+          "z": -6.73,
+          "to": [
+            13.39,
+            0.04,
+            -7.54
+          ],
+          "bandY": [
+            1.92,
+            2.87
+          ]
+        },
+        {
+          "x": 13.68,
+          "y": 0.04,
+          "z": -6.63,
+          "to": [
+            13.87,
+            0.04,
+            -7.43
+          ],
+          "bandY": [
+            1.97,
+            2.44
+          ]
+        },
+        {
+          "x": 14.76,
+          "y": 0.04,
+          "z": -6.18,
+          "to": [
+            14.23,
+            0.04,
+            -6.82
+          ],
+          "bandY": [
+            2.14,
+            2.86
+          ]
+        }
+      ],
+      "walkableRayBlocked": 0,
+      "walkableSamples": []
+    },
+    "durationMs": 1966,
+    "issueCount": 1,
+    "issues": [
+      {
+        "kind": "movement-barrier-without-boundary",
+        "count": 40,
+        "samples": [
+          {
+            "x": -26.5,
+            "y": 0.08,
+            "z": 11.47,
+            "to": [
+              -25.74,
+              0.08,
+              11.13
+            ],
+            "bandY": [
+              -0.24,
+              -0.13
+            ]
+          },
+          {
+            "x": -26.82,
+            "y": 0.08,
+            "z": 10.7,
+            "to": [
+              -26.05,
+              0.08,
+              10.39
+            ],
+            "bandY": [
+              -0.24,
+              -0.03
+            ]
+          },
+          {
+            "x": -27.26,
+            "y": 0.08,
+            "z": 9.52,
+            "to": [
+              -26.48,
+              0.08,
+              9.25
+            ],
+            "bandY": [
+              -0.24,
+              -0.03
+            ]
+          },
+          {
+            "x": -27.4,
+            "y": 0.08,
+            "z": 9.11,
+            "to": [
+              -26.62,
+              0.08,
+              8.84
+            ],
+            "bandY": [
+              -0.24,
+              -0.13
+            ]
+          },
+          {
+            "x": -40.35,
+            "y": -0.15,
+            "z": 8.29,
+            "to": [
+              -41.02,
+              -0.15,
+              7.79
+            ],
+            "bandY": [
+              -0.23,
+              0.93
+            ]
+          },
+          {
+            "x": -40.79,
+            "y": -0.15,
+            "z": 8.93,
+            "to": [
+              -41.5,
+              -0.15,
+              8.51
+            ],
+            "bandY": [
+              -0.23,
+              0.93
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cinder-array": {
+    "mapId": "cinder-array",
+    "geometryHash": "f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca",
+    "hashVerified": true,
+    "nextGen": true,
+    "counts": {
+      "surfaces": 190,
+      "wallSegments": 138,
+      "wallMeshes": 0,
+      "navNodes": 175,
+      "spawns": 6,
+      "pickups": 16,
+      "routes": 9,
+      "colliderSources": 101
+    },
+    "support": {
+      "gridStep": 0.5,
+      "cols": 161,
+      "rows": 141,
+      "supportedCells": 8890,
+      "unsupportedCells": 13811,
+      "enclosedHoleGroups": [
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            -34,
+            -31.5
+          ]
+        },
+        {
+          "cells": 1,
+          "approxArea": 0.25,
+          "center": [
+            -24,
+            -31.5
+          ]
+        }
+      ],
+      "enclosedHoleTotal": 2,
+      "largestEnclosedHoleArea": 0.25
+    },
+    "spawns": [
+      {
+        "index": 0,
+        "x": -24,
+        "z": 28,
+        "floor": 7,
+        "authoredY": 7,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "x": 25,
+        "z": -8,
+        "floor": 12,
+        "authoredY": 12,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "x": 26,
+        "z": -30,
+        "floor": 12,
+        "authoredY": 12,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "x": -8,
+        "z": -31,
+        "floor": 12,
+        "authoredY": 12,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "x": -29,
+        "z": -26,
+        "floor": 16,
+        "authoredY": 16,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "x": -41,
+        "z": -5,
+        "floor": 12,
+        "authoredY": 12,
+        "heightAgreement": 0,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "pickups": [
+      {
+        "index": 0,
+        "kind": "rocket",
+        "x": -36,
+        "z": -30,
+        "floor": 16,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 1,
+        "kind": "rail",
+        "x": 26,
+        "z": -14,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 2,
+        "kind": "scatter",
+        "x": -21,
+        "z": 21,
+        "floor": 7,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 3,
+        "kind": "plasma",
+        "x": -2.666667,
+        "z": -31,
+        "floor": 14.667,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 4,
+        "kind": "grenade",
+        "x": 4.200001,
+        "z": 5.88,
+        "floor": 10.75,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 5,
+        "kind": "shock",
+        "x": -40,
+        "z": -1,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 6,
+        "kind": "flak",
+        "x": -16.421053,
+        "z": -5,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 7,
+        "kind": "marksman",
+        "x": 17,
+        "z": -31,
+        "floor": 15,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 8,
+        "kind": "smg",
+        "x": -19.186666,
+        "z": -28.715,
+        "floor": 15.333,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 9,
+        "kind": "ammo",
+        "x": -34.156922,
+        "z": 13.932308,
+        "floor": 8.154,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 10,
+        "kind": "health",
+        "x": 14.526316,
+        "z": -5,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 11,
+        "kind": "health",
+        "x": -8.633333,
+        "z": 13.58,
+        "floor": 8.667,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 12,
+        "kind": "health",
+        "x": -37.117141,
+        "z": -15.707143,
+        "floor": 14.286,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 13,
+        "kind": "armor",
+        "x": -3.157895,
+        "z": -5,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 14,
+        "kind": "armor",
+        "x": -25.5,
+        "z": 5,
+        "floor": 10.571,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      },
+      {
+        "index": 15,
+        "kind": "armor",
+        "x": -29.684211,
+        "z": -5,
+        "floor": 12,
+        "obstructed42": false,
+        "nearestNavNode": 0,
+        "nodeComponent": 0,
+        "reachableFromSpawn0": true
+      }
+    ],
+    "nav": {
+      "nodes": 234,
+      "edges": 2390,
+      "components": [
+        234
+      ],
+      "componentCount": 1,
+      "botUsableNodes": 234,
+      "authoredNavNodesUnsupported": 0
+    },
+    "routes": [
+      {
+        "id": "SuspendedSpan",
+        "points": 29,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "ExtractorAccess",
+        "points": 11,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "BoreFloor",
+        "points": 25,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "RimAscent",
+        "points": 14,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "WestDescent",
+        "points": 14,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "ReturnRamp",
+        "points": 19,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "cooling-crosslink",
+        "points": 39,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "transfer-chord",
+        "points": 18,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      },
+      {
+        "id": "observatory-console-flank",
+        "points": 6,
+        "badSupport": 0,
+        "badHeight": 0,
+        "badEdge": 0,
+        "blockedPoints": 0,
+        "worstHeightDelta": 0,
+        "worstSupport": null,
+        "worstEdge": null
+      }
+    ],
+    "wallBands": {
+      "sampled": 246,
+      "withoutNearbyColliderGeometry": 0,
+      "sampleShare": 0,
+      "samples": []
+    },
+    "wallProbes": {
+      "probed": 55,
+      "movementBlockedRayClear": 0,
+      "samples": [],
+      "walkableRayBlocked": 0,
+      "walkableSamples": []
+    },
+    "durationMs": 85,
+    "issueCount": 0,
+    "issues": []
+  }
+}

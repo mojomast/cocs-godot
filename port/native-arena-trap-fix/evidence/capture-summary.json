@@ -2,8 +2,30 @@
   {
     "mapId": "aurora-basin",
     "exit": 0,
-    "expectedHash": "8457812f7845475378e0f99616ca91b3dac3aa4bff3a396a9e6739e9b8917a21",
+    "expectedHash": "94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d",
     "images": [
+      {
+        "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/aurora-basin-960x640.png",
+        "declared": [
+          960,
+          640
+        ],
+        "actual": [
+          960,
+          640
+        ],
+        "geometryHash": "94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d",
+        "eye": [
+          16,
+          10.4499998092651,
+          -34
+        ],
+        "msaa": "disabled",
+        "rendering_method": "gl_compatibility",
+        "video_adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "actors": 6,
+        "ok": true
+      },
       {
         "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/aurora-basin-1280x720.png",
         "declared": [
@@ -14,7 +36,51 @@
           1280,
           720
         ],
-        "geometryHash": "8457812f7845475378e0f99616ca91b3dac3aa4bff3a396a9e6739e9b8917a21",
+        "geometryHash": "94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d",
+        "eye": [
+          16,
+          10.4499998092651,
+          -34
+        ],
+        "msaa": "disabled",
+        "rendering_method": "gl_compatibility",
+        "video_adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "actors": 6,
+        "ok": true
+      },
+      {
+        "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/aurora-basin-1280x800.png",
+        "declared": [
+          1280,
+          800
+        ],
+        "actual": [
+          1280,
+          800
+        ],
+        "geometryHash": "94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d",
+        "eye": [
+          16,
+          10.4499998092651,
+          -34
+        ],
+        "msaa": "disabled",
+        "rendering_method": "gl_compatibility",
+        "video_adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "actors": 6,
+        "ok": true
+      },
+      {
+        "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/aurora-basin-1920x1080.png",
+        "declared": [
+          1920,
+          1080
+        ],
+        "actual": [
+          1920,
+          1080
+        ],
+        "geometryHash": "94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d",
         "eye": [
           16,
           10.4499998092651,
@@ -29,9 +95,60 @@
     ]
   },
   {
+    "mapId": "prism-foundry",
+    "exit": 0,
+    "expectedHash": "c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13",
+    "images": [
+      {
+        "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/prism-foundry-1280x720.png",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "geometryHash": "c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13",
+        "eye": [
+          26,
+          5.44999980926514,
+          0
+        ],
+        "msaa": "disabled",
+        "rendering_method": "gl_compatibility",
+        "video_adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "actors": 6,
+        "ok": true
+      },
+      {
+        "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/prism-foundry-1920x1080.png",
+        "declared": [
+          1920,
+          1080
+        ],
+        "actual": [
+          1920,
+          1080
+        ],
+        "geometryHash": "c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13",
+        "eye": [
+          26,
+          5.44999980926514,
+          0
+        ],
+        "msaa": "disabled",
+        "rendering_method": "gl_compatibility",
+        "video_adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "actors": 6,
+        "ok": true
+      }
+    ]
+  },
+  {
     "mapId": "cinder-array",
     "exit": 0,
-    "expectedHash": "2d5e5cfa445383db4f6a3009a0f7500e423ec17dfe800d35cafa2fd8272da4f2",
+    "expectedHash": "f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca",
     "images": [
       {
         "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/cinder-array-1280x720.png",
@@ -43,7 +160,7 @@
           1280,
           720
         ],
-        "geometryHash": "2d5e5cfa445383db4f6a3009a0f7500e423ec17dfe800d35cafa2fd8272da4f2",
+        "geometryHash": "f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca",
         "eye": [
           -29,
           17.4500007629395,
@@ -65,7 +182,7 @@
           1920,
           1080
         ],
-        "geometryHash": "2d5e5cfa445383db4f6a3009a0f7500e423ec17dfe800d35cafa2fd8272da4f2",
+        "geometryHash": "f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca",
         "eye": [
           -29,
           17.4500007629395,
