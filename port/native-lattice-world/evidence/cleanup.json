@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "ports": [
+    {
+      "port": 33251,
+      "closed": true
+    },
+    {
+      "port": 46193,
+      "closed": true
+    },
+    {
+      "port": 41235,
+      "closed": true
+    },
+    {
+      "port": 41407,
+      "closed": true
+    },
+    {
+      "port": 33341,
+      "closed": true
+    },
+    {
+      "port": 44569,
+      "closed": true
+    },
+    {
+      "port": 40553,
+      "closed": true
+    }
+  ],
+  "runtimeProcesses": []
+}

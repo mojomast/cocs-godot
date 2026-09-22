@@ -1,0 +1,2 @@
+LATTICE_WORLD {"endpoint":"ws://127.0.0.1:33251","map":"monsoon-foundry","mode":"cocs-coop","out":"/tmp/opencode/lattice-world-642c615/port/native-lattice-world/evidence/1790044868397163098/monsoon-foundry-cocs-coop"}
+{"passed":true,"checks":{"native":true,"movement":true,"exactCamera":true,"exactRecipientActors":true,"ownBudgetOnly":true,"ackObserved":true,"noCommands":true,"normalHost":true},"out":"/tmp/opencode/lattice-world-642c615/port/native-lattice-world/evidence/1790044868397163098/monsoon-foundry-cocs-coop"}

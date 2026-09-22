@@ -1,0 +1,52 @@
+{
+  "base": "642c615",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "options": {
+    "map": "asterion-relay",
+    "mode": "cocs",
+    "size": "1280x800",
+    "output": "port/native-lattice-world/evidence/final-asterion-1790044800/asterion-relay-cocs"
+  },
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--audio-driver",
+    "Dummy",
+    "--path",
+    "godot",
+    "--resolution",
+    "1280x800",
+    "--script",
+    "res://tests/lattice/world_walk.gd",
+    "res://lattice/world_demo.tscn",
+    "--",
+    "--endpoint=ws://127.0.0.1:41235",
+    "--map=asterion-relay",
+    "--mode=cocs",
+    "--world-output=/tmp/opencode/lattice-world-642c615/port/native-lattice-world/evidence/final-asterion-1790044800/asterion-relay-cocs"
+  ],
+  "port": 41235,
+  "display": ":99",
+  "serverOptions": {
+    "historyPath": null,
+    "progressionPath": null
+  },
+  "simulation": "default tickDt 1/60, tickMs 1000/60, snapshotHz unchanged",
+  "hashes": {
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/protocol.mjs": "362716c6b5ba222a64a76580efae1513c65eededd5a33116ff53974bf07a7fdb",
+    "game/cocs.mjs": "a1e0f803f396b7e12ed2b09757301bd6505d11b6bc84a0166ce7f572e88cc258",
+    "game/cocs-intel.mjs": "1be460752165e06e84aaece3ef539722591d576e4d77f5a4683a28d2a2ee5de0",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "godot/world/session.gd": "a501f3814e08c6ba17ac4f9bf2b2d2942241a8a48613d902387b8774a3b31554",
+    "godot/world/viewer.gd": "a1a264134e0876b2cb93382d049b20a3ae91ca65c595d397772ac383c1d2c8b7",
+    "godot/world/presentation.gd": "73fde7e91f38a302971452726adca5896208517936559954760e6385d4680240",
+    "godot/lattice/transport.gd": "d914d981c792362896f9bc6ae7480d40e754f74e337c721cab606b6c041eb783",
+    "godot/lattice/world_demo.gd": "6af598df2eef05cdbfe4a7a260e21fac9b6e53f6558a5ba366cf35adcdc5f072",
+    "godot/lattice/world_transport.gd": "b7feb5f87fd06f708f7ac71b2c58f6b2e5ae16600d7629004c369fbdd2bbf2ec",
+    "godot/lattice/world_hud.gd": "c4e7a8822d93744fd3b7be99d8499511bb633c615fe2c02b0a36b32bf7d5bc9f",
+    "godot/tests/lattice/world_walk.gd": "9b022b46e48fa3a60b04708ddcb68fe68e3ff693e3142b578d1a005d2d9a8010",
+    "port/native-lattice-world/run.mjs": "f779ed897bb2ce51bd288c6a2aa73c79c9b40c71c6168f9b50c4a1f18b36fe9c"
+  }
+}

@@ -1,0 +1,148 @@
+extends "res://world/session.gd"
+## Optional scene: source infantry control with the nine-map native geometry.
+const WorldTransport = preload("res://lattice/world_transport.gd")
+const WorldHUD = preload("res://lattice/world_hud.gd")
+const WORLD_MAPS := ["asterion-relay", "monsoon-foundry"]
+var lattice_hud := WorldHUD.new()
+var world_label := Label.new()
+
+func _init() -> void:
+	# Replace before attachment: the transport's _init signal observers run before
+	# our snapshot callback. The inherited session never creates another socket.
+	client.free()
+	client = WorldTransport.new()
+
+func _ready() -> void:
+	add_child(camera)
+	add_child(sun)
+	add_child(environment)
+	camera.far = 2000
+	camera.rotation_order = EULER_ORDER_YXZ
+	var layer := CanvasLayer.new()
+	add_child(layer)
+	var panel := VBoxContainer.new()
+	panel.position = Vector2(18, 14)
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	layer.add_child(panel)
+	for item: Label in [label, world_label, combat_label]:
+		panel.add_child(item)
+		item.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		item.add_theme_font_size_override("font_size", 17)
+		item.add_theme_color_override("font_shadow_color", Color.BLACK)
+		item.add_theme_constant_override("shadow_offset_x", 2)
+		item.add_theme_constant_override("shadow_offset_y", 2)
+	panel.add_child(selector)
+	selector.hide()
+	add_child(pickups)
+	add_child(presentation)
+	add_child(combat)
+	add_child(lattice_hud)
+	add_child(client)
+	# Exact received coordinates (no extrapolation) simplify recipient auditing.
+	presentation.interpolate_remote = false
+	if not catalog.open():
+		on_error(catalog.error)
+		return
+	ids = catalog.entries.keys()
+	for id: String in ids: selector.add_item(catalog.entries[id].name)
+	var selected := "asterion-relay"
+	selected_mode = "cocs"
+	for arg: String in OS.get_cmdline_user_args():
+		if arg.begins_with("--map="): selected = arg.trim_prefix("--map=")
+		if arg.begins_with("--mode="): selected_mode = arg.trim_prefix("--mode=")
+		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
+		if arg == "--native-trace": trace_enabled = true
+		if arg in ["--session-smoke", "--lifecycle-smoke", "--setup"] or arg.begins_with("--join"):
+			on_error("World slice requires an ordinary standalone host; unsupported option: " + arg)
+			return
+	if selected not in WORLD_MAPS or selected_mode not in ["cocs", "cocs-coop"] or selected_mode not in catalog.entries.get(selected, {}).get("modes", []):
+		on_error("Require Asterion/Monsoon and cocs/cocs-coop")
+		return
+	client.mode = selected_mode
+	if not load_map(selected):
+		on_error(catalog.error)
+		return
+	world.get_node("StaticPickupMarkers").hide()
+	client.connection_error.connect(on_error)
+	client.changed.connect(func() -> void:
+		if client.projection.is_empty(): clear_world_pose())
+	client.lobby.connect(on_lobby)
+	client.started.connect(on_started)
+	client.snapshot.connect(on_snapshot)
+	client.results.connect(on_results)
+	client.events.connect(func(items: Array) -> void:
+		if phase == 3: combat.apply_events(items, client.actor_id))
+	connect_selected_match()
+
+func controls_released() -> bool:
+	for key: int in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_SPACE, KEY_R, KEY_SHIFT, KEY_CTRL, KEY_E, KEY_F]:
+		if Input.is_physical_key_pressed(key): return false
+	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
+
+func can_capture_pointer() -> bool:
+	return super.can_capture_pointer() and client.projection_actor == client.actor_id and not client.projection.is_empty()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not controls_released(): return
+	super._unhandled_input(event)
+
+func clear_world_pose() -> void:
+	if received_pose: send_elapsed = 0.0
+	received_pose = false
+	pose_actor_id = -1
+	presentation.clear_round()
+	lattice_hud.clear_round()
+	release_pointer()
+
+func on_lobby(frame: Dictionary) -> void:
+	if pose_actor_id != client.actor_id: clear_world_pose()
+	super.on_lobby(frame)
+
+func on_started(frame: Dictionary) -> void:
+	if client.revision < 1 or client.actor_id < 0: return
+	lattice_hud.clear_round()
+	super.on_started(frame)
+
+func on_error(message: String) -> void:
+	lattice_hud.clear_round()
+	super.on_error(message)
+	world_label.text = "LATTICE world session stopped. Relaunch to reconnect."
+
+func on_snapshot(frame: Dictionary) -> void:
+	if phase != 3: return
+	if client.projection.is_empty() or client.projection_actor != client.actor_id:
+		snapshot_watch.observe()
+		clear_world_pose()
+		pickups.clear_round()
+		combat.clear_round()
+		refresh_world_hud()
+		return
+	super.on_snapshot(frame)
+	# PvP wire nodes omit y/r. Height is static authored geometry, not inferred
+	# gameplay state. Never draw a guessed capture radius.
+	for node: Dictionary in client.projection.nodes:
+		if not lattice_hud.heights.has(node.id):
+			lattice_hud.heights[node.id] = support_height(catalog.resolve_map(current_id), node.x, node.z)
+	lattice_hud.apply_projection(client.projection, presentation.local_actor)
+	refresh_world_hud()
+
+func on_results(frame: Dictionary) -> void:
+	round_results += 1
+	presentation.apply_state(frame.state, client.actor_id)
+	pickups.apply_state(frame.state)
+	phase = 4
+	combat.clear_round()
+	lattice_hud.clear_round()
+	release_pointer()
+	refresh_world_hud()
+
+func refresh_world_hud() -> void:
+	label.text = "LATTICE / WORLD · %s · %s\n%s · HP %s · ACK %d (input receipt)\nClick: engage/fire · Esc: release · WASD: move · mouse: look\nShift: sprint · Space: jump · R: reload · E: interact · F: mobility" % [current_id, selected_mode, presentation.lifecycle.label(), presentation.local_actor.get("health", "unknown"), client.last_ack]
+	world_label.text = lattice_hud.text(client.projection) + "\nRelease movement/action keys before clicking to resume."
+	if phase == 4: world_label.text = "RESULTS · Enter: request another round"
+
+func _process(delta: float) -> void:
+	super._process(delta)
+	if phase == 3 and snapshot_watch.stale():
+		lattice_hud.clear_round()
+		world_label.text = "State stale — release keys, wait for state, then click to resume."
