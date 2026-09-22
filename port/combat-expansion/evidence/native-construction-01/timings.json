@@ -1,0 +1,35 @@
+[
+  {
+    "mapId": "prism-foundry",
+    "hash": "9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572",
+    "validationMS": 88.612392,
+    "constructionMS": 2833.536384,
+    "firstStepMS": 12.569562000000133,
+    "nav": 378,
+    "edges": 5516,
+    "surfaces": 123,
+    "blocks": 0
+  },
+  {
+    "mapId": "aurora-basin",
+    "hash": "909daa29fb380b39e87e427ec2eec6003c15d77d11d7c73fb5660336f8d3df8f",
+    "validationMS": 967.9434759999999,
+    "constructionMS": 39002.084791999994,
+    "firstStepMS": 12.393261000004713,
+    "nav": 948,
+    "edges": 17166,
+    "surfaces": 441,
+    "blocks": 0
+  },
+  {
+    "mapId": "cinder-array",
+    "hash": "e4b7763a5dae391cfcc0e9a13b5202a054cdfd9761c449cf6a4bf2fd4765ab8c",
+    "validationMS": 21.216387000000395,
+    "constructionMS": 1768.9130870000008,
+    "firstStepMS": 6.04727599999751,
+    "nav": 369,
+    "edges": 5392,
+    "surfaces": 129,
+    "blocks": 0
+  }
+]

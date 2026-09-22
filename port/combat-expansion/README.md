@@ -63,6 +63,20 @@ the exported sight geometry remains the aiming reference.
 
 ## Acceptance remaining
 
+Native route integration `f6427dd` corrected the authority endpoint path, source
+bot bounds (1–7), frag-limit configuration, and epoch-aware handshake. Prism
+passed its recorded real-authority startup. Lead `evidence/cinder-live-01/` also
+passes Cinder: three actors, public movement/fire, matching geometry hash and
+ACK 15, with the owned listener and client cleaned up.
+
+Aurora's first live attempt failed round-start timeout. Lead cold-construction
+diagnostics at `evidence/native-construction-01/timings.json` measured 39.002 s
+in Match construction versus 12.39 ms for its first step, with 948 navigation
+nodes and 17,166 edges. Prism/Cinder construction measured 2.834/1.769 s in the
+same run. These are development-host CPU diagnostics under current load, not
+rendering benchmarks. Geometry/navigation optimization is assigned to the map
+owner; the failure is retained rather than hidden by extending the timeout.
+
 Combined effects integration, native-arena live combat, final resource checks and
 package publication remain in progress. Component fixture/benchmark results are
 documented in their individual reports and do not imply full-match acceptance.
