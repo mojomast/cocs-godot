@@ -22,6 +22,53 @@ remain failures. The independent current-runtime trace run, commands and limits
 are in [reports/native-trace-independent/README.md](reports/native-trace-independent/README.md).
 The sections below retain the chronological implementation history.
 
+### Current native feature batch
+
+```sh
+export GODOT_BIN="$PWD/../godot-toolchain/Godot_v4.5.2-stable_linux.x86_64"
+PORT=0 node tools/godot-dev/launch.mjs --play --setup
+PORT=0 node tools/godot-dev/launch.mjs --play --map=verdant-reliquary --mode=instagib
+# Add --mute to silence procedural cues.
+```
+
+- **Host setup:** Meridian, Verdant and Ember × Deathmatch/Team Deathmatch/Instagib are enabled.
+  All nine locked maps remain visible; unsupported selections explain that they
+  are pending. Setup does not connect before Start. Independent native runs of
+  all six combinations and a private graphical Verdant/Instagib Start passed;
+  see [selection evidence](reports/match-selection-independent/README.md).
+  Team Deathmatch adds snapshot-derived Red/Blue scoreboard totals; see
+  [mode expansion](native-mode-expansion/README.md).
+- **Combat presentation:** armored operator silhouettes, distinct pickups,
+  reticle, confirmed-hit marker, damage-edge pulse and procedural event-driven
+  sound cues. A compact HUD shows health/armor bars, named weapon/ammo, scores
+  and lifecycle prompts; `--debug-hud` restores the old diagnostic labels.
+  Physical **1–9 / 0** and the **mouse wheel** select available weapons through
+  authority. Independent rocket pickup/switch verification and two-resolution
+  HUD renders pass; see [weapon evidence](reports/weapon-selection-independent/README.md)
+  and [HUD evidence](reports/game-hud-independent/README.md).
+  Human audio review remains pending. Hold Tab for scores; results
+  display automatically. These UI layers do not capture the pointer.
+- **World presentation:** all nine maps now have native skies, lighting,
+  material palettes, architectural accents and landmark labels. Source geometry
+  stays authoritative. The integrated Meridian client was independently captured
+  on a private display. See [world notes](native-world-presentation/README.md)
+  and [entity notes](native-entity-presentation/NOTES.md).
+- **Puma component:** the standalone snapshot renderer is integrated at
+  `e2fd1d3`; its 19 synthetic checks and private render were independently rerun
+  and the image inspected. It is not yet wired into the infantry session or
+  accepted as live driving. Follow-up work is scoped in
+  [the driving handoff](handoffs/external-native-puma-driving.md).
+
+**Combined verification: all 40 implemented gates pass** after integration at
+`5ce0ae0` plus the fixture-ownership and gate/launcher changes in this batch.
+The earlier render-instance leaks came from fixtures skipping `_ready()` and
+leaving the new environment/light nodes unparented. The fixtures now own those
+nodes; production cleanup was not the cause. Setup's separate premature viewport
+access is also fixed. Failed runs and the corrected report are retained in
+[feature-batch evidence](reports/feature-batch-independent/README.md).
+Rocket Arena remains pending projectile/launch presentation. Full native
+recording completion and broader human gameplay acceptance remain open.
+
 ## Focus loss gates pointer capture and look
 
 Application focus notifications now explicitly gate capture eligibility and mouse-look updates. Focus return restores eligibility, not pointer capture; a fresh click is still required. Previously release alone left capture eligibility true while unfocused.
@@ -152,7 +199,12 @@ Do not rerun this hard-pinned intake script to adopt a later release without rev
 "$GODOT_BIN" --path godot -- --visual-probe
 ```
 
-Default viewer: nine-map manifest selector, terrain support triangles, collision solids, spawn/pickup markers, asymmetric coordinate axes. Right mouse looks; WASD/QE flies; Shift accelerates. It is explicitly a semantic diagnostic; marker placement is a display aid, not a native movement implementation. Missing/corrupt maps fail closed. Changing selection unloads the previous world.
+Default viewer: nine-map selector, authored solid/terrain geometry and native
+environment styling. Right mouse looks; WASD/QE flies; Shift accelerates.
+`--diagnostic-markers` adds spawn beams and asymmetric coordinate axes. Static
+pickup orbs are display aids; the native session replaces them with authoritative
+pickup models. The viewer's free camera is not gameplay. Missing/corrupt maps fail
+closed. Changing selection unloads the previous world.
 
 `--visual-probe` loads the actual Meridian GLB through Godot's GLTFDocument. Selecting another map returns to semantic mode. Other maps do not yet have accepted visual exports. The probe imports the world hierarchy, not full dynamic/game presentation.
 

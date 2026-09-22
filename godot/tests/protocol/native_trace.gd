@@ -16,7 +16,7 @@ func check(ok: bool) -> void:
 		push_error("Native trace assertion " + str(checks))
 func _initialize() -> void:
 	var s := Session.new()
-	for node: Node in [s.camera,s.label,s.selector,s.client,s.presentation,s.pickups,s.combat,s.combat_label]: s.add_child(node)
+	for node: Node in [s.camera,s.label,s.selector,s.environment,s.sun,s.client,s.presentation,s.pickups,s.combat,s.combat_label]: s.add_child(node)
 	s.emit_snapshot_trace(false)
 	check(s.trace_count == 0)
 	s.phase = 3
@@ -62,7 +62,7 @@ func _initialize() -> void:
 	check(s.trace_count == s.TRACE_LIMIT)
 	s.free()
 	var boundary := RecordingSession.new()
-	for node: Node in [boundary.camera,boundary.label,boundary.selector,boundary.client,boundary.presentation,boundary.pickups,boundary.combat,boundary.combat_label]: boundary.add_child(node)
+	for node: Node in [boundary.camera,boundary.label,boundary.selector,boundary.environment,boundary.sun,boundary.client,boundary.presentation,boundary.pickups,boundary.combat,boundary.combat_label]: boundary.add_child(node)
 	boundary.on_started({})
 	check(boundary.records.is_empty() and boundary.trace_count == 0)
 	boundary.trace_enabled = true

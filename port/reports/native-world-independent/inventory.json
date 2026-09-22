@@ -1,0 +1,82 @@
+{
+  "revision": "e2fd1d3",
+  "classification": "offline native rendering, not gameplay",
+  "files": [
+    {
+      "file": "asterion-relay-overview.log",
+      "sha256": "76faede88d029d2c0d2d9ed8544724b1b00c7ab411e054af0d533dfb21589c2e"
+    },
+    {
+      "file": "asterion-relay-overview.png",
+      "sha256": "6d640132919133db18212b5914a90ce0bf2106786b8f5e2e92a4f7937728057b"
+    },
+    {
+      "file": "aurora-stadium-overview.log",
+      "sha256": "a79c9bf054775ca41d3419d2a0ae8614e0fce49e88f912ecfedab70956ef1292"
+    },
+    {
+      "file": "aurora-stadium-overview.png",
+      "sha256": "9c6daee6f99cd387703a2379a1f15bfc821a41fc68a1769a873cfdc1225f81c3"
+    },
+    {
+      "file": "ember-crucible-overview.log",
+      "sha256": "6ef6981b5e841daea5552d9046d9e73e29dbbe8956a5b11040f0df737fba8e7f"
+    },
+    {
+      "file": "ember-crucible-overview.png",
+      "sha256": "bc4a98c390aedea6459a0f2bc6fef56ff514e2a02d1ffe476b12c62d327806e6"
+    },
+    {
+      "file": "ion-speedway-overview.log",
+      "sha256": "05348f3f3d4b6c64d6b761c44b190806fcd6014d4f5299fa28c0f0c9c5d91dfd"
+    },
+    {
+      "file": "ion-speedway-overview.png",
+      "sha256": "34abbed7619640c71a6e034fc1036baaecb8472265f06b97e9ace1a6f70559e7"
+    },
+    {
+      "file": "meridian-exchange-overview.log",
+      "sha256": "869bcee3ec00f16ca240c2017748e7172bad15c4cbddc56e6e09f3a9ee226755"
+    },
+    {
+      "file": "meridian-exchange-overview.png",
+      "sha256": "fbfe57f64790a5137345b12a1dca5d06a6b6a33a0d9847f57f5cbf3dd45c616b"
+    },
+    {
+      "file": "monsoon-foundry-overview.log",
+      "sha256": "98db06050ca263ddfde115e9d68b650aea7a1b79b0d11e648823149a148c6a7c"
+    },
+    {
+      "file": "monsoon-foundry-overview.png",
+      "sha256": "4ab539979186eeb785f2d5b39aa48466b0b486ee7a31941ff67f5befcdbc438e"
+    },
+    {
+      "file": "sunscar-convoy-overview.log",
+      "sha256": "82124ac13b4f6d2d038555db4a0b6a5506f53b979d16e93d4964e6251e8e2036"
+    },
+    {
+      "file": "sunscar-convoy-overview.png",
+      "sha256": "05a9ae55aad4d392cb3a3e6a88b6f4b00375a1c123d4adff93abcf1496cddc38"
+    },
+    {
+      "file": "tidal-citadel-overview.log",
+      "sha256": "603b9497d9bba3b853a03fefadf944639a0db29c3fdd5a6c9a1fd52717a89227"
+    },
+    {
+      "file": "tidal-citadel-overview.png",
+      "sha256": "f3470e5e6afa40117eb0c72ae6f7b2f484d2808f78796a42a44eb86718f65c0f"
+    },
+    {
+      "file": "verdant-reliquary-overview.log",
+      "sha256": "ef53601aa9a070dfcbb8b9ad14901d829343e492b66d637d1645ed5340d815d5"
+    },
+    {
+      "file": "verdant-reliquary-overview.png",
+      "sha256": "8511f306e1d27d92bd99f4e5891ece576c860db6232965bcc45104861ee7ffda"
+    },
+    {
+      "file": "xvfb.log",
+      "sha256": "18b994563c61904f959cb44346126933ebd488bf232ed5ab5e7f9fab0cd38b2c"
+    }
+  ]
+}

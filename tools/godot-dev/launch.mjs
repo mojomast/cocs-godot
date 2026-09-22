@@ -23,7 +23,7 @@ try{
    const value=process.argv[i+1];
    if(!value||value.startsWith('--'))throw Error(`${arg} requires a value`);
    sessionOptions.push(`${arg}=${value}`);i++;
-  }else if(arg==='--setup'||arg==='--native-trace'||arg==='--mute'||arg.startsWith('--map=')||arg.startsWith('--mode='))sessionOptions.push(arg);
+   }else if(arg==='--setup'||arg==='--native-trace'||arg==='--mute'||arg==='--debug-hud'||arg.startsWith('--map=')||arg.startsWith('--mode='))sessionOptions.push(arg);
  }
  const play=sessionSmoke||lifecycleSmoke||process.argv.includes('--play')||sessionOptions.length>0;
  const args=smoke?['--headless','--path','godot','--script','res://tests/protocol/live.gd']: [...(sessionSmoke||lifecycleSmoke?['--headless']:[]),'--path','godot',...(play?['res://world/session.tscn']:[])];

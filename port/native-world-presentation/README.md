@@ -59,6 +59,8 @@ export GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Go
 "$GODOT_BIN" --headless --path godot \
   --script "$PWD/port/native-world-presentation/compatibility.gd"
 python3 port/native-world-presentation/capture.py port/native-world-presentation/after
+# Optional: all nine locked-map overviews, using the same private renderer.
+python3 port/native-world-presentation/capture.py /tmp/opencode/native-world-review --all
 ```
 
 - Editor import passed.
@@ -92,8 +94,10 @@ ground self-shadow banding before the final captures below.
 The semantic architecture and distant silhouettes are deliberately simple;
 window strips and floating landmark lettering are native abstractions. Signs
 respect depth and may be occluded from some routes. Broader walk-through review,
-hardware performance measurement and the other seven maps' graphical review
-remain useful follow-up work. Native actors/weapons/audio, objective state,
+hardware performance measurement remain useful follow-up work. A subsequent
+independent all-nine-map overview review is recorded in
+[`../reports/native-world-independent/README.md`](../reports/native-world-independent/README.md);
+it is not a gameplay walkthrough. Native actors/weapons/audio, objective state,
 vehicles and special modes belong to their respective implementation lanes;
 these screenshots do not establish live gameplay acceptance. The historical
 `--visual-probe` remains a separate GLB diagnostic.

@@ -1,0 +1,312 @@
+{
+  "status": "PASS",
+  "normalRate": true,
+  "tickDt": 0.016666666666666666,
+  "tickMs": 16.666666666666668,
+  "sourceHashes": {
+    "godot/world/session.gd": "e95488d806259967f0688a246b633c63fa16a685fa83ff7f7f530ad2a5992f41",
+    "godot/world/weapon_selection.gd": "5b6bbb35e59d5b84e786932910a36fdcefabff03eba5b8a099e38272636c8216",
+    "godot/tests/protocol/weapon_selection.gd": "4de2fdda331e1270dc74a74bc5a957e3ccc485a6cbc4074af72b1e8b0a2bcb67",
+    "port/native-weapon-selection/live.gd": "59be0ec2f8f1f8d03d1b42be9c598729c64db87ed6e0d8f91d85f419e3de3d82",
+    "port/native-weapon-selection/run.mjs": "43953f1af0c5d690832123b8e904380613010a99c3822677b2afc8fc0e36fd7d"
+  },
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "route": [
+    [
+      -32,
+      -12
+    ],
+    [
+      -32,
+      -16
+    ],
+    [
+      -28,
+      -18
+    ],
+    [
+      -14,
+      -19
+    ]
+  ],
+  "config": {
+    "mode": "deathmatch",
+    "botCount": 0,
+    "difficulty": "easy",
+    "fragLimit": 15,
+    "timeLimit": 300,
+    "respawn": 2,
+    "speed": 1,
+    "gravity": 1,
+    "damage": 1,
+    "fastPowers": false,
+    "lifeSteal": false,
+    "unlimitedAmmo": false,
+    "suddenDeath": false,
+    "randomLoadout": false,
+    "oneShot": false,
+    "instagib": false,
+    "mirrorLoadout": false,
+    "bounty": false,
+    "berserk": false,
+    "bigHead": false,
+    "noRecoil": false,
+    "endless": false,
+    "startingWeapon": 0,
+    "playerName": "",
+    "mission": "convoy-run",
+    "loadout": null,
+    "checkpoint": null,
+    "mutators": []
+  },
+  "inputsReceived": 470,
+  "commands": [
+    {
+      "seq": 422,
+      "weapon": 0
+    },
+    {
+      "seq": 423,
+      "weapon": 0
+    },
+    {
+      "seq": 424,
+      "weapon": 0
+    },
+    {
+      "seq": 425,
+      "weapon": 1
+    },
+    {
+      "seq": 426,
+      "weapon": 1
+    },
+    {
+      "seq": 427,
+      "weapon": 1
+    },
+    {
+      "seq": 428,
+      "weapon": 0
+    },
+    {
+      "seq": 429,
+      "weapon": 0
+    },
+    {
+      "seq": 430,
+      "weapon": 0
+    },
+    {
+      "seq": 431,
+      "weapon": 1
+    },
+    {
+      "seq": 432,
+      "weapon": 1
+    },
+    {
+      "seq": 453,
+      "weapon": 0
+    },
+    {
+      "seq": 454,
+      "weapon": 0
+    },
+    {
+      "seq": 455,
+      "weapon": 0
+    }
+  ],
+  "transitions": [
+    {
+      "seq": 1,
+      "ack": 0,
+      "actorId": 1,
+      "weapon": 0,
+      "ammo": [
+        "∞",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "health": 100
+    },
+    {
+      "seq": 254,
+      "ack": 410,
+      "actorId": 1,
+      "weapon": 1,
+      "ammo": [
+        "∞",
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "health": 100
+    },
+    {
+      "seq": 262,
+      "ack": 423,
+      "actorId": 1,
+      "weapon": 0,
+      "ammo": [
+        "∞",
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "health": 100
+    },
+    {
+      "seq": 264,
+      "ack": 426,
+      "actorId": 1,
+      "weapon": 1,
+      "ammo": [
+        "∞",
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "health": 100
+    },
+    {
+      "seq": 266,
+      "ack": 429,
+      "actorId": 1,
+      "weapon": 0,
+      "ammo": [
+        "∞",
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "health": 100
+    },
+    {
+      "seq": 267,
+      "ack": 431,
+      "actorId": 1,
+      "weapon": 1,
+      "ammo": [
+        "∞",
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "health": 100
+    },
+    {
+      "seq": 282,
+      "ack": 454,
+      "actorId": 1,
+      "weapon": 0,
+      "ammo": [
+        "∞",
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "health": 100
+    }
+  ],
+  "events": [
+    {
+      "type": "pickup",
+      "id": 3,
+      "time": 8.45,
+      "actor": 1,
+      "kind": "rocket",
+      "powerup": false,
+      "economy": false
+    },
+    {
+      "type": "weapon-switch",
+      "id": 4,
+      "time": 8.717,
+      "actor": 1,
+      "weapon": 0,
+      "source": "request"
+    },
+    {
+      "type": "weapon-switch",
+      "id": 5,
+      "time": 8.783,
+      "actor": 1,
+      "weapon": 1,
+      "source": "request"
+    },
+    {
+      "type": "weapon-switch",
+      "id": 6,
+      "time": 8.85,
+      "actor": 1,
+      "weapon": 0,
+      "source": "request"
+    },
+    {
+      "type": "weapon-switch",
+      "id": 7,
+      "time": 8.9,
+      "actor": 1,
+      "weapon": 1,
+      "source": "request"
+    },
+    {
+      "type": "weapon-switch",
+      "id": 8,
+      "time": 9.383,
+      "actor": 1,
+      "weapon": 0,
+      "source": "request"
+    }
+  ],
+  "cleanup": {
+    "childrenReaped": true,
+    "serverClosed": true,
+    "sockets": 0
+  }
+}

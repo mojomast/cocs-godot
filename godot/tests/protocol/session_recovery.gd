@@ -22,7 +22,7 @@ func make_session() -> Session:
 	var s := FocusSession.new()
 	s.client.free()
 	s.client = Probe.new()
-	for node: Node in [s.camera,s.label,s.selector,s.client,s.presentation,s.pickups,s.combat,s.combat_label]: s.add_child(node)
+	for node: Node in [s.camera,s.label,s.selector,s.environment,s.sun,s.client,s.presentation,s.pickups,s.combat,s.combat_label]: s.add_child(node)
 	return s
 func _initialize() -> void:
 	var s := make_session()

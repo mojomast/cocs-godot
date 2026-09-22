@@ -19,7 +19,7 @@ func _initialize() -> void:
 	session.client.free()
 	var probe := InputProbe.new()
 	session.client = probe
-	for node: Node in [session.camera,session.label,session.selector,session.client,session.presentation,session.pickups,session.combat,session.combat_label]: session.add_child(node)
+	for node: Node in [session.camera,session.label,session.selector,session.environment,session.sun,session.client,session.presentation,session.pickups,session.combat,session.combat_label]: session.add_child(node)
 	session.phase = 3
 	session.smoke = true
 	session.received_pose = true

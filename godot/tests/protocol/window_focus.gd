@@ -27,7 +27,7 @@ func run() -> void:
 	window.visible = false
 	root.add_child(window)
 	var session := AttachedSession.new()
-	for node: Node in [session.camera,session.label,session.selector,session.client,session.presentation,session.pickups,session.combat,session.combat_label]:
+	for node: Node in [session.camera,session.label,session.selector,session.environment,session.sun,session.client,session.presentation,session.pickups,session.combat,session.combat_label]:
 		session.add_child(node)
 	window.add_child(session)
 	session.phase = 3

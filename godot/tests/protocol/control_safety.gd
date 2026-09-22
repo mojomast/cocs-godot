@@ -42,7 +42,7 @@ func _initialize() -> void:
 		check(pose.x >= -PI - 0.000001 and pose.x <= PI + 0.000001 and absf(pose.y) <= 1.450001)
 		check(absf(sin(pose.x)-sin(angle)) < 0.05)
 	var s := Session.new()
-	for node: Node in [s.camera,s.label,s.selector,s.client,s.presentation,s.pickups,s.combat,s.combat_label]: s.add_child(node)
+	for node: Node in [s.camera,s.label,s.selector,s.environment,s.sun,s.client,s.presentation,s.pickups,s.combat,s.combat_label]: s.add_child(node)
 	s.phase = 3
 	s.received_pose = true
 	s.presentation.lifecycle.status = "alive"
@@ -113,7 +113,7 @@ func _initialize() -> void:
 	pending.client.free()
 	var probe := InputProbe.new()
 	pending.client = probe
-	for node: Node in [pending.camera,pending.label,pending.selector,probe,pending.presentation,pending.pickups,pending.combat,pending.combat_label]: pending.add_child(node)
+	for node: Node in [pending.camera,pending.label,pending.selector,pending.environment,pending.sun,probe,pending.presentation,pending.pickups,pending.combat,pending.combat_label]: pending.add_child(node)
 	pending.phase = 3
 	pending.smoke = true
 	pending.presentation.lifecycle.status = "alive"

@@ -7,7 +7,8 @@ import {resolve} from 'node:path';
 import {createGameServer} from '../../server/game-server.mjs';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
-const output = resolve(root, 'port/native-mode-expansion');
+const output = resolve(process.argv.find(arg => arg.startsWith('--output='))?.slice(9) ?? resolve(root, 'port/native-mode-expansion'));
+mkdirSync(output, {recursive:true});
 const binary = process.env.GODOT_BIN;
 const lock = JSON.parse(readFileSync(resolve(root, 'port/contracts/source-lock.json')));
 if (!binary || execFileSync(binary, ['--version'], {encoding:'utf8'}).trim() !== lock.godot_version) throw Error('Pinned GODOT_BIN required');

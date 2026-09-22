@@ -19,7 +19,7 @@ func _initialize() -> void:
 	s.client.free()
 	var p := Probe.new()
 	s.client = p
-	for node: Node in [s.camera,s.label,s.selector,s.client,s.presentation,s.pickups,s.combat,s.combat_label]: s.add_child(node)
+	for node: Node in [s.camera,s.label,s.selector,s.environment,s.sun,s.client,s.presentation,s.pickups,s.combat,s.combat_label]: s.add_child(node)
 	s.begin_room()
 	check(s.phase == 1 and p.frames[-1].type == "create")
 	s.join_room_id = "approved-room"

@@ -1,15 +1,24 @@
 #!/usr/bin/env python3
 """Bounded, private-Xvfb art review. No shared desktop or server is used."""
+import argparse
+import json
 import os
 from pathlib import Path
 import select
 import subprocess
-import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[2]
 GODOT = os.environ.get("GODOT_BIN", "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64")
-OUT = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else Path(__file__).parent
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('output', nargs='?', type=Path, default=Path(__file__).parent)
+parser.add_argument('--all', action='store_true', help='Capture an overview of every locked map')
+args = parser.parse_args()
+OUT = args.output.resolve()
+views = [("meridian-exchange", "overview"), ("meridian-exchange", "street"), ("tidal-citadel", "overview")]
+if args.all:
+    locked = json.loads((ROOT / 'port/contracts/map-selection.json').read_text())
+    views = [(entry['id'], 'overview') for entry in locked['maps']]
 OUT.mkdir(parents=True, exist_ok=True)
 with tempfile.TemporaryDirectory(prefix="native-world-", dir="/tmp/opencode") as runtime:
     read_fd, write_fd = os.pipe()
@@ -23,7 +32,7 @@ with tempfile.TemporaryDirectory(prefix="native-world-", dir="/tmp/opencode") as
             if not number.isdigit():
                 raise RuntimeError("Private Xvfb did not supply a display")
             env = dict(os.environ, DISPLAY=":" + number, LIBGL_ALWAYS_SOFTWARE="1", XDG_DATA_HOME=runtime + "/data", XDG_CONFIG_HOME=runtime + "/config", XDG_CACHE_HOME=runtime + "/cache")
-            for map_id, view in [("meridian-exchange", "overview"), ("meridian-exchange", "street"), ("tidal-citadel", "overview")]:
+            for map_id, view in views:
                 name = map_id + "-" + view
                 command = [GODOT, "--path", str(ROOT / "godot"), "--audio-driver", "Dummy", "--script", str(Path(__file__).with_suffix(".gd")), "--", map_id, str(OUT / (name + ".png")), view]
                 result = subprocess.run(command, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=60)

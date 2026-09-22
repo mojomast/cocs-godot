@@ -1,0 +1,37 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+WEAPON_AUTH {"ack":0,"actor_id":1.0,"ammo":["∞",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"captured":false,"focused":true,"health":100.0,"position":[-44.0,0.0,34.0],"seq":1.0,"stage":0,"weapon":0.0}
+WEAPON_AUTH {"ack":410,"actor_id":1.0,"ammo":["∞",6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"captured":true,"focused":true,"health":100.0,"position":[-14.797,0.0,-18.917],"seq":254.0,"stage":1,"weapon":1.0}
+WEAPON_LIVE key=49 pressed=true
+PORT_NATIVE_TRACE {"ack":420,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":0,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":10883015,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":682}
+PORT_NATIVE_TRACE {"ack":421,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":0,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":10903635,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":684}
+PORT_NATIVE_TRACE {"ack":421,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":0,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":10923528,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":685}
+WEAPON_AUTH {"ack":423,"actor_id":1.0,"ammo":["∞",6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"captured":true,"focused":true,"health":100.0,"position":[-13.203,0.0,-19.08],"seq":262.0,"stage":2,"weapon":0.0}
+WEAPON_LIVE key=49 pressed=false
+WEAPON_LIVE key=50 pressed=true
+PORT_NATIVE_TRACE {"ack":423,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":1,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":10945647,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":687}
+PORT_NATIVE_TRACE {"ack":424,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":1,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":10966924,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":689}
+PORT_NATIVE_TRACE {"ack":424,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":1,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":10987211,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":690}
+WEAPON_AUTH {"ack":426,"actor_id":1.0,"ammo":["∞",6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"captured":true,"focused":true,"health":100.0,"position":[-13.065,0.0,-19.094],"seq":264.0,"stage":3,"weapon":1.0}
+WEAPON_LIVE key=50 pressed=false
+PORT_NATIVE_TRACE {"ack":426,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":0,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":11008534,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":692}
+PORT_NATIVE_TRACE {"ack":427,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":0,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":11029948,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":694}
+PORT_NATIVE_TRACE {"ack":427,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":0,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":11050326,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":695}
+WEAPON_AUTH {"ack":429,"actor_id":1.0,"ammo":["∞",6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"captured":true,"focused":true,"health":100.0,"position":[-12.981,0.0,-19.103],"seq":266.0,"stage":4,"weapon":0.0}
+PORT_NATIVE_TRACE {"ack":429,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":1,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":11071470,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":697}
+PORT_NATIVE_TRACE {"ack":429,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":1,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":11094083,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":698}
+WEAPON_AUTH {"ack":431,"actor_id":1.0,"ammo":["∞",6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"captured":true,"focused":true,"health":100.0,"position":[-12.959,0.0,-19.105],"seq":267.0,"stage":5,"weapon":1.0}
+WEAPON_LIVE key=4194305 pressed=true
+WEAPON_LIVE key=4194305 pressed=false
+WEAPON_LIVE key=49 pressed=true
+WEAPON_LIVE key=49 pressed=false
+WEAPON_LIVE key=49 pressed=true
+PORT_NATIVE_TRACE {"ack":451,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":0,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":11535029,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":733}
+PORT_NATIVE_TRACE {"ack":452,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":0,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":11556688,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":735}
+PORT_NATIVE_TRACE {"ack":452,"actor_id":1,"controls":{"crouch":false,"fire":false,"interact":false,"jump":false,"mobility":false,"pitch":0.0,"reload":false,"sprint":false,"weapon":0,"x":0.0,"yaw":-1.46801364421844,"z":0.0},"event":"input_queue","monotonic_usec":11576963,"phase":3,"queue_result":0,"queued":true,"round":1,"schema":1,"sequence":736}
+WEAPON_AUTH {"ack":454,"actor_id":1.0,"ammo":["∞",6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"captured":true,"focused":true,"health":100.0,"position":[-12.95,0.0,-19.106],"seq":282.0,"stage":7,"weapon":0.0}
+WEAPON_LIVE key=49 pressed=false
+PORT_WEAPON_LIVE_OK {"ack":468,"actor_id":1,"rocket_ammo":6.0,"screenshot":true,"smoke":false,"stages":7,"weapon":0.0}
