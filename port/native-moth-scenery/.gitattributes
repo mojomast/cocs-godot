@@ -1,0 +1,4 @@
+evidence/**/*.png binary
+evidence/**/*.jpg binary
+# Unified-diff context requires a space before blank/tab-indented source lines.
+evidence/**/*.patch -whitespace

@@ -1,0 +1,182 @@
+[
+  {
+    "map": "meridian-exchange",
+    "view": "street",
+    "size": "960x640",
+    "camera_matched": true,
+    "pixels_delta_gt5": 5323,
+    "pixels_delta_gt20": 3749,
+    "changed_fraction": 0.008664,
+    "difference_bounds": [
+      10,
+      192,
+      846,
+      353
+    ]
+  },
+  {
+    "map": "ember-crucible",
+    "view": "street",
+    "size": "960x640",
+    "camera_matched": true,
+    "pixels_delta_gt5": 6799,
+    "pixels_delta_gt20": 5553,
+    "changed_fraction": 0.011066,
+    "difference_bounds": [
+      46,
+      160,
+      944,
+      365
+    ]
+  },
+  {
+    "map": "asterion-relay",
+    "view": "street",
+    "size": "960x640",
+    "camera_matched": true,
+    "pixels_delta_gt5": 7746,
+    "pixels_delta_gt20": 4621,
+    "changed_fraction": 0.012607,
+    "difference_bounds": [
+      184,
+      89,
+      960,
+      350
+    ]
+  },
+  {
+    "map": "meridian-exchange",
+    "view": "service",
+    "size": "960x640",
+    "camera_matched": true,
+    "pixels_delta_gt5": 8805,
+    "pixels_delta_gt20": 5170,
+    "changed_fraction": 0.014331,
+    "difference_bounds": [
+      0,
+      117,
+      646,
+      384
+    ]
+  },
+  {
+    "map": "ember-crucible",
+    "view": "service",
+    "size": "960x640",
+    "camera_matched": true,
+    "pixels_delta_gt5": 12230,
+    "pixels_delta_gt20": 10632,
+    "changed_fraction": 0.019906,
+    "difference_bounds": [
+      195,
+      84,
+      957,
+      402
+    ]
+  },
+  {
+    "map": "asterion-relay",
+    "view": "service",
+    "size": "960x640",
+    "camera_matched": true,
+    "pixels_delta_gt5": 47408,
+    "pixels_delta_gt20": 42460,
+    "changed_fraction": 0.077161,
+    "difference_bounds": [
+      55,
+      0,
+      960,
+      433
+    ]
+  },
+  {
+    "map": "meridian-exchange",
+    "view": "street",
+    "size": "1280x800",
+    "camera_matched": true,
+    "pixels_delta_gt5": 8347,
+    "pixels_delta_gt20": 5967,
+    "changed_fraction": 0.008151,
+    "difference_bounds": [
+      0,
+      240,
+      1097,
+      441
+    ]
+  },
+  {
+    "map": "ember-crucible",
+    "view": "street",
+    "size": "1280x800",
+    "camera_matched": true,
+    "pixels_delta_gt5": 10640,
+    "pixels_delta_gt20": 8679,
+    "changed_fraction": 0.010391,
+    "difference_bounds": [
+      97,
+      200,
+      1220,
+      456
+    ]
+  },
+  {
+    "map": "asterion-relay",
+    "view": "street",
+    "size": "1280x800",
+    "camera_matched": true,
+    "pixels_delta_gt5": 12717,
+    "pixels_delta_gt20": 7783,
+    "changed_fraction": 0.012419,
+    "difference_bounds": [
+      2,
+      102,
+      1280,
+      437
+    ]
+  },
+  {
+    "map": "meridian-exchange",
+    "view": "service",
+    "size": "1280x800",
+    "camera_matched": true,
+    "pixels_delta_gt5": 14117,
+    "pixels_delta_gt20": 8432,
+    "changed_fraction": 0.013786,
+    "difference_bounds": [
+      7,
+      146,
+      848,
+      480
+    ]
+  },
+  {
+    "map": "ember-crucible",
+    "view": "service",
+    "size": "1280x800",
+    "camera_matched": true,
+    "pixels_delta_gt5": 19095,
+    "pixels_delta_gt20": 16597,
+    "changed_fraction": 0.018647,
+    "difference_bounds": [
+      284,
+      104,
+      1253,
+      503
+    ]
+  },
+  {
+    "map": "asterion-relay",
+    "view": "service",
+    "size": "1280x800",
+    "camera_matched": true,
+    "pixels_delta_gt5": 81294,
+    "pixels_delta_gt20": 73456,
+    "changed_fraction": 0.079389,
+    "difference_bounds": [
+      10,
+      0,
+      1280,
+      546
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "baseline": "7bfb473",
+  "accepted": false,
+  "results": [
+    {"name": "import", "passed": true},
+    {"name": "verify-headless", "passed": false, "reason": "GDScript ternary produced untyped Array, assigned to Array[Vector3]; empty scene then test indexed missing child. Outer tool timeout at 240s ended run before summary write."}
+  ],
+  "resolution": "Use untyped normals container with typed loop, fail early for empty geometry; bound Godot frame count and preserve subprocess timeouts. Original failure log retained."
+}

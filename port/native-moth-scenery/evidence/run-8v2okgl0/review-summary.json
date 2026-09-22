@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "maps": 9,
+  "identical_geometry_across_renderers": true,
+  "matched_camera_pairs": 12,
+  "scene_images": 36,
+  "lut_and_clock_probe_images": 12,
+  "dimensions_asserted": [
+    "960x640",
+    "1280x800"
+  ],
+  "color_adjustment": "none"
+}

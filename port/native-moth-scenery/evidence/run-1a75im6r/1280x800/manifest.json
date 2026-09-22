@@ -1,0 +1,596 @@
+[
+	{
+		"eye_height": 1.8,
+		"file": "meridian-exchange-street-before.png",
+		"fov": 72.0,
+		"geometry_sha256": "92276501644702e93fd345d9ab21211f11afee3262338a521ecf36b995716947",
+		"height": 800,
+		"map": "meridian-exchange",
+		"phase": "before",
+		"position": [
+			9.0,
+			1.79999995231628,
+			21.0
+		],
+		"stats": {
+			"batches": 6,
+			"detail": 2,
+			"map": "meridian-exchange",
+			"mote_limit": 120,
+			"motes": 120,
+			"planned_surfaces": 176,
+			"pockets": 3,
+			"surface_limit": 176,
+			"surfaces": 176,
+			"triangles": 592
+		},
+		"target": [
+			-10.0,
+			2.5,
+			-14.0
+		],
+		"view": "street",
+		"width": 1280
+	},
+	{
+		"eye_height": 1.8,
+		"file": "meridian-exchange-street-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "92276501644702e93fd345d9ab21211f11afee3262338a521ecf36b995716947",
+		"height": 800,
+		"map": "meridian-exchange",
+		"phase": "after",
+		"position": [
+			9.0,
+			1.79999995231628,
+			21.0
+		],
+		"stats": {
+			"batches": 6,
+			"detail": 2,
+			"map": "meridian-exchange",
+			"mote_limit": 120,
+			"motes": 120,
+			"planned_surfaces": 176,
+			"pockets": 3,
+			"surface_limit": 176,
+			"surfaces": 176,
+			"triangles": 592
+		},
+		"target": [
+			-10.0,
+			2.5,
+			-14.0
+		],
+		"view": "street",
+		"width": 1280
+	},
+	{
+		"eye_height": 1.8,
+		"file": "meridian-exchange-service-before.png",
+		"fov": 72.0,
+		"geometry_sha256": "92276501644702e93fd345d9ab21211f11afee3262338a521ecf36b995716947",
+		"height": 800,
+		"map": "meridian-exchange",
+		"phase": "before",
+		"position": [
+			5.0,
+			1.79999995231628,
+			-6.0
+		],
+		"stats": {
+			"batches": 6,
+			"detail": 2,
+			"map": "meridian-exchange",
+			"mote_limit": 120,
+			"motes": 120,
+			"planned_surfaces": 176,
+			"pockets": 3,
+			"surface_limit": 176,
+			"surfaces": 176,
+			"triangles": 592
+		},
+		"target": [
+			-1.0,
+			2.20000004768372,
+			-15.0
+		],
+		"view": "service",
+		"width": 1280
+	},
+	{
+		"eye_height": 1.8,
+		"file": "meridian-exchange-service-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "92276501644702e93fd345d9ab21211f11afee3262338a521ecf36b995716947",
+		"height": 800,
+		"map": "meridian-exchange",
+		"phase": "after",
+		"position": [
+			5.0,
+			1.79999995231628,
+			-6.0
+		],
+		"stats": {
+			"batches": 6,
+			"detail": 2,
+			"map": "meridian-exchange",
+			"mote_limit": 120,
+			"motes": 120,
+			"planned_surfaces": 176,
+			"pockets": 3,
+			"surface_limit": 176,
+			"surfaces": 176,
+			"triangles": 592
+		},
+		"target": [
+			-1.0,
+			2.20000004768372,
+			-15.0
+		],
+		"view": "service",
+		"width": 1280
+	},
+	{
+		"eye_height": null,
+		"file": "verdant-reliquary-overview-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "9b2df7ff3a2b17d5ad7f09018245c4e82fd6b6ae0c76c72ad8a1c1b5af4483ff",
+		"height": 800,
+		"map": "verdant-reliquary",
+		"phase": "after",
+		"position": [
+			65.0,
+			35.0,
+			68.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "verdant-reliquary",
+			"mote_limit": 120,
+			"motes": 120,
+			"planned_surfaces": 63,
+			"pockets": 3,
+			"surface_limit": 112,
+			"surfaces": 63,
+			"triangles": 366
+		},
+		"target": [
+			0.0,
+			2.5,
+			0.0
+		],
+		"view": "overview",
+		"width": 1280
+	},
+	{
+		"eye_height": 1.8,
+		"file": "ember-crucible-street-before.png",
+		"fov": 72.0,
+		"geometry_sha256": "60263274e5f19e560927722bd57064661affec6fd65a37d91caf0769c5eaaf3f",
+		"height": 800,
+		"map": "ember-crucible",
+		"phase": "before",
+		"position": [
+			-21.0,
+			1.79999995231628,
+			22.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "ember-crucible",
+			"mote_limit": 192,
+			"motes": 192,
+			"planned_surfaces": 154,
+			"pockets": 4,
+			"surface_limit": 176,
+			"surfaces": 154,
+			"triangles": 692
+		},
+		"target": [
+			1.0,
+			3.0,
+			-4.0
+		],
+		"view": "street",
+		"width": 1280
+	},
+	{
+		"eye_height": 1.8,
+		"file": "ember-crucible-street-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "60263274e5f19e560927722bd57064661affec6fd65a37d91caf0769c5eaaf3f",
+		"height": 800,
+		"map": "ember-crucible",
+		"phase": "after",
+		"position": [
+			-21.0,
+			1.79999995231628,
+			22.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "ember-crucible",
+			"mote_limit": 192,
+			"motes": 192,
+			"planned_surfaces": 154,
+			"pockets": 4,
+			"surface_limit": 176,
+			"surfaces": 154,
+			"triangles": 692
+		},
+		"target": [
+			1.0,
+			3.0,
+			-4.0
+		],
+		"view": "street",
+		"width": 1280
+	},
+	{
+		"eye_height": 1.8,
+		"file": "ember-crucible-service-before.png",
+		"fov": 72.0,
+		"geometry_sha256": "60263274e5f19e560927722bd57064661affec6fd65a37d91caf0769c5eaaf3f",
+		"height": 800,
+		"map": "ember-crucible",
+		"phase": "before",
+		"position": [
+			-17.0,
+			1.79999995231628,
+			19.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "ember-crucible",
+			"mote_limit": 192,
+			"motes": 192,
+			"planned_surfaces": 154,
+			"pockets": 4,
+			"surface_limit": 176,
+			"surfaces": 154,
+			"triangles": 692
+		},
+		"target": [
+			-10.0,
+			2.70000004768372,
+			11.0
+		],
+		"view": "service",
+		"width": 1280
+	},
+	{
+		"eye_height": 1.8,
+		"file": "ember-crucible-service-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "60263274e5f19e560927722bd57064661affec6fd65a37d91caf0769c5eaaf3f",
+		"height": 800,
+		"map": "ember-crucible",
+		"phase": "after",
+		"position": [
+			-17.0,
+			1.79999995231628,
+			19.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "ember-crucible",
+			"mote_limit": 192,
+			"motes": 192,
+			"planned_surfaces": 154,
+			"pockets": 4,
+			"surface_limit": 176,
+			"surfaces": 154,
+			"triangles": 692
+		},
+		"target": [
+			-10.0,
+			2.70000004768372,
+			11.0
+		],
+		"view": "service",
+		"width": 1280
+	},
+	{
+		"eye_height": null,
+		"file": "tidal-citadel-overview-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "13d7b432e9e0948673b732ef65373836b3c6ca82747a732a0c918b47a3a0690c",
+		"height": 800,
+		"map": "tidal-citadel",
+		"phase": "after",
+		"position": [
+			65.0,
+			35.0,
+			68.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "tidal-citadel",
+			"mote_limit": 192,
+			"motes": 192,
+			"planned_surfaces": 168,
+			"pockets": 4,
+			"surface_limit": 168,
+			"surfaces": 168,
+			"triangles": 720
+		},
+		"target": [
+			0.0,
+			2.5,
+			0.0
+		],
+		"view": "overview",
+		"width": 1280
+	},
+	{
+		"eye_height": null,
+		"file": "sunscar-convoy-overview-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "a47258d881781ef89e4b60e375c86399309af159449abcc251d1c34ebf70d4a4",
+		"height": 800,
+		"map": "sunscar-convoy",
+		"phase": "after",
+		"position": [
+			65.0,
+			35.0,
+			68.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "sunscar-convoy",
+			"mote_limit": 160,
+			"motes": 160,
+			"planned_surfaces": 152,
+			"pockets": 4,
+			"surface_limit": 152,
+			"surfaces": 152,
+			"triangles": 624
+		},
+		"target": [
+			0.0,
+			2.5,
+			0.0
+		],
+		"view": "overview",
+		"width": 1280
+	},
+	{
+		"eye_height": 1.8,
+		"file": "asterion-relay-street-before.png",
+		"fov": 72.0,
+		"geometry_sha256": "2568d775486ce637aca87f9a121fc61ff06bec0392867e5179aa0393d8a3300c",
+		"height": 800,
+		"map": "asterion-relay",
+		"phase": "before",
+		"position": [
+			-25.0,
+			1.79999995231628,
+			8.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "asterion-relay",
+			"mote_limit": 64,
+			"motes": 64,
+			"planned_surfaces": 216,
+			"pockets": 2,
+			"surface_limit": 216,
+			"surfaces": 216,
+			"triangles": 560
+		},
+		"target": [
+			2.0,
+			3.0,
+			-9.0
+		],
+		"view": "street",
+		"width": 1280
+	},
+	{
+		"eye_height": 1.8,
+		"file": "asterion-relay-street-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "2568d775486ce637aca87f9a121fc61ff06bec0392867e5179aa0393d8a3300c",
+		"height": 800,
+		"map": "asterion-relay",
+		"phase": "after",
+		"position": [
+			-25.0,
+			1.79999995231628,
+			8.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "asterion-relay",
+			"mote_limit": 64,
+			"motes": 64,
+			"planned_surfaces": 216,
+			"pockets": 2,
+			"surface_limit": 216,
+			"surfaces": 216,
+			"triangles": 560
+		},
+		"target": [
+			2.0,
+			3.0,
+			-9.0
+		],
+		"view": "street",
+		"width": 1280
+	},
+	{
+		"eye_height": 1.8,
+		"file": "asterion-relay-service-before.png",
+		"fov": 72.0,
+		"geometry_sha256": "2568d775486ce637aca87f9a121fc61ff06bec0392867e5179aa0393d8a3300c",
+		"height": 800,
+		"map": "asterion-relay",
+		"phase": "before",
+		"position": [
+			-51.0,
+			1.79999995231628,
+			-61.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "asterion-relay",
+			"mote_limit": 64,
+			"motes": 64,
+			"planned_surfaces": 216,
+			"pockets": 2,
+			"surface_limit": 216,
+			"surfaces": 216,
+			"triangles": 560
+		},
+		"target": [
+			-56.0,
+			1.60000002384186,
+			-68.0
+		],
+		"view": "service",
+		"width": 1280
+	},
+	{
+		"eye_height": 1.8,
+		"file": "asterion-relay-service-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "2568d775486ce637aca87f9a121fc61ff06bec0392867e5179aa0393d8a3300c",
+		"height": 800,
+		"map": "asterion-relay",
+		"phase": "after",
+		"position": [
+			-51.0,
+			1.79999995231628,
+			-61.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "asterion-relay",
+			"mote_limit": 64,
+			"motes": 64,
+			"planned_surfaces": 216,
+			"pockets": 2,
+			"surface_limit": 216,
+			"surfaces": 216,
+			"triangles": 560
+		},
+		"target": [
+			-56.0,
+			1.60000002384186,
+			-68.0
+		],
+		"view": "service",
+		"width": 1280
+	},
+	{
+		"eye_height": null,
+		"file": "monsoon-foundry-overview-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "19c07a212e7bc4c86a7fee965d42a142c8874849bb307cb77ab71fec11f9c637",
+		"height": 800,
+		"map": "monsoon-foundry",
+		"phase": "after",
+		"position": [
+			110.0,
+			52.0,
+			102.0
+		],
+		"stats": {
+			"batches": 7,
+			"detail": 2,
+			"map": "monsoon-foundry",
+			"mote_limit": 120,
+			"motes": 120,
+			"planned_surfaces": 216,
+			"pockets": 3,
+			"surface_limit": 216,
+			"surfaces": 216,
+			"triangles": 672
+		},
+		"target": [
+			0.0,
+			2.5,
+			0.0
+		],
+		"view": "overview",
+		"width": 1280
+	},
+	{
+		"eye_height": null,
+		"file": "ion-speedway-overview-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "c41134aaf27f171f019e57f6eca098b3f7597e5eabc848b85392e15e023e1a3a",
+		"height": 800,
+		"map": "ion-speedway",
+		"phase": "after",
+		"position": [
+			110.0,
+			52.0,
+			102.0
+		],
+		"stats": {
+			"batches": 3,
+			"detail": 2,
+			"map": "ion-speedway",
+			"mote_limit": 0,
+			"motes": 0,
+			"planned_surfaces": 44,
+			"pockets": 0,
+			"surface_limit": 88,
+			"surfaces": 44,
+			"triangles": 88
+		},
+		"target": [
+			0.0,
+			2.5,
+			0.0
+		],
+		"view": "overview",
+		"width": 1280
+	},
+	{
+		"eye_height": null,
+		"file": "aurora-stadium-overview-after.png",
+		"fov": 72.0,
+		"geometry_sha256": "d9d382ff600ed8c3b22e323872823fbe9c95120573bdea5c524c1156d6a17269",
+		"height": 800,
+		"map": "aurora-stadium",
+		"phase": "after",
+		"position": [
+			65.0,
+			35.0,
+			68.0
+		],
+		"stats": {
+			"batches": 3,
+			"detail": 2,
+			"map": "aurora-stadium",
+			"mote_limit": 0,
+			"motes": 0,
+			"planned_surfaces": 88,
+			"pockets": 0,
+			"surface_limit": 96,
+			"surfaces": 88,
+			"triangles": 176
+		},
+		"target": [
+			0.0,
+			2.5,
+			0.0
+		],
+		"view": "overview",
+		"width": 1280
+	}
+]

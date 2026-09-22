@@ -1,0 +1,27 @@
+{
+  "baseline": "7bfb473",
+  "engine": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "renderer": "GL Compatibility / llvmpipe",
+  "results": [
+    {
+      "name": "import",
+      "returncode": 0,
+      "passed": true,
+      "seconds": 4.876
+    },
+    {
+      "name": "verify-headless",
+      "returncode": 1,
+      "passed": false,
+      "seconds": 2.871
+    }
+  ],
+  "private_adaptations": [
+    "recorded private-staging.patch",
+    "capture.gd applies inherited Atmosphere + original Library.sky identically to before/after",
+    "capture.gd calls Scenery.create after ordinary style.decorate",
+    "clock fixed to 12.0 for both phases"
+  ],
+  "content_manifest_sha256": "5c756d02edff6bb85f71c4659508d0a941d936d90787d0752957fadda65f4ccf",
+  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732"
+}

@@ -1,0 +1,35 @@
+--- a/godot/world/environment_style.gd
++++ b/godot/world/environment_style.gd
+@@ -1,4 +1,5 @@
+ extends RefCounted
++const MothSurfaces = preload("res://moth/surfaces.gd")
+ 
+ # Native, texture-free art direction. Source geometry remains the gameplay contract.
+ # Palette order: masonry, dark metal, vegetation, horizon, sun.
+@@ -106,10 +107,11 @@
+ 
+ func surface_material(key: String, color: Color, seams: float = 0.12) -> ShaderMaterial:
+ 	if not materials.has(key):
+-		var mat := ShaderMaterial.new()
+-		mat.shader = shader
+-		mat.set_shader_parameter("tint", color)
+-		mat.set_shader_parameter("seams", seams)
++		var texture_key := "weathered_concrete-worn"
++		if key in ["equipment", "structure"]: texture_key = "metal"
++		elif key in ["rock", "bark"]: texture_key = "rock-moss"
++		elif key == "terrain": texture_key = "weathered_concrete"
++		var mat := MothSurfaces.create_surface(texture_key, color)
+ 		materials[key] = mat
+ 	return materials[key]
+ 
+--- a/godot/world/viewer.gd
++++ b/godot/world/viewer.gd
+@@ -123,7 +123,7 @@
+ 		for index in [2, 1, 0]:
+ 			var vertex: Array = triangle.vertices[index]
+ 			surface.set_normal(Vector3(normal[0], normal[1], normal[2]))
+-			surface.set_color(style.terrain_color(triangle).srgb_to_linear())
++			surface.set_color(style.terrain_color(triangle))
+ 			surface.set_uv(Vector2(priority, 0))
+ 			surface.add_vertex(Vector3(vertex[0], vertex[1], vertex[2]))
+ 			if casts_shadow:
