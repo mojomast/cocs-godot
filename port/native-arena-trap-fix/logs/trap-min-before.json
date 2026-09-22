@@ -1,0 +1,207 @@
+{
+ "mapId": "prism-foundry",
+ "rampEdge": {
+  "x": -8.96,
+  "floor": 3.4222222222222225
+ },
+ "trials": [
+  {
+   "label": "trap-landing-spot-8.96-move+x",
+   "start": [
+    -8.96,
+    3.42,
+    -8.4
+   ],
+   "end": [
+    -8.96,
+    3.42,
+    -8.4
+   ],
+   "maxHorizontalDisplacement": 0,
+   "escaped": false,
+   "obstructedAtStart": {
+    "r006": true,
+    "r02": true,
+    "r03": true,
+    "r042": true,
+    "r05": true
+   }
+  },
+  {
+   "label": "free-spot-8.2-move+x",
+   "start": [
+    -8.2,
+    0,
+    -8.4
+   ],
+   "end": [
+    8.39,
+    0,
+    -8.4
+   ],
+   "maxHorizontalDisplacement": 16.592,
+   "escaped": true,
+   "obstructedAtStart": {
+    "r006": false,
+    "r02": false,
+    "r03": false,
+    "r042": false,
+    "r05": false
+   }
+  },
+  {
+   "label": "free-spot-8.5-move+x",
+   "start": [
+    -8.5,
+    0,
+    -8.4
+   ],
+   "end": [
+    8.24,
+    0,
+    -8.4
+   ],
+   "maxHorizontalDisplacement": 16.735,
+   "escaped": true,
+   "obstructedAtStart": {
+    "r006": false,
+    "r02": false,
+    "r03": false,
+    "r042": true,
+    "r05": true
+   }
+  },
+  {
+   "label": "free-spot-8.6-move+x",
+   "start": [
+    -8.6,
+    0,
+    -8.4
+   ],
+   "end": [
+    -8.6,
+    0,
+    -8.4
+   ],
+   "maxHorizontalDisplacement": 0,
+   "escaped": false,
+   "obstructedAtStart": {
+    "r006": false,
+    "r02": false,
+    "r03": false,
+    "r042": true,
+    "r05": true
+   }
+  },
+  {
+   "label": "trap-landing-spot-move-+x",
+   "start": [
+    -8.96,
+    3.42,
+    -8.4
+   ],
+   "end": [
+    -8.96,
+    3.42,
+    -8.4
+   ],
+   "maxHorizontalDisplacement": 0,
+   "escaped": false,
+   "obstructedAtStart": {
+    "r006": true,
+    "r02": true,
+    "r03": true,
+    "r042": true,
+    "r05": true
+   }
+  },
+  {
+   "label": "trap-landing-spot-move--x",
+   "start": [
+    -8.96,
+    3.42,
+    -8.4
+   ],
+   "end": [
+    -8.96,
+    3.42,
+    -8.4
+   ],
+   "maxHorizontalDisplacement": 0,
+   "escaped": false,
+   "obstructedAtStart": {
+    "r006": true,
+    "r02": true,
+    "r03": true,
+    "r042": true,
+    "r05": true
+   }
+  },
+  {
+   "label": "trap-landing-spot-move-+z",
+   "start": [
+    -8.96,
+    3.42,
+    -8.4
+   ],
+   "end": [
+    -8.96,
+    3.42,
+    -8.4
+   ],
+   "maxHorizontalDisplacement": 0,
+   "escaped": false,
+   "obstructedAtStart": {
+    "r006": true,
+    "r02": true,
+    "r03": true,
+    "r042": true,
+    "r05": true
+   }
+  },
+  {
+   "label": "trap-landing-spot-move--z",
+   "start": [
+    -8.96,
+    3.42,
+    -8.4
+   ],
+   "end": [
+    -8.96,
+    3.42,
+    -8.4
+   ],
+   "maxHorizontalDisplacement": 0,
+   "escaped": false,
+   "obstructedAtStart": {
+    "r006": true,
+    "r02": true,
+    "r03": true,
+    "r042": true,
+    "r05": true
+   }
+  },
+  {
+   "label": "trap-landing-spot-jump-repeat",
+   "start": [
+    -8.96,
+    3.42,
+    -8.4
+   ],
+   "end": [
+    -8.96,
+    4.46,
+    -8.4
+   ],
+   "maxHorizontalDisplacement": 0,
+   "escaped": false,
+   "obstructedAtStart": {
+    "r006": true,
+    "r02": true,
+    "r03": true,
+    "r042": true,
+    "r05": true
+   }
+  }
+ ]
+}

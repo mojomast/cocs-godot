@@ -1,0 +1,36 @@
+{
+ "mapId": "cinder-array",
+ "seed": 20260922,
+ "simSeconds": 176.26666666669908,
+ "over": true,
+ "reason": "sudden-death",
+ "frags": [
+  0,
+  3,
+  6,
+  6,
+  5,
+  6,
+  9,
+  8
+ ],
+ "traps": [
+  {
+   "actor": 7,
+   "first": 124.5,
+   "last": 125,
+   "duration": 0.5,
+   "center": [
+    16.133376390643523,
+    -27.50313381475156
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0,
+   "minFloor": 15.29,
+   "samples": 2,
+   "botState": "engage",
+   "routeLen": 7,
+   "stuck": 0.13333333333333333
+  }
+ ]
+}

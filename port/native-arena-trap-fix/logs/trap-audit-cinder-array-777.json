@@ -1,0 +1,108 @@
+{
+  "mapId": "cinder-array",
+  "seed": 777,
+  "seconds": 180,
+  "bots": 7,
+  "results": {
+    "over": true,
+    "reason": "time",
+    "time": 180,
+    "actors": [
+      {
+        "id": 0,
+        "frags": 0,
+        "deaths": 9
+      },
+      {
+        "id": 1,
+        "frags": 6,
+        "deaths": 8
+      },
+      {
+        "id": 2,
+        "frags": 9,
+        "deaths": 17
+      },
+      {
+        "id": 3,
+        "frags": 7,
+        "deaths": 13
+      },
+      {
+        "id": 4,
+        "frags": 3,
+        "deaths": 10
+      },
+      {
+        "id": 5,
+        "frags": 7,
+        "deaths": 16
+      },
+      {
+        "id": 6,
+        "frags": 10,
+        "deaths": 11
+      },
+      {
+        "id": 7,
+        "frags": 4,
+        "deaths": 15
+      }
+    ]
+  },
+  "kills": 46,
+  "deaths": 99,
+  "respawns": 97,
+  "falls": 53,
+  "pickups": 138,
+  "humanKills": 0,
+  "humanDeaths": 9,
+  "restart": {
+    "time": 30,
+    "over": false,
+    "frags": [
+      0,
+      2,
+      1,
+      0,
+      2,
+      0,
+      1,
+      2
+    ],
+    "simulatedTicks": 1800,
+    "events": {
+      "kills": 8,
+      "deaths": 16,
+      "respawns": 16,
+      "pickups": 26
+    }
+  },
+  "detectors": {
+    "limitSeconds": 1.5,
+    "tolerance": 0.25,
+    "lock": [],
+    "inside06": [],
+    "fallSlide": [
+      {
+        "actor": 4,
+        "first": 43.25,
+        "last": 45,
+        "duration": 1.75,
+        "center": [
+          -14.92,
+          -2.5
+        ],
+        "maxRadius": 0,
+        "trappedAll": true,
+        "inside06": true,
+        "groundedBlocked": false,
+        "botStates": [
+          "engage"
+        ],
+        "maxStuck": 1.12
+      }
+    ],
+    "hold": 11
+  }
+}

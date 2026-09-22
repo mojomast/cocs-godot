@@ -1,0 +1,223 @@
+{
+ "mapId": "prism-foundry",
+ "seed": 777,
+ "simSeconds": 180.00000000003539,
+ "over": true,
+ "reason": "time",
+ "frags": [
+  0,
+  4,
+  4,
+  0,
+  1,
+  4,
+  10,
+  0
+ ],
+ "traps": [
+  {
+   "actor": 5,
+   "first": 19.5,
+   "last": 21.5,
+   "duration": 2,
+   "center": [
+    -15.015774351458425,
+    -16.026909553931766
+   ],
+   "maxRadius": 0.04,
+   "maxHeight": 0.32,
+   "minFloor": 0,
+   "samples": 5,
+   "botState": "seek",
+   "routeLen": 2,
+   "stuck": 0.7166666666666672
+  },
+  {
+   "actor": 2,
+   "first": 99.5,
+   "last": 101.5,
+   "duration": 2,
+   "center": [
+    12.009057229375665,
+    -16.02891228775958
+   ],
+   "maxRadius": 0.05,
+   "maxHeight": 1.22,
+   "minFloor": 0,
+   "samples": 5,
+   "botState": "seek",
+   "routeLen": 0,
+   "stuck": 0.7166666666666672
+  },
+  {
+   "actor": 5,
+   "first": 27.5,
+   "last": 29,
+   "duration": 1.5,
+   "center": [
+    -14.702577353543901,
+    -16.0000098274519
+   ],
+   "maxRadius": 0.15,
+   "maxHeight": 0.28,
+   "minFloor": 0,
+   "samples": 4,
+   "botState": "seek",
+   "routeLen": 2,
+   "stuck": 0.41666666666666663
+  },
+  {
+   "actor": 2,
+   "first": 96,
+   "last": 97.5,
+   "duration": 1.5,
+   "center": [
+    11.970948797301881,
+    -16.00213244317915
+   ],
+   "maxRadius": 0.03,
+   "maxHeight": 1.38,
+   "minFloor": 0,
+   "samples": 4,
+   "botState": "seek",
+   "routeLen": 2,
+   "stuck": 0.6166666666666669
+  },
+  {
+   "actor": 5,
+   "first": 131,
+   "last": 132.5,
+   "duration": 1.5,
+   "center": [
+    12.02015556836895,
+    -16.020182523253524
+   ],
+   "maxRadius": 0.12,
+   "maxHeight": 0.31,
+   "minFloor": 0,
+   "samples": 4,
+   "botState": "seek",
+   "routeLen": 0,
+   "stuck": 0.6000000000000002
+  },
+  {
+   "actor": 2,
+   "first": 146,
+   "last": 147.5,
+   "duration": 1.5,
+   "center": [
+    -12.021993812503627,
+    -16.000389685359966
+   ],
+   "maxRadius": 0.21,
+   "maxHeight": 1.36,
+   "minFloor": 0,
+   "samples": 4,
+   "botState": "engage",
+   "routeLen": 4,
+   "stuck": 0.2833333333333333
+  },
+  {
+   "actor": 5,
+   "first": 8,
+   "last": 8.5,
+   "duration": 0.5,
+   "center": [
+    -15.031007165499334,
+    -16.00485070555955
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.28,
+   "minFloor": 0,
+   "samples": 2,
+   "botState": "seek",
+   "routeLen": 2,
+   "stuck": 0.7166666666666672
+  },
+  {
+   "actor": 5,
+   "first": 10.5,
+   "last": 11,
+   "duration": 0.5,
+   "center": [
+    -14.981357892757277,
+    -16.004415423632736
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.3,
+   "minFloor": 0,
+   "samples": 2,
+   "botState": "seek",
+   "routeLen": 2,
+   "stuck": 0.6166666666666669
+  },
+  {
+   "actor": 5,
+   "first": 13,
+   "last": 13.5,
+   "duration": 0.5,
+   "center": [
+    -15.061019872582396,
+    -16.033065882435793
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.31,
+   "minFloor": 0,
+   "samples": 2,
+   "botState": "seek",
+   "routeLen": 2,
+   "stuck": 0.5166666666666666
+  },
+  {
+   "actor": 5,
+   "first": 14.5,
+   "last": 15,
+   "duration": 0.5,
+   "center": [
+    -15.039144445499698,
+    -16.021108944682336
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.28,
+   "minFloor": 0,
+   "samples": 2,
+   "botState": "seek",
+   "routeLen": 2,
+   "stuck": 0.7166666666666672
+  },
+  {
+   "actor": 3,
+   "first": 17,
+   "last": 17.5,
+   "duration": 0.5,
+   "center": [
+    14.982036626127133,
+    16.004067020852997
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.89,
+   "minFloor": 0,
+   "samples": 2,
+   "botState": "roam",
+   "routeLen": 12,
+   "stuck": 0.6166666666666669
+  },
+  {
+   "actor": 5,
+   "first": 17,
+   "last": 17.5,
+   "duration": 0.5,
+   "center": [
+    -14.97639289393269,
+    -16.00582914638069
+   ],
+   "maxRadius": 0,
+   "maxHeight": 0.3,
+   "minFloor": 0,
+   "samples": 2,
+   "botState": "seek",
+   "routeLen": 2,
+   "stuck": 0.6166666666666669
+  }
+ ]
+}

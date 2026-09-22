@@ -53,6 +53,14 @@ func _box(at: Vector3, size: Vector3, material: String, solid: bool = false, par
 func _rail(a: Vector3, b: Vector3, material: String = "metal") -> void:
 	# West, north and east gateways stay open for the DM loop.
 	if (absf(a.x + 17.38) < 0.1 and absf(b.x + 17.38) < 0.1) or (a.z < -15.9 and b.z < -15.9): return
+	# Outboard rail line: source moveActor refuses every axis step while the
+	# destination is inside the 0.42 m contact radius of a movement band, so a
+	# rail standing on the walkable edge leaves an inescapable strip over the
+	# surface (a live bot froze 71 s on the west ramp). Moving each rail 0.44 m
+	# off the walkable support puts its band boundary exactly on the support
+	# edge: stepping off is still refused, no standable point is inside a band,
+	# and the rail keeps its full ray collision. Thin bracket beams keep the
+	# rail visibly attached to the edge it guards.
 	super._rail(a, b, material)
 	var body: Node3D = get_child(get_child_count() - 1)
 	var mesh := MeshInstance3D.new()
@@ -61,6 +69,45 @@ func _rail(a: Vector3, b: Vector3, material: String = "metal") -> void:
 	mesh.mesh = box_mesh
 	mesh.material_override = materials.dark
 	body.add_child(mesh)
+	# DM adaptation: the guard rail's top is walkable support. The source
+	# step limit then refuses a step onto/through the rail (its top is 1.28 m
+	# above the walkable edge), so no movement wall band is generated over
+	# walkable ground -- that is the band that froze a live bot for 71 s on
+	# the west ramp (source moveActor refuses every axis step from inside a
+	# 0.42 m contact band). Bullet and projectile collision is unchanged.
+	body.get_child(0).set_meta("dm_walkable", true)
+
+func _ramp(center_x: float) -> void:
+	# DM ramp: the wedge, treads and head landing are the exploration ramp, but
+	# the edge rails are mounted 0.44 m outboard of the walkable top. Source
+	# moveActor refuses every axis step while a destination lies inside the
+	# 0.42 m contact radius of a movement band, so a rail standing on the
+	# walkable edge left an inescapable strip over the ramp surface (a live bot
+	# froze there for 71 s). With the rail line moved out, each band boundary
+	# lands exactly on the walkable edge: stepping off the ramp is still
+	# refused, the rail keeps its full ray collision, and no standable point
+	# sits inside a band. Thin bracket beams keep the rail visibly attached.
+	var points := PackedVector3Array([
+		Vector3(center_x - 1.6, -0.30, 7), Vector3(center_x + 1.6, -0.30, 7),
+		Vector3(center_x - 1.6, -0.30, -11), Vector3(center_x + 1.6, -0.30, -11),
+		Vector3(center_x - 1.6, 0, 7), Vector3(center_x + 1.6, 0, 7),
+		Vector3(center_x - 1.6, 4, -11), Vector3(center_x + 1.6, 4, -11)])
+	var shape := ConvexPolygonShape3D.new()
+	shape.points = points
+	_collider(Vector3.ZERO, shape)
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for tri in [[4, 7, 5], [4, 6, 7], [0, 4, 5], [0, 5, 1], [2, 3, 7], [2, 7, 6], [0, 2, 6], [0, 6, 4], [1, 5, 7], [1, 7, 3]]:
+		for index in tri: surface.add_vertex(points[index])
+	surface.generate_normals()
+	_mesh(surface.commit(), Vector3.ZERO, "tread")
+	for side in [-1.0, 1.0]:
+		# _rail mounts the guard outboard of the walkable edge (see _dm_outward).
+		_rail(Vector3(center_x + side * 1.64, 0.05, 6.9), Vector3(center_x + side * 1.64, 4.05, -11))
+	for i in 36:
+		var z := 6.7 - i * 0.49
+		_repeat_box(Vector3(center_x, (7 - z) * 4.0 / 18 + 0.017, z), Vector3(2.9, 0.018, 0.045), "metal")
+	_box(Vector3(center_x, 3.8, -12), Vector3(3.2, 0.4, 2.05), "tread", true)
 
 func get_spawn_points() -> Array[Vector3]:
 	return DM.spawns(get_arena_id(), get_authoring_spawns())

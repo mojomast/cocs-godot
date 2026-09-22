@@ -1,0 +1,87 @@
+{
+ "mapId": "aurora-basin",
+ "seed": 20260922,
+ "simSeconds": 177.60000000003348,
+ "over": true,
+ "reason": "sudden-death",
+ "frags": [
+  0,
+  10,
+  12,
+  5,
+  11,
+  7,
+  5,
+  8
+ ],
+ "traps": [
+  {
+   "actor": 1,
+   "first": 103.5,
+   "last": 105,
+   "duration": 1.5,
+   "center": [
+    33.94488441469626,
+    0.3686738921813902
+   ],
+   "maxRadius": 0.06,
+   "maxHeight": 0.56,
+   "minFloor": -0.15,
+   "samples": 4,
+   "botState": "seek",
+   "routeLen": 7,
+   "stuck": 0.6500000000000004
+  },
+  {
+   "actor": 1,
+   "first": 107,
+   "last": 107.5,
+   "duration": 0.5,
+   "center": [
+    33.99383765112587,
+    0.2833492770273752
+   ],
+   "maxRadius": 0.01,
+   "maxHeight": 0.58,
+   "minFloor": -0.15,
+   "samples": 2,
+   "botState": "seek",
+   "routeLen": 0,
+   "stuck": 0.55
+  },
+  {
+   "actor": 1,
+   "first": 108.5,
+   "last": 109,
+   "duration": 0.5,
+   "center": [
+    33.98720898875328,
+    0.251184002818492
+   ],
+   "maxRadius": 0.06,
+   "maxHeight": 0.34,
+   "minFloor": -0.15,
+   "samples": 2,
+   "botState": "seek",
+   "routeLen": 0,
+   "stuck": 0.7500000000000007
+  },
+  {
+   "actor": 1,
+   "first": 111,
+   "last": 111.5,
+   "duration": 0.5,
+   "center": [
+    33.98350902341309,
+    0.22809932749821535
+   ],
+   "maxRadius": 0.06,
+   "maxHeight": 0.53,
+   "minFloor": -0.15,
+   "samples": 2,
+   "botState": "seek",
+   "routeLen": 0,
+   "stuck": 0.6500000000000004
+  }
+ ]
+}

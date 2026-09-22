@@ -1,0 +1,187 @@
+{
+  "mapId": "cinder-array",
+  "seed": 20260922,
+  "seconds": 180,
+  "bots": 7,
+  "results": {
+    "over": true,
+    "reason": "sudden-death",
+    "time": 176.27,
+    "actors": [
+      {
+        "id": 0,
+        "frags": 0,
+        "deaths": 13
+      },
+      {
+        "id": 1,
+        "frags": 3,
+        "deaths": 8
+      },
+      {
+        "id": 2,
+        "frags": 6,
+        "deaths": 14
+      },
+      {
+        "id": 3,
+        "frags": 6,
+        "deaths": 6
+      },
+      {
+        "id": 4,
+        "frags": 5,
+        "deaths": 11
+      },
+      {
+        "id": 5,
+        "frags": 6,
+        "deaths": 13
+      },
+      {
+        "id": 6,
+        "frags": 9,
+        "deaths": 13
+      },
+      {
+        "id": 7,
+        "frags": 8,
+        "deaths": 10
+      }
+    ]
+  },
+  "kills": 43,
+  "deaths": 88,
+  "respawns": 87,
+  "falls": 45,
+  "pickups": 131,
+  "humanKills": 0,
+  "humanDeaths": 13,
+  "restart": {
+    "time": 30,
+    "over": false,
+    "frags": [
+      0,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "simulatedTicks": 1800,
+    "events": {
+      "kills": 9,
+      "deaths": 17,
+      "respawns": 17,
+      "pickups": 25
+    }
+  },
+  "detectors": {
+    "limitSeconds": 1.5,
+    "tolerance": 0.25,
+    "lock": [
+      {
+        "actor": 3,
+        "first": 78.75,
+        "last": 176.25,
+        "duration": 97.5,
+        "center": [
+          -14.68,
+          -31.91
+        ],
+        "maxRadius": 0,
+        "trappedAll": true,
+        "inside06": false,
+        "groundedBlocked": true,
+        "botStates": [
+          "engage",
+          "pursue",
+          "seek",
+          "roam"
+        ],
+        "maxStuck": 1.27
+      },
+      {
+        "actor": 5,
+        "first": 19.75,
+        "last": 41.75,
+        "duration": 22,
+        "center": [
+          -17.67,
+          -26.45
+        ],
+        "maxRadius": 0,
+        "trappedAll": true,
+        "inside06": false,
+        "groundedBlocked": true,
+        "botStates": [
+          "engage",
+          "seek"
+        ],
+        "maxStuck": 1.25
+      },
+      {
+        "actor": 2,
+        "first": 22.25,
+        "last": 38.5,
+        "duration": 16.25,
+        "center": [
+          19.4,
+          -2.78
+        ],
+        "maxRadius": 0,
+        "trappedAll": true,
+        "inside06": false,
+        "groundedBlocked": true,
+        "botStates": [
+          "engage",
+          "pursue",
+          "seek"
+        ],
+        "maxStuck": 1.27
+      }
+    ],
+    "inside06": [],
+    "fallSlide": [
+      {
+        "actor": 5,
+        "first": 119.25,
+        "last": 121,
+        "duration": 1.75,
+        "center": [
+          -22.98,
+          -2.02
+        ],
+        "maxRadius": 0,
+        "trappedAll": true,
+        "inside06": true,
+        "groundedBlocked": false,
+        "botStates": [
+          "seek"
+        ],
+        "maxStuck": 1.13
+      },
+      {
+        "actor": 1,
+        "first": 127,
+        "last": 128.75,
+        "duration": 1.75,
+        "center": [
+          -31.83,
+          -2.5
+        ],
+        "maxRadius": 0,
+        "trappedAll": true,
+        "inside06": true,
+        "groundedBlocked": false,
+        "botStates": [
+          "seek"
+        ],
+        "maxStuck": 1.1
+      }
+    ],
+    "hold": 16
+  }
+}

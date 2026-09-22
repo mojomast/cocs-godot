@@ -1,0 +1,82 @@
+[
+  {
+    "mapId": "aurora-basin",
+    "exit": 0,
+    "expectedHash": "8457812f7845475378e0f99616ca91b3dac3aa4bff3a396a9e6739e9b8917a21",
+    "images": [
+      {
+        "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/aurora-basin-1280x720.png",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "geometryHash": "8457812f7845475378e0f99616ca91b3dac3aa4bff3a396a9e6739e9b8917a21",
+        "eye": [
+          16,
+          10.4499998092651,
+          -34
+        ],
+        "msaa": "disabled",
+        "rendering_method": "gl_compatibility",
+        "video_adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "actors": 6,
+        "ok": true
+      }
+    ]
+  },
+  {
+    "mapId": "cinder-array",
+    "exit": 0,
+    "expectedHash": "2d5e5cfa445383db4f6a3009a0f7500e423ec17dfe800d35cafa2fd8272da4f2",
+    "images": [
+      {
+        "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/cinder-array-1280x720.png",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "geometryHash": "2d5e5cfa445383db4f6a3009a0f7500e423ec17dfe800d35cafa2fd8272da4f2",
+        "eye": [
+          -29,
+          17.4500007629395,
+          -26
+        ],
+        "msaa": "disabled",
+        "rendering_method": "gl_compatibility",
+        "video_adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "actors": 6,
+        "ok": true
+      },
+      {
+        "file": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/cinder-array-1920x1080.png",
+        "declared": [
+          1920,
+          1080
+        ],
+        "actual": [
+          1920,
+          1080
+        ],
+        "geometryHash": "2d5e5cfa445383db4f6a3009a0f7500e423ec17dfe800d35cafa2fd8272da4f2",
+        "eye": [
+          -29,
+          17.4500007629395,
+          -26
+        ],
+        "msaa": "disabled",
+        "rendering_method": "gl_compatibility",
+        "video_adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "actors": 6,
+        "ok": true
+      }
+    ]
+  }
+]

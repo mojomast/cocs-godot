@@ -1,0 +1,14 @@
+start aurora-basin 777 11:35:27
+start aurora-basin 20260922 11:35:27
+start prism-foundry 20260922 11:35:27
+start prism-foundry 424242 11:35:27
+start prism-foundry 777 11:35:27
+start cinder-array 777 11:35:27
+start cinder-array 20260922 11:35:27
+end cinder-array 777 exit=0 11:35:36
+end cinder-array 20260922 exit=1 11:35:36
+end prism-foundry 424242 exit=0 11:35:40
+end prism-foundry 777 exit=0 11:35:40
+end prism-foundry 20260922 exit=0 11:35:41
+end aurora-basin 20260922 exit=0 11:35:50
+end aurora-basin 777 exit=0 11:35:51

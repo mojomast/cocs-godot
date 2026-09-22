@@ -16,6 +16,8 @@ class CaptureClickTail extends Node:
 			session.combat_actions.captured()
 			session.first_person.refresh()
 
+var capture_sizes: Array[Vector2i] = [Vector2i(1280, 720), Vector2i(1920, 1080)]
+
 func _initialize() -> void:
 	call_deferred("run")
 
@@ -23,6 +25,11 @@ func run() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--capture-root="): output = arg.trim_prefix("--capture-root=")
 		if arg == "--capture-low-shadows": software_low_shadows = true
+		if arg.begins_with("--capture-sizes="):
+			capture_sizes.clear()
+			for spec in arg.trim_prefix("--capture-sizes=").split(","):
+				var parts := spec.split("x")
+				if parts.size() == 2: capture_sizes.append(Vector2i(int(parts[0]), int(parts[1])))
 	DirAccess.make_dir_recursive_absolute(output)
 	session = load("res://native_arenas/demo.tscn").instantiate()
 	root.add_child(session)
@@ -58,7 +65,7 @@ func run() -> void:
 	var delta: Vector3 = target - session.camera.position
 	session.yaw = atan2(-delta.x, -delta.z)
 	session.pitch = atan2(delta.y, Vector2(delta.x, delta.z).length())
-	for size in [Vector2i(1280, 720), Vector2i(1920, 1080)]:
+	for size in capture_sizes:
 		root.size = size
 		root.grab_focus()
 		click_tail.active = true
@@ -77,6 +84,6 @@ func run() -> void:
 			return
 		var path: String = output + "/" + session.current_id + "-%dx%d.png" % [size.x, size.y]
 		root.get_texture().get_image().save_png(path)
-		print("NATIVE_DM_GRAPHICAL_CAPTURE ", JSON.stringify({"map":session.current_id,"size":[size.x,size.y],"path":path,"authoritative_eye": [session.camera.position.x,session.camera.position.y,session.camera.position.z],"snapshots":session.presentation.applied,"actors":session.presentation.actors.size(),"geometryHash":session.world.get_meta("native_geometry_hash"),"first_person":session.first_person.rig.showing,"msaa":"disabled","software_low_shadows":software_low_shadows}))
+		print("NATIVE_DM_GRAPHICAL_CAPTURE ", JSON.stringify({"map":session.current_id,"size":[size.x,size.y],"path":path,"authoritative_eye": [session.camera.position.x,session.camera.position.y,session.camera.position.z],"snapshots":session.presentation.applied,"actors":session.presentation.actors.size(),"geometryHash":session.world.get_meta("native_geometry_hash"),"first_person":session.first_person.rig.showing,"msaa":"disabled","software_low_shadows":software_low_shadows,"rendering_method":RenderingServer.get_current_rendering_method(),"video_adapter":RenderingServer.get_video_adapter_name(),"software_renderer":"llvmpipe under Xvfb"}))
 	session.client.disconnect_server()
 	quit()

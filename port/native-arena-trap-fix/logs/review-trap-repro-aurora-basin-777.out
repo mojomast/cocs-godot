@@ -1,0 +1,36 @@
+{
+ "mapId": "aurora-basin",
+ "seed": 777,
+ "simSeconds": 180.00000000003539,
+ "over": true,
+ "reason": "time",
+ "frags": [
+  0,
+  9,
+  6,
+  4,
+  7,
+  8,
+  7,
+  6
+ ],
+ "traps": [
+  {
+   "actor": 3,
+   "first": 56,
+   "last": 56.5,
+   "duration": 0.5,
+   "center": [
+    31.543538510133104,
+    -14.971479410996732
+   ],
+   "maxRadius": 0,
+   "maxHeight": 1.04,
+   "minFloor": -0.15,
+   "samples": 2,
+   "botState": "engage",
+   "routeLen": 6,
+   "stuck": 0.6500000000000004
+  }
+ ]
+}

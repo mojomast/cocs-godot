@@ -1,9 +1,9 @@
 [
   {
     "id": "prism-foundry",
-    "geometryHash": "9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572",
-    "constructionMs": 1853,
-    "navNodes": 378,
+    "geometryHash": "1901d0aed12c5cfb3be5b7a62519bce108d1f0d51f79a726f4e14620544ae91b",
+    "constructionMs": 1447,
+    "navNodes": 427,
     "routes": [
       {
         "id": "reactor-ring",
@@ -45,9 +45,9 @@
   },
   {
     "id": "aurora-basin",
-    "geometryHash": "2dc5c0fa75ccb8bb9dc1a0fd35dee55b5a2c0497b38da0fad15dcd1c802a595e",
-    "constructionMs": 19511,
-    "navNodes": 796,
+    "geometryHash": "8457812f7845475378e0f99616ca91b3dac3aa4bff3a396a9e6739e9b8917a21",
+    "constructionMs": 1386,
+    "navNodes": 311,
     "routes": [
       {
         "id": "crown-ascent",
@@ -74,9 +74,9 @@
   },
   {
     "id": "cinder-array",
-    "geometryHash": "e4b7763a5dae391cfcc0e9a13b5202a054cdfd9761c449cf6a4bf2fd4765ab8c",
-    "constructionMs": 2235,
-    "navNodes": 369,
+    "geometryHash": "2d5e5cfa445383db4f6a3009a0f7500e423ec17dfe800d35cafa2fd8272da4f2",
+    "constructionMs": 1041,
+    "navNodes": 372,
     "routes": [
       {
         "id": "SuspendedSpan",

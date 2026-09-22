@@ -37,7 +37,10 @@ func run() -> void:
 		var sealed_origin: Vector3
 		var sealed_direction: Vector3
 		if id == "prism-foundry":
-			sealed_origin = Vector3(-12, 1.5, 4)
+			# Above the DM ramp guard rail (walkable-topped, ~1.3 m) so the ray
+			# reaches the west service bank itself; the old 1.5 m origin hit the
+			# rail first and asserted the ramp skirt, which is now walkable.
+			sealed_origin = Vector3(-12, 3.0, 4)
 			sealed_direction = Vector3.LEFT
 		elif id == "aurora-basin":
 			sealed_origin = Vector3(16, 1.5, -25)

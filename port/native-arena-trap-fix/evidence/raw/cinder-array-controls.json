@@ -1,0 +1,12 @@
+{
+  "resets": [
+    {
+      "reason": "stale-input",
+      "epoch": 2
+    },
+    {
+      "reason": "stale-input",
+      "epoch": 3
+    }
+  ]
+}

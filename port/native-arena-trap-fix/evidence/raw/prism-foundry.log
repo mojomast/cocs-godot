@@ -1,0 +1,7 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+NATIVE_DM_GRAPHICAL_CAPTURE {"actors":6,"authoritative_eye":[26.0,5.44999980926514,0.0],"first_person":true,"geometryHash":"1901d0aed12c5cfb3be5b7a62519bce108d1f0d51f79a726f4e14620544ae91b","map":"prism-foundry","msaa":"disabled","path":"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/prism-foundry-1280x720.png","rendering_method":"gl_compatibility","size":[1280,720],"snapshots":27,"software_low_shadows":false,"software_renderer":"llvmpipe under Xvfb","video_adapter":"llvmpipe (LLVM 20.1.8, 256 bits)"}
+NATIVE_DM_GRAPHICAL_CAPTURE {"actors":6,"authoritative_eye":[26.0,5.44999980926514,0.0],"first_person":true,"geometryHash":"1901d0aed12c5cfb3be5b7a62519bce108d1f0d51f79a726f4e14620544ae91b","map":"prism-foundry","msaa":"disabled","path":"/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-arena-trap-fix/evidence/raw/prism-foundry-1920x1080.png","rendering_method":"gl_compatibility","size":[1920,1080],"snapshots":45,"software_low_shadows":false,"software_renderer":"llvmpipe under Xvfb","video_adapter":"llvmpipe (LLVM 20.1.8, 256 bits)"}

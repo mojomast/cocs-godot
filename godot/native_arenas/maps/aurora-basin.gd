@@ -55,6 +55,11 @@ func _guard_line(label: String, edge: PackedVector3Array) -> void:
 			mesh.mesh = box_mesh
 			mesh.material_override = materials.metal
 			child.add_child(mesh)
+			# DM adaptation: the guard cap is walkable support, so the source
+			# step limit refuses crossing it and the compiler drops its movement
+			# bands (a guard band over walkable snow can trap a landing actor
+			# forever). Ray/projectile collision is unchanged.
+			child.get_child(0).set_meta("dm_walkable", true)
 
 func get_spawn_points() -> Array[Vector3]:
 	return DM.spawns(get_arena_id(), get_authoring_spawns())

@@ -1,0 +1,14 @@
+{"t":103.5,"actor":1,"x":25.3,"y":0.651,"z":-25.361,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.09999999999999999,"wallContact":true}
+{"t":104,"actor":1,"x":25.3,"y":1.473,"z":-25.361,"grounded":false,"botState":"seek","routeLen":5,"stuck":0.6000000000000002,"wallContact":true}
+{"t":104.5,"actor":1,"x":25.3,"y":0.472,"z":-25.361,"grounded":false,"botState":"seek","routeLen":5,"stuck":1.100000000000001,"wallContact":true}
+{"t":110,"actor":4,"x":26.53,"y":1.253,"z":-24.282,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.3833333333333333,"wallContact":true}
+{"t":111,"actor":4,"x":26.53,"y":0.558,"z":-24.279,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.08333333333333333,"wallContact":true}
+{"t":111.5,"actor":4,"x":26.53,"y":0.85,"z":-24.279,"grounded":false,"botState":"seek","routeLen":18,"stuck":0.5833333333333335,"wallContact":true}
+{"t":112.5,"actor":4,"x":26.548,"y":1.212,"z":-24.262,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.2833333333333333,"wallContact":true}
+{"t":116,"actor":2,"x":-13.513,"y":0.95,"z":-31.161,"grounded":false,"botState":"pursue","routeLen":0,"stuck":0.16666666666666666,"wallContact":true}
+{"t":116.5,"actor":2,"x":-13.513,"y":0.418,"z":-31.161,"grounded":false,"botState":"roam","routeLen":0,"stuck":0.6666666666666671,"wallContact":true}
+{"t":117.5,"actor":2,"x":-13.513,"y":1.257,"z":-31.165,"grounded":false,"botState":"roam","routeLen":6,"stuck":0.36666666666666664,"wallContact":true}
+{"t":121.5,"actor":2,"x":-13.231,"y":1.168,"z":-31.198,"grounded":false,"botState":"seek","routeLen":0,"stuck":0.4666666666666666,"wallContact":true}
+{"t":48,"actor":1,"x":-1.386,"y":1.245,"z":-30.312,"grounded":false,"botState":"seek","routeLen":11,"stuck":0.39999999999999997,"wallContact":true}
+{"t":56,"actor":3,"x":31.544,"y":0.886,"z":-14.971,"grounded":false,"botState":"engage","routeLen":0,"stuck":0.15,"wallContact":true}
+{"t":56.5,"actor":3,"x":31.544,"y":0.519,"z":-14.971,"grounded":false,"botState":"engage","routeLen":6,"stuck":0.6500000000000004,"wallContact":true}

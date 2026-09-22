@@ -1,0 +1,89 @@
+{
+  "mapId": "prism-foundry",
+  "seed": 777,
+  "seconds": 180,
+  "bots": 7,
+  "results": {
+    "over": true,
+    "reason": "time",
+    "time": 180,
+    "actors": [
+      {
+        "id": 0,
+        "frags": 0,
+        "deaths": 4
+      },
+      {
+        "id": 1,
+        "frags": 4,
+        "deaths": 2
+      },
+      {
+        "id": 2,
+        "frags": 4,
+        "deaths": 3
+      },
+      {
+        "id": 3,
+        "frags": 0,
+        "deaths": 1
+      },
+      {
+        "id": 4,
+        "frags": 1,
+        "deaths": 4
+      },
+      {
+        "id": 5,
+        "frags": 4,
+        "deaths": 3
+      },
+      {
+        "id": 6,
+        "frags": 10,
+        "deaths": 5
+      },
+      {
+        "id": 7,
+        "frags": 0,
+        "deaths": 9
+      }
+    ]
+  },
+  "kills": 26,
+  "deaths": 31,
+  "respawns": 30,
+  "falls": 2,
+  "pickups": 90,
+  "humanKills": 0,
+  "humanDeaths": 4,
+  "restart": {
+    "time": 30,
+    "over": false,
+    "frags": [
+      0,
+      0,
+      1,
+      0,
+      2,
+      2,
+      1,
+      0
+    ],
+    "simulatedTicks": 1800,
+    "events": {
+      "kills": 6,
+      "deaths": 6,
+      "respawns": 6,
+      "pickups": 20
+    }
+  },
+  "detectors": {
+    "limitSeconds": 1.5,
+    "tolerance": 0.25,
+    "lock": [],
+    "inside06": [],
+    "fallSlide": [],
+    "hold": 9
+  }
+}

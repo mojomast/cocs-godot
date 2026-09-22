@@ -103,10 +103,80 @@ for(const source of JSON.parse(fs.readFileSync(input,'utf8'))){
       let piece=clip(ps,p,[p[0]+dz,p[1]-dx]);
       piece=clip(piece,q,[q[0]-dz,q[1]+dx]);
       if(piece.length<3)continue;
-      const top=Math.max(...piece.map(p=>p[1])),bottom=Math.min(...piece.map(p=>p[1]));
+      const top=Math.max(...piece.map(p=>p[1]));
+      let bottom=Math.min(...piece.map(p=>p[1]));
       const x=(p[0]+q[0])/2,z=(p[1]+q[1])/2;
       const left=support(x-dz*.6,z+dx*.6),right=support(x+dz*.6,z-dx*.6);
       if(left!==null&&right!==null&&Math.min(left,right)>=top-.65){previous=null;continue;}
+      // One-sided burial: when a band's top sits within the source 30 cm step
+      // limit of the walkable support on an adjacent side, an actor standing
+      // there is never meant to be blocked (floorAt resolves the step), yet
+      // source moveActor refuses every axis step from inside the 0.42 m
+      // contact band: a landing there is a permanent trap. Sample the lowest
+      // walkable support within the contact reach (including just past both
+      // piece ends) and drop bands buried on either side. This is the class
+      // that froze a live prism bot for 71 s on the west ramp skirt.
+      // Perpendicular samples stay inside the source contact radius (0.42):
+      // support past it can never make a standable point that the band blocks.
+      // The along-piece extensions cover a mover reaching past either end.
+      const sideMin=(nx,nz)=>{
+        let low=null;
+        for(const [sx,sz] of [[p[0]+nx*.15,p[1]+nz*.15],[p[0]+nx*.3,p[1]+nz*.3],[p[0]+nx*.42,p[1]+nz*.42],
+          [q[0]+nx*.15,q[1]+nz*.15],[q[0]+nx*.3,q[1]+nz*.3],[q[0]+nx*.42,q[1]+nz*.42],
+          [(p[0]+q[0])/2+nx*.3,(p[1]+q[1])/2+nz*.3],
+          [p[0]-dx*.45+nx*.3,p[1]-dz*.45+nz*.3],[q[0]+dx*.45+nx*.3,p[1]+dz*.45+nz*.3]]){
+          const s=support(sx,sz);if(s!==null)low=low===null?s:Math.min(low,s);
+        }
+        return low;
+      };
+      const leftLow=sideMin(-dz,dx),rightLow=sideMin(dz,-dx);
+      // `low < top` keeps flat-topped sealed volumes (support level equals the
+      // band top) blocking their own interior, which the delivery probes assert.
+      // A flat-topped *short* solid (a raised platform edge, <= 1.5 m tall) is
+      // instead a step: dropping the band is safe because the destination floor
+      // is the walkable top (> 30 cm) and the source step limit refuses it.
+      // Walkable-topped low barriers (kerbs, guard rails adapted for DM) carry
+      // their own support: the source step limit refuses crossing, so the band
+      // is redundant. Probe just inside either face so a point sample on the
+      // seam still sees the cap.
+      let atMid=-Infinity;
+      for(const ox of [0,.15,-.15])for(const oz of [0,.15,-.15])atMid=Math.max(atMid,support(x+ox,z+oz)??-Infinity);
+      const flatShort=(side)=>side!==null&&side<=top+1e-6&&top-side<=.3&&top-bottom<=2.2;
+      const cappedShort=atMid>=top-.3&&top-bottom<=2.2;
+      if((leftLow!==null&&leftLow<top-1e-6&&top-leftLow<=.3)||(rightLow!==null&&rightLow<top-1e-6&&top-rightLow<=.3)||flatShort(leftLow)||flatShort(rightLow)||cappedShort){previous=null;continue;}
+      // Terrace skirt: a band whose inner side is walkable support at its own
+      // top level is a solid volume that stands under a walkable terrace
+      // (service banks, crown buttresses). Entry from the lower side is already
+      // refused by the source step limit (the destination floor is the terrace
+      // top), so the lower part of the band only creates an inescapable strip
+      // where live bots land. Raise the band's bottom to the lower standing
+      // level + body height; the band still blocks jumps and interior probes.
+      // Sample several offsets per side: a pier or another solid standing in
+      // front of the face must not hide the terrace or the lower floor behind
+      // it. The highest and lowest walkable supports among those samples are
+      // the terrace top and the lower standing level.
+      let sideAbove=-Infinity,sideBelow=Infinity;
+      for(const [nx,nz] of [[-dz,dx],[dz,-dx]])for(const distance of [.2,.5,.9,1.4]){
+        for(const [sx,sz] of [[x+nx*distance,z+nz*distance],[p[0]+nx*distance,p[1]+nz*distance],[q[0]+nx*distance,q[1]+nz*distance]]){
+          const s=support(sx,sz);if(s===null)continue;
+          sideAbove=Math.max(sideAbove,s);sideBelow=Math.min(sideBelow,s);
+        }
+      }
+      if(Number.isFinite(sideAbove)&&Number.isFinite(sideBelow)&&sideAbove>=top-.3&&sideAbove-sideBelow>1.85){
+        const raised=sideBelow+1.85;
+        if(raised>=top-1e-5){previous=null;continue;}
+        if(raised>bottom)bottom=raised;
+      } else {
+        // Overhang skirt: a band whose bottom sits above a lower walkable
+        // floor but within a body height of it blocks actors standing on that
+        // floor, and a landing there can never escape (the wall is taller than
+        // a jump). Raise the bottom to the lower standing level + body height:
+        // floor-level movers stop being blocked (the wall is above them), while
+        // jumping movers and the ramp side still collide. Bands whose top does
+        // not clear that height are left alone so low cover stays solid.
+        const lo=Math.min(left??Infinity,right??Infinity);
+        if(Number.isFinite(lo)&&bottom>lo+1e-6&&bottom<lo+1.8-1e-6&&top>lo+1.85+1e-6)bottom=lo+1.85;
+      }
       if(top-bottom<1e-5)continue;
       // Two-point terrain walls are movement proxies only. Full faces above
       // carry bullet, projectile, splash, ceiling and native ray collision.

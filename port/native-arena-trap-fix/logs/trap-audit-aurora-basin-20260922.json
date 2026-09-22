@@ -1,0 +1,89 @@
+{
+  "mapId": "aurora-basin",
+  "seed": 20260922,
+  "seconds": 180,
+  "bots": 7,
+  "results": {
+    "over": true,
+    "reason": "sudden-death",
+    "time": 177.6,
+    "actors": [
+      {
+        "id": 0,
+        "frags": 0,
+        "deaths": 1
+      },
+      {
+        "id": 1,
+        "frags": 10,
+        "deaths": 4
+      },
+      {
+        "id": 2,
+        "frags": 12,
+        "deaths": 6
+      },
+      {
+        "id": 3,
+        "frags": 5,
+        "deaths": 10
+      },
+      {
+        "id": 4,
+        "frags": 11,
+        "deaths": 8
+      },
+      {
+        "id": 5,
+        "frags": 7,
+        "deaths": 9
+      },
+      {
+        "id": 6,
+        "frags": 5,
+        "deaths": 11
+      },
+      {
+        "id": 7,
+        "frags": 8,
+        "deaths": 10
+      }
+    ]
+  },
+  "kills": 58,
+  "deaths": 59,
+  "respawns": 57,
+  "falls": 1,
+  "pickups": 125,
+  "humanKills": 0,
+  "humanDeaths": 1,
+  "restart": {
+    "time": 30,
+    "over": false,
+    "frags": [
+      0,
+      0,
+      1,
+      1,
+      3,
+      2,
+      0,
+      1
+    ],
+    "simulatedTicks": 1800,
+    "events": {
+      "kills": 8,
+      "deaths": 8,
+      "respawns": 7,
+      "pickups": 21
+    }
+  },
+  "detectors": {
+    "limitSeconds": 1.5,
+    "tolerance": 0.25,
+    "lock": [],
+    "inside06": [],
+    "fallSlide": [],
+    "hold": 3
+  }
+}
