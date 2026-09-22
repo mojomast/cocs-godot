@@ -12,11 +12,11 @@ echo 3. Solo practice   0 bots - 5 min - 100 points
 echo 4. Crowded         6 bots - 5 min - 100 points
 echo 0. Exit
 choice /c 12340 /n /m "Choose a Domination setup: "
-if errorlevel 5 goto standard
-if errorlevel 4 goto quick
+if errorlevel 5 exit /b 0
+if errorlevel 4 goto crowded
 if errorlevel 3 goto solo
-if errorlevel 2 goto crowded
-exit /b 0
+if errorlevel 2 goto quick
+goto standard
 :standard
 call "%~dp0Play.cmd" --experience=identity-zones --bots=2 --round-seconds=300 --score-limit=100
 goto menu

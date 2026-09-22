@@ -563,3 +563,58 @@ normals now used, the four UI defect fixes, plus everything from the first expan
 Open and deliberately not claimed: Horde boss/endless/ten-wave completion and upgrade
 selection; hardware-GPU and human acceptance (all measurements are llvmpipe); campaign;
 full Arms Race ladder; broader LATTICE rounds; asset-rights clarity.
+
+## Release `combat-expansion-2026-09-22-linux` (published and verified)
+
+First Linux prerelease, produced by the same one-command pipeline on frozen commit
+`3877c833`: **150/150 gates**, `cocs-native-linux.tar.gz` 40,078,745 B with sha256
+`136ee02a…`, hosted `linux-demo.yml` verification **success (16/16 cases, 132 files
+re-hashed)**, source pushed to `godot/main`. Evidence:
+`port/combat-expansion/evidence/linux-verify-release/`.
+
+Contents: everything in Windows v2, plus the packaging fixes that made
+`--experience=identity-zones` work from an extracted package (runtime closure now
+declares the identity adapters; the packaged launcher honours the already-listening
+zone authority), the Domination/cheats launcher entries (`Domination.sh`,
+`Cheats.sh`; Windows gets `Domination.cmd`/`Cheats.cmd` on the Demo Menu), the
+absorbed-hit blood mist (`absorbed_mist_strength`, default 0.5), the rendered live
+native-DM blood check (`port/native-blood-fx/live.mjs`, gate `blood-live-native`), and
+launcher presence/exec checks inside both package verifiers.
+
+Pipeline incident recorded in the evidence SUMMARY: a resume that omitted
+`--target/--workflow` dispatched the Windows workflow against the Linux tag and hard-
+stopped correctly; re-resuming `--resume-from=verify` with the right flags passed.
+
+Post-release hotfix in this commit: `Domination.cmd` and `Cheats.cmd` shipped with
+inverted `choice` key mappings (key `1` exited, key `0` started Standard). Both now
+map `choice /c` positions in descending order like every other menu in the package
+(gate `package-identity-routes` passes; text-only assertions did not catch the bug —
+behavioral launcher assertions remain future work in the menu lane).
+
+## Main menu unification (owner: lead; drafting complete, integration pending)
+
+Owner request: stop navigating the game through four surfaces (batch menus, shell
+wrappers, disjoint in-game setup screens, duplicated JS route tables) and build one
+in-game main menu that reaches everything.
+
+Design contract: `/tmp/opencode/menu-build/SPEC.md` (out-of-tree while releases freeze
+the checkout). Core: one registry (`routes_meta.mjs` + generated `godot/ui/routes.json`
+from `options.mjs`), one menu scene (`godot/ui/main_menu.gd`, 22 routes in 5
+categories: play/native/modes/lab/cheats), and a `run.mjs` supervisor loop that boots
+the menu without an authority, re-validates the menu's emitted argv through the same
+`options()` parser, runs the chosen route with the usual authority, and returns to the
+menu when it exits. Empty argv becomes the menu; every existing flag/marker keeps
+working; `--debug-panel` gains a real router (accepts combat/horde/native-dm/identity-
+zones, rejects lobby) and arms `COCS_DEBUG` itself; `--waves` becomes a validated horde
+option.
+
+Drafts (validated out-of-tree): Godot side in `/tmp/opencode/menu-build/godot/` +
+`A-NOTES.md`; Node side in `/tmp/opencode/menu-build/mirror/` with `gen_routes --check`
+idempotent and full `node --test` suites green vs a pristine control + `B-NOTES.md`.
+Three new gates planned (`route-parity`, `main-menu-contracts`, `main-menu-smoke`),
+packaged verifiers gain a `MENU_READY` case, `ui/*.json` joins both include filters.
+
+Integration order after `combat-expansion-2026-09-22-v3` ships: copy drafts → run
+Godot import once so new `.uid` sidecars are committed **before** any release run →
+register gates (150 → 153) → run targeted suites → update both PLAY.md files and the
+release notes for the next release → full sweep → commit.

@@ -14,10 +14,10 @@ echo 2. Deathmatch - Prism Foundry
 echo 3. Horde - Nacre Engine
 echo 0. Exit
 choice /c 1230 /n /m "Choose a route with cheats enabled: "
-if errorlevel 4 goto domination
-if errorlevel 3 goto deathmatch
-if errorlevel 2 goto horde
-exit /b 0
+if errorlevel 4 exit /b 0
+if errorlevel 3 goto horde
+if errorlevel 2 goto deathmatch
+goto domination
 :domination
 call "%~dp0Play.cmd" --experience=identity-zones --bots=2 --round-seconds=300 --score-limit=100
 goto menu
