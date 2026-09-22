@@ -7,9 +7,11 @@ class Replay(unittest.TestCase):
         selected=os.environ.get('COMBINED_EVIDENCE')
         if selected: root=pathlib.Path(selected)
         else:
-            roots=[p.parent for p in pathlib.Path(__file__).with_name('evidence').glob('*/summary.json') if json.loads(p.read_text()).get('status')=='PASS']
-            if not roots: raise RuntimeError('Run live acceptance first or set COMBINED_EVIDENCE')
-            root=max(roots,key=lambda p:p.stat().st_mtime)
+            # Pin genuine driving evidence: filesystem mtimes after a fresh
+            # checkout can otherwise select the unrelated launcher-only PASS.
+            root=pathlib.Path(__file__).with_name('evidence')/'9216ae2e-c5ad-4c37-8e04-772855d11fba'
+        if json.loads((root/'summary.json').read_text()).get('status')!='PASS':
+            raise RuntimeError('Replay requires successful retained driving evidence')
         cls.text=(root/'native.log').read_text()
         cls.wire=json.loads((root/'wire.json').read_text())
     def test_live_replay(self): verify(self.text,self.wire)

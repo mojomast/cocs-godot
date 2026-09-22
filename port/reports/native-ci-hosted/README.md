@@ -72,3 +72,12 @@ release export, fresh-directory play and artifact cleanup remain independently
 verified in `../linux-package-independent/`, not attributed to this CI job.
 The lead watched completion, downloaded the artifact and checked report status
 and gate count. Report, console and manifest are retained in `35682361375/`.
+
+## Sports victories and in-world commands
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35684992377> at
+`83e4aff175eeef47c9ceab5714bad162ce9b32a6` **PASS**, all **65 gates**, in 3m26s.
+The lead watched completion, downloaded the artifact, and validated the report's
+status and count. `35684992377/` retains its report, console and manifest. This
+includes the new soccer-coaching and world-command boundary gates; real sports
+victories and exported panel opening have separate independent evidence.

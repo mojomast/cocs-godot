@@ -14,6 +14,7 @@ import {validate} from './validate.mjs';
 const map=process.argv.find(a=>a.startsWith('--map='))?.slice(6), mode={'meridian-exchange':'domination','verdant-reliquary':'koth'}[map];
 assert.ok(mode,'--map=meridian-exchange or verdant-reliquary required');
 const binary=process.env.GODOT_BIN, lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
+const base=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
 verifySource(lock);assert.equal(execFileSync(binary,['--version'],{encoding:'utf8'}).trim(),lock.godot_version);
 const out=resolve('port/native-zone-modes/evidence',map+'-'+randomUUID());mkdirSync(out,{recursive:true});
 const temp=mkdtempSync('/tmp/opencode/zone-runtime-');
@@ -54,7 +55,8 @@ try{
   const result=await child.done;clearTimeout(timer);
   assert.equal(result.code,0,'native exit');assert.ok(!/SCRIPT ERROR|ERROR:|Parse Error/.test(stdout+stderr),'native output');
   const validation=validate(wire.map(JSON.parse),stdout,map,mode);writeFileSync(resolve(out,'validation.json'),JSON.stringify(validation,null,2));
-  reason=validation.nativeCapture&&validation.nativeHeldScore?'source-correlated capture + held score + natural results/restart':'bounded partial: inspect validation';exit=0;
+  assert.ok(validation.nativeCapture&&validation.nativeHeldScore&&validation.captureTransition&&validation.scoredInside,'capture and held-score acceptance');
+  reason='source-correlated capture + held score + natural results/restart';exit=0;
 }catch(error){reason=error.stack;}
 finally{
   clearTimeout(timer);for(const p of children.toReversed())await terminate(p);
@@ -63,7 +65,7 @@ finally{
   writeFileSync(resolve(out,'archive.json'),JSON.stringify(archive,null,2));rmSync(temp,{recursive:true,force:true});
   const cleanup=children.map(p=>{let absent=false;try{process.kill(p.pid,0);}catch(e){absent=e.code==='ESRCH';}return{pid:p.pid,reaped:p.exitCode!==null||p.signalCode!==null,absent};});
   if(cleanup.some(p=>!p.absent||!p.reaped)||game?.server.listening||game?.wss.clients.size||existsSync(temp))exit=1;
-  writeFileSync(resolve(out,'summary.json'),JSON.stringify({map,mode,exit,reason,base:'013ad65',source:lock.source_commit,runtimeHashes,wall_ms:Date.now()-started,normalRate:true,botCount:0,timeLimit:60,cleanup,serverClosed:!game?.server.listening,sockets:game?.wss.clients.size??0,temporaryTreeRemoved:!existsSync(temp)},null,2));
+  writeFileSync(resolve(out,'summary.json'),JSON.stringify({map,mode,exit,reason,base,source:lock.source_commit,runtimeHashes,wall_ms:Date.now()-started,normalRate:true,botCount:0,timeLimit:60,cleanup,serverClosed:!game?.server.listening,sockets:game?.wss.clients.size??0,temporaryTreeRemoved:!existsSync(temp)},null,2));
   console.log(JSON.stringify({exit,reason,evidence:out}));process.exitCode=exit;process.off('SIGINT',stop);process.off('SIGTERM',stop);
 }
 function compact(s){return{mapId:s.mapId,config:s.config,time:s.time,over:s.over,winner:s.winner,teamScores:s.teamScores,objectives:s.objectives,actors:s.actors.map(a=>({id:a.id,team:a.team,x:a.x,y:a.y,z:a.z,health:a.health,scoreStats:a.scoreStats}))};}

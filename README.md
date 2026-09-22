@@ -10,7 +10,8 @@ weapons, damage, objectives and match rules. The goal is a good Godot-native
 game that preserves all nine DESTINATIONS maps and their gameplay identity.
 
 **Status: actively developed, playable prototype.** Combat is available through
-the native setup menu; sports, objectives and LATTICE have separate demo launchers.
+the native setup menu; sports, objectives, zones, combined arms and LATTICE have
+standalone routes through the common launcher.
 This repository includes the original source and development history so the
 simulation lock and verification evidence remain reproducible.
 
@@ -25,6 +26,8 @@ simulation lock and verification evidence remain reproducible.
 | Area | Available now |
 |---|---|
 | Arena combat | Meridian Exchange, Verdant Reliquary and Ember Crucible; Deathmatch, Team Deathmatch, Instagib and Rocket Arena |
+| Zone-control demo | KOTH / Domination HUD, objective rings, source capture/scoring, results and restart; independently exercised on Verdant / Meridian |
+| Combined-arms demo | Sunscar infantry and Puma mount / drive / brake tap / exit, with fresh controls after seat changes |
 | Native presentation | All nine map environments, operator and pickup models, skies, lighting and landmarks |
 | Combat feedback | Reticle, confirmed-hit and damage indicators, source-driven projectiles and explosion flashes, procedural sound cues |
 | HUD and controls | Health/armor bars, named weapon/ammo display, number-key and wheel weapon selection, team scores and results scoreboard |
@@ -125,12 +128,35 @@ The builder prints the archive path and integrity hashes. Extract the archive,
 enter `cocs-native-linux`, then run **`node run.mjs`** for native combat setup.
 Playing requires Node **22.13+** and normal Linux desktop libraries; the editor,
 Git, npm and original checkout are build-time tools only. The package supports
-the same five experience routes. See the
+the same seven experience routes. See the
 [local package guide](port/native-linux-package/README.md) for prerequisites,
 verification and launch commands. Generated archives stay outside the repository.
-The latest independent rebuild includes sports coaching and world commands and
-passes fresh-directory exported combat/world startup and failure cleanup; see
-[package verification](port/reports/linux-sports-world-independent/README.md).
+The latest independent rebuild includes zone and vehicle scenes and passes
+fresh-directory exported combat/world/zones/vehicle/sports startup and failure
+cleanup; see [package verification](port/reports/linux-zone-vehicle-independent/README.md).
+
+### Zone control and combined arms
+
+```sh
+PORT=0 node tools/godot-dev/launch.mjs --experience=zones --map=meridian-exchange --mode=domination
+PORT=0 node tools/godot-dev/launch.mjs --experience=zones --map=verdant-reliquary --mode=koth
+PORT=0 node tools/godot-dev/launch.mjs --experience=combined-arms
+```
+
+Zones use ordinary infantry controls: click to engage, hold an uncontested ring
+to capture and score, and press **Enter** at results to restart. The default is
+two bots and a 60-second round. Independent zero-bot runs verified capture,
+scoring, timed results and restart on Meridian/Domination and Verdant/KOTH;
+Verdant also verified the authoritative hill rotation. Other routed zone pairs
+remain unaccepted for live gameplay. See
+[zone acceptance](port/reports/zone-modes-independent/README.md).
+
+Combined arms opens Sunscar's zero-bot Puma driving slice. Press **Enter** to
+engage, walk to a Puma and press **E** to mount. After each seat change, press
+Enter and fresh movement keys. **WASD** drives, **S** slows/reverses, **Space**
+requests a brake tap, **E** exits and **Escape** releases controls. Secondary
+chassis are visual/exit-only previews. The delivery's driving receipts and current
+limits are in the [vehicle handoff](port/native-combined-arms/HANDOFF.md).
 
 ### Puma driving demos
 
@@ -288,12 +314,13 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated local run passes **65 gates**, including soccer coaching,
+The latest integrated local run passes **69 gates**, including zone controls,
+vehicle controls and evidence replay, soccer coaching,
 in-world LATTICE commands, package routing, sports and objective
 progression, LATTICE map selection, launcher routing, GLB material sides and
 projectile navigation. Native
 [GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
-previously passed the 63-gate packaging snapshot from a fresh Ubuntu checkout;
+passed the prior 65-gate sports/world snapshot from a fresh Ubuntu checkout;
 hosted evidence is tracked separately from newer local runs.
 
 Focused real-session and graphical evidence is documented in:

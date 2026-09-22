@@ -196,7 +196,7 @@ def main():
         env['DISPLAY'] = ':' + display
         x11 = X11(env['DISPLAY'])
 
-        def launch(name, cli, action='window', active=True):
+        def launch(name, cli, action='window', active=True, trace=True):
             log = output / (name + '.log')
             with log.open('w') as stream:
                 process = subprocess.Popen([nodebin / 'node', package / 'run.mjs', *cli], cwd=unrelated, env=env, stdout=stream, stderr=subprocess.STDOUT)
@@ -212,7 +212,7 @@ def main():
                 native = native_records[0] if native_records else None
                 frames = records(text, 'PORT_NATIVE_TRACE ')
                 if ready and native and native.get('pid') and x11.window(native['pid']):
-                    if (not active and time.monotonic() >= earliest_setup) or (active and any(f['event'] == 'round_start' for f in frames) and sum(f['event'] == 'snapshot' and f.get('pose_present') and f.get('phase') == 3 for f in frames) >= 3):
+                    if ((not active or not trace) and time.monotonic() >= earliest_setup) or (active and trace and any(f['event'] == 'round_start' for f in frames) and sum(f['event'] == 'snapshot' and f.get('pose_present') and f.get('phase') == 3 for f in frames) >= 3):
                         break
                 require(process.poll() is None, f'{name}: launcher exited early; see {log}')
                 time.sleep(0.05)
@@ -226,7 +226,7 @@ def main():
                 require(health['players'] == 1 and health['rooms'] == ready['health']['rooms'] + 1 and health['snapshot']['fullFrames'] > 0, f'{name}: real authority did not publish snapshots')
             else:
                 require(health['players'] == 0 and health['rooms'] == ready['health']['rooms'] and health['snapshot']['fullFrames'] == 0, 'Native setup should wait for user Start')
-            if name in ['combat', 'lattice-world', 'host-setup']:
+            if action == 'window':
                 shot = subprocess.run(['/usr/bin/ffmpeg', '-loglevel', 'error', '-f', 'x11grab', '-video_size', '1280x800', '-i', env['DISPLAY'], '-frames:v', '1', '-threads', '1', '-update', '1', str(output / (name + '.png'))], cwd=unrelated, env=env, capture_output=True, timeout=20)
                 require(shot.returncode == 0, f'Screenshot failed: {shot.stderr.decode()}')
             if name == 'lattice-world' and args.world_commands_capture:
@@ -254,7 +254,7 @@ def main():
             with socket.socket() as connection:
                 require(connection.connect_ex(('127.0.0.1', ready['port'])) != 0, f'{name}: owned server port survived')
             require('SCRIPT ERROR' not in text and 'ERROR:' not in text, f'{name}: Godot error in native log')
-            result = {'case':name, 'exit':code, 'scene':native['scene'], 'host':ready['host'], 'dynamic_port':ready['port'], 'health':health, 'round_start_seen':any(f['event'] == 'round_start' for f in frames), 'pose_snapshots_seen':sum(f['event'] == 'snapshot' and f.get('pose_present') for f in frames), 'native_pid':native_pid, 'native_closed':True, 'server_closed':True, 'action':action}
+            result = {'case':name, 'exit':code, 'scene':native['scene'], 'host':ready['host'], 'dynamic_port':ready['port'], 'health':health, 'readiness':'setup-window' if not active else ('native-trace' if trace else 'authority-traffic-and-window; inspect PNG separately'), 'round_start_seen':any(f['event'] == 'round_start' for f in frames), 'pose_snapshots_seen':sum(f['event'] == 'snapshot' and f.get('pose_present') for f in frames), 'native_pid':native_pid, 'native_closed':True, 'server_closed':True, 'action':action}
             results.append(result)
             (output / 'cases.json').write_text(json.dumps(results, indent=2) + '\n')
             print(name, 'PASS', flush=True)
@@ -262,6 +262,14 @@ def main():
         launch('host-setup', [], active=False)
         launch('combat', ['--play','--native-trace'])
         launch('lattice-world', ['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop','--native-trace'])
+        # These standalone routes do not expose the combat trace option. Require
+        # actual authority traffic and review their exported HUD screenshots;
+        # never substitute a fixed wait for gameplay-completion evidence.
+        launch('domination', ['--experience=zones','--map=meridian-exchange','--mode=domination'], trace=False)
+        launch('koth', ['--experience=zones','--map=verdant-reliquary','--mode=koth'], trace=False)
+        launch('combined-arms', ['--experience=combined-arms'], trace=False)
+        launch('race', ['--experience=sports','--map=ion-speedway'], trace=False)
+        launch('soccer', ['--experience=sports','--map=aurora-stadium'], trace=False)
         launch('interrupt', ['--play','--native-trace'], action='interrupt')
         launch('native-crash', ['--play','--native-trace'], action='crash')
         bad = subprocess.run([nodebin / 'node', package / 'run.mjs', '--experience=sports', '--mode=deathmatch'], cwd=unrelated, env=env, capture_output=True, text=True, timeout=10)

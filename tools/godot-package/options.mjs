@@ -1,6 +1,8 @@
 // Package-only routing. Source clients retain their own capability/protocol gates.
 export const EXPERIENCES = {
   combat: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
+  zones: {scene:'res://zone_modes/demo.tscn', maps:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
+  'combined-arms': {scene:'res://combined_arms/demo.tscn', maps:{'sunscar-convoy':['combined-arms']}},
   sports: {scene:'res://sports/demo.tscn', maps:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
   objectives: {scene:'res://objectives/demo.tscn', maps:{'tidal-citadel':['ctf'], 'sunscar-convoy':['payload']}},
   lattice: {scene:'res://lattice/board.tscn', maps:{'asterion-relay':['cocs','cocs-coop'], 'monsoon-foundry':['cocs','cocs-coop']}},
@@ -49,6 +51,9 @@ export function options(argv, catalog) {
 export const HELP = `Private local COCS Linux prototype — Node >=22.13.0 required
   node run.mjs                              Native combat host setup
   node run.mjs --play --map=meridian-exchange --mode=deathmatch
+  node run.mjs --experience=zones --map=meridian-exchange --mode=domination
+  node run.mjs --experience=zones --map=verdant-reliquary --mode=koth
+  node run.mjs --experience=combined-arms
   node run.mjs --experience=sports --map=ion-speedway
   node run.mjs --experience=sports --map=aurora-stadium
   node run.mjs --experience=objectives --map=tidal-citadel
@@ -59,6 +64,9 @@ export const HELP = `Private local COCS Linux prototype — Node >=22.13.0 requi
 Combat: 3 combat maps; deathmatch/teamdeathmatch/instagib/rockets.
   --play skips setup; --setup, --mute, --debug-hud supported.
 Sports: --time-limit=60..900; --round-target=1..10 laps or 1..15 goals.
+Zones: koth/domination on combat arenas; domination on Tidal/Sunscar.
+  Two bots, 60-second rounds. Click to engage; Enter restarts results.
+Combined arms: Sunscar Puma slice. Enter engages; E mounts/exits; Space brake tap.
 LATTICE board: click Connect / start. LATTICE world starts directly.
 --native-trace is available for combat and lattice-world.
 An ordinary server owns a fresh loopback port. Close the window or Ctrl+C to stop.

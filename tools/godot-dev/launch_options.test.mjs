@@ -42,6 +42,10 @@ test('standalone selection rejects substitutions, unsupported modes and ignored 
     ['--experience=sports','--mute'],['--map'],['--mode='],['--experience','--play'],
     ['--map=ion-speedway','--map=aurora-stadium'],['--session-smoke','--lifecycle-smoke'],
     ['--endpont=ws://localhost:3'],
+    ['--experience=zones','--map=tidal-citadel','--mode=koth'],
+    ['--experience=zones','--map=aurora-stadium'],
+    ['--experience=combined-arms','--map=tidal-citadel'],
+    ['--experience=combined-arms','--mode=payload'],
   ])assert.throws(()=>launchOptions(args,catalog),Error,args.join(' '));
   assert.throws(()=>launchOptions(['--experience=sports'],{maps:[]}),/locked catalog/);
 });

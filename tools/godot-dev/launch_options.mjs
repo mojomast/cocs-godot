@@ -1,6 +1,8 @@
 // Scene routing only: capability and protocol checks still belong to each client.
 export const EXPERIENCES = {
   combat: {scene:'res://world/session.tscn', map:'meridian-exchange'},
+  zones: {scene:'res://zone_modes/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
+  'combined-arms': {scene:'res://combined_arms/demo.tscn', map:'sunscar-convoy', modes:{'sunscar-convoy':['combined-arms']}},
   sports: {scene:'res://sports/demo.tscn', map:'ion-speedway', modes:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
   objectives: {scene:'res://objectives/demo.tscn', map:'tidal-citadel', modes:{'tidal-citadel':['ctf'], 'sunscar-convoy':['payload']}},
   lattice: {scene:'res://lattice/board.tscn', map:'asterion-relay', modes:{'asterion-relay':['cocs','cocs-coop'], 'monsoon-foundry':['cocs','cocs-coop']}},
@@ -67,6 +69,9 @@ export function launchOptions(argv, catalog) {
 export const HELP = `Native COCS launcher — owned loopback authority, normal simulation timing
 
   node tools/godot-dev/launch.mjs --play --setup
+  node tools/godot-dev/launch.mjs --experience=zones --map=meridian-exchange --mode=domination
+  node tools/godot-dev/launch.mjs --experience=zones --map=verdant-reliquary --mode=koth
+  node tools/godot-dev/launch.mjs --experience=combined-arms
   node tools/godot-dev/launch.mjs --experience=sports --map=ion-speedway
   node tools/godot-dev/launch.mjs --experience=sports --map=aurora-stadium
   node tools/godot-dev/launch.mjs --experience=objectives --map=tidal-citadel
@@ -79,6 +84,10 @@ PORT=0 (default) allocates a free port. Close the client or press Ctrl+C to stop
 Interactive sessions have no harness deadline. With no options, open the map viewer.
 
 Combat: --map, --mode, --setup, --mute, --debug-hud, --native-trace
+Zones: koth/domination on the three combat arenas; domination on Tidal/Sunscar.
+  Click to engage; Enter restarts results. Two source bots, 60-second rounds.
+Combined arms: Sunscar Puma driving slice; Enter engages, E mounts/exits.
+  Seat changes require fresh Enter/movement. Space is a brake tap while driving.
 Sports: ion-speedway (puma-race), aurora-stadium (puma-soccer)
   Optional --time-limit=60..900 and --round-target=1..10 laps or 1..15 goals
 Objectives: tidal-citadel (ctf), sunscar-convoy (payload)

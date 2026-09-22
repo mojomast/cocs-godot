@@ -7,16 +7,18 @@ updates root documentation/shared verification and owns publication.
 | Lane | Owner / baseline | Reserved files |
 |---|---|---|
 | LATTICE in-world command panel | Delivered `7439f05`, integrated `511bb8d`; independent suite PASS | World panel and tests; lead owns integration/docs |
-| Native KOTH / Domination | Delivered `2b3d758` + `7238c9d`; lead integration pending | New `godot/zone_modes/`, `godot/tests/zone_modes/`, `port/native-zone-modes/` |
-| Independent zone acceptance | `ses_f38bfad3dffeCtFsekw8G6EuRS`; `8a58c97` + delivered zones | New `port/reports/zone-modes-independent/`; new independent evidence only, no runtime edits |
+| Native KOTH / Domination | Delivered `2b3d758` + `7238c9d`, integrated `8344544` + `c95f5ca`; independent acceptance PASS | New `godot/zone_modes/`, `godot/tests/zone_modes/`, `port/native-zone-modes/` |
+| Independent zone acceptance | Delivered `60ebf1c`; both capture/scoring/results/restart runs PASS | `port/reports/zone-modes-independent/`; lead corrected helper partial-pass and provenance issues |
 | LATTICE world co-op window | `ses_f38bf686ffferVSm9YSxCZ2qBP`; `8a58c97` | New `port/native-lattice-world-coop/`, new `godot/tests/lattice/world_coop_*`; existing runtime read-only |
 | Native Arms Race | `ses_f38befeabfferVsmwNUVMxGkNX`; `8a58c97` | New `godot/arms_race/`, `godot/tests/arms_race/`, `port/native-arms-race/` |
 | Player-facing usability audit | `ses_f38bcab6cffeceiulWP8ehkAkm`; `83e4aff`; owner-approved fifth lane | New `port/native-usability-audit/` only; graphical review and prioritized findings, no runtime edits |
 | Race victory / soccer practice | Delivered `33f5257`, integrated `8a58c97`; independent race victory/local goal PASS | Sports coaching/tests; zero-bot practice blocked by source |
-| Sunscar combined-arms vehicle slice | Internal agent; `013ad65` | New `godot/combined_arms/`, `godot/tests/combined_arms/`, `port/native-combined-arms/` |
-| Multiplayer lobby / leave / retry | External handoff; `8094d41` | New lobby-prefixed UI/tests, narrow `godot/world/session.gd` / scene and backward-compatible client hook if essential; `port/native-multiplayer-lobby/` |
+| Sunscar combined-arms vehicle slice | Delivered `1126a08` + `613dc92`, integrated `88cd514` + `fc5795c` | New `godot/combined_arms/`, `godot/tests/combined_arms/`, `port/native-combined-arms/` |
+| Independent combined-arms acceptance | `ses_f38bb0b98ffeMGMo60aSC3YOzr`; `83e4aff` + delivery | New `port/reports/combined-arms-independent/`; independent evidence only, runtime read-only |
+| Multiplayer lobby / leave / retry | Runtime delivery `3b96206` available; uncommitted acceptance/handoff path absent locally, requested committed evidence | New lobby-prefixed UI/tests, narrow `godot/world/session.gd` / scene and backward-compatible client hook if essential; `port/native-multiplayer-lobby/` |
+| Independent lobby review | `ses_f38b68670ffexH4SE93QXRWRVd`; current integration runtime + `3b96206` in private worktree | New `port/reports/multiplayer-lobby-independent/` and new lobby-prefixed observers; shared runtime read-only |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
-| Native Horde survival | External prompt prepared; `8ff2e7c`; not launched | New `godot/horde/`, `godot/tests/horde/`, `port/native-horde/` |
+| Native Horde survival | External delivery `94690b6`; integration/review queued | New `godot/horde/`, `godot/tests/horde/`, `port/native-horde/`; local-only Match adapter needs separate launcher/package review, visual inspection pending |
 
 The LATTICE command and physical-input lanes are delivered and integrated at
 `658b4e7` and `aca52f5`. The projectile navigation follow-up is integrated at
