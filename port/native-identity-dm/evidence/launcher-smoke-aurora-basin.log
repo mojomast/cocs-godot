@@ -1,0 +1,4 @@
+Owned local server ready at ws://127.0.0.1:39955/native-arenas; --smoke
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+NATIVE_DM_SMOKE_OK {"acks":13,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"2bae62cd3c3cb96b001994c51a731217dd23f12c0122ede885a1edf4335bcc1a","localAlive":true,"map":"aurora-basin","mode":"deathmatch","moved":true,"snapshots":8}
