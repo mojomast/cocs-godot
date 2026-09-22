@@ -1,0 +1,49 @@
+{
+  "observed_at": "2026-09-22T01:43:33.349062+00:00",
+  "base_commit": "aca52f5e33e211a6b6181e33eba41abca445f0fe",
+  "worktree": "/tmp/opencode/cocs-native-ci-aca52f5",
+  "state_directory": "/tmp/opencode/cocs-native-ci-state",
+  "os": "Ubuntu 25.10 x86_64",
+  "node": "v22.23.1",
+  "npm": "10.9.8",
+  "python": "3.13.7",
+  "npm_install": {
+    "command": "npm ci",
+    "exit_code": 0,
+    "packages_added": 630,
+    "dependency_symlink": false,
+    "registry": "https://registry.npmjs.org/"
+  },
+  "chromium_install": {
+    "command": "npx --no-install playwright install chromium",
+    "exit_code": 0,
+    "version": "140.0.7339.16",
+    "playwright_build": 1187,
+    "os_libraries": "already present on local host; CI installs via --with-deps"
+  },
+  "initial_verification": {
+    "exit_code": 1,
+    "failure_gate": "glb-import",
+    "reason": "missing ignored GLB probes"
+  },
+  "clean_before_success": [
+    "godot/.godot",
+    "godot/content/generated",
+    "godot/content/probes"
+  ],
+  "successful_verification": {
+    "command": "PORT=0 python3 tools/godot-dev/verify.py",
+    "exit_code": 0,
+    "gates": 46,
+    "passed": 46,
+    "gate_seconds": 84.616
+  },
+  "github_hosted_run_observed": false,
+  "sha256": {
+    "package-lock.json": "f71ca6ecd2d051748ebe634d42e72b73ceee579d9c9aa123bcfd7df611cd69fa",
+    "godot/content/generated/manifest.json": "5c756d02edff6bb85f71c4659508d0a941d936d90787d0752957fadda65f4ccf",
+    "godot/content/probes/axis-weapon/world.glb": "fc9af5f80d6137feba014db9f2e1f9c1c477ed141bcbb1cd8add5ea7d3061d94",
+    "godot/content/probes/meridian-exchange/world.glb": "a41094bdbafd7a6796d86d175982aab958e3500e8d8514f820dfa36c362d73ea"
+  },
+  "log_archive_sha256": "aa6bbbc823bbbaae3b8ce465dbb65582920be0366077c81d3e41e9f0eb528784"
+}

@@ -1,0 +1,18 @@
+gate-runner-tests: PASS
+export-tests: PASS
+health-hud-evidence: PASS
+semantic-export: PASS
+source-tests: PASS
+godot-import: PASS
+viewer-smoke: PASS
+glb-import: FAIL
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: Can't open file at path "res://content/probes/axis-weapon/world.glb"
+   at: append_from_file (modules/gltf/gltf_document.cpp:8973)
+   GDScript backtrace (most recent call first):
+       [0] _initialize (res://tests/import.gd:7)
+ERROR: GLB import failed: axis-weapon
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+        [0] _initialize (res://tests/import.gd:9)

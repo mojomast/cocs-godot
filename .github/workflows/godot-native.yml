@@ -1,0 +1,67 @@
+name: Godot native
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: godot-native-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    env:
+      PORT: "0"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install pinned official Godot and isolate runtime
+        run: |
+          mkdir -p "$RUNNER_TEMP/godot-native"
+          bash tools/godot-dev/ci_bootstrap.sh "$RUNNER_TEMP/godot-native" 2>&1 | tee "$RUNNER_TEMP/godot-native/bootstrap.log"
+      - name: Install locked npm dependencies
+        run: npm ci 2>&1 | tee "$RUNNER_TEMP/godot-native/npm-ci.log"
+      - name: Install locked Playwright Chromium for GLB generation
+        run: |
+          source "$RUNNER_TEMP/godot-native/environment.sh"
+          npx --no-install playwright install --with-deps chromium 2>&1 | tee "$RUNNER_TEMP/godot-native/chromium-install.log"
+      - name: Generate fresh semantic data and required GLB probes
+        run: |
+          source "$RUNNER_TEMP/godot-native/environment.sh"
+          node tools/godot-export/semantic.mjs 2>&1 | tee "$RUNNER_TEMP/godot-native/semantic-export.log"
+          node tools/godot-export/browser-export.mjs 2>&1 | tee "$RUNNER_TEMP/godot-native/axis-export.log"
+          node tools/godot-export/browser-export.mjs meridian-exchange 2>&1 | tee "$RUNNER_TEMP/godot-native/meridian-export.log"
+      - name: Import and verify native project
+        run: |
+          source "$RUNNER_TEMP/godot-native/environment.sh"
+          python3 tools/godot-dev/verify.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"
+      - name: Check whitespace
+        if: ${{ always() }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/godot-native"
+          git diff --check 2>&1 | tee "$RUNNER_TEMP/godot-native/git-diff-check.log"
+      - name: Collect bounded current-run evidence
+        if: ${{ always() }}
+        run: python3 tools/godot-dev/ci_bootstrap.py "$RUNNER_TEMP/godot-native"
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: godot-native-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/godot-native/artifact/
+          if-no-files-found: warn
+          retention-days: 7

@@ -1,0 +1,24 @@
+$ /tmp/opencode/native-ci-lint/bin/actionlint .github/workflows/godot-native.yml
+exit_code=0
+
+$ bash -n tools/godot-dev/ci_bootstrap.sh
+exit_code=0
+
+$ python3 -m py_compile tools/godot-dev/ci_bootstrap.py
+exit_code=0
+
+$ git diff --check
+exit_code=0
+
+$ bash tools/godot-dev/ci_bootstrap.sh relative-path
+State directory must be absolute
+exit_code=1
+
+$ bash tools/godot-dev/ci_bootstrap.sh /tmp/opencode/native-ci-corrupt-download-o5erud30/state
+/tmp/opencode/native-ci-corrupt-download-o5erud30/state/toolchain/Godot_v4.5.2-stable_linux.x86_64.zip: FAILED
+sha256sum: WARNING: 1 computed checksum did NOT match
+exit_code=1
+
+Corrupt-download rejection: PASS; no executable extracted or environment published.
+
+PyYAML 6.0.2 parse and trigger/history/permissions/timeout assertions: PASS
