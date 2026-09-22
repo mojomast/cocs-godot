@@ -1,7 +1,11 @@
 // Read-only map geometry navigation; this module never accesses a Match or actor mutator.
 export function planRoute(map, actor, goal = [-14, -19]) {
+  // Keep this default-loadout scenario independent of incidental pickups.
+  // Native waypoint steering has a small lateral tolerance; reserve 2m.
+  const avoid = map.pickups.filter(([,x,z])=>x!==goal[0]||z!==goal[1]);
   const clear = (x, z) => Math.abs(x) <= 49 && Math.abs(z) <= 41 && !map.blocks.some(b =>
-    Math.abs(x-b.x) < b.w/2 + .85 && Math.abs(z-b.z) < b.d/2 + .85);
+    Math.abs(x-b.x) < b.w/2 + .85 && Math.abs(z-b.z) < b.d/2 + .85) &&
+    !avoid.some(([,px,pz])=>Math.hypot(x-px,z-pz)<2);
   const line = (a,b) => {
     const n = Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/.2);
     for(let k=0;k<=n;k++) if(!clear(a[0]+(b[0]-a[0])*k/Math.max(1,n),a[1]+(b[1]-a[1])*k/Math.max(1,n))) return false;

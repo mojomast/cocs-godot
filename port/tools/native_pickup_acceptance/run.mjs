@@ -120,7 +120,9 @@ try {
   report.inventoryRule={weapon:1,magazine:WEAPONS[1].ammo,cap:WEAPONS[1].cap,toolUseBonus:0,
     expectedAmmo:Math.min(WEAPONS[1].cap,before.actor.ammo[1]+WEAPONS[1].ammo),basis:'game/data.mjs WEAPONS[1]; adaptive verb means TOOL_USE.onPickup returns reload=0'};
   assert.equal(after.actor.ammo[1],report.inventoryRule.expectedAmmo);
-  if(before.actor.weapon===0)assert.equal(after.actor.weapon,1);
+   assert.equal(before.actor.weapon,0,'Default weapon must survive approach without incidental pickup');
+   assert.equal(before.actor.ammo[1],0,'No prior rocket collection');
+   assert.equal(after.actor.weapon,1);
   assert.ok(returned.time-after.time>=14.8&&returned.time-after.time<=15.2,'Normal 15-second authority return bracket');
   assert.ok(after.pickup.wait>14.8&&after.pickup.wait<=15);
   const same=snaps.slice(consumed,snaps.indexOf(returned)+1);
