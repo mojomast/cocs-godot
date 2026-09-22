@@ -16,7 +16,8 @@ if(!binary || execFileSync(binary,['--version'],{encoding:'utf8',timeout:5000}).
 const acceptance=args.includes('--acceptance');
 const deadline=Number(args.find(x=>x.startsWith('--timeout-ms='))?.split('=')[1]??180000);
 if(!Number.isInteger(deadline)||deadline<100||deadline>180000)throw Error('timeout-ms must be 100..180000; outer harness deadline only');
-const runtimeHashes=Object.fromEntries(['godot/objectives/demo.gd','godot/objectives/renderer.gd','godot/tests/objectives/live.gd','godot/world/session.gd','godot/world/viewer.gd','godot/world/presentation.gd','godot/net/client.gd','game/core.mjs','game/payload.mjs'].map(p=>[p,createHash('sha256').update(readFileSync(p)).digest('hex')]));
+const runtimeHashes=Object.fromEntries(['godot/objectives/demo.gd','godot/objectives/renderer.gd','godot/tests/objectives/live.gd','godot/world/session.gd','godot/world/viewer.gd','godot/world/presentation.gd','godot/net/client.gd','game/core.mjs','game/payload.mjs','port/tools/native_objective_demo/run.mjs','port/tools/native_objective_demo/validate.mjs'].map(p=>[p,createHash('sha256').update(readFileSync(p)).digest('hex')]));
+const revision=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
 const out=resolve('port/native-objective-gameplay/evidence',randomUUID());mkdirSync(out,{recursive:true});
 const temp=mkdtempSync('/tmp/opencode/objective-runtime-');
 const env={...process.env};for(const key of ['XDG_DATA_HOME','XDG_CONFIG_HOME','XDG_CACHE_HOME']) {env[key]=resolve(temp,key);mkdirSync(env[key]);}
@@ -64,7 +65,7 @@ finally{
  rmSync(temp,{recursive:true,force:true});
  const cleanup=children.map(p=>{let absent=false;try{process.kill(p.pid,0);}catch(e){absent=e.code==='ESRCH';}return {pid:p.pid,reaped:p.exitCode!==null||p.signalCode!==null,absent};});
  if(cleanup.some(p=>!p.absent||!p.reaped)||game?.server.listening||game?.wss.clients.size||existsSync(temp))exit=1;
- writeFileSync(resolve(out,'summary.json'),JSON.stringify({map,runtimeHashes,deadline,base:'8e91969ca0d55938c25198c34ff158dd7195be20',source:catalog.source_commit,acceptance,exit,reason,snapshots,inputs,normalRate:true,nativeCompletionProven:false,cleanup,serverClosed:!game?.server.listening,temporaryTreeRemoved:!existsSync(temp),sockets:game?.wss.clients.size??0},null,2));
+ writeFileSync(resolve(out,'summary.json'),JSON.stringify({map,runtimeHashes,deadline,revision,base:'8e91969ca0d55938c25198c34ff158dd7195be20',source:catalog.source_commit,acceptance,exit,reason,snapshots,inputs,normalRate:true,nativeCompletionProven:false,cleanup,serverClosed:!game?.server.listening,temporaryTreeRemoved:!existsSync(temp),sockets:game?.wss.clients.size??0},null,2));
  console.log(JSON.stringify({exit,reason,evidence:out,cleanup}));process.exitCode=exit;
  process.off('SIGINT',stop);process.off('SIGTERM',stop);
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "original": "native.stderr.log",
+    "archive": "native.stderr.log.gz",
+    "bytes": 171,
+    "sha256": "12bab35d551a3e20a027c0a1164acc445f84527e1e857d5d898cfa9e45f3a5b0"
+  },
+  {
+    "original": "native.stdout.log",
+    "archive": "native.stdout.log.gz",
+    "bytes": 2031607,
+    "sha256": "15a1528127e251fb72929d00117b906a2e538b9ff895ba206d111ebe6f890368"
+  },
+  {
+    "original": "wire.jsonl",
+    "archive": "wire.jsonl.gz",
+    "bytes": 742986,
+    "sha256": "c060fd4cdd151f1a4eefa18b33ca0d0c9453a3f0bdea7199b6eca818a52a68d5"
+  }
+]

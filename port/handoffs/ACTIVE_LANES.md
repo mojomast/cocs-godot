@@ -8,13 +8,16 @@ updates root documentation/shared verification and owns publication.
 |---|---|---|
 | Sports progression, checkpoints, results/restart | Internal agent; `8094d41` | `godot/sports/`, new progression tests in `godot/tests/sports/`, `port/native-sports-progression/` |
 | Native CI / fresh-checkout verification | Internal agent; `aca52f5` | New `.github/workflows/godot-native.yml`, new CI/fresh-checkout helpers in `tools/godot-dev/`, `port/native-ci/` |
-| CTF / Payload vertical slice | External harness; `8e91969` | `godot/objectives/`, `godot/tests/objectives/`, `port/tools/native_objective_demo/`, `port/native-objective-gameplay/` |
+| Objective progression / HUD polish | Internal follow-up; `d498479` | `godot/objectives/`, new progression tests in `godot/tests/objectives/`, `port/native-objective-progression/` |
+| LATTICE tactical map | Internal agent; `d498479` | New `godot/lattice/map_view.gd`, narrow board integration, new map tests, `port/native-lattice-map/` |
 | Multiplayer lobby / leave / retry | External handoff; `8094d41` | New lobby-prefixed UI/tests, narrow `godot/world/session.gd` / scene and backward-compatible client hook if essential; `port/native-multiplayer-lobby/` |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
 
 The LATTICE command and physical-input lanes are delivered and integrated at
 `658b4e7` and `aca52f5`. The projectile navigation follow-up is integrated at
 `cb908db`. Their current evidence remains separate from future gameplay work.
+The external objective slice is delivered as `91ce0bd` and integrated at
+`d498479`; its original tools/evidence stay preserved during follow-up work.
 
 External tasks have complete scope/commands in
 `external-native-objective-gameplay.md` and

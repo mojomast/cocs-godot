@@ -86,8 +86,15 @@ PORT=0 node tools/godot-dev/launch.mjs --play --map=verdant-reliquary --mode=ins
   [initial evidence](reports/lattice-independent/README.md) and
   [physical-event follow-up](reports/lattice-physical-independent/README.md).
 
-**Combined verification: all 47 implemented gates pass** after LATTICE
-physical-input/layout and projectile-navigation integration at `aca52f5` plus the gate/helper changes
+- **Objective demos:** standalone Tidal CTF and Sunscar Payload are integrated at
+  `d498479`. Independent normal-rate native-input runs pass flag pickup/carry/drop
+  and payload escort/idle with exact source/rendered correlation. Screenshots
+  were inspected; close-up labels and HUD contrast need polish. Return/capture,
+  contest/delivery and objective results/restart remain open. See
+  [independent evidence](reports/objective-independent/README.md).
+
+**Combined verification: all 50 implemented gates pass** after objective
+integration at `d498479` plus the gate/helper changes
 recorded with this batch. Independent driving passed on both sports maps;
 the default compact HUD's nonlethal damage/+35 HP/12-second return was also
 independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).

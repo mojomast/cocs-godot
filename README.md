@@ -10,7 +10,7 @@ weapons, damage, objectives and match rules. The goal is a good Godot-native
 game that preserves all nine DESTINATIONS maps and their gameplay identity.
 
 **Status: actively developed, playable prototype.** Combat is available through
-the native setup menu; sports and LATTICE currently have separate demo launchers.
+the native setup menu; sports, objectives and LATTICE have separate demo launchers.
 This repository includes the original source and development history so the
 simulation lock and verification evidence remain reproducible.
 
@@ -29,13 +29,15 @@ simulation lock and verification evidence remain reproducible.
 | Combat feedback | Reticle, confirmed-hit and damage indicators, source-driven projectiles and explosion flashes, procedural sound cues |
 | HUD and controls | Health/armor bars, named weapon/ammo display, number-key and wheel weapon selection, team scores and results scoreboard |
 | Puma sports demos | Ion Speedway racing and Aurora Stadium soccer: authoritative driving, compact sports HUD and wall-aware chase camera |
+| Objective demos | Tidal Citadel CTF flag pickup/carry/drop and Sunscar Convoy Payload escort/idle, with source-driven objective markers and status |
 | LATTICE command demo | Asterion Relay and Monsoon Foundry: objective selection, recipient-authorized resources, HOLD orders and PvP Fighter recruitment with explicit action receipts |
 | Session handling | Local server launcher, host setup, guest transport, stale-state handling, focus release, death/respawn and round-boundary control resets |
 
 The sports demos have bounded driving acceptance; completed laps, scored goals
 and sports results/restart remain work in progress. LATTICE is currently a
 standalone command board, with co-op orders but no co-op economy or native world
-interaction. CTF/Payload and broader mode integration are under development.
+interaction. CTF/Payload have bounded interaction acceptance; flag return/capture,
+payload contest/delivery and objective results/restart remain under development.
 See the [release matrix](port/RELEASE_MATRIX.md) for evidence and remaining work.
 
 <details>
@@ -139,6 +141,21 @@ layout fits the basic command and purchase receipts at 960×640; longer history
 remains scrollable. See the
 [LATTICE guide](port/native-lattice/README.md) for details and limitations.
 
+### CTF and Payload demos
+
+```sh
+PORT=0 node port/tools/native_objective_demo/run.mjs --map=tidal-citadel
+PORT=0 node port/tools/native_objective_demo/run.mjs --map=sunscar-convoy
+```
+
+These standalone, zero-bot demos use ordinary infantry controls. In CTF, approach
+the opposing flag to pick it up; **E** passes or drops it. In Payload, move close
+to the cart to escort it. Add `--small` for 960×640. The development launcher has
+a **180-second outer deadline**, which is separate from authoritative results.
+The objective HUD and close-up markers are still being polished. See the
+[objective guide](port/native-objective-gameplay/HANDOFF.md) and
+[independent verification](port/reports/objective-independent/README.md).
+
 ### Open the editor or map viewer
 
 ```sh
@@ -147,7 +164,7 @@ remains scrollable. See the
 ```
 
 The default scene is the map viewer. Use the launchers above for server-backed
-combat, sports or LATTICE play.
+combat, sports, objective or LATTICE play.
 
 ## Controls
 
@@ -201,8 +218,8 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated run passes **47 gates**, including the LATTICE adapter,
-command-board regressions and source-aware projectile navigation.
+The latest integrated run passes **50 gates**, including objective rendering,
+control and evidence checks, LATTICE and source-aware projectile navigation.
 
 Focused real-session and graphical evidence is documented in:
 
@@ -211,6 +228,7 @@ Focused real-session and graphical evidence is documented in:
 - [Visible damage and health pickup verification](port/reports/native-health-hud-independent/README.md)
 - [LATTICE implementation and evidence](port/native-lattice/HANDOFF.md)
 - [LATTICE native mouse/key acceptance](port/reports/lattice-physical-independent/README.md)
+- [CTF and Payload independent verification](port/reports/objective-independent/README.md)
 
 Passing automated checks is distinct from complete mode, human usability or
 hardware acceptance. Failed attempts are retained alongside their resolutions.
