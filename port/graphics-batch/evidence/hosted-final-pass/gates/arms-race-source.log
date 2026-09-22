@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: arms race advances the ladder on each kill and wins on the final weapon
+ok 1 - arms race advances the ladder on each kill and wins on the final weapon
+  ---
+  duration_ms: 173.190123
+  type: 'test'
+  ...
+# Subtest: arms race forces the ladder weapon instead of manual switches
+ok 2 - arms race forces the ladder weapon instead of manual switches
+  ---
+  duration_ms: 18.314192
+  type: 'test'
+  ...
+# Subtest: bots during arms race keep their promoted ladder weapon
+ok 3 - bots during arms race keep their promoted ladder weapon
+  ---
+  duration_ms: 76.831683
+  type: 'test'
+  ...
+# Subtest: arms race demotes one rung on death and clamps at the first rung
+ok 4 - arms race demotes one rung on death and clamps at the first rung
+  ---
+  duration_ms: 27.369931
+  type: 'test'
+  ...
+# Subtest: a trailing arms race player gains a bonus rung on a kill without skipping the last rung
+ok 5 - a trailing arms race player gains a bonus rung on a kill without skipping the last rung
+  ---
+  duration_ms: 13.659661
+  type: 'test'
+  ...
+# Subtest: arms race ignores weapon pickups so the ladder stays authoritative
+ok 6 - arms race ignores weapon pickups so the ladder stays authoritative
+  ---
+  duration_ms: 9.763353
+  type: 'test'
+  ...
+# Subtest: bounty frags cannot end an arms race before the ladder finishes
+ok 7 - bounty frags cannot end an arms race before the ladder finishes
+  ---
+  duration_ms: 11.676928
+  type: 'test'
+  ...
+# Subtest: mouse and touch holds are independent and short touch taps survive release
+ok 8 - mouse and touch holds are independent and short touch taps survive release
+  ---
+  duration_ms: 1.047504
+  type: 'test'
+  ...
+# Subtest: cycling accepts live and serialized unlimited ammo, skips empty slots and wraps
+ok 9 - cycling accepts live and serialized unlimited ammo, skips empty slots and wraps
+  ---
+  duration_ms: 0.221964
+  type: 'test'
+  ...
+# Subtest: rapid cycling starts from pending selection and ignores zero or invalid delta
+ok 10 - rapid cycling starts from pending selection and ignores zero or invalid delta
+  ---
+  duration_ms: 0.102216
+  type: 'test'
+  ...
+# Subtest: posture reads sprint and crouch from held keys in sets or arrays
+ok 11 - posture reads sprint and crouch from held keys in sets or arrays
+  ---
+  duration_ms: 0.571206
+  type: 'test'
+  ...
+# Subtest: controlsFromState builds movement and only sets active flags
+ok 12 - controlsFromState builds movement and only sets active flags
+  ---
+  duration_ms: 0.252472
+  type: 'test'
+  ...
+# Subtest: holding jump produces autohop while a one-shot tap still jumps
+ok 13 - holding jump produces autohop while a one-shot tap still jumps
+  ---
+  duration_ms: 0.144713
+  type: 'test'
+  ...
+# Subtest: controlsFromState treats fireTap as fire and ignores negative weapon ids
+ok 14 - controlsFromState treats fireTap as fire and ignores negative weapon ids
+  ---
+  duration_ms: 0.195752
+  type: 'test'
+  ...
+# Subtest: chat, spectator and editable focus or targets block gameplay
+ok 15 - chat, spectator and editable focus or targets block gameplay
+  ---
+  duration_ms: 0.17612
+  type: 'test'
+  ...
+# Subtest: analog touch move overrides keys and explicit posture flags register
+ok 16 - analog touch move overrides keys and explicit posture flags register
+  ---
+  duration_ms: 0.313542
+  type: 'test'
+  ...
+# Subtest: melee registers as a provided one-shot control
+ok 17 - melee registers as a provided one-shot control
+  ---
+  duration_ms: 0.284783
+  type: 'test'
+  ...
+# Subtest: mobility is a held control from the keyboard, touch or an explicit flag
+ok 18 - mobility is a held control from the keyboard, touch or an explicit flag
+  ---
+  duration_ms: 0.174459
+  type: 'test'
+  ...
+# Subtest: altFire is a held control from an explicit flag, touch or a remap
+ok 19 - altFire is a held control from an explicit flag, touch or a remap
+  ---
+  duration_ms: 0.102754
+  type: 'test'
+  ...
+# Subtest: an idle joystick does not suppress keyboard movement
+ok 20 - an idle joystick does not suppress keyboard movement
+  ---
+  duration_ms: 0.108205
+  type: 'test'
+  ...
+# Subtest: an active joystick still drives analog movement
+ok 21 - an active joystick still drives analog movement
+  ---
+  duration_ms: 0.078498
+  type: 'test'
+  ...
+# Subtest: custom keybinds remap movement and one-shot actions
+ok 22 - custom keybinds remap movement and one-shot actions
+  ---
+  duration_ms: 0.097255
+  type: 'test'
+  ...
+# Subtest: core derives one mobility press edge while KeyX is held and clears it on release
+ok 23 - core derives one mobility press edge while KeyX is held and clears it on release
+  ---
+  duration_ms: 51.232745
+  type: 'test'
+  ...
+# Subtest: a held mobility stream keeps an active grapple hooked and release clears it
+ok 24 - a held mobility stream keeps an active grapple hooked and release clears it
+  ---
+  duration_ms: 3.394
+  type: 'test'
+  ...
+# Subtest: a one-tick mobility pulse at the movement layer does not cancel an active grapple
+ok 25 - a one-tick mobility pulse at the movement layer does not cancel an active grapple
+  ---
+  duration_ms: 0.587614
+  type: 'test'
+  ...
+# Subtest: every team mode awards the authoritative winner, not the frag leader
+ok 26 - every team mode awards the authoritative winner, not the frag leader
+  ---
+  duration_ms: 1.204328
+  type: 'test'
+  ...
+# Subtest: a team draw or missing winner awards nobody
+ok 27 - a team draw or missing winner awards nobody
+  ---
+  duration_ms: 0.153544
+  type: 'test'
+  ...
+# Subtest: frag modes award the highest frag count including ties
+ok 28 - frag modes award the highest frag count including ties
+  ---
+  duration_ms: 0.421624
+  type: 'test'
+  ...
+# Subtest: arms race awards the ladder leader, not the frag leader
+ok 29 - arms race awards the ladder leader, not the frag leader
+  ---
+  duration_ms: 0.184336
+  type: 'test'
+  ...
+# Subtest: arms race leaders and the timeout winner follow the ladder without frag sudden death
+ok 30 - arms race leaders and the timeout winner follow the ladder without frag sudden death
+  ---
+  duration_ms: 125.030504
+  type: 'test'
+  ...
+# Subtest: missing inputs never award a win
+ok 31 - missing inputs never award a win
+  ---
+  duration_ms: 0.103845
+  type: 'test'
+  ...
+# Subtest: race wins follow the racer ID, including zero, without requiring frags
+ok 32 - race wins follow the racer ID, including zero, without requiring frags
+  ---
+  duration_ms: 0.137894
+  type: 'test'
+  ...
+# Subtest: race wins require a result and an actual winner
+ok 33 - race wins require a result and an actual winner
+  ---
+  duration_ms: 0.105058
+  type: 'test'
+  ...
+# Subtest: a score-limit team finish is reported as a frag ending
+ok 34 - a score-limit team finish is reported as a frag ending
+  ---
+  duration_ms: 20.247936
+  type: 'test'
+  ...
+# Subtest: leaders() and the shared rankTuple agree for every ranked mode
+ok 35 - leaders() and the shared rankTuple agree for every ranked mode
+  ---
+  duration_ms: 50.18358
+  type: 'test'
+  ...
+# Subtest: a timed team finish is reported as a time ending even with a winner
+ok 36 - a timed team finish is reported as a time ending even with a winner
+  ---
+  duration_ms: 4.607004
+  type: 'test'
+  ...
+# Subtest: juggernaut is awarded on crown points, not frags
+ok 37 - juggernaut is awarded on crown points, not frags
+  ---
+  duration_ms: 0.149596
+  type: 'test'
+  ...
+# Subtest: rankTuple ranks juggernaut by points before frags
+ok 38 - rankTuple ranks juggernaut by points before frags
+  ---
+  duration_ms: 0.109115
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1873.669632

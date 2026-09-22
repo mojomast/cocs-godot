@@ -75,9 +75,10 @@ the revisions described in their accompanying evidence directories.
 ### Windows demo download
 
 Download **cocs-native-windows.zip** from the
-[Windows operator demo release](https://github.com/mojomast/cocs-godot/releases/tag/windows-demo-2026-09-22).
+[Native Graphics Demo release](https://github.com/mojomast/cocs-godot/releases/tag/graphics-demo-2026-09-22).
 Extract the entire ZIP and double-click **Play.cmd** for a bot match with the
-candidate operator models. **Demo Menu.cmd** opens other demos and the model viewer.
+candidate operator models. **Graphics Showcase.cmd** opens the three new maps,
+shader gallery and particle lab. **Demo Menu.cmd** offers the other modes and viewer.
 Node and the Godot runtime are bundled; no development tools are required.
 Windows 10/11 x64 and OpenGL 3.3-compatible graphics are required.
 See [Windows play instructions](port/native-windows-package/PLAY.md).

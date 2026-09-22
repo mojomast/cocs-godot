@@ -40,6 +40,15 @@ are in the archive’s README and `port/native-windows-package/PLAY.md`.
 
 ## Acceptance and limits
 
+**105 regression gates passed locally and in a
+[fresh hosted checkout](https://github.com/mojomast/cocs-godot/actions/runs/35715376755).** The exact ZIP also passed
+[native Windows verification](https://github.com/mojomast/cocs-godot/actions/runs/35714103892):
+120 manifest files, bundled runtime versions, three combat maps, all five new
+graphics routes, resource loading and process/listener cleanup. The Windows run
+is headless; native graphical evidence comes from the Linux checks described below.
+
+ZIP SHA256: `75fed1879787f39861486e9f28e427a982c60fe87718a1cf8254a3df2ec54563`.
+
 The new maps are unarmed exploration showcases with native collision. They are
 additional experiences; campaign remains deferred.
 

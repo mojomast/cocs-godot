@@ -24,14 +24,14 @@ Five additional routes are standalone native exploration/material laboratories.
 
 | Addition | Implemented and exercised | Remaining acceptance |
 |---|---|---|
-| Moth resources/world | 101 exact pixel planes; triplanar albedo/normals; all-nine atmosphere/scenery; 36 integrated map captures; bounded scenery with popup-free F8 detail cycling | Final expanded package and broad hardware/human readability |
+| Moth resources/world | 101 exact pixel planes; triplanar albedo/normals; all-nine atmosphere/scenery; 36 integrated map captures; popup-free F8 detail; final Windows PCK resource checks pass | Broad hardware/human readability |
 | First-person weapons | Ten source-derived weapon GLBs; hands, isolated viewport, source recoil/reload; 57 rig/15 binding fixtures; original switching live runs; shared three-map rounds/results/restarts | Broader weapons/modes, hardware/mouse/audio review; skeletal hand IK/ADS not implemented |
 | Combined-arms graphics | 65 composition checks, 43 inherited control checks and 68 synthetic graphical checks; infantry/Puma transitions | Live combined-arms graphics and package review |
-| Prism Foundry | Three-room reactor complex, mezzanine/ramp loop and deck; 49 native physics/lifecycle checks, eight real X11 input checks and 12 inspected captures | Final exported route, hardware and human exploration |
-| Aurora Basin | Landing/lake/crown routes and aurora; 593 lane checks; shared production walker traversal rerun passes | Final exported route and independent desktop usability |
-| Cinder Array | Six-area caldera/bridge/gantry/tunnel loop; production ramp-junction repair; 1246 assertions and both 16-waypoint circuits with zero off-floor frames/resets | Final exported route and hardware/human exploration |
+| Prism Foundry | Reactor complex and raised loop; 49 native physics/lifecycle checks, eight real X11 input checks, inspected captures, independent desktop review and Windows exported-route smoke | Hardware and human exploration |
+| Aurora Basin | Landing/lake/crown routes and aurora; shared production walker traversal, independent desktop review and Windows exported-route smoke pass | Hardware and human exploration |
+| Cinder Array | Six-area volcanic loop; production ramp-junction repair; 1246 assertions, both complete circuits, independent desktop review and Windows exported-route smoke pass | Hardware and human exploration |
 | Particle Observatory | Stateful Compatibility GPUParticles3D and explicit analytic alternative; actual 8K–1M counts; 183 checks, 13 render sweeps, stable resize cycles | Hardware GPU performance; million-particle stress is ~462 ms median on software rendering |
-| Moth Shader Gallery | Three reusable materials; 68 contracts and two-resolution visual tests; actual clock/LUT/normal contributions and pause stability | Packaged shader include/resources and hardware review |
+| Moth Shader Gallery | Three reusable materials; 68 contracts, two-resolution visual tests, actual clock/LUT/normal contributions, independent desktop review and packaged Windows smoke | Hardware review |
 
 Expanded graphics now pass **105 aggregate gates**, including production-controller
 traversals and map/scenery/lab checks; historical and new failures remain archived.
@@ -39,7 +39,9 @@ The final Windows export's exact PCK resolves all Moth/weapon resources and star
 all five new scenes under a Linux release runtime. Actual Windows run `35714103892`
 also passes three combat maps, all five native graphics routes, resource checks
 and cleanup. This is headless Windows acceptance; graphics/audio/human review
-remains open. Fresh hosted Linux verification is being rerun after a test-temp-path fix.
+remains open. Fresh hosted Linux run `35715376755` passes all 105 gates after
+test-temp-path and audio-timing fixture corrections. The unchanged accepted ZIP
+is published as [graphics-demo-2026-09-22](https://github.com/mojomast/cocs-godot/releases/tag/graphics-demo-2026-09-22).
 See `graphics-batch/README.md` and the per-lane reports for scope and provenance.
 
 | Area | Synthetic/offline | Saved genuine evidence | Independently rerun live | Graphical / playable acceptance |

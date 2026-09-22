@@ -1,0 +1,21 @@
+{
+  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "meshes": 43,
+  "instances": 2,
+  "batchedMeshes": 0,
+  "shaderMaterials": 0,
+  "nodes": 60,
+  "limitations": [
+    "onBeforeCompile effects and runtime animation not translated",
+    "standard-material fallback is not fidelity acceptance"
+  ],
+  "instance_policy": "expanded with transforms and colors; no EXT_mesh_gpu_instancing",
+  "material_side": {
+    "policy": "BackSide: reversed triangles, negated normals, tangent handedness; FrontSide glTF material",
+    "meshes": 0,
+    "triangles": 0
+  },
+  "bytes": 158776,
+  "sha256": "fc9af5f80d6137feba014db9f2e1f9c1c477ed141bcbb1cd8add5ea7d3061d94",
+  "messages": []
+}

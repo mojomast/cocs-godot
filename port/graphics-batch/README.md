@@ -2,8 +2,14 @@
 
 Owner requested parallel implementation, then expanded scope to multiple new
 maps, Moth scenery, shaders and massive-particle experiments, with autonomous
-overnight continuation. All development lanes are integrated; release verification
-is in progress.
+overnight continuation. All development lanes are integrated and the expanded
+Windows prerelease is published.
+
+**[Download the Windows demo](https://github.com/mojomast/cocs-godot/releases/download/graphics-demo-2026-09-22/cocs-native-windows.zip)**
+· [Release notes](https://github.com/mojomast/cocs-godot/releases/tag/graphics-demo-2026-09-22)
+
+Extract the whole ZIP. **Graphics Showcase.cmd** opens the new-map/lab menu;
+**Play.cmd** starts a bot match. The previous operator demo release is retained.
 
 ## Integrated first wave
 
@@ -99,9 +105,15 @@ graphics routes, preview, graphics resources and process/listener cleanup. This
 is native Windows **headless** execution, not graphical/audio/human acceptance.
 Evidence is in `evidence/windows-native-verification/`.
 
+Final hosted Linux run
+[35715376755](https://github.com/mojomast/cocs-godot/actions/runs/35715376755) passes
+all **105 gates** on source `e4a8b186a4563cc8576be84c57d1b69f15affc47`, the release
+tag target. Evidence is in `evidence/hosted-final-pass/`; publication metadata and
+asset IDs are in `evidence/published-release.json`.
+
 The first hosted Linux run failed because the exporter test hard-coded the local
 `/tmp/opencode` directory. It now uses Node's configured `tmpdir()`; a fresh-directory
-test passes, and the hosted aggregate is being rerun. No packaged runtime bytes
+test and the final hosted aggregate pass. No packaged runtime bytes
 changed. The original hosted failure is retained in `evidence/hosted-first-failure/`.
 The next hosted run passed the new graphics/traversal gates but exposed an
 inherited exact-surviving-audio-voices timing assumption. The test now checks real
@@ -118,8 +130,8 @@ Windows graphics acceptance. Build provenance is retained in
 `evidence/windows-first-export/`; the archive is not the final expanded-map demo.
 
 Independent shared-runtime review found no P0/P1 issue. It identified missing
-combined-arms infantry composition and a possible inherited terrain depth-priority
-sign issue; both are delegated for bounded implementation/verification. Its stale
+combined-arms infantry composition and an inherited terrain depth-priority
+sign issue; both follow-up repairs are integrated and verified. Its stale
 VFX documentation example now releases the public-actor reference without mutation.
 
 Combined-arms graphics follow-up integrated as `87ea91f`: dismounted infantry now

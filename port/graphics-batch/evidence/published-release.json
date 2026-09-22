@@ -1,0 +1,40 @@
+{
+  "assets": [
+    {
+      "apiUrl": "https://api.github.com/repos/mojomast/cocs-godot/releases/assets/581110873",
+      "contentType": "application/zip",
+      "createdAt": "2026-09-22T10:05:37Z",
+      "downloadCount": 1,
+      "id": "RA_kwDOUkwMAs4iowxZ",
+      "label": "",
+      "name": "cocs-native-windows.zip",
+      "size": 70569679,
+      "state": "uploaded",
+      "updatedAt": "2026-09-22T10:05:43Z",
+      "url": "https://github.com/mojomast/cocs-godot/releases/download/graphics-demo-2026-09-22/cocs-native-windows.zip"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/mojomast/cocs-godot/releases/assets/581110874",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-09-22T10:05:37Z",
+      "downloadCount": 1,
+      "id": "RA_kwDOUkwMAs4iowxa",
+      "label": "",
+      "name": "cocs-native-windows.zip.sha256",
+      "size": 90,
+      "state": "uploaded",
+      "updatedAt": "2026-09-22T10:05:38Z",
+      "url": "https://github.com/mojomast/cocs-godot/releases/download/graphics-demo-2026-09-22/cocs-native-windows.zip.sha256"
+    }
+  ],
+  "isDraft": false,
+  "isPrerelease": true,
+  "publishedAt": "2026-09-22T10:28:00Z",
+  "tagName": "graphics-demo-2026-09-22",
+  "targetCommitish": "e4a8b186a4563cc8576be84c57d1b69f15affc47",
+  "url": "https://github.com/mojomast/cocs-godot/releases/tag/graphics-demo-2026-09-22",
+  "zip_sha256": "75fed1879787f39861486e9f28e427a982c60fe87718a1cf8254a3df2ec54563",
+  "windows_run": 35714103892,
+  "hosted_run": 35715376755,
+  "hosted_gates": 105
+}

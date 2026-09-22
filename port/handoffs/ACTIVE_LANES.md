@@ -132,6 +132,13 @@ Cinder production-controller junction follow-up completed as `f812c23`, with
 review lanes have completed. Lead retains aggregate/package/release ownership.
 User research remains untracked.
 
+Graphics batch released as `graphics-demo-2026-09-22` at source tag target
+`e4a8b186a4563cc8576be84c57d1b69f15affc47`. Hosted 105-gate run `35715376755`
+and exact-asset Windows run `35714103892` pass. No graphics lane remains active.
+See `port/graphics-batch/README.md` for artifact hashes, launch instructions and
+the preserved earlier failures; Windows graphics/audio and hardware acceptance
+remain open.
+
 The existing source/baked assets are read-only. No generation service is needed.
 The first-person lane may read/export source weapon geometry, including weapon0;
 it does not edit the separately reserved external pulse-rifle preview or assets.

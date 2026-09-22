@@ -1,0 +1,3 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+MOTH_VFX_REGRESSION failures=0 cap=32 id_window=4096 source_frames=11 stress_300_frames_4800_events_usec=70531 (headless CPU only, not GPU frame time)
