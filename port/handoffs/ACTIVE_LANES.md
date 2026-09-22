@@ -371,6 +371,16 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
   re-export, and every existing ADS/handling/weapon-effects/combat-integration gate green.
   Source `game/**` stays locked and read-only; both lanes must report per-weapon if a
   design cannot pass rather than trading correctness for detail.
+- **Blood wall spatter landed** (`a7fa9e91`): death bursts now cast a bounded radial fan
+  (nearest the lethal direction first) and place clusters plus at most one drip tail on
+  walls as well as floors; impact jets place 3–7 mark clusters streaked along the jet.
+  Candidates are probed in-plane and rejected for facing, reachability or solid overlap,
+  so marks never land on void/sky, a wall's far side, or under a wall footprint. Caps
+  raised with measured cost (stain pool 128 → 256; live caps 48/128/224; aging a saturated
+  frame 0.105 ms median, one draw call per live mark). Proof: 220 headless checks plus
+  rendered cases on real map geometry at both sizes showing 19–29 wall marks per death and
+  **0 changed pixels / 0 marks on the far face** in every case. No composition re-wiring
+  needed; F10 gained wall/floor/slope and skip-reason counters.
 - Owner asked for massive particle blood spurts on hits and a messy death splatter
   that stains surroundings. **Blood/fluid FX lane** owns NEW `godot/blood_fx/**`,
   `godot/tests/blood_fx/**`, `port/native-blood-fx/**` and must not touch the
