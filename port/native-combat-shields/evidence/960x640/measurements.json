@@ -1,0 +1,172 @@
+{
+	"actor_readability": {
+		"area": [
+			460,
+			264,
+			40,
+			96
+		],
+		"changed_pixels": 619,
+		"max_delta": 0.0666666626930237,
+		"mean_delta": 0.0204769192573925
+	},
+	"effect": {
+		"area": [
+			0,
+			0,
+			960,
+			640
+		],
+		"changed_pixels": 28646,
+		"max_delta": 0.321568623185158,
+		"mean_delta": 0.00386071544890001
+	},
+	"local_center": {
+		"area": [
+			420,
+			260,
+			120,
+			120
+		],
+		"changed_pixels": 0,
+		"max_delta": 0.0,
+		"mean_delta": 0.0
+	},
+	"opaque_depth": {
+		"area": [
+			399,
+			284,
+			16,
+			130
+		],
+		"changed_pixels": 0,
+		"max_delta": 0.0,
+		"mean_delta": 0.0
+	},
+	"passed": true,
+	"pressure": {
+		"0": {
+			"controller": {
+				"active_bursts": 0,
+				"actors": 16,
+				"clock": 0.750000000000001,
+				"counters": {
+					"dash": 0,
+					"dropped": 0,
+					"events": 0,
+					"phase": 0,
+					"recovery": 0,
+					"ripples": 0,
+					"shatters": 0
+				},
+				"kinds": {
+					"1": "temporary shield",
+					"2": "temporary shield",
+					"3": "temporary shield",
+					"4": "temporary shield",
+					"5": "temporary shield",
+					"6": "temporary shield",
+					"7": "temporary shield",
+					"8": "temporary shield",
+					"9": "temporary shield",
+					"10": "temporary shield",
+					"11": "temporary shield",
+					"12": "temporary shield",
+					"13": "temporary shield",
+					"14": "temporary shield",
+					"15": "temporary shield",
+					"16": "temporary shield"
+				},
+				"materials": 16,
+				"pending": 0,
+				"pool": 0,
+				"quality": 0,
+				"seen": 0,
+				"slots": 16,
+				"visible_shells": 16
+			},
+			"draw_calls": 778,
+			"frame_median_ms": 9.322,
+			"frame_p95_ms": 11.52,
+			"note": "45-frame software wall-clock proxy, not hardware GPU acceptance",
+			"primitives": 54072
+		},
+		"1": {
+			"controller": {
+				"active_bursts": 0,
+				"actors": 16,
+				"clock": 0.750000000000001,
+				"counters": {
+					"dash": 0,
+					"dropped": 0,
+					"events": 0,
+					"phase": 0,
+					"recovery": 0,
+					"ripples": 0,
+					"shatters": 0
+				},
+				"kinds": {
+					"1": "temporary shield",
+					"2": "temporary shield",
+					"3": "temporary shield",
+					"4": "temporary shield",
+					"5": "temporary shield",
+					"6": "temporary shield",
+					"7": "temporary shield",
+					"8": "temporary shield",
+					"9": "temporary shield",
+					"10": "temporary shield",
+					"11": "temporary shield",
+					"12": "temporary shield",
+					"13": "temporary shield",
+					"14": "temporary shield",
+					"15": "temporary shield",
+					"16": "temporary shield"
+				},
+				"materials": 16,
+				"pending": 0,
+				"pool": 0,
+				"quality": 1,
+				"seen": 0,
+				"slots": 16,
+				"visible_shells": 16
+			},
+			"draw_calls": 778,
+			"frame_median_ms": 12.854,
+			"frame_p95_ms": 15.127,
+			"note": "45-frame software wall-clock proxy, not hardware GPU acceptance",
+			"primitives": 82488
+		}
+	},
+	"renderer": {
+		"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+		"api": "4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2",
+		"method": "gl_compatibility",
+		"size": [
+			960,
+			640
+		]
+	},
+	"ripple": {
+		"area": [
+			0,
+			0,
+			960,
+			640
+		],
+		"changed_pixels": 16992,
+		"max_delta": 0.411764726042747,
+		"mean_delta": 0.00390941598164015
+	},
+	"shatter": {
+		"area": [
+			0,
+			0,
+			960,
+			640
+		],
+		"changed_pixels": 5122,
+		"max_delta": 0.349019631743431,
+		"mean_delta": 0.00103111600635505
+	}
+}
