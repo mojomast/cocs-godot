@@ -1,0 +1,58 @@
+{
+  "ports": [
+    {
+      "port": 35447,
+      "closed": true
+    },
+    {
+      "port": 36245,
+      "closed": true
+    },
+    {
+      "port": 36631,
+      "closed": true
+    },
+    {
+      "port": 36723,
+      "closed": true
+    },
+    {
+      "port": 37583,
+      "closed": true
+    },
+    {
+      "port": 38819,
+      "closed": true
+    },
+    {
+      "port": 38961,
+      "closed": true
+    },
+    {
+      "port": 39507,
+      "closed": true
+    },
+    {
+      "port": 40469,
+      "closed": true
+    },
+    {
+      "port": 40973,
+      "closed": true
+    },
+    {
+      "port": 41553,
+      "closed": true
+    },
+    {
+      "port": 44779,
+      "closed": true
+    },
+    {
+      "port": 46775,
+      "closed": true
+    }
+  ],
+  "ownedRuntimeChildren": [],
+  "passed": true
+}

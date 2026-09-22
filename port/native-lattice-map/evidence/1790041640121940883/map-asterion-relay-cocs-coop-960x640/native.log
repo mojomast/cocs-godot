@@ -1,0 +1,54 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PHYSICAL {"event":"check","message":"actual board.tscn loaded by engine","ms":14,"ok":true}
+PHYSICAL {"event":"check","message":"default list; built-in smoke off","ms":339,"ok":true}
+PHYSICAL {"control":"Connect / start","event":"mouse","ms":339,"x":79.5,"y":150.5}
+PHYSICAL {"event":"check","message":"Connect reaches real recipient projection","ms":769,"ok":true}
+PHYSICAL {"actions":[],"actor":0,"event":"connected","flux":120.05,"history":"No actions submitted.","map":"asterion-relay","mode":"cocs-coop","ms":769,"peer":1,"round":1,"selected":"","spawned":null,"spent":0.0,"team":0}
+PHYSICAL {"control":"List","event":"mouse","ms":769,"x":908.5,"y":251.5}
+PHYSICAL {"code":4194322,"event":"key","ms":917}
+PHYSICAL {"code":4194322,"event":"key","ms":948}
+PHYSICAL {"code":4194309,"event":"key","ms":963}
+PHYSICAL {"event":"check","message":"physical view choice map=true","ms":1034,"ok":true}
+PHYSICAL {"event":"check","message":"own public frontier is positioned","ms":1034,"ok":true}
+PHYSICAL {"control":"public marker front-0","event":"mouse","ms":1034,"x":293.0,"y":353.25}
+PHYSICAL {"event":"check","message":"physical marker click synchronizes ItemList","ms":1096,"ok":true}
+PHYSICAL {"event":"check","message":"map click receives native keyboard focus","ms":1096,"ok":true}
+PHYSICAL {"code":4194320,"event":"key","ms":1096}
+PHYSICAL {"event":"check","message":"map Up browses objective","ms":1127,"ok":true}
+PHYSICAL {"code":4194322,"event":"key","ms":1127}
+PHYSICAL {"event":"check","message":"map Down restores own frontier","ms":1141,"ok":true}
+PHYSICAL {"event":"check","message":"map mouse/keyboard selection sends no orders or purchases","ms":1141,"ok":true}
+PHYSICAL {"control":"Map","event":"mouse","ms":1141,"x":908.5,"y":251.5}
+PHYSICAL {"code":4194322,"event":"key","ms":1186}
+PHYSICAL {"code":4194309,"event":"key","ms":1211}
+PHYSICAL {"event":"check","message":"physical view choice map=false","ms":1247,"ok":true}
+PHYSICAL {"event":"check","message":"List retains map-selected target","ms":1248,"ok":true}
+PHYSICAL {"control":"List","event":"mouse","ms":1248,"x":908.5,"y":251.5}
+PHYSICAL {"code":4194322,"event":"key","ms":1272}
+PHYSICAL {"code":4194322,"event":"key","ms":1307}
+PHYSICAL {"code":4194309,"event":"key","ms":1321}
+PHYSICAL {"event":"check","message":"physical view choice map=true","ms":1361,"ok":true}
+PHYSICAL {"event":"check","message":"view toggles preserve selection","ms":1361,"ok":true}
+PHYSICAL {"event":"check","message":"explicit HOLD enabled","ms":1361,"ok":true}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":1361,"x":86.0,"y":513.5}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":1392,"x":86.0,"y":513.5}
+PHYSICAL {"event":"check","message":"rapid HOLD clicks remain deduplicated","ms":1415,"ok":true}
+PHYSICAL {"event":"check","message":"HOLD accepted running by real source","ms":1441,"ok":true}
+PHYSICAL {"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":null,"roundRev":1,"status":"pending (server accepted)","target":"front-0"}],"actor":0,"event":"map-hold-accepted","flux":121.2,"history":"native-r1-p1-s1 • hold • pending (server accepted)","map":"asterion-relay","mode":"cocs-coop","ms":1441,"peer":1,"round":1,"selected":"front-0","spawned":null,"spent":0.0,"team":0}
+PHYSICAL {"event":"check","message":"map receipt fully visible without scroll","ms":2244,"ok":true}
+PHYSICAL {"event":"check","message":"map fits viewport","ms":2244,"ok":true}
+PHYSICAL {"event":"check","message":"resources and explicit action visible","ms":2244,"ok":true}
+PHYSICAL {"event":"check","message":"saved map-receipts","ms":2278,"ok":true}
+PHYSICAL {"control":"Disconnect","event":"mouse","ms":2279,"x":192.0,"y":150.5}
+PHYSICAL {"event":"check","message":"physical disconnect clears state and selection","ms":2326,"ok":true}
+PHYSICAL {"event":"check","message":"disconnect removes positioned map targets","ms":2326,"ok":true}
+PHYSICAL {"control":"empty disconnected map","event":"mouse","ms":2326,"x":106.0,"y":391.0}
+PHYSICAL {"code":4194322,"event":"key","ms":2342}
+PHYSICAL {"control":"Issue HOLD / GO","event":"mouse","ms":2381,"x":86.0,"y":539.5}
+PHYSICAL {"event":"check","message":"empty map keyboard/click cannot select or submit","ms":2391,"ok":true}
+PHYSICAL {"event":"check","message":"saved map-disconnected","ms":2429,"ok":true}
+PHYSICAL {"checks":25,"event":"result","failures":0,"input":"Input.parse_input_event mouse and physical-key events; not OS input","ms":2429}

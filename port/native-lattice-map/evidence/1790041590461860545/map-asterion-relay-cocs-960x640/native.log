@@ -1,0 +1,78 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PHYSICAL {"event":"check","message":"actual board.tscn loaded by engine","ms":12,"ok":true}
+PHYSICAL {"event":"check","message":"default list; built-in smoke off","ms":271,"ok":true}
+PHYSICAL {"control":"Connect / start","event":"mouse","ms":271,"x":79.5,"y":150.5}
+PHYSICAL {"event":"check","message":"Connect reaches real recipient projection","ms":692,"ok":true}
+PHYSICAL {"actions":[],"actor":0,"event":"connected","flux":80.033,"history":"No actions submitted.","map":"asterion-relay","mode":"cocs","ms":692,"peer":1,"round":1,"selected":"","spawned":0.0,"spent":0.0,"team":0}
+PHYSICAL {"control":"List","event":"mouse","ms":693,"x":908.5,"y":251.5}
+PHYSICAL {"code":4194322,"event":"key","ms":814}
+PHYSICAL {"code":4194309,"event":"key","ms":843}
+ERROR: physical view choice map=true
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/physical.gd:25)
+       [1] switch_view (res://tests/lattice/map_view_physical.gd:8)
+PHYSICAL {"event":"check","message":"physical view choice map=true","ms":868,"ok":false}
+PHYSICAL {"event":"check","message":"own public frontier is positioned","ms":868,"ok":true}
+PHYSICAL {"control":"public marker front-0","event":"mouse","ms":868,"x":106.0,"y":96.25}
+ERROR: physical marker click synchronizes ItemList
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/physical.gd:25)
+       [1] run (res://tests/lattice/map_view_physical.gd:29)
+       [2] click_at (res://tests/lattice/physical.gd:50)
+ERROR: map click receives native keyboard focus
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/physical.gd:25)
+       [1] run (res://tests/lattice/map_view_physical.gd:30)
+       [2] click_at (res://tests/lattice/physical.gd:50)
+PHYSICAL {"event":"check","message":"physical marker click synchronizes ItemList","ms":881,"ok":false}
+PHYSICAL {"event":"check","message":"map click receives native keyboard focus","ms":881,"ok":false}
+PHYSICAL {"code":4194320,"event":"key","ms":881}
+PHYSICAL {"event":"check","message":"map Up browses objective","ms":900,"ok":true}
+PHYSICAL {"code":4194322,"event":"key","ms":900}
+ERROR: map Down restores own frontier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/physical.gd:25)
+       [1] run (res://tests/lattice/map_view_physical.gd:34)
+       [2] key (res://tests/lattice/physical.gd:63)
+PHYSICAL {"event":"check","message":"map Down restores own frontier","ms":910,"ok":false}
+PHYSICAL {"event":"check","message":"map mouse/keyboard selection sends no orders or purchases","ms":910,"ok":true}
+PHYSICAL {"control":"List","event":"mouse","ms":910,"x":908.5,"y":251.5}
+PHYSICAL {"code":4194320,"event":"key","ms":919}
+PHYSICAL {"code":4194309,"event":"key","ms":944}
+ERROR: physical view choice map=false
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/physical.gd:25)
+       [1] switch_view (res://tests/lattice/map_view_physical.gd:8)
+ERROR: List retains map-selected target
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/physical.gd:25)
+       [1] run (res://tests/lattice/map_view_physical.gd:37)
+       [2] switch_view (res://tests/lattice/map_view_physical.gd:8)
+PHYSICAL {"event":"check","message":"physical view choice map=false","ms":1007,"ok":false}
+PHYSICAL {"event":"check","message":"List retains map-selected target","ms":1007,"ok":false}
+PHYSICAL {"control":"Map","event":"mouse","ms":1007,"x":908.5,"y":251.5}
+PHYSICAL {"code":4194322,"event":"key","ms":1017}
+PHYSICAL {"code":4194309,"event":"key","ms":1041}
+ERROR: physical view choice map=true
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/physical.gd:25)
+       [1] switch_view (res://tests/lattice/map_view_physical.gd:8)
+ERROR: view toggles preserve selection
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/physical.gd:25)
+       [1] run (res://tests/lattice/map_view_physical.gd:39)
+       [2] switch_view (res://tests/lattice/map_view_physical.gd:8)
+PHYSICAL {"event":"check","message":"physical view choice map=true","ms":1055,"ok":false}
+PHYSICAL {"event":"check","message":"view toggles preserve selection","ms":1055,"ok":false}

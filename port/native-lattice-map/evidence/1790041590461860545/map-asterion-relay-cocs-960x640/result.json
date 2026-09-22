@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "checks": {
+    "nativeExit": false,
+    "holdExactlyOnce": false,
+    "publicTarget": false,
+    "holdSameTargetRunning": false,
+    "recipientKeys": true,
+    "noImplicitPurchase": true,
+    "nativeWireIdentity": true
+  },
+  "nativeExit": 1,
+  "inboundCount": 0
+}

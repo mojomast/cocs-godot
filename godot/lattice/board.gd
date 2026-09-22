@@ -1,5 +1,6 @@
 extends Control
 const Transport = preload("res://lattice/transport.gd")
+const MapView = preload("res://lattice/map_view.gd")
 var client := Transport.new()
 var endpoint := LineEdit.new()
 var room := LineEdit.new()
@@ -10,6 +11,9 @@ var hold_button := Button.new()
 var spend_button := Button.new()
 var confirm_spend := CheckBox.new()
 var nodes := ItemList.new()
+var view_choice := OptionButton.new()
+var map_view := MapView.new()
+var selection_context := ""
 var status := Label.new()
 var resources := Label.new()
 var selection := Label.new()
@@ -84,10 +88,23 @@ func _ready() -> void:
 	column.add_child(status)
 	resources.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(resources)
-	label("OBJECTIVES — select a node; the server decides final order legality", column, 17)
+	var objectives_header := HBoxContainer.new()
+	column.add_child(objectives_header)
+	label("OBJECTIVES — select a node; the server decides final order legality", objectives_header, 17).size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	view_choice.add_item("List")
+	view_choice.add_item("Map")
+	view_choice.tooltip_text = "Objective view (selection only)"
+	view_choice.item_selected.connect(func(index: int) -> void:
+		nodes.visible = index == 0
+		map_view.visible = index == 1)
+	objectives_header.add_child(view_choice)
 	nodes.custom_minimum_size.y = 132
 	nodes.item_selected.connect(func(index: int) -> void: selected = node_ids[index]; refresh())
 	column.add_child(nodes)
+	map_view.custom_minimum_size.y = 184
+	map_view.visible = false
+	map_view.node_selected.connect(func(id: String) -> void: selected = id; refresh())
+	column.add_child(map_view)
 	selection.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(selection)
 	var actions_row := HBoxContainer.new()
@@ -179,6 +196,10 @@ func team_name(value: Variant) -> String:
 func refresh() -> void:
 	if not is_instance_valid(status): return
 	var p: Dictionary = client.projection
+	var context := "%s/%s" % [p.get("map", ""), client.revision]
+	if context != selection_context:
+		selected = ""
+		selection_context = context
 	if p.is_empty(): confirm_spend.set_pressed_no_signal(false)
 	var connected := phase not in ["idle", "error", "results"]
 	maps.disabled = connected
@@ -195,6 +216,9 @@ func refresh() -> void:
 		nodes.clear()
 		for id: String in ids: nodes.add_item(id)
 	if selected not in node_ids: selected = ""
+	if selected.is_empty(): nodes.deselect_all()
+	elif not nodes.is_selected(node_ids.find(selected)): nodes.select(node_ids.find(selected))
+	map_view.set_nodes(p.get("nodes", []), selected, str(p.get("map", "")))
 	for i: int in range(node_ids.size()):
 		var node: Dictionary = p.nodes[i]
 		nodes.set_item_text(i, "%s  |  %s  |  owner %s  |  %s" % [node.get("label", node.id), node.get("archetype", "unknown"), "neutral" if node.has("owner") and node.owner == null else team_name(node.get("owner")), "CONTESTED" if node.get("contested") == true else "live" if node.get("live") == true else "inactive"])
