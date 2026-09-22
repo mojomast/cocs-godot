@@ -36,7 +36,8 @@ claims and limitations. Native presentation quality and usability still need rev
 | Objective completion | 22 corruption/replay checks and queued-input timing fixture pass | Original failed CTF retained; new full acceptance images inspected | At `db0c3ee`, Payload148 rollback/79 bank samples/full delivery124.4s PASS, 3,801 correlations; CTF actor0→2 pass20.367s/capture37.9s/settled release/restart PASS, 1,870 correlations | Natural delivered win and teammate pass accepted; human play, broader combat/objective scenarios OPEN |
 | Common launcher | Five routing regressions pass; all standalone pairs checked against locked catalog | Six original scene startups plus four LATTICE world combinations retained | Real pinned headless scenes exit cleanly with owned processes absent and server ports closed | One command family includes separate LATTICE world/board; interactive mode has no harness deadline |
 | Native CI | Official pinned archive/hash, fresh npm install and GLB generation checked | Hosted successes and original audio failure retained | Ubuntu GitHub Actions run `35680987135` passes all 62 gates at `3600791`, including objective completion and LATTICE world contracts | Fresh-checkout automation accepted; graphical/hardware gameplay separate |
-| Full verifier | All **62** implemented gates pass after objective completion and LATTICE world integration | Original failures and earlier pass reports retained | Complete rerun at `6116f12` plus launcher/completion/world gates passes | See `reports/verification.json`; graphical/playable gates separate |
+| Linux prototype package | Official toolchain/ws integrity and source closure validated; five release scenes/nine maps present, test/probe resources absent | Independent archive/hash manifest, build logs and three release-client images retained | At `1b0949b`, fresh Node-only directory launches setup/combat/world; window/Ctrl+C/crash/missing-executable cleanup PASS, package bytes unchanged | Editor-free local Linux startup accepted; not a public release or new full-gameplay acceptance |
+| Full verifier | All **63** implemented gates pass after Linux packaging integration | Original failures and earlier pass reports retained | Complete rerun at `1b0949b` plus package-routing gate passes | See `reports/verification.json`; graphical/playable gates separate |
 | Pulse rifle preview | No completion commit available | None reviewed | Owner believes work is not finished | Pending; reserved directories untouched |
 
 The actual commands, clean execution tree hashes, source provenance, receipt vs
@@ -74,7 +75,7 @@ the locked JSON contract; the family summary below does not narrow them.
   The production GLB exporter correction now passes independent matched-camera
   review and all-nine-map imports; hard sky/haze boundaries remain. The default
   native environment uses its own procedural sky and does not depend on that GLB.
-- The combined 62-gate verifier passes with rocket presentation, sports
+- The combined 63-gate verifier passes with rocket presentation, sports
   camera/HUD polish, source-aware projectile navigation and compact LATTICE
   command modules and standalone objectives. Focused native LATTICE mouse/key
   and objective interaction follow-ups also pass.

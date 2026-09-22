@@ -41,6 +41,7 @@ commands = [
     ("objective-progression-evidence", ["node", "--test", "port/native-objective-progression/test.mjs"]),
     ("objective-completion-evidence", ["node", "--test", "port/native-objective-completion/test.mjs"]),
     ("launcher-options", ["node", "--test", "tools/godot-dev/launch_options.test.mjs"]),
+    ("package-options", ["node", "--test", "tools/godot-package/options.test.mjs"]),
     ("semantic-export", ["node", "tools/godot-export/semantic.mjs"]),
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),
     ("godot-import", [binary, "--headless", "--path", "godot", "--editor", "--import"]),

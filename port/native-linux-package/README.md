@@ -6,6 +6,10 @@ Scope: local build/run prototype from port base `6116f12`, locked source
 The committed deliverable is build/launch/verification code and bounded evidence;
 executables, PCKs, archives and toolchain caches stay outside the repository.
 
+The lead has independently rebuilt the integrated code and verified exported
+combat/world startup from a fresh Node-only directory, including failure cleanup.
+See [independent build and evidence](../reports/linux-package-independent/README.md).
+
 ## Build, verify, run
 
 Build prerequisites: Linux x86_64, full repository history, Node >=22.13.0,

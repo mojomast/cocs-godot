@@ -7,7 +7,6 @@ updates root documentation/shared verification and owns publication.
 | Lane | Owner / baseline | Reserved files |
 |---|---|---|
 | LATTICE in-world command panel | Internal follow-up; `6116f12` | New world command UI/tests, narrow world_demo/world_hud only, `port/native-lattice-world-commands/` |
-| Runnable Linux prototype bundle | Internal agent; `6116f12` | New export presets if absent, `tools/godot-package/`, new package tests, `port/native-linux-package/` |
 | Multiplayer lobby / leave / retry | External handoff; `8094d41` | New lobby-prefixed UI/tests, narrow `godot/world/session.gd` / scene and backward-compatible client hook if essential; `port/native-multiplayer-lobby/` |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
 
@@ -36,6 +35,12 @@ independent full Payload rollback/delivery and CTF pass/settled restart pass.
 World traversal is integrated at `6116f12`; both independent graphical cases
 and all four common-launcher startup routes pass. Native strategy commands
 within that world and an editor-free Linux prototype build are now delegated.
+The Linux package lane is delivered at `0c2dc2b` / `47c0ba2`, integrated as
+`7f694ce` / `1b0949b`. The lead owns independent rebuild/extraction/launch
+verification and documentation; generated local artifacts remain outside git.
+The independent package rebuild and fresh-directory exported startup/cleanup
+passed; the exact local archive and report are recorded in
+`port/reports/linux-package-independent/README.md`.
 
 External tasks have complete scope/commands in
 `external-native-objective-gameplay.md` and

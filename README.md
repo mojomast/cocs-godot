@@ -111,6 +111,25 @@ Supported combat map IDs: `meridian-exchange`, `verdant-reliquary`,
 `rockets`. Add `--mute` to silence procedural cues or `--debug-hud` to show
 diagnostic labels.
 
+### Build an editor-free Linux prototype
+
+The local packaging pipeline exports a Linux x86_64 executable/PCK and includes
+the unchanged authoritative server modules and their runtime dependency:
+
+```sh
+python3 tools/godot-package/build.py --state /tmp/opencode/my-native-package
+```
+
+The builder prints the archive path and integrity hashes. Extract the archive,
+enter `cocs-native-linux`, then run **`node run.mjs`** for native combat setup.
+Playing requires Node **22.13+** and normal Linux desktop libraries; the editor,
+Git, npm and original checkout are build-time tools only. The package supports
+the same five experience routes. See the
+[local package guide](port/native-linux-package/README.md) for prerequisites,
+verification and launch commands. Generated archives stay outside the repository.
+The independent rebuild passed fresh-directory exported combat/world startup
+and failure cleanup; see [package verification](port/reports/linux-package-independent/README.md).
+
 ### Puma driving demos
 
 With the environment above configured, run either:
@@ -262,11 +281,11 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated run passes **62 gates**, including sports and objective
+The latest integrated run passes **63 gates**, including package routing, sports and objective
 progression, LATTICE map selection, launcher routing, GLB material sides and
 projectile navigation. Native
 [GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
-also passed the same 62-gate snapshot from a fresh Ubuntu checkout.
+also passed the preceding 62-gate snapshot from a fresh Ubuntu checkout.
 
 Focused real-session and graphical evidence is documented in:
 

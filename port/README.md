@@ -122,9 +122,14 @@ evidence helpers retain their bounded observation windows. See
   first-person movement and recipient/public markers. Independent Asterion PvP
   and Monsoon co-op approach/release/resume checks pass; all four launcher routes
   start/close correctly. See [world evidence](reports/lattice-world-independent/README.md).
+- **Local Linux bundle:** the independent release export includes all nine maps,
+  five scenes, ordinary authority modules and its runtime dependency. Fresh
+  unrelated-directory play needs Node 22.13+ but no editor/Git/npm/checkout.
+  Actual combat/world startup and window/interrupt/crash/spawn-failure cleanup
+  pass. See [package evidence](reports/linux-package-independent/README.md).
 
-**Combined verification: all 62 implemented gates pass** after objective completion
-and LATTICE world integration at `6116f12` plus launcher/gate changes
+**Combined verification: all 63 implemented gates pass** after Linux packaging
+integration at `1b0949b` plus the package-routing gate
 recorded with this batch. Independent driving passed on both sports maps;
 the default compact HUD's nonlethal damage/+35 HP/12-second return was also
 independently reproduced. See [visible health evidence](reports/native-health-hud-independent/README.md).
