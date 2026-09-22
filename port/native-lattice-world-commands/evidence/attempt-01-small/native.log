@@ -1,0 +1,16 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+ERROR: Parse JSON failed. Error at line 0: Unknown error getting token
+   at: parse_string (core/io/json.cpp:604)
+   GDScript backtrace (most recent call first):
+       [0] open (res://world/catalog.gd:12)
+       [1] _ready (res://lattice/world_demo.gd:50)
+ERROR: ordinary world host ready
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/lattice/world_commands_live.gd:28)
+       [1] wait_for (res://tests/lattice/world_commands_live.gd:35)
+WORLD_COMMANDS {"ackHighWater":0,"actor":-1,"event":"check","inputSeq":0,"message":"ordinary world host ready","ms":15012,"ok":false,"peer":-1}

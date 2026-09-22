@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "checks": {
+    "native": false,
+    "oneSocket": false,
+    "sameIdentity": false,
+    "neutralWhileOpen": false,
+    "ackHighWater": false,
+    "singleHold": false,
+    "executedHold": false,
+    "economy": false,
+    "ownBudgetOnly": false,
+    "normalHost": false
+  },
+  "nativeExit": 1,
+  "commands": [],
+  "ackMeaning": "High-water receipt; no individual input-application claim",
+  "captureClaim": false
+}

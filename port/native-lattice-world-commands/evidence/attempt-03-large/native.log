@@ -1,0 +1,30 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+WORLD_COMMANDS {"ackHighWater":0,"actor":0,"event":"check","inputSeq":2,"message":"ordinary world host ready","ms":2872,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":0,"actor":0,"event":"check","inputSeq":2,"message":"overlay shares the actor movement transport","ms":2872,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":12,"actor":0,"event":"opened","inputSeq":13,"ms":3532,"peer":1}
+WORLD_COMMANDS {"ackHighWater":12,"actor":0,"event":"check","inputSeq":13,"message":"C releases pointer and blocks capture with controls held","ms":3532,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":12,"actor":0,"event":"check","inputSeq":13,"message":"opening sends no command","ms":3532,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":33,"actor":0,"event":"check","inputSeq":34,"message":"open overlay stops authoritative movement despite held W/fire","ms":4186,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":34,"actor":0,"event":"check","inputSeq":35,"message":"public own-front objective listed","ms":4242,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":36,"actor":0,"event":"check","inputSeq":37,"message":"objective selection has no command side effect","ms":4304,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":40,"actor":0,"event":"check","inputSeq":41,"message":"double HOLD click queues one action without world recapture","ms":4425,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":40,"actor":0,"event":"check","inputSeq":41,"message":"HOLD receives authoritative card status","ms":4425,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":40,"actor":0,"event":"check","inputSeq":41,"message":"source accepts HOLD","ms":4425,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":40,"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":null,"roundRev":1,"status":"pending (server accepted)","target":"front-0"}],"actor":0,"event":"hold-receipt","inputSeq":41,"ms":4425,"peer":1}
+WORLD_COMMANDS {"ackHighWater":66,"actor":0,"event":"check","inputSeq":67,"message":"co-op recruitment uses current transport window permission","ms":5192,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":66,"actor":0,"event":"coop-window","gate":"Wait for the between-wave recruitment window","inputSeq":67,"ms":5192,"peer":1,"recruitment":{"open":false,"peer":1,"phase":"build_up","sink":{"affordable":true,"available":true,"cost":50.0,"enabled":false},"spawned":0.0,"wave":1.0}}
+WORLD_COMMANDS {"ackHighWater":66,"actor":0,"event":"check","inputSeq":67,"message":"saved commands","ms":5281,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":66,"actor":0,"event":"check","inputSeq":67,"message":"command panel fits native viewport","ms":5281,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":71,"actor":0,"event":"check","inputSeq":72,"message":"closing clears selection and held movement blocks recapture","ms":5410,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":72,"actor":0,"event":"check","inputSeq":74,"message":"key release alone does not resume","ms":5470,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":74,"actor":0,"event":"check","inputSeq":76,"message":"fresh click after release resumes world","ms":5528,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":74,"actor":0,"event":"resumed","inputSeq":76,"ms":5528,"peer":1}
+WORLD_COMMANDS {"ackHighWater":90,"actor":0,"event":"check","inputSeq":91,"message":"same actor moves after explicit recapture","ms":5977,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":94,"actor":0,"event":"check","inputSeq":95,"message":"saved reopened","ms":6138,"ok":true,"peer":1}
+WORLD_COMMANDS {"ackHighWater":94,"actions":[{"actionSeq":1,"cardId":"native-r1-p1-s1","kind":"hold","reason":"replaced","roundRev":1,"status":"confirmed","target":"front-0"}],"actor":0,"event":"before-disconnect","inputSeq":95,"ms":6138,"peer":1}
+WORLD_COMMANDS {"ackHighWater":0,"actor":-1,"event":"check","inputSeq":0,"message":"disconnect clears recipient actions, selection, consent and controls","ms":6156,"ok":true,"peer":-1}
+WORLD_COMMANDS {"ackHighWater":0,"actor":-1,"checks":19,"event":"result","failures":0,"inputSeq":0,"ms":6156,"peer":-1}

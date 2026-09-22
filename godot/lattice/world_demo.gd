@@ -2,9 +2,12 @@ extends "res://world/session.gd"
 ## Optional scene: source infantry control with the nine-map native geometry.
 const WorldTransport = preload("res://lattice/world_transport.gd")
 const WorldHUD = preload("res://lattice/world_hud.gd")
+const WorldCommands = preload("res://lattice/world_commands.gd")
 const WORLD_MAPS := ["asterion-relay", "monsoon-foundry"]
 var lattice_hud := WorldHUD.new()
 var world_label := Label.new()
+var world_commands: Control
+var world_wait_release := false
 
 func _init() -> void:
 	# Replace before attachment: the transport's _init signal observers run before
@@ -33,6 +36,10 @@ func _ready() -> void:
 		item.add_theme_constant_override("shadow_offset_y", 2)
 	panel.add_child(selector)
 	selector.hide()
+	world_commands = WorldCommands.new()
+	layer.add_child(world_commands)
+	world_commands.world_bind(self)
+	world_commands.close_requested.connect(world_close_commands)
 	add_child(pickups)
 	add_child(presentation)
 	add_child(combat)
@@ -75,18 +82,58 @@ func _ready() -> void:
 	connect_selected_match()
 
 func controls_released() -> bool:
-	for key: int in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_SPACE, KEY_R, KEY_SHIFT, KEY_CTRL, KEY_E, KEY_F]:
+	for key: int in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_SPACE, KEY_R, KEY_SHIFT, KEY_CTRL, KEY_E, KEY_F, KEY_C, KEY_ESCAPE, KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9]:
 		if Input.is_physical_key_pressed(key): return false
 	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
 
 func can_capture_pointer() -> bool:
-	return super.can_capture_pointer() and client.projection_actor == client.actor_id and not client.projection.is_empty()
+	return super.can_capture_pointer() and not world_wait_release and not (is_instance_valid(world_commands) and world_commands.visible) and client.projection_actor == client.actor_id and not client.projection.is_empty()
+
+func world_command_gate() -> String:
+	if not super.can_capture_pointer(): return "World unavailable — focus, fresh state and a living actor required"
+	if client.projection.is_empty() or client.projection_actor != client.actor_id: return "Waiting for recipient identity"
+	return ""
+
+func world_neutral() -> void:
+	release_pointer()
+	world_wait_release = true
+	if phase != 3 or not client.connection_open(): return
+	var controls := {"x":0.0, "z":0.0, "yaw":yaw, "pitch":pitch, "fire":false, "jump":false, "reload":false, "sprint":false, "crouch":false, "interact":false, "mobility":false}
+	var result: Error = client.send_input(controls)
+	emit_native_trace(trace_input(controls, result))
+	if result != OK: on_error("Neutral input could not be queued. Relaunch to reconnect.")
+
+func world_close_commands() -> void:
+	world_commands.world_clear()
+	world_commands.hide()
+	world_neutral()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and is_instance_valid(world_commands):
+		if event.keycode == KEY_C or (event.keycode == KEY_ESCAPE and world_commands.visible):
+			if world_commands.visible: world_close_commands()
+			else:
+				world_neutral()
+				world_commands.world_clear()
+				world_commands.show()
+				world_commands.world_refresh()
+			get_viewport().set_input_as_handled()
+			return
+	super._input(event)
+
+func _notification(what: int) -> void:
+	super._notification(what)
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		if is_instance_valid(world_commands): world_commands.world_clear()
+		world_neutral()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_instance_valid(world_commands) and world_commands.visible: return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not controls_released(): return
 	super._unhandled_input(event)
 
 func clear_world_pose() -> void:
+	if is_instance_valid(world_commands): world_commands.world_clear()
 	if received_pose: send_elapsed = 0.0
 	received_pose = false
 	pose_actor_id = -1
@@ -100,10 +147,12 @@ func on_lobby(frame: Dictionary) -> void:
 
 func on_started(frame: Dictionary) -> void:
 	if client.revision < 1 or client.actor_id < 0: return
+	if is_instance_valid(world_commands): world_commands.world_clear()
 	lattice_hud.clear_round()
 	super.on_started(frame)
 
 func on_error(message: String) -> void:
+	if is_instance_valid(world_commands): world_commands.world_clear()
 	lattice_hud.clear_round()
 	super.on_error(message)
 	world_label.text = "LATTICE world session stopped. Relaunch to reconnect."
@@ -118,6 +167,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		refresh_world_hud()
 		return
 	super.on_snapshot(frame)
+	if is_instance_valid(world_commands): world_commands.world_refresh()
 	# PvP wire nodes omit y/r. Height is static authored geometry, not inferred
 	# gameplay state. Never draw a guessed capture radius.
 	for node: Dictionary in client.projection.nodes:
@@ -127,6 +177,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	refresh_world_hud()
 
 func on_results(frame: Dictionary) -> void:
+	if is_instance_valid(world_commands): world_commands.world_clear()
 	round_results += 1
 	presentation.apply_state(frame.state, client.actor_id)
 	pickups.apply_state(frame.state)
@@ -137,12 +188,15 @@ func on_results(frame: Dictionary) -> void:
 	refresh_world_hud()
 
 func refresh_world_hud() -> void:
-	label.text = "LATTICE / WORLD · %s · %s\n%s · HP %s · ACK %d (input receipt)\nClick: engage/fire · Esc: release · WASD: move · mouse: look\nShift: sprint · Space: jump · R: reload · E: interact · F: mobility" % [current_id, selected_mode, presentation.lifecycle.label(), presentation.local_actor.get("health", "unknown"), client.last_ack]
+	label.text = "LATTICE / WORLD · %s · %s\n%s · HP %s · ACK %d (input high-water receipt)\nClick: engage/fire · Esc: release · C: tactical commands\nWASD: move · mouse: look · Shift: sprint · Space: jump\nR: reload · E: interact · F: mobility" % [current_id, selected_mode, presentation.lifecycle.label(), presentation.local_actor.get("health", "unknown"), client.last_ack]
 	world_label.text = lattice_hud.text(client.projection) + "\nRelease movement/action keys before clicking to resume."
 	if phase == 4: world_label.text = "RESULTS · Enter: request another round"
 
 func _process(delta: float) -> void:
+	if is_instance_valid(world_commands) and world_commands.visible: release_pointer()
+	if world_wait_release and controls_released() and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): world_wait_release = false
 	super._process(delta)
 	if phase == 3 and snapshot_watch.stale():
+		if is_instance_valid(world_commands): world_commands.world_clear()
 		lattice_hud.clear_round()
 		world_label.text = "State stale — release keys, wait for state, then click to resume."

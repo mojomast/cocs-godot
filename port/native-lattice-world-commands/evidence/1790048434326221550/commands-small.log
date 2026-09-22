@@ -1,0 +1,2 @@
+WORLD_COMMANDS_RUN {"endpoint":"ws://127.0.0.1:46535","map":"asterion-relay","mode":"cocs","out":"/tmp/opencode/world-commands-6116f12/port/native-lattice-world-commands/evidence/1790048434326221550/commands-small"}
+{"passed":true,"checks":{"native":true,"oneSocket":true,"sameIdentity":true,"neutralWhileOpen":true,"ackHighWater":true,"singleHold":true,"executedHold":true,"economy":true,"sourceUnitDelta":true,"ownBudgetOnly":true,"normalHost":true},"out":"/tmp/opencode/world-commands-6116f12/port/native-lattice-world-commands/evidence/1790048434326221550/commands-small"}
