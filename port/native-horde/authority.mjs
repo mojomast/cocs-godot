@@ -14,13 +14,19 @@ export function validateConfig(frame) {
  if (!Number.isInteger(waves) || waves < 1 || waves > 30) throw Error('Wave target must be 1..30');
  return normalizeConfig({mode:'horde',botCount:0,difficulty:'easy',fragLimit:waves,timeLimit:900});
 }
-// Source emit spreads payload id/type over its envelope. The actual serial is
-// the append position in the bounded event ring, not event.id. Never edit it.
-export function eventBatch(match, cursor) {
- const first = match.serial - match.events.length + 1;
- if (cursor < first - 1) throw Error('Source event ring overflow');
- return match.events.flatMap((event, index) => first + index > cursor ?
-  [{...event, sourceId:event.id, id:first + index}] : []);
+// Source serial also allocates entities; payload id/type may overwrite emit's
+// envelope. Follow retained event OBJECTS, never serial arithmetic or payload
+// equality. Wire id is a per-round adapter ordinal, not a source global serial.
+export class EventCursor {
+ constructor() { this.previous=null; this.ordinal=0; }
+ take(match) {
+  const ring=match.events;
+  const start=this.previous === null ? 0 : ring.indexOf(this.previous)+1;
+  if (this.previous !== null && start === 0) throw Error('Source event ring cursor lost');
+  const batch=ring.slice(start).map(event => ({...event,sourceId:event.id,id:++this.ordinal}));
+  if (ring.length) this.previous=ring.at(-1);
+  return batch;
+ }
 }
 export function outboundAllowed(bytes, buffered) {
  return bytes <= LIMITS.frame && buffered + bytes <= LIMITS.outbound;
@@ -35,13 +41,13 @@ export function createAuthority({observe=()=>{}}={}) {
  const wss = new WebSocketServer({noServer:true, maxPayload:LIMITS.payload, perMessageDeflate:false});
  const inputs = new InputBuffer();
  let socket=null, config=null, mapId=null, match=null, created=false, finished=false;
- let round=0, seq=0, epoch=0, eventCursor=0, ticks=0, wall=performance.now(), accumulator=0, closing=false, closePromise;
+ let round=0, seq=0, epoch=0, eventCursor=null, ticks=0, wall=performance.now(), accumulator=0, closing=false, closePromise;
  let tokens=LIMITS.burst, tokenAt=wall;
  const record = value => observe({...value, round, observedMs:performance.now()});
  function detach(ws) {
   if (socket !== ws) return;
   socket=null; match=null; config=null; mapId=null; created=false; finished=false;
-  inputs.reset(); accumulator=0;
+  inputs.reset(); accumulator=0; eventCursor=null;
  }
  function terminate(reason) {
   record({direction:'transport-error', reason});
@@ -91,10 +97,14 @@ export function createAuthority({observe=()=>{}}={}) {
     } else if (f.type === 'start' && config && (!match || match.over)) {
      match=new Match('chatgpt','openclaw',Math.random,mapId,config);
      if (match.arena.id !== mapId || match.config.mode !== 'horde') throw Error('Source substituted map/mode');
-     round++; seq=0; epoch++; eventCursor=0; ticks=0; finished=false; inputs.reset();
+     round++; seq=0; epoch++; eventCursor=new EventCursor(); ticks=0; finished=false; inputs.reset();
+     // Consume construction's ring before any step can shift it. The supported
+     // solo preset constructs one spawn event; no historical events are inferred.
+     const initialEvents=eventCursor.take(match);
      // Construction cost must not advance the new match's source clock.
      wall=performance.now(); accumulator=0;
      send({type:'start',mapId,inputEpoch:epoch});
+     if (initialEvents.length) send({type:'events',items:initialEvents});
     } else if (f.type === 'input' && match) {
      if (match.over) return; // benign inputs already in flight at results
      if (f.inputEpoch !== epoch) return; // old round/death/stall cannot re-arm input
@@ -125,7 +135,7 @@ export function createAuthority({observe=()=>{}}={}) {
     record({direction:'step',inputSeq:sample.seq,inputEpoch:epoch,controls:sample.input,
      sourceTime:active.time,...inputs.status()});
     if (alive && active.actors[0].health <= 0) cancelControls('death');
-    const events=eventBatch(active,eventCursor); eventCursor=active.serial;
+    const events=eventCursor.take(active);
     if (events.length) send({type:'events',items:events});
     if (++ticks%3 === 0 || active.over) send({type:'snapshot',seq:++seq,acks:{0:inputs.applied},
      inputEpoch:epoch,hordeInput:inputs.status(),state:active.snapshot()});
@@ -144,7 +154,7 @@ export function createAuthority({observe=()=>{}}={}) {
    await new Promise(resolve => wss.close(resolve));
    server.closeAllConnections();
    if (server.listening) await new Promise(resolve => server.close(resolve));
-   socket=null; match=null;
+   socket=null; match=null; eventCursor=null;
   })();
   return closePromise;
  }};

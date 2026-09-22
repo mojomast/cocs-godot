@@ -11,6 +11,26 @@ export function validateHygiene(summary, stdout, stderr) {
  assert(summary.cleanup?.length===2&&summary.cleanup.every(p=>p.reaped&&p.absent),'owned native/Xvfb cleanup missing');
  assert(!/SCRIPT ERROR|Parse Error|ERROR:|ObjectDB instances leaked|resources still in use|RIDs? of type.*leaked/.test(stdout+stderr),'native resource/script errors');
 }
+// This bounded first-wave case has three distinct source NPC victims. Source
+// singleplayer.kills is NET FRAGS, so a legitimate self-kill must not substitute
+// for an NPC kill or make three real NPC deaths disappear from the evidence.
+export function validateNpcKills(states, events, result, localActor=0) {
+ const roster=new Set(states.flatMap(state=>state.actors ?? [])
+  .filter(actor=>actor.isNpc === true && actor.id !== localActor).map(actor=>actor.id));
+ assert.equal(roster.size,3,'three snapshot-identified NPC targets required');
+ assert([...roster].every(id=>Number.isSafeInteger(id)&&id>=0),'invalid NPC identity');
+ const kills=events.filter(e=>e.type==='death'&&e.killer===localActor&&e.actor!==localActor&&e.self!==true);
+ assert(kills.every(e=>roster.has(e.actor)),'credited victim is not a snapshot NPC');
+ assert.equal(kills.length,3,'three local NPC death events required');
+ const victims=new Set(kills.map(e=>e.actor));
+ assert.equal(victims.size,3,'duplicate NPC death cannot count as another kill');
+ assert.deepEqual([...victims].sort((a,b)=>a-b),[...roster].sort((a,b)=>a-b),'NPC victim roster mismatch');
+ const local=result.actors.find(actor=>actor.id===localActor);
+ assert(local,'local result actor missing');
+ assert.equal(result.singleplayer.kills,local.frags,'source net-frag projection differs');
+ return {npcKills:kills.length,npcVictims:[...victims].sort((a,b)=>a-b),netFrags:local.frags,
+  lives:result.singleplayer.lives,selfDeaths:events.filter(e=>e.type==='death'&&e.actor===localActor&&e.self===true).length};
+}
 export function validate(wire,stdout,scenario='startup') {
  const frames=wire.filter(r=>r.direction==='out'),rows=stdout.split('\n').filter(l=>l.startsWith('HORDE_NATIVE ')).map(l=>JSON.parse(l.slice(13)));
  assert(rows.length>0,'no native evidence');
@@ -108,11 +128,13 @@ export function validateRun({wire,stdout,stderr,summary,launch}) {
  const events=outputs.filter(r=>r.frame.type==='events').flatMap(r=>r.frame.items);
  assert(events.some(e=>e.type==='horde-modifier'&&e.sourceId==='swarm'&&Number.isSafeInteger(e.id)),'source string-ID event missing');
  if(summary.scenario==='startup')assert(snapshots.every(r=>r.frame.state.singleplayer.waveTarget===10),'default-ten startup required');
+ let combatKills;
  if(summary.scenario==='combat') {
-  const state=outputs.find(r=>r.frame.type==='results')?.frame.state;
+  const finished=outputs.find(r=>r.frame.type==='results'),state=finished?.frame.state;
   assert(state?.over&&state.singleplayer.winner===0&&state.singleplayer.waveTarget===1&&state.singleplayer.enemiesAlive===0,'legal one-wave source outcome required');
-  assert.equal(state.singleplayer.kills,3);
-  assert.deepEqual([...new Set(events.filter(e=>e.type==='death'&&e.killer===0).map(e=>e.actor))].sort(),[1,2,3]);
+  const roundStates=snapshots.filter(r=>r.round===finished.round).map(r=>r.frame.state);
+  const roundEvents=outputs.filter(r=>r.round===finished.round&&r.frame.type==='events').flatMap(r=>r.frame.items);
+  combatKills=validateNpcKills(roundStates,roundEvents,state);
   assert(layouts.filter(l=>l.tag.startsWith('results')&&l.scoreboard_visible).length>=2,'results scoreboard not seen at both sizes');
  }
  if(summary.scenario==='death') {
@@ -127,7 +149,7 @@ export function validateRun({wire,stdout,stderr,summary,launch}) {
  return {...result,steppedSamples:applied.size,receivedHighWater:Math.max(...snapshots.map(r=>r.frame.hordeInput.receivedSeq)),
   nativeTraceCompletionProven:true,productComposition:true,harnessExit:summary.exit,
   clockDiagnostic:{sourceSeconds:last.frame.state.time-first.frame.state.time,wallSeconds:(last.observedMs-first.observedMs)/1000},
-  runtimeCommit:launch.base};
+   runtimeCommit:launch.base,...(combatKills?{combatKills}:{})};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
  const dir=process.argv[2],read=n=>gunzipSync(readFileSync(`${dir}/${n}.gz`)).toString();

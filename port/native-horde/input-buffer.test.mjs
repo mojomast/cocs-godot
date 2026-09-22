@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {InputBuffer,INPUT_LIMIT,INPUT_TTL_MS} from './input-buffer.mjs';
 import {controlsFromState} from '../../game/input.mjs';
 import {parseInputEnvelope} from '../../game/protocol.mjs';
-import {eventBatch,outboundAllowed} from './authority.mjs';
+import {EventCursor,outboundAllowed} from './authority.mjs';
 test('source one-shot fields are consumed once while source held fields persist',()=>{
  const b=new InputBuffer();
  const source=controlsFromState({keys:new Set(['Space','KeyX','KeyZ','ShiftLeft','ControlLeft']),fire:true,reload:true,power:true,interact:true,melee:true,grenade:true,ads:true,weapon:1});
@@ -32,11 +32,12 @@ test('duplicate/unsafe seq does not renew expiry; stale samples are never implic
  for(const seq of [0,1,2,NaN,1.5,Number.MAX_SAFE_INTEGER+1])assert.equal(b.receive(seq,{},200),false);
  assert(b.expired(INPUT_TTL_MS));assert.equal(b.applied,0);b.cancel();assert.deepEqual(b.take().input,{});
 });
-test('serial cursor preserves repeated opaque source IDs and detects a lost source ring',()=>{
+test('object cursor preserves repeated opaque source IDs and detects a lost source ring',()=>{
  const match={serial:3,events:[{id:'swarm',type:'horde-modifier'},{id:'pad-1',type:'traversal'},{id:'swarm',type:'horde-modifier'}]};
- assert.deepEqual(eventBatch(match,0).map(e=>[e.id,e.sourceId]),[[1,'swarm'],[2,'pad-1'],[3,'swarm']]);
- assert.deepEqual(eventBatch(match,2).map(e=>e.id),[3]);assert.deepEqual(eventBatch(match,3),[]);
- assert.throws(()=>eventBatch({serial:5,events:match.events},0),/overflow/);
+ const cursor=new EventCursor();
+ assert.deepEqual(cursor.take(match).map(e=>[e.id,e.sourceId]),[[1,'swarm'],[2,'pad-1'],[3,'swarm']]);
+ assert.deepEqual(cursor.take(match),[]);
+ assert.throws(()=>cursor.take({events:match.events.slice(0,2)}),/cursor lost/);
 });
 test('outbound message and total queued-byte boundaries are inclusive and bounded',()=>{
  assert(outboundAllowed(1048576,1048576));assert(!outboundAllowed(1048577,0));assert(!outboundAllowed(1,2097152));
