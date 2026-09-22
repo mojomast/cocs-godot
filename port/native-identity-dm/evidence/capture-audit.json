@@ -1,0 +1,198 @@
+{
+  "scope": "Independent PNG-header audit of the committed Deathmatch captures",
+  "captures": [
+    {
+      "file": "lacuna-court-arena-960x640.png",
+      "declared": [
+        960,
+        640
+      ],
+      "header": [
+        960,
+        640
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 263148,
+      "ok": true
+    },
+    {
+      "file": "lacuna-court-action-960x640.png",
+      "declared": [
+        960,
+        640
+      ],
+      "header": [
+        960,
+        640
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 296867,
+      "ok": true
+    },
+    {
+      "file": "lacuna-court-arena-1280x800.png",
+      "declared": [
+        1280,
+        800
+      ],
+      "header": [
+        1280,
+        800
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 529858,
+      "ok": true
+    },
+    {
+      "file": "lacuna-court-action-1280x800.png",
+      "declared": [
+        1280,
+        800
+      ],
+      "header": [
+        1280,
+        800
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 289877,
+      "ok": true
+    },
+    {
+      "file": "nacre-engine-arena-960x640.png",
+      "declared": [
+        960,
+        640
+      ],
+      "header": [
+        960,
+        640
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 479747,
+      "ok": true
+    },
+    {
+      "file": "nacre-engine-action-960x640.png",
+      "declared": [
+        960,
+        640
+      ],
+      "header": [
+        960,
+        640
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 479472,
+      "ok": true
+    },
+    {
+      "file": "nacre-engine-arena-1280x800.png",
+      "declared": [
+        1280,
+        800
+      ],
+      "header": [
+        1280,
+        800
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 728805,
+      "ok": true
+    },
+    {
+      "file": "nacre-engine-action-1280x800.png",
+      "declared": [
+        1280,
+        800
+      ],
+      "header": [
+        1280,
+        800
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 564773,
+      "ok": true
+    },
+    {
+      "file": "vermilion-fold-arena-960x640.png",
+      "declared": [
+        960,
+        640
+      ],
+      "header": [
+        960,
+        640
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 259565,
+      "ok": true
+    },
+    {
+      "file": "vermilion-fold-action-960x640.png",
+      "declared": [
+        960,
+        640
+      ],
+      "header": [
+        960,
+        640
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 257486,
+      "ok": true
+    },
+    {
+      "file": "vermilion-fold-arena-1280x800.png",
+      "declared": [
+        1280,
+        800
+      ],
+      "header": [
+        1280,
+        800
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 373054,
+      "ok": true
+    },
+    {
+      "file": "vermilion-fold-action-1280x800.png",
+      "declared": [
+        1280,
+        800
+      ],
+      "header": [
+        1280,
+        800
+      ],
+      "phase": 3,
+      "actors": 4,
+      "firstPerson": true,
+      "bytes": 398075,
+      "ok": true
+    }
+  ],
+  "passed": true
+}
