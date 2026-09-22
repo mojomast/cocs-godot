@@ -1,0 +1,47 @@
+[
+  {
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/protocol/lobby_spectator_context.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/objectives/controls.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--script",
+      "res://tests/objectives/renderer.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "godot",
+      "--check-only",
+      "--script",
+      "res://tests/protocol/lobby_spectator_observer.gd"
+    ],
+    "exit": 0
+  }
+]

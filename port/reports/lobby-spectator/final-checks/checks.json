@@ -1,0 +1,351 @@
+{
+  "checks": [
+    {
+      "name": "context-new",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/lobby_spectator_context.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "lobby_flow",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/lobby_flow.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "envelopes",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/envelopes.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "replay",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/replay.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "input_queue",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/input_queue.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "control_safety",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/control_safety.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "window_focus",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/window_focus.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "stall_controls",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/stall_controls.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "session_recovery",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/session_recovery.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "round_boundaries",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/round_boundaries.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "local_lifecycle",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/local_lifecycle.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "guest_session",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/guest_session.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "game_hud_session",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/game_hud_session.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "scoreboard",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/scoreboard.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "scoreboard_session",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/scoreboard_session.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "zone",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/zone_modes/unit.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "world",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/lattice/world_contract.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "world-commands",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/lattice/world_commands_contract.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "combined",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/combined_arms/test_controls.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "sports",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/sports/test_controls.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "spectator-ui",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "res://tests/protocol/lobby_spectator_session.gd",
+        "--",
+        "--lobby-menu"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "geometry-960",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "res://tests/protocol/lobby_followup_geometry.gd",
+        "--resolution",
+        "960x640",
+        "--",
+        "--lobby-menu"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "geometry-1280",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "res://tests/protocol/lobby_followup_geometry.gd",
+        "--resolution",
+        "1280x800",
+        "--",
+        "--lobby-menu"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "weapon",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "res://tests/protocol/weapon_selection.gd"
+      ],
+      "exit": 0
+    }
+  ],
+  "cleanup": {
+    "displayPid": 3647628,
+    "displayReaped": true,
+    "tempRemoved": true
+  }
+}

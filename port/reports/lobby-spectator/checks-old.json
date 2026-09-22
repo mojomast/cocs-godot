@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "name": "context-old",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--script",
+        "res://tests/protocol/lobby_spectator_context.gd"
+      ],
+      "exit": 1
+    }
+  ],
+  "cleanup": {
+    "tempRemoved": true
+  }
+}
