@@ -88,6 +88,13 @@ commands = [
     ("native-arena-maps", ["node", "--test", "port/native-arenas/tests/actual-maps.mjs"]),
     ("native-arena-session", [binary, "--headless", "--path", "godot", "--script", "res://tests/native_arenas/session/test.gd", "--", "--mute"]),
     ("native-arena-composition", [binary, "--headless", "--path", "godot", "--script", "res://tests/native_arenas/session/geometry_composition.gd", "--", "--endpoint=ws://127.0.0.1:1", "--mute"]),
+    # Visual-identity prototypes: source movement/ray parity and map lifecycle only.
+    # These maps are not exposed as a playable route yet; passing here is not
+    # playable, visual or performance acceptance.
+    ("identity-prototype-graybox", ["node", "--test", "port/native-identity-maps/graybox.test.mjs"]),
+    ("identity-prototype-oracle", ["node", "port/native-identity-maps/ray-oracle.mjs"]),
+    ("identity-prototype-rays", [binary, "--headless", "--path", "godot", "--script", "res://tests/identity_maps/rays.gd"]),
+    ("identity-prototype-lifecycle", [binary, "--headless", "--path", "godot", "--script", "res://tests/identity_maps/lifecycle.gd"]),
     ("native-arena-prism", ["node", "tools/godot-dev/launch.mjs", "--experience=native-dm", "--map=prism-foundry", "--smoke"]),
     ("native-arena-aurora", ["node", "tools/godot-dev/launch.mjs", "--experience=native-dm", "--map=aurora-basin", "--smoke"]),
     ("native-arena-cinder", ["node", "tools/godot-dev/launch.mjs", "--experience=native-dm", "--map=cinder-array", "--smoke"]),
