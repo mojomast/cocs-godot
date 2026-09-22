@@ -1,0 +1,29 @@
+{
+  "recipient": 0,
+  "map": "meridian-exchange",
+  "mode": "domination",
+  "correlatedSnapshots": 1801,
+  "queuedInputs": 1559,
+  "receivedInputs": 1558,
+  "ackHighwater": 1556,
+  "ackMeaning": "input receipt only",
+  "nativeCapture": true,
+  "nativeHeldScore": true,
+  "captureTransition": true,
+  "scoredInside": true,
+  "naturalResults": 1,
+  "restartStarts": 2,
+  "finalScore": {
+    "0": 49.78333333333179,
+    "1": 0
+  },
+  "winner": 0,
+  "sourceTime": 60.01666666666454,
+  "centers": [
+    "alpha:0:0.9:0",
+    "bravo:-14:0:-19",
+    "charlie:27:0:16"
+  ],
+  "contestedLive": false,
+  "traceComplete": false
+}

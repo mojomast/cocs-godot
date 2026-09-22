@@ -1,0 +1,20 @@
+diff --git a/tools/godot-dev/launch_options.mjs b/tools/godot-dev/launch_options.mjs
+--- a/tools/godot-dev/launch_options.mjs
++++ b/tools/godot-dev/launch_options.mjs
+@@ -1,5 +1,6 @@
+ // Scene routing only: capability and protocol checks still belong to each client.
+ export const EXPERIENCES = {
+   combat: {scene:'res://world/session.tscn', map:'meridian-exchange'},
++  zones: {scene:'res://zone_modes/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
+   sports: {scene:'res://sports/demo.tscn', map:'ion-speedway', modes:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
+   objectives: {scene:'res://objectives/demo.tscn', map:'tidal-citadel', modes:{'tidal-citadel':['ctf'], 'sunscar-convoy':['payload']}},
+diff --git a/tools/godot-package/options.mjs b/tools/godot-package/options.mjs
+--- a/tools/godot-package/options.mjs
++++ b/tools/godot-package/options.mjs
+@@ -1,5 +1,6 @@
+ // Package-only routing. Source clients retain their own capability/protocol gates.
+ export const EXPERIENCES = {
+   combat: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
++  zones: {scene:'res://zone_modes/demo.tscn', maps:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
+   sports: {scene:'res://sports/demo.tscn', maps:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
+   objectives: {scene:'res://objectives/demo.tscn', maps:{'tidal-citadel':['ctf'], 'sunscar-convoy':['payload']}},
