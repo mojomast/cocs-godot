@@ -155,8 +155,9 @@ Combined arms opens Sunscar's zero-bot Puma driving slice. Press **Enter** to
 engage, walk to a Puma and press **E** to mount. After each seat change, press
 Enter and fresh movement keys. **WASD** drives, **S** slows/reverses, **Space**
 requests a brake tap, **E** exits and **Escape** releases controls. Secondary
-chassis are visual/exit-only previews. The delivery's driving receipts and current
-limits are in the [vehicle handoff](port/native-combined-arms/HANDOFF.md).
+chassis are visual/exit-only previews. An independent run verified mounting,
+25.678 m of source vehicle movement, braking, exiting and 3.118 m of fresh
+infantry movement. See [vehicle acceptance](port/reports/combined-arms-independent/README.md).
 
 ### Puma driving demos
 
@@ -224,6 +225,9 @@ click the world to resume. PvP Fighter costs 12 FLUX; co-op REINFORCE requires
 50 FLUX and a source-authorized between-wave window. See
 [world commands verification](port/reports/lattice-world-commands-independent/README.md)
 and [world traversal verification](port/reports/lattice-world-independent/README.md).
+Both maps also pass real world-panel REINFORCE purchases after natural window
+and consent expiry: exactly 50 additional FLUX spent, one spawn and no REQ spend.
+See [world co-op acceptance](port/native-lattice-world-coop/HANDOFF.md).
 
 ### CTF and Payload demos
 
@@ -314,13 +318,13 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated local run passes **69 gates**, including zone controls,
+The latest integrated local run passes **70 gates**, including CI artifact retention, zone controls,
 vehicle controls and evidence replay, soccer coaching,
 in-world LATTICE commands, package routing, sports and objective
 progression, LATTICE map selection, launcher routing, GLB material sides and
 projectile navigation. Native
 [GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
-passed the prior 65-gate sports/world snapshot from a fresh Ubuntu checkout;
+passed the prior 69-gate zone/vehicle snapshot from a fresh Ubuntu checkout;
 hosted evidence is tracked separately from newer local runs.
 
 Focused real-session and graphical evidence is documented in:

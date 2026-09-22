@@ -1,0 +1,20 @@
+extends SceneTree
+func _initialize() -> void:
+	call_deferred("capture")
+func capture() -> void:
+	var catalog = load("res://world/catalog.gd").new()
+	if not catalog.open():
+		quit(1)
+		return
+	var menu = load("res://ui/match_setup.gd").new()
+	root.add_child(menu)
+	menu.configure(catalog.entries, "ion-speedway", "puma-race")
+	await process_frame
+	await process_frame
+	await RenderingServer.frame_post_draw
+	var output := OS.get_cmdline_user_args()[0]
+	var error := root.get_texture().get_image().save_png(output)
+	print("SETUP_COPY_FIXTURE ", menu.status.text, " size=", root.size, " saved=", error)
+	menu.queue_free()
+	await process_frame
+	quit(0 if error == OK else 1)

@@ -9,16 +9,18 @@ updates root documentation/shared verification and owns publication.
 | LATTICE in-world command panel | Delivered `7439f05`, integrated `511bb8d`; independent suite PASS | World panel and tests; lead owns integration/docs |
 | Native KOTH / Domination | Delivered `2b3d758` + `7238c9d`, integrated `8344544` + `c95f5ca`; independent acceptance PASS | New `godot/zone_modes/`, `godot/tests/zone_modes/`, `port/native-zone-modes/` |
 | Independent zone acceptance | Delivered `60ebf1c`; both capture/scoring/results/restart runs PASS | `port/reports/zone-modes-independent/`; lead corrected helper partial-pass and provenance issues |
-| LATTICE world co-op window | `ses_f38bf686ffferVSm9YSxCZ2qBP`; `8a58c97` | New `port/native-lattice-world-coop/`, new `godot/tests/lattice/world_coop_*`; existing runtime read-only |
-| Native Arms Race | `ses_f38befeabfferVsmwNUVMxGkNX`; `8a58c97` | New `godot/arms_race/`, `godot/tests/arms_race/`, `port/native-arms-race/` |
-| Player-facing usability audit | `ses_f38bcab6cffeceiulWP8ehkAkm`; `83e4aff`; owner-approved fifth lane | New `port/native-usability-audit/` only; graphical review and prioritized findings, no runtime edits |
+| LATTICE world co-op window | Delivered `e5d862e`, integrated `163e528`; both natural-window/expired-consent cases PASS | `port/native-lattice-world-coop/`, `godot/tests/lattice/world_coop_*`; no runtime change |
+| Native Arms Race | Delivered `52de3b9` / `21fbd93`; independent `a7cbc12` PASS, integration next | New `godot/arms_race/`, `godot/tests/arms_race/`, `port/native-arms-race/`; full ladder victory open |
+| Player-facing usability audit | Delivered `29b0a59`, integrated `2af744f` | `port/native-usability-audit/`; lead fixed setup copy; sports bearing correction delegated |
+| Sports bearing correction | `ses_f38ac0012ffeMU3D9MW8Fnn9iE` running | Narrow sports guidance bearing functions/tests; new `port/native-sports-bearing/` |
 | Race victory / soccer practice | Delivered `33f5257`, integrated `8a58c97`; independent race victory/local goal PASS | Sports coaching/tests; zero-bot practice blocked by source |
 | Sunscar combined-arms vehicle slice | Delivered `1126a08` + `613dc92`, integrated `88cd514` + `fc5795c` | New `godot/combined_arms/`, `godot/tests/combined_arms/`, `port/native-combined-arms/` |
-| Independent combined-arms acceptance | `ses_f38bb0b98ffeMGMo60aSC3YOzr`; `83e4aff` + delivery | New `port/reports/combined-arms-independent/`; independent evidence only, runtime read-only |
+| Independent combined-arms acceptance | Delivered `9b1cdcd`, integrated `51f555f`; full Puma route PASS | `port/reports/combined-arms-independent/`; lead strengthened receipt-set validator |
 | Multiplayer lobby / leave / retry | Runtime delivery `3b96206` available; uncommitted acceptance/handoff path absent locally, requested committed evidence | New lobby-prefixed UI/tests, narrow `godot/world/session.gd` / scene and backward-compatible client hook if essential; `port/native-multiplayer-lobby/` |
-| Independent lobby review | `ses_f38b68670ffexH4SE93QXRWRVd`; current integration runtime + `3b96206` in private worktree | New `port/reports/multiplayer-lobby-independent/` and new lobby-prefixed observers; shared runtime read-only |
+| Independent lobby review / layout follow-up | Delivered `0c92076` / `37f0b9e` / `0cc3b8e`; PARTIAL live; same agent authorized minimal layout fixes and new bounded leave/rejoin acceptance | Narrow `lobby_menu.gd` / `game_hud.gd`, lobby-prefixed checks and reports; original failed/partial evidence preserved |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
-| Native Horde survival | External delivery `94690b6`; integration/review queued | New `godot/horde/`, `godot/tests/horde/`, `port/native-horde/`; local-only Match adapter needs separate launcher/package review, visual inspection pending |
+| Player/operator model improvement | External prompt prepared at `2af744f`; not launched by lead | New `godot/player_models/`, `godot/tests/player_models/`, `port/native-player-models/`; shared actor/presentation hooks returned unapplied |
+| Native Horde survival | External delivery `94690b6`; independent review `ses_f38b0ffbbffe0wHBE1r8SUSnjM` running | New `port/reports/horde-independent/` / horde-prefixed observers; local-only adapter needs launcher/package review; lead opened final delivered 960/1280 Verdant PNGs |
 
 The LATTICE command and physical-input lanes are delivered and integrated at
 `658b4e7` and `aca52f5`. The projectile navigation follow-up is integrated at

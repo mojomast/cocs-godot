@@ -33,6 +33,7 @@ for key, suffix in [("XDG_DATA_HOME", "data"), ("XDG_CONFIG_HOME", "config"), ("
     Path(os.environ[key]).mkdir(parents=True, exist_ok=True)
 commands = [
     ("gate-runner-tests", [sys.executable, "tools/godot-dev/test_gate_runner.py"]),
+    ("ci-artifact-tests", [sys.executable, "tools/godot-dev/test_ci_artifact.py"]),
     ("export-tests", ["node", "--test", "tools/godot-export/semantic.test.mjs"]),
     ("gltf-sides", ["node", "--test", "tools/godot-export/gltf_side.test.mjs"]),
     ("health-hud-evidence", ["node", "--test", "port/tools/native_health_damage/analyze.test.mjs", "port/tools/native_health_damage/test.mjs"]),

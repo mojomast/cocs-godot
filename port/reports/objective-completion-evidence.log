@@ -2,133 +2,133 @@ TAP version 13
 # Subtest: replay archived genuine rollback, bank, resumed push, delivery result and restart
 ok 1 - replay archived genuine rollback, bank, resumed push, delivery result and restart
   ---
-  duration_ms: 482.85457
+  duration_ms: 474.183014
   type: 'test'
   ...
 # Subtest: reject missing delivered source event
 ok 2 - reject missing delivered source event
   ---
-  duration_ms: 173.015808
+  duration_ms: 168.366334
   type: 'test'
   ...
 # Subtest: reject time-limit hold relabeled delivery
 ok 3 - reject time-limit hold relabeled delivery
   ---
-  duration_ms: 155.096126
+  duration_ms: 173.721579
   type: 'test'
   ...
 # Subtest: reject wrong actual winner
 ok 4 - reject wrong actual winner
   ---
-  duration_ms: 164.920647
+  duration_ms: 151.847818
   type: 'test'
   ...
 # Subtest: reject accelerated authority
 ok 5 - reject accelerated authority
   ---
-  duration_ms: 146.935042
+  duration_ms: 145.092067
   type: 'test'
   ...
 # Subtest: reject rollback crossing banked checkpoint
 ok 6 - reject rollback crossing banked checkpoint
   ---
-  duration_ms: 155.356184
+  duration_ms: 155.368997
   type: 'test'
   ...
 # Subtest: reject rollback without ordinary defender
 ok 7 - reject rollback without ordinary defender
   ---
-  duration_ms: 174.462728
+  duration_ms: 154.556173
   type: 'test'
   ...
 # Subtest: reject wrong source-root cart height
 ok 8 - reject wrong source-root cart height
   ---
-  duration_ms: 207.985201
+  duration_ms: 237.686196
   type: 'test'
   ...
 # Subtest: reject missing displayed rolling-back model
 ok 9 - reject missing displayed rolling-back model
   ---
-  duration_ms: 185.4946
+  duration_ms: 171.24616
   type: 'test'
   ...
 # Subtest: reject result retains native capture
 ok 10 - reject result retains native capture
   ---
-  duration_ms: 175.41916
+  duration_ms: 184.83783
   type: 'test'
   ...
 # Subtest: reject stale checkpoint after round clear
 ok 11 - reject stale checkpoint after round clear
   ---
-  duration_ms: 175.976874
+  duration_ms: 193.404865
   type: 'test'
   ...
 # Subtest: reject completion marker duplicated
 ok 12 - reject completion marker duplicated
   ---
-  duration_ms: 180.370393
+  duration_ms: 195.65988
   type: 'test'
   ...
 # Subtest: reject ACK without an input receipt
 ok 13 - reject ACK without an input receipt
   ---
-  duration_ms: 169.852003
+  duration_ms: 161.308447
   type: 'test'
   ...
 # Subtest: reject faster-than-source rollback
 ok 14 - reject faster-than-source rollback
   ---
-  duration_ms: 155.15129
+  duration_ms: 148.548485
   type: 'test'
   ...
 # Subtest: single CTF archive proves pass/capture but retains original failed full acceptance
 ok 15 - single CTF archive proves pass/capture but retains original failed full acceptance
   ---
-  duration_ms: 231.276653
+  duration_ms: 220.507093
   type: 'test'
   ...
 # Subtest: reject CTF missing source flag-pass
 ok 16 - reject CTF missing source flag-pass
   ---
-  duration_ms: 78.041583
+  duration_ms: 86.940083
   type: 'test'
   ...
 # Subtest: reject CTF drop relabeled as pass
 ok 17 - reject CTF drop relabeled as pass
   ---
-  duration_ms: 82.878932
+  duration_ms: 75.039832
   type: 'test'
   ...
 # Subtest: reject CTF wrong pass recipient
 ok 18 - reject CTF wrong pass recipient
   ---
-  duration_ms: 86.878713
+  duration_ms: 86.063661
   type: 'test'
   ...
 # Subtest: reject CTF actor zero erased
 ok 19 - reject CTF actor zero erased
   ---
-  duration_ms: 79.224098
+  duration_ms: 78.603901
   type: 'test'
   ...
 # Subtest: reject CTF missing native E receipt
 ok 20 - reject CTF missing native E receipt
   ---
-  duration_ms: 96.084775
+  duration_ms: 96.777297
   type: 'test'
   ...
 # Subtest: reject CTF results continue transmitting movement
 ok 21 - reject CTF results continue transmitting movement
   ---
-  duration_ms: 186.396258
+  duration_ms: 177.320403
   type: 'test'
   ...
 # Subtest: reject CTF restart retains interaction
 ok 22 - reject CTF restart retains interaction
   ---
-  duration_ms: 100.662219
+  duration_ms: 99.097075
   type: 'test'
   ...
 1..22
@@ -139,4 +139,4 @@ ok 22 - reject CTF restart retains interaction
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 3703.46351
+# duration_ms 3698.335244

@@ -7,7 +7,7 @@
   "clock": "normal server rate, loopback only",
   "results": [
     {
-      "ack": 17,
+      "ack": 16,
       "actor_id": 0,
       "actors": 4,
       "both_moved": true,
@@ -16,7 +16,7 @@
         1
       ],
       "peer_id": 1,
-      "remote_poses": 141
+      "remote_poses": 138
     },
     {
       "ack": 17,

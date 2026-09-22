@@ -2,61 +2,61 @@ TAP version 13
 # Subtest: replay genuine tidal-citadel
 ok 1 - replay genuine tidal-citadel
   ---
-  duration_ms: 78.074003
+  duration_ms: 82.371041
   type: 'test'
   ...
 # Subtest: replay genuine sunscar-convoy
 ok 2 - replay genuine sunscar-convoy
   ---
-  duration_ms: 101.053711
+  duration_ms: 103.181438
   type: 'test'
   ...
 # Subtest: tampered fixture rejected: missing source return
 ok 3 - tampered fixture rejected: missing source return
   ---
-  duration_ms: 70.624091
+  duration_ms: 75.093693
   type: 'test'
   ...
 # Subtest: tampered fixture rejected: forced early result
 ok 4 - tampered fixture rejected: forced early result
   ---
-  duration_ms: 53.686258
+  duration_ms: 52.726077
   type: 'test'
   ...
 # Subtest: tampered fixture rejected: accelerated wall time
 ok 5 - tampered fixture rejected: accelerated wall time
   ---
-  duration_ms: 58.746846
+  duration_ms: 53.660909
   type: 'test'
   ...
 # Subtest: tampered fixture rejected: stale dynamic marker after restart
 ok 6 - tampered fixture rejected: stale dynamic marker after restart
   ---
-  duration_ms: 70.32441
+  duration_ms: 67.602515
   type: 'test'
   ...
 # Subtest: tampered fixture rejected: duplicate completion marker
 ok 7 - tampered fixture rejected: duplicate completion marker
   ---
-  duration_ms: 62.162964
+  duration_ms: 63.585998
   type: 'test'
   ...
 # Subtest: tampered fixture rejected: wrong rendered height
 ok 8 - tampered fixture rejected: wrong rendered height
   ---
-  duration_ms: 67.216649
+  duration_ms: 71.096883
   type: 'test'
   ...
 # Subtest: tampered fixture rejected: contest without opposing occupant
 ok 9 - tampered fixture rejected: contest without opposing occupant
   ---
-  duration_ms: 87.418474
+  duration_ms: 87.894261
   type: 'test'
   ...
 # Subtest: tampered fixture rejected: old cart progress on new round
 ok 10 - tampered fixture rejected: old cart progress on new round
   ---
-  duration_ms: 92.165295
+  duration_ms: 98.909975
   type: 'test'
   ...
 1..10
@@ -67,4 +67,4 @@ ok 10 - tampered fixture rejected: old cart progress on new round
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 788.470723
+# duration_ms 814.471955

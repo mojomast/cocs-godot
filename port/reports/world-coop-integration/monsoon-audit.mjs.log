@@ -1,0 +1,109 @@
+{
+  "passed": true,
+  "checks": {
+    "native": true,
+    "bounded": true,
+    "oneSocket": true,
+    "sameIdentity": true,
+    "ordinaryHost": true,
+    "ownWalletOnly": true,
+    "neutralWhileOpen": true,
+    "authoritativeStillWhileOpen": true,
+    "movementAfterFreshClick": true,
+    "ackHighWaterOnly": true,
+    "holdOnce": true,
+    "holdAccepted": true,
+    "naturalWindow": true,
+    "naturalLease": true,
+    "expiredConsentBlocked": true,
+    "newConsent": true,
+    "oneReinforce": true,
+    "sourcePermission": true,
+    "doneReceipt": true,
+    "sourceCostSpawnReq": true,
+    "nativeWireIdentity": true,
+    "noStaleDuplicate": true
+  },
+  "nativeExit": 0,
+  "nativeResult": {
+    "ackHighWater": 0,
+    "actor": -1,
+    "checks": 35,
+    "event": "result",
+    "failures": 0,
+    "input": "engine key/mouse events; not OS/human input",
+    "inputSeq": 0,
+    "ms": 144583,
+    "peer": -1,
+    "snapshotSeq": -1
+  },
+  "commands": [
+    {
+      "type": "request",
+      "peer": 1,
+      "actor": 0,
+      "frame": {
+        "actionSeq": 1,
+        "cardId": "native-r1-p1-s1",
+        "roundRev": 1,
+        "target": "front-0",
+        "type": "order",
+        "verb": "HOLD"
+      },
+      "priorSeq": 90,
+      "ms": 7283
+    },
+    {
+      "type": "request",
+      "peer": 1,
+      "actor": 0,
+      "frame": {
+        "action": "reinforce",
+        "actionSeq": 2,
+        "cardId": "native-r1-p1-s2",
+        "role": "fighter",
+        "roundRev": 1,
+        "type": "economy"
+      },
+      "priorSeq": 4219,
+      "ms": 143306
+    }
+  ],
+  "receipt": {
+    "seq": 4220,
+    "card": {
+      "id": "native-r1-p1-s2",
+      "actorId": 0,
+      "peerId": "1",
+      "state": "done",
+      "accepted": true,
+      "ok": true,
+      "reason": null,
+      "verb": "REINFORCE",
+      "role": "fighter"
+    },
+    "spent": [
+      35,
+      85
+    ],
+    "spawned": [
+      0,
+      1
+    ],
+    "reqSpent": [
+      0,
+      0
+    ]
+  },
+  "lease": {
+    "before": 8400,
+    "after": 9000,
+    "elapsedMs": 6733
+  },
+  "naturalWindowMs": 135173,
+  "authoritativeMovement": 3.8349999999999937,
+  "ackMeaning": "Input high-water receipt only. Purchase requires matching source done/ok card and cumulative counters.",
+  "captureClaim": false,
+  "fullRoundClaim": false,
+  "humanInputClaim": false
+}

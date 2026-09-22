@@ -7,6 +7,17 @@ const MODES := ["deathmatch", "teamdeathmatch", "instagib", "rockets"]
 const MODE_NAMES := {"deathmatch":"Deathmatch", "teamdeathmatch":"Team Deathmatch", "instagib":"Instagib", "rockets":"Rocket Arena"}
 const DEFAULT_MAP := "meridian-exchange"
 const DEFAULT_MODE := "deathmatch"
+const STANDALONE := {
+	"meridian-exchange":{"domination":"zones", "koth":"zones"},
+	"verdant-reliquary":{"domination":"zones", "koth":"zones"},
+	"ember-crucible":{"domination":"zones", "koth":"zones"},
+	"tidal-citadel":{"ctf":"objectives", "domination":"zones"},
+	"sunscar-convoy":{"payload":"objectives", "domination":"zones", "combined-arms":"combined-arms"},
+	"asterion-relay":{"cocs":"lattice-world", "cocs-coop":"lattice-world"},
+	"monsoon-foundry":{"cocs":"lattice-world", "cocs-coop":"lattice-world"},
+	"ion-speedway":{"puma-race":"sports"},
+	"aurora-stadium":{"puma-soccer":"sports"},
+}
 var entries: Dictionary = {}
 var map_choice := OptionButton.new()
 var mode_choice := OptionButton.new()
@@ -24,6 +35,10 @@ static func validate(maps: Dictionary, map_id: String, mode: String) -> String:
 	if not maps.has(map_id): return "Unknown locked map: " + map_id
 	if mode not in maps[map_id].get("modes", []):
 		return "Mode '%s' is not supported by %s in the locked catalog." % [mode, map_id]
+	var route: String = STANDALONE.get(map_id, {}).get(mode, "")
+	if not route.is_empty():
+		return "Separate demo. Close this window and relaunch with:\n--experience=%s --map=%s --mode=%s" % [route, map_id, mode]
+	if mode == "campaign": return "Campaign remake deferred for planning and research."
 	if map_id not in MAPS: return "Native gameplay pending for " + map_id
 	if mode not in MODES: return "Native mode pending: " + mode
 	return ""
@@ -75,7 +90,7 @@ func configure(maps: Dictionary, map_id: String, mode: String) -> void:
 	box.add_theme_constant_override("separation", 14)
 	margin.add_child(box)
 	var title := Label.new()
-	title.text = "HOST A NATIVE MATCH"
+	title.text = "COMBAT SETUP"
 	title.add_theme_font_size_override("font_size", 26)
 	box.add_child(title)
 	var description := Label.new()
@@ -83,7 +98,7 @@ func configure(maps: Dictionary, map_id: String, mode: String) -> void:
 	box.add_child(description)
 	box.add_child(map_choice)
 	for id: String in entries:
-		var suffix := "" if id in MAPS else " — pending"
+		var suffix := "" if id in MAPS else (" — separate demo" if STANDALONE.has(id) else " — pending")
 		map_choice.add_item(entries[id].name + suffix)
 		map_choice.set_item_metadata(map_choice.item_count - 1, id)
 		if id == map_id: map_choice.select(map_choice.item_count - 1)
@@ -92,7 +107,7 @@ func configure(maps: Dictionary, map_id: String, mode: String) -> void:
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	status.custom_minimum_size = Vector2(620, 70)
 	var pending := Label.new()
-	pending.text = "Native: Deathmatch, Team Deathmatch, Instagib and Rocket Arena on 3 arenas.\nOther maps and modes remain selectable for their pending status."
+	pending.text = "Combat: Deathmatch, Team Deathmatch, Instagib and Rocket Arena.\nOther experiences: select an entry for its separate launcher options."
 	box.add_child(pending)
 	start.text = "Start"
 	start.custom_minimum_size.y = 44
@@ -119,7 +134,10 @@ func populate_modes(preferred: String = DEFAULT_MODE) -> void:
 	mode_choice.clear()
 	for mode: String in entries[selected_map()].modes:
 		var pending := selected_map() not in MAPS or mode not in MODES
-		mode_choice.add_item(MODE_NAMES.get(mode, mode.capitalize()) + (" — pending" if pending else ""))
+		var suffix := ""
+		if pending:
+			suffix = " — separate demo" if STANDALONE.get(selected_map(), {}).has(mode) else (" — deferred" if mode == "campaign" else " — pending")
+		mode_choice.add_item(MODE_NAMES.get(mode, mode.capitalize()) + suffix)
 		mode_choice.set_item_metadata(mode_choice.item_count - 1, mode)
 		if mode == preferred: mode_choice.select(mode_choice.item_count - 1)
 	update_status()

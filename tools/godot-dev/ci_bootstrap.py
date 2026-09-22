@@ -13,9 +13,11 @@ sources = [("setup", path) for path in sorted(state.glob("*.log"))]
 # Checkout already contains historical reports. Never upload them as new results.
 if started.exists():
     reports = root / "port/reports"
-    sources += [("gates", path) for path in sorted(reports.glob("*.log"))
+    # Keep the current summary ahead of optional individual logs as the gate
+    # count grows. The 80-file cap must not silently discard verification.json.
+    sources += [("reports", path) for path in sorted(reports.glob("*.json"), key=lambda path: (path.name != "verification.json", path.name))
                 if path.stat().st_mtime_ns >= since]
-    sources += [("reports", path) for path in sorted(reports.glob("*.json"))
+    sources += [("gates", path) for path in sorted(reports.glob("*.log"))
                 if path.stat().st_mtime_ns >= since]
 
 limit = 128 * 1024

@@ -29,6 +29,9 @@ exit. Interactive play has no harness deadline.
 node run.mjs --play --map=meridian-exchange --mode=deathmatch
 node run.mjs --play --map=verdant-reliquary --mode=teamdeathmatch
 node run.mjs --play --map=ember-crucible --mode=rockets
+node run.mjs --experience=zones --map=meridian-exchange --mode=domination
+node run.mjs --experience=zones --map=verdant-reliquary --mode=koth
+node run.mjs --experience=combined-arms
 node run.mjs --experience=sports --map=ion-speedway --round-target=3
 node run.mjs --experience=sports --map=aurora-stadium --round-target=5
 node run.mjs --experience=objectives --map=tidal-citadel
@@ -44,6 +47,19 @@ releases the pointer. Scene UI describes its own controls. Unsupported map/mode
 combinations and out-of-range options fail explicitly rather than falling back.
 The semantic catalog retains all nine locked map identities. This is the current
 procedural/semantic presentation, not a claim of complete visual/gameplay parity.
+
+Combat setup lists supported standalone routes as **separate demos** and shows
+their relaunch options. Zone modes use click-to-engage infantry controls and
+Enter to restart after results. Their defaults are two bots and 60-second rounds.
+Combined arms is Sunscar's zero-bot Puma slice: Enter engages, E mounts/exits,
+WASD moves/drives and Space requests a brake tap. After each seat change, press
+Enter and fresh movement keys. Secondary chassis are visual/exit-only previews.
+
+LATTICE world: **C** opens tactical commands on your existing player connection.
+Select an objective and explicitly issue HOLD, or authorize one recruitment
+purchase. Co-op REINFORCE costs 50 FLUX during a natural between-wave window;
+expired consent requires new authorization. Close with C/Escape, release controls
+and click the world to resume. Full strategy rounds remain under development.
 
 ## Direct scene invocation
 

@@ -58,7 +58,7 @@ func run() -> void:
 	check(menu.mode_choice.get_item_text(menu.mode_choice.selected) == "Rocket Arena")
 	menu.map_choice.select(7) # Ion Speedway retains its actual race identity.
 	menu.map_choice.item_selected.emit(7)
-	check(menu.selected_map() == "ion-speedway" and menu.selected_mode() == "puma-race" and menu.start.disabled and "pending" in menu.status.text)
+	check(menu.selected_map() == "ion-speedway" and menu.selected_mode() == "puma-race" and menu.start.disabled and "--experience=sports --map=ion-speedway --mode=puma-race" in menu.status.text)
 	menu.free()
 	var detached_menu := Setup.new()
 	detached_menu.configure(catalog.entries, "meridian-exchange", "teamdeathmatch")

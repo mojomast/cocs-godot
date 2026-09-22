@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "name": "ACK and counters cannot replace done receipt",
+      "rejected": true,
+      "check": "doneReceipt"
+    },
+    {
+      "name": "wrong actor receipt",
+      "rejected": true,
+      "check": "doneReceipt"
+    },
+    {
+      "name": "duplicate purchase",
+      "rejected": true,
+      "check": "oneReinforce"
+    },
+    {
+      "name": "REQ debit invalidates FLUX-only claim",
+      "rejected": true,
+      "check": "sourceCostSpawnReq"
+    },
+    {
+      "name": "no source spawn despite receipt",
+      "rejected": true,
+      "check": "sourceCostSpawnReq"
+    },
+    {
+      "name": "no lease rotation",
+      "rejected": true,
+      "check": "naturalLease"
+    },
+    {
+      "name": "fire while overlay visible",
+      "rejected": true,
+      "check": "neutralWhileOpen"
+    },
+    {
+      "name": "extra gameplay socket",
+      "rejected": true,
+      "check": "oneSocket"
+    }
+  ]
+}

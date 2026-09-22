@@ -47,9 +47,9 @@ node run.mjs
 ```
 
 The output directory for verification must be new, preserving earlier attempts.
-See [PLAY.md](PLAY.md) for the original five experiences and direct exported-scene
-commands. The current launcher also includes `--experience=zones` and
-`--experience=combined-arms`; current commands and controls are in the root
+See [PLAY.md](PLAY.md) for all seven experience routes and direct exported-scene
+commands, including `--experience=zones` and `--experience=combined-arms`.
+Current commands and controls are also in the root
 [README](../../README.md#zone-control-and-combined-arms). The expanded seven-scene
 rebuild is verified in [the integration report](../reports/linux-zone-vehicle-independent/README.md).
 Only Node and normal Linux desktop runtime libraries are prerequisites at play

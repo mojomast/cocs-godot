@@ -81,3 +81,19 @@ The lead watched completion, downloaded the artifact, and validated the report's
 status and count. `35684992377/` retains its report, console and manifest. This
 includes the new soccer-coaching and world-command boundary gates; real sports
 victories and exported panel opening have separate independent evidence.
+
+## Zone/vehicle integration and artifact-cap repair
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35685825939> at
+`54452957353bcaf72fe467739a1ce2dfcd6dc69a` **PASS**, 4m01s. The lead watched
+completion and retained run/job metadata, console and artifact manifest in
+`35685825939/`. This revision's 69-gate verifier completed successfully; its
+console prints 67 individual gates and a final overall success (two preliminary
+records are included only in the JSON report).
+
+The original collector reached its 80-file cap and omitted one file:
+`verification.json`. No downloaded JSON summary is claimed for this run. The
+follow-up collector stages current JSON reports ahead of optional per-gate logs,
+with a regression using 90 logs plus a stale historical report. The stale report
+is excluded and the current summary survives the cap. Local aggregate now passes
+70 gates; hosted confirmation of the collector change is pending.

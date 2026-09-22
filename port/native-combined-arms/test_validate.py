@@ -19,6 +19,14 @@ class Replay(unittest.TestCase):
         with self.assertRaises(AssertionError): verify(self.text if text is None else text,wire)
     def test_missing_receipts(self):
         w=copy.deepcopy(self.wire); w['inputs']=[]; self.reject(w)
+    def test_one_missing_driving_receipt(self):
+        w=copy.deepcopy(self.wire)
+        # Preserve mount/exit/brake witnesses: losing an ordinary drive packet
+        # must still invalidate a claim of complete queue/receipt correlation.
+        q=next(json.loads(line[len('CA_QUEUE '):]) for line in self.text.splitlines()
+               if line.startswith('CA_QUEUE ') and json.loads(line[len('CA_QUEUE '):])['stage']=='drive')
+        w['inputs']=[i for i in w['inputs'] if i['seq']!=q['seq']]
+        self.reject(w)
     def test_changed_vehicle_source_y(self):
         w=copy.deepcopy(self.wire)
         for s in w['samples']:

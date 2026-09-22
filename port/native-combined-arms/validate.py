@@ -13,11 +13,14 @@ def verify(text, wire):
     assert wire['starts']==1 and wire['cleanup']=={'serverClosed':True,'sockets':0}
     inputs={i['seq']:i['input'] for i in wire['inputs']}
     assert len(inputs)==len(wire['inputs']), 'duplicate input sequence'
+    queued_sequences={q['seq'] for q in queued}
+    assert len(queued_sequences)==len(queued), 'duplicate queued sequence'
+    assert queued_sequences==set(inputs), 'queued/received sequence sets differ'
     server={s['seq']:s for s in wire['samples']}
     correlations=0
     for q in queued:
         assert q['result']==0, 'queue failure'
-        if q['seq'] in inputs: assert equivalent(inputs[q['seq']],q['packet']), 'queue/receipt mismatch'
+        assert equivalent(inputs[q['seq']],q['packet']), 'queue/receipt mismatch'
     for s in samples:
         if s['seq'] not in server: continue
         src=server[s['seq']]
