@@ -2,6 +2,7 @@
 export const STEPS = ['preflight', 'verification', 'package', 'publish', 'verify', 'push'];
 export const TARGETS = ['windows', 'linux'];
 export const VERIFICATION_MODES = ['auto', 'always', 'never'];
+export const PREPARE_MODES = ['auto', 'never'];
 export const DEFAULT_NOTES_FILE = 'port/combat-expansion/RELEASE_NOTES.md';
 export const DEFAULT_PUBLICATION_REMOTE = 'godot';
 export const DEFAULT_PUBLISH_BRANCH = 'main';
@@ -51,6 +52,9 @@ Options:
   --verification=auto|always|never
                               auto (default) runs verify.py only with --execute;
                               always runs it in dry runs too; never skips it
+  --prepare=auto|never        generate the GLB probes the verifier needs when a
+                              fresh checkout lacks them (default auto, as CI does);
+                              never leaves a missing probe to fail the glb-import gate
   --verify-timeout=<seconds>  local verifier timeout (default 3600)
   --package-timeout=<seconds> package build timeout (default 3600)
   --hosted-timeout=<seconds>  hosted verification timeout (default 1800)
@@ -92,6 +96,7 @@ const FLAGS = {
   '--resume-from': {key: 'resumeFrom', kind: 'value'},
   '--stop-after': {key: 'stopAfter', kind: 'value'},
   '--verification': {key: 'verification', kind: 'value'},
+  '--prepare': {key: 'prepare', kind: 'value'},
   '--verify-timeout': {key: 'verifyTimeout', kind: 'number'},
   '--package-timeout': {key: 'packageTimeout', kind: 'number'},
   '--hosted-timeout': {key: 'hostedTimeout', kind: 'number'},
@@ -132,6 +137,7 @@ export function parseArgs(argv) {
     resumeFrom: null,
     stopAfter: null,
     verification: 'auto',
+    prepare: 'auto',
     verifyTimeout: 3600,
     packageTimeout: 3600,
     hostedTimeout: 1800,
@@ -192,6 +198,9 @@ function validate(options) {
   if (!TARGETS.includes(options.target)) throw new UsageError(`--target must be one of ${TARGETS.join('|')}`);
   if (!VERIFICATION_MODES.includes(options.verification)) {
     throw new UsageError(`--verification must be one of ${VERIFICATION_MODES.join('|')}`);
+  }
+  if (!PREPARE_MODES.includes(options.prepare)) {
+    throw new UsageError(`--prepare must be one of ${PREPARE_MODES.join('|')}`);
   }
   if (options.resumeFrom && !STEPS.includes(options.resumeFrom)) {
     throw new UsageError(`--resume-from must be one of ${STEPS.join('|')}`);

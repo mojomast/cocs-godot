@@ -49,6 +49,9 @@ test('resume, stop-after and verification modes are validated before any work', 
   assert.throws(() => parseArgs(['--tag=t', '--stop-after=preflight', '--resume-from=publish']), /would stop before/);
   assert.equal(parseArgs(['--tag=t', '--verification=never']).verification, 'never');
   assert.throws(() => parseArgs(['--tag=t', '--verification=maybe']), /--verification must be one of/);
+  assert.equal(parseArgs(['--tag=t']).prepare, 'auto');
+  assert.equal(parseArgs(['--tag=t', '--prepare=never']).prepare, 'never');
+  assert.throws(() => parseArgs(['--tag=t', '--prepare=sometimes']), /--prepare must be one of/);
 });
 
 test('targets, timeouts, list flags and unknown options are rejected or collected', () => {

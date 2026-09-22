@@ -38,6 +38,12 @@ async function fixture(overrides = {}) {
   await writeFile(join(root, 'port/combat-expansion/RELEASE_NOTES.md'), '# Rehearsal release title\n\nBody.\n');
   await writeFile(join(root, '.github/workflows/windows-demo.yml'),
     'name: Windows demo verification\non:\n  workflow_dispatch:\n    inputs:\n      tag:\n        type: string\njobs:\n  x:\n    runs-on: windows-latest\n');
+  if (overrides.probes !== false) {
+    for (const id of ['axis-weapon', 'meridian-exchange']) {
+      await mkdir(join(root, 'godot/content/probes', id), {recursive: true});
+      await writeFile(join(root, 'godot/content/probes', id, 'world.glb'), `${id}-fixture`);
+    }
+  }
   const godotBin = join(base, 'Godot_v4.5.2-stable_linux.x86_64');
   await writeFile(godotBin, '#!/bin/sh\necho stub\n', {mode: 0o755});
 
@@ -52,6 +58,7 @@ async function fixture(overrides = {}) {
     releaseFails: false,
     publishFails: false,
     dispatchFails: false,
+    probes: true,
     verificationExit: 0,
     verificationReport: {status: 'passed', source_commit: 'c'.repeat(40), gates: [{gate: 'a', passed: true}, {gate: 'b', passed: true}]},
     runStatus: 'completed',
@@ -68,6 +75,13 @@ async function fixture(overrides = {}) {
     if (command === godotBin) return done(0, `${GODOT_VERSION}\n`);
     if (command === 'git') return gitStub(world, args);
     if (command === 'gh') return ghStub(world, args);
+    if (command === 'node' && args[0] === 'tools/godot-export/browser-export.mjs') {
+      const id = args[1] ?? 'axis-weapon';
+      const dir = join(spec.cwd, 'godot/content/probes', id);
+      await mkdir(dir, {recursive: true});
+      await writeFile(join(dir, 'world.glb'), `${id}-generated`);
+      return done(0, `${id} probe written\n`);
+    }
     if (command === 'python3' && args[0] === 'tools/godot-dev/verify.py') {
       await writeFile(join(spec.cwd, 'port/reports/verification.json'), JSON.stringify(world.verificationReport));
       return done(world.verificationExit, 'gates ran\n');
@@ -263,6 +277,34 @@ test('an existing tag or release refuses even in a dry run', async () => {
     assert.equal((await released.readSummary(result)).steps[0].error.code, 'release-exists');
   } finally {
     await released.cleanup();
+  }
+});
+
+test('missing GLB probes are generated before the verifier, as CI does, and can be refused', async () => {
+  const fx = await fixture({probes: false});
+  try {
+    const planned = await fx.run([`--tag=${TAG}`]);
+    assert.equal(planned.exitCode, 0, fx.outputs.join('\n'));
+    assert.match(fx.outputs.join('\n'), /DRY-RUN {2}node tools\/godot-export\/browser-export\.mjs/);
+    assert.equal(fx.sideEffects().length, 0);
+    const strict = await fixture({probes: false});
+    try {
+      const untouched = await strict.run([`--tag=${TAG}`, '--execute', '--prepare=never']);
+      assert.equal(untouched.exitCode, 0, strict.outputs.join('\n'));
+      assert.match(strict.outputs.join('\n'), /GLB probes missing \(axis-weapon, meridian-exchange\) and --prepare=never/);
+      assert.equal(strict.calls.filter(call => call.command === 'node').length, 0, '--prepare=never must not generate');
+      assert.equal((await strict.readSummary(untouched)).steps[1].detail.probes_prepared.length, 0);
+    } finally {
+      await strict.cleanup();
+    }
+    const executed = await fx.run([`--tag=${TAG}`, '--execute', '--resume-from=verification']);
+    assert.equal(executed.exitCode, 0, fx.outputs.join('\n'));
+    assert.equal(fx.calls.filter(call => call.command === 'node' && call.args[0] === 'tools/godot-export/browser-export.mjs').length, 2);
+    assert.ok(existsSync(join(fx.root, 'godot/content/probes/axis-weapon/world.glb')));
+    const detail = (await fx.readSummary(executed)).steps[1].detail;
+    assert.deepEqual(detail.probes_prepared.map(entry => entry.probe), ['axis-weapon', 'meridian-exchange']);
+  } finally {
+    await fx.cleanup();
   }
 });
 

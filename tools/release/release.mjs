@@ -582,6 +582,26 @@ async function stepVerification(ctx) {
   };
   for (const dir of [env.XDG_DATA_HOME, env.XDG_CONFIG_HOME, env.XDG_CACHE_HOME]) await mkdir(dir, {recursive: true});
   ctx.emit(`  env      GODOT_BIN, PORT=0, TMPDIR=${DEFAULT_LANDING_ZONE}, XDG_* under ${relative(ctx.runDir, runtime)}`);
+  // The aggregate verifier imports GLB probes under godot/content, which .gitignore
+  // excludes; the hosted Linux workflow generates them with browser-export.mjs before
+  // verify.py. Mirror that here so a frozen tree really is verifiable from one command.
+  const probes = [{id: 'axis-weapon', args: []}, {id: 'meridian-exchange', args: ['meridian-exchange']}];
+  const missing = probes.filter(probe => !existsSync(join(ctx.root, 'godot/content/probes', probe.id, 'world.glb')));
+  const prepared = [];
+  if (missing.length && options.prepare === 'never') {
+    ctx.emit(`  warn     GLB probes missing (${missing.map(probe => probe.id).join(', ')}) and --prepare=never; glb-import will fail`);
+  }
+  for (const probe of missing.filter(() => options.prepare === 'auto')) {
+    const args = ['tools/godot-export/browser-export.mjs', ...probe.args];
+    ctx.emit(`  prepare  generating the missing ${probe.id} GLB probe (as the CI workflow does)`);
+    const generated = await runCommand(ctx, {command: 'node', args, env, sideEffect: true, timeout: 600000, label: 'prepare'});
+    if (!generated.planned && !existsSync(join(ctx.root, 'godot/content/probes', probe.id, 'world.glb'))) {
+      throw new ReleaseError('probe-generation-failed', `browser-export.mjs ran but did not write the ${probe.id} probe`,
+        'regenerate with `node tools/godot-export/browser-export.mjs`, or fix the GLB exporter before releasing');
+    }
+    prepared.push({probe: probe.id, planned: !!generated.planned, command: printable('node', args)});
+  }
+  if (prepared.length) ctx.emit(`  prepare  ${prepared.map(entry => entry.probe).join(', ')} ready`);
   // auto runs the verifier only with --execute; always rehearses it even in a dry run.
   const result = await runCommand(ctx, {
     command: 'python3', args: ['tools/godot-dev/verify.py'], env, sideEffect: options.verification === 'auto',
@@ -600,6 +620,7 @@ async function stepVerification(ctx) {
     exit_code: result.code, status: report?.status ?? 'missing', gates_total: gates.length, gates_passed: passed,
     failing_gates: failed.map(gate => ({gate: gate.gate, reason: gate.failure_reason ?? null})),
     source_commit: report?.source_commit ?? null, report: report ? 'evidence/verification.json' : null,
+    probes_prepared: prepared,
   };
   if (result.code !== 0 || report?.status !== 'passed' || failed.length) {
     const why = failed.length
