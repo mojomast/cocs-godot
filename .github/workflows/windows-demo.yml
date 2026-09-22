@@ -7,7 +7,9 @@ on:
         required: true
         type: string
 permissions:
-  contents: read
+  # GitHub requires write access to see unpublished draft release assets.
+  # This job only downloads; it never publishes or modifies a release.
+  contents: write
 jobs:
   windows-smoke:
     runs-on: windows-latest
