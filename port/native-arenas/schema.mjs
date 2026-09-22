@@ -262,7 +262,11 @@ export function parseIdentityArena(data, expectedId) {
   list(data.palette, 4, 4, 'palette');
   data.palette.forEach(value => color(value, 'palette color'));
   list(data.art, 1, 4096, 'art');
-  data.art.forEach(surface => mesh(surface, 'art'));
+  data.art.forEach(surface => {
+    mesh(surface, 'art');
+    // Art is presentation-only: it must never claim walkable support.
+    if (surface.walkable !== false) fail('art.walkable must be false');
+  });
   if (new Set(data.art.map(surface => surface.id)).size !== data.art.length) fail('duplicate art ID');
   if (data.cameras !== undefined) {
     list(data.cameras, 1, 64, 'cameras');

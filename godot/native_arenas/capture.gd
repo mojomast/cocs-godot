@@ -87,11 +87,12 @@ func capture(name: String, size: Vector2i) -> void:
 	var feet := {}
 	if actor != null and actor is Dictionary:
 		feet = {"x": actor.get("x"), "y": actor.get("y"), "z": actor.get("z")}
+	var first_person: bool = is_instance_valid(session.first_person) and session.first_person.rig.showing
 	print("NATIVE_DM_CAPTURE ", JSON.stringify({"map": session.current_id, "mode": "deathmatch",
 		"path": path, "size": [size.x, size.y], "eye": [eye.x, eye.y, eye.z], "actor": feet,
 		"snapshots": session.presentation.applied, "actors": session.presentation.actors.size(),
 		"phase": session.phase, "geometryHash": session.world.get_meta("native_geometry_hash"),
-		"firstPerson": session.first_person.rig.showing,
+		"firstPerson": first_person,
 		"pointer": Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,
 		"framebuffer": [image.get_width(), image.get_height()],
 		"physics": probe_physics(eye)}))
@@ -106,6 +107,15 @@ func run() -> void:
 	input_helper.process_priority = 1000
 	root.add_child(input_helper)
 	root.msaa_3d = Viewport.MSAA_DISABLED
+	if "--capture-menu" in OS.get_cmdline_user_args():
+		var menu_size: Vector2i = sizes[0] if not sizes.is_empty() else Vector2i(960, 640)
+		root.size = menu_size
+		root.grab_focus()
+		for i in 60: await process_frame
+		await RenderingServer.frame_post_draw
+		capture("setup", menu_size)
+		quit(0)
+		return
 	var deadline := Time.get_ticks_msec() + 150000
 	while Time.get_ticks_msec() < deadline:
 		await process_frame

@@ -1,0 +1,86 @@
+{
+  "scope": "Detached Linux package built from a private worktree snapshot of the delivered bytes (art/operator/geometry lanes still uncommitted in the primary checkout)",
+  "stagingWorktree": "/tmp/opencode/identity-dm-package-wt",
+  "package": "/tmp/opencode/identity-dm-package-staging/builds/1790085318212258770/cocs-native-linux",
+  "archive_sha256": "c7eab8bfd7564bc765b06b554ef7635fae3b1dd06ce9ecf737a326046dee3f4f",
+  "manifest_sha256": "28afbc975c2a542ffd60a41526d824259f1f391cc2c868398abb771567ba7c72",
+  "port_commit": "7e81d176a32a4f06330f47617de2ed269c1f9168",
+  "operator_models": "source-operators",
+  "staged_native_overrides": {},
+  "native_arenas": [
+    "prism-foundry",
+    "aurora-basin",
+    "cinder-array"
+  ],
+  "identity_arenas": [
+    "lacuna-court",
+    "vermilion-fold",
+    "nacre-engine"
+  ],
+  "identity_arena_data_sha256": {
+    "godot/identity_maps/generated/lacuna-court.json": "eb6fd145f3ef7697029143851155a3948a514c1b8b60ea1fba1916c40ac42150",
+    "godot/identity_maps/generated/nacre-engine.json": "6d5668165265a83a6a707f6f381814612885bf35d30abe5ddd54c31aef19d871",
+    "godot/identity_maps/generated/vermilion-fold.json": "b3db4484553fbdedd12c7d7ce54103faf2d770fad587054f7ce9ed26010b0930"
+  },
+  "native_arena_data_sha256": {
+    "godot/native_arenas/generated/aurora-basin.json": "3920b402a21feb5f8bddc6270dd2be5a629efb25fd31100f4cc512c4955584f5",
+    "godot/native_arenas/generated/cinder-array.json": "315d910d50c9ed8ef1c9f72f6aa703aba041f4a6631a952eef96cbeb3310f67b",
+    "godot/native_arenas/generated/prism-foundry.json": "96e6e903060bb41d1504e33f8daf30082b323fa2ca199b036e8bf58d4c4126d5"
+  },
+  "include_filter": "include_filter=\"player_models/*.json,content/generated/*.json,content/generated/maps/*/*.json,moth/generated/*.json,first_person/*.json,first_person/generated/*.json,native_arenas/generated/*.json,identity_maps/generated/*.json\"",
+  "pck_probe": {
+    "sourceOperator": "SOURCE_OPERATOR_PACKAGE_OK",
+    "identity": "NATIVE_IDENTITY_PACKAGE_OK"
+  },
+  "detachedSmokes": {
+    "prism-foundry": {
+      "acks": 16,
+      "actors": 3,
+      "camera": "public-actor",
+      "fired": true,
+      "geometryHash": "e9066f6f214798679f00c2252c903ea6d10575fc6e72ad97ee39af0f1ace24d6",
+      "localAlive": true,
+      "map": "prism-foundry",
+      "mode": "deathmatch",
+      "moved": true,
+      "snapshots": 7
+    },
+    "lacuna-court": {
+      "acks": 17,
+      "actors": 3,
+      "camera": "public-actor",
+      "fired": true,
+      "geometryHash": "a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9",
+      "localAlive": true,
+      "map": "lacuna-court",
+      "mode": "deathmatch",
+      "moved": true,
+      "snapshots": 7
+    },
+    "vermilion-fold": {
+      "acks": 16,
+      "actors": 3,
+      "camera": "public-actor",
+      "fired": true,
+      "geometryHash": "6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a",
+      "localAlive": true,
+      "map": "vermilion-fold",
+      "mode": "deathmatch",
+      "moved": true,
+      "snapshots": 7
+    },
+    "nacre-engine": {
+      "acks": 17,
+      "actors": 3,
+      "camera": "public-actor",
+      "fired": true,
+      "geometryHash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+      "localAlive": true,
+      "map": "nacre-engine",
+      "mode": "deathmatch",
+      "moved": true,
+      "snapshots": 7
+    }
+  },
+  "note": "The PCK probe and run.mjs smokes are detached: no repository checkout is on the path used to launch them."
+}

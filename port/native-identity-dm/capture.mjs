@@ -24,6 +24,7 @@ const mapId = options.map ?? 'lacuna-court';
 const bots = Number(options.bots ?? 3);
 const roundSeconds = Number(options['round-seconds'] ?? 180);
 const sizes = options.sizes ?? '960x640,1280x800';
+const menu = process.argv.includes('--menu');
 const stamp = new Date().toISOString().replace(/[:.]/g, '-');
 const captureRoot = resolve(options['capture-root'] ?? `${ROOT}/port/native-identity-dm/captures/${mapId}-${stamp}`);
 mkdirSync(captureRoot, {recursive: true});
@@ -55,7 +56,7 @@ let log = '';
 const args = ['--path', 'godot', '--audio-driver', 'Dummy', '--rendering-method', 'gl_compatibility',
   '--script', 'res://native_arenas/capture.gd', '--',
   `--map=${mapId}`, `--endpoint=${authority.endpoint}`, `--bots=${bots}`, `--round-seconds=${roundSeconds}`,
-  '--autostart', `--capture-root=${captureRoot}`, `--sizes=${sizes}`];
+  ...(menu ? ['--capture-menu'] : ['--autostart']), `--capture-root=${captureRoot}`, `--sizes=${sizes}`];
 const child = spawn(GODOT, args, {cwd: ROOT, env: {...process.env, DISPLAY: `:${display}`,
   HOME: `${captureRoot}/home`, XDG_DATA_HOME: `${captureRoot}/home/data`, XDG_CONFIG_HOME: `${captureRoot}/home/config`,
   XDG_CACHE_HOME: `${captureRoot}/home/cache`}, stdio: ['ignore', 'pipe', 'pipe']});
@@ -71,9 +72,9 @@ if (xvfb.exitCode === null) xvfb.kill('SIGKILL');
 
 const captures = log.split(/\r?\n/).filter(line => line.startsWith('NATIVE_DM_CAPTURE '))
   .map(line => JSON.parse(line.slice('NATIVE_DM_CAPTURE '.length)));
-const summary = {mapId, mode: 'deathmatch', bots, roundSeconds, sizes, geometryHash: health.geometryHash,
-  authorityPort: authority.port, exitCode, captureRoot, captures,
-  passed: exitCode === 0 && captures.length >= 2 && !/SCRIPT ERROR|ERROR:/.test(log)};
+const summary = {mapId, mode: menu ? 'deathmatch-setup' : 'deathmatch', bots, roundSeconds, sizes,
+  geometryHash: health.geometryHash, authorityPort: authority.port, exitCode, captureRoot, captures,
+  passed: exitCode === 0 && captures.length >= (menu ? 1 : 2) && !/SCRIPT ERROR|ERROR:/.test(log)};
 writeFileSync(`${captureRoot}/summary.json`, `${JSON.stringify({...summary, logTail: log.slice(-4000)}, null, 2)}\n`);
 writeFileSync(`${captureRoot}/xvfb.log`, xvfbLog.join(''));
 console.log(JSON.stringify(summary));

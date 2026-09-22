@@ -1,0 +1,8 @@
+PACKAGE_SERVER_READY {"pid":1559992,"host":"127.0.0.1","port":35557,"experience":"native-dm","map":"lacuna-court","mode":"deathmatch","health":{"service":"cocs-native-arenas","v":3,"localOnly":true,"humanCount":1,"mapId":"lacuna-court","geometryHash":"a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9","port":35557}}
+PACKAGE_NATIVE_STARTED {"pid":1560205,"scene":"res://native_arenas/demo.tscn"}
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+NATIVE_DM_SMOKE_OK {"acks":17,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9","localAlive":true,"map":"lacuna-court","mode":"deathmatch","moved":true,"snapshots":7}
+PACKAGE_STOPPED

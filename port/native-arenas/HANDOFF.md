@@ -24,14 +24,20 @@ or top-level `mode,botCount,difficulty,timeLimit,fragLimit`. Launcher aliases ar
 `bots` → `botCount`, `roundSeconds` → `timeLimit`; conflicting aliases reject.
 Defaults: deathmatch, **3 bots, normal difficulty, 180 seconds, 15 frags**.
 Bounds: bots **1–7**, seconds **60–900**, frags **5–50**, difficulty
-`easy|normal|hard|nightmare`. Other gameplay settings and modes reject. These
+`easy|normal|hard|nightmare`. Other gameplay settings, modes and unknown
+top-level option keys reject. HTTP serves the documented loopback readiness
+probe on `GET /` only; other paths/methods are 404/405. These
 are source-normalizer bounds, so e.g. a requested one-frag round cannot silently
 become five frags. Normal source timed results apply without endless/sudden-death
 mutators.
 
-`catalog.mjs` exports `NATIVE_ARENA_CATALOG` (frozen `{id,name,path}` entries),
-`NATIVE_ARENA_IDS`, and `nativeArenaEntry(id)`. IDs are exactly
-`prism-foundry`, `aurora-basin`, `cinder-array`.
+`catalog.mjs` exports `NATIVE_ARENA_CATALOG` (three frozen native `{id,name,family,path}`
+entries), `IDENTITY_ARENA_CATALOG` (the three identity maps), `ARENA_CATALOG`,
+`NATIVE_ARENA_IDS` (unchanged historical three), `IDENTITY_ARENA_IDS`,
+`DEATHMATCH_ARENA_IDS` (all six) and `nativeArenaEntry(id)`. Native IDs are
+exactly `prism-foundry`, `aurora-basin`, `cinder-array`; identity IDs are
+`lacuna-court`, `vermilion-fold`, `nacre-engine`. Unknown IDs still fail before
+any filesystem access, and only the catalog's static paths are ever opened.
 
 Runtime module closure owned here:
 
@@ -48,14 +54,22 @@ does not import native-Horde validation or server code. Test runners/fixtures
 are outside the production import closure.
 
 **Explicit dynamic-read package closure:** module scanning does not discover
-the three JSON reads. Copy these files byte-for-byte at these relative paths:
+the static JSON reads. Copy these files byte-for-byte at these relative paths:
 
 ```
 runtime/port/native-arenas/schema.mjs
 runtime/godot/native_arenas/generated/prism-foundry.json
 runtime/godot/native_arenas/generated/aurora-basin.json
 runtime/godot/native_arenas/generated/cinder-array.json
+runtime/godot/identity_maps/generated/lacuna-court.json
+runtime/godot/identity_maps/generated/vermilion-fold.json
+runtime/godot/identity_maps/generated/nacre-engine.json
 ```
+
+`discover.mjs` declares them as `dataFiles` (native family) and
+`identityDataFiles` (identity family); `build.py` validates both against exact
+allowlists, requires committed bytes, and adds
+`identity_maps/generated/*.json` to the PCK include filter.
 
 `readNativeArena(mapId)` resolves only the static catalog with
 `readFileSync(new URL('../../' + entry.path, import.meta.url))`. No URL/path
@@ -65,15 +79,20 @@ the bound authority opens its listener. Browser-Origin upgrades are rejected.
 
 ## Schema and source construction
 
-`schema.mjs` exports `parseNativeArena(data, expectedId?)`,
-`readNativeArena(mapId)`, `canonicalArenaJSON(value)`, and
-`nativeArenaGeometryHash(arena)`. Parse/read return the **envelope**, with
-`.arena` containing source gameplay geometry and `.spawnPoints` containing
-native feet positions. Deep allowlists validate simulation structures, numeric
-bounds, terrain triangles/indices/winding/degeneracy, wall segments, pickups,
-native identity, support for spawn/nav/pickup points, and spawn height agreement.
-Metadata routes/collider provenance have explicit bounded schemas and never
-become simulation options. Limit: 8 MiB per generated file.
+`schema.mjs` exports `parseNativeArena(data, expectedId?)` (native family),
+`parseIdentityArena(data, expectedId?)` (identity family),
+`parseArenaEnvelope(data, expectedId?)` (family dispatch), `readNativeArena(mapId)`,
+`canonicalArenaJSON(value)`, and `nativeArenaGeometryHash(arena)`. Parse/read return
+the **envelope**, with `.arena` containing source gameplay geometry and
+`.spawnPoints` containing native feet positions where the envelope authors them.
+Deep allowlists validate simulation structures, numeric bounds, terrain
+triangles/indices/winding/degeneracy, wall segments (identity envelopes may use
+`{x,y,z}` wall endpoints), pickups, identity, support for spawn/nav/pickup
+points, and spawn height agreement. Identity presentation metadata
+(`mode/palette/art/cameras/landmarks/grayboxHash/artNotes`) and the optional
+`objectiveZones`/`teamSpawns` fields are strictly bounded; Vermilion Fold must
+author exactly three objective zones. Metadata never becomes simulation options.
+Limit: 8 MiB per generated file.
 
 `geometryHash` is SHA-256 of **arena only**, recursive lexicographic object-key
 order, preserved array order, Node `JSON.stringify` number semantics. Parsing
@@ -148,12 +167,19 @@ From repository root; set `TMPDIR` in the invoking environment for any harness
 temporary work. These runners do not create a separate full worktree.
 
 ```sh
-node --test port/native-arenas/tests/*.test.mjs
-node --test port/native-arenas/tests/actual-maps.mjs
+node --test port/native-arenas/tests/*.mjs
 GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 node port/native-arenas/godot-protocol.mjs
 GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 node port/native-arenas/godot-protocol.mjs --actual --map=prism-foundry
+GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 node tools/godot-dev/launch.mjs --experience=native-dm --map=lacuna-court --smoke
+GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 node port/native-identity-dm/verify.mjs
 /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/native_arenas/protocol/client_contract.gd
 ```
+
+`tests/identity-maps.mjs` runs the same generated-data gate for the three
+identity maps: strict family schema, canonical hash, source Deathmatch with bot
+movement/routing/shots/damage/kills, results and restart, plus one real-time
+loopback authority round. `port/native-identity-dm/` holds the route/package
+evidence: launcher smokes, Xvfb screenshots and the detached package probe.
 
 The default Node and Godot integration suites are explicitly **synthetic arena**
 fixtures. Real-time Node WebSockets exercise source damage/frags/results/restart
