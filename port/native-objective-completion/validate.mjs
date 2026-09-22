@@ -3,6 +3,7 @@ import {readFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
+import {inputEvidence} from './inputs.mjs';
 export function validate(wire,stdout,map,seconds){
  const parse=prefix=>stdout.split('\n').filter(l=>l.startsWith(prefix)).map(l=>JSON.parse(l.slice(prefix.length)));
  const native=parse('OBJECTIVE_NATIVE '),boundaries=parse('COMPLETION_BOUNDARY '),done=parse('COMPLETION_DONE '),resultRows=parse('COMPLETION_RESULT ');
@@ -11,7 +12,7 @@ export function validate(wire,stdout,map,seconds){
  assert.equal(map,'sunscar-convoy');assert.equal(seconds,180);
  assert.equal(starts.length,2);assert.equal(results.length,1);
  const end=results[0].state,pEnd=end.objectives.payload;
- assert.equal(end.over,true);assert.equal(pEnd.delivered,true);assert.equal(end.objectives.winner,0);
+ assert.equal(end.over,true);assert.equal(pEnd.delivered,true);assert.equal(end.objectives.winner,0);assert.equal(end.winner,0);
  assert.equal(pEnd.distance,pEnd.total);assert.equal(pEnd.checkpointsReached,3);assert.ok(end.time<seconds,'delivery ended before time limit');
  assert.ok(end.time>=pEnd.total/pEnd.speed,'unchanged cart pace lower bound');
  assert.ok(results[0].wall-starts[0].wall>=end.time*950,'normal wall elapsed');
@@ -36,7 +37,7 @@ export function validate(wire,stdout,map,seconds){
     assert.ok(f.state.actors.some(a=>a.team===1&&inside(a)));assert.ok(!f.state.actors.some(a=>a.team===0&&inside(a)),'defender alone');
    }
    if(rollbackSamples>0&&p.pushing===1&&Math.abs(p.distance-bank)<.002){bankSamples++;bankStart??=f.state.time;bankEnd=f.state.time;}
-   if(bankSamples>10&&p.pushing===0&&p.distance>bank+4)resumed=true;
+   if(bankSamples>10&&p.pushing===0&&p.distance>bank+4){resumed=true;assert.ok(actor.health>0&&Math.hypot(actor.x-p.position.x,actor.z-p.position.z)<=p.radius+.01,'native primary resumed escort');}
    prev=p;
   }
   matches++;
@@ -53,7 +54,8 @@ export function validate(wire,stdout,map,seconds){
  assert.equal(done.length,1);assert.equal(done[0].ok,true);assert.equal(done[0].fresh_capture,true);
  const receipts=wire.filter(f=>f.type==='received'&&f.frame.type==='input');
  for(const connection of [0,1])assert.ok(receipts.some(f=>f.connection===connection&&Math.hypot(f.frame.input.x,f.frame.input.z)>.1),'ordinary movement receipt');
- return{status:'PASS',matches,rollbackSamples,bankSamples,bankStart,bankEnd,resumed,deliveryTime:end.time,checkpoints:cps.map(e=>({index:e.index,time:e.time})),results:1,restarts:1,normalRate:true,nativeCompletionProven:false};
+ const inputs=inputEvidence(wire,native);
+ return{status:'PASS',matches,rollbackSamples,bankSamples,bankStart,bankEnd,resumed,deliveryTime:end.time,checkpoints:cps.map(e=>({index:e.index,time:e.time})),inputs,results:1,restarts:1,normalRate:true,nativeCompletionProven:false};
 }
 export function load(dir){const archive=JSON.parse(readFileSync(`${dir}/archive.json`)),read=name=>{const raw=gunzipSync(readFileSync(`${dir}/${name}.gz`));assert.equal(raw.length,archive[name].bytes);assert.equal(createHash('sha256').update(raw).digest('hex'),archive[name].sha256);return raw.toString();};return{summary:JSON.parse(readFileSync(`${dir}/summary.json`)),wire:read('wire.jsonl').trim().split('\n').map(JSON.parse),stdout:read('native.stdout.log')};}
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){const {wire,stdout,summary}=load(process.argv[2]);console.log(JSON.stringify(validate(wire,stdout,summary.map,summary.seconds),null,2));}

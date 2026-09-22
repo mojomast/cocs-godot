@@ -1,0 +1,29 @@
+{
+  "binary": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "binarySHA256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "argv": [
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "1280x800",
+    "--path",
+    "godot",
+    "res://tests/objectives/completion_pass.tscn",
+    "--",
+    "--map=tidal-citadel",
+    "--endpoint=ws://127.0.0.1:42945",
+    "--objective-evidence",
+    "--objective-peer",
+    "--round-seconds=60",
+    "--screenshot=/tmp/opencode/native-objective-completion/port/native-objective-completion/evidence/cfb8c298-c0e0-4337-9951-75b7bcc734a3/gameplay.png"
+  ],
+  "display": ":0",
+  "command": [
+    "/usr/bin/node",
+    "/tmp/opencode/native-objective-completion/port/native-objective-completion/run.mjs",
+    "--pass"
+  ],
+  "cwd": "/tmp/opencode/native-objective-completion",
+  "base": "ffa6aac0bc4a61a0b5e1721dbb4000066c22a474"
+}

@@ -122,7 +122,7 @@ func _process(delta: float) -> void:
 		if restart_wait > 2:
 			finishing = true
 			screenshot("restart")
-			var ok := rollback_seen and banked and delivered
+			var ok := completion_success()
 			print("COMPLETION_DONE ", JSON.stringify({"ok":ok,"rollback":rollback_seen,"banked":banked,"delivered":delivered,"fresh_capture":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED}))
 			await get_tree().create_timer(0.2).timeout
 			get_tree().quit(0 if ok else 1)
@@ -133,6 +133,13 @@ func _process(delta: float) -> void:
 		return
 	var a: Dictionary = presentation.local_actor
 	var position := Vector2(a.x, a.z)
+	drive_objective(position)
+
+func completion_success() -> bool:
+	return rollback_seen and banked and delivered
+
+func drive_objective(position: Vector2) -> void:
+	var a: Dictionary = presentation.local_actor
 	var p: Dictionary = state.objectives.payload
 	var cart := Vector2(p.position.x, p.position.z)
 	if stage == "approach":

@@ -1,0 +1,47 @@
+{
+  "map": "tidal-citadel",
+  "seconds": 60,
+  "deadline": 110000,
+  "base": "ffa6aac",
+  "source": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "runtimeHashes": {
+    "godot/objectives/demo.gd": "775a116e41ad77fe7cb056462063d0513d3d70b219e8d1e32a5d840ca8308857",
+    "godot/objectives/renderer.gd": "1f7336894a2d9a2572bc58ec26071b973e8316386b42e753a3fa77aeadea062a",
+    "godot/objectives/hud.gd": "76e7fab16fd9951a3a49bfce7de52bd4b583a5530defbb8bca83c7276b4b429e",
+    "godot/tests/objectives/completion_live.gd": "2326131038677698ef8fe8193a9e469f0e911efee7ffadf51e9bea3324bc66e2",
+    "godot/world/session.gd": "a501f3814e08c6ba17ac4f9bf2b2d2942241a8a48613d902387b8774a3b31554",
+    "godot/net/client.gd": "81873852ae0cf8ee38e451674dd3e8d20e63c23fe589bf15dfb3bcaf4a93821f",
+    "game/core.mjs": "23d0a86acf720136c62a42547207b1c43f2146002fd26d8ac7d325b2d6312631",
+    "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
+    "game/objectives.mjs": "3e92ad1f85fb785362e15fd836d2b80f95060e0670e9f58a766f79ffa60742ec",
+    "game/destination-objective-maps.mjs": "f995d7ec863f848ac7e3aa6a9a48e2a51b27f6fda7749e86877594665a1c79d8",
+    "server/room.mjs": "5cd8777a8e14c9a5260283a8ff227f669e321f953d2f5a4c1539e506f654fbf2",
+    "server/game-server.mjs": "06e79c72d0530abf5256b803a19fbfb00582892579f27f42eae871cc28fb98b0",
+    "port/native-objective-completion/run.mjs": "6ed44bdc6e27730bf15c30670e858ca61c890c533b08ca0762a422c83e8c8472",
+    "port/native-objective-completion/peer.mjs": "68e3011df0880f8ab10ad254b618565b285567ac5b9a66265df94e5d04aa5d1c",
+    "port/native-objective-completion/validate.mjs": "c8b6cef268b7af6dfecf44c7e642087c79bcbfec9124455ec27227fc68dcfcd5",
+    "godot/tests/objectives/completion_pass.gd": "ead2a4dbba377a7cc03cb3dff574d4ff9473cb28bdeb8cb17f52eef3dadcb187",
+    "port/native-objective-completion/pass-peer.mjs": "7a86015c2532673608f720e601f510ebb89a211335d52dfbb545b86727e524aa",
+    "port/native-objective-completion/pass-validate.mjs": "3df98ae04ba2ad16f1a5c4442623e897c361c83f7b4bd38c95f813757802f2ce",
+    "port/native-objective-completion/inputs.mjs": "ffc8a05b302a016657ebaeaa2963b5d12f3fd23f4aa70bc8e8cd86a5f93b60fa"
+  },
+  "exit": 1,
+  "reason": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n\n    at validatePass (file:///tmp/opencode/native-objective-completion/port/native-objective-completion/pass-validate.mjs:39:65)\n    at file:///tmp/opencode/native-objective-completion/port/native-objective-completion/run.mjs:57:51\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+  "normalRate": true,
+  "nativeCompletionProven": false,
+  "cleanup": [
+    {
+      "pid": 2825096,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 2825099,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "serverClosed": true,
+  "sockets": 0,
+  "temporaryTreeRemoved": true
+}
