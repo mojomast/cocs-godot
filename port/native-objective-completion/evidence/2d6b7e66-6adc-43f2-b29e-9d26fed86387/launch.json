@@ -1,0 +1,29 @@
+{
+  "binary": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "version": "4.5.2.stable.official.6ce3de25a",
+  "binarySHA256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "argv": [
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "960x640",
+    "--path",
+    "godot",
+    "res://tests/objectives/completion_live.tscn",
+    "--",
+    "--map=sunscar-convoy",
+    "--endpoint=ws://127.0.0.1:41137",
+    "--objective-evidence",
+    "--objective-peer",
+    "--round-seconds=180",
+    "--screenshot=/tmp/opencode/native-objective-completion/port/native-objective-completion/evidence/2d6b7e66-6adc-43f2-b29e-9d26fed86387/gameplay.png"
+  ],
+  "display": ":0",
+  "command": [
+    "/usr/bin/node",
+    "/tmp/opencode/native-objective-completion/port/native-objective-completion/run.mjs",
+    "--small"
+  ],
+  "cwd": "/tmp/opencode/native-objective-completion",
+  "base": "ffa6aac0bc4a61a0b5e1721dbb4000066c22a474"
+}
