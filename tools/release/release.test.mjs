@@ -266,6 +266,18 @@ test('an existing tag or release refuses even in a dry run', async () => {
   }
 });
 
+test('a linux target cannot silently use the Windows verification workflow', async () => {
+  const fx = await fixture();
+  try {
+    const refused = await fx.run([`--tag=${TAG}`, '--target=linux']);
+    assert.equal(refused.exitCode, 1);
+    assert.equal((await fx.readSummary(refused)).steps[0].error.code, 'workflow-target-mismatch');
+    assert.equal(fx.sideEffects().length, 0);
+  } finally {
+    await fx.cleanup();
+  }
+});
+
 test('an unowned or second state directory is never taken over', async () => {
   const fx = await fixture();
   try {
