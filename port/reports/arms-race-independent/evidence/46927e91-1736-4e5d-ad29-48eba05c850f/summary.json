@@ -1,0 +1,197 @@
+{
+  "base": "e7602fb2bd96f9e73f6c05b1bbb170be35df4dd9",
+  "options": {
+    "startup": true,
+    "attempt": null
+  },
+  "commands": [
+    [
+      "node",
+      "/tmp/opencode/arms-race-independent/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/arms-race-3firwbta/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-3firwbta/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-3firwbta/godot",
+      "--script",
+      "res://tests/arms_race/independent_fixtures.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-3firwbta/godot",
+      "--script",
+      "res://tests/protocol/control_safety.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-3firwbta/godot",
+      "--script",
+      "res://tests/protocol/local_lifecycle.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-3firwbta/godot",
+      "--script",
+      "res://tests/protocol/round_boundaries.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-3firwbta/godot",
+      "--script",
+      "res://tests/protocol/session_recovery.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-3firwbta/godot",
+      "--script",
+      "res://tests/protocol/stall_controls.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-3firwbta/godot",
+      "--script",
+      "res://tests/protocol/weapon_selection.gd"
+    ]
+  ],
+  "cases": [],
+  "privateTemp": "/tmp/opencode/arms-race-3firwbta",
+  "status": "FAIL",
+  "error": "/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/46927e91-1736-4e5d-ad29-48eba05c850f/weapon_selection.log",
+  "ownedProcessesReaped": true,
+  "processes": [
+    {
+      "pid": 3348466,
+      "returncode": 0,
+      "command": [
+        "node",
+        "/tmp/opencode/arms-race-independent/tools/godot-export/semantic.mjs",
+        "/tmp/opencode/arms-race-3firwbta/godot/content/generated"
+      ]
+    },
+    {
+      "pid": 3348623,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-3firwbta/godot",
+        "--editor",
+        "--import"
+      ]
+    },
+    {
+      "pid": 3348976,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-3firwbta/godot",
+        "--script",
+        "res://tests/arms_race/independent_fixtures.gd"
+      ]
+    },
+    {
+      "pid": 3349014,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-3firwbta/godot",
+        "--script",
+        "res://tests/protocol/control_safety.gd"
+      ]
+    },
+    {
+      "pid": 3349109,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-3firwbta/godot",
+        "--script",
+        "res://tests/protocol/local_lifecycle.gd"
+      ]
+    },
+    {
+      "pid": 3349190,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-3firwbta/godot",
+        "--script",
+        "res://tests/protocol/round_boundaries.gd"
+      ]
+    },
+    {
+      "pid": 3349281,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-3firwbta/godot",
+        "--script",
+        "res://tests/protocol/session_recovery.gd"
+      ]
+    },
+    {
+      "pid": 3349336,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-3firwbta/godot",
+        "--script",
+        "res://tests/protocol/stall_controls.gd"
+      ]
+    },
+    {
+      "pid": 3349374,
+      "returncode": 1,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-3firwbta/godot",
+        "--script",
+        "res://tests/protocol/weapon_selection.gd"
+      ]
+    }
+  ],
+  "privateTempRemoved": true,
+  "provenance": {
+    "originalRunnerSHA256": "73a8845f804bc1d7046a9c2ff986eba7fd2ffd2e8ccb9dfb0cf14dfb7fe07dcc",
+    "independentWrapperSHA256": "a9dea1613b6d7abb8ddf4460cff781b605940f9f05e70cf53814cd8fb764e007",
+    "observer": "unchanged delivery observer",
+    "budget": "independent review: max two live combat attempts; delivery attempts excluded"
+  }
+}

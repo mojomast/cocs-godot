@@ -1,0 +1,762 @@
+{
+  "base": "e7602fb2bd96f9e73f6c05b1bbb170be35df4dd9",
+  "options": {
+    "startup": true,
+    "attempt": null
+  },
+  "commands": [
+    [
+      "node",
+      "/tmp/opencode/arms-race-independent/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/arms-race-lve15szo/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--script",
+      "res://tests/arms_race/independent_fixtures.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--script",
+      "res://tests/protocol/control_safety.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--script",
+      "res://tests/protocol/local_lifecycle.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--script",
+      "res://tests/protocol/round_boundaries.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--script",
+      "res://tests/protocol/session_recovery.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--script",
+      "res://tests/protocol/stall_controls.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--script",
+      "res://tests/protocol/game_hud_session.gd"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--script",
+      "res://tests/protocol/scoreboard_session.gd"
+    ],
+    [
+      "node",
+      "--test",
+      "game/armsrace.test.mjs",
+      "game/outcome.test.mjs",
+      "game/input.test.mjs",
+      "game/movement-input.test.mjs"
+    ],
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1280x800x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--quit"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/protocol/weapon_selection.gd"
+    ],
+    [
+      "node",
+      "/tmp/opencode/arms-race-independent/port/native-arms-race/server.mjs",
+      "/tmp/opencode/arms-race-lve15szo",
+      "/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/meridian-exchange/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "960x640",
+      "--script",
+      "res://tests/arms_race/observe.gd",
+      "--",
+      "--map=meridian-exchange",
+      "--endpoint=ws://127.0.0.1:32969",
+      "--round-seconds=60",
+      "--evidence-out=/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/meridian-exchange",
+      "--native-trace",
+      "--check-lifecycle"
+    ],
+    [
+      "node",
+      "/tmp/opencode/arms-race-independent/port/native-arms-race/server.mjs",
+      "/tmp/opencode/arms-race-lve15szo",
+      "/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/verdant-reliquary/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/arms_race/observe.gd",
+      "--",
+      "--map=verdant-reliquary",
+      "--endpoint=ws://127.0.0.1:44365",
+      "--round-seconds=60",
+      "--evidence-out=/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/verdant-reliquary",
+      "--native-trace"
+    ],
+    [
+      "node",
+      "/tmp/opencode/arms-race-independent/port/native-arms-race/server.mjs",
+      "/tmp/opencode/arms-race-lve15szo",
+      "/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/ember-crucible/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-lve15szo/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "960x640",
+      "--script",
+      "res://tests/arms_race/observe.gd",
+      "--",
+      "--map=ember-crucible",
+      "--endpoint=ws://127.0.0.1:46331",
+      "--round-seconds=60",
+      "--evidence-out=/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/ember-crucible",
+      "--native-trace"
+    ]
+  ],
+  "cases": [
+    {
+      "map": "meridian-exchange",
+      "resolution": "960x640",
+      "outcome": {
+        "ack": 115,
+        "age": 61.9999999999982,
+        "attempt": 0,
+        "captures": {
+          "restart": {
+            "ack": 115,
+            "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+            "next": "Next: Rocket Launcher",
+            "outcome": "",
+            "seq": 1863,
+            "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+          },
+          "results": {
+            "ack": 3460,
+            "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+            "next": "Next: Rocket Launcher",
+            "outcome": "TIME LIMIT \u00b7 Grok \u00b7 Ranked by ladder, then frags",
+            "seq": 1800,
+            "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+          },
+          "startup": {
+            "ack": 136,
+            "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+            "next": "Next: Rocket Launcher",
+            "outcome": "",
+            "seq": 84,
+            "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+          }
+        },
+        "fresh_moved": true,
+        "promoted": false,
+        "results": 1,
+        "rounds": 2
+      },
+      "localPromotions": [],
+      "sourceConfigs": [
+        {
+          "type": "start",
+          "config": {
+            "mode": "armsrace",
+            "botCount": 2,
+            "difficulty": "normal",
+            "fragLimit": 10,
+            "timeLimit": 60,
+            "respawn": 2,
+            "speed": 1,
+            "gravity": 1,
+            "damage": 1,
+            "fastPowers": false,
+            "lifeSteal": false,
+            "unlimitedAmmo": false,
+            "suddenDeath": false,
+            "randomLoadout": false,
+            "oneShot": false,
+            "instagib": false,
+            "mirrorLoadout": false,
+            "bounty": false,
+            "berserk": false,
+            "bigHead": false,
+            "noRecoil": false,
+            "endless": false,
+            "startingWeapon": 0,
+            "playerName": "",
+            "mission": "convoy-run",
+            "loadout": null,
+            "checkpoint": null,
+            "mutators": []
+          },
+          "mapId": "meridian-exchange",
+          "roundRevision": 1
+        },
+        {
+          "type": "start",
+          "config": {
+            "mode": "armsrace",
+            "botCount": 2,
+            "difficulty": "normal",
+            "fragLimit": 10,
+            "timeLimit": 60,
+            "respawn": 2,
+            "speed": 1,
+            "gravity": 1,
+            "damage": 1,
+            "fastPowers": false,
+            "lifeSteal": false,
+            "unlimitedAmmo": false,
+            "suddenDeath": false,
+            "randomLoadout": false,
+            "oneShot": false,
+            "instagib": false,
+            "mirrorLoadout": false,
+            "bounty": false,
+            "berserk": false,
+            "bigHead": false,
+            "noRecoil": false,
+            "endless": false,
+            "startingWeapon": 0,
+            "playerName": "",
+            "mission": "convoy-run",
+            "loadout": null,
+            "checkpoint": null,
+            "mutators": []
+          },
+          "mapId": "meridian-exchange",
+          "roundRevision": 2
+        }
+      ],
+      "inputReceipts": 3579,
+      "maxAppliedACK": 3460,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    },
+    {
+      "map": "verdant-reliquary",
+      "resolution": "1280x800",
+      "outcome": {
+        "ack": 218,
+        "age": 6.01125,
+        "attempt": 0,
+        "captures": {
+          "startup": {
+            "ack": 100,
+            "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+            "next": "Next: Rocket Launcher",
+            "outcome": "",
+            "seq": 78,
+            "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+          }
+        },
+        "fresh_moved": false,
+        "promoted": false,
+        "results": 0,
+        "rounds": 1
+      },
+      "localPromotions": [],
+      "sourceConfigs": [
+        {
+          "type": "start",
+          "config": {
+            "mode": "armsrace",
+            "botCount": 2,
+            "difficulty": "normal",
+            "fragLimit": 10,
+            "timeLimit": 60,
+            "respawn": 2,
+            "speed": 1,
+            "gravity": 1,
+            "damage": 1,
+            "fastPowers": false,
+            "lifeSteal": false,
+            "unlimitedAmmo": false,
+            "suddenDeath": false,
+            "randomLoadout": false,
+            "oneShot": false,
+            "instagib": false,
+            "mirrorLoadout": false,
+            "bounty": false,
+            "berserk": false,
+            "bigHead": false,
+            "noRecoil": false,
+            "endless": false,
+            "startingWeapon": 0,
+            "playerName": "",
+            "mission": "convoy-run",
+            "loadout": null,
+            "checkpoint": null,
+            "mutators": []
+          },
+          "mapId": "verdant-reliquary",
+          "roundRevision": 1
+        }
+      ],
+      "inputReceipts": 221,
+      "maxAppliedACK": 221,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    },
+    {
+      "map": "ember-crucible",
+      "resolution": "960x640",
+      "outcome": {
+        "ack": 267,
+        "age": 6.0212121212121,
+        "attempt": 0,
+        "captures": {
+          "startup": {
+            "ack": 123,
+            "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+            "next": "Next: Rocket Launcher",
+            "outcome": "",
+            "seq": 79,
+            "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+          }
+        },
+        "fresh_moved": false,
+        "promoted": false,
+        "results": 0,
+        "rounds": 1
+      },
+      "localPromotions": [],
+      "sourceConfigs": [
+        {
+          "type": "start",
+          "config": {
+            "mode": "armsrace",
+            "botCount": 2,
+            "difficulty": "normal",
+            "fragLimit": 10,
+            "timeLimit": 60,
+            "respawn": 2,
+            "speed": 1,
+            "gravity": 1,
+            "damage": 1,
+            "fastPowers": false,
+            "lifeSteal": false,
+            "unlimitedAmmo": false,
+            "suddenDeath": false,
+            "randomLoadout": false,
+            "oneShot": false,
+            "instagib": false,
+            "mirrorLoadout": false,
+            "bounty": false,
+            "berserk": false,
+            "bigHead": false,
+            "noRecoil": false,
+            "endless": false,
+            "startingWeapon": 0,
+            "playerName": "",
+            "mission": "convoy-run",
+            "loadout": null,
+            "checkpoint": null,
+            "mutators": []
+          },
+          "mapId": "ember-crucible",
+          "roundRevision": 1
+        }
+      ],
+      "inputReceipts": 269,
+      "maxAppliedACK": 268,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    }
+  ],
+  "privateTemp": "/tmp/opencode/arms-race-lve15szo",
+  "display": ":0",
+  "listenerCleanup": [
+    {
+      "endpoint": "ws://127.0.0.1:32969",
+      "closed": true
+    },
+    {
+      "endpoint": "ws://127.0.0.1:44365",
+      "closed": true
+    },
+    {
+      "endpoint": "ws://127.0.0.1:46331",
+      "closed": true
+    }
+  ],
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true,
+  "processes": [
+    {
+      "pid": 3356117,
+      "returncode": 0,
+      "command": [
+        "node",
+        "/tmp/opencode/arms-race-independent/tools/godot-export/semantic.mjs",
+        "/tmp/opencode/arms-race-lve15szo/godot/content/generated"
+      ]
+    },
+    {
+      "pid": 3356218,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--editor",
+        "--import"
+      ]
+    },
+    {
+      "pid": 3356895,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--script",
+        "res://tests/arms_race/independent_fixtures.gd"
+      ]
+    },
+    {
+      "pid": 3356971,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--script",
+        "res://tests/protocol/control_safety.gd"
+      ]
+    },
+    {
+      "pid": 3357128,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--script",
+        "res://tests/protocol/local_lifecycle.gd"
+      ]
+    },
+    {
+      "pid": 3357208,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--script",
+        "res://tests/protocol/round_boundaries.gd"
+      ]
+    },
+    {
+      "pid": 3357248,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--script",
+        "res://tests/protocol/session_recovery.gd"
+      ]
+    },
+    {
+      "pid": 3357320,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--script",
+        "res://tests/protocol/stall_controls.gd"
+      ]
+    },
+    {
+      "pid": 3357414,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--script",
+        "res://tests/protocol/game_hud_session.gd"
+      ]
+    },
+    {
+      "pid": 3357455,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--script",
+        "res://tests/protocol/scoreboard_session.gd"
+      ]
+    },
+    {
+      "pid": 3357496,
+      "returncode": 0,
+      "command": [
+        "node",
+        "--test",
+        "game/armsrace.test.mjs",
+        "game/outcome.test.mjs",
+        "game/input.test.mjs",
+        "game/movement-input.test.mjs"
+      ]
+    },
+    {
+      "pid": 3357712,
+      "returncode": 0,
+      "command": [
+        "Xvfb",
+        "-displayfd",
+        "4",
+        "-screen",
+        "0",
+        "1280x800x24",
+        "-nolisten",
+        "tcp",
+        "-nolisten",
+        "unix"
+      ]
+    },
+    {
+      "pid": 3357715,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--quit"
+      ]
+    },
+    {
+      "pid": 3358123,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "1280x800",
+        "--script",
+        "res://tests/protocol/weapon_selection.gd"
+      ]
+    },
+    {
+      "pid": 3358447,
+      "returncode": 0,
+      "command": [
+        "node",
+        "/tmp/opencode/arms-race-independent/port/native-arms-race/server.mjs",
+        "/tmp/opencode/arms-race-lve15szo",
+        "/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/meridian-exchange/wire.json"
+      ]
+    },
+    {
+      "pid": 3358552,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x640",
+        "--script",
+        "res://tests/arms_race/observe.gd",
+        "--",
+        "--map=meridian-exchange",
+        "--endpoint=ws://127.0.0.1:32969",
+        "--round-seconds=60",
+        "--evidence-out=/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/meridian-exchange",
+        "--native-trace",
+        "--check-lifecycle"
+      ]
+    },
+    {
+      "pid": 3367719,
+      "returncode": 0,
+      "command": [
+        "node",
+        "/tmp/opencode/arms-race-independent/port/native-arms-race/server.mjs",
+        "/tmp/opencode/arms-race-lve15szo",
+        "/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/verdant-reliquary/wire.json"
+      ]
+    },
+    {
+      "pid": 3367844,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "1280x800",
+        "--script",
+        "res://tests/arms_race/observe.gd",
+        "--",
+        "--map=verdant-reliquary",
+        "--endpoint=ws://127.0.0.1:44365",
+        "--round-seconds=60",
+        "--evidence-out=/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/verdant-reliquary",
+        "--native-trace"
+      ]
+    },
+    {
+      "pid": 3368987,
+      "returncode": 0,
+      "command": [
+        "node",
+        "/tmp/opencode/arms-race-independent/port/native-arms-race/server.mjs",
+        "/tmp/opencode/arms-race-lve15szo",
+        "/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/ember-crucible/wire.json"
+      ]
+    },
+    {
+      "pid": 3369073,
+      "returncode": 0,
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/tmp/opencode/arms-race-lve15szo/godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x640",
+        "--script",
+        "res://tests/arms_race/observe.gd",
+        "--",
+        "--map=ember-crucible",
+        "--endpoint=ws://127.0.0.1:46331",
+        "--round-seconds=60",
+        "--evidence-out=/tmp/opencode/arms-race-independent/port/reports/arms-race-independent/evidence/5170738c-bc25-49c4-b839-17035898df9e/ember-crucible",
+        "--native-trace"
+      ]
+    }
+  ],
+  "provenance": {
+    "originalRunnerSHA256": "73a8845f804bc1d7046a9c2ff986eba7fd2ffd2e8ccb9dfb0cf14dfb7fe07dcc",
+    "independentWrapperSHA256": "3945a05b47edc913bdd49adc99593415a4f2ab03f444933e0a167153f242ecde",
+    "observer": "unchanged delivery observer",
+    "budget": "independent review: max two live combat attempts; delivery attempts excluded"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "base": "54452957353bcaf72fe467739a1ce2dfcd6dc69a",
+  "delivery": [
+    "52de3b9216ac2837344015cd55e5527cf7b260d7",
+    "21fbd93ded3e92228f882b1d582a3c1623943393"
+  ],
+  "testedHEAD": "e7602fb2bd96f9e73f6c05b1bbb170be35df4dd9",
+  "runs": [
+    {
+      "id": "2a8ac5ea-4118-489c-a9ac-c58388f7cc15",
+      "status": "PASS",
+      "runtimeHashesMatched": 627,
+      "ownedPIDsAbsent": 8,
+      "listenerCountClosed": 1,
+      "privateTempAbsent": true
+    },
+    {
+      "id": "46927e91-1736-4e5d-ad29-48eba05c850f",
+      "status": "FAIL",
+      "runtimeHashesMatched": 627,
+      "ownedPIDsAbsent": 9,
+      "listenerCountClosed": 0,
+      "privateTempAbsent": true
+    },
+    {
+      "id": "5170738c-bc25-49c4-b839-17035898df9e",
+      "status": "PASS",
+      "runtimeHashesMatched": 627,
+      "ownedPIDsAbsent": 20,
+      "listenerCountClosed": 3,
+      "privateTempAbsent": true
+    }
+  ],
+  "protectedRuntimeUnchanged": true,
+  "inheritedFilesIdenticalToDeliveryBase": [
+    "godot/world/session.gd",
+    "godot/net/client.gd",
+    "godot/ui/game_hud.gd",
+    "godot/ui/scoreboard.gd"
+  ],
+  "originalHooksPatch": {
+    "exit": 1,
+    "stderr": "error: patch failed: tools/godot-dev/launch_options.mjs:2\nerror: tools/godot-dev/launch_options.mjs: patch does not apply\nerror: patch failed: tools/godot-package/options.mjs:2\nerror: tools/godot-package/options.mjs: patch does not apply\n"
+  },
+  "rebasedHooksPatchAppliesButUnapplied": true
+}

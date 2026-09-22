@@ -1,0 +1,11 @@
+Initial offline audit exited 1:
+RuntimeError: Native/source weapon mismatch
+at require(native_shown['actor']['weapon'] == shown_actor['weapon'] and native_shown['current'] == display['display']['current'], 'Native/source weapon mismatch')
+
+Investigation: ARMS_SNAPSHOT callback is connected before the deferred GameHUD
+snapshot handler. It logs the current native actor but the previous HUD string.
+ARMS_CAPTURE waits for frame_post_draw and correctly shows the promoted weapon
+at seq 247. Correction checks native actor weapon against the same source seq,
+and checks post-draw capture current/next against authoritative weapon/ladder.
+This was an offline audit ordering assumption, not another live attempt or a
+runtime change. Original source/native logs and run statuses are preserved.
