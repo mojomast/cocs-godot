@@ -126,3 +126,16 @@ This covers lobby routing/ownership, strict spectator notice context and the new
 LATTICE/Payload guidance fixtures alongside inherited source/transport/control
 checks. It does not close the separate exported full-lobby focus-signal gap or
 establish Horde acceptance. Those independent reviews remain active.
+
+## Popup-free lobby integration
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35693193274> at
+`329f411134d5064dae68f0a123e3873074a40306` **PASS**, all **80 gates**, in4m30s.
+The lead watched completion and checked the downloaded report's revision, count,
+status and every gate's pass flag. Full summary, console, artifact manifest and
+run/job metadata are retained in `35693193274/`.
+
+The separate63 graphical selector checks,14 exported startup/ownership cases and
+clean full two-client release flow remain in their graphical/package reports.
+This hosted run precedes the local Horde runtime/gate integration; it makes no
+Horde aggregate or package claim.
