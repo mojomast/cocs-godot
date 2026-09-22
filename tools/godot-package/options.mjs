@@ -1,0 +1,67 @@
+// Package-only routing. Source clients retain their own capability/protocol gates.
+export const EXPERIENCES = {
+  combat: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
+  sports: {scene:'res://sports/demo.tscn', maps:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
+  objectives: {scene:'res://objectives/demo.tscn', maps:{'tidal-citadel':['ctf'], 'sunscar-convoy':['payload']}},
+  lattice: {scene:'res://lattice/board.tscn', maps:{'asterion-relay':['cocs','cocs-coop'], 'monsoon-foundry':['cocs','cocs-coop']}},
+  'lattice-world': {scene:'res://lattice/world_demo.tscn', maps:{'asterion-relay':['cocs','cocs-coop'], 'monsoon-foundry':['cocs','cocs-coop']}},
+};
+
+export function options(argv, catalog) {
+  const values = {}, flags = new Set();
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+    const key = ['experience','map','mode','time-limit','round-target'].find(k => arg === `--${k}` || arg.startsWith(`--${k}=`));
+    if (key) {
+      const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
+      if (!value || value.startsWith('--') || value.length > 64) throw Error(`--${key} requires a value of 1..64 characters`);
+      if (Object.hasOwn(values, key)) throw Error(`Duplicate --${key}`);
+      values[key] = value;
+    } else if (['--play','--setup','--native-trace','--mute','--debug-hud'].includes(arg)) {
+      if (flags.has(arg)) throw Error(`Duplicate ${arg}`);
+      flags.add(arg);
+    } else throw Error(`Unknown option ${arg}. Use --help.`);
+  }
+  const experience = values.experience ?? 'combat';
+  if (!Object.hasOwn(EXPERIENCES, experience)) throw Error(`Unknown experience: ${experience}`);
+  const selected = EXPERIENCES[experience];
+  const map = values.map ?? Object.keys(selected.maps)[0];
+  if (!Object.hasOwn(selected.maps, map)) throw Error(`${experience} does not support map ${map}`);
+  const mode = values.mode ?? selected.maps[map][0];
+  if (!selected.maps[map].includes(mode) || !catalog.maps.find(m => m.id === map)?.supported_modes.includes(mode)) throw Error(`Unsupported ${map} / ${mode}`);
+  if (flags.has('--play') && flags.has('--setup')) throw Error('Choose --play or --setup');
+  for (const flag of ['--play','--setup','--mute','--debug-hud']) if (flags.has(flag) && experience !== 'combat') throw Error(`${flag} requires combat`);
+  if (flags.has('--native-trace') && !['combat','lattice-world'].includes(experience)) throw Error('--native-trace requires combat or lattice-world');
+  for (const key of ['time-limit','round-target']) {
+    if (values[key] === undefined) continue;
+    if (experience !== 'sports') throw Error(`--${key} requires sports`);
+    const min = key === 'time-limit' ? 60 : 1;
+    const max = key === 'time-limit' ? 900 : map === 'ion-speedway' ? 10 : 15;
+    if (!/^\d+$/.test(values[key]) || !Number.isSafeInteger(Number(values[key])) || Number(values[key]) < min || Number(values[key]) > max) throw Error(`--${key} must be ${min}..${max}`);
+  }
+  const userArgs = [`--map=${map}`, `--mode=${mode}`];
+  for (const key of ['time-limit','round-target']) if (values[key] !== undefined) userArgs.push(`--${key}=${values[key]}`);
+  for (const flag of ['--native-trace','--mute','--debug-hud']) if (flags.has(flag)) userArgs.push(flag);
+  if (experience === 'combat' && !flags.has('--play')) userArgs.push('--setup');
+  return {experience, map, mode, scene:selected.scene, userArgs};
+}
+
+export const HELP = `Private local COCS Linux prototype — Node >=22.13.0 required
+  node run.mjs                              Native combat host setup
+  node run.mjs --play --map=meridian-exchange --mode=deathmatch
+  node run.mjs --experience=sports --map=ion-speedway
+  node run.mjs --experience=sports --map=aurora-stadium
+  node run.mjs --experience=objectives --map=tidal-citadel
+  node run.mjs --experience=objectives --map=sunscar-convoy
+  node run.mjs --experience=lattice --map=asterion-relay --mode=cocs
+  node run.mjs --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
+
+Combat: 3 combat maps; deathmatch/teamdeathmatch/instagib/rockets.
+  --play skips setup; --setup, --mute, --debug-hud supported.
+Sports: --time-limit=60..900; --round-target=1..10 laps or 1..15 goals.
+LATTICE board: click Connect / start. LATTICE world starts directly.
+--native-trace is available for combat and lattice-world.
+An ordinary server owns a fresh loopback port. Close the window or Ctrl+C to stop.
+No editor, git, npm, installation, or source checkout is needed to play.
+Private prototype only; source asset redistribution rights remain unresolved.
+`;
