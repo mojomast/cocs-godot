@@ -207,6 +207,7 @@ ssh_remote_deploy/enabled=false
         raise RuntimeError("ws license missing")
     copy(ROOT / "tools/godot-package/run.mjs", package / "run.mjs")
     copy(ROOT / "tools/godot-package/options.mjs", package / "options.mjs")
+    copy(ROOT / "tools/godot-package/endpoint.mjs", package / "endpoint.mjs")
     copy(ROOT / "port/contracts/map-selection.json", package / "catalog.json")
     copy(ROOT / "port/native-linux-package/PLAY.md", package / "README.md")
     notices = package / "licenses"

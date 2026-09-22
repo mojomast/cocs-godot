@@ -23,12 +23,12 @@ test('each standalone map/mode reaches its actual scene and locked identity',()=
     for(const [map,modes]of Object.entries(entry.modes??{}))for(const mode of modes){
       const plan=launchOptions([`--experience=${experience}`,`--map=${map}`,`--mode=${mode}`],catalog);
       assert.ok(plan.args.includes(entry.scene));
-      assert.deepEqual(plan.sessionOptions,[`--map=${map}`,`--mode=${mode}`]);
+      assert.deepEqual(plan.sessionOptions,[`--map=${map}`,`--mode=${mode}`,...(experience==='lobby'?['--lobby-menu']:[])]);
       assert.equal(plan.smoke,null);
       assert.ok(!plan.args.includes('--headless'));
     }
     if(entry.modes)assert.deepEqual(launchOptions([`--experience=${experience}`],catalog).sessionOptions,
-      [`--map=${entry.map}`,`--mode=${entry.modes[entry.map][0]}`]);
+      [`--map=${entry.map}`,`--mode=${entry.modes[entry.map][0]}`,...(experience==='lobby'?['--lobby-menu']:[])]);
   }
 });
 

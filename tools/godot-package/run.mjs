@@ -18,7 +18,7 @@ async function main() {
   for (const name of ['XDG_DATA_HOME','XDG_CONFIG_HOME','XDG_CACHE_HOME']) {
     env[name] = join(runtime, name); mkdirSync(env[name]);
   }
-  const game = createGameServer({historyPath:null, progressionPath:null});
+  const game = plan.endpoint ? null : createGameServer({historyPath:null, progressionPath:null});
   let child, childDone, stopping = false, signalCode = 0, serverFailure, killTimer;
   const stop = () => {
     stopping = true;
@@ -32,19 +32,26 @@ async function main() {
   const terminate = () => { signalCode = 143; stop(); };
   const serverError = error => { serverFailure = error; stop(); };
   process.on('SIGINT', interrupt); process.on('SIGTERM', terminate);
-  game.server.on('error', serverError);
+  game?.server.on('error', serverError);
   try {
-    await new Promise((resolve, reject) => {
-      game.server.once('error', reject);
-      game.server.listen(0, '127.0.0.1', () => { game.server.removeListener('error', reject); resolve(); });
-    });
-    const port = game.server.address().port;
-    const health = await fetch(`http://127.0.0.1:${port}/`, {signal:AbortSignal.timeout(5000)});
-    const status = await health.json();
-    if (!health.ok || status.port !== port || status.service !== 'token-arena-game-server') throw Error('Owned server health check failed');
+    let endpoint = plan.endpoint;
+    if (game) {
+      await new Promise((resolve, reject) => {
+        game.server.once('error', reject);
+        game.server.listen(0, '127.0.0.1', () => { game.server.removeListener('error', reject); resolve(); });
+      });
+      const port = game.server.address().port;
+      const health = await fetch(`http://127.0.0.1:${port}/`, {signal:AbortSignal.timeout(5000)});
+      const status = await health.json();
+      if (!health.ok || status.port !== port || status.service !== 'token-arena-game-server') throw Error('Owned server health check failed');
+      if (stopping) return signalCode || 1;
+      console.log('PACKAGE_SERVER_READY ' + JSON.stringify({pid:process.pid, host:'127.0.0.1', port, experience:plan.experience, map:plan.map, mode:plan.mode, health:status}));
+      endpoint = `ws://127.0.0.1:${port}`;
+    } else {
+      console.log('PACKAGE_EXTERNAL_AUTHORITY ' + JSON.stringify({owned:false, experience:plan.experience}));
+    }
     if (stopping) return signalCode || 1;
-    console.log('PACKAGE_SERVER_READY ' + JSON.stringify({pid:process.pid, host:'127.0.0.1', port, experience:plan.experience, map:plan.map, mode:plan.mode, health:status}));
-    child = spawn(join(root, 'cocs.x86_64'), ['--main-pack',join(root, 'cocs.pck'), plan.scene, '--', `--endpoint=ws://127.0.0.1:${port}`, ...plan.userArgs], {cwd:root, env, stdio:'inherit'});
+    child = spawn(join(root, 'cocs.x86_64'), ['--main-pack',join(root, 'cocs.pck'), plan.scene, '--', `--endpoint=${endpoint}`, ...plan.userArgs], {cwd:root, env, stdio:'inherit'});
     childDone = new Promise((resolve, reject) => { child.once('error', reject); child.once('exit', (code, signal) => resolve({code, signal})); });
     console.log('PACKAGE_NATIVE_STARTED ' + JSON.stringify({pid:child.pid, scene:plan.scene}));
     const result = await childDone;
@@ -55,11 +62,13 @@ async function main() {
     if (childDone) await childDone.catch(() => {});
     clearTimeout(killTimer);
     // The native process is gone: terminate any residual WS close handshake.
-    for (const socket of game.wss.clients) socket.terminate();
-    game.server.closeAllConnections();
-    await game.close();
+    if (game) {
+      for (const socket of game.wss.clients) socket.terminate();
+      game.server.closeAllConnections();
+      await game.close();
+      game.server.removeListener('error', serverError);
+    }
     process.removeListener('SIGINT', interrupt); process.removeListener('SIGTERM', terminate);
-    game.server.removeListener('error', serverError);
     rmSync(runtime, {recursive:true, force:true});
     console.log('PACKAGE_STOPPED');
   }

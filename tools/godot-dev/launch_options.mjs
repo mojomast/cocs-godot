@@ -1,6 +1,8 @@
 // Scene routing only: capability and protocol checks still belong to each client.
+import {lobbyEndpoint} from '../godot-package/endpoint.mjs';
 export const EXPERIENCES = {
   combat: {scene:'res://world/session.tscn', map:'meridian-exchange'},
+  lobby: {scene:'res://world/session.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   'arms-race': {scene:'res://arms_race/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['armsrace'], 'verdant-reliquary':['armsrace'], 'ember-crucible':['armsrace']}},
   zones: {scene:'res://zone_modes/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
   'combined-arms': {scene:'res://combined_arms/demo.tscn', map:'sunscar-convoy', modes:{'sunscar-convoy':['combined-arms']}},
@@ -14,7 +16,7 @@ export function launchOptions(argv, catalog) {
   const values = {}, flags = new Set(), sessionOptions = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['map','mode','experience','time-limit','round-target'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
+    const key = ['map','mode','experience','endpoint','time-limit','round-target'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       if (!value || value.startsWith('--')) throw Error(`--${key} requires a value`);
@@ -31,6 +33,7 @@ export function launchOptions(argv, catalog) {
   const experience = values.experience ?? 'combat';
   const selected = Object.hasOwn(EXPERIENCES, experience) ? EXPERIENCES[experience] : null;
   if (!selected) throw Error(`Unknown experience: ${experience}. Choose ${Object.keys(EXPERIENCES).join(', ')}.`);
+  const endpoint = lobbyEndpoint(values.endpoint, experience);
   for (const key of ['time-limit','round-target']) {
     if (values[key] === undefined) continue;
     if (experience !== 'sports') throw Error(`--${key} is supported only by the sports launcher`);
@@ -60,16 +63,19 @@ export function launchOptions(argv, catalog) {
   for (const key of ['map','mode','time-limit','round-target']) if (values[key]) sessionOptions.push(`--${key}=${values[key]}`);
   for (const flag of ['--setup','--native-trace','--mute','--debug-hud']) if (flags.has(flag)) sessionOptions.push(flag);
   const smoke = smokeFlags[0];
+  if (experience === 'lobby') sessionOptions.push('--lobby-menu');
   const args = smoke === '--network-smoke'
     ? ['--headless','--path','godot','--script','res://tests/protocol/live.gd']
     : [...(smoke ? ['--headless'] : []),'--path','godot',...(play ? [selected.scene] : [])];
   if (smoke && smoke !== '--network-smoke') sessionOptions.push(smoke);
-  return {args, sessionOptions, experience:play ? experience : 'viewer', smoke:smoke ?? null};
+  return {args, sessionOptions, experience:play ? experience : 'viewer', smoke:smoke ?? null, endpoint};
 }
 
 export const HELP = `Native COCS launcher — owned loopback authority, normal simulation timing
 
   node tools/godot-dev/launch.mjs --play --setup
+  node tools/godot-dev/launch.mjs --experience=lobby
+  node tools/godot-dev/launch.mjs --experience=lobby --endpoint=ws://127.0.0.1:PORT
   node tools/godot-dev/launch.mjs --experience=zones --map=meridian-exchange --mode=domination
   node tools/godot-dev/launch.mjs --experience=zones --map=verdant-reliquary --mode=koth
   node tools/godot-dev/launch.mjs --experience=combined-arms
@@ -84,6 +90,10 @@ export const HELP = `Native COCS launcher — owned loopback authority, normal s
 Set GODOT_BIN to the pinned Godot 4.5.2 binary. Run semantic export and import first.
 PORT=0 (default) allocates a free port. Close the client or press Ctrl+C to stop.
 Interactive sessions have no harness deadline. With no options, open the map viewer.
+Lobby: explicit Host/Create or Guest/Join, roster and host-only Start/Restart.
+  Without --endpoint, owns a loopback authority; share its printed endpoint/code.
+  With --endpoint, uses the existing authority and never starts or closes it.
+  Guests select the expected host map. Escape exposes Leave match.
 
 Combat: --map, --mode, --setup, --mute, --debug-hud, --native-trace
 Arms Race: three combat arenas; two Normal bots, ten weapons, 180-second rounds.

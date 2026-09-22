@@ -196,7 +196,7 @@ def main():
         env['DISPLAY'] = ':' + display
         x11 = X11(env['DISPLAY'])
 
-        def launch(name, cli, action='window', active=True, trace=True):
+        def launch(name, cli, action='window', active=True, trace=True, external=None):
             log = output / (name + '.log')
             with log.open('w') as stream:
                 process = subprocess.Popen([nodebin / 'node', package / 'run.mjs', *cli], cwd=unrelated, env=env, stdout=stream, stderr=subprocess.STDOUT)
@@ -208,7 +208,9 @@ def main():
                 text = log.read_text()
                 ready_records = records(text, 'PACKAGE_SERVER_READY ')
                 native_records = records(text, 'PACKAGE_NATIVE_STARTED ')
-                ready = ready_records[0] if ready_records else None
+                if external:
+                    require(not ready_records, f'{name}: external route created an authority')
+                ready = external or (ready_records[0] if ready_records else None)
                 native = native_records[0] if native_records else None
                 frames = records(text, 'PORT_NATIVE_TRACE ')
                 if ready and native and native.get('pid') and x11.window(native['pid']):
@@ -252,14 +254,50 @@ def main():
             require(code == expected and 'PACKAGE_STOPPED' in text, f'{name}: cleanup/exit mismatch {code}; see {log}')
             require(not Path(f'/proc/{native_pid}').exists(), f'{name}: native process survived')
             with socket.socket() as connection:
-                require(connection.connect_ex(('127.0.0.1', ready['port'])) != 0, f'{name}: owned server port survived')
+                connected = connection.connect_ex(('127.0.0.1', ready['port'])) == 0
+                require(connected == bool(external), f'{name}: authority ownership violated')
+            if external:
+                with urllib.request.urlopen(f"http://127.0.0.1:{ready['port']}/", timeout=5) as response:
+                    require(json.load(response)['service'] == 'token-arena-game-server', 'External authority stopped responding')
             require('SCRIPT ERROR' not in text and 'ERROR:' not in text, f'{name}: Godot error in native log')
-            result = {'case':name, 'exit':code, 'scene':native['scene'], 'host':ready['host'], 'dynamic_port':ready['port'], 'health':health, 'readiness':'setup-window' if not active else ('native-trace' if trace else 'authority-traffic-and-window; inspect PNG separately'), 'round_start_seen':any(f['event'] == 'round_start' for f in frames), 'pose_snapshots_seen':sum(f['event'] == 'snapshot' and f.get('pose_present') for f in frames), 'native_pid':native_pid, 'native_closed':True, 'server_closed':True, 'action':action}
+            result = {'case':name, 'exit':code, 'scene':native['scene'], 'host':ready['host'], 'dynamic_port':ready['port'], 'health':health, 'readiness':'setup-window' if not active else ('native-trace' if trace else 'authority-traffic-and-window; inspect PNG separately'), 'round_start_seen':any(f['event'] == 'round_start' for f in frames), 'pose_snapshots_seen':sum(f['event'] == 'snapshot' and f.get('pose_present') for f in frames), 'native_pid':native_pid, 'native_closed':True, 'authority_owned_by_launcher':not bool(external), 'server_closed':not bool(external), 'external_authority_preserved':bool(external), 'action':action}
             results.append(result)
             (output / 'cases.json').write_text(json.dumps(results, indent=2) + '\n')
             print(name, 'PASS', flush=True)
 
         launch('host-setup', [], active=False)
+        launch('lobby-menu', ['--experience=lobby'], active=False)
+        # An independent authority belongs to this verifier, not the launcher.
+        # Check actual exported-client close/interrupt without stopping that server.
+        external_log = output / 'external-authority.log'
+        server_code = '''
+import {createGameServer} from './runtime/server/game-server.mjs';
+const game=createGameServer({historyPath:null,progressionPath:null});
+await new Promise((resolve,reject)=>{game.server.once('error',reject);game.server.listen(0,'127.0.0.1',resolve);});
+console.log('EXTERNAL_READY '+JSON.stringify({port:game.server.address().port}));
+process.once('SIGTERM',async()=>{for(const socket of game.wss.clients)socket.terminate();game.server.closeAllConnections();await game.close();console.log('EXTERNAL_CLOSED');});
+'''
+        with external_log.open('w') as stream:
+            authority = subprocess.Popen([nodebin / 'node', '--input-type=module', '-e', server_code], cwd=package, env=env, stdout=stream, stderr=subprocess.STDOUT)
+        children.append(authority)
+        deadline = time.monotonic() + 10
+        while time.monotonic() < deadline:
+            ready = records(external_log.read_text(), 'EXTERNAL_READY ')
+            if ready:
+                break
+            require(authority.poll() is None, 'External authority startup failed')
+            time.sleep(0.05)
+        require(bool(ready), 'External authority readiness timed out')
+        external_port = ready[0]['port']
+        with urllib.request.urlopen(f'http://127.0.0.1:{external_port}/', timeout=5) as response:
+            external = {'host':'127.0.0.1', 'port':external_port, 'health':json.load(response)}
+        external_cli = ['--experience=lobby', f'--endpoint=ws://127.0.0.1:{external_port}']
+        launch('lobby-external', external_cli, active=False, external=external)
+        launch('lobby-external-interrupt', external_cli, action='interrupt', active=False, external=external)
+        authority.terminate()
+        require(authority.wait(timeout=10) == 0 and 'EXTERNAL_CLOSED' in external_log.read_text(), 'Verifier authority cleanup failed')
+        with socket.socket() as connection:
+            require(connection.connect_ex(('127.0.0.1', external_port)) != 0, 'Verifier authority listener survived')
         launch('combat', ['--play','--native-trace'])
         launch('lattice-world', ['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop','--native-trace'])
         # These standalone routes do not expose the combat trace option. Require
