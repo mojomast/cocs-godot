@@ -1,0 +1,1120 @@
+{
+  "scene": "shader_lab",
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+    "--script",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/observer.gd",
+    "--display-driver",
+    "x11",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "960x640",
+    "--position",
+    "0,0",
+    "--max-fps",
+    "30"
+  ],
+  "checks": [
+    {
+      "label": "plus/minus changes and restores intensity",
+      "passed": true
+    },
+    {
+      "label": "pause freezes shader time",
+      "passed": true
+    },
+    {
+      "label": "2 selects reactor",
+      "passed": true
+    },
+    {
+      "label": "960 reactor sidebar stays within viewport",
+      "passed": true,
+      "sidebar": [
+        676.0,
+        118.0,
+        269.0,
+        382.0
+      ],
+      "window": [
+        960,
+        640
+      ]
+    },
+    {
+      "label": "3 selects phase",
+      "passed": true
+    },
+    {
+      "label": "phase adjustment works",
+      "passed": true
+    },
+    {
+      "label": "R restores controls and resumes",
+      "passed": true
+    },
+    {
+      "label": "mouse drag orbits production camera",
+      "passed": true
+    },
+    {
+      "label": "Escape leaves main window responsive and pointer visible",
+      "passed": true
+    },
+    {
+      "label": "popup-free same native main window",
+      "passed": true,
+      "windows": [
+        [
+          4194307,
+          "COCS Destinations \u00b7 Port Laboratory (DEBUG)"
+        ]
+      ]
+    },
+    {
+      "label": "bounded final two unload checkpoints",
+      "passed": true,
+      "checkpoints": [
+        {
+          "after": {
+            "nodes": 1.0,
+            "objects": 1434.0,
+            "orphans": 0.0,
+            "resources": 26.0,
+            "static_bytes": 35399877.0,
+            "video_bytes": 15576715.0
+          },
+          "before": {
+            "nodes": 63.0,
+            "objects": 1570.0,
+            "orphans": 0.0,
+            "resources": 26.0,
+            "static_bytes": 36233534.0,
+            "video_bytes": 15964471.0
+          },
+          "cycle": 0,
+          "mouse_mode": 0
+        },
+        {
+          "after": {
+            "nodes": 1.0,
+            "objects": 1434.0,
+            "orphans": 0.0,
+            "resources": 26.0,
+            "static_bytes": 35334801.0,
+            "video_bytes": 15576715.0
+          },
+          "before": {
+            "nodes": 63.0,
+            "objects": 1570.0,
+            "orphans": 0.0,
+            "resources": 26.0,
+            "static_bytes": 36147474.0,
+            "video_bytes": 15964471.0
+          },
+          "cycle": 1,
+          "mouse_mode": 0
+        },
+        {
+          "after": {
+            "nodes": 1.0,
+            "objects": 1434.0,
+            "orphans": 0.0,
+            "resources": 26.0,
+            "static_bytes": 35334801.0,
+            "video_bytes": 15576715.0
+          },
+          "before": {
+            "nodes": 63.0,
+            "objects": 1570.0,
+            "orphans": 0.0,
+            "resources": 26.0,
+            "static_bytes": 36147474.0,
+            "video_bytes": 15964471.0
+          },
+          "cycle": 2,
+          "mouse_mode": 0
+        }
+      ]
+    },
+    {
+      "label": "clean process exit",
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "label": "start",
+      "wall_monotonic": 5252714.310915627,
+      "windows": [
+        [
+          4194307,
+          "COCS Destinations \u00b7 Port Laboratory (DEBUG)"
+        ]
+      ],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+        "--script",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/observer.gd",
+        "--display-driver",
+        "x11",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x640",
+        "--position",
+        "0,0",
+        "--max-fps",
+        "30"
+      ]
+    },
+    {
+      "label": "960x640 original interference UI",
+      "wall_monotonic": 5252714.781243737,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/shader_lab/capture-00.png",
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1571.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36201862.0,
+          "video_bytes": 12731361.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 2.6037037037037
+        },
+        "focus": true,
+        "frames": 39,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": false,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 2.6037037037037,
+        "selected": 0,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          268.0,
+          382.0
+        ],
+        "sidebar_right": 944.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n15 FPS \u00b7 CPU process 68.22 ms\n50 draws \u00b7 10036 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 3065,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "initial actual shader statistics",
+      "wall_monotonic": 5252715.251533345,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1570.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36199694.0,
+          "video_bytes": 12731361.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 3.03237466666667
+        },
+        "focus": true,
+        "frames": 46,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": false,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 3.03237466666667,
+        "selected": 0,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          268.0,
+          382.0
+        ],
+        "sidebar_right": 944.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n16 FPS \u00b7 CPU process 99.06 ms\n50 draws \u00b7 10036 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 3452,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "intensity up",
+      "wall_monotonic": 5252716.192041187,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1570.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36202446.0,
+          "video_bytes": 12731361.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 3.996021
+        },
+        "focus": true,
+        "frames": 61,
+        "intensity": 1.1,
+        "mouse_mode": 0,
+        "paused": false,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 3.996021,
+        "selected": 0,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          268.0,
+          382.0
+        ],
+        "sidebar_right": 944.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n15 FPS \u00b7 CPU process 67.99 ms\n50 draws \u00b7 10036 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 4408,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "intensity down",
+      "wall_monotonic": 5252717.132596238,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1570.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36202558.0,
+          "video_bytes": 12731361.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 4.87919333333334
+        },
+        "focus": true,
+        "frames": 75,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": false,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 4.87919333333334,
+        "selected": 0,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          268.0,
+          382.0
+        ],
+        "sidebar_right": 944.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n16 FPS \u00b7 CPU process 68.68 ms\n50 draws \u00b7 10036 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 5310,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "pause",
+      "wall_monotonic": 5252718.073138856,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1570.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36204526.0,
+          "video_bytes": 12731361.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 5.39626933333334
+        },
+        "focus": true,
+        "frames": 90,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": true,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 5.39626933333334,
+        "selected": 0,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          268.0,
+          382.0
+        ],
+        "sidebar_right": 944.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n15 FPS \u00b7 CPU process 73.17 ms\n50 draws \u00b7 10036 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 6297,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "paused interval",
+      "wall_monotonic": 5252719.04349809,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1570.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36204526.0,
+          "video_bytes": 12731361.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 5.39626933333334
+        },
+        "focus": true,
+        "frames": 104,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": true,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 5.39626933333334,
+        "selected": 0,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          268.0,
+          382.0
+        ],
+        "sidebar_right": 944.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n15 FPS \u00b7 CPU process 73.17 ms\n50 draws \u00b7 10036 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 7244,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "reactor selection",
+      "wall_monotonic": 5252719.984140976,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1570.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36218534.0,
+          "video_bytes": 12687671.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 5.39626933333334
+        },
+        "focus": true,
+        "frames": 118,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": true,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 5.39626933333334,
+        "selected": 1,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          269.0,
+          382.0
+        ],
+        "sidebar_right": 945.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n15 FPS \u00b7 CPU process 72.35 ms\n71 draws \u00b7 6316 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 8178,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "960x640 reactor UI",
+      "wall_monotonic": 5252720.454500755,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/shader_lab/capture-01.png",
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1571.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36221062.0,
+          "video_bytes": 12687671.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 5.39626933333334
+        },
+        "focus": true,
+        "frames": 125,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": true,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 5.39626933333334,
+        "selected": 1,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          269.0,
+          382.0
+        ],
+        "sidebar_right": 945.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n15 FPS \u00b7 CPU process 84.68 ms\n71 draws \u00b7 6316 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 8733,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "phase selection",
+      "wall_monotonic": 5252721.395038363,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1570.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36236774.0,
+          "video_bytes": 12687671.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 5.39626933333334
+        },
+        "focus": true,
+        "frames": 139,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": true,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 5.39626933333334,
+        "selected": 2,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          269.0,
+          410.0
+        ],
+        "sidebar_right": 945.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n14 FPS \u00b7 CPU process 100.61 ms\n37 draws \u00b7 4776 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 9605,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "960x640 phase UI",
+      "wall_monotonic": 5252721.865323202,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/shader_lab/capture-02.png",
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1571.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36239158.0,
+          "video_bytes": 12687671.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 5.39626933333334
+        },
+        "focus": true,
+        "frames": 146,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": true,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 5.39626933333334,
+        "selected": 2,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          269.0,
+          410.0
+        ],
+        "sidebar_right": 945.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n14 FPS \u00b7 CPU process 100.61 ms\n37 draws \u00b7 4776 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 10128,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "phase adjustment",
+      "wall_monotonic": 5252722.805915062,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1570.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36236798.0,
+          "video_bytes": 12687671.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 5.39626933333334
+        },
+        "focus": true,
+        "frames": 161,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": true,
+        "phase": 0.48,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 5.39626933333334,
+        "selected": 2,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          269.0,
+          410.0
+        ],
+        "sidebar_right": 945.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n16 FPS \u00b7 CPU process 94.62 ms\n37 draws \u00b7 4776 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 10998,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "R reset",
+      "wall_monotonic": 5252723.746515879,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1570.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36237710.0,
+          "video_bytes": 12687671.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 0.428380555555555
+        },
+        "focus": true,
+        "frames": 176,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": false,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 0.428380555555555,
+        "selected": 2,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          269.0,
+          410.0
+        ],
+        "sidebar_right": 945.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n16 FPS \u00b7 CPU process 70.08 ms\n37 draws \u00b7 4776 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 11929,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "mouse drag orbit",
+      "wall_monotonic": 5252725.117340705,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1570.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36237710.0,
+          "video_bytes": 12687671.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 1.81251088888889
+        },
+        "focus": true,
+        "frames": 198,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": false,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 1.81251088888889,
+        "selected": 2,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          269.0,
+          410.0
+        ],
+        "sidebar_right": 945.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n16 FPS \u00b7 CPU process 71.31 ms\n45 draws \u00b7 4776 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 13329,
+        "yaw": 0.16
+      }
+    },
+    {
+      "label": "Escape responsiveness",
+      "wall_monotonic": 5252726.057896157,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1570.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36239158.0,
+          "video_bytes": 12687671.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 2.74977977777778
+        },
+        "focus": true,
+        "frames": 212,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": false,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 2.74977977777778,
+        "selected": 2,
+        "sidebar_rect": [
+          676.0,
+          118.0,
+          269.0,
+          410.0
+        ],
+        "sidebar_right": 945.0,
+        "size": [
+          960,
+          640
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n15 FPS \u00b7 CPU process 70.06 ms\n45 draws \u00b7 4776 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 14265,
+        "yaw": 0.16
+      }
+    },
+    {
+      "label": "1280x800 production view",
+      "wall_monotonic": 5252728.998803333,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/shader_lab/capture-03.png",
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1571.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36241542.0,
+          "video_bytes": 15964471.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 2.557933
+        },
+        "focus": true,
+        "frames": 251,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": false,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 2.557933,
+        "selected": 2,
+        "sidebar_rect": [
+          964.0,
+          118.0,
+          288.0,
+          410.0
+        ],
+        "sidebar_right": 1252.0,
+        "size": [
+          1280,
+          800
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n12 FPS \u00b7 CPU process 84.72 ms\n37 draws \u00b7 4776 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 17369,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "1280x800 interference UI",
+      "wall_monotonic": 5252729.93938878,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/shader_lab/capture-04.png",
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1571.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36238198.0,
+          "video_bytes": 15964471.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 3.46527233333333
+        },
+        "focus": true,
+        "frames": 261,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": false,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 3.46527233333333,
+        "selected": 0,
+        "sidebar_rect": [
+          964.0,
+          118.0,
+          288.0,
+          382.0
+        ],
+        "sidebar_right": 1252.0,
+        "size": [
+          1280,
+          800
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n12 FPS \u00b7 CPU process 84.72 ms\n50 draws \u00b7 10036 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 18292,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "1280x800 reactor UI",
+      "wall_monotonic": 5252730.879994156,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/shader_lab/capture-05.png",
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "counters": {
+          "nodes": 63.0,
+          "objects": 1571.0,
+          "orphans": 0.0,
+          "resources": 26.0,
+          "static_bytes": 36236366.0,
+          "video_bytes": 15964471.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "factory": {
+          "limit": 64,
+          "materials": 3,
+          "moth_cache": {
+            "limit": 128,
+            "textures": 16
+          },
+          "shared_shaders": 3,
+          "time": 4.438273
+        },
+        "focus": true,
+        "frames": 271,
+        "intensity": 1.0,
+        "mouse_mode": 0,
+        "paused": false,
+        "phase": 0.43,
+        "renderer": "gl_compatibility",
+        "scene": "res://shader_lab/demo.tscn",
+        "seconds": 4.438273,
+        "selected": 1,
+        "sidebar_rect": [
+          964.0,
+          118.0,
+          288.0,
+          382.0
+        ],
+        "sidebar_right": 1252.0,
+        "size": [
+          1280,
+          800
+        ],
+        "stats_text": "gl_compatibility\nllvmpipe (LLVM 20.1.8, 256 bits)\n10 FPS \u00b7 CPU process 144.57 ms\n72 draws \u00b7 6316 primitives\nGPU timing: unavailable\n3 shared shaders / 3 instances",
+        "ticks_ms": 19257,
+        "yaw": 0.4
+      }
+    },
+    {
+      "label": "teardown",
+      "wall_monotonic": 5252731.35031393,
+      "after": {
+        "nodes": 1.0,
+        "objects": 1434.0,
+        "orphans": 0.0,
+        "resources": 26.0,
+        "static_bytes": 35399877.0,
+        "video_bytes": 15576715.0
+      },
+      "before": {
+        "nodes": 63.0,
+        "objects": 1570.0,
+        "orphans": 0.0,
+        "resources": 26.0,
+        "static_bytes": 36233534.0,
+        "video_bytes": 15964471.0
+      },
+      "cycle": 0,
+      "mouse_mode": 0
+    },
+    {
+      "label": "teardown",
+      "wall_monotonic": 5252732.920870428,
+      "after": {
+        "nodes": 1.0,
+        "objects": 1434.0,
+        "orphans": 0.0,
+        "resources": 26.0,
+        "static_bytes": 35334801.0,
+        "video_bytes": 15576715.0
+      },
+      "before": {
+        "nodes": 63.0,
+        "objects": 1570.0,
+        "orphans": 0.0,
+        "resources": 26.0,
+        "static_bytes": 36147474.0,
+        "video_bytes": 15964471.0
+      },
+      "cycle": 1,
+      "mouse_mode": 0
+    },
+    {
+      "label": "teardown",
+      "wall_monotonic": 5252734.54146665,
+      "after": {
+        "nodes": 1.0,
+        "objects": 1434.0,
+        "orphans": 0.0,
+        "resources": 26.0,
+        "static_bytes": 35334801.0,
+        "video_bytes": 15576715.0
+      },
+      "before": {
+        "nodes": 63.0,
+        "objects": 1570.0,
+        "orphans": 0.0,
+        "resources": 26.0,
+        "static_bytes": 36147474.0,
+        "video_bytes": 15964471.0
+      },
+      "cycle": 2,
+      "mouse_mode": 0
+    }
+  ]
+}

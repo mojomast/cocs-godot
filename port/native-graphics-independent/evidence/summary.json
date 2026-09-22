@@ -1,0 +1,618 @@
+{
+  "xvfb_command": [
+    "Xvfb",
+    "-displayfd",
+    "4",
+    "-screen",
+    "0",
+    "1440x1000x24",
+    "-nolisten",
+    "tcp",
+    "-nolisten",
+    "unix",
+    "-noreset"
+  ],
+  "display": ":0",
+  "input": "XTest OS-level synthetic keyboard/mouse delivered to actual Godot X11 production window; no engine input injection",
+  "qualification": "Linux native X11 / Mesa software llvmpipe / 30 fps cap, not Windows, not headless, not hardware throughput",
+  "scenes": [
+    {
+      "scene": "particle_lab",
+      "checks": [
+        {
+          "label": "128K button changes actual draw and emitter slots",
+          "passed": true
+        },
+        {
+          "label": "minus reduces actual slots to 32K",
+          "passed": true
+        },
+        {
+          "label": "plus raises actual slots to 128K",
+          "passed": true
+        },
+        {
+          "label": "pause freezes simulation clock",
+          "passed": true
+        },
+        {
+          "label": "reset rewinds actual field clock",
+          "passed": true
+        },
+        {
+          "label": "Space resumes simulation",
+          "passed": true
+        },
+        {
+          "label": "B switches actual draw backend to MultiMesh",
+          "passed": true
+        },
+        {
+          "label": "RMB captures flight pointer",
+          "passed": true
+        },
+        {
+          "label": "Escape releases pointer",
+          "passed": true
+        },
+        {
+          "label": "popup-free same native main window",
+          "passed": true,
+          "windows": [
+            [
+              4194307,
+              "COCS \u00b7 Native Particle Observatory"
+            ]
+          ]
+        },
+        {
+          "label": "main window advances rendered frames after controls/Escape",
+          "passed": true
+        },
+        {
+          "label": "bounded final two unload checkpoints",
+          "passed": true,
+          "checkpoints": [
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1419.0,
+                "orphans": 0.0,
+                "resources": 15.0,
+                "static_bytes": 34310657.0,
+                "video_bytes": 15387829.0
+              },
+              "before": {
+                "nodes": 51.0,
+                "objects": 1584.0,
+                "orphans": 0.0,
+                "resources": 15.0,
+                "static_bytes": 35534581.0,
+                "video_bytes": 34328301.0
+              },
+              "cycle": 0,
+              "mouse_mode": 0
+            },
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1419.0,
+                "orphans": 0.0,
+                "resources": 15.0,
+                "static_bytes": 34310657.0,
+                "video_bytes": 15387829.0
+              },
+              "before": {
+                "nodes": 51.0,
+                "objects": 1584.0,
+                "orphans": 0.0,
+                "resources": 15.0,
+                "static_bytes": 35533429.0,
+                "video_bytes": 34328301.0
+              },
+              "cycle": 1,
+              "mouse_mode": 0
+            },
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1419.0,
+                "orphans": 0.0,
+                "resources": 15.0,
+                "static_bytes": 34310657.0,
+                "video_bytes": 15387829.0
+              },
+              "before": {
+                "nodes": 51.0,
+                "objects": 1584.0,
+                "orphans": 0.0,
+                "resources": 15.0,
+                "static_bytes": 35533429.0,
+                "video_bytes": 34328301.0
+              },
+              "cycle": 2,
+              "mouse_mode": 0
+            }
+          ]
+        },
+        {
+          "label": "clean process exit",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "scene": "aurora_basin",
+      "checks": [
+        {
+          "label": "click captures production controller",
+          "passed": true
+        },
+        {
+          "label": "W moves grounded production actor",
+          "passed": true,
+          "horizontal_distance": 2.399962986438117
+        },
+        {
+          "label": "mouse changes yaw",
+          "passed": true
+        },
+        {
+          "label": "lateral motion active before Escape",
+          "passed": true
+        },
+        {
+          "label": "Escape releases and held lateral movement stops",
+          "passed": true,
+          "horizontal_drift": 0.0
+        },
+        {
+          "label": "click recaptures",
+          "passed": true
+        },
+        {
+          "label": "lateral motion active before focus loss",
+          "passed": true
+        },
+        {
+          "label": "focus loss releases and stops held lateral motion",
+          "passed": true,
+          "horizontal_drift": 0.0
+        },
+        {
+          "label": "focus regain recaptures",
+          "passed": true
+        },
+        {
+          "label": "bounded final two unload checkpoints",
+          "passed": true,
+          "checkpoints": [
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1440.0,
+                "orphans": 0.0,
+                "resources": 23.0,
+                "static_bytes": 38117269.0,
+                "video_bytes": 32612387.0
+              },
+              "before": {
+                "nodes": 532.0,
+                "objects": 2320.0,
+                "orphans": 0.0,
+                "resources": 23.0,
+                "static_bytes": 50373261.0,
+                "video_bytes": 36757859.0
+              },
+              "cycle": 0,
+              "mouse_mode": 0
+            },
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1440.0,
+                "orphans": 0.0,
+                "resources": 23.0,
+                "static_bytes": 38120257.0,
+                "video_bytes": 32612387.0
+              },
+              "before": {
+                "nodes": 532.0,
+                "objects": 2320.0,
+                "orphans": 0.0,
+                "resources": 23.0,
+                "static_bytes": 50371029.0,
+                "video_bytes": 36757859.0
+              },
+              "cycle": 1,
+              "mouse_mode": 0
+            },
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1440.0,
+                "orphans": 0.0,
+                "resources": 23.0,
+                "static_bytes": 38120257.0,
+                "video_bytes": 32612387.0
+              },
+              "before": {
+                "nodes": 532.0,
+                "objects": 2320.0,
+                "orphans": 0.0,
+                "resources": 23.0,
+                "static_bytes": 50371029.0,
+                "video_bytes": 36757859.0
+              },
+              "cycle": 2,
+              "mouse_mode": 0
+            }
+          ]
+        },
+        {
+          "label": "clean process exit",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "scene": "cinder_array",
+      "checks": [
+        {
+          "label": "click captures production controller",
+          "passed": true
+        },
+        {
+          "label": "W moves grounded production actor",
+          "passed": true,
+          "horizontal_distance": 3.700008517512126
+        },
+        {
+          "label": "mouse changes yaw",
+          "passed": true
+        },
+        {
+          "label": "lateral motion active before Escape",
+          "passed": true
+        },
+        {
+          "label": "Escape releases and held lateral movement stops",
+          "passed": true,
+          "horizontal_drift": 0.0
+        },
+        {
+          "label": "click recaptures",
+          "passed": true
+        },
+        {
+          "label": "lateral motion active before focus loss",
+          "passed": true
+        },
+        {
+          "label": "focus loss releases and stops held lateral motion",
+          "passed": true,
+          "horizontal_drift": 0.0
+        },
+        {
+          "label": "focus regain recaptures",
+          "passed": true
+        },
+        {
+          "label": "bounded final two unload checkpoints",
+          "passed": true,
+          "checkpoints": [
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1443.0,
+                "orphans": 0.0,
+                "resources": 24.0,
+                "static_bytes": 37731677.0,
+                "video_bytes": 16760867.0
+              },
+              "before": {
+                "nodes": 233.0,
+                "objects": 1971.0,
+                "orphans": 0.0,
+                "resources": 24.0,
+                "static_bytes": 39839305.0,
+                "video_bytes": 17185971.0
+              },
+              "cycle": 0,
+              "mouse_mode": 0
+            },
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1443.0,
+                "orphans": 0.0,
+                "resources": 24.0,
+                "static_bytes": 37734069.0,
+                "video_bytes": 16760867.0
+              },
+              "before": {
+                "nodes": 233.0,
+                "objects": 1971.0,
+                "orphans": 0.0,
+                "resources": 24.0,
+                "static_bytes": 39827953.0,
+                "video_bytes": 17185971.0
+              },
+              "cycle": 1,
+              "mouse_mode": 0
+            },
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1443.0,
+                "orphans": 0.0,
+                "resources": 24.0,
+                "static_bytes": 37734069.0,
+                "video_bytes": 16760867.0
+              },
+              "before": {
+                "nodes": 233.0,
+                "objects": 1971.0,
+                "orphans": 0.0,
+                "resources": 24.0,
+                "static_bytes": 39827953.0,
+                "video_bytes": 17185971.0
+              },
+              "cycle": 2,
+              "mouse_mode": 0
+            }
+          ]
+        },
+        {
+          "label": "clean process exit",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "scene": "shader_lab",
+      "checks": [
+        {
+          "label": "plus/minus changes and restores intensity",
+          "passed": true
+        },
+        {
+          "label": "pause freezes shader time",
+          "passed": true
+        },
+        {
+          "label": "2 selects reactor",
+          "passed": true
+        },
+        {
+          "label": "960 reactor sidebar stays within viewport",
+          "passed": true,
+          "sidebar": [
+            676.0,
+            118.0,
+            269.0,
+            382.0
+          ],
+          "window": [
+            960,
+            640
+          ]
+        },
+        {
+          "label": "3 selects phase",
+          "passed": true
+        },
+        {
+          "label": "phase adjustment works",
+          "passed": true
+        },
+        {
+          "label": "R restores controls and resumes",
+          "passed": true
+        },
+        {
+          "label": "mouse drag orbits production camera",
+          "passed": true
+        },
+        {
+          "label": "Escape leaves main window responsive and pointer visible",
+          "passed": true
+        },
+        {
+          "label": "popup-free same native main window",
+          "passed": true,
+          "windows": [
+            [
+              4194307,
+              "COCS Destinations \u00b7 Port Laboratory (DEBUG)"
+            ]
+          ]
+        },
+        {
+          "label": "bounded final two unload checkpoints",
+          "passed": true,
+          "checkpoints": [
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1434.0,
+                "orphans": 0.0,
+                "resources": 26.0,
+                "static_bytes": 35399877.0,
+                "video_bytes": 15576715.0
+              },
+              "before": {
+                "nodes": 63.0,
+                "objects": 1570.0,
+                "orphans": 0.0,
+                "resources": 26.0,
+                "static_bytes": 36233534.0,
+                "video_bytes": 15964471.0
+              },
+              "cycle": 0,
+              "mouse_mode": 0
+            },
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1434.0,
+                "orphans": 0.0,
+                "resources": 26.0,
+                "static_bytes": 35334801.0,
+                "video_bytes": 15576715.0
+              },
+              "before": {
+                "nodes": 63.0,
+                "objects": 1570.0,
+                "orphans": 0.0,
+                "resources": 26.0,
+                "static_bytes": 36147474.0,
+                "video_bytes": 15964471.0
+              },
+              "cycle": 1,
+              "mouse_mode": 0
+            },
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1434.0,
+                "orphans": 0.0,
+                "resources": 26.0,
+                "static_bytes": 35334801.0,
+                "video_bytes": 15576715.0
+              },
+              "before": {
+                "nodes": 63.0,
+                "objects": 1570.0,
+                "orphans": 0.0,
+                "resources": 26.0,
+                "static_bytes": 36147474.0,
+                "video_bytes": 15964471.0
+              },
+              "cycle": 2,
+              "mouse_mode": 0
+            }
+          ]
+        },
+        {
+          "label": "clean process exit",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "scene": "showcase",
+      "checks": [
+        {
+          "label": "click captures production controller",
+          "passed": true
+        },
+        {
+          "label": "W moves grounded production actor",
+          "passed": true,
+          "horizontal_distance": 0.5688877105712997
+        },
+        {
+          "label": "mouse changes yaw",
+          "passed": true
+        },
+        {
+          "label": "lateral motion active before Escape",
+          "passed": true
+        },
+        {
+          "label": "Escape releases and held lateral movement stops",
+          "passed": true,
+          "horizontal_drift": 0.0
+        },
+        {
+          "label": "click recaptures",
+          "passed": true
+        },
+        {
+          "label": "lateral motion active before focus loss",
+          "passed": true
+        },
+        {
+          "label": "focus loss releases and stops held lateral motion",
+          "passed": true,
+          "horizontal_drift": 0.0
+        },
+        {
+          "label": "focus regain recaptures",
+          "passed": true
+        },
+        {
+          "label": "bounded final two unload checkpoints",
+          "passed": true,
+          "checkpoints": [
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1455.0,
+                "orphans": 0.0,
+                "resources": 25.0,
+                "static_bytes": 45957877.0,
+                "video_bytes": 27306685.0
+              },
+              "before": {
+                "nodes": 406.0,
+                "objects": 2179.0,
+                "orphans": 0.0,
+                "resources": 25.0,
+                "static_bytes": 48911379.0,
+                "video_bytes": 45700561.0
+              },
+              "cycle": 0,
+              "mouse_mode": 0
+            },
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1455.0,
+                "orphans": 0.0,
+                "resources": 25.0,
+                "static_bytes": 45961505.0,
+                "video_bytes": 27306685.0
+              },
+              "before": {
+                "nodes": 406.0,
+                "objects": 2179.0,
+                "orphans": 0.0,
+                "resources": 25.0,
+                "static_bytes": 48910375.0,
+                "video_bytes": 45700561.0
+              },
+              "cycle": 1,
+              "mouse_mode": 0
+            },
+            {
+              "after": {
+                "nodes": 1.0,
+                "objects": 1455.0,
+                "orphans": 0.0,
+                "resources": 25.0,
+                "static_bytes": 45961505.0,
+                "video_bytes": 27306685.0
+              },
+              "before": {
+                "nodes": 406.0,
+                "objects": 2179.0,
+                "orphans": 0.0,
+                "resources": 25.0,
+                "static_bytes": 48910375.0,
+                "video_bytes": 45700561.0
+              },
+              "cycle": 2,
+              "mouse_mode": 0
+            }
+          ]
+        },
+        {
+          "label": "clean process exit",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

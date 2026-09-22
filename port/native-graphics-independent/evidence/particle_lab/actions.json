@@ -1,0 +1,4204 @@
+{
+  "scene": "particle_lab",
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+    "--script",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/observer.gd",
+    "--display-driver",
+    "x11",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "960x640",
+    "--position",
+    "0,0",
+    "--max-fps",
+    "30"
+  ],
+  "checks": [
+    {
+      "label": "128K button changes actual draw and emitter slots",
+      "passed": true
+    },
+    {
+      "label": "minus reduces actual slots to 32K",
+      "passed": true
+    },
+    {
+      "label": "plus raises actual slots to 128K",
+      "passed": true
+    },
+    {
+      "label": "pause freezes simulation clock",
+      "passed": true
+    },
+    {
+      "label": "reset rewinds actual field clock",
+      "passed": true
+    },
+    {
+      "label": "Space resumes simulation",
+      "passed": true
+    },
+    {
+      "label": "B switches actual draw backend to MultiMesh",
+      "passed": true
+    },
+    {
+      "label": "RMB captures flight pointer",
+      "passed": true
+    },
+    {
+      "label": "Escape releases pointer",
+      "passed": true
+    },
+    {
+      "label": "popup-free same native main window",
+      "passed": true,
+      "windows": [
+        [
+          4194307,
+          "COCS \u00b7 Native Particle Observatory"
+        ]
+      ]
+    },
+    {
+      "label": "main window advances rendered frames after controls/Escape",
+      "passed": true
+    },
+    {
+      "label": "bounded final two unload checkpoints",
+      "passed": true,
+      "checkpoints": [
+        {
+          "after": {
+            "nodes": 1.0,
+            "objects": 1419.0,
+            "orphans": 0.0,
+            "resources": 15.0,
+            "static_bytes": 34310657.0,
+            "video_bytes": 15387829.0
+          },
+          "before": {
+            "nodes": 51.0,
+            "objects": 1584.0,
+            "orphans": 0.0,
+            "resources": 15.0,
+            "static_bytes": 35534581.0,
+            "video_bytes": 34328301.0
+          },
+          "cycle": 0,
+          "mouse_mode": 0
+        },
+        {
+          "after": {
+            "nodes": 1.0,
+            "objects": 1419.0,
+            "orphans": 0.0,
+            "resources": 15.0,
+            "static_bytes": 34310657.0,
+            "video_bytes": 15387829.0
+          },
+          "before": {
+            "nodes": 51.0,
+            "objects": 1584.0,
+            "orphans": 0.0,
+            "resources": 15.0,
+            "static_bytes": 35533429.0,
+            "video_bytes": 34328301.0
+          },
+          "cycle": 1,
+          "mouse_mode": 0
+        },
+        {
+          "after": {
+            "nodes": 1.0,
+            "objects": 1419.0,
+            "orphans": 0.0,
+            "resources": 15.0,
+            "static_bytes": 34310657.0,
+            "video_bytes": 15387829.0
+          },
+          "before": {
+            "nodes": 51.0,
+            "objects": 1584.0,
+            "orphans": 0.0,
+            "resources": 15.0,
+            "static_bytes": 35533429.0,
+            "video_bytes": 34328301.0
+          },
+          "cycle": 2,
+          "mouse_mode": 0
+        }
+      ]
+    },
+    {
+      "label": "clean process exit",
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "label": "start",
+      "wall_monotonic": 5252433.013689891,
+      "windows": [
+        [
+          4194307,
+          "COCS \u00b7 Native Particle Observatory"
+        ]
+      ],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+        "--script",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/observer.gd",
+        "--display-driver",
+        "x11",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x640",
+        "--position",
+        "0,0",
+        "--max-fps",
+        "30"
+      ]
+    },
+    {
+      "label": "960x640 default particle UI",
+      "wall_monotonic": 5252433.484041155,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/particle_lab/capture-00.png",
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 32,768 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 2.49522533333333,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1585.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35529789.0,
+          "video_bytes": 27818391.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 70,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 10485760,
+          "capacity": 32768,
+          "clock_seconds": 2.49522533333333,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 32768,
+          "effect_frames": 3,
+          "emitter_amount": 32768,
+          "engine_frames_drawn": 70,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1585,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 73006,
+          "render_buffer_bytes": 17154016,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 27818391,
+          "renderer": "gl_compatibility",
+          "requested_count": 32768,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35536125,
+          "timing": {
+            "fps_from_median": 30.8361214326462,
+            "max_ms": 235.95,
+            "median_ms": 32.4295,
+            "p95_ms": 39.765,
+            "render_frames": 71,
+            "samples": 70
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 73,006",
+        "telemetry_text": "Median     32.36 ms\np95            39.77 ms\nCadence     30.9 fps \u00b7 n=69\nBuffer payload  10.0 MiB*\nEngine buffers  16.4 MiB\nRender target  960 \u00d7 640\nSim clock  2.46 s \u00b7 RUNNING",
+        "ticks_ms": 3034
+      }
+    },
+    {
+      "label": "initial actual backend statistics",
+      "wall_monotonic": 5252433.954354578,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 32,768 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 2.94223833333333,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35527477.0,
+          "video_bytes": 27818391.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 84,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 10485760,
+          "capacity": 32768,
+          "clock_seconds": 2.94223833333333,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 32768,
+          "effect_frames": 3,
+          "emitter_amount": 32768,
+          "engine_frames_drawn": 84,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 73006,
+          "render_buffer_bytes": 17154016,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 27818391,
+          "renderer": "gl_compatibility",
+          "requested_count": 32768,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35533813,
+          "timing": {
+            "fps_from_median": 30.9033035631509,
+            "max_ms": 235.95,
+            "median_ms": 32.359,
+            "p95_ms": 39.765,
+            "render_frames": 84,
+            "samples": 83
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 73,006",
+        "telemetry_text": "Median     32.36 ms\np95            39.77 ms\nCadence     30.9 fps \u00b7 n=81\nBuffer payload  10.0 MiB*\nEngine buffers  16.4 MiB\nRender target  960 \u00d7 640\nSim clock  2.88 s \u00b7 RUNNING",
+        "ticks_ms": 3444
+      }
+    },
+    {
+      "label": "locate button 128K",
+      "wall_monotonic": 5252434.424644556,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 32,768 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 3.4089,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35527477.0,
+          "video_bytes": 27818391.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 98,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 10485760,
+          "capacity": 32768,
+          "clock_seconds": 3.4089,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 32768,
+          "effect_frames": 3,
+          "emitter_amount": 32768,
+          "engine_frames_drawn": 98,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 73006,
+          "render_buffer_bytes": 17154016,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 27818391,
+          "renderer": "gl_compatibility",
+          "requested_count": 32768,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35533813,
+          "timing": {
+            "fps_from_median": 30.7550361371675,
+            "max_ms": 235.95,
+            "median_ms": 32.515,
+            "p95_ms": 39.765,
+            "render_frames": 98,
+            "samples": 97
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 73,006",
+        "telemetry_text": "Median     32.36 ms\np95            39.77 ms\nCadence     30.9 fps \u00b7 n=89\nBuffer payload  10.0 MiB*\nEngine buffers  16.4 MiB\nRender target  960 \u00d7 640\nSim clock  3.14 s \u00b7 RUNNING",
+        "ticks_ms": 3911
+      }
+    },
+    {
+      "label": "native button count up 128K",
+      "wall_monotonic": 5252435.795501573,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 131,072 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 0.418031333333333,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35528349.0,
+          "video_bytes": 59231981.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 131,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 41943040,
+          "capacity": 131072,
+          "clock_seconds": 0.418031333333333,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 131072,
+          "engine_frames_drawn": 131,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 269618,
+          "render_buffer_bytes": 48611296,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 59231981,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35534685,
+          "timing": {
+            "fps_from_median": 12.6081145825453,
+            "max_ms": 82.796,
+            "median_ms": 79.314,
+            "p95_ms": 82.796,
+            "render_frames": 6,
+            "samples": 5
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,608",
+        "telemetry_text": "Median     71.33 ms\np95            71.33 ms\nCadence     14.0 fps \u00b7 n=1\nBuffer payload  40.0 MiB*\nEngine buffers  46.4 MiB\nRender target  960 \u00d7 640\nSim clock  0.12 s \u00b7 RUNNING",
+        "ticks_ms": 5295
+      }
+    },
+    {
+      "label": "keyboard count down",
+      "wall_monotonic": 5252436.736176559,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 32,768 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 0.488662333333333,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35528189.0,
+          "video_bytes": 27774701.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 152,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 10485760,
+          "capacity": 32768,
+          "clock_seconds": 0.488662333333333,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 32768,
+          "effect_frames": 3,
+          "emitter_amount": 32768,
+          "engine_frames_drawn": 152,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 73006,
+          "render_buffer_bytes": 17154016,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 27774701,
+          "renderer": "gl_compatibility",
+          "requested_count": 32768,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35534525,
+          "timing": {
+            "fps_from_median": 32.1073670353663,
+            "max_ms": 37.668,
+            "median_ms": 31.1455,
+            "p95_ms": 37.668,
+            "render_frames": 15,
+            "samples": 14
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 73,004",
+        "telemetry_text": "Median     30.06 ms\np95            37.67 ms\nCadence     33.3 fps \u00b7 n=12\nBuffer payload  10.0 MiB*\nEngine buffers  16.4 MiB\nRender target  960 \u00d7 640\nSim clock  0.42 s \u00b7 RUNNING",
+        "ticks_ms": 6204
+      }
+    },
+    {
+      "label": "keyboard count up",
+      "wall_monotonic": 5252437.676771474,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 131,072 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 0.492406,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35528349.0,
+          "video_bytes": 59231981.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 173,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 41943040,
+          "capacity": 131072,
+          "clock_seconds": 0.492406,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 131072,
+          "engine_frames_drawn": 173,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 269618,
+          "render_buffer_bytes": 48611296,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 59231981,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35534685,
+          "timing": {
+            "fps_from_median": 13.3637135087098,
+            "max_ms": 76.691,
+            "median_ms": 74.8295,
+            "p95_ms": 76.691,
+            "render_frames": 7,
+            "samples": 6
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,608",
+        "telemetry_text": "Median     72.47 ms\np95            73.83 ms\nCadence     13.8 fps \u00b7 n=3\nBuffer payload  40.0 MiB*\nEngine buffers  46.4 MiB\nRender target  960 \u00d7 640\nSim clock  0.27 s \u00b7 RUNNING",
+        "ticks_ms": 7200
+      }
+    },
+    {
+      "label": "locate button Pause",
+      "wall_monotonic": 5252438.14704917,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 131,072 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 0.947086666666667,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35529741.0,
+          "video_bytes": 59231981.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 179,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 41943040,
+          "capacity": 131072,
+          "clock_seconds": 0.947086666666667,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 131072,
+          "engine_frames_drawn": 179,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 269620,
+          "render_buffer_bytes": 48611296,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 59231981,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35536077,
+          "timing": {
+            "fps_from_median": 13.2013201320132,
+            "max_ms": 81.198,
+            "median_ms": 75.75,
+            "p95_ms": 81.198,
+            "render_frames": 13,
+            "samples": 12
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,618",
+        "telemetry_text": "Median     75.67 ms\np95            81.20 ms\nCadence     13.2 fps \u00b7 n=11\nBuffer payload  40.0 MiB*\nEngine buffers  46.4 MiB\nRender target  960 \u00d7 640\nSim clock  0.87 s \u00b7 RUNNING",
+        "ticks_ms": 7658
+      }
+    },
+    {
+      "label": "UI pause",
+      "wall_monotonic": 5252439.517899605,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 131,072 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Resume"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 1.84905533333333,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35529677.0,
+          "video_bytes": 59231981.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 197,
+        "mouse_mode": 0,
+        "paused": true,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 41943040,
+          "capacity": 131072,
+          "clock_seconds": 1.84905533333333,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 131072,
+          "engine_frames_drawn": 197,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": true,
+          "preset": "vortex",
+          "primitives": 269624,
+          "render_buffer_bytes": 48611296,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 59231981,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35536013,
+          "timing": {
+            "fps_from_median": 13.5181718024454,
+            "max_ms": 81.198,
+            "median_ms": 73.9745,
+            "p95_ms": 78.788,
+            "render_frames": 31,
+            "samples": 30
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  PAUSED  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,624",
+        "telemetry_text": "Median     73.83 ms\np95            78.79 ms\nCadence     13.5 fps \u00b7 n=27\nBuffer payload  40.0 MiB*\nEngine buffers  46.4 MiB\nRender target  960 \u00d7 640\nSim clock  1.85 s \u00b7 PAUSED",
+        "ticks_ms": 8986
+      }
+    },
+    {
+      "label": "paused interval",
+      "wall_monotonic": 5252440.588250311,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 131,072 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Resume"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 1.84905533333333,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35529677.0,
+          "video_bytes": 59231981.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 212,
+        "mouse_mode": 0,
+        "paused": true,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 41943040,
+          "capacity": 131072,
+          "clock_seconds": 1.84905533333333,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 131072,
+          "engine_frames_drawn": 212,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": true,
+          "preset": "vortex",
+          "primitives": 269624,
+          "render_buffer_bytes": 48611296,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 59231981,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35536013,
+          "timing": {
+            "fps_from_median": 13.4910891356259,
+            "max_ms": 81.198,
+            "median_ms": 74.123,
+            "p95_ms": 78.425,
+            "render_frames": 46,
+            "samples": 45
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  PAUSED  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,624",
+        "telemetry_text": "Median     73.85 ms\np95            77.93 ms\nCadence     13.5 fps \u00b7 n=43\nBuffer payload  40.0 MiB*\nEngine buffers  46.4 MiB\nRender target  960 \u00d7 640\nSim clock  1.85 s \u00b7 PAUSED",
+        "ticks_ms": 10102
+      }
+    },
+    {
+      "label": "locate button Reset field",
+      "wall_monotonic": 5252441.058555438,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 131,072 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Resume"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 1.84905533333333,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35529677.0,
+          "video_bytes": 59231981.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 218,
+        "mouse_mode": 0,
+        "paused": true,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 41943040,
+          "capacity": 131072,
+          "clock_seconds": 1.84905533333333,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 131072,
+          "engine_frames_drawn": 218,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": true,
+          "preset": "vortex",
+          "primitives": 269624,
+          "render_buffer_bytes": 48611296,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 59231981,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35536013,
+          "timing": {
+            "fps_from_median": 13.4428477328637,
+            "max_ms": 81.198,
+            "median_ms": 74.389,
+            "p95_ms": 78.788,
+            "render_frames": 52,
+            "samples": 51
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  PAUSED  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,624",
+        "telemetry_text": "Median     74.12 ms\np95            78.79 ms\nCadence     13.5 fps \u00b7 n=47\nBuffer payload  40.0 MiB*\nEngine buffers  46.4 MiB\nRender target  960 \u00d7 640\nSim clock  1.85 s \u00b7 PAUSED",
+        "ticks_ms": 10556
+      }
+    },
+    {
+      "label": "reset while paused",
+      "wall_monotonic": 5252442.429309482,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 131,072 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Resume"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 0.0,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35528285.0,
+          "video_bytes": 59231981.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 243,
+        "mouse_mode": 0,
+        "paused": true,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 41943040,
+          "capacity": 131072,
+          "clock_seconds": 0.0,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 131072,
+          "engine_frames_drawn": 243,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": true,
+          "preset": "vortex",
+          "primitives": 269622,
+          "render_buffer_bytes": 48611296,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 59231981,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35534621,
+          "timing": {
+            "fps_from_median": 29.7805175853956,
+            "max_ms": 37.584,
+            "median_ms": 33.579,
+            "p95_ms": 37.584,
+            "render_frames": 12,
+            "samples": 11
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  PAUSED  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,616",
+        "telemetry_text": "Median     35.57 ms\np95            37.58 ms\nCadence     28.1 fps \u00b7 n=5\nBuffer payload  40.0 MiB*\nEngine buffers  46.4 MiB\nRender target  960 \u00d7 640\nSim clock  0.00 s \u00b7 PAUSED",
+        "ticks_ms": 11923
+      }
+    },
+    {
+      "label": "960x640 paused 128K reset",
+      "wall_monotonic": 5252442.899621502,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/particle_lab/capture-01.png",
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 131,072 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Resume"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 0.0,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1585.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35532061.0,
+          "video_bytes": 59231981.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 257,
+        "mouse_mode": 0,
+        "paused": true,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 41943040,
+          "capacity": 131072,
+          "clock_seconds": 0.0,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 131072,
+          "engine_frames_drawn": 257,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1585,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": true,
+          "preset": "vortex",
+          "primitives": 269624,
+          "render_buffer_bytes": 48611296,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 59231981,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35538397,
+          "timing": {
+            "fps_from_median": 29.84005729291,
+            "max_ms": 37.584,
+            "median_ms": 33.512,
+            "p95_ms": 36.223,
+            "render_frames": 27,
+            "samples": 26
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  PAUSED  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,624",
+        "telemetry_text": "Median     33.50 ms\np95            36.22 ms\nCadence     29.9 fps \u00b7 n=25\nBuffer payload  40.0 MiB*\nEngine buffers  46.4 MiB\nRender target  960 \u00d7 640\nSim clock  0.00 s \u00b7 PAUSED",
+        "ticks_ms": 12451
+      }
+    },
+    {
+      "label": "resume",
+      "wall_monotonic": 5252443.840163348,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 131,072 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 0.401965,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35533133.0,
+          "video_bytes": 59231981.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 276,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 41943040,
+          "capacity": 131072,
+          "clock_seconds": 0.401965,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 131072,
+          "engine_frames_drawn": 276,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 269620,
+          "render_buffer_bytes": 48611296,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 59231981,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35539469,
+          "timing": {
+            "fps_from_median": 29.0326326791313,
+            "max_ms": 76.567,
+            "median_ms": 34.444,
+            "p95_ms": 75.201,
+            "render_frames": 45,
+            "samples": 44
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,620",
+        "telemetry_text": "Median     33.94 ms\np95            71.09 ms\nCadence     29.5 fps \u00b7 n=41\nBuffer payload  40.0 MiB*\nEngine buffers  46.4 MiB\nRender target  960 \u00d7 640\nSim clock  0.19 s \u00b7 RUNNING",
+        "ticks_ms": 13310
+      }
+    },
+    {
+      "label": "actual analytic backend",
+      "wall_monotonic": 5252444.780770837,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "MultiMesh \u00b7 GPU analytic motion\ninstance_count 131,072\nvisible_instance_count 131,072",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU analytic"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 0.487243666666667,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 60698373.0,
+          "video_bytes": 23580717.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 289,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 0.0,
+          "backend": "analytic",
+          "backend_label": "MultiMesh / GPU analytic vertex motion",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 6291456,
+          "capacity": 131072,
+          "clock_seconds": 0.487243666666667,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 0,
+          "engine_frames_drawn": 289,
+          "instance_count": 131072,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 269622,
+          "render_buffer_bytes": 12960032,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 23580717,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 60704709,
+          "timing": {
+            "fps_from_median": 14.5834244797363,
+            "max_ms": 72.288,
+            "median_ms": 68.571,
+            "p95_ms": 72.288,
+            "render_frames": 6,
+            "samples": 5
+          },
+          "visible_instance_count": 131072,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,616",
+        "telemetry_text": "Median     69.26 ms\np95            72.29 ms\nCadence     14.4 fps \u00b7 n=4\nBuffer payload  6.0 MiB*\nEngine buffers  12.4 MiB\nRender target  960 \u00d7 640\nSim clock  0.42 s \u00b7 RUNNING",
+        "ticks_ms": 14291
+      }
+    },
+    {
+      "label": "RMB flight capture",
+      "wall_monotonic": 5252446.641905427,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 131,072 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Return to orbit"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 1.33911048484848,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35539101.0,
+          "video_bytes": 59231981.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 314,
+        "mouse_mode": 2,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 41943040,
+          "capacity": 131072,
+          "clock_seconds": 1.33911048484848,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 131072,
+          "engine_frames_drawn": 314,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 269656,
+          "render_buffer_bytes": 48611296,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 59231981,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35545437,
+          "timing": {
+            "fps_from_median": 13.4235395189003,
+            "max_ms": 83.576,
+            "median_ms": 74.496,
+            "p95_ms": 83.576,
+            "render_frames": 18,
+            "samples": 17
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "FLIGHT: hold RMB to move/look  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,656",
+        "telemetry_text": "Median     74.33 ms\np95            83.58 ms\nCadence     13.5 fps \u00b7 n=15\nBuffer payload  40.0 MiB*\nEngine buffers  46.4 MiB\nRender target  960 \u00d7 640\nSim clock  1.19 s \u00b7 RUNNING",
+        "ticks_ms": 16140
+      }
+    },
+    {
+      "label": "Escape while RMB held",
+      "wall_monotonic": 5252447.582529056,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 131,072 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              749.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              749.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              749.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              749.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              749.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Return to orbit"
+          },
+          {
+            "rect": [
+              749.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              508.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 2.32335833333333,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35540549.0,
+          "video_bytes": 59231981.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 327,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 41943040,
+          "capacity": 131072,
+          "clock_seconds": 2.32335833333333,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 131072,
+          "effect_frames": 3,
+          "emitter_amount": 131072,
+          "engine_frames_drawn": 327,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 269656,
+          "render_buffer_bytes": 48611296,
+          "render_target": [
+            960,
+            640
+          ],
+          "render_video_bytes": 59231981,
+          "renderer": "gl_compatibility",
+          "requested_count": 131072,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35546885,
+          "timing": {
+            "fps_from_median": 13.396295924177,
+            "max_ms": 83.576,
+            "median_ms": 74.6475,
+            "p95_ms": 82.534,
+            "render_frames": 31,
+            "samples": 30
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            960,
+            640
+          ]
+        },
+        "status_text": "FLIGHT: hold RMB to move/look  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 269,656",
+        "telemetry_text": "Median     74.80 ms\np95            82.53 ms\nCadence     13.4 fps \u00b7 n=27\nBuffer payload  40.0 MiB*\nEngine buffers  46.4 MiB\nRender target  960 \u00d7 640\nSim clock  2.10 s \u00b7 RUNNING",
+        "ticks_ms": 17117
+      }
+    },
+    {
+      "label": "1280x800 production view",
+      "wall_monotonic": 5252451.143763537,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/particle_lab/capture-02.png",
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 32,768 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              1069.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              1069.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              1069.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              1069.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              1069.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              1069.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              668.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              668.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              668.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              668.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              668.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 2.53161366666667,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1585.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35537413.0,
+          "video_bytes": 34328301.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 416,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          1280,
+          800
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 10485760,
+          "capacity": 32768,
+          "clock_seconds": 2.53161366666667,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 32768,
+          "effect_frames": 3,
+          "emitter_amount": 32768,
+          "engine_frames_drawn": 416,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1585,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 73008,
+          "render_buffer_bytes": 17154016,
+          "render_target": [
+            1280,
+            800
+          ],
+          "render_video_bytes": 34328301,
+          "renderer": "gl_compatibility",
+          "requested_count": 32768,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35543749,
+          "timing": {
+            "fps_from_median": 30.1327346963374,
+            "max_ms": 38.37,
+            "median_ms": 33.1865,
+            "p95_ms": 37.509,
+            "render_frames": 61,
+            "samples": 60
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            1280,
+            800
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 73,008",
+        "telemetry_text": "Median     33.24 ms\np95            37.84 ms\nCadence     30.1 fps \u00b7 n=59\nBuffer payload  10.0 MiB*\nEngine buffers  16.4 MiB\nRender target  1280 \u00d7 800\nSim clock  2.50 s \u00b7 RUNNING",
+        "ticks_ms": 20693
+      }
+    },
+    {
+      "label": "main window still processing",
+      "wall_monotonic": 5252451.614036363,
+      "state": {
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "backend_text": "GPUParticles3D \u00b7 stateful GPU\nOpenGL transform feedback\namount 32,768 \u00b7 ratio 1.00",
+        "buttons": [
+          {
+            "rect": [
+              22.0,
+              83.0,
+              134.0,
+              32.0
+            ],
+            "text": "1  STORM VORTEX"
+          },
+          {
+            "rect": [
+              164.0,
+              83.0,
+              133.0,
+              32.0
+            ],
+            "text": "2  SPIRAL GALAXY"
+          },
+          {
+            "rect": [
+              305.0,
+              83.0,
+              105.0,
+              32.0
+            ],
+            "text": "3  ION BURST"
+          },
+          {
+            "rect": [
+              418.0,
+              83.0,
+              159.0,
+              32.0
+            ],
+            "text": "4  PLASMA FOUNTAIN"
+          },
+          {
+            "rect": [
+              1069.0,
+              195.0,
+              187.0,
+              32.0
+            ],
+            "text": "B  GPU simulation"
+          },
+          {
+            "rect": [
+              1069.0,
+              234.0,
+              187.0,
+              32.0
+            ],
+            "text": "V  Render 100%"
+          },
+          {
+            "rect": [
+              1069.0,
+              273.0,
+              187.0,
+              32.0
+            ],
+            "text": "Space  Pause"
+          },
+          {
+            "rect": [
+              1069.0,
+              312.0,
+              187.0,
+              32.0
+            ],
+            "text": "R  Reset field"
+          },
+          {
+            "rect": [
+              1069.0,
+              351.0,
+              187.0,
+              32.0
+            ],
+            "text": "F  Freeflight"
+          },
+          {
+            "rect": [
+              1069.0,
+              390.0,
+              187.0,
+              32.0
+            ],
+            "text": "L  Low-energy view"
+          },
+          {
+            "rect": [
+              185.0,
+              668.0,
+              63.0,
+              32.0
+            ],
+            "text": "8K"
+          },
+          {
+            "rect": [
+              256.0,
+              668.0,
+              63.0,
+              32.0
+            ],
+            "text": "32K"
+          },
+          {
+            "rect": [
+              327.0,
+              668.0,
+              63.0,
+              32.0
+            ],
+            "text": "128K"
+          },
+          {
+            "rect": [
+              398.0,
+              668.0,
+              63.0,
+              32.0
+            ],
+            "text": "512K"
+          },
+          {
+            "rect": [
+              469.0,
+              668.0,
+              63.0,
+              32.0
+            ],
+            "text": "1M"
+          }
+        ],
+        "clock": 2.980678,
+        "counters": {
+          "nodes": 51.0,
+          "objects": 1584.0,
+          "orphans": 0.0,
+          "resources": 15.0,
+          "static_bytes": 35535029.0,
+          "video_bytes": 34328301.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 429,
+        "mouse_mode": 0,
+        "paused": false,
+        "renderer": "gl_compatibility",
+        "scene": "res://particle_lab/demo.tscn",
+        "size": [
+          1280,
+          800
+        ],
+        "statistics": {
+          "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "adapter_vendor": "Mesa",
+          "amount_ratio": 1.0,
+          "backend": "gpu",
+          "backend_label": "GPUParticles3D / GPU transform feedback",
+          "budget": 1048576,
+          "buffer_payload_estimate_bytes": 10485760,
+          "capacity": 32768,
+          "clock_seconds": 2.980678,
+          "disposed": false,
+          "draw_calls": 49,
+          "draw_slots": 32768,
+          "effect_frames": 3,
+          "emitter_amount": 32768,
+          "engine_frames_drawn": 429,
+          "instance_count": 0,
+          "intensity": 0.85,
+          "moth_cached_textures": 6,
+          "moth_resources_ready": true,
+          "object_count": 1584,
+          "particle_draw_passes": 1,
+          "particle_size": 0.34,
+          "paused": false,
+          "preset": "vortex",
+          "primitives": 73008,
+          "render_buffer_bytes": 17154016,
+          "render_target": [
+            1280,
+            800
+          ],
+          "render_video_bytes": 34328301,
+          "renderer": "gl_compatibility",
+          "requested_count": 32768,
+          "resolution_scale": 1.0,
+          "resource_count": 15,
+          "static_memory_bytes": 35541365,
+          "timing": {
+            "fps_from_median": 30.0210147102972,
+            "max_ms": 69.388,
+            "median_ms": 33.31,
+            "p95_ms": 37.841,
+            "render_frames": 73,
+            "samples": 72
+          },
+          "visible_instance_count": 0,
+          "window_size": [
+            1280,
+            800
+          ]
+        },
+        "status_text": "ORBIT CAMERA  \u00b7  LIVE  \u00b7  Explicit 100% resolution  \u00b7  Draws 49 / primitives 73,008",
+        "telemetry_text": "Median     33.27 ms\np95            37.84 ms\nCadence     30.1 fps \u00b7 n=70\nBuffer payload  10.0 MiB*\nEngine buffers  16.4 MiB\nRender target  1280 \u00d7 800\nSim clock  2.91 s \u00b7 RUNNING",
+        "ticks_ms": 21101
+      }
+    },
+    {
+      "label": "teardown",
+      "wall_monotonic": 5252452.084354785,
+      "after": {
+        "nodes": 1.0,
+        "objects": 1419.0,
+        "orphans": 0.0,
+        "resources": 15.0,
+        "static_bytes": 34310657.0,
+        "video_bytes": 15387829.0
+      },
+      "before": {
+        "nodes": 51.0,
+        "objects": 1584.0,
+        "orphans": 0.0,
+        "resources": 15.0,
+        "static_bytes": 35534581.0,
+        "video_bytes": 34328301.0
+      },
+      "cycle": 0,
+      "mouse_mode": 0
+    },
+    {
+      "label": "teardown",
+      "wall_monotonic": 5252453.554777185,
+      "after": {
+        "nodes": 1.0,
+        "objects": 1419.0,
+        "orphans": 0.0,
+        "resources": 15.0,
+        "static_bytes": 34310657.0,
+        "video_bytes": 15387829.0
+      },
+      "before": {
+        "nodes": 51.0,
+        "objects": 1584.0,
+        "orphans": 0.0,
+        "resources": 15.0,
+        "static_bytes": 35533429.0,
+        "video_bytes": 34328301.0
+      },
+      "cycle": 1,
+      "mouse_mode": 0
+    },
+    {
+      "label": "teardown",
+      "wall_monotonic": 5252455.025161283,
+      "after": {
+        "nodes": 1.0,
+        "objects": 1419.0,
+        "orphans": 0.0,
+        "resources": 15.0,
+        "static_bytes": 34310657.0,
+        "video_bytes": 15387829.0
+      },
+      "before": {
+        "nodes": 51.0,
+        "objects": 1584.0,
+        "orphans": 0.0,
+        "resources": 15.0,
+        "static_bytes": 35533429.0,
+        "video_bytes": 34328301.0
+      },
+      "cycle": 2,
+      "mouse_mode": 0
+    }
+  ]
+}

@@ -1,0 +1,889 @@
+{
+  "scene": "cinder_array",
+  "command": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+    "--script",
+    "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/observer.gd",
+    "--display-driver",
+    "x11",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "960x640",
+    "--position",
+    "0,0",
+    "--max-fps",
+    "30"
+  ],
+  "checks": [
+    {
+      "label": "click captures production controller",
+      "passed": true
+    },
+    {
+      "label": "W moves grounded production actor",
+      "passed": true,
+      "horizontal_distance": 3.700008517512126
+    },
+    {
+      "label": "mouse changes yaw",
+      "passed": true
+    },
+    {
+      "label": "lateral motion active before Escape",
+      "passed": true
+    },
+    {
+      "label": "Escape releases and held lateral movement stops",
+      "passed": true,
+      "horizontal_drift": 0.0
+    },
+    {
+      "label": "click recaptures",
+      "passed": true
+    },
+    {
+      "label": "lateral motion active before focus loss",
+      "passed": true
+    },
+    {
+      "label": "focus loss releases and stops held lateral motion",
+      "passed": true,
+      "horizontal_drift": 0.0
+    },
+    {
+      "label": "focus regain recaptures",
+      "passed": true
+    },
+    {
+      "label": "bounded final two unload checkpoints",
+      "passed": true,
+      "checkpoints": [
+        {
+          "after": {
+            "nodes": 1.0,
+            "objects": 1443.0,
+            "orphans": 0.0,
+            "resources": 24.0,
+            "static_bytes": 37731677.0,
+            "video_bytes": 16760867.0
+          },
+          "before": {
+            "nodes": 233.0,
+            "objects": 1971.0,
+            "orphans": 0.0,
+            "resources": 24.0,
+            "static_bytes": 39839305.0,
+            "video_bytes": 17185971.0
+          },
+          "cycle": 0,
+          "mouse_mode": 0
+        },
+        {
+          "after": {
+            "nodes": 1.0,
+            "objects": 1443.0,
+            "orphans": 0.0,
+            "resources": 24.0,
+            "static_bytes": 37734069.0,
+            "video_bytes": 16760867.0
+          },
+          "before": {
+            "nodes": 233.0,
+            "objects": 1971.0,
+            "orphans": 0.0,
+            "resources": 24.0,
+            "static_bytes": 39827953.0,
+            "video_bytes": 17185971.0
+          },
+          "cycle": 1,
+          "mouse_mode": 0
+        },
+        {
+          "after": {
+            "nodes": 1.0,
+            "objects": 1443.0,
+            "orphans": 0.0,
+            "resources": 24.0,
+            "static_bytes": 37734069.0,
+            "video_bytes": 16760867.0
+          },
+          "before": {
+            "nodes": 233.0,
+            "objects": 1971.0,
+            "orphans": 0.0,
+            "resources": 24.0,
+            "static_bytes": 39827953.0,
+            "video_bytes": 17185971.0
+          },
+          "cycle": 2,
+          "mouse_mode": 0
+        }
+      ]
+    },
+    {
+      "label": "clean process exit",
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "label": "start",
+      "wall_monotonic": 5252694.505662461,
+      "windows": [
+        [
+          4194307,
+          "COCS Destinations \u00b7 Port Laboratory (DEBUG)"
+        ]
+      ],
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/godot",
+        "--script",
+        "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/observer.gd",
+        "--display-driver",
+        "x11",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x640",
+        "--position",
+        "0,0",
+        "--max-fps",
+        "30"
+      ]
+    },
+    {
+      "label": "960x640 original eye-level spawn",
+      "wall_monotonic": 5252694.975984249,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/cinder_array/capture-00.png",
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0350000001490116,
+        "camera_position": [
+          -24.0,
+          8.60444450378418,
+          28.0
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1972.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39827137.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 33,
+        "mouse_mode": 0,
+        "position": [
+          -24.0,
+          7.00444412231445,
+          28.0
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 3121,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.850000023841858
+      }
+    },
+    {
+      "label": "captured start",
+      "wall_monotonic": 5252696.046552163,
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0350000001490116,
+        "camera_position": [
+          -24.0,
+          8.60444450378418,
+          28.0
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1971.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39834729.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 45,
+        "mouse_mode": 2,
+        "position": [
+          -24.0,
+          7.00444412231445,
+          28.0
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 3975,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.850000023841858
+      }
+    },
+    {
+      "label": "short normal-rate forward walk",
+      "wall_monotonic": 5252697.467199485,
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0350000001490116,
+        "camera_position": [
+          -21.2202434539795,
+          8.60444450378418,
+          25.5580711364746
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1971.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39834729.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 64,
+        "mouse_mode": 2,
+        "position": [
+          -21.2202434539795,
+          7.00444412231445,
+          25.5580711364746
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 5441,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.850000023841858
+      }
+    },
+    {
+      "label": "real relative mouse look",
+      "wall_monotonic": 5252698.237606695,
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0549999997019768,
+        "camera_position": [
+          -21.2202434539795,
+          8.60444450378418,
+          25.5580711364746
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1971.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39834729.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 74,
+        "mouse_mode": 2,
+        "position": [
+          -21.2202434539795,
+          7.00444412231445,
+          25.5580711364746
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 6214,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.939999997615814
+      }
+    },
+    {
+      "label": "D held before Escape",
+      "wall_monotonic": 5252698.488095745,
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0549999997019768,
+        "camera_position": [
+          -20.4535160064697,
+          8.60444450378418,
+          26.607889175415
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1971.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39834345.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 82,
+        "mouse_mode": 2,
+        "position": [
+          -20.4535160064697,
+          7.00444412231445,
+          26.607889175415
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 6829,
+        "velocity": [
+          3.5387282371521,
+          0.0,
+          4.84534883499146
+        ],
+        "yaw": -0.939999997615814
+      },
+      "held_key": "d"
+    },
+    {
+      "label": "Escape while D held",
+      "wall_monotonic": 5252699.428672707,
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0549999997019768,
+        "camera_position": [
+          -20.4535160064697,
+          8.60444450378418,
+          26.607889175415
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1971.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39833813.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 89,
+        "mouse_mode": 0,
+        "position": [
+          -20.4535160064697,
+          7.00444412231445,
+          26.607889175415
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 7355,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.939999997615814
+      }
+    },
+    {
+      "label": "Escape stationary interval",
+      "wall_monotonic": 5252700.399098076,
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0549999997019768,
+        "camera_position": [
+          -20.4535160064697,
+          8.60444450378418,
+          26.607889175415
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1971.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39833813.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 102,
+        "mouse_mode": 0,
+        "position": [
+          -20.4535160064697,
+          7.00444412231445,
+          26.607889175415
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 8342,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.939999997615814
+      }
+    },
+    {
+      "label": "click recapture",
+      "wall_monotonic": 5252701.469775725,
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0549999997019768,
+        "camera_position": [
+          -20.4535160064697,
+          8.60444450378418,
+          26.607889175415
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1971.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39838625.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 116,
+        "mouse_mode": 2,
+        "position": [
+          -20.4535160064697,
+          7.00444412231445,
+          26.607889175415
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 9424,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.939999997615814
+      }
+    },
+    {
+      "label": "A held before focus loss",
+      "wall_monotonic": 5252701.519956152,
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0549999997019768,
+        "camera_position": [
+          -20.689432144165,
+          8.60444450378418,
+          26.2848682403564
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1971.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39838241.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 122,
+        "mouse_mode": 2,
+        "position": [
+          -20.689432144165,
+          7.00444412231445,
+          26.2848682403564
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 9879,
+        "velocity": [
+          -3.5387282371521,
+          0.0,
+          -4.84534883499146
+        ],
+        "yaw": -0.939999997615814
+      },
+      "held_key": "a"
+    },
+    {
+      "label": "actual X11 focus loss with A held",
+      "wall_monotonic": 5252703.170318155,
+      "first": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0549999997019768,
+        "camera_position": [
+          -20.689432144165,
+          8.60444450378418,
+          26.2848682403564
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1972.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39836017.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": false,
+        "frames": 134,
+        "mouse_mode": 0,
+        "position": [
+          -20.689432144165,
+          7.00444412231445,
+          26.2848682403564
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 10792,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.939999997615814
+      },
+      "second": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0549999997019768,
+        "camera_position": [
+          -20.689432144165,
+          8.60444450378418,
+          26.2848682403564
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1972.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39836017.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": false,
+        "frames": 142,
+        "mouse_mode": 0,
+        "position": [
+          -20.689432144165,
+          7.00444412231445,
+          26.2848682403564
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 11409,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.939999997615814
+      }
+    },
+    {
+      "label": "focus regain click",
+      "wall_monotonic": 5252704.641035277,
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0549999997019768,
+        "camera_position": [
+          -20.689432144165,
+          8.60444450378418,
+          26.2848682403564
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1971.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39840073.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 158,
+        "mouse_mode": 2,
+        "position": [
+          -20.689432144165,
+          7.00444412231445,
+          26.2848682403564
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 12618,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.939999997615814
+      }
+    },
+    {
+      "label": "960x640 eye-level after actual short walk",
+      "wall_monotonic": 5252705.111317732,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/cinder_array/capture-01.png",
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0549999997019768,
+        "camera_position": [
+          -20.689432144165,
+          8.60444450378418,
+          26.2848682403564
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1972.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39842457.0,
+          "video_bytes": 13909171.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 164,
+        "mouse_mode": 2,
+        "position": [
+          -20.689432144165,
+          7.00444412231445,
+          26.2848682403564
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          960,
+          640
+        ],
+        "ticks_ms": 13245,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.939999997615814
+      }
+    },
+    {
+      "label": "1280x800 production view",
+      "wall_monotonic": 5252707.581688237,
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-graphics-independent/evidence/cinder_array/capture-02.png",
+      "state": {
+        "actor_script": "res://exploration/walker.gd",
+        "adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "camera_current": true,
+        "camera_pitch": 0.0549999997019768,
+        "camera_position": [
+          -20.689432144165,
+          8.60444450378418,
+          26.2848682403564
+        ],
+        "counters": {
+          "nodes": 233.0,
+          "objects": 1972.0,
+          "orphans": 0.0,
+          "resources": 24.0,
+          "static_bytes": 39842137.0,
+          "video_bytes": 17185971.0
+        },
+        "cycle": 0,
+        "display": "X11",
+        "focus": true,
+        "frames": 189,
+        "mouse_mode": 2,
+        "position": [
+          -20.689432144165,
+          7.00444412231445,
+          26.2848682403564
+        ],
+        "renderer": "gl_compatibility",
+        "reset_count": 1,
+        "scene": "res://cinder_array/demo.tscn",
+        "size": [
+          1280,
+          800
+        ],
+        "ticks_ms": 15807,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": -0.939999997615814
+      }
+    },
+    {
+      "label": "teardown",
+      "wall_monotonic": 5252708.051984968,
+      "after": {
+        "nodes": 1.0,
+        "objects": 1443.0,
+        "orphans": 0.0,
+        "resources": 24.0,
+        "static_bytes": 37731677.0,
+        "video_bytes": 16760867.0
+      },
+      "before": {
+        "nodes": 233.0,
+        "objects": 1971.0,
+        "orphans": 0.0,
+        "resources": 24.0,
+        "static_bytes": 39839305.0,
+        "video_bytes": 17185971.0
+      },
+      "cycle": 0,
+      "mouse_mode": 0
+    },
+    {
+      "label": "teardown",
+      "wall_monotonic": 5252709.672605094,
+      "after": {
+        "nodes": 1.0,
+        "objects": 1443.0,
+        "orphans": 0.0,
+        "resources": 24.0,
+        "static_bytes": 37734069.0,
+        "video_bytes": 16760867.0
+      },
+      "before": {
+        "nodes": 233.0,
+        "objects": 1971.0,
+        "orphans": 0.0,
+        "resources": 24.0,
+        "static_bytes": 39827953.0,
+        "video_bytes": 17185971.0
+      },
+      "cycle": 1,
+      "mouse_mode": 0
+    },
+    {
+      "label": "teardown",
+      "wall_monotonic": 5252711.293348381,
+      "after": {
+        "nodes": 1.0,
+        "objects": 1443.0,
+        "orphans": 0.0,
+        "resources": 24.0,
+        "static_bytes": 37734069.0,
+        "video_bytes": 16760867.0
+      },
+      "before": {
+        "nodes": 233.0,
+        "objects": 1971.0,
+        "orphans": 0.0,
+        "resources": 24.0,
+        "static_bytes": 39827953.0,
+        "video_bytes": 17185971.0
+      },
+      "cycle": 2,
+      "mouse_mode": 0
+    }
+  ]
+}
