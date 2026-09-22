@@ -1,0 +1,6 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: The member "elapsed" already exists in parent class res://world/session.gd.
+          at: GDScript::reload (res://tests/objectives/guidance_live.gd:7)
+ERROR: Failed to load script "res://tests/objectives/guidance_live.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:3041)

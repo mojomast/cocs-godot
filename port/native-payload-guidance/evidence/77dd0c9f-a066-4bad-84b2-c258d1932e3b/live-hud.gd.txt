@@ -21,8 +21,6 @@ func build_ui() -> void:
 	objective_progress = gauge(WARNING)
 	cart_guidance = label(15, WARNING)
 	cart_guidance.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	cart_guidance.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
-	cart_guidance.custom_minimum_size.y = 20
 	for item: Control in [objective_title, objective_detail, objective_progress, cart_guidance, objective_hint]: box.add_child(item)
 	clear_objective()
 

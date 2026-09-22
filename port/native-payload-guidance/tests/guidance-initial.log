@@ -1,0 +1,33 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: actual archived state PUSHING RED [1]
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_fixtures.gd:10)
+       [1] run (res://tests/objectives/guidance_fixtures.gd:80)
+ERROR: actual renderer PUSHING RED [1]
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_fixtures.gd:10)
+       [1] run (res://tests/objectives/guidance_fixtures.gd:81)
+ERROR: actual archived state ROLLING BACK
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_fixtures.gd:10)
+       [1] run (res://tests/objectives/guidance_fixtures.gd:80)
+ERROR: actual renderer ROLLING BACK
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_fixtures.gd:10)
+       [1] run (res://tests/objectives/guidance_fixtures.gd:81)
+ERROR: actual archived state HOLDING CHECKPOINT
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_fixtures.gd:10)
+       [1] run (res://tests/objectives/guidance_fixtures.gd:80)
+ERROR: actual renderer HOLDING CHECKPOINT
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_fixtures.gd:10)
+       [1] run (res://tests/objectives/guidance_fixtures.gd:81)
+GUIDANCE_FIXTURES checks=820 failures=6 geometry=synthetic snapshot_states=archived

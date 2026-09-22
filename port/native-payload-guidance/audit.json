@@ -1,0 +1,163 @@
+{
+  "scope": "bounded presentation observations; archived/fixture completion separate",
+  "reports": [
+    {
+      "id": "77dd0c9f-a066-4bad-84b2-c258d1932e3b",
+      "visual": "FAIL: zero-height label; all original evidence retained",
+      "elapsed": 11.869,
+      "sourceSeconds": 8.367,
+      "wallSeconds": 8.195,
+      "nativeSourceMatches": 251,
+      "observed": [
+        {
+          "image": "guidance-off-cart.png",
+          "seq": 54,
+          "time": 1.8,
+          "distance": 2.699708317578028,
+          "pushing": 0,
+          "guidance": "Cart Ahead · 2.7 m away (horizontal) · Inside 4.5 m range · Controls released",
+          "sha256": "344afe51a110c9a7d62f2c69537449e49a8dbe1e6be958ed3f12ad4e1604950e"
+        },
+        {
+          "image": "guidance-approach.png",
+          "seq": 73,
+          "time": 2.433,
+          "distance": 6.580776397963993,
+          "pushing": null,
+          "guidance": "Cart Behind · 6.6 m away (horizontal) · Get within 4.5 m",
+          "sha256": "2ce238ca8d3e8d8b6527b183185dc8a8914cc06045a00a16d95edb4b2b197778"
+        },
+        {
+          "image": "guidance-escorting.png",
+          "seq": 218,
+          "time": 7.267,
+          "distance": 0.5618255957145342,
+          "pushing": 0,
+          "guidance": "Cart Ahead · 0.6 m away (horizontal) · Inside 4.5 m range",
+          "sha256": "2abc43754e7432577d92852efae7c2252490aba067d48294a932672dee2b2854"
+        },
+        {
+          "image": "guidance-release.png",
+          "seq": 249,
+          "time": 8.3,
+          "distance": 1.3723880646522746,
+          "pushing": 0,
+          "guidance": "Cart Ahead · 1.4 m away (horizontal) · Inside 4.5 m range · Controls released",
+          "sha256": "0c625554574b1a2a51b666d25d1ac77ca355ea8e45141cecad05de669b1058cc"
+        }
+      ],
+      "currentFileDifferences": [
+        "godot/objectives/hud.gd",
+        "godot/objectives/renderer.gd",
+        "godot/objectives/guidance.gd",
+        "godot/tests/objectives/guidance_fixtures.gd",
+        "godot/tests/objectives/guidance_hud.gd",
+        "godot/tests/objectives/guidance_live.gd"
+      ],
+      "cleanupRechecked": true
+    },
+    {
+      "id": "a3cec2b2-e154-4d7e-8468-87f070d4ef41",
+      "visual": "PASS: eight PNGs directly reviewed",
+      "elapsed": 14.726,
+      "sourceSeconds": 11.867,
+      "wallSeconds": 11.661,
+      "nativeSourceMatches": 356,
+      "observed": [
+        {
+          "image": "guidance-off-cart-960x640.png",
+          "seq": 54,
+          "time": 1.8,
+          "distance": 19.697715603592208,
+          "pushing": null,
+          "guidance": "Cart Right · 19.7 m away (horizontal) · Get within 4.5 m · Controls released",
+          "sha256": "039a4653bdbf37d538d30e594756a4a99d501390fb6828393fec7562c4e3c213"
+        },
+        {
+          "image": "guidance-off-cart-1280x800.png",
+          "seq": 60,
+          "time": 2,
+          "distance": 19.697715603592208,
+          "pushing": null,
+          "guidance": "Cart Right · 19.7 m away (horizontal) · Get within 4.5 m · Controls released",
+          "sha256": "08cb44d7bff0fbcfac03d36b867fc822f879e711bc7b5e9275a8984671e45937"
+        },
+        {
+          "image": "guidance-approach-960x640.png",
+          "seq": 91,
+          "time": 3.033,
+          "distance": 16.62856578301328,
+          "pushing": null,
+          "guidance": "Cart Ahead · 16.6 m away (horizontal) · Get within 4.5 m",
+          "sha256": "31c3b52d06e29c002c1ce785b7b0ec88fbce2d7cfff085c28f0fabc4b2fd8152"
+        },
+        {
+          "image": "guidance-approach-1280x800.png",
+          "seq": 97,
+          "time": 3.233,
+          "distance": 16.309209974735133,
+          "pushing": null,
+          "guidance": "Cart Ahead · 16.3 m away (horizontal) · Get within 4.5 m",
+          "sha256": "96c3a610961663124a80f6a45a329ddb5fe1adfb7cdf48801ef097ce7e15ec4f"
+        },
+        {
+          "image": "guidance-escorting-960x640.png",
+          "seq": 302,
+          "time": 10.067,
+          "distance": 0.22332935319835914,
+          "pushing": 0,
+          "guidance": "Cart Ahead · 0.2 m away (horizontal) · Inside 4.5 m range",
+          "sha256": "a5b93713684d47ca6b2202039a5b0aa770f435964a555f4a6fb5a1460b857a90"
+        },
+        {
+          "image": "guidance-escorting-1280x800.png",
+          "seq": 308,
+          "time": 10.267,
+          "distance": 0.3631886562105232,
+          "pushing": 0,
+          "guidance": "Cart Ahead · 0.4 m away (horizontal) · Inside 4.5 m range",
+          "sha256": "8630ba75378730748c85d30494e8951a53fc73ce1c9c521b1ad00236049dedc9"
+        },
+        {
+          "image": "guidance-release-960x640.png",
+          "seq": 346,
+          "time": 11.533,
+          "distance": 2.2629471933741674,
+          "pushing": 0,
+          "guidance": "Cart Ahead · 2.3 m away (horizontal) · Inside 4.5 m range · Controls released",
+          "sha256": "5a3bc3e1629d3d72b468e4ee2ee7b7dd19dd876b0e21d831fd34ea50d47501cf"
+        },
+        {
+          "image": "guidance-release-1280x800.png",
+          "seq": 352,
+          "time": 11.733,
+          "distance": 2.563428953569814,
+          "pushing": 0,
+          "guidance": "Cart Ahead · 2.6 m away (horizontal) · Inside 4.5 m range · Controls released",
+          "sha256": "28aa24cc5075b67b6c65ad093463f1505b864906399573535b871d9355fff15b"
+        }
+      ],
+      "currentFileDifferences": [
+        "godot/objectives/renderer.gd",
+        "godot/objectives/guidance.gd",
+        "godot/tests/objectives/guidance_fixtures.gd"
+      ],
+      "cleanupRechecked": true
+    }
+  ],
+  "finalRuntimeAndGeneratedHashes": {
+    "godot/objectives/guidance.gd": "a288d3dc5e4002453171fbf975e03193fb4107d3230b6dd486156d1d4e9c3b8f",
+    "godot/objectives/hud.gd": "e2987cb3a51ff0fa5025dced831ef86731be1480ecacaa36349f1bf558d71ace",
+    "godot/objectives/renderer.gd": "18aeba6749d92325b7183d3465c7b8b0577226ac06a43abd6942476ded9df438",
+    "godot/content/generated/manifest.json": "5c756d02edff6bb85f71c4659508d0a941d936d90787d0752957fadda65f4ccf",
+    "godot/content/generated/maps/asterion-relay/map.json": "9e0b4f5e00ea8d27bb0e2c914121ae583812ca84d38c5aae8cc94e29aeb659e4",
+    "godot/content/generated/maps/aurora-stadium/map.json": "ac55e0b0616648c71f648023f9057943799da6bc6459394d22962a289606baaa",
+    "godot/content/generated/maps/ember-crucible/map.json": "655f140c9d660ba12c4f185278b8c15ad1b8429be34165b0b492817d21f13e08",
+    "godot/content/generated/maps/ion-speedway/map.json": "7eaf4538dd8d18170f5e0c7df04a7253d2e844916c2149817bccbf207dd40231",
+    "godot/content/generated/maps/meridian-exchange/map.json": "e1332aa73fddbd75e2cd3fec87c157a515572a9a27a27f130b9cd605b70bf914",
+    "godot/content/generated/maps/monsoon-foundry/map.json": "49a162d043a572b575b6b79e380ff7b237135a55f46e8c1949b589b4cdf6289e",
+    "godot/content/generated/maps/sunscar-convoy/map.json": "d74a3ab27cadcc8ba205cb9ca6d3e0a7b640e66b793800931d29934fea941948",
+    "godot/content/generated/maps/tidal-citadel/map.json": "c53565317836fefd8daa94ed9d7e34ba76543b21c92e0087a0faf862bd30689d",
+    "godot/content/generated/maps/verdant-reliquary/map.json": "628145360487798fdb9aba8f99338175a9c4fa8ba51a4d8d2769b7a0dde3605b"
+  }
+}

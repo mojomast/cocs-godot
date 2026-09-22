@@ -1,0 +1,202 @@
+TAP version 13
+# Subtest: replay archived genuine rollback, bank, resumed push, delivery result and restart
+ok 1 - replay archived genuine rollback, bank, resumed push, delivery result and restart
+  ---
+  duration_ms: 504.760982
+  type: 'test'
+  ...
+# Subtest: reject missing delivered source event
+ok 2 - reject missing delivered source event
+  ---
+  duration_ms: 179.60573
+  type: 'test'
+  ...
+# Subtest: reject time-limit hold relabeled delivery
+ok 3 - reject time-limit hold relabeled delivery
+  ---
+  duration_ms: 152.138744
+  type: 'test'
+  ...
+# Subtest: reject wrong actual winner
+ok 4 - reject wrong actual winner
+  ---
+  duration_ms: 169.329968
+  type: 'test'
+  ...
+# Subtest: reject accelerated authority
+ok 5 - reject accelerated authority
+  ---
+  duration_ms: 143.026003
+  type: 'test'
+  ...
+# Subtest: reject rollback crossing banked checkpoint
+ok 6 - reject rollback crossing banked checkpoint
+  ---
+  duration_ms: 166.436925
+  type: 'test'
+  ...
+# Subtest: reject rollback without ordinary defender
+ok 7 - reject rollback without ordinary defender
+  ---
+  duration_ms: 157.339623
+  type: 'test'
+  ...
+# Subtest: reject wrong source-root cart height
+ok 8 - reject wrong source-root cart height
+  ---
+  duration_ms: 202.086468
+  type: 'test'
+  ...
+# Subtest: reject missing displayed rolling-back model
+ok 9 - reject missing displayed rolling-back model
+  ---
+  duration_ms: 179.7718
+  type: 'test'
+  ...
+# Subtest: reject result retains native capture
+ok 10 - reject result retains native capture
+  ---
+  duration_ms: 185.323998
+  type: 'test'
+  ...
+# Subtest: reject stale checkpoint after round clear
+ok 11 - reject stale checkpoint after round clear
+  ---
+  duration_ms: 195.525541
+  type: 'test'
+  ...
+# Subtest: reject completion marker duplicated
+ok 12 - reject completion marker duplicated
+  ---
+  duration_ms: 189.7959
+  type: 'test'
+  ...
+# Subtest: reject ACK without an input receipt
+ok 13 - reject ACK without an input receipt
+  ---
+  duration_ms: 177.112256
+  type: 'test'
+  ...
+# Subtest: reject faster-than-source rollback
+ok 14 - reject faster-than-source rollback
+  ---
+  duration_ms: 149.542779
+  type: 'test'
+  ...
+# Subtest: single CTF archive proves pass/capture but retains original failed full acceptance
+ok 15 - single CTF archive proves pass/capture but retains original failed full acceptance
+  ---
+  duration_ms: 227.278088
+  type: 'test'
+  ...
+# Subtest: reject CTF missing source flag-pass
+ok 16 - reject CTF missing source flag-pass
+  ---
+  duration_ms: 73.084743
+  type: 'test'
+  ...
+# Subtest: reject CTF drop relabeled as pass
+ok 17 - reject CTF drop relabeled as pass
+  ---
+  duration_ms: 92.48691
+  type: 'test'
+  ...
+# Subtest: reject CTF wrong pass recipient
+ok 18 - reject CTF wrong pass recipient
+  ---
+  duration_ms: 79.072666
+  type: 'test'
+  ...
+# Subtest: reject CTF actor zero erased
+ok 19 - reject CTF actor zero erased
+  ---
+  duration_ms: 85.902458
+  type: 'test'
+  ...
+# Subtest: reject CTF missing native E receipt
+ok 20 - reject CTF missing native E receipt
+  ---
+  duration_ms: 86.168768
+  type: 'test'
+  ...
+# Subtest: reject CTF results continue transmitting movement
+ok 21 - reject CTF results continue transmitting movement
+  ---
+  duration_ms: 218.685402
+  type: 'test'
+  ...
+# Subtest: reject CTF restart retains interaction
+ok 22 - reject CTF restart retains interaction
+  ---
+  duration_ms: 87.62114
+  type: 'test'
+  ...
+# Subtest: replay genuine tidal-citadel
+ok 23 - replay genuine tidal-citadel
+  ---
+  duration_ms: 81.117129
+  type: 'test'
+  ...
+# Subtest: replay genuine sunscar-convoy
+ok 24 - replay genuine sunscar-convoy
+  ---
+  duration_ms: 102.412055
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: missing source return
+ok 25 - tampered fixture rejected: missing source return
+  ---
+  duration_ms: 72.239819
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: forced early result
+ok 26 - tampered fixture rejected: forced early result
+  ---
+  duration_ms: 56.167883
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: accelerated wall time
+ok 27 - tampered fixture rejected: accelerated wall time
+  ---
+  duration_ms: 51.734864
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: stale dynamic marker after restart
+ok 28 - tampered fixture rejected: stale dynamic marker after restart
+  ---
+  duration_ms: 70.246963
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: duplicate completion marker
+ok 29 - tampered fixture rejected: duplicate completion marker
+  ---
+  duration_ms: 64.996732
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: wrong rendered height
+ok 30 - tampered fixture rejected: wrong rendered height
+  ---
+  duration_ms: 74.550871
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: contest without opposing occupant
+ok 31 - tampered fixture rejected: contest without opposing occupant
+  ---
+  duration_ms: 83.969526
+  type: 'test'
+  ...
+# Subtest: tampered fixture rejected: old cart progress on new round
+ok 32 - tampered fixture rejected: old cart progress on new round
+  ---
+  duration_ms: 97.555121
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3762.351397

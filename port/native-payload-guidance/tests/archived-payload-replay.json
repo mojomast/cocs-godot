@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "matches": 3792,
+  "rollbackSamples": 148,
+  "bankSamples": 79,
+  "bankStart": 46.6,
+  "bankEnd": 49.2,
+  "resumed": true,
+  "deliveryTime": 124.1166666666609,
+  "checkpoints": [
+    {
+      "index": 1,
+      "time": 39.05
+    },
+    {
+      "index": 2,
+      "time": 87.317
+    },
+    {
+      "index": 3,
+      "time": 124.117
+    }
+  ],
+  "inputs": {
+    "peers": [
+      {
+        "connection": 0,
+        "actorId": 0,
+        "receipts": 7090,
+        "appliedSamples": 3717,
+        "appliedHighWater": 7089
+      },
+      {
+        "connection": 1,
+        "actorId": 1,
+        "receipts": 3723,
+        "appliedSamples": 3722,
+        "appliedHighWater": 3722
+      }
+    ],
+    "meaning": "receipt and applied high-water only; source objective events/states establish gameplay outcomes"
+  },
+  "results": 1,
+  "restarts": 1,
+  "normalRate": true,
+  "nativeCompletionProven": false
+}

@@ -161,22 +161,11 @@ func apply_state(state: Dictionary, local_actor_id: int) -> void:
 				lines.append("%s | distance %s / %s | checkpoints %s / %s" % [status, str(payload.get("distance", "?")), str(payload.get("total", "?")), str(payload.get("checkpointsReached", "?")), str(payload.get("checkpointCount", "?"))])
 				lines.append("Role: " + ("ESCORT" if local_team != null and local_team == objective.get("attacker") else ("DEFEND" if local_team != null and local_team == objective.get("defender") else "UNKNOWN")))
 				var role := "ESCORT" if local_team != null and local_team == objective.get("attacker") else ("DEFEND" if local_team != null and local_team == objective.get("defender") else "UNKNOWN")
-				# Keep the accepted rollback category, including the arrival-at-bank
-				# snapshot, while explicitly distinguishing its stationary limit.
-				var display_status := status
-				if status == "HOLDING CHECKPOINT": display_status = "ROLLING BACK: CHECKPOINT LIMIT"
-				elif status == "HOLDING START": display_status = "ROLLING BACK: START LIMIT"
-				hud_model.title = "PAYLOAD · %s · YOU: %s · %s" % [role, team_name(local_team), display_status]
+				hud_model.title = "PAYLOAD · %s · YOU: %s · %s" % [role, team_name(local_team), status]
 				if numeric(payload.get("progress")): hud_model.progress = clampf(float(payload.progress), 0, 100)
 				var progress_text := "%.1f%%" % float(hud_model.progress) if hud_model.has("progress") else "?"
 				hud_model.detail = "Route %s · %s / %s m · Checkpoints banked %s / %s" % [progress_text, distance_text(payload.get("distance")), distance_text(payload.get("total")), count_text(payload.get("checkpointsReached")), count_text(payload.get("checkpointCount"))]
 				hud_model.hint = Guidance.explanation(status)
-				if role == "DEFEND" and status == "IDLE":
-					hud_model.hint = "Approach cart to block attackers · Alone, roll back to last checkpoint"
-				elif role == "DEFEND" and status.begins_with("PUSHING"):
-					hud_model.hint = "Attackers moving cart · Enter range alive to contest"
-				elif role == "UNKNOWN" and status in ["IDLE", "PUSHING RED [1]", "PUSHING BLUE [2]"]:
-					hud_model.hint = "Living players near cart affect progress · Both teams nearby stop it"
 			var zones: Variant = objective.get("zones")
 			if zones is Array and zones.size() <= 6:
 				for zone: Variant in zones:

@@ -1,0 +1,775 @@
+{
+  "source": "port/native-objective-completion/evidence/2d6b7e66-6adc-43f2-b29e-9d26fed86387/wire.jsonl.gz",
+  "sha256": "7b42be73de1ad34b6789bf621e748883a2ba4ee0a47b53d79e278b0083986a83",
+  "samples": [
+    {
+      "status": "IDLE",
+      "seq": 1,
+      "type": "snapshot",
+      "state": {
+        "config": {
+          "mode": "payload",
+          "botCount": 0,
+          "difficulty": "easy",
+          "fragLimit": 3,
+          "timeLimit": 180,
+          "respawn": 2,
+          "speed": 1,
+          "gravity": 1,
+          "damage": 1,
+          "fastPowers": false,
+          "lifeSteal": false,
+          "unlimitedAmmo": false,
+          "suddenDeath": false,
+          "randomLoadout": false,
+          "oneShot": false,
+          "instagib": false,
+          "mirrorLoadout": false,
+          "bounty": false,
+          "berserk": false,
+          "bigHead": false,
+          "noRecoil": false,
+          "endless": false,
+          "startingWeapon": 0,
+          "playerName": "",
+          "mission": "convoy-run",
+          "loadout": null,
+          "checkpoint": null,
+          "mutators": []
+        },
+        "mapId": "sunscar-convoy",
+        "time": 0.033,
+        "over": false,
+        "winner": null,
+        "actors": [
+          {
+            "id": 0,
+            "team": 0,
+            "x": -86,
+            "y": 0,
+            "z": 2,
+            "health": 100,
+            "carryingFlag": false
+          },
+          {
+            "id": 1,
+            "team": 1,
+            "x": 78,
+            "y": 0,
+            "z": -18,
+            "health": 100,
+            "carryingFlag": false
+          }
+        ],
+        "flags": [],
+        "objectives": {
+          "kind": "payload",
+          "zones": [
+            {
+              "id": "cp1",
+              "x": -26.193,
+              "z": 7.432,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 55.21
+            },
+            {
+              "id": "cp2",
+              "x": 23.54,
+              "z": -11.847,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 110.421
+            },
+            {
+              "id": "cp3",
+              "x": 78,
+              "z": -18,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 165.631
+            }
+          ],
+          "active": 0,
+          "attacker": 0,
+          "defender": 1,
+          "winner": null,
+          "leaders": [
+            0,
+            1
+          ],
+          "payload": {
+            "position": {
+              "x": -78,
+              "y": 0,
+              "z": -10
+            },
+            "distance": 0,
+            "total": 165.631,
+            "speed": 1.5,
+            "radius": 4.5,
+            "pushing": null,
+            "contested": false,
+            "delivered": false,
+            "checkpointsReached": 0,
+            "checkpointCount": 3,
+            "progress": 0
+          }
+        },
+        "teamScores": {
+          "0": 0,
+          "1": 0
+        }
+      }
+    },
+    {
+      "status": "PUSHING RED [1]",
+      "seq": 68,
+      "type": "snapshot",
+      "state": {
+        "config": {
+          "mode": "payload",
+          "botCount": 0,
+          "difficulty": "easy",
+          "fragLimit": 3,
+          "timeLimit": 180,
+          "respawn": 2,
+          "speed": 1,
+          "gravity": 1,
+          "damage": 1,
+          "fastPowers": false,
+          "lifeSteal": false,
+          "unlimitedAmmo": false,
+          "suddenDeath": false,
+          "randomLoadout": false,
+          "oneShot": false,
+          "instagib": false,
+          "mirrorLoadout": false,
+          "bounty": false,
+          "berserk": false,
+          "bigHead": false,
+          "noRecoil": false,
+          "endless": false,
+          "startingWeapon": 0,
+          "playerName": "",
+          "mission": "convoy-run",
+          "loadout": null,
+          "checkpoint": null,
+          "mutators": []
+        },
+        "mapId": "sunscar-convoy",
+        "time": 2.267,
+        "over": false,
+        "winner": null,
+        "actors": [
+          {
+            "id": 0,
+            "team": 0,
+            "x": -81.683,
+            "y": 0,
+            "z": -7.57,
+            "health": 100,
+            "carryingFlag": false
+          },
+          {
+            "id": 1,
+            "team": 1,
+            "x": 67.676,
+            "y": 0,
+            "z": -18,
+            "health": 100,
+            "carryingFlag": false
+          }
+        ],
+        "flags": [],
+        "objectives": {
+          "kind": "payload",
+          "zones": [
+            {
+              "id": "cp1",
+              "x": -26.193,
+              "z": 7.432,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 55.21
+            },
+            {
+              "id": "cp2",
+              "x": 23.54,
+              "z": -11.847,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 110.421
+            },
+            {
+              "id": "cp3",
+              "x": 78,
+              "z": -18,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 165.631
+            }
+          ],
+          "active": 0,
+          "attacker": 0,
+          "defender": 1,
+          "winner": null,
+          "leaders": [
+            0,
+            1
+          ],
+          "payload": {
+            "position": {
+              "x": -77.953,
+              "y": 0,
+              "z": -9.983
+            },
+            "distance": 0.05,
+            "total": 165.631,
+            "speed": 1.5,
+            "radius": 4.5,
+            "pushing": 0,
+            "contested": false,
+            "delivered": false,
+            "checkpointsReached": 0,
+            "checkpointCount": 3,
+            "progress": 0.03
+          }
+        },
+        "teamScores": {
+          "0": 0,
+          "1": 0
+        }
+      }
+    },
+    {
+      "status": "CONTESTED",
+      "seq": 1246,
+      "type": "snapshot",
+      "state": {
+        "config": {
+          "mode": "payload",
+          "botCount": 0,
+          "difficulty": "easy",
+          "fragLimit": 3,
+          "timeLimit": 180,
+          "respawn": 2,
+          "speed": 1,
+          "gravity": 1,
+          "damage": 1,
+          "fastPowers": false,
+          "lifeSteal": false,
+          "unlimitedAmmo": false,
+          "suddenDeath": false,
+          "randomLoadout": false,
+          "oneShot": false,
+          "instagib": false,
+          "mirrorLoadout": false,
+          "bounty": false,
+          "berserk": false,
+          "bigHead": false,
+          "noRecoil": false,
+          "endless": false,
+          "startingWeapon": 0,
+          "playerName": "",
+          "mission": "convoy-run",
+          "loadout": null,
+          "checkpoint": null,
+          "mutators": []
+        },
+        "mapId": "sunscar-convoy",
+        "time": 41.533,
+        "over": false,
+        "winner": null,
+        "actors": [
+          {
+            "id": 0,
+            "team": 0,
+            "x": -24.145,
+            "y": 0,
+            "z": 9.278,
+            "health": 100,
+            "carryingFlag": false
+          },
+          {
+            "id": 1,
+            "team": 1,
+            "x": -22.498,
+            "y": 0,
+            "z": 10.481,
+            "health": 100,
+            "carryingFlag": false
+          }
+        ],
+        "flags": [],
+        "objectives": {
+          "kind": "payload",
+          "zones": [
+            {
+              "id": "cp1",
+              "x": -26.193,
+              "z": 7.432,
+              "y": 0,
+              "radius": 4.5,
+              "owner": 0,
+              "captureTeam": null,
+              "progress": 100,
+              "distance": 55.21
+            },
+            {
+              "id": "cp2",
+              "x": 23.54,
+              "z": -11.847,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 110.421
+            },
+            {
+              "id": "cp3",
+              "x": 78,
+              "z": -18,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 165.631
+            }
+          ],
+          "active": 1,
+          "attacker": 0,
+          "defender": 1,
+          "winner": null,
+          "leaders": [
+            0
+          ],
+          "payload": {
+            "position": {
+              "x": -22.701,
+              "y": 0,
+              "z": 6.239
+            },
+            "distance": 58.9,
+            "total": 165.631,
+            "speed": 1.5,
+            "radius": 4.5,
+            "pushing": null,
+            "contested": true,
+            "delivered": false,
+            "checkpointsReached": 1,
+            "checkpointCount": 3,
+            "progress": 35.561
+          }
+        },
+        "teamScores": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "status": "ROLLING BACK",
+      "seq": 1251,
+      "type": "snapshot",
+      "state": {
+        "config": {
+          "mode": "payload",
+          "botCount": 0,
+          "difficulty": "easy",
+          "fragLimit": 3,
+          "timeLimit": 180,
+          "respawn": 2,
+          "speed": 1,
+          "gravity": 1,
+          "damage": 1,
+          "fastPowers": false,
+          "lifeSteal": false,
+          "unlimitedAmmo": false,
+          "suddenDeath": false,
+          "randomLoadout": false,
+          "oneShot": false,
+          "instagib": false,
+          "mirrorLoadout": false,
+          "bounty": false,
+          "berserk": false,
+          "bigHead": false,
+          "noRecoil": false,
+          "endless": false,
+          "startingWeapon": 0,
+          "playerName": "",
+          "mission": "convoy-run",
+          "loadout": null,
+          "checkpoint": null,
+          "mutators": []
+        },
+        "mapId": "sunscar-convoy",
+        "time": 41.7,
+        "over": false,
+        "winner": null,
+        "actors": [
+          {
+            "id": 0,
+            "team": 0,
+            "x": -24.145,
+            "y": 0,
+            "z": 10.711,
+            "health": 100,
+            "carryingFlag": false
+          },
+          {
+            "id": 1,
+            "team": 1,
+            "x": -22.603,
+            "y": 0,
+            "z": 9.051,
+            "health": 100,
+            "carryingFlag": false
+          }
+        ],
+        "flags": [],
+        "objectives": {
+          "kind": "payload",
+          "zones": [
+            {
+              "id": "cp1",
+              "x": -26.193,
+              "z": 7.432,
+              "y": 0,
+              "radius": 4.5,
+              "owner": 0,
+              "captureTeam": null,
+              "progress": 100,
+              "distance": 55.21
+            },
+            {
+              "id": "cp2",
+              "x": 23.54,
+              "z": -11.847,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 110.421
+            },
+            {
+              "id": "cp3",
+              "x": 78,
+              "z": -18,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 165.631
+            }
+          ],
+          "active": 1,
+          "attacker": 0,
+          "defender": 1,
+          "winner": null,
+          "leaders": [
+            0
+          ],
+          "payload": {
+            "position": {
+              "x": -22.725,
+              "y": 0,
+              "z": 6.247
+            },
+            "distance": 58.875,
+            "total": 165.631,
+            "speed": 1.5,
+            "radius": 4.5,
+            "pushing": 1,
+            "contested": false,
+            "delivered": false,
+            "checkpointsReached": 1,
+            "checkpointCount": 3,
+            "progress": 35.546
+          }
+        },
+        "teamScores": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "status": "HOLDING CHECKPOINT",
+      "seq": 1398,
+      "type": "snapshot",
+      "state": {
+        "config": {
+          "mode": "payload",
+          "botCount": 0,
+          "difficulty": "easy",
+          "fragLimit": 3,
+          "timeLimit": 180,
+          "respawn": 2,
+          "speed": 1,
+          "gravity": 1,
+          "damage": 1,
+          "fastPowers": false,
+          "lifeSteal": false,
+          "unlimitedAmmo": false,
+          "suddenDeath": false,
+          "randomLoadout": false,
+          "oneShot": false,
+          "instagib": false,
+          "mirrorLoadout": false,
+          "bounty": false,
+          "berserk": false,
+          "bigHead": false,
+          "noRecoil": false,
+          "endless": false,
+          "startingWeapon": 0,
+          "playerName": "",
+          "mission": "convoy-run",
+          "loadout": null,
+          "checkpoint": null,
+          "mutators": []
+        },
+        "mapId": "sunscar-convoy",
+        "time": 46.6,
+        "over": false,
+        "winner": null,
+        "actors": [
+          {
+            "id": 0,
+            "team": 0,
+            "x": -24.145,
+            "y": 0,
+            "z": 18.443,
+            "health": 100,
+            "carryingFlag": false
+          },
+          {
+            "id": 1,
+            "team": 1,
+            "x": -25.79,
+            "y": 0,
+            "z": 7.294,
+            "health": 100,
+            "carryingFlag": false
+          }
+        ],
+        "flags": [],
+        "objectives": {
+          "kind": "payload",
+          "zones": [
+            {
+              "id": "cp1",
+              "x": -26.193,
+              "z": 7.432,
+              "y": 0,
+              "radius": 4.5,
+              "owner": 0,
+              "captureTeam": null,
+              "progress": 100,
+              "distance": 55.21
+            },
+            {
+              "id": "cp2",
+              "x": 23.54,
+              "z": -11.847,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 110.421
+            },
+            {
+              "id": "cp3",
+              "x": 78,
+              "z": -18,
+              "y": 0,
+              "radius": 4.5,
+              "owner": null,
+              "captureTeam": null,
+              "progress": 0,
+              "distance": 165.631
+            }
+          ],
+          "active": 1,
+          "attacker": 0,
+          "defender": 1,
+          "winner": null,
+          "leaders": [
+            0
+          ],
+          "payload": {
+            "position": {
+              "x": -26.193,
+              "y": 0,
+              "z": 7.432
+            },
+            "distance": 55.21,
+            "total": 165.631,
+            "speed": 1.5,
+            "radius": 4.5,
+            "pushing": 1,
+            "contested": false,
+            "delivered": false,
+            "checkpointsReached": 1,
+            "checkpointCount": 3,
+            "progress": 33.333
+          }
+        },
+        "teamScores": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "status": "DELIVERED",
+      "type": "results",
+      "state": {
+        "config": {
+          "mode": "payload",
+          "botCount": 0,
+          "difficulty": "easy",
+          "fragLimit": 3,
+          "timeLimit": 180,
+          "respawn": 2,
+          "speed": 1,
+          "gravity": 1,
+          "damage": 1,
+          "fastPowers": false,
+          "lifeSteal": false,
+          "unlimitedAmmo": false,
+          "suddenDeath": false,
+          "randomLoadout": false,
+          "oneShot": false,
+          "instagib": false,
+          "mirrorLoadout": false,
+          "bounty": false,
+          "berserk": false,
+          "bigHead": false,
+          "noRecoil": false,
+          "endless": false,
+          "startingWeapon": 0,
+          "playerName": "",
+          "mission": "convoy-run",
+          "loadout": null,
+          "checkpoint": null,
+          "mutators": []
+        },
+        "mapId": "sunscar-convoy",
+        "time": 124.1166666666609,
+        "over": true,
+        "winner": 0,
+        "actors": [
+          {
+            "id": 0,
+            "team": 0,
+            "x": 77.25139257325372,
+            "y": 0,
+            "z": -17.96166040710718,
+            "health": 100,
+            "carryingFlag": false
+          },
+          {
+            "id": 1,
+            "team": 1,
+            "x": -25.789649364199686,
+            "y": 0,
+            "z": 19.336405823799197,
+            "health": 100,
+            "carryingFlag": false
+          }
+        ],
+        "flags": [],
+        "objectives": {
+          "kind": "payload",
+          "zones": [
+            {
+              "id": "cp1",
+              "x": -26.192735559702346,
+              "z": 7.431665800873971,
+              "y": 0,
+              "radius": 4.5,
+              "owner": 0,
+              "captureTeam": null,
+              "progress": 100,
+              "distance": 55.2104565058891
+            },
+            {
+              "id": "cp2",
+              "x": 23.540451970193708,
+              "z": -11.846817323397904,
+              "y": 0,
+              "radius": 4.5,
+              "owner": 0,
+              "captureTeam": null,
+              "progress": 100,
+              "distance": 110.4209130117782
+            },
+            {
+              "id": "cp3",
+              "x": 78,
+              "z": -18,
+              "y": 0,
+              "radius": 4.5,
+              "owner": 0,
+              "captureTeam": null,
+              "progress": 100,
+              "distance": 165.6313695176673
+            }
+          ],
+          "active": 3,
+          "attacker": 0,
+          "defender": 1,
+          "winner": 0,
+          "leaders": [
+            0
+          ],
+          "payload": {
+            "position": {
+              "x": 78,
+              "y": 0,
+              "z": -18
+            },
+            "distance": 165.6313695176673,
+            "total": 165.6313695176673,
+            "speed": 1.5,
+            "radius": 4.5,
+            "pushing": 0,
+            "contested": false,
+            "delivered": true,
+            "checkpointsReached": 3,
+            "checkpointCount": 3,
+            "progress": 100
+          }
+        },
+        "teamScores": {
+          "0": 3,
+          "1": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "exit": 0,
+  "reason": "observation complete",
+  "elapsed": 14.726,
+  "deadline": 115,
+  "normalRate": true,
+  "cleanup": [
+    {
+      "pid": 3520951,
+      "absent": true,
+      "reaped": true
+    },
+    {
+      "pid": 3520955,
+      "absent": true,
+      "reaped": true
+    }
+  ],
+  "port": 43239,
+  "portClosed": true,
+  "serverClosed": true,
+  "sockets": 0,
+  "temporaryTreeRemoved": true
+}

@@ -1,0 +1,84 @@
+extends RefCounted
+## Public snapshot geometry only. Range is not proof of local contribution.
+static func numeric(value: Variant) -> bool:
+	return (value is int or value is float) and is_finite(float(value))
+
+static func point(value: Variant) -> bool:
+	return value is Dictionary and numeric(value.get("x")) and numeric(value.get("y")) and numeric(value.get("z"))
+
+static func team(value: Variant) -> bool:
+	return numeric(value) and (value == 0 or value == 1)
+
+static func sample(objective: Dictionary, actor: Dictionary) -> Dictionary:
+	var result := {}
+	var payload: Variant = objective.get("payload")
+	if not payload is Dictionary: return result
+	if point(payload.get("position")):
+		var p: Dictionary = payload.position
+		result.cart = Vector3(p.x, p.y, p.z)
+	if point(actor): result.actor = Vector3(actor.x, actor.y, actor.z)
+	if numeric(payload.get("radius")) and payload.radius > 0: result.radius = float(payload.radius)
+	if numeric(actor.get("health")): result.alive = actor.health > 0
+	return result
+
+static func bearing(camera: Camera3D, cart: Vector3) -> String:
+	if not is_instance_valid(camera): return "Direction unknown"
+	# Godot infantry camera looks along -Z. Screen right is +X, including yaw.
+	var delta := cart - camera.global_position
+	delta.y = 0
+	if delta.length_squared() < 0.0001: return "Here"
+	var forward := -camera.global_basis.z
+	forward.y = 0
+	if forward.length_squared() < 0.0001: return "Direction unknown"
+	forward = forward.normalized()
+	var right := forward.cross(Vector3.UP)
+	var angle := rad_to_deg(atan2(delta.dot(right), delta.dot(forward)))
+	if absf(angle) <= 20: return "Ahead"
+	if absf(angle) >= 160: return "Behind"
+	if angle > 0: return "Behind-right" if angle > 90 else "Right"
+	return "Behind-left" if angle < -90 else "Left"
+
+static func approach(data: Dictionary, camera: Camera3D, engaged: bool) -> String:
+	if not data.has("cart") or not data.has("actor"): return "Cart guidance unavailable · Waiting for position"
+	var delta: Vector3 = data.cart - data.actor
+	var distance := Vector2(delta.x, delta.z).length()
+	var parts: Array[String] = ["Cart %s · %.1f m away (horizontal)" % [bearing(camera, data.cart), distance]]
+	if not data.has("radius"): parts.append("Range unknown")
+	elif absf(delta.y) > 5: parts.append("Different height · Get within 5 m vertically")
+	elif distance <= data.radius: parts.append("Inside %.1f m range" % data.radius)
+	else: parts.append("Get within %.1f m" % data.radius)
+	if not data.has("alive"): parts.append("Life state unknown")
+	elif not data.alive: parts.append("Dead · Respawn to escort")
+	elif not engaged: parts.append("Controls released")
+	return " · ".join(parts)
+
+static func status(objective: Dictionary) -> String:
+	var p: Dictionary = objective.get("payload", {}) if objective.get("payload") is Dictionary else {}
+	if p.get("delivered") == true: return "DELIVERED"
+	if p.get("contested") == true: return "CONTESTED"
+	if p.get("contested") != false or not p.has("pushing"): return "UNKNOWN"
+	if p.pushing == null: return "IDLE"
+	if not team(p.pushing): return "UNKNOWN"
+	if team(objective.get("attacker")) and p.pushing == objective.attacker: return "PUSHING " + ("RED [1]" if p.pushing == 0 else "BLUE [2]")
+	if team(objective.get("defender")) and p.pushing == objective.defender:
+		# Source pushing remains defender at the bank even when movement is zero.
+		var floor_distance: Variant = null
+		if p.get("checkpointsReached") == 0: floor_distance = 0.0
+		var zones: Variant = objective.get("zones")
+		if zones is Array and numeric(p.get("checkpointsReached")) and p.checkpointsReached > 0:
+			var index := int(p.checkpointsReached) - 1
+			if index < zones.size() and zones[index] is Dictionary and numeric(zones[index].get("distance")):
+				floor_distance = zones[index].distance
+		if numeric(floor_distance) and numeric(p.get("distance")) and absf(p.distance - floor_distance) <= 0.001:
+			return "HOLDING CHECKPOINT" if p.get("checkpointsReached", 0) > 0 else "HOLDING START"
+		return "ROLLING BACK"
+	return "UNKNOWN"
+
+static func explanation(value: String) -> String:
+	if value == "DELIVERED": return "Final delivery confirmed by server"
+	if value == "CONTESTED": return "Both teams nearby · Clear opponents to move the cart"
+	if value.begins_with("PUSHING"): return "Attackers moving cart · Stay nearby while alive to escort"
+	if value == "ROLLING BACK": return "Defenders moving cart back · Banked checkpoints cannot be lost"
+	if value.begins_with("HOLDING"): return "Defenders at rollback limit · Banked progress is safe"
+	if value == "IDLE": return "Approach cart to escort · Both teams nearby stop it · Checkpoints bank progress"
+	return "Cart state unknown · Waiting for authority"

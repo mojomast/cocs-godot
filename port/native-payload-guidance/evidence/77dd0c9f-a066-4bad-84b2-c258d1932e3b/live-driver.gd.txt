@@ -1,0 +1,117 @@
+extends "res://objectives/demo.gd"
+## Ordinary native input events; no state, clock or physics mutation.
+var held := false
+var state: Dictionary = {}
+var sequence := -1
+var stage := "off-cart"
+var observation_elapsed := 0.0
+var stage_elapsed := 0.0
+var route: Array[Vector2] = []
+var index := 0
+var captured: Dictionary = {}
+var output := ""
+var finishing := false
+
+func _ready() -> void:
+	super._ready()
+	for arg: String in OS.get_cmdline_user_args():
+		if arg.begins_with("--screenshot="): output = arg.trim_prefix("--screenshot=")
+
+func key(code: int, pressed: bool) -> void:
+	var event := InputEventKey.new()
+	event.physical_keycode = code
+	event.keycode = code
+	event.pressed = pressed
+	Input.parse_input_event(event)
+
+func walk(pressed: bool) -> void:
+	if held == pressed: return
+	held = pressed
+	key(KEY_W, pressed)
+
+func click() -> void:
+	for pressed: bool in [true,false]:
+		var event := InputEventMouseButton.new()
+		event.button_index = MOUSE_BUTTON_LEFT
+		event.pressed = pressed
+		Input.parse_input_event(event)
+
+func aim(target: Vector2) -> void:
+	var a: Dictionary = presentation.local_actor
+	var offset := target - Vector2(a.x,a.z)
+	var event := InputEventMouseMotion.new()
+	event.relative = Vector2(-wrapf(atan2(-offset.x,-offset.y)-yaw,-PI,PI)/0.003,pitch/0.003)
+	Input.parse_input_event(event)
+
+func follow(target: Vector2, stop := 0.6) -> bool:
+	var a: Dictionary = presentation.local_actor
+	if Vector2(a.x,a.z).distance_to(target) < stop:
+		walk(false)
+		return true
+	aim(target)
+	walk(true)
+	return false
+
+func shot(tag: String) -> void:
+	if captured.has(tag): return
+	captured[tag] = true
+	await RenderingServer.frame_post_draw
+	var error := get_viewport().get_texture().get_image().save_png(output.replace(".png","-"+tag+".png"))
+	var p: Dictionary = state.objectives.payload
+	var cart := Vector3(p.position.x,p.position.y,p.position.z)
+	print("GUIDANCE_SHOT ",JSON.stringify({"tag":tag,"error":error,"seq":sequence,"time":state.time,"actor":presentation.local_actor,"payload":p,"model":objectives.hud_model,"guidance":objective_hud.cart_guidance.text,"camera":[camera.position.x,camera.position.y,camera.position.z],"projected":[camera.unproject_position(cart).x,camera.unproject_position(cart).y],"behind":camera.is_position_behind(cart),"captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED}))
+
+func on_snapshot(frame: Dictionary) -> void:
+	super.on_snapshot(frame)
+	state = frame.state
+	sequence = frame.seq
+
+func next(value: String) -> void:
+	stage = value
+	stage_elapsed = 0
+
+func _process(delta: float) -> void:
+	super._process(delta)
+	if finishing: return
+	observation_elapsed += delta
+	stage_elapsed += delta
+	if observation_elapsed > 100 or phase == -1:
+		finishing = true
+		walk(false)
+		print("GUIDANCE_FAILED ",stage," ",label.text)
+		if not state.is_empty(): await shot("failed")
+		get_tree().quit(1)
+		return
+	if phase != 3 or not received_pose or state.is_empty(): return
+	var p: Dictionary = state.objectives.payload
+	var a: Dictionary = presentation.local_actor
+	var cart := Vector2(p.position.x,p.position.z)
+	var position := Vector2(a.x,a.z)
+	match stage:
+		"off-cart":
+			if stage_elapsed > 2:
+				await shot("off-cart")
+				click()
+				route.assign([Vector2(-82,position.y),Vector2(-82,-10),Vector2(-78,-10)])
+				next("approach")
+		"approach":
+			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED: return
+			if follow(route[index]):
+				if index < route.size()-1: index += 1
+				else: next("escort")
+			if index > 0 and position.distance_to(cart) > p.radius and position.distance_to(cart) < 18: shot("approach")
+		"escort":
+			follow(cart,1.2)
+			if p.pushing == state.objectives.attacker and not p.contested and position.distance_to(cart) <= p.radius and stage_elapsed > 4:
+				await shot("escorting")
+				walk(false)
+				key(KEY_ESCAPE,true)
+				key(KEY_ESCAPE,false)
+				next("release")
+		"release":
+			if stage_elapsed > 1.0:
+				finishing = true
+				await shot("release")
+				var ok := captured.has("approach") and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED
+				print("GUIDANCE_DONE ",JSON.stringify({"ok":ok,"elapsed":observation_elapsed,"controls_released":controls_released()}))
+				get_tree().quit(0 if ok else 1)

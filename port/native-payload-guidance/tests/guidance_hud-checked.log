@@ -1,0 +1,128 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+GUIDANCE_HUD checks=86 failures=25 synthetic_layout=true
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
+ERROR: status/vitals separate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:30)
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
+ERROR: cart row visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:27)
+ERROR: released guidance not push claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/objectives/guidance_hud.gd:9)
+       [1] run (res://tests/objectives/guidance_hud.gd:28)
