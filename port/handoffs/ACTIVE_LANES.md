@@ -232,9 +232,26 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
   construction, which must be replaced by a simplified source-compatible collision
   representation with independently verified ray/visible-cover parity before any
   integration acceptance.
-- Next identity step (after the current operator/arena lanes): one focused lane that
-  collision-simplifies and wires **one** complete playable slice (Lacuna Court
-  Deathmatch) end to end, then reuses the proven pattern for Domination and Horde.
+- Owner has asked for the identity maps to be populated with assets, shaders and
+  effects and made playable for the next Windows release. Sequencing (wave 1 active):
+  - **Identity art/performance lane** owns `godot/identity_maps/**`,
+    `tools/godot-identity-maps/**`, `godot/tests/identity_maps/**`,
+    `port/native-identity-maps/**`. Must first cut cold source-match construction to
+    <=1.5s per map (hard ceiling 3s) via a simplified source-compatible collision
+    representation with ray/visible parity, then deliver the three material
+    identities, bounded signature effects, and verified 960x640/1280x800/1920x1080
+    renders with honest cost comparisons.
+  - **Identity route/package lane** owns `port/native-arenas/**`,
+    `godot/native_arenas/**`, `tools/godot-dev/launch*.mjs`,
+    `tools/godot-package/{options,run,discover}.mjs`, `build.py`, `verify_windows.mjs`,
+    `*.cmd`, plus `port/native-identity-dm/**`. Extends the registry/schema/factory,
+    the Godot composition and the launcher/package closure for **Deathmatch** on all
+    three identity maps, keeping the existing three arenas byte-compatible.
+  - Envelope and canonical-hash contract is fixed in both prompts; the route lane
+    validates strictly and re-runs after art hashes are regenerated.
+  - Wave 2 (later, one lane per mode): Domination on Vermilion Fold through
+    `zone_modes` and Horde on Nacre Engine through the native Horde adapter.
+  - Wave 3: full aggregate verification, Windows package rebuild and publication.
 - Lead test repairs for the pickup-asset and integrated-effects contracts:
   `round_boundaries.gd`, `entity_visuals.gd` pickup section, `combined_arms/graphics.gd`.
   The `entity_visuals.gd` actor section must be rewritten against the source
