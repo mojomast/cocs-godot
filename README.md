@@ -403,7 +403,7 @@ in-world LATTICE commands, package routing, sports and objective
 progression, LATTICE map selection, launcher routing, GLB material sides and
 projectile navigation. Native
 [GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
-also passed all 80 gates at `329f411` from a fresh Ubuntu checkout;
+also passed all 87 gates at `1cbc04d` from a fresh Ubuntu checkout;
 the complete downloaded summary is retained in
 [hosted evidence](port/reports/native-ci-hosted/README.md).
 

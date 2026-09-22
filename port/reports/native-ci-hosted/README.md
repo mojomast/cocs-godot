@@ -139,3 +139,18 @@ The separate63 graphical selector checks,14 exported startup/ownership cases and
 clean full two-client release flow remain in their graphical/package reports.
 This hosted run precedes the local Horde runtime/gate integration; it makes no
 Horde aggregate or package claim.
+
+## Reviewed local Horde route
+
+Run <https://github.com/mojomast/cocs-godot/actions/runs/35694780087> at
+`1cbc04d3a6cfd29f24e768e7b6c9c2023dd61339` **PASS**, all **87 gates**, in5m47s.
+The lead watched completion and validated the downloaded summary's success,
+87-gate count and every gate's pass flag against the exact published revision.
+Complete summary, console, artifact manifest and run/job metadata are retained
+in `35694780087/`.
+
+This confirms the additional Horde source/UI, adapter/event/validator, native
+input/model, import-closure/public-Room boundary and launcher-ownership gates on
+a fresh hosted checkout. The separate16 launcher cases, six exported default-ten
+startups, one-wave gameplay and direct PNG reviews remain their own evidence.
+Full ten-wave/boss/defeat/upgrades and human/hardware acceptance remain open.
