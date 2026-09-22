@@ -1,6 +1,7 @@
 extends Node3D
 
 const Catalog = preload("res://world/catalog.gd")
+const EnvironmentStyle = preload("res://world/environment_style.gd")
 var catalog := Catalog.new()
 var world: Node3D
 var camera := Camera3D.new()
@@ -8,22 +9,17 @@ var label := Label.new()
 var selector := OptionButton.new()
 var ids: Array = []
 var current_id: String = ""
+var environment := WorldEnvironment.new()
+var sun := DirectionalLight3D.new()
+var style := EnvironmentStyle.new()
 
 func _ready() -> void:
 	add_child(camera)
 	camera.far = 2000
-	camera.position = Vector3(110, 125, 140)
-	camera.look_at(Vector3.ZERO)
-	var light := DirectionalLight3D.new()
-	light.rotation_degrees = Vector3(-55, -25, 0)
-	light.light_energy = 1.6
-	add_child(light)
-	var env := WorldEnvironment.new()
-	env.environment = Environment.new()
-	env.environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.environment.ambient_light_color = Color(0.6, 0.7, 0.85)
-	env.environment.ambient_light_energy = 0.65
-	add_child(env)
+	camera.position = Vector3(65, 48, 70)
+	camera.look_at(Vector3(0, 2, 0))
+	add_child(sun)
+	add_child(environment)
 	var ui := CanvasLayer.new()
 	add_child(ui)
 	var panel := VBoxContainer.new()
@@ -98,38 +94,81 @@ func load_map(id: String) -> bool:
 	world.name = "SelectedMap"
 	add_child(world)
 	current_id = id
-	var block_mat := material(Color(0.4, 0.5, 0.65))
+	style.configure(map, environment, sun)
 	for b: Dictionary in map.get("blocks", []):
-		box(Vector3(b.x, b.h / 2.0, b.z), Vector3(b.w, b.h, b.d), block_mat, world)
+		box(Vector3(b.x, b.h / 2.0, b.z), Vector3(b.w, b.h, b.d), style.block_material(b), world)
 	var surface := SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var shadow_surface := SurfaceTool.new()
+	shadow_surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var shadow_triangles := 0
 	var triangle_count: int = 0
 	for triangle: Dictionary in map.get("terrain", {}).get("support_triangles", []):
-		for vertex: Array in triangle.vertices:
+		# Source uses CCW faces; Godot uses CW. Explicit source normals also
+		# prevent unrelated support surfaces from being smoothed together.
+		var normal: Array = triangle.normal
+		var surface_id: String = triangle.get("surfaceId", "")
+		var base_surface: bool = surface_id.begins_with("terrain-") or surface_id.begins_with("ground-") or surface_id in ["ash-floor", "grass-floor"]
+		var priority := 1.0 if base_surface else 2.0
+		# Flat zero-height support has nothing below it to shade; exclude it
+		# from shadow casting to avoid grazing-angle self-shadow banding.
+		var casts_shadow: bool = not base_surface and maxf(triangle.vertices[0][1], maxf(triangle.vertices[1][1], triangle.vertices[2][1])) > 0.05
+		for index in [2, 1, 0]:
+			var vertex: Array = triangle.vertices[index]
+			surface.set_normal(Vector3(normal[0], normal[1], normal[2]))
+			surface.set_color(style.terrain_color(triangle).srgb_to_linear())
+			surface.set_uv(Vector2(priority, 0))
 			surface.add_vertex(Vector3(vertex[0], vertex[1], vertex[2]))
+			if casts_shadow:
+				shadow_surface.set_normal(Vector3(normal[0], normal[1], normal[2]))
+				shadow_surface.add_vertex(Vector3(vertex[0], vertex[1], vertex[2]))
+		if casts_shadow: shadow_triangles += 1
 		triangle_count += 1
 	if triangle_count > 0:
-		surface.generate_normals()
 		var terrain := MeshInstance3D.new()
+		terrain.name = "SemanticTerrain"
 		terrain.mesh = surface.commit()
-		terrain.material_override = material(Color(0.12, 0.24, 0.24))
+		terrain.material_override = style.terrain_material()
+		# The camera depth-priority shader must not bias the shadow map too.
+		terrain.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		world.add_child(terrain)
+		if shadow_triangles > 0:
+			var terrain_shadow := MeshInstance3D.new()
+			terrain_shadow.name = "TerrainShadows"
+			terrain_shadow.mesh = shadow_surface.commit()
+			terrain_shadow.material_override = material(Color.WHITE)
+			terrain_shadow.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+			world.add_child(terrain_shadow)
 	else:
 		# Sports arenas intentionally have implicit zero-height support.
-		box(Vector3(0, -0.1, 0), Vector3(260, 0.2, 220), material(Color(0.12, 0.24, 0.24)), world)
-	var spawn_mat := material(Color(0.25, 1.0, 0.45))
-	for point: Array in map.get("spawns", []):
-		box(Vector3(point[0], support_height(map, point[0], point[1]) + 1.5, point[1]), Vector3(0.65, 3, 0.65), spawn_mat, world)
+		box(Vector3(0, -0.1, 0), Vector3(260, 0.2, 220), style.surface_material("sports-floor", style.leaves if id == "aurora-stadium" else style.ground), world)
+	style.decorate(map, world)
+	world.set_meta("semantic_block_count", map.get("blocks", []).size())
+	world.set_meta("semantic_triangle_count", triangle_count)
 	var pickup_markers := Node3D.new()
 	pickup_markers.name = "StaticPickupMarkers"
 	world.add_child(pickup_markers)
 	var pickup_mat := material(Color(1, 0.75, 0.15))
 	for pickup: Array in map.get("pickups", []):
-		box(Vector3(pickup[1], support_height(map, pickup[1], pickup[2]) + 1, pickup[2]), Vector3(0.7, 0.7, 0.7), pickup_mat, pickup_markers)
-	box(Vector3(5, 0.3, 0), Vector3(10, 0.3, 0.3), material(Color.RED), world)
-	box(Vector3(0, 5, 0), Vector3(0.3, 10, 0.3), material(Color.GREEN), world)
-	box(Vector3(0, 0.3, -5), Vector3(0.3, 0.3, 10), material(Color.BLUE), world)
-	label.text = "SEMANTIC DIAGNOSTIC — not final game art\n%s | %d blocks | %d support triangles\n%s\nGreen: spawns · Yellow: pickups · RGB: +X/+Y/-Z\nRight mouse: look · WASD: fly · Q/E: down/up · Shift: faster" % [map.name, map.get("blocks", []).size(), triangle_count, ", ".join(map.arena.play)]
+		var marker := MeshInstance3D.new()
+		var mesh := SphereMesh.new()
+		mesh.radius = 0.3
+		mesh.height = 0.6
+		mesh.radial_segments = 8
+		mesh.rings = 4
+		marker.mesh = mesh
+		marker.material_override = pickup_mat
+		marker.position = Vector3(pickup[1], support_height(map, pickup[1], pickup[2]) + 1, pickup[2])
+		pickup_markers.add_child(marker)
+	if "--diagnostic-markers" in OS.get_cmdline_user_args():
+		var spawn_mat := material(Color(0.25, 1.0, 0.45))
+		for point: Array in map.get("spawns", []):
+			box(Vector3(point[0], support_height(map, point[0], point[1]) + 1.5, point[1]), Vector3(0.65, 3, 0.65), spawn_mat, world)
+		box(Vector3(5, 0.3, 0), Vector3(10, 0.3, 0.3), material(Color.RED), world)
+		box(Vector3(0, 5, 0), Vector3(0.3, 10, 0.3), material(Color.GREEN), world)
+		box(Vector3(0, 0.3, -5), Vector3(0.3, 0.3, 10), material(Color.BLUE), world)
+	selector.select(ids.find(id))
+	label.text = "%s · NATIVE WORLD PREVIEW\nRight mouse: look · WASD/QE: fly · Shift: faster\nAuthored map identity; mode gameplay is separate." % map.name
 	return true
 
 func support_height(map: Dictionary, x: float, z: float) -> float:

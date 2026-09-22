@@ -1,0 +1,7 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+ART_LIGHT sun=0.5 ambient=0.5 wall=(0.4313, 0.5169, 0.5659, 1.0)
+NATIVE_WORLD_CAPTURE map=tidal-citadel file=/tmp/opencode/cocs-native-world/port/native-world-presentation/after/tidal-citadel-overview.png
