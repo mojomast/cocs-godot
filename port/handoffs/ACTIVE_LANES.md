@@ -1,12 +1,15 @@
 # Parallel development ownership
 
-Coordination snapshot after `aca52f5`. This is an ownership record, not evidence
+Coordination snapshot after `013ad65`. This is an ownership record, not evidence
 that an in-progress feature has passed acceptance. The lead integrates commits,
 updates root documentation/shared verification and owns publication.
 
 | Lane | Owner / baseline | Reserved files |
 |---|---|---|
 | LATTICE in-world command panel | Internal follow-up; `6116f12` | New world command UI/tests, narrow world_demo/world_hud only, `port/native-lattice-world-commands/` |
+| Native KOTH / Domination | Internal agent; `013ad65` | New `godot/zone_modes/`, `godot/tests/zone_modes/`, `port/native-zone-modes/` |
+| Race victory / soccer practice | Internal agent; `013ad65` | Narrow `godot/sports/`, new practice tests, `port/native-sports-victory/` |
+| Sunscar combined-arms vehicle slice | Internal agent; `013ad65` | New `godot/combined_arms/`, `godot/tests/combined_arms/`, `port/native-combined-arms/` |
 | Multiplayer lobby / leave / retry | External handoff; `8094d41` | New lobby-prefixed UI/tests, narrow `godot/world/session.gd` / scene and backward-compatible client hook if essential; `port/native-multiplayer-lobby/` |
 | Pulse rifle preview | Existing external reservation | Preserve its preview/asset paths; no accepted delivery yet |
 
@@ -41,6 +44,25 @@ verification and documentation; generated local artifacts remain outside git.
 The independent package rebuild and fresh-directory exported startup/cleanup
 passed; the exact local archive and report are recorded in
 `port/reports/linux-package-independent/README.md`.
+
+## Resumed development batch
+
+The owner requested renewed parallel acceleration after the 63-gate status
+update. Three fresh worktrees now tackle disjoint gameplay gaps alongside the
+existing in-world command panel:
+
+- KOTH/Domination: actual source-controlled zone capture/scoring and readable
+  native markers/HUD, with Meridian and Verdant as the initial acceptance cases.
+- Sports: genuine lap-target victory; an explicit source-valid zero-bot soccer
+  practice preset and bounded attempts at an attributable local-driver goal.
+  Prior failed scoring attempts remain unchanged; practice acceptance is separate.
+- Combined arms: ordinary Sunscar infantry approach, mount, authoritative vehicle
+  motion and dismount, with clean transitions back to infantry controls.
+
+These lanes may propose launcher/package routes but do not edit shared session,
+network, common launcher, package pipeline, verifier, locked source or contracts.
+The lead reviews integration hooks, reproduces important live claims, updates
+evidence and rebuilds the Linux artifact after accepted runtime changes.
 
 External tasks have complete scope/commands in
 `external-native-objective-gameplay.md` and
