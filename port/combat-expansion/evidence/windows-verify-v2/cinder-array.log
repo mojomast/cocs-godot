@@ -1,0 +1,6 @@
+PACKAGE_NATIVE_ONLY {"authority":false,"experience":"cinder-array"}
+PACKAGE_NATIVE_STARTED {"pid":3760,"scene":"res://cinder_array/demo.tscn"}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+CINDER_SMOKE {"areas":6,"authored_triangles":23474,"built":true,"camera_finite":true,"collision_shapes":99,"embers":48,"experience":"cinder-array","instanced_solids":1180,"lights":4,"mesh_nodes":91,"native_only":true,"nodes":212,"renderer":"gl_compatibility","respawns":0,"route_points":16,"steam":16,"walker_attached":true}
+PACKAGE_STOPPED

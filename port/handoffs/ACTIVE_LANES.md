@@ -549,3 +549,17 @@ silently merge shared branches, restart shared services or publish independently
 
 Published repository: <https://github.com/mojomast/cocs-godot>.
 Screenshot gallery: <http://100.125.104.79:43595/> (Tailscale, screenshots only).
+
+## Release `combat-expansion-2026-09-22-v2` (published and verified)
+
+Second combat-expansion prerelease, produced by the one-command pipeline on frozen commit
+`c00b370a`: **147/147 gates**, 80,197,227-byte ZIP with sha256 `1122aeee…`, hosted Windows
+verification **success** (15/15 cases, 134 files re-hashed), source pushed to `godot/main`.
+Contents: Domination on Vermilion Fold, Horde on Nacre Engine, debug tools (off by default),
+the benchmark and quality presets, the eight-family material language with 13/13 baked
+normals now used, the four UI defect fixes, plus everything from the first expansion build
+(six deathmatch maps, source operators, detailed weapons, effects and blood).
+
+Open and deliberately not claimed: Horde boss/endless/ten-wave completion and upgrade
+selection; hardware-GPU and human acceptance (all measurements are llvmpipe); campaign;
+full Arms Race ladder; broader LATTICE rounds; asset-rights clarity.

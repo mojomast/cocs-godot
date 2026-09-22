@@ -1,0 +1,8 @@
+PACKAGE_SERVER_READY {"pid":9544,"host":"127.0.0.1","port":63715,"experience":"native-dm","map":"nacre-engine","mode":"deathmatch","health":{"service":"cocs-native-arenas","v":3,"localOnly":true,"humanCount":1,"mapId":"nacre-engine","geometryHash":"b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4","port":63715}}
+PACKAGE_NATIVE_STARTED {"pid":5528,"scene":"res://native_arenas/demo.tscn"}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+NATIVE_DM_SMOKE_OK {"acks":15,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4","localAlive":true,"map":"nacre-engine","mode":"deathmatch","moved":true,"snapshots":7}
+PACKAGE_STOPPED
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
