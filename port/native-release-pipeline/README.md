@@ -138,3 +138,19 @@ node tools/release/release.mjs --tag=<new-tag> --execute
 If the frozen commit is not yet on `godot/main`, either push it first or pass
 `--allow-tag-behind-head`. If a step fails, the printed hint names the exact
 `--resume-from=<step> --state=<dir>` continuation.
+
+A staged first release is also supported and is what the rehearsal exercised:
+
+```sh
+node tools/release/release.mjs --tag=<new-tag> --execute --stop-after=package   # exclude 2 and 3 first
+node tools/release/release.mjs --tag=<new-tag> --resume-from=publish --execute  # publish, verify, push
+```
+
+## Recommendations for the lead
+
+- Register `node --test tools/release/options.test.mjs tools/release/release.test.mjs`
+  as an aggregate gate group, the way the other Node suites are registered. This lane
+  could not add it: `tools/godot-dev/verify.py` is lead-owned and was not modified.
+- `port/combat-expansion/RELEASE_CHECKLIST.md` still records the manual sequence; the
+  pipeline is that sequence with freezes, refusals and records. If the checklist is
+  kept, adding a pointer to `tools/release/README.md` avoids two sources of truth.
