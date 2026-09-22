@@ -1,0 +1,16 @@
+### launcher smoke prism-foundry (trap-fix hashes)
+NATIVE_DM_SMOKE_OK {"acks":16,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"1901d0aed12c5cfb3be5b7a62519bce108d1f0d51f79a726f4e14620544ae91b","localAlive":true,"map":"prism-foundry","mode":"deathmatch","moved":true,"snapshots":7}
+### launcher smoke aurora-basin (trap-fix hashes)
+NATIVE_DM_SMOKE_OK {"acks":13,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"8457812f7845475378e0f99616ca91b3dac3aa4bff3a396a9e6739e9b8917a21","localAlive":true,"map":"aurora-basin","mode":"deathmatch","moved":true,"snapshots":8}
+### launcher smoke cinder-array (trap-fix hashes)
+NATIVE_DM_SMOKE_OK {"acks":17,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"2d5e5cfa445383db4f6a3009a0f7500e423ec17dfe800d35cafa2fd8272da4f2","localAlive":true,"map":"cinder-array","mode":"deathmatch","moved":true,"snapshots":7}
+
+### source rounds on regenerated data
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8964.054286
