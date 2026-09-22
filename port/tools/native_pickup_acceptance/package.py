@@ -27,6 +27,7 @@ with tarfile.open(fileobj=payload, mode='w', format=tarfile.USTAR_FORMAT) as arc
                 frame = json.loads(line)['frame']
                 if frame.get('type') == 'welcome':
                     assert all(frame.get(key) is None for key in ('token', 'progressToken')), 'Unredacted welcome credential'
+                    assert (frame.get('profile') or {}).get('ownerToken') is None, 'Unredacted welcome profile credential'
         name = 'evidence/' + path.relative_to(directory).as_posix()
         member = tarfile.TarInfo(name)
         member.size = len(data)

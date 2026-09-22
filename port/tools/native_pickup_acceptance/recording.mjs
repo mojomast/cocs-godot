@@ -8,6 +8,8 @@ export function decodeRecordedFrame(raw) {
     for(const key of ['token','progressToken']) {
       if(Object.hasOwn(frame,key))frame[key]=null;
     }
+    // Welcome profile repeats the progression credential under this alias.
+    if(frame.profile&&Object.hasOwn(frame.profile,'ownerToken'))frame.profile.ownerToken=null;
   }
   return frame;
 }

@@ -13,6 +13,7 @@ const lines=name=>text(name).trim().split('\n').map(JSON.parse);
 const wire=lines('wire.jsonl.gz'),obs=lines('observations.jsonl.gz');
 for(const r of wire)if(r.frame.type==='welcome') {
   for(const key of ['token','progressToken'])assert.ok(r.frame[key]==null,'Retained welcome credential must be absent/null');
+  assert.ok(r.frame.profile?.ownerToken==null,'Retained welcome profile credential must be absent/null');
 }
 const trace=text('native.stdout.log.gz').split('\n').filter(l=>l.startsWith('PORT_NATIVE_TRACE ')).map(l=>JSON.parse(l.slice(18)));
 assert.equal(summary.status,'PASS');assert.equal(summary.completionProven,false);

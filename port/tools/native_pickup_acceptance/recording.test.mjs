@@ -6,13 +6,15 @@ import {decodeRecordedFrame,assertGodotSuccess} from './recording.mjs';
 
 test('welcome credentials are null before retention and absent after compressed round-trip',()=>{
   const raw=Buffer.from(JSON.stringify({type:'welcome',peerId:2,roomId:'test-room',
-    token:'synthetic-room-credential',progressToken:'synthetic-progress-credential',v:3}));
+    token:'synthetic-room-credential',progressToken:'synthetic-progress-credential',
+    profile:{ownerToken:'synthetic-progress-credential',level:1},v:3}));
   const original=Buffer.from(raw),retained=[{direction:'server',frame:decodeRecordedFrame(raw)}];
   assert.equal(retained[0].frame.token,null);assert.equal(retained[0].frame.progressToken,null);
+  assert.equal(retained[0].frame.profile.ownerToken,null);
   assert.deepEqual(raw,original,'Actual wire transport bytes must remain unchanged');
   const archived=gunzipSync(gzipSync(JSON.stringify(retained))).toString();
   for(const secret of ['synthetic-room-credential','synthetic-progress-credential'])assert.ok(!archived.includes(secret));
-  assert.deepEqual(JSON.parse(archived)[0].frame,{type:'welcome',peerId:2,roomId:'test-room',token:null,progressToken:null,v:3});
+  assert.deepEqual(JSON.parse(archived)[0].frame,{type:'welcome',peerId:2,roomId:'test-room',token:null,progressToken:null,profile:{ownerToken:null,level:1},v:3});
 });
 
 test('redaction preserves gameplay and absent/null welcome fields',()=>{
