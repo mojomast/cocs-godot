@@ -18,41 +18,74 @@ func run() -> void:
 	# Synthetic authority transitions, not live collection/respawn evidence.
 	var view := Presentation.new()
 	root.add_child(view)
-	var actor: Dictionary = {"id": 7, "x": 2.0, "y": 3.0, "z": 4.0, "health": 100, "dead": 0, "character": "claude", "team": 0}
+	# Actual imported source operators: articulated hierarchy with real team armor
+	# materials and genuine source team bars. Measured values are asserted, not
+	# primitive-node aliases.
+	var actor: Dictionary = {"id": 7, "x": 2.0, "y": 3.0, "z": 4.0, "health": 100, "dead": 0, "character": "claude", "team": 0, "weapon": 0, "yaw": 0.0, "bodyYaw": 0.0}
 	var other: Dictionary = actor.duplicate(true)
 	other.id = 8
 	other.team = 1.0
 	view.apply_state({"actors": [actor, other]}, -1)
 	var node: Node3D = view.actors[7]
+	var mate: Node3D = view.actors[8]
 	var instance: int = node.get_instance_id()
-	var helmet: int = node.get_node("Helmet").get_instance_id()
-	check(node.armor.albedo_color != view.actors[8].armor.albedo_color, "team armor distinguishes actors")
-	check(node.identity.albedo_color == view.actors[8].identity.albedo_color, "character identity survives team assignment")
-	check(node.team_marks[0].visible and not node.team_marks[1].visible and view.actors[8].team_marks[1].visible, "team stripes distinguish without color")
+	check(node.character == "claude" and mate.character == "claude", "authoritative character selects the imported source identity")
+	check(is_instance_valid(node.team_material) and node.team_material != mate.team_material, "source team armor material is instance-isolated")
+	check(node.team_material.albedo_color != mate.team_material.albedo_color, "team armor distinguishes actors by color")
+	var red_bars := 0
+	var blue_bars := 0
+	for bar: MeshInstance3D in node.team_bars:
+		if bar.visible: red_bars += 1
+	for bar: MeshInstance3D in mate.team_bars:
+		if bar.visible: blue_bars += 1
+	check(red_bars == 2 and blue_bars == 4, "genuine source team bars distinguish teams without color")
+	check(node.find_children("*", "CollisionObject3D", true, false).is_empty(), "visual actor has no collision authority")
+	var feet: Node3D = node.anchor("FeetOrigin")
+	var helmet: Node3D = node.anchor("Helmet")
+	var muzzle: Node3D = node.anchor("Muzzle")
+	check(is_instance_valid(feet) and is_instance_valid(helmet) and is_instance_valid(muzzle), "articulated source anchors resolve")
+	check(absf(node.to_local(feet.global_position).y + 0.9) < 0.001, "source feet origin sits 0.9m below the host anchor")
+	var head_y: float = node.to_local(helmet.global_position).y
+	check(head_y > 0.55 and head_y < 0.95, "source head joint sits inside the body envelope")
 	var bounds := AABB()
 	var first: bool = true
-	for part: Node in node.get_children():
-		check(not part is CollisionObject3D, "visual has no collision authority")
-		if part is MeshInstance3D:
-			var box: AABB = part.transform * part.get_aabb()
-			bounds = box if first else bounds.merge(box)
-			first = false
-	check(is_equal_approx(bounds.position.y, -0.9) and is_equal_approx(bounds.end.y, 0.9), "1.8m body retains centered feet/head bounds")
-	check(bounds.size.x <= 0.701, "body retains 0.7m width")
+	for part: Node in node.find_children("*", "MeshInstance3D", true, false):
+		var mesh := part as MeshInstance3D
+		if not mesh.visible: continue
+		var box: AABB = node.global_transform.affine_inverse() * mesh.global_transform * mesh.get_aabb()
+		bounds = box if first else bounds.merge(box)
+		first = false
+	check(absf(bounds.position.y + 0.9) < 0.02, "source soles sit 0.9m below the host anchor")
+	check(bounds.end.y > 0.75 and bounds.end.y < 1.25, "imported body height stays inside the 1.79-2.03m source envelope")
+	check(bounds.size.x <= 1.05, "source accessory width stays bounded")
+	var grip_cases := 0
 	for yaw: float in [0.0, PI / 2, PI, -PI / 2]:
 		actor.bodyYaw = yaw
+		actor.yaw = yaw
 		view.apply_state({"actors": [actor, other]}, -1)
 		check(node.position.is_equal_approx(Vector3(2, 3.9, 4)), "cardinal orientation does not move anchor")
 		var forward := Vector3(-sin(yaw), 0, -cos(yaw))
-		check((node.get_node("Muzzle").global_position - node.global_position).dot(forward) > 0.5, "weapon points along authority yaw")
+		check((node.anchor("Muzzle").global_position - node.global_position).dot(forward) > 0.5, "mounted third-person weapon points along authority yaw")
+		node.advance(1.0 / 60.0)
+		for side: String in node.grip_error:
+			var residual: float = float(node.grip_error[side])
+			check(is_finite(residual) and residual < 0.02, "post-pose hand grip reaches the source weapon contact")
+			grip_cases += 1
+	check(grip_cases >= 8, "both hands solved against the source weapon contacts")
+	check(is_instance_valid(node.world_weapon) and node.world_weapon.get_parent() == node.anchor("GunMount"), "exported source weapon mounts on the authored gun mount")
+	var first_weapon: int = node.world_weapon.get_instance_id()
+	var first_muzzle: Vector3 = node.to_local(node.anchor("Muzzle").global_position)
+	actor.weapon = 4
+	view.apply_state({"actors": [actor, other]}, -1)
+	check(node.weapon_type == 4 and node.world_weapon.get_instance_id() != first_weapon, "authoritative weapon change swaps the third-person model")
+	check(node.to_local(node.anchor("Muzzle").global_position).distance_to(first_muzzle) > 0.02, "swapped weapon moves the muzzle anchor")
 	actor.character = "kimi"
 	actor.team = 1.0
 	actor.health = 0
 	view.apply_state({"actors": [other, actor]}, -1)
-	check(not node.visible and node.get_instance_id() == instance, "zero-health timer-zero hides stable actor")
-	check(node.get_node("Helmet").get_instance_id() == helmet, "identity updates do not rebuild geometry")
-	check(node.armor.albedo_color == view.actors[8].armor.albedo_color and node.team_marks[1].visible, "wire float team IDs retain team identity")
-	check(node.identity.albedo_color != view.actors[8].identity.albedo_color, "character updates are material-isolated")
+	check(not node.visible and node.get_instance_id() == instance, "zero-health timer-zero hides stable actor root")
+	check(node.character == "kimi" and mate.character == "claude", "identity updates rebuild only the changed actor")
+	check(is_instance_valid(node.team_material) and node.team_material.albedo_color == mate.team_material.albedo_color, "wire float team IDs retain team identity")
 	actor.health = 100
 	view.apply_state({"actors": [actor, other]}, 7)
 	check(not node.visible, "healthy self remains hidden")

@@ -207,7 +207,19 @@ input lane completes. Do not overwrite another lane or stage unrelated primary w
   authored route chords gives 303 connected nodes / 2,230 edges in 1.9 s cold
   navigation versus 948 / 17,166 / 39 s. That one-line schema adoption and the
   regenerated assets are lead-integrated now.
-- Original-operator production integration is **reassigned to a fresh lane**.
+- Original-operator production integration **landed** (`36337075`, no push): actual
+  source third-person weapons exported for all ten (`source_operators/generated/world_weapons/`),
+  `presentation.gd` defaults to the imported source operators, post-pose hand grips
+  solve against the real weapon contacts (450 source cases, 3.77e-7 max grip error),
+  and live dual-peer sessions show four remote actors walking/firing with correct
+  reloads, results and clean unload. Lead inspected `evidence/live-07/` captures:
+  genuine source operator with the mounted rocket launcher. Lead rewrote the
+  `entity_visuals.gd` actor section for the articulated hierarchy (48 checks; team
+  bars 2 red / 4 blue, feet -0.9, body height inside the 1.79-2.03 m envelope,
+  instance-isolated team armor, weapon swap and grip residuals asserted).
+  Package consequences (candidate staging, Windows marker, source-operator data
+  closure) were handed to the route/package lane.
+- Original-operator production integration (superseded note, kept for history): the prior lane exported the roster and authored tools.
   The prior agent hit its usage limit after exporting the full nine-operator
   roster (`4f05b4c`) and authoring, but never running, the third-person weapon
   exporter (`tools/godot-operators/world-weapons.mjs`) and the source post-pose
