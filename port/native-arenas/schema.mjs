@@ -115,7 +115,11 @@ export function parseNativeArena(data, expectedId) {
   number(a.voidY, -1024, 1024, 'voidY');
   if (a.ceilingY !== undefined) number(a.ceilingY, a.voidY + 2, 1024, 'ceilingY');
   if (a.raised !== undefined && a.raised !== false) fail('raised must be false');
-  if (a.nextGen !== undefined && a.nextGen !== false) fail('nextGen must be false');
+  // An existing source navigation mode, not a new protocol field: the locked
+  // source `navigation()` selects its spatial edge builder when `nextGen` is
+  // true. Aurora Basin opts in to keep cold construction within budget; the
+  // key allowlist and canonical arena hash validation remain unchanged.
+  if (a.nextGen !== undefined && typeof a.nextGen !== 'boolean') fail('nextGen must be boolean');
   keys(a.terrain, ['maxSlope', 'surfaces', 'walls'], 'terrain');
   number(a.terrain.maxSlope, .01, Math.PI / 2, 'maxSlope');
   list(a.terrain.surfaces, 1, 4096, 'surfaces');

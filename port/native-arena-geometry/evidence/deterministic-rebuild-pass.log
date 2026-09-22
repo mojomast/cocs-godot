@@ -1,0 +1,12 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+NATIVE_DM_COLLIDERS_EXPORTED /tmp/opencode/native-dm-colliders.json
+prism-foundry {"colliders":101,"surfaces":123,"walls":1081,"badSpawns":[],"badRoutes":[{"id":"reactor-ring","blocked":0,"broken":0},{"id":"west-ascent","blocked":0,"broken":0},{"id":"east-ascent","blocked":0,"broken":0},{"id":"garden-link","blocked":0,"broken":0},{"id":"west-coolant-loop","blocked":0,"broken":0},{"id":"east-coolant-loop","blocked":0,"broken":0},{"id":"upper-loop","blocked":0,"broken":0}]}
+aurora-basin {"colliders":324,"surfaces":441,"walls":7417,"badSpawns":[],"badRoutes":[{"id":"crown-ascent","blocked":0,"broken":0},{"id":"lake-circuit","blocked":0,"broken":0},{"id":"landing-link","blocked":0,"broken":0},{"id":"eastern-snow-flank","blocked":0,"broken":0}]}
+cinder-array {"colliders":101,"surfaces":129,"walls":1598,"badSpawns":[],"badRoutes":[{"id":"SuspendedSpan","blocked":0,"broken":0},{"id":"ExtractorAccess","blocked":0,"broken":0},{"id":"BoreFloor","blocked":0,"broken":0},{"id":"RimAscent","blocked":0,"broken":0},{"id":"WestDescent","blocked":0,"broken":0},{"id":"ReturnRamp","blocked":0,"broken":0},{"id":"cooling-crosslink","blocked":0,"broken":0},{"id":"transfer-chord","blocked":0,"broken":0},{"id":"observatory-console-flank","blocked":0,"broken":0}]}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+NATIVE_DM_PHYSICS_PROBED samples=spawns+all-routes file=/tmp/opencode/native-dm-physics.json
+{"id":"prism-foundry","geometryHash":"9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572","spawns":6,"routes":7,"floors":255,"rays":1276,"navigationNodes":378,"navigationConnected":true,"errors":[]}
+{"id":"aurora-basin","geometryHash":"ed3f2f88181643a4d3aaaf2b1519802b7db228afdf650237bc60732e201f4a04","spawns":6,"routes":4,"floors":313,"rays":1566,"navigationNodes":948,"navigationConnected":true,"errors":[]}
+{"id":"cinder-array","geometryHash":"172cb854ce36aab36ccb165fd5f94692ca1ded0dcc2e496166733cad0aad99bd","spawns":6,"routes":9,"floors":181,"rays":906,"navigationNodes":369,"navigationConnected":true,"errors":[]}

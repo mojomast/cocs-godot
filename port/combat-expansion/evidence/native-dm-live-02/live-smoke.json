@@ -1,0 +1,434 @@
+{
+  "renderedPerformanceAcceptance": false,
+  "runs": [
+    {
+      "map": "prism-foundry",
+      "acks": 17,
+      "actors": 3,
+      "camera": "public-actor",
+      "fired": true,
+      "geometryHash": "9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572",
+      "localAlive": true,
+      "mode": "deathmatch",
+      "moved": true,
+      "snapshots": 7,
+      "authorityPublicSnapshots": 7,
+      "authorityActorShots": 1,
+      "authorityAppliedInputs": 17,
+      "lifecycle": [
+        {
+          "wallSeconds": 0.5800464550000001,
+          "direction": "in",
+          "type": "create",
+          "frame": {
+            "delta": 0,
+            "name": "Native arena Deathmatch",
+            "nativeArenaInput": 1,
+            "playerName": "Operator",
+            "type": "create",
+            "v": 3
+          }
+        },
+        {
+          "wallSeconds": 0.580526074,
+          "direction": "out",
+          "type": "lobby",
+          "frame": {
+            "type": "lobby",
+            "roomId": "local-native-arena",
+            "hostId": 0,
+            "mapId": null,
+            "config": null,
+            "started": false,
+            "roundRevision": 0,
+            "players": [
+              {
+                "peerId": 0,
+                "actorId": 0,
+                "name": "Operator",
+                "connected": true,
+                "spectate": false
+              }
+            ]
+          }
+        },
+        {
+          "wallSeconds": 0.586554882,
+          "direction": "in",
+          "type": "host",
+          "frame": {
+            "config": {
+              "botCount": 2,
+              "fragLimit": 50,
+              "mode": "deathmatch",
+              "timeLimit": 60
+            },
+            "mapId": "prism-foundry",
+            "type": "host"
+          }
+        },
+        {
+          "wallSeconds": 0.5867662389999999,
+          "direction": "out",
+          "type": "lobby",
+          "frame": {
+            "type": "lobby",
+            "roomId": "local-native-arena",
+            "hostId": 0,
+            "mapId": "prism-foundry",
+            "config": {
+              "mode": "deathmatch",
+              "botCount": 2,
+              "difficulty": "normal",
+              "fragLimit": 50,
+              "timeLimit": 60,
+              "respawn": 2,
+              "speed": 1,
+              "gravity": 1,
+              "damage": 1,
+              "fastPowers": false,
+              "lifeSteal": false,
+              "unlimitedAmmo": false,
+              "suddenDeath": false,
+              "randomLoadout": false,
+              "oneShot": false,
+              "instagib": false,
+              "mirrorLoadout": false,
+              "bounty": false,
+              "berserk": false,
+              "bigHead": false,
+              "noRecoil": false,
+              "endless": false,
+              "startingWeapon": 0,
+              "playerName": "",
+              "mission": "convoy-run",
+              "loadout": null,
+              "checkpoint": null,
+              "mutators": []
+            },
+            "started": false,
+            "roundRevision": 0,
+            "players": [
+              {
+                "peerId": 0,
+                "actorId": 0,
+                "name": "Operator",
+                "connected": true,
+                "spectate": false
+              }
+            ]
+          }
+        },
+        {
+          "wallSeconds": 0.593894898,
+          "direction": "in",
+          "type": "start",
+          "frame": {
+            "type": "start"
+          }
+        },
+        {
+          "wallSeconds": 2.41632287,
+          "direction": "out",
+          "type": "start",
+          "frame": {
+            "type": "start",
+            "mapId": "prism-foundry",
+            "inputEpoch": 1,
+            "roundRevision": 1,
+            "geometryHash": "9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572"
+          }
+        }
+      ],
+      "wallSeconds": 2.832614662,
+      "evidence": "live-authority-headless",
+      "passed": true
+    },
+    {
+      "map": "aurora-basin",
+      "acks": 11,
+      "actors": 3,
+      "camera": "public-actor",
+      "fired": true,
+      "geometryHash": "2a8c06ba5b3a893135a3a6aef906a36f016107b5153fe5ec3b8a9efbfee66c86",
+      "localAlive": true,
+      "mode": "deathmatch",
+      "moved": true,
+      "snapshots": 7,
+      "authorityPublicSnapshots": 7,
+      "authorityActorShots": 1,
+      "authorityAppliedInputs": 11,
+      "lifecycle": [
+        {
+          "wallSeconds": 1.045006817,
+          "direction": "in",
+          "type": "create",
+          "frame": {
+            "delta": 0,
+            "name": "Native arena Deathmatch",
+            "nativeArenaInput": 1,
+            "playerName": "Operator",
+            "type": "create",
+            "v": 3
+          }
+        },
+        {
+          "wallSeconds": 1.0453013990000004,
+          "direction": "out",
+          "type": "lobby",
+          "frame": {
+            "type": "lobby",
+            "roomId": "local-native-arena",
+            "hostId": 0,
+            "mapId": null,
+            "config": null,
+            "started": false,
+            "roundRevision": 0,
+            "players": [
+              {
+                "peerId": 0,
+                "actorId": 0,
+                "name": "Operator",
+                "connected": true,
+                "spectate": false
+              }
+            ]
+          }
+        },
+        {
+          "wallSeconds": 1.051831066,
+          "direction": "in",
+          "type": "host",
+          "frame": {
+            "config": {
+              "botCount": 2,
+              "fragLimit": 50,
+              "mode": "deathmatch",
+              "timeLimit": 60
+            },
+            "mapId": "aurora-basin",
+            "type": "host"
+          }
+        },
+        {
+          "wallSeconds": 1.0519980490000003,
+          "direction": "out",
+          "type": "lobby",
+          "frame": {
+            "type": "lobby",
+            "roomId": "local-native-arena",
+            "hostId": 0,
+            "mapId": "aurora-basin",
+            "config": {
+              "mode": "deathmatch",
+              "botCount": 2,
+              "difficulty": "normal",
+              "fragLimit": 50,
+              "timeLimit": 60,
+              "respawn": 2,
+              "speed": 1,
+              "gravity": 1,
+              "damage": 1,
+              "fastPowers": false,
+              "lifeSteal": false,
+              "unlimitedAmmo": false,
+              "suddenDeath": false,
+              "randomLoadout": false,
+              "oneShot": false,
+              "instagib": false,
+              "mirrorLoadout": false,
+              "bounty": false,
+              "berserk": false,
+              "bigHead": false,
+              "noRecoil": false,
+              "endless": false,
+              "startingWeapon": 0,
+              "playerName": "",
+              "mission": "convoy-run",
+              "loadout": null,
+              "checkpoint": null,
+              "mutators": []
+            },
+            "started": false,
+            "roundRevision": 0,
+            "players": [
+              {
+                "peerId": 0,
+                "actorId": 0,
+                "name": "Operator",
+                "connected": true,
+                "spectate": false
+              }
+            ]
+          }
+        },
+        {
+          "wallSeconds": 1.059006624,
+          "direction": "in",
+          "type": "start",
+          "frame": {
+            "type": "start"
+          }
+        },
+        {
+          "wallSeconds": 3.5228582769999996,
+          "direction": "out",
+          "type": "start",
+          "frame": {
+            "type": "start",
+            "mapId": "aurora-basin",
+            "inputEpoch": 1,
+            "roundRevision": 1,
+            "geometryHash": "2a8c06ba5b3a893135a3a6aef906a36f016107b5153fe5ec3b8a9efbfee66c86"
+          }
+        }
+      ],
+      "wallSeconds": 3.8911666229999997,
+      "evidence": "live-authority-headless",
+      "passed": true
+    },
+    {
+      "map": "cinder-array",
+      "acks": 17,
+      "actors": 3,
+      "camera": "public-actor",
+      "fired": true,
+      "geometryHash": "e4b7763a5dae391cfcc0e9a13b5202a054cdfd9761c449cf6a4bf2fd4765ab8c",
+      "localAlive": true,
+      "mode": "deathmatch",
+      "moved": true,
+      "snapshots": 7,
+      "authorityPublicSnapshots": 7,
+      "authorityActorShots": 1,
+      "authorityAppliedInputs": 17,
+      "lifecycle": [
+        {
+          "wallSeconds": 0.5197385519999999,
+          "direction": "in",
+          "type": "create",
+          "frame": {
+            "delta": 0,
+            "name": "Native arena Deathmatch",
+            "nativeArenaInput": 1,
+            "playerName": "Operator",
+            "type": "create",
+            "v": 3
+          }
+        },
+        {
+          "wallSeconds": 0.5198517540000003,
+          "direction": "out",
+          "type": "lobby",
+          "frame": {
+            "type": "lobby",
+            "roomId": "local-native-arena",
+            "hostId": 0,
+            "mapId": null,
+            "config": null,
+            "started": false,
+            "roundRevision": 0,
+            "players": [
+              {
+                "peerId": 0,
+                "actorId": 0,
+                "name": "Operator",
+                "connected": true,
+                "spectate": false
+              }
+            ]
+          }
+        },
+        {
+          "wallSeconds": 0.5266080060000004,
+          "direction": "in",
+          "type": "host",
+          "frame": {
+            "config": {
+              "botCount": 2,
+              "fragLimit": 50,
+              "mode": "deathmatch",
+              "timeLimit": 60
+            },
+            "mapId": "cinder-array",
+            "type": "host"
+          }
+        },
+        {
+          "wallSeconds": 0.526697784,
+          "direction": "out",
+          "type": "lobby",
+          "frame": {
+            "type": "lobby",
+            "roomId": "local-native-arena",
+            "hostId": 0,
+            "mapId": "cinder-array",
+            "config": {
+              "mode": "deathmatch",
+              "botCount": 2,
+              "difficulty": "normal",
+              "fragLimit": 50,
+              "timeLimit": 60,
+              "respawn": 2,
+              "speed": 1,
+              "gravity": 1,
+              "damage": 1,
+              "fastPowers": false,
+              "lifeSteal": false,
+              "unlimitedAmmo": false,
+              "suddenDeath": false,
+              "randomLoadout": false,
+              "oneShot": false,
+              "instagib": false,
+              "mirrorLoadout": false,
+              "bounty": false,
+              "berserk": false,
+              "bigHead": false,
+              "noRecoil": false,
+              "endless": false,
+              "startingWeapon": 0,
+              "playerName": "",
+              "mission": "convoy-run",
+              "loadout": null,
+              "checkpoint": null,
+              "mutators": []
+            },
+            "started": false,
+            "roundRevision": 0,
+            "players": [
+              {
+                "peerId": 0,
+                "actorId": 0,
+                "name": "Operator",
+                "connected": true,
+                "spectate": false
+              }
+            ]
+          }
+        },
+        {
+          "wallSeconds": 0.533484203,
+          "direction": "in",
+          "type": "start",
+          "frame": {
+            "type": "start"
+          }
+        },
+        {
+          "wallSeconds": 2.1249351699999997,
+          "direction": "out",
+          "type": "start",
+          "frame": {
+            "type": "start",
+            "mapId": "cinder-array",
+            "inputEpoch": 1,
+            "roundRevision": 1,
+            "geometryHash": "e4b7763a5dae391cfcc0e9a13b5202a054cdfd9761c449cf6a4bf2fd4765ab8c"
+          }
+        }
+      ],
+      "wallSeconds": 2.5082855260000008,
+      "evidence": "live-authority-headless",
+      "passed": true
+    }
+  ]
+}

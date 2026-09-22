@@ -1,0 +1,56 @@
+[
+  {
+    "mapId": "prism-foundry",
+    "pass": 0,
+    "hash": "9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572",
+    "validationMS": 72.3,
+    "constructionMS": 1835.4,
+    "firstStepMS": 9.4,
+    "nav": 378
+  },
+  {
+    "mapId": "prism-foundry",
+    "pass": 1,
+    "hash": "9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572",
+    "validationMS": 43.1,
+    "constructionMS": 79,
+    "firstStepMS": 3.8,
+    "nav": 378
+  },
+  {
+    "mapId": "aurora-basin",
+    "pass": 0,
+    "hash": "2a8c06ba5b3a893135a3a6aef906a36f016107b5153fe5ec3b8a9efbfee66c86",
+    "validationMS": 348,
+    "constructionMS": 2284.6,
+    "firstStepMS": 6.2,
+    "nav": 303
+  },
+  {
+    "mapId": "aurora-basin",
+    "pass": 1,
+    "hash": "2a8c06ba5b3a893135a3a6aef906a36f016107b5153fe5ec3b8a9efbfee66c86",
+    "validationMS": 347.8,
+    "constructionMS": 476.8,
+    "firstStepMS": 3.8,
+    "nav": 303
+  },
+  {
+    "mapId": "cinder-array",
+    "pass": 0,
+    "hash": "e4b7763a5dae391cfcc0e9a13b5202a054cdfd9761c449cf6a4bf2fd4765ab8c",
+    "validationMS": 19.1,
+    "constructionMS": 1593.2,
+    "firstStepMS": 3.3,
+    "nav": 369
+  },
+  {
+    "mapId": "cinder-array",
+    "pass": 1,
+    "hash": "e4b7763a5dae391cfcc0e9a13b5202a054cdfd9761c449cf6a4bf2fd4765ab8c",
+    "validationMS": 19.3,
+    "constructionMS": 37.6,
+    "firstStepMS": 4.5,
+    "nav": 369
+  }
+]

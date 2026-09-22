@@ -1,0 +1,7 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+NATIVE_DM_GRAPHICAL_CAPTURE {"actors":6,"authoritative_eye":[26.0,5.44999980926514,0.0],"first_person":true,"geometryHash":"9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572","map":"prism-foundry","path":"/tmp/opencode/native-dm-captures/2026-09-22T12-29-25.956Z/prism-foundry-1280x720.png","size":[1280,720],"snapshots":27}
+NATIVE_DM_GRAPHICAL_CAPTURE {"actors":6,"authoritative_eye":[26.0,5.44999980926514,0.0],"first_person":true,"geometryHash":"9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572","map":"prism-foundry","path":"/tmp/opencode/native-dm-captures/2026-09-22T12-29-25.956Z/prism-foundry-1920x1080.png","size":[1920,1080],"snapshots":55}

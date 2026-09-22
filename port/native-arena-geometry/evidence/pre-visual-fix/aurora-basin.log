@@ -1,0 +1,7 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+NATIVE_DM_GRAPHICAL_CAPTURE {"actors":6,"authoritative_eye":[16.0,10.4499998092651,-34.0],"first_person":true,"geometryHash":"ed3f2f88181643a4d3aaaf2b1519802b7db228afdf650237bc60732e201f4a04","map":"aurora-basin","path":"/tmp/opencode/native-dm-captures/2026-09-22T12-29-25.956Z/aurora-basin-1280x720.png","size":[1280,720],"snapshots":50}
+NATIVE_DM_GRAPHICAL_CAPTURE {"actors":6,"authoritative_eye":[16.0,10.4499998092651,-34.0],"first_person":true,"geometryHash":"ed3f2f88181643a4d3aaaf2b1519802b7db228afdf650237bc60732e201f4a04","map":"aurora-basin","path":"/tmp/opencode/native-dm-captures/2026-09-22T12-29-25.956Z/aurora-basin-1920x1080.png","size":[1920,1080],"snapshots":66}

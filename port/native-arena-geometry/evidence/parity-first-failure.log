@@ -1,0 +1,24 @@
+{"id":"prism-foundry","geometryHash":"9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572","spawns":6,"routes":7,"floors":255,"rays":1276,"navigationNodes":378,"navigationConnected":true,"errors":[]}
+{"id":"aurora-basin","geometryHash":"185939743ccc263e567b0f5693912ee954450361ce963de5d7721a31660b6b36","spawns":6,"routes":4,"floors":313,"rays":1566,"navigationNodes":948,"navigationConnected":true,"errors":["ray 4:2 source=20.0000 native=12.0413","ray 33:0 source=20.0000 native=15.9451","ray 34:0 source=20.0000 native=14.1680","ray 35:0 source=20.0000 native=13.8347","ray 36:0 source=20.0000 native=14.0265","ray 37:0 source=20.0000 native=14.9929","ray 39:0 source=20.0000 native=12.3908","ray 40:0 source=20.0000 native=12.4349","ray 41:0 source=20.0000 native=12.5527","ray 42:0 source=20.0000 native=13.4541","ray 43:0 source=20.0000 native=14.9103","ray 52:0 source=20.0000 native=16.6855","ray 53:0 source=20.0000 native=17.6140","ray 54:0 source=20.0000 native=19.2060","ray 55:2 source=20.0000 native=15.3294","ray 59:2 source=20.0000 native=17.3793","ray 60:2 source=20.0000 native=16.1459","ray 61:2 source=20.0000 native=15.0450","ray 62:2 source=20.0000 native=14.7460","ray 63:2 source=20.0000 native=14.7614","ray 64:2 source=20.0000 native=14.8417","ray 65:2 source=20.0000 native=15.0879","ray 66:2 source=20.0000 native=17.8126","ray 67:2 source=20.0000 native=16.4980","ray 68:2 source=20.0000 native=16.3438","ray 69:2 source=20.0000 native=16.9430","ray 70:2 source=20.0000 native=17.4359","ray 74:2 source=20.0000 native=18.5278","ray 75:2 source=20.0000 native=18.3402","ray 78:2 source=20.0000 native=17.1676","ray 79:2 source=20.0000 native=16.5095","ray 80:2 source=20.0000 native=15.9800","ray 81:2 source=20.0000 native=13.9804","ray 82:2 source=20.0000 native=13.3104","ray 83:2 source=20.0000 native=12.7093","ray 84:2 source=20.0000 native=12.6375","ray 85:2 source=20.0000 native=13.9284","ray 86:2 source=20.0000 native=10.9784","ray 87:2 source=20.0000 native=10.3756","ray 87:3 source=17.5238 native=20.0000","ray 88:2 source=20.0000 native=10.7668","ray 88:3 source=17.3225 native=20.0000","ray 89:2 source=20.0000 native=11.2519","ray 89:3 source=18.4227 native=19.6847","ray 106:0 source=11.2471 native=11.4674","ray 107:0 source=10.0376 native=12.5277","ray 108:0 source=9.4476 native=12.7304","ray 109:0 source=8.8374 native=11.9861","ray 110:0 source=8.1481 native=10.7293","ray 111:0 source=7.6118 native=9.3802","ray 112:0 source=7.2458 native=8.1135","ray 113:0 source=15.5970 native=18.6433","ray 114:0 source=15.2448 native=18.4360","ray 139:0 source=17.1536 native=19.8045","ray 140:0 source=16.1293 native=19.4309","ray 141:0 source=16.9594 native=18.7441","ray 142:0 source=16.3937 native=17.7149","ray 143:0 source=15.4435 native=18.1029","ray 144:0 source=14.7957 native=17.9099","ray 145:0 source=4.9540 native=7.0030","ray 146:0 source=4.2416 native=7.5850","ray 147:0 source=3.5596 native=6.1983","ray 152:3 source=4.4978 native=5.6321","ray 153:3 source=4.5573 native=8.3224","ray 154:3 source=5.6067 native=8.7160","ray 155:3 source=7.0306 native=8.7454","ray 162:3 source=13.3113 native=15.6295","ray 163:3 source=13.5391 native=16.8660","ray 164:3 source=14.3339 native=16.2261","ray 182:3 source=15.1687 native=17.2504","ray 183:3 source=13.6974 native=16.9680","ray 184:3 source=13.7593 native=16.2967","ray 199:1 source=10.2990 native=12.3760","ray 200:1 source=10.2187 native=13.6417","ray 201:1 source=10.7634 native=12.4612"]}
+{"id":"cinder-array","geometryHash":"172cb854ce36aab36ccb165fd5f94692ca1ded0dcc2e496166733cad0aad99bd","spawns":6,"routes":9,"floors":181,"rays":906,"navigationNodes":369,"navigationConnected":true,"errors":[]}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Native/source geometry parity failed; see verification.json
+
+75 !== 0
+
+    at file:///home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/tools/godot-native-arenas/verify.mjs:43:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 75,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.1

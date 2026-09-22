@@ -1,0 +1,129 @@
+[
+  {
+    "id": "prism-foundry",
+    "geometryHash": "9ba6d451e7acb61847d1b5726ec52385c019e32bbc0805731f14396aca336572",
+    "constructionMs": 1853,
+    "navNodes": 378,
+    "routes": [
+      {
+        "id": "reactor-ring",
+        "finished": true,
+        "ticks": 921
+      },
+      {
+        "id": "west-ascent",
+        "finished": true,
+        "ticks": 852
+      },
+      {
+        "id": "east-ascent",
+        "finished": true,
+        "ticks": 791
+      },
+      {
+        "id": "garden-link",
+        "finished": true,
+        "ticks": 386
+      },
+      {
+        "id": "west-coolant-loop",
+        "finished": true,
+        "ticks": 250
+      },
+      {
+        "id": "east-coolant-loop",
+        "finished": true,
+        "ticks": 250
+      },
+      {
+        "id": "upper-loop",
+        "finished": true,
+        "ticks": 1820
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "aurora-basin",
+    "geometryHash": "2dc5c0fa75ccb8bb9dc1a0fd35dee55b5a2c0497b38da0fad15dcd1c802a595e",
+    "constructionMs": 19511,
+    "navNodes": 796,
+    "routes": [
+      {
+        "id": "crown-ascent",
+        "finished": true,
+        "ticks": 1939
+      },
+      {
+        "id": "lake-circuit",
+        "finished": true,
+        "ticks": 2594
+      },
+      {
+        "id": "landing-link",
+        "finished": true,
+        "ticks": 216
+      },
+      {
+        "id": "eastern-snow-flank",
+        "finished": true,
+        "ticks": 586
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "cinder-array",
+    "geometryHash": "e4b7763a5dae391cfcc0e9a13b5202a054cdfd9761c449cf6a4bf2fd4765ab8c",
+    "constructionMs": 2235,
+    "navNodes": 369,
+    "routes": [
+      {
+        "id": "SuspendedSpan",
+        "finished": true,
+        "ticks": 625
+      },
+      {
+        "id": "ExtractorAccess",
+        "finished": true,
+        "ticks": 232
+      },
+      {
+        "id": "BoreFloor",
+        "finished": true,
+        "ticks": 522
+      },
+      {
+        "id": "RimAscent",
+        "finished": true,
+        "ticks": 251
+      },
+      {
+        "id": "WestDescent",
+        "finished": true,
+        "ticks": 249
+      },
+      {
+        "id": "ReturnRamp",
+        "finished": true,
+        "ticks": 380
+      },
+      {
+        "id": "cooling-crosslink",
+        "finished": true,
+        "ticks": 857
+      },
+      {
+        "id": "transfer-chord",
+        "finished": true,
+        "ticks": 385
+      },
+      {
+        "id": "observatory-console-flank",
+        "finished": true,
+        "ticks": 92
+      }
+    ],
+    "errors": []
+  }
+]
