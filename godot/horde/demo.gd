@@ -98,7 +98,7 @@ func show_controls() -> void:
 
 func update_look(relative: Vector2) -> void:
 	if not can_capture_pointer() or not relative.is_finite(): return
-	var angles := ControlMath.look(yaw - relative.x * LOOK_GAIN, pitch - relative.y * LOOK_GAIN)
+	var angles := controls.look(yaw, pitch, relative)
 	yaw = angles.x
 	pitch = angles.y
 

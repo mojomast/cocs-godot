@@ -34,5 +34,16 @@ func _initialize() -> void:
 				return
 		count += 1
 		model.queued()
+	for case: Dictionary in vectors.lookCases:
+		var event := InputEventMouseButton.new()
+		event.button_index = MOUSE_BUTTON_RIGHT
+		event.pressed = case.ads
+		model.record(event, true)
+		var actual := model.look(case.yaw, case.pitch, Vector2(case.x, case.y))
+		if not actual.is_equal_approx(Vector2(case.expected[0], case.expected[1])):
+			push_error("Source default ADS look gain differs")
+			quit(1)
+			return
 	print("HORDE_SOURCE_INPUT_OK samples=", count)
+	print("HORDE_SOURCE_LOOK_OK samples=", vectors.lookCases.size())
 	quit()

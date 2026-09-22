@@ -1,6 +1,7 @@
 // Source-derived desktop vectors for the native input test, not a second game.
 import {controlsFromState,cycleWeapon} from '../../game/input.mjs';
 import {parseInputEnvelope} from '../../game/protocol.mjs';
+import {DEFAULT_DISPLAY,adsSensitivityMultiplier} from '../../game/config.mjs';
 import {writeFileSync} from 'node:fs';
 const state={keys:new Set(),look:{yaw:.7,pitch:.2},weapon:-1};
 const ammo=['∞',4,0,8,0,0,0,0,0,3];
@@ -44,5 +45,9 @@ sample('posture alias',[key('KeyC'),key('ShiftLeft')]);
 sample('weapon selection',[key('Digit2')]);sample('weapon consumed');
 sample('wheel skips empty weapons',[mouse(5)]);sample('reverse wheel',[mouse(4)]);
 sample('boundary clears holds and pulses',[],true);sample('after boundary remains neutral');
-writeFileSync(process.argv[2],JSON.stringify({source:'game/input.mjs; app/page.tsx desktop press/reset rules',ammo,cases},null,2));
+const lookCases=[false,true,false].map(ads=>{
+ const gain=.002*(ads?DEFAULT_DISPLAY.adsSensitivity*adsSensitivityMultiplier(DEFAULT_DISPLAY):1);
+ return {ads,yaw:.7,pitch:.2,x:100,y:100,expected:[.7-100*gain,.2-100*gain]};
+});
+writeFileSync(process.argv[2],JSON.stringify({source:'game/input.mjs; app/page.tsx desktop press/reset/look rules; game/config.mjs default ADS gain',ammo,cases,lookCases},null,2));
 console.log(`SOURCE_INPUT_VECTORS ${cases.length}`);
