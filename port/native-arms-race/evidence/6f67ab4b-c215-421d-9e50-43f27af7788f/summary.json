@@ -1,0 +1,78 @@
+{
+  "base": "8a58c97e48493e41903c2c9a729e753cb3579500",
+  "options": {
+    "startup": false,
+    "attempt": 1
+  },
+  "commands": [
+    [
+      "node",
+      "/tmp/opencode/arms-race/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/arms-race-ad6_alh_/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-ad6_alh_/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-ad6_alh_/godot",
+      "--script",
+      "res://tests/arms_race/fixtures.gd"
+    ],
+    [
+      "node",
+      "--test",
+      "game/armsrace.test.mjs",
+      "game/outcome.test.mjs"
+    ],
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1280x800x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "node",
+      "/tmp/opencode/arms-race/port/native-arms-race/server.mjs",
+      "/tmp/opencode/arms-race-ad6_alh_",
+      "/tmp/opencode/arms-race/port/native-arms-race/evidence/6f67ab4b-c215-421d-9e50-43f27af7788f/meridian-exchange/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-ad6_alh_/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/arms_race/observe.gd",
+      "--",
+      "--map=meridian-exchange",
+      "--endpoint=ws://127.0.0.1:35929",
+      "--round-seconds=180",
+      "--evidence-out=/tmp/opencode/arms-race/port/native-arms-race/evidence/6f67ab4b-c215-421d-9e50-43f27af7788f/meridian-exchange",
+      "--native-trace",
+      "--attempt=1"
+    ]
+  ],
+  "cases": [],
+  "status": "FAIL",
+  "error": "/tmp/opencode/arms-race/port/native-arms-race/evidence/6f67ab4b-c215-421d-9e50-43f27af7788f/meridian-exchange/native.log",
+  "ownedProcessesReaped": true
+}

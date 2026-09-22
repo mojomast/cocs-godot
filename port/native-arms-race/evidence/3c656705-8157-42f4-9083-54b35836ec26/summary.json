@@ -1,0 +1,392 @@
+{
+  "base": "8a58c97e48493e41903c2c9a729e753cb3579500",
+  "options": {
+    "startup": true,
+    "attempt": null
+  },
+  "commands": [
+    [
+      "node",
+      "/tmp/opencode/arms-race/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/arms-race-e5i0zwok/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-e5i0zwok/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-e5i0zwok/godot",
+      "--script",
+      "res://tests/arms_race/fixtures.gd"
+    ],
+    [
+      "node",
+      "--test",
+      "game/armsrace.test.mjs",
+      "game/outcome.test.mjs"
+    ],
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1280x800x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-e5i0zwok/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--quit"
+    ],
+    [
+      "node",
+      "/tmp/opencode/arms-race/port/native-arms-race/server.mjs",
+      "/tmp/opencode/arms-race-e5i0zwok",
+      "/tmp/opencode/arms-race/port/native-arms-race/evidence/3c656705-8157-42f4-9083-54b35836ec26/meridian-exchange/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-e5i0zwok/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "960x640",
+      "--script",
+      "res://tests/arms_race/observe.gd",
+      "--",
+      "--map=meridian-exchange",
+      "--endpoint=ws://127.0.0.1:43575",
+      "--round-seconds=60",
+      "--evidence-out=/tmp/opencode/arms-race/port/native-arms-race/evidence/3c656705-8157-42f4-9083-54b35836ec26/meridian-exchange",
+      "--native-trace",
+      "--check-lifecycle"
+    ],
+    [
+      "node",
+      "/tmp/opencode/arms-race/port/native-arms-race/server.mjs",
+      "/tmp/opencode/arms-race-e5i0zwok",
+      "/tmp/opencode/arms-race/port/native-arms-race/evidence/3c656705-8157-42f4-9083-54b35836ec26/verdant-reliquary/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-e5i0zwok/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/arms_race/observe.gd",
+      "--",
+      "--map=verdant-reliquary",
+      "--endpoint=ws://127.0.0.1:34575",
+      "--round-seconds=60",
+      "--evidence-out=/tmp/opencode/arms-race/port/native-arms-race/evidence/3c656705-8157-42f4-9083-54b35836ec26/verdant-reliquary",
+      "--native-trace"
+    ],
+    [
+      "node",
+      "/tmp/opencode/arms-race/port/native-arms-race/server.mjs",
+      "/tmp/opencode/arms-race-e5i0zwok",
+      "/tmp/opencode/arms-race/port/native-arms-race/evidence/3c656705-8157-42f4-9083-54b35836ec26/ember-crucible/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-e5i0zwok/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "960x640",
+      "--script",
+      "res://tests/arms_race/observe.gd",
+      "--",
+      "--map=ember-crucible",
+      "--endpoint=ws://127.0.0.1:36867",
+      "--round-seconds=60",
+      "--evidence-out=/tmp/opencode/arms-race/port/native-arms-race/evidence/3c656705-8157-42f4-9083-54b35836ec26/ember-crucible",
+      "--native-trace"
+    ]
+  ],
+  "cases": [
+    {
+      "map": "meridian-exchange",
+      "resolution": "960x640",
+      "outcome": {
+        "ack": 110,
+        "age": 62.3985366666667,
+        "attempt": 0,
+        "captures": {
+          "restart": {
+            "ack": 110,
+            "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+            "next": "Next: Rocket Launcher",
+            "outcome": "",
+            "seq": 1863,
+            "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+          },
+          "results": {
+            "ack": 2638,
+            "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+            "next": "Next: Rocket Launcher",
+            "outcome": "TIME LIMIT \u00b7 Claude \u00b7 Ranked by ladder, then frags",
+            "seq": 1800,
+            "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+          },
+          "startup": {
+            "ack": 127,
+            "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+            "next": "Next: Rocket Launcher",
+            "outcome": "",
+            "seq": 82,
+            "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+          }
+        },
+        "fresh_moved": true,
+        "promoted": false,
+        "results": 1,
+        "rounds": 2
+      },
+      "localPromotions": [],
+      "sourceConfigs": [
+        {
+          "type": "start",
+          "config": {
+            "mode": "armsrace",
+            "botCount": 2,
+            "difficulty": "normal",
+            "fragLimit": 10,
+            "timeLimit": 60,
+            "respawn": 2,
+            "speed": 1,
+            "gravity": 1,
+            "damage": 1,
+            "fastPowers": false,
+            "lifeSteal": false,
+            "unlimitedAmmo": false,
+            "suddenDeath": false,
+            "randomLoadout": false,
+            "oneShot": false,
+            "instagib": false,
+            "mirrorLoadout": false,
+            "bounty": false,
+            "berserk": false,
+            "bigHead": false,
+            "noRecoil": false,
+            "endless": false,
+            "startingWeapon": 0,
+            "playerName": "",
+            "mission": "convoy-run",
+            "loadout": null,
+            "checkpoint": null,
+            "mutators": []
+          },
+          "mapId": "meridian-exchange",
+          "roundRevision": 1
+        },
+        {
+          "type": "start",
+          "config": {
+            "mode": "armsrace",
+            "botCount": 2,
+            "difficulty": "normal",
+            "fragLimit": 10,
+            "timeLimit": 60,
+            "respawn": 2,
+            "speed": 1,
+            "gravity": 1,
+            "damage": 1,
+            "fastPowers": false,
+            "lifeSteal": false,
+            "unlimitedAmmo": false,
+            "suddenDeath": false,
+            "randomLoadout": false,
+            "oneShot": false,
+            "instagib": false,
+            "mirrorLoadout": false,
+            "bounty": false,
+            "berserk": false,
+            "bigHead": false,
+            "noRecoil": false,
+            "endless": false,
+            "startingWeapon": 0,
+            "playerName": "",
+            "mission": "convoy-run",
+            "loadout": null,
+            "checkpoint": null,
+            "mutators": []
+          },
+          "mapId": "meridian-exchange",
+          "roundRevision": 2
+        }
+      ],
+      "inputReceipts": 2752,
+      "maxAppliedACK": 2638,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    },
+    {
+      "map": "verdant-reliquary",
+      "resolution": "1280x800",
+      "outcome": {
+        "ack": 213,
+        "age": 6.02202948484849,
+        "attempt": 0,
+        "captures": {
+          "startup": {
+            "ack": 101,
+            "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+            "next": "Next: Rocket Launcher",
+            "outcome": "",
+            "seq": 78,
+            "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+          }
+        },
+        "fresh_moved": false,
+        "promoted": false,
+        "results": 0,
+        "rounds": 1
+      },
+      "localPromotions": [],
+      "sourceConfigs": [
+        {
+          "type": "start",
+          "config": {
+            "mode": "armsrace",
+            "botCount": 2,
+            "difficulty": "normal",
+            "fragLimit": 10,
+            "timeLimit": 60,
+            "respawn": 2,
+            "speed": 1,
+            "gravity": 1,
+            "damage": 1,
+            "fastPowers": false,
+            "lifeSteal": false,
+            "unlimitedAmmo": false,
+            "suddenDeath": false,
+            "randomLoadout": false,
+            "oneShot": false,
+            "instagib": false,
+            "mirrorLoadout": false,
+            "bounty": false,
+            "berserk": false,
+            "bigHead": false,
+            "noRecoil": false,
+            "endless": false,
+            "startingWeapon": 0,
+            "playerName": "",
+            "mission": "convoy-run",
+            "loadout": null,
+            "checkpoint": null,
+            "mutators": []
+          },
+          "mapId": "verdant-reliquary",
+          "roundRevision": 1
+        }
+      ],
+      "inputReceipts": 215,
+      "maxAppliedACK": 215,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    },
+    {
+      "map": "ember-crucible",
+      "resolution": "960x640",
+      "outcome": {
+        "ack": 300,
+        "age": 6.0145638888889,
+        "attempt": 0,
+        "captures": {
+          "startup": {
+            "ack": 137,
+            "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+            "next": "Next: Rocket Launcher",
+            "outcome": "",
+            "seq": 78,
+            "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+          }
+        },
+        "fresh_moved": false,
+        "promoted": false,
+        "results": 0,
+        "rounds": 1
+      },
+      "localPromotions": [],
+      "sourceConfigs": [
+        {
+          "type": "start",
+          "config": {
+            "mode": "armsrace",
+            "botCount": 2,
+            "difficulty": "normal",
+            "fragLimit": 10,
+            "timeLimit": 60,
+            "respawn": 2,
+            "speed": 1,
+            "gravity": 1,
+            "damage": 1,
+            "fastPowers": false,
+            "lifeSteal": false,
+            "unlimitedAmmo": false,
+            "suddenDeath": false,
+            "randomLoadout": false,
+            "oneShot": false,
+            "instagib": false,
+            "mirrorLoadout": false,
+            "bounty": false,
+            "berserk": false,
+            "bigHead": false,
+            "noRecoil": false,
+            "endless": false,
+            "startingWeapon": 0,
+            "playerName": "",
+            "mission": "convoy-run",
+            "loadout": null,
+            "checkpoint": null,
+            "mutators": []
+          },
+          "mapId": "ember-crucible",
+          "roundRevision": 1
+        }
+      ],
+      "inputReceipts": 303,
+      "maxAppliedACK": 302,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    }
+  ],
+  "display": ":0",
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}

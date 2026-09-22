@@ -1,0 +1,49 @@
+{
+  "implementationCommit": "52de3b9216ac2837344015cd55e5527cf7b260d7",
+  "runtimeFilesMatched": 610,
+  "allNineMapsPreserved": true,
+  "liveCombatAttempts": 2,
+  "sourceFilesChanged": [],
+  "temporaryDirectories": [
+    {
+      "run": "22d20187-937d-405e-9543-da240344fbc5",
+      "path": "/tmp/opencode/arms-race-y_ydzf92",
+      "removed": true
+    },
+    {
+      "run": "24dc64cd-0ffd-45c4-b99c-f9067278ec50",
+      "path": "/tmp/opencode/arms-race-x0kpu7hr",
+      "removed": true
+    },
+    {
+      "run": "3c656705-8157-42f4-9083-54b35836ec26",
+      "path": "/tmp/opencode/arms-race-e5i0zwok",
+      "removed": true
+    },
+    {
+      "run": "6a791063-bbb3-44a2-b32f-1ba3b294b98e",
+      "path": "/tmp/opencode/arms-race-b_8tgtzg",
+      "removed": true
+    },
+    {
+      "run": "6f67ab4b-c215-421d-9e50-43f27af7788f",
+      "path": "/tmp/opencode/arms-race-ad6_alh_",
+      "removed": true
+    },
+    {
+      "run": "7a26e248-84ab-4db6-9c5e-1e529b27ce33",
+      "path": "/tmp/opencode/arms-race-ilhvo1no",
+      "removed": true
+    },
+    {
+      "run": "b84cae02-766d-41fc-b23a-ceb085b347e1",
+      "path": "/tmp/opencode/arms-race-q1an4n4p",
+      "removed": true
+    },
+    {
+      "run": "e57fff1f-508c-4dee-9907-f2fc3ee74797",
+      "path": "/tmp/opencode/arms-race-3s_cwepf",
+      "removed": true
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "base": "8a58c97e48493e41903c2c9a729e753cb3579500",
+  "options": {
+    "startup": false,
+    "attempt": null
+  },
+  "commands": [
+    [
+      "node",
+      "/tmp/opencode/arms-race/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/arms-race-b_8tgtzg/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-b_8tgtzg/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-b_8tgtzg/godot",
+      "--script",
+      "res://tests/arms_race/fixtures.gd"
+    ],
+    [
+      "node",
+      "--test",
+      "game/armsrace.test.mjs",
+      "game/outcome.test.mjs"
+    ]
+  ],
+  "cases": [],
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}

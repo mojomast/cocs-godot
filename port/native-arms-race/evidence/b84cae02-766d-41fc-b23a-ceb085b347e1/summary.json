@@ -1,0 +1,183 @@
+{
+  "base": "8a58c97e48493e41903c2c9a729e753cb3579500",
+  "options": {
+    "startup": false,
+    "attempt": 2
+  },
+  "commands": [
+    [
+      "node",
+      "/tmp/opencode/arms-race/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/arms-race-q1an4n4p/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-q1an4n4p/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-q1an4n4p/godot",
+      "--script",
+      "res://tests/arms_race/fixtures.gd"
+    ],
+    [
+      "node",
+      "--test",
+      "game/armsrace.test.mjs",
+      "game/outcome.test.mjs"
+    ],
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1280x800x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-q1an4n4p/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--quit"
+    ],
+    [
+      "node",
+      "/tmp/opencode/arms-race/port/native-arms-race/server.mjs",
+      "/tmp/opencode/arms-race-q1an4n4p",
+      "/tmp/opencode/arms-race/port/native-arms-race/evidence/b84cae02-766d-41fc-b23a-ceb085b347e1/meridian-exchange/wire.json"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--path",
+      "/tmp/opencode/arms-race-q1an4n4p/godot",
+      "--rendering-method",
+      "gl_compatibility",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "1280x800",
+      "--script",
+      "res://tests/arms_race/observe.gd",
+      "--",
+      "--map=meridian-exchange",
+      "--endpoint=ws://127.0.0.1:34765",
+      "--round-seconds=180",
+      "--evidence-out=/tmp/opencode/arms-race/port/native-arms-race/evidence/b84cae02-766d-41fc-b23a-ceb085b347e1/meridian-exchange",
+      "--native-trace",
+      "--attempt=2"
+    ]
+  ],
+  "cases": [
+    {
+      "map": "meridian-exchange",
+      "resolution": "1280x800",
+      "outcome": {
+        "ack": 657,
+        "age": 13.528445,
+        "attempt": 2,
+        "captures": {
+          "end": {
+            "ack": 657,
+            "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+            "next": "Next: Rail Lance",
+            "outcome": "",
+            "seq": 398,
+            "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+          },
+          "promotion": {
+            "ack": 656,
+            "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+            "next": "Next: Rail Lance",
+            "outcome": "",
+            "seq": 394,
+            "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+          },
+          "startup": {
+            "ack": 107,
+            "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+            "next": "Next: Rocket Launcher",
+            "outcome": "",
+            "seq": 82,
+            "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+          }
+        },
+        "fresh_moved": false,
+        "promoted": true,
+        "results": 0,
+        "rounds": 1
+      },
+      "localPromotions": [
+        {
+          "round": 1,
+          "type": "armsrace-promote",
+          "id": 381,
+          "time": 13.133,
+          "actor": 0,
+          "weapon": 1,
+          "bonus": false
+        }
+      ],
+      "sourceConfigs": [
+        {
+          "type": "start",
+          "config": {
+            "mode": "armsrace",
+            "botCount": 2,
+            "difficulty": "normal",
+            "fragLimit": 10,
+            "timeLimit": 180,
+            "respawn": 2,
+            "speed": 1,
+            "gravity": 1,
+            "damage": 1,
+            "fastPowers": false,
+            "lifeSteal": false,
+            "unlimitedAmmo": false,
+            "suddenDeath": false,
+            "randomLoadout": false,
+            "oneShot": false,
+            "instagib": false,
+            "mirrorLoadout": false,
+            "bounty": false,
+            "berserk": false,
+            "bigHead": false,
+            "noRecoil": false,
+            "endless": false,
+            "startingWeapon": 0,
+            "playerName": "",
+            "mission": "convoy-run",
+            "loadout": null,
+            "checkpoint": null,
+            "mutators": []
+          },
+          "mapId": "meridian-exchange",
+          "roundRevision": 1
+        }
+      ],
+      "inputReceipts": 659,
+      "maxAppliedACK": 659,
+      "cleanup": {
+        "serverClosed": true,
+        "sockets": 0
+      }
+    }
+  ],
+  "display": ":0",
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true
+}

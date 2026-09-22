@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: arms race advances the ladder on each kill and wins on the final weapon
+ok 1 - arms race advances the ladder on each kill and wins on the final weapon
+  ---
+  duration_ms: 81.6872
+  type: 'test'
+  ...
+# Subtest: arms race forces the ladder weapon instead of manual switches
+ok 2 - arms race forces the ladder weapon instead of manual switches
+  ---
+  duration_ms: 14.184236
+  type: 'test'
+  ...
+# Subtest: bots during arms race keep their promoted ladder weapon
+ok 3 - bots during arms race keep their promoted ladder weapon
+  ---
+  duration_ms: 56.704812
+  type: 'test'
+  ...
+# Subtest: arms race demotes one rung on death and clamps at the first rung
+ok 4 - arms race demotes one rung on death and clamps at the first rung
+  ---
+  duration_ms: 23.972297
+  type: 'test'
+  ...
+# Subtest: a trailing arms race player gains a bonus rung on a kill without skipping the last rung
+ok 5 - a trailing arms race player gains a bonus rung on a kill without skipping the last rung
+  ---
+  duration_ms: 10.144048
+  type: 'test'
+  ...
+# Subtest: arms race ignores weapon pickups so the ladder stays authoritative
+ok 6 - arms race ignores weapon pickups so the ladder stays authoritative
+  ---
+  duration_ms: 9.701149
+  type: 'test'
+  ...
+# Subtest: bounty frags cannot end an arms race before the ladder finishes
+ok 7 - bounty frags cannot end an arms race before the ladder finishes
+  ---
+  duration_ms: 7.473537
+  type: 'test'
+  ...
+# Subtest: every team mode awards the authoritative winner, not the frag leader
+ok 8 - every team mode awards the authoritative winner, not the frag leader
+  ---
+  duration_ms: 1.544563
+  type: 'test'
+  ...
+# Subtest: a team draw or missing winner awards nobody
+ok 9 - a team draw or missing winner awards nobody
+  ---
+  duration_ms: 0.154469
+  type: 'test'
+  ...
+# Subtest: frag modes award the highest frag count including ties
+ok 10 - frag modes award the highest frag count including ties
+  ---
+  duration_ms: 0.359553
+  type: 'test'
+  ...
+# Subtest: arms race awards the ladder leader, not the frag leader
+ok 11 - arms race awards the ladder leader, not the frag leader
+  ---
+  duration_ms: 0.147777
+  type: 'test'
+  ...
+# Subtest: arms race leaders and the timeout winner follow the ladder without frag sudden death
+ok 12 - arms race leaders and the timeout winner follow the ladder without frag sudden death
+  ---
+  duration_ms: 91.80513
+  type: 'test'
+  ...
+# Subtest: missing inputs never award a win
+ok 13 - missing inputs never award a win
+  ---
+  duration_ms: 0.123942
+  type: 'test'
+  ...
+# Subtest: race wins follow the racer ID, including zero, without requiring frags
+ok 14 - race wins follow the racer ID, including zero, without requiring frags
+  ---
+  duration_ms: 0.103584
+  type: 'test'
+  ...
+# Subtest: race wins require a result and an actual winner
+ok 15 - race wins require a result and an actual winner
+  ---
+  duration_ms: 0.073488
+  type: 'test'
+  ...
+# Subtest: a score-limit team finish is reported as a frag ending
+ok 16 - a score-limit team finish is reported as a frag ending
+  ---
+  duration_ms: 18.638588
+  type: 'test'
+  ...
+# Subtest: leaders() and the shared rankTuple agree for every ranked mode
+ok 17 - leaders() and the shared rankTuple agree for every ranked mode
+  ---
+  duration_ms: 43.304214
+  type: 'test'
+  ...
+# Subtest: a timed team finish is reported as a time ending even with a winner
+ok 18 - a timed team finish is reported as a time ending even with a winner
+  ---
+  duration_ms: 5.81982
+  type: 'test'
+  ...
+# Subtest: juggernaut is awarded on crown points, not frags
+ok 19 - juggernaut is awarded on crown points, not frags
+  ---
+  duration_ms: 0.262231
+  type: 'test'
+  ...
+# Subtest: rankTuple ranks juggernaut by points before frags
+ok 20 - rankTuple ranks juggernaut by points before frags
+  ---
+  duration_ms: 0.344675
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1224.048097

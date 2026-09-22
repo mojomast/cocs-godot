@@ -1,0 +1,734 @@
+{
+  "runs": [
+    {
+      "id": "22d20187-937d-405e-9543-da240344fbc5",
+      "status": "FAIL",
+      "options": {
+        "startup": true,
+        "attempt": null
+      },
+      "error": "/tmp/opencode/arms-race/port/native-arms-race/evidence/22d20187-937d-405e-9543-da240344fbc5/meridian-exchange/native.log",
+      "cases": [
+        {
+          "map": "meridian-exchange",
+          "starts": 2,
+          "queuedRecords": 1779,
+          "serverReceipts": 1779,
+          "appliedACKMax": 1723,
+          "sourceSamples": 1866,
+          "captures": [
+            {
+              "display": {
+                "ack": 58,
+                "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                "next": "Next: Rocket Launcher",
+                "outcome": "",
+                "seq": 83,
+                "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+              },
+              "tag": "startup"
+            },
+            {
+              "display": {
+                "ack": 1723,
+                "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                "next": "Next: Rocket Launcher",
+                "outcome": "TIME LIMIT \u00b7 Claude \u00b7 Ranked by ladder, then frags",
+                "seq": 1800,
+                "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+              },
+              "tag": "results"
+            },
+            {
+              "display": {
+                "ack": 52,
+                "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                "next": "Next: Rocket Launcher",
+                "outcome": "",
+                "seq": 1862,
+                "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+              },
+              "tag": "restart"
+            }
+          ],
+          "end": [
+            {
+              "ack": 52,
+              "age": 62.9988396666663,
+              "attempt": 0,
+              "captures": {
+                "restart": {
+                  "ack": 52,
+                  "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                  "next": "Next: Rocket Launcher",
+                  "outcome": "",
+                  "seq": 1862,
+                  "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+                },
+                "results": {
+                  "ack": 1723,
+                  "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                  "next": "Next: Rocket Launcher",
+                  "outcome": "TIME LIMIT \u00b7 Claude \u00b7 Ranked by ladder, then frags",
+                  "seq": 1800,
+                  "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+                },
+                "startup": {
+                  "ack": 58,
+                  "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                  "next": "Next: Rocket Launcher",
+                  "outcome": "",
+                  "seq": 83,
+                  "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+                }
+              },
+              "fresh_moved": true,
+              "promoted": false,
+              "results": 1,
+              "rounds": 2
+            }
+          ],
+          "cleanup": {
+            "serverClosed": true,
+            "sockets": 0
+          },
+          "promotions": []
+        }
+      ]
+    },
+    {
+      "id": "24dc64cd-0ffd-45c4-b99c-f9067278ec50",
+      "status": "FAIL",
+      "options": {
+        "startup": false,
+        "attempt": 2
+      },
+      "error": "/tmp/opencode/arms-race/port/native-arms-race/evidence/24dc64cd-0ffd-45c4-b99c-f9067278ec50/meridian-exchange/native.log",
+      "cases": [
+        {
+          "map": "meridian-exchange",
+          "starts": 0,
+          "queuedRecords": 0,
+          "serverReceipts": 0,
+          "appliedACKMax": 0,
+          "sourceSamples": 0,
+          "captures": [],
+          "end": [],
+          "cleanup": {
+            "serverClosed": true,
+            "sockets": 0
+          },
+          "promotions": []
+        }
+      ]
+    },
+    {
+      "id": "3c656705-8157-42f4-9083-54b35836ec26",
+      "status": "PASS",
+      "options": {
+        "startup": true,
+        "attempt": null
+      },
+      "error": null,
+      "cases": [
+        {
+          "map": "ember-crucible",
+          "starts": 1,
+          "queuedRecords": 303,
+          "serverReceipts": 303,
+          "appliedACKMax": 302,
+          "sourceSamples": 171,
+          "captures": [
+            {
+              "display": {
+                "ack": 137,
+                "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                "next": "Next: Rocket Launcher",
+                "outcome": "",
+                "seq": 78,
+                "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+              },
+              "tag": "startup"
+            }
+          ],
+          "end": [
+            {
+              "ack": 300,
+              "age": 6.0145638888889,
+              "attempt": 0,
+              "captures": {
+                "startup": {
+                  "ack": 137,
+                  "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                  "next": "Next: Rocket Launcher",
+                  "outcome": "",
+                  "seq": 78,
+                  "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+                }
+              },
+              "fresh_moved": false,
+              "promoted": false,
+              "results": 0,
+              "rounds": 1
+            }
+          ],
+          "cleanup": {
+            "serverClosed": true,
+            "sockets": 0
+          },
+          "promotions": []
+        },
+        {
+          "map": "meridian-exchange",
+          "starts": 2,
+          "queuedRecords": 2752,
+          "serverReceipts": 2752,
+          "appliedACKMax": 2638,
+          "sourceSamples": 1865,
+          "captures": [
+            {
+              "display": {
+                "ack": 127,
+                "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                "next": "Next: Rocket Launcher",
+                "outcome": "",
+                "seq": 82,
+                "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+              },
+              "tag": "startup"
+            },
+            {
+              "display": {
+                "ack": 2638,
+                "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                "next": "Next: Rocket Launcher",
+                "outcome": "TIME LIMIT \u00b7 Claude \u00b7 Ranked by ladder, then frags",
+                "seq": 1800,
+                "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+              },
+              "tag": "results"
+            },
+            {
+              "display": {
+                "ack": 110,
+                "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                "next": "Next: Rocket Launcher",
+                "outcome": "",
+                "seq": 1863,
+                "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+              },
+              "tag": "restart"
+            }
+          ],
+          "end": [
+            {
+              "ack": 110,
+              "age": 62.3985366666667,
+              "attempt": 0,
+              "captures": {
+                "restart": {
+                  "ack": 110,
+                  "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                  "next": "Next: Rocket Launcher",
+                  "outcome": "",
+                  "seq": 1863,
+                  "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+                },
+                "results": {
+                  "ack": 2638,
+                  "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                  "next": "Next: Rocket Launcher",
+                  "outcome": "TIME LIMIT \u00b7 Claude \u00b7 Ranked by ladder, then frags",
+                  "seq": 1800,
+                  "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+                },
+                "startup": {
+                  "ack": 127,
+                  "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                  "next": "Next: Rocket Launcher",
+                  "outcome": "",
+                  "seq": 82,
+                  "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+                }
+              },
+              "fresh_moved": true,
+              "promoted": false,
+              "results": 1,
+              "rounds": 2
+            }
+          ],
+          "cleanup": {
+            "serverClosed": true,
+            "sockets": 0
+          },
+          "promotions": []
+        },
+        {
+          "map": "verdant-reliquary",
+          "starts": 1,
+          "queuedRecords": 215,
+          "serverReceipts": 215,
+          "appliedACKMax": 215,
+          "sourceSamples": 170,
+          "captures": [
+            {
+              "display": {
+                "ack": 101,
+                "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                "next": "Next: Rocket Launcher",
+                "outcome": "",
+                "seq": 78,
+                "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+              },
+              "tag": "startup"
+            }
+          ],
+          "end": [
+            {
+              "ack": 213,
+              "age": 6.02202948484849,
+              "attempt": 0,
+              "captures": {
+                "startup": {
+                  "ack": 101,
+                  "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                  "next": "Next: Rocket Launcher",
+                  "outcome": "",
+                  "seq": 78,
+                  "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+                }
+              },
+              "fresh_moved": false,
+              "promoted": false,
+              "results": 0,
+              "rounds": 1
+            }
+          ],
+          "cleanup": {
+            "serverClosed": true,
+            "sockets": 0
+          },
+          "promotions": []
+        }
+      ]
+    },
+    {
+      "id": "6a791063-bbb3-44a2-b32f-1ba3b294b98e",
+      "status": "PASS",
+      "options": {
+        "startup": false,
+        "attempt": null
+      },
+      "error": null,
+      "cases": []
+    },
+    {
+      "id": "6f67ab4b-c215-421d-9e50-43f27af7788f",
+      "status": "FAIL",
+      "options": {
+        "startup": false,
+        "attempt": 1
+      },
+      "error": "/tmp/opencode/arms-race/port/native-arms-race/evidence/6f67ab4b-c215-421d-9e50-43f27af7788f/meridian-exchange/native.log",
+      "cases": [
+        {
+          "map": "meridian-exchange",
+          "starts": 1,
+          "queuedRecords": 197,
+          "serverReceipts": 197,
+          "appliedACKMax": 197,
+          "sourceSamples": 238,
+          "captures": [
+            {
+              "display": {
+                "ack": 51,
+                "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                "next": "Next: Rocket Launcher",
+                "outcome": "",
+                "seq": 85,
+                "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+              },
+              "tag": "startup"
+            },
+            {
+              "display": {
+                "ack": 194,
+                "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+                "next": "Next: Rail Lance",
+                "outcome": "",
+                "seq": 230,
+                "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+              },
+              "tag": "promotion"
+            },
+            {
+              "display": {
+                "ack": 195,
+                "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+                "next": "Next: Rail Lance",
+                "outcome": "",
+                "seq": 234,
+                "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+              },
+              "tag": "end"
+            }
+          ],
+          "end": [
+            {
+              "ack": 195,
+              "age": 8.048758,
+              "attempt": 1,
+              "captures": {
+                "end": {
+                  "ack": 195,
+                  "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+                  "next": "Next: Rail Lance",
+                  "outcome": "",
+                  "seq": 234,
+                  "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+                },
+                "promotion": {
+                  "ack": 194,
+                  "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+                  "next": "Next: Rail Lance",
+                  "outcome": "",
+                  "seq": 230,
+                  "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+                },
+                "startup": {
+                  "ack": 51,
+                  "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                  "next": "Next: Rocket Launcher",
+                  "outcome": "",
+                  "seq": 85,
+                  "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+                }
+              },
+              "fresh_moved": false,
+              "promoted": true,
+              "results": 0,
+              "rounds": 1
+            }
+          ],
+          "cleanup": {
+            "serverClosed": true,
+            "sockets": 0
+          },
+          "promotions": [
+            {
+              "event": {
+                "round": 1,
+                "type": "armsrace-promote",
+                "id": 491,
+                "time": 7.617,
+                "actor": 0,
+                "weapon": 1,
+                "bonus": false
+              },
+              "death": {
+                "round": 1,
+                "type": "death",
+                "id": 492,
+                "time": 7.617,
+                "actor": 1,
+                "pos": {
+                  "x": 21.867,
+                  "y": 1,
+                  "z": -23.44
+                },
+                "character": "claude",
+                "killer": 0,
+                "killerName": "Godot",
+                "killerCharacter": "chatgpt",
+                "killerHarness": "openclaw",
+                "self": false,
+                "weapon": 1,
+                "ability": false,
+                "abilityName": null,
+                "overkill": 2.716,
+                "direction": {
+                  "x": -0.849,
+                  "y": 0,
+                  "z": -0.528
+                },
+                "seed": 23,
+                "style": "burst"
+              },
+              "before": {
+                "seq": 228,
+                "actor": {
+                  "id": 0,
+                  "bot": false,
+                  "name": "Godot",
+                  "x": 32.314,
+                  "y": 0,
+                  "z": -16.937,
+                  "health": 100,
+                  "dead": 0,
+                  "ladder": 0,
+                  "weapon": 0,
+                  "frags": 0,
+                  "deaths": 0,
+                  "shots": 54
+                }
+              },
+              "after": {
+                "seq": 229,
+                "ack": 193,
+                "actor": {
+                  "id": 0,
+                  "bot": false,
+                  "name": "Godot",
+                  "x": 32.312,
+                  "y": 0,
+                  "z": -16.939,
+                  "health": 100,
+                  "dead": 0,
+                  "ladder": 1,
+                  "weapon": 1,
+                  "frags": 1,
+                  "deaths": 0,
+                  "shots": 55
+                }
+              },
+              "display": {
+                "display": {
+                  "ack": 194,
+                  "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+                  "next": "Next: Rail Lance",
+                  "outcome": "",
+                  "seq": 230,
+                  "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+                },
+                "tag": "promotion"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7a26e248-84ab-4db6-9c5e-1e529b27ce33",
+      "status": "FAIL",
+      "options": {
+        "startup": true,
+        "attempt": null
+      },
+      "error": "/tmp/opencode/arms-race/port/native-arms-race/evidence/7a26e248-84ab-4db6-9c5e-1e529b27ce33/meridian-exchange/native.log",
+      "cases": [
+        {
+          "map": "meridian-exchange",
+          "starts": 0,
+          "queuedRecords": 0,
+          "serverReceipts": 0,
+          "appliedACKMax": 0,
+          "sourceSamples": 0,
+          "captures": [],
+          "end": [],
+          "cleanup": {
+            "serverClosed": true,
+            "sockets": 0
+          },
+          "promotions": []
+        }
+      ]
+    },
+    {
+      "id": "b84cae02-766d-41fc-b23a-ceb085b347e1",
+      "status": "PASS",
+      "options": {
+        "startup": false,
+        "attempt": 2
+      },
+      "error": null,
+      "cases": [
+        {
+          "map": "meridian-exchange",
+          "starts": 1,
+          "queuedRecords": 659,
+          "serverReceipts": 659,
+          "appliedACKMax": 659,
+          "sourceSamples": 402,
+          "captures": [
+            {
+              "display": {
+                "ack": 107,
+                "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                "next": "Next: Rocket Launcher",
+                "outcome": "",
+                "seq": 82,
+                "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+              },
+              "tag": "startup"
+            },
+            {
+              "display": {
+                "ack": 656,
+                "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+                "next": "Next: Rail Lance",
+                "outcome": "",
+                "seq": 394,
+                "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+              },
+              "tag": "promotion"
+            },
+            {
+              "display": {
+                "ack": 657,
+                "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+                "next": "Next: Rail Lance",
+                "outcome": "",
+                "seq": 398,
+                "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+              },
+              "tag": "end"
+            }
+          ],
+          "end": [
+            {
+              "ack": 657,
+              "age": 13.528445,
+              "attempt": 2,
+              "captures": {
+                "end": {
+                  "ack": 657,
+                  "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+                  "next": "Next: Rail Lance",
+                  "outcome": "",
+                  "seq": 398,
+                  "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+                },
+                "promotion": {
+                  "ack": 656,
+                  "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+                  "next": "Next: Rail Lance",
+                  "outcome": "",
+                  "seq": 394,
+                  "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+                },
+                "startup": {
+                  "ack": 107,
+                  "current": "RUNG 1 / 10  \u00b7  Pulse Rifle",
+                  "next": "Next: Rocket Launcher",
+                  "outcome": "",
+                  "seq": 82,
+                  "transition": "Kill to climb \u00b7 Death drops a rung \u00b7 Catch-up may advance two"
+                }
+              },
+              "fresh_moved": false,
+              "promoted": true,
+              "results": 0,
+              "rounds": 1
+            }
+          ],
+          "cleanup": {
+            "serverClosed": true,
+            "sockets": 0
+          },
+          "promotions": [
+            {
+              "event": {
+                "round": 1,
+                "type": "armsrace-promote",
+                "id": 381,
+                "time": 13.133,
+                "actor": 0,
+                "weapon": 1,
+                "bonus": false
+              },
+              "death": {
+                "round": 1,
+                "type": "death",
+                "id": 382,
+                "time": 13.133,
+                "actor": 2,
+                "pos": {
+                  "x": 31.749,
+                  "y": 3.961,
+                  "z": 9.375
+                },
+                "character": "grok",
+                "killer": 0,
+                "killerName": "Godot",
+                "killerCharacter": "chatgpt",
+                "killerHarness": "openclaw",
+                "self": false,
+                "weapon": 1,
+                "ability": false,
+                "abilityName": null,
+                "overkill": 10.936,
+                "direction": {
+                  "x": 0.922,
+                  "y": 0,
+                  "z": -0.387
+                },
+                "seed": 30,
+                "style": "spinout"
+              },
+              "before": {
+                "seq": 393,
+                "actor": {
+                  "id": 0,
+                  "bot": false,
+                  "name": "Godot",
+                  "x": 23.143,
+                  "y": 0,
+                  "z": 12.982,
+                  "health": 95.117,
+                  "dead": 0,
+                  "ladder": 0,
+                  "weapon": 0,
+                  "frags": 0,
+                  "deaths": 0,
+                  "shots": 36
+                }
+              },
+              "after": {
+                "seq": 394,
+                "ack": 656,
+                "actor": {
+                  "id": 0,
+                  "bot": false,
+                  "name": "Godot",
+                  "x": 23.204,
+                  "y": 0,
+                  "z": 12.966,
+                  "health": 95.117,
+                  "dead": 0,
+                  "ladder": 1,
+                  "weapon": 1,
+                  "frags": 1,
+                  "deaths": 0,
+                  "shots": 37
+                }
+              },
+              "display": {
+                "display": {
+                  "ack": 656,
+                  "current": "RUNG 2 / 10  \u00b7  Rocket Launcher",
+                  "next": "Next: Rail Lance",
+                  "outcome": "",
+                  "seq": 394,
+                  "transition": "PROMOTED +1  \u00b7  Source-confirmed"
+                },
+                "tag": "promotion"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e57fff1f-508c-4dee-9907-f2fc3ee74797",
+      "status": "FAIL",
+      "options": {
+        "startup": false,
+        "attempt": 2
+      },
+      "error": "[Errno 13] Permission denied: 'xdpyinfo'",
+      "cases": []
+    }
+  ],
+  "liveCombatRuns": 2,
+  "interpretation": "Queued records, server receipt and applied ACK are separate. Kill/promotion requires source death + snapshot change + native HUD capture. Failed runs retain their original FAIL status."
+}

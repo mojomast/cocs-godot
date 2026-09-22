@@ -1,0 +1,58 @@
+{
+  "base": "8a58c97e48493e41903c2c9a729e753cb3579500",
+  "options": {
+    "startup": false,
+    "attempt": 2
+  },
+  "commands": [
+    [
+      "node",
+      "/tmp/opencode/arms-race/tools/godot-export/semantic.mjs",
+      "/tmp/opencode/arms-race-3s_cwepf/godot/content/generated"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-3s_cwepf/godot",
+      "--editor",
+      "--import"
+    ],
+    [
+      "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/tmp/opencode/arms-race-3s_cwepf/godot",
+      "--script",
+      "res://tests/arms_race/fixtures.gd"
+    ],
+    [
+      "node",
+      "--test",
+      "game/armsrace.test.mjs",
+      "game/outcome.test.mjs"
+    ],
+    [
+      "Xvfb",
+      "-displayfd",
+      "4",
+      "-screen",
+      "0",
+      "1280x800x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix"
+    ],
+    [
+      "xdpyinfo",
+      "-display",
+      ":0"
+    ]
+  ],
+  "cases": [],
+  "display": ":0",
+  "status": "FAIL",
+  "error": "[Errno 13] Permission denied: 'xdpyinfo'",
+  "ownedProcessesReaped": true
+}
