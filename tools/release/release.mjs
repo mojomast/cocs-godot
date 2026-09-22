@@ -389,6 +389,18 @@ async function stepPreflight(ctx) {
   detail.branch = branch;
   ctx.emit(`  HEAD     ${head.slice(0, 12)} on ${branch}`);
 
+  const shallow = await gitOrThrow(ctx, ['rev-parse', '--is-shallow-repository'], 'cannot read the repository depth');
+  if (shallow !== 'false') {
+    throw new ReleaseError('shallow-repository', 'the checkout is a shallow clone',
+      'the builder verifies locked source bytes against history; use a full clone');
+  }
+  const packageState = join(ctx.state, 'package-state');
+  if (!inside(DEFAULT_LANDING_ZONE, packageState) || packageState === DEFAULT_LANDING_ZONE) {
+    throw new ReleaseError('state-outside-landing-zone', `the package state ${packageState} is outside ${DEFAULT_LANDING_ZONE}`,
+      `build.py refuses build state elsewhere; pass --state=${DEFAULT_LANDING_ZONE}/cocs-release-<tag>`);
+  }
+  detail.package_state = packageState;
+
   const remoteUrl = await gitOrThrow(ctx, ['remote', 'get-url', options.publicationRemote], `publication remote ${options.publicationRemote} is missing`,
     'add the remote or pass --publication-remote=<name>');
   const repository = options.repository ?? remoteSlug(remoteUrl);

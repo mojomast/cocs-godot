@@ -16,11 +16,13 @@ const REMOTE_HEAD = 'b'.repeat(40);
 const TAG = 'rehearsal-2026-09-22';
 
 const sha512 = bytes => createHash('sha512').update(bytes).digest('hex');
+const LANDING = '/tmp/opencode';
 
 async function fixture(overrides = {}) {
   const base = await mkdtemp(join(tmpdir(), 'cocs-release-test-'));
   const root = join(base, 'checkout');
-  const state = join(base, 'state');
+  await mkdir(LANDING, {recursive: true});
+  const state = await mkdtemp(join(LANDING, 'cocs-release-test-'));
   const toolchain = join(base, 'toolchain');
   for (const dir of ['port/contracts', 'port/combat-expansion', 'port/reports', 'tools/godot-package', '.github/workflows', toolchain]) {
     await mkdir(dir.startsWith('/') ? dir : join(root, dir), {recursive: true});
@@ -92,6 +94,7 @@ async function fixture(overrides = {}) {
     if (args[0] === 'status') return done(0, world.status);
     if (args[0] === 'rev-parse' && args[1] === 'HEAD') return done(0, `${HEAD}\n`);
     if (args[0] === 'rev-parse' && args[1] === '--abbrev-ref') return done(0, 'port/godot-destinations\n');
+    if (args[0] === 'rev-parse' && args[1] === '--is-shallow-repository') return done(0, 'false\n');
     if (args[0] === 'remote' && args[1] === 'get-url') return done(0, 'https://github.com/mojomast/cocs-godot.git\n');
     if (args[0] === 'tag' && args[1] === '--list') return done(0, world.tagExists ? `${world.tag}\n` : '');
     if (args[0] === 'ls-remote' && args[1] === '--tags') return done(0, world.tagExists ? `${HEAD}\trefs/tags/${world.tag}\n` : '');
@@ -152,7 +155,10 @@ async function fixture(overrides = {}) {
     sleep: async () => {}, env: {PATH: '/usr/bin:/bin'}, ...extra,
   });
   const sideEffects = () => calls.filter(call => call.sideEffect && !call.dryRun);
-  const cleanup = () => rm(base, {recursive: true, force: true});
+  const cleanup = async () => {
+    await rm(base, {recursive: true, force: true});
+    await rm(state, {recursive: true, force: true});
+  };
   const readSummary = async result => JSON.parse(await readFile(result.summaryPath, 'utf8'));
   return {base, root, state, toolchain, world, calls, run, sideEffects, cleanup, readSummary, outputs: world.outputs};
 }
