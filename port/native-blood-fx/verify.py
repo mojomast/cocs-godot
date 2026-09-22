@@ -21,6 +21,12 @@ HEADLESS = [
     ("contracts", "res://tests/blood_fx/contracts.gd"),
     ("surfaces", "res://tests/blood_fx/surfaces.gd"),
     ("stress", "res://tests/blood_fx/stress.gd"),
+    ("spatter", "res://tests/blood_fx/spatter.gd"),
+]
+# Rendered cases: the arranged fixture matrix and the real-locked-map wall fixture.
+RENDER = [
+    ("fixture", "res://tests/blood_fx/render.tscn", "BLOOD_FX_RENDER"),
+    ("wall", "res://tests/blood_fx/wall.tscn", "BLOOD_FX_WALL"),
 ]
 
 
@@ -96,13 +102,14 @@ def xvfb_session():
 
 def render(env):
     records = []
-    for width, height in [(960, 640), (1280, 800)]:
+    for kind, scene, marker in RENDER:
+      for width, height in [(960, 640), (1280, 800)]:
         for quality in ["High", "Extreme"]:
-            case = f"fixture-{width}x{height}-{quality.lower()}"
+            case = f"{kind}-{width}x{height}-{quality.lower()}"
             prefix = EVIDENCE / case
             command = [GODOT, "--path", str(ROOT / "godot"), "--rendering-method", "gl_compatibility",
                        "--audio-driver", "Dummy", "--resolution", f"{width}x{height}", "--quit-after", "2500",
-                       "res://tests/blood_fx/render.tscn", "--", f"--width={width}", f"--height={height}",
+                       scene, "--", f"--width={width}", f"--height={height}",
                        f"--quality={quality}", f"--output={prefix}"]
             log = prefix.with_suffix(".log")
             for stale in EVIDENCE.glob(case + "*"):
@@ -122,18 +129,20 @@ def render(env):
                 server_log.close()
             text = log.read_text()
             errors = log_failures(text)
-            ok = result is not None and result.returncode == 0 and not errors and "BLOOD_FX_RENDER PASS" in text
+            ok = result is not None and result.returncode == 0 and not errors and (marker + " PASS") in text
             record = {"case": case, "kind": "render", "ok": ok,
                       "returncode": result.returncode if result is not None else None,
                       "errors": errors[:5], "log": log.name, "display": display}
-            png = Path(str(prefix) + "-action.png")
-            if not png.exists() or png.stat().st_mtime < started or not prefix.with_suffix(".json").exists():
+            shots = sorted(path for path in EVIDENCE.glob(case + "-*.png") if path.stat().st_mtime >= started)
+            png = shots[0] if shots else Path(str(prefix) + "-action.png")
+            if not shots or not prefix.with_suffix(".json").exists():
                 ok = False
                 record["ok"] = False
                 record["errors"].append("fixture did not produce a fresh PNG/JSON (killed before the final capture?)")
             if png.exists():
                 size = struct.unpack(">II", png.read_bytes()[16:24])
                 record["png_bytes"] = png.stat().st_size
+                record["png_name"] = png.name
                 record["png_size"] = list(size)
                 if tuple(size) != (width, height):
                     ok = False
@@ -142,15 +151,23 @@ def render(env):
             json_path = prefix.with_suffix(".json")
             if json_path.exists():
                 data = json.loads(json_path.read_text())
-                record.update({key: data[key] for key in [
+                keys = [
                     "quality", "allocated_slots", "submitted_slots", "active_emitters", "concurrent_cap",
                     "stains_live", "stain_cap", "stains_placed", "stains_recycled", "death_bursts", "spurts",
+                    "marks_wall", "marks_floor", "stains_wall", "stains_floor", "marks_skipped_edge",
+                    "marks_skipped_solid", "fan_rays_cast", "clusters_placed",
                     "behind_wall_stains_placed", "behind_wall_changed_pixels", "front_control_stains_placed",
                     "front_control_changed_pixels", "local_changed_fraction", "remote_changed_fraction",
-                    "occlusion_negative_zero_pixels", "renderer", "rendering_method", "viewport"] if key in data})
+                    "occlusion_negative_zero_pixels", "renderer", "rendering_method", "viewport",
+                    "death_wall_marks", "death_floor_marks", "wall_region_changed_pixels",
+                    "far_side_region_changed_pixels", "far_side_mark_count", "far_side_negative_control_ok",
+                    "marks_per_event", "stain_draw_calls_estimate", "wall_pixel_probe"]
+                record.update({key: data[key] for key in keys if key in data})
             records.append(record)
             print(("PASS " if record["ok"] else "FAIL ") + case + " " + json.dumps(
                 {key: record[key] for key in ["behind_wall_changed_pixels", "front_control_changed_pixels",
+                                              "wall_region_changed_pixels", "far_side_region_changed_pixels",
+                                              "death_wall_marks", "death_floor_marks",
                                               "local_changed_fraction", "remote_changed_fraction"] if key in record}))
     return records
 

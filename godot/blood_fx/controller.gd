@@ -75,12 +75,22 @@ var dropped := 0
 var recycled := 0
 var drains := 0
 var events_seen := 0
+var marks_wall := 0
+var marks_floor := 0
+var marks_slope := 0
+var marks_skipped_edge := 0
+var marks_skipped_facing := 0
+var marks_skipped_solid := 0
+var marks_skipped_reach := 0
+var clusters_placed := 0
+var fan_rays_cast := 0
+var fan_marks := 0
+var impact_marks := 0
 
 var _ids := PackedInt64Array()
 var _serial := 0
 var _stain_serial := 0
 var _suspended := true
-var _splatter_dirs: Array[Vector3] = []
 var _shared_fluid_mesh: QuadMesh
 var _shared_stain_mesh: QuadMesh
 var _fluid_shader: Shader
@@ -93,13 +103,6 @@ func _init() -> void:
 	_ids.fill(-1)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	set_process(false)
-	_splatter_dirs = [
-		Vector3(0.82, -0.35, 0.45), Vector3(-0.72, -0.28, 0.63),
-		Vector3(0.28, -0.62, -0.73), Vector3(-0.36, -0.5, -0.79),
-		Vector3(0.94, 0.18, -0.29), Vector3(-0.9, 0.22, -0.37),
-		Vector3(0.12, 0.9, 0.42), Vector3(-0.2, 0.86, -0.47),
-		Vector3(0.55, -0.8, -0.24), Vector3(-0.6, -0.78, 0.18),
-	]
 
 # --- configuration ------------------------------------------------------------
 
@@ -206,7 +209,7 @@ func _build_pools() -> void:
 		node.visible = false
 		add_child(node)
 		stain_slots.append({"node": node, "material": material, "remaining": 0.0, "total": 0.0, "age": 0.0,
-			"delay": 0.0, "fade": 0.0, "growth": 0.0, "opacity": 0.0, "serial": 0,
+			"delay": 0.0, "fade": 0.0, "growth": 0.0, "opacity": 0.0, "serial": 0, "surface": -1,
 			"scale_base": Vector3.ONE, "grow_from": Vector3.ONE})
 
 
@@ -448,7 +451,7 @@ func _damage_event(event: Dictionary, id: int) -> void:
 	spurts += 1
 	if profile == ARTERIAL: arterial_hits += 1
 	if not reach.is_empty() and float(reach.get("distance", 99.0)) <= settings.spurt_stain_reach:
-		_place_stain(exit, settings.spurt_stain_size * (0.55 + 0.45 * strength), reach, seed, 0.0, 1.0)
+		_impact_cluster(exit, direction, reach, strength, seed)
 	last_event_id = id
 	last_event_position = position
 
@@ -500,6 +503,8 @@ func _death_event(event: Dictionary, id: int) -> void:
 		rejected += 1
 		return
 	var local := victim == local_id
+	var shot: Variant = Wire.point(event.get("direction"))
+	var biased := shot != null
 	var direction := _death_direction(actor, event, id)
 	var seed := Wire.number(event.get("seed"), float(posmod(id, 100000)))
 	var overkill := maxf(0.0, Wire.number(event.get("overkill"), 0.0))
@@ -514,7 +519,7 @@ func _death_event(event: Dictionary, id: int) -> void:
 	var down := _reach(origin + Vector3.UP * 0.4, Vector3.DOWN, settings.stain_depth)
 	if not down.is_empty() and (reach.is_empty() or float(down.distance) < float(reach.distance)): reach = down
 	_emit(BURST, origin, direction, strength, local, seed, 1.0, reach)
-	_splatter(position, strength, seed)
+	_splatter(position, direction, biased, strength, seed)
 	death_bursts += 1
 	last_event_id = id
 	last_event_position = position
@@ -531,8 +536,7 @@ func _death_direction(actor: Dictionary, event: Dictionary, id: int) -> Vector3:
 	return Wire.fallback_direction(id)
 
 
-func _splatter(position: Vector3, strength: float, seed: float) -> void:
-	var wounds := settings.death_stain_count(quality)
+func _splatter(position: Vector3, direction: Vector3, biased: bool, strength: float, seed: float) -> void:
 	var drips := settings.death_drip_count(quality)
 	# 1) The surface actually below the death point. A ramp, a deck or mid-air
 	#    over the void all answer with a real query result or no stain at all.
@@ -540,36 +544,175 @@ func _splatter(position: Vector3, strength: float, seed: float) -> void:
 	var pool_hit := not down.is_empty()
 	if pool_hit:
 		var pool_size := settings.pool_size * (0.6 + 0.4 * strength)
-		_place_stain(position, pool_size, down, seed, 0.0, 1.0 + 1.4 * (1.0 - absf(float(down.normal.y))))
-	# 2) Radial splatter on nearby surfaces, rotated per death for variety.
-	var azimuth := seed * 0.017
-	var rotation := Quaternion(Vector3.UP, azimuth)
-	var placed := 1 if pool_hit else 0
-	for i in _splatter_dirs.size():
-		if placed >= wounds: break
-		var direction := (rotation * _splatter_dirs[i]).normalized()
-		var hit := _reach(position, direction, settings.stain_reach)
-		if hit.is_empty(): continue
-		var falloff := clampf(1.0 - float(hit.distance) / (settings.stain_reach * 1.5), 0.3, 1.0)
-		if _place_stain(position, settings.stain_size * (0.45 + 0.55 * strength) * falloff, hit,
-				seed + 13.0 * float(i + 1), 0.0, 1.0):
-			placed += 1
+		_place_stain(position, pool_size, down, seed, 0.0, 1.0 + 1.4 * (1.0 - absf(float(down.normal.y))),
+			Vector3.ZERO, SHAPE_POOL)
+	# 2) Bounded radial fan: vertical surfaces get spatter too, biased toward the
+	#    lethal shot direction when the event carries one.
+	var budget := settings.death_mark_count(quality)
+	budget -= (1 if pool_hit else 0)
+	_radial_fan(position, direction, biased, strength, seed, maxi(0, budget))
 	# 3) Short-lived drips near the primary pool, delayed so they appear after
 	#    the burst lands. Bounded by the quality table.
 	if not pool_hit: return
 	var pool_position: Vector3 = down.position
 	var pool_normal: Vector3 = down.normal
 	for k in drips:
-		if placed >= wounds + drips: break
 		var angle := seed * 0.031 + float(k) * 2.399963
 		var offset := Vector3(sin(angle), 0.0, cos(angle)) * (0.22 + 0.16 * float(k))
 		var probe := pool_position + pool_normal * 0.04 + offset + Vector3.UP * 0.25
 		var drip := _reach(probe, Vector3.DOWN, settings.stain_depth * 0.5)
 		if drip.is_empty(): continue
 		var vertical := 1.0 - absf(float(drip.normal.y))
-		if _place_stain(probe, settings.drip_size, drip, seed + 31.0 * float(k + 1),
-				0.18 + 0.22 * float(k), 1.0 + 1.6 * vertical):
+		_place_stain(probe, settings.drip_size, drip, seed + 31.0 * float(k + 1),
+			0.18 + 0.22 * float(k), 1.0 + 1.6 * vertical, Vector3.ZERO, SHAPE_DRIP)
+
+
+## Bounded radial fan from the body. Rays are spread over the full circle but
+## compressed toward the lethal azimuth (`fan_bias_pull`) and each ray is cast at
+## the configured pitch bands, so walls, low walls, the floor below and (for the
+## biased half) the ceiling are all sampled. Every candidate surface must face the
+## body and be reachable from it, and each hit grows a small cluster of marks.
+func _radial_fan(position: Vector3, direction: Vector3, biased: bool, strength: float,
+		seed: float, budget: int) -> void:
+	if budget <= 0 or not surfaces.ready: return
+	var rays := settings.fan_ray_count(quality)
+	var lethal_yaw := atan2(direction.x, direction.z)
+	var spin := seed * 0.017
+	var casts := 0
+	var cast_budget := settings.fan_budget(quality)
+	var placed := 0
+	# Cast the rays nearest the lethal azimuth first and spread outward, so the
+	# mark budget always buys the surface the burst was aimed at.
+	for i: int in _fan_order(rays):
+		if placed >= budget or casts >= cast_budget: break
+		var u := (float(i) + 0.5) / float(rays) * 2.0 - 1.0
+		var yaw := spin + TAU * (float(i) + 0.5) / float(rays)
+		var weight := 1.0
+		if biased:
+			var offset := signf(u) * pow(absf(u), 1.0 + settings.fan_bias_pull) * PI
+			yaw = lethal_yaw + offset
+			weight = clampf(1.0 - 0.55 * absf(offset) / PI, 0.35, 1.0)
+		for band_value: Variant in settings.fan_bands:
+			if casts >= cast_budget or placed >= budget: break
+			var band := float(band_value)
+			if band > 0.3 and biased and absf(u) > 0.36: continue
+			casts += 1
+			fan_rays_cast += 1
+			var cos_pitch := cos(band)
+			var cast := Vector3(sin(yaw) * cos_pitch, sin(band), cos(yaw) * cos_pitch)
+			var hit := _reach(position, cast, settings.fan_reach)
+			if hit.is_empty():
+				marks_skipped_reach += 1
+				continue
+			if not _faces_body(position, hit):
+				marks_skipped_facing += 1
+				continue
+			placed += _cluster(position, hit, weight, strength, seed + float(i) * 7.31 + band * 13.0,
+				settings.death_cluster_count(quality), budget - placed)
+
+
+## Ray order for the radial fan: middle (lethal-biased) index first, then
+## alternating outward. Deterministic and allocation-light.
+static func _fan_order(rays: int) -> Array:
+	var order: Array = []
+	if rays <= 0: return order
+	var middle := rays / 2
+	order.append(middle)
+	var span := 1
+	while order.size() < rays:
+		var right := middle + span
+		var left := middle - span
+		if right < rays: order.append(right)
+		if order.size() >= rays: break
+		if left >= 0: order.append(left)
+		span += 1
+	return order
+
+
+## A surface may only be marked when it faces the body: a normal pointing away
+## means the burst would have to pass through the surface to mark it.
+func _faces_body(origin: Vector3, hit: Dictionary) -> bool:
+	var position: Vector3 = hit.position
+	var toward := origin - position
+	if toward.length_squared() < 0.0004: return true
+	var normal: Vector3 = hit.normal
+	return normal.dot(toward.normalized()) > settings.fan_facing_min
+
+
+## Small cluster on one surface. Marks are tighter near the impact point, sparser
+## outward, and streak along the incoming direction projected into the plane.
+## Returns the number of marks actually placed (bounded by `budget`).
+func _cluster(origin: Vector3, hit: Dictionary, weight: float, strength: float, seed: float,
+		marks: int, budget: int) -> int:
+	var position: Vector3 = hit.position
+	var normal: Vector3 = hit.normal
+	var axis: Vector3 = position - origin
+	var basis := _stain_basis(normal, seed, axis, SHAPE_STREAK)
+	var spread := settings.wall_mark_spread * (0.45 + 0.75 * weight) * (0.6 + 0.5 * strength)
+	var vertical := absf(normal.y)
+	clusters_placed += 1
+	var placed := 0
+	for k in marks:
+		if placed >= budget: break
+		var t := 0.0
+		if marks > 1: t = float(k) / float(marks - 1)
+		var angle := seed * 1.7 + float(k) * 2.399963
+		var radius := spread * sqrt(t) * (0.55 + 0.65 * absf(sin(seed + float(k) * 3.1)))
+		var offset := (basis.x * cos(angle) + basis.y * sin(angle)) * radius
+		var size := settings.wall_mark_size * weight * (1.0 - 0.6 * t) * (0.7 + 0.4 * strength) * (0.75 + 0.5 * absf(sin(seed * 0.7 + float(k) * 4.3)))
+		var elongation := 1.0 + (settings.wall_mark_elongation - 1.0) * (0.35 + 0.65 * t)
+		if _place_stain(origin, size, _plane_hit(position + offset, normal, float(hit.distance)),
+				seed + float(k) * 11.7, 0.0, elongation, axis, SHAPE_STREAK):
+			fan_marks += 1
 			placed += 1
+	# Optional short drip tails running down a vertical surface below the cluster.
+	var tails := settings.wall_drip_count(quality)
+	if tails <= 0 or vertical > 0.5: return placed
+	var down := Vector3.DOWN - normal * Vector3.DOWN.dot(normal)
+	if down.length_squared() < 0.04: return placed
+	down = down.normalized()
+	for k in tails:
+		if placed >= budget: break
+		var tail := position + down * (settings.wall_mark_size * (0.7 + 0.9 * float(k)))
+		if _place_stain(origin, settings.drip_size * 0.8, _plane_hit(tail, normal, float(hit.distance)),
+				seed + 47.0 + float(k) * 9.0, 0.25 + 0.2 * float(k), 1.9, Vector3.ZERO, SHAPE_DRIP):
+			fan_marks += 1
+			placed += 1
+	return placed
+
+
+## Impact spatter when a spurting jet visibly reaches a surface: a cluster of
+## marks, tight at the impact point and stretched along the jet direction, with
+## optional drip tails on vertical surfaces. Bounded per event.
+func _impact_cluster(origin: Vector3, direction: Vector3, hit: Dictionary, strength: float, seed: float) -> void:
+	var marks := mini(settings.spurt_mark_count(quality), settings.spurt_mark_budget)
+	var position: Vector3 = hit.position
+	var normal: Vector3 = hit.normal
+	var axis := direction if direction.length_squared() > 0.0004 else (position - origin)
+	var basis := _stain_basis(normal, seed, axis, SHAPE_STREAK)
+	var spread := settings.spurt_spread * (0.4 + 0.6 * strength)
+	var vertical := absf(normal.y)
+	clusters_placed += 1
+	for k in marks:
+		var t := sqrt(float(k) / maxf(1.0, float(marks)))
+		var angle := seed * 2.1 + float(k) * 2.399963
+		var radius := spread * t * (0.6 + 0.7 * absf(cos(seed * 1.3 + float(k) * 2.7)))
+		var offset := (basis.x * cos(angle) + basis.y * sin(angle)) * radius
+		var size := settings.spurt_stain_size * (0.5 + 0.5 * strength) * (1.0 - 0.6 * t) * (0.75 + 0.5 * absf(cos(seed * 0.9 + float(k) * 2.3)))
+		var elongation := 1.0 + (settings.spurt_elongation - 1.0) * (0.3 + 0.7 * t)
+		if _place_stain(origin, size, _plane_hit(position + offset, normal, float(hit.distance)),
+				seed + float(k) * 13.3, 0.0, elongation, axis, SHAPE_STREAK):
+			impact_marks += 1
+	var tails := settings.spurt_drip_count(quality)
+	if tails <= 0 or vertical > 0.5: return
+	var down := Vector3.DOWN - normal * Vector3.DOWN.dot(normal)
+	if down.length_squared() < 0.04: return
+	down = down.normalized()
+	for k in tails:
+		var tail := position + down * (settings.spurt_stain_size * 0.9 * (0.8 + 0.9 * float(k)))
+		if _place_stain(origin, settings.drip_size * 0.7, _plane_hit(tail, normal, float(hit.distance)),
+				seed + 61.0 + float(k) * 7.0, 0.22 + 0.18 * float(k), 1.8, Vector3.ZERO, SHAPE_DRIP):
+			impact_marks += 1
 
 # --- fluid emitters ----------------------------------------------------------
 
@@ -765,21 +908,64 @@ func _visible_from(origin: Vector3, hit: Dictionary) -> bool:
 	return surfaces.query(start, end).is_empty()
 
 
-func _place_stain(origin: Vector3, size: float, hit: Dictionary, seed: float, delay: float, elongation: float) -> bool:
+## Edge / corner guard. A mark must lie in the plane it was queried on, so short
+## probes around the candidate re-query the same surface at its own offset: a
+## different depth means the quad would straddle an edge or float, and a miss
+## means the surface ends there. Returns false when the mark must be shrunk or
+## skipped instead of drawn wrong.
+func _mark_flat(position: Vector3, normal: Vector3, basis: Basis, size: float) -> bool:
+	if not settings.stain_edge_check or not surfaces.ready: return true
+	var reach := settings.stain_edge_tolerance + size * 0.5
+	for i in 3:
+		var offset: Vector3 = (basis.y * size * 0.5) if i == 0 else ((-basis.y * size * 0.5) if i == 1 else (basis.x * size * 0.5))
+		var probe := surfaces.query(position + offset + normal * reach, position + offset - normal * reach)
+		if probe.is_empty(): return false
+		if absf(float(probe.distance) - reach) > settings.stain_edge_tolerance: return false
+	return true
+
+
+const SHAPE_POOL := 0
+const SHAPE_STREAK := 1
+const SHAPE_DRIP := 2
+const SURFACE_FLOOR := 0
+const SURFACE_SLOPE := 1
+const SURFACE_WALL := 2
+
+
+## Marks are placed only on a real queried surface, in its own plane, offset along
+## the normal. `axis_hint` orients the long axis (jet streaks); SHAPE_POOL and
+## SHAPE_DRIP instead follow the surface downhill direction. `edge_shrink` allows
+## one half-size retry before the mark is rejected.
+func _place_stain(origin: Vector3, size: float, hit: Dictionary, seed: float, delay: float,
+		elongation: float, axis_hint: Vector3 = Vector3.ZERO, shape: int = SHAPE_POOL) -> bool:
 	if hit.is_empty() or not surfaces.ready:
+		stains_rejected += 1
+		return false
+	if surfaces.solid_at(hit.position, hit.normal):
+		# A mark must never sit inside solid geometry (for example on a floor quad
+		# that lies under a wall's footprint).
+		marks_skipped_solid += 1
 		stains_rejected += 1
 		return false
 	if not _visible_from(origin, hit):
 		stains_rejected += 1
 		return false
+	var position: Vector3 = hit.position
+	var normal: Vector3 = hit.normal
+	var width := maxf(0.05, size)
+	var basis := _stain_basis(normal, seed, axis_hint, shape)
+	if not _mark_flat(position, normal, basis, width):
+		# Clamp once to half size, then skip rather than draw a wrong quad.
+		width *= 0.5
+		basis = _stain_basis(normal, seed, axis_hint, shape)
+		if width < 0.06 or not _mark_flat(position, normal, basis, width):
+			marks_skipped_edge += 1
+			stains_rejected += 1
+			return false
 	var slot := _acquire_stain()
 	if slot.is_empty():
 		stains_rejected += 1
 		return false
-	var position: Vector3 = hit.position
-	var normal: Vector3 = hit.normal
-	var basis := _stain_basis(normal, seed)
-	var width := maxf(0.05, size)
 	_stain_serial += 1
 	slot.serial = _stain_serial
 	slot.age = 0.0
@@ -787,10 +973,23 @@ func _place_stain(origin: Vector3, size: float, hit: Dictionary, seed: float, de
 	slot.growth = settings.stain_growth_seconds
 	slot.fade = settings.stain_fade_seconds
 	slot.opacity = settings.stain_opacity
-	slot.scale_base = Vector3(width, width, 1.0)
-	slot.grow_from = Vector3(0.35, 0.35 if elongation <= 1.2 else 0.12, 1.0)
+	slot.scale_base = Vector3(width, width * maxf(0.5, elongation), 1.0)
+	if shape == SHAPE_STREAK:
+		slot.grow_from = Vector3(0.55, 0.18, 1.0)
+	elif shape == SHAPE_DRIP:
+		slot.grow_from = Vector3(0.6, 0.1, 1.0)
+	else:
+		slot.grow_from = Vector3(0.35, 0.35, 1.0)
 	slot.remaining = maxf(0.5, settings.stain_fade_seconds) if settings.stain_fade_seconds > 0.0 else INF
 	slot.total = slot.remaining
+	slot.surface = _classify_surface(normal)
+	match slot.surface:
+		SURFACE_WALL:
+			marks_wall += 1
+		SURFACE_SLOPE:
+			marks_slope += 1
+		_:
+			marks_floor += 1
 	var material: ShaderMaterial = slot.material
 	material.set_shader_parameter("fluid_color", settings.fluid_color)
 	material.set_shader_parameter("opacity", 0.0 if delay > 0.0 else settings.stain_opacity)
@@ -804,18 +1003,37 @@ func _place_stain(origin: Vector3, size: float, hit: Dictionary, seed: float, de
 	return true
 
 
-## Local +Y of every stain runs down the surface, so an elongated drip always
-## descends in world space instead of following an arbitrary quad axis. The
-## basis is right-handed, so no axis is mirrored by the transform decomposition.
-func _stain_basis(normal: Vector3, seed: float) -> Basis:
+static func _classify_surface(normal: Vector3) -> int:
+	var vertical := absf(normal.y)
+	if vertical >= 0.7: return SURFACE_FLOOR
+	if vertical <= 0.4: return SURFACE_WALL
+	return SURFACE_SLOPE
+
+
+## Local +Y of a pool/drip runs down the surface so an elongated drip always
+## descends in world space; a streak instead points along the incoming jet's
+## in-plane projection. The basis is right-handed, so no axis is mirrored by the
+## transform decomposition.
+func _stain_basis(normal: Vector3, seed: float, axis_hint: Vector3 = Vector3.ZERO, shape: int = SHAPE_POOL) -> Basis:
 	var up := normal.normalized()
-	var down := Vector3.DOWN - up * Vector3.DOWN.dot(up)
-	if down.length_squared() < 0.0004:
-		down = Vector3.FORWARD - up * Vector3.FORWARD.dot(up)
-	down = down.normalized()
-	down = (Quaternion(up, seed * 0.7).normalized() * down).normalized()
-	var right := down.cross(up).normalized()
-	return Basis(right, down, up)
+	var axis := Vector3.DOWN - up * Vector3.DOWN.dot(up)
+	if axis.length_squared() < 0.0004:
+		axis = Vector3.FORWARD - up * Vector3.FORWARD.dot(up)
+	axis = axis.normalized()
+	if shape == SHAPE_STREAK and axis_hint.length_squared() > 0.0004:
+		var hint := axis_hint - up * axis_hint.dot(up)
+		if hint.length_squared() > 0.0004: axis = hint.normalized()
+		axis = (Quaternion(up, (fmod(seed, 7.0) - 3.5) * 0.08).normalized() * axis).normalized()
+	else:
+		axis = (Quaternion(up, seed * 0.7).normalized() * axis).normalized()
+	var right := axis.cross(up).normalized()
+	return Basis(right, axis, up)
+
+
+## A synthesised in-plane hit: the point is known to be in the surface plane, so
+## the edge probe and the reachability check still decide whether it may be drawn.
+func _plane_hit(position: Vector3, normal: Vector3, distance: float) -> Dictionary:
+	return {"hit": true, "position": position, "normal": normal, "distance": distance, "surface": "plane"}
 
 
 func _acquire_stain() -> Dictionary:
@@ -897,6 +1115,9 @@ func snapshot() -> Dictionary:
 	var bursts_live := 0
 	var stains_live := 0
 	var stains_pending := 0
+	var stains_wall := 0
+	var stains_floor := 0
+	var stains_slope := 0
 	for slot: Dictionary in fluid_slots:
 		allocated += int(slot.node.amount)
 		if slot.remaining > 0.0:
@@ -908,6 +1129,10 @@ func snapshot() -> Dictionary:
 		if slot.remaining <= 0.0: continue
 		stains_live += 1
 		if slot.delay > 0.0: stains_pending += 1
+		match int(slot.surface):
+			SURFACE_WALL: stains_wall += 1
+			SURFACE_SLOPE: stains_slope += 1
+			SURFACE_FLOOR: stains_floor += 1
 	return {
 		"backend": "GPUParticles3D + pooled surface quads",
 		"simulation": "transform-feedback" if RenderingServer.get_current_rendering_method() == "gl_compatibility" else "RD-compute",
@@ -917,6 +1142,12 @@ func snapshot() -> Dictionary:
 		"pool_nodes": fluid_slots.size(), "active_emitters": emitters, "concurrent_cap": concurrent_cap,
 		"spurt_emitters": spurts_live, "burst_emitters": bursts_live,
 		"stain_pool": stain_slots.size(), "stain_cap": stain_cap, "stains_live": stains_live, "stains_pending": stains_pending,
+		"stains_wall": stains_wall, "stains_floor": stains_floor, "stains_slope": stains_slope,
+		"marks_wall": marks_wall, "marks_floor": marks_floor, "marks_slope": marks_slope,
+		"marks_skipped_edge": marks_skipped_edge, "marks_skipped_facing": marks_skipped_facing,
+		"marks_skipped_solid": marks_skipped_solid,
+		"marks_skipped_reach": marks_skipped_reach, "clusters_placed": clusters_placed,
+		"fan_rays_cast": fan_rays_cast, "fan_marks": fan_marks, "impact_marks": impact_marks,
 		"stain_nodes_created": stain_slots.size(), "shared_shaders": 3, "shared_meshes": 2,
 		"slot_materials": fluid_slots.size() + stain_slots.size(),
 		"buffer_payload_estimate_bytes": allocated * 320,

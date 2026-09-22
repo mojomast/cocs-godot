@@ -1,0 +1,4 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+BLOOD_FX_SPATTER PASS checks=55
+BLOOD_FX_SPATTER_METRICS {"budget_per_death":23,"checks":55,"clusters_placed":19,"death_floor_marks":5,"death_total_marks":22,"death_wall_marks":17,"failed":0,"fan_marks":57,"fan_rays_cast":25,"impact_cluster_marks":6,"impact_marks":6,"marks_floor":30,"marks_skipped_edge":0,"marks_skipped_facing":0,"marks_skipped_reach":7,"marks_slope":0,"marks_wall":42,"stain_cap":128,"stains_live":22}

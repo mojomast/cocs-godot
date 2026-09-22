@@ -129,6 +129,27 @@ func run() -> void:
 	check(controller.get_child_count() == children_before, "the backlog creates no node")
 	check(controller.snapshot().active_emitters <= controller.snapshot().concurrent_cap, "the backlog cannot exceed the concurrent cap")
 
+	# Per-event cost: one death and one wall impact at a time, so the cap raise
+	# can be justified by measured cost instead of a guess.
+	var death_usec := 0
+	var impact_usec := 0
+	var probe_serial := 500000
+	var probe_start := Time.get_ticks_usec()
+	for i in range(20):
+		probe_serial += 1
+		controller.apply_events([{"type": "death", "id": probe_serial, "actor": i % 48,
+			"pos": {"x": float(i % 8) * 2.0 - 7.0, "y": 1.1, "z": float(i / 8) * 2.0 - 5.0},
+			"killer": 47, "direction": {"x": 0.6, "y": 0, "z": 0.8}, "overkill": 0.0, "seed": float(i)}], 0)
+	death_usec = (Time.get_ticks_usec() - probe_start) / 20
+	probe_start = Time.get_ticks_usec()
+	for i in range(200):
+		probe_serial += 1
+		controller.apply_events([{"type": "damage", "id": probe_serial, "actor": i % 48, "source": 47,
+			"amount": 34.0, "shield": 0.0}], 0)
+	impact_usec = (Time.get_ticks_usec() - probe_start) / 200
+	check(death_usec < 4000, "one death stays under 4 ms of CPU (%.0f us)" % death_usec)
+	check(impact_usec < 1500, "one impact stays under 1.5 ms of CPU (%.0f us)" % impact_usec)
+
 	# ID window: a very old id falls out of the 4,096 window and is not treated as
 	# the immediate duplicate, while the newest ids never replay.
 	var highest: int = controller.highest_event
@@ -149,5 +170,10 @@ func run() -> void:
 		"stains_live": controller.snapshot().stains_live, "stains_cap": controller.snapshot().stain_cap,
 		"stains_placed": controller.snapshot().stains_placed, "stains_recycled": controller.snapshot().stains_recycled,
 		"dropped": controller.snapshot().dropped, "recycled": controller.snapshot().recycled,
+		"usec_per_death": death_usec, "usec_per_impact": impact_usec,
+		"marks_wall": controller.snapshot().marks_wall, "marks_floor": controller.snapshot().marks_floor,
+		"marks_skipped_edge": controller.snapshot().marks_skipped_edge,
+		"marks_skipped_facing": controller.snapshot().marks_skipped_facing,
+		"clusters_placed": controller.snapshot().clusters_placed, "fan_rays_cast": controller.snapshot().fan_rays_cast,
 	}))
 	quit(1 if failed else 0)

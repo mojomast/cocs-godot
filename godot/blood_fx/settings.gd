@@ -36,10 +36,14 @@ var fluid_emitters: int = 24
 var quality_budgets: Dictionary = {"Low": 4096, "High": 24576, "Extreme": 98304}
 ## Maximum fluid emitters allowed to be live at once (concurrent cap).
 var concurrent_cap: Dictionary = {"Low": 8, "High": 14, "Extreme": 20}
-## Pooled surface-quad stains. Hard cap on nodes created.
-var stain_pool: int = 128
+## Pooled surface-quad stains. Hard cap on nodes created. Raised from 128 to 256
+## with the wall-spatter clusters: a wall death now places ~18 marks, so the
+## previous live caps recycled after ~4 kills. Measured cost of the larger pool is
+## in port/native-blood-fx/README.md (per-frame aging cost is linear in pool size).
+var stain_pool: int = 256
 ## Maximum live stains per quality; the oldest stain is recycled past the cap.
-var stain_caps: Dictionary = {"Low": 32, "High": 80, "Extreme": 128}
+## Before wall spatter: 32 / 80 / 128. After, with measured cost: 48 / 128 / 224.
+var stain_caps: Dictionary = {"Low": 48, "High": 128, "Extreme": 224}
 
 # --- wire / lifecycle ---------------------------------------------------------
 var events_per_callback: int = 512
@@ -86,7 +90,37 @@ var stain_normal_offset: float = 0.012  # normal offset that avoids z-fighting
 var stain_opacity: float = 0.88
 var stain_visibility_check: bool = true
 var spurt_stain_reach: float = 2.8      # a spurt stains a wall it visibly hits
-var spurt_stain_size: float = 0.32
+var spurt_stain_size: float = 0.26
+
+# --- wall spatter: the death burst reaches vertical surfaces too ---------------
+## Bounded radial fan from the death point. `fan_rays` is the per-ring ray count
+## and `fan_band_budget` caps ray x pitch-band combinations per death.
+var fan_rays: Dictionary = {"Low": 6, "High": 10, "Extreme": 14}
+var fan_band_budget: Dictionary = {"Low": 14, "High": 22, "Extreme": 30}
+var fan_reach: float = 4.8              # furthest a mark may land from the body
+var fan_bands: Array = [0.02, -0.34, -0.78, 0.62]   # wall, low wall, floor, ceiling
+var fan_facing_min: float = 0.18        # surface must face the body (dot > this)
+var fan_bias_pull: float = 1.8          # angular compression toward the lethal shot
+var death_cluster_marks: Dictionary = {"Low": 2, "High": 3, "Extreme": 4}
+var death_mark_budget: Dictionary = {"Low": 10, "High": 20, "Extreme": 30}
+var wall_mark_size: float = 0.3         # base diameter of one spatter mark (m)
+var wall_mark_spread: float = 0.62      # in-plane cluster radius (m)
+var wall_mark_elongation: float = 1.9   # streak length along the burst axis
+var wall_drip_marks: Dictionary = {"Low": 0, "High": 1, "Extreme": 1}
+
+# --- impact spatter cluster: a jet that visibly reaches a surface --------------
+var spurt_marks: Dictionary = {"Low": 3, "High": 5, "Extreme": 7}
+var spurt_mark_budget: int = 6
+var spurt_spread: float = 0.55          # outward cluster radius (m)
+var spurt_elongation: float = 2.4       # streaks grow along the jet direction
+var spurt_drip_marks: Dictionary = {"Low": 0, "High": 1, "Extreme": 2}
+
+# --- mark correctness ----------------------------------------------------------
+## Every mark is probed in its own surface plane before it is placed: an edge or
+## corner shrinks it once and then rejects it instead of drawing a quad that
+## straddles the edge or floats off the surface.
+var stain_edge_check: bool = true
+var stain_edge_tolerance: float = 0.06  # metres of plane deviation tolerated
 
 # --- local player protection --------------------------------------------------
 var coverage_limit: float = 0.7         # max angular radius / half-FOV, remote
@@ -142,6 +176,27 @@ func death_stain_count(quality: String) -> int:
 func death_drip_count(quality: String) -> int:
 	return maxi(0, int(death_drips.get(quality, death_drips[DEFAULT_QUALITY])))
 
+func fan_ray_count(quality: String) -> int:
+	return maxi(3, int(fan_rays.get(quality, fan_rays[DEFAULT_QUALITY])))
+
+func fan_budget(quality: String) -> int:
+	return maxi(3, int(fan_band_budget.get(quality, fan_band_budget[DEFAULT_QUALITY])))
+
+func death_cluster_count(quality: String) -> int:
+	return maxi(1, int(death_cluster_marks.get(quality, death_cluster_marks[DEFAULT_QUALITY])))
+
+func death_mark_count(quality: String) -> int:
+	return maxi(1, int(death_mark_budget.get(quality, death_mark_budget[DEFAULT_QUALITY])))
+
+func wall_drip_count(quality: String) -> int:
+	return maxi(0, int(wall_drip_marks.get(quality, wall_drip_marks[DEFAULT_QUALITY])))
+
+func spurt_mark_count(quality: String) -> int:
+	return maxi(1, int(spurt_marks.get(quality, spurt_marks[DEFAULT_QUALITY])))
+
+func spurt_drip_count(quality: String) -> int:
+	return maxi(0, int(spurt_drip_marks.get(quality, spurt_drip_marks[DEFAULT_QUALITY])))
+
 ## Documented summary for reports/telemetry. Never a claim of GPU readback.
 func describe() -> Dictionary:
 	return {
@@ -150,4 +205,7 @@ func describe() -> Dictionary:
 		"fluid_emitters": fluid_emitters, "stain_pool": stain_pool, "stain_caps": stain_caps.duplicate(),
 		"full_reference": full_reference, "mist_max": mist_max, "arterial_min": arterial_min,
 		"local_coverage_limit": local_coverage_limit, "local_gain": local_gain,
+		"fan_rays": fan_rays.duplicate(), "fan_band_budget": fan_band_budget.duplicate(),
+		"death_mark_budget": death_mark_budget.duplicate(), "spurt_marks": spurt_marks.duplicate(),
+		"stain_edge_check": stain_edge_check,
 	}

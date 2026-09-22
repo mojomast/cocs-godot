@@ -19,6 +19,8 @@ const MAX_TRIANGLES := 60000
 const MAX_CELLS := 4096
 const MIN_DIRECTION := 0.0000001
 const MIN_DISTANCE := 0.00001
+const BOUNDARY_EPSILON := 0.002
+const SHAPE_MARGIN_CLEARANCE := 0.05
 
 var kind := "none"
 var ready := false
@@ -254,6 +256,37 @@ func query(from: Vector3, to: Vector3) -> Dictionary:
 	else:
 		hits += 1
 	return result
+
+
+## True when a point is inside a conservative solid volume. Semantic geometry
+## answers from its block boxes (a floor quad under a wall's footprint is inside
+## the wall, not on the floor); physics uses a real point query so a collider
+## interior can never receive a mark. Callable providers cannot answer this and
+## report false, which keeps the previous behaviour for host-owned queries.
+func solid_at(point: Vector3, normal: Vector3 = Vector3.UP) -> bool:
+	if not point.is_finite(): return true
+	# Always test just off the mark's own plane: a face boundary is inclusive in
+	# AABB.has_point, while a floor quad under a wall's footprint stays inside.
+	var probe := point + normal.normalized() * BOUNDARY_EPSILON
+	match kind:
+		"semantic":
+			for box: AABB in boxes:
+				if box.has_point(probe): return true
+			if implicit_floor and probe.y < 0.0: return true
+			return false
+		"physics":
+			if not is_instance_valid(camera) or not camera.is_inside_tree(): return false
+			var world := camera.get_world_3d()
+			if world == null: return false
+			# Collision shapes carry a margin, so probe further clear of the surface.
+			var parameters := PhysicsPointQueryParameters3D.new()
+			parameters.position = point + normal.normalized() * SHAPE_MARGIN_CLEARANCE
+			parameters.collision_mask = mask
+			parameters.collide_with_bodies = true
+			parameters.collide_with_areas = false
+			return not world.direct_space_state.intersect_point(parameters, 1).is_empty()
+		_:
+			return false
 
 
 func _query_callable(from: Vector3, to: Vector3) -> Dictionary:

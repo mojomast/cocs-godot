@@ -6,8 +6,9 @@
     "returncode": 0,
     "errors": [],
     "log": "fixture-960x640-high.log",
-    "display": "1",
-    "png_bytes": 207136,
+    "display": "0",
+    "png_bytes": 207424,
+    "png_name": "fixture-960x640-high-action.png",
     "png_size": [
       960,
       640
@@ -17,16 +18,24 @@
     "submitted_slots": 1024,
     "active_emitters": 1,
     "concurrent_cap": 14,
-    "stains_live": 3,
-    "stain_cap": 80,
-    "stains_placed": 49,
+    "stains_live": 21,
+    "stain_cap": 128,
+    "stains_placed": 158,
     "stains_recycled": 0,
     "death_bursts": 9,
     "spurts": 8,
-    "behind_wall_stains_placed": 22,
+    "marks_wall": 0,
+    "marks_floor": 158,
+    "stains_wall": 0,
+    "stains_floor": 21,
+    "marks_skipped_edge": 9,
+    "marks_skipped_solid": 0,
+    "fan_rays_cast": 150,
+    "clusters_placed": 49,
+    "behind_wall_stains_placed": 68,
     "behind_wall_changed_pixels": 0,
-    "front_control_stains_placed": 43,
-    "front_control_changed_pixels": 1295,
+    "front_control_stains_placed": 134,
+    "front_control_changed_pixels": 3619,
     "local_changed_fraction": 0.0,
     "remote_changed_fraction": 0.0608154296875,
     "occlusion_negative_zero_pixels": true,
@@ -44,8 +53,9 @@
     "returncode": 0,
     "errors": [],
     "log": "fixture-960x640-extreme.log",
-    "display": "1",
-    "png_bytes": 222655,
+    "display": "0",
+    "png_bytes": 220610,
+    "png_name": "fixture-960x640-extreme-action.png",
     "png_size": [
       960,
       640
@@ -55,18 +65,26 @@
     "submitted_slots": 4096,
     "active_emitters": 1,
     "concurrent_cap": 20,
-    "stains_live": 4,
-    "stain_cap": 128,
-    "stains_placed": 64,
+    "stains_live": 33,
+    "stain_cap": 224,
+    "stains_placed": 238,
     "stains_recycled": 0,
     "death_bursts": 9,
     "spurts": 8,
-    "behind_wall_stains_placed": 28,
+    "marks_wall": 0,
+    "marks_floor": 238,
+    "stains_wall": 0,
+    "stains_floor": 33,
+    "marks_skipped_edge": 15,
+    "marks_skipped_solid": 0,
+    "fan_rays_cast": 188,
+    "clusters_placed": 58,
+    "behind_wall_stains_placed": 103,
     "behind_wall_changed_pixels": 0,
-    "front_control_stains_placed": 56,
-    "front_control_changed_pixels": 1431,
+    "front_control_stains_placed": 201,
+    "front_control_changed_pixels": 4792,
     "local_changed_fraction": 0.0,
-    "remote_changed_fraction": 0.0669889322916667,
+    "remote_changed_fraction": 0.0673372395833333,
     "occlusion_negative_zero_pixels": true,
     "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
     "rendering_method": "gl_compatibility",
@@ -82,8 +100,9 @@
     "returncode": 0,
     "errors": [],
     "log": "fixture-1280x800-high.log",
-    "display": "1",
-    "png_bytes": 303552,
+    "display": "0",
+    "png_bytes": 304491,
+    "png_name": "fixture-1280x800-high-action.png",
     "png_size": [
       1280,
       800
@@ -93,16 +112,24 @@
     "submitted_slots": 1024,
     "active_emitters": 1,
     "concurrent_cap": 14,
-    "stains_live": 3,
-    "stain_cap": 80,
-    "stains_placed": 49,
+    "stains_live": 21,
+    "stain_cap": 128,
+    "stains_placed": 158,
     "stains_recycled": 0,
     "death_bursts": 9,
     "spurts": 8,
-    "behind_wall_stains_placed": 22,
+    "marks_wall": 0,
+    "marks_floor": 158,
+    "stains_wall": 0,
+    "stains_floor": 21,
+    "marks_skipped_edge": 9,
+    "marks_skipped_solid": 0,
+    "fan_rays_cast": 150,
+    "clusters_placed": 49,
+    "behind_wall_stains_placed": 68,
     "behind_wall_changed_pixels": 0,
-    "front_control_stains_placed": 43,
-    "front_control_changed_pixels": 2033,
+    "front_control_stains_placed": 134,
+    "front_control_changed_pixels": 5642,
     "local_changed_fraction": 0.0,
     "remote_changed_fraction": 0.057025390625,
     "occlusion_negative_zero_pixels": true,
@@ -121,7 +148,8 @@
     "errors": [],
     "log": "fixture-1280x800-extreme.log",
     "display": "0",
-    "png_bytes": 331630,
+    "png_bytes": 330216,
+    "png_name": "fixture-1280x800-extreme-action.png",
     "png_size": [
       1280,
       800
@@ -131,18 +159,26 @@
     "submitted_slots": 4096,
     "active_emitters": 1,
     "concurrent_cap": 20,
-    "stains_live": 4,
-    "stain_cap": 128,
-    "stains_placed": 64,
+    "stains_live": 33,
+    "stain_cap": 224,
+    "stains_placed": 238,
     "stains_recycled": 0,
     "death_bursts": 9,
     "spurts": 8,
-    "behind_wall_stains_placed": 28,
+    "marks_wall": 0,
+    "marks_floor": 238,
+    "stains_wall": 0,
+    "stains_floor": 33,
+    "marks_skipped_edge": 15,
+    "marks_skipped_solid": 0,
+    "fan_rays_cast": 188,
+    "clusters_placed": 58,
+    "behind_wall_stains_placed": 103,
     "behind_wall_changed_pixels": 0,
-    "front_control_stains_placed": 56,
-    "front_control_changed_pixels": 2251,
+    "front_control_stains_placed": 201,
+    "front_control_changed_pixels": 7497,
     "local_changed_fraction": 0.0,
-    "remote_changed_fraction": 0.0628310546875,
+    "remote_changed_fraction": 0.062251953125,
     "occlusion_negative_zero_pixels": true,
     "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
     "rendering_method": "gl_compatibility",
@@ -152,6 +188,370 @@
     ]
   },
   {
+    "case": "wall-960x640-high",
+    "kind": "render",
+    "ok": true,
+    "returncode": 0,
+    "errors": [],
+    "log": "wall-960x640-high.log",
+    "display": "0",
+    "png_bytes": 207089,
+    "png_name": "wall-960x640-high-back-after.png",
+    "png_size": [
+      960,
+      640
+    ],
+    "quality": "High",
+    "allocated_slots": 24576,
+    "submitted_slots": 1024,
+    "active_emitters": 1,
+    "concurrent_cap": 14,
+    "stains_live": 22,
+    "stain_cap": 128,
+    "stains_placed": 72,
+    "stains_recycled": 0,
+    "death_bursts": 3,
+    "spurts": 1,
+    "marks_wall": 63,
+    "marks_floor": 9,
+    "stains_wall": 19,
+    "stains_floor": 3,
+    "marks_skipped_edge": 3,
+    "marks_skipped_solid": 0,
+    "fan_rays_cast": 18,
+    "clusters_placed": 19,
+    "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+    "rendering_method": "gl_compatibility",
+    "viewport": [
+      960.0,
+      640.0
+    ],
+    "death_wall_marks": 19,
+    "death_floor_marks": 3,
+    "wall_region_changed_pixels": 7257,
+    "far_side_region_changed_pixels": 0,
+    "far_side_mark_count": 0,
+    "far_side_negative_control_ok": true,
+    "marks_per_event": [
+      {
+        "event": "impact_jet_reaches_wall",
+        "floor": 0,
+        "live_after": 6,
+        "slope": 0,
+        "wall": 6
+      },
+      {
+        "event": "death_next_to_wall",
+        "floor": 3,
+        "live_after": 28,
+        "slope": 0,
+        "wall": 19
+      },
+      {
+        "event": "death_stains_only",
+        "floor": 3,
+        "live_after": 22,
+        "slope": 0,
+        "wall": 19
+      },
+      {
+        "event": "death_behind_wall_control",
+        "floor": 3,
+        "live_after": 22,
+        "slope": 0,
+        "wall": 19
+      }
+    ],
+    "stain_draw_calls_estimate": 22,
+    "wall_pixel_probe": {
+      "clean": "919892",
+      "inside_wall_quad": true,
+      "mark": [
+        -5.81,
+        1.22,
+        -27.39
+      ],
+      "screen": [
+        479,
+        340
+      ],
+      "spatter": "a22a2b"
+    }
+  },
+  {
+    "case": "wall-960x640-extreme",
+    "kind": "render",
+    "ok": true,
+    "returncode": 0,
+    "errors": [],
+    "log": "wall-960x640-extreme.log",
+    "display": "0",
+    "png_bytes": 207672,
+    "png_name": "wall-960x640-extreme-back-after.png",
+    "png_size": [
+      960,
+      640
+    ],
+    "quality": "Extreme",
+    "allocated_slots": 98304,
+    "submitted_slots": 4096,
+    "active_emitters": 1,
+    "concurrent_cap": 20,
+    "stains_live": 33,
+    "stain_cap": 224,
+    "stains_placed": 107,
+    "stains_recycled": 0,
+    "death_bursts": 3,
+    "spurts": 1,
+    "marks_wall": 95,
+    "marks_floor": 12,
+    "stains_wall": 29,
+    "stains_floor": 4,
+    "marks_skipped_edge": 9,
+    "marks_skipped_solid": 0,
+    "fan_rays_cast": 24,
+    "clusters_placed": 25,
+    "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+    "rendering_method": "gl_compatibility",
+    "viewport": [
+      960.0,
+      640.0
+    ],
+    "death_wall_marks": 29,
+    "death_floor_marks": 4,
+    "wall_region_changed_pixels": 8101,
+    "far_side_region_changed_pixels": 0,
+    "far_side_mark_count": 0,
+    "far_side_negative_control_ok": true,
+    "marks_per_event": [
+      {
+        "event": "impact_jet_reaches_wall",
+        "floor": 0,
+        "live_after": 8,
+        "slope": 0,
+        "wall": 8
+      },
+      {
+        "event": "death_next_to_wall",
+        "floor": 4,
+        "live_after": 41,
+        "slope": 0,
+        "wall": 29
+      },
+      {
+        "event": "death_stains_only",
+        "floor": 4,
+        "live_after": 33,
+        "slope": 0,
+        "wall": 29
+      },
+      {
+        "event": "death_behind_wall_control",
+        "floor": 4,
+        "live_after": 33,
+        "slope": 0,
+        "wall": 29
+      }
+    ],
+    "stain_draw_calls_estimate": 32,
+    "wall_pixel_probe": {
+      "clean": "929993",
+      "inside_wall_quad": true,
+      "mark": [
+        -5.8,
+        1.22,
+        -27.39
+      ],
+      "screen": [
+        480,
+        340
+      ],
+      "spatter": "ab090c"
+    }
+  },
+  {
+    "case": "wall-1280x800-high",
+    "kind": "render",
+    "ok": true,
+    "returncode": 0,
+    "errors": [],
+    "log": "wall-1280x800-high.log",
+    "display": "0",
+    "png_bytes": 292054,
+    "png_name": "wall-1280x800-high-back-after.png",
+    "png_size": [
+      1280,
+      800
+    ],
+    "quality": "High",
+    "allocated_slots": 24576,
+    "submitted_slots": 1024,
+    "active_emitters": 1,
+    "concurrent_cap": 14,
+    "stains_live": 22,
+    "stain_cap": 128,
+    "stains_placed": 72,
+    "stains_recycled": 0,
+    "death_bursts": 3,
+    "spurts": 1,
+    "marks_wall": 63,
+    "marks_floor": 9,
+    "stains_wall": 19,
+    "stains_floor": 3,
+    "marks_skipped_edge": 3,
+    "marks_skipped_solid": 0,
+    "fan_rays_cast": 18,
+    "clusters_placed": 19,
+    "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+    "rendering_method": "gl_compatibility",
+    "viewport": [
+      1280.0,
+      800.0
+    ],
+    "death_wall_marks": 19,
+    "death_floor_marks": 3,
+    "wall_region_changed_pixels": 11484,
+    "far_side_region_changed_pixels": 0,
+    "far_side_mark_count": 0,
+    "far_side_negative_control_ok": true,
+    "marks_per_event": [
+      {
+        "event": "impact_jet_reaches_wall",
+        "floor": 0,
+        "live_after": 6,
+        "slope": 0,
+        "wall": 6
+      },
+      {
+        "event": "death_next_to_wall",
+        "floor": 3,
+        "live_after": 28,
+        "slope": 0,
+        "wall": 19
+      },
+      {
+        "event": "death_stains_only",
+        "floor": 3,
+        "live_after": 22,
+        "slope": 0,
+        "wall": 19
+      },
+      {
+        "event": "death_behind_wall_control",
+        "floor": 3,
+        "live_after": 22,
+        "slope": 0,
+        "wall": 19
+      }
+    ],
+    "stain_draw_calls_estimate": 22,
+    "wall_pixel_probe": {
+      "clean": "929993",
+      "inside_wall_quad": true,
+      "mark": [
+        -5.81,
+        1.22,
+        -27.39
+      ],
+      "screen": [
+        639,
+        426
+      ],
+      "spatter": "a61012"
+    }
+  },
+  {
+    "case": "wall-1280x800-extreme",
+    "kind": "render",
+    "ok": true,
+    "returncode": 0,
+    "errors": [],
+    "log": "wall-1280x800-extreme.log",
+    "display": "0",
+    "png_bytes": 292680,
+    "png_name": "wall-1280x800-extreme-back-after.png",
+    "png_size": [
+      1280,
+      800
+    ],
+    "quality": "Extreme",
+    "allocated_slots": 98304,
+    "submitted_slots": 4096,
+    "active_emitters": 1,
+    "concurrent_cap": 20,
+    "stains_live": 33,
+    "stain_cap": 224,
+    "stains_placed": 107,
+    "stains_recycled": 0,
+    "death_bursts": 3,
+    "spurts": 1,
+    "marks_wall": 95,
+    "marks_floor": 12,
+    "stains_wall": 29,
+    "stains_floor": 4,
+    "marks_skipped_edge": 9,
+    "marks_skipped_solid": 0,
+    "fan_rays_cast": 24,
+    "clusters_placed": 25,
+    "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+    "rendering_method": "gl_compatibility",
+    "viewport": [
+      1280.0,
+      800.0
+    ],
+    "death_wall_marks": 29,
+    "death_floor_marks": 4,
+    "wall_region_changed_pixels": 12685,
+    "far_side_region_changed_pixels": 0,
+    "far_side_mark_count": 0,
+    "far_side_negative_control_ok": true,
+    "marks_per_event": [
+      {
+        "event": "impact_jet_reaches_wall",
+        "floor": 0,
+        "live_after": 8,
+        "slope": 0,
+        "wall": 8
+      },
+      {
+        "event": "death_next_to_wall",
+        "floor": 4,
+        "live_after": 41,
+        "slope": 0,
+        "wall": 29
+      },
+      {
+        "event": "death_stains_only",
+        "floor": 4,
+        "live_after": 33,
+        "slope": 0,
+        "wall": 29
+      },
+      {
+        "event": "death_behind_wall_control",
+        "floor": 4,
+        "live_after": 33,
+        "slope": 0,
+        "wall": 29
+      }
+    ],
+    "stain_draw_calls_estimate": 32,
+    "wall_pixel_probe": {
+      "clean": "929993",
+      "inside_wall_quad": true,
+      "mark": [
+        -5.8,
+        1.22,
+        -27.39
+      ],
+      "screen": [
+        640,
+        426
+      ],
+      "spatter": "ae0a0d"
+    }
+  },
+  {
     "case": "contracts",
     "kind": "headless",
     "ok": true,
@@ -159,7 +559,7 @@
     "summary": "BLOOD_FX_CONTRACTS PASS checks=81 failed=0",
     "errors": [],
     "log": "contracts.log",
-    "metrics": "BLOOD_FX_CONTRACTS_SNAPSHOT {\"absorbed_only\":1,\"active\":true,\"active_emitters\":14,\"allocated_slots\":24576,\"arterial_hits\":401,\"backend\":\"GPUParticles3D + pooled surface quads\",\"budget\":24576,\"buffer_estimate_backend\":\"Godot 4.5.2 GLES3 two 96-byte process + two 64-byte instance buffers per allocated slot; excludes driver overhead\",\"buffer_payload_estimate_bytes\":7864320,\"burst_emitters\":0,\"clock\":0.0,\"concurrent_cap\":14,\"death_bursts\":54,\"drains\":14,\"dropped\":1102,\"duplicates\":2,\"events_seen\":983,\"fluid_color\":\"149eb3\",\"focused\":true,\"gpu_live_readback\":false,\"last_event_id\":9511,\"last_event_position\":[0.0,0.899999976158142,0.0],\"live_count_note\":\"submitted_slots is allocated capacity x amount_ratio for live emitters, not a GPU particle readback\",\"map_id\":\"another-map\",\"mist_events\":1,\"no_bleed\":2,\"paused\":false,\"pool_nodes\":24,\"quality\":\"High\",\"recycled\":742,\"rejected\":0,\"shared_meshes\":2,\"shared_shaders\":3,\"simulation\":\"transform-feedback\",\"slot_materials\":152,\"spurt_emitters\":14,\"spurts\":922,\"stain_cap\":80,\"stain_nodes_created\":128,\"stain_pool\":128,\"stains_live\":0,\"stains_pending\":0,\"stains_placed\":362,\"stains_recycled\":256,\"stains_rejected\":0,\"submitted_slots\":1456,\"surface_error\":\"Map changed to another-map; host must re-bind the surface provider\",\"surfaces\":{\"blocks\":2,\"cells\":36,\"error\":\"\",\"hits\":466,\"implicit_floor\":false,\"kind\":\"semantic\",\"map_id\":\"blood-fx-fixture\",\"mask\":1,\"misses\":1463,\"queries\":1929,\"ready\":false,\"rejected\":0,\"triangles\":4},\"suspended\":false,\"time_source\":-1.0,\"unknown_actors\":1,\"variant\":\"blood\"}"
+    "metrics": "BLOOD_FX_CONTRACTS_SNAPSHOT {\"absorbed_only\":1,\"active\":true,\"active_emitters\":14,\"allocated_slots\":24576,\"arterial_hits\":401,\"backend\":\"GPUParticles3D + pooled surface quads\",\"budget\":24576,\"buffer_estimate_backend\":\"Godot 4.5.2 GLES3 two 96-byte process + two 64-byte instance buffers per allocated slot; excludes driver overhead\",\"buffer_payload_estimate_bytes\":7864320,\"burst_emitters\":0,\"clock\":0.0,\"clusters_placed\":363,\"concurrent_cap\":14,\"death_bursts\":54,\"drains\":14,\"dropped\":1102,\"duplicates\":2,\"events_seen\":983,\"fan_marks\":978,\"fan_rays_cast\":758,\"fluid_color\":\"149eb3\",\"focused\":true,\"gpu_live_readback\":false,\"impact_marks\":12,\"last_event_id\":9511,\"last_event_position\":[0.0,0.899999976158142,0.0],\"live_count_note\":\"submitted_slots is allocated capacity x amount_ratio for live emitters, not a GPU particle readback\",\"map_id\":\"another-map\",\"marks_floor\":1134,\"marks_skipped_edge\":3,\"marks_skipped_facing\":0,\"marks_skipped_reach\":397,\"marks_skipped_solid\":0,\"marks_slope\":0,\"marks_wall\":12,\"mist_events\":1,\"no_bleed\":2,\"paused\":false,\"pool_nodes\":24,\"quality\":\"High\",\"recycled\":742,\"rejected\":0,\"shared_meshes\":2,\"shared_shaders\":3,\"simulation\":\"transform-feedback\",\"slot_materials\":280,\"spurt_emitters\":14,\"spurts\":922,\"stain_cap\":128,\"stain_nodes_created\":256,\"stain_pool\":256,\"stains_floor\":0,\"stains_live\":0,\"stains_pending\":0,\"stains_placed\":1146,\"stains_recycled\":928,\"stains_rejected\":3,\"stains_slope\":0,\"stains_wall\":0,\"submitted_slots\":1456,\"surface_error\":\"Map changed to another-map; host must re-bind the surface provider\",\"surfaces\":{\"blocks\":2,\"cells\":36,\"error\":\"\",\"hits\":3985,\"implicit_floor\":false,\"kind\":\"semantic\",\"map_id\":\"blood-fx-fixture\",\"mask\":1,\"misses\":2282,\"queries\":6267,\"ready\":false,\"rejected\":0,\"triangles\":4},\"suspended\":false,\"time_source\":-1.0,\"unknown_actors\":1,\"variant\":\"blood\"}"
   },
   {
     "case": "surfaces",
@@ -176,9 +576,19 @@
     "kind": "headless",
     "ok": true,
     "returncode": 0,
-    "summary": "BLOOD_FX_STRESS PASS checks=20",
+    "summary": "BLOOD_FX_STRESS PASS checks=22",
     "errors": [],
     "log": "stress.log",
-    "metrics": "BLOOD_FX_STRESS_METRICS {\"active_emitters\":14,\"allocated_slots\":24576,\"callback_usec_440_events\":24713,\"concurrent_cap\":14,\"dropped\":756,\"frame_max_us\":135.0,\"frame_median_us\":81.0,\"pool_nodes\":24,\"quality\":\"High\",\"recycled\":1080,\"stains_cap\":80,\"stains_live\":80,\"stains_placed\":835,\"stains_recycled\":755,\"submitted_slots\":10972}"
+    "metrics": "BLOOD_FX_STRESS_METRICS {\"active_emitters\":14,\"allocated_slots\":24576,\"callback_usec_440_events\":82845,\"clusters_placed\":993,\"concurrent_cap\":14,\"dropped\":1146,\"fan_rays_cast\":794,\"frame_max_us\":168.0,\"frame_median_us\":103.0,\"marks_floor\":1261,\"marks_skipped_edge\":0,\"marks_skipped_facing\":0,\"marks_wall\":3521,\"pool_nodes\":24,\"quality\":\"High\",\"recycled\":1110,\"stains_cap\":128,\"stains_live\":128,\"stains_placed\":4782,\"stains_recycled\":4654,\"submitted_slots\":6753,\"usec_per_death\":1317,\"usec_per_impact\":70}"
+  },
+  {
+    "case": "spatter",
+    "kind": "headless",
+    "ok": true,
+    "returncode": 0,
+    "summary": "BLOOD_FX_SPATTER PASS checks=55",
+    "errors": [],
+    "log": "spatter.log",
+    "metrics": "BLOOD_FX_SPATTER_METRICS {\"budget_per_death\":23,\"checks\":55,\"clusters_placed\":19,\"death_floor_marks\":5,\"death_total_marks\":22,\"death_wall_marks\":17,\"failed\":0,\"fan_marks\":57,\"fan_rays_cast\":25,\"impact_cluster_marks\":6,\"impact_marks\":6,\"marks_floor\":30,\"marks_skipped_edge\":0,\"marks_skipped_facing\":0,\"marks_skipped_reach\":7,\"marks_slope\":0,\"marks_wall\":42,\"stain_cap\":128,\"stains_live\":22}"
   }
 ]
