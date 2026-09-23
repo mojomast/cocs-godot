@@ -62,7 +62,7 @@ try {
  const args = ['--audio-driver','Dummy','--path','godot','--resolution',options.size,
   '--script','res://tests/lattice/map_view_physical.gd','res://lattice/board.tscn','--',
   `--endpoint=ws://127.0.0.1:${port}`,`--map=${options.map}`,`--mode=${options.mode}`,`--physical-output=${out}`];
- const sourceFiles = ['game/protocol.mjs','game/cocs-intel.mjs','game/cocs.mjs','game/cocs-coop.mjs','game/cocs-orders.mjs','game/destination-lattice-maps.mjs','server/game-server.mjs','server/room.mjs','godot/lattice/transport.gd','godot/lattice/board.gd','godot/lattice/map_view.gd','godot/lattice/board.tscn','godot/tests/lattice/physical.gd','godot/tests/lattice/map_view_physical.gd','port/native-lattice-map/run.mjs'];
+ const sourceFiles = ['game/protocol.mjs','game/cocs-intel.mjs','game/cocs.mjs','game/cocs-coop.mjs','game/cocs-orders.mjs','game/destination-lattice-maps.mjs','server/game-server.mjs','server/room.mjs','godot/lattice/transport.gd','godot/lattice/board.gd','godot/lattice/map_view.gd','godot/lattice/topology.gd','godot/lattice/board.tscn','godot/tests/lattice/physical.gd','godot/tests/lattice/map_view_physical.gd','port/native-lattice-map/run.mjs'];
  writeFileSync(join(out, 'manifest.json'), JSON.stringify({base:'d498479', source:lock.source_commit,
   revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
   godot:lock.godot_version, options, command:[bin,...args], port, display:env.DISPLAY,

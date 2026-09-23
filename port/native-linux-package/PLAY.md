@@ -19,8 +19,10 @@ cd cocs-native-linux
 node run.mjs
 ```
 
-The default opens the native combat host setup. Choose a map and mode, then click
-**Start**. Two reviewed launchers skip the setup screen:
+The default opens the **main menu**: pick a category (Play / Native / Modes /
+Extras / Cheats), a route, adjust its options and press **Start**. Quitting a
+match returns you to the menu; Quit in the menu exits the game. The old direct
+routes still work as flags (`node run.mjs --experience=combat --setup`, etc.). Two reviewed launchers skip the setup screen:
 
 ```sh
 ./Domination.sh    # Vermilion Fold, 2 bots, 5 minutes, 100 points
@@ -76,8 +78,10 @@ map, mode or out-of-range value is refused.
 
 **Horde** (`--experience=horde --map=nacre-engine`) runs waves with real enemy
 approaches, wave clears, upgrade offers, victory and defeat with lives 3→2→1→0.
-A boss wave, endless mode, full ten-wave completion and upgrade selection are not
-implemented.
+Select offered upgrades with the numbered buttons or matching number keys;
+the server confirms whether a choice was applied or refused. Full natural
+ten-wave completion has not been acceptance-tested; boss/endless modes remain
+outside this release's acceptance scope.
 
 **Graphics Showcase** (`--experience=showcase`, `--experience=aurora-basin`,
 `--experience=cinder-array`, `--experience=particle-lab`,
@@ -114,7 +118,7 @@ audio or human usability. Report a launch problem together with the console outp
 
 `manifest.json` records the source and port commits, every packaged file's SHA256,
 the runtime closure with its reviewed adapters, official Godot checksums and the
-staged operator-model override. The adjacent `.tar.gz.sha256` verifies the
+source-operator selection (no staged model override). The adjacent `.tar.gz.sha256` verifies the
 download.
 
 This is a development prerelease. **The source asset-rights audit remains

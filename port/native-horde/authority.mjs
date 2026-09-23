@@ -6,6 +6,7 @@ import {WebSocketServer, WebSocket} from 'ws';
 import {Match, floorAt, obstructed} from '../../game/core.mjs';
 import {normalizeConfig} from '../../game/config.mjs';
 import {parseInputEnvelope} from '../../game/protocol.mjs';
+import {selectHordeUpgrade} from '../../game/singleplayer.mjs';
 import {InputBuffer} from './input-buffer.mjs';
 import {applyDebugFrame, applyLiveOverrides, createDebugState, debugEcho, installHumanGuard,
   parseDebugFrame, reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT} from '../native-debug/debug.mjs';
@@ -188,6 +189,64 @@ export function createHordeMatch({mapId, config, random = Math.random} = {}) {
 }
 export const LIMITS = Object.freeze({payload:16384, frame:1048576, outbound:2097152,
  messagesPerSecond:120, burst:128, connections:8});
+// ---------------------------------------------------------------------------
+// Local-only Horde upgrade intent.
+//
+// The source owns both halves of the reward window: `offerHordeUpgrade` writes
+// `modeState.pendingUpgrade` and `selectHordeUpgrade` refuses anything that is
+// not in that live offer. This adapter adds exactly one thing the wire did not
+// have: a way for the native operator to state which of the *currently offered*
+// rewards it wants. The intent is validated here first so a bad frame is
+// answered instead of executed, and then the source function is the final gate.
+//
+// Deliberately inline in this reviewed adapter file: the package closure
+// classifies runtime modules from the static import graph
+// (tools/godot-package/discover.mjs), so a new imported helper would change the
+// shipped adapter inventory. Validation is pure: it never mutates the match,
+// the input cursor, the event ring, the clock or the RNG.
+export const UPGRADE_FRAME = 'horde-upgrade';
+export const APPLIED_FRAME = 'horde-upgrade-applied';
+export const REJECTED_FRAME = 'horde-upgrade-rejected';
+export const CHOICE_LIMIT = 64;
+const CONTROL_CHARS = /[\u0000-\u001f\u007f]/g;
+const CONTROL_CHAR = /[\u0000-\u001f\u007f]/;
+const plainObject = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+/** The live source offer, or null. `upgrades` in the snapshot is this list. */
+export function pendingOffer(match) {
+ const state = match?.modeState;
+ if (!state || state.kind !== 'horde') return null;
+ const pending = state.pendingUpgrade;
+ if (!plainObject(pending) || !Array.isArray(pending.choices) || !pending.choices.length) return null;
+ return {wave:Number.isInteger(pending.wave) ? pending.wave : 0, choices:[...pending.choices]};
+}
+/** Bounded, client-authored fields only. Never echoes authority state. */
+export function upgradeRecord(frame) {
+ return {
+  direction:'upgrade',
+  choice:typeof frame?.choice === 'string' ? frame.choice.replace(CONTROL_CHARS,'').slice(0,CHOICE_LIMIT) : '',
+  wave:Number.isInteger(frame?.wave) && frame.wave >= 0 ? frame.wave : 0,
+  applied:Number.isInteger(frame?.applied) && frame.applied >= 0 ? frame.applied : -1,
+ };
+}
+/** Pure decision for one intent frame: {ok:true,id,wave,choices} or {ok:false,reason}. */
+export function validateUpgradeIntent(frame, {match = null, epoch = 0} = {}) {
+ if (!plainObject(frame)) return {ok:false, reason:'malformed-frame'};
+ const choice = frame.choice;
+ if (typeof choice !== 'string' || choice.length < 1 || choice.length > CHOICE_LIMIT ||
+     CONTROL_CHAR.test(choice) || choice.trim() !== choice) return {ok:false, reason:'malformed-choice'};
+ if (!Number.isInteger(frame.wave) || frame.wave < 1) return {ok:false, reason:'malformed-wave'};
+ if (!Number.isInteger(frame.applied) || frame.applied < 0) return {ok:false, reason:'malformed-view'};
+ if (!Number.isInteger(frame.inputEpoch) || frame.inputEpoch !== epoch) return {ok:false, reason:'stale-round'};
+ if (!match || match.over) return {ok:false, reason:'no-live-round'};
+ const offer = pendingOffer(match);
+ if (!offer) return {ok:false, reason:'no-pending-offer'};
+ const applied = Array.isArray(match.modeState.upgrades) ? match.modeState.upgrades.length : 0;
+ // A live offer freezes the applied count, so a mismatched view is stale.
+ if (frame.applied !== applied) return {ok:false, reason:'stale-view'};
+ if (offer.wave !== frame.wave) return {ok:false, reason:'stale-offer'};
+ if (!offer.choices.includes(choice)) return {ok:false, reason:'unauthorized-choice'};
+ return {ok:true, id:choice, wave:offer.wave, choices:offer.choices};
+}
 export function validateConfig(frame) {
  if (!HORDE_MAPS.includes(frame.mapId) || frame.config?.mode !== 'horde') throw Error('Unsupported local Horde map/mode');
  const waves = frame.config.fragLimit === undefined ? 10 : frame.config.fragLimit;
@@ -326,6 +385,23 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
      inputs.receive(f.seq,parsed,now,f.cancel === true);
      // A dying actor's queued actions must not execute on a later respawn.
      if (match.actors[0].health <= 0) inputs.cancel();
+    } else if (f.type === UPGRADE_FRAME) {
+     // Additive local-only upgrade intent, never a lifecycle command: every
+     // refusal is answered and the session continues. The offer window, the
+     // authorized ids and the applied upgrade all stay the source's.
+     const decision=validateUpgradeIntent(f,{match,epoch});
+     if (!decision.ok) {
+      record({...upgradeRecord(f), direction:'upgrade-reject', reason:decision.reason});
+      send({type:REJECTED_FRAME, inputEpoch:epoch, reason:decision.reason});
+     } else if (!selectHordeUpgrade(match,decision.id)) {
+      record({...upgradeRecord(f), direction:'upgrade-reject', reason:'source-refused'});
+      send({type:REJECTED_FRAME, inputEpoch:epoch, reason:'source-refused'});
+     } else {
+      record({...upgradeRecord(f), direction:'upgrade-applied', choice:decision.id, wave:decision.wave,
+       count:match.modeState.upgrades.length});
+      send({type:APPLIED_FRAME, inputEpoch:epoch, wave:decision.wave, choice:decision.id,
+       count:match.modeState.upgrades.length});
+     }
     } else if (f.type === 'debug' && created) {
      // Additive debug frame. With the channel disabled this falls through to the
      // unchanged rejection path (error + terminate).

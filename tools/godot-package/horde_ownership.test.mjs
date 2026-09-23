@@ -60,7 +60,7 @@ for(const kind of ['package','dev'])for(const scenario of ['exit','native-failur
    }
    if(scenario==='missing-native')await rm(native);
    let result;
-   try{result=await exec(process.execPath,[script,'--experience=horde',...(scenario==='bad-args'?['--waves=1']:[])],{cwd:root,env:{...process.env,PORT:'0',TMPDIR:root,GODOT_BIN:native,SCENARIO:scenario},timeout:12000});result.code=0;}catch(error){result=error;}
+   try{result=await exec(process.execPath,[script,'--experience=horde',...(scenario==='bad-args'?['--waves=0']:[])],{cwd:root,env:{...process.env,PORT:'0',TMPDIR:root,GODOT_BIN:native,SCENARIO:scenario},timeout:12000});result.code=0;}catch(error){result=error;}
    const expected=scenario==='exit'?0:scenario==='native-failure'?17:scenario==='interrupt'?130:scenario==='terminate'?143:1;
    assert.equal(result.code,expected,result.stdout+result.stderr);
    assert.doesNotMatch(result.stdout+result.stderr,/Wrong public factory|Premature adapter import/);

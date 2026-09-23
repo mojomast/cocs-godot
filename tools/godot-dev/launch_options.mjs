@@ -47,6 +47,17 @@ export function launchOptions(argv, catalog) {
   }
   const smokeFlags = ['--network-smoke','--session-smoke','--lifecycle-smoke'].filter(arg => flags.has(arg));
   if (smokeFlags.length > 1) throw Error('Select one smoke check at a time');
+  // Unified main menu: parameterless, no authority. The dev NO-ARG default
+  // stays the map viewer below — only an explicit --experience=menu lands here
+  // (launch_options.test.mjs pins both behaviors).
+  if (values.experience === 'menu') {
+    for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by menu`);
+    for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by menu`);
+    const smoke = flags.has('--smoke');
+    return {experience:'menu', nativeOnly:true, endpoint:null, smoke:smoke ? '--smoke' : null,
+      sessionOptions:smoke ? ['--smoke'] : [],
+      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),'--path','godot','res://ui/main_menu.tscn']};
+  }
   const play = flags.has('--play') || flags.has('--setup') || values.experience || values.map || values.mode ||
     ['--native-trace','--mute','--debug-hud','--session-smoke','--lifecycle-smoke'].some(arg => flags.has(arg));
   const experience = values.experience ?? 'combat';

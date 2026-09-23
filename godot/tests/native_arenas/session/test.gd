@@ -3,6 +3,7 @@ extends SceneTree
 const Demo = preload("res://native_arenas/demo.gd")
 const NativeCatalog = preload("res://native_arenas/catalog.gd")
 const FixtureSession = preload("res://tests/native_arenas/session/fixture_session.gd")
+const FixtureClient = preload("res://tests/native_arenas/session/fixture_client.gd")
 var failures := 0
 var checks := 0
 var directory := "user://native-arena-session-fixtures/"
@@ -175,6 +176,21 @@ func run() -> void:
 	d.client.input_epoch = 5
 	check(not decode(d, {"type":"native-arena-input-reset","inputEpoch":4,"reason":"stale-input"}), "native epoch cannot regress")
 	check(d.client.input_epoch == 0 and not d.received_pose, "failed epoch closes native session and clears epoch")
+	# Regression: the lobby client widened create_room for the loadout identity. This
+	# route's override must keep signature parity (a mismatch stopped the whole arena
+	# scene from compiling), keep the create frame on the authority's key allowlist, and
+	# refuse a real loadout choice instead of dropping it silently.
+	var identity_probe := FixtureClient.new()
+	check(identity_probe.create_room("Fixture Operator") == OK, "arena create_room accepts the widened lobby signature")
+	check(identity_probe.writes.back().type == "create" and identity_probe.writes.back().nativeArenaInput == 1, "arena create frame still negotiates native input")
+	check(not identity_probe.writes.back().has("character") and not identity_probe.writes.back().has("harness"), "arena create frame carries no lobby identity")
+	check(identity_probe.create_room("Fixture Operator", "chatgpt", "openclaw") == OK, "documented default pair is not a loadout choice")
+	check(identity_probe.create_room("Fixture Operator", "", "") == OK, "unset identity is not a loadout choice")
+	var writes_before_choice: int = identity_probe.writes.size()
+	check(identity_probe.create_room("Fixture Operator", "grok", "cline") == ERR_UNAUTHORIZED, "unsupported loadout is refused, not silently dropped")
+	check(identity_probe.create_room("Fixture Operator", "chatgpt", "claudecode") == ERR_UNAUTHORIZED, "harness-only choice is refused too")
+	check(identity_probe.writes.size() == writes_before_choice, "a refused loadout emits no frame")
+	identity_probe.free()
 	d.queue_free()
 	await process_frame
 	for id: String in NativeCatalog.MAP_IDS: DirAccess.remove_absolute(directory + id + ".json")

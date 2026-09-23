@@ -4,6 +4,9 @@ const HordeClient = preload("res://horde/client.gd")
 const HordeControls = preload("res://horde/controls.gd")
 const LOOK_GAIN := 0.002 # default source mouse sensitivity, app/page.tsx
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible"]
+## Source HORDE_UPGRADES offers exactly three rows; the number keys are the
+## desktop default here because the pointer is captured during a wave.
+const OFFER_HOTKEYS := {KEY_1:1, KEY_2:2, KEY_3:3, KEY_4:4, KEY_5:5, KEY_6:6, KEY_7:7, KEY_8:8, KEY_9:9}
 var horde := HordeModel.new()
 var horde_label := Label.new()
 var waves := 10
@@ -13,6 +16,17 @@ var latest: Dictionary = {}
 var controls := HordeControls.new()
 var trace_ended := false
 var horde_client: Node
+## Visible choice controls. Built on first use so a detached composition (tests)
+## gets them without _ready; the shared session's HUD layers stay untouched.
+var choice_layer: CanvasLayer
+var choice_panel: VBoxContainer
+var choice_status: Label
+var choice_buttons: Array[Button] = []
+var last_choice_signature := ""
+var last_rejected := ""
+var last_confirmed := 0
+var last_applied := 0
+var last_selected := ""
 
 func _init() -> void:
 	# The inherited field creates a detached Node. Free it before specializing;
@@ -23,6 +37,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	build_view_layers()
+	ensure_choice_controls()
 	var layer := CanvasLayer.new()
 	add_child(layer)
 	var panel := VBoxContainer.new()
@@ -92,6 +107,153 @@ func show_controls() -> void:
 	if hud != null:
 		hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · Q power · E use\nLMB fire · RMB ADS · Z/MMB alt · R reload · F melee · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release"
 
+## ---------------------------------------------------------------------------
+## Horde run upgrades: visible choice buttons plus 1..9 hotkeys. The authority
+## snapshot offers the rows (singleplayer.upgrades) and only it confirms an
+## application (upgradeSelected/upgradeCount); every local send is single-flight.
+## ---------------------------------------------------------------------------
+func ensure_choice_controls() -> void:
+	if choice_panel != null: return
+	choice_layer = CanvasLayer.new()
+	choice_layer.layer = 5
+	choice_layer.offset = Vector2(20, 300) # below the Horde strip until positioned
+	add_child(choice_layer)
+	choice_panel = VBoxContainer.new()
+	choice_panel.name = "HordeUpgradeChoices"
+	choice_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	choice_layer.add_child(choice_panel)
+	choice_status = Label.new()
+	choice_status.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	choice_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	choice_status.add_theme_font_size_override("font_size", 18)
+	choice_status.add_theme_color_override("font_shadow_color", Color.BLACK)
+	choice_status.add_theme_constant_override("shadow_offset_x", 2)
+	choice_status.add_theme_constant_override("shadow_offset_y", 2)
+	choice_status.visible = false
+	choice_panel.add_child(choice_status)
+	choice_panel.visible = false
+
+func drop_choice_button(button: Button) -> void:
+	if not is_instance_valid(button): return
+	var parent: Node = button.get_parent()
+	if parent != null: parent.remove_child(button)
+	button.free()
+
+func rebuild_choice_buttons() -> void:
+	for button: Button in choice_buttons: drop_choice_button(button)
+	choice_buttons.clear()
+
+## The visible control set for the live offer rows: identity, label and tooltip.
+## An unchanged plan is never rebuilt: a rebuild between pointer down and up
+## would swallow a click the operator is already making, and would drop keyboard
+## focus on every snapshot. Only a real offer change re-creates the buttons.
+func choice_plan() -> Array:
+	var plan: Array = []
+	for index in horde.offers.size():
+		var row: Dictionary = horde.offers[index]
+		var name: String = str(row.get("name", ""))
+		plan.append({
+			"index":index + 1,
+			"label":"%d · %s" % [index + 1, name if not name.is_empty() else str(row.get("id", ""))],
+			"tooltip":str(row.get("description", "")),
+		})
+	return plan
+
+## Authority answers stay visible: a refusal is shown with its reason and a
+## confirmation is shown once, so the operator never has to infer either from
+## the strip. Local "queued" feedback is replaced, never silently kept.
+func update_choice_feedback() -> void:
+	var rejected: String = horde_client.rejected_reason
+	if not rejected.is_empty() and rejected != last_rejected:
+		last_rejected = rejected
+		choice_status.text = "CHOICE REFUSED · %s" % rejected.to_upper()
+	if horde_client.confirmed_count > last_confirmed:
+		last_confirmed = horde_client.confirmed_count
+		last_rejected = rejected
+		var id: String = horde_client.confirmed_choice
+		if id.is_empty():
+			choice_status.text = "CHOICE ACCEPTED · RUN %d" % horde_client.confirmed_count
+		else:
+			choice_status.text = "CHOICE ACCEPTED · %s · RUN %d" % [id.to_upper(), horde_client.confirmed_count]
+	if not horde.offers.is_empty(): return
+	if horde.applied_count > last_applied or (not horde.selected_id.is_empty() and horde.selected_id != last_selected):
+		if horde.selected_id.is_empty():
+			choice_status.text = "APPLIED · RUN %d" % horde.applied_count
+		else:
+			choice_status.text = "APPLIED %s · RUN %d" % [horde.selected_id.to_upper(), horde.applied_count]
+
+func sync_choice_controls() -> void:
+	ensure_choice_controls()
+	var plan := choice_plan()
+	var signature := JSON.stringify(plan)
+	if signature != last_choice_signature:
+		last_choice_signature = signature
+		rebuild_choice_buttons()
+		for row: Dictionary in plan:
+			var button := Button.new()
+			button.name = "HordeUpgradeChoice%d" % int(row.index)
+			button.mouse_filter = Control.MOUSE_FILTER_STOP
+			button.text = str(row.label)
+			var tooltip := str(row.tooltip)
+			if not tooltip.is_empty(): button.tooltip_text = tooltip
+			button.pressed.connect(choose_offer.bind(int(row.index)))
+			choice_panel.add_child(button)
+			choice_buttons.append(button)
+		choice_status.text = ""
+	update_choice_feedback()
+	choice_status.visible = not horde.offers.is_empty() or not choice_status.text.is_empty()
+	# The status label is a child of the panel: a promoted result must keep the
+	# panel open even though the offer itself is gone.
+	choice_panel.visible = not horde.offers.is_empty() or choice_status.visible
+	last_applied = maxi(last_applied, horde.applied_count)
+	last_selected = horde.selected_id
+
+func observe_choices() -> void:
+	horde_client.observe_offer(horde.offer_view())
+	sync_choice_controls()
+
+## 1-based offer index for a number key, or -1 when that key is not a live
+## choice. Interception happens before the shared control recorder, so a choice
+## hotkey can never leak into held movement, a pulse or a weapon switch.
+func intercept_offer_key(code: int) -> int:
+	if not horde.offer_pending: return -1
+	var index: int = OFFER_HOTKEYS.get(code, -1)
+	if index < 1 or index > horde.offers.size(): return -1
+	return index
+
+static func key_code(event: InputEventKey) -> int:
+	return event.physical_keycode if event.physical_keycode != 0 else event.keycode
+
+func choose_offer(index: int) -> void:
+	var id := horde.offer_id(index)
+	if id.is_empty(): return
+	ensure_choice_controls()
+	var result: Dictionary = horde_client.send_upgrade_intent(id, horde.offer_wave)
+	if result.ok:
+		# A fresh attempt supersedes the previous refusal, so the same reason can
+		# be shown again if this one is refused too.
+		last_rejected = ""
+		choice_status.text = "CHOICE %d QUEUED · %s" % [index, id.to_upper()]
+	elif str(result.reason) == "transport":
+		choice_status.text = "Choice not queued — connection closed"
+	else:
+		choice_status.text = "Choice refused · %s" % str(result.reason)
+	choice_status.visible = true
+	choice_panel.visible = true
+
+func clear_choices() -> void:
+	if choice_panel != null: choice_panel.visible = false
+	rebuild_choice_buttons()
+	last_choice_signature = ""
+	last_rejected = ""
+	last_confirmed = 0
+	if choice_status != null:
+		choice_status.text = ""
+		choice_status.visible = false
+	horde_client.reset_upgrade_state()
+	last_applied = 0
+	last_selected = ""
+
 ## Map-family seams. The base scene composes the three source Horde maps. The
 ## identity composition (res://native_arenas/identity_horde_demo.gd) overrides
 ## these and the view layers only, so presentation, first person/ADS, pickups,
@@ -144,6 +306,7 @@ func on_lobby(frame: Dictionary) -> void:
 func on_started(frame: Dictionary) -> void:
 	latest.clear()
 	horde.clear()
+	clear_choices()
 	horde_label.text = horde.text
 	super.on_started(frame)
 
@@ -153,10 +316,12 @@ func on_snapshot(frame: Dictionary) -> void:
 	apply_horde(frame.state)
 	record_state(frame.get("seq", -1))
 
-func apply_horde(state: Dictionary) -> void:
+func apply_horde(state: Dictionary, stale: bool = false) -> void:
 	latest = state
-	horde.apply(state)
+	horde.apply(state, stale)
 	horde_label.text = horde.text
+	observe_choices()
+	if stale: return
 	for a: Dictionary in state.get("actors", []):
 		if a.get("isNpc") != true: continue
 		var id := int(a.id)
@@ -187,6 +352,7 @@ func on_results(frame: Dictionary) -> void:
 func on_error(message: String) -> void:
 	latest.clear()
 	horde.clear()
+	clear_choices()
 	horde_label.text = "Horde unavailable: " + message
 	super.on_error(message)
 
@@ -196,6 +362,11 @@ func controls_released() -> bool:
 	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		var index := intercept_offer_key(key_code(event))
+		if index > 0:
+			choose_offer(index)
+			return
 	controls.record(event, weapon_controls_active(), presentation.local_actor)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -225,9 +396,11 @@ func _process(delta: float) -> void:
 			if trace_enabled: emit_native_trace(trace_input(sample, result))
 			if result != OK: on_error("Input could not be queued. Relaunch to reconnect.")
 	horde_label.custom_minimum_size.x = maxf(240, get_viewport().get_visible_rect().size.x - 40)
+	if choice_layer != null: choice_layer.offset = Vector2(20, horde_label.position.y + horde_label.size.y + 10)
 	if phase == 3 and snapshot_watch.stale():
 		horde.apply({}, true)
 		horde_label.text = horde.text
+		observe_choices()
 
 func trace_input(sample: Dictionary, result: Error) -> Dictionary:
 	var record := super.trace_input(sample, result)

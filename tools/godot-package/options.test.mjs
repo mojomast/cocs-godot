@@ -11,7 +11,7 @@ test('Horde package route is local-only, fixed default and rejects ignored optio
     assert.deepEqual(plan.userArgs, [`--map=${map}`,'--mode=horde']);
     assert.equal(plan.endpoint, null);
   }
-  for (const arg of ['--map=tidal-citadel','--mode=deathmatch','--waves=1','--round-target=1','--endless','--upgrades','--endpoint=ws://127.0.0.1:1234','--time-limit=900','--setup','--play','--native-trace','--mute','--debug-hud','--horde-evidence']) {
+  for (const arg of ['--map=tidal-citadel','--mode=deathmatch','--round-target=1','--endless','--upgrades','--endpoint=ws://127.0.0.1:1234','--time-limit=900','--setup','--play','--native-trace','--mute','--debug-hud','--horde-evidence']) {
     assert.throws(() => options(['--experience=horde',arg], catalog), Error, arg);
   }
   assert.throws(() => options(['--experience=horde'], {maps:[]}), /Unsupported/);
@@ -31,7 +31,16 @@ test('package scene routing covers all nine locked identities and preserves nati
     }
   }
   assert.deepEqual([...covered].sort(), catalog.maps.map(m => m.id).sort());
-  assert.ok(options([], catalog).userArgs.includes('--setup'));
+  // SPEC 8.4: no arguments boots the menu, never a match setup; explicit
+  // combat keeps --setup, --play/--smoke keep never getting it.
+  const boot = options([], catalog);
+  assert.equal(boot.experience, 'menu');
+  assert.equal(boot.scene, 'res://ui/main_menu.tscn');
+  assert.equal(boot.nativeOnly, true);
+  assert.equal(boot.endpoint, null);
+  assert.deepEqual(boot.userArgs, []);
+  assert.ok(!boot.userArgs.includes('--setup'));
+  assert.ok(options(['--experience=combat'], catalog).userArgs.includes('--setup'));
   assert.ok(!options(['--play'], catalog).userArgs.includes('--setup'));
   assert.ok(options(['--smoke'], catalog).userArgs.includes('--session-smoke'));
   assert.ok(!options(['--smoke'], catalog).userArgs.includes('--setup'));
@@ -39,7 +48,7 @@ test('package scene routing covers all nine locked identities and preserves nati
 
 test('bad package arguments fail before opening an owned server; no silent scene/mode fallback', () => {
   for (const args of [
-    ['--experience=__proto__'], ['--experience=viewer'], ['--map=unknown'],
+    ['--experience=__proto__'], ['--map=unknown'],
     ['--map=tidal-citadel'], ['--mode=ctf'], ['--mode=constructor'],
     ['--experience=sports','--mode=deathmatch'], ['--experience=lattice-world','--setup'],
     ['--experience=lattice','--mute'], ['--experience=objectives','--native-trace'],
@@ -63,4 +72,91 @@ test('bad package arguments fail before opening an owned server; no silent scene
   ]) assert.throws(() => options(args, catalog), undefined, JSON.stringify(args));
   assert.ok(options(['--experience=sports','--time-limit=900','--round-target=10'], catalog));
   assert.ok(options(['--experience=sports','--map=aurora-stadium','--round-target=15'], catalog));
+});
+
+test('menu, viewer and operator-preview are parameterless special cases', () => {
+  for (const argv of [[], ['--experience=menu']]) {
+    const plan = options(argv, catalog);
+    assert.equal(plan.experience, 'menu');
+    assert.equal(plan.scene, 'res://ui/main_menu.tscn');
+    assert.equal(plan.nativeOnly, true);
+    assert.equal(plan.endpoint, null);
+    assert.deepEqual(plan.userArgs, []);
+  }
+  const viewer = options(['--experience=viewer'], catalog);
+  assert.deepEqual(
+    {experience:viewer.experience, scene:viewer.scene, nativeOnly:viewer.nativeOnly, endpoint:viewer.endpoint},
+    {experience:'viewer', scene:'res://main.tscn', nativeOnly:true, endpoint:null});
+  assert.deepEqual(viewer.userArgs, []);
+  const preview = options(['--experience=operator-preview'], catalog);
+  assert.deepEqual(
+    {experience:preview.experience, scene:preview.scene, nativeOnly:preview.nativeOnly, endpoint:preview.endpoint},
+    {experience:'operator-preview', scene:'res://player_models/preview.tscn', nativeOnly:true, endpoint:null});
+  assert.deepEqual(preview.userArgs, []);
+  // --smoke is the only flag allowed alongside; it reaches the child verbatim.
+  for (const experience of ['menu', 'viewer', 'operator-preview']) {
+    assert.deepEqual(options([`--experience=${experience}`, '--smoke'], catalog).userArgs, ['--smoke']);
+    for (const arg of ['--map=meridian-exchange', '--mode=deathmatch', '--bots=2', '--round-seconds=60',
+      '--score-limit=30', '--waves=10', '--time-limit=60', '--round-target=1',
+      '--endpoint=ws://127.0.0.1:1234', '--setup', '--play', '--mute', '--debug-hud',
+      '--native-trace', '--session-smoke', '--debug-panel']) {
+      assert.throws(() => options([`--experience=${experience}`, arg], catalog), Error, `${experience} ${arg}`);
+    }
+    assert.throws(() => options([`--experience=${experience}`, '--debug-panel', '--smoke'], catalog), /not supported by/, `${experience} debug+smoke`);
+  }
+});
+
+test('--debug-panel is accepted only by combat, horde, native-dm and identity-zones', () => {
+  for (const argv of [
+    ['--experience=combat', '--debug-panel'],
+    ['--experience=combat', '--play', '--debug-panel'],
+    ['--experience=horde', '--debug-panel'],
+    ['--experience=horde', '--map=nacre-engine', '--debug-panel'],
+    ['--experience=native-dm', '--debug-panel'],
+    ['--experience=native-dm', '--map=nacre-engine', '--debug-panel', '--smoke'],
+    ['--experience=identity-zones', '--debug-panel'],
+    ['--experience=identity-zones', '--debug-panel', '--smoke'],
+  ]) {
+    assert.ok(options(argv, catalog).userArgs.includes('--debug-panel'), JSON.stringify(argv));
+  }
+  // Lobby: one clear rejection, endpoint or not. Debug never reaches it.
+  assert.throws(() => options(['--experience=lobby', '--debug-panel'], catalog), /multiplayer lobby/);
+  assert.throws(() => options(['--experience=lobby', '--endpoint=ws://127.0.0.1:1234', '--debug-panel'], catalog), /multiplayer lobby/);
+  for (const experience of ['arms-race', 'zones', 'objectives', 'combined-arms', 'sports', 'lattice', 'lattice-world']) {
+    assert.throws(() => options([`--experience=${experience}`, '--debug-panel'], catalog),
+      /only available on local combat routes/, experience);
+  }
+  // Native-only labs keep rejecting it through their own flag guard.
+  for (const experience of ['showcase', 'aurora-basin', 'cinder-array', 'particle-lab', 'shader-lab']) {
+    assert.throws(() => options([`--experience=${experience}`, '--debug-panel'], catalog),
+      /not supported by native-only/, experience);
+  }
+  // Duplicate detection still applies to the new flag.
+  assert.throws(() => options(['--experience=combat', '--debug-panel', '--debug-panel'], catalog), /Duplicate/);
+});
+
+test('--waves is a horde-only reviewed 1..30 value, forwarded when supplied', () => {
+  for (const waves of ['1', '10', '30']) {
+    const plan = options(['--experience=horde', `--waves=${waves}`], catalog);
+    assert.ok(plan.userArgs.includes(`--waves=${waves}`), waves);
+  }
+  // Omitting --waves keeps horde's userArgs byte-identical to the old default.
+  assert.deepEqual(options(['--experience=horde'], catalog).userArgs,
+    ['--map=meridian-exchange', '--mode=horde']);
+  assert.deepEqual(options(['--experience=horde', '--map=nacre-engine'], catalog).userArgs,
+    ['--map=nacre-engine', '--mode=horde']);
+  for (const bad of ['0', '31', '-1', '1.5', 'abc', '']) {
+    if (bad === '') continue; // --waves= dies earlier as a missing value
+    assert.throws(() => options(['--experience=horde', `--waves=${bad}`], catalog),
+      /--waves must be 1\.\.30/, bad);
+  }
+  for (const experience of ['combat', 'lobby', 'zones', 'sports', 'objectives',
+    'lattice', 'lattice-world', 'combined-arms', 'arms-race']) {
+    assert.throws(() => options([`--experience=${experience}`, '--waves=10'], catalog),
+      /--waves requires horde/, experience);
+  }
+  assert.throws(() => options(['--experience=native-dm', '--waves=10'], catalog), /not supported by native-dm/);
+  assert.throws(() => options(['--experience=identity-zones', '--waves=10'], catalog), /not supported by identity-zones/);
+  assert.throws(() => options(['--experience=showcase', '--waves=10'], catalog), /not supported by native-only/);
+  assert.throws(() => options(['--experience=menu', '--waves=10'], catalog), /not supported by menu/);
 });

@@ -23,8 +23,13 @@ test('dev native-dm routes the three identity maps to the Deathmatch scene', () 
   }
 });
 test('identity ids are rejected where they are not reviewed routes', () => {
+  // Reviewed exception: Horde runs on Nacre Engine through its own identity scene.
+  assert.doesNotThrow(() => launchOptions(['--experience=horde', '--map=nacre-engine'], catalog), 'horde nacre-engine');
+  for (const map of ['lacuna-court', 'vermilion-fold']) {
+    assert.throws(() => launchOptions(['--experience=horde', `--map=${map}`], catalog), Error, `horde ${map}`);
+  }
   for (const map of ['lacuna-court', 'vermilion-fold', 'nacre-engine']) {
-    for (const experience of ['lobby', 'horde', 'zones', 'sports', 'objectives', 'lattice', 'combined-arms']) {
+    for (const experience of ['lobby', 'zones', 'sports', 'objectives', 'lattice', 'combined-arms']) {
       assert.throws(() => launchOptions([`--experience=${experience}`, `--map=${map}`], catalog), Error, `${experience} ${map}`);
     }
   }

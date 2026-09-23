@@ -91,6 +91,12 @@ func observe(frame: Dictionary) -> void:
 	for node: Variant in board.nodes:
 		if not node is Dictionary or not node.get("id") is String: continue
 		nodes.append(node.duplicate(true))
+	# Team-visible supply cuts are read from this recipient's own `intel` bucket
+	# and nothing else: the other team's view is never touched, and a missing or
+	# unknown cut list stays empty rather than becoming an inferred cut.
+	var cuts: Array = []
+	for value: Variant in array(dictionary(team_value(board, "intel", team)).get("cutNodes")):
+		if value is String and not cuts.has(value): cuts.append(value)
 	var role_board := dictionary(team_value(board, "roleBoard", team))
 	var director := dictionary(board.get("director"))
 	var window := dictionary(director.get("intermission"))
@@ -107,7 +113,7 @@ func observe(frame: Dictionary) -> void:
 		"health":actor.get("health"), "req":req,
 		"flux":team_value(board, "flux", team), "spent":team_value(board, "fluxSpent", team),
 		"income":team_value(board, "fluxIncome", team), "upkeep":team_value(board, "fluxUpkeep", team),
-		"nodes":nodes, "roles":role_board, "command":dictionary(board.get("command")),
+		"nodes":nodes, "cuts":cuts, "roles":role_board, "command":dictionary(board.get("command")),
 		"commander":dictionary(board.get("commander")), "coop":board.get("coop", false),
 		"recruitment":{"peer":peer_id, "phase":director.get("phase"), "wave":director.get("wave"),
 			"open":window.get("open"), "sink":reinforce,

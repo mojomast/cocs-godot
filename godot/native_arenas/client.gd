@@ -9,7 +9,17 @@ func disconnect_server() -> void:
 	input_status.clear()
 	super.disconnect_server()
 
-func create_room(player_name: String = "Godot") -> Error:
+# Override conformance with the widened lobby signature (net/client.gd carries the
+# loadout identity). This route cannot honour a loadout: its authority validates the
+# create frame against an exact key allowlist (type/v/name/playerName/delta/
+# nativeArenaInput), so identity would be rejected on the wire. Empty strings and the
+# documented defaults mean "no choice made" and keep the frame byte-identical; a real
+# choice is refused loudly instead of being dropped silently.
+func create_room(player_name: String = "Godot", character: String = "chatgpt",
+		harness: String = "openclaw") -> Error:
+	if (not character.is_empty() and character != Loadout.DEFAULT_CHARACTER) \
+			or (not harness.is_empty() and harness != Loadout.DEFAULT_HARNESS):
+		return ERR_UNAUTHORIZED
 	return send_frame({"type":"create", "name":"Native arena Deathmatch", "playerName":player_name,
 		"v":3, "delta":0, "nativeArenaInput":1})
 

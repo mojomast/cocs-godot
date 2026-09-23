@@ -77,7 +77,7 @@ try {
  const args = ['--audio-driver','Dummy','--path','godot','--resolution',options.size ?? '960x640',
   '--script','res://tests/lattice/economy_physical.gd','res://lattice/board.tscn','--',
   `--endpoint=ws://127.0.0.1:${port}`,`--map=${options.map}`,'--mode=cocs-coop',`--physical-output=${out}`];
- const sourceFiles = ['game/protocol.mjs','game/cocs-intel.mjs','game/cocs.mjs','game/cocs-coop.mjs','game/cocs-difficulty.mjs','game/cocs-economy.mjs','game/cocs-roles.mjs','server/game-server.mjs','server/room.mjs','godot/lattice/transport.gd','godot/lattice/board.gd','godot/lattice/board.tscn','godot/tests/lattice/economy_physical.gd','godot/tests/lattice/physical.gd','port/native-lattice-economy/run.mjs'];
+ const sourceFiles = ['game/protocol.mjs','game/cocs-intel.mjs','game/cocs.mjs','game/cocs-coop.mjs','game/cocs-difficulty.mjs','game/cocs-economy.mjs','game/cocs-roles.mjs','server/game-server.mjs','server/room.mjs','godot/lattice/transport.gd','godot/lattice/board.gd','godot/lattice/topology.gd','godot/lattice/board.tscn','godot/tests/lattice/economy_physical.gd','godot/tests/lattice/physical.gd','port/native-lattice-economy/run.mjs'];
  writeFileSync(join(out, 'manifest.json'), JSON.stringify({base:'c982d25ca335da3983df48ea37f7602bf8ded1f2', source:lock.source_commit,
   revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
   godot:lock.godot_version, godotSha256:createHash('sha256').update(readFileSync(bin)).digest('hex'), options, command:[bin,...args], port, display:env.DISPLAY,

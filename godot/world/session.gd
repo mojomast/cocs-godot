@@ -9,7 +9,12 @@ const FirstPersonBinding = preload("res://first_person/session_binding.gd")
 var first_person: Node
 var weapon_selection := WeaponSelection.new()
 const MatchSetup = preload("res://ui/match_setup.gd")
+const Loadout = preload("res://ui/loadout.gd")
 var selected_mode: String = "deathmatch"
+# Identity this session asks the authority to seat it as. The authority echo in
+# the lobby roster is the only confirmation; the local value is never assumed.
+var selected_character: String = Loadout.DEFAULT_CHARACTER
+var selected_harness: String = Loadout.DEFAULT_HARNESS
 var endpoint: String = ""
 var setup_menu: Control
 const LobbyMenu = preload("res://ui/lobby_menu.gd")
@@ -94,9 +99,16 @@ func lobby_leave() -> void:
 	phase = -3
 	label.text = "Disconnected"
 
-func lobby_connect(url: String, player_name: String, room: String, map_id: String, mode: String, guest: bool) -> void:
+func lobby_connect(url: String, player_name: String, room: String, map_id: String, mode: String, guest: bool, character: String = "", harness: String = "") -> void:
 	if not lobby_enabled or phase not in [-3, -1]: return
 	lobby_clear()
+	# An explicit pair from the lobby surface replaces the session pair. An empty
+	# pair keeps whatever the CLI or an earlier explicit choice established, so
+	# the documented defaults are never overwritten by omission.
+	if not character.is_empty() or not harness.is_empty():
+		var pair: Dictionary = Loadout.resolve(character, harness)
+		selected_character = pair.character
+		selected_harness = pair.harness
 	var problem := MatchSetup.validate(catalog.entries, map_id, mode if not guest else MatchSetup.DEFAULT_MODE)
 	if not problem.is_empty():
 		on_error(problem)
@@ -201,7 +213,7 @@ func emit_boundary_trace(event: String) -> void:
 		"pointer_captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED})
 
 func begin_room() -> void:
-	var result: Error = client.create_room(lobby_player_name) if join_room_id.is_empty() else client.join_room(join_room_id, lobby_player_name if lobby_enabled else "Godot guest")
+	var result: Error = client.create_room(lobby_player_name, selected_character, selected_harness) if join_room_id.is_empty() else client.join_room(join_room_id, lobby_player_name if lobby_enabled else "Godot guest", selected_character, selected_harness)
 	if result != OK:
 		on_error("Room request could not be queued. Relaunch to reconnect.")
 		return
@@ -290,6 +302,8 @@ func _ready() -> void:
 		on_error(options.error)
 		return
 	selected_mode = options.mode
+	selected_character = options.operator
+	selected_harness = options.harness
 	if not load_map(options.map):
 		on_error(catalog.error)
 		return
@@ -338,7 +352,7 @@ func _ready() -> void:
 		phase = -2 # Waiting for local choice: no connection and no handshake timer.
 		setup_menu = MatchSetup.new()
 		label.get_parent().get_parent().add_child(setup_menu)
-		setup_menu.configure(catalog.entries, current_id, selected_mode)
+		setup_menu.configure(catalog.entries, current_id, selected_mode, selected_character, selected_harness)
 		setup_menu.start_requested.connect(start_selected_match)
 		label.hide()
 		selector.hide()
@@ -356,6 +370,12 @@ func start_selected_match(map_id: String, mode: String) -> void:
 		return
 	world.get_node("StaticPickupMarkers").hide()
 	selected_mode = mode
+	# start_requested stays a 2-argument signal: the surface that owns the pair is
+	# read here instead of widening the signal contract.
+	if is_instance_valid(setup_menu) and setup_menu.has_method("selected_character"):
+		var pair: Dictionary = Loadout.resolve(setup_menu.selected_character(), setup_menu.selected_harness())
+		selected_character = pair.character
+		selected_harness = pair.harness
 	selector.select(ids.find(current_id))
 	setup_menu.hide()
 	label.show()
@@ -409,6 +429,16 @@ func on_error(message: String) -> void:
 		push_error(message)
 		get_tree().quit(1)
 
+# The authority echo is the only confirmation of the identity this connection
+# was seated as. An empty dictionary means the roster carried no identity at all.
+func echoed_loadout(frame: Dictionary) -> Dictionary:
+	for player: Dictionary in frame.get("players", []):
+		if int(player.get("peerId", -1)) == client.peer_id and player.get("character") is String and player.get("harness") is String:
+			return {"character": str(player.character), "harness": str(player.harness)}
+	if not client.assigned_character.is_empty() or not client.assigned_harness.is_empty():
+		return {"character": client.assigned_character, "harness": client.assigned_harness}
+	return {}
+
 func on_lobby(frame: Dictionary) -> void:
 	# Additive debug capability echo. It only ever arrives from a port-owned
 	# local authority with the channel enabled; the panel is created here so
@@ -421,6 +451,15 @@ func on_lobby(frame: Dictionary) -> void:
 		if phase not in [1, 2, 10, 11, 12, 20, 3, 4]: return
 		lobby_roster = frame.duplicate(true)
 		if is_instance_valid(lobby_menu): lobby_menu.show_roster(frame)
+		# Narrow identity check: only a roster that actually carries this
+		# connection's identity can contradict the request, so minimal legacy
+		# rosters keep working unchanged.
+		var echoed: Dictionary = echoed_loadout(frame)
+		if not echoed.is_empty():
+			var requested: Dictionary = Loadout.resolve(selected_character, selected_harness)
+			if echoed.character != requested.character or echoed.harness != requested.harness:
+				on_error("Authority assigned a different operator/harness; session cancelled.")
+				return
 		if frame.get("config") is Dictionary:
 			var problem := MatchSetup.validate(catalog.entries, current_id, str(frame.config.get("mode", "")))
 			if not problem.is_empty():

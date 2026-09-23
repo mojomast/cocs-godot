@@ -3,6 +3,7 @@ extends CanvasLayer
 const Setup = preload("res://ui/match_setup.gd")
 const Names = preload("res://ui/scoreboard.gd")
 const Choice = preload("res://ui/lobby_choice.gd")
+const Loadout = preload("res://ui/loadout.gd")
 var session: Node
 var panel := PanelContainer.new()
 var form := VBoxContainer.new()
@@ -12,6 +13,8 @@ var room := LineEdit.new()
 var role := Choice.new()
 var maps := Choice.new()
 var modes := Choice.new()
+var operator := Choice.new()
+var harness := Choice.new()
 var status := Label.new()
 var roster := Label.new()
 var connect_button := Button.new()
@@ -38,10 +41,14 @@ func _ready() -> void:
 	for edge: String in ["left", "right", "top", "bottom"]:
 		style.set("content_margin_" + edge, 16.0)
 	panel.add_theme_stylebox_override("panel", style)
+	var layout := VBoxContainer.new()
+	layout.add_theme_constant_override("separation", 6)
+	panel.add_child(layout)
 	var scroll := ScrollContainer.new()
 	scroll.follow_focus = true
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	panel.add_child(scroll)
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	layout.add_child(scroll)
 	form.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	form.add_theme_constant_override("separation", 6)
 	scroll.add_child(form)
@@ -68,16 +75,30 @@ func _ready() -> void:
 	field("Host mode (guests use authority's mode)", modes)
 	maps.item_selected.connect(func(_i: int) -> void: populate_modes())
 	populate_modes()
+	# Operator/harness rows match the shared popup-free choice. A guest picks
+	# their own pair; after connecting the authority echo is the only source.
+	build_loadout_rows()
+	var loadout_columns := HBoxContainer.new()
+	loadout_columns.add_theme_constant_override("separation", 12)
+	loadout_columns.add_child(operator)
+	loadout_columns.add_child(harness)
+	field("Operator / harness (yours)", loadout_columns)
 	for item: Label in [status, roster]:
 		item.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		form.add_child(item)
 	connect_button.text = "Connect / Create / Join"
 	start_button.text = "Start match"
 	back_button.text = "Back / Leave room"
+	# Actions stay pinned below the scroll area: reachable at 960x640 and
+	# 1280x800 without scrolling, and never clipped by the form.
+	var actions := HBoxContainer.new()
+	actions.add_theme_constant_override("separation", 6)
 	for button: Button in [connect_button, start_button, back_button]:
 		button.custom_minimum_size.y = 36
-		form.add_child(button)
-	connect_button.pressed.connect(func() -> void: session.lobby_connect(endpoint.text.strip_edges(), player_name.text.strip_edges(), room.text.strip_edges() if role.selected == 1 else "", str(maps.get_selected_metadata()), str(modes.get_selected_metadata()), role.selected == 1))
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		actions.add_child(button)
+	layout.add_child(actions)
+	connect_button.pressed.connect(func() -> void: session.lobby_connect(endpoint.text.strip_edges(), player_name.text.strip_edges(), room.text.strip_edges() if role.selected == 1 else "", str(maps.get_selected_metadata()), str(modes.get_selected_metadata()), role.selected == 1, selected_character(), selected_harness()))
 	start_button.pressed.connect(func() -> void: session.lobby_start())
 	back_button.pressed.connect(func() -> void: session.lobby_leave())
 	leave_button.text = "Leave match"
@@ -89,6 +110,79 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(resize_panel)
 	resize_panel()
 	refresh()
+
+func build_loadout_rows() -> void:
+	for entry: Dictionary in Loadout.CHARACTERS:
+		operator.add_item(str(entry.name))
+		operator.set_item_metadata(operator.item_count - 1, str(entry.id))
+	for entry: Dictionary in Loadout.HARNESSES:
+		harness.add_item(str(entry.name))
+		harness.set_item_metadata(harness.item_count - 1, str(entry.id))
+	operator.item_selected.connect(on_operator_selected)
+	var pair := initial_pair()
+	select_operator(pair.character)
+	if not harness.disabled: select_harness(pair.harness)
+
+func selected_character() -> String:
+	return str(operator.get_selected_metadata())
+
+func selected_harness() -> String:
+	return str(harness.get_selected_metadata())
+
+# The session owns the pair before the first connect (CLI or setup route). The
+# synthetic UI double in the offline tests has no such member, so the documented
+# defaults are used there.
+func initial_pair() -> Dictionary:
+	var character := Loadout.DEFAULT_CHARACTER
+	var harness_id := Loadout.DEFAULT_HARNESS
+	if session != null:
+		if "selected_character" in session: character = str(session.get("selected_character"))
+		if "selected_harness" in session: harness_id = str(session.get("selected_harness"))
+	return Loadout.resolve(character, harness_id)
+
+func operator_index(id: String) -> int:
+	for index: int in operator.item_count:
+		if str(operator.get_item_metadata(index)) == id: return index
+	return -1
+
+func harness_index(id: String) -> int:
+	for index: int in harness.item_count:
+		if str(harness.get_item_metadata(index)) == id: return index
+	return -1
+
+func select_operator(id: String) -> void:
+	if operator.disabled: return
+	var index := operator_index(id)
+	if index < 0: return
+	operator.select(index)
+	apply_harness_lock()
+
+func select_harness(id: String) -> void:
+	if harness.disabled: return
+	var index := harness_index(id)
+	if index < 0: return
+	if not Loadout.valid(selected_character(), id): return
+	harness.select(index)
+
+func select_harness_index(index: int) -> void:
+	if index >= 0 and index < harness.item_count: harness.select(index)
+
+# Single owner of harness.disabled: locked only while the operator requires it
+# and the form is editable.
+func apply_harness_lock() -> void:
+	var editable: bool = session.phase in [-3, -1]
+	var locked := Loadout.locked_harness(selected_character())
+	if locked.is_empty():
+		harness.disabled = not editable
+		if not Loadout.valid(selected_character(), selected_harness()):
+			select_harness_index(harness_index(Loadout.DEFAULT_HARNESS))
+		return
+	select_harness_index(harness_index(locked))
+	harness.disabled = true
+
+func on_operator_selected(_index: int) -> void:
+	if operator.disabled: return
+	apply_harness_lock()
 
 func populate_modes() -> void:
 	modes.clear()
@@ -117,7 +211,7 @@ func show_roster(frame: Dictionary) -> void:
 		elif player.get("actorId") != null: tags += " · actor %s" % str(player.actorId)
 		else: tags += " · unassigned"
 		if not player.get("connected", false): tags += " · disconnected"
-		lines.append(Names.plain(player.get("name"), "Player", 32) + tags)
+		lines.append(Names.plain(player.get("name"), "Player", 32) + " · " + Loadout.player_label(player) + tags)
 	roster.text = "\n".join(lines)
 
 func refresh() -> void:
@@ -142,6 +236,9 @@ func refresh() -> void:
 	var editable := phase in [-3, -1]
 	for control: LineEdit in [endpoint, player_name, room]: control.editable = editable
 	for control: Control in [role, maps, modes]: control.disabled = not editable
+	operator.disabled = not editable
+	# Owner of harness.disabled for both states, so a stale lock never sticks.
+	apply_harness_lock()
 	modes.disabled = not editable or role.selected == 1
 	room.editable = editable and role.selected == 1
 	connect_button.visible = editable

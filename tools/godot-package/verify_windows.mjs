@@ -149,6 +149,23 @@ try {
     assert.throws(()=>process.kill(started.pid,0), 'Native-only process exited');
     report.cases.push({experience,passed:true,authority:false,native_pid:started.pid,cleanup:true});
   }
+  // The unified main menu on its verifier path: Play.cmd double-click entry,
+  // one headless run, ready, stopped, no engine errors.
+  {
+    let result;
+    try {
+      result = await exec(process.env.ComSpec || 'cmd.exe', ['/d','/s','/c',`""${join(root,'Play.cmd')}" --experience=menu --smoke"`], {cwd:sandbox,env,windowsVerbatimArguments:true,timeout:60000,maxBuffer:4*1024*1024});
+    } catch (error) {
+      await writeFile(join(output,'menu.log'),(error.stdout || '')+(error.stderr || '')+'\n'+error.message);
+      throw error;
+    }
+    const text = result.stdout+result.stderr;
+    await writeFile(join(output,'menu.log'),text);
+    assert.doesNotMatch(text, /SCRIPT ERROR|ERROR:|Assertion failed/);
+    assert.match(text, /MENU_READY/);
+    assert.match(text, /PACKAGE_STOPPED/);
+    report.cases.push({experience:'menu',smoke:true,passed:true});
+  }
   const inspection = await exec(join(root,'cocs.exe'), ['--headless','--audio-driver','Dummy','--main-pack',join(root,'cocs.pck'),'--script',resolve('godot/tests/package_inspect.gd')], {cwd:sandbox,env,timeout:45000});
   await writeFile(join(output,'graphics-resources.log'),inspection.stdout+inspection.stderr);
   assert.doesNotMatch(inspection.stdout+inspection.stderr,/SCRIPT ERROR|ERROR:|Assertion failed/);

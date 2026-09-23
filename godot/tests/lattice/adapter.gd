@@ -56,6 +56,15 @@ func _initialize() -> void:
 	check(c.actions.is_empty() and c.projection.is_empty() and c.revision == 2, "round resets targets and actions")
 	wire(c, {"type":"snapshot", "seq":6,"state":state})
 	check(c.projection.is_empty(), "old round snapshot cannot restore actions")
+	# Team-visible supply cuts: only this recipient's own intel bucket is read.
+	state.cocs.roundRevision = 2
+	state.cocs.intel = {"0":{"cutNodes":["front-0", "front-0", "relay-0"]}, "1":{"cutNodes":["hq-1", "relay-0"]}}
+	wire(c, {"type":"snapshot", "seq":7,"state":state})
+	check(c.projection.cuts == ["front-0", "relay-0"], "only this team's cut list is projected, deduplicated")
+	check(not c.projection.has("intel") and not c.projection.has("knownNodes"), "raw enemy intel is never projected")
+	state.cocs.intel = null
+	wire(c, {"type":"snapshot", "seq":8,"state":state})
+	check(c.projection.cuts.is_empty(), "missing cut list stays empty, never an inferred cut")
 	check(not wire(c, {"type":"cocs-reject", "cardId":7,"reason":"bad"}), "malformed rejection fails closed")
 	check(not wire(c, {"type":"cocs-reject", "cardId":"x","reason":"bad", "actionSeq":-1}), "negative sequence fails closed")
 	check(not c.decode_text(" ".repeat(c.MAX_FRAME_BYTES + 1)), "size bound preserved")

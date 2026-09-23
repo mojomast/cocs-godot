@@ -4,7 +4,7 @@
 
 1. Download `cocs-native-windows.zip` from the GitHub release.
 2. Right-click the ZIP → **Extract All**. Open the extracted `cocs-native-windows` folder.
-3. Double-click **Play.cmd** for Meridian Team Deathmatch with bots.
+3. Double-click **Play.cmd** to open the **main menu** with bots.
 4. Click inside the game window to engage the mouse and controls.
 
 **Graphics Showcase.cmd** opens the new map and effects menu (details below).
@@ -109,18 +109,20 @@ Terminal equivalents: `Play.cmd --experience=showcase`, `--experience=aurora-bas
 
 ## Candidate models and demo status
 
-This demo enables the recovered procedural operator candidate in the shared
-infantry presentation: three geometry variants and palettes for all nine IDs.
-The viewer shows all three; normal gameplay character selection is source-driven.
+This demo uses the source-operator models in the shared infantry presentation:
+three geometry variants and palettes for all nine IDs. Combat setup and lobby
+provide operator/harness selection; restricted native-arena routes keep their
+existing fixed loadout rules. The viewer shows all three geometry variants.
 Geometry is static, with no walk cycle or skeletal animation. Distant identity
 readability and render cost remain work in progress. The package manifest records
-`operator_models` and the exact staging-only preload change; source defaults still
-use baseline operators. Custom renderers in other modes may use their own models.
+`operator_models=source-operators` and no staging-only model override. Custom
+renderers in other modes may use their own models.
 
-Campaign is deferred. Full Horde progression and full Arms Race ladder completion
-are still under development. The existing combat setup/strategy popup issue can
-be avoided with the direct-start presets. At small resolutions, release Tab if
-the Horde scoreboard covers the health/ammo panels.
+Horde offers can be selected with numbered buttons or matching number keys,
+with server-confirmed applied/refused feedback. LATTICE shows authored map links
+and advisory supply/target guidance. Campaign is deferred; natural full Horde
+rounds and full Arms Race ladder completion remain outside verified acceptance.
+At small resolutions, release Tab if the Horde scoreboard covers the health/ammo panels.
 
 This is a development prerelease. The source asset-rights audit remains unresolved;
 the package does not establish new rights to the original assets. Godot, Node and
@@ -134,13 +136,13 @@ audio or human usability. Report a launch error together with console output.
 
 `manifest.json` records source and port commits, every packaged file's SHA256,
 source module closure, adapter hashes, bundled Node provenance, official Godot
-checksums and the staged model override. The adjacent ZIP `.sha256` verifies the
+checksums and the absence of staged model overrides. The adjacent ZIP `.sha256` verifies the
 download. Native Windows CI results and known limits are linked from the release.
 
 ## Rebuild on Linux
 
 ```sh
-python3 tools/godot-package/build.py --target windows --operator-models candidate \
+python3 tools/godot-package/build.py --target windows --operator-models source-operators \
   --state /tmp/opencode/cocs-windows-build \
   --archive-directory /path/to/pinned/godot-archives
 ```

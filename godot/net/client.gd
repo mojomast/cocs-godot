@@ -9,6 +9,7 @@ signal results(frame: Dictionary)
 signal connection_error(message: String)
 
 const PROTOCOL_VERSION := 3
+const Loadout = preload("res://ui/loadout.gd")
 const MAX_FRAME_BYTES := 1048576 # bounded initial cap; capture is not all-map worst case
 var peer := WebSocketPeer.new()
 var allowlist: Dictionary = {}
@@ -28,6 +29,11 @@ var round_finished: bool = false
 var spectating := false # Connection identity, not round state; never implies an actor.
 const ACTIVE_SPECTATOR_NOTICE := "Match in progress — you joined as a spectator."
 var joined_room_request := ""
+# Identity the authority echoed for this connection. Empty means the frame carried
+# no identity (older minimal rosters stay valid); it is never assumed from the
+# local request.
+var assigned_character := ""
+var assigned_harness := ""
 # One adjacent handshake only: queued join -> spectator welcome -> active roster -> notice.
 var spectator_notice_stage := 0
 
@@ -35,6 +41,8 @@ func clear_join_context() -> void:
 	spectating = false
 	joined_room_request = ""
 	spectator_notice_stage = 0
+	assigned_character = ""
+	assigned_harness = ""
 
 func spectator_assignment(frame: Dictionary, player: Dictionary) -> bool:
 	return frame.get("roomId") == room_id and not room_id.is_empty() and player.get("spectate") is bool and player.spectate and player.get("connected") is bool and player.connected and player.has("actorId") and player.actorId == null
@@ -89,12 +97,14 @@ func send_frame(frame: Dictionary) -> Error:
 	if peer.get_ready_state() != WebSocketPeer.STATE_OPEN: return ERR_CONNECTION_ERROR
 	return peer.send_text(JSON.stringify(frame))
 
-func create_room(player_name: String = "Godot") -> Error:
-	return send_frame({"type":"create", "name":"Godot port laboratory", "playerName":player_name, "v":3, "delta":0})
+func create_room(player_name: String = "Godot", character: String = "chatgpt", harness: String = "openclaw") -> Error:
+	var pair: Dictionary = Loadout.resolve(character, harness)
+	return send_frame({"type":"create", "name":"Godot port laboratory", "playerName":player_name, "character":pair.character, "harness":pair.harness, "v":3, "delta":0})
 
-func join_room(id: String, player_name: String = "Godot guest") -> Error:
+func join_room(id: String, player_name: String = "Godot guest", character: String = "", harness: String = "") -> Error:
 	if id.is_empty(): return ERR_INVALID_PARAMETER
-	var result := send_frame({"type":"join", "roomId":id, "name":player_name, "v":PROTOCOL_VERSION, "delta":0})
+	var pair: Dictionary = Loadout.resolve(character, harness)
+	var result := send_frame({"type":"join", "roomId":id, "name":player_name, "character":pair.character, "harness":pair.harness, "v":PROTOCOL_VERSION, "delta":0})
 	if result == OK:
 		joined_room_request = id
 		spectator_notice_stage = 1
@@ -135,6 +145,10 @@ func valid_envelope(frame: Dictionary) -> bool:
 				if not player is Dictionary or not wire_integer(player.get("peerId")): return false
 				for flag: String in ["spectate", "connected"]:
 					if player.has(flag) and not player[flag] is bool: return false
+				# Identity is optional in the minimal roster contract; when the
+				# authority sends it, it must be a string.
+				for identity: String in ["character", "harness"]:
+					if player.has(identity) and not player[identity] is String: return false
 				var id: int = int(player.peerId)
 				if peers.has(id): return false
 				peers[id] = true
@@ -177,9 +191,15 @@ func decode_text(text: String) -> bool:
 			# assignments must not retain control of a previous actor.
 			var next_actor_id: int = -1
 			var self_player: Dictionary = {}
+			# The roster is complete, so the echoed identity is too: an absent
+			# identity clears the record instead of retaining a stale pair.
+			assigned_character = ""
+			assigned_harness = ""
 			for player: Dictionary in frame.get("players", []):
 				if int(player.peerId) == peer_id:
 					self_player = player
+					if player.get("character") is String: assigned_character = str(player.character)
+					if player.get("harness") is String: assigned_harness = str(player.harness)
 					if player.get("actorId") != null: next_actor_id = int(player.actorId)
 			var readonly := spectator_assignment(frame, self_player)
 			if spectating and not readonly: return fail("Spectator assignment changed; leave and join explicitly")

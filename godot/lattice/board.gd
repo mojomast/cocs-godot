@@ -1,7 +1,15 @@
 extends Control
 const Transport = preload("res://lattice/transport.gd")
 const MapView = preload("res://lattice/map_view.gd")
+const Topology = preload("res://lattice/topology.gd")
+const Catalog = preload("res://world/catalog.gd")
 var client := Transport.new()
+## Authored link topology for the current map, resolved from the locked
+## generated catalog. Advisory only: it never gates or replaces an order.
+var topology := Topology.new()
+var catalog: Variant = null
+var catalog_ready := false
+var topology_map := ""
 var endpoint := LineEdit.new()
 var room := LineEdit.new()
 var maps := OptionButton.new()
@@ -45,6 +53,10 @@ func label(text_value: String, parent: Node, size: int = 18) -> Label:
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	# Locked generated catalog for the authored link layer. Absent content just
+	# means no link layer is drawn; it never invents a link.
+	catalog = Catalog.new()
+	catalog_ready = catalog.open()
 	var bg := ColorRect.new()
 	bg.color = Color("101b29")
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -220,12 +232,26 @@ func refresh() -> void:
 	if selected not in node_ids: selected = ""
 	if selected.is_empty(): nodes.deselect_all()
 	elif not nodes.is_selected(node_ids.find(selected)): nodes.select(node_ids.find(selected))
-	map_view.set_nodes(p.get("nodes", []), selected, str(p.get("map", "")))
+	var map_id := str(p.get("map", ""))
+	if map_id != topology_map:
+		# Only the authored topology for this recipient's own map id is loaded,
+		# and only for as long as that map is the live projection.
+		topology_map = map_id
+		topology.clear()
+		if catalog_ready and not map_id.is_empty():
+			topology.set_authored(catalog.resolve_map(map_id))
+	var cuts: Array = p.get("cuts") if p.get("cuts") is Array else []
+	var link_model: Dictionary = topology.model(p.get("nodes", []), p.get("team"), cuts)
+	map_view.set_nodes(p.get("nodes", []), selected, map_id)
+	map_view.set_links(link_model)
 	for i: int in range(node_ids.size()):
 		var node: Dictionary = p.nodes[i]
 		nodes.set_item_text(i, "%s  |  %s  |  owner %s  |  %s" % [node.get("label", node.id), node.get("archetype", "unknown"), "neutral" if node.has("owner") and node.owner == null else team_name(node.get("owner")), "CONTESTED" if node.get("contested") == true else "live" if node.get("live") == true else "inactive"])
 		nodes.set_item_tooltip(i, "Node %s • x %s / z %s" % [node.id, known(node.get("x")), known(node.get("z"))])
+	var cue: Dictionary = topology.guidance(link_model, selected)
 	selection.text = "Selected: " + (selected if not selected.is_empty() else "none")
+	if not p.is_empty() and not str(cue.get("text", "")).is_empty():
+		selection.text += "  •  " + str(cue.text)
 	var hold_gate: String = client.action_gate("hold", selected)
 	var spend_gate: String = client.action_gate(client.purchase_kind())
 	var command: Dictionary = client.dictionary(p.get("command"))

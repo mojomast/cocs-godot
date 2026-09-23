@@ -140,6 +140,15 @@ try {
     assert.throws(()=>process.kill(started.pid,0), 'Native-only process exited');
     report.cases.push({experience,passed:true,authority:false,native_pid:started.pid,cleanup:true});
   }
+  // The unified main menu on its verifier path: one headless run, ready, stopped.
+  {
+    const result = await runManager(['--experience=menu', '--smoke'], 'menu', 60000);
+    const text = result.stdout+result.stderr;
+    assert.doesNotMatch(text, /SCRIPT ERROR|ERROR:|Assertion failed/);
+    assert.match(text, /MENU_READY/);
+    assert.match(text, /PACKAGE_STOPPED/);
+    report.cases.push({experience:'menu',smoke:true,passed:true});
+  }
   const inspection = await exec(join(root,'cocs.x86_64'), ['--headless','--audio-driver','Dummy','--main-pack',join(root,'cocs.pck'),'--script',resolve('godot/tests/package_inspect.gd')], {cwd:sandbox,env,timeout:45000});
   await writeFile(join(output,'graphics-resources.log'),inspection.stdout+inspection.stderr);
   assert.doesNotMatch(inspection.stdout+inspection.stderr,/SCRIPT ERROR|ERROR:|Assertion failed/);

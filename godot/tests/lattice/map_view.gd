@@ -5,6 +5,10 @@ var failures := 0
 func check(value: bool, message: String) -> void:
 	checks += 1
 	if not value: failures += 1; push_error(message)
+func link_state(view: Control, a: String, b: String) -> String:
+	for link: Dictionary in view.links:
+		if (link.a == a and link.b == b) or (link.a == b and link.b == a): return link.state
+	return ""
 func _initialize() -> void: call_deferred("run")
 func run() -> void:
 	var view := View.new()
@@ -57,6 +61,40 @@ func run() -> void:
 	board.map_view.choose("west")
 	board.disconnect_session()
 	check(board.selected.is_empty() and board.map_view.markers.is_empty() and board.map_view.hit_test(center).is_empty(), "disconnect removes all map targets")
+	# Authored link layer: only this recipient's visible markers and authored
+	# links are drawn, and only from the team-visible cut list.
+	var wire: Array = []
+	for seed: Dictionary in [
+			{"id":"hq-0", "archetype":"hq", "label":"WEST / FLIGHT CONTROL", "x":-104, "z":0, "owner":0},
+			{"id":"hq-1", "archetype":"hq", "label":"EAST / FLIGHT CONTROL", "x":104, "z":0, "owner":1},
+			{"id":"front-0", "archetype":"front", "label":"WEST / ARCHIVE GATE", "x":-52, "z":-8, "owner":0},
+			{"id":"front-1", "archetype":"front", "label":"EAST / ARCHIVE GATE", "x":52, "z":8},
+			{"id":"econ-n", "archetype":"economy", "label":"NORTH / SOLAR EXCHANGE", "x":8, "z":-32},
+			{"id":"econ-s", "archetype":"economy", "label":"SOUTH / DEEP ARRAY", "x":-8, "z":32},
+			{"id":"relay-0", "archetype":"relay", "label":"ASTERION / OCULUS", "x":0, "z":0, "owner":0}]:
+		var node: Dictionary = seed.duplicate()
+		node.live = node.archetype != "hq"
+		node.contested = false
+		node.progress = [0, 0]
+		wire.append(node)
+	board.client.revision = 3
+	board.client.projection = {"map":"asterion-relay", "team":0, "nodes":wire, "cuts":["front-0"]}
+	board.refresh()
+	check(board.topology.nodes.size() == 7 and board.topology.edges.size() == 10, "board loads the authored topology of its own map")
+	check(board.map_view.links.size() == 10, "every authored link between visible markers is drawn")
+	check(board.map_view.counts.owned == 3 and board.map_view.counts.linked == 1 and board.map_view.counts.cut == 2, "link summary counts own supply exactly")
+	check(link_state(board.map_view, "hq-0", "front-0") == "severed" and link_state(board.map_view, "relay-0", "front-1") == "front", "a team-visible cut severs own links only")
+	check(board.selection.text.contains("NEXT") and board.selection.text.contains("EAST / ARCHIVE GATE") and board.selection.text.contains("no linked route home"), "guidance names the next public target and its missing route home under the current cut")
+	board.map_view.choose("relay-0")
+	check(board.selection.text.contains("HOLD") and board.selection.text.contains("Server decides"), "a cut-off owned selection still reads as a legal HOLD, server final")
+	board.client.projection.nodes.remove_at(6)
+	board.refresh()
+	check(board.map_view.links.size() == 6 and link_state(board.map_view, "relay-0", "front-1").is_empty(), "links through a node the recipient cannot see are never drawn")
+	board.client.projection.map = "unknown-map-xyz"
+	board.refresh()
+	check(board.map_view.links.is_empty() and board.selection.text.contains("Authored links unavailable"), "an unauthored map says so instead of inventing links")
+	board.disconnect_session()
+	check(board.map_view.links.is_empty() and board.map_view.counts.linked == 0, "disconnect clears the drawn link layer")
 	board.queue_free()
 	await process_frame
 	print("LATTICE_MAP_SYNTHETIC %d checks, %d failures" % [checks, failures])

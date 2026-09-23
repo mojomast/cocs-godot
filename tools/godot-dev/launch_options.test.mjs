@@ -79,7 +79,33 @@ test('sports round options preserve legal ordinary configuration without silent 
   assert.throws(()=>launchOptions(['--experience=objectives','--round-target=1'],catalog),/sports launcher/);
 });
 
-test('world traversal and command board remain distinct native scenes',()=>{  const world=launchOptions(['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop'],catalog);
+test('dev menu route opens the main menu scene without authority; no-arg default stays the viewer',()=>{
+  const plan=launchOptions(['--experience=menu'],catalog);
+  assert.deepEqual(plan.args,['--path','godot','res://ui/main_menu.tscn']);
+  assert.equal(plan.experience,'menu');
+  assert.equal(plan.nativeOnly,true);
+  assert.equal(plan.endpoint,null);
+  assert.equal(plan.smoke,null);
+  assert.deepEqual(plan.sessionOptions,[]);
+  // Dev no-arg default is still the map viewer (launch_options.test.mjs:21 pins it).
+  assert.deepEqual(launchOptions([],catalog).args,['--path','godot']);
+  assert.equal(launchOptions([],catalog).experience,'viewer');
+  // --experience=menu --smoke runs headlessly and forwards --smoke after '--'.
+  const smoke=launchOptions(['--experience=menu','--smoke'],catalog);
+  assert.deepEqual(smoke.args,['--headless','--audio-driver','Dummy','--path','godot','res://ui/main_menu.tscn']);
+  assert.deepEqual(smoke.sessionOptions,['--smoke']);
+  assert.equal(smoke.smoke,'--smoke');
+  // Parameterless: stray keys and flags are rejected, --debug-panel included.
+  for(const args of [['--map=meridian-exchange'],['--mode=deathmatch'],['--bots=2'],['--round-seconds=60'],
+    ['--score-limit=30'],['--waves=1'],['--time-limit=60'],['--endpoint=ws://127.0.0.1:1234'],
+    ['--setup'],['--play'],['--mute'],['--debug-hud'],['--native-trace'],['--session-smoke'],
+    ['--network-smoke'],['--debug-panel'],['--debug-panel','--smoke']]){
+    assert.throws(()=>launchOptions(['--experience=menu',...args],catalog),Error,args.join(' '));
+  }
+});
+
+test('world traversal and command board remain distinct native scenes',()=>{
+  const world=launchOptions(['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop'],catalog);
   assert.ok(world.args.includes('res://lattice/world_demo.tscn'));
   assert.deepEqual(world.sessionOptions,['--map=monsoon-foundry','--mode=cocs-coop']);
   assert.ok(launchOptions(['--experience=lattice'],catalog).args.includes('res://lattice/board.tscn'));

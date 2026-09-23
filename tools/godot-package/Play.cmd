@@ -4,7 +4,7 @@ cd /d "%~dp0"
 if not exist "%~dp0node.exe" goto missing
 if not exist "%~dp0cocs.pck" goto missing
 if "%~1"=="" (
-  "%~dp0node.exe" "%~dp0run.mjs" --play --mode=teamdeathmatch
+  "%~dp0node.exe" "%~dp0run.mjs" --experience=menu
 ) else (
   "%~dp0node.exe" "%~dp0run.mjs" %*
 )

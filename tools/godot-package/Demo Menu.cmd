@@ -33,7 +33,7 @@ if errorlevel 5 goto arms
 if errorlevel 4 goto horde
 if errorlevel 3 goto rockets
 if errorlevel 2 goto verdant
-call "%~dp0Play.cmd"
+call "%~dp0Play.cmd" --play --map=meridian-exchange --mode=teamdeathmatch
 goto menu
 :verdant
 call "%~dp0Play.cmd" --play --map=verdant-reliquary

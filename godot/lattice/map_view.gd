@@ -1,8 +1,11 @@
 extends Control
-## Recipient-node diagram only. No inferred links, actor layer or static objectives.
+## Recipient-node diagram with the recipient-visible authored link layer. No
+## inferred links, actor layer or static objectives.
 signal node_selected(id: String)
 const RADIUS := 12.0
 var markers: Array[Dictionary] = []
+var links: Array[Dictionary] = []
+var counts := {"owned": 0, "linked": 0, "cut": 0}
 var selected := ""
 var map_id := ""
 var missing := 0
@@ -10,7 +13,7 @@ var missing := 0
 func _ready() -> void:
 	focus_mode = Control.FOCUS_ALL
 	mouse_filter = Control.MOUSE_FILTER_STOP
-	tooltip_text = "Public objective coordinates; X/Z fitted independently. No topology links. Click to select; arrows browse. HOLD is a separate action. Overlapping markers cycle on repeated clicks."
+	tooltip_text = "Public objective coordinates and recipient-visible authored links; X/Z fitted independently. Click to select; arrows browse. HOLD is a separate action. Overlapping markers cycle on repeated clicks."
 	resized.connect(queue_redraw)
 	focus_entered.connect(queue_redraw)
 	focus_exited.connect(queue_redraw)
@@ -37,7 +40,41 @@ func set_nodes(public_nodes: Array, chosen: String, public_map: String) -> void:
 	selected = chosen
 	map_id = public_map
 	missing = absent
+	# A link is only drawn while both of its endpoints are current markers.
+	var keep: Array[Dictionary] = []
+	for link: Dictionary in links:
+		if seen.has(link.a) and seen.has(link.b): keep.append(link)
+	links = keep
 	queue_redraw()
+
+## Advisory link layer pushed by the board. `model` is the recipient-filtered
+## authored model (`godot/lattice/topology.gd`): links whose endpoints are not
+## both drawn markers are dropped here, so nothing outside the recipient's own
+## markers can ever be drawn. Presentation only; the server decides orders.
+func set_links(model: Dictionary) -> void:
+	var source: Dictionary = model if model is Dictionary else {}
+	var lookup := {}
+	for node: Dictionary in markers: lookup[node.id] = true
+	var next: Array[Dictionary] = []
+	for link: Variant in source.get("edges", []):
+		if not link is Dictionary: continue
+		if not link.get("a") is String or not link.get("b") is String: continue
+		if not lookup.has(link.a) or not lookup.has(link.b): continue
+		next.append({"a": link.a, "b": link.b, "state": str(link.get("state", "unknown"))})
+	var next_counts := {"owned": int(source.get("owned", 0)), "linked": int(source.get("linked", 0)),
+		"cut": int(source.get("cut", 0))}
+	if links == next and counts == next_counts: return
+	links = next
+	counts = next_counts
+	queue_redraw()
+
+func link_style(state: String) -> Dictionary:
+	match state:
+		"linked": return {"color": Color("7fd0ff"), "width": 2.0, "dash": 0.0}
+		"severed": return {"color": Color("ff9b86"), "width": 2.0, "dash": 7.0}
+		"front": return {"color": Color("f7d578"), "width": 1.5, "dash": 5.0}
+		"other": return {"color": Color("5b6c7e"), "width": 1.0, "dash": 0.0}
+	return {"color": Color("46545f"), "width": 1.0, "dash": 3.0}
 
 func marker_position(index: int) -> Vector2:
 	var low := Vector2(INF, INF)
@@ -96,6 +133,19 @@ func _draw() -> void:
 	var title := "MONSOON FOUNDRY" if map_id == "monsoon-foundry" else "ASTERION RELAY" if map_id == "asterion-relay" else "PUBLIC OBJECTIVES"
 	draw_string(font, Vector2(10, 19), title + "   /   -Z ↑    +X →", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, ink)
 	draw_string(font, Vector2(maxf(350, size.x - 445), 19), "0 blue / 1 coral / N neutral / ? unknown   •   ! contested", HORIZONTAL_ALIGNMENT_LEFT, -1, 12, ink)
+	# Authored links draw behind every marker, so the objective symbols stay
+	# readable on top of their own supply lines.
+	var index_of := {}
+	for i: int in range(markers.size()): index_of[markers[i].id] = i
+	for link: Dictionary in links:
+		if not index_of.has(link.a) or not index_of.has(link.b): continue
+		var from := marker_position(index_of[link.a])
+		var to := marker_position(index_of[link.b])
+		var style := link_style(link.state)
+		if float(style.dash) > 0.0:
+			draw_dashed_line(from, to, style.color, float(style.width), float(style.dash))
+		else:
+			draw_line(from, to, style.color, float(style.width))
 	for i: int in range(markers.size()):
 		var node: Dictionary = markers[i]
 		var point := marker_position(i)
@@ -119,6 +169,8 @@ func _draw() -> void:
 			var width := minf(220, font.get_string_size(label_text, HORIZONTAL_ALIGNMENT_LEFT, -1, 12).x)
 			draw_string(font, Vector2(clampf(point.x - width / 2, 8, maxf(8, size.x - width - 8)), point.y + 28), label_text, HORIZONTAL_ALIGNMENT_LEFT, 220, 12, ink)
 	var help := "Click / arrows: select only • bright = live, dim = inactive/unknown • HOLD below"
+	if not links.is_empty():
+		help = "Links: solid = own supplied line, dashed coral = cut, dashed gold = front, faint = other authored   •   %d owned / %d linked / %d cut off   •   click / arrows: select only" % [counts.owned, counts.linked, counts.cut]
 	if markers.is_empty(): help = "No positioned public objectives received."
 	if missing: help += " • %d without coordinates: use List" % missing
 	draw_string(font, Vector2(10, size.y - 6), help, HORIZONTAL_ALIGNMENT_LEFT, size.x - 20, 12, ink)
