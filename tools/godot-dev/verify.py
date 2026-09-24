@@ -121,7 +121,11 @@ commands = [
     ("player-fx-integration", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/integration.gd"]),
     ("benchmark-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/benchmark/contracts.gd"]),
     ("benchmark-tools", ["node", "--test", "port/native-benchmark/test.mjs"]),
-    ("benchmark-autostart", ["node", "port/native-benchmark/run_benchmark.mjs", "--gate=all", "--resolution=1280x800", "--out=/tmp/opencode/benchmark-autostart-gate"]),
+    # This gate proves env-only auto-start and a *complete rendered* sequence on
+    # CPU-only CI. GitHub's llvmpipe can exceed 2 s/frame at 1280x800 High and
+    # end the authority round before it can deliver a single usable snapshot.
+    # Owner-facing 1280x800 Extreme/4-bot hardware measurements stay separate.
+    ("benchmark-autostart", ["node", "port/native-benchmark/run_benchmark.mjs", "--gate=all", "--resolution=640x400", "--level=low", "--bots=1", "--out=/tmp/opencode/benchmark-autostart-gate"]),
     ("material-language", [binary, "--headless", "--path", "godot", "--script", "res://tests/material_language/validate.gd"]),
     ("material-derived", ["node", "--test", "tools/godot-moth/derive.test.mjs"]),
     ("identity-zone-route", ["node", "--test", "port/native-identity-zones/tests/route.test.mjs", "port/native-identity-zones/tests/match.test.mjs", "port/native-identity-zones/tests/authority.test.mjs"]),
