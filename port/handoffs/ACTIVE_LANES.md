@@ -671,3 +671,30 @@ stands; what flattens the relief is the engine/bake settings - weak
 `params.strength` (0.25-0.55) over a blurred 64 px grid, a 32 px output, and
 blur-core's smoothed character. The re-bake proposal is therefore reframed as
 stronger per-job settings (amplitude up, output 64 px), not more seeds.
+
+### Engine-semantic correction and live bake pilot (2026-09-24)
+
+The paragraph above misinterpreted the engine parameter: `blur-core-v1` defines
+`params.strength` as **blur amount** (0 unchanged, 1 maximum blur), and `reach`
+as how nonlocal that blur is (0 local, 1 fully nonlocal). A live 64 px rock at
+strength 1.0/reach 0.3 flattened further (structure standard deviation 6.66
+versus 10.39 shipped). Three low-blur live variants instead produced visible
+ridge, cell and directional-grain relief (structure deviations 48.46, 27.86,
+41.40; pairwise max similarity 0.25). Four successful jobs cost 1 credit each;
+one invalid one-axis/two-strength-list submission failed, billing unknown.
+The comparison is live at `http://100.125.104.79:4371/moth-pilot.html`.
+`docs/MOTH.md` now calls for low blur/reach and 64 px output; the baked 13-job
+upstream pass is in progress. The shared bake request queue was integrated at
+`2993a2c0`; public `mothbake` has the same mechanism, 200/200 tests and green CI.
+
+### Current independent workstreams (2026-09-24)
+
+| workstream | owner/worktree | exclusive edits / integration |
+| --- | --- | --- |
+| Alt-fire variety | `lane/alt-fire`, `/tmp/opencode/cocs-alt-fire` | `godot/world/{projectiles,audio_feedback,combat_feedback}.gd`, `godot/weapon_effects/**`, matching protocol/effect tests and `port/native-alt-fire/**`; in progress. |
+| Benchmark autostart | `lane/benchmark-autostart`, `/tmp/opencode/cocs-benchmark-autostart` | `godot/native_arenas/demo.gd`, benchmark contracts/runner/docs/evidence; landed as `002e6f2b`; lead owns its aggregate-gate registration. |
+| Moth normal re-bake | nested mini-orchestrator, new upstream-source worktree | `assets/moth/manifest.json`, `game/moth-baked.mjs`, `public/moth/files/normal-*/**` on upstream history **only**; no port locked-prefix edits or push by lane. Lead reviews/pushes, advances source pin, exports and verifies. |
+| Third-person weapon identity | nested mini-orchestrator, `lane/world-weapon-identity` | `tools/godot-operators/world-weapons.mjs`, generated world weapons, source-operator tests and own evidence; no benchmark/alt-fire overlap. |
+
+Lead verifies and integrates lane commits, registers gates and runs the final
+combined sweep before packaging the Windows and Linux releases.

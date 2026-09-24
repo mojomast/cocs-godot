@@ -36,10 +36,11 @@ plane's structure energy. Finding on the shipped baked normals: 13 planes,
 median pair similarity **0.567**, **six pairs above 0.90 (up to 1.000)**. The
 jobs are not missing seeds: each carries its own `generateValues` height grid
 (seeds 11–113, `kind` noise/ridge/cells) and a recorded `jobId`, yet the shipped
-normals still read as one noise class. The flattening happens downstream — weak
-`params.strength` (0.25–0.55) over a blurred 64 px grid, a 32 px output, and
-blur-core’s smoothed character — so the next relief has to be stronger, not
-merely re-seeded. The baked pixels are source-locked here; fixing them needs an
+normals still read as one noise class. `blur-core-v1` defines `params.strength`
+as **blur amount** (0 leaves the grid unchanged; 1 is maximum blur), not relief
+amplitude. The existing 0.25–0.55 strength and 0.10–0.35 reach smooth the
+distinct 64 px grids, then the baker outputs 32 px normals. The baked pixels
+are source-locked here; fixing them needs an
 upstream re-bake (proposal below). The port therefore rebinds the families whose
 own albedo carries real structure to **derived** normals:
 
@@ -72,9 +73,11 @@ and the gallery shows the before/after sheets.
 **Re-bake proposal (upstream `assets/moth/manifest.json`, needs credits and the
 source lock advanced).** Run it from a separate upstream branch with the API key,
 then advance the pin. The jobs already carry distinct seeds and kinds; this pass
-replaces their `generateValues` with structurally different relief **and** raises
-the amplitude (`params.strength` toward ~0.8–1.2, `bake.size` 32 → 64). The
-generator supports the richer knobs (`freq`, `octaves`, `angle`, `anisotropy`,
+replaces their `generateValues` with structurally different relief, **reduces**
+the engine blur (`params.strength` ~0.05–0.15, `reach` ~0–0.05, with one-axis
+blur where directional structure is wanted), and raises `bake.size` 32 → 64. A
+single targeted axis needs a scalar `strength`; two axes can use a two-entry
+list. The generator supports the richer knobs (`freq`, `octaves`, `angle`, `anisotropy`,
 seeded `cells`; every default reproduces the old output). Suggested per-job
 settings:
 
@@ -96,9 +99,23 @@ settings:
 
 Only quarter turns (0 / ±PI/2): other rotations seam at the tile wrap (measured wrap gradient 2.6–3.1× the interior), so the proposal sticks to exact quarter turns; integer-frequency directionality would be the seamless way to get diagonals if a future bake needs them.
 
-Then `MOTH_API_KEY=... node scripts/moth-bake.mjs run --only normal-rock …`
-(or a full `run`), re-export, and re-run the audit — expect zero pairs >0.90. If a
-job still lands flat, raise its `strength`/`reach` before spending more credits.
+Then run each changed job in sequence with `--only <id>`, re-export, and re-run
+the audit — expect zero pairs >0.90. Clear its *old* `jobId` before the first
+submission; the new ID is saved immediately, so resume without `--force` to
+avoid paying twice. If a
+job still lands flat, lower its blur strength/reach or change the generated
+grid/targeted axes before spending more credits.
+
+**Live settings pilot:** four successful 1-credit jobs proved the direction.
+Raising strength to 1.0 and reach to 0.3 produced a near-flat 64 px rock
+(structure standard deviation 6.66, versus 10.39 for the shipped 32 px rock).
+Low-blur 64 px ridge (0.08/0 reach, axis 0), cells (0.15/0.05, both axes), and
+directional noise (0.05/0, axis 1) instead yielded structure deviations
+48.46, 27.86 and 41.40; their maximum pair similarity was 0.25. A separate
+engine-validation attempt with two `strength` entries for one targeted axis
+failed before producing a normal; its billing is unknown. Comparison:
+<http://100.125.104.79:4371/moth-pilot.html>. These are pilot tiles, not yet
+the source-locked shipped normals.
 
 The tool now paces itself for real bakes: `MOTH_MIN_INTERVAL_MS` (300) spaces every
 request, 429/503 honour `Retry-After` with bounded exponential backoff, status
