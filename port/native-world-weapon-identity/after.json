@@ -1,0 +1,1487 @@
+{
+  "schema": 1,
+  "source": "godot/source_operators/generated/world_weapons/manifest.json",
+  "method": "Embedded GLB POSITION+indices, all scene mesh primitives transformed into weapon space, orthographic triangle-union center-sample raster; no color/material/texture",
+  "grid": {
+    "cell": 0.01,
+    "z": [
+      -1.6,
+      0.6
+    ],
+    "y": [
+      -0.6,
+      0.6
+    ],
+    "x": [
+      -0.55,
+      0.55
+    ]
+  },
+  "dimensions": {
+    "side": [
+      220,
+      120
+    ],
+    "top": [
+      220,
+      110
+    ]
+  },
+  "pairCount": 45,
+  "weapons": [
+    {
+      "id": 0,
+      "name": "Pulse Rifle",
+      "file": "weapon-0.glb",
+      "sha256": "7c2698e55cec533d3ca9ad1aeff8c5a80d07e9c70737c18439422eabe6d36f62",
+      "primitives": 4,
+      "triangles": 1872,
+      "bounds": {
+        "x": [
+          -0.098,
+          0.095
+        ],
+        "y": [
+          -0.279,
+          0.143
+        ],
+        "z": [
+          -0.85,
+          0.3525
+        ]
+      },
+      "views": {
+        "side": {
+          "areaPixels": 2081,
+          "areaWorldSquared": 0.2081,
+          "pixelExtents": [
+            [
+              75,
+              32
+            ],
+            [
+              195,
+              74
+            ]
+          ]
+        },
+        "top": {
+          "areaPixels": 1612,
+          "areaWorldSquared": 0.1612,
+          "pixelExtents": [
+            [
+              75,
+              45
+            ],
+            [
+              195,
+              64
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": 1,
+      "name": "Rocket Launcher",
+      "file": "weapon-1.glb",
+      "sha256": "64009f5180d6fd7a63bd024b225465a00f3aa1a1387824c40d332eabc838bd62",
+      "primitives": 4,
+      "triangles": 1620,
+      "bounds": {
+        "x": [
+          -0.206,
+          0.206
+        ],
+        "y": [
+          -0.319,
+          0.206
+        ],
+        "z": [
+          -0.79,
+          0.2
+        ]
+      },
+      "views": {
+        "side": {
+          "areaPixels": 3334,
+          "areaWorldSquared": 0.3334,
+          "pixelExtents": [
+            [
+              81,
+              28
+            ],
+            [
+              180,
+              80
+            ]
+          ]
+        },
+        "top": {
+          "areaPixels": 2909,
+          "areaWorldSquared": 0.2909,
+          "pixelExtents": [
+            [
+              81,
+              35
+            ],
+            [
+              180,
+              75
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "Rail Lance",
+      "file": "weapon-2.glb",
+      "sha256": "ecbdffcf36f282e512651b00d7e22d1a35630d908bb192251fe9f311d27cea33",
+      "primitives": 4,
+      "triangles": 1800,
+      "bounds": {
+        "x": [
+          -0.106,
+          0.109
+        ],
+        "y": [
+          -0.259,
+          0.245
+        ],
+        "z": [
+          -1.115,
+          0.258
+        ]
+      },
+      "views": {
+        "side": {
+          "areaPixels": 2688,
+          "areaWorldSquared": 0.2688,
+          "pixelExtents": [
+            [
+              48,
+              34
+            ],
+            [
+              186,
+              85
+            ]
+          ]
+        },
+        "top": {
+          "areaPixels": 2111,
+          "areaWorldSquared": 0.2111,
+          "pixelExtents": [
+            [
+              48,
+              44
+            ],
+            [
+              186,
+              66
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "Scattergun",
+      "file": "weapon-3.glb",
+      "sha256": "d7f2a2713152881c73131608a57a628be5cfdd1e566cd1ddedfed9a7447e3030",
+      "primitives": 4,
+      "triangles": 1916,
+      "bounds": {
+        "x": [
+          -0.208,
+          0.212923
+        ],
+        "y": [
+          -0.249,
+          0.155953
+        ],
+        "z": [
+          -0.84,
+          0.271
+        ]
+      },
+      "views": {
+        "side": {
+          "areaPixels": 2265,
+          "areaWorldSquared": 0.2265,
+          "pixelExtents": [
+            [
+              76,
+              35
+            ],
+            [
+              187,
+              76
+            ]
+          ]
+        },
+        "top": {
+          "areaPixels": 3486,
+          "areaWorldSquared": 0.3486,
+          "pixelExtents": [
+            [
+              76,
+              34
+            ],
+            [
+              187,
+              76
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "Plasma Driver",
+      "file": "weapon-4.glb",
+      "sha256": "560a71e0984350e9eebec48fba2ade26f769dc82655f1e314674e62b9de47854",
+      "primitives": 4,
+      "triangles": 1652,
+      "bounds": {
+        "x": [
+          -0.142,
+          0.142
+        ],
+        "y": [
+          -0.304,
+          0.148
+        ],
+        "z": [
+          -0.83,
+          0.18
+        ]
+      },
+      "views": {
+        "side": {
+          "areaPixels": 2345,
+          "areaWorldSquared": 0.2345,
+          "pixelExtents": [
+            [
+              77,
+              30
+            ],
+            [
+              178,
+              75
+            ]
+          ]
+        },
+        "top": {
+          "areaPixels": 2276,
+          "areaWorldSquared": 0.2276,
+          "pixelExtents": [
+            [
+              77,
+              41
+            ],
+            [
+              178,
+              69
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "Grenade Launcher",
+      "file": "weapon-5.glb",
+      "sha256": "d67ec237651554deb9dea44ebef6704c6a026db11c3a40ea69413abbc1cd22ac",
+      "primitives": 4,
+      "triangles": 2028,
+      "bounds": {
+        "x": [
+          -0.1605,
+          0.1605
+        ],
+        "y": [
+          -0.302,
+          0.198
+        ],
+        "z": [
+          -0.93,
+          0.228
+        ]
+      },
+      "views": {
+        "side": {
+          "areaPixels": 3034,
+          "areaWorldSquared": 0.3034,
+          "pixelExtents": [
+            [
+              67,
+              30
+            ],
+            [
+              183,
+              79
+            ]
+          ]
+        },
+        "top": {
+          "areaPixels": 2689,
+          "areaWorldSquared": 0.2689,
+          "pixelExtents": [
+            [
+              67,
+              39
+            ],
+            [
+              183,
+              71
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "Shock Beam",
+      "file": "weapon-6.glb",
+      "sha256": "f23df962ea4aad5e05746afa32b2954b4d6acc345cb7f0c7beb7b43cd80121b1",
+      "primitives": 4,
+      "triangles": 1416,
+      "bounds": {
+        "x": [
+          -0.129,
+          0.129
+        ],
+        "y": [
+          -0.294,
+          0.158
+        ],
+        "z": [
+          -1.045,
+          0.188
+        ]
+      },
+      "views": {
+        "side": {
+          "areaPixels": 2253,
+          "areaWorldSquared": 0.2253,
+          "pixelExtents": [
+            [
+              56,
+              31
+            ],
+            [
+              179,
+              76
+            ]
+          ]
+        },
+        "top": {
+          "areaPixels": 2154,
+          "areaWorldSquared": 0.2154,
+          "pixelExtents": [
+            [
+              56,
+              42
+            ],
+            [
+              179,
+              68
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": 7,
+      "name": "Flak Cannon",
+      "file": "weapon-7.glb",
+      "sha256": "7b81b5b465ef7fb0b093d2254bd3e20f32a90ef660b2d4edb8732ea43bddf20b",
+      "primitives": 4,
+      "triangles": 1804,
+      "bounds": {
+        "x": [
+          -0.1975,
+          0.172
+        ],
+        "y": [
+          -0.314,
+          0.187
+        ],
+        "z": [
+          -1.014,
+          0.219
+        ]
+      },
+      "views": {
+        "side": {
+          "areaPixels": 3175,
+          "areaWorldSquared": 0.3175,
+          "pixelExtents": [
+            [
+              59,
+              29
+            ],
+            [
+              182,
+              79
+            ]
+          ]
+        },
+        "top": {
+          "areaPixels": 3247,
+          "areaWorldSquared": 0.3247,
+          "pixelExtents": [
+            [
+              59,
+              35
+            ],
+            [
+              182,
+              72
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": 8,
+      "name": "Marksman Rifle",
+      "file": "weapon-8.glb",
+      "sha256": "f21477aeb9a39a89d3b850d8aa0bdc467c7a726db496bc6dd3826ba7bc8ae2eb",
+      "primitives": 4,
+      "triangles": 2028,
+      "bounds": {
+        "x": [
+          -0.0985,
+          0.11
+        ],
+        "y": [
+          -0.259,
+          0.243
+        ],
+        "z": [
+          -0.84,
+          0.3
+        ]
+      },
+      "views": {
+        "side": {
+          "areaPixels": 2502,
+          "areaWorldSquared": 0.2502,
+          "pixelExtents": [
+            [
+              76,
+              34
+            ],
+            [
+              190,
+              84
+            ]
+          ]
+        },
+        "top": {
+          "areaPixels": 1580,
+          "areaWorldSquared": 0.158,
+          "pixelExtents": [
+            [
+              76,
+              45
+            ],
+            [
+              190,
+              66
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": 9,
+      "name": "Submachine Gun",
+      "file": "weapon-9.glb",
+      "sha256": "fdc556188e0b39ae51d9336a103e7a0c193af4f9db4939673865b651d2047c6a",
+      "primitives": 4,
+      "triangles": 1632,
+      "bounds": {
+        "x": [
+          -0.088,
+          0.115
+        ],
+        "y": [
+          -0.348,
+          0.178
+        ],
+        "z": [
+          -0.835,
+          0.298
+        ]
+      },
+      "views": {
+        "side": {
+          "areaPixels": 2041,
+          "areaWorldSquared": 0.2041,
+          "pixelExtents": [
+            [
+              77,
+              25
+            ],
+            [
+              190,
+              78
+            ]
+          ]
+        },
+        "top": {
+          "areaPixels": 1451,
+          "areaWorldSquared": 0.1451,
+          "pixelExtents": [
+            [
+              77,
+              46
+            ],
+            [
+              190,
+              67
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "ids": [
+        0,
+        1
+      ],
+      "views": {
+        "side": {
+          "iou": 0.508357,
+          "differentPixels": 1765,
+          "differingFractionOfGrid": 0.066856,
+          "differingFractionOfUnion": 0.491643
+        },
+        "top": {
+          "iou": 0.468334,
+          "differentPixels": 1637,
+          "differingFractionOfGrid": 0.067645,
+          "differingFractionOfUnion": 0.531666
+        }
+      }
+    },
+    {
+      "ids": [
+        0,
+        2
+      ],
+      "views": {
+        "side": {
+          "iou": 0.521698,
+          "differentPixels": 1499,
+          "differingFractionOfGrid": 0.05678,
+          "differingFractionOfUnion": 0.478302
+        },
+        "top": {
+          "iou": 0.595116,
+          "differentPixels": 945,
+          "differingFractionOfGrid": 0.03905,
+          "differingFractionOfUnion": 0.404884
+        }
+      }
+    },
+    {
+      "ids": [
+        0,
+        3
+      ],
+      "views": {
+        "side": {
+          "iou": 0.64746,
+          "differentPixels": 930,
+          "differingFractionOfGrid": 0.035227,
+          "differingFractionOfUnion": 0.35254
+        },
+        "top": {
+          "iou": 0.402862,
+          "differentPixels": 2170,
+          "differingFractionOfGrid": 0.089669,
+          "differingFractionOfUnion": 0.597138
+        }
+      }
+    },
+    {
+      "ids": [
+        0,
+        4
+      ],
+      "views": {
+        "side": {
+          "iou": 0.68417,
+          "differentPixels": 830,
+          "differingFractionOfGrid": 0.031439,
+          "differingFractionOfUnion": 0.31583
+        },
+        "top": {
+          "iou": 0.571544,
+          "differentPixels": 1060,
+          "differingFractionOfGrid": 0.043802,
+          "differingFractionOfUnion": 0.428456
+        }
+      }
+    },
+    {
+      "ids": [
+        0,
+        5
+      ],
+      "views": {
+        "side": {
+          "iou": 0.578704,
+          "differentPixels": 1365,
+          "differingFractionOfGrid": 0.051705,
+          "differingFractionOfUnion": 0.421296
+        },
+        "top": {
+          "iou": 0.564569,
+          "differentPixels": 1197,
+          "differingFractionOfGrid": 0.049463,
+          "differingFractionOfUnion": 0.435431
+        }
+      }
+    },
+    {
+      "ids": [
+        0,
+        6
+      ],
+      "views": {
+        "side": {
+          "iou": 0.72807,
+          "differentPixels": 682,
+          "differingFractionOfGrid": 0.025833,
+          "differingFractionOfUnion": 0.27193
+        },
+        "top": {
+          "iou": 0.571786,
+          "differentPixels": 1026,
+          "differingFractionOfGrid": 0.042397,
+          "differingFractionOfUnion": 0.428214
+        }
+      }
+    },
+    {
+      "ids": [
+        0,
+        7
+      ],
+      "views": {
+        "side": {
+          "iou": 0.576958,
+          "differentPixels": 1410,
+          "differingFractionOfGrid": 0.053409,
+          "differingFractionOfUnion": 0.423042
+        },
+        "top": {
+          "iou": 0.463995,
+          "differentPixels": 1779,
+          "differingFractionOfGrid": 0.073512,
+          "differingFractionOfUnion": 0.536005
+        }
+      }
+    },
+    {
+      "ids": [
+        0,
+        8
+      ],
+      "views": {
+        "side": {
+          "iou": 0.599093,
+          "differentPixels": 1149,
+          "differingFractionOfGrid": 0.043523,
+          "differingFractionOfUnion": 0.400907
+        },
+        "top": {
+          "iou": 0.705128,
+          "differentPixels": 552,
+          "differingFractionOfGrid": 0.02281,
+          "differingFractionOfUnion": 0.294872
+        }
+      }
+    },
+    {
+      "ids": [
+        0,
+        9
+      ],
+      "views": {
+        "side": {
+          "iou": 0.552542,
+          "differentPixels": 1188,
+          "differingFractionOfGrid": 0.045,
+          "differingFractionOfUnion": 0.447458
+        },
+        "top": {
+          "iou": 0.715966,
+          "differentPixels": 507,
+          "differingFractionOfGrid": 0.02095,
+          "differingFractionOfUnion": 0.284034
+        }
+      }
+    },
+    {
+      "ids": [
+        1,
+        2
+      ],
+      "views": {
+        "side": {
+          "iou": 0.483617,
+          "differentPixels": 2096,
+          "differingFractionOfGrid": 0.079394,
+          "differingFractionOfUnion": 0.516383
+        },
+        "top": {
+          "iou": 0.478645,
+          "differentPixels": 1770,
+          "differingFractionOfGrid": 0.07314,
+          "differingFractionOfUnion": 0.521355
+        }
+      }
+    },
+    {
+      "ids": [
+        1,
+        3
+      ],
+      "views": {
+        "side": {
+          "iou": 0.579853,
+          "differentPixels": 1489,
+          "differingFractionOfGrid": 0.056402,
+          "differingFractionOfUnion": 0.420147
+        },
+        "top": {
+          "iou": 0.731186,
+          "differentPixels": 993,
+          "differingFractionOfGrid": 0.041033,
+          "differingFractionOfUnion": 0.268814
+        }
+      }
+    },
+    {
+      "ids": [
+        1,
+        4
+      ],
+      "views": {
+        "side": {
+          "iou": 0.641329,
+          "differentPixels": 1241,
+          "differingFractionOfGrid": 0.047008,
+          "differingFractionOfUnion": 0.358671
+        },
+        "top": {
+          "iou": 0.752281,
+          "differentPixels": 733,
+          "differingFractionOfGrid": 0.030289,
+          "differingFractionOfUnion": 0.247719
+        }
+      }
+    },
+    {
+      "ids": [
+        1,
+        5
+      ],
+      "views": {
+        "side": {
+          "iou": 0.606458,
+          "differentPixels": 1560,
+          "differingFractionOfGrid": 0.059091,
+          "differingFractionOfUnion": 0.393542
+        },
+        "top": {
+          "iou": 0.666567,
+          "differentPixels": 1120,
+          "differingFractionOfGrid": 0.046281,
+          "differingFractionOfUnion": 0.333433
+        }
+      }
+    },
+    {
+      "ids": [
+        1,
+        6
+      ],
+      "views": {
+        "side": {
+          "iou": 0.534047,
+          "differentPixels": 1697,
+          "differingFractionOfGrid": 0.06428,
+          "differingFractionOfUnion": 0.465953
+        },
+        "top": {
+          "iou": 0.523623,
+          "differentPixels": 1583,
+          "differingFractionOfGrid": 0.065413,
+          "differingFractionOfUnion": 0.476377
+        }
+      }
+    },
+    {
+      "ids": [
+        1,
+        7
+      ],
+      "views": {
+        "side": {
+          "iou": 0.581774,
+          "differentPixels": 1721,
+          "differingFractionOfGrid": 0.065189,
+          "differingFractionOfUnion": 0.418226
+        },
+        "top": {
+          "iou": 0.628571,
+          "differentPixels": 1404,
+          "differingFractionOfGrid": 0.058017,
+          "differingFractionOfUnion": 0.371429
+        }
+      }
+    },
+    {
+      "ids": [
+        1,
+        8
+      ],
+      "views": {
+        "side": {
+          "iou": 0.531759,
+          "differentPixels": 1784,
+          "differingFractionOfGrid": 0.067576,
+          "differingFractionOfUnion": 0.468241
+        },
+        "top": {
+          "iou": 0.456994,
+          "differentPixels": 1673,
+          "differingFractionOfGrid": 0.069132,
+          "differingFractionOfUnion": 0.543006
+        }
+      }
+    },
+    {
+      "ids": [
+        1,
+        9
+      ],
+      "views": {
+        "side": {
+          "iou": 0.473814,
+          "differentPixels": 1919,
+          "differingFractionOfGrid": 0.072689,
+          "differingFractionOfUnion": 0.526186
+        },
+        "top": {
+          "iou": 0.454788,
+          "differentPixels": 1634,
+          "differingFractionOfGrid": 0.067521,
+          "differingFractionOfUnion": 0.545212
+        }
+      }
+    },
+    {
+      "ids": [
+        2,
+        3
+      ],
+      "views": {
+        "side": {
+          "iou": 0.52729,
+          "differentPixels": 1533,
+          "differingFractionOfGrid": 0.058068,
+          "differingFractionOfUnion": 0.47271
+        },
+        "top": {
+          "iou": 0.446627,
+          "differentPixels": 2141,
+          "differingFractionOfGrid": 0.088471,
+          "differingFractionOfUnion": 0.553373
+        }
+      }
+    },
+    {
+      "ids": [
+        2,
+        4
+      ],
+      "views": {
+        "side": {
+          "iou": 0.489935,
+          "differentPixels": 1723,
+          "differingFractionOfGrid": 0.065265,
+          "differingFractionOfUnion": 0.510065
+        },
+        "top": {
+          "iou": 0.571275,
+          "differentPixels": 1197,
+          "differingFractionOfGrid": 0.049463,
+          "differingFractionOfUnion": 0.428725
+        }
+      }
+    },
+    {
+      "ids": [
+        2,
+        5
+      ],
+      "views": {
+        "side": {
+          "iou": 0.588121,
+          "differentPixels": 1484,
+          "differingFractionOfGrid": 0.056212,
+          "differingFractionOfUnion": 0.411879
+        },
+        "top": {
+          "iou": 0.589404,
+          "differentPixels": 1240,
+          "differingFractionOfGrid": 0.05124,
+          "differingFractionOfUnion": 0.410596
+        }
+      }
+    },
+    {
+      "ids": [
+        2,
+        6
+      ],
+      "views": {
+        "side": {
+          "iou": 0.564103,
+          "differentPixels": 1377,
+          "differingFractionOfGrid": 0.052159,
+          "differingFractionOfUnion": 0.435897
+        },
+        "top": {
+          "iou": 0.641016,
+          "differentPixels": 933,
+          "differingFractionOfGrid": 0.038554,
+          "differingFractionOfUnion": 0.358984
+        }
+      }
+    },
+    {
+      "ids": [
+        2,
+        7
+      ],
+      "views": {
+        "side": {
+          "iou": 0.526028,
+          "differentPixels": 1821,
+          "differingFractionOfGrid": 0.068977,
+          "differingFractionOfUnion": 0.473972
+        },
+        "top": {
+          "iou": 0.539213,
+          "differentPixels": 1604,
+          "differingFractionOfGrid": 0.066281,
+          "differingFractionOfUnion": 0.460787
+        }
+      }
+    },
+    {
+      "ids": [
+        2,
+        8
+      ],
+      "views": {
+        "side": {
+          "iou": 0.700524,
+          "differentPixels": 914,
+          "differingFractionOfGrid": 0.034621,
+          "differingFractionOfUnion": 0.299476
+        },
+        "top": {
+          "iou": 0.647768,
+          "differentPixels": 789,
+          "differingFractionOfGrid": 0.032603,
+          "differingFractionOfUnion": 0.352232
+        }
+      }
+    },
+    {
+      "ids": [
+        2,
+        9
+      ],
+      "views": {
+        "side": {
+          "iou": 0.507491,
+          "differentPixels": 1545,
+          "differingFractionOfGrid": 0.058523,
+          "differingFractionOfUnion": 0.492509
+        },
+        "top": {
+          "iou": 0.590889,
+          "differentPixels": 916,
+          "differingFractionOfGrid": 0.037851,
+          "differingFractionOfUnion": 0.409111
+        }
+      }
+    },
+    {
+      "ids": [
+        3,
+        4
+      ],
+      "views": {
+        "side": {
+          "iou": 0.683096,
+          "differentPixels": 868,
+          "differingFractionOfGrid": 0.032879,
+          "differingFractionOfUnion": 0.316904
+        },
+        "top": {
+          "iou": 0.60412,
+          "differentPixels": 1422,
+          "differingFractionOfGrid": 0.05876,
+          "differingFractionOfUnion": 0.39588
+        }
+      }
+    },
+    {
+      "ids": [
+        3,
+        5
+      ],
+      "views": {
+        "side": {
+          "iou": 0.623966,
+          "differentPixels": 1227,
+          "differingFractionOfGrid": 0.046477,
+          "differingFractionOfUnion": 0.376034
+        },
+        "top": {
+          "iou": 0.621586,
+          "differentPixels": 1441,
+          "differingFractionOfGrid": 0.059545,
+          "differingFractionOfUnion": 0.378414
+        }
+      }
+    },
+    {
+      "ids": [
+        3,
+        6
+      ],
+      "views": {
+        "side": {
+          "iou": 0.591966,
+          "differentPixels": 1158,
+          "differingFractionOfGrid": 0.043864,
+          "differingFractionOfUnion": 0.408034
+        },
+        "top": {
+          "iou": 0.453608,
+          "differentPixels": 2120,
+          "differingFractionOfGrid": 0.087603,
+          "differingFractionOfUnion": 0.546392
+        }
+      }
+    },
+    {
+      "ids": [
+        3,
+        7
+      ],
+      "views": {
+        "side": {
+          "iou": 0.568627,
+          "differentPixels": 1496,
+          "differingFractionOfGrid": 0.056667,
+          "differingFractionOfUnion": 0.431373
+        },
+        "top": {
+          "iou": 0.60961,
+          "differentPixels": 1633,
+          "differingFractionOfGrid": 0.067479,
+          "differingFractionOfUnion": 0.39039
+        }
+      }
+    },
+    {
+      "ids": [
+        3,
+        8
+      ],
+      "views": {
+        "side": {
+          "iou": 0.618676,
+          "differentPixels": 1123,
+          "differingFractionOfGrid": 0.042538,
+          "differingFractionOfUnion": 0.381324
+        },
+        "top": {
+          "iou": 0.419843,
+          "differentPixels": 2070,
+          "differingFractionOfGrid": 0.085537,
+          "differingFractionOfUnion": 0.580157
+        }
+      }
+    },
+    {
+      "ids": [
+        3,
+        9
+      ],
+      "views": {
+        "side": {
+          "iou": 0.576712,
+          "differentPixels": 1156,
+          "differingFractionOfGrid": 0.043788,
+          "differingFractionOfUnion": 0.423288
+        },
+        "top": {
+          "iou": 0.386019,
+          "differentPixels": 2187,
+          "differingFractionOfGrid": 0.090372,
+          "differingFractionOfUnion": 0.613981
+        }
+      }
+    },
+    {
+      "ids": [
+        4,
+        5
+      ],
+      "views": {
+        "side": {
+          "iou": 0.605672,
+          "differentPixels": 1321,
+          "differingFractionOfGrid": 0.050038,
+          "differingFractionOfUnion": 0.394328
+        },
+        "top": {
+          "iou": 0.717399,
+          "differentPixels": 817,
+          "differingFractionOfGrid": 0.03376,
+          "differingFractionOfUnion": 0.282601
+        }
+      }
+    },
+    {
+      "ids": [
+        4,
+        6
+      ],
+      "views": {
+        "side": {
+          "iou": 0.690441,
+          "differentPixels": 842,
+          "differingFractionOfGrid": 0.031894,
+          "differingFractionOfUnion": 0.309559
+        },
+        "top": {
+          "iou": 0.641957,
+          "differentPixels": 966,
+          "differingFractionOfGrid": 0.039917,
+          "differingFractionOfUnion": 0.358043
+        }
+      }
+    },
+    {
+      "ids": [
+        4,
+        7
+      ],
+      "views": {
+        "side": {
+          "iou": 0.651211,
+          "differentPixels": 1166,
+          "differingFractionOfGrid": 0.044167,
+          "differingFractionOfUnion": 0.348789
+        },
+        "top": {
+          "iou": 0.617277,
+          "differentPixels": 1307,
+          "differingFractionOfGrid": 0.054008,
+          "differingFractionOfUnion": 0.382723
+        }
+      }
+    },
+    {
+      "ids": [
+        4,
+        8
+      ],
+      "views": {
+        "side": {
+          "iou": 0.607629,
+          "differentPixels": 1183,
+          "differingFractionOfGrid": 0.044811,
+          "differingFractionOfUnion": 0.392371
+        },
+        "top": {
+          "iou": 0.548594,
+          "differentPixels": 1124,
+          "differingFractionOfGrid": 0.046446,
+          "differingFractionOfUnion": 0.451406
+        }
+      }
+    },
+    {
+      "ids": [
+        4,
+        9
+      ],
+      "views": {
+        "side": {
+          "iou": 0.565869,
+          "differentPixels": 1216,
+          "differingFractionOfGrid": 0.046061,
+          "differingFractionOfUnion": 0.434131
+        },
+        "top": {
+          "iou": 0.573902,
+          "differentPixels": 1009,
+          "differingFractionOfGrid": 0.041694,
+          "differingFractionOfUnion": 0.426098
+        }
+      }
+    },
+    {
+      "ids": [
+        5,
+        6
+      ],
+      "views": {
+        "side": {
+          "iou": 0.604552,
+          "differentPixels": 1303,
+          "differingFractionOfGrid": 0.049356,
+          "differingFractionOfUnion": 0.395448
+        },
+        "top": {
+          "iou": 0.640583,
+          "differentPixels": 1061,
+          "differingFractionOfGrid": 0.043843,
+          "differingFractionOfUnion": 0.359417
+        }
+      }
+    },
+    {
+      "ids": [
+        5,
+        7
+      ],
+      "views": {
+        "side": {
+          "iou": 0.62242,
+          "differentPixels": 1445,
+          "differingFractionOfGrid": 0.054735,
+          "differingFractionOfUnion": 0.37758
+        },
+        "top": {
+          "iou": 0.768245,
+          "differentPixels": 778,
+          "differingFractionOfGrid": 0.032149,
+          "differingFractionOfUnion": 0.231755
+        }
+      }
+    },
+    {
+      "ids": [
+        5,
+        8
+      ],
+      "views": {
+        "side": {
+          "iou": 0.566497,
+          "differentPixels": 1532,
+          "differingFractionOfGrid": 0.05803,
+          "differingFractionOfUnion": 0.433503
+        },
+        "top": {
+          "iou": 0.536164,
+          "differentPixels": 1289,
+          "differingFractionOfGrid": 0.053264,
+          "differingFractionOfUnion": 0.463836
+        }
+      }
+    },
+    {
+      "ids": [
+        5,
+        9
+      ],
+      "views": {
+        "side": {
+          "iou": 0.593407,
+          "differentPixels": 1295,
+          "differingFractionOfGrid": 0.049053,
+          "differingFractionOfUnion": 0.406593
+        },
+        "top": {
+          "iou": 0.513711,
+          "differentPixels": 1330,
+          "differingFractionOfGrid": 0.054959,
+          "differingFractionOfUnion": 0.486289
+        }
+      }
+    },
+    {
+      "ids": [
+        6,
+        7
+      ],
+      "views": {
+        "side": {
+          "iou": 0.64236,
+          "differentPixels": 1182,
+          "differingFractionOfGrid": 0.044773,
+          "differingFractionOfUnion": 0.35764
+        },
+        "top": {
+          "iou": 0.567779,
+          "differentPixels": 1489,
+          "differingFractionOfGrid": 0.061529,
+          "differingFractionOfUnion": 0.432221
+        }
+      }
+    },
+    {
+      "ids": [
+        6,
+        8
+      ],
+      "views": {
+        "side": {
+          "iou": 0.590301,
+          "differentPixels": 1225,
+          "differingFractionOfGrid": 0.046402,
+          "differingFractionOfUnion": 0.409699
+        },
+        "top": {
+          "iou": 0.536626,
+          "differentPixels": 1126,
+          "differingFractionOfGrid": 0.046529,
+          "differingFractionOfUnion": 0.463374
+        }
+      }
+    },
+    {
+      "ids": [
+        6,
+        9
+      ],
+      "views": {
+        "side": {
+          "iou": 0.547945,
+          "differentPixels": 1254,
+          "differingFractionOfGrid": 0.0475,
+          "differingFractionOfUnion": 0.452055
+        },
+        "top": {
+          "iou": 0.570806,
+          "differentPixels": 985,
+          "differingFractionOfGrid": 0.040702,
+          "differingFractionOfUnion": 0.429194
+        }
+      }
+    },
+    {
+      "ids": [
+        7,
+        8
+      ],
+      "views": {
+        "side": {
+          "iou": 0.574321,
+          "differentPixels": 1535,
+          "differingFractionOfGrid": 0.058144,
+          "differingFractionOfUnion": 0.425679
+        },
+        "top": {
+          "iou": 0.446509,
+          "differentPixels": 1847,
+          "differingFractionOfGrid": 0.076322,
+          "differingFractionOfUnion": 0.553491
+        }
+      }
+    },
+    {
+      "ids": [
+        7,
+        9
+      ],
+      "views": {
+        "side": {
+          "iou": 0.470538,
+          "differentPixels": 1878,
+          "differingFractionOfGrid": 0.071136,
+          "differingFractionOfUnion": 0.529462
+        },
+        "top": {
+          "iou": 0.424932,
+          "differentPixels": 1896,
+          "differingFractionOfGrid": 0.078347,
+          "differingFractionOfUnion": 0.575068
+        }
+      }
+    },
+    {
+      "ids": [
+        8,
+        9
+      ],
+      "views": {
+        "side": {
+          "iou": 0.515344,
+          "differentPixels": 1453,
+          "differingFractionOfGrid": 0.055038,
+          "differingFractionOfUnion": 0.484656
+        },
+        "top": {
+          "iou": 0.710497,
+          "differentPixels": 513,
+          "differingFractionOfGrid": 0.021198,
+          "differingFractionOfUnion": 0.289503
+        }
+      }
+    }
+  ],
+  "summary": {
+    "side": {
+      "maxIoU": 0.72807,
+      "maxIoUPair": [
+        0,
+        6
+      ],
+      "meanIoU": 0.583217,
+      "minDifferentPixels": 682,
+      "minDifferentPixelsPair": [
+        0,
+        6
+      ],
+      "minDifferingFractionOfGrid": 0.025833,
+      "minDifferingFractionOfUnion": 0.27193
+    },
+    "top": {
+      "maxIoU": 0.768245,
+      "maxIoUPair": [
+        5,
+        7
+      ],
+      "meanIoU": 0.570843,
+      "minDifferentPixels": 507,
+      "minDifferentPixelsPair": [
+        0,
+        9
+      ],
+      "minDifferingFractionOfGrid": 0.02095,
+      "minDifferingFractionOfUnion": 0.231755
+    }
+  }
+}

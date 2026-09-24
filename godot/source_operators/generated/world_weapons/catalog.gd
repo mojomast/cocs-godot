@@ -5,9 +5,9 @@ const WEAPONS = [
 		"id": 0,
 		"name": "Pulse Rifle",
 		"file": "weapon-0.glb",
-		"sha256": "4ac9dfc8a098ad5eb3b47bb0bb6cc4f3e01b83d1105ddebe1c7834971f30c59d",
-		"bytes": 91204,
-		"triangles": 1696,
+		"sha256": "7c2698e55cec533d3ca9ad1aeff8c5a80d07e9c70737c18439422eabe6d36f62",
+		"bytes": 86076,
+		"triangles": 1872,
 		"draws": 4,
 		"anchors": {
 			"Muzzle": [
@@ -35,18 +35,18 @@ const WEAPONS = [
 			[
 				0.0949999988079071,
 				0.14300000667572021,
-				0.24799999594688416
+				0.35249999165534973
 			]
 		],
 		"detail": {
-			"triangles": 1084,
+			"triangles": 1260,
 			"zones": {
-				"mount": 156,
+				"mount": 12,
 				"sight": 108,
 				"ejection": 84,
 				"feed": 156,
-				"heat": 132,
-				"muzzle": 256,
+				"heat": 432,
+				"muzzle": 276,
 				"stock": 60,
 				"grip": 84,
 				"signature": 48
@@ -60,13 +60,13 @@ const WEAPONS = [
 			"identity": {
 				"id": 0,
 				"short": "PULSE",
-				"receiver": "slab carbine receiver with a full-length ribbed optic rail",
-				"feed": "straight box magazine with a witness-slot body",
-				"muzzle": "slotted flash hider over a vented shroud",
-				"stock": "fixed polymer stock with a cheek riser and sling loop",
+				"receiver": "slender carbine receiver with a low dorsal spine",
+				"feed": "slim box magazine with a witness-slot body",
+				"muzzle": "slotted flash hider in a long open perforated shroud",
+				"stock": "extended skeleton-stock frame and cheek riser",
 				"sight": "iron sights, rear notch over a supported front post",
 				"accent": "teal energy strip and stepped fins",
-				"signature": "three stepped fins above the ejection port",
+				"signature": "open shroud hoops and three stepped fins above the port",
 				"glow": true
 			}
 		}
@@ -75,9 +75,9 @@ const WEAPONS = [
 		"id": 1,
 		"name": "Rocket Launcher",
 		"file": "weapon-1.glb",
-		"sha256": "23f72eb188633b8733ab4781a6d106b562116c8a85ea2e4a69734754baf658c7",
-		"bytes": 80800,
-		"triangles": 1860,
+		"sha256": "64009f5180d6fd7a63bd024b225465a00f3aa1a1387824c40d332eabc838bd62",
+		"bytes": 74328,
+		"triangles": 1620,
 		"draws": 4,
 		"anchors": {
 			"Muzzle": [
@@ -98,25 +98,25 @@ const WEAPONS = [
 		},
 		"bounds": [
 			[
-				-0.16099999845027924,
+				-0.20600000023841858,
 				-0.3190000057220459,
-				-0.9021243453025818
+				-0.7900000214576721
 			],
 			[
-				0.1469999998807907,
-				0.17399999499320984,
+				0.20600000023841858,
+				0.20600000023841858,
 				0.20000000298023224
 			]
 		],
 		"detail": {
-			"triangles": 1248,
+			"triangles": 1008,
 			"zones": {
 				"mount": 72,
 				"sight": 108,
 				"ejection": 72,
 				"feed": 48,
-				"heat": 516,
-				"muzzle": 216,
+				"heat": 300,
+				"muzzle": 192,
 				"stock": 48,
 				"grip": 84,
 				"signature": 84
@@ -130,13 +130,13 @@ const WEAPONS = [
 			"identity": {
 				"id": 1,
 				"short": "ROCKET",
-				"receiver": "shouldered launch tube with a top carry handle",
-				"feed": "side breech latch with a loaded-cell window",
-				"muzzle": "open tube mouth with a reinforced lip and collar stack",
-				"stock": "shoulder rest pad with a strap loop",
+				"receiver": "continuous fat launch tube with a top carry handle",
+				"feed": "breech latch with a loaded-cell window",
+				"muzzle": "hollow trumpet blast-deflector bell",
+				"stock": "flared rear venturi and shoulder rest pad",
 				"sight": "iron sights seated on the tube spine",
 				"accent": "orange warning chevrons and arming tab",
-				"signature": "three chevrons on the left tube wall",
+				"signature": "front trumpet and rear venturi pair",
 				"glow": false
 			}
 		}
@@ -145,9 +145,9 @@ const WEAPONS = [
 		"id": 2,
 		"name": "Rail Lance",
 		"file": "weapon-2.glb",
-		"sha256": "26cf894dd4c7cc69bc3f1307d29c854d8d03ef36e0bafd6ff83cc607d9c05213",
-		"bytes": 102352,
-		"triangles": 2204,
+		"sha256": "ecbdffcf36f282e512651b00d7e22d1a35630d908bb192251fe9f311d27cea33",
+		"bytes": 92504,
+		"triangles": 1800,
 		"draws": 4,
 		"anchors": {
 			"Muzzle": [
@@ -168,25 +168,25 @@ const WEAPONS = [
 		},
 		"bounds": [
 			[
-				-0.11100000143051147,
+				-0.10599999874830246,
 				-0.2590000033378601,
-				-1.0509999990463257
+				-1.1150000095367432
 			],
 			[
-				0.11100000143051147,
-				0.2454204559326172,
+				0.10899999737739563,
+				0.24500000476837158,
 				0.257999986410141
 			]
 		],
 		"detail": {
-			"triangles": 1592,
+			"triangles": 1188,
 			"zones": {
 				"mount": 156,
-				"sight": 644,
+				"sight": 468,
 				"ejection": 84,
-				"feed": 156,
+				"feed": 168,
 				"heat": 60,
-				"muzzle": 300,
+				"muzzle": 60,
 				"stock": 60,
 				"grip": 84,
 				"signature": 48
@@ -200,13 +200,13 @@ const WEAPONS = [
 			"identity": {
 				"id": 2,
 				"short": "RAIL",
-				"receiver": "slab receiver between twin accelerator rails and a capacitor cell",
-				"feed": "capacitor cell with a glowing charge window",
-				"muzzle": "twin pronged emitter tips with coil windings",
+				"receiver": "long sled with full-length separated accelerator rails",
+				"feed": "underslung battery slab with a glowing charge window",
+				"muzzle": "fork tips projecting past the bore",
 				"stock": "slim fixed stock with a cheek riser and counterweight",
-				"sight": "scope on a raised rail with a ringed objective",
+				"sight": "scope on a boxy raised plinth",
 				"accent": "violet coil windings and charge window",
-				"signature": "coil windings down the twin accelerator rails",
+				"signature": "long twin rails and forward fork",
 				"glow": true
 			}
 		}
@@ -215,9 +215,9 @@ const WEAPONS = [
 		"id": 3,
 		"name": "Scattergun",
 		"file": "weapon-3.glb",
-		"sha256": "804b3c83562010b9140e6d84cc85bd126787a48dc6eda075a34cfa51aed02879",
-		"bytes": 89864,
-		"triangles": 1928,
+		"sha256": "d7f2a2713152881c73131608a57a628be5cfdd1e566cd1ddedfed9a7447e3030",
+		"bytes": 89024,
+		"triangles": 1916,
 		"draws": 4,
 		"anchors": {
 			"Muzzle": [
@@ -240,23 +240,23 @@ const WEAPONS = [
 			[
 				-0.20800000429153442,
 				-0.24899999797344208,
-				-0.8199999928474426
+				-0.8399999737739563
 			],
 			[
 				0.21292324364185333,
-				0.15299999713897705,
+				0.15595272183418274,
 				0.2709999978542328
 			]
 		],
 		"detail": {
-			"triangles": 1136,
+			"triangles": 1124,
 			"zones": {
-				"mount": 120,
+				"mount": 12,
 				"sight": 108,
 				"ejection": 60,
 				"feed": 156,
-				"heat": 132,
-				"muzzle": 324,
+				"heat": 216,
+				"muzzle": 336,
 				"stock": 104,
 				"grip": 84,
 				"signature": 48
@@ -270,13 +270,13 @@ const WEAPONS = [
 			"identity": {
 				"id": 3,
 				"short": "SCATTER",
-				"receiver": "wide flat breech block with a break-action hinge",
+				"receiver": "wide breech and broad fore-end with a break-action hinge",
 				"feed": "extractor block and a side shell carrier",
-				"muzzle": "twin bores under a clamped muzzle band",
+				"muzzle": "wide twin bores in an upper/lower barrel band",
 				"stock": "wide shotgun stock with a recoil pad",
-				"sight": "iron sights, rib bead over a rear notch",
+				"sight": "ventilated raised rib and brass bead",
 				"accent": "amber shell rims in the carrier and loops",
-				"signature": "shell carrier with three spare rims",
+				"signature": "twin bores beneath a ventilated rib and selector lever",
 				"glow": false
 			}
 		}
@@ -285,9 +285,9 @@ const WEAPONS = [
 		"id": 4,
 		"name": "Plasma Driver",
 		"file": "weapon-4.glb",
-		"sha256": "b243edd341904c413cb06a616c53ea6fddce9280b32be50a5ede71cc27754d75",
-		"bytes": 98468,
-		"triangles": 2108,
+		"sha256": "560a71e0984350e9eebec48fba2ade26f769dc82655f1e314674e62b9de47854",
+		"bytes": 80908,
+		"triangles": 1652,
 		"draws": 4,
 		"anchors": {
 			"Muzzle": [
@@ -308,25 +308,25 @@ const WEAPONS = [
 		},
 		"bounds": [
 			[
-				-0.10999999940395355,
+				-0.1420000046491623,
 				-0.30399999022483826,
-				-0.7749999761581421
+				-0.8299999833106995
 			],
 			[
-				0.12999999523162842,
+				0.1420000046491623,
 				0.14800000190734863,
 				0.17999999225139618
 			]
 		],
 		"detail": {
-			"triangles": 1496,
+			"triangles": 1040,
 			"zones": {
-				"mount": 156,
+				"mount": 12,
 				"sight": 108,
 				"ejection": 84,
 				"feed": 236,
-				"heat": 456,
-				"muzzle": 276,
+				"heat": 304,
+				"muzzle": 116,
 				"stock": 72,
 				"grip": 84,
 				"signature": 24
@@ -340,13 +340,13 @@ const WEAPONS = [
 			"identity": {
 				"id": 4,
 				"short": "PLASMA",
-				"receiver": "rounded vented chamber with a power pack",
+				"receiver": "two rounded axial bulbs in a slab cradle",
 				"feed": "power cell with a glowing plasma window",
-				"muzzle": "flared emitter cone with heat-sink fins",
+				"muzzle": "projecting three-prong focus cage",
 				"stock": "vented frame stock with cable runs",
-				"sight": "iron sights on a short rail",
+				"sight": "iron sights on a short spine",
 				"accent": "sky-blue plasma window and cable runs",
-				"signature": "glowing plasma window on the chamber",
+				"signature": "axial paired bulbs and round flank exchangers",
 				"glow": true
 			}
 		}
@@ -355,9 +355,9 @@ const WEAPONS = [
 		"id": 5,
 		"name": "Grenade Launcher",
 		"file": "weapon-5.glb",
-		"sha256": "e92035d36b4931bf384e971252f6a2749157af4818edfc5c6ba69ed85156be16",
-		"bytes": 95812,
-		"triangles": 1872,
+		"sha256": "d67ec237651554deb9dea44ebef6704c6a026db11c3a40ea69413abbc1cd22ac",
+		"bytes": 95944,
+		"triangles": 2028,
 		"draws": 4,
 		"anchors": {
 			"Muzzle": [
@@ -378,25 +378,25 @@ const WEAPONS = [
 		},
 		"bounds": [
 			[
-				-0.12601150572299957,
-				-0.2849999964237213,
+				-0.16050000488758087,
+				-0.3020000159740448,
 				-0.9300000071525574
 			],
 			[
-				0.1340000033378601,
+				0.16050000488758087,
 				0.1979999989271164,
 				0.2280000001192093
 			]
 		],
 		"detail": {
-			"triangles": 1320,
+			"triangles": 1476,
 			"zones": {
-				"mount": 132,
+				"mount": 12,
 				"sight": 156,
 				"ejection": 60,
-				"feed": 228,
+				"feed": 456,
 				"heat": 132,
-				"muzzle": 408,
+				"muzzle": 456,
 				"stock": 72,
 				"grip": 84,
 				"signature": 48
@@ -410,13 +410,13 @@ const WEAPONS = [
 			"identity": {
 				"id": 5,
 				"short": "GRENADE",
-				"receiver": "revolver frame with an indexing latch",
-				"feed": "six-flute revolver drum with index marks",
-				"muzzle": "long fat bore with a collar stack",
+				"receiver": "squat revolver frame with a broad top strap",
+				"feed": "flared six-flute revolver drum between support legs",
+				"muzzle": "fat bore with a collar stack",
 				"stock": "compact stock with a recoil pad",
 				"sight": "iron sights with a ladder rear notch",
 				"accent": "red-orange charge light and index marks",
-				"signature": "drum flutes and a six-mark index ring",
+				"signature": "flared slatted drum and top strap",
 				"glow": true
 			}
 		}
@@ -425,9 +425,9 @@ const WEAPONS = [
 		"id": 6,
 		"name": "Shock Beam",
 		"file": "weapon-6.glb",
-		"sha256": "06b5486880b698e86b85f8f48882695b6289180a81b425a0c43285aacca9f90e",
-		"bytes": 95356,
-		"triangles": 1920,
+		"sha256": "f23df962ea4aad5e05746afa32b2954b4d6acc345cb7f0c7beb7b43cd80121b1",
+		"bytes": 78964,
+		"triangles": 1416,
 		"draws": 4,
 		"anchors": {
 			"Muzzle": [
@@ -448,25 +448,25 @@ const WEAPONS = [
 		},
 		"bounds": [
 			[
-				-0.10499999672174454,
+				-0.1289999932050705,
 				-0.2939999997615814,
-				-0.9950000047683716
+				-1.0449999570846558
 			],
 			[
-				0.12300000339746475,
+				0.1289999932050705,
 				0.15799999237060547,
 				0.18799999356269836
 			]
 		],
 		"detail": {
-			"triangles": 1308,
+			"triangles": 804,
 			"zones": {
-				"mount": 156,
+				"mount": 12,
 				"sight": 108,
 				"ejection": 84,
 				"feed": 180,
-				"heat": 456,
-				"muzzle": 60,
+				"heat": 120,
+				"muzzle": 36,
 				"stock": 60,
 				"grip": 84,
 				"signature": 120
@@ -480,13 +480,13 @@ const WEAPONS = [
 			"identity": {
 				"id": 6,
 				"short": "SHOCK",
-				"receiver": "casing with a capacitor bank",
+				"receiver": "square dorsal capacitor comb above the casing",
 				"feed": "capacitor cell with vent slats",
-				"muzzle": "twin fork emitter prongs with an arc bar",
-				"stock": "open frame stock with a stock capacitor",
-				"sight": "iron sights on a short rail",
+				"muzzle": "wide projecting fork with discharge tips and tuning bridge",
+				"stock": "open frame stock with a rear insulator stack",
+				"sight": "iron sights on a short spine",
 				"accent": "cyan arc bar between the prongs",
-				"signature": "fork prongs and a glowing arc bar",
+				"signature": "forward fork, bridge and capacitor comb",
 				"glow": true
 			}
 		}
@@ -495,9 +495,9 @@ const WEAPONS = [
 		"id": 7,
 		"name": "Flak Cannon",
 		"file": "weapon-7.glb",
-		"sha256": "dbc36bd304ed427173e8d83cb0aef15f05f94410f108c0524ba7451456bd572a",
-		"bytes": 107272,
-		"triangles": 2336,
+		"sha256": "7b81b5b465ef7fb0b093d2254bd3e20f32a90ef660b2d4edb8732ea43bddf20b",
+		"bytes": 89144,
+		"triangles": 1804,
 		"draws": 4,
 		"anchors": {
 			"Muzzle": [
@@ -518,25 +518,25 @@ const WEAPONS = [
 		},
 		"bounds": [
 			[
-				-0.19599999487400055,
+				-0.19750000536441803,
 				-0.3140000104904175,
-				-0.9900000095367432
+				-1.0140000581741333
 			],
 			[
-				0.16500000655651093,
-				0.16500000655651093,
+				0.1720000058412552,
+				0.18700000643730164,
 				0.21899999678134918
 			]
 		],
 		"detail": {
-			"triangles": 1724,
+			"triangles": 1192,
 			"zones": {
-				"mount": 156,
+				"mount": 12,
 				"sight": 108,
 				"ejection": 60,
 				"feed": 204,
-				"heat": 432,
-				"muzzle": 384,
+				"heat": 188,
+				"muzzle": 240,
 				"stock": 200,
 				"grip": 84,
 				"signature": 96
@@ -550,13 +550,13 @@ const WEAPONS = [
 			"identity": {
 				"id": 7,
 				"short": "FLAK",
-				"receiver": "heavy breech with a recoil damper",
+				"receiver": "boxy reinforced breech with trunnion discs",
 				"feed": "ammunition box feed with a belt window",
-				"muzzle": "heavy brake with heat-sink collars",
+				"muzzle": "heavy hollow flared bell",
 				"stock": "thick shoulder stock with recoil springs",
-				"sight": "iron sights on a heavy rail",
+				"sight": "iron sights beside an outboard carry handle",
 				"accent": "amber belt rounds and chevrons",
-				"signature": "belt window with three visible rounds",
+				"signature": "box breech, flank handle and bell",
 				"glow": false
 			}
 		}
@@ -565,9 +565,9 @@ const WEAPONS = [
 		"id": 8,
 		"name": "Marksman Rifle",
 		"file": "weapon-8.glb",
-		"sha256": "8a8156d4354c022c2e119a3cc864325ce6d64fcb50a89fa2ee03859d4b4e72f9",
-		"bytes": 98400,
-		"triangles": 2060,
+		"sha256": "f21477aeb9a39a89d3b850d8aa0bdc467c7a726db496bc6dd3826ba7bc8ae2eb",
+		"bytes": 101568,
+		"triangles": 2028,
 		"draws": 4,
 		"anchors": {
 			"Muzzle": [
@@ -588,25 +588,25 @@ const WEAPONS = [
 		},
 		"bounds": [
 			[
-				-0.07500000298023224,
+				-0.09849999845027924,
 				-0.2590000033378601,
 				-0.8400000333786011
 			],
 			[
 				0.10999999940395355,
-				0.23542046546936035,
+				0.24300000071525574,
 				0.30000001192092896
 			]
 		],
 		"detail": {
-			"triangles": 1448,
+			"triangles": 1416,
 			"zones": {
 				"mount": 168,
-				"sight": 704,
+				"sight": 528,
 				"ejection": 60,
 				"feed": 144,
-				"heat": 60,
-				"muzzle": 84,
+				"heat": 120,
+				"muzzle": 168,
 				"stock": 60,
 				"grip": 84,
 				"signature": 84
@@ -620,13 +620,13 @@ const WEAPONS = [
 			"identity": {
 				"id": 8,
 				"short": "MARKSMAN",
-				"receiver": "slim precision receiver with a bolt handle",
+				"receiver": "long under-receiver precision chassis spine",
 				"feed": "low-profile box magazine with a floorplate",
 				"muzzle": "precision brake with three baffles",
-				"stock": "adjustable cheek riser with a monopod stub",
-				"sight": "scope on a long rail with a ringed objective",
+				"stock": "adjustable cheek riser with a butt monopod",
+				"sight": "large connected optic on a long rail",
 				"accent": "warm-sand range dial and lens glint",
-				"signature": "range dial beside the bolt handle",
+				"signature": "long spine, folded forward bipod and butt monopod",
 				"glow": true
 			}
 		}
@@ -635,9 +635,9 @@ const WEAPONS = [
 		"id": 9,
 		"name": "Submachine Gun",
 		"file": "weapon-9.glb",
-		"sha256": "8efd4d20a77bef643cf96206892448ae02ca698a0e6318486aad04ec59825d80",
-		"bytes": 90928,
-		"triangles": 1656,
+		"sha256": "fdc556188e0b39ae51d9336a103e7a0c193af4f9db4939673865b651d2047c6a",
+		"bytes": 86592,
+		"triangles": 1632,
 		"draws": 4,
 		"anchors": {
 			"Muzzle": [
@@ -659,24 +659,24 @@ const WEAPONS = [
 		"bounds": [
 			[
 				-0.08799999952316284,
-				-0.2770000100135803,
+				-0.3479999899864197,
 				-0.8349999785423279
 			],
 			[
 				0.11500000208616257,
-				0.17999999225139618,
-				0.1860000044107437
+				0.17800000309944153,
+				0.2980000078678131
 			]
 		],
 		"detail": {
-			"triangles": 1044,
+			"triangles": 1020,
 			"zones": {
-				"mount": 108,
+				"mount": 12,
 				"sight": 156,
 				"ejection": 100,
-				"feed": 204,
+				"feed": 228,
 				"heat": 144,
-				"muzzle": 84,
+				"muzzle": 132,
 				"stock": 128,
 				"grip": 84,
 				"signature": 36
@@ -690,13 +690,13 @@ const WEAPONS = [
 			"identity": {
 				"id": 9,
 				"short": "SMG",
-				"receiver": "stamped receiver with a reciprocating charging handle",
-				"feed": "long stick magazine with witness slots",
-				"muzzle": "compact compensator on a vented shroud",
-				"stock": "telescoping twin-rod stock with a buttplate",
-				"sight": "iron sights on a short rail",
+				"receiver": "stubby stamped receiver with a flank rear drum",
+				"feed": "oversized quad-stack magazine hanging well below the receiver",
+				"muzzle": "short open compensator",
+				"stock": "extended twin-rod wire stock with a buttplate",
+				"sight": "iron sights on a short spine",
 				"accent": "mint charging handle and light module",
-				"signature": "charging handle and a light module",
+				"signature": "stub receiver, huge magazine and wire stock",
 				"glow": false
 			}
 		}

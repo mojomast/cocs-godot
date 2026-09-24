@@ -54,16 +54,16 @@ const moved=(geometry,position,rotation)=>rotation?placedGeometry(geometry,posit
 // venturi ring (1), the chamber witness (3), the arming indicator (7) and the
 // chamber port witness (9) instead of using the generic core.
 export const DETAIL_IDENTITY=[
- {id:0,short:'PULSE',receiver:'slab carbine receiver with a full-length ribbed optic rail',feed:'straight box magazine with a witness-slot body',muzzle:'slotted flash hider over a vented shroud',stock:'fixed polymer stock with a cheek riser and sling loop',sight:'iron sights, rear notch over a supported front post',accent:'teal energy strip and stepped fins',signature:'three stepped fins above the ejection port',glow:true},
- {id:1,short:'ROCKET',receiver:'shouldered launch tube with a top carry handle',feed:'side breech latch with a loaded-cell window',muzzle:'open tube mouth with a reinforced lip and collar stack',stock:'shoulder rest pad with a strap loop',sight:'iron sights seated on the tube spine',accent:'orange warning chevrons and arming tab',signature:'three chevrons on the left tube wall',glow:false},
- {id:2,short:'RAIL',receiver:'slab receiver between twin accelerator rails and a capacitor cell',feed:'capacitor cell with a glowing charge window',muzzle:'twin pronged emitter tips with coil windings',stock:'slim fixed stock with a cheek riser and counterweight',sight:'scope on a raised rail with a ringed objective',accent:'violet coil windings and charge window',signature:'coil windings down the twin accelerator rails',glow:true},
- {id:3,short:'SCATTER',receiver:'wide flat breech block with a break-action hinge',feed:'extractor block and a side shell carrier',muzzle:'twin bores under a clamped muzzle band',stock:'wide shotgun stock with a recoil pad',sight:'iron sights, rib bead over a rear notch',accent:'amber shell rims in the carrier and loops',signature:'shell carrier with three spare rims',glow:false},
- {id:4,short:'PLASMA',receiver:'rounded vented chamber with a power pack',feed:'power cell with a glowing plasma window',muzzle:'flared emitter cone with heat-sink fins',stock:'vented frame stock with cable runs',sight:'iron sights on a short rail',accent:'sky-blue plasma window and cable runs',signature:'glowing plasma window on the chamber',glow:true},
- {id:5,short:'GRENADE',receiver:'revolver frame with an indexing latch',feed:'six-flute revolver drum with index marks',muzzle:'long fat bore with a collar stack',stock:'compact stock with a recoil pad',sight:'iron sights with a ladder rear notch',accent:'red-orange charge light and index marks',signature:'drum flutes and a six-mark index ring',glow:true},
- {id:6,short:'SHOCK',receiver:'casing with a capacitor bank',feed:'capacitor cell with vent slats',muzzle:'twin fork emitter prongs with an arc bar',stock:'open frame stock with a stock capacitor',sight:'iron sights on a short rail',accent:'cyan arc bar between the prongs',signature:'fork prongs and a glowing arc bar',glow:true},
- {id:7,short:'FLAK',receiver:'heavy breech with a recoil damper',feed:'ammunition box feed with a belt window',muzzle:'heavy brake with heat-sink collars',stock:'thick shoulder stock with recoil springs',sight:'iron sights on a heavy rail',accent:'amber belt rounds and chevrons',signature:'belt window with three visible rounds',glow:false},
- {id:8,short:'MARKSMAN',receiver:'slim precision receiver with a bolt handle',feed:'low-profile box magazine with a floorplate',muzzle:'precision brake with three baffles',stock:'adjustable cheek riser with a monopod stub',sight:'scope on a long rail with a ringed objective',accent:'warm-sand range dial and lens glint',signature:'range dial beside the bolt handle',glow:true},
- {id:9,short:'SMG',receiver:'stamped receiver with a reciprocating charging handle',feed:'long stick magazine with witness slots',muzzle:'compact compensator on a vented shroud',stock:'telescoping twin-rod stock with a buttplate',sight:'iron sights on a short rail',accent:'mint charging handle and light module',signature:'charging handle and a light module',glow:false},
+ {id:0,short:'PULSE',receiver:'slender carbine receiver with a low dorsal spine',feed:'slim box magazine with a witness-slot body',muzzle:'slotted flash hider in a long open perforated shroud',stock:'extended skeleton-stock frame and cheek riser',sight:'iron sights, rear notch over a supported front post',accent:'teal energy strip and stepped fins',signature:'open shroud hoops and three stepped fins above the port',glow:true},
+ {id:1,short:'ROCKET',receiver:'continuous fat launch tube with a top carry handle',feed:'breech latch with a loaded-cell window',muzzle:'hollow trumpet blast-deflector bell',stock:'flared rear venturi and shoulder rest pad',sight:'iron sights seated on the tube spine',accent:'orange warning chevrons and arming tab',signature:'front trumpet and rear venturi pair',glow:false},
+ {id:2,short:'RAIL',receiver:'long sled with full-length separated accelerator rails',feed:'underslung battery slab with a glowing charge window',muzzle:'fork tips projecting past the bore',stock:'slim fixed stock with a cheek riser and counterweight',sight:'scope on a boxy raised plinth',accent:'violet coil windings and charge window',signature:'long twin rails and forward fork',glow:true},
+ {id:3,short:'SCATTER',receiver:'wide breech and broad fore-end with a break-action hinge',feed:'extractor block and a side shell carrier',muzzle:'wide twin bores in an upper/lower barrel band',stock:'wide shotgun stock with a recoil pad',sight:'ventilated raised rib and brass bead',accent:'amber shell rims in the carrier and loops',signature:'twin bores beneath a ventilated rib and selector lever',glow:false},
+ {id:4,short:'PLASMA',receiver:'two rounded axial bulbs in a slab cradle',feed:'power cell with a glowing plasma window',muzzle:'projecting three-prong focus cage',stock:'vented frame stock with cable runs',sight:'iron sights on a short spine',accent:'sky-blue plasma window and cable runs',signature:'axial paired bulbs and round flank exchangers',glow:true},
+ {id:5,short:'GRENADE',receiver:'squat revolver frame with a broad top strap',feed:'flared six-flute revolver drum between support legs',muzzle:'fat bore with a collar stack',stock:'compact stock with a recoil pad',sight:'iron sights with a ladder rear notch',accent:'red-orange charge light and index marks',signature:'flared slatted drum and top strap',glow:true},
+ {id:6,short:'SHOCK',receiver:'square dorsal capacitor comb above the casing',feed:'capacitor cell with vent slats',muzzle:'wide projecting fork with discharge tips and tuning bridge',stock:'open frame stock with a rear insulator stack',sight:'iron sights on a short spine',accent:'cyan arc bar between the prongs',signature:'forward fork, bridge and capacitor comb',glow:true},
+ {id:7,short:'FLAK',receiver:'boxy reinforced breech with trunnion discs',feed:'ammunition box feed with a belt window',muzzle:'heavy hollow flared bell',stock:'thick shoulder stock with recoil springs',sight:'iron sights beside an outboard carry handle',accent:'amber belt rounds and chevrons',signature:'box breech, flank handle and bell',glow:false},
+ {id:8,short:'MARKSMAN',receiver:'long under-receiver precision chassis spine',feed:'low-profile box magazine with a floorplate',muzzle:'precision brake with three baffles',stock:'adjustable cheek riser with a butt monopod',sight:'large connected optic on a long rail',accent:'warm-sand range dial and lens glint',signature:'long spine, folded forward bipod and butt monopod',glow:true},
+ {id:9,short:'SMG',receiver:'stubby stamped receiver with a flank rear drum',feed:'oversized quad-stack magazine hanging well below the receiver',muzzle:'short open compensator',stock:'extended twin-rod wire stock with a buttplate',sight:'iron sights on a short spine',accent:'mint charging handle and light module',signature:'stub receiver, huge magazine and wire stock',glow:false},
 ];
 
 // ---------------------------------------------------------------------------
@@ -102,8 +102,13 @@ export function detailKit(type){
     if(axis==='z')g.rotateX(Math.PI/2);else if(axis==='x')g.rotateZ(Math.PI/2);
     push(material,moved(g,[x,y,z]));};
   const cone=(material,r1,r2,length,x,y,z,segments=10)=>{
-    const g=new T.CylinderGeometry(r1,r2,length,segments);g.rotateX(Math.PI/2);
+    // A turned, hollow shell: neither end caps the authored bore.
+    const wall=.009;
+    const g=new T.LatheGeometry([new T.Vector2(r1,-length/2),new T.Vector2(r2,length/2),new T.Vector2(r2-wall,length/2),new T.Vector2(r1-wall,-length/2),new T.Vector2(r1,-length/2)],segments);g.rotateX(Math.PI/2);
     push(material,moved(g,[x,y,z]));};
+  const bulb=(radius,length,z)=>{
+    const g=new T.SphereGeometry(radius,10,6);g.scale(1,1,length/(radius*2));
+    push('steel',moved(g,[0,my,z]));};
   const ring=(material,radius,thickness,x,y,z,segments=12,radial=5,axis='z')=>{
     const g=new T.TorusGeometry(radius,thickness,radial,segments);
     if(axis==='x')g.rotateY(Math.PI/2);else if(axis==='y')g.rotateX(Math.PI/2);
@@ -122,10 +127,13 @@ export function detailKit(type){
     // Canted launcher leaf ladder on the left flank (identity channel 5).
     box('steel',.010,.034,.026,-(w/2+.004),my+.030,-len*.62);
     box('steel',.010,.010,.100,-(w/2+.004),my+.046,-len*.62);
+  }else if([0,3,4,5,6,7,9].includes(type)){
+    // Low, un-toothed spines let the chamber, drum and fork own the outline.
+    box('dark',type===3?.032:.040,.014,len*.78,0,top+.009,-len*.50);
   }else{
     const railLen=rearRail-frontRail,railW=Math.min(w*.44,.085);
     box('steel',railW,.012,railLen,0,railTop,(rearRail+frontRail)/2);
-    pair(s=>box('steel',.006,.009,railLen,s*(railW/2-.002),railTop+.005)); // rail side lips
+    pair(s=>box('steel',.006,.009,railLen,s*(railW/2-.002),railTop+.005,(rearRail+frontRail)/2)); // rail side lips
     const count=type===9?5:type===3?6:type===5?7:type===8?10:9;
     slats('steel',count,.040,.010,.012,0,railTop+.011,rearRail-.012,.022);
     box('dark',Math.min(w*.34,.070),.022,.028,0,top+.022,rearRail-.048);
@@ -135,17 +143,17 @@ export function detailKit(type){
   if(type===2||type===8){
     // Source scope proportions: open tube above the rail, ringed objective and
     // ocular, clamped to a base plate instead of floating over the receiver.
-    const scY=top+.079,scZ=-.055,scLen=.30,scR=.039;
+    const scY=top+.079,scZ=-len*.43,scLen=.30,scR=type===8?.047:.039;
     tube('steel',scR,scLen,0,scY,scZ,16);
-    tube('dark',scR+.006,.11,0,scY,scZ-scLen-.020,16);
-    tube('dark',scR+.005,.10,0,scY,scZ+.050,16);
-    ring('accent',scR+.012,.012,0,scY,scZ-scLen*.5+.100,14,6);
-    ring('accent',scR+.012,.012,0,scY,scZ+.020,14,6);
+    tube('dark',scR+.012,.11,0,scY,scZ-scLen*.5,16);
+    tube('dark',scR+.005,.10,0,scY,scZ+scLen*.5-.020,16);
+    ring('accent',scR+.012,.012,0,scY,scZ-.075,10,4);
+    ring('accent',scR+.012,.012,0,scY,scZ+.075,10,4);
     pair(s=>box('steel',.020,.036,.030,s*(scR+.020),top+.026,scZ-.020));
     box('dark',.050,.020,scLen*.72,0,top+.022,scZ-.010);
     tube('steel',.014,.018,0,scY+scR+.008,scZ+.010,10);    // elevation turret
     tube('steel',.012,.016,scR+.008,scY,scZ+.010,10,'x');   // windage turret
-    if(type===8){tube('glow',.030,.006,0,scY,scZ-scLen-.072,12);
+    if(type===8){tube('glow',.040,.006,0,scY,scZ-scLen*.5-.057,12);
       box('glow',.026,.010,.018,0,scY-scR-.006,scZ-scLen*.5-.070);}
   }else{
     // Iron sights: rear notch with ear wings, front post on a real support
@@ -153,7 +161,7 @@ export function detailKit(type){
     box('dark',Math.min(w*.36,.062),.026,.020,0,top+.030,-len*.16);
     pair(s=>box('steel',.008,.028,.018,s*Math.min(.026,w*.16),top+.032,-len*.16));
     pair(s=>box('steel',.006,.036,.022,s*Math.min(.036,w*.22),top+.030,-len*.16));
-    if(type===9)tube('steel',.020,.030,0,top+.030,-len*.16,12,'x');   // rear drum
+    if(type===9)tube('steel',.033,.030,w/2+.015,top+.015,-len*.16,12,'x'); // flank rear drum
     const postZ=front-.030,postBase=my+r-.004,supportH=Math.max(.020,top+.005-postBase);
     box('steel',.010,.034,.014,0,top+.020,postZ);
     box('steel',Math.min(.040,w*.28),supportH,.030,0,(top+.005+postBase)/2,postZ-.012);
@@ -184,12 +192,16 @@ export function detailKit(type){
   // -- feed identity: furniture on the authored feed mass ---------------------
   zone('feed');
   if(type===5){
+    cone('dark',.157,.133,.060,0,feedY,-.345,12);
+    cone('steel',.133,.157,.060,0,feedY,-.155,12);
+    box('steel',.32,.026,.25,0,top+.025,-.25); // broad top strap
+    pair(s=>box('dark',.025,.23,.065,s*.148,feedY+.045,-.25));
     // Revolver drum: hub caps on both faces, flutes proud of the drum radius,
     // an index ring and a charge window on the front face.
     tube('steel',.046,.014,0,feedY,-.128,12);
     tube('steel',.046,.014,0,feedY,-.372,12);
     for(let i=0;i<6;i++){const ang=i*Math.PI/3;
-      box('steel',.026,.014,.170,Math.sin(ang)*(drumR+.006),feedY+Math.cos(ang)*(drumR+.006),-.25,[0,0,-ang]);}
+      box('steel',.038,.024,.170,Math.sin(ang)*.143,feedY+Math.cos(ang)*.143,-.25,[0,0,-ang]);}
     for(const ang of [Math.PI*0.72,Math.PI,Math.PI*1.28])
       box('accent',.012,.010,.012,Math.sin(ang)*(drumR+.010),feedY+Math.cos(ang)*(drumR+.010),-.372,[0,0,-ang]);
     box('glow',.026,.036,.014,0,feedY+.088,-.128);
@@ -216,7 +228,12 @@ export function detailKit(type){
     box('accent',.026,.022,.012,0,my-h/2-.048,-.395);
   }else{
     if(type===4)pair(s=>tube('steel',.020,.060,s*.028,feedY+.020,feedZ+.078,10)); // cell tubes
-    if(type===9)box('steel',feedW+.020,.020,.070,0,feedY+feedH/2-.030,feedZ); // magwell flare
+    if(type===9){
+      box('dark',.138,.34,.15,0,feedY-.040,feedZ); // quad-stack mass, forward of trigger hand
+      box('steel',.154,.024,.17,0,feedY-.216,feedZ);
+      box('steel',.15,.026,.15,0,feedY+feedH/2-.030,feedZ);
+    }
+    if(type===2)box('dark',.145,.14,.27,0,feedY,-.32); // sled battery slab
     const magFloor=feedY-feedH/2;
     box('steel',feedW+.012,.020,.115,0,magFloor-.012,feedZ);          // floorplate
     pair(s=>slats('steel',3,.006,.060,.012,s*(feedW/2+.005),feedY-.010,feedZ-.030,.040));
@@ -229,28 +246,51 @@ export function detailKit(type){
   zone('heat');
   const guardLen=(front-mz)*.46,guardZ=front-guardLen/2;
   if(type===1){
-    for(const z of [front-.10,front-.22,front-.34])ring('steel',r+.012,.014,0,my,z,14,6);
+    cone('dark',.144,.144,.66,0,my,-.29,12); // continuous launch tube
+    ring('steel',.147,.012,0,my,front-.08,12,4);
+    cone('steel',.136,.185,.15,0,my,.11,12); // rear venturi
     box('steel',.032,.150,.036,0,my-.012,front-.060);
   }else if(type===3){
+    box('dark',.35,.042,.23,0,my-.075,front-.105); // wide fore-end
+    box('steel',.038,.018,exposed+.12,0,my+r+.048,(mz+front)/2+.04);
+    for(let i=0;i<4;i++)box('steel',.025,.035,.025,0,my+r+.026,front-.035-i*.095);
+    box('accent',.025,.070,.025,w/2+.02,top+.014,-.13,[.45,0,0]);
     box('steel',.235,.016,.070,0,my+r+.012,heatZ0+.010);
     pair(s=>slats('steel',3,.010,.018,.040,s*.115,my+r+.012,heatZ0,-.058));
     box('glow',.022,.022,.070,0,my-.010,-.150);              // chamber witness ring
     box('accent',.012,.012,.030,0,my+r+.020,heatZ0-.055);    // brass rib bead
     pair(s=>box('steel',.014,.100,guardLen*.72,s*(w*.40),my-r-.040,guardZ));
   }else if(type===4){
-    for(let i=0;i<3;i++)ring('steel',r+.016,.010,0,my,heatZ0-i*.075,12,6);
-    pair(s=>box('steel',.016,.036,heatZ1-heatZ0,s*(r+.016),my,(heatZ0+heatZ1)/2));
+    bulb(.125,.23,front-.025);
+    bulb(.102,.18,front-.205);
+    pair(s=>box('dark',.024,.055,.34,s*.115,my-.045,front-.10));
+    pair(s=>tube('steel',.068,.034,s*(w/2+.015),my+.035,-.20,10,'x'));
   }else if(type===7){
-    for(let i=0;i<2;i++)ring('steel',r+.014,.012,0,my,heatZ0-i*.080,14,6);
+    box('dark',.31,.105,.32,0,top-.030,-.30); // squared upper breech, above grip contact
+    pair(s=>tube('steel',.070,.022,s*.16,my+.012,-.34,10,'x'));
     pair(s=>slats('steel',4,.010,.020,.030,s*(r+.020),my,heatZ0,-.046));
   }else if(type===8){
+    box('dark',.085,.036,.49,0,bottom-.015,-.30); // continuous chassis spine
+    pair(s=>{
+      box('steel',.020,.032,.25,s*.070,my-r-.052,front-.14,[0,s*.10,0]);
+      box('dark',.033,.052,.045,s*.082,my-r-.060,front-.24);
+    }); // folded bipod, forward of supporting hand
     for(let i=0;i<3;i++)box('steel',.070,.016,.024,0,my-r*.85,heatZ0-i*.070);
     pair(s=>box('steel',.010,.070,guardLen*.60,s*(r+.008),my,guardZ));
   }else if(type===2||type===6){
-    const railZ0=heatZ0,railZ1=heatZ0-exposed*.30;
-    pair(s=>box('steel',.020,.034,railZ0-railZ1,s*(r+.026),my,(railZ0+railZ1)/2));
+    const railZ0=front+.04,railZ1=mz-(type===2?.065:.045);
+    pair(s=>box('steel',type===2?.036:.030,type===2?.072:.055,railZ0-railZ1,s*(type===2?.085:.105),my,(railZ0+railZ1)/2));
     if(type===2)for(let i=0;i<3;i++)box('accent',(r+.020)*2,.026,.014,0,my+.006,railZ0-.020-i*.055);
-    else for(let i=0;i<3;i++)ring('steel',r+.020,.009,0,my,railZ0-.015-i*.050,12,6);
+    else {
+      box('dark',.24,.035,.07,0,my+.045,mz+.15); // tuning bridge above bore
+      for(let i=0;i<4;i++)box('steel',.14,.060,.026,0,top+.036,-.17-i*.065);
+      for(let i=0;i<3;i++)box('accent',.14,.09,.024,0,my,.055+i*.040);
+    }
+  }else if(type===0){
+    // Open rectangular perforations between long stringers and spaced hoops.
+    pair(s=>box('dark',.014,.014,exposed-.04,s*.051,my+.040,(front+mz)/2));
+    pair(s=>box('steel',.012,.014,exposed-.04,s*.051,my-.040,(front+mz)/2));
+    for(let i=0;i<6;i++)ring('steel',.051,.007,0,my,front-.025-i*.060,8,4);
   }else{
     // Source handguard: flush side panels and a bottom plate on the barrel,
     // with the heat vents cut into the panels forward of the receiver.
@@ -263,57 +303,53 @@ export function detailKit(type){
   // -- muzzle device ----------------------------------------------------------
   zone('muzzle');
   if(type===1){
-    ring('steel',r+.016,.016,0,my,mz+.018,16,6);
-    box('dark',.030,.240,.040,0,my,mz+.055);
-    box('accent',.140,.030,.030,0,my,mz+.032);
+    cone('steel',.198,.137,.15,0,my,mz+.065,12);
+    ring('accent',.194,.012,0,my,mz-.010,12,4);
   }else if(type===2){
-    pair(s=>{box('steel',.026,.034,.090,s*.055,my,mz+.045);
-      box('accent',.020,.026,.030,s*.055,my,mz+.004);
-      ring('steel',.044,.012,s*.055,my,mz+.010,12,5);});   // accelerator rings
-    box('steel',.130,.026,.030,0,my,mz+.075);
+    pair(s=>{box('steel',.040,.082,.090,s*.085,my,mz-.025);
+      box('accent',.042,.086,.020,s*.085,my,mz-.065);});
+    box('dark',.15,.040,.27,0,top+.028,-.24); // boxy scope plinth
   }else if(type===3){
-    box('steel',.270,.030,.040,0,my,mz+.030);
+    box('steel',.37,.018,.040,0,my+r+.020,mz+.030);
+    box('steel',.37,.018,.040,0,my-r-.020,mz+.030);
     pair(s=>ring('steel',r+.012,.010,s*.12,my,mz+.010,12,6));
     pair(s=>box('steel',.020,.020,.060,s*.12,my+r+.010,mz+.045));
   }else if(type===4){
-    cone('steel',r+.030,r+.014,.090,0,my,mz+.055,12);
-    ring('steel',r+.032,.010,0,my,mz+.012,12,6);
-    pair(s=>box('steel',.010,.024,.050,s*(r+.034),my,mz+.020));
-    box('steel',.010,.024,.050,0,my+r+.034,mz+.020);      // third focus prong
-    if(spec.glow)tube('glow',r*.70,.012,0,my,mz+.018,12);
+    ring('accent',.105,.012,0,my,mz+.075,10,4);
+    for(let i=0;i<3;i++){const a=i*Math.PI*2/3;
+      box('steel',.026,.026,.17,Math.sin(a)*.105,my+Math.cos(a)*.105,mz+.025,[0,0,-a]);}
   }else if(type===5){
     ring('steel',r+.020,.014,0,my,mz+.020,14,6);
     ring('steel',r+.014,.012,0,my,mz+.070,14,6);
-    tube('steel',r+.004,.060,0,my,mz+.105,12);
+    cone('steel',r+.012,r+.012,.060,0,my,mz+.105,12);
     pair(s=>box('steel',.026,.012,.026,s*(r+.006),my,mz+.048)); // lateral ports
   }else if(type===6){
-    pair(s=>{box('steel',.022,.034,.150,s*.060,my,mz+.075);
-      box('steel',.030,.050,.030,s*.060,my,mz+.010);});
-    box('glow',.100,.012,.014,0,my,mz+.100);
+    pair(s=>box('accent',.048,.075,.060,s*.105,my,mz-.025));
+    box('glow',.18,.012,.014,0,my+.065,mz+.15);
   }else if(type===7){
-    ring('steel',r+.016,.012,0,my,mz+.012,14,6);
-    ring('steel',r+.010,.024,0,my,mz+.070,14,6);
+    cone('steel',.163,.105,.17,0,my,mz+.075,12);
+    ring('dark',.158,.014,0,my,mz-.010,12,4);
     pair(s=>box('steel',.014,.040,.100,s*(r+.010),my,mz+.075));
     box('steel',.070,.014,.100,0,my+r+.010,mz+.075);
     box('steel',.070,.014,.100,0,my-r-.010,mz+.075);
   }else if(type===8){
-    for(let i=0;i<3;i++)box('steel',.070,.016,.020,0,my,mz+.030+i*.042);
-    tube('steel',r+.004,.050,0,my,mz+.120,12);
+    for(let i=0;i<3;i++)pair(s=>box('steel',.016,.060,.020,s*.038,my,mz+.030+i*.042));
+    cone('steel',r+.012,r+.012,.050,0,my,mz+.120,12);
   }else if(type===9){
-    tube('steel',r+.014,.080,0,my,mz+.048,12);
+    cone('steel',r+.014,r+.014,.080,0,my,mz+.048,12);
     pair(s=>box('steel',.008,.020,.030,s*(r+.008),my,mz+.030));
-    box('accent',.026,.026,.016,0,my,mz+.008);
+    box('accent',.026,.012,.016,0,my+r+.018,mz+.008);
   }else{
-    tube('steel',r+.010,.070,0,my,mz+.045,12);
+    cone('steel',r+.012,r+.012,.070,0,my,mz+.045,12);
     pair(s=>box('steel',.008,.018,.034,s*(r+.006),my,mz+.040));
     ring('steel',r+.012,.010,0,my,mz+.014,12,6);
-    if(spec.glow)tube('glow',r*.72,.010,0,my,mz+.012,10);
+    if(spec.glow)box('glow',.012,.008,.040,0,my+r+.023,mz+.032);
   }
   // -- stock treatment, outside the source stock block -----------------------
   zone('stock');
   if(type===9){
-    pair(s=>tube('steel',.009,stockLen*.80,s*(stockX+.010),my-.010,stockLen*.42));
-    box('steel',.132,.070,.024,0,my-.010,stockLen+.014);
+    pair(s=>tube('steel',.009,stockLen+.13,s*(stockX+.016),my+.018,(stockLen+.13)/2));
+    box('steel',.15,.080,.016,0,my-.014,stockLen+.13);
     pair(s=>box('steel',.024,.034,.022,s*(stockX+.010),my-.010,stockZ0+.030));
     box('accent',.020,.028,.030,stockX+.008,my+.010,stockLen*.55);
   }else if(type===1){
@@ -324,7 +360,7 @@ export function detailKit(type){
   }else if(type===8){
     box('dark',.060,.030,.150,0,my+.026,stockLen*.42);
     box('steel',.070,.026,.030,0,my-.040,stockLen+.005);
-    box('steel',.020,.062,.020,0,my-h/2-.022,stockLen*.30);
+    box('steel',.020,.085,.020,0,my-h/2-.030,stockLen-.015); // butt monopod
     box('accent',.026,.016,.060,.032,my+.032,stockLen*.20);
     box('steel',.020,.022,.020,0,stockY-stockH-.014,stockLen*.62);
   }else if(type===7){
@@ -333,9 +369,9 @@ export function detailKit(type){
     box('accent',.030,.030,.040,0,my-.120,stockLen*.20);
     box('steel',.024,.030,.030,stockX+.006,my+.020,stockLen*.30);
     pair(s=>slats('steel',2,.010,.072,.012,s*(stockX+.006),stockY-.010,stockLen*.34,.052)); // shell loops
-    box('steel',.024,.030,.026,0,top+.030,-len*.72);      // carry handle feet
-    box('steel',.024,.030,.026,0,top+.030,-len*.36);
-    box('steel',.028,.022,.230,0,top+.044,-len*.54);      // carry handle
+    box('steel',.035,.075,.030,-.18,top+.020,-len*.80);
+    box('steel',.035,.075,.030,-.18,top+.020,-len*.32);
+    box('steel',.035,.024,.28,-.18,top+.065,-len*.56); // outboard carry handle
   }else if(type===4){
     pair(s=>box('steel',.012,.014,.130,s*(stockX+.008),my+.020,stockLen*.45));
     pair(s=>box('steel',.012,.014,.130,s*(stockX+.008),my-.075,stockLen*.45));
@@ -345,6 +381,11 @@ export function detailKit(type){
     box('dark',Math.min(.130,w*.72),h*.90,.030,0,my-.030,stockLen+.006);
     pair(s=>tube('accent',.018,.056,s*(stockX+.012),my-.012,stockLen*.45));
     box('steel',.030,.026,.030,-(stockX+.008),my+.010,stockLen*.30);
+  }else if(type===0){
+    // Extend beyond the immutable source stock to expose a real open frame.
+    pair(s=>box('steel',.015,.016,stockLen+.10,s*.075,my+.038,(stockLen+.10)/2));
+    pair(s=>box('dark',.015,.016,stockLen+.10,s*.075,my-.092,(stockLen+.10)/2));
+    box('dark',.16,.15,.025,0,my-.027,stockLen+.10);
   }else{
     if(type===5)box('steel',.030,.024,.060,-(stockX-.020),my+.012,stockLen*.28); // thumb rest
     box('dark',Math.min(.090,w*.52),.028,.150,0,stockY+stockH+.014,stockLen*.40);

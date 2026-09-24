@@ -1,0 +1,1247 @@
+{
+ "schema": 1,
+ "method": "Exported GLB measurement plus exact hand/detail triangle distance (vertex-triangle and edge-edge, no sampling). Hand placement is the source identity: the post-pose hand pass pins the grip anchor to WeaponGripLeft/Right with the hand basis equal to the weapon basis, so the hand mesh occupies anchor + (p - gripLocal) in weapon space.",
+ "sharedOperatorHandGeometry": true,
+ "weapons": [
+  {
+   "id": 0,
+   "name": "Pulse Rifle",
+   "file": "weapon-0.glb",
+   "bytes": 86076,
+   "sha256": "7c2698e55cec533d3ca9ad1aeff8c5a80d07e9c70737c18439422eabe6d36f62",
+   "matchesManifest": true,
+   "triangles": 1872,
+   "draws": 4,
+   "detailTriangles": 1260,
+   "before": {
+    "triangles": 612,
+    "draws": 2
+   },
+   "anchorDrift": 0,
+   "anchors": {
+    "Muzzle": [
+     0,
+     0.01,
+     -0.85
+    ],
+    "WeaponGripLeft": [
+     -0.11000000000000001,
+     -0.09000000000000001,
+     -0.22559999999999997
+    ],
+    "WeaponGripRight": [
+     0,
+     -0.15500000000000003,
+     -0.035
+    ]
+   },
+   "bounds": [
+    [
+     -0.09799999743700027,
+     -0.27900001406669617,
+     -0.8500000238418579
+    ],
+    [
+     0.0949999988079071,
+     0.14300000667572021,
+     0.35249999165534973
+    ]
+   ],
+   "zones": {
+    "mount": 12,
+    "sight": 108,
+    "ejection": 84,
+    "feed": 156,
+    "heat": 432,
+    "muzzle": 276,
+    "stock": 60,
+    "grip": 84,
+    "signature": 48
+   },
+   "hand": {
+    "L": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.00004621252077801873,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.07124,
+        -0.07324,
+        -0.30733
+       ],
+       "distance": 0.000046
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1260,
+      "minimumDistance": null,
+      "nearest": null
+     }
+    },
+    "R": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.0000048055405192545335,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.02686,
+        -0.12847,
+        0.01199
+       ],
+       "distance": 0.000005
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1260,
+      "minimumDistance": null,
+      "nearest": null
+     }
+    }
+   },
+   "hiddenDetailTriangles": {
+    "total": 14,
+    "byZone": {
+     "grip": 2,
+     "signature": 6,
+     "stock": 4,
+     "feed": 2
+    }
+   }
+  },
+  {
+   "id": 1,
+   "name": "Rocket Launcher",
+   "file": "weapon-1.glb",
+   "bytes": 74328,
+   "sha256": "64009f5180d6fd7a63bd024b225465a00f3aa1a1387824c40d332eabc838bd62",
+   "matchesManifest": true,
+   "triangles": 1620,
+   "draws": 4,
+   "detailTriangles": 1008,
+   "before": {
+    "triangles": 612,
+    "draws": 2
+   },
+   "anchorDrift": 0,
+   "anchors": {
+    "Muzzle": [
+     0,
+     0,
+     -0.76
+    ],
+    "WeaponGripLeft": [
+     -0.155,
+     -0.13,
+     -0.264
+    ],
+    "WeaponGripRight": [
+     0,
+     -0.195,
+     -0.035
+    ]
+   },
+   "bounds": [
+    [
+     -0.20600000023841858,
+     -0.3190000057220459,
+     -0.7900000214576721
+    ],
+    [
+     0.20600000023841858,
+     0.20600000023841858,
+     0.20000000298023224
+    ]
+   ],
+   "zones": {
+    "mount": 72,
+    "sight": 108,
+    "ejection": 72,
+    "feed": 48,
+    "heat": 300,
+    "muzzle": 192,
+    "stock": 48,
+    "grip": 84,
+    "signature": 84
+   },
+   "hand": {
+    "L": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.000030422620085653995,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.12049,
+        -0.11149,
+        -0.18933
+       ],
+       "distance": 0.00003
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1008,
+      "minimumDistance": 0.0011092751830298988,
+      "nearest": {
+       "zone": "heat",
+       "material": "dark",
+       "centroid": [
+        -0.10714,
+        -0.08957,
+        -0.4
+       ],
+       "distance": 0.001109
+      }
+     }
+    },
+    "R": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.000004805540519253232,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.03199,
+        -0.22153,
+        0.00686
+       ],
+       "distance": 0.000005
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1008,
+      "minimumDistance": 0.00013359277569806183,
+      "nearest": {
+       "zone": "heat",
+       "material": "dark",
+       "centroid": [
+        -0.045,
+        -0.12294,
+        -0.18
+       ],
+       "distance": 0.000134
+      }
+     }
+    }
+   },
+   "hiddenDetailTriangles": {
+    "total": 20,
+    "byZone": {
+     "grip": 2,
+     "mount": 4,
+     "sight": 2,
+     "heat": 12
+    }
+   }
+  },
+  {
+   "id": 2,
+   "name": "Rail Lance",
+   "file": "weapon-2.glb",
+   "bytes": 92504,
+   "sha256": "ecbdffcf36f282e512651b00d7e22d1a35630d908bb192251fe9f311d27cea33",
+   "matchesManifest": true,
+   "triangles": 1800,
+   "draws": 4,
+   "detailTriangles": 1188,
+   "before": {
+    "triangles": 612,
+    "draws": 2
+   },
+   "anchorDrift": 0,
+   "anchors": {
+    "Muzzle": [
+     0,
+     0.025,
+     -1.04
+    ],
+    "WeaponGripLeft": [
+     -0.11499999999999999,
+     -0.07,
+     -0.26880000000000004
+    ],
+    "WeaponGripRight": [
+     0,
+     -0.135,
+     -0.035
+    ]
+   },
+   "bounds": [
+    [
+     -0.10599999874830246,
+     -0.2590000033378601,
+     -1.1150000095367432
+    ],
+    [
+     0.10899999737739563,
+     0.24500000476837158,
+     0.257999986410141
+    ]
+   ],
+   "zones": {
+    "mount": 156,
+    "sight": 468,
+    "ejection": 84,
+    "feed": 168,
+    "heat": 60,
+    "muzzle": 60,
+    "stock": 60,
+    "grip": 84,
+    "signature": 48
+   },
+   "hand": {
+    "L": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.0000018446336832397696,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.08049,
+        -0.05149,
+        -0.19267
+       ],
+       "distance": 0.000002
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1188,
+      "minimumDistance": 0.0013496843967775942,
+      "nearest": {
+       "zone": "feed",
+       "material": "dark",
+       "centroid": [
+        -0.02417,
+        -0.075,
+        -0.365
+       ],
+       "distance": 0.00135
+      }
+     }
+    },
+    "R": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.000004805540519252533,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.03199,
+        -0.16153,
+        0.00686
+       ],
+       "distance": 0.000005
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1188,
+      "minimumDistance": 0.00039316387171056406,
+      "nearest": {
+       "zone": "stock",
+       "material": "accent",
+       "centroid": [
+        0.02333,
+        -0.077,
+        0.065
+       ],
+       "distance": 0.000393
+      }
+     }
+    }
+   },
+   "hiddenDetailTriangles": {
+    "total": 24,
+    "byZone": {
+     "stock": 6,
+     "grip": 2,
+     "heat": 12,
+     "signature": 2,
+     "feed": 2
+    }
+   }
+  },
+  {
+   "id": 3,
+   "name": "Scattergun",
+   "file": "weapon-3.glb",
+   "bytes": 89024,
+   "sha256": "d7f2a2713152881c73131608a57a628be5cfdd1e566cd1ddedfed9a7447e3030",
+   "matchesManifest": true,
+   "triangles": 1916,
+   "draws": 4,
+   "detailTriangles": 1124,
+   "before": {
+    "triangles": 792,
+    "draws": 2
+   },
+   "anchorDrift": 0,
+   "anchors": {
+    "Muzzle": [
+     0,
+     0.03,
+     -0.82
+    ],
+    "WeaponGripLeft": [
+     -0.185,
+     -0.06,
+     -0.20159999999999997
+    ],
+    "WeaponGripRight": [
+     0,
+     -0.125,
+     -0.035
+    ]
+   },
+   "bounds": [
+    [
+     -0.20800000429153442,
+     -0.24899999797344208,
+     -0.8399999737739563
+    ],
+    [
+     0.21292324364185333,
+     0.15595272183418274,
+     0.2709999978542328
+    ]
+   ],
+   "zones": {
+    "mount": 12,
+    "sight": 108,
+    "ejection": 60,
+    "feed": 156,
+    "heat": 216,
+    "muzzle": 336,
+    "stock": 104,
+    "grip": 84,
+    "signature": 48
+   },
+   "hand": {
+    "L": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 828,
+      "minimumDistance": 0.000026728960054388794,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.15049,
+        -0.04149,
+        -0.146
+       ],
+       "distance": 0.000027
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1124,
+      "minimumDistance": null,
+      "nearest": null
+     }
+    },
+    "R": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 828,
+      "minimumDistance": 0.000004805540519252533,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.02686,
+        -0.09847,
+        0.01199
+       ],
+       "distance": 0.000005
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1124,
+      "minimumDistance": null,
+      "nearest": null
+     }
+    }
+   },
+   "hiddenDetailTriangles": {
+    "total": 32,
+    "byZone": {
+     "grip": 2,
+     "stock": 4,
+     "signature": 8,
+     "feed": 2,
+     "heat": 16
+    }
+   }
+  },
+  {
+   "id": 4,
+   "name": "Plasma Driver",
+   "file": "weapon-4.glb",
+   "bytes": 80908,
+   "sha256": "560a71e0984350e9eebec48fba2ade26f769dc82655f1e314674e62b9de47854",
+   "matchesManifest": true,
+   "triangles": 1652,
+   "draws": 4,
+   "detailTriangles": 1040,
+   "before": {
+    "triangles": 612,
+    "draws": 2
+   },
+   "anchorDrift": 0,
+   "anchors": {
+    "Muzzle": [
+     0,
+     0,
+     -0.77
+    ],
+    "WeaponGripLeft": [
+     -0.135,
+     -0.115,
+     -0.2208
+    ],
+    "WeaponGripRight": [
+     0,
+     -0.18,
+     -0.035
+    ]
+   },
+   "bounds": [
+    [
+     -0.1420000046491623,
+     -0.30399999022483826,
+     -0.8299999833106995
+    ],
+    [
+     0.1420000046491623,
+     0.14800000190734863,
+     0.17999999225139618
+    ]
+   ],
+   "zones": {
+    "mount": 12,
+    "sight": 108,
+    "ejection": 84,
+    "feed": 236,
+    "heat": 304,
+    "muzzle": 116,
+    "stock": 72,
+    "grip": 84,
+    "signature": 24
+   },
+   "hand": {
+    "L": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.00004621416228117253,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.09624,
+        -0.09824,
+        -0.30067
+       ],
+       "distance": 0.000046
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1040,
+      "minimumDistance": null,
+      "nearest": null
+     }
+    },
+    "R": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.000004805540519252533,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.02686,
+        -0.15347,
+        0.01199
+       ],
+       "distance": 0.000005
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1040,
+      "minimumDistance": null,
+      "nearest": null
+     }
+    }
+   },
+   "hiddenDetailTriangles": {
+    "total": 68,
+    "byZone": {
+     "stock": 4,
+     "grip": 2,
+     "signature": 4,
+     "sight": 2,
+     "feed": 16,
+     "heat": 40
+    }
+   }
+  },
+  {
+   "id": 5,
+   "name": "Grenade Launcher",
+   "file": "weapon-5.glb",
+   "bytes": 95944,
+   "sha256": "d67ec237651554deb9dea44ebef6704c6a026db11c3a40ea69413abbc1cd22ac",
+   "matchesManifest": true,
+   "triangles": 2028,
+   "draws": 4,
+   "detailTriangles": 1476,
+   "before": {
+    "triangles": 552,
+    "draws": 2
+   },
+   "anchorDrift": 0,
+   "anchors": {
+    "Muzzle": [
+     0,
+     0.04,
+     -0.93
+    ],
+    "WeaponGripLeft": [
+     -0.14,
+     -0.07,
+     -0.2064
+    ],
+    "WeaponGripRight": [
+     0,
+     -0.135,
+     -0.035
+    ]
+   },
+   "bounds": [
+    [
+     -0.16050000488758087,
+     -0.3020000159740448,
+     -0.9300000071525574
+    ],
+    [
+     0.16050000488758087,
+     0.1979999989271164,
+     0.2280000001192093
+    ]
+   ],
+   "zones": {
+    "mount": 12,
+    "sight": 156,
+    "ejection": 60,
+    "feed": 456,
+    "heat": 132,
+    "muzzle": 456,
+    "stock": 72,
+    "grip": 84,
+    "signature": 48
+   },
+   "hand": {
+    "L": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 588,
+      "minimumDistance": 0.00004621168758180333,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.10124,
+        -0.05324,
+        -0.28067
+       ],
+       "distance": 0.000046
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1476,
+      "minimumDistance": 4.321336732893144e-9,
+      "nearest": {
+       "zone": "feed",
+       "material": "dark",
+       "centroid": [
+        -0.1605,
+        -0.13833,
+        -0.23917
+       ],
+       "distance": 0
+      }
+     }
+    },
+    "R": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 588,
+      "minimumDistance": 0.000004805540519252533,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.03199,
+        -0.16153,
+        0.00686
+       ],
+       "distance": 0.000005
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1476,
+      "minimumDistance": 0.00001813718227184422,
+      "nearest": {
+       "zone": "grip",
+       "material": "steel",
+       "centroid": [
+        -0.00233,
+        -0.161,
+        -0.052
+       ],
+       "distance": 0.000018
+      }
+     }
+    }
+   },
+   "hiddenDetailTriangles": {
+    "total": 118,
+    "byZone": {
+     "feed": 76,
+     "stock": 18,
+     "grip": 8,
+     "signature": 8,
+     "sight": 2,
+     "heat": 2,
+     "muzzle": 4
+    }
+   }
+  },
+  {
+   "id": 6,
+   "name": "Shock Beam",
+   "file": "weapon-6.glb",
+   "bytes": 78964,
+   "sha256": "f23df962ea4aad5e05746afa32b2954b4d6acc345cb7f0c7beb7b43cd80121b1",
+   "matchesManifest": true,
+   "triangles": 1416,
+   "draws": 4,
+   "detailTriangles": 804,
+   "before": {
+    "triangles": 612,
+    "draws": 2
+   },
+   "anchorDrift": 0,
+   "anchors": {
+    "Muzzle": [
+     0,
+     0,
+     -0.99
+    ],
+    "WeaponGripLeft": [
+     -0.13,
+     -0.105,
+     -0.24
+    ],
+    "WeaponGripRight": [
+     0,
+     -0.16999999999999998,
+     -0.035
+    ]
+   },
+   "bounds": [
+    [
+     -0.1289999932050705,
+     -0.2939999997615814,
+     -1.0449999570846558
+    ],
+    [
+     0.1289999932050705,
+     0.15799999237060547,
+     0.18799999356269836
+    ]
+   ],
+   "zones": {
+    "mount": 12,
+    "sight": 108,
+    "ejection": 84,
+    "feed": 180,
+    "heat": 120,
+    "muzzle": 36,
+    "stock": 60,
+    "grip": 84,
+    "signature": 120
+   },
+   "hand": {
+    "L": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.00004621660498012493,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.09124,
+        -0.08824,
+        -0.32733
+       ],
+       "distance": 0.000046
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 804,
+      "minimumDistance": null,
+      "nearest": null
+     }
+    },
+    "R": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.000004805540519253232,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.02686,
+        -0.14347,
+        0.01199
+       ],
+       "distance": 0.000005
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 804,
+      "minimumDistance": 0.0005579454732530593,
+      "nearest": {
+       "zone": "stock",
+       "material": "accent",
+       "centroid": [
+        0.01,
+        -0.10183,
+        0.064
+       ],
+       "distance": 0.000558
+      }
+     }
+    }
+   },
+   "hiddenDetailTriangles": {
+    "total": 22,
+    "byZone": {
+     "stock": 8,
+     "grip": 2,
+     "heat": 6,
+     "signature": 4,
+     "feed": 2
+    }
+   }
+  },
+  {
+   "id": 7,
+   "name": "Flak Cannon",
+   "file": "weapon-7.glb",
+   "bytes": 89144,
+   "sha256": "7b81b5b465ef7fb0b093d2254bd3e20f32a90ef660b2d4edb8732ea43bddf20b",
+   "matchesManifest": true,
+   "triangles": 1804,
+   "draws": 4,
+   "detailTriangles": 1192,
+   "before": {
+    "triangles": 612,
+    "draws": 2
+   },
+   "anchorDrift": 0,
+   "anchors": {
+    "Muzzle": [
+     0,
+     0,
+     -0.99
+    ],
+    "WeaponGripLeft": [
+     -0.16,
+     -0.125,
+     -0.2448
+    ],
+    "WeaponGripRight": [
+     0,
+     -0.19,
+     -0.035
+    ]
+   },
+   "bounds": [
+    [
+     -0.19750000536441803,
+     -0.3140000104904175,
+     -1.0140000581741333
+    ],
+    [
+     0.1720000058412552,
+     0.18700000643730164,
+     0.21899999678134918
+    ]
+   ],
+   "zones": {
+    "mount": 12,
+    "sight": 108,
+    "ejection": 60,
+    "feed": 204,
+    "heat": 188,
+    "muzzle": 240,
+    "stock": 200,
+    "grip": 84,
+    "signature": 96
+   },
+   "hand": {
+    "L": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.00004621586778516857,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.12124,
+        -0.10824,
+        -0.334
+       ],
+       "distance": 0.000046
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1192,
+      "minimumDistance": 0.00013311294705693524,
+      "nearest": {
+       "zone": "feed",
+       "material": "accent",
+       "centroid": [
+        -0.168,
+        -0.16333,
+        -0.24533
+       ],
+       "distance": 0.000133
+      }
+     }
+    },
+    "R": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.000004805540519252533,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.03199,
+        -0.21653,
+        0.00686
+       ],
+       "distance": 0.000005
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1192,
+      "minimumDistance": 0.00001106145816116165,
+      "nearest": {
+       "zone": "stock",
+       "material": "accent",
+       "centroid": [
+        0.015,
+        -0.125,
+        0.03333
+       ],
+       "distance": 0.000011
+      }
+     }
+    }
+   },
+   "hiddenDetailTriangles": {
+    "total": 12,
+    "byZone": {
+     "grip": 2,
+     "feed": 4,
+     "sight": 2,
+     "stock": 2,
+     "signature": 2
+    }
+   }
+  },
+  {
+   "id": 8,
+   "name": "Marksman Rifle",
+   "file": "weapon-8.glb",
+   "bytes": 101568,
+   "sha256": "f21477aeb9a39a89d3b850d8aa0bdc467c7a726db496bc6dd3826ba7bc8ae2eb",
+   "matchesManifest": true,
+   "triangles": 2028,
+   "draws": 4,
+   "detailTriangles": 1416,
+   "before": {
+    "triangles": 612,
+    "draws": 2
+   },
+   "anchorDrift": 0,
+   "anchors": {
+    "Muzzle": [
+     0,
+     0.02,
+     -0.84
+    ],
+    "WeaponGripLeft": [
+     -0.1,
+     -0.06999999999999999,
+     -0.2592
+    ],
+    "WeaponGripRight": [
+     0,
+     -0.135,
+     -0.035
+    ]
+   },
+   "bounds": [
+    [
+     -0.09849999845027924,
+     -0.2590000033378601,
+     -0.8400000333786011
+    ],
+    [
+     0.10999999940395355,
+     0.24300000071525574,
+     0.30000001192092896
+    ]
+   ],
+   "zones": {
+    "mount": 168,
+    "sight": 528,
+    "ejection": 60,
+    "feed": 144,
+    "heat": 120,
+    "muzzle": 168,
+    "stock": 60,
+    "grip": 84,
+    "signature": 84
+   },
+   "hand": {
+    "L": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.00004621410242854217,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.06124,
+        -0.05324,
+        -0.354
+       ],
+       "distance": 0.000046
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1416,
+      "minimumDistance": null,
+      "nearest": null
+     }
+    },
+    "R": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.000004805540519252533,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.03199,
+        -0.16153,
+        0.00686
+       ],
+       "distance": 0.000005
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1416,
+      "minimumDistance": null,
+      "nearest": null
+     }
+    }
+   },
+   "hiddenDetailTriangles": {
+    "total": 30,
+    "byZone": {
+     "stock": 4,
+     "grip": 2,
+     "signature": 24
+    }
+   }
+  },
+  {
+   "id": 9,
+   "name": "Submachine Gun",
+   "file": "weapon-9.glb",
+   "bytes": 86592,
+   "sha256": "fdc556188e0b39ae51d9336a103e7a0c193af4f9db4939673865b651d2047c6a",
+   "matchesManifest": true,
+   "triangles": 1632,
+   "draws": 4,
+   "detailTriangles": 1020,
+   "before": {
+    "triangles": 612,
+    "draws": 2
+   },
+   "anchorDrift": 0,
+   "anchors": {
+    "Muzzle": [
+     0,
+     0.05,
+     -0.835
+    ],
+    "WeaponGripLeft": [
+     -0.10500000000000001,
+     -0.045,
+     -0.16799999999999998
+    ],
+    "WeaponGripRight": [
+     0,
+     -0.11,
+     -0.035
+    ]
+   },
+   "bounds": [
+    [
+     -0.08799999952316284,
+     -0.3479999899864197,
+     -0.8349999785423279
+    ],
+    [
+     0.11500000208616257,
+     0.17800000309944153,
+     0.2980000078678131
+    ]
+   ],
+   "zones": {
+    "mount": 12,
+    "sight": 156,
+    "ejection": 100,
+    "feed": 228,
+    "heat": 144,
+    "muzzle": 132,
+    "stock": 128,
+    "grip": 84,
+    "signature": 36
+   },
+   "hand": {
+    "L": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.000046215779487703236,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.02067,
+        -0.03,
+        -0.12267
+       ],
+       "distance": 0.000046
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1020,
+      "minimumDistance": 1.9669532669297496e-9,
+      "nearest": {
+       "zone": "feed",
+       "material": "dark",
+       "centroid": [
+        -0.069,
+        -0.21667,
+        -0.225
+       ],
+       "distance": 0
+      }
+     }
+    },
+    "R": {
+     "source": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 648,
+      "minimumDistance": 0.000004805540519252533,
+      "nearest": {
+       "zone": null,
+       "material": null,
+       "centroid": [
+        -0.03199,
+        -0.13653,
+        0.00686
+       ],
+       "distance": 0.000005
+      }
+     },
+     "detail": {
+      "intersectingPairs": 0,
+      "candidateTriangles": 1020,
+      "minimumDistance": null,
+      "nearest": null
+     }
+    }
+   },
+   "hiddenDetailTriangles": {
+    "total": 46,
+    "byZone": {
+     "feed": 26,
+     "grip": 2,
+     "heat": 2,
+     "stock": 14,
+     "signature": 2
+    }
+   }
+  }
+ ],
+ "totals": {
+  "triangles": 17768,
+  "detailTriangles": 11528,
+  "draws": 40,
+  "rigDraws": 40,
+  "maxAnchorDrift": 0,
+  "detailHandIntersections": 0,
+  "sourceHandIntersections": 0,
+  "minDetailHandDistance": 1.9669532669297496e-9,
+  "minSourceHandDistance": 0.0000018446336832397696
+ }
+}
