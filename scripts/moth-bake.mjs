@@ -37,79 +37,268 @@ function readKey() {
   return key;
 }
 
-// `fetchImpl` is threaded through every network call so the runner and its
-// tests can run fully offline; the CLI never passes it and gets global fetch.
-async function api(pathname, { method = 'GET', body, key, raw = false, headers = {}, fetchImpl = fetch } = {}) {
-  const res = await fetchImpl(BASE + pathname, {
-    method,
-    headers: { ...(key ? { Authorization: `Bearer ${key}` } : {}), ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}), ...headers },
-    body: body === undefined ? undefined : (typeof body === 'string' ? body : JSON.stringify(body)),
-  });
-  const text = await res.text();
-  if (raw) return { status: res.status, ok: res.ok, text };
-  let json = null;
-  try { json = text ? JSON.parse(text) : null; } catch { json = null; }
-  if (!res.ok) {
-    const detail = json?.detail || json?.title || text.slice(0, 200);
-    const err = new Error(`${method} ${pathname} -> ${res.status}${detail ? `: ${detail}` : ''}`);
-    err.status = res.status; err.body = json;
-    throw err;
-  }
-  return json ?? { status: res.status, ok: res.ok, text };
-}
+// ---------------------------------------------------------------------------
+// API client: one paced request queue, bounded retries, adaptive polling
+// ---------------------------------------------------------------------------
+//
+// Every Atlas API request goes through a single concurrency-1 gate spaced by at
+// least MOTH_MIN_INTERVAL_MS (default 300 ms), so a batch of jobs cannot burst
+// into a rate limit. Failed requests retry within a bounded budget:
+// GETs (and non-submit POSTs) retry 429, transient 5xx and network failures; a
+// submit POST is retried only on 429, because anything else could already have
+// created a paid job — retrying it might spend credits twice.
+//
+// `fetchImpl`, `sleepImpl`, `nowImpl` and `randomImpl` are injectable so the
+// runner and its tests can run fully offline and in virtual time; the CLI never
+// passes them and gets global fetch, real timers and real time.
+
+export const DEFAULT_MIN_INTERVAL_MS = 300;
+export const DEFAULT_MAX_RETRIES = 5;
+export const DEFAULT_RETRY_BASE_MS = 1000;
+export const DEFAULT_RETRY_CAP_MS = 30000;
+export const DEFAULT_RETRY_AFTER_CAP_MS = 120000;
+export const DEFAULT_POLL_INTERVAL_MS = 1500;
+export const DEFAULT_POLL_MAX_INTERVAL_MS = 5000;
+export const DEFAULT_POLL_TIMEOUT_MS = 15 * 60 * 1000;
+
+const RETRYABLE_STATUS = new Set([429, 500, 502, 503, 504]);
+// Socket-level failures worth retrying on a GET. Node's fetch reports them as
+// TypeError with the real error on `cause`; other thrown errors are treated as
+// bugs and surfaced immediately.
+const TRANSIENT_CODES = new Set([
+  'ECONNRESET', 'ECONNREFUSED', 'ECONNABORTED', 'EPIPE', 'ETIMEDOUT', 'EAI_AGAIN',
+  'ENETUNREACH', 'EHOSTUNREACH', 'ENETDOWN', 'ENOTFOUND',
+  'UND_ERR_SOCKET', 'UND_ERR_CONNECT_TIMEOUT', 'UND_ERR_HEADERS_TIMEOUT', 'UND_ERR_BODY_TIMEOUT', 'UND_ERR_RESPONSE_STATUS_CODE',
+]);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+function envNumber(name, fallback, env = process.env) {
+  const raw = env[name];
+  if (raw === undefined || raw === '') return fallback;
+  const value = Number(raw);
+  if (!Number.isFinite(value) || value < 0) throw new Error(`${name} must be a non-negative number (got "${raw}")`);
+  return Math.floor(value);
+}
+
+function isTransientNetworkError(error) {
+  if (!error) return false;
+  const code = error.code ?? error.cause?.code;
+  if (typeof code === 'string' && TRANSIENT_CODES.has(code.toUpperCase())) return true;
+  return error.name === 'TypeError' || error.name === 'TimeoutError' || error.name === 'AbortError';
+}
+
+// Retry-After: seconds or an HTTP date. Capped so a misbehaving header cannot
+// stall a run for hours.
+function parseRetryAfterMs(headers, nowMs, capMs) {
+  const raw = headers?.get?.('retry-after');
+  if (raw === null || raw === undefined || raw === '') return null;
+  const seconds = Number(raw);
+  if (Number.isFinite(seconds) && seconds >= 0) return Math.min(capMs, Math.round(seconds * 1000));
+  const dateMs = Date.parse(raw);
+  return Number.isFinite(dateMs) ? Math.min(capMs, Math.max(0, dateMs - nowMs)) : null;
+}
+
+// Exponential backoff with equal jitter: the wait stays within [ceiling/2, ceiling].
+function backoffMs(attempt, baseMs, capMs, randomImpl) {
+  const ceiling = Math.min(capMs, baseMs * 2 ** (attempt - 1));
+  return Math.max(1, Math.round(ceiling * (0.5 + 0.5 * randomImpl())));
+}
+
+const formatWait = (ms) => `${Number((ms / 1000).toFixed(2))}s`;
+
+// A submit that failed without a confirmed response may still have created a
+// paid job. Fail closed with an actionable message instead of retrying.
+function submitAmbiguousError(label, reason, cause) {
+  const error = new Error(
+    `${label} did not confirm a new job${reason ? `: ${reason}` : ''}. `
+    + 'The job may or may not have been created — check the job list and credit history on the platform before re-running. '
+    + 'Submit requests are never retried automatically after network errors or 5xx responses, because that could pay for a second job.',
+  );
+  if (cause?.status) error.status = cause.status;
+  error.body = cause?.body ?? null;
+  error.ambiguous = true;
+  return error;
+}
+
+export function createApiClient(options = {}) {
+  const env = options.env || process.env;
+  const fetchImpl = options.fetchImpl || fetch;
+  const sleepImpl = options.sleepImpl || sleep;
+  const nowImpl = options.nowImpl || (() => Date.now());
+  const randomImpl = options.randomImpl || Math.random;
+  const log = options.log || (() => {});
+  const minIntervalMs = options.minIntervalMs ?? envNumber('MOTH_MIN_INTERVAL_MS', DEFAULT_MIN_INTERVAL_MS, env);
+  const maxRetries = options.maxRetries ?? envNumber('MOTH_MAX_RETRIES', DEFAULT_MAX_RETRIES, env);
+  const retryBaseMs = options.retryBaseMs ?? envNumber('MOTH_RETRY_BASE_MS', DEFAULT_RETRY_BASE_MS, env);
+  const retryCapMs = options.retryCapMs ?? envNumber('MOTH_RETRY_CAP_MS', DEFAULT_RETRY_CAP_MS, env);
+  const retryAfterCapMs = options.retryAfterCapMs ?? DEFAULT_RETRY_AFTER_CAP_MS;
+  const pollIntervalMs = options.pollIntervalMs ?? envNumber('MOTH_POLL_INTERVAL_MS', DEFAULT_POLL_INTERVAL_MS, env);
+  const pollMaxIntervalMs = options.pollMaxIntervalMs ?? envNumber('MOTH_POLL_MAX_INTERVAL_MS', DEFAULT_POLL_MAX_INTERVAL_MS, env);
+
+  // Concurrency-1 gate: request starts are serialized and spaced by at least
+  // `minIntervalMs` (start-to-start, so the client never exceeds 1/interval).
+  let queue = Promise.resolve();
+  let nextStart = 0;
+  function gate(task) {
+    const run = queue.then(async () => {
+      const waitMs = nextStart - nowImpl();
+      if (waitMs > 0) await sleepImpl(waitMs);
+      nextStart = nowImpl() + minIntervalMs;
+      return task();
+    });
+    queue = run.then(() => {}, () => {});
+    return run;
+  }
+
+  async function request(pathname, { method = 'GET', body, key, raw = false, headers = {}, submit = false } = {}) {
+    const label = `${method} ${pathname}`;
+    let retries = 0;
+    for (;;) {
+      let res;
+      let text;
+      try {
+        ({ res, text } = await gate(async () => {
+          const response = await fetchImpl(BASE + pathname, {
+            method,
+            headers: { ...(key ? { Authorization: `Bearer ${key}` } : {}), ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}), ...headers },
+            body: body === undefined ? undefined : (typeof body === 'string' ? body : JSON.stringify(body)),
+          });
+          return { res: response, text: await response.text() };
+        }));
+      } catch (error) {
+        // A submit that dies on the wire may already have created a paid job:
+        // fail closed, never auto-retry it.
+        if (submit) throw submitAmbiguousError(label, error.message, error);
+        if (!isTransientNetworkError(error) || retries >= maxRetries) throw error;
+        retries += 1;
+        const waitMs = backoffMs(retries, retryBaseMs, retryCapMs, randomImpl);
+        log(`  ${label} failed (${error.message}), retrying in ${formatWait(waitMs)} (attempt ${retries}/${maxRetries})`);
+        await sleepImpl(waitMs);
+        continue;
+      }
+      const retryable = submit ? res.status === 429 : RETRYABLE_STATUS.has(res.status);
+      if (retryable && retries < maxRetries) {
+        retries += 1;
+        const waitMs = parseRetryAfterMs(res.headers, nowImpl(), retryAfterCapMs) ?? backoffMs(retries, retryBaseMs, retryCapMs, randomImpl);
+        log(`  rate limited, retrying in ${formatWait(waitMs)} (attempt ${retries}/${maxRetries})`);
+        await sleepImpl(waitMs);
+        continue;
+      }
+      if (raw) return { status: res.status, ok: res.ok, text };
+      let json = null;
+      try { json = text ? JSON.parse(text) : null; } catch { json = null; }
+      if (!res.ok) {
+        const detail = json?.detail || json?.title || text.slice(0, 200);
+        const suffix = retryable ? ` (rate limited; gave up after ${maxRetries} retr${maxRetries === 1 ? 'y' : 'ies'})` : '';
+        const error = new Error(`${label} -> ${res.status}${detail ? `: ${detail}` : ''}${suffix}`);
+        error.status = res.status; error.body = json;
+        // A 5xx on a submit is ambiguous: the job may exist even though the
+        // response failed. Refuse to guess; tell the user how to check.
+        if (submit && res.status >= 500) throw submitAmbiguousError(label, `HTTP ${res.status}${detail ? `: ${detail}` : ''}`, error);
+        throw error;
+      }
+      return json ?? { status: res.status, ok: res.ok, text };
+    }
+  }
+
+  return {
+    request,
+    fetchImpl,
+    sleepImpl,
+    nowImpl,
+    minIntervalMs,
+    maxRetries,
+    retryBaseMs,
+    retryCapMs,
+    pollIntervalMs,
+    pollMaxIntervalMs,
+  };
+}
+
+// Standalone callers share one paced client per process; a caller that injects
+// its own transport gets a private client.
+let sharedClient = null;
+function clientFor(options = {}) {
+  if (options.client) return options.client;
+  const custom = options.fetchImpl || options.sleepImpl || options.nowImpl || options.randomImpl || options.env
+    || options.minIntervalMs !== undefined || options.maxRetries !== undefined
+    || options.retryBaseMs !== undefined || options.retryCapMs !== undefined
+    || options.pollIntervalMs !== undefined || options.pollMaxIntervalMs !== undefined;
+  if (custom) return createApiClient(options);
+  if (!sharedClient) sharedClient = createApiClient();
+  return sharedClient;
+}
+
 export async function listEngines(key, options = {}) {
-  const body = await api('/api/v1/engines', { key, ...options });
+  const body = await clientFor(options).request('/api/v1/engines', { key, raw: options.raw, headers: options.headers });
   return body.engines || body.items || body.data || body;
 }
 export async function getEngine(key, id, options = {}) {
-  return api(`/api/v1/engines/${encodeURIComponent(id)}`, { key, ...options });
+  return clientFor(options).request(`/api/v1/engines/${encodeURIComponent(id)}`, { key, raw: options.raw, headers: options.headers });
 }
 
-export async function submitJob(key, engine, { params = {}, inputFiles, mode, fetchImpl = fetch } = {}) {
+export async function submitJob(key, engine, options = {}) {
+  const { params = {}, inputFiles, mode } = options;
   const body = { params };
   if (inputFiles) body.input_files = inputFiles;
   if (mode) body.mode = mode;
-  return api(`/api/v1/engines/${encodeURIComponent(engine)}/process`, { method: 'POST', key, body, fetchImpl });
+  return clientFor(options).request(`/api/v1/engines/${encodeURIComponent(engine)}/process`, { method: 'POST', key, body, submit: true });
 }
-export async function jobStatus(key, jobId, { fetchImpl = fetch } = {}) {
-  return api(`/api/v1/jobs/${encodeURIComponent(jobId)}/status`, { key, fetchImpl });
+export async function jobStatus(key, jobId, options = {}) {
+  return clientFor(options).request(`/api/v1/jobs/${encodeURIComponent(jobId)}/status`, { key });
 }
-export async function jobResult(key, jobId, { fetchImpl = fetch } = {}) {
-  return api(`/api/v1/jobs/${encodeURIComponent(jobId)}/result`, { key, fetchImpl });
+export async function jobResult(key, jobId, options = {}) {
+  return clientFor(options).request(`/api/v1/jobs/${encodeURIComponent(jobId)}/result`, { key });
 }
 
-export async function waitForJob(key, jobId, { timeoutMs = 15 * 60 * 1000, intervalMs = 1500, log = () => {}, fetchImpl = fetch } = {}) {
-  const started = Date.now();
+// Adaptive polling: start at the base interval (1500 ms); while the
+// status/progress marker does not change, grow the wait by 1.5x up to 5000 ms;
+// any transition resets the interval. The overall timeout is unchanged.
+export async function waitForJob(key, jobId, options = {}) {
+  const client = clientFor(options);
+  const { timeoutMs = DEFAULT_POLL_TIMEOUT_MS, log = () => {} } = options;
+  const baseIntervalMs = options.intervalMs ?? client.pollIntervalMs;
+  const maxIntervalMs = Math.max(baseIntervalMs, options.maxIntervalMs ?? client.pollMaxIntervalMs);
+  const sleepImpl = options.sleepImpl ?? client.sleepImpl;
+  const nowImpl = options.nowImpl ?? client.nowImpl;
+  const started = nowImpl();
   let last = null;
-  while (Date.now() - started < timeoutMs) {
-    const status = await jobStatus(key, jobId, { fetchImpl });
-    const key2 = `${status.status}:${status.progress?.step || ''}`;
-    if (key2 !== last) { last = key2; log(`  ${status.status}${status.progress?.step ? ` (${status.progress.step})` : ''}${status.progress?.detail ? ` — ${status.progress.detail}` : ''}`); }
+  let intervalMs = baseIntervalMs;
+  for (;;) {
+    const status = await jobStatus(key, jobId, { client });
+    const marker = `${status.status}:${status.progress?.step || ''}`;
+    if (marker !== last) {
+      last = marker;
+      intervalMs = baseIntervalMs;
+      log(`  ${status.status}${status.progress?.step ? ` (${status.progress.step})` : ''}${status.progress?.detail ? ` — ${status.progress.detail}` : ''}`);
+    } else {
+      intervalMs = Math.min(maxIntervalMs, Math.round(intervalMs * 1.5));
+    }
     if (status.status === 'completed') return status;
     if (status.status === 'failed' || status.status === 'cancelled') {
       const err = new Error(`job ${jobId} ${status.status}: ${status.error?.message || status.error?.type || 'unknown error'}`);
       err.status = status.status; err.error = status.error;
       throw err;
     }
-    await sleep(intervalMs);
+    if (nowImpl() - started >= timeoutMs) break;
+    await sleepImpl(intervalMs);
   }
   throw new Error(`job ${jobId} timed out after ${Math.round(timeoutMs / 1000)}s`);
 }
 
 // Upload a local file through the create -> presigned PUT -> complete flow and
 // return its asset id, which engines consume via `input_files`.
-export async function uploadAsset(key, filePath, { contentType, fetchImpl = fetch } = {}) {
+export async function uploadAsset(key, filePath, options = {}) {
+  const client = clientFor(options);
   const bytes = fs.readFileSync(filePath);
-  const type = contentType || guessContentType(filePath);
-  const created = await api('/api/v1/assets', { method: 'POST', key, body: { filename: path.basename(filePath), content_type: type, size_bytes: bytes.length }, fetchImpl });
+  const type = options.contentType || guessContentType(filePath);
+  const created = await client.request('/api/v1/assets', { method: 'POST', key, body: { filename: path.basename(filePath), content_type: type, size_bytes: bytes.length } });
   const upload = created.upload;
   if (!upload?.url) throw new Error(`asset ${created.asset_id}: no presigned upload returned`);
-  const res = await fetchImpl(upload.url, { method: upload.method || 'PUT', headers: upload.headers || {}, body: bytes });
+  const res = await client.fetchImpl(upload.url, { method: upload.method || 'PUT', headers: upload.headers || {}, body: bytes });
   if (!res.ok) throw new Error(`asset upload -> ${res.status}`);
-  await api(`/api/v1/assets/${encodeURIComponent(created.asset_id)}/complete`, { method: 'POST', key, body: {}, fetchImpl });
+  await client.request(`/api/v1/assets/${encodeURIComponent(created.asset_id)}/complete`, { method: 'POST', key, body: {} });
   return created.asset_id;
 }
 
@@ -1280,7 +1469,12 @@ export function planDryRun({ manifest, root = ROOT, only, log = () => {} } = {})
   return { plans, failures };
 }
 
-export async function resolveResult(key, job, log = () => {}, force = false, { fetchImpl = fetch, save = () => {} } = {}) {
+export async function resolveResult(key, job, log = () => {}, force = false, options = {}) {
+  const { save = () => {} } = options;
+  // One client per job (or the run-level client passed by runManifest) keeps
+  // the request gate, retry budget and poll intervals shared across every call
+  // this job makes.
+  const client = options.client ?? createApiClient({ fetchImpl: options.fetchImpl, sleepImpl: options.sleepImpl, log });
   // A recorded job id is only reused when the API confirms it is still
   // completed. Anything else — failed, cancelled, still running, an
   // unrecognized status, or a status request that errors — must never fall
@@ -1290,11 +1484,11 @@ export async function resolveResult(key, job, log = () => {}, force = false, { f
     log(`  reusing job ${job.jobId}`);
     let status;
     try {
-      status = await jobStatus(key, job.jobId, { fetchImpl });
+      status = await jobStatus(key, job.jobId, { client });
     } catch (error) {
       throw new Error(`recorded job ${job.id} (${job.jobId}) could not be verified: ${error.message}. Refusing to submit a fresh job automatically; pass --force to submit one (this spends credits).`);
     }
-    if (status?.status === 'completed') return jobResult(key, job.jobId, { fetchImpl });
+    if (status?.status === 'completed') return jobResult(key, job.jobId, { client });
     throw new Error(`recorded job ${job.id} (${job.jobId}) is ${status?.status ?? 'unknown'}, not completed. Refusing to submit a fresh job automatically; pass --force to submit one (this spends credits).`);
   }
   let inputFiles;
@@ -1303,21 +1497,21 @@ export async function resolveResult(key, job, log = () => {}, force = false, { f
     for (const [slot, rel] of Object.entries(job.input)) {
       const file = path.join(ROOT, 'assets/moth', rel);
       if (!fs.existsSync(file)) throw new Error(`input ${slot} missing: ${file} (run "sources" first)`);
-      inputFiles[slot] = await uploadAsset(key, file, { fetchImpl });
+      inputFiles[slot] = await uploadAsset(key, file, { client });
     }
   }
   const params = { ...(job.params || {}) };
   const generated = generateValues(job);
   if (generated) params.values = generated;
-  const submitted = await submitJob(key, job.engine, { params, inputFiles, mode: job.mode, fetchImpl });
+  const submitted = await submitJob(key, job.engine, { params, inputFiles, mode: job.mode, client });
   if (!submitted?.job_id) throw new Error(`submit for "${job.id}" returned no job_id`);
   log(`  submitted ${submitted.job_id}`);
   // Persist the paid id before waiting: a crash or timeout during the wait must
   // not lose a job that has already been paid for.
   job.jobId = submitted.job_id;
   save();
-  await waitForJob(key, submitted.job_id, { log, fetchImpl });
-  return jobResult(key, submitted.job_id, { fetchImpl });
+  await waitForJob(key, submitted.job_id, { log, client });
+  return jobResult(key, submitted.job_id, { client });
 }
 
 export function normalizeContentType(value) {
@@ -1349,7 +1543,7 @@ export async function downloadOutputs(result, dir, log = () => {}, { fetchImpl =
   return files;
 }
 
-export async function runManifest({ only, force = false, dry = false, strict = false, log = console.error, manifestPath = MANIFEST, filesDir = FILES_DIR, modulePath = MODULE_OUT, fetchImpl = fetch } = {}) {
+export async function runManifest({ only, force = false, dry = false, strict = false, log = console.error, manifestPath = MANIFEST, filesDir = FILES_DIR, modulePath = MODULE_OUT, fetchImpl, sleepImpl, client } = {}) {
   const manifest = readManifest(manifestPath);
   const jobs = manifest.jobs || [];
   // A misspelled `--only` id must fail loudly rather than quietly skip every
@@ -1361,6 +1555,9 @@ export async function runManifest({ only, force = false, dry = false, strict = f
     return { baked: emptyBaked(manifest.version), fresh: emptyBaked(manifest.version), plans, failures, wrote: false };
   }
   const key = readKey();
+  // One client for the whole batch: every job's API calls queue behind the same
+  // gate, so a run cannot outpace the API even when jobs arrive back to back.
+  const runClient = client ?? createApiClient({ fetchImpl, sleepImpl, log });
   const fresh = emptyBaked(manifest.version || 1);
   const failures = [];
   const succeeded = new Set();
@@ -1371,7 +1568,7 @@ export async function runManifest({ only, force = false, dry = false, strict = f
     log(`\n> ${job.id} (${job.engine})`);
     const dir = path.join(filesDir, job.raw || job.id);
     try {
-      const result = await resolveResult(key, job, log, force, { fetchImpl, save });
+      const result = await resolveResult(key, job, log, force, { client: runClient, save });
       const files = await downloadOutputs(result, dir, log, { fetchImpl });
       const bake = job.bake;
       if (bake?.type) {
@@ -2335,8 +2532,18 @@ run options:
   --dry         validate the manifest without submitting or writing
 
 Environment:
-  MOTH_API_KEY    API key (never written to disk); required for catalog/run
-  MOTH_API_BASE   API origin override (default https://api.mothquantum.com)
+  MOTH_API_KEY               API key (never written to disk); required for catalog/run
+  MOTH_API_BASE              API origin override (default https://api.mothquantum.com)
+  MOTH_MIN_INTERVAL_MS       Minimum spacing between API requests (default 300)
+  MOTH_MAX_RETRIES           Retries per request after 429/transient failures (default 5)
+  MOTH_RETRY_BASE_MS         First backoff delay when Retry-After is absent (default 1000)
+  MOTH_RETRY_CAP_MS          Backoff ceiling (default 30000)
+  MOTH_POLL_INTERVAL_MS      First job-status poll interval (default 1500)
+  MOTH_POLL_MAX_INTERVAL_MS  Poll ceiling while a job makes no progress (default 5000)
+
+A 429 (or a 503 with Retry-After) waits as the server asks, otherwise backs off
+exponentially with jitter. Submit POSTs are only retried on 429: after a network
+error or 5xx they stop, because the job may already exist.
 
 Exit codes: 0 ok, 1 when any batch job fails or the command is unknown.
 Docs: docs/MOTH.md (gallery, provenance tables, source-lock safety).`;
