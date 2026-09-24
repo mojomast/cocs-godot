@@ -28,20 +28,20 @@ only the textures/normals/sky/materials/effects buckets into
 `quantum-rift`, `effect-capture-ring` and `qrc-glyphs` are committed and
 hash-verified but have **no gameplay consumer** yet.
 
-### Uniqueness pass (2026-09-24)
+### Uniqueness pass and upstream re-bake (2026-09-24)
 
 Audit (rerunnable offline): `node tools/godot-moth/uniqueness.mjs [dir]` reports
 pairwise low-frequency correlation (what reads as "the same bump") plus each
-plane's structure energy. Finding on the shipped baked normals: 13 planes,
+plane's structure energy. Finding on the original 32 px baked normals: 13 planes,
 median pair similarity **0.567**, **six pairs above 0.90 (up to 1.000)**. The
 jobs are not missing seeds: each carries its own `generateValues` height grid
-(seeds 11–113, `kind` noise/ridge/cells) and a recorded `jobId`, yet the shipped
+(seeds 11–113, `kind` noise/ridge/cells) and a recorded `jobId`, yet the original
 normals still read as one noise class. `blur-core-v1` defines `params.strength`
 as **blur amount** (0 leaves the grid unchanged; 1 is maximum blur), not relief
 amplitude. The existing 0.25–0.55 strength and 0.10–0.35 reach smooth the
 distinct 64 px grids, then the baker outputs 32 px normals. The baked pixels
-are source-locked here; fixing them needs an
-upstream re-bake (proposal below). The port therefore rebinds the families whose
+are source-locked here; they were replaced through the upstream re-bake below.
+The port also rebinds the families whose
 own albedo carries real structure to **derived** normals:
 
 | family / variant | was (baked) | now (derived from its albedo) |
@@ -59,29 +59,31 @@ own albedo carries real structure to **derived** normals:
 
 The same audit covers any same-size plane bucket and caught a second locked
 duplicate: `sky/ember.png` and `sky/nebula.png` are byte-identical (same
-pixel and PNG sha) despite being separate jobs — include them in the same
-upstream re-bake if the palette should differ.
+pixel and PNG sha) despite being separate jobs. The normal re-bake did not
+change skies; changing that palette needs a separate upstream sky re-bake.
 
-Result: `node tools/godot-moth/uniqueness.mjs godot/moth/derived/normals` →
+Family-rebind result: `node tools/godot-moth/uniqueness.mjs godot/moth/derived/normals` →
 12 planes, median **0.091**, max 0.897, **0 near-duplicates**, 0 flat. All
 thirteen baked normals remain bound somewhere (the material-language contract
-requires it), so the baked set still shows its own six near-duplicate pairs; the
-in-game variety comes from the rebinds above. The deriver also gained
+requires it); the original baked set had six near-duplicate pairs, while the
+current source-rebaked set has none. The deriver also gained
 anisotropic kernels (`radius: {x, y}`) so cracks and streaks read directionally,
 and the gallery shows the before/after sheets.
 
-**Re-bake proposal (upstream `assets/moth/manifest.json`, needs credits and the
-source lock advanced).** Run it from a separate upstream branch with the API key,
-then advance the pin. The jobs already carry distinct seeds and kinds; this pass
-replaces their `generateValues` with structurally different relief, **reduces**
+**Completed upstream re-bake.** Thirteen 1-credit jobs were run sequentially
+from `assets/moth/manifest.json`. Source commit `515daf07` is on the clean
+projectile-speed lineage, reachable from upstream main through merge `9a89e800`;
+the port's source lock pins that commit. The jobs already carried distinct
+seeds and kinds; this pass replaced their `generateValues` with structurally
+different relief, **reduced**
 the engine blur (`params.strength` ~0.05–0.15, `reach` ~0–0.05, with one-axis
-blur where directional structure is wanted), and raises `bake.size` 32 → 64. A
+blur where directional structure is wanted), and raised `bake.size` 32 → 64. A
 single targeted axis needs a scalar `strength`; two axes can use a two-entry
-list. The generator supports the richer knobs (`freq`, `octaves`, `angle`, `anisotropy`,
-seeded `cells`; every default reproduces the old output). Suggested per-job
-settings:
+list. The generator supports the richer knobs (`freq`, `octaves`, `angle`,
+`anisotropy`, seeded `cells`; every default reproduces the old output). Applied
+per-job height-grid settings (blur params are in the source manifest):
 
-| job | new generateValues | reads as |
+| job | generateValues | reads as |
 | --- | --- | --- |
 | normal-rock | `{type:'height', kind:'ridge', seed:11, freq:5, octaves:6}` | ridged strata |
 | normal-ice | `{type:'height', kind:'cells', seed:23, freq:3}` | fracture lattice |
@@ -97,14 +99,20 @@ settings:
 | normal-stucco | `{type:'height', kind:'noise', seed:101, freq:6, octaves:5}` | plaster grain |
 | normal-corrugated | `{type:'height', kind:'ridge', seed:103, freq:2, octaves:2, anisotropy:8}` | rolled ribs |
 
-Only quarter turns (0 / ±PI/2): other rotations seam at the tile wrap (measured wrap gradient 2.6–3.1× the interior), so the proposal sticks to exact quarter turns; integer-frequency directionality would be the seamless way to get diagonals if a future bake needs them.
+Only quarter turns (0 / ±PI/2): other rotations seam at the tile wrap (measured
+wrap gradient 2.6–3.1× the interior), so this bake uses exact quarter turns.
+Integer-frequency directionality would be the seamless way to get diagonals.
 
-Then run each changed job in sequence with `--only <id>`, re-export, and re-run
-the audit — expect zero pairs >0.90. Clear its *old* `jobId` before the first
-submission; the new ID is saved immediately, so resume without `--force` to
-avoid paying twice. If a
-job still lands flat, lower its blur strength/reach or change the generated
-grid/targeted axes before spending more credits.
+The 13 new baked normals are all **64×64**. The source-locked set now has
+median pair similarity **0.100**, maximum **0.645**, **zero pairs above 0.90**
+(down from six), and no flat planes; structure standard deviations span
+**26.15–92.80**. All other 82 Moth jobs and every other baked registry bucket
+are unchanged. The 38 derived planes kept the same pixel bytes and green sign
+(`+1`); their provenance/calibration manifest was regenerated against the new
+baked sources. See the [13-tile before/after gallery](http://100.125.104.79:4371/moth-rebake.html).
+For future changed jobs, clear the old `jobId` before the first submission, run
+each job sequentially with `--only <id>`, and resume without `--force` to avoid
+paying twice. If one lands flat, lower blur strength/reach or change its grid.
 
 **Live settings pilot:** four successful 1-credit jobs proved the direction.
 Raising strength to 1.0 and reach to 0.3 produced a near-flat 64 px rock
@@ -114,8 +122,8 @@ directional noise (0.05/0, axis 1) instead yielded structure deviations
 48.46, 27.86 and 41.40; their maximum pair similarity was 0.25. A separate
 engine-validation attempt with two `strength` entries for one targeted axis
 failed before producing a normal; its billing is unknown. Comparison:
-<http://100.125.104.79:4371/moth-pilot.html>. These are pilot tiles, not yet
-the source-locked shipped normals.
+<http://100.125.104.79:4371/moth-pilot.html>. The experimental pilot job IDs
+are not the 13 source-locked job IDs listed below.
 
 The tool now paces itself for real bakes: `MOTH_MIN_INTERVAL_MS` (300) spaces every
 request, 429/503 honour `Retry-After` with bounded exponential backoff, status
@@ -159,22 +167,22 @@ on 429 — never on an ambiguous failure (see `node scripts/moth-bake.mjs help`)
 | `weathered_concrete-damp` | `blur-v1` | texture-tile | `274533a3` | enamel damp walls, gallery roles |
 | `weathered_concrete-worn` | `blur-v1` | texture-tile | `b150f6a4` | pearl worn walls, aurora shell, identity trim |
 
-### Normals (13) — all `blur-core-v1` → baker `normal-map`
+### Normals (13) — all `blur-core-v1` → baker `normal-map` (64×64)
 | Asset | Job id | Drives |
 | --- | --- | --- |
-| `corrugated_metal` | `c78096f8` | vent/corrugated bump |
-| `diamond_plate` | `74d58f80` | tread-plate bump |
-| `grass` | `b81fb534` | grass floor bump |
-| `hazard_stripes` | `1e32e549` | hazard-trim bump |
-| `hex_paneling` | `cca2dba8` | pearl/enamel panel bump |
-| `holographic_grid` | `247999cb` | enamel/scenery panel bump |
-| `ice` | `a26f5ffa` | ice/snow terrain bump |
-| `metal` | `c568ef8f` | brushed-alloy/oxidised bump |
-| `metal_grating` | `306c39ad` | grating + oxidised bump |
-| `rock` | `04baa6d7` | rock/ash/stone terrain bump |
-| `rough_stucco` | `019b42dc` | stucco + scenery inlay bump |
-| `sand` | `68ef7d47` | sand/dirt terrain bump |
-| `weathered_concrete` | `4fa28a5a` | concrete terrain + pearl-ceramic bump |
+| `corrugated_metal` | `d3990d88` | vent/corrugated bump |
+| `diamond_plate` | `b96cfa1c` | tread-plate bump |
+| `grass` | `9080917d` | grass floor bump |
+| `hazard_stripes` | `db87b766` | hazard-trim bump |
+| `hex_paneling` | `435e2c18` | pearl/enamel panel bump |
+| `holographic_grid` | `04fe3fed` | enamel/scenery panel bump |
+| `ice` | `62bfdcdc` | ice/snow terrain bump |
+| `metal` | `8b4a6f4d` | brushed-alloy/oxidised bump |
+| `metal_grating` | `683bc936` | grating + oxidised bump |
+| `rock` | `89fe5c52` | rock/ash/stone terrain bump |
+| `rough_stucco` | `9f873072` | stucco + scenery inlay bump |
+| `sand` | `e6f26694` | sand/dirt terrain bump |
+| `weathered_concrete` | `58b2c910` | concrete terrain + pearl-ceramic bump |
 
 ### Sky (5) — all `blur-v1` → baker `sky` (128×64 equirect)
 | Asset | Job id | Maps | Player sees |

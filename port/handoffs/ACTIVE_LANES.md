@@ -691,10 +691,19 @@ upstream pass is in progress. The shared bake request queue was integrated at
 
 | workstream | owner/worktree | exclusive edits / integration |
 | --- | --- | --- |
-| Alt-fire variety | `lane/alt-fire`, `/tmp/opencode/cocs-alt-fire` | `godot/world/{projectiles,audio_feedback,combat_feedback}.gd`, `godot/weapon_effects/**`, matching protocol/effect tests and `port/native-alt-fire/**`; in progress. |
+| Alt-fire variety | `lane/alt-fire`, `/tmp/opencode/cocs-alt-fire` | Landed as `26f5a78f`: distinct cluster/mortar/mine/flak bodies, trails, impacts and voices. New `alt-fire` gate 105/0; audio-feedback 411. |
 | Benchmark autostart | `lane/benchmark-autostart`, `/tmp/opencode/cocs-benchmark-autostart` | `godot/native_arenas/demo.gd`, benchmark contracts/runner/docs/evidence; landed as `002e6f2b`; lead owns its aggregate-gate registration. |
-| Moth normal re-bake | nested mini-orchestrator, new upstream-source worktree | `assets/moth/manifest.json`, `game/moth-baked.mjs`, `public/moth/files/normal-*/**` on upstream history **only**; no port locked-prefix edits or push by lane. Lead reviews/pushes, advances source pin, exports and verifies. |
-| Third-person weapon identity | nested mini-orchestrator, `lane/world-weapon-identity` | `tools/godot-operators/world-weapons.mjs`, generated world weapons, source-operator tests and own evidence; no benchmark/alt-fire overlap. |
+| Moth normal re-bake | nested mini-orchestrator, `lane/moth-full-pass` | 13 live jobs (13 credits), committed upstream as `2048a4f9`; byte-identical clean-lineage commit `515daf07` merged into upstream main `9a89e800` (branch CI success 36043026485). Port merge `f584d199`, source pin/export `6fa77b08`. New baked set: median 0.100, max 0.645, zero pairs >0.90. |
+| Third-person weapon identity | nested mini-orchestrator, `lane/world-weapon-identity` | Landed as `0fe8df22`: all ten exported world silhouettes distinct (max side IoU 0.820 → 0.728), source grips/muzzles unchanged, four draws each; model/identity/grip gates green. |
 
 Lead verifies and integrates lane commits, registers gates and runs the final
 combined sweep before packaging the Windows and Linux releases.
+
+The benchmark fix landed as `002e6f2b` with its rendered env-armed/unarmed
+gate `d1a84373` (merged-base pass). Weapon, Moth and model gate registrations
+landed as `0ddc88a6`; aggregate now counts 174 commands plus the toolchain and
+release guards (176 gates). Moth gallery: `http://100.125.104.79:4371/moth-rebake.html`
+(13 original/current sliders), linked from `moth.html` and the gallery index.
+Upstream main's pre-existing camera-ownership CI failure belongs to the web
+demo frame-cap change at `d4344d8f`; the clean-lineage source branch CI passed.
+Hardware-GPU FPS/Extreme verdict and owner playtest remain pending.
