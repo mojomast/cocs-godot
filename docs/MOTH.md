@@ -100,6 +100,11 @@ Then `MOTH_API_KEY=... node scripts/moth-bake.mjs run --only normal-rock …`
 (or a full `run`), re-export, and re-run the audit — expect zero pairs >0.90. If a
 job still lands flat, raise its `strength`/`reach` before spending more credits.
 
+The tool now paces itself for real bakes: `MOTH_MIN_INTERVAL_MS` (300) spaces every
+request, 429/503 honour `Retry-After` with bounded exponential backoff, status
+polling backs off 1.5 s → 5 s while nothing changes, and a submit is only retried
+on 429 — never on an ambiguous failure (see `node scripts/moth-bake.mjs help`).
+
 ### Provenance tables
 
 ### Textures (31)
