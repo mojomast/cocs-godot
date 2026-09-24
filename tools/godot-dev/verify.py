@@ -89,6 +89,7 @@ commands = [
     # ignores MOUSE_MODE_CAPTURED, so the gate runs under a private owned Xvfb.
     ("first-person-binding", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--path", "godot", "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy", "--script", "res://tests/first_person/binding.gd"]),
     ("first-person-ads", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/ads_contract.gd"]),
+    ("first-person-recoil", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/recoil.gd"]),
     ("combat-actions", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--path", "godot", "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy", "--script", "res://tests/combat_actions/controls.gd"]),
     ("combat-shields", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_shields/validate.gd"]),
     ("combat-shield-capacity", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_shields/capacity.gd"]),
@@ -96,6 +97,7 @@ commands = [
     ("combat-pickup-assets", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_pickup_assets/validate.gd"]),
     ("weapon-effects", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/lifecycle.gd"]),
     ("weapon-effects-rig", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/rig_integration.gd"]),
+    ("projectile-flight", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/projectile_flight.gd"]),
     ("weapon-handling", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/handling.gd"]),
     ("weapon-detail", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/detail.gd"]),
     ("weapon-export", ["node", "tools/godot-weapons/verify.mjs"]),
