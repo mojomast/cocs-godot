@@ -254,6 +254,15 @@ func _update_metrics() -> void:
 		metrics["impact_active"] = impact_state.active
 		metrics["impact_family"] = impact_state.family if not str(impact_state.family).is_empty() else "none"
 		metrics["impact_counters"] = JSON.stringify(impact_state.counters)
+		# Persistent surface damage (player_fx/mark_pool.gd): live decals and the
+		# skip/recycle accounting the tests and the F10 panel read.
+		var impact_counts: Dictionary = impact_state.counters
+		metrics["impact_marks_pool"] = impact_state.marks_pool
+		metrics["impact_marks_live"] = impact_state.marks_live
+		metrics["impact_marks_recycled"] = int(impact_counts.get("marks_recycled", 0))
+		metrics["impact_marks_skipped"] = int(impact_counts.get("marks_skipped_occluded", 0)) \
+			+ int(impact_counts.get("marks_skipped_far", 0)) + int(impact_counts.get("marks_skipped_edge", 0))
+		metrics["impact_scorches"] = int(impact_counts.get("scorches_placed", 0))
 	if is_instance_valid(blood_fx):
 		var blood_state: Dictionary = blood_fx.snapshot()
 		for key in ["allocated_slots", "submitted_slots", "active_emitters", "concurrent_cap", "stains_live", "stains_recycled", "no_bleed", "absorbed_only", "duplicates"]:

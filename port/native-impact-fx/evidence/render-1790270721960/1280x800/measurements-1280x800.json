@@ -1,0 +1,431 @@
+{
+	"blast": {
+		"before_to_after": {
+			"changed_bounds": [
+				574,
+				399,
+				132,
+				46
+			],
+			"changed_pixels": 4597,
+			"max_delta": 0.631372563540936,
+			"mean_delta": 0.0070306339672666
+		},
+		"before_to_settled": {
+			"changed_bounds": [
+				574,
+				395,
+				132,
+				50
+			],
+			"changed_pixels": 4790,
+			"max_delta": 0.631372563540936,
+			"mean_delta": 0.00941013534504332
+		},
+		"clean_to_after": {
+			"changed_bounds": [
+				574,
+				395,
+				132,
+				50
+			],
+			"changed_pixels": 4790,
+			"max_delta": 0.631372563540936,
+			"mean_delta": 0.00780938032245743
+		},
+		"counters": {
+			"actor_hits": 0,
+			"blasts_seen": 1,
+			"blasts_skipped_far": 0,
+			"blasts_skipped_no_ground": 0,
+			"blasts_skipped_occluded": 0,
+			"confirmed": 0,
+			"death_scorches": 0,
+			"deduped": 0,
+			"dropped": 0,
+			"legacy": 0,
+			"marks_denied": 0,
+			"marks_dropped": 0,
+			"marks_expired": 1,
+			"marks_live": 1,
+			"marks_placed": 2,
+			"marks_recycled": 0,
+			"marks_skipped_edge": 0,
+			"marks_skipped_far": 0,
+			"marks_skipped_occluded": 0,
+			"no_geometry": 0,
+			"occluded": 0,
+			"probes": 0,
+			"puffs": 1,
+			"scorches_placed": 1,
+			"shockwaves_placed": 1,
+			"shown": 0,
+			"too_far": 0
+		}
+	},
+	"blast_small": {
+		"clean_to_after": {
+			"changed_bounds": [
+				515,
+				395,
+				81,
+				40
+			],
+			"changed_pixels": 2309,
+			"max_delta": 0.572549030184746,
+			"mean_delta": 0.0035075499773686
+		},
+		"shockwaves_placed": 0
+	},
+	"checked": 63,
+	"edge": {
+		"before_to_after": {
+			"changed_bounds": [
+				0,
+				0,
+				0,
+				0
+			],
+			"changed_pixels": 0,
+			"max_delta": 0.0,
+			"mean_delta": 0.0
+		},
+		"clean_to_after": {
+			"changed_bounds": [
+				965,
+				277,
+				63,
+				62
+			],
+			"changed_pixels": 3906,
+			"max_delta": 0.47843137383461,
+			"mean_delta": 0.0150306286361099
+		},
+		"counters": {
+			"actor_hits": 0,
+			"blasts_seen": 0,
+			"blasts_skipped_far": 0,
+			"blasts_skipped_no_ground": 0,
+			"blasts_skipped_occluded": 0,
+			"confirmed": 1,
+			"death_scorches": 0,
+			"deduped": 0,
+			"dropped": 0,
+			"legacy": 0,
+			"marks_denied": 0,
+			"marks_dropped": 0,
+			"marks_expired": 0,
+			"marks_live": 0,
+			"marks_placed": 0,
+			"marks_recycled": 0,
+			"marks_skipped_edge": 1,
+			"marks_skipped_far": 0,
+			"marks_skipped_occluded": 0,
+			"no_geometry": 0,
+			"occluded": 0,
+			"probes": 1,
+			"puffs": 0,
+			"scorches_placed": 0,
+			"shockwaves_placed": 0,
+			"shown": 1,
+			"too_far": 0
+		}
+	},
+	"failures": [],
+	"materials": {
+		"before_to_after": {
+			"changed_bounds": [
+				28,
+				28,
+				1081,
+				337
+			],
+			"changed_pixels": 7409,
+			"max_delta": 1.0,
+			"mean_delta": 0.00287819779669599
+		},
+		"clean_to_after": {
+			"changed_bounds": [
+				28,
+				28,
+				1109,
+				358
+			],
+			"changed_pixels": 21934,
+			"max_delta": 1.0,
+			"mean_delta": 0.00423457814921221
+		},
+		"clean_to_settled": {
+			"changed_bounds": [
+				29,
+				28,
+				1080,
+				337
+			],
+			"changed_pixels": 6598,
+			"max_delta": 1.0,
+			"mean_delta": 0.00250718830066398
+		},
+		"counters": {
+			"actor_hits": 0,
+			"blasts_seen": 0,
+			"blasts_skipped_far": 0,
+			"blasts_skipped_no_ground": 0,
+			"blasts_skipped_occluded": 0,
+			"confirmed": 4,
+			"death_scorches": 0,
+			"deduped": 0,
+			"dropped": 0,
+			"legacy": 0,
+			"marks_denied": 0,
+			"marks_dropped": 0,
+			"marks_expired": 0,
+			"marks_live": 4,
+			"marks_placed": 4,
+			"marks_recycled": 0,
+			"marks_skipped_edge": 0,
+			"marks_skipped_far": 0,
+			"marks_skipped_occluded": 0,
+			"no_geometry": 0,
+			"occluded": 0,
+			"probes": 4,
+			"puffs": 0,
+			"scorches_placed": 0,
+			"shockwaves_placed": 0,
+			"shown": 4,
+			"too_far": 0
+		}
+	},
+	"noise_floor": {
+		"changed_bounds": [
+			0,
+			0,
+			0,
+			0
+		],
+		"changed_pixels": 0,
+		"max_delta": 0.0,
+		"mean_delta": 0.0
+	},
+	"quality": {
+		"0": {
+			"advance_us_per_frame": 22.9166666666667,
+			"crack_detail": false,
+			"draw_calls": 46.0,
+			"life_seconds": 6.0,
+			"limit": 20,
+			"marks_live": 20,
+			"objects": 527.0,
+			"pool": 20,
+			"submitted_marks": 20
+		},
+		"1": {
+			"advance_us_per_frame": 36.3333333333333,
+			"crack_detail": true,
+			"draw_calls": 70.0,
+			"life_seconds": 14.0,
+			"limit": 44,
+			"marks_live": 44,
+			"objects": 563.0,
+			"pool": 44,
+			"submitted_marks": 44
+		},
+		"2": {
+			"advance_us_per_frame": 73.55,
+			"crack_detail": true,
+			"draw_calls": 98.0,
+			"life_seconds": 22.0,
+			"limit": 72,
+			"marks_live": 72,
+			"objects": 618.0,
+			"pool": 72,
+			"submitted_marks": 72
+		}
+	},
+	"quality_0": {
+		"changed_pixels": 9166
+	},
+	"quality_1": {
+		"changed_pixels": 9180
+	},
+	"quality_2": {
+		"changed_pixels": 5988
+	},
+	"quality_baseline": {
+		"draw_calls": 26.0,
+		"objects": 549.0
+	},
+	"recorded": {
+		"before_to_after": {
+			"changed_bounds": [
+				626,
+				387,
+				28,
+				22
+			],
+			"changed_pixels": 478,
+			"max_delta": 0.529411777853966,
+			"mean_delta": 0.0035875871423478
+		},
+		"before_to_after_settled": {
+			"changed_bounds": [
+				625,
+				386,
+				30,
+				23
+			],
+			"changed_pixels": 531,
+			"max_delta": 0.55294119566679,
+			"mean_delta": 0.00348962903715485
+		},
+		"clean_to_after": {
+			"changed_bounds": [
+				583,
+				338,
+				114,
+				115
+			],
+			"changed_pixels": 13110,
+			"max_delta": 0.349019631743431,
+			"mean_delta": 0.0225953643045519
+		},
+		"counters": {
+			"actor_hits": 0,
+			"blasts_seen": 0,
+			"blasts_skipped_far": 0,
+			"blasts_skipped_no_ground": 0,
+			"blasts_skipped_occluded": 0,
+			"confirmed": 1,
+			"death_scorches": 0,
+			"deduped": 0,
+			"dropped": 0,
+			"legacy": 0,
+			"marks_denied": 0,
+			"marks_dropped": 0,
+			"marks_expired": 0,
+			"marks_live": 1,
+			"marks_placed": 1,
+			"marks_recycled": 0,
+			"marks_skipped_edge": 0,
+			"marks_skipped_far": 0,
+			"marks_skipped_occluded": 0,
+			"no_geometry": 0,
+			"occluded": 0,
+			"probes": 1,
+			"puffs": 0,
+			"scorches_placed": 0,
+			"shockwaves_placed": 0,
+			"shown": 1,
+			"too_far": 0
+		},
+		"whole_clean_to_after": {
+			"changed_bounds": [
+				28,
+				28,
+				669,
+				425
+			],
+			"changed_pixels": 18109,
+			"max_delta": 1.0,
+			"mean_delta": 0.0029726026057333
+		}
+	},
+	"recorded_aged": {
+		"settled_to_aged": {
+			"changed_bounds": [
+				625,
+				387,
+				30,
+				22
+			],
+			"changed_pixels": 500,
+			"max_delta": 0.188235282897949,
+			"mean_delta": 0.000959974094255527
+		}
+	},
+	"recorded_before_counters": {
+		"marks_placed": 0,
+		"shown": 1
+	},
+	"recycled": {
+		"counters": {
+			"actor_hits": 0,
+			"blasts_seen": 0,
+			"blasts_skipped_far": 0,
+			"blasts_skipped_no_ground": 0,
+			"blasts_skipped_occluded": 0,
+			"confirmed": 140,
+			"death_scorches": 0,
+			"deduped": 0,
+			"dropped": 120,
+			"legacy": 0,
+			"marks_denied": 0,
+			"marks_dropped": 0,
+			"marks_expired": 0,
+			"marks_live": 72,
+			"marks_placed": 140,
+			"marks_recycled": 68,
+			"marks_skipped_edge": 0,
+			"marks_skipped_far": 0,
+			"marks_skipped_occluded": 0,
+			"no_geometry": 0,
+			"occluded": 0,
+			"probes": 140,
+			"puffs": 0,
+			"scorches_placed": 0,
+			"shockwaves_placed": 0,
+			"shown": 20,
+			"too_far": 0
+		},
+		"marks_live": 72,
+		"pool_nodes": 72
+	},
+	"relief": {
+		"clean_to_after": {
+			"changed_bounds": [
+				97,
+				28,
+				742,
+				571
+			],
+			"changed_pixels": 141222,
+			"max_delta": 1.0,
+			"mean_delta": 0.0124735557263084
+		},
+		"clean_to_settled": {
+			"changed_bounds": [
+				97,
+				28,
+				588,
+				417
+			],
+			"changed_pixels": 12078,
+			"max_delta": 1.0,
+			"mean_delta": 0.00383456281733424
+		}
+	},
+	"rendering": {
+		"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+		"method": "gl_compatibility",
+		"uniforms": [
+			"family",
+			"kind",
+			"seed",
+			"opacity",
+			"age",
+			"detail",
+			"progress",
+			"light_dir"
+		]
+	},
+	"size": [
+		1280,
+		800
+	],
+	"wiring": {
+		"impact_counters": "{\"actor_hits\":0,\"blasts_seen\":0,\"blasts_skipped_far\":0,\"blasts_skipped_no_ground\":0,\"blasts_skipped_occluded\":0,\"confirmed\":1,\"death_scorches\":0,\"deduped\":0,\"dropped\":0,\"legacy\":0,\"marks_denied\":0,\"marks_dropped\":0,\"marks_expired\":0,\"marks_live\":1,\"marks_placed\":1,\"marks_recycled\":0,\"marks_skipped_edge\":0,\"marks_skipped_far\":0,\"marks_skipped_occluded\":0,\"no_geometry\":0,\"occluded\":0,\"probes\":1,\"puffs\":0,\"scorches_placed\":0,\"shockwaves_placed\":0,\"shown\":1,\"too_far\":0}",
+		"impact_marks_live": 1,
+		"impact_marks_recycled": 0,
+		"marks_placed": 1
+	}
+}
