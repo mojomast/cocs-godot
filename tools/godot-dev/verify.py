@@ -98,9 +98,11 @@ commands = [
     ("weapon-effects", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/lifecycle.gd"]),
     ("weapon-effects-rig", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/rig_integration.gd"]),
     ("projectile-flight", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/projectile_flight.gd"]),
+    ("alt-fire", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/alt_fire.gd"]),
     ("weapon-handling", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/handling.gd"]),
     ("weapon-detail", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/detail.gd"]),
     ("weapon-export", ["node", "tools/godot-weapons/verify.mjs"]),
+    ("world-weapon-identity", ["node", "port/native-world-weapon-identity/check.mjs"]),
     # Impact/player-state feedback contracts. The lane's own runner additionally
     # performs rendered captures and is kept as its full evidence harness.
     ("player-fx-direction", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/direction.gd"]),
@@ -161,6 +163,8 @@ commands = [
     ("pickup-presentation", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/pickups.gd"]),
     ("entity-visuals", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/entity_visuals.gd"]),
     ("operator-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_models/geometry.gd"]),
+    ("world-weapon-import", [binary, "--headless", "--path", "godot", "--script", "res://tests/source_operators/weapons.gd"]),
+    ("world-weapon-grips", [binary, "--headless", "--path", "godot", "--script", "res://tests/source_operators/grips.gd"]),
     ("native-trace", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/native_trace.gd"]),
     ("guest-session", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/guest_session.gd"]),
     ("lobby-flow", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/lobby_flow.gd"]),
