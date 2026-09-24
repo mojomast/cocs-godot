@@ -1,0 +1,293 @@
+{
+	"adapter": "llvmpipe (LLVM 20.1.8, 256 bits)",
+	"audio": [
+		{
+			"cue": "launch",
+			"kind": "cluster",
+			"peak": 0.597991943359375,
+			"primary_key": "launch/1",
+			"primary_peak": 0.63848876953125,
+			"primary_rms": 0.133739294130625,
+			"primary_seconds": 0.5,
+			"rms": 0.130985147917181,
+			"seconds": 0.34
+		},
+		{
+			"cue": "explosion",
+			"kind": "cluster",
+			"peak": 0.597991943359375,
+			"primary_key": "explosion",
+			"primary_peak": 0.649993896484375,
+			"primary_rms": 0.130358405494524,
+			"primary_seconds": 0.42,
+			"rms": 0.1090406607991,
+			"seconds": 0.42
+		},
+		{
+			"cue": "launch",
+			"kind": "mortar",
+			"peak": 0.597991943359375,
+			"primary_key": "launch/4",
+			"primary_peak": 0.554290771484375,
+			"primary_rms": 0.106125180894502,
+			"primary_seconds": 0.355963718820862,
+			"rms": 0.124612594936306,
+			"seconds": 0.4
+		},
+		{
+			"cue": "explosion",
+			"kind": "mortar",
+			"peak": 0.597991943359375,
+			"primary_key": "explosion",
+			"primary_peak": 0.649993896484375,
+			"primary_rms": 0.130358405494524,
+			"primary_seconds": 0.42,
+			"rms": 0.115086162487227,
+			"seconds": 0.5
+		},
+		{
+			"cue": "launch",
+			"kind": "mine",
+			"peak": 0.597991943359375,
+			"primary_key": "launch/5",
+			"primary_peak": 0.627655029296875,
+			"primary_rms": 0.109182885261234,
+			"primary_seconds": 0.5,
+			"rms": 0.108911561833748,
+			"seconds": 0.34
+		},
+		{
+			"cue": "explosion",
+			"kind": "mine",
+			"peak": 0.597991943359375,
+			"primary_key": "explosion",
+			"primary_peak": 0.649993896484375,
+			"primary_rms": 0.130358405494524,
+			"primary_seconds": 0.42,
+			"rms": 0.122604497550766,
+			"seconds": 0.3
+		},
+		{
+			"cue": "launch",
+			"kind": "bomb",
+			"peak": 0.597991943359375,
+			"primary_key": "launch/7",
+			"primary_peak": 0.649993896484375,
+			"primary_rms": 0.127171416163353,
+			"primary_seconds": 0.5,
+			"rms": 0.111578360634668,
+			"seconds": 0.36
+		},
+		{
+			"cue": "explosion",
+			"kind": "bomb",
+			"peak": 0.597991943359375,
+			"primary_key": "explosion",
+			"primary_peak": 0.649993896484375,
+			"primary_rms": 0.130358405494524,
+			"primary_seconds": 0.42,
+			"rms": 0.098679328927225,
+			"seconds": 0.46
+		}
+	],
+	"bodies": [
+		{
+			"aabb": "[P: (-0.115078, -0.121, -0.3), S: (0.230156, 0.242, 0.54)]",
+			"kind": "cluster",
+			"max_delta": 0.372548997402191,
+			"roi_pixels_changed": 7143,
+			"surfaces": 7,
+			"tint": "ffb066",
+			"vs_primary_max_delta": 0.639215692877769,
+			"vs_primary_pixels": 9249,
+			"weapon": 1
+		},
+		{
+			"aabb": "[P: (-0.120537, -0.126741, -0.34), S: (0.241075, 0.253481, 0.76)]",
+			"kind": "mortar",
+			"max_delta": 0.529411762952805,
+			"roi_pixels_changed": 7736,
+			"surfaces": 8,
+			"tint": "c9a6ff",
+			"vs_primary_max_delta": 0.933333329856396,
+			"vs_primary_pixels": 9266,
+			"weapon": 4
+		},
+		{
+			"aabb": "[P: (-0.17, -0.05, -0.179971), S: (0.34, 0.085, 0.349971)]",
+			"kind": "mine",
+			"max_delta": 0.372548997402191,
+			"roi_pixels_changed": 3864,
+			"surfaces": 5,
+			"tint": "8fd9ff",
+			"vs_primary_max_delta": 0.596078440546989,
+			"vs_primary_pixels": 8269,
+			"weapon": 5
+		},
+		{
+			"aabb": "[P: (-0.1225, -0.2, -0.34), S: (0.245, 0.4, 0.58)]",
+			"kind": "bomb",
+			"max_delta": 0.376470565795898,
+			"roi_pixels_changed": 10676,
+			"surfaces": 6,
+			"tint": "ff9a7a",
+			"vs_primary_max_delta": 0.68235295265913,
+			"vs_primary_pixels": 13353,
+			"weapon": 7
+		}
+	],
+	"budgets": [
+		{
+			"burst_blasts": 7,
+			"draw_calls": 296,
+			"flash_slots": 17,
+			"impact_limit": 6,
+			"impact_pool": 6,
+			"level": 0,
+			"lines": 0,
+			"markers": 48,
+			"marks_limit": 20,
+			"marks_live": 7,
+			"name": "Low",
+			"objects": 765,
+			"shards": 4
+		},
+		{
+			"burst_blasts": 7,
+			"draw_calls": 314,
+			"flash_slots": 21,
+			"impact_limit": 12,
+			"impact_pool": 12,
+			"level": 1,
+			"lines": 0,
+			"markers": 48,
+			"marks_limit": 44,
+			"marks_live": 14,
+			"name": "High",
+			"objects": 756,
+			"shards": 8
+		},
+		{
+			"burst_blasts": 7,
+			"draw_calls": 314,
+			"flash_slots": 21,
+			"impact_limit": 20,
+			"impact_pool": 20,
+			"level": 2,
+			"lines": 0,
+			"markers": 48,
+			"marks_limit": 72,
+			"marks_live": 14,
+			"name": "Extreme",
+			"objects": 771,
+			"shards": 8
+		}
+	],
+	"checks": 107,
+	"failures": [],
+	"godot": "4.5.2-stable (official)",
+	"impacts": [
+		{
+			"burst_blasts": 0,
+			"cards": 0,
+			"kind": "primary",
+			"marks_live": 2,
+			"max_delta": 0.627450995147228,
+			"puffs": 1,
+			"roi_pixels_changed": 72195,
+			"scorches_placed": 1,
+			"shards": 0,
+			"shockwaves": 1
+		},
+		{
+			"burst_blasts": 1,
+			"cards": 2,
+			"kind": "cluster",
+			"marks_live": 2,
+			"max_delta": 0.619607858359814,
+			"puffs": 1,
+			"roi_pixels_changed": 83060,
+			"scorches_placed": 1,
+			"shards": 0,
+			"shockwaves": 1
+		},
+		{
+			"burst_blasts": 1,
+			"cards": 3,
+			"kind": "mortar",
+			"marks_live": 2,
+			"max_delta": 0.596078440546989,
+			"puffs": 1,
+			"roi_pixels_changed": 93177,
+			"scorches_placed": 1,
+			"shards": 0,
+			"shockwaves": 1
+		},
+		{
+			"burst_blasts": 1,
+			"cards": 3,
+			"kind": "mine",
+			"marks_live": 2,
+			"max_delta": 0.627450995147228,
+			"puffs": 1,
+			"roi_pixels_changed": 97746,
+			"scorches_placed": 1,
+			"shards": 0,
+			"shockwaves": 1
+		},
+		{
+			"burst_blasts": 1,
+			"cards": 2,
+			"kind": "bomb",
+			"marks_live": 2,
+			"max_delta": 0.627450995147228,
+			"puffs": 1,
+			"roi_pixels_changed": 83967,
+			"scorches_placed": 1,
+			"shards": 8,
+			"shockwaves": 1
+		}
+	],
+	"trails": [
+		{
+			"head_width": 0.062,
+			"kind": "primary",
+			"points": 5,
+			"ribbon_m": 5.0,
+			"roi_pixels_changed": 3547,
+			"tint": "ffad61"
+		},
+		{
+			"head_width": 0.05,
+			"kind": "cluster",
+			"points": 5,
+			"ribbon_m": 5.0,
+			"roi_pixels_changed": 2853,
+			"tint": "ffb066"
+		},
+		{
+			"head_width": 0.115,
+			"kind": "mortar",
+			"points": 5,
+			"ribbon_m": 5.0,
+			"roi_pixels_changed": 7673,
+			"tint": "b3a6d6"
+		},
+		{
+			"head_width": 0.07,
+			"kind": "mine",
+			"points": 5,
+			"ribbon_m": 5.0,
+			"roi_pixels_changed": 1514,
+			"tint": "8fd9ff"
+		},
+		{
+			"head_width": 0.135,
+			"kind": "bomb",
+			"points": 5,
+			"ribbon_m": 5.0,
+			"roi_pixels_changed": 8905,
+			"tint": "9a8f83"
+		}
+	]
+}

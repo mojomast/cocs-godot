@@ -36,6 +36,12 @@ void fragment() {
 	if (kind == 9) shape *= 0.4+0.6*pow(abs(cos(a*2.0-phase*4.0)), 8.0);
 	if (kind == 10) shape = exp(-r*r*4.0)*(0.7+0.15*sin(p.x*16.0+phase*4.0)*sin(p.y*19.0));
 	if (kind == 11) shape = exp(-abs(r-0.35)*24.0)*0.4;
+	// Alt-fire blast cards (weapon_effects/controller.gd): 13 cluster shards,
+	// 14 mortar dome, 15 mine proximity core, 16 flak fragment star.
+	if (kind == 13) shape = exp(-r*r*6.0)*(0.45+0.55*pow(abs(cos(a*5.0+phase*7.0)), 4.0));
+	if (kind == 14) shape = exp(-dot(p,p)*3.4)*(0.72+0.28*cos(a*3.0-phase*1.5));
+	if (kind == 15) shape = exp(-r*r*18.0)+0.35*exp(-abs(r-0.5)*40.0);
+	if (kind == 16) shape = exp(-r*r*10.0)*(0.4+0.6*pow(abs(cos(a*8.0+phase*9.0)), 3.0));
 	vec3 color = mix(tint.rgb, vec3(1.0,0.96,0.85), clamp(core*0.8,0.0,1.0)) * brightness;
 	if (use_sheet) {
 		vec4 tex = texture(frame_texture, UV);

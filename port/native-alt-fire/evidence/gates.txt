@@ -1,0 +1,51 @@
+# Alt-fire lane gate run — all commands run in this worktree, all green.
+# Godot 4.5.2.stable.official.6ce3de25a
+#
+# export GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64
+# "$GODOT_BIN" --headless --path godot --import
+#   -> exit=0 (new *.uid sidecars generated for the two new test scripts)
+#
+# "$GODOT_BIN" --headless --path godot --script res://tests/weapon_effects/lifecycle.gd
+#   -> WEAPON_EFFECTS_LIFECYCLE failures=0  (exit=0, 0 error lines)
+#
+# "$GODOT_BIN" --headless --path godot --script res://tests/weapon_effects/rig_integration.gd
+#   -> WEAPON_EFFECTS_REAL_RIG weapons=10 poses=2 max_projection_error_px=0.00001526 failures=0
+#
+# "$GODOT_BIN" --headless --path godot --script res://tests/weapon_effects/projectile_flight.gd
+#   -> WEAPON_EFFECTS_PROJECTILE_FLIGHT {"checks":22,"failures":[]}
+#
+# "$GODOT_BIN" --headless --path godot --script res://tests/weapon_effects/alt_fire.gd
+#   -> WEAPON_EFFECTS_ALT_FIRE {"checks":105,"failures":[]}      # NEW GATE
+#
+# "$GODOT_BIN" --headless --path godot --script res://tests/protocol/projectiles.gd
+#   -> PORT_PROJECTILES_OK checks=27
+#
+# "$GODOT_BIN" --headless --path godot --script res://tests/protocol/combat_feedback.gd
+#   -> PORT_COMBAT_FEEDBACK_OK synthetic_checks=13 recorded_shots=610 recorded_hits=32
+#
+# "$GODOT_BIN" --headless --path godot --script res://tests/combat_integration/contracts.gd
+#   -> COMBAT_INTEGRATION_RESULT {"checks":1013,"failures":[],"max_projection_error_px":0.000019073486328125}
+#
+# "$GODOT_BIN" --headless --audio-driver Dummy --path godot --script res://tests/protocol/audio_feedback.gd
+#   -> PORT_AUDIO_FEEDBACK_OK checks=411
+#
+# "$GODOT_BIN" --headless --path godot --script res://tests/first_person/ads_contract.gd
+#   -> NATIVE_ADS_CONTRACT {"checks":93,"failures":[]}
+#
+# "$GODOT_BIN" --headless --path godot --script res://tests/first_person/handling.gd
+#   -> FIRST_PERSON_HANDLING {"checks":5295,"failures":[]}
+#
+# Adjacent owners re-checked after the combat_feedback.gd touch:
+# "$GODOT_BIN" --headless --path godot --script res://tests/player_fx/integration.gd
+#   -> PLAYER_FX_INTEGRATION_OK checks=37
+# "$GODOT_BIN" --headless --path godot --script res://tests/player_fx/impacts.gd
+#   -> PLAYER_FX_IMPACTS_OK checks=42
+# "$GODOT_BIN" --headless --path godot --script res://tests/combat_particles/contracts.gd
+#   -> COMBAT_PARTICLES_CONTRACTS PASS
+#
+# Rendered evidence under a private Xvfb (1280x800, GL Compatibility, llvmpipe):
+# python3 tools/godot-dev/xvfb_run.py "$GODOT_BIN" --path godot \
+#   --rendering-method gl_compatibility --audio-driver Dummy \
+#   --script res://tests/weapon_effects/alt_fire_capture.gd -- \
+#   --output=port/native-alt-fire/evidence
+#   -> ALT_FIRE_CAPTURE {"checks":107,"failures":[],"bodies":4,"trails":5,"impacts":5,"budgets":3,"audio":8}

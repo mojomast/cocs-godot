@@ -13,6 +13,13 @@ var explosions: int = 0
 const Projectiles = preload("res://world/projectiles.gd")
 const MothEffects = preload("res://graphics_fx/moth_world.gd")
 const MothLibrary = preload("res://moth/library.gd")
+## Detached-diagnostic fallback tints for the four projectile alt modes. The
+## integrated shipping path draws these bursts in weapon_effects/controller.gd;
+## this only keeps the minimal no-controller fallback from painting them orange.
+const ALT_BLAST_TINTS := {
+	"cluster":Color("ffb066"), "mortar":Color("c9a6ff"),
+	"mine":Color("8fd9ff"), "bomb":Color("ff9a7a"),
+}
 var moth_effects: Node3D
 var public_actors: Array = []
 const MAX_BLASTS := 32
@@ -391,9 +398,17 @@ func apply_events(items: Array, local_id: int) -> void:
 				node.material_override = material
 				node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 				node.position = pos
-				node.scale = Vector3.ONE * 0.18
+				var blast := {"node":node, "remaining":BLAST_SECONDS}
+				var alt_id := str(item.get("altId", "")) if item.get("alt") == true else ""
+				if ALT_BLAST_TINTS.has(alt_id):
+					var tint: Color = ALT_BLAST_TINTS[alt_id]
+					blast["tint"] = tint
+					blast["base"] = 0.24 if alt_id == "mortar" else 0.15 if alt_id == "cluster" else 0.18
+					node.scale = Vector3.ONE * float(blast.base)
+				else:
+					node.scale = Vector3.ONE * 0.18
 				add_child(node)
-				blasts.append({"node":node, "remaining":BLAST_SECONDS})
+				blasts.append(blast)
 			"shot":
 				var from: Variant = point(item.get("from"))
 				var to: Variant = point(item.get("to"))
@@ -450,8 +465,14 @@ func advance(delta: float) -> void:
 			continue
 		var progress: float = 1.0 - blasts[index].remaining / BLAST_SECONDS
 		var node: MeshInstance3D = blasts[index].node
-		node.scale = Vector3.ONE * lerpf(0.18, 0.95, progress)
-		node.material_override.albedo_color = Color(1.0, lerpf(0.65, 0.2, progress), 0.08, 0.65 * (1.0 - progress))
+		if blasts[index].has("tint"):
+			var tint: Color = blasts[index].tint
+			var base: float = float(blasts[index].base)
+			node.scale = Vector3.ONE * lerpf(base, base * 5.2778, progress)
+			node.material_override.albedo_color = Color(tint.r, tint.g, tint.b, tint.a * (1.0 - progress))
+		else:
+			node.scale = Vector3.ONE * lerpf(0.18, 0.95, progress)
+			node.material_override.albedo_color = Color(1.0, lerpf(0.65, 0.2, progress), 0.08, 0.65 * (1.0 - progress))
 
 func remove_blast(index: int) -> void:
 	blasts[index].node.free()

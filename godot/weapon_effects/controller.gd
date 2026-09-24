@@ -9,6 +9,22 @@ const FlashShader = preload("res://weapon_effects/flash.gdshader")
 const CAP := 64
 const LINE_CAP := 128
 const SEEN_CAP := 4096
+## Alt-fire blast kinds from the four projectile specs in game/alt-fire.mjs
+## (cluster shell, mortar round, proximity mine, flak bomb). Presentation only:
+## the pool body, ring/dust card and shard velocities are cosmetic and never
+## touch the authoritative explosion position, radius or any damage.
+const ALT_BLASTS: Array[String] = ["cluster", "mortar", "mine", "bomb"]
+const BLAST_WEAPON_KINDS := {1:"cluster", 4:"mortar", 5:"mine", 7:"bomb"}
+const BLAST_KIND := {"cluster":13, "mortar":14, "mine":15, "bomb":16}
+const BLAST_TINTS := {
+	"cluster":Color("ffb066"), "mortar":Color("c9a6ff"),
+	"mine":Color("8fd9ff"), "bomb":Color("ff9a7a"),
+}
+## Per-kind card growth over its life and fade exponent (kind 10 smoke keeps its
+## original hard-coded growth).
+const BLAST_GROWTH := {"cluster":0.90, "mortar":0.60, "mine":2.30, "bomb":1.10}
+const BLAST_FADE := {"cluster":0.50, "mortar":0.30, "mine":0.45, "bomb":0.60}
+const MAX_BLAST_SHARDS := 8
 ## At a settled cheek weld the muzzle sits only a few degrees below the sight
 ## axis, so any large flash card centred on it would cover the open target gap.
 ## The aiming bloom is deliberately compact (hip fire keeps the full per-weapon
@@ -34,6 +50,8 @@ var sheets: Dictionary = {}
 var flashes := 0
 var tracer_count := 0
 var impacts := 0
+var blasts := 0
+var blast_shards := 0
 var rejected := 0
 var serial := 0
 var light_serial := 0
@@ -114,6 +132,16 @@ static func point(value: Variant) -> Variant:
 		if not numeric(value.get(key)) or absf(float(value[key])) > 100000: return null
 	return Vector3(value.x, value.y, value.z)
 
+## The alt blast a public explosion event names, or "" for a primary/unknown
+## explosion. Gated on the alt flag so a primary rocket can never be re-skinned.
+static func blast_kind(event: Dictionary) -> String:
+	if event.get("alt") != true: return ""
+	var id := str(event.get("altId", ""))
+	if id in ALT_BLASTS: return id
+	var weapon := identity(event.get("weapon"))
+	var kind: Variant = BLAST_WEAPON_KINDS.get(weapon, "")
+	return str(kind)
+
 func _rig() -> Dictionary:
 	if not muzzle_provider.is_valid(): return {}
 	var result: Variant = muzzle_provider.call()
@@ -141,7 +169,13 @@ func consume(events: Array, local_id: int, actors: Array = []) -> void:
 			alive[identity(actor.id)] = numeric(actor.get("health")) and actor.health > 0 and not bool(actor.get("dead", false)) and not bool(actor.get("spectating", false)) and actor.get("vehicleId") == null and actor.get("visible", true) != false and actor.get("hidden", false) != true
 	for index: int in mini(events.size(), 512):
 		var event: Variant = events[index]
-		if not event is Dictionary or event.get("type") not in ["shot", "launch"]: continue
+		if not event is Dictionary: continue
+		# Alt explosions use their own pooled burst presentation; they are not a
+		# shot, so they never touch the flash/tracer/rejected counters.
+		if event.get("type") == "explosion":
+			_consume_explosion(event)
+			continue
+		if event.get("type") not in ["shot", "launch"]: continue
 		var id := identity(event.get("id"))
 		var owner := identity(event.get("actor"))
 		var weapon := identity(event.get("weapon"))
@@ -222,7 +256,7 @@ func _slot(parent: Node, kind: int) -> Dictionary:
 	slot.node.transform = Transform3D.IDENTITY
 	slot.node.mesh = casing if kind == 12 else quad
 	slot.node.visible = true
-	slot.merge({"kind":kind, "serial":serial, "velocity":Vector3.ZERO, "sheet":"", "remaining":0.1, "total":0.1, "size":0.1, "opacity":1.0}, true)
+	slot.merge({"kind":kind, "serial":serial, "velocity":Vector3.ZERO, "sheet":"", "remaining":0.1, "total":0.1, "size":0.1, "opacity":1.0, "growth":0.35, "fade":0.65}, true)
 	slot.material.set_shader_parameter("kind", kind)
 	slot.material.set_shader_parameter("billboard", kind != 12)
 	slot.material.set_shader_parameter("use_sheet", false)
@@ -264,7 +298,7 @@ func _fire(tip: Node3D, weapon: int, rig: Dictionary) -> void:
 	_barrel_light(tip, profile)
 	if quality < 2: return
 	var smoke := _slot(tip, 10)
-	smoke.merge({"remaining":profile.smoke, "total":profile.smoke, "size":profile.size*1.4, "opacity":0.22, "velocity":Vector3(0.025, 0.28, -0.14)}, true)
+	smoke.merge({"remaining":profile.smoke, "total":profile.smoke, "size":profile.size*1.4, "opacity":0.22, "velocity":Vector3(0.025, 0.28, -0.14), "growth":1.8}, true)
 	smoke.material.set_shader_parameter("tint", Color("809099"))
 	_update_slot(smoke)
 	var heat := _slot(tip, 11)
@@ -331,6 +365,97 @@ func _impact(pos: Vector3, normal: Vector3, weapon: int) -> void:
 	spark.material.set_shader_parameter("tint",Profiles.ITEMS[weapon].color)
 	_update_slot(spark)
 	impacts += 1
+
+## Alt explosion presentation. Consumes the public explosion event for the four
+## projectile alt modes and draws a pooled burst that reads unlike primary fire
+## and unlike the other alt modes:
+##   cluster  a compact shard pop; the sim's own bomblet events add the small
+##            staggered bursts, indexed by the event's `bomblet` field
+##   mortar   a heavy dome burst plus a slow rising dust/smoke column
+##   mine     a sharp proximity core plus a fast, tight shockwave ring
+##   bomb     a vented pop plus a bounded fan of fragment shards
+## The authoritative position is used exactly; no ground contact is invented.
+func _consume_explosion(event: Dictionary) -> void:
+	var kind := blast_kind(event)
+	if kind.is_empty() or quality == 0: return
+	var pos: Variant = point(event.get("pos"))
+	if pos == null: return
+	var time: float = float(event.time) if numeric(event.get("time")) else 0.0
+	var id := identity(event.get("id"))
+	if id >= 0 and not _remember("blast/%d/%s" % [id, str(time)], time): return
+	match kind:
+		"cluster": _cluster_blast(pos, identity(event.get("bomblet")))
+		"mortar": _mortar_blast(pos)
+		"mine": _mine_blast(pos)
+		"bomb": _bomb_blast(pos)
+	blasts += 1
+
+func _blast_card(at: Vector3, kind: int, size: float, life: float, tint: Color, growth: float, fade: float) -> Dictionary:
+	var slot := _slot(self, kind)
+	slot.merge({"remaining":life, "total":life, "size":size, "opacity":1.0, "growth":growth, "fade":fade}, true)
+	slot.material.set_shader_parameter("billboard", true)
+	slot.material.set_shader_parameter("tint", tint)
+	slot.material.set_shader_parameter("core_gain", 1.0)
+	slot.material.set_shader_parameter("brightness", 1.0)
+	slot.material.set_shader_parameter("use_sheet", false)
+	slot.material.set_shader_parameter("frame_texture", null)
+	slot.node.global_position = at
+	slot.node.scale = Vector3.ONE * size
+	_update_slot(slot)
+	return slot
+
+func _cluster_blast(pos: Vector3, bomblet: int) -> void:
+	var accent: Color = BLAST_TINTS.cluster
+	if bomblet >= 0:
+		# Bomblet bursts share the shell's authoritative tick; the deterministic
+		# index stagger keeps the three small pops readable as separate hits. The
+		# delay rides `remaining` only, so the card's phase stays negative (hidden)
+		# until its slot starts, then runs the full life.
+		var pop := _blast_card(pos + Vector3(0, 0.05, 0), 13, 0.42, 0.20, accent, BLAST_GROWTH.cluster, BLAST_FADE.cluster)
+		pop.remaining += 0.05 * float(bomblet)
+		_update_slot(pop)
+		return
+	_blast_card(pos, 13, 0.95, 0.26, accent, BLAST_GROWTH.cluster, BLAST_FADE.cluster)
+	# The split moment: a quick low ring under the pop.
+	_blast_card(pos, 2, 1.5, 0.20, accent, 0.50, 0.50)
+
+func _mortar_blast(pos: Vector3) -> void:
+	var accent: Color = BLAST_TINTS.mortar
+	_blast_card(pos, 14, 1.7, 0.55, accent, BLAST_GROWTH.mortar, BLAST_FADE.mortar)
+	var dust := _blast_card(pos + Vector3(0, 0.35, 0), 14, 2.5, 0.85, Color("b9b2a6"), 1.10, 0.35)
+	dust.merge({"opacity":0.34, "velocity":Vector3(0.0, 0.5, 0.0)}, true)
+	# A slow, wide smoke card keeps reading after the flash collapses.
+	var smoke := _blast_card(pos + Vector3(0, 0.55, 0), 10, 2.1, 0.95, Color("8d949c"), 1.80, 0.40)
+	smoke.merge({"opacity":0.20, "velocity":Vector3(0.1, 0.65, 0.0)}, true)
+
+func _mine_blast(pos: Vector3) -> void:
+	var accent: Color = BLAST_TINTS.mine
+	_blast_card(pos, 15, 0.80, 0.18, accent, 0.40, 0.60)
+	# Sharper than the rocket bloom: a fast, tight ring outruns the core, and a
+	# short concentric pulse sits inside it.
+	_blast_card(pos, 2, 1.7, 0.26, accent.lerp(Color.WHITE, 0.25), BLAST_GROWTH.mine, 0.35)
+	_blast_card(pos, 4, 0.55, 0.14, accent, 0.30, 0.70)
+
+func _bomb_blast(pos: Vector3) -> void:
+	var accent: Color = BLAST_TINTS.bomb
+	_blast_card(pos, 16, 1.0, 0.26, accent, BLAST_GROWTH.bomb, BLAST_FADE.bomb)
+	var plume := _blast_card(pos + Vector3(0, 0.2, 0), 10, 1.2, 0.55, Color("6f655c"), 1.80, 0.40)
+	plume.merge({"opacity":0.18, "velocity":Vector3(0.0, 0.45, 0.0)}, true)
+	# Fragment fan: the source expels `flak` shards; the fan is bounded and only
+	# spends its full width at Extreme. Every shard reuses the pooled casing mesh.
+	var count := MAX_BLAST_SHARDS if quality >= 2 else 4
+	for index: int in count:
+		var angle := float(index) * 2.399963229728653 + 0.7
+		var lift := sin(angle * 1.7) * 0.5 + 0.25
+		var direction := Vector3(cos(angle), lift, sin(angle)).normalized()
+		var shard := _slot(self, 12)
+		shard.merge({"remaining":0.4, "total":0.4, "size":9.0, "opacity":1.0,
+			"velocity":direction * (5.5 + float(index % 3))}, true)
+		shard.material.set_shader_parameter("tint", accent)
+		shard.material.set_shader_parameter("brightness", 1.2)
+		shard.node.global_position = pos + direction * 0.12
+		_update_slot(shard)
+		blast_shards += 1
 
 func _spawn_line(start: Vector3, join: Vector3, end: Vector3, weapon: int, tip: Variant, camera: Variant, authority: Vector3) -> void:
 	if quality == 0 or start.distance_squared_to(end) < 0.00001: return
@@ -410,9 +535,14 @@ func _segment(mesh: ImmediateMesh, from: Vector3, to: Vector3, width: float, col
 
 func _update_slot(slot: Dictionary) -> void:
 	var phase: float = 1.0-slot.remaining/slot.total
+	if phase < 0.0:
+		# A staggered blast card waits out its presentation delay hidden.
+		slot.node.hide()
+		return
+	slot.node.visible = true
 	slot.material.set_shader_parameter("phase", phase)
-	slot.material.set_shader_parameter("opacity", slot.opacity * pow(1.0-phase, 0.65))
-	var size: float = slot.size * (1.0 + phase*(1.8 if slot.kind == 10 else 0.35))
+	slot.material.set_shader_parameter("opacity", slot.opacity * pow(1.0-phase, float(slot.get("fade", 0.65))))
+	var size: float = slot.size * (1.0 + phase*float(slot.get("growth", 0.35)))
 	slot.node.scale = Vector3.ONE * size
 	if sheets.has(slot.sheet):
 		var sheet: Dictionary = sheets[slot.sheet]
@@ -485,6 +615,8 @@ func reset() -> void:
 	flashes = 0
 	tracer_count = 0
 	impacts = 0
+	blasts = 0
+	blast_shards = 0
 	rejected = 0
 	serial = 0
 	light_serial = 0

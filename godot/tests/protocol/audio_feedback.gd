@@ -102,6 +102,75 @@ func measure_weapons(feedback: Node) -> void:
 	check(feedback.synth_usec < 2000000, "bounded synthesis cost (%d usec)" % feedback.synth_usec)
 	print("AUDIO_SYNTH ", JSON.stringify({"usec":feedback.synth_usec,"sounds":feedback._sounds.size(),"samples":total_samples,"voices":voices}))
 
+## Alt-fire distinctness: the four projectile modes voice their own launch and
+## explosion cues and the six hitscan modes their own shot report. Every voice is
+## compared against its primary counterpart and against the other alts in the
+## same family by length, peak and RMS, stays inside the 0.65 peak contract, and
+## is deterministic. The lazy cache bound grows by exactly these voices.
+func measure_alt(feedback: Node) -> void:
+	var launches := {"cluster":1, "mortar":4, "mine":5, "bomb":7}
+	var shots := {"salvo":0, "overload":2, "slug":3, "chain":6, "double":8, "twin":9}
+	var rows: Array[Dictionary] = []
+	for alt_id: String in launches:
+		for cue: String in ["launch", "explosion"]:
+			var key: String = feedback._cue_key(cue, launches[alt_id], alt_id)
+			feedback._play_cue(cue, launches[alt_id], alt_id)
+			check(feedback._sounds.has(key), "alt voice cached: " + key)
+			check(key == "alt/%s/%s" % [alt_id, cue], "alt voice key names the mode: " + key)
+			rows.append({"cue":key, "id":alt_id, "weapon":launches[alt_id], "family":cue})
+	for alt_id: String in shots:
+		var key: String = feedback._cue_key("shot", shots[alt_id], alt_id)
+		feedback._play_cue("shot", shots[alt_id], alt_id)
+		check(feedback._sounds.has(key), "alt voice cached: " + key)
+		rows.append({"cue":key, "id":alt_id, "weapon":shots[alt_id], "family":"shot"})
+	for row: Dictionary in rows:
+		var sound: AudioStreamWAV = feedback._sounds[row.cue]
+		var data := stats(sound)
+		check(sound.format == AudioStreamWAV.FORMAT_16_BITS and not sound.stereo and sound.mix_rate == 22050, "alt PCM format " + row.cue)
+		check(sound.data.decode_s16(0) == 0 and sound.data.decode_s16(sound.data.size() - 2) == 0, "alt zero-ended waveform " + row.cue)
+		check(float(data.peak) > 0.40 and float(data.peak) <= 0.65, "alt audible non-clipping voice " + row.cue)
+		check(sound.get_length() > 0.10 and sound.get_length() <= 0.52, "alt bounded cue length " + row.cue)
+		row["seconds"] = sound.get_length()
+		row["peak"] = float(data.peak)
+		row["rms"] = float(data.rms)
+		row["zero_crossings"] = int(data.crossings)
+		voices.append({"cue":row.cue, "weapon":int(row.weapon), "seconds":sound.get_length(), "peak":float(data.peak), "rms":float(data.rms), "zero_crossings":int(data.crossings)})
+	check(feedback._sounds.size() == 2 + 10 * Feedback.WEAPON_CUES.size() + 1 + 14, "bounded cache with the base explosion and the fourteen alt voices")
+	var total := 0
+	for key: String in feedback._sounds: total += (feedback._sounds[key] as AudioStreamWAV).data.size() / 2
+	check(total < 400000, "bounded total cached PCM with alt voices (%d samples)" % total)
+	# Alt families must differ from each other and from their primary counterpart.
+	for row: Dictionary in rows:
+		var sound: AudioStreamWAV = feedback._sounds[row.cue]
+		var data := stats(sound)
+		# The actorless primary explosion shares one base key, not explosion/<weapon>.
+		var primary_key := "explosion" if row.family == "explosion" else "%s/%d" % [row.family, row.weapon]
+		var primary: AudioStreamWAV = feedback._sounds[primary_key]
+		var primary_data := stats(primary)
+		check(_differs(sound, data, primary, primary_data), "alt %s differs from primary %s" % [row.cue, primary_key])
+	for a: int in rows.size():
+		for b: int in range(a + 1, rows.size()):
+			if rows[a].family != rows[b].family: continue
+			var left: AudioStreamWAV = feedback._sounds[rows[a].cue]
+			var right: AudioStreamWAV = feedback._sounds[rows[b].cue]
+			check(_differs(left, stats(left), right, stats(right)), "alt voices differ %s vs %s" % [rows[a].cue, rows[b].cue])
+	# Unknown alt ids and missing alt flags never invent a voice.
+	var before: int = feedback._sounds.size()
+	feedback.apply_events([{"type":"launch","actor":0,"weapon":1,"altId":"cluster","pos":{"x":0,"y":0,"z":0}}], 0)
+	check(feedback._sounds.size() == before, "alt flag gates the alt voice")
+	feedback.apply_events([{"type":"launch","actor":0,"weapon":42,"alt":true,"altId":"not-a-voice","pos":{"x":0,"y":0,"z":0}}], 0)
+	check(not feedback._sounds.has("alt/not-a-voice/launch"), "unknown alt id falls back instead of caching")
+	# Deterministic synthesis for the alt tables too.
+	var first: AudioStreamWAV = feedback._make_sound("launch", feedback._cue_seconds("launch", 4, "mortar"), 4, "mortar")
+	var second: AudioStreamWAV = feedback._make_sound("launch", feedback._cue_seconds("launch", 4, "mortar"), 4, "mortar")
+	check(first.data == second.data, "alt synthesis is deterministic")
+	print("AUDIO_ALT ", JSON.stringify({"voices":rows,"cached":feedback._sounds.size(),"samples":total,"usec":feedback.synth_usec}))
+
+func _differs(left: AudioStreamWAV, left_stats: Dictionary, right: AudioStreamWAV, right_stats: Dictionary) -> bool:
+	return absf(left.get_length() - right.get_length()) > 0.004 \
+		or absf(float(left_stats.peak) - float(right_stats.peak)) > 0.004 \
+		or absf(float(left_stats.rms) - float(right_stats.rms)) > 0.004
+
 func run() -> void:
 	var feedback := Feedback.new()
 	root.add_child(feedback)
@@ -126,6 +195,7 @@ func run() -> void:
 	check(boom.get_length() > 0.3 and boom.get_length() <= 0.5, "explosion cue is beefed and still bounded")
 	check(float(boom_stats.peak) <= 0.65, "explosion stays under the peak contract")
 	print("AUDIO_EXPLOSION ", JSON.stringify({"seconds":boom.get_length(),"peak":float(boom_stats.peak),"rms":float(boom_stats.rms)}))
+	measure_alt(feedback)
 	feedback.clear_round()
 	var invalid: Array = [null, 0, "shot", {}, {"type":"shot"}, {"type":"shot","actor":null}, {"type":"shot","actor":false}, {"type":"shot","actor":"0"}, {"type":"shot","actor":0.5}, {"type":"shot","actor":INF}, {"type":"shot","actor":1}, {"type":"pickup","actor":1}, {"type":"damage","actor":1,"source":null,"amount":10}, {"type":"damage","actor":1,"source":"0","amount":10}, {"type":"damage","source":0,"amount":10}, {"type":"damage","actor":0,"amount":0}, {"type":"damage","actor":0,"amount":-1}, {"type":"damage","actor":0,"amount":"10"}, {"type":"damage","actor":0,"amount":NAN}]
 	feedback.apply_events(invalid, 0)
