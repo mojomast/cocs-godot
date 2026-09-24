@@ -1,0 +1,201 @@
+{
+  "scope": "Independent source ray audit: source vs Godot fixtures and prototype-exact vs simplified cover parity",
+  "eyeHeight": 1.6,
+  "jumpApex": 1.502436,
+  "maps": [
+    {
+      "id": "lacuna-court",
+      "geometryHash": "a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9",
+      "rays": 5211,
+      "checks": 5211,
+      "groups": {
+        "block-cover": {
+          "rays": 36,
+          "blockedSource": 36,
+          "blockedExact": 36,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 0,
+          "maxDistanceDelta": 1.15
+        },
+        "wall-face": {
+          "rays": 24,
+          "blockedSource": 24,
+          "blockedExact": 24,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 0,
+          "maxDistanceDelta": 0.68685
+        },
+        "route-floor": {
+          "rays": 66,
+          "blockedSource": 66,
+          "blockedExact": 66,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 0,
+          "maxDistanceDelta": 0
+        },
+        "sightline": {
+          "rays": 325,
+          "blockedSource": 177,
+          "blockedExact": 177,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 0,
+          "maxDistanceDelta": 0
+        },
+        "eye-grid": {
+          "rays": 4760,
+          "blockedSource": 2929,
+          "blockedExact": 2929,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 120,
+          "maxDistanceDelta": 0
+        }
+      },
+      "probes": {
+        "reachableBand": 12,
+        "covered": 12,
+        "misses": 0
+      },
+      "visibleChecks": 325,
+      "visibleMismatch": 0,
+      "reach": {
+        "maxFloorY": 1.5,
+        "jumpApex": 1.502436,
+        "eyeCeiling": 4.472436,
+        "excludedArtMinimumY": 0
+      }
+    },
+    {
+      "id": "vermilion-fold",
+      "geometryHash": "6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a",
+      "rays": 7878,
+      "checks": 13089,
+      "groups": {
+        "block-cover": {
+          "rays": 28,
+          "blockedSource": 28,
+          "blockedExact": 28,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 0,
+          "maxDistanceDelta": 0
+        },
+        "route-floor": {
+          "rays": 117,
+          "blockedSource": 117,
+          "blockedExact": 117,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 0,
+          "maxDistanceDelta": 0
+        },
+        "sightline": {
+          "rays": 893,
+          "blockedSource": 548,
+          "blockedExact": 548,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 0,
+          "maxDistanceDelta": 0
+        },
+        "eye-grid": {
+          "rays": 6840,
+          "blockedSource": 4382,
+          "blockedExact": 4382,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 228,
+          "maxDistanceDelta": 0
+        }
+      },
+      "probes": {
+        "reachableBand": 0,
+        "covered": 0,
+        "misses": 0
+      },
+      "visibleChecks": 893,
+      "visibleMismatch": 0,
+      "reach": {
+        "maxFloorY": 0,
+        "jumpApex": 1.502436,
+        "eyeCeiling": 2.972436,
+        "excludedArtMinimumY": 4
+      }
+    },
+    {
+      "id": "nacre-engine",
+      "geometryHash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
+      "rays": 6887,
+      "checks": 19976,
+      "groups": {
+        "block-cover": {
+          "rays": 22,
+          "blockedSource": 22,
+          "blockedExact": 22,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 0,
+          "maxDistanceDelta": 0
+        },
+        "wall-face": {
+          "rays": 252,
+          "blockedSource": 252,
+          "blockedExact": 217,
+          "classificationMismatch": 0,
+          "proxyDivergence": 35,
+          "grazing": 0,
+          "maxDistanceDelta": 0.75
+        },
+        "route-floor": {
+          "rays": 48,
+          "blockedSource": 48,
+          "blockedExact": 48,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 0,
+          "maxDistanceDelta": 0
+        },
+        "sightline": {
+          "rays": 325,
+          "blockedSource": 127,
+          "blockedExact": 127,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 0,
+          "maxDistanceDelta": 0
+        },
+        "eye-grid": {
+          "rays": 6240,
+          "blockedSource": 3551,
+          "blockedExact": 3551,
+          "classificationMismatch": 0,
+          "proxyDivergence": 0,
+          "grazing": 100,
+          "maxDistanceDelta": 0.01775
+        }
+      },
+      "probes": {
+        "reachableBand": 707,
+        "covered": 707,
+        "misses": 0
+      },
+      "visibleChecks": 325,
+      "visibleMismatch": 0,
+      "reach": {
+        "maxFloorY": 0,
+        "jumpApex": 1.502436,
+        "eyeCeiling": 2.972436,
+        "excludedArtMinimumY": 0
+      }
+    }
+  ],
+  "failures": [],
+  "startedAt": "2026-09-24T17:02:32.982Z",
+  "checks": 19976,
+  "elapsedMs": 378.4,
+  "passed": true
+}

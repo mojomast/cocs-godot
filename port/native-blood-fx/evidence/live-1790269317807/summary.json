@@ -1,0 +1,13 @@
+{
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "exit_code": null,
+  "status": "failed",
+  "failure_reason": "timeout",
+  "report": null,
+  "capture": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-blood-fx/evidence/live-1790269317807/live-native-dm.png",
+  "errors": false,
+  "budget_ms": 4000,
+  "message": "live blood check exceeded its 4000 ms budget",
+  "stdout_tail": "",
+  "stderr_tail": ""
+}

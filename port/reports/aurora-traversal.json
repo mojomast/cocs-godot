@@ -16,7 +16,7 @@
 	"mesh_vertices_checked": 119816,
 	"passed": true,
 	"resources": {
-		"build_ms": 73.002,
+		"build_ms": 71.191,
 		"collision_shapes": 206,
 		"invalid_transforms": 0,
 		"lights": 3,

@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: a success marker cannot hide a nonzero engine exit
+ok 1 - a success marker cannot hide a nonzero engine exit
+  ---
+  duration_ms: 716.556079
+  type: 'test'
+  ...
+# Subtest: a success marker cannot hide an engine runtime error
+ok 2 - a success marker cannot hide an engine runtime error
+  ---
+  duration_ms: 717.032311
+  type: 'test'
+  ...
+# Subtest: a budget that cannot beat the gate is refused before any process starts
+ok 3 - a budget that cannot beat the gate is refused before any process starts
+  ---
+  duration_ms: 612.831298
+  type: 'test'
+  ...
+# Subtest: a hung scene is bounded by the harness and leaves flushed evidence
+ok 4 - a hung scene is bounded by the harness and leaves flushed evidence
+  ---
+  duration_ms: 4705.031937
+  type: 'test'
+  ...
+# Subtest: a composition compile break is reported immediately instead of being spun on
+ok 5 - a composition compile break is reported immediately instead of being spun on
+  ---
+  duration_ms: 707.676568
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7493.534864

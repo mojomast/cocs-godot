@@ -2,27 +2,45 @@ TAP version 13
 # Subtest: Horde package route is local-only, fixed default and rejects ignored options
 ok 1 - Horde package route is local-only, fixed default and rejects ignored options
   ---
-  duration_ms: 4.499923
+  duration_ms: 1.250011
   type: 'test'
   ...
 # Subtest: package scene routing covers all nine locked identities and preserves native capability subsets
 ok 2 - package scene routing covers all nine locked identities and preserves native capability subsets
   ---
-  duration_ms: 0.855612
+  duration_ms: 0.631183
   type: 'test'
   ...
 # Subtest: bad package arguments fail before opening an owned server; no silent scene/mode fallback
 ok 3 - bad package arguments fail before opening an owned server; no silent scene/mode fallback
   ---
-  duration_ms: 1.329299
+  duration_ms: 1.300546
   type: 'test'
   ...
-1..3
-# tests 3
+# Subtest: menu, viewer and operator-preview are parameterless special cases
+ok 4 - menu, viewer and operator-preview are parameterless special cases
+  ---
+  duration_ms: 1.066307
+  type: 'test'
+  ...
+# Subtest: --debug-panel is accepted only by combat, horde, native-dm and identity-zones
+ok 5 - --debug-panel is accepted only by combat, horde, native-dm and identity-zones
+  ---
+  duration_ms: 0.407513
+  type: 'test'
+  ...
+# Subtest: --waves is a horde-only reviewed 1..30 value, forwarded when supplied
+ok 6 - --waves is a horde-only reviewed 1..30 value, forwarded when supplied
+  ---
+  duration_ms: 0.339415
+  type: 'test'
+  ...
+1..6
+# tests 6
 # suites 0
-# pass 3
+# pass 6
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 58.683765
+# duration_ms 38.141406

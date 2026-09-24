@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: host proves first: it holds until the delayed guest finishes, then both are released cleanly
+ok 1 - host proves first: it holds until the delayed guest finishes, then both are released cleanly
+  ---
+  duration_ms: 1419.752435
+  type: 'test'
+  ...
+# Subtest: guest proves first: the host is not evacuated while it finishes its own proof
+ok 2 - guest proves first: the host is not evacuated while it finishes its own proof
+  ---
+  duration_ms: 1406.94071
+  type: 'test'
+  ...
+# Subtest: the native client implements the hold/release handshake instead of quitting after its proof
+ok 3 - the native client implements the hold/release handshake instead of quitting after its proof
+  ---
+  duration_ms: 0.389469
+  type: 'test'
+  ...
+# Subtest: a client that stops right after its own proof fails the run closed
+ok 4 - a client that stops right after its own proof fails the run closed
+  ---
+  duration_ms: 1198.129939
+  type: 'test'
+  ...
+# Subtest: a client that never reports fails the run closed and is reaped
+ok 5 - a client that never reports fails the run closed and is reaped
+  ---
+  duration_ms: 4650.367684
+  type: 'test'
+  ...
+# Subtest: a wrong identity payload still fails the run (the barrier never replaces the identity proof)
+ok 6 - a wrong identity payload still fails the run (the barrier never replaces the identity proof)
+  ---
+  duration_ms: 693.479458
+  type: 'test'
+  ...
+# Subtest: a harness force-killed by the test bound still leaves no orphan client or temp dir
+ok 7 - a harness force-killed by the test bound still leaves no orphan client or temp dir
+  ---
+  duration_ms: 5577.009771
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14978.04217

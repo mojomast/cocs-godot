@@ -2,25 +2,25 @@ TAP version 13
 # Subtest: Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
 ok 1 - Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
   ---
-  duration_ms: 48.425441
+  duration_ms: 41.073819
   type: 'test'
   ...
 # Subtest: Identity zone SYNTHETIC closure keeps Domination adapters explicit and separate from locked source
 ok 2 - Identity zone SYNTHETIC closure keeps Domination adapters explicit and separate from locked source
   ---
-  duration_ms: 20.942695
+  duration_ms: 22.380868
   type: 'test'
   ...
 # Subtest: Identity zone SYNTHETIC closure rejects unreviewed route helpers
 ok 3 - Identity zone SYNTHETIC closure rejects unreviewed route helpers
   ---
-  duration_ms: 24.111055
+  duration_ms: 19.446553
   type: 'test'
   ...
 # Subtest: Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules
 ok 4 - Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules
   ---
-  duration_ms: 198.073801
+  duration_ms: 197.274323
   type: 'test'
   ...
 1..4
@@ -31,4 +31,4 @@ ok 4 - Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, 
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 328.433934
+# duration_ms 313.485961

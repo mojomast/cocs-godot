@@ -1,0 +1,5 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+LOADOUT_LOBBY_GEOMETRY (960, 640) panel=(700.0, 608.0) position=(130.0, 16.0)
+LOADOUT_LOBBY_GEOMETRY (1280, 800) panel=(700.0, 768.0) position=(290.0, 16.0)
+PORT_LOADOUT_LOBBY_OK checks=36 failures=0

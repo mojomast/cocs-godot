@@ -1,7 +1,7 @@
-Owned local server ready at ws://127.0.0.1:38689; --session-smoke
+Owned local server ready at ws://127.0.0.1:38069; --session-smoke
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 PORT_OPERATOR_MODEL res://source_operators/operator_visual.gd
-PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true fired=true ack=11 snapshots=9 remote_poses=50 pickups=20 static_pickups_hidden=true combat_shots=1 combat_launches=0 local_launches=0 map=meridian-exchange mode=deathmatch
+PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true fired=true ack=11 snapshots=9 remote_poses=48 pickups=20 static_pickups_hidden=true combat_shots=1 combat_launches=0 local_launches=0 map=meridian-exchange mode=deathmatch
 WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
      at: cleanup (core/object/object.cpp:2514)

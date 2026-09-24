@@ -1,0 +1,13 @@
+{
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "exit_code": null,
+  "status": "failed",
+  "failure_reason": "compile-error",
+  "report": null,
+  "capture": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-blood-fx/evidence/live-1790269322516/live-native-dm.png",
+  "errors": true,
+  "budget_ms": 20000,
+  "message": "native arena composition failed to compile",
+  "stdout_tail": "",
+  "stderr_tail": "SCRIPT ERROR: Parse Error: The function signature does not match the parent.\nERROR: Failed to load script \"res://native_arenas/demo.gd\" with error \"Compilation failed\".\n"
+}

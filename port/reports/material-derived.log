@@ -2,25 +2,25 @@ TAP version 13
 # Subtest: derivation is deterministic, byte-identical across runs and to the committed bucket
 ok 1 - derivation is deterministic, byte-identical across runs and to the committed bucket
   ---
-  duration_ms: 185.790081
+  duration_ms: 199.303995
   type: 'test'
   ...
 # Subtest: derived bucket stays outside the 101-plane inventory and every derived plane is well formed
 ok 2 - derived bucket stays outside the 101-plane inventory and every derived plane is well formed
   ---
-  duration_ms: 8.694249
+  duration_ms: 10.470511
   type: 'test'
   ...
 # Subtest: derived PNG import policy is lossless, mipmapped and never auto-compressed for 3D
 ok 3 - derived PNG import policy is lossless, mipmapped and never auto-compressed for 3D
   ---
-  duration_ms: 2.04431
+  duration_ms: 2.809502
   type: 'test'
   ...
 # Subtest: a missing derived bucket is not fatal for the library path
 ok 4 - a missing derived bucket is not fatal for the library path
   ---
-  duration_ms: 0.544651
+  duration_ms: 0.650208
   type: 'test'
   ...
 1..4
@@ -31,4 +31,4 @@ ok 4 - a missing derived bucket is not fatal for the library path
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 242.982713
+# duration_ms 256.712938

@@ -1,0 +1,14 @@
+[host] PORT_LOADOUT_LIVE_UI host role_selected=0 op=grok harness=cline room=
+[host] PORT_LOADOUT_ROOM 3WRB
+[guest] PORT_LOADOUT_LIVE_UI guest role_selected=1 op=deepseek harness=hermes room=3WRB
+[guest] PORT_LOADOUT_ROOM 3WRB
+[host] PORT_LOADOUT_LIVE_START_UI visible=true disabled=false rect=[P: (306.0, 732.0), S: (331.0, 36.0)] panel=[P: (290.0, 16.0), S: (700.0, 768.0)] viewport=(1280.0, 800.0) phase=12
+[host] PORT_LOADOUT_LIVE_START_AFTER phase=20 label=Connecting to isolated Node authority…
+[guest] PORT_LOADOUT_LIVE_OK {"actor_id":1,"health":126.0,"peer_actor_id":0,"peer_id":2,"peer_peer_id":1,"peer_requested":{"character":"grok","harness":"cline"},"requested":{"character":"deepseek","harness":"hermes"},"role":"guest","room":"3WRB","seated":2,"snapshot_peer":"grok/cline","snapshot_self":"deepseek/hermes"}
+[guest] PORT_LOADOUT_LIVE_HELD guest release_file=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/.port-runtime/loadouts/release-2353024-guest-1.flag
+[host] PORT_LOADOUT_LIVE_OK {"actor_id":0,"health":110.0,"peer_actor_id":1,"peer_id":1,"peer_peer_id":2,"peer_requested":{"character":"deepseek","harness":"hermes"},"requested":{"character":"grok","harness":"cline"},"role":"host","room":"3WRB","seated":2,"snapshot_peer":"deepseek/hermes","snapshot_self":"grok/cline"}
+[host] PORT_LOADOUT_LIVE_HELD host release_file=/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/.port-runtime/loadouts/release-2353024-host-0.flag
+[guest] PORT_LOADOUT_LIVE_RELEASED guest
+[host] PORT_LOADOUT_LIVE_RELEASED host
+PORT_LOADOUT_BARRIER released host=0 guest=0
+PORT_LOADOUT_LOOPBACK_OK {"clock":"loopback only, normal server rate","host":{"actor_id":0,"health":110,"peer_actor_id":1,"peer_id":1,"peer_peer_id":2,"peer_requested":{"character":"deepseek","harness":"hermes"},"requested":{"character":"grok","harness":"cline"},"role":"host","room":"3WRB","seated":2,"snapshot_peer":"deepseek/hermes","snapshot_self":"grok/cline"},"guest":{"actor_id":1,"health":126,"peer_actor_id":0,"peer_id":2,"peer_peer_id":1,"peer_requested":{"character":"grok","harness":"cline"},"requested":{"character":"deepseek","harness":"hermes"},"role":"guest","room":"3WRB","seated":2,"snapshot_peer":"grok/cline","snapshot_self":"deepseek/hermes"}}

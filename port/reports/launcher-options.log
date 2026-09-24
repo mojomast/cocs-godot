@@ -2,51 +2,57 @@ TAP version 13
 # Subtest: Horde is default-ten-wave local-only and refuses unsupported or ignored controls
 ok 1 - Horde is default-ten-wave local-only and refuses unsupported or ignored controls
   ---
-  duration_ms: 2.313
+  duration_ms: 1.307869
   type: 'test'
   ...
 # Subtest: existing viewer, combat setup and smoke routes stay compatible
 ok 2 - existing viewer, combat setup and smoke routes stay compatible
   ---
-  duration_ms: 0.39013
+  duration_ms: 0.364433
   type: 'test'
   ...
 # Subtest: each standalone map/mode reaches its actual scene and locked identity
 ok 3 - each standalone map/mode reaches its actual scene and locked identity
   ---
-  duration_ms: 0.932566
+  duration_ms: 0.568554
   type: 'test'
   ...
 # Subtest: standalone selection rejects substitutions, unsupported modes and ignored options
 ok 4 - standalone selection rejects substitutions, unsupported modes and ignored options
   ---
-  duration_ms: 1.419106
+  duration_ms: 1.004742
   type: 'test'
   ...
 # Subtest: sports round options preserve legal ordinary configuration without silent clamping
 ok 5 - sports round options preserve legal ordinary configuration without silent clamping
   ---
-  duration_ms: 0.51323
+  duration_ms: 0.401902
+  type: 'test'
+  ...
+# Subtest: dev menu route opens the main menu scene without authority; no-arg default stays the viewer
+ok 6 - dev menu route opens the main menu scene without authority; no-arg default stays the viewer
+  ---
+  duration_ms: 0.247644
   type: 'test'
   ...
 # Subtest: world traversal and command board remain distinct native scenes
-ok 6 - world traversal and command board remain distinct native scenes
+ok 7 - world traversal and command board remain distinct native scenes
   ---
-  duration_ms: 0.25647
+  duration_ms: 0.113303
   type: 'test'
   ...
 # Subtest: identity-zones routes Domination on Vermilion Fold only
-ok 7 - identity-zones routes Domination on Vermilion Fold only
+ok 8 - identity-zones routes Domination on Vermilion Fold only
   ---
-  duration_ms: 0.41624
+  duration_ms: 0.285825
   type: 'test'
   ...
-1..7
-# tests 7
+1..8
+# tests 8
 # suites 0
-# pass 7
+# pass 8
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 65.704418
+# duration_ms 42.875042

@@ -1,0 +1,10 @@
+{
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "exit_code": 9,
+  "status": "failed",
+  "failure_reason": "nonzero-exit",
+  "report": {},
+  "capture": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port/port/native-blood-fx/evidence/live-1790269315766/live-native-dm.png",
+  "errors": false,
+  "budget_ms": 150000
+}

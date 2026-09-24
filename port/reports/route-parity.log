@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: routes.json regeneration is idempotent (gen_routes --check)
+ok 1 - routes.json regeneration is idempotent (gen_routes --check)
+  ---
+  duration_ms: 22.49436
+  type: 'test'
+  ...
+# Subtest: registry declares exactly the 22 SPEC routes and covers every experience
+ok 2 - registry declares exactly the 22 SPEC routes and covers every experience
+  ---
+  duration_ms: 0.634498
+  type: 'test'
+  ...
+# Subtest: every route argv (defaults, min and max variants) parses through options()
+ok 3 - every route argv (defaults, min and max variants) parses through options()
+  ---
+  duration_ms: 2.596733
+  type: 'test'
+  ...
+# Subtest: batch wrappers only launch experiences the menu can reach
+ok 4 - batch wrappers only launch experiences the menu can reach
+  ---
+  duration_ms: 0.465051
+  type: 'test'
+  ...
+# Subtest: debug-panel flags: never lobby, only cheats rows in the registry
+ok 5 - debug-panel flags: never lobby, only cheats rows in the registry
+  ---
+  duration_ms: 0.102262
+  type: 'test'
+  ...
+# Subtest: build.py and export_presets.cfg ship ui/*.json through the include filter
+ok 6 - build.py and export_presets.cfg ship ui/*.json through the include filter
+  ---
+  duration_ms: 0.156223
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 60.146241
