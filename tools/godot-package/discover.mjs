@@ -43,9 +43,9 @@ function discover(entry) {
     // Conservative review tripwire, including comments: computed/runtime module
     // loading is outside this static closure contract. Never silently omit it.
     if (/\b(?:import|require|eval|Function)\s*\(|\bcreateRequire\b/.test(source)) throw Error(`Review runtime loading in ${path}`);
-    const module = new SourceTextModule(source, {identifier:path});
-    modules[path] = [...module.dependencySpecifiers];
-    for (const spec of module.dependencySpecifiers) {
+    const parsedModule = new SourceTextModule(source, {identifier:path});
+    modules[path] = [...parsedModule.dependencySpecifiers];
+    for (const spec of parsedModule.dependencySpecifiers) {
       if (spec.startsWith('.')) pending.push(relative(root, resolve(root, dirname(path), spec)));
       else if (!isBuiltin(spec)) external.add(spec);
     }
