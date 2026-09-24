@@ -33,10 +33,13 @@ hash-verified but have **no gameplay consumer** yet.
 Audit (rerunnable offline): `node tools/godot-moth/uniqueness.mjs [dir]` reports
 pairwise low-frequency correlation (what reads as "the same bump") plus each
 plane's structure energy. Finding on the shipped baked normals: 13 planes,
-median pair similarity **0.567**, **six pairs above 0.90 (up to 1.000)** — every
-normal job submits the same statistics (`style: xy`, `strength: 0.25–0.55`, no
-`generateValues`) and differs only by seed, so the engine returns one noise class
-thirteen times. The baked pixels are source-locked here; fixing them needs an
+median pair similarity **0.567**, **six pairs above 0.90 (up to 1.000)**. The
+jobs are not missing seeds: each carries its own `generateValues` height grid
+(seeds 11–113, `kind` noise/ridge/cells) and a recorded `jobId`, yet the shipped
+normals still read as one noise class. The flattening happens downstream — weak
+`params.strength` (0.25–0.55) over a blurred 64 px grid, a 32 px output, and
+blur-core’s smoothed character — so the next relief has to be stronger, not
+merely re-seeded. The baked pixels are source-locked here; fixing them needs an
 upstream re-bake (proposal below). The port therefore rebinds the families whose
 own albedo carries real structure to **derived** normals:
 
@@ -67,11 +70,15 @@ anisotropic kernels (`radius: {x, y}`) so cracks and streaks read directionally,
 and the gallery shows the before/after sheets.
 
 **Re-bake proposal (upstream `assets/moth/manifest.json`, needs credits and the
-source lock advanced).** The generator now supports distinct reliefs per job
-(`freq`, `octaves`, `angle`, `anisotropy`, seeded `cells` — every default
-reproduces the old output). Suggested `generateValues` per normal job:
+source lock advanced).** Run it from a separate upstream branch with the API key,
+then advance the pin. The jobs already carry distinct seeds and kinds; this pass
+replaces their `generateValues` with structurally different relief **and** raises
+the amplitude (`params.strength` toward ~0.8–1.2, `bake.size` 32 → 64). The
+generator supports the richer knobs (`freq`, `octaves`, `angle`, `anisotropy`,
+seeded `cells`; every default reproduces the old output). Suggested per-job
+settings:
 
-| job | generateValues | reads as |
+| job | new generateValues | reads as |
 | --- | --- | --- |
 | normal-rock | `{type:'height', kind:'ridge', seed:11, freq:5, octaves:6}` | ridged strata |
 | normal-ice | `{type:'height', kind:'cells', seed:23, freq:3}` | fracture lattice |
@@ -90,7 +97,8 @@ reproduces the old output). Suggested `generateValues` per normal job:
 Only quarter turns (0 / ±PI/2): other rotations seam at the tile wrap (measured wrap gradient 2.6–3.1× the interior), so the proposal sticks to exact quarter turns; integer-frequency directionality would be the seamless way to get diagonals if a future bake needs them.
 
 Then `MOTH_API_KEY=... node scripts/moth-bake.mjs run --only normal-rock …`
-(or a full `run`), re-export, and re-run the audit — expect zero pairs >0.90.
+(or a full `run`), re-export, and re-run the audit — expect zero pairs >0.90. If a
+job still lands flat, raise its `strength`/`reach` before spending more credits.
 
 ### Provenance tables
 

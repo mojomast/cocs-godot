@@ -660,3 +660,14 @@ before/after, proving the copy method changes nothing else; changed-pixel deltas
 pearl-ceramic 9.72%, oxidised-copper 12.73%, brushed-alloy 3.98%, regolith 2.58%,
 enamel-glaze 0.88%. `bioluminescent-membrane` is pixel-identical in this view (panel
 shows sorted variants[1] = fringe + default; only `matrix` was rebound).
+
+### Correction (2026-09-24, caught while wiring the API key)
+
+The uniqueness entry above states the normal jobs submit "no generateValues".
+That is wrong. Each of the 13 normal jobs already carries a distinct
+`generateValues` height grid (seeds 11-113; kinds noise/ridge/cells) and a
+recorded jobId. The measured similarity (median 0.567, six pairs above 0.90)
+stands; what flattens the relief is the engine/bake settings - weak
+`params.strength` (0.25-0.55) over a blurred 64 px grid, a 32 px output, and
+blur-core's smoothed character. The re-bake proposal is therefore reframed as
+stronger per-job settings (amplitude up, output 64 px), not more seeds.
