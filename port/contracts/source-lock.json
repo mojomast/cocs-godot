@@ -3,7 +3,7 @@
   "repository": "mojomast/cocs",
   "audit_base_commit": "e79fcc048d7d97e7418d2e6fdbdd304b69362fa0",
   "source_branch": "main",
-  "source_commit": "6342c26c697ca346bd4f28f697d2d8abef6e1fe3",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
   "comparison_base_commit": "6b6368b16d9c17ef57f2d26792703a70427c5a32",
   "audited_lineage_merge_base": "e79fcc048d7d97e7418d2e6fdbdd304b69362fa0",
   "selection_status": "selected_v8.8_destinations",

@@ -2,7 +2,7 @@
   "version": 1,
   "provenance": {
     "source": "game/moth-baked.mjs",
-    "source_sha256": "80dc8c0eb1ea8d78ce91b5775a0cb2cf71f549b4b63384a11290f389d20f3eb6",
+    "source_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
     "baked_version": 2,
     "exporter": "tools/godot-moth/export.mjs",
     "rights": "Unresolved; see port/asset-audit/HANDOFF.md. Conversion is not clearance."
@@ -322,133 +322,133 @@
   "normals": {
     "corrugated_metal": {
       "path": "res://moth/generated/normals/corrugated_metal.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "75a7e28414ad20bc887994534526d21190a0310033f2155a6c1534f4cdafce2b",
-      "png_sha256": "02ec3b06ce0ccba6761a45f4e9b158c5d5aab53de5d429279ee9cd3e592aa666"
+      "pixel_sha256": "99a3c61a14ab410fd57b9e03bc94f367315495bf83ce64e36d0ce294d6ed44b0",
+      "png_sha256": "46d30a4ef86517df5dd02a1da92582e2458a7e8cbe3ab1495fb0b4e05e94f44f"
     },
     "diamond_plate": {
       "path": "res://moth/generated/normals/diamond_plate.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "bc30f5289d5514ca98840d031937dba904682d6f514d4afa857a173e4b18ddfb",
-      "png_sha256": "a5e7278ae283da8f879e9393ffc16179385bad12c31f876327e8ba0eacc6e106"
+      "pixel_sha256": "b32847661ab9a8e3e85aed8eed4ee722176792012a5f50dc4b523551c2fb196c",
+      "png_sha256": "30aac41aceeb8da141c6b94b6d7d464bc0fde3301ebbd2c7c7420de7efc169f5"
     },
     "grass": {
       "path": "res://moth/generated/normals/grass.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "8ecc3f3c5e926640fc39a49b5ab2d22ba15bf032eb7245cf50ca2976a3c8fac2",
-      "png_sha256": "788b9d3a410db0afdb0b730d7017d2eaed1e72cbcfc7c48e32411de620886a7b"
+      "pixel_sha256": "9dcfbc124f59c1fcb91a1aaeb626d1685fb03224e5ca59afebd20be1529cae41",
+      "png_sha256": "75a3351ecf362141f4bcbf4c5fbcee8ecea908a7e08f6d852cf769791dc00b57"
     },
     "hazard_stripes": {
       "path": "res://moth/generated/normals/hazard_stripes.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "f52e1f66e878e66909a31ccba17e19a57089640a57bda17356f61365da0bcf8a",
-      "png_sha256": "1378386bfb3db7afb9abf1ffe920ad5745d8080423dc863d4b7c86acf12a15b1"
+      "pixel_sha256": "1aa9fe6faa1ba980b3ae5fcb8c27e96f963be57d8d990950362afd96b26d1809",
+      "png_sha256": "2471d7eea4463dccfd123d066931f425c0189bd464c72d0f6aadfdc9a15cc4e0"
     },
     "hex_paneling": {
       "path": "res://moth/generated/normals/hex_paneling.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "bc30f5289d5514ca98840d031937dba904682d6f514d4afa857a173e4b18ddfb",
-      "png_sha256": "a5e7278ae283da8f879e9393ffc16179385bad12c31f876327e8ba0eacc6e106"
+      "pixel_sha256": "f67686e348860edeec6cf7b27cbb7f875bdb1fa659ad584a83e836be8a8cfb93",
+      "png_sha256": "81b507c81ab04f7cdf4c28acfb51e0fabe2c384192667bcb964b099394fd4971"
     },
     "holographic_grid": {
       "path": "res://moth/generated/normals/holographic_grid.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "feaa0ff2ea7e1679b43ca7ed94f8092ec5798f50e7a5e70eefe9ba45645d0f87",
-      "png_sha256": "5f690df0c385963f5116129d0098b6b5e07d03586467a86ea8c59e4e6ba6a634"
+      "pixel_sha256": "270478a8f22a2de74d26042e55509e524a9bb725666283877c733518a506d9b1",
+      "png_sha256": "7a98e3381f06b33e589ec97ab23a5cf9eac56ddd3508d75553e139a19425d4dd"
     },
     "ice": {
       "path": "res://moth/generated/normals/ice.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "d778d18e53f50620d7ad265e4ff348eeb399c13e8de77a2609a4a725757e9f7c",
-      "png_sha256": "ec3b44f1d4c1fe8bf98f5b4d6271625d2b6adf36576992048f577cc0343d507f"
+      "pixel_sha256": "a3800b02ca7d7dea887f1f698fb1751d8d4576852438327ec06250f15ab37d45",
+      "png_sha256": "275e0ba08721a168c979bcdfbe9e752177754b89c614c17bc0b17b4d9ea5b360"
     },
     "metal": {
       "path": "res://moth/generated/normals/metal.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "85d4fefb9f18cb24db0d423c8104f7ff38abdb85eee9e75ec44a5fe0febb3463",
-      "png_sha256": "8b38d1a9fc8452f6e7704640ea3b428d6981f3c9fff83803a60ddcaf8c081505"
+      "pixel_sha256": "3ef0bfa1dab72e72593a3150e98aa174b2e315675109e3c52b97a6992b22db38",
+      "png_sha256": "0d10999c28fa55b0b37bbbd0bae4849a95835b01e6bd72e9148a5c9c53cf9341"
     },
     "metal_grating": {
       "path": "res://moth/generated/normals/metal_grating.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "5967211ea2966e77a017076679d4c9c5931d69cd57b3c6b165f56fec76261aad",
-      "png_sha256": "368eba4fe09e99b69789a6ebf990ab92d4b1405c57b61114e5a4294aa8329b4d"
+      "pixel_sha256": "0d7f6acc3c29ac809207d151a6795c3865302b65a42337d599dfed34a67c1211",
+      "png_sha256": "5b94f5752825c933dd832a08e64102889961b6e783a1e414ec06ad2112d17968"
     },
     "rock": {
       "path": "res://moth/generated/normals/rock.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "7982dda9905e56313839d1dc620b03fb7fcabbe8aa53b5de19a966d0f4e5137b",
-      "png_sha256": "42054e8e6ed44f3664289ee15df50b3d7ef682236905c7d7c3a17093d47822cb"
+      "pixel_sha256": "4d8b1e60c0d991824b44327953bf793961affcaed24cae1d92509847b7b7dbcb",
+      "png_sha256": "47523f76a4c62a937965cef38511f7743df4bc825f9acb5a30d0435701d4a849"
     },
     "rough_stucco": {
       "path": "res://moth/generated/normals/rough_stucco.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "807e9d8e801b2ba2f071b81f610c499eb02d713bd70241b6bc1fec8f9c730294",
-      "png_sha256": "7a47c5852180321e84994c1c3e615dce7daff239be3bb84fb0835f21c066c133"
+      "pixel_sha256": "34c21fbbd9da170db7611bd7d5c270911d49f6e1f20dd5f4ea5aed6fda957887",
+      "png_sha256": "cc50ea2eb02cf3c027dee95231c81f3fb6f51581d99fb21a186c59bdedad12bf"
     },
     "sand": {
       "path": "res://moth/generated/normals/sand.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "aadcf8ab76c3a47caf1350f30ee47beb4998678af9cfcd32960c89a84fc8000f",
-      "png_sha256": "28c2411b535ffc028925955844768cd8405b9ec83c3480bb8286b5b724b01f87"
+      "pixel_sha256": "907965bb87a77024c0be1f6ab3549ffef88a2a1b8756b585b121ede185aa1388",
+      "png_sha256": "f18caa13e18e025fffe0652a15746fb61a0f3ef7f6518dee34d40f56772893e0"
     },
     "weathered_concrete": {
       "path": "res://moth/generated/normals/weathered_concrete.png",
-      "width": 32,
-      "height": 32,
+      "width": 64,
+      "height": 64,
       "channels": 4,
       "color_space": "linear",
       "alpha": "straight",
-      "pixel_sha256": "9c12daa4b2349823d32178ad65d94f9dfc7a53d55db070cd13985312503fdf4f",
-      "png_sha256": "aba8343349ed69036b25b165ce2eb05d5a66fc1dd5254fac0aaab5783e5a81d4"
+      "pixel_sha256": "c32c34a78d496037cf773bf7b0dbafd484918214cca0b99b4f1cf452604fc1bb",
+      "png_sha256": "97343f9f55fe9e00421cb91b754a0d7c564e2a4ac7a9edcd60d6226f106c210c"
     }
   },
   "sky": {

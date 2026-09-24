@@ -4,7 +4,7 @@
     "tool": "tools/godot-moth/derive.mjs",
     "tool_sha256": "cc9786dca0f066efbcecce1ad9a1b7f808403e4e2e681e9e0d37e3912ff5375b",
     "source_manifest": "godot/moth/generated/manifest.json",
-    "source_manifest_sha256": "f3f97a24e142229e48a58a91d162298b8ca7b945adba46a8a917c5d926f0b323",
+    "source_manifest_sha256": "c5589ff2f2ab68d982b2bb45c221c08d8e3f653953e5d5d446bfa4cd68380047",
     "source_bake": "game/moth-baked.mjs",
     "derived_version": 1,
     "encoder": "tools/godot-moth/export.mjs encodePng (untagged linear, deflate level 9)",
@@ -16,140 +16,140 @@
     "positive_sign": {
       "samples": {
         "rock": {
-          "normal_x": 0.2774,
-          "normal_y": 0.2688,
+          "normal_x": -0.0078,
+          "normal_y": 0.5576,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.0293,
+          "mean_magnitude_baked": 0.2656,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "sand": {
-          "normal_x": 0.0067,
-          "normal_y": 0.0689,
+          "normal_x": 0.0304,
+          "normal_y": 0.035,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.1973,
+          "mean_magnitude_baked": 0.1625,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "metal": {
-          "normal_x": -0.13,
-          "normal_y": -0.1178,
+          "normal_x": 0.0252,
+          "normal_y": -0.0062,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.0353,
+          "mean_magnitude_baked": 0.2607,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "weathered_concrete": {
-          "normal_x": -0.0945,
-          "normal_y": 0.0021,
+          "normal_x": -0.0091,
+          "normal_y": 0.0024,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.0495,
+          "mean_magnitude_baked": 0.1591,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "hex_paneling": {
-          "normal_x": -0.0421,
-          "normal_y": -0.0438,
+          "normal_x": 0.1217,
+          "normal_y": 0.123,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.014,
+          "mean_magnitude_baked": 0.2073,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "hazard_stripes": {
-          "normal_x": 0.0552,
-          "normal_y": 0.067,
+          "normal_x": -0.0317,
+          "normal_y": -0.0049,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.019,
+          "mean_magnitude_baked": 0.239,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "ice": {
-          "normal_x": 0.2254,
-          "normal_y": 0.2175,
+          "normal_x": 0.4625,
+          "normal_y": 0.5035,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.012,
+          "mean_magnitude_baked": 0.1882,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "grass": {
-          "normal_x": 0.0109,
-          "normal_y": 0.0432,
+          "normal_x": -0.019,
+          "normal_y": -0.0413,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.0291,
+          "mean_magnitude_baked": 0.2051,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         }
       },
-      "mean_correlation": 0.0509
+      "mean_correlation": 0.1088
     },
     "negative_sign": {
       "samples": {
         "rock": {
-          "normal_x": 0.2774,
-          "normal_y": -0.2688,
+          "normal_x": -0.0078,
+          "normal_y": -0.5576,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.0293,
+          "mean_magnitude_baked": 0.2656,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "sand": {
-          "normal_x": 0.0067,
-          "normal_y": -0.0689,
+          "normal_x": 0.0304,
+          "normal_y": -0.035,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.1973,
+          "mean_magnitude_baked": 0.1625,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "metal": {
-          "normal_x": -0.13,
-          "normal_y": 0.1178,
+          "normal_x": 0.0252,
+          "normal_y": 0.0062,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.0353,
+          "mean_magnitude_baked": 0.2607,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "weathered_concrete": {
-          "normal_x": -0.0945,
-          "normal_y": -0.0021,
+          "normal_x": -0.0091,
+          "normal_y": -0.0024,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.0495,
+          "mean_magnitude_baked": 0.1591,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "hex_paneling": {
-          "normal_x": -0.0421,
-          "normal_y": 0.0438,
+          "normal_x": 0.1217,
+          "normal_y": -0.123,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.014,
+          "mean_magnitude_baked": 0.2073,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "hazard_stripes": {
-          "normal_x": 0.0552,
-          "normal_y": -0.067,
+          "normal_x": -0.0317,
+          "normal_y": 0.0049,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.019,
+          "mean_magnitude_baked": 0.239,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "ice": {
-          "normal_x": 0.2254,
-          "normal_y": -0.2175,
+          "normal_x": 0.4625,
+          "normal_y": -0.5035,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.012,
+          "mean_magnitude_baked": 0.1882,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         },
         "grass": {
-          "normal_x": 0.0109,
-          "normal_y": -0.0432,
+          "normal_x": -0.019,
+          "normal_y": 0.0413,
           "mean_magnitude_derived": 0.25,
-          "mean_magnitude_baked": 0.0291,
+          "mean_magnitude_baked": 0.2051,
           "height_mode": "luminance",
-          "pixels": 1024
+          "pixels": 4096
         }
       },
-      "mean_correlation": -0.0123
+      "mean_correlation": -0.0373
     },
     "method": "pearson correlation of derived vs baked normal X/Y at baked resolution across calibration keys",
     "caveat": "baked normals are sparse and 8-bit quantised, so correlations are weak; the sign choice only fixes texture-space orientation"
