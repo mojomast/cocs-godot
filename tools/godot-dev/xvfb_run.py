@@ -18,10 +18,11 @@ display. No dependency on the ``xvfb-run`` shell helper.
 Usage: python3 tools/godot-dev/xvfb_run.py <command> [args...]
 """
 import os
+import ctypes
 import select
-import socket
 import subprocess
 import sys
+import time
 
 
 def start_server(prefer_unix: bool):
@@ -49,31 +50,39 @@ def start_server(prefer_unix: bool):
         process.wait()
         return None, f"unexpected display number {number!r}", None
     display = ":" + number if prefer_unix else "localhost:" + number
-    if not _reachable(process, int(number), prefer_unix):
+    if not _reachable(process, display):
         process.terminate()
         try:
             process.wait(timeout=10)
         except subprocess.TimeoutExpired:
             process.kill()
             process.wait()
-        return None, "display not reachable after startup", None
+        return None, "display did not accept an X11 client after startup", None
     return process, display, {**os.environ, "DISPLAY": display}
 
 
-def _reachable(process, number: int, unix: bool) -> bool:
-    if process.poll() is not None:
-        return False
-    if unix:
-        return os.path.exists(f"/tmp/.X11-unix/X{number}")
-    connection = socket.socket()
-    connection.settimeout(3)
+def _reachable(process, display: str) -> bool:
+    # A Unix socket path (or an open TCP port) is not proof that the server is
+    # ready for Godot. On fresh CI runners the first rendered benchmark has
+    # occasionally reached that path before Xvfb accepted an X11 client, while
+    # the following run succeeded. Probe the same XOpenDisplay handshake that
+    # the game needs, with a short bound and without another rendering process.
     try:
-        connection.connect(("127.0.0.1", 6000 + number))
-        return True
+        x11 = ctypes.CDLL("libX11.so.6")
     except OSError:
         return False
-    finally:
-        connection.close()
+    x11.XOpenDisplay.argtypes = [ctypes.c_char_p]
+    x11.XOpenDisplay.restype = ctypes.c_void_p
+    x11.XCloseDisplay.argtypes = [ctypes.c_void_p]
+    x11.XCloseDisplay.restype = ctypes.c_int
+    deadline = time.monotonic() + 3.0
+    while process.poll() is None and time.monotonic() < deadline:
+        connection = x11.XOpenDisplay(display.encode("ascii"))
+        if connection:
+            x11.XCloseDisplay(connection)
+            return True
+        time.sleep(0.05)
+    return False
 
 
 def main() -> int:
