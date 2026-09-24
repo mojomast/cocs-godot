@@ -36,6 +36,10 @@ const ADS_FLASH_MAX := 0.18
 const MAX_LIGHTS := 2
 var source_camera: Camera3D
 var muzzle_provider: Callable
+## Optional third-person anchor lookup (actor id, weapon id) -> visible Node3D.
+## Hosts should return the exported world-weapon `Muzzle`, never a guessed body
+## offset. Without this wiring remote cues retain their authoritative origin.
+var remote_muzzle_provider: Callable
 var collision_mask := 1
 var occlusion_provider: Callable
 var physics_occlusion_enabled := false
@@ -69,6 +73,9 @@ func configure(camera: Camera3D, provider: Callable) -> void:
 	reset()
 	source_camera = camera
 	muzzle_provider = provider
+
+func configure_remote_muzzles(provider: Callable) -> void:
+	remote_muzzle_provider = provider
 
 ## Convenience adapter for the ADS agent's authored animated anchors. The
 ## callback form remains usable by fixtures and future weapon implementations.
@@ -195,6 +202,7 @@ func consume(events: Array, local_id: int, actors: Array = []) -> void:
 		if start == null or end == null: continue
 		var resolved := {}
 		var tips: Array = rig.get("muzzles", []) if local else []
+		var remote_tip: Node3D
 		if local and not event.has("shrapnel"):
 			# Source muzzleBlocked emits a short eye-origin ray, not a launch. A
 			# close eye-origin event must never light the protruding cosmetic barrel.
@@ -206,10 +214,19 @@ func consume(events: Array, local_id: int, actors: Array = []) -> void:
 			if first:
 				for tip: Variant in tips.slice(0, 4):
 					if tip is Node3D and not Origin.resolve(source_camera, rig.camera, tip, start, end, collision_mask, _occluded).is_empty(): _fire(tip, weapon, rig)
+		elif not local and not event.has("shrapnel") and remote_muzzle_provider.is_valid():
+			var remote: Variant = remote_muzzle_provider.call(owner, weapon)
+			if remote is Node3D and is_instance_valid(remote) and remote.is_inside_tree() and remote.is_visible_in_tree():
+				resolved = Origin.resolve_world(source_camera, remote.global_position, start, end, _occluded)
+				# A known visible barrel behind cover must not silently fall back
+				# to an eye-origin tracer or flash through that cover.
+				if resolved.is_empty(): continue
+				remote_tip = remote
+				if first: _fire(remote, weapon, {})
 		if event.type == "shot":
 			var origin: Vector3 = resolved.get("position", start)
 			var join: Vector3 = resolved.get("join", start)
-			_spawn_line(origin, join, end, weapon, tips[id % tips.size()] if not resolved.is_empty() else null, rig.get("camera"), start)
+			_spawn_line(origin, join, end, weapon, tips[id % tips.size()] if local and not resolved.is_empty() else remote_tip, rig.get("camera") if local else null, start)
 			# Current source has no hit normal. Never guess a wall/actor surface
 			# from shot.hit (which may be a blocked candidate, not damage).
 			var normal: Variant = point(event.get("normal"))
@@ -573,12 +590,14 @@ func advance(delta: float) -> void:
 		if slot.remaining <= 0: continue
 		slot.remaining = maxf(0.0,slot.remaining-delta)
 		if slot.tip != null:
-			if not is_instance_valid(slot.tip) or rig.get("visible") != true:
+			if not is_instance_valid(slot.tip) or (slot.camera is Camera3D and rig.get("visible") != true):
 				slot.remaining = 0.0
 			else:
-				var resolved := Origin.resolve(source_camera, slot.camera, slot.tip, slot.authority, slot.end, collision_mask, _occluded)
+				var resolved := Origin.resolve(source_camera, slot.camera, slot.tip, slot.authority, slot.end, collision_mask, _occluded) if slot.camera is Camera3D else Origin.resolve_world(source_camera, slot.tip.global_position, slot.authority, slot.end, _occluded)
 				if resolved.is_empty(): slot.remaining = 0.0
-				else: slot.start = resolved.position
+				else:
+					slot.start = resolved.position
+					slot.join = resolved.join
 		if slot.remaining <= 0: slot.node.hide()
 		else: _draw_line(slot)
 	for slot: Dictionary in lights:

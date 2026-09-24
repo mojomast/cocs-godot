@@ -30,13 +30,43 @@ static func blocked(camera: Camera3D, from: Vector3, to: Vector3, mask: int = 1,
 static func resolve(source: Camera3D, view_camera: Camera3D, tip: Node3D, authoritative: Vector3, endpoint: Vector3, mask: int = 1, occlusion: Callable = Callable()) -> Dictionary:
 	var mapped := map_tip(source, view_camera, tip)
 	if mapped.is_empty() or not authoritative.is_finite() or not endpoint.is_finite(): return {}
-	var origin: Vector3 = mapped.position
 	if authoritative.distance_to(source.get_camera_transform().origin) > 8.0: return {}
+	var direction := endpoint - authoritative
+	# The viewmodel is deliberately larger/farther than the public muzzle. Use
+	# its *pixel*, not its private-world depth: a world tracer or projectile at
+	# the viewmodel depth could start behind a nearby wall or even its target.
+	var camera_space := source.get_camera_transform().affine_inverse()
+	var depth := -(camera_space * authoritative).z
+	if direction.length_squared() > 0.000001:
+		depth = minf(depth, -(camera_space * endpoint).z - 0.06)
+	if depth < 0.03: return {}
+	var origin: Vector3 = source.project_position(mapped.pixel, depth)
+	if not origin.is_finite(): return {}
+	mapped["view_depth"] = mapped.depth
+	mapped["depth"] = depth
+	mapped["position"] = origin
+	if direction.length_squared() > 0.000001:
+		# An eye ray can hit a wall *behind* the visible barrel mouth. Do not
+		# draw a backwards round from a muzzle already beyond that hit. A
+		# projectile launch has no endpoint yet and is checked separately below.
+		if (camera_space * endpoint).z > (camera_space * origin).z + 0.02: return {}
 	# Fail closed near walls. Never move a public endpoint or synthesize an impact.
 	if blocked(source, source.get_camera_transform().origin, origin, mask, occlusion): return {}
-	var direction := endpoint - authoritative
 	var join := authoritative + direction.normalized() * minf(1.25, direction.length() * 0.25)
 	if blocked(source, origin, join, mask, occlusion): return {}
 	mapped["join"] = join
 	mapped["endpoint"] = endpoint
 	return mapped
+
+## A remote weapon already occupies the source world. The host supplies its
+## actual animated world-model muzzle; no first-person projection is involved.
+## Keep the public ray/end intact and reject mismatched actors or cover edges.
+static func resolve_world(camera: Camera3D, muzzle: Vector3, authoritative: Vector3, endpoint: Vector3, occlusion: Callable) -> Dictionary:
+	if not is_instance_valid(camera) or not muzzle.is_finite() or not authoritative.is_finite() or not endpoint.is_finite(): return {}
+	if muzzle.distance_to(authoritative) > 2.0: return {}
+	if blocked(camera, authoritative, muzzle, 1, occlusion): return {}
+	var direction := endpoint - authoritative
+	var join := authoritative + direction.normalized() * minf(1.25, direction.length() * 0.25)
+	if direction.length_squared() > 0.000001 and (endpoint - muzzle).dot(direction) <= 0.0: return {}
+	if blocked(camera, muzzle, join, 1, occlusion): return {}
+	return {"position":muzzle, "join":join, "endpoint":endpoint}
