@@ -1,0 +1,1239 @@
+{
+  "generatedBy": "tools/godot-weapons/{export,silhouette-report,silhouette-sheet,rendered-distinctness}.mjs",
+  "manifest": "godot/first_person/generated/manifest.json",
+  "beforeManifest": "/tmp/opencode/before-export/manifest.json (HEAD detail pass, same measure)",
+  "budget": [
+    {
+      "id": 0,
+      "name": "Pulse Rifle",
+      "triangles": 4424,
+      "beforeTriangles": 4484,
+      "sourceTriangles": 3512,
+      "detailTriangles": 912,
+      "beforeDetailTriangles": 972,
+      "detailPrimitives": 70,
+      "batches": 8,
+      "nearestHandClearance": 0.0585,
+      "silhouetteCells": {
+        "side": 564,
+        "top": 405,
+        "detailSide": 223
+      },
+      "identity": {
+        "id": 0,
+        "massing": "slender carbine: slim dorsal spine, squared front trunnion, long perforated barrel shroud",
+        "feed": "box magazine: magwell flare, witness slot, floorplate lip, ambi catch",
+        "muzzle": "slotted flash hider: six-port sleeve with crown ring",
+        "stock": "skeleton stock: two rails and a slotted comb, grip palm swell",
+        "sight": "iron notch/post, toothed optic rail with a bolted front-sight base block",
+        "accent": "cyan trim, emissive charge conduit on the left flank, perforated handguard shroud"
+      }
+    },
+    {
+      "id": 1,
+      "name": "Rocket Launcher",
+      "triangles": 4904,
+      "beforeTriangles": 5204,
+      "sourceTriangles": 4052,
+      "detailTriangles": 852,
+      "beforeDetailTriangles": 1152,
+      "detailPrimitives": 58,
+      "batches": 8,
+      "nearestHandClearance": 0.05772,
+      "silhouetteCells": {
+        "side": 743,
+        "top": 649,
+        "detailSide": 269
+      },
+      "identity": {
+        "id": 1,
+        "massing": "fat launch tube: flared rear venturi bell, trumpet blast-deflector muzzle, heavy forward collars",
+        "feed": "breech latch: hinged loading gate, latch handle, seal stripe",
+        "muzzle": "trumpet blast deflector with an eight-port crown ring",
+        "stock": "shoulder tube, folding support strut, thick butt pad, vertical foregrip",
+        "sight": "iron, plus a folded launcher leaf ladder on the left flank",
+        "accent": "orange trim, emissive venturi dot ring, exposed venturi ribs and strap loops"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Rail Lance",
+      "triangles": 6432,
+      "beforeTriangles": 6472,
+      "sourceTriangles": 6044,
+      "detailTriangles": 388,
+      "beforeDetailTriangles": 380,
+      "detailPrimitives": 28,
+      "batches": 8,
+      "nearestHandClearance": 0.07782,
+      "silhouetteCells": {
+        "side": 755,
+        "top": 563,
+        "detailSide": 156
+      },
+      "identity": {
+        "id": 2,
+        "massing": "long low twin-rail sled: rails run the muzzle and fork forward, rear battery slab",
+        "feed": "energy cell: housing, charge window, retaining clips, discharge lead",
+        "muzzle": "twin forked rail prongs with a coaxial accelerator ring behind them",
+        "stock": "skeleton stock with cheek piece, angled grip",
+        "sight": "integrated x3.6 scope with a single elevation turret on the sled",
+        "accent": "violet trim, emissive rail tips and accelerator coils, exposed coil rings"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Scattergun",
+      "triangles": 4720,
+      "beforeTriangles": 4752,
+      "sourceTriangles": 3920,
+      "detailTriangles": 800,
+      "beforeDetailTriangles": 832,
+      "detailPrimitives": 57,
+      "batches": 8,
+      "nearestHandClearance": 0.059,
+      "silhouetteCells": {
+        "side": 515,
+        "top": 837,
+        "detailSide": 156
+      },
+      "identity": {
+        "id": 3,
+        "massing": "wide break-action block: ventilated top rib, barrel-selector bar, twin chamber collars",
+        "feed": "break-action breech: extractor knuckles, twin chamber faces",
+        "muzzle": "twin ported choke sleeves with slanted ports",
+        "stock": "wood-tone shoulder stock, comb, squared grip, barrel band",
+        "sight": "iron with a brass bead on the top rib",
+        "accent": "cream/brass trim, emissive chamber witness, brass rib rail"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Plasma Driver",
+      "triangles": 5968,
+      "beforeTriangles": 5992,
+      "sourceTriangles": 5024,
+      "detailTriangles": 944,
+      "beforeDetailTriangles": 968,
+      "detailPrimitives": 51,
+      "batches": 8,
+      "nearestHandClearance": 0.047,
+      "silhouetteCells": {
+        "side": 615,
+        "top": 533,
+        "detailSide": 232
+      },
+      "identity": {
+        "id": 4,
+        "massing": "bulbous orb chamber clamped in a slab cradle, slab power pack below",
+        "feed": "energy cell: twin cell tubes, windows, heavy latch",
+        "muzzle": "three-prong plasma focus cage closing on a front core ring",
+        "stock": "short stock with heat-shield plate, grip fin stack",
+        "sight": "iron notch/post on a bolted base block over the vented chamber",
+        "accent": "blue trim, emissive orb windows and cell windows, ribbed heat sink"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Grenade Launcher",
+      "triangles": 5028,
+      "beforeTriangles": 5152,
+      "sourceTriangles": 3980,
+      "detailTriangles": 1048,
+      "beforeDetailTriangles": 1172,
+      "detailPrimitives": 73,
+      "batches": 8,
+      "nearestHandClearance": 0.07425,
+      "silhouetteCells": {
+        "side": 732,
+        "top": 628,
+        "detailSide": 217
+      },
+      "identity": {
+        "id": 5,
+        "massing": "chunky revolver frame: top strap over a flared drum, legs each side of the cylinder",
+        "feed": "revolver drum: fluted rims, indexer yoke, hinge, index marks",
+        "muzzle": "heavy bored muzzle, four lateral ports, flared front collar",
+        "stock": "shoulder stock, recoil pad, thumb rest",
+        "sight": "iron, plus a folded launcher ladder and quadrant on the left flank",
+        "accent": "red-orange trim, emissive drum index window, angled slats"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Shock Beam",
+      "triangles": 5564,
+      "beforeTriangles": 5640,
+      "sourceTriangles": 4448,
+      "detailTriangles": 1116,
+      "beforeDetailTriangles": 1192,
+      "detailPrimitives": 62,
+      "batches": 8,
+      "nearestHandClearance": 0.08911,
+      "silhouetteCells": {
+        "side": 721,
+        "top": 609,
+        "detailSide": 181
+      },
+      "identity": {
+        "id": 6,
+        "massing": "open fork emitter frame: twin forward prongs, flank capacitor plates, C-yoke barrel",
+        "feed": "energy cell: capacitor plates, coil leads, cell housing",
+        "muzzle": "twin emitter prongs with discharge tips and a tuning bridge",
+        "stock": "insulated cheek plate on the stock, coil-wrapped grip",
+        "sight": "iron on an insulated sight rib",
+        "accent": "ice-blue trim, emissive discharge tips, exposed coils and insulator discs"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Flak Cannon",
+      "triangles": 4848,
+      "beforeTriangles": 4828,
+      "sourceTriangles": 3812,
+      "detailTriangles": 1036,
+      "beforeDetailTriangles": 1016,
+      "detailPrimitives": 68,
+      "batches": 8,
+      "nearestHandClearance": 0.049,
+      "silhouetteCells": {
+        "side": 870,
+        "top": 794,
+        "detailSide": 263
+      },
+      "identity": {
+        "id": 7,
+        "massing": "massive reinforced breech: trunnion discs, left-flank carry handle, heavy flared bell",
+        "feed": "ammunition box: lid, latch, belt run into the breech",
+        "muzzle": "heavy flared bell with eight radial ports",
+        "stock": "heavy stock with recoil buffer, sturdy grip",
+        "sight": "iron with a side range drum below the sight line",
+        "accent": "amber trim, emissive arming indicator, belt run and shell loops"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Marksman Rifle",
+      "triangles": 5936,
+      "beforeTriangles": 5996,
+      "sourceTriangles": 5228,
+      "detailTriangles": 708,
+      "beforeDetailTriangles": 768,
+      "detailPrimitives": 54,
+      "batches": 8,
+      "nearestHandClearance": 0.05278,
+      "silhouetteCells": {
+        "side": 670,
+        "top": 389,
+        "detailSide": 204
+      },
+      "identity": {
+        "id": 8,
+        "massing": "slim precision rifle: long under-receiver chassis spine, folded bipod, rear monopod",
+        "feed": "box magazine: witness slot, baseplate, funnel magwell",
+        "muzzle": "slim multi-baffle brake with a heat band behind it",
+        "stock": "chassis stock, adjustable cheek riser, rear monopod stub",
+        "sight": "integrated x3.0 scope with paired elevation and windage turrets",
+        "accent": "tan trim, emissive heat band, ribbed barrel flutes"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Submachine Gun",
+      "triangles": 4452,
+      "beforeTriangles": 4448,
+      "sourceTriangles": 3620,
+      "detailTriangles": 832,
+      "beforeDetailTriangles": 828,
+      "detailPrimitives": 63,
+      "batches": 8,
+      "nearestHandClearance": 0.04707,
+      "silhouetteCells": {
+        "side": 527,
+        "top": 329,
+        "detailSide": 217
+      },
+      "identity": {
+        "id": 9,
+        "massing": "stamped SMG: stub receiver, oversized quad-stack magazine, wire stock",
+        "feed": "box magazine: oversized quad-stack body, coupling clamp, witness slot",
+        "muzzle": "short ported sleeve with a thread collar",
+        "stock": "telescoping wire stock with butt plate, light trigger housing",
+        "sight": "iron on a stamped rib with a rear drum",
+        "accent": "green trim, emissive magazine witness, stamped ribs and vented shroud"
+      }
+    }
+  ],
+  "silhouette": {
+    "after": {
+      "side": {
+        "max": 0.7441,
+        "mean": 0.5943,
+        "worstPair": [
+          "Plasma Driver",
+          "Shock Beam"
+        ],
+        "matrix": [
+          [
+            1,
+            0.5486,
+            0.5759,
+            0.6498,
+            0.7162,
+            0.62,
+            0.6624,
+            0.5987,
+            0.5984,
+            0.5653
+          ],
+          [
+            0.5486,
+            1,
+            0.5208,
+            0.5745,
+            0.6828,
+            0.586,
+            0.6123,
+            0.6179,
+            0.5613,
+            0.4174
+          ],
+          [
+            0.5759,
+            0.5208,
+            1,
+            0.5935,
+            0.5783,
+            0.7112,
+            0.6382,
+            0.5823,
+            0.7336,
+            0.4907
+          ],
+          [
+            0.6498,
+            0.5745,
+            0.5935,
+            1,
+            0.6236,
+            0.6365,
+            0.5528,
+            0.517,
+            0.6413,
+            0.5123
+          ],
+          [
+            0.7162,
+            0.6828,
+            0.5783,
+            0.6236,
+            1,
+            0.6487,
+            0.7441,
+            0.6685,
+            0.5633,
+            0.4793
+          ],
+          [
+            0.62,
+            0.586,
+            0.7112,
+            0.6365,
+            0.6487,
+            1,
+            0.6455,
+            0.6618,
+            0.6171,
+            0.541
+          ],
+          [
+            0.6624,
+            0.6123,
+            0.6382,
+            0.5528,
+            0.7441,
+            0.6455,
+            1,
+            0.6944,
+            0.5664,
+            0.4752
+          ],
+          [
+            0.5987,
+            0.6179,
+            0.5823,
+            0.517,
+            0.6685,
+            0.6618,
+            0.6944,
+            1,
+            0.5187,
+            0.4736
+          ],
+          [
+            0.5984,
+            0.5613,
+            0.7336,
+            0.6413,
+            0.5633,
+            0.6171,
+            0.5664,
+            0.5187,
+            1,
+            0.5268
+          ],
+          [
+            0.5653,
+            0.4174,
+            0.4907,
+            0.5123,
+            0.4793,
+            0.541,
+            0.4752,
+            0.4736,
+            0.5268,
+            1
+          ]
+        ]
+      },
+      "top": {
+        "max": 0.8211,
+        "mean": 0.6008,
+        "worstPair": [
+          "Pulse Rifle",
+          "Marksman Rifle"
+        ],
+        "matrix": [
+          [
+            1,
+            0.5432,
+            0.7042,
+            0.4259,
+            0.672,
+            0.6319,
+            0.6198,
+            0.495,
+            0.8211,
+            0.6912
+          ],
+          [
+            0.5432,
+            1,
+            0.5479,
+            0.6791,
+            0.7855,
+            0.6914,
+            0.6295,
+            0.6701,
+            0.485,
+            0.4707
+          ],
+          [
+            0.7042,
+            0.5479,
+            1,
+            0.4629,
+            0.6631,
+            0.6918,
+            0.6719,
+            0.6002,
+            0.6442,
+            0.5274
+          ],
+          [
+            0.4259,
+            0.6791,
+            0.4629,
+            1,
+            0.5986,
+            0.577,
+            0.4984,
+            0.6542,
+            0.4108,
+            0.3621
+          ],
+          [
+            0.672,
+            0.7855,
+            0.6631,
+            0.5986,
+            1,
+            0.7354,
+            0.7356,
+            0.6484,
+            0.5979,
+            0.5616
+          ],
+          [
+            0.6319,
+            0.6914,
+            0.6918,
+            0.577,
+            0.7354,
+            1,
+            0.7349,
+            0.7599,
+            0.5646,
+            0.5166
+          ],
+          [
+            0.6198,
+            0.6295,
+            0.6719,
+            0.4984,
+            0.7356,
+            0.7349,
+            1,
+            0.6823,
+            0.5425,
+            0.5227
+          ],
+          [
+            0.495,
+            0.6701,
+            0.6002,
+            0.6542,
+            0.6484,
+            0.7599,
+            0.6823,
+            1,
+            0.4427,
+            0.4108
+          ],
+          [
+            0.8211,
+            0.485,
+            0.6442,
+            0.4108,
+            0.5979,
+            0.5646,
+            0.5425,
+            0.4427,
+            1,
+            0.6544
+          ],
+          [
+            0.6912,
+            0.4707,
+            0.5274,
+            0.3621,
+            0.5616,
+            0.5166,
+            0.5227,
+            0.4108,
+            0.6544,
+            1
+          ]
+        ]
+      },
+      "detailSide": {
+        "max": 0.2839,
+        "mean": 0.1751,
+        "worstPair": [
+          "Grenade Launcher",
+          "Shock Beam"
+        ],
+        "matrix": [
+          [
+            1,
+            0.1207,
+            0.1994,
+            0.1626,
+            0.1548,
+            0.1609,
+            0.1543,
+            0.1462,
+            0.2596,
+            0.1549
+          ],
+          [
+            0.1207,
+            1,
+            0.1214,
+            0.1243,
+            0.2101,
+            0.1796,
+            0.1905,
+            0.177,
+            0.1679,
+            0.125
+          ],
+          [
+            0.1994,
+            0.1214,
+            1,
+            0.1685,
+            0.1652,
+            0.223,
+            0.2344,
+            0.1836,
+            0.2587,
+            0.0688
+          ],
+          [
+            0.1626,
+            0.1243,
+            0.1685,
+            1,
+            0.2317,
+            0.211,
+            0.1541,
+            0.1575,
+            0.2587,
+            0.1693
+          ],
+          [
+            0.1548,
+            0.2101,
+            0.1652,
+            0.2317,
+            1,
+            0.131,
+            0.1253,
+            0.1327,
+            0.1784,
+            0.1396
+          ],
+          [
+            0.1609,
+            0.1796,
+            0.223,
+            0.211,
+            0.131,
+            1,
+            0.2839,
+            0.2732,
+            0.2029,
+            0.1302
+          ],
+          [
+            0.1543,
+            0.1905,
+            0.2344,
+            0.1541,
+            0.1253,
+            0.2839,
+            1,
+            0.2472,
+            0.1994,
+            0.1025
+          ],
+          [
+            0.1462,
+            0.177,
+            0.1836,
+            0.1575,
+            0.1327,
+            0.2732,
+            0.2472,
+            1,
+            0.1913,
+            0.1511
+          ],
+          [
+            0.2596,
+            0.1679,
+            0.2587,
+            0.2587,
+            0.1784,
+            0.2029,
+            0.1994,
+            0.1913,
+            1,
+            0.0964
+          ],
+          [
+            0.1549,
+            0.125,
+            0.0688,
+            0.1693,
+            0.1396,
+            0.1302,
+            0.1025,
+            0.1511,
+            0.0964,
+            1
+          ]
+        ]
+      }
+    },
+    "before": {
+      "side": {
+        "max": 0.8229,
+        "mean": 0.6118,
+        "worstPair": [
+          "Plasma Driver",
+          "Shock Beam"
+        ],
+        "matrix": [
+          [
+            1,
+            0.5537,
+            0.5648,
+            0.6238,
+            0.6885,
+            0.6132,
+            0.7038,
+            0.5948,
+            0.6159,
+            0.5959
+          ],
+          [
+            0.5537,
+            1,
+            0.5376,
+            0.5478,
+            0.6841,
+            0.5871,
+            0.6586,
+            0.646,
+            0.542,
+            0.4805
+          ],
+          [
+            0.5648,
+            0.5376,
+            1,
+            0.5924,
+            0.5846,
+            0.7226,
+            0.6318,
+            0.592,
+            0.7855,
+            0.5367
+          ],
+          [
+            0.6238,
+            0.5478,
+            0.5924,
+            1,
+            0.5965,
+            0.624,
+            0.5744,
+            0.5102,
+            0.6547,
+            0.5861
+          ],
+          [
+            0.6885,
+            0.6841,
+            0.5846,
+            0.5965,
+            1,
+            0.6287,
+            0.8229,
+            0.6895,
+            0.5618,
+            0.5384
+          ],
+          [
+            0.6132,
+            0.5871,
+            0.7226,
+            0.624,
+            0.6287,
+            1,
+            0.6654,
+            0.6677,
+            0.6613,
+            0.6063
+          ],
+          [
+            0.7038,
+            0.6586,
+            0.6318,
+            0.5744,
+            0.8229,
+            0.6654,
+            1,
+            0.7494,
+            0.5613,
+            0.5474
+          ],
+          [
+            0.5948,
+            0.646,
+            0.592,
+            0.5102,
+            0.6895,
+            0.6677,
+            0.7494,
+            1,
+            0.5041,
+            0.4881
+          ],
+          [
+            0.6159,
+            0.542,
+            0.7855,
+            0.6547,
+            0.5618,
+            0.6613,
+            0.5613,
+            0.5041,
+            1,
+            0.611
+          ],
+          [
+            0.5959,
+            0.4805,
+            0.5367,
+            0.5861,
+            0.5384,
+            0.6063,
+            0.5474,
+            0.4881,
+            0.611,
+            1
+          ]
+        ]
+      },
+      "top": {
+        "max": 0.7937,
+        "mean": 0.6178,
+        "worstPair": [
+          "Pulse Rifle",
+          "Marksman Rifle"
+        ],
+        "matrix": [
+          [
+            1,
+            0.5758,
+            0.6916,
+            0.446,
+            0.6983,
+            0.6592,
+            0.6462,
+            0.5299,
+            0.7937,
+            0.6895
+          ],
+          [
+            0.5758,
+            1,
+            0.5666,
+            0.679,
+            0.7253,
+            0.7068,
+            0.6528,
+            0.7232,
+            0.494,
+            0.4843
+          ],
+          [
+            0.6916,
+            0.5666,
+            1,
+            0.4618,
+            0.7172,
+            0.7035,
+            0.7664,
+            0.6342,
+            0.6587,
+            0.5481
+          ],
+          [
+            0.446,
+            0.679,
+            0.4618,
+            1,
+            0.5396,
+            0.5823,
+            0.5135,
+            0.6514,
+            0.4002,
+            0.363
+          ],
+          [
+            0.6983,
+            0.7253,
+            0.7172,
+            0.5396,
+            1,
+            0.7366,
+            0.7766,
+            0.6276,
+            0.6505,
+            0.624
+          ],
+          [
+            0.6592,
+            0.7068,
+            0.7035,
+            0.5823,
+            0.7366,
+            1,
+            0.7866,
+            0.7904,
+            0.553,
+            0.516
+          ],
+          [
+            0.6462,
+            0.6528,
+            0.7664,
+            0.5135,
+            0.7766,
+            0.7866,
+            1,
+            0.7448,
+            0.574,
+            0.5538
+          ],
+          [
+            0.5299,
+            0.7232,
+            0.6342,
+            0.6514,
+            0.6276,
+            0.7904,
+            0.7448,
+            1,
+            0.4488,
+            0.4237
+          ],
+          [
+            0.7937,
+            0.494,
+            0.6587,
+            0.4002,
+            0.6505,
+            0.553,
+            0.574,
+            0.4488,
+            1,
+            0.691
+          ],
+          [
+            0.6895,
+            0.4843,
+            0.5481,
+            0.363,
+            0.624,
+            0.516,
+            0.5538,
+            0.4237,
+            0.691,
+            1
+          ]
+        ]
+      },
+      "detailSide": {
+        "max": 0.3046,
+        "mean": 0.1753,
+        "worstPair": [
+          "Rail Lance",
+          "Marksman Rifle"
+        ],
+        "matrix": [
+          [
+            1,
+            0.0893,
+            0.224,
+            0.166,
+            0.1382,
+            0.1799,
+            0.1283,
+            0.1232,
+            0.3009,
+            0.1765
+          ],
+          [
+            0.0893,
+            1,
+            0.0721,
+            0.114,
+            0.2389,
+            0.1546,
+            0.183,
+            0.2067,
+            0.1425,
+            0.1662
+          ],
+          [
+            0.224,
+            0.0721,
+            1,
+            0.1569,
+            0.125,
+            0.1675,
+            0.2248,
+            0.1218,
+            0.3046,
+            0.0973
+          ],
+          [
+            0.166,
+            0.114,
+            0.1569,
+            1,
+            0.0991,
+            0.1941,
+            0.2086,
+            0.151,
+            0.2826,
+            0.2222
+          ],
+          [
+            0.1382,
+            0.2389,
+            0.125,
+            0.0991,
+            1,
+            0.1418,
+            0.2228,
+            0.1611,
+            0.2115,
+            0.0808
+          ],
+          [
+            0.1799,
+            0.1546,
+            0.1675,
+            0.1941,
+            0.1418,
+            1,
+            0.1839,
+            0.213,
+            0.2367,
+            0.1236
+          ],
+          [
+            0.1283,
+            0.183,
+            0.2248,
+            0.2086,
+            0.2228,
+            0.1839,
+            1,
+            0.2706,
+            0.24,
+            0.1378
+          ],
+          [
+            0.1232,
+            0.2067,
+            0.1218,
+            0.151,
+            0.1611,
+            0.213,
+            0.2706,
+            1,
+            0.1863,
+            0.1284
+          ],
+          [
+            0.3009,
+            0.1425,
+            0.3046,
+            0.2826,
+            0.2115,
+            0.2367,
+            0.24,
+            0.1863,
+            1,
+            0.1909
+          ],
+          [
+            0.1765,
+            0.1662,
+            0.0973,
+            0.2222,
+            0.0808,
+            0.1236,
+            0.1378,
+            0.1284,
+            0.1909,
+            1
+          ]
+        ]
+      }
+    }
+  },
+  "tones": [
+    {
+      "id": 0,
+      "name": "Pulse Rifle",
+      "dark": "#24393a",
+      "light": "#6d9391",
+      "finish": {
+        "dark": [
+          0.52,
+          0.4
+        ],
+        "light": [
+          0.46,
+          0.34
+        ]
+      },
+      "glow": "#70ffe6",
+      "distanceToNearestLight": 27.9
+    },
+    {
+      "id": 1,
+      "name": "Rocket Launcher",
+      "dark": "#2d3327",
+      "light": "#757f66",
+      "finish": {
+        "dark": [
+          0.3,
+          0.58
+        ],
+        "light": [
+          0.26,
+          0.52
+        ]
+      },
+      "glow": "#ffad61",
+      "distanceToNearestLight": 25
+    },
+    {
+      "id": 2,
+      "name": "Rail Lance",
+      "dark": "#2b2a3d",
+      "light": "#86829c",
+      "finish": {
+        "dark": [
+          0.48,
+          0.3
+        ],
+        "light": [
+          0.58,
+          0.24
+        ]
+      },
+      "glow": "#bb9aff",
+      "distanceToNearestLight": 32.2
+    },
+    {
+      "id": 3,
+      "name": "Scattergun",
+      "dark": "#333a24",
+      "light": "#8f8f60",
+      "finish": {
+        "dark": [
+          0.38,
+          0.52
+        ],
+        "light": [
+          0.3,
+          0.46
+        ]
+      },
+      "glow": "#ffde87",
+      "distanceToNearestLight": 31.1
+    },
+    {
+      "id": 4,
+      "name": "Plasma Driver",
+      "dark": "#20344a",
+      "light": "#6486a8",
+      "finish": {
+        "dark": [
+          0.58,
+          0.26
+        ],
+        "light": [
+          0.66,
+          0.2
+        ]
+      },
+      "glow": "#72cfff",
+      "distanceToNearestLight": 27.9
+    },
+    {
+      "id": 5,
+      "name": "Grenade Launcher",
+      "dark": "#3a2a26",
+      "light": "#7e6862",
+      "finish": {
+        "dark": [
+          0.42,
+          0.56
+        ],
+        "light": [
+          0.36,
+          0.5
+        ]
+      },
+      "glow": "#ff806b",
+      "distanceToNearestLight": 25
+    },
+    {
+      "id": 6,
+      "name": "Shock Beam",
+      "dark": "#24404a",
+      "light": "#89adb3",
+      "finish": {
+        "dark": [
+          0.34,
+          0.36
+        ],
+        "light": [
+          0.3,
+          0.3
+        ]
+      },
+      "glow": "#8ce8ff",
+      "distanceToNearestLight": 48.9
+    },
+    {
+      "id": 7,
+      "name": "Flak Cannon",
+      "dark": "#3b2f1b",
+      "light": "#a87f4a",
+      "finish": {
+        "dark": [
+          0.26,
+          0.62
+        ],
+        "light": [
+          0.22,
+          0.56
+        ]
+      },
+      "glow": "#ffd166",
+      "distanceToNearestLight": 36.9
+    },
+    {
+      "id": 8,
+      "name": "Marksman Rifle",
+      "dark": "#3f3a2f",
+      "light": "#b1a68d",
+      "finish": {
+        "dark": [
+          0.55,
+          0.26
+        ],
+        "light": [
+          0.62,
+          0.22
+        ]
+      },
+      "glow": "#ffd27a",
+      "distanceToNearestLight": 55.6
+    },
+    {
+      "id": 9,
+      "name": "Submachine Gun",
+      "dark": "#1c352c",
+      "light": "#5b7f75",
+      "finish": {
+        "dark": [
+          0.28,
+          0.54
+        ],
+        "light": [
+          0.24,
+          0.48
+        ]
+      },
+      "glow": "#8affc1",
+      "distanceToNearestLight": 30
+    }
+  ],
+  "ram": {
+    "beforeGlbBytes": 5169304,
+    "afterGlbBytes": 5102900
+  }
+}

@@ -8,7 +8,8 @@ import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
 import {buildWeaponBody} from '../../game/weapon-models/index.mjs';
 import {CHASSIS} from '../../game/weapon-models/chassis.mjs';
 import {handlingAnchors, handlingProfile, presentationProfile} from './handling.mjs';
-import {buildDetail, IDENTITY, SLOTS, remapFor, hardpoints} from './detail.mjs';
+import {buildDetail, IDENTITY, SLOTS, remapFor, hardpoints, toneFor, FINISH} from './detail.mjs';
+import {maskFrom, encodeMask, filledCells} from './silhouette.mjs';
 import {WEAPONS} from '../../game/data.mjs';
 import {ADS_PROFILES} from '../../game/weapon-ads.mjs';
 import {resolveActiveSight} from '../../game/reticle.mjs';
@@ -34,8 +35,13 @@ for(const file of ['game/data.mjs','game/model-geometry.mjs','game/sights.mjs','
 // pixel, so the recovered budget buys real detail instead of ring smoothness.
 // Shape, radius and position are unchanged; see
 // port/native-weapon-detail/README.md for the measured silhouette delta.
-function ringSegments(parent, radius) {
+function ringSegments(parent, radius, id) {
   if (parent && parent.name === 'sight-assembly') return 32;
+  // The Rail Lance sits against the 6,500 ceiling because of its locked twin
+  // rails and integrated optic; its single muzzle collar ring is the one ring
+  // that shrinks further (12 segments), which buys the identity pass the room
+  // it needs there. Shape, radius and position are unchanged.
+  if (id === 2 && parent && parent.name !== 'sight-assembly') return 12;
   return radius >= .09 ? 20 : 16;
 }
 const detailThree = {...T};
@@ -75,7 +81,11 @@ for(let id=0;id<WEAPONS.length;id++) {
   };
   const geo=(key,make)=>{if(!geometries.has(key))geometries.set(key,make());return geometries.get(key);};
   const put=(p,g,x,y,z,m)=>{const mesh=new T.Mesh(g,m);mesh.position.set(x,y,z);p.add(mesh);return mesh;};
-  const dark=material('#222f37'), light=material('#73848a'), glow=material(info.color,.3,.3,true);
+  // Per-weapon tone identity: the source palette mixed toward this weapon's
+  // own colour, finished with its mechanism-family surface recipe. Same batch
+  // count (per assembly x role), different metal on every weapon.
+  const tones=toneFor(id), finish=FINISH[id];
+  const dark=material(tones.dark,...finish.dark), light=material(tones.light,...finish.light), glow=material(info.color,.3,.3,true);
   const detailMaterial={
     dark, light, glow,
     // Two new shared materials, identical on every weapon: a polished machined
@@ -87,7 +97,7 @@ for(let id=0;id<WEAPONS.length;id++) {
   const ctx={T:detailThree,info,material,geo,palette:{dark,light,glow},detail:detailMaterial,
     box:(p,w,h,d,x,y,z,m)=>put(p,geo(`b${w}|${h}|${d}`,()=>new T.BoxGeometry(w,h,d)),x,y,z,m),
     cylinder:(p,r1,r2,h,x,y,z,m,s=12)=>put(p,geo(`c${r1}|${r2}|${h}|${s}`,()=>new T.CylinderGeometry(r1,r2,h,s)),x,y,z,m),
-    ring:(p,r,t,x,y,z,m,rx=Math.PI/2)=>{const seg=ringSegments(p,r);const mesh=put(p,geo(`t${r}|${t}|${seg}`,()=>new T.TorusGeometry(r,t,6,seg)),x,y,z,m);mesh.rotation.x=rx;return mesh;}};
+    ring:(p,r,t,x,y,z,m,rx=Math.PI/2)=>{const seg=ringSegments(p,r,id);const mesh=put(p,geo(`t${r}|${t}|${seg}`,()=>new T.TorusGeometry(r,t,6,seg)),x,y,z,m);mesh.rotation.x=rx;return mesh;}};
   const sourceTriangleStart=geometryCount(group);
   const ch=CHASSIS[id];
   buildWeaponBody(id,group,ctx);
@@ -130,6 +140,17 @@ for(let id=0;id<WEAPONS.length;id++) {
     const scopeBox=new T.Box3(new T.Vector3(...box.min),new T.Vector3(...box.max));
     if(intersectsCorridor(scopeBox,corridor)) throw new Error(`detail ${id} ${box.a}/${box.c} intrudes on the sight corridor: ${JSON.stringify(box)}`);
   }
+  // Silhouette read-out: the shape that actually leaves the exporter, measured
+  // in fixed weapon space. `side`/`top` are the whole weapon; `detailSide` is
+  // the authored detail pass alone, so the identity work is reported separately
+  // from the locked source chassis. verify.mjs gates the pairwise IoU.
+  const silhouetteSide = maskFrom(group, 'side');
+  const silhouetteTop = maskFrom(group, 'top');
+  const silhouetteDetail = maskFrom(group, 'side', {onlyDetail: true});
+  const silhouette = {
+    side: encodeMask(silhouetteSide), top: encodeMask(silhouetteTop), detailSide: encodeMask(silhouetteDetail),
+    filled: {side: filledCells(silhouetteSide), top: filledCells(silhouetteTop), detailSide: filledCells(silhouetteDetail)},
+  };
   // Bake static descendants into one geometry per material and moving assembly.
   // Keeps authored feed/barrel/bolt pivots while bounding native draw calls.
   const {mergeGeometries}=await import('three/addons/utils/BufferGeometryUtils.js');
@@ -215,11 +236,13 @@ for(let id=0;id<WEAPONS.length;id++) {
   if(nearestHand<.045)throw new Error(`Detail inside the hand capsule weapon ${id}: ${nearestHand.toFixed(4)} m ${JSON.stringify(worstHand)}`);
   manifest.weapons.push({id,name:info.name,file,sha256:sha(bytes),bytes:bytes.length,triangles,meshInstances:buckets.size,batches:batchPlan,
     sourceTriangles,detailTriangles:detail.stats.triangles,detailPrimitives:detail.stats.primitives,
-    detailChannels:detail.stats.channels,detailBoxes:detail.boxes,identity:IDENTITY[id],slots:plan,
+    detailChannels:detail.stats.channels,detailBoxes:detail.boxes,identity:IDENTITY[id],slots:plan,silhouette,
+    tones:{...tones,finish},palette:{dark:tones.dark,light:tones.light,glow:info.color},
     nearestHandClearance:+nearestHand.toFixed(5),bounds:[boundsBox.min.toArray(),boundsBox.max.toArray()],muzzles,anchors,handling,
     presentation:presentationProfile(id,ch,info),ads,color:info.color,kick:info.feel.kick,muzzle:info.feel.muzzle});
   table.push({id,triangles,sourceTriangles:sourceTriangles,detailTriangles:detail.stats.triangles,
-    batches:buckets.size,bytes:bytes.length,primitives:detail.stats.primitives,nearestHand:+nearestHand.toFixed(4)});
+    batches:buckets.size,bytes:bytes.length,primitives:detail.stats.primitives,nearestHand:+nearestHand.toFixed(4),
+    silhouette:silhouette.filled});
 }
 await writeFile(new URL('manifest.json',out),JSON.stringify(manifest,null,2)+'\n');
 // A native script resource is automatically included by all_resources exports.
