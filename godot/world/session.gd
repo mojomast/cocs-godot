@@ -289,7 +289,6 @@ func _ready() -> void:
 	label.get_parent().mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(client)
 	add_child(presentation)
-	presentation.render_frame.connect(render_local_translation)
 	add_child(combat)
 	label.get_parent().add_child(combat_label)
 	combat_label.position = Vector2(24, 170)
@@ -512,6 +511,11 @@ func on_lobby(frame: Dictionary) -> void:
 
 func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3: return
+	# Native Deathmatch and Horde build their own _ready composition; all playable
+	# sessions still reach this shared snapshot path. Connect once here so their
+	# render clock drives local translation too.
+	if not presentation.render_frame.is_connected(render_local_translation):
+		presentation.render_frame.connect(render_local_translation)
 	if is_instance_valid(debug_panel): debug_panel.observe_config(frame.state.get("config", {}))
 	snapshot_watch.observe()
 	pickups.apply_state(frame.state)
