@@ -139,7 +139,7 @@ func _derived_assets() -> void:
 	var baked_before: int = Moth.cache_stats().textures
 	check(manifest.get("version") == 1, "derived manifest version")
 	var derived: Dictionary = manifest.get("derived", {})
-	check(derived.size() >= 28, "derived bucket is populated, got %d" % derived.size())
+	check(derived.size() >= 38, "derived bucket is populated, got %d" % derived.size())
 	var kinds := {"data": 0, "normal": 0, "mask": 0}
 	for key: String in derived:
 		var record: Dictionary = derived[key]
@@ -166,7 +166,7 @@ func _derived_assets() -> void:
 		hash.start(HashingContext.HASH_SHA256)
 		hash.update(image.get_data())
 		check(hash.finish().hex_encode() == record.pixel_sha256, "derived bytes are deterministic: " + key)
-	check(kinds.data == 24 and kinds.normal == 2 and kinds.mask == 2, "derived inventory by kind: " + str(kinds))
+	check(kinds.data == 24 and kinds.normal == 12 and kinds.mask == 2, "derived inventory by kind: " + str(kinds))
 	check(Moth.derived_texture("normal--alien_chitin") == Moth.derived_texture("normal--alien_chitin"), "derived cache shares resources")
 	check(Moth.derived_texture("normal--alien_chitin") != Moth.texture("alien_chitin"), "derived and baked caches stay distinct")
 	check(Moth.derived_cache_stats().textures <= Moth.MAX_DERIVED_TEXTURES, "derived cache is bounded")

@@ -8,6 +8,188 @@ partial publication. The in-game [Graphics lab](GRAPHICS-LAB.md) is the separate
 opt-in preview for experimenting with screen-space style, including three
 layers built directly from baked Moth assets.
 
+## Asset gallery and provenance
+
+Every visual asset the Godot build draws is browsable in the port's gallery:
+**<http://100.125.104.79:4371/moth.html>** — the raw pixels exactly as shipped,
+the **Moth API tool that generated each asset** (engine + baker type + job id),
+and an in-game example from the accepted captures. Covers all 101 exported
+planes (31 textures, 13 normals, 5 skies, 5×2 material LUT planes, 42 effect
+frames) plus the 28 locally derived maps, with the 14 web-only jobs listed
+separately.
+
+Provenance has two committed sources: per-job `engine`, `jobId` and
+`bake.type` in `assets/moth/manifest.json`, and the per-bake
+`MOTH_BAKED.provenance` block (`engine`, `jobId`, `mode`, `credits`) in
+`game/moth-baked.mjs`. The exporter (`tools/godot-moth/export.mjs`) publishes
+only the textures/normals/sky/materials/effects buckets into
+`godot/moth/generated/`; `godot/tests/moth/validate.gd` re-hashes every plane
+(101) on each gate run. Honesty labels used in the gallery: `industrial_mesh`,
+`quantum-rift`, `effect-capture-ring` and `qrc-glyphs` are committed and
+hash-verified but have **no gameplay consumer** yet.
+
+### Uniqueness pass (2026-09-24)
+
+Audit (rerunnable offline): `node tools/godot-moth/uniqueness.mjs [dir]` reports
+pairwise low-frequency correlation (what reads as "the same bump") plus each
+plane's structure energy. Finding on the shipped baked normals: 13 planes,
+median pair similarity **0.567**, **six pairs above 0.90 (up to 1.000)** — every
+normal job submits the same statistics (`style: xy`, `strength: 0.25–0.55`, no
+`generateValues`) and differs only by seed, so the engine returns one noise class
+thirteen times. The baked pixels are source-locked here; fixing them needs an
+upstream re-bake (proposal below). The port therefore rebinds the families whose
+own albedo carries real structure to **derived** normals:
+
+| family / variant | was (baked) | now (derived from its albedo) |
+| --- | --- | --- |
+| pearl / default | hex_paneling | hex_paneling-mottle |
+| pearl / worn | weathered_concrete | weathered_concrete-worn (drip streaks) |
+| enamel / stucco | rough_stucco | rough_stucco-weathered |
+| enamel / crackle | ice | ice-cracked (directional cracks) |
+| enamel / damp | weathered_concrete | weathered_concrete-damp |
+| alloy / circuit | metal | circuit_board-etch (traces) |
+| oxidised / default | metal_grating | metal-oxide (broad pitting) |
+| oxidised / scorched | metal_grating | riveted_armor-scorched |
+| regolith / mossy | rock | rock-moss |
+| bioluminescent / matrix | alien_chitin | macro-organic |
+
+The same audit covers any same-size plane bucket and caught a second locked
+duplicate: `sky/ember.png` and `sky/nebula.png` are byte-identical (same
+pixel and PNG sha) despite being separate jobs — include them in the same
+upstream re-bake if the palette should differ.
+
+Result: `node tools/godot-moth/uniqueness.mjs godot/moth/derived/normals` →
+12 planes, median **0.091**, max 0.897, **0 near-duplicates**, 0 flat. All
+thirteen baked normals remain bound somewhere (the material-language contract
+requires it), so the baked set still shows its own six near-duplicate pairs; the
+in-game variety comes from the rebinds above. The deriver also gained
+anisotropic kernels (`radius: {x, y}`) so cracks and streaks read directionally,
+and the gallery shows the before/after sheets.
+
+**Re-bake proposal (upstream `assets/moth/manifest.json`, needs credits and the
+source lock advanced).** The generator now supports distinct reliefs per job
+(`freq`, `octaves`, `angle`, `anisotropy`, seeded `cells` — every default
+reproduces the old output). Suggested `generateValues` per normal job:
+
+| job | generateValues | reads as |
+| --- | --- | --- |
+| normal-rock | `{type:'height', kind:'ridge', seed:11, freq:5, octaves:6}` | ridged strata |
+| normal-ice | `{type:'height', kind:'cells', seed:23, freq:3}` | fracture lattice |
+| normal-sand | `{type:'height', kind:'noise', seed:31, freq:12, octaves:3}` | fine dunes |
+| normal-concrete | `{type:'height', kind:'noise', seed:47, freq:3, octaves:6}` | broad pour blotches |
+| normal-grass | `{type:'height', kind:'noise', seed:59, freq:16, octaves:4, anisotropy:2}` | tufted |
+| normal-hazard | `{type:'height', kind:'ridge', seed:67, freq:2, octaves:2, angle:1.5708, anisotropy:6}` | painted bands |
+| normal-hex | `{type:'height', kind:'cells', seed:71, freq:4}` | hex plate cells |
+| normal-hologrid | `{type:'height', kind:'ridge', seed:79, freq:2, octaves:2, anisotropy:5}` | grid lines |
+| normal-metal | `{type:'height', kind:'noise', seed:83, freq:24, octaves:2, angle:0.4, anisotropy:8}` | brushed grain |
+| normal-grating | `{type:'height', kind:'cells', seed:89, freq:5}` | bar grid |
+| normal-diamond | `{type:'height', kind:'cells', seed:97, freq:6, angle:0.7854}` | tread crosshatch |
+| normal-stucco | `{type:'height', kind:'noise', seed:101, freq:6, octaves:5}` | plaster grain |
+| normal-corrugated | `{type:'height', kind:'ridge', seed:103, freq:2, octaves:2, anisotropy:8}` | rolled ribs |
+
+Then `MOTH_API_KEY=... node scripts/moth-bake.mjs run --only normal-rock …`
+(or a full `run`), re-export, and re-run the audit — expect zero pairs >0.90.
+
+### Provenance tables
+
+### Textures (31)
+| Asset | Moth API tool | Baker | Job id(s) | In game |
+| --- | --- | --- | --- | --- |
+| `alien_chitin` | `deep-fryer-v1` | texture-tile | `f3099ab8` | bioluminescent chitin walls/inlays |
+| `brushed_metal` | `blur-v1` | texture-tile | `8fcb92a9` | catwalks, rails, pickup housing, shader-lab factory |
+| `carbon_fiber` | `deep-fryer-v1` | texture-tile | `1e406cba` | scenery housing tiles |
+| `circuit_board` | `deep-fryer-v1` | texture-tile | `2e94b002` | scenery feed panels (glowing) |
+| `circuit_board-etch` | `deep-fryer-v1` | texture-tile | `92100f38` | brushed circuit masks, scenery feeds, shader-lab |
+| `corrugated_metal` | `blur-v1` | texture-tile | `cc4bc462` | hazard corrugated vents |
+| `diamond_plate` | `deep-fryer-v1` | texture-tile | `b1ca5f01` | tread-plate covers and roads |
+| `dust-field` | `blur-core-v1` | grid-texture | `b371e612` | scenery motes, cinder lava dust |
+| `flow-field` | `blur-core-v1` | grid-texture | `476b2e0e` | every family material pulse, blood flow, coolant/lava, particle swirl, pickups |
+| `grass` | `blur-v1` | texture-tile | `ccdcb6f7` | turf infields, verdant ground |
+| `hazard_stripes` | `blur-v1` | texture-tile | `26be43d4` | hazard-industrial trim (masked glow) |
+| `hex_paneling` | `deep-fryer-v1` | texture-tile | `dbef2caf` | hull panels, enamel surfaces, identity trim |
+| `hex_paneling-mottle` | `blur-v1` | texture-tile | `293e8b26` | pearl ceramic walls, aurora deck |
+| `holographic_grid` | `tessa-image-v1` | texture-tile | `e4ce3600` | scenery holo strips, shader-lab panels |
+| `ice` | `blur-v1` | texture-tile | `752a8324` | polar glazed variants, crystal props |
+| `ice-cracked` | `blur-v1` | texture-tile | `6442e7cd` | aurora snow/lake floors, polar family |
+| `industrial_mesh` | `deep-fryer-v1` | texture-tile | `fd723f45` | NONE - flagged in material_language/DESIGN.md:244 |
+| `macro-organic` | `blur-v1` | texture-tile | `fd67e2ab` | biolum matrix variation, shader-lab phase field |
+| `metal` | `blur-v1` | texture-tile | `a1529c3c` | steel walls, metal terrain |
+| `metal-oxide` | `deep-fryer-v1` | texture-tile | `63dae2cd` | verdigris pipes/accent trim, cinder dark metal |
+| `metal_grating` | `deep-fryer-v1` | texture-tile | `4ad71659` | grating catwalk floors |
+| `riveted_armor` | `deep-fryer-v1` | texture-tile | `d058be80` | identity armour trim, shader-lab phase material |
+| `riveted_armor-scorched` | `deep-fryer-v1` | texture-tile | `88e25e94` | ember cover, scorched identity trim |
+| `rock` | `blur-v1` | texture-tile | `d0eee6b7` | regolith scoured floors, validate.gd |
+| `rock-moss` | `telablur-v1` | texture-tile | `6d30b225` | mossy rock strata, cinder rock terrain |
+| `rough_stucco` | `blur-v1` | texture-tile | `7fa80208` | identity shells, showcase props, cinder deck |
+| `rough_stucco-weathered` | `telablur-v1` | texture-tile | `80f3fbd4` | enamel stucco walls, ash terrain, cinder deck |
+| `sand` | `blur-v1` | texture-tile | `fbd76580` | dune floors, lacuna/vermilion arena grounds, showcase |
+| `weathered_concrete` | `blur-v1` | texture-tile | `3087cf6c` | material families (pearl cast), world terrain default, identity-map shells |
+| `weathered_concrete-damp` | `blur-v1` | texture-tile | `274533a3` | enamel damp walls, gallery roles |
+| `weathered_concrete-worn` | `blur-v1` | texture-tile | `b150f6a4` | pearl worn walls, aurora shell, identity trim |
+
+### Normals (13) — all `blur-core-v1` → baker `normal-map`
+| Asset | Job id | Drives |
+| --- | --- | --- |
+| `corrugated_metal` | `c78096f8` | vent/corrugated bump |
+| `diamond_plate` | `74d58f80` | tread-plate bump |
+| `grass` | `b81fb534` | grass floor bump |
+| `hazard_stripes` | `1e32e549` | hazard-trim bump |
+| `hex_paneling` | `cca2dba8` | pearl/enamel panel bump |
+| `holographic_grid` | `247999cb` | enamel/scenery panel bump |
+| `ice` | `a26f5ffa` | ice/snow terrain bump |
+| `metal` | `c568ef8f` | brushed-alloy/oxidised bump |
+| `metal_grating` | `306c39ad` | grating + oxidised bump |
+| `rock` | `04baa6d7` | rock/ash/stone terrain bump |
+| `rough_stucco` | `019b42dc` | stucco + scenery inlay bump |
+| `sand` | `68ef7d47` | sand/dirt terrain bump |
+| `weathered_concrete` | `4fa28a5a` | concrete terrain + pearl-ceramic bump |
+
+### Sky (5) — all `blur-v1` → baker `sky` (128×64 equirect)
+| Asset | Job id | Maps | Player sees |
+| --- | --- | --- | --- |
+| `ashen` | `b4652488` | Sunscar, Monsoon, Vermilion Fold, Cinder Array | grey ash sky |
+| `ember` | `a5c0ecee` | Ember Crucible | volcanic red sky |
+| `frost` | `7e5fc4ac` | Verdant, Tidal, Lacuna Court, Aurora Basin | cold pale sky |
+| `nebula` | `33d0f7bb` | Meridian Exchange, Aurora Stadium | star/nebula backdrop |
+| `void` | `b17e6bc1` | Asterion Relay, Ion Speedway, Nacre Engine | deep-space sky |
+
+### Material LUTs (10 planes / 5 pairs) — all `entanglement-shader-v1` → baker `material-lut`
+| Asset | Job id | Accent |
+| --- | --- | --- |
+| `entanglement` | `b549b7fb` | cold Fresnel sheen on rails and polar ice |
+| `entanglement-arcane` | `cb0658d1` | violet travelling pulse on biolum surfaces and pickups |
+| `entanglement-ceramic` | `f302013c` | pearl/enamel glaze bands |
+| `entanglement-ember` | `700adb53` | amber beacon glow on hazard rims and conduits |
+| `entanglement-void` | `22bd3d06` | oxidised/regolith accent sheen |
+
+### Effects (10 sheets / 42 frames)
+| Sheet | Moth API tool | Baker | Generator job(s) | In game |
+| --- | --- | --- | --- | --- |
+| `arc-burst` | `blur-core-v1` | effect-frame | `dc29b683, d11eeecb, 759af387` | weapon impact rings (plasma/shock cues) + particle lab |
+| `effect-capture-ring` | `blur-core-v1` | effect-frame | `2df0ac41, 2dd6e8eb, 99f751d4` | NO gameplay consumer yet - web zone-capture flag |
+| `effect-explosion` | `blur-core-v1` | effect-frame | `dc9fad3e, aa6603f2, 2fd00b0c` | explosions and vehicle-kill blasts (moth_world.gd) |
+| `effect-heal` | `blur-core-v1` | effect-frame | `eba6c702, cbafc221, 140519c0` | health pickups and mender heal column (moth_world.gd) |
+| `effect-shield` | `blur-core-v1` | effect-frame | `5e139b9a, e7f5356d, ae723b8b` | hex motif inside shader-lab shield bubble |
+| `effect-teleport` | `blur-core-v1` | effect-frame | `4de81227, 321ae8ef, 237c88b4` | teleport in/out swirl (moth_world.gd) |
+| `effect-weather-snow` | `blur-core-v1` | effect-frame | `edd21a9f, 33bff879, 219a06a9` | falling snow motes in snow-scenery maps |
+| `qrc-glyphs` | `qrc-image-v1` | gif-frames | `d4135848` | registry/atlas test only - no gameplay consumer |
+| `quantum-rift` | `blur-core-v1` | effect-frame | `3a65dc0d, 2e41bb42, 4bfb0e43` | NO gameplay consumer yet - web labyrinth rift |
+| `spark-impact` | `blur-core-v1` | effect-frame | `d6d6970a, 1c51ff13` | damage hit sparks (moth_world.gd, pulse cue) |
+
+### Derived (38, local tool — no Moth API)
+Generated offline by `tools/godot-moth/derive.mjs` from the textures above: 24 data maps (AO/roughness/detail), 12 derived normals (sobel, some anisotropic), 2 accent masks. Deterministic integer kernels; provenance in `godot/moth/derived/manifest.json`. See the uniqueness pass below.
+
+### Web-only Moth jobs (14 — never exported to Godot)
+| Engine | Baker | Produces |
+| --- | --- | --- |
+| `blur-midi-v1` | `motif` | MIDI -> soundtrack motifs (web only) |
+| `comet-qrng-v1` | `seed` | random bytes + entropy certificate -> fair seeds (web only) |
+| `labyrinth-v1` | `level-graph` | quantum graph JSON -> arena layout |
+| `otoc-echo-v1` | `echo-map` | trajectory JSON -> delay/feedback tap map (web only) |
+| `qrc-audio-v1` | `audio-clip` | WAV -> ambient beds and room tone (web only) |
+| `qrc-midi-v1` | `motif` | MIDI -> soundtrack motifs (web only) |
+| `retrocausal-echo-v1` | `ir` | WAV impulse response -> convolution reverb (web only) |
+
 ## Material variety: what is implemented
 
 The plan's first two slices are in the game today — an offline pass from
@@ -99,17 +281,23 @@ export MOTH_API_KEY=moth_...
 ```
 
 If a key is ever pasted into a shared surface, rotate it at
-`platform.mothquantum.com`.
+`platform.mothquantum.com`. `MOTH_API_BASE` overrides the API origin
+(default `https://api.mothquantum.com`) for testing; it is read from the
+environment like the key and never written to disk.
 
 ## Running a bake
 
 ```bash
+# Print usage (offline, no key required).
+node scripts/moth-bake.mjs help
+
 # Show the engine catalog and the credit cost per run.
 MOTH_API_KEY=... node scripts/moth-bake.mjs catalog
 
-# Generate the local source art and seed audio that engines consume. This is
-# free and deterministic: no key and no credits (writes sources/bed-seed.wav
-# for qrc-audio via makeSourceAudio).
+# Generate the local source art that engines consume. Free and deterministic:
+# no key and no credits. Only inputs referenced by the current manifest are
+# written, plus the shared qrc-vocabulary.zip, motif.mid and
+# sources/bed-seed.wav (for qrc-audio via makeSourceAudio).
 node scripts/moth-bake.mjs sources
 
 # Run every enabled job in the manifest and rewrite game/moth-baked.mjs.
@@ -119,7 +307,7 @@ MOTH_API_KEY=... node scripts/moth-bake.mjs run
 # recorded job id / looks for an existing result).
 MOTH_API_KEY=... node scripts/moth-bake.mjs run --only blur-panel --force
 
-# Rebuild the purely local records (`ir`, `echo-map`) from the raw results
+# Rebuild the purely local records (`ir`, `echo-map`, `audio-clip`) from the raw results
 # already committed under public/moth/files — offline, no key, no credits. This
 # is how the cavern tap map was repaired after the shallow-extraction bug.
 node scripts/moth-bake.mjs repair [--only ir-cavern]
@@ -127,8 +315,25 @@ node scripts/moth-bake.mjs repair [--only ir-cavern]
 
 The first successful run of a job records its `jobId` back into the manifest, so
 a later `run` downloads that result instead of paying for another execution.
+### Source-lock safety (Godot port)
+
+The port pins the original source tree: `verifySource`
+(`tools/godot-export/semantic.mjs`) byte-compares every tracked `game/`,
+`server/`, `assets/`, `public/` and `package*.json` file that exists at
+`port/contracts/source-lock.json`'s `source_commit` against that commit —
+including unstaged edits. Running `run`, `sources` or `repair` rewrites files
+in that set (`game/moth-baked.mjs`, `assets/moth/manifest.json`, existing
+`public/moth/files/**` and `assets/moth/sources/**`) and therefore fails the
+`semantic-export` gate and `tools/godot-package/build.py` until the same change
+is upstreamed to `mojomast/cocs` and the lock's `source_commit` is advanced.
+New files (new raw job directories, brand-new sources) are invisible to the
+check. Port-side paths that are safe to edit freely: `scripts/**`, `docs/**`,
+`tools/**`, `port/**`, `godot/**`.
+
 Set `enabled: false` on a job to skip it, and `--dry` to validate without
-submitting anything.
+submitting anything. The CLI exits `1` when any batch job fails or the
+command is unknown; `repair --only <id>` also rebuilds a job marked
+`enabled: false` when you name it explicitly.
 
 ## How a job becomes game data
 
@@ -151,10 +356,12 @@ Decoders are dependency-free: PNG (filters 0–4, truecolour/palette, 8-bit), ZI
 | `bake.type` | Input | Emits |
 | --- | --- | --- |
 | `texture-tile` | PNG | a small RGBA tile (base64) keyed by texture kind |
+| `grid-texture` | blur-core grid | a normalized grayscale RGBA texture (the `dust`/`flow` fields) |
 | `sky` | PNG | a wide equirectangular RGBA texture |
 | `material-lut` | ZIP | reflectance/transmittance LUTs (small RGB, base64) |
 | `normal-map` | blur-core grid | a tangent-space normal map derived from a blurred height field |
 | `effect-frame` | blur-core grid | one frame of an animated effect (frames merge per name) |
+| `gif-frames` | GIF (decoded by `scripts/moth-gif.mjs`) | one composited frame (`index`) or the whole animation (`all: true`) into `effects` |
 | `level-graph` | inline JSON | a compact room grid: size, coupling, cell states, metrics |
 | `motif` | MIDI | flattened note steps from a reservoir-reordered melody |
 | `ir` | WAV (+ taps JSON) | a same-origin impulse-response descriptor for convolution reverb |
@@ -172,6 +379,7 @@ Decoders are dependency-free: PNG (filters 0–4, truecolour/palette, 8-bit), ZI
 | `deep-fryer-v1` | 1 | blown-out PNG | hull/panel, circuit and chitin albedos |
 | `tessa-image-v1` | 1 | sphere-encoded PNG (≤64×64) | palette-quantized albedo overrides |
 | `blur-core-v1` | 1 | blurred N-D grid JSON | **bump/normal maps and animated effects** (`normals.*`, `effects.*`) |
+| `telablur-v1` | 1 | quantum-blurred PNG (paid batch) | albedo tiles `rock-moss`, `rough_stucco-weathered` |
 | `retrocausal-echo-v1` | 2 | WAV impulse response | **convolution reverb** for the soundtrack (`irs.*`) |
 | `otoc-echo-v1` | 1 | trajectory JSON | **tap maps** (`spaces.*`) driving a delay/feedback space |
 | `qrc-midi-v1` / `blur-midi-v1` | 5 / 1 | MIDI | **motif data** for the soundtrack (`motifs.*`) |
@@ -179,9 +387,14 @@ Decoders are dependency-free: PNG (filters 0–4, truecolour/palette, 8-bit), ZI
 | `qrc-image-v1` | 5 | animated GIF | animated textures, loading art |
 | `qrc-audio-v1` | 5 | WAV | ambient beds, stingers and room-tone (`audio.*`) |
 
+Five further engines are accepted by `--dry` and the catalog but the manifest
+uses none of them today: `graph-v1`, `qpixl-v1`, `toeplitz-v1`, `qrc-train-v2`
+and `qrc-gen-v2`.
+
 `mode: "emu"` runs on the Aer simulator (no QPU access needed). Real-hardware
-runs use the top-level `mode: "qpu"` plus `backend_name`/`qpu_token`, cost more,
-and are gated by your account. The default simulation cap is 20 qubits;
+runs use the top-level `mode: "qpu"` — this tool forwards only `mode` at the
+top level, so hardware-specific fields (`backend_name`, `qpu_token`) must go
+inside the job's `params` — cost more, and are gated by your account. The default simulation cap is 20 qubits;
 `tessa-image-v1` caps at a 64×64 lattice.
 
 Two emulator behaviours worth knowing before you spend credits:
@@ -397,7 +610,8 @@ the rotation yourself if you want it selectable.
 ## Costs and limits
 
 The API exposes no credit balance, only per-engine `credits_per_run` (0–5) and a
-storage quota (`GET /api/v1/me/storage`). Track spend from the manifest. Training
+storage quota (`GET /api/v1/me/storage`). The bake tool does not query the
+quota — check it in the API console. Track spend from the manifest. Training
 artifacts (`state`/`model`) can be reused via `input_files: { slot: "job:<id>/slot" }`
 to generate many takes without re-paying for training.
 
@@ -432,8 +646,10 @@ with dark seams), `rivets` (`panels`: plate grid plus bolt rows along the seams)
 `circuit`, `stripes`, `corrugated` (`ribs`: rolled sinusoidal sheet), `grating`
 (`cells`: bright bars around dark square voids), `diamond` (`cells`: diamond
 tread crosshatch), `weave` (`cells`: 2x2 carbon twill), `mesh` (`cells`:
-expanded-metal slit lattice) and `stars` (`cloudFreq`, `starDensity`: equirect
-star band for skies). Shared knobs: `seed`, `size`, `wide`, `palette`,
+expanded-metal slit lattice), `stars` (`cloudFreq`, `starDensity`: equirect
+star band for skies), `mask` (six band/trace mask families behind the Godot
+accent masks), `ember` (the ember sky panorama) and `glyph` (ten QRC glyph
+sheets decoded by `scripts/moth-gif.mjs`). Shared knobs: `seed`, `size`, `wide`, `palette`,
 `contrast`, `freq`.
 
 `makeSourceAudio` renders the deterministic, original mono seed WAV that
@@ -461,7 +677,8 @@ synthesizes one so the job stays deterministic and offline: `height`
 (`frame`, `seed`) for the expanding shock ring behind `quantum-rift`, `portal`
 (`frame`, `seed`) for expanding rings with angular spokes and a hot core behind
 `arc-burst`, and `spark` (`frame`, `seed`) for a bright core with radiating
-needle rays behind `spark-impact`.
+needle rays behind `spark-impact`. `dust` and `flow` extend the set for the
+`grid-texture` bakers behind the `dust-field` and `flow-field` textures.
 
 The pass-3 effect sheets add six generators, each with a distinct silhouette;
 all take `size`, `frame` and `seed` and return a bounded, deterministic grid:

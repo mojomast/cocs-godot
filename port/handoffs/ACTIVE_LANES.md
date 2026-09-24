@@ -618,3 +618,45 @@ Integration order after `combat-expansion-2026-09-22-v3` ships: copy drafts → 
 Godot import once so new `.uid` sidecars are committed **before** any release run →
 register gates (150 → 153) → run targeted suites → update both PLAY.md files and the
 release notes for the next release → full sweep → commit.
+
+## Moth asset uniqueness pass (2026-09-24)
+
+Owner report: "many of the examples of bump maps are very similar". Audit (`node
+tools/godot-moth/uniqueness.mjs`, new): the 13 baked normals are one quantum-noise
+class — median pair similarity 0.567, six pairs above 0.90 (up to 1.000) — because
+every normal job submits `style: xy`, `strength 0.25–0.55` and no `generateValues`.
+The baked manifest/pixels are source-locked, so the in-game fix shipped through the
+editable derived pipeline instead:
+
+- `tools/godot-moth/derive.mjs`: NORMAL_TARGETS 2 → 12 (per-target magnitude and
+  anisotropic kernel `radius: {x, y}`), directional kernels for ice cracks and
+  concrete drips, broad oxide pitting; 38 derived files regenerated deterministically.
+- `godot/material_language/families.gd`: 10 rebinds so families with albedo structure
+  bind an albedo-derived normal (pearl default/worn, enamel stucco/crackle/damp,
+  alloy circuit, oxidised default/scorched, regolith mossy, biolum matrix); all 13
+  baked normals stay bound somewhere (contract: counts.normals == 13).
+- Result: derived-set audit median 0.091, max 0.897, **0 near-duplicates, 0 flat**
+  (was 6 near-duplicates). Before/after sheets on the gallery.
+- `scripts/moth-bake.mjs`: heightGrid gained `freq`/`octaves`/`angle`/`anisotropy`
+  and seeded `cells` (defaults reproduce old output) so the NEXT paid bake can be
+  unique; docs/MOTH.md carries the per-job re-bake proposal (upstream manifest +
+  credits required).
+- Verification: material-language 989/0, material-derived 4/4, moth-resources 101
+  planes, moth-scenery 9 maps, moth-export 2/2, moth-bake game suite 46/46,
+  coverage floor OK. Uncommitted with the rest of the tree.
+
+### Uniqueness comparison gallery (2026-09-24, same day)
+
+New page `moth-uniqueness.html` (linked from `moth.html` + `index.html`): per-rebind
+drag-to-compare sliders (exact shipped PNG tiles, ×8/×4 nearest), the two set sheets,
+per-plane structure/twin metrics, five same-scene in-game before/after pairs plus a
+byte-identical control, changed-pixel diff maps, kernel table and reproduce commands.
+
+In-game pairs: rendered with the lane's own `gallery_capture.gd --mode=family` at
+1280x800 (GL Compatibility, private Xvfb, software raster). BEFORE = throwaway copy
+`/tmp/opencode/godot-before` with exactly the ten rebinds reverted (20-line diff);
+AFTER = the real tree. `hazard-industrial` (no rebinds) renders **byte-identical**
+before/after, proving the copy method changes nothing else; changed-pixel deltas:
+pearl-ceramic 9.72%, oxidised-copper 12.73%, brushed-alloy 3.98%, regolith 2.58%,
+enamel-glaze 0.88%. `bioluminescent-membrane` is pixel-identical in this view (panel
+shows sorted variants[1] = fringe + default; only `matrix` was rebound).

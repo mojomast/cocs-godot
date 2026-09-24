@@ -2,7 +2,7 @@
   "version": 1,
   "provenance": {
     "tool": "tools/godot-moth/derive.mjs",
-    "tool_sha256": "8193559232be3cdf0774a6f5c80fa1d50d551127bf5b92071370e9f6cf769570",
+    "tool_sha256": "cc9786dca0f066efbcecce1ad9a1b7f808403e4e2e681e9e0d37e3912ff5375b",
     "source_manifest": "godot/moth/generated/manifest.json",
     "source_manifest_sha256": "f3f97a24e142229e48a58a91d162298b8ca7b945adba46a8a917c5d926f0b323",
     "source_bake": "game/moth-baked.mjs",
@@ -1464,6 +1464,194 @@
       "pixel_sha256": "2798a17155719d821d377bb1ef0c3e0a50461a9e15e34ed882f269e9c8930b66",
       "png_sha256": "c1bf5e853f75695bdad4e543c3c237ee3d6d934b5c29daace916e0a74a460eee"
     },
+    "normal--circuit_board-etch": {
+      "path": "res://moth/derived/normals/circuit_board-etch.png",
+      "kind": "normal",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "circuit_board-etch",
+          "pixel_sha256": "795a3651cee0f6ec92e7e1e71ea644d6e91e64991fa27a126501c237879fcf65",
+          "png_sha256": "21a89925e0030d3fdb28c9194022c5941e07247ffaa1e6e0a8ff496e340955ff"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": 1,
+        "target_magnitude": 0.46,
+        "applied_scale": 19.731855,
+        "mean_slope": 0.023313,
+        "green_sign": 1,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded"
+      },
+      "stats": {
+        "mean_magnitude": 0.46
+      },
+      "pixel_sha256": "c3f1695078e6d0e9de1b0235334485533807b8a408b13cdcad7617ce9558d73f",
+      "png_sha256": "4cccae68b875c8fe2647d466deba1aa65bf911b7b0ce0e5ae0566bae6e9ec3ae"
+    },
+    "normal--hex_paneling-mottle": {
+      "path": "res://moth/derived/normals/hex_paneling-mottle.png",
+      "kind": "normal",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "hex_paneling-mottle",
+          "pixel_sha256": "eae7bd8b07848aae6854693704866dd253f98a08a6d586a397023bfdd0cbb671",
+          "png_sha256": "d9d5473425b71f7d829a2db984dcfe7f9ea845a91e4b745798c4533190059a4d"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": 2,
+        "target_magnitude": 0.3,
+        "applied_scale": 15.802111,
+        "mean_slope": 0.018985,
+        "green_sign": 1,
+        "height_channel": "max-mix",
+        "height_channel_note": "mean of rec709 luminance and the max channel"
+      },
+      "stats": {
+        "mean_magnitude": 0.3
+      },
+      "pixel_sha256": "6c5ab7c465618b1852ec4c94582bf739d6f3194fc09844b7a4e935e40efa9ea3",
+      "png_sha256": "3568028bbc8de4d806d6130a3148c7eb16902a52d1b5f1e90b516aaa0c4b9d0e"
+    },
+    "normal--ice-cracked": {
+      "path": "res://moth/derived/normals/ice-cracked.png",
+      "kind": "normal",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "ice-cracked",
+          "pixel_sha256": "da1fdb2a6e13fa2cd931fc5a8deb1b9a1cf0684d15b3df8f24d8121356ebcbde",
+          "png_sha256": "2ebe487943a7835bef5ca43bf362d8ab8ed17ab656928ca1756ff2cb9738f945"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": {
+          "x": 3,
+          "y": 1
+        },
+        "target_magnitude": 0.55,
+        "applied_scale": 59.294919,
+        "mean_slope": 0.009276,
+        "green_sign": 1,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded"
+      },
+      "stats": {
+        "mean_magnitude": 0.55
+      },
+      "pixel_sha256": "b9279a0a3d656c5f011a4382f73182bed0bcf0872c4d08fc7dd28c38a7f72a21",
+      "png_sha256": "a0d4e78258a47bc17c1767c8559a6636f8da68aa3dff1586fb0598fce41e8978"
+    },
+    "normal--macro-organic": {
+      "path": "res://moth/derived/normals/macro-organic.png",
+      "kind": "normal",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "macro-organic",
+          "pixel_sha256": "a11dffc90b37cc2209ee9857e4616dd5b09a9b20380dbdd5fecb93c40b79ac59",
+          "png_sha256": "de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": 2,
+        "target_magnitude": 0.36,
+        "applied_scale": 41.202367,
+        "mean_slope": 0.008737,
+        "green_sign": 1,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded"
+      },
+      "stats": {
+        "mean_magnitude": 0.36
+      },
+      "pixel_sha256": "9d2b104d5c8572defae3acfa8821ac22523b6d2b562afcb65fcae497f93b7e41",
+      "png_sha256": "9a49a91946c6f2935c23d1989a3764d0de4e64cea8c9accd28ca378a2fbbf48a"
+    },
+    "normal--metal-oxide": {
+      "path": "res://moth/derived/normals/metal-oxide.png",
+      "kind": "normal",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "metal-oxide",
+          "pixel_sha256": "bbb111708d24226fd1ebe24fbdfc7e339a4f5f1edcff38884cc6e9b535e26e6c",
+          "png_sha256": "82ac59a91f7be9a0fd4182a8b83d7b2b7cf07d7bb6e98ae5b5ff006eedcb8257"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": 2,
+        "target_magnitude": 0.44,
+        "applied_scale": 68.898647,
+        "mean_slope": 0.006386,
+        "green_sign": 1,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded"
+      },
+      "stats": {
+        "mean_magnitude": 0.44
+      },
+      "pixel_sha256": "e56f1ba89814ecc18a794c975629ede8cd1dbf1c15d679d5585cfed78a7ddfe3",
+      "png_sha256": "ea314cc8916d9e1734b8b7a17c40e2c2e28861385dd8db5e460dd7c9a47c3033"
+    },
     "normal--riveted_armor": {
       "path": "res://moth/derived/normals/riveted_armor.png",
       "kind": "normal",
@@ -1500,6 +1688,194 @@
       },
       "pixel_sha256": "59ed3bb38363f2b46eb8c22e81c9ecd6448e13afea1405a3846013ebe9b0a188",
       "png_sha256": "86e039e81c256d1c32ba2cc5a1e73106f39cbca1ff0a3ba89c0e989569c6d699"
+    },
+    "normal--riveted_armor-scorched": {
+      "path": "res://moth/derived/normals/riveted_armor-scorched.png",
+      "kind": "normal",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "riveted_armor-scorched",
+          "pixel_sha256": "231709cd2e8eca18f98e835a484c1874e307a870472b408d0a695e5dd4b3b72e",
+          "png_sha256": "a7e8f11847cd2b402e9cc631039c28fd6d4e1d851e1555af58143fc820a511ec"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": 1,
+        "target_magnitude": 0.5,
+        "applied_scale": 12.713684,
+        "mean_slope": 0.039328,
+        "green_sign": 1,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded"
+      },
+      "stats": {
+        "mean_magnitude": 0.5
+      },
+      "pixel_sha256": "371b1a4205ba9cf4edb9e417fc753b5edaa3f88ec17680b119598b9a1fee678b",
+      "png_sha256": "2cb6386312ea438405d942b978fb1e36d4e4e045653a60ef972588a72ae97707"
+    },
+    "normal--rock-moss": {
+      "path": "res://moth/derived/normals/rock-moss.png",
+      "kind": "normal",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "rock-moss",
+          "pixel_sha256": "022e248a992780d478b970260ae6a9eed79ac58b68063fdb227b9e8ecec4904c",
+          "png_sha256": "80c63f01502fa13b0deb309c9d90a38104cde1b6877075d00d273b8a80dfdbda"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": 2,
+        "target_magnitude": 0.6,
+        "applied_scale": 60.706464,
+        "mean_slope": 0.009884,
+        "green_sign": 1,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded"
+      },
+      "stats": {
+        "mean_magnitude": 0.6
+      },
+      "pixel_sha256": "e377840b43658a5d3c031eb24adb465bd76506005dac0b875963c7a93942007e",
+      "png_sha256": "28e4ee99927b6b8a1532328c5da5de9c3f58b6dba4f236bf72a65034397ad801"
+    },
+    "normal--rough_stucco-weathered": {
+      "path": "res://moth/derived/normals/rough_stucco-weathered.png",
+      "kind": "normal",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "rough_stucco-weathered",
+          "pixel_sha256": "69741890836220d011357b7fe3fb293095c3e22011785bfeda997c896c082331",
+          "png_sha256": "f74639c6eb1736a65e3eeda2705fcf55c3be1a6c21acd33b72cd76c4466ea593"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": 2,
+        "target_magnitude": 0.48,
+        "applied_scale": 73.093804,
+        "mean_slope": 0.006567,
+        "green_sign": 1,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded"
+      },
+      "stats": {
+        "mean_magnitude": 0.48
+      },
+      "pixel_sha256": "3b6758b7599d3d9d7e17573a82e269d4dcd1b4c4f54e53af6e87d889f499ccf2",
+      "png_sha256": "03ab6e682d4104f531a9a331dc5d66cdaafeb5deb2be9343198f12de71115e97"
+    },
+    "normal--weathered_concrete-damp": {
+      "path": "res://moth/derived/normals/weathered_concrete-damp.png",
+      "kind": "normal",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "weathered_concrete-damp",
+          "pixel_sha256": "8ebbc8fdf547d22f5152a177c3d1c9f5c8e5c08b3d639ce54598c5f01bdc60c9",
+          "png_sha256": "8a143f57858a26d6ea5ab81badc60cb0ea154294b9fe180c505cb1b472bd0fab"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": 2,
+        "target_magnitude": 0.34,
+        "applied_scale": 12.316127,
+        "mean_slope": 0.027606,
+        "green_sign": 1,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded"
+      },
+      "stats": {
+        "mean_magnitude": 0.34
+      },
+      "pixel_sha256": "6530dae51b414c94d4042d82faa9218a51b729ff003dc30fc29e09f5e067b93f",
+      "png_sha256": "12303dd906a6864ef854df189ff42d1ad3de65e7e6a9e05c0e889bbf14b64e0a"
+    },
+    "normal--weathered_concrete-worn": {
+      "path": "res://moth/derived/normals/weathered_concrete-worn.png",
+      "kind": "normal",
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "color_space": "linear",
+      "channel_map": {
+        "r": "normal_x",
+        "g": "normal_y",
+        "b": "normal_z",
+        "a": "unused"
+      },
+      "source": [
+        {
+          "bucket": "textures",
+          "key": "weathered_concrete-worn",
+          "pixel_sha256": "896b617ad27e9b881d393fd0b74280d94a13335b03e11d6ff5655691c875f576",
+          "png_sha256": "fc6707d6bf6ae6dc6dfec746100f83015ce74885976b20688280f29bcdf111cf"
+        }
+      ],
+      "algorithm": "luminance-sobel-height-normalised",
+      "parameters": {
+        "height_radius": {
+          "x": 1,
+          "y": 3
+        },
+        "target_magnitude": 0.42,
+        "applied_scale": 37.515798,
+        "mean_slope": 0.011195,
+        "green_sign": 1,
+        "height_channel": "luminance",
+        "height_channel_note": "rec709 rounded"
+      },
+      "stats": {
+        "mean_magnitude": 0.42
+      },
+      "pixel_sha256": "086e107ddb12db7682a53f1db3aae52d90a7c14b671882156c2f0513c7e8a9e8",
+      "png_sha256": "2a76f240002c148f52cc9994683a43892ab21fe270d29f086422cb7a78e836fc"
     }
   }
 }

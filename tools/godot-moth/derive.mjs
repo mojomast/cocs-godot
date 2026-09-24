@@ -2,10 +2,16 @@
 // Deterministic offline derivation of the missing Moth maps.
 //
 // The baked set ships 31 albedo textures and 13 normals but no roughness,
-// occlusion, detail or accent masks, and two base textures used by the material
-// language have no baked normal at all. This tool derives those from the exact
-// shipped pixels. It never re-bakes, never touches res://moth/generated and
-// never changes the 101-plane inventory.
+// occlusion, detail or accent masks, and twelve base textures used by the
+// material language have no baked normal at all. This tool derives those from
+// the exact shipped pixels. It never re-bakes, never touches
+// res://moth/generated and never changes the 101-plane inventory.
+//
+// Uniqueness pass (2026-09-24): the thirteen baked normals are all the same
+// class of quantum noise (pairwise low-frequency correlation up to 1.00), so the
+// material families whose own albedo carries real structure bind a derived
+// normal instead. Each target carries its own magnitude and blur radius so the
+// kernels differ per material, not just per seed.
 //
 // Reproducibility: integer kernels (rounded box blur, Sobel difference,
 // min/max normalisation). The only floating point is sqrt/division/round, which
@@ -44,7 +50,22 @@ export const DATA_TARGETS = {
   'corrugated_metal': 0.50, 'macro-organic': 0.50,
 };
 // Target mean slope magnitude for the two textures whose baked normal is absent.
-export const NORMAL_TARGETS = { 'alien_chitin': 0.30, 'riveted_armor': 0.55 };
+export const NORMAL_TARGETS = {
+  // Baked-normal-free textures whose own albedo structure beats the duplicate
+  // quantum-noise normals. Numbers are magnitude, optional blur radius (default
+  // 1) for a per-material kernel character.
+  'alien_chitin': 0.30, 'riveted_armor': 0.55,
+  'hex_paneling-mottle': { magnitude: 0.30, radius: 2 },
+  'weathered_concrete-worn': { magnitude: 0.42, radius: { x: 1, y: 3 } },   // drip streaks
+  'weathered_concrete-damp': { magnitude: 0.34, radius: 2 },
+  'rough_stucco-weathered': { magnitude: 0.48, radius: 2 },
+  'ice-cracked': { magnitude: 0.55, radius: { x: 3, y: 1 } },   // crack lines, directional
+  'metal-oxide': { magnitude: 0.44, radius: 2 },                  // broad pitting, not fine grain
+  'circuit_board-etch': { magnitude: 0.46, radius: 1 },
+  'riveted_armor-scorched': { magnitude: 0.50, radius: 1 },
+  'rock-moss': { magnitude: 0.60, radius: 2 },
+  'macro-organic': { magnitude: 0.36, radius: 2 },
+};
 export const MASK_TARGETS = { 'hazard_stripes': 'yellow-band', 'circuit_board': 'trace' };
 // Keys used only to calibrate the green-channel sign convention: they ship both
 // an albedo and a baked normal, so a derived normal can be correlated against the
@@ -91,6 +112,10 @@ export function heightField(rgba, width, height, mode) {
   return out;
 }
 
+export function boxBlurWrap(src, width, height, radius) {
+  return boxBlurWrapAxes(src, width, height, radius, radius);
+}
+
 export function chooseHeightMode(rgba, width, height) {
   const light = heightField(rgba, width, height, 'luminance');
   const mix = heightField(rgba, width, height, 'max-mix');
@@ -111,18 +136,20 @@ export function chooseHeightMode(rgba, width, height) {
   };
 }
 
-// Tiling mean filter. Integer sums, round-half-up division: no FP drift, and
-// wrap-around edges keep the derived tile seamlessly repeatable.
-export function boxBlurWrap(src, width, height, radius) {
+// Tiling mean filter, optionally anisotropic: RX x RY kernel with wrap-around
+// edges, integer sums and round-half-up division, so the derived tile stays
+// seamlessly repeatable and free of FP drift. The square form (RX == RY) is
+// arithmetic-identical to the pre-2026-09-24 kernel.
+export function boxBlurWrapAxes(src, width, height, radiusX, radiusY) {
   const out = new Uint8Array(width * height);
-  const span = 2 * radius + 1;
-  const count = span * span;
+  const spanX = 2 * radiusX + 1, spanY = 2 * radiusY + 1;
+  const count = spanX * spanY;
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
       let sum = 0;
-      for (let dy = -radius; dy <= radius; dy++) {
+      for (let dy = -radiusY; dy <= radiusY; dy++) {
         const sy = ((y + dy) % height + height) % height;
-        for (let dx = -radius; dx <= radius; dx++) {
+        for (let dx = -radiusX; dx <= radiusX; dx++) {
           const sx = ((x + dx) % width + width) % width;
           sum += src[sy * width + sx];
         }
@@ -181,9 +208,11 @@ export function dataMap(rgba, width, height, prior) {
 // Magnitude is normalised per texture: the Sobel response is divided by its own
 // mean so the declared target magnitude is what the file actually contains. That
 // keeps a low-contrast tile from being flattened or a busy one from saturating.
-export function normalMap(rgba, width, height, targetMagnitude, greenSign, mode) {
+export function normalMap(rgba, width, height, targetMagnitude, greenSign, mode, heightRadius = NORMAL_PARAMS.height_radius) {
   const light = heightField(rgba, width, height, mode);
-  const smooth = boxBlurWrap(light, width, height, NORMAL_PARAMS.height_radius);
+  const rx = typeof heightRadius === 'object' ? Math.max(0, heightRadius.x | 0) : Math.max(0, heightRadius | 0);
+  const ry = typeof heightRadius === 'object' ? Math.max(0, heightRadius.y | 0) : rx;
+  const smooth = boxBlurWrapAxes(light, width, height, rx, ry);
   const { gx, gy } = sobelWrap(smooth, width, height);
   const count = width * height;
   let magnitudeSum = 0;
@@ -391,16 +420,20 @@ export async function deriveAssets(output = DERIVED) {
       },
       planeStats(result.pixels, 'data'));
   }
-  for (const [key, targetMagnitude] of Object.entries(NORMAL_TARGETS)) {
+  for (const [key, spec] of Object.entries(NORMAL_TARGETS)) {
     check(!manifest.normals?.[key], `${key}: a baked normal exists; deriving one would shadow the bake`);
+    const { magnitude: targetMagnitude, radius: heightRadius = NORMAL_PARAMS.height_radius } = typeof spec === 'number'
+      ? { magnitude: spec, radius: NORMAL_PARAMS.height_radius } : spec;
     const source = decodePlane(manifest, 'textures', key);
     const mode = chooseHeightMode(source.pixels, source.image.width, source.image.height);
-    const result = normalMap(source.pixels, source.image.width, source.image.height, targetMagnitude, calibration.chosen_green_sign, mode.mode);
+    const result = normalMap(source.pixels, source.image.width, source.image.height, targetMagnitude, calibration.chosen_green_sign, mode.mode, heightRadius);
     emit(`normal--${key}`, 'normal', source.image.width, source.image.height, result.pixels,
       source_('textures', key, source.entry, source.pngSha),
       'luminance-sobel-height-normalised',
       {
-        ...NORMAL_PARAMS, target_magnitude: targetMagnitude, applied_scale: result.scale,
+        ...NORMAL_PARAMS, target_magnitude: targetMagnitude,
+        height_radius: (typeof heightRadius === 'object' ? { x: heightRadius.x, y: heightRadius.y } : heightRadius),
+        applied_scale: result.scale,
         mean_slope: result.mean_slope, green_sign: calibration.chosen_green_sign,
         height_channel: mode.mode, height_channel_note: HEIGHT_MODES[mode.mode],
       },

@@ -6,6 +6,7 @@
 // dependencies, and emits a compact, deterministic data module the game can
 // consume at runtime: game/moth-baked.mjs.
 //
+//   node scripts/moth-bake.mjs help                             offline usage summary
 //   MOTH_API_KEY=... node scripts/moth-bake.mjs catalog
 //   MOTH_API_KEY=... node scripts/moth-bake.mjs sources
 //   MOTH_API_KEY=... node scripts/moth-bake.mjs run [--only <id>] [--force] [--dry]
@@ -1929,12 +1930,41 @@ export function makeSourceArt(name, spec = SOURCE_ART[name] || SOURCE_ART.panel)
 }
 
 // A non-negative, seamlessly tiling 2D height field for blur-core-v1.
-function heightGrid(size, seed, kind = 'noise') {
+//
+// Uniqueness pass (2026-09-24): the original 13 normal jobs shipped identical
+// statistics (style xy, strength 0.25-0.55, no generateValues at all), so their
+// baked normals correlate up to 1.00. The optional spec keys below let a
+// manifest job describe a distinct relief instead of another seed of the same
+// noise; every default reproduces the pre-2026-09-24 output byte-for-byte.
+//
+//   { type: 'height', kind: 'noise'|'ridge'|'cells', size, seed,
+//     freq: 8,          // base tiling frequency (cells: 4)
+//     octaves: 5,       // fbm octaves
+//     angle: 0,         // torus rotation in radians (directional streaks)
+//     anisotropy: 1 }   // stretch along the rotated v axis (1..8)
+function heightGrid(size, seed, kind = 'noise', spec = {}) {
+  const freq = spec.freq ?? (kind === 'cells' ? 4 : 8);
+  const octaves = spec.octaves ?? 5;
+  const angle = spec.angle ?? 0;
+  const anisotropy = Math.max(1, spec.anisotropy ?? 1);
+  const cos = Math.cos(angle), sin = Math.sin(angle);
+  const wrap = (value) => value - Math.floor(value);
   return Array.from({ length: size }, (_, y) => Array.from({ length: size }, (_, x) => {
     const u = x / size, v = y / size;
-    let h = tileFbm(u, v, seed, 8, 5);
+    let h;
+    if (kind === 'cells') {
+      // Seeded cells: freq defaults to 4; the phases are derived from the seed, so
+      // unlike the pre-2026-09-24 formula two cell jobs no longer share one lattice.
+      const phaseU = (seed % 97) * 0.0137, phaseV = (seed % 89) * 0.0119;
+      h = Math.abs(Math.sin((u * freq + phaseU) * Math.PI) * Math.cos((v * freq + phaseV) * Math.PI));
+    } else {
+      // A rotation (and optional stretch) of the torus keeps the field seamless.
+      const cu = u - 0.5, cv = v - 0.5;
+      const ru = wrap(cu * cos - cv * sin + 0.5);
+      const rv = wrap((cu * sin + cv * cos) * anisotropy + 0.5);
+      h = tileFbm(ru, rv, seed, freq, octaves);
+    }
     if (kind === 'ridge') h = 1 - Math.abs(h * 2 - 1);
-    if (kind === 'cells') h = Math.abs(Math.sin(u * Math.PI * 4) * Math.cos(v * Math.PI * 4));
     return Math.round(h * 1000) / 1000;
   }));
 }
@@ -2086,7 +2116,7 @@ function flowGrid(size, seed = 173) {
 export function generateValues(job) {
   const spec = job.generateValues;
   if (!spec || !spec.type) return null;
-  if (spec.type === 'height') return heightGrid(spec.size || 32, spec.seed || 1, spec.kind || 'noise');
+  if (spec.type === 'height') return heightGrid(spec.size || 32, spec.seed || 1, spec.kind || 'noise', spec);
   if (spec.type === 'radial') return radialGrid(spec.size || 32, spec.frame || 0, spec.seed || 3);
   if (spec.type === 'portal') return portalGrid(spec.size || 32, spec.frame || 0, spec.seed || 41);
   if (spec.type === 'spark') return sparkGrid(spec.size || 32, spec.frame || 0, spec.seed || 61);
@@ -2282,15 +2312,39 @@ function parseArgs(argv) {
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--force' || a === '--dry') args[a.slice(2)] = true;
+    else if (a === '--help' || a === '-h') args.help = true;
     else if (a === '--only') args.only = argv[++i];
     else args._.push(a);
   }
   return args;
 }
 
+const USAGE = `Moth Quantum asset bake pipeline (scripts/moth-bake.mjs)
+
+  MOTH_API_KEY=... node scripts/moth-bake.mjs catalog         list engines + credits per run (needs key)
+  node scripts/moth-bake.mjs sources                          write local source art for manifest inputs (offline)
+  MOTH_API_KEY=... node scripts/moth-bake.mjs run [options]   run enabled jobs, emit game/moth-baked.mjs
+  node scripts/moth-bake.mjs repair [--only <id>]             rebuild local records ir/echo-map/audio-clip (offline)
+
+run options:
+  --only <id>   a single manifest job id (also accepted by repair)
+  --force       submit a fresh job even when a jobId is recorded
+  --dry         validate the manifest without submitting or writing
+
+Environment:
+  MOTH_API_KEY    API key (never written to disk); required for catalog/run
+  MOTH_API_BASE   API origin override (default https://api.mothquantum.com)
+
+Exit codes: 0 ok, 1 when any batch job fails or the command is unknown.
+Docs: docs/MOTH.md (gallery, provenance tables, source-lock safety).`;
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const command = args._[0] || 'run';
+  if (args.help || command === 'help') {
+    console.log(USAGE);
+    return;
+  }
   if (command === 'catalog') {
     const key = readKey();
     const engines = await listEngines(key);
