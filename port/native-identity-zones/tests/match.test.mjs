@@ -37,7 +37,7 @@ test('identity zone allowlist pins one reviewed map/mode pair and its identity e
   assert.ok(IDENTITY_ARENA_IDS.includes(entry.id));
 });
 
-test('identity zone config accepts only ordinary source domination rules', () => {
+test('identity zone config accepts bounded local domination rules', () => {
   const config = validateIdentityZoneConfig({});
   assert.equal(config.mode, 'domination');
   assert.equal(config.botCount, 2);
@@ -46,7 +46,7 @@ test('identity zone config accepts only ordinary source domination rules', () =>
   for (const bad of [{mode:'deathmatch'}, {mode:'koth'}, {mode:'horde'}]) {
     assert.throws(() => validateIdentityZoneConfig(bad), /domination only/);
   }
-  for (const bad of [{botCount:-1}, {botCount:8}, {timeLimit:59}, {timeLimit:901}, {fragLimit:0}, {fragLimit:901}]) {
+  for (const bad of [{botCount:-1}, {botCount:25}, {timeLimit:59}, {timeLimit:901}, {fragLimit:0}, {fragLimit:901}]) {
     assert.throws(() => validateIdentityZoneConfig(bad), /must be/);
   }
   assert.throws(() => validateIdentityZoneConfig({difficulty:'impossible'}), /Unsupported difficulty/);

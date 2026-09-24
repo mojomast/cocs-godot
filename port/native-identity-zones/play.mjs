@@ -1,6 +1,6 @@
 // Standalone owned convenience entry until the lead wires the common launcher.
 //
-//   GODOT_BIN=<pinned 4.5.2> node port/native-identity-zones/play.mjs [--bots=0..7]
+//   GODOT_BIN=<pinned 4.5.2> node port/native-identity-zones/play.mjs [--bots=0..24]
 //     [--round-seconds=60..900] [--score-limit=1..900]
 //
 // Starts the owned loopback Domination authority and the identity zone scene on
@@ -15,10 +15,10 @@ const values = {bots:'2', 'round-seconds':'180', 'score-limit':'900'};
 const seen = new Set();
 for (const arg of process.argv.slice(2)) {
   const match = /^--(bots|round-seconds|score-limit)=(.+)$/.exec(arg);
-  if (!match || seen.has(match[1])) throw Error('Use --bots=0..7 --round-seconds=60..900 --score-limit=1..900, once each');
+  if (!match || seen.has(match[1])) throw Error('Use --bots=0..24 --round-seconds=60..900 --score-limit=1..900, once each');
   seen.add(match[1]); values[match[1]] = match[2];
 }
-for (const [key, min, max] of [['bots', 0, 7], ['round-seconds', 60, 900], ['score-limit', 1, 900]]) {
+for (const [key, min, max] of [['bots', 0, 24], ['round-seconds', 60, 900], ['score-limit', 1, 900]]) {
   if (!/^\d+$/.test(values[key]) || +values[key] < min || +values[key] > max) throw Error(`Invalid ${key}`);
 }
 const lock = JSON.parse(readFileSync('port/contracts/source-lock.json', 'utf8'));

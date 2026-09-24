@@ -18,7 +18,8 @@ async function runRoute(plan, env) {
   // BEFORE any authority module is imported or constructed. options() already
   // guarantees lobby can never carry --debug-panel.
   const debug = plan.userArgs.includes('--debug-panel');
-  if (debug) { process.env.COCS_DEBUG = '1'; }
+  const previousDebug = process.env.COCS_DEBUG;
+  if (debug) process.env.COCS_DEBUG = '1';
   // These paths are relative to this artifact, never to the caller's cwd/repo.
   // Native-only scenes and external lobby never import local authority adapters.
   const factory = plan.nativeOnly || plan.endpoint ? null : plan.nativeArena
@@ -85,6 +86,9 @@ async function runRoute(plan, env) {
     }
     if (stopping) return signalCode || 1;
     const engineArgs = plan.userArgs.some(arg => ['--session-smoke','--smoke'].includes(arg)) ? ['--headless','--audio-driver','Dummy'] : [];
+    // Engine console diagnostics are available on every scene, including
+    // offline galleries and multiplayer, without enabling authority cheats.
+    if (plan.userArgs.includes('--diagnostics')) engineArgs.push('--verbose');
     const endpointArgs = plan.nativeOnly ? [] : [`--endpoint=${endpoint}`];
     child = spawn(join(root, executable), [...engineArgs, '--main-pack',join(root, 'cocs.pck'), plan.scene, '--', ...endpointArgs, ...plan.userArgs], {cwd:root, env:childEnv, stdio:'inherit'});
     childDone = new Promise((resolve, reject) => { child.once('error', reject); child.once('exit', (code, signal) => resolve({code, signal})); });
@@ -107,6 +111,8 @@ async function runRoute(plan, env) {
     }
     process.removeListener('SIGINT', interrupt); process.removeListener('SIGTERM', terminate);
     rmSync(runtime, {recursive:true, force:true, maxRetries:5, retryDelay:100});
+    if (previousDebug === undefined) delete process.env.COCS_DEBUG;
+    else process.env.COCS_DEBUG = previousDebug;
     console.log('PACKAGE_STOPPED');
   }
 }

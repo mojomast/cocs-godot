@@ -16,8 +16,8 @@ test('package native-dm routes the three identity maps to the Deathmatch scene',
     assert.equal(plan.endpoint, null);
     assert.equal(plan.scene, 'res://native_arenas/demo.tscn');
     assert.deepEqual(plan.userArgs, [`--map=${map}`, '--mode=deathmatch', '--bots=2', '--round-seconds=180', '--smoke']);
-    const interactive = options(['--experience=native-dm', `--map=${map}`, '--bots=7', '--round-seconds=300'], catalog);
-    assert.deepEqual(interactive.userArgs, [`--map=${map}`, '--mode=deathmatch', '--bots=7', '--round-seconds=300']);
+    const interactive = options(['--experience=native-dm', `--map=${map}`, '--bots=24', '--round-seconds=300'], catalog);
+    assert.deepEqual(interactive.userArgs, [`--map=${map}`, '--mode=deathmatch', '--bots=24', '--round-seconds=300']);
   }
 });
 test('package identity ids are rejected where they are not reviewed routes', () => {
@@ -37,6 +37,7 @@ test('package identity ids are rejected where they are not reviewed routes', () 
   }
   assert.throws(() => options(['--experience=native-dm', '--map=lacuna-court', '--mode=domination'], catalog));
   assert.throws(() => options(['--experience=native-dm', '--map=lacuna-court', '--play'], catalog));
+  assert.throws(() => options(['--experience=native-dm', '--bots=25'], catalog), /--bots must be 1\.\.24/);
 });
 test('package identity-zones routes Domination on Vermilion Fold only', () => {
   const plan = options(['--experience=identity-zones', '--smoke'], catalog);
@@ -47,15 +48,15 @@ test('package identity-zones routes Domination on Vermilion Fold only', () => {
   assert.deepEqual(plan.userArgs, ['--map=vermilion-fold', '--mode=domination', '--bots=2',
     '--round-seconds=120', '--score-limit=30', '--smoke']);
   // The reviewed bounds come from the scene and the authority, not from a wider guess.
-  const relaxed = options(['--experience=identity-zones', '--bots=7', '--round-seconds=900', '--score-limit=900'], catalog);
-  assert.deepEqual(relaxed.userArgs, ['--map=vermilion-fold', '--mode=domination', '--bots=7',
+  const relaxed = options(['--experience=identity-zones', '--bots=24', '--round-seconds=900', '--score-limit=900'], catalog);
+  assert.deepEqual(relaxed.userArgs, ['--map=vermilion-fold', '--mode=domination', '--bots=24',
     '--round-seconds=900', '--score-limit=900']);
   // Solo practice is a reviewed bound on this route: zero bots, unlike native-dm.
   const solo = options(['--experience=identity-zones', '--bots=0'], catalog);
   assert.deepEqual(solo.userArgs, ['--map=vermilion-fold', '--mode=domination', '--bots=0',
     '--round-seconds=120', '--score-limit=30']);
   for (const argv of [['--map=lacuna-court'], ['--map=vermilion-fold', '--mode=koth'],
-    ['--bots=8'], ['--round-seconds=59'], ['--score-limit=901'], ['--time-limit=60'], ['--round-target=5']]) {
+    ['--bots=25'], ['--round-seconds=59'], ['--score-limit=901'], ['--time-limit=60'], ['--round-target=5']]) {
     assert.throws(() => options(['--experience=identity-zones', ...argv], catalog), Error, argv.join(' '));
   }
 });

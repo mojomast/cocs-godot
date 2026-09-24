@@ -40,11 +40,11 @@ test('strict deep generated-data validation rejects malformed/unsafe geometry', 
   assert.throws(() => parseNativeArena(syntheticArena(), 'aurora-basin'));
   assert.throws(() => parseNativeArena('{"__proto__":{}}'));
 });
-test('Deathmatch bounded config stays source-supported and defaults to three bots', () => {
+test('Deathmatch bounded local config defaults to three bots and rejects counts above 24', () => {
   const config = validateNativeConfig();
   assert.equal(config.mode, 'deathmatch'); assert.equal(config.botCount, 3);
   assert.equal(config.timeLimit, 180); assert.equal(config.fragLimit, 15);
-  for (const value of [{mode:'horde'}, {mode:'ctf'}, {botCount:0}, {botCount:8},
+  for (const value of [{mode:'horde'}, {mode:'ctf'}, {botCount:0}, {botCount:25},
     {botCount:'3'}, {fragLimit:1}, {timeLimit:59}, {timeLimit:901}, {difficulty:'elite'},
     {damage:20}, {humanCount:2}, {arena:syntheticArena().arena}, {botPolicy:()=>({})}]) {
     assert.throws(() => validateNativeConfig(value));

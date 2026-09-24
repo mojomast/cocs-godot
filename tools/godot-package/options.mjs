@@ -41,7 +41,7 @@ export function options(argv, catalog) {
       if (!value || value.startsWith('--') || value.length > maxLength) throw Error(`--${key} requires a value of 1..${maxLength} characters`);
       if (Object.hasOwn(values, key)) throw Error(`Duplicate --${key}`);
       values[key] = value;
-    } else if (['--play','--setup','--native-trace','--mute','--debug-hud','--smoke','--debug-panel'].includes(arg)) {
+    } else if (['--play','--setup','--native-trace','--mute','--debug-hud','--smoke','--debug-panel','--diagnostics'].includes(arg)) {
       if (flags.has(arg)) throw Error(`Duplicate ${arg}`);
       flags.add(arg);
     } else throw Error(`Unknown option ${arg}. Use --help.`);
@@ -49,51 +49,56 @@ export function options(argv, catalog) {
   // Default boot (no arguments at all) opens the main menu; any explicit
   // argument keeps today's combat default.
   const experience = argv.length === 0 ? 'menu' : (values.experience ?? 'combat');
+  const diagnostics = flags.has('--diagnostics') ? ['--diagnostics'] : [];
   if (experience === 'native-dm') {
     for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds'].includes(key)) throw Error(`--${key} is not supported by native-dm`);
-    for (const flag of flags) if (flag !== '--smoke' && flag !== '--debug-panel') throw Error(`${flag} is not supported by native-dm`);
+    for (const flag of flags) if (!['--smoke','--debug-panel','--diagnostics'].includes(flag)) throw Error(`${flag} is not supported by native-dm`);
     const map = values.map ?? NATIVE_ARENA_MAPS[0], mode = values.mode ?? 'deathmatch';
     if (!NATIVE_ARENA_MAPS.includes(map)) throw Error(`native-dm does not support map ${map}`);
     if (mode !== 'deathmatch') throw Error('native-dm supports only deathmatch');
-    for (const [key, min, max, fallback] of [['bots',1,7,2],['round-seconds',60,300,180]]) {
+    for (const [key, min, max, fallback] of [['bots',1,24,2],['round-seconds',60,300,180]]) {
       values[key] ??= String(fallback);
       if (!/^\d+$/.test(values[key]) || Number(values[key]) < min || Number(values[key]) > max) throw Error(`--${key} must be ${min}..${max}`);
     }
     const bots = Number(values.bots), roundSeconds = Number(values['round-seconds']);
     return {experience, nativeArena:true, map, mode, bots, roundSeconds, endpoint:null, scene:'res://native_arenas/demo.tscn',
-      userArgs:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,...(flags.has('--debug-panel') ? ['--debug-panel'] : []),...(flags.has('--smoke') ? ['--smoke'] : [])]};
+      userArgs:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,...(flags.has('--debug-panel') ? ['--debug-panel'] : []),...diagnostics,...(flags.has('--smoke') ? ['--smoke'] : [])]};
   }
   if (experience === 'identity-zones') {
     // Reviewed static one-pair route: Vermilion Fold / Domination.
     for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds','score-limit'].includes(key)) throw Error(`--${key} is not supported by identity-zones`);
-    for (const flag of flags) if (flag !== '--smoke' && flag !== '--debug-panel') throw Error(`${flag} is not supported by identity-zones`);
+    for (const flag of flags) if (!['--smoke','--debug-panel','--diagnostics'].includes(flag)) throw Error(`${flag} is not supported by identity-zones`);
     const map = values.map ?? 'vermilion-fold', mode = values.mode ?? 'domination';
     if (map !== 'vermilion-fold') throw Error(`identity-zones does not support map ${map}`);
     if (mode !== 'domination') throw Error('identity-zones supports only domination');
-    for (const [key, min, max, fallback] of [['bots',0,7,2],['round-seconds',60,900,120],['score-limit',1,900,30]]) {
+    for (const [key, min, max, fallback] of [['bots',0,24,2],['round-seconds',60,900,120],['score-limit',1,900,30]]) {
       values[key] ??= String(fallback);
       if (!/^\d+$/.test(values[key]) || Number(values[key]) < min || Number(values[key]) > max) throw Error(`--${key} must be ${min}..${max}`);
     }
     const bots = Number(values.bots), roundSeconds = Number(values['round-seconds']), scoreLimit = Number(values['score-limit']);
     const smoke = flags.has('--smoke') ? '--smoke' : null;
     return {experience, identityZone:true, map, mode, bots, roundSeconds, scoreLimit, scene:'res://native_arenas/identity_zone_demo.tscn', endpoint:null, smoke,
-      userArgs:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,`--score-limit=${scoreLimit}`,...(flags.has('--debug-panel') ? ['--debug-panel'] : []),...(smoke ? [smoke] : [])]};
+      userArgs:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,`--score-limit=${scoreLimit}`,...(flags.has('--debug-panel') ? ['--debug-panel'] : []),...diagnostics,...(smoke ? [smoke] : [])]};
   }
   // Parameterless special cases (menu, map viewer, operator preview) — checked
   // before the bots guard so stray keys/flags die here with a clear message.
   if (experience === 'menu' || experience === 'viewer' || experience === 'operator-preview') {
     for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by ${experience}`);
-    for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by ${experience}`);
+    for (const flag of flags) if (flag !== '--smoke' && !(experience !== 'menu' && flag === '--diagnostics')) throw Error(`${flag} is not supported by ${experience}`);
     const scene = experience === 'menu' ? 'res://ui/main_menu.tscn'
       : experience === 'viewer' ? 'res://main.tscn' : 'res://player_models/preview.tscn';
     return {experience, scene, nativeOnly:true, endpoint:null,
-      userArgs: flags.has('--smoke') ? ['--smoke'] : []};
+      userArgs: [...diagnostics, ...(flags.has('--smoke') ? ['--smoke'] : [])]};
   }
-  for (const key of ['bots','round-seconds','score-limit']) if (values[key] !== undefined) throw Error(`--${key} requires native-dm or identity-zones`);
+  if (values.bots !== undefined) {
+    if (!['combat','zones'].includes(experience)) throw Error('--bots requires combat, zones, native-dm or identity-zones');
+    if (!/^\d+$/.test(values.bots) || Number(values.bots) > 8) throw Error('--bots must be 0..8');
+  }
+  for (const key of ['round-seconds','score-limit']) if (values[key] !== undefined) throw Error(`--${key} requires native-dm or identity-zones`);
   if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
     for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by native-only ${experience}`);
-    for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by native-only ${experience}`);
-    return {experience, scene:NATIVE_EXPERIENCES[experience].scene, nativeOnly:true, endpoint:null, userArgs:flags.has('--smoke') ? ['--smoke'] : []};
+    for (const flag of flags) if (flag !== '--smoke' && flag !== '--diagnostics') throw Error(`${flag} is not supported by native-only ${experience}`);
+    return {experience, scene:NATIVE_EXPERIENCES[experience].scene, nativeOnly:true, endpoint:null, userArgs:[...diagnostics, ...(flags.has('--smoke') ? ['--smoke'] : [])]};
   }
   if (!Object.hasOwn(EXPERIENCES, experience)) throw Error(`Unknown experience: ${experience}`);
   // --waves: horde-only value with reviewed bounds (native-dm/identity-zones,
@@ -108,6 +113,7 @@ export function options(argv, catalog) {
   if (flags.has('--debug-panel')) {
     if (experience === 'lobby') throw Error('--debug-panel is not supported by the multiplayer lobby');
     if (!['combat', 'horde'].includes(experience)) throw Error('--debug-panel is only available on local combat routes');
+    if (values.endpoint !== undefined) throw Error('--debug-panel requires owned local authority');
   }
   const endpoint = lobbyEndpoint(values.endpoint, experience);
   const selected = EXPERIENCES[experience];
@@ -116,6 +122,7 @@ export function options(argv, catalog) {
   if (!identity && !Object.hasOwn(selected.maps, map)) throw Error(`${experience} does not support map ${map}`);
   const allowed = identity ? identity.modes : selected.maps[map];
   const mode = values.mode ?? allowed[0];
+  if (values.bots !== undefined && experience === 'combat' && values.endpoint !== undefined) throw Error('--bots requires owned local combat authority');
   // Identity maps are outside the locked nine-map catalog; the reviewed static
   // entry above is their allowlist and carries its own scene.
   if (!allowed.includes(mode) || (!identity && !catalog.maps.find(m => m.id === map)?.supported_modes.includes(mode))) throw Error(`Unsupported ${map} / ${mode}`);
@@ -134,8 +141,10 @@ export function options(argv, catalog) {
   const userArgs = [`--map=${map}`, `--mode=${mode}`];
   for (const key of ['time-limit','round-target']) if (values[key] !== undefined) userArgs.push(`--${key}=${values[key]}`);
   if (values.waves !== undefined) userArgs.push(`--waves=${values.waves}`);
+  if (values.bots !== undefined) userArgs.push(`--bots=${values.bots}`);
   for (const flag of ['--native-trace','--mute','--debug-hud']) if (flags.has(flag)) userArgs.push(flag);
   if (flags.has('--debug-panel')) userArgs.push('--debug-panel');
+  userArgs.push(...diagnostics);
   if (flags.has('--smoke')) userArgs.push('--session-smoke');
   if (experience === 'combat' && !flags.has('--play') && !flags.has('--smoke')) userArgs.push('--setup');
   if (experience === 'lobby') userArgs.push('--lobby-menu');
@@ -177,24 +186,30 @@ export const HELP = `COCS native demo — Node >=22.13.0 (bundled on Windows)
 Menu: no arguments (or --experience=menu) opens the in-game destinations menu.
   Start launches the selected route, Quit closes it; the supervisor then
   returns to the menu. --experience=menu --smoke runs it headlessly and exits.
+Every playable destination offers --diagnostics (verbose Godot console output,
+  including lobby and offline galleries); this does not enable authority cheats.
+Combat (owned local match) and Zones offer --bots=0..8 (default 2). Native DM
+  supports 1..24; Domination supports 0..24 on their local authorities. Horde uses NPC waves rather than
+  normal bots; other routes retain their fixed source-owned roster.
 Viewer and operator-preview open their scenes directly: native-only, no
-  Node authority, network endpoint or source match; only --smoke is extra.
+  Node authority, network endpoint or source match; --smoke and --diagnostics supported.
 Debug panel: --debug-panel arms godot/debug/debug_panel.gd (F3 hide, F4 god
   mode, F5 all weapons, F6 difficulty) and is accepted only by combat, horde,
-  native-dm and identity-zones. The lobby rejects it, always; so does every
-  other experience. COCS_DEBUG=1 is the alternative explicit opt-in.
+  native-dm and identity-zones with owned local authority. The lobby rejects
+  it, always; so does every other experience. COCS_DEBUG=1 is an alternative
+  explicit local opt-in.
 Horde --waves=1..30 (default 10) selects the wave count.
 
 Native-only graphics: showcase, aurora-basin, cinder-array, particle-lab, shader-lab.
   Standalone exploration/labs; no Node authority, network endpoint or source match.
   These are not source map catalog choices. Only --smoke is supported in addition
-  to --experience: runs the scene's own diagnostic headlessly with Dummy audio.
+  to --experience: --smoke runs the scene's own diagnostic headlessly with Dummy audio.
   --map, --mode, --endpoint and source-match controls are rejected.
 
 Combat: 3 combat maps; deathmatch/teamdeathmatch/instagib/rockets.
 Native DM: prism-foundry (default), aurora-basin, cinder-array, lacuna-court,
   vermilion-fold, nacre-engine; Deathmatch only.
-  Owned local loopback authority, one human plus --bots=1..7 (default 2).
+  Owned local loopback authority, one human plus --bots=1..24 (default 2).
   --round-seconds=60..300 (default 180). No endpoint, join or setup options.
   --smoke runs the scene headlessly with Dummy audio, bounded to 20 seconds.
 Lobby: explicit Create/Join/Start; guests select the expected host map.

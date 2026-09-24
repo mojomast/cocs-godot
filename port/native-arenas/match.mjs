@@ -3,6 +3,7 @@ import {normalizeConfig} from '../../game/config.mjs';
 import {CHARACTERS, HARNESSES} from '../../game/data.mjs';
 import {nativeArenaEntry} from './catalog.mjs';
 import {keys, parseArenaEnvelope, readNativeArena} from './schema.mjs';
+import {LOCAL_BOT_MAX, routeBotConfig, spreadLocalSpawn} from '../native-menu-debug-bots/seats.mjs';
 
 export const DEFAULT_NATIVE_CONFIG = Object.freeze({mode:'deathmatch', botCount:3,
   difficulty:'normal', timeLimit:180, fragLimit:15});
@@ -10,11 +11,11 @@ export function validateNativeConfig(value = {}) {
   keys(value, ['mode', 'botCount', 'difficulty', 'timeLimit', 'fragLimit'], 'Deathmatch config');
   const config = {...DEFAULT_NATIVE_CONFIG, ...value};
   if (config.mode !== 'deathmatch') throw new TypeError('Native arenas support deathmatch only');
-  for (const [key, min, max] of [['botCount', 1, 7], ['timeLimit', 60, 900], ['fragLimit', 5, 50]]) {
+  for (const [key, min, max] of [['botCount', 1, LOCAL_BOT_MAX], ['timeLimit', 60, 900], ['fragLimit', 5, 50]]) {
     if (!Number.isInteger(config[key]) || config[key] < min || config[key] > max) throw new TypeError(`${key} must be ${min}..${max}`);
   }
   if (!['easy', 'normal', 'hard', 'nightmare'].includes(config.difficulty)) throw new TypeError('Unsupported difficulty');
-  return normalizeConfig(config);
+  return routeBotConfig(normalizeConfig(config), config.botCount);
 }
 
 /** A trusted in-process arenaData override exists for synthetic fixtures only.
@@ -35,14 +36,23 @@ export function createNativeMatch({mapId = 'prism-foundry', config = {}, random 
   const arena = data.arena;
   let assigned = false;
   class NativeMatch extends Match {
+    get config() { return this._localConfig; }
+    set config(value) {
+      if (this._localConfig && !this.actors) throw new Error('Native config reassignment during construction');
+      this._localConfig = routeBotConfig(value, this._localConfig?.botCount ?? options.botCount);
+    }
     get arena() { return arena; }
     set arena(_sourceFallback) {
       if (assigned) throw new Error('Native arena reassignment refused');
       assigned = true;
     }
   }
-  const match = new NativeMatch(character, harness, random, mapId, {...options, humanCount:1});
+  const MatchType = options.botCount > 8 ? class CrowdedNativeMatch extends NativeMatch {
+    spawn(actor) { super.spawn(actor); spreadLocalSpawn(this, actor, this.spawns.map(p => [p.x, p.z])); }
+  } : NativeMatch;
+  const match = new MatchType(character, harness, random, mapId, {...options, humanCount:1});
   if (!assigned || match.arena !== arena || match.snapshot().mapId !== mapId) throw new Error('Native constructor contract drift');
+  if (match.actors.length !== 1 + options.botCount) throw new Error('Native bot seat count drift');
   for (const actor of match.actors) {
     if (!Number.isFinite(actor.y) || floorAt(actor.x, actor.z, arena) === null || obstructed(actor.x, actor.y, actor.z, undefined, arena)) {
       throw new Error('Native constructor produced an unsupported/blocked spawn');

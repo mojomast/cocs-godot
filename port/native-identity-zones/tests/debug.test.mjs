@@ -35,6 +35,7 @@ test('identity zone debug channel: capability echo, live knobs, god mode, refusa
     assert.ok(opening, 'enabled channel advertises its capability in the lobby echo');
     assert.equal(opening.debug.enabled, true);
     assert.deepEqual(opening.debug.restart.botCount, [...DEBUG_RESTART_BOUNDS.botCount]);
+    assert.equal(state(client).config.botCount, 1, 'live debug must not replace the host-selected roster with defaults');
 
     // Live damage multiplier reaches the source mutators and the snapshot echo.
     client.send({type:'debug', v:1, damage:2});

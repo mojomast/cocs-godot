@@ -46,19 +46,22 @@ const combatParams = () => ([
    },
    default: 'deathmatch'},
 ]);
+const soloCombatParams = () => ([...combatParams(),
+  {key: 'bots', kind: 'range', label: 'Bots', min: 0, max: 8, default: 2, step: 1},
+]);
 
 const nativeDmParams = () => ([
   {key: 'map', kind: 'choice', label: 'Map',
    values: ['prism-foundry', 'aurora-basin', 'cinder-array',
             'lacuna-court', 'vermilion-fold', 'nacre-engine'],
    default: 'prism-foundry'},
-  {key: 'bots', kind: 'range', label: 'Bots', min: 1, max: 7, default: 2, step: 1},
+  {key: 'bots', kind: 'range', label: 'Bots', min: 1, max: 24, default: 2, step: 1},
   {key: 'round-seconds', kind: 'range', label: 'Round', min: 60, max: 300,
    default: 180, step: 15},
 ]);
 
 const identityZonesParams = () => ([
-  {key: 'bots', kind: 'range', label: 'Bots', min: 0, max: 7, default: 2, step: 1},
+  {key: 'bots', kind: 'range', label: 'Bots', min: 0, max: 24, default: 2, step: 1},
   {key: 'round-seconds', kind: 'range', label: 'Round', min: 60, max: 900,
    default: 120, step: 15},
   {key: 'score-limit', kind: 'range', label: 'Score', min: 1, max: 900,
@@ -86,7 +89,7 @@ export const ROUTES = [
     id: 'combat', category: 'play',
     label: 'Combat',
     description: 'Core deathmatch on the three combat maps with an owned loopback server',
-    params: combatParams(),
+    params: soloCombatParams(),
   },
   {
     id: 'lobby', category: 'play',
@@ -140,6 +143,7 @@ export const ROUTES = [
          'sunscar-convoy':    ['domination'],
        },
        default: 'domination'},
+      {key: 'bots', kind: 'range', label: 'Bots', min: 0, max: 8, default: 2, step: 1},
     ],
   },
   {

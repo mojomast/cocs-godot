@@ -101,6 +101,10 @@ const buildRegistry = () => {
         `${route.id}: cheats variants exist only for horde/native-dm/identity-zones`);
     }
     const params = buildParams(route);
+    const toggles = [{key:'diagnostics', flag:'--diagnostics', label:'Diagnostics (console)', default:false}];
+    if (route.category !== 'cheats' && ['combat', 'horde', 'native-dm', 'identity-zones'].includes(experience)) {
+      toggles.push({key:'cheats', flag:'--debug-panel', label:'Local cheats (F3)', default:false});
+    }
     let mapDefault = null;
     for (const param of params) {
       assert.ok(['choice', 'range'].includes(param.kind), `${route.id}/${param.key}: kind`);
@@ -141,7 +145,7 @@ const buildRegistry = () => {
     }
     // Stable key order: id, category, label, description, flags, params.
     return {id: route.id, category: route.category, label: route.label,
-      description: route.description, flags: flagsOf(route.id), params};
+      description: route.description, flags: flagsOf(route.id), params, toggles};
   });
 
   // Maps block: catalog names first (catalog order), then the native arenas

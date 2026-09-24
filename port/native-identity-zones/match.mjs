@@ -24,18 +24,20 @@ import {normalizeConfig} from '../../game/config.mjs';
 import {CHARACTERS, HARNESSES} from '../../game/data.mjs';
 import {keys, parseArenaEnvelope, readNativeArena} from '../native-arenas/schema.mjs';
 import {IDENTITY_ZONE_IDS, IDENTITY_ZONE_MAP_ID, IDENTITY_ZONE_MODE, identityZoneEntry} from './catalog.mjs';
+import {LOCAL_BOT_MAX, routeBotConfig, spreadLocalSpawn} from '../native-menu-debug-bots/seats.mjs';
 
 export const DEFAULT_IDENTITY_ZONE_CONFIG = Object.freeze({mode: IDENTITY_ZONE_MODE, botCount: 2,
   difficulty: 'normal', timeLimit: 300, fragLimit: 100});
 const TEAM_KEYS = Object.freeze({0: ['0', 'red', 'west'], 1: ['1', 'blue', 'east']});
 const floorClose = (a, b) => Number.isFinite(a) && Number.isFinite(b) && Math.abs(a - b) < 0.15;
 
-/** Validate the route's launch config. Ordinary source rules, nothing injected. */
+/** Validate the route's launch config; local bot seats extend the source's
+ * normal 8-bot limit without changing its global config normalizer. */
 export function validateIdentityZoneConfig(value = {}) {
   keys(value, ['mode', 'botCount', 'difficulty', 'timeLimit', 'fragLimit'], 'Domination config');
   const config = {...DEFAULT_IDENTITY_ZONE_CONFIG, ...value};
   if (config.mode !== IDENTITY_ZONE_MODE) throw new TypeError('Identity zone route supports domination only');
-  for (const [key, min, max] of [['botCount', 0, 7], ['timeLimit', 60, 900], ['fragLimit', 1, 900]]) {
+  for (const [key, min, max] of [['botCount', 0, LOCAL_BOT_MAX], ['timeLimit', 60, 900], ['fragLimit', 1, 900]]) {
     if (!Number.isInteger(config[key]) || config[key] < min || config[key] > max) {
       throw new TypeError(`${key} must be ${min}..${max}`);
     }
@@ -43,7 +45,7 @@ export function validateIdentityZoneConfig(value = {}) {
   if (!['easy', 'normal', 'hard', 'nightmare'].includes(config.difficulty)) throw new TypeError('Unsupported difficulty');
   const normalized = normalizeConfig(config);
   if (normalized.mode !== IDENTITY_ZONE_MODE) throw new TypeError('Source config did not resolve domination');
-  return normalized;
+  return routeBotConfig(normalized, config.botCount);
 }
 
 /** The team pool the strict identity envelope authored for `team`, in order. */
@@ -96,15 +98,24 @@ export function createIdentityZoneMatch({mapId = IDENTITY_ZONE_MAP_ID, config = 
   const arena = data.arena;
   let assigned = false;
   class IdentityZoneMatch extends Match {
+    get config() { return this._localConfig; }
+    set config(value) {
+      if (this._localConfig && !this.actors) throw new Error('Identity zone config reassignment during construction');
+      this._localConfig = routeBotConfig(value, this._localConfig?.botCount ?? options.botCount);
+    }
     get arena() { return arena; }
     set arena(_sourceFallback) {
       if (assigned) throw new Error('Identity zone arena reassignment refused');
       assigned = true;
     }
   }
-  const match = new IdentityZoneMatch(character, harness, random, entry.id,
+  const MatchType = options.botCount > 8 ? class CrowdedIdentityZoneMatch extends IdentityZoneMatch {
+    spawn(actor) { super.spawn(actor); spreadLocalSpawn(this, actor, this.teamSpawns[actor.team]); }
+  } : IdentityZoneMatch;
+  const match = new MatchType(character, harness, random, entry.id,
     {...options, humanCount, ...(loadouts === undefined ? {} : {loadouts})});
   if (!assigned || match.arena !== arena || match.snapshot().mapId !== entry.id) throw new Error('Identity zone constructor contract drift');
+  if (match.actors.length !== humanCount + options.botCount) throw new Error('Identity zone bot seat count drift');
   if (match.config.mode !== IDENTITY_ZONE_MODE) throw new Error('Identity zone match did not resolve domination');
   const state = match.objectiveState;
   const authored = Array.isArray(arena.objectiveZones) ? arena.objectiveZones : [];
@@ -144,7 +155,8 @@ export function createIdentityZoneMatch({mapId = IDENTITY_ZONE_MAP_ID, config = 
   for (const actor of match.actors) {
     const pool = pools[actor.team];
     if (actor.team !== (actor.id % 2)) throw new Error('Identity seat/team assignment drift');
-    if (!pool.some(([x, z]) => actor.x === x && actor.z === z)) throw new Error('Identity actor spawned outside its authored team pool');
+    if (options.botCount <= 8 && !pool.some(([x, z]) => actor.x === x && actor.z === z)) throw new Error('Identity actor spawned outside its authored team pool');
+    if (options.botCount > 8 && !pool.some(([x, z]) => Math.hypot(actor.x-x, actor.z-z) <= 7.51)) throw new Error(`Identity actor ${actor.id} spawned outside its bounded team area at ${actor.x},${actor.z}`);
     if (!Number.isFinite(actor.y) || obstructed(actor.x, actor.y, actor.z, undefined, arena)) {
       throw new Error('Identity zone constructor produced a blocked spawn');
     }

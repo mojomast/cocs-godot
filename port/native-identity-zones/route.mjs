@@ -16,7 +16,7 @@ export const IDENTITY_ZONE_ROUTE = Object.freeze({
   scene: 'res://native_arenas/identity_zone_demo.tscn',
   endpointPath: '/native-zones',
   authority: createIdentityZoneAuthority,
-  limits: Object.freeze({bots:Object.freeze([0, 7]), seconds:Object.freeze([60, 900]), score:Object.freeze([1, 900])}),
+  limits: Object.freeze({bots:Object.freeze([0, 24]), seconds:Object.freeze([60, 900]), score:Object.freeze([1, 900])}),
 });
 
 /** Every authored team spawn has a supported ground route to every zone.

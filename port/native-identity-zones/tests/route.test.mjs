@@ -16,14 +16,14 @@ test('launcher route contract matches the composition scene and the authority', 
   assert.equal(IDENTITY_ZONE_ROUTE.mode, IDENTITY_ZONE_MODE);
   assert.equal(IDENTITY_ZONE_ROUTE.scene, 'res://native_arenas/identity_zone_demo.tscn');
   assert.equal(IDENTITY_ZONE_ROUTE.endpointPath, '/native-zones');
-  assert.deepEqual(IDENTITY_ZONE_ROUTE.limits.bots, [0, 7]);
+  assert.deepEqual(IDENTITY_ZONE_ROUTE.limits.bots, [0, 24]);
   assert.deepEqual(IDENTITY_ZONE_ROUTE.limits.seconds, [60, 900]);
   assert.deepEqual(IDENTITY_ZONE_ROUTE.limits.score, [1, 900]);
   assert.equal(typeof IDENTITY_ZONE_ROUTE.authority, 'function');
   const scene = readFileSync('godot/native_arenas/identity_zone_demo.gd', 'utf8');
   assert.match(scene, /const MAP_ID := "vermilion-fold"/);
   assert.match(scene, /const MODE := "domination"/);
-  assert.match(scene, /const BOT_RANGE := Vector2i\(0, 7\)/);
+  assert.match(scene, /const BOT_RANGE := Vector2i\(0, 24\)/);
   assert.match(scene, /const SECONDS_RANGE := Vector2i\(60, 900\)/);
   assert.match(scene, /const SCORE_RANGE := Vector2i\(1, 900\)/);
   assert.match(scene, new RegExp(`/native-zones\\|\/`), 'scene accepts the owned endpoint path');

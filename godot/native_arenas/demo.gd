@@ -53,6 +53,9 @@ func _ready() -> void:
 		on_error(catalog.error)
 		return
 	phase = -2
+	# HUD builds with a legacy 7-bot slider; widen it before configure assigns
+	# the menu-selected count (Godot would otherwise silently clamp 24 to 7).
+	native_hud.bots.max_value = 24
 	native_hud.configure(self)
 	if auto_start:
 		if CombatQuality.requested_by_launch():
@@ -129,7 +132,7 @@ static func parse_options(args: PackedStringArray) -> Dictionary:
 			else: options["bots" if option == "bots" else "seconds"] = value.to_int()
 	if options.map not in NativeCatalog.DM_MAP_IDS:
 		options.error = "Choose Prism Foundry, Aurora Basin, Cinder Array, Lacuna Court, Vermilion Fold or Nacre Engine."
-	if options.bots < 1 or options.bots > 7: options.error = "bots must be 1..7."
+	if options.bots < 1 or options.bots > 24: options.error = "bots must be 1..24."
 	if options.seconds < 60 or options.seconds > 300: options.error = "round-seconds must be 60..300."
 	var url: String = options.endpoint
 	var endpoint_match := RegEx.create_from_string("^ws://127\\.0\\.0\\.1:([1-9][0-9]{0,4})(/native-arenas|/)?$").search(url)
@@ -215,7 +218,7 @@ func load_map(id: String) -> bool:
 
 func launch_match(map_id: String, player_name: String, bots: int, seconds: int) -> void:
 	if phase != -2: return
-	if map_id not in NativeCatalog.DM_MAP_IDS or bots < 1 or bots > 7 or seconds < 60 or seconds > 300 or player_name.strip_edges().is_empty():
+	if map_id not in NativeCatalog.DM_MAP_IDS or bots < 1 or bots > 24 or seconds < 60 or seconds > 300 or player_name.strip_edges().is_empty():
 		on_error("Invalid native Deathmatch setup.")
 		return
 	if current_id != map_id and not load_map(map_id):
@@ -252,7 +255,11 @@ func on_snapshot(frame: Dictionary) -> void:
 	super.on_snapshot(frame)
 	smoke = checking
 	if not checking: return
-	if received_pose and presentation.lifecycle.can_control() and camera.position.is_equal_approx(presentation.eye_position()) and moved and fired and client.last_ack > 10 and presentation.actors.size() == bot_count + 1 and authority_geometry_hash == catalog.entries[current_id].geometryHash:
+	# Shared local motion can extrapolate the rendered camera for <=50 ms.
+	# Require the current network seat and its authoritative eye within a
+	# bounded correction, rather than exact equality with a smoothed pose.
+	var local_actor: Dictionary = presentation.local_actor
+	if received_pose and pose_actor_id == client.actor_id and client.actor_id == 0 and int(local_actor.get("id", -1)) == client.actor_id and presentation.lifecycle.can_control() and camera.position.distance_to(presentation.eye_position()) <= 2.5 and moved and fired and client.last_ack > 10 and presentation.actors.size() == bot_count + 1 and authority_geometry_hash == catalog.entries[current_id].geometryHash:
 		print("NATIVE_DM_SMOKE_OK ", JSON.stringify({"map":current_id, "mode":"deathmatch",
 			"actors":presentation.actors.size(), "snapshots":presentation.applied, "acks":client.last_ack,
 			"moved":moved, "fired":fired, "localAlive":true, "camera":"public-actor",

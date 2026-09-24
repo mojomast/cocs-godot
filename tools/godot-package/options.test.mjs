@@ -160,3 +160,31 @@ test('--waves is a horde-only reviewed 1..30 value, forwarded when supplied', ()
   assert.throws(() => options(['--experience=showcase', '--waves=10'], catalog), /not supported by native-only/);
   assert.throws(() => options(['--experience=menu', '--waves=10'], catalog), /not supported by menu/);
 });
+
+test('menu bot schemas match scene consumption and source bounds', () => {
+  for (const experience of ['combat', 'zones']) for (const bots of [0, 2, 8]) {
+    const plan = options([`--experience=${experience}`, `--bots=${bots}`], catalog);
+    assert.ok(plan.userArgs.includes(`--bots=${bots}`));
+  }
+  for (const bad of ['-1', '9', '2.5', 'abc', '9007199254740993']) {
+    assert.throws(() => options(['--experience=combat', `--bots=${bad}`], catalog), /--bots must be 0\.\.8/);
+  }
+  for (const experience of ['lobby','horde','arms-race','sports','objectives']) {
+    assert.throws(() => options([`--experience=${experience}`, '--bots=2'], catalog), /--bots requires/);
+  }
+  assert.throws(() => options(['--experience=combat', '--bots=3', '--endpoint=ws://127.0.0.1:1234'], catalog), /requires --experience=lobby/);
+});
+
+test('diagnostics are console-only in every route and never enable multiplayer cheats', () => {
+  const routes = ['combat','lobby','native-dm','identity-zones','horde','zones',
+    'arms-race','combined-arms','sports','objectives','lattice','lattice-world',
+    'viewer','operator-preview','showcase','aurora-basin','cinder-array','particle-lab','shader-lab'];
+  for (const experience of routes) {
+    const plan = options([`--experience=${experience}`, '--diagnostics'], catalog);
+    assert.ok(plan.userArgs.includes('--diagnostics'), experience);
+    assert.ok(!plan.userArgs.includes('--debug-panel'), experience);
+  }
+  assert.throws(() => options(['--experience=lobby', '--diagnostics', '--debug-panel'], catalog), /multiplayer lobby/);
+  assert.throws(() => options(['--experience=combat', '--debug-panel', '--endpoint=ws://127.0.0.1:1234'], catalog), /owned local/);
+  assert.throws(() => options(['--experience=menu', '--diagnostics'], catalog), /not supported/);
+});

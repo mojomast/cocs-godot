@@ -2,8 +2,8 @@ extends RefCounted
 ## Loader and validator for res://ui/routes.json (schema version 1). The menu
 ## renders exactly what the registry declares; START runs every selection
 ## through validate_route() before assemble_args() emits it. Flags are copied
-## verbatim from the JSON, so no route can ever GROW --debug-panel here, and
-## open() rejects the flag outright on every non-cheats route (lobby included).
+## verbatim from the JSON; optional toggle flags are allowlisted for reviewed
+## local routes only, and the lobby cannot acquire --debug-panel.
 
 const ROUTES_PATH := "res://ui/routes.json"
 
@@ -96,6 +96,13 @@ func validate_shape(route: Dictionary, seen_categories: Dictionary) -> String:
 	for param: Variant in params:
 		var problem := validate_param_shape(id, param)
 		if not problem.is_empty(): return problem
+	var toggles: Variant = route.get("toggles", [])
+	if not toggles is Array: return "Route %s toggles is not an array" % id
+	for toggle: Variant in toggles:
+		if not toggle is Dictionary: return "Route %s has a malformed toggle" % id
+		var flag := str(toggle.get("flag", ""))
+		if flag != "--diagnostics" and not (flag == "--debug-panel" and id in ["combat", "horde", "native-dm", "identity-zones"]):
+			return "Route %s has an unsupported toggle" % id
 	return ""
 
 func validate_param_shape(route_id: String, param: Variant) -> String:
@@ -137,6 +144,10 @@ func routes_in_category(id: String) -> Array:
 func params_of(route: Dictionary) -> Array:
 	var params: Variant = route.get("params", [])
 	return params if params is Array else []
+
+func toggles_of(route: Dictionary) -> Array:
+	var toggles: Variant = route.get("toggles", [])
+	return toggles if toggles is Array else []
 
 ## Key of the route param whose value selects a map ("" when the route has
 ## none). values_by_map / max_by_map tables are keyed by that selection.
@@ -218,11 +229,15 @@ func validate_route(route: Dictionary, selections: Dictionary) -> String:
 			return "Missing selection for --%s" % key
 		var problem := validate_param(param, selections[key], map_id)
 		if not problem.is_empty(): return problem
+	for toggle: Dictionary in toggles_of(route):
+		var key := str(toggle.get("key", ""))
+		if not selections.get(key, false) is bool: return "Invalid toggle: " + key
+	if str(route.get("id", "")) == "lobby" and selections.get("cheats", false):
+		return "Cheats unavailable in multiplayer"
 	return ""
 
-## SPEC §3 Emission: flags verbatim first, then one --key=value per param in
-## schema order — every param explicitly, defaults included (the supervisor
-## revalidates each argument).
+## Flags verbatim first, then one --key=value per param in schema order,
+## followed by enabled optional toggles. The supervisor revalidates all args.
 func assemble_args(route: Dictionary, selections: Dictionary) -> Array:
 	var args: Array = []
 	for flag: Variant in route.get("flags", []):
@@ -230,4 +245,8 @@ func assemble_args(route: Dictionary, selections: Dictionary) -> Array:
 	for param: Dictionary in params_of(route):
 		var key := str(param.get("key", ""))
 		args.append("--%s=%s" % [key, str(selections.get(key, ""))])
+	for toggle: Dictionary in toggles_of(route):
+		if selections.get(str(toggle.get("key", "")), false):
+			var flag := str(toggle.get("flag", ""))
+			if not flag in args: args.append(flag)
 	return args

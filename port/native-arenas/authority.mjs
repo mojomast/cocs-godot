@@ -6,16 +6,15 @@ import {keys, record, readNativeArena, parseArenaEnvelope} from './schema.mjs';
 import {createNativeMatch, validateNativeConfig} from './match.mjs';
 import {InputBuffer} from './input-buffer.mjs';
 import {EventCursor} from './event-cursor.mjs';
+import {parseLocalDebugFrame} from '../native-menu-debug-bots/debug-frame.mjs';
 import {applyDebugFrame, applyLiveOverrides, createDebugState, debugEcho, installHumanGuard,
-  parseDebugFrame, reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT, RESTART_KNOBS} from '../native-debug/debug.mjs';
+  reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT, RESTART_KNOBS} from '../native-debug/debug.mjs';
 
 export {EventCursor, createNativeMatch, validateNativeConfig};
 // Reviewed bounds for the construction-time debug knobs on THIS route. The
-// source accepts botCount 0..8; the native Deathmatch validator this adapter
-// ships accepts 1..7, so the debug channel advertises the reviewed bound rather
-// than pretending a wider one exists.
+// Only this local authority opts into the extended debug parser.
 export const DEBUG_RESTART_BOUNDS = Object.freeze({
-  botCount:[1, 7], startingWeapon:[RESTART_KNOBS.startingWeapon[0], RESTART_KNOBS.startingWeapon[1]],
+  botCount:[1, 24], startingWeapon:[RESTART_KNOBS.startingWeapon[0], RESTART_KNOBS.startingWeapon[1]],
 });
 export {readNativeArena, parseNativeArena, parseIdentityArena, parseArenaEnvelope} from './schema.mjs';
 export const LIMITS = Object.freeze({payload:16384, frame:1048576, outbound:2097152,
@@ -220,7 +219,7 @@ export function createAuthority(options = {}) {
           // ordinary authority never gains a debug surface.
           if (!debugEnabled) throw new Error('Invalid local native arena lifecycle command');
           let parsed;
-          try { parsed = parseDebugFrame(f); }
+           try { parsed = parseLocalDebugFrame(f, DEBUG_RESTART_BOUNDS.botCount); }
           catch (error) { debugReject(error.message); return; }
           const bound = DEBUG_RESTART_BOUNDS.botCount;
           if (parsed.set.botCount !== undefined && (parsed.set.botCount < bound[0] || parsed.set.botCount > bound[1])) {

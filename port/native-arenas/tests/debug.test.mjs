@@ -75,12 +75,12 @@ test('debug is off by default and a debug frame is the unchanged protocol error'
     const client = await connect(authority.endpoint);
     const {opening} = await start(client);
     assert.equal(opening.debug.enabled, true);
-    assert.deepEqual(opening.debug.restart, {botCount:[1, 7], startingWeapon:[0, 9]});
+    assert.deepEqual(opening.debug.restart, {botCount:[1, 24], startingWeapon:[0, 9]});
   } finally { delete process.env.COCS_DEBUG; }
 });
 
-test('DEBUG_RESTART_BOUNDS is the reviewed route bound, not the source maximum', () => {
-  assert.deepEqual(DEBUG_RESTART_BOUNDS, {botCount:[1, 7], startingWeapon:[0, 9]});
+test('DEBUG_RESTART_BOUNDS is the extended local route bound', () => {
+  assert.deepEqual(DEBUG_RESTART_BOUNDS, {botCount:[1, 24], startingWeapon:[0, 9]});
 });
 
 test('live source damage multiplier: applied amounts and real pool deltas at 1.0 vs 2.0', {timeout:120000}, async t => {
@@ -312,7 +312,7 @@ test('malformed debug frames change nothing and never take the socket down', {ti
   const rejected = [{mapId:'prism-foundry'}, {path:'/etc/passwd'}, {url:'ws://127.0.0.1:1'},
     {damage:.75}, {damage:3}, {damage:'2'}, {damage:null}, {speed:1.1}, {gravity:0},
     {difficulty:'impossible'}, {respawn:.5}, {respawn:6}, {godMode:1}, {godMode:'yes'},
-    {botCount:8.5}, {botCount:9}, {startingWeapon:10}, {playerIncomingScale:1000},
+    {botCount:8.5}, {botCount:25}, {startingWeapon:10}, {playerIncomingScale:1000},
     {testDamage:-1}, {clear:'yes'}, {actor:0}, {teleport:true}];
   for (const patch of rejected) {
     const mark = client.frames.length;
@@ -353,5 +353,5 @@ test('a debug frame without a live round queues restart knobs and refuses self-d
   assert.equal(rejected.type, 'debug-reject');
   assert.match(rejected.reason, /live round/);
   await assert.rejects(createNativeArenaAuthority(options({debug:true, botCount:null})), /botCount/);
-  assert.equal(DEBUG_RESTART_BOUNDS.botCount[1], 7);
+  assert.equal(DEBUG_RESTART_BOUNDS.botCount[1], 24);
 });

@@ -122,6 +122,29 @@
             ]
           },
           "default": "deathmatch"
+        },
+        {
+          "key": "bots",
+          "kind": "range",
+          "label": "Bots",
+          "min": 0,
+          "max": 8,
+          "default": 2,
+          "step": 1
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        },
+        {
+          "key": "cheats",
+          "flag": "--debug-panel",
+          "label": "Local cheats (F3)",
+          "default": false
         }
       ]
     },
@@ -171,6 +194,14 @@
           },
           "default": "deathmatch"
         }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
       ]
     },
     {
@@ -201,7 +232,7 @@
           "kind": "range",
           "label": "Bots",
           "min": 1,
-          "max": 7,
+          "max": 24,
           "default": 2,
           "step": 1
         },
@@ -213,6 +244,20 @@
           "max": 300,
           "default": 180,
           "step": 15
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        },
+        {
+          "key": "cheats",
+          "flag": "--debug-panel",
+          "label": "Local cheats (F3)",
+          "default": false
         }
       ]
     },
@@ -230,7 +275,7 @@
           "kind": "range",
           "label": "Bots",
           "min": 0,
-          "max": 7,
+          "max": 24,
           "default": 2,
           "step": 1
         },
@@ -251,6 +296,20 @@
           "max": 900,
           "default": 30,
           "step": 1
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        },
+        {
+          "key": "cheats",
+          "flag": "--debug-panel",
+          "label": "Local cheats (F3)",
+          "default": false
         }
       ]
     },
@@ -284,6 +343,20 @@
           "default": 10,
           "step": 1
         }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        },
+        {
+          "key": "cheats",
+          "flag": "--debug-panel",
+          "label": "Local cheats (F3)",
+          "default": false
+        }
       ]
     },
     {
@@ -305,6 +378,14 @@
             "ember-crucible"
           ],
           "default": "meridian-exchange"
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
         }
       ]
     },
@@ -355,6 +436,23 @@
             ]
           },
           "default": "domination"
+        },
+        {
+          "key": "bots",
+          "kind": "range",
+          "label": "Bots",
+          "min": 0,
+          "max": 8,
+          "default": 2,
+          "step": 1
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
         }
       ]
     },
@@ -391,6 +489,14 @@
           },
           "default": "ctf"
         }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
       ]
     },
     {
@@ -401,7 +507,15 @@
       "flags": [
         "--experience=combined-arms"
       ],
-      "params": []
+      "params": [],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
+      ]
     },
     {
       "id": "sports",
@@ -458,6 +572,14 @@
             "aurora-stadium": 15
           }
         }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
       ]
     },
     {
@@ -488,6 +610,14 @@
             "cocs-coop"
           ],
           "default": "cocs"
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
         }
       ]
     },
@@ -520,6 +650,14 @@
           ],
           "default": "cocs"
         }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
       ]
     },
     {
@@ -530,7 +668,15 @@
       "flags": [
         "--experience=viewer"
       ],
-      "params": []
+      "params": [],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
+      ]
     },
     {
       "id": "operator-preview",
@@ -540,7 +686,15 @@
       "flags": [
         "--experience=operator-preview"
       ],
-      "params": []
+      "params": [],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
+      ]
     },
     {
       "id": "showcase",
@@ -550,7 +704,15 @@
       "flags": [
         "--experience=showcase"
       ],
-      "params": []
+      "params": [],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
+      ]
     },
     {
       "id": "aurora-basin",
@@ -560,7 +722,15 @@
       "flags": [
         "--experience=aurora-basin"
       ],
-      "params": []
+      "params": [],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
+      ]
     },
     {
       "id": "cinder-array",
@@ -570,7 +740,15 @@
       "flags": [
         "--experience=cinder-array"
       ],
-      "params": []
+      "params": [],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
+      ]
     },
     {
       "id": "particle-lab",
@@ -580,7 +758,15 @@
       "flags": [
         "--experience=particle-lab"
       ],
-      "params": []
+      "params": [],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
+      ]
     },
     {
       "id": "shader-lab",
@@ -590,7 +776,15 @@
       "flags": [
         "--experience=shader-lab"
       ],
-      "params": []
+      "params": [],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
+        }
+      ]
     },
     {
       "id": "cheats-native-dm",
@@ -621,7 +815,7 @@
           "kind": "range",
           "label": "Bots",
           "min": 1,
-          "max": 7,
+          "max": 24,
           "default": 2,
           "step": 1
         },
@@ -633,6 +827,14 @@
           "max": 300,
           "default": 180,
           "step": 15
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
         }
       ]
     },
@@ -651,7 +853,7 @@
           "kind": "range",
           "label": "Bots",
           "min": 0,
-          "max": 7,
+          "max": 24,
           "default": 2,
           "step": 1
         },
@@ -672,6 +874,14 @@
           "max": 900,
           "default": 30,
           "step": 1
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
         }
       ]
     },
@@ -705,6 +915,14 @@
           "max": 30,
           "default": 10,
           "step": 1
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics (console)",
+          "default": false
         }
       ]
     }

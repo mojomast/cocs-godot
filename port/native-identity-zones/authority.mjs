@@ -16,12 +16,12 @@ import {parseInputEnvelope} from '../../game/protocol.mjs';
 import {LIMITS, EventCursor, outboundAllowed} from '../native-arenas/authority.mjs';
 import {keys, record, readNativeArena, parseArenaEnvelope} from '../native-arenas/schema.mjs';
 import {InputBuffer} from '../native-arenas/input-buffer.mjs';
+import {parseLocalDebugFrame} from '../native-menu-debug-bots/debug-frame.mjs';
 import {applyDebugFrame, applyLiveOverrides, createDebugState, debugEcho, installHumanGuard,
-  parseDebugFrame, reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT, RESTART_KNOBS} from '../native-debug/debug.mjs';
-// Reviewed bounds for the construction-time debug knobs on THIS route. The zone
-// scene advertises bots 0..7, so the debug channel advertises exactly that.
+  reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT, RESTART_KNOBS} from '../native-debug/debug.mjs';
+// Only this local authority opts into the extended debug parser.
 export const DEBUG_RESTART_BOUNDS = Object.freeze({
-  botCount:[0, 7], startingWeapon:[RESTART_KNOBS.startingWeapon[0], RESTART_KNOBS.startingWeapon[1]],
+  botCount:[0, 24], startingWeapon:[RESTART_KNOBS.startingWeapon[0], RESTART_KNOBS.startingWeapon[1]],
 });
 import {IDENTITY_ZONE_MAP_ID, IDENTITY_ZONE_MODE, identityZoneAllowed, identityZoneEntry} from './catalog.mjs';
 import {createIdentityZoneMatch, validateIdentityZoneConfig} from './match.mjs';
@@ -77,6 +77,7 @@ export function createAuthority(options = {}) {
   const wss = new WebSocketServer({noServer:true, maxPayload:LIMITS.payload, perMessageDeflate:false});
   const inputs = new InputBuffer();
   let socket = null, match = null, selectedConfig = null, created = false, finished = false;
+  let baseConfig = null;
   let round = 0, seq = 0, epoch = 0, eventCursor = null;
   let wall = performance.now(), accumulator = 0, closing = false, closePromise;
   let tokens = LIMITS.burst, tokenAt = wall, epochRequired = false, playerName = 'Local player';
@@ -85,6 +86,7 @@ export function createAuthority(options = {}) {
     debugState.live = {godMode:false, playerIncomingScale:1, unlockAllWeapons:false};
     debugState.config = {}; debugState.queued = {}; debugState.autoUnlimited = false;
     debugState.constructed = {};
+    baseConfig = null;
   }
   function debugReject(reason) {
     debugState.rejected++; debugState.lastReject = reason;
@@ -98,7 +100,7 @@ export function createAuthority(options = {}) {
   // reconcile only ever inspect the single human seat.
   function applyDebugToMatch(active) {
     if (!debugState.enabled || !active) return;
-    applyLiveOverrides(active, {...debugState.constructed, ...debugState.config}, defaults);
+    applyLiveOverrides(active, {...debugState.constructed, ...debugState.config}, baseConfig);
     installHumanGuard(active, debugState.live, HUMAN_SEAT);
     reconcileHuman(active, debugState);
   }
@@ -173,8 +175,12 @@ export function createAuthority(options = {}) {
           match = null; finished = false; lobby();
         } else if (f.type === 'start' && selectedConfig && (!match || match.over)) {
           keys(f, ['type'], 'start frame');
-          match = createIdentityZoneMatch({mapId:entry.id, config:minimalConfig(selectedConfig), random, arenaData:data});
-          debugState.constructed = {...debugState.config};
+          const constructed = minimalConfig(validateIdentityZoneConfig({...minimalConfig(selectedConfig), ...debugState.queued}));
+          match = createIdentityZoneMatch({mapId:entry.id, config:constructed, random, arenaData:data});
+          // Live debug must rebuild from the actual constructed roster, not
+          // constructor defaults; otherwise a host-selected bot count drifts.
+          baseConfig = {...match.config};
+          debugState.constructed = {...debugState.queued};
           applyDebugToMatch(match);
           round++; seq = 0; epoch++; finished = false; inputs.reset();
           eventCursor = new EventCursor();
@@ -204,7 +210,7 @@ export function createAuthority(options = {}) {
           // authority never gains a debug surface.
           if (!debugEnabled) throw new Error('Invalid local identity zone lifecycle command');
           let parsed;
-          try { parsed = parseDebugFrame(f); }
+           try { parsed = parseLocalDebugFrame(f, DEBUG_RESTART_BOUNDS.botCount); }
           catch (error) { debugReject(error.message); return; }
           const bound = DEBUG_RESTART_BOUNDS.botCount;
           if (parsed.set.botCount !== undefined && (parsed.set.botCount < bound[0] || parsed.set.botCount > bound[1])) {

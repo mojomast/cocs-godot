@@ -22,7 +22,7 @@ const ZoneAdapter = preload("res://zone_modes/adapter.gd")
 const Scoreboard = preload("res://ui/scoreboard.gd")
 const MAP_ID := "vermilion-fold"
 const MODE := "domination"
-const BOT_RANGE := Vector2i(0, 7)
+const BOT_RANGE := Vector2i(0, 24)
 const SECONDS_RANGE := Vector2i(60, 900)
 const SCORE_RANGE := Vector2i(1, 900)
 var zones := ZoneAdapter.new()
@@ -315,7 +315,10 @@ func smoke_ready() -> bool:
 	if presentation.actors.size() != bot_count + 1: return false
 	if zones.projection.is_empty() or zones.projection.zones.size() != 3: return false
 	if zone_renderer.rendered.size() != 3: return false
-	if not camera.position.is_equal_approx(presentation.eye_position()): return false
+	var local_actor: Dictionary = presentation.local_actor
+	if pose_actor_id != client.actor_id or client.actor_id != 0 or int(local_actor.get("id", -1)) != client.actor_id: return false
+	# Camera smoothing may extrapolate <=50 ms from the authoritative eye.
+	if camera.position.distance_to(presentation.eye_position()) > 2.5: return false
 	if authority_geometry_hash != catalog.entries[current_id].geometryHash: return false
 	for zone: Dictionary in zones.projection.zones:
 		if not zone_renderer.markers.has(zone.id): return false

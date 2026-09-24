@@ -151,6 +151,20 @@ test('debug-panel flags: never lobby, only cheats rows in the registry', () => {
   }
 });
 
+test('optional diagnostics and cheats flags stay separate on every route', () => {
+  for (const route of registry.routes) {
+    assert.ok(route.toggles.some(t => t.key === 'diagnostics' && t.flag === '--diagnostics'), route.id);
+    const cheatToggle = route.toggles.find(t => t.key === 'cheats');
+    assert.equal(Boolean(cheatToggle), ['combat','horde','native-dm','identity-zones'].includes(route.id));
+    const argv = [...argvWith(route), '--diagnostics', ...(cheatToggle ? ['--debug-panel'] : [])];
+    assert.doesNotThrow(() => options(argv, catalog), route.id);
+    if (route.id === 'lobby') assert.ok(!route.flags.includes('--debug-panel'));
+  }
+  const zones = registry.routes.find(route => route.id === 'zones');
+  assert.deepEqual(zones.params.find(param => param.key === 'bots'),
+    {key:'bots', kind:'range', label:'Bots', min:0, max:8, default:2, step:1});
+});
+
 test('build.py and export_presets.cfg ship ui/*.json through the include filter', () => {
   const filterOf = text => (text.match(/include_filter="([^"]*)/) ?? [, ''])[1];
   const build = readFileSync(join(here, 'build.py'), 'utf8');

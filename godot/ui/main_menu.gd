@@ -222,6 +222,8 @@ func apply_defaults() -> void:
 			selections[key] = registry.choice_default(param, map_id)
 		elif str(param.get("kind", "")) == "range":
 			selections[key] = clampi(int(selections[key]), int(param.get("min", 0)), registry.range_max(param, map_id))
+	for toggle: Dictionary in registry.toggles_of(current_route):
+		selections[str(toggle.get("key", ""))] = bool(toggle.get("default", false))
 
 func rebuild_params() -> void:
 	choice_rows = {}
@@ -236,6 +238,15 @@ func rebuild_params() -> void:
 			params_box.add_child(build_choice_row(param))
 		else:
 			params_box.add_child(build_range_row(param))
+	for toggle: Dictionary in registry.toggles_of(current_route):
+		var key := str(toggle.get("key", ""))
+		var button := CheckButton.new()
+		button.text = str(toggle.get("label", key))
+		button.button_pressed = bool(selections.get(key, false))
+		button.toggled.connect(func(on: bool) -> void:
+			selections[key] = on
+			refresh_status())
+		params_box.add_child(button)
 
 ## Popup-free choice row on the shared lobby_choice.gd browse semantics.
 func build_choice_row(param: Dictionary) -> Control:
