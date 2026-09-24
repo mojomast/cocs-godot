@@ -87,7 +87,7 @@ per-job height-grid settings (blur params are in the source manifest):
 | --- | --- | --- |
 | normal-rock | `{type:'height', kind:'ridge', seed:11, freq:5, octaves:6}` | ridged strata |
 | normal-ice | `{type:'height', kind:'cells', seed:23, freq:3}` | fracture lattice |
-| normal-sand | `{type:'height', kind:'noise', seed:31, freq:12, octaves:3}` | fine dunes |
+| normal-sand | `{type:'height', kind:'noise', seed:31, freq:12, octaves:3, anisotropy:2}` | fine dunes |
 | normal-concrete | `{type:'height', kind:'noise', seed:47, freq:3, octaves:6}` | broad pour blotches |
 | normal-grass | `{type:'height', kind:'noise', seed:59, freq:16, octaves:4, anisotropy:2}` | tufted |
 | normal-hazard | `{type:'height', kind:'ridge', seed:67, freq:2, octaves:2, angle:1.5708, anisotropy:6}` | painted bands |
