@@ -2,6 +2,8 @@ extends "res://world/session.gd"
 const HordeModel = preload("res://horde/model.gd")
 const HordeClient = preload("res://horde/client.gd")
 const HordeControls = preload("res://horde/controls.gd")
+const BloodWire = preload("res://blood_fx/wire.gd")
+const ActorVisual = preload("res://source_operators/operator_visual.gd")
 const LOOK_GAIN := 0.002 # default source mouse sensitivity, app/page.tsx
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible"]
 ## Source HORDE_UPGRADES offers exactly three rows; the number keys are the
@@ -27,6 +29,17 @@ var last_rejected := ""
 var last_confirmed := 0
 var last_applied := 0
 var last_selected := ""
+## Horde alone owns these presentation-only remnants. The shared presentation
+## intentionally discards missing/dead actors immediately; an authoritative
+## death event keeps its NPC visible long enough to play a real fall.
+const CORPSE_SECONDS := 3.5
+const MAX_CORPSES := 24
+var npc_actors: Dictionary = {}
+var npc_seen: Dictionary = {}
+var corpses: Array[Dictionary] = []
+var corpse_events: Dictionary = {}
+var terminal_blood: Node3D
+var terminal_blood_age := 0.0
 
 func _init() -> void:
 	# The inherited field creates a detached Node. Free it before specializing;
@@ -97,7 +110,9 @@ func _ready() -> void:
 	client.snapshot.connect(on_snapshot)
 	client.results.connect(on_results)
 	client.events.connect(func(items: Array) -> void:
-		if phase == 3: combat.apply_events(items, client.actor_id))
+		if phase == 3:
+			combat.apply_events(items, client.actor_id)
+			apply_npc_deaths(items))
 	connect_selected_match()
 	# Horde's source-default desktop bindings, localized to this composition.
 	call_deferred("show_controls")
@@ -304,6 +319,8 @@ func on_lobby(frame: Dictionary) -> void:
 	super.on_lobby(frame)
 
 func on_started(frame: Dictionary) -> void:
+	release_terminal_blood()
+	clear_npc_deaths()
 	latest.clear()
 	horde.clear()
 	clear_choices()
@@ -312,6 +329,7 @@ func on_started(frame: Dictionary) -> void:
 
 func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3: return
+	remember_npcs(frame.state)
 	super.on_snapshot(frame)
 	apply_horde(frame.state)
 	record_state(frame.get("seq", -1))
@@ -339,7 +357,103 @@ func apply_horde(state: Dictionary, stale: bool = false) -> void:
 		badge.text = str(a.get("npcType", "enemy")).to_upper() + "  %d" % int(a.get("health", 0))
 		badge.modulate = Color("ffcc66") if a.get("npcType") == "spitter" else Color("ff7388")
 
+func remember_npcs(state: Dictionary) -> void:
+	var timestamp: Variant = state.get("time")
+	for value: Variant in state.get("actors", []):
+		if not value is Dictionary or value.get("isNpc") != true: continue
+		var id := BloodWire.identity(value.get("id"))
+		if id < 0: continue
+		# Keep the last known pose after an actor leaves the public snapshot: event
+		# delivery and removal may cross on the same network tick.
+		npc_actors[id] = value.duplicate(true)
+		if BloodWire.numeric(timestamp): npc_seen[id] = float(timestamp)
+	if BloodWire.numeric(timestamp):
+		for id: int in npc_seen.keys():
+			if float(timestamp) - float(npc_seen[id]) > 0.75:
+				npc_seen.erase(id)
+				npc_actors.erase(id)
+	# Bound long multi-wave runs even when snapshots carry no source clock.
+	while npc_actors.size() > 512:
+		var oldest: int = npc_actors.keys()[0]
+		npc_actors.erase(oldest)
+		npc_seen.erase(oldest)
+
+func apply_npc_deaths(items: Array) -> void:
+	for value: Variant in items:
+		if not value is Dictionary or value.get("type") not in ["death", "enemy-detonate"]: continue
+		var event_id := BloodWire.identity(value.get("id"))
+		var id := BloodWire.identity(value.get("actor"))
+		if event_id < 0 or id < 0 or corpse_events.has(event_id) or not npc_actors.has(id): continue
+		var actor: Dictionary = npc_actors[id]
+		# A reused seat that is now a player must not inherit an NPC corpse.
+		if actor.get("isNpc") != true or id == client.actor_id: continue
+		if value.type == "enemy-detonate" and actor.get("npcType") != "sapper": continue
+		corpse_events[event_id] = true
+		for seen_id: int in corpse_events.keys():
+			if seen_id < event_id - 4096: corpse_events.erase(seen_id)
+		if corpses.size() >= MAX_CORPSES: retire_corpse(0)
+		var node := ActorVisual.new()
+		node.name = "HordeCorpse_%d" % event_id
+		node.local_id = client.actor_id
+		add_child(node)
+		node.apply_actor(actor)
+		var point: Variant = BloodWire.point(value.get("pos"))
+		# Wire death.pos is the impact/body point (usually actor.y + 1), not
+		# the foot anchor used by PortPresentation. Preserve snapshot foot height.
+		var origin := Vector3(float(actor.get("x", 0)), float(actor.get("y", 0)), float(actor.get("z", 0)))
+		if point != null:
+			origin.x = point.x
+			origin.z = point.z
+		node.position = origin + Vector3.UP * 0.9
+		node.rotation.y = float(actor.get("bodyYaw", actor.get("yaw", 0.0)))
+		node.begin_death()
+		corpses.append({"node":node, "age":0.0, "actor":id, "event":event_id})
+
+func retire_corpse(index: int) -> void:
+	var corpse: Dictionary = corpses[index]
+	corpses.remove_at(index)
+	var node: Node3D = corpse.node
+	if is_instance_valid(node): node.queue_free()
+
+func advance_corpses(delta: float) -> void:
+	if not is_finite(delta) or delta <= 0.0: return
+	for i in range(corpses.size() - 1, -1, -1):
+		corpses[i].age += delta
+		if corpses[i].age >= CORPSE_SECONDS: retire_corpse(i)
+
+func clear_npc_deaths() -> void:
+	while not corpses.is_empty(): retire_corpse(corpses.size() - 1)
+	corpse_events.clear()
+	npc_actors.clear()
+	npc_seen.clear()
+
+## Reuse (never clone) the shared configured blood controller for a terminal
+## kill. The shared round clear would otherwise erase a burst in the same frame
+## as the results packet, before even one render pass. Only the visual lifetime
+## moves here; combat admission and damage stay wholly in CombatFeedback.
+func hold_terminal_blood() -> void:
+	if not is_instance_valid(combat.blood_fx) or not combat.effects_active: return
+	var fx: Node3D = combat.blood_fx
+	if int(fx.snapshot().get("active_emitters", 0)) <= 0: return
+	# Leave the node in the scene tree: removing it triggers its exit-tree
+	# notification, which correctly drains blood on real disconnects.
+	combat.blood_fx = null
+	terminal_blood = fx
+	terminal_blood_age = 0.0
+	fx.set_active(true, false) # results do not publish fresh actor snapshots
+
+func release_terminal_blood() -> void:
+	if not is_instance_valid(terminal_blood): return
+	terminal_blood.reset()
+	combat.blood_fx = terminal_blood
+	terminal_blood = null
+
 func on_results(frame: Dictionary) -> void:
+	# The final NPC death may finish the wave before the next render tick.
+	# Consume already-received authoritative events before clear_round drains
+	# the shared effects pipeline; this is never a synthetic result-frame hit.
+	combat.flush_effects()
+	hold_terminal_blood()
 	round_results += 1
 	phase = 4
 	presentation.apply_state(frame.state, client.actor_id)
@@ -350,6 +464,8 @@ func on_results(frame: Dictionary) -> void:
 	record_state(-1)
 
 func on_error(message: String) -> void:
+	release_terminal_blood()
+	clear_npc_deaths()
 	latest.clear()
 	horde.clear()
 	clear_choices()
@@ -374,6 +490,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	super._unhandled_input(event)
 
 func _process(delta: float) -> void:
+	advance_corpses(delta)
+	if is_instance_valid(terminal_blood) and is_finite(delta) and delta > 0.0:
+		terminal_blood_age += delta
+		if terminal_blood_age >= CORPSE_SECONDS: release_terminal_blood()
 	# Local specialization of session's handshake/watch/send loop. Shared session
 	# keeps its old contract; this scene samples source press/hold controls instead.
 	controls.focused = application_focused

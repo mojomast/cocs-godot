@@ -7,6 +7,7 @@ const Rig = preload("res://source_operators/character_rig.gd")
 const WorldWeapons = preload("res://source_operators/generated/world_weapons/catalog.gd")
 const HandGrips = preload("res://source_operators/hand_grips.gd")
 const WORLD_WEAPON_DIR := "res://source_operators/generated/world_weapons/"
+const DEATH_DURATION := 0.8
 var identity_key: String = ""
 var character: String = ""
 var source: Node3D
@@ -26,6 +27,12 @@ var weapon_type: int = -1
 var world_weapon: Node3D
 var grip_error: Dictionary = {}
 var grip_clamp: Dictionary = {}
+var death_active: bool = false
+var death_elapsed: float = 0.0
+var death_duration: float = DEATH_DURATION
+var death_start: Dictionary = {}
+var death_target: Dictionary = {}
+var last_live_pose: Dictionary = {}
 
 func apply_identity(actor: Dictionary) -> void:
 	if Catalog.OPERATORS.is_empty(): return
@@ -39,6 +46,7 @@ func apply_identity(actor: Dictionary) -> void:
 	if character == next:
 		_apply_team(actor.get("team"))
 		return
+	_clear_death_animation()
 	if is_instance_valid(source):
 		remove_child(source)
 		source.free()
@@ -69,6 +77,7 @@ func apply_identity(actor: Dictionary) -> void:
 	lod_level = -1
 	set_lod(0)
 	elapsed = 0.0; recoil = 0.0
+	last_live_pose = _capture_pose()
 
 func _collect(node: Node) -> void:
 	if node is Node3D:
@@ -149,16 +158,66 @@ func apply_actor(actor: Dictionary) -> void:
 		visible = false
 		return
 	if float(actor.get("health",100)) <= 0:
-		rig.apply_source_death(Catalog.OPERATORS[character].deathPose)
+		if not death_active and not rig.dead:
+			last_live_pose = _capture_pose()
+			rig.apply_source_death(Catalog.OPERATORS[character].deathPose)
 		return
 	if rig.dead:
-		rig.reset(); recoil = 0.0
+		reset_pose()
 	# The source only replaces a living actor's held weapon; corpses keep theirs.
 	if actor.has("weapon"): set_weapon(int(actor.get("weapon",0)))
 
 func reset_pose() -> void:
+	_clear_death_animation()
 	rig.reset()
 	recoil = 0.0
+	if is_instance_valid(source): last_live_pose = _capture_pose()
+
+## Start a presentation-only fall from the latest living pose, even if a dead
+## snapshot already applied the static source pose. Repeated calls do not restart it.
+## advance(dt) drives the transition; the final fallen pose remains until reset/respawn.
+func begin_death(duration: float = DEATH_DURATION) -> void:
+	if death_active or not is_instance_valid(source) or not Catalog.OPERATORS.has(character): return
+	death_duration = maxf(0.01, duration)
+	death_elapsed = 0.0
+	death_start = last_live_pose.duplicate() if rig.dead and not last_live_pose.is_empty() else _capture_pose()
+	rig.apply_source_death(Catalog.OPERATORS[character].deathPose)
+	death_target = _capture_pose()
+	# Rotating about the source feet lowers the head into a visible prone silhouette.
+	# Keep this on the root so all authored joint splay and the mounted weapon follow.
+	var root: Transform3D = death_target["root"]
+	root.basis = Basis(Quaternion(Vector3.RIGHT, -1.38)) * root.basis
+	root.origin.y -= 0.12
+	death_target["root"] = root
+	_apply_captured_pose(death_start)
+	death_active = true
+	recoil = 0.0
+
+func _clear_death_animation() -> void:
+	death_active = false
+	death_elapsed = 0.0
+	death_start.clear()
+	death_target.clear()
+	last_live_pose.clear()
+
+func _capture_pose() -> Dictionary:
+	var pose: Dictionary = {}
+	for key: String in nodes:
+		pose[key] = (nodes[key] as Node3D).transform
+	return pose
+
+func _apply_captured_pose(pose: Dictionary) -> void:
+	for key: String in pose:
+		if nodes.has(key): (nodes[key] as Node3D).transform = pose[key]
+
+func _advance_death(dt: float) -> void:
+	death_elapsed = minf(death_duration, death_elapsed + maxf(0.0, dt))
+	var t: float = death_elapsed / death_duration
+	# Fast initial stagger, then decelerate into the floor.
+	var weight: float = t * t * (3.0 - 2.0 * t)
+	for key: String in death_start:
+		if nodes.has(key) and death_target.has(key):
+			(nodes[key] as Node3D).transform = (death_start[key] as Transform3D).interpolate_with(death_target[key], weight)
 
 func kick(amount: float = 1.0) -> void:
 	# Presentation-only bounded recoil overlay, on the source weapon mount.
@@ -171,6 +230,9 @@ func _process(dt: float) -> void:
 	if camera: select_distance(global_position.distance_to(camera.global_position))
 
 func advance(dt: float) -> void:
+	if death_active:
+		_advance_death(dt)
+		return
 	if rig.dead or snapshot.is_empty(): return
 	elapsed += dt
 	var a: Dictionary = snapshot
@@ -190,6 +252,7 @@ func advance(dt: float) -> void:
 		# Source post-pose hand pass, after the source weapon was replaced.
 		grip_clamp.clear()
 		grip_error = HandGrips.align(nodes, world_weapon, grip_clamp)
+	last_live_pose = _capture_pose()
 
 func select_distance(distance: float) -> void:
 	# Source LOD thresholds 5.8m precision / 18m anatomy, with hysteresis.

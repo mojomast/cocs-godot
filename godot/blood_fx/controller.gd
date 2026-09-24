@@ -50,6 +50,9 @@ var surface_error := ""
 var fluid_slots: Array[Dictionary] = []
 var stain_slots: Array[Dictionary] = []
 var actors: Dictionary = {}
+## Wire events can arrive after the snapshot which removes their victim. Keep
+## only a short, public-state-derived pose for that reordered delivery.
+var departed_actors: Dictionary = {}
 var local_id := -1
 var clock := 0.0
 var last_state_usec := 0
@@ -302,6 +305,7 @@ func reset() -> void:
 	last_event_id = -1
 	_ids.fill(-1)
 	actors.clear()
+	departed_actors.clear()
 	drain()
 
 func _clear_stains() -> void:
@@ -368,7 +372,14 @@ func _ingest_actors(values: Variant) -> void:
 		entry.vehicle = actor.get("vehicleId")
 		actors[id] = entry
 	for id: int in actors.keys():
-		if not seen.has(id): actors.erase(id)
+		if not seen.has(id):
+			var old: Dictionary = actors[id]
+			old["departure_time"] = last_public_time
+			departed_actors[id] = old
+			actors.erase(id)
+	for id: int in departed_actors.keys():
+		if seen.has(id) or last_public_time < 0.0 or last_public_time - float(departed_actors[id].departure_time) > 0.75:
+			departed_actors.erase(id)
 
 
 func apply_events(items: Array, local_actor_id: int = -1) -> void:
@@ -379,7 +390,9 @@ func apply_events(items: Array, local_actor_id: int = -1) -> void:
 		if not value is Dictionary: continue
 		var event: Dictionary = value
 		var type := str(event.get("type", ""))
-		if type != "damage" and type != "death": continue
+		# Horde's authoritative sapper detonation sets health to zero directly
+		# and emits enemy-detonate, not a separate death event.
+		if type != "damage" and type != "death" and type != "enemy-detonate": continue
 		events_seen += 1
 		var id := Wire.identity(event.get("id"))
 		if id < 0:
@@ -415,11 +428,16 @@ func _damage_event(event: Dictionary, id: int) -> void:
 	if wire_damage <= 0.0:
 		no_bleed += 1
 		return
-	if not actors.has(victim):
+	var actor: Dictionary = actors.get(victim, {})
+	if actor.is_empty() and departed_actors.has(victim) and Wire.numeric(event.get("time")):
+		var previous: Dictionary = departed_actors[victim]
+		if absf(float(event.time) - float(previous.departure_time)) <= 0.75: actor = previous
+	if actor.is_empty():
 		unknown_actors += 1
 		return
-	var actor: Dictionary = actors[victim]
-	if float(actor.get("health", 0.0)) <= 0.0:
+	# The last hit is valid when a snapshot already shows the health bar falling
+	# through zero; it is not valid against an actor known dead beforehand.
+	if float(actor.get("health", 0.0)) <= 0.0 and float(actor.get("health_prev", -1.0)) <= 0.0:
 		no_bleed += 1
 		return
 	var real := _real_damage(actor, wire_damage)
