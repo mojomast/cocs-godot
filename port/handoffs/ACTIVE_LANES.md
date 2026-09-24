@@ -707,3 +707,26 @@ release guards (176 gates). Moth gallery: `http://100.125.104.79:4371/moth-rebak
 Upstream main's pre-existing camera-ownership CI failure belongs to the web
 demo frame-cap change at `d4344d8f`; the clean-lineage source branch CI passed.
 Hardware-GPU FPS/Extreme verdict and owner playtest remain pending.
+
+### Weapon-feel prerelease shipped (2026-09-24)
+
+Release: `https://github.com/mojomast/cocs-godot/releases/tag/weapon-feel-2026-09-24`.
+The frozen/tagged port commit is `03ad5ccff66c1daaf5ec69bf0c675219ddac92c1`;
+the locked source is `515daf07589150dd3241f4ae1425cc1b093912f5`.
+`godot/main` was fast-forwarded to the release commit before publishing, so both
+hosted workflows ran the matching verifier. The aggregate passed **176/176**
+gates. The release's `release-verification.json` records hashes, commit IDs,
+local Linux smoke, and hosted results:
+
+| Platform | Archive SHA-256 | Fresh-extraction hosted check |
+| --- | --- | --- |
+| Windows | `4f1279e18bb7edcc57ede295bf86c4e3c27dae02d5c9ed6d3e07598633e20f3d` | [17/17 passed, run 36045856703](https://github.com/mojomast/cocs-godot/actions/runs/36045856703); 139 files re-hashed |
+| Linux | `5ae88007013dbd191a2e59dcf69124b6ec80949fdb3175ed1f19c3081159896e` | [17/17 passed, run 36045856802](https://github.com/mojomast/cocs-godot/actions/runs/36045856802); 132 files re-hashed |
+
+The archives have the same 375-resource generated hash tree, both check their
+source and port commits, and Linux also passed 17/17 locally from a fresh
+extraction with a space in its path. `port/release-notes/weapon-feel-2026-09-24.md`
+has the owner benchmark command. This host renders with llvmpipe; the owner
+still needs to send the hardware-GPU `BENCHMARK_RESULT` and map-by-map Extreme
+verdicts. The upstream web-game camera CI regression remains outside this
+port release and still awaits the owner's approval for a forward fix.

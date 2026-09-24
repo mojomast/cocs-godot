@@ -8,6 +8,9 @@ from gate_runner import run_gate, save_report
 
 root = Path(__file__).resolve().parents[2]
 os.chdir(root)
+# Fresh CI runners do not pre-create the scratch root used by coverage and
+# rendered smoke gates; keep the aggregate self-contained on those machines.
+Path('/tmp/opencode').mkdir(parents=True, exist_ok=True)
 report_path = Path('port/reports/verification.json')
 report = {'status': 'running', 'gates': []}
 save_report(report_path, report)

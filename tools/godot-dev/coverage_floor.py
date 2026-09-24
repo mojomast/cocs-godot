@@ -19,7 +19,9 @@ FLOOR = ROOT / "port/contracts/moth-coverage-floor.json"
 
 def main() -> int:
     floor = json.loads(FLOOR.read_text())
-    with tempfile.TemporaryDirectory(prefix="moth-coverage-", dir="/tmp/opencode") as temporary:
+    scratch = Path("/tmp/opencode")
+    scratch.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="moth-coverage-", dir=scratch) as temporary:
         report_path = Path(temporary) / "coverage.json"
         result = subprocess.run(
             ["node", "tools/godot-moth/coverage.mjs", f"--json={report_path}"],
