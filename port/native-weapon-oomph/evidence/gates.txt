@@ -49,6 +49,10 @@ $GODOT_BIN --headless --audio-driver Dummy --path godot --script res://tests/pro
 Rendered gates under private Xvfb (all exit 0)
 ----------------------------------------------
 python3 tools/godot-dev/xvfb_run.py $GODOT_BIN --path godot --rendering-method gl_compatibility \
+    --audio-driver Dummy --script res://tests/first_person/binding.gd
+    FIRST_PERSON_BINDING {"checks":18,"failures":[]}
+
+python3 tools/godot-dev/xvfb_run.py $GODOT_BIN --path godot --rendering-method gl_compatibility \
     --audio-driver Dummy --script res://tests/first_person/ads.gd -- --evidence-out=<dir>
     NATIVE_ADS {"checks":910,"failures":[],"images":120,"measurements":160}
     max muzzle mapping error 8.63e-05 px, max target-gap opaque pixels 0
