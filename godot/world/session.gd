@@ -68,6 +68,7 @@ func lobby_host_allowed() -> bool:
 
 func lobby_clear() -> void:
 	release_pointer()
+	local_motion.reset()
 	client.disconnect_server()
 	snapshot_watch.reset()
 	presentation.clear_round()
@@ -156,6 +157,7 @@ func update_look(relative: Vector2) -> void:
 const SnapshotWatch = preload("res://net/snapshot_watch.gd")
 var snapshot_watch := SnapshotWatch.new()
 const Presentation = preload("res://world/presentation.gd")
+const LocalMotion = preload("res://world/local_motion.gd")
 const Pickups = preload("res://world/pickups.gd")
 const CombatFeedback = preload("res://world/combat_feedback.gd")
 var combat := CombatFeedback.new()
@@ -163,6 +165,7 @@ var combat_label := Label.new()
 var pickups := Pickups.new()
 var client := Client.new()
 var presentation := Presentation.new()
+var local_motion := LocalMotion.new()
 # Guest phases: 10 waits for join acknowledgement; 11 waits for host start.
 var join_room_id: String = ""
 var phase: int = 0
@@ -259,6 +262,7 @@ var application_focused: bool = true
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		application_focused = false
+		local_motion.reset()
 		release_pointer()
 	elif what == NOTIFICATION_APPLICATION_FOCUS_IN:
 		application_focused = true
@@ -285,6 +289,7 @@ func _ready() -> void:
 	label.get_parent().mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(client)
 	add_child(presentation)
+	presentation.render_frame.connect(render_local_translation)
 	add_child(combat)
 	label.get_parent().add_child(combat_label)
 	combat_label.position = Vector2(24, 170)
@@ -394,6 +399,7 @@ func on_started(_frame: Dictionary) -> void:
 	# A host can start a new round without this client visiting results.
 	# Never carry interactive capture across an authoritative round boundary.
 	release_pointer()
+	local_motion.reset()
 	if is_instance_valid(debug_panel): debug_panel.round_started()
 	round_starts += 1
 	snapshot_watch.reset()
@@ -408,6 +414,7 @@ func on_started(_frame: Dictionary) -> void:
 	emit_boundary_trace("round_start")
 
 func on_error(message: String) -> void:
+	local_motion.reset()
 	if is_instance_valid(setup_menu): setup_menu.hide()
 	label.show()
 	snapshot_watch.reset()
@@ -469,6 +476,7 @@ func on_lobby(frame: Dictionary) -> void:
 	# Never use the previous actor's pose while waiting for the new snapshot.
 	if received_pose and pose_actor_id != client.actor_id:
 		received_pose = false
+		local_motion.reset()
 		send_elapsed = 0.0
 		release_pointer()
 	if not join_room_id.is_empty() and frame.get("config") is Dictionary:
@@ -515,6 +523,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		add_child(first_person)
 		first_person.bind_session(self)
 	if client.spectating:
+		local_motion.reset()
 		received_pose = false
 		pose_actor_id = -1
 		release_pointer()
@@ -524,6 +533,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	var actor: Dictionary = presentation.local_actor
 	combat_actions.observe_actor(actor)
 	if actor.is_empty():
+		local_motion.reset()
 		# Reset once on loss, not on every absent-actor snapshot: otherwise
 		# frequent snapshots starve the neutral-input send cadence.
 		if received_pose: send_elapsed = 0.0
@@ -531,8 +541,12 @@ func on_snapshot(frame: Dictionary) -> void:
 		release_pointer()
 		emit_snapshot_trace(false)
 		return
-	camera.position = presentation.eye_position()
-	var reseeded: bool = not received_pose or presentation.lifecycle.reseed_look
+	var reseeded: bool = not received_pose or pose_actor_id != client.actor_id or presentation.lifecycle.reseed_look
+	if reseeded: local_motion.reset()
+	var eye: Vector3 = presentation.eye_position()
+	var now: float = Time.get_ticks_usec() / 1000000.0
+	local_motion.ingest(eye, presentation.lifecycle.can_control(), now)
+	camera.position = local_motion.sample(now) if local_motion.ready() else eye
 	if reseeded:
 		weapon_selection.clear()
 		combat_actions.clear()
@@ -563,6 +577,17 @@ func on_snapshot(frame: Dictionary) -> void:
 		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true fired=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true combat_shots=", combat.shots, " combat_launches=", combat.launches, " local_launches=", combat.local_launches, " map=", current_id, " mode=", selected_mode)
 		client.disconnect_server()
 		get_tree().quit(0)
+
+# Runs from the presentation node's render clock, not session._process: Horde
+# overrides that method. Translation alone is visual; look angles and input
+# remain current, and stale/focus/spectator epochs cannot extrapolate a pose.
+func render_local_translation(now: float) -> void:
+	if phase != 3 or client.spectating or not received_pose or presentation.local_actor.is_empty(): return
+	if snapshot_watch.stale() or not application_focused:
+		local_motion.reset()
+		camera.position = presentation.eye_position()
+		return
+	if local_motion.ready(): camera.position = local_motion.sample(now)
 
 func weapon_controls_active() -> bool:
 	return can_capture_pointer() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED

@@ -12,10 +12,14 @@ var local_actor_id: int = -1
 var actors: Dictionary = {}
 var rendered_remote_poses: int = 0
 var last_shots: Dictionary = {}
+signal render_frame(now: float)
 
 func _process(_delta: float) -> void:
-	if not interpolate_remote: return
 	var now: float = Time.get_ticks_usec() / 1000000.0
+	# Shared render clock also serves local translation in sessions whose own
+	# _process is overridden (notably Horde). No simulation state is advanced.
+	render_frame.emit(now)
+	if not interpolate_remote: return
 	for id: int in actors:
 		if id == local_actor_id: continue
 		var pose: Dictionary = motion.sample(id, now)
