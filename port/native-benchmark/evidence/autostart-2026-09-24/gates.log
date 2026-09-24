@@ -1,0 +1,20 @@
+# lane/benchmark-autostart gate re-run (2026-09-24)
+
+$ $GODOT_BIN --headless --path godot --script res://tests/benchmark/contracts.gd
+
+BENCHMARK_AUTOSTART map=prism-foundry bots=4 seconds=180
+BENCHMARK_CONTRACTS_RESULT {"checks":179,"failures":[]}
+
+$ node --test port/native-benchmark/test.mjs
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 49.73848
+
+$ $GODOT_BIN --headless --path godot --editor --import
+exit=0; ERROR lines: 0

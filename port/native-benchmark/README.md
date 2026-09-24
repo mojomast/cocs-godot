@@ -22,7 +22,10 @@ Play.cmd --experience=native-dm --map=prism-foundry --bots=4 --round-seconds=180
 ```
 
 * `set COCS_BENCHMARK=1` arms the benchmark for this console only. Clear it with
-  `set COCS_BENCHMARK=` when you are done.
+  `set COCS_BENCHMARK=` when you are done. In PowerShell the syntax is
+  `$env:COCS_BENCHMARK=1` (`set` there creates a PowerShell variable, not an
+  environment variable), and a `set` line typed in the wrong console is exactly
+  why an armed-looking run can park at the setup screen.
 * `set COCS_BENCHMARK_LEVEL=low|high|extreme` is optional and picks the effects
   level that gets measured (default `high`). Measure each level you care about by
   re-running with a different value; keep everything else identical.
@@ -33,6 +36,10 @@ Play.cmd --experience=native-dm --map=prism-foundry --bots=4 --round-seconds=180
   sequence is driving the player. The window only has to stay focused. If focus is
   lost the actor stops being controlled and the result is marked
   `partial`/`unusable` instead of pretending to be a benchmark.
+* The native route honours the arming itself: the console shows
+  `BENCHMARK_AUTOSTART map=... bots=... seconds=... source=native-route` and the
+  setup screen is skipped. The benchmark driver still starts the match for any
+  session route that does not do this itself (`source` absent on its line).
 
 After roughly 40 seconds the game prints the result and closes:
 
@@ -144,6 +151,7 @@ be claimed by another action.
 | Symptom | Cause and fix |
 |---|---|
 | No `BENCHMARK_RESULT` line at all | `set COCS_BENCHMARK=1` must be set in the **same** console that launches `Play.cmd`. Look for `BENCHMARK_REFUSED` or `BENCHMARK_WAITING` in the output — they name the reason. |
+| The run sits at the native setup screen | The console is not armed (the trigger did not reach the game process): `BENCHMARK_WAITING the match has not been started yet (native setup phase -2)` repeats and the run refuses after 30 s. Set the variable in the launching console, or run `node port/native-benchmark/run_benchmark.mjs --gate=all` to prove the documented path end to end. |
 | `BENCHMARK_REFUSED ... the window never became focused` | The game window must have keyboard focus. Click it, do not minimize it, and rerun. |
 | `verdict":"partial"` / `"unusable"` | Read `verdict_reasons`: vsync could not be disabled, the round ended early (rerun with the default `--round-seconds=180`), the window lost focus, or too many deaths interrupted the scripted input. Re-running is usually enough. |
 | `Unknown launcher option: --benchmark` | Only the environment variable arms the packaged launcher. Do not add `--benchmark` to `Play.cmd`; pass it only when launching the Godot executable directly (the Linux runner does). |
@@ -182,12 +190,29 @@ $GODOT_BIN --headless --path godot --script res://tests/benchmark/contracts.gd
 node --test port/native-benchmark/test.mjs
 ```
 
+Run-sheet regression gates (rendered, env-only arming — never the `--benchmark`
+argument the packaged launchers cannot pass):
+
+```sh
+# --gate=autostart: the documented COCS_BENCHMARK=1 run must print
+# BENCHMARK_AUTOSTART, measure and return one complete BENCHMARK_RESULT.
+# --gate=unarmed: the same command without arming must start no benchmark at all.
+node port/native-benchmark/run_benchmark.mjs --gate=all --resolution=1280x800 --out=/tmp/opencode/benchmark-autostart-gate
+```
+
+Both gate runs end with `BENCHMARK_GATE_OK` (exit 0) or `BENCHMARK_GATE_FAIL`
+(exit 1, `problems[]` names them). See
+[evidence/autostart-2026-09-24/README.md](evidence/autostart-2026-09-24/README.md)
+for the recorded runs.
+
 `contracts.gd` covers the plan's bounds and purity, the frame statistics, the
-honesty classification, the preset API and the unchanged F7/F9/F10 keys.
-`test.mjs` covers the result parser, the "software is not hardware" caveat and
-the level comparison. `verify_evidence.mjs --require-slower` re-checks the
-committed matrices; see [evidence/README.md](evidence/README.md) for the verified
-llvmpipe numbers and what was inspected by hand.
+honesty classification, the preset API, the launch arming decisions
+(environment trigger, level override, the native route's own autostart and the
+driver's one-shot autostart fallback) and the unchanged F7/F9/F10 keys.
+`test.mjs` covers the result parser, the "software is not hardware" caveat, the
+arming audit and the level comparison. `verify_evidence.mjs --require-slower`
+re-checks the committed matrices; see [evidence/README.md](evidence/README.md)
+for the verified llvmpipe numbers and what was inspected by hand.
 
 ## Honest limits
 
@@ -220,3 +245,46 @@ llvmpipe numbers and what was inspected by hand.
   Those are software-renderer figures and are not hardware claims.
 - F7 is claimed by the benchmark; the UI lane was told so it does not bind it.
 - Adding `--benchmark` to the packaged launchers remains lead-owned routing.
+
+## Autostart repair (2026-09-24)
+
+The documented env-armed run must start the match without UI input, but the
+**native route itself** never honoured the arming: `native_arenas/demo.gd` set
+`auto_start` only for `--autostart`/`--smoke`, so the one thing that could start
+an armed run was the benchmark driver's `_autostart_step()` — a passenger node
+created as a side effect of the combat composition. When that step never fired,
+the run parked at the setup screen and the console showed only
+
+```
+BENCHMARK_WAITING the match has not been started yet (native setup phase -2)
+BENCHMARK_REFUSED the authoritative round did not become controllable within 30 seconds (...)
+```
+
+Fix: `demo.gd` now derives `auto_start` from `launch_starts_match()`, which is
+true for `--autostart`/`--smoke` **or** the documented benchmark arming
+(`COCS_BENCHMARK=1`, or `--benchmark` in the session user args), and prints the
+same `BENCHMARK_AUTOSTART` marker with `source=native-route`. Interactive
+launches (and F7) are unchanged; the driver's one-shot autostart remains as the
+fallback for any session route that does not start itself.
+
+- `res://tests/benchmark/contracts.gd` now pins the arming decisions — environment
+  trigger and level, the native route's own autostart, and the driver's one-shot
+  autostart (map/operator/bots/round passed through, no double start, no
+  setup-surface guessing): **179 checks, 0 failures**.
+- `port/native-benchmark/test.mjs` covers the new console audit: an armed run
+  must print `BENCHMARK_AUTOSTART` + `BENCHMARK_START` and never refuse, while an
+  un-armed run must print no benchmark startup marker.
+- New rendered gate command (for the lead to register, alongside
+  `benchmark-contracts`/`benchmark-tools`):
+
+```sh
+node port/native-benchmark/run_benchmark.mjs --gate=all --resolution=1280x800 --out=/tmp/opencode/benchmark-autostart-gate
+```
+
+  It arms through the **environment only** (never the `--benchmark` argument,
+  because the packaged launchers cannot pass it), runs the run-sheet composition
+  and the un-armed negative, and prints `BENCHMARK_GATE_OK` / exits 0 on success
+  (or `BENCHMARK_GATE_FAIL` / exits 1 with `problems[]`). A registered gate can
+  use `BENCHMARK_GATE_OK` as its success marker.
+- Evidence, including the controlled before/after probe where the driver's
+  autostart step never fires: [evidence/autostart-2026-09-24/](evidence/autostart-2026-09-24/).

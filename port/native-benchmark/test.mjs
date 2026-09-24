@@ -2,7 +2,7 @@
 // no display, no authority, no Godot. The rendered runs live in evidence/.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {compareResults, lineSummary, parseConsole, validateResult} from './validate.mjs';
+import {auditAutostart, compareResults, lineSummary, parseConsole, validateResult} from './validate.mjs';
 
 function result(overrides = {}) {
   const base = {
@@ -78,6 +78,26 @@ test('console output is parsed from the last BENCHMARK_RESULT line', () => {
   assert.equal(noisy.result, null);
   assert.ok(noisy.error);
   assert.equal(parseConsole('nothing here').result, null);
+});
+
+test('the arming audit separates an autostarted run from a parked setup screen', () => {
+  const armed = ['Godot Engine v4.5.2',
+    'BENCHMARK_AUTOSTART map=prism-foundry bots=4 seconds=180 source=native-route',
+    'BENCHMARK_WAITING phase 0: waiting for the authoritative round to go live',
+    'BENCHMARK_START plan=33.0s phases=warmup, combat, burst, sustained',
+    `BENCHMARK_RESULT ${JSON.stringify(result())}`].join('\n');
+  assert.equal(auditAutostart(armed, {expectAutostart: true}).ok, true);
+  const parked = ['Godot Engine v4.5.2',
+    'BENCHMARK_WAITING the match has not been started yet (native setup phase -2)',
+    'BENCHMARK_REFUSED the authoritative round did not become controllable within 30 seconds (the match has not been started yet (native setup phase -2))'].join('\n');
+  const failure = auditAutostart(parked, {expectAutostart: true});
+  assert.equal(failure.ok, false);
+  assert.match(failure.problems.join(' '), /no BENCHMARK_AUTOSTART/);
+  assert.match(failure.problems.join(' '), /refused/);
+  assert.equal(auditAutostart('Godot Engine v4.5.2\nparked at the setup screen', {expectAutostart: false}).ok, true);
+  const unarmedLeak = auditAutostart(armed, {expectAutostart: false});
+  assert.equal(unarmedLeak.ok, false);
+  assert.match(unarmedLeak.problems.join(' '), /un-armed/);
 });
 
 test('lineSummary names resolution, quality and renderer class', () => {

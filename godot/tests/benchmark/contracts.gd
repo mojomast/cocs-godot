@@ -7,6 +7,7 @@ const FrameStats = preload("res://benchmark/frame_stats.gd")
 const Report = preload("res://benchmark/report.gd")
 const Driver = preload("res://benchmark/benchmark.tscn")
 const Quality = preload("res://world/combat_quality.gd")
+const Demo = preload("res://native_arenas/demo.gd")
 const ALLOWED_KEYS := [KEY_W, KEY_A, KEY_S, KEY_D, KEY_SPACE, KEY_R, KEY_G,
 	KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_0]
 var checks := 0
@@ -14,14 +15,32 @@ var failures: Array[String] = []
 
 class Session extends Node3D:
 	## Minimal session surface the driver requires. Never stepped: this fixture
-	## only proves bind/refusal behaviour, not live input. The child nodes stay
-	## null so the fixture owns no orphans at exit.
+	## only proves bind and autostart decisions, not live input. The child nodes
+	## stay null so the fixture owns no orphans at exit.
 	var phase := 3
 	var received_pose := true
 	var presentation: Node
 	var client: Node
+	var selected_native_map := "prism-foundry"
+	var bot_count := 4
+	var round_seconds := 180
+	var auto_start := false
+	var launch_calls: Array = []
+	func launch_match(map_id: String, player_name: String, bots: int, seconds: int) -> void:
+		launch_calls.append([map_id, player_name, bots, seconds])
 	func observe_combat_input(_event: InputEvent) -> void: pass
 	func can_capture_pointer() -> bool: return true
+	func update_look(_relative: Vector2) -> void: pass
+
+class SetupOnly extends Node3D:
+	## A native setup surface that has no benchmark autostart API: the driver
+	## must never guess a launch call for it.
+	var phase := -2
+	var received_pose := false
+	var presentation: Node
+	var client: Node
+	func observe_combat_input(_event: InputEvent) -> void: pass
+	func can_capture_pointer() -> bool: return false
 	func update_look(_relative: Vector2) -> void: pass
 
 func check(ok: bool, message: String) -> void:
@@ -37,6 +56,7 @@ func run() -> void:
 	check_stats()
 	check_report()
 	await check_quality()
+	await check_arming()
 	print("BENCHMARK_CONTRACTS_RESULT ", JSON.stringify({"checks": checks, "failures": failures}))
 	quit(0 if failures.is_empty() else 1)
 
@@ -215,6 +235,86 @@ func check_quality() -> void:
 	check(not driver._runnable(), "a headless display is refused rather than measured")
 	driver.free()
 	session.free()
+	quality.free()
+
+## The two automatic-start decisions that the owner's run sheet depends on:
+## the launch arming (COCS_BENCHMARK/--benchmark, COCS_BENCHMARK_LEVEL) and the
+## driver's one-shot autostart for a setup-phase native session. Pinned here so
+## the env-armed run cannot silently regress into a parked setup screen.
+func check_arming() -> void:
+	var before_trigger := OS.get_environment(Quality.BENCHMARK_TRIGGER)
+	var before_level := OS.get_environment(Quality.BENCHMARK_LEVEL)
+	OS.unset_environment(Quality.BENCHMARK_TRIGGER)
+	check(not Quality.requested_by_launch(), "an unset trigger does not arm the benchmark")
+	OS.set_environment(Quality.BENCHMARK_TRIGGER, "1")
+	check(Quality.requested_by_launch(), "COCS_BENCHMARK=1 arms the benchmark")
+	OS.set_environment(Quality.BENCHMARK_TRIGGER, " YES ")
+	check(Quality.requested_by_launch(), "the arming value is trimmed and case-insensitive")
+	OS.set_environment(Quality.BENCHMARK_TRIGGER, "off")
+	check(not Quality.requested_by_launch(), "a non-arming value does not arm the benchmark")
+	OS.unset_environment(Quality.BENCHMARK_LEVEL)
+	check(Quality.requested_level() == -1, "no level override without the environment variable")
+	OS.set_environment(Quality.BENCHMARK_LEVEL, "extreme")
+	check(Quality.requested_level() == 2, "COCS_BENCHMARK_LEVEL selects the measured level")
+	# The native route must start its own match for every automatic launch, the
+	# env-armed run sheet included; an interactive launch keeps the setup HUD.
+	check(Demo.launch_starts_match(true, false), "--autostart starts the native match without UI input")
+	check(Demo.launch_starts_match(false, true), "--smoke starts the native match without UI input")
+	check(not Demo.launch_starts_match(false, false), "an un-armed interactive launch keeps the setup HUD")
+	OS.set_environment(Quality.BENCHMARK_TRIGGER, "1")
+	check(Demo.launch_starts_match(false, false), "the documented COCS_BENCHMARK=1 run starts the native match itself")
+	OS.unset_environment(Quality.BENCHMARK_TRIGGER)
+	check(not Demo.launch_starts_match(false, false), "clearing the trigger restores the interactive setup HUD")
+	if before_trigger.is_empty(): OS.unset_environment(Quality.BENCHMARK_TRIGGER)
+	else: OS.set_environment(Quality.BENCHMARK_TRIGGER, before_trigger)
+	if before_level.is_empty(): OS.unset_environment(Quality.BENCHMARK_LEVEL)
+	else: OS.set_environment(Quality.BENCHMARK_LEVEL, before_level)
+	# Driver autostart decision path: the fallback for any setup-phase session
+	# that does not start itself. It must use the session's documented launch API,
+	# exactly once, and only while the session is still in setup.
+	var quality: CanvasLayer = Quality.new()
+	root.add_child(quality)
+	var session := Session.new()
+	session.phase = -2
+	root.add_child(session)
+	var driver: Node = Driver.instantiate()
+	check(driver.bind_session(session, quality), "the autostart fixture binds the session surface")
+	check(not driver._autostart_step(), "an un-armed driver never starts the session's match")
+	driver.autostart = true
+	check(driver._autostart_step(), "an armed driver starts a setup-phase native session itself")
+	check(session.launch_calls == [["prism-foundry", "Operator", 4, 180]], "the driver passes the session's own map, operator, bots and round seconds")
+	check(not driver._autostart_step(), "the driver autostart decision is one-shot")
+	driver.free()
+	var waiting := Session.new()
+	waiting.phase = 0
+	root.add_child(waiting)
+	var waiting_driver: Node = Driver.instantiate()
+	waiting_driver.bind_session(waiting, quality)
+	waiting_driver.autostart = true
+	check(not waiting_driver._autostart_step(), "a session past setup is never re-started by the driver")
+	check(waiting.launch_calls.is_empty(), "no launch call lands outside the setup phase")
+	waiting_driver.free()
+	var self_start := Session.new()
+	self_start.phase = -2
+	self_start.auto_start = true
+	root.add_child(self_start)
+	var self_driver: Node = Driver.instantiate()
+	self_driver.bind_session(self_start, quality)
+	self_driver.autostart = true
+	check(not self_driver._autostart_step(), "a session that starts itself is not started twice")
+	check(self_start.launch_calls.is_empty(), "no second start is sent when auto_start already owns it")
+	self_driver.free()
+	var setup_only := SetupOnly.new()
+	root.add_child(setup_only)
+	var plain_driver: Node = Driver.instantiate()
+	plain_driver.bind_session(setup_only, quality)
+	plain_driver.autostart = true
+	check(not plain_driver._autostart_step(), "a setup surface with no launch_match is never autostarted blindly")
+	plain_driver.free()
+	session.free()
+	waiting.free()
+	self_start.free()
+	setup_only.free()
 	quality.free()
 
 func _key(code: int) -> InputEventKey:

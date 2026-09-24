@@ -7,6 +7,10 @@ const NativeClient = preload("res://native_arenas/client.gd")
 const IdentityEnvironment = preload("res://native_arenas/identity_environment.gd")
 const GameHUD = preload("res://ui/game_hud.gd")
 const Scoreboard = preload("res://ui/scoreboard.gd")
+## The benchmark's arming contract (COCS_BENCHMARK=1 or the --benchmark user arg)
+## lives in one place; the route reads it so an armed run never parks at the setup
+## screen waiting for a click.
+const CombatQuality = preload("res://world/combat_quality.gd")
 var native_hud: Control
 var bot_count := 2
 var round_seconds := 180
@@ -39,7 +43,7 @@ func _ready() -> void:
 	endpoint = options.endpoint
 	bot_count = options.bots
 	round_seconds = options.seconds
-	auto_start = options.autostart or smoke
+	auto_start = launch_starts_match(options.autostart, smoke)
 	selected_mode = "deathmatch"
 	if not catalog.open_dm():
 		on_error(catalog.error)
@@ -50,7 +54,19 @@ func _ready() -> void:
 		return
 	phase = -2
 	native_hud.configure(self)
-	if auto_start: launch_match(selected_native_map, "Operator", bot_count, round_seconds)
+	if auto_start:
+		if CombatQuality.requested_by_launch():
+			# The run-sheet ARMS the benchmark without passing --autostart, so this
+			# route starts the match itself instead of showing the setup HUD. The
+			# same marker the driver prints keeps one greppable automatic-start line.
+			print("BENCHMARK_AUTOSTART map=%s bots=%d seconds=%d source=native-route" % [selected_native_map, bot_count, round_seconds])
+		launch_match(selected_native_map, "Operator", bot_count, round_seconds)
+
+## True when the launch itself starts the match: the explicit automatic options
+## (--autostart/--smoke) or the documented benchmark arming (COCS_BENCHMARK=1 or
+## --benchmark). Interactive launches keep the setup HUD and never auto-start.
+static func launch_starts_match(autostart_option: bool, smoke_option: bool) -> bool:
+	return autostart_option or smoke_option or CombatQuality.requested_by_launch()
 
 func build_composition() -> void:
 	phase = -2

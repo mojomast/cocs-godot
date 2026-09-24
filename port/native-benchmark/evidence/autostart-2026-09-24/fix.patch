@@ -1,0 +1,593 @@
+diff --git a/godot/native_arenas/demo.gd b/godot/native_arenas/demo.gd
+index 4c462928..10b564d5 100644
+--- a/godot/native_arenas/demo.gd
++++ b/godot/native_arenas/demo.gd
+@@ -7,6 +7,10 @@ const NativeClient = preload("res://native_arenas/client.gd")
+ const IdentityEnvironment = preload("res://native_arenas/identity_environment.gd")
+ const GameHUD = preload("res://ui/game_hud.gd")
+ const Scoreboard = preload("res://ui/scoreboard.gd")
++## The benchmark's arming contract (COCS_BENCHMARK=1 or the --benchmark user arg)
++## lives in one place; the route reads it so an armed run never parks at the setup
++## screen waiting for a click.
++const CombatQuality = preload("res://world/combat_quality.gd")
+ var native_hud: Control
+ var bot_count := 2
+ var round_seconds := 180
+@@ -39,7 +43,7 @@ func _ready() -> void:
+ 	endpoint = options.endpoint
+ 	bot_count = options.bots
+ 	round_seconds = options.seconds
+-	auto_start = options.autostart or smoke
++	auto_start = launch_starts_match(options.autostart, smoke)
+ 	selected_mode = "deathmatch"
+ 	if not catalog.open_dm():
+ 		on_error(catalog.error)
+@@ -50,7 +54,19 @@ func _ready() -> void:
+ 		return
+ 	phase = -2
+ 	native_hud.configure(self)
+-	if auto_start: launch_match(selected_native_map, "Operator", bot_count, round_seconds)
++	if auto_start:
++		if CombatQuality.requested_by_launch():
++			# The run-sheet ARMS the benchmark without passing --autostart, so this
++			# route starts the match itself instead of showing the setup HUD. The
++			# same marker the driver prints keeps one greppable automatic-start line.
++			print("BENCHMARK_AUTOSTART map=%s bots=%d seconds=%d source=native-route" % [selected_native_map, bot_count, round_seconds])
++		launch_match(selected_native_map, "Operator", bot_count, round_seconds)
++
++## True when the launch itself starts the match: the explicit automatic options
++## (--autostart/--smoke) or the documented benchmark arming (COCS_BENCHMARK=1 or
++## --benchmark). Interactive launches keep the setup HUD and never auto-start.
++static func launch_starts_match(autostart_option: bool, smoke_option: bool) -> bool:
++	return autostart_option or smoke_option or CombatQuality.requested_by_launch()
+ 
+ func build_composition() -> void:
+ 	phase = -2
+diff --git a/godot/tests/benchmark/contracts.gd b/godot/tests/benchmark/contracts.gd
+index 6edd9025..2d96b6d1 100644
+--- a/godot/tests/benchmark/contracts.gd
++++ b/godot/tests/benchmark/contracts.gd
+@@ -7,6 +7,7 @@ const FrameStats = preload("res://benchmark/frame_stats.gd")
+ const Report = preload("res://benchmark/report.gd")
+ const Driver = preload("res://benchmark/benchmark.tscn")
+ const Quality = preload("res://world/combat_quality.gd")
++const Demo = preload("res://native_arenas/demo.gd")
+ const ALLOWED_KEYS := [KEY_W, KEY_A, KEY_S, KEY_D, KEY_SPACE, KEY_R, KEY_G,
+ 	KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_0]
+ var checks := 0
+@@ -14,16 +15,34 @@ var failures: Array[String] = []
+ 
+ class Session extends Node3D:
+ 	## Minimal session surface the driver requires. Never stepped: this fixture
+-	## only proves bind/refusal behaviour, not live input. The child nodes stay
+-	## null so the fixture owns no orphans at exit.
++	## only proves bind and autostart decisions, not live input. The child nodes
++	## stay null so the fixture owns no orphans at exit.
+ 	var phase := 3
+ 	var received_pose := true
+ 	var presentation: Node
+ 	var client: Node
++	var selected_native_map := "prism-foundry"
++	var bot_count := 4
++	var round_seconds := 180
++	var auto_start := false
++	var launch_calls: Array = []
++	func launch_match(map_id: String, player_name: String, bots: int, seconds: int) -> void:
++		launch_calls.append([map_id, player_name, bots, seconds])
+ 	func observe_combat_input(_event: InputEvent) -> void: pass
+ 	func can_capture_pointer() -> bool: return true
+ 	func update_look(_relative: Vector2) -> void: pass
+ 
++class SetupOnly extends Node3D:
++	## A native setup surface that has no benchmark autostart API: the driver
++	## must never guess a launch call for it.
++	var phase := -2
++	var received_pose := false
++	var presentation: Node
++	var client: Node
++	func observe_combat_input(_event: InputEvent) -> void: pass
++	func can_capture_pointer() -> bool: return false
++	func update_look(_relative: Vector2) -> void: pass
++
+ func check(ok: bool, message: String) -> void:
+ 	checks += 1
+ 	if not ok:
+@@ -37,6 +56,7 @@ func run() -> void:
+ 	check_stats()
+ 	check_report()
+ 	await check_quality()
++	await check_arming()
+ 	print("BENCHMARK_CONTRACTS_RESULT ", JSON.stringify({"checks": checks, "failures": failures}))
+ 	quit(0 if failures.is_empty() else 1)
+ 
+@@ -217,6 +237,86 @@ func check_quality() -> void:
+ 	session.free()
+ 	quality.free()
+ 
++## The two automatic-start decisions that the owner's run sheet depends on:
++## the launch arming (COCS_BENCHMARK/--benchmark, COCS_BENCHMARK_LEVEL) and the
++## driver's one-shot autostart for a setup-phase native session. Pinned here so
++## the env-armed run cannot silently regress into a parked setup screen.
++func check_arming() -> void:
++	var before_trigger := OS.get_environment(Quality.BENCHMARK_TRIGGER)
++	var before_level := OS.get_environment(Quality.BENCHMARK_LEVEL)
++	OS.unset_environment(Quality.BENCHMARK_TRIGGER)
++	check(not Quality.requested_by_launch(), "an unset trigger does not arm the benchmark")
++	OS.set_environment(Quality.BENCHMARK_TRIGGER, "1")
++	check(Quality.requested_by_launch(), "COCS_BENCHMARK=1 arms the benchmark")
++	OS.set_environment(Quality.BENCHMARK_TRIGGER, " YES ")
++	check(Quality.requested_by_launch(), "the arming value is trimmed and case-insensitive")
++	OS.set_environment(Quality.BENCHMARK_TRIGGER, "off")
++	check(not Quality.requested_by_launch(), "a non-arming value does not arm the benchmark")
++	OS.unset_environment(Quality.BENCHMARK_LEVEL)
++	check(Quality.requested_level() == -1, "no level override without the environment variable")
++	OS.set_environment(Quality.BENCHMARK_LEVEL, "extreme")
++	check(Quality.requested_level() == 2, "COCS_BENCHMARK_LEVEL selects the measured level")
++	# The native route must start its own match for every automatic launch, the
++	# env-armed run sheet included; an interactive launch keeps the setup HUD.
++	check(Demo.launch_starts_match(true, false), "--autostart starts the native match without UI input")
++	check(Demo.launch_starts_match(false, true), "--smoke starts the native match without UI input")
++	check(not Demo.launch_starts_match(false, false), "an un-armed interactive launch keeps the setup HUD")
++	OS.set_environment(Quality.BENCHMARK_TRIGGER, "1")
++	check(Demo.launch_starts_match(false, false), "the documented COCS_BENCHMARK=1 run starts the native match itself")
++	OS.unset_environment(Quality.BENCHMARK_TRIGGER)
++	check(not Demo.launch_starts_match(false, false), "clearing the trigger restores the interactive setup HUD")
++	if before_trigger.is_empty(): OS.unset_environment(Quality.BENCHMARK_TRIGGER)
++	else: OS.set_environment(Quality.BENCHMARK_TRIGGER, before_trigger)
++	if before_level.is_empty(): OS.unset_environment(Quality.BENCHMARK_LEVEL)
++	else: OS.set_environment(Quality.BENCHMARK_LEVEL, before_level)
++	# Driver autostart decision path: the fallback for any setup-phase session
++	# that does not start itself. It must use the session's documented launch API,
++	# exactly once, and only while the session is still in setup.
++	var quality: CanvasLayer = Quality.new()
++	root.add_child(quality)
++	var session := Session.new()
++	session.phase = -2
++	root.add_child(session)
++	var driver: Node = Driver.instantiate()
++	check(driver.bind_session(session, quality), "the autostart fixture binds the session surface")
++	check(not driver._autostart_step(), "an un-armed driver never starts the session's match")
++	driver.autostart = true
++	check(driver._autostart_step(), "an armed driver starts a setup-phase native session itself")
++	check(session.launch_calls == [["prism-foundry", "Operator", 4, 180]], "the driver passes the session's own map, operator, bots and round seconds")
++	check(not driver._autostart_step(), "the driver autostart decision is one-shot")
++	driver.free()
++	var waiting := Session.new()
++	waiting.phase = 0
++	root.add_child(waiting)
++	var waiting_driver: Node = Driver.instantiate()
++	waiting_driver.bind_session(waiting, quality)
++	waiting_driver.autostart = true
++	check(not waiting_driver._autostart_step(), "a session past setup is never re-started by the driver")
++	check(waiting.launch_calls.is_empty(), "no launch call lands outside the setup phase")
++	waiting_driver.free()
++	var self_start := Session.new()
++	self_start.phase = -2
++	self_start.auto_start = true
++	root.add_child(self_start)
++	var self_driver: Node = Driver.instantiate()
++	self_driver.bind_session(self_start, quality)
++	self_driver.autostart = true
++	check(not self_driver._autostart_step(), "a session that starts itself is not started twice")
++	check(self_start.launch_calls.is_empty(), "no second start is sent when auto_start already owns it")
++	self_driver.free()
++	var setup_only := SetupOnly.new()
++	root.add_child(setup_only)
++	var plain_driver: Node = Driver.instantiate()
++	plain_driver.bind_session(setup_only, quality)
++	plain_driver.autostart = true
++	check(not plain_driver._autostart_step(), "a setup surface with no launch_match is never autostarted blindly")
++	plain_driver.free()
++	session.free()
++	waiting.free()
++	self_start.free()
++	setup_only.free()
++	quality.free()
++
+ func _key(code: int) -> InputEventKey:
+ 	var event := InputEventKey.new()
+ 	event.keycode = code
+diff --git a/port/native-benchmark/README.md b/port/native-benchmark/README.md
+index 6b837839..2b4ce025 100644
+--- a/port/native-benchmark/README.md
++++ b/port/native-benchmark/README.md
+@@ -22,7 +22,10 @@ Play.cmd --experience=native-dm --map=prism-foundry --bots=4 --round-seconds=180
+ ```
+ 
+ * `set COCS_BENCHMARK=1` arms the benchmark for this console only. Clear it with
+-  `set COCS_BENCHMARK=` when you are done.
++  `set COCS_BENCHMARK=` when you are done. In PowerShell the syntax is
++  `$env:COCS_BENCHMARK=1` (`set` there creates a PowerShell variable, not an
++  environment variable), and a `set` line typed in the wrong console is exactly
++  why an armed-looking run can park at the setup screen.
+ * `set COCS_BENCHMARK_LEVEL=low|high|extreme` is optional and picks the effects
+   level that gets measured (default `high`). Measure each level you care about by
+   re-running with a different value; keep everything else identical.
+@@ -33,6 +36,10 @@ Play.cmd --experience=native-dm --map=prism-foundry --bots=4 --round-seconds=180
+   sequence is driving the player. The window only has to stay focused. If focus is
+   lost the actor stops being controlled and the result is marked
+   `partial`/`unusable` instead of pretending to be a benchmark.
++* The native route honours the arming itself: the console shows
++  `BENCHMARK_AUTOSTART map=... bots=... seconds=... source=native-route` and the
++  setup screen is skipped. The benchmark driver still starts the match for any
++  session route that does not do this itself (`source` absent on its line).
+ 
+ After roughly 40 seconds the game prints the result and closes:
+ 
+@@ -144,6 +151,7 @@ be claimed by another action.
+ | Symptom | Cause and fix |
+ |---|---|
+ | No `BENCHMARK_RESULT` line at all | `set COCS_BENCHMARK=1` must be set in the **same** console that launches `Play.cmd`. Look for `BENCHMARK_REFUSED` or `BENCHMARK_WAITING` in the output — they name the reason. |
++| The run sits at the native setup screen | The console is not armed (the trigger did not reach the game process): `BENCHMARK_WAITING the match has not been started yet (native setup phase -2)` repeats and the run refuses after 30 s. Set the variable in the launching console, or run `node port/native-benchmark/run_benchmark.mjs --gate=all` to prove the documented path end to end. |
+ | `BENCHMARK_REFUSED ... the window never became focused` | The game window must have keyboard focus. Click it, do not minimize it, and rerun. |
+ | `verdict":"partial"` / `"unusable"` | Read `verdict_reasons`: vsync could not be disabled, the round ended early (rerun with the default `--round-seconds=180`), the window lost focus, or too many deaths interrupted the scripted input. Re-running is usually enough. |
+ | `Unknown launcher option: --benchmark` | Only the environment variable arms the packaged launcher. Do not add `--benchmark` to `Play.cmd`; pass it only when launching the Godot executable directly (the Linux runner does). |
+@@ -182,12 +190,29 @@ $GODOT_BIN --headless --path godot --script res://tests/benchmark/contracts.gd
+ node --test port/native-benchmark/test.mjs
+ ```
+ 
++Run-sheet regression gates (rendered, env-only arming — never the `--benchmark`
++argument the packaged launchers cannot pass):
++
++```sh
++# --gate=autostart: the documented COCS_BENCHMARK=1 run must print
++# BENCHMARK_AUTOSTART, measure and return one complete BENCHMARK_RESULT.
++# --gate=unarmed: the same command without arming must start no benchmark at all.
++node port/native-benchmark/run_benchmark.mjs --gate=all --resolution=1280x800 --out=/tmp/opencode/benchmark-autostart-gate
++```
++
++Both gate runs end with `BENCHMARK_GATE_OK` (exit 0) or `BENCHMARK_GATE_FAIL`
++(exit 1, `problems[]` names them). See
++[evidence/autostart-2026-09-24/README.md](evidence/autostart-2026-09-24/README.md)
++for the recorded runs.
++
+ `contracts.gd` covers the plan's bounds and purity, the frame statistics, the
+-honesty classification, the preset API and the unchanged F7/F9/F10 keys.
+-`test.mjs` covers the result parser, the "software is not hardware" caveat and
+-the level comparison. `verify_evidence.mjs --require-slower` re-checks the
+-committed matrices; see [evidence/README.md](evidence/README.md) for the verified
+-llvmpipe numbers and what was inspected by hand.
++honesty classification, the preset API, the launch arming decisions
++(environment trigger, level override, the native route's own autostart and the
++driver's one-shot autostart fallback) and the unchanged F7/F9/F10 keys.
++`test.mjs` covers the result parser, the "software is not hardware" caveat, the
++arming audit and the level comparison. `verify_evidence.mjs --require-slower`
++re-checks the committed matrices; see [evidence/README.md](evidence/README.md)
++for the verified llvmpipe numbers and what was inspected by hand.
+ 
+ ## Honest limits
+ 
+@@ -220,3 +245,46 @@ llvmpipe numbers and what was inspected by hand.
+   Those are software-renderer figures and are not hardware claims.
+ - F7 is claimed by the benchmark; the UI lane was told so it does not bind it.
+ - Adding `--benchmark` to the packaged launchers remains lead-owned routing.
++
++## Autostart repair (2026-09-24)
++
++The documented env-armed run must start the match without UI input, but the
++**native route itself** never honoured the arming: `native_arenas/demo.gd` set
++`auto_start` only for `--autostart`/`--smoke`, so the one thing that could start
++an armed run was the benchmark driver's `_autostart_step()` — a passenger node
++created as a side effect of the combat composition. When that step never fired,
++the run parked at the setup screen and the console showed only
++
++```
++BENCHMARK_WAITING the match has not been started yet (native setup phase -2)
++BENCHMARK_REFUSED the authoritative round did not become controllable within 30 seconds (...)
++```
++
++Fix: `demo.gd` now derives `auto_start` from `launch_starts_match()`, which is
++true for `--autostart`/`--smoke` **or** the documented benchmark arming
++(`COCS_BENCHMARK=1`, or `--benchmark` in the session user args), and prints the
++same `BENCHMARK_AUTOSTART` marker with `source=native-route`. Interactive
++launches (and F7) are unchanged; the driver's one-shot autostart remains as the
++fallback for any session route that does not start itself.
++
++- `res://tests/benchmark/contracts.gd` now pins the arming decisions — environment
++  trigger and level, the native route's own autostart, and the driver's one-shot
++  autostart (map/operator/bots/round passed through, no double start, no
++  setup-surface guessing): **179 checks, 0 failures**.
++- `port/native-benchmark/test.mjs` covers the new console audit: an armed run
++  must print `BENCHMARK_AUTOSTART` + `BENCHMARK_START` and never refuse, while an
++  un-armed run must print no benchmark startup marker.
++- New rendered gate command (for the lead to register, alongside
++  `benchmark-contracts`/`benchmark-tools`):
++
++```sh
++node port/native-benchmark/run_benchmark.mjs --gate=all --resolution=1280x800 --out=/tmp/opencode/benchmark-autostart-gate
++```
++
++  It arms through the **environment only** (never the `--benchmark` argument,
++  because the packaged launchers cannot pass it), runs the run-sheet composition
++  and the un-armed negative, and prints `BENCHMARK_GATE_OK` / exits 0 on success
++  (or `BENCHMARK_GATE_FAIL` / exits 1 with `problems[]`). A registered gate can
++  use `BENCHMARK_GATE_OK` as its success marker.
++- Evidence, including the controlled before/after probe where the driver's
++  autostart step never fires: [evidence/autostart-2026-09-24/](evidence/autostart-2026-09-24/).
+diff --git a/port/native-benchmark/run_benchmark.mjs b/port/native-benchmark/run_benchmark.mjs
+index 871de534..d0508202 100644
+--- a/port/native-benchmark/run_benchmark.mjs
++++ b/port/native-benchmark/run_benchmark.mjs
+@@ -15,7 +15,7 @@ import {existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync} from 'node:fs
+ import {join, resolve} from 'node:path';
+ import {tmpdir} from 'node:os';
+ import {createNativeArenaAuthority} from '../native-arenas/authority.mjs';
+-import {compareResults, lineSummary, parseConsole, validateResult} from './validate.mjs';
++import {compareResults, lineSummary, parseConsole, validateResult, auditAutostart} from './validate.mjs';
+ 
+ const root = resolve(import.meta.dirname, '../..');
+ const LEVELS = {low: 'low', high: 'high', extreme: 'extreme', current: 'current'};
+@@ -31,6 +31,7 @@ function usage() {
+   --level=low|high|extreme|current|all   effects level to measure (default all)
+   --round-seconds=N   authoritative round length (default 180)
+   --seconds=N         safety timeout for one run (default 150)
++  --gate=autostart|unarmed|none   run-sheet regression gate instead of a matrix
+   --out=DIR           evidence directory (default port/native-benchmark/evidence)
+   --label=TEXT        extra label recorded with the evidence
+   --keep-temp         keep the private XDG runtime directory for inspection
+@@ -40,7 +41,7 @@ Set GODOT_BIN to the pinned Godot 4.5.2 executable.`);
+ 
+ function parse(argv) {
+   const options = {map: 'prism-foundry', bots: 4, resolution: '1280x800', level: 'all',
+-    roundSeconds: 180, seconds: 150, out: 'port/native-benchmark/evidence', label: '', keepTemp: false};
++    roundSeconds: 180, seconds: 150, gate: 'none', out: 'port/native-benchmark/evidence', label: '', keepTemp: false};
+   for (const arg of argv) {
+     if (arg === '--help' || arg === '-h') { usage(); process.exit(0); }
+     if (arg === '--keep-temp') { options.keepTemp = true; continue; }
+@@ -53,6 +54,7 @@ function parse(argv) {
+     else if (key === 'level') options.level = value;
+     else if (key === 'round-seconds') options.roundSeconds = Number(value);
+     else if (key === 'seconds') options.seconds = Number(value);
++    else if (key === 'gate') options.gate = value;
+     else if (key === 'out') options.out = value;
+     else if (key === 'label') options.label = value;
+     else throw new Error(`Unknown option: ${key}`);
+@@ -61,11 +63,12 @@ function parse(argv) {
+   if (!/^\d{3,4}x\d{3,4}$/.test(options.resolution)) throw new Error('--resolution must look like 1280x800');
+   if (!Number.isInteger(options.bots) || options.bots < 1 || options.bots > 7) throw new Error('--bots must be 1..7');
+   if (!Number.isInteger(options.roundSeconds) || options.roundSeconds < 60 || options.roundSeconds > 900) throw new Error('--round-seconds must be 60..900');
++  if (!['none', 'autostart', 'unarmed', 'all'].includes(options.gate)) throw new Error('--gate must be autostart, unarmed, all or none');
+   return options;
+ }
+ 
+-async function runOnce({options, binary, level, stamp, outDir}) {
+-  const runDir = join(outDir, `${stamp}-${options.resolution}-${level}`);
++async function runOnce({options, binary, level, stamp, outDir, directoryLabel = null, armByArgument = true, killSeconds = null}) {
++  const runDir = join(outDir, `${stamp}-${options.resolution}-${directoryLabel ?? level}`);
+   mkdirSync(runDir, {recursive: true});
+   const runtime = mkdtempSync(join(process.env.TMPDIR || tmpdir(), 'cocs-benchmark-'));
+   const env = {...process.env, COCS_BENCHMARK: '1', COCS_BENCHMARK_OUT: runDir,
+@@ -73,11 +76,19 @@ async function runOnce({options, binary, level, stamp, outDir}) {
+   for (const key of ['XDG_DATA_HOME', 'XDG_CONFIG_HOME', 'XDG_CACHE_HOME']) mkdirSync(env[key], {recursive: true});
+   if (level !== 'current') env.COCS_BENCHMARK_LEVEL = level;
+   else delete env.COCS_BENCHMARK_LEVEL;
++  // The un-armed negative gate removes the environment trigger entirely; the
++  // armed autostart gate keeps only the environment, never the --benchmark
++  // argument, so it exercises exactly the owner's documented launcher path.
++  if (options.gate === 'unarmed') {
++    delete env.COCS_BENCHMARK;
++    delete env.COCS_BENCHMARK_LEVEL;
++  }
+   const [width, height] = options.resolution.split('x');
+   const godotArgs = [binary, '--path', 'godot', '--audio-driver', 'Dummy', '--resolution', options.resolution,
+     'res://native_arenas/demo.tscn', '--',
+     `--map=${options.map}`, '--mode=deathmatch', `--bots=${options.bots}`,
+-    `--round-seconds=${options.roundSeconds}`, `--endpoint=${endpoint}`, '--benchmark'];
++    `--round-seconds=${options.roundSeconds}`, `--endpoint=${endpoint}`];
++  if (armByArgument) godotArgs.push('--benchmark');
+   const command = ['python3', 'tools/godot-dev/xvfb_run.py', ...godotArgs];
+   const child = spawn(command[0], command.slice(1), {cwd: root, env, detached: true, stdio: ['ignore', 'pipe', 'pipe']});
+   let output = '';
+@@ -85,7 +96,7 @@ async function runOnce({options, binary, level, stamp, outDir}) {
+   child.stderr.on('data', chunk => { output += chunk; process.stdout.write(chunk); });
+   const timer = setTimeout(() => {
+     try { process.kill(-child.pid, 'SIGKILL'); } catch { child.kill('SIGKILL'); }
+-  }, options.seconds * 1000);
++  }, (killSeconds ?? options.seconds) * 1000);
+   const code = await new Promise(resolveCode => child.once('exit', resolveCode));
+   clearTimeout(timer);
+   if (!options.keepTemp) rmSync(runtime, {recursive: true, force: true});
+@@ -113,9 +124,61 @@ async function runOnce({options, binary, level, stamp, outDir}) {
+     meta.validation = {ok: false, problems: ['no BENCHMARK_RESULT line was printed']};
+     console.log(`\n[${level}] no BENCHMARK_RESULT line; see ${join(runDir, 'run.log')}`);
+   }
++  meta.output = output;
+   return meta;
+ }
+ 
++/** Run one gate, or both (`--gate=all`). Returns the process exit code. */
++async function runGate(options, binary, stamp, outDir) {
++  const gates = options.gate === 'all' ? ['autostart', 'unarmed'] : [options.gate];
++  let code = 0;
++  for (const gate of gates) code = Math.max(code, await runOneGate({...options, gate}, binary, stamp, outDir));
++  return code;
++}
++
++/**
++ * The run-sheet regression gate. One rendered run with the launcher arming the
++ * benchmark the documented way (environment only, no --benchmark argument):
++ *   --gate=autostart  the run must print BENCHMARK_AUTOSTART, start measuring,
++ *                     return one complete BENCHMARK_RESULT and exit cleanly.
++ *   --gate=unarmed    no arming at all: the game must stay at the setup screen
++ *                     and print no benchmark startup marker at all.
++ * Prints BENCHMARK_GATE_OK or BENCHMARK_GATE_FAIL and returns the process code.
++ */
++async function runOneGate(options, binary, stamp, outDir) {
++  const level = options.level === 'all' ? 'high' : options.level;
++  const armed = options.gate === 'autostart';
++  // Both gates arm through the environment only: the autostart gate sets the
++  // run-sheet trigger, the unarmed gate clears it. The --benchmark user arg is
++  // never passed, because the packaged launchers cannot pass it either.
++  const run = await runOnce({options, binary, level, directoryLabel: `${level}-gate-${options.gate}`, stamp, outDir,
++    armByArgument: false, killSeconds: armed ? options.seconds : Math.min(options.seconds, 10)});
++  const audit = auditAutostart(run.output, {expectAutostart: armed});
++  const problems = [...audit.problems];
++  if (armed) {
++    const result = run.result;
++    if (!result) problems.push('the armed gate printed no BENCHMARK_RESULT');
++    else {
++      if (result.complete !== true) problems.push('the armed gate did not complete the scripted sequence');
++      if (result.launch?.automatic !== true) problems.push('the armed gate was not an automatic benchmark run');
++      if (result.launch?.trigger !== 'environment') problems.push(`the armed gate trigger is ${result.launch?.trigger}, not environment`);
++      if (result.scene?.autostart !== true) problems.push('the armed gate result does not record the session autostart');
++      if (result.scene?.bots !== options.bots || result.scene?.map !== options.map) problems.push('the armed gate measured a different composition');
++      const validation = validateResult(result);
++      if (!validation.ok) problems.push(...validation.problems);
++    }
++  }
++  const payload = {schema: 1, gate: options.gate, map: options.map, bots: options.bots,
++    level, directory: run.directory, autostarts: audit.autostarts, problems,
++    result_file: run.result_file, exit_code: run.exit_code};
++  if (problems.length === 0) {
++    console.log(`BENCHMARK_GATE_OK ${JSON.stringify(payload)}`);
++    return 0;
++  }
++  console.log(`BENCHMARK_GATE_FAIL ${JSON.stringify(payload)}`);
++  return 1;
++}
++
+ const options = parse(process.argv.slice(2));
+ const binary = process.env.GODOT_BIN;
+ if (!binary) throw new Error('Set GODOT_BIN to the pinned Godot 4.5.2 executable');
+@@ -131,33 +194,37 @@ try {
+     mode: 'deathmatch', bots: options.bots, roundSeconds: options.roundSeconds});
+   endpoint = authority.endpoint;
+   console.log(`Owned loopback authority ready at ${endpoint} (map ${options.map}, ${options.bots} bots)`);
+-  const runs = [];
+-  for (const level of levels) runs.push(await runOnce({options, binary, level, stamp, outDir}));
+-  const matrix = {schema: 1, stamp, label: options.label, resolution: options.resolution, map: options.map,
+-    bots: options.bots, round_seconds: options.roundSeconds, runs};
+-  const comparisons = [];
+-  if (runs.length > 1) {
+-    const byLevel = Object.fromEntries(runs.map(run => [run.level, run.result]));
+-    if (byLevel.low && byLevel.extreme) comparisons.push({low_vs_extreme: compareResults(byLevel.low, byLevel.extreme)});
+-    if (byLevel.high && byLevel.extreme) comparisons.push({high_vs_extreme: compareResults(byLevel.high, byLevel.extreme)});
+-    if (byLevel.low && byLevel.high) comparisons.push({low_vs_high: compareResults(byLevel.low, byLevel.high)});
+-  }
+-  matrix.comparisons = comparisons;
+-  const matrixPath = join(outDir, `matrix-${options.resolution}-${stamp}.json`);
+-  writeFileSync(matrixPath, JSON.stringify(matrix, null, 2) + '\n');
+-  console.log('\n=== comparison ===');
+-  for (const comparison of comparisons) {
+-    const [name, value] = Object.entries(comparison)[0];
+-    console.log(`${name}: ${value.baseline} -> ${value.candidate} median x${value.median_ratio.toFixed(2)} (p95 x${value.p95_ratio.toFixed(2)}, ${value.frames[0]}/${value.frames[1]} frames, particles ${value.particles[0]}/${value.particles[1]})`
+-      + `${value.slower ? ' SLOWER' : ' not slower'}`);
++  if (options.gate !== 'none') {
++    process.exitCode = await runGate(options, binary, stamp, outDir);
++  } else {
++    const runs = [];
++    for (const level of levels) runs.push(await runOnce({options, binary, level, stamp, outDir}));
++    const matrix = {schema: 1, stamp, label: options.label, resolution: options.resolution, map: options.map,
++      bots: options.bots, round_seconds: options.roundSeconds, runs};
++    const comparisons = [];
++    if (runs.length > 1) {
++      const byLevel = Object.fromEntries(runs.map(run => [run.level, run.result]));
++      if (byLevel.low && byLevel.extreme) comparisons.push({low_vs_extreme: compareResults(byLevel.low, byLevel.extreme)});
++      if (byLevel.high && byLevel.extreme) comparisons.push({high_vs_extreme: compareResults(byLevel.high, byLevel.extreme)});
++      if (byLevel.low && byLevel.high) comparisons.push({low_vs_high: compareResults(byLevel.low, byLevel.high)});
++    }
++    matrix.comparisons = comparisons;
++    const matrixPath = join(outDir, `matrix-${options.resolution}-${stamp}.json`);
++    writeFileSync(matrixPath, JSON.stringify(matrix, null, 2) + '\n');
++    console.log('\n=== comparison ===');
++    for (const comparison of comparisons) {
++      const [name, value] = Object.entries(comparison)[0];
++      console.log(`${name}: ${value.baseline} -> ${value.candidate} median x${value.median_ratio.toFixed(2)} (p95 x${value.p95_ratio.toFixed(2)}, ${value.frames[0]}/${value.frames[1]} frames, particles ${value.particles[0]}/${value.particles[1]})`
++        + `${value.slower ? ' SLOWER' : ' not slower'}`);
++    }
++    console.log(`\nEvidence written to ${outDir}`);
++    console.log(`Matrix: ${matrixPath}`);
++    const failed = runs.filter(run => !run.validation?.ok || !run.result?.complete);
++    console.log(failed.length === 0
++      ? 'All benchmark runs completed and validated.'
++      : `${failed.length} of ${runs.length} runs did not complete or validate.`);
++    process.exitCode = failed.length === 0 ? 0 : 1;
+   }
+-  console.log(`\nEvidence written to ${outDir}`);
+-  console.log(`Matrix: ${matrixPath}`);
+-  const failed = runs.filter(run => !run.validation?.ok || !run.result?.complete);
+-  console.log(failed.length === 0
+-    ? 'All benchmark runs completed and validated.'
+-    : `${failed.length} of ${runs.length} runs did not complete or validate.`);
+-  process.exitCode = failed.length === 0 ? 0 : 1;
+ } finally {
+   if (authority) { for (const socket of authority.wss?.clients ?? []) socket.terminate(); await authority.close(); }
+ }
+diff --git a/port/native-benchmark/test.mjs b/port/native-benchmark/test.mjs
+index bcf285ab..524f16fb 100644
+--- a/port/native-benchmark/test.mjs
++++ b/port/native-benchmark/test.mjs
+@@ -2,7 +2,7 @@
+ // no display, no authority, no Godot. The rendered runs live in evidence/.
+ import test from 'node:test';
+ import assert from 'node:assert/strict';
+-import {compareResults, lineSummary, parseConsole, validateResult} from './validate.mjs';
++import {auditAutostart, compareResults, lineSummary, parseConsole, validateResult} from './validate.mjs';
+ 
+ function result(overrides = {}) {
+   const base = {
+@@ -80,6 +80,26 @@ test('console output is parsed from the last BENCHMARK_RESULT line', () => {
+   assert.equal(parseConsole('nothing here').result, null);
+ });
+ 
++test('the arming audit separates an autostarted run from a parked setup screen', () => {
++  const armed = ['Godot Engine v4.5.2',
++    'BENCHMARK_AUTOSTART map=prism-foundry bots=4 seconds=180 source=native-route',
++    'BENCHMARK_WAITING phase 0: waiting for the authoritative round to go live',
++    'BENCHMARK_START plan=33.0s phases=warmup, combat, burst, sustained',
++    `BENCHMARK_RESULT ${JSON.stringify(result())}`].join('\n');
++  assert.equal(auditAutostart(armed, {expectAutostart: true}).ok, true);
++  const parked = ['Godot Engine v4.5.2',
++    'BENCHMARK_WAITING the match has not been started yet (native setup phase -2)',
++    'BENCHMARK_REFUSED the authoritative round did not become controllable within 30 seconds (the match has not been started yet (native setup phase -2))'].join('\n');
++  const failure = auditAutostart(parked, {expectAutostart: true});
++  assert.equal(failure.ok, false);
++  assert.match(failure.problems.join(' '), /no BENCHMARK_AUTOSTART/);
++  assert.match(failure.problems.join(' '), /refused/);
++  assert.equal(auditAutostart('Godot Engine v4.5.2\nparked at the setup screen', {expectAutostart: false}).ok, true);
++  const unarmedLeak = auditAutostart(armed, {expectAutostart: false});
++  assert.equal(unarmedLeak.ok, false);
++  assert.match(unarmedLeak.problems.join(' '), /un-armed/);
++});
++
+ test('lineSummary names resolution, quality and renderer class', () => {
+   const summary = lineSummary(result());
+   assert.match(summary, /prism-foundry 1280x800 High/);
+diff --git a/port/native-benchmark/validate.mjs b/port/native-benchmark/validate.mjs
+index 804f2788..110b3afe 100644
+--- a/port/native-benchmark/validate.mjs
++++ b/port/native-benchmark/validate.mjs
+@@ -62,6 +62,33 @@ export function parseConsole(output) {
+   }
+ }
+ 
++/**
++ * Audit the benchmark's own startup markers in one console transcript.
++ *
++ * `expectAutostart` distinguishes the two run-sheet promises:
++ *   true  - an armed run must print BENCHMARK_AUTOSTART, start measuring and
++ *           never refuse. This is the env-armed launcher path (no --benchmark
++ *           argument), so a regression to a parked setup screen fails here.
++ *   false - an un-armed run must print no benchmark marker at all.
++ */
++export function auditAutostart(output, {expectAutostart = true} = {}) {
++  const lines = String(output).split(/\r?\n/);
++  const pick = prefix => lines.filter(line => line.startsWith(prefix));
++  const autostarts = pick('BENCHMARK_AUTOSTART ');
++  const waits = pick('BENCHMARK_WAITING ');
++  const refusals = pick('BENCHMARK_REFUSED ');
++  const starts = pick('BENCHMARK_START ');
++  const problems = [];
++  if (expectAutostart) {
++    if (autostarts.length === 0) problems.push('the armed run printed no BENCHMARK_AUTOSTART line');
++    if (starts.length === 0) problems.push('the armed run never reached BENCHMARK_START');
++    if (refusals.length > 0) problems.push(`the armed run refused: ${refusals[0]}`);
++  } else if (autostarts.length + waits.length + refusals.length + starts.length > 0) {
++    problems.push('an un-armed run emitted benchmark startup markers');
++  }
++  return {ok: problems.length === 0, problems, autostarts, waits, refusals, starts};
++}
++
+ /** One human line for a result, used by the runner and by the lead's notes. */
+ export function lineSummary(result) {
+   const [width, height] = result.window?.size ?? [0, 0];

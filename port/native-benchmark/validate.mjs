@@ -62,6 +62,33 @@ export function parseConsole(output) {
   }
 }
 
+/**
+ * Audit the benchmark's own startup markers in one console transcript.
+ *
+ * `expectAutostart` distinguishes the two run-sheet promises:
+ *   true  - an armed run must print BENCHMARK_AUTOSTART, start measuring and
+ *           never refuse. This is the env-armed launcher path (no --benchmark
+ *           argument), so a regression to a parked setup screen fails here.
+ *   false - an un-armed run must print no benchmark marker at all.
+ */
+export function auditAutostart(output, {expectAutostart = true} = {}) {
+  const lines = String(output).split(/\r?\n/);
+  const pick = prefix => lines.filter(line => line.startsWith(prefix));
+  const autostarts = pick('BENCHMARK_AUTOSTART ');
+  const waits = pick('BENCHMARK_WAITING ');
+  const refusals = pick('BENCHMARK_REFUSED ');
+  const starts = pick('BENCHMARK_START ');
+  const problems = [];
+  if (expectAutostart) {
+    if (autostarts.length === 0) problems.push('the armed run printed no BENCHMARK_AUTOSTART line');
+    if (starts.length === 0) problems.push('the armed run never reached BENCHMARK_START');
+    if (refusals.length > 0) problems.push(`the armed run refused: ${refusals[0]}`);
+  } else if (autostarts.length + waits.length + refusals.length + starts.length > 0) {
+    problems.push('an un-armed run emitted benchmark startup markers');
+  }
+  return {ok: problems.length === 0, problems, autostarts, waits, refusals, starts};
+}
+
 /** One human line for a result, used by the runner and by the lead's notes. */
 export function lineSummary(result) {
   const [width, height] = result.window?.size ?? [0, 0];

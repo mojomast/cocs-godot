@@ -1,0 +1,12 @@
+diff --git a/godot/benchmark/driver.gd b/godot/benchmark/driver.gd
+index fd5a38d2..4f1c1ce9 100644
+--- a/godot/benchmark/driver.gd
++++ b/godot/benchmark/driver.gd
+@@ -194,6 +194,7 @@ func _wait_reason() -> String:
+ ## does. Only the session's documented launch API is used; the authority still
+ ## owns every gameplay decision. Interactive runs (F7) never do this.
+ func _autostart_step() -> bool:
++	if true: return false # PROBE: simulate a driver whose autostart step never fires
+ 	if _autostart_done or not autostart: return false
+ 	if not ("launch_match" in session) or session.phase != -2: return false
+ 	if "auto_start" in session and bool(session.auto_start):
