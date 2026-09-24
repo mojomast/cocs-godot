@@ -9,6 +9,15 @@ const FlashShader = preload("res://weapon_effects/flash.gdshader")
 const CAP := 64
 const LINE_CAP := 128
 const SEEN_CAP := 4096
+## At a settled cheek weld the muzzle sits only a few degrees below the sight
+## axis, so any large flash card centred on it would cover the open target gap.
+## The aiming bloom is deliberately compact (hip fire keeps the full per-weapon
+## size): presentation judgement call, asserted by the rendered gap check.
+const ADS_FLASH_MAX := 0.18
+## Barrel lights are a separate bounded pool: two pooled OmniLight3D nodes, only
+## allocated on first use at Extreme quality, recycled oldest-first. They light
+## the isolated viewmodel world for a few frames and never join the flash pool.
+const MAX_LIGHTS := 2
 var source_camera: Camera3D
 var muzzle_provider: Callable
 var collision_mask := 1
@@ -17,6 +26,7 @@ var physics_occlusion_enabled := false
 var quality := 2
 var slots: Array[Dictionary] = []
 var lines: Array[Dictionary] = []
+var lights: Array[Dictionary] = []
 var seen: Dictionary = {}
 var order: Array[String] = []
 var expired_time := -INF
@@ -26,6 +36,8 @@ var tracer_count := 0
 var impacts := 0
 var rejected := 0
 var serial := 0
+var light_serial := 0
+var light_flashes := 0
 var quad := QuadMesh.new()
 var casing := BoxMesh.new()
 
@@ -53,7 +65,7 @@ func attach_rig(rig: Node) -> void:
 		for index: int in current.get_muzzle_count():
 			var tip: Variant = anchors.get("Muzzle%d" % index)
 			if tip is Node3D: tips.append(tip)
-		return {"visible":current.get("showing"), "actor_id":current.get("actor_id"), "weapon":current.get("current_weapon"), "camera":current.get("weapon_camera"), "muzzles":tips, "ejection":anchors.get("Ejection")}
+		return {"visible":current.get("showing"), "actor_id":current.get("actor_id"), "weapon":current.get("current_weapon"), "camera":current.get("weapon_camera"), "muzzles":tips, "ejection":anchors.get("Ejection"), "aim":current.get("aim_weight")}
 	)
 
 func set_quality(value: int) -> void:
@@ -215,13 +227,24 @@ func _slot(parent: Node, kind: int) -> Dictionary:
 	slot.material.set_shader_parameter("billboard", kind != 12)
 	slot.material.set_shader_parameter("use_sheet", false)
 	slot.material.set_shader_parameter("frame_texture", null)
+	# Recycled flash cards must not leak the previous weapon's core gain.
+	slot.material.set_shader_parameter("core_gain", 1.0)
+	slot.material.set_shader_parameter("brightness", 1.0)
 	return slot
 
 func _fire(tip: Node3D, weapon: int, rig: Dictionary) -> void:
 	var profile: Dictionary = Profiles.ITEMS[weapon]
+	var flash_life: float = float(profile.life) * float(profile.flash_life)
+	# The bloom stays huge from the hip; at a settled cheek weld it collapses to
+	# a compact bright spark so a heavy card can never cover the open sight gap.
+	var aim := clampf(float(rig.get("aim", 0.0)), 0.0, 1.0)
+	var flash_size: float = float(profile.size) * float(profile.flash_scale)
+	if aim > 0.0: flash_size = lerpf(flash_size, minf(flash_size, ADS_FLASH_MAX), aim)
 	var slot := _slot(tip, profile.mode)
-	slot.merge({"remaining":profile.life, "total":profile.life, "size":profile.size*2.4, "sheet":profile.sheet}, true)
+	slot.merge({"remaining":flash_life, "total":flash_life, "size":flash_size*2.4, "sheet":profile.sheet}, true)
 	slot.material.set_shader_parameter("tint", profile.color)
+	slot.material.set_shader_parameter("core_gain", profile.bright)
+	slot.material.set_shader_parameter("brightness", profile.bright)
 	slot.node.position.z = -0.008
 	_update_slot(slot)
 	flashes += 1
@@ -230,12 +253,15 @@ func _fire(tip: Node3D, weapon: int, rig: Dictionary) -> void:
 		# bright mouth. Two crossed cards preserve the jet at oblique ADS angles.
 		for angle: float in [0.0, PI/2.0]:
 			var jet := _slot(tip, profile.mode)
-			jet.merge({"remaining":profile.life, "total":profile.life, "size":profile.size*1.2}, true)
+			jet.merge({"remaining":flash_life, "total":flash_life, "size":flash_size*1.2}, true)
 			jet.material.set_shader_parameter("billboard", false)
 			jet.material.set_shader_parameter("tint", profile.color)
+			jet.material.set_shader_parameter("core_gain", profile.bright)
+			jet.material.set_shader_parameter("brightness", profile.bright)
 			jet.node.rotation = Vector3(PI/2.0, 0, angle)
 			jet.node.position.z = -profile.size*0.45
 			_update_slot(jet)
+	_barrel_light(tip, profile)
 	if quality < 2: return
 	var smoke := _slot(tip, 10)
 	smoke.merge({"remaining":profile.smoke, "total":profile.smoke, "size":profile.size*1.4, "opacity":0.22, "velocity":Vector3(0.025, 0.28, -0.14)}, true)
@@ -252,6 +278,42 @@ func _fire(tip: Node3D, weapon: int, rig: Dictionary) -> void:
 		shell.merge({"remaining":0.38, "total":0.38, "size":1.0, "velocity":Vector3(0.65,0.5,0.1)}, true)
 		shell.material.set_shader_parameter("tint", Color("b59658"))
 		_update_slot(shell)
+
+## Short barrel-light flash for heavy/energy weapons. Pooled and bounded to
+## MAX_LIGHTS OmniLight3D nodes, only used at quality 2 (F9 High/Extreme), and
+## parented to the authored muzzle tip so it follows the animated barrel. Kept
+## out of the flash/casing pool so the existing node budgets are unchanged.
+func _barrel_light(tip: Node3D, profile: Dictionary) -> void:
+	if quality < 2 or float(profile.light) <= 0.0: return
+	var slot := {}
+	for candidate: Dictionary in lights:
+		if is_instance_valid(candidate.node) and candidate.remaining <= 0.0:
+			slot = candidate
+			break
+	if slot.is_empty():
+		for index: int in range(lights.size()-1, -1, -1):
+			if not is_instance_valid(lights[index].node): lights.remove_at(index)
+		if lights.size() < MAX_LIGHTS:
+			var node := OmniLight3D.new()
+			node.name = "BarrelLight%d" % lights.size()
+			node.shadow_enabled = false
+			node.omni_attenuation = 1.6
+			add_child(node)
+			slot = {"node":node, "remaining":0.0, "total":0.1, "energy":1.0, "serial":0}
+			lights.append(slot)
+		else:
+			slot = lights[0]
+			for candidate: Dictionary in lights:
+				if int(candidate.serial) < int(slot.serial): slot = candidate
+	light_serial += 1
+	if slot.node.get_parent() != tip: slot.node.reparent(tip, false)
+	slot.node.position = Vector3(0.0, 0.0, -0.03)
+	slot.node.light_color = profile.color
+	slot.node.omni_range = float(profile.light_range)
+	slot.merge({"serial":light_serial, "remaining":float(profile.light_life), "total":float(profile.light_life), "energy":float(profile.light)}, true)
+	slot.node.light_energy = float(profile.light)
+	slot.node.visible = true
+	light_flashes += 1
 
 func _impact(pos: Vector3, normal: Vector3, weapon: int) -> void:
 	var slot := _slot(self, 11)
@@ -297,7 +359,7 @@ func _spawn_line(start: Vector3, join: Vector3, end: Vector3, weapon: int, tip: 
 			slot = {"node":node,"material":material}
 			lines.append(slot)
 	serial += 1
-	var duration := 0.13 if weapon in [2,6] else (0.075 if weapon in [3,7] else 0.065)
+	var duration: float = float(Profiles.ITEMS[weapon].tracer_life)
 	slot.merge({"start":start,"join":join,"end":end,"tip":tip,"camera":camera,"authority":authority,"weapon":weapon,"remaining":duration,"total":duration,"serial":serial}, true)
 	slot.node.visible = true
 	_draw_line(slot)
@@ -306,26 +368,45 @@ func _spawn_line(start: Vector3, join: Vector3, end: Vector3, weapon: int, tip: 
 func _draw_line(slot: Dictionary) -> void:
 	var mesh: ImmediateMesh = slot.node.mesh
 	mesh.clear_surfaces()
-	var color: Color = Profiles.ITEMS[slot.weapon].color
-	color.a = clampf(slot.remaining/slot.total,0.0,1.0)
-	slot.material.albedo_color = color
+	var profile: Dictionary = Profiles.ITEMS[slot.weapon]
+	var life := clampf(slot.remaining/slot.total,0.0,1.0)
+	var phase := 1.0 - life
+	# Per-weapon fade curve: fast weapons snap out, heavy beams hold a long tail.
+	var fade := pow(life,float(profile.tracer_fade))
+	var color: Color = profile.color
+	var core: Color = color.lerp(Color(1.0,0.97,0.9),float(profile.tracer_core))
+	var width := float(profile.tracer_width)
+	var glow := float(profile.tracer_glow)
+	slot.material.albedo_color = Color(1.0,1.0,1.0,fade)
 	mesh.surface_begin(Mesh.PRIMITIVE_TRIANGLES)
-	var width := 0.018
-	if slot.weapon in [2,6]: width = 0.035
-	elif slot.weapon in [3,7,9]: width = 0.008
-	_segment(mesh,slot.start,slot.join,width*2.8,0.18)
-	_segment(mesh,slot.join,slot.end,width*2.8,0.18)
-	_segment(mesh,slot.start,slot.join,width,0.9)
-	_segment(mesh,slot.join,slot.end,width,0.9)
+	# 1. Wide soft trail, brightest at the muzzle and fading down the ray.
+	_segment(mesh,slot.start,slot.join,width*3.4,color,glow*0.9,glow*0.75)
+	_segment(mesh,slot.join,slot.end,width*3.4,color,glow*0.75,glow*0.15)
+	# 2. Solid mid trail along the whole authoritative path.
+	_segment(mesh,slot.start,slot.join,width*1.7,core,0.22,0.50)
+	_segment(mesh,slot.join,slot.end,width*1.7,core,0.50,0.06)
+	# 3. Hot core: a near-white strip, brightest at the receiver end.
+	_segment(mesh,slot.start,slot.join,width,core,0.65,1.0)
+	_segment(mesh,slot.join,slot.end,width,core,1.0,0.30)
+	# 4. Travelling bright head over the instant ray: the path is drawn whole at
+	#    once (unchanged), the head reads as the round crossing it.
+	var axis: Vector3 = slot.end - slot.start
+	if axis.length_squared() > 0.000001:
+		var direction := axis.normalized()
+		var head: Vector3 = slot.start + axis * phase
+		var tail := maxf(width*6.0, axis.length()*0.04)
+		_segment(mesh,head - direction*tail,head + direction*width*1.5,width*1.5,core.lerp(Color.WHITE,0.5),0.0,1.0)
 	mesh.surface_end()
 
-func _segment(mesh: ImmediateMesh, from: Vector3, to: Vector3, width: float, alpha: float) -> void:
+func _segment(mesh: ImmediateMesh, from: Vector3, to: Vector3, width: float, color: Color, from_alpha: float, to_alpha: float) -> void:
 	if from.distance_squared_to(to) < 0.0000001: return
 	var view := source_camera.get_camera_transform().origin - (from+to)*0.5 if is_instance_valid(source_camera) else Vector3.UP
 	var side := (to-from).cross(view).normalized()*width*0.5
 	if side.length_squared() < 0.00000001: side = Vector3.RIGHT*width*0.5
-	mesh.surface_set_color(Color(1,1,1,alpha))
-	for vertex: Vector3 in [from-side,from+side,to+side,from-side,to+side,to-side]: mesh.surface_add_vertex(vertex)
+	mesh.surface_set_color(Color(color.r,color.g,color.b,from_alpha))
+	for vertex: Vector3 in [from-side,from+side,to+side]: mesh.surface_add_vertex(vertex)
+	mesh.surface_set_color(Color(color.r,color.g,color.b,to_alpha))
+	for vertex: Vector3 in [from-side,to+side,to-side]: mesh.surface_add_vertex(vertex)
 
 func _update_slot(slot: Dictionary) -> void:
 	var phase: float = 1.0-slot.remaining/slot.total
@@ -370,12 +451,21 @@ func advance(delta: float) -> void:
 				else: slot.start = resolved.position
 		if slot.remaining <= 0: slot.node.hide()
 		else: _draw_line(slot)
+	for slot: Dictionary in lights:
+		if not is_instance_valid(slot.node) or slot.remaining <= 0: continue
+		slot.remaining = maxf(0.0,slot.remaining-delta)
+		if slot.node.get_parent() != self and rig.get("visible") != true: slot.remaining = 0.0
+		if slot.remaining <= 0:
+			slot.node.visible = false
+			continue
+		var phase: float = 1.0-slot.remaining/slot.total
+		slot.node.light_energy = slot.energy*pow(1.0-phase,1.8)
 
 func _process(delta: float) -> void:
 	advance(delta)
 
 func _hide_all() -> void:
-	for slot: Dictionary in slots + lines:
+	for slot: Dictionary in slots + lines + lights:
 		slot.remaining = 0.0
 		if is_instance_valid(slot.node): slot.node.hide()
 
@@ -384,8 +474,11 @@ func reset() -> void:
 		if is_instance_valid(slot.node):
 			slot.node.mesh = null
 			slot.node.free()
+	for slot: Dictionary in lights:
+		if is_instance_valid(slot.node): slot.node.free()
 	slots.clear()
 	lines.clear()
+	lights.clear()
 	seen.clear()
 	order.clear()
 	expired_time = -INF
@@ -394,6 +487,8 @@ func reset() -> void:
 	impacts = 0
 	rejected = 0
 	serial = 0
+	light_serial = 0
+	light_flashes = 0
 
 func _exit_tree() -> void:
 	reset()

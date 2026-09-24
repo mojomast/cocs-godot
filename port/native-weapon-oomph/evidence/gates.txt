@@ -1,0 +1,86 @@
+WEAPON OOMPH GATE RUN
+=====================
+
+Worktree: /tmp/opencode/cocs-weapon-oomph (branch lane/weapon-oomph, base 283639bc)
+Toolchain: Godot 4.5.2.stable.official.6ce3de25a
+Environment: TMPDIR=/tmp/opencode, GODOT_BIN=<pinned editor>; rendered gates under
+a private Xvfb via tools/godot-dev/xvfb_run.py (GL Compatibility, Dummy audio).
+
+Headless gates (all exit 0, 0 ERROR lines)
+------------------------------------------
+$GODOT_BIN --headless --path godot --import
+    exit=0, .uid sidecars generated for the new tests
+
+$GODOT_BIN --headless --path godot --script res://tests/first_person/lifecycle.gd
+    FIRST_PERSON_LIFECYCLE {"checks":57,"failures":[]}
+
+$GODOT_BIN --headless --path godot --script res://tests/first_person/ads_contract.gd
+    NATIVE_ADS_CONTRACT {"checks":93,"failures":[]}
+
+$GODOT_BIN --headless --path godot --script res://tests/weapon_effects/lifecycle.gd
+    WEAPON_EFFECTS_LIFECYCLE failures=0
+
+$GODOT_BIN --headless --path godot --script res://tests/weapon_effects/rig_integration.gd
+    WEAPON_EFFECTS_REAL_RIG weapons=10 poses=2 max_projection_error_px=0.00001526 failures=0
+
+$GODOT_BIN --headless --path godot --script res://tests/first_person/handling.gd
+    FIRST_PERSON_HANDLING {"checks":5295,"failures":[], ...}
+    min hip corridor margin 1.23 deg, min ADS corridor margin 2.06 deg
+
+$GODOT_BIN --headless --path godot --script res://tests/first_person/detail.gd
+    FIRST_PERSON_DETAIL {"checks":345,"failures":[], ...}
+
+$GODOT_BIN --headless --path godot --script res://tests/first_person/recoil.gd
+    FIRST_PERSON_RECOIL {"checks":190,"failures":[], ...}
+
+$GODOT_BIN --headless --path godot --script res://tests/weapon_effects/projectile_flight.gd
+    WEAPON_EFFECTS_PROJECTILE_FLIGHT {"checks":22,"failures":[]}
+
+$GODOT_BIN --headless --path godot --script res://tests/protocol/projectiles.gd
+    PORT_PROJECTILES_OK checks=27            (file owned by another lane, kept green)
+
+$GODOT_BIN --headless --path godot --script res://tests/protocol/combat_feedback.gd
+    PORT_COMBAT_FEEDBACK_OK synthetic_checks=13 recorded_shots=610 recorded_hits=32
+
+$GODOT_BIN --headless --audio-driver Dummy --path godot --script res://tests/protocol/audio_feedback.gd
+    PORT_AUDIO_FEEDBACK_OK checks=287
+    AUDIO_EXPLOSION {"peak":0.649993896484375,"rms":0.130358405494524,"seconds":0.42}
+
+Rendered gates under private Xvfb (all exit 0)
+----------------------------------------------
+python3 tools/godot-dev/xvfb_run.py $GODOT_BIN --path godot --rendering-method gl_compatibility \
+    --audio-driver Dummy --script res://tests/first_person/ads.gd -- --evidence-out=<dir>
+    NATIVE_ADS {"checks":910,"failures":[],"images":120,"measurements":160}
+    max muzzle mapping error 8.63e-05 px, max target-gap opaque pixels 0
+
+python3 tools/godot-dev/xvfb_run.py $GODOT_BIN --path godot --rendering-method gl_compatibility \
+    --audio-driver Dummy --script res://tests/first_person/handling_capture.gd -- --evidence-out=<dir>
+    FIRST_PERSON_HANDLING_CAPTURE {"checks":482,"failures":[],"images":140}
+    asserted ads/hot-ads/hip/reload/heat-hold gap and centre numbers unchanged vs base
+
+python3 tools/godot-dev/xvfb_run.py $GODOT_BIN --path godot --rendering-method gl_compatibility \
+    --audio-driver Dummy --script res://tests/weapon_effects/framing.gd -- --evidence-out=<dir>
+    WEAPON_EFFECTS_FRAMING records=41 errors=0
+    contact summary: 40 framing records, max tracer start error 0.0000682 px,
+    max visual tip error 0.0000610 px, authoritative endpoint delta 0.0 m
+
+python3 tools/godot-dev/xvfb_run.py $GODOT_BIN --path godot --rendering-method gl_compatibility \
+    --audio-driver Dummy --script res://tests/weapon_effects/contact_sheet.gd -- --evidence-out=<dir>
+    exit 0
+
+python3 tools/godot-dev/xvfb_run.py $GODOT_BIN --path godot --rendering-method gl_compatibility \
+    --audio-driver Dummy --script res://tests/weapon_effects/moth_coverage.gd -- --evidence-out=<dir>
+    WEAPON_EFFECTS_MOTH_COVERAGE {"center_alpha":0.949,"corner_alpha":0.0,"passed":true}
+
+python3 tools/godot-dev/xvfb_run.py $GODOT_BIN --path godot --rendering-method gl_compatibility \
+    --audio-driver Dummy --script res://tests/weapon_effects/oomph_capture.gd -- --evidence-out=<dir>
+    WEAPON_OOMPH_CAPTURE {"checks":45,"failures":[],"captures":60}
+    per weapon: ADS bloom leaves 0 opaque target-gap pixels; barrel lights only
+    for the six lit weapons and only at quality 2
+
+Baseline comparison (scratch worktree /tmp/opencode/oomph-base at 283639bc, not committed)
+-----------------------------------------------------------------------------------------
+- Pose probe (same recorder, old code): "before" shove/lift/recover columns in README.md.
+- audio_base_scratch.gd: "before" shot/hit/launch/explosion peak/RMS/length in README.md.
+- handling_capture.gd at base: 482 checks, 0 failures; asserted sight-picture
+  metrics identical to this commit.

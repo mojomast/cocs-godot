@@ -7,6 +7,10 @@ uniform float opacity = 1.0;
 uniform bool billboard = true;
 uniform bool use_sheet = false;
 uniform sampler2D frame_texture : source_color, filter_linear;
+// Weapon-oomph additions: per-weapon core gain (bigger, hotter white core) and
+// an overall brightness multiplier. Defaults preserve the original card.
+uniform float core_gain = 1.0;
+uniform float brightness = 1.0;
 void vertex() {
 	if (billboard) {
 		MODELVIEW_MATRIX = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
@@ -18,7 +22,7 @@ void fragment() {
 	vec2 p = UV * 2.0 - 1.0;
 	float r = length(p);
 	float a = atan(p.y, p.x);
-	float core = exp(-r*r*32.0);
+	float core = exp(-r*r*32.0) * core_gain;
 	float shape = exp(-r*r*8.0);
 	if (kind == 0) shape *= 0.5 + 0.5*pow(abs(cos(a*3.0+phase*2.0)), 6.0);
 	if (kind == 1) shape = exp(-dot(p*vec2(2.8,0.8),p*vec2(2.8,0.8))*4.0);
@@ -32,7 +36,7 @@ void fragment() {
 	if (kind == 9) shape *= 0.4+0.6*pow(abs(cos(a*2.0-phase*4.0)), 8.0);
 	if (kind == 10) shape = exp(-r*r*4.0)*(0.7+0.15*sin(p.x*16.0+phase*4.0)*sin(p.y*19.0));
 	if (kind == 11) shape = exp(-abs(r-0.35)*24.0)*0.4;
-	vec3 color = mix(tint.rgb, vec3(1.0,0.96,0.85), core*0.8);
+	vec3 color = mix(tint.rgb, vec3(1.0,0.96,0.85), clamp(core*0.8,0.0,1.0)) * brightness;
 	if (use_sheet) {
 		vec4 tex = texture(frame_texture, UV);
 		// Moth frames can have opaque black backgrounds: derive soft coverage,

@@ -22,6 +22,16 @@ var speed := 0.0
 var reloading := false
 var reload_progress := 0.0
 var recoil := 0.0
+# Transient camera punch: a sharp, fast-decaying weapon-pose jolt layered over
+# the sustained source-rate recoil. Presentation only, bounded and reset by
+# `_clear_motion()`; it never touches the aim camera or any gameplay value.
+var punch := 0.0
+var punch_sign := 1.0
+# Last applied pose response, read by the recoil evidence test. Metres for the
+# shove, radians for lift/roll; presentation only.
+var kick_shove := 0.0
+var kick_lift := 0.0
+var kick_roll := 0.0
 var flash_remaining := 0.0
 var switch_remaining := 0.0
 var age := 0.0
@@ -187,6 +197,8 @@ func apply_events(events: Array, local_id: int) -> void:
 		_remember(volley, time)
 		if not showing or owner != local_id or owner != actor_id or kind != current_weapon: continue
 		recoil = minf(1.5, recoil + 1.0)
+		punch = minf(1.25, punch + 1.0)
+		punch_sign = -punch_sign
 		flash_remaining = float(manifest.weapons[kind].muzzle[1])
 		recoil_count += 1
 		handling.fire()
@@ -283,7 +295,12 @@ func advance(delta: float) -> void:
 	var dt := minf(delta, 0.05)
 	age += dt
 	var info: Dictionary = manifest.weapons[current_weapon]
-	recoil = move_toward(recoil, 0.0, dt * float(info.kick[2]))
+	# Sustained recoil settles at ~78% of the source recover rate (noticeably
+	# heavier) while the transient punch decays much faster.
+	recoil = move_toward(recoil, 0.0, dt * handling.recover_speed)
+	if punch > 0.0:
+		punch *= exp(-dt * handling.transient_rate)
+		if punch < 0.0005: punch = 0.0
 	flash_remaining = maxf(0.0, flash_remaining - dt)
 	switch_remaining = maxf(0.0, switch_remaining - dt)
 	var target := aim_target if not reloading and switch_remaining <= 0.0 else 0.0
@@ -300,8 +317,18 @@ func advance(delta: float) -> void:
 	# Keep settled neutral sights exactly on the camera ray. Recoil is deliberately
 	# visible, then recovers; idle/locomotion/lag fade out as cheek weld completes.
 	var free_motion := 1.0 - aim_weight
-	pivot.position += Vector3(sin(age * 8.0) * bob * 0.004 * free_motion, (breathe + cos(age * 16.0) * bob * 0.003) * free_motion - switch_remaining * 0.32 - reload_curve * 0.045, recoil * float(info.kick[0]) * 0.45)
-	pivot.basis *= Basis.from_euler(Vector3(recoil * float(info.kick[1]) * (0.25 if reduced_motion else 0.6) + look_lag.y * free_motion, look_lag.x * free_motion, reload_curve * 0.16))
+	# Weapon-oomph recoil: the source kick is amplified per weapon (heavier source
+	# feel -> stronger multiplier) with a fast transient punch layered on top.
+	# Reduced motion keeps a visible but small punch and never the full jolt.
+	var punch_weight := punch * (0.35 if reduced_motion else 1.0)
+	var shove := recoil * float(info.kick[0]) * 0.45 * handling.kick_scale + punch_weight * float(info.kick[0]) * handling.transient_back
+	var lift := recoil * float(info.kick[1]) * handling.lift_hold * (0.28 if reduced_motion else 0.6) + punch_weight * float(info.kick[1]) * handling.transient_pitch
+	var roll := punch_weight * float(info.kick[1]) * handling.transient_roll * punch_sign
+	kick_shove = shove
+	kick_lift = lift
+	kick_roll = roll
+	pivot.position += Vector3(sin(age * 8.0) * bob * 0.004 * free_motion, (breathe + cos(age * 16.0) * bob * 0.003) * free_motion - switch_remaining * 0.32 - reload_curve * 0.045, shove)
+	pivot.basis *= Basis.from_euler(Vector3(lift + look_lag.y * free_motion, look_lag.x * free_motion, reload_curve * 0.16 + roll))
 	# Per-weapon idle sway character: presentation only, a pure function of local
 	# age and the exported profile, scaled by (1 - aim_weight) so the settled
 	# cheek weld is exactly still. Never touches aim, recoil, spread or ammo.
@@ -322,6 +349,8 @@ func advance(delta: float) -> void:
 
 func _clear_motion() -> void:
 	recoil = 0.0
+	punch = 0.0
+	punch_sign = 1.0
 	flash_remaining = 0.0
 	switch_remaining = 0.0
 	look_lag = Vector2.ZERO

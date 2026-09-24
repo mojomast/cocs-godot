@@ -17,6 +17,65 @@ const HAZE_SIZE := 0.026
 const HAZE_GROWTH := 0.026
 const CHARGE_TIME := 0.28
 
+## --- Recoil presentation amplification --------------------------------------
+## The rig reads the source `feel.kick = [pitchKick, yawKick, recover]` triple
+## from its manifest. These pure functions turn that source data into a stronger,
+## per-weapon first-person response: a sustained shove that settles more slowly
+## than the source rate, plus a short transient punch that decays fast. The
+## per-weapon character is derived from the weapon's own source kick magnitude, so
+## no second table can drift from the manifest. Presentation only: nothing here
+## reads or writes aim, spread, ammo, damage or any authoritative value.
+const RECOIL_MIN_SCALE := 1.6
+const RECOIL_MAX_SCALE := 2.2
+const RECOIL_PITCH_HOLD_MIN := 1.12
+const RECOIL_PITCH_HOLD_MAX := 1.22
+const RECOIL_RECOVER := 0.78
+const PUNCH_PITCH_MIN := 0.30
+const PUNCH_PITCH_MAX := 0.50
+const PUNCH_ROLL_MIN := 0.85
+const PUNCH_ROLL_MAX := 1.60
+const PUNCH_BACK_MIN := 0.35
+const PUNCH_BACK_MAX := 0.60
+const PUNCH_RATE_LIGHT := 34.0
+const PUNCH_RATE_HEAVY := 24.0
+const KICK_HEFT_LOW := 0.042
+const KICK_HEFT_HIGH := 0.205
+
+## Normalised 0..1 "heft" of a source kick triple (light pistol-style vs heavy
+## break-action), used for every per-weapon recoil character below.
+static func recoil_heft(kick: Array) -> float:
+	if kick.size() < 2: return 0.0
+	var total := clampf(float(kick[0]) + float(kick[1]), KICK_HEFT_LOW, KICK_HEFT_HIGH)
+	return (total - KICK_HEFT_LOW) / (KICK_HEFT_HIGH - KICK_HEFT_LOW)
+
+## Headline kick multiplier applied to the source feel: 1.6x light, 2.2x heavy.
+## This is the sustained translation multiplier; the sustained pitch hold below is
+## deliberately smaller so the heat micro-effect cannot enter the reticle
+## corridor, and the transient punch carries the rest of the felt impulse.
+static func recoil_scale(kick: Array) -> float:
+	return lerpf(RECOIL_MIN_SCALE, RECOIL_MAX_SCALE, recoil_heft(kick))
+
+## Sustained muzzle-rise hold. Kept close to the source rate on purpose: the
+## rest of the per-weapon kick lives in the fast transient and the shove.
+static func pitch_hold(kick: Array) -> float:
+	return lerpf(RECOIL_PITCH_HOLD_MIN, RECOIL_PITCH_HOLD_MAX, recoil_heft(kick))
+
+## Sustained recover rate from the source `recover`, ~28% slower settling.
+static func recover_rate(kick: Array) -> float:
+	return maxf(1.0, float(kick[2]) if kick.size() > 2 else 16.0) * RECOIL_RECOVER
+
+static func punch_pitch(kick: Array) -> float:
+	return lerpf(PUNCH_PITCH_MIN, PUNCH_PITCH_MAX, recoil_heft(kick))
+
+static func punch_roll(kick: Array) -> float:
+	return lerpf(PUNCH_ROLL_MIN, PUNCH_ROLL_MAX, recoil_heft(kick))
+
+static func punch_back(kick: Array) -> float:
+	return lerpf(PUNCH_BACK_MIN, PUNCH_BACK_MAX, recoil_heft(kick))
+
+static func punch_rate(kick: Array) -> float:
+	return lerpf(PUNCH_RATE_LIGHT, PUNCH_RATE_HEAVY, recoil_heft(kick))
+
 var _viewport: Node
 var _fx_root: Node3D
 var _weapon: Node3D
@@ -58,6 +117,15 @@ var cycles := 0
 var racks := 0
 var cycle_duration := 0.1
 var cycle_stroke := 0.05
+# Recoil presentation read-outs: pure functions of the bound source kick triple.
+var kick_scale := RECOIL_MIN_SCALE
+var lift_hold := RECOIL_PITCH_HOLD_MIN
+var recover_speed := 16.0
+var transient_pitch := PUNCH_PITCH_MIN
+var transient_roll := PUNCH_ROLL_MIN
+var transient_back := PUNCH_BACK_MIN
+var transient_rate := PUNCH_RATE_LIGHT
+var recoil_punches := 0
 
 func _init() -> void:
 	_quad.size = Vector2.ONE
@@ -117,6 +185,14 @@ func bind(weapon: Node3D, parts: Dictionary, rest: Dictionary, anchors: Dictiona
 	_tint = Color(info.get("color", "b8d3ea")).lerp(Color.WHITE, 0.35)
 	cycle_duration = maxf(0.02, float(_info.get("cycle", 0.09)))
 	cycle_stroke = maxf(0.0, float(_info.get("stroke", 0.05)))
+	var kick: Array = info.get("kick", [])
+	kick_scale = recoil_scale(kick)
+	lift_hold = pitch_hold(kick)
+	recover_speed = recover_rate(kick)
+	transient_pitch = punch_pitch(kick)
+	transient_roll = punch_roll(kick)
+	transient_back = punch_back(kick)
+	transient_rate = punch_rate(kick)
 	_glow.clear()
 	_glow_steady.clear()
 	_glow_energy = -1.0
@@ -135,6 +211,7 @@ func bind(weapon: Node3D, parts: Dictionary, rest: Dictionary, anchors: Dictiona
 func fire() -> void:
 	_bolt_t = 0.0
 	cycles += 1
+	recoil_punches += 1
 	if _since_shot > maxf(0.35, cycle_duration * 4.0):
 		_charge_t = 0.0
 		racks += 1
@@ -355,6 +432,7 @@ func clear() -> void:
 	_puff_t = 0.0
 	cycles = 0
 	racks = 0
+	recoil_punches = 0
 	if _bolt != null and is_instance_valid(_bolt): _bolt.transform = _bolt_rest
 	if _feed != null and is_instance_valid(_feed): _feed.transform = _feed_rest
 	if _barrel != null and is_instance_valid(_barrel): _barrel.transform = _barrel_rest
