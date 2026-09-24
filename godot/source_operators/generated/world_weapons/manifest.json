@@ -6,7 +6,7 @@
     "game/character-anim.mjs": "feaff9cd77a88174210957e871420d429c3523d5b2517592749b190e602bfa01",
     "game/weapon-models/chassis.mjs": "78ede021d7068763febadd6a6966debbf46494a217aa481b043e25b94b526dd6",
     "game/model-geometry.mjs": "a9f3f074c40ff94f332babd6b347a214aeffa283e674903ca40b03b4bb30c591",
-    "game/data.mjs": "08daae39f17980a38eaa6de9b549aea00a8852793dd995d5bc71f4d3b7bdb93d"
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44"
   },
   "method": "Actual simpleWeaponModel construction at source scale plus the shared six-channel detail vocabulary (source beveledBox and placed-join vocabulary, merged per material). Grip coordinates are the chassis-derived fallback used verbatim by alignLivingCharacter in game/rig.mjs, unchanged from the pre-detail export.",
   "detailVocabulary": {

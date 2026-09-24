@@ -3,7 +3,7 @@
   "sourceBaseline": "64da4bc",
   "detail": "weapon identity/detail pass (first person)",
   "sources": {
-    "game/data.mjs": "08daae39f17980a38eaa6de9b549aea00a8852793dd995d5bc71f4d3b7bdb93d",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
     "game/model-geometry.mjs": "a9f3f074c40ff94f332babd6b347a214aeffa283e674903ca40b03b4bb30c591",
     "game/sights.mjs": "e57877966c60c7bad54f56992e854c9c070fe9be936da4829c090d0482bf5938",
     "game/weapon-ads.mjs": "01d9eb7ddbb304b0bca39899e393730cbdf04fffb5024f28886399e76f20452b",
