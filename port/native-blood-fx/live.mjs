@@ -12,6 +12,8 @@
 // evidence first, so a broken run still reports why it broke.
 //
 // Usage: GODOT_BIN=<pinned Godot> node port/native-blood-fx/live.mjs
+// CI's CPU-only renderer uses --ci-render-budget; the ordinary visual capture
+// keeps its 1280x800 composition and five real damage events.
 import {spawn, execFileSync} from 'node:child_process';
 import {mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import {resolve} from 'node:path';
@@ -39,9 +41,12 @@ if (!Number.isInteger(budget) || budget < 1000 || budget >= GATE_BUDGET_MS) {
 // scene's own fail guards, so it is reported the moment the engine says so rather than
 // after the whole budget.
 const COMPILE_BREAK = /SCRIPT ERROR: (Parse Error|Compile Error)|Failed to load script/;
+const ciRenderBudget = process.argv.includes('--ci-render-budget');
+const bots = ciRenderBudget ? 1 : 2;
+const resolution = ciRenderBudget ? '320x200' : '1280x800';
 function huntArgs() {
   const flag = process.argv.find(value => value === '--hunt' || value.startsWith('--hunt='));
-  if (!flag) return ['--hits=5'];
+  if (!flag) return [`--hits=${ciRenderBudget ? 3 : 5}`];
   const count = flag.includes('=') ? Number(flag.split('=')[1]) : 3;
   if (!Number.isInteger(count) || count < 1 || count > 40) throw Error('--hunt=<1..40>');
   return [`--hunt=${count}`];
@@ -61,7 +66,7 @@ function flush(summary) {
 }
 
 const authority = await createNativeArenaAuthority({port:0, host:'127.0.0.1', mapId:'prism-foundry',
-  mode:'deathmatch', bots:2, roundSeconds:180, debug:true});
+  mode:'deathmatch', bots, roundSeconds:180, debug:true});
 const display = spawn('Xvfb', ['-displayfd', '3', '-screen', '0', '1280x800x24',
   '-nolisten', 'tcp', '-nolisten', 'unix'], {stdio:['ignore', 'ignore', 'pipe', 'pipe']});
 const displayNumber = await new Promise((resolveDisplay, reject) => {
@@ -74,12 +79,13 @@ const displayNumber = await new Promise((resolveDisplay, reject) => {
   display.once('exit', () => { clearTimeout(timer); reject(Error('Xvfb exited early')); });
 });
 const env = {...process.env, DISPLAY:`:${displayNumber}`};
+if (ciRenderBudget) env.COCS_BENCHMARK_LEVEL = 'low';
 let child;
 try {
-  child = spawn(binary, ['--path', 'godot', '--resolution', '1280x800',
+  child = spawn(binary, ['--path', 'godot', '--resolution', resolution,
     '--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy',
     '--script', 'res://tests/blood_fx/live_native.gd', '--',
-    '--map=prism-foundry', '--mode=deathmatch', '--bots=2', '--round-seconds=180', '--autostart',
+    '--map=prism-foundry', '--mode=deathmatch', `--bots=${bots}`, '--round-seconds=180', '--autostart',
     '--endpoint=' + authority.endpoint, `--capture=${png}`,
     ...huntArgs()],
     {cwd:root, env, stdio:['ignore', 'pipe', 'pipe']});

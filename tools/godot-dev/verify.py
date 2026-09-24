@@ -133,7 +133,9 @@ commands = [
     ("debug-panel", [binary, "--headless", "--path", "godot", "--script", "res://tests/debug/panel.gd", "--", "--debug-panel"]),
     ("mode-diagnostics", [binary, "--headless", "--path", "godot", "--script", "res://tests/debug/diagnostics.gd", "--", "--diagnostics"]),
     ("blood-live-harness", ["node", "--test", "port/native-blood-fx/tests/live_budget.test.mjs"]),
-    ("blood-live-native", ["node", "port/native-blood-fx/live.mjs"]),
+    # Keep the real rendered authority/blood-event check on CPU-only CI without
+    # using its 1280x800 five-hit visual-review preset as a frame-rate test.
+    ("blood-live-native", ["node", "port/native-blood-fx/live.mjs", "--ci-render-budget"]),
     ("route-parity", ["node", "--test", "tools/godot-package/route_parity.test.mjs"]),
     ("main-menu-smoke", [binary, "--headless", "--path", "godot", "res://ui/main_menu.tscn", "--", "--smoke"]),
     ("main-menu-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/main_menu/contracts.gd", "--", "--contracts"]),
