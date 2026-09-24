@@ -285,7 +285,7 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
  const inputs = new InputBuffer();
  let socket=null, config=null, mapId=null, match=null, created=false, finished=false;
  let baseConfig=null;
- let round=0, seq=0, epoch=0, eventCursor=null, ticks=0, wall=performance.now(), accumulator=0, closing=false, closePromise;
+ let round=0, seq=0, epoch=0, eventCursor=null, wall=performance.now(), accumulator=0, closing=false, closePromise;
  let tokens=LIMITS.burst, tokenAt=wall;
  const record = value => observe({...value, round, observedMs:performance.now()});
  function debugReset() {
@@ -370,7 +370,7 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
      // Round boundary: god mode is round-scoped and always clears here.
      debugState.live.godMode=false;
      applyDebugToMatch(match);
-     round++; seq=0; epoch++; eventCursor=new EventCursor(); ticks=0; finished=false; inputs.reset();
+     round++; seq=0; epoch++; eventCursor=new EventCursor(); finished=false; inputs.reset();
      // Consume construction's ring before any step can shift it. The supported
      // solo preset constructs one spawn event; no historical events are inferred.
      const initialEvents=eventCursor.take(match);
@@ -460,7 +460,9 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
     if (alive && active.actors[0].health <= 0) cancelControls('death');
     const events=eventCursor.take(active);
     if (events.length) send({type:'events',items:events});
-    if (++ticks%3 === 0 || active.over) send({type:'snapshot',seq:++seq,acks:{0:inputs.applied},
+    // Every-tick snapshots, same cadence as the native-arena and identity-zone
+    // authorities (see port/native-motion-smoothness/).
+    send({type:'snapshot',seq:++seq,acks:{0:inputs.applied},
      inputEpoch:epoch,hordeInput:inputs.status(),state:active.snapshot()});
     if (active.over) {
      finished=true; inputs.cancel();
