@@ -81,7 +81,7 @@ func run() -> void:
 		"snapshot-identified NPC death starts a visible fall")
 	horde.apply_npc_deaths([{"type":"death", "id":52, "actor":17}])
 	check(horde.corpses.size() == 1, "duplicate event cannot spawn a second corpse")
-	horde.remember_npcs({"actors":[actor(20.0).merged({"id": 18, "npcType":"sapper"})]})
+	horde.remember_npcs({"actors":[actor(20.0).merged({"id": 18, "npcType":"sapper"}, true)]})
 	horde.apply_npc_deaths([{"type":"enemy-detonate", "id":53, "actor":18,
 		"x":2.0, "z":-4.0, "radius":3.0}])
 	check(horde.corpses.size() == 2, "authoritative sapper detonation preserves a fall")
@@ -100,6 +100,10 @@ func run() -> void:
 	horde.release_terminal_blood()
 	check(horde.combat.blood_fx == fx and fx.resets == 1,
 		"returning shared controller drains and restores normal round ownership")
+	for detached: Node in [horde.camera, horde.label, horde.selector,
+			horde.environment, horde.sun, horde.horde_label, horde.pickups,
+			horde.presentation, horde.client, horde.combat_label]:
+		if is_instance_valid(detached) and detached.get_parent() == null: detached.free()
 	horde.free()
 	print("HORDE_DEATH_CONTRACTS checks=%d failures=%d" % [checks, failures])
 	quit(1 if failures else 0)

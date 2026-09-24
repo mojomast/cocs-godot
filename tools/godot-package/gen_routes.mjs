@@ -101,7 +101,7 @@ const buildRegistry = () => {
         `${route.id}: cheats variants exist only for horde/native-dm/identity-zones`);
     }
     const params = buildParams(route);
-    const toggles = [{key:'diagnostics', flag:'--diagnostics', label:'Diagnostics (console)', default:false}];
+    const toggles = [{key:'diagnostics', flag:'--diagnostics', label:'Diagnostics overlay (F11)', default:false}];
     if (route.category !== 'cheats' && ['combat', 'horde', 'native-dm', 'identity-zones'].includes(experience)) {
       toggles.push({key:'cheats', flag:'--debug-panel', label:'Local cheats (F3)', default:false});
     }

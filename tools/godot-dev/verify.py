@@ -56,6 +56,7 @@ commands = [
     ("native-arena-closure", ["node", "--test", "tools/godot-package/native_arena_closure.test.mjs"]),
     ("package-identity-routes", ["node", "--test", "tools/godot-package/native_identity_options.test.mjs"]),
     ("native-arena-authority", ["node", "--test", "port/native-arenas/tests/authority.test.mjs", "port/native-arenas/tests/input-events.test.mjs", "port/native-arenas/tests/source-match.test.mjs", "port/native-arenas/tests/schema.test.mjs"]),
+    ("local-24-roster", ["node", "--test", "port/native-menu-debug-bots/tests/startup.test.mjs", "port/native-menu-debug-bots/tests/debug-24.test.mjs"]),
     ("horde-ownership", ["node", "--test", "tools/godot-package/horde_ownership.test.mjs"]),
     ("zone-routing", ["node", "--test", "port/native-zone-modes/route.test.mjs"]),
     ("combined-arms-evidence", [sys.executable, "-B", "-m", "unittest", "discover", "-s", "port/native-combined-arms", "-p", "test_validate.py"]),
@@ -65,6 +66,7 @@ commands = [
     ("horde-source", ["node", "--test", "game/singleplayer.test.mjs", "game/singleplayer-ui.test.mjs"]),
     ("horde-upgrade-adapter", ["node", "--test", "port/native-horde/upgrade.test.mjs"]),
     ("horde-adapter", ["node", "--test", "port/native-horde/test.mjs", "port/native-horde/input-buffer.test.mjs", "port/native-horde/repair-regression.test.mjs", "port/native-horde/event-cursor.test.mjs", "port/native-horde/npc-kills.test.mjs"]),
+    ("horde-death-wire", ["node", "--test", "port/native-horde-deaths/wire.test.mjs"]),
     ("horde-input-oracle", ["node", "port/native-horde/input-oracle.mjs", str(root / "port/reports/horde-input-vectors.json")]),
     ("godot-import", [binary, "--headless", "--path", "godot", "--editor", "--import"]),
     ("loadout-unit", [binary, "--headless", "--path", "godot", "--script", "res://tests/loadouts/unit.gd"]),
@@ -100,6 +102,8 @@ commands = [
     ("combat-pickup-assets", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_pickup_assets/validate.gd"]),
     ("weapon-effects", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/lifecycle.gd"]),
     ("weapon-effects-rig", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/rig_integration.gd"]),
+    ("muzzle-sight-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/muzzle_geometry.gd"]),
+    ("muzzle-path-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/muzzle_path_geometry.gd"]),
     ("projectile-flight", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/projectile_flight.gd"]),
     ("alt-fire", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/alt_fire.gd"]),
     ("weapon-handling", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/handling.gd"]),
@@ -123,6 +127,7 @@ commands = [
     ("identity-zone-route", ["node", "--test", "port/native-identity-zones/tests/route.test.mjs", "port/native-identity-zones/tests/match.test.mjs", "port/native-identity-zones/tests/authority.test.mjs"]),
     ("debug-tools", ["node", "--test", "port/native-debug/debug.test.mjs", "port/native-arenas/tests/debug.test.mjs", "port/native-horde/debug.test.mjs", "port/native-identity-zones/tests/debug.test.mjs"]),
     ("debug-panel", [binary, "--headless", "--path", "godot", "--script", "res://tests/debug/panel.gd", "--", "--debug-panel"]),
+    ("mode-diagnostics", [binary, "--headless", "--path", "godot", "--script", "res://tests/debug/diagnostics.gd", "--", "--diagnostics"]),
     ("blood-live-harness", ["node", "--test", "port/native-blood-fx/tests/live_budget.test.mjs"]),
     ("blood-live-native", ["node", "port/native-blood-fx/live.mjs"]),
     ("route-parity", ["node", "--test", "tools/godot-package/route_parity.test.mjs"]),
@@ -137,6 +142,8 @@ commands = [
     ("combat-integration-oracle", ["node", "port/native-combat-integration/export-fixtures.mjs"]),
     ("combat-integration", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_integration/contracts.gd"]),
     ("combat-combined-integration", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_integration/combined_adapter.gd"]),
+    ("combat-remote-muzzle", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_integration/remote_muzzle.gd"]),
+    ("identity-horde-occlusion", [binary, "--headless", "--path", "godot", "--script", "res://tests/combat_integration/identity_horde_occlusion.gd"]),
     ("native-arena-maps", ["node", "--test", "port/native-arenas/tests/actual-maps.mjs"]),
     ("native-arena-session", [binary, "--headless", "--path", "godot", "--script", "res://tests/native_arenas/session/test.gd", "--", "--mute"]),
     ("native-arena-composition", [binary, "--headless", "--path", "godot", "--script", "res://tests/native_arenas/session/geometry_composition.gd", "--", "--endpoint=ws://127.0.0.1:1", "--mute"]),
@@ -185,6 +192,7 @@ commands = [
     ("combined-arms-graphics", [binary, "--headless", "--path", "godot", "--script", "res://tests/combined_arms/graphics.gd"]),
     ("arms-race", [binary, "--headless", "--path", "godot", "--script", "res://tests/arms_race/independent_fixtures.gd"]),
     ("horde-model", [binary, "--headless", "--path", "godot", "--script", "res://tests/horde/test.gd"]),
+    ("horde-death-presentation", [binary, "--headless", "--path", "godot", "--script", "res://tests/horde_deaths/contracts.gd"]),
     ("horde-upgrade-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/horde/upgrade_selection_test.gd"]),
     # Actual native input/authority path; offer timing is an explicit test fixture.
     ("horde-upgrade-fixture", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "godot/tests/horde/upgrade_loopback.mjs"]),
@@ -218,6 +226,7 @@ commands = [
     ("two-native-clients", ["node", "tools/godot-dev/two-clients.mjs"]),
     ("motion-impairment", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/impairment.gd"]),
     ("remote-motion", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/remote_motion.gd"]),
+    ("local-render-motion", [binary, "--headless", "--path", "godot", "--script", "res://tests/world_motion/unit.gd"]),
 ]
 report['source_commit'] = lock['source_commit']
 results = report['gates']

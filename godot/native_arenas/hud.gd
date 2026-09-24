@@ -104,7 +104,7 @@ func build_ui() -> void:
 	roster = text("", 14)
 	match_settings.add_child(roster)
 	bots.min_value = 1
-	bots.max_value = 7
+	bots.max_value = 24
 	bots.step = 1
 	bots.value = 2
 	bots.custom_minimum_size.y = 22

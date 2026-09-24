@@ -413,7 +413,9 @@ func retire_corpse(index: int) -> void:
 	var corpse: Dictionary = corpses[index]
 	corpses.remove_at(index)
 	var node: Node3D = corpse.node
-	if is_instance_valid(node): node.queue_free()
+	if is_instance_valid(node):
+		if node.is_inside_tree(): node.queue_free()
+		else: node.free()
 
 func advance_corpses(delta: float) -> void:
 	if not is_finite(delta) or delta <= 0.0: return

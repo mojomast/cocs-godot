@@ -186,8 +186,8 @@ export const HELP = `COCS native demo — Node >=22.13.0 (bundled on Windows)
 Menu: no arguments (or --experience=menu) opens the in-game destinations menu.
   Start launches the selected route, Quit closes it; the supervisor then
   returns to the menu. --experience=menu --smoke runs it headlessly and exits.
-Every playable destination offers --diagnostics (verbose Godot console output,
-  including lobby and offline galleries); this does not enable authority cheats.
+Every destination offers --diagnostics (a read-only in-game FPS/roster overlay,
+  F11 to hide/show, plus verbose Godot console output). This does not enable cheats.
 Combat (owned local match) and Zones offer --bots=0..8 (default 2). Native DM
   supports 1..24; Domination supports 0..24 on their local authorities. Horde uses NPC waves rather than
   normal bots; other routes retain their fixed source-owned roster.

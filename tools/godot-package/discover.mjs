@@ -14,11 +14,17 @@ const nativeArenaAdapters = ['port/native-arenas/authority.mjs', 'port/native-ar
 // the ordinary/multi-human route. One reviewed adapter module, listed here so
 // the shipped closure stays explicit.
 const debugAdapters = ['port/native-debug/debug.mjs'];
+// Local 24-seat construction and route-scoped debug parsing are imported only
+// by the two native authorities. Include these exact reviewed helpers in the
+// packaged runtime closure, never by a wildcard directory scan.
+const localRosterAdapters = ['port/native-menu-debug-bots/debug-frame.mjs',
+  'port/native-menu-debug-bots/seats.mjs'];
 // The reviewed Domination route on Vermilion Fold: its own authority, match
 // adapter and static catalog, exactly like the native-arena family.
 const identityZoneAdapters = ['port/native-identity-zones/authority.mjs',
   'port/native-identity-zones/match.mjs', 'port/native-identity-zones/catalog.mjs'];
-const adapters = [...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters, ...identityZoneAdapters];
+const adapters = [...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters,
+  ...localRosterAdapters, ...identityZoneAdapters];
 // Explicit dynamic data-read manifest: the builder hashes committed bytes and
 // copies these paths under runtime/, preserving catalog.mjs URL resolution.
 // `dataFiles` stays the original native-arena family (existing consumers);

@@ -40,12 +40,14 @@ export function launchOptions(argv, catalog) {
       if (!value || value.startsWith('--')) throw Error(`--${key} requires a value`);
       if (values[key] !== undefined) throw Error(`--${key} must be supplied once`);
       values[key] = value;
-    } else if (['--play','--setup','--native-trace','--mute','--debug-hud','--smoke','--network-smoke','--session-smoke','--lifecycle-smoke'].includes(arg)) {
+    } else if (['--play','--setup','--native-trace','--mute','--debug-hud','--smoke','--network-smoke','--session-smoke','--lifecycle-smoke','--debug-panel','--diagnostics'].includes(arg)) {
       if (arg === '--smoke' && flags.has(arg)) throw Error(`Duplicate ${arg}`);
       flags.add(arg);
     } else throw Error(`Unknown launcher option: ${arg}. Use --help.`);
   }
   const smokeFlags = ['--network-smoke','--session-smoke','--lifecycle-smoke'].filter(arg => flags.has(arg));
+  const diagnostics = flags.has('--diagnostics') ? ['--diagnostics'] : [];
+  const cheats = flags.has('--debug-panel') ? ['--debug-panel'] : [];
   if (smokeFlags.length > 1) throw Error('Select one smoke check at a time');
   // Unified main menu: parameterless, no authority. The dev NO-ARG default
   // stays the map viewer below — only an explicit --experience=menu lands here
@@ -58,54 +60,61 @@ export function launchOptions(argv, catalog) {
       sessionOptions:smoke ? ['--smoke'] : [],
       args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),'--path','godot','res://ui/main_menu.tscn']};
   }
-  const play = flags.has('--play') || flags.has('--setup') || values.experience || values.map || values.mode ||
-    ['--native-trace','--mute','--debug-hud','--session-smoke','--lifecycle-smoke'].some(arg => flags.has(arg));
+  const play = flags.has('--play') || flags.has('--setup') || values.experience || values.map || values.mode || values.bots !== undefined ||
+    ['--native-trace','--mute','--debug-hud','--debug-panel','--session-smoke','--lifecycle-smoke'].some(arg => flags.has(arg));
   const experience = values.experience ?? 'combat';
   if (experience === 'native-dm') {
     for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds'].includes(key)) throw Error(`--${key} is not supported by native-dm`);
-    for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by native-dm`);
+    for (const flag of flags) if (!['--smoke','--diagnostics','--debug-panel'].includes(flag)) throw Error(`${flag} is not supported by native-dm`);
     const map = values.map ?? NATIVE_ARENA_MAPS[0], mode = values.mode ?? 'deathmatch';
     if (!NATIVE_ARENA_MAPS.includes(map)) throw Error(`native-dm does not support map ${map}`);
     if (mode !== 'deathmatch') throw Error('native-dm supports only deathmatch');
-    for (const [key, min, max, fallback] of [['bots',1,7,2],['round-seconds',60,300,180]]) {
+    for (const [key, min, max, fallback] of [['bots',1,24,2],['round-seconds',60,300,180]]) {
       values[key] ??= String(fallback);
       if (!/^\d+$/.test(values[key]) || Number(values[key]) < min || Number(values[key]) > max) throw Error(`--${key} must be ${min}..${max}`);
     }
     const bots = Number(values.bots), roundSeconds = Number(values['round-seconds']);
     const smoke = flags.has('--smoke') ? '--smoke' : null;
     return {experience, nativeArena:true, map, mode, bots, roundSeconds, endpoint:null, smoke,
-      sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,...(smoke ? [smoke] : [])],
-      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),'--path','godot','res://native_arenas/demo.tscn']};
+      sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,...cheats,...diagnostics,...(smoke ? [smoke] : [])],
+      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot','res://native_arenas/demo.tscn']};
   }
   if (experience === 'identity-zones') {
     // Reviewed static one-pair route: Vermilion Fold / Domination on its own
     // authority and scene. Mirrors port/native-identity-zones/route.mjs.
     for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds','score-limit'].includes(key)) throw Error(`--${key} is not supported by identity-zones`);
-    for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by identity-zones`);
+    for (const flag of flags) if (!['--smoke','--diagnostics','--debug-panel'].includes(flag)) throw Error(`${flag} is not supported by identity-zones`);
     const map = values.map ?? 'vermilion-fold', mode = values.mode ?? 'domination';
     if (map !== 'vermilion-fold') throw Error(`identity-zones does not support map ${map}`);
     if (mode !== 'domination') throw Error('identity-zones supports only domination');
-    for (const [key, min, max, fallback] of [['bots',0,7,2],['round-seconds',60,900,120],['score-limit',1,900,30]]) {
+    for (const [key, min, max, fallback] of [['bots',0,24,2],['round-seconds',60,900,120],['score-limit',1,900,30]]) {
       values[key] ??= String(fallback);
       if (!/^\d+$/.test(values[key]) || Number(values[key]) < min || Number(values[key]) > max) throw Error(`--${key} must be ${min}..${max}`);
     }
     const bots = Number(values.bots), roundSeconds = Number(values['round-seconds']), scoreLimit = Number(values['score-limit']);
     const smoke = flags.has('--smoke') ? '--smoke' : null;
     return {experience, identityZone:true, map, mode, bots, roundSeconds, scoreLimit, endpoint:null, smoke,
-      sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,`--score-limit=${scoreLimit}`,...(smoke ? [smoke] : [])],
-      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),'--path','godot','res://native_arenas/identity_zone_demo.tscn']};
+      sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,`--score-limit=${scoreLimit}`,...cheats,...diagnostics,...(smoke ? [smoke] : [])],
+      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot','res://native_arenas/identity_zone_demo.tscn']};
   }
-  for (const key of ['bots','round-seconds','score-limit']) if (values[key] !== undefined) throw Error(`--${key} requires native-dm or identity-zones`);
+  if (values.bots !== undefined) {
+    if (!['combat','zones'].includes(experience)) throw Error('--bots requires combat, zones, native-dm or identity-zones');
+    if (!/^\d+$/.test(values.bots) || Number(values.bots) > 8) throw Error('--bots must be 0..8');
+    if (experience === 'combat' && values.endpoint !== undefined) throw Error('--bots requires owned local combat authority');
+  }
+  for (const key of ['round-seconds','score-limit']) if (values[key] !== undefined) throw Error(`--${key} requires native-dm or identity-zones`);
   if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
     for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by native-only ${experience}`);
-    for (const flag of flags) if (flag !== '--smoke') throw Error(`${flag} is not supported by native-only ${experience}`);
+    for (const flag of flags) if (!['--smoke','--diagnostics'].includes(flag)) throw Error(`${flag} is not supported by native-only ${experience}`);
     const smoke = flags.has('--smoke') ? '--smoke' : null;
-    return {experience, nativeOnly:true, endpoint:null, smoke, sessionOptions:smoke ? [smoke] : [],
-      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),'--path','godot',NATIVE_EXPERIENCES[experience].scene]};
+    return {experience, nativeOnly:true, endpoint:null, smoke, sessionOptions:[...diagnostics,...(smoke ? [smoke] : [])],
+      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot',NATIVE_EXPERIENCES[experience].scene]};
   }
   if (flags.has('--smoke')) throw Error('--smoke is supported only by native-only graphics routes; combat uses --network-smoke, --session-smoke or --lifecycle-smoke');
   const selected = Object.hasOwn(EXPERIENCES, experience) ? EXPERIENCES[experience] : null;
   if (!selected) throw Error(`Unknown experience: ${experience}. Choose ${[...Object.keys(EXPERIENCES),...Object.keys(NATIVE_EXPERIENCES),'native-dm'].join(', ')}.`);
+  if (cheats.length && (values.endpoint !== undefined || !['combat','horde'].includes(experience))) throw Error('--debug-panel requires owned local combat or Horde authority');
+  if (values.bots !== undefined && experience === 'lobby') throw Error('--bots is unavailable in the multiplayer lobby');
   let selectedScene = null;
   const endpoint = lobbyEndpoint(values.endpoint, experience);
   for (const key of ['time-limit','round-target']) {
@@ -138,13 +147,14 @@ export function launchOptions(argv, catalog) {
   if (values['round-target'] !== undefined && (Number(values['round-target']) < 1 || Number(values['round-target']) > maxTarget)) {
     throw Error(`--round-target must be 1..${maxTarget} for the selected sports map`);
   }
-  for (const key of ['map','mode','time-limit','round-target']) if (values[key]) sessionOptions.push(`--${key}=${values[key]}`);
+  for (const key of ['map','mode','time-limit','round-target','bots']) if (values[key] !== undefined) sessionOptions.push(`--${key}=${values[key]}`);
   for (const flag of ['--setup','--native-trace','--mute','--debug-hud']) if (flags.has(flag)) sessionOptions.push(flag);
+  sessionOptions.push(...cheats,...diagnostics);
   const smoke = smokeFlags[0];
   if (experience === 'lobby') sessionOptions.push('--lobby-menu');
   const args = smoke === '--network-smoke'
     ? ['--headless','--path','godot','--script','res://tests/protocol/live.gd']
-    : [...(smoke ? ['--headless'] : []),'--path','godot',...(play ? [selectedScene ?? selected.scene] : [])];
+    : [...(smoke ? ['--headless'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot',...(play ? [selectedScene ?? selected.scene] : [])];
   if (smoke && smoke !== '--network-smoke') sessionOptions.push(smoke);
   return {args, sessionOptions, experience:play ? experience : 'viewer', smoke:smoke ?? null, endpoint};
 }
@@ -193,7 +203,7 @@ Lobby: explicit Host/Create or Guest/Join, roster and host-only Start/Restart.
 Combat: --map, --mode, --setup, --mute, --debug-hud, --native-trace
 Native DM: prism-foundry (default), aurora-basin, cinder-array, lacuna-court,
   vermilion-fold, nacre-engine; Deathmatch only.
-  Owned local loopback authority, one human plus --bots=1..7 (default 2).
+  Owned local loopback authority, one human plus --bots=1..24 (default 2).
   --round-seconds=60..300 (default 180). No endpoint, join or setup options.
   --smoke runs the scene headlessly with Dummy audio, bounded to 20 seconds.
 Horde: three combat arenas; local-only solo authority, default ten waves.

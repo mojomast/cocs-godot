@@ -90,6 +90,15 @@ func run() -> void:
 			check(not has_debug, "route %s carries no --debug-panel" % id)
 		if id == "lobby":
 			check(not has_debug, "lobby route never carries --debug-panel")
+		var toggles: Variant = route.get("toggles", [])
+		check(toggles is Array and toggles.any(func(toggle: Variant) -> bool:
+			return toggle is Dictionary and toggle.get("key") == "diagnostics" and toggle.get("flag") == "--diagnostics"),
+			"route %s offers read-only diagnostics" % id)
+		if toggles is Array:
+			var cheats: bool = toggles.any(func(toggle: Variant) -> bool:
+				return toggle is Dictionary and toggle.get("flag") == "--debug-panel")
+			check(cheats == (id in ["combat", "horde", "native-dm", "identity-zones"]),
+				"route %s only exposes cheats where local authority supports them" % id)
 		var params: Variant = route.get("params", [])
 		check(params is Array, "route %s params is an array" % id)
 		if not params is Array: continue
@@ -214,6 +223,17 @@ func check_tree(routes: Array, categories: Array) -> void:
 	check(count_named(menu, "Quit") == 1, "menu declares exactly one QUIT button")
 	var quit_node := find_named(menu, "Quit")
 	check(quit_node != null and quit_node is Button, "QUIT control is a Button")
+	menu.select_route("combat")
+	var local_toggles: Array = menu.params_box.get_children().filter(func(child: Node) -> bool:
+		return child is CheckButton and not child.is_queued_for_deletion())
+	check(local_toggles.size() == 2, "Combat displays diagnostics and local cheats as menu switches")
+	menu.selections.diagnostics = true
+	check("--diagnostics" in menu.registry.assemble_args(menu.current_route, menu.selections),
+		"enabled menu diagnostics reach the launched scene")
+	menu.select_route("lobby")
+	var lobby_toggles: Array = menu.params_box.get_children().filter(func(child: Node) -> bool:
+		return child is CheckButton and not child.is_queued_for_deletion())
+	check(lobby_toggles.size() == 1, "multiplayer lobby displays read-only diagnostics without a cheat switch")
 
 func collect_prefixed(node: Node, prefix: String, found: Dictionary) -> void:
 	for child: Node in node.get_children():

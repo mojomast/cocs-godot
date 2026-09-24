@@ -57,15 +57,23 @@ static func validate(maps: Dictionary, map_id: String, mode: String) -> String:
 	return ""
 
 static func parse_args(args: PackedStringArray, maps: Dictionary) -> Dictionary:
-	var result := {"map":DEFAULT_MAP, "mode":DEFAULT_MODE, "operator":Loadout.DEFAULT_CHARACTER, "harness":Loadout.DEFAULT_HARNESS, "setup":false, "error":""}
+	var result := {"map":DEFAULT_MAP, "mode":DEFAULT_MODE, "operator":Loadout.DEFAULT_CHARACTER, "harness":Loadout.DEFAULT_HARNESS, "bots":2, "setup":false, "error":""}
 	var explicit_mode := false
 	var explicit_harness := false
+	var explicit_bots := false
 	var guest := false
 	var index := 0
 	while index < args.size():
 		var arg: String = args[index]
 		if arg == "--setup": result.setup = true
 		if arg.begins_with("--join-room="): guest = true
+		if arg == "--bots" or arg.begins_with("--bots="):
+			var count := arg.trim_prefix("--bots=") if arg.begins_with("--bots=") else ""
+			if explicit_bots or not count.is_valid_int() or count.to_int() < 0 or count.to_int() > 8:
+				result.error = "--bots requires one local count from 0..8."
+				return result
+			result.bots = count.to_int()
+			explicit_bots = true
 		for key: String in ["map", "mode", "operator", "harness"]:
 			if arg == "--" + key or arg.begins_with("--" + key + "="):
 				var value := ""
@@ -92,7 +100,9 @@ static func parse_args(args: PackedStringArray, maps: Dictionary) -> Dictionary:
 	var pair: Dictionary = Loadout.resolve(result.operator, result.harness)
 	result.operator = pair.character
 	result.harness = pair.harness
-	if guest and (result.setup or explicit_mode):
+	if explicit_bots and (guest or "--lobby-menu" in args):
+		result.error = "Bot count is only set for an owned local Combat match."
+	elif guest and (result.setup or explicit_mode):
 		result.error = "--setup and --mode are host options; guests may specify --map to match their host."
 	elif result.setup and ("--session-smoke" in args or "--lifecycle-smoke" in args):
 		result.error = "--setup cannot be combined with automatic smoke controls."
@@ -107,7 +117,7 @@ func caption(text: String) -> Label:
 	item.add_theme_color_override("font_color", Color("a3b7c9"))
 	return item
 
-func configure(maps: Dictionary, map_id: String, mode: String, character: String = "", harness: String = "") -> void:
+func configure(maps: Dictionary, map_id: String, mode: String, character: String = "", harness: String = "", bots: int = 2) -> void:
 	entries = maps
 	set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	custom_minimum_size = Vector2(680, 460)
@@ -127,7 +137,7 @@ func configure(maps: Dictionary, map_id: String, mode: String, character: String
 	title.add_theme_font_size_override("font_size", 26)
 	box.add_child(title)
 	var description := Label.new()
-	description.text = "Original Node rules · 2 bots · Native infantry controls\nChoose a map and mode, then Start to connect."
+	description.text = "Original Node rules · %d bots · Native infantry controls\nChoose a map and mode, then Start to connect." % bots
 	box.add_child(description)
 	# Operator/harness stay on the shared popup-free inline row, side by side to
 	# keep the panel inside the 960x640 viewport.

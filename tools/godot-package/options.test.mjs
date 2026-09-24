@@ -175,7 +175,7 @@ test('menu bot schemas match scene consumption and source bounds', () => {
   assert.throws(() => options(['--experience=combat', '--bots=3', '--endpoint=ws://127.0.0.1:1234'], catalog), /requires --experience=lobby/);
 });
 
-test('diagnostics are console-only in every route and never enable multiplayer cheats', () => {
+test('diagnostics reach every route without enabling multiplayer cheats', () => {
   const routes = ['combat','lobby','native-dm','identity-zones','horde','zones',
     'arms-race','combined-arms','sports','objectives','lattice','lattice-world',
     'viewer','operator-preview','showcase','aurora-basin','cinder-array','particle-lab','shader-lab'];

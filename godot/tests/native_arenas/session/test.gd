@@ -54,13 +54,13 @@ func run() -> void:
 	var base: PackedStringArray = ["--endpoint=ws://127.0.0.1:9876/native-arenas"]
 	check(Demo.parse_options(base).error.is_empty(), "valid native defaults")
 	check(Demo.parse_options(base).bots == 2, "smoke defaults to two bots")
-	for value: String in ["--map=meridian-exchange", "--map=../prism-foundry", "--mode=horde", "--bots=-1", "--bots=0", "--bots=8", "--bots=9", "--bots=two", "--bots=+1", "--bots= 1", "--round-seconds=59", "--round-seconds=301"]:
+	for value: String in ["--map=meridian-exchange", "--map=../prism-foundry", "--mode=horde", "--bots=-1", "--bots=0", "--bots=25", "--bots=26", "--bots=two", "--bots=+1", "--bots= 1", "--round-seconds=59", "--round-seconds=301"]:
 		var args := base.duplicate()
 		args.append(value)
 		check(not Demo.parse_options(args).error.is_empty(), "reject invalid option " + value)
 	check(not Demo.parse_options([]).error.is_empty(), "explicit endpoint required")
 	check(not Demo.parse_options(["--endpoint=ws://user:secret@host"]).error.is_empty(), "embedded credentials rejected")
-	for bots: int in [1, 7]:
+	for bots: int in [1, 24]:
 		check(Demo.parse_options(base + PackedStringArray(["--bots=" + str(bots), "--round-seconds=300"])).error.is_empty(), "authoritative bot bounds and max duration allowed")
 	for suffix: String in ["", "/", "/native-arenas"]:
 		check(Demo.parse_options(["--endpoint=ws://127.0.0.1:9876" + suffix]).error.is_empty(), "exact owned endpoint route " + suffix)
@@ -85,7 +85,7 @@ func run() -> void:
 	d.ids = NativeCatalog.MAP_IDS.duplicate()
 	d.endpoint = "ws://fixture.invalid"
 	d.native_hud.configure(d)
-	check(d.native_hud.bots.min_value == 1 and d.native_hud.bots.max_value == 7 and d.native_hud.bots.value == 2, "UI bot slider follows authority bounds and launcher default")
+	check(d.native_hud.bots.min_value == 1 and d.native_hud.bots.max_value == 24 and d.native_hud.bots.value == 2, "UI bot slider follows authority bounds and launcher default")
 	check(d.native_hud.duration.min_value == 60 and d.native_hud.duration.max_value == 300, "UI round duration bounds")
 	await process_frame
 	check(d.load_map("prism-foundry"), "fixture renderer instantiated")
@@ -166,7 +166,7 @@ func run() -> void:
 	d.phase = 3
 	d.on_results({"state":{"over":false}})
 	check(d.phase == -1 and d.round_results == 1, "unfinished public state cannot become results")
-	for bots: int in [0, 8]:
+	for bots: int in [0, 25]:
 		d.phase = -2
 		var writes_before: int = d.client.writes.size()
 		d.launch_match("prism-foundry", "Fixture Operator", bots, 60)

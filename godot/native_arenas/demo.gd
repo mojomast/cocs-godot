@@ -53,9 +53,6 @@ func _ready() -> void:
 		on_error(catalog.error)
 		return
 	phase = -2
-	# HUD builds with a legacy 7-bot slider; widen it before configure assigns
-	# the menu-selected count (Godot would otherwise silently clamp 24 to 7).
-	native_hud.bots.max_value = 24
 	native_hud.configure(self)
 	if auto_start:
 		if CombatQuality.requested_by_launch():

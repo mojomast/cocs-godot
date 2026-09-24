@@ -50,6 +50,7 @@ var surface_error := ""
 var fluid_slots: Array[Dictionary] = []
 var stain_slots: Array[Dictionary] = []
 var actors: Dictionary = {}
+var confirmed_deaths: Dictionary = {}
 ## Wire events can arrive after the snapshot which removes their victim. Keep
 ## only a short, public-state-derived pose for that reordered delivery.
 var departed_actors: Dictionary = {}
@@ -305,6 +306,7 @@ func reset() -> void:
 	last_event_id = -1
 	_ids.fill(-1)
 	actors.clear()
+	confirmed_deaths.clear()
 	departed_actors.clear()
 	drain()
 
@@ -355,6 +357,7 @@ func _ingest_actors(values: Variant) -> void:
 		var id := Wire.identity(actor.get("id"))
 		if id < 0: continue
 		seen[id] = true
+		if Wire.number(actor.get("health"), -1.0) > 0.0: confirmed_deaths.erase(id)
 		var entry: Dictionary = actors.get(id, {})
 		# health_prev stays unknown until a second snapshot proves a real drop.
 		entry.health_prev = entry.get("health", -1.0)
@@ -416,6 +419,9 @@ func _damage_event(event: Dictionary, id: int) -> void:
 	if victim < 0:
 		rejected += 1
 		return
+	if confirmed_deaths.has(victim):
+		no_bleed += 1
+		return
 	var amount := Wire.number(event.get("amount"), -1.0)
 	if amount <= 0.0:
 		no_bleed += 1
@@ -435,11 +441,14 @@ func _damage_event(event: Dictionary, id: int) -> void:
 	if actor.is_empty():
 		unknown_actors += 1
 		return
-	# The last hit is valid when a snapshot already shows the health bar falling
-	# through zero; it is not valid against an actor known dead beforehand.
-	if float(actor.get("health", 0.0)) <= 0.0 and float(actor.get("health_prev", -1.0)) <= 0.0:
-		no_bleed += 1
-		return
+	# A newly zero-health snapshot may precede its own Horde hit event. Admit
+	# only a time-matched authoritative lethal hit, never a late hit on an old
+	# corpse or an undated damage event from the ordinary source protocol.
+	if float(actor.get("health", 0.0)) <= 0.0:
+		if float(actor.get("health_prev", -1.0)) <= 0.0 or not Wire.numeric(event.get("time")) \
+				or last_public_time < 0.0 or absf(float(event.time) - last_public_time) > 0.25:
+			no_bleed += 1
+			return
 	var real := _real_damage(actor, wire_damage)
 	if real <= 0.0:
 		absorbed_only += 1
@@ -533,6 +542,7 @@ func _death_event(event: Dictionary, id: int) -> void:
 	else:
 		rejected += 1
 		return
+	confirmed_deaths[victim] = true
 	var local := victim == local_id
 	var shot: Variant = Wire.point(event.get("direction"))
 	var biased := shot != null

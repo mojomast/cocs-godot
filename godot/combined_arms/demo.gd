@@ -8,6 +8,7 @@ const CameraRig = preload("res://combined_arms/camera.gd")
 const HUD = preload("res://combined_arms/hud.gd")
 const Lease = preload("res://combined_arms/lease.gd")
 const Motion = preload("res://world/control_math.gd")
+const LocalMotion = preload("res://world/local_motion.gd")
 const Graphics = preload("res://combined_arms/graphics.gd")
 var net := Network.new()
 var world := World.new()
@@ -15,6 +16,7 @@ var fleet := Fleet.new()
 var actors := Actors.new()
 var controls := Controls.new()
 var chase := CameraRig.new()
+var local_motion := LocalMotion.new()
 var hud := HUD.new()
 var graphics := Graphics.new()
 var map_id := "sunscar-convoy"
@@ -146,9 +148,14 @@ func on_snapshot(frame: Dictionary) -> void:
 	if next != identity:
 		release()
 		chase.reset()
+		local_motion.reset()
 		yaw = float(actor.get("yaw", 0))
 		pitch = float(actor.get("pitch", 0))
 		identity = next
+	if vehicle.is_empty() and actor.get("vehicleId") == null and Lease.alive(actor):
+		local_motion.ingest(chase.infantry(actor, yaw, pitch).eye, true, Time.get_ticks_usec() / 1000000.0)
+	else:
+		local_motion.reset()
 	if not eligible(): release()
 	update_graphics()
 	graphics.apply_state()
@@ -204,6 +211,12 @@ func _process(delta: float) -> void:
 			checked(result)
 	if not actor.is_empty():
 		var pose := chase.follow(vehicle, delta) if not vehicle.is_empty() else chase.infantry(actor, yaw, pitch)
+		if vehicle.is_empty() and eligible() and get_window().has_focus() and local_motion.ready():
+			var forward: Vector3 = pose.target - pose.eye
+			pose.eye = local_motion.sample(Time.get_ticks_usec() / 1000000.0)
+			pose.target = pose.eye + forward
+		elif age >= 0.5 or not get_window().has_focus():
+			local_motion.reset()
 		world.camera.position = pose.eye
 		world.camera.look_at(pose.target)
 	update_graphics()

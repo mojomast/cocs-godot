@@ -35,23 +35,12 @@ must visually inspect a normal hit, an NPC fall/burst, the last-wave result
 transition, and a local death/respawn; do not substitute synthetic event tests
 for that inspection.
 
-## Integration dependency (shared map geometry)
+## Shared map geometry
 
-Identity Horde (`nacre-engine`) currently cannot configure **any** shared
-combat effects: `world/combat_occlusion.gd::native_root()` recognizes source
-native builders but not the `res://identity_maps/map.gd` builder. This file is
-owned by another lane; do not work around it by inventing collision geometry.
-Lead should accept the identity builder only when its `get_arena_id() == id`:
-
-```gdscript
-if script != null and script.resource_path == "res://identity_maps/map.gd" \
-        and node.has_method("get_arena_id") and node.get_arena_id() == id:
-    return node
-```
-
-Insert this inside `native_root()`'s node scan in
-`godot/world/combat_occlusion.gd`, before its final `return null`. Semantic
-Horde maps also require a real `godot/content/generated/manifest.json` export;
+The integrated `godot/world/combat_occlusion.gd::native_root()` now recognizes
+`res://identity_maps/map.gd` only when `get_arena_id() == id`; the
+`identity-horde-occlusion` gate verifies both the matching and mismatching
+cases. Source-map live runs require a real `godot/content/generated/manifest.json`;
 produce it sequentially with
 `node tools/godot-export/semantic.mjs godot/content/generated` before a live
 source-map visual run. This directory is generated, not part of this commit.

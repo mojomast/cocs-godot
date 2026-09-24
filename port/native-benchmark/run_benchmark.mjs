@@ -26,7 +26,7 @@ function usage() {
   node port/native-benchmark/run_benchmark.mjs [options]
 
   --map=ID            native Deathmatch map (default prism-foundry)
-  --bots=N            1..7 bots (default 4)
+   --bots=N            1..24 bots (default 4)
   --resolution=WxH    window size (default 1280x800)
   --level=low|high|extreme|current|all   effects level to measure (default all)
   --round-seconds=N   authoritative round length (default 180)
@@ -61,7 +61,7 @@ function parse(argv) {
   }
   if (!LEVELS[options.level] && options.level !== 'all') throw new Error(`--level must be low, high, extreme, current or all`);
   if (!/^\d{3,4}x\d{3,4}$/.test(options.resolution)) throw new Error('--resolution must look like 1280x800');
-  if (!Number.isInteger(options.bots) || options.bots < 1 || options.bots > 7) throw new Error('--bots must be 1..7');
+  if (!Number.isInteger(options.bots) || options.bots < 1 || options.bots > 24) throw new Error('--bots must be 1..24');
   if (!Number.isInteger(options.roundSeconds) || options.roundSeconds < 60 || options.roundSeconds > 900) throw new Error('--round-seconds must be 60..900');
   if (!['none', 'autostart', 'unarmed', 'all'].includes(options.gate)) throw new Error('--gate must be autostart, unarmed, all or none');
   return options;

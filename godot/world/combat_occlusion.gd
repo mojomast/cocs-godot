@@ -51,6 +51,11 @@ static func native_root(node: Node, id: String) -> Node:
 	if not is_instance_valid(node): return null
 	var script := node.get_script() as Script
 	if script != null and script.resource_path in ["res://native_arenas/maps/%s.gd" % id, "res://%s/map.gd" % id.replace("-", "_")]: return node
+	# The three identity arenas use one parameterized map builder. Only a map
+	# actually built for this id may supply its collider-backed combat surfaces.
+	if script != null and script.resource_path == "res://identity_maps/map.gd" \
+			and node.has_method("get_arena_id") and node.get_arena_id() == id:
+		return node
 	for child: Node in node.get_children():
 		var found := native_root(child, id)
 		if found != null: return found

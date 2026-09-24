@@ -42,6 +42,7 @@ var impacts: Node3D
 const CombatShields = preload("res://combat_shields/controller.gd")
 const BloodFX = preload("res://blood_fx/controller.gd")
 const BloodSurfaces = preload("res://blood_fx/surface_query.gd")
+const OperatorVisual = preload("res://source_operators/operator_visual.gd")
 const CombatQuality = preload("res://world/combat_quality.gd")
 const WeaponEffects = preload("res://weapon_effects/controller.gd")
 const WorldParticles = preload("res://combat_particles/manager.gd")
@@ -76,6 +77,14 @@ func configure_effects(camera: Camera3D, session: Node) -> void:
 		weapon_effects.configure_occlusion(occlusion.segment_blocked)
 		weapon_effects.configure_moth(func(key: String) -> Dictionary:
 			return MothLibrary.effect({"pulse":"spark-impact", "plasma":"arc-burst", "shock":"arc-burst"}.get(key, "")))
+	weapon_effects.configure_remote_muzzles(func(actor_id: int, weapon_id: int) -> Node3D:
+		if not is_instance_valid(effect_session) or not ("presentation" in effect_session): return null
+		var actor_view: Variant = effect_session.presentation
+		if not (actor_view is Node) or not is_instance_valid(actor_view) or not ("actors" in actor_view): return null
+		var visual: Variant = actor_view.actors.get(actor_id)
+		if not (visual is OperatorVisual) or not is_instance_valid(visual): return null
+		if not visual.visible or visual.weapon_type != weapon_id or not is_instance_valid(visual.world_weapon): return null
+		return visual.anchor("Muzzle"))
 	if not is_instance_valid(world_particles):
 		world_particles = WorldParticles.new()
 		add_child(world_particles)

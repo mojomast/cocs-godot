@@ -32,6 +32,10 @@ static func resolve(source: Camera3D, view_camera: Camera3D, tip: Node3D, author
 	if mapped.is_empty() or not authoritative.is_finite() or not endpoint.is_finite(): return {}
 	if authoritative.distance_to(source.get_camera_transform().origin) > 8.0: return {}
 	var direction := endpoint - authoritative
+	# A projectile has no ray endpoint yet. If the actual visible barrel tip is
+	# already behind cover, shortening its cosmetic depth to the public muzzle
+	# would make a launch appear in front of that cover. Reject it instead.
+	if direction.length_squared() <= 0.000001 and blocked(source, source.get_camera_transform().origin, mapped.position, mask, occlusion): return {}
 	# The viewmodel is deliberately larger/farther than the public muzzle. Use
 	# its *pixel*, not its private-world depth: a world tracer or projectile at
 	# the viewmodel depth could start behind a nearby wall or even its target.

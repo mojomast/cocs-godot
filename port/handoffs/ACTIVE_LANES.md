@@ -730,3 +730,25 @@ has the owner benchmark command. This host renders with llvmpipe; the owner
 still needs to send the hardware-GPU `BENCHMARK_RESULT` and map-by-map Extreme
 verdicts. The upstream web-game camera CI regression remains outside this
 port release and still awaits the owner's approval for a forward fix.
+
+### Mode-parity integration after the weapon-feel prerelease
+
+Four independent branches were integrated on the port: local render-clock
+translation `127b5352`, animated muzzle/crosshair cosmetics `f30ca35c`,
+authoritative Horde blood/death presentation `007e6984`, and menu diagnostics
+with local 24-bot DM/Domination authority `1ed9c23f`. Lead integration adds
+the native/Horde shared-motion hook, Combined Arms infantry smoothing, the
+third-person muzzle callback, Nacre Engine occlusion lookup, Combat's validated
+0–8 bot menu argument, an actual in-game F11 diagnostics overlay on all routes,
+and the explicit two-helper package closure. The clean-lineage source pin stays
+`515daf07589150dd3241f4ae1425cc1b093912f5`; no Moth credential was added.
+
+Verification was scheduled **one resource-heavy command at a time**. Local
+native/identity Domination 24-bot smokes each reached 25 actors, sent movement
+and fire, and exited cleanly. The rendered env-autostart and unarmed benchmark
+gates both passed after Xvfb began waiting for a real X11 client instead of a
+socket name. The final serial aggregate passed **185/185**, including the new
+24-roster gate (six focused checks). Release-note commands
+for the owner's GPU/Extreme map review are in
+`port/release-notes/mode-parity-2026-09-24.md`. Hardware results and hands-on
+Horde/movement/alignment verdicts remain pending.

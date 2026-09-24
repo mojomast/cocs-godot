@@ -115,6 +115,13 @@ func run() -> void:
 	# Argument parsing: explicit pairs, lock resolution and invalid input.
 	var defaults := Setup.parse_args([], catalog.entries)
 	check(defaults.operator == "chatgpt" and defaults.harness == "openclaw", "parse_args defaults to the source pair")
+	check(defaults.bots == 2, "local Combat defaults to two bots")
+	for bots in [0, 8]:
+		var local := Setup.parse_args(["--bots=%d" % bots], catalog.entries)
+		check(local.error.is_empty() and local.bots == bots, "local Combat accepts %d source-supported bots" % bots)
+	for invalid in [["--bots=-1"], ["--bots=9"], ["--bots=3", "--bots=4"],
+			["--lobby-menu", "--bots=3"], ["--join-room=guest", "--bots=3"]]:
+		check(not Setup.parse_args(invalid, catalog.entries).error.is_empty(), "bot count is bounded and local-only: " + str(invalid))
 	var chosen := Setup.parse_args(["--operator=grok", "--harness", "cline"], catalog.entries)
 	check(chosen.error.is_empty() and chosen.operator == "grok" and chosen.harness == "cline", "parse_args accepts an explicit pair")
 	var locked := Setup.parse_args(["--operator=claude"], catalog.entries)

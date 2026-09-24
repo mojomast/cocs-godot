@@ -137,7 +137,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         },
         {
@@ -199,7 +199,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -250,7 +250,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         },
         {
@@ -302,7 +302,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         },
         {
@@ -348,7 +348,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         },
         {
@@ -384,7 +384,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -451,7 +451,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -494,7 +494,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -512,7 +512,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -577,7 +577,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -616,7 +616,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -655,7 +655,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -673,7 +673,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -691,7 +691,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -709,7 +709,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -727,7 +727,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -745,7 +745,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -763,7 +763,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -781,7 +781,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -833,7 +833,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -880,7 +880,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]
@@ -921,7 +921,7 @@
         {
           "key": "diagnostics",
           "flag": "--diagnostics",
-          "label": "Diagnostics (console)",
+          "label": "Diagnostics overlay (F11)",
           "default": false
         }
       ]

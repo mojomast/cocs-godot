@@ -14,21 +14,18 @@ sight at short range and cosmetic trajectories converge on the source ray.
 For third-person actors, `weapon_effects/controller.gd` now accepts
 `configure_remote_muzzles(Callable(actor_id, weapon_id) -> Node3D)`. The node
 must be the visible actor's exported world weapon `Muzzle` anchor; remote
-tracers follow it through animation and fail closed behind cover. **The
-shipping host does not yet supply this callback.** One integration hook in
-shared `godot/world/combat_feedback.gd` is required, inside
-`configure_effects` after creating `weapon_effects`: resolve `actor_id` in
-`effect_session.presentation.actors` when that dictionary exists, require a
-visible `operator_visual.gd` with `weapon_type == weapon_id`, then return
-`visual.anchor("Muzzle")` (otherwise null). Its current fallback is the
-unchanged public shot origin. This intentionally does not mutate the
-`source_operators` implementation or guess an actor/weapon offset.
+tracers follow it through animation and fail closed behind cover.
+`godot/world/combat_feedback.gd` now supplies this callback: it resolves the
+visible actor from `presentation.actors`, checks the exported weapon and its
+type, and returns the animated `Muzzle` anchor. Missing or mismatched models
+retain the public-origin fallback. The `combat-remote-muzzle` gate checks the
+lookup and its fail-closed cases. This does not change the source shot ray.
 
 Lightweight checked: all ten generated sight pairs are coaxial and every
 catalogued MuzzleN is bound to a moving barrel assembly; `git diff --check`.
-Headless tests below have not been rerun in this lane after the resource
-coordination request. Run serially after other lanes finish and Godot imports
-are available:
+After integration the Godot import, both new geometry suites (263 and 279
+checks), the existing weapon lifecycle/rig suites, and the full aggregate
+passed, run serially. The commands below reproduce the targeted checks:
 
 ```sh
 GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64

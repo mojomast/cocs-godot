@@ -48,6 +48,15 @@ class PlayableGatesTest(unittest.TestCase):
             "horde-upgrade-native": "res://tests/horde/upgrade_selection_test.gd",
             "horde-upgrade-fixture": "godot/tests/horde/upgrade_loopback.mjs",
             "lattice-topology": "res://tests/lattice/topology.gd",
+            "local-render-motion": "res://tests/world_motion/unit.gd",
+            "muzzle-sight-geometry": "res://tests/first_person/muzzle_geometry.gd",
+            "muzzle-path-geometry": "res://tests/weapon_effects/muzzle_path_geometry.gd",
+            "horde-death-wire": "port/native-horde-deaths/wire.test.mjs",
+            "horde-death-presentation": "res://tests/horde_deaths/contracts.gd",
+            "identity-horde-occlusion": "res://tests/combat_integration/identity_horde_occlusion.gd",
+            "combat-remote-muzzle": "res://tests/combat_integration/remote_muzzle.gd",
+            "mode-diagnostics": "res://tests/debug/diagnostics.gd",
+            "local-24-roster": "port/native-menu-debug-bots/tests/startup.test.mjs",
         }
         for name, path in expected.items():
             with self.subTest(gate=name):

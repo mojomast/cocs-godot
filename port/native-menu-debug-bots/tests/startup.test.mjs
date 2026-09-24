@@ -61,9 +61,11 @@ test('live debug config reassignment preserves small rosters on both routes', ()
   }
 });
 
-test('native interactive setup widens its slider before assigning menu-selected bots', () => {
+test('native interactive setup exposes the same 24-seat limit as its authority', () => {
   const dm = readFileSync(new URL('../../../godot/native_arenas/demo.gd', import.meta.url), 'utf8');
-  assert.ok(dm.indexOf('native_hud.bots.max_value = 24') < dm.indexOf('native_hud.configure(self)'));
+  const hud = readFileSync(new URL('../../../godot/native_arenas/hud.gd', import.meta.url), 'utf8');
+  assert.match(hud, /bots\.max_value = 24/);
+  assert.match(dm, /native_hud\.configure\(self\)/);
   const zones = readFileSync(new URL('../../../godot/native_arenas/identity_zone_demo.gd', import.meta.url), 'utf8');
   assert.match(zones, /const BOT_RANGE := Vector2i\(0, 24\)/);
   assert.match(zones, /auto_start = options.autostart/);

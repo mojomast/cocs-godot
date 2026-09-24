@@ -14,7 +14,9 @@ if(execFileSync(binary,['--version'],{encoding:'utf8'}).trim()!==lock.godot_vers
 // One direct route run: authority selection, spawn and cleanup exactly as the
 // pre-menu body; only the exit code is returned instead of assigned.
 async function runRoute(plan){
- const factory=plan.nativeOnly||plan.endpoint ? null : plan.nativeArena
+  const debug=plan.sessionOptions.includes('--debug-panel'),previousDebug=process.env.COCS_DEBUG;
+  if(debug)process.env.COCS_DEBUG='1';
+  const factory=plan.nativeOnly||plan.endpoint ? null : plan.nativeArena
  ? (await import('../../port/native-arenas/authority.mjs')).createNativeArenaAuthority
  : plan.identityZone
  ? (await import('../../port/native-identity-zones/authority.mjs')).createIdentityZoneAuthority
@@ -68,12 +70,13 @@ async function runRoute(plan){
   if(serverFailure)throw serverFailure;
   if(signalCode)code=signalCode;
   return code;
- }finally{
-  stop();if(childDone)await childDone.catch(()=>{});clearTimeout(killTimer);clearTimeout(smokeTimer);
-  if(game){for(const socket of game.wss?.clients??[])socket.terminate();game.server?.closeAllConnections();await game.close();game.server?.removeListener('error',serverError);}
-  process.removeListener('SIGINT',interrupt);process.removeListener('SIGTERM',terminate);
-  if(privateRuntime)rmSync(runtime,{recursive:true,force:true,maxRetries:5,retryDelay:100});
- }
+  }finally{
+   stop();if(childDone)await childDone.catch(()=>{});clearTimeout(killTimer);clearTimeout(smokeTimer);
+   if(game){for(const socket of game.wss?.clients??[])socket.terminate();game.server?.closeAllConnections();await game.close();game.server?.removeListener('error',serverError);}
+   process.removeListener('SIGINT',interrupt);process.removeListener('SIGTERM',terminate);
+   if(privateRuntime)rmSync(runtime,{recursive:true,force:true,maxRetries:5,retryDelay:100});
+   if(previousDebug===undefined)delete process.env.COCS_DEBUG;else process.env.COCS_DEBUG=previousDebug;
+  }
 }
 
 // Spawn the menu child (same binary and project path, no authority) with

@@ -11,6 +11,7 @@ var weapon_selection := WeaponSelection.new()
 const MatchSetup = preload("res://ui/match_setup.gd")
 const Loadout = preload("res://ui/loadout.gd")
 var selected_mode: String = "deathmatch"
+var selected_bot_count: int = 2
 # Identity this session asks the authority to seat it as. The authority echo in
 # the lobby roster is the only confirmation; the local value is never assumed.
 var selected_character: String = Loadout.DEFAULT_CHARACTER
@@ -306,6 +307,7 @@ func _ready() -> void:
 		on_error(options.error)
 		return
 	selected_mode = options.mode
+	selected_bot_count = options.bots
 	selected_character = options.operator
 	selected_harness = options.harness
 	if not load_map(options.map):
@@ -356,7 +358,7 @@ func _ready() -> void:
 		phase = -2 # Waiting for local choice: no connection and no handshake timer.
 		setup_menu = MatchSetup.new()
 		label.get_parent().get_parent().add_child(setup_menu)
-		setup_menu.configure(catalog.entries, current_id, selected_mode, selected_character, selected_harness)
+		setup_menu.configure(catalog.entries, current_id, selected_mode, selected_character, selected_harness, selected_bot_count)
 		setup_menu.start_requested.connect(start_selected_match)
 		label.hide()
 		selector.hide()
@@ -491,7 +493,7 @@ func on_lobby(frame: Dictionary) -> void:
 		elif lobby_enabled:
 			queued = client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":selected_mode,"botCount":2,"timeLimit":60,"fragLimit":100}})
 		else:
-			queued = client.configure_match(selected_mode, 2)
+			queued = client.configure_match(selected_mode, selected_bot_count)
 		if queued != OK:
 			on_error("Match configuration could not be queued. Relaunch to reconnect.")
 			return
@@ -576,7 +578,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	label.text = "NODE-AUTHORITATIVE PROTOTYPE · %s\n" % selected_mode + presentation.hud_text + "\nClick: capture/fire · RMB: ADS · Z/MMB: alt · Esc: release · WASD: move · Space: jump\nShift: sprint · Ctrl/C: crouch · R: reload · E: interact · X: mobility · Q: power · F: melee · G: grenade · 1–9/0 or wheel: weapon | ACK %d" % client.last_ack
 	var smoke_pickups_ok: bool = pickups.markers.is_empty() if selected_mode == "instagib" else not pickups.markers.is_empty()
 	var smoke_fire_ok: bool = combat.local_launches > 0 if selected_mode == "rockets" else combat.shots > 0
-	if smoke and smoke_fire_ok and moved and fired and client.last_ack > 10 and presentation.actors.size() == 3 and presentation.rendered_remote_poses > 10 and smoke_pickups_ok and not world.get_node("StaticPickupMarkers").visible:
+	if smoke and smoke_fire_ok and moved and fired and client.last_ack > 10 and presentation.actors.size() == selected_bot_count + 1 and (selected_bot_count == 0 or presentation.rendered_remote_poses > 10) and smoke_pickups_ok and not world.get_node("StaticPickupMarkers").visible:
 		print("PORT_OPERATOR_MODEL ", presentation.actors.values()[0].get_script().resource_path)
 		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true fired=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true combat_shots=", combat.shots, " combat_launches=", combat.launches, " local_launches=", combat.local_launches, " map=", current_id, " mode=", selected_mode)
 		client.disconnect_server()

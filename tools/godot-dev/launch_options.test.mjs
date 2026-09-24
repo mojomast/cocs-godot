@@ -124,7 +124,23 @@ test('identity-zones routes Domination on Vermilion Fold only',()=>{
   assert.deepEqual(solo.sessionOptions,['--map=vermilion-fold','--mode=domination','--bots=0','--round-seconds=120','--score-limit=30','--smoke']);
   assert.equal(solo.smoke,'--smoke');
   assert.equal(solo.args.includes('--headless'),true);
-  for(const args of [['--map=lacuna-court'],['--mode=koth'],['--bots=8'],['--round-seconds=59'],['--score-limit=0'],['--score-limit=901'],['--time-limit=60'],['--round-target=5'],['--play']]){
+  const full=launchOptions(['--experience=identity-zones','--bots=24','--diagnostics'],catalog);
+  assert.ok(full.sessionOptions.includes('--bots=24'));
+  assert.ok(full.sessionOptions.includes('--diagnostics'));
+  for(const args of [['--map=lacuna-court'],['--mode=koth'],['--bots=25'],['--round-seconds=59'],['--score-limit=0'],['--score-limit=901'],['--time-limit=60'],['--round-target=5'],['--play']]){
     assert.throws(()=>launchOptions(['--experience=identity-zones',...args],catalog),Error,args.join(' '));
   }
+});
+
+test('dev launcher mirrors owned route bot and diagnostics bounds',()=>{
+  const dm=launchOptions(['--experience=native-dm','--bots=24','--diagnostics','--debug-panel'],catalog);
+  assert.equal(dm.bots,24);
+  assert.ok(dm.sessionOptions.includes('--debug-panel'));
+  assert.ok(dm.sessionOptions.includes('--diagnostics'));
+  assert.throws(()=>launchOptions(['--experience=native-dm','--bots=25'],catalog),/bots/);
+  const combat=launchOptions(['--experience=combat','--bots=8'],catalog);
+  assert.ok(combat.sessionOptions.includes('--bots=8'));
+  assert.throws(()=>launchOptions(['--experience=combat','--bots=9'],catalog),/bots/);
+  assert.throws(()=>launchOptions(['--experience=lobby','--bots=4'],catalog),/bots/);
+  assert.throws(()=>launchOptions(['--experience=lobby','--debug-panel'],catalog),/debug-panel/);
 });

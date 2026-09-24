@@ -85,7 +85,10 @@ func run() -> void:
 	var snapshot: Dictionary = controller.snapshot()
 	check(snapshot.events_seen == 440, "one callback consumed all 440 fresh events")
 	check(snapshot.death_bursts == 40, "forty simultaneous kills produced forty bursts")
-	check(snapshot.spurts > 100, "the damage wave produced real spurts")
+	# Forty death events precede the damage wave; only the eight living victims
+	# may bleed. The large callback still exercises the bounded pool and dedup.
+	check(snapshot.spurts > 50 and snapshot.spurts < 80, "damage wave spurts come only from living victims")
+	check(snapshot.no_bleed >= 300, "late damage after confirmed deaths cannot make corpses bleed")
 	check(snapshot.active_emitters <= snapshot.concurrent_cap, "concurrent emitters stay inside the cap under a 48-actor wave")
 	check(snapshot.pool_nodes == controller.settings.fluid_emitters, "the fluid pool did not grow")
 	check(snapshot.stains_live <= snapshot.stain_cap, "live stains stay inside the documented cap")
