@@ -112,6 +112,7 @@ commands = [
     ("player-fx-integration", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/integration.gd"]),
     ("benchmark-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/benchmark/contracts.gd"]),
     ("benchmark-tools", ["node", "--test", "port/native-benchmark/test.mjs"]),
+    ("benchmark-autostart", ["node", "port/native-benchmark/run_benchmark.mjs", "--gate=all", "--resolution=1280x800", "--out=/tmp/opencode/benchmark-autostart-gate"]),
     ("material-language", [binary, "--headless", "--path", "godot", "--script", "res://tests/material_language/validate.gd"]),
     ("material-derived", ["node", "--test", "tools/godot-moth/derive.test.mjs"]),
     ("identity-zone-route", ["node", "--test", "port/native-identity-zones/tests/route.test.mjs", "port/native-identity-zones/tests/match.test.mjs", "port/native-identity-zones/tests/authority.test.mjs"]),
@@ -219,6 +220,7 @@ results = report['gates']
 # session and a session without capture produce no such line, so this is engine
 # teardown behaviour, not our content. Any other ERROR line still fails the gate.
 gate_options = {
+    'benchmark-autostart': {'success_marker': 'BENCHMARK_GATE_OK'},
     'combat-actions': {
         'success_marker': 'NATIVE_COMBAT_ACTIONS',
         'allowed_error_patterns': (r'^ERROR: Texture with GL ID of \d+: leaked \d+ bytes\.$',),
