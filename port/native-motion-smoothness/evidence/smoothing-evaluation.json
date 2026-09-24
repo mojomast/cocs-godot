@@ -1,0 +1,162 @@
+{
+  "path": "port/native-motion-smoothness/evidence/pose-60hz.jsonl",
+  "cadence": "60Hz",
+  "hz": 60.045,
+  "samples": 480,
+  "meanSpeedMps": 6.884,
+  "configs": {
+    "direct": {
+      "tauMs": 0,
+      "frameStepM": {
+        "count": 480,
+        "mean": 0.051,
+        "p50": 0,
+        "p95": 0.143,
+        "p99": 0.235,
+        "max": 0.287
+      },
+      "zeroStepFrames": 271,
+      "framesOver50mm": 174,
+      "addedLagToNewestPoseM": {
+        "count": 480,
+        "mean": 0,
+        "p50": 0,
+        "p95": 0,
+        "p99": 0,
+        "max": 0
+      },
+      "settleAfterFinalTargetFrames": 0,
+      "settleAfterFinalTargetMs": 0,
+      "overshootM": 0
+    },
+    "catchUp20ms": {
+      "tauMs": 20,
+      "frameStepM": {
+        "count": 480,
+        "mean": 0.051,
+        "p50": 0,
+        "p95": 0.144,
+        "p99": 0.171,
+        "max": 0.208
+      },
+      "zeroStepFrames": 218,
+      "framesOver50mm": 179,
+      "addedLagToNewestPoseM": {
+        "count": 480,
+        "mean": 0.04,
+        "p50": 0,
+        "p95": 0.111,
+        "p99": 0.132,
+        "max": 0.16
+      },
+      "settleAfterFinalTargetFrames": 0,
+      "settleAfterFinalTargetMs": 0,
+      "overshootM": 0
+    },
+    "catchUp50ms": {
+      "tauMs": 50,
+      "frameStepM": {
+        "count": 480,
+        "mean": 0.051,
+        "p50": 0.004,
+        "p95": 0.145,
+        "p99": 0.152,
+        "max": 0.155
+      },
+      "zeroStepFrames": 143,
+      "framesOver50mm": 183,
+      "addedLagToNewestPoseM": {
+        "count": 480,
+        "mean": 0.13,
+        "p50": 0.011,
+        "p95": 0.366,
+        "p99": 0.383,
+        "max": 0.391
+      },
+      "settleAfterFinalTargetFrames": 6,
+      "settleAfterFinalTargetMs": 100,
+      "overshootM": 0
+    }
+  }
+}
+{
+  "path": "port/native-motion-smoothness/evidence/pose-60hz.jsonl",
+  "cadence": "20Hz-decimated",
+  "hz": 20.097,
+  "samples": 160,
+  "meanSpeedMps": 6.884,
+  "configs": {
+    "direct": {
+      "tauMs": 0,
+      "frameStepM": {
+        "count": 478,
+        "mean": 0.052,
+        "p50": 0,
+        "p95": 0.43,
+        "p99": 0.43,
+        "max": 0.43
+      },
+      "zeroStepFrames": 404,
+      "framesOver50mm": 69,
+      "addedLagToNewestPoseM": {
+        "count": 478,
+        "mean": 0,
+        "p50": 0,
+        "p95": 0,
+        "p99": 0,
+        "max": 0
+      },
+      "settleAfterFinalTargetFrames": 0,
+      "settleAfterFinalTargetMs": 0,
+      "overshootM": 0
+    },
+    "catchUp20ms": {
+      "tauMs": 20,
+      "frameStepM": {
+        "count": 478,
+        "mean": 0.052,
+        "p50": 0,
+        "p95": 0.265,
+        "p99": 0.265,
+        "max": 0.265
+      },
+      "zeroStepFrames": 216,
+      "framesOver50mm": 161,
+      "addedLagToNewestPoseM": {
+        "count": 478,
+        "mean": 0.04,
+        "p50": 0,
+        "p95": 0.204,
+        "p99": 0.204,
+        "max": 0.204
+      },
+      "settleAfterFinalTargetFrames": 1,
+      "settleAfterFinalTargetMs": 17,
+      "overshootM": 0
+    },
+    "catchUp50ms": {
+      "tauMs": 50,
+      "frameStepM": {
+        "count": 478,
+        "mean": 0.052,
+        "p50": 0.005,
+        "p95": 0.193,
+        "p99": 0.193,
+        "max": 0.193
+      },
+      "zeroStepFrames": 140,
+      "framesOver50mm": 183,
+      "addedLagToNewestPoseM": {
+        "count": 478,
+        "mean": 0.13,
+        "p50": 0.012,
+        "p95": 0.487,
+        "p99": 0.487,
+        "max": 0.487
+      },
+      "settleAfterFinalTargetFrames": 7,
+      "settleAfterFinalTargetMs": 117,
+      "overshootM": 0
+    }
+  }
+}

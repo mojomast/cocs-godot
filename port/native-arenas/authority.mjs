@@ -78,7 +78,7 @@ export function createAuthority(options = {}) {
   const inputs = new InputBuffer();
   let socket = null, match = null, selectedConfig = null, created = false, finished = false;
   let baseConfig = null;
-  let round = 0, seq = 0, epoch = 0, eventCursor = null, ticks = 0;
+  let round = 0, seq = 0, epoch = 0, eventCursor = null;
   let wall = performance.now(), accumulator = 0, closing = false, closePromise;
   let tokens = LIMITS.burst, tokenAt = wall, epochRequired = false, playerName = 'Local player';
   const report = value => observe({...value, round, observedMs:performance.now()});
@@ -193,7 +193,7 @@ export function createAuthority(options = {}) {
           baseConfig = {...match.config};
           debugState.constructed = {...debugState.queued};
           applyDebugToMatch(match);
-          round++; seq = 0; epoch++; ticks = 0; finished = false; inputs.reset();
+          round++; seq = 0; epoch++; finished = false; inputs.reset();
           eventCursor = new EventCursor();
           const initialEvents = eventCursor.take(match);
           // Constructor work is not simulation time.
@@ -277,7 +277,13 @@ export function createAuthority(options = {}) {
         if (alive && active.actors[0].health <= 0) cancelControls('death');
         const events = eventCursor.take(active);
         if (events.length) send({type:'events', items:events});
-        if (++ticks % 3 === 0 || active.over) send({type:'snapshot', seq:++seq, acks:{0:inputs.applied},
+        // Full 60 Hz snapshots on the single-human local route: the client applies
+        // the authoritative eye pose directly each snapshot, so the old
+        // every-3rd-tick cadence was visible as 20 Hz translation stepping.
+        // Loopback bandwidth is not a constraint; measured added authority CPU at
+        // 8 actors is ~17 ms/s (~1.7% of one core) versus 20 Hz
+        // (port/native-motion-smoothness/).
+        send({type:'snapshot', seq:++seq, acks:{0:inputs.applied},
           inputEpoch:epoch, nativeArenaInput:inputs.status(), state:active.snapshot()});
         if (active.over) {
           finished = true; inputs.cancel();

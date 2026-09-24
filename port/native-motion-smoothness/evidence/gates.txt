@@ -1,0 +1,19 @@
+# motion-smoothness gate evidence
+# base revision 4d2aa71a (+ working tree), Godot 4.5.2.stable.official.6ce3de25a, node v22.23.1
+# date 2026-09-24T18:12:35Z
+remote-motion: exit=0 errors=0 PORT_REMOTE_MOTION_OK checks=14 synthetic_timing=true authority=unchanged
+motion-impairment: exit=0 errors=0 PORT_IMPAIRMENT_OK checks=1801 synthetic_delivery=true no_network_benchmark=true
+snapshot-watch: exit=0 errors=0 PORT_SNAPSHOT_WATCH_OK checks=8 synthetic_clock=true
+stall-controls: exit=0 errors=0 PORT_STALL_CONTROLS_OK checks=12 actual_session_process=true synthetic_clock_and_transport=true
+session-recovery: exit=0 errors=0 PORT_SESSION_RECOVERY_OK checks=52 synthetic_transport_clock_focus=true
+control-safety: exit=0 errors=0 PORT_CONTROL_SAFETY_OK checks=2497 synthetic=true parts=8
+window-focus: exit=0 errors=0 PORT_WINDOW_FOCUS checks=7 failures=0 attached_unfocused_window=true synthetic_application_latch=true
+native-session: exit=0 errors=0 PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true fired=true ack=11 snapshots=10 remote_poses=48 pickups=20 static_pickups_hidden=true combat_shots=1 combat_launches=0 local_launches=0 map=meridian-exchange mode=deathmatch
+two-native-clients: exit=0 errors=0 PORT_TWO_NATIVE_CLIENTS_OK
+native-arenas-node-tests: exit=0 errors=0 # fail 0
+# Rows below are extra checks this lane ran because the snapshot cadence change is
+# the only thing that can affect them; they are not in the required gate list.
+native-arena-session: exit=0 errors=0 NATIVE_DM_SYNTHETIC_TESTS checks=106 failures=0 evidence=fixture-only
+native-arena-prism: exit=0 errors=0 NATIVE_DM_SMOKE_OK {
+native-arena-aurora: exit=0 errors=0 NATIVE_DM_SMOKE_OK {
+native-arena-cinder: exit=0 errors=0 NATIVE_DM_SMOKE_OK {

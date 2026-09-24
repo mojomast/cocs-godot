@@ -125,7 +125,9 @@ Ordinary protocol 3 works with existing `godot/net/client.gd`:
 1. `create {v:3,delta:0}` → `welcome`, unconfigured `lobby`.
 2. `host {mapId,config:{mode:'deathmatch',botCount:2,...}}` → configured `lobby`.
 3. `start` → `start`, construction `events`, initial `snapshot` (`time:0`).
-4. `input {seq,input:{...}}` → source steps, full 20 Hz `snapshot`, `events`.
+4. `input {seq,input:{...}}` → source steps, full 60 Hz `snapshot` (every source
+   step; the client applies the authoritative pose directly, so the snapshot
+   cadence is the on-screen translation cadence), `events`.
 5. Source completion → final snapshot + one `results`; `start` starts a fresh
    round with reset source score/time, ACKs, snapshot sequence and event IDs.
    `host` may reconfigure rules after results. Map identity remains launch-fixed.

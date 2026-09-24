@@ -1,0 +1,90 @@
+{
+  "bots2": {
+    "actors": 3,
+    "ticks": 900,
+    "frameBytes": 9895,
+    "step": {
+      "meanMs": 0.464,
+      "p50Ms": 0.217,
+      "p95Ms": 2.025,
+      "p99Ms": 2.465,
+      "maxMs": 12.396
+    },
+    "snapshotState": {
+      "meanMs": 0.018,
+      "p50Ms": 0.015,
+      "p95Ms": 0.033,
+      "p99Ms": 0.063,
+      "maxMs": 0.532
+    },
+    "stringify": {
+      "meanMs": 0.037,
+      "p50Ms": 0.034,
+      "p95Ms": 0.055,
+      "p99Ms": 0.074,
+      "maxMs": 0.466
+    },
+    "observerParse": {
+      "meanMs": 0.042,
+      "p50Ms": 0.038,
+      "p95Ms": 0.076,
+      "p99Ms": 0.119,
+      "maxMs": 0.207
+    },
+    "inputClone": {
+      "meanMs": 0.002,
+      "p50Ms": 0.001,
+      "p95Ms": 0.002,
+      "p99Ms": 0.005,
+      "maxMs": 0.11
+    },
+    "snapshotStatePlusStringifyMs": 0.097,
+    "costAt20HzMsPerSecond": 1.93,
+    "costAt60HzMsPerSecond": 5.791,
+    "costAt60HzPercentOfOneCore": 0.579
+  },
+  "bots7": {
+    "actors": 8,
+    "ticks": 900,
+    "frameBytes": 24625,
+    "step": {
+      "meanMs": 0.93,
+      "p50Ms": 0.694,
+      "p95Ms": 2.328,
+      "p99Ms": 4.052,
+      "maxMs": 17.878
+    },
+    "snapshotState": {
+      "meanMs": 0.029,
+      "p50Ms": 0.023,
+      "p95Ms": 0.057,
+      "p99Ms": 0.091,
+      "maxMs": 0.919
+    },
+    "stringify": {
+      "meanMs": 0.084,
+      "p50Ms": 0.077,
+      "p95Ms": 0.122,
+      "p99Ms": 0.172,
+      "maxMs": 0.537
+    },
+    "observerParse": {
+      "meanMs": 0.101,
+      "p50Ms": 0.09,
+      "p95Ms": 0.161,
+      "p99Ms": 0.271,
+      "maxMs": 0.792
+    },
+    "inputClone": {
+      "meanMs": 0.002,
+      "p50Ms": 0.002,
+      "p95Ms": 0.003,
+      "p99Ms": 0.004,
+      "maxMs": 0.036
+    },
+    "snapshotStatePlusStringifyMs": 0.215,
+    "costAt20HzMsPerSecond": 4.294,
+    "costAt60HzMsPerSecond": 12.883,
+    "costAt60HzPercentOfOneCore": 1.288
+  }
+}

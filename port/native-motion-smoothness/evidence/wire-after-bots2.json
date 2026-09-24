@@ -1,0 +1,33 @@
+{
+  "label": "after-60hz",
+  "map": "prism-foundry",
+  "bots": 2,
+  "seconds": 6,
+  "driveHz": 60,
+  "endpointPort": 34817,
+  "wallSeconds": 6,
+  "windowSeconds": 6,
+  "snapshots": 360,
+  "snapshotsPerSecond": 60,
+  "intervalMs": {
+    "mean": 16.713,
+    "p50": 16.184,
+    "p95": 19.338,
+    "p99": 32.42,
+    "min": 11.631,
+    "max": 34.212
+  },
+  "distinctIntervals": 359,
+  "frameBytes": {
+    "mean": 9752,
+    "max": 10062
+  },
+  "authorityCpu": {
+    "userMs": 534.616,
+    "systemMs": 20.272,
+    "windowSeconds": 6,
+    "cpuMsPerSecond": 92.478
+  },
+  "clientInputs": 372,
+  "snapshotsPerInput": 0.968
+}
