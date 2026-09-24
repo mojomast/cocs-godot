@@ -81,11 +81,13 @@ reproduces the old output). Suggested `generateValues` per normal job:
 | normal-hazard | `{type:'height', kind:'ridge', seed:67, freq:2, octaves:2, angle:1.5708, anisotropy:6}` | painted bands |
 | normal-hex | `{type:'height', kind:'cells', seed:71, freq:4}` | hex plate cells |
 | normal-hologrid | `{type:'height', kind:'ridge', seed:79, freq:2, octaves:2, anisotropy:5}` | grid lines |
-| normal-metal | `{type:'height', kind:'noise', seed:83, freq:24, octaves:2, angle:0.4, anisotropy:8}` | brushed grain |
+| normal-metal | `{type:'height', kind:'noise', seed:83, freq:24, octaves:2, angle:1.5708, anisotropy:8}` | brushed grain |
 | normal-grating | `{type:'height', kind:'cells', seed:89, freq:5}` | bar grid |
-| normal-diamond | `{type:'height', kind:'cells', seed:97, freq:6, angle:0.7854}` | tread crosshatch |
+| normal-diamond | `{type:'height', kind:'cells', seed:97, freq:6}` | tread crosshatch |
 | normal-stucco | `{type:'height', kind:'noise', seed:101, freq:6, octaves:5}` | plaster grain |
 | normal-corrugated | `{type:'height', kind:'ridge', seed:103, freq:2, octaves:2, anisotropy:8}` | rolled ribs |
+
+Only quarter turns (0 / ±PI/2): other rotations seam at the tile wrap (measured wrap gradient 2.6–3.1× the interior), so the proposal sticks to exact quarter turns; integer-frequency directionality would be the seamless way to get diagonals if a future bake needs them.
 
 Then `MOTH_API_KEY=... node scripts/moth-bake.mjs run --only normal-rock …`
 (or a full `run`), re-export, and re-run the audit — expect zero pairs >0.90.

@@ -1940,7 +1940,7 @@ export function makeSourceArt(name, spec = SOURCE_ART[name] || SOURCE_ART.panel)
 //   { type: 'height', kind: 'noise'|'ridge'|'cells', size, seed,
 //     freq: 8,          // base tiling frequency (cells: 4)
 //     octaves: 5,       // fbm octaves
-//     angle: 0,         // torus rotation in radians (directional streaks)
+//     angle: 0,         // sampling rotation in radians; quarter turns tile exactly
 //     anisotropy: 1 }   // stretch along the rotated v axis (1..8)
 function heightGrid(size, seed, kind = 'noise', spec = {}) {
   const freq = spec.freq ?? (kind === 'cells' ? 4 : 8);
@@ -1958,7 +1958,10 @@ function heightGrid(size, seed, kind = 'noise', spec = {}) {
       const phaseU = (seed % 97) * 0.0137, phaseV = (seed % 89) * 0.0119;
       h = Math.abs(Math.sin((u * freq + phaseU) * Math.PI) * Math.cos((v * freq + phaseV) * Math.PI));
     } else {
-      // A rotation (and optional stretch) of the torus keeps the field seamless.
+      // A rotation (and optional stretch) of the sampling coordinates gives
+      // directional relief. Quarter turns (0, ±PI/2) tile exactly; other angles
+      // seam at the wrap (measured 2.6-3.1x the interior gradient), so shipped
+      // tiles stay on quarter turns or use integer-frequency directionality.
       const cu = u - 0.5, cv = v - 0.5;
       const ru = wrap(cu * cos - cv * sin + 0.5);
       const rv = wrap((cu * sin + cv * cos) * anisotropy + 0.5);
