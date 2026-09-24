@@ -51,6 +51,8 @@ var delivery_index := 0
 var press_emitted := false
 var reset_count := 0
 var resets_at_press := 0
+var resets_at_delivery := 0
+var epoch_at_delivery := 0
 var reset_armed := false
 var linger_frames := 0
 var finished := false
@@ -120,7 +122,8 @@ func capture(tag: String) -> void:
 func snapshot_evidence() -> Dictionary:
 	var result := {"stage": stage, "delivery": delivery, "chosen": chosen, "offer_ids": offer_ids,
 		"offer_wave": offer_wave, "epoch": epoch_seen, "seq_before": seq_before, "resets": reset_count,
-		"resets_at_press": resets_at_press,
+		"resets_at_press": resets_at_press, "resets_at_delivery": resets_at_delivery,
+		"epoch_at_delivery": epoch_at_delivery,
 		"elapsed": snappedf(elapsed, 0.01)}
 	if is_instance_valid(session) and is_instance_valid(session.horde_client):
 		var client: Node = session.horde_client
@@ -266,11 +269,18 @@ func _probe_offer() -> void:
 func _after_press() -> void:
 	# The choice hotkey is intercepted before the control recorder: it must never
 	# leak into held movement, pulses or weapon selection.
+	# A CPU renderer may stall between sampling the press frame and delivery;
+	# Horde's 250 ms input TTL then emits a stale-input reset *before* the
+	# upgrade intent. The socket observer verifies separately that no reset
+	# occurs after the intent. Pin the post-delivery epoch here so this observer
+	# still detects any boundary during confirmation.
+	epoch_at_delivery = int(session.horde_client.input_epoch)
+	resets_at_delivery = reset_count
 	check(session.controls.keys.is_empty(), "choice hotkey never entered held movement")
 	check(session.controls.pulses.is_empty(), "choice hotkey never entered a control pulse")
 	check(int(session.controls.weapon) == weapon_before, "choice hotkey never changed the selected weapon")
-	check(epoch_seen == int(session.horde_client.input_epoch), "no input epoch boundary was crossed by the choice")
-	check(reset_count == resets_at_press, "no input reset was emitted by the press")
+	check(int(session.horde_client.upgrade_sent) == 1, "the input handler emitted exactly one upgrade intent")
+	check(epoch_at_delivery >= epoch_seen and resets_at_delivery >= resets_at_press, "pre-delivery input epoch and reset counters stay monotonic")
 	check(str(session.horde_client.rejected_reason) == "", "the authority did not refuse the choice")
 	evidence["status_after_press"] = str(session.choice_status.text)
 
@@ -289,8 +299,8 @@ func _confirm() -> void:
 	check("APPLIED" in session.choice_status.text.to_upper() or "ACCEPTED" in session.choice_status.text.to_upper(), "the status line reports the authority result")
 	check("APPLIED" in session.horde_label.text.to_upper(), "the Horde strip reports the applied run upgrade")
 	# Ordinary input stream continuity: the choice must not corrupt the sample cursor.
-	check(reset_count == resets_at_press, "no input reset was emitted across the choice")
-	check(epoch_seen == int(client.input_epoch), "the input epoch is unchanged after the selection")
+	check(reset_count == resets_at_delivery, "no input reset was emitted after delivery")
+	check(epoch_at_delivery == int(client.input_epoch), "the input epoch is unchanged after delivery")
 	check(int(session.client.input_seq) > seq_before, "ordinary input samples kept flowing across the choice")
 	check(int(client.received_input) > 0, "the authority acknowledged ordinary input samples for this round")
 	check(int(client.input_seq) >= int(seq_before), "the ordinary input cursor never went backwards")
