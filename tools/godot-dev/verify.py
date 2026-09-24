@@ -103,6 +103,7 @@ commands = [
     ("player-fx-direction", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/direction.gd"]),
     ("player-fx-low-health", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/low_health.gd"]),
     ("player-fx-lifecycle", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/lifecycle.gd"]),
+    ("player-fx-marks", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/marks.gd"]),
     ("player-fx-impacts", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/impacts.gd"]),
     ("player-fx-overlay", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/overlay.gd"]),
     ("player-fx-integration", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_fx/integration.gd"]),
