@@ -18,7 +18,7 @@ test('actual Horde transitive closure is classified separately and source-byte l
     'authority','catalog','event-cursor','input-buffer','match','schema',
   ].map(name=>`port/native-arenas/${name}.mjs`).sort());
   assert.deepEqual(closure.dataFiles, ['prism-foundry','aurora-basin','cinder-array'].map(id=>`godot/native_arenas/generated/${id}.json`));
-  assert.equal(Object.keys(closure.modules).length,84);
+   assert.equal(Object.keys(closure.modules).length,85);
   assert.deepEqual(closure.hordeAdditionalSource,[]);
   assert.ok(closure.routes.horde.includes('game/singleplayer.mjs'));
   assert.ok(!closure.routes.horde.includes('server/room.mjs'));

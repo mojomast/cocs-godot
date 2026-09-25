@@ -1,15 +1,17 @@
 # Cinderwake Drydock — implementation and intake ledger
 
-2026-09-25. **Implemented source/map/adapter/native code; source intake and
-engine acceptance are pending. Not a verified playable release.** The product
-factory refuses Cinderwake under the old source pin rather than playing an
-unscripted static map.
+2026-09-25. **Implemented source/map/adapter/native code; source feature-branch
+intake is complete in this isolated port branch, engine acceptance is pending.
+Not a verified playable release.** The product factory refuses Cinderwake
+under the old source pin rather than playing an unscripted static map.
 
 ## Provenance and ownership
 
-- Port baseline: `ed2e27b2`; worktree `/home/mojo/.tmp-on-disk/cocs-cinderwake-port`,
-  branch `port/cinderwake-drydock`.
-- Upstream baseline/present port pin: `515daf07589150dd3241f4ae1425cc1b093912f5`.
+- Port baseline: `ed2e27b2`, subsequently merged with the shared Horde fix
+  `06f406bd`; worktree `/home/mojo/.tmp-on-disk/cocs-cinderwake-port`, branch
+  `port/cinderwake-drydock`.
+- Upstream baseline: `515daf07589150dd3241f4ae1425cc1b093912f5`;
+  integrated port pin: `48264858af820c69a833ef8b15c09ebac69e8cc3`.
 - Source implementation: `48264858af820c69a833ef8b15c09ebac69e8cc3`, pushed to
   [`mojomast/cocs:feature/cinderwake-horde-stages`](https://github.com/mojomast/cocs/tree/feature/cinderwake-horde-stages).
   Worktree `/home/mojo/.tmp-on-disk/cocs-cinderwake-source`.
@@ -34,8 +36,10 @@ Raw final Node logs are in `evidence/cinderwake/node.log` (36 tests),
 focused Node verification artifacts, not engine or natural-play evidence.
 
 The source branch was committed and pushed **before any port pin change**.
-At this ledger revision, no source merge, source pin update, semantic export,
-Godot invocation, full verifier or package build has occurred in this lane.
+The isolated port branch now merges that upstream source commit as ancestry,
+records its feature branch in `source-lock.json`, updates map selection to the
+same commit and passes unchanged `verifySource`. No semantic export, Godot
+invocation, full verifier or package build has occurred in this lane.
 
 ## Concrete implementation
 
@@ -128,9 +132,9 @@ Plan SHA-256:
 
 ## Verification ledger
 
-Run Node suites **serially**. `source-fixture.test.mjs` is explicitly a harness
-that imports the committed upstream worktree while port intake is pending. It
-is never a runtime source-loader override and never a semantic-verifier bypass.
+Run Node suites **serially**. `source-fixture.test.mjs` now imports the local
+locked source ancestry. It is never a runtime source-loader override and never
+a semantic-verifier bypass.
 
 | Check | Result |
 | --- | --- |
@@ -141,7 +145,7 @@ is never a runtime source-loader override and never a semantic-verifier bypass.
 | `tools/godot-horde-maps/source-fixture.test.mjs` | 4 pass: targets 1–30, all 12 NPC archetypes/support/pools, ordinary first-wave timing/death/restart, actual input travel after controlled clear |
 | `port/native-horde/cinderwake.test.mjs` | 2 pass: literal launcher routing/negatives and explicit old-pin refusal |
 | Dev/package option regression | 18 pass |
-| Horde/native package closure checks | 8 pass against current pin; new upstream source closure must be rechecked after intake |
+| Horde/native package closure checks | 19 pass after source intake; 85 locked source modules including `game/horde-stages.mjs` |
 | Native gate ray/revision/restart test | Authored at `godot/tests/horde/cinderwake_test.gd`; **not run** |
 | Godot parsing/import/render, two resolutions, natural 10/30-wave wins, live defeats/restarts, final aggregate/package | **Not run; engine gate closed** |
 
@@ -162,29 +166,25 @@ changed to satisfy that test.
 
 ## Integration sequence for the lead
 
-1. Approve intake of upstream `48264858af820c69a833ef8b15c09ebac69e8cc3` (or
-   review an upstream follow-up first). Merge the source ancestry into the
-   isolated port integration branch through the normal audited intake. Do not
-   cherry-pick source bytes without ancestry or edit `game/**` in the port.
-2. Update `port/contracts/source-lock.json` and `map-selection.json` together,
-   recording the approved **feature branch**, provenance and source revision.
-   Keep the source map allowlist unchanged: Cinderwake is a port-authored local
-   map, not a newly claimed source registry map. Run unchanged `verifySource`.
-3. Integrate the port map and composition commits. Reconcile the additive
+1. Source branch `feature/cinderwake-horde-stages` and shared port baseline are
+   merged into the isolated Cinderwake port branch. The source pin and map
+   selection both name upstream `48264858`; unchanged `verifySource` passes.
+   Source map allowlist is unchanged: Cinderwake is a port-authored local map.
+2. Reconcile the additive
    launcher/package hunks with LATTICE’s current files. Regenerate
    `godot/ui/routes.json` from the combined branch rather than overwriting
    unrelated route improvements. No Horde movement, rig or shared demo file
    from the main lead is part of these commits.
-4. Re-run focused source/map/authority checks from the integrated pin. The
-   explicit source-module census in `horde_closure.test.mjs` increases from
-   84 to **85** with `game/horde-stages.mjs`; review that inventory change.
-5. Engine work requires both LATTICE release and the owner-created marker
+3. Focused source/map/authority checks pass from the integrated pin. The
+   explicit source-module census in `horde_closure.test.mjs` is **85** with
+   `game/horde-stages.mjs`.
+4. Engine work requires both LATTICE release and the owner-created marker
    `/home/mojo/.tmp-on-disk/cocs-cinderwake-engine-slot-granted`. The earlier
    LATTICE marker alone grants nothing. Then run required semantic regeneration,
    serial import/native gate tests, two-resolution live sessions and aggregate
    verification using the repository’s current scripts. No engine process has
    been started by this lane.
-6. Run the ordinary launch only after approved intake and engine preparation:
+5. Run the ordinary launch after engine preparation:
    `node tools/godot-dev/launch.mjs --experience=horde --map=cinderwake-drydock --waves=10`.
    Packaged equivalent: `node run.mjs --experience=horde --map=cinderwake-drydock --waves=10`.
    These are integration instructions, not a claim that an artifact exists.

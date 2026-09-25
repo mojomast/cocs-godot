@@ -1,16 +1,13 @@
-// Explicit upstream-worktree harness while intake is pending. Never imported
-// by the product authority and never used to bypass the semantic source lock.
+// Controlled source-rule fixtures against the audited, locally pinned ancestry.
+// Never imported by the product authority or used to bypass source integrity.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {pathToFileURL} from 'node:url';
-import {resolve} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {cinderwake} from './cinderwake.mjs';
-const root=resolve(process.env.CINDERWAKE_SOURCE_ROOT||'.');
-const {Match,floorAt,obstructed}=await import(pathToFileURL(resolve(root,'game/core.mjs')));
-const {updateSinglePlayer,spawnGroup,hordeWavePlan}=await import(pathToFileURL(resolve(root,'game/singleplayer.mjs')));
-const {ENEMY_TYPES}=await import(pathToFileURL(resolve(root,'game/enemy-types.mjs')));
-console.log('Controlled upstream fixtures; source revision',execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim());
+import {Match,floorAt,obstructed} from '../../game/core.mjs';
+import {updateSinglePlayer,spawnGroup,hordeWavePlan} from '../../game/singleplayer.mjs';
+import {ENEMY_TYPES} from '../../game/enemy-types.mjs';
+console.log('Controlled pinned-source fixtures; integration revision',execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim());
 const recipe=cinderwake();
 const make=target=>new Match('chatgpt','openclaw',()=>.5,'exchange',{mode:'horde',difficulty:'normal',botCount:0,fragLimit:target,timeLimit:1800,hordeArena:recipe.arena});
 const tick=(m,n)=>{for(let i=0;i<n;i++)updateSinglePlayer(m,1/60);};
