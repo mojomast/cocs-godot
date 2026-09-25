@@ -38,6 +38,7 @@ export const REQ_REASON_COPY: Record<string, string> = {
   'one-active-buff': 'ANOTHER BUFF IS ACTIVE',
   'requires-relay': 'RELAY REQUIRED',
   'insufficient-req': 'NEED MORE REQ',
+  'no-target': 'NO VALID TARGET IN REACH',
   'not-launched': 'NOT LAUNCHED',
   'unknown-item': 'UNKNOWN ITEM',
   eliminated: 'ELIMINATED',

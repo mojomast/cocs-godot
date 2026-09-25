@@ -26,8 +26,8 @@ const EXPECTED_CAREER={
  'assault-plate':{slot:'armor',level:18,powerAxis:'offense',costAxis:'mobility',vector:{health:0,armor:0,speed:.93,damage:1.1,spread:1}},
  'field-medic-rig':{slot:'utility',level:8,powerAxis:'ehp',costAxis:'handling',vector:{health:12,armor:3,speed:1,damage:1,spread:1.11}},
  'overcharge-cell':{slot:'utility',level:13,powerAxis:'offense',costAxis:'mobility',vector:{health:0,armor:0,speed:.94,damage:1.09,spread:1}},
- 'grapple-winch':{slot:'utility',level:17,powerAxis:'mobility',costAxis:'handling',vector:{health:0,armor:0,speed:1.07,damage:1,spread:1.05}},
- 'ammo-satchel':{slot:'utility',level:21,powerAxis:'handling',costAxis:'offense',vector:{health:0,armor:0,speed:1,damage:.93,spread:.90}},
+  'route-servo':{slot:'utility',level:17,powerAxis:'mobility',costAxis:'handling',vector:{health:0,armor:0,speed:1.07,damage:1,spread:1.05}},
+  'brace-satchel':{slot:'utility',level:21,powerAxis:'handling',costAxis:'offense',vector:{health:0,armor:0,speed:1,damage:.93,spread:.90}},
  'targeting-uplink':{slot:'utility',level:50,powerAxis:'handling',costAxis:'mobility',vector:{health:0,armor:0,speed:.92,damage:1,spread:.88}},
  'fortress-plate':{slot:'armor',level:35,powerAxis:'ehp',costAxis:'handling',vector:{health:11,armor:4,speed:1,damage:1,spread:1.09}},
 };

@@ -119,3 +119,47 @@ Engine-scripted ordinary inputs can lead to a real source outcome, but do not
 prove human input or the entire MVP-A scenario matrix. A short smoke, fixture,
 direct simulation, ACK, or generated image is not a full-round or human result.
 Natural attempts retain failures, time-outs, cleanup and source outcomes separately.
+
+## Post-preview development checks (not packaged or MVP acceptance)
+
+The later integration branch adds a guidance-intent correction, an opt-in
+two-native-client complete-round witness, and source-bound decorative LATTICE
+instruments. These changes are newer than the packaged runtime `fb7ac021` and
+the preview linked by that package; the previous gate counts remain historical.
+
+| Check | Observed result | Boundary |
+| --- | --- | --- |
+| `node --test port/tools/native_lattice_flagship/two_client.test.mjs` | 10/10 focused tests pass after the pre-start null-actor identity fix | Synthetic evaluator contracts |
+| Asterion PvP `--engine-driver --full-round --limit=120` | `ENGINE_FULL_ROUND_OBSERVED`: peer/actor 1/0 and 2/1 each observed source dominance win for team 0 at revision 1 and a new round at revision 2; independent terminal/restart probe reports correlate, no dropped wire records, evidence hashes and cleanup pass | `port/native-lattice/evidence/flagship/two-client-1790368769778-38f56c38-32b3-4fbf-9b70-2a85f7578e0b/`; engine-scripted inputs, **not** human C1 acceptance, not an Operations five-wave win |
+| Pinned Godot 4.5.2 `--editor --import --quit` then `--script res://tests/lattice/flagship_asset_contract.gd` | Import exits 0; asset contract `PASS` | No on-screen readability or map walkthrough |
+| Pinned Godot 4.5.2 `--script res://tests/lattice/flagship_l2_contract.gd` | 17 checks, 0 failures after explicit GDScript `bool` inference correction | Guidance fixture, not a natural opponent-contest session |
+| Latest Mothbake recorded run/rebuild and four authenticated `blur-core-v1` live jobs/rebuild | Two local fixture jobs, four paid studies completed, normal hashes reproduced from archives | Material candidates and job IDs are recorded in `assets/README.md`; runtime instruments still use authored palette materials, no visual approval |
+
+The complete-round runner is opt-in (`--engine-driver --full-round`). The
+Asterion attempt used runtime commit `5b607541`; it predates the REQ/career
+catalog additions. Its scripted input never establishes a human identity or
+an Operations five-wave win. G6 remains partial pending human and second-map
+observation, regardless of the new opt-in evaluator status.
+
+### Follow-on catalog expansion (new source derivatives)
+
+Two Flash lanes added real `spot-drone`/`repair-tool` REQ effects and expanded
+career gear from 8 to 23 items and attachment mods from 14 to 22; the career
+UI displays effect-derived stat lines and unlock levels. This edits `game/`
+source files **after** the source commit named in the unchanged lock above.
+Accordingly the additions are new source derivatives on this development
+branch, not byte-identical evidence for the earlier locked/published runtime.
+`catalog/REQ.md` records the field-equipment deviations; historical G0–G8
+claims remain scoped to their original source/runtime commits.
+
+Focused integrated checks: five REQ effect tests, 24 economy tests, 27 server
+network tests, seven purchase UI tests, 101 career/gear/attachment/progression
+tests and 82 additional COCS contracts passed. Web TypeScript typecheck and
+the bounded production web build passed; 192 targeted UI/view contracts passed.
+These are contracts/build checks, not natural match or live cross-client proof
+for the new catalog items. Full-smoke neutral-policy stock and max-gear sweeps
+each completed 144/144 with zero mode alarms, but the stock-vs-max tier
+invariant **failed** (operator/spec/wing correlations 0.3833/0.5357/-0.5;
+required ≥0.85). The reports live at
+`/tmp/opencode/lattice-catalog-{stock,max}-fullsmoke.json`. Balance acceptance,
+owner visual review and native catalog parity remain open.

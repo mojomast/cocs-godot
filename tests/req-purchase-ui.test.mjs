@@ -101,6 +101,7 @@ test('a refusal names its reason and drops the pending row', () => {
   assert.equal(denied.refused[0].reason, 'one-active-buff');
   assert.equal(denied.remaining.length, 0, 'a refused row never lingers as pending');
   assert.equal(reqReasonCopy('one-active-buff'), 'ANOTHER BUFF IS ACTIVE', 'the refusal reason is player-facing');
+  assert.equal(reqReasonCopy('no-target'), 'NO VALID TARGET IN REACH', 'field-equipment target refusals are legible');
   assert.equal(reqReasonCopy('depot'), 'DEPOT', 'unknown reasons fall back to a readable word');
   const expired = reconcileReqBuys([pendingBuy()], {actorId: 0, tick: 200, spent: 0, graceTicks: 90, reasonFor: () => 'insufficient-req'});
   assert.equal(expired.refused.length, 1, 'grace expiry refuses an unconfirmed row');

@@ -2,7 +2,7 @@
 import {useState} from 'react';
 import type {ScreenProps} from '../contract';
 import {formatNumber} from '../../../game/format-ui.mjs';
-import {GEAR_BUDGET,gearBudget,gearPoints} from '../../../game/progression.mjs';
+import {gearBudget,gearPoints} from '../../../game/progression.mjs';
 import {attachmentSpec} from '../../../game/attachments.mjs';
 import {ActionRail,Banner,Btn,Chip,Meter,PageHead,Panel,SelectCard,Shell,Stats,Tabs,TopBar} from '../primitives';
 
@@ -13,7 +13,7 @@ const shortDate=(at:number)=>at?new Date(at).toISOString().slice(0,10):'—';
 const AXIS_ABBR:Record<string,string>={offense:'DMG',mobility:'SPD',ehp:'EHP',handling:'HND'};
 const signedPoint=(value:number)=>`${value>0?'+':''}${value}`;
 const gearStatLine=(item:any)=>{const points=gearPoints(item.modifiers);return `DMG ${signedPoint(points.offense)} · SPD ${signedPoint(points.mobility)} · EHP ${signedPoint(points.ehp)} · HND ${signedPoint(points.handling)}`;};
-const gearNetLabel=(item:any)=>`${AXIS_ABBR[item.powerAxis]}▲ ${AXIS_ABBR[item.costAxis]}▼ · NET ${gearBudget(item).net}/${GEAR_BUDGET[item.slot]}`;
+const gearNetLabel=(item:any)=>{const budget=gearBudget(item);return `${AXIS_ABBR[item.powerAxis]}▲ ${AXIS_ABBR[item.costAxis]}▼ · NET ${budget.net}/${budget.budget}`;};
 const modStatLine=(item:any)=>attachmentSpec(item).join(' · ');
 
 export function ProgressionScreen({ui}:ScreenProps){

@@ -308,7 +308,7 @@ test('normalizeProgression clamps, recomputes level and re-validates gear',()=>{
 test('the career equipment catalogue spans the level curve and stays level-gated',()=>{
  const unlocks=unlockedItems(MAX_LEVEL).map(item=>item.id);
  assert.equal(unlockedItems(1).filter(item=>item.kind==='gear').length,0,'no gear claim before level 2');
- const career=['gear-runner-frame','gear-match-trigger','gear-breacher-kit','gear-siege-kit','gear-marksman-kit','gear-command-kit','gear-scout-plate','gear-gunner-harness','gear-assault-plate','gear-field-medic-rig','gear-overcharge-cell','gear-grapple-winch','gear-ammo-satchel','gear-targeting-uplink','gear-fortress-plate'];
+  const career=['gear-runner-frame','gear-match-trigger','gear-breacher-kit','gear-siege-kit','gear-marksman-kit','gear-command-kit','gear-scout-plate','gear-gunner-harness','gear-assault-plate','gear-field-medic-rig','gear-overcharge-cell','gear-route-servo','gear-brace-satchel','gear-targeting-uplink','gear-fortress-plate'];
  for(const id of career)assert.ok(unlocks.includes(id),id);
  assert.ok(GEAR.some(item=>item.level>=40),'a reward sits near the cap');
  // High-level gear only equips once its level is reached.
@@ -317,7 +317,7 @@ test('the career equipment catalogue spans the level curve and stays level-gated
  assert.equal(normalizeGear({armor:'fortress-plate'},34).armor,undefined);
  assert.equal(normalizeGear({armor:'fortress-plate'},35).armor,'fortress-plate');
  assert.equal(normalizeGear({utility:'targeting-uplink'},50).utility,'targeting-uplink');
- assert.equal(normalizeGear({utility:'ammo-satchel'},21).utility,'ammo-satchel');
+  assert.equal(normalizeGear({utility:'brace-satchel'},21).utility,'brace-satchel');
  // Slot validation and one-per-slot still hold.
  assert.equal(normalizeGear({primary:'scope',armor:'scope'},60).armor,undefined);
  assert.equal(normalizeGear({primary:'not-real'},60).primary,undefined);
