@@ -719,3 +719,53 @@ test('the room gates coopLaunch to OPERATIONS and effectless catalogue rows out 
  assert.equal(actor.reqBuff, undefined);
  assert.equal((state.coop.buyLog ?? []).length, 0, 'no effectless row reached the sim');
 });
+
+test('the room target-gates field equipment so a no-target buy never queues or debits', () => {
+ const room = harness(41, 4);
+ const { state, actor } = openCoopWindow(room, { req: 200 });
+ room.drain();
+ const rev = room.roundRevision;
+ const at = index => 1_000_000 + index * 1000; // one request per rate-limit window
+
+ // Spot Drone with no enemy in radius: refused, never queued, never debited.
+ for (const enemy of room.match.actors) if (enemy && enemy.team !== actor.team) { enemy.x = actor.x + 1000; enemy.z = actor.z + 1000; }
+ assert.equal(room.buy(1, { cardId: 'drone-empty', itemId: 'spot-drone', roundRev: rev, actionSeq: 1 }, at(0)), false);
+ assert.equal(find(room.drain(), 'cocs-reject', 1)?.reason, 'no-target');
+ assert.equal(room.pendingCocs.buys.length, 0, 'a target-less drone never reaches the queue');
+ assert.equal(actor.req, 200, 'a target-less drone never debits');
+ assert.equal(actor.reqSpent ?? 0, 0, 'a target-less drone records no spend');
+
+ // Repair Tool with no cut link: refused as well.
+ state.cuts = [];
+ assert.equal(room.buy(1, { cardId: 'repair-empty', itemId: 'repair-tool', roundRev: rev, actionSeq: 2 }, at(1)), false);
+ assert.equal(find(room.drain(), 'cocs-reject', 1)?.reason, 'no-target');
+ assert.equal(room.pendingCocs.buys.length, 0, 'a target-less repair never reaches the queue');
+ assert.equal(actor.req, 200, 'a target-less repair never debits');
+
+ // Repair Tool with a friendly cut link in reach: accepted, applied and settled.
+ const node = state.nodes.find(entry => ['front', 'economy', 'relay'].includes(entry.archetype));
+ node.owner = actor.team === 1 ? 1 : 0;
+ state.cuts = [node.id];
+ actor.x = node.x; actor.z = node.z;
+ state.reqMult = 0; // isolate the wallet assertions from the presence REQ drip
+ assert.equal(room.buy(1, { cardId: 'repair-ok', itemId: 'repair-tool', roundRev: rev, actionSeq: 3 }, at(2)), true);
+ assert.equal(room.pendingCocs.buys.length, 1, 'the legal repair is queued once');
+ for (let i = 0; i < 3; i++) room.tick(RULES.dt);
+ assert.equal(state.cuts.includes(node.id), false, 'the room buy restores the cut link');
+ assert.equal(actor.req, 170, 'the exact 30 REQ is debited');
+ assert.equal(actor.reqSpent, 30, 'the spend is recorded once');
+ assert.equal(state.coop.buyLog.filter(entry => entry.itemId === 'repair-tool').length, 1, 'one sim purchase applied');
+ assert.equal(room.cocsCardList().find(entry => entry.id === 'repair-ok')?.state, 'done', 'the accepted buy settled from sim state');
+
+ // Spot Drone with a living enemy in radius: accepted and writes the SPOT mark.
+ const enemy = room.match.actors.find(entry => entry && entry.team !== actor.team && entry.health > 0);
+ enemy.x = actor.x; enemy.z = actor.z;
+ assert.equal(room.buy(1, { cardId: 'drone-ok', itemId: 'spot-drone', roundRev: rev, actionSeq: 4 }, at(3)), true);
+ assert.equal(room.pendingCocs.buys.length, 1, 'the legal drone is queued once');
+ for (let i = 0; i < 3; i++) room.tick(RULES.dt);
+ assert.ok(state.spots?.[enemy.id], 'the room buy writes the §8.1 SPOT mark');
+ assert.equal(state.spots[enemy.id].team, actor.team === 1 ? 1 : 0);
+ assert.equal(actor.req, 125, 'the exact 45 REQ is debited');
+ assert.equal(actor.reqSpent, 75, 'both equipment spends are recorded');
+ assert.equal(state.coop.buyLog.filter(entry => entry.itemId === 'spot-drone').length, 1, 'one sim purchase applied');
+});

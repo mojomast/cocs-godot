@@ -211,10 +211,10 @@ test('the REQ cost table matches the spec and REQ can never buy a respawn/RESERV
 // WP1.3 truthful launch set + shared purchase options
 // ---------------------------------------------------------------------------
 test('only rows with a shipped effect are launchable and every unlaunched row refuses without a debit',()=>{
- // Truthful launch sets: the four personal buffs in both modes, the Puma in
- // OPERATIONS only.
- assert.deepEqual([...LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield']);
- assert.deepEqual([...COOP_LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield','puma']);
+ // Truthful launch sets: the four personal buffs + the two field-equipment
+ // rows in both modes, the Puma in OPERATIONS only.
+ assert.deepEqual([...LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool']);
+ assert.deepEqual([...COOP_LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','puma']);
  assert.deepEqual([...PERSONAL_BUFF_IDS],['field-repair','ammo-crate','haste','overshield']);
  const puma=reqItem('puma');
  assert.equal(puma.launch,false);
@@ -222,13 +222,18 @@ test('only rows with a shipped effect are launchable and every unlaunched row re
  assert.deepEqual([...reqItemModes('puma')],[REQ_MODE_IDS.coop]);
  for(const id of LAUNCH_REQ_IDS){
   const item=reqItem(id);
-  assert.equal(item.personalBuff,true,`${id} is a personal buff`);
   assert.ok(item.effect&&typeof item.effect.kind==='string',`${id} names its sim effect`);
   assert.ok(typeof item.effectCopy==='string'&&item.effectCopy.length>0,`${id} carries effect copy`);
   assert.deepEqual([...reqItemModes(id)].sort(),[REQ_MODE_IDS.coop,REQ_MODE_IDS.pvp].sort(),`${id} runs in both modes`);
   assert.equal(reqItemSupported(id,REQ_MODE_IDS.pvp),true);
   assert.equal(reqItemSupported(id,REQ_MODE_IDS.coop),true);
  }
+ // The personal-buff slot stays exactly the four buffs; the equipment rows are
+ // launched but never occupy the one-active-buff gate.
+ assert.ok(PERSONAL_BUFF_IDS.every(id=>LAUNCH_REQ_IDS.includes(id)));
+ assert.equal(reqItem('spot-drone').personalBuff,false);
+ assert.equal(reqItem('repair-tool').personalBuff,false);
+ assert.equal(reqPurchase('haste',{balance:1000,activeBuffId:'spot-drone'}).ok,true,'equipment never blocks a buff');
  // No descriptor without a launch flag, and no launch flag without a descriptor.
  for(const item of REQ_ITEMS){
   if(item.effect!==undefined)assert.ok(item.launch===true||item.coopLaunch===true,`${item.id} ships an effect only when launched`);
@@ -236,7 +241,8 @@ test('only rows with a shipped effect are launchable and every unlaunched row re
  }
  // Every other catalogue row is unoffered, mode-less and refuses before a debit.
  const unlaunched=REQ_ITEMS.filter(item=>item.launch!==true&&item.coopLaunch!==true).map(item=>item.id);
- assert.ok(unlaunched.length>=12,`saw ${unlaunched.length} unlaunched rows`);
+ assert.ok(unlaunched.length>=10,`saw ${unlaunched.length} unlaunched rows`);
+ assert.ok(unlaunched.includes('smoke'),'the no-fog smoke row stays deferred');
  assert.ok(unlaunched.includes('at-mine')&&unlaunched.includes('sentry')&&unlaunched.includes('supply-drop')&&unlaunched.includes('tier-upgrade'));
  for(const id of unlaunched){
   assert.deepEqual([...reqItemModes(id)],[]);
@@ -277,7 +283,7 @@ test('reqPurchaseOptions reports affordability, mode, buff and depot gates from 
  assert.equal(pvp.balance,100);
  assert.equal(pvp.balanceSource,'actor.req','the authoritative float wallet is the source');
  assert.equal(pvp.authoritative,true);
- assert.deepEqual(pvp.items.map(item=>item.id),['field-repair','ammo-crate','haste','overshield','puma'],'only supported rows are offered');
+ assert.deepEqual(pvp.items.map(item=>item.id),['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','puma'],'only supported rows are offered');
  const haste=pvp.items.find(item=>item.id==='haste');
  assert.equal(haste.cost,35);
  assert.equal(haste.category,'buff');

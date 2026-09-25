@@ -49,9 +49,9 @@ test('the real catalogue drives the rendered store in both modes', () => {
   const coop = coopMatch();
   const pvpModel = reqPurchaseOptions({team: 0, mode: 'cocs', actor: {id: 0, req: 200, reqBuff: null}, state: pvp.objectiveState});
   const coopModel = reqPurchaseOptions({team: 0, mode: 'cocs-coop', actor: {id: 0, req: 200, reqBuff: null}, state: coop.objectiveState});
-  assert.deepEqual(pvpModel.items.map(item => item.id), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'puma'], 'the PvPvE picker offers the four launched buffs plus the wrong-mode Puma');
+  assert.deepEqual(pvpModel.items.map(item => item.id), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'puma'], 'the PvPvE picker offers the four launched buffs, the two field-equipment rows and the wrong-mode Puma');
   assert.equal(pvpModel.items.find(item => item.id === 'puma').disabledReason, 'wrong-mode', 'the Puma is never launched in PvPvE');
-  assert.deepEqual(coopModel.items.map(item => item.id), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'puma'], 'OPERATIONS offers the depot Puma too');
+  assert.deepEqual(coopModel.items.map(item => item.id), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'puma'], 'OPERATIONS offers the field equipment and the depot Puma too');
   for (const model of [pvpModel, coopModel]) {
     const html = render(ReqStore, {req: model, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
     for (const item of model.items) {

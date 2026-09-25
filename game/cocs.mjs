@@ -42,8 +42,10 @@ import {RULES} from './data.mjs';
 import {COCS_SQUAD_ACTIONS, cocsCommandAuthority, cocsSquadAction, cocsSquadSnapshot} from './cocs-squads.mjs';
 import {terrainSupportAt} from './terrain.mjs';
 import {
-  FLUX_CAP, FLUX_PASSIVE_PER_SECOND, FLUX_START, ORDER_REWARD, REQ_EARN, SUBAGENTS,
-  neglectPassiveFlux, neglectState, neglectTick, reqItem, reqPurchase, scoreEvent, subagentUpkeep,
+  FLUX_CAP, FLUX_PASSIVE_PER_SECOND, FLUX_START, ORDER_REWARD, REQ_EARN,
+  REPAIR_TOOL_EFFECT, SPOT_DRONE_EFFECT, SUBAGENTS,
+  neglectPassiveFlux, neglectState, neglectTick, reqItem, reqPurchase, scoreEvent,
+  repairToolTarget, spotDroneTargets, subagentUpkeep,
 } from './cocs-economy.mjs';
 import {PVP_ROLE_IDS, coopRole, roleAbility} from './cocs-roles.mjs';
 import {createTraversalState, stepCocsTraversal, cocsTraversalSnapshot, humanDeviceInteract} from './cocs-traversal.mjs';
@@ -606,6 +608,50 @@ export function repairLink(state, nodeId) {
   const index = (state.cuts ?? []).indexOf(node.id);
   if (index >= 0) state.cuts.splice(index, 1);
   return index >= 0;
+}
+
+// ---------------------------------------------------------------------------
+// §6A.5 REQ field equipment. The pure target selectors live in
+// `cocs-economy.mjs` (shared by the menu, the server gate and both buy paths);
+// these appliers are the one seam that mutates world state. Both are RNG-free
+// and refresh-only: they never shorten a live SPOT mark or over-charge.
+// ---------------------------------------------------------------------------
+
+/**
+ * Apply the §6A.5 Spot Drone pulse: mark every living enemy in `effect.radius`
+ * for the buyer's team for `effect.seconds`, in the same `state.spots` shape as
+ * the §8.1 SCAN/SPOT sweep. A live longer mark is never shortened. Returns the
+ * marked ids, or `no-target` without touching state.
+ */
+export function applySpotDrone(match, state, actor, effect = SPOT_DRONE_EFFECT) {
+  if (!state || !actor) return {ok: false, reason: 'no-target', targets: []};
+  const targets = spotDroneTargets(actor, match?.actors, effect);
+  if (!targets.length) return {ok: false, reason: 'no-target', targets: []};
+  const spots = state.spots ?? (state.spots = {});
+  const seconds = Math.max(0, num(effect?.seconds, SPOT_DRONE_EFFECT.seconds));
+  const until = num(state.tick, 0) + Math.max(1, Math.round(seconds / (RULES.dt || 1 / 60)));
+  for (const id of targets) {
+    const existing = spots[id];
+    if (existing && num(existing.until, 0) > until) continue;
+    const target = (match?.actors ?? []).find(entry => entry && entry.id === id);
+    if (!target) continue;
+    spots[id] = {team: actor.team === 1 ? 1 : 0, until, by: actor.id, x: num(target.x, 0), z: num(target.z, 0), atTick: num(state.tick, 0)};
+  }
+  match?.emit?.('cocs-spot-drone', {actor: actor.id, team: actor.team === 1 ? 1 : 0, targets, until, radius: num(effect?.radius, SPOT_DRONE_EFFECT.radius)});
+  return {ok: true, reason: null, targets};
+}
+
+/**
+ * Apply the §6A.5 Repair Tool: restore the nearest own-team cut link in reach
+ * (clearing its SABOTEUR window too). Returns the node id, or `no-target`.
+ */
+export function applyRepairTool(match, state, actor, effect = REPAIR_TOOL_EFFECT) {
+  const nodeId = repairToolTarget(actor, state, effect);
+  if (nodeId === null) return {ok: false, reason: 'no-target', nodeId: null};
+  repairLink(state, nodeId);
+  if (state?.sabotage && Object.hasOwn(state.sabotage, nodeId)) delete state.sabotage[nodeId];
+  match?.emit?.('cocs-repair-tool', {actor: actor.id, team: actor.team === 1 ? 1 : 0, node: nodeId});
+  return {ok: true, reason: null, nodeId};
 }
 
 // ---------------------------------------------------------------------------
@@ -1501,6 +1547,10 @@ export function cocsBuyAction(match, state, record = {}) {
   if (!item) return {ok: false, reason: 'unknown-item'};
   if (item.launch !== true) return {ok: false, reason: 'not-launched'};
   const team = actor.team === 1 ? 1 : 0;
+  // §6A.5 field equipment acts on the current world: validate a legal target
+  // before any REQ moves, so a target-less buy is refused, never a paid no-op.
+  if (item.id === 'spot-drone' && spotDroneTargets(actor, match?.actors, item.effect).length === 0) return {ok: false, reason: 'no-target'};
+  if (item.id === 'repair-tool' && repairToolTarget(actor, state, item.effect) === null) return {ok: false, reason: 'no-target'};
   const peerId = String(record.peerId ?? '');
   const isCommander = state?.command?.seat?.[team] === peerId;
   const relayOwned = (state?.nodes ?? []).some(node => node && node.archetype === 'relay' && node.owner === team);
@@ -1511,6 +1561,7 @@ export function cocsBuyAction(match, state, record = {}) {
     relayOwned,
   });
   if (!result.ok) return {ok: false, reason: result.reason ?? 'purchase'};
+  const previousBuff = actor.reqBuff;
   actor.req = result.balanceAfter;
   actor.reqSpent = num(actor.reqSpent, 0) + num(result.cost, 0);
   actor.reqBuff = item.id;
@@ -1525,6 +1576,15 @@ export function cocsBuyAction(match, state, record = {}) {
       if (actor.ammo[index] === Infinity) continue;
       const weaponCap = match?.weaponForIndex?.(actor, index)?.cap;
       if (Number.isFinite(weaponCap) && actor.ammo[index] < weaponCap) actor.ammo[index] = weaponCap;
+    }
+  } else if (item.id === 'spot-drone' || item.id === 'repair-tool') {
+    const applied = item.id === 'spot-drone' ? applySpotDrone(match, state, actor, item.effect) : applyRepairTool(match, state, actor, item.effect);
+    if (!applied.ok) {
+      // The world changed under us: refund in full and restore the buff slot.
+      actor.req = num(actor.req, 0) + num(result.cost, 0);
+      actor.reqSpent = Math.max(0, num(actor.reqSpent, 0) - num(result.cost, 0));
+      actor.reqBuff = previousBuff;
+      return {ok: false, reason: applied.reason ?? 'no-target'};
     }
   }
   match?.emit?.('cocs-buy', {actor: actor.id, team, itemId: item.id, cost: num(result.cost, 0), req: num(actor.req, 0)});

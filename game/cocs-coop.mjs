@@ -21,8 +21,8 @@
 
 import {RULES} from './data.mjs';
 import {COCS_SQUAD_ACTIONS, cocsCommandAuthority, cocsSquadAction} from './cocs-squads.mjs';
-import {SUBAGENTS, convertCoopReq, reqItem, reqPurchase} from './cocs-economy.mjs';
-import {addActorReq, capturableNodes, compareCocsOrders, connectivityIncome, cutLink, nodeById, normalizeCocsPolicy, repairLink} from './cocs.mjs';
+import {SUBAGENTS, convertCoopReq, reqItem, reqPurchase, repairToolTarget, spotDroneTargets} from './cocs-economy.mjs';
+import {addActorReq, applyRepairTool, applySpotDrone, capturableNodes, compareCocsOrders, connectivityIncome, cutLink, nodeById, normalizeCocsPolicy, repairLink} from './cocs.mjs';
 import {depotPurchaseState, deviceInteract, purchaseDepotVehicle} from './cocs-traversal.mjs';
 import {spawnGroup, updateEnemyRoles} from './singleplayer.mjs';
 import {
@@ -2368,6 +2368,10 @@ export function coopBuyAction(match, state, record = {}) {
     if (!depot || depot.owner !== team) return {ok: false, reason: 'depot'};
     if (!depotPurchaseState(match, depot).available) return {ok: false, reason: 'vehicle'};
   }
+  // §6A.5 field equipment acts on the current world: validate a legal target
+  // before any REQ moves, so a target-less buy is refused, never a paid no-op.
+  if (item.id === 'spot-drone' && spotDroneTargets(actor, match?.actors, item.effect).length === 0) return {ok: false, reason: 'no-target'};
+  if (item.id === 'repair-tool' && repairToolTarget(actor, state, item.effect) === null) return {ok: false, reason: 'no-target'};
   const peerId = String(record.peerId ?? '');
   const isCommander = state?.coop?.commandSeat?.[team] === peerId || (peerId === '' && item.commanderOnly !== true);
   const relayOwned = (state?.nodes ?? []).some(node => node && node.archetype === 'relay' && node.owner === team);
@@ -2380,6 +2384,7 @@ export function coopBuyAction(match, state, record = {}) {
     relayOwned,
   });
   if (!result.ok) return {ok: false, reason: result.reason ?? 'purchase'};
+  const previousBuff = actor.reqBuff;
   actor.req = result.balanceAfter;
   actor.reqSpent = num(actor.reqSpent, 0) + num(result.cost, 0);
   actor.reqBuff = item.id;
@@ -2407,6 +2412,14 @@ export function coopBuyAction(match, state, record = {}) {
       if (actor.ammo[index] === Infinity) continue;
       const cap = match?.weaponForIndex?.(actor, index)?.cap;
       if (Number.isFinite(cap) && actor.ammo[index] < cap) actor.ammo[index] = cap;
+    }
+  } else if (item.id === 'spot-drone' || item.id === 'repair-tool') {
+    const applied = item.id === 'spot-drone' ? applySpotDrone(match, state, actor, item.effect) : applyRepairTool(match, state, actor, item.effect);
+    if (!applied.ok) {
+      actor.req = num(actor.req, 0) + num(result.cost, 0);
+      actor.reqSpent = Math.max(0, num(actor.reqSpent, 0) - num(result.cost, 0));
+      actor.reqBuff = previousBuff;
+      return {ok: false, reason: applied.reason ?? 'no-target'};
     }
   }
   match?.emit?.('cocs-buy', {

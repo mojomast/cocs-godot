@@ -9,7 +9,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Match} from './core.mjs';
 import {RULES} from './data.mjs';
-import {cocsBuyAction} from './cocs.mjs';
+import {cocsBuyAction, cocsSpotDamageScale} from './cocs.mjs';
 import {coopBuyAction} from './cocs-coop.mjs';
 import {REQ_MODE_IDS, reqPurchaseOptions} from './cocs-economy.mjs';
 
@@ -35,6 +35,7 @@ const buy = (match, actor, itemId, extra = {}) => {
 };
 // The world slice a purchase is allowed to change, minus the wallet/buff fields
 // the spend itself owns. Two different digests = one real world-state delta.
+const spotDigest = state => Object.keys(state.spots ?? {}).sort().map(id => ({id, team: state.spots[id]?.team ?? null}));
 const worldDigest = (match, actor) => JSON.stringify({
  health: actor.health,
  temporaryShield: actor.temporaryShield ?? 0,
@@ -42,6 +43,8 @@ const worldDigest = (match, actor) => JSON.stringify({
  ammo: actor.ammo ?? [],
  vehicles: match.vehicles.map(vehicle => ({id: vehicle.id, depotId: vehicle.depotId ?? null})),
  purchases: Object.values(match.objectiveState.traversal?.depots ?? {}).map(depot => ({id: depot.id, purchaseId: depot.purchaseId ?? null})),
+ spots: spotDigest(match.objectiveState),
+ cuts: [...(match.objectiveState.cuts ?? [])].sort(),
 });
 // Purchase-owned world state only: a refused buy must not move any of it. The
 // free depot loaners and bot movement/combat are deliberately excluded because
@@ -52,6 +55,8 @@ const purchaseDigest = (match, actor) => JSON.stringify({
  ammo: actor.ammo ?? [],
  bought: match.vehicles.filter(vehicle => vehicle.purchasedBy !== undefined && vehicle.purchasedBy !== null).map(vehicle => ({id: vehicle.id, depotId: vehicle.depotId ?? null, by: vehicle.purchasedBy})),
  purchases: Object.values(match.objectiveState.traversal?.depots ?? {}).map(depot => ({id: depot.id, purchaseId: depot.purchaseId ?? null})),
+ spots: spotDigest(match.objectiveState),
+ cuts: [...(match.objectiveState.cuts ?? [])].sort(),
 });
 const offeredIds = (mode, match) => reqPurchaseOptions({team: 0, mode, actor: match.actors[0], state: match.objectiveState})
  .items.filter(entry => entry.modes.includes(mode)).map(entry => entry.id);
@@ -84,6 +89,40 @@ const CASES = {
   arm: actor => { actor.temporaryShield = 0; },
   verify: actor => assert.equal(actor.temporaryShield, 50, 'the 50-point temporary shield is set'),
  },
+ 'spot-drone': {
+  cost: 45,
+  arm: (actor, match) => {
+   const enemy = match.actors.find(entry => entry && entry.team !== actor.team && entry.health > 0);
+   assert.ok(enemy, 'the match has a living enemy to mark');
+   enemy.x = actor.x; enemy.z = actor.z; // inside the 20 m drone radius, same ground
+   match.__lastSpotEnemy = enemy.id;
+  },
+  verify: (actor, match, state) => {
+   const spot = state.spots?.[match.__lastSpotEnemy];
+   assert.ok(spot, 'the drone writes a §8.1 SPOT mark for the buyer team');
+   assert.equal(spot.team, actor.team === 1 ? 1 : 0);
+   assert.ok(spot.until > state.tick, 'the mark outlives the purchase tick');
+   const target = match.actors.find(entry => entry && entry.id === match.__lastSpotEnemy);
+   assert.ok(Math.abs(cocsSpotDamageScale(match, actor, target) - 1.15) < 1e-9, 'the mark pays the §8.1 +15% team damage');
+  },
+ },
+ 'repair-tool': {
+  cost: 30,
+  arm: (actor, match, state) => {
+   const node = (state.nodes ?? []).find(entry => entry && ['front', 'economy', 'relay'].includes(entry.archetype));
+   assert.ok(node, 'the lattice has a capturable node to cut');
+   node.owner = actor.team === 1 ? 1 : 0;
+   state.cuts = Array.isArray(state.cuts) ? state.cuts : (state.cuts = []);
+   if (!state.cuts.includes(node.id)) state.cuts.push(node.id);
+   actor.x = node.x; actor.z = node.z; // inside the repair reach from the cut link
+   state.reqMult = 0; // isolate the wallet assertion from presence REQ drip
+   match.__lastRepairNode = node.id;
+  },
+  verify: (actor, match, state) => {
+   assert.equal(state.cuts.includes(match.__lastRepairNode), false, 'the friendly cut link is restored');
+   assert.equal((state.nodes ?? []).find(node => node.id === match.__lastRepairNode)?.owner, actor.team === 1 ? 1 : 0, 'the node stayed owned');
+  },
+ },
  puma: {
   cost: 150,
   arm: (actor, match, state) => { state.traversal.depots['depot-hq-w'].owner = 0; },
@@ -98,7 +137,7 @@ const CASES = {
 
 test('every PvPvE-offered REQ row writes its advertised world delta through Match.step', () => {
  const mode = REQ_MODE_IDS.pvp;
- assert.deepEqual(offeredIds(mode, pvpMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield'], 'the tested set is exactly what the picker offers in PvPvE');
+ assert.deepEqual(offeredIds(mode, pvpMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool'], 'the tested set is exactly what the picker offers in PvPvE');
  for (const id of offeredIds(mode, pvpMatch())) {
   const match = pvpMatch();
   const state = match.objectiveState;
@@ -118,7 +157,7 @@ test('every PvPvE-offered REQ row writes its advertised world delta through Matc
 
 test('every OPERATIONS-offered REQ row (including the Puma) writes its advertised world delta through Match.step', () => {
  const mode = REQ_MODE_IDS.coop;
- assert.deepEqual(offeredIds(mode, coopMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'puma'], 'the tested set is exactly what the picker offers in OPERATIONS');
+ assert.deepEqual(offeredIds(mode, coopMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'puma'], 'the tested set is exactly what the picker offers in OPERATIONS');
  for (const id of offeredIds(mode, coopMatch())) {
   const match = coopMatch();
   const state = match.objectiveState;
@@ -221,5 +260,80 @@ test('refused and unavailable REQ purchases preserve REQ, reqBuff and world stat
   assert.equal(actor.req, 165, 'a vehicle stamp never blocks a personal buff');
   assert.equal(actor.powerups?.haste, 15, 'the buff window lands');
   assert.equal(actor.reqBuff, 'haste', 'the slot now holds the real buff');
+ }
+});
+
+// Field equipment is target-gated (WP field-equipment): with no legal target the
+// buy is refused `no-target` before any REQ moves, and the world effects only
+// touch the owning team's state. These are the negative cases the menu cannot
+// express (the pure picker has no roster) and the wire gate must enforce.
+test('field equipment refuses no-target buys inertly and only touches legal world state', () => {
+ // Spot Drone with no enemy in radius: refused before a debit, no mark.
+ {
+  const match = pvpMatch();
+  const state = match.objectiveState;
+  const actor = match.actors[0];
+  actor.req = 500; actor.reqSpent = 0; actor.reqBuff = undefined;
+  for (const enemy of match.actors) if (enemy && enemy.team !== actor.team) { enemy.x = actor.x + 1000; enemy.z = actor.z + 1000; }
+  const digestBefore = purchaseDigest(match, actor);
+  buy(match, actor, 'spot-drone');
+  assert.equal(actor.req, 500, 'an empty spot pulse never debits');
+  assert.equal(actor.reqSpent, 0);
+  assert.equal(actor.reqBuff, undefined);
+  assert.equal(Object.keys(state.spots ?? {}).length, 0, 'no spot mark is written');
+  assert.equal(purchaseDigest(match, actor), digestBefore);
+  assert.equal(cocsBuyAction(match, state, {actorId: actor.id, peerId: 'p1', itemId: 'spot-drone'}).reason, 'no-target');
+ }
+
+ // Repair Tool with no cut link: refused before a debit, no link restored.
+ {
+  const match = coopMatch();
+  const state = match.objectiveState;
+  const actor = match.actors[0];
+  state.cuts = [];
+  actor.req = 500; actor.reqSpent = 0; actor.reqBuff = undefined;
+  const digestBefore = purchaseDigest(match, actor);
+  buy(match, actor, 'repair-tool');
+  assert.equal(actor.req, 500, 'an empty repair never debits');
+  assert.equal(actor.reqSpent, 0);
+  assert.equal(actor.reqBuff, undefined);
+  assert.equal((state.coop.buyLog ?? []).length, 0);
+  assert.equal(purchaseDigest(match, actor), digestBefore);
+  assert.equal(coopBuyAction(match, state, {actorId: actor.id, peerId: 'p1', itemId: 'repair-tool'}).reason, 'no-target');
+ }
+
+ // Repair Tool never touches an enemy-owned cut link even when in reach.
+ {
+  const match = coopMatch();
+  const state = match.objectiveState;
+  const actor = match.actors[0];
+  const node = (state.nodes ?? []).find(entry => entry && ['front', 'economy', 'relay'].includes(entry.archetype));
+  node.owner = 1 - (actor.team === 1 ? 1 : 0);
+  state.cuts = [node.id];
+  actor.x = node.x; actor.z = node.z;
+  actor.req = 500; actor.reqSpent = 0; actor.reqBuff = undefined;
+  buy(match, actor, 'repair-tool');
+  assert.equal(actor.req, 500, 'an enemy link is never repaired by this team');
+  assert.ok(state.cuts.includes(node.id), 'the enemy cut link stands');
+  assert.equal(actor.reqBuff, undefined);
+  assert.equal(coopBuyAction(match, state, {actorId: actor.id, peerId: 'p1', itemId: 'repair-tool'}).reason, 'no-target');
+ }
+
+ // The drone marks enemies only: an ally at the same spot is never marked.
+ {
+  const match = pvpMatch();
+  const state = match.objectiveState;
+  const actor = match.actors[0];
+  const ally = match.actors.find(entry => entry && entry.id !== actor.id && entry.team === actor.team);
+  const enemy = match.actors.find(entry => entry && entry.team !== actor.team && entry.health > 0);
+  ally.x = actor.x; ally.z = actor.z; enemy.x = actor.x; enemy.z = actor.z;
+  actor.req = 500; actor.reqSpent = 0; actor.reqBuff = undefined;
+  buy(match, actor, 'spot-drone');
+  assert.ok(state.spots?.[enemy.id], 'the enemy is marked');
+  assert.equal(state.spots?.[ally.id], undefined, 'the ally is not marked');
+  assert.equal(actor.req, 455, 'the drone debits its exact cost');
+  assert.equal(actor.reqSpent, 45);
+  assert.ok(Math.abs(cocsSpotDamageScale(match, actor, enemy) - 1.15) < 1e-9);
+  assert.equal(cocsSpotDamageScale(match, actor, ally), 1, 'allies never gain a self-spot bonus');
  }
 });

@@ -190,16 +190,76 @@ export function reqEarnBreakdown(profile={}){
 }
 
 // §6A.5 purchase catalogue. WP1.3 truth rule: only entries with a concrete,
-// shipped simulation effect are launchable. The four personal buffs and the
-// OPERATIONS depot Puma qualify; every other advertised row has no effect yet,
-// so it carries `modes:[]` and is not in any launch set. The buy paths refuse it
-// with `not-launched` before `reqPurchase` can debit REQ or touch `reqBuff`.
+// shipped simulation effect are launchable. The four personal buffs, the two
+// field-equipment rows below (Spot Drone / Repair Tool) and the OPERATIONS depot
+// Puma qualify; every other advertised row has no effect yet, so it carries
+// `modes:[]` and is not in any launch set. The buy paths refuse it with
+// `not-launched` before `reqPurchase` can debit REQ or touch `reqBuff`.
 //   * `launch:true`     accepted by PvPvE `cocs` and OPERATIONS `cocs-coop`.
 //   * `coopLaunch:true` accepted by OPERATIONS only (no PvPvE vehicle seam).
 //   * `modes`           canonical modes a picker may offer the item in.
 //   * `effect`          machine description of the one shipped sim effect.
 //   * `effectCopy`      player-facing copy for that same effect.
 export const REQ_MODE_IDS=deepFreeze({pvp:'cocs',coop:'cocs-coop'});
+
+// ---------------------------------------------------------------------------
+// §6A.5 field equipment with a shipped simulation seam (truth rule).
+// The descriptor is the one source of truth for the numbers: the buy appliers,
+// the server gate, the menu and the focused tests all read it.
+//   * `spot`        reuses the §8.1 SCAN/SPOT mark (`state.spots`): a marked
+//                   enemy feeds `cocsSpotDamageScale` (+15% team damage) and
+//                   the per-team contact list. Instant team pulse; no drone
+//                   entity is spawned.
+//   * `repair-link` reuses `repairLink`/`state.cuts`, clearing one friendly link
+//                   a SABOTEUR/denial cut. Nearest owned cut in reach wins.
+// The pure selectors below are shared by the menu, the server gate and the sim
+// appliers, so a row with no legal target is refused `no-target` *before* any
+// REQ moves. An empty effect can therefore never be sold.
+// Pinned-source deviations (no reliable vehicle/fog behaviour in this slice):
+// see port/native-lattice/flagship/catalog/REQ.md.
+// ---------------------------------------------------------------------------
+export const SPOT_DRONE_EFFECT=deepFreeze({kind:'spot',radius:20,seconds:8,target:'self'});
+export const REPAIR_TOOL_EFFECT=deepFreeze({kind:'repair-link',reach:6,target:'cut-link'});
+
+const sortedRoster=actors=>[...(Array.isArray(actors)?actors:[])].filter(Boolean)
+ .sort((a,b)=>num(a.id,0)-num(b.id,0));
+
+/** Living enemies the Spot Drone pulse would mark for `actor`. Pure, id-sorted. */
+export function spotDroneTargets(actor,actors,effect=SPOT_DRONE_EFFECT){
+ if(!actor||num(actor.health,0)<=0)return deepFreeze([]);
+ const team=actor.team===1?1:0;
+ const radius=Math.max(0,num(effect?.radius,SPOT_DRONE_EFFECT.radius));
+ const list=[];
+ for(const target of sortedRoster(actors)){
+  if(num(target.health,0)<=0)continue;
+  if(target.team!==0&&target.team!==1)continue;
+  if(target.team===team)continue;
+  if(Math.hypot(num(target.x,0)-num(actor.x,0),num(target.z,0)-num(actor.z,0))>radius)continue;
+  list.push(target.id);
+ }
+ return deepFreeze(list);
+}
+
+/** Nearest own-team cut link in `actor`'s reach, or null. Pure, deterministic. */
+export function repairToolTarget(actor,state,effect=REPAIR_TOOL_EFFECT){
+ if(!actor||num(actor.health,0)<=0)return null;
+ const team=actor.team===1?1:0;
+ const reach=Math.max(0,num(effect?.reach,REPAIR_TOOL_EFFECT.reach));
+ const cuts=new Set(Array.isArray(state?.cuts)?state.cuts:[]);
+ const nodes=[...(Array.isArray(state?.nodes)?state.nodes:[])].filter(Boolean)
+  .sort((a,b)=>String(a.id??'').localeCompare(String(b.id??'')));
+ let best=null,bestDistance=Infinity;
+ for(const node of nodes){
+  if(!cuts.has(node.id))continue;
+  if(node.owner!==team)continue;
+  const limit=num(node.r,4)+reach;
+  const distance=Math.hypot(num(actor.x,0)-num(node.x,0),num(actor.z,0)-num(node.z,0));
+  if(distance>limit)continue;
+  if(distance<bestDistance){bestDistance=distance;best=node.id;}
+ }
+ return best;
+}
+
 export const REQ_ITEMS=deepFreeze([
  {id:'field-repair',name:'Field Repair',category:'buff',cost:40,launch:true,teamWide:false,personalBuff:true,target:'self',modes:['cocs','cocs-coop'],
   effect:{kind:'heal',health:50,target:'self'},effectCopy:'Heal 50 health (capped at max health)'},
@@ -209,6 +269,12 @@ export const REQ_ITEMS=deepFreeze([
   effect:{kind:'haste',seconds:15,target:'self'},effectCopy:'15 s of Haste speed'},
  {id:'overshield',name:'Overshield',category:'buff',cost:50,launch:true,teamWide:false,personalBuff:true,target:'self',modes:['cocs','cocs-coop'],
   effect:{kind:'shield',shield:50,target:'self'},effectCopy:'50-point temporary shield'},
+ // Field equipment (WP field-equipment slice): both rows carry a real,
+ // target-validated sim effect and launch in PvPvE and OPERATIONS.
+ {id:'spot-drone',name:'Spot Drone',category:'equipment',cost:45,launch:true,teamWide:false,personalBuff:false,target:'self',modes:['cocs','cocs-coop'],
+  effect:SPOT_DRONE_EFFECT,effectCopy:'Mark every enemy within 20 m for 8 s (+15% damage from your team)'},
+ {id:'repair-tool',name:'Repair Tool',category:'equipment',cost:30,launch:true,teamWide:false,personalBuff:false,target:'cut-link',modes:['cocs','cocs-coop'],
+  effect:REPAIR_TOOL_EFFECT,effectCopy:'Restore one friendly cut link within reach (nearest wins)'},
  // The Puma is a launch OPERATIONS purchase (§6A.5: "Puma ... yes (V1)"). It is
  // flagged `coopLaunch` rather than `launch` so the PvPvE buy path (which has no
  // depot vehicle seam) can never charge for a vehicle it cannot spawn; the co-op
@@ -218,9 +284,9 @@ export const REQ_ITEMS=deepFreeze([
  // Catalogue rows with no shipped effect (WP1.3): priced and named for later
  // waves, but never offered and never purchasable.
  {id:'at-mine',name:'AT Mine',category:'equipment',cost:35,launch:false,teamWide:false,personalBuff:false,modes:[]},
+ // Smoke Marker stays unlaunched: V1 has no fog/line-of-sight model, so any
+ // "smoke" here would be a visual-only claim (deferred; see catalog/REQ.md).
  {id:'smoke',name:'Smoke Marker',category:'equipment',cost:20,launch:false,teamWide:false,personalBuff:false,modes:[]},
- {id:'repair-tool',name:'Repair Tool',category:'equipment',cost:30,launch:false,teamWide:false,personalBuff:false,modes:[]},
- {id:'spot-drone',name:'Spot Drone',category:'equipment',cost:45,launch:false,teamWide:false,personalBuff:false,modes:[]},
  {id:'barrier',name:'Barrier',category:'fortification',cost:30,launch:false,teamWide:false,personalBuff:false,modes:[]},
  {id:'sentry',name:'Sentry',category:'fortification',cost:60,launch:false,teamWide:false,personalBuff:false,modes:[]},
  {id:'forward-depot',name:'Forward Depot',category:'fortification',cost:120,launch:false,teamWide:false,personalBuff:false,modes:[]},
@@ -953,7 +1019,9 @@ const cocsEconomy={
  GEAR_CAPS,REQ_CAPS,COMBINED_CAPS,
  TRAVERSAL,DEVICE_PARAMS,LANE_IDENTITIES,LANE_IDENTITY_KINDS,DEVICE_LANE_KINDS,DEVICE_STATES,TRAVERSAL_KINDS,
  META_DEFAULTS,MATCH_REQ,COMMENDATION_PACING,
+ SPOT_DRONE_EFFECT,REPAIR_TOOL_EFFECT,
  scoreEvent,tallyScores,reqEarn,reqEarnBreakdown,purchaseCost,reqItem,reqModeKey,reqItemModes,reqItemSupported,reqPurchase,reqPurchaseOptions,
+ spotDroneTargets,repairToolTarget,
  supplySlotMultiplier,subagentUpkeep,
  neglectState,neglectTick,neglectEffect,neglectPassiveFlux,
  composeCaps,withinCombinedCaps,resolveSpawnLoadout,
