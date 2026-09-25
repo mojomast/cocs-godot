@@ -15,8 +15,8 @@ not been run.
   Node.js 22.13+ installed, run
   `node run.mjs --experience=lattice-world --map=asterion-relay --mode=cocs --bots=2 --time-limit=900`.
 - For Operations, use `--map=monsoon-foundry --mode=cocs-coop` with the same
-  `--experience=lattice-world` launcher. To assess shared sessions, use the
-  host/guest endpoint options described in `port/native-lattice/flagship/ACCEPTANCE.md`.
+  `--experience=lattice-world` launcher. Shared-session setup and host/guest
+  constraints are tracked in the branch's LATTICE flagship handoffs.
 
 ## Evidence and feedback
 
