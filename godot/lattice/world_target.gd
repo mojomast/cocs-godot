@@ -60,7 +60,7 @@ func select(projection: Dictionary, topology: Dictionary, pose: Dictionary,
 	if not selected_id.is_empty():
 		for entry: Dictionary in entries:
 			if entry.get("id") != selected_id: continue
-			var selection_matches_intent := entry.get("capture_legal") == true
+			var selection_matches_intent: bool = entry.get("capture_legal") == true
 			if code == "own-contest": selection_matches_intent = entry.get("mine") == true and entry.get("contested") == true
 			elif code == "enemy-dominance": selection_matches_intent = selection_matches_intent and entry.get("enemy") == true
 			elif code == "dominance-prerequisite": selection_matches_intent = selection_matches_intent and entry.get("enemy") != true
@@ -68,7 +68,7 @@ func select(projection: Dictionary, topology: Dictionary, pose: Dictionary,
 			break
 	var stable: Dictionary = {}
 	for entry: Dictionary in entries:
-		var stable_matches_intent := entry.get("capture_legal") == true
+		var stable_matches_intent: bool = entry.get("capture_legal") == true
 		if code == "own-contest": stable_matches_intent = entry.get("mine") == true and entry.get("contested") == true
 		elif code == "enemy-dominance": stable_matches_intent = stable_matches_intent and entry.get("enemy") == true
 		elif code == "dominance-prerequisite": stable_matches_intent = stable_matches_intent and entry.get("enemy") != true
