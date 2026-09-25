@@ -189,3 +189,21 @@ Focused REQ source tests, career unlock tests, web UI tests, TypeScript typechec
 and the production web build pass on this derivative. These fixtures do not
 establish a live native purchase, rendered review, Operations five-wave win or
 the stock-vs-max rank-invariance gate.
+
+### Catalog hands-on packages (development derivative)
+
+The opt-in derivative inventory in `port/contracts/lattice-catalog-derivative.json`
+pins seven changed source-runtime files at `fa6dda2d` without modifying the
+original `515daf07` source lock. The pinned Godot 4.5.2 package builder ran
+serially from port commit `beb6eb57`; the separate
+[catalog test release](https://github.com/mojomast/cocs-godot/releases/tag/lattice-catalog-test-2026-09-25)
+contains both packages and SHA-256 sidecars:
+
+| Artifact | SHA-256 | Verified boundary |
+| --- | --- | --- |
+| `cocs-native-linux.tar.gz` | `72d2284cc14b57617e7c896d7a5c5948343d5095d7bce5c1f814436c5243b065` | 134 file hashes verified; extracted package launched and cleaned up Asterion PvP and Monsoon Operations routes under bounded smoke checks |
+| `cocs-native-windows.zip` | `fda23853152aa3194299328347ad9cdb3e827f27a208d1d97f0a4f44257c7c74` | 141 file hashes verified in archive; native Windows execution remains an owner check |
+
+Package manifests record the locked source, derivative commit/inventory hash,
+port commit, and final input digests separately. These are startup/package
+results, not live native REQ settlement or visual/human acceptance.
