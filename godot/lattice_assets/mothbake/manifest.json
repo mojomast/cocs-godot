@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "generator": "lattice-instruments-1-recorded-local",
+  "comment": "Authored local structure grids, NOT provider results. Pinned mothbake 93e182557c7c47b75c556477127fb27686fea20d. Dry-run in Astra lane; run/rebuild only in parent serial slot.",
+  "budget": {"maxEstimatedCredits": 0, "maxSubmissions": 0, "allowUnknownCost": false},
+  "jobs": [
+    {
+      "id": "asterion-structure",
+      "engine": "blur-core-v1",
+      "params": {},
+      "comment": "Offline substitute containing hand-authored radial panel relief; not a live blur recipe.",
+      "recorded": {"result": [[0.25,0.25,0.25,0.25,0.25],[0.25,0.55,0.7,0.55,0.25],[0.25,0.7,0.85,0.7,0.25],[0.25,0.55,0.7,0.55,0.25],[0.25,0.25,0.25,0.25,0.25]]},
+      "bakes": [{"type":"raw-grid","name":"asterion-structure"},{"type":"normal-map","name":"asterion-structure","size":64,"strength":0.35}]
+    },
+    {
+      "id": "monsoon-structure",
+      "engine": "blur-core-v1",
+      "params": {},
+      "comment": "Offline substitute containing hand-authored drainage ribs; not a live blur recipe.",
+      "recorded": {"result": [[0.3,0.3,0.3,0.3,0.3],[0.3,0.75,0.4,0.75,0.3],[0.3,0.75,0.4,0.75,0.3],[0.3,0.75,0.4,0.75,0.3],[0.3,0.3,0.3,0.3,0.3]]},
+      "bakes": [{"type":"raw-grid","name":"monsoon-structure"},{"type":"normal-map","name":"monsoon-structure","size":64,"strength":0.25}]
+    }
+  ],
+  "emitters": [{"type":"files"},{"type":"json","file":"bundle.json"}]
+}

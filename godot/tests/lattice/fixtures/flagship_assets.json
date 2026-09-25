@@ -1,0 +1,41 @@
+{
+  "provenance": {"kind":"authored-position-contract-not-wire-evidence","source":"game/destination-lattice-maps.mjs:77-84,104-107","source_pin":"515daf07589150dd3241f4ae1425cc1b093912f5"},
+  "maps": [
+    {"id":"asterion-relay","nodes":[
+      {"id":"hq-0","archetype":"hq","x":-104,"y":0,"z":0},
+      {"id":"hq-1","archetype":"hq","x":104,"y":0,"z":0},
+      {"id":"front-0","archetype":"front","x":-52,"y":0,"z":-8},
+      {"id":"front-1","archetype":"front","x":52,"y":0,"z":8},
+      {"id":"econ-n","archetype":"economy","x":8,"y":0,"z":-32},
+      {"id":"econ-s","archetype":"economy","x":-8,"y":0,"z":32},
+      {"id":"relay-0","archetype":"relay","x":0,"y":0,"z":0}
+    ],"depots":[
+      {"id":"hq-depot-west","x":-104,"y":0,"z":-56},
+      {"id":"hq-depot-east","x":104,"y":0,"z":56},
+      {"id":"forward-depot-west","x":-64,"y":0,"z":-56},
+      {"id":"forward-depot-east","x":64,"y":0,"z":56}
+    ],"terminals":[
+      {"id":"relay-0-terminal","nodeId":"relay-0","kind":"relay","x":0,"y":0,"z":0},
+      {"id":"vault-hq-0","nodeId":"hq-0","kind":"vault","x":-104,"y":0,"z":0},
+      {"id":"vault-hq-1","nodeId":"hq-1","kind":"vault","x":104,"y":0,"z":0}
+    ]},
+    {"id":"monsoon-foundry","nodes":[
+      {"id":"hq-0","archetype":"hq","x":-104,"y":0,"z":0},
+      {"id":"hq-1","archetype":"hq","x":104,"y":0,"z":0},
+      {"id":"front-0","archetype":"front","x":-52,"y":0,"z":12},
+      {"id":"front-1","archetype":"front","x":52,"y":0,"z":-12},
+      {"id":"econ-n","archetype":"economy","x":-8,"y":0,"z":-32},
+      {"id":"econ-s","archetype":"economy","x":8,"y":0,"z":32},
+      {"id":"relay-0","archetype":"relay","x":0,"y":0,"z":0}
+    ],"depots":[
+      {"id":"hq-depot-west","x":-104,"y":0,"z":-56},
+      {"id":"hq-depot-east","x":104,"y":0,"z":56},
+      {"id":"forward-depot-west","x":-64,"y":0,"z":-56},
+      {"id":"forward-depot-east","x":64,"y":0,"z":56}
+    ],"terminals":[
+      {"id":"relay-0-terminal","nodeId":"relay-0","kind":"relay","x":0,"y":0,"z":0},
+      {"id":"vault-hq-0","nodeId":"hq-0","kind":"vault","x":-104,"y":0,"z":0},
+      {"id":"vault-hq-1","nodeId":"hq-1","kind":"vault","x":104,"y":0,"z":0}
+    ]}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "baselineId": "lattice-armor",
+  "baselineParams": {"width":64,"height":64,"panelDensity":3,"grainDirection":"vertical","reliefStrength":0.35,"wearCoverage":0.12,"variationAmount":0.15,"seed":20260925},
+  "parameters": {"wearCoverage":{"values":[0.08,0.22]},"panelDensity":{"values":[2,4]}},
+  "count": 4,
+  "seed": 20260925
+}

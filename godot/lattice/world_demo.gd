@@ -125,6 +125,9 @@ func _ready() -> void:
 			world_telemetry.events(items, client.projection))
 	refresh_session_setup()
 	connect_selected_match()
+	var asset_layer := preload("res://lattice_assets/world_layer.gd").new()
+	add_child(asset_layer)
+	asset_layer.attach(self)
 
 func controls_released() -> bool:
 	for key: int in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_SPACE, KEY_R, KEY_SHIFT, KEY_CTRL, KEY_E, KEY_F, KEY_C, KEY_ESCAPE, KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9]:
