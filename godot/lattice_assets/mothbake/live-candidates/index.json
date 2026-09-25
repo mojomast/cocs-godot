@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "generator": "lattice-instruments-1-live-study",
+  "provenance": {
+    "asterion-ceramic-ridge": {
+      "engine": "blur-core-v1",
+      "jobId": "e03484e4-8d6d-4dd3-bbe3-e0feb8bcf3f6",
+      "mode": null,
+      "name": "asterion-ceramic-ridge",
+      "names": [
+        "asterion-ceramic-ridge"
+      ],
+      "credits": 1,
+      "archiveVerification": "hash-verified"
+    },
+    "asterion-relay-etched": {
+      "engine": "blur-core-v1",
+      "jobId": "d48d2d54-5b8d-458a-b1c5-a7dac9776ff0",
+      "mode": null,
+      "name": "asterion-relay-etched",
+      "names": [
+        "asterion-relay-etched"
+      ],
+      "credits": 1,
+      "archiveVerification": "hash-verified"
+    },
+    "monsoon-oxidized-ribs": {
+      "engine": "blur-core-v1",
+      "jobId": "f30c4f92-d8b7-4bd4-9078-b85ab1acc307",
+      "mode": null,
+      "name": "monsoon-oxidized-ribs",
+      "names": [
+        "monsoon-oxidized-ribs"
+      ],
+      "credits": 1,
+      "archiveVerification": "hash-verified"
+    },
+    "monsoon-drainage-flow": {
+      "engine": "blur-core-v1",
+      "jobId": "d5d1832c-3c38-4367-9b17-161ea4f80ec6",
+      "mode": null,
+      "name": "monsoon-drainage-flow",
+      "names": [
+        "monsoon-drainage-flow"
+      ],
+      "credits": 1,
+      "archiveVerification": "hash-verified"
+    }
+  },
+  "files": [
+    {
+      "bucket": "normals",
+      "key": "asterion-ceramic-ridge",
+      "job": "asterion-ceramic-ridge",
+      "type": "normal-map",
+      "file": "normals/asterion-ceramic-ridge.png",
+      "bytes": 3914
+    },
+    {
+      "bucket": "normals",
+      "key": "asterion-relay-etched",
+      "job": "asterion-relay-etched",
+      "type": "normal-map",
+      "file": "normals/asterion-relay-etched.png",
+      "bytes": 2974
+    },
+    {
+      "bucket": "normals",
+      "key": "monsoon-oxidized-ribs",
+      "job": "monsoon-oxidized-ribs",
+      "type": "normal-map",
+      "file": "normals/monsoon-oxidized-ribs.png",
+      "bytes": 3675
+    },
+    {
+      "bucket": "normals",
+      "key": "monsoon-drainage-flow",
+      "job": "monsoon-drainage-flow",
+      "type": "normal-map",
+      "file": "normals/monsoon-drainage-flow.png",
+      "bytes": 4791
+    }
+  ]
+}

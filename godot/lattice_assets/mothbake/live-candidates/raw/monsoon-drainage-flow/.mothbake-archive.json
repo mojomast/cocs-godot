@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "monsoon-drainage-flow",
+  "engine": "blur-core-v1",
+  "jobId": "d5d1832c-3c38-4367-9b17-161ea4f80ec6",
+  "recipeFingerprint": "851b24381f4726f2040b8aa23507b0e39d6411ccff0c686990e79e5e6a73a4d5",
+  "generationFingerprint": "da07f6660a11d1e2148148b4e67eb364a746ef5d44bb513be9e90b2432205656",
+  "verification": "new-request",
+  "rawFingerprint": "b87b7602c19e1fb020c3a7f401893cb7bce314a72eddf926872628bb219ba201",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 28634,
+    "sha256": "b39fe91abf114d6704d8f0474a27fe55a819657e9998562fd08c7abcae6dac25",
+    "jsonHash": "35bc9aa78d08a3dedaa2fe6af8a75097a5f034dd21b773b05f6e454e86c3c43b"
+  }
+}

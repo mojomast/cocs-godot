@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "monsoon-oxidized-ribs",
+  "engine": "blur-core-v1",
+  "jobId": "f30c4f92-d8b7-4bd4-9078-b85ab1acc307",
+  "recipeFingerprint": "61b308616027fbd0471a14f47ab24f1b61843f151a985a8a23f0d75c7ea36129",
+  "generationFingerprint": "7a068502ee3ef7209a41b63cce45eae8770bfe1fa2c938b9ce7547e3057ca548",
+  "verification": "new-request",
+  "rawFingerprint": "7f1cce592ae3bb4010827cebd89f664319546058afe7c302e42ddd1ed1780cd0",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 29127,
+    "sha256": "e026685f8ac07301e8a5ffe170c43b1cf439c7d0b5e4f333c8ec6e11519d8a4b",
+    "jsonHash": "1496d80b2f09e6c5ce75ab132b4a744cb852114df3d9833f06e09aa001e9c3ba"
+  }
+}

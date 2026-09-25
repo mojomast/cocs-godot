@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "asterion-ceramic-ridge",
+  "engine": "blur-core-v1",
+  "jobId": "e03484e4-8d6d-4dd3-bbe3-e0feb8bcf3f6",
+  "recipeFingerprint": "2fa77c78382edcc08f80ed4c958cdf6788132b23b7bc87b9fc75af1dd1bd27e2",
+  "generationFingerprint": "a30d050046f67009513ef9c7baa5c89a5961008f6f6ff95f76757614ec76b6bb",
+  "verification": "new-request",
+  "rawFingerprint": "4fac0da97d933997172a169ba4719f2b658b268156080b64abb0bba3cf5b0cce",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 28883,
+    "sha256": "6b8cdf20f8bffc39d4507aedb87678deefea1adb0ad3a6f2ff9ca6fe99a5a509",
+    "jsonHash": "793186badbbf712fecbd8d310d3355951fa627db9c9bc3f1aa03f64326c2ca32"
+  }
+}

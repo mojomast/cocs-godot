@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "generator": "lattice-instruments-1-live-study",
+  "comment": "Mothbake 93e182557c7c47b75c556477127fb27686fea20d. Four live blur-core-v1 relief studies for LATTICE's Asterion/Monsoon faceted instruments; results are candidates, not installed runtime materials or visual acceptance.",
+  "budget": {
+    "maxEstimatedCredits": 4,
+    "maxSubmissions": 4,
+    "allowUnknownCost": false
+  },
+  "jobs": [
+    {
+      "id": "asterion-ceramic-ridge",
+      "engine": "blur-core-v1",
+      "credits": 1,
+      "generateValues": {
+        "type": "height",
+        "size": 32,
+        "seed": 701,
+        "kind": "ridge",
+        "freq": 5,
+        "octaves": 5
+      },
+      "params": {
+        "style": "xy",
+        "strength": [
+          0.28,
+          0.28
+        ],
+        "reach": 0.15,
+        "axes": [
+          0,
+          1
+        ],
+        "shots": null,
+        "max_qubits": 20
+      },
+      "raw": "asterion-ceramic-ridge",
+      "bake": {
+        "type": "normal-map",
+        "name": "asterion-ceramic-ridge",
+        "size": 64,
+        "strength": 0.5
+      },
+      "jobId": "e03484e4-8d6d-4dd3-bbe3-e0feb8bcf3f6"
+    },
+    {
+      "id": "asterion-relay-etched",
+      "engine": "blur-core-v1",
+      "credits": 1,
+      "generateValues": {
+        "type": "height",
+        "size": 32,
+        "seed": 719,
+        "kind": "cells",
+        "freq": 6,
+        "octaves": 4
+      },
+      "params": {
+        "style": "xy",
+        "strength": [
+          0.25,
+          0.25
+        ],
+        "reach": 0.12,
+        "axes": [
+          0,
+          1
+        ],
+        "shots": null,
+        "max_qubits": 20
+      },
+      "raw": "asterion-relay-etched",
+      "bake": {
+        "type": "normal-map",
+        "name": "asterion-relay-etched",
+        "size": 64,
+        "strength": 0.45
+      },
+      "jobId": "d48d2d54-5b8d-458a-b1c5-a7dac9776ff0"
+    },
+    {
+      "id": "monsoon-oxidized-ribs",
+      "engine": "blur-core-v1",
+      "credits": 1,
+      "generateValues": {
+        "type": "height",
+        "size": 32,
+        "seed": 809,
+        "kind": "ridge",
+        "freq": 4,
+        "octaves": 4,
+        "angle": 0.32,
+        "anisotropy": 5
+      },
+      "params": {
+        "style": "xy",
+        "strength": [
+          0.3,
+          0.3
+        ],
+        "reach": 0.16,
+        "axes": [
+          0,
+          1
+        ],
+        "shots": null,
+        "max_qubits": 20
+      },
+      "raw": "monsoon-oxidized-ribs",
+      "bake": {
+        "type": "normal-map",
+        "name": "monsoon-oxidized-ribs",
+        "size": 64,
+        "strength": 0.55
+      },
+      "jobId": "f30c4f92-d8b7-4bd4-9078-b85ab1acc307"
+    },
+    {
+      "id": "monsoon-drainage-flow",
+      "engine": "blur-core-v1",
+      "credits": 1,
+      "generateValues": {
+        "type": "height",
+        "size": 32,
+        "seed": 827,
+        "kind": "noise",
+        "freq": 3,
+        "octaves": 5,
+        "angle": 0.5,
+        "anisotropy": 7
+      },
+      "params": {
+        "style": "xy",
+        "strength": [
+          0.24,
+          0.24
+        ],
+        "reach": 0.14,
+        "axes": [
+          0,
+          1
+        ],
+        "shots": null,
+        "max_qubits": 20
+      },
+      "raw": "monsoon-drainage-flow",
+      "bake": {
+        "type": "normal-map",
+        "name": "monsoon-drainage-flow",
+        "size": 64,
+        "strength": 0.5
+      },
+      "jobId": "d5d1832c-3c38-4367-9b17-161ea4f80ec6"
+    }
+  ],
+  "emitters": [
+    {
+      "type": "files"
+    },
+    {
+      "type": "json",
+      "file": "bundle.json"
+    }
+  ]
+}

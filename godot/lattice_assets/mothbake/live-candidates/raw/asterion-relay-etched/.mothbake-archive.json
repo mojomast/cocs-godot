@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "asterion-relay-etched",
+  "engine": "blur-core-v1",
+  "jobId": "d48d2d54-5b8d-458a-b1c5-a7dac9776ff0",
+  "recipeFingerprint": "eb92add771e26c7b1861e2d8b648bd3fcfcc57b414192f4595759d0a2ed36310",
+  "generationFingerprint": "1523c8138b9d1ce8a4d54c72a9cb89870c43176644b1fe761463871e6f4b88f4",
+  "verification": "new-request",
+  "rawFingerprint": "b8a8b655193305ab68c8aa0bd75d3466b3745cb7491f17e31b374379f82fcf1c",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 28707,
+    "sha256": "ed093b7a477dfc2a2ce868df7dbc9d87005a97908e98c1d054ac83748f98a94e",
+    "jsonHash": "af93fea179806d2aae18199595204827c80726c78864111b4d3e4975b9dc04f2"
+  }
+}

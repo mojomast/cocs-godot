@@ -6,9 +6,9 @@
 end of `world_demo.gd::_ready`. It builds six deterministic faceted recipes using
 the **same four-ring, octagonal beveled prism mesh builder as the players**.
 The runtime assets are authored geometry and palette materials, not paid Moth
-outputs. Latest Mothbake recipes/workflow are included; baking is deferred to
-the parent's serial resource slot. No screenshot or human visual acceptance is
-claimed.
+outputs. Latest Mothbake recipes/workflow and four live baked material studies
+are included as **uninstalled candidates**. No screenshot or human visual
+acceptance is claimed.
 
 | Family | Silhouette / reading | Mesh instances | Triangles |
 | --- | --- | ---: | ---: |
@@ -147,43 +147,56 @@ The Godot delivery pointer is `candidates/delivery/godot/current.json`, with
 projects under its referenced `versions/` directory. Generic CLI `export` uses
 a different pointer/layout and is not the Godot exporter.
 
-The user has now supplied a key outside the repository and authorized generous
-credits. **Credential blocker resolved; paid generation not run.** Current
-authenticated catalog discovery and an exact validated spending plan are still
-required before a live recipe is frozen. A suitable bounded live exploration is
-four low-strength Asterion ceramic / Monsoon drainage-relief candidates, retaining
-the faceted silhouette and map/team palettes. Actual price, engine version,
-backend and useful visual improvement remain unknown until discovery/results.
-Parent must schedule discovery/submission serially and retain journal job IDs and
-raw hashes. Never log/source credentials into manifests, artifacts or commits.
+The key was supplied through a restricted environment file outside the repository.
+The authenticated catalog reported `blur-core-v1` at **1 credit/job**. A separate
+`mothbake/live-manifest.json` froze four bounded, low-strength relief studies
+(plan fingerprint `005ccae25d1bdb75c8a99b17fe69fadcc0cb8d928cb949c3dbe26d399f32c8e5`,
+estimated **4 credits**, four admitted submissions). The serial run completed all
+four paid jobs; the Mothbake journal, raw provider result archives, hashes and
+baked 64×64 normal candidates are under `mothbake/live-candidates/`:
+
+| Candidate | Provider job ID | Baked normal SHA-256 |
+| --- | --- | --- |
+| Asterion ceramic ridge | `e03484e4-8d6d-4dd3-bbe3-e0feb8bcf3f6` | `212fa688c525de43bd75e7a167099b4395b761a32c4a7978fac6acf20c51b9c8` |
+| Asterion relay etched | `d48d2d54-5b8d-458a-b1c5-a7dac9776ff0` | `ccbc7fe367012a7f9f1cdb4a5e1cef0aa80af3c24c90278eb9d042e0fd3c0d65` |
+| Monsoon oxidized ribs | `f30c4f92-d8b7-4bd4-9078-b85ab1acc307` | `8c379115390502f068693a28209eee2d218475961a26a55ffe1c757507750aef` |
+| Monsoon drainage flow | `d5d1832c-3c38-4367-9b17-161ea4f80ec6` | `e9e5f591d91a0ac126e7f6087c9dd3c2932237a572c5cadac617509ca68d7d14` |
+
+Recorded grid studies also ran and rebuilt locally with zero provider submissions.
+The paid candidates rebuilt from their raw archives without resubmitting; the
+runtime remains palette-only until geometry gains suitable UV/tangent or triplanar
+normal sampling and visual review approves the result. Estimated credits are a
+plan value; the provider did not publish an actual charged-credit total. No API
+credential is present in the manifest or packaged journal.
 
 ## Verification
 
 Passed here (static/offline only):
 
-* Mothbake `validate`: 2 recorded jobs, valid.
+* Mothbake `validate`: 2 recorded jobs and 4 live candidates, valid.
 * `plan`: recorded=2, submissions=0, estimated credits=0, admission allowed;
   fingerprint `d233ab6cc7d760da5df195d307095821b87ac8e73d07586a26d58312ab166571`.
-* `run --dry`: no API calls and no writes.
+* Recorded run and rebuild: 2 fixture jobs, 4 baked records, no submissions.
+* Live run and rebuild: 4 provider jobs completed, 4 archived/rebuilt normal maps;
+  same final normal hashes as listed above.
 * Local workflow `--dry`: four finite candidates, no generation/writes;
   plan `6232b869ffda5d4f5c68e1534da2f7b7ec020dadc3ab367db633c1fdf941f815`.
 * Node syntax check for the workflow; JSON parsing and Git whitespace checks.
 * Authored fixture x/y/z compared to source declarations without executing the
   map generator; fixture source pin compared to `port/contracts/source-lock.json`.
 
-Added, **not run**: `godot/tests/lattice/flagship_asset_contract.gd`. It checks
+Passed in Godot 4.5.2: `godot/tests/lattice/flagship_asset_contract.gd`. It checks
 source-shaped placements, finite budgets, no physics/nav/light subtree, unknown
 vs neutral ownership, distinct team marks, contest clearing, mismatched position
 and map refusal, Operations mode counts and stale-state clearing.
 
-Serial parent command after normal content preparation:
+Focused contract command:
 
 ```bash
 godot --headless --path godot --script res://tests/lattice/flagship_asset_contract.gd
 ```
 
-Also pending: GDScript engine parse/import, live recipient integration, both-map
+Also pending: live recipient integration, both-map
 PvP/Operations screenshots, near/far/team/neutral/contest readability, performance
-measurement, local bake/rebuild/export execution, authenticated Moth plan/results,
-and human/QA acceptance. No builds, broad suites, benchmarks, Godot processes,
-imports or renders were launched in this lane.
+measurement, candidate approval/export, and human/QA acceptance. No build or
+rendered visual review is claimed by the focused headless checks.
