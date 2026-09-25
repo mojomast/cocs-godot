@@ -5,7 +5,7 @@ import {readFileSync, existsSync} from 'node:fs';
 import {resolve, dirname, relative} from 'node:path';
 import {isBuiltin} from 'node:module';
 const root = resolve(process.argv[2]);
-const hordeAdapters = ['port/native-horde/authority.mjs', 'port/native-horde/input-buffer.mjs'];
+const hordeAdapters = ['port/native-horde/authority.mjs', 'port/native-horde/input-buffer.mjs', 'port/native-horde/cinderwake-schema.mjs'];
 // Reviewed port-owned runtime inputs only. New helpers require a manifest edit.
 const nativeArenaAdapters = ['port/native-arenas/authority.mjs', 'port/native-arenas/match.mjs',
   'port/native-arenas/schema.mjs', 'port/native-arenas/catalog.mjs',
@@ -63,14 +63,16 @@ const identityZones = existsSync(resolve(root, identityZoneEntry)) ? discover(id
 const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules};
 const dataFiles = nativeArena ? nativeArenaData : [];
 const identityDataFiles = nativeArena || identityZones ? identityArenaData : [];
+const hordeDataFiles = Object.hasOwn(horde.modules,'port/native-horde/cinderwake-schema.mjs') ? ['godot/horde_maps/generated/cinderwake-drydock.json'] : [];
 const sorted = value => Object.fromEntries(Object.entries(value).sort());
 const sourceModules = {}, adapterModules = {};
 for (const [path, dependencies] of Object.entries(all)) (adapters.includes(path) ? adapterModules : sourceModules)[path] = dependencies;
 console.log(JSON.stringify({entry:'server/game-server.mjs', hordeEntry:hordeAdapters[0], nativeArenaEntry,
   identityZoneEntry,
   modules:sorted(sourceModules), adapterModules:sorted(adapterModules), external:ordinary.external,
-  dataFiles, identityDataFiles,
+  dataFiles, identityDataFiles, hordeDataFiles,
   dataReads:Object.fromEntries([
+    ...(hordeDataFiles.length ? [['port/native-horde/cinderwake-schema.mjs', hordeDataFiles]] : []),
     ...(nativeArena ? [['port/native-arenas/catalog.mjs', [...dataFiles, ...identityDataFiles]]] : []),
     ...(identityZones ? [['port/native-identity-zones/catalog.mjs', [...identityDataFiles]]] : []),
   ]),

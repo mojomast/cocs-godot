@@ -11,7 +11,9 @@ const discover = path => JSON.parse(execFileSync(process.execPath, ['--no-warnin
 test('actual Horde transitive closure is classified separately and source-byte locked', () => {
   const closure = discover(root);
   const lock = JSON.parse(readFileSync(join(root,'port/contracts/source-lock.json')));
-  assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-horde/')), ['port/native-horde/authority.mjs','port/native-horde/input-buffer.mjs']);
+  assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-horde/')), ['port/native-horde/authority.mjs','port/native-horde/cinderwake-schema.mjs','port/native-horde/input-buffer.mjs']);
+  assert.deepEqual(closure.hordeDataFiles,['godot/horde_maps/generated/cinderwake-drydock.json']);
+  assert.deepEqual(closure.dataReads['port/native-horde/cinderwake-schema.mjs'],closure.hordeDataFiles);
   assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-arenas/')).sort(), [
     'authority','catalog','event-cursor','input-buffer','match','schema',
   ].map(name=>`port/native-arenas/${name}.mjs`).sort());

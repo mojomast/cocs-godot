@@ -113,10 +113,16 @@ def main():
     write_json(logs / "server-closure.json", closure)
     arena_data = closure.get("dataFiles", [])
     identity_data = closure.get("identityDataFiles", [])
+    horde_data = closure.get("hordeDataFiles", [])
+    allowed_horde_data = {"godot/horde_maps/generated/cinderwake-drydock.json"}
+    if "port/native-horde/cinderwake-schema.mjs" in closure["adapterModules"]:
+        if set(horde_data) != allowed_horde_data or "game/horde-stages.mjs" not in closure["modules"]:
+            raise RuntimeError("Cinderwake requires complete map data and approved upstream Horde-stage source intake")
     allowed_arena_data = {f"godot/native_arenas/generated/{name}.json" for name in ["prism-foundry", "aurora-basin", "cinder-array"]}
     allowed_identity_data = {f"godot/identity_maps/generated/{name}.json" for name in ["lacuna-court", "vermilion-fold", "nacre-engine"]}
     for label, declared, allowed in [("native-arena", arena_data, allowed_arena_data),
-                                     ("identity-map", identity_data, allowed_identity_data)]:
+                                     ("identity-map", identity_data, allowed_identity_data),
+                                     ("horde-map", horde_data, allowed_horde_data)]:
         if (not isinstance(declared, list) or any(not isinstance(p, str) or p not in allowed for p in declared)
                 or len(declared) != len(set(declared))):
             raise RuntimeError(f"Unexpected {label} data closure")
@@ -127,6 +133,7 @@ def main():
     input_paths.update(closure["adapterModules"])
     input_paths.update(arena_data)
     input_paths.update(identity_data)
+    input_paths.update(horde_data)
     input_paths.update(["package.json", "package-lock.json", "port/contracts/source-lock.json", "port/contracts/map-selection.json", "tools/godot-export/semantic.mjs"])
     native_files = [p for p in git("ls-files", "godot").splitlines() if not p.startswith(("godot/tests/", "godot/content/", "godot/.godot/")) and p not in ["godot/.gitignore", "godot/export_presets.cfg"]]
     input_paths.update(native_files)
@@ -142,7 +149,7 @@ def main():
             raise RuntimeError(f"Runtime source differs from lock: {p}")
     # Port-owned adapters have separate provenance, never source-lock exemptions.
     # Require committed reviewed bytes; record their exact hashes independently.
-    for p in [*closure["adapterModules"], *arena_data, *identity_data]:
+    for p in [*closure["adapterModules"], *arena_data, *identity_data, *horde_data]:
         expected = subprocess.check_output(["git", "show", f"HEAD:{p}"], cwd=ROOT)
         if hashlib.sha256(expected).hexdigest() != inputs[p]:
             raise RuntimeError(f"Uncommitted runtime adapter/data: {p}")
@@ -227,7 +234,7 @@ ssh_remote_deploy/enabled=false
         raise RuntimeError("Expected separate PCK")
     if not windows and run([package / executable, "--version"], env=env) != EXACT:
         raise RuntimeError("Exported runtime exact version mismatch")
-    for p in [*closure["modules"], *closure["adapterModules"], *arena_data, *identity_data]:
+    for p in [*closure["modules"], *closure["adapterModules"], *arena_data, *identity_data, *horde_data]:
         copy(ROOT / p, package / "runtime" / p)
 
     # Fetch only the already-locked ordinary ws dependency. No npm/install scripts.
@@ -307,6 +314,8 @@ ssh_remote_deploy/enabled=false
         "build_node":run(["node", "--version"]), "play_node":f"{NODE_VERSION} (bundled)" if windows else ">=22.13.0 (external prerequisite)", "bundled_node":bundled_node,
         "maps":lock["map_ids"], "native_arenas":[Path(p).stem for p in arena_data],
         "identity_arenas":[Path(p).stem for p in identity_data], "server_closure":closure,
+        "horde_maps":[Path(p).stem for p in horde_data],
+        "horde_map_contracts":{p:{k:json.loads((ROOT / p).read_text())[k] for k in ["geometryHash", "planHash", "provenance"]} for p in horde_data},
         "server_data_reads":"Optional history/progression stores are null. Locked map modules and explicitly hashed native-arena plus identity-map JSON are included in the runtime closure.",
         "ws":{"version":ws["version"], "integrity":ws["integrity"], "resolved":ws["resolved"], "license":"MIT; retained in runtime/node_modules/ws/LICENSE; optional native accelerators omitted"},
         "toolchain":{"checksums_source":BASE + "SHA512-SUMS.txt", "archives":{v[0]:v[1] for v in ARCHIVES.values()}, "editor_sha256":digest(editor), "release_template_sha256":digest(templates / template_name)},
@@ -315,6 +324,7 @@ ssh_remote_deploy/enabled=false
         "port_adapter_sha256":{p:inputs[p] for p in closure["adapterModules"]},
         "native_arena_data_sha256":{p:inputs[p] for p in arena_data},
         "identity_arena_data_sha256":{p:inputs[p] for p in identity_data},
+        "horde_map_data_sha256":{p:inputs[p] for p in horde_data},
         "generated_resources_sha256":tree_hash(resources), "staged_export_preset":preset,
         "files":tree(package),
     }

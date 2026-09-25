@@ -73,6 +73,9 @@
     },
     "nacre-engine": {
       "name": "Nacre Engine"
+    },
+    "cinderwake-drydock": {
+      "name": "Cinderwake Drydock"
     }
   },
   "routes": [
@@ -330,7 +333,8 @@
             "meridian-exchange",
             "verdant-reliquary",
             "ember-crucible",
-            "nacre-engine"
+            "nacre-engine",
+            "cinderwake-drydock"
           ],
           "default": "meridian-exchange"
         },
@@ -935,7 +939,8 @@
             "meridian-exchange",
             "verdant-reliquary",
             "ember-crucible",
-            "nacre-engine"
+            "nacre-engine",
+            "cinderwake-drydock"
           ],
           "default": "meridian-exchange"
         },

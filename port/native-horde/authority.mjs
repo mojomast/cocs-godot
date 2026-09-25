@@ -9,6 +9,7 @@ import {parseInputEnvelope} from '../../game/protocol.mjs';
 import {selectHordeUpgrade} from '../../game/singleplayer.mjs';
 import {validLoadout} from '../../game/data.mjs';
 import {InputBuffer} from './input-buffer.mjs';
+import {readCinderwake} from './cinderwake-schema.mjs';
 import {applyDebugFrame, applyLiveOverrides, createDebugState, debugEcho, installHumanGuard,
   parseDebugFrame, reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT} from '../native-debug/debug.mjs';
 export const MAPS = ['meridian-exchange','verdant-reliquary','ember-crucible'];
@@ -40,7 +41,9 @@ export const MAPS = ['meridian-exchange','verdant-reliquary','ember-crucible'];
 // lane review. `game/core.mjs` is already in the closure.
 // ---------------------------------------------------------------------------
 export const IDENTITY_MAPS = Object.freeze(['nacre-engine']);
-export const HORDE_MAPS = Object.freeze([...MAPS, ...IDENTITY_MAPS]);
+export const HORDE_MAPS = Object.freeze([...MAPS, ...IDENTITY_MAPS, 'cinderwake-drydock']);
+// Transport provenance only; these records never write source simulation state.
+const hordeMapContracts = new WeakMap();
 const IDENTITY_HORDE_MODE = 'horde';
 const IDENTITY_MAP_SOURCES = Object.freeze({
  'nacre-engine':'godot/identity_maps/generated/nacre-engine.json',
@@ -194,7 +197,15 @@ export function createHordeMatch({mapId, config, random = Math.random, character
   if (!HORDE_MAPS.includes(mapId)) throw Error('Unsupported local Horde map');
   if (typeof random !== 'function') throw Error('RNG must be a function');
   if (!config || config.mode !== 'horde' || config.botCount !== 0) throw Error('Normalized Horde config required');
-  if (!validLoadout(character,harness)) throw Error('Unsupported Horde operator/harness');
+   if (!validLoadout(character,harness)) throw Error('Unsupported Horde operator/harness');
+   if (mapId==='cinderwake-drydock') {
+    if(typeof Match.prototype.applyHordeGateMask!=='function') throw Error('Cinderwake requires approved source Horde-stage intake');
+    const data=readCinderwake();
+    const match=new Match(character,harness,random,mapId,{...config,humanCount:1,hordeArena:data.arena});
+    if(match.arena.id!==mapId||!match.modeState?.stage||match.humanCount!==1||match.modeState.lives!==3)throw Error('Cinderwake source constructor contract');
+    hordeMapContracts.set(match,Object.freeze({version:1,geometryHash:data.geometryHash,planHash:data.planHash}));
+    return match;
+   }
   if (!IDENTITY_MAPS.includes(mapId)) return new Match(character,harness,random,mapId,config);
  const arena = readIdentityMap(mapId);
   let assigned = false;
@@ -435,7 +446,7 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
      const initialEvents=eventCursor.take(match);
      // Construction cost must not advance the new match's source clock.
      wall=performance.now(); accumulator=0;
-     send({type:'start',mapId,inputEpoch:epoch});
+      send({type:'start',mapId,inputEpoch:epoch,...(hordeMapContracts.has(match)?{hordeMapContract:hordeMapContracts.get(match)}:{})});
      if (initialEvents.length) send({type:'events',items:initialEvents});
     } else if (f.type === 'input' && match) {
      if (match.over) return; // benign inputs already in flight at results
@@ -522,7 +533,7 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
     // Every-tick snapshots, same cadence as the native-arena and identity-zone
     // authorities (see port/native-motion-smoothness/).
     send({type:'snapshot',seq:++seq,acks:{0:inputs.applied},
-     inputEpoch:epoch,hordeInput:inputs.status(),state:active.snapshot()});
+      inputEpoch:epoch,hordeInput:inputs.status(),state:active.snapshot(),...(hordeMapContracts.has(active)?{hordeMapContract:hordeMapContracts.get(active)}:{})});
     if (active.over) {
      finished=true; inputs.cancel();
      send({type:'results',inputEpoch:epoch,hordeInput:inputs.status(),state:active.snapshot()});
