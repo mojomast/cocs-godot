@@ -19,7 +19,7 @@ test('no actors or mismatched room never opens host start gate; outgoing guest s
 // Full-round fixtures. Every terminal/restart fact is a recipient frame; no
 // helper fabricates an authoritative event.
 const welcome=(peerId,ms=1)=>({direction:'recipient',elapsed_ms:ms,frame:{type:'welcome',peerId,roomId:'ABCD'}});
-const lobby=(peerId,actorId,ms=2)=>({direction:'recipient',elapsed_ms:ms,frame:{type:'lobby',roomId:'ABCD',players:[{peerId,actorId,connected:true,spectate:false}]}});
+const lobby=(peerId,actorId,ms=11,revision=1)=>({direction:'recipient',elapsed_ms:ms,frame:{type:'lobby',roomId:'ABCD',roundRevision:revision,players:[{peerId,actorId,connected:true,spectate:false}]}});
 const started=(rev,ms=10)=>({direction:'recipient',elapsed_ms:ms,frame:{type:'start',roundRevision:rev}});
 const terminal=(ms=100,state={})=>({direction:'recipient',elapsed_ms:ms,frame:{type:'results',state:{over:true,winner:0,overReason:'time',time:120,...state}}});
 const pvp={cocs:{outcome:{mode:'pvp',waves:null,hq:null}}};
@@ -88,6 +88,17 @@ test('a shared recipient actor or an unsnapshotted terminal round is an identity
  assert.ok(shared.failures.includes('two distinct recipient-assigned actors not observed'));
  const unconfirmed=evaluateFullRound({host:complete(1,10),guest:complete(2,20)},{snapshotRevisions:{host:[2],guest:[2]}});
  assert.equal(unconfirmed.sockets.host.identity,false);assert.equal(unconfirmed.witness_status,'INCOMPLETE');
+});
+
+test('pre-start null actor assignment cannot hide or replace the sourced round assignment',()=>{
+ const complete=(peer,actor)=>[welcome(peer),lobby(peer,null,2,0),started(1),lobby(peer,actor),terminal(100,{...pvp}),started(2,150)];
+ const valid=evaluateFullRound({host:complete(1,10),guest:complete(2,20)},{snapshotRevisions:bothRevs});
+ assert.equal(valid.witness_status,'ROUND_OBSERVED');
+ assert.equal(valid.sockets.host.actorId,10);
+ const hostOnlyPrestart=[welcome(1),lobby(1,null,2,0),started(1),terminal(100,{...pvp}),started(2,150)];
+ const missing=evaluateFullRound({host:hostOnlyPrestart,guest:complete(2,20)},{snapshotRevisions:bothRevs});
+ assert.equal(missing.witness_status,'INCOMPLETE');
+ assert.equal(missing.sockets.host.identity,false);
 });
 
 test('operations terminal distinguishes completion from failure and never earns a five-wave or human claim',()=>{

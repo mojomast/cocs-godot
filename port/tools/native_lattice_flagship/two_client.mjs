@@ -94,14 +94,16 @@ export function evaluateFullRound(sockets, {dropped=0,snapshotRevisions={},repor
   const terminal=results?classifyTerminal(results.frame):null;
   const terminalRevision=results?(starts.filter(r=>r.elapsed_ms<=results.elapsed_ms).map(r=>r.frame.roundRevision).at(-1)??null):null;
   const peerId=Number.isInteger(welcome?.peerId)?welcome.peerId:null;
-  const assignments=peerId===null?null:rows.filter(r=>r.frame?.type==='lobby'&&(!results||r.elapsed_ms<=results.elapsed_ms))
-   .flatMap(r=>Array.isArray(r.frame?.players)?r.frame.players:[]).find(p=>p?.peerId===peerId);
+  // Pre-start rosters publish actorId:null. Use an assignment from the
+  // terminal round's lobby revision, not the first matching peer in history.
+  const assignments=peerId===null?null:rows.filter(r=>r.frame?.type==='lobby'&&r.frame?.roundRevision===terminalRevision&&(!results||r.elapsed_ms<=results.elapsed_ms))
+   .flatMap(r=>Array.isArray(r.frame?.players)?r.frame.players:[]).findLast(p=>p?.peerId===peerId&&Number.isInteger(p?.actorId));
   const actorId=Number.isInteger(assignments?.actorId)?assignments.actorId:null;
   const revs=Array.isArray(snapshotRevisions?.[who])?snapshotRevisions[who]:[];
   const identity=peerId!==null&&actorId!==null&&terminalRevision!==null&&revs.includes(terminalRevision);
   const restartStarts=terminalRevision===null?[]:starts.filter(r=>r.frame.roundRevision>terminalRevision);
   const restartRevision=restartStarts.map(r=>r.frame.roundRevision).sort((a,b)=>a-b).at(-1)??null;
-  const restarted=restartRevision!==null&&revs.some(r=>Number.isInteger(r)&&r>terminalRevision);
+  const restarted=restartRevision!==null&&revs.includes(restartRevision);
   per[who]={peerId,actorId,terminalRevision,restartRevision,terminal_observed:!!terminal,terminal,identity,restart_observed:restarted};
   if(!terminal)failures.push(`${who}: no recipient terminal results frame`);
   if(!identity)failures.push(`${who}: recipient peer/actor/round identity not established`);
@@ -111,6 +113,8 @@ export function evaluateFullRound(sockets, {dropped=0,snapshotRevisions={},repor
  for(const f of nativeFailures)failures.push(f);
  const nativeCorrelated=nativeFailures.length===0;
  const distinctActors=per.host.actorId!==null&&per.guest.actorId!==null&&per.host.actorId!==per.guest.actorId;
+ const bothIdentified=per.host.identity&&per.guest.identity&&per.host.peerId!==per.guest.peerId;
+ if(!bothIdentified)failures.push('both sockets must identify distinct peers and current-round assigned actors');
  if(!distinctActors)failures.push('two distinct recipient-assigned actors not observed');
  const captureComplete=dropped===0;
  if(!captureComplete)failures.push(`capture capacity: ${dropped} records dropped; full-round wire is incomplete`);
@@ -118,10 +122,10 @@ export function evaluateFullRound(sockets, {dropped=0,snapshotRevisions={},repor
  const bothRestarted=per.host.restart_observed&&per.guest.restart_observed;
  const agreement=bothTerminal&&per.host.terminal.terminal_class===per.guest.terminal.terminal_class;
  if(bothTerminal&&!agreement)failures.push('recipient terminal results disagree on the source winner');
- const witnessStatus=!captureComplete?'CAPTURE_CAPPED':(bothTerminal&&bothRestarted&&distinctActors&&agreement&&nativeCorrelated?'ROUND_OBSERVED':'INCOMPLETE');
+ const witnessStatus=!captureComplete?'CAPTURE_CAPPED':(bothTerminal&&bothRestarted&&bothIdentified&&distinctActors&&agreement&&nativeCorrelated?'ROUND_OBSERVED':'INCOMPLETE');
  const terminal=per.host.terminal??per.guest.terminal??null;
  return {schema_version:1,witness_status:witnessStatus,both_terminal:bothTerminal,both_restarted:bothRestarted,
-  distinct_actors:distinctActors,agreement,native_correlated:nativeCorrelated,native_required:!!reports,
+  distinct_actors:distinctActors,both_identified:bothIdentified,agreement,native_correlated:nativeCorrelated,native_required:!!reports,
   terminal_class:terminal?.terminal_class??null,operations_outcome:terminal?.operations_outcome??null,
   winner:terminal?.winner??null,reason:terminal?.reason??null,waves_cleared:terminal?.waves_cleared??null,
   waves_total:terminal?.waves_total??null,hq_health:terminal?.hq_health??null,hq_max:terminal?.hq_max??null,
@@ -193,6 +197,9 @@ async function main(){
        // and a snapshot bearing it. The host probe only issues the ordinary
        // restart request; the server mints the authoritative restart.
        await until(()=>evaluateFullRound(sockets,{dropped,snapshotRevisions,reports}).both_restarted,restartWaitMs,controller.signal);
+       // Native result/restart reports are asynchronous to the recipient
+       // socket callbacks; allow their own bounded observation window.
+       await until(()=>dropped>0||evaluateFullRound(sockets,{dropped,snapshotRevisions,reports}).witness_status==='ROUND_OBSERVED',15000,controller.signal);
        roundEvidence=evaluateFullRound(sockets,{dropped,snapshotRevisions,reports});
        if(roundEvidence.witness_status!=='ROUND_OBSERVED')throw Error(`Full-round evidence incomplete: ${roundEvidence.failures.join('; ')}`);
      }
@@ -208,10 +215,10 @@ async function main(){
    if(fullRound&&!roundEvidence)roundEvidence=evaluateFullRound(sockets,{dropped,snapshotRevisions,reports});
    const capture={rows,bytes,max_rows:maxRows,max_bytes:maxBytes,dropped,capture_complete:dropped===0};
    if(roundEvidence)writeFileSync(join(dir,'round.json'),JSON.stringify(roundEvidence,null,2));
-   const status=fullRound?(roundEvidence?.claim??'BLOCKED'):reason==='source-start-observed-both'?'OBSERVED':reason==='engine-driven-two-client-observed'?'ENGINE_SMOKE_OBSERVED':'BLOCKED';
+   const status=fullRound?(reason==='engine-driven-two-native-full-round-observed'&&!error&&roundEvidence?.claim==='ENGINE_FULL_ROUND_OBSERVED'?'ENGINE_FULL_ROUND_OBSERVED':roundEvidence?.witness_status==='CAPTURE_CAPPED'?'CAPTURE_CAPPED':'BLOCKED'):reason==='source-start-observed-both'?'OBSERVED':reason==='engine-driven-two-client-observed'?'ENGINE_SMOKE_OBSERVED':'BLOCKED';
    writeFileSync(join(dir,'results.json'),JSON.stringify({status,reason,evaluation,full_round:fullRound,round:roundEvidence,capture,reports,guest_start_authorization:'UNVERIFIED',guest_outgoing:sockets.guest.filter(x=>x.direction==='client'),cleanup:{children_waited:childrenWaited,server_closed:serverClosed,temp_removed:!runtime||!existsSync(runtime)},error},null,2));
    const files=['manifest.json','wire.jsonl','native.jsonl','native.log','results.json',...(roundEvidence?['round.json']:[])];
-   const hashes={};for(const f of files)hashes[f]=createHash('sha256').update(readFileSync(join(dir,f))).digest('hex');writeFileSync(join(dir,'evidence-manifest.json'),JSON.stringify({schema_version:1,pin:lock.source_commit,evidence_class:evidenceClass,labels:{wire:`per-socket recipient and outgoing frames; complete up to ${maxRows} rows / ${maxBytes} bytes, drops counted and fatal for a full round`,native:'per-client PORT_NATIVE_TRACE lines; logs are not outcomes',start:fullRound?'engine-scripted Start and scripted restart request; no human click or identity':'human click only; source start must be observed',round:fullRound?'both independent recipient sockets must show a terminal result and a clean restart; never a five-wave or human claim':'not-applicable',security:'guest cannot-start assertion unverified'},hashes,elapsed_ms:Date.now()-started,cleanup:{children_waited:childrenWaited,server_closed:serverClosed,temp_removed:!runtime||!existsSync(runtime)}},null,2));if(error)console.error(error);console.log(`${dir}: ${status} (${reason})`);
+   const hashes={};for(const f of files)hashes[f]=createHash('sha256').update(readFileSync(join(dir,f))).digest('hex');writeFileSync(join(dir,'evidence-manifest.json'),JSON.stringify({schema_version:1,pin:lock.source_commit,evidence_class:evidenceClass,labels:{wire:`per-socket recipient and outgoing frames; complete up to ${maxRows} rows / ${maxBytes} bytes, drops counted and fatal for a full round`,native:'per-client PORT_NATIVE_TRACE lines; logs are not outcomes',start:fullRound?'engine-scripted Start and scripted restart request; no human click or identity':'human click only; source start must be observed',round:fullRound?'both independent recipient sockets must show a terminal result and a clean restart; never a five-wave or human claim':'not-applicable',security:'guest cannot-start assertion unverified'},hashes,elapsed_ms:Date.now()-started,cleanup:{children_waited:childrenWaited,server_closed:serverClosed,temp_removed:!runtime||!existsSync(runtime)}},null,2));if(fullRound&&status!=='ENGINE_FULL_ROUND_OBSERVED')process.exitCode=1;if(error)console.error(error);console.log(`${dir}: ${status} (${reason})`);
  }
 }
 function until(predicate,ms,signal){return new Promise((ok,no)=>{const end=Date.now()+ms;const tick=()=>signal?.aborted?no(Error('interrupted')):predicate()?ok():Date.now()>end?no(Error('bounded wait expired')):setTimeout(tick,100);tick()})}
