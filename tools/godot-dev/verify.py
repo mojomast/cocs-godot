@@ -64,6 +64,7 @@ commands = [
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),
     ("arms-race-source", ["node", "--test", "game/armsrace.test.mjs", "game/outcome.test.mjs", "game/input.test.mjs", "game/movement-input.test.mjs"]),
     ("horde-source", ["node", "--test", "game/singleplayer.test.mjs", "game/singleplayer-ui.test.mjs"]),
+    ("cinderwake-source", ["node", "--test", "game/horde-stages.test.mjs", "tools/godot-horde-maps/cinderwake.test.mjs", "tools/godot-horde-maps/source-fixture.test.mjs", "port/native-horde/cinderwake.test.mjs", "port/native-identity-horde/validate_cinderwake.test.mjs"]),
     ("horde-upgrade-adapter", ["node", "--test", "port/native-horde/upgrade.test.mjs"]),
     ("horde-adapter", ["node", "--test", "port/native-horde/test.mjs", "port/native-horde/input-buffer.test.mjs", "port/native-horde/repair-regression.test.mjs", "port/native-horde/event-cursor.test.mjs", "port/native-horde/npc-kills.test.mjs"]),
     ("horde-death-wire", ["node", "--test", "port/native-horde-deaths/wire.test.mjs"]),
@@ -204,6 +205,7 @@ commands = [
     # Actual native input/authority path; offer timing is an explicit test fixture.
     ("horde-upgrade-fixture", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "godot/tests/horde/upgrade_loopback.mjs"]),
     ("horde-controls", [binary, "--headless", "--path", "godot", "--script", "res://tests/horde/controls_test.gd", "--", "--vectors=" + str(root / "port/reports/horde-input-vectors.json")]),
+    ("cinderwake-native-gates", [binary, "--headless", "--path", "godot", "--script", "res://tests/horde/cinderwake_test.gd"]),
     ("sports-controls", [binary, "--headless", "--path", "godot", "--script", "res://tests/sports/test_controls.gd"]),
     ("sports-polish", [binary, "--headless", "--path", "godot", "--script", "res://tests/sports/test_polish.gd"]),
     ("sports-progression", [binary, "--headless", "--path", "godot", "--script", "res://tests/sports/progression_test.gd"]),

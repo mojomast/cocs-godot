@@ -7,13 +7,16 @@ import {createNativeMatch} from '../match.mjs';
 import {EventCursor} from '../event-cursor.mjs';
 import {syntheticArena, seededRandom, aimedControls} from './fixtures.mjs';
 
-test('source constructor seam is assignment before nav/spawns/actors, not options.arena', () => {
+test('source constructor seam assigns arena before nav/spawns/actors; Horde-only trusted plan never aliases native arena', () => {
   const source = readFileSync(new URL('../../../game/core.mjs', import.meta.url), 'utf8');
   const constructor = source.slice(source.indexOf("constructor(character="), source.indexOf('initializeRace(){'));
-  assert.ok(constructor.includes('this.arena=getMap(mapId)'));
+  const assignment='this.arena=options.hordeArena?prepareHordeArena(options.hordeArena,this.config):getMap(mapId)';
+  assert.ok(constructor.includes(assignment));
   assert.ok(!constructor.includes('options.arena'));
-  assert.ok(constructor.indexOf('this.arena=getMap(mapId)') < constructor.indexOf('matchNavigation(this.arena'));
+  assert.ok(constructor.indexOf(assignment) < constructor.indexOf('matchNavigation(this.arena'));
   assert.ok(constructor.indexOf('matchNavigation(this.arena') < constructor.indexOf('this.actors=['));
+  assert.throws(() => new Match('chatgpt','openclaw',seededRandom(),'prism-foundry',
+    {mode:'deathmatch',hordeArena:syntheticArena().arena}),/Horde/);
 });
 test('SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched', () => {
   const registry = MAPS.slice(), fallback = getMap('prism-foundry');
