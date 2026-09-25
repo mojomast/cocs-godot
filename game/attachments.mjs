@@ -1,6 +1,14 @@
 // Weapon attachments: slot-based modifiers and behavior modules for the FPS loadout.
 // Kept self-contained so callers can resolve a {slot:id} map into an applied weapon
 // without touching the base WEAPONS table.
+//
+// This is the persistent career mod catalogue: a fitted attachment is chosen
+// before a match and stays on the weapon across modes until it is cleared. It
+// is separate from the round-scoped personal REQ store the COCS economy layer
+// resolves during a match. Every entry here changes a field
+// `applyAttachmentsToWeapon` actually writes, so the UI can surface real
+// numbers instead of cosmetic promises. The launch items keep their ids,
+// levels and modifiers so old profiles and presets still round-trip.
 export const ATTACHMENT_SLOTS=Object.freeze([
  Object.freeze({id:'optic',name:'Optic'}),
  Object.freeze({id:'barrel',name:'Barrel'}),
@@ -23,12 +31,56 @@ export const ATTACHMENTS=Object.freeze([
  Object.freeze({id:'explosive-tips',slot:'magazine',name:'Explosive Tips',description:'Impact-fused rounds that detonate for area damage. Everything is a grenade if you believe.',level:16,weapons:[1,4,5],modifiers:Object.freeze({damage:1.05,spread:1.08}),behavior:Object.freeze({mode:'explosive',explosiveRadius:2.6,explosiveDamage:.45}),visual:Object.freeze({magazine:'stock',color:'#ffad61'})}),
  Object.freeze({id:'homing-beacon',slot:'underbarrel',name:'Homing Beacon',description:'A targeting beacon that steers projectiles toward the target. Aiming is now a suggestion.',level:18,weapons:[1,4],modifiers:Object.freeze({spread:.95}),behavior:Object.freeze({mode:'homing',homing:.6,turnRate:3}),visual:Object.freeze({color:'#ffd166'})}),
  Object.freeze({id:'chain-capacitor',slot:'underbarrel',name:'Chain Capacitor',description:'Arcs residual energy from a hit into a nearby second target. Sharing is caring.',level:20,weapons:[4,6],modifiers:Object.freeze({damage:.95,spread:.95}),behavior:Object.freeze({mode:'chain',chain:2,chainRange:6}),visual:Object.freeze({color:'#8ce8ff'})}),
+ // --- Career expansion (v7.x): fills the low career with honest starter mods
+ // and the high career with specialised ones. Each reuses modifiers/behaviours
+ // the resolver and core already apply; no item is cosmetic-only.
+ Object.freeze({id:'red-dot',slot:'optic',name:'Red Dot Sight',description:'A zero-magnification dot that clears the sight picture. The honest first upgrade.',level:1,weapons:[],modifiers:Object.freeze({spread:.94}),behavior:Object.freeze({}),visual:Object.freeze({optic:'holo',color:'#7ce0ff'})}),
+ Object.freeze({id:'marksman-optic',slot:'optic',name:'Marksman Optic',description:'A high-magnification optic for rail and marksman work. Slower to settle, but it reaches.',level:28,weapons:[2,6,8],modifiers:Object.freeze({spread:.78,range:1.22,interval:1.06}),behavior:Object.freeze({}),visual:Object.freeze({optic:'scope',color:'#b79bff'})}),
+ Object.freeze({id:'short-barrel',slot:'barrel',name:'Short Barrel',description:'A stubby barrel that snaps up fast and trades reach and kick for speed. CQC, no apologies.',level:5,weapons:[3,7,9],modifiers:Object.freeze({range:.82,spread:1.08,interval:.95,recoilKick:1.12}),behavior:Object.freeze({}),visual:Object.freeze({barrel:'short'})}),
+ Object.freeze({id:'muzzle-brake',slot:'barrel',name:'Muzzle Brake',description:'Ports that tame kick and tighten follow-up shots at a sliver of damage. Control over sting.',level:7,weapons:[],modifiers:Object.freeze({spread:.96,recoilKick:.78,damage:.97}),behavior:Object.freeze({}),visual:Object.freeze({barrel:'short',color:'#8a9aa2'})}),
+ Object.freeze({id:'quick-mag',slot:'magazine',name:'Quick Magazine',description:'A sprung magazine that drops fast for a faster reload. Sprinting hands group a little looser.',level:4,weapons:[0,3,4,6,9],modifiers:Object.freeze({reload:.8,spread:1.04}),behavior:Object.freeze({}),visual:Object.freeze({magazine:'stock',color:'#c9d4dc'})}),
+ Object.freeze({id:'match-ammo',slot:'magazine',name:'Match Ammunition',description:'Hand-loaded rounds for reach and stopping power, cycled a touch slower. For long team-elimination trades.',level:12,weapons:[2,8],modifiers:Object.freeze({damage:1.06,range:1.12,interval:1.04}),behavior:Object.freeze({}),visual:Object.freeze({magazine:'stock',color:'#ffd166'})}),
+ Object.freeze({id:'vertical-grip',slot:'underbarrel',name:'Vertical Grip',description:'A forward grip that steadies the muzzle while nudging the reload slower. Brace and hold.',level:3,weapons:[],modifiers:Object.freeze({spread:.95,reload:1.06}),behavior:Object.freeze({}),visual:Object.freeze({color:'#5a6a72'})}),
+ Object.freeze({id:'salvo-module',slot:'underbarrel',name:'Salvo Module',description:'A two-round burst module that turns each pull into a disciplined pair, at the cost of a slower cycle and a touch more scatter.',level:22,weapons:[0,4,9],modifiers:Object.freeze({interval:1.08,spread:1.04}),behavior:Object.freeze({mode:'burst',burst:2,burstDelay:.18}),visual:Object.freeze({color:'#8affc1'})}),
 ]);
 const BY_ID=new Map(ATTACHMENTS.map(item=>[item.id,item]));
 const MULTIPLICATIVE=['damage','spread','interval','range','bloomPerShot','bloomMax','recoilKick','reload'];
 const ADDITIVE=['cap','pellets','burst'];
 const MODIFIER_RANGES={damage:[.25,3],spread:[.2,2],interval:[.2,2],range:[.4,3],bloomPerShot:[.2,2],bloomMax:[.2,2],recoilKick:[.2,2],reload:[.3,2],cap:[0,200],pellets:[0,20],burst:[0,8]};
 export function attachmentById(id){return BY_ID.get(id)||null;}
+// Presentation-only spec chips for a definition. Every chip is derived from the
+// same modifier/behaviour fields `resolveAttachments`/`applyAttachmentsToWeapon`
+// consume, so a card can never advertise an effect the simulation will not
+// apply. The order is fixed for deterministic tests and stable rendering.
+const specPct=value=>{const delta=Math.round((value-1)*100);return `${delta>0?'+':''}${delta}%`;};
+const specCount=value=>`${value>0?'+':''}${Math.round(value)}`;
+export function attachmentSpec(item){
+ const mods=item?.modifiers||{},beh=item?.behavior||{},chips=[];
+ if(Number.isFinite(mods.damage)&&mods.damage!==1)chips.push(`${specPct(mods.damage)} DMG`);
+ if(Number.isFinite(mods.range)&&mods.range!==1)chips.push(`${specPct(mods.range)} RNG`);
+ if(Number.isFinite(mods.spread)&&mods.spread!==1)chips.push(`${specPct(mods.spread)} SPREAD`);
+ if(Number.isFinite(mods.interval)&&mods.interval!==1)chips.push(`${specPct(mods.interval)} CYCLE`);
+ if(Number.isFinite(mods.reload)&&mods.reload!==1)chips.push(`${specPct(mods.reload)} RELOAD`);
+ if(Number.isFinite(mods.recoilKick)&&mods.recoilKick!==1)chips.push(`${specPct(mods.recoilKick)} KICK`);
+ if(Number.isFinite(mods.bloomPerShot)&&mods.bloomPerShot!==1)chips.push(`${specPct(mods.bloomPerShot)} BLOOM`);
+ if(Number.isFinite(mods.bloomMax)&&mods.bloomMax!==1)chips.push(`${specPct(mods.bloomMax)} MAX BLOOM`);
+ if(Number.isFinite(mods.cap)&&mods.cap!==0)chips.push(`${specCount(mods.cap)} ROUNDS`);
+ if(Number.isFinite(mods.pellets)&&mods.pellets!==0)chips.push(`${specCount(mods.pellets)} PELLETS`);
+ if(beh.mode==='burst')chips.push(`BURST ×${Math.round(beh.burst??mods.burst??0)}`);
+ else if(beh.mode==='charge')chips.push('CHARGE SHOT');
+ else if(beh.mode==='pierce')chips.push(`PIERCE ×${Math.round(beh.pierce??0)}`);
+ else if(beh.mode==='explosive')chips.push('EXPLOSIVE');
+ else if(beh.mode==='homing')chips.push('HOMING');
+ else if(beh.mode==='chain')chips.push(`CHAIN ×${Math.round(beh.chain??0)}`);
+ return chips;
+}
+// True when a definition fits a weapon index. Mirrors the fit filter the match
+// applies in `Match.weaponForIndex`: an empty list means the attachment is
+// universal, otherwise the weapon index must be listed.
+export function attachmentFits(item,weapon){
+ const list=Array.isArray(item?.weapons)?item.weapons:[];
+ return list.length===0||list.includes(Number(weapon));
+}
 export function normalizeAttachments(value,level=1){
  const source=value&&typeof value==='object'?value:{},l=Math.max(1,Math.round(level)),out={};
  for(const slot of SLOT_IDS){const item=attachmentById(source[slot]);if(!item||item.slot!==slot||item.level>l)continue;out[slot]=item.id;}

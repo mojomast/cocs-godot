@@ -5,6 +5,8 @@ import type {ScreenProps} from '../contract';
 import {Modal,Btn,Tabs,Panel,Chip,Empty} from '../primitives';
 import {HELP_SECTIONS} from '../../../game/onboarding.mjs';
 import {altSpecFor} from '../../../game/alt-fire.mjs';
+import {attachmentSpec} from '../../../game/attachments.mjs';
+import {gearBudget,gearPoints} from '../../../game/progression.mjs';
 import {formatNumber,formatWhole} from '../../../game/format-ui.mjs';
 import {weaponRangeInfo} from '../../../game/hud.mjs';
 import {GraphicsLabPanel} from './GraphicsLabPanel';
@@ -96,6 +98,13 @@ export function WeaponCompare({WEAPONS=[]}:{WEAPONS?:any[]}){
 
 const levelOf=(item:any)=>Math.max(1,Math.round(Number(item?.level)||1));
 const locked=(level:number,item:any)=>levelOf(item)>level;
+// Read-only career spec lines drawn from the same resolver the match uses, so
+// the inspector shows the numbers a loadout will actually apply.
+const AXIS_ABBR:Record<string,string>={offense:'DMG',mobility:'SPD',ehp:'EHP',handling:'HND'};
+const signedPoint=(value:number)=>`${value>0?'+':''}${value}`;
+const gearStatLine=(item:any)=>{const points=gearPoints(item.modifiers);return `DMG ${signedPoint(points.offense)} · SPD ${signedPoint(points.mobility)} · EHP ${signedPoint(points.ehp)} · HND ${signedPoint(points.handling)}`;};
+const gearAxisLine=(item:any)=>{const spend=gearBudget(item);return `${AXIS_ABBR[item.powerAxis]}▲ ${AXIS_ABBR[item.costAxis]}▼ · NET ${spend.net}`;};
+const modStatLine=(item:any)=>attachmentSpec(item).join(' · ');
 
 // Read-only viewer over the same weapon/operator/attachment data the match uses.
 // Unlock state mirrors the progression level gates so the menu cannot drift from
@@ -130,6 +139,7 @@ export function ArsenalInspector({WEAPONS=[],CHARACTERS=[],ATTACHMENTS=[],ATTACH
    <div className="grid-cards">{items.map((item:any)=>{const isLocked=locked(level,item);return <Panel key={item.id} className={isLocked?'arsenal-locked':''} label={isLocked?`LV ${levelOf(item)}`:'AVAILABLE'} meta={item.weapons?.length?`${item.weapons.length} WEAPONS`:''}>
     <h3>{item.name}{isLocked&&<LockKeyhole size={14}/>}</h3>
     <p className="field-note">{item.description}</p>
+    <p className="field-note arsenal-spec">{modStatLine(item)}</p>
    </Panel>;})}</div>
   </div>;})}</div>}
   {tab==='cosmetics'&&<div className="stack">
@@ -140,7 +150,12 @@ export function ArsenalInspector({WEAPONS=[],CHARACTERS=[],ATTACHMENTS=[],ATTACH
     <div className="grid-cards">{CROSSHAIR_STYLES.length?CROSSHAIR_STYLES.map((item:any)=>{const isLocked=locked(level,item);return <Panel key={item.id} label={isLocked?`LV ${levelOf(item)}`:'CROSSHAIR'} meta={isLocked?'LOCKED':'UNLOCKED'} className={isLocked?'arsenal-locked':''}><h3>{item.name}</h3><p className="field-note">{item.description}</p></Panel>;}) : <Empty title="No reticles loaded"/>}</div>
    </div>
    <Panel label="GEAR" meta={`${count(GEAR)} / ${GEAR.length}`}>
-    <div className="stack stack--tight">{GEAR_SLOTS.map((slot:any)=><div key={slot.id} className="row row--between"><span className="card-main"><span className="card-name">{slot.name}<small>{GEAR.filter((item:any)=>item.slot===slot.id).map((item:any)=>`${item.name}${locked(level,item)?` (LV ${levelOf(item)})`:''}`).join(' · ')}</small></span></span>{GEAR.filter((item:any)=>item.slot===slot.id).every((item:any)=>!locked(level,item))?<Chip tone="accent">READY</Chip>:<Chip tone="warn">LOCKED</Chip>}</div>)}</div>
+    <div className="stack stack--tight">{GEAR_SLOTS.map((slot:any)=>{
+     const items=GEAR.filter((item:any)=>item.slot===slot.id);
+     return <div key={slot.id} className="stack stack--tight">
+      <div className="row row--between"><span className="label">{slot.name}</span>{items.every((item:any)=>!locked(level,item))?<Chip tone="accent">READY</Chip>:<Chip tone="warn">LOCKED</Chip>}</div>
+      {items.map((item:any)=>{const isLocked=locked(level,item);return <div key={item.id} className={`row row--between${isLocked?' arsenal-locked':''}`}><span className="card-main"><span className="card-name">{item.name}{isLocked&&<LockKeyhole size={12}/>}<small>{gearStatLine(item)}</small></span></span><span className="label">{isLocked?`LV ${levelOf(item)}`:gearAxisLine(item)}</span></div>;})}
+     </div>;})}</div>
    </Panel>
   </div>}
  </div>;

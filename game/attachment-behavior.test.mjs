@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {Match} from './core.mjs';
+import {WEAPONS} from './data.mjs';
 
 const rig = (attachments) => new Match('chatgpt', 'openclaw', () => .5, 'exchange', {mode: 'deathmatch', botCount: 0, loadouts: {0: {character: 'chatgpt', harness: 'openclaw', attachments}}});
 test('a burst module keeps firing after the initial trigger pull', () => {
@@ -92,4 +93,37 @@ test('magazine attachments raise the reload ceiling and quickdraw shortens the r
   b.weapon = 3; b.ammo[3] = 10; b.shotWait = 0;
   g.startReload(b, 3);
   assert.ok(Math.abs(b.reloadDuration - 1.9 * .82) < 1e-6, `quickdraw reload ${b.reloadDuration}`);
+});
+
+test('a salvo module fires a real two-round burst in the match loop', () => {
+  const m = rig({underbarrel: 'salvo-module'}), a = m.actors[0];
+  a.weapon = 0; a.ammo[0] = 50; a.shotWait = 0; a.protection = 0;
+  const before = m.stats.shots;
+  m.fire(a);
+  assert.equal(a.burstLeft, 1);
+  for (let i = 0; i < 40; i++) m.step(1 / 60, {});
+  assert.ok(m.stats.shots - before >= 2, `expected a 2-round burst, got ${m.stats.shots - before}`);
+  assert.ok(m.stats.shots - before < 4, 'the salvo module does not chain into a third round');
+});
+
+test('career mods change the live derived weapon they advertise', () => {
+  // Short barrel: reach and cycle move the way the card says.
+  const short = rig({barrel: 'short-barrel'}), s = short.actors[0];
+  s.weapon = 3;
+  const shortW = short.weaponFor(s);
+  assert.equal(shortW.range, WEAPONS[3].range * .82);
+  assert.equal(shortW.interval, WEAPONS[3].interval * .95);
+  assert.ok(shortW.recoil.kick > WEAPONS[3].recoil.kick, 'the short barrel kicks harder');
+  // Match ammunition: reach, damage and cycle trade against the base weapon.
+  const match = rig({magazine: 'match-ammo'}), mm = match.actors[0];
+  mm.weapon = 8;
+  const matchW = match.weaponFor(mm);
+  assert.equal(matchW.damage, WEAPONS[8].damage * 1.06);
+  assert.equal(matchW.range, WEAPONS[8].range * 1.12);
+  assert.equal(matchW.interval, WEAPONS[8].interval * 1.04);
+  // Quick magazine: the faster reload is a live reload duration.
+  const quick = rig({magazine: 'quick-mag'}), q = quick.actors[0];
+  q.weapon = 3; q.ammo[3] = 10; q.shotWait = 0;
+  assert.equal(quick.startReload(q, 3), true);
+  assert.ok(Math.abs(q.reloadDuration - WEAPONS[3].reload * .8) < 1e-6, `quick magazine reload ${q.reloadDuration}`);
 });

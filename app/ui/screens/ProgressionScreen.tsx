@@ -2,10 +2,19 @@
 import {useState} from 'react';
 import type {ScreenProps} from '../contract';
 import {formatNumber} from '../../../game/format-ui.mjs';
+import {GEAR_BUDGET,gearBudget,gearPoints} from '../../../game/progression.mjs';
+import {attachmentSpec} from '../../../game/attachments.mjs';
 import {ActionRail,Banner,Btn,Chip,Meter,PageHead,Panel,SelectCard,Shell,Stats,Tabs,TopBar} from '../primitives';
 
 const resultTone=(result:string)=>result==='win'?'accent':result==='draw'?'warn':'danger';
 const shortDate=(at:number)=>at?new Date(at).toISOString().slice(0,10):'—';
+// Career gear is persistent; the stat line is the resolver's own point vector,
+// so a card never advertises an effect the simulation will not apply.
+const AXIS_ABBR:Record<string,string>={offense:'DMG',mobility:'SPD',ehp:'EHP',handling:'HND'};
+const signedPoint=(value:number)=>`${value>0?'+':''}${value}`;
+const gearStatLine=(item:any)=>{const points=gearPoints(item.modifiers);return `DMG ${signedPoint(points.offense)} · SPD ${signedPoint(points.mobility)} · EHP ${signedPoint(points.ehp)} · HND ${signedPoint(points.handling)}`;};
+const gearNetLabel=(item:any)=>`${AXIS_ABBR[item.powerAxis]}▲ ${AXIS_ABBR[item.costAxis]}▼ · NET ${gearBudget(item).net}/${GEAR_BUDGET[item.slot]}`;
+const modStatLine=(item:any)=>attachmentSpec(item).join(' · ');
 
 export function ProgressionScreen({ui}:ScreenProps){
  const {profile,UNLOCKS,UNLOCK_GROUPS,GEAR,GEAR_SLOTS,ATTACHMENTS,ATTACHMENT_SLOTS,WEAPON_FINISHES,CROSSHAIR_STYLES,levelFromXp,rankTitle,rankBlurb,unlockedItems,chooseGear,chooseAttachment,chooseFinish,chooseCrosshair,selected,changeMode,notice,headActions,previewRef,challenges=[],weeklyChallenges=[],history={entries:[]},historyTotals,historyLeaderboard=[],clearHistory,campaignMissions=[],campaignSummary,startCampaignMission,setSingleOpen,setSingleSub,GAME_MODES=[],prestige,PRESTIGE_TIERS=[],PRESTIGE_XP=6000,prestigeTier,prestigeXpBonus,achievements=[],ACHIEVEMENTS=[]}=ui;
@@ -15,12 +24,19 @@ export function ProgressionScreen({ui}:ScreenProps){
  const careerTabs=[{value:'achievements',label:`Achievements${achievements.length?` · ${achievements.filter((a:any)=>a.unlocked).length}/${achievements.length}`:''}`},{value:'prestige',label:'Prestige'}];
  const modeName=(id:string)=>GAME_MODES.find((m:any)=>m.id===id)?.name||String(id||'unknown').replace(/[-_]+/g,' ').replace(/\b\w/g,(c:string)=>c.toUpperCase());
  const modeRows=Object.entries(profile.byMode||{}).map(([id,stats]:any)=>[id,stats]).sort((a:any,b:any)=>(b[1].matches||0)-(a[1].matches||0));
- const renderItems=(items:any[],isSelected:(item:any)=>boolean,isLocked:(item:any)=>boolean,onPick:(item:any)=>void)=>(
+ const renderItems=(items:any[],isSelected:(item:any)=>boolean,isLocked:(item:any)=>boolean,onPick:(item:any)=>void,statsOf?:(item:any)=>string,metaOf?:(item:any)=>string)=>(
   <div className="grid-cards">{items.map((item:any)=>{
    const locked=isLocked(item);
-   return <SelectCard key={item.id} name={item.name} tag={item.description} selected={isSelected(item)} disabled={locked} meta={locked?`LV ${item.level??1}`:undefined} onClick={()=>onPick(item)} ariaLabel={item.name}/>;
+   return <SelectCard key={item.id} name={item.name} tag={item.description} selected={isSelected(item)} disabled={locked} meta={locked?`LV ${item.level??1}`:(metaOf?.(item)||undefined)} stats={statsOf?.(item)} onClick={()=>onPick(item)} ariaLabel={item.name}/>;
   })}</div>
  );
+ // The unlock track is a discovery list, so give each future item the same
+ // concrete spec line the loadout card shows once it is claimed.
+ const unlockSpec=(item:any)=>{
+  if(item.kind==='gear'){const gear=GEAR.find((g:any)=>g.id===item.ref);return gear?gearStatLine(gear):'';}
+  if(item.kind==='attachment'){const mod=ATTACHMENTS.find((a:any)=>a.id===item.ref);return mod?modStatLine(mod):'';}
+  return '';
+ };
  const renderChallenges=(list:any[],empty:string)=>list.length
   ?<div className="stack stack--tight">{list.map((c:any)=><div key={c.id} className="stack stack--tight challenge-row">
    <div className="row row--between"><span className="label">{c.label}</span><span className="label">{c.done?'CLAIMED':`${c.progress} / ${c.target}`}</span></div>
@@ -50,16 +66,17 @@ export function ProgressionScreen({ui}:ScreenProps){
       <div className="preview-caption"><p className="eyebrow" style={{color:selected?.color}}>{selected?.tag}</p><h2 className="h-page">{selected?.name}</h2></div>
      </div>
      </div>
-     <Panel label="GEAR LOADOUT" meta="COMBINED ARMS">
+     <Panel label="GEAR LOADOUT" meta="CAREER · PERSISTENT">
      <div className="stack">
+      <p className="field-note">Career gear is chosen here and persists across every mode until you change it. It is separate from the round-scoped personal REQ purchases you make mid-match.</p>
       <Tabs value={tab} onChange={setTab} ariaLabel="Loadout category" tabs={[{value:'gear',label:'Gear'},{value:'mods',label:'Weapon mods'},{value:'skins',label:'Skins'},{value:'reticles',label:'Reticles'},{value:'modes',label:'Modes'}]}/>
       {tab==='gear'&&GEAR_SLOTS.map((slot:any)=><div key={slot.id} className="stack stack--tight">
-       <span className="label">{slot.name}</span>
-       {renderItems(GEAR.filter((item:any)=>item.slot===slot.id),item=>profile.gear[slot.id]===item.id,item=>profile.level<item.level,item=>chooseGear(slot.id,item.id))}
+       <span className="label">{slot.name} · {GEAR.filter((item:any)=>item.slot===slot.id).length} OPTIONS</span>
+       {renderItems(GEAR.filter((item:any)=>item.slot===slot.id),item=>profile.gear[slot.id]===item.id,item=>profile.level<item.level,item=>chooseGear(slot.id,item.id),item=>gearStatLine(item),item=>gearNetLabel(item))}
       </div>)}
       {tab==='mods'&&ATTACHMENT_SLOTS.map((slot:any)=><div key={slot.id} className="stack stack--tight">
-       <span className="label">{slot.name}</span>
-       {renderItems(ATTACHMENTS.filter((item:any)=>item.slot===slot.id),item=>(profile.attachments||{})[slot.id]===item.id,item=>profile.level<item.level,item=>chooseAttachment(slot.id,item.id))}
+       <span className="label">{slot.name} · {ATTACHMENTS.filter((item:any)=>item.slot===slot.id).length} OPTIONS</span>
+       {renderItems(ATTACHMENTS.filter((item:any)=>item.slot===slot.id),item=>(profile.attachments||{})[slot.id]===item.id,item=>profile.level<item.level,item=>chooseAttachment(slot.id,item.id),item=>modStatLine(item),item=>`${item.weapons.length||'ALL'} WPN`)}
       </div>)}
       {tab==='skins'&&<div className="stack stack--tight">
        <span className="label">WEAPON FINISHES</span>
@@ -87,7 +104,7 @@ export function ProgressionScreen({ui}:ScreenProps){
        return <div key={group.kind} className="stack stack--tight">
         <div className="row row--between"><span className="label">{group.label}</span><span className="label">{got}/{items.length}</span></div>
         <Meter ratio={items.length?got/items.length:0}/>
-        <div className="stack stack--tight">{items.map((item:any)=>{const unlocked=profile.level>=item.level;return <div key={item.id} className="row row--between"><span className="card-main"><span className="card-name">{item.name}<small>{item.description}</small></span></span><span className="label">{unlocked?'CLAIMED':`LV ${item.level}`}</span></div>;})}</div>
+        <div className="stack stack--tight">{items.map((item:any)=>{const unlocked=profile.level>=item.level,spec=unlockSpec(item);return <div key={item.id} className="row row--between"><span className="card-main"><span className="card-name">{item.name}<small>{item.description}</small></span>{spec?<span className="card-stats">{spec}</span>:null}</span><span className="label">{unlocked?'CLAIMED':`LV ${item.level}`}</span></div>;})}</div>
        </div>;
        })}
      </div>

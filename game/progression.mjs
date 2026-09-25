@@ -7,6 +7,12 @@ export const GEAR_SLOTS=[{id:'primary',name:'Weapon Kit'},{id:'armor',name:'Armo
 // different cost axis, spends within its slot's net budget, and resolves
 // through the §4.8 envelope caps below. Points are unitless: one point is +1%
 // on a multiplier (damage, speed, spread) or +1 flat point of health/armour.
+//
+// This is the persistent career catalogue: gear is chosen before a match and
+// carries across every mode until it is changed, unlike the round-scoped
+// personal REQ buys resolved by the COCS economy layer. Levels order
+// acquisition across the whole 1..MAX_LEVEL career; the eight launch items are
+// kept byte-identical so old profiles and presets still round-trip.
 export const GEAR_AXES=Object.freeze(['offense','mobility','ehp','handling']);
 export const GEAR_BUDGET=Object.freeze({primary:15,armor:25,utility:24});
 export const GEAR_CAPS=Object.freeze({offense:1.15,mobility:1.1,ehp:15,spread:.85,handling:.9});
@@ -19,6 +25,24 @@ export const GEAR=[
  {id:'stim',slot:'utility',name:'Combat Stim',level:4,powerAxis:'ehp',costAxis:'mobility',budget:GEAR_BUDGET.utility,description:'Extra health and a sliver of speed on every spawn. Performance-enhancing, but legal here.',modifiers:{health:20,speed:1.04}},
  {id:'servo',slot:'utility',name:'Servo Assist',level:7,powerAxis:'mobility',costAxis:'handling',budget:GEAR_BUDGET.utility,description:'The fastest rig in the pool for objective sprints. The servos jitter your aim; your W key says thank you.',modifiers:{speed:1.1,spread:1.07}},
  {id:'mag',slot:'utility',name:'Stabiliser Mag',level:9,powerAxis:'handling',costAxis:'mobility',budget:GEAR_BUDGET.utility,description:'Steadies the muzzle with a tiny speed trade. Poetry, in full auto.',modifiers:{spread:.92,speed:.99}},
+ // --- Career expansion (v7.x): every added item declares a real power axis and
+ // a different, strictly-paid cost axis, and stays under its slot budget so it
+ // competes rather than replaces. Levels are spread across the 1..60 curve.
+ {id:'runner-frame',slot:'primary',name:'Skeleton Frame',level:12,powerAxis:'mobility',costAxis:'offense',budget:GEAR_BUDGET.primary,description:'A stripped receiver that moves like a scout and hits like a trainer. Built for flag routes and flank rotations in capture and race modes; the reduced mass softens every round.',modifiers:{speed:1.08,damage:.95}},
+ {id:'match-trigger',slot:'primary',name:'Match Trigger',level:15,powerAxis:'handling',costAxis:'offense',budget:GEAR_BUDGET.primary,description:'A tuned trigger group that groups shots at the cost of punch. Hold a lane, not a record. A holdout and long-sightline pick.',modifiers:{spread:.86,damage:.91}},
+ {id:'breacher-kit',slot:'primary',name:'Breacher Kit',level:23,powerAxis:'offense',costAxis:'mobility',budget:GEAR_BUDGET.primary,description:'A short, angry primary for assault and uplink entries. The heaviest hit in the pool, but it drags your footwork and muzzle control.',modifiers:{damage:1.12,speed:.92,spread:1.03}},
+ {id:'siege-kit',slot:'primary',name:'Siege Kit',level:26,powerAxis:'offense',costAxis:'handling',budget:GEAR_BUDGET.primary,description:'An overpressure receiver with the hardest single hit in the pool, at the cost of violent muzzle climb and loose groups. Plant it, then delete.',modifiers:{damage:1.13,spread:1.10}},
+ {id:'marksman-kit',slot:'primary',name:'Marksman Kit',level:40,powerAxis:'handling',costAxis:'offense',budget:GEAR_BUDGET.primary,description:'A precision rig for overwatch and team elimination. Puts the first shot where you meant it and gives up raw damage to do it. Steady pays.',modifiers:{spread:.85,damage:.90}},
+ {id:'command-kit',slot:'primary',name:'Command Kit',level:50,powerAxis:'offense',costAxis:'mobility',budget:GEAR_BUDGET.primary,description:'The career capstone: a command receiver that adds real punch and a tighter hold for a small rotate cost. Fits any mode that asks you to lead.',modifiers:{damage:1.08,spread:.95,speed:.95}},
+ {id:'scout-plate',slot:'armor',name:'Scout Plate',level:5,powerAxis:'mobility',costAxis:'offense',budget:GEAR_BUDGET.armor,description:'A light forward plate with real spawn armour and pace, paid for with a softer round. A capture and puma-race opener.',modifiers:{speed:1.06,armor:4,damage:.94}},
+ {id:'gunner-harness',slot:'armor',name:'Gunner Harness',level:10,powerAxis:'handling',costAxis:'offense',budget:GEAR_BUDGET.armor,description:'A stabilised harness that tightens your hold and adds a little plating at the cost of punch. For roles that shoot more than they soak.',modifiers:{spread:.88,armor:5,damage:.91}},
+ {id:'assault-plate',slot:'armor',name:'Assault Plate',level:18,powerAxis:'offense',costAxis:'mobility',budget:GEAR_BUDGET.armor,description:'Offensive plates that carry more punch and less sprint. A point-take and holdout pick: trade the rotate for the kill.',modifiers:{damage:1.1,speed:.93}},
+ {id:'field-medic-rig',slot:'utility',name:'Field Medic Rig',level:8,powerAxis:'ehp',costAxis:'handling',budget:GEAR_BUDGET.utility,description:'Spawn health and a little armour for holdout and horde runs. The bulky rig opens your groups; sustain beats precision once the wave stops ending.',modifiers:{health:12,armor:3,spread:1.11}},
+ {id:'overcharge-cell',slot:'utility',name:'Overcharge Cell',level:13,powerAxis:'offense',costAxis:'mobility',budget:GEAR_BUDGET.utility,description:'A hot cell that feeds every weapon a heavier shot and taxes your sprint. For last-stand defences and boss lanes.',modifiers:{damage:1.09,speed:.94}},
+ {id:'grapple-winch',slot:'utility',name:'Grapple Winch',level:17,powerAxis:'mobility',costAxis:'handling',budget:GEAR_BUDGET.utility,description:'A compact winch and servo pair for objective sprints and rooftop routes. The extra hardware jitters your aim on the way in.',modifiers:{speed:1.07,spread:1.05}},
+ {id:'ammo-satchel',slot:'utility',name:'Ammo Satchel',level:21,powerAxis:'handling',costAxis:'offense',budget:GEAR_BUDGET.utility,description:'A braced satchel that steadies follow-up shots at a small damage cost. For long team-elimination trades where the third burst matters.',modifiers:{spread:.90,damage:.93}},
+ {id:'targeting-uplink',slot:'utility',name:'Targeting Uplink',level:50,powerAxis:'handling',costAxis:'mobility',budget:GEAR_BUDGET.utility,description:'The career capstone: a squad uplink that steadies every burst at a real sprint cost. For team modes that live on the point.',modifiers:{spread:.88,speed:.92}},
+ {id:'fortress-plate',slot:'armor',name:'Fortress Plate',level:35,powerAxis:'ehp',costAxis:'handling',budget:GEAR_BUDGET.armor,description:'The heaviest spawn-EHP slab in the pool, paid for with a slower, looser hold. Win the long fight, not the first duel.',modifiers:{health:11,armor:4,spread:1.09}},
 ];
 export const COSMETICS=[
  ...WEAPON_FINISHES.map(item=>({id:item.id,kind:'finish',name:item.name,level:item.level,description:item.description})),

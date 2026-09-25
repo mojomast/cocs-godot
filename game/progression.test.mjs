@@ -305,6 +305,49 @@ test('normalizeProgression clamps, recomputes level and re-validates gear',()=>{
  assert.ok(profile.unlocks['gear-scope']);
  assert.deepEqual(defaultProgression(),normalizeProgression(null));
 });
+test('the career equipment catalogue spans the level curve and stays level-gated',()=>{
+ const unlocks=unlockedItems(MAX_LEVEL).map(item=>item.id);
+ assert.equal(unlockedItems(1).filter(item=>item.kind==='gear').length,0,'no gear claim before level 2');
+ const career=['gear-runner-frame','gear-match-trigger','gear-breacher-kit','gear-siege-kit','gear-marksman-kit','gear-command-kit','gear-scout-plate','gear-gunner-harness','gear-assault-plate','gear-field-medic-rig','gear-overcharge-cell','gear-grapple-winch','gear-ammo-satchel','gear-targeting-uplink','gear-fortress-plate'];
+ for(const id of career)assert.ok(unlocks.includes(id),id);
+ assert.ok(GEAR.some(item=>item.level>=40),'a reward sits near the cap');
+ // High-level gear only equips once its level is reached.
+ assert.equal(normalizeGear({primary:'command-kit'},49).primary,undefined);
+ assert.equal(normalizeGear({primary:'command-kit'},50).primary,'command-kit');
+ assert.equal(normalizeGear({armor:'fortress-plate'},34).armor,undefined);
+ assert.equal(normalizeGear({armor:'fortress-plate'},35).armor,'fortress-plate');
+ assert.equal(normalizeGear({utility:'targeting-uplink'},50).utility,'targeting-uplink');
+ assert.equal(normalizeGear({utility:'ammo-satchel'},21).utility,'ammo-satchel');
+ // Slot validation and one-per-slot still hold.
+ assert.equal(normalizeGear({primary:'scope',armor:'scope'},60).armor,undefined);
+ assert.equal(normalizeGear({primary:'not-real'},60).primary,undefined);
+});
+test('old profiles and presets round-trip through the expanded catalogue',()=>{
+ const legacy=normalizeProgression({xp:totalXpForLevel(20),gear:{primary:'scope',armor:'plating',utility:'stim'},attachments:{optic:'holo-sight',barrel:'long-barrel'},unlocks:{'gear-scope':true}});
+ assert.deepEqual(legacy.gear,{primary:'scope',armor:'plating',utility:'stim'});
+ assert.deepEqual(legacy.attachments,{optic:'holo-sight',barrel:'long-barrel'});
+ const round=normalizeProgression(JSON.parse(JSON.stringify(legacy)));
+ assert.deepEqual(round.gear,legacy.gear);
+ assert.deepEqual(round.attachments,legacy.attachments);
+ // New ids are additive: a legacy snapshot is not forced to own them.
+ assert.equal(legacy.unlocks['gear-command-kit'],undefined);
+ // A max-level profile unlocks the whole catalogue deterministically.
+ const maxed=normalizeProgression({xp:totalXpForLevel(MAX_LEVEL)});
+ for(const item of GEAR)assert.equal(maxed.unlocks[`gear-${item.id}`],true,item.id);
+ assert.deepEqual(round,normalizeProgression(JSON.parse(JSON.stringify(round))));
+});
+test('the career discovery list surfaces new unlocks in level order',()=>{
+ const profile=normalizeProgression({xp:totalXpForLevel(20)});
+ assert.equal(profile.level,20);
+ const fresh=nextUnlocksFor(profile,10);
+ for(let i=1;i<fresh.length;i++)assert.ok(fresh[i].level>fresh[i-1].level||(fresh[i].level===fresh[i-1].level&&fresh[i].name.localeCompare(fresh[i-1].name)>=0),'level then name ordering');
+ // Every listed row is genuinely locked on the profile that produced it and
+ // exposes the fields the selection/results surfaces render.
+ for(const item of fresh)assert.equal(profile.unlocks[item.id],undefined,item.id);
+ for(const item of fresh)for(const field of ['id','kind','name','level','description'])assert.ok(field in item,`${field} surfaced`);
+ assert.ok(fresh.some(item=>String(item.id).startsWith('gear-')),'the expanded gear list reaches the discovery chips');
+ assert.ok(fresh.every(item=>item.level>profile.level),'only future levels are advertised');
+});
 test('horde/campaign score pays a bounded, monotonic XP rider',()=>{
  assert.equal(hordeMatchXp(),0);
  assert.equal(hordeMatchXp(null),0);

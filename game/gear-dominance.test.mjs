@@ -2,10 +2,35 @@
 // item pool (declared power/cost axes, slot budget parity, in-slot
 // non-dominance) and for the envelope caps resolveGear enforces on every
 // caller. §10.1 S8 upgrades scope, heavy-barrel and servo and pins their stat
-// vectors; the other five items keep their pre-overhaul raw modifiers.
+// vectors; the other five launch items keep their pre-overhaul raw modifiers,
+// and the career-expansion items are pinned in the EXPECTED_CAREER table so a
+// catalog diff stays deliberate and tested.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {GEAR,GEAR_AXES,GEAR_BUDGET,GEAR_CAPS,GEAR_SLOTS,gearBudget,gearById,resolveGear} from './progression.mjs';
+import {Match} from './core.mjs';
+import {GEAR,GEAR_AXES,GEAR_BUDGET,GEAR_CAPS,GEAR_SLOTS,MAX_LEVEL,gearBudget,gearById,resolveGear} from './progression.mjs';
+
+// Ids present in the launch catalogue. These are pinned byte-for-byte by the
+// tests below; the career-expansion items are appended and may be re-tuned as a
+// deliberate catalog diff (this table must be updated when they are).
+const LAUNCH_GEAR=['scope','heavy-barrel','light-frame','plating','reactive','stim','servo','mag'];
+const EXPECTED_CAREER={
+ 'runner-frame':{slot:'primary',level:12,powerAxis:'mobility',costAxis:'offense',vector:{health:0,armor:0,speed:1.08,damage:.95,spread:1}},
+ 'match-trigger':{slot:'primary',level:15,powerAxis:'handling',costAxis:'offense',vector:{health:0,armor:0,speed:1,damage:.91,spread:.86}},
+ 'breacher-kit':{slot:'primary',level:23,powerAxis:'offense',costAxis:'mobility',vector:{health:0,armor:0,speed:.92,damage:1.12,spread:1.03}},
+ 'siege-kit':{slot:'primary',level:26,powerAxis:'offense',costAxis:'handling',vector:{health:0,armor:0,speed:1,damage:1.13,spread:1.10}},
+ 'marksman-kit':{slot:'primary',level:40,powerAxis:'handling',costAxis:'offense',vector:{health:0,armor:0,speed:1,damage:.90,spread:.85}},
+ 'command-kit':{slot:'primary',level:50,powerAxis:'offense',costAxis:'mobility',vector:{health:0,armor:0,speed:.95,damage:1.08,spread:.95}},
+ 'scout-plate':{slot:'armor',level:5,powerAxis:'mobility',costAxis:'offense',vector:{health:0,armor:4,speed:1.06,damage:.94,spread:1}},
+ 'gunner-harness':{slot:'armor',level:10,powerAxis:'handling',costAxis:'offense',vector:{health:0,armor:5,speed:1,damage:.91,spread:.88}},
+ 'assault-plate':{slot:'armor',level:18,powerAxis:'offense',costAxis:'mobility',vector:{health:0,armor:0,speed:.93,damage:1.1,spread:1}},
+ 'field-medic-rig':{slot:'utility',level:8,powerAxis:'ehp',costAxis:'handling',vector:{health:12,armor:3,speed:1,damage:1,spread:1.11}},
+ 'overcharge-cell':{slot:'utility',level:13,powerAxis:'offense',costAxis:'mobility',vector:{health:0,armor:0,speed:.94,damage:1.09,spread:1}},
+ 'grapple-winch':{slot:'utility',level:17,powerAxis:'mobility',costAxis:'handling',vector:{health:0,armor:0,speed:1.07,damage:1,spread:1.05}},
+ 'ammo-satchel':{slot:'utility',level:21,powerAxis:'handling',costAxis:'offense',vector:{health:0,armor:0,speed:1,damage:.93,spread:.90}},
+ 'targeting-uplink':{slot:'utility',level:50,powerAxis:'handling',costAxis:'mobility',vector:{health:0,armor:0,speed:.92,damage:1,spread:.88}},
+ 'fortress-plate':{slot:'armor',level:35,powerAxis:'ehp',costAxis:'handling',vector:{health:11,armor:4,speed:1,damage:1,spread:1.09}},
+};
 
 const EPS=1e-9;
 const AXES=['health','armor','speed','damage','spread'];
@@ -101,4 +126,74 @@ test('resolveGear keeps its merge contract, freezes the result and stays determi
  assert.equal(resolveGear(['nope','']).items.length,0);
  assert.ok(Object.isFrozen(list)&&Object.isFrozen(list.items)&&Object.isFrozen(list.modifiers));
  assert.throws(()=>{list.modifiers.damage=9;},TypeError);
+});
+
+test('the career catalogue is pinned, per-slot real and spread through the cap',()=>{
+ // Every non-launch item is deliberate: a new id without a pinned table entry
+ // fails here, so the catalogue cannot silently grow with untested items.
+ const launch=new Set(LAUNCH_GEAR);
+ const career=GEAR.filter(item=>!launch.has(item.id));
+ assert.ok(career.length>=12,'the career catalogue adds real per-slot choice');
+ assert.deepEqual(career.map(item=>item.id).sort(),Object.keys(EXPECTED_CAREER).sort());
+ for(const item of GEAR){
+  assert.ok(Number.isInteger(item.level)&&item.level>=1&&item.level<=MAX_LEVEL,`${item.id} level in range`);
+ }
+ for(const slot of GEAR_SLOTS){
+  const items=GEAR.filter(item=>item.slot===slot.id);
+  assert.ok(items.length>=5,`${slot.id} offers a real choice`);
+  const levels=items.map(item=>item.level);
+  assert.equal(new Set(levels).size,levels.length,`${slot.id} levels are unique`);
+  assert.ok(Math.min(...levels)<=6,`${slot.id} opens early in the career`);
+ }
+ assert.ok(career.some(item=>item.level>=40),'a late-career reward exists near the cap');
+ for(const [id,expected] of Object.entries(EXPECTED_CAREER)){
+  const item=gearById(id);
+  assert.ok(item,`${id} exists`);
+  assert.equal(item.slot,expected.slot,`${id} slot`);
+  assert.equal(item.level,expected.level,`${id} level`);
+  assert.equal(item.powerAxis,expected.powerAxis,`${id} power axis`);
+  assert.equal(item.costAxis,expected.costAxis,`${id} cost axis`);
+  assert.deepEqual(statVector(item),expected.vector,`${id} vector`);
+ }
+});
+
+test('every career item pays a real cost and keeps cost >= 60% of power',()=>{
+ const launch=new Set(LAUNCH_GEAR);
+ for(const item of GEAR){
+  const spend=gearBudget(item);
+  assert.ok(spend.power>0,`${item.id} spends on its power axis`);
+  if(launch.has(item.id))continue;
+  assert.ok(spend.cost>0,`${item.id} declares a real cost axis`);
+  assert.ok(spend.cost>=.6*spend.power-EPS,`${item.id} cost ${spend.cost} is under 60% of power ${spend.power}`);
+  assert.ok(spend.net<=GEAR_BUDGET[item.slot]+EPS,`${item.id} stays under its slot budget`);
+ }
+});
+
+test('career items resolve solo to their declared vector under the caps',()=>{
+ const launch=new Set(LAUNCH_GEAR);
+ for(const item of GEAR){
+  if(launch.has(item.id))continue;
+  // No career item declares past an envelope cap, so a solo resolve is exact.
+  assert.deepEqual(statVector({modifiers:resolveGear([item.id]).modifiers}),statVector(item),`${item.id} resolves exactly`);
+ }
+});
+
+test('equipped career gear changes the live spawned actor envelope',()=>{
+ const spawn=gear=>new Match('chatgpt','openclaw',()=>.5,'exchange',{mode:'deathmatch',botCount:0,loadouts:{0:{character:'chatgpt',harness:'openclaw',gear}}}).actors[0];
+ const base=spawn(undefined);
+ const scout=spawn({armor:'scout-plate'});
+ assert.ok(scout.gearSpeed>base.gearSpeed,'scout plate raises the live gear speed');
+ assert.ok(scout.gearDamage<base.gearDamage,'scout plate trades live gear damage');
+ assert.ok(scout.armor>base.armor,'scout plate adds live spawn armour');
+ const fortress=spawn({armor:'fortress-plate'});
+ assert.ok(fortress.maxHealth>base.maxHealth,'fortress plate raises live spawn health');
+ assert.ok(fortress.armor>base.armor,'fortress plate raises live spawn armour');
+ assert.ok(fortress.gearSpread>base.gearSpread,'fortress plate trades live spread control');
+ const overcharge=spawn({utility:'overcharge-cell'});
+ assert.ok(overcharge.gearDamage>base.gearDamage,'overcharge cell raises live gear damage');
+ assert.ok(overcharge.gearSpeed<base.gearSpeed,'overcharge cell taxes live gear speed');
+ const gunner=spawn({armor:'gunner-harness'});
+ assert.ok(gunner.gearSpread<base.gearSpread,'gunner harness tightens live spread');
+ assert.ok(gunner.gearDamage<base.gearDamage,'gunner harness trades live gear damage');
+ assert.ok(gunner.armor>base.armor,'gunner harness adds live spawn armour');
 });

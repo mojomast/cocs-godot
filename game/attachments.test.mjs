@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {WEAPONS} from './data.mjs';
-import {ATTACHMENT_SLOTS,ATTACHMENTS,applyAttachmentsToWeapon,attachmentById,normalizeAttachments,resolveAttachments} from './attachments.mjs';
+import {ATTACHMENT_SLOTS,ATTACHMENTS,applyAttachmentsToWeapon,attachmentById,attachmentFits,attachmentSpec,normalizeAttachments,resolveAttachments} from './attachments.mjs';
 
 const close=(actual,expected,eps=1e-9)=>assert.ok(Math.abs(actual-expected)<eps,`${actual} !== ${expected}`);
 const SLOT_IDS=ATTACHMENT_SLOTS.map(slot=>slot.id);
@@ -9,7 +9,7 @@ const SLOT_IDS=ATTACHMENT_SLOTS.map(slot=>slot.id);
 test('definitions use unique ids, valid slots, weapon indices 0..9, positive levels',()=>{
  assert.equal(ATTACHMENT_SLOTS.length,4);
  assert.deepEqual(SLOT_IDS,['optic','barrel','magazine','underbarrel']);
- assert.ok(ATTACHMENTS.length>=12&&ATTACHMENTS.length<=16);
+ assert.ok(ATTACHMENTS.length>=20&&ATTACHMENTS.length<=28);
  const ids=new Set();
  for(const item of ATTACHMENTS){
   assert.ok(!ids.has(item.id),`duplicate ${item.id}`);ids.add(item.id);
@@ -23,7 +23,15 @@ test('definitions use unique ids, valid slots, weapon indices 0..9, positive lev
   assert.equal(typeof item.visual,'object');
   assert.equal(attachmentById(item.id),item);
  }
- for(const required of ['long-barrel','suppressor','extended-mag','drum-mag','quickdraw-grip','grenade-launcher','scope','holo-sight','burst-module','charge-coil','piercing-rounds','explosive-tips','homing-beacon','chain-capacitor'])assert.ok(ids.has(required),required);
+ for(const required of ['long-barrel','suppressor','extended-mag','drum-mag','quickdraw-grip','grenade-launcher','scope','holo-sight','burst-module','charge-coil','piercing-rounds','explosive-tips','homing-beacon','chain-capacitor','red-dot','marksman-optic','short-barrel','muzzle-brake','quick-mag','match-ammo','vertical-grip','salvo-module'])assert.ok(ids.has(required),required);
+ // The expanded career catalogue keeps an honest spread of per-slot levels and
+ // reaches into the middle of the level curve instead of stopping at 20.
+ for(const slot of SLOT_IDS){
+  const items=ATTACHMENTS.filter(item=>item.slot===slot);
+  assert.ok(items.length>=3,`${slot} offers a real choice`);
+  assert.ok(items.some(item=>item.level<=3),`${slot} has an early career option`);
+ }
+ assert.ok(ATTACHMENTS.some(item=>item.level>=28),'a late-career mod exists');
 });
 
 test('resolveAttachments aggregates modifiers, ignores unknown ids and is order-independent',()=>{
@@ -117,4 +125,53 @@ test('normalizeAttachments drops invalid slots and locked items',()=>{
  assert.notEqual(normalized,value);
  normalized.optic='mutated';
  assert.equal(value.optic,'scope');
+});
+
+test('career mods resolve to the stats they advertise and gate by level',()=>{
+ // A spread/reach optic trades cycle time; confirm both halves land.
+ const marksman=resolveAttachments(['marksman-optic']);
+ close(marksman.modifiers.spread,.78);
+ close(marksman.modifiers.range,1.22);
+ close(marksman.modifiers.interval,1.06);
+ // A short barrel is a close-range trade: faster cycle, worse reach and kick.
+ const short=resolveAttachments(['short-barrel']);
+ close(short.modifiers.range,.82);
+ close(short.modifiers.interval,.95);
+ close(short.modifiers.recoilKick,1.12);
+ assert.ok(short.modifiers.spread>1,'the short barrel groups looser');
+ // A quick magazine pays for its reload with a little spread.
+ const quick=resolveAttachments(['quick-mag']);
+ close(quick.modifiers.reload,.8);
+ close(quick.modifiers.spread,1.04);
+ // The salvo module is a real 2-round burst, distinct from the 3-round module.
+ const salvo=applyAttachmentsToWeapon(WEAPONS[0],resolveAttachments(['salvo-module']));
+ assert.equal(salvo.autoBurst,true);
+ assert.equal(salvo.burst,2);
+ close(salvo.burstDelay,.18);
+ // Universal mods fit every weapon; constrained mods only their list.
+ assert.equal(attachmentFits(attachmentById('red-dot'),0),true);
+ assert.equal(attachmentFits(attachmentById('red-dot'),9),true);
+ assert.equal(attachmentFits(attachmentById('match-ammo'),8),true);
+ assert.equal(attachmentFits(attachmentById('match-ammo'),0),false);
+ assert.equal(attachmentFits(attachmentById('salvo-module'),4),true);
+ assert.equal(attachmentFits(attachmentById('salvo-module'),2),false);
+ // Level gating stays honest for the new ids.
+ assert.deepEqual(normalizeAttachments({optic:'marksman-optic'},27),{});
+ assert.deepEqual(normalizeAttachments({optic:'marksman-optic'},28),{optic:'marksman-optic'});
+ assert.deepEqual(normalizeAttachments({optic:'red-dot'},1),{optic:'red-dot'});
+});
+
+test('attachmentSpec surfaces only applied effects, in a stable order',()=>{
+ assert.deepEqual(attachmentSpec(attachmentById('short-barrel')),['-18% RNG','+8% SPREAD','-5% CYCLE','+12% KICK']);
+ assert.deepEqual(attachmentSpec(attachmentById('salvo-module')),['+4% SPREAD','+8% CYCLE','BURST ×2']);
+ assert.deepEqual(attachmentSpec(attachmentById('extended-mag')),['+10% RELOAD','+12 ROUNDS']);
+ assert.deepEqual(attachmentSpec(attachmentById('charge-coil')),['+15% DMG','+25% CYCLE','CHARGE SHOT']);
+ assert.deepEqual(attachmentSpec(attachmentById('chain-capacitor')),['-5% DMG','-5% SPREAD','CHAIN ×2']);
+ assert.deepEqual(attachmentSpec(attachmentById('red-dot')),['-6% SPREAD']);
+ assert.deepEqual(attachmentSpec(null),[]);
+ // Every advertised chip traces to a field the resolver actually reads.
+ for(const item of ATTACHMENTS){
+  const chips=attachmentSpec(item);
+  if(chips.length)assert.equal(typeof chips[0],'string',item.id);
+ }
 });
