@@ -19,6 +19,9 @@ func valid_envelope(frame: Dictionary) -> bool:
 		for key: String in ["dead", "eyeHeight", "bodyYaw", "armor", "weapon", "shots", "req"]:
 			if actor.has(key) and not finite_number(actor[key]): return false
 		if not wire_integer(actor.get("team")) or (actor.team != 0 and actor.team != 1): return false
+		# Own-team personal buff slot. Optional; absent stays unknown, never an
+		# empty slot. Reject an unbounded/non-string value instead of coercing.
+		if actor.has("reqBuff") and actor.reqBuff != null and not (actor.reqBuff is String and actor.reqBuff.length() <= 64): return false
 		if not actor.get("ammo", []) is Array: return false
 	if not state.get("pickups", []) is Array: return false
 	for pickup: Variant in state.get("pickups", []):
@@ -67,6 +70,17 @@ func valid_envelope(frame: Dictionary) -> bool:
 			for key: String in ["health", "max", "percent"]:
 				if outcome.hq.has(key) and (not finite_number(outcome.hq[key]) or float(outcome.hq[key]) < 0.0): return false
 			if outcome.hq.has("armed") and not outcome.hq.armed is bool: return false
+	# Recipient-observed traversal depots (public world truth). Only the bounded
+	# id/owner pair the native REQ mirror reads is validated; absence is allowed
+	# and stays unknown, it is never inferred as "no depot".
+	if state.cocs.has("traversal") and state.cocs.traversal != null:
+		var traversal: Variant = state.cocs.traversal
+		if not traversal is Dictionary: return false
+		if traversal.has("depots") and traversal.depots != null:
+			if not traversal.depots is Array or traversal.depots.size() > 64: return false
+			for depot: Variant in traversal.depots:
+				if not depot is Dictionary or not depot.get("id") is String or depot.id.length() > 64: return false
+				if depot.get("owner") != null and (not wire_integer(depot.owner) or (depot.owner != 0 and depot.owner != 1)): return false
 	if not state.cocs.has("nodes"): return true
 	if not state.cocs.nodes is Array or state.cocs.nodes.size() > 128: return false
 	seen.clear()

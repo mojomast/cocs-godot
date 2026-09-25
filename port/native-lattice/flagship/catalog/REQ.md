@@ -74,3 +74,70 @@ and asserts the world delta, the exact debit, the §8.1 damage scale, plus the
 negative cases: no-target spot, no-target repair, enemy-owned link untouched,
 ally never marked. `server/cocs-net.test.mjs` covers the room gate and the
 settled card.
+
+## Addendum — native client REQ picker (lane `port/lattice-native-req-catalog-flash`)
+
+Base `0dfe7c22`. Scope is the Godot client only: `godot/lattice/*.gd` plus new
+native contracts in `godot/tests/lattice/`. No `game/`, `server/`, source lock,
+app or Moth asset changes. This lane hydrates the *native* personal REQ surface
+that previously only displayed `own REQ` in `world_commands.gd` and could not
+send a BUY.
+
+### What was added
+
+| file | role |
+| --- | --- |
+| `godot/lattice/req_catalog.gd` (new) | Immutable, hardcoded mirror of the launched `REQ_ITEMS` rows (7): `field-repair`, `ammo-crate`, `haste`, `overshield`, `spot-drone`, `repair-tool`, `puma`. Pure option/gate helpers; no I/O, clock or RNG. |
+| `godot/lattice/transport.gd` | Projects recipient-observed `reqBuff` and traversal `depots` (id/owner only); adds `req_options()`, `req_context()`, `req_gate(item, depot)` and an ordinary `activate("buy", item, depot)` that emits `{type:"buy", itemId, depotId?, cardId, roundRev, actionSeq}`. REQ rejection copy added. |
+| `godot/lattice/world_commands.gd` | Personal REQ picker (list, cost, `effectCopy`, per-row disabled reason), separate explicit consent, queued/accepted/settled/refused notice, and `RECEIPTS` settlement for `buy` cards. |
+| `godot/lattice/world_transport.gd` | Bounded shape validation for the new optional `traversal.depots` list and `actor.reqBuff`; absence stays allowed/unknown. |
+| `godot/tests/lattice/req_catalog_contract.gd` (new) | Reads the tracked `game/cocs-economy.mjs` `REQ_ITEMS` block and fails on `id`/`name`/`cost`/`effectCopy`/`modes`/`personalBuff`/launch drift; asserts unlaunched and reserved ids are absent. Also pure gate checks. |
+| `godot/tests/lattice/req_purchase_contract.gd` (new) | Synthetic recipient wire + GUI lifecycle: exact BUY frame, pending vs confirmed vs rejected, unknown/insufficient REQ, buff slot, depot gate, and reserved-action refusal. |
+
+### Contracts preserved
+
+* **Mirror, not authority.** The native side never decides a purchase; it only
+  decides what it may *ask*. Mode, depot ownership, REQ balance, buff slot and
+  life are read from the recipient-observed projection, and every row is gated
+  again by `Room.buy` / `reqPurchase` on the server.
+* **Finite and launched only.** The table is exactly the 7 source rows with a
+  shipped effect. `at-mine`, `smoke`, `barrier`, `sentry`, `forward-depot`,
+  `supply-drop`, `recon-pulse`, `fortify-doctrine`, `tier-upgrade`,
+  `oracle-unlock` and reserved `FLUX` ids (`respawn`, `reserve`, `flux`) cannot
+  be selected and are refused before any frame is sent.
+* **No fabricated acceptance.** A queued BUY is `queued`; only the authoritative
+  `cards` row turns it `pending (server accepted)`, `confirmed` (server settle
+  evidence: co-op `buyLog` or the PvP `reqBuff`+`reqSpent` debit) or `rejected`.
+  The UI shows the server-owned result and the live `own REQ`, never a click
+  success or a local debit.
+* **Unknown stays unknown.** A missing `req` renders `req-unknown`/disabled
+  instead of an inferred zero; a missing depot list renders `depot-unknown`
+  instead of "no depot"; a malformed row is dropped rather than coerced.
+* **One request per intent.** `req_gate` refuses a second frame while an
+  unresolved BUY for the same item is queued/pending (`roundRev`/`actionSeq`/
+  `cardId` are bounded and idempotent server-side).
+
+### Native tests (parent runs serial; not run in this lane)
+
+```bash
+"$GODOT" --headless --path godot --script res://tests/lattice/req_catalog_contract.gd
+"$GODOT" --headless --path godot --script res://tests/lattice/req_purchase_contract.gd
+# regression: the touched transport/commands paths
+"$GODOT" --headless --path godot --script res://tests/lattice/economy.gd
+"$GODOT" --headless --path godot --script res://tests/lattice/world_commands_contract.gd
+```
+
+`req_catalog_contract.gd` reads the source table by absolute path derived from
+`res://`, so it must run from this repo checkout (the parent's normal lane
+context); it fails loudly if the file is missing or drifted.
+
+### Known deviations / remaining work
+
+* **Depot choice is implicit.** The OPERATIONS Puma uses the first
+  recipient-observed owned depot (deterministic wire order) rather than a
+  per-depot picker; the frame carries that observed `depotId`.
+* **Target validation is server-side.** `spot-drone`/`repair-tool` can still be
+  refused `no-target` by the authority; the client does not model cut/enemy
+  geometry and shows the refusal rather than pre-claiming a hit.
+* **Not run here.** No Godot import/render/build or live two-client run was
+  executed in this lane; the parent runs the serial suite and any live probe.

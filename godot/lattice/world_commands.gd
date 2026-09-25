@@ -22,6 +22,15 @@ var history := Label.new()
 var topology := Topology.new()
 var telemetry := Telemetry.new()
 var authored_map_id := ""
+var req_items := ItemList.new()
+var req_effect := Label.new()
+var req_confirm := CheckBox.new()
+var req_button := Button.new()
+var req_help := Label.new()
+var req_notice := Label.new()
+var req_selected := ""
+var req_signature := "<unset>"
+var req_authorization := ""
 
 func bind_authored_map(map_id: String, source_map: Variant) -> bool:
 	if map_id != authored_map_id:
@@ -67,7 +76,7 @@ func _ready() -> void:
 	close_button.pressed.connect(func() -> void: close_requested.emit())
 	header.add_child(close_button)
 	world_label("World controls paused. Select an objective, then explicitly issue HOLD.", column)
-	for label: Label in [resources, selection, economy_help, notice, history]:
+	for label: Label in [resources, selection, economy_help, notice, history, req_effect, req_help, req_notice]:
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(resources)
 	nodes.custom_minimum_size.y = 128
@@ -82,6 +91,17 @@ func _ready() -> void:
 	spend_button.pressed.connect(world_purchase)
 	column.add_child(spend_button)
 	column.add_child(economy_help)
+	world_label("PERSONAL REQ · local picker, server-owned rules", column)
+	req_items.custom_minimum_size.y = 96
+	req_items.item_selected.connect(world_req_select)
+	column.add_child(req_items)
+	column.add_child(req_effect)
+	req_confirm.toggled.connect(func(_pressed: bool) -> void: world_refresh())
+	column.add_child(req_confirm)
+	req_button.pressed.connect(world_req_purchase)
+	column.add_child(req_button)
+	column.add_child(req_help)
+	column.add_child(req_notice)
 	column.add_child(notice)
 	world_label("RECEIPTS · queued ≠ accepted ≠ completed", column)
 	column.add_child(history)
@@ -109,6 +129,17 @@ func world_clear() -> void:
 	hold_button.disabled = true
 	spend_button.disabled = true
 	confirm_spend.disabled = true
+	req_selected = ""
+	req_signature = "<unset>"
+	req_authorization = ""
+	req_confirm.set_pressed_no_signal(false)
+	req_items.deselect_all()
+	req_effect.text = ""
+	req_help.text = ""
+	req_notice.text = ""
+	req_notice.visible = false
+	req_confirm.disabled = true
+	req_button.disabled = true
 
 func world_select(index: int) -> void:
 	if not visible or not session.world_command_gate().is_empty(): return
@@ -128,6 +159,36 @@ func world_purchase() -> void:
 	# Consume consent before queueing; synchronous changed signals cannot reuse it.
 	confirm_spend.set_pressed_no_signal(false)
 	notice.text = client.activate(client.purchase_kind())
+	world_refresh()
+
+func world_req_select(index: int) -> void:
+	if not visible or not session.world_command_gate().is_empty(): return
+	var options: Array = client.req_options()
+	if index < 0 or index >= options.size(): return
+	req_selected = str(options[index].get("id", ""))
+	world_refresh()
+
+## First owned depot in recipient-observed order, or "" when unknown/none. Used
+## only for the OPERATIONS Puma's depot spend point; never inferred.
+func world_req_depot() -> String:
+	var team := -1
+	var observed_team: Variant = client.projection.get("team")
+	if observed_team is int or observed_team is float: team = int(observed_team)
+	for depot: Variant in client.projection.get("depots", []):
+		if not depot is Dictionary: continue
+		var owner: Variant = depot.get("owner")
+		if not (owner is int or owner is float): continue
+		if int(owner) != team: continue
+		return str(depot.get("id", ""))
+	return ""
+
+func world_req_purchase() -> void:
+	world_refresh()
+	if not visible or req_button.disabled or not req_confirm.button_pressed: return
+	# Consume consent before queueing; synchronous changed signals cannot reuse it.
+	req_confirm.set_pressed_no_signal(false)
+	var depot := world_req_depot() if req_selected == "puma" else ""
+	req_notice.text = client.activate("buy", req_selected, depot)
 	world_refresh()
 
 func observe_events(items: Array) -> void:
@@ -179,15 +240,86 @@ func world_refresh() -> void:
 	hold_button.disabled = not visible or not hold_gate.is_empty()
 	confirm_spend.disabled = not visible or not spend_gate.is_empty()
 	spend_button.disabled = confirm_spend.disabled or not confirm_spend.button_pressed
+	world_refresh_req(p, blocked)
 	notice.visible = not notice.text.is_empty()
 	history.text = "No actions submitted."
 	var lines: PackedStringArray = []
 	for action: Dictionary in client.actions.slice(maxi(0, client.actions.size() - 3)):
-		var observed_effect := telemetry.effect_for_action(action, p, client.actor_id)
-		var settlement := "order effect observed" if observed_effect else "card settled (effect unconfirmed)" if action.status == "confirmed" else "server accepted; effect unconfirmed" if action.status.begins_with("pending") else "local queue only" if action.status == "queued" else "card refused/expired"
+		var settlement := ""
+		if action.get("kind") == "buy":
+			settlement = "server settled purchase; REQ debit authoritative" if action.status == "confirmed" else "server accepted; settlement unconfirmed" if action.status.begins_with("pending") else "local queue only (not accepted)" if action.status == "queued" else "card refused/expired"
+		else:
+			var observed_effect := telemetry.effect_for_action(action, p, client.actor_id)
+			settlement = "order effect observed" if observed_effect else "card settled (effect unconfirmed)" if action.status == "confirmed" else "server accepted; effect unconfirmed" if action.status.begins_with("pending") else "local queue only" if action.status == "queued" else "card refused/expired"
 		if action.get("reason") == "replaced": settlement = "card replaced; no capture evidence"
 		lines.append("%s · %s · %s%s" % [action.cardId, action.kind, settlement, " — " + client.rejection_text(action.reason) if action.reason != null else ""])
 	if not lines.is_empty(): history.text = "\n".join(lines)
+
+## Personal REQ picker. Everything shown is a mirror of the source catalogue plus
+## recipient-observed state; the button only queues one ordinary BUY request.
+func world_refresh_req(p: Dictionary, blocked: String) -> void:
+	var options: Array = []
+	if is_instance_valid(client): options = client.req_options()
+	var labels: PackedStringArray = []
+	for option: Variant in options:
+		if not option is Dictionary: continue
+		var mark := ""
+		if option.get("enabled") != true:
+			mark = " · %s" % client.req_reason_text(str(option.get("disabledReason", "")))
+		labels.append("%s · %s REQ · %s%s" % [option.get("name", option.get("id")), option.get("cost"), option.get("id"), mark])
+	var signature := "\n".join(labels)
+	if signature != req_signature:
+		req_signature = signature
+		req_items.clear()
+		for option: Variant in options:
+			if option is Dictionary: req_items.add_item(str(option.get("name", option.get("id"))))
+	for i: int in range(options.size()):
+		var option: Dictionary = options[i]
+		req_items.set_item_text(i, "%s · %s REQ" % [option.get("name", option.get("id")), option.get("cost")])
+		req_items.set_item_tooltip(i, str(option.get("effectCopy", "")))
+		req_items.set_item_disabled(i, option.get("enabled") != true or not blocked.is_empty())
+	var chosen: Dictionary = {}
+	var index := -1
+	for i: int in range(options.size()):
+		if options[i].get("id") == req_selected:
+			chosen = options[i]
+			index = i
+	if chosen.is_empty() or index < 0:
+		req_selected = ""
+		req_items.deselect_all()
+	else:
+		req_items.select(index)
+	var depot := world_req_depot() if req_selected == "puma" else ""
+	var req_gate := "Select a REQ item"
+	if chosen.is_empty():
+		req_effect.text = "Select a REQ item. Costs and effects mirror game/cocs-economy.mjs."
+	elif not blocked.is_empty():
+		req_effect.text = "%s · %s REQ\n%s" % [chosen.get("name"), chosen.get("cost"), chosen.get("effectCopy")]
+		req_gate = blocked
+	else:
+		req_effect.text = "%s · %s REQ\n%s" % [chosen.get("name"), chosen.get("cost"), chosen.get("effectCopy")]
+		req_gate = client.req_gate(req_selected, depot)
+	# Consent belongs to one item, price and depot inside a live identity epoch.
+	# Any change to those (or to the server gate below) revokes it before another
+	# request can reuse it.
+	var req_fresh := "%s/%s/%s/%s/%s" % [p.get("map"), client.mode, client.revision, req_selected, chosen.get("cost")]
+	if depot != "": req_fresh += "/" + depot
+	if req_fresh != req_authorization or not req_gate.is_empty(): req_confirm.set_pressed_no_signal(false)
+	req_authorization = req_fresh
+	req_confirm.text = "Authorize one REQ purchase"
+	req_confirm.disabled = not visible or chosen.is_empty() or not req_gate.is_empty()
+	req_button.disabled = req_confirm.disabled or not req_confirm.button_pressed
+	req_help.text = req_gate if not req_gate.is_empty() else "Recipient permission available. Authorize, then purchase once."
+	var latest_buy: Dictionary = {}
+	for action: Dictionary in client.actions:
+		if action.get("kind") == "buy": latest_buy = action
+	if not latest_buy.is_empty():
+		var status := str(latest_buy.get("status", ""))
+		if status == "queued": req_notice.text = "BUY queued locally — not accepted yet."
+		elif status.begins_with("pending"): req_notice.text = "BUY accepted by server — effect not yet confirmed."
+		elif status == "confirmed": req_notice.text = "BUY settled by server; own REQ above is authoritative."
+		elif status == "rejected": req_notice.text = "BUY refused: %s" % client.rejection_text(latest_buy.get("reason"))
+	req_notice.visible = not req_notice.text.is_empty()
 
 func _process(_delta: float) -> void:
 	world_refresh()

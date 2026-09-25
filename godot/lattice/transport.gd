@@ -22,6 +22,9 @@ const LIMIT := 32
 const COUNTER_MAX := 2147483647
 const PVP_FIGHTER_FLUX := 12.0
 const COOP_REINFORCE_FLUX := 50.0
+## Source-mirrored personal REQ catalogue. Read-only mirror; the server owns the
+## rules and this script only asks. See `req_catalog.gd`.
+const ReqCatalog = preload("res://lattice/req_catalog.gd")
 
 func _init() -> void:
 	snapshot.connect(observe)
@@ -208,8 +211,26 @@ func observe(frame: Dictionary) -> void:
 	var req: Variant = actor.get("req")
 	for wallet: Variant in array(board.get("req")):
 		if wallet is Dictionary and wallet.get("id") == actor_id: req = wallet.get("req")
+	# Personal buff slot: only an own-team actor carries `reqBuff` (the per-team
+	# filter strips it from enemies). Missing is unknown, never an empty slot.
+	var req_buff: Variant = actor.get("reqBuff")
+	if not req_buff is String: req_buff = null
+	# Recipient-observed traversal depots (public world truth, §11.3). Only the
+	# bounded identity/ownership pair is projected, and only when the wire
+	# actually carried a depot list; absence stays unknown, never "no depot".
+	var depots: Array[Dictionary] = []
+	var depots_known := false
+	var traversal: Variant = board.get("traversal")
+	if traversal is Dictionary and traversal.get("depots") is Array:
+		depots_known = true
+		for depot: Variant in traversal.get("depots"):
+			if not depot is Dictionary or not depot.get("id") is String: continue
+			var owner: Variant = depot.get("owner")
+			if owner != null and not wire_integer(owner): continue
+			depots.append({"id":str(depot.id), "owner":owner})
 	projection = {"map":state.get("mapId"), "mode":mode, "team":team,
-		"health":actor.get("health"), "req":req,
+		"health":actor.get("health"), "req":req, "reqBuff":req_buff,
+		"depots":depots, "depots_known":depots_known,
 		"flux":team_value(board, "flux", team), "spent":team_value(board, "fluxSpent", team),
 		"income":team_value(board, "fluxIncome", team), "upkeep":team_value(board, "fluxUpkeep", team),
 		"nodes":nodes, "cuts":cuts, "roles":role_board, "command":dictionary(board.get("command")),
@@ -284,7 +305,14 @@ func rejection_text(reason: Variant) -> String:
 		"flux":"Team FLUX changed; check the live budget.", "no-thread":"All threads are busy; wait for a free thread.",
 		"stale-round":"Round changed; reconnect before authorizing again.", "dead":"Your actor is unavailable.",
 		"rate-limit":"Too many requests; wait before authorizing again.", "no-sink":"This action is unavailable in this mode.",
-		"ttl":"Order expired; issue HOLD again.", "round-end":"Round ended before the action completed."}
+		"ttl":"Order expired; issue HOLD again.", "round-end":"Round ended before the action completed.",
+		# Personal REQ (BUY) refusals. The server owns every one of these.
+		"unknown-item":"Unknown REQ item.", "wrong-mode":"Not available in this mode.",
+		"not-launched":"This item has no shipped effect yet.", "depot":"No owned depot available for this purchase.",
+		"vehicle":"The depot vehicle is not available.", "no-target":"No legal target for this equipment right now.",
+		"insufficient-req":"Not enough REQ for this item.", "one-active-buff":"Another personal buff is already active.",
+		"commander-only":"Commander seat required.", "requires-relay":"An owned relay is required.",
+		"wrong-actor":"That purchase belongs to a different actor."}
 	return str(explanations.get(str(reason), str(reason)))
 
 func gate() -> String:
@@ -331,8 +359,58 @@ func action_gate(kind: String, target: String = "") -> String:
 		if not has_settled: return "Action history full; unresolved outcomes retained"
 	return ""
 
-func activate(kind: String, target: String = "") -> String:
-	var reason := action_gate(kind, target)
+# ---------------------------------------------------------------------------
+# Personal REQ (BUY). The catalogue is a read-only mirror; the server owns the
+# mode/depot/REQ/buff rules. The native client only decides what it is allowed
+# to *ask* for from recipient-observed state, and never fabricates acceptance.
+# ---------------------------------------------------------------------------
+
+## The finite, mode-aware mirror of the launched source catalogue, each row with
+## `enabled`/`disabledReason` derived from this recipient's observed state.
+func req_options() -> Array:
+	return ReqCatalog.options(req_context())
+
+func req_context() -> Dictionary:
+	return {"mode":mode, "team":projection.get("team"), "req":projection.get("req"),
+		"activeBuff":projection.get("reqBuff"), "depots":projection.get("depots", []),
+		"depotsKnown":projection.get("depots_known") == true}
+
+func req_option(item_id: String) -> Dictionary:
+	for option: Variant in req_options():
+		if option is Dictionary and option.get("id") == item_id: return option
+	return {}
+
+func req_reason_text(reason: String) -> String:
+	return ReqCatalog.reason_text(reason)
+
+## Recipient-observed gate for one BUY. Returns "" only when a single ordinary
+## BUY request may be queued. Mirrors the source's per-row gate and adds only the
+## native `unknown` reasons; an unsupported or unlaunched id is always refused.
+func req_gate(item_id: String, depot_id: String = "") -> String:
+	var reason := gate()
+	if not reason.is_empty(): return reason
+	var option := req_option(item_id)
+	if option.is_empty(): return "Unsupported REQ item"
+	if option.get("enabled") != true:
+		return req_reason_text(str(option.get("disabledReason", "")))
+	if item_id == "puma":
+		if depot_id.is_empty(): return "Select an owned depot"
+		var team := -1
+		if projection.get("team") is int or projection.get("team") is float: team = int(projection.get("team"))
+		var owned := ReqCatalog.owned_depot_ids(projection.get("depots"), team)
+		if not owned.has(depot_id): return "Select an owned depot"
+	for action: Dictionary in actions:
+		if action.get("kind") == "buy" and action.get("target") == item_id and (action.get("status") == "queued" or str(action.get("status", "")).begins_with("pending")):
+			return "Awaiting server response; no repeat sent"
+	if actions.size() >= LIMIT:
+		var has_settled := false
+		for action: Dictionary in actions:
+			if action.get("status") in ["confirmed", "rejected"]: has_settled = true
+		if not has_settled: return "Action history full; unresolved outcomes retained"
+	return ""
+
+func activate(kind: String, target: String = "", depot_id: String = "") -> String:
+	var reason := req_gate(target, depot_id) if kind == "buy" else action_gate(kind, target)
 	if not reason.is_empty(): return reason
 	sequence += 1
 	var id := "native-r%d-p%d-s%d" % [revision, peer_id, sequence]
@@ -340,6 +418,9 @@ func activate(kind: String, target: String = "") -> String:
 	if kind == "hold": frame.merge({"type":"order", "verb":"HOLD", "target":target})
 	elif kind == "fighter": frame.merge({"type":"economy", "action":"spawn", "role":"fighter"})
 	elif kind == "reinforce": frame.merge({"type":"economy", "action":"reinforce", "role":"fighter"})
+	elif kind == "buy":
+		frame.merge({"type":"buy", "itemId":target})
+		if not depot_id.is_empty(): frame["depotId"] = depot_id
 	else: frame.merge({"type":"economy", "action":"fortify", "target":target})
 	if send_frame(frame) != OK: return "Queue failed; outcome unknown, reconnect explicitly"
 	cooldown_until = Time.get_ticks_msec() + 600
@@ -351,7 +432,9 @@ func activate(kind: String, target: String = "") -> String:
 				removable = i
 				break
 		if removable >= 0: actions.remove_at(removable)
-	actions.append({"cardId":id, "roundRev":revision, "actionSeq":sequence,
-		"kind":kind, "target":target, "status":"queued", "reason":null})
+	var action := {"cardId":id, "roundRev":revision, "actionSeq":sequence,
+		"kind":kind, "target":target, "status":"queued", "reason":null}
+	if kind == "buy": action["depotId"] = depot_id
+	actions.append(action)
 	changed.emit()
 	return ""
