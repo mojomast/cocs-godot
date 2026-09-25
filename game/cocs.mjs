@@ -117,6 +117,12 @@ export const COCS_ORDER_LOG_LIMIT = 64;
 // from, so the board never depends on network-side guesses about an outcome.
 // Plain state (not part of the snapshot) and trimmed like `orderLog`.
 export const COCS_SPEND_LOG_LIMIT = 64;
+// Personal-REQ buy receipt log (the `buy` analogue of `spendLog`). Every
+// successful `cocsBuyAction`/`coopBuyAction` apply appends the exact card id it
+// settled, so `Room.cocsBuyOutcome` can require an exact receipt instead of
+// guessing from `reqBuff`/`reqSpent` or an actor/item/tick coincidence. Plain
+// state (never snapshotted) and trimmed like `orderLog`.
+export const COCS_BUY_LOG_LIMIT = 64;
 const DEFAULT_RADIUS = 4;
 const DEFAULT_CAPTURE_SECONDS = 5;
 const ORDER_TTL_SECONDS = 2;
@@ -438,6 +444,7 @@ export function cocsTemplate(mode, arena, config = {}) {
     pendingOrders: [],
     orderLog: [],
     spendLog: [],
+    buyLog: [],
     orderTtlTicks: Math.max(1, Math.round(ORDER_TTL_SECONDS / (RULES.dt || 1 / 60))),
     // --- PvP-1 rung ladder + two-team command + role board -------------------
     // `rung` is null for co-op and for an un-laddered practice `cocs`; the role
@@ -1666,7 +1673,35 @@ export function cocsBuyAction(match, state, record = {}) {
     }
   }
   match?.emit?.('cocs-buy', {actor: actor.id, team, itemId: item.id, cost: num(result.cost, 0), req: num(actor.req, 0)});
+  // Authoritative receipt: only a successful apply reaches this line, keyed by
+  // the exact action card so the room can never settle a coincident same-item
+  // or same-cost card from this purchase's evidence. Idempotent per card id.
+  recordCocsBuyReceipt(state, record, {actor: actor.id, team, itemId: item.id, cost: num(result.cost, 0)});
   return {ok: true, reason: null, itemId: item.id, cost: num(result.cost, 0)};
+}
+
+/** Append one bounded personal-REQ buy receipt, keyed by the exact action card. */
+export function recordCocsBuyReceipt(state, record, entry = {}) {
+ if (!state || state.kind !== COCS_KIND) return null;
+ const cardId = record?.cardId ?? null;
+ if (cardId === null || cardId === undefined) return null;
+ const key = String(cardId);
+ const log = state.buyLog ?? (state.buyLog = []);
+ for (let i = log.length - 1; i >= 0; i--) {
+  const existing = log[i];
+  if (existing && String(existing.cardId ?? '') === key) return existing;
+ }
+ const receipt = {
+  tick: num(record.tick, num(state.tick, 0)),
+  actor: entry.actor ?? record.actorId ?? null,
+  team: entry.team === 1 ? 1 : 0,
+  itemId: entry.itemId ?? record.itemId ?? null,
+  cost: num(entry.cost, 0),
+  cardId: key,
+ };
+ log.push(receipt);
+ if (log.length > COCS_BUY_LOG_LIMIT) log.splice(0, log.length - COCS_BUY_LOG_LIMIT);
+ return receipt;
 }
 
 /**

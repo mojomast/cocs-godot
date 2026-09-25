@@ -432,20 +432,22 @@ export class Room {
  cocsBuyOutcome(record, state) {
   const actor = this.match?.actors?.[record.actorId] ?? null;
   if (!actor) return {state: 'blocked', ok: false, reason: 'missing'};
-  if (state.coop) {
-   const log = state.coop.buyLog ?? [];
-   for (let i = log.length - 1; i >= 0; i--) {
-    const entry = log[i];
-    if (!entry) continue;
-    if (String(entry.actor ?? '') !== String(record.actorId ?? '')) continue;
-    if (String(entry.itemId ?? '') !== String(record.itemId ?? '')) continue;
-    if (num(entry.tick, 0) < num(record.createdTick, 0)) continue;
-    return {state: 'done', ok: true, reason: null};
-   }
-  }
-  // Every successful purchase stamps the item on the actor and debits REQ; the
-  // debit is what distinguishes a fresh effect from an already-active buff.
-  if (String(actor.reqBuff ?? '') === String(record.itemId ?? '') && num(actor.reqSpent, 0) > num(record.baseline?.reqSpent, 0)) {
+  // Settle only from the sim's own per-card receipt log. The previous
+  // `reqBuff`/`reqSpent` heuristic false-positive'd two same-cost buys and
+  // missed every non-buff equipment buy (Spot Drone / Repair Tool preserve the
+  // active buff slot); the actor/item/tick co-op scan cross-settled two
+  // same-item cards. An exact card id cannot collide across cards or actors.
+  const cardId = record.cardId === null || record.cardId === undefined ? null : String(record.cardId);
+  if (cardId === null) return null;
+  const log = state.buyLog ?? [];
+  const actorKey = String(record.actorId ?? '');
+  const itemKey = String(record.itemId ?? '');
+  for (let i = log.length - 1; i >= 0; i--) {
+   const entry = log[i];
+   if (!entry) continue;
+   if (String(entry.cardId ?? '') !== cardId) continue;
+   if (String(entry.actor ?? '') !== actorKey) continue;
+   if (String(entry.itemId ?? '') !== itemKey) continue;
    return {state: 'done', ok: true, reason: null};
   }
   return null;

@@ -22,7 +22,7 @@
 import {RULES} from './data.mjs';
 import {COCS_SQUAD_ACTIONS, cocsCommandAuthority, cocsSquadAction} from './cocs-squads.mjs';
 import {SUBAGENTS, convertCoopReq, reqItem, reqPurchase, reconPulseTargets, repairToolTarget, sentryDeployment, spotDroneTargets} from './cocs-economy.mjs';
-import {addActorReq, applyReconPulse, applyRepairTool, applySentry, applySpotDrone, capturableNodes, compareCocsOrders, connectivityIncome, cutLink, nodeById, normalizeCocsPolicy, repairLink} from './cocs.mjs';
+import {addActorReq, applyReconPulse, applyRepairTool, applySentry, applySpotDrone, capturableNodes, compareCocsOrders, connectivityIncome, cutLink, nodeById, normalizeCocsPolicy, repairLink, recordCocsBuyReceipt} from './cocs.mjs';
 import {depotPurchaseState, deviceInteract, purchaseDepotVehicle} from './cocs-traversal.mjs';
 import {spawnGroup, updateEnemyRoles} from './singleplayer.mjs';
 import {
@@ -2444,11 +2444,14 @@ export function coopBuyAction(match, state, record = {}) {
     state.coop.buyLog ??= [];
     state.coop.buyLog.push({
       tick: num(state.tick, 0), actor: actor.id, team, itemId: item.id,
-      cost: num(result.cost, 0), req: num(actor.req, 0),
+      cost: num(result.cost, 0), req: num(actor.req, 0), cardId: record.cardId ?? null,
       ...(vehicleId ? {vehicle: vehicleId, depot: depot.id} : {}),
     });
     if (state.coop.buyLog.length > 16) state.coop.buyLog.splice(0, state.coop.buyLog.length - 16);
   }
+  // The room settles the mirrored card from an exact per-card receipt, so two
+  // same-item buys in one tick can never cross-settle. Idempotent per card id.
+  recordCocsBuyReceipt(state, record, {actor: actor.id, team, itemId: item.id, cost: num(result.cost, 0), vehicleId});
   return {ok: true, reason: null, itemId: item.id, cost: num(result.cost, 0), ...(vehicleId ? {vehicleId, depotId: depot.id} : {})};
 }
 
