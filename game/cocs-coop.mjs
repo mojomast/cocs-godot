@@ -2373,7 +2373,7 @@ export function coopBuyAction(match, state, record = {}) {
   if (item.id === 'spot-drone' && spotDroneTargets(actor, match?.actors, item.effect).length === 0) return {ok: false, reason: 'no-target'};
   if (item.id === 'repair-tool' && repairToolTarget(actor, state, item.effect) === null) return {ok: false, reason: 'no-target'};
   if (item.id === 'sentry' && !sentryDeployment(actor, match?.deployables, item.effect).ok) return {ok: false, reason: 'no-target'};
-  if (item.id === 'recon-pulse' && reconPulseTargets(actor, match?.actors, item.effect).length === 0) return {ok: false, reason: 'no-target'};
+  if (item.id === 'recon-pulse' && reconPulseTargets(actor, match?.actors, item.effect, state).length === 0) return {ok: false, reason: 'no-target'};
   const peerId = String(record.peerId ?? '');
   const isCommander = state?.coop?.commandSeat?.[team] === peerId || (peerId === '' && item.commanderOnly !== true);
   const relayOwned = (state?.nodes ?? []).some(node => node && node.archetype === 'relay' && node.owner === team);

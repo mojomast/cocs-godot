@@ -100,14 +100,15 @@ send a BUY.
   decides what it may *ask*. Mode, depot ownership, REQ balance, buff slot and
   life are read from the recipient-observed projection, and every row is gated
   again by `Room.buy` / `reqPurchase` on the server.
-* **Finite and launched only.** The table is exactly the 7 source rows with a
-  shipped effect. `at-mine`, `smoke`, `barrier`, `sentry`, `forward-depot`,
-  `supply-drop`, `recon-pulse`, `fortify-doctrine`, `tier-upgrade`,
+* **Finite and launched only.** The generated table contains exactly nine
+  source rows with shipped effects, including Sentry and Recon Pulse.
+  `at-mine`, `smoke`, `barrier`, `forward-depot`,
+  `supply-drop`, `fortify-doctrine`, `tier-upgrade`,
   `oracle-unlock` and reserved `FLUX` ids (`respawn`, `reserve`, `flux`) cannot
   be selected and are refused before any frame is sent.
 * **No fabricated acceptance.** A queued BUY is `queued`; only the authoritative
   `cards` row turns it `pending (server accepted)`, `confirmed` (server settle
-  evidence: co-op `buyLog` or the PvP `reqBuff`+`reqSpent` debit) or `rejected`.
+  evidence: exact source per-card receipt) or `rejected`.
   The UI shows the server-owned result and the live `own REQ`, never a click
   success or a local debit.
 * **Unknown stays unknown.** A missing `req` renders `req-unknown`/disabled
@@ -131,18 +132,18 @@ send a BUY.
 `res://`, so it must run from this repo checkout (the parent's normal lane
 context); it fails loudly if the file is missing or drifted.
 
-The integrated Godot 4.5.2 import completed; the catalog contract passed 84/84,
-BUY lifecycle contract passed 51/51, economy fixture passed 91/91 and L1 fixture
-passed 38/38. The previously failing `world_commands_contract.gd` fixture now
+The earlier seven-row integration's Godot 4.5.2 import completed; its catalog
+contract passed 84/84, BUY lifecycle 51/51, economy 91/91 and L1 38/38. The
+new nine-row generated mirror passes catalog 197/197 and BUY lifecycle 60/60;
+the economy fixture passes 91/91. The repaired `world_commands_contract.gd` fixture
 sets its selected mode before sending a `cocs` start and passes 27/27 behavior
 checks (Godot prints teardown resource-leak warnings). A live native BUY remains
 unobserved; the synthetic lifecycle proves only the request/settlement seam.
 
 ### Known deviations / remaining work
 
-* **Depot choice is implicit.** The OPERATIONS Puma uses the first
-  recipient-observed owned depot (deterministic wire order) rather than a
-  per-depot picker; the frame carries that observed `depotId`.
+* **Depot choice is explicit.** The OPERATIONS Puma picker lists the recipient's
+  observed owned depots and sends the selected `depotId`.
 * **Target validation is server-side.** `spot-drone`/`repair-tool` can still be
   refused `no-target` by the authority; the client does not model cut/enemy
   geometry and shows the refusal rather than pre-claiming a hit.

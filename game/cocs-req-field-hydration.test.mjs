@@ -146,11 +146,16 @@ test('a re-buy refreshes the live sentry instead of stacking (idempotent and bou
     assert.equal(actor.req, 500 - 120, `${mode}: both buys debit exactly once`);
     assert.equal(actor.reqSpent, 120, `${mode}: both spends are recorded`);
 
-    // Direct applier idempotency: applying again converges, never compounds.
+    // A third apply at the already-full window is refused as a no-op.
     const applied = applySentry(match, state, actor, SENTRY_EFFECT);
-    assert.equal(applied.ok, true);
-    assert.equal(applied.refresh, true, `${mode}: the third apply is a refresh`);
-    assert.equal(match.deployables.length, 1, `${mode}: apply is idempotent`);
+    assert.equal(applied.ok, false);
+    assert.equal(applied.reason, 'no-target');
+    assert.equal(match.deployables.length, 1, `${mode}: no turret stacks`);
+    const refused = state.coop
+      ? coopBuyAction(match, state, {actorId: actor.id, peerId: String(actor.id), itemId: 'sentry'})
+      : cocsBuyAction(match, state, {actorId: actor.id, peerId: String(actor.id), itemId: 'sentry'});
+    assert.equal(refused.reason, 'no-target', `${mode}: a full-window re-buy is not charged`);
+    assert.equal(actor.req, 380);
 
     // A destroyed turret frees the slot for a genuinely new deployment.
     match.damageDeployable(match.deployables[0], 100000, match.actors.find(entry => entry && entry.team !== actor.team));

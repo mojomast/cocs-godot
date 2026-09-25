@@ -17,8 +17,8 @@ const item = (over = {}) => ({id: 'probe', name: 'Probe', category: 'equipment',
 test('launched rows are mirrored with source cost/copy/modes/flags', () => {
   const rows = catalogRows();
   assert.deepEqual(rows.map(row => row.id),
-    ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'puma']);
-  assert.deepEqual(rows.map(row => row.cost), [40, 25, 35, 50, 45, 30, 150]);
+    ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'sentry', 'puma', 'recon-pulse']);
+  assert.deepEqual(rows.map(row => row.cost), [40, 25, 35, 50, 45, 30, 60, 150, 60]);
   assert.equal(rows.find(row => row.id === 'puma').coopLaunch, true);
   assert.equal(rows.find(row => row.id === 'puma').launch, false);
   assert.equal(rows.find(row => row.id === 'repair-tool').target, 'cut-link');

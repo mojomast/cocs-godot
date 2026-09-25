@@ -707,7 +707,7 @@ export class Room {
   if (item.id === 'sentry' && !sentryDeployment(actor, this.match.deployables, item.effect).ok) {
    return this.cocsRejectAction(opened, 'no-target', { itemId: parsed.itemId });
   }
-  if (item.id === 'recon-pulse' && reconPulseTargets(actor, this.match.actors, item.effect).length === 0) {
+   if (item.id === 'recon-pulse' && reconPulseTargets(actor, this.match.actors, item.effect, state).length === 0) {
    return this.cocsRejectAction(opened, 'no-target', { itemId: parsed.itemId });
   }
   const simId = String(actor.id);

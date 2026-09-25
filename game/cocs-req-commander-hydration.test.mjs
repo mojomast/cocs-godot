@@ -206,6 +206,25 @@ test('an unauthorized, seat-stolen, cloaked or dead Recon Pulse is refused inert
  }
 });
 
+test('a fully covered same-tick Recon Pulse refuses without a second debit', () => {
+ for (const make of [pvpMatch, coopMatch]) {
+  const match = make();
+  const state = match.objectiveState;
+  const actor = match.actors[0];
+  actor.req = 500; actor.reqSpent = 0;
+  seatCommander(state, actor);
+  const purchase = () => state.coop
+   ? coopBuyAction(match, state, {actorId: actor.id, peerId: String(actor.id), itemId: 'recon-pulse'})
+   : cocsBuyAction(match, state, {actorId: actor.id, peerId: String(actor.id), itemId: 'recon-pulse'});
+  assert.equal(purchase().ok, true);
+  const balance = actor.req;
+  assert.equal(reconPulseTargets(actor, match.actors, RECON_PULSE_EFFECT, state).length, 0);
+  assert.equal(purchase().reason, 'no-target');
+  assert.equal(actor.req, balance);
+  assert.equal(actor.reqSpent, 60);
+ }
+});
+
 test('Room.buy gates Recon Pulse on the real commander seat and a legal target before queueing', () => {
  const room = new Room('rc', seeded(43), {snapshotHz: 30, keyframeEvery: 5});
  room.join(1, 'Alice', 'chatgpt', 'openclaw');

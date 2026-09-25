@@ -8,6 +8,7 @@
 // logic. `game/cocs-economy.test.mjs` pins the numbers; W1 owns `cocs.mjs` and
 // the mode registry and wires these helpers in.
 import {GEAR_CAPS, resolveGear} from './progression.mjs';
+import {RULES} from './data.mjs';
 
 export {GEAR_CAPS};
 
@@ -191,8 +192,8 @@ export function reqEarnBreakdown(profile={}){
 
 // §6A.5 purchase catalogue. WP1.3 truth rule: only entries with a concrete,
 // shipped simulation effect are launchable. The four personal buffs, the three
-// field-equipment rows below (Spot Drone / Repair Tool / Sentry) and the
-// OPERATIONS depot Puma qualify; every other advertised row has no effect yet, so
+// field-equipment rows below (Spot Drone / Repair Tool / Sentry), the commander
+// Recon Pulse and the OPERATIONS depot Puma qualify; every other row has no effect yet, so
 // it carries `modes:[]` and is not in any launch set. The buy paths refuse it
 // with `not-launched` before `reqPurchase` can debit REQ or touch `reqBuff`.
 //   * `launch:true`     accepted by PvPvE `cocs` and OPERATIONS `cocs-coop`.
@@ -263,10 +264,11 @@ export function spotDroneTargets(actor,actors,effect=SPOT_DRONE_EFFECT){
  * the shipped `recon` field hook already honours — so a pulse with only cloaked
  * (or dead) enemies is `no-target`.
  */
-export function reconPulseTargets(actor,actors,effect=RECON_PULSE_EFFECT){
+export function reconPulseTargets(actor,actors,effect=RECON_PULSE_EFFECT,state=null){
  if(!actor||num(actor.health,0)<=0)return deepFreeze([]);
  const team=actor.team===1?1:0;
  const radius=Number.isFinite(num(effect?.radius,NaN))?Math.max(0,num(effect.radius,0)):null;
+ const until=state?num(state.tick,0)+Math.max(1,Math.round(Math.max(0,num(effect?.seconds,RECON_PULSE_EFFECT.seconds))/(RULES.dt||1/60))):null;
  const list=[];
  for(const target of sortedRoster(actors)){
   if(num(target.health,0)<=0)continue;
@@ -274,6 +276,13 @@ export function reconPulseTargets(actor,actors,effect=RECON_PULSE_EFFECT){
   if(target.team===team)continue;
   if(num(target.powerups?.cloak,0)>0)continue;
   if(radius!==null&&Math.hypot(num(target.x,0)-num(actor.x,0),num(target.z,0)-num(actor.z,0))>radius)continue;
+  // A purchase must extend at least one team's contact window. Re-buying an
+  // already-covered pulse in the same tick is a paid no-op and is refused.
+  if(until!==null){
+   const spot=state?.spots?.[target.id];
+   const intel=state?.fieldSupport?.intel?.[team]?.[target.id];
+   if((spot?.team===team&&num(spot.until,0)>=until)||num(intel?.until,0)>=until)continue;
+  }
   list.push(target.id);
  }
  return deepFreeze(list);
@@ -321,6 +330,7 @@ export function sentryDeployment(actor,deployables,effect=SENTRY_EFFECT){
  if(actor.health!==undefined&&actor.health!==null&&num(actor.health,0)<=0)return deny('no-target');
  if(actor.vehicleId!==null&&actor.vehicleId!==undefined)return deny('no-target');
  const live=(Array.isArray(deployables)?deployables:[]).filter(entry=>entry&&entry.owner===actor.id&&num(entry.health,0)>0&&num(entry.life,0)>0);
+ if(live.length>=limit&&num(live[0].life,0)>=duration)return deny('no-target');
  return deepFreeze({ok:true,reason:null,duration,limit,refresh:live.length>=limit,live:live.length});
 }
 

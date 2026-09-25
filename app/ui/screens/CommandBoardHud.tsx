@@ -39,7 +39,7 @@ export const REQ_REASON_COPY: Record<string, string> = {
   'one-active-buff': 'ANOTHER BUFF IS ACTIVE',
   'requires-relay': 'RELAY REQUIRED',
   'insufficient-req': 'NEED MORE REQ',
-  'no-target': 'NO VALID TARGET IN REACH',
+  'no-target': 'NO VALID TARGET',
   'not-launched': 'NOT LAUNCHED',
   'unknown-item': 'UNKNOWN ITEM',
   missing: 'NO ACTOR',
@@ -122,9 +122,9 @@ export const REQ_GRACE_TICKS = 90;
 /**
  * Reconcile optimistic REQ dispatches against authority. Pure.
  *
- * A pending buy is CONFIRMED only when the authoritative record exists:
- * `buys` (co-op `buyLog`) entries, `cocs-buy` `events`, or a `spent` delta
- * walked in deterministic cardId order. A `refusalReason` (server reject) or a
+ * Online buys settle only from their exact server card. Local-play paths can
+ * use `buys` entries, `cocs-buy` events or a `spent` delta walked in card order.
+ * A `refusalReason` (server reject) or a
  * grace-expired unconfirmed row is REFUSED with a named reason. Never confirms
  * from intent alone.
  *
@@ -143,8 +143,20 @@ export function reconcileReqBuys(pending: any[], input: any = {}) {
   for (const buy of list) {
     if (!buy) continue;
     if (buy.refusalReason) { refused.push({...buy, reason: buy.refusalReason}); continue; }
+    if (input.cardAuthoritative === true) {
+      const card = (Array.isArray(input.cards) ? input.cards : []).find((entry: any) => entry
+        && String(entry.id ?? '') === String(buy.cardId ?? '')
+        && String(entry.actorId ?? '') === String(buy.actorId ?? actorId)
+        && String(entry.itemId ?? entry.target ?? '') === String(buy.itemId ?? '')
+        && entry.verb === 'BUY');
+      if (card?.state === 'done' && card.ok === true) confirmed.push(buy);
+      else if (card && ['blocked', 'expired'].includes(card.state)) refused.push({...buy, reason: card.reason ?? card.blocker ?? 'not-applied'});
+      else unresolved.push(buy);
+      continue;
+    }
     const itemId = String(buy.itemId ?? '');
     const logMatch = buys.find((entry: any) => entry && !claimedBuys.has(entry)
+      && (entry.cardId == null || String(entry.cardId) === String(buy.cardId))
       && String(entry.itemId ?? '') === itemId
       && String(entry.actor ?? entry.actorId ?? '') === String(actorId)
       && Number(entry.tick ?? 0) >= Number(buy.tick ?? 0));
@@ -161,7 +173,7 @@ export function reconcileReqBuys(pending: any[], input: any = {}) {
   // `reqSpent` delta only ever confirms REQ that was actually debited.
   const spent = Number(input.spent);
   const deltaConfirmed = new Set<any>();
-  if (Number.isFinite(spent) && unresolved.length) {
+  if (input.cardAuthoritative !== true && Number.isFinite(spent) && unresolved.length) {
     const floor = Math.min(...unresolved.map(buy => Number(buy.baselineSpent) || 0));
     let delta = Math.max(0, spent - floor);
     for (const buy of confirmed) if (Number(buy.baselineSpent) <= floor) delta = Math.max(0, delta - (Number(buy.cost) || 0));

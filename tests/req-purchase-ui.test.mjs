@@ -159,6 +159,25 @@ test('a shared debit confirms only the deterministic work it can pay for', () =>
   assert.deepEqual(both.confirmed.map(buy => buy.itemId).sort(), ['ammo-crate', 'field-repair']);
 });
 
+test('online REQ confirmation requires the exact settled server card', () => {
+  const first = pendingBuy({cardId: 'buy-a', itemId: 'haste', cost: 35});
+  const second = pendingBuy({cardId: 'buy-b', itemId: 'haste', cost: 35});
+  const base = {actorId: 0, cardAuthoritative: true, tick: 11, spent: 35,
+    buys: [{actor: 0, itemId: 'haste', tick: 11, cardId: 'buy-a'}],
+    events: [{id: 9, actor: 0, type: 'cocs-buy', itemId: 'haste'}]};
+  const queued = reconcileReqBuys([first, second], {...base, cards: [{id: 'buy-a', actorId: 0, itemId: 'haste', verb: 'BUY', state: 'running'}]});
+  assert.equal(queued.confirmed.length, 0, 'debit and event cannot prematurely confirm an online card');
+  const settled = reconcileReqBuys([first, second], {...base, cards: [
+    {id: 'buy-a', actorId: 0, itemId: 'haste', verb: 'BUY', state: 'done', ok: true},
+    {id: 'buy-b', actorId: 0, itemId: 'haste', verb: 'BUY', state: 'blocked', reason: 'insufficient-req'},
+  ]});
+  assert.deepEqual(settled.confirmed.map(entry => entry.cardId), ['buy-a']);
+  assert.equal(settled.refused[0].cardId, 'buy-b');
+  assert.equal(settled.refused[0].reason, 'insufficient-req');
+  const foreign = reconcileReqBuys([first], {...base, cards: [{id: 'buy-a', actorId: 1, itemId: 'haste', verb: 'BUY', state: 'done', ok: true}]});
+  assert.equal(foreign.confirmed.length, 0, 'another actor card cannot settle our request');
+});
+
 test('a refusal names its reason and drops the pending row', () => {
   const denied = reconcileReqBuys([pendingBuy({refusalReason: 'one-active-buff'})], {actorId: 0, tick: 11, spent: 0});
   assert.equal(denied.refused.length, 1);

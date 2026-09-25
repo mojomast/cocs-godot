@@ -289,7 +289,7 @@ func world_refresh_req(p: Dictionary, blocked: String) -> void:
 		var mark := ""
 		if option.get("enabled") != true:
 			mark = client.req_reason_text(str(option.get("disabledReason", "")))
-		var cost := option.get("cost")
+		var cost: Variant = option.get("cost")
 		req_items.set_item_text(i, "%s · %s REQ%s" % [option.get("name", option.get("id")), cost, "" if mark.is_empty() else " · " + mark])
 		var tip := str(option.get("effectCopy", ""))
 		if not mark.is_empty(): tip += "\n" + mark
@@ -299,7 +299,7 @@ func world_refresh_req(p: Dictionary, blocked: String) -> void:
 		# Readable when gated, but never purchase-enabling; the buy gate below and
 		# the server re-check every frame.
 		req_items.set_item_disabled(i, false)
-		var usable := option.get("enabled") == true and blocked.is_empty()
+		var usable: bool = option.get("enabled") == true and blocked.is_empty()
 		req_items.set_item_custom_fg_color(i, Color("dbe7f0") if usable else Color("8aa0b4"))
 	req_items.custom_minimum_size.y = maxf(64.0, minf(7.0, float(maxi(1, options.size()))) * 30.0)
 	var chosen: Dictionary = {}

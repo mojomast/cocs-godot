@@ -104,10 +104,9 @@ that already exists and is already tested:
    collision/nav/ray change.
 3. **`at-mine` and `barrier` remain deferred.** Their mechanics are not authored
    in this slice; buying them would be a visual-only or no-op claim.
-4. **The native Godot mirror is not updated here.** `godot/lattice/req_catalog.gd`
-   is a hardcoded mirror of `REQ_ITEMS` and its contract test currently asserts
-   `sentry` cannot be selected. Launching the source row drifts that mirror until
-   the native lane re-syncs it (recorded under conflicts below).
+4. **The initial field lane did not update the native mirror.** The subsequent
+   integration generated its nine-row mirror from the launched source catalogue;
+   `sentry` now appears in the native request picker.
 
 ## Tests
 
@@ -133,19 +132,9 @@ before any queue or debit). `game/cocs-req-effects.test.mjs` and
 `game/cocs-economy.test.mjs` had their exact-offer / launch-set / unsupported-row
 expectations updated to match the newly launched row.
 
-## Integration conflicts expected
+## Integration resolution
 
-* **Godot native catalog** (`godot/lattice/req_catalog.gd`,
-  `godot/tests/lattice/req_catalog_contract.gd`): the source `REQ_ITEMS` block is
-  the authority the native contract reads; the native lane must re-sync the
-  mirror to add `sentry` (7 -> 8 launched rows) and stop asserting it is
-  unselectable.
-* **`port/native-lattice/flagship/catalog/REQ.md`**: its native-addendum list
-  still names `sentry` as unselectable. This lane intentionally did not edit
-  `REQ.md` to avoid colliding with the commander lane; the sentence is now stale
-  and should be updated by whoever next owns that doc.
-* **Commander lane** (`supply-drop`/`recon-pulse`) touches the same modules
-  (`cocs-economy.mjs`, `cocs.mjs`, `cocs-coop.mjs`, `server/room.mjs`). This lane
-  confined edits to the `sentry` row, `SENTRY_EFFECT`/`sentryDeployment`, the
-  `applySentry` applier and the matching one-line preflights/dispatch branches;
-  the commander rows and their docs were not touched.
+The native exporter now mirrors `sentry` and `recon-pulse` from the source
+catalogue; the Godot parity contract passes 197 checks. The commander lane's
+adjacent purchase changes were reconciled. A full-window Sentry re-buy now
+refuses `no-target` without charging rather than selling a no-op refresh.

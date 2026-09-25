@@ -26,6 +26,7 @@ export const ECONOMY_PATH = join(REPO_ROOT, 'game/cocs-economy.mjs');
 // pay-for-no-op: extend this list (and `req_catalog.gd`'s gate) deliberately.
 export const KNOWN_EFFECT_KINDS = Object.freeze([
   'heal', 'resupply', 'haste', 'shield', 'spot', 'repair-link', 'vehicle',
+  'sentry', 'recon-pulse',
 ]);
 
 export const CATALOG_FIELDS = Object.freeze([

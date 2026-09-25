@@ -144,13 +144,13 @@ func _mirror_source() -> void:
 		if not str(source.get("effectKind", "")).is_empty():
 			check(str(source.get("effectKind")) == str(entry.get("effectKind")), "effect kind mirrored for " + id)
 	# Rows without a shipped effect, and reserved FLUX ids, are never offered.
-	for unsupported: String in ["at-mine", "smoke", "barrier", "sentry", "forward-depot", "supply-drop", "recon-pulse", "fortify-doctrine", "tier-upgrade", "oracle-unlock", "respawn", "reserve", "flux"]:
+	for unsupported: String in ["at-mine", "smoke", "barrier", "forward-depot", "supply-drop", "fortify-doctrine", "tier-upgrade", "oracle-unlock", "respawn", "reserve", "flux"]:
 		check(Catalog.item(unsupported).is_empty(), "unsupported row absent: " + unsupported)
 
 func _pure_options() -> void:
 	var base := {"mode":"cocs", "team":0, "req":100, "activeBuff":null, "depots":[], "depotsKnown":false}
 	var rows := Catalog.options(base)
-	check(rows.size() == 7, "all launched rows rendered")
+	check(rows.size() == Catalog.ITEMS.size(), "all launched rows rendered")
 	check(find_row(rows, "field-repair").get("enabled") == true, "affordable buff enabled")
 	check(find_row(rows, "field-repair").get("affordable") == true, "affordable flag from observed balance")
 	# Mode gate: Puma is OPERATIONS-only.

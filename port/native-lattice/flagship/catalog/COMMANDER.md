@@ -100,11 +100,10 @@ deliberate derivative, kept on the catalogue row for a later wave to revisit:
    pathing or RNG.
 2. **Recon is information only.** It deliberately does not pay the §8.1 `+15%`
    SPOT damage bonus, so it is not a cheaper Spot Drone for the whole team.
-3. **The native mirror lags.** `godot/lattice/req_catalog.gd` and
-   `godot/tests/lattice/req_catalog_contract.gd` still treat `recon-pulse` as
-   unlaunched; the native catalog contract will report drift until a native REQ
-   wave adds the row. No native/Godot file was touched by this lane, so no
-   native BUY witness is claimed.
+3. **Native mirror integrated afterward.** The first commander lane did not
+   touch Godot; integration generated a nine-row mirror from `REQ_ITEMS` and
+   `req_catalog_contract.gd` now includes `recon-pulse` (197 checks pass). This
+   does not establish a live native BUY witness.
 
 ## Known limitations
 
@@ -112,3 +111,5 @@ deliberate derivative, kept on the catalogue row for a later wave to revisit:
   `fortify-doctrine` remain deferred and unlaunched.
 - No live native or rendered purchase was observed here; the effect is proven
   through the real Node sim/room paths only.
+- A fully covered same-tick pulse now refuses `no-target` without a second
+  debit; after the contact window advances, a new pulse can extend it.

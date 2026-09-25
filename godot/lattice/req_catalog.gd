@@ -27,12 +27,12 @@ const REASON_REQ_UNKNOWN := "req-unknown"
 ## Effect kinds the native client knows how to gate. Mirrors the exporter
 ## allowlist in `port/tools/native_lattice_req_catalog/source.mjs`; a row whose
 ## `effectKind` is not listed is refused rather than offered (fail-closed).
-const KNOWN_EFFECT_KINDS := ["heal", "resupply", "haste", "shield", "spot", "repair-link", "vehicle"]
+const KNOWN_EFFECT_KINDS := ["heal", "resupply", "haste", "shield", "spot", "repair-link", "vehicle", "sentry", "recon-pulse"]
 
 ## >>> GENERATED REQ ITEMS — do not edit by hand
 ## Regenerate with: node port/tools/native_lattice_req_catalog/export.mjs
-## Source: game/cocs-economy.mjs REQ_ITEMS (canonical sha256 1a1258e7a084d91dbeb5907854505a5551d9b7ff039c9d2b668aeeafe0a4f2a7).
-const SOURCE_SHA256 := "1a1258e7a084d91dbeb5907854505a5551d9b7ff039c9d2b668aeeafe0a4f2a7"
+## Source: game/cocs-economy.mjs REQ_ITEMS (canonical sha256 451cfda0b057aba281005a1c302e600223d98201d43f4b3ddc7671b3c1936f83).
+const SOURCE_SHA256 := "451cfda0b057aba281005a1c302e600223d98201d43f4b3ddc7671b3c1936f83"
 const ITEMS: Array = [
 	{"id":"field-repair","name":"Field Repair","category":"buff","cost":40,"personalBuff":true,"commanderOnly":false,"requiresRelay":false,"teamWide":false,"target":"self","modes":["cocs","cocs-coop"],"effectKind":"heal","launch":true,"coopLaunch":false,
 		"effectCopy":"Heal 50 health (capped at max health)"},
@@ -46,8 +46,12 @@ const ITEMS: Array = [
 		"effectCopy":"Mark every enemy within 20 m for 8 s (+15% damage from your team)"},
 	{"id":"repair-tool","name":"Repair Tool","category":"equipment","cost":30,"personalBuff":false,"commanderOnly":false,"requiresRelay":false,"teamWide":false,"target":"cut-link","modes":["cocs","cocs-coop"],"effectKind":"repair-link","launch":true,"coopLaunch":false,
 		"effectCopy":"Restore one friendly cut link within reach (nearest wins)"},
+	{"id":"sentry","name":"Sentry","category":"fortification","cost":60,"personalBuff":false,"commanderOnly":false,"requiresRelay":false,"teamWide":false,"target":"ground","modes":["cocs","cocs-coop"],"effectKind":"sentry","launch":true,"coopLaunch":false,
+		"effectCopy":"Deploy a friendly sentry turret for 30 s (re-buy refreshes it; one live per operator)"},
 	{"id":"puma","name":"Puma Light Transport","category":"vehicle","cost":150,"personalBuff":false,"commanderOnly":false,"requiresRelay":false,"teamWide":false,"target":"depot","modes":["cocs-coop"],"effectKind":"vehicle","launch":false,"coopLaunch":true,
 		"effectCopy":"Spawn the depot loaner Puma at an owned depot"},
+	{"id":"recon-pulse","name":"Recon Pulse","category":"team","cost":60,"personalBuff":false,"commanderOnly":true,"requiresRelay":false,"teamWide":true,"target":"enemies","modes":["cocs","cocs-coop"],"effectKind":"recon-pulse","launch":true,"coopLaunch":false,
+		"effectCopy":"Reveal every enemy to your team for 5 s (information only)"},
 ]
 ## <<< END GENERATED REQ ITEMS
 

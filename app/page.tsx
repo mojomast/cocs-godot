@@ -1391,15 +1391,15 @@ const cocsCommand=cocsView?{...cocsView,boardView:mergedBoard??cocsView.boardVie
      r.audio?.announcerCue?.('objective');
     },[spendOpen,spendWindow]);
     // WP1.3: a queued/requested purchase only becomes CONFIRMED when the
-    // authoritative snapshot shows the debit (reqSpent delta, co-op buy log or
-    // `cocs-buy` event); a server reject or a grace-expired row becomes a named
+     // exact server card is done (online), or local source debit/buy evidence
+     // arrives; a server reject or a grace-expired row becomes a named
     // REJECTED notice. The click itself never claims success.
     useEffect(()=>{
      const r=runtime.current,pending=r?.cocsBuysPending;
      if(!r||!Array.isArray(pending)||!pending.length)return;
      const cocs=hud?.cocs,rows=Array.isArray(cocs?.req)?cocs.req:[],actorId=player?.id??0,row=rows.find((entry:any)=>String(entry?.id)===String(actorId));
      const events=[...(r.match?.events??[]),...(r.net?.events??[])];
-     const result=reconcileReqBuys(pending,{actorId,spent:row?Number(row.spent)||0:undefined,tick:Number(cocs?.tick)||0,buys:Array.isArray(cocs?.buys)?cocs.buys:[],events,reasonFor:(buy:any)=>{
+      const result=reconcileReqBuys(pending,{actorId,cardAuthoritative:r.net?.started===true,cards:cocs?.cards,spent:row?Number(row.spent)||0:undefined,tick:Number(cocs?.tick)||0,buys:Array.isArray(cocs?.buys)?cocs.buys:[],events,reasonFor:(buy:any)=>{
       if(player&&Number(player.health)<=0)return 'eliminated';
       return ((reqStore?.items as any[])?.find((entry:any)=>entry.id===buy.itemId))?.disabledReason??null;
      }});

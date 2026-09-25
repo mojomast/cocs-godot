@@ -17,6 +17,7 @@ class StubSession extends Node:
 	func world_command_gate() -> String: return ""
 
 const Commands = preload("res://lattice/world_commands.gd")
+const Catalog = preload("res://lattice/req_catalog.gd")
 
 var checks := 0
 var failures := 0
@@ -73,7 +74,7 @@ func run() -> void:
 
 func _transport_contract() -> void:
 	var c := client("cocs")
-	check(c.req_options().size() == 7, "finite launched catalogue mirrored")
+	check(c.req_options().size() == Catalog.ITEMS.size(), "finite launched catalogue mirrored")
 	check(option(c, "spot-drone").get("enabled") == true, "equipment offered with known REQ")
 	check(option(c, "puma").get("disabledReason") == "wrong-mode", "Puma is OPERATIONS-only")
 	# One ordinary BUY with bounded idempotent identity.
@@ -108,7 +109,7 @@ func _transport_contract() -> void:
 	check(c.rejection_text("no-target").contains("legal target"), "no-target copy is explicit, not generic")
 	# Unsupported / reserved ids are refused before any frame.
 	var before := c.sent.size()
-	for bad: String in ["at-mine", "smoke", "barrier", "sentry", "supply-drop", "tier-upgrade", "oracle-unlock", "respawn", "reserve", "flux", ""]:
+	for bad: String in ["at-mine", "smoke", "barrier", "supply-drop", "tier-upgrade", "oracle-unlock", "respawn", "reserve", "flux", ""]:
 		check(not c.req_gate(bad).is_empty(), "unsupported id refused: '" + bad + "'")
 	check(c.sent.size() == before, "refusals never send a frame")
 	# Absent authority stays unknown/disabled, never an inferred zero.
@@ -208,6 +209,7 @@ func _gui_contract() -> void:
 	var rich := base_state()
 	rich.cocs.req = [{"id":0,"req":200}]
 	snapshot(c, rich)
+	c.cooldown_until = 0
 	panel.world_refresh()
 	var repair_index := -1
 	var rich_options: Array = c.req_options()
@@ -215,7 +217,6 @@ func _gui_contract() -> void:
 		if rich_options[i].get("id") == "repair-tool": repair_index = i
 	panel.world_req_select(repair_index)
 	check(panel.req_selected == "repair-tool" and not panel.req_confirm.disabled, "target-sensitive row is selectable")
-	c.cooldown_until = 0
 	panel.req_confirm.button_pressed = true
 	panel.world_req_purchase()
 	wire(c, {"type":"cocs-reject","cardId":c.sent.back().cardId,"roundRevision":1,"roundRev":1,"actionSeq":c.sent.back().actionSeq,"reason":"no-target"})

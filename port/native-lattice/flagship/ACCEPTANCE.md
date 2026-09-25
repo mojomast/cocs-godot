@@ -162,13 +162,13 @@ each completed 144/144 with zero mode alarms, but the stock-vs-max tier
 invariant **failed** (operator/spec/wing correlations 0.3833/0.5357/-0.5;
 required ≥0.85). The reports live at
 `/home/mojo/.tmp-on-disk/lattice-catalog-evidence-20260925/`. Balance acceptance,
-owner visual review and native catalog parity remain open.
+owner visual review remain open.
 An old-catalog max-gear comparison using the same stock report also failed this
 invariant (`lattice-catalog-old-max-fullsmoke.json` in the same directory); the gate is
 not established for either loadout set by these neutral-policy samples.
 
-The native Godot LATTICE command panel now has a personal REQ picker. Its finite
-seven-row mirror is checked against `game/cocs-economy.mjs`; the recipient's
+The native Godot LATTICE command panel now has a personal REQ picker. Its earlier
+seven-row mirror was checked against `game/cocs-economy.mjs`; the recipient's
 observed balance, buff slot, mode and owned depot gate the ordinary BUY request,
 while server cards and snapshots alone settle/display outcomes. On the integrated
 branch, Godot 4.5.2 import succeeds and focused headless checks report 84/84
@@ -178,3 +178,14 @@ clients. The older `world_commands_contract.gd` fixture was repaired by setting
 its demo's selected mode to the echoed `cocs` start; its 27/27 behavioral checks
 now pass. Godot still emits teardown resource-leak warnings for that synthetic
 fixture, so it is not rendered acceptance evidence.
+
+The newer post-preview derivative integrates Sentry and commander Recon Pulse
+into the source-authoritative REQ catalogue, giving the generated native mirror
+nine rows. `req_catalog_contract.gd` passes 197/197 and `req_purchase_contract.gd`
+passes 60/60 on pinned Godot 4.5.2; economy remains 91/91 and the repaired
+world command fixture 27/27 (with teardown warnings). Exact per-card source
+receipts now settle non-buff PvP purchases and prevent same-item cross-settlement.
+Focused REQ source tests, career unlock tests, web UI tests, TypeScript typecheck
+and the production web build pass on this derivative. These fixtures do not
+establish a live native purchase, rendered review, Operations five-wave win or
+the stock-vs-max rank-invariance gate.
