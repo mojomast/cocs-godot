@@ -143,7 +143,7 @@ a semantic-verifier bypass.
 | External vanilla baseline comparison | 600 ordinary ticks, seed 731: identical snapshot/events/RNG state and call count to source pin |
 | `tools/godot-horde-maps/cinderwake.test.mjs` | 4 pass: strict recipe, all masks/A*, rays/capsules, input traversal |
 | `tools/godot-horde-maps/source-fixture.test.mjs` | 4 pass: targets 1–30, all 12 NPC archetypes/support/pools, ordinary first-wave timing/death/restart, actual input travel after controlled clear |
-| `port/native-horde/cinderwake.test.mjs` | 2 pass: literal launcher routing/negatives and explicit old-pin refusal |
+| `port/native-horde/cinderwake.test.mjs` | 3 pass: literal launcher routing/negatives, source-intake guard and ordinary local-socket map-contract/stage snapshot |
 | Dev/package option regression | 18 pass |
 | Horde/native package closure checks | 19 pass after source intake; 85 locked source modules including `game/horde-stages.mjs` |
 | Native gate ray/revision/restart test | Authored at `godot/tests/horde/cinderwake_test.gd`; **not run** |
