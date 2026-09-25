@@ -5,7 +5,9 @@
 //
 // Plan: docs/V8.4-IMPROVEMENT-PLAN.md WP1.3. Data authority:
 // game/cocs-economy.mjs `reqPurchaseOptions`; sim authority:
-// `Match.prepareCocs` -> `coopBuyAction` / `cocsBuyAction`.
+// `Match.prepareCocs` -> `coopBuyAction` / `cocsBuyAction`; wire authority:
+// server/room.mjs `Room.buy`. The store is built only from the shared model, so
+// the rows are enumerated from the source catalogue, never a test id list.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -14,10 +16,10 @@ import * as React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {Match} from '../game/core.mjs';
 import {RULES} from '../game/data.mjs';
-import {reqPurchaseOptions} from '../game/cocs-economy.mjs';
+import {REQ_ITEMS, reqItemModes, reqPurchaseOptions} from '../game/cocs-economy.mjs';
 
 register('./tsx-loader.mjs', import.meta.url);
-const {CommandBoardHud, ReqStore, reconcileReqBuys, reqReasonCopy} = await import('../app/ui/screens/CommandBoardHud.tsx');
+const {CommandBoardHud, ReqStore, reconcileReqBuys, reqReasonCopy, reqTargetReason, reqTargetCopy, reqModesCopy} = await import('../app/ui/screens/CommandBoardHud.tsx');
 
 const root = new URL('../', import.meta.url);
 const read = path => readFile(new URL(path, root), 'utf8');
@@ -44,14 +46,19 @@ const pendingBuy = (over = {}) => ({
   actorId: 0, tick: 10, baselineSpent: 0, sinceEventId: 0, status: 'queued', ...over,
 });
 
-test('the real catalogue drives the rendered store in both modes', () => {
+// The offered catalogue is derived from the source, so a row another agent
+// authors into `REQ_ITEMS` (with a shipped effect) is covered automatically and
+// this file never carries a hand-kept item-id list.
+const supportedIds = REQ_ITEMS.filter(item => reqItemModes(item).length > 0).map(item => item.id);
+
+test('the real catalogue drives the rendered store generically in both modes', () => {
   const pvp = pvpMatch();
   const coop = coopMatch();
   const pvpModel = reqPurchaseOptions({team: 0, mode: 'cocs', actor: {id: 0, req: 200, reqBuff: null}, state: pvp.objectiveState});
   const coopModel = reqPurchaseOptions({team: 0, mode: 'cocs-coop', actor: {id: 0, req: 200, reqBuff: null}, state: coop.objectiveState});
-  assert.deepEqual(pvpModel.items.map(item => item.id), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'puma'], 'the PvPvE picker offers the four launched buffs, the two field-equipment rows and the wrong-mode Puma');
+  assert.deepEqual(pvpModel.items.map(item => item.id), supportedIds, 'every supported source row is offered, so a newly authored row appears with no UI change');
   assert.equal(pvpModel.items.find(item => item.id === 'puma').disabledReason, 'wrong-mode', 'the Puma is never launched in PvPvE');
-  assert.deepEqual(coopModel.items.map(item => item.id), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'puma'], 'OPERATIONS offers the field equipment and the depot Puma too');
+  assert.deepEqual(coopModel.items.map(item => item.id), supportedIds, 'OPERATIONS offers the same support-gated catalogue');
   for (const model of [pvpModel, coopModel]) {
     const html = render(ReqStore, {req: model, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
     for (const item of model.items) {
@@ -59,9 +66,65 @@ test('the real catalogue drives the rendered store in both modes', () => {
       assert.ok(html.includes(item.effectCopy), `${item.id} effect copy is rendered`);
       assert.ok(html.includes(`COST <b>${item.cost}</b> REQ`), `${item.id} cost is rendered`);
       assert.ok(html.includes(item.enabled ? 'READY · AFFORDABLE' : reqReasonCopy(item.disabledReason)), `${item.id} state is truthful`);
+      assert.ok(html.includes(`TARGET <b>${reqTargetCopy(item.target)}</b>`), `${item.id} names its declared target`);
+      assert.ok(html.includes(`MODE <b>${reqModesCopy(item.modes)}</b>`), `${item.id} names the modes it is offered in`);
     }
     assert.match(html, /AUTHORITATIVE BALANCE <b>200<\/b> REQ/, 'the balance comes from the model');
   }
+});
+
+test('a newly authored source row appears through the catalogue, never a UI id list', () => {
+  const model = reqPurchaseOptions({team: 0, mode: 'cocs', actor: {id: 0, req: 200, reqBuff: null}, state: {command: {seat: [null, null]}, nodes: []}});
+  const future = {id: 'future-effect', name: 'Future Effect', category: 'equipment', cost: 15, target: 'self', modes: ['cocs'], effect: {kind: 'future'}, effectCopy: 'Does the new thing', affordable: true, enabled: true, disabledReason: null};
+  const html = render(ReqStore, {req: {...model, items: [...model.items, future]}, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
+  assert.match(html, /Future Effect/, 'an unknown id still renders from the model');
+  assert.match(html, /Does the new thing/);
+  assert.match(html, /<b>Future Effect<\/b>/);
+  assert.match(html, /TARGET <b>SELF<\/b>/);
+  assert.match(html, /MODE <b>PVPvE<\/b>/);
+});
+
+test('target-validated rows are gated by the shipped selector, never a hand list', () => {
+  const actor = {id: 0, team: 0, health: 100, x: 0, z: 0};
+  const spot = {id: 'spot-drone', enabled: true, target: 'self', effect: {kind: 'spot', radius: 20, seconds: 8, target: 'self'}};
+  assert.equal(reqTargetReason(spot, {actor, actors: []}), 'no-target', 'an empty arena makes the Spot Drone target-less');
+  assert.equal(reqTargetReason(spot, {actor, actors: [{id: 1, team: 1, health: 100, x: 5, z: 0}]}), null, 'a nearby enemy makes it targetable');
+  assert.equal(reqTargetReason(spot, {actor, actors: [{id: 2, team: 1, health: 100, x: 500, z: 0}]}), 'no-target', 'an out-of-radius enemy does not count');
+  assert.equal(reqTargetReason(spot, {actor: {id: 0, team: 0, health: 0, x: 0, z: 0}, actors: [{id: 1, team: 1, health: 100, x: 1, z: 0}]}), null, 'a dead actor is left to authority, never sold past');
+  const repair = {id: 'repair-tool', enabled: true, target: 'cut-link', effect: {kind: 'repair-link', reach: 6, target: 'cut-link'}};
+  assert.equal(reqTargetReason(repair, {actor, cuts: [], nodes: [{id: 'n', owner: 0, x: 0, z: 0, r: 4}]}), 'no-target', 'no cut link means no repair target');
+  assert.equal(reqTargetReason(repair, {actor, cuts: ['n'], nodes: [{id: 'n', owner: 0, x: 0, z: 0, r: 4}]}), null, 'a friendly cut in reach is a legal target');
+  assert.equal(reqTargetReason(repair, {actor, cuts: null, nodes: []}), null, 'with no projected cut list the row stays authority-gated');
+  assert.equal(reqTargetReason({id: 'haste', enabled: true, effect: {kind: 'haste', seconds: 15, target: 'self'}}, {actor, actors: []}), null, 'self effects need no target');
+});
+
+test('ReqStore never offers a target-less row or an unknown wallet', () => {
+  const model = reqPurchaseOptions({team: 0, mode: 'cocs', actor: {id: 0, req: 200, reqBuff: null}, state: {command: {seat: [null, null]}, nodes: []}});
+  const gated = {...model, items: model.items.map(item => item.effect?.kind === 'spot' ? {...item, enabled: false, disabledReason: 'no-target'} : item)};
+  const html = render(ReqStore, {req: gated, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
+  assert.match(html, /NO VALID TARGET IN REACH/, 'a target-less row names its refusal');
+  const locked = render(ReqStore, {req: {...model, items: [], walletKnown: false}, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
+  assert.match(locked, /REQ STORE · <b>—<\/b> REQ/, 'an unknown wallet shows no fabricated balance');
+  assert.match(locked, /WALLET UNAVAILABLE · AWAITING AUTHORITATIVE SNAPSHOT/, 'the unknown wallet is explained');
+  assert.doesNotMatch(locked, /cocs-sink__buy/, 'an unknown wallet renders no purchase button');
+  assert.doesNotMatch(locked, /READY · AFFORDABLE/, 'an unknown wallet never looks affordable');
+  const dead = render(ReqStore, {req: {...model, eliminated: true}, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
+  assert.match(dead, /⚠<\/i> ELIMINATED/, 'a dead actor cannot buy until respawn');
+  assert.doesNotMatch(dead, /READY · AFFORDABLE/, 'a dead actor never looks ready to spend');
+});
+
+test('rows state target, mode and explicit queue consent; reasons name depot and command', () => {
+  const model = reqPurchaseOptions({team: 0, mode: 'cocs-coop', actor: {id: 0, req: 200, reqBuff: null}, state: {command: {seat: [null, null]}, nodes: [], traversal: {depots: {d: {id: 'd', owner: 0, x: 0, z: 0}}}}});
+  const html = render(ReqStore, {req: model, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
+  assert.match(html, /TARGET <b>FRIENDLY DEPOT<\/b>/, 'the depot row names its spend point');
+  assert.match(html, /MODE <b>OPERATIONS<\/b>/, 'the Puma is OPERATIONS-only');
+  assert.match(html, /ACTIVATING A ROW ONLY QUEUES IT FOR AUTHORITY/, 'the store states that a click is only a request');
+  assert.match(html, /READY · AFFORDABLE · CLICK TO QUEUE/, 'the affirmative action is explicit');
+  assert.equal(reqReasonCopy('requires-depot'), 'NO FRIENDLY DEPOT');
+  assert.equal(reqReasonCopy('commander-only'), 'COMMANDER ONLY');
+  assert.equal(reqReasonCopy('vehicle'), 'DEPOT VEHICLE ALREADY LIVE');
+  assert.equal(reqReasonCopy('no-economy'), 'NO ECONOMY');
+  assert.equal(reqReasonCopy('missing'), 'NO ACTOR');
 });
 
 test('a queued purchase is never confirmed until the authoritative snapshot changes', () => {
@@ -154,7 +217,7 @@ test('the page wires buyCocs to the deterministic local queue and net.buy withou
   const page = await read('app/page.tsx');
   assert.match(page, /import \{reqPurchaseOptions\} from '\.\.\/game\/cocs-economy\.mjs'/, 'the page reads the shared catalogue, not its own prices');
   assert.match(page, /import \{depotPurchaseState\} from '\.\.\/game\/cocs-traversal\.mjs'/, 'the page pre-gates the depot Puma against the real depot state');
-  assert.match(page, /import \{reconcileReqBuys,reqReasonCopy\} from '\.\/ui\/screens\/CommandBoardHud'/, 'the page imports the shared confirmation model');
+  assert.match(page, /import \{[^}]*reconcileReqBuys[^}]*reqTargetReason[^}]*\} from '\.\/ui\/screens\/CommandBoardHud'/, 'the page imports the shared confirmation and target models');
   const dispatch = page.slice(page.indexOf('const buyCocs='), page.indexOf('if(runtime.current)cocsBoardControlRef.current='));
   assert.ok(dispatch.length > 0, 'the dispatch handler is present');
   assert.match(dispatch, /const buyCocs=\(itemId:string,options\?:\{depotId\?:string\}\)=>\{/, 'buyCocs is the one purchase entry point');
@@ -176,6 +239,19 @@ test('the page wires buyCocs to the deterministic local queue and net.buy withou
   const reject = page.slice(page.indexOf('n.onCocsReject='), page.indexOf('n.onLobby='));
   assert.match(reject, /cocsBuysPending/, 'a server reject finds the matching pending purchase');
   assert.match(reject, /REJECTED/, 'the pending purchase refusal is named');
+});
+
+test('the page offers the store only against an authoritative wallet and gates declared targets', async () => {
+  const page = await read('app/page.tsx');
+  assert.match(page, /const walletKnown=Boolean\(liveActor\)\|\|Boolean\(row\)/, 'a wallet needs a live actor or a projected snapshot row');
+  assert.match(page, /if\(!walletKnown\)return \{team,mode,balance:0,balanceSource:'unavailable'[^}]*items:\[\],walletKnown:false\}/, 'an unknown wallet offers no items');
+  assert.match(page, /reqTargetReason\(item,targetContext\)/, 'target-validated rows are gated by the shared selector');
+  assert.match(page, /actors:live\?\.actors\?\?hud\?\.actors\?\?null/, 'target validation reads the authoritative actor view');
+  assert.match(page, /cuts:Array\.isArray\(liveState\?\.cuts\)\?liveState\.cuts:Array\.isArray\(snapshot\?\.intel\?\.\[team\]\?\.cutNodes\)\?snapshot\.intel\[team\]\.cutNodes:null/, 'the cut list is taken from the sim or the PvP recipient projection, else left to authority');
+  assert.match(page, /item\.target==='depot'&&item\.enabled/, 'the depot block is keyed on the declared target, not an item id');
+  assert.doesNotMatch(page, /item\.id==='puma'/, 'the personal purchase surface keeps no manual item-id list');
+  assert.match(page, /walletKnown:true/, 'a known wallet is carried to the store');
+  assert.match(page, /eliminated:Number\(player\?\.health\)<=0/, 'a dead actor is carried to the store so no row looks ready');
 });
 
 test('CommandBoardHud exposes the purchase entry only through the page-provided catalogue', () => {

@@ -14,6 +14,7 @@
 // bound Command key, Escape and CLOSE as the only ways back to combat.
 // Reduced-motion snaps instead of animating.
 import * as React from 'react';
+import {repairToolTarget,spotDroneTargets} from '../../../game/cocs-economy.mjs';
 import {cocsBoardAnnouncement,cocsPurchaseReason} from '../../../game/cocs-orders.mjs';
 import {formatResource} from '../../../game/format-ui.mjs';
 import {DEFAULT_BINDINGS,bindingLabel,bindingShortcut} from '../../../game/keybinds.mjs';
@@ -33,7 +34,7 @@ const whole = formatResource;
 export const REQ_REASON_COPY: Record<string, string> = {
   'wrong-mode': 'WRONG MODE',
   'requires-depot': 'NO FRIENDLY DEPOT',
-  vehicle: 'DEPOT PUMA ALREADY LIVE',
+  vehicle: 'DEPOT VEHICLE ALREADY LIVE',
   'commander-only': 'COMMANDER ONLY',
   'one-active-buff': 'ANOTHER BUFF IS ACTIVE',
   'requires-relay': 'RELAY REQUIRED',
@@ -41,6 +42,11 @@ export const REQ_REASON_COPY: Record<string, string> = {
   'no-target': 'NO VALID TARGET IN REACH',
   'not-launched': 'NOT LAUNCHED',
   'unknown-item': 'UNKNOWN ITEM',
+  missing: 'NO ACTOR',
+  'wrong-actor': 'WRONG ACTOR',
+  'no-objective': 'NO OBJECTIVE',
+  'no-economy': 'NO ECONOMY',
+  refused: 'REFUSED',
   eliminated: 'ELIMINATED',
   'no-match': 'NO MATCH',
   spectating: 'SPECTATING',
@@ -53,6 +59,60 @@ export function reqReasonCopy(reason: any) {
   const key = String(reason ?? '').trim().toLowerCase();
   if (!key) return 'UNAVAILABLE';
   return REQ_REASON_COPY[key] ?? key.replace(/-/g, ' ').toUpperCase();
+}
+
+// Mode / target words are derived from the row's own declared fields, never a
+// hand-kept id list, so a newly authored catalogue row (reusing an existing
+// mode, target or effect kind) is presented without a UI change.
+export const REQ_MODE_COPY: Record<string, string> = {cocs: 'PVPvE', 'cocs-coop': 'OPERATIONS'};
+
+/** Player-facing name for one canonical REQ mode (`cocs` | `cocs-coop`). */
+export function reqModeCopy(mode: any) {
+  const key = String(mode ?? '').trim().toLowerCase();
+  return REQ_MODE_COPY[key] ?? (key ? key.replace(/-/g, ' ').toUpperCase() : 'UNSUPPORTED');
+}
+
+/** The modes a row is offered in, joined for display; empty means unsupported. */
+export function reqModesCopy(modes: any) {
+  const list = Array.isArray(modes) ? modes : [];
+  return list.map(reqModeCopy).join(' · ') || 'UNSUPPORTED';
+}
+
+/** Player-facing name for a row's spend point (`self` | `depot` | `cut-link`). */
+export function reqTargetCopy(target: any) {
+  const key = String(target ?? 'self').trim().toLowerCase();
+  if (key === 'self') return 'SELF';
+  if (key === 'depot') return 'FRIENDLY DEPOT';
+  if (key === 'cut-link') return 'CUT LINK';
+  return key ? key.replace(/-/g, ' ').toUpperCase() : 'SELF';
+}
+
+/**
+ * Source-driven target availability for one REQ row. Pure.
+ *
+ * Returns `'no-target'` when a target-validated shipped effect has no legal
+ * target in the supplied world view, else `null` so the sim/room still decides
+ * the real outcome. Derived from `item.effect.kind` plus the shared economy
+ * selectors, never an item-id list: a new row that reuses the `spot` or
+ * `repair-link` effect is gated automatically.
+ *
+ * `context.cuts` is the authoritative cut-link list when the caller has one
+ * (the local sim, or PvP's per-team `intel.cutNodes`); `null` means the
+ * recipient snapshot does not project it. In that case the row is left
+ * authority-gated (returns `null`) rather than falsely offered as target-valid.
+ */
+export function reqTargetReason(item: any, context: any = {}) {
+  const effect = item?.effect;
+  if (!effect || typeof effect !== 'object') return null;
+  const actor = context?.actor ?? null;
+  if (!actor || Number(actor.health) <= 0) return null;
+  if (effect.kind === 'spot') return spotDroneTargets(actor, context?.actors, effect).length > 0 ? null : 'no-target';
+  if (effect.kind === 'repair-link') {
+    const cuts = Array.isArray(context?.cuts) ? context.cuts : null;
+    if (cuts === null) return null; // no projected cut list: let authority decide
+    return repairToolTarget(actor, {cuts, nodes: context?.nodes}, effect) === null ? 'no-target' : null;
+  }
+  return null;
 }
 
 // Ticks of authority silence before an unconfirmed dispatch is shown as a
@@ -136,18 +196,34 @@ const pips = (count: any) => {
 
 /**
  * Compact REQ purchase list. Real buttons (44px via the shared `.cocs-sink`
- * rules), never hover-only; every row states name, cost, effect, balance and
- * its single disabled reason, plus a shape + word for the pending state.
+ * rules), never hover-only; every row states name, cost, effect, its declared
+ * target and offered modes, the authoritative balance and its single disabled
+ * reason, plus a shape + word for the pending state. The affirmative action
+ * names exactly what a click does (queue the spend for authority), never
+ * confirmation. An unknown wallet (`walletKnown:false`) and a dead actor
+ * (`eliminated:true`) render no ready row, so a purchase is never falsely
+ * offered or confirmed from the click alone.
  */
 export function ReqStore({req, onBuy, pending, reducedMotion, defaultOpen = false}: any) {
   const reduced = reducedMotion === true;
   const [open, setOpen] = React.useState(defaultOpen === true);
   const items: any[] = Array.isArray(req?.items) ? req.items : [];
   const pendingList: any[] = Array.isArray(pending) ? pending : [];
-  if (!items.length) return null;
+  // An unknown wallet is a real state: the page has no authoritative balance for
+  // this actor yet (not synced, or filtered out of the recipient snapshot), so
+  // the store states that and renders no purchase control at all.
+  const walletKnown = req?.walletKnown !== false;
+  // A dead local actor keeps its authoritative balance but cannot buy until it
+  // respawns, so every row is shown disabled with that reason rather than ready.
+  const eliminated = req?.eliminated === true;
+  if (walletKnown && !items.length) return null;
   const balance = whole(req?.balance ?? 0);
+  const shownBalance = walletKnown ? balance : '—';
   return (
-    <section className={`cocs-board__req${reduced ? ' is-reduced' : ''}`} aria-label={`Personal REQ store. ${balance} REQ available, ${items.length} items.`}>
+    <section
+      className={`cocs-board__req${reduced ? ' is-reduced' : ''}${walletKnown ? '' : ' is-locked'}`}
+      aria-label={walletKnown ? `Personal REQ store. ${balance} REQ available, ${items.length} items.` : 'Personal REQ store. Wallet unavailable, awaiting the authoritative snapshot.'}
+    >
       <button
         type="button"
         className="cocs-board__req-toggle"
@@ -156,42 +232,48 @@ export function ReqStore({req, onBuy, pending, reducedMotion, defaultOpen = fals
         style={{minHeight: 44}}
         onClick={() => setOpen(value => !value)}
       >
-        <span aria-hidden="true">⇪</span> REQ STORE · <b>{balance}</b> REQ <small>{open ? 'HIDE' : `SHOW ${items.length} ITEMS`}</small>
+        <span aria-hidden="true">⇪</span> REQ STORE · <b>{shownBalance}</b> REQ <small>{!walletKnown ? 'UNAVAILABLE' : open ? 'HIDE' : `SHOW ${items.length} ITEMS`}</small>
       </button>
       {open && <div id="cocs-req-store" className="cocs-board__req-body">
-        <p className="cocs-board__req-balance" role="status">AUTHORITATIVE BALANCE <b>{balance}</b> REQ · {req?.mode === 'cocs-coop' ? 'OPERATIONS' : 'PVPvE'}</p>
-        <ul className="cocs-spend__sinks" aria-label="Personal REQ catalogue">
-          {items.map((item: any) => {
-            const outstanding = pendingList.find(entry => entry?.itemId === item.id);
-            const pendingWord = outstanding ? (outstanding.status === 'requested' ? 'REQUESTED' : 'QUEUED') : null;
-            const reason = pendingWord ? `${pendingWord} · AWAITING AUTHORITY` : item.disabledReason ? reqReasonCopy(item.disabledReason) : null;
-            const disabled = item.enabled !== true || Boolean(pendingWord);
-            const cost = Math.max(0, Number(item.cost) || 0);
-            return (
-              <li key={item.id}>
-                <div className={`cocs-sink${disabled ? ' is-locked' : ' is-ready'}`}>
-                  <button
-                    type="button"
-                    className="cocs-sink__buy"
-                    disabled={disabled}
-                    aria-label={`${item.name}. ${item.effectCopy ?? 'No effect copy.'} Cost ${whole(cost)} REQ. ${reason ? `Unavailable: ${reason}.` : 'Ready and affordable.'} Balance ${balance} REQ.`}
-                    title={reason ? `${item.name} unavailable: ${reason}` : item.effectCopy}
-                    onClick={() => onBuy?.(item.id, item.target === 'depot' ? {depotId: req?.depotId ?? null} : undefined)}
-                  >
-                    <span className="cocs-sink__label">
-                      <b>{item.name}</b>
-                      <small>COST <b>{whole(cost)}</b> REQ</small>
-                    </span>
-                    <span className="cocs-sink__effect">{item.effectCopy}</span>
-                    {reason
-                      ? <em className="cocs-sink__reason"><i aria-hidden="true">⚠</i> {reason}</em>
-                      : <em className="cocs-sink__ready"><i aria-hidden="true">▶</i> READY · AFFORDABLE</em>}
-                  </button>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+        {!walletKnown
+          ? <p className="cocs-board__req-balance" role="status">WALLET UNAVAILABLE · AWAITING AUTHORITATIVE SNAPSHOT · NOTHING CAN BE PURCHASED</p>
+          : <>
+            <p className="cocs-board__req-balance" role="status">AUTHORITATIVE BALANCE <b>{balance}</b> REQ · {reqModeCopy(req?.mode)} · ACTIVATING A ROW ONLY QUEUES IT FOR AUTHORITY</p>
+            <ul className="cocs-spend__sinks" aria-label="Personal REQ catalogue">
+              {items.map((item: any) => {
+                const outstanding = pendingList.find(entry => entry?.itemId === item.id);
+                const pendingWord = outstanding ? (outstanding.status === 'requested' ? 'REQUESTED' : 'QUEUED') : null;
+                const reason = pendingWord ? `${pendingWord} · AWAITING AUTHORITY` : eliminated ? reqReasonCopy('eliminated') : item.disabledReason ? reqReasonCopy(item.disabledReason) : null;
+                const disabled = item.enabled !== true || Boolean(pendingWord) || eliminated;
+                const cost = Math.max(0, Number(item.cost) || 0);
+                const targetCopy = reqTargetCopy(item.target), modesCopy = reqModesCopy(item.modes);
+                return (
+                  <li key={item.id}>
+                    <div className={`cocs-sink${disabled ? ' is-locked' : ' is-ready'}`}>
+                      <button
+                        type="button"
+                        className="cocs-sink__buy"
+                        disabled={disabled}
+                        aria-label={`${item.name}. ${item.effectCopy ?? 'No effect copy.'} Target ${targetCopy}. Modes ${modesCopy}. Cost ${whole(cost)} REQ. ${reason ? `Unavailable: ${reason}.` : 'Ready and affordable; activating queues the spend for authority.'} Balance ${balance} REQ.`}
+                        title={reason ? `${item.name} unavailable: ${reason}` : `${item.effectCopy} · ${targetCopy}`}
+                        onClick={() => onBuy?.(item.id, item.target === 'depot' ? {depotId: req?.depotId ?? null} : undefined)}
+                      >
+                        <span className="cocs-sink__label">
+                          <b>{item.name}</b>
+                          <small>COST <b>{whole(cost)}</b> REQ</small>
+                        </span>
+                        <span className="cocs-sink__effect">{item.effectCopy}</span>
+                        <span className="cocs-sink__meta"><i aria-hidden="true">⌖</i> TARGET <b>{targetCopy}</b> · MODE <b>{modesCopy}</b></span>
+                        {reason
+                          ? <em className="cocs-sink__reason"><i aria-hidden="true">⚠</i> {reason}</em>
+                          : <em className="cocs-sink__ready"><i aria-hidden="true">▶</i> READY · AFFORDABLE · CLICK TO QUEUE</em>}
+                      </button>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </>}
       </div>}
     </section>
   );

@@ -36,7 +36,7 @@ import {TheaterScreen} from './ui/screens/TheaterScreen';
 import {PlayingHud} from './ui/screens/PlayingHud';
 import {TacticalMap} from './ui/screens/TacticalMap';
 import {SquadPanel} from './ui/screens/SquadPanel';
-import {reconcileReqBuys,reqReasonCopy} from './ui/screens/CommandBoardHud';
+import {reconcileReqBuys,reqReasonCopy,reqTargetReason} from './ui/screens/CommandBoardHud';
 import {RespawnOverlay} from './ui/screens/RespawnOverlay';
 import {SettingsDialog} from './ui/screens/SettingsDialog';
 import {Modal,MODAL_FOCUS_SELECTOR} from './ui/primitives';
@@ -1267,15 +1267,31 @@ pauseRender:(on:boolean)=>{const previous=r.benchmarking===true;r.benchmarking=o
     const team=cocsTeam(),actorId=player.id??0,snapshot=hud.cocs,coop=Boolean(snapshot.coop),mode=coop?'cocs-coop':'cocs';
     const live=r.net?.started!==true?r.match:null,liveState=live?.objectiveState?.kind==='cocs'?live.objectiveState:null,liveActor=live?.actors?.[Number(actorId)]??null;
     const row=(snapshot.req??[]).find((entry:any)=>String(entry?.id)===String(actorId));
-    const base:any=reqPurchaseOptions({team,mode,actor:{id:actorId,req:Number(liveActor?.req??row?.req??0)||0,reqBuff:liveActor?.reqBuff??null},state:liveState??snapshot});
+    // Authority first: with neither a live actor nor a projected wallet row there
+    // is no authoritative balance to spend from, so the store says so and offers
+    // nothing rather than fabricating a 0 REQ wallet.
+    const walletKnown=Boolean(liveActor)||Boolean(row);
+    if(!walletKnown)return {team,mode,balance:0,balanceSource:'unavailable',authoritative:false,isCommander:false,activeBuffId:null,items:[],walletKnown:false};
+    const base:any=reqPurchaseOptions({team,mode,actor:{id:actorId,req:Number(liveActor?.req??row?.req??player?.req??0)||0,reqBuff:liveActor?.reqBuff??player?.reqBuff??null},state:liveState??snapshot});
+    // The recipient snapshot carries enemy positions (spotting) and, for PvP,
+    // the per-team `intel.cutNodes`; OPERATIONS projects no cut list, so a
+    // repair row stays authority-gated there instead of being falsely ready.
+    const targetContext={actor:liveActor??player,actors:live?.actors??hud?.actors??null,nodes:liveState?.nodes??snapshot?.nodes??null,cuts:Array.isArray(liveState?.cuts)?liveState.cuts:Array.isArray(snapshot?.intel?.[team]?.cutNodes)?snapshot.intel[team].cutNodes:null};
     const source=liveState??snapshot,depots=Object.values((source?.traversal?.depots)??{}) as any[],friendly=depots.filter((depot:any)=>depot&&depot.owner===team);
     const nearest=friendly.reduce((best:any,depot:any)=>{const distance=Math.hypot((Number(player.x)||0)-Number(depot.x||0),(Number(player.z)||0)-Number(depot.z||0));return !best||distance<best.distance?{distance,depot}:best;},null)?.depot??null;
-    let items=base.items;
-    if(nearest&&base.items.some((item:any)=>item.id==='puma'&&item.enabled)){
-     const busy=liveState?(()=>{const depot=liveState.traversal?.depots?.[nearest.id]??nearest;return !depotPurchaseState(live,depot).available;})():Boolean(nearest.purchase&&(hud.vehicles??[]).some((vehicle:any)=>vehicle?.id===nearest.purchase.id&&Number(vehicle.health)>0));
-     if(busy)items=base.items.map((item:any)=>item.id==='puma'?{...item,enabled:false,disabledReason:'vehicle'}:item);
+    // Target-validated effects (spot / repair-link) are gated by the same shared
+    // selector the sim/room use: no legal target disables the row before a click.
+    let items=base.items.map((item:any)=>item.enabled===true&&reqTargetReason(item,targetContext)?{...item,enabled:false,disabledReason:'no-target'}:item);
+    // Any depot-target row is unavailable while its resolved friendly depot
+    // already fields a live purchase (server re-checks with depotPurchaseState).
+    if(nearest&&items.some((item:any)=>item.target==='depot'&&item.enabled)){
+     const depot=liveState?(liveState.traversal?.depots?.[nearest.id]??nearest):nearest;
+     const busy=liveState?!depotPurchaseState(live,depot).available:Boolean(nearest.purchase&&(hud.vehicles??[]).some((vehicle:any)=>vehicle?.id===nearest.purchase.id&&Number(vehicle.health)>0));
+     if(busy)items=items.map((item:any)=>item.target==='depot'?{...item,enabled:false,disabledReason:'vehicle'}:item);
     }
-    return {...base,items,depotId:nearest?.id??null};
+    // A dead actor keeps its authoritative wallet but cannot spend until it
+    // respawns; the row states that instead of looking ready.
+    return {...base,items,depotId:nearest?.id??null,walletKnown:true,eliminated:Number(player?.health)<=0};
    })();
    // Dispatch only QUEUES/REQUESTS. The matching authoritative snapshot debit
    // (reqSpent, co-op buy log or `cocs-buy` event) is what confirms it; a

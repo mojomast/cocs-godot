@@ -316,9 +316,14 @@ test('REQ store SSR: every row states name, cost, effect, affordability and one 
   assert.match(html, /Heal 50 health \(capped at max health\)/, 'effect copy is rendered');
   assert.match(html, /NEED MORE REQ/, 'the single disable reason is in words');
   assert.match(html, /WRONG MODE/, 'a mode-unsupported row also names its reason');
-  assert.match(html, /READY · AFFORDABLE/, 'an affordable row states it');
+  assert.match(html, /READY · AFFORDABLE · CLICK TO QUEUE/, 'an affordable row states its explicit action');
+  assert.match(html, /TARGET <b>SELF<\/b>/, 'a self row names its spend point');
+  assert.match(html, /TARGET <b>CUT LINK<\/b>/, 'the repair row names its world target');
+  assert.match(html, /MODE <b>PVPvE · OPERATIONS<\/b>/, 'a shared row names both modes');
+  assert.match(html, /MODE <b>OPERATIONS<\/b>/, 'the Puma names its single mode');
+  assert.match(html, /ACTIVATING A ROW ONLY QUEUES IT FOR AUTHORITY/, 'the store is explicit that a click is a request');
   assert.match(html, /aria-expanded="true"/, 'the toggle exposes its state to assistive tech');
-  assert.match(html, /aria-label="[^"]*Cost 40 REQ[^"]*Balance 30 REQ[^"]*"/, 'each row accessible name carries cost and balance');
+  assert.match(html, /aria-label="[^"]*Target SELF[^"]*Modes PVPvE[^"]*Cost 40 REQ[^"]*Balance 30 REQ[^"]*"/, 'each row accessible name carries target, modes, cost and balance');
   assert.match(html, /class="cocs-sink__buy"/, 'rows are real buttons');
   assert.doesNotMatch(html, /tabindex="-1"/i, 'no purchase row is removed from the tab order');
   const buffed = reqPurchaseOptions({team: 0, mode: 'cocs', actor: {id: 0, req: 100, reqBuff: 'overshield'}, state: {command: {seat: [null, null]}, nodes: []}});
@@ -326,6 +331,21 @@ test('REQ store SSR: every row states name, cost, effect, affordability and one 
   assert.match(buffedHtml, /ANOTHER BUFF IS ACTIVE/, 'the active-buff gate is named');
   const css = await read('app/globals.css');
   assert.match(css, /\.cocs-sink\{min-height:44px\}/, 'the shared sink row is a 44px target');
+});
+
+test('REQ store SSR: an unknown wallet or a target-less row offers no purchase', async () => {
+  const req = reqPurchaseOptions({team: 0, mode: 'cocs', actor: {id: 0, req: 200, reqBuff: null}, state: {command: {seat: [null, null]}, nodes: []}});
+  const targetless = {...req, items: req.items.map(item => item.effect?.kind === 'spot' ? {...item, enabled: false, disabledReason: 'no-target'} : item)};
+  const gated = render(ReqStore, {req: targetless, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
+  assert.match(gated, /NO VALID TARGET IN REACH/, 'a target-less effect names its refusal');
+  const locked = render(ReqStore, {req: {...req, items: [], walletKnown: false}, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
+  assert.match(locked, /REQ STORE · <b>—<\/b> REQ/, 'an unknown wallet shows no fabricated balance');
+  assert.match(locked, /WALLET UNAVAILABLE · AWAITING AUTHORITATIVE SNAPSHOT/, 'the unknown wallet is explained');
+  assert.doesNotMatch(locked, /cocs-sink__buy/, 'an unknown wallet renders no purchase control');
+  assert.doesNotMatch(locked, /READY · AFFORDABLE/, 'an unknown wallet never looks affordable');
+  const dead = render(ReqStore, {req: {...req, eliminated: true}, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
+  assert.match(dead, /⚠<\/i> ELIMINATED/, 'a dead actor cannot spend until respawn');
+  assert.doesNotMatch(dead, /READY · AFFORDABLE/, 'a dead actor never looks ready to spend');
 });
 
 test('REQ store SSR: an outstanding buy reads QUEUED/REQUESTED and never CONFIRMED', async () => {
