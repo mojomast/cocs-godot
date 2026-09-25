@@ -104,16 +104,19 @@ track still announces it. `catalogAudit().ok` is `false` with this single pinned
 issue; the focused test pins the exact issue set so a future catalogue edit must
 be deliberate.
 
-## Integration contract (career-UI lane)
+## Integrated career UI contract
 
-The separate Flash career-UI branch cannot rely on the new exports until this
-work is merged; nothing here removes or renames an existing export.
+The career UI now consults `isUnlocked(entryId, level, owned)` through its
+pure `lockState` helper, passing `profile.unlocks` to both the Progression
+screen and the read-only Arsenal inspector. Explicitly granted items above the
+level gate remain selectable and appear in the unlocked/equipped counts.
+Nothing here removes or renames an existing export.
 
 - **No change required:** `nextUnlockFor`, `nextUnlocksFor`, `unlockedItems`,
   `matchRewardSummary`, `matchSummaryCard`, `normalizeGear(value, level)`,
   `normalizeAttachments(value, level)` keep their shapes.
-- **Adopt after merge:** `unlockPlan(profile)` for an actionable per-slot chip;
-  `isUnlocked(slot, level, owned)` if the screen wants the same gate locally.
+- **Available:** `unlockPlan(profile)` for an actionable per-slot chip;
+  `isUnlocked(entryId, level, owned)` is the shared gate already used by the UI.
 - **Server:** `setGear` now rejects a locked finish/crosshair and honours stored
   grants. An optional 5th `crosshair` argument is accepted but the `GEAR`
   packet does not carry it yet, so crosshair still persists only through the

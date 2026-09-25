@@ -11,7 +11,7 @@
 // No engine imports beyond the two pure catalogues, so the career source agent
 // can keep reworking the progression internals as long as these resolvers keep
 // their published shape.
-import {gearBudget, gearPoints} from '../../game/progression.mjs';
+import {UNLOCKS, gearBudget, gearPoints, isUnlocked} from '../../game/progression.mjs';
 import {attachmentFits, attachmentSpec} from '../../game/attachments.mjs';
 
 // Fixed axis order keeps every stat/compare line deterministic for tests and
@@ -66,21 +66,24 @@ export function gearCompareLine(candidate, equipped) {
 }
 
 // --- Lock state -------------------------------------------------------------
-// Level is the only gate the catalogue declares, so the reason is exact and
-// machine-readable instead of a bare "LV n".
-export function lockState(item, level) {
+// A saved grant can unlock an item above the XP-derived level. Match the exact
+// source catalogue entry so the screen and server agree on that exception.
+const unlockEntryFor = item => UNLOCKS.find(entry => entry.id === item?.id && (!item?.ref || entry.ref === item.ref))
+  ?? UNLOCKS.find(entry => entry.ref === item?.id && entry.kind === (item?.slot && ['primary', 'armor', 'utility'].includes(item.slot) ? 'gear' : 'attachment'));
+export function lockState(item, level, owned = null) {
   const required = levelOf(item);
   const current = Math.max(1, Math.round(Number(level) || 1));
-  const locked = current < required;
+  const entry = unlockEntryFor(item);
+  const locked = entry ? !isUnlocked(entry.id, current, owned) : current < required;
   return Object.freeze({locked, required, current, levelsAway: Math.max(0, required - current)});
 }
-export function lockLabel(item, level) {
-  const state = lockState(item, level);
+export function lockLabel(item, level, owned = null) {
+  const state = lockState(item, level, owned);
   if (!state.locked) return 'UNLOCKED';
   return `LOCKED · LV ${state.required} · ${state.levelsAway} ${state.levelsAway === 1 ? 'LEVEL' : 'LEVELS'} TO GO`;
 }
-export function nextLevelLine(item, level) {
-  const state = lockState(item, level);
+export function nextLevelLine(item, level, owned = null) {
+  const state = lockState(item, level, owned);
   return state.locked ? `${state.levelsAway} ${state.levelsAway === 1 ? 'LEVEL' : 'LEVELS'} TO LV ${state.required}` : '';
 }
 
@@ -97,12 +100,12 @@ export function isEquipped(profile, kind, id) {
   return false;
 }
 export function unlockState(profile, item) {
-  if (lockState(item, profile?.level).locked) return 'locked';
+  if (lockState(item, profile?.level, profile?.unlocks).locked) return 'locked';
   return isEquipped(profile, item?.kind, item?.ref ?? item?.id) ? 'equipped' : 'unlocked';
 }
 export function unlockStateLabel(profile, item) {
   const state = unlockState(profile, item);
-  if (state === 'locked') return lockLabel(item, profile?.level);
+  if (state === 'locked') return lockLabel(item, profile?.level, profile?.unlocks);
   return state === 'equipped' ? 'EQUIPPED' : 'UNLOCKED';
 }
 

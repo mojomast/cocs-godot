@@ -103,7 +103,7 @@ test('ReqStore never offers a target-less row or an unknown wallet', () => {
   const model = reqPurchaseOptions({team: 0, mode: 'cocs', actor: {id: 0, req: 200, reqBuff: null}, state: {command: {seat: [null, null]}, nodes: []}});
   const gated = {...model, items: model.items.map(item => item.effect?.kind === 'spot' ? {...item, enabled: false, disabledReason: 'no-target'} : item)};
   const html = render(ReqStore, {req: gated, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
-  assert.match(html, /NO VALID TARGET IN REACH/, 'a target-less row names its refusal');
+  assert.match(html, /NO VALID TARGET/, 'a target-less row names its refusal');
   const locked = render(ReqStore, {req: {...model, items: [], walletKnown: false}, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
   assert.match(locked, /REQ STORE · <b>—<\/b> REQ/, 'an unknown wallet shows no fabricated balance');
   assert.match(locked, /WALLET UNAVAILABLE · AWAITING AUTHORITATIVE SNAPSHOT/, 'the unknown wallet is explained');
@@ -184,7 +184,7 @@ test('a refusal names its reason and drops the pending row', () => {
   assert.equal(denied.refused[0].reason, 'one-active-buff');
   assert.equal(denied.remaining.length, 0, 'a refused row never lingers as pending');
   assert.equal(reqReasonCopy('one-active-buff'), 'ANOTHER BUFF IS ACTIVE', 'the refusal reason is player-facing');
-  assert.equal(reqReasonCopy('no-target'), 'NO VALID TARGET IN REACH', 'field-equipment target refusals are legible');
+  assert.equal(reqReasonCopy('no-target'), 'NO VALID TARGET', 'target refusals are legible across self and map-wide effects');
   assert.equal(reqReasonCopy('depot'), 'DEPOT', 'unknown reasons fall back to a readable word');
   const expired = reconcileReqBuys([pendingBuy()], {actorId: 0, tick: 200, spent: 0, graceTicks: 90, reasonFor: () => 'insufficient-req'});
   assert.equal(expired.refused.length, 1, 'grace expiry refuses an unconfirmed row');

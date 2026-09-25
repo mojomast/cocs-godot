@@ -30,10 +30,10 @@ export function ProgressionScreen({ui}:ScreenProps){
  // from the same model for gear, mods and cosmetics, so no category can drift.
  const renderItems=(items:any[],isEquipped:(item:any)=>boolean,onPick:(item:any)=>void,statsOf?:(item:any)=>any,metaOf?:(item:any)=>any)=>(
   <div className="grid-cards">{items.map((item:any)=>{
-   const lock=lockState(item,operatorLevel);
+    const lock=lockState(item,operatorLevel,profile.unlocks);
    const fitted=isEquipped(item);
    const meta=lock.locked?`LV ${lock.required} · ${lock.levelsAway} TO GO`:(metaOf?.(item)||(fitted?'EQUIPPED':'UNLOCKED'));
-   const aria=`${item.name}${lock.locked?`, ${lockLabel(item,operatorLevel).toLowerCase()}`:fitted?', equipped':', unlocked'}`;
+    const aria=`${item.name}${lock.locked?`, ${lockLabel(item,operatorLevel,profile.unlocks).toLowerCase()}`:fitted?', equipped':', unlocked'}`;
    return <SelectCard key={item.id} name={item.name} tag={item.description} selected={fitted} disabled={lock.locked} meta={meta} stats={statsOf?.(item)} onClick={()=>onPick(item)} ariaLabel={aria}/>;
   })}</div>
  );
@@ -121,12 +121,12 @@ export function ProgressionScreen({ui}:ScreenProps){
      </div>
      </Panel>
      <div className="stack">
-      <Panel label="UNLOCK TRACK" meta={`${unlockedItems(operatorLevel).length} / ${UNLOCKS.length} UNLOCKED`}>
+       <Panel label="UNLOCK TRACK" meta={`${UNLOCKS.filter((item:any)=>!lockState(item,operatorLevel,profile.unlocks).locked).length} / ${UNLOCKS.length} UNLOCKED`}>
      <div className="stack">
-      <p className="field-note">UNLOCKED means the level gate has passed; EQUIPPED means it is the item actually fitted to your persisted loadout. The match only applies what is equipped.</p>
+       <p className="field-note">UNLOCKED means the level gate has passed or this profile owns a grant; EQUIPPED means the item is fitted to your saved loadout. The match only applies what is equipped.</p>
       {UNLOCK_GROUPS.map((group:any)=>{
        const items=UNLOCKS.filter((item:any)=>item.kind===group.kind);
-       const got=items.filter((item:any)=>!lockState(item,operatorLevel).locked).length;
+        const got=items.filter((item:any)=>!lockState(item,operatorLevel,profile.unlocks).locked).length;
        const fitted=items.filter((item:any)=>unlockState(profile,item)==='equipped').length;
        return <div key={group.kind} className="stack stack--tight">
         <div className="row row--between"><span className="label">{group.label}</span><span className="label">{got}/{items.length} UNLOCKED{fitted?` · ${fitted} EQUIPPED`:''}</span></div>

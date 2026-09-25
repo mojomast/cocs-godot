@@ -79,6 +79,16 @@ test('lock state names the exact level and the exact number of levels still owed
   assert.equal(lockState({level: 5}, 0).current, 1, 'the profile level floor is 1');
 });
 
+test('explicit source unlocks stay available in both career surfaces above their level gate', () => {
+  const capstone = GEAR.find(item => item.id === 'command-kit');
+  const grant = {'gear-command-kit': true};
+  assert.equal(lockState(capstone, 1).locked, true);
+  assert.equal(lockState(capstone, 1, grant).locked, false);
+  assert.equal(lockLabel(capstone, 1, grant), 'UNLOCKED');
+  const profile = {level: 1, unlocks: grant, gear: {primary: 'command-kit'}};
+  assert.equal(unlockState(profile, {id: 'gear-command-kit', ref: 'command-kit', kind: 'gear', level: 50}), 'equipped');
+});
+
 test('unlock state separates equipped from merely unlocked and locked', () => {
   const profile = {level: 30, gear: {primary: 'heavy-barrel'}, attachments: {optic: 'holo-sight'}, finish: 'finish-a', crosshair: 'cross-a'};
   assert.equal(isEquipped(profile, 'gear', 'heavy-barrel'), true);

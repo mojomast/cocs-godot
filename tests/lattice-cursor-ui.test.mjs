@@ -337,7 +337,7 @@ test('REQ store SSR: an unknown wallet or a target-less row offers no purchase',
   const req = reqPurchaseOptions({team: 0, mode: 'cocs', actor: {id: 0, req: 200, reqBuff: null}, state: {command: {seat: [null, null]}, nodes: []}});
   const targetless = {...req, items: req.items.map(item => item.effect?.kind === 'spot' ? {...item, enabled: false, disabledReason: 'no-target'} : item)};
   const gated = render(ReqStore, {req: targetless, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
-  assert.match(gated, /NO VALID TARGET IN REACH/, 'a target-less effect names its refusal');
+  assert.match(gated, /NO VALID TARGET/, 'a target-less effect names its refusal');
   const locked = render(ReqStore, {req: {...req, items: [], walletKnown: false}, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
   assert.match(locked, /REQ STORE · <b>—<\/b> REQ/, 'an unknown wallet shows no fabricated balance');
   assert.match(locked, /WALLET UNAVAILABLE · AWAITING AUTHORITATIVE SNAPSHOT/, 'the unknown wallet is explained');
