@@ -23,7 +23,11 @@ func _ready() -> void:
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(shade)
 	add_child(box)
-	box.add_child(scroll)
+	var outer := VBoxContainer.new()
+	outer.add_theme_constant_override("separation", 8)
+	box.add_child(outer)
+	outer.add_child(scroll)
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	var column := VBoxContainer.new()
 	column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -32,8 +36,8 @@ func _ready() -> void:
 	for item: Label in [body, role_text]:
 		item.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		column.add_child(item)
-	column.add_child(action)
-	column.add_child(dismiss)
+	outer.add_child(action)
+	outer.add_child(dismiss)
 	action.pressed.connect(func() -> void:
 		if not action.disabled:
 			if stage == "results": restart_requested.emit()
@@ -45,7 +49,7 @@ func _ready() -> void:
 	hide()
 
 func _layout() -> void:
-	box.size = Vector2(minf(720, maxf(280, size.x - 32)), minf(590, maxf(240, size.y - 32)))
+	box.size = Vector2(minf(720, maxf(280, size.x - 32)), minf(420, maxf(240, size.y - 32)))
 	box.position = (size - box.size) * 0.5
 
 func show_setup(requested: Dictionary, config: Dictionary, flow: Dictionary, is_host: bool) -> void:
@@ -58,7 +62,7 @@ func show_setup(requested: Dictionary, config: Dictionary, flow: Dictionary, is_
 		Outcomes.value(roster_view.get("connected_peers")), Outcomes.value(flow.get("minimum_humans")), Outcomes.value(roster_view.get("host_peer")), str(flow.get("reason", ""))]
 	var role: Dictionary = Roles.from_session(config)
 	role_text.text = role.text if role.ready else "Assigned kit unknown. " + role.text
-	action.text = "Host: request Start" if is_host else "Guest: host controls Start"
+	action.text = "Host: request Start" if is_host else "Awaiting host identity / host controls Start" if flow.get("host_peer", -1) < 0 else "Guest: host controls Start"
 	# Never offer start before the authoritative echo. L1 start() rechecks floor and host.
 	action.disabled = not is_host or config.is_empty() or flow.get("state") != SessionFlow.State.HOST_WAITING
 	show()

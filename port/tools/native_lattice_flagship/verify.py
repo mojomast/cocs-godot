@@ -113,7 +113,7 @@ def main():
                 for path in sorted((ROOT / "godot/tests/lattice").glob("flagship_l*.gd")):
                     name = path.stem
                     results.append(run(name, [binary, "--headless", "--path", "godot", "--script",
-                                               f"res://tests/lattice/{path.name}"], out, env, 120))
+                                               f"res://tests/lattice/{path.name}"], out, env, 40))
     (out / "results.json").write_text(json.dumps(results, indent=2) + "\n")
     (out / "cleanup.json").write_text(json.dumps({"subprocesses_waited": True,
                                                    "temporary_xdg_removed": True,

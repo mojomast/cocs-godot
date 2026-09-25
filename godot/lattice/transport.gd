@@ -72,7 +72,7 @@ func _on_results(frame: Dictionary) -> void:
 			if finite_number(score): safe_scores[team] = score
 	var bounded_outcome: Dictionary = {}
 	var winner: Variant = state.get("winner", null)
-	if winner == null or (wire_integer(winner) and winner in [0, 1]): bounded_outcome["winner"] = winner
+	if winner == null or (wire_integer(winner) and (winner == 0 or winner == 1)): bounded_outcome["winner"] = winner
 	var reason: Variant = state.get("overReason", null)
 	if reason is String and reason.length() <= 64: bounded_outcome["reason"] = reason
 	result_projection = {"map":state.get("mapId"), "mode":mode, "revision":revision,

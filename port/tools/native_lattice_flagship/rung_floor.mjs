@@ -36,9 +36,14 @@ try {
    await wait(()=>host.frames.some(f=>f.type==='lobby' && f.config?.rung===rung));
    for(let i=1;i<seats;i++)peers.push(await seat(url,`seat-${i}`,host.room));
    await wait(()=>host.frames.some(f=>f.type==='lobby' && f.players?.filter(p=>p.connected && !p.spectate).length===seats));
-   if(disconnectedBeforeStart){
-    peers.at(-1).ws.terminate();
-    await wait(()=>host.frames.some(f=>f.type==='lobby' && f.players?.filter(p=>p.connected && !p.spectate).length===7));
+    if(disconnectedBeforeStart){
+     const releasedAt=Date.now();
+     peers.at(-1).ws.terminate();
+     await wait(()=>host.frames.some(f=>f.type==='lobby' && f.players?.filter(p=>p.connected && !p.spectate).length===7));
+     // Room retains an ordinary seat through its real 20-second reconnect grace.
+     // Start only after the authority's own cocs human count publishes seven.
+     await wait(()=>host.frames.filter(f=>f.type==='lobby').at(-1)?.cocs?.humans===7,30000);
+     result.grace_wait_ms=Date.now()-releasedAt;
    }
    result.echo=host.frames.filter(f=>f.type==='lobby').at(-1)?.cocs;
    host.ws.send(JSON.stringify({type:'start'}));

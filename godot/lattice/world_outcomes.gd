@@ -1,7 +1,10 @@
 extends RefCounted
 ## Recipient-only result/round copy. No local timer, score or winner inference.
 static func value(raw: Variant) -> String:
-	return str(raw) if raw is int or raw is float or raw is String and not raw.is_empty() else "unknown"
+	if raw is int: return str(raw)
+	if raw is float and is_finite(raw):
+		return str(int(raw)) if floor(raw) == raw else "%.1f" % raw
+	return raw if raw is String and not raw.is_empty() else "unknown"
 
 static func progress(mode: String, source: Variant, dominance: Variant = null, recruitment: Variant = null) -> String:
 	if mode == "cocs-coop":
@@ -23,7 +26,7 @@ static func final_result(result: Dictionary, host: bool) -> String:
 	if result.is_empty(): return "Awaiting authoritative final result"
 	var outcome: Variant = result.get("outcome")
 	var winner: Variant = outcome.get("winner") if outcome is Dictionary else null
-	var numeric_winner := (winner is int or winner is float) and is_finite(float(winner)) and floor(float(winner)) == float(winner) and int(winner) in [0, 1]
+	var numeric_winner: bool = (winner is int or winner is float) and is_finite(float(winner)) and floor(float(winner)) == float(winner) and int(winner) in [0, 1]
 	var winner_text := "draw" if outcome is Dictionary and outcome.has("winner") and winner == null else "team %s" % int(winner) if numeric_winner else "unknown"
 	var reason: Variant = outcome.get("reason") if outcome is Dictionary else null
 	var scores: Variant = result.get("scores")

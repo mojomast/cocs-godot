@@ -18,7 +18,7 @@ func _initialize() -> void:
 		{"id":"cut","owner":0,"live":true}, {"id":"cut-front","owner":null,"live":true}]
 	var model: Dictionary = t.model(projection, 0, ["cut"])
 	check(not model.by_id.near.capture_legal and model.by_id.far.capture_legal, "closer enemy illegal while farther owned-adjacent frontier is legal")
-	check(model.by_id.cut_front.capture_legal and model.by_id.cut_front.supply == "CUT OFF", "disconnected frontier adjacent to cut-owned node is legal but cut off")
+	check(model.by_id["cut-front"].capture_legal and model.by_id["cut-front"].supply == "CUT OFF", "disconnected frontier adjacent to cut-owned node is legal but cut off")
 	check(model.complete, "fully owned-known map is complete")
 	var incomplete := projection.duplicate(true); incomplete[2].erase("owner")
 	model = t.model(incomplete, 0)

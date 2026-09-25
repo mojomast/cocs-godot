@@ -28,7 +28,7 @@ func _initialize() -> void:
 	var action := {"cardId":"card-1","roundRev":7}
 	assert(trace.order_matches(trace.recent_events.back(), action, projection, 4))
 	assert(not trace.order_matches(trace.recent_events.back(), action, projection, 2), "room peer is not simulation actor")
-	var event_with_untrusted_actor := trace.recent_events.back().duplicate(true)
+	var event_with_untrusted_actor: Dictionary = trace.recent_events.back().duplicate(true)
 	event_with_untrusted_actor["actor"] = 999
 	assert(trace.order_matches(event_with_untrusted_actor, action, projection, 4), "contributors/actor evidence does not gate issuer effect")
 	assert(not trace.order_matches(trace.recent_events.back(), {"cardId":"card-2","roundRev":7}, projection, 4))

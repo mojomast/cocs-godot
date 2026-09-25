@@ -179,7 +179,7 @@ func begin() -> void:
 	requested.join = not requested.room.is_empty()
 	var problem: String = SessionOptions.validate(requested)
 	if not problem.is_empty(): notice.text = problem; refresh(); return
-	session_flow.disconnect(client)
+	session_flow.leave(client)
 	last_lobby.clear()
 	selected = ""
 	confirm_spend.button_pressed = false
@@ -215,7 +215,7 @@ func on_lobby(frame: Dictionary) -> void:
 	refresh()
 
 func disconnect_session() -> void:
-	session_flow.disconnect(client)
+	session_flow.leave(client)
 	last_lobby.clear()
 	phase = "idle"
 	selected = ""

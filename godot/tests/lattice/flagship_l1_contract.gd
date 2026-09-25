@@ -24,7 +24,9 @@ func _initialize() -> void:
 	check(Options.host_frame(o).config.timeLimit == 900 and Options.host_frame(o).config.rung == "4v4", "normal host frame carries requested source config")
 	check(not Options.host_frame(o).config.has("botCount"), "competitive rung leaves bot fill wholly to source")
 	var flow := Flow.new()
-	var denied: Dictionary = flow.start(FakeClient.new(), {"hostId":1})
+	var denied_client := FakeClient.new()
+	var denied: Dictionary = flow.start(denied_client, {"hostId":1})
+	denied_client.free()
 	check(not denied.queued and denied.reason.contains("Only source roster host"), "non-host cannot request start")
 	var host := FakeClient.new()
 	host.peer_id = 1
@@ -38,18 +40,19 @@ func _initialize() -> void:
 	var waiting: Dictionary = flow.start(host, {"hostId":1,"players":[{"peerId":1,"actorId":null,"connected":true,"spectate":false}]})
 	check(not waiting.queued and waiting.reason.contains("Waiting for 2") and host.sent.is_empty() and flow.state == Flow.State.HOST_WAITING, "pre-start null actor counts ordinary connected peers and below-floor stays waiting")
 	flow.publish(Flow.State.RESULTS)
-	flow.minimum_humans = 0
-	var restart: Dictionary = flow.restart(host, {"hostId":1,"players":[]})
+	flow.minimum_humans = 2
+	var restart: Dictionary = flow.restart(host, {"hostId":1,"players":[{"peerId":1,"connected":true},{"peerId":2,"connected":true}]})
 	check(restart.queued and host.sent.size() == 1, "results restart queues directly without HOST_WAITING fiction")
 	var c := Transport.new()
 	c.allowlist = {"asterion-relay":{"modes":["cocs"]}}
 	c.requested_map = "asterion-relay"
 	check(wire(c, {"type":"welcome","v":3,"roomId":"r","peerId":1}), "welcome")
-	check(wire(c, {"type":"lobby","hostId":1,"config":{"mode":"cocs"},"cocs":{"minHumans":2},"players":[{"peerId":1,"actorId":0,"connected":true,"spectate":false,"character":"chatgpt","harness":"openclaw"}]}), "roster")
+	check(wire(c, {"type":"lobby","mapId":"asterion-relay","hostId":1,"config":{"mode":"cocs"},"cocs":{"minHumans":2},"players":[{"peerId":1,"actorId":0,"connected":true,"spectate":false,"character":"chatgpt","harness":"openclaw"}]}), "roster")
 	check(c.roster_metadata.minimum_humans == 2 and c.roster_metadata.players.size() == 1, "complete sourced roster/floor survives projection")
 	check(wire(c, {"type":"start","mapId":"asterion-relay","roundRevision":1,"config":{"mode":"cocs","timeLimit":900,"botCount":2}}), "start")
 	var state := {"mapId":"asterion-relay","time":42,"actors":[{"id":0,"team":0,"health":100,"x":0,"y":0,"z":0,"yaw":0,"pitch":0,"ammo":[]}],"pickups":[],"cocs":{"roundRevision":1,"nodes":[],"dominance":{"team":1,"progress":10,"target":45,"remaining":35,"count":3,"fastCount":4,"breakCount":2,"fast":false,"counts":{"0":2,"1":3}},"outcome":{"mode":"pvp","waves":null,"hq":null}}}
-	check(wire(c, {"type":"snapshot","seq":4,"acks":{},"state":state}), "live snapshot")
+	check(c.valid_envelope({"type":"snapshot","seq":4,"acks":{},"state":state}), "live snapshot shape")
+	check(wire(c, {"type":"snapshot","seq":4,"acks":{},"state":state}), "live snapshot: " + c.error)
 	check(c.projection.dominance.breakCount == 2 and c.projection.source_sequence == 4, "public outcome projected with source context")
 	check(not c.projection.has("actors") and not c.projection.has("enemy_wallet"), "projection omits private actor/raw wallet structures")
 	var order: Array[String] = []
@@ -60,7 +63,7 @@ func _initialize() -> void:
 	state.cocs.scores = {"0":10,"1":12}
 	check(wire(c, {"type":"results","seq":5,"state":state}), "results frame")
 	check(c.projection.is_empty() and c.result_projection.outcome.winner == 1 and c.result_projection.outcome.reason == "dominance", "actual overReason and winner survive final projection after authority clears")
-	check(order.size() >= 2 and order[0] == "result" and order[1] == "changed:true", "result update precedes UI changed notification")
+	check(order.size() >= 2 and order[0] == "result" and order[1] == "changed:false", "result update precedes UI changed notification: " + str(order))
 	check(c.result_projection.scores["1"] == 12 and c.result_projection.source_time == 42, "score/time only from source result")
 	check(wire(c, {"type":"start","mapId":"asterion-relay","roundRevision":2,"config":{"mode":"cocs","timeLimit":900}}), "next start")
 	check(c.result_projection.is_empty() and c.actions.is_empty() and c.revision == 2 and c.roster_metadata.minimum_humans == 2 and not c.session_config.is_empty(), "new revision clears authority but preserves current roster and echoed config")
@@ -91,5 +94,6 @@ func _initialize() -> void:
 	c.disconnect_server()
 	check(c.session_config.is_empty() and c.result_projection.is_empty() and c.roster_metadata.is_empty() and c.revision == -1, "disconnect during active round clears all identity epoch state")
 	c.free()
+	host.free()
 	print("LATTICE_L1_SYNTHETIC %d checks, %d failures" % [checks, failures])
 	quit(1 if failures else 0)

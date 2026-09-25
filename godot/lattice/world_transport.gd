@@ -48,7 +48,7 @@ func valid_envelope(frame: Dictionary) -> bool:
 			if dominance.has(key) and (not finite_number(dominance[key]) or float(dominance[key]) < 0.0): return false
 		for key: String in ["count", "fastCount", "breakCount"]:
 			if dominance.has(key) and (not wire_integer(dominance[key]) or dominance[key] > 128): return false
-		if dominance.has("team") and dominance.team != null and (not wire_integer(dominance.team) or dominance.team not in [0, 1]): return false
+		if dominance.has("team") and dominance.team != null and (not wire_integer(dominance.team) or (dominance.team != 0 and dominance.team != 1)): return false
 		if dominance.has("fast") and not dominance.fast is bool: return false
 		if dominance.has("counts"):
 			if not dominance.counts is Dictionary: return false

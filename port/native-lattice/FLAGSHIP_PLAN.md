@@ -1,11 +1,13 @@
 # LATTICE Strike — sequential delegated build plan
 
-Status: **not executed**. Companion contract:
+Status: **L1–L5 implemented in isolated worktree; acceptance gates remain open**.
+Integrated evidence and blockers: [flagship/ACCEPTANCE.md](flagship/ACCEPTANCE.md). Companion contract:
 [FLAGSHIP_SPEC.md](FLAGSHIP_SPEC.md). Source remains
 `515daf07589150dd3241f4ae1425cc1b093912f5`; branch
-`port/godot-destinations`. This plan is for a future lead assigning small agents
-**one implementation lane at a time**. The docs-only synthesis ran no builds,
-imports, suites or benchmarks and owns only this file and the specification.
+`port/godot-destinations`. The original plan assigned small agents
+**one implementation lane at a time**. The historical docs-only synthesis ran no
+builds, imports, suites or benchmarks; the subsequent isolated integration is
+tracked separately in the acceptance report.
 
 ## 1. Execution rules and priorities
 

@@ -1,6 +1,6 @@
 # LATTICE Strike — flagship implementation specification
 
-Status: **design contract; implementation and acceptance pending**. Prepared
+Status: **design contract; L1–L5 implementation integrated, acceptance incomplete**. Prepared
 2026-09-25 on `port/godot-destinations`, against selected source
 `515daf07589150dd3241f4ae1425cc1b093912f5` in
 `port/contracts/source-lock.json`. Execute with [FLAGSHIP_PLAN.md](FLAGSHIP_PLAN.md).

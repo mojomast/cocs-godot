@@ -41,35 +41,42 @@ MVP-C1, or MVP-C2. Integrated gate results and attempt manifests belong below.
 ## Integrated gates
 
 L1 projection/session, L2 legal-target/HUD, and L3 session/outcome/command
-presentation are composed in this worktree. Their GDScript fixtures have **not**
-been run before the engine slot; static review corrected source `overReason`,
+presentation are composed in this worktree. Pinned engine contracts now pass;
+static review corrected source `overReason`,
 pre-start null actor assignment, inactive-owned-node legality, and the distinction
 between simulation actor and room peer IDs in observed order events. L4 launcher
 and package options, menu metadata, and generated routes are integrated; Board
 option consumption is now implemented in L5's Board, while the independent
-two-client witness runner is implemented but unrun, and the direct Match experiment
+two-client witness runner has engine-scripted short-run evidence but no human input, and the direct Match experiment
 covers dominance, floor, roles and time tie-break with two explicit topology/order gaps. The
-source host frame omits a bot-count override for rung requests. Engine review
-remains open.
+source host frame omits a bot-count override for rung requests.
 
 | Gate | Status | Evidence |
 | --- | --- | --- |
 | G0 provenance | Base and pin recorded; input hashes retained in contract manifests; integrated commit hash is the isolated worktree HEAD | This document; source lock; `port/native-lattice/evidence/flagship/contracts-1790316494062383366/manifest.json` |
-| G1 contracts | Partial: pre-engine Node/semantic checks passed; Godot contracts pending | `port/native-lattice/evidence/flagship/contracts-1790316494062383366/` |
-| G2 import | Pending engine slot | — |
-| G3 rendered | Pending engine slot and pixel review | — |
-| G4 MVP-A natural rounds | Pending | — |
-| G5 MVP-B rung rules/server floor | Pending | — |
-| G6 MVP-C1 independent native clients | Pending | — |
+| G1 contracts | PASS: 189/189 Node and four GDScript fixtures; live behavior separately gated | `port/native-lattice/evidence/flagship/contracts-1790320775739691023/` |
+| G2 import | PASS pinned Godot 4.5.2 import; failed repair attempts retained | `port/native-lattice/evidence/flagship/contracts-1790320775739691023/` |
+| G3 rendered | Partial: synthetic layout pixels at 960×640 and 1280×720 plus real-source 60s scripted-input World setup/commands/results at 1280×800; inspected restart control and source result. Walk to legal frontier/OS-human input still open | `port/native-lattice/evidence/flagship/render-1790319250/`, `ordinary-1790320793556-ff89655f-98ec-4db8-8574-b447d1166ccd/` |
+| G4 MVP-A natural rounds | BLOCKED: two exploratory Asterion and two Monsoon 60s PvP normal-rate rounds have real source outcomes and restart; they use engine-scripted input and **60s**, not required 900s. No five-wave Operations success, losses, OS/human capture participation, or reviewed full-matrix result | `port/native-lattice/evidence/flagship/ordinary-1790320102624-27f53bf6-b654-41ae-8648-4d3abc312fac/`, `ordinary-1790320334743-98e9b9f9-1841-4bfc-9975-eaffe55257e7/`, `ordinary-1790320577837-e803d8a8-c400-464d-adb7-4e4a3f1ffbda/`, `ordinary-1790320793556-ff89655f-98ec-4db8-8574-b447d1166ccd/` |
+| G5 MVP-B rung rules/server floor | Partial: 20/20 ordinary socket-seat floor cases pass after the source's 20s disconnect grace; direct Match matrix leaves adjacency/order cases unavailable | `port/native-lattice/evidence/flagship/ordinary-floor-1790319473466/`, `direct-match-1790316465667-1097543/` |
+| G6 MVP-C1 independent native clients | Partial: two independent native clients on Asterion PvP and Monsoon Operations received source starts and moved with engine-scripted ordinary inputs; 45 input frames each, no full results/restart, OS/human input or negative guest-start authorization | `port/native-lattice/evidence/flagship/two-client-1790319858920-4cd6ea9c-583a-4619-bf1d-c780044f253e/`, `two-client-1790319926506-d68e94f0-fb46-4e43-98a8-f8b0abfff255/` |
 | G7 packages | Pending integrated verification | — |
 | G8 MVP-C2 eight human participants | Pending owner-organized play | — |
 
 The resource marker `/home/mojo/.tmp-on-disk/cocs-lattice-engine-slot-granted`
-was absent during this integration. No Godot import, rendered inspection, ordinary
-round, server-seat test, two-native-client run or package build was performed.
-The direct Match experiment is privileged synthetic evidence, and its retained
-failed attempts are not erased or counted as natural failures. This is an
-implementation checkpoint, **not** an MVP-A/B/C1/C2 acceptance declaration.
+was granted after the initial commit. Pinned import, synthetic native pixel review
+and ordinary server-seat floor checks then ran serially. The first floor attempt
+started during the server's reconnect grace and failed 4/20 cases; after waiting
+for the source's own human-count echo to drop, the next attempt passed 20/20.
+Failed attempts remain retained. Four short exploratory PvP rounds produced real
+source time-limit results, ownership flips, matching local order completions and
+restart, but no local physical capture participation. One earlier Asterion run
+lingered for its harness deadline after a clean child exit; its cleanup file
+records closure and the runner timeout was repaired. The first native pair ended
+before simultaneous presence was checked; the second pair held both processes
+through that check. Neither is a full C1 round. Direct Match mutation remains
+privileged synthetic evidence, not natural gameplay. This report is **not** an
+MVP-A/B/C1/C2 acceptance declaration.
 
 No smoke, scripted fixture, direct simulation, ACK, or generated image is a
 natural full-round or human acceptance result. Natural attempts retain failures,

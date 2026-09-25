@@ -106,7 +106,7 @@ func observe_result(result: Dictionary) -> void:
 	publish(State.RESULTS)
 	round_result.emit(result.duplicate(true))
 
-func disconnect(client: Node) -> void:
+func leave(client: Node) -> void:
 	client.disconnect_server()
 	echoed.clear()
 	requested.clear()

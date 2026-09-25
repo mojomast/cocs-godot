@@ -18,8 +18,17 @@ function fixture() {
   cleanup:{children_waited:true,server_closed:true,temp_removed:true}};
 }
 test('synthetic complete shape (not natural evidence)',()=>assert.equal(audit(fixture()).claim,'PASS'));
+test('ordinary source order is recorded; privileged state mutation is rejected',()=>{const f=fixture();f.wire.push({direction:'client',kind:'order',elapsed_ms:250,frame:{type:'order',verb:'HOLD',target:'front-0'}});assert.equal(audit(f).checks.ordinary_outgoing,true);f.wire.at(-1).frame.type='set-node-owner';assert.equal(audit(f).checks.ordinary_outgoing,false)});
 test('defeat remains a distinct claim and is not gated by capture',()=>{const f=fixture();f.wire[6].frame.state.winner=1;f.wire.splice(4,1);const a=audit(f);assert.equal(a.claims.natural_defeat,'PASS');assert.equal(a.claims.positive_capture,'BLOCKED')});
 test('defeat is relative to the recipient-published local team',()=>{const f=fixture();f.wire[3].frame.state.actors[0].team=1;f.wire[5].frame.state.actors[0].team=1;assert.equal(audit(f).claims.natural_defeat,'PASS');f.wire[6].frame.state.winner=1;assert.equal(audit(f).claims.natural_defeat,'BLOCKED')});
+test('exact source order completion can attribute a useful ground capture without physical participation',()=>{
+ const f=fixture();f.wire[4].frame.items[0]={type:'cocs-capture',node:'front-0',team:0,participants:[99]};
+ f.wire.push({kind:'order',direction:'client',elapsed_ms:250,frame:{type:'order',roundRev:1,cardId:'native-card',target:'front-0'}});
+ f.wire.push({kind:'events',direction:'recipient',elapsed_ms:310,frame:{type:'events',items:[{type:'cocs-order-complete',peerId:'2',cardId:'native-card',node:'front-0',team:0}]}});
+ const result=audit(f);assert.equal(result.checks.attributed_capture,false);assert.equal(result.checks.attributed_order_effect,true);assert.equal(result.claims.positive_capture,'PASS');
+ for(const mutate of [e=>e.cardId='other',e=>e.peerId='99',e=>e.node='other']){const bad=fixture();bad.wire[4].frame.items[0]={type:'cocs-capture',node:'front-0',team:0,participants:[99]};bad.wire.push(f.wire.at(-2));bad.wire.push(structuredClone(f.wire.at(-1)));mutate(bad.wire.at(-1).frame.items[0]);assert.equal(audit(bad).checks.attributed_order_effect,false)}
+ const wrongRound=structuredClone(f);wrongRound.wire.at(-2).frame.roundRev=2;assert.equal(audit(wrongRound).checks.attributed_order_effect,false);
+});
 test('UI observation without reviewer and screenshot provenance is rejected',()=>{const f=fixture();delete f.native[1].reviewer;delete f.native[1].screenshot;assert.equal(audit(f).checks.native_ui,false)});
 for(const [name,mutate,gate] of [
  ['no owner flip',f=>f.wire[5].frame.state.cocs.nodes[0].owner=null,'capture'],

@@ -14,7 +14,7 @@ export function audit({manifest, wire, native = [], cleanup = {}}) {
  requireFact('recipient', Array.isArray(wire) && wire.some(r => r.direction === 'recipient') && wire.every(r => ['recipient','client'].includes(r.direction) && finite(r.elapsed_ms) && r.frame && typeof r.frame.type === 'string'), 'unbounded/private or malformed record');
  if (!Array.isArray(wire)) wire = [];
  const outgoing=wire.filter(r=>r.direction==='client');
- requireFact('ordinary_outgoing', outgoing.every(r=>['input','host','start','join','create','cocs-order','cocs-economy'].includes(r.frame.type)), 'privileged state mutation on observed socket');
+  requireFact('ordinary_outgoing', outgoing.every(r=>['input','host','start','join','create','order','economy'].includes(r.frame.type)), 'privileged state mutation on observed socket');
  wire=wire.filter(r=>r.direction==='recipient');
  const starts = record(wire, 'start'), snapshots = record(wire, 'snapshot'), events = record(wire, 'events'), results = record(wire, 'results');
  const start = starts[0]?.frame, final = results.at(-1)?.frame;
@@ -32,16 +32,20 @@ export function audit({manifest, wire, native = [], cleanup = {}}) {
    const defeat = naturalResult && (localTeam === 0 || localTeam === 1) && end.winner !== null && end.winner !== localTeam;
    checks.natural_defeat = defeat;
    checks.local_team_published = localTeam === 0 || localTeam === 1;
- const ownership = new Map(); let changed = false;
+  const ownership = new Map(),changedNodes=new Set(); let changed = false;
  for (const r of live) for (const node of r.frame.state.cocs.nodes ?? []) {
   if (!node || typeof node.id !== 'string') continue;
-  if (ownership.has(node.id) && ownership.get(node.id) !== node.owner) changed = true;
+   if (ownership.has(node.id) && ownership.get(node.id) !== node.owner) {changed = true;changedNodes.add(node.id)}
   ownership.set(node.id, node.owner);
  }
  const captures = events.filter(r=>r.elapsed_ms>=starts[0]?.elapsed_ms && r.elapsed_ms<=results.at(-1)?.elapsed_ms).flatMap(r => r.frame.items ?? []).filter(e => e?.type === 'cocs-capture');
   const captured = changed && captures.length > 0;
- const actors = new Set(live.flatMap(r => (r.frame.state.actors ?? []).map(a => a.id)));
-  const attributedCapture = actors.has(assigned?.actorId) && captures.some(e => Array.isArray(e.participants) && e.participants.includes(assigned?.actorId));
+  const actors = new Set(live.flatMap(r => (r.frame.state.actors ?? []).map(a => a.id)));
+   const attributedCapture = actors.has(assigned?.actorId) && captures.some(e => Array.isArray(e.participants) && e.participants.includes(assigned?.actorId));
+  const issuedOrders=outgoing.filter(r=>r.frame.type==='order'&&r.elapsed_ms>=starts[0]?.elapsed_ms&&r.elapsed_ms<=results.at(-1)?.elapsed_ms&&r.frame.roundRev===rev&&typeof r.frame.cardId==='string');
+  const completions=events.filter(r=>r.elapsed_ms>=starts[0]?.elapsed_ms&&r.elapsed_ms<=results.at(-1)?.elapsed_ms).flatMap(r=>r.frame.items??[]).filter(e=>e?.type==='cocs-order-complete');
+  const attributedOrder=actors.has(assigned?.actorId)&&completions.some(e=>String(e.peerId)===String(assigned.actorId)&&changedNodes.has(e.node)&&captures.some(c=>c.node===e.node&&c.team===e.team)&&issuedOrders.some(o=>o.frame.cardId===e.cardId&&o.frame.target===e.node));
+  const useful=attributedCapture||attributedOrder;
  const ordinaryNative = Array.isArray(native) ? native.filter(n => n?.event === 'input_queue' && n.method === 'engine' && n.source_revision === rev && Number.isInteger(n.actor_id) && n.queued === true) : [];
  requireFact('native_input', ordinaryNative.some(n=>n.actor_id===assigned?.actorId), 'no versioned local engine-input trace on this revision');
   const ui = Array.isArray(native) ? native.filter(n => n?.kind === 'ui' && n.source_revision === rev && n.observed === true) : [];
@@ -50,9 +54,9 @@ export function audit({manifest, wire, native = [], cleanup = {}}) {
  if (manifest?.mode === 'cocs-coop') requireFact('fifth_wave', !!end?.cocs?.outcome && end.cocs.outcome.waves?.cleared === 5, 'wave-one/ACK/timeout is not a five-wave clear');
  requireFact('restart', starts.some((r,i) => i > 0 && r.frame.roundRevision > rev) && snapshots.some(r => r.frame.state?.cocs?.roundRevision > rev), 'new source round revision and active snapshot required');
   const commonBlocked = failures.length > 0;
-  return {schema_version: 2, claim: commonBlocked || !captured || !attributedCapture ? 'BLOCKED' : 'PASS',
-   claims: {positive_capture: commonBlocked || !captured || !attributedCapture ? 'BLOCKED' : 'PASS', natural_defeat: commonBlocked || !defeat ? 'BLOCKED' : 'PASS'},
-   checks: {...checks, capture: captured, attributed_capture: attributedCapture}, failures: [...failures, ...(!captured ? ['capture: source capture event AND owner transition required'] : []), ...(!attributedCapture ? ['attributed_capture: no matching local actor participant'] : [])],
+   return {schema_version: 2, claim: commonBlocked || !captured || !useful ? 'BLOCKED' : 'PASS',
+    claims: {positive_capture: commonBlocked || !captured || !useful ? 'BLOCKED' : 'PASS', natural_defeat: commonBlocked || !defeat ? 'BLOCKED' : 'PASS'},
+    checks: {...checks, capture: captured, attributed_capture: attributedCapture, attributed_order_effect:attributedOrder, local_useful_contribution:useful}, failures: [...failures, ...(!captured ? ['capture: source capture event AND owner transition required'] : []), ...(!useful ? ['local_useful_contribution: no matched capture participant or exact source order completion/card/actor/round/node'] : [])],
   counts: {starts:starts.length, snapshots:snapshots.length, events:events.length, results:results.length, native_inputs:ordinaryNative.length}};
 }
 

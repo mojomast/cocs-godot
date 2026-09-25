@@ -78,7 +78,7 @@ func events(items: Array, projection: Dictionary) -> void:
 		captures += 1
 		var participants: Variant = event.get("participants")
 		var actor: Variant = projection.get("context", {}).get("actor")
-		var attributed := participants is Array and actor != null and actor in participants
+		var attributed: bool = participants is Array and actor != null and actor in participants
 		if attributed: attributed_captures += 1
 		if not participants is Array: unavailable_attribution += 1
 		# Participation identifies an actor, never a particular command card.
