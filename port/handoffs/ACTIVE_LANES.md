@@ -794,7 +794,15 @@ Godot/source corner-sightline disagreement. A fresh source-ray oracle and the
 Godot static ray gate pass. The full serial verifier passed **185/185** on this
 tree. The rendered three-wave evidence predates the 1 m armor adjustment and
 loadout menu wiring; the source match and package build use the revised bytes.
-Release instructions are in `port/release-notes/horde-nacre-2026-09-25.md`.
+The tested Linux/Windows archives are published as the
+[Nacre Horde prerelease](https://github.com/mojomast/cocs-godot/releases/tag/nacre-horde-2026-09-25)
+from port commit `088dae66`. The first archive build exposed an identity parser
+gap for Nacre's Horde cache metadata and megahealth; `088dae66` strictly validates
+them. The rebuilt Linux archive passed fresh-extraction package verification and
+packaged Nacre/Claude live source snapshots; the Windows archive passed fresh
+extraction, every manifest hash and route validation on Linux. Native Windows
+execution and human Nacre play remain owner acceptance. Release instructions
+are in `port/release-notes/horde-nacre-2026-09-25.md`.
 
 The owner measured a separate Prism Foundry 12-bot run on an RTX 4070 Laptop
 GPU at 1280×800: High, median-derived 88.8 FPS, p95 16.677 ms, partial
