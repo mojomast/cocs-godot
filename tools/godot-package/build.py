@@ -89,6 +89,7 @@ def main():
     parser.add_argument("--state", type=Path, required=True, help="owned /tmp/opencode directory outside any checkout")
     parser.add_argument("--archive-directory", type=Path, help="optional read-only source of editor.zip/templates.tpz; official hashes required")
     parser.add_argument("--target", choices=["linux", "windows"], default="linux")
+    parser.add_argument("--source-derivative", action="store_true", help="opt into the frozen LATTICE catalog source derivative; the original source lock stays unchanged")
     parser.add_argument("--operator-models", choices=["source-operators", "baseline", "candidate"], default="source-operators",
                         help="source-operators (default) ships the released presentation.gd source-operator preload; baseline is an accepted alias; candidate is retired")
     args = parser.parse_args()
@@ -116,11 +117,16 @@ def main():
     logs = work / "logs"
     logs.mkdir()
     lock = json.loads((ROOT / "port/contracts/source-lock.json").read_text())
+    derivative_path = ROOT / "port/contracts/lattice-catalog-derivative.json"
+    derivative = json.loads(derivative_path.read_text()) if args.source_derivative else None
     if lock["godot_version"] != EXACT or git("rev-parse", "--is-shallow-repository") != "false":
         raise RuntimeError("Exact Godot lock and full git history required")
     # Existing verifier checks ancestry plus every tracked locked source/dependency byte.
-    verify = "import {verifySource} from './tools/godot-export/semantic.mjs'; import fs from 'node:fs'; verifySource(JSON.parse(fs.readFileSync('port/contracts/source-lock.json')));"
-    run(["node", "--input-type=module", "-e", verify])
+    verify = "import {verifySource} from './tools/godot-export/semantic.mjs'; import fs from 'node:fs'; const derivative=process.env.COCS_SOURCE_DERIVATIVE; verifySource(JSON.parse(fs.readFileSync('port/contracts/source-lock.json')),derivative?JSON.parse(fs.readFileSync(derivative)):null);"
+    derivative_env = {**os.environ, "COCS_SOURCE_DERIVATIVE": str(derivative_path)} if derivative else os.environ.copy()
+    if not derivative:
+        derivative_env.pop("COCS_SOURCE_DERIVATIVE", None)
+    run(["node", "--input-type=module", "-e", verify], env=derivative_env)
     closure = json.loads(run(["node", "--no-warnings", "--experimental-vm-modules", ROOT / "tools/godot-package/discover.mjs", ROOT]))
     write_json(logs / "server-closure.json", closure)
     arena_data = closure.get("dataFiles", [])
@@ -140,6 +146,8 @@ def main():
     input_paths.update(arena_data)
     input_paths.update(identity_data)
     input_paths.update(["package.json", "package-lock.json", "port/contracts/source-lock.json", "port/contracts/map-selection.json", "tools/godot-export/semantic.mjs"])
+    if derivative:
+        input_paths.add("port/contracts/lattice-catalog-derivative.json")
     native_files = [p for p in git("ls-files", "godot").splitlines() if not p.startswith(("godot/tests/", "godot/content/", "godot/.godot/")) and p not in ["godot/.gitignore", "godot/export_presets.cfg"]]
     input_paths.update(native_files)
     input_paths.update(p.relative_to(ROOT).as_posix() for p in (ROOT / "tools/godot-package").glob("*") if p.is_file())
@@ -149,7 +157,8 @@ def main():
     inputs = {p:digest(ROOT / p) for p in sorted(input_paths)}
     # New/untracked authoritative modules must not silently enter the closure.
     for p in closure["modules"]:
-        expected = subprocess.check_output(["git", "show", f"{lock['source_commit']}:{p}"], cwd=ROOT)
+        revision = derivative["derivative_commit"] if derivative and p in derivative["runtime_files"] else lock["source_commit"]
+        expected = subprocess.check_output(["git", "show", f"{revision}:{p}"], cwd=ROOT)
         if hashlib.sha256(expected).hexdigest() != inputs[p]:
             raise RuntimeError(f"Runtime source differs from lock: {p}")
     # Port-owned adapters have separate provenance, never source-lock exemptions.
@@ -179,7 +188,7 @@ def main():
     with zipfile.ZipFile(toolchain / "editor.zip") as archive:
         editor.write_bytes(archive.read(editor.name))
     editor.chmod(0o755)
-    env = dict(os.environ)
+    env = dict(derivative_env)
     for key in ["XDG_DATA_HOME", "XDG_CONFIG_HOME", "XDG_CACHE_HOME"]:
         env[key] = str(work / key)
         Path(env[key]).mkdir()
@@ -202,7 +211,7 @@ def main():
     # The shipped composition already preloads the source operators; any future
     # staged operator override must be explicit and hashed, never silent.
     generated = project / "content/generated"
-    run(["node", ROOT / "tools/godot-export/semantic.mjs", generated], log=logs / "semantic.log")
+    run(["node", ROOT / "tools/godot-export/semantic.mjs", generated], env=env, log=logs / "semantic.log")
     preset = '''[preset.0]
 name="Private Linux Prototype"
 platform="Linux"
@@ -313,7 +322,8 @@ ssh_remote_deploy/enabled=false
         "schema_version":1, "kind":"windows-playable-demo" if windows else "private-local-linux-prototype", "release_ready":False,
         "target":args.target, "operator_models":args.operator_models, "staged_native_overrides":staged_overrides,
         "redistribution_rights":"unresolved; local use only; no asset rights asserted",
-        "source_commit":lock["source_commit"], "port_commit":git("rev-parse", "HEAD"),
+        "source_commit":lock["source_commit"], "source_derivative_commit":derivative["derivative_commit"] if derivative else None,
+        "source_derivative_sha256":digest(derivative_path) if derivative else None, "port_commit":git("rev-parse", "HEAD"),
         "worktree_status":git("status", "--short"), "full_history":True, "godot_version":EXACT,
         "godot_export":"release template; assertions disabled; no test fixtures in production PCK",
         "build_node":run(["node", "--version"]), "play_node":f"{NODE_VERSION} (bundled)" if windows else ">=22.13.0 (external prerequisite)", "bundled_node":bundled_node,

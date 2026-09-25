@@ -43,21 +43,37 @@ export function normalizeMap(map) {
  }
  return strictData({schema_version:1,omitted_optional_fields,source_map:data});
 }
-export function verifySource(lock) {
- const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
- if(git('merge-base',lock.source_commit,'HEAD')!==lock.source_commit)throw Error('Checkout is not based on locked source');
- // Compare tracked source and dependency files to the lock, including unstaged edits.
- const tracked=git('ls-tree','-r','--name-only',lock.source_commit).split('\n').filter(p=>/^(game\/|server\/|assets\/|public\/|package.*json$)/.test(p));
- const changed=git('diff',lock.source_commit,'--',...tracked);
- if(changed)throw Error('Locked source differs from working tree');
+export function verifySource(lock,derivative=null) {
+  const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
+  if(git('merge-base',lock.source_commit,'HEAD')!==lock.source_commit)throw Error('Checkout is not based on locked source');
+  // Compare tracked source and dependency files to the lock, including unstaged edits.
+  const tracked=git('ls-tree','-r','--name-only',lock.source_commit).split('\n').filter(p=>/^(game\/|server\/|assets\/|public\/|package.*json$)/.test(p));
+  const changed=git('diff','--name-only',lock.source_commit,'--',...tracked).split('\n').filter(Boolean);
+  if(!derivative){if(changed.length)throw Error('Locked source differs from working tree');return;}
+  if(derivative.schema_version!==1||derivative.source_commit!==lock.source_commit||!/^[0-9a-f]{40}$/.test(derivative.derivative_commit??'')||git('merge-base',derivative.derivative_commit,'HEAD')!==derivative.derivative_commit)throw Error('Invalid derivative source ancestry');
+  const files=derivative.runtime_files;
+  if(!files||typeof files!=='object'||Array.isArray(files)||!Object.keys(files).length)throw Error('Missing derivative runtime inventory');
+  const actual=changed.filter(p=>!p.endsWith('.test.mjs')).sort();
+  const expected=Object.keys(files).sort();
+  if(JSON.stringify(actual)!==JSON.stringify(expected))throw Error('Derivative source inventory differs from locked source');
+  for(const p of expected){
+   if(!/^(game|server)\/[a-z0-9-]+\.mjs$/.test(p)||!tracked.includes(p)||! /^[0-9a-f]{64}$/.test(files[p]))throw Error(`Invalid derivative source entry: ${p}`);
+   const committed=execFileSync('git',['show',`${derivative.derivative_commit}:${p}`],{cwd:root});
+   const checksum=bytes=>createHash('sha256').update(bytes).digest('hex');
+   if(checksum(committed)!==files[p]||checksum(readFileSync(resolve(root,p)))!==files[p])throw Error(`Derivative source byte mismatch: ${p}`);
+  }
+  // A newly tracked source file is not in the locked tree. Reject it as well.
+  const added=git('diff','--name-only','--diff-filter=A',lock.source_commit,'HEAD','--','game','server','assets','public','package.json','package-lock.json').split('\n').filter(p=>p&&!p.endsWith('.test.mjs'));
+  if(added.length)throw Error(`Uninventoried derivative source: ${added.join(', ')}`);
 }
 export function build(output=resolve(root,'godot/content/generated')) {
- const lock=JSON.parse(readFileSync(resolve(root,'port/contracts/source-lock.json')));
- const selection=JSON.parse(readFileSync(resolve(root,'port/contracts/map-selection.json')));
- validateSelection(lock,selection);verifySource(lock);
+  const lock=JSON.parse(readFileSync(resolve(root,'port/contracts/source-lock.json')));
+  const selection=JSON.parse(readFileSync(resolve(root,'port/contracts/map-selection.json')));
+  const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+  validateSelection(lock,selection);verifySource(lock,derivative);
  const stage=output+'.staging';if(existsSync(stage))throw Error('Staging output exists; inspect/remove before retry');
  mkdirSync(stage,{recursive:true});
- const manifest={schema_version:1,exporter_version:'0.1.0',source_commit:lock.source_commit,godot_version:lock.godot_version,content_kind:'semantic-diagnostic',release_ready:false,coordinates:{units:'metres',up:'+Y',forward:'-Z',mirror:false},maps:[]};
+  const manifest={schema_version:1,exporter_version:'0.1.0',source_commit:lock.source_commit,...(derivative?{source_derivative_commit:derivative.derivative_commit}:{}),godot_version:lock.godot_version,content_kind:'semantic-diagnostic',release_ready:false,coordinates:{units:'metres',up:'+Y',forward:'-Z',mirror:false},maps:[]};
  try {
   for(const id of lock.map_ids){
    const map=MAPS.find(m=>m.id===id);const text=JSON.stringify(normalizeMap(map))+'\n';

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "derivative_commit": "fa6dda2dcac5ab41b5496517acab9055407e31ae",
+  "runtime_files": {
+    "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
+    "game/cocs-coop.mjs": "36038e1f524b1a25c9fd991990b0fddf62ccaae89c87566486f372e9e684e2a6",
+    "game/cocs-economy.mjs": "1fdbdddeeabb32eff1dbb1d73bc34506d63c2e3e2ac6fb0a37851465865f8f93",
+    "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
+    "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
+    "server/progression.mjs": "5fcb7efa123e20a474c61a799861b729fb2562b05cd10da5e3eeeda8f3ef14da",
+    "server/room.mjs": "99e5f7abcf964211c104bd12c121bd54fcb9c087aa5301a1707452f75a63d7b7"
+  }
+}

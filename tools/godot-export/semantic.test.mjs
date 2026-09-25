@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {strictData,normalizeMap,validateSelection,build} from './semantic.mjs';
+import {strictData,normalizeMap,validateSelection,verifySource,build} from './semantic.mjs';
 import {DESTINATION_MAPS} from '../../game/destination-maps.mjs';
 import {mkdtempSync,readFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
@@ -24,6 +24,12 @@ test('two point walls survive despite no wall triangles',()=>{
  const t={surfaces:[],walls:[{a:[0,0,0],b:[1,2,0]}]};const out=normalizeMap({terrain:t});assert.equal(out.source_map.terrain.wall_triangles.length,0);assert.equal(out.source_map.terrain.wall_segments.length,1);
 });
 test('two clean builds have identical manifests and asset hashes',()=>{
+ const lock=JSON.parse(readFileSync(new URL('../../port/contracts/source-lock.json',import.meta.url)));
+ const derivative=JSON.parse(readFileSync(new URL('../../port/contracts/lattice-catalog-derivative.json',import.meta.url)));
+ assert.throws(()=>verifySource(lock),/Locked source differs/, 'the original pinned export remains strict');
+ verifySource(lock,derivative);
+ assert.throws(()=>verifySource(lock,{...derivative,runtime_files:{...derivative.runtime_files,'game/cocs.mjs':'0'.repeat(64)}}),/byte mismatch/);
  const temp=mkdtempSync(join(tmpdir(),'cocs-export-'));
- try{const a=build(join(temp,'a'));const b=build(join(temp,'b'));assert.deepEqual(a,b);assert.equal(a.maps.length,9);for(const entry of a.maps)assert.deepEqual(readFileSync(join(temp,'a',entry.path)),readFileSync(join(temp,'b',entry.path)));}finally{rmSync(temp,{recursive:true});}
+ const previous=process.env.COCS_SOURCE_DERIVATIVE;
+ try{process.env.COCS_SOURCE_DERIVATIVE=new URL('../../port/contracts/lattice-catalog-derivative.json',import.meta.url).pathname;const a=build(join(temp,'a'));const b=build(join(temp,'b'));assert.deepEqual(a,b);assert.equal(a.source_derivative_commit,derivative.derivative_commit);assert.equal(a.maps.length,9);for(const entry of a.maps)assert.deepEqual(readFileSync(join(temp,'a',entry.path)),readFileSync(join(temp,'b',entry.path)));}finally{if(previous===undefined)delete process.env.COCS_SOURCE_DERIVATIVE;else process.env.COCS_SOURCE_DERIVATIVE=previous;rmSync(temp,{recursive:true});}
 });
