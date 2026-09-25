@@ -315,7 +315,7 @@ ssh_remote_deploy/enabled=false
     for p in sorted((project / ".godot").rglob("*")):
         if p.is_file() and "editor" not in p.relative_to(project / ".godot").parts:
             resources[p.relative_to(project).as_posix()] = digest(p)
-    run(["node", "--input-type=module", "-e", verify])
+    run(["node", "--input-type=module", "-e", verify], env=env)
     if inputs != {p:digest(ROOT / p) for p in inputs}:
         raise RuntimeError("Build inputs changed during packaging")
     manifest = {
