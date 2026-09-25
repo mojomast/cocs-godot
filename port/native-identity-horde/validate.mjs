@@ -16,6 +16,7 @@ import {SOURCE_CAPSULE, NAV_PROBE_WIDTH, verdictFor} from './measure.mjs';
 export const EXPECTED_PRODUCT = Object.freeze({
   scene: 'res://native_arenas/identity_horde_demo.tscn',
   script: 'res://native_arenas/identity_horde_demo.gd',
+  interpolatedRemote: true,
 });
 
 const lines = (stdout, prefix) => stdout.split('\n').filter(line => line.startsWith(prefix))
@@ -88,6 +89,26 @@ export function validateIdentityRun({wire, stdout, stderr, summary, launch, corr
     } else if (byTag.has(`${tag}-alternate`)) {
       assert.deepEqual(viewport, baseSize, `primary capture ${tag} at ${viewport}, expected ${baseSize}`);
     }
+  }
+
+  if (summary.scenario === 'motion') {
+    const samples = lines(stdout, 'HORDE_MOTION ');
+    assert.equal(samples.length, 1, 'exactly one natural Horde motion trace required');
+    const sample = samples[0];
+    assert.equal(sample.source, 'live Nacre Horde loopback, ordinary W key input');
+    assert(sample.software_xvfb === true && sample.seconds >= 8 && sample.render_samples > 30,
+      'bounded software-rendered motion samples required');
+    assert(sample.snapshots_applied > 90 && sample.ack > 60 && sample.distance_m > 1,
+      'source snapshots, input ACK and real movement required');
+    assert(sample.largest_step_above_render_speed_cap_m < 0.15 && sample.largest_camera_to_source_eye_m < 3,
+      'camera catch-up exceeded Horde-only visual limits');
+    const packets = wire.filter(record => record.direction === 'in' && record.frame.type === 'input');
+    assert(packets.some(record => !record.frame.cancel && record.frame.input.z < -0.5),
+      'no ordinary forward input reached the source');
+    const positions = snapshots.flatMap(state => state.actors.filter(actor => actor.id === 0).map(actor => [actor.x, actor.z]));
+    assert(positions.length > 90 && Math.hypot(positions.at(-1)[0] - positions[0][0], positions.at(-1)[1] - positions[0][1]) > 1,
+      'source actor did not move');
+    return {status: 'PASS', scenario: 'motion', base, motion: sample};
   }
 
   assert(snapshots.some(state => state.singleplayer.wave >= 1 && state.singleplayer.enemiesAlive > 0), 'no real wave with enemies');

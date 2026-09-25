@@ -12,6 +12,10 @@ var pivot: Node3D
 var weapon: Node3D
 var hands: Node3D
 var flash: Node3D
+var kick_leg: Node3D
+const KICK_SECONDS := 0.19
+var kick_age := KICK_SECONDS
+var kick_count := 0
 var manifest: Dictionary = {}
 var scenes: Dictionary = {}
 var current_weapon := -1
@@ -105,6 +109,7 @@ func attach_to(camera: Camera3D) -> void:
 	flash.name = "BarrelFlash"
 	pivot.add_child(flash)
 	flash.hide()
+	_build_kick_leg()
 	# Handling FX (heat haze/smoke at the authored HeatZone) live beside the
 	# pivot: they must not add weapon mesh instances or pivot children.
 	handling.configure(viewport)
@@ -182,15 +187,22 @@ func apply_events(events: Array, local_id: int) -> void:
 	for value: Variant in events:
 		if not value is Dictionary: continue
 		var event: Dictionary = value
-		if event.get("type") not in ["shot", "launch"]: continue
+		if event.get("type") not in ["shot", "launch", "melee"]: continue
 		var id := identity(event.get("id"))
 		var time := number(event.get("time"), -1)
 		var owner := identity(event.get("actor"))
-		var kind := identity(event.get("weapon"))
-		if id < 0 or time < 0 or owner < 0 or kind < 0 or kind >= 10: continue
+		var kind := identity(event.get("weapon")) if event.type != "melee" else current_weapon
+		if id < 0 or time < 0 or owner < 0 or (event.type != "melee" and (kind < 0 or kind >= 10)): continue
 		var key := "%s/%d/%s/%d/%d" % [event.type, id, str(time), owner, kind]
 		if time <= expired_time or seen.has(key): continue
 		_remember(key, time)
+		if event.type == "melee":
+			# Only an accepted source melee event moves the foot. A denied repeat
+			# during source cooldown never claims a hit or invents an extra attack.
+			if showing and owner == local_id and owner == actor_id:
+				kick_age = 0.0
+				kick_count += 1
+			continue
 		# One source trigger can produce 8/12 shot events. Explosive shrapnel is not fire.
 		var volley := "volley/%d/%d/%s" % [owner, kind, str(time)]
 		if event.has("shrapnel") or seen.has(volley): continue
@@ -311,8 +323,10 @@ func advance(delta: float) -> void:
 	var bob := minf(speed / 8.0, 1.0) if not reduced_motion else 0.0
 	var breathe := sin(age * 1.7) * 0.0015 if not reduced_motion else 0.0
 	var reload_curve := sin(reload_progress * PI) if reloading else 0.0
-	# Hip pose: muzzle sits below/right of the center ray, receiver and arms remain above HUD.
-	var hip := Transform3D(Basis.from_euler(Vector3(-0.04, 0.22, -0.025)), Vector3(0.34, -0.26, -0.88))
+	# Keep the receiver below/right in hip fire, but align the *barrel axis*
+	# with the source camera ray. The old 0.22-rad yaw made the visible gun
+	# point off the crosshair even though source shots used the correct ray.
+	var hip := Transform3D(ads_pose.basis, Vector3(0.34, -0.26, -0.88))
 	pivot.transform = hip.interpolate_with(ads_pose, aim_weight)
 	# Keep settled neutral sights exactly on the camera ray. Recoil is deliberately
 	# visible, then recovers; idle/locomotion/lag fade out as cheek weld completes.
@@ -342,6 +356,7 @@ func advance(delta: float) -> void:
 	# magazine window, barrel heat. Never writes recoil/spread/ammo authority.
 	handling.advance(dt, reloading, reload_progress, aim_weight, reduced_motion)
 	_update_hands()
+	_advance_kick(delta)
 	# Includes break-action motion, recoil, ADS, switch and reload transforms.
 	for index: int in flash.get_child_count():
 		var flare := flash.get_child(index) as Node3D
@@ -360,6 +375,8 @@ func _clear_motion() -> void:
 	aim_blocked = false
 	reloading = false
 	reload_progress = 0.0
+	kick_age = KICK_SECONDS
+	if is_instance_valid(kick_leg): kick_leg.hide()
 	if is_instance_valid(flash): flash.hide()
 	if is_instance_valid(weapon): handling.clear()
 
@@ -373,6 +390,7 @@ func reset() -> void:
 	event_order.clear()
 	expired_time = -INF
 	recoil_count = 0
+	kick_count = 0
 	if _attached:
 		overlay.hide()
 		viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
@@ -386,6 +404,70 @@ func _exit_tree() -> void:
 	if is_instance_valid(pivot):
 		for node: MeshInstance3D in pivot.find_children("*", "MeshInstance3D", true, false):
 			node.mesh = null
+	if is_instance_valid(kick_leg):
+		for node: MeshInstance3D in kick_leg.find_children("*", "MeshInstance3D", true, false):
+			node.mesh = null
+
+func _build_kick_leg() -> void:
+	kick_leg = Node3D.new()
+	kick_leg.name = "MeleeKickLeg"
+	viewport.add_child(kick_leg)
+	var trouser := StandardMaterial3D.new()
+	trouser.albedo_color = Color("30424d")
+	trouser.roughness = 0.92
+	var boot := StandardMaterial3D.new()
+	boot.albedo_color = Color("354b56")
+	boot.roughness = 0.85
+	var shin := MeshInstance3D.new()
+	shin.name = "Shin"
+	var shin_mesh := CylinderMesh.new()
+	shin_mesh.top_radius = 0.082
+	shin_mesh.bottom_radius = 0.105
+	shin_mesh.height = 0.46
+	shin_mesh.radial_segments = 12
+	shin.mesh = shin_mesh
+	shin.material_override = trouser
+	shin.position = Vector3(0.015, -0.30, 0.20)
+	kick_leg.add_child(shin)
+	var foot := MeshInstance3D.new()
+	foot.name = "Boot"
+	var boot_mesh := BoxMesh.new()
+	boot_mesh.size = Vector3(0.24, 0.15, 0.40)
+	foot.mesh = boot_mesh
+	foot.material_override = boot
+	foot.position = Vector3(0.0, -0.025, -0.12)
+	kick_leg.add_child(foot)
+	var sole := MeshInstance3D.new()
+	sole.name = "BootSole"
+	var sole_mesh := BoxMesh.new()
+	sole_mesh.size = Vector3(0.26, 0.05, 0.42)
+	sole.mesh = sole_mesh
+	var sole_material := StandardMaterial3D.new()
+	sole_material.albedo_color = Color("7e9aaa")
+	sole_material.roughness = 0.95
+	sole.material_override = sole_material
+	sole.position = Vector3(0.0, -0.12, -0.12)
+	kick_leg.add_child(sole)
+	var cap := MeshInstance3D.new()
+	cap.name = "ToeCap"
+	var cap_mesh := BoxMesh.new()
+	cap_mesh.size = Vector3(0.245, 0.165, 0.095)
+	cap.mesh = cap_mesh
+	cap.material_override = sole_material
+	cap.position = Vector3(0.0, -0.023, -0.305)
+	kick_leg.add_child(cap)
+	kick_leg.hide()
+
+func _advance_kick(delta: float) -> void:
+	if not is_instance_valid(kick_leg): return
+	kick_age = minf(KICK_SECONDS, kick_age + delta)
+	kick_leg.visible = showing and kick_age < KICK_SECONDS
+	if not kick_leg.visible: return
+	var phase := kick_age / KICK_SECONDS
+	var extension := sin(phase * PI)
+	if reduced_motion: extension *= 0.55
+	kick_leg.position = Vector3(-0.35, -0.68, -0.58).lerp(Vector3(-0.16, -0.18, -0.65), extension)
+	kick_leg.rotation = Vector3(-0.17 - 0.33 * extension, -0.10 * extension, -0.16 * extension)
 
 func _build_hands() -> void:
 	# Rigid articulated hierarchy: independent Wrist / Elbow / Forearm nodes.

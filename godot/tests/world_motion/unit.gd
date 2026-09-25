@@ -36,6 +36,23 @@ func _initialize() -> void:
 	check(progressed >= 55, "render subframes move between 60Hz snapshots")
 	check(largest_step < 0.14, "packet cadence must not cause visible jumps or rubber-band")
 	check(absf(motion.sample(1.0).x - 10.0) < 0.02, "steady motion tracks the source")
+	# A 60 Hz authority can deliver two snapshots in one rendered frame. Arrival
+	# timestamps are almost equal, but the source positions remain 16.7 ms apart.
+	# The local-only Horde clock must not turn that burst into a 40 m/s camera kick.
+	var burst := Motion.new()
+	burst.ingest(Vector3.ZERO, true, 0.0, 0.0)
+	burst.ingest(Vector3(0.12, 0.0, 0.0), true, 0.016, 1.0 / 60.0)
+	burst.ingest(Vector3(0.24, 0.0, 0.0), true, 0.050, 2.0 / 60.0)
+	burst.ingest(Vector3(0.36, 0.0, 0.0), true, 0.0501, 3.0 / 60.0)
+	check(burst.sample(0.0501).is_finite(), "burst preserves a finite pose")
+	check(burst.sample(0.0581).x - burst.sample(0.0501).x < 0.12,
+		"source-paced Horde burst does not surge at receive-clock velocity")
+	burst.ingest(Vector3(0.37, 0.0, 0.0), true, 0.0502, 3.0 / 60.0)
+	check(burst.sample(0.0582).x - burst.sample(0.0502).x < 0.12,
+		"duplicate source tick never falls back to a tiny receive interval")
+	burst.ingest(Vector3(0.37, 0.0, 0.0), true, 0.0667, 4.0 / 60.0)
+	check(burst.sample(0.4).distance_to(Vector3(0.37, 0.0, 0.0)) < 0.01,
+		"Horde burst settles on the source eye without a lasting offset")
 	var gap := Motion.new()
 	gap.ingest(Vector3.ZERO, true, 0.0)
 	gap.ingest(Vector3(0.16, 0.0, 0.0), true, 0.016)

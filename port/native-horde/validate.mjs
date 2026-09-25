@@ -31,10 +31,24 @@ export function validateNpcKills(states, events, result, localActor=0) {
  return {npcKills:kills.length,npcVictims:[...victims].sort((a,b)=>a-b),netFrags:local.frags,
   lives:result.singleplayer.lives,selfDeaths:events.filter(e=>e.type==='death'&&e.actor===localActor&&e.self===true).length};
 }
-export function validate(wire,stdout,scenario='startup') {
+export function onSourceSegment(p,a,b) {
+ const direction=b.map((v,i)=>v-a[i]),lengthSquared=direction.reduce((sum,v)=>sum+v*v,0);
+ const weight=lengthSquared>0?Math.max(0,Math.min(1,p.reduce((sum,v,i)=>sum+(v-a[i])*direction[i],0)/lengthSquared)):0;
+ return Math.hypot(...p.map((v,i)=>v-a[i]-direction[i]*weight))<0.08;
+}
+
+export function validate(wire,stdout,scenario='startup',interpolatedRemote=false) {
  const frames=wire.filter(r=>r.direction==='out'),rows=stdout.split('\n').filter(l=>l.startsWith('HORDE_NATIVE ')).map(l=>JSON.parse(l.slice(13)));
  assert(rows.length>0,'no native evidence');
  const snapshots=new Map(frames.filter(r=>r.frame.type==='snapshot').map(r=>[`${r.round}:${r.frame.seq}`,r.frame]));
+ const remoteHistory=new Map();
+ if(interpolatedRemote) for(const record of frames.filter(r=>r.frame.type==='snapshot')) {
+  for(const actor of record.frame.state.actors){
+   const key=`${record.round}:${actor.id}`, history=remoteHistory.get(key)??[];
+   history.push({seq:record.frame.seq,point:[actor.x,actor.y+0.9,actor.z]});
+   remoteHistory.set(key,history);
+  }
+ }
  let correlated=0;
  for(const row of rows){
   if(row.seq<0)continue;
@@ -44,7 +58,17 @@ export function validate(wire,stdout,scenario='startup') {
   assert(row.hud.includes(`WAVE ${f.state.singleplayer.wave} / ${f.state.singleplayer.waveTarget}`),'wave not visible');
   assert(row.hud.includes(`LIVES ${f.state.singleplayer.lives}`),'lives not visible');
   assert.deepEqual(Object.keys(row.rendered).sort(),f.state.actors.map(a=>String(a.id)).sort(),'rendered identity set');
-  for(const a of f.state.actors){const r=row.rendered[a.id];assert(r,'missing rendered actor');for(const [i,v]of [a.x,a.y+0.9,a.z].entries())assert(Math.abs(r.position[i]-v)<0.001,'position mismatch');assert.equal(r.visible,a.id!==0&&a.health>0&&a.dead<=0,'visibility');}
+   for(const a of f.state.actors){
+    const r=row.rendered[a.id];assert(r,'missing rendered actor');
+    if(interpolatedRemote&&a.id!==0){
+     // A received Horde NPC pose may be rendered 100ms behind the latest
+     // authoritative snapshot. Demand a point ON a source-history segment,
+     // not merely a generous distance from the newest source position.
+     const history=(remoteHistory.get(`${row.round}:${a.id}`)??[]).filter(entry=>entry.seq<=row.seq).slice(-128);
+     assert(history.some((entry,i)=>onSourceSegment(r.position,entry.point,history[Math.min(i+1,history.length-1)].point)),'interpolated NPC position lacks a source segment');
+    }else for(const [i,v]of [a.x,a.y+0.9,a.z].entries())assert(Math.abs(r.position[i]-v)<0.001,'position mismatch');
+    assert.equal(r.visible,a.id!==0&&a.health>0&&a.dead<=0,'visibility');
+   }
   correlated++;
  }
  assert(correlated>10,'insufficient samples');
@@ -82,7 +106,7 @@ export function validate(wire,stdout,scenario='startup') {
 }
 export function validateRun({wire,stdout,stderr,summary,launch,expected={scene:'res://horde/demo.tscn',script:'res://horde/demo.gd'}}) {
  validateHygiene(summary,stdout,stderr);
- const result=validate(wire,stdout,summary.scenario);
+ const result=validate(wire,stdout,summary.scenario,expected.interpolatedRemote===true);
  const outputs=wire.filter(r=>r.direction==='out');
  const snapshots=outputs.filter(r=>r.frame.type==='snapshot');
  const receipts=new Map(wire.filter(r=>r.direction==='in'&&r.frame.type==='input').map(r=>[`${r.round}:${r.frame.seq}`,r]));
@@ -116,7 +140,10 @@ export function validateRun({wire,stdout,stderr,summary,launch,expected={scene:'
  const products=stdout.split('\n').filter(s=>s.startsWith('HORDE_PRODUCT ')).map(s=>JSON.parse(s.slice(14)));
  assert(products.length===1&&products[0].scene===expected.scene&&products[0].script===expected.script&&products[0].scoreboard,'observer did not instantiate actual product scene');
  const layouts=stdout.split('\n').filter(s=>s.startsWith('HORDE_LAYOUT ')).map(s=>JSON.parse(s.slice(13)));
- for(const size of [[960,640],[1280,800]]) assert(layouts.some(l=>JSON.stringify(l.viewport)===JSON.stringify(size)),'both product viewport sizes required');
+  const launchSize=launch.resolution?.split('x').map(Number);
+  const requiredSizes=summary.scenario==='motion'&&launchSize?.length===2?
+   [launchSize,launchSize[0]<1000?[1280,800]:[960,640]]:[[960,640],[1280,800]];
+  for(const size of requiredSizes) assert(layouts.some(l=>JSON.stringify(l.viewport)===JSON.stringify(size)),'both product viewport sizes required');
  for(const layout of layouts) {
   assert(layout.passive&&!layout.intersects&&!layout.scoreboard_intersects,'Horde HUD overlaps shared UI');
   if(layout.scoreboard_visible)assert(layout.scoreboard_bottom<=layout.viewport[1],'scoreboard clipped');

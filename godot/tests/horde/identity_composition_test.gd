@@ -49,6 +49,11 @@ func probe() -> void:
 	check(not product.load_selected_map("lacuna-court"), "identity loader refuses a non-allowlisted identity map")
 	check(not product.load_selected_map("../../etc/passwd"), "identity loader refuses a path-like id")
 	check(product.client.has_method("send_controls"), "identity composition uses the Horde input-epoch client")
+	check(product.presentation.interpolate_remote, "Horde NPCs interpolate received poses between render frames")
+	check(product.horde_visual_step(Vector3.ZERO, Vector3(4,0,0), 0.05).x <= 0.71,
+		"Horde camera catches up at a bounded render speed after source packet bursts")
+	check(is_equal_approx(product.local_motion_source_time({"time": 2.5}), 2.5) and is_nan(product.local_motion_source_time({"time": "invalid"})),
+		"Horde uses only a finite source clock for camera velocity")
 
 	var source_product := SourceProduct.instantiate()
 	root.add_child(source_product)

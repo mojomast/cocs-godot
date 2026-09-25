@@ -40,12 +40,23 @@ var peak_actors := 0
 var peak_shot := false
 var applied_high := 0
 var census: Dictionary = {}
+var motion_elapsed := 0.0
+var motion_samples := 0
+var motion_start := Vector3.INF
+var motion_last := Vector3.INF
+var motion_max_step := 0.0
+var motion_max_eye_offset := 0.0
+var motion_last_applied := 0
+var motion_last_eye := Vector3.INF
+var motion_spikes := 0
+var motion_last_usec := 0
+var motion_max_excess := 0.0
 
 func _ready() -> void:
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--scenario="): scenario = arg.trim_prefix("--scenario=")
 		if arg.begins_with("--screenshot="): shot_path = arg.trim_prefix("--screenshot=")
-	bounded = {"startup": 70.0, "waves": 158.0, "defeat": 158.0, "peak": 170.0}.get(scenario, 158.0)
+	bounded = {"startup": 70.0, "motion": 50.0, "waves": 158.0, "defeat": 158.0, "peak": 170.0}.get(scenario, 158.0)
 	print("HORDE_PRODUCT ", JSON.stringify({"scene":session.scene_file_path,
 		"script":session.get_script().resource_path, "scoreboard":session.has_node("Scoreboard")}))
 	await get_tree().process_frame
@@ -248,6 +259,9 @@ func _process(delta: float) -> void:
 			finish(false, "bounded attempt expired")
 		return
 	if session.phase == 4:
+		if scenario == "motion":
+			finish(false, "Horde motion trace did not complete before the source result")
+			return
 		neutral()
 		if not results_requested:
 			observe_horde()
@@ -266,6 +280,9 @@ func _process(delta: float) -> void:
 	if session.phase != 3 or not session.received_pose: return
 	observe_horde()
 	if session.round_starts > 1:
+		if scenario == "motion":
+			finish(false, "Horde motion trace did not complete before restart")
+			return
 		neutral()
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			finish(false, "automatic capture after restart")
@@ -281,6 +298,47 @@ func _process(delta: float) -> void:
 		return
 	var a: Dictionary = session.presentation.local_actor
 	if a.is_empty(): return
+	if scenario == "motion":
+		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+			# Horde deliberately refuses recapture while a movement key is held.
+			# Release it first, as a person must after focus/stale recovery.
+			key(KEY_W, false)
+			click()
+			return
+		key(KEY_W, true)
+		motion_elapsed += delta
+		var pose: Vector3 = session.camera.position
+		var frame_usec := Time.get_ticks_usec()
+		if not motion_start.is_finite(): motion_start = pose
+		if motion_last.is_finite():
+			var step_size := pose.distance_to(motion_last)
+			var wall_seconds := float(frame_usec - motion_last_usec) / 1000000.0
+			motion_max_excess = maxf(motion_max_excess, step_size - session.HORDE_VISUAL_MAX_SPEED * wall_seconds)
+			motion_max_step = maxf(motion_max_step, step_size)
+			if step_size > 0.35 and motion_spikes < 15:
+				motion_spikes += 1
+				print("HORDE_MOTION_STEP ", JSON.stringify({"step_m":step_size,"frame_seconds":delta,"wall_seconds":wall_seconds,
+					"source_eye_step_m":session.presentation.eye_position().distance_to(motion_last_eye),
+					"camera_source_offset_m":pose.distance_to(session.presentation.eye_position()),
+					"stale":session.snapshot_watch.stale(),"ack":session.client.last_ack,
+					"applied":session.presentation.applied,"t":motion_elapsed}))
+		motion_last = pose
+		motion_last_usec = frame_usec
+		motion_last_eye = session.presentation.eye_position()
+		motion_samples += 1
+		motion_last_applied = session.presentation.applied
+		motion_max_eye_offset = maxf(motion_max_eye_offset, pose.distance_to(session.presentation.eye_position()))
+		if motion_elapsed >= 8.0:
+			var distance: float = pose.distance_to(motion_start)
+			var trace := {"source":"live Nacre Horde loopback, ordinary W key input", "seconds":motion_elapsed,
+				"render_samples":motion_samples, "snapshots_applied":motion_last_applied, "ack":session.client.last_ack,
+				"distance_m":distance, "largest_render_step_m":motion_max_step,
+				"largest_step_above_render_speed_cap_m":motion_max_excess,
+				"largest_camera_to_source_eye_m":motion_max_eye_offset, "software_xvfb":true}
+			print("HORDE_MOTION ", JSON.stringify(trace))
+			finish(motion_samples > 30 and motion_last_applied > 90 and session.client.last_ack > 60 and distance > 1.0 and motion_max_eye_offset < 3.0 and motion_max_excess < 0.15,
+				"source-snapshot Horde camera moved under ordinary held input")
+		return
 	if scenario == "startup":
 		if int(session.horde.state.get("enemiesAlive", 0)) > 0:
 			finish(true, "received actual wave and enemies")

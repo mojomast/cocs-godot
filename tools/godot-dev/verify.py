@@ -103,6 +103,7 @@ commands = [
     ("weapon-effects", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/lifecycle.gd"]),
     ("weapon-effects-rig", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/rig_integration.gd"]),
     ("muzzle-sight-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/muzzle_geometry.gd"]),
+    ("hip-kick-render", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--path", "godot", "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy", "--script", "res://tests/first_person/hip_kick_capture.gd", "--", "--out=/tmp/opencode/hip-kick-render"]),
     ("muzzle-path-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/muzzle_path_geometry.gd"]),
     ("projectile-flight", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/projectile_flight.gd"]),
     ("alt-fire", [binary, "--headless", "--path", "godot", "--script", "res://tests/weapon_effects/alt_fire.gd"]),

@@ -551,8 +551,8 @@ func on_snapshot(frame: Dictionary) -> void:
 	if reseeded: local_motion.reset()
 	var eye: Vector3 = presentation.eye_position()
 	var now: float = Time.get_ticks_usec() / 1000000.0
-	local_motion.ingest(eye, presentation.lifecycle.can_control(), now)
-	camera.position = local_motion.sample(now) if local_motion.ready() else eye
+	local_motion.ingest(eye, presentation.lifecycle.can_control(), now, local_motion_source_time(frame.state))
+	apply_local_snapshot_pose(eye, now, reseeded)
 	if reseeded:
 		weapon_selection.clear()
 		combat_actions.clear()
@@ -583,6 +583,14 @@ func on_snapshot(frame: Dictionary) -> void:
 		print("PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true fired=true ack=", client.last_ack, " snapshots=", presentation.applied, " remote_poses=", presentation.rendered_remote_poses, " pickups=", pickups.markers.size(), " static_pickups_hidden=true combat_shots=", combat.shots, " combat_launches=", combat.launches, " local_launches=", combat.local_launches, " map=", current_id, " mode=", selected_mode)
 		client.disconnect_server()
 		get_tree().quit(0)
+
+## Source time is available for some local-only modes. The default keeps the
+## established receive-time motion policy in ordinary/native multiplayer.
+func local_motion_source_time(_state: Dictionary) -> float:
+	return NAN
+
+func apply_local_snapshot_pose(eye: Vector3, now: float, _reseeded: bool) -> void:
+	camera.position = local_motion.sample(now) if local_motion.ready() else eye
 
 # Runs from the presentation node's render clock, not session._process: Horde
 # overrides that method. Translation alone is visual; look angles and input
