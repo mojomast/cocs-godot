@@ -117,7 +117,7 @@ send a BUY.
   unresolved BUY for the same item is queued/pending (`roundRev`/`actionSeq`/
   `cardId` are bounded and idempotent server-side).
 
-### Native tests (parent runs serial; not run in this lane)
+### Native tests (run serially in integration)
 
 ```bash
 "$GODOT" --headless --path godot --script res://tests/lattice/req_catalog_contract.gd
@@ -131,6 +131,14 @@ send a BUY.
 `res://`, so it must run from this repo checkout (the parent's normal lane
 context); it fails loudly if the file is missing or drifted.
 
+The integrated Godot 4.5.2 import completed; the catalog contract passed 84/84,
+BUY lifecycle contract passed 51/51, economy fixture passed 91/91 and L1 fixture
+passed 38/38. The previously existing `world_commands_contract.gd` fixture
+fails in both this checkout and the pre-catalog witness worktree: its synthetic
+world has no usable recipient projection and then dereferences the missing
+projection. It is not counted as a native REQ pass. A live native BUY remains
+unobserved; the synthetic lifecycle proves only the request/settlement seam.
+
 ### Known deviations / remaining work
 
 * **Depot choice is implicit.** The OPERATIONS Puma uses the first
@@ -139,5 +147,5 @@ context); it fails loudly if the file is missing or drifted.
 * **Target validation is server-side.** `spot-drone`/`repair-tool` can still be
   refused `no-target` by the authority; the client does not model cut/enemy
   geometry and shows the refusal rather than pre-claiming a hit.
-* **Not run here.** No Godot import/render/build or live two-client run was
-  executed in this lane; the parent runs the serial suite and any live probe.
+* **No live native BUY witness.** The serial integration checks above are
+  headless contracts; no rendered native catalog or live purchase was observed.
