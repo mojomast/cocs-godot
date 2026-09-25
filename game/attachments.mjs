@@ -81,9 +81,14 @@ export function attachmentFits(item,weapon){
  const list=Array.isArray(item?.weapons)?item.weapons:[];
  return list.length===0||list.includes(Number(weapon));
 }
-export function normalizeAttachments(value,level=1){
- const source=value&&typeof value==='object'?value:{},l=Math.max(1,Math.round(level)),out={};
- for(const slot of SLOT_IDS){const item=attachmentById(source[slot]);if(!item||item.slot!==slot||item.level>l)continue;out[slot]=item.id;}
+// `owned` is the profile's unlocks map (id -> true) keyed by the career unlock
+// id (`attachment-<id>`). It lets a mod the profile explicitly owns stay fitted
+// when its level sits above the level recomputed from xp, while the historical
+// level-only gate still applies when it is omitted.
+const attachmentUnlocked=(item,level,owned)=>item.level<=level||Boolean(owned&&typeof owned==='object'&&owned[`attachment-${item.id}`]===true);
+export function normalizeAttachments(value,level=1,owned=null){
+ const source=value&&typeof value==='object'?value:{},l=Math.max(1,Math.round(Number(level)||1)),out={};
+ for(const slot of SLOT_IDS){const item=attachmentById(source[slot]);if(!item||item.slot!==slot||!attachmentUnlocked(item,l,owned))continue;out[slot]=item.id;}
  return out;
 }
 function resolveList(value){
@@ -108,6 +113,23 @@ export function resolveAttachments(ids){
  }
  for(const [key,[min,max]] of Object.entries(MODIFIER_RANGES))modifiers[key]=ADDITIVE.includes(key)?Math.round(Math.max(min,Math.min(max,modifiers[key]))):Math.max(min,Math.min(max,modifiers[key]));
  return {items,modifiers,behaviors,visual};
+}
+// Resolve one definition (real or synthetic) exactly as a one-mod loadout: the
+// same defaults, additive/multiplicative split and range clamps `resolveAttachments`
+// applies. Exported so the career upgrade planner and catalog audit compare the
+// *applied* effect, and so a test can pin single-item agreement with
+// `resolveAttachments([id])` for every shipped mod.
+export function resolveAttachmentItem(item){
+ const modifiers={};
+ for(const key of MULTIPLICATIVE)modifiers[key]=1;
+ for(const key of ADDITIVE)modifiers[key]=0;
+ for(const [key,value] of Object.entries(item?.modifiers||{})){
+  if(ADDITIVE.includes(key))modifiers[key]+=value;
+  else if(MULTIPLICATIVE.includes(key))modifiers[key]*=value;
+ }
+ for(const [key,[min,max]] of Object.entries(MODIFIER_RANGES))modifiers[key]=ADDITIVE.includes(key)?Math.round(Math.max(min,Math.min(max,modifiers[key]))):Math.max(min,Math.min(max,modifiers[key]));
+ const behaviors=item?.behavior?.mode?[{slot:item.slot,...item.behavior}]:[];
+ return {item:item??null,modifiers,behaviors};
 }
 export function applyAttachmentsToWeapon(weapon,resolved){
  const w={...weapon,recoil:weapon.recoil?{...weapon.recoil,pattern:weapon.recoil.pattern?.map(step=>[...step])}:weapon.recoil,bloom:weapon.bloom?{...weapon.bloom}:weapon.bloom,feel:weapon.feel?{...weapon.feel}:weapon.feel};

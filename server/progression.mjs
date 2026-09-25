@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import path from 'node:path';
 import {randomBytes,randomUUID} from 'node:crypto';
-import {awardMatch,defaultProgression,matchSummaryCard,normalizeGear,normalizeProgression} from '../game/progression.mjs';
+import {awardMatch,defaultProgression,isUnlocked,matchSummaryCard,normalizeGear,normalizeProgression} from '../game/progression.mjs';
 import {normalizeAttachments} from '../game/attachments.mjs';
 import {FINISH_IDS} from '../game/cosmetics.mjs';
 import {validPlayerId,validProgressToken} from '../game/protocol.mjs';
@@ -182,16 +182,24 @@ export class ProgressionStore{
   const claimed=tok??newToken();const id=this.uniqueId();const profile={...defaultProgression(),id,ownerToken:claimed};this.players.set(id,profile);this.tokens.set(claimed,id);this.trim();return{profile:this.clone(profile),token:claimed};
  }
  ensure(id){if(!validPlayerId(id))return null;if(!this.players.has(id)){this.players.set(id,{...defaultProgression(),id});this.trim();}return this.touch(id);}
- setGear(id,gear,attachments,finish){
+ // Equip writes are validated against the same unlock authority the client and
+ // the loader use, with the stored profile's own unlocks passed in. That keeps
+ // an explicitly owned (granted/legacy) item equippable at a recomputed level,
+ // and closes the cosmetic level-gate hole where any valid finish id was
+ // accepted no matter the profile's level. `crosshair` is an optional sixth
+ // argument so the historical (id, gear, attachments, finish) callers — and the
+ // wire packet, until it carries the field — keep working unchanged.
+ setGear(id,gear,attachments,finish,crosshair){
   const profile=this.ensure(id);
   if(!profile)return null;
-  profile.gear=normalizeGear(gear&&typeof gear==='object'?gear:{},profile.level);
-  if(attachments!==undefined)profile.attachments=normalizeAttachments(attachments&&typeof attachments==='object'?attachments:{},profile.level);
-  if(finish!==undefined)profile.finish=FINISH_IDS.includes(finish)?finish:null;
+  profile.gear=normalizeGear(gear&&typeof gear==='object'?gear:{},profile.level,profile.unlocks);
+  if(attachments!==undefined)profile.attachments=normalizeAttachments(attachments&&typeof attachments==='object'?attachments:{},profile.level,profile.unlocks);
+  if(finish!==undefined)profile.finish=FINISH_IDS.includes(finish)&&isUnlocked(finish,profile.level,profile.unlocks)?finish:null;
+  if(crosshair!==undefined)profile.crosshair=isUnlocked(crosshair,profile.level,profile.unlocks)?crosshair:null;
   this._dirty=true;this._rev++;this.flush();
   return this.get(id);
  }
- setGearOwned(id,token,gear,attachments,finish){return this.getOwned(id,token)?this.setGear(id,gear,attachments,finish):null;}
+ setGearOwned(id,token,gear,attachments,finish,crosshair){return this.getOwned(id,token)?this.setGear(id,gear,attachments,finish,crosshair):null;}
  award(id,result={}){
   const existing=this.players.get(id);
   const profile=this.ensure(id);

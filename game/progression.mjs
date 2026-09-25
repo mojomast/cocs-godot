@@ -1,4 +1,4 @@
-import {ATTACHMENTS,normalizeAttachments as normalizeAttachmentLoadout} from './attachments.mjs';
+import {ATTACHMENTS,ATTACHMENT_SLOTS,attachmentById,normalizeAttachments as normalizeAttachmentLoadout,resolveAttachmentItem,resolveAttachments} from './attachments.mjs';
 import {WEAPON_FINISHES,CROSSHAIR_STYLES,FINISH_IDS,CROSSHAIR_IDS} from './cosmetics.mjs';
 export const PROGRESSION_VERSION=1;
 export const MAX_LEVEL=60;
@@ -50,6 +50,24 @@ export const COSMETICS=[
 ];
 export const UNLOCKS=[...GEAR.map(item=>({id:`gear-${item.id}`,kind:'gear',ref:item.id,name:item.name,level:item.level,description:item.description})),...ATTACHMENTS.map(item=>({id:`attachment-${item.id}`,kind:'attachment',ref:item.id,name:item.name,level:item.level,description:item.description})),...COSMETICS];
 export const RANK_TITLES=[{level:1,name:'Recruit',blurb:'Fresh weights and no idea what a strafe jump is.'},{level:5,name:'Operator',blurb:'Can hold a lane without panic-firing.'},{level:10,name:'Veteran',blurb:'Knows every map by its sightlines.'},{level:20,name:'Elite',blurb:'Wins duels before you finish reloading.'},{level:35,name:'Legend',blurb:'The bots whisper your callsign to each other.'},{level:50,name:'Mythic',blurb:'The scoreboard renders your name in a special font.'}];
+
+// ---------------------------------------------------------------------------
+// Unlock authority. `UNLOCKS` is the single source of truth for what a profile
+// may own and equip: every gear item, attachment, weapon finish and crosshair
+// appears once with its unlock level. `isUnlocked` is the one gate the profile
+// normaliser, the loadout normalisers and the server store consult, so an item
+// can never be *shown* as locked while being *equipped*, or vice versa. A
+// profile that stored an explicit unlock (a granted reward, a season drop, or a
+// legacy profile whose xp curve moved under it) keeps that entry regardless of
+// the level recomputed from xp — the `owned` argument carries those grants.
+const UNLOCK_BY_ID=new Map(UNLOCKS.map(item=>[item.id,item]));
+export function isUnlocked(entryId,level=1,owned=null){
+ const item=UNLOCK_BY_ID.get(entryId);
+ if(!item)return false;
+ if(owned&&typeof owned==='object'&&owned[entryId]===true)return true;
+ const l=Math.max(1,Number.isFinite(Number(level))?Math.round(Number(level)):1);
+ return item.level<=l;
+}
 
 // ---------------------------------------------------------------------------
 // Prestige: the long-term layer that begins once the level cap is reached.
@@ -174,11 +192,30 @@ export function resolveGear(ids){
  modifiers.health=pooled.health;modifiers.armor=pooled.armor;
  return Object.freeze({items:Object.freeze(list),modifiers:Object.freeze(modifiers)});
 }
-export function normalizeGear(value,level=MAX_LEVEL){
+// Resolve a single gear definition (real or synthetic) through the same §4.8
+// envelope `resolveGear` applies to a one-item loadout: negative pools collapse
+// to zero, each multiplier is clamped, then pooled EHP is trimmed. Exported so
+// the upgrade planner and the catalog audit measure the *applied* vector rather
+// than the declared one, and so a test can pin that they agree with
+// `resolveGear([id])` for every shipped item.
+export function resolveGearItem(item){
+ const m=item?.modifiers||{},num=(value,fallback)=>Number.isFinite(value)?value:fallback;
+ const pooled=poolEhp(Math.max(0,num(m.health,0)),Math.max(0,num(m.armor,0)));
+ return Object.freeze({
+  health:pooled.health,armor:pooled.armor,
+  speed:clampNumber(num(m.speed,1),.5,GEAR_CAPS.mobility),
+  damage:clampNumber(num(m.damage,1),.5,GEAR_CAPS.offense),
+  spread:clampNumber(num(m.spread,1),GEAR_CAPS.spread,1/GEAR_CAPS.handling),
+ });
+}
+// `owned` is the profile's unlocks map (id -> true). Passing it lets an entry
+// the profile explicitly owns stay equipped even when its level sits above the
+// level recomputed from xp; omitting it keeps the historical level-only gate.
+export function normalizeGear(value,level=MAX_LEVEL,owned=null){
  const source=value&&typeof value==='object'?value:{},out={};
  for(const slot of GEAR_SLOTS){
   const requested=source[slot.id],item=gearById(requested);
-  if(!item||item.slot!==slot.id||item.level>level)continue;
+  if(!item||item.slot!==slot.id||!isUnlocked(`gear-${item.id}`,level,owned))continue;
   out[slot.id]=item.id;
  }
  return out;
@@ -229,7 +266,7 @@ export function normalizeProgression(value){
  const source=value&&typeof value==='object'?value:{},xp=Math.max(0,Math.floor(Number.isFinite(Number(source.xp))?Number(source.xp):0)),calculated=levelFromXp(xp),rawUnlocks=source.unlocks&&typeof source.unlocks==='object'?source.unlocks:{},unlocks={};
  for(const item of UNLOCKS)if(rawUnlocks[item.id]===true||item.level<=calculated.level)unlocks[item.id]=true;
  const prestige=prestigeFromXp(xp);
- return {version:PROGRESSION_VERSION,xp,level:calculated.level,matches:Math.max(0,Math.floor(Number(source.matches)||0)),wins:Math.max(0,Math.floor(Number(source.wins)||0)),kills:Math.max(0,Math.floor(Number(source.kills)||0)),flawlessWins:Math.max(0,Math.floor(Number(source.flawlessWins)||0)),bestStreak:Math.max(0,Math.floor(Number(source.bestStreak)||0)),challengesCompleted:Math.max(0,Math.floor(Number(source.challengesCompleted)||0)),byMode:normalizeByMode(source.byMode),gear:normalizeGear(source.gear,calculated.level),attachments:normalizeAttachmentLoadout(source.attachments,calculated.level),finish:FINISH_IDS.includes(source.finish)?source.finish:null,crosshair:CROSSHAIR_IDS.includes(source.crosshair)?source.crosshair:null,unlocks,achievements:normalizeAchievements(source.achievements),prestige:prestige.rank,prestigeTier:prestige.tier?prestige.tier.name:null};
+ return {version:PROGRESSION_VERSION,xp,level:calculated.level,matches:Math.max(0,Math.floor(Number(source.matches)||0)),wins:Math.max(0,Math.floor(Number(source.wins)||0)),kills:Math.max(0,Math.floor(Number(source.kills)||0)),flawlessWins:Math.max(0,Math.floor(Number(source.flawlessWins)||0)),bestStreak:Math.max(0,Math.floor(Number(source.bestStreak)||0)),challengesCompleted:Math.max(0,Math.floor(Number(source.challengesCompleted)||0)),byMode:normalizeByMode(source.byMode),gear:normalizeGear(source.gear,calculated.level,unlocks),attachments:normalizeAttachmentLoadout(source.attachments,calculated.level,unlocks),finish:FINISH_IDS.includes(source.finish)&&isUnlocked(source.finish,calculated.level,unlocks)?source.finish:null,crosshair:CROSSHAIR_IDS.includes(source.crosshair)&&isUnlocked(source.crosshair,calculated.level,unlocks)?source.crosshair:null,unlocks,achievements:normalizeAchievements(source.achievements),prestige:prestige.rank,prestigeTier:prestige.tier?prestige.tier.name:null};
 }
 // Derived context for achievement checks. Everything comes from the profile
 // plus optional campaign counts supplied by the caller, so unlocking is a pure
@@ -289,6 +326,142 @@ export function nextUnlocksFor(profile,limit=3){
  const unlocked=(profile&&typeof profile.unlocks==='object'&&profile.unlocks)||{};
  const count=Math.max(0,Math.floor(Number(limit)||0));
  return UNLOCKS.filter(item=>unlocked[item.id]!==true).sort((a,b)=>a.level-b.level||String(a.name).localeCompare(String(b.name))).slice(0,count).map(item=>({id:item.id,kind:item.kind,name:item.name,level:item.level,description:item.description}));
+}
+// ---------------------------------------------------------------------------
+// Upgrade planning. The flat level order above answers "what unlocks next";
+// this layer answers "what would change, and is it an upgrade over what I have".
+// Every delta is resolved through the same `resolveGear`/`resolveAttachments` the
+// live match applies, so a roadmap can never advertise an effect the simulation
+// will not use. A candidate's verdict compares it against the item the profile
+// currently has in that slot:
+//   new        the slot is empty
+//   upgrade    no resolved axis regresses and at least one improves
+//   sidegrade  a real change with both gains and losses (or a new behaviour)
+//   downgrade  no axis improves and at least one regresses
+//   duplicate  the resolved effect is identical
+const UPGRADE_LOWER_IS_BETTER=new Set(['spread','interval','reload','recoilKick','bloomPerShot','bloomMax']);
+const GEAR_AXES_ORDER=['damage','speed','spread','health','armor'];
+const ATTACHMENT_AXES_ORDER=['damage','spread','interval','range','recoilKick','reload','bloomPerShot','bloomMax','cap','pellets','burst'];
+function effectVerdict(before,after,axes,behaviorChanged=false){
+ let better=false,worse=false;
+ for(const axis of axes){
+  const direction=UPGRADE_LOWER_IS_BETTER.has(axis)?-1:1;
+  const delta=((Number(after?.[axis])||0)-(Number(before?.[axis])||0))*direction;
+  if(delta>1e-9)better=true;else if(delta<-1e-9)worse=true;
+ }
+ if(!better&&!worse)return behaviorChanged?'sidegrade':'duplicate';
+ if(behaviorChanged)return worse&&!better?'downgrade':'sidegrade';
+ if(better&&!worse)return 'upgrade';
+ if(worse&&!better)return 'downgrade';
+ return 'sidegrade';
+}
+function effectChanges(before,after,axes){
+ const changes=[];
+ for(const axis of axes){
+  const a=Number(before?.[axis])||0,b=Number(after?.[axis])||0;
+  if(Math.abs(b-a)>1e-9)changes.push({axis,before:round3(a),after:round3(b)});
+ }
+ return changes;
+}
+// Full behaviour fingerprint (mode plus every parameter the weapon builder
+// writes), so a burst-3 module and a burst-2 module are a real change rather
+// than a mechanical downgrade of the same effect.
+const BEHAVIOR_KEYS=['mode','burst','burstDelay','chargeTime','chargeDamage','pierce','explosiveRadius','explosiveDamage','homing','turnRate','chain','chainRange'];
+const behaviorSignature=behavior=>{const b=behavior||{};return b.mode?BEHAVIOR_KEYS.map(key=>`${key}:${b[key]??''}`).join('|'):'';};
+const resolvedBehaviorSignature=resolved=>resolved.behaviors.map(behaviorSignature).join('||');
+const slotLabel=(slots,id)=>{const slot=slots.find(entry=>entry.id===id);return slot?slot.name:id;};
+function gearUpgradeEntry(profile,item){
+ const slot=item.slot,currentId=profile.gear?.[slot]??null,current=currentId?gearById(currentId):null;
+ const before=resolveGearItem(current),after=resolveGearItem(item);
+ const verdict=current?effectVerdict(before,after,GEAR_AXES_ORDER):'new';
+ return {
+  id:`gear-${item.id}`,kind:'gear',ref:item.id,name:item.name,level:item.level,
+  slot,slotName:slotLabel(GEAR_SLOTS,slot),owned:false,gap:Math.max(0,item.level-profile.level),
+  replaces:current?current.id:null,verdict,
+  actionable:verdict!=='downgrade'&&verdict!=='duplicate',
+  powerAxis:item.powerAxis,costAxis:item.costAxis,
+  changes:effectChanges(before,after,GEAR_AXES_ORDER),
+  before:Object.freeze({...before}),after:Object.freeze({...after}),
+  description:item.description,
+ };
+}
+function attachmentUpgradeEntry(profile,item){
+ const slot=item.slot,currentId=profile.attachments?.[slot]??null,current=currentId?attachmentById(currentId):null;
+ const before=resolveAttachmentItem(current),after=resolveAttachmentItem(item);
+ const behaviorChanged=resolvedBehaviorSignature(before)!==resolvedBehaviorSignature(after);
+ const verdict=current?effectVerdict(before.modifiers,after.modifiers,ATTACHMENT_AXES_ORDER,behaviorChanged):'new';
+ const weapons=Array.isArray(item.weapons)?[...item.weapons]:[];
+ return {
+  id:`attachment-${item.id}`,kind:'attachment',ref:item.id,name:item.name,level:item.level,
+  slot,slotName:slotLabel(ATTACHMENT_SLOTS,slot),owned:false,gap:Math.max(0,item.level-profile.level),
+  replaces:current?current.id:null,verdict,
+  actionable:verdict!=='downgrade'&&verdict!=='duplicate',
+  universal:weapons.length===0,compatibleWeapons:weapons,behaviorChanged,
+  changes:effectChanges(before.modifiers,after.modifiers,ATTACHMENT_AXES_ORDER),
+  before:Object.freeze({...before.modifiers}),after:Object.freeze({...after.modifiers}),
+  description:item.description,
+ };
+}
+// Pure, loadout-aware career roadmap. `upcoming` is bounded per slot for a UI
+// strip; `nextUpgrade`/`nextActionable` scan the whole remaining catalogue so a
+// distant real upgrade is not hidden behind a nearer cosmetic or a dead upgrade.
+export function unlockPlan(profile,{limit=3}={}){
+ const p=normalizeProgression(profile),cap=Math.max(0,Math.floor(Number(limit)||0)),unlocks=p.unlocks||{};
+ const byLevel=(a,b)=>a.level-b.level||String(a.name).localeCompare(String(b.name));
+ const gearEntries=GEAR.filter(item=>unlocks[`gear-${item.id}`]!==true).sort(byLevel).map(item=>gearUpgradeEntry(p,item));
+ const attachmentEntries=ATTACHMENTS.filter(item=>unlocks[`attachment-${item.id}`]!==true).sort(byLevel).map(item=>attachmentUpgradeEntry(p,item));
+ const entries=[...gearEntries,...attachmentEntries];
+ const firstOf=predicate=>[...entries].filter(predicate).sort(byLevel)[0]??null;
+ return {
+  level:p.level,
+  nextUnlock:nextUnlockFor(p),
+  nextUnlocks:nextUnlocksFor(p,cap),
+  nextUpgrade:firstOf(entry=>entry.verdict==='new'||entry.verdict==='upgrade'),
+  nextActionable:firstOf(entry=>entry.actionable),
+  gear:GEAR_SLOTS.map(slot=>({slot:slot.id,slotName:slot.name,current:p.gear?.[slot.id]??null,upcoming:gearEntries.filter(entry=>entry.slot===slot.id).slice(0,cap)})),
+  attachments:ATTACHMENT_SLOTS.map(slot=>({slot:slot.id,slotName:slot.name,current:p.attachments?.[slot.id]??null,upcoming:attachmentEntries.filter(entry=>entry.slot===slot.id).slice(0,cap)})),
+ };
+}
+// ---------------------------------------------------------------------------
+// Catalog integrity audit for the unlock/upgrade pool. It catches the two real
+// authoring mistakes a level-ordered catalogue can make: two same-slot entries
+// that resolve to the same effect (a duplicate), and a higher-level entry that
+// is strictly worse on every axis than a same-slot entry that unlocks no later
+// (a dead upgrade — a slot a player is told to anticipate but should never
+// take). Attachment dominance also requires the earlier entry to fit a superset
+// of weapons, so a universal mod is never called dominated by a weapon-locked
+// one. `gear`/`attachments` are injectable so the detector itself is testable.
+export function catalogAudit({gear=GEAR,attachments=ATTACHMENTS}={}){
+ const issues=[];
+ const within=(a,b,epsilon=1e-9)=>Math.abs(a-b)<epsilon;
+ const gearVector=item=>{const r=resolveGearItem(item);return {health:r.health,armor:r.armor,speed:r.speed,damage:r.damage,handling:-r.spread};};
+ const gearAxes=['health','armor','speed','damage','handling'];
+ const dominates=(a,b,axes)=>axes.every(axis=>a[axis]>=b[axis]-1e-9)&&axes.some(axis=>a[axis]>b[axis]+1e-9);
+ const identical=(a,b,axes)=>axes.every(axis=>within(a[axis],b[axis]));
+ for(const slot of GEAR_SLOTS){
+  const items=gear.filter(item=>item?.slot===slot.id);
+  for(const first of items)for(const second of items){
+   if(first===second)continue;
+   const a=gearVector(first),b=gearVector(second);
+   if(identical(a,b,gearAxes)){if(String(first.id)<String(second.id))issues.push({kind:'duplicate',family:'gear',slot:slot.id,a:first.id,b:second.id,detail:`${first.id} and ${second.id} declare the same effect axes`});continue;}
+   if(first.level<=second.level&&dominates(a,b,gearAxes))issues.push({kind:'dead-upgrade',family:'gear',slot:slot.id,a:first.id,b:second.id,detail:`${first.id} (level ${first.level}) strictly dominates later ${second.id} (level ${second.level})`});
+  }
+ }
+ const attAxes=['damage','spread','interval','range','recoilKick','reload','bloomPerShot','bloomMax','cap','pellets','burst'];
+ const attVector=item=>{const m=resolveAttachmentItem(item).modifiers,out={};for(const axis of attAxes)out[axis]=UPGRADE_LOWER_IS_BETTER.has(axis)?-m[axis]:m[axis];return out;};
+ const attFit=item=>{const list=Array.isArray(item?.weapons)?item.weapons:[];return list.length?new Set(list):null;};
+ const fitsSuperset=(first,second)=>{const a=attFit(first),b=attFit(second);if(a===null)return true;if(b===null)return false;for(const index of b)if(!a.has(index))return false;return true;};
+ for(const slot of ATTACHMENT_SLOTS.map(entry=>entry.id)){
+  const items=attachments.filter(item=>item?.slot===slot);
+  for(const first of items)for(const second of items){
+   if(first===second)continue;
+   if(behaviorSignature(first?.behavior)!==behaviorSignature(second?.behavior))continue;
+   const a=attVector(first),b=attVector(second);
+   if(identical(a,b,attAxes)){if(String(first.id)<String(second.id))issues.push({kind:'duplicate',family:'attachment',slot,a:first.id,b:second.id,detail:`${first.id} and ${second.id} share modifiers and behaviour`});continue;}
+   if(first.level<=second.level&&fitsSuperset(first,second)&&dominates(a,b,attAxes))issues.push({kind:'dead-upgrade',family:'attachment',slot,a:first.id,b:second.id,detail:`${first.id} (level ${first.level}) strictly dominates later ${second.id} (level ${second.level})`});
+  }
+ }
+ return {ok:issues.length===0,issues};
 }
 // Compact post-match summary card. Pure composition of the snapshot, the
 // reward strip and the career tracks so the results screen can surface

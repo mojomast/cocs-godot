@@ -46,6 +46,37 @@ test('gear is level-gated and saved',async()=>{
  assert.equal(reloaded.get(ID).gear.primary,'heavy-barrel');
 });
 
+test('gear writes are gated by the unlock authority, cosmetics included',async()=>{
+ const file=tempFile(),store=new ProgressionStore(file);
+ store.ensure(ID);
+ const locked=store.setGear(ID,{primary:'command-kit'},{optic:'marksman-optic'},'finish-crimson','split');
+ assert.deepEqual(locked.gear,{},'a locked capstone cannot be equipped at level 1');
+ assert.deepEqual(locked.attachments,{},'a locked mod cannot be fitted at level 1');
+ assert.equal(locked.finish,null,'a locked finish is rejected');
+ assert.equal(locked.crosshair,null,'a locked crosshair is rejected');
+ store.award(ID,{win:true,actor:{frags:200,scoreStats:{captures:1}}});
+ assert.ok(store.get(ID).level>=4,`level ${store.get(ID).level}`);
+ const unlocked=store.setGear(ID,undefined,undefined,'finish-ion','dot');
+ assert.equal(unlocked.finish,'finish-ion','an unlocked finish is accepted');
+ assert.equal(unlocked.crosshair,'dot','an unlocked crosshair is accepted');
+ assert.deepEqual(unlocked.gear,{},'omitted gear is left untouched (not nulled)');
+ await store.whenPersisted();
+ const reloaded=new ProgressionStore(file);
+ assert.equal(reloaded.get(ID).finish,'finish-ion');
+ assert.equal(reloaded.get(ID).crosshair,'dot');
+});
+
+test('a persisted grant keeps its gear through the loader (old-profile compatibility)',async()=>{
+ const file=tempFile();
+ fs.writeFileSync(file,JSON.stringify({version:2,players:[{id:ID,xp:0,unlocks:{'gear-command-kit':true,'attachment-marksman-optic':true,'finish-crimson':true},gear:{primary:'command-kit'},attachments:{optic:'marksman-optic'},finish:'finish-crimson'}]}));
+ const store=new ProgressionStore(file);
+ const profile=store.get(ID);
+ assert.equal(profile.level,1,'the xp-derived level is still 1');
+ assert.deepEqual(profile.gear,{primary:'command-kit'},'an explicitly owned item stays equipped');
+ assert.deepEqual(profile.attachments,{optic:'marksman-optic'});
+ assert.equal(profile.finish,'finish-crimson');
+});
+
 test('per-mode career stats round-trip through persistence',async()=>{
  const file=tempFile(),store=new ProgressionStore(file);
  store.award(ID,{win:true,mode:'deathmatch',actor:{frags:7,scoreStats:{}}});
