@@ -5,11 +5,13 @@ import type {ScreenProps} from '../contract';
 import {Modal,Btn,Tabs,Panel,Chip,Empty} from '../primitives';
 import {HELP_SECTIONS} from '../../../game/onboarding.mjs';
 import {altSpecFor} from '../../../game/alt-fire.mjs';
-import {attachmentSpec} from '../../../game/attachments.mjs';
-import {gearBudget,gearPoints} from '../../../game/progression.mjs';
 import {formatNumber,formatWhole} from '../../../game/format-ui.mjs';
 import {weaponRangeInfo} from '../../../game/hud.mjs';
 import {GraphicsLabPanel} from './GraphicsLabPanel';
+// The inspector is read-only. Equipped state, weapon-mod fit and exact lock
+// shortfalls all come from the shared pure career model, which reads the same
+// resolvers the match consumes. Nothing here invents a purchase or a stat.
+import {attachmentFitLine,attachmentSpecLine,equippedAttachmentForSlot,equippedCount,equippedGearForSlot,equippedLoadout,gearCompareLine,gearNetLine,gearStatLine,isEquipped,lockLabel,lockState,weaponModStatus} from '../career-catalog.mjs';
 
 type HelpSection={id:string;title:string;summary?:string;items?:readonly any[]};
 
@@ -96,37 +98,36 @@ export function WeaponCompare({WEAPONS=[]}:{WEAPONS?:any[]}){
  </Panel>;
 }
 
-const levelOf=(item:any)=>Math.max(1,Math.round(Number(item?.level)||1));
-const locked=(level:number,item:any)=>levelOf(item)>level;
-// Read-only career spec lines drawn from the same resolver the match uses, so
-// the inspector shows the numbers a loadout will actually apply.
-const AXIS_ABBR:Record<string,string>={offense:'DMG',mobility:'SPD',ehp:'EHP',handling:'HND'};
-const signedPoint=(value:number)=>`${value>0?'+':''}${value}`;
-const gearStatLine=(item:any)=>{const points=gearPoints(item.modifiers);return `DMG ${signedPoint(points.offense)} · SPD ${signedPoint(points.mobility)} · EHP ${signedPoint(points.ehp)} · HND ${signedPoint(points.handling)}`;};
-const gearAxisLine=(item:any)=>{const spend=gearBudget(item);return `${AXIS_ABBR[item.powerAxis]}▲ ${AXIS_ABBR[item.costAxis]}▼ · NET ${spend.net}`;};
-const modStatLine=(item:any)=>attachmentSpec(item).join(' · ');
+const locked=(level:number,item:any)=>lockState(item,level).locked;
 
 // Read-only viewer over the same weapon/operator/attachment data the match uses.
 // Unlock state mirrors the progression level gates so the menu cannot drift from
-// the loadout screen.
+// the loadout screen, and the saved profile decides what is EQUIPPED rather than
+// merely unlocked.
 export function ArsenalInspector({WEAPONS=[],CHARACTERS=[],ATTACHMENTS=[],ATTACHMENT_SLOTS=[],GEAR=[],GEAR_SLOTS=[],WEAPON_FINISHES=[],CROSSHAIR_STYLES=[],profile,weaponRangeLabel}:any){
  const [tab,setTab]=useState('weapons');
  const level=Number(profile?.level)||1;
  const count=(items:any[])=>items.filter(item=>!locked(level,item)).length;
  const inventory=[...WEAPONS,...CHARACTERS,...ATTACHMENTS,...GEAR,...WEAPON_FINISHES,...CROSSHAIR_STYLES];
  const total=inventory.length,claimed=count(inventory);
+ const equippedRows=equippedLoadout(profile,{GEAR,GEAR_SLOTS,ATTACHMENTS,ATTACHMENT_SLOTS,WEAPON_FINISHES,CROSSHAIR_STYLES});
  const subtabs=[{value:'weapons',label:'Weapons'},{value:'operators',label:'Operators'},{value:'attachments',label:'Attachments'},{value:'cosmetics',label:'Cosmetics'}];
  return <div className="stack arsenal-inspector">
   <div className="row row--between arsenal-summary">
    <span className="label">OPERATOR LEVEL {level}</span>
-   <span className="row" style={{gap:8}}><Chip tone="accent"><i/>{claimed} / {total} UNLOCKED</Chip><Chip>{CHARACTERS.length} OPERATORS · {WEAPONS.length} WEAPONS</Chip></span>
+   <span className="row" style={{gap:8}}><Chip tone="accent"><i/>{claimed} / {total} UNLOCKED</Chip><Chip tone="accent">{equippedCount(profile)} EQUIPPED</Chip><Chip>{CHARACTERS.length} OPERATORS · {WEAPONS.length} WEAPONS</Chip></span>
   </div>
+  <div className="row" role="group" aria-label="Saved career loadout">
+   {equippedRows.map((row:any)=><Chip key={`${row.kind}-${row.slot}`} tone={row.name?'default':'warn'}>{row.label.toUpperCase()}: {row.name||'EMPTY'}</Chip>)}
+  </div>
+  <p className="field-note">Read-only view. Fit a different item from the GEAR LOADOUT surface on the Progression screen; the saved loadout is what the match applies.</p>
   <Tabs value={tab} onChange={setTab} ariaLabel="Arsenal category" tabs={subtabs}/>
-  {tab==='weapons'&&<div className="stack"><WeaponCompare WEAPONS={WEAPONS}/><div className="grid-cards">{WEAPONS.map((weapon:any,index:number)=>{const alt=altSpecFor(index);return <Panel key={weapon.name} label={`${index+1} / WEAPON`} meta={weapon.short||''}>
+  {tab==='weapons'&&<div className="stack"><WeaponCompare WEAPONS={WEAPONS}/><div className="grid-cards">{WEAPONS.map((weapon:any,index:number)=>{const alt=altSpecFor(index),mods=weaponModStatus(profile,index,ATTACHMENTS);return <Panel key={weapon.name} label={`${index+1} / WEAPON`} meta={weapon.short||''}>
    <h3 style={{color:weapon.color}}>{weapon.name}</h3>
    <div className="row" style={{gap:6}}><Chip>{weaponRangeLabel?.(weapon)}</Chip><Chip>{Math.round(Number(weapon.damage)||0)} DMG</Chip><Chip>{Number(weapon.interval)>0?`${Math.round(60/Number(weapon.interval))} RPM`:'—'}</Chip>{alt&&<Chip tone="accent">ALT · {alt.label}</Chip>}</div>
    <p className="field-note">{weapon.description}</p>
    {alt&&<p className="field-note weapon-alt-note"><b>ALT FIRE</b> {alt.summary}</p>}
+   {mods.total>0&&<p className="field-note arsenal-spec"><b>FITTED MODS</b> {mods.fitted?`APPLIED · ${mods.applied.map((item:any)=>item.name).join(', ')}`:'NONE OF YOUR FITTED MODS APPLY TO THIS WEAPON'}{mods.blocked.length?` · NOT FITTED · ${mods.blocked.map((item:any)=>item.name).join(', ')}`:''}</p>}
     <p className="field-note">{Number(weapon.ammo)>0?`${formatWhole(weapon.ammo)} / ${formatWhole(weapon.cap)} ROUNDS`:'UNLIMITED AMMO'}{weapon.splash?` · ${formatNumber(weapon.splash)} SPLASH`:''}</p>
   </Panel>;})}</div></div>}
   {tab==='operators'&&<div className="grid-cards">{CHARACTERS.map((operator:any)=><Panel key={operator.id} label="OPERATOR" meta={operator.tag}>
@@ -134,27 +135,29 @@ export function ArsenalInspector({WEAPONS=[],CHARACTERS=[],ATTACHMENTS=[],ATTACH
     <div className="row" style={{gap:6}}><Chip>{formatWhole(operator.stats.health)} HP</Chip><Chip>{formatWhole(operator.stats.armor)} ARM</Chip><Chip>{formatNumber(operator.stats.speed)} M/S</Chip></div>
    <p className="field-note">{operator.detail}</p>
   </Panel>)}</div>}
-  {tab==='attachments'&&<div className="stack">{ATTACHMENT_SLOTS.map((slot:any)=>{const items=ATTACHMENTS.filter((item:any)=>item.slot===slot.id);if(!items.length)return null;return <div key={slot.id} className="stack stack--tight">
-   <span className="label">{slot.name}</span>
-   <div className="grid-cards">{items.map((item:any)=>{const isLocked=locked(level,item);return <Panel key={item.id} className={isLocked?'arsenal-locked':''} label={isLocked?`LV ${levelOf(item)}`:'AVAILABLE'} meta={item.weapons?.length?`${item.weapons.length} WEAPONS`:''}>
+  {tab==='attachments'&&<div className="stack">{ATTACHMENT_SLOTS.map((slot:any)=>{const items=ATTACHMENTS.filter((item:any)=>item.slot===slot.id);if(!items.length)return null;const fitted=equippedAttachmentForSlot(profile,slot.id,ATTACHMENTS);return <div key={slot.id} className="stack stack--tight">
+   <div className="row row--between"><span className="label">{slot.name}</span><span className="label">{fitted?`EQUIPPED · ${fitted.name}`:'SLOT EMPTY'}</span></div>
+   <div className="grid-cards">{items.map((item:any)=>{const isLocked=locked(level,item),isFitted=isEquipped(profile,'attachment',item.id);return <Panel key={item.id} className={isLocked?'arsenal-locked':''} label={isLocked?lockLabel(item,level):isFitted?'EQUIPPED':'AVAILABLE'} meta={item.weapons?.length?`${item.weapons.length} WEAPONS`:'UNIVERSAL'}>
     <h3>{item.name}{isLocked&&<LockKeyhole size={14}/>}</h3>
     <p className="field-note">{item.description}</p>
-    <p className="field-note arsenal-spec">{modStatLine(item)}</p>
+    <p className="field-note arsenal-spec">{attachmentSpecLine(item)}</p>
+    <p className="field-note arsenal-spec">{attachmentFitLine(item,WEAPONS)}</p>
    </Panel>;})}</div>
   </div>;})}</div>}
   {tab==='cosmetics'&&<div className="stack">
    <div className="stack stack--tight"><span className="label">WEAPON FINISHES</span>
-    <div className="grid-cards">{WEAPON_FINISHES.length?WEAPON_FINISHES.map((item:any)=>{const isLocked=locked(level,item);return <Panel key={item.id} label={isLocked?`LV ${levelOf(item)}`:item.kind||'FINISH'} meta={isLocked?'LOCKED':'UNLOCKED'} className={isLocked?'arsenal-locked':''}><h3>{item.name}</h3><p className="field-note">{item.description}</p></Panel>;}) : <Empty title="No finishes loaded"/>}</div>
+    <div className="grid-cards">{WEAPON_FINISHES.length?WEAPON_FINISHES.map((item:any)=>{const isLocked=locked(level,item),isFitted=isEquipped(profile,'finish',item.id);return <Panel key={item.id} label={isLocked?lockLabel(item,level):isFitted?'EQUIPPED':'UNLOCKED'} meta={isFitted?'EQUIPPED':item.kind||'FINISH'} className={isLocked?'arsenal-locked':''}><h3>{item.name}</h3><p className="field-note">{item.description}</p></Panel>;}) : <Empty title="No finishes loaded"/>}</div>
    </div>
    <div className="stack stack--tight"><span className="label">RETICLES</span>
-    <div className="grid-cards">{CROSSHAIR_STYLES.length?CROSSHAIR_STYLES.map((item:any)=>{const isLocked=locked(level,item);return <Panel key={item.id} label={isLocked?`LV ${levelOf(item)}`:'CROSSHAIR'} meta={isLocked?'LOCKED':'UNLOCKED'} className={isLocked?'arsenal-locked':''}><h3>{item.name}</h3><p className="field-note">{item.description}</p></Panel>;}) : <Empty title="No reticles loaded"/>}</div>
+    <div className="grid-cards">{CROSSHAIR_STYLES.length?CROSSHAIR_STYLES.map((item:any)=>{const isLocked=locked(level,item),isFitted=isEquipped(profile,'crosshair',item.id);return <Panel key={item.id} label={isLocked?lockLabel(item,level):isFitted?'EQUIPPED':'CROSSHAIR'} meta={isFitted?'EQUIPPED':isLocked?'LOCKED':'UNLOCKED'} className={isLocked?'arsenal-locked':''}><h3>{item.name}</h3><p className="field-note">{item.description}</p></Panel>;}) : <Empty title="No reticles loaded"/>}</div>
    </div>
-   <Panel label="GEAR" meta={`${count(GEAR)} / ${GEAR.length}`}>
+   <Panel label="GEAR" meta={`${count(GEAR)} / ${GEAR.length} UNLOCKED`}>
     <div className="stack stack--tight">{GEAR_SLOTS.map((slot:any)=>{
      const items=GEAR.filter((item:any)=>item.slot===slot.id);
+     const fitted=equippedGearForSlot(profile,slot.id,GEAR);
      return <div key={slot.id} className="stack stack--tight">
-      <div className="row row--between"><span className="label">{slot.name}</span>{items.every((item:any)=>!locked(level,item))?<Chip tone="accent">READY</Chip>:<Chip tone="warn">LOCKED</Chip>}</div>
-      {items.map((item:any)=>{const isLocked=locked(level,item);return <div key={item.id} className={`row row--between${isLocked?' arsenal-locked':''}`}><span className="card-main"><span className="card-name">{item.name}{isLocked&&<LockKeyhole size={12}/>}<small>{gearStatLine(item)}</small></span></span><span className="label">{isLocked?`LV ${levelOf(item)}`:gearAxisLine(item)}</span></div>;})}
+      <div className="row row--between"><span className="label">{slot.name}</span>{fitted?<span className="label">EQUIPPED · {fitted.name}</span>:<Chip tone="warn">EMPTY</Chip>}</div>
+      {items.map((item:any)=>{const isLocked=locked(level,item),isFitted=fitted?.id===item.id,compare=gearCompareLine(item,fitted);return <div key={item.id} className={`row row--between${isLocked?' arsenal-locked':''}`}><span className="card-main"><span className="card-name">{item.name}{isLocked&&<LockKeyhole size={12}/>}<small>{gearStatLine(item)}</small>{compare?<small>{compare}</small>:null}</span></span><span className="label">{isLocked?lockLabel(item,level):gearNetLine(item)}</span></div>;})}
      </div>;})}</div>
    </Panel>
   </div>}

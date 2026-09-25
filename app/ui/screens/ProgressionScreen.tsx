@@ -2,39 +2,47 @@
 import {useState} from 'react';
 import type {ScreenProps} from '../contract';
 import {formatNumber} from '../../../game/format-ui.mjs';
-import {gearBudget,gearPoints} from '../../../game/progression.mjs';
-import {attachmentSpec} from '../../../game/attachments.mjs';
 import {ActionRail,Banner,Btn,Chip,Meter,PageHead,Panel,SelectCard,Shell,Stats,Tabs,TopBar} from '../primitives';
+// Every line below comes from the shared pure model, which in turn reads the
+// same resolvers the match consumes, so a card never advertises an effect, a
+// weapon fit or a lock state the simulation would not apply.
+import {attachmentFitLine,equippedAttachmentForSlot,equippedGearForSlot,equippedLoadout,gearCompareLine,gearNetLine,gearStatLine,lockLabel,lockState,attachmentSpecLine,unlockState,unlockStateLabel} from '../career-catalog.mjs';
 
 const resultTone=(result:string)=>result==='win'?'accent':result==='draw'?'warn':'danger';
 const shortDate=(at:number)=>at?new Date(at).toISOString().slice(0,10):'—';
-// Career gear is persistent; the stat line is the resolver's own point vector,
-// so a card never advertises an effect the simulation will not apply.
-const AXIS_ABBR:Record<string,string>={offense:'DMG',mobility:'SPD',ehp:'EHP',handling:'HND'};
-const signedPoint=(value:number)=>`${value>0?'+':''}${value}`;
-const gearStatLine=(item:any)=>{const points=gearPoints(item.modifiers);return `DMG ${signedPoint(points.offense)} · SPD ${signedPoint(points.mobility)} · EHP ${signedPoint(points.ehp)} · HND ${signedPoint(points.handling)}`;};
-const gearNetLabel=(item:any)=>{const budget=gearBudget(item);return `${AXIS_ABBR[item.powerAxis]}▲ ${AXIS_ABBR[item.costAxis]}▼ · NET ${budget.net}/${budget.budget}`;};
-const modStatLine=(item:any)=>attachmentSpec(item).join(' · ');
 
 export function ProgressionScreen({ui}:ScreenProps){
- const {profile,UNLOCKS,UNLOCK_GROUPS,GEAR,GEAR_SLOTS,ATTACHMENTS,ATTACHMENT_SLOTS,WEAPON_FINISHES,CROSSHAIR_STYLES,levelFromXp,rankTitle,rankBlurb,unlockedItems,chooseGear,chooseAttachment,chooseFinish,chooseCrosshair,selected,changeMode,notice,headActions,previewRef,challenges=[],weeklyChallenges=[],history={entries:[]},historyTotals,historyLeaderboard=[],clearHistory,campaignMissions=[],campaignSummary,startCampaignMission,setSingleOpen,setSingleSub,GAME_MODES=[],prestige,PRESTIGE_TIERS=[],PRESTIGE_XP=6000,prestigeTier,prestigeXpBonus,achievements=[],ACHIEVEMENTS=[]}=ui;
+ const {profile,UNLOCKS,UNLOCK_GROUPS,GEAR,GEAR_SLOTS,ATTACHMENTS,ATTACHMENT_SLOTS,WEAPON_FINISHES,CROSSHAIR_STYLES,WEAPONS=[],levelFromXp,rankTitle,rankBlurb,unlockedItems,chooseGear,chooseAttachment,chooseFinish,chooseCrosshair,selected,changeMode,notice,headActions,previewRef,challenges=[],weeklyChallenges=[],history={entries:[]},historyTotals,historyLeaderboard=[],clearHistory,campaignMissions=[],campaignSummary,startCampaignMission,setSingleOpen,setSingleSub,GAME_MODES=[],prestige,PRESTIGE_TIERS=[],PRESTIGE_XP=6000,prestigeTier,prestigeXpBonus,achievements=[],ACHIEVEMENTS=[]}=ui;
  const [tab,setTab]=useState('gear');
  const [careerTab,setCareerTab]=useState('achievements');
  const level=levelFromXp(profile.xp);
+ // The level the profile is actually persisted at, never the optimistic render
+ // value, so a lock label can never disagree with what was saved.
+ const operatorLevel=Number(profile.level)||level.level;
  const careerTabs=[{value:'achievements',label:`Achievements${achievements.length?` · ${achievements.filter((a:any)=>a.unlocked).length}/${achievements.length}`:''}`},{value:'prestige',label:'Prestige'}];
  const modeName=(id:string)=>GAME_MODES.find((m:any)=>m.id===id)?.name||String(id||'unknown').replace(/[-_]+/g,' ').replace(/\b\w/g,(c:string)=>c.toUpperCase());
  const modeRows=Object.entries(profile.byMode||{}).map(([id,stats]:any)=>[id,stats]).sort((a:any,b:any)=>(b[1].matches||0)-(a[1].matches||0));
- const renderItems=(items:any[],isSelected:(item:any)=>boolean,isLocked:(item:any)=>boolean,onPick:(item:any)=>void,statsOf?:(item:any)=>string,metaOf?:(item:any)=>string)=>(
+ // One durable-loadout read for the whole surface: which saved item owns each
+ // slot, including the slots still empty.
+ const equippedRows=equippedLoadout(profile,{GEAR,GEAR_SLOTS,ATTACHMENTS,ATTACHMENT_SLOTS,WEAPON_FINISHES,CROSSHAIR_STYLES});
+ const fittedCount=equippedRows.filter((row:any)=>row.name).length;
+ // Shared option renderer: the lock reason and the equipped/unlocked fact come
+ // from the same model for gear, mods and cosmetics, so no category can drift.
+ const renderItems=(items:any[],isEquipped:(item:any)=>boolean,onPick:(item:any)=>void,statsOf?:(item:any)=>any,metaOf?:(item:any)=>any)=>(
   <div className="grid-cards">{items.map((item:any)=>{
-   const locked=isLocked(item);
-   return <SelectCard key={item.id} name={item.name} tag={item.description} selected={isSelected(item)} disabled={locked} meta={locked?`LV ${item.level??1}`:(metaOf?.(item)||undefined)} stats={statsOf?.(item)} onClick={()=>onPick(item)} ariaLabel={item.name}/>;
+   const lock=lockState(item,operatorLevel);
+   const fitted=isEquipped(item);
+   const meta=lock.locked?`LV ${lock.required} · ${lock.levelsAway} TO GO`:(metaOf?.(item)||(fitted?'EQUIPPED':'UNLOCKED'));
+   const aria=`${item.name}${lock.locked?`, ${lockLabel(item,operatorLevel).toLowerCase()}`:fitted?', equipped':', unlocked'}`;
+   return <SelectCard key={item.id} name={item.name} tag={item.description} selected={fitted} disabled={lock.locked} meta={meta} stats={statsOf?.(item)} onClick={()=>onPick(item)} ariaLabel={aria}/>;
   })}</div>
  );
  // The unlock track is a discovery list, so give each future item the same
- // concrete spec line the loadout card shows once it is claimed.
+ // concrete spec line the loadout card shows once it is fitted, and never
+ // pretend an unlocked item is the equipped one.
  const unlockSpec=(item:any)=>{
   if(item.kind==='gear'){const gear=GEAR.find((g:any)=>g.id===item.ref);return gear?gearStatLine(gear):'';}
-  if(item.kind==='attachment'){const mod=ATTACHMENTS.find((a:any)=>a.id===item.ref);return mod?modStatLine(mod):'';}
+  if(item.kind==='attachment'){const mod=ATTACHMENTS.find((a:any)=>a.id===item.ref);return mod?`${attachmentSpecLine(mod)} · ${attachmentFitLine(mod,WEAPONS)}`:'';}
   return '';
  };
  const renderChallenges=(list:any[],empty:string)=>list.length
@@ -68,23 +76,40 @@ export function ProgressionScreen({ui}:ScreenProps){
      </div>
      <Panel label="GEAR LOADOUT" meta="CAREER · PERSISTENT">
      <div className="stack">
+      <div className="row row--between"><span className="label">PROFILE LOADOUT · PERSISTED ACROSS MODES</span><span className="label">{fittedCount} / {equippedRows.length} SLOTS FITTED</span></div>
+      <div className="row" role="group" aria-label="Equipped career loadout">
+       {equippedRows.map((row:any)=><Chip key={`${row.kind}-${row.slot}`} tone={row.name?'default':'warn'}>{row.label.toUpperCase()}: {row.name||'EMPTY'}</Chip>)}
+      </div>
       <p className="field-note">Career gear is chosen here and persists across every mode until you change it. It is separate from the round-scoped personal REQ purchases you make mid-match.</p>
       <Tabs value={tab} onChange={setTab} ariaLabel="Loadout category" tabs={[{value:'gear',label:'Gear'},{value:'mods',label:'Weapon mods'},{value:'skins',label:'Skins'},{value:'reticles',label:'Reticles'},{value:'modes',label:'Modes'}]}/>
-      {tab==='gear'&&GEAR_SLOTS.map((slot:any)=><div key={slot.id} className="stack stack--tight">
-       <span className="label">{slot.name} · {GEAR.filter((item:any)=>item.slot===slot.id).length} OPTIONS</span>
-       {renderItems(GEAR.filter((item:any)=>item.slot===slot.id),item=>profile.gear[slot.id]===item.id,item=>profile.level<item.level,item=>chooseGear(slot.id,item.id),item=>gearStatLine(item),item=>gearNetLabel(item))}
-      </div>)}
-      {tab==='mods'&&ATTACHMENT_SLOTS.map((slot:any)=><div key={slot.id} className="stack stack--tight">
-       <span className="label">{slot.name} · {ATTACHMENTS.filter((item:any)=>item.slot===slot.id).length} OPTIONS</span>
-       {renderItems(ATTACHMENTS.filter((item:any)=>item.slot===slot.id),item=>(profile.attachments||{})[slot.id]===item.id,item=>profile.level<item.level,item=>chooseAttachment(slot.id,item.id),item=>modStatLine(item),item=>`${item.weapons.length||'ALL'} WPN`)}
-      </div>)}
+      {tab==='gear'&&<>
+       {GEAR_SLOTS.map((slot:any)=>{
+        const equipped=equippedGearForSlot(profile,slot.id,GEAR);
+        const options=GEAR.filter((item:any)=>item.slot===slot.id);
+        return <div key={slot.id} className="stack stack--tight">
+         <div className="row row--between"><span className="label">{slot.name} · {options.length} OPTIONS</span><span className="label">{equipped?`EQUIPPED · ${equipped.name}`:'SLOT EMPTY'}</span></div>
+         {renderItems(options,item=>equipped?.id===item.id,item=>chooseGear(slot.id,item.id),item=>{const compare=gearCompareLine(item,equipped);return <>{gearStatLine(item)}{compare?<span>{compare}</span>:null}</>;},item=>gearNetLine(item))}
+        </div>;
+       })}
+      </>}
+      {tab==='mods'&&<>
+       <p className="field-note">A fitted mod applies only to the weapons it lists; the live match filters by that fit. A mod with no weapon list is universal and applies everywhere.</p>
+       {ATTACHMENT_SLOTS.map((slot:any)=>{
+        const equipped=equippedAttachmentForSlot(profile,slot.id,ATTACHMENTS);
+        const options=ATTACHMENTS.filter((item:any)=>item.slot===slot.id);
+        return <div key={slot.id} className="stack stack--tight">
+         <div className="row row--between"><span className="label">{slot.name} · {options.length} OPTIONS</span><span className="label">{equipped?`EQUIPPED · ${equipped.name}`:'SLOT EMPTY'}</span></div>
+         {renderItems(options,item=>equipped?.id===item.id,item=>chooseAttachment(slot.id,item.id),item=><>{attachmentSpecLine(item)}<span>{attachmentFitLine(item,WEAPONS)}</span></>)}
+        </div>;
+       })}
+      </>}
       {tab==='skins'&&<div className="stack stack--tight">
        <span className="label">WEAPON FINISHES</span>
-       {renderItems(WEAPON_FINISHES,item=>profile.finish===item.id,item=>profile.level<item.level,item=>chooseFinish(item.id))}
+       {renderItems(WEAPON_FINISHES,item=>profile.finish===item.id,item=>chooseFinish(item.id))}
       </div>}
       {tab==='reticles'&&<div className="stack stack--tight">
        <span className="label">RETICLES</span>
-       {renderItems(CROSSHAIR_STYLES,item=>profile.crosshair===item.id,item=>profile.level<(item.level||1),item=>chooseCrosshair(item.id))}
+       {renderItems(CROSSHAIR_STYLES,item=>profile.crosshair===item.id,item=>chooseCrosshair(item.id))}
       </div>}
       {tab==='modes'&&<div className="stack stack--tight">
        <span className="label">CAREER BY MODE</span>
@@ -96,15 +121,17 @@ export function ProgressionScreen({ui}:ScreenProps){
      </div>
      </Panel>
      <div className="stack">
-      <Panel label="UNLOCK TRACK" meta={`${unlockedItems(profile.level).length} / ${UNLOCKS.length} CLAIMED`}>
+      <Panel label="UNLOCK TRACK" meta={`${unlockedItems(operatorLevel).length} / ${UNLOCKS.length} UNLOCKED`}>
      <div className="stack">
+      <p className="field-note">UNLOCKED means the level gate has passed; EQUIPPED means it is the item actually fitted to your persisted loadout. The match only applies what is equipped.</p>
       {UNLOCK_GROUPS.map((group:any)=>{
        const items=UNLOCKS.filter((item:any)=>item.kind===group.kind);
-       const got=items.filter((item:any)=>profile.level>=item.level).length;
+       const got=items.filter((item:any)=>!lockState(item,operatorLevel).locked).length;
+       const fitted=items.filter((item:any)=>unlockState(profile,item)==='equipped').length;
        return <div key={group.kind} className="stack stack--tight">
-        <div className="row row--between"><span className="label">{group.label}</span><span className="label">{got}/{items.length}</span></div>
+        <div className="row row--between"><span className="label">{group.label}</span><span className="label">{got}/{items.length} UNLOCKED{fitted?` · ${fitted} EQUIPPED`:''}</span></div>
         <Meter ratio={items.length?got/items.length:0}/>
-        <div className="stack stack--tight">{items.map((item:any)=>{const unlocked=profile.level>=item.level,spec=unlockSpec(item);return <div key={item.id} className="row row--between"><span className="card-main"><span className="card-name">{item.name}<small>{item.description}</small></span>{spec?<span className="card-stats">{spec}</span>:null}</span><span className="label">{unlocked?'CLAIMED':`LV ${item.level}`}</span></div>;})}</div>
+        <div className="stack stack--tight">{items.map((item:any)=>{const spec=unlockSpec(item);return <div key={item.id} className="row row--between"><span className="card-main"><span className="card-name">{item.name}<small>{item.description}</small></span>{spec?<span className="card-stats">{spec}</span>:null}</span><span className="label">{unlockStateLabel(profile,item)}</span></div>;})}</div>
        </div>;
        })}
      </div>
