@@ -1,0 +1,227 @@
+TAP version 13
+# Subtest: Cinderwake literal launch route selects its new scene, bounded waves and local authority
+ok 1 - Cinderwake literal launch route selects its new scene, bounded waves and local authority
+  ---
+  duration_ms: 1.201871
+  type: 'test'
+  ...
+# Subtest: literal recipe validates and source intake is mandatory, never a static-play fallback
+ok 2 - literal recipe validates and source intake is mandatory, never a static-play fallback
+  ---
+  duration_ms: 3.748761
+  type: 'test'
+  ...
+# Subtest: Horde is default-ten-wave local-only and refuses unsupported or ignored controls
+ok 3 - Horde is default-ten-wave local-only and refuses unsupported or ignored controls
+  ---
+  duration_ms: 2.086288
+  type: 'test'
+  ...
+# Subtest: existing viewer, combat setup and smoke routes stay compatible
+ok 4 - existing viewer, combat setup and smoke routes stay compatible
+  ---
+  duration_ms: 0.278211
+  type: 'test'
+  ...
+# Subtest: each standalone map/mode reaches its actual scene and locked identity
+ok 5 - each standalone map/mode reaches its actual scene and locked identity
+  ---
+  duration_ms: 1.263757
+  type: 'test'
+  ...
+# Subtest: standalone selection rejects substitutions, unsupported modes and ignored options
+ok 6 - standalone selection rejects substitutions, unsupported modes and ignored options
+  ---
+  duration_ms: 0.5982
+  type: 'test'
+  ...
+# Subtest: sports round options preserve legal ordinary configuration without silent clamping
+ok 7 - sports round options preserve legal ordinary configuration without silent clamping
+  ---
+  duration_ms: 0.456666
+  type: 'test'
+  ...
+# Subtest: dev menu route opens the main menu scene without authority; no-arg default stays the viewer
+ok 8 - dev menu route opens the main menu scene without authority; no-arg default stays the viewer
+  ---
+  duration_ms: 0.306164
+  type: 'test'
+  ...
+# Subtest: world traversal and command board remain distinct native scenes
+ok 9 - world traversal and command board remain distinct native scenes
+  ---
+  duration_ms: 0.226965
+  type: 'test'
+  ...
+# Subtest: identity-zones routes Domination on Vermilion Fold only
+ok 10 - identity-zones routes Domination on Vermilion Fold only
+  ---
+  duration_ms: 0.359053
+  type: 'test'
+  ...
+# Subtest: dev launcher mirrors owned route bot and diagnostics bounds
+ok 11 - dev launcher mirrors owned route bot and diagnostics bounds
+  ---
+  duration_ms: 0.291526
+  type: 'test'
+  ...
+# Subtest: new deterministic union recipe, exact schedule, pickup support and meaningful negative cases
+ok 12 - new deterministic union recipe, exact schedule, pickup support and meaningful negative cases
+  ---
+  duration_ms: 22.35386
+  type: 'test'
+  ...
+# Subtest: all four gate masks connect every stage spawn pool and arrival to E
+ok 13 - all four gate masks connect every stage spawn pool and arrival to E
+  ---
+  duration_ms: 552.808675
+  type: 'test'
+  ...
+# Subtest: source capsule clearance along both directions of each route, supported seams and gate rays
+ok 14 - source capsule clearance along both directions of each route, supported seams and gate rays
+  ---
+  duration_ms: 9.57292
+  type: 'test'
+  ...
+# Subtest: normal-speed source moveActor physically walks all authored routes in both directions
+ok 15 - normal-speed source moveActor physically walks all authored routes in both directions
+  ---
+  duration_ms: 65.01227
+  type: 'test'
+  ...
+# Controlled upstream fixtures; source revision 48264858af820c69a833ef8b15c09ebac69e8cc3
+# Subtest: real upstream controller consumes new recipe; each target 1..30 terminates before further transit
+ok 16 - real upstream controller consumes new recipe; each target 1..30 terminates before further transit
+  ---
+  duration_ms: 809.30105
+  type: 'test'
+  ...
+# Subtest: source NPC archetypes, including champions and summons, spawn supported in every gate mask
+ok 17 - source NPC archetypes, including champions and summons, spawn supported in every gate mask
+  ---
+  duration_ms: 291.125485
+  type: 'test'
+  ...
+# Subtest: ordinary Match.step starts the natural first wave with unchanged pacing; death/restart uses source rules
+ok 18 - ordinary Match.step starts the natural first wave with unchanged pacing; death/restart uses source rules
+  ---
+  duration_ms: 62.339443
+  type: 'test'
+  ...
+# Subtest: controlled clear followed by actual input-driven travel causes arrival then later wave start
+ok 19 - controlled clear followed by actual input-driven travel causes arrival then later wave start
+  ---
+  duration_ms: 80.992791
+  type: 'test'
+  ...
+# Subtest: actual Horde transitive closure is classified separately and source-byte locked
+ok 20 - actual Horde transitive closure is classified separately and source-byte locked
+  ---
+  duration_ms: 412.575694
+  type: 'test'
+  ...
+# Subtest: closure rejects unreviewed adapter imports, external dependencies and runtime imports
+ok 21 - closure rejects unreviewed adapter imports, external dependencies and runtime imports
+  ---
+  duration_ms: 87.613813
+  type: 'test'
+  ...
+# Subtest: unchanged public Room still rejects Horde configuration
+ok 22 - unchanged public Room still rejects Horde configuration
+  ---
+  duration_ms: 1.64921
+  type: 'test'
+  ...
+# Subtest: actual local 24-bot helpers ship on native routes, outside multiplayer and Horde
+ok 23 - actual local 24-bot helpers ship on native routes, outside multiplayer and Horde
+  ---
+  duration_ms: 191.819132
+  type: 'test'
+  ...
+# Subtest: Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
+ok 24 - Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
+  ---
+  duration_ms: 51.049366
+  type: 'test'
+  ...
+# Subtest: Identity zone SYNTHETIC closure keeps Domination adapters explicit and separate from locked source
+ok 25 - Identity zone SYNTHETIC closure keeps Domination adapters explicit and separate from locked source
+  ---
+  duration_ms: 28.218594
+  type: 'test'
+  ...
+# Subtest: Identity zone SYNTHETIC closure rejects unreviewed route helpers
+ok 26 - Identity zone SYNTHETIC closure rejects unreviewed route helpers
+  ---
+  duration_ms: 25.537603
+  type: 'test'
+  ...
+# Subtest: Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules
+ok 27 - Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules
+  ---
+  duration_ms: 208.381483
+  type: 'test'
+  ...
+# Subtest: Horde package route is local-only, fixed default and rejects ignored options
+ok 28 - Horde package route is local-only, fixed default and rejects ignored options
+  ---
+  duration_ms: 1.297049
+  type: 'test'
+  ...
+# Subtest: Horde package loadouts match pinned source and reach the scene
+ok 29 - Horde package loadouts match pinned source and reach the scene
+  ---
+  duration_ms: 1.329129
+  type: 'test'
+  ...
+# Subtest: package scene routing covers all nine locked identities and preserves native capability subsets
+ok 30 - package scene routing covers all nine locked identities and preserves native capability subsets
+  ---
+  duration_ms: 0.40589
+  type: 'test'
+  ...
+# Subtest: bad package arguments fail before opening an owned server; no silent scene/mode fallback
+ok 31 - bad package arguments fail before opening an owned server; no silent scene/mode fallback
+  ---
+  duration_ms: 0.825115
+  type: 'test'
+  ...
+# Subtest: menu, viewer and operator-preview are parameterless special cases
+ok 32 - menu, viewer and operator-preview are parameterless special cases
+  ---
+  duration_ms: 1.249
+  type: 'test'
+  ...
+# Subtest: --debug-panel is accepted only by combat, horde, native-dm and identity-zones
+ok 33 - --debug-panel is accepted only by combat, horde, native-dm and identity-zones
+  ---
+  duration_ms: 0.705091
+  type: 'test'
+  ...
+# Subtest: --waves is a horde-only reviewed 1..30 value, forwarded when supplied
+ok 34 - --waves is a horde-only reviewed 1..30 value, forwarded when supplied
+  ---
+  duration_ms: 0.456966
+  type: 'test'
+  ...
+# Subtest: menu bot schemas match scene consumption and source bounds
+ok 35 - menu bot schemas match scene consumption and source bounds
+  ---
+  duration_ms: 0.246963
+  type: 'test'
+  ...
+# Subtest: diagnostics reach every route without enabling multiplayer cheats
+ok 36 - diagnostics reach every route without enabling multiplayer cheats
+  ---
+  duration_ms: 0.349104
+  type: 'test'
+  ...
+1..36
+# tests 36
+# suites 0
+# pass 36
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5428.945167

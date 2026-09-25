@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "source": "48264858af820c69a833ef8b15c09ebac69e8cc3",
+  "baseline": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "seed": 731,
+  "ticks": 600,
+  "dt": 0.016666666666666666,
+  "rngCalls": 284,
+  "finalRngState": 3565238487,
+  "equal": [
+    "snapshot",
+    "events",
+    "RNG"
+  ]
+}
