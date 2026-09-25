@@ -374,7 +374,44 @@ func req_options() -> Array:
 func req_context() -> Dictionary:
 	return {"mode":mode, "team":projection.get("team"), "req":projection.get("req"),
 		"activeBuff":projection.get("reqBuff"), "depots":projection.get("depots", []),
-		"depotsKnown":projection.get("depots_known") == true}
+		"depotsKnown":projection.get("depots_known") == true,
+		"isCommander":req_is_commander(), "relayOwned":req_relay_owned()}
+
+## Recipient-observed command seat for this actor. PvP publishes
+## `cocs.commander.seat[team]`; co-op publishes `cocs.command.seat[team]`. The
+## seat is an actor id; a missing/malformed seat is never treated as held. This
+## only decides what the client may *ask* for; `Room.buy` re-checks the seat.
+func req_is_commander() -> bool:
+	if actor_id < 0: return false
+	var team: Variant = projection.get("team")
+	if not (team is int or team is float): return false
+	var board: Dictionary = dictionary(projection.get("command")) if projection.get("coop") == true else dictionary(projection.get("commander"))
+	var seats: Variant = board.get("seat")
+	if not seats is Dictionary: return false
+	var seat: Variant = seats.get(str(int(team)))
+	if seat == null: return false
+	if not (seat is String or seat is int or seat is float): return false
+	return str(seat) == str(actor_id)
+
+## True only when this recipient's own team owns an observed `relay` node. Relays
+## are optional/absent on most boards, so absence stays "not owned" and refuses
+## (fail-closed) rather than being inferred.
+func req_relay_owned() -> bool:
+	var team: Variant = projection.get("team")
+	if not (team is int or team is float): return false
+	for node: Variant in projection.get("nodes", []):
+		if not node is Dictionary: continue
+		if node.get("archetype") != "relay": continue
+		if wire_integer(node.get("owner")) and int(node.owner) == int(team): return true
+	return false
+
+## Sorted recipient-observed depot ids owned by the recipient's team, or empty
+## when unknown/none. Same pure source as the purchase gate, for the picker.
+func req_owned_depots() -> Array[String]:
+	var team := -1
+	if projection.get("team") is int or projection.get("team") is float: team = int(projection.get("team"))
+	return ReqCatalog.owned_depot_ids(projection.get("depots"), team)
+
 
 func req_option(item_id: String) -> Dictionary:
 	for option: Variant in req_options():

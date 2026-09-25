@@ -67,6 +67,7 @@ func run() -> void:
 	_transport_contract()
 	_coop_depot_contract()
 	await _gui_contract()
+	await _gui_depot_contract()
 	print("LATTICE_REQ_PURCHASE_CONTRACT checks=", checks, " failures=", failures)
 	quit(0 if failures == 0 else 1)
 
@@ -98,6 +99,13 @@ func _transport_contract() -> void:
 	check(c.actions[1].status == "queued", "unrelated sequence refusal ignored")
 	wire(c, {"type":"cocs-reject","cardId":"native-r1-p1-s2","roundRevision":1,"roundRev":1,"actionSeq":2,"reason":"insufficient-req"})
 	check(c.actions[1].status == "rejected", "correlated refusal settles the card")
+	# Server target refusal is surfaced truthfully; the client never pre-claims a
+	# hit (it has no enemy/cut geometry) and never fabricates acceptance.
+	c.cooldown_until = 0
+	check(c.activate("buy", "repair-tool").is_empty() and c.sent.back().actionSeq == 3, "target-sensitive buy queues")
+	wire(c, {"type":"cocs-reject","cardId":c.sent.back().cardId,"roundRevision":1,"roundRev":1,"actionSeq":3,"reason":"no-target"})
+	check(c.actions.back().status == "rejected", "no-target refusal settles the card")
+	check(c.rejection_text("no-target").contains("legal target"), "no-target copy is explicit, not generic")
 	# Unsupported / reserved ids are refused before any frame.
 	var before := c.sent.size()
 	for bad: String in ["at-mine", "smoke", "barrier", "sentry", "supply-drop", "tier-upgrade", "oracle-unlock", "respawn", "reserve", "flux", ""]:
@@ -195,6 +203,60 @@ func _gui_contract() -> void:
 	snapshot(c, blind)
 	panel.world_refresh()
 	check(panel.req_button.disabled, "missing REQ disables the GUI buy")
+	# A server no-target refusal is surfaced truthfully; the picker never
+	# pre-claims a hit and never treats the queue as success.
+	var rich := base_state()
+	rich.cocs.req = [{"id":0,"req":200}]
+	snapshot(c, rich)
+	panel.world_refresh()
+	var repair_index := -1
+	var rich_options: Array = c.req_options()
+	for i: int in range(rich_options.size()):
+		if rich_options[i].get("id") == "repair-tool": repair_index = i
+	panel.world_req_select(repair_index)
+	check(panel.req_selected == "repair-tool" and not panel.req_confirm.disabled, "target-sensitive row is selectable")
+	c.cooldown_until = 0
+	panel.req_confirm.button_pressed = true
+	panel.world_req_purchase()
+	wire(c, {"type":"cocs-reject","cardId":c.sent.back().cardId,"roundRevision":1,"roundRev":1,"actionSeq":c.sent.back().actionSeq,"reason":"no-target"})
+	panel.world_refresh()
+	check(panel.req_notice.text.contains("legal target"), "server no-target refusal is surfaced in the picker")
+	panel.queue_free()
+	session.free()
+	c.free()
+	await process_frame
+
+func _gui_depot_contract() -> void:
+	var c := client("cocs-coop")
+	var session := StubSession.new()
+	var panel: Control = Commands.new()
+	root.add_child(panel)
+	panel.set_process(false)
+	session.client = c
+	panel.world_bind(session)
+	panel.show()
+	var owned := base_state()
+	owned.cocs.req = [{"id":0,"req":400}]
+	owned.cocs.traversal = {"depots":[{"id":"depot-b","owner":0},{"id":"depot-a","owner":0},{"id":"depot-x","owner":1}]}
+	snapshot(c, owned)
+	panel.world_refresh()
+	var puma := -1
+	var options: Array = c.req_options()
+	for i: int in range(options.size()):
+		if options[i].get("id") == "puma": puma = i
+	check(puma >= 0 and panel.req_depot_ids.size() == 2, "picker lists exactly the owned depots")
+	panel.world_req_select(puma)
+	panel.world_refresh()
+	check(panel.req_selected == "puma" and panel.req_depot_row.visible and not panel.req_confirm.disabled, "puma exposes an explicit depot picker")
+	panel.req_depot_pick.select(1)
+	panel.world_refresh()
+	var chosen: String = panel.world_req_depot()
+	check(chosen == panel.req_depot_ids[1], "explicit depot selection is used")
+	c.cooldown_until = 0
+	panel.req_confirm.button_pressed = true
+	panel.world_req_purchase()
+	check(c.sent.back().get("itemId") == "puma" and c.sent.back().get("depotId") == chosen, "frame carries the selected owned depot")
+	check(c.sent.back().get("depotId") != "depot-x", "enemy depot is never selected")
 	panel.queue_free()
 	session.free()
 	c.free()

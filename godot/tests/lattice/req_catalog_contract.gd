@@ -1,8 +1,10 @@
 extends SceneTree
 ## Native contract for the source-mirrored REQ catalogue. Pure/deterministic:
-## no network, no clock, no RNG, no GUI. The mirror comparison reads the
-## tracked source table directly, so a source cost/copy/launch change fails this
-## test instead of drifting silently.
+## no network, no clock, no RNG, no GUI. `_mirror_source()` parses the tracked
+## `game/cocs-economy.mjs` `REQ_ITEMS` block and requires an exact bidirectional
+## match with the generated mirror, so a source lane that launches a new row
+## fails this contract until `port/tools/native_lattice_req_catalog/export.mjs`
+## is re-run and reviewed.
 const Catalog = preload("res://lattice/req_catalog.gd")
 
 var checks := 0
@@ -34,6 +36,12 @@ func parse_modes(raw: String) -> Array[String]:
 		if not clean.is_empty(): out.append(clean)
 	return out
 
+func capture(text: String, pattern: String) -> String:
+	var regex := RegEx.new()
+	if regex.compile(pattern) != OK: return ""
+	var match := regex.search(text)
+	return match.get_string(1) if match != null else ""
+
 func run() -> void:
 	var script: Script = load("res://lattice/req_catalog.gd") as Script
 	if script == null or not script.can_instantiate():
@@ -45,7 +53,41 @@ func run() -> void:
 	print("LATTICE_REQ_CATALOG_CONTRACT checks=", checks, " failures=", failures)
 	quit(0 if failures == 0 else 1)
 
-## Compare every mirrored field to the real tracked table in game/cocs-economy.mjs.
+## Parse the tracked `REQ_ITEMS` block into one dictionary per source row. The
+## text shape is the same one the deterministic exporter cross-checks against an
+## import, so a drift in either view fails there first.
+func _source_rows(block: String) -> Array[Dictionary]:
+	var rows: Array[Dictionary] = []
+	var cursor := block.find("{id:'")
+	while cursor >= 0:
+		var next := block.find("\n {", cursor + 1)
+		if next < 0: next = block.length()
+		var chunk := block.substr(cursor, next - cursor)
+		rows.append({
+			"id":capture(chunk, "id:'([^']*)'"),
+			"name":capture(chunk, "name:'([^']*)'"),
+			"category":capture(chunk, "category:'([^']*)'"),
+			"cost":int(capture(chunk, "cost:(\\d+)")),
+			"effectCopy":capture(chunk, "effectCopy:'((?:[^'\\\\]|\\\\.)*)'"),
+			"target":capture(chunk, "(?:^|[{,])target:'([^']*)'"),
+			"modes":parse_modes(capture(chunk, "modes:\\[([^\\]]*)\\]")),
+			"personalBuff":chunk.contains("personalBuff:true"),
+			"commanderOnly":chunk.contains("commanderOnly:true"),
+			"requiresRelay":chunk.contains("requiresRelay:true"),
+			"teamWide":chunk.contains("teamWide:true"),
+			"launch":chunk.contains("launch:true"),
+			"coopLaunch":chunk.contains("coopLaunch:true"),
+			"effectKind":capture(chunk, "effect:\\{kind:'([^']*)'"),
+		})
+		cursor = block.find("{id:'", next)
+	return rows
+
+func same_modes(left: Array, right: Variant) -> bool:
+	if not right is Array or left.size() != right.size(): return false
+	for i: int in range(left.size()):
+		if str(left[i]) != str(right[i]): return false
+	return true
+
 func _mirror_source() -> void:
 	var root := ProjectSettings.globalize_path("res://")
 	var source_path := root.path_join("../game/cocs-economy.mjs").simplify_path()
@@ -57,47 +99,53 @@ func _mirror_source() -> void:
 	check(begin >= 0 and end > begin, "source REQ_ITEMS block located")
 	if begin < 0 or end <= begin: return
 	var block := text.substr(begin, end - begin)
-	var cost_re := RegEx.new(); cost_re.compile("cost:(\\d+)")
-	var copy_re := RegEx.new(); copy_re.compile("effectCopy:'([^']*)'")
-	var name_re := RegEx.new(); name_re.compile("name:'([^']*)'")
-	var modes_re := RegEx.new(); modes_re.compile("modes:\\[([^\\]]*)\\]")
-	check(Catalog.ITEMS.size() == 7, "mirror carries exactly the launched rows")
+	var source_rows := _source_rows(block)
+	check(not source_rows.is_empty(), "source table parsed end to end")
+	# Every offered row (non-empty modes, the source picker's filter) must be
+	# launchable and vice versa; the native mirror must not paper over a source
+	# inconsistency that would advertise an unpayable row.
+	var launched_ids: Array[String] = []
+	var offered_ids: Array[String] = []
+	for row: Dictionary in source_rows:
+		var modes: Array = row.get("modes", [])
+		check((modes.size() > 0) == (row.get("launch") == true or row.get("coopLaunch") == true), "source offered/launched agree: " + str(row.get("id")))
+		if row.get("launch") == true or row.get("coopLaunch") == true: launched_ids.append(str(row.get("id")))
+		if modes.size() > 0: offered_ids.append(str(row.get("id")))
+	# Bidirectional parity: a source row that launches a new effect must be
+	# explicitly mirrored, and the mirror must carry no extra row.
+	check(launched_ids.size() == Catalog.ITEMS.size(), "mirror size equals launched source rows")
+	var mirror_ids: Array[String] = []
+	for entry: Dictionary in Catalog.ITEMS: mirror_ids.append(str(entry.get("id")))
+	for id: String in launched_ids:
+		check(mirror_ids.has(id), "source launched row is mirrored: " + id)
+	for id: String in mirror_ids:
+		check(launched_ids.has(id), "mirror row is source-launched: " + id)
 	for entry: Dictionary in Catalog.ITEMS:
 		var id := str(entry.get("id"))
-		var needle := "id:'" + id + "'"
-		var occurrences := block.count(needle)
+		var occurrences := block.count("id:'" + id + "'")
 		check(occurrences == 1, "source has exactly one row for " + id)
 		if occurrences != 1: continue
-		# Each source row spans two lines; take the whole object so `effectCopy`
-		# (second line) is compared too. `\n {` starts the next row.
-		var start := block.find(needle)
-		var next_start := block.find("\n {", start)
-		if next_start < 0: next_start = block.length()
-		var item_text := block.substr(start, next_start - start)
-		var name_match := name_re.search(item_text)
-		var cost_match := cost_re.search(item_text)
-		var copy_match := copy_re.search(item_text)
-		var modes_match := modes_re.search(item_text)
-		check(name_match != null and name_match.get_string(1) == entry.get("name"), "name mirrored for " + id)
-		check(cost_match != null and int(cost_match.get_string(1)) == int(entry.get("cost")), "cost mirrored for " + id)
-		check(copy_match != null and copy_match.get_string(1) == entry.get("effectCopy"), "effectCopy mirrored for " + id)
-		check(item_text.contains("launch:true") or item_text.contains("coopLaunch:true"), "source row is launched: " + id)
-		var modes := models_modes(modes_match)
-		check(same_modes(modes, entry.get("modes")), "modes mirrored for " + id)
-		check(entry.get("personalBuff") == item_text.contains("personalBuff:true"), "personalBuff mirrored for " + id)
+		check(Catalog.KNOWN_EFFECT_KINDS.has(str(entry.get("effectKind", ""))), "native-known effect kind: " + id)
+		var source := {}
+		for row: Dictionary in source_rows:
+			if row.get("id") == id: source = row
+		if source.is_empty(): continue
+		check(str(source.get("name")) == str(entry.get("name")), "name mirrored for " + id)
+		check(str(source.get("category")) == str(entry.get("category")), "category mirrored for " + id)
+		check(int(source.get("cost")) == int(entry.get("cost")), "cost mirrored for " + id)
+		check(str(source.get("effectCopy")) == str(entry.get("effectCopy")), "effectCopy mirrored for " + id)
+		check(str(source.get("target")) == str(entry.get("target")), "target mirrored for " + id)
+		check(same_modes(source.get("modes"), entry.get("modes")), "modes mirrored for " + id)
+		check(source.get("personalBuff") == entry.get("personalBuff"), "personalBuff mirrored for " + id)
+		check(source.get("commanderOnly") == entry.get("commanderOnly"), "commanderOnly mirrored for " + id)
+		check(source.get("requiresRelay") == entry.get("requiresRelay"), "requiresRelay mirrored for " + id)
+		check(source.get("teamWide") == entry.get("teamWide"), "teamWide mirrored for " + id)
+		check(source.get("launch") == entry.get("launch") and source.get("coopLaunch") == entry.get("coopLaunch"), "launch flags mirrored for " + id)
+		if not str(source.get("effectKind", "")).is_empty():
+			check(str(source.get("effectKind")) == str(entry.get("effectKind")), "effect kind mirrored for " + id)
 	# Rows without a shipped effect, and reserved FLUX ids, are never offered.
 	for unsupported: String in ["at-mine", "smoke", "barrier", "sentry", "forward-depot", "supply-drop", "recon-pulse", "fortify-doctrine", "tier-upgrade", "oracle-unlock", "respawn", "reserve", "flux"]:
 		check(Catalog.item(unsupported).is_empty(), "unsupported row absent: " + unsupported)
-
-func models_modes(match: RegExMatch) -> Array[String]:
-	if match == null: return parse_modes("")
-	return parse_modes(match.get_string(1))
-
-func same_modes(left: Array[String], right: Variant) -> bool:
-	if not right is Array or left.size() != right.size(): return false
-	for i: int in range(left.size()):
-		if left[i] != str(right[i]): return false
-	return true
 
 func _pure_options() -> void:
 	var base := {"mode":"cocs", "team":0, "req":100, "activeBuff":null, "depots":[], "depotsKnown":false}
@@ -137,3 +185,16 @@ func _pure_options() -> void:
 	check(Catalog.mode_key("operations") == "cocs-coop" and Catalog.mode_key("pvpve") == "cocs", "mode aliases resolve")
 	check(Catalog.mode_key("bogus") == "", "unknown mode stays unknown")
 	check(Catalog.active_buff_id("overshield") == "overshield" and Catalog.active_buff_id("puma") == "" and Catalog.active_buff_id(null) == "", "buff slot filter mirror")
+	# Commander/relay/effect gates are pure and fail closed. The shipped table
+	# has no such launched row yet, so they are proven with synthetic entries.
+	var commander := {"id":"cmp","name":"","category":"","cost":10,"personalBuff":false,"commanderOnly":true,"requiresRelay":false,"effectKind":"heal","target":"self","modes":["cocs"]}
+	check(Catalog.entry_reason(commander, base) == "commander-only", "unobserved commander seat refuses")
+	var command_ctx := base.duplicate(true); command_ctx["isCommander"] = true
+	check(Catalog.entry_reason(commander, command_ctx).is_empty(), "observed commander seat allows")
+	var relay := {"id":"relay-item","name":"","category":"","cost":10,"personalBuff":false,"commanderOnly":false,"requiresRelay":true,"effectKind":"heal","target":"self","modes":["cocs"]}
+	check(Catalog.entry_reason(relay, base) == "requires-relay", "absent relay refuses")
+	var relay_ctx := base.duplicate(true); relay_ctx["relayOwned"] = true
+	check(Catalog.entry_reason(relay, relay_ctx).is_empty(), "owned relay allows")
+	var unknown_effect := {"id":"future","name":"","category":"","cost":10,"personalBuff":false,"commanderOnly":false,"requiresRelay":false,"effectKind":"smoke","target":"self","modes":["cocs"]}
+	check(Catalog.entry_reason(unknown_effect, base) == "unsupported-effect", "unknown effect kind refuses")
+	check(Catalog.reason_text("unsupported-effect") != Catalog.reason_text("bogus-reason"), "unsupported-effect has specific copy")

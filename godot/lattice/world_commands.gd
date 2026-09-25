@@ -23,6 +23,10 @@ var topology := Topology.new()
 var telemetry := Telemetry.new()
 var authored_map_id := ""
 var req_items := ItemList.new()
+var req_depot_row := HBoxContainer.new()
+var req_depot_caption := Label.new()
+var req_depot_pick := OptionButton.new()
+var req_depot_ids: Array[String] = []
 var req_effect := Label.new()
 var req_confirm := CheckBox.new()
 var req_button := Button.new()
@@ -95,6 +99,14 @@ func _ready() -> void:
 	req_items.custom_minimum_size.y = 96
 	req_items.item_selected.connect(world_req_select)
 	column.add_child(req_items)
+	req_depot_caption.text = "Depot"
+	req_depot_caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	req_depot_row.add_theme_constant_override("separation", 8)
+	req_depot_row.add_child(req_depot_caption)
+	req_depot_pick.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	req_depot_pick.item_selected.connect(func(_index: int) -> void: world_refresh())
+	req_depot_row.add_child(req_depot_pick)
+	column.add_child(req_depot_row)
 	column.add_child(req_effect)
 	req_confirm.toggled.connect(func(_pressed: bool) -> void: world_refresh())
 	column.add_child(req_confirm)
@@ -134,6 +146,9 @@ func world_clear() -> void:
 	req_authorization = ""
 	req_confirm.set_pressed_no_signal(false)
 	req_items.deselect_all()
+	req_depot_ids.clear()
+	req_depot_pick.clear()
+	req_depot_row.visible = false
 	req_effect.text = ""
 	req_help.text = ""
 	req_notice.text = ""
@@ -168,19 +183,17 @@ func world_req_select(index: int) -> void:
 	req_selected = str(options[index].get("id", ""))
 	world_refresh()
 
-## First owned depot in recipient-observed order, or "" when unknown/none. Used
-## only for the OPERATIONS Puma's depot spend point; never inferred.
+## Selected owned depot for the OPERATIONS Puma, or "" when unknown/none. Uses
+## the explicit per-depot picker when its selection is still owned, else the
+## first observed owned depot; never inferred.
 func world_req_depot() -> String:
-	var team := -1
-	var observed_team: Variant = client.projection.get("team")
-	if observed_team is int or observed_team is float: team = int(observed_team)
-	for depot: Variant in client.projection.get("depots", []):
-		if not depot is Dictionary: continue
-		var owner: Variant = depot.get("owner")
-		if not (owner is int or owner is float): continue
-		if int(owner) != team: continue
-		return str(depot.get("id", ""))
-	return ""
+	var owned: Array[String] = []
+	if is_instance_valid(client): owned = client.req_owned_depots()
+	if owned.is_empty(): return ""
+	if req_depot_pick.selected >= 0 and req_depot_pick.selected < req_depot_ids.size():
+		var chosen := req_depot_ids[req_depot_pick.selected]
+		if owned.has(chosen): return chosen
+	return str(owned[0])
 
 func world_req_purchase() -> void:
 	world_refresh()
@@ -257,17 +270,15 @@ func world_refresh() -> void:
 
 ## Personal REQ picker. Everything shown is a mirror of the source catalogue plus
 ## recipient-observed state; the button only queues one ordinary BUY request.
+## Gated rows stay readable (greyed, not disabled) so the truthful refusal reason
+## is visible, but the purchase gate still refuses any frame for them.
 func world_refresh_req(p: Dictionary, blocked: String) -> void:
 	var options: Array = []
 	if is_instance_valid(client): options = client.req_options()
-	var labels: PackedStringArray = []
+	var rows := PackedStringArray()
 	for option: Variant in options:
-		if not option is Dictionary: continue
-		var mark := ""
-		if option.get("enabled") != true:
-			mark = " · %s" % client.req_reason_text(str(option.get("disabledReason", "")))
-		labels.append("%s · %s REQ · %s%s" % [option.get("name", option.get("id")), option.get("cost"), option.get("id"), mark])
-	var signature := "\n".join(labels)
+		if option is Dictionary: rows.append(str(option.get("id", "")))
+	var signature := "%s|%s" % [blocked, "\n".join(rows)]
 	if signature != req_signature:
 		req_signature = signature
 		req_items.clear()
@@ -275,9 +286,22 @@ func world_refresh_req(p: Dictionary, blocked: String) -> void:
 			if option is Dictionary: req_items.add_item(str(option.get("name", option.get("id"))))
 	for i: int in range(options.size()):
 		var option: Dictionary = options[i]
-		req_items.set_item_text(i, "%s · %s REQ" % [option.get("name", option.get("id")), option.get("cost")])
-		req_items.set_item_tooltip(i, str(option.get("effectCopy", "")))
-		req_items.set_item_disabled(i, option.get("enabled") != true or not blocked.is_empty())
+		var mark := ""
+		if option.get("enabled") != true:
+			mark = client.req_reason_text(str(option.get("disabledReason", "")))
+		var cost := option.get("cost")
+		req_items.set_item_text(i, "%s · %s REQ%s" % [option.get("name", option.get("id")), cost, "" if mark.is_empty() else " · " + mark])
+		var tip := str(option.get("effectCopy", ""))
+		if not mark.is_empty(): tip += "\n" + mark
+		if str(option.get("target", "self")) in ["cut-link", "depot"]:
+			tip += "\nServer validates a legal target; a refusal appears as no-target."
+		req_items.set_item_tooltip(i, tip)
+		# Readable when gated, but never purchase-enabling; the buy gate below and
+		# the server re-check every frame.
+		req_items.set_item_disabled(i, false)
+		var usable := option.get("enabled") == true and blocked.is_empty()
+		req_items.set_item_custom_fg_color(i, Color("dbe7f0") if usable else Color("8aa0b4"))
+	req_items.custom_minimum_size.y = maxf(64.0, minf(7.0, float(maxi(1, options.size()))) * 30.0)
 	var chosen: Dictionary = {}
 	var index := -1
 	for i: int in range(options.size()):
@@ -289,6 +313,7 @@ func world_refresh_req(p: Dictionary, blocked: String) -> void:
 		req_items.deselect_all()
 	else:
 		req_items.select(index)
+	world_refresh_depots(chosen)
 	var depot := world_req_depot() if req_selected == "puma" else ""
 	var req_gate := "Select a REQ item"
 	if chosen.is_empty():
@@ -297,7 +322,10 @@ func world_refresh_req(p: Dictionary, blocked: String) -> void:
 		req_effect.text = "%s · %s REQ\n%s" % [chosen.get("name"), chosen.get("cost"), chosen.get("effectCopy")]
 		req_gate = blocked
 	else:
-		req_effect.text = "%s · %s REQ\n%s" % [chosen.get("name"), chosen.get("cost"), chosen.get("effectCopy")]
+		var detail := "%s · %s REQ\n%s" % [chosen.get("name"), chosen.get("cost"), chosen.get("effectCopy")]
+		if str(chosen.get("target", "self")) in ["cut-link", "depot"]:
+			detail += "\nServer validates a legal target; a refusal appears as no-target."
+		req_effect.text = detail
 		req_gate = client.req_gate(req_selected, depot)
 	# Consent belongs to one item, price and depot inside a live identity epoch.
 	# Any change to those (or to the server gate below) revokes it before another
@@ -306,10 +334,12 @@ func world_refresh_req(p: Dictionary, blocked: String) -> void:
 	if depot != "": req_fresh += "/" + depot
 	if req_fresh != req_authorization or not req_gate.is_empty(): req_confirm.set_pressed_no_signal(false)
 	req_authorization = req_fresh
-	req_confirm.text = "Authorize one REQ purchase"
+	req_confirm.text = "Authorize one REQ purchase" if chosen.is_empty() else "Authorize %s (%s REQ)" % [chosen.get("name"), chosen.get("cost")]
 	req_confirm.disabled = not visible or chosen.is_empty() or not req_gate.is_empty()
 	req_button.disabled = req_confirm.disabled or not req_confirm.button_pressed
+	req_button.text = "Purchase REQ item" if chosen.is_empty() else "Purchase %s" % chosen.get("name")
 	req_help.text = req_gate if not req_gate.is_empty() else "Recipient permission available. Authorize, then purchase once."
+	req_notice.text = ""
 	var latest_buy: Dictionary = {}
 	for action: Dictionary in client.actions:
 		if action.get("kind") == "buy": latest_buy = action
@@ -320,6 +350,20 @@ func world_refresh_req(p: Dictionary, blocked: String) -> void:
 		elif status == "confirmed": req_notice.text = "BUY settled by server; own REQ above is authoritative."
 		elif status == "rejected": req_notice.text = "BUY refused: %s" % client.rejection_text(latest_buy.get("reason"))
 	req_notice.visible = not req_notice.text.is_empty()
+
+## Owned-depot picker for the OPERATIONS Puma only. The list is exactly the
+## recipient-observed owned depots; absence stays hidden and the row refuses.
+func world_refresh_depots(chosen: Dictionary) -> void:
+	var owned: Array[String] = []
+	if is_instance_valid(client): owned = client.req_owned_depots()
+	if owned != req_depot_ids:
+		req_depot_ids = owned
+		req_depot_pick.clear()
+		for id: String in owned: req_depot_pick.add_item(id)
+		if not owned.is_empty(): req_depot_pick.select(0)
+	var needs_depot: bool = not chosen.is_empty() and str(chosen.get("target", "self")) == "depot"
+	req_depot_row.visible = needs_depot and not owned.is_empty()
+	req_depot_caption.text = "Depot" if req_depot_row.visible else ""
 
 func _process(_delta: float) -> void:
 	world_refresh()
