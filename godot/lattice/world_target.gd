@@ -48,7 +48,7 @@ func select(projection: Dictionary, topology: Dictionary, pose: Dictionary,
 				result.merge({"intent":intent, "reason_code":"dominance-prerequisite", "text":"Opponent dominance: no directly legal enemy target. An adjacent legal frontier is required before a dominance break can be advised; flip count unknown unless published."}, true)
 				return result
 			intent = "push"; code = "dominance-prerequisite"
-	if chosen.is_empty() and team >= 0 and own_threat and dominance_team == team:
+	if not rank_enemy and team >= 0 and own_threat and dominance_team == team:
 		intent = "defend"; code = "own-contest"
 		for entry: Dictionary in entries:
 			if entry.get("mine") == true and entry.get("contested") == true and (chosen.is_empty() or _tie(entry, chosen, pose)): chosen = entry
@@ -59,10 +59,20 @@ func select(projection: Dictionary, topology: Dictionary, pose: Dictionary,
 	if chosen.is_empty(): return result
 	if not selected_id.is_empty():
 		for entry: Dictionary in entries:
-			if entry.get("id") == selected_id and entry.get("capture_legal") == true and (code != "enemy-dominance" or entry.get("enemy") == true): chosen = entry; break
+			if entry.get("id") != selected_id: continue
+			var selection_matches_intent := entry.get("capture_legal") == true
+			if code == "own-contest": selection_matches_intent = entry.get("mine") == true and entry.get("contested") == true
+			elif code == "enemy-dominance": selection_matches_intent = selection_matches_intent and entry.get("enemy") == true
+			elif code == "dominance-prerequisite": selection_matches_intent = selection_matches_intent and entry.get("enemy") != true
+			if selection_matches_intent: chosen = entry
+			break
 	var stable: Dictionary = {}
 	for entry: Dictionary in entries:
-		if entry.get("id") == previous.get("target_id") and ((intent == "defend" and entry.get("mine") and entry.get("contested")) or (intent != "defend" and entry.get("capture_legal") and (code != "enemy-dominance" or entry.get("enemy") == true))): stable = entry
+		var stable_matches_intent := entry.get("capture_legal") == true
+		if code == "own-contest": stable_matches_intent = entry.get("mine") == true and entry.get("contested") == true
+		elif code == "enemy-dominance": stable_matches_intent = stable_matches_intent and entry.get("enemy") == true
+		elif code == "dominance-prerequisite": stable_matches_intent = stable_matches_intent and entry.get("enemy") != true
+		if entry.get("id") == previous.get("target_id") and stable_matches_intent: stable = entry
 	if not stable.is_empty() and selected_id.is_empty() and str(previous.get("intent")) == intent: chosen = stable
 	var bearing := Guidance.bearing(pose, chosen, yaw) if not pose.is_empty() else "bearing unknown"
 	var distance := Vector2(float(pose.get("x", 0)), float(pose.get("z", 0))).distance_to(Vector2(float(chosen.get("x", 0)), float(chosen.get("z", 0)))) if not pose.is_empty() else -1.0

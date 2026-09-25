@@ -44,6 +44,17 @@ func _initialize() -> void:
 	var threatened := no_frontier.duplicate(true); threatened[1].contested = true
 	var defense := selector.select({"team":0,"dominance":{"team":0,"breakCount":1}}, t.model(threatened, 0), {"x":0.0,"z":0.0})
 	check(defense.reason_code == "own-contest" and defense.target_id == "own" and not defense.capture_legal, "own dominance defends published contest even with no legal frontier")
+	var contested_with_frontier := projection.duplicate(true)
+	contested_with_frontier[1].contested = true; contested_with_frontier[3].owner = 1
+	var contested_model: Dictionary = t.model(contested_with_frontier, 0)
+	check(contested_model.by_id.far.capture_legal and contested_model.by_id.far.enemy, "fixture has a legal enemy frontier beside a contested owned node")
+	var own_dom := {"team":0,"dominance":{"team":0,"breakCount":1}}
+	defense = selector.select(own_dom, contested_model, {"x":0.0,"z":0.0}, {}, "far")
+	check(defense.reason_code == "own-contest" and defense.intent == "defend" and defense.target_id == "own", "explicit enemy frontier cannot replace the node named by own-contest defense")
+	defense = selector.select(own_dom, t.model(threatened, 0), {"x":0.0,"z":0.0}, {}, "stale-node")
+	check(defense.reason_code == "own-contest" and defense.target_id == "own", "stale explicit selection retains the defended contested node")
+	var prerequisite_selection := selector.select(dom_projection, battle, {"x":0.0,"z":0.0}, {}, "near")
+	check(prerequisite_selection.reason_code == "dominance-prerequisite" and prerequisite_selection.target_id == "far", "enemy selection cannot replace a neutral dominance prerequisite")
 	var none := t.model([], 0)
 	target = selector.select({"team":0}, none, {})
 	check(target.target_id.is_empty() and not target.capture_legal, "no legal target remains advisory fallback")
