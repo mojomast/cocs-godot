@@ -212,7 +212,8 @@ func observe(frame: Dictionary) -> void:
 	for wallet: Variant in array(board.get("req")):
 		if wallet is Dictionary and wallet.get("id") == actor_id: req = wallet.get("req")
 	# Personal buff slot: only an own-team actor carries `reqBuff` (the per-team
-	# filter strips it from enemies). Missing is unknown, never an empty slot.
+	# filter strips it from enemies). The source omits undefined/empty slots;
+	# this is only a local preflight hint, never purchase authority.
 	var req_buff: Variant = actor.get("reqBuff")
 	if not req_buff is String: req_buff = null
 	# Recipient-observed traversal depots (public world truth, §11.3). Only the

@@ -19,8 +19,8 @@ func valid_envelope(frame: Dictionary) -> bool:
 		for key: String in ["dead", "eyeHeight", "bodyYaw", "armor", "weapon", "shots", "req"]:
 			if actor.has(key) and not finite_number(actor[key]): return false
 		if not wire_integer(actor.get("team")) or (actor.team != 0 and actor.team != 1): return false
-		# Own-team personal buff slot. Optional; absent stays unknown, never an
-		# empty slot. Reject an unbounded/non-string value instead of coercing.
+		# Own-team personal buff slot. Optional because the source omits undefined
+		# slots; reject an unbounded/non-string value instead of coercing.
 		if actor.has("reqBuff") and actor.reqBuff != null and not (actor.reqBuff is String and actor.reqBuff.length() <= 64): return false
 		if not actor.get("ammo", []) is Array: return false
 	if not state.get("pickups", []) is Array: return false

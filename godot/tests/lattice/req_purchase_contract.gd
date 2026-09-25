@@ -59,6 +59,11 @@ func client(mode: String) -> RecordingTransport:
 func _initialize() -> void: call_deferred("run")
 
 func run() -> void:
+	var script: Script = load("res://lattice/world_commands.gd") as Script
+	if script == null or not script.can_instantiate():
+		push_error("REQ world commands script did not compile")
+		quit(1)
+		return
 	_transport_contract()
 	_coop_depot_contract()
 	await _gui_contract()

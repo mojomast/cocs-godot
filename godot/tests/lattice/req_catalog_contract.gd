@@ -35,6 +35,11 @@ func parse_modes(raw: String) -> Array[String]:
 	return out
 
 func run() -> void:
+	var script: Script = load("res://lattice/req_catalog.gd") as Script
+	if script == null or not script.can_instantiate():
+		push_error("REQ catalogue script did not compile")
+		quit(1)
+		return
 	_mirror_source()
 	_pure_options()
 	print("LATTICE_REQ_CATALOG_CONTRACT checks=", checks, " failures=", failures)

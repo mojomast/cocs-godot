@@ -166,3 +166,15 @@ owner visual review and native catalog parity remain open.
 An old-catalog max-gear comparison using the same stock report also failed this
 invariant (`lattice-catalog-old-max-fullsmoke.json` in the same directory); the gate is
 not established for either loadout set by these neutral-policy samples.
+
+The native Godot LATTICE command panel now has a personal REQ picker. Its finite
+seven-row mirror is checked against `game/cocs-economy.mjs`; the recipient's
+observed balance, buff slot, mode and owned depot gate the ordinary BUY request,
+while server cards and snapshots alone settle/display outcomes. On the integrated
+branch, Godot 4.5.2 import succeeds and focused headless checks report 84/84
+catalog comparisons, 51/51 BUY lifecycle checks, 91/91 economy checks and
+38/38 L1 checks. These are synthetic fixtures, not a live purchase on two native
+clients. The pre-existing `world_commands_contract.gd` fixture still fails on
+both this branch and the earlier `cocs-lattice-flash-round` worktree: its synthetic
+world never receives a usable recipient projection, and it later accesses
+`projection.spent` after that failed setup. That result is not counted as a pass.

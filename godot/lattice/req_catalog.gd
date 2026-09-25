@@ -101,7 +101,7 @@ static func options(ctx: Dictionary) -> Array[Dictionary]:
 	var balance_known := _finite(ctx.get("req"))
 	var balance := float(ctx.get("req")) if balance_known else 0.0
 	var active := active_buff_id(ctx.get("activeBuff"))
-	var depots_known := ctx.get("depotsKnown") == true
+	var depots_known: bool = ctx.get("depotsKnown") == true
 	var owned := owned_depot_ids(ctx.get("depots"), team)
 	var out: Array[Dictionary] = []
 	for entry: Dictionary in ITEMS:
