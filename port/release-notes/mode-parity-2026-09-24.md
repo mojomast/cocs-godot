@@ -25,6 +25,12 @@ and source commit `515daf07589150dd3241f4ae1425cc1b093912f5` retained.
   and Zones stay within their source-supported 0–8; modes with fixed rosters
   keep their own rules. Select counts from the menu before launching.
 
+Fresh [mode-parity gallery screenshots](http://100.125.104.79:4371/#mode-parity)
+show menu capacity, live four-bot first-person diagnostics and scoreboard, and
+an arranged real-authority Horde death/fall. The 24-bot picture is the menu
+selection, not a 24-bot rendered match. These CPU software-rendered captures
+are not a hardware performance or hands-on visual verdict.
+
 ## Owner hardware check
 
 Download and extract the Windows or Linux archive from this prerelease. On

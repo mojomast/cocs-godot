@@ -1,0 +1,179 @@
+{
+  "schema": 1,
+  "label": "software-rendered project captures; no hardware FPS verdict",
+  "scene_runtime_commit": "770814128d19b268adec67233831bdaf6afca715",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "renderer": "Godot 4.5.2 GL Compatibility on Xvfb / llvmpipe",
+  "horde_staging": "One test-only source Match.damage call against a real wave NPC; subsequent death, corpse and blood are received from the authority.",
+  "files": [
+    {
+      "bots": 24,
+      "diagnostics": true,
+      "name": "menu-native-24",
+      "path": "menu-native-24.png",
+      "route": "native-dm",
+      "scene": "main-menu",
+      "size": [
+        1280,
+        800
+      ],
+      "width": 1280,
+      "height": 800,
+      "sha256": "9a9a5f12efd5db09006b76e81bb9061d2a2ee679ff11c2d4a186e64248e99be3"
+    },
+    {
+      "actors": 5,
+      "bots": 4,
+      "first_person": true,
+      "map": "prism-foundry",
+      "name": "dm-diagnostics",
+      "path": "dm-diagnostics.png",
+      "scene": "native-dm",
+      "size": [
+        1280,
+        800
+      ],
+      "width": 1280,
+      "height": 800,
+      "sha256": "719d217ce17e1ca5019b457e5a00f57a233f177c5d6f735e5d3afb764d828137"
+    },
+    {
+      "map": "prism-foundry",
+      "name": "dm-roster",
+      "path": "dm-roster.png",
+      "scene": "native-dm",
+      "scoreboard_actors": 5,
+      "size": [
+        1280,
+        800
+      ],
+      "width": 1280,
+      "height": 800,
+      "sha256": "816f4bec7a900aa23e27f82acb4a6fe733494beb016018afa45152171f321cab"
+    },
+    {
+      "bots": 4,
+      "fired_events": 39,
+      "local_shots": 3,
+      "map": "prism-foundry",
+      "name": "dm-barrel-fire",
+      "path": "dm-barrel-fire.png",
+      "scene": "native-dm",
+      "size": [
+        1280,
+        800
+      ],
+      "width": 1280,
+      "height": 800,
+      "sha256": "a9d3d937c168840015352283718ebeec6e706bdb37f1be2d7876517c55fbd4e7"
+    },
+    {
+      "enemies": 3,
+      "map": "meridian-exchange",
+      "name": "horde-before",
+      "path": "horde-before.png",
+      "scene": "horde",
+      "size": [
+        1280,
+        800
+      ],
+      "target": 2,
+      "width": 1280,
+      "height": 800,
+      "sha256": "5dcbd042af23c8f61f4cd0966c51b4a82098a8cdfe4e934c8d9ba4af9e3f381c"
+    },
+    {
+      "crop": [
+        410,
+        240,
+        440,
+        320
+      ],
+      "name": "horde-before-detail",
+      "nearest_neighbour": true,
+      "path": "horde-before-detail.png",
+      "size": [
+        880,
+        640
+      ],
+      "source": "horde-before.png",
+      "width": 880,
+      "height": 640,
+      "sha256": "e97ef91d611068be80d50a909990f0a92bdd498a462e852d81accdf38a9c013b"
+    },
+    {
+      "active_emitters": 1,
+      "corpses": 1,
+      "death_bursts": 1,
+      "map": "meridian-exchange",
+      "name": "horde-impact",
+      "path": "horde-impact.png",
+      "scene": "horde",
+      "size": [
+        1280,
+        800
+      ],
+      "staged_source_damage": true,
+      "target": 2,
+      "width": 1280,
+      "height": 800,
+      "sha256": "8f6997a772080375bf387227d981cf1eafb4d55ad5ef579cdc32a07acf477aad"
+    },
+    {
+      "crop": [
+        410,
+        240,
+        440,
+        320
+      ],
+      "name": "horde-impact-detail",
+      "nearest_neighbour": true,
+      "path": "horde-impact-detail.png",
+      "size": [
+        880,
+        640
+      ],
+      "source": "horde-impact.png",
+      "width": 880,
+      "height": 640,
+      "sha256": "fdb75a468fcf8b3271d50a791a1fdfaee0d0b67c7b5ca87bb1996bafbd35bb6f"
+    },
+    {
+      "corpses": 1,
+      "death_bursts": 1,
+      "map": "meridian-exchange",
+      "name": "horde-death",
+      "path": "horde-death.png",
+      "scene": "horde",
+      "size": [
+        1280,
+        800
+      ],
+      "staged_source_damage": true,
+      "target": 2,
+      "width": 1280,
+      "height": 800,
+      "sha256": "8e35edaebee8fb4d76650f4048d3431d5e8c3e200d9d3044ff55e1830706a643"
+    },
+    {
+      "crop": [
+        410,
+        240,
+        440,
+        320
+      ],
+      "name": "horde-death-detail",
+      "nearest_neighbour": true,
+      "path": "horde-death-detail.png",
+      "size": [
+        880,
+        640
+      ],
+      "source": "horde-death.png",
+      "width": 880,
+      "height": 640,
+      "sha256": "57d191c66e2ea865f53c13de85fe041b1174dca9d5947821251658608842accf"
+    }
+  ]
+}
