@@ -211,10 +211,10 @@ test('the REQ cost table matches the spec and REQ can never buy a respawn/RESERV
 // WP1.3 truthful launch set + shared purchase options
 // ---------------------------------------------------------------------------
 test('only rows with a shipped effect are launchable and every unlaunched row refuses without a debit',()=>{
- // Truthful launch sets: the four personal buffs + the two field-equipment
+ // Truthful launch sets: the four personal buffs + the three field-equipment
  // rows in both modes, the Puma in OPERATIONS only.
- assert.deepEqual([...LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool']);
- assert.deepEqual([...COOP_LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','puma']);
+ assert.deepEqual([...LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','sentry']);
+ assert.deepEqual([...COOP_LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','sentry','puma']);
  assert.deepEqual([...PERSONAL_BUFF_IDS],['field-repair','ammo-crate','haste','overshield']);
  const puma=reqItem('puma');
  assert.equal(puma.launch,false);
@@ -241,9 +241,10 @@ test('only rows with a shipped effect are launchable and every unlaunched row re
  }
  // Every other catalogue row is unoffered, mode-less and refuses before a debit.
  const unlaunched=REQ_ITEMS.filter(item=>item.launch!==true&&item.coopLaunch!==true).map(item=>item.id);
- assert.ok(unlaunched.length>=10,`saw ${unlaunched.length} unlaunched rows`);
+ assert.ok(unlaunched.length>=9,`saw ${unlaunched.length} unlaunched rows`);
  assert.ok(unlaunched.includes('smoke'),'the no-fog smoke row stays deferred');
- assert.ok(unlaunched.includes('at-mine')&&unlaunched.includes('sentry')&&unlaunched.includes('supply-drop')&&unlaunched.includes('tier-upgrade'));
+ assert.ok(unlaunched.includes('at-mine')&&unlaunched.includes('barrier')&&unlaunched.includes('supply-drop')&&unlaunched.includes('tier-upgrade'));
+ assert.ok(!unlaunched.includes('sentry'),'the supportable sentry fortification is launched');
  for(const id of unlaunched){
   assert.deepEqual([...reqItemModes(id)],[]);
   assert.equal(reqItemSupported(id,REQ_MODE_IDS.pvp),false);
@@ -283,7 +284,7 @@ test('reqPurchaseOptions reports affordability, mode, buff and depot gates from 
  assert.equal(pvp.balance,100);
  assert.equal(pvp.balanceSource,'actor.req','the authoritative float wallet is the source');
  assert.equal(pvp.authoritative,true);
- assert.deepEqual(pvp.items.map(item=>item.id),['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','puma'],'only supported rows are offered');
+ assert.deepEqual(pvp.items.map(item=>item.id),['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','sentry','puma'],'only supported rows are offered');
  const haste=pvp.items.find(item=>item.id==='haste');
  assert.equal(haste.cost,35);
  assert.equal(haste.category,'buff');
@@ -297,7 +298,7 @@ test('reqPurchaseOptions reports affordability, mode, buff and depot gates from 
  assert.equal(pvpPuma.enabled,false);
  assert.equal(pvpPuma.disabledReason,'wrong-mode','OPERATIONS-only rows are listed but disabled in PvPvE even when unaffordable');
  assert.equal(pvpPuma.affordable,false,'100 REQ cannot afford a 150 row');
- assert.equal(pvp.items.some(item=>['at-mine','sentry','supply-drop','oracle-unlock'].includes(item.id)),false,'unsupported rows are never offered');
+ assert.equal(pvp.items.some(item=>['at-mine','barrier','supply-drop','oracle-unlock'].includes(item.id)),false,'unsupported rows are never offered');
 
  // Unaffordable: exactly one reason, and the depot gate precedes affordability.
  const poor=reqPurchaseOptions({

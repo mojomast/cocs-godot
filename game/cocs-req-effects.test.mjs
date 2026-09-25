@@ -45,6 +45,7 @@ const worldDigest = (match, actor) => JSON.stringify({
  purchases: Object.values(match.objectiveState.traversal?.depots ?? {}).map(depot => ({id: depot.id, purchaseId: depot.purchaseId ?? null})),
  spots: spotDigest(match.objectiveState),
  cuts: [...(match.objectiveState.cuts ?? [])].sort(),
+ deployables: match.deployables.map(entry => ({id: entry.id, owner: entry.owner, team: entry.team, health: entry.health, life: entry.life})),
 });
 // Purchase-owned world state only: a refused buy must not move any of it. The
 // free depot loaners and bot movement/combat are deliberately excluded because
@@ -57,6 +58,7 @@ const purchaseDigest = (match, actor) => JSON.stringify({
  purchases: Object.values(match.objectiveState.traversal?.depots ?? {}).map(depot => ({id: depot.id, purchaseId: depot.purchaseId ?? null})),
  spots: spotDigest(match.objectiveState),
  cuts: [...(match.objectiveState.cuts ?? [])].sort(),
+ deployables: match.deployables.map(entry => ({id: entry.id, owner: entry.owner, team: entry.team, health: entry.health, life: entry.life})),
 });
 const offeredIds = (mode, match) => reqPurchaseOptions({team: 0, mode, actor: match.actors[0], state: match.objectiveState})
  .items.filter(entry => entry.modes.includes(mode)).map(entry => entry.id);
@@ -123,6 +125,18 @@ const CASES = {
    assert.equal((state.nodes ?? []).find(node => node.id === match.__lastRepairNode)?.owner, actor.team === 1 ? 1 : 0, 'the node stayed owned');
   },
  },
+ sentry: {
+  cost: 60,
+  arm: actor => { actor.vehicleId = null; },
+  verify: (actor, match) => {
+   assert.equal(match.deployables.length, 1, 'the shipped core turret is deployed');
+   const sentry = match.deployables[0];
+   assert.equal(sentry.owner, actor.id);
+   assert.equal(sentry.team, actor.team === 1 ? 1 : 0);
+   assert.equal(sentry.life, 30, 'the authored 30 s window is applied');
+   assert.ok(sentry.health > 0 && sentry.range > 0 && sentry.damage > 0);
+  },
+ },
  puma: {
   cost: 150,
   arm: (actor, match, state) => { state.traversal.depots['depot-hq-w'].owner = 0; },
@@ -137,7 +151,7 @@ const CASES = {
 
 test('every PvPvE-offered REQ row writes its advertised world delta through Match.step', () => {
  const mode = REQ_MODE_IDS.pvp;
- assert.deepEqual(offeredIds(mode, pvpMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool'], 'the tested set is exactly what the picker offers in PvPvE');
+ assert.deepEqual(offeredIds(mode, pvpMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'sentry'], 'the tested set is exactly what the picker offers in PvPvE');
  for (const id of offeredIds(mode, pvpMatch())) {
   const match = pvpMatch();
   const state = match.objectiveState;
@@ -151,13 +165,13 @@ test('every PvPvE-offered REQ row writes its advertised world delta through Matc
   assert.notEqual(worldDigest(match, actor), digestBefore, `${id} changed world state, not just the wallet`);
   assert.equal(actor.req, 500 - testCase.cost, `${id} debits its exact cost`);
   assert.equal(actor.reqSpent, testCase.cost, `${id} records the spend`);
-   assert.equal(actor.reqBuff, ['spot-drone', 'repair-tool'].includes(id) ? undefined : id, `${id} only occupies the personal buff slot for actual buffs`);
+   assert.equal(actor.reqBuff, ['spot-drone', 'repair-tool', 'sentry'].includes(id) ? undefined : id, `${id} only occupies the personal buff slot for actual buffs`);
  }
 });
 
 test('every OPERATIONS-offered REQ row (including the Puma) writes its advertised world delta through Match.step', () => {
  const mode = REQ_MODE_IDS.coop;
- assert.deepEqual(offeredIds(mode, coopMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'puma'], 'the tested set is exactly what the picker offers in OPERATIONS');
+ assert.deepEqual(offeredIds(mode, coopMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'sentry', 'puma'], 'the tested set is exactly what the picker offers in OPERATIONS');
  for (const id of offeredIds(mode, coopMatch())) {
   const match = coopMatch();
   const state = match.objectiveState;
@@ -172,12 +186,12 @@ test('every OPERATIONS-offered REQ row (including the Puma) writes its advertise
   assert.equal(actor.req, 500 - testCase.cost, `${id} debits its exact cost`);
   assert.equal(actor.reqSpent, testCase.cost, `${id} records the spend`);
    // Vehicles and instant field equipment cannot replace an active buff.
-   assert.equal(actor.reqBuff, ['spot-drone', 'repair-tool', 'puma'].includes(id) ? undefined : id, `${id} only occupies the personal buff slot for actual buffs`);
+   assert.equal(actor.reqBuff, ['spot-drone', 'repair-tool', 'sentry', 'puma'].includes(id) ? undefined : id, `${id} only occupies the personal buff slot for actual buffs`);
  }
 });
 
 test('instant equipment and the depot vehicle preserve an already occupied personal buff slot', () => {
- for (const [make, item] of [[pvpMatch, 'spot-drone'], [coopMatch, 'repair-tool'], [coopMatch, 'puma']]) {
+ for (const [make, item] of [[pvpMatch, 'spot-drone'], [coopMatch, 'repair-tool'], [pvpMatch, 'sentry'], [coopMatch, 'puma']]) {
   const match = make();
   const state = match.objectiveState;
   const actor = match.actors[0];
@@ -200,13 +214,13 @@ test('refused and unavailable REQ purchases preserve REQ, reqBuff and world stat
   const actor = match.actors[0];
   actor.req = 500; actor.reqSpent = 0; actor.reqBuff = undefined;
   const digestBefore = purchaseDigest(match, actor);
-  buy(match, actor, 'sentry');
+  buy(match, actor, 'smoke');
   assert.equal(actor.req, 500, `${mode}: an unsupported row never debits`);
   assert.equal(actor.reqSpent, 0, `${mode}: an unsupported row never records a spend`);
   assert.equal(actor.reqBuff, undefined, `${mode}: an unsupported row never occupies the buff slot`);
   assert.equal(purchaseDigest(match, actor), digestBefore, `${mode}: an unsupported row changes no purchase state`);
   assert.equal((state.coop?.buyLog ?? []).length, 0, `${mode}: no OPERATIONS buy log entry`);
-  const direct = state.coop ? coopBuyAction(match, state, {actorId: actor.id, peerId: 'p1', itemId: 'sentry'}) : cocsBuyAction(match, state, {actorId: actor.id, peerId: 'p1', itemId: 'sentry'});
+  const direct = state.coop ? coopBuyAction(match, state, {actorId: actor.id, peerId: 'p1', itemId: 'smoke'}) : cocsBuyAction(match, state, {actorId: actor.id, peerId: 'p1', itemId: 'smoke'});
   assert.equal(direct.ok, false);
   assert.equal(direct.reason, 'not-launched');
  }

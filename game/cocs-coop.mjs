@@ -21,8 +21,8 @@
 
 import {RULES} from './data.mjs';
 import {COCS_SQUAD_ACTIONS, cocsCommandAuthority, cocsSquadAction} from './cocs-squads.mjs';
-import {SUBAGENTS, convertCoopReq, reqItem, reqPurchase, repairToolTarget, spotDroneTargets} from './cocs-economy.mjs';
-import {addActorReq, applyRepairTool, applySpotDrone, capturableNodes, compareCocsOrders, connectivityIncome, cutLink, nodeById, normalizeCocsPolicy, repairLink} from './cocs.mjs';
+import {SUBAGENTS, convertCoopReq, reqItem, reqPurchase, repairToolTarget, sentryDeployment, spotDroneTargets} from './cocs-economy.mjs';
+import {addActorReq, applyRepairTool, applySentry, applySpotDrone, capturableNodes, compareCocsOrders, connectivityIncome, cutLink, nodeById, normalizeCocsPolicy, repairLink} from './cocs.mjs';
 import {depotPurchaseState, deviceInteract, purchaseDepotVehicle} from './cocs-traversal.mjs';
 import {spawnGroup, updateEnemyRoles} from './singleplayer.mjs';
 import {
@@ -2372,6 +2372,7 @@ export function coopBuyAction(match, state, record = {}) {
   // before any REQ moves, so a target-less buy is refused, never a paid no-op.
   if (item.id === 'spot-drone' && spotDroneTargets(actor, match?.actors, item.effect).length === 0) return {ok: false, reason: 'no-target'};
   if (item.id === 'repair-tool' && repairToolTarget(actor, state, item.effect) === null) return {ok: false, reason: 'no-target'};
+  if (item.id === 'sentry' && !sentryDeployment(actor, match?.deployables, item.effect).ok) return {ok: false, reason: 'no-target'};
   const peerId = String(record.peerId ?? '');
   const isCommander = state?.coop?.commandSeat?.[team] === peerId || (peerId === '' && item.commanderOnly !== true);
   const relayOwned = (state?.nodes ?? []).some(node => node && node.archetype === 'relay' && node.owner === team);
@@ -2416,6 +2417,14 @@ export function coopBuyAction(match, state, record = {}) {
     }
   } else if (item.id === 'spot-drone' || item.id === 'repair-tool') {
     const applied = item.id === 'spot-drone' ? applySpotDrone(match, state, actor, item.effect) : applyRepairTool(match, state, actor, item.effect);
+    if (!applied.ok) {
+      actor.req = num(actor.req, 0) + num(result.cost, 0);
+      actor.reqSpent = Math.max(0, num(actor.reqSpent, 0) - num(result.cost, 0));
+      actor.reqBuff = previousBuff;
+      return {ok: false, reason: applied.reason ?? 'no-target'};
+    }
+  } else if (item.id === 'sentry') {
+    const applied = applySentry(match, state, actor, item.effect);
     if (!applied.ok) {
       actor.req = num(actor.req, 0) + num(result.cost, 0);
       actor.reqSpent = Math.max(0, num(actor.reqSpent, 0) - num(result.cost, 0));

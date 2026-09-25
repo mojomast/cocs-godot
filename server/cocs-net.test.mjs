@@ -701,14 +701,14 @@ test('the room gates coopLaunch to OPERATIONS and effectless catalogue rows out 
  assert.equal(find(pvp.drain(), 'cocs-reject', 1)?.reason, 'wrong-mode');
  assert.equal(pvpActor.req, 150, 'the wrong-mode Puma never debits');
  assert.equal(pvp.pendingCocs.buys.length, 0, 'a refused Puma never reaches a queue');
- assert.equal(pvp.buy(1, { cardId: 'pvp-sentry', itemId: 'sentry', roundRev: pvp.roundRevision, actionSeq: 2 }, 5000), false, 'an effectless row is refused in PvPvE too');
+ assert.equal(pvp.buy(1, { cardId: 'pvp-smoke', itemId: 'smoke', roundRev: pvp.roundRevision, actionSeq: 2 }, 5000), false, 'an effectless row is refused in PvPvE too');
  assert.equal(find(pvp.drain(), 'cocs-reject', 1)?.reason, 'not-launched');
  assert.equal(pvpActor.req, 150, 'the effectless row never debits');
 
  const coop = harness(37, 4);
  const { state, actor } = openCoopWindow(coop, { req: 500 });
  coop.drain();
- const unsupported = ['at-mine', 'barrier', 'sentry', 'supply-drop', 'fortify-doctrine', 'oracle-unlock'];
+ const unsupported = ['at-mine', 'barrier', 'smoke', 'supply-drop', 'fortify-doctrine', 'oracle-unlock'];
  unsupported.forEach((itemId, index) => {
   const now = 1000 + index * 1000; // one request per rate-limit window
   assert.equal(coop.buy(1, { cardId: `noop-${itemId}`, itemId, roundRev: coop.roundRevision, actionSeq: 10 + index }, now), false, `${itemId} is not purchasable`);
@@ -768,4 +768,25 @@ test('the room target-gates field equipment so a no-target buy never queues or d
  assert.equal(actor.req, 125, 'the exact 45 REQ is debited');
  assert.equal(actor.reqSpent, 75, 'both equipment spends are recorded');
  assert.equal(state.coop.buyLog.filter(entry => entry.itemId === 'spot-drone').length, 1, 'one sim purchase applied');
+
+ // Sentry: the shipped core turret is a real bounded world change. The room
+ // preflights the shared deployment gate, queues once and settles one turret.
+ const deployablesBefore = room.match.deployables.length;
+ assert.equal(room.buy(1, { cardId: 'sentry-ok', itemId: 'sentry', roundRev: rev, actionSeq: 5 }, at(4)), true);
+ assert.equal(room.pendingCocs.buys.length, 1, 'the legal sentry is queued once');
+ for (let i = 0; i < 3; i++) room.tick(RULES.dt);
+ assert.equal(room.match.deployables.length, deployablesBefore + 1, 'the room buy deploys one turret');
+ assert.equal(actor.req, 65, 'the exact 60 REQ is debited');
+ assert.equal(actor.reqSpent, 135, 'the sentry spend is recorded once');
+ assert.equal(state.coop.buyLog.filter(entry => entry.itemId === 'sentry').length, 1, 'one sim purchase applied');
+ assert.equal(room.cocsCardList().find(entry => entry.id === 'sentry-ok')?.state, 'done', 'the accepted sentry settled from sim state');
+
+ // A mounted operator cannot drop a turret: the room mirrors the sim gate.
+ const mountedReq = actor.req;
+ actor.vehicleId = 1;
+ assert.equal(room.buy(1, { cardId: 'sentry-mounted', itemId: 'sentry', roundRev: rev, actionSeq: 6 }, at(5)), false);
+ assert.equal(find(room.drain(), 'cocs-reject', 1)?.reason, 'no-target');
+ assert.equal(room.pendingCocs.buys.length, 0, 'the refused sentry never queues');
+ assert.equal(actor.req, mountedReq, 'the refused sentry never debits');
+ actor.vehicleId = null;
 });

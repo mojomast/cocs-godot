@@ -190,11 +190,11 @@ export function reqEarnBreakdown(profile={}){
 }
 
 // §6A.5 purchase catalogue. WP1.3 truth rule: only entries with a concrete,
-// shipped simulation effect are launchable. The four personal buffs, the two
-// field-equipment rows below (Spot Drone / Repair Tool) and the OPERATIONS depot
-// Puma qualify; every other advertised row has no effect yet, so it carries
-// `modes:[]` and is not in any launch set. The buy paths refuse it with
-// `not-launched` before `reqPurchase` can debit REQ or touch `reqBuff`.
+// shipped simulation effect are launchable. The four personal buffs, the three
+// field-equipment rows below (Spot Drone / Repair Tool / Sentry) and the
+// OPERATIONS depot Puma qualify; every other advertised row has no effect yet, so
+// it carries `modes:[]` and is not in any launch set. The buy paths refuse it
+// with `not-launched` before `reqPurchase` can debit REQ or touch `reqBuff`.
 //   * `launch:true`     accepted by PvPvE `cocs` and OPERATIONS `cocs-coop`.
 //   * `coopLaunch:true` accepted by OPERATIONS only (no PvPvE vehicle seam).
 //   * `modes`           canonical modes a picker may offer the item in.
@@ -212,14 +212,24 @@ export const REQ_MODE_IDS=deepFreeze({pvp:'cocs',coop:'cocs-coop'});
 //                   entity is spawned.
 //   * `repair-link` reuses `repairLink`/`state.cuts`, clearing one friendly link
 //                   a SABOTEUR/denial cut. Nearest owned cut in reach wins.
+//   * `sentry`     reuses the shipped core deployable (`Match.deploySentry` /
+//                   `stepDeployables`): a real, damageable, expiring turret that
+//                   fires on the nearest visible enemy. One live sentry per
+//                   operator; a re-buy refreshes its life instead of stacking,
+//                   which keeps the purchase idempotent and the pure picker
+//                   (which cannot see `match.deployables`) honest.
 // The pure selectors below are shared by the menu, the server gate and the sim
 // appliers, so a row with no legal target is refused `no-target` *before* any
 // REQ moves. An empty effect can therefore never be sold.
-// Pinned-source deviations (no reliable vehicle/fog behaviour in this slice):
-// see port/native-lattice/flagship/catalog/REQ.md.
+// Pinned-source deviations (no reliable vehicle/fog/mine-collision behaviour in
+// this slice): see port/native-lattice/flagship/catalog/FIELD.md.
 // ---------------------------------------------------------------------------
 export const SPOT_DRONE_EFFECT=deepFreeze({kind:'spot',radius:20,seconds:8,target:'self'});
 export const REPAIR_TOOL_EFFECT=deepFreeze({kind:'repair-link',reach:6,target:'cut-link'});
+// Authored deployment window for a bought Sentry. The turret's health, range,
+// damage and cadence are the shipped `SENTRY` table in `core.mjs`; only the
+// bounded rent-a-turret window is a REQ decision.
+export const SENTRY_EFFECT=deepFreeze({kind:'sentry',duration:30,target:'ground',limit:1});
 
 const sortedRoster=actors=>[...(Array.isArray(actors)?actors:[])].filter(Boolean)
  .sort((a,b)=>num(a.id,0)-num(b.id,0));
@@ -260,6 +270,31 @@ export function repairToolTarget(actor,state,effect=REPAIR_TOOL_EFFECT){
  return best;
 }
 
+/**
+ * Legal-deployment plan for the §6A.5 Sentry equipment. Pure and deterministic:
+ * the menu, the server gate and both buy appliers share it so a purchase that is
+ * offered can always be accepted.
+ *
+ * The sentry is placed at the buyer's feet, so the "target" is the buyer's own
+ * position, not a world object. The only illegal point is a downed or mounted
+ * operator (a turret dropped from inside a vehicle would teleport with the
+ * hull). `limit` is the shipped one-live-turret bound; when the buyer already
+ * owns a live sentry the plan is `refresh:true` so the buy extends its life
+ * rather than stacking (mirrors the HORDE `sentry` upgrade).
+ *
+ * @returns {{ok:boolean,reason:string|null,duration:number,limit:number,refresh:boolean,live:number}}
+ */
+export function sentryDeployment(actor,deployables,effect=SENTRY_EFFECT){
+ const duration=Math.max(1,num(effect?.duration,SENTRY_EFFECT.duration));
+ const limit=Math.max(1,count(effect?.limit)||SENTRY_EFFECT.limit);
+ const deny=reason=>deepFreeze({ok:false,reason,duration,limit,refresh:false,live:0});
+ if(!actor)return deny('no-target');
+ if(actor.health!==undefined&&actor.health!==null&&num(actor.health,0)<=0)return deny('no-target');
+ if(actor.vehicleId!==null&&actor.vehicleId!==undefined)return deny('no-target');
+ const live=(Array.isArray(deployables)?deployables:[]).filter(entry=>entry&&entry.owner===actor.id&&num(entry.health,0)>0&&num(entry.life,0)>0);
+ return deepFreeze({ok:true,reason:null,duration,limit,refresh:live.length>=limit,live:live.length});
+}
+
 export const REQ_ITEMS=deepFreeze([
  {id:'field-repair',name:'Field Repair',category:'buff',cost:40,launch:true,teamWide:false,personalBuff:true,target:'self',modes:['cocs','cocs-coop'],
   effect:{kind:'heal',health:50,target:'self'},effectCopy:'Heal 50 health (capped at max health)'},
@@ -275,6 +310,8 @@ export const REQ_ITEMS=deepFreeze([
   effect:SPOT_DRONE_EFFECT,effectCopy:'Mark every enemy within 20 m for 8 s (+15% damage from your team)'},
  {id:'repair-tool',name:'Repair Tool',category:'equipment',cost:30,launch:true,teamWide:false,personalBuff:false,target:'cut-link',modes:['cocs','cocs-coop'],
   effect:REPAIR_TOOL_EFFECT,effectCopy:'Restore one friendly cut link within reach (nearest wins)'},
+ {id:'sentry',name:'Sentry',category:'fortification',cost:60,launch:true,teamWide:false,personalBuff:false,target:'ground',modes:['cocs','cocs-coop'],
+  effect:SENTRY_EFFECT,effectCopy:'Deploy a friendly sentry turret for 30 s (re-buy refreshes it; one live per operator)'},
  // The Puma is a launch OPERATIONS purchase (§6A.5: "Puma ... yes (V1)"). It is
  // flagged `coopLaunch` rather than `launch` so the PvPvE buy path (which has no
  // depot vehicle seam) can never charge for a vehicle it cannot spawn; the co-op
@@ -288,7 +325,6 @@ export const REQ_ITEMS=deepFreeze([
  // "smoke" here would be a visual-only claim (deferred; see catalog/REQ.md).
  {id:'smoke',name:'Smoke Marker',category:'equipment',cost:20,launch:false,teamWide:false,personalBuff:false,modes:[]},
  {id:'barrier',name:'Barrier',category:'fortification',cost:30,launch:false,teamWide:false,personalBuff:false,modes:[]},
- {id:'sentry',name:'Sentry',category:'fortification',cost:60,launch:false,teamWide:false,personalBuff:false,modes:[]},
  {id:'forward-depot',name:'Forward Depot',category:'fortification',cost:120,launch:false,teamWide:false,personalBuff:false,modes:[]},
  {id:'supply-drop',name:'Supply Drop',category:'team',cost:80,launch:false,teamWide:true,personalBuff:false,commanderOnly:true,modes:[]},
  {id:'recon-pulse',name:'Recon Pulse',category:'team',cost:60,launch:false,teamWide:true,personalBuff:false,commanderOnly:true,modes:[]},
@@ -396,9 +432,10 @@ export function reqPurchase(itemId,state={}){
  * with `enabled:false` and `disabledReason:'wrong-mode'`.
  *
  * A single `disabledReason`, in precedence order:
- * `wrong-mode` → `requires-depot` (Puma with no friendly depot) → the exact
- * `reqPurchase` reason (`commander-only` → `one-active-buff` →
- * `requires-relay` → `insufficient-req`) → null.
+ * `wrong-mode` → `requires-depot` (Puma with no friendly depot) → `no-target`
+ * (Sentry without a legal deployment point) → the exact `reqPurchase` reason
+ * (`commander-only` → `one-active-buff` → `requires-relay` →
+ * `insufficient-req`) → null.
  *
  * @param {{team?:number,mode?:string,actor?:object,state?:object,now?:number}} [input]
  * @returns {{team:number,mode:string|null,balance:number,balanceSource:string,
@@ -427,6 +464,7 @@ export function reqPurchaseOptions({team,mode,actor,state,now}={}){
   let disabledReason=null;
   if(key===null||!modes.includes(key))disabledReason='wrong-mode';
   else if(item.id==='puma'&&!friendlyDepot)disabledReason='requires-depot';
+  else if(item.id==='sentry'&&!sentryDeployment(a,null,item.effect).ok)disabledReason='no-target';
   else disabledReason=reqPurchase(item.id,{balance,isCommander,activeBuffId,relayOwned}).reason;
   items.push(deepFreeze({
    id:item.id,name:item.name,category:item.category,cost:item.cost,
@@ -1019,9 +1057,9 @@ const cocsEconomy={
  GEAR_CAPS,REQ_CAPS,COMBINED_CAPS,
  TRAVERSAL,DEVICE_PARAMS,LANE_IDENTITIES,LANE_IDENTITY_KINDS,DEVICE_LANE_KINDS,DEVICE_STATES,TRAVERSAL_KINDS,
  META_DEFAULTS,MATCH_REQ,COMMENDATION_PACING,
- SPOT_DRONE_EFFECT,REPAIR_TOOL_EFFECT,
+ SPOT_DRONE_EFFECT,REPAIR_TOOL_EFFECT,SENTRY_EFFECT,
  scoreEvent,tallyScores,reqEarn,reqEarnBreakdown,purchaseCost,reqItem,reqModeKey,reqItemModes,reqItemSupported,reqPurchase,reqPurchaseOptions,
- spotDroneTargets,repairToolTarget,
+ spotDroneTargets,repairToolTarget,sentryDeployment,
  supplySlotMultiplier,subagentUpkeep,
  neglectState,neglectTick,neglectEffect,neglectPassiveFlux,
  composeCaps,withinCombinedCaps,resolveSpawnLoadout,

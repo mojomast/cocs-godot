@@ -11,7 +11,7 @@ import {COOP_BIG_SINKS,coopCommandState,coopOrderGate,coopSpendGate,intermission
 import {coopSink} from '../game/cocs-difficulty.mjs';
 import {terminalActionGate} from '../game/cocs-terminals.mjs';
 import {coopRole} from '../game/cocs-roles.mjs';
-import {SUBAGENTS,reqItem,reqItemModes,reqItemSupported,reqPurchase,repairToolTarget,spotDroneTargets} from '../game/cocs-economy.mjs';
+import {SUBAGENTS,reqItem,reqItemModes,reqItemSupported,reqPurchase,repairToolTarget,sentryDeployment,spotDroneTargets} from '../game/cocs-economy.mjs';
 import {depotPurchaseState} from '../game/cocs-traversal.mjs';
 import {randomUUID} from 'node:crypto';
 import {validPlayerId,sanitizeText,parseInputEnvelope,PROTOCOL_VERSION,SNAPSHOT_DELTA_VERSION,SNAPSHOT_DELTA_MIN_BYTES,snapshotDelta,wireSize,MESSAGE,COCS_REJECT_LIMIT,parseOrderMessage,parseEconomyMessage,parseTerminalMessage,parseCommandMessage,parseBuyMessage} from '../game/protocol.mjs';
@@ -700,6 +700,9 @@ export class Room {
    return this.cocsRejectAction(opened, 'no-target', { itemId: parsed.itemId });
   }
   if (item.id === 'repair-tool' && repairToolTarget(actor, state, item.effect) === null) {
+   return this.cocsRejectAction(opened, 'no-target', { itemId: parsed.itemId });
+  }
+  if (item.id === 'sentry' && !sentryDeployment(actor, this.match.deployables, item.effect).ok) {
    return this.cocsRejectAction(opened, 'no-target', { itemId: parsed.itemId });
   }
   const simId = String(actor.id);

@@ -43,9 +43,9 @@ import {COCS_SQUAD_ACTIONS, cocsCommandAuthority, cocsSquadAction, cocsSquadSnap
 import {terrainSupportAt} from './terrain.mjs';
 import {
   FLUX_CAP, FLUX_PASSIVE_PER_SECOND, FLUX_START, ORDER_REWARD, REQ_EARN,
-  REPAIR_TOOL_EFFECT, SPOT_DRONE_EFFECT, SUBAGENTS,
+  REPAIR_TOOL_EFFECT, SENTRY_EFFECT, SPOT_DRONE_EFFECT, SUBAGENTS,
   neglectPassiveFlux, neglectState, neglectTick, reqItem, reqPurchase, scoreEvent,
-  repairToolTarget, spotDroneTargets, subagentUpkeep,
+  repairToolTarget, sentryDeployment, spotDroneTargets, subagentUpkeep,
 } from './cocs-economy.mjs';
 import {PVP_ROLE_IDS, coopRole, roleAbility} from './cocs-roles.mjs';
 import {createTraversalState, stepCocsTraversal, cocsTraversalSnapshot, humanDeviceInteract} from './cocs-traversal.mjs';
@@ -652,6 +652,32 @@ export function applyRepairTool(match, state, actor, effect = REPAIR_TOOL_EFFECT
   if (state?.sabotage && Object.hasOwn(state.sabotage, nodeId)) delete state.sabotage[nodeId];
   match?.emit?.('cocs-repair-tool', {actor: actor.id, team: actor.team === 1 ? 1 : 0, node: nodeId});
   return {ok: true, reason: null, nodeId};
+}
+
+/**
+ * Apply the §6A.5 Sentry purchase. It deploys the shipped core turret at the
+ * buyer's feet for `effect.duration`, or refreshes the buyer's already-live
+ * sentry to that window. The turret's health, range, damage and cadence are the
+ * core `SENTRY` table and are stepped by `Match.step` in every mode; this seam
+ * only chooses the bounded rent-a-turret window and the one-live-per-operator
+ * bound. RNG-free and idempotent: re-applying refreshes the life, never stacks.
+ * Returns the deployed/refreshed turret id, or `no-target` without mutation.
+ */
+export function applySentry(match, state, actor, effect = SENTRY_EFFECT) {
+  const plan = sentryDeployment(actor, match?.deployables, effect);
+  if (!plan.ok) return {ok: false, reason: plan.reason ?? 'no-target', sentryId: null, refresh: false};
+  const live = (match?.deployables ?? []).find(entry => entry && entry.owner === actor.id && num(entry.health, 0) > 0 && num(entry.life, 0) > 0);
+  if (live) {
+    live.life = Math.max(num(live.life, 0), plan.duration);
+    match?.emit?.('cocs-sentry', {actor: actor.id, team: actor.team === 1 ? 1 : 0, sentry: live.id, refresh: true, duration: plan.duration});
+    return {ok: true, reason: null, sentryId: live.id, refresh: true};
+  }
+  if (typeof match?.deploySentry !== 'function' || !match.deploySentry(actor, plan.duration)) {
+    return {ok: false, reason: 'no-target', sentryId: null, refresh: false};
+  }
+  const deployed = match.deployables?.[match.deployables.length - 1] ?? null;
+  match?.emit?.('cocs-sentry', {actor: actor.id, team: actor.team === 1 ? 1 : 0, sentry: deployed?.id ?? null, refresh: false, duration: plan.duration, x: num(deployed?.x, 0), z: num(deployed?.z, 0)});
+  return {ok: true, reason: null, sentryId: deployed?.id ?? null, refresh: false};
 }
 
 // ---------------------------------------------------------------------------
@@ -1551,6 +1577,7 @@ export function cocsBuyAction(match, state, record = {}) {
   // before any REQ moves, so a target-less buy is refused, never a paid no-op.
   if (item.id === 'spot-drone' && spotDroneTargets(actor, match?.actors, item.effect).length === 0) return {ok: false, reason: 'no-target'};
   if (item.id === 'repair-tool' && repairToolTarget(actor, state, item.effect) === null) return {ok: false, reason: 'no-target'};
+  if (item.id === 'sentry' && !sentryDeployment(actor, match?.deployables, item.effect).ok) return {ok: false, reason: 'no-target'};
   const peerId = String(record.peerId ?? '');
   const isCommander = state?.command?.seat?.[team] === peerId;
   const relayOwned = (state?.nodes ?? []).some(node => node && node.archetype === 'relay' && node.owner === team);
@@ -1583,6 +1610,14 @@ export function cocsBuyAction(match, state, record = {}) {
     const applied = item.id === 'spot-drone' ? applySpotDrone(match, state, actor, item.effect) : applyRepairTool(match, state, actor, item.effect);
     if (!applied.ok) {
       // The world changed under us: refund in full and restore the buff slot.
+      actor.req = num(actor.req, 0) + num(result.cost, 0);
+      actor.reqSpent = Math.max(0, num(actor.reqSpent, 0) - num(result.cost, 0));
+      actor.reqBuff = previousBuff;
+      return {ok: false, reason: applied.reason ?? 'no-target'};
+    }
+  } else if (item.id === 'sentry') {
+    const applied = applySentry(match, state, actor, item.effect);
+    if (!applied.ok) {
       actor.req = num(actor.req, 0) + num(result.cost, 0);
       actor.reqSpent = Math.max(0, num(actor.reqSpent, 0) - num(result.cost, 0));
       actor.reqBuff = previousBuff;
