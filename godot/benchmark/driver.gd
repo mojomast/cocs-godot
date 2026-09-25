@@ -58,6 +58,7 @@ var _down := {}
 var _fire_down := false
 var _off_round := 0.0
 var _controls_seconds := 0.0
+var _last_controls_elapsed := 0.0
 var _current_phase := -1
 var _quality_seen := {}
 var _phase_quality := []
@@ -155,9 +156,17 @@ func _process(delta: float) -> void:
 	else:
 		_off_round = 0.0
 	if session.can_capture_pointer():
-		_controls_seconds += delta
+		# This report field describes control during the measured window, not
+		# warm-up or a long final frame. Count wall-clock overlap per phase so
+		# low software-renderer FPS cannot push it past measured_seconds.
+		for index: int in Plan.PHASES.size():
+			if not bool(Plan.PHASES[index].measured): continue
+			var start: float = Plan.phase_start(index)
+			var end: float = start + float(Plan.PHASES[index].seconds)
+			_controls_seconds += maxf(0.0, minf(elapsed, end) - maxf(_last_controls_elapsed, start))
 		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_last_controls_elapsed = elapsed
 	var intent: Dictionary = Plan.intent(elapsed)
 	if int(intent.index) != _current_phase:
 		stats.begin_phase(int(intent.index))
@@ -235,6 +244,8 @@ func _begin() -> void:
 	_last_look = Vector2.ZERO
 	_last_engine_sample = 0
 	_current_phase = -1
+	_controls_seconds = 0.0
+	_last_controls_elapsed = 0.0
 	_capture_queue = _capture_plan()
 	_quality_seen[_quality_name()] = true
 	_start_usec = Time.get_ticks_usec()

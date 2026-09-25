@@ -67,6 +67,9 @@ func sample(yaw: float, pitch: float) -> Dictionary:
 		"ads":mouse.has(MOUSE_BUTTON_RIGHT), "altFire":keys.has(KEY_Z) or mouse.has(MOUSE_BUTTON_MIDDLE)}
 	for action: String in ["reload", "interact", "power", "melee", "grenade"]:
 		value[action] = pulses.has(action)
+	# Holding F repeats only when the pinned source's melee cooldown permits it.
+	# A dropped render sample cannot discard a tap: the edge still rides the FIFO.
+	value.melee = keys.has(KEY_F) or pulses.has("melee")
 	if weapon >= 0: value.weapon = weapon
 	return value
 

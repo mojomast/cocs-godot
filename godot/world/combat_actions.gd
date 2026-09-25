@@ -75,6 +75,7 @@ func sample(yaw: float, pitch: float, active: bool) -> Dictionary:
 		"sprint":key(KEY_SHIFT), "crouch":key(KEY_CTRL) or key(KEY_C),
 		"altFire":key(KEY_Z) or held.has("m3")}
 	for action: String in EDGE_KEYS.values(): value[action] = pulses.has(action)
+	value.melee = key(KEY_F) or pulses.has("melee")
 	return value
 
 func queued() -> void:

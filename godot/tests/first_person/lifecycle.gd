@@ -51,11 +51,24 @@ func run() -> void:
 	check(rig.recoil_count == 2, "secondary shrapnel is not muzzle fire")
 	rig.apply_events([{"id":15,"time":2.0,"actor":8,"weapon":0,"type":"shot"}, {"type":"damage","actor":7,"source":8}, {"id":null,"time":2,"actor":7,"weapon":0,"type":"shot"}], 7)
 	check(rig.recoil_count == 2, "remote/damage/malformed events ignored")
+	var melee := {"id":21,"time":2.1,"actor":7,"hit":8,"type":"melee"}
+	rig.apply_events([melee], 7)
+	rig.advance(0.04)
+	check(rig.kick_count == 1 and rig.kick_leg.visible and rig.kick_leg.get_node("Boot") is MeshInstance3D,
+		"accepted source melee swings a visible modeled boot")
+	check(rig.kick_leg.position.y > -0.68 and rig.kick_leg.position.z < -0.58,
+		"the foot extends forward from below the camera")
+	rig.apply_events([melee, {"id":22,"time":2.2,"actor":8,"type":"melee"}], 7)
+	check(rig.kick_count == 1, "replayed and remote melee never animate a local attack")
+	rig.advance(0.20)
+	check(not rig.kick_leg.visible, "fast kick returns in under a quarter second")
+	rig.apply_events([{"id":23,"time":2.7,"actor":7,"hit":null,"type":"melee"}], 7)
+	check(rig.kick_count == 2, "another source-approved kick is visible on the next cooldown")
 	for field: String in ["dead", "spectating", "health", "vehicleId"]:
 		var hidden := actor.duplicate()
 		hidden[field] = 0 if field == "health" else 3 if field == "vehicleId" else true
 		rig.apply_actor(hidden, true)
-		check(not rig.showing and rig.recoil == 0 and not rig.flash.visible, "hidden on " + field)
+		check(not rig.showing and rig.recoil == 0 and not rig.flash.visible and not rig.kick_leg.visible, "hidden on " + field)
 		rig.apply_actor(actor, true)
 	rig.apply_actor(actor, false)
 	shot.id = 20

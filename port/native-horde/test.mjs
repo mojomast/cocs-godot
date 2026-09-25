@@ -16,6 +16,17 @@ const text=rows=>rows.map(r=>'HORDE_NATIVE '+JSON.stringify(r)).join('\n')+'\nHO
 test('synthetic correlation baseline',()=>{const f=fixture();assert.equal(validate(f.wire,text(f.rows)).correlated,11);});
 test('mismatched actor rejected',()=>{const f=fixture();f.rows[0].actor_id=1;assert.throws(()=>validate(f.wire,text(f.rows)));});
 test('wrong rendered position rejected',()=>{const f=fixture();f.rows[0].rendered[0].position[0]=8;assert.throws(()=>validate(f.wire,text(f.rows)));});
+test('source-correlated NPC interpolation accepts history segments and rejects forged positions',()=>{
+ const f=fixture();
+ for(let i=0;i<f.rows.length;i++){
+  const x=i+1;
+  f.wire[i].frame.state={...f.wire[i].frame.state,actors:[...f.wire[i].frame.state.actors,{id:1,x,y:0,z:3,health:100,dead:0}]};
+  f.rows[i].rendered[1]={position:[i===0?x:x-.5,.9,3],visible:true};
+ }
+ assert.equal(validate(f.wire,text(f.rows),'startup',true).correlated,11);
+ f.rows[4].rendered[1].position=[6,.9,3];
+ assert.throws(()=>validate(f.wire,text(f.rows),'startup',true),/source segment/);
+});
 test('snapshot gaps rejected',()=>{const f=fixture();f.wire.shift();assert.throws(()=>validate(f.wire,text(f.rows)));});
 test('ACK/receipt cannot stand in for victory',()=>{const f=fixture();f.wire.push({direction:'in',frame:{type:'input',input:{fire:true}}});assert.throws(()=>validate(f.wire,text(f.rows),'combat'));});
 test('owned local server rejects browser origins and closes listeners',async()=>{const a=createAuthority();await new Promise(r=>a.server.listen(0,'127.0.0.1',r));const ws=new WebSocket(`ws://127.0.0.1:${a.server.address().port}`,{origin:'https://example.com'});ws.on('error',()=>{});await new Promise(r=>ws.once('close',r));await a.close();assert.equal(a.server.listening,false);assert.equal(a.wss.clients.size,0);});

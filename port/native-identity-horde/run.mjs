@@ -8,7 +8,8 @@
 //
 //   GODOT_BIN=<pinned 4.5.2> node port/native-identity-horde/run.mjs --scenario=waves --waves=3
 //
-// Scenarios: startup (wave 1 with enemies), waves (multi-wave combat and a
+// Scenarios: startup (wave 1 with enemies), motion (held-W camera/source trace),
+// waves (multi-wave combat and a
 // legal wave-target victory), defeat (natural deaths to a real defeat and a
 // clean restart), peak (clears as far as the bound allows and measures frame
 // cadence at the highest simultaneous NPC count reached).
@@ -27,11 +28,11 @@ const option = (key, fallback) => args.find(value => value.startsWith(key + '=')
 const scenario = option('--scenario', 'startup');
 // startup keeps the product default of ten waves so the default-ten contract is
 // exercised on the identity composition too; it finishes at wave one.
-const waves = Number(option('--waves', {startup: 10, waves: 3, defeat: 1, peak: 10}[scenario] ?? 1));
+const waves = Number(option('--waves', {startup: 10, motion: 10, waves: 3, defeat: 1, peak: 10}[scenario] ?? 1));
 const resolution = option('--resolution', '1280x800');
 const rendering = option('--rendering', '');
 const RENDERING_METHODS = ['', 'gl_compatibility', 'mobile', 'forward_plus'];
-const SCENARIOS = Object.freeze({startup: 95, waves: 205, defeat: 205, peak: 195});
+const SCENARIOS = Object.freeze({startup: 95, motion: 65, waves: 205, defeat: 205, peak: 195});
 // Full snapshots are retained for source/scene correlation; on the expanded
 // seven-spawn Horde map a natural three-wave run can exceed 96 MiB of raw JSON
 // while still well inside its 205-second deadline. Keep a finite bound.
@@ -130,8 +131,8 @@ try {
     'godot/native_arenas/identity_environment.gd', 'godot/native_arenas/catalog.gd',
     'godot/tests/horde/identity_live.gd', 'godot/tests/horde/identity_live.tscn',
     'godot/horde/demo.gd', 'godot/horde/client.gd', 'godot/horde/controls.gd', 'godot/horde/model.gd',
-    'godot/horde/scoreboard.gd', 'godot/world/session.gd', 'godot/world/presentation.gd',
-    'godot/world/pickups.gd', 'godot/world/combat_feedback.gd', 'godot/first_person/session_binding.gd',
+    'godot/horde/scoreboard.gd', 'godot/world/session.gd', 'godot/world/local_motion.gd', 'godot/world/presentation.gd',
+    'godot/world/pickups.gd', 'godot/world/combat_feedback.gd', 'godot/first_person/rig.gd', 'godot/first_person/session_binding.gd',
     'godot/net/client.gd', 'godot/ui/game_hud.gd', 'godot/ui/scoreboard.gd',
     'port/native-horde/authority.mjs', 'port/native-horde/input-buffer.mjs',
     'port/native-identity-horde/run.mjs', 'port/native-identity-horde/validate.mjs',

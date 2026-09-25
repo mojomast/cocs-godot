@@ -77,7 +77,9 @@ func _ready() -> void:
 	add_child(presentation)
 	add_child(combat)
 	add_child(client)
-	presentation.interpolate_remote = false # exact received positions, no prediction
+	# The source owns NPC positions; render their received poses between packets
+	# like native Deathmatch. This is visual interpolation, never NPC simulation.
+	presentation.interpolate_remote = true
 	if not open_catalog():
 		on_error(catalog.error)
 		return
@@ -129,7 +131,7 @@ func _ready() -> void:
 func show_controls() -> void:
 	var hud: Node = get_node_or_null("GameHUD")
 	if hud != null:
-		hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · Q power · E use\nLMB fire · RMB ADS · Z/MMB alt · R reload · F melee · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release"
+		hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · Q power · E use\nLMB fire · RMB ADS · Z/MMB alt · R reload · F kick (hold to repeat) · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release"
 
 ## ---------------------------------------------------------------------------
 ## Horde run upgrades: visible choice buttons plus 1..9 hotkeys. The authority
@@ -309,6 +311,41 @@ func update_look(relative: Vector2) -> void:
 	var angles := controls.look(yaw, pitch, relative)
 	yaw = angles.x
 	pitch = angles.y
+
+func local_motion_source_time(state: Dictionary) -> float:
+	var value: Variant = state.get("time")
+	return float(value) if (value is int or value is float) and is_finite(float(value)) else NAN
+
+# A burst of source ticks can be drained between two rendered frames. Leave the
+# camera at its last drawn position while they are applied, then advance only
+# at the render clock. The clamp bounds catch-up after a software/render stall;
+# the authority eye and shot ray remain untouched.
+const HORDE_VISUAL_MAX_SPEED := 14.0
+var _horde_render_time := NAN
+
+static func horde_visual_step(from: Vector3, target: Vector3, seconds: float) -> Vector3:
+	return from.move_toward(target, HORDE_VISUAL_MAX_SPEED * maxf(seconds, 0.0))
+
+func apply_local_snapshot_pose(eye: Vector3, _now: float, reseeded: bool) -> void:
+	if reseeded or not presentation.lifecycle.can_control():
+		_horde_render_time = NAN
+		camera.position = eye
+
+func render_local_translation(now: float) -> void:
+	if phase != 3 or client.spectating or not received_pose or presentation.local_actor.is_empty(): return
+	if snapshot_watch.stale() or not application_focused:
+		local_motion.reset()
+		_horde_render_time = NAN
+		camera.position = presentation.eye_position()
+		return
+	if not presentation.lifecycle.can_control():
+		_horde_render_time = NAN
+		camera.position = presentation.eye_position()
+		return
+	if local_motion.ready():
+		var target: Vector3 = local_motion.sample(now)
+		camera.position = target if not is_finite(_horde_render_time) else horde_visual_step(camera.position, target, now - _horde_render_time)
+		_horde_render_time = now
 
 func aim_requested() -> bool:
 	return can_capture_pointer() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and controls.mouse.has(MOUSE_BUTTON_RIGHT)

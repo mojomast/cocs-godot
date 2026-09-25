@@ -133,6 +133,16 @@ test('identity Horde seats every valid source operator and harness, including Cl
   assert.throws(() => createHordeMatch({mapId:IDENTITY_HORDE_MAP,config,character:'claude',harness:'openclaw'}),/operator\/harness/);
 });
 
+test('held kick repeats on the pinned source melee cooldown without invented hits', () => {
+  const config = validateConfig({mapId: IDENTITY_HORDE_MAP, config: {mode:'horde',fragLimit:1}});
+  const match = createHordeMatch({mapId:IDENTITY_HORDE_MAP,config,random:()=>0.25});
+  for(let tick=0;tick<90;tick++) match.step(1/60,{inputs:{0:{melee:true}}});
+  const attacks=match.events.filter(event=>event.type==='melee'&&event.actor===0);
+  assert.equal(attacks.length,3);
+  assert.ok(attacks.every(event=>event.hit==null),'no target means no fabricated damage');
+  for(let i=1;i<attacks.length;i++) assert.ok(attacks[i].time-attacks[i-1].time>=0.59,'source controls accepted kick cadence');
+});
+
 test('all Nacre supply stations have supported floor and reachable pickup clearance', () => {
   const match = nacreMatch();
   for (const pickup of match.pickups) {

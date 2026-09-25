@@ -69,6 +69,8 @@ func run() -> void:
 	var event := {"type":"shot","id":1,"time":1.0,"actor":7,"weapon":0}
 	session.client.events.emit([event])
 	check(binding.rig.recoil_count == 1,"source event signal hooked")
+	session.client.events.emit([{"type":"melee","id":3,"time":1.5,"actor":7,"hit":null}])
+	check(binding.rig.kick_count == 1,"confirmed melee reaches the visible first-person boot")
 	for field: String in ["application_focused","received_pose","captured"]:
 		session.set(field,false)
 		binding.refresh()
