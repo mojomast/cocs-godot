@@ -1564,7 +1564,9 @@ export function cocsBuyAction(match, state, record = {}) {
   const previousBuff = actor.reqBuff;
   actor.req = result.balanceAfter;
   actor.reqSpent = num(actor.reqSpent, 0) + num(result.cost, 0);
-  actor.reqBuff = item.id;
+  // Equipment has an instant world effect; it must not evict a live personal
+  // buff from the single-buff slot when purchased afterward.
+  if (item.personalBuff === true) actor.reqBuff = item.id;
   if (item.id === 'field-repair') actor.health = Math.min(num(actor.maxHealth, actor.health), num(actor.health, 0) + 50);
   else if (item.id === 'overshield') actor.temporaryShield = Math.max(num(actor.temporaryShield, 0), 50);
   else if (item.id === 'haste') {

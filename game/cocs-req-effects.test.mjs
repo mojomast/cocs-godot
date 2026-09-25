@@ -151,7 +151,7 @@ test('every PvPvE-offered REQ row writes its advertised world delta through Matc
   assert.notEqual(worldDigest(match, actor), digestBefore, `${id} changed world state, not just the wallet`);
   assert.equal(actor.req, 500 - testCase.cost, `${id} debits its exact cost`);
   assert.equal(actor.reqSpent, testCase.cost, `${id} records the spend`);
-  assert.equal(actor.reqBuff, id, `${id} stamps the personal buff`);
+   assert.equal(actor.reqBuff, ['spot-drone', 'repair-tool'].includes(id) ? undefined : id, `${id} only occupies the personal buff slot for actual buffs`);
  }
 });
 
@@ -171,9 +171,25 @@ test('every OPERATIONS-offered REQ row (including the Puma) writes its advertise
   assert.notEqual(worldDigest(match, actor), digestBefore, `${id} changed world state, not just the wallet`);
   assert.equal(actor.req, 500 - testCase.cost, `${id} debits its exact cost`);
   assert.equal(actor.reqSpent, testCase.cost, `${id} records the spend`);
-  // `reqBuff` is the personal-buff slot: the launched buffs own it. The Puma is
-  // a vehicle row and its authoritative state is the spawned depot Puma above.
-  if (id !== 'puma') assert.equal(actor.reqBuff, id, `${id} stamps the personal buff`);
+   // Vehicles and instant field equipment cannot replace an active buff.
+   assert.equal(actor.reqBuff, ['spot-drone', 'repair-tool', 'puma'].includes(id) ? undefined : id, `${id} only occupies the personal buff slot for actual buffs`);
+ }
+});
+
+test('instant equipment and the depot vehicle preserve an already occupied personal buff slot', () => {
+ for (const [make, item] of [[pvpMatch, 'spot-drone'], [coopMatch, 'repair-tool'], [coopMatch, 'puma']]) {
+  const match = make();
+  const state = match.objectiveState;
+  const actor = match.actors[0];
+  CASES[item].arm(actor, match, state);
+  actor.req = 500;
+  actor.reqBuff = 'overshield';
+  const result = state.coop
+   ? coopBuyAction(match, state, {actorId: actor.id, peerId: 'p1', itemId: item, depotId: item === 'puma' ? 'depot-hq-w' : undefined})
+   : cocsBuyAction(match, state, {actorId: actor.id, peerId: 'p1', itemId: item});
+  assert.equal(result.ok, true, `${item} should be purchasable without evicting Overshield`);
+  assert.equal(actor.reqBuff, 'overshield', `${item} preserves the live personal buff slot`);
+  CASES[item].verify(actor, match, state);
  }
 });
 

@@ -2387,7 +2387,8 @@ export function coopBuyAction(match, state, record = {}) {
   const previousBuff = actor.reqBuff;
   actor.req = result.balanceAfter;
   actor.reqSpent = num(actor.reqSpent, 0) + num(result.cost, 0);
-  actor.reqBuff = item.id;
+  // A depot vehicle or an instant piece of field equipment is not a buff.
+  if (item.personalBuff === true) actor.reqBuff = item.id;
   // Deterministic personal effects. Team-wide/commander items only record the
   // purchase; their team payoff rides the existing economy in a later wave.
   let vehicleId = null;
