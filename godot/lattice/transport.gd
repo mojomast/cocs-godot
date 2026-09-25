@@ -1,14 +1,23 @@
 extends "res://net/client.gd"
 ## Recipient-only command adapter. Movement ACKs never settle actions.
 signal changed
+## Emitted after projection/result state has been replaced, never before.
+signal result_changed(result: Dictionary)
+signal below_minimum(message: String)
 var mode := "cocs"
 var revision := -1
 var sequence := 0
 var received_at := -1
 var projection: Dictionary = {}
+## Immutable-by-convention, recipient-only final display facts. Cleared at every
+## new start/identity epoch; intentionally contains no action authority.
+var result_projection: Dictionary = {}
+var session_config: Dictionary = {}
+var roster_metadata: Dictionary = {}
 var actions: Array[Dictionary] = []
 var cooldown_until := 0
 var projection_actor := -1
+var identity_actor := -1
 const LIMIT := 32
 const COUNTER_MAX := 2147483647
 const PVP_FIGHTER_FLUX := 12.0
@@ -21,11 +30,22 @@ func _init() -> void:
 			fail("Unexpected LATTICE mode")
 			return
 		revision = int(frame.get("roundRevision", -1))
+		result_projection.clear()
+		session_config = echoed_config(frame.get("config", {}), frame.get("mapId", ""))
 		changed.emit())
 	lobby.connect(func(_frame: Dictionary) -> void:
-		if projection_actor != actor_id: clear_projection())
-	connection_error.connect(func(_message: String) -> void: clear_projection())
-	results.connect(func(_frame: Dictionary) -> void: clear_projection())
+		roster_metadata = roster_echo(_frame)
+		if identity_actor != actor_id or projection_actor >= 0 and projection_actor != actor_id:
+			identity_actor = actor_id
+			result_projection.clear()
+			session_config.clear()
+			clear_projection())
+	connection_error.connect(func(_message: String) -> void:
+		result_projection.clear()
+		session_config.clear()
+		roster_metadata.clear()
+		clear_projection())
+	results.connect(_on_results)
 
 func clear_projection() -> void:
 	projection.clear()
@@ -34,9 +54,85 @@ func clear_projection() -> void:
 	projection_actor = -1
 	changed.emit()
 
+func _on_results(frame: Dictionary) -> void:
+	# Base decoder emits results synchronously after marking round_finished. Make
+	# live authority unavailable before publishing final display to consumers.
+	projection.clear()
+	actions.clear()
+	received_at = -1
+	projection_actor = -1
+	var state: Dictionary = dictionary(frame.get("state"))
+	var board := dictionary(state.get("cocs"))
+	var scores: Variant = board.get("scores")
+	var safe_scores: Variant = null
+	if scores is Dictionary:
+		safe_scores = {}
+		for team: String in ["0", "1"]:
+			var score: Variant = scores.get(team)
+			if finite_number(score): safe_scores[team] = score
+	var bounded_outcome: Dictionary = {}
+	var winner: Variant = state.get("winner", null)
+	if winner == null or (wire_integer(winner) and winner in [0, 1]): bounded_outcome["winner"] = winner
+	var reason: Variant = state.get("overReason", null)
+	if reason is String and reason.length() <= 64: bounded_outcome["reason"] = reason
+	result_projection = {"map":state.get("mapId"), "mode":mode, "revision":revision,
+		"sequence":frame.get("seq", null), "source_time":state.get("time", null),
+		"scores":safe_scores, "outcome":bounded_outcome,
+		"dominance":bounded_copy(board.get("dominance")), "mode_progress":bounded_copy(board.get("outcome"))}
+	result_changed.emit(result_projection.duplicate(true))
+	changed.emit()
+
+func finite_number(value: Variant) -> bool:
+	return (value is int or value is float) and is_finite(float(value))
+
+func bounded_copy(value: Variant) -> Variant:
+	if value is Dictionary and value.size() <= 24: return value.duplicate(true)
+	return null
+
+func echoed_config(value: Variant, map_id: Variant) -> Dictionary:
+	if not value is Dictionary: return {}
+	var out := {"map":map_id, "mode":value.get("mode", null),
+		"rung":value.get("rung", null), "bot_count":value.get("botCount", null),
+		"human_count":value.get("humanCount", null), "time_limit":value.get("timeLimit", null),
+		"operator":assigned_character, "harness":assigned_harness,
+		"population":bounded_copy(value.get("population"))}
+	out["roster"] = roster_metadata.duplicate(true)
+	return out
+
+func roster_echo(frame: Dictionary) -> Dictionary:
+	var connected := 0
+	var actors := 0
+	var spectators := 0
+	for player: Variant in array(frame.get("players")):
+		if not player is Dictionary: continue
+		if player.get("connected") == true: connected += 1
+		if player.get("spectate") == true: spectators += 1
+		if player.get("actorId") != null: actors += 1
+	var players: Array = []
+	for player: Variant in array(frame.get("players")):
+		if player is Dictionary: players.append({"peerId":player.get("peerId"),"actorId":player.get("actorId"),"connected":player.get("connected"),"spectate":player.get("spectate")})
+	var cocs := dictionary(frame.get("cocs"))
+	return {"host_peer":frame.get("hostId", null), "minimum_humans":cocs.get("minHumans", 0), "players":players,
+		"connected_peers":connected,"assigned_actors":actors,"spectators":spectators,"total_roster":players.size()}
+
 func reset_round() -> void:
 	super.reset_round()
+	# Base reset_round also runs immediately before `started`; retain the latest
+	# authoritative lobby roster/config echo across that revision boundary.
+	result_projection.clear()
+	sequence = 0
+	cooldown_until = 0
+	clear_projection()
+
+func disconnect_server() -> void:
+	super.disconnect_server()
+	# Explicit disconnect ends the identity epoch; unlike reset_round-before-start,
+	# it must not retain lobby/config/result echoes.
 	revision = -1
+	identity_actor = -1
+	result_projection.clear()
+	session_config.clear()
+	roster_metadata.clear()
 	sequence = 0
 	cooldown_until = 0
 	clear_projection()
@@ -44,6 +140,9 @@ func reset_round() -> void:
 func decode_text(text: String) -> bool:
 	if text.to_utf8_buffer().size() > MAX_FRAME_BYTES: return fail("Oversized frame")
 	var value: Variant = JSON.parse_string(text)
+	if value is Dictionary and value.get("type") == "error" and str(value.get("message", "")).begins_with("below-minimum:"):
+		below_minimum.emit(str(value.message).left(256))
+		return true
 	if value is Dictionary and value.get("type") == "cocs-reject":
 		if not value.get("cardId") is String or value.cardId.length() > 128 or not value.get("reason") is String or value.reason.length() > 256:
 			return fail("Malformed LATTICE rejection")
@@ -117,7 +216,11 @@ func observe(frame: Dictionary) -> void:
 		"commander":dictionary(board.get("commander")), "coop":board.get("coop", false),
 		"recruitment":{"peer":peer_id, "phase":director.get("phase"), "wave":director.get("wave"),
 			"open":window.get("open"), "sink":reinforce,
-			"spawned":dictionary(board.get("roles")).get("spawned")}}
+		"spawned":dictionary(board.get("roles")).get("spawned")},
+		"dominance":bounded_copy(board.get("dominance")),
+		"outcome":bounded_copy(board.get("outcome")),
+		"source_sequence":frame.get("seq", null), "source_time":state.get("time", null),
+		"context":{"revision":revision,"peer":peer_id,"actor":actor_id,"team":team}}
 	projection_actor = actor_id
 	received_at = Time.get_ticks_msec()
 	for card: Variant in board.get("cards", []):

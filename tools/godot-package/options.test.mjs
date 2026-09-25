@@ -12,7 +12,7 @@ test('Horde package route is local-only, fixed default and rejects ignored optio
     assert.deepEqual(plan.userArgs, [`--map=${map}`,'--mode=horde']);
     assert.equal(plan.endpoint, null);
   }
-  for (const arg of ['--map=tidal-citadel','--mode=deathmatch','--round-target=1','--endless','--upgrades','--endpoint=ws://127.0.0.1:1234','--time-limit=900','--setup','--play','--native-trace','--mute','--debug-hud','--horde-evidence']) {
+  for (const arg of ['--map=tidal-citadel','--mode=deathmatch','--round-target=1','--endless','--upgrades','--endpoint=ws://127.0.0.1:1234','--time-limit=900','--join-room=other','--rung=4v4','--setup','--play','--native-trace','--mute','--debug-hud','--horde-evidence']) {
     assert.throws(() => options(['--experience=horde',arg], catalog), Error, arg);
   }
   assert.throws(() => options(['--experience=horde'], {maps:[]}), /Unsupported/);
@@ -204,4 +204,41 @@ test('diagnostics reach every route without enabling multiplayer cheats', () => 
   assert.throws(() => options(['--experience=lobby', '--diagnostics', '--debug-panel'], catalog), /multiplayer lobby/);
   assert.throws(() => options(['--experience=combat', '--debug-panel', '--endpoint=ws://127.0.0.1:1234'], catalog), /owned local/);
   assert.throws(() => options(['--experience=menu', '--diagnostics'], catalog), /not supported/);
+});
+
+test('LATTICE package options preserve both scenes, 57 valid loadouts, rung ownership and join authority', () => {
+  for (const experience of ['lattice','lattice-world']) {
+    const scene = EXPERIENCES[experience].scene;
+    for (const map of ['asterion-relay','monsoon-foundry']) for (const mode of ['cocs','cocs-coop']) {
+      const plan = options([`--experience=${experience}`,`--map=${map}`,`--mode=${mode}`], catalog);
+      assert.equal(plan.scene, scene);
+      assert.ok(plan.userArgs.includes('--time-limit=900'));
+      assert.ok(plan.userArgs.includes('--bots=2'));
+    }
+    let validPairs = 0;
+    for (const operator of CHARACTERS.map(row => row.id)) for (const harness of HARNESSES.map(row => row.id)) {
+      const argv = [`--experience=${experience}`,`--operator=${operator}`,`--harness=${harness}`];
+      if (validLoadout(operator,harness)) {
+        validPairs++;
+        assert.doesNotThrow(() => options(argv,catalog), `${operator}/${harness}`);
+      } else assert.throws(() => options(argv,catalog), /operator\/harness/);
+    }
+    assert.equal(validPairs,57);
+  }
+  for (const rung of ['4v4','8v8']) {
+    const plan = options(['--experience=lattice-world',`--rung=${rung}`],catalog);
+    assert.ok(plan.userArgs.includes(`--rung=${rung}`));
+    assert.ok(!plan.userArgs.some(arg=>arg.startsWith('--bots=')), 'server owns rung bot-fill');
+  }
+  for (const args of [
+    ['--rung=9v9'], ['--rung=4v4','--bots=0'], ['--mode=cocs-coop','--rung=8v8'],
+    ['--bots=17'], ['--bots=-1'], ['--time-limit=59'], ['--time-limit=901'],
+    ['--join-room=x'], ['--join-room=x','--endpoint=ws://localhost:8080','--bots=1'],
+    ['--join-room=x','--endpoint=ws://localhost:8080','--time-limit=600'],
+    ['--operator=claude','--harness=openclaw'], ['--map=not-a-map'], ['--mode=deathmatch'],
+  ]) assert.throws(() => options(['--experience=lattice-world',...args],catalog), Error, JSON.stringify(args));
+  const joined = options(['--experience=lattice-world','--endpoint=ws://localhost:8080','--join-room=room-1'],catalog);
+  assert.equal(joined.endpoint,'ws://localhost:8080');
+  assert.ok(joined.userArgs.includes('--join-room=room-1'));
+  assert.throws(() => options(['--experience=lattice','--native-trace'],catalog), /only by lattice-world/);
 });

@@ -38,7 +38,7 @@ export function launchOptions(argv, catalog) {
   const values = {}, flags = new Set(), sessionOptions = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['map','mode','experience','endpoint','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
+    const key = ['map','mode','experience','endpoint','join-room','rung','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       if (!value || value.startsWith('--')) throw Error(`--${key} requires a value`);
@@ -67,6 +67,7 @@ export function launchOptions(argv, catalog) {
   const play = flags.has('--play') || flags.has('--setup') || values.experience || values.map || values.mode || values.bots !== undefined ||
     ['--native-trace','--mute','--debug-hud','--debug-panel','--session-smoke','--lifecycle-smoke'].some(arg => flags.has(arg));
   const experience = values.experience ?? 'combat';
+  if (!['lattice', 'lattice-world'].includes(experience)) for (const key of ['join-room', 'rung']) if (values[key] !== undefined) throw Error(`--${key} requires lattice-world`);
   if (experience === 'native-dm') {
     for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds'].includes(key)) throw Error(`--${key} is not supported by native-dm`);
     for (const flag of flags) if (!['--smoke','--diagnostics','--debug-panel'].includes(flag)) throw Error(`${flag} is not supported by native-dm`);
@@ -101,6 +102,37 @@ export function launchOptions(argv, catalog) {
       sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,`--score-limit=${scoreLimit}`,...cheats,...diagnostics,...(smoke ? [smoke] : [])],
       args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot','res://native_arenas/identity_zone_demo.tscn']};
   }
+  if (experience === 'lattice' || experience === 'lattice-world') {
+    const supplied = new Set(Object.keys(values));
+    const maps = ['asterion-relay','monsoon-foundry'], modes = ['cocs','cocs-coop'];
+    const map = values.map ?? EXPERIENCES[experience].map, mode = values.mode ?? 'cocs';
+    if (!maps.includes(map)) throw Error(`Unsupported LATTICE map ${map}`);
+    if (!modes.includes(mode)) throw Error(`Unsupported LATTICE mode ${mode}`);
+    for (const [key,min,max,fallback] of [['time-limit',60,900,900],['bots',0,16,2]]) {
+      if (values[key] === undefined) values[key] = String(fallback);
+      if (!/^\d+$/.test(values[key]) || Number(values[key]) < min || Number(values[key]) > max) throw Error(`--${key} must be ${min}..${max}`);
+    }
+    if (experience === 'lattice' && (values['join-room'] !== undefined || flags.has('--native-trace'))) throw Error('Guest room joining and native trace are supported only by lattice-world');
+    if (values.rung !== undefined && (mode !== 'cocs' || !['4v4','8v8'].includes(values.rung))) throw Error('--rung is PvP-only and must be 4v4 or 8v8');
+    if (values.rung !== undefined && supplied.has('bots')) throw Error('Competitive rung bot fill is source-owned; --bots is not accepted');
+    if (values['join-room'] !== undefined && (!values.endpoint || !values['join-room'].trim())) throw Error('--join-room requires --endpoint and a non-empty room');
+    if (values['join-room'] === undefined && values.endpoint && supplied.has('rung')) throw Error('Guest endpoint cannot be combined with host configuration');
+    const operators=['chatgpt','claude','grok','meta','gemini','deepseek','mistral','kimi','qwen'], harnesses=['openclaw','hermes','opencode','claudecode','codex','cline','roo'];
+    const operator=values.operator??'chatgpt', harness=values.harness??'openclaw';
+    if (!operators.includes(operator)||!harnesses.includes(harness)||(operator==='claude'&&harness!=='claudecode')) throw Error('Invalid LATTICE operator/harness pair');
+    if (values['join-room'] !== undefined && ['bots','rung','time-limit','operator','harness'].some(key=>supplied.has(key))) throw Error('Guest join cannot include host configuration');
+    const opts=[`--map=${map}`,`--mode=${mode}`];
+    if (values['join-room'] === undefined) {
+      opts.push(`--time-limit=${values['time-limit']}`);
+      if (values.rung) opts.push(`--rung=${values.rung}`); else opts.push(`--bots=${values.bots}`);
+      opts.push(`--operator=${operator}`,`--harness=${harness}`);
+    }
+    if (values['join-room'] !== undefined) opts.push(`--join-room=${values['join-room']}`);
+    for (const flag of ['--native-trace','--diagnostics']) if (flags.has(flag)) opts.push(flag);
+    const args=[...(diagnostics.length?['--verbose']:[]),'--path','godot',EXPERIENCES[experience].scene];
+    for (const flag of ['--play','--setup','--mute','--debug-hud','--smoke','--network-smoke','--session-smoke','--lifecycle-smoke','--debug-panel']) if (flags.has(flag)) throw Error(`${flag} is not supported by ${experience}`);
+    return {args,sessionOptions:opts,experience,map,mode,smoke:null,endpoint:lobbyEndpoint(values.endpoint,experience)};
+  }
   if (values.bots !== undefined) {
     if (!['combat','zones'].includes(experience)) throw Error('--bots requires combat, zones, native-dm or identity-zones');
     if (!/^\d+$/.test(values.bots) || Number(values.bots) > 8) throw Error('--bots must be 0..8');
@@ -132,7 +164,7 @@ export function launchOptions(argv, catalog) {
     if (experience !== 'sports') throw Error(`--${key} is supported only by the sports launcher`);
     if (!/^\d+$/.test(values[key])) throw Error(`--${key} must be a whole number`);
   }
-  if (experience !== 'combat') {
+  if (experience !== 'combat' && experience !== 'lattice-world') {
     for (const arg of ['--setup','--native-trace','--debug-hud',...smokeFlags]) {
       if (flags.has(arg)) throw Error(`${arg} is supported only by the combat launcher`);
     }
@@ -228,8 +260,12 @@ Sports: ion-speedway (puma-race), aurora-stadium (puma-soccer)
   Optional --time-limit=60..900 and --round-target=1..10 laps or 1..15 goals
 Objectives: tidal-citadel (ctf), sunscar-convoy (payload)
 LATTICE: asterion-relay or monsoon-foundry; --mode=cocs or cocs-coop
-  Click Connect / start in the command board to begin.
+  On Board, click Connect / configure, then host Start after the source echo.
 LATTICE world: --experience=lattice-world with the same maps/modes
-  Click to engage, WASD/mouse to move/look, Escape to release. Standalone host.
+  --time-limit=60..900 (default 900), --bots=0..16 for Practice/Operations,
+  --rung=4v4|8v8 for PvP only (source-owned bot fill; no --bots), operator/harness
+  (Claude only pairs with Claude Code). --endpoint reuses an existing authority;
+  --join-room=ROOM joins it as a guest and cannot carry host config. --native-trace
+  is supported on the world route. Click to engage; Escape releases controls.
 Checks: --network-smoke, --session-smoke or --lifecycle-smoke (combat only)
 `;

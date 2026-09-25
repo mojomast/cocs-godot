@@ -2,6 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import {launchOptions,EXPERIENCES} from './launch_options.mjs';
+import {options as packageOptions} from '../godot-package/options.mjs';
 const catalog=JSON.parse(readFileSync(new URL('../../port/contracts/map-selection.json',import.meta.url)));
 
 test('Horde is default-ten-wave local-only and refuses unsupported or ignored controls',()=>{
@@ -15,7 +16,7 @@ test('Horde is default-ten-wave local-only and refuses unsupported or ignored co
   assert.ok(selected.args.includes('res://native_arenas/identity_horde_demo.tscn'));
   assert.ok(selected.sessionOptions.includes('--operator=claude'));
   assert.ok(selected.sessionOptions.includes('--harness=claudecode'));
-  for(const arg of ['--waves=0','--waves=31','--operator=invalid','--harness=invalid','--map=tidal-citadel','--mode=deathmatch','--round-target=1','--endless','--upgrades','--endpoint=ws://127.0.0.1:1234','--time-limit=900','--setup','--native-trace','--mute','--debug-hud','--session-smoke','--horde-evidence']){
+  for(const arg of ['--waves=0','--waves=31','--operator=invalid','--harness=invalid','--map=tidal-citadel','--mode=deathmatch','--round-target=1','--endless','--upgrades','--endpoint=ws://127.0.0.1:1234','--time-limit=900','--join-room=other','--rung=4v4','--setup','--native-trace','--mute','--debug-hud','--session-smoke','--horde-evidence']){
     assert.throws(()=>launchOptions(['--experience=horde',arg],catalog),Error,arg);
   }
   assert.throws(()=>launchOptions(['--experience=horde','--operator=claude','--harness=openclaw'],catalog));
@@ -41,12 +42,12 @@ test('each standalone map/mode reaches its actual scene and locked identity',()=
     for(const [map,modes]of Object.entries(entry.modes??{}))for(const mode of modes){
       const plan=launchOptions([`--experience=${experience}`,`--map=${map}`,`--mode=${mode}`],catalog);
       assert.ok(plan.args.includes(entry.scene));
-      assert.deepEqual(plan.sessionOptions,[`--map=${map}`,`--mode=${mode}`,...(experience==='lobby'?['--lobby-menu']:[])]);
+      assert.deepEqual(plan.sessionOptions,experience.startsWith('lattice') ? [`--map=${map}`,`--mode=${mode}`,'--time-limit=900','--bots=2','--operator=chatgpt','--harness=openclaw'] : [`--map=${map}`,`--mode=${mode}`,...(experience==='lobby'?['--lobby-menu']:[])]);
       assert.equal(plan.smoke,null);
       assert.ok(!plan.args.includes('--headless'));
     }
     if(entry.modes)assert.deepEqual(launchOptions([`--experience=${experience}`],catalog).sessionOptions,
-      [`--map=${entry.map}`,`--mode=${entry.modes[entry.map][0]}`,...(experience==='lobby'?['--lobby-menu']:[])]);
+      (experience.startsWith('lattice') ? [`--map=${entry.map}`,`--mode=${entry.modes[entry.map][0]}`,'--time-limit=900','--bots=2','--operator=chatgpt','--harness=openclaw'] : [`--map=${entry.map}`,`--mode=${entry.modes[entry.map][0]}`,...(experience==='lobby'?['--lobby-menu']:[])]));
   }
 });
 
@@ -112,7 +113,7 @@ test('dev menu route opens the main menu scene without authority; no-arg default
 test('world traversal and command board remain distinct native scenes',()=>{
   const world=launchOptions(['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop'],catalog);
   assert.ok(world.args.includes('res://lattice/world_demo.tscn'));
-  assert.deepEqual(world.sessionOptions,['--map=monsoon-foundry','--mode=cocs-coop']);
+  assert.deepEqual(world.sessionOptions,['--map=monsoon-foundry','--mode=cocs-coop','--time-limit=900','--bots=2','--operator=chatgpt','--harness=openclaw']);
   assert.ok(launchOptions(['--experience=lattice'],catalog).args.includes('res://lattice/board.tscn'));
   assert.throws(()=>launchOptions(['--experience=lattice-world','--map=ion-speedway'],catalog));
   assert.throws(()=>launchOptions(['--experience=lattice-world','--session-smoke'],catalog));
@@ -148,4 +149,25 @@ test('dev launcher mirrors owned route bot and diagnostics bounds',()=>{
   assert.throws(()=>launchOptions(['--experience=combat','--bots=9'],catalog),/bots/);
   assert.throws(()=>launchOptions(['--experience=lobby','--bots=4'],catalog),/bots/);
   assert.throws(()=>launchOptions(['--experience=lobby','--debug-panel'],catalog),/debug-panel/);
+});
+
+test('LATTICE dev/package argv and native flags are equivalent and validate host/guest contracts',()=>{
+  for(const experience of ['lattice','lattice-world']) for(const map of ['asterion-relay','monsoon-foundry']) for(const mode of ['cocs','cocs-coop']) {
+    const argv=[`--experience=${experience}`,`--map=${map}`,`--mode=${mode}`,'--time-limit=900','--bots=7','--operator=claude','--harness=claudecode',...(experience==='lattice-world'?['--native-trace','--diagnostics']:[])];
+    const dev=launchOptions(argv,catalog), pkg=packageOptions(argv,catalog);
+    assert.deepEqual(dev.sessionOptions,pkg.userArgs); assert.equal(dev.endpoint,pkg.endpoint);
+    assert.equal(dev.args.at(-1),pkg.scene);
+  }
+  for(const rung of ['4v4','8v8']) for(const experience of ['lattice','lattice-world']) {
+    const argv=[`--experience=${experience}`,'--rung='+rung];
+    assert.ok(launchOptions(argv,catalog).sessionOptions.includes('--rung='+rung));
+    assert.ok(packageOptions(argv,catalog).userArgs.includes('--rung='+rung));
+  }
+  for(const bad of [['--map=unknown'],['--mode=nope'],['--time-limit=59'],['--time-limit=901'],['--bots=17'],['--rung=4v4','--bots=1'],['--mode=cocs-coop','--rung=8v8'],['--operator=claude'],['--operator=claude','--harness=openclaw'],['--join-room=r','--endpoint=ws://localhost:2','--bots=3']]) {
+    const argv=['--experience=lattice-world',...bad]; assert.throws(()=>launchOptions(argv,catalog),Error,JSON.stringify(bad)); assert.throws(()=>packageOptions(argv,catalog),Error,JSON.stringify(bad));
+  }
+  const guest=['--experience=lattice-world','--endpoint=ws://127.0.0.1:4321','--join-room=room-a'];
+  assert.deepEqual(launchOptions(guest,catalog).sessionOptions,packageOptions(guest,catalog).userArgs);
+  assert.throws(()=>launchOptions(['--experience=lattice-world','--join-room=room-a'],catalog),/endpoint/);
+  assert.throws(()=>packageOptions(['--experience=lattice-world','--join-room=room-a'],catalog),/endpoint/);
 });

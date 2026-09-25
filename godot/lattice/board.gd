@@ -3,7 +3,12 @@ const Transport = preload("res://lattice/transport.gd")
 const MapView = preload("res://lattice/map_view.gd")
 const Topology = preload("res://lattice/topology.gd")
 const Catalog = preload("res://world/catalog.gd")
+const SessionOptions = preload("res://lattice/session_options.gd")
+const SessionFlow = preload("res://lattice/session_flow.gd")
 var client := Transport.new()
+var session_flow := SessionFlow.new()
+var requested: Dictionary = {}
+var last_lobby: Dictionary = {}
 ## Authored link topology for the current map, resolved from the locked
 ## generated catalog. Advisory only: it never gates or replaces an order.
 var topology := Topology.new()
@@ -15,6 +20,7 @@ var room := LineEdit.new()
 var maps := OptionButton.new()
 var modes := OptionButton.new()
 var connect_button := Button.new()
+var start_button := Button.new()
 var hold_button := Button.new()
 var spend_button := Button.new()
 var confirm_spend := CheckBox.new()
@@ -91,9 +97,12 @@ func _ready() -> void:
 	setup.add_child(room)
 	var controls := HBoxContainer.new()
 	column.add_child(controls)
-	connect_button.text = "Connect / start"
+	connect_button.text = "Connect / configure"
 	connect_button.pressed.connect(begin)
 	controls.add_child(connect_button)
+	start_button.text = "Start / restart (host)"
+	start_button.pressed.connect(start_round)
+	controls.add_child(start_button)
 	var disconnect_button := Button.new()
 	disconnect_button.text = "Disconnect"
 	disconnect_button.pressed.connect(disconnect_session)
@@ -141,14 +150,18 @@ func _ready() -> void:
 	add_child(client)
 	client.changed.connect(refresh)
 	client.lobby.connect(on_lobby)
-	client.started.connect(func(_frame: Dictionary) -> void: phase = "active"; refresh())
+	client.started.connect(on_started)
 	client.connection_error.connect(func(message: String) -> void: phase = "error"; notice.text = message; refresh())
-	client.results.connect(func(_frame: Dictionary) -> void: phase = "results"; refresh())
+	client.results.connect(func(_frame: Dictionary) -> void: phase = "results"; session_flow.observe_result(client.result_projection); refresh())
+	client.below_minimum.connect(func(message: String) -> void: notice.text = message; phase = "waiting for host" if joining else "host waiting"; refresh())
+	requested = SessionOptions.parse(OS.get_cmdline_user_args())
+	if requested.error.is_empty():
+		endpoint.text = requested.endpoint
+		maps.select(1 if requested.map == "monsoon-foundry" else 0)
+		modes.select(1 if requested.mode == "cocs-coop" else 0)
+		room.text = requested.room
+	elif requested.error != "Explicit --endpoint is required": notice.text = requested.error
 	for arg: String in OS.get_cmdline_user_args():
-		if arg.begins_with("--endpoint="): endpoint.text = arg.trim_prefix("--endpoint=")
-		if arg == "--map=monsoon-foundry": maps.select(1)
-		if arg == "--mode=cocs-coop": modes.select(1)
-		if arg.begins_with("--join="): room.text = arg.trim_prefix("--join=")
 		if arg == "--smoke": smoke = true
 		if arg.begins_with("--capture="): capture = arg.trim_prefix("--capture=")
 	refresh()
@@ -157,13 +170,22 @@ func _ready() -> void:
 		begin()
 
 func begin() -> void:
-	if phase not in ["idle", "error", "results"]: return
-	client.disconnect_server()
+	if phase not in ["idle", "error"]: return
+	if not requested.get("error", "").is_empty() and requested.error != "Explicit --endpoint is required": notice.text = requested.error; refresh(); return
+	requested.map = ["asterion-relay", "monsoon-foundry"][maps.selected]
+	requested.mode = modes.get_item_text(modes.selected)
+	requested.endpoint = endpoint.text.strip_edges()
+	requested.room = room.text.strip_edges()
+	requested.join = not requested.room.is_empty()
+	var problem: String = SessionOptions.validate(requested)
+	if not problem.is_empty(): notice.text = problem; refresh(); return
+	session_flow.disconnect(client)
+	last_lobby.clear()
 	selected = ""
 	confirm_spend.button_pressed = false
-	joining = not room.text.strip_edges().is_empty()
-	client.mode = modes.get_item_text(modes.selected)
-	var map_id: String = ["asterion-relay", "monsoon-foundry"][maps.selected]
+	joining = requested.join
+	client.mode = requested.mode
+	var map_id: String = requested.map
 	var allowed := {"asterion-relay":{"modes":["cocs", "cocs-coop"]}, "monsoon-foundry":{"modes":["cocs", "cocs-coop"]}}
 	phase = "connecting"
 	phase_at = Time.get_ticks_msec()
@@ -172,24 +194,50 @@ func begin() -> void:
 	refresh()
 
 func on_lobby(frame: Dictionary) -> void:
-	if frame.get("config") is Dictionary and frame.config.get("mode") != client.mode:
-		client.fail("Requested mode differs from room mode")
-		return
+	last_lobby = frame.duplicate(true)
+	session_flow.observe_roster(frame, client)
+	if joining and frame.get("config") is Dictionary and (frame.get("mapId") != requested.map or frame.config.get("mode") != client.mode):
+		client.fail("Joined room differs from requested map/mode"); return
 	if phase == "creating":
+		var answer: Dictionary = session_flow.request_configuration(requested, client)
+		if not answer.queued: client.fail(answer.reason); return
 		phase = "configuring"
-		if client.configure_match(client.mode, 2) != OK: client.fail("Configuration queue failed")
 	elif phase == "configuring" and frame.get("config") is Dictionary:
-		phase = "starting"
-		if client.send_frame({"type":"start"}) != OK: client.fail("Start queue failed")
+		var cfg: Dictionary = frame.config
+		if frame.get("mapId") != requested.map or cfg.get("mode") != requested.mode or cfg.get("timeLimit") != requested.time_limit or cfg.get("rung") != requested.rung or (requested.rung == null and cfg.get("botCount") != requested.bots):
+			client.fail("Configuration echo differs from host request"); return
+		session_flow.echoed = cfg.duplicate(true)
+		session_flow.publish(SessionFlow.State.HOST_WAITING, "Configuration echoed; host may start")
+		phase = "host waiting"
+		if smoke: start_round()
 	elif phase == "joining": phase = "waiting for host"
 	phase_at = Time.get_ticks_msec()
 	refresh()
 
 func disconnect_session() -> void:
-	client.disconnect_server()
+	session_flow.disconnect(client)
+	last_lobby.clear()
 	phase = "idle"
 	selected = ""
 	confirm_spend.button_pressed = false
+	refresh()
+
+func start_round() -> void:
+	if phase not in ["host waiting", "results"] or joining: return
+	var answer: Dictionary = session_flow.restart(client, last_lobby) if phase == "results" else session_flow.start(client, last_lobby)
+	if answer.queued: phase = "starting"; phase_at = Time.get_ticks_msec(); notice.text = "Start queued; awaiting source start"
+	else: notice.text = answer.reason
+	refresh()
+
+func on_started(frame: Dictionary) -> void:
+	# A guest validates identity against the joined room but must not demand that
+	# the host chose the guest's local default limit or bot count.
+	if joining: session_flow.requested.clear()
+	if not session_flow.observe_start(frame, requested.map, requested.mode):
+		client.fail(session_flow.reason); return
+	phase = "active"
+	confirm_spend.set_pressed_no_signal(false)
+	notice.text = "Source start echoed"
 	refresh()
 
 func buy_fighter() -> void:
@@ -215,13 +263,19 @@ func refresh() -> void:
 		selected = ""
 		selection_context = context
 	if p.is_empty(): confirm_spend.set_pressed_no_signal(false)
-	var connected := phase not in ["idle", "error", "results"]
+	var connected := phase not in ["idle", "error"]
 	maps.disabled = connected
 	modes.disabled = connected
 	endpoint.editable = not connected
 	room.editable = not connected
 	connect_button.disabled = connected
-	status.text = "%s  |  %s / %s  |  round %s  |  %s" % [phase.to_upper(), client.requested_map, client.mode, known(client.revision if client.revision >= 0 else null), client.gate()]
+	start_button.disabled = joining or phase not in ["host waiting", "results"] or client.peer_id != session_flow.host_peer
+	var cfg: Dictionary = client.session_config if not client.session_config.is_empty() else session_flow.echoed
+	status.text = "%s  |  %s / %s  |  round %s  |  %s\nRequested: rung %s, bots %s, limit %ss, %s/%s | Source echo: rung %s, bots %s, limit %s, floor %s, connected %s" % [phase.to_upper(), client.requested_map, client.mode, known(client.revision if client.revision >= 0 else null), client.gate(), known(requested.get("rung")), known(requested.get("bots")), known(requested.get("time_limit")), requested.get("operator", "?"), requested.get("harness", "?"), known(cfg.get("rung")), known(cfg.get("bot_count", cfg.get("botCount"))), known(cfg.get("time_limit", cfg.get("timeLimit"))), known(session_flow.minimum_humans), known(client.roster_metadata.get("connected_peers"))]
+	if phase == "results":
+		var final: Dictionary = client.result_projection
+		var outcome: Dictionary = final.get("outcome", {})
+		status.text += "\nSOURCE RESULT: winner %s · reason %s · scores %s · source time %s · revision %s. Host may request restart; guest waits." % [known(outcome.get("winner")), known(outcome.get("reason")), known(final.get("scores")), known(final.get("source_time")), known(final.get("revision"))]
 	resources.text = "%s  •  FLUX %s  •  spent %s  •  income/s %s  •  upkeep %s  •  REQ %s" % [team_name(p.get("team")), known(p.get("flux")), known(p.get("spent")), known(p.get("income")), known(p.get("upkeep")), known(p.get("req"))]
 	var ids: Array[String] = []
 	for node: Dictionary in p.get("nodes", []): ids.append(node.id)
@@ -280,9 +334,9 @@ func refresh() -> void:
 func _process(_delta: float) -> void:
 	if phase == "connecting" and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		phase = "joining" if joining else "creating"
-		var result: Error = client.join_room(room.text.strip_edges()) if joining else client.create_room()
+		var result: Error = client.join_room(requested.room, "LATTICE guest", requested.operator, requested.harness) if joining else client.create_room("LATTICE host", requested.operator, requested.harness)
 		if result != OK: client.fail("Room request queue failed")
-	if phase in ["connecting", "creating", "configuring", "starting", "joining", "waiting for host"] and Time.get_ticks_msec() - phase_at > 15000:
+	if phase in ["connecting", "creating", "configuring", "starting", "joining"] and Time.get_ticks_msec() - phase_at > 15000:
 		client.fail("Handshake timed out; reconnect explicitly")
 	refresh()
 	if smoke: run_smoke()

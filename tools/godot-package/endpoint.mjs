@@ -1,7 +1,7 @@
 // Shared launcher validation; packaged verbatim so play needs no source checkout.
 export function lobbyEndpoint(value, experience) {
   if (value === undefined) return null;
-  if (experience !== 'lobby') throw Error('--endpoint requires --experience=lobby');
+  if (!['lobby', 'lattice', 'lattice-world'].includes(experience)) throw Error('--endpoint requires --experience=lobby, lattice or lattice-world');
   if (value.length > 2048 || /[\s\\]/.test(value) || !value.startsWith('ws://') && !value.startsWith('wss://')) throw Error('Invalid WebSocket endpoint');
   let url;
   try { url = new URL(value); } catch { throw Error('Invalid WebSocket endpoint'); }

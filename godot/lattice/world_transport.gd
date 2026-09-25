@@ -39,6 +39,34 @@ func valid_envelope(frame: Dictionary) -> bool:
 		if not state.cocs[key] is Dictionary: return false
 		for value: Variant in state.cocs[key].values():
 			if not finite_number(value): return false
+	# These are additive recipient-public fields. Validate only their documented
+	# bounded shape; absence/null stays distinct from explicit numeric zero.
+	if state.cocs.has("dominance") and state.cocs.dominance != null:
+		var dominance: Variant = state.cocs.dominance
+		if not dominance is Dictionary: return false
+		for key: String in ["progress", "target", "remaining", "count", "fastCount", "breakCount", "hold", "fastHold"]:
+			if dominance.has(key) and (not finite_number(dominance[key]) or float(dominance[key]) < 0.0): return false
+		for key: String in ["count", "fastCount", "breakCount"]:
+			if dominance.has(key) and (not wire_integer(dominance[key]) or dominance[key] > 128): return false
+		if dominance.has("team") and dominance.team != null and (not wire_integer(dominance.team) or dominance.team not in [0, 1]): return false
+		if dominance.has("fast") and not dominance.fast is bool: return false
+		if dominance.has("counts"):
+			if not dominance.counts is Dictionary: return false
+			for team: String in ["0", "1"]:
+				if dominance.counts.has(team) and (not wire_integer(dominance.counts[team]) or dominance.counts[team] > 128): return false
+	if state.cocs.has("outcome") and state.cocs.outcome != null:
+		var outcome: Variant = state.cocs.outcome
+		if not outcome is Dictionary: return false
+		if outcome.has("mode") and outcome.mode not in ["pvp", "operations"]: return false
+		if outcome.has("waves") and outcome.waves != null:
+			if not outcome.waves is Dictionary: return false
+			for key: String in ["cleared", "total"]:
+				if outcome.waves.has(key) and (not wire_integer(outcome.waves[key]) or outcome.waves[key] > 1000): return false
+		if outcome.has("hq") and outcome.hq != null:
+			if not outcome.hq is Dictionary: return false
+			for key: String in ["health", "max", "percent"]:
+				if outcome.hq.has(key) and (not finite_number(outcome.hq[key]) or float(outcome.hq[key]) < 0.0): return false
+			if outcome.hq.has("armed") and not outcome.hq.armed is bool: return false
 	if not state.cocs.has("nodes"): return true
 	if not state.cocs.nodes is Array or state.cocs.nodes.size() > 128: return false
 	seen.clear()

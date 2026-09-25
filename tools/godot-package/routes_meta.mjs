@@ -83,6 +83,8 @@ const latticeParams = () => ([
    values: ['asterion-relay', 'monsoon-foundry'], default: 'asterion-relay'},
   {key: 'mode', kind: 'choice', label: 'Mode',
    values: ['cocs', 'cocs-coop'], default: 'cocs'},
+  {key: 'time-limit', kind: 'range', label: 'Time Limit', min: 60, max: 900, default: 900, step: 1},
+  {key: 'bots', kind: 'range', label: 'Practice Bots', min: 0, max: 16, default: 2, step: 1},
 ]);
 
 // Exactly the 22 route ids of SPEC section 4, in menu order (category order,
@@ -188,13 +190,13 @@ export const ROUTES = [
   {
     id: 'lattice', category: 'modes',
     label: 'LATTICE Board',
-    description: 'Command board duel against a local LATTICE opponent',
+    description: 'Practice PvP or Operations with configurable bots; competitive rung hosting requires an explicit launcher --rung and eight human seats',
     params: latticeParams(),
   },
   {
     id: 'lattice-world', category: 'modes',
     label: 'LATTICE World',
-    description: 'Free-roam LATTICE duel in the full 3D world scene',
+    description: 'Practice PvP or Operations in the 3D world; competitive rung hosting requires an explicit launcher --rung and eight human seats',
     params: latticeParams(),
   },
   // --- lab (Extras) ---

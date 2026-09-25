@@ -165,14 +165,14 @@ func model(visible_nodes: Array, team: Variant = null, cuts: Array = []) -> Dict
 	var complete: bool = authored
 	if complete:
 		for id: String in nodes:
-			if not by_id.has(id): complete = false; break
+			if not by_id.has(id) or not by_id[id].owner_known: complete = false; break
 	for entry: Dictionary in entries:
 		var known: bool = nodes.has(entry.id)
 		var has_owned := false
 		var hidden := not known
 		if known:
 			for next: String in neighbors_of(entry.id):
-				if not by_id.has(next): hidden = true
+				if not by_id.has(next) or not by_id[next].owner_known: hidden = true
 				elif by_id[next].mine: has_owned = true
 		entry.reach = true if has_owned else (null if hidden else false)
 		_certify(entry, viewer)
@@ -201,7 +201,7 @@ func model(visible_nodes: Array, team: Variant = null, cuts: Array = []) -> Dict
 		entry.connected = staging
 		if entry.archetype.is_empty(): entry.supply = "UNKNOWN"
 		elif not entry.capturable: entry.supply = ""
-		elif viewer == null: entry.supply = "UNKNOWN"
+		elif viewer == null or not entry.owner_known: entry.supply = "UNKNOWN"
 		elif entry.mine or entry.capture_legal: entry.supply = "LINKED" if staging else ("CUT OFF" if certified else "UNKNOWN")
 		else: entry.supply = "BLOCKED"
 	var link_entries: Array = []
@@ -222,10 +222,16 @@ func model(visible_nodes: Array, team: Variant = null, cuts: Array = []) -> Dict
 		"next": next, "hold": hold, "source": "authored" if authored else "none"}
 
 func _entry(id: String, raw: Dictionary, viewer: Variant) -> Dictionary:
+	var owner_known: bool = raw.has("owner")
 	var owner: Variant = raw.get("owner")
 	var team: Variant = null
-	if owner is int or owner is float:
+	if owner_known and owner == null:
+		team = null # Explicit neutral ownership is known, unlike a missing field.
+	elif owner is int or owner is float:
 		if is_finite(float(owner)) and (float(owner) == 0.0 or float(owner) == 1.0): team = int(float(owner))
+		else: owner_known = false
+	else:
+		owner_known = false
 	var wire: Variant = raw.get("archetype")
 	var archetype: String = wire if wire is String and wire in CAPTURABLE + ANCHORS else archetype_of(id)
 	var progress: Variant = null
@@ -234,8 +240,11 @@ func _entry(id: String, raw: Dictionary, viewer: Variant) -> Dictionary:
 		progress = [clampf(float(captured[0]), 0.0, 1.0), clampf(float(captured[1]), 0.0, 1.0)]
 	var capturable: bool = archetype in CAPTURABLE
 	var mine: bool = viewer != null and team == viewer
-	var live: bool = _flag(raw, "live") or (capturable and team != null)
-	return {"id": id, "label": label_of(raw, id), "archetype": archetype, "known": nodes.has(id),
+	# The source publishes `live` explicitly. Ownership is never proof that an
+	# inactive objective may be captured; missing activity stays uncertified.
+	var live: bool = _flag(raw, "live")
+	return {"id": id, "label": label_of(raw, id), "archetype": archetype, "known": nodes.has(id), "owner_known": owner_known,
+		"x": raw.get("x", nodes.get(id, {}).get("x")), "z": raw.get("z", nodes.get(id, {}).get("z")),
 		"owner": team, "mine": mine, "enemy": viewer != null and team != null and team != viewer,
 		"live": live, "contested": _flag(raw, "contested"), "progress": progress,
 		"my_progress": float(progress[viewer]) if progress != null and viewer != null else 0.0,
@@ -246,7 +255,7 @@ func _entry(id: String, raw: Dictionary, viewer: Variant) -> Dictionary:
 ## Adjacency-only capture legality (ARRAY anchors are deliberately outside this
 ## slice). Never applied to owned ground: a HOLD stays legal regardless.
 func _certify(entry: Dictionary, viewer: Variant) -> void:
-	entry.capture_legal = viewer != null and entry.capturable and not entry.mine and entry.live and entry.reach == true
+	entry.capture_legal = viewer != null and entry.owner_known and entry.capturable and not entry.mine and entry.live and entry.reach == true
 	entry.hold_legal = entry.mine or entry.capture_legal
 
 ## Recipient-visible owned HQs that are not team-visible supply cuts.
