@@ -72,9 +72,21 @@ def tree_hash(records):
     return hashlib.sha256(json.dumps(records, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
+def allowed_state_root(state):
+    """Keep the original tmpfs root; allow an explicitly selected disk root."""
+    roots = [Path("/tmp/opencode")]
+    disk = os.environ.get("COCS_PACKAGE_DISK_ROOT", "")
+    if disk:
+        candidate = Path(disk)
+        if not candidate.is_absolute() or not candidate.is_dir() or candidate.is_symlink():
+            raise RuntimeError("COCS_PACKAGE_DISK_ROOT must be an existing absolute directory")
+        roots.append(candidate.resolve())
+    return any(state != root and state.is_relative_to(root) for root in roots)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--state", type=Path, required=True, help="owned /tmp/opencode directory outside any checkout")
+    parser.add_argument("--state", type=Path, required=True, help="owned state under /tmp/opencode or COCS_PACKAGE_DISK_ROOT outside any checkout")
     parser.add_argument("--archive-directory", type=Path, help="optional read-only source of editor.zip/templates.tpz; official hashes required")
     parser.add_argument("--target", choices=["linux", "windows"], default="linux")
     parser.add_argument("--operator-models", choices=["source-operators", "baseline", "candidate"], default="source-operators",
@@ -90,8 +102,8 @@ def main():
     executable = "cocs.exe" if windows else "cocs.x86_64"
     preset_name = "Windows Desktop Demo" if windows else "Private Linux Prototype"
     state = args.state.resolve()
-    if not state.is_relative_to(Path("/tmp/opencode")) or state == Path("/tmp/opencode") or state.is_relative_to(ROOT) or ROOT.is_relative_to(state):
-        raise RuntimeError("Choose a dedicated /tmp/opencode state directory outside the checkout")
+    if not allowed_state_root(state) or state.is_relative_to(ROOT) or ROOT.is_relative_to(state):
+        raise RuntimeError("Choose dedicated state under /tmp/opencode or COCS_PACKAGE_DISK_ROOT, outside the checkout")
     if any((parent / ".git").exists() for parent in [state, *state.parents]):
         raise RuntimeError("Generated package/toolchain state must be outside every git checkout")
     marker = state / ".cocs-package-state"
