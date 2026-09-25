@@ -78,6 +78,15 @@ test('a tampered envelope fails closed before any Match exists', () => {
   const size = clone();
   size.arena.navNodes = 'not-an-array';
   assert.throws(() => validateIdentityEnvelope(size, IDENTITY_HORDE_MAP), /navNodes/);
+  const cache = clone();
+  cache.arena.hordeCaches[1].pickupId = cache.arena.hordeCaches[0].pickupId;
+  cache.geometryHash = identityArenaHash(cache.arena);
+  assert.throws(() => validateIdentityEnvelope(cache, IDENTITY_HORDE_MAP), /horde cache id/,
+    'even a recomputed hash cannot turn duplicate weapon gates into a valid map');
+  const start = clone();
+  start.arena.teamSpawns[0] = [[Infinity, 0]];
+  start.geometryHash = identityArenaHash(start.arena);
+  assert.throws(() => validateIdentityEnvelope(start, IDENTITY_HORDE_MAP), /horde start x/);
 });
 
 test('canonical hash is key-order independent and array-order sensitive', () => {
@@ -88,7 +97,7 @@ test('canonical hash is key-order independent and array-order sensitive', () => 
   assert.notEqual(identityArenaHash({...arena, blocks: [...arena.blocks].reverse()}), ENVELOPE.geometryHash);
 });
 
-test('identity factory constructs an unchanged single-human source Match', () => {
+test('identity factory constructs a single-human source Match with the authored Horde start', () => {
   const config = validateConfig({mapId: IDENTITY_HORDE_MAP, config: {mode: 'horde', fragLimit: 1}});
   const match = createHordeMatch({mapId: IDENTITY_HORDE_MAP, config, random: () => 0.25});
   assert.equal(match.arena.id, 'nacre-engine');
@@ -102,12 +111,86 @@ test('identity factory constructs an unchanged single-human source Match', () =>
   assert.ok(match.nav.length > 0, 'identity arena bakes a nav graph');
   assert.ok(match.spawns.length >= 2);
   const actor = match.actors[0];
+  assert.ok(match.arena.teamSpawns[0].some(([x,z]) => actor.x===x && actor.z===z),
+    'human starts in the defended service bay, not in an enemy spawn');
+  assert.ok(match.arena.teamSpawns[1].some(([x]) => x < 0));
+  assert.ok(match.arena.teamSpawns[1].some(([x]) => x > 0));
   assert.notEqual(floorAt(actor.x, actor.z, match.arena), null);
   assert.equal(obstructed(actor.x, actor.y, actor.z, undefined, match.arena), false);
   for (const spawn of match.spawns) {
     assert.notEqual(floorAt(spawn.x, spawn.z, match.arena), null);
     assert.equal(obstructed(spawn.x, spawn.y, spawn.z, RULES.radius, match.arena), false);
   }
+});
+
+test('identity Horde seats every valid source operator and harness, including Claude lock', () => {
+  const config = validateConfig({mapId: IDENTITY_HORDE_MAP, config: {mode:'horde', fragLimit:1}});
+  for (const [character,harness] of [['grok','hermes'],['qwen','codex'],['claude','claudecode']]) {
+    const match = createHordeMatch({mapId: IDENTITY_HORDE_MAP, config, character, harness, random:()=>0.25});
+    assert.equal(match.actors[0].character,character);
+    assert.equal(match.actors[0].harness,harness);
+  }
+  assert.throws(() => createHordeMatch({mapId:IDENTITY_HORDE_MAP,config,character:'claude',harness:'openclaw'}),/operator\/harness/);
+});
+
+test('all Nacre supply stations have supported floor and reachable pickup clearance', () => {
+  const match = nacreMatch();
+  for (const pickup of match.pickups) {
+    const y = floorAt(pickup.x,pickup.z,match.arena);
+    assert.notEqual(y,null,`${pickup.kind} has floor`);
+    assert.equal(obstructed(pickup.x,y,pickup.z,RULES.radius,match.arena),false,
+      `${pickup.kind} is not placed inside cover`);
+    assert.ok(match.nav.some(node => Math.hypot(node.x-pickup.x,node.z-pickup.z)<4),
+      `${pickup.kind} is close to a source navigable route`);
+  }
+});
+
+test('source wave transitions open real Nacre weapons in order; all ten waves can complete', {timeout:120000}, () => {
+  const config = validateConfig({mapId:IDENTITY_HORDE_MAP,config:{mode:'horde',fragLimit:10}});
+  const match = createHordeMatch({mapId:IDENTITY_HORDE_MAP,config,random:()=>0.25});
+  const caches = match.arena.hordeCaches;
+  const item = entry => match.pickups.find(p => p.id === entry.pickupId);
+  assert.equal(item(caches[0]).wait,0,'starting scattergun is available during the first intermission');
+  for (const entry of caches.slice(1)) assert.ok(item(entry).wait>1e8,`${entry.zone} weapon starts hidden`);
+  const opened=[]; let lastEvent=0, lastWave=0;
+  const player=match.actors[0];
+  // Bounded *unit* stimulus: skip combat by landing source damage, never forge
+  // source wave state or directly unlock a cache. This is not a natural-play claim.
+  player.protection=1e9;
+  // Place the survivor at the West Workshop cache to exercise ordinary source
+  // proximity collection before and after the wave-3 authority opens it.
+  player.x=item(caches[1]).x;player.z=item(caches[1]).z;
+  player.y=floorAt(player.x,player.z,match.arena);
+  player.lastValid={x:player.x,y:player.y,z:player.z};
+  match.step(0.1,{});
+  assert.equal(player.ammo[4],0,'locked plasma cannot be collected by proximity');
+  assert.equal(match.stats.pickups,0,'no early cache pickup event');
+  for (let tick=0;tick<2400 && !match.over;tick++) {
+    if (match.modeState.phase==='wave') for (const npc of match.actors.filter(a=>a.isNpc && a.health>0)) {
+      npc.protection=0;
+      match.damage(npc,1e6,player);
+    }
+    match.step(0.1,{});
+    for (const event of match.events) if (event.id>lastEvent) {
+      if (event.type==='horde-cache-open') opened.push({wave:event.wave,kind:event.kind,pickupId:event.pickupId});
+      lastEvent=Math.max(lastEvent,event.id);
+    }
+    const wave=match.modeState.wave;
+    if (wave>lastWave) {
+      for (const entry of caches) {
+        assert.equal(item(entry).wait>1e8,wave<entry.wave,`${entry.zone} visibility on wave ${wave}`);
+      }
+      lastWave=wave;
+    }
+  }
+  assert.equal(match.over,true,'bounded ten-wave source run finishes');
+  assert.equal(match.modeState.phase,'won');
+  assert.equal(lastWave,10);
+  assert.ok(player.ammo[4]>0,'after wave 3, the real source pickup grants plasma ammo');
+  assert.ok(match.stats.pickups>=1,'source pickup event occurs after release');
+  assert.deepEqual(opened,caches.slice(1).map(entry=>({wave:entry.wave,
+    kind:match.arena.pickups[entry.pickupId][0],pickupId:entry.pickupId})),
+    'one authority event per opening, no early release or duplicate on later waves');
 });
 
 test('source maps keep the historical constructor through the same hook', () => {

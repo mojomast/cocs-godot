@@ -11,9 +11,14 @@ test('Horde is default-ten-wave local-only and refuses unsupported or ignored co
     assert.deepEqual(plan.sessionOptions,[`--map=${map}`,'--mode=horde']);
     assert.equal(plan.endpoint,null);
   }
-  for(const arg of ['--map=tidal-citadel','--mode=deathmatch','--waves=1','--round-target=1','--endless','--upgrades','--endpoint=ws://127.0.0.1:1234','--time-limit=900','--setup','--native-trace','--mute','--debug-hud','--session-smoke','--horde-evidence']){
+  const selected=launchOptions(['--experience=horde','--map=nacre-engine','--waves=10','--operator=claude','--harness=claudecode'],catalog);
+  assert.ok(selected.args.includes('res://native_arenas/identity_horde_demo.tscn'));
+  assert.ok(selected.sessionOptions.includes('--operator=claude'));
+  assert.ok(selected.sessionOptions.includes('--harness=claudecode'));
+  for(const arg of ['--waves=0','--waves=31','--operator=invalid','--harness=invalid','--map=tidal-citadel','--mode=deathmatch','--round-target=1','--endless','--upgrades','--endpoint=ws://127.0.0.1:1234','--time-limit=900','--setup','--native-trace','--mute','--debug-hud','--session-smoke','--horde-evidence']){
     assert.throws(()=>launchOptions(['--experience=horde',arg],catalog),Error,arg);
   }
+  assert.throws(()=>launchOptions(['--experience=horde','--operator=claude','--harness=openclaw'],catalog));
   assert.throws(()=>launchOptions(['--experience=horde'],{maps:[]}),/locked catalog/);
 });
 

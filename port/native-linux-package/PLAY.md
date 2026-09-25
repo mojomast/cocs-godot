@@ -38,6 +38,7 @@ node run.mjs --experience=native-dm --map=prism-foundry --bots=2 --round-seconds
 node run.mjs --experience=native-dm --map=vermilion-fold
 node run.mjs --experience=identity-zones
 node run.mjs --experience=horde --map=nacre-engine
+node run.mjs --experience=horde --map=nacre-engine --waves=10 --operator=claude --harness=claudecode
 node run.mjs --experience=showcase
 node run.mjs --experience=lobby
 node run.mjs --help
@@ -78,6 +79,9 @@ map, mode or out-of-range value is refused.
 
 **Horde** (`--experience=horde --map=nacre-engine`) runs waves with real enemy
 approaches, wave clears, upgrade offers, victory and defeat with lives 3→2→1→0.
+The menu offers all nine operators and seven harnesses; Claude requires Claude
+Code. The selected source loadout is used by the solo local authority and kept
+on restart. Five Nacre weapon caches open on waves 1, 3, 5, 7 and 9.
 Select offered upgrades with the numbered buttons or matching number keys;
 the server confirms whether a choice was applied or refused. Full natural
 ten-wave completion has not been acceptance-tested; boss/endless modes remain

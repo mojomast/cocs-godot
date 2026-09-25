@@ -5,6 +5,9 @@ source-authoritative waves, a reviewed static map hook in the existing
 loopback-only Horde adapter, and a real acceptance lane with its own logs,
 screenshots and corridor measurements.
 
+The survival-layout revision, its researched reference patterns, map diagram,
+weapon locations, and wave-based cache timetable are in [SURVIVAL_MAP.md](SURVIVAL_MAP.md).
+
 This lane owns:
 
 | Path | What it is |
@@ -42,7 +45,7 @@ and gains one frozen identity entry:
 ```js
 import {IDENTITY_MAPS, HORDE_MAPS, readIdentityMap, createHordeMatch} from './port/native-horde/authority.mjs';
 IDENTITY_MAPS // Object.freeze(['nacre-engine'])
-createHordeMatch({mapId:'nacre-engine', config, random}) // an unchanged source Match
+createHordeMatch({mapId:'nacre-engine', config, random}) // source Match + local wave-gated cache adapter
 ```
 
 Review properties, all asserted by `port/native-identity-horde/identity-horde.test.mjs`:
@@ -59,8 +62,14 @@ Review properties, all asserted by `port/native-identity-horde/identity-horde.te
   intercepts the source constructor's own `this.arena = getMap(mapId)`
   assignment before floor bake, navigation, spawns and actor initialization. No
   source `MAPS` registry write and no post-construction transplant.
+- **Progression uses native source behavior.** Source team spawn pools place
+  survivor/enemies, source steps and proximity checks keep pickup respawns
+  authoritative, and the local subclass unlocks only five recipe-listed weapon
+  entries when their source wave begins. [Layout and timetable](SURVIVAL_MAP.md).
 - **Post-conditions are re-checked**: arena identity, `mode === 'horde'`,
-  exactly one human, `botCount === 0`, and a supported, unblocked spawn.
+  exactly one human, the selected source operator/harness, `botCount === 0`,
+  and a supported, unblocked spawn. The solo authority echoes the reviewed
+  loadout on the lobby wire and retains it across round restarts.
 - **Transport contract unchanged**: loopback-only upgrade, one client, browser
   `Origin` rejected, message rate/burst limits, per-round input epochs,
   retained-object event cursor, bounded outbound frames, fixed 1/60 steps with
@@ -74,8 +83,8 @@ imported helper would change the package closure without a package-lane review.
 ## Godot composition
 
 `res://native_arenas/identity_horde_demo.tscn` extends `res://horde/demo.gd`
-and overrides only seams (catalog, allowlist, default map, world loader, view
-layers):
+and overrides the catalog, allowlist, default map, world loader and view-layer
+seams, plus passive cache signs driven by the source pickup snapshot:
 
 - the arena is built by `res://identity_maps/map.gd` (the same builder the
   identity Deathmatch route ships), including its detail trims and signature FX;
@@ -123,9 +132,9 @@ GODOT_BIN=<pinned> node port/native-identity-horde/validate.mjs <evidence dir>
   anything but a bounded 1–30 wave target, matching the existing Horde lane.
 - **Ten-wave completion**: the default ten-wave target was exercised at startup,
   but no bounded attempt cleared all ten waves.
-- **Upgrade selection**: the source publishes pending upgrade choices and the
-  composition projects them, but protocol v3 has no selection command, so
-  selection remains unsupported.
+- **Upgrade selection**: the local-only Horde upgrade intent applies source-
+  offered choices and reports authoritative acceptance or refusal; the public
+  multiplayer protocol still has no Horde upgrade command.
 - **Human feel/audio/focus**: automated runs use Dummy audio and Xvfb; no human
   playthrough is claimed.
 - **Frame cadence** is measured on software rendering (llvmpipe under Xvfb); the

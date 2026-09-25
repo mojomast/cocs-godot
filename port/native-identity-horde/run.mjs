@@ -32,6 +32,10 @@ const resolution = option('--resolution', '1280x800');
 const rendering = option('--rendering', '');
 const RENDERING_METHODS = ['', 'gl_compatibility', 'mobile', 'forward_plus'];
 const SCENARIOS = Object.freeze({startup: 95, waves: 205, defeat: 205, peak: 195});
+// Full snapshots are retained for source/scene correlation; on the expanded
+// seven-spawn Horde map a natural three-wave run can exceed 96 MiB of raw JSON
+// while still well inside its 205-second deadline. Keep a finite bound.
+const EVIDENCE_CAP = 192 * 1024 * 1024;
 if (!Object.hasOwn(SCENARIOS, scenario)) throw Error('Invalid scenario');
 if (!Number.isInteger(waves) || waves < 1 || waves > 30) throw Error('waves must be 1..30');
 if (!/^[0-9]{3,4}x[0-9]{3,4}$/.test(resolution)) throw Error('resolution must be WxH');
@@ -98,7 +102,7 @@ try {
   game = createAuthority({observe(record) {
     const line = JSON.stringify(record);
     bytes += line.length;
-    if (bytes > 96 * 1024 * 1024) { reason = 'evidence cap'; void stop(child); return; }
+    if (bytes > EVIDENCE_CAP) { reason = 'evidence cap'; void stop(child); return; }
     wire.push(line);
   }});
   game.server.on('error', () => { stopping = true; reason = 'authority server error'; if (child) void stop(child); });
@@ -121,7 +125,8 @@ try {
     'game/core.mjs', 'game/singleplayer.mjs', 'game/enemy-types.mjs', 'game/data.mjs',
     'game/config.mjs', 'game/input.mjs', 'game/protocol.mjs', 'game/bots.mjs', 'game/terrain.mjs', 'game/maps.mjs',
     'godot/native_arenas/identity_horde_demo.gd', 'godot/native_arenas/identity_horde_demo.tscn',
-    'godot/identity_maps/map.gd', 'godot/identity_maps/generated/nacre-engine.json',
+    'godot/identity_maps/map.gd', 'godot/identity_maps/style.gd',
+    'godot/identity_maps/generated/nacre-engine.json', 'tools/godot-identity-maps/compile.mjs',
     'godot/native_arenas/identity_environment.gd', 'godot/native_arenas/catalog.gd',
     'godot/tests/horde/identity_live.gd', 'godot/tests/horde/identity_live.tscn',
     'godot/horde/demo.gd', 'godot/horde/client.gd', 'godot/horde/controls.gd', 'godot/horde/model.gd',

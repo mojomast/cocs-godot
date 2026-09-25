@@ -342,6 +342,38 @@
           "max": 30,
           "default": 10,
           "step": 1
+        },
+        {
+          "key": "operator",
+          "kind": "choice",
+          "label": "Operator",
+          "values": [
+            "chatgpt",
+            "claude",
+            "grok",
+            "meta",
+            "gemini",
+            "deepseek",
+            "mistral",
+            "kimi",
+            "qwen"
+          ],
+          "default": "chatgpt"
+        },
+        {
+          "key": "harness",
+          "kind": "choice",
+          "label": "Harness",
+          "values": [
+            "openclaw",
+            "hermes",
+            "opencode",
+            "claudecode",
+            "codex",
+            "cline",
+            "roo"
+          ],
+          "default": "openclaw"
         }
       ],
       "toggles": [
@@ -915,6 +947,38 @@
           "max": 30,
           "default": 10,
           "step": 1
+        },
+        {
+          "key": "operator",
+          "kind": "choice",
+          "label": "Operator",
+          "values": [
+            "chatgpt",
+            "claude",
+            "grok",
+            "meta",
+            "gemini",
+            "deepseek",
+            "mistral",
+            "kimi",
+            "qwen"
+          ],
+          "default": "chatgpt"
+        },
+        {
+          "key": "harness",
+          "kind": "choice",
+          "label": "Harness",
+          "values": [
+            "openclaw",
+            "hermes",
+            "opencode",
+            "claudecode",
+            "codex",
+            "cline",
+            "roo"
+          ],
+          "default": "openclaw"
         }
       ],
       "toggles": [

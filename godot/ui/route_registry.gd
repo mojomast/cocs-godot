@@ -234,6 +234,8 @@ func validate_route(route: Dictionary, selections: Dictionary) -> String:
 		if not selections.get(key, false) is bool: return "Invalid toggle: " + key
 	if str(route.get("id", "")) == "lobby" and selections.get("cheats", false):
 		return "Cheats unavailable in multiplayer"
+	if str(route.get("id", "")) in ["horde", "cheats-horde"] and selections.get("operator") == "claude" and selections.get("harness") != "claudecode":
+		return "Claude requires the Claude Code harness"
 	return ""
 
 ## Flags verbatim first, then one --key=value per param in schema order,

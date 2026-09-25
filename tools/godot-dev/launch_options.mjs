@@ -1,5 +1,9 @@
 // Scene routing only: capability and protocol checks still belong to each client.
 import {lobbyEndpoint} from '../godot-package/endpoint.mjs';
+// Keep the development launcher self-contained: ownership fixtures copy only
+// this module and endpoint.mjs. The package parser mirrors these fixed ids.
+const HORDE_OPERATORS = ['chatgpt','claude','grok','meta','gemini','deepseek','mistral','kimi','qwen'];
+const HORDE_HARNESSES = ['openclaw','hermes','opencode','claudecode','codex','cline','roo'];
 export const EXPERIENCES = {
   combat: {scene:'res://world/session.tscn', map:'meridian-exchange'},
   lobby: {scene:'res://world/session.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
@@ -34,7 +38,7 @@ export function launchOptions(argv, catalog) {
   const values = {}, flags = new Set(), sessionOptions = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['map','mode','experience','endpoint','time-limit','round-target','bots','round-seconds','score-limit'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
+    const key = ['map','mode','experience','endpoint','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       if (!value || value.startsWith('--')) throw Error(`--${key} requires a value`);
@@ -102,6 +106,12 @@ export function launchOptions(argv, catalog) {
     if (!/^\d+$/.test(values.bots) || Number(values.bots) > 8) throw Error('--bots must be 0..8');
     if (experience === 'combat' && values.endpoint !== undefined) throw Error('--bots requires owned local combat authority');
   }
+  if (values.waves !== undefined || values.operator !== undefined || values.harness !== undefined) {
+    if (experience !== 'horde') throw Error('--waves/--operator/--harness require horde');
+    if (values.waves !== undefined && (!/^\d+$/.test(values.waves) || Number(values.waves) < 1 || Number(values.waves) > 30)) throw Error('--waves must be 1..30');
+    const character = values.operator ?? 'chatgpt', harness = values.harness ?? 'openclaw';
+    if (!HORDE_OPERATORS.includes(character) || !HORDE_HARNESSES.includes(harness) || (character === 'claude' && harness !== 'claudecode')) throw Error('Invalid Horde operator/harness pair');
+  }
   for (const key of ['round-seconds','score-limit']) if (values[key] !== undefined) throw Error(`--${key} requires native-dm or identity-zones`);
   if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
     for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by native-only ${experience}`);
@@ -147,7 +157,7 @@ export function launchOptions(argv, catalog) {
   if (values['round-target'] !== undefined && (Number(values['round-target']) < 1 || Number(values['round-target']) > maxTarget)) {
     throw Error(`--round-target must be 1..${maxTarget} for the selected sports map`);
   }
-  for (const key of ['map','mode','time-limit','round-target','bots']) if (values[key] !== undefined) sessionOptions.push(`--${key}=${values[key]}`);
+  for (const key of ['map','mode','time-limit','round-target','bots','waves','operator','harness']) if (values[key] !== undefined) sessionOptions.push(`--${key}=${values[key]}`);
   for (const flag of ['--setup','--native-trace','--mute','--debug-hud']) if (flags.has(flag)) sessionOptions.push(flag);
   sessionOptions.push(...cheats,...diagnostics);
   const smoke = smokeFlags[0];

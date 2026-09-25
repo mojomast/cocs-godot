@@ -1,8 +1,11 @@
 # DESTINATIONS release matrix
 
 This is an exercised port laboratory. Passing tools, headless gates or merged
-branches does not establish a completed game port. Locked scope remains
-`contracts/map-selection.json` at source `51289b79c627a26a381ba556b92bab71f93f3732`.
+branches does not establish a completed game port. The historical release
+matrix began at `contracts/map-selection.json` source
+`51289b79c627a26a381ba556b92bab71f93f3732`; the **current port source pin**
+is `515daf07589150dd3241f4ae1425cc1b093912f5` in
+`port/contracts/source-lock.json`.
 
 Owner direction: this need not be a 1:1 port. Godot-native improvements and
 time-saving substitutions are welcome while preserving scope and gameplay
@@ -58,6 +61,7 @@ See `graphics-batch/README.md` and the per-lane reports for scope and provenance
 | Combined-arms Puma | 43 native checks; strengthened 9-case replay suite passes | Independent 960×640 mounted and1280×800 released PNGs inspected; original failures retained | Independent15.38s walk/mount/25.678m drive/brake/exit/3.118m infantry PASS;332/332 receipts,357 snapshots,3570 vehicle roots | Bounded Puma driving accepted; secondary chassis are visual/exit-only previews, broader vehicle combat and human camera review OPEN |
 | Arms Race | 55 release-safe native checks, 38 source tests and inherited controls/HUD pass independently | Promotion1280×800 and timed-results960×640 PNGs opened by reviewer and lead | One independent Meridian attempt: local kill/source promotion8.217s/rung2 Rocket Launcher; all three arena startups; natural60s results/restart/fresh8.72m movement PASS | Bounded promotion/lifecycle accepted; full ten-rung victory and human play OPEN |
 | Local Horde adapter | Lead50 adapter/validator,70 source/UI,15 model and31 input/3 look-vector checks PASS; public Room unchanged | Both historical HOLDs/event defects/visual failures retained; final results/restart and six exported startup PNGs inspected | Final repair:810 source-object/wire-event matches,378 native snapshots, genuine one-wave victory/restart; final package six default10 startups,881 public snapshots PASS | Bounded local adapter/common route/exported startup accepted; ten-wave/boss/defeat/upgrades/hardware/audio OPEN; small Tab board overlaps lower HUD |
+| Nacre Engine survival layout (next build) | Source team-0/1 spawn pools, twelve supported supply sites, five wave-gated weapon caches; identity-map graybox 42,387 aggregate checks (including Nacre), identity13/13, Horde56/56, composition25/25 and package39/39 pass | Two-size rendered startup and natural three-wave gameplay/results/restart captures in `port/native-identity-horde/evidence/2026-09-25T0*` (passing archives); one earlier capture exceeded the recorder's former 96 MiB bound, now 192 MiB | Local authority's accelerated ten-wave source transition checks every cache release; natural three-wave run won with 12 kills, 3 lives, score338 and clean restart; rendered trace validator PASS | Natural ten-wave, champion/defeat on revised layout, hands-on weapon balance and hardware-FPS acceptance remain OPEN |
 | Native world / entities | All-nine-map smoke and 1,341 solids / 17,166 triangle compatibility independently pass; 52 entity checks pass | All nine overview renders independently captured and image-inspected at `e2fd1d3`; real native Meridian capture after integration | Integrated Meridian authority-backed capture at `edc222f` | Distinct palettes, landmark geometry and sports markings visible; broad route/hardware review OPEN |
 | Combat overlay / audio / scoreboard | Overlay fixture inspected; 37 audio/integration checks and scoreboard fixtures pass | Synthetic render previews and audio notes retained | Authority event integration exercised by current session captures; no human listening acceptance | Human sound mix and broader HUD usability review OPEN |
 | Puma driving / sports | Original119 plus guidance45 and coaching21 checks pass | Independent two-resolution target-victory and restart PNGs inspected | At `8a58c97`, Ion all17 gates / one-lap victory43.028s and43.129s PASS; F5 held-W block, Enter-only neutral, fresh displacement6.367m/6.175m PASS | Source guidance, target victory and round flow accepted; human camera usability/longer races OPEN |

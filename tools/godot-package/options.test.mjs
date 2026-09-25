@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {options, EXPERIENCES} from './options.mjs';
+import {options, EXPERIENCES, HORDE_OPERATORS, HORDE_HARNESSES} from './options.mjs';
+import {CHARACTERS, HARNESSES, validLoadout} from '../../game/data.mjs';
 const catalog = JSON.parse(readFileSync(new URL('../../port/contracts/map-selection.json', import.meta.url)));
 
 test('Horde package route is local-only, fixed default and rejects ignored options', () => {
@@ -15,6 +16,22 @@ test('Horde package route is local-only, fixed default and rejects ignored optio
     assert.throws(() => options(['--experience=horde',arg], catalog), Error, arg);
   }
   assert.throws(() => options(['--experience=horde'], {maps:[]}), /Unsupported/);
+});
+
+test('Horde package loadouts match pinned source and reach the scene', () => {
+  assert.deepEqual(HORDE_OPERATORS, CHARACTERS.map(row => row.id));
+  assert.deepEqual(HORDE_HARNESSES, HARNESSES.map(row => row.id));
+  for (const character of HORDE_OPERATORS) for (const harness of HORDE_HARNESSES) {
+    const argv = ['--experience=horde','--map=nacre-engine',`--operator=${character}`,`--harness=${harness}`];
+    if (validLoadout(character,harness)) {
+      const plan = options(argv, catalog);
+      assert.equal(plan.scene,'res://native_arenas/identity_horde_demo.tscn');
+      assert.ok(plan.userArgs.includes(`--operator=${character}`));
+      assert.ok(plan.userArgs.includes(`--harness=${harness}`));
+    } else assert.throws(() => options(argv,catalog), /operator\/harness/);
+  }
+  for (const invalid of ['--operator=invalid','--harness=invalid']) assert.throws(() => options(['--experience=horde',invalid],catalog));
+  assert.throws(() => options(['--experience=native-dm','--operator=chatgpt'],catalog));
 });
 
 test('package scene routing covers all nine locked identities and preserves native capability subsets', () => {

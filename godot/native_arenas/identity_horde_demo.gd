@@ -17,6 +17,8 @@ extends "res://horde/demo.gd"
 const NativeCatalog = preload("res://native_arenas/catalog.gd")
 const IdentityEnvironment = preload("res://native_arenas/identity_environment.gd")
 const IDENTITY_HORDE_MAPS := ["nacre-engine"]
+var cache_plan: Array = []
+var cache_signs: Dictionary = {}
 
 func _init() -> void:
 	# GDScript does not chain _init automatically; run the inherited constructor
@@ -111,7 +113,53 @@ func load_selected_map(id: String) -> bool:
 	world = next
 	current_id = id
 	world.set_meta("native_geometry_hash", catalog.entries[id].geometryHash)
+	# Horde-only, non-colliding wayfinding. The paired Node authority controls
+	# actual pickup availability; these signs only read its public snapshot.
+	cache_plan = data.arena.get("hordeCaches", [])
+	cache_signs.clear()
+	var guides := Node3D.new()
+	guides.name = "HordeCacheGuides"
+	next.add_child(guides)
+	for value: Variant in cache_plan:
+		if not value is Dictionary: continue
+		var cache: Dictionary = value
+		var pickup: Array = data.arena.pickups[int(cache.pickupId)]
+		var sign := Label3D.new()
+		sign.name = "Cache_%d" % int(cache.pickupId)
+		sign.position = Vector3(float(pickup[1]), 2.65, float(pickup[2]))
+		sign.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		sign.pixel_size = 0.007
+		sign.font_size = 36
+		sign.no_depth_test = false
+		sign.modulate = Color("f2c57c")
+		sign.text = "%s · WAVE %d\n%s" % [str(pickup[0]).to_upper(), int(cache.wave), str(cache.zone).to_upper()]
+		guides.add_child(sign)
+		cache_signs[int(cache.pickupId)] = sign
 	return true
+
+func on_snapshot(frame: Dictionary) -> void:
+	super.on_snapshot(frame)
+	if phase != 3 or not frame.get("state") is Dictionary: return
+	var state: Dictionary = frame.state
+	var public_pickups := {}
+	for value: Variant in state.get("pickups", []):
+		if value is Dictionary: public_pickups[int(value.get("id", -1))] = value
+	var next_cache := ""
+	for value: Variant in cache_plan:
+		var cache: Dictionary = value
+		var id := int(cache.pickupId)
+		if not public_pickups.has(id) or not cache_signs.has(id): continue
+		var pickup: Dictionary = public_pickups[id]
+		var sign: Label3D = cache_signs[id]
+		var wait := float(pickup.get("wait", 1e9))
+		var locked := wait > 1000.0
+		var weapon := str(pickup.get("kind", "")).to_upper()
+		sign.text = "%s · %s\n%s" % [weapon, "WAVE %d" % int(cache.wave) if locked else "REFILLING" if wait > 0 else "READY", str(cache.zone).to_upper()]
+		sign.modulate = Color("f2c57c") if locked else Color("74e4ce")
+		if locked and next_cache.is_empty():
+			next_cache = "NEXT CACHE · W%d %s · %s" % [int(cache.wave), weapon, str(cache.zone).to_upper()]
+	if not next_cache.is_empty() and not horde.offer_pending:
+		horde_label.text += "\n" + next_cache
 
 ## Evidence helper: the composition must expose exactly one sun and one
 ## WorldEnvironment after the arena is built. Counted on the live tree, not on

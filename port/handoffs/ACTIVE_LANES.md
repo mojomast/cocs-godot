@@ -752,3 +752,55 @@ socket name. The final serial aggregate passed **185/185**, including the new
 for the owner's GPU/Extreme map review are in
 `port/release-notes/mode-parity-2026-09-24.md`. Hardware results and hands-on
 Horde/movement/alignment verdicts remain pending.
+
+### Nacre Engine Horde survival-map revision (next-build work)
+
+The reauthored Nacre Engine has an explicit southern player start, enemies
+approaching from both flanks and the northern yard, two supply wings, a connected
+retreat loop, authored cover, and five source pickup caches that open on waves
+1/3/5/7/9 through the **local-only** Horde adapter. Their locations and live
+status appear on in-world signs and the Horde strip. Source-owned combat/wave
+rules and the pinned source commit are unchanged. The researched design and
+pickup diagram are in `port/native-identity-horde/SURVIVAL_MAP.md`.
+
+Serial checks pass: identity authority 13/13 (including an accelerated ten-wave
+cache sequence, not natural ten-wave combat), base Horde 56/56, package 39/39,
+identity-map graybox 42,387 aggregate checks (Nacre routes included), and Godot composition 25/25. A software-rendered
+natural three-wave run on the revised map won with 12 kills and three lives,
+showed the wave-3 Plasma opening, and restarted cleanly; its startup and run
+archives are under `port/native-identity-horde/evidence/2026-09-25T0*`.
+The first three-wave attempt hit the 96 MiB raw evidence cap near the end of
+wave 3; the recorder is now bounded at 192 MiB, and the subsequent attempt
+completed/validated. A natural ten-wave, champion, defeat and weapon-balance
+playthrough still precedes the next owner hardware playtest/build.
+
+### LATTICE Strike flagship research
+
+An Astra read-only audit of source roles, orders, economy, traversal, map graph
+and the current Godot surface produced
+`port/native-lattice/FLAGSHIP_VISION.md`. Its immediate recommendation is a
+complete, readable native FPS/network match before adding more systems. The
+largest proposed later source-rule change is coupling persistent squad orders
+to **physical** capture: current short-lived HOLD/ATTACK can advance an empty,
+uncontested point. This is a design proposal only; source pin and gameplay
+rules remain unchanged.
+
+### Nacre Horde build preparation (2026-09-25)
+
+The revised map now includes selectable, source-validated operator/harness pairs
+through the local Horde authority and the main menu; Claude remains locked to
+Claude Code. The Nacre east armor station was shifted 1 m to avoid a false
+Godot/source corner-sightline disagreement. A fresh source-ray oracle and the
+Godot static ray gate pass. The full serial verifier passed **185/185** on this
+tree. The rendered three-wave evidence predates the 1 m armor adjustment and
+loadout menu wiring; the source match and package build use the revised bytes.
+Release instructions are in `port/release-notes/horde-nacre-2026-09-25.md`.
+
+The owner measured a separate Prism Foundry 12-bot run on an RTX 4070 Laptop
+GPU at 1280×800: High, median-derived 88.8 FPS, p95 16.677 ms, partial
+verdict (95% of the window under input control). Nacre hardware performance
+and the natural wave-9/ten-wave playthrough are not covered by that result.
+
+Six read-only Flash LATTICE research reports landed, and Astra wrote
+`port/native-lattice/FLAGSHIP_SPEC.md` and `FLAGSHIP_PLAN.md` for later
+sequential implementation. The source pin remains unchanged.

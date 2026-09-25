@@ -266,6 +266,16 @@ func build_choice_row(param: Dictionary) -> Control:
 	picker.select(values.find(selections.get(key, "")))
 	picker.item_selected.connect(func(index: int) -> void:
 		selections[key] = str(picker.get_item_metadata(index))
+		if key == "operator" and selections[key] == "claude" and str(current_route.get("id", "")).contains("horde"):
+			# The pinned source locks Claude to Claude Code. Select the legal
+			# harness in the menu rather than launching an invalid local session.
+			selections["harness"] = "claudecode"
+			var harness_picker: Variant = choice_rows.get("harness")
+			if harness_picker != null:
+				for item in harness_picker.item_count:
+					if harness_picker.get_item_metadata(item) == "claudecode":
+						harness_picker.select(item)
+						break
 		if key == registry.map_param_key(current_route): rederive_for_map()
 		refresh_status())
 	row.add_child(picker)

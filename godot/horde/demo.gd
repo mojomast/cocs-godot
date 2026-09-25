@@ -84,8 +84,12 @@ func _ready() -> void:
 	ids = map_ids()
 	for id: String in ids: selector.add_item(catalog.entries[id].name)
 	var selected := default_map_id()
+	var operator_id := Loadout.DEFAULT_CHARACTER
+	var harness_id := Loadout.DEFAULT_HARNESS
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--map="): selected = arg.trim_prefix("--map=")
+		if arg.begins_with("--operator="): operator_id = arg.trim_prefix("--operator=")
+		if arg.begins_with("--harness="): harness_id = arg.trim_prefix("--harness=")
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
 		if arg.begins_with("--waves="):
 			var value := arg.trim_prefix("--waves=")
@@ -98,6 +102,11 @@ func _ready() -> void:
 	if waves < 1 or waves > 30 or not map_supports_horde(selected):
 		on_error("Horde requires a supported map and waves 1..30")
 		return
+	if not Loadout.valid(operator_id, harness_id):
+		on_error("Horde requires a valid operator/harness pair")
+		return
+	selected_character = operator_id
+	selected_harness = harness_id
 	selected_mode = "horde"
 	if not load_selected_map(selected):
 		on_error(catalog.error)
@@ -311,6 +320,10 @@ func release_pointer() -> void:
 	super.release_pointer()
 
 func on_lobby(frame: Dictionary) -> void:
+	var echoed: Dictionary = echoed_loadout(frame)
+	if not echoed.is_empty() and (echoed.get("character") != selected_character or echoed.get("harness") != selected_harness):
+		on_error("Horde authority assigned a different operator/harness")
+		return
 	if phase == 1:
 		if client.send_frame({"type":"host", "mapId":current_id,"config":{"mode":"horde","botCount":0,"difficulty":"easy","fragLimit":waves}}) != OK:
 			on_error("Horde configuration failed")

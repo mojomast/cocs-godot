@@ -70,8 +70,12 @@ const identityZonesParams = () => ([
 
 const hordeParams = () => ([
   {key: 'map', kind: 'choice', label: 'Map',
-   values: [...COMBAT_MAPS, 'nacre-engine'], default: 'meridian-exchange'},
+    values: [...COMBAT_MAPS, 'nacre-engine'], default: 'meridian-exchange'},
   {key: 'waves', kind: 'range', label: 'Waves', min: 1, max: 30, default: 10, step: 1},
+  {key: 'operator', kind: 'choice', label: 'Operator',
+    values: ['chatgpt','claude','grok','meta','gemini','deepseek','mistral','kimi','qwen'], default: 'chatgpt'},
+  {key: 'harness', kind: 'choice', label: 'Harness',
+    values: ['openclaw','hermes','opencode','claudecode','codex','cline','roo'], default: 'openclaw'},
 ]);
 
 const latticeParams = () => ([

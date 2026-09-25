@@ -37,6 +37,11 @@ func probe() -> void:
 	check(census.get("suns", -1) == 1, "exactly one sun for the identity map")
 	check(census.get("environments", -1) == 1, "exactly one WorldEnvironment for the identity map")
 	check(is_instance_valid(product.world) and product.world.has_node("StaticPickupMarkers"), "hidden pickup marker hook")
+	check(product.world.has_node("HordeCacheGuides"), "Nacre Horde wayfinding is built into the real world")
+	check(product.cache_signs.size() == 5 and product.world.get_node("HordeCacheGuides").get_child_count() == 5,
+		"all five source-recipe weapon caches have a readable world marker")
+	check(product.cache_signs[9].text.contains("WAVE 7") and product.cache_signs[11].text.contains("WAVE 9"),
+		"heavy weapons advertise their later-wave milestones")
 	check(product.horde_label.mouse_filter == Control.MOUSE_FILTER_IGNORE, "Horde strip is passive")
 	check(product.map_supports_horde("nacre-engine"), "Nacre Engine supports Horde")
 	check(not product.map_supports_horde("lacuna-court"), "identity Deathmatch map not accepted by Horde")

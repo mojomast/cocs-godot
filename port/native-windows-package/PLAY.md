@@ -110,16 +110,18 @@ Terminal equivalents: `Play.cmd --experience=showcase`, `--experience=aurora-bas
 ## Candidate models and demo status
 
 This demo uses the source-operator models in the shared infantry presentation:
-three geometry variants and palettes for all nine IDs. Combat setup and lobby
-provide operator/harness selection; restricted native-arena routes keep their
-existing fixed loadout rules. The viewer shows all three geometry variants.
+three geometry variants and palettes for all nine IDs. Combat setup, lobby and
+solo Horde provide operator/harness selection; restricted native-arena routes
+keep their existing fixed loadout rules. The viewer shows all three geometry variants.
 Geometry is static, with no walk cycle or skeletal animation. Distant identity
 readability and render cost remain work in progress. The package manifest records
 `operator_models=source-operators` and no staging-only model override. Custom
 renderers in other modes may use their own models.
 
 Horde offers can be selected with numbered buttons or matching number keys,
-with server-confirmed applied/refused feedback. LATTICE shows authored map links
+with server-confirmed applied/refused feedback. Choose Nacre Engine from the
+Horde menu for connected survival routes and weapon caches opening on waves
+1/3/5/7/9; Claude requires the Claude Code harness. LATTICE shows authored map links
 and advisory supply/target guidance. Campaign is deferred; natural full Horde
 rounds and full Arms Race ladder completion remain outside verified acceptance.
 At small resolutions, release Tab if the Horde scoreboard covers the health/ammo panels.

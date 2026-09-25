@@ -1,5 +1,10 @@
 // Package-only routing. Source clients retain their own capability/protocol gates.
 import {lobbyEndpoint} from './endpoint.mjs';
+// The package copies this parser beside run.mjs, outside its runtime/ source tree.
+// Mirror the source's fixed roster here and assert parity in options.test.mjs.
+export const HORDE_OPERATORS = Object.freeze(['chatgpt','claude','grok','meta','gemini','deepseek','mistral','kimi','qwen']);
+export const HORDE_HARNESSES = Object.freeze(['openclaw','hermes','opencode','claudecode','codex','cline','roo']);
+const validHordeLoadout = (character,harness) => HORDE_OPERATORS.includes(character) && HORDE_HARNESSES.includes(harness) && (character !== 'claude' || harness === 'claudecode');
 export const EXPERIENCES = {
   combat: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   lobby: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
@@ -34,7 +39,7 @@ export function options(argv, catalog) {
   const values = {}, flags = new Set();
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['experience','map','mode','endpoint','time-limit','round-target','bots','round-seconds','score-limit','waves'].find(k => arg === `--${k}` || arg.startsWith(`--${k}=`));
+    const key = ['experience','map','mode','endpoint','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(k => arg === `--${k}` || arg.startsWith(`--${k}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       const maxLength = key === 'endpoint' ? 2048 : 64;
@@ -107,6 +112,10 @@ export function options(argv, catalog) {
     if (experience !== 'horde') throw Error('--waves requires horde');
     if (!/^\d+$/.test(values.waves) || Number(values.waves) < 1 || Number(values.waves) > 30) throw Error('--waves must be 1..30');
   }
+  if (values.operator !== undefined || values.harness !== undefined) {
+    if (experience !== 'horde') throw Error('--operator/--harness require horde');
+    if (!validHordeLoadout(values.operator ?? 'chatgpt', values.harness ?? 'openclaw')) throw Error('Invalid Horde operator/harness pair');
+  }
   // --debug-panel: local combat routes only. native-dm/identity-zones already
   // returned above, the native-only labs never reach this line, and lobby is
   // rejected here so debug can never reach the human-vs-human match.
@@ -141,6 +150,8 @@ export function options(argv, catalog) {
   const userArgs = [`--map=${map}`, `--mode=${mode}`];
   for (const key of ['time-limit','round-target']) if (values[key] !== undefined) userArgs.push(`--${key}=${values[key]}`);
   if (values.waves !== undefined) userArgs.push(`--waves=${values.waves}`);
+  if (values.operator !== undefined) userArgs.push(`--operator=${values.operator}`);
+  if (values.harness !== undefined) userArgs.push(`--harness=${values.harness}`);
   if (values.bots !== undefined) userArgs.push(`--bots=${values.bots}`);
   for (const flag of ['--native-trace','--mute','--debug-hud']) if (flags.has(flag)) userArgs.push(flag);
   if (flags.has('--debug-panel')) userArgs.push('--debug-panel');

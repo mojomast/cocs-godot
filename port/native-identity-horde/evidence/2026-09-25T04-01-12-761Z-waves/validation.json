@@ -1,0 +1,128 @@
+{
+  "status": "PASS",
+  "scenario": "waves",
+  "map": "nacre-engine",
+  "waves": 3,
+  "correlated": 5500,
+  "receipts": 2516,
+  "ackHighWater": 2215,
+  "steppedSamples": 2505,
+  "clockDiagnostic": {
+    "sourceSeconds": 103.71666666666206,
+    "wallSeconds": 103.70888522300001
+  },
+  "wavesSeen": 3,
+  "cleared": 2,
+  "upgradeOffers": 0,
+  "approaches": [
+    {
+      "wave": 1,
+      "from": 32.80243893371345,
+      "to": 5.683845268882667,
+      "samples": 2114
+    },
+    {
+      "wave": 2,
+      "from": 29.2741825267113,
+      "to": 11.326640546854874,
+      "samples": 523
+    },
+    {
+      "wave": 3,
+      "from": 24.762254791850552,
+      "to": 9.859550053447192,
+      "samples": 2324
+    }
+  ],
+  "capsule": {
+    "radius": 0.42,
+    "height": 1.8,
+    "neededWidth": 0.84,
+    "source": "game/data.mjs RULES via game/core.mjs obstructed(); identical for humans and NPCs"
+  },
+  "navNarrowestEdgeWidth": 3.73125,
+  "approachMinWidth": 4.0718749999999995,
+  "traversedMinimum": {
+    "clearance": 0.42000478506088257,
+    "clearanceWidth": 0.8400095701217651,
+    "channelWidth": 2.562500000000001,
+    "capped": false,
+    "npc": 12,
+    "npcType": "mortar",
+    "wave": 3,
+    "x": -27.898943184685706,
+    "z": 8.084492211373837,
+    "freeWidth": 0.8400095701217651
+  },
+  "traversedChannel": {
+    "clearance": 0.7041329741477966,
+    "clearanceWidth": 1.4082659482955933,
+    "channelWidth": 2.0234375,
+    "capped": false,
+    "npc": 12,
+    "npcType": "mortar",
+    "wave": 3,
+    "x": -28.65389622359412,
+    "z": 7.23173814968037
+  },
+  "cadence": {
+    "fps_at_peak_avg": 22.1538461538462,
+    "fps_at_peak_samples": 13,
+    "fps_avg": 24.7567567567568,
+    "fps_median": 24,
+    "fps_min": 2,
+    "peak_actors": 6,
+    "peak_alive": 5,
+    "resolution": [
+      960,
+      640
+    ],
+    "samples": 185,
+    "snapshots_applied_high_water": 6203,
+    "snapshots_received": 2,
+    "software_xvfb": true,
+    "wall": 97.484204000001
+  },
+  "waveSummary": {
+    "cleared": 2,
+    "cleared_waves": [
+      1,
+      2
+    ],
+    "deaths": 0,
+    "life_losses": [],
+    "outcome": "won",
+    "upgrade_offers": [],
+    "waves_seen": [
+      {
+        "alive": 3,
+        "lives": 3,
+        "modifier": "SWARM",
+        "t": 6.54642599999999,
+        "total": 3,
+        "wave": 1
+      },
+      {
+        "alive": 4,
+        "lives": 3,
+        "modifier": "MIXED",
+        "t": 43.6162916666664,
+        "total": 4,
+        "wave": 2
+      },
+      {
+        "alive": 5,
+        "lives": 3,
+        "modifier": "ARTILLERY",
+        "t": 59.3260039999996,
+        "total": 5,
+        "wave": 3
+      }
+    ]
+  },
+  "open": [
+    "no wave-clear upgrade offer at this target (the win supersedes the wave-3 offer)"
+  ],
+  "nativeTraceCompletionProven": true,
+  "productComposition": true
+}

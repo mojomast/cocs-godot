@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "scenario": "startup",
+  "map": "nacre-engine",
+  "waves": 10,
+  "correlated": 543,
+  "receipts": 248,
+  "ackHighWater": 248,
+  "steppedSamples": 242,
+  "clockDiagnostic": {
+    "sourceSeconds": 9.066666666666697,
+    "wallSeconds": 9.064501025
+  },
+  "wavesSeen": 1,
+  "cleared": 0,
+  "upgradeOffers": 0,
+  "approaches": [
+    {
+      "wave": 1,
+      "from": 32.80243893371345,
+      "to": 22.027929812479485,
+      "samples": 125
+    }
+  ],
+  "capsule": {
+    "radius": 0.42,
+    "height": 1.8,
+    "neededWidth": 0.84,
+    "source": "game/data.mjs RULES via game/core.mjs obstructed(); identical for humans and NPCs"
+  },
+  "navNarrowestEdgeWidth": 3.73125,
+  "approachMinWidth": 4.0718749999999995,
+  "traversedMinimum": {
+    "clearance": 0.6122590899467468,
+    "clearanceWidth": 1.2245181798934937,
+    "channelWidth": 6,
+    "capped": true,
+    "npc": 1,
+    "npcType": "husk",
+    "wave": 1,
+    "x": 24.485878290092554,
+    "z": -15.158821164686419,
+    "freeWidth": 1.2245181798934937
+  },
+  "traversedChannel": {
+    "clearance": 0.7384083867073059,
+    "clearanceWidth": 1.4768167734146118,
+    "channelWidth": 3.75625,
+    "capped": false,
+    "npc": 2,
+    "npcType": "husk",
+    "wave": 1,
+    "x": -24.355266957028725,
+    "z": -15.30905694432913
+  },
+  "cadence": {
+    "fps_at_peak_avg": 0,
+    "fps_at_peak_samples": 0,
+    "fps_avg": 33.1666666666667,
+    "fps_median": 39,
+    "fps_min": 10,
+    "peak_actors": 0,
+    "peak_alive": 0,
+    "resolution": [
+      960,
+      640
+    ],
+    "samples": 12,
+    "snapshots_applied_high_water": 413,
+    "snapshots_received": 422,
+    "software_xvfb": true,
+    "wall": 6.61666666666667
+  },
+  "waveSummary": {
+    "cleared": 0,
+    "cleared_waves": [],
+    "deaths": 0,
+    "life_losses": [],
+    "outcome": "",
+    "upgrade_offers": [],
+    "waves_seen": [
+      {
+        "alive": 3,
+        "lives": 3,
+        "modifier": "SWARM",
+        "t": 6.87994566666667,
+        "total": 3,
+        "wave": 1
+      }
+    ]
+  },
+  "open": [],
+  "nativeTraceCompletionProven": true,
+  "productComposition": true
+}

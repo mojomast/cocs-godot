@@ -68,17 +68,52 @@ export function recipes() {
   v.cameras = [{id: 'entrance', at: [-18, 1.7, -17], target: [0, 7, -4]}, {id: 'landmark', at: [13, 4, 13], target: [0, 10, 0]}, {id: 'combat', at: [-18, 1.7, 0], target: [0, 2, 0]}, {id: 'objective', at: [-10, 2, -24], target: [0, 5, -17]}, {id: 'worst', at: [37, 34, 38], target: [0, 0, 0]}];
 
   const n = make('nacre-engine', 'Nacre Engine', 'horde', 60, 52, ['d3cbbc', 'a6a49c', '142b4a', 'b88b43']);
-  n.arena.spawns = [[-23, -19], [23, 19], [-23, 19], [23, -19], [0, -21], [0, 21]];
+  // Solo survival layout: start in the south service bay, then rotate through
+  // two open supply wings and a northern boss yard. The old six-point symmetric
+  // arena spawned the human amid enemies and offered only one distant weapon.
+  // The outer circuit always has two exits; low cover interrupts ranged fire
+  // without becoming an impassable wall for the source's large enemy archetypes.
+  n.arena.spawns = [[-23, -19], [23, -19], [-23, 19], [23, 19], [-23, 0], [23, 0], [0, -21]];
+  // Horde uses the source's TEAM spawn scorer. The survivor holds the south
+  // bay; enemies can enter from both flanks and the northern yard. Deathmatch
+  // still uses the FFA spawn array above and needs no mode-specific override.
+  n.arena.teamSpawns = {0: [[-3, 20], [3, 20]], 1: [...n.arena.spawns]};
   n.box('memory-housing', 0, 0, 12, 12, 6, 'enamel');
   for (const sx of [-1, 1]) for (const sz of [-1, 1]) n.box(`shell-pocket-${sx}-${sz}`, sx * 17, sz * 10, 5, 3, 3.2);
+  for (const sx of [-1, 1]) {
+    n.box(`service-bay-wing-${sx}`, sx * 15, 16, 4.5, 2, 2.3, 'shell');
+    n.box(`yard-breakwater-${sx}`, sx * 15, -14, 3, 2, 2.2, 'shell');
+  }
+  n.box('bay-low-cover-west', -4, 12, 2.5, 2, 1.4, 'cut');
+  n.box('bay-low-cover-east', 4, 12, 2.5, 2, 1.4, 'cut');
+  n.box('west-workshop-baffle', -13, 1, 2, 5, 3.2, 'enamel');
+  n.box('east-condenser-baffle', 13, -1, 2, 5, 3.2, 'enamel');
   // Amber service organs are exact boxes, not art: a 0.3 m decorative fin proud
   // of the housing face must answer rays exactly like the prototype did.
   for (const [x, z] of [[-6.15, 2.5], [6.15, -2.5]]) n.box(`amber-organ-${x}-${z}`, x, z, 0.3, 3.2, 3.4, 'accent');
-  n.arena.pickups = [['health', -23, 0], ['health', 23, 0], ['armor', 0, -18], ['rocket', 0, 18], ['ammo', -12, -19], ['ammo', 12, 19]];
-  n.route('retreat-loop', [[-24, -20], [0, -20], [24, -20], [24, 0], [24, 20], [0, 20], [-24, 20], [-24, 0], [-24, -20]]);
-  n.route('inner-retreat', [[-10, -16], [10, -16], [10, 0], [10, 16], [-10, 16], [-10, 0], [-10, -16]]);
+  n.arena.pickups = [
+    ['health', -2, 19], ['ammo', 6, 20], ['scatter', 3, 16],
+    ['health', -23, 7], ['armor', -22, -3], ['plasma', -22, 11],
+    ['armor', 22, -3], ['shock', 22, 8], ['health', 21, -12],
+    ['rocket', 12, -20], ['megahealth', 0, -20], ['flak', -12, -20],
+  ];
+  // Only these weapons are wave-gated. Source pickup cooldown/collection and
+  // between-wave full resupply remain unchanged. The Horde-only adapter releases
+  // them when the authoritative wave starts; DM uses the same geometry normally.
+  n.arena.hordeCaches = [
+    {pickupId: 2, wave: 1, zone: 'South Service Bay'},
+    {pickupId: 5, wave: 3, zone: 'West Workshop'},
+    {pickupId: 7, wave: 5, zone: 'East Condenser'},
+    {pickupId: 9, wave: 7, zone: 'North Yard'},
+    {pickupId: 11, wave: 9, zone: 'North Yard'},
+  ];
+  n.route('retreat-loop', [[0, 20], [-9, 20], [-22, 19], [-23, 6], [-23, -8], [-22, -20], [0, -20], [22, -20], [23, -8], [23, 6], [22, 19], [9, 20], [0, 20]]);
+  n.route('inner-retreat', [[0, 20], [-9, 15], [-10, 7], [-10, 0], [-10, -9], [-10, -20], [0, -20], [10, -20], [10, -9], [10, 0], [10, 7], [9, 15], [0, 20]]);
+  n.route('west-workshop', [[0, 20], [-9, 20], [-21, 16], [-22, 11], [-23, 6], [-23, -8]]);
+  n.route('east-condenser', [[0, 20], [9, 20], [21, 16], [22, 8], [23, 0], [23, -8]]);
+  n.route('boss-yard', [[-23, -8], [-22, -20], [-12, -20], [0, -20], [12, -20], [22, -20], [23, -8]]);
   n.landmarks = [{kind: 'drum', at: [0, 8, 0], scale: [1, 1, 1]}, {kind: 'vault', at: [0, 0, 0], scale: [1, 1, 1]}];
-  n.cameras = [{id: 'entrance', at: [-23, 1.7, 19], target: [0, 7, 0]}, {id: 'landmark', at: [19, 4, 17], target: [0, 8, 0]}, {id: 'combat', at: [-23, 1.7, 0], target: [0, 3, -15]}, {id: 'objective', at: [0, 2, -21], target: [0, 8, 0]}, {id: 'worst', at: [32, 25, 34], target: [0, 0, 0]}];
+  n.cameras = [{id: 'entrance', at: [0, 1.7, 20], target: [0, 4, 0]}, {id: 'landmark', at: [19, 4, 17], target: [0, 8, 0]}, {id: 'combat', at: [-22, 1.7, 8], target: [0, 3, -15]}, {id: 'objective', at: [0, 2, -21], target: [0, 8, 0]}, {id: 'worst', at: [32, 25, 34], target: [0, 0, 0]}];
 
   return [l, v, n].map(r => {
     const built = buildArt(r);

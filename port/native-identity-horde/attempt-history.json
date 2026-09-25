@@ -262,5 +262,38 @@
     "records": 15649,
     "wallSeconds": 142.985032744,
     "traversedMinimumWidth": null
+  },
+  {
+    "stamp": "2026-09-25T03-56-36-266Z",
+    "scenario": "startup",
+    "waves": 10,
+    "resolution": "960x640",
+    "exit": 0,
+    "reason": "identity horde scenario completed",
+    "records": 1353,
+    "wallSeconds": 18.444813770999996,
+    "traversedMinimumWidth": null
+  },
+  {
+    "stamp": "2026-09-25T03-57-55-079Z",
+    "scenario": "waves",
+    "waves": 3,
+    "resolution": "960x640",
+    "exit": 1,
+    "reason": "evidence cap",
+    "records": 20713,
+    "wallSeconds": 132.084673743,
+    "traversedMinimumWidth": null
+  },
+  {
+    "stamp": "2026-09-25T04-01-12-761Z",
+    "scenario": "waves",
+    "waves": 3,
+    "resolution": "960x640",
+    "exit": 0,
+    "reason": "identity horde scenario completed",
+    "records": 19572,
+    "wallSeconds": 126.33850172,
+    "traversedMinimumWidth": null
   }
 ]

@@ -113,8 +113,8 @@ static func texture_bytes(map_id: String) -> int:
 	return total
 
 ## Render-only trim. MultiMesh batches (one draw call per key), shadows off, no
-## collider, every piece at most 5 cm proud of the block it decorates, so
-## silhouette and collision are untouched by construction.
+## collider. Block trim is at most 5 cm proud; floor inlays are at most 2.4 cm
+## above support. Neither changes the authoritative silhouette or movement.
 static func detail_batches(map_id: String, recipe: Dictionary) -> Dictionary:
 	var boxes: Dictionary = {}
 	var bolts: Array[Transform3D] = []
@@ -138,11 +138,42 @@ static func detail_batches(map_id: String, recipe: Dictionary) -> Dictionary:
 					centre += Vector3(0, 0, sign * (block.d * 0.5 + 0.03)) if horizontal else Vector3(sign * (block.w * 0.5 + 0.03), 0, 0)
 					var size := Vector3(block.w * 0.62, 0.14, 0.06) if horizontal else Vector3(0.06, 0.14, block.d * 0.62)
 					_add(boxes, "accent", Transform3D(Basis().scaled(size), centre))
+		if map_id == "nacre-engine" and (id.begins_with("service-bay-wing") or id.begins_with("yard-breakwater")):
+			# Amber safety band makes the starting bay and later heavy-weapon yard
+			# legible even before a cache is active; all faces hug their colliders.
+			for level in 2:
+				_add(boxes, "accent", Transform3D(Basis().scaled(Vector3(block.w * 0.72, 0.12, 0.05)),
+					Vector3(block.x, 0.68 + level * 0.5, block.z + block.d * 0.5 + 0.025)))
+		if map_id == "nacre-engine" and id.ends_with("baffle"):
+			# A distinct vertical service-panel rhythm for the west workshop and
+			# east condenser, without adding a false obstacle or muzzle cover.
+			for offset in [-1.3, 0.0, 1.3]:
+				_add(boxes, "accent", Transform3D(Basis().scaled(Vector3(0.05, 1.55, 0.14)),
+					Vector3(block.x + block.w * 0.5 + 0.025, 1.2, block.z + offset)))
 		if map_id == "lacuna-court" and id.begins_with("resonator-"):
 			for side in 2:
 				var sx := -1.0 if side == 0 else 1.0
 				_add(boxes, "accent", Transform3D(Basis().scaled(Vector3(block.w * 0.86, 0.06, 0.34)), Vector3(block.x + sx * block.w * 0.34, block.h + 0.03, block.z - 1.0)))
 				_add(boxes, "accent", Transform3D(Basis().scaled(Vector3(block.w * 0.86, 0.06, 0.34)), Vector3(block.x + sx * block.w * 0.34, block.h + 0.03, block.z + 1.0)))
+	if map_id == "nacre-engine":
+		# Inlaid cache borders mark real pickup positions from the recipe, never a
+		# duplicate visual-only weapon spawn. The open centre keeps the source
+		# pickup mesh readable and the four low rails carry no collision/shadow.
+		var pickups: Array = recipe.arena.get("pickups", [])
+		for cache: Dictionary in recipe.arena.get("hordeCaches", []):
+			var point: Array = pickups[int(cache.pickupId)]
+			var x := float(point[1])
+			var z := float(point[2])
+			for side in [-1.0, 1.0]:
+				_add(boxes, "accent", Transform3D(Basis().scaled(Vector3(2.4, 0.024, 0.12)), Vector3(x, 0.012, z + side * 1.12)))
+				_add(boxes, "accent", Transform3D(Basis().scaled(Vector3(0.12, 0.024, 2.12)), Vector3(x + side * 1.14, 0.012, z)))
+		# Two short exit guides in the service bay and three hazard dashes across
+		# the northern yard suggest rotation without painting a fake locked door.
+		for sx in [-1.0, 1.0]:
+			for z in [19.0, 17.0]:
+				_add(boxes, "trim", Transform3D(Basis().scaled(Vector3(1.4, 0.024, 0.10)), Vector3(sx * 8.4, 0.012, z)))
+		for x in [-5.0, 0.0, 5.0]:
+			_add(boxes, "accent", Transform3D(Basis().scaled(Vector3(2.6, 0.024, 0.10)), Vector3(x, 0.012, -17.5)))
 	# Perimeter parapet ledge: reads the movement bound without owning it.
 	_add(boxes, "trim", Transform3D(Basis().scaled(Vector3(bounds.maxX - bounds.minX + 0.4, 0.22, 0.3)), Vector3((bounds.minX + bounds.maxX) * 0.5, 7.06, bounds.minZ - 1)))
 	_add(boxes, "trim", Transform3D(Basis().scaled(Vector3(bounds.maxX - bounds.minX + 0.4, 0.22, 0.3)), Vector3((bounds.minX + bounds.maxX) * 0.5, 7.06, bounds.maxZ + 1)))

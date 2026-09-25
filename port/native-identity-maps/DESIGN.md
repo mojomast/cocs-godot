@@ -76,6 +76,8 @@ tension-member breathe. No ground-level effect anywhere.
 
 ## Nacre Engine / Horde
 
+Current survival layout and cache progression: [the dedicated Horde map brief](../native-identity-horde/SURVIVAL_MAP.md).
+
 Playable footprint 60×52. Four broad approach mouths, connected outer retreat ring, two cross-links
 around a nonwalkable central memory housing, recovery alcoves with two exits. Minimum wave approach
 width 6 m. Static nested arches overhead are decorative/nonwalkable. Largest NPC display clearance

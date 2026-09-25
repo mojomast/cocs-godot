@@ -7,6 +7,7 @@ import {Match, floorAt, obstructed} from '../../game/core.mjs';
 import {normalizeConfig} from '../../game/config.mjs';
 import {parseInputEnvelope} from '../../game/protocol.mjs';
 import {selectHordeUpgrade} from '../../game/singleplayer.mjs';
+import {validLoadout} from '../../game/data.mjs';
 import {InputBuffer} from './input-buffer.mjs';
 import {applyDebugFrame, applyLiveOverrides, createDebugState, debugEcho, installHumanGuard,
   parseDebugFrame, reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT} from '../native-debug/debug.mjs';
@@ -109,11 +110,37 @@ export function validateIdentityEnvelope(data, mapId) {
   finiteNumber(block.x, 'block x'); finiteNumber(block.z, 'block z');
   if (w <= 0 || d <= 0 || h <= baseY) identityFail('degenerate block');
  }
- if (!Array.isArray(arena.pickups)) identityFail('pickups');
- for (const pickup of arena.pickups) {
-  if (!Array.isArray(pickup) || pickup.length !== 3 || typeof pickup[0] !== 'string' || !pickup[0].length) identityFail('pickup');
-  finiteNumber(pickup[1], 'pickup x'); finiteNumber(pickup[2], 'pickup z');
- }
+  if (!Array.isArray(arena.pickups)) identityFail('pickups');
+  for (const pickup of arena.pickups) {
+   if (!Array.isArray(pickup) || pickup.length !== 3 || typeof pickup[0] !== 'string' || !pickup[0].length) identityFail('pickup');
+   finiteNumber(pickup[1], 'pickup x'); finiteNumber(pickup[2], 'pickup z');
+  }
+  // The source's team-spawn pools place the survivor in the service bay and
+  // enemies around the outer circuit. Bind each gate to an actual pickup id;
+  // never accept an arbitrary item/kind or a time-based client unlock.
+  if (!arena.teamSpawns || !Array.isArray(arena.teamSpawns[0]) || !Array.isArray(arena.teamSpawns[1]) ||
+      arena.teamSpawns[0].length < 1 || arena.teamSpawns[0].length > 4 || arena.teamSpawns[1].length < 4 || arena.teamSpawns[1].length > 32) identityFail('horde team spawns');
+  for (const point of arena.teamSpawns[0]) {
+   if (!Array.isArray(point) || point.length !== 2) identityFail('horde start point');
+   finiteNumber(point[0], 'horde start x', bounds.minX, bounds.maxX);
+   finiteNumber(point[1], 'horde start z', bounds.minZ, bounds.maxZ);
+  }
+  for (const point of arena.teamSpawns[1]) {
+   if (!Array.isArray(point) || point.length !== 2) identityFail('horde enemy spawn point');
+   finiteNumber(point[0], 'horde enemy x', bounds.minX, bounds.maxX);
+   finiteNumber(point[1], 'horde enemy z', bounds.minZ, bounds.maxZ);
+  }
+  if (!Array.isArray(arena.hordeCaches) || arena.hordeCaches.length < 1 || arena.hordeCaches.length > 12) identityFail('horde cache plan');
+  let lastWave=0;
+  const seenCaches=new Set();
+  for (const cache of arena.hordeCaches) {
+   const id=cache?.pickupId, wave=cache?.wave, zone=cache?.zone;
+   if (!Number.isInteger(id) || id < 0 || id >= arena.pickups.length || seenCaches.has(id)) identityFail('horde cache id');
+   if (!Number.isInteger(wave) || wave < 1 || wave > 30 || wave < lastWave) identityFail('horde cache wave');
+   if (typeof zone !== 'string' || !/^[A-Za-z -]{1,48}$/.test(zone)) identityFail('horde cache zone');
+   if (!['scatter','plasma','shock','rocket','flak'].includes(arena.pickups[id][0])) identityFail('horde cache weapon');
+   seenCaches.add(id); lastWave=wave;
+  }
  if (!arena.terrain || typeof arena.terrain !== 'object') identityFail('terrain');
  if (!Array.isArray(arena.terrain.surfaces) || !arena.terrain.surfaces.length) identityFail('terrain surfaces');
  for (const surface of arena.terrain.surfaces) identityMesh(surface, 'terrain surface');
@@ -163,28 +190,55 @@ export function readIdentityMap(mapId) {
 /** The single static map/factory hook. Source maps keep the historical
  * constructor; the identity family resolves its reviewed recipe and installs it
  * before floor/nav/spawn/actor initialization. */
-export function createHordeMatch({mapId, config, random = Math.random} = {}) {
- if (!HORDE_MAPS.includes(mapId)) throw Error('Unsupported local Horde map');
- if (typeof random !== 'function') throw Error('RNG must be a function');
- if (!config || config.mode !== 'horde' || config.botCount !== 0) throw Error('Normalized Horde config required');
- if (!IDENTITY_MAPS.includes(mapId)) return new Match('chatgpt','openclaw',random,mapId,config);
+export function createHordeMatch({mapId, config, random = Math.random, character = 'chatgpt', harness = 'openclaw'} = {}) {
+  if (!HORDE_MAPS.includes(mapId)) throw Error('Unsupported local Horde map');
+  if (typeof random !== 'function') throw Error('RNG must be a function');
+  if (!config || config.mode !== 'horde' || config.botCount !== 0) throw Error('Normalized Horde config required');
+  if (!validLoadout(character,harness)) throw Error('Unsupported Horde operator/harness');
+  if (!IDENTITY_MAPS.includes(mapId)) return new Match(character,harness,random,mapId,config);
  const arena = readIdentityMap(mapId);
- let assigned = false;
- class IdentityHordeMatch extends Match {
-  get arena() { return arena; }
-  set arena(_sourceFallback) {
-   if (assigned) throw Error('Identity arena reassignment refused');
-   assigned = true;
+  let assigned = false;
+  class IdentityHordeMatch extends Match {
+   get arena() { return arena; }
+   set arena(_sourceFallback) {
+    if (assigned) throw Error('Identity arena reassignment refused');
+    assigned = true;
+   }
+   constructor(...args) {
+    super(...args);
+    this.lockedCaches=new Map();
+    for (const {pickupId,wave,zone} of arena.hordeCaches) {
+     const pickup=this.pickups.find(item=>item.id===pickupId);
+     if (!pickup || pickup.kind!==arena.pickups[pickupId][0]) throw Error('Horde cache was filtered or changed');
+     if (wave>1) {pickup.wait=1e9;this.lockedCaches.set(pickupId,{wave,zone});}
+    }
+   }
+   step(...args) {
+    const result=super.step(...args);
+    const wave=this.modeState?.kind==='horde' && this.modeState.phase==='wave' ? this.modeState.wave : 0;
+    for (const [id,cache] of this.lockedCaches) {
+     if (wave<cache.wave) continue;
+     const pickup=this.pickups.find(item=>item.id===id);
+     if (!pickup) throw Error('Horde cache disappeared');
+     pickup.wait=0; this.lockedCaches.delete(id);
+     this.emit('horde-cache-open',{wave,kind:pickup.kind,pickupId:id,zone:cache.zone,x:pickup.x,z:pickup.z});
+    }
+    return result;
+   }
   }
- }
- const match = new IdentityHordeMatch('chatgpt','openclaw',random,mapId,{...config,humanCount:1});
+  const match = new IdentityHordeMatch(character,harness,random,mapId,{...config,humanCount:1});
  if (!assigned || match.arena !== arena || match.snapshot().mapId !== mapId) throw Error('Identity constructor contract drift');
- if (match.humanCount !== 1 || match.actors.length !== 1 || match.config.botCount !== 0) throw Error('Identity Horde is single-human only');
- for (const actor of match.actors) {
-  if (!Number.isFinite(actor.y) || floorAt(actor.x, actor.z, arena) === null || obstructed(actor.x, actor.y, actor.z, undefined, arena)) {
-   throw Error('Identity constructor produced an unsupported/blocked spawn');
+  if (match.humanCount !== 1 || match.actors.length !== 1 || match.config.botCount !== 0 ||
+      match.actors[0].character !== character || match.actors[0].harness !== harness) throw Error('Identity Horde seat mismatch');
+  for (const actor of match.actors) {
+   if (!Number.isFinite(actor.y) || floorAt(actor.x, actor.z, arena) === null || obstructed(actor.x, actor.y, actor.z, undefined, arena)) {
+    throw Error('Identity constructor produced an unsupported/blocked spawn');
+   }
   }
- }
+  for (const [x,z] of arena.teamSpawns[0]) {
+   const y=floorAt(x,z,arena);
+   if (y===null || obstructed(x,y,z,1.2,arena)) throw Error('Horde start has no supported boss-clear floor');
+  }
  return match;
 }
 export const LIMITS = Object.freeze({payload:16384, frame:1048576, outbound:2097152,
@@ -283,7 +337,8 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
  server.requestTimeout = 5000; server.headersTimeout = 5000; server.keepAliveTimeout = 1000;
  const wss = new WebSocketServer({noServer:true, maxPayload:LIMITS.payload, perMessageDeflate:false});
  const inputs = new InputBuffer();
- let socket=null, config=null, mapId=null, match=null, created=false, finished=false;
+  let socket=null, config=null, mapId=null, match=null, created=false, finished=false;
+  let loadout={character:'chatgpt',harness:'openclaw'};
  let baseConfig=null;
  let round=0, seq=0, epoch=0, eventCursor=null, wall=performance.now(), accumulator=0, closing=false, closePromise;
  let tokens=LIMITS.burst, tokenAt=wall;
@@ -310,7 +365,8 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
  function detach(ws) {
   if (socket !== ws) return;
   socket=null; match=null; config=null; mapId=null; created=false; finished=false;
-  inputs.reset(); accumulator=0; eventCursor=null;
+   inputs.reset(); accumulator=0; eventCursor=null;
+   loadout={character:'chatgpt',harness:'openclaw'};
   debugReset();
  }
  function terminate(reason) {
@@ -326,7 +382,7 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
   const ws=socket;
   ws.send(text, error => { if (error && socket === ws) terminate('Send failed'); });
  }
- const lobby = () => send({type:'lobby',mapId,config,players:[{peerId:0,actorId:0,name:'Local player'}],
+  const lobby = () => send({type:'lobby',mapId,config,players:[{peerId:0,actorId:0,name:'Local player',...loadout}],
   // Additive debug capability echo; absent for every ordinary connection.
   ...(debugEnabled ? {debug:debugEcho(debugState)} : {})});
  function cancelControls(reason) {
@@ -356,14 +412,17 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
     if (!f || typeof f !== 'object' || Array.isArray(f)) throw Error('Object envelope required');
     record({direction:'in',frame:f});
     if (f.type === 'create' && !created) {
-     if (f.v !== 3) throw Error('Protocol 3 required');
-     created=true; send({type:'welcome',v:3,roomId:'local-horde',peerId:0,hordeTransport:1}); lobby();
+      if (f.v !== 3) throw Error('Protocol 3 required');
+      const character=f.character ?? 'chatgpt', harness=f.harness ?? 'openclaw';
+      if (!validLoadout(character,harness)) throw Error('Unsupported Horde operator/harness');
+      loadout={character,harness};
+      created=true; send({type:'welcome',v:3,roomId:'local-horde',peerId:0,hordeTransport:1}); lobby();
     } else if (f.type === 'host' && created && !match) {
      config=validateConfig(f); mapId=f.mapId; lobby();
     } else if (f.type === 'start' && config && (!match || match.over)) {
      // The launch-fixed map id only selects between two reviewed families: the
      // historical source constructor and the static identity hook above.
-     match=createHordeMatch({mapId,config,random:Math.random});
+      match=createHordeMatch({mapId,config,random:Math.random,...loadout});
      if (match.arena.id !== mapId || match.config.mode !== 'horde') throw Error('Source substituted map/mode');
      baseConfig={...match.config};
      debugState.constructed={...debugState.queued};

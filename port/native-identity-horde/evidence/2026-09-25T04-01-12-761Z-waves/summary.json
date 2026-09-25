@@ -1,0 +1,49 @@
+{
+  "exit": 0,
+  "reason": "identity horde scenario completed",
+  "scenario": "waves",
+  "map": "nacre-engine",
+  "waves": 3,
+  "resolution": "960x640",
+  "rendering": "gl_compatibility",
+  "wallSeconds": 126.33850172,
+  "records": 19572,
+  "cleanup": [
+    {
+      "pid": 519592,
+      "reaped": true,
+      "absent": true
+    },
+    {
+      "pid": 519596,
+      "reaped": true,
+      "absent": true
+    }
+  ],
+  "serverClosed": true,
+  "sockets": 0,
+  "temporaryTreeRemoved": true,
+  "traversedMinimum": {
+    "clearance": 0.42000478506088257,
+    "clearanceWidth": 0.8400095701217651,
+    "channelWidth": 2.562500000000001,
+    "capped": false,
+    "npc": 12,
+    "npcType": "mortar",
+    "wave": 3,
+    "x": -27.898943184685706,
+    "z": 8.084492211373837,
+    "freeWidth": 0.8400095701217651
+  },
+  "traversedChannel": {
+    "clearance": 0.7041329741477966,
+    "clearanceWidth": 1.4082659482955933,
+    "channelWidth": 2.0234375,
+    "capped": false,
+    "npc": 12,
+    "npcType": "mortar",
+    "wave": 3,
+    "x": -28.65389622359412,
+    "z": 7.23173814968037
+  }
+}

@@ -1,5 +1,9 @@
 # Native LATTICE command board
 
+The researched [LATTICE Strike flagship direction](FLAGSHIP_VISION.md) proposes
+a complete FPS/network-team loop and staged playtest roadmap. It is a design
+brief; the current source rules and native acceptance below remain authoritative.
+
 ## Current integration
 
 The original command-board delivery below has since gained a clickable

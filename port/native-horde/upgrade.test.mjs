@@ -181,7 +181,7 @@ test('wire: malformed, stale and out-of-phase intents are refused without ending
   send({type: 'input', seq: 1, inputEpoch: epoch, input: {x: 0, z: 0, yaw: 0, pitch: 0}});
   const snapshot = await new Promise((ready, reject) => {
     const timer = setInterval(() => {
-      const frame = received.slice(before).find(entry => entry.type === 'snapshot');
+      const frame = received.slice(before).find(entry => entry.type === 'snapshot' && entry.hordeInput?.receivedSeq >= 1);
       if (frame) { clearInterval(timer); ready(frame); }
     }, 20);
     setTimeout(() => { clearInterval(timer); reject(Error('no snapshot after refusals')); }, 5000);
