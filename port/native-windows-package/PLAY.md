@@ -54,6 +54,7 @@ Play.cmd --experience=objectives --map=tidal-citadel
 Play.cmd --experience=objectives --map=sunscar-convoy
 Play.cmd --experience=lattice --map=asterion-relay
 Play.cmd --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
+Play.cmd --experience=horde --map=cinderwake-drydock --waves=10
 Play.cmd --help
 ```
 

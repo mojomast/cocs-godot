@@ -41,7 +41,7 @@ The isolated port branch now merges that upstream source commit as ancestry,
 records its feature branch in `source-lock.json`, updates map selection to the
 same commit and passes unchanged `verifySource`. Godot import, physics and
 ordinary-input product evidence are now recorded below. Aggregate verification
-and package build remain pending.
+and Linux/Windows packaging have completed; hands-on acceptance remains open.
 
 ## Concrete implementation
 
@@ -157,7 +157,9 @@ a semantic-verifier bypass.
 | Ordinary three-wave session | PASS at 960×640 with current byte hashes: 2,734 input receipts, 2,723 source-stepped samples, wave-2 clear → three-second warning → BC gate open → 30 grounded arrival ticks in C → wave-3 source win and clean restart. `validate_cinderwake.mjs` checks source event cause, snapshot stage, native gate visibility, hashes, ACK/step identity, product UI and cleanup. Source elapsed 96.63s, wall 96.75s. The observer followed the always-open E→C route using bounded, ordinary mouse/key input. Evidence: ignored directory `port/native-identity-horde/evidence/2026-09-25T09-54-55-263Z-cinderwake-drydock-waves/`. |
 | Extended six-wave attempt | OPEN: a 355s software-rendered attempt reached wave 5 after four natural clears but expired before wave-5 clear or the C→D arrival. An earlier 355s attempt exposed an observer-only competing-look bug; the revised observer removes the duplicate mouse event. Neither attempt proves a six-wave result. |
 | Aggregate verifier | PASS: 188/188 serial gates on the integrated source pin, including Cinderwake source and native gate fixtures. The isolated checkout's ignored GLB probes were regenerated from the pinned source before the successful run. |
-| Natural 10/30-wave/champion and defeat play, package | **OPEN** |
+| Fresh extracted Linux package | PASS: full Linux package verifier, plus exported-PCK Cinderwake native gate/ray tests and a bounded packaged Cinderwake launcher check (private Horde authority, new product scene, clean listener/process shutdown). The bounded launcher check stops before any human input; it is not a packaged live-round win. |
+| Extracted Windows package | PASS: all 144 manifest file hashes and bundled source stage/schema/recipe presence. Native Windows execution still requires a Windows host. |
+| Natural 10/30-wave/champion and defeat play | **OPEN** |
 
 Controlled clear fixtures deliberately set wave/enemy state. They prove the
 production controller, including actual input-driven arrival causality, but
@@ -194,14 +196,15 @@ changed to satisfy that test.
    `game/horde-stages.mjs`.
 4. The separate Cinderwake engine slot was granted after LATTICE released it.
    Serial import/native gate tests, two-resolution startup, semantic regeneration
-   and aggregate verification completed. Package and check the final committed
-   branch before publishing a preview build.
+   aggregate verification, Linux package verifier and Windows manifest checks
+   completed.
 5. Run the ordinary launch after engine preparation:
    `node tools/godot-dev/launch.mjs --experience=horde --map=cinderwake-drydock --waves=10`.
    Packaged equivalent: `node run.mjs --experience=horde --map=cinderwake-drydock --waves=10`.
-   These are integration instructions, not a claim that an artifact exists.
+    The release notes identify the preview packages and remaining live gates.
 
 The package builder records the new literal JSON, schema adapter, geometry/plan
 hashes and upstream provenance separately from locked source modules. It
-refuses to package Cinderwake without the upstream stage module. There is no
-published Cinderwake artifact or test/download link at this checkpoint.
+ refuses to package Cinderwake without the upstream stage module. The preview
+ remains distinct from the previously released Nacre Horde package and the
+ isolated LATTICE flagship preview.

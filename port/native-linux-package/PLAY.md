@@ -38,6 +38,7 @@ node run.mjs --experience=native-dm --map=prism-foundry --bots=2 --round-seconds
 node run.mjs --experience=native-dm --map=vermilion-fold
 node run.mjs --experience=identity-zones
 node run.mjs --experience=horde --map=nacre-engine
+node run.mjs --experience=horde --map=cinderwake-drydock --waves=10
 node run.mjs --experience=horde --map=nacre-engine --waves=10 --operator=claude --harness=claudecode
 node run.mjs --experience=showcase
 node run.mjs --experience=lobby
@@ -86,6 +87,13 @@ Select offered upgrades with the numbered buttons or matching number keys;
 the server confirms whether a choice was applied or refused. Full natural
 ten-wave completion has not been acceptance-tested; boss/endless modes remain
 outside this release's acceptance scope.
+
+**Cinderwake Drydock** is a separate scripted Horde map. Its source-controlled
+bulkheads open after wave clears and the next wave waits for you to reach the
+marked destination. The E service spine remains open for alternate approaches.
+The normal ten-wave route uses
+`node run.mjs --experience=horde --map=cinderwake-drydock --waves=10`;
+three waves are also available with `--waves=3` for a shorter first transition.
 
 **Graphics Showcase** (`--experience=showcase`, `--experience=aurora-basin`,
 `--experience=cinder-array`, `--experience=particle-lab`,
