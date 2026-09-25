@@ -1,9 +1,10 @@
 # Cinderwake Drydock — implementation and intake ledger
 
 2026-09-25. **Implemented source/map/adapter/native code; source feature-branch
-intake is complete in this isolated port branch, engine acceptance is pending.
-Not a verified playable release.** The product factory refuses Cinderwake
-under the old source pin rather than playing an unscripted static map.
+intake, Godot import and a normal-rate three-wave B→C run pass in this isolated
+branch. Full-duration ten-wave/champion play remains unverified.** The product
+factory refuses Cinderwake under the old source pin rather than playing an
+unscripted static map.
 
 ## Provenance and ownership
 
@@ -38,8 +39,9 @@ focused Node verification artifacts, not engine or natural-play evidence.
 The source branch was committed and pushed **before any port pin change**.
 The isolated port branch now merges that upstream source commit as ancestry,
 records its feature branch in `source-lock.json`, updates map selection to the
-same commit and passes unchanged `verifySource`. No semantic export, Godot
-invocation, full verifier or package build has occurred in this lane.
+same commit and passes unchanged `verifySource`. Godot import, physics and
+ordinary-input product evidence are now recorded below. Aggregate verification
+and package build remain pending.
 
 ## Concrete implementation
 
@@ -103,8 +105,11 @@ rectangles, 69 static solid blocks, 1,822 authored nav anchors and two 12 × 1 �
 infill, moving floors, jump-dependent routes, teleports or pickup locks.
 
 Final adjustments from the proposal: keel ribs centred X ±8; A shields at
-Z=54 and human anchors at Z=58; C arrival Z=[10,14]; D rocket/flak at Z=-53;
-B health at (-17,42). These resolve measured capsule/pickup interference.
+X ±14, Z=54 with human anchors (0,58) and (2,58) looking through the central
+doorway; C arrival Z=[10,14]; D rocket/flak at Z=-53; B health at (-17,42).
+The revised A placement also removes a full-screen shield occlusion seen in
+the first rendered startup capture. These resolve measured capsule/pickup and
+first-frame sightline interference.
 
 | Authored route | Centreline length (m) |
 | --- | ---: |
@@ -125,10 +130,10 @@ enemy and arrival anchor. Source A* is exercised from every stage enemy
 anchor to every destination; cross-stage paths with both gates closed use E.
 
 Geometry SHA-256:
-`72bffc3ab368a5d0b8257edbd74aa0b291905f71154a04eb39e4ad6e39285eaa`
+`5f073d539fd4a3d2657a1983df4a96321ed85e2b85f7bfd2d40b8e34c151f166`
 
 Plan SHA-256:
-`d6494eda516476cce0a6f0f334b8ea2f950181fa1423c58294df3752189de037`
+`083bdcc1870b41b126c84f49c2a8a9779cc7c75024ffe8da4895a428ab1b2cb8`
 
 ## Verification ledger
 
@@ -146,17 +151,25 @@ a semantic-verifier bypass.
 | `port/native-horde/cinderwake.test.mjs` | 3 pass: literal launcher routing/negatives, source-intake guard and ordinary local-socket map-contract/stage snapshot |
 | Dev/package option regression | 18 pass |
 | Horde/native package closure checks | 19 pass after source intake; 85 locked source modules including `game/horde-stages.mjs` |
-| Native gate ray/revision/restart test | Authored at `godot/tests/horde/cinderwake_test.gd`; **not run** |
-| Godot parsing/import/render, two resolutions, natural 10/30-wave wins, live defeats/restarts, final aggregate/package | **Not run; engine gate closed** |
+| Native gate ray/revision/restart test | PASS: both gate ray masks, native visibility, source revision, restart and collider-backed combat occlusion |
+| Godot 4.5.2 import | PASS with zero parse/script errors on integrated source pin |
+| Native product startup (960×640, 1280×800) | PASS: actual source first wave, two native gate bodies, revised loading cradle and both viewport captures |
+| Ordinary three-wave session | PASS at 960×640: 1,886 input receipts, 1,670 source-stepped samples, wave-2 clear → three-second warning → BC gate open → 133 grounded arrival ticks in C → wave-3 source win and clean restart. `validate_cinderwake.mjs` checks source event cause, snapshot stage, native gate visibility, hashes, ACK/step identity, product UI and cleanup. Source elapsed 69.25s, wall 69.35s in this particular run. |
+| Extended six-wave attempt | OPEN: a 355s software-rendered attempt reached wave 5 after four natural clears but expired before wave-5 clear or the C→D arrival. An earlier 355s attempt exposed an observer-only competing-look bug; the revised observer removes the duplicate mouse event. Neither attempt proves a six-wave result. |
+| Natural 10/30-wave/champion and defeat play, final aggregate/package | **OPEN** |
 
 Controlled clear fixtures deliberately set wave/enemy state. They prove the
 production controller, including actual input-driven arrival causality, but
-are not natural combat wins. All-archetype tests prove spawn support and
-graph access, not a completed boss fight. An exploratory constant-RNG husk
-probe with a fixture-protected human reached E but had not reached the C
-human after 90 simulated seconds; it wandered into D. That probe is not a
-natural-play success or an orphan-free AI acceptance result. Live pursuit,
-boss/summon behaviour and readable traversal remain part of the pending gate.
+are not natural combat wins. All-archetype tests prove spawn support and graph
+access, not a completed boss fight. The ordinary three-wave run now provides
+real pursuit/combat, first transition, gate/arrival causality and restart.
+Enemies can use the permanently open E spine: the observer follows the
+authored E-A/E-C human routes instead of firing through walls. This is
+ordinary input, not an actor position or clock override. The longer attempt
+shows wave 4 can take nearly 200 seconds when enemies roam; performance and
+ten-wave completion need owner play, and the source's 900-second clock still
+applies. C→D is covered by controlled source-rule tests and native gate-ray
+tests, but not by a completed natural live arrival.
 
 During authoring, the 1.2m probe rejected two original D weapon placements
 and the first E–A bend. The revised placements/routes pass. Initial source
@@ -178,12 +191,10 @@ changed to satisfy that test.
 3. Focused source/map/authority checks pass from the integrated pin. The
    explicit source-module census in `horde_closure.test.mjs` is **85** with
    `game/horde-stages.mjs`.
-4. Engine work requires both LATTICE release and the owner-created marker
-   `/home/mojo/.tmp-on-disk/cocs-cinderwake-engine-slot-granted`. The earlier
-   LATTICE marker alone grants nothing. Then run required semantic regeneration,
-   serial import/native gate tests, two-resolution live sessions and aggregate
-   verification using the repository’s current scripts. No engine process has
-   been started by this lane.
+4. The separate Cinderwake engine slot was granted after LATTICE released it.
+   Serial import/native gate tests and two-resolution startup completed. Run
+   required semantic regeneration, aggregate verification and package smoke
+   on the final committed branch before publishing a preview build.
 5. Run the ordinary launch after engine preparation:
    `node tools/godot-dev/launch.mjs --experience=horde --map=cinderwake-drydock --waves=10`.
    Packaged equivalent: `node run.mjs --experience=horde --map=cinderwake-drydock --waves=10`.

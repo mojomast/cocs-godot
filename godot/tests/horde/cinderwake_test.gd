@@ -2,6 +2,7 @@ extends SceneTree
 ## Engine-slot-gated test. Source causality is exercised by the Node fixtures;
 ## this verifies that received masks really change native physics and visuals.
 const Drydock = preload("res://horde_maps/cinderwake.gd")
+const Occlusion = preload("res://world/combat_occlusion.gd")
 var failures: Array[String] = []
 
 func _initialize() -> void:
@@ -18,6 +19,8 @@ func run() -> void:
 	var map := Drydock.new()
 	root.add_child(map)
 	check(map.build("cinderwake-drydock"), "new literal recipe builds")
+	check(Occlusion.native_root(map, "cinderwake-drydock") == map, "combat queries Cinderwake's collider-backed native geometry")
+	check(Occlusion.native_root(map, "nacre-engine") == null, "Cinderwake cannot masquerade as an identity arena")
 	await physics_frame
 	for mask: int in 4:
 		map.apply_source_stage({"geometryRevision": mask, "gateMask": mask, "stageId": "B", "transit": null}, "round-1")

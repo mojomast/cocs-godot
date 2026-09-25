@@ -175,6 +175,9 @@ var trace_enabled: bool = false
 var trace_count: int = 0
 const TRACE_LIMIT: int = 10000
 
+func native_trace_limit() -> int:
+	return TRACE_LIMIT
+
 func trace_snapshot(reseeded: bool) -> Dictionary:
 	var actor: Dictionary = presentation.local_actor
 	return {"schema":1, "event":"snapshot", "round":round_starts,
@@ -196,20 +199,20 @@ func trace_input(controls: Dictionary, result: Error) -> Dictionary:
 		"controls":selected, "queue_result":int(result), "queued":result == OK}
 
 func emit_snapshot_trace(reseeded: bool) -> void:
-	if not trace_enabled or trace_count >= TRACE_LIMIT: return
+	if not trace_enabled or trace_count >= native_trace_limit(): return
 	emit_native_trace(trace_snapshot(reseeded))
 
 func emit_native_trace(record: Dictionary) -> void:
-	if not trace_enabled or trace_count >= TRACE_LIMIT: return
+	if not trace_enabled or trace_count >= native_trace_limit(): return
 	record["sequence"] = trace_count
 	record["monotonic_usec"] = Time.get_ticks_usec()
 	print("PORT_NATIVE_TRACE ", JSON.stringify(record))
 	trace_count += 1
-	if trace_count == TRACE_LIMIT:
+	if trace_count == native_trace_limit():
 		print('PORT_NATIVE_TRACE {"schema":1,"event":"limit","complete":false}')
 
 func emit_boundary_trace(event: String) -> void:
-	if not trace_enabled or trace_count >= TRACE_LIMIT: return
+	if not trace_enabled or trace_count >= native_trace_limit(): return
 	# Never serialize error messages: transport details may contain credentials.
 	emit_native_trace({"schema":1, "event":event, "round":round_starts,
 		"actor_id":client.actor_id, "phase":phase, "complete":false,
@@ -679,7 +682,7 @@ func _process(delta: float) -> void:
 	var queue_result: Error = client.send_input(controls)
 	if queue_result == OK: combat_actions.queued()
 	if queue_result == OK and controls.has("weapon"): weapon_selection.queued(client.input_seq)
-	if trace_enabled and trace_count < TRACE_LIMIT:
+	if trace_enabled and trace_count < native_trace_limit():
 		emit_native_trace(trace_input(controls, queue_result))
 	if queue_result != OK:
 		on_error("Input could not be queued. Relaunch to reconnect.")

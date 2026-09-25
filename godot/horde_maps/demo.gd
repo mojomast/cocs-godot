@@ -7,6 +7,11 @@ var horn := AudioStreamPlayer.new()
 var horn_key := ""
 var horn_epoch := -1
 
+func native_trace_limit() -> int:
+	# A bounded ordinary-input three-wave transit spans more than 10,000 render
+	# traces. Raise only this map's opt-in observer budget, never gameplay ticks.
+	return 50000
+
 func _ready() -> void:
 	# Short captioned three-beat warning. Received source ticks choose each beat;
 	# this audio player has no clock, trigger or callback into gameplay.
@@ -60,6 +65,11 @@ func load_selected_map(id: String) -> bool:
 	var atmosphere := DrydockEnvironment.new()
 	next.add_child(atmosphere)
 	atmosphere.build(catalog.resolve_envelope(id))
+	# Cool deck fill keeps the enclosure readable while the warm cradle/apron
+	# lamps and white E beacons distinguish the three authored arenas.
+	atmosphere.world_environment.environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	atmosphere.world_environment.environment.ambient_light_color = Color("a8c3ce")
+	atmosphere.world_environment.environment.ambient_light_energy = 0.75
 	var markers := Node3D.new()
 	markers.name = "StaticPickupMarkers"
 	markers.hide()

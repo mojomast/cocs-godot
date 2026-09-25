@@ -56,6 +56,13 @@ static func native_root(node: Node, id: String) -> Node:
 	if script != null and script.resource_path == "res://identity_maps/map.gd" \
 			and node.has_method("get_arena_id") and node.get_arena_id() == id:
 		return node
+	# Cinderwake's own authored builder exposes the same collider-backed arena
+	# identity. Combat FX query its real received-gate bodies, not a missing
+	# semantic source-map export or a decorative floor approximation.
+	if id == "cinderwake-drydock" and script != null \
+			and script.resource_path == "res://horde_maps/cinderwake.gd" \
+			and node.has_method("get_arena_id") and node.get_arena_id() == id:
+		return node
 	for child: Node in node.get_children():
 		var found := native_root(child, id)
 		if found != null: return found

@@ -34,6 +34,7 @@ func build(id: String = "cinderwake-drydock", gray: bool = false) -> bool:
 	for z: float in [56.0, 46.0, 6.0, -36.0]:
 		_sign("E · LIFEBOAT PASSAGE\n↕ ALWAYS OPEN", Vector3(-37, 3.5, z), Color("71d8ef"))
 	if not graybox: _ship_silhouette()
+	if not graybox: _deck_lights()
 	built = true
 	return true
 
@@ -90,6 +91,26 @@ func _ship_silhouette() -> void:
 			_decoration(Vector3(2, 11, 1.5), Vector3(side * 9, 16, z), side * 0.55)
 	for angle: float in [0.0, TAU / 3.0, TAU * 2.0 / 3.0]:
 		_decoration(Vector3(3, 12, 1.0), Vector3(sin(angle) * 5, 16 + cos(angle) * 5, -48), -angle)
+
+func _deck_lights() -> void:
+	# Distinct room lighting gives the long evacuation route readable landmarks.
+	# Static, shadowless presentation: these lamps have no damage or trigger area.
+	for row: Array in [
+		[Vector3(0, 5, 57), Color("82cbea"), 19.0, 1.7],
+		[Vector3(0, 8, 38), Color("ffbd78"), 36.0, 1.8],
+		[Vector3(0, 9, -5), Color("87d7e2"), 33.0, 1.5],
+		[Vector3(0, 11, -47), Color("ff9163"), 40.0, 1.8],
+		[Vector3(-37, 5, 46), Color("75c9ec"), 18.0, 1.0],
+		[Vector3(-37, 5, 6), Color("75c9ec"), 18.0, 1.0],
+		[Vector3(-37, 5, -36), Color("75c9ec"), 18.0, 1.0],
+	]:
+		var lamp := OmniLight3D.new()
+		lamp.position = row[0]
+		lamp.light_color = row[1]
+		lamp.omni_range = row[2]
+		lamp.light_energy = row[3]
+		lamp.shadow_enabled = false
+		add_child(lamp)
 
 func apply_source_stage(stage: Dictionary, round_id: String) -> void:
 	if stage.is_empty(): return

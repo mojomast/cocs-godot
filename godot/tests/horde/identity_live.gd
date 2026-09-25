@@ -364,6 +364,7 @@ func _process(delta: float) -> void:
 			respawn_seen = true
 			print("IDENTITY_RESPAWN ", JSON.stringify({"lives":int(session.horde.state.get("lives",3)),"t":elapsed,"health":health}))
 		return
+	if special_wave_steering(a): return
 	# waves / peak: source-default steering. Aim at the nearest received NPC with
 	# real mouse motion, hold fire, close distance, reload when empty.
 	if not session.presentation.lifecycle.can_control():
@@ -390,6 +391,9 @@ func _process(delta: float) -> void:
 		want_picture("peak")
 		print("IDENTITY_PEAK_SHOT ", JSON.stringify({"alive":int(session.horde.state.get("enemiesAlive", 0)),
 			"actors":session.presentation.actors.size(),"t":elapsed,"wave":int(session.horde.state.get("wave",0))}))
+
+func special_wave_steering(_actor: Dictionary) -> bool:
+	return false
 
 func nearest_enemy(a: Dictionary) -> Dictionary:
 	var target: Dictionary = {}

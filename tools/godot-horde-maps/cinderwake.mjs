@@ -11,7 +11,7 @@ const surface=(id,x0,z0,x1,z1)=>({id,material:'floor',walkable:true,vertices:[[x
 export function cinderwake(){
  const id='cinderwake-drydock',name='Cinderwake Drydock';
  const footprints=[[-20,52,20,62],[-24,24,32,52],[-6,16,6,24],[-18,-22,18,16],[-6,-30,6,-22],[-32,-64,32,-30],[-40,-58,-34,58],[-40,53,-20,59],[-40,43,-24,49],[-40,3,-18,9],[-40,-39,-32,-33]];
- const arena={id,name,bounds:{minX:-44,maxX:44,minZ:-66,maxZ:62},voidY:-10,ceilingY:40,raised:false,nextGen:true,spawns:[[-8,57],[8,57]],teamSpawns:{},navNodes:[],pickups:[],blocks:[],terrain:{maxSlope:.65,surfaces:[],walls:[]}};
+  const arena={id,name,bounds:{minX:-44,maxX:44,minZ:-66,maxZ:62},voidY:-10,ceilingY:40,raised:false,nextGen:true,spawns:[[0,58],[2,58]],teamSpawns:{},navNodes:[],pickups:[],blocks:[],terrain:{maxSlope:.65,surfaces:[],walls:[]}};
  const box=(id,x,z,w,d,h=8,material='shell',baseY=0)=>arena.blocks.push({id,x,z,w,d,h,baseY,material});
  const xs=[...new Set([-44,44,...footprints.flatMap(r=>[r[0],r[2]])])].sort((a,b)=>a-b),zs=[...new Set([-66,62,...footprints.flatMap(r=>[r[1],r[3]])])].sort((a,b)=>a-b);
  const inside=(x,z)=>footprints.some(([x0,z0,x1,z1])=>x>=x0&&x<=x1&&z>=z0&&z<=z1);
@@ -30,10 +30,12 @@ export function cinderwake(){
  box('north-shell',0,-67,90,2);box('south-shell',0,63,90,2);box('west-shell',-45,-2,2,130);box('east-shell',45,-2,2,130);
  // Screened embarkation with a six-metre central doorway and west E exit.
  box('embarkation-west',-11.5,52,17,1,5,'enamel');box('embarkation-east',11.5,52,17,1,5,'enamel');
- for(const x of [-8,8])box(`start-shield-${x}`,x,54,4,2,3,'enamel');
+  // Keep the central doorway in view on spawn. These two offset shields cover
+  // the embarkation flanks without putting the camera against a black slab.
+  for(const x of [-14,14])box(`start-shield-${x}`,x,54,4,2,3,'enamel');
  for(const [id,x,z,w,d,h] of [['cargo-west',-10,37,6,4,2.4],['cargo-east',14,40,6,4,2.4],['cradle-barrier',2,29,6,2,1.1],['keel-rib-west',-8,4,4,8,3],['keel-rib-east',8,-9,4,8,3],['apron-plinth-west',-14,-46,6,4,2.4],['apron-plinth-east',14,-46,6,4,2.4]])box(id,x,z,w,d,h,'cut');
  const stages=[
-  {id:'B',arrival:{minX:-8,maxX:8,minZ:42,maxZ:49},humanSpawns:[[-8,58],[8,58]],enemySpawns:[[-20,28],[26,28],[-20,46],[26,46]]},
+   {id:'B',arrival:{minX:-8,maxX:8,minZ:42,maxZ:49},humanSpawns:[[0,58],[2,58]],enemySpawns:[[-20,28],[26,28],[-20,46],[26,46]]},
   {id:'C',arrival:{minX:-7,maxX:7,minZ:10,maxZ:14},humanSpawns:[[-12,10],[-12,2]],enemySpawns:[[-13,-17],[13,-17],[-13,11],[13,11]]},
   {id:'D',arrival:{minX:-10,maxX:10,minZ:-39,maxZ:-32},humanSpawns:[[-24,-35],[-24,-43]],enemySpawns:[[-27,-58],[27,-58],[-27,-34],[27,-34]]},
  ];

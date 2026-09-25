@@ -18,11 +18,11 @@
     "nextGen": true,
     "spawns": [
       [
-        -8,
+        0,
         58
       ],
       [
-        8,
+        2,
         58
       ],
       [
@@ -45,11 +45,11 @@
     "teamSpawns": {
       "0": [
         [
-          -8,
+          0,
           58
         ],
         [
-          8,
+          2,
           58
         ]
       ],
@@ -7926,8 +7926,8 @@
         "material": "enamel"
       },
       {
-        "id": "start-shield--8",
-        "x": -8,
+        "id": "start-shield--14",
+        "x": -14,
         "z": 54,
         "w": 4,
         "d": 2,
@@ -7936,8 +7936,8 @@
         "material": "enamel"
       },
       {
-        "id": "start-shield-8",
-        "x": 8,
+        "id": "start-shield-14",
+        "x": 14,
         "z": 54,
         "w": 4,
         "d": 2,
@@ -9131,11 +9131,11 @@
           },
           "humanSpawns": [
             [
-              -8,
+              0,
               58
             ],
             [
-              8,
+              2,
               58
             ]
           ],
@@ -9590,6 +9590,6 @@
     "geometry": "new rectangular union; no inherited arena recipe",
     "gateContract": 1
   },
-  "planHash": "d6494eda516476cce0a6f0f334b8ea2f950181fa1423c58294df3752189de037",
-  "geometryHash": "72bffc3ab368a5d0b8257edbd74aa0b291905f71154a04eb39e4ad6e39285eaa"
+  "planHash": "083bdcc1870b41b126c84f49c2a8a9779cc7c75024ffe8da4895a428ab1b2cb8",
+  "geometryHash": "5f073d539fd4a3d2657a1983df4a96321ed85e2b85f7bfd2d40b8e34c151f166"
 }
