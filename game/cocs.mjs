@@ -43,9 +43,9 @@ import {COCS_SQUAD_ACTIONS, cocsCommandAuthority, cocsSquadAction, cocsSquadSnap
 import {terrainSupportAt} from './terrain.mjs';
 import {
   FLUX_CAP, FLUX_PASSIVE_PER_SECOND, FLUX_START, ORDER_REWARD, REQ_EARN,
-  REPAIR_TOOL_EFFECT, SENTRY_EFFECT, SPOT_DRONE_EFFECT, SUBAGENTS,
+  RECON_PULSE_EFFECT, REPAIR_TOOL_EFFECT, SENTRY_EFFECT, SPOT_DRONE_EFFECT, SUBAGENTS,
   neglectPassiveFlux, neglectState, neglectTick, reqItem, reqPurchase, scoreEvent,
-  repairToolTarget, sentryDeployment, spotDroneTargets, subagentUpkeep,
+  reconPulseTargets, repairToolTarget, sentryDeployment, spotDroneTargets, subagentUpkeep,
 } from './cocs-economy.mjs';
 import {PVP_ROLE_IDS, coopRole, roleAbility} from './cocs-roles.mjs';
 import {createTraversalState, stepCocsTraversal, cocsTraversalSnapshot, humanDeviceInteract} from './cocs-traversal.mjs';
@@ -678,6 +678,44 @@ export function applySentry(match, state, actor, effect = SENTRY_EFFECT) {
   const deployed = match.deployables?.[match.deployables.length - 1] ?? null;
   match?.emit?.('cocs-sentry', {actor: actor.id, team: actor.team === 1 ? 1 : 0, sentry: deployed?.id ?? null, refresh: false, duration: plan.duration, x: num(deployed?.x, 0), z: num(deployed?.z, 0)});
   return {ok: true, reason: null, sentryId: deployed?.id ?? null, refresh: false};
+}
+
+/**
+ * Apply the §6A.5 Commander Recon Pulse: reveal every living enemy to the
+ * buyer's team for `effect.seconds`. The pulse reuses the shipped §8.1
+ * field-recon contact model (the `recon` operator hook): a team-private
+ * `intelOnly` SPOT mark plus a `fieldSupport.intel` entry, so
+ * `cocsTeamVisibility` lists the contact for the buyer's team and
+ * `cocsSpotDamageScale` pays no bonus. A stronger real SCAN/SPOT mark is never
+ * downgraded and a longer live window is never shortened. Returns the revealed
+ * ids, or `no-target` without touching state.
+ */
+export function applyReconPulse(match, state, actor, effect = RECON_PULSE_EFFECT) {
+  if (!state || !actor) return {ok: false, reason: 'no-target', targets: []};
+  const targets = reconPulseTargets(actor, match?.actors, effect);
+  if (!targets.length) return {ok: false, reason: 'no-target', targets: []};
+  const team = actor.team === 1 ? 1 : 0;
+  const seconds = Math.max(0, num(effect?.seconds, RECON_PULSE_EFFECT.seconds));
+  const until = num(state.tick, 0) + Math.max(1, Math.round(seconds / (RULES.dt || 1 / 60)));
+  const field = state.fieldSupport ?? (state.fieldSupport = {actors: {}, recipients: {}, nodes: {}, intel: {0: {}, 1: {}}});
+  field.intel ??= {0: {}, 1: {}};
+  field.intel[team] ??= {};
+  const spots = state.spots ?? (state.spots = {});
+  for (const id of targets) {
+    const target = (match?.actors ?? []).find(entry => entry && entry.id === id);
+    if (!target) continue;
+    const existingIntel = field.intel[team][id];
+    if (!existingIntel || num(existingIntel.until, 0) < until) {
+      field.intel[team][id] = {until, x: num(target.x, 0), z: num(target.z, 0), by: actor.id};
+    }
+    // Information only: never downgrade a stronger SPOT, never shorten a mark.
+    const spot = spots[id];
+    if (spot && spot.intelOnly !== true) continue;
+    const markUntil = Math.max(until, spot ? num(spot.until, 0) : 0);
+    spots[id] = {team, until: markUntil, atTick: num(state.tick, 0), x: num(target.x, 0), z: num(target.z, 0), by: actor.id, intelOnly: true};
+  }
+  match?.emit?.('cocs-recon-pulse', {actor: actor.id, team, targets, until});
+  return {ok: true, reason: null, targets};
 }
 
 // ---------------------------------------------------------------------------
@@ -1578,6 +1616,7 @@ export function cocsBuyAction(match, state, record = {}) {
   if (item.id === 'spot-drone' && spotDroneTargets(actor, match?.actors, item.effect).length === 0) return {ok: false, reason: 'no-target'};
   if (item.id === 'repair-tool' && repairToolTarget(actor, state, item.effect) === null) return {ok: false, reason: 'no-target'};
   if (item.id === 'sentry' && !sentryDeployment(actor, match?.deployables, item.effect).ok) return {ok: false, reason: 'no-target'};
+  if (item.id === 'recon-pulse' && reconPulseTargets(actor, match?.actors, item.effect).length === 0) return {ok: false, reason: 'no-target'};
   const peerId = String(record.peerId ?? '');
   const isCommander = state?.command?.seat?.[team] === peerId;
   const relayOwned = (state?.nodes ?? []).some(node => node && node.archetype === 'relay' && node.owner === team);
@@ -1606,8 +1645,10 @@ export function cocsBuyAction(match, state, record = {}) {
       const weaponCap = match?.weaponForIndex?.(actor, index)?.cap;
       if (Number.isFinite(weaponCap) && actor.ammo[index] < weaponCap) actor.ammo[index] = weaponCap;
     }
-  } else if (item.id === 'spot-drone' || item.id === 'repair-tool') {
-    const applied = item.id === 'spot-drone' ? applySpotDrone(match, state, actor, item.effect) : applyRepairTool(match, state, actor, item.effect);
+  } else if (item.id === 'spot-drone' || item.id === 'repair-tool' || item.id === 'recon-pulse') {
+    const applied = item.id === 'spot-drone' ? applySpotDrone(match, state, actor, item.effect)
+      : item.id === 'repair-tool' ? applyRepairTool(match, state, actor, item.effect)
+      : applyReconPulse(match, state, actor, item.effect);
     if (!applied.ok) {
       // The world changed under us: refund in full and restore the buff slot.
       actor.req = num(actor.req, 0) + num(result.cost, 0);

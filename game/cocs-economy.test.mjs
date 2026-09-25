@@ -192,12 +192,17 @@ test('the REQ cost table matches the spec and REQ can never buy a respawn/RESERV
  for(const forbidden of REQ_FORBIDDEN)assert.equal(isReqForbidden(forbidden),true);
  assert.ok(REQ_FORBIDDEN.every(forbidden=>!Object.hasOwn(REQ_COSTS,forbidden)));
  assert.ok(REQ_FORBIDDEN.every(forbidden=>!idsOf(REQ_ITEMS).includes(forbidden)));
- // WP1.3 truth rule: the team-wide rows have no shipped effect, so they are
- // out of the launch set and can never debit REQ. The `commander-only` gate
- // stays in `reqPurchase` for a future launched team item.
+ // WP1.3 truth rule: a team-wide row only joins the launch set once it ships a
+ // real effect. Recon Pulse does (the §8.1 recon contact model); Supply Drop and
+ // Fortify Doctrine stay out and can never debit REQ. The `commander-only` gate
+ // is enforced by `reqPurchase` for the launched row.
  assert.equal(TEAM_WIDE_REQ_IDS.length,3);
- assert.ok(TEAM_WIDE_REQ_IDS.every(id=>!LAUNCH_REQ_IDS.includes(id)));
- assert.ok(TEAM_WIDE_REQ_IDS.every(id=>reqPurchase(id,{balance:1000,isCommander:true}).reason==='not-launched'));
+ assert.ok(LAUNCH_REQ_IDS.includes('recon-pulse'));
+ const unlaunchedTeamWide=TEAM_WIDE_REQ_IDS.filter(id=>!LAUNCH_REQ_IDS.includes(id));
+ assert.deepEqual([...unlaunchedTeamWide],['supply-drop','fortify-doctrine']);
+ assert.ok(unlaunchedTeamWide.every(id=>reqPurchase(id,{balance:1000,isCommander:true}).reason==='not-launched'));
+ assert.equal(reqPurchase('recon-pulse',{balance:1000,isCommander:false}).reason,'commander-only');
+ assert.equal(reqPurchase('recon-pulse',{balance:1000,isCommander:true}).ok,true);
  assert.equal(reqPurchase('haste',{balance:1000,activeBuffId:'overshield'}).reason,'one-active-buff');
  assert.equal(reqPurchase('haste',{balance:1000,activeBuffId:'puma'}).ok,true,'a vehicle id never occupies the personal buff slot');
  assert.equal(reqPurchase('haste',{balance:20}).reason,'insufficient-req');
@@ -211,10 +216,10 @@ test('the REQ cost table matches the spec and REQ can never buy a respawn/RESERV
 // WP1.3 truthful launch set + shared purchase options
 // ---------------------------------------------------------------------------
 test('only rows with a shipped effect are launchable and every unlaunched row refuses without a debit',()=>{
- // Truthful launch sets: the four personal buffs + the three field-equipment
- // rows in both modes, the Puma in OPERATIONS only.
- assert.deepEqual([...LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','sentry']);
- assert.deepEqual([...COOP_LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','sentry','puma']);
+  // The four buffs, three field tools and Commander Recon Pulse launch in both
+  // modes; the depot Puma launches in OPERATIONS only.
+  assert.deepEqual([...LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','sentry','recon-pulse']);
+  assert.deepEqual([...COOP_LAUNCH_REQ_IDS],['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','sentry','puma','recon-pulse']);
  assert.deepEqual([...PERSONAL_BUFF_IDS],['field-repair','ammo-crate','haste','overshield']);
  const puma=reqItem('puma');
  assert.equal(puma.launch,false);
@@ -241,10 +246,11 @@ test('only rows with a shipped effect are launchable and every unlaunched row re
  }
  // Every other catalogue row is unoffered, mode-less and refuses before a debit.
  const unlaunched=REQ_ITEMS.filter(item=>item.launch!==true&&item.coopLaunch!==true).map(item=>item.id);
- assert.ok(unlaunched.length>=9,`saw ${unlaunched.length} unlaunched rows`);
+  assert.ok(unlaunched.length>=8,`saw ${unlaunched.length} unlaunched rows`);
  assert.ok(unlaunched.includes('smoke'),'the no-fog smoke row stays deferred');
  assert.ok(unlaunched.includes('at-mine')&&unlaunched.includes('barrier')&&unlaunched.includes('supply-drop')&&unlaunched.includes('tier-upgrade'));
- assert.ok(!unlaunched.includes('sentry'),'the supportable sentry fortification is launched');
+  assert.ok(!unlaunched.includes('sentry'),'the supportable sentry fortification is launched');
+  assert.ok(!unlaunched.includes('recon-pulse'),'the information-only commander pulse is launched');
  for(const id of unlaunched){
   assert.deepEqual([...reqItemModes(id)],[]);
   assert.equal(reqItemSupported(id,REQ_MODE_IDS.pvp),false);
@@ -284,7 +290,7 @@ test('reqPurchaseOptions reports affordability, mode, buff and depot gates from 
  assert.equal(pvp.balance,100);
  assert.equal(pvp.balanceSource,'actor.req','the authoritative float wallet is the source');
  assert.equal(pvp.authoritative,true);
- assert.deepEqual(pvp.items.map(item=>item.id),['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','sentry','puma'],'only supported rows are offered');
+  assert.deepEqual(pvp.items.map(item=>item.id),['field-repair','ammo-crate','haste','overshield','spot-drone','repair-tool','sentry','puma','recon-pulse'],'only supported rows are offered');
  const haste=pvp.items.find(item=>item.id==='haste');
  assert.equal(haste.cost,35);
  assert.equal(haste.category,'buff');
@@ -336,9 +342,12 @@ test('reqPurchaseOptions reports affordability, mode, buff and depot gates from 
  assert.equal(stale.activeBuffId,null,'only a personal buff occupies the active slot');
  assert.equal(stale.items.find(item=>item.id==='haste').disabledReason,null);
 
- // Command seat reads as a boolean; no launched row needs it today.
- const seated=reqPurchaseOptions({team:0,mode:'cocs',actor:{id:0,req:0,reqBuff:null},state:{command:{seat:[0,null]},nodes}});
+ // Command seat reads as a boolean and gates the launched commander row.
+ const seated=reqPurchaseOptions({team:0,mode:'cocs',actor:{id:0,req:100,reqBuff:null},state:{command:{seat:[0,null]},nodes}});
  assert.equal(seated.isCommander,true);
+ assert.equal(seated.items.find(item=>item.id==='recon-pulse').enabled,true,'the seated commander may buy the team row');
+ const unseated=reqPurchaseOptions({team:0,mode:'cocs',actor:{id:0,req:100,reqBuff:null},state:{command:{seat:[null,null]},nodes}});
+ assert.equal(unseated.items.find(item=>item.id==='recon-pulse').disabledReason,'commander-only');
 
  // Pure read: frozen inputs cannot be mutated, different `now` values are inert,
  // and the whole snapshot (including every row) is deep-frozen.

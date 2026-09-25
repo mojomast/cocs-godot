@@ -218,11 +218,16 @@ export const REQ_MODE_IDS=deepFreeze({pvp:'cocs',coop:'cocs-coop'});
 //                   operator; a re-buy refreshes its life instead of stacking,
 //                   which keeps the purchase idempotent and the pure picker
 //                   (which cannot see `match.deployables`) honest.
+//   * `recon-pulse` reuses the §8.1 field-recon contact model the `recon`
+//                   operator hook already writes: a team-private `intelOnly`
+//                   SPOT mark (information only, no damage bonus) plus a
+//                   `fieldSupport.intel` entry. Commander-only and team-wide;
+//                   no radius authored, so the pulse sweeps the whole field.
 // The pure selectors below are shared by the menu, the server gate and the sim
 // appliers, so a row with no legal target is refused `no-target` *before* any
 // REQ moves. An empty effect can therefore never be sold.
 // Pinned-source deviations (no reliable vehicle/fog/mine-collision behaviour in
-// this slice): see port/native-lattice/flagship/catalog/FIELD.md.
+// this slice): see catalog/FIELD.md and catalog/COMMANDER.md.
 // ---------------------------------------------------------------------------
 export const SPOT_DRONE_EFFECT=deepFreeze({kind:'spot',radius:20,seconds:8,target:'self'});
 export const REPAIR_TOOL_EFFECT=deepFreeze({kind:'repair-link',reach:6,target:'cut-link'});
@@ -230,6 +235,7 @@ export const REPAIR_TOOL_EFFECT=deepFreeze({kind:'repair-link',reach:6,target:'c
 // damage and cadence are the shipped `SENTRY` table in `core.mjs`; only the
 // bounded rent-a-turret window is a REQ decision.
 export const SENTRY_EFFECT=deepFreeze({kind:'sentry',duration:30,target:'ground',limit:1});
+export const RECON_PULSE_EFFECT=deepFreeze({kind:'recon-pulse',seconds:5,target:'enemies'});
 
 const sortedRoster=actors=>[...(Array.isArray(actors)?actors:[])].filter(Boolean)
  .sort((a,b)=>num(a.id,0)-num(b.id,0));
@@ -245,6 +251,29 @@ export function spotDroneTargets(actor,actors,effect=SPOT_DRONE_EFFECT){
   if(target.team!==0&&target.team!==1)continue;
   if(target.team===team)continue;
   if(Math.hypot(num(target.x,0)-num(actor.x,0),num(target.z,0)-num(actor.z,0))>radius)continue;
+  list.push(target.id);
+ }
+ return deepFreeze(list);
+}
+
+/**
+ * Living enemies a Commander Recon Pulse would reveal to `actor`'s team. Pure,
+ * id-sorted. A finite `effect.radius` (metres) limits the pulse; when absent the
+ * pulse is map-wide. Cloaked enemies are never revealed — the §8.1 counterplay
+ * the shipped `recon` field hook already honours — so a pulse with only cloaked
+ * (or dead) enemies is `no-target`.
+ */
+export function reconPulseTargets(actor,actors,effect=RECON_PULSE_EFFECT){
+ if(!actor||num(actor.health,0)<=0)return deepFreeze([]);
+ const team=actor.team===1?1:0;
+ const radius=Number.isFinite(num(effect?.radius,NaN))?Math.max(0,num(effect.radius,0)):null;
+ const list=[];
+ for(const target of sortedRoster(actors)){
+  if(num(target.health,0)<=0)continue;
+  if(target.team!==0&&target.team!==1)continue;
+  if(target.team===team)continue;
+  if(num(target.powerups?.cloak,0)>0)continue;
+  if(radius!==null&&Math.hypot(num(target.x,0)-num(actor.x,0),num(target.z,0)-num(actor.z,0))>radius)continue;
   list.push(target.id);
  }
  return deepFreeze(list);
@@ -327,7 +356,11 @@ export const REQ_ITEMS=deepFreeze([
  {id:'barrier',name:'Barrier',category:'fortification',cost:30,launch:false,teamWide:false,personalBuff:false,modes:[]},
  {id:'forward-depot',name:'Forward Depot',category:'fortification',cost:120,launch:false,teamWide:false,personalBuff:false,modes:[]},
  {id:'supply-drop',name:'Supply Drop',category:'team',cost:80,launch:false,teamWide:true,personalBuff:false,commanderOnly:true,modes:[]},
- {id:'recon-pulse',name:'Recon Pulse',category:'team',cost:60,launch:false,teamWide:true,personalBuff:false,commanderOnly:true,modes:[]},
+ // Commander/team slice: Recon Pulse ships a real, target-validated effect (the
+ // §8.1 field-recon contact model), so it launches in PvPvE and OPERATIONS. The
+ // other team-wide rows stay unlaunched until they have one.
+ {id:'recon-pulse',name:'Recon Pulse',category:'team',cost:60,launch:true,teamWide:true,personalBuff:false,commanderOnly:true,target:'enemies',modes:['cocs','cocs-coop'],
+  effect:RECON_PULSE_EFFECT,effectCopy:'Reveal every enemy to your team for 5 s (information only)'},
  {id:'fortify-doctrine',name:'Fortify Doctrine',category:'team',cost:100,launch:false,teamWide:true,personalBuff:false,commanderOnly:true,modes:[]},
  {id:'tier-upgrade',name:'Agent Tier Upgrade',category:'agent',cost:25,launch:false,teamWide:false,personalBuff:false,modes:[]},
  {id:'oracle-unlock',name:'Oracle Unlock',category:'agent',cost:120,launch:false,teamWide:false,personalBuff:false,requiresRelay:true,modes:[]},
@@ -1057,9 +1090,9 @@ const cocsEconomy={
  GEAR_CAPS,REQ_CAPS,COMBINED_CAPS,
  TRAVERSAL,DEVICE_PARAMS,LANE_IDENTITIES,LANE_IDENTITY_KINDS,DEVICE_LANE_KINDS,DEVICE_STATES,TRAVERSAL_KINDS,
  META_DEFAULTS,MATCH_REQ,COMMENDATION_PACING,
- SPOT_DRONE_EFFECT,REPAIR_TOOL_EFFECT,SENTRY_EFFECT,
- scoreEvent,tallyScores,reqEarn,reqEarnBreakdown,purchaseCost,reqItem,reqModeKey,reqItemModes,reqItemSupported,reqPurchase,reqPurchaseOptions,
- spotDroneTargets,repairToolTarget,sentryDeployment,
+  SPOT_DRONE_EFFECT,REPAIR_TOOL_EFFECT,SENTRY_EFFECT,RECON_PULSE_EFFECT,
+  scoreEvent,tallyScores,reqEarn,reqEarnBreakdown,purchaseCost,reqItem,reqModeKey,reqItemModes,reqItemSupported,reqPurchase,reqPurchaseOptions,
+  spotDroneTargets,repairToolTarget,sentryDeployment,reconPulseTargets,
  supplySlotMultiplier,subagentUpkeep,
  neglectState,neglectTick,neglectEffect,neglectPassiveFlux,
  composeCaps,withinCombinedCaps,resolveSpawnLoadout,

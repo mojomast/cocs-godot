@@ -21,8 +21,8 @@
 
 import {RULES} from './data.mjs';
 import {COCS_SQUAD_ACTIONS, cocsCommandAuthority, cocsSquadAction} from './cocs-squads.mjs';
-import {SUBAGENTS, convertCoopReq, reqItem, reqPurchase, repairToolTarget, sentryDeployment, spotDroneTargets} from './cocs-economy.mjs';
-import {addActorReq, applyRepairTool, applySentry, applySpotDrone, capturableNodes, compareCocsOrders, connectivityIncome, cutLink, nodeById, normalizeCocsPolicy, repairLink} from './cocs.mjs';
+import {SUBAGENTS, convertCoopReq, reqItem, reqPurchase, reconPulseTargets, repairToolTarget, sentryDeployment, spotDroneTargets} from './cocs-economy.mjs';
+import {addActorReq, applyReconPulse, applyRepairTool, applySentry, applySpotDrone, capturableNodes, compareCocsOrders, connectivityIncome, cutLink, nodeById, normalizeCocsPolicy, repairLink} from './cocs.mjs';
 import {depotPurchaseState, deviceInteract, purchaseDepotVehicle} from './cocs-traversal.mjs';
 import {spawnGroup, updateEnemyRoles} from './singleplayer.mjs';
 import {
@@ -2373,6 +2373,7 @@ export function coopBuyAction(match, state, record = {}) {
   if (item.id === 'spot-drone' && spotDroneTargets(actor, match?.actors, item.effect).length === 0) return {ok: false, reason: 'no-target'};
   if (item.id === 'repair-tool' && repairToolTarget(actor, state, item.effect) === null) return {ok: false, reason: 'no-target'};
   if (item.id === 'sentry' && !sentryDeployment(actor, match?.deployables, item.effect).ok) return {ok: false, reason: 'no-target'};
+  if (item.id === 'recon-pulse' && reconPulseTargets(actor, match?.actors, item.effect).length === 0) return {ok: false, reason: 'no-target'};
   const peerId = String(record.peerId ?? '');
   const isCommander = state?.coop?.commandSeat?.[team] === peerId || (peerId === '' && item.commanderOnly !== true);
   const relayOwned = (state?.nodes ?? []).some(node => node && node.archetype === 'relay' && node.owner === team);
@@ -2390,8 +2391,9 @@ export function coopBuyAction(match, state, record = {}) {
   actor.reqSpent = num(actor.reqSpent, 0) + num(result.cost, 0);
   // A depot vehicle or an instant piece of field equipment is not a buff.
   if (item.personalBuff === true) actor.reqBuff = item.id;
-  // Deterministic personal effects. Team-wide/commander items only record the
-  // purchase; their team payoff rides the existing economy in a later wave.
+  // Deterministic personal effects. Commander/team rows with a shipped effect
+  // (Recon Pulse) write team-private world state through the same appliers the
+  // PvPvE path uses; the remaining team-wide rows are unlaunched.
   let vehicleId = null;
   if (item.id === 'puma') {
     const spawned = purchaseDepotVehicle(match, state, depot, actor);
@@ -2415,8 +2417,10 @@ export function coopBuyAction(match, state, record = {}) {
       const cap = match?.weaponForIndex?.(actor, index)?.cap;
       if (Number.isFinite(cap) && actor.ammo[index] < cap) actor.ammo[index] = cap;
     }
-  } else if (item.id === 'spot-drone' || item.id === 'repair-tool') {
-    const applied = item.id === 'spot-drone' ? applySpotDrone(match, state, actor, item.effect) : applyRepairTool(match, state, actor, item.effect);
+  } else if (item.id === 'spot-drone' || item.id === 'repair-tool' || item.id === 'recon-pulse') {
+    const applied = item.id === 'spot-drone' ? applySpotDrone(match, state, actor, item.effect)
+      : item.id === 'repair-tool' ? applyRepairTool(match, state, actor, item.effect)
+      : applyReconPulse(match, state, actor, item.effect);
     if (!applied.ok) {
       actor.req = num(actor.req, 0) + num(result.cost, 0);
       actor.reqSpent = Math.max(0, num(actor.reqSpent, 0) - num(result.cost, 0));

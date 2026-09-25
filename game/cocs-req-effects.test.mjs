@@ -28,10 +28,12 @@ const mulberry32 = seed => {
 // spends at (`warfront` has no traversal layer).
 const pvpMatch = (over = {}) => new Match('chatgpt', 'openclaw', mulberry32(11), 'warfront', {mode: 'cocs', botCount: 2, humanCount: 4, aiSeats: true, timeLimit: 300, ...over});
 const coopMatch = (over = {}) => new Match('chatgpt', 'openclaw', mulberry32(7), 'lattice-slice', {mode: 'cocs-coop', botCount: 2, humanCount: 4, aiSeats: true, timeLimit: 900, ...over});
-// One fixed step carrying the buy exactly as the wire path does.
+// One fixed step carrying the buy exactly as the wire path does. The peer id is
+// the real local mapping (`String(actor.id)`) so the commander seat gate is
+// exercised through the same key the sim and the room use.
 const buy = (match, actor, itemId, extra = {}) => {
  const state = match.objectiveState;
- match.step(DT, {cocs: {buys: [{tick: state.tick, peerId: 'p1', cardId: `buy-${itemId}`, actorId: actor.id, itemId, ...extra}]}});
+ match.step(DT, {cocs: {buys: [{tick: state.tick, peerId: String(actor.id), cardId: `buy-${itemId}`, actorId: actor.id, itemId, ...extra}]}});
 };
 // The world slice a purchase is allowed to change, minus the wallet/buff fields
 // the spend itself owns. Two different digests = one real world-state delta.
@@ -108,6 +110,33 @@ const CASES = {
    assert.ok(Math.abs(cocsSpotDamageScale(match, actor, target) - 1.15) < 1e-9, 'the mark pays the §8.1 +15% team damage');
   },
  },
+ 'recon-pulse': {
+  cost: 60,
+  arm: (actor, match, state) => {
+   // Commander-only, keyed on the real peerId mapping (`String(actor.id)`). The
+   // commander must be a human operator for `reconcileCocsSquads` to keep the
+   // seat across the step; the harness spawns every local seat as a bot.
+   actor.bot = null; actor.isNpc = false;
+   const team = actor.team === 1 ? 1 : 0;
+   if (state.coop) state.coop.commandSeat[team] = String(actor.id);
+   else state.command.seat[team] = String(actor.id);
+   const enemy = match.actors.find(entry => entry && entry.team !== actor.team && entry.health > 0);
+   assert.ok(enemy, 'the match has a living enemy to reveal');
+   enemy.powerups = {...(enemy.powerups ?? {}), cloak: 0};
+   match.__lastReconEnemy = enemy.id;
+  },
+  verify: (actor, match, state) => {
+   const team = actor.team === 1 ? 1 : 0;
+   const intel = state.fieldSupport?.intel?.[team]?.[match.__lastReconEnemy];
+   assert.ok(intel, 'the pulse writes a team-private fieldSupport intel entry');
+   assert.ok(intel.until > state.tick, 'the reveal outlives the purchase tick');
+   assert.equal(state.fieldSupport.intel[1 - team]?.[match.__lastReconEnemy], undefined, 'the other team receives no intel');
+   const spot = state.spots?.[match.__lastReconEnemy];
+   assert.ok(spot && spot.intelOnly === true && spot.team === team, 'the contact rides the information-only team mark');
+   const enemy = match.actors.find(entry => entry && entry.id === match.__lastReconEnemy);
+   assert.equal(cocsSpotDamageScale(match, actor, enemy), 1, 'recon is information only, no §8.1 damage bonus');
+  },
+ },
  'repair-tool': {
   cost: 30,
   arm: (actor, match, state) => {
@@ -151,7 +180,7 @@ const CASES = {
 
 test('every PvPvE-offered REQ row writes its advertised world delta through Match.step', () => {
  const mode = REQ_MODE_IDS.pvp;
- assert.deepEqual(offeredIds(mode, pvpMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'sentry'], 'the tested set is exactly what the picker offers in PvPvE');
+  assert.deepEqual(offeredIds(mode, pvpMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'sentry', 'recon-pulse'], 'the tested set is exactly what the picker offers in PvPvE');
  for (const id of offeredIds(mode, pvpMatch())) {
   const match = pvpMatch();
   const state = match.objectiveState;
@@ -165,13 +194,13 @@ test('every PvPvE-offered REQ row writes its advertised world delta through Matc
   assert.notEqual(worldDigest(match, actor), digestBefore, `${id} changed world state, not just the wallet`);
   assert.equal(actor.req, 500 - testCase.cost, `${id} debits its exact cost`);
   assert.equal(actor.reqSpent, testCase.cost, `${id} records the spend`);
-   assert.equal(actor.reqBuff, ['spot-drone', 'repair-tool', 'sentry'].includes(id) ? undefined : id, `${id} only occupies the personal buff slot for actual buffs`);
+    assert.equal(actor.reqBuff, ['spot-drone', 'repair-tool', 'sentry', 'recon-pulse'].includes(id) ? undefined : id, `${id} only occupies the personal buff slot for actual buffs`);
  }
 });
 
 test('every OPERATIONS-offered REQ row (including the Puma) writes its advertised world delta through Match.step', () => {
  const mode = REQ_MODE_IDS.coop;
- assert.deepEqual(offeredIds(mode, coopMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'sentry', 'puma'], 'the tested set is exactly what the picker offers in OPERATIONS');
+  assert.deepEqual(offeredIds(mode, coopMatch()), ['field-repair', 'ammo-crate', 'haste', 'overshield', 'spot-drone', 'repair-tool', 'sentry', 'puma', 'recon-pulse'], 'the tested set is exactly what the picker offers in OPERATIONS');
  for (const id of offeredIds(mode, coopMatch())) {
   const match = coopMatch();
   const state = match.objectiveState;
@@ -186,7 +215,7 @@ test('every OPERATIONS-offered REQ row (including the Puma) writes its advertise
   assert.equal(actor.req, 500 - testCase.cost, `${id} debits its exact cost`);
   assert.equal(actor.reqSpent, testCase.cost, `${id} records the spend`);
    // Vehicles and instant field equipment cannot replace an active buff.
-   assert.equal(actor.reqBuff, ['spot-drone', 'repair-tool', 'sentry', 'puma'].includes(id) ? undefined : id, `${id} only occupies the personal buff slot for actual buffs`);
+    assert.equal(actor.reqBuff, ['spot-drone', 'repair-tool', 'sentry', 'puma', 'recon-pulse'].includes(id) ? undefined : id, `${id} only occupies the personal buff slot for actual buffs`);
  }
 });
 

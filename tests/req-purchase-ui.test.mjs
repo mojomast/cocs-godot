@@ -58,6 +58,7 @@ test('the real catalogue drives the rendered store generically in both modes', (
   const coopModel = reqPurchaseOptions({team: 0, mode: 'cocs-coop', actor: {id: 0, req: 200, reqBuff: null}, state: coop.objectiveState});
   assert.deepEqual(pvpModel.items.map(item => item.id), supportedIds, 'every supported source row is offered, so a newly authored row appears with no UI change');
   assert.equal(pvpModel.items.find(item => item.id === 'puma').disabledReason, 'wrong-mode', 'the Puma is never launched in PvPvE');
+  assert.equal(pvpModel.items.find(item => item.id === 'recon-pulse').disabledReason, 'commander-only', 'Recon Pulse is listed but commander-gated');
   assert.deepEqual(coopModel.items.map(item => item.id), supportedIds, 'OPERATIONS offers the same support-gated catalogue');
   for (const model of [pvpModel, coopModel]) {
     const html = render(ReqStore, {req: model, pending: [], onBuy: () => {}, reducedMotion: false, defaultOpen: true});
