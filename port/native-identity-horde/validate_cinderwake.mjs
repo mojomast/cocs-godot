@@ -4,7 +4,9 @@
 import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
-import {pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
+import {dirname,resolve} from 'node:path';
+import {fileURLToPath,pathToFileURL} from 'node:url';
 import {validateRun} from '../native-horde/validate.mjs';
 import {readCinderwake} from '../native-horde/cinderwake-schema.mjs';
 
@@ -69,6 +71,15 @@ export function validateCinderwakeRun({wire,stdout,stderr,summary,launch}){
   assert.equal(summary.map,'cinderwake-drydock');
   assert.equal(launch.map,summary.map);
   assert.equal(launch.localOnly,true);
+  const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
+  const lock=JSON.parse(readFileSync(resolve(root,'port/contracts/source-lock.json')));
+  assert.equal(launch.source,lock.source_commit,'observer must use selected source ancestry');
+  for(const path of ['game/horde-stages.mjs','godot/horde_maps/generated/cinderwake-drydock.json',
+    'godot/horde_maps/cinderwake.gd','godot/horde_maps/demo.gd',
+    'godot/tests/horde/cinderwake_live.gd','godot/tests/horde/identity_live.gd']){
+    assert.equal(launch.hashes[path],createHash('sha256').update(readFileSync(resolve(root,path))).digest('hex'),
+      `evidence captured with stale ${path}`);
+  }
   assert.equal(summary.serverClosed,true);
   assert.equal(summary.sockets,0);
   assert.equal(summary.temporaryTreeRemoved,true);
@@ -83,6 +94,8 @@ export function validateCinderwakeRun({wire,stdout,stderr,summary,launch}){
     expected:{scene:'res://horde_maps/demo.tscn',script:'res://horde_maps/demo.gd',interpolatedRemote:true}});
   const events=wire.filter(row=>row.direction==='out'&&row.frame?.type==='events'&&row.round===1).flatMap(row=>row.frame.items);
   const stage=verifyStageSequence(events,snapshots,lines(stdout,'CINDERWAKE_GATE '),summary.scenario);
+  assert(base.clockDiagnostic.sourceSeconds<=base.clockDiagnostic.wallSeconds*1.15+3,
+    'source simulation ran faster than the normal-rate wall clock');
   const scene=lines(stdout,'CINDERWAKE_STAGE ');
   assert(scene.length===1&&scene[0].map===summary.map&&scene[0].nativeGateCount===2&&scene[0].stage==='B',
     'actual Cinderwake product did not load its two native gates');
