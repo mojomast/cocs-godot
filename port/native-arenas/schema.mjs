@@ -80,7 +80,7 @@ function mesh(surface, label, wall = false) {
 }
 
 const COLLIDER_KINDS = ['convex', 'triangles', 'box', 'cylinder', 'sphere', 'capsule'];
-const PICKUP_KINDS = ['health', 'armor', 'ammo', 'rocket', 'rail', 'scatter', 'plasma', 'grenade', 'shock', 'flak', 'marksman', 'smg', 'overcharge', 'haste', 'overshield', 'cloak'];
+const PICKUP_KINDS = ['health', 'armor', 'ammo', 'megahealth', 'rocket', 'rail', 'scatter', 'plasma', 'grenade', 'shock', 'flak', 'marksman', 'smg', 'overcharge', 'haste', 'overshield', 'cloak'];
 const IDENTITY_MODES = ['deathmatch', 'domination', 'horde'];
 const TEAM_KEYS = ['0', '1', 'red', 'blue', 'west', 'east'];
 const teamOf = key => ['0', 'red', 'west'].includes(key) ? 0 : 1;
@@ -299,7 +299,7 @@ export function parseIdentityArena(data, expectedId) {
   const a = data.arena;
   keys(a, ['id', 'name', 'description', 'tag', 'color', 'background', 'bounds', 'minX', 'maxX', 'minZ', 'maxZ',
     'spawns', 'pickups', 'navNodes', 'blocks', 'terrain', 'voidY', 'ceilingY', 'raised', 'nextGen',
-    'teamSpawns', 'objectiveZones'], 'arena fields');
+    'teamSpawns', 'objectiveZones', 'hordeCaches'], 'arena fields');
   if (a.id !== data.id || a.name !== data.name) fail('arena identity');
   for (const key of ['description', 'tag', 'color', 'background']) if (a[key] !== undefined) text(a[key], key, 512);
   keys(a.bounds, ['minX', 'maxX', 'minZ', 'maxZ'], 'bounds');
@@ -320,6 +320,25 @@ export function parseIdentityArena(data, expectedId) {
     list(p, 3, 3, 'pickup');
     if (!PICKUP_KINDS.includes(p[0])) fail('pickup kind');
     xz(p[1], p[2], 'pickup position');
+  }
+  // Nacre's local Horde route gates existing pickup IDs by source wave. Other
+  // identity modes may read the same arena, but cannot silently redefine this
+  // plan or accept arbitrary fields in the canonical geometry envelope.
+  if (a.hordeCaches !== undefined) {
+    if (a.id !== 'nacre-engine' || data.mode !== 'horde') fail('hordeCaches map/mode');
+    list(a.hordeCaches, 1, 12, 'hordeCaches');
+    const seen = new Set();
+    let priorWave = 0;
+    for (const cache of a.hordeCaches) {
+      keys(cache, ['pickupId', 'wave', 'zone'], 'horde cache');
+      if (!Number.isSafeInteger(cache.pickupId) || cache.pickupId < 0 || cache.pickupId >= a.pickups.length || seen.has(cache.pickupId)) fail('horde cache pickup ID');
+      if (!Number.isSafeInteger(cache.wave) || cache.wave < 1 || cache.wave > 30 || cache.wave < priorWave) fail('horde cache wave');
+      text(cache.zone, 'horde cache zone', 48);
+      if (!/^[A-Za-z -]{1,48}$/.test(cache.zone)) fail('horde cache zone');
+      if (!['scatter', 'plasma', 'shock', 'rocket', 'flak'].includes(a.pickups[cache.pickupId][0])) fail('horde cache pickup kind');
+      seen.add(cache.pickupId);
+      priorWave = cache.wave;
+    }
   }
   list(a.blocks, 0, 2048, 'blocks');
   for (const b of a.blocks) {

@@ -85,6 +85,24 @@ test('SYNTHETIC: identity envelopes parse per family; the native parser never wi
   assert.throws(() => parseIdentityArena(native, 'prism-foundry'), /not an identity map/);
   assert.throws(() => parseArenaEnvelope(syntheticIdentityArena(), 'vermilion-fold'), /ID mismatch/);
 });
+test('shipped Nacre cache plan and megahealth remain readable by native Deathmatch', () => {
+  const data = readNativeArena('nacre-engine');
+  assert.equal(data.arena.hordeCaches.length, 5);
+  assert.ok(data.arena.pickups.some(([kind]) => kind === 'megahealth'));
+  assert.deepEqual(data.arena.hordeCaches.map(({wave}) => wave), [1, 3, 5, 7, 9]);
+  for (const mutate of [
+    a => a.hordeCaches[0].pickupId = a.pickups.length,
+    a => a.hordeCaches[1].wave = 0,
+    a => a.hordeCaches[0].zone = 'unsafe\nzone',
+    a => a.hordeCaches[0].unknown = true,
+    a => a.hordeCaches[1].pickupId = a.hordeCaches[0].pickupId,
+  ]) {
+    const invalid = structuredClone(data);
+    mutate(invalid.arena);
+    invalid.geometryHash = nativeArenaGeometryHash(invalid.arena);
+    assert.throws(() => parseIdentityArena(invalid, 'nacre-engine'));
+  }
+});
 test('identity strict validation rejects malformed presentation/objective/team fields', () => {
   const mutations = [
     d => d.schemaVersion = 2, d => d.mode = 'ctf', d => d.mode = 'koth',
