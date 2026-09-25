@@ -51,11 +51,13 @@ export function audit({manifest, wire, native = [], cleanup = {}}) {
   const ui = Array.isArray(native) ? native.filter(n => n?.kind === 'ui' && n.source_revision === rev && n.observed === true) : [];
   requireFact('native_ui', ui.some(n => typeof n.reviewer === 'string' && n.reviewer.trim() && typeof n.screenshot === 'string' && n.screenshot.trim() && Number.isInteger(n.actor_id) && n.actor_id === assigned?.actorId && n.round_revision === rev), 'UI evidence needs reviewer, screenshot provenance, exact local actor and round');
  if (start?.config?.rung) requireFact('human_rung', manifest?.participants?.every(p => p.kind === 'human' && p.consent === true) && manifest.participants.length >= 8, 'socket seats cannot prove a human rung');
- if (manifest?.mode === 'cocs-coop') requireFact('fifth_wave', !!end?.cocs?.outcome && end.cocs.outcome.waves?.cleared === 5, 'wave-one/ACK/timeout is not a five-wave clear');
- requireFact('restart', starts.some((r,i) => i > 0 && r.frame.roundRevision > rev) && snapshots.some(r => r.frame.state?.cocs?.roundRevision > rev), 'new source round revision and active snapshot required');
-  const commonBlocked = failures.length > 0;
-   return {schema_version: 2, claim: commonBlocked || !captured || !useful ? 'BLOCKED' : 'PASS',
-    claims: {positive_capture: commonBlocked || !captured || !useful ? 'BLOCKED' : 'PASS', natural_defeat: commonBlocked || !defeat ? 'BLOCKED' : 'PASS'},
+  if (manifest?.mode === 'cocs-coop') requireFact('fifth_wave', !!end?.cocs?.outcome && end.cocs.outcome.waves?.cleared === 5, 'wave-one/ACK/timeout is not a five-wave clear');
+  requireFact('restart', starts.some((r,i) => i > 0 && r.frame.roundRevision > rev) && snapshots.some(r => r.frame.state?.cocs?.roundRevision > rev), 'new source round revision and active snapshot required');
+   const sharedFailures=failures.filter(f=>!f.startsWith('fifth_wave:'));
+   const commonBlocked = sharedFailures.length > 0;
+   const positiveBlocked = commonBlocked || checks.fifth_wave === false || !captured || !useful;
+    return {schema_version: 2, claim: positiveBlocked ? 'BLOCKED' : 'PASS',
+     claims: {positive_capture: positiveBlocked ? 'BLOCKED' : 'PASS', natural_defeat: commonBlocked || !defeat ? 'BLOCKED' : 'PASS'},
     checks: {...checks, capture: captured, attributed_capture: attributedCapture, attributed_order_effect:attributedOrder, local_useful_contribution:useful}, failures: [...failures, ...(!captured ? ['capture: source capture event AND owner transition required'] : []), ...(!useful ? ['local_useful_contribution: no matched capture participant or exact source order completion/card/actor/round/node'] : [])],
   counts: {starts:starts.length, snapshots:snapshots.length, events:events.length, results:results.length, native_inputs:ordinaryNative.length}};
 }
