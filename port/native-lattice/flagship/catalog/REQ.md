@@ -133,10 +133,9 @@ context); it fails loudly if the file is missing or drifted.
 
 The integrated Godot 4.5.2 import completed; the catalog contract passed 84/84,
 BUY lifecycle contract passed 51/51, economy fixture passed 91/91 and L1 fixture
-passed 38/38. The previously existing `world_commands_contract.gd` fixture
-fails in both this checkout and the pre-catalog witness worktree: its synthetic
-world has no usable recipient projection and then dereferences the missing
-projection. It is not counted as a native REQ pass. A live native BUY remains
+passed 38/38. The previously failing `world_commands_contract.gd` fixture now
+sets its selected mode before sending a `cocs` start and passes 27/27 behavior
+checks (Godot prints teardown resource-leak warnings). A live native BUY remains
 unobserved; the synthetic lifecycle proves only the request/settlement seam.
 
 ### Known deviations / remaining work

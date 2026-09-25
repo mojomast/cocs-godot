@@ -174,7 +174,7 @@ while server cards and snapshots alone settle/display outcomes. On the integrate
 branch, Godot 4.5.2 import succeeds and focused headless checks report 84/84
 catalog comparisons, 51/51 BUY lifecycle checks, 91/91 economy checks and
 38/38 L1 checks. These are synthetic fixtures, not a live purchase on two native
-clients. The pre-existing `world_commands_contract.gd` fixture still fails on
-both this branch and the earlier `cocs-lattice-flash-round` worktree: its synthetic
-world never receives a usable recipient projection, and it later accesses
-`projection.spent` after that failed setup. That result is not counted as a pass.
+clients. The older `world_commands_contract.gd` fixture was repaired by setting
+its demo's selected mode to the echoed `cocs` start; its 27/27 behavioral checks
+now pass. Godot still emits teardown resource-leak warnings for that synthetic
+fixture, so it is not rendered acceptance evidence.

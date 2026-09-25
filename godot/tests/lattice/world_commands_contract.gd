@@ -61,6 +61,7 @@ func run() -> void:
 	demo.client = QueueProbe.new()
 	client = demo.client
 	demo.current_id = "asterion-relay"
+	demo.selected_mode = "cocs"
 	client.allowlist = {demo.current_id:{"modes":["cocs","cocs-coop"]}}
 	client.requested_map = demo.current_id
 	client.lobby.connect(demo.on_lobby)
