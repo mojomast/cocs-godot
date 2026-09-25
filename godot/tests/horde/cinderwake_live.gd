@@ -98,10 +98,24 @@ func special_wave_steering(_actor: Dictionary) -> bool:
 		key(KEY_W, false)
 		return true
 	var waypoint: Dictionary = travel_route[travel_index]
-	aim_at(waypoint, actor)
-	key(KEY_SHIFT, false)
-	key(KEY_W, true)
+	steer_waypoint(waypoint, actor, false)
 	return true
+
+func steer_waypoint(point: Dictionary, actor: Dictionary, sprint: bool) -> void:
+	# One bounded ordinary mouse motion per rendered frame. Sending a one-frame
+	# 180° delta through X11 capture can be clamped/coalesced by the display and
+	# leaves held W driving into a hull slab; pause forward until actually facing
+	# the next authored point. This reads received actor position only.
+	var dx := float(point.x) - float(actor.x)
+	var dz := float(point.z) - float(actor.z)
+	var wanted := atan2(-dx, -dz)
+	var error := wrapf(wanted - session.yaw, -PI, PI)
+	var motion := InputEventMouseMotion.new()
+	motion.relative = Vector2(-clampf(error, -0.12, 0.12) / LOOK_GAIN, 0)
+	Input.parse_input_event(motion)
+	var aligned := absf(error) < 0.26
+	key(KEY_W, aligned)
+	key(KEY_SHIFT, aligned and sprint)
 
 func pursue_spine() -> void:
 	var actor: Dictionary = session.presentation.local_actor
@@ -134,6 +148,4 @@ func pursue_spine() -> void:
 		aim_at(target, actor)
 		key(KEY_W, false)
 		return
-	aim_at(route[spine_index], actor)
-	key(KEY_SHIFT, true)
-	key(KEY_W, true)
+	steer_waypoint(route[spine_index], actor, true)

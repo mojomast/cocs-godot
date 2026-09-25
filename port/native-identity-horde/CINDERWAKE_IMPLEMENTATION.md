@@ -154,9 +154,10 @@ a semantic-verifier bypass.
 | Native gate ray/revision/restart test | PASS: both gate ray masks, native visibility, source revision, restart and collider-backed combat occlusion |
 | Godot 4.5.2 import | PASS with zero parse/script errors on integrated source pin |
 | Native product startup (960×640, 1280×800) | PASS: actual source first wave, two native gate bodies, revised loading cradle and both viewport captures |
-| Ordinary three-wave session | PASS at 960×640: 1,886 input receipts, 1,670 source-stepped samples, wave-2 clear → three-second warning → BC gate open → 133 grounded arrival ticks in C → wave-3 source win and clean restart. `validate_cinderwake.mjs` checks source event cause, snapshot stage, native gate visibility, hashes, ACK/step identity, product UI and cleanup. Source elapsed 69.25s, wall 69.35s in this particular run. |
+| Ordinary three-wave session | PASS at 960×640 with current byte hashes: 2,734 input receipts, 2,723 source-stepped samples, wave-2 clear → three-second warning → BC gate open → 30 grounded arrival ticks in C → wave-3 source win and clean restart. `validate_cinderwake.mjs` checks source event cause, snapshot stage, native gate visibility, hashes, ACK/step identity, product UI and cleanup. Source elapsed 96.63s, wall 96.75s. The observer followed the always-open E→C route using bounded, ordinary mouse/key input. Evidence: ignored directory `port/native-identity-horde/evidence/2026-09-25T09-54-55-263Z-cinderwake-drydock-waves/`. |
 | Extended six-wave attempt | OPEN: a 355s software-rendered attempt reached wave 5 after four natural clears but expired before wave-5 clear or the C→D arrival. An earlier 355s attempt exposed an observer-only competing-look bug; the revised observer removes the duplicate mouse event. Neither attempt proves a six-wave result. |
-| Natural 10/30-wave/champion and defeat play, final aggregate/package | **OPEN** |
+| Aggregate verifier | PASS: 188/188 serial gates on the integrated source pin, including Cinderwake source and native gate fixtures. The isolated checkout's ignored GLB probes were regenerated from the pinned source before the successful run. |
+| Natural 10/30-wave/champion and defeat play, package | **OPEN** |
 
 Controlled clear fixtures deliberately set wave/enemy state. They prove the
 production controller, including actual input-driven arrival causality, but
@@ -192,9 +193,9 @@ changed to satisfy that test.
    explicit source-module census in `horde_closure.test.mjs` is **85** with
    `game/horde-stages.mjs`.
 4. The separate Cinderwake engine slot was granted after LATTICE released it.
-   Serial import/native gate tests and two-resolution startup completed. Run
-   required semantic regeneration, aggregate verification and package smoke
-   on the final committed branch before publishing a preview build.
+   Serial import/native gate tests, two-resolution startup, semantic regeneration
+   and aggregate verification completed. Package and check the final committed
+   branch before publishing a preview build.
 5. Run the ordinary launch after engine preparation:
    `node tools/godot-dev/launch.mjs --experience=horde --map=cinderwake-drydock --waves=10`.
    Packaged equivalent: `node run.mjs --experience=horde --map=cinderwake-drydock --waves=10`.
