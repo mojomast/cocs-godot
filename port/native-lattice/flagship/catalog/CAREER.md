@@ -33,7 +33,20 @@ with zero mode alarms. The separate stock-vs-max tier invariant **failed**:
 operator rank correlation 0.3833 (max shift 6), spec correlation 0.5357 (shift 3)
 and wing correlation -0.5 (shift 2), against the required correlation ≥0.85
 and max shift ≤2. The complete reports are kept at
-`/tmp/opencode/lattice-catalog-{stock,max}-fullsmoke.json` in this session.
+`/home/mojo/.tmp-on-disk/lattice-catalog-evidence-20260925/` outside this
+repository (`lattice-catalog-stock-fullsmoke.json` SHA-256
+`6903ad0b13bb98ed7c92fc4441b8eca4a41ee333c9bde8c06fb3a586ea1846b3`,
+`lattice-catalog-max-fullsmoke.json` SHA-256
+`d1d7dd216fa84c15ce48b8ee53ab92635368f1b9d13c33b87d0641685a2db302`).
 These numbers do not justify a balanced-capstone claim or replace the broader
 two-policy gate. The 32-match comparison also failed the tier invariant; small
 samples were not treated as acceptance evidence.
+
+For context, an otherwise identical 144-match max-gear sweep against the **old**
+eight-item source catalog also failed the same stock reference (operator/spec/
+wing correlations 0.2333/0.8571/0.5, and max gain above the permitted 4 points).
+Its separate report is `lattice-catalog-old-max-fullsmoke.json` in the same
+directory (SHA-256 `cc35dd3090a619d1037fe93e0eae1a4eddd868c9d63a59159c62e47f8b538221`).
+Therefore the invariant was already unearned on this sample; the expanded
+capstones do not establish it either. This comparison is diagnostic, not a
+substitute for a tuned two-policy acceptance sweep.

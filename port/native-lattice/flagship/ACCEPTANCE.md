@@ -161,5 +161,8 @@ for the new catalog items. Full-smoke neutral-policy stock and max-gear sweeps
 each completed 144/144 with zero mode alarms, but the stock-vs-max tier
 invariant **failed** (operator/spec/wing correlations 0.3833/0.5357/-0.5;
 required ≥0.85). The reports live at
-`/tmp/opencode/lattice-catalog-{stock,max}-fullsmoke.json`. Balance acceptance,
+`/home/mojo/.tmp-on-disk/lattice-catalog-evidence-20260925/`. Balance acceptance,
 owner visual review and native catalog parity remain open.
+An old-catalog max-gear comparison using the same stock report also failed this
+invariant (`lattice-catalog-old-max-fullsmoke.json` in the same directory); the gate is
+not established for either loadout set by these neutral-policy samples.
