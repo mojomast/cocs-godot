@@ -35,6 +35,16 @@ var req_notice := Label.new()
 var req_selected := ""
 var req_signature := "<unset>"
 var req_authorization := ""
+var tabs := TabContainer.new()
+var req_list_shell := PanelContainer.new()
+var req_name := Label.new()
+var req_price := Label.new()
+var req_category := Label.new()
+var req_balance := Label.new()
+var req_state := Label.new()
+var header_margin := MarginContainer.new()
+var header_eyebrow: Label
+var deck_title: Label
 
 func bind_authored_map(map_id: String, source_map: Variant) -> bool:
 	if map_id != authored_map_id:
@@ -49,82 +59,225 @@ func world_label(text_value: String, parent: Node) -> Label:
 	parent.add_child(label)
 	return label
 
+func card_style(background: String, border: String, padding: int = 18) -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(background)
+	style.border_color = Color(border)
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(10)
+	style.set_content_margin_all(padding)
+	return style
+
+func section_card(parent: Node, background: String = "111e2b") -> VBoxContainer:
+	var card := PanelContainer.new()
+	card.add_theme_stylebox_override("panel", card_style(background, "344b5d"))
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	parent.add_child(card)
+	var content := VBoxContainer.new()
+	content.add_theme_constant_override("separation", 12)
+	card.add_child(content)
+	return content
+
+func eyebrow(text_value: String, parent: Node) -> Label:
+	var label := world_label(text_value, parent)
+	label.add_theme_font_size_override("font_size", 12)
+	label.add_theme_color_override("font_color", Color("78d9d0"))
+	return label
+
+func primary_action(button: Button) -> void:
+	button.add_theme_stylebox_override("normal", card_style("167a76", "68d8c8", 8))
+	button.add_theme_stylebox_override("hover", card_style("20968e", "a5f1dd", 8))
+	button.add_theme_stylebox_override("pressed", card_style("0c5a59", "68d8c8", 8))
+	button.add_theme_stylebox_override("disabled", card_style("142431", "263d4a", 8))
+	button.add_theme_color_override("font_color", Color("f2fffa"))
+	button.add_theme_color_override("font_disabled_color", Color("869ca9"))
+
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
-	add_theme_font_size_override("font_size", 16)
 	var shade := ColorRect.new()
-	shade.color = Color(0.02, 0.04, 0.07, 0.65)
+	shade.color = Color(0.012, 0.025, 0.04, 0.84)
 	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(shade)
 	add_child(panel)
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color("152333")
-	style.border_color = Color("56859a")
-	style.set_border_width_all(2)
-	style.set_content_margin_all(16)
-	panel.add_theme_stylebox_override("panel", style)
-	var scroll := ScrollContainer.new()
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	panel.add_child(scroll)
-	var column := VBoxContainer.new()
-	column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	column.add_theme_constant_override("separation", 8)
-	scroll.add_child(column)
+	panel.add_theme_stylebox_override("panel", card_style("0b1724", "4c7586", 0))
+	var outer := VBoxContainer.new()
+	outer.add_theme_constant_override("separation", 0)
+	panel.add_child(outer)
+	for side: String in ["left", "right"]: header_margin.add_theme_constant_override("margin_" + side, 28)
+	for side: String in ["top", "bottom"]: header_margin.add_theme_constant_override("margin_" + side, 18)
+	outer.add_child(header_margin)
 	var header := HBoxContainer.new()
-	column.add_child(header)
-	world_label("LATTICE / TACTICAL COMMAND", header).size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.add_theme_constant_override("separation", 20)
+	header_margin.add_child(header)
+	var title_stack := VBoxContainer.new()
+	title_stack.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title_stack.add_theme_constant_override("separation", 2)
+	header.add_child(title_stack)
+	header_eyebrow = eyebrow("LATTICE  /  FIELD SYSTEMS", title_stack)
+	deck_title = world_label("Command deck", title_stack)
+	deck_title.add_theme_font_size_override("font_size", 27)
+	deck_title.add_theme_color_override("font_color", Color("e8f2f3"))
+	resources.add_theme_font_size_override("font_size", 14)
+	resources.add_theme_color_override("font_color", Color("b9ceda"))
+	resources.custom_minimum_size.x = 365
+	resources.autowrap_mode = TextServer.AUTOWRAP_OFF
+	resources.clip_text = true
+	resources.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	header.add_child(resources)
 	var close_button := Button.new()
-	close_button.text = "Close [C / Esc]"
+	close_button.text = "CLOSE  ×"
+	close_button.custom_minimum_size = Vector2(102, 44)
 	close_button.pressed.connect(func() -> void: close_requested.emit())
 	header.add_child(close_button)
-	world_label("World controls paused. Select an objective, then explicitly issue HOLD.", column)
-	for label: Label in [resources, selection, economy_help, notice, history, req_effect, req_help, req_notice]:
-		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	column.add_child(resources)
-	nodes.custom_minimum_size.y = 128
+	var divider := ColorRect.new()
+	divider.color = Color("30485a")
+	divider.custom_minimum_size.y = 1
+	outer.add_child(divider)
+	tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	tabs.add_theme_font_size_override("font_size", 16)
+	outer.add_child(tabs)
+	var objectives := HBoxContainer.new()
+	objectives.name = "01  OBJECTIVES"
+	objectives.add_theme_constant_override("separation", 16)
+	tabs.add_child(objectives)
+	var objective_list := section_card(objectives)
+	eyebrow("01 / MAP CONTROL", objective_list)
+	world_label("Choose an objective", objective_list).add_theme_font_size_override("font_size", 21)
+	world_label("The server decides legality and applies HOLD.", objective_list)
+	nodes.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	nodes.custom_minimum_size = Vector2(345, 180)
 	nodes.item_selected.connect(world_select)
-	column.add_child(nodes)
-	column.add_child(selection)
-	hold_button.text = "Issue HOLD"
+	objective_list.add_child(nodes)
+	var objective_detail := section_card(objectives, "152636")
+	eyebrow("SELECTED TARGET", objective_detail)
+	objective_detail.add_child(selection)
+	selection.add_theme_font_size_override("font_size", 18)
+	hold_button.text = "Issue HOLD →"
+	hold_button.custom_minimum_size.y = 48
+	primary_action(hold_button)
 	hold_button.pressed.connect(world_hold)
-	column.add_child(hold_button)
-	column.add_child(confirm_spend)
-	confirm_spend.toggled.connect(func(_pressed: bool) -> void: world_refresh())
-	spend_button.pressed.connect(world_purchase)
-	column.add_child(spend_button)
-	column.add_child(economy_help)
-	world_label("PERSONAL REQ · local picker, server-owned rules", column)
-	req_items.custom_minimum_size.y = 96
+	objective_detail.add_child(hold_button)
+	world_label("A HOLD receipt records the request. It does not prove capture or supply change.", objective_detail)
+	var req_page := HBoxContainer.new()
+	req_page.name = "02  PERSONAL REQ"
+	req_page.add_theme_constant_override("separation", 16)
+	tabs.add_child(req_page)
+	req_list_shell.add_theme_stylebox_override("panel", card_style("111e2b", "344b5d"))
+	req_list_shell.custom_minimum_size.x = 390
+	req_list_shell.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	req_page.add_child(req_list_shell)
+	var req_list_column := VBoxContainer.new()
+	req_list_column.add_theme_constant_override("separation", 10)
+	req_list_shell.add_child(req_list_column)
+	eyebrow("02 / PERSONAL REQUISITION", req_list_column)
+	world_label("Choose one field option", req_list_column).add_theme_font_size_override("font_size", 20)
+	world_label("Source catalog · server validates every purchase", req_list_column)
+	req_items.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	req_items.custom_minimum_size.y = 240
+	req_items.add_theme_font_size_override("font_size", 16)
+	req_items.add_theme_constant_override("v_separation", 10)
+	req_items.add_theme_stylebox_override("selected", card_style("20515a", "62cfc5", 4))
+	req_items.add_theme_stylebox_override("selected_focus", card_style("20515a", "62cfc5", 4))
 	req_items.item_selected.connect(world_req_select)
-	column.add_child(req_items)
-	req_depot_caption.text = "Depot"
-	req_depot_caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	req_depot_row.add_theme_constant_override("separation", 8)
+	req_list_column.add_child(req_items)
+	req_balance.add_theme_color_override("font_color", Color("a7c0ce"))
+	req_list_column.add_child(req_balance)
+	var req_detail_scroll := ScrollContainer.new()
+	req_detail_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	req_detail_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	req_detail_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	req_page.add_child(req_detail_scroll)
+	var req_detail := section_card(req_detail_scroll, "152636")
+	eyebrow("SELECTED LOADOUT", req_detail)
+	req_name.add_theme_font_size_override("font_size", 27)
+	req_name.add_theme_color_override("font_color", Color("f0f6f2"))
+	req_detail.add_child(req_name)
+	req_price.add_theme_font_size_override("font_size", 23)
+	req_price.add_theme_color_override("font_color", Color("79e2d2"))
+	req_detail.add_child(req_price)
+	req_category.add_theme_color_override("font_color", Color("adc3ce"))
+	req_detail.add_child(req_category)
+	var rule := HSeparator.new()
+	req_detail.add_child(rule)
+	req_effect.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	req_effect.add_theme_font_size_override("font_size", 17)
+	req_detail.add_child(req_effect)
+	req_state.add_theme_font_size_override("font_size", 14)
+	req_detail.add_child(req_state)
+	req_depot_caption.text = "FRIENDLY DEPOT"
+	req_depot_row.add_theme_constant_override("separation", 10)
 	req_depot_row.add_child(req_depot_caption)
 	req_depot_pick.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	req_depot_pick.item_selected.connect(func(_index: int) -> void: world_refresh())
 	req_depot_row.add_child(req_depot_pick)
-	column.add_child(req_depot_row)
-	column.add_child(req_effect)
+	req_detail.add_child(req_depot_row)
 	req_confirm.toggled.connect(func(_pressed: bool) -> void: world_refresh())
-	column.add_child(req_confirm)
+	req_detail.add_child(req_confirm)
+	req_button.custom_minimum_size.y = 50
+	primary_action(req_button)
 	req_button.pressed.connect(world_req_purchase)
-	column.add_child(req_button)
-	column.add_child(req_help)
-	column.add_child(req_notice)
-	column.add_child(notice)
-	world_label("RECEIPTS · queued ≠ accepted ≠ completed", column)
-	column.add_child(history)
-	world_label("Movement ACK is a high-water receipt, not individual input application.\nClose, release controls, then click the world to resume.", column)
+	req_detail.add_child(req_button)
+	req_detail.add_child(req_help)
+	req_detail.add_child(req_notice)
+	var team_page := VBoxContainer.new()
+	team_page.name = "03  TEAM ECONOMY"
+	tabs.add_child(team_page)
+	var team_content := section_card(team_page, "152636")
+	eyebrow("03 / SHARED TEAM FLUX", team_content)
+	world_label("Reinforce the line", team_content).add_theme_font_size_override("font_size", 25)
+	world_label("This spends team FLUX, never personal REQ. Your team's command seat and source rules decide availability.", team_content)
+	confirm_spend.toggled.connect(func(_pressed: bool) -> void: world_refresh())
+	team_content.add_child(confirm_spend)
+	spend_button.custom_minimum_size.y = 48
+	primary_action(spend_button)
+	spend_button.pressed.connect(world_purchase)
+	team_content.add_child(spend_button)
+	team_content.add_child(economy_help)
+	var activity_page := VBoxContainer.new()
+	activity_page.name = "04  ACTIVITY"
+	tabs.add_child(activity_page)
+	var activity := section_card(activity_page)
+	eyebrow("04 / SOURCE RECEIPTS", activity)
+	world_label("Recent decisions", activity).add_theme_font_size_override("font_size", 23)
+	world_label("QUEUED means a local request. ACCEPTED and SETTLED are separate source observations.", activity)
+	activity.add_child(history)
+	var footer := MarginContainer.new()
+	for side: String in ["left", "right"]: footer.add_theme_constant_override("margin_" + side, 26)
+	for side: String in ["top", "bottom"]: footer.add_theme_constant_override("margin_" + side, 12)
+	outer.add_child(footer)
+	var footer_row := HBoxContainer.new()
+	footer.add_child(footer_row)
+	footer_row.add_child(notice)
+	notice.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var exit_help := world_label("C / ESC TO CLOSE  ·  CLICK WORLD TO RESUME", footer_row)
+	exit_help.add_theme_font_size_override("font_size", 12)
+	exit_help.add_theme_color_override("font_color", Color("829eab"))
+	exit_help.custom_minimum_size.x = 320
+	exit_help.autowrap_mode = TextServer.AUTOWRAP_OFF
+	exit_help.clip_text = true
+	for label: Label in [selection, economy_help, notice, history, req_effect, req_help, req_notice]:
+		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	resized.connect(world_layout)
 	world_layout()
+	# Container minimums settle after insertion; repeat once before the first
+	# rendered frame so tab content cannot expand the panel off-screen.
+	get_tree().process_frame.connect(world_layout, CONNECT_ONE_SHOT)
 	hide()
 
 func world_layout() -> void:
-	panel.size = Vector2(minf(700, size.x - 32), minf(590, size.y - 32))
+	var compact := size.y < 640 or size.x < 900
+	header_eyebrow.visible = not compact
+	deck_title.add_theme_font_size_override("font_size", 20 if compact else 27)
+	for side: String in ["top", "bottom"]: header_margin.add_theme_constant_override("margin_" + side, 8 if compact else 18)
+	for side: String in ["left", "right"]: header_margin.add_theme_constant_override("margin_" + side, 14 if compact else 28)
+	resources.custom_minimum_size.x = 225 if compact else 365
+	req_items.custom_minimum_size.y = 110 if compact else 240
+	panel.size = Vector2(minf(1080, size.x - 28), minf(700, size.y - 28))
 	panel.position = (size - panel.size) * 0.5
+	req_list_shell.custom_minimum_size.x = minf(390, maxf(205, panel.size.x * 0.39))
 
 func world_bind(owner_session: Node) -> void:
 	session = owner_session
@@ -150,6 +303,11 @@ func world_clear() -> void:
 	req_depot_pick.clear()
 	req_depot_row.visible = false
 	req_effect.text = ""
+	req_name.text = "Choose a field option"
+	req_price.text = ""
+	req_category.text = ""
+	req_balance.text = ""
+	req_state.text = ""
 	req_help.text = ""
 	req_notice.text = ""
 	req_notice.visible = false
@@ -217,7 +375,7 @@ func world_refresh() -> void:
 	var blocked: String = session.world_command_gate()
 	if current != context or not blocked.is_empty(): world_clear()
 	context = current
-	resources.text = "Own team FLUX %s · spent %s · own REQ %s" % [world_known(p.get("flux")), world_known(p.get("spent")), world_known(p.get("req"))]
+	resources.text = "FLUX %s  ·  REQ %s" % [world_known(p.get("flux")), world_known(p.get("req"))] if size.x < 900 else "TEAM FLUX  %s   ·   PERSONAL REQ  %s" % [world_known(p.get("flux")), world_known(p.get("req"))]
 	var ids: Array[String] = []
 	for node: Dictionary in p.get("nodes", []): ids.append(node.id)
 	var model: Dictionary = topology.model(p.get("nodes", []), p.get("team"), p.get("cuts", []))
@@ -239,7 +397,7 @@ func world_refresh() -> void:
 	var hold_gate: String = blocked if not blocked.is_empty() else client.action_gate("hold", selected)
 	var spend_gate: String = blocked if not blocked.is_empty() else client.action_gate(client.purchase_kind())
 	var selected_cue: Dictionary = topology.guidance(model, selected)
-	selection.text = "Selected: %s · %s\n%s" % [selected if not selected.is_empty() else "none", hold_gate if not hold_gate.is_empty() else "Ready to issue HOLD (server decides)", selected_cue.get("text", "")]
+	selection.text = "%s\n\n%s\n\n%s" % [selected if not selected.is_empty() else "No objective selected", hold_gate if not hold_gate.is_empty() else "Ready to issue HOLD · server decides", selected_cue.get("text", "")]
 	var command: Dictionary = p.get("command", {})
 	var recruitment: Dictionary = p.get("recruitment", {})
 	var fresh := "%s/%s/%s/%s" % [current, recruitment.get("wave"), command.get("executor"), command.get("leaseUntil")]
@@ -290,7 +448,7 @@ func world_refresh_req(p: Dictionary, blocked: String) -> void:
 		if option.get("enabled") != true:
 			mark = client.req_reason_text(str(option.get("disabledReason", "")))
 		var cost: Variant = option.get("cost")
-		req_items.set_item_text(i, "%s · %s REQ%s" % [option.get("name", option.get("id")), cost, "" if mark.is_empty() else " · " + mark])
+		req_items.set_item_text(i, "%s  ·  %s REQ" % [option.get("name", option.get("id")), cost])
 		var tip := str(option.get("effectCopy", ""))
 		if not mark.is_empty(): tip += "\n" + mark
 		if str(option.get("target", "self")) in ["cut-link", "depot"]:
@@ -301,7 +459,7 @@ func world_refresh_req(p: Dictionary, blocked: String) -> void:
 		req_items.set_item_disabled(i, false)
 		var usable: bool = option.get("enabled") == true and blocked.is_empty()
 		req_items.set_item_custom_fg_color(i, Color("dbe7f0") if usable else Color("8aa0b4"))
-	req_items.custom_minimum_size.y = maxf(64.0, minf(7.0, float(maxi(1, options.size()))) * 30.0)
+	req_balance.text = "AVAILABLE  %s REQ     ·     %s OPTIONS" % [world_known(p.get("req")), options.size()]
 	var chosen: Dictionary = {}
 	var index := -1
 	for i: int in range(options.size()):
@@ -317,16 +475,24 @@ func world_refresh_req(p: Dictionary, blocked: String) -> void:
 	var depot := world_req_depot() if req_selected == "puma" else ""
 	var req_gate := "Select a REQ item"
 	if chosen.is_empty():
-		req_effect.text = "Select a REQ item. Costs and effects mirror game/cocs-economy.mjs."
+		req_name.text = "Choose a field option"
+		req_price.text = ""
+		req_category.text = "SELECT FROM THE SOURCE CATALOG"
+		req_effect.text = "Select an item to see its effect, target and current eligibility before you authorize a single purchase."
 	elif not blocked.is_empty():
-		req_effect.text = "%s · %s REQ\n%s" % [chosen.get("name"), chosen.get("cost"), chosen.get("effectCopy")]
+		req_name.text = str(chosen.get("name"))
+		req_price.text = "%s REQ" % chosen.get("cost")
+		req_category.text = "%s  /  %s" % [str(chosen.get("category", "field")).to_upper(), str(chosen.get("target", "self")).to_upper()]
+		req_effect.text = str(chosen.get("effectCopy"))
 		req_gate = blocked
 	else:
-		var detail := "%s · %s REQ\n%s" % [chosen.get("name"), chosen.get("cost"), chosen.get("effectCopy")]
-		if str(chosen.get("target", "self")) in ["cut-link", "depot"]:
-			detail += "\nServer validates a legal target; a refusal appears as no-target."
-		req_effect.text = detail
+		req_name.text = str(chosen.get("name"))
+		req_price.text = "%s REQ" % chosen.get("cost")
+		req_category.text = "%s  /  %s" % [str(chosen.get("category", "field")).to_upper(), str(chosen.get("target", "self")).to_upper()]
+		req_effect.text = str(chosen.get("effectCopy"))
 		req_gate = client.req_gate(req_selected, depot)
+	req_state.text = "SELECT AN ITEM" if chosen.is_empty() else "UNAVAILABLE  ·  %s" % req_gate if not req_gate.is_empty() else "AVAILABLE TO REQUEST  ·  SERVER SETTLES"
+	req_state.add_theme_color_override("font_color", Color("f2b57a") if not req_gate.is_empty() else Color("79e2d2"))
 	# Consent belongs to one item, price and depot inside a live identity epoch.
 	# Any change to those (or to the server gate below) revokes it before another
 	# request can reuse it.
@@ -334,11 +500,11 @@ func world_refresh_req(p: Dictionary, blocked: String) -> void:
 	if depot != "": req_fresh += "/" + depot
 	if req_fresh != req_authorization or not req_gate.is_empty(): req_confirm.set_pressed_no_signal(false)
 	req_authorization = req_fresh
-	req_confirm.text = "Authorize one REQ purchase" if chosen.is_empty() else "Authorize %s (%s REQ)" % [chosen.get("name"), chosen.get("cost")]
+	req_confirm.text = "Authorize one purchase" if chosen.is_empty() else "Authorize %s  ·  %s REQ" % [chosen.get("name"), chosen.get("cost")]
 	req_confirm.disabled = not visible or chosen.is_empty() or not req_gate.is_empty()
 	req_button.disabled = req_confirm.disabled or not req_confirm.button_pressed
-	req_button.text = "Purchase REQ item" if chosen.is_empty() else "Purchase %s" % chosen.get("name")
-	req_help.text = req_gate if not req_gate.is_empty() else "Recipient permission available. Authorize, then purchase once."
+	req_button.text = "REQUEST PURCHASE →" if chosen.is_empty() else "REQUEST %s →" % str(chosen.get("name")).to_upper()
+	req_help.text = "Server checks the legal target at application; no valid effect means no debit." if req_gate.is_empty() else "Why unavailable: %s" % req_gate
 	req_notice.text = ""
 	var latest_buy: Dictionary = {}
 	for action: Dictionary in client.actions:

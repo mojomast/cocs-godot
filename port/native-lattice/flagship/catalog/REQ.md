@@ -148,4 +148,28 @@ unobserved; the synthetic lifecycle proves only the request/settlement seam.
   refused `no-target` by the authority; the client does not model cut/enemy
   geometry and shows the refusal rather than pre-claiming a hit.
 * **No live native BUY witness.** The serial integration checks above are
-  headless contracts; no rendered native catalog or live purchase was observed.
+  headless contracts; a synthetic rendered catalog is available, but no live
+  native purchase was observed.
+
+## Command-deck presentation pass
+
+The native command overlay now groups the existing actions into four reachable
+tabs: Objectives, Personal REQ, Team Economy, and Activity. The REQ tab uses a
+catalog rail and a focused detail card showing source cost/effect, recipient
+eligibility, owned depot when relevant, one-purchase consent and the latest
+server-card settlement. Locked rows remain selectable for their reason; only
+the source-backed BUY gate enables the purchase button. Team FLUX is presented
+on its own tab so it cannot be confused with personal REQ. The panel fits a
+760×520 viewport with scrolling within the list and detail when necessary.
+
+`godot/tests/lattice/req_ui_capture.gd` renders a deliberately synthetic
+recipient projection, checks the panel stays on-screen, and saves a PNG for
+visual review. For example, using Godot 4.5.2 and Xvfb:
+
+```sh
+xvfb-run -a godot --path godot --script res://tests/lattice/req_ui_capture.gd \
+  -- --capture=/tmp/lattice-req.png --item=sentry --authorize --width=1280 --height=800
+```
+
+This is presentation only: the source catalog, recipient gate, purchase
+transport, receipts and economy rules are unchanged by the layout pass.
