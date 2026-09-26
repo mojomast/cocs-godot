@@ -7,6 +7,7 @@ const WorldGuidance = preload("res://lattice/world_guidance.gd")
 const WorldOutcomes = preload("res://lattice/world_outcomes.gd")
 const WorldSessionPanel = preload("res://lattice/world_session_panel.gd")
 const WorldTelemetry = preload("res://lattice/world_telemetry.gd")
+const WorldTacticalHUD = preload("res://lattice/world_tactical_hud.gd")
 const SessionOptions = preload("res://lattice/session_options.gd")
 const SessionFlow = preload("res://lattice/session_flow.gd")
 const WORLD_MAPS := ["asterion-relay", "monsoon-foundry"]
@@ -21,6 +22,7 @@ var session_flow := SessionFlow.new()
 var session_panel := WorldSessionPanel.new()
 var world_telemetry := WorldTelemetry.new()
 var last_lattice_lobby: Dictionary = {}
+var tactical_hud: Control
 
 func _init() -> void:
 	# Replace before attachment: the transport's _init signal observers run before
@@ -57,6 +59,8 @@ func _ready() -> void:
 		item.add_theme_constant_override("shadow_offset_y", 2)
 	panel.add_child(selector)
 	selector.hide()
+	tactical_hud = WorldTacticalHUD.new()
+	layer.add_child(tactical_hud)
 	world_commands = WorldCommands.new()
 	layer.add_child(world_commands)
 	world_commands.world_bind(self)
@@ -230,6 +234,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func clear_world_pose() -> void:
 	if is_instance_valid(world_commands): world_commands.world_clear()
+	if is_instance_valid(tactical_hud): tactical_hud.clear()
 	if received_pose: send_elapsed = 0.0
 	received_pose = false
 	pose_actor_id = -1
@@ -286,6 +291,7 @@ func on_started(frame: Dictionary) -> void:
 		world_commands.bind_authored_map(current_id, catalog.resolve_map(current_id))
 	if is_instance_valid(world_commands): world_commands.world_clear()
 	world_telemetry.begin_round()
+	if is_instance_valid(tactical_hud): tactical_hud.clear()
 	session_panel.hide()
 	lattice_hud.clear_round()
 	super.on_started(frame)
@@ -295,6 +301,7 @@ func on_error(message: String) -> void:
 	session_panel.hide()
 	if is_instance_valid(world_commands): world_commands.world_clear()
 	lattice_hud.clear_round()
+	if is_instance_valid(tactical_hud): tactical_hud.clear()
 	super.on_error(message)
 	world_label.text = "LATTICE world session stopped. Relaunch to reconnect."
 
@@ -339,6 +346,7 @@ func on_results(frame: Dictionary) -> void:
 	session_panel.show_result(client.result_projection, client.session_config, client.peer_id == session_flow.host_peer and join_room_id.is_empty())
 	combat.clear_round()
 	lattice_hud.clear_round()
+	if is_instance_valid(tactical_hud): tactical_hud.clear()
 	release_pointer()
 	refresh_world_hud()
 
@@ -360,8 +368,13 @@ func refresh_world_hud() -> void:
 	else:
 		world_label.text = world_error if not world_error.is_empty() else ""
 	combat_label.visible = not combat_label.text.is_empty()
+	var deck_visible := is_instance_valid(world_commands) and world_commands.visible
+	var active_hud: bool = phase == 3 and not client.projection.is_empty() and client.projection_actor == client.actor_id and received_pose and not snapshot_watch.stale() and is_instance_valid(tactical_hud) and tactical_hud.is_inside_tree()
+	if active_hud and not session_panel.visible and not deck_visible:
+		tactical_hud.present(client.projection, lattice_hud.target_model, lattice_hud.topology_model, presentation.local_actor, client.actions, combat_label.text)
+	elif is_instance_valid(tactical_hud): tactical_hud.hide()
 	if is_instance_valid(world_panel):
-		world_panel.visible = not session_panel.visible and not (is_instance_valid(world_commands) and world_commands.visible)
+		world_panel.visible = not session_panel.visible and not deck_visible and not active_hud
 		world_panel.size = Vector2(minf(590, get_viewport().get_visible_rect().size.x - 36), 0)
 
 func _process(delta: float) -> void:

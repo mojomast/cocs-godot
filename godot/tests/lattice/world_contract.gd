@@ -1,6 +1,7 @@
 extends SceneTree
 const Demo = preload("res://lattice/world_demo.gd")
 const Transport = preload("res://lattice/world_transport.gd")
+const Commands = preload("res://lattice/world_commands.gd")
 var checks := 0
 var failures := 0
 
@@ -16,6 +17,16 @@ func _initialize() -> void:
 	var demo := Demo.new()
 	var c: Node = demo.client
 	demo.current_id = "asterion-relay"
+	demo.selected_mode = "cocs"
+	# Detached fixture: supply the composed command seam and mark authored links
+	# bound so on_started does not try to load a real map catalog outside _ready.
+	demo.world_commands = Commands.new()
+	root.add_child(demo.world_commands)
+	demo.world_commands.authored_map_id = demo.current_id
+	demo.world_commands.hide()
+	root.add_child(demo.session_panel)
+	demo.session_panel.hide()
+	demo.lattice_hud.authored_map_id = demo.current_id
 	c.allowlist = {"asterion-relay":{"modes":["cocs"]}}
 	c.requested_map = demo.current_id
 	c.lobby.connect(demo.on_lobby)
@@ -77,7 +88,7 @@ func _initialize() -> void:
 	check(not demo.received_pose and demo.presentation.actors.is_empty(), "restart requires fresh owned pose")
 	demo.on_error("fixture disconnect")
 	check(demo.phase == -1 and not demo.received_pose and c.actor_id == -1, "error disconnect clears identity/control")
-	for node: Node in [demo.client,demo.camera,demo.sun,demo.environment,demo.label,demo.selector,demo.world_label,demo.combat_label,demo.pickups,demo.presentation,demo.combat,demo.lattice_hud]: node.free()
+	for node: Node in [demo.client,demo.camera,demo.sun,demo.environment,demo.label,demo.selector,demo.world_label,demo.combat_label,demo.pickups,demo.presentation,demo.combat,demo.lattice_hud,demo.world_commands,demo.session_panel]: node.free()
 	demo.free()
 	print("WORLD_CONTRACT checks=", checks, " failures=", failures)
 	quit(0 if failures == 0 else 1)

@@ -199,8 +199,18 @@ func observe(frame: Dictionary) -> void:
 	var cuts: Array = []
 	for value: Variant in array(dictionary(team_value(board, "intel", team)).get("cutNodes")):
 		if value is String and not cuts.has(value): cuts.append(value)
+	# PvP recipient-private contact bucket, already filtered by the server. Only
+	# source-flagged revealed enemies are exposed to the HUD; never derive a
+	# contact from globally visible actor poses or another team's bucket.
+	var recon_contacts: Array[Dictionary] = []
+	for contact: Variant in array(team_value(board, "contacts", team)):
+		if not contact is Dictionary or contact.get("revealed") != true or contact.get("own") != false: continue
+		if contact.get("team") == team or not wire_integer(contact.get("id")): continue
+		if not finite_number(contact.get("x")) or not finite_number(contact.get("z")): continue
+		recon_contacts.append({"id":contact.id, "x":contact.x, "z":contact.z})
 	var role_board := dictionary(team_value(board, "roleBoard", team))
 	var director := dictionary(board.get("director"))
+	var waves := dictionary(board.get("waves"))
 	var window := dictionary(director.get("intermission"))
 	var reinforce: Dictionary = {}
 	for sink: Variant in array(window.get("sinks")):
@@ -235,6 +245,9 @@ func observe(frame: Dictionary) -> void:
 		"flux":team_value(board, "flux", team), "spent":team_value(board, "fluxSpent", team),
 		"income":team_value(board, "fluxIncome", team), "upkeep":team_value(board, "fluxUpkeep", team),
 		"nodes":nodes, "cuts":cuts, "roles":role_board, "command":dictionary(board.get("command")),
+		"recon_contacts":recon_contacts,
+		"threat":{"alive":waves.get("forceAlive"), "total":waves.get("forceTotal"),
+			"wave_label":director.get("waveLabel")},
 		"commander":dictionary(board.get("commander")), "coop":board.get("coop", false),
 		"recruitment":{"peer":peer_id, "phase":director.get("phase"), "wave":director.get("wave"),
 			"open":window.get("open"), "sink":reinforce,

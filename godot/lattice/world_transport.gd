@@ -37,6 +37,35 @@ func valid_envelope(frame: Dictionary) -> bool:
 		if state.cocs.has(key) and not state.cocs[key] is Array: return false
 	for wallet: Variant in state.cocs.get("req", []):
 		if not wallet is Dictionary or not wire_integer(wallet.get("id")) or not finite_number(wallet.get("req")): return false
+	# The contact stream is private to this recipient. Reject an unexpected
+	# second team bucket rather than silently letting presentation see it.
+	if state.cocs.has("contacts") and state.cocs.contacts != null:
+		if not state.cocs.contacts is Dictionary: return false
+		var own_team := -1
+		for actor: Variant in state.actors:
+			if actor.id == actor_id: own_team = int(actor.team)
+		if own_team >= 0:
+			var contacts: Dictionary = state.cocs.contacts
+			for key: Variant in contacts.keys():
+				if key != str(own_team): return false
+			var entries: Variant = contacts.get(str(own_team))
+			if entries != null:
+				if not entries is Array or entries.size() > 128: return false
+				for entry: Variant in entries:
+					if not entry is Dictionary or not wire_integer(entry.get("id")) or not wire_integer(entry.get("team")) or (entry.team != 0 and entry.team != 1): return false
+					if not finite_number(entry.get("x")) or not finite_number(entry.get("z")) or not entry.get("own") is bool: return false
+					if entry.own != (entry.team == own_team): return false
+					for flag: String in ["revealed", "spotted"]:
+						if entry.has(flag) and not entry[flag] is bool: return false
+	# Wave force and director label are optional, public Operations facts. Never
+	# turn an omitted threat into a zero or a locally extrapolated countdown.
+	if state.cocs.has("waves") and state.cocs.waves != null:
+		if not state.cocs.waves is Dictionary: return false
+		for key: String in ["forceAlive", "forceTotal"]:
+			if state.cocs.waves.has(key) and (not wire_integer(state.cocs.waves[key]) or state.cocs.waves[key] > 512): return false
+	if state.cocs.has("director") and state.cocs.director != null:
+		if not state.cocs.director is Dictionary: return false
+		if state.cocs.director.has("waveLabel") and state.cocs.director.waveLabel != null and (not state.cocs.director.waveLabel is String or state.cocs.director.waveLabel.length() > 64): return false
 	for key: String in ["flux", "fluxSpent", "fluxIncome", "fluxUpkeep"]:
 		if not state.cocs.has(key): continue
 		if not state.cocs[key] is Dictionary: return false
