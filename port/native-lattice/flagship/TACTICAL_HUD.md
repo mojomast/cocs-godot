@@ -39,3 +39,8 @@ contains Windows x64 and Linux x86_64 archives plus SHA-256 sidecars and the
 two explicitly synthetic previews. It was packaged from port `9505f6ca`:
 Linux SHA-256 `ceddd6efb54e9a6b98b5c73b3f90cd1efc86a0c50c0963387cdf420eb3bf5284`,
 Windows SHA-256 `91d58a85c91f4b19139399a4166820b74915a47489f67c7b9a57fc91d589a2e0`.
+
+Use the newer [pointer-guidance revision](https://github.com/mojomast/cocs-godot/releases/tag/lattice-tactical-hud-v2-2026-09-26)
+from `1736d0f2` for hands-on testing: Linux SHA-256
+`8d0005c17c82c8fda7fcadeb872bfea76cea75d04d0908981fabb8c437488738`,
+Windows SHA-256 `3dd682bd5c6c7d75272b9fdfd3f098cdcb8ff29ed54c78b7b3b826805609d263`.

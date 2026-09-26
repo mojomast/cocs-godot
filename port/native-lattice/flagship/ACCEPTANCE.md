@@ -250,3 +250,15 @@ REQ lifecycle 60/60, L1 38/38 and L2 17/17. Synthetic pixel layouts at
 1280×720 and 760×520 passed bounds review. Real player HUD usability,
 live native REQ settlement and natural Operations five-wave completion still
 need owner observation.
+
+The [pointer-guidance revision](https://github.com/mojomast/cocs-godot/releases/tag/lattice-tactical-hud-v2-2026-09-26)
+supersedes the initial tactical HUD download. Commit `1736d0f2` explicitly
+shows how to resume a released pointer and falls back to the existing full
+explanation panel for dead, stale, unfocused and unavailable states. Godot
+tactical contract 16/16, world 18/18 and compact released-pointer render
+passed. Serial rebuild/archive hash checks and packaged Asterion PvP/Monsoon
+Operations startup passed: Linux SHA-256
+`8d0005c17c82c8fda7fcadeb872bfea76cea75d04d0908981fabb8c437488738`
+(134/134 file hashes), Windows SHA-256
+`3dd682bd5c6c7d75272b9fdfd3f098cdcb8ff29ed54c78b7b3b826805609d263`
+(141/141 file hashes; native Windows run unobserved).
