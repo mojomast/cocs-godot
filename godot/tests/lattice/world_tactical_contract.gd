@@ -72,6 +72,8 @@ func run() -> void:
 	hud.present(client.projection, target, topology, state.actors[0], [], "")
 	await process_frame
 	check(hud.visible and hud.progress.text.contains("WAVE 3") and hud.economy.text.contains("120"), "render panel consumes recipient model")
+	hud.present(client.projection, target, topology, state.actors[0], [], "", "released")
+	check(hud.control_hint.text.contains("CLICK WORLD TO RESUME"), "released pointer has explicit recovery cue")
 	root.size = Vector2i(760, 520)
 	await process_frame
 	check(hud.objective_card.get_rect().end.x < hud.status_card.position.x and hud.status_card.get_rect().end.x <= 760, "compact cards fit without overlap")

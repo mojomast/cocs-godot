@@ -9,11 +9,13 @@ func capture() -> void:
 	var width := 1280
 	var height := 720
 	var mode := "ops"
+	var released := false
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--capture="): output = arg.trim_prefix("--capture=")
 		elif arg.begins_with("--width="): width = int(arg.trim_prefix("--width="))
 		elif arg.begins_with("--height="): height = int(arg.trim_prefix("--height="))
 		elif arg.begins_with("--mode="): mode = arg.trim_prefix("--mode=")
+		elif arg == "--released": released = true
 	if output.is_empty() or width < 760 or height < 520 or mode not in ["ops", "pvp"]:
 		quit(2)
 		return
@@ -40,7 +42,7 @@ func capture() -> void:
 		"recon_contacts":[{"id":2,"x":20,"z":5},{"id":3,"x":42,"z":8}]}
 	var target := {"target_id":"front", "text":"Front · northeast · legal frontier; adjacency confirmed, supply LINKED."}
 	var topology := {"by_id":{"front":{"id":"front","label":"Front", "x":20.0,"z":0.0,"capture_legal":true,"supply":"LINKED"}}}
-	hud.present(projection, target, topology, {"x":0,"z":0,"health":100}, [{"kind":"buy","target":"sentry","status":"queued"}])
+	hud.present(projection, target, topology, {"x":0,"z":0,"health":100}, [{"kind":"buy","target":"sentry","status":"queued"}], "", "released" if released else "engaged")
 	for _frame: int in range(3): await RenderingServer.frame_post_draw
 	var left := hud.objective_card.get_rect()
 	var right := hud.status_card.get_rect()

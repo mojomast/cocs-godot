@@ -369,9 +369,9 @@ func refresh_world_hud() -> void:
 		world_label.text = world_error if not world_error.is_empty() else ""
 	combat_label.visible = not combat_label.text.is_empty()
 	var deck_visible := is_instance_valid(world_commands) and world_commands.visible
-	var active_hud: bool = phase == 3 and not client.projection.is_empty() and client.projection_actor == client.actor_id and received_pose and not snapshot_watch.stale() and is_instance_valid(tactical_hud) and tactical_hud.is_inside_tree()
+	var active_hud: bool = status.id in ["engaged", "released"] and phase == 3 and not client.projection.is_empty() and client.projection_actor == client.actor_id and received_pose and not snapshot_watch.stale() and is_instance_valid(tactical_hud) and tactical_hud.is_inside_tree()
 	if active_hud and not session_panel.visible and not deck_visible:
-		tactical_hud.present(client.projection, lattice_hud.target_model, lattice_hud.topology_model, presentation.local_actor, client.actions, combat_label.text)
+		tactical_hud.present(client.projection, lattice_hud.target_model, lattice_hud.topology_model, presentation.local_actor, client.actions, combat_label.text, status.id)
 	elif is_instance_valid(tactical_hud): tactical_hud.hide()
 	if is_instance_valid(world_panel):
 		world_panel.visible = not session_panel.visible and not deck_visible and not active_hud

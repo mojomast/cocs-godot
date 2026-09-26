@@ -3,7 +3,8 @@
 The LATTICE World route now presents three compact, non-interactive instrument
 cards during a **fresh, owned, live pose**: a field directive, source-published
 mission progress and wallet, and an action-status ribbon. The old large text
-panel remains for setup, result and unavailable-state explanations. Opening the
+panel remains for setup, result, dead, unfocused and unavailable-state explanations.
+The compact ribbon tells a released pointer how to resume. Opening the
 command deck hides the in-world cards and releases pointer capture as before.
 
 * The directive consumes `world_target.gd`'s advisory choice over the

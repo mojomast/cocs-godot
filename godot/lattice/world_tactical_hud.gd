@@ -16,6 +16,7 @@ var combat := Label.new()
 var objective_card := PanelContainer.new()
 var status_card := PanelContainer.new()
 var bottom := PanelContainer.new()
+var control_hint := Label.new()
 var epoch := ""
 var last_sequence: Variant = null
 var last_req: Variant = null
@@ -76,9 +77,8 @@ func _ready() -> void:
 	receipt.hide()
 	delta.hide()
 	combat.hide()
-	var hint := Label.new()
-	hint.text = "C  COMMAND DECK   ·   TAB  SCORES   ·   ESC  RELEASE POINTER"
-	add_line(bottom_column, hint, 12, "a2b8c4")
+	control_hint.text = "C  COMMAND DECK   ·   TAB  SCORES   ·   ESC  RELEASE POINTER"
+	add_line(bottom_column, control_hint, 12, "a2b8c4")
 	resized.connect(layout)
 	layout()
 	hide()
@@ -101,7 +101,7 @@ func clear() -> void:
 	delta_expires = 0
 	hide()
 
-func present(projection: Dictionary, target: Dictionary, topology: Dictionary, actor: Dictionary, actions: Array, combat_text: String = "") -> void:
+func present(projection: Dictionary, target: Dictionary, topology: Dictionary, actor: Dictionary, actions: Array, combat_text: String = "", controls: String = "engaged") -> void:
 	if projection.is_empty() or actor.is_empty():
 		clear()
 		return
@@ -119,6 +119,7 @@ func present(projection: Dictionary, target: Dictionary, topology: Dictionary, a
 	receipt.visible = not receipt.text.is_empty()
 	combat.text = combat_text.left(160)
 	combat.visible = not combat.text.is_empty()
+	control_hint.text = "RELEASED  ·  RELEASE CONTROLS, THEN CLICK WORLD TO RESUME   ·   C DECK" if controls == "released" else "C  COMMAND DECK   ·   TAB  SCORES   ·   ESC  RELEASE POINTER"
 	var context: Dictionary = projection.get("context", {})
 	var identity := "%s/%s/%s" % [projection.get("map"), context.get("revision"), context.get("actor")]
 	if identity != epoch:
