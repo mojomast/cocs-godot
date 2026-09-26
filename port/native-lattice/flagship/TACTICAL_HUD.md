@@ -32,3 +32,9 @@ card wording, and compact bounds (14 synthetic checks). The marker contract in
 `tactical_hud_capture.gd` renders synthetic Operations and PvP/Recon examples
 at large and compact resolutions for visual review; the images do **not**
 establish a real REQ purchase, live human play or a natural five-wave victory.
+
+The [downloadable tactical HUD build](https://github.com/mojomast/cocs-godot/releases/tag/lattice-tactical-hud-2026-09-26)
+contains Windows x64 and Linux x86_64 archives plus SHA-256 sidecars and the
+two explicitly synthetic previews. It was packaged from port `9505f6ca`:
+Linux SHA-256 `ceddd6efb54e9a6b98b5c73b3f90cd1efc86a0c50c0963387cdf420eb3bf5284`,
+Windows SHA-256 `91d58a85c91f4b19139399a4166820b74915a47489f67c7b9a57fc91d589a2e0`.

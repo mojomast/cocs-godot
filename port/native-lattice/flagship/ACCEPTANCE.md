@@ -228,3 +228,25 @@ purchase 60/60, world commands 27/27. Synthetic rendered snapshots were
 reviewed at 1280×800, 1280×720, 1024×768, 800×600 and 760×520; the
 viewport-bounds check passes at the compact size. User/hardware visual
 approval and a live native REQ purchase remain open.
+
+### In-world tactical HUD test release
+
+The [tactical HUD build](https://github.com/mojomast/cocs-godot/releases/tag/lattice-tactical-hud-2026-09-26)
+was packaged serially from port commit `9505f6ca` with the same frozen source
+derivative `fa6dda2d`. The in-world directive and objective markers use only
+recipient-observed objective/topology facts; mission counters are source
+published, and PvP Recon cues require a `revealed` contact in this recipient's
+own team-private contact bucket. The source authority and mode rules are
+unchanged. Release images are synthetic rendered layouts, not play evidence.
+
+| Artifact | SHA-256 | Verified boundary |
+| --- | --- | --- |
+| `cocs-native-linux.tar.gz` | `ceddd6efb54e9a6b98b5c73b3f90cd1efc86a0c50c0963387cdf420eb3bf5284` | 134/134 package-file hashes; Asterion PvP and Monsoon Operations packaged startup/cleanup |
+| `cocs-native-windows.zip` | `91d58a85c91f4b19139399a4166820b74915a47489f67c7b9a57fc91d589a2e0` | 141/141 package-file hashes; native Windows execution unobserved |
+
+Godot 4.5.2 contracts: tactical recipient/privacy/settlement 15/15,
+objective-marker contract passed, world 18/18, world commands 27/27,
+REQ lifecycle 60/60, L1 38/38 and L2 17/17. Synthetic pixel layouts at
+1280×720 and 760×520 passed bounds review. Real player HUD usability,
+live native REQ settlement and natural Operations five-wave completion still
+need owner observation.
