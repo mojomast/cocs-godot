@@ -51,3 +51,14 @@ was built from port commit `beb6eb57`, with source derivative `fa6dda2d`:
   `fda23853152aa3194299328347ad9cdb3e827f27a208d1d97f0a4f44257c7c74`;
   141/141 archive file hashes match the manifest. Run on Windows hardware is
   still unobserved here.
+
+## Updated command-deck UI build
+
+Download the newer [command-deck UI test release](https://github.com/mojomast/cocs-godot/releases/tag/lattice-command-deck-ui-2026-09-25)
+to try the four-view interface and the focused REQ purchase card. It carries
+the same pinned source-runtime derivative with the native presentation update
+from port commit `503b4594`. Linux SHA-256:
+`07a49046eb6ea9f8552cae8728214d71bd711c46e996601588d659affd4e2f67`;
+Windows SHA-256:
+`e61c10ce13fca838f2b9d06924483ee54512fa5f16c5a1ea0d56ddfbfb9f8ffa`.
+The release has a **synthetic fixture** screenshot for a quick visual preview.

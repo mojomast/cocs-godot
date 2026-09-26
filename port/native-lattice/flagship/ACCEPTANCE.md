@@ -207,3 +207,24 @@ contains both packages and SHA-256 sidecars:
 Package manifests record the locked source, derivative commit/inventory hash,
 port commit, and final input digests separately. These are startup/package
 results, not live native REQ settlement or visual/human acceptance.
+
+### Native command-deck UI test release
+
+The [command-deck UI test build](https://github.com/mojomast/cocs-godot/releases/tag/lattice-command-deck-ui-2026-09-25)
+was packaged serially from port commit `503b4594` with the same frozen source
+derivative `fa6dda2d`. It replaces the catalog test download for evaluating
+the native interface. Objectives, Personal REQ, Team Economy and Activity have
+separate views; REQ selection shows effect, eligibility, authorization and
+source-card status. The included PNG is a **synthetic recipient fixture**, not
+a live purchase screenshot.
+
+| Artifact | SHA-256 | Verified boundary |
+| --- | --- | --- |
+| `cocs-native-linux.tar.gz` | `07a49046eb6ea9f8552cae8728214d71bd711c46e996601588d659affd4e2f67` | 134/134 package-file hashes; packaged Asterion PvP startup/cleanup |
+| `cocs-native-windows.zip` | `e61c10ce13fca838f2b9d06924483ee54512fa5f16c5a1ea0d56ddfbfb9f8ffa` | 141/141 package-file hashes; native Windows execution unobserved |
+
+Native contracts after the presentation change: catalog 197/197, REQ
+purchase 60/60, world commands 27/27. Synthetic rendered snapshots were
+reviewed at 1280×800, 1280×720, 1024×768, 800×600 and 760×520; the
+viewport-bounds check passes at the compact size. User/hardware visual
+approval and a live native REQ purchase remain open.
