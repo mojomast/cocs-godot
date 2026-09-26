@@ -53,11 +53,9 @@ func apply_projection(projection: Dictionary, actor: Dictionary) -> void:
 		var marker: Label3D = markers[node.id]
 		marker.position = Vector3(node.x, float(node.get("y", heights.get(node.id, 0))) + 3.0, node.z)
 		var info: Dictionary = topology_model.get("by_id", {}).get(node.id, {})
-		var owner_text := "ownership unknown" if not info.get("owner_known", false) else ("Neutral" if info.get("owner") == null else "Team %d" % int(info.owner))
-		var supply_text: String = str(info.get("supply", "UNKNOWN"))
-		marker.text = "%s\n%s · %s%s" % [node.get("label", node.id), "CONTESTED" if node.get("contested") == true else owner_text, supply_text, " · LEGAL" if info.get("capture_legal") else ""]
-		marker.modulate = Color("f4b75e") if node.get("contested") == true else Color("9ba4ad") if not info.get("owner_known", false) else Color("f4b75e") if node.get("owner") == null else Color("f07872") if node.owner == 0 else Color("78b7ff")
 		var d := Vector2(actor.x, actor.z).distance_to(Vector2(node.x, node.z))
+		marker.text = marker_text(node, info, d)
+		marker.modulate = Color("f4b75e") if node.get("contested") == true else Color("9ba4ad") if not info.get("owner_known", false) else Color("f4b75e") if info.get("owner") == null else Color("f07872") if info.owner == 0 else Color("78b7ff")
 		# Near objectives use the compact HUD instead of a giant close-up glyph.
 		marker.visible = d >= 10.0 and d <= 110.0
 		if d < distance:
@@ -67,6 +65,24 @@ func apply_projection(projection: Dictionary, actor: Dictionary) -> void:
 		if not present.has(id):
 			markers[id].free()
 			markers.erase(id)
+
+## Labels consume the current recipient's public node and own-team topology
+## facts. A missing boolean or uncertified link is never displayed as a denial.
+func marker_text(node: Dictionary, info: Dictionary, range_m: float) -> String:
+	var owner := "Owner unknown" if not info.get("owner_known", false) else ("Neutral" if info.get("owner") == null else "Team %d" % int(info.owner))
+	var activity := "CONTESTED" if node.get("contested") == true else "live" if node.get("live") == true else "inactive" if node.get("live") == false else "activity unknown"
+	var capture := "capture unknown"
+	if info.get("capture_legal") == true:
+		capture = "capture LEGAL"
+	elif info.get("mine") == true:
+		capture = "own HOLD"
+	elif info.get("capturable") == false and not str(info.get("archetype", "")).is_empty():
+		capture = "capture n/a"
+	elif node.get("live") == false or (topology_model.get("team") != null and info.get("owner_known", false) and info.get("reach") == false):
+		capture = "capture unavailable"
+	var supply: String = str(info.get("supply", "UNKNOWN"))
+	if supply.is_empty(): supply = "n/a"
+	return "%s · %.0f m (planar)\n%s · %s\n%s · supply %s" % [info.get("label", node.get("label", node.id)), range_m, owner, activity, capture, supply]
 
 func known(value: Variant) -> String:
 	return "unknown" if value == null else "%.1f" % float(value)
