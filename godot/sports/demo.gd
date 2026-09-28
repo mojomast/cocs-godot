@@ -1,4 +1,5 @@
 extends Node3D
+const SettingsAccess = preload("res://ui/settings_access.gd")
 const Network = preload("res://net/client.gd")
 const World = preload("res://world/viewer.gd")
 const Fleet = preload("res://vehicles/renderer.gd")
@@ -188,7 +189,7 @@ func eligible() -> bool:
 	return phase == "active" and age < 0.5 and not state.get("over", false) and not vehicle.is_empty() and vehicle.get("driver") == net.actor_id and float(vehicle.get("health", 0)) > 0 and float(vehicle.get("respawnTimer", 1)) <= 0 and float(actor.get("health", 0)) > 0 and float(actor.get("dead", 1)) <= 0 and state.get("race", {}).get("phase") in ["racing", "playing"]
 
 func _input(event: InputEvent) -> void:
-	if LocalSettings.overlay_open():
+	if SettingsAccess.overlay_open():
 		if (event is InputEventKey and not event.pressed): controls.accept(event, false)
 		return
 	controls.accept(event, eligible())

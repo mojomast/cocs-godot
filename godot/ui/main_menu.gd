@@ -11,6 +11,7 @@ extends Control
 
 const RouteRegistry = preload("res://ui/route_registry.gd")
 const MenuPreferences = preload("res://ui/menu_preferences.gd")
+const SettingsAccess = preload("res://ui/settings_access.gd")
 const Choice = preload("res://ui/lobby_choice.gd")
 const CAPTION := Color("a3b7c9")
 const ERROR_INK := Color("e08282")
@@ -148,7 +149,7 @@ func build_ui() -> void:
 	settings_button.name = "Settings"
 	settings_button.text = "SETTINGS"
 	settings_button.custom_minimum_size = Vector2(150, 44)
-	settings_button.pressed.connect(func() -> void: LocalSettings.open_panel(true, settings_button))
+	settings_button.pressed.connect(func() -> void: SettingsAccess.open_panel(true, settings_button))
 	actions.add_child(start)
 	actions.add_child(settings_button)
 	actions.add_child(quit_button)

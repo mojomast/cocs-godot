@@ -1,4 +1,5 @@
 extends "res://world/session.gd"
+const HordeSettingsAccess = preload("res://ui/settings_access.gd")
 const HordeModel = preload("res://horde/model.gd")
 const HordeClient = preload("res://horde/client.gd")
 const HordeControls = preload("res://horde/controls.gd")
@@ -493,7 +494,7 @@ func controls_released() -> bool:
 	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
 
 func _input(event: InputEvent) -> void:
-	if LocalSettings.overlay_open(): return
+	if HordeSettingsAccess.overlay_open(): return
 	if event is InputEventKey and event.pressed and not event.echo:
 		var index := intercept_offer_key(key_code(event))
 		if index > 0:

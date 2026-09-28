@@ -30,7 +30,7 @@ func _ready() -> void:
 	if DisplayServer.get_name() != "headless":
 		startup_display_override = explicit_display_flag(OS.get_cmdline_args(), OS.get_cmdline_user_args())
 		var configured := OS.get_environment("COCS_SETTINGS_PATH")
-		if configured.begins_with("/") or (configured.length() > 2 and configured[1] == ":" and configured[2] in ["/", "\\"]):
+		if configured.is_absolute_path():
 			path = configured
 		load_at(path)
 	build_panel()

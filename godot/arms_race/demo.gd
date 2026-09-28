@@ -1,4 +1,5 @@
 extends "res://world/session.gd"
+const ArmsSettingsAccess = preload("res://ui/settings_access.gd")
 ## Standalone composition. Source Match/Room own all combat and progression.
 const FreshInput = preload("res://arms_race/fresh_input.gd")
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible"]
@@ -85,7 +86,7 @@ func release_pointer() -> void:
 	super.release_pointer()
 
 func _input(event: InputEvent) -> void:
-	if LocalSettings.overlay_open(): return
+	if ArmsSettingsAccess.overlay_open(): return
 	fresh.observe(event)
 	observe_combat_input(event)
 	# Source pins the weapon. Never queue a native selection request.

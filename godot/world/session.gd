@@ -1,6 +1,7 @@
 extends "res://world/viewer.gd"
 
 const Client = preload("res://net/client.gd")
+const SettingsAccess = preload("res://ui/settings_access.gd")
 const ControlMath = preload("res://world/control_math.gd")
 const WeaponSelection = preload("res://world/weapon_selection.gd")
 const CombatActions = preload("res://world/combat_actions.gd")
@@ -146,11 +147,11 @@ func can_capture_pointer() -> bool:
 	# Application focus notifications may lag the window's focus state (X11).
 	# Detached logic probes have no window; attached sessions must check it.
 	if is_inside_tree() and not get_window().has_focus(): return false
-	return application_focused and not LocalSettings.overlay_open() and phase == 3 and received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control()
+	return application_focused and not SettingsAccess.overlay_open() and phase == 3 and received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control()
 
 func update_look(relative: Vector2) -> void:
 	if not can_capture_pointer() or not relative.is_finite(): return
-	var gain := 0.003 * LocalSettings.sensitivity() * (0.85 if aim_requested() else 1.0)
+	var gain := 0.003 * SettingsAccess.sensitivity() * (0.85 if aim_requested() else 1.0)
 	var angles := ControlMath.look(yaw - relative.x * gain, pitch - relative.y * gain)
 	yaw = angles.x
 	pitch = angles.y
@@ -613,7 +614,7 @@ func observe_combat_input(event: InputEvent) -> void:
 	combat_actions.record(event, combat_controls_active(), presentation.local_actor)
 
 func _input(event: InputEvent) -> void:
-	if LocalSettings.overlay_open(): return
+	if SettingsAccess.overlay_open(): return
 	# Observe releases even when a GUI control handles the event later.
 	observe_combat_input(event)
 	if weapon_selection.handle_event(event, weapon_controls_active(), presentation.local_actor):

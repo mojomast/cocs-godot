@@ -1,4 +1,5 @@
 extends CanvasLayer
+const SettingsAccess = preload("res://ui/settings_access.gd")
 
 # Passive native overlay: no input consumption, pointer capture, or authority writes.
 # A scene child binds after NativeSession._ready() has installed its client handlers.
@@ -130,7 +131,7 @@ func _notification(what: int) -> void:
 		refresh_visibility()
 
 func _input(event: InputEvent) -> void:
-	if LocalSettings.overlay_open(): return
+	if SettingsAccess.overlay_open(): return
 	if not event is InputEventKey or event.echo: return
 	if event.keycode == KEY_TAB or event.physical_keycode == KEY_TAB:
 		tab_held = event.pressed and active and session_allows_panel()

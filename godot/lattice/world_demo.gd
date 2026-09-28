@@ -1,4 +1,5 @@
 extends "res://world/session.gd"
+const WorldSettingsAccess = preload("res://ui/settings_access.gd")
 ## Optional scene: source infantry control with the nine-map native geometry.
 const WorldTransport = preload("res://lattice/world_transport.gd")
 const WorldHUD = preload("res://lattice/world_hud.gd")
@@ -213,7 +214,7 @@ func refresh_session_setup() -> void:
 	world_neutral()
 
 func _input(event: InputEvent) -> void:
-	if LocalSettings.overlay_open(): return
+	if WorldSettingsAccess.overlay_open(): return
 	if event is InputEventKey and event.pressed and not event.echo and is_instance_valid(world_commands):
 		if event.keycode == KEY_ENTER and phase == 12:
 			world_start_requested()

@@ -1,4 +1,5 @@
 extends Node3D
+const SettingsAccess = preload("res://ui/settings_access.gd")
 const Network = preload("res://net/client.gd")
 const World = preload("res://world/viewer.gd")
 const Fleet = preload("res://combined_arms/fleet.gd")
@@ -167,7 +168,7 @@ func aim_requested() -> bool:
 	return eligible() and not net.spectating and vehicle.is_empty() and not actor.get("reloading", false) and controls.engaged and controls.focused and get_window().has_focus() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and controls.ads
 
 func _input(event: InputEvent) -> void:
-	if LocalSettings.overlay_open():
+	if SettingsAccess.overlay_open():
 		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed: controls.accept(event, false)
 		return
 	var focused := get_window().has_focus() and controls.focused
@@ -175,7 +176,7 @@ func _input(event: InputEvent) -> void:
 	if controls.engaged and focused: Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event is InputEventMouseMotion and controls.engaged and eligible() and focused:
-		var gain := 0.003 * LocalSettings.sensitivity() * (0.85 if aim_requested() else 1.0)
+		var gain := 0.003 * SettingsAccess.sensitivity() * (0.85 if aim_requested() else 1.0)
 		var look := Motion.look(yaw-event.relative.x*gain, pitch-event.relative.y*gain)
 		yaw = look.x
 		pitch = look.y
