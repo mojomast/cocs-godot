@@ -75,7 +75,8 @@ func run() -> void:
 	service.last_send_ms = -1000
 	service.select_item(item)
 	var applied := raw.duplicate(true)
-	applied.gear.primary = "command-kit"
+	# Model the JSON parser's String key; dot insertion creates a StringName key.
+	applied.gear["primary"] = "command-kit"
 	service.receive(client, {"type":"progression", "profile":applied, "gear":applied.gear, "attachments":applied.attachments})
 	check(service.pending.is_empty() and service.action_status.contains("confirmed"), "only source echo confirms")
 	service.close_panel()
