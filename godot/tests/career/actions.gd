@@ -39,6 +39,7 @@ func run() -> void:
 		if label.text.begins_with("Heavy Barrel"): locked_button = row.get_child(row.get_child_count() - 1) as Button
 		if label.text.begins_with("Composite Plating"): armor_button = row.get_child(row.get_child_count() - 1) as Button
 	check(command_button != null and not command_button.disabled and locked_button != null and locked_button.disabled, "rendered unlocked choice actionable, locked choice disabled")
+	check(command_button != null and command_button.name == "Equip_gear-command-kit" and command_button.get_meta("catalog_kind") == "gear", "stable catalog action selector")
 	check(armor_button != null and not armor_button.disabled and armor_button.text.begins_with("UNEQUIP"), "equipped slot can be cleared in UI")
 	var stripped: Dictionary = Actions.request(service.profile, {"kind":"gear", "id":"plating", "slot":"armor", "level":3, "unlockId":"gear-plating"}, true)
 	check(stripped.get("gear") == {}, "clear preserves remaining complete loadout")

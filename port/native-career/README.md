@@ -8,6 +8,8 @@ be equipped here. There is no unlock purchase endpoint. Reticles are view-only:
 the source `GEAR` packet does not forward `crosshair` to `setGearOwned`.
 An equipped gear/mod slot can be cleared; an equipped finish sends explicit
 `null` to clear it. Other slots stay intact.
+Action buttons have stable node names `Equip_<unlockId>` and catalog ID/kind
+metadata for native journey selection, including level-one starter mods.
 
 Each selection sends complete gear and attachment maps (preserving the other
 slots) on the seated connection. `server/room.mjs:setGear` replies with a

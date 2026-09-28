@@ -254,6 +254,9 @@ func refresh() -> void:
 		if not spec.is_empty(): add_line(box, " · ".join(spec), 14)
 		if item.kind != "crosshair":
 			var button := Button.new()
+			button.name = "Equip_" + str(item.unlockId)
+			button.set_meta("catalog_id", item.id)
+			button.set_meta("catalog_kind", item.kind)
 			var equipped: bool = CareerProfile.item_state(profile, item) == "EQUIPPED"
 			button.text = "UNEQUIP · NEXT MATCH" if equipped else "EQUIP · NEXT MATCH"
 			button.custom_minimum_size.y = 44
