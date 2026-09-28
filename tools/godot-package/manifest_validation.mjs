@@ -442,7 +442,7 @@ function loadDerivative(repo, identity) {
 // may inspect) from the recorded port commit into a bounded temporary view, then
 // run the committed discover.mjs against it. This re-derives the closure from
 // committed bytes; an ambient/discover at HEAD is never used.
-function rederiveClosure(repo, identity, derivative) {
+export function rederiveClosure(repo, identity, derivative) {
   const temp = mkdtempSync(join(tmpdir(), 'cocs-closure-'));
   try {
     const listing = git(repo, ['ls-tree', '-r', '--name-only', identity.port_commit,
