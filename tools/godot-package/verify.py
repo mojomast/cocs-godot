@@ -34,6 +34,24 @@ def records(text, prefix):
     return [json.loads(line[len(prefix):]) for line in text.splitlines(keepends=True) if line.startswith(prefix) and line.endswith('\n')]
 
 
+VALIDATOR = ROOT / 'tools/godot-package/manifest_validation.mjs'
+
+
+def validate_artifact(package, repo, output, label):
+    """Run the one shared artifact validator; never forward an ambient derivative.
+
+    `COCS_SOURCE_DERIVATIVE` is stripped so source identity can only come from the
+    package manifest plus the git objects at the commits it records.
+    """
+    node = shutil.which('node') or 'node'
+    env = {key: value for key, value in os.environ.items() if key != 'COCS_SOURCE_DERIVATIVE'}
+    result = subprocess.run([node, str(VALIDATOR), '--package', str(package), '--repo', str(repo), '--json'],
+                            cwd=ROOT, env=env, capture_output=True, text=True, timeout=300)
+    (output / (label + '.json')).write_text(result.stdout + (result.stderr or ''))
+    require(result.returncode == 0, f'Artifact validation failed: {result.stdout.strip() or result.stderr.strip()}')
+    return json.loads(result.stdout)
+
+
 class X11:
     """Only the verifier uses Xlib; the artifact has no automation dependency."""
     def __init__(self, display):
@@ -167,12 +185,23 @@ class X11:
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--build-result', type=Path, required=True)
+    parser.add_argument('--build-result', type=Path, help='archive build-result.json; required for the play verification run')
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--package', type=Path, help='already-extracted Linux/Windows package directory: validate structure/identity only, no engine execution')
+    parser.add_argument('--repo', type=Path, help='checkout whose source lock and commits anchor identity (defaults to this repository)')
     parser.add_argument('--world-commands-capture', action='store_true', help='Send X11 C to the exported world and save a panel image for direct review')
     args = parser.parse_args()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
+    repo = (args.repo or ROOT).resolve()
+    if args.package is not None:
+        # Static structure/source-identity validation that also covers the Windows
+        # layout without running the engine. Actual Windows execution stays
+        # owner-run; see port/native-shell/package_verification.md.
+        validate_artifact(args.package.resolve(), repo, output, 'manifest-validation')
+        print('PACKAGE_ARTIFACT_OK', output, flush=True)
+        return
+    require(args.build_result is not None, '--build-result is required unless --package is given')
     build = json.loads(args.build_result.read_text())
     archive = Path(build['archive'])
     require(sha(archive) == build['archive_sha256'], 'Archive SHA mismatch')
@@ -201,14 +230,11 @@ def main():
     require(not any(p.is_symlink() for p in package.rglob('*')), 'Symlink shipped')
     require(sha(package / 'manifest.json') == build['manifest_sha256'], 'Manifest SHA mismatch')
     manifest = json.loads((package / 'manifest.json').read_text())
-    for name, checksum in manifest['files'].items():
-        require(sha(package / name) == checksum, f'File checksum mismatch: {name}')
-    require(set(manifest['port_adapter_sha256']) == {'port/native-horde/authority.mjs', 'port/native-horde/input-buffer.mjs'}, 'Unexpected production adapter inventory')
-    require(not set(manifest['source_runtime_sha256']) & set(manifest['port_adapter_sha256']), 'Source and port adapter inventories overlap')
-    for group in ['source_runtime_sha256', 'port_adapter_sha256']:
-        for name, checksum in manifest[group].items():
-            require(sha(package / 'runtime' / name) == checksum, f'Runtime inventory mismatch: {name}')
-    require({p.relative_to(package / 'runtime/port').as_posix() for p in (package / 'runtime/port').rglob('*') if p.is_file()} == {'native-horde/authority.mjs', 'native-horde/input-buffer.mjs'}, 'Test/observer adapter code shipped')
+    require(manifest.get('target') == 'linux', f"Unexpected package target: {manifest.get('target')}")
+    # One shared validator owns the exact byte inventory, the dynamic runtime
+    # closure and the manifest-anchored source identity. It replaces the older
+    # hardcoded Horde-adapter allowlist; the closure itself decides what ships.
+    validate_artifact(package, ROOT.resolve(), output, 'manifest-validation')
     for name in ['godot','godot4','git','npm']:
         require(shutil.which(name, path=env['PATH']) is None, f'Developer tool on play PATH: {name}')
     # No original checkout paths in any packaged file, including binary/PCK.
@@ -373,14 +399,11 @@ process.once('SIGTERM',async()=>{for(const socket of game.wss.clients)socket.ter
         with socket.socket() as connection:
             require(connection.connect_ex(('127.0.0.1', missing_port)) != 0, 'Spawn failure left server listening')
         require(not [p for p in fresh.glob('cocs-native-*') if p != package], 'Temporary launcher state survived')
-        # Final byte equality and file inventory, including the executable restored
-        # after the failure test; no hidden project/import cache may appear.
-        require({p.relative_to(package).as_posix() for p in package.rglob('*') if p.is_file()} == set(manifest['files']) | {'manifest.json'}, 'Play added package files')
-        for name, checksum in manifest['files'].items():
-            require(sha(package / name) == checksum, f'Play changed package bytes: {name}')
-        source_check = subprocess.run(['node', '--input-type=module', '-e', "import {verifySource} from './tools/godot-export/semantic.mjs'; import fs from 'node:fs'; verifySource(JSON.parse(fs.readFileSync('port/contracts/source-lock.json')));"], cwd=ROOT, capture_output=True, text=True, timeout=30)
-        require(source_check.returncode == 0, 'Locked source changed')
-        summary = {'passed':True, 'archive_sha256':build['archive_sha256'], 'manifest_sha256':build['manifest_sha256'], 'fresh_directory':str(fresh), 'play_cwd':str(unrelated), 'play_PATH':env['PATH'], 'no_git':True, 'no_editor_git_npm_on_PATH':True, 'no_package_symlinks':True, 'no_original_checkout_paths':True, 'locked_source_unchanged':True, 'package_bytes_unchanged':True, 'release_probe':records(probe.stdout, 'PACKAGE_INSPECT_OK ')[0], 'cases':results, 'invalid_arguments_rejected_before_server':True, 'spawn_failure_cleaned_up':True, 'xvfb_arguments':['-nolisten','tcp','-nolisten','unix'], 'test_audio':'private ALSA null sink', 'verification_inputs':{p:sha(ROOT / p) for p in ['tools/godot-package/verify.py','godot/tests/package_inspect.gd']}}
+        # Final byte equality, file inventory and manifest-anchored source identity
+        # after play, including the executable restored after the failure test; no
+        # hidden project/import cache may appear and no runtime byte may change.
+        validate_artifact(package, ROOT.resolve(), output, 'manifest-validation-final')
+        summary = {'passed':True, 'archive_sha256':build['archive_sha256'], 'manifest_sha256':build['manifest_sha256'], 'fresh_directory':str(fresh), 'play_cwd':str(unrelated), 'play_PATH':env['PATH'], 'no_git':True, 'no_editor_git_npm_on_PATH':True, 'no_package_symlinks':True, 'no_original_checkout_paths':True, 'locked_source_unchanged':True, 'package_bytes_unchanged':True, 'release_probe':records(probe.stdout, 'PACKAGE_INSPECT_OK ')[0], 'cases':results, 'invalid_arguments_rejected_before_server':True, 'spawn_failure_cleaned_up':True, 'xvfb_arguments':['-nolisten','tcp','-nolisten','unix'], 'test_audio':'private ALSA null sink', 'verification_inputs':{p:sha(ROOT / p) for p in ['tools/godot-package/verify.py','tools/godot-package/manifest_validation.mjs','godot/tests/package_inspect.gd']}}
         summary['horde_product'] = horde_results
         summary['verification_inputs'].update({p:sha(ROOT / p) for p in ['tools/godot-package/horde_verify.py', 'tools/godot-package/horde_observer.gd', 'tools/godot-package/horde_authority.mjs']})
         (output / 'verification.json').write_text(json.dumps(summary, indent=2) + '\n')

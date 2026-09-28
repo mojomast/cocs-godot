@@ -10,6 +10,7 @@ import {promisify} from 'node:util';
 import {join, resolve} from 'node:path';
 import {tmpdir} from 'node:os';
 import {createConnection} from 'node:net';
+import {REPO_ROOT, validateArtifact} from './manifest_validation.mjs';
 const exec = promisify(execFile);
 const root = resolve(process.argv[2]);
 const output = resolve(process.argv[3]);
@@ -45,19 +46,26 @@ async function runManager(args, name, timeout) {
 try {
   const manifest = JSON.parse(await readFile(join(root,'manifest.json')));
   assert.equal(manifest.target, 'linux');
-  assert.equal(manifest.operator_models, 'source-operators');
-  assert.deepEqual(manifest.staged_native_overrides, {});
+  if (manifest.operator_models !== undefined) assert.equal(manifest.operator_models, 'source-operators');
+  if (manifest.staged_native_overrides !== undefined) assert.deepEqual(manifest.staged_native_overrides, {});
+  // One shared validator binds every packaged byte, the runtime closure and the
+  // source identity to the manifest's recorded commits; see
+  // port/native-shell/package_verification.md.
+  const artifact = validateArtifact({packageDir: root, repoRoot: REPO_ROOT, manifest});
+  assert.equal(artifact.status, 'passed');
   const [minimum] = /\d+\.\d+\.\d+/.exec(manifest.play_node.replace('>=', ''));
   const current = process.version.replace(/^v/, '').split('.').map(Number);
   const required = minimum.split('.').map(Number);
   assert.ok(current[0] > required[0] || (current[0] === required[0] && (current[1] > required[1]
     || (current[1] === required[1] && current[2] >= required[2]))), `Node >=${minimum} required, running ${process.version}`);
-  for (const [name, expected] of Object.entries(manifest.files)) {
-    assert.equal(sha(await readFile(join(root,name))), expected, name);
-  }
   report.manifest_sha256 = sha(await readFile(join(root,'manifest.json')));
   report.port_commit = manifest.port_commit;
-  report.files_verified = Object.keys(manifest.files).length;
+  report.source_commit = manifest.source_commit;
+  report.derivative_commit = artifact.derivative_commit;
+  report.manifest_validation = {target:artifact.target, files:artifact.files, source_modules:artifact.source_modules,
+    adapters:artifact.adapters, data_files:artifact.data_files, identity_data_files:artifact.identity_data_files,
+    horde_data_files:artifact.horde_data_files, ws_files:artifact.ws_files};
+  report.files_verified = artifact.files;
   assert.equal((await exec(join(root,'cocs.x86_64'), ['--headless','--version'])).stdout.trim(), manifest.godot_version);
   // The reviewed Linux launchers are part of the release surface.
   for (const [name, marker] of [['Domination.sh',/--experience=identity-zones/],['Cheats.sh',/COCS_DEBUG=1/]]) {

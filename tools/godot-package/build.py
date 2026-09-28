@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import tarfile
@@ -131,6 +132,9 @@ def main():
     write_json(logs / "server-closure.json", closure)
     arena_data = closure.get("dataFiles", [])
     identity_data = closure.get("identityDataFiles", [])
+    # Optional discovery family introduced by the Cinderwake lane. Absent on the
+    # baseline discover.mjs, so an empty list is valid there.
+    horde_data = closure.get("hordeDataFiles", [])
     allowed_arena_data = {f"godot/native_arenas/generated/{name}.json" for name in ["prism-foundry", "aurora-basin", "cinder-array"]}
     allowed_identity_data = {f"godot/identity_maps/generated/{name}.json" for name in ["lacuna-court", "vermilion-fold", "nacre-engine"]}
     for label, declared, allowed in [("native-arena", arena_data, allowed_arena_data),
@@ -138,6 +142,12 @@ def main():
         if (not isinstance(declared, list) or any(not isinstance(p, str) or p not in allowed for p in declared)
                 or len(declared) != len(set(declared))):
             raise RuntimeError(f"Unexpected {label} data closure")
+    # Horde-map data stays scoped to the reviewed generator directory; the exact
+    # files come from the dynamic closure, never a hardcoded name list.
+    horde_data_pattern = re.compile(r"^godot/horde_maps/generated/[a-z0-9-]+\.json$")
+    if (not isinstance(horde_data, list) or any(not isinstance(p, str) or not horde_data_pattern.fullmatch(p) for p in horde_data)
+            or len(horde_data) != len(set(horde_data))):
+        raise RuntimeError("Unexpected horde-map data closure")
     if any(p.startswith("port/native-arenas/") for p in closure["adapterModules"]):
         if set(arena_data) != allowed_arena_data or set(identity_data) != allowed_identity_data:
             raise RuntimeError("Native deathmatch adapter requires all six committed arena data files")
@@ -145,9 +155,17 @@ def main():
     input_paths.update(closure["adapterModules"])
     input_paths.update(arena_data)
     input_paths.update(identity_data)
+    input_paths.update(horde_data)
     input_paths.update(["package.json", "package-lock.json", "port/contracts/source-lock.json", "port/contracts/map-selection.json", "tools/godot-export/semantic.mjs"])
     if derivative:
         input_paths.add("port/contracts/lattice-catalog-derivative.json")
+    # The Career catalog and its generator arrive with a later lane; include them
+    # as build inputs only when present so the baseline build never fails first.
+    career_catalog = "godot/career/catalog.json"
+    if (ROOT / career_catalog).is_file():
+        input_paths.add(career_catalog)
+    if (ROOT / "tools/godot-export/career_catalog.mjs").is_file():
+        input_paths.add("tools/godot-export/career_catalog.mjs")
     native_files = [p for p in git("ls-files", "godot").splitlines() if not p.startswith(("godot/tests/", "godot/content/", "godot/.godot/")) and p not in ["godot/.gitignore", "godot/export_presets.cfg"]]
     input_paths.update(native_files)
     input_paths.update(p.relative_to(ROOT).as_posix() for p in (ROOT / "tools/godot-package").glob("*") if p.is_file())
@@ -161,9 +179,12 @@ def main():
         expected = subprocess.check_output(["git", "show", f"{revision}:{p}"], cwd=ROOT)
         if hashlib.sha256(expected).hexdigest() != inputs[p]:
             raise RuntimeError(f"Runtime source differs from lock: {p}")
-    # Port-owned adapters have separate provenance, never source-lock exemptions.
-    # Require committed reviewed bytes; record their exact hashes independently.
-    for p in [*closure["adapterModules"], *arena_data, *identity_data]:
+    # Port-owned adapters and data have separate provenance, never source-lock
+    # exemptions. Require committed reviewed bytes; record exact hashes.
+    port_owned = [*closure["adapterModules"], *arena_data, *identity_data, *horde_data]
+    if career_catalog in input_paths:
+        port_owned.append(career_catalog)
+    for p in port_owned:
         expected = subprocess.check_output(["git", "show", f"HEAD:{p}"], cwd=ROOT)
         if hashlib.sha256(expected).hexdigest() != inputs[p]:
             raise RuntimeError(f"Uncommitted runtime adapter/data: {p}")
@@ -220,7 +241,7 @@ advanced_options=false
 dedicated_server=false
 custom_features="private_local_prototype"
 export_filter="all_resources"
-include_filter="content/generated/*.json,content/generated/maps/*/*.json,moth/generated/*.json,first_person/*.json,first_person/generated/*.json,native_arenas/generated/*.json,identity_maps/generated/*.json,ui/*.json"
+include_filter="content/generated/*.json,content/generated/maps/*/*.json,moth/generated/*.json,first_person/*.json,first_person/generated/*.json,native_arenas/generated/*.json,identity_maps/generated/*.json,horde_maps/generated/*.json,career/*.json,ui/*.json"
 exclude_filter="tests/*,content/probes/*"
 export_path=""
 script_export_mode=2
@@ -248,7 +269,7 @@ ssh_remote_deploy/enabled=false
         raise RuntimeError("Expected separate PCK")
     if not windows and run([package / executable, "--version"], env=env) != EXACT:
         raise RuntimeError("Exported runtime exact version mismatch")
-    for p in [*closure["modules"], *closure["adapterModules"], *arena_data, *identity_data]:
+    for p in [*closure["modules"], *closure["adapterModules"], *arena_data, *identity_data, *horde_data]:
         copy(ROOT / p, package / "runtime" / p)
 
     # Fetch only the already-locked ordinary ws dependency. No npm/install scripts.
@@ -273,10 +294,9 @@ ssh_remote_deploy/enabled=false
             target.write_bytes(archive.extractfile(member).read())
     if not (package / "runtime/node_modules/ws/LICENSE").is_file():
         raise RuntimeError("ws license missing")
-    copy(ROOT / "tools/godot-package/run.mjs", package / "run.mjs")
-    copy(ROOT / "tools/godot-package/options.mjs", package / "options.mjs")
-    copy(ROOT / "tools/godot-package/settings_path.mjs", package / "settings_path.mjs")
-    copy(ROOT / "tools/godot-package/endpoint.mjs", package / "endpoint.mjs")
+    launcher_helpers = ["run.mjs", "options.mjs", "settings_path.mjs", "endpoint.mjs"]
+    for name in launcher_helpers:
+        copy(ROOT / "tools/godot-package" / name, package / name)
     copy(ROOT / "port/contracts/map-selection.json", package / "catalog.json")
     copy(ROOT / ("port/native-windows-package/PLAY.md" if windows else "port/native-linux-package/PLAY.md"), package / "README.md")
     notices = package / "licenses"
@@ -309,6 +329,14 @@ ssh_remote_deploy/enabled=false
             path = package / name
             path.write_bytes((ROOT / "tools/godot-package" / name).read_bytes())
             path.chmod(0o755)
+    # The reviewed launcher surface, recorded in the manifest and asserted here.
+    # `settings_path.mjs` is the shared menu/route preference-path helper; a
+    # missing entry point must fail the build, never ship a partial surface.
+    launchers = [*launcher_helpers, "catalog.json", "README.md",
+                 *(["Play.cmd", "Demo Menu.cmd", "Operator Preview.cmd", "Graphics Showcase.cmd", "Native Deathmatch.cmd", "Domination.cmd", "Cheats.cmd"] if windows else ["Domination.sh", "Cheats.sh"])]
+    for name in launchers:
+        if not (package / name).is_file():
+            raise RuntimeError(f"Launcher surface file missing: {name}")
     for name in ["LICENSE.txt", "COPYRIGHT.txt"]:
         download(f"https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/{name}", notices / ("Godot-" + name))
     resources = {"content/generated/" + k:v for k,v in tree(generated).items()}
@@ -329,8 +357,9 @@ ssh_remote_deploy/enabled=false
         "godot_export":"release template; assertions disabled; no test fixtures in production PCK",
         "build_node":run(["node", "--version"]), "play_node":f"{NODE_VERSION} (bundled)" if windows else ">=22.13.0 (external prerequisite)", "bundled_node":bundled_node,
         "maps":lock["map_ids"], "native_arenas":[Path(p).stem for p in arena_data],
-        "identity_arenas":[Path(p).stem for p in identity_data], "server_closure":closure,
-        "server_data_reads":"Optional history/progression stores are null. Locked map modules and explicitly hashed native-arena plus identity-map JSON are included in the runtime closure.",
+        "identity_arenas":[Path(p).stem for p in identity_data], "horde_maps":[Path(p).stem for p in horde_data],
+        "career_catalog_sha256":inputs.get(career_catalog), "server_closure":closure,
+        "server_data_reads":"Optional history/progression stores are null. Locked map modules and explicitly hashed native-arena, identity-map and horde-map JSON are included in the runtime closure.",
         "ws":{"version":ws["version"], "integrity":ws["integrity"], "resolved":ws["resolved"], "license":"MIT; retained in runtime/node_modules/ws/LICENSE; optional native accelerators omitted"},
         "toolchain":{"checksums_source":BASE + "SHA512-SUMS.txt", "archives":{v[0]:v[1] for v in ARCHIVES.values()}, "editor_sha256":digest(editor), "release_template_sha256":digest(templates / template_name)},
         "inputs":inputs, "input_sha256":tree_hash(inputs), "generated_resources":resources,
@@ -338,7 +367,9 @@ ssh_remote_deploy/enabled=false
         "port_adapter_sha256":{p:inputs[p] for p in closure["adapterModules"]},
         "native_arena_data_sha256":{p:inputs[p] for p in arena_data},
         "identity_arena_data_sha256":{p:inputs[p] for p in identity_data},
+        "horde_map_data_sha256":{p:inputs[p] for p in horde_data},
         "generated_resources_sha256":tree_hash(resources), "staged_export_preset":preset,
+        "launchers":launchers,
         "files":tree(package),
     }
     write_json(package / "manifest.json", manifest)
