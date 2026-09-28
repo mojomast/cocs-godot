@@ -324,7 +324,7 @@ test('an extra bundled dependency fails', () => withFixture({}, fixture => {
 test('a missing packaged file fails', () => withFixture({}, fixture => {
   unlinkSync(join(fixture.packageDir, 'run.mjs'));
   refreshInventory(fixture);
-  fails(() => validateArtifact({packageDir: fixture.packageDir, repoRoot: fixture.repo}), /Required package entry missing|Required package file missing/);
+  fails(() => validateArtifact({packageDir: fixture.packageDir, repoRoot: fixture.repo}), /Manifest launcher is not in the files inventory: run\.mjs/);
 }));
 
 test('a shipped test module fails even when the closure claims it', () => withFixture({extraTestModule: 'server/evil.test.mjs'}, fixture => {

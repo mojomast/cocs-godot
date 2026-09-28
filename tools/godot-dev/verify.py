@@ -71,6 +71,7 @@ commands = [
     ("lattice-req-catalog-check", ["node", "port/tools/native_lattice_req_catalog/export.mjs", "--check"]),
     ("semantic-export", ["node", "tools/godot-export/semantic.mjs"]),
     ("source-inventory", ["node", "--test", "tools/godot-export/source-inventory.test.mjs"]),
+    ("package-manifest-contracts", ["node", "--test", "tools/godot-package/manifest_validation.test.mjs"]),
     ("career-catalog-check", ["node", "tools/godot-export/career_catalog.mjs", "--check"]),
     ("career-source-contracts", ["node", "--test", "--test-concurrency=1", "port/native-career/catalog.test.mjs", "port/native-career/wire.test.mjs"]),
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),
