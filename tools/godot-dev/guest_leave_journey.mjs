@@ -17,9 +17,9 @@ assert.ok(binary && process.env.DISPLAY,'Set pinned GODOT_BIN and run with a pri
 assert.equal(execFileSync(binary,['--version'],{encoding:'utf8',timeout:10000}).trim(),lock.godot_version);
 mkdirSync('.port-runtime/guest-leave',{recursive:true});
 const output=mkdtempSync(resolve('.port-runtime/guest-leave/attempt-'));
-const wrapper=join(output,'godot-wrapper.cjs');
+const wrapper=join(output,'godot-wrapper.mjs');
 writeFileSync(wrapper,`#!${process.execPath}
-const {spawn}=require('node:child_process');
+import {spawn} from 'node:child_process';
 let args=process.argv.slice(2);
 if(!args.includes('--version')){
  const scene=args.find(a=>a.startsWith('res://')&&a.endsWith('.tscn'));
