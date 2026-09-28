@@ -9,13 +9,13 @@
     },
     {
       "id": "native",
-      "label": "Native",
-      "description": "Local arena modes"
+      "label": "Bot Matches",
+      "description": "Local matches against bots"
     },
     {
       "id": "modes",
-      "label": "Modes",
-      "description": "Objective and vehicle modes"
+      "label": "Activities",
+      "description": "Objective, vehicle and LATTICE activities"
     },
     {
       "id": "lab",
@@ -146,7 +146,45 @@
           "label": "Local cheats (F3)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "ember-crucible",
+            "meridian-exchange",
+            "verdant-reliquary"
+          ],
+          "modes_by_map": {
+            "ember-crucible": [
+              "deathmatch",
+              "instagib",
+              "rockets",
+              "teamdeathmatch"
+            ],
+            "meridian-exchange": [
+              "deathmatch",
+              "instagib",
+              "rockets",
+              "teamdeathmatch"
+            ],
+            "verdant-reliquary": [
+              "deathmatch",
+              "instagib",
+              "rockets",
+              "teamdeathmatch"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "meridian-exchange",
+          "mode": "deathmatch"
+        }
+      }
     },
     {
       "id": "lobby",
@@ -202,7 +240,45 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": true
+        },
+        "scope": {
+          "maps": [
+            "ember-crucible",
+            "meridian-exchange",
+            "verdant-reliquary"
+          ],
+          "modes_by_map": {
+            "ember-crucible": [
+              "deathmatch",
+              "instagib",
+              "rockets",
+              "teamdeathmatch"
+            ],
+            "meridian-exchange": [
+              "deathmatch",
+              "instagib",
+              "rockets",
+              "teamdeathmatch"
+            ],
+            "verdant-reliquary": [
+              "deathmatch",
+              "instagib",
+              "rockets",
+              "teamdeathmatch"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "meridian-exchange",
+          "mode": "deathmatch"
+        }
+      }
     },
     {
       "id": "native-dm",
@@ -259,7 +335,48 @@
           "label": "Local cheats (F3)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "aurora-basin",
+            "cinder-array",
+            "lacuna-court",
+            "nacre-engine",
+            "prism-foundry",
+            "vermilion-fold"
+          ],
+          "modes_by_map": {
+            "aurora-basin": [
+              "deathmatch"
+            ],
+            "cinder-array": [
+              "deathmatch"
+            ],
+            "lacuna-court": [
+              "deathmatch"
+            ],
+            "nacre-engine": [
+              "deathmatch"
+            ],
+            "prism-foundry": [
+              "deathmatch"
+            ],
+            "vermilion-fold": [
+              "deathmatch"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "prism-foundry",
+          "mode": "deathmatch"
+        }
+      }
     },
     {
       "id": "identity-zones",
@@ -311,7 +428,28 @@
           "label": "Local cheats (F3)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "vermilion-fold"
+          ],
+          "modes_by_map": {
+            "vermilion-fold": [
+              "domination"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "vermilion-fold",
+          "mode": "domination"
+        }
+      }
     },
     {
       "id": "horde",
@@ -389,7 +527,40 @@
           "label": "Local cheats (F3)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "ember-crucible",
+            "meridian-exchange",
+            "nacre-engine",
+            "verdant-reliquary"
+          ],
+          "modes_by_map": {
+            "ember-crucible": [
+              "horde"
+            ],
+            "meridian-exchange": [
+              "horde"
+            ],
+            "nacre-engine": [
+              "horde"
+            ],
+            "verdant-reliquary": [
+              "horde"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "meridian-exchange",
+          "mode": "horde"
+        }
+      }
     },
     {
       "id": "arms-race",
@@ -419,7 +590,36 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "ember-crucible",
+            "meridian-exchange",
+            "verdant-reliquary"
+          ],
+          "modes_by_map": {
+            "ember-crucible": [
+              "armsrace"
+            ],
+            "meridian-exchange": [
+              "armsrace"
+            ],
+            "verdant-reliquary": [
+              "armsrace"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "meridian-exchange",
+          "mode": "armsrace"
+        }
+      }
     },
     {
       "id": "zones",
@@ -486,7 +686,47 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "ember-crucible",
+            "meridian-exchange",
+            "sunscar-convoy",
+            "tidal-citadel",
+            "verdant-reliquary"
+          ],
+          "modes_by_map": {
+            "ember-crucible": [
+              "domination",
+              "koth"
+            ],
+            "meridian-exchange": [
+              "domination",
+              "koth"
+            ],
+            "sunscar-convoy": [
+              "domination"
+            ],
+            "tidal-citadel": [
+              "domination"
+            ],
+            "verdant-reliquary": [
+              "domination",
+              "koth"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "meridian-exchange",
+          "mode": "domination"
+        }
+      }
     },
     {
       "id": "objectives",
@@ -529,7 +769,32 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "sunscar-convoy",
+            "tidal-citadel"
+          ],
+          "modes_by_map": {
+            "sunscar-convoy": [
+              "payload"
+            ],
+            "tidal-citadel": [
+              "ctf"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "tidal-citadel",
+          "mode": "ctf"
+        }
+      }
     },
     {
       "id": "combined-arms",
@@ -547,7 +812,28 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "sunscar-convoy"
+          ],
+          "modes_by_map": {
+            "sunscar-convoy": [
+              "combined-arms"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "sunscar-convoy",
+          "mode": "combined-arms"
+        }
+      }
     },
     {
       "id": "sports",
@@ -612,7 +898,32 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "aurora-stadium",
+            "ion-speedway"
+          ],
+          "modes_by_map": {
+            "aurora-stadium": [
+              "puma-soccer"
+            ],
+            "ion-speedway": [
+              "puma-race"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "ion-speedway",
+          "mode": "puma-race"
+        }
+      }
     },
     {
       "id": "lattice",
@@ -669,7 +980,34 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": true
+        },
+        "scope": {
+          "maps": [
+            "asterion-relay",
+            "monsoon-foundry"
+          ],
+          "modes_by_map": {
+            "asterion-relay": [
+              "cocs",
+              "cocs-coop"
+            ],
+            "monsoon-foundry": [
+              "cocs",
+              "cocs-coop"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "asterion-relay",
+          "mode": "cocs"
+        }
+      }
     },
     {
       "id": "lattice-world",
@@ -726,7 +1064,34 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": true
+        },
+        "scope": {
+          "maps": [
+            "asterion-relay",
+            "monsoon-foundry"
+          ],
+          "modes_by_map": {
+            "asterion-relay": [
+              "cocs",
+              "cocs-coop"
+            ],
+            "monsoon-foundry": [
+              "cocs",
+              "cocs-coop"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "asterion-relay",
+          "mode": "cocs"
+        }
+      }
     },
     {
       "id": "viewer",
@@ -744,7 +1109,22 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": true,
+          "local": false,
+          "external": false
+        },
+        "scope": {
+          "maps": [],
+          "modes_by_map": {}
+        },
+        "defaults": {
+          "map": null,
+          "mode": null
+        }
+      }
     },
     {
       "id": "operator-preview",
@@ -762,7 +1142,22 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": true,
+          "local": false,
+          "external": false
+        },
+        "scope": {
+          "maps": [],
+          "modes_by_map": {}
+        },
+        "defaults": {
+          "map": null,
+          "mode": null
+        }
+      }
     },
     {
       "id": "showcase",
@@ -780,7 +1175,22 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": true,
+          "local": false,
+          "external": false
+        },
+        "scope": {
+          "maps": [],
+          "modes_by_map": {}
+        },
+        "defaults": {
+          "map": null,
+          "mode": null
+        }
+      }
     },
     {
       "id": "aurora-basin",
@@ -798,7 +1208,22 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": true,
+          "local": false,
+          "external": false
+        },
+        "scope": {
+          "maps": [],
+          "modes_by_map": {}
+        },
+        "defaults": {
+          "map": null,
+          "mode": null
+        }
+      }
     },
     {
       "id": "cinder-array",
@@ -816,7 +1241,22 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": true,
+          "local": false,
+          "external": false
+        },
+        "scope": {
+          "maps": [],
+          "modes_by_map": {}
+        },
+        "defaults": {
+          "map": null,
+          "mode": null
+        }
+      }
     },
     {
       "id": "particle-lab",
@@ -834,7 +1274,22 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": true,
+          "local": false,
+          "external": false
+        },
+        "scope": {
+          "maps": [],
+          "modes_by_map": {}
+        },
+        "defaults": {
+          "map": null,
+          "mode": null
+        }
+      }
     },
     {
       "id": "shader-lab",
@@ -852,7 +1307,22 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": true,
+          "local": false,
+          "external": false
+        },
+        "scope": {
+          "maps": [],
+          "modes_by_map": {}
+        },
+        "defaults": {
+          "map": null,
+          "mode": null
+        }
+      }
     },
     {
       "id": "cheats-native-dm",
@@ -904,7 +1374,48 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "aurora-basin",
+            "cinder-array",
+            "lacuna-court",
+            "nacre-engine",
+            "prism-foundry",
+            "vermilion-fold"
+          ],
+          "modes_by_map": {
+            "aurora-basin": [
+              "deathmatch"
+            ],
+            "cinder-array": [
+              "deathmatch"
+            ],
+            "lacuna-court": [
+              "deathmatch"
+            ],
+            "nacre-engine": [
+              "deathmatch"
+            ],
+            "prism-foundry": [
+              "deathmatch"
+            ],
+            "vermilion-fold": [
+              "deathmatch"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "prism-foundry",
+          "mode": "deathmatch"
+        }
+      }
     },
     {
       "id": "cheats-identity-zones",
@@ -951,7 +1462,28 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "vermilion-fold"
+          ],
+          "modes_by_map": {
+            "vermilion-fold": [
+              "domination"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "vermilion-fold",
+          "mode": "domination"
+        }
+      }
     },
     {
       "id": "cheats-horde",
@@ -1024,7 +1556,40 @@
           "label": "Diagnostics overlay (F11)",
           "default": false
         }
-      ]
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "ember-crucible",
+            "meridian-exchange",
+            "nacre-engine",
+            "verdant-reliquary"
+          ],
+          "modes_by_map": {
+            "ember-crucible": [
+              "horde"
+            ],
+            "meridian-exchange": [
+              "horde"
+            ],
+            "nacre-engine": [
+              "horde"
+            ],
+            "verdant-reliquary": [
+              "horde"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "meridian-exchange",
+          "mode": "horde"
+        }
+      }
     }
   ]
 }

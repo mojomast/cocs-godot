@@ -130,6 +130,7 @@ func _notification(what: int) -> void:
 		refresh_visibility()
 
 func _input(event: InputEvent) -> void:
+	if LocalSettings.overlay_open(): return
 	if not event is InputEventKey or event.echo: return
 	if event.keycode == KEY_TAB or event.physical_keycode == KEY_TAB:
 		tab_held = event.pressed and active and session_allows_panel()

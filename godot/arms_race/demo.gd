@@ -85,6 +85,7 @@ func release_pointer() -> void:
 	super.release_pointer()
 
 func _input(event: InputEvent) -> void:
+	if LocalSettings.overlay_open(): return
 	fresh.observe(event)
 	observe_combat_input(event)
 	# Source pins the weapon. Never queue a native selection request.

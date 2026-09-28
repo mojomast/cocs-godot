@@ -8,6 +8,7 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 [autoload]
 
 Diagnostics="*res://debug/diagnostics.gd"
+LocalSettings="*res://ui/local_settings.gd"
 
 [display]
 window/size/viewport_width=1280

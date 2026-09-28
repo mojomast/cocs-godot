@@ -16,6 +16,8 @@ var world_label := Label.new()
 var world_commands: Control
 var world_wait_release := false
 var world_panel: PanelContainer
+## Modal deck/session surfaces render above the in-match combat diagnostics.
+var modal_layer: CanvasLayer
 var world_error := ""
 var world_options: Dictionary = {}
 var session_flow := SessionFlow.new()
@@ -62,11 +64,11 @@ func _ready() -> void:
 	tactical_hud = WorldTacticalHUD.new()
 	layer.add_child(tactical_hud)
 	world_commands = WorldCommands.new()
-	layer.add_child(world_commands)
+	world_modal_layer().add_child(world_commands)
 	world_commands.world_bind(self)
 	world_commands.telemetry = world_telemetry
 	world_commands.close_requested.connect(world_close_commands)
-	layer.add_child(session_panel)
+	world_modal_layer().add_child(session_panel)
 	session_panel.start_requested.connect(world_start_requested)
 	session_panel.restart_requested.connect(world_restart_requested)
 	session_panel.close_requested.connect(func() -> void:
@@ -132,6 +134,18 @@ func _ready() -> void:
 	var asset_layer := preload("res://lattice_assets/world_layer.gd").new()
 	add_child(asset_layer)
 	asset_layer.attach(self)
+
+## Render visibility seam: the in-match effect-quality diagnostics (CanvasLayer 5)
+## and the benchmark presentation (CanvasLayer 7) both draw their detailed text
+## near the top-left, where it can overlap the command-deck header. Modal deck and
+## session overlays therefore own a higher layer; ordinary in-world guidance
+## stays on the base layer and is unchanged.
+func world_modal_layer() -> CanvasLayer:
+	if not is_instance_valid(modal_layer):
+		modal_layer = CanvasLayer.new()
+		modal_layer.layer = 9
+		add_child(modal_layer)
+	return modal_layer
 
 func controls_released() -> bool:
 	for key: int in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_SPACE, KEY_R, KEY_SHIFT, KEY_CTRL, KEY_E, KEY_F, KEY_C, KEY_ESCAPE, KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9]:
@@ -199,6 +213,7 @@ func refresh_session_setup() -> void:
 	world_neutral()
 
 func _input(event: InputEvent) -> void:
+	if LocalSettings.overlay_open(): return
 	if event is InputEventKey and event.pressed and not event.echo and is_instance_valid(world_commands):
 		if event.keycode == KEY_ENTER and phase == 12:
 			world_start_requested()

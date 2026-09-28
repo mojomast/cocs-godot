@@ -493,6 +493,7 @@ func controls_released() -> bool:
 	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
 
 func _input(event: InputEvent) -> void:
+	if LocalSettings.overlay_open(): return
 	if event is InputEventKey and event.pressed and not event.echo:
 		var index := intercept_offer_key(key_code(event))
 		if index > 0:

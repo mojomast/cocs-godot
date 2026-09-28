@@ -13,13 +13,64 @@ import {readFileSync, writeFileSync, mkdirSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {dirname, resolve} from 'node:path';
 import assert from 'node:assert/strict';
-import {EXPERIENCES, NATIVE_EXPERIENCES, NATIVE_ARENA_MAPS} from './options.mjs';
+import {options, EXPERIENCES, NATIVE_EXPERIENCES, NATIVE_ARENA_MAPS} from './options.mjs';
 import {CATEGORIES, MAP_NAMES, ROUTES} from './routes_meta.mjs';
+import {candidateMaps, candidateModes, capabilityOf, capabilityShapeErrors} from './route_capabilities.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const catalog = JSON.parse(readFileSync(
   new URL('../../port/contracts/map-selection.json', import.meta.url), 'utf8'));
 const defaultOut = fileURLToPath(new URL('../../godot/ui/routes.json', import.meta.url));
+
+// Capability facts are derived once per experience by probing the authoritative
+// options() parser, then reused by the cheats variant so the generated registry
+// has a single owner. Maps/modes are candidate inputs only; membership is
+// observed from actual plans (see route_capabilities.mjs).
+const CAPABILITY_CANDIDATES = {
+  maps: candidateMaps(catalog, NATIVE_ARENA_MAPS),
+  modes: candidateModes(EXPERIENCES),
+};
+const capabilityByExperience = new Map();
+const capabilityFor = experience => {
+  if (!capabilityByExperience.has(experience)) {
+    capabilityByExperience.set(experience,
+      capabilityOf(options, catalog, [`--experience=${experience}`], CAPABILITY_CANDIDATES));
+  }
+  return capabilityByExperience.get(experience);
+};
+
+// The menu's map/mode choices are table-derived while the capability is
+// parser-derived: tie them together so a new choice cannot ship a capability the
+// parser rejects, or hide a choice the parser already accepts.
+const assertCapabilityMatchesParams = (routeId, params, capability) => {
+  const shapeErrors = capabilityShapeErrors(capability, routeId);
+  assert.equal(shapeErrors.length, 0, shapeErrors.join('; '));
+  const mapParam = params.find(param => param.key === 'map');
+  const modeParam = params.find(param => param.key === 'mode');
+  const scope = capability.scope;
+  if (mapParam) {
+    assert.ok(Array.isArray(mapParam.values), `${routeId}: map param without values`);
+    assert.deepEqual([...scope.maps].sort(), [...mapParam.values].sort(),
+      `${routeId}: capability maps differ from the menu map choices`);
+    assert.equal(capability.defaults.map, mapParam.default,
+      `${routeId}: parser map default differs from the menu default`);
+  }
+  if (modeParam?.values_by_map) {
+    assert.deepEqual(Object.keys(scope.modes_by_map).sort(),
+      Object.keys(modeParam.values_by_map).sort(),
+      `${routeId}: capability per-map modes differ from the menu mode choices`);
+    for (const [map, modes] of Object.entries(modeParam.values_by_map)) {
+      assert.deepEqual([...(scope.modes_by_map[map] ?? [])].sort(), [...modes].sort(),
+        `${routeId}/${map}: capability modes differ from the menu mode choices`);
+    }
+    assert.equal(capability.defaults.mode, modeParam.default,
+      `${routeId}: parser mode default differs from the menu default`);
+  } else if (Array.isArray(modeParam?.values)) {
+    const union = [...new Set(Object.values(scope.modes_by_map).flat())].sort();
+    assert.deepEqual(union, [...modeParam.values].sort(),
+      `${routeId}: capability modes differ from the menu mode choices`);
+  }
+};
 
 // Options() experiences outside the two tables (special cases in options.mjs).
 const SPECIAL_EXPERIENCES = ['native-dm', 'identity-zones', 'viewer', 'operator-preview'];
@@ -143,9 +194,22 @@ const buildRegistry = () => {
       assert.equal(modeParam.default, modeParam.values_by_map[mapDefault][0],
         `${route.id}: default mode must be values_by_map[default map][0]`);
     }
-    // Stable key order: id, category, label, description, flags, params.
+    // Capability facts come from actual parser plans; params must agree.
+    const capability = capabilityFor(experience);
+    assertCapabilityMatchesParams(route.id, params, capability);
+    // Honesty guard: player copy must not claim authority the generated facts
+    // deny, and must not deny an authority the route owns.
+    if (capability.authority.offline) {
+      assert.ok(!/owned|loopback|local authority/i.test(route.description),
+        `${route.id}: offline route claims an authority it does not own`);
+    } else {
+      assert.ok(!/no authority/i.test(route.description),
+        `${route.id}: route with authority claims "no authority"`);
+    }
+    // Stable key order: id, category, label, description, flags, params,
+    // toggles, capability.
     return {id: route.id, category: route.category, label: route.label,
-      description: route.description, flags: flagsOf(route.id), params, toggles};
+      description: route.description, flags: flagsOf(route.id), params, toggles, capability};
   });
 
   // Maps block: catalog names first (catalog order), then the native arenas

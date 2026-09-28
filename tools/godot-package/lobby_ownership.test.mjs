@@ -29,12 +29,13 @@ for (const kind of ['package', 'dev']) {
         await copy('../../port/contracts/map-selection.json','catalog.json');
         let script;
         if (kind === 'package') {
-          for (const name of ['run.mjs','options.mjs','endpoint.mjs']) await copy(name,name);
+          for (const name of ['run.mjs','options.mjs','endpoint.mjs','settings_path.mjs']) await copy(name,name);
           await put('runtime/server/game-server.mjs',server);
           script = join(root,'run.mjs');
         } else {
           for (const name of ['launch.mjs','launch_options.mjs']) await copy('../godot-dev/'+name,'tools/godot-dev/'+name);
           await copy('endpoint.mjs','tools/godot-package/endpoint.mjs');
+          await copy('settings_path.mjs','tools/godot-package/settings_path.mjs');
           await copy('../../port/contracts/map-selection.json','port/contracts/map-selection.json');
           await put('port/contracts/source-lock.json',JSON.stringify({godot_version:'test-pinned'}));
           await put('tools/godot-export/semantic.mjs','export function verifySource(){}\n');

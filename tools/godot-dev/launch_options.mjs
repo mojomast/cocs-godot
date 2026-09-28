@@ -64,6 +64,22 @@ export function launchOptions(argv, catalog) {
       sessionOptions:smoke ? ['--smoke'] : [],
       args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),'--path','godot','res://ui/main_menu.tscn']};
   }
+  // Explicit viewer / operator-preview: the parameterless, authority-free
+  // destinations routes.json declares. They keep the dev menu supervisor able
+  // to revalidate every registry route (NATIVE-03 capability parity). The
+  // no-argument default below is still the map viewer; only the explicit form
+  // lands here.
+  const SPECIAL_SCENES = {viewer:'res://main.tscn', 'operator-preview':'res://player_models/preview.tscn'};
+  if (Object.hasOwn(SPECIAL_SCENES, values.experience ?? '')) {
+    const experience = values.experience;
+    for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by ${experience}`);
+    for (const flag of flags) if (!['--smoke','--diagnostics'].includes(flag)) throw Error(`${flag} is not supported by ${experience}`);
+    const smoke = flags.has('--smoke') ? '--smoke' : null;
+    return {experience, nativeOnly:true, endpoint:null, smoke,
+      sessionOptions:[...diagnostics, ...(smoke ? [smoke] : [])],
+      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []), ...(diagnostics.length ? ['--verbose'] : []),
+        '--path','godot',SPECIAL_SCENES[experience]]};
+  }
   const play = flags.has('--play') || flags.has('--setup') || values.experience || values.map || values.mode || values.bots !== undefined ||
     ['--native-trace','--mute','--debug-hud','--debug-panel','--session-smoke','--lifecycle-smoke'].some(arg => flags.has(arg));
   const experience = values.experience ?? 'combat';
@@ -232,6 +248,9 @@ Set GODOT_BIN to the pinned Godot 4.5.2 binary. Run semantic export and import f
 Source matches: PORT=0 (default) allocates a free port; normal simulation timing.
 Close the client or press Ctrl+C to stop the owned native process.
 Interactive sessions have no harness deadline. With no options, open the map viewer.
+Viewer / operator-preview: --experience=viewer or --experience=operator-preview
+  opens the declared parameterless, authority-free scene (the no-option default
+  remains the map viewer). --smoke and --diagnostics are the only additions.
 Native-only graphics: showcase, aurora-basin, cinder-array, particle-lab, shader-lab.
   Standalone exploration/labs; no Node authority, network endpoint or source match.
   These are not source map catalog choices. Only --smoke is supported in addition

@@ -4,6 +4,7 @@ import {tmpdir} from 'node:os';
 import {join, dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {options, HELP} from './options.mjs';
+import {settingsPath} from './settings_path.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const executable = process.platform === 'win32' ? 'cocs.exe' : 'cocs.x86_64';
@@ -180,7 +181,7 @@ async function main() {
   if (version[0] < 22 || (version[0] === 22 && version[1] < 13)) throw Error('Node >=22.13.0 required');
   const catalog = JSON.parse(readFileSync(join(root, 'catalog.json')));
   const plan = options(process.argv.slice(2), catalog);
-  const env = {...process.env};
+  const env = {...process.env, COCS_SETTINGS_PATH: settingsPath(process.env)};
   // Loop only for a default boot (argv empty → menu) or an explicit
   // --experience=menu without --smoke. Every direct route invocation runs
   // exactly once and exits, keeping all verifier/marker contracts untouched.

@@ -8,13 +8,29 @@ import {readFileSync, readdirSync, existsSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {join} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {options, EXPERIENCES, NATIVE_EXPERIENCES} from './options.mjs';
+import {options, EXPERIENCES, NATIVE_EXPERIENCES, NATIVE_ARENA_MAPS} from './options.mjs';
 import {ROUTES as META_ROUTES, CATEGORIES as META_CATEGORIES} from './routes_meta.mjs';
+import {candidateMaps, candidateModes, capabilityOf, capabilityShapeErrors} from './route_capabilities.mjs';
+import {launchOptions} from '../godot-dev/launch_options.mjs';
 
 const here = import.meta.dirname;
 const catalog = JSON.parse(readFileSync(new URL('../../port/contracts/map-selection.json', import.meta.url)));
 const registry = JSON.parse(readFileSync(new URL('../../godot/ui/routes.json', import.meta.url), 'utf8'));
 const godotDir = fileURLToPath(new URL('../../godot/', import.meta.url));
+
+// Same candidate inputs the generator uses; capability membership is always
+// re-observed from the parsers, never copied from a hand-written list.
+const CAPABILITY_CANDIDATES = {
+  maps: candidateMaps(catalog, NATIVE_ARENA_MAPS),
+  modes: candidateModes(EXPERIENCES),
+};
+const EXTERNAL_ENDPOINT = 'ws://127.0.0.1:12345';
+
+// Does this parser accept an explicit external endpoint for the experience?
+const endpointAccepted = (parse, baseArgs) => {
+  try { return parse([...baseArgs, `--endpoint=${EXTERNAL_ENDPOINT}`], catalog).endpoint === EXTERNAL_ENDPOINT; }
+  catch { return false; }
+};
 
 const EXPECTED_IDS = [
   // play
@@ -116,11 +132,19 @@ test('every route argv (defaults, min and max variants) parses through options()
     }
     for (const [label, argv] of cases) {
       assert.doesNotThrow(() => options(argv, catalog), `${route.id} ${label}: ${argv.join(' ')}`);
+      // The dev launcher supervises the same menu argv, so it must accept it too.
+      assert.doesNotThrow(() => launchOptions(argv, catalog), `dev ${route.id} ${label}: ${argv.join(' ')}`);
     }
     // The plan's scene exists on disk for the default argv.
     const plan = options(argvWith(route), catalog);
     assert.ok(existsSync(join(godotDir, plan.scene.slice('res://'.length))),
       `${route.id}: missing ${plan.scene}`);
+    // Dev and packaged parsers agree on authority for the default menu argv.
+    const dev = launchOptions(argvWith(route), catalog);
+    assert.equal(dev.nativeOnly === true, plan.nativeOnly === true,
+      `${route.id}: dev/package offline authority drift`);
+    assert.equal(Boolean(dev.endpoint), Boolean(plan.endpoint),
+      `${route.id}: dev/package external authority drift`);
   }
 });
 
@@ -158,11 +182,116 @@ test('optional diagnostics and cheats flags stay separate on every route', () =>
     assert.equal(Boolean(cheatToggle), ['combat','horde','native-dm','identity-zones'].includes(route.id));
     const argv = [...argvWith(route), '--diagnostics', ...(cheatToggle ? ['--debug-panel'] : [])];
     assert.doesNotThrow(() => options(argv, catalog), route.id);
+    assert.doesNotThrow(() => launchOptions(argv, catalog), `dev ${route.id}`);
     if (route.id === 'lobby') assert.ok(!route.flags.includes('--debug-panel'));
   }
   const zones = registry.routes.find(route => route.id === 'zones');
   assert.deepEqual(zones.params.find(param => param.key === 'bots'),
     {key:'bots', kind:'range', label:'Bots', min:0, max:8, default:2, step:1});
+});
+
+test('generated capability matches a fresh parser probe for every route', () => {
+  for (const route of registry.routes) {
+    const experience = experienceOf(route.id);
+    const expected = capabilityOf(options, catalog, [`--experience=${experience}`], CAPABILITY_CANDIDATES);
+    assert.deepEqual(route.capability, expected, `${route.id}: capability drifted from options()`);
+    assert.deepEqual(capabilityShapeErrors(route.capability, route.id), [], route.id);
+  }
+});
+
+test('generated capability scope agrees with every declared menu choice', () => {
+  for (const route of registry.routes) {
+    const scope = route.capability.scope;
+    const mapParam = route.params.find(param => param.key === 'map');
+    const modeParam = route.params.find(param => param.key === 'mode');
+    if (mapParam) {
+      assert.deepEqual([...scope.maps].sort(), [...mapParam.values].sort(), `${route.id}: map scope`);
+      assert.equal(route.capability.defaults.map, mapParam.default, `${route.id}: default map`);
+    }
+    if (modeParam?.values_by_map) {
+      assert.deepEqual(Object.keys(scope.modes_by_map).sort(),
+        Object.keys(modeParam.values_by_map).sort(), `${route.id}: per-map scope keys`);
+      for (const [map, modes] of Object.entries(modeParam.values_by_map)) {
+        assert.deepEqual([...(scope.modes_by_map[map] ?? [])].sort(), [...modes].sort(),
+          `${route.id}/${map}: mode scope`);
+      }
+      // The parser default is the menu's list[0] for the menu's default map.
+      assert.equal(route.capability.defaults.mode, modeParam.default, `${route.id}: default mode`);
+      assert.equal(route.capability.defaults.mode,
+        modeParam.values_by_map[route.capability.defaults.map][0], `${route.id}: list[0] default`);
+    }
+  }
+});
+
+test('authority ownership is derived, bounded and identical across dev/package parsers', () => {
+  for (const route of registry.routes) {
+    const baseArgs = [`--experience=${experienceOf(route.id)}`];
+    const {authority} = route.capability;
+    assert.equal(authority.local, !authority.offline, `${route.id}: local must mirror offline`);
+    // The dev and packaged launchers must observe the same facts as the registry.
+    for (const [name, parse] of [['package', options], ['dev', launchOptions]]) {
+      assert.equal(parse(baseArgs, catalog).nativeOnly === true, authority.offline, `${name} ${route.id}: offline`);
+      assert.equal(endpointAccepted(parse, baseArgs), authority.external, `${name} ${route.id}: external`);
+    }
+    if (authority.offline) {
+      assert.throws(() => options([...baseArgs, `--endpoint=${EXTERNAL_ENDPOINT}`], catalog), Error, `${route.id}: offline endpoint`);
+      assert.throws(() => launchOptions([...baseArgs, `--endpoint=${EXTERNAL_ENDPOINT}`], catalog), Error, `dev ${route.id}: offline endpoint`);
+    } else {
+      // Endpoint-free plans own a local loopback authority.
+      assert.equal(options(baseArgs, catalog).endpoint, null, `${route.id}: package local endpoint`);
+      assert.equal(launchOptions(baseArgs, catalog).endpoint, null, `dev ${route.id}: local endpoint`);
+    }
+    if (authority.external) {
+      // Selecting an external host reuses it and never enables local ownership.
+      const external = options([...baseArgs, `--endpoint=${EXTERNAL_ENDPOINT}`], catalog);
+      assert.equal(external.endpoint, EXTERNAL_ENDPOINT, `${route.id}: package reuses endpoint`);
+      assert.notEqual(external.nativeOnly, true, `${route.id}: external plan is not offline`);
+      assert.equal(launchOptions([...baseArgs, `--endpoint=${EXTERNAL_ENDPOINT}`], catalog).endpoint,
+        EXTERNAL_ENDPOINT, `dev ${route.id}: reuses endpoint`);
+    }
+  }
+  const external = registry.routes.filter(route => route.capability.authority.external).map(route => route.id);
+  assert.deepEqual([...new Set(external)].sort(), ['lattice', 'lattice-world', 'lobby']);
+});
+
+test('external authority reuse can never construct a local authority', () => {
+  // The launchers gate local ownership on `plan.nativeOnly || plan.endpoint`;
+  // the parity gate pins that guard so a future edit cannot start a local
+  // authority for a route that was told to reuse an external host.
+  const guard = /plan\.nativeOnly\s*\|\|\s*plan\.endpoint\s*\?\s*null/;
+  for (const path of ['../../tools/godot-package/run.mjs', '../../tools/godot-dev/launch.mjs']) {
+    const text = readFileSync(new URL(path, import.meta.url), 'utf8');
+    assert.match(text, guard, `${path}: missing external-authority ownership guard`);
+  }
+});
+
+test('battle mode and identity exceptions stay pinned', () => {
+  const byId = id => registry.routes.find(route => route.id === id);
+  const nativeDm = byId('native-dm').capability.scope;
+  assert.deepEqual(nativeDm.maps, [...NATIVE_ARENA_MAPS].sort(), 'native-dm arenas');
+  for (const modes of Object.values(nativeDm.modes_by_map)) assert.deepEqual(modes, ['deathmatch']);
+  const identity = byId('identity-zones').capability.scope;
+  assert.deepEqual(identity.maps, ['vermilion-fold']);
+  assert.deepEqual(identity.modes_by_map['vermilion-fold'], ['domination']);
+  const horde = byId('horde').capability.scope;
+  assert.deepEqual(horde.modes_by_map['nacre-engine'], ['horde'], 'horde identity scene');
+  assert.ok(!horde.maps.includes('lacuna-court') && !horde.maps.includes('vermilion-fold'));
+  const lobby = byId('lobby');
+  assert.ok(!lobby.flags.includes('--debug-panel'), 'lobby never carries --debug-panel');
+  assert.ok(!lobby.toggles.some(toggle => toggle.key === 'cheats'), 'lobby has no cheat toggle');
+});
+
+test('category ids stay fixed while player-facing labels are friendlier', () => {
+  assert.deepEqual(registry.categories.map(category => category.id), ['play', 'native', 'modes', 'lab', 'cheats']);
+  assert.deepEqual(registry.categories, META_CATEGORIES);
+  for (const category of registry.categories) {
+    assert.ok(['Play', 'Bot Matches', 'Activities', 'Extras', 'Cheats'].includes(category.label),
+      `category ${category.id} has an unexpected label ${category.label}`);
+  }
+  // Stable ids retain remembered selections; visible groups remain distinct.
+  assert.equal(new Set(registry.categories.map(category => category.label)).size, registry.categories.length);
+  assert.equal(registry.categories.find(category => category.id === 'native').label, 'Bot Matches');
+  assert.equal(registry.categories.find(category => category.id === 'modes').label, 'Activities');
 });
 
 test('build.py and export_presets.cfg ship ui/*.json through the include filter', () => {

@@ -54,6 +54,7 @@ commands = [
     ("objective-completion-evidence", ["node", "--test", "port/native-objective-completion/test.mjs"]),
     ("launcher-options", ["node", "--test", "tools/godot-dev/launch_options.test.mjs"]),
     ("package-options", ["node", "--test", "tools/godot-package/options.test.mjs"]),
+    ("product-shell-supervisor", ["node", "--test", "tools/godot-package/settings_path.test.mjs", "tools/godot-package/menu_journey.test.mjs"]),
     ("native-graphics-options", ["node", "--test", "tools/godot-package/native_showcase_options.test.mjs", "tools/godot-dev/native_showcase_options.test.mjs"]),
     ("native-graphics-ownership", ["node", "--test", "tools/godot-package/native_showcase_ownership.test.mjs", "tools/godot-dev/native_showcase_ownership.test.mjs"]),
     ("lobby-options", ["node", "--test", "tools/godot-package/lobby_options.test.mjs"]),
@@ -147,6 +148,7 @@ commands = [
     ("route-parity", ["node", "--test", "tools/godot-package/route_parity.test.mjs"]),
     ("main-menu-smoke", [binary, "--headless", "--path", "godot", "res://ui/main_menu.tscn", "--", "--smoke"]),
     ("main-menu-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/main_menu/contracts.gd", "--", "--contracts"]),
+    ("product-shell-settings", [binary, "--headless", "--path", "godot", "--script", "res://tests/product_shell/settings_contract.gd"]),
     # coverage.mjs alone always exits 0; the floor wrapper makes a regression fail.
     ("material-coverage-floor", [sys.executable, "tools/godot-dev/coverage_floor.py"]),
     ("release-pipeline-tools", ["node", "--test", "tools/release/options.test.mjs", "tools/release/release.test.mjs"]),

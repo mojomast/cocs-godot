@@ -188,6 +188,9 @@ func eligible() -> bool:
 	return phase == "active" and age < 0.5 and not state.get("over", false) and not vehicle.is_empty() and vehicle.get("driver") == net.actor_id and float(vehicle.get("health", 0)) > 0 and float(vehicle.get("respawnTimer", 1)) <= 0 and float(actor.get("health", 0)) > 0 and float(actor.get("dead", 1)) <= 0 and state.get("race", {}).get("phase") in ["racing", "playing"]
 
 func _input(event: InputEvent) -> void:
+	if LocalSettings.overlay_open():
+		if (event is InputEventKey and not event.pressed): controls.accept(event, false)
+		return
 	controls.accept(event, eligible())
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F5 and phase == "results":
 		clear_round()

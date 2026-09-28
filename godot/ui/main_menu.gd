@@ -37,9 +37,11 @@ var routes_box := VBoxContainer.new()
 var params_box := VBoxContainer.new()
 var category_description := Label.new()
 var detail_description := Label.new()
+var capability_description := Label.new()
 var status := Label.new()
 var start := Button.new()
 var quit_button := Button.new()
+var settings_button := Button.new()
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -121,6 +123,9 @@ func build_ui() -> void:
 	detail_description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	detail_description.custom_minimum_size = Vector2(0, 44)
 	right.add_child(detail_description)
+	capability_description.name = "RouteCapability"
+	capability_description.add_theme_color_override("font_color", CAPTION)
+	right.add_child(capability_description)
 	right.add_child(caption("OPTIONS"))
 	right.add_child(params_box)
 	params_box.add_theme_constant_override("separation", 10)
@@ -140,10 +145,15 @@ func build_ui() -> void:
 	quit_button.custom_minimum_size = Vector2(150, 44)
 	quit_button.add_theme_font_size_override("font_size", 18)
 	quit_button.pressed.connect(func() -> void: quit_menu())
+	settings_button.name = "Settings"
+	settings_button.text = "SETTINGS"
+	settings_button.custom_minimum_size = Vector2(150, 44)
+	settings_button.pressed.connect(func() -> void: LocalSettings.open_panel(true, settings_button))
 	actions.add_child(start)
+	actions.add_child(settings_button)
 	actions.add_child(quit_button)
 	right.add_child(actions)
-	stack.add_child(caption("Tab moves focus · Left/Right or Enter browses a choice · Enter on START launches · Esc quits"))
+	stack.add_child(caption("Tab moves focus · Left/Right browses a choice · Settings adjusts this device · Esc quits"))
 
 func populate() -> void:
 	for category: Dictionary in registry.categories:
@@ -206,6 +216,7 @@ func select_route(id: String) -> void:
 	for key: String in route_buttons:
 		route_buttons[key].set_pressed_no_signal(key == id)
 	detail_description.text = str(route.get("description", ""))
+	capability_description.text = registry.capability_summary(route)
 	apply_defaults()
 	if preferences != null and preferences.routes.has(id):
 		selections.merge(preferences.normalize(registry, route, preferences.routes[id]), true)
@@ -216,6 +227,7 @@ func clear_route() -> void:
 	current_route = {}
 	selections = {}
 	detail_description.text = ""
+	capability_description.text = ""
 	rebuild_params()
 	refresh_status()
 

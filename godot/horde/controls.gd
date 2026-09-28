@@ -79,5 +79,5 @@ func queued() -> void:
 func look(yaw: float, pitch: float, relative: Vector2) -> Vector2:
 	# app/page.tsx mouse look, source DEFAULT_DISPLAY.adsSensitivity=.85.
 	# All default per-sight multipliers are 1; preferences are not exposed here.
-	var gain := 0.002 * (0.85 if mouse.has(MOUSE_BUTTON_RIGHT) else 1.0)
+	var gain := 0.002 * LocalSettings.sensitivity() * (0.85 if mouse.has(MOUSE_BUTTON_RIGHT) else 1.0)
 	return Vector2(wrapf(yaw - relative.x * gain, -PI, PI), clampf(pitch - relative.y * gain, -1.45, 1.45))

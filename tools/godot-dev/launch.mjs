@@ -4,6 +4,7 @@ import {resolve,join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {verifySource} from '../godot-export/semantic.mjs';
 import {launchOptions,HELP} from './launch_options.mjs';
+import {settingsPath} from '../godot-package/settings_path.mjs';
 if(process.argv.length===3&&process.argv[2]==='--help'){console.log(HELP);process.exit(0);}
 const catalog=JSON.parse(readFileSync('port/contracts/map-selection.json'));
 const plan=launchOptions(process.argv.slice(2),catalog);
@@ -12,6 +13,7 @@ const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(proc
 verifySource(lock,derivative);
 const binary=process.env.GODOT_BIN;if(!binary)throw Error('Set GODOT_BIN to pinned Godot 4.5.2 executable');
 if(execFileSync(binary,['--version'],{encoding:'utf8'}).trim()!==lock.godot_version)throw Error('Godot version differs from lock');
+const localSettingsPath=settingsPath(process.env,{developmentRoot:process.cwd()});
 
 // One direct route run: authority selection, spawn and cleanup exactly as the
 // pre-menu body; only the exit code is returned instead of assigned.
@@ -27,7 +29,7 @@ async function runRoute(plan){
  : (await import('../../server/game-server.mjs')).createGameServer;
  const privateRuntime=plan.nativeOnly||plan.nativeArena;
  const runtime=privateRuntime?mkdtempSync(join(tmpdir(),'cocs-native-')):resolve('.port-runtime');mkdirSync(runtime,{recursive:true});
- const env={...process.env};for(const [name,dir] of [['XDG_DATA_HOME','data'],['XDG_CONFIG_HOME','config'],['XDG_CACHE_HOME','cache']]){env[name]=resolve(runtime,dir);mkdirSync(env[name],{recursive:true});}
+  const env={...process.env,COCS_SETTINGS_PATH:localSettingsPath};for(const [name,dir] of [['XDG_DATA_HOME','data'],['XDG_CONFIG_HOME','config'],['XDG_CACHE_HOME','cache']]){env[name]=resolve(runtime,dir);mkdirSync(env[name],{recursive:true});}
  let game,child,childDone,stopping=false,signalCode=0,serverFailure,killTimer,smokeTimer;
  const stop=()=>{stopping=true;if(child&&child.exitCode===null&&child.signalCode===null){child.kill('SIGTERM');killTimer??=setTimeout(()=>child.kill('SIGKILL'),3000);killTimer.unref();}};
  const interrupt=()=>{signalCode=130;stop();},terminate=()=>{signalCode=143;stop();},serverError=error=>{serverFailure=error;stop();};
@@ -123,7 +125,7 @@ async function menuPick(menuPlan,catalog,env){
 if(plan.experience==='menu'&&!plan.smoke){
  // Supervisor loop: boot menu → pick route → run it → boot menu again.
  // MENU_QUIT/close without a route ends it; crash loops end with exit 1.
- const menuEnv={...process.env};
+  const menuEnv={...process.env,COCS_SETTINGS_PATH:localSettingsPath};
  for(const [name,dir] of [['XDG_DATA_HOME','data'],['XDG_CONFIG_HOME','config'],['XDG_CACHE_HOME','cache']]){menuEnv[name]=resolve('.port-runtime',dir);mkdirSync(menuEnv[name],{recursive:true});}
  let fastFailures=0;
  for(;;){

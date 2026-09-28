@@ -226,6 +226,13 @@ func check_tree(routes: Array, categories: Array) -> void:
 	check(count_named(menu, "Quit") == 1, "menu declares exactly one QUIT button")
 	var quit_node := find_named(menu, "Quit")
 	check(quit_node != null and quit_node is Button, "QUIT control is a Button")
+	check(count_named(menu, "Settings") == 1, "Home has one keyboard-focusable Settings button")
+	check(find_named(menu, "Settings") is Button, "Settings is a native Button")
+	var capability_label := find_named(menu, "RouteCapability")
+	check(capability_label is Label, "menu renders generated route authority summary")
+	if capability_label is Label and not menu.current_route.is_empty():
+		check(capability_label.text == menu.registry.capability_summary(menu.current_route),
+			"visible authority text comes from registry capability facts")
 	menu.select_route("combat")
 	var local_toggles: Array = menu.params_box.get_children().filter(func(child: Node) -> bool:
 		return child is CheckButton and not child.is_queued_for_deletion())

@@ -132,6 +132,19 @@ func run() -> void:
 	panel.confirm_spend.button_pressed = true
 	panel.world_purchase()
 	check(client.frames.back().action == "reinforce" and client.actions.size() == 1 and not panel.confirm_spend.button_pressed, "co-op purchase routes through existing activate once")
+	# Presentation layout fixture (synthetic geometry only): the deck must fit
+	# compact and standard viewports and never force horizontal overflow.
+	for view: Array in [[760, 520], [1280, 800]]:
+		root.size = Vector2i(int(view[0]), int(view[1]))
+		panel.show()
+		panel.world_refresh()
+		await process_frame
+		await process_frame
+		var bounds: Rect2 = panel.panel.get_rect()
+		check(bounds.position.x >= 0.0 and bounds.position.y >= 0.0 and bounds.end.x <= float(view[0]) + 0.5 and bounds.end.y <= float(view[1]) + 0.5, "deck panel fits %dx%d viewport" % [view[0], view[1]])
+		var page: Control = panel.tabs.get_child(panel.tabs.current_tab) as Control
+		check(page != null and page.get_combined_minimum_size().x <= page.size.x + 1.0, "objective cards fit their page at %dx%d" % [view[0], view[1]])
+		check(panel.nodes.custom_minimum_size.x > 0.0 and panel.nodes.custom_minimum_size.x <= 345.0, "objective list minimum stays bounded at %dx%d" % [view[0], view[1]])
 	for node: Node in [panel,demo.session_panel,demo.client,demo.camera,demo.sun,demo.environment,demo.label,demo.selector,demo.world_label,demo.combat_label,demo.pickups,demo.presentation,demo.combat,demo.lattice_hud]: node.free()
 	demo.free()
 	print("WORLD_COMMANDS_CONTRACT checks=", checks, " failures=", failures)

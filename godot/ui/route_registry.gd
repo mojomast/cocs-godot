@@ -4,6 +4,12 @@ extends RefCounted
 ## through validate_route() before assemble_args() emits it. Flags are copied
 ## verbatim from the JSON; optional toggle flags are allowlisted for reviewed
 ## local routes only, and the lobby cannot acquire --debug-panel.
+##
+## Every route also carries a generated `capability` object (authority
+## ownership + parser-observed map/mode scope) produced by gen_routes.mjs. The
+## registry validates that shape and exposes it via capability_of() /
+## authority_of() / capability_summary() so the menu shares one generated
+## authority description instead of another hand-written list.
 
 const ROUTES_PATH := "res://ui/routes.json"
 
@@ -103,6 +109,48 @@ func validate_shape(route: Dictionary, seen_categories: Dictionary) -> String:
 		var flag := str(toggle.get("flag", ""))
 		if flag != "--diagnostics" and not (flag == "--debug-panel" and id in ["combat", "horde", "native-dm", "identity-zones"]):
 			return "Route %s has an unsupported toggle" % id
+	var capability_problem := validate_capability_shape(id, route.get("capability"))
+	if not capability_problem.is_empty(): return capability_problem
+	return ""
+
+## Generated capability shape guard. Mirrors route_capabilities.mjs so the menu
+## refuses a stale or hand-edited registry instead of showing dishonest facts.
+func validate_capability_shape(route_id: String, capability: Variant) -> String:
+	if not capability is Dictionary:
+		return "Route %s has no generated capability object" % route_id
+	var authority: Variant = capability.get("authority")
+	if not authority is Dictionary:
+		return "Route %s capability has no authority object" % route_id
+	for key: String in ["offline", "local", "external"]:
+		if not authority.get(key) is bool:
+			return "Route %s authority.%s is not a boolean" % [route_id, key]
+	var offline := bool(authority.get("offline"))
+	if offline and (bool(authority.get("local")) or bool(authority.get("external"))):
+		return "Route %s offline route cannot also own or reuse an authority" % route_id
+	if not offline and not bool(authority.get("local")) and not bool(authority.get("external")):
+		return "Route %s declares no authority ownership" % route_id
+	var scope: Variant = capability.get("scope")
+	if not scope is Dictionary:
+		return "Route %s capability has no scope object" % route_id
+	var maps: Variant = scope.get("maps")
+	if not maps is Array:
+		return "Route %s scope.maps is not an array" % route_id
+	var by_map: Variant = scope.get("modes_by_map")
+	if not by_map is Dictionary:
+		return "Route %s scope.modes_by_map is not an object" % route_id
+	for map: Variant in maps:
+		var modes: Variant = by_map.get(str(map))
+		if not modes is Array or modes.is_empty():
+			return "Route %s scope map %s has no modes" % [route_id, str(map)]
+	for map: Variant in by_map:
+		if not str(map) in maps:
+			return "Route %s scope modes_by_map references undeclared map %s" % [route_id, str(map)]
+	var defaults: Variant = capability.get("defaults")
+	if not defaults is Dictionary:
+		return "Route %s capability has no defaults object" % route_id
+	var default_map: Variant = defaults.get("map")
+	if default_map != null and not str(default_map) in maps:
+		return "Route %s defaults.map %s is outside the observed scope" % [route_id, str(default_map)]
 	return ""
 
 func validate_param_shape(route_id: String, param: Variant) -> String:
@@ -148,6 +196,27 @@ func params_of(route: Dictionary) -> Array:
 func toggles_of(route: Dictionary) -> Array:
 	var toggles: Variant = route.get("toggles", [])
 	return toggles if toggles is Array else []
+
+## Generated capability facts for a route (authority ownership + observed scope).
+func capability_of(route: Dictionary) -> Dictionary:
+	var capability: Variant = route.get("capability")
+	return capability if capability is Dictionary else {}
+
+func authority_of(route: Dictionary) -> Dictionary:
+	var authority: Variant = capability_of(route).get("authority")
+	return authority if authority is Dictionary else {}
+
+## Short player-facing description of what backs a route, derived from the
+## generated capability facts rather than another hand-written list. The menu
+## may render this next to the route copy.
+func capability_summary(route: Dictionary) -> String:
+	var authority := authority_of(route)
+	if authority.is_empty(): return ""
+	if bool(authority.get("offline", false)): return "Runs offline: no server or authority"
+	if bool(authority.get("local", false)) and bool(authority.get("external", false)):
+		return "Owned local authority, or reuse an external host"
+	if bool(authority.get("local", false)): return "Owned local authority"
+	return ""
 
 ## Key of the route param whose value selects a map ("" when the route has
 ## none). values_by_map / max_by_map tables are keyed by that selection.

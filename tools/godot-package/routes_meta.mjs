@@ -10,12 +10,16 @@
 // drift here fails generation instead of shipping.
 
 // Ordered exactly as routes.json must render them.
+//
+// Category *ids* are stable (menu preferences and the Godot contracts key on
+// them); only the player-facing labels move toward the NATIVE-03 vocabulary.
+// Distinct player-facing names keep the stable groups easy to navigate.
 export const CATEGORIES = [
-  {id: 'play',   label: 'Play',   description: 'Core combat and multiplayer'},
-  {id: 'native', label: 'Native', description: 'Local arena modes'},
-  {id: 'modes',  label: 'Modes',  description: 'Objective and vehicle modes'},
-  {id: 'lab',    label: 'Extras', description: 'Previews, galleries and labs'},
-  {id: 'cheats', label: 'Cheats', description: 'Local debug panel routes'},
+  {id: 'play',   label: 'Play',       description: 'Core combat and multiplayer'},
+  {id: 'native', label: 'Bot Matches', description: 'Local matches against bots'},
+  {id: 'modes',  label: 'Activities', description: 'Objective, vehicle and LATTICE activities'},
+  {id: 'lab',    label: 'Extras',     description: 'Previews, galleries and labs'},
+  {id: 'cheats', label: 'Cheats',     description: 'Local debug panel routes'},
 ];
 
 // Display names for maps absent from port/contracts/map-selection.json: the six
