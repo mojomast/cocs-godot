@@ -243,6 +243,7 @@ func refresh() -> void:
 	var identity := get_tree().root.get_node_or_null("Identity")
 	if identity != null and not identity.status.is_empty(): state_label.text += "\n" + identity.status
 	if category == "crosshair": state_label.text += "\nReticles are view-only: this server's GEAR wire does not carry a crosshair selection."
+	if category == "finish": state_label.text += "\nFinishes are saved to the source profile; native finish rendering is not implemented yet."
 	if catalog.is_empty(): state_label.text += "\nSource Arsenal catalog unavailable. Regenerate from the source modules."
 	var list := details.find_child("CatalogRows", true, false) as VBoxContainer
 	if list == null: return

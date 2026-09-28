@@ -16,6 +16,8 @@ Starting implementation revision: `d36dc67d`.
   source normalization is reported honestly. The source reads saved equipment
   when constructing the next match, not at the current actor's next respawn.
   Reticles remain view-only because this wire does not carry their selection.
+  Finish selections persist through the source protocol; native finish rendering
+  is still absent and is identified as such in that catalog category.
 - **Multiplayer (Flash):** room listings from the selected source endpoint and
   source-echoed room-scoped text chat, with typing/focus and spectator boundaries.
 - **Parent:** packaging dependency closure, fixture-state isolation, integrated
