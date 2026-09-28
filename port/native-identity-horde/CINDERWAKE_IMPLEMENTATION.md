@@ -187,8 +187,9 @@ changed to satisfy that test.
 1. The source lock and nine-map selection remain at `515daf07`. The explicit
    derivative manifest retains its original name for package compatibility and
    inventories all ten changed source runtime files, including the newly added
-   `game/horde-stages.mjs`. The source verifier checks both ancestry and each
-   file's committed and working-tree SHA-256. Cinderwake remains a port-authored
+   `game/horde-stages.mjs`. The source verifier checks ancestry, committed and
+   working-tree SHA-256, and the staged/untracked runtime-path census in strict
+   and derivative modes. Cinderwake remains a port-authored
    local map outside the nine-map allowlist.
 2. Reconcile the additive
    launcher/package hunks with LATTICE’s current files. Regenerate

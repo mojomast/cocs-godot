@@ -43,27 +43,30 @@ export function normalizeMap(map) {
  }
  return strictData({schema_version:1,omitted_optional_fields,source_map:data});
 }
-export function verifySource(lock,derivative=null) {
-  const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
+export function verifySource(lock,derivative=null,repositoryRoot=root) {
+  const git=(...args)=>execFileSync('git',args,{cwd:repositoryRoot,encoding:'utf8'}).trim();
   if(git('merge-base',lock.source_commit,'HEAD')!==lock.source_commit)throw Error('Checkout is not based on locked source');
   // Compare tracked source and dependency files to the lock, including unstaged edits.
   const tracked=git('ls-tree','-r','--name-only',lock.source_commit).split('\n').filter(p=>/^(game\/|server\/|assets\/|public\/|package.*json$)/.test(p));
   const changed=git('diff','--name-only',lock.source_commit,'--',...tracked).split('\n').filter(Boolean);
-  if(!derivative){if(changed.length)throw Error('Locked source differs from working tree');return;}
+  // ls-tree/diff cannot see an index addition or an untracked runtime file.
+  // Enumerate both index and visible working-tree candidates before deciding
+  // whether strict mode or a derivative is eligible to build.
+  const candidates=execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z','--',
+    'game','server','assets','public',':(top,glob)package*.json'],{cwd:repositoryRoot,encoding:'utf8'}).split('\0').filter(Boolean);
+  const added=[...new Set(candidates.filter(p=>!tracked.includes(p)&&!p.endsWith('.test.mjs')))].sort();
+  if(!derivative){if(changed.length||added.length)throw Error('Locked source differs from working tree');return;}
   if(derivative.schema_version!==1||derivative.source_commit!==lock.source_commit||!/^[0-9a-f]{40}$/.test(derivative.derivative_commit??'')||git('merge-base',derivative.derivative_commit,'HEAD')!==derivative.derivative_commit)throw Error('Invalid derivative source ancestry');
   const files=derivative.runtime_files;
   if(!files||typeof files!=='object'||Array.isArray(files)||!Object.keys(files).length)throw Error('Missing derivative runtime inventory');
-  // A derivative can introduce a reviewed source module as well as modify
-  // locked files. Inventory both kinds against the same committed bytes.
-  const added=git('diff','--name-only','--diff-filter=A',lock.source_commit,'HEAD','--','game','server','assets','public','package.json','package-lock.json').split('\n').filter(p=>p&&!p.endsWith('.test.mjs'));
   const actual=[...new Set([...changed,...added])].filter(p=>!p.endsWith('.test.mjs')).sort();
   const expected=Object.keys(files).sort();
+  for(const p of expected)if(!/^(game|server)\/[a-z0-9-]+\.mjs$/.test(p)||! /^[0-9a-f]{64}$/.test(files[p]))throw Error(`Invalid derivative source entry: ${p}`);
   if(JSON.stringify(actual)!==JSON.stringify(expected))throw Error('Derivative source inventory differs from locked source');
   for(const p of expected){
-   if(!/^(game|server)\/[a-z0-9-]+\.mjs$/.test(p)||(!tracked.includes(p)&&!added.includes(p))||! /^[0-9a-f]{64}$/.test(files[p]))throw Error(`Invalid derivative source entry: ${p}`);
-   const committed=execFileSync('git',['show',`${derivative.derivative_commit}:${p}`],{cwd:root});
+   const committed=execFileSync('git',['show',`${derivative.derivative_commit}:${p}`],{cwd:repositoryRoot,stdio:['ignore','pipe','pipe']});
    const checksum=bytes=>createHash('sha256').update(bytes).digest('hex');
-   if(checksum(committed)!==files[p]||checksum(readFileSync(resolve(root,p)))!==files[p])throw Error(`Derivative source byte mismatch: ${p}`);
+   if(checksum(committed)!==files[p]||checksum(readFileSync(resolve(repositoryRoot,p)))!==files[p])throw Error(`Derivative source byte mismatch: ${p}`);
   }
 }
 export function build(output=resolve(root,'godot/content/generated')) {
