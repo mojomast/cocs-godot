@@ -17,7 +17,8 @@ simulation lock and verification evidence remain reproducible.
 
 [Getting started](#getting-started) · [Current features](#current-features) ·
 [Controls](#controls) · [Verification](#verification) ·
-[Detailed release matrix](port/RELEASE_MATRIX.md)
+[Detailed release matrix](port/RELEASE_MATRIX.md) ·
+[Native consolidation roadmap](port/INTEGRATION_ROADMAP.md)
 
 ![Native combat with first-person weapon and restored Moth world graphics](port/graphics-batch/evidence/live-final-scenery/live-1280x800.png)
 

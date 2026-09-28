@@ -4,6 +4,11 @@ This is an exercised port laboratory, not a completed game port. It preserves th
 
 ## Current integration and release status
 
+For the September 28 cross-port research and the ordered next-development plan,
+see [Native product consolidation and continued source migration](INTEGRATION_ROADMAP.md).
+It covers the shared player experience, current CI gaps, outstanding Cinderwake
+integration and a common release/migration workflow.
+
 **Porting direction:** prioritize a good native Godot game over a 1:1 recreation.
 Use simpler or better Godot-native implementations when they improve quality or
 save development time. Preserve the locked map/mode scope, recognizable map
