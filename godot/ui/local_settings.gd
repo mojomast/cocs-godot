@@ -273,6 +273,8 @@ func _input(event: InputEvent) -> void:
 		# intercepts _unhandled_input and pointer capture.
 		return
 	if event is InputEventKey and event.pressed and not event.echo and (event.keycode == KEY_F12 or event.physical_keycode == KEY_F12):
+		var career := get_tree().root.get_node_or_null("Career")
+		if career != null and career.active(): return
 		var scene := get_tree().current_scene
 		if scene != null and scene.scene_file_path != MENU_SCENE:
 			open_panel()

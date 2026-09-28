@@ -9,7 +9,9 @@ static func service() -> Node:
 
 static func overlay_open() -> bool:
 	var settings := service()
-	return settings != null and settings.overlay_open()
+	var tree := Engine.get_main_loop() as SceneTree
+	var career := tree.root.get_node_or_null("Career") if tree != null and tree.root != null else null
+	return (settings != null and settings.overlay_open()) or (career != null and career.active())
 
 static func sensitivity() -> float:
 	var settings := service()
@@ -17,4 +19,4 @@ static func sensitivity() -> float:
 
 static func open_panel(from_menu: bool = false, previous_focus: Control = null) -> void:
 	var settings := service()
-	if settings != null: settings.open_panel(from_menu, previous_focus)
+	if settings != null and not overlay_open(): settings.open_panel(from_menu, previous_focus)

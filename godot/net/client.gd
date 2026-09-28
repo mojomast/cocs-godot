@@ -65,6 +65,7 @@ func connect_server(endpoint: String, maps: Dictionary, map_id: String) -> Error
 	return peer.connect_to_url(endpoint)
 
 func disconnect_server() -> void:
+	career_clear()
 	if peer.get_ready_state() != WebSocketPeer.STATE_CLOSED: peer.close()
 	peer = WebSocketPeer.new()
 	was_open = false
@@ -86,6 +87,7 @@ func reset_round() -> void:
 	event_order.clear()
 
 func fail(message: String) -> bool:
+	career_clear()
 	spectator_notice_stage = 0
 	error = message
 	connection_error.emit(message)
@@ -183,7 +185,10 @@ func decode_text(text: String) -> bool:
 			if spectating: return fail("Unexpected welcome during spectator connection")
 			room_id = str(frame.get("roomId", ""))
 			peer_id = int(frame.get("peerId", -1))
+			career_receive(frame)
 			spectator_notice_stage = 2 if spectator_notice_stage == 1 and room_id == joined_room_request and frame.get("spectate") == true and frame.get("host") == false and not frame.get("reconnected", false) else 0
+		"profile", "progression":
+			career_receive(frame)
 		"lobby":
 			# An unconfigured newly created server room has no selected content yet.
 			if frame.get("config") != null and not validate_map(frame.get("mapId")): return fail("Lobby map substitution")
@@ -262,6 +267,7 @@ func _process(_delta: float) -> void:
 				return
 			if not decode_text(packet.get_string_from_utf8()): return
 	elif state == WebSocketPeer.STATE_CLOSED and was_open:
+		career_clear()
 		was_open = false
 		reset_round()
 		room_id = ""
@@ -269,3 +275,11 @@ func _process(_delta: float) -> void:
 		actor_id = -1
 		clear_join_context()
 		connection_error.emit("Disconnected; reconnect requires explicit fresh join")
+
+func career_receive(frame: Dictionary) -> void:
+	var service := get_tree().root.get_node_or_null("Career") if is_inside_tree() else null
+	if service != null: service.receive(self, frame)
+
+func career_clear() -> void:
+	var service := get_tree().root.get_node_or_null("Career") if is_inside_tree() else null
+	if service != null: service.clear_connection(self)

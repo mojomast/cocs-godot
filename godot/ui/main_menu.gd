@@ -43,6 +43,7 @@ var status := Label.new()
 var start := Button.new()
 var quit_button := Button.new()
 var settings_button := Button.new()
+var career_button := Button.new()
 var columns: BoxContainer
 var content_scroll: ScrollContainer
 var category_column: VBoxContainer
@@ -153,7 +154,7 @@ func build_ui() -> void:
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	status.custom_minimum_size = Vector2(0, 36)
 	right.add_child(status)
-	var actions := HBoxContainer.new()
+	var actions := HFlowContainer.new()
 	actions.add_theme_constant_override("separation", 12)
 	start.name = "Start"
 	start.text = "START"
@@ -170,11 +171,18 @@ func build_ui() -> void:
 	settings_button.text = "SETTINGS"
 	settings_button.custom_minimum_size = Vector2(150, 44)
 	settings_button.pressed.connect(func() -> void: SettingsAccess.open_panel(true, settings_button))
+	career_button.name = "Career"
+	career_button.text = "CAREER / ARSENAL"
+	career_button.custom_minimum_size = Vector2(190, 44)
+	career_button.pressed.connect(func() -> void:
+		var service := get_tree().root.get_node_or_null("Career")
+		if service != null: service.open_panel(career_button))
 	actions.add_child(start)
+	actions.add_child(career_button)
 	actions.add_child(settings_button)
 	actions.add_child(quit_button)
 	right.add_child(actions)
-	var footer := caption("Tab moves focus · Left/Right browses a choice · Settings adjusts this device · Esc quits")
+	var footer := caption("Tab moves focus · Left/Right browses a choice · F9 Career / Arsenal · Settings adjusts this device · Esc quits")
 	footer.name = "Footer"
 	footer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	stack.add_child(footer)
@@ -450,7 +458,7 @@ func save_preferences() -> void:
 		refresh_status()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if quitting: return
+	if quitting or SettingsAccess.overlay_open(): return
 	if release_key(event):
 		quit_menu()
 		get_viewport().set_input_as_handled()

@@ -1,0 +1,1027 @@
+{
+  "schema": 1,
+  "sources": {
+    "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
+    "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
+    "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a"
+  },
+  "slots": {
+    "gear": [
+      {
+        "id": "primary",
+        "name": "Weapon Kit"
+      },
+      {
+        "id": "armor",
+        "name": "Armour"
+      },
+      {
+        "id": "utility",
+        "name": "Utility"
+      }
+    ],
+    "attachment": [
+      {
+        "id": "optic",
+        "name": "Optic"
+      },
+      {
+        "id": "barrel",
+        "name": "Barrel"
+      },
+      {
+        "id": "magazine",
+        "name": "Magazine"
+      },
+      {
+        "id": "underbarrel",
+        "name": "Underbarrel"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "scope",
+      "unlockId": "gear-scope",
+      "kind": "gear",
+      "slot": "primary",
+      "name": "Precision Scope",
+      "description": "Tighter spread and a harder first shot for ranged duels. The glass is heavy, and the footwork pays for it.",
+      "level": 2,
+      "modifiers": {
+        "spread": 0.85,
+        "damage": 1.1,
+        "speed": 0.9
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "heavy-barrel",
+      "unlockId": "gear-heavy-barrel",
+      "kind": "gear",
+      "slot": "primary",
+      "name": "Heavy Barrel",
+      "description": "The hardest-hitting barrel in the pool, at the cost of muzzle control and a little footwork. Subtlety is for other operators.",
+      "level": 5,
+      "modifiers": {
+        "damage": 1.15,
+        "spread": 1.1,
+        "speed": 0.97
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "light-frame",
+      "unlockId": "gear-light-frame",
+      "kind": "gear",
+      "slot": "primary",
+      "name": "Light Frame",
+      "description": "A fast-handling build with reduced armour. Travel light, hit hard.",
+      "level": 8,
+      "modifiers": {
+        "damage": 1.08,
+        "spread": 0.9,
+        "armor": -5
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "plating",
+      "unlockId": "gear-plating",
+      "kind": "gear",
+      "slot": "armor",
+      "name": "Composite Plating",
+      "description": "A pre-fight slab of extra spawn armour. Because the best offense is not dying.",
+      "level": 3,
+      "modifiers": {
+        "armor": 25,
+        "speed": 0.98
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "reactive",
+      "unlockId": "gear-reactive",
+      "kind": "gear",
+      "slot": "armor",
+      "name": "Reactive Weave",
+      "description": "Balanced armour and health for long slogs. Designed for “just one more round.”",
+      "level": 6,
+      "modifiers": {
+        "armor": 15,
+        "health": 10
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "stim",
+      "unlockId": "gear-stim",
+      "kind": "gear",
+      "slot": "utility",
+      "name": "Combat Stim",
+      "description": "Extra health and a sliver of speed on every spawn. Performance-enhancing, but legal here.",
+      "level": 4,
+      "modifiers": {
+        "health": 20,
+        "speed": 1.04
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "servo",
+      "unlockId": "gear-servo",
+      "kind": "gear",
+      "slot": "utility",
+      "name": "Servo Assist",
+      "description": "The fastest rig in the pool for objective sprints. The servos jitter your aim; your W key says thank you.",
+      "level": 7,
+      "modifiers": {
+        "speed": 1.1,
+        "spread": 1.07
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "mag",
+      "unlockId": "gear-mag",
+      "kind": "gear",
+      "slot": "utility",
+      "name": "Stabiliser Mag",
+      "description": "Steadies the muzzle with a tiny speed trade. Poetry, in full auto.",
+      "level": 9,
+      "modifiers": {
+        "spread": 0.92,
+        "speed": 0.99
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "runner-frame",
+      "unlockId": "gear-runner-frame",
+      "kind": "gear",
+      "slot": "primary",
+      "name": "Skeleton Frame",
+      "description": "A stripped receiver that moves like a scout and hits like a trainer. Built for flag routes and flank rotations in capture and race modes; the reduced mass softens every round.",
+      "level": 12,
+      "modifiers": {
+        "speed": 1.08,
+        "damage": 0.95
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "match-trigger",
+      "unlockId": "gear-match-trigger",
+      "kind": "gear",
+      "slot": "primary",
+      "name": "Match Trigger",
+      "description": "A tuned trigger group that groups shots at the cost of punch. Hold a lane, not a record. A holdout and long-sightline pick.",
+      "level": 15,
+      "modifiers": {
+        "spread": 0.86,
+        "damage": 0.91
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "breacher-kit",
+      "unlockId": "gear-breacher-kit",
+      "kind": "gear",
+      "slot": "primary",
+      "name": "Breacher Kit",
+      "description": "A short, angry primary for assault and uplink entries. The heaviest hit in the pool, but it drags your footwork and muzzle control.",
+      "level": 23,
+      "modifiers": {
+        "damage": 1.12,
+        "speed": 0.92,
+        "spread": 1.03
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "siege-kit",
+      "unlockId": "gear-siege-kit",
+      "kind": "gear",
+      "slot": "primary",
+      "name": "Siege Kit",
+      "description": "An overpressure receiver with the hardest single hit in the pool, at the cost of violent muzzle climb and loose groups. Plant it, then delete.",
+      "level": 26,
+      "modifiers": {
+        "damage": 1.13,
+        "spread": 1.1
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "marksman-kit",
+      "unlockId": "gear-marksman-kit",
+      "kind": "gear",
+      "slot": "primary",
+      "name": "Marksman Kit",
+      "description": "A precision rig for overwatch and team elimination. Puts the first shot where you meant it and gives up raw damage to do it. Steady pays.",
+      "level": 40,
+      "modifiers": {
+        "spread": 0.85,
+        "damage": 0.9
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "command-kit",
+      "unlockId": "gear-command-kit",
+      "kind": "gear",
+      "slot": "primary",
+      "name": "Command Kit",
+      "description": "The career capstone: a command receiver that adds real punch and a tighter hold for a small rotate cost. Fits any mode that asks you to lead.",
+      "level": 50,
+      "modifiers": {
+        "damage": 1.08,
+        "spread": 0.95,
+        "speed": 0.95
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "scout-plate",
+      "unlockId": "gear-scout-plate",
+      "kind": "gear",
+      "slot": "armor",
+      "name": "Scout Plate",
+      "description": "A light forward plate with spawn armour and pace, paid for with a softer round. An infantry capture-route opener.",
+      "level": 5,
+      "modifiers": {
+        "speed": 1.06,
+        "armor": 4,
+        "damage": 0.94
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "gunner-harness",
+      "unlockId": "gear-gunner-harness",
+      "kind": "gear",
+      "slot": "armor",
+      "name": "Gunner Harness",
+      "description": "A stabilised harness that tightens your hold and adds a little plating at the cost of punch. For roles that shoot more than they soak.",
+      "level": 10,
+      "modifiers": {
+        "spread": 0.88,
+        "armor": 5,
+        "damage": 0.91
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "assault-plate",
+      "unlockId": "gear-assault-plate",
+      "kind": "gear",
+      "slot": "armor",
+      "name": "Assault Plate",
+      "description": "Offensive plates that carry more punch and less sprint. A point-take and holdout pick: trade the rotate for the kill.",
+      "level": 18,
+      "modifiers": {
+        "damage": 1.1,
+        "speed": 0.93
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "field-medic-rig",
+      "unlockId": "gear-field-medic-rig",
+      "kind": "gear",
+      "slot": "utility",
+      "name": "Field Medic Rig",
+      "description": "Spawn health and a little armour for holdout and horde runs. The bulky rig opens your groups; sustain beats precision once the wave stops ending.",
+      "level": 8,
+      "modifiers": {
+        "health": 12,
+        "armor": 3,
+        "spread": 1.11
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "overcharge-cell",
+      "unlockId": "gear-overcharge-cell",
+      "kind": "gear",
+      "slot": "utility",
+      "name": "Overcharge Cell",
+      "description": "A hot cell that feeds every weapon a heavier shot and taxes your sprint. For last-stand defences and boss lanes.",
+      "level": 13,
+      "modifiers": {
+        "damage": 1.09,
+        "speed": 0.94
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "route-servo",
+      "unlockId": "gear-route-servo",
+      "kind": "gear",
+      "slot": "utility",
+      "name": "Route Servo",
+      "description": "A compact servo for faster infantry objective rotations. The extra hardware jitters your aim on the way in.",
+      "level": 17,
+      "modifiers": {
+        "speed": 1.07,
+        "spread": 1.05
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "brace-satchel",
+      "unlockId": "gear-brace-satchel",
+      "kind": "gear",
+      "slot": "utility",
+      "name": "Brace Satchel",
+      "description": "A braced rig that steadies follow-up shots at a small damage cost. For long duels where the third burst matters.",
+      "level": 21,
+      "modifiers": {
+        "spread": 0.9,
+        "damage": 0.93
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "targeting-uplink",
+      "unlockId": "gear-targeting-uplink",
+      "kind": "gear",
+      "slot": "utility",
+      "name": "Targeting Uplink",
+      "description": "The career capstone: a personal targeting link that steadies every burst at a real sprint cost.",
+      "level": 50,
+      "modifiers": {
+        "spread": 0.88,
+        "speed": 0.92
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "fortress-plate",
+      "unlockId": "gear-fortress-plate",
+      "kind": "gear",
+      "slot": "armor",
+      "name": "Fortress Plate",
+      "description": "The heaviest spawn-EHP slab in the pool, paid for with a slower, looser hold. Win the long fight, not the first duel.",
+      "level": 35,
+      "modifiers": {
+        "health": 11,
+        "armor": 4,
+        "spread": 1.09
+      },
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "extended-mag",
+      "unlockId": "attachment-extended-mag",
+      "kind": "attachment",
+      "slot": "magazine",
+      "name": "Extended Magazine",
+      "description": "A longer magazine and a slightly slower swap. More rounds between “oops.”",
+      "level": 1,
+      "modifiers": {
+        "cap": 12,
+        "reload": 1.1
+      },
+      "spec": [
+        "+10% RELOAD",
+        "+12 ROUNDS"
+      ],
+      "weapons": [
+        0,
+        3,
+        4,
+        6,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "holo-sight",
+      "unlockId": "attachment-holo-sight",
+      "kind": "attachment",
+      "slot": "optic",
+      "name": "Holo Sight",
+      "description": "A holographic reticle that tightens close-range spread. Looks cool, aims cooler.",
+      "level": 2,
+      "modifiers": {
+        "spread": 0.9
+      },
+      "spec": [
+        "-10% SPREAD"
+      ],
+      "weapons": [
+        0,
+        3,
+        4,
+        6,
+        7,
+        9
+      ]
+    },
+    {
+      "id": "long-barrel",
+      "unlockId": "attachment-long-barrel",
+      "kind": "attachment",
+      "slot": "barrel",
+      "name": "Long Barrel",
+      "description": "A longer barrel for reach and striking power. Compensating for something? Correct.",
+      "level": 3,
+      "modifiers": {
+        "range": 1.25,
+        "spread": 0.92,
+        "damage": 1.06
+      },
+      "spec": [
+        "+6% DMG",
+        "+25% RNG",
+        "-8% SPREAD"
+      ],
+      "weapons": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "quickdraw-grip",
+      "unlockId": "attachment-quickdraw-grip",
+      "kind": "attachment",
+      "slot": "underbarrel",
+      "name": "Quickdraw Grip",
+      "description": "A forward grip that speeds handling and steadiness. Just grip it and rip it.",
+      "level": 4,
+      "modifiers": {
+        "reload": 0.82,
+        "spread": 0.94,
+        "interval": 0.96
+      },
+      "spec": [
+        "-6% SPREAD",
+        "-4% CYCLE",
+        "-18% RELOAD"
+      ],
+      "weapons": []
+    },
+    {
+      "id": "scope",
+      "unlockId": "attachment-scope",
+      "kind": "attachment",
+      "slot": "optic",
+      "name": "Precision Scope",
+      "description": "Magnified optics trade field of view for accuracy at range. Patience, glass, profit.",
+      "level": 5,
+      "modifiers": {
+        "spread": 0.8,
+        "range": 1.2
+      },
+      "spec": [
+        "+20% RNG",
+        "-20% SPREAD"
+      ],
+      "weapons": [
+        0,
+        2,
+        4,
+        8
+      ]
+    },
+    {
+      "id": "suppressor",
+      "unlockId": "attachment-suppressor",
+      "kind": "attachment",
+      "slot": "barrel",
+      "name": "Suppressor",
+      "description": "A quiet barrel that tames kick but softens damage and reach. Sneaky, but not free.",
+      "level": 6,
+      "modifiers": {
+        "damage": 0.92,
+        "spread": 0.9,
+        "recoilKick": 0.82,
+        "range": 0.95
+      },
+      "spec": [
+        "-8% DMG",
+        "-5% RNG",
+        "-10% SPREAD",
+        "-18% KICK"
+      ],
+      "weapons": [
+        0,
+        4,
+        6,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "burst-module",
+      "unlockId": "attachment-burst-module",
+      "kind": "attachment",
+      "slot": "underbarrel",
+      "name": "Burst Module",
+      "description": "A fire-control module that groups each trigger pull into a tidy burst. Discipline, automated.",
+      "level": 8,
+      "modifiers": {
+        "burst": 3,
+        "interval": 1.05
+      },
+      "spec": [
+        "+5% CYCLE",
+        "BURST ×3"
+      ],
+      "weapons": [
+        0,
+        4,
+        9
+      ]
+    },
+    {
+      "id": "charge-coil",
+      "unlockId": "attachment-charge-coil",
+      "kind": "attachment",
+      "slot": "barrel",
+      "name": "Charge Coil",
+      "description": "Stores energy for a charged shot with doubled impact. Patience, weaponized.",
+      "level": 10,
+      "modifiers": {
+        "damage": 1.15,
+        "interval": 1.25
+      },
+      "spec": [
+        "+15% DMG",
+        "+25% CYCLE",
+        "CHARGE SHOT"
+      ],
+      "weapons": [
+        4,
+        6
+      ]
+    },
+    {
+      "id": "drum-mag",
+      "unlockId": "attachment-drum-mag",
+      "kind": "attachment",
+      "slot": "magazine",
+      "name": "Drum Magazine",
+      "description": "A high-capacity drum for sustained automatic fire. Feed the belt, fear nothing.",
+      "level": 12,
+      "modifiers": {
+        "cap": 45,
+        "reload": 1.35,
+        "spread": 1.05
+      },
+      "spec": [
+        "+5% SPREAD",
+        "+35% RELOAD",
+        "+45 ROUNDS"
+      ],
+      "weapons": [
+        0,
+        4,
+        9
+      ]
+    },
+    {
+      "id": "piercing-rounds",
+      "unlockId": "attachment-piercing-rounds",
+      "kind": "attachment",
+      "slot": "magazine",
+      "name": "Piercing Rounds",
+      "description": "Hardened rounds that punch through a line of targets. One shot, several problems.",
+      "level": 14,
+      "modifiers": {
+        "damage": 0.92,
+        "range": 1.1
+      },
+      "spec": [
+        "-8% DMG",
+        "+10% RNG",
+        "PIERCE ×2"
+      ],
+      "weapons": [
+        2,
+        8
+      ]
+    },
+    {
+      "id": "grenade-launcher",
+      "unlockId": "attachment-grenade-launcher",
+      "kind": "attachment",
+      "slot": "underbarrel",
+      "name": "Grenade Launcher",
+      "description": "An underbarrel tube that lobs a small explosive on each shot. Surprise geometry.",
+      "level": 15,
+      "modifiers": {
+        "damage": 0.96,
+        "spread": 1.06
+      },
+      "spec": [
+        "-4% DMG",
+        "+6% SPREAD",
+        "EXPLOSIVE"
+      ],
+      "weapons": [
+        0,
+        9
+      ]
+    },
+    {
+      "id": "explosive-tips",
+      "unlockId": "attachment-explosive-tips",
+      "kind": "attachment",
+      "slot": "magazine",
+      "name": "Explosive Tips",
+      "description": "Impact-fused rounds that detonate for area damage. Everything is a grenade if you believe.",
+      "level": 16,
+      "modifiers": {
+        "damage": 1.05,
+        "spread": 1.08
+      },
+      "spec": [
+        "+5% DMG",
+        "+8% SPREAD",
+        "EXPLOSIVE"
+      ],
+      "weapons": [
+        1,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "homing-beacon",
+      "unlockId": "attachment-homing-beacon",
+      "kind": "attachment",
+      "slot": "underbarrel",
+      "name": "Homing Beacon",
+      "description": "A targeting beacon that steers projectiles toward the target. Aiming is now a suggestion.",
+      "level": 18,
+      "modifiers": {
+        "spread": 0.95
+      },
+      "spec": [
+        "-5% SPREAD",
+        "HOMING"
+      ],
+      "weapons": [
+        1,
+        4
+      ]
+    },
+    {
+      "id": "chain-capacitor",
+      "unlockId": "attachment-chain-capacitor",
+      "kind": "attachment",
+      "slot": "underbarrel",
+      "name": "Chain Capacitor",
+      "description": "Arcs residual energy from a hit into a nearby second target. Sharing is caring.",
+      "level": 20,
+      "modifiers": {
+        "damage": 0.95,
+        "spread": 0.95
+      },
+      "spec": [
+        "-5% DMG",
+        "-5% SPREAD",
+        "CHAIN ×2"
+      ],
+      "weapons": [
+        4,
+        6
+      ]
+    },
+    {
+      "id": "red-dot",
+      "unlockId": "attachment-red-dot",
+      "kind": "attachment",
+      "slot": "optic",
+      "name": "Red Dot Sight",
+      "description": "A zero-magnification dot that clears the sight picture. The honest first upgrade.",
+      "level": 1,
+      "modifiers": {
+        "spread": 0.94
+      },
+      "spec": [
+        "-6% SPREAD"
+      ],
+      "weapons": []
+    },
+    {
+      "id": "marksman-optic",
+      "unlockId": "attachment-marksman-optic",
+      "kind": "attachment",
+      "slot": "optic",
+      "name": "Marksman Optic",
+      "description": "A high-magnification optic for rail and marksman work. Slower to settle, but it reaches.",
+      "level": 28,
+      "modifiers": {
+        "spread": 0.78,
+        "range": 1.22,
+        "interval": 1.06
+      },
+      "spec": [
+        "+22% RNG",
+        "-22% SPREAD",
+        "+6% CYCLE"
+      ],
+      "weapons": [
+        2,
+        6,
+        8
+      ]
+    },
+    {
+      "id": "short-barrel",
+      "unlockId": "attachment-short-barrel",
+      "kind": "attachment",
+      "slot": "barrel",
+      "name": "Short Barrel",
+      "description": "A stubby barrel that snaps up fast and trades reach and kick for speed. CQC, no apologies.",
+      "level": 5,
+      "modifiers": {
+        "range": 0.82,
+        "spread": 1.08,
+        "interval": 0.95,
+        "recoilKick": 1.12
+      },
+      "spec": [
+        "-18% RNG",
+        "+8% SPREAD",
+        "-5% CYCLE",
+        "+12% KICK"
+      ],
+      "weapons": [
+        3,
+        7,
+        9
+      ]
+    },
+    {
+      "id": "muzzle-brake",
+      "unlockId": "attachment-muzzle-brake",
+      "kind": "attachment",
+      "slot": "barrel",
+      "name": "Muzzle Brake",
+      "description": "Ports that tame kick and tighten follow-up shots at a sliver of damage. Control over sting.",
+      "level": 7,
+      "modifiers": {
+        "spread": 0.96,
+        "recoilKick": 0.78,
+        "damage": 0.97
+      },
+      "spec": [
+        "-3% DMG",
+        "-4% SPREAD",
+        "-22% KICK"
+      ],
+      "weapons": []
+    },
+    {
+      "id": "quick-mag",
+      "unlockId": "attachment-quick-mag",
+      "kind": "attachment",
+      "slot": "magazine",
+      "name": "Quick Magazine",
+      "description": "A sprung magazine that drops fast for a faster reload. Sprinting hands group a little looser.",
+      "level": 4,
+      "modifiers": {
+        "reload": 0.8,
+        "spread": 1.04
+      },
+      "spec": [
+        "+4% SPREAD",
+        "-20% RELOAD"
+      ],
+      "weapons": [
+        0,
+        3,
+        4,
+        6,
+        9
+      ]
+    },
+    {
+      "id": "match-ammo",
+      "unlockId": "attachment-match-ammo",
+      "kind": "attachment",
+      "slot": "magazine",
+      "name": "Match Ammunition",
+      "description": "Hand-loaded rounds for reach and stopping power, cycled a touch slower. For long team-elimination trades.",
+      "level": 12,
+      "modifiers": {
+        "damage": 1.06,
+        "range": 1.12,
+        "interval": 1.04
+      },
+      "spec": [
+        "+6% DMG",
+        "+12% RNG",
+        "+4% CYCLE"
+      ],
+      "weapons": [
+        2,
+        8
+      ]
+    },
+    {
+      "id": "vertical-grip",
+      "unlockId": "attachment-vertical-grip",
+      "kind": "attachment",
+      "slot": "underbarrel",
+      "name": "Vertical Grip",
+      "description": "A forward grip that steadies the muzzle while nudging the reload slower. Brace and hold.",
+      "level": 3,
+      "modifiers": {
+        "spread": 0.95,
+        "reload": 1.06
+      },
+      "spec": [
+        "-5% SPREAD",
+        "+6% RELOAD"
+      ],
+      "weapons": []
+    },
+    {
+      "id": "salvo-module",
+      "unlockId": "attachment-salvo-module",
+      "kind": "attachment",
+      "slot": "underbarrel",
+      "name": "Salvo Module",
+      "description": "A two-round burst module that turns each pull into a disciplined pair, at the cost of a slower cycle and a touch more scatter.",
+      "level": 22,
+      "modifiers": {
+        "interval": 1.08,
+        "spread": 1.04
+      },
+      "spec": [
+        "+4% SPREAD",
+        "+8% CYCLE",
+        "BURST ×2"
+      ],
+      "weapons": [
+        0,
+        4,
+        9
+      ]
+    },
+    {
+      "id": "finish-ion",
+      "unlockId": "finish-ion",
+      "kind": "finish",
+      "slot": "",
+      "name": "Ion Finish",
+      "description": "A charged cyan finish that hums along the barrel. Do not lick the gun.",
+      "level": 4,
+      "modifiers": {},
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "finish-ember",
+      "unlockId": "finish-ember",
+      "kind": "finish",
+      "slot": "",
+      "name": "Ember Finish",
+      "description": "A banked-coal orange with a steady glow. Warm to the touch, allegedly.",
+      "level": 10,
+      "modifiers": {},
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "finish-void",
+      "unlockId": "finish-void",
+      "kind": "finish",
+      "slot": "",
+      "name": "Void Finish",
+      "description": "A deep violet finish that swallows the light and the concept of retreat.",
+      "level": 18,
+      "modifiers": {},
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "finish-toxic",
+      "unlockId": "finish-toxic",
+      "kind": "finish",
+      "slot": "",
+      "name": "Toxic Finish",
+      "description": "An acid green finish that drips with menace. Environmentally concerning.",
+      "level": 6,
+      "modifiers": {},
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "finish-solar",
+      "unlockId": "finish-solar",
+      "kind": "finish",
+      "slot": "",
+      "name": "Solar Finish",
+      "description": "A burnished gold finish polished to a flare. Tacky in the best possible way.",
+      "level": 14,
+      "modifiers": {},
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "finish-crimson",
+      "unlockId": "finish-crimson",
+      "kind": "finish",
+      "slot": "",
+      "name": "Crimson Finish",
+      "description": "A blood red finish for close-range conversations.",
+      "level": 22,
+      "modifiers": {},
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "cross",
+      "unlockId": "cross",
+      "kind": "crosshair",
+      "slot": "",
+      "name": "Crosshair",
+      "description": "The classic four-line reticle. Tried, true, on every box art.",
+      "level": 1,
+      "modifiers": {},
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "dot",
+      "unlockId": "dot",
+      "kind": "crosshair",
+      "slot": "",
+      "name": "Dot",
+      "description": "A minimal single-pixel dot for precision flicks. For people who trust their mouse.",
+      "level": 1,
+      "modifiers": {},
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "ring",
+      "unlockId": "ring",
+      "kind": "crosshair",
+      "slot": "",
+      "name": "Ring",
+      "description": "An open ring that frames the target without clutter. Minimal, mean.",
+      "level": 1,
+      "modifiers": {},
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "chevron",
+      "unlockId": "chevron",
+      "kind": "crosshair",
+      "slot": "",
+      "name": "Chevron",
+      "description": "A downward chevron tuned for burst control. Peek responsibly.",
+      "level": 8,
+      "modifiers": {},
+      "spec": [],
+      "weapons": []
+    },
+    {
+      "id": "split",
+      "unlockId": "split",
+      "kind": "crosshair",
+      "slot": "",
+      "name": "Split",
+      "description": "A split reticle that reads gaps at long range. For the patient.",
+      "level": 16,
+      "modifiers": {},
+      "spec": [],
+      "weapons": []
+    }
+  ]
+}
