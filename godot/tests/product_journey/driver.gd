@@ -136,12 +136,14 @@ func home_career_step(visit: int) -> bool:
 	if not require_value(career.profile.is_empty(), "Home has a stale career from a previous process"): return false
 	scene.career_button.pressed.emit()
 	await process_frame
+	await process_frame
 	if not require_value(career.active() and not settings.overlay_open(), "Home Career button did not open a single overlay"): return false
 	if not require_value(career.state_label.text.contains("NO CONNECTED CAREER"), "Home fabricated a connected profile"): return false
 	var home_rows := career.details.find_child("CatalogRows", true, false) as VBoxContainer
 	if not require_value(home_rows != null and home_rows.get_child_count() > 0, "Home catalog missing"): return false
 	var first_label := home_rows.get_child(0).get_child(0) as Label
 	if not require_value(first_label != null and first_label.text.contains("NOT LOADED"), "Home catalog fabricated unlock status"): return false
+	if not career_bounds(): return false
 	if visit == 0 and OS.get_environment("COCS_JOURNEY_CAPTURE") == "1":
 		if not career_bounds(): return false
 		await capture_view("career-home-1280x800")
@@ -276,6 +278,7 @@ func live_career_step() -> bool:
 	if not require_value(settings.career_button.visible, "live Settings has no Career entry"): return false
 	settings.career_button.pressed.emit()
 	await process_frame
+	await process_frame
 	if not require_value(career.active() and not settings.overlay_open() and not paused, "live Career did not open while authority continued"): return false
 	var has_profile: bool = not career.profile.is_empty()
 	if route_id in ["combat", "lattice-world"]:
@@ -284,6 +287,7 @@ func live_career_step() -> bool:
 		if not require_value(career.state_label.text.contains("CONNECTED SOURCE CAREER") and not career.state_label.text.contains("NO CONNECTED CAREER"), "live source profile not projected"): return false
 	else:
 		if not require_value(career.state_label.text.contains("NO CONNECTED CAREER"), "adapter without source profile invented progress"): return false
+	if not career_bounds(): return false
 	if route_id == "lattice-world" and int(record.visits) == 2 and OS.get_environment("COCS_JOURNEY_CAPTURE") == "1":
 		if not career_bounds(): return false
 		await capture_view("career-live-profile-1280x800")
