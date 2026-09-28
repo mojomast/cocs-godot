@@ -29,6 +29,9 @@ var last_frame: Dictionary = {}
 var room_browser
 var chat_panel
 var browser_phase: int = -999
+# Sticky browsed-room note, kept visible under the per-phase status text until
+# the user connects, clears the room, or changes role.
+var selection_note := ""
 
 func field(title: String, control: Control) -> void:
 	var caption := Label.new()
@@ -129,29 +132,84 @@ func _ready() -> void:
 	resize_panel()
 	refresh()
 
-# Room-list request. If already connected, queue the source `list` verb over the
-# live connection; otherwise connect this endpoint as an unseated browser (the
-# session auto-refreshes once it opens). The browser times the reply out itself.
+# Room-list request. If already connected on the entered endpoint, queue the
+# source `list` verb over that live connection. If the endpoint field was edited
+# while unseated, reconnect explicitly to the new text instead of silently
+# listing the old connection. A seated connection keeps its bound endpoint (the
+# field is locked while seated).
 func request_rooms() -> void:
-	if session.client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
+	var url := endpoint.text.strip_edges()
+	var open: bool = session.client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN
+	if open:
+		if url != session.endpoint:
+			if session.phase in [-3, -1, -4] and session.has_method("browse_rooms"):
+				room_browser.fail("Endpoint changed — reconnecting to %s…" % url)
+				browser_phase = -999
+				session.browse_rooms(url)
+			else:
+				room_browser.fail("Leave the room before changing the endpoint.")
+			return
 		room_browser.mark_refreshing()
 		if session.client.request_rooms() != OK:
 			room_browser.fail("Room list request could not be queued.")
 		return
-	if session.has_method("browse_rooms") and session.phase in [-3, -1]:
+	if session.has_method("browse_rooms") and session.phase in [-3, -1, -4]:
 		room_browser.fail("Connecting to browse rooms…")
-		session.browse_rooms(endpoint.text.strip_edges())
+		session.browse_rooms(url)
 	else:
 		room_browser.fail("Connect before refreshing rooms on this server.")
 
-# Selecting a row only fills the explicit guest join fields: the connect step
-# stays user-driven so the source active-room spectate rule is never bypassed.
-func select_room(room_id: String) -> void:
+# Selecting a row fills the explicit guest join fields AND the advertised
+# map/mode when this build's registry supports them. The connect step stays
+# user-driven, so an in-progress room still seats the joiner as a spectator.
+func select_room(record: Dictionary) -> void:
+	if record.is_empty(): return
+	var room_id := str(record.get("roomId", ""))
 	if room_id.is_empty(): return
 	role.select(1)
 	room.text = room_id
 	room.editable = true
-	status.text = "Selected room %s — press Join lobby to connect explicitly." % room_id
+	var map_id := str(record.get("mapId", ""))
+	var mode := str(record.get("mode", ""))
+	var map_supported: bool = not map_id.is_empty() and entries.has(map_id)
+	var mode_supported: bool = map_supported and mode in entries[map_id].get("modes", [])
+	if map_supported: select_map(map_id)
+	if mode_supported: select_mode(mode)
+	var note := "Selected room %s" % room_id
+	if not map_supported:
+		note += " — advertised map '%s' is not in this build's registry; choose a supported map manually." % (map_id if not map_id.is_empty() else "unknown")
+	elif not mode_supported:
+		note += " — advertised mode '%s' is not supported for %s; the authority's mode is adopted on join." % [mode if not mode.is_empty() else "unknown", map_id]
+	else:
+		note += " — %s / %s. Press Join lobby" % [map_id, mode]
+		if record.get("started") == true: note += " (in progress — you will join as a spectator)."
+		else: note += "."
+	selection_note = note
+	status.text = note
+
+func map_index(id: String) -> int:
+	for index: int in maps.item_count:
+		if str(maps.get_item_metadata(index)) == id: return index
+	return -1
+
+func mode_index(id: String) -> int:
+	for index: int in modes.item_count:
+		if str(modes.get_item_metadata(index)) == id: return index
+	return -1
+
+# Selects an advertised map/mode only when the registry explicitly offers it.
+func select_map(id: String) -> bool:
+	var index := map_index(id)
+	if index < 0: return false
+	maps.select(index)
+	populate_modes()
+	return true
+
+func select_mode(id: String) -> bool:
+	var index := mode_index(id)
+	if index < 0: return false
+	modes.select(index)
+	return true
 
 func capturing_input() -> bool:
 	return is_instance_valid(chat_panel) and chat_panel.capturing_input()
@@ -293,14 +351,23 @@ func refresh() -> void:
 	back_button.visible = phase != -3
 	back_button.text = "Cancel browse" if phase == -4 else "Back / Leave room"
 	var messages := {-3:"Disconnected · choose settings and connect explicitly.", -4:"Browsing server rooms · select a room, then Join lobby as guest.", 0:"Connecting…", 1:"Creating room…", 2:"Configuring…", 10:"Joining…", 11:"Waiting for host. Active-room joins stay read-only through restart. Leave and join between rounds to request play.", 12:"Lobby ready · share room code, wait for guests, then Start."}
-	status.text = session.label.text if phase == -1 else str(messages.get(phase, ""))
+	var page_status: String = session.label.text if phase == -1 else str(messages.get(phase, ""))
+	# A browsed-room note stays visible under the phase text only while the guest
+	# form is editable; it is dropped once the user connects or changes role.
+	if role.selected != 1 or phase not in [-3, -4]: selection_note = ""
+	if phase in [-3, -4] and not selection_note.is_empty():
+		page_status = (page_status + "\n" + selection_note) if not page_status.is_empty() else selection_note
+	status.text = page_status
 	if phase == -3:
 		roster.text = "No room joined. Native maps/modes marked pending cannot be started."
 		var problem := Setup.validate(entries, str(maps.get_selected_metadata()), str(modes.get_selected_metadata()))
 		if not problem.is_empty() and role.selected == 0: status.text += "\n" + problem
-	# Room browser tracks the live connection and asks once when browse opens.
+	# Room browser tracks the live connection and asks once when browse opens. The
+	# endpoint label shows the connection the browser is actually bound to.
 	if is_instance_valid(room_browser):
-		room_browser.sync(session.client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN)
+		var open: bool = session.client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN
+		room_browser.sync(open)
+		room_browser.set_endpoint(("Endpoint: %s" % session.endpoint) if (open and not session.endpoint.is_empty()) else "Endpoint: not connected")
 		if phase == -4 and browser_phase != -4: request_rooms()
 	browser_phase = phase
 

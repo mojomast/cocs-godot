@@ -141,7 +141,9 @@ func lobby_connect(url: String, player_name: String, room: String, map_id: Strin
 # scanning or discovery of any other address. Choosing a room then uses the
 # normal explicit join path, so the source's active-room spectator rule holds.
 func browse_rooms(url: String) -> void:
-	if not lobby_enabled or phase not in [-3, -1]: return
+	# -4 is a live browse seat: re-browsing there must reconnect to the newly
+	# entered endpoint instead of listing the previous connection.
+	if not lobby_enabled or phase not in [-3, -1, -4]: return
 	if not (url.begins_with("ws://") or url.begins_with("wss://")) or url.contains("@") or url.contains("\n"):
 		on_error("Use an explicit ws:// or wss:// endpoint without embedded credentials.")
 		return

@@ -8,12 +8,15 @@ extends VBoxContainer
 ## never invents a room's map/mode/player count/lifecycle the authority omitted.
 
 signal refresh_requested
-signal room_selected(room_id: String)
+# The full normalized record, so the lobby can populate the advertised map/mode
+# as well as the room code (not just the code).
+signal room_selected(room: Dictionary)
 
 const Model = preload("res://social/social_model.gd")
 const REQUEST_TIMEOUT := 6.0
 
 var caption := Label.new()
+var endpoint_label := Label.new()
 var status := Label.new()
 var refresh_button := Button.new()
 var search := LineEdit.new()
@@ -32,6 +35,9 @@ func _ready() -> void:
 	add_theme_constant_override("separation", 4)
 	caption.text = "ROOMS ON THIS SERVER"
 	caption.add_theme_font_size_override("font_size", 14)
+	endpoint_label.text = "Endpoint: not connected"
+	endpoint_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	endpoint_label.add_theme_color_override("font_color", Color(0.68, 0.76, 0.82))
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	status.add_theme_color_override("font_color", Color(0.68, 0.76, 0.82))
 	var controls := HBoxContainer.new()
@@ -52,10 +58,15 @@ func _ready() -> void:
 	empty_note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	empty_note.add_theme_color_override("font_color", Color(0.68, 0.76, 0.82))
 	list_box.add_theme_constant_override("separation", 2)
-	for node: Control in [caption, status, controls, empty_note, list_box]:
+	for node: Control in [caption, endpoint_label, status, controls, empty_note, list_box]:
 		add_child(node)
 	sync(false)
 	rebuild()
+
+# The endpoint this browser is actually bound to (the open connection), not the
+# editable field text. Set every frame by the lobby.
+func set_endpoint(label: String) -> void:
+	endpoint_label.text = label
 
 # Called every frame by the lobby with the live connection state. Status text is
 # updated only on a transition so the browser never flickers.
@@ -95,9 +106,9 @@ func fail(message: String) -> void:
 	elapsed = 0.0
 	status.text = message if not message.is_empty() else "Room list request failed."
 
-func select_room(room_id: String) -> void:
-	if room_id.is_empty(): return
-	room_selected.emit(room_id)
+func select_room(record: Dictionary) -> void:
+	if record.is_empty(): return
+	room_selected.emit(record)
 
 func visible_rooms() -> Array:
 	var filtered: Array = Model.filter_rooms(all_rooms, search.text, hide_started.button_pressed)
@@ -131,7 +142,7 @@ func row_for(room: Dictionary) -> Control:
 	code.text = str(room.get("roomId", ""))
 	code.custom_minimum_size.x = 78
 	code.tooltip_text = "Select room %s" % code.text
-	code.pressed.connect(select_room.bind(code.text))
+	code.pressed.connect(select_room.bind(room))
 	row.add_child(code)
 	var name := str(room.get("name", ""))
 	if name.is_empty(): name = "(unnamed room)"

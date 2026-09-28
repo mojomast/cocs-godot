@@ -11,7 +11,6 @@ extends Control
 ## so a single-player route never grows an inert chat surface.
 
 const Model = preload("res://social/social_model.gd")
-const Names = preload("res://ui/scoreboard.gd")
 const PENDING_TIMEOUT_MS := 2500
 
 signal opened
@@ -159,9 +158,18 @@ func send() -> void:
 func _on_chat(frame: Dictionary) -> void:
 	if session == null: return
 	var client: Node = session.get("client")
-	# Room scope: never render a line when this connection has no seat, or when
-	# it arrived after the seated room changed (late frame).
-	if str(client.get("room_id")).is_empty(): return
+	# Room scope: never render a line when this connection has no seat. The chat
+	# frame carries no room id, so membership is not independently verifiable;
+	# the authority only ever broadcasts inside the sender's room and the
+	# WebSocket is ordered, so a line that arrives after a welcome belongs to the
+	# room that is current now. Sync `bound_room` BEFORE appending so a line that
+	# arrives in the same poll as the welcome is not erased by the next
+	# `_process` room-change clear.
+	var room := str(client.get("room_id"))
+	if room.is_empty(): return
+	if room != bound_room:
+		clear_log()
+		bound_room = room
 	var line: Dictionary = Model.chat_line(frame, int(client.get("peer_id")))
 	if line.is_empty(): return
 	if pending_at >= 0 and line.get("self", false) == true and str(line.get("text", "")) == pending_text:
@@ -177,10 +185,16 @@ func _on_connection_error(_message: String) -> void:
 	clear_log()
 	bound_room = ""
 	status.text = ""
+	# A dropped connection must not leave the modal over a dead seat or keep a
+	# draft that would leak into the next room.
+	if capturing_input(): close()
 
 func append_line(line: Dictionary) -> void:
 	var label := Label.new()
-	label.text = Names.plain(Model.chat_log_label(line), "Player", 256)
+	# The model already strict-sanitized the name and text (String-only, control
+	# stripped, JS-trimmed, UTF-16 bounded) and never coerces a non-string, so the
+	# plain Label renders the source content without further mangling.
+	label.text = Model.chat_log_label(line)
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	log_box.add_child(label)
@@ -197,6 +211,8 @@ func clear_log() -> void:
 	pending_text = ""
 	pending_at = -1
 	last_send_ms = -1
+	# Drop the draft too: a half-typed line must never carry into another room.
+	input.text = ""
 
 func _process(_delta: float) -> void:
 	if session == null: return

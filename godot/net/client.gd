@@ -22,6 +22,7 @@ const PROTOCOL_VERSION := 3
 # classify an `unknown message type: <verb>` capability notice as non-fatal.
 const MESSAGE_VERB_CHAT := "chat"
 const MESSAGE_VERB_LIST := "list"
+const SocialModel = preload("res://social/social_model.gd")
 const Loadout = preload("res://ui/loadout.gd")
 const MAX_FRAME_BYTES := 1048576 # bounded initial cap; capture is not all-map worst case
 var peer := WebSocketPeer.new()
@@ -170,12 +171,14 @@ func social_refusal(message: Variant) -> bool:
 func request_rooms() -> Error:
 	return send_frame({"type":"list"})
 
-# Room-scoped text chat. The authority sanitizes (control-strip + trim + 200-char
-# slice), rate-limits and broadcasts the accepted line back to the room, so this
-# client never optimistically echoes a message it sent. Locally bounded to the
-# source ceiling so an oversized frame is refused before it hits the wire.
+# Room-scoped text chat. The authority sanitizes, rate-limits and broadcasts the
+# accepted line back to the room, so this client never optimistically echoes a
+# message it sent. The draft is bounded by the same source sanitizer the UI and
+# the server use (control strip + JS trim + 200 UTF-16 units), so a message this
+# client accepts is byte-identical to the authority's echo and the pending line
+# resolves without an emoji/surrogate mismatch.
 func send_chat(text: String) -> Error:
-	var clean: String = text.strip_edges().left(200)
+	var clean := SocialModel.sanitize(text, SocialModel.CHAT_TEXT_LIMIT)
 	if clean.is_empty(): return ERR_INVALID_PARAMETER
 	return send_frame({"type":"chat", "text":clean})
 

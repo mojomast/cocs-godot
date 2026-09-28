@@ -130,6 +130,22 @@ test('chat is room-scoped, sanitized, and shared with a seated spectator', async
   await Promise.all([a.client.close(), b.client.close(), spectator.client.close(), outsider.client.close()]);
 });
 
+test('the source ceiling counts UTF-16 units and trims JS whitespace', async t => {
+  const s = await withServer(t);
+  const a = await seat(s.port, {name: 'Host A', roomName: 'Alpha room'});
+  a.client.send({type: 'chat', text: `${'😀'.repeat(150)}\u00a0`});
+  const emoji = await a.client.wait(f => f.type === 'chat', 'emoji chat reply');
+  assert.equal([...emoji.text].length, 100, 'cuts at 100 supplementary codepoints, not 200, because each emoji is two UTF-16 units');
+  assert.equal(emoji.text.length, 200, 'the echoed text is exactly 200 UTF-16 units');
+  assert.ok(!emoji.text.includes('\u00a0'), 'the trailing JS whitespace was trimmed');
+
+  await new Promise(resolve => setTimeout(resolve, 400));
+  a.client.send({type: 'chat', text: '\ufeff\u00a0hello\u3000'});
+  const trimmed = await a.client.wait(f => f.type === 'chat' && f.text === 'hello', 'JS trim reply');
+  assert.equal(trimmed.text, 'hello', 'JS trim removes FEFF/NBSP/ideographic whitespace');
+  await a.client.close();
+});
+
 test('the 300 ms source floor drops a same-peer chat burst', async t => {
   const s = await withServer(t);
   const a = await seat(s.port, {name: 'Host A', roomName: 'Alpha room'});

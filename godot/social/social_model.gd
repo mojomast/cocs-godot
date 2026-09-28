@@ -2,53 +2,89 @@ extends RefCounted
 ## Pure social helpers for the native room browser and room-scoped chat.
 ##
 ## Nothing here touches the authority, the seat or the wire: it mirrors the
-## source's `sanitizeText` ceiling, normalizes the room summaries the server
-## already advertises (`roomId`, `name`, `mapId`, `config.mode`, `players`,
-## `started`), and formats them without ever guessing a value the authority did
-## not send. Display labels are plain strings so every caller can render them in
-## a plain `Label` (no BBCode/RichText parsing of untrusted names).
+## source `sanitizeText` exactly (control strip, JS `trim`, 200 **UTF-16 unit**
+## slice), normalizes the room summaries the server already advertises
+## (`roomId`, `name`, `mapId`, `config.mode`, `players`, `started`), and formats
+## them without ever guessing a value the authority did not send. Every untrusted
+## field must already be a `String`; a non-string is dropped, never `str()`-cast
+## into content. Display labels are plain strings so callers can render them in a
+## plain `Label` (no BBCode/RichText parsing of untrusted names).
 
 # Source `sanitizeText(value, 200)` ceiling (game/protocol.mjs) used by
 # Room.chat, and the 32-char room-name slice used by RoomRegistry.create.
+# These are UTF-16 code units, matching JavaScript `String.prototype.slice`.
 const CHAT_TEXT_LIMIT := 200
 const CHAT_NAME_LIMIT := 32
-# Source Room.chat per-peer floor: messages inside 300 ms are dropped. The UI
-# mirrors this so a fast typist is told instead of silently losing a line.
+# Source Room.chat per-peer floor: messages inside 300 ms are dropped.
 const CHAT_COOLDOWN_MS := 300
-# Presentation bounds. The authority caps rooms at 64 (RoomRegistry); a client
-# that renders only the first N honest rows is bounded without pretending.
+# Presentation bounds. The authority caps rooms at 64 (RoomRegistry).
 const ROOM_ROWS_LIMIT := 24
 const CHAT_LOG_LIMIT := 120
 
-# Mirror of the source sanitizer: drop C0/C1-ish control chars, trim edges,
-# then slice by characters. Accepts any Variant (untrusted) and never returns
-# null, so callers can always render the result.
-static func sanitize(value: Variant, max_length: int) -> String:
-	var text: String = str(value) if value != null else ""
+# ECMAScript `String.prototype.trim` whitespace + line terminators.
+static func is_js_whitespace(code: int) -> bool:
+	if code in [0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x20, 0xa0, 0x1680, 0x2028, 0x2029, 0x202f, 0x205f, 0x3000, 0xfeff]:
+		return true
+	return code >= 0x2000 and code <= 0x200a
+
+static func js_trim(text: String) -> String:
+	var start := 0
+	var end := text.length()
+	while start < end and is_js_whitespace(text.unicode_at(start)): start += 1
+	while end > start and is_js_whitespace(text.unicode_at(end - 1)): end -= 1
+	return text.substr(start, end - start)
+
+# JavaScript string length is UTF-16 code units; a supplementary codepoint (for
+# example an emoji) costs two. GDScript `String.length()` counts codepoints.
+static func utf16_length(text: String) -> int:
+	var units := 0
+	for index: int in text.length():
+		units += 2 if text.unicode_at(index) > 0xffff else 1
+	return units
+
+# Slice to at most `max_units` UTF-16 units without splitting a codepoint.
+static func truncate_utf16(text: String, max_units: int) -> String:
+	var units := 0
 	var kept := ""
 	for index: int in text.length():
 		var code: int = text.unicode_at(index)
-		if code <= 0x1f or code == 0x7f:
-			continue
+		var cost := 2 if code > 0xffff else 1
+		if units + cost > max_units: break
 		kept += text[index]
-	return kept.strip_edges().left(maxi(0, max_length))
+		units += cost
+	return kept
 
-static func string_or_empty(value: Variant, max_length: int) -> String:
-	return sanitize(value, max_length) if value is String else ""
+# Exact mirror of the source sanitizer for one untrusted String value:
+# `String(value).replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, max)`.
+# A non-String value yields "" (never a coerced "123"/"null").
+static func sanitize(value: Variant, max_units: int) -> String:
+	if not value is String: return ""
+	var text: String = value
+	var kept := ""
+	for index: int in text.length():
+		var code: int = text.unicode_at(index)
+		if code <= 0x1f or code == 0x7f: continue
+		kept += text[index]
+	return truncate_utf16(js_trim(kept), maxi(0, max_units))
 
-# Normalize one authority room summary. Returns {} when the record has no usable
-# identity. Fields the authority omitted stay explicit unknowns:
-#   players  == -1  -> count not advertised
-#   started  == null -> lifecycle not advertised
-#   mode     == ""   -> config/mode not advertised (never inferred available)
+# Normalize one authority room summary. Returns {} unless `roomId` is a non-empty
+# String. Fields the authority omitted stay explicit unknowns:
+#   players  == -1    -> count not advertised or not a whole number
+#   started  == null  -> lifecycle not advertised
+#   mode     == ""    -> config/mode not advertised (never inferred available)
 static func normalize_room(record: Variant) -> Dictionary:
 	if not record is Dictionary: return {}
+	if not record.get("roomId") is String: return {}
 	var room_id := sanitize(record.get("roomId"), 64)
 	if room_id.is_empty(): return {}
 	var players := -1
 	var raw_players: Variant = record.get("players")
-	if (raw_players is int or raw_players is float) and is_finite(float(raw_players)) and float(raw_players) >= 0.0:
-		players = int(floor(float(raw_players)))
+	if raw_players is int:
+		players = int(raw_players)
+	elif raw_players is float and is_finite(float(raw_players)) and float(raw_players) >= 0.0 and float(raw_players) == floorf(float(raw_players)):
+		# Accept an integral JSON float; a fractional count stays unknown rather
+		# than being floored into a fake availability.
+		players = int(raw_players)
 	var started: Variant = record.get("started")
 	var config: Variant = record.get("config")
 	var mode := ""
@@ -56,11 +92,10 @@ static func normalize_room(record: Variant) -> Dictionary:
 	if config is Dictionary and config.get("mode") is String:
 		mode = sanitize(config.get("mode"), 32)
 		mode_known = true
-	var map_id := string_or_empty(record.get("mapId"), 64)
 	return {
 		"roomId": room_id,
 		"name": sanitize(record.get("name"), CHAT_NAME_LIMIT),
-		"mapId": map_id,
+		"mapId": sanitize(record.get("mapId"), 64),
 		"mode": mode,
 		"modeKnown": mode_known,
 		"configKnown": config is Dictionary,
@@ -76,9 +111,8 @@ static func normalize_rooms(rows: Variant) -> Array:
 		if not room.is_empty(): rooms.append(room)
 	return rooms
 
-# Stable, locale-aware ordering used by the browser. `key` is one of
-# "players" / "name" / "status"; unknown keys fall back to name order. Ties break
-# on the room code so two refreshes of the same data never reshuffle.
+# Stable, locale-aware ordering. `key` is "players" or "name"; unknown keys fall
+# back to name order. Ties break on the room code so a refresh never reshuffles.
 static func sort_rooms(rooms: Array, key: String, ascending: bool) -> Array:
 	var copy: Array = rooms.duplicate()
 	copy.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
@@ -97,8 +131,8 @@ static func sort_rooms(rooms: Array, key: String, ascending: bool) -> Array:
 		return result < 0 if ascending else result > 0)
 	return copy
 
-# Case-insensitive search over the fields the browser actually shows: code,
-# name, map and mode. An empty query keeps every room.
+# Case-insensitive search over the fields the browser shows: code, name, map,
+# mode. An empty query keeps every room.
 static func filter_rooms(rooms: Array, query: String, hide_started: bool = false) -> Array:
 	var needle := query.strip_edges().to_lower()
 	var kept: Array = []
@@ -137,12 +171,18 @@ static func room_label(room: Dictionary) -> String:
 	return "%s / %s · %s · %s" % [map_label(room), mode_label(room), players_label(room), status_label(room)]
 
 # Room-scoped chat line normalized for display. `self_peer` tags the local
-# player's own line (still sourced only from the authority's broadcast).
+# player's own line. Non-string text/name are dropped/blank, never coerced; a
+# fractional peer id is not a valid seat and never claims "self".
 static func chat_line(frame: Dictionary, self_peer: int) -> Dictionary:
-	var raw_peer: Variant = frame.get("peerId")
-	var peer := int(raw_peer) if (raw_peer is int or raw_peer is float) and is_finite(float(raw_peer)) else -1
+	if not frame.get("text") is String: return {}
 	var text := sanitize(frame.get("text"), CHAT_TEXT_LIMIT)
 	if text.is_empty(): return {}
+	var raw_peer: Variant = frame.get("peerId")
+	var peer := -1
+	if raw_peer is int:
+		peer = int(raw_peer)
+	elif raw_peer is float and is_finite(float(raw_peer)) and float(raw_peer) == floorf(float(raw_peer)):
+		peer = int(raw_peer)
 	return {
 		"peerId": peer,
 		"name": sanitize(frame.get("name"), CHAT_NAME_LIMIT),

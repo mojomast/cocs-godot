@@ -12,17 +12,37 @@ connects the *entered* endpoint as an unseated browse seat (phase `-4`). It show
 the authority's advertised rooms with name / map / mode / player count / lifecycle
 status, is searchable, scopes only to the selected endpoint (no scanning or
 discovery of any other address) and never invents a field the authority omitted.
-Selecting a row only fills the explicit guest join fields; the connect step stays
-user-driven so the source's active-room spectator rule is preserved.
+Selecting a row fills the explicit guest fields **and** the advertised map/mode
+when this build's registry explicitly supports them (so joining a non-default map
+— for example a Verdant room while the dropdown defaulted to Meridian — passes the
+client's strict `validate_map`). An advertised map this build does not have, or an
+unsupported mode, is reported honestly and the manual choice is left untouched.
+The connect step stays user-driven, so the source's active-room spectator rule is
+preserved.
+
+`Browse / Refresh` is bound to the connection it actually opened, not the field
+text: an endpoint edited while unseated reconnects explicitly to the new text on
+Refresh (browse seats are allowed to re-browse), and the panel labels the bound
+endpoint. While seated, the field is locked and the browser keeps the session's
+bound endpoint.
 
 **Room chat** (`godot/social/chat_panel.gd`) available in the lobby and the live
 round on the same connection. `Chat` opens a modal panel; the local player's line
 is only displayed when the authority broadcasts it back — there is no optimistic
 echo. The log is cleared whenever the seated room changes or the connection drops,
-so no line can leak across rooms or sessions.
+and a disconnect also closes the modal and clears the unsent draft. The first line
+of a newly seated room is not erased by the room-change clear (the bound room is
+synced before appending). Chat frames carry no room id: the authority only
+broadcasts inside the sender's room and the WebSocket is ordered, so membership is
+not independently verifiable — clearing is done on room change/generation rather
+than by rejecting arbitrary frames.
 
-**Pure model** (`godot/social/social_model.gd`): the source `sanitizeText` mirror,
-room-record normalization, sort/filter, and truthful labels.
+**Pure model** (`godot/social/social_model.gd`): the source `sanitizeText` mirror
+(control strip + JS `trim` including NBSP/FEFF/ideographic whitespace + a
+**UTF-16-unit** 200 ceiling, never splitting a surrogate pair), strict
+room-record normalization (a non-`String` `roomId` is rejected, a fractional
+player count stays unknown, non-string name/map/mode are dropped), sort/filter,
+and truthful labels.
 
 ## Exact protocol API consumed (source facts)
 
@@ -40,11 +60,16 @@ Honesty rules implemented from those facts:
 
 - `config === null` ⇒ mode **unknown** (never inferred available).
 - missing `players`/`started` ⇒ `player count unknown` / `STATUS UNKNOWN`.
-- `Room.chat` sanitizes to 200 chars and drops sends inside a 300 ms per-peer
-  floor; the client mirrors the 200 cap and the 300 ms floor, but *says so*
-  instead of silently dropping. A send is shown as `Sending…` until the
-  authority echoes it, then `No server confirmation (rate-limited or dropped by
-  the authority)` after 2.5 s with no echo.
+- `Room.chat` sanitizes to 200 **UTF-16 units** (`String.slice`) and drops sends
+  inside a 300 ms per-peer floor; the client mirrors the exact ceiling and the
+  300 ms floor, but *says so* instead of silently dropping. Because GDScript
+  `left()` counts codepoints while `slice()` counts UTF-16 units, the model
+  bounds by UTF-16 units and never splits a surrogate pair — 200 emoji become
+  100 emoji client-side and server-side alike, so the echo matches the pending
+  line. `client.send_chat` reuses the model sanitizer rather than a different
+  strip/left. A send is shown as `Sending…` until the authority echoes it, then
+  `No server confirmation (rate-limited or dropped by the authority)` after
+  2.5 s with no echo.
 - A `chat` refused with `{type:'error', message:'not in a room'}`, a server that
   never implemented the verb (`unknown message type: chat` / `: list`) and a
   malformed `rooms`/`chat` frame are non-fatal `social_error` notices, not
@@ -75,14 +100,16 @@ gameplay input adapters gate on it exactly like `SettingsAccess.overlay_open()`:
 - `godot/world/session.gd` — additive `browse_rooms()` (phase `-4`),
   `social_capturing()` and the three guard checks.
 - `godot/tests/protocol/lobby_social.gd` — synthetic offline test.
+- `godot/tests/protocol/lobby_social_observer.gd` — live journey observer.
 - `port/native-social/social_authority.test.mjs` — real-authority wire test.
+- `port/native-social/social_journey.mjs` — real two-client native journey.
 
 ## Tests and commands
 
 ```bash
-# Both groups (authority always; native when GODOT_BIN is set):
+# Both offline groups (authority always; native when GODOT_BIN is set):
 GODOT_BIN=/path/to/Godot_v4.5.2-stable_linux.x86_64 port/native-social/run.sh
-#   -> authority  PASS (4 subtests)
+#   -> authority  PASS (5 subtests)
 #   -> native     PORT_SOCIAL_OK checks=<n> failures=0
 #   -> PORT_NATIVE_SOCIAL_OK
 
@@ -91,21 +118,45 @@ node --test port/native-social/social_authority.test.mjs
 
 # Native synthetic group alone:
 GODOT_BIN=... godot --headless --path godot --script res://tests/protocol/lobby_social.gd
+
+# Live native journey (private Xvfb; needs imported content assets):
+GODOT_BIN=... node port/native-social/social_journey.mjs
 ```
 
-Covered by the authority test: two real rooms listed with exact summary fields,
-`config: null` for an unconfigured room, chat sanitization (control strip + newline
-strip + 200 cap), room-scope isolation between two rooms, a seated spectator
-sharing and sending room chat, the 300 ms burst floor, `not in a room` and
-unknown-verb correlated errors.
+Observed this round (pinned `Godot_v4.5.2-stable`): authority `5/5`; native
+fixture `PORT_SOCIAL_OK checks=80 failures=0`; and the existing regression
+fixtures I could affect — `envelopes` 95/95, `lobby_popup_free` 63/63,
+`lobby_followup_geometry` 75/75 at 960x640 and 1280x800 (Xvfb), and the whole
+`godot/tests/loadouts/run.sh` (`PORT_LOADOUT_OFFLINE_OK`). The live journey is
+written and `node --check` clean but requires imported content assets, so the
+parent runs it when available.
 
-Covered by the native test: model sanitization/unknowns/sort/filter; browser
-render of valid rows and skipping of malformed/non-dict records; unknown
-map/mode/status wording; select-fills-fields-without-join; non-fatal malformed
-`rooms` and `not in a room` handling; send-is-pending until the source echo;
-local rate refusal is worded; room-change clears the log; a late frame with no
-seat never renders; toggle and panel fit 960x640 and 1280x800 at 150% scale;
-real-Session `browse_rooms` URL validation and `social_capturing` wiring.
+Covered by the live journey: the guest browses the live list, selects the host's
+Verdant row through the UI (map/mode populate, no `validate_map` teardown), opens
+live chat, types a line that is queued and echoed into the native log, verifies a
+third client in another room receives nothing, confirms typing W and a click while
+chat is open move/fire nothing, closes chat on a fresh click, leaves while the
+external host room keeps running, and fits the toggle/panel at 960x640 and
+1280x800 at 150% scale.
+
+Covered by the authority test: two real rooms listed with exact summary fields,
+`config: null` for an unconfigured room, chat sanitization (control strip + JS
+trim + 200 UTF-16 units, emoji and NBSP/FEFF edges), room-scope isolation between
+two rooms, a seated spectator sharing and sending room chat, the 300 ms burst
+floor, `not in a room` and unknown-verb correlated errors.
+
+Covered by the native test: model sanitization/UTF-16/JS-trim/non-string strictness/
+unknowns/sort/filter; browser render of valid rows and skipping of malformed or
+non-string records; unknown map/mode/status wording; selection populating the
+advertised map/mode (Meridian and Verdant) and reporting an unsupported map
+honestly; non-fatal malformed `rooms`, `not in a room` and `unknown message type:
+chat` handling; send-is-pending until the source echo (including an emoji line that
+round-trips at the 200-unit ceiling); local rate refusal is worded; room-change
+clears the log and the first new-room line survives the welcome poll; a late frame
+with no seat never renders; a disconnect clears the draft and closes the modal;
+toggle and panel fit 960x640 and 1280x800 at 150% scale; real-Session
+`browse_rooms` URL validation, live re-browse from phase `-4`, and
+`social_capturing` wiring.
 
 ## Provenance
 
