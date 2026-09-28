@@ -65,6 +65,11 @@ pages at large interface scales. Modal deck/setup surfaces render above combat
 diagnostics. Compact labels preserve legality, supply, unknown-state and purchase
 receipt distinctions.
 
+At narrow logical widths the tactical HUD stacks its objective and live-mission
+cards and reduces supplemental prose. Objective/range, legality/supply,
+dominance or wave progress, HQ/force, health, REQ/FLUX and active receipts remain
+visible. Effects metrics are opt-in through F10 instead of covering those cards.
+
 Interface scale uses the actual window as its layout basis: changing the window
 size reflows controls rather than squeezing a fixed 1280×800 layout. ItemList
 rows can still ellipsize at narrow widths; selecting a row exposes its complete

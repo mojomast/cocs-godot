@@ -2,31 +2,31 @@ TAP version 13
 # Subtest: actual local 24-bot helpers ship on native routes, outside multiplayer and Horde
 ok 1 - actual local 24-bot helpers ship on native routes, outside multiplayer and Horde
   ---
-  duration_ms: 191.978759
+  duration_ms: 185.096517
   type: 'test'
   ...
 # Subtest: Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
 ok 2 - Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
   ---
-  duration_ms: 43.532196
+  duration_ms: 45.912322
   type: 'test'
   ...
 # Subtest: Identity zone SYNTHETIC closure keeps Domination adapters explicit and separate from locked source
 ok 3 - Identity zone SYNTHETIC closure keeps Domination adapters explicit and separate from locked source
   ---
-  duration_ms: 24.546653
+  duration_ms: 21.887018
   type: 'test'
   ...
 # Subtest: Identity zone SYNTHETIC closure rejects unreviewed route helpers
 ok 4 - Identity zone SYNTHETIC closure rejects unreviewed route helpers
   ---
-  duration_ms: 25.202602
+  duration_ms: 23.320182
   type: 'test'
   ...
 # Subtest: Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules
 ok 5 - Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules
   ---
-  duration_ms: 203.010289
+  duration_ms: 215.685094
   type: 'test'
   ...
 1..5
@@ -37,4 +37,4 @@ ok 5 - Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, 
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 525.073958
+# duration_ms 524.879387

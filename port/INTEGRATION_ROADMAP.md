@@ -54,6 +54,12 @@ the individual evidence records retain their original scope and results.
 - **NATIVE-05–06 remain open**, including Cinderwake authority reconciliation,
   extracted-package consolidation acceptance and the unified release.
 
+The shell increment passed **203/203 local aggregate gates, zero unrun**, at
+`a9dbeaab`. The subsequent ESM-only journey-wrapper change was checked by
+rerunning both affected source-backed journeys and full lint. See the
+[shell verification record](native-shell/EVIDENCE_2026-09-28.md) for commit
+identity, evidence, repaired failures and public screenshots.
+
 The research findings below describe the original baseline. Implementation
 results and remaining acceptance gaps are recorded in
 [consolidation evidence](native-ci/evidence/CONSOLIDATION_2026-09-28.md).

@@ -1,0 +1,43 @@
+{
+  "scope": "scripted native guest Settings/Back/Leave in one source room; protocol host, not two native humans or a natural round outcome",
+  "port_commit": "fd0e941e3cda08f9522ca73663ff906883ed2e17",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "fa6dda2dcac5ab41b5496517acab9055407e31ae",
+  "output": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/guest-leave/attempt-qwOQ1I",
+  "passed": true,
+  "endpoint": "ws://127.0.0.1:34451",
+  "initial_rooms": 1,
+  "room": "2FBL",
+  "host_peer": 1,
+  "host_snapshots": 31,
+  "last_host_snapshot_type": "snapshot",
+  "guest": {
+    "actor": 1,
+    "peer": 2,
+    "pointer_released": true,
+    "room": "2FBL",
+    "scripted_ui": true,
+    "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/guest-leave/attempt-qwOQ1I/local_settings.json",
+    "source_snapshots": 21
+  },
+  "health_after_leave": {
+    "players": 2,
+    "rooms": 2
+  },
+  "source_roster_after_leave": [
+    {
+      "peer": 1,
+      "connected": true
+    },
+    {
+      "peer": 2,
+      "connected": false
+    }
+  ],
+  "guest_retained_by_source_grace": true,
+  "guest_joins": 1,
+  "guest_disconnected": true,
+  "launcher_exit": 0,
+  "host_open_after_leave": true,
+  "fixture_authority_closed": true
+}

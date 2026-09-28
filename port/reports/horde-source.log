@@ -2,421 +2,421 @@ TAP version 13
 # Subtest: horde display adapts waves and enemy counts
 ok 1 - horde display adapts waves and enemy counts
   ---
-  duration_ms: 0.961291
+  duration_ms: 0.768089
   type: 'test'
   ...
 # Subtest: campaign display surfaces waypoint distance, steps, story and boss
 ok 2 - campaign display surfaces waypoint distance, steps, story and boss
   ---
-  duration_ms: 0.125886
+  duration_ms: 0.120836
   type: 'test'
   ...
 # Subtest: display adapter stays sane when economy and boss-phase fields ride along
 ok 3 - display adapter stays sane when economy and boss-phase fields ride along
   ---
-  duration_ms: 0.106229
+  duration_ms: 0.108774
   type: 'test'
   ...
 # Subtest: results and summaries reflect win or loss
 ok 4 - results and summaries reflect win or loss
   ---
-  duration_ms: 0.145252
+  duration_ms: 0.162074
   type: 'test'
   ...
 # Subtest: adapter forwards horde upgrades, boss phases, checkpoint and notices
 ok 5 - adapter forwards horde upgrades, boss phases, checkpoint and notices
   ---
-  duration_ms: 0.49098
+  duration_ms: 0.461365
   type: 'test'
   ...
 # Subtest: adapter derives a checkpoint from a numeric step and reads top-level hud notices
 ok 6 - adapter derives a checkpoint from a numeric step and reads top-level hud notices
   ---
-  duration_ms: 0.132769
+  duration_ms: 0.167053
   type: 'test'
   ...
 # Subtest: adapter defaults the upgrade, phase and checkpoint fields when absent
 ok 7 - adapter defaults the upgrade, phase and checkpoint fields when absent
   ---
-  duration_ms: 0.06437
+  duration_ms: 0.073718
   type: 'test'
   ...
 # Subtest: adapter accepts object selections and pending upgrade queues
 ok 8 - adapter accepts object selections and pending upgrade queues
   ---
-  duration_ms: 0.148818
+  duration_ms: 0.152996
   type: 'test'
   ...
 # Subtest: adapter normalises notice tones and drops empty notices
 ok 9 - adapter normalises notice tones and drops empty notices
   ---
-  duration_ms: 0.175399
+  duration_ms: 0.177613
   type: 'test'
   ...
 # Subtest: single-player HUD exposes screen-reader labels for the new controls
 ok 10 - single-player HUD exposes screen-reader labels for the new controls
   ---
-  duration_ms: 74.839687
+  duration_ms: 47.749032
   type: 'test'
   ...
 # Subtest: theater filters expose labelled select controls
 ok 11 - theater filters expose labelled select controls
   ---
-  duration_ms: 143.012411
+  duration_ms: 152.240672
   type: 'test'
   ...
 # Subtest: theater exposes replay export and import controls
 ok 12 - theater exposes replay export and import controls
   ---
-  duration_ms: 93.907234
+  duration_ms: 109.527113
   type: 'test'
   ...
 # Subtest: accessibility panel renders palette radios and the high-contrast switch
 ok 13 - accessibility panel renders palette radios and the high-contrast switch
   ---
-  duration_ms: 887.404544
+  duration_ms: 1001.024135
   type: 'test'
   ...
 # Subtest: keybind remap UI is keyboard reachable and labelled per action
 ok 14 - keybind remap UI is keyboard reachable and labelled per action
   ---
-  duration_ms: 901.183892
+  duration_ms: 958.978716
   type: 'test'
   ...
 # Subtest: browse screen exposes mode, map and size filters plus practice vs bots
 ok 15 - browse screen exposes mode, map and size filters plus practice vs bots
   ---
-  duration_ms: 846.265342
+  duration_ms: 896.901065
   type: 'test'
   ...
 # Subtest: results summary card surfaces XP, prestige progress and achievements
 ok 16 - results summary card surfaces XP, prestige progress and achievements
   ---
-  duration_ms: 841.736146
+  duration_ms: 824.508121
   type: 'test'
   ...
 # Subtest: help legend covers the systems added on top of the core loop
 ok 17 - help legend covers the systems added on top of the core loop
   ---
-  duration_ms: 0.361978
+  duration_ms: 0.33106
   type: 'test'
   ...
 # Subtest: settings help renders the new-systems legend as an accessible list
 ok 18 - settings help renders the new-systems legend as an accessible list
   ---
-  duration_ms: 96.321237
+  duration_ms: 82.637494
   type: 'test'
   ...
 # Subtest: campaign mission select derives stars, locks and best results
 ok 19 - campaign mission select derives stars, locks and best results
   ---
-  duration_ms: 0.535914
+  duration_ms: 0.761346
   type: 'test'
   ...
 # Subtest: campaign mission select renders locked and replay affordances
 ok 20 - campaign mission select renders locked and replay affordances
   ---
-  duration_ms: 819.090805
+  duration_ms: 912.785369
   type: 'test'
   ...
 # Subtest: results medals render as an accessible list with per-medal detail
 ok 21 - results medals render as an accessible list with per-medal detail
   ---
-  duration_ms: 1747.64409
+  duration_ms: 1853.276866
   type: 'test'
   ...
 # Subtest: arsenal inspector exposes weapons, operators, attachments and cosmetics
 ok 22 - arsenal inspector exposes weapons, operators, attachments and cosmetics
   ---
-  duration_ms: 144.208723
+  duration_ms: 128.938052
   type: 'test'
   ...
 # Subtest: spectator board groups teams, shows lives and marks the followed target
 ok 23 - spectator board groups teams, shows lives and marks the followed target
   ---
-  duration_ms: 29.63673
+  duration_ms: 31.388616
   type: 'test'
   ...
 # Subtest: single-player modes are registered and configuration keeps the mission
 ok 24 - single-player modes are registered and configuration keeps the mission
   ---
-  duration_ms: 1.056069
+  duration_ms: 0.96646
   type: 'test'
   ...
 # Subtest: horde leaves a lone player with three lives and an empty battlefield
 ok 25 - horde leaves a lone player with three lives and an empty battlefield
   ---
-  duration_ms: 45.312832
+  duration_ms: 46.851841
   type: 'test'
   ...
 # Subtest: horde waves spawn fast fragile husks, not normal bots
 ok 26 - horde waves spawn fast fragile husks, not normal bots
   ---
-  duration_ms: 87.633368
+  duration_ms: 87.751022
   type: 'test'
   ...
 # Subtest: dead enemies never respawn
 ok 27 - dead enemies never respawn
   ---
-  duration_ms: 90.864112
+  duration_ms: 107.350275
   type: 'test'
   ...
 # Subtest: losing all lives ends the run on the hostile side
 ok 28 - losing all lives ends the run on the hostile side
   ---
-  duration_ms: 115.265963
+  duration_ms: 108.47398
   type: 'test'
   ...
 # Subtest: campaign starts the player at the authored point facing the mission direction
 ok 29 - campaign starts the player at the authored point facing the mission direction
   ---
-  duration_ms: 114.118604
+  duration_ms: 134.197655
   type: 'test'
   ...
 # Subtest: the first campaign objective sets a waypoint and the next spawns themed enemies
 ok 30 - the first campaign objective sets a waypoint and the next spawns themed enemies
   ---
-  duration_ms: 163.248257
+  duration_ms: 180.151604
   type: 'test'
   ...
 # Subtest: convoy-run plays through every step to a win
 ok 31 - convoy-run plays through every step to a win
   ---
-  duration_ms: 1699.92008
+  duration_ms: 1780.814482
   type: 'test'
   ...
 # Subtest: reactor-run ends with a Warden boss and a win
 ok 32 - reactor-run ends with a Warden boss and a win
   ---
-  duration_ms: 3032.511128
+  duration_ms: 3045.971121
   type: 'test'
   ...
 # Subtest: single-player snapshot exposes objective steps, story and waypoint data
 ok 33 - single-player snapshot exposes objective steps, story and waypoint data
   ---
-  duration_ms: 127.397574
+  duration_ms: 135.49757
   type: 'test'
   ...
 # Subtest: spawnGroup fields groups by type and tracks bosses
 ok 34 - spawnGroup fields groups by type and tracks bosses
   ---
-  duration_ms: 72.418521
+  duration_ms: 79.269345
   type: 'test'
   ...
 # Subtest: enemy fields build a fragile, differentiated enemy
 ok 35 - enemy fields build a fragile, differentiated enemy
   ---
-  duration_ms: 5.959927
+  duration_ms: 6.301143
   type: 'test'
   ...
 # Subtest: enemy deploys vary speed within a class and carry reduced firepower
 ok 36 - enemy deploys vary speed within a class and carry reduced firepower
   ---
-  duration_ms: 43.733864
+  duration_ms: 46.400787
   type: 'test'
   ...
 # Subtest: area confinement keeps zoned NPCs inside their leash when the player is far
 ok 37 - area confinement keeps zoned NPCs inside their leash when the player is far
   ---
-  duration_ms: 436.815058
+  duration_ms: 437.113346
   type: 'test'
   ...
 # Subtest: hard patrol zones loop NPCs inside their radius instead of wandering the map
 ok 38 - hard patrol zones loop NPCs inside their radius instead of wandering the map
   ---
-  duration_ms: 347.088598
+  duration_ms: 354.826028
   type: 'test'
   ...
 # Subtest: group spawns de-clump onto distinct in-radius floor points
 ok 39 - group spawns de-clump onto distinct in-radius floor points
   ---
-  duration_ms: 7.78648
+  duration_ms: 10.90139
   type: 'test'
   ...
 # Subtest: campaign predeploys reinforcements and fires its timed bark exactly once
 ok 40 - campaign predeploys reinforcements and fires its timed bark exactly once
   ---
-  duration_ms: 1854.727251
+  duration_ms: 1912.368845
   type: 'test'
   ...
 # Subtest: horde clears resupply the player and offer deterministic upgrades
 ok 41 - horde clears resupply the player and offer deterministic upgrades
   ---
-  duration_ms: 6.992191
+  duration_ms: 6.87035
   type: 'test'
   ...
 # Subtest: clearing the third horde wave offers an upgrade during intermission
 ok 42 - clearing the third horde wave offers an upgrade during intermission
   ---
-  duration_ms: 17.731453
+  duration_ms: 16.570018
   type: 'test'
   ...
 # Subtest: horde-only upgrades append after the powerups and re-apply idempotently
 ok 43 - horde-only upgrades append after the powerups and re-apply idempotently
   ---
-  duration_ms: 6.066737
+  duration_ms: 6.040755
   type: 'test'
   ...
 # Subtest: horde run upgrades re-issue after a mid-wave death without compounding
 ok 44 - horde run upgrades re-issue after a mid-wave death without compounding
   ---
-  duration_ms: 6.305815
+  duration_ms: 6.417822
   type: 'test'
   ...
 # Subtest: horde composition fields the new archetypes without breaking wave one
 ok 45 - horde composition fields the new archetypes without breaking wave one
   ---
-  duration_ms: 0.129453
+  duration_ms: 0.150442
   type: 'test'
   ...
 # Subtest: campaign checkpoints persist and resume a retry from the saved step
 ok 46 - campaign checkpoints persist and resume a retry from the saved step
   ---
-  duration_ms: 1578.014646
+  duration_ms: 1584.11979
   type: 'test'
   ...
 # Subtest: campaign launch intent picks the checkpoint: next mission fresh, resume stored
 ok 47 - campaign launch intent picks the checkpoint: next mission fresh, resume stored
   ---
-  duration_ms: 66.781198
+  duration_ms: 65.6004
   type: 'test'
   ...
 # Subtest: boss phases surface as a named, pip-counted snapshot entry
 ok 48 - boss phases surface as a named, pip-counted snapshot entry
   ---
-  duration_ms: 288.335893
+  duration_ms: 297.703839
   type: 'test'
   ...
 # Subtest: sapper telegraphs its fuse, then detonates inside the blast radius
 ok 49 - sapper telegraphs its fuse, then detonates inside the blast radius
   ---
-  duration_ms: 23.338329
+  duration_ms: 22.392495
   type: 'test'
   ...
 # Subtest: mender telegraphs and lands a heal pulse on nearby allies
 ok 50 - mender telegraphs and lands a heal pulse on nearby allies
   ---
-  duration_ms: 40.873144
+  duration_ms: 38.98749
   type: 'test'
   ...
 # Subtest: overseer pulses its command aura on a cooldown
 ok 51 - overseer pulses its command aura on a cooldown
   ---
-  duration_ms: 54.588683
+  duration_ms: 66.607617
   type: 'test'
   ...
 # Subtest: mortar marks, telegraphs and lands an AoE on a stationary player
 ok 52 - mortar marks, telegraphs and lands an AoE on a stationary player
   ---
-  duration_ms: 17.461458
+  duration_ms: 18.409594
   type: 'test'
   ...
 # Subtest: the bulwark front plate blunts damage and a flank bypasses it
 ok 53 - the bulwark front plate blunts damage and a flank bypasses it
   ---
-  duration_ms: 7.217404
+  duration_ms: 8.596392
   type: 'test'
   ...
 # Subtest: throne-siege plays through the finale to a win
 ok 54 - throne-siege plays through the finale to a win
   ---
-  duration_ms: 1035.451349
+  duration_ms: 1122.286088
   type: 'test'
   ...
 # Subtest: area confinement keeps zoned NPCs leashed and moving on the new maps
 ok 55 - area confinement keeps zoned NPCs leashed and moving on the new maps
   ---
-  duration_ms: 997.875703
+  duration_ms: 1040.344678
   type: 'test'
   ...
 # Subtest: horde waves cycle readable modifiers and telegraph each twist
 ok 56 - horde waves cycle readable modifiers and telegraph each twist
   ---
-  duration_ms: 28.186193
+  duration_ms: 27.709054
   type: 'test'
   ...
 # Subtest: boss phases mechanically escalate the Warden and telegraph a ground slam
 ok 57 - boss phases mechanically escalate the Warden and telegraph a ground slam
   ---
-  duration_ms: 3871.571409
+  duration_ms: 4043.677491
   type: 'test'
   ...
 # Subtest: the throne finale resumes from a checkpoint and keeps its finale win
 ok 58 - the throne finale resumes from a checkpoint and keeps its finale win
   ---
-  duration_ms: 52.94883
+  duration_ms: 55.047112
   type: 'test'
   ...
 # Subtest: ghost-wire and crown-duel terminate with a win on every difficulty
 ok 59 - ghost-wire and crown-duel terminate with a win on every difficulty
   ---
-  duration_ms: 14238.150432
+  duration_ms: 14231.460554
   type: 'test'
   ...
 # Subtest: the lancer flanks to cover and bursts after a telegraph
 ok 60 - the lancer flanks to cover and bursts after a telegraph
   ---
-  duration_ms: 9.747855
+  duration_ms: 9.443389
   type: 'test'
   ...
 # Subtest: the sentinel shields nearby allies in formation
 ok 61 - the sentinel shields nearby allies in formation
   ---
-  duration_ms: 7.810234
+  duration_ms: 8.617021
   type: 'test'
   ...
 # Subtest: the Harbinger summons adds and its phases escalate
 ok 62 - the Harbinger summons adds and its phases escalate
   ---
-  duration_ms: 7.639494
+  duration_ms: 9.68414
   type: 'test'
   ...
 # Subtest: horde endless scoring is deterministic and grows with the wave
 ok 63 - horde endless scoring is deterministic and grows with the wave
   ---
-  duration_ms: 0.273643
+  duration_ms: 0.271909
   type: 'test'
   ...
 # Subtest: horde endless escalates a boss every fifth wave and alternates classes
 ok 64 - horde endless escalates a boss every fifth wave and alternates classes
   ---
-  duration_ms: 0.139251
+  duration_ms: 0.116267
   type: 'test'
   ...
 # Subtest: endless horde banks score per wave and ends with a clean summary on death
 ok 65 - endless horde banks score per wave and ends with a clean summary on death
   ---
-  duration_ms: 144.886933
+  duration_ms: 135.710369
   type: 'test'
   ...
 # Subtest: a bounded horde run still ends at its wave target and banks a won summary
 ok 66 - a bounded horde run still ends at its wave target and banks a won summary
   ---
-  duration_ms: 12.006416
+  duration_ms: 10.108725
   type: 'test'
   ...
 # Subtest: horde modifiers inject flankers, shield-bearers and a champion boss
 ok 67 - horde modifiers inject flankers, shield-bearers and a champion boss
   ---
-  duration_ms: 24.026108
+  duration_ms: 22.806972
   type: 'test'
   ...
 # Subtest: campaign missions author weather and scripted beats can change it
 ok 68 - campaign missions author weather and scripted beats can change it
   ---
-  duration_ms: 119.858909
+  duration_ms: 121.252596
   type: 'test'
   ...
 # Subtest: campaign missions play their timed story transmissions without gating wins
 ok 69 - campaign missions play their timed story transmissions without gating wins
   ---
-  duration_ms: 185.71321
+  duration_ms: 179.312031
   type: 'test'
   ...
 # Subtest: the declared live enemy cap holds even on deep overflow waves
 ok 70 - the declared live enemy cap holds even on deep overflow waves
   ---
-  duration_ms: 0.32056
+  duration_ms: 0.295994
   type: 'test'
   ...
 1..70
@@ -427,4 +427,4 @@ ok 70 - the declared live enemy cap holds even on deep overflow waves
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 31805.488353
+# duration_ms 32394.049586

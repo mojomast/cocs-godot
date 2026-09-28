@@ -1,6 +1,9 @@
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
+WORLD_COMMANDS_CONTRACT first-open populated seven-node panel remains within standard viewport true
+WORLD_COMMANDS_CONTRACT first-open header and footer remain inside populated panel true
+WORLD_COMMANDS_CONTRACT populated first-show overflow is recentered without a viewport resize true
 WORLD_COMMANDS_CONTRACT selection and consent never enqueue automatically true
 WORLD_COMMANDS_CONTRACT one explicit purchase consumes consent before signal reentry true
 WORLD_COMMANDS_CONTRACT queued request never optimistically spends or spawns true
@@ -27,4 +30,22 @@ WORLD_COMMANDS_CONTRACT fresh fixture can explicitly select and authorize true
 WORLD_COMMANDS_CONTRACT co-op price and permission come from existing adapter true
 WORLD_COMMANDS_CONTRACT lease change invalidates old purchase consent true
 WORLD_COMMANDS_CONTRACT co-op purchase routes through existing activate once true
-WORLD_COMMANDS_CONTRACT checks=27 failures=0
+WORLD_COMMANDS_CONTRACT deck control tracks logical viewport 507x347@1.5x true
+WORLD_COMMANDS_CONTRACT deck panel fits logical viewport 507x347@1.5x true
+WORLD_COMMANDS_CONTRACT central pages reflow at 507x347@1.5x true
+WORLD_COMMANDS_CONTRACT objectives page fits its width at 507x347@1.5x true
+WORLD_COMMANDS_CONTRACT REQ page fits its width at 507x347@1.5x true
+WORLD_COMMANDS_CONTRACT objective list minimum stays bounded at 507x347@1.5x true
+WORLD_COMMANDS_CONTRACT deck control tracks logical viewport 760x520@1.0x true
+WORLD_COMMANDS_CONTRACT deck panel fits logical viewport 760x520@1.0x true
+WORLD_COMMANDS_CONTRACT central pages reflow at 760x520@1.0x true
+WORLD_COMMANDS_CONTRACT objectives page fits its width at 760x520@1.0x true
+WORLD_COMMANDS_CONTRACT REQ page fits its width at 760x520@1.0x true
+WORLD_COMMANDS_CONTRACT objective list minimum stays bounded at 760x520@1.0x true
+WORLD_COMMANDS_CONTRACT deck control tracks logical viewport 1280x800@1.0x true
+WORLD_COMMANDS_CONTRACT deck panel fits logical viewport 1280x800@1.0x true
+WORLD_COMMANDS_CONTRACT central pages reflow at 1280x800@1.0x true
+WORLD_COMMANDS_CONTRACT objectives page fits its width at 1280x800@1.0x true
+WORLD_COMMANDS_CONTRACT REQ page fits its width at 1280x800@1.0x true
+WORLD_COMMANDS_CONTRACT objective list minimum stays bounded at 1280x800@1.0x true
+WORLD_COMMANDS_CONTRACT checks=48 failures=0

@@ -1,0 +1,258 @@
+{
+  "scope": "source-driven scripted UI lifecycle; not natural rounds/human acceptance",
+  "passed": true,
+  "exit_code": 0,
+  "port_commit": "fd0e941e3cda08f9522ca73663ff906883ed2e17",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "fa6dda2dcac5ab41b5496517acab9055407e31ae",
+  "input_sha256": {
+    "godot/tests/product_journey/driver.gd": "c7801a98dbf0374fc0ef860a5ff5469c325599978eca48bec1d75ff4ef5f9d56",
+    "godot/ui/local_settings.gd": "b8c1d26fc2fdcebb60f47423e8481078ddfd13f422a9e8ddab7bd1b373a295b7",
+    "godot/lattice/world_commands.gd": "ce7de99109aecbd3a598441f2336f3d347f5592c8ca37693267e2aa4dce52a85",
+    "tools/godot-dev/product_journey.mjs": "8829277bf690b3aa253d507057437f9dfb2562af31ac2bf789b072e663ea02a5",
+    "tools/godot-dev/launch.mjs": "8e7bd6c02a91d31ca7192f0eefcbbcd4b4fcca1a8d8a8418d96ad1898a406908"
+  },
+  "source_sessions": [
+    {
+      "pointer_released": true,
+      "route": "combat",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/local_settings.json",
+      "source_ready": true,
+      "visit": 1,
+      "volume": 40
+    },
+    {
+      "pointer_released": true,
+      "route": "lattice-world",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/local_settings.json",
+      "source_ready": true,
+      "visit": 2,
+      "volume": 45
+    },
+    {
+      "pointer_released": true,
+      "route": "sports",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/local_settings.json",
+      "source_ready": true,
+      "visit": 3,
+      "volume": 50
+    },
+    {
+      "pointer_released": true,
+      "route": "combat",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/local_settings.json",
+      "source_ready": true,
+      "visit": 4,
+      "volume": 55
+    },
+    {
+      "pointer_released": true,
+      "route": "lattice-world",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/local_settings.json",
+      "source_ready": true,
+      "visit": 5,
+      "volume": 60
+    },
+    {
+      "pointer_released": true,
+      "route": "sports",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/local_settings.json",
+      "source_ready": true,
+      "visit": 6,
+      "volume": 65
+    },
+    {
+      "pointer_released": true,
+      "route": "combat",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/local_settings.json",
+      "source_ready": true,
+      "visit": 7,
+      "volume": 70
+    },
+    {
+      "pointer_released": true,
+      "route": "lattice-world",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/local_settings.json",
+      "source_ready": true,
+      "visit": 8,
+      "volume": 75
+    },
+    {
+      "pointer_released": true,
+      "route": "sports",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/local_settings.json",
+      "source_ready": true,
+      "visit": 9,
+      "volume": 80
+    }
+  ],
+  "deck_checks": [
+    {
+      "first_open_fits": true,
+      "position": [
+        60,
+        50
+      ],
+      "size": [
+        1160,
+        700
+      ],
+      "viewport": [
+        1280,
+        800
+      ],
+      "visit": 2
+    },
+    {
+      "first_open_fits": true,
+      "position": [
+        60,
+        50
+      ],
+      "size": [
+        1160,
+        700
+      ],
+      "viewport": [
+        1280,
+        800
+      ],
+      "visit": 5
+    },
+    {
+      "first_open_fits": true,
+      "position": [
+        60,
+        50
+      ],
+      "size": [
+        1160,
+        700
+      ],
+      "viewport": [
+        1280,
+        800
+      ],
+      "visit": 8
+    }
+  ],
+  "captures": [
+    {
+      "name": "home-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/home-1280x800.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "08de512256334d47b6aa8c746022fbff37c035b96f9321ac4038bd975809f12a"
+    },
+    {
+      "name": "home-760x520",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/home-760x520.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "b90c0221c1094efd02c9bb4f6a4aff438668a1f08f42c187e29d724f4e7be2dc"
+    },
+    {
+      "name": "home-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/home-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "27fb2a12e5390f58ff1595929d072239307a3a27f3ffa23055dfb45ef270a277"
+    },
+    {
+      "name": "deck-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/deck-1280x800.png",
+      "scale": 100,
+      "source_route": "lattice-world",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "bba3c0a5a43514c205490157b8cb185a58b44db18d5d0aaf39640690de267bf5"
+    },
+    {
+      "name": "deck-760x520",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/deck-760x520.png",
+      "scale": 100,
+      "source_route": "lattice-world",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "663ae6378fd473ddf5f1afec3f3be69e5fa75f16017387cb7c4e4bce8d79327d"
+    },
+    {
+      "name": "deck-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/deck-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "lattice-world",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "cdead4b410a108416bbdf2996a8a9d0f397df80588638b0615549cccaab149c1"
+    },
+    {
+      "name": "settings-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/settings-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "lattice-world",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "c17d4b77fcb86a32b2fd98cef67b82740f2a3ca24d25c1ff703a9d4f9cce5183"
+    },
+    {
+      "name": "tactical-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/tactical-1280x800.png",
+      "scale": 100,
+      "source_route": "lattice-world",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "3300217dc662ff86aa7b84927d981d9c83350aa1b36784d3bbae99e3741a4b3f"
+    },
+    {
+      "name": "tactical-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj/tactical-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "lattice-world",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "db499facaafc2a53c73b8124909a824fb3439442fd8cb4098b5f387008c6112f"
+    }
+  ],
+  "owned_ports": [
+    41545,
+    44941,
+    39841,
+    39089,
+    39431,
+    38909,
+    35073,
+    40049,
+    35707
+  ],
+  "all_owned_ports_closed": true,
+  "state": {
+    "expected_volume": 80,
+    "route": "sports",
+    "visits": 9
+  },
+  "output": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-VSmHZj"
+}
