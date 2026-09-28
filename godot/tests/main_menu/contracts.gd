@@ -295,6 +295,14 @@ func check_preferences() -> void:
 	if saved is Dictionary and saved.get("routes") is Dictionary:
 		check(not saved["routes"].get("sports", {}).has("authority") and not saved["routes"].get("sports", {}).has("cheats"),
 			"unknown and cheat keys are never written")
+	var before_failed_registry := FileAccess.get_file_as_string(path)
+	third.registry_error = "Fixture registry startup failure"
+	third.preferences.routes = {}
+	third.preferences.last_route = ""
+	third.current_route = {}
+	third.save_preferences()
+	check(FileAccess.get_file_as_string(path) == before_failed_registry,
+		"failed registry startup cannot overwrite valid stored preferences")
 	discard_menu(third)
 
 	# A valid map drives both the legal mode list and per-map slider ceiling.

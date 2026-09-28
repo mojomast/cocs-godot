@@ -407,7 +407,7 @@ func quit_menu() -> void:
 	get_tree().call_deferred("quit", 0)
 
 func save_preferences() -> void:
-	if preferences == null: return
+	if preferences == null or not registry_error.is_empty(): return
 	preferences.remember(registry, current_route, selections)
 	if not preferences.save_to_disk():
 		preference_error = "Could not save menu preferences."
