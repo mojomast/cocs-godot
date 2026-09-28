@@ -263,7 +263,7 @@ func release_controls() -> void:
 
 func open_career() -> void:
 	if not overlay_open(): return
-	var from_menu := not rows.leave.visible
+	var from_menu: bool = not bool(rows.leave.visible)
 	var original_focus := return_focus
 	close_panel()
 	var career := get_tree().root.get_node_or_null("Career")

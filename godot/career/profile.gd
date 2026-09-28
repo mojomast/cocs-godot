@@ -40,10 +40,10 @@ static func project(raw: Variant) -> Dictionary:
 
 static func item_state(profile: Dictionary, item: Dictionary) -> String:
 	if profile.is_empty(): return "NOT LOADED"
-	var granted := profile.get("unlocks", {}).get(item.get("unlockId", "")) == true
-	var level_known := profile.get("level") is int
+	var granted: bool = profile.get("unlocks", {}).get(item.get("unlockId", "")) == true
+	var level_known: bool = profile.get("level") is int
 	if not granted and not level_known: return "NOT LOADED"
-	var unlocked := granted or (level_known and int(profile.level) >= int(item.get("level", 999)))
+	var unlocked: bool = granted or (level_known and int(profile.level) >= int(item.get("level", 999)))
 	if not unlocked and not profile.has("unlocks"): return "NOT LOADED"
 	if not unlocked: return "LOCKED · LV %d" % int(item.get("level", 999))
 	var id: String = str(item.get("id", ""))

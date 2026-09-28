@@ -1,9 +1,9 @@
 extends CanvasLayer
 ## Runtime-only view of the active source connection. No profile or credential
 ## enters local settings, menu preferences, command line or diagnostic output.
-const Projection = preload("res://career/profile.gd")
+const CareerProfile = preload("res://career/profile.gd")
 var catalog: Dictionary = {}
-var owner: WeakRef
+var connection_owner: WeakRef
 var profile: Dictionary = {}
 var panel: Control
 var details: VBoxContainer
@@ -42,7 +42,7 @@ static func valid_catalog(raw: Variant) -> bool:
 			if not value is String or value.length() > 80: return false
 		for value: Variant in entry.modifiers.values():
 			if not (value is float or value is int) or not is_finite(float(value)): return false
-		var key := entry.kind + ":" + entry.id
+		var key: String = str(entry.kind) + ":" + str(entry.id)
 		if ids.has(key): return false
 		ids[key] = true
 	return true
@@ -51,8 +51,8 @@ func active() -> bool:
 	return panel != null and panel.visible
 
 func clear_connection(client: Node) -> void:
-	if owner != null and owner.get_ref() == client:
-		owner = null
+	if connection_owner != null and connection_owner.get_ref() == client:
+		connection_owner = null
 		profile.clear()
 		refresh()
 
@@ -62,10 +62,10 @@ func receive(client: Node, frame: Dictionary) -> void:
 	if not ("room_id" in client) or str(client.room_id).is_empty() or not client.career_seated or not client.career_wire_open(): return
 	if frame.get("type") == "welcome":
 		# Only the seated connection's source welcome owns an identity.
-		owner = weakref(client)
-		profile = Projection.project(frame.get("profile"))
-	elif frame.get("type") == "progression" and owner != null and owner.get_ref() == client and not profile.is_empty():
-		var next: Dictionary = Projection.project(frame.get("profile"))
+		connection_owner = weakref(client)
+		profile = CareerProfile.project(frame.get("profile"))
+	elif frame.get("type") == "progression" and connection_owner != null and connection_owner.get_ref() == client and not profile.is_empty():
+		var next: Dictionary = CareerProfile.project(frame.get("profile"))
 		if next.get("id") != profile.get("id"): return
 		profile = next
 	else: return
@@ -97,8 +97,8 @@ func close_panel() -> void:
 	return_settings_menu = false
 
 func _process(_delta: float) -> void:
-	if owner != null and not is_instance_valid(owner.get_ref()):
-		owner = null
+	if connection_owner != null and not is_instance_valid(connection_owner.get_ref()):
+		connection_owner = null
 		profile.clear()
 		refresh()
 
@@ -193,7 +193,7 @@ func refresh() -> void:
 		if item.kind != category: continue
 		var box := VBoxContainer.new()
 		list.add_child(box)
-		add_line(box, "%s · %s · %s" % [item.name, item.slot if not item.slot.is_empty() else item.kind, Projection.item_state(profile, item)], 19)
+		add_line(box, "%s · %s · %s" % [item.name, item.slot if not item.slot.is_empty() else item.kind, CareerProfile.item_state(profile, item)], 19)
 		add_line(box, item.description)
 		var spec := []
 		for key: String in item.modifiers: spec.append(key + " " + str(item.modifiers[key]))
