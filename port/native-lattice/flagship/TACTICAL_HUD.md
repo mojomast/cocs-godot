@@ -50,7 +50,8 @@ Windows SHA-256 `3dd682bd5c6c7d75272b9fdfd3f098cdcb8ff29ed54c78b7b3b826805609d26
 `driver_flagship.gd`'s existing `--render` route now captures `live-entry`,
 `live-frontier`, and `live-pressure` during a running native match, alongside
 the command and result screens. It saves in-world images only while a fresh
-recipient projection and the tactical HUD are visible. The September 28 gallery
+recipient projection and the tactical HUD are visible. The
+[September 28 public gallery](https://github.com/mojomast/cocs-godot/releases/tag/lattice-live-gallery-2026-09-28)
 shows Asterion PvP and Monsoon Operations, with hashes, source sequences and
 capture identifiers in its separate gallery manifest. Input was
 **engine-scripted**, not human; the screenshots do not prove a live REQ
