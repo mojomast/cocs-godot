@@ -26,6 +26,9 @@ func _initialize() -> void:
 		var actual := model.sample(0.7, 0.2)
 		for field: String in case.expected:
 			var expected: Variant = case.expected[field]
+			# Horde's held-F UX extends the source desktop press vector; only
+			# Match.melee's own cooldown can admit repeated attacks.
+			if field == "melee" and model.keys.has(KEY_F): expected = true
 			var value: Variant = actual.get(field, false)
 			var ok: bool = absf(float(value)-float(expected)) < 0.00001 if expected is float else value == expected
 			if not ok:
@@ -64,6 +67,46 @@ func _initialize() -> void:
 		push_error("Focus transition did not restore focus")
 		quit(1)
 		return
+	var press := InputEventKey.new()
+	press.physical_keycode = KEY_F
+	press.keycode = KEY_F
+	press.pressed = true
+	var release := InputEventKey.new()
+	release.physical_keycode = KEY_F
+	release.keycode = KEY_F
+	release.pressed = false
+	var held := Controls.new()
+	held.record(press, true)
+	for i: int in 45:
+		if not held.sample(0.0, 0.0).melee:
+			push_error("Held F must remain a source request after queueing")
+			quit(1)
+			return
+		held.queued()
+	held.record(release, true)
+	if held.sample(0.0, 0.0).melee:
+		push_error("Released F must stop requesting melee")
+		quit(1)
+		return
+	held.record(press, true)
+	held.focus(false) # pointer release, modal opening, stale/death or focus loss
+	held.record(release, false) # modal consumes releases; this may be absent
+	held.focus(true)
+	if held.sample(0.0, 0.0).melee:
+		push_error("Modal/focus recovery cannot re-arm held melee")
+		quit(1)
+		return
+	held.record(press, true)
+	if not held.sample(0.0, 0.0).melee:
+		push_error("Fresh post-modal press must request melee")
+		quit(1)
+		return
+	held.clear()
+	if held.sample(0.0, 0.0).melee:
+		push_error("Neutral send cannot carry a latched melee request")
+		quit(1)
+		return
+	print("HORDE_MELEE_HOLD_OK frames=45 neutral_after_modal=true fresh_press=true")
 	print("HORDE_FOCUS_OK samples=1 focused=", focus_model.focused)
 	print("HORDE_SOURCE_INPUT_OK samples=", count)
 	print("HORDE_SOURCE_LOOK_OK samples=", vectors.lookCases.size())

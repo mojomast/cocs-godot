@@ -51,6 +51,23 @@ func run() -> void:
 	check(rig.recoil_count == 2, "secondary shrapnel is not muzzle fire")
 	rig.apply_events([{"id":15,"time":2.0,"actor":8,"weapon":0,"type":"shot"}, {"type":"damage","actor":7,"source":8}, {"id":null,"time":2,"actor":7,"weapon":0,"type":"shot"}], 7)
 	check(rig.recoil_count == 2, "remote/damage/malformed events ignored")
+	var accepted := {"id":30,"time":2.5,"actor":7,"type":"melee","hit":null}
+	rig.apply_events([accepted], 7)
+	check(rig.kick_count == 1 and rig.kick_age == 0.0, "accepted local source melee animates even on a miss")
+	rig.apply_events([accepted], 7)
+	rig.apply_events([{"id":31,"time":2.6,"actor":8,"type":"melee"},
+		{"id":32,"time":2.7,"actor":7,"type":"melee-rejected"},
+		{"id":null,"time":2.8,"actor":7,"type":"melee"}], 7)
+	check(rig.kick_count == 1, "duplicates, remote melee, refusals and malformed events never animate")
+	rig.advance(rig.KICK_SECONDS + 0.01)
+	check(not rig.kick_leg.visible and rig.kick_count == 1, "cooldown alone cannot invent another kick")
+	rig.apply_events([{"id":33,"time":3.0,"actor":7,"type":"melee"}], 7)
+	check(rig.kick_count == 2, "later source-admitted melee starts a new kick")
+	rig.apply_actor(actor, false)
+	rig.apply_events([{"id":34,"time":3.1,"actor":7,"type":"melee"}], 7)
+	rig.apply_actor(actor, true)
+	rig.apply_events([{"id":34,"time":3.1,"actor":7,"type":"melee"}], 7)
+	check(rig.kick_count == 2 and not rig.kick_leg.visible, "hidden modal/focus event is consumed without replay")
 	for field: String in ["dead", "spectating", "health", "vehicleId"]:
 		var hidden := actor.duplicate()
 		hidden[field] = 0 if field == "health" else 3 if field == "vehicleId" else true

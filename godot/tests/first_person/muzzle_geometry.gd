@@ -57,6 +57,11 @@ func run() -> void:
 		rig.apply_actor(actor, true)
 		step(rig, 12)
 		measure(rig, camera, "weapon %d hip" % weapon)
+		var hip_target := camera.project_position(Vector2(root.size) * 0.5, 35.0)
+		for index: int in rig.get_muzzle_count():
+			var hip_barrel: Transform3D = rig.get_muzzle_world_transform(index)
+			check((-hip_barrel.basis.z).angle_to((hip_target - hip_barrel.origin).normalized()) < deg_to_rad(8.0),
+				"weapon %d hip barrel %d points toward distant crosshair" % [weapon, index])
 		rig.apply_aim(true)
 		step(rig, 120)
 		check(rig.get_aim_state().ready, "weapon %d settled ADS" % weapon)

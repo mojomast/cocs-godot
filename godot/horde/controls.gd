@@ -68,6 +68,9 @@ func sample(yaw: float, pitch: float) -> Dictionary:
 		"ads":mouse.has(MOUSE_BUTTON_RIGHT), "altFire":keys.has(KEY_Z) or mouse.has(MOUSE_BUTTON_MIDDLE)}
 	for action: String in ["reload", "interact", "power", "melee", "grenade"]:
 		value[action] = pulses.has(action)
+	# The source's own cooldown accepts or refuses each repeated melee request.
+	# Retain the edge pulse when a queued render sample is delayed.
+	value.melee = keys.has(KEY_F) or pulses.has("melee")
 	if weapon >= 0: value.weapon = weapon
 	return value
 
