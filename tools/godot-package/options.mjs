@@ -12,7 +12,7 @@ export const EXPERIENCES = {
   horde: {scene:'res://horde/demo.tscn', maps:{'meridian-exchange':['horde'], 'verdant-reliquary':['horde'], 'ember-crucible':['horde']},
     // Reviewed static identity entry: outside the locked nine-map catalog, so the
     // scene and modes come only from this allowlist.
-    identity:{'nacre-engine':{scene:'res://native_arenas/identity_horde_demo.tscn', modes:['horde']}}},
+    identity:{'nacre-engine':{scene:'res://native_arenas/identity_horde_demo.tscn', modes:['horde']},'cinderwake-drydock':{scene:'res://horde_maps/demo.tscn', modes:['horde']}}},
   zones: {scene:'res://zone_modes/demo.tscn', maps:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
   'combined-arms': {scene:'res://combined_arms/demo.tscn', maps:{'sunscar-convoy':['combined-arms']}},
   sports: {scene:'res://sports/demo.tscn', maps:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},

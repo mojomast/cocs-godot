@@ -14,12 +14,14 @@ test('actual Horde transitive closure is classified separately and source-byte l
   const lock = JSON.parse(readFileSync(join(root,'port/contracts/source-lock.json')));
   const derivative = process.env.COCS_SOURCE_DERIVATIVE ? JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)) : null;
   verifySource(lock, derivative);
-  assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-horde/')), ['port/native-horde/authority.mjs','port/native-horde/input-buffer.mjs']);
+  assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-horde/')), ['port/native-horde/authority.mjs','port/native-horde/cinderwake-schema.mjs','port/native-horde/input-buffer.mjs']);
+  assert.deepEqual(closure.hordeDataFiles,['godot/horde_maps/generated/cinderwake-drydock.json']);
+  assert.deepEqual(closure.dataReads['port/native-horde/cinderwake-schema.mjs'],closure.hordeDataFiles);
   assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-arenas/')).sort(), [
     'authority','catalog','event-cursor','input-buffer','match','schema',
   ].map(name=>`port/native-arenas/${name}.mjs`).sort());
   assert.deepEqual(closure.dataFiles, ['prism-foundry','aurora-basin','cinder-array'].map(id=>`godot/native_arenas/generated/${id}.json`));
-  assert.equal(Object.keys(closure.modules).length,84);
+  assert.equal(Object.keys(closure.modules).length,85);
   assert.deepEqual(closure.hordeAdditionalSource,[]);
   assert.ok(closure.routes.horde.includes('game/singleplayer.mjs'));
   assert.ok(!closure.routes.horde.includes('server/room.mjs'));

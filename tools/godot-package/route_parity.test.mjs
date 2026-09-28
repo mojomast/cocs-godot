@@ -21,7 +21,7 @@ const godotDir = fileURLToPath(new URL('../../godot/', import.meta.url));
 // Same candidate inputs the generator uses; capability membership is always
 // re-observed from the parsers, never copied from a hand-written list.
 const CAPABILITY_CANDIDATES = {
-  maps: candidateMaps(catalog, NATIVE_ARENA_MAPS),
+  maps: candidateMaps(catalog, [...NATIVE_ARENA_MAPS, ...Object.keys(EXPERIENCES.horde.identity ?? {})]),
   modes: candidateModes(EXPERIENCES),
 };
 const EXTERNAL_ENDPOINT = 'ws://127.0.0.1:12345';

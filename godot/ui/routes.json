@@ -73,6 +73,9 @@
     },
     "nacre-engine": {
       "name": "Nacre Engine"
+    },
+    "cinderwake-drydock": {
+      "name": "Cinderwake Drydock (Preview)"
     }
   },
   "routes": [
@@ -455,7 +458,7 @@
       "id": "horde",
       "category": "native",
       "label": "Horde",
-      "description": "Hold out against the waves on a combat arena or Nacre Engine, local authority",
+      "description": "Hold out on a combat arena, Nacre Engine or Cinderwake Drydock preview, local authority",
       "flags": [
         "--experience=horde"
       ],
@@ -468,7 +471,8 @@
             "meridian-exchange",
             "verdant-reliquary",
             "ember-crucible",
-            "nacre-engine"
+            "nacre-engine",
+            "cinderwake-drydock"
           ],
           "default": "meridian-exchange"
         },
@@ -536,12 +540,16 @@
         },
         "scope": {
           "maps": [
+            "cinderwake-drydock",
             "ember-crucible",
             "meridian-exchange",
             "nacre-engine",
             "verdant-reliquary"
           ],
           "modes_by_map": {
+            "cinderwake-drydock": [
+              "horde"
+            ],
             "ember-crucible": [
               "horde"
             ],
@@ -1503,7 +1511,8 @@
             "meridian-exchange",
             "verdant-reliquary",
             "ember-crucible",
-            "nacre-engine"
+            "nacre-engine",
+            "cinderwake-drydock"
           ],
           "default": "meridian-exchange"
         },
@@ -1565,12 +1574,16 @@
         },
         "scope": {
           "maps": [
+            "cinderwake-drydock",
             "ember-crucible",
             "meridian-exchange",
             "nacre-engine",
             "verdant-reliquary"
           ],
           "modes_by_map": {
+            "cinderwake-drydock": [
+              "horde"
+            ],
             "ember-crucible": [
               "horde"
             ],

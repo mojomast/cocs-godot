@@ -27,7 +27,7 @@ const defaultOut = fileURLToPath(new URL('../../godot/ui/routes.json', import.me
 // has a single owner. Maps/modes are candidate inputs only; membership is
 // observed from actual plans (see route_capabilities.mjs).
 const CAPABILITY_CANDIDATES = {
-  maps: candidateMaps(catalog, NATIVE_ARENA_MAPS),
+  maps: candidateMaps(catalog, [...NATIVE_ARENA_MAPS, ...Object.keys(EXPERIENCES.horde.identity ?? {})]),
   modes: candidateModes(EXPERIENCES),
 };
 const capabilityByExperience = new Map();
@@ -219,7 +219,7 @@ const buildRegistry = () => {
     assert.ok(entry.name, `${entry.id}: catalog entry has no display name`);
     maps[entry.id] = {name: entry.name};
   }
-  for (const id of NATIVE_ARENA_MAPS) {
+  for (const id of new Set([...NATIVE_ARENA_MAPS, ...Object.keys(EXPERIENCES.horde.identity ?? {})])) {
     assert.ok(MAP_NAMES[id], `${id}: missing display name in routes_meta MAP_NAMES`);
     maps[id] = {name: MAP_NAMES[id]};
   }

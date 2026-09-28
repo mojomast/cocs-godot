@@ -32,6 +32,7 @@ export const MAP_NAMES = {
   'lacuna-court':   'Lacuna Court',
   'vermilion-fold': 'Vermilion Fold',
   'nacre-engine':   'Nacre Engine',
+  'cinderwake-drydock': 'Cinderwake Drydock (Preview)',
 };
 
 // The three locked combat arenas (options.mjs EXPERIENCES combat/lobby/...).
@@ -74,7 +75,7 @@ const identityZonesParams = () => ([
 
 const hordeParams = () => ([
   {key: 'map', kind: 'choice', label: 'Map',
-    values: [...COMBAT_MAPS, 'nacre-engine'], default: 'meridian-exchange'},
+    values: [...COMBAT_MAPS, 'nacre-engine', 'cinderwake-drydock'], default: 'meridian-exchange'},
   {key: 'waves', kind: 'range', label: 'Waves', min: 1, max: 30, default: 10, step: 1},
   {key: 'operator', kind: 'choice', label: 'Operator',
     values: ['chatgpt','claude','grok','meta','gemini','deepseek','mistral','kimi','qwen'], default: 'chatgpt'},
@@ -123,7 +124,7 @@ export const ROUTES = [
   {
     id: 'horde', category: 'native',
     label: 'Horde',
-    description: 'Hold out against the waves on a combat arena or Nacre Engine, local authority',
+    description: 'Hold out on a combat arena, Nacre Engine or Cinderwake Drydock preview, local authority',
     params: hordeParams(),
   },
   // --- modes ---

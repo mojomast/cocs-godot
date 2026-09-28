@@ -550,7 +550,7 @@ func trace_input(sample: Dictionary, result: Error) -> Dictionary:
 func _exit_tree() -> void:
 	if trace_enabled and not trace_ended:
 		trace_ended = true
-		emit_native_trace({"event":"recording_end", "complete":trace_count < TRACE_LIMIT, "phase":phase})
+		emit_native_trace({"event":"recording_end", "complete":trace_count < native_trace_limit(), "phase":phase})
 	super._exit_tree()
 
 func record_state(seq: int) -> void:
