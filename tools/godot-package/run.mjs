@@ -81,14 +81,15 @@ async function runRoute(plan, env) {
       console.log('PACKAGE_SERVER_READY ' + JSON.stringify({pid:process.pid, host:'127.0.0.1', port, experience:plan.experience, map:plan.map, mode:plan.mode, health:status}));
       const ownedPath = plan.nativeArena && owned.pathname === '/native-arenas' ? '/native-arenas'
         : plan.identityZone && owned.pathname === '/native-zones' ? '/native-zones' : '';
-      endpoint = `ws://127.0.0.1:${port}${ownedPath}`;
+       endpoint = `ws://127.0.0.1:${port}${ownedPath}`;
     } else if (plan.nativeOnly) {
       console.log('PACKAGE_NATIVE_ONLY ' + JSON.stringify({authority:false, experience:plan.experience}));
     } else {
       console.log('PACKAGE_EXTERNAL_AUTHORITY ' + JSON.stringify({owned:false, experience:plan.experience}));
     }
-    if (stopping) return signalCode || 1;
-    const engineArgs = plan.userArgs.some(arg => ['--session-smoke','--smoke'].includes(arg)) ? ['--headless','--audio-driver','Dummy'] : [];
+     if (stopping) return signalCode || 1;
+     childEnv.COCS_CAREER_ENDPOINT = career.env.COCS_CAREER_SCOPE ? endpoint : '';
+     const engineArgs = plan.userArgs.some(arg => ['--session-smoke','--smoke'].includes(arg)) ? ['--headless','--audio-driver','Dummy'] : [];
     // Engine console diagnostics are available on every scene, including
     // offline galleries and multiplayer, without enabling authority cheats.
     if (plan.userArgs.includes('--diagnostics')) engineArgs.push('--verbose');
@@ -106,18 +107,21 @@ async function runRoute(plan, env) {
     clearTimeout(killTimer);
     clearTimeout(smokeTimer);
     // The native process is gone: terminate any residual WS close handshake.
-     try { if (game) {
-      for (const socket of game.wss?.clients ?? []) socket.terminate();
-      game.server?.closeAllConnections();
-       await game.close();
-       if (await game.progression?.whenPersisted?.() === false) throw Error('Career progression could not be persisted');
-       game.server?.removeListener('error', serverError);
-     } } finally { career?.release();
-    process.removeListener('SIGINT', interrupt); process.removeListener('SIGTERM', terminate);
-    rmSync(runtime, {recursive:true, force:true, maxRetries:5, retryDelay:100});
-    if (previousDebug === undefined) delete process.env.COCS_DEBUG;
-     else process.env.COCS_DEBUG = previousDebug;
-     console.log('PACKAGE_STOPPED');
+     try {
+       if (game) {
+         for (const socket of game.wss?.clients ?? []) socket.terminate();
+         game.server?.closeAllConnections();
+         await game.close();
+         if (await game.progression?.whenPersisted?.() === false) throw Error('Career progression could not be persisted');
+       }
+     } finally {
+       game?.server?.removeListener('error', serverError);
+       career?.release();
+       process.removeListener('SIGINT', interrupt); process.removeListener('SIGTERM', terminate);
+       rmSync(runtime, {recursive:true, force:true, maxRetries:5, retryDelay:100});
+       if (previousDebug === undefined) delete process.env.COCS_DEBUG;
+       else process.env.COCS_DEBUG = previousDebug;
+       console.log('PACKAGE_STOPPED');
      }
   }
 }
@@ -185,7 +189,7 @@ async function main() {
   if (version[0] < 22 || (version[0] === 22 && version[1] < 13)) throw Error('Node >=22.13.0 required');
   const catalog = JSON.parse(readFileSync(join(root, 'catalog.json')));
   const plan = options(process.argv.slice(2), catalog);
-  const env = {...process.env, COCS_SETTINGS_PATH: settingsPath(process.env)};
+   const env = {...process.env, COCS_SETTINGS_PATH: settingsPath(process.env), COCS_CAREER_CREDENTIALS_PATH:'', COCS_CAREER_SCOPE:'', COCS_CAREER_ENDPOINT:''};
   // Loop only for a default boot (argv empty → menu) or an explicit
   // --experience=menu without --smoke. Every direct route invocation runs
   // exactly once and exits, keeping all verifier/marker contracts untouched.

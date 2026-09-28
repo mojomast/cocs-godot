@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtempSync,readFileSync,writeFileSync,statSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
+import {spawn} from 'node:child_process';
 import {join} from 'node:path';
 import {WebSocket} from 'ws';
 import {createGameServer} from '../../server/game-server.mjs';
@@ -50,6 +51,8 @@ test('external endpoints are scoped separately; no owned credential is sent to a
  const root=temp(),env={COCS_CAREER_ROOT:root},local=acquireCareer(owned,env);
  try{
   assert.equal(local.env.COCS_CAREER_SCOPE,'owned:source-v3');
+  assert.deepEqual(Object.keys(local.env).sort(),['COCS_CAREER_CREDENTIALS_PATH','COCS_CAREER_ENDPOINT','COCS_CAREER_SCOPE']);
+  assert.equal(local.env.COCS_CAREER_CREDENTIALS_PATH,careerPaths(env).credentialsPath);
   assert.throws(()=>acquireCareer(owned,env),/busy/);
  }finally{local.release();}
  try{
@@ -76,4 +79,16 @@ test('malformed existing store blocks minting and releases lease; stale crash le
   recovered.release();
   assert.deepEqual(JSON.parse(readFileSync(paths.progressionPath,'utf8')).players,[]);
  }finally{rmSync(root,{recursive:true,force:true});}
+});
+test('competing process cannot open an owned store; crashed owner lease is recovered',async()=>{
+ const root=temp(),env={COCS_CAREER_ROOT:root};
+ const child=spawn(process.execPath,['--input-type=module','-e',`import {acquireCareer} from ${JSON.stringify(new URL('./career_path.mjs',import.meta.url).href)};acquireCareer({experience:'deathmatch'},process.env);console.log('READY');setInterval(()=>{},1000);`],{env:{...process.env,...env},stdio:['ignore','pipe','pipe']});
+ try{
+  await new Promise((resolve,reject)=>{child.stdout.once('data',data=>data.toString().includes('READY')?resolve():reject(Error('child failed to acquire lease')));child.once('error',reject);child.once('exit',()=>reject(Error('child exited before acquiring lease')));});
+  assert.throws(()=>acquireCareer(owned,env),/busy/);
+  child.kill('SIGKILL');
+  await new Promise(resolve=>child.once('exit',resolve));
+  const next=acquireCareer(owned,env);
+  next.release();
+ }finally{child.kill('SIGKILL');rmSync(root,{recursive:true,force:true});}
 });

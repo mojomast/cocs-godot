@@ -14,6 +14,7 @@ const MAX_FRAME_BYTES := 1048576 # bounded initial cap; capture is not all-map w
 var peer := WebSocketPeer.new()
 var allowlist: Dictionary = {}
 var requested_map: String = ""
+var connection_endpoint: String = ""
 var room_id: String = ""
 var peer_id: int = -1
 var actor_id: int = -1
@@ -69,7 +70,9 @@ func connect_server(endpoint: String, maps: Dictionary, map_id: String) -> Error
 	peer.inbound_buffer_size = MAX_FRAME_BYTES * 2
 	peer.outbound_buffer_size = 65536
 	peer.max_queued_packets = 128
-	return peer.connect_to_url(endpoint)
+	var result := peer.connect_to_url(endpoint)
+	if result == OK: connection_endpoint = endpoint
+	return result
 
 func disconnect_server() -> void:
 	career_clear()
@@ -77,6 +80,7 @@ func disconnect_server() -> void:
 	if peer.get_ready_state() != WebSocketPeer.STATE_CLOSED: peer.close()
 	peer = WebSocketPeer.new()
 	was_open = false
+	connection_endpoint = ""
 	room_id = ""
 	peer_id = -1
 	actor_id = -1
@@ -109,6 +113,7 @@ func send_frame(frame: Dictionary) -> Error:
 	return peer.send_text(JSON.stringify(frame))
 
 func create_room(player_name: String = "Godot", character: String = "chatgpt", harness: String = "openclaw") -> Error:
+	if not identity_storage_ready(): return ERR_FILE_CORRUPT
 	var pair: Dictionary = Loadout.resolve(character, harness)
 	var frame := {"type":"create", "name":"Godot port laboratory", "playerName":player_name, "character":pair.character, "harness":pair.harness, "v":3, "delta":0}
 	frame.merge(identity_fields())
@@ -122,6 +127,7 @@ func create_room(player_name: String = "Godot", character: String = "chatgpt", h
 
 func join_room(id: String, player_name: String = "Godot guest", character: String = "", harness: String = "") -> Error:
 	if id.is_empty(): return ERR_INVALID_PARAMETER
+	if not identity_storage_ready(): return ERR_FILE_CORRUPT
 	var pair: Dictionary = Loadout.resolve(character, harness)
 	var frame := {"type":"join", "roomId":id, "name":player_name, "character":pair.character, "harness":pair.harness, "v":PROTOCOL_VERSION, "delta":0}
 	frame.merge(identity_fields())
@@ -318,6 +324,13 @@ func career_clear() -> void:
 func identity_fields() -> Dictionary:
 	var identity := get_tree().root.get_node_or_null("Identity") if is_inside_tree() else null
 	return identity.request_fields(self) if identity != null else {}
+
+func identity_storage_ready() -> bool:
+	var identity := get_tree().root.get_node_or_null("Identity") if is_inside_tree() else null
+	if identity != null and not identity.status.is_empty():
+		connection_error.emit(identity.status)
+		return false
+	return true
 
 func identity_accept(frame: Dictionary) -> void:
 	var identity := get_tree().root.get_node_or_null("Identity") if is_inside_tree() else null

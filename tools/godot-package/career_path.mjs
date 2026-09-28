@@ -34,22 +34,27 @@ export function acquireCareer(plan,env=process.env,options={}){
  const paths=careerPaths(env,options);
  const owned=!plan.nativeOnly&&!plan.endpoint&&!plan.nativeArena&&!plan.identityZone&&plan.experience!=='horde';
  const scope=owned?'owned:source-v3':plan.endpoint?`external:${new URL(plan.endpoint).href}`:null;
- if(!scope)return {env:{...env},progressionPath:null,release(){}};
+ if(!scope)return {env:{COCS_CAREER_CREDENTIALS_PATH:'',COCS_CAREER_SCOPE:'',COCS_CAREER_ENDPOINT:''},progressionPath:null,release(){}};
  privateDirectory(paths.root);
  // A shared credential file must not be edited concurrently by separate routes.
  const lease=`${paths.credentialsPath}.lease`;
  let fd;
- for(let attempt=0;attempt<2;attempt++){
-  try{fd=openSync(lease,'wx',0o600);break;}catch(error){
-   if(error.code!=='EEXIST')throw error;
+ try{fd=openSync(lease,'wx',0o600);}catch(error){
+  if(error.code!=='EEXIST')throw error;
+  // A separate exclusive reclaimer gate keeps two stale-lease readers from
+  // unlinking each other's newly acquired live lease.
+  const gate=`${lease}.reclaim`;
+  let claim;
+  try{claim=openSync(gate,'wx',0o600);}catch{throw Error('Career store is busy (lease reclamation in progress)');}
+  try{
    let pid;
    try{pid=Number(readFileSync(lease,'utf8').trim());}catch{}
    if(!Number.isSafeInteger(pid)||pid<1)throw Error('Career store is busy (unreadable lease)');
    try{process.kill(pid,0);throw Error('Career store is busy (another session is active)');}
    catch(probe){if(probe.code!=='ESRCH')throw probe;}
-   if(attempt===1)throw Error('Career store is busy');
    unlinkSync(lease);
-  }
+   fd=openSync(lease,'wx',0o600);
+  }finally{unlinkSync(gate);closeSync(claim);}
  }
  let released=false,previousMask;
  const release=()=>{if(released)return;released=true;if(previousMask!==undefined)process.umask(previousMask);try{if(statSync(lease).ino===fstatSync(fd).ino)unlinkSync(lease);}catch(error){if(error.code!=='ENOENT')throw error;}finally{closeSync(fd);}};
@@ -77,6 +82,6 @@ export function acquireCareer(plan,env=process.env,options={}){
   }
   privateFile(paths.credentialsPath);
   if(owned&&process.platform!=='win32')previousMask=process.umask(0o077);
-  return {env:{...env,COCS_CAREER_PATH:paths.credentialsPath,COCS_CAREER_SCOPE:scope},progressionPath:owned?paths.progressionPath:null,release};
+  return {env:{COCS_CAREER_CREDENTIALS_PATH:paths.credentialsPath,COCS_CAREER_SCOPE:scope,COCS_CAREER_ENDPOINT:''},progressionPath:owned?paths.progressionPath:null,release};
  }catch(error){release();throw error;}
 }

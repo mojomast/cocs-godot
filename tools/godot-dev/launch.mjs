@@ -64,8 +64,9 @@ async function runRoute(plan){
    }
    endpoint=`ws://127.0.0.1:${port}${plan.nativeArena&&owned.pathname==='/native-arenas'?'/native-arenas':''}`;
    console.log(`Owned local server ready at ${endpoint}; ${plan.smoke??plan.experience}`);
-  }else if(plan.nativeOnly)console.log(`Native-only ${plan.experience}; no authority; this launcher owns the native client`);
-  else console.log('Using existing authority; this launcher owns only the native client');
+   }else if(plan.nativeOnly)console.log(`Native-only ${plan.experience}; no authority; this launcher owns the native client`);
+   else console.log('Using existing authority; this launcher owns only the native client');
+   env.COCS_CAREER_ENDPOINT=career.env.COCS_CAREER_SCOPE?endpoint:'';
   const args=[...plan.args,'--',...(plan.nativeOnly?[]:[`--endpoint=${endpoint}`]),...plan.sessionOptions];
   let code=0;
   if(!stopping){
@@ -79,11 +80,15 @@ async function runRoute(plan){
   return code;
   }finally{
    stop();if(childDone)await childDone.catch(()=>{});clearTimeout(killTimer);clearTimeout(smokeTimer);
-    try{if(game){for(const socket of game.wss?.clients??[])socket.terminate();game.server?.closeAllConnections();await game.close();if(await game.progression?.whenPersisted?.()===false)throw Error('Career progression could not be persisted');game.server?.removeListener('error',serverError);}}
-    finally{career?.release();}
-   process.removeListener('SIGINT',interrupt);process.removeListener('SIGTERM',terminate);
-   if(privateRuntime)rmSync(runtime,{recursive:true,force:true,maxRetries:5,retryDelay:100});
-   if(previousDebug===undefined)delete process.env.COCS_DEBUG;else process.env.COCS_DEBUG=previousDebug;
+    try{
+     if(game){for(const socket of game.wss?.clients??[])socket.terminate();game.server?.closeAllConnections();await game.close();if(await game.progression?.whenPersisted?.()===false)throw Error('Career progression could not be persisted');}
+    }finally{
+     game?.server?.removeListener('error',serverError);
+     career?.release();
+     process.removeListener('SIGINT',interrupt);process.removeListener('SIGTERM',terminate);
+     if(privateRuntime)rmSync(runtime,{recursive:true,force:true,maxRetries:5,retryDelay:100});
+     if(previousDebug===undefined)delete process.env.COCS_DEBUG;else process.env.COCS_DEBUG=previousDebug;
+    }
   }
 }
 
@@ -129,7 +134,7 @@ async function menuPick(menuPlan,catalog,env){
 if(plan.experience==='menu'&&!plan.smoke){
  // Supervisor loop: boot menu → pick route → run it → boot menu again.
  // MENU_QUIT/close without a route ends it; crash loops end with exit 1.
-  const menuEnv={...process.env,COCS_SETTINGS_PATH:localSettingsPath};
+   const menuEnv={...process.env,COCS_SETTINGS_PATH:localSettingsPath,COCS_CAREER_CREDENTIALS_PATH:'',COCS_CAREER_SCOPE:'',COCS_CAREER_ENDPOINT:''};
  for(const [name,dir] of [['XDG_DATA_HOME','data'],['XDG_CONFIG_HOME','config'],['XDG_CACHE_HOME','cache']]){menuEnv[name]=resolve('.port-runtime',dir);mkdirSync(menuEnv[name],{recursive:true});}
  let fastFailures=0;
  for(;;){
