@@ -6,6 +6,7 @@ const Plan = preload("res://benchmark/run_plan.gd")
 const FrameStats = preload("res://benchmark/frame_stats.gd")
 const Report = preload("res://benchmark/report.gd")
 const Driver = preload("res://benchmark/benchmark.tscn")
+const DriverScript = preload("res://benchmark/driver.gd")
 const Quality = preload("res://world/combat_quality.gd")
 const Demo = preload("res://native_arenas/demo.gd")
 const ALLOWED_KEYS := [KEY_W, KEY_A, KEY_S, KEY_D, KEY_SPACE, KEY_R, KEY_G,
@@ -53,6 +54,7 @@ func _initialize() -> void: call_deferred("run")
 
 func run() -> void:
 	check_plan()
+	check_control_window()
 	check_stats()
 	check_report()
 	await check_quality()
@@ -98,6 +100,29 @@ func check_plan() -> void:
 	check(seen.has(KEY_W) and seen.has(KEY_D) and seen.has(KEY_G), "the plan moves, strafes and throws grenades")
 	check(Plan.weapon_key(0) == KEY_1 and Plan.weapon_key(9) == KEY_0, "weapon keys follow the source 1..9/0 order")
 	check(Plan.weapon_key(-1) == 0 and Plan.weapon_key(10) == 0, "out-of-range weapon indexes request nothing")
+
+## `controls_seconds` is reported against `measured_seconds` (README, the derived
+## verdict and port/native-benchmark/validate.mjs), so control during the
+## unmeasured warm-up must never be counted. The old accumulator added the 5s
+## warm-up and could report controls_seconds > measured_seconds + 1 for a clean
+## run; this pins the measured-window conservation.
+func check_control_window() -> void:
+	var measured_start := Plan.phase_start(1)
+	check(not Plan.is_measured(0), "phase 0 is the unmeasured warm-up")
+	check(not DriverScript._counts_control(0.0, true), "warm-up control is outside the measured window")
+	check(not DriverScript._counts_control(measured_start - 0.001, true), "the last warm-up instant is excluded")
+	check(DriverScript._counts_control(measured_start, true), "the first measured instant is counted")
+	check(not DriverScript._counts_control(measured_start, false), "lost control is never counted")
+	# A frame-cadence sweep of the whole plan may only accumulate the measured
+	# window; counting warm-up would overflow the validator's measured+1 bound.
+	var step := 1.0 / 60.0
+	var expected := int(round(Plan.measured_seconds() / step))
+	var frames := int(round(Plan.total_seconds() / step))
+	var counted := 0
+	for i in range(frames):
+		if DriverScript._counts_control(float(i) * step, true): counted += 1
+	check(counted <= expected, "counted control frames never exceed the measured window")
+	check(counted >= expected - 1, "the measured window is conserved at frame cadence")
 
 func _stable(intent: Dictionary) -> Dictionary:
 	var keys: Array = intent.keys.duplicate()

@@ -240,7 +240,7 @@ func open_panel(from_menu: bool = false, previous_focus: Control = null) -> void
 			if scene.controls.has_method("release"): scene.controls.release()
 			elif scene.controls.has_method("clear"): scene.controls.clear()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	status.text = "The match continues while Settings is open. Click to rejoin controls after Back."
+	status.text = "The match continues while Settings is open. After Back, use the mode's click/Enter controls to resume input."
 	for key: String in ["master_volume", "mouse_sensitivity", "ui_scale"]: rows[key].set_value_no_signal(values[key])
 	for key: String in ["master_volume", "mouse_sensitivity", "ui_scale"]: rows[key + "_value"].text = "%d%%" % values[key]
 	rows.mute.set_pressed_no_signal(values.mute)

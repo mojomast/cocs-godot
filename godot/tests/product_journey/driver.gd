@@ -153,6 +153,17 @@ func capture_deck() -> void:
 	root.size = Vector2i(1280,800)
 	scene.world_close_commands()
 	await process_frame
+	await capture_view("tactical-1280x800")
+	root.size = Vector2i(760,520)
+	settings.set_value("ui_scale",150,false)
+	await capture_view("tactical-760x520-scale150")
+	var hud: Control = scene.tactical_hud
+	if not require_value(not hud.objective_card.get_rect().intersects(hud.status_card.get_rect()), "scaled live tactical cards overlap"): return
+	if not require_value(hud.objective_card.get_rect().end.y <= hud.bottom.position.y and hud.status_card.get_rect().end.y <= hud.bottom.position.y,
+		"scaled live tactical cards overlap the control ribbon"): return
+	settings.set_value("ui_scale",100,false)
+	root.size = Vector2i(1280,800)
+	await process_frame
 
 func route_step() -> void:
 	if route_id == "lattice-world" and int(record.visits) == 2 and OS.get_environment("COCS_JOURNEY_CAPTURE") == "1":

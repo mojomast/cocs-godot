@@ -1,6 +1,8 @@
 extends Node3D
 ## Standalone native material studies. No session/gameplay dependencies.
 const Factory = preload("res://shader_lab/factory.gd")
+const MouseMotion = preload("res://ui/mouse_motion.gd")
+const SettingsAccess = preload("res://ui/settings_access.gd")
 const Surfaces = preload("res://moth/surfaces.gd")
 const KEYS := ["shield", "conduit", "phase"]
 const TITLES := ["INTERFERENCE", "FLUX / REACTOR", "PHASE / MATTER"]
@@ -327,9 +329,10 @@ func _update_hud() -> void:
 	_fit_sidebar.call_deferred()
 
 func _process(delta: float) -> void:
+	if SettingsAccess.overlay_open(): dragging = false
 	if not paused: set_time(seconds + delta)
 	var direction := float(Input.is_physical_key_pressed(KEY_D) or Input.is_physical_key_pressed(KEY_RIGHT)) - float(Input.is_physical_key_pressed(KEY_A) or Input.is_physical_key_pressed(KEY_LEFT))
-	if direction != 0.0:
+	if direction != 0.0 and not SettingsAccess.overlay_open():
 		yaw += direction * delta * 0.65
 		_update_camera()
 	_hud_elapsed += delta
@@ -338,11 +341,15 @@ func _process(delta: float) -> void:
 		_update_hud()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if SettingsAccess.overlay_open():
+		dragging = false
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		dragging = event.pressed
 	elif event is InputEventMouseMotion and dragging:
-		yaw -= event.relative.x * 0.006
-		pitch = clampf(pitch + event.relative.y * 0.004, -0.05, 0.65)
+		var delta := MouseMotion.raw_delta(event)
+		yaw -= delta.x * 0.006
+		pitch = clampf(pitch + delta.y * 0.004, -0.05, 0.65)
 		_update_camera()
 	elif event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:

@@ -4,6 +4,8 @@ const Catalog = preload("res://world/catalog.gd")
 const EnvironmentStyle = preload("res://world/environment_style.gd")
 const MothScenery = preload("res://moth_scenery/scenery.gd")
 const ScenerySettings = preload("res://world/scenery_settings.gd")
+const ViewerSettingsAccess = preload("res://ui/settings_access.gd")
+const ViewerMouseMotion = preload("res://ui/mouse_motion.gd")
 var scenery_settings: Node
 var catalog := Catalog.new()
 var world: Node3D
@@ -215,11 +217,14 @@ func support_height(map: Dictionary, x: float, z: float) -> float:
 	return best if is_finite(best) else 0.0
 
 func _unhandled_input(event: InputEvent) -> void:
+	if ViewerSettingsAccess.overlay_open(): return
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		camera.rotation.y -= event.relative.x * 0.003
-		camera.rotation.x = clampf(camera.rotation.x-event.relative.y*0.003, -1.5, 1.5)
+		var delta := ViewerMouseMotion.raw_delta(event)
+		camera.rotation.y -= delta.x * 0.003
+		camera.rotation.x = clampf(camera.rotation.x-delta.y*0.003, -1.5, 1.5)
 
 func _process(delta: float) -> void:
+	if ViewerSettingsAccess.overlay_open(): return
 	var direction := Vector3.ZERO
 	if Input.is_physical_key_pressed(KEY_W): direction.z -= 1
 	if Input.is_physical_key_pressed(KEY_S): direction.z += 1

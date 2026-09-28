@@ -1,5 +1,6 @@
 extends Node3D
 const SettingsAccess = preload("res://ui/settings_access.gd")
+const MouseMotion = preload("res://ui/mouse_motion.gd")
 const Network = preload("res://net/client.gd")
 const World = preload("res://world/viewer.gd")
 const Fleet = preload("res://combined_arms/fleet.gd")
@@ -177,7 +178,8 @@ func _input(event: InputEvent) -> void:
 	else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event is InputEventMouseMotion and controls.engaged and eligible() and focused:
 		var gain := 0.003 * SettingsAccess.sensitivity() * (0.85 if aim_requested() else 1.0)
-		var look := Motion.look(yaw-event.relative.x*gain, pitch-event.relative.y*gain)
+		var delta := MouseMotion.raw_delta(event)
+		var look := Motion.look(yaw-delta.x*gain, pitch-delta.y*gain)
 		yaw = look.x
 		pitch = look.y
 	update_graphics()

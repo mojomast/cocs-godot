@@ -40,6 +40,17 @@ test('a complete, controlled run validates', () => {
   assert.equal(validation.ok, true, validation.problems.join('; '));
 });
 
+test('control time is bounded by the measured window, not the whole plan', () => {
+  // controls_seconds counts only the measured window; the validator allows one
+  // frame of boundary slack (measured_seconds + 1) and rejects the old bug where
+  // the unmeasured warm-up inflated controls_seconds past that bound.
+  assert.equal(validateResult(result({controls_seconds: 28.0})).ok, true);
+  assert.equal(validateResult(result({controls_seconds: 29.0})).ok, true);
+  const over = validateResult(result({controls_seconds: 29.001}));
+  assert.equal(over.ok, false);
+  assert.match(over.problems.join(' '), /measured window/);
+});
+
 test('missing or dishonest fields are rejected', () => {
   const missing = result();
   delete missing.aggregate;

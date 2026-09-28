@@ -86,7 +86,11 @@ func release_pointer() -> void:
 	super.release_pointer()
 
 func _input(event: InputEvent) -> void:
-	if ArmsSettingsAccess.overlay_open(): return
+	if ArmsSettingsAccess.overlay_open():
+		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed:
+			fresh.observe(event)
+			observe_combat_input(event)
+		return
 	fresh.observe(event)
 	observe_combat_input(event)
 	# Source pins the weapon. Never queue a native selection request.

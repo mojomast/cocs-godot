@@ -4,6 +4,10 @@ extends SceneTree
 const Store = preload("res://ui/local_settings.gd")
 const SportsControls = preload("res://sports/controls.gd")
 const CombinedControls = preload("res://combined_arms/controls.gd")
+const MouseMotion = preload("res://ui/mouse_motion.gd")
+const Session = preload("res://world/session.gd")
+const Lattice = preload("res://lattice/world_demo.gd")
+const ArmsRace = preload("res://arms_race/demo.gd")
 var failed := 0
 var checks := 0
 
@@ -11,6 +15,13 @@ class FixtureScene extends Node:
 	var controls: RefCounted
 	func _init(instance: RefCounted) -> void:
 		controls = instance
+
+class AdapterScene extends Node:
+	var adapter: Node
+	func _init(instance: Node) -> void:
+		adapter = instance
+	func release_pointer() -> void:
+		adapter.call("release_pointer")
 
 func key(code: int, pressed: bool) -> InputEventKey:
 	var event := InputEventKey.new()
@@ -40,6 +51,21 @@ func write(path: String, text: String) -> void:
 		return
 	file.store_string(text)
 	file.close()
+
+func free_detached_adapter(adapter: Node) -> void:
+	# These fixtures deliberately never enter the tree: _ready normally adopts
+	# constructor-created cameras, UI and transport nodes. Adopt their nested
+	# detached Node fields before free(), so their RIDs have a real owner here.
+	adopt_detached_nodes(adapter)
+	adapter.free()
+
+func adopt_detached_nodes(owner: Node) -> void:
+	for property: Dictionary in owner.get_property_list():
+		if property.type != TYPE_OBJECT: continue
+		var child: Variant = owner.get(property.name)
+		if child is Node and child != owner and child.get_parent() == null:
+			adopt_detached_nodes(child)
+			owner.add_child(child)
 
 func run() -> void:
 	var path := "user://settings_contract_%d/nested/local.json" % OS.get_process_id()
@@ -72,6 +98,29 @@ func run() -> void:
 		and first.set_value("mouse_sensitivity", 150) and first.set_value("ui_scale", 125),
 		"settings save atomically into a nested injected directory")
 	check(absf(first.sensitivity() - 1.5) < 0.001, "control gain reads current settings")
+	var hardware := InputEventMouseMotion.new()
+	hardware.relative = Vector2(24, -12)
+	hardware.screen_relative = Vector2(24, -12)
+	var baseline_yaw := -MouseMotion.raw_delta(hardware).x * 0.003
+	for percent in [75, 100, 150]:
+		var scale := float(percent) / 100.0
+		var transform := Transform2D(Vector2(scale, 0), Vector2(0, scale), Vector2.ZERO)
+		var scaled := hardware.xformed_by(transform) as InputEventMouseMotion
+		check(scaled != null and scaled.relative.is_equal_approx(hardware.relative * scale)
+			and scaled.screen_relative == hardware.screen_relative,
+			"content transform scales relative but preserves hardware motion at UI scale %d" % percent)
+		if scaled != null:
+			check(absf(-MouseMotion.raw_delta(scaled).x * 0.003 - baseline_yaw) < 0.000001,
+				"UI scale %d preserves yaw at fixed sensitivity" % percent)
+	var synthetic := InputEventMouseMotion.new()
+	synthetic.relative = Vector2(-20, 8)
+	check(MouseMotion.raw_delta(synthetic) == synthetic.relative,
+		"relative-only synthetic aiming events retain their delta")
+	for sensitivity in [75, 150]:
+		first.set_value("mouse_sensitivity", sensitivity, false)
+		check(absf(-MouseMotion.raw_delta(hardware).x * 0.003 * first.sensitivity()
+			- baseline_yaw * float(sensitivity) / 100.0) < 0.000001,
+			"sensitivity %d changes the existing session look gain" % sensitivity)
 	check(absf(root.content_scale_factor - 1.25) < 0.001
 		and root.content_scale_mode == Window.CONTENT_SCALE_MODE_CANVAS_ITEMS and root.content_scale_size == Vector2i.ZERO,
 		"UI scale changes the actual root canvas stretch live, including explicit HUD font overrides")
@@ -128,6 +177,7 @@ func run() -> void:
 	current_scene = null
 	root.remove_child(fixture)
 	fixture.free()
+	check_overlay_release_paths(root.get_node("LocalSettings"))
 	root.remove_child(first)
 	first.free()
 	for i in 3:
@@ -162,3 +212,67 @@ func run() -> void:
 	root.content_scale_size = previous_base
 	print("SETTINGS_CONTRACT checks=", checks, " failures=", failed)
 	quit(1 if failed else 0)
+
+func check_overlay_release_paths(settings: Variant) -> void:
+	var ammo := [20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+	for adapter: Variant in [Session.new(), Lattice.new()]:
+		var scene := AdapterScene.new(adapter)
+		root.add_child(scene)
+		current_scene = scene
+		adapter.combat_actions.record(key(KEY_W, true), true)
+		adapter.combat_actions.record(button(MOUSE_BUTTON_LEFT, true), true)
+		adapter.weapon_selection.handle_event(key(KEY_1, true), true, {"ammo":ammo, "weapon":1})
+		settings.open_panel()
+		check(adapter.combat_actions.down.has("k%d" % KEY_W) and adapter.weapon_selection.held.has(KEY_1),
+			"%s retains physical downs at the settings boundary" % adapter.get_script().resource_path)
+		adapter._input(key(KEY_W, true))
+		adapter._input(button(MOUSE_BUTTON_LEFT, true))
+		adapter._input(key(KEY_1, true))
+		check(adapter.combat_actions.held.is_empty() and adapter.weapon_selection.pending == -1,
+			"settings blocks new presses and queued actions")
+		for released: InputEvent in [key(KEY_W, false), button(MOUSE_BUTTON_LEFT, false), key(KEY_1, false)]:
+			adapter._input(released)
+		check(not adapter.combat_actions.down.has("k%d" % KEY_W)
+			and not adapter.combat_actions.down.has("m1") and not adapter.weapon_selection.held.has(KEY_1),
+			"%s observes W/fire/number releases through its overlay input" % adapter.get_script().resource_path)
+		settings.close_panel()
+		adapter.combat_actions.record(key(KEY_W, true), true)
+		adapter.combat_actions.record(button(MOUSE_BUTTON_LEFT, true), true)
+		adapter.weapon_selection.handle_event(key(KEY_1, true), true, {"ammo":ammo, "weapon":2})
+		check(adapter.combat_actions.key(KEY_W) and adapter.combat_actions.sample(0, 0, true).fire
+			and adapter.weapon_selection.pending == 0,
+			"released controls can act on a fresh press after Back")
+		adapter.release_pointer()
+		settings.open_panel()
+		settings.close_panel()
+		adapter.combat_actions.record(key(KEY_W, true), true)
+		adapter.weapon_selection.handle_event(key(KEY_1, true), true, {"ammo":ammo, "weapon":2})
+		check(not adapter.combat_actions.key(KEY_W) and adapter.weapon_selection.pending == -1,
+			"held controls without an observed release stay blocked")
+		current_scene = null
+		root.remove_child(scene)
+		scene.free()
+		free_detached_adapter(adapter)
+	var arms := ArmsRace.new()
+	var scene := AdapterScene.new(arms)
+	root.add_child(scene)
+	current_scene = scene
+	arms.fresh.observe(key(KEY_W, true))
+	arms.fresh.observe(button(MOUSE_BUTTON_LEFT, true))
+	arms.combat_actions.record(button(MOUSE_BUTTON_LEFT, true), true)
+	settings.open_panel()
+	check(not arms.fresh.capture_allowed(), "Arms Race blocks capture while pre-overlay controls remain held")
+	arms._input(key(KEY_W, true))
+	arms._input(key(KEY_W, false))
+	arms._input(button(MOUSE_BUTTON_LEFT, false))
+	check(arms.fresh.capture_allowed() and not arms.combat_actions.down.has("m1"),
+		"Arms Race observes releases while Settings is open")
+	settings.close_panel()
+	arms._input(button(MOUSE_BUTTON_LEFT, true))
+	check(arms.fresh.capture_allowed(), "Arms Race permits a fresh capture press after Back")
+	arms.release_pointer()
+	check(not arms.fresh.capture_allowed(), "Arms Race still blocks a held click across a boundary")
+	current_scene = null
+	root.remove_child(scene)
+	scene.free()
+	free_detached_adapter(arms)

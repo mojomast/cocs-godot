@@ -19,16 +19,20 @@ func wire(client: Node, frame: Dictionary) -> bool:
 	return client.decode_text(JSON.stringify(frame))
 
 ## The project uses CONTENT_SCALE_MODE_CANVAS_ITEMS with a fixed
-## content_scale_size, so the logical viewport is set through content_scale_size
-## (and factor), never root.size. Wait until the HUD control actually adopts it.
-func resize_hud(target: Vector2i) -> void:
-	root.content_scale_factor = 1.0
-	root.content_scale_size = target
+## content_scale_size, so the logical viewport is [content_scale_size] divided by
+## [content_scale_factor] -- never root.size. Wait until the HUD control adopts
+## it, plus two settled frames so width-dependent label minimums reshape.
+func resize_hud(scale_size: Vector2i, factor: float = 1.0) -> Vector2:
+	root.content_scale_factor = factor
+	root.content_scale_size = scale_size
+	var expected := Vector2(scale_size.x, scale_size.y) / factor
 	for _wait: int in range(12):
 		await process_frame
-		if hud.size.is_equal_approx(Vector2(target.x, target.y)): break
+		if hud.size.is_equal_approx(expected): break
 	await process_frame
-	check(hud.size.is_equal_approx(Vector2(target.x, target.y)), "HUD tracks %dx%d logical viewport" % [target.x, target.y])
+	await process_frame
+	check(hud.size.is_equal_approx(expected), "HUD tracks logical %.0fx%.0f viewport" % [expected.x, expected.y])
+	return expected
 
 func _initialize() -> void: call_deferred("run")
 
@@ -92,6 +96,20 @@ func run() -> void:
 	check(hud.objective_card.get_rect().end.x < hud.status_card.position.x and hud.status_card.get_rect().end.x <= 1280 and hud.bottom.position.y + hud.bottom.get_combined_minimum_size().y <= 800, "standard cards fit without overlap or clipping")
 	await resize_hud(Vector2i(760, 520))
 	check(hud.objective_card.get_rect().end.x < hud.status_card.position.x and hud.status_card.get_rect().end.x <= 760, "compact cards fit without overlap")
+	# 150% interface scale shrinks the logical rect to ~507x347; the two cards
+	# must reflow into a stack and the ribbon must still fit.
+	var logical: Vector2 = await resize_hud(Vector2i(760, 520), 1.5)
+	var left: Rect2 = hud.objective_card.get_rect()
+	var right: Rect2 = hud.status_card.get_rect()
+	var ribbon: Rect2 = hud.bottom.get_rect()
+	check(left.position.x >= -0.5 and left.end.x <= logical.x + 0.5 and right.position.x >= -0.5 and right.end.x <= logical.x + 0.5, "narrow 150% cards stay inside the logical width")
+	check(left.end.y <= right.position.y + 1.0, "narrow 150% directive stacks above live mission")
+	check(right.end.y <= ribbon.position.y + 1.0, "narrow 150% live mission stacks above the ribbon")
+	check(ribbon.position.y + hud.bottom.get_combined_minimum_size().y <= logical.y + 0.5, "narrow 150% ribbon fits the logical height")
+	check(hud.objective_card.get_combined_minimum_size().x <= hud.objective_card.size.x + 1.0 and hud.status_card.get_combined_minimum_size().x <= hud.status_card.size.x + 1.0, "narrow 150% cards fit their combined minimum width")
+	check(not hud.objective_eyebrow.visible and not hud.status_caption.visible and not hud.directive.visible and not hud.intel.visible, "narrow 150% drops only supplemental copy")
+	check(hud.goal.visible and hud.objective.visible and hud.progress.visible and hud.progress_detail.visible and hud.health.visible and hud.economy.visible, "narrow 150% keeps every essential source fact visible")
+	check(hud.goal.text.contains("FRONT") and hud.goal.text.contains("10 m") and hud.objective.text.contains("CAPTURE LEGAL") and hud.progress.text.contains("WAVE 3") and hud.progress_detail.text.contains("HQ 60") and hud.health.text.contains("OPERATOR HP") and hud.economy.text.contains("REQ") and hud.economy.text.contains("120") and hud.economy.text.contains("FLUX"), "narrow 150% essential copy stays source-backed and readable")
 	client.clear_projection()
 	hud.present(client.projection, {}, {}, {}, [], "")
 	check(not hud.visible and hud.epoch.is_empty(), "identity loss clears HUD and wallet delta")

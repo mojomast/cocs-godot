@@ -154,10 +154,14 @@ func _process(delta: float) -> void:
 			return
 	else:
 		_off_round = 0.0
-	if session.can_capture_pointer():
+	var controlled: bool = session.can_capture_pointer()
+	if controlled and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# `controls_seconds` is reported against `measured_seconds` (README, the
+	# derived verdict and the result validator), so only control inside the
+	# measured window may count. The unmeasured warm-up must never inflate it.
+	if _counts_control(elapsed, controlled):
 		_controls_seconds += delta
-		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	var intent: Dictionary = Plan.intent(elapsed)
 	if int(intent.index) != _current_phase:
 		stats.begin_phase(int(intent.index))
@@ -246,6 +250,13 @@ static func _measured_flags() -> Array:
 	var flags: Array = []
 	for i in range(Plan.phase_count()): flags.append(Plan.is_measured(i))
 	return flags
+
+## True when control at `elapsed` belongs to the measured window. Warm-up is
+## excluded from `measured_seconds`, so it must not be counted in
+## `controls_seconds` either: the validator bounds controls_seconds by
+## measured_seconds + 1, and a clean run must conserve the measured window.
+static func _counts_control(elapsed: float, controlled: bool) -> bool:
+	return controlled and Plan.is_measured(Plan.phase_index(elapsed))
 
 ## One rendered capture shortly before each measured phase ends, so the PNG shows
 ## the phase under load rather than the idle moment after it.

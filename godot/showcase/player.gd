@@ -1,4 +1,6 @@
 extends CharacterBody3D
+const MouseMotion = preload("res://ui/mouse_motion.gd")
+const SettingsAccess = preload("res://ui/settings_access.gd")
 ## Local exploration only. No session, source input, combat or networking dependency.
 signal reset_performed
 
@@ -62,6 +64,9 @@ func _notification(what: int) -> void:
 		release_mouse()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if SettingsAccess.overlay_open():
+		clear_controls()
+		return
 	if event is InputEventKey:
 		if event.physical_keycode == KEY_ESCAPE and event.pressed:
 			release_mouse()
@@ -77,12 +82,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		if controls_enabled:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and controls_enabled:
-		rotation.y -= event.relative.x * 0.0023
-		camera.rotation.x = clampf(camera.rotation.x - event.relative.y * 0.0023, -1.45, 1.45)
+		var delta := MouseMotion.raw_delta(event)
+		rotation.y -= delta.x * 0.0023
+		camera.rotation.x = clampf(camera.rotation.x - delta.y * 0.0023, -1.45, 1.45)
 
 func _physics_process(delta: float) -> void:
+	if SettingsAccess.overlay_open(): clear_controls()
 	var axis := Vector2.ZERO
-	if controls_enabled:
+	if controls_enabled and not SettingsAccess.overlay_open():
 		axis = Vector2(float(keys.get(KEY_D, false)) - float(keys.get(KEY_A, false)), float(keys.get(KEY_S, false)) - float(keys.get(KEY_W, false))).normalized()
 	var direction := global_basis * Vector3(axis.x, 0, axis.y)
 	var speed := SPRINT_SPEED if keys.get(KEY_SHIFT, false) else WALK_SPEED

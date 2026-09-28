@@ -2,6 +2,8 @@ extends Control
 ## Standalone native scene. Input never reads/writes the game's input/session API.
 const Field = preload("res://particle_lab/field.gd")
 const Metrics = preload("res://particle_lab/frame_metrics.gd")
+const SettingsAccess = preload("res://ui/settings_access.gd")
+const MouseMotion = preload("res://ui/mouse_motion.gd")
 const TITLES := ["STORM VORTEX", "SPIRAL GALAXY", "ION BURST", "PLASMA FOUNTAIN"]
 const DESCRIPTIONS := ["Differential rotation / rising filaments", "Five arms / warm core / inclined halo", "Four expanding shells / spring advection", "Ballistic crown / twisted plasma nozzle"]
 const SCALES := [1.0, 0.75, 0.5]
@@ -258,6 +260,9 @@ func _resize() -> void:
 	metrics.reset()
 
 func _process(delta: float) -> void:
+	if SettingsAccess.overlay_open():
+		_dragging = false
+		return
 	if _freefly and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		var direction := Vector3.ZERO
 		if Input.is_physical_key_pressed(KEY_W): direction -= camera.transform.basis.z
@@ -276,6 +281,9 @@ func _process(delta: float) -> void:
 		_refresh_ui()
 
 func _input(event: InputEvent) -> void:
+	if SettingsAccess.overlay_open():
+		_dragging = false
+		return
 	# Handle release before GUI dispatch. Never wait for a popup or synchronous
 	# benchmark. At slow GPU rates input is limited by the next native frame.
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
@@ -288,6 +296,7 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _unhandled_input(event: InputEvent) -> void:
+	if SettingsAccess.overlay_open(): return
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
 			KEY_1, KEY_2, KEY_3, KEY_4: select_preset(event.keycode - KEY_1)
@@ -318,12 +327,13 @@ func _unhandled_input(event: InputEvent) -> void:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			elif not _freefly: _dragging = true
 	elif event is InputEventMouseMotion:
+		var delta := MouseMotion.raw_delta(event)
 		if _freefly and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			camera.rotation.y -= event.relative.x * 0.003
-			camera.rotation.x = clampf(camera.rotation.x - event.relative.y * 0.003, -1.5, 1.5)
+			camera.rotation.y -= delta.x * 0.003
+			camera.rotation.x = clampf(camera.rotation.x - delta.y * 0.003, -1.5, 1.5)
 		elif _dragging:
-			_yaw -= event.relative.x * 0.006
-			_pitch = clampf(_pitch + event.relative.y * 0.006, -0.15, 1.3)
+			_yaw -= delta.x * 0.006
+			_pitch = clampf(_pitch + delta.y * 0.006, -0.15, 1.3)
 			_place_orbit()
 
 func _place_orbit() -> void:

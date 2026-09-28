@@ -2,6 +2,7 @@ extends "res://world/viewer.gd"
 
 const Client = preload("res://net/client.gd")
 const SettingsAccess = preload("res://ui/settings_access.gd")
+const MouseMotion = preload("res://ui/mouse_motion.gd")
 const ControlMath = preload("res://world/control_math.gd")
 const WeaponSelection = preload("res://world/weapon_selection.gd")
 const CombatActions = preload("res://world/combat_actions.gd")
@@ -614,7 +615,11 @@ func observe_combat_input(event: InputEvent) -> void:
 	combat_actions.record(event, combat_controls_active(), presentation.local_actor)
 
 func _input(event: InputEvent) -> void:
-	if SettingsAccess.overlay_open(): return
+	if SettingsAccess.overlay_open():
+		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed:
+			combat_actions.record(event, false, presentation.local_actor)
+			weapon_selection.handle_event(event, false, presentation.local_actor)
+		return
 	# Observe releases even when a GUI control handles the event later.
 	observe_combat_input(event)
 	if weapon_selection.handle_event(event, weapon_controls_active(), presentation.local_actor):
@@ -622,6 +627,7 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if SettingsAccess.overlay_open(): return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_ESCAPE: release_pointer()
 		if event.keycode == KEY_ENTER: request_restart()
@@ -629,7 +635,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		combat_actions.captured()
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		update_look(event.relative)
+		update_look(MouseMotion.raw_delta(event))
 
 func _process(delta: float) -> void:
 	if not advance_handshake(delta): return

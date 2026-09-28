@@ -5,6 +5,8 @@ const SPRINT_SPEED := 10.0
 const GRAVITY := 20.0
 const JUMP_SPEED := 6.5
 const LOOK_GAIN := 0.002
+const SettingsAccess = preload("res://ui/settings_access.gd")
+const MouseMotion = preload("res://ui/mouse_motion.gd")
 var camera := Camera3D.new()
 var spawn_position := Vector3(0, 1, 0)
 var spawn_yaw := 0.0
@@ -49,7 +51,7 @@ func reset_to_spawn() -> void:
 	reset_count += 1
 
 func controls_active() -> bool:
-	return is_inside_tree() and application_focused and get_window().has_focus() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
+	return is_inside_tree() and application_focused and not SettingsAccess.overlay_open() and get_window().has_focus() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 
 func release_pointer() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -65,6 +67,7 @@ func _notification(what: int) -> void:
 		application_focused = true
 
 func _unhandled_input(event: InputEvent) -> void:
+	if SettingsAccess.overlay_open(): return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_ESCAPE:
 			release_pointer()
@@ -77,8 +80,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			get_viewport().set_input_as_handled()
 	if event is InputEventMouseMotion and controls_active():
-		rotation.y = wrapf(rotation.y - event.relative.x * LOOK_GAIN, -PI, PI)
-		camera.rotation.x = clampf(camera.rotation.x - event.relative.y * LOOK_GAIN, -1.45, 1.45)
+		var delta := MouseMotion.raw_delta(event)
+		rotation.y = wrapf(rotation.y - delta.x * LOOK_GAIN, -PI, PI)
+		camera.rotation.x = clampf(camera.rotation.x - delta.y * LOOK_GAIN, -1.45, 1.45)
 
 func step(delta: float, direction: Vector2, sprint: bool = false, jump: bool = false) -> void:
 	if not is_finite(delta) or delta <= 0 or not direction.is_finite(): return
