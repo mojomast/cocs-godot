@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {createGameServer} from './game-server.mjs';
 import {NetClient} from '../game/net.mjs';
 import {PROTOCOL_VERSION} from '../game/protocol.mjs';
+import {modeRule} from '../game/config.mjs';
 
 function connect(url) {
  return new Promise((resolve, reject) => {
@@ -71,6 +72,53 @@ async function waitForRooms(ws, predicate, { attempts = 60, delay = 100 } = {}) 
 // two seconds of accelerated sim time. Bots do the fighting — nav-mesh roaming
 // keeps kills flowing regardless of spawn geometry.
 const FAST_MATCH = { mode: 'instagib', botCount: 2, fragLimit: 5, timeLimit: 60, respawn: 1, difficulty: 'easy' };
+
+// Instagib has no objective (game/mode-data.mjs `objectiveTemplate` returns
+// null for it), so the authoritative match can only end three ways
+// (game/core.mjs `step`):
+//   'frag'         — damage() ends it when a source reaches config.fragLimit.
+//   'time'         — the clock reaches config.timeLimit without a sole leader.
+//   'sudden-death' — armed at timeLimit - suddenDeathSeconds on a tie and ended
+//                    by the first sole FFA leader (`ffaLeaders().length === 1`).
+// Assert the terminal state matches whichever reason the source actually chose,
+// so an unfinished or off-source result can never masquerade as a real one.
+function assertTerminalInstagib(state, label) {
+ assert.equal(state.over, true, `${label}: match is over`);
+ const reason = state.overReason;
+ const fragLimit = state.config.fragLimit;
+ const timeLimit = state.config.timeLimit;
+ const window = modeRule('instagib').suddenDeathSeconds;
+ // Instagib is FFA: `ffaLeaders()` is every actor tied on the highest frag count,
+ // dead actors included (the source tie test has no health filter).
+ const maxFrags = Math.max(...state.actors.map(a => a.frags));
+ const leaders = state.actors.filter(a => a.frags === maxFrags);
+ if (reason === 'frag') {
+  assert.ok(state.actors.some(a => a.frags >= fragLimit), `${label}: frag ending reached the frag limit`);
+ } else if (reason === 'time') {
+  assert.ok(state.time >= timeLimit, `${label}: time ending waited out the limit`);
+  // 'time' also covers the sudden-death branch when the deadline passes with no
+  // sole leader; a sole leader there would have ended as 'sudden-death'.
+  if (state.suddenDeath === true) assert.notEqual(leaders.length, 1, `${label}: a sole leader would have ended sudden death`);
+ } else if (reason === 'sudden-death') {
+  assert.equal(state.suddenDeath, true, `${label}: sudden death is flagged`);
+  assert.ok(state.time >= timeLimit - window, `${label}: sudden death opened after its window`);
+  assert.equal(leaders.length, 1, `${label}: sudden death ends on exactly one leader`);
+  assert.ok(leaders[0].frags > 0, `${label}: the sudden-death leader has positive frags`);
+ } else {
+  assert.fail(`${label}: unexpected instagib overReason ${JSON.stringify(reason)}`);
+ }
+}
+
+// Negative probes for the terminal helper: a premature clock, a tied sudden
+// death, a frag verdict with nobody at the limit and an unknown reason must all
+// be rejected rather than silently accepted.
+test('assertTerminalInstagib rejects off-source instagib endings', () => {
+ const base = { over: true, suddenDeath: false, config: { fragLimit: 5, timeLimit: 60 } };
+ assert.throws(() => assertTerminalInstagib({ ...base, overReason: 'time', time: 30, actors: [{ frags: 2 }, { frags: 1 }] }, 'unit'), /time ending waited out/);
+ assert.throws(() => assertTerminalInstagib({ ...base, overReason: 'sudden-death', suddenDeath: true, time: 50, actors: [{ frags: 2 }, { frags: 2 }] }, 'unit'), /exactly one leader/);
+ assert.throws(() => assertTerminalInstagib({ ...base, overReason: 'frag', time: 12, actors: [{ frags: 4 }, { frags: 3 }] }, 'unit'), /reached the frag limit/);
+ assert.throws(() => assertTerminalInstagib({ ...base, overReason: 'capture', time: 12, actors: [{ frags: 1 }] }, 'unit'), /unexpected instagib overReason/);
+});
 
 test('two real WebSocket clients join, play and receive results end-to-end', async () => {
  const { server, close } = createGameServer({ tickDt: 1 / 6 });
@@ -334,12 +382,20 @@ test('two rooms play simultaneously and the browser lists both', async () => {
   await Promise.all([until(b, 'start'), until(d, 'start')]);
   const results = await Promise.all([until(a, 'results', 90000), until(b, 'results', 90000), until(c, 'results', 90000), until(d, 'results', 90000)]);
   for (const r of results) assert.equal(r.state.over, true);
-  assert.equal(results[0].state.actors.length, 4);
-  assert.equal(results[1].state.actors[0].name, 'Alice');
-  assert.equal(results[2].state.actors[0].name, 'Carla');
-  assert.ok(results[0].state.actors.some(a => a.frags >= 5), 'local room finished on frags');
-  assert.ok(results[2].state.actors.some(a => a.frags >= 5), 'created room finished on frags');
-  assert.ok(results[3].state.actors.some(a => a.frags >= 5), 'created room results reached its own players');
+  assert.equal(results[0].state.actors.length, 4, 'local room seats four actors');
+  // Both seats of a room receive the same terminal snapshot, and neither room
+  // leaks the other's humans into its roster.
+  assert.deepEqual(results[0].state, results[1].state, 'local room A/B terminal states agree');
+  assert.deepEqual(results[2].state, results[3].state, 'created room C/D terminal states agree');
+  const localNames = results[0].state.actors.map(a => a.name);
+  assert.ok(localNames.includes('Alice') && localNames.includes('Bob'), 'local room rosters Alice and Bob');
+  assert.ok(!localNames.includes('Carla') && !localNames.includes('Dennis'), 'local room excludes rival-room humans');
+  const createdNames = results[2].state.actors.map(a => a.name);
+  assert.ok(createdNames.includes('Carla') && createdNames.includes('Dennis'), 'created room rosters Carla and Dennis');
+  assert.ok(!createdNames.includes('Alice') && !createdNames.includes('Bob'), 'created room excludes local humans');
+  // Each room ends on the source's own terms instead of a frag-only assumption.
+  assertTerminalInstagib(results[0].state, 'local room');
+  assertTerminalInstagib(results[2].state, 'created room');
  } finally {
   a?.close(); b?.close(); c?.close(); d?.close(); close();
  }
