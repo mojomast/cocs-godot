@@ -1,0 +1,8 @@
+[
+  {"route":"combat"},
+  {"route":"lattice-world"},
+  {"route":"sports"},
+  {"route":"horde","options":{"map":"meridian-exchange"}},
+  {"route":"horde","options":{"map":"cinderwake-drydock"}},
+  {"route":"horde","options":{"map":"nacre-engine"}}
+]
