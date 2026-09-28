@@ -20,6 +20,7 @@ func _initialize() -> void:
 func begin() -> void:
 	session = load("res://world/session.tscn").instantiate()
 	root.add_child(session)
+	current_scene = session
 	session.client.started.connect(func(frame: Dictionary) -> void: revision = int(frame.get("roundRevision",-1)))
 func key(code: int, pressed: bool, unicode_value := 0, ctrl := false) -> void:
 	var event := InputEventKey.new()
@@ -51,6 +52,11 @@ func command(c: Dictionary) -> void:
 func named(control_name: String) -> Control:
 	var menu: Node = session.lobby_menu
 	if menu == null: return null
+	if control_name.begins_with("room_"):
+		var index := int(control_name.trim_prefix("room_"))
+		if index >= 0 and index < menu.room_browser.list_box.get_child_count():
+			return menu.room_browser.list_box.get_child(index).get_child(0) as Control
+		return null
 	match control_name:
 		"browse": return menu.room_browser.refresh_button
 		"chat_toggle": return menu.chat_panel.toggle_button

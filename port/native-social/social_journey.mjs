@@ -17,7 +17,7 @@
 //     node port/native-social/social_journey.mjs
 import assert from 'node:assert/strict';
 import {spawn, execFileSync} from 'node:child_process';
-import {mkdirSync, mkdtempSync, writeFileSync, renameSync, existsSync, rmSync} from 'node:fs';
+import {mkdirSync, mkdtempSync, writeFileSync, renameSync, existsSync, rmSync, readFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {createHash} from 'node:crypto';
 import {createGameServer} from '../../server/game-server.mjs';
@@ -71,9 +71,9 @@ function spawnOwned(name, cmd, args, options) {
   return p;
 }
 const latest = p => p.samples.at(-1);
-function nativeClient(name, map, mode, width, height, position) {
+function nativeClient(name, map, mode, width, height, position, endpoint) {
   const inbox = resolve(temp, `${name}.json`);
-  const p = spawnOwned(name, binary, ['--path', 'godot', '--audio-driver', 'Dummy', '--max-fps', '60', '--resolution', `${width}x${height}`, '--position', position, '--script', 'res://tests/protocol/lobby_social_observer.gd', '--', '--lobby-menu', `--map=${map}`, `--mode=${mode}`, `--lobby-inbox=${inbox}`, `--lobby-out=${out}`], {env, stdio: ['ignore', 'pipe', 'pipe']});
+  const p = spawnOwned(name, binary, ['--path', 'godot', '--audio-driver', 'Dummy', '--max-fps', '60', '--resolution', `${width}x${height}`, '--position', position, '--script', 'res://tests/protocol/lobby_social_observer.gd', '--', '--lobby-menu', `--endpoint=${endpoint}`, `--map=${map}`, `--mode=${mode}`, `--lobby-inbox=${inbox}`, `--lobby-out=${out}`], {env, stdio: ['ignore', 'pipe', 'pipe']});
   Object.assign(p, {inbox, width, height});
   return p;
 }
@@ -96,12 +96,19 @@ async function click(p, name) {
   await cmd(p, {op: 'mouse', x: x + w / 2, y: y + h / 2, pressed: false});
 }
 async function typeText(p, text) { await cmd(p, {op: 'text', text}); }
-async function waitFor(p, pred, ms, label) { return until(() => pred(latest(p)), ms, `${p.name} ${label}`); }
+async function waitFor(p, pred, ms, label) { return until(() => { const sample=latest(p); return sample && pred(sample); }, ms, `${p.name} ${label}`); }
 
-const env = {...process.env, HOME: temp, LIBGL_ALWAYS_SOFTWARE: '1'};
+const env = {...process.env, HOME: temp, LIBGL_ALWAYS_SOFTWARE: '1', COCS_CAREER_ROOT:resolve(temp,'career'),
+  COCS_CAREER_CREDENTIALS_PATH:'', COCS_CAREER_SCOPE:'', COCS_CAREER_ENDPOINT:''};
 for (const key of ['XDG_DATA_HOME', 'XDG_CONFIG_HOME', 'XDG_CACHE_HOME', 'XDG_RUNTIME_DIR']) { env[key] = resolve(temp, key); mkdirSync(env[key], {recursive: true, mode: 0o700}); }
 
-const summary = {baseline: process.env.SOCIAL_JOURNEY_BASELINE || '', hostMap, hostMode, checks: [], status: 'RUNNING'};
+const sourceLock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
+const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+assert.equal(execFileSync(binary,['--version'],{encoding:'utf8'}).trim(),sourceLock.godot_version);
+const summary = {port_commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+  source_commit:sourceLock.source_commit,source_derivative_commit:derivative?.derivative_commit??null,
+  scope:'Two native clients with scripted UI actions on an owned source authority; not human acceptance',
+  hostMap, hostMode, checks: [], status: 'RUNNING'};
 let game, host, guest, third, xvfb, expired = false;
 const timer = setTimeout(() => { expired = true; for (const p of children) { try { p.kill('SIGTERM'); } catch {} } }, 180000);
 
@@ -132,7 +139,7 @@ try {
   const endpoint = `ws://127.0.0.1:${summary.port}`;
 
   // Host creates a room on the non-default map through the real UI.
-  host = nativeClient('host', hostMap, hostMode, 960, 640, '0,0');
+  host = nativeClient('host', hostMap, hostMode, 960, 640, '0,0', endpoint);
   await waitFor(host, s => s.phase === -3, 30000, 'menu');
   await cmd(host, {op: 'focus'});
   await click(host, 'connect_button');
@@ -150,7 +157,7 @@ try {
   pass('third client is in a different room', thirdWelcome.roomId !== summary.hostRoom);
 
   // Guest starts on the default map, browses, selects the host row via the UI.
-  guest = nativeClient('guest', guestDefaultMap, 'deathmatch', 1280, 800, '980,0');
+  guest = nativeClient('guest', guestDefaultMap, 'deathmatch', 1280, 800, '980,0', endpoint);
   await waitFor(guest, s => s.phase === -3, 30000, 'menu');
   await cmd(guest, {op: 'focus'});
   const endpointField = latest(guest).ui.endpoint;
@@ -168,6 +175,7 @@ try {
   await until(() => latest(guest).ui.room.text === summary.hostRoom, 5000, 'row selection fills the code');
   pass('selecting the Verdant room populated its advertised map', latest(guest).selected_map === hostMap);
   pass('selecting the Verdant room populated its advertised mode', latest(guest).selected_mode === hostMode);
+  await cmd(guest, {op:'capture',name:'room-browser'});
 
   // Compact 150% layout while seated in the lobby.
   await cmd(guest, {op: 'scale', value: 1.5});
@@ -214,6 +222,7 @@ try {
   pass('the guest queued a source chat frame', wire.some(f => f.dir === 'recv' && f.frame.type === 'chat' && f.frame.text === 'W'));
   await waitFor(guest, s => s.chat_log.some(line => line.includes('W')), 5000, 'chat echo rendered in the UI');
   pass('the source echo rendered in the native chat log', latest(guest).chat_log.some(line => line.includes('W') && line.includes('you')));
+  await cmd(guest, {op:'capture',name:'live-room-chat'});
 
   // Room scope at the authority: only members of the host room receive chat.
   const chatRecipients = new Set(wire.filter(f => f.dir === 'send' && f.frame.type === 'chat').map(f => f.recipient));
@@ -239,11 +248,15 @@ try {
   summary.status = 'FAIL'; summary.error = error?.stack || String(error); process.exitCode = 1;
 } finally {
   clearTimeout(timer);
-  for (const p of children) { try { p.kill('SIGTERM'); } catch {} }
-  for (const p of children) await p.done.catch(() => {});
+  for (const p of [...children].reverse()) {
+    try { p.kill('SIGTERM'); } catch {}
+    const kill=setTimeout(()=>{try{p.kill('SIGKILL');}catch{}},2500);
+    try { await p.done; } catch {} finally { clearTimeout(kill); }
+  }
   if (third) { try { third.terminate(); } catch {} }
   if (game) { for (const socket of game.wss.clients) socket.terminate(); await game.close(); }
   summary.checks = checks;
+  summary.cleanup = children.map(p=>({name:p.name,pid:p.pid,exit_code:p.exitCode,signal:p.signalCode}));
   summary.wire = {frames: wire.length, sha256: createHash('sha256').update(JSON.stringify(wire)).digest('hex')};
   writeFileSync(resolve(out, 'summary.json'), JSON.stringify({...summary, expired}, null, 2) + '\n');
   rmSync(temp, {recursive: true, force: true});

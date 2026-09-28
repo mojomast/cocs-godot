@@ -27,6 +27,31 @@ Authority remains the reviewed combined source `61fca35c`; this batch adds nativ
 protocol/persistence/UI integration, not new progression rules or local grants.
 Device preferences never carry profile balances, unlock authority or credentials.
 
+## Persistence and equipment contracts
+
+`COCS_CAREER_ROOT` selects an absolute private storage root. Development defaults
+to `.port-runtime/career`; installed supervisors select the platform config
+directory before creating any disposable route runtime. The source-owned
+`progression.json` and hash-named credential files under `identities/` are separate.
+The legacy `identities.json`, if present, is validated and migrated per scope
+without deletion. Each credential file has a lifetime lease: an owned local host
+can coexist with an external guest, while duplicate writers for the same scope
+are refused. External guests never acquire the owned progression store.
+
+The supervisor binds credentials to its resolved endpoint through child-only
+path/scope metadata. No token travels through arguments, environment variables,
+device preferences or public evidence. Direct engine invocation has no admitted
+credential scope. Godot uses native file-permission APIs, so packaged Linux does
+not depend on an external `chmod` executable. Storage failures are explicit.
+
+Arsenal sends complete known gear/attachment maps. Malformed partial maps cannot
+become destructive writes. The source's equipment-marked `progression` reply is
+distinct from an XP award; a queue success never means equipment was accepted.
+One request remains pending at a time. A timeout remains unknown until a late
+source reply or explicit reconnect, avoiding ambiguous retries on a wire without
+request IDs. Unequip preserves all other known slots; finish removal uses the
+source-supported explicit `null`.
+
 ## Verification foundation
 
 The prior consolidation aggregate passed **211/211** at `ad8bdb31`, followed by
