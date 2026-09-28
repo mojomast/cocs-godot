@@ -6,7 +6,9 @@ is [`.github/workflows/godot-native.yml`](../../.github/workflows/godot-native.y
 
 ## Reproduce on Linux x86_64
 
-Requirements: Git, Bash, curl, `sha256sum`, Python 3, Node.js 22.13+ and npm.
+Requirements: Git, Bash, curl, `sha256sum`, Python 3, Node.js 22.13+ and npm;
+rendered/input gates also require Xvfb, X11 libraries and a working OpenGL driver
+(software rendering is supported for the bounded CI checks).
 CI uses Ubuntu 24.04 and Node 22. Playwright's `--with-deps` installs Chromium's
 OS libraries and may request sudo on a developer machine.
 
@@ -83,11 +85,11 @@ needed for these editor/headless gates.
   `launch.mjs` and `two-clients.mjs` override the three XDG homes with the
   checkout's ignored `.port-runtime` directories; this is expected and remains
   isolated in a fresh checkout. Source the environment file in each new shell.
-- **Other demo helpers:** `GUEST_NODE_MODULES` is set to this checkout's
+- **Display and scratch ownership:** `GUEST_NODE_MODULES` is set to this checkout's
   `node_modules` for helpers that use a temporary project. Some graphical
-  evidence/demo helpers outside this workflow hard-code `/tmp/opencode` and
-  need Xvfb. The combined verifier and its required GLB exporters do not require
-  that machine-specific directory or a desktop/Xvfb.
+  helpers use `/tmp/opencode`; the aggregate creates that scratch directory.
+  The aggregate's rendered/input gates start and clean up private Xvfb displays;
+  no existing desktop display is required. GLB export uses headless Chromium.
 
 ## Workflow boundaries and evidence
 
@@ -126,11 +128,16 @@ execution does not establish complete gameplay or visual acceptance. For
 observed local results and the distinction from a hosted Actions run, see
 [validation evidence](evidence/README.md).
 
-## Suggested root README addition (unapplied)
+## Reading the current report
 
-Add after the **Verification** heading:
+`port/reports/verification.json` is rewritten by each aggregate attempt. Its
+`gates` array records only executed checks; `planned_gate_names` is the inventory
+and `unrun_gate_names` identifies checks not reached after a failure. The
+`execution` counts summarize those lists. Preserve failed reports before a rerun.
 
-> For a fresh clone, follow the [native CI bootstrap](port/native-ci/README.md)
-> first. Verification needs full Git history and both generated GLB probes in
-> addition to semantic map export. The bootstrap pins and checks the official
-> Godot editor and documents the required Chromium build dependency.
+`port_worktree_dirty` includes generated reports and other local changes; a
+freshly generated export can therefore make it true even on a fresh checkout.
+Source runtime bytes remain independently checked against the selected inventory.
+The explicit derivative metadata is a selection record, with its actual byte and
+ancestry validation performed by the source gates. A passed aggregate does not
+turn the separately listed owner-run checks into passes.

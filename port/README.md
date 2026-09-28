@@ -1,6 +1,12 @@
 # COCS → Godot: DESTINATIONS groundwork
 
-This is an exercised port laboratory, not a completed game port. It preserves the Node simulation and existing web game unchanged. Start here rather than treating a passing resource import as gameplay or visual-fidelity acceptance.
+This is an exercised port laboratory, not a completed game port. The Node
+simulation remains authoritative; the current integration branch explicitly
+selects the frozen LATTICE runtime derivative alongside the original source pin.
+See the [source lock](contracts/source-lock.json) and
+[derivative inventory](contracts/lattice-catalog-derivative.json). Start here
+rather than treating a passing resource import as gameplay or visual-fidelity
+acceptance.
 
 ## Current integration and release status
 

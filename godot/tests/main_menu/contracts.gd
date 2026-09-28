@@ -8,6 +8,7 @@ extends SceneTree
 const MENU_SCENE_PATH := "res://ui/main_menu.tscn"
 const ROUTES_PATH := "res://ui/routes.json"
 const MIN_ROUTES := 22
+const PREF_SCENE := preload("res://ui/main_menu.tscn")
 
 var failed := false
 var checks := 0
@@ -121,6 +122,7 @@ func run() -> void:
 			check_map_refs(id, param_dict, maps)
 
 	check_tree(routes, categories)
+	check_preferences()
 	finish()
 
 func check_choice(route_id: String, key: String, param: Dictionary, maps: Dictionary) -> void:
@@ -200,6 +202,7 @@ func check_tree(routes: Array, categories: Array) -> void:
 	if not packed is PackedScene: return
 	var scene: PackedScene = packed
 	var menu: Control = scene.instantiate()
+	menu.preferences_path = isolated_preferences_path()
 	root.add_child(menu)
 	check(menu.get_script() != null, "menu scene attaches its script")
 	var route_nodes := {}
@@ -234,6 +237,100 @@ func check_tree(routes: Array, categories: Array) -> void:
 	var lobby_toggles: Array = menu.params_box.get_children().filter(func(child: Node) -> bool:
 		return child is CheckButton and not child.is_queued_for_deletion())
 	check(lobby_toggles.size() == 1, "multiplayer lobby displays read-only diagnostics without a cheat switch")
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(menu.preferences_path))
+	root.remove_child(menu)
+	menu.free()
+
+func isolated_preferences_path() -> String:
+	return "user://menu_contracts_%d_%d.json" % [OS.get_process_id(), Time.get_ticks_usec()]
+
+func fresh_menu(path: String) -> Control:
+	var menu: Control = PREF_SCENE.instantiate()
+	menu.preferences_path = path
+	root.add_child(menu)
+	return menu
+
+func discard_menu(menu: Control) -> void:
+	root.remove_child(menu)
+	menu.free()
+
+func write_preferences(path: String, value: String) -> void:
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file != null:
+		file.store_string(value)
+		file.close()
+
+func check_preferences() -> void:
+	var path := isolated_preferences_path()
+	# Three separate scene lifetimes exercise the same stable user:// file.
+	var first := fresh_menu(path)
+	first.select_category("modes")
+	first.select_route("sports")
+	first.selections = {"map": "aurora-stadium", "mode": "puma-soccer", "time-limit": 120,
+		"round-target": 14, "diagnostics": true, "authority": "forged"}
+	first.select_route("objectives")
+	first.selections = {"map": "sunscar-convoy", "mode": "payload", "diagnostics": false}
+	first.select_route("sports")
+	check(first.selections.get("round-target") == 14 and first.selections.get("mode") == "puma-soccer",
+		"switching routes restores the saved in-memory choices")
+	first.selections["cheats"] = true
+	first.save_preferences()
+	discard_menu(first)
+	var second := fresh_menu(path)
+	check(second.current_route.get("id") == "sports" and second.selections.get("round-target") == 14,
+		"second menu lifetime restores route and options from disk")
+	check(second.selections.get("diagnostics") == true and not second.selections.has("cheats"),
+		"diagnostics is retained but cheat activation is discarded")
+	second.select_route("objectives")
+	check(second.selections.get("map") == "sunscar-convoy" and second.selections.get("mode") == "payload",
+		"another route's dependent selections survive a process-style restart")
+	second.save_preferences()
+	discard_menu(second)
+	var third := fresh_menu(path)
+	check(third.current_route.get("id") == "objectives" and third.selections.get("mode") == "payload",
+		"third menu lifetime restores the last route")
+	var saved: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	check(saved is Dictionary and saved.get("version") == 1 and saved.get("routes") is Dictionary,
+		"preference file carries the versioned bounded UI shape")
+	if saved is Dictionary and saved.get("routes") is Dictionary:
+		check(not saved["routes"].get("sports", {}).has("authority") and not saved["routes"].get("sports", {}).has("cheats"),
+			"unknown and cheat keys are never written")
+	discard_menu(third)
+
+	# A valid map drives both the legal mode list and per-map slider ceiling.
+	write_preferences(path, JSON.stringify({"version": 1, "last_route": "sports", "routes": {
+		"sports": {"map": "ion-speedway", "mode": "puma-soccer", "round-target": 99,
+			"time-limit": -2, "diagnostics": "yes", "cheats": true, "wallet": "secret"},
+		"objectives": {"map": "unknown", "mode": "payload"},
+		"ghost-route": {"map": "anything"}}}))
+	var recovered := fresh_menu(path)
+	check(recovered.selections.get("mode") == "puma-race" and recovered.selections.get("round-target") == 10
+		and recovered.selections.get("time-limit") == 60,
+		"dependent mode defaults and map-specific ranges clamp invalid saved values")
+	check(recovered.selections.get("diagnostics") == false and not recovered.selections.has("wallet")
+		and not recovered.selections.has("cheats") and not recovered.preferences.routes.has("ghost-route"),
+		"invalid toggles, authority fields and unknown routes are filtered")
+	recovered.select_route("objectives")
+	check(recovered.selections.get("map") == "tidal-citadel" and recovered.selections.get("mode") == "ctf",
+		"invalid map is defaulted before its dependent mode")
+	discard_menu(recovered)
+
+	for bad: String in ["{broken", JSON.stringify({"version": 999, "last_route": "sports"}), " ".repeat(65537),
+		JSON.stringify({"version": 1, "last_route": "cheats-native-dm", "routes": {"cheats-native-dm": {"bots": 9},
+			"combat": {"cheats": true}}})]:
+		write_preferences(path, bad)
+		var menu := fresh_menu(path)
+		check(menu.current_route.get("id") == "combat" and not menu.selections.get("cheats", false),
+			"corrupt, unsupported, oversized or debug-only preferences boot safely")
+		discard_menu(menu)
+	write_preferences(path, JSON.stringify({"version": 1, "last_route": "combat", "routes": {
+		"combat": {"map": "verdant-reliquary", "cheats": true, "diagnostics": true}}}))
+	var normal := fresh_menu(path)
+	check(normal.selections.get("map") == "verdant-reliquary" and normal.selections.get("diagnostics") == true
+		and normal.selections.get("cheats") == false and not normal.start.disabled,
+		"normal route restores valid options without arming local cheats")
+	discard_menu(normal)
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 
 func collect_prefixed(node: Node, prefix: String, found: Dictionary) -> void:
 	for child: Node in node.get_children():

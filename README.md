@@ -42,6 +42,7 @@ simulation lock and verification evidence remain reproducible.
 | LATTICE command demo | Asterion Relay and Monsoon Foundry: synchronized objective list/map, own resources, HOLD orders, PvP Fighter and co-op REINFORCE purchases with explicit receipts |
 | LATTICE world demo | Authoritative first-person traversal on Asterion/Monsoon, public objective markers and a same-connection tactical HOLD/recruitment panel |
 | Session handling | Local server launcher, host setup, guest transport, stale-state handling, focus release, death/respawn and round-boundary control resets |
+| Menu continuity | Last activity and validated per-activity choices are remembered locally across menu restarts; local cheats must be enabled explicitly each time |
 
 Sports now have independent one-lap target victory, local-driver soccer scoring
 and results/restart acceptance. LATTICE offers both a command board and a
@@ -138,6 +139,12 @@ node tools/godot-export/semantic.mjs
 # Start an owned local authority and open the native match setup.
 PORT=0 node tools/godot-dev/launch.mjs --play --setup
 ```
+
+For the shared activity menu, run
+`node tools/godot-dev/launch.mjs --experience=menu`. It remembers the last activity
+and each activity's valid options across match exits and application restarts.
+Preferences are local UI choices in `user://menu_preferences.json`; source
+validation still decides which requests are accepted.
 
 `PORT=0` selects a free loopback port automatically. The launcher starts the
 server and closes it when the client exits. You do not need a separate server
@@ -438,17 +445,15 @@ The combined verifier checks the pinned toolchain/source, semantic export,
 Godot import, protocol handling, input gates, presentation, cleanup, native
 sessions and two-client behavior. It fails on engine errors even when a process
 returns zero. Results are written to `port/reports/verification.json`.
-The latest integrated local run passes **87 gates**, including Horde source/input/event/closure checks, lobby authority ownership,
-spectator context, LATTICE/Payload guidance, Arms Race, sports bearing projection,
-CI artifact retention, zone controls,
-vehicle controls and evidence replay, soccer coaching,
-in-world LATTICE commands, package routing, sports and objective
-progression, LATTICE map selection, launcher routing, GLB material sides and
-projectile navigation. Native
-[GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
-also passed all 87 gates at `1cbc04d` from a fresh Ubuntu checkout;
-the complete downloaded summary is retained in
-[hosted evidence](port/reports/native-ci-hosted/README.md).
+Use the [aggregate report](port/reports/verification.json) for the exact tested
+commit, source identity, executed checks and unrun gates. The current inventory
+also includes REQ catalog/purchase, tactical HUD and flagship contracts; gate
+counts come from the report rather than a separately maintained README total.
+[Native GitHub Actions](https://github.com/mojomast/cocs-godot/actions/workflows/godot-native.yml)
+now covers the integration branch as well as `main`. Earlier successful hosted
+runs, including the 87-gate run at `1cbc04d`, remain in the
+[historical hosted evidence](port/reports/native-ci-hosted/README.md) and do not
+establish a pass for a later commit.
 
 Focused real-session and graphical evidence is documented in:
 
@@ -487,7 +492,11 @@ port/                  Port documentation, contracts, demos and evidence
 Start with the [port overview](port/README.md),
 [release matrix](port/RELEASE_MATRIX.md) and
 [source lock](port/contracts/source-lock.json). The current simulation baseline
-is `mojomast/cocs` at `51289b79c627a26a381ba556b92bab71f93f3732`.
+is `mojomast/cocs` at `515daf07589150dd3241f4ae1425cc1b093912f5`, with the
+explicitly selected frozen LATTICE runtime derivative
+`fa6dda2dcac5ab41b5496517acab9055407e31ae` inventoried in
+[lattice-catalog-derivative.json](port/contracts/lattice-catalog-derivative.json).
+Both identities are recorded separately in verification and package metadata.
 
 Native improvements and simpler implementations are welcome when they preserve
 map identity and gameplay intent. Keep presentation separate from authority,

@@ -10,6 +10,7 @@ extends Control
 ## --smoke in the user args prints MENU_READY and quits one frame later.
 
 const RouteRegistry = preload("res://ui/route_registry.gd")
+const MenuPreferences = preload("res://ui/menu_preferences.gd")
 const Choice = preload("res://ui/lobby_choice.gd")
 const CAPTION := Color("a3b7c9")
 const ERROR_INK := Color("e08282")
@@ -17,6 +18,10 @@ const PANEL_BG := Color(0.055, 0.07, 0.09, 1.0)
 const LABEL_WIDTH := 150
 
 var registry := RouteRegistry.new()
+var preferences_path := "user://menu_preferences.json" # Set before entering the tree to isolate a menu instance.
+var preferences = MenuPreferences.new()
+var restoring := false
+var preference_error := ""
 var registry_error := ""
 var current_category := ""
 var current_route: Dictionary = {}
@@ -40,6 +45,8 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	build_ui()
 	if registry.open():
+		preferences = MenuPreferences.new(preferences_path)
+		preferences.load_from_disk(registry)
 		populate()
 	else:
 		push_error("Main menu: " + registry.error)
@@ -162,7 +169,11 @@ func populate() -> void:
 		routes_box.add_child(button)
 		route_buttons[id] = button
 	if registry.categories.is_empty(): return
-	select_category(str(registry.categories[0].get("id", "")))
+	var route: Dictionary = registry.route_by_id(preferences.last_route)
+	restoring = true
+	select_category(str(route.get("category", registry.categories[0].get("id", ""))))
+	if not route.is_empty(): select_route(str(route.get("id", "")))
+	restoring = false
 
 ## Left column pick: show only this category's route buttons (cheats stays
 ## visible — every declared category is always rendered) and select its first
@@ -189,11 +200,15 @@ func select_route(id: String) -> void:
 	if route.is_empty():
 		clear_route()
 		return
+	if not restoring and preferences != null and not current_route.is_empty():
+		preferences.remember(registry, current_route, selections)
 	current_route = route
 	for key: String in route_buttons:
 		route_buttons[key].set_pressed_no_signal(key == id)
 	detail_description.text = str(route.get("description", ""))
 	apply_defaults()
+	if preferences != null and preferences.routes.has(id):
+		selections.merge(preferences.normalize(registry, route, preferences.routes[id]), true)
 	rebuild_params()
 	refresh_status()
 
@@ -366,6 +381,7 @@ func refresh_status() -> void:
 	start.disabled = not problem.is_empty()
 	if problem.is_empty():
 		status.text = "Ready · START launches with every option above."
+		if not preference_error.is_empty(): status.text += " " + preference_error
 		status.add_theme_color_override("font_color", CAPTION)
 	else:
 		status.text = problem
@@ -378,15 +394,24 @@ func on_start() -> void:
 		refresh_status()
 		return
 	var args := registry.assemble_args(current_route, selections)
+	save_preferences()
 	print("MENU_ROUTE ", JSON.stringify({"args": args}))
 	get_tree().call_deferred("quit", 0)
 
 func quit_menu() -> void:
 	if quitting: return
 	quitting = true
+	save_preferences()
 	print("MENU_QUIT")
 	# Deferred like START so the marker line flushes before the pipe closes.
 	get_tree().call_deferred("quit", 0)
+
+func save_preferences() -> void:
+	if preferences == null: return
+	preferences.remember(registry, current_route, selections)
+	if not preferences.save_to_disk():
+		preference_error = "Could not save menu preferences."
+		refresh_status()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if quitting: return

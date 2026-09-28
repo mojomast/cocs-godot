@@ -236,6 +236,10 @@ visual port or a forced fixture result.
 - Exercise extracted-package startup and the multi-mode player journey, not
   only editor scenes. Include a two-native-client source-authority round for
   the multiplayer slice. Verify the local-server vs external-host cleanup rules.
+- Modernize the older `tools/godot-package/verify.py` inventory assumptions for
+  the consolidated package. Bind any derivative verification to the package
+  manifest's recorded commit/hash, not an ambient development environment
+  selection. Its original strict source check remains in place until that work.
 - Attach one concise feature/evidence matrix and stable screenshots to the
   playable release. Keep a direct README download link to that release.
 - After the corrected native CI and release checks pass, promote through a PR
