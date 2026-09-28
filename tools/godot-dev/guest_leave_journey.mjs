@@ -60,7 +60,9 @@ try{
  await new Promise((ok,bad)=>{game.server.once('error',bad);game.server.listen(0,'127.0.0.1',ok);});
  const port=game.server.address().port, endpoint=`ws://127.0.0.1:${port}`;
  evidence.endpoint=endpoint;
- assert.equal((await (await fetch(`http://127.0.0.1:${port}`,{signal:AbortSignal.timeout(5000)})).json()).players,0);
+  const initialHealth=await (await fetch(`http://127.0.0.1:${port}`,{signal:AbortSignal.timeout(5000)})).json();
+  assert.equal(initialHealth.players,0);
+  evidence.initial_rooms=initialHealth.rooms;
  game.wss.on('connection',socket=>{
   // First connection is the protocol host; second belongs to the launched guest.
   if(++connections!==2)return;
@@ -124,7 +126,7 @@ try{
   // The source intentionally retains a disconnected peer for its reconnect
   // grace interval. A client leave must not invent immediate roster deletion.
   assert.equal(health.players,departedRoster.players.length);
-  assert.equal(health.rooms,1);
+   assert.equal(health.rooms,initialHealth.rooms+1,'the created room and source default rooms survive guest leave');
   evidence.health_after_leave={players:health.players,rooms:health.rooms};
   evidence.source_roster_after_leave=departedRoster.players.map(p=>({peer:p.peerId,connected:p.connected}));
   evidence.guest_retained_by_source_grace=true;
