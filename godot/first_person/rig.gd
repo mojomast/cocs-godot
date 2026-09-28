@@ -191,7 +191,9 @@ func apply_events(events: Array, local_id: int) -> void:
 		var id := identity(event.get("id"))
 		var time := number(event.get("time"), -1)
 		var owner := identity(event.get("actor"))
-		var kind := identity(event.get("weapon")) if event.type != "melee" else current_weapon
+		# Melee has no weapon identity; changing the held gun must not make an
+		# already-consumed source event look new when it is delivered again.
+		var kind := identity(event.get("weapon")) if event.type != "melee" else -1
 		if id < 0 or time < 0 or owner < 0 or (event.type != "melee" and (kind < 0 or kind >= 10)): continue
 		var key := "%s/%d/%s/%d/%d" % [event.type, id, str(time), owner, kind]
 		if time <= expired_time or seen.has(key): continue

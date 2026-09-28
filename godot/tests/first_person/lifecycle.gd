@@ -59,6 +59,12 @@ func run() -> void:
 		{"id":32,"time":2.7,"actor":7,"type":"melee-rejected"},
 		{"id":null,"time":2.8,"actor":7,"type":"melee"}], 7)
 	check(rig.kick_count == 1, "duplicates, remote melee, refusals and malformed events never animate")
+	var switched := actor.duplicate()
+	switched.weapon = 1
+	rig.apply_actor(switched, true)
+	rig.apply_events([accepted], 7)
+	check(rig.kick_count == 1, "weapon switching cannot replay an accepted melee event")
+	rig.apply_actor(actor, true)
 	rig.advance(rig.KICK_SECONDS + 0.01)
 	check(not rig.kick_leg.visible and rig.kick_count == 1, "cooldown alone cannot invent another kick")
 	rig.apply_events([{"id":33,"time":3.0,"actor":7,"type":"melee"}], 7)

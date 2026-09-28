@@ -4,7 +4,7 @@ Starting integration revision: `89dd5745` on `port/lattice-flagship-next`.
 The user requested multiple implementation slices in parallel after the shared
 shell batch passed its 203 local gates.
 
-## Active lanes
+## Implementation lanes
 
 | Lane | Implementation | Ownership / integration boundary |
 | --- | --- | --- |
@@ -30,6 +30,39 @@ the reconciled authority, packaging verification and extracted-package checks.
 Agents use separate worktrees. Imports, rendering, authority-server fixtures,
 benchmarks, builds and suites require the shared serial verification slot.
 No milestone is marked accepted solely because its implementation branch exists.
+
+## Integrated increments and verification
+
+- Combined source: `61fca35c65488502b794900cde0a5247bfb123bf`, based on the
+  LATTICE catalog derivative plus the reviewed `48264858` Horde stage controller.
+  The original source lock remains `515daf07`; the explicit derivative records
+  ten exact runtime hashes. Both staged and untracked extra source modules are
+  rejected by build preflight.
+- Cinderwake scene, recipe, stage/gate presentation and preview route are in the
+  common product. Nacre and ordinary Horde remain separate map choices under
+  the same Horde route.
+- Career/Arsenal uses source-generated catalog data and recipient profile facts;
+  Home and F12 Settings are its entry points. Shared modal release logic covers
+  held controls in infantry, sports and combined arms. F9 remains effects detail.
+- Manifest validation now loads the recorded source contract and runtime closure
+  from Git objects at the artifact's commits. Ambient checkout contents, HEAD and
+  derivative environment variables cannot select a different authority.
+- At `19696132`, all **35 manifest fixtures** and the focused source multiplayer
+  terminal-state regression passed. The first six-choice journey completed
+  **18 source sessions / three cycles**, with settings/map-choice continuity and
+  all owned ports closed. This journey predates the additional live Career checks.
+- The first full aggregate at `19696132` stopped at an old exact-string assertion
+  for the arena constructor. `ad8bdb31` updates that assertion to the reviewed
+  Horde-only intake while retaining ordinary source lookup and constructor
+  ordering. The failed report/logs are preserved under the validation checkout's
+  `.port-runtime/verification-attempts/consolidation-19696132-constructor-seam/`.
+
+The earlier shell-only hosted run at `89dd5745` passed 203/203 native gates.
+General CI at that commit failed a frag-only assumption in a natural-bot
+two-room fixture. `19696132` checks all source-legal terminal reasons and complete
+within-room result agreement instead; it does not change source gameplay or
+claim the failed run passed. Its negative probes reject premature or unsupported
+endings.
 
 ## Acceptance boundaries
 
