@@ -53,18 +53,18 @@ export function verifySource(lock,derivative=null) {
   if(derivative.schema_version!==1||derivative.source_commit!==lock.source_commit||!/^[0-9a-f]{40}$/.test(derivative.derivative_commit??'')||git('merge-base',derivative.derivative_commit,'HEAD')!==derivative.derivative_commit)throw Error('Invalid derivative source ancestry');
   const files=derivative.runtime_files;
   if(!files||typeof files!=='object'||Array.isArray(files)||!Object.keys(files).length)throw Error('Missing derivative runtime inventory');
-  const actual=changed.filter(p=>!p.endsWith('.test.mjs')).sort();
+  // A derivative can introduce a reviewed source module as well as modify
+  // locked files. Inventory both kinds against the same committed bytes.
+  const added=git('diff','--name-only','--diff-filter=A',lock.source_commit,'HEAD','--','game','server','assets','public','package.json','package-lock.json').split('\n').filter(p=>p&&!p.endsWith('.test.mjs'));
+  const actual=[...new Set([...changed,...added])].filter(p=>!p.endsWith('.test.mjs')).sort();
   const expected=Object.keys(files).sort();
   if(JSON.stringify(actual)!==JSON.stringify(expected))throw Error('Derivative source inventory differs from locked source');
   for(const p of expected){
-   if(!/^(game|server)\/[a-z0-9-]+\.mjs$/.test(p)||!tracked.includes(p)||! /^[0-9a-f]{64}$/.test(files[p]))throw Error(`Invalid derivative source entry: ${p}`);
+   if(!/^(game|server)\/[a-z0-9-]+\.mjs$/.test(p)||(!tracked.includes(p)&&!added.includes(p))||! /^[0-9a-f]{64}$/.test(files[p]))throw Error(`Invalid derivative source entry: ${p}`);
    const committed=execFileSync('git',['show',`${derivative.derivative_commit}:${p}`],{cwd:root});
    const checksum=bytes=>createHash('sha256').update(bytes).digest('hex');
    if(checksum(committed)!==files[p]||checksum(readFileSync(resolve(root,p)))!==files[p])throw Error(`Derivative source byte mismatch: ${p}`);
   }
-  // A newly tracked source file is not in the locked tree. Reject it as well.
-  const added=git('diff','--name-only','--diff-filter=A',lock.source_commit,'HEAD','--','game','server','assets','public','package.json','package-lock.json').split('\n').filter(p=>p&&!p.endsWith('.test.mjs'));
-  if(added.length)throw Error(`Uninventoried derivative source: ${added.join(', ')}`);
 }
 export function build(output=resolve(root,'godot/content/generated')) {
   const lock=JSON.parse(readFileSync(resolve(root,'port/contracts/source-lock.json')));
