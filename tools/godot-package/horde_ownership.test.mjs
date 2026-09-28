@@ -43,7 +43,7 @@ for(const kind of ['package','dev'])for(const scenario of ['exit','native-failur
    let script;
    const ordinary="export function createGameServer(){throw Error('Wrong public factory');}";
    if(kind==='package'){
-    for(const name of ['run.mjs','options.mjs','endpoint.mjs','settings_path.mjs'])await copy(name,name);
+    for(const name of ['run.mjs','options.mjs','endpoint.mjs','settings_path.mjs','career_path.mjs'])await copy(name,name);
     await copy('../../port/contracts/map-selection.json','catalog.json');
     await put('runtime/server/game-server.mjs',ordinary);
     await put('runtime/port/native-horde/authority.mjs',scenario==='bad-args'?"throw Error('Premature adapter import');":factory);
@@ -51,7 +51,8 @@ for(const kind of ['package','dev'])for(const scenario of ['exit','native-failur
    }else{
     for(const name of ['launch.mjs','launch_options.mjs'])await copy('../godot-dev/'+name,'tools/godot-dev/'+name);
      await copy('endpoint.mjs','tools/godot-package/endpoint.mjs');
-     await copy('settings_path.mjs','tools/godot-package/settings_path.mjs');
+      await copy('settings_path.mjs','tools/godot-package/settings_path.mjs');
+      await copy('career_path.mjs','tools/godot-package/career_path.mjs');
     await copy('../../port/contracts/map-selection.json','port/contracts/map-selection.json');
     await put('port/contracts/source-lock.json',JSON.stringify({godot_version:'synthetic-pinned'}));
     await put('tools/godot-export/semantic.mjs','export function verifySource(){}');
@@ -61,7 +62,7 @@ for(const kind of ['package','dev'])for(const scenario of ['exit','native-failur
    }
    if(scenario==='missing-native')await rm(native);
    let result;
-   try{result=await exec(process.execPath,[script,'--experience=horde',...(scenario==='bad-args'?['--waves=0']:[])],{cwd:root,env:{...process.env,PORT:'0',TMPDIR:root,GODOT_BIN:native,SCENARIO:scenario},timeout:12000});result.code=0;}catch(error){result=error;}
+   try{result=await exec(process.execPath,[script,'--experience=horde',...(scenario==='bad-args'?['--waves=0']:[])],{cwd:root,env:{...process.env,PORT:'0',TMPDIR:root,COCS_CAREER_ROOT:join(root,'career'),GODOT_BIN:native,SCENARIO:scenario},timeout:12000});result.code=0;}catch(error){result=error;}
    const expected=scenario==='exit'?0:scenario==='native-failure'?17:scenario==='interrupt'?130:scenario==='terminate'?143:1;
    assert.equal(result.code,expected,result.stdout+result.stderr);
    assert.doesNotMatch(result.stdout+result.stderr,/Wrong public factory|Premature adapter import/);

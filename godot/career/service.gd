@@ -26,6 +26,12 @@ func _ready() -> void:
 		var parsed: Variant = JSON.parse_string(file.get_as_text())
 		if valid_catalog(parsed): catalog = parsed
 	build_panel()
+	call_deferred("bind_identity_status")
+
+func bind_identity_status() -> void:
+	var identity := get_tree().root.get_node_or_null("Identity")
+	if identity != null: identity.storage_error.connect(func(_message: String) -> void: refresh())
+	refresh()
 
 static func valid_catalog(raw: Variant) -> bool:
 	if not raw is Dictionary or raw.get("schema") != 1 or not raw.get("items") is Array: return false
@@ -234,6 +240,8 @@ func refresh() -> void:
 				mode_parts.append("%s %s/%s" % [mode, str(stats.get("wins", "?")), str(stats.get("matches", "?"))])
 			state_label.text += "\nMODE WINS/MATCHES · " + " · ".join(mode_parts)
 	if not action_status.is_empty(): state_label.text += "\n" + action_status
+	var identity := get_tree().root.get_node_or_null("Identity")
+	if identity != null and not identity.status.is_empty(): state_label.text += "\n" + identity.status
 	if category == "crosshair": state_label.text += "\nReticles are view-only: this server's GEAR wire does not carry a crosshair selection."
 	if catalog.is_empty(): state_label.text += "\nSource Arsenal catalog unavailable. Regenerate from the source modules."
 	var list := details.find_child("CatalogRows", true, false) as VBoxContainer

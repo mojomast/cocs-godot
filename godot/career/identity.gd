@@ -29,7 +29,9 @@ func _valid_chars(value: String, allowed: String) -> bool:
 	return true
 
 func _load() -> Dictionary:
-	if not FileAccess.file_exists(_file_path): return {}
+	if not FileAccess.file_exists(_file_path):
+		storage_failure("Career credentials are missing")
+		return {}
 	var file := FileAccess.open(_file_path, FileAccess.READ)
 	if file == null or file.get_length() > 262144:
 		storage_failure("Career credentials cannot be read")
@@ -71,21 +73,29 @@ func accept_welcome(client: Node, frame: Dictionary) -> void:
 	var data := _load()
 	if data.is_empty(): return
 	var scopes: Dictionary = data.scopes
-	if not scopes.has(_scope) and scopes.size() >= 32: return
+	if not scopes.has(_scope) and scopes.size() >= 32:
+		storage_failure("Career server identity limit reached")
+		return
 	scopes[_scope] = pair
 	var temp := _file_path + ".tmp"
 	var file := FileAccess.open(temp, FileAccess.WRITE)
 	if file == null:
 		storage_failure("Career credentials could not be saved")
 		return
-	file.store_string(JSON.stringify(data))
-	file.flush()
-	file.close()
 	if OS.get_name() in ["Linux", "macOS", "FreeBSD", "NetBSD", "OpenBSD", "BSD"]:
 		if FileAccess.set_unix_permissions(temp, 384) != OK:
+			file.close()
 			DirAccess.remove_absolute(temp)
 			storage_failure("Career credentials could not be secured")
 			return
+	file.store_string(JSON.stringify(data))
+	file.flush()
+	var write_error := file.get_error()
+	file.close()
+	if write_error != OK:
+		DirAccess.remove_absolute(temp)
+		storage_failure("Career credentials could not be saved")
+		return
 	if DirAccess.rename_absolute(temp, _file_path) == OK:
 		_active = pair
 		status = ""

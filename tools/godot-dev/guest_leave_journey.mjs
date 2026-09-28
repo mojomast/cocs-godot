@@ -88,7 +88,7 @@ try{
  host.send(JSON.stringify({type:'host',mapId:'asterion-relay',config:{mode:'cocs',botCount:0,timeLimit:900}}));
  await until(()=>frames.find(f=>f.type==='lobby'&&f.config?.mode==='cocs'),5000,'host configuration');
  const env={...process.env,GODOT_BIN:wrapper,COCS_GUEST_GODOT:binary,
-  COCS_SETTINGS_PATH:join(output,'local_settings.json'),PORT:'0'};
+   COCS_SETTINGS_PATH:join(output,'local_settings.json'),COCS_CAREER_ROOT:join(output,'career'),PORT:'0'};
  for(const [name,dir] of [['XDG_DATA_HOME','data'],['XDG_CONFIG_HOME','config'],['XDG_CACHE_HOME','cache']]){
   env[name]=join(output,dir);mkdirSync(env[name],{recursive:true});
  }

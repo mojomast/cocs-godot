@@ -13,7 +13,7 @@ test('native identity persists privately, rejects switched endpoints/late welcom
  try{
   const career=acquireCareer({experience:'deathmatch'}, {COCS_CAREER_ROOT:root});
   career.release();
-  const output=execFileSync(binary,['--headless','--path',resolve('godot'),'--script','res://career/identity_test.gd'],{
+   const output=execFileSync(binary,['--headless','--path',resolve('godot'),'--script','res://tests/career/identity.gd'],{
    encoding:'utf8',timeout:30000,env:{...process.env,...career.env,COCS_CAREER_ENDPOINT:'ws://127.0.0.1:12345',PATH:'/nonexistent',COCS_CAREER_ROOT:root},
   });
   assert.doesNotMatch(output,/SCRIPT ERROR|ERROR:/);

@@ -64,13 +64,13 @@ for (const kind of ['dev','package']) {
       await put('cocs.x86_64',native);await chmod(join(root,'cocs.x86_64'),0o755);
       let script;
       if(kind==='package') {
-        for(const name of ['run.mjs','options.mjs','endpoint.mjs','settings_path.mjs'])await copy('tools/godot-package/'+name,name);
+        for(const name of ['run.mjs','options.mjs','endpoint.mjs','settings_path.mjs','career_path.mjs'])await copy('tools/godot-package/'+name,name);
         await copy('port/contracts/map-selection.json','catalog.json');
         await put('runtime/server/game-server.mjs',authority);
         script=join(root,'run.mjs');
       } else {
         for(const name of ['launch.mjs','launch_options.mjs'])await copy('tools/godot-dev/'+name,'tools/godot-dev/'+name);
-        for(const name of ['endpoint.mjs','settings_path.mjs'])await copy('tools/godot-package/'+name,'tools/godot-package/'+name);
+        for(const name of ['endpoint.mjs','settings_path.mjs','career_path.mjs'])await copy('tools/godot-package/'+name,'tools/godot-package/'+name);
         await copy('port/contracts/map-selection.json','port/contracts/map-selection.json');
         await put('port/contracts/source-lock.json',JSON.stringify({godot_version:'journey-fixture'}));
         await put('tools/godot-export/semantic.mjs','export function verifySource(){}\n');
@@ -80,7 +80,7 @@ for (const kind of ['dev','package']) {
       const settings=join(root,'preferences','local_settings.json');
       const {stdout,stderr}=await exec(process.execPath,[script,'--experience=menu'],{
         cwd:root,env:{...process.env,PORT:'0',TMPDIR:root,GODOT_BIN:join(root,'cocs.x86_64'),
-          COCS_SETTINGS_PATH:settings,SHELL_JOURNEY_STATE:join(root,'state.json')},timeout:25000,
+          COCS_SETTINGS_PATH:settings,COCS_CAREER_ROOT:join(root,'career'),SHELL_JOURNEY_STATE:join(root,'state.json')},timeout:25000,
       });
       assert.doesNotMatch(stderr,/Error|ERROR/);
       const state=JSON.parse(await readFile(join(root,'state.json'),'utf8'));

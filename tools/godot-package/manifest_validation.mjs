@@ -505,7 +505,13 @@ function requireSameBytes(repo, commit, sourcePath, actualPath, label) {
 
 function verifyLauncherSurface(repo, identity, packageDir) {
   const {port_commit: commit, target} = identity;
-  for (const name of LAUNCHER_HELPERS) {
+  const helpers = [...LAUNCHER_HELPERS];
+  // Older recorded launchers predate durable career state. Derive this extra
+  // requirement from the artifact's committed launcher, never the checkout.
+  const launcher = gitObjectBytes(repo, commit, 'tools/godot-package/run.mjs').toString('utf8');
+  if (/from\s+['"]\.\/career_path\.mjs['"]/.test(launcher)) helpers.push('career_path.mjs');
+  for (const name of helpers) {
+    requireInventoryFile(packageDir, identity, name);
     requireSameBytes(repo, commit, `tools/godot-package/${name}`, join(packageDir, name), name);
   }
   requireSameBytes(repo, commit, 'port/contracts/map-selection.json', join(packageDir, 'catalog.json'), 'catalog.json');

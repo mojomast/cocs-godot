@@ -271,6 +271,26 @@ test('valid Windows package structure passes without executing the engine', () =
   assert.equal(validateArtifact({packageDir: fixture.packageDir, repoRoot: fixture.repo}).target, 'windows');
 }));
 
+test('a career-capable recorded launcher requires its committed helper even if the inventory is forged', () => withFixture({}, fixture => {
+  const launcher = "import {acquireCareer} from './career_path.mjs';\nexport {acquireCareer};\n";
+  const helper = 'export function acquireCareer(){ return {}; }\n';
+  write(fixture.repo, 'tools/godot-package/run.mjs', launcher);
+  write(fixture.repo, 'tools/godot-package/career_path.mjs', helper);
+  git(fixture.repo, 'add', '.');
+  git(fixture.repo, 'commit', '-qm', 'durable career launcher');
+  fixture.manifest.port_commit = git(fixture.repo, 'rev-parse', 'HEAD');
+  write(fixture.packageDir, 'run.mjs', launcher);
+  write(fixture.packageDir, 'career_path.mjs', helper);
+  refreshInventory(fixture);
+  assert.equal(validateArtifact({packageDir: fixture.packageDir, repoRoot: fixture.repo}).status, 'passed');
+  write(fixture.packageDir, 'career_path.mjs', '// forged persistence\n');
+  refreshInventory(fixture);
+  fails(() => validateArtifact({packageDir: fixture.packageDir, repoRoot: fixture.repo}), /career_path\.mjs differs/);
+  unlinkSync(join(fixture.packageDir, 'career_path.mjs'));
+  refreshInventory(fixture);
+  fails(() => validateArtifact({packageDir: fixture.packageDir, repoRoot: fixture.repo}), /Required package entry missing.*career_path\.mjs/);
+}));
+
 test('a genuinely new source module (Cinderwake horde-stages style) is discovered dynamically', () => withFixture(
   {extraSource: {'server/horde-stages.mjs': 'export const stages = [];\n'}}, fixture => {
     const summary = validateArtifact({packageDir: fixture.packageDir, repoRoot: fixture.repo});

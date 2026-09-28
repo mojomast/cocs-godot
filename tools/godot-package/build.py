@@ -295,7 +295,7 @@ ssh_remote_deploy/enabled=false
             target.write_bytes(archive.extractfile(member).read())
     if not (package / "runtime/node_modules/ws/LICENSE").is_file():
         raise RuntimeError("ws license missing")
-    launcher_helpers = ["run.mjs", "options.mjs", "settings_path.mjs", "endpoint.mjs"]
+    launcher_helpers = ["run.mjs", "options.mjs", "settings_path.mjs", "career_path.mjs", "endpoint.mjs"]
     for name in launcher_helpers:
         copy(ROOT / "tools/godot-package" / name, package / name)
     copy(ROOT / "port/contracts/map-selection.json", package / "catalog.json")

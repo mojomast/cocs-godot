@@ -1,0 +1,1 @@
+{"status":"PASS","scenario":"motion","map":"cinderwake-drydock","source":"515daf07589150dd3241f4ae1425cc1b093912f5","stage":{"stages":["B"],"initialGatesClosed":true},"receiptCount":192,"steppedSamples":186,"engine":"/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64","sourceSeconds":12.23333333333352,"wallSeconds":12.237220357999998}

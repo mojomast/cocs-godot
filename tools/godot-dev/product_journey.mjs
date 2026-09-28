@@ -19,6 +19,7 @@ const itinerary=journeyOptions(itineraryPath?JSON.parse(readFileSync(itineraryPa
 const expectedSessions=itinerary.length*3;
 const expectedDecks=itinerary.filter(entry=>entry.route==='lattice-world').length*3;
 const expectedCareerHome=expectedSessions+1;
+const expectsEquipment=itinerary.some(entry=>entry.route==='combat');
 const real = process.env.GODOT_BIN;
 assert.ok(real, 'Set pinned GODOT_BIN');
 assert.ok(process.env.DISPLAY, 'Run with a private Xvfb display');
@@ -48,7 +49,7 @@ child.once('exit',(code,signal)=>{process.exitCode=code??(signal?1:0);});
 `);
 chmodSync(wrapper, 0o755);
 const env = {...process.env, GODOT_BIN:wrapper, COCS_JOURNEY_GODOT:real, COCS_JOURNEY_STATE:state,
-  COCS_SETTINGS_PATH:join(output,'local_settings.json'), COCS_JOURNEY_CAPTURE:process.argv.includes('--capture')?'1':'0', PORT:'0'};
+  COCS_SETTINGS_PATH:join(output,'local_settings.json'), COCS_CAREER_ROOT:join(output,'career'), COCS_JOURNEY_CAPTURE:process.argv.includes('--capture')?'1':'0', PORT:'0'};
 const child = spawn(process.execPath,['tools/godot-dev/launch.mjs','--experience=menu'], {env,detached:true,stdio:['ignore','pipe','pipe']});
 let text='';
 for (const stream of [child.stdout,child.stderr])stream.on('data',chunk=>{text+=chunk;});
@@ -75,7 +76,8 @@ const careerPassed=careerHomes.length===expectedCareerHome&&careerLives.length==
   careerHomes.every(row=>row.has_profile===false&&row.bounds===true)&&
   careerLives.every(row=>row.bounds===true&&(!['combat','lattice-world'].includes(row.route)||row.has_profile===true))&&
   finalState.career_home_checks===expectedCareerHome&&finalState.career_live_checks===expectedSessions;
-const passed=code===0&&!text.includes('ERROR:')&&matches.length===expectedSessions&&decks.length===expectedDecks&&careerPassed&&ports.length===expectedSessions&&closed.every(Boolean)&&text.includes('PRODUCT_JOURNEY_COMPLETE ');
+const equipmentPassed=!expectsEquipment||finalState.career_equipment_confirmed===true;
+const passed=code===0&&!text.includes('ERROR:')&&matches.length===expectedSessions&&decks.length===expectedDecks&&careerPassed&&equipmentPassed&&ports.length===expectedSessions&&closed.every(Boolean)&&text.includes('PRODUCT_JOURNEY_COMPLETE ');
 const summary={scope:'source-driven scripted UI lifecycle; not natural rounds/human acceptance',passed,exit_code:code,
   port_commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),source_commit:sourceLock.source_commit,
   source_derivative_commit:derivative?.derivative_commit??null,

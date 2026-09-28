@@ -1,0 +1,673 @@
+{
+  "scope": "source-driven scripted UI lifecycle; not natural rounds/human acceptance",
+  "passed": true,
+  "exit_code": 0,
+  "port_commit": "d36dc67dd847bffc1cb2187fd68860703c1307c9",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "input_sha256": {
+    "godot/tests/product_journey/driver.gd": "78480ca08e0580b2116e559d4b68ec0b92a886897682609aeb5c75df1c62f143",
+    "godot/ui/local_settings.gd": "ed705ffefb98deca56541367179a151d2ee566ed6a64ad42b6741afa64878c79",
+    "godot/ui/main_menu.gd": "982760d3202d423281858fabf351a9084abace4e95378c705385a1c34d99fad8",
+    "godot/career/service.gd": "6f9a4ee5e7ed1deed330824f2722edd363a9d5f286e1fea14b9bd38e76e4cbd4",
+    "godot/career/catalog.json": "18061952fac08bfb5f1d5316c6a9f6137968324a6742730691abe817253a92c8",
+    "godot/lattice/world_commands.gd": "ce7de99109aecbd3a598441f2336f3d347f5592c8ca37693267e2aa4dce52a85",
+    "tools/godot-dev/product_journey.mjs": "f8ce36db4f93a7695b64e9174180369efe50ac68c8e68fc785424a5677e4cef5",
+    "tools/godot-dev/launch.mjs": "8e7bd6c02a91d31ca7192f0eefcbbcd4b4fcca1a8d8a8418d96ad1898a406908"
+  },
+  "itinerary": [
+    {
+      "route": "combat",
+      "options": {}
+    },
+    {
+      "route": "lattice-world",
+      "options": {}
+    },
+    {
+      "route": "sports",
+      "options": {}
+    },
+    {
+      "route": "horde",
+      "options": {
+        "map": "meridian-exchange"
+      }
+    },
+    {
+      "route": "horde",
+      "options": {
+        "map": "cinderwake-drydock"
+      }
+    },
+    {
+      "route": "horde",
+      "options": {
+        "map": "nacre-engine"
+      }
+    }
+  ],
+  "cycles": 3,
+  "source_sessions": [
+    {
+      "pointer_released": true,
+      "route": "combat",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 1,
+      "volume": 40
+    },
+    {
+      "pointer_released": true,
+      "route": "lattice-world",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 2,
+      "volume": 45
+    },
+    {
+      "pointer_released": true,
+      "route": "sports",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 3,
+      "volume": 50
+    },
+    {
+      "pointer_released": true,
+      "route": "horde",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 4,
+      "volume": 55
+    },
+    {
+      "pointer_released": true,
+      "route": "horde",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 5,
+      "volume": 60
+    },
+    {
+      "pointer_released": true,
+      "route": "horde",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 6,
+      "volume": 65
+    },
+    {
+      "pointer_released": true,
+      "route": "combat",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 7,
+      "volume": 70
+    },
+    {
+      "pointer_released": true,
+      "route": "lattice-world",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 8,
+      "volume": 75
+    },
+    {
+      "pointer_released": true,
+      "route": "sports",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 9,
+      "volume": 80
+    },
+    {
+      "pointer_released": true,
+      "route": "horde",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 10,
+      "volume": 85
+    },
+    {
+      "pointer_released": true,
+      "route": "horde",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 11,
+      "volume": 40
+    },
+    {
+      "pointer_released": true,
+      "route": "horde",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 12,
+      "volume": 45
+    },
+    {
+      "pointer_released": true,
+      "route": "combat",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 13,
+      "volume": 50
+    },
+    {
+      "pointer_released": true,
+      "route": "lattice-world",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 14,
+      "volume": 55
+    },
+    {
+      "pointer_released": true,
+      "route": "sports",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 15,
+      "volume": 60
+    },
+    {
+      "pointer_released": true,
+      "route": "horde",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 16,
+      "volume": 65
+    },
+    {
+      "pointer_released": true,
+      "route": "horde",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 17,
+      "volume": 70
+    },
+    {
+      "pointer_released": true,
+      "route": "horde",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/local_settings.json",
+      "source_ready": true,
+      "visit": 18,
+      "volume": 75
+    }
+  ],
+  "deck_checks": [
+    {
+      "first_open_fits": true,
+      "position": [
+        60,
+        50
+      ],
+      "size": [
+        1160,
+        700
+      ],
+      "viewport": [
+        1280,
+        800
+      ],
+      "visit": 2
+    },
+    {
+      "first_open_fits": true,
+      "position": [
+        60,
+        50
+      ],
+      "size": [
+        1160,
+        700
+      ],
+      "viewport": [
+        1280,
+        800
+      ],
+      "visit": 8
+    },
+    {
+      "first_open_fits": true,
+      "position": [
+        60,
+        50
+      ],
+      "size": [
+        1160,
+        700
+      ],
+      "viewport": [
+        1280,
+        800
+      ],
+      "visit": 14
+    }
+  ],
+  "career_checks": [
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": true,
+      "route": "combat"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": true,
+      "route": "lattice-world"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": true,
+      "route": "sports"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "horde"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "horde"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "horde"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": true,
+      "route": "combat"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": true,
+      "route": "lattice-world"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": true,
+      "route": "sports"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "horde"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "horde"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "horde"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": true,
+      "route": "combat"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": true,
+      "route": "lattice-world"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": true,
+      "route": "sports"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "horde"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "horde"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "horde"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    }
+  ],
+  "career_counts": {
+    "home": 19,
+    "live": 18,
+    "expected_home": 19,
+    "expected_live": 18,
+    "passed": true
+  },
+  "captures": [
+    {
+      "name": "home-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/home-1280x800.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "cc1e74ddf7538a87079197a278314a01bbd5d6fa25cc696028f66fab680dd12a"
+    },
+    {
+      "name": "home-760x520",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/home-760x520.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "b255d5f58088a89dc716ddb0194301cb126a03ed5f4427a281d60009430355c5"
+    },
+    {
+      "name": "home-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/home-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "ea631b5d12a917c4f532b0a0aea58c798890a5f1f7c73dfccda8e7061bee285c"
+    },
+    {
+      "name": "career-home-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/career-home-1280x800.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "e8d3805d58512445f1476f90bdf73595d10c056de719dc52683b7273dc21953b"
+    },
+    {
+      "name": "career-home-760x520",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/career-home-760x520.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "8bccdfbea48398257092eef8388c83a9f9cef0bd3eca756450fd1ce42d86d09e"
+    },
+    {
+      "name": "career-home-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/career-home-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "077d35e49997d2c06b4f1f6138a899cfe39b6403fe974113eef2ca2aac580944"
+    },
+    {
+      "name": "deck-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/deck-1280x800.png",
+      "scale": 100,
+      "source_route": "lattice-world",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "125bc35dffd5175c4535f1c41acb9f13119c169fb2b6dc2a1ecf0c13493a4fb8"
+    },
+    {
+      "name": "deck-760x520",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/deck-760x520.png",
+      "scale": 100,
+      "source_route": "lattice-world",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "4d6d2293b4d244398af02e302ceb09fa74513c21d610435ab90c7b1e13410320"
+    },
+    {
+      "name": "deck-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/deck-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "lattice-world",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "7b4e2bcc378b675ca2ca98dcb700bc967e2d6d775861efef31b1c6952c9d9f27"
+    },
+    {
+      "name": "settings-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/settings-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "lattice-world",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "0c7afe72a41cf50bf0f17a7348822e0a58ab65c386182786a6603550d938db55"
+    },
+    {
+      "name": "tactical-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/tactical-1280x800.png",
+      "scale": 100,
+      "source_route": "lattice-world",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "b2f332114d7c0b7b84264078d705aed6427236d0efaac51c7c2de04e05d1d649"
+    },
+    {
+      "name": "tactical-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/tactical-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "lattice-world",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "a198847952ec79fa9f031d8ac1dafb4599425a4635981656e98679126764c6c6"
+    },
+    {
+      "name": "career-live-profile-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/career-live-profile-1280x800.png",
+      "scale": 100,
+      "source_route": "lattice-world",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "a0925e871cc15dcb88244f7799c403b1a3de2d722cc41989cb35b2bd1ac3edf8"
+    },
+    {
+      "name": "career-live-profile-760x520",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/career-live-profile-760x520.png",
+      "scale": 100,
+      "source_route": "lattice-world",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "aa83d892f8b869c04084eafd3f144e849e44b19cc627f7891090f5cfdfc531ec"
+    },
+    {
+      "name": "career-live-profile-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK/career-live-profile-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "lattice-world",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "ae32e00475301dc36ec7eaf83d371bfdf493f3c5dbd3dc494614cbbc1b2dd8a0"
+    }
+  ],
+  "owned_ports": [
+    40339,
+    37053,
+    37355,
+    42777,
+    39935,
+    43933,
+    37715,
+    36065,
+    39229,
+    46369,
+    32945,
+    37047,
+    43723,
+    34091,
+    46333,
+    39315,
+    44411,
+    39461
+  ],
+  "all_owned_ports_closed": true,
+  "state": {
+    "career_home_checks": 19,
+    "career_live_checks": 18,
+    "cycles": 3,
+    "expected_volume": 75,
+    "itinerary": [
+      {
+        "options": {},
+        "route": "combat"
+      },
+      {
+        "options": {},
+        "route": "lattice-world"
+      },
+      {
+        "options": {},
+        "route": "sports"
+      },
+      {
+        "options": {
+          "map": "meridian-exchange"
+        },
+        "route": "horde"
+      },
+      {
+        "options": {
+          "map": "cinderwake-drydock"
+        },
+        "route": "horde"
+      },
+      {
+        "options": {
+          "map": "nacre-engine"
+        },
+        "route": "horde"
+      }
+    ],
+    "options": {
+      "map": "nacre-engine"
+    },
+    "route": "horde",
+    "visits": 18
+  },
+  "output": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/.port-runtime/product-journeys/attempt-owrIkK"
+}

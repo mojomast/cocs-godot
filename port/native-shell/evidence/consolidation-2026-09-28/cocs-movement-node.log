@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: remote Horde render is source-segment interpolation, never unconstrained prediction
+ok 1 - remote Horde render is source-segment interpolation, never unconstrained prediction
+  ---
+  duration_ms: 2.513268
+  type: 'test'
+  ...
+# Subtest: held Horde melee remains a boolean request; only source cooldown emits accepted kicks
+ok 2 - held Horde melee remains a boolean request; only source cooldown emits accepted kicks
+  ---
+  duration_ms: 107.485089
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 769.579547

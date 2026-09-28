@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 from gate_runner import run_gate, save_report
 
 root = Path(__file__).resolve().parents[2]
@@ -35,6 +36,10 @@ def fail_preflight(message):
 
 binary = os.environ.get("GODOT_BIN")
 derivative_path = os.environ.get('COCS_SOURCE_DERIVATIVE')
+# Career state is durable in the product. Each aggregate uses an isolated
+# authority/credential root so scripted matches cannot mutate a real career.
+(root / '.port-runtime').mkdir(exist_ok=True)
+os.environ['COCS_CAREER_ROOT'] = tempfile.mkdtemp(prefix='verification-career-', dir=root / '.port-runtime')
 for key, suffix in [("XDG_DATA_HOME", "data"), ("XDG_CONFIG_HOME", "config"), ("XDG_CACHE_HOME", "cache")]:
     os.environ.setdefault(key, str(root / ".port-runtime" / suffix))
     Path(os.environ[key]).mkdir(parents=True, exist_ok=True)
@@ -74,6 +79,9 @@ commands = [
     ("package-manifest-contracts", ["node", "--test", "tools/godot-package/manifest_validation.test.mjs"]),
     ("career-catalog-check", ["node", "tools/godot-export/career_catalog.mjs", "--check"]),
     ("career-source-contracts", ["node", "--test", "--test-concurrency=1", "port/native-career/catalog.test.mjs", "port/native-career/wire.test.mjs"]),
+    ("career-persistence", ["node", "--test", "tools/godot-package/career_path.test.mjs"]),
+    ("career-equipment-source", ["node", "--test", "port/native-career/equip-lifecycle.test.mjs"]),
+    ("social-source", ["node", "--test", "port/native-social/social_authority.test.mjs"]),
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),
     ("arms-race-source", ["node", "--test", "game/armsrace.test.mjs", "game/outcome.test.mjs", "game/input.test.mjs", "game/movement-input.test.mjs"]),
     ("horde-source", ["node", "--test", "game/singleplayer.test.mjs", "game/singleplayer-ui.test.mjs"]),
@@ -84,6 +92,9 @@ commands = [
     ("horde-input-oracle", ["node", "port/native-horde/input-oracle.mjs", str(root / "port/reports/horde-input-vectors.json")]),
     ("godot-import", [binary, "--headless", "--path", "godot", "--editor", "--import"]),
     ("career-projection", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/projection.gd"]),
+    ("career-identity-native", ["node", "--test", "tools/godot-package/career_native.test.mjs"]),
+    ("career-equipment-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/actions.gd"]),
+    ("social-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/lobby_social.gd"]),
     ("career-modal", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/modal.gd"]),
     ("cinderwake-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/horde/cinderwake_test.gd"]),
     ("identity-horde-composition", [binary, "--headless", "--path", "godot", "--script", "res://tests/horde/identity_composition_test.gd"]),

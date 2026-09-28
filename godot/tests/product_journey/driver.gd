@@ -1,4 +1,5 @@
 extends SceneTree
+const CareerActions = preload("res://career/actions_model.gd")
 ## Actual menu/route scenes and source servers, driven by scripted UI actions.
 ## This is bounded lifecycle evidence, not natural rounds or human acceptance.
 var scene: Node
@@ -285,6 +286,18 @@ func live_career_step() -> bool:
 		if not require_value(has_profile and scene.client.career_seated and scene.client.room_id != "", "source welcome did not seat a Career profile"): return false
 	if has_profile:
 		if not require_value(career.state_label.text.contains("CONNECTED SOURCE CAREER") and not career.state_label.text.contains("NO CONNECTED CAREER"), "live source profile not projected"): return false
+		# Compare identity without retaining its source-issued ID or credentials in
+		# the public evidence. Every route process must recover the same career.
+		var identity_hash: String = str(career.profile.id).sha256_text()
+		if record.has("career_identity_hash"):
+			if not require_value(record.career_identity_hash == identity_hash, "source career changed across native processes"): return false
+		else:
+			record.career_identity_hash = identity_hash
+		if record.has("career_selection"):
+			var selected: Dictionary = record.career_selection
+			if not require_value(career.profile.get("attachments", {}).get(selected.slot) == selected.id, "source equipment did not survive route/server restart"): return false
+		elif route_id == "combat":
+			if not await equip_starter_attachment(): return false
 	else:
 		if not require_value(career.state_label.text.contains("NO CONNECTED CAREER"), "adapter without source profile invented progress"): return false
 	if not career_bounds(): return false
@@ -308,4 +321,32 @@ func live_career_step() -> bool:
 	record.career_live_checks = int(record.get("career_live_checks",0)) + 1
 	write_record()
 	print("PRODUCT_JOURNEY_CAREER ", JSON.stringify({"route":route_id,"has_profile":has_profile,"bounds":true}))
+	return true
+
+func equip_starter_attachment() -> bool:
+	# Level-one starter mods make this a real source request without granting XP
+	# or editing a profile fixture. Drive the displayed tab and action button.
+	var item := {}
+	for candidate: Dictionary in career.catalog.items:
+		if candidate.kind == "attachment" and candidate.level == 1 and CareerActions.available(career.profile, candidate) and career.profile.get("attachments", {}).get(candidate.slot) != candidate.id:
+			item = candidate
+			break
+	if not require_value(not item.is_empty(), "source catalog has no available starter attachment"): return false
+	for button: Node in career.details.find_children("*", "Button", true, false):
+		if button.text == "MODS":
+			button.pressed.emit()
+			break
+	await process_frame
+	var equip := career.panel.find_child("Equip_" + str(item.unlockId), true, false) as Button
+	if not require_value(equip != null and not equip.disabled, "starter attachment has no usable UI action"): return false
+	equip.pressed.emit()
+	if not require_value(not career.pending.is_empty(), "UI selection was not queued for source confirmation"): return false
+	var deadline := Time.get_ticks_msec() + 7000
+	while not career.pending.is_empty() and Time.get_ticks_msec() < deadline:
+		await create_timer(0.05).timeout
+	if not require_value(career.pending.is_empty() and career.action_status.contains("Source confirmed") and career.profile.get("attachments", {}).get(item.slot) == item.id, "source did not confirm starter attachment"): return false
+	record.career_selection = {"kind":"attachment", "slot":item.slot, "id":item.id}
+	record.career_equipment_confirmed = true
+	write_record()
+	print("PRODUCT_JOURNEY_EQUIPMENT ", JSON.stringify({"status":"source-confirmed", "kind":"attachment", "slot":item.slot, "id":item.id}))
 	return true
