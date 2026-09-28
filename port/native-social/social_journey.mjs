@@ -84,8 +84,12 @@ async function cmd(p, c) {
   await until(() => latest(p)?.command === c.id, 4000, `${p.name} command ${c.op}`);
 }
 async function click(p, name) {
-  const ui = latest(p).ui[name];
+  let ui = latest(p).ui[name];
   assert.ok(ui && ui.visible, `click target visible: ${name}`);
+  // Focus the control first so a scroll-following container brings it into view.
+  await cmd(p, {op: 'focus_named', name});
+  await sleep(150);
+  ui = latest(p).ui[name];
   const [x, y, w, h] = ui.rect;
   await cmd(p, {op: 'focus'});
   await cmd(p, {op: 'mouse', x: x + w / 2, y: y + h / 2, pressed: true});

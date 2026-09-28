@@ -44,7 +44,21 @@ func command(c: Dictionary) -> void:
 			Input.parse_input_event(event)
 		"text":
 			for character: String in str(c.text): pending.append(character.unicode_at(0))
+		"focus_named":
+			var control := named(str(c.name))
+			if control != null: control.grab_focus()
 		"capture": capture.call_deferred(str(c.name))
+func named(control_name: String) -> Control:
+	var menu: Node = session.lobby_menu
+	if menu == null: return null
+	match control_name:
+		"browse": return menu.room_browser.refresh_button
+		"chat_toggle": return menu.chat_panel.toggle_button
+		"chat_close": return menu.chat_panel.close_button
+		"chat_input": return menu.chat_panel.input
+		_:
+			var direct: Node = menu.get(control_name)
+			return direct if direct is Control else null
 func capture(name: String) -> void:
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png(out+"/"+name+".png")
@@ -87,7 +101,7 @@ func _process(delta: float) -> bool:
 	var chat_log := PackedStringArray()
 	for line: Node in chat.log_box.get_children():
 		if line is Label: chat_log.append((line as Label).text)
-	var local := session.presentation.local_actor
+	var local: Dictionary = session.presentation.local_actor
 	print("SOCIAL_SAMPLE ",JSON.stringify({
 		"seconds":elapsed,"command":last_command,"phase":session.phase,"revision":revision,
 		"map":session.current_id,"selected_map":str(menu.maps.get_selected_metadata()),"selected_mode":str(menu.modes.get_selected_metadata()),

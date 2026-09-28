@@ -32,9 +32,9 @@
     "godot/social/room_browser.gd": "027998a0a1b553cd5fe8dface546481fda13ca4b1e2dd6c949625345e2c0e197",
     "godot/social/chat_panel.gd": "3133e2d10e16e3b0b4a769453153031d57c6476673c556d072849460c3f2c427",
     "godot/tests/protocol/lobby_social.gd": "2b1b33b8e57ade88c83f81a0345c5f12d2ab803aa5ac141c74213d6c8b9fe5cd",
-    "godot/tests/protocol/lobby_social_observer.gd": "bf0dc29f17de936f83e9fe03cc581d7809ac15ee27356aafa025a6aa7cd8de79",
+    "godot/tests/protocol/lobby_social_observer.gd": "52d8b10df50b4af826cc891962db78e0d0c72dd61b9e8dca447f3e946a9b7eaa",
     "port/native-social/social_authority.test.mjs": "771061e8310dabbbef48d72473873941fda454a4e6d94a116fedb9bed9a15f03",
-    "port/native-social/social_journey.mjs": "9caa4273eb45bd6b13fdf890ae5d865498f4f2e3eb1a350523687ad9eb22d640",
+    "port/native-social/social_journey.mjs": "c8c7d5d886a5700ab87102e9fd06240ad9ce8211ddaf404a8cbe05bdcacf195d",
     "port/native-social/run.sh": "df148e2e648fa98287ba3b38f61616bbfdc805c42d02edf93638725ce824a68c"
   },
   "tests_commands": [
