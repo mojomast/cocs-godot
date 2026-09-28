@@ -103,6 +103,11 @@ local rate refusal is worded; room-change clears the log; a late frame with no
 seat never renders; toggle and panel fit 960x640 and 1280x800 at 150% scale;
 real-Session `browse_rooms` URL validation and `social_capturing` wiring.
 
+## Provenance
+
+Baseline `d36dc67d`; the bounded return hashes for every touched file and the
+exact protocol API/status strings live in `port/native-social/provenance.json`.
+
 ## Parent integration
 
 - **Required parent hooks: none.** No autoload, no `project.godot`, no
