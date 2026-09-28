@@ -39,10 +39,19 @@ the individual evidence records retain their original scope and results.
 - **NATIVE-03-A implemented:** the existing process-based menu remembers the
   selected activity and validated per-activity options using a versioned local
   preference file. Headless menu contracts pass 776 checks, including repeated
-  menu lifetimes and corrupt preference recovery. This is a bounded first step;
-  general audio/display/input settings and common Back/Leave/focus behavior are
-  still backlog work.
-- **NATIVE-04–06 remain open**, including Cinderwake authority reconciliation,
+  menu lifetimes and corrupt preference recovery.
+- **NATIVE-03-B implemented:** shared persistent audio/display/mouse/interface
+  settings, Home Settings and F12/Back/Leave navigation, stable preference paths
+  across disposable route processes, and generated player-facing route
+  capabilities. Home now reflows for compact windows and large interface scales.
+  Source-driven scripted evidence covers three Home/combat/LATTICE/sports cycles
+  and external-guest leave while the host continues running. See the
+  [shared shell guide](native-shell/README.md) for exact controls and scope.
+- **NATIVE-04 compact layout increment implemented:** modal command deck above
+  combat diagnostics, wrapped selected-objective facts, scrollable and responsive
+  objective/REQ pages, and first-open live-layout recovery. Broader cross-mode
+  theme unification and human readability/feel acceptance remain open.
+- **NATIVE-05–06 remain open**, including Cinderwake authority reconciliation,
   extracted-package consolidation acceptance and the unified release.
 
 The research findings below describe the original baseline. Implementation

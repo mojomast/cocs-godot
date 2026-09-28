@@ -21,6 +21,10 @@ subsequently select another window mode. Mouse sensitivity affects combat,
 LATTICE world, Horde and combined-arms look; sports uses its existing chase
 camera controls.
 
+Mouse-look adapters use unscaled screen motion so interface scale cannot change
+aim sensitivity. This follows Godot 4.5's
+[mouse-motion coordinate contract](https://docs.godotengine.org/en/4.5/classes/class_inputeventmousemotion.html#class-inputeventmousemotion-property-screen-relative).
+
 The Home categories have stable internal IDs and distinct player-facing labels:
 Play, Bot Matches, Activities, Extras and Cheats. Generated capability summaries
 describe local, externally hosted and offline routes using launcher-derived
