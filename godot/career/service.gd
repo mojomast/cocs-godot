@@ -131,7 +131,7 @@ func _process(_delta: float) -> void:
 		action_status = "No source confirmation · outcome unknown. Reconnect before another selection."
 		refresh()
 
-func select_item(item: Dictionary) -> void:
+func select_item(item: Dictionary, clear: bool = false) -> void:
 	if not pending.is_empty() or profile.is_empty() or connection_owner == null: return
 	if Time.get_ticks_msec() - last_send_ms < 550:
 		action_status = "Source gear cooldown · wait a moment and select again."
@@ -140,8 +140,7 @@ func select_item(item: Dictionary) -> void:
 	var client: Node = connection_owner.get_ref()
 	if not is_instance_valid(client) or not client.career_wire_open() or not client.career_seated or str(client.room_id).is_empty() or client.spectating: return
 	# A complete loadout is sent on every write: omitted gear would clear slots.
-	if not profile.get("gear") is Dictionary or not profile.get("attachments") is Dictionary: return
-	var frame: Dictionary = Actions.request(profile, item)
+	var frame: Dictionary = Actions.request(profile, item, clear)
 	if frame.is_empty(): return
 	if client.send_frame(frame) != OK:
 		action_status = "Selection could not be sent; confirmed equipment unchanged."
@@ -255,9 +254,10 @@ func refresh() -> void:
 		if not spec.is_empty(): add_line(box, " · ".join(spec), 14)
 		if item.kind != "crosshair":
 			var button := Button.new()
-			button.text = "EQUIPPED" if CareerProfile.item_state(profile, item) == "EQUIPPED" else "EQUIP · NEXT MATCH"
+			var equipped: bool = CareerProfile.item_state(profile, item) == "EQUIPPED"
+			button.text = "UNEQUIP · NEXT MATCH" if equipped else "EQUIP · NEXT MATCH"
 			button.custom_minimum_size.y = 44
 			var client: Node = connection_owner.get_ref() if connection_owner != null else null
-			button.disabled = not pending.is_empty() or Time.get_ticks_msec() - last_send_ms < 550 or not is_instance_valid(client) or not client.career_wire_open() or not client.career_seated or client.spectating or not profile.get("gear") is Dictionary or not profile.get("attachments") is Dictionary or not Actions.available(profile, item) or CareerProfile.item_state(profile, item) == "EQUIPPED"
-			button.pressed.connect(select_item.bind(item))
+			button.disabled = not pending.is_empty() or Time.get_ticks_msec() - last_send_ms < 550 or not is_instance_valid(client) or not client.career_wire_open() or not client.career_seated or client.spectating or not Actions.complete(profile) or not Actions.available(profile, item)
+			button.pressed.connect(select_item.bind(item, equipped))
 			box.add_child(button)

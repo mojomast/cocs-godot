@@ -3,6 +3,15 @@ extends RefCounted
 ## than rendering fabricated zeroes or copying ownerToken into UI state.
 const FIELDS := ["xp", "level", "prestige", "matches", "wins", "kills", "deaths", "bestKills"]
 
+static func valid_equipment(value: Variant, key: String) -> bool:
+	if not value is Dictionary: return false
+	var allowed: Array = ["primary", "armor", "utility"] if key == "gear" else ["optic", "barrel", "magazine", "underbarrel"]
+	if value.size() > allowed.size(): return false
+	for slot: Variant in value:
+		var item: Variant = value[slot]
+		if not slot is String or not slot in allowed or not item is String or item.is_empty() or item.length() >= 64: return false
+	return true
+
 static func project(raw: Variant) -> Dictionary:
 	if not raw is Dictionary or not raw.get("id") is String or raw.id.length() < 8 or raw.id.length() > 64: return {}
 	for code: int in raw.id.to_ascii_buffer():
@@ -13,10 +22,7 @@ static func project(raw: Variant) -> Dictionary:
 		if (value is int or value is float) and is_finite(float(value)) and float(value) >= 0 and floorf(float(value)) == float(value):
 			result[field] = int(value)
 	for key: String in ["gear", "attachments"]:
-		if raw.get(key) is Dictionary:
-			result[key] = {}
-			for slot: Variant in raw[key]:
-				if slot is String and slot.length() < 32 and raw[key][slot] is String and raw[key][slot].length() < 64: result[key][slot] = raw[key][slot]
+		if valid_equipment(raw.get(key), key): result[key] = raw[key].duplicate()
 	if raw.get("unlocks") is Dictionary and raw.unlocks.size() <= 128:
 		result.unlocks = {}
 		for key: Variant in raw.unlocks:
@@ -35,7 +41,7 @@ static func project(raw: Variant) -> Dictionary:
 					if (value is int or value is float) and is_finite(float(value)) and float(value) >= 0 and floorf(float(value)) == float(value): stats[key] = int(value)
 				result.byMode[mode] = stats
 	for key: String in ["finish", "crosshair"]:
-		if raw.get(key) is String and raw[key].length() < 64: result[key] = raw[key]
+		if raw.has(key) and (raw[key] == null or (raw[key] is String and not raw[key].is_empty() and raw[key].length() < 64)): result[key] = raw[key]
 	return result
 
 static func item_state(profile: Dictionary, item: Dictionary) -> String:

@@ -6,12 +6,16 @@ to inspect the seated connection's profile. Gear (primary, armour, utility),
 mod slots and weapon finishes that are unlocked by level or source grant can
 be equipped here. There is no unlock purchase endpoint. Reticles are view-only:
 the source `GEAR` packet does not forward `crosshair` to `setGearOwned`.
+An equipped gear/mod slot can be cleared; an equipped finish sends explicit
+`null` to clear it. Other slots stay intact.
 
 Each selection sends complete gear and attachment maps (preserving the other
 slots) on the seated connection. `server/room.mjs:setGear` replies with a
 `progression` frame containing `gear` and `attachments`; ordinary award frames
 do not settle a pending selection. The returned profile is compared against
-the exact requested maps and optional finish. Source-normalized/refused writes
+the exact requested maps and optional finish. Malformed/partial equipment or
+inconsistent reply maps remain unconfirmed; outgoing loadouts require both
+complete source equipment maps. Source-normalized/refused writes
 are shown as adjustments, never as successful equips. Only one write can be
 outstanding. A timeout means **unknown**, not a refusal: without a wire request
 ID a second write cannot be safely attributed until the first receives its

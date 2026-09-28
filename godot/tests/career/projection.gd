@@ -24,6 +24,10 @@ func run() -> void:
 	var raw := {"id":"player-one", "ownerToken":"secret-private", "progressToken":"secret-private", "level":4, "xp":1200, "unlocks":{"gear-command-kit":true}, "gear":{"primary":"command-kit"}, "byMode":{"deathmatch":{"matches":2}}}
 	var clean: Dictionary = CareerProfile.project(raw)
 	check(not JSON.stringify(clean).contains("secret-private"), "ownership credentials removed")
+	check(CareerProfile.project({"id":"player-one", "finish":null}).has("finish"), "explicit source null finish is known")
+	check(not CareerProfile.project({"id":"player-one", "finish":32}).has("finish"), "malformed finish remains unknown")
+	check(not CareerProfile.project({"id":"player-one", "gear":{"primary":"scope", "armor":"plating", "utility":"stim", "extra":"x"}}).has("gear"), "oversized gear map omitted whole")
+	check(not CareerProfile.project({"id":"player-one", "attachments":{"optic":false}}).has("attachments"), "malformed attachment map omitted whole")
 	check(CareerProfile.item_state(clean, {"kind":"gear", "id":"command-kit", "slot":"primary", "level":50, "unlockId":"gear-command-kit"}) == "EQUIPPED", "source grant survives level gate")
 	check(CareerProfile.item_state({}, {"kind":"gear", "level":2}) == "NOT LOADED", "unknown lock state")
 	var capstone := {"kind":"gear", "id":"command-kit", "slot":"primary", "level":50, "unlockId":"gear-command-kit"}
