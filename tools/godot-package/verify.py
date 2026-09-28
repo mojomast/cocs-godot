@@ -261,7 +261,7 @@ def main():
         env['DISPLAY'] = ':' + display
         x11 = X11(env['DISPLAY'])
 
-        def launch(name, cli, action='window', active=True, trace=True, external=None):
+        def launch(name, cli, action='window', active=True, trace=True, external=None, expect_map=None):
             log = output / (name + '.log')
             with log.open('w') as stream:
                 process = subprocess.Popen([nodebin / 'node', package / 'run.mjs', *cli], cwd=unrelated, env=env, stdout=stream, stderr=subprocess.STDOUT)
@@ -296,6 +296,11 @@ def main():
                 require(health['players'] == 1 and health['rooms'] == ready['health']['rooms'] + 1 and health['snapshot']['fullFrames'] > 0, f'{name}: real authority did not publish snapshots')
             else:
                 require(health['players'] == 0 and health['rooms'] == ready['health']['rooms'] and health['snapshot']['fullFrames'] == 0, 'Native setup should wait for user Start')
+            # The launcher's own readiness record names the source map it selected;
+            # for the identity routes that is the only client-side evidence without
+            # inventing a readiness probe.
+            if expect_map is not None:
+                require(ready.get('map') == expect_map, f'{name}: launcher reported map {ready.get("map")}, expected {expect_map}')
             if action == 'window':
                 shot = subprocess.run(['/usr/bin/ffmpeg', '-loglevel', 'error', '-f', 'x11grab', '-video_size', '1280x800', '-i', env['DISPLAY'], '-frames:v', '1', '-threads', '1', '-update', '1', str(output / (name + '.png'))], cwd=unrelated, env=env, capture_output=True, timeout=20)
                 require(shot.returncode == 0, f'Screenshot failed: {shot.stderr.decode()}')
@@ -328,7 +333,7 @@ def main():
                 with urllib.request.urlopen(f"http://127.0.0.1:{ready['port']}/", timeout=5) as response:
                     require(json.load(response)['service'] == 'token-arena-game-server', 'External authority stopped responding')
             require('SCRIPT ERROR' not in text and 'ERROR:' not in text, f'{name}: Godot error in native log')
-            result = {'case':name, 'exit':code, 'scene':native['scene'], 'host':ready['host'], 'dynamic_port':ready['port'], 'health':health, 'readiness':'local-horde-health-and-window; separate horde-product.json proves snapshots/wave' if ready.get('experience') == 'horde' else ('setup-window' if not active else ('native-trace' if trace else 'authority-traffic-and-window; inspect PNG separately')), 'round_start_seen':any(f['event'] == 'round_start' for f in frames), 'pose_snapshots_seen':sum(f['event'] == 'snapshot' and f.get('pose_present') for f in frames), 'native_pid':native_pid, 'native_closed':True, 'authority_owned_by_launcher':not bool(external), 'server_closed':not bool(external), 'external_authority_preserved':bool(external), 'action':action}
+            result = {'case':name, 'exit':code, 'scene':native['scene'], 'host':ready['host'], 'dynamic_port':ready['port'], 'reported_map':ready.get('map'), 'health':health, 'readiness':'local-horde-health-and-window; separate horde-product.json proves snapshots/wave' if ready.get('experience') == 'horde' else ('setup-window' if not active else ('native-trace' if trace else 'authority-traffic-and-window; inspect PNG separately')), 'round_start_seen':any(f['event'] == 'round_start' for f in frames), 'pose_snapshots_seen':sum(f['event'] == 'snapshot' and f.get('pose_present') for f in frames), 'native_pid':native_pid, 'native_closed':True, 'authority_owned_by_launcher':not bool(external), 'server_closed':not bool(external), 'external_authority_preserved':bool(external), 'action':action}
             results.append(result)
             (output / 'cases.json').write_text(json.dumps(results, indent=2) + '\n')
             print(name, 'PASS', flush=True)
@@ -367,7 +372,9 @@ process.once('SIGTERM',async()=>{for(const socket of game.wss.clients)socket.ter
         with socket.socket() as connection:
             require(connection.connect_ex(('127.0.0.1', external_port)) != 0, 'Verifier authority listener survived')
         launch('combat', ['--play','--native-trace'])
+        launch('combat-instagib', ['--play','--map=meridian-exchange','--mode=instagib','--native-trace'])
         launch('lattice-world', ['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop','--native-trace'])
+        launch('lattice-board', ['--experience=lattice','--map=asterion-relay','--mode=cocs'], trace=False, expect_map='asterion-relay')
         # These standalone routes do not expose the combat trace option. Require
         # actual authority traffic and review their exported HUD screenshots;
         # never substitute a fixed wait for gameplay-completion evidence.
@@ -380,6 +387,11 @@ process.once('SIGTERM',async()=>{for(const socket of game.wss.clients)socket.ter
         launch('interrupt', ['--play','--native-trace'], action='interrupt')
         launch('native-crash', ['--play','--native-trace'], action='crash')
         launch('horde', ['--experience=horde'], trace=False)
+        # Cinderwake/Nacre identity horde routes select their own scene from the
+        # reviewed options allowlist; require the local horde authority health, the
+        # rendered window and the launcher's reported source map, nothing more.
+        launch('cinderwake', ['--experience=horde','--map=cinderwake-drydock'], trace=False, expect_map='cinderwake-drydock')
+        launch('nacre-horde', ['--experience=horde','--map=nacre-engine'], trace=False, expect_map='nacre-engine')
         launch('horde-native-crash', ['--experience=horde'], trace=False, action='crash')
         from horde_verify import run_cases
         horde_results = run_cases(package, fresh, unrelated, nodebin, env, output, x11, children)

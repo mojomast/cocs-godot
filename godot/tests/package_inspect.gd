@@ -1,13 +1,57 @@
 extends SceneTree
 ## External release-runtime probe; never exported into the production PCK.
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible", "tidal-citadel", "sunscar-convoy", "asterion-relay", "monsoon-foundry", "ion-speedway", "aurora-stadium"]
-const SCENES := ["world/session", "sports/demo", "objectives/demo", "lattice/board", "lattice/world_demo", "zone_modes/demo", "combined_arms/demo", "arms_race/demo", "horde/demo", "native_arenas/demo"]
+const SCENES := ["world/session", "sports/demo", "objectives/demo", "lattice/board", "lattice/world_demo", "zone_modes/demo", "combined_arms/demo", "arms_race/demo", "horde/demo", "horde_maps/demo", "native_arenas/demo", "native_arenas/identity_horde_demo"]
 const NATIVE_SCENES := ["showcase/demo", "aurora_basin/demo", "cinder_array/demo", "particle_lab/demo", "shader_lab/demo"]
 var assertion_ran := false
 
 func assertion_witness() -> bool:
 	assertion_ran = true
 	return true
+
+# Source-derived Career catalog shape. Mirrors career/service.gd valid_catalog
+# plus the known gear/attachment families so a truncated or missing PCK entry
+# cannot pass as a shipped Arsenal.
+func career_catalog_ok() -> bool:
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://career/catalog.json"))
+	if not parsed is Dictionary or parsed.get("schema") != 1:
+		return false
+	var sources: Variant = parsed.get("sources")
+	if not sources is Dictionary or sources.size() < 4:
+		return false
+	for key: String in sources:
+		var value: Variant = sources[key]
+		if not value is String or value.length() != 64:
+			return false
+	var slots: Variant = parsed.get("slots")
+	if not slots is Dictionary or not slots.get("gear") is Array or not slots.get("attachment") is Array:
+		return false
+	var items: Variant = parsed.get("items")
+	if not items is Array or items.size() < 1 or items.size() > 128:
+		return false
+	var kinds := {"gear": 0, "attachment": 0}
+	var ids := {}
+	for entry: Variant in items:
+		if not entry is Dictionary:
+			return false
+		if entry.get("kind") not in ["gear", "attachment", "finish", "crosshair"]:
+			return false
+		for field: String in ["id", "unlockId", "name", "description", "slot"]:
+			if not entry.get(field) is String or (entry[field] as String).is_empty():
+				return false
+		if not entry.get("level") is int and not entry.get("level") is float:
+			return false
+		if not entry.get("modifiers") is Dictionary or not entry.get("spec") is Array:
+			return false
+		if not entry.get("weapons") is Array or not entry.get("weaponNames") is Array:
+			return false
+		var key: String = str(entry.kind) + ":" + str(entry.id)
+		if ids.has(key):
+			return false
+		ids[key] = true
+		if kinds.has(entry.kind):
+			kinds[entry.kind] = int(kinds[entry.kind]) + 1
+	return int(kinds["gear"]) >= 23 and int(kinds["attachment"]) >= 22
 
 func fail(message: String) -> void:
 	push_error("PACKAGE_INSPECT_FAILED " + message)
@@ -81,6 +125,39 @@ func inspect() -> void:
 		if native_catalog.resolve_map(id).is_empty() or not load("res://native_arenas/maps/" + id + ".gd") is GDScript:
 			fail("Missing native arena resources " + id)
 			return
+	# Cinderwake Horde map recipe: a runtime FileAccess JSON the export filter
+	# must include; the Nacre identity-horde scene is asserted by SCENES above.
+	var horde_script: Variant = load("res://horde_maps/catalog.gd")
+	if not horde_script is GDScript:
+		fail("Horde map catalog script missing")
+		return
+	var horde_catalog = horde_script.new()
+	if not horde_catalog.open() or not horde_catalog.entries.has("cinderwake-drydock"):
+		fail("Horde map catalog failed: " + str(horde_catalog.error))
+		return
+	print("PACKAGE_HORDE_MAPS_OK ", JSON.stringify({"maps": horde_catalog.entries.keys()}))
+	# Source-operator catalog (the released presentation default).
+	var source_catalog: Variant = load("res://source_operators/generated/catalog.gd")
+	if not source_catalog is GDScript:
+		fail("Source operator catalog missing")
+		return
+	var operators: Dictionary = source_catalog.get_script_constant_map().get("OPERATORS", {})
+	if operators.size() < 9:
+		fail("Source operator catalog incomplete: " + str(operators.size()))
+		return
+	print("PACKAGE_SOURCE_CATALOG_OK ", JSON.stringify({"operators": operators.size()}))
+	# Career catalog shape (source-derived, read at runtime by the Career autoload).
+	if not career_catalog_ok():
+		fail("Career catalog shape mismatch")
+		return
+	print("PACKAGE_CAREER_OK ")
+	# Autoload scripts must resolve and compile from the exported PCK.
+	for path: String in ["res://debug/diagnostics.gd", "res://ui/local_settings.gd", "res://career/service.gd"]:
+		var autoload_script: Variant = load(path)
+		if not autoload_script is GDScript or not autoload_script.can_instantiate():
+			fail("Autoload resource missing: " + path)
+			return
+	print("PACKAGE_AUTOLOAD_OK ")
 	for path: String in ["combat_shields/controller", "combat_particles/manager", "weapon_effects/controller", "combat_pickup_assets/pickup_visual"]:
 		var resource = load("res://" + path + ".gd")
 		if not resource is GDScript or not resource.can_instantiate():
@@ -88,5 +165,5 @@ func inspect() -> void:
 			return
 	print("PACKAGE_GRAPHICS_OK moth_planes=101 first_person_weapons=10")
 	print("PACKAGE_COMBAT_EXPANSION_OK native_arenas=3 combat_resources=4")
-	print("PACKAGE_INSPECT_OK ", JSON.stringify({"maps":MAPS, "scenes":SCENES.size(), "editor":OS.has_feature("editor"), "debug":OS.is_debug_build(), "assertion_ran":assertion_ran, "tests_in_pck":false, "probes_in_pck":false}))
+	print("PACKAGE_INSPECT_OK ", JSON.stringify({"maps":MAPS, "scenes":SCENES.size(), "horde_maps":horde_catalog.entries.keys(), "editor":OS.has_feature("editor"), "debug":OS.is_debug_build(), "assertion_ran":assertion_ran, "tests_in_pck":false, "probes_in_pck":false}))
 	quit(0)
