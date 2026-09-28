@@ -172,7 +172,8 @@ func select_room(record: Dictionary) -> void:
 	var map_id := str(record.get("mapId", ""))
 	var mode := str(record.get("mode", ""))
 	var map_supported: bool = not map_id.is_empty() and entries.has(map_id)
-	var mode_supported: bool = map_supported and mode in entries[map_id].get("modes", [])
+	var offered: Variant = entries[map_id].get("modes", []) if map_supported else []
+	var mode_supported: bool = map_supported and offered is Array and mode in offered
 	if map_supported: select_map(map_id)
 	if mode_supported: select_mode(mode)
 	var note := "Selected room %s" % room_id

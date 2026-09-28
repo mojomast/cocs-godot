@@ -26,7 +26,7 @@
   "local_settings_change": false,
   "files_sha256": {
     "godot/net/client.gd": "728ea369499dd1c576d648e552afadbcbd08dbe04b850c2a9f57f57adfd1c58d",
-    "godot/ui/lobby_menu.gd": "085a15e1d9cdf69489cd5db3e9527037052e3203cb666d6b44020d0711ef75c7",
+    "godot/ui/lobby_menu.gd": "12d9d095833895f2522d8470b92fa8317f2e99662207798999fed1df0bd62e7f",
     "godot/world/session.gd": "a26c29c229b579e18d299e17874fa07a821427c9e81ed13d08fe86d5075024d9",
     "godot/social/social_model.gd": "b29043e9ee765d8e9ee010499ae0b337cf637504b9b87034f4faf71bab568cca",
     "godot/social/room_browser.gd": "027998a0a1b553cd5fe8dface546481fda13ca4b1e2dd6c949625345e2c0e197",
