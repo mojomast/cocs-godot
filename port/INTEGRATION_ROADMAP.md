@@ -33,8 +33,9 @@ the individual evidence records retain their original scope and results.
   from unrun checks. Gate registration, preflight-report and source-selection
   contracts cover the new plumbing.
   The final Linux aggregate passed **199/199** at `6b782f2b`, with zero unrun
-  gates; full repository lint also passed. Hosted and owner-run results remain
-  distinct from this local verification.
+  gates; full repository lint also passed. Hosted native CI reproduced all
+  **199/199** at `508f2e03`, and general CI also passed there. Owner-run acceptance
+  remains separate from these automated results.
 - **NATIVE-03-A implemented:** the existing process-based menu remembers the
   selected activity and validated per-activity options using a versioned local
   preference file. Headless menu contracts pass 776 checks, including repeated

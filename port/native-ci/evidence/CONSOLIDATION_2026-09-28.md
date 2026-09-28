@@ -8,7 +8,8 @@ NATIVE-03-A. It does not complete the full consolidation roadmap.
 **199/199 aggregate gates passed, zero unrun**, at tested port commit
 `6b782f2b9aea7571ef02ccb4baa1065ad5d611df`. The serial run took 594.72 seconds
 across its gate executions. Full repository lint also passed after the final
-code changes. These are local Linux results; a hosted CI pass is not claimed.
+code changes. These local Linux results were subsequently reproduced by the
+hosted native workflow at the publication commit, as recorded below.
 
 - [Canonical machine-readable report](../../reports/verification.json)
 - [Complete aggregate console](consolidation-2026-09-28.log)
@@ -23,6 +24,28 @@ independently verified against the frozen inventory. The derivative manifest's
 SHA-256 is `f53f0ef56f53cf49dd42814becb2e5beab8c1d5d90d1f85ca6380ac8bf33d32e`.
 Subsequent publication changes contain this evidence, documentation and the
 generated menu-script UID, not additional gameplay changes.
+
+### Hosted confirmation
+
+Both GitHub workflows passed at
+`508f2e0353574f1a01914f38ac9ebab32f401a8e`:
+
+- [Godot native run 36475859677](https://github.com/mojomast/cocs-godot/actions/runs/36475859677):
+  **199/199 gates, zero unrun**. Fresh official toolchain installation, locked npm
+  dependencies, Chromium installation, both GLB probes, import/verification,
+  whitespace checks and evidence upload all passed on Ubuntu 24.04.
+- [General CI run 36475859689](https://github.com/mojomast/cocs-godot/actions/runs/36475859689):
+  typecheck, game tests, server tests, build, rendered HTML/deployment asset
+  tests and lint all passed.
+
+The downloaded [hosted report](consolidation-hosted-2026-09-28/verification.json)
+is retained verbatim; its SHA-256 is
+`54c214ec7a6de89b9f2d19456fb9ab83e7d3bcd148d2906a7533b8c0182ae196`.
+It fits the artifact collector's per-file bound without truncation. The original
+[artifact inventory](consolidation-hosted-2026-09-28/artifact-manifest.json) records
+the bounded upload's other files; those remain in the GitHub run artifact rather
+than being duplicated in this hosted-report directory. The local canonical
+report and its logs retain their own tested commit identity.
 
 ## Provenance and environment
 
