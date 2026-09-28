@@ -26,6 +26,7 @@ var scroll := ScrollContainer.new()
 var log_box := VBoxContainer.new()
 var input := LineEdit.new()
 var send_button := Button.new()
+var close_button := Button.new()
 var hint := Label.new()
 
 var session: Node
@@ -97,6 +98,9 @@ func build_panel() -> void:
 	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	hint.add_theme_color_override("font_color", Color(0.68, 0.76, 0.82))
 	column.add_child(hint)
+	close_button.text = "Close (Esc)"
+	close_button.pressed.connect(close)
+	column.add_child(close_button)
 
 func capturing_input() -> bool:
 	return panel != null and panel.visible
@@ -216,12 +220,11 @@ func layout() -> void:
 	var viewport := get_viewport().get_visible_rect().size
 	shade.position = Vector2.ZERO
 	shade.size = viewport
-	# Top-right, in the same column as the lobby's Leave/Restart actions and
-	# clear of the HUD vitals/weapon panels; the open panel is modal on top.
-	toggle_button.position = Vector2(maxf(8, viewport.x - 150), 28)
+	# Bottom-right, above the HUD's weapon panel and clear of the vitals and the
+	# rotated help line; the open panel is modal on top with its own Close button
+	# (Escape also closes) so the toggle never needs to stay clickable.
+	toggle_button.position = Vector2(maxf(8, viewport.x - 150), maxf(28, viewport.y - 210))
 	var width := minf(560, viewport.x - 40)
 	var height := minf(420, viewport.y - 96)
 	panel.size = Vector2(width, height)
-	panel.position = Vector2(maxf(8, viewport.x - width - 20), 66)
-	if panel.position.y + height > viewport.y - 8:
-		panel.position.y = maxf(66, viewport.y - height - 8)
+	panel.position = Vector2(maxf(8, viewport.x - width - 20), maxf(28, viewport.y - height - 56))

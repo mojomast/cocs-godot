@@ -138,6 +138,12 @@ func run() -> void:
 	menu.chat_panel.open()
 	await settle()
 	check(menu.capturing_input(), "open chat captures typing so gameplay input is suspended")
+	menu.chat_panel.close_button.pressed.emit()
+	await settle()
+	check(not menu.capturing_input(), "the panel Close button releases typing capture")
+	menu.chat_panel.open()
+	await settle()
+	check(menu.capturing_input(), "the toggle reopens chat")
 	var log: Node = menu.chat_panel.log_box
 	check(log.get_child_count() == 0, "a fresh seat starts with an empty chat log")
 	menu.chat_panel.input.text = "  hello [b]room[/b]  "

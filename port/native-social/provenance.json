@@ -20,8 +20,8 @@
     "godot/world/session.gd": "c4fef8a19ffca326e7630a1456aa4bdb4788340ef7e921734ae107918513a8d3",
     "godot/social/social_model.gd": "c7ac11ba0b1d5ee9ad284c80323faeac53628573e8683c3f8b5670e387e546cd",
     "godot/social/room_browser.gd": "01bb823e8da10b25aab1607243723db376d2e547e696803758df280bd9caf5fd",
-    "godot/social/chat_panel.gd": "72e314bf408f9eb02f7831bb413a553ec5d32f9598f2b9a878e744c45937b312",
-    "godot/tests/protocol/lobby_social.gd": "c725d5a35ca725563734f979ee2e0105b7465d49464f4562ccf36c72d202fc06",
+    "godot/social/chat_panel.gd": "766f5bd2722883cd77b744472dbde944b469079ea4bdd5d5c7ae6b393c77e8e5",
+    "godot/tests/protocol/lobby_social.gd": "5d671e1945828c127d12733d01e847c7dbfe145989f116df252c2b406e97c09d",
     "port/native-social/social_authority.test.mjs": "08f55eab19b594294151e552c485590ac30a959d82372355182a5e5c382452e1",
     "port/native-social/run.sh": "df148e2e648fa98287ba3b38f61616bbfdc805c42d02edf93638725ce824a68c"
   },
