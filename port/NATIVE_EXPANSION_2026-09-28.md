@@ -83,3 +83,40 @@ These checks predate the persistence, equipment and chat additions here.
 Natural full campaigns, hardware feel, native Windows execution and eight-human
 acceptance retain their prior owner-run status. The gear rank-invariance balance
 failure is tracked separately from faithful source equipment behavior.
+
+## Integrated observations
+
+Evidence: `port/native-shell/evidence/expansion-2026-09-28/`.
+
+- **86/86 Node checks passed** at `466c846f`: persistence/leases/migration,
+  equipment lifecycle and source wire, social authority, manifest validation and
+  launcher ownership. Native credential persistence also passed at this revision.
+- **18-session captured product journey passed** at `cbc43ded`, with 19 Home
+  and 18 live Career checks. The first combat route selected `extended-mag`
+  through its native Arsenal button and waited for source confirmation. Subsequent
+  source-backed processes recovered the same identity hash and attachment.
+  All 18 owned server ports were closed. Unsupported profile adapters remained
+  unknown rather than inheriting another route's profile.
+- **Two-native-client social journey passed** at `5d72b955`: selected-server
+  discovery, advertised Verdant map/mode selection, guest join, 150% chat layout,
+  source-echoed text, neutral movement/fire while typing, recipient room isolation,
+  explicit chat close and guest leave while the external host continued running.
+- The first expanded aggregate stopped at gate 19/218 because native graphics
+  fixture copies omitted the newly imported `career_path.mjs`. `0d8bd78c` adds
+  it to the graphics and native arena fixture closures; the rerun is pending.
+
+Failed attempts remain retained rather than being relabelled:
+
+- `466c846f` native Arsenal fixture used a `StringName` dictionary key that cannot
+  come from source JSON. `7cb3c394` corrects the fixture to a string key; complete
+  equipment validation remains strict. The native actions/projection/modal tests
+  then passed in the lane checkout.
+- The same revision's captured Career journey sampled 150% nested containers one
+  frame before reflow finished. `cbc43ded` waits the second frame and retains the
+  unchanged viewport bounds assertions.
+- Social journey attempts 1/2 incorrectly unpacked a two-value viewport as four
+  values, then measured a hidden, unseated panel before its first container sort.
+  Attempts are retained alongside the successful seated/visible acceptance.
+
+Screenshots are retained locally with hashes. No new playable build, release or
+public gallery has been published for this expansion.

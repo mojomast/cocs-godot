@@ -1,0 +1,60 @@
+{
+  "port_commit": "cbc43ded2a7e5889cf011f4704d57a218556165f",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "scope": "Two native clients with scripted UI actions on an owned source authority; not human acceptance",
+  "hostMap": "verdant-reliquary",
+  "hostMode": "teamdeathmatch",
+  "checks": [
+    {
+      "name": "host created a room on the advertised non-default map",
+      "wall": 5160
+    },
+    {
+      "name": "third client is in a different room",
+      "wall": 5214
+    },
+    {
+      "name": "guest listed the host room from the entered endpoint",
+      "wall": 10361
+    },
+    {
+      "name": "selecting the Verdant room populated its advertised map",
+      "wall": 11173
+    },
+    {
+      "name": "selecting the Verdant room populated its advertised mode",
+      "wall": 11173
+    }
+  ],
+  "status": "FAIL",
+  "display": ":3",
+  "port": 43141,
+  "hostRoom": "DZH5",
+  "error": "AssertionError [ERR_ASSERTION]: chat_toggle fits 960x640 @150%\n    at pass (file:///home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/port/native-social/social_journey.mjs:42:47)\n    at file:///home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/port/native-social/social_journey.mjs:189:7",
+  "cleanup": [
+    {
+      "name": "xvfb",
+      "pid": 185229,
+      "exit_code": 0,
+      "signal": null
+    },
+    {
+      "name": "host",
+      "pid": 185232,
+      "exit_code": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "guest",
+      "pid": 186179,
+      "exit_code": null,
+      "signal": "SIGTERM"
+    }
+  ],
+  "wire": {
+    "frames": 10,
+    "sha256": "a2bde0afad54216a45275825c253ccc6cf59be8dea04d10935a30dcfd1a19297"
+  },
+  "expired": false
+}

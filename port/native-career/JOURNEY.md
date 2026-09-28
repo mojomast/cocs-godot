@@ -10,8 +10,13 @@ source client (`career_seated` + `room_id`); other adapters report only what
 their real welcome yielded. The final Home verifies that a previous process's
 profile has not been silently restored. Six-entry 18-session runs require 19
 Home Career and 18 live Career checks in the summary, plus the existing three
-deck checks. Markers record only route, boolean profile presence and bounds;
-no identity, tokens or profile values are emitted.
+deck checks. Connected source-backed processes must recover the same identity
+hash. The first combat route selects an available starter attachment through the
+displayed MODS tab/action button, waits for the source-marked equipment reply,
+and subsequent source-backed routes must recover that confirmed selection.
+Markers contain route, profile-presence flags, layout bounds and the public
+catalog item ID. Source identity IDs and credentials are never emitted; only
+an identity hash is retained to compare continuity.
 
 With `--capture`, the first Home and first LATTICE live profile are captured
 at 1280×800, 760×520 and 760×520 at 150% UI scale. The fixture checks
@@ -25,8 +30,10 @@ Run from an integrated checkout with the pinned `GODOT_BIN` and the existing
 
 ```sh
 node --check tools/godot-dev/product_journey.mjs
-python3 tools/godot-dev/xvfb_run.py node tools/godot-dev/product_journey.mjs --capture
+python3 tools/godot-dev/xvfb_run.py node tools/godot-dev/product_journey.mjs --itinerary=port/native-shell/itineraries/consolidated.json --capture
 ```
 
-This is scripted source-session lifecycle evidence, not a purchase, equip,
-cross-launch identity restoration or human visual-acceptance test.
+The journey owns an isolated `COCS_CAREER_ROOT` beneath its unique attempt
+directory. It exercises source-session lifecycle, native equipment selection and
+cross-process identity restoration. It does not grant unlocks, perform a purchase,
+or replace human visual/play acceptance.

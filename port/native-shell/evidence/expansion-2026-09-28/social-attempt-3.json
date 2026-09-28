@@ -1,0 +1,131 @@
+{
+  "port_commit": "5d72b95595d7e568b857873277a6d2c138922e6a",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "scope": "Two native clients with scripted UI actions on an owned source authority; not human acceptance",
+  "hostMap": "verdant-reliquary",
+  "hostMode": "teamdeathmatch",
+  "checks": [
+    {
+      "name": "host created a room on the advertised non-default map",
+      "wall": 5262
+    },
+    {
+      "name": "third client is in a different room",
+      "wall": 5317
+    },
+    {
+      "name": "guest listed the host room from the entered endpoint",
+      "wall": 10311
+    },
+    {
+      "name": "selecting the Verdant room populated its advertised map",
+      "wall": 11070
+    },
+    {
+      "name": "selecting the Verdant room populated its advertised mode",
+      "wall": 11070
+    },
+    {
+      "name": "guest joined the Verdant room (no map substitution teardown)",
+      "wall": 12425
+    },
+    {
+      "name": "chat_toggle fits 960x640 @150%",
+      "wall": 13680
+    },
+    {
+      "name": "chat_panel fits 960x640 @150%",
+      "wall": 13680
+    },
+    {
+      "name": "chat_toggle fits 1280x800 @150%",
+      "wall": 13982
+    },
+    {
+      "name": "chat_panel fits 1280x800 @150%",
+      "wall": 13982
+    },
+    {
+      "name": "both native clients are in the live round",
+      "wall": 16538
+    },
+    {
+      "name": "chat holds the pointer (no capture while typing)",
+      "wall": 19755
+    },
+    {
+      "name": "typing W while chat is open did not move the actor",
+      "wall": 19755
+    },
+    {
+      "name": "clicking while chat is open did not fire",
+      "wall": 19755
+    },
+    {
+      "name": "the typed character landed in the chat draft",
+      "wall": 19755
+    },
+    {
+      "name": "the guest queued a source chat frame",
+      "wall": 20008
+    },
+    {
+      "name": "the source echo rendered in the native chat log",
+      "wall": 20008
+    },
+    {
+      "name": "chat was delivered only inside the host room",
+      "wall": 20208
+    },
+    {
+      "name": "the third client in the other room received no chat",
+      "wall": 20208
+    },
+    {
+      "name": "a fresh click closed the chat panel",
+      "wall": 20862
+    },
+    {
+      "name": "guest left to a clean disconnected state",
+      "wall": 21518
+    },
+    {
+      "name": "the external host left the room running",
+      "wall": 23018
+    },
+    {
+      "name": "no native script errors",
+      "wall": 23019
+    }
+  ],
+  "status": "PASS",
+  "display": ":3",
+  "port": 38501,
+  "hostRoom": "A4FG",
+  "cleanup": [
+    {
+      "name": "xvfb",
+      "pid": 195824,
+      "exit_code": 0,
+      "signal": null
+    },
+    {
+      "name": "host",
+      "pid": 195827,
+      "exit_code": null,
+      "signal": "SIGTERM"
+    },
+    {
+      "name": "guest",
+      "pid": 196375,
+      "exit_code": null,
+      "signal": "SIGTERM"
+    }
+  ],
+  "wire": {
+    "frames": 812,
+    "sha256": "cd8fa28b379c56c4a891949578bb7e147135576fa3f6b7b7590438db8b3728b4"
+  },
+  "expired": false
+}
