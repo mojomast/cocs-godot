@@ -177,7 +177,12 @@ try {
   pass('selecting the Verdant room populated its advertised mode', latest(guest).selected_mode === hostMode);
   await cmd(guest, {op:'capture',name:'room-browser'});
 
-  // Compact 150% layout while seated in the lobby.
+  await click(guest, 'connect_button');
+  await waitFor(guest, s => s.phase === 11, 15000, 'guest joined');
+  pass('guest joined the Verdant room (no map substitution teardown)', latest(guest).room === summary.hostRoom && latest(guest).map === hostMap);
+  await click(guest, 'chat_toggle');
+  await waitFor(guest, s => s.capturing, 5000, 'lobby chat open');
+  // Measure visible controls after their containers have been sorted.
   await cmd(guest, {op: 'scale', value: 1.5});
   for (const [w, h] of [[960, 640], [1280, 800]]) {
     await cmd(guest, {op: 'resize', width: w, height: h});
@@ -192,9 +197,7 @@ try {
   await cmd(guest, {op: 'scale', value: 1.0});
   await cmd(guest, {op: 'resize', width: 1280, height: 800});
 
-  await click(guest, 'connect_button');
-  await waitFor(guest, s => s.phase === 11 || s.phase === 3, 15000, 'guest joined');
-  pass('guest joined the Verdant room (no map substitution teardown)', latest(guest).phase === 11 && latest(guest).map === hostMap);
+  await click(guest, 'chat_close');
 
   await click(host, 'start_button');
   await waitFor(host, s => s.phase === 3 && s.pose, 15000, 'host live');
