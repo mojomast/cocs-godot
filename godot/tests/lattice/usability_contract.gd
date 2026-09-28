@@ -36,7 +36,9 @@ func snapshot() -> void:
 func status(id: String, eligible: bool) -> bool:
 	return Guidance.control_state(demo).id == id and demo.can_capture_pointer() == eligible
 
-func _initialize() -> void:
+func _initialize() -> void: call_deferred("run")
+
+func run() -> void:
 	demo = Demo.new()
 	demo.client.free()
 	demo.client = QueueProbe.new()
@@ -133,7 +135,8 @@ func _initialize() -> void:
 	check(hud.text(coop).contains("Wave unknown") and hud.text(coop).contains("window unknown"), "missing co-op context is not a fabricated wave or closed window")
 	coop.recruitment = {"wave":2,"phase":"intermission","open":true}
 	check(hud.text(coop).contains("Wave 2") and hud.text(coop).contains("window open"), "co-op context reflects supplied public fields")
-	for item: Node in [client,demo.camera,demo.sun,demo.environment,demo.label,demo.selector,demo.world_label,demo.combat_label,demo.pickups,demo.presentation,demo.combat,demo.lattice_hud]: item.free()
+	for item: Node in [client,demo.session_panel,demo.camera,demo.sun,demo.environment,demo.label,demo.selector,demo.world_label,demo.combat_label,demo.pickups,demo.presentation,demo.combat,demo.lattice_hud]: item.free()
 	demo.free()
 	print("USABILITY_CONTRACT checks=", checks, " failures=", failures)
+	await process_frame
 	quit(0 if failures == 0 else 1)

@@ -129,7 +129,8 @@ func run() -> void:
 	panel.confirm_spend.button_pressed = true
 	panel.world_purchase()
 	check(client.frames.back().action == "reinforce" and client.actions.size() == 1 and not panel.confirm_spend.button_pressed, "co-op purchase routes through existing activate once")
-	for node: Node in [panel,demo.client,demo.camera,demo.sun,demo.environment,demo.label,demo.selector,demo.world_label,demo.combat_label,demo.pickups,demo.presentation,demo.combat,demo.lattice_hud]: node.free()
+	for node: Node in [panel,demo.session_panel,demo.client,demo.camera,demo.sun,demo.environment,demo.label,demo.selector,demo.world_label,demo.combat_label,demo.pickups,demo.presentation,demo.combat,demo.lattice_hud]: node.free()
 	demo.free()
 	print("WORLD_COMMANDS_CONTRACT checks=", checks, " failures=", failures)
+	await process_frame
 	quit(0 if failures == 0 else 1)

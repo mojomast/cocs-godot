@@ -13,7 +13,9 @@ func check(value: bool, message: String) -> void:
 func wire(c: Node, frame: Dictionary) -> bool:
 	return c.decode_text(JSON.stringify(frame))
 
-func _initialize() -> void:
+func _initialize() -> void: call_deferred("run")
+
+func run() -> void:
 	var demo := Demo.new()
 	var c: Node = demo.client
 	demo.current_id = "asterion-relay"
@@ -91,4 +93,5 @@ func _initialize() -> void:
 	for node: Node in [demo.client,demo.camera,demo.sun,demo.environment,demo.label,demo.selector,demo.world_label,demo.combat_label,demo.pickups,demo.presentation,demo.combat,demo.lattice_hud,demo.world_commands,demo.session_panel]: node.free()
 	demo.free()
 	print("WORLD_CONTRACT checks=", checks, " failures=", failures)
+	await process_frame
 	quit(0 if failures == 0 else 1)
