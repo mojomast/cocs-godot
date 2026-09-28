@@ -68,9 +68,9 @@ func run() -> void:
 			{"id":"hq-0", "archetype":"hq", "label":"WEST / FLIGHT CONTROL", "x":-104, "z":0, "owner":0},
 			{"id":"hq-1", "archetype":"hq", "label":"EAST / FLIGHT CONTROL", "x":104, "z":0, "owner":1},
 			{"id":"front-0", "archetype":"front", "label":"WEST / ARCHIVE GATE", "x":-52, "z":-8, "owner":0},
-			{"id":"front-1", "archetype":"front", "label":"EAST / ARCHIVE GATE", "x":52, "z":8},
-			{"id":"econ-n", "archetype":"economy", "label":"NORTH / SOLAR EXCHANGE", "x":8, "z":-32},
-			{"id":"econ-s", "archetype":"economy", "label":"SOUTH / DEEP ARRAY", "x":-8, "z":32},
+			{"id":"front-1", "archetype":"front", "label":"EAST / ARCHIVE GATE", "x":52, "z":8, "owner":null},
+			{"id":"econ-n", "archetype":"economy", "label":"NORTH / SOLAR EXCHANGE", "x":8, "z":-32, "owner":null},
+			{"id":"econ-s", "archetype":"economy", "label":"SOUTH / DEEP ARRAY", "x":-8, "z":32, "owner":null},
 			{"id":"relay-0", "archetype":"relay", "label":"ASTERION / OCULUS", "x":0, "z":0, "owner":0}]:
 		var node: Dictionary = seed.duplicate()
 		node.live = node.archetype != "hq"
