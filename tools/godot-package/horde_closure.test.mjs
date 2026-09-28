@@ -5,12 +5,15 @@ import {readFileSync, mkdtempSync, mkdirSync, writeFileSync, rmSync} from 'node:
 import {resolve, dirname, join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {Room} from '../../server/room.mjs';
+import {verifySource} from '../godot-export/semantic.mjs';
 const root = resolve(import.meta.dirname, '../..');
 const discover = path => JSON.parse(execFileSync(process.execPath, ['--no-warnings','--experimental-vm-modules',join(root,'tools/godot-package/discover.mjs'),path], {encoding:'utf8',stdio:['ignore','pipe','pipe']}));
 
 test('actual Horde transitive closure is classified separately and source-byte locked', () => {
   const closure = discover(root);
   const lock = JSON.parse(readFileSync(join(root,'port/contracts/source-lock.json')));
+  const derivative = process.env.COCS_SOURCE_DERIVATIVE ? JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)) : null;
+  verifySource(lock, derivative);
   assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-horde/')), ['port/native-horde/authority.mjs','port/native-horde/input-buffer.mjs']);
   assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-arenas/')).sort(), [
     'authority','catalog','event-cursor','input-buffer','match','schema',
@@ -21,7 +24,8 @@ test('actual Horde transitive closure is classified separately and source-byte l
   assert.ok(closure.routes.horde.includes('game/singleplayer.mjs'));
   assert.ok(!closure.routes.horde.includes('server/room.mjs'));
   for (const path of Object.keys(closure.modules)) {
-    assert.deepEqual(readFileSync(join(root,path)),execFileSync('git',['show',`${lock.source_commit}:${path}`],{cwd:root,maxBuffer:64*1024*1024}),path);
+    const revision = derivative && Object.hasOwn(derivative.runtime_files,path) ? derivative.derivative_commit : lock.source_commit;
+    assert.deepEqual(readFileSync(join(root,path)),execFileSync('git',['show',`${revision}:${path}`],{cwd:root,maxBuffer:64*1024*1024}),path);
   }
   assert.deepEqual(closure.external,['ws']);
 });
