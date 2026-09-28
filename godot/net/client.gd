@@ -7,6 +7,15 @@ signal snapshot(frame: Dictionary)
 signal events(items: Array)
 signal results(frame: Dictionary)
 signal connection_error(message: String)
+# ---------------------------------------------------------------------------
+# Additive social surface (room browser + room-scoped text chat). These never
+# participate in seating, identity, persistence or gameplay authority; they only
+# expose the existing `list` / `chat` verbs of the authoritative protocol. An
+# out-of-room chat refusal or a malformed social reply is a non-fatal notice.
+# ---------------------------------------------------------------------------
+signal rooms(items: Array)
+signal chat(message: Dictionary)
+signal social_error(message: String)
 
 const PROTOCOL_VERSION := 3
 const Loadout = preload("res://ui/loadout.gd")
@@ -140,6 +149,21 @@ func join_room(id: String, player_name: String = "Godot guest", character: Strin
 		joined_room_request = id
 		spectator_notice_stage = 1
 	return result
+
+# Room browser. The authority answers a `list` request with a `rooms` frame on
+# this same connection; it never creates, joins or changes a seat. Browsing is
+# therefore honest about scope: only rooms this endpoint already advertises.
+func request_rooms() -> Error:
+	return send_frame({"type":"list"})
+
+# Room-scoped text chat. The authority sanitizes (control-strip + trim + 200-char
+# slice), rate-limits and broadcasts the accepted line back to the room, so this
+# client never optimistically echoes a message it sent. Locally bounded to the
+# source ceiling so an oversized frame is refused before it hits the wire.
+func send_chat(text: String) -> Error:
+	var clean: String = text.strip_edges().left(200)
+	if clean.is_empty(): return ERR_INVALID_PARAMETER
+	return send_frame({"type":"chat", "text":clean})
 
 func configure_match(mode: String, bots: int = 2) -> Error:
 	if not allowlist.has(requested_map) or not mode in allowlist[requested_map].modes:
@@ -283,12 +307,34 @@ func decode_text(text: String) -> bool:
 				if event_order.size() > 4096: seen_events.erase(event_order.pop_front())
 				fresh.append(item)
 			events.emit(fresh)
+		"rooms":
+			# Additive room-browser reply. A malformed list is a social notice,
+			# never a session teardown or an invented empty room set.
+			var rows: Variant = frame.get("rooms")
+			if not rows is Array:
+				social_error.emit("Room list reply was malformed.")
+				return true
+			rooms.emit(rows)
+		"chat":
+			# Additive room-scoped chat line. Only `text` is structurally
+			# required; sender identity is display metadata and stays untrusted.
+			if not frame.get("text") is String:
+				social_error.emit("Chat reply was malformed.")
+				return true
+			chat.emit(frame)
 		"snapshot-delta": return fail("Unexpected delta frame; negotiated delta=0")
 		"error":
 			var informational: bool = spectator_notice_stage == 3 and spectating and actor_id == -1 and frame.size() == 2 and frame.get("message") == ACTIVE_SPECTATOR_NOTICE
 			spectator_notice_stage = 0
 			if informational: return true
-			return fail(str(frame.get("message", "Server error")))
+			var message := str(frame.get("message", "Server error"))
+			# A chat sent without a seated room is a social refusal, not a
+			# protocol violation: keep the connection and report it to the
+			# social surface. Every other error frame stays fatal as before.
+			if frame.get("message") == "not in a room" and not frame.has("code"):
+				social_error.emit(message)
+				return true
+			return fail(message)
 	return true
 
 func _process(_delta: float) -> void:

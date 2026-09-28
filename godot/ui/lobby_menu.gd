@@ -4,6 +4,8 @@ const Setup = preload("res://ui/match_setup.gd")
 const Names = preload("res://ui/scoreboard.gd")
 const Choice = preload("res://ui/lobby_choice.gd")
 const Loadout = preload("res://ui/loadout.gd")
+const RoomBrowser = preload("res://social/room_browser.gd")
+const ChatPanel = preload("res://social/chat_panel.gd")
 var session: Node
 var panel := PanelContainer.new()
 var form := VBoxContainer.new()
@@ -24,6 +26,9 @@ var leave_button := Button.new()
 var restart_button := Button.new()
 var entries: Dictionary = {}
 var last_frame: Dictionary = {}
+var room_browser
+var chat_panel
+var browser_phase: int = -999
 
 func field(title: String, control: Control) -> void:
 	var caption := Label.new()
@@ -83,6 +88,12 @@ func _ready() -> void:
 	loadout_columns.add_child(operator)
 	loadout_columns.add_child(harness)
 	field("Operator / harness (yours)", loadout_columns)
+	# Room browser sits with the join fields inside the scrolling form. It only
+	# ever reads the authority's advertised rooms on this endpoint (no scanning).
+	room_browser = RoomBrowser.new()
+	room_browser.refresh_requested.connect(request_rooms)
+	room_browser.room_selected.connect(select_room)
+	form.add_child(room_browser)
 	for item: Label in [status, roster]:
 		item.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		form.add_child(item)
@@ -107,9 +118,43 @@ func _ready() -> void:
 	add_child(restart_button)
 	leave_button.pressed.connect(func() -> void: session.lobby_leave())
 	restart_button.pressed.connect(func() -> void: session.request_restart())
+	# Room chat rides the same connection and shows in both the lobby and the live
+	# round. It is modal while open so typing cannot move or fire.
+	chat_panel = ChatPanel.new()
+	add_child(chat_panel)
+	chat_panel.bind(session)
+	if session.client.has_signal("rooms"): session.client.rooms.connect(room_browser.accept)
+	if session.client.has_signal("social_error"): session.client.social_error.connect(room_browser.fail)
 	get_viewport().size_changed.connect(resize_panel)
 	resize_panel()
 	refresh()
+
+# Room-list request. If already connected, queue the source `list` verb over the
+# live connection; otherwise connect this endpoint as an unseated browser (the
+# session auto-refreshes once it opens). The browser times the reply out itself.
+func request_rooms() -> void:
+	if session.client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		room_browser.mark_refreshing()
+		if session.client.request_rooms() != OK:
+			room_browser.fail("Room list request could not be queued.")
+		return
+	if session.has_method("browse_rooms") and session.phase in [-3, -1]:
+		room_browser.fail("Connecting to browse rooms…")
+		session.browse_rooms(endpoint.text.strip_edges())
+	else:
+		room_browser.fail("Connect before refreshing rooms on this server.")
+
+# Selecting a row only fills the explicit guest join fields: the connect step
+# stays user-driven so the source active-room spectate rule is never bypassed.
+func select_room(room_id: String) -> void:
+	if room_id.is_empty(): return
+	role.select(1)
+	room.text = room_id
+	room.editable = true
+	status.text = "Selected room %s — press Join lobby to connect explicitly." % room_id
+
+func capturing_input() -> bool:
+	return is_instance_valid(chat_panel) and chat_panel.capturing_input()
 
 func build_loadout_rows() -> void:
 	for entry: Dictionary in Loadout.CHARACTERS:
@@ -170,7 +215,7 @@ func select_harness_index(index: int) -> void:
 # Single owner of harness.disabled: locked only while the operator requires it
 # and the form is editable.
 func apply_harness_lock() -> void:
-	var editable: bool = session.phase in [-3, -1]
+	var editable: bool = session.phase in [-3, -1, -4]
 	var locked := Loadout.locked_harness(selected_character())
 	if locked.is_empty():
 		harness.disabled = not editable
@@ -233,7 +278,7 @@ func refresh() -> void:
 			hud.status_panel.show()
 			hud.score_label.text = "SPECTATOR"
 			hud.controls.hide()
-	var editable := phase in [-3, -1]
+	var editable := phase in [-3, -1, -4]
 	for control: LineEdit in [endpoint, player_name, room]: control.editable = editable
 	for control: Control in [role, maps, modes]: control.disabled = not editable
 	operator.disabled = not editable
@@ -246,12 +291,18 @@ func refresh() -> void:
 	start_button.visible = phase == 12
 	start_button.disabled = not session.lobby_host_allowed()
 	back_button.visible = phase != -3
-	var messages := {-3:"Disconnected · choose settings and connect explicitly.", 0:"Connecting…", 1:"Creating room…", 2:"Configuring…", 10:"Joining…", 11:"Waiting for host. Active-room joins stay read-only through restart. Leave and join between rounds to request play.", 12:"Lobby ready · share room code, wait for guests, then Start."}
+	back_button.text = "Cancel browse" if phase == -4 else "Back / Leave room"
+	var messages := {-3:"Disconnected · choose settings and connect explicitly.", -4:"Browsing server rooms · select a room, then Join lobby as guest.", 0:"Connecting…", 1:"Creating room…", 2:"Configuring…", 10:"Joining…", 11:"Waiting for host. Active-room joins stay read-only through restart. Leave and join between rounds to request play.", 12:"Lobby ready · share room code, wait for guests, then Start."}
 	status.text = session.label.text if phase == -1 else str(messages.get(phase, ""))
 	if phase == -3:
 		roster.text = "No room joined. Native maps/modes marked pending cannot be started."
 		var problem := Setup.validate(entries, str(maps.get_selected_metadata()), str(modes.get_selected_metadata()))
 		if not problem.is_empty() and role.selected == 0: status.text += "\n" + problem
+	# Room browser tracks the live connection and asks once when browse opens.
+	if is_instance_valid(room_browser):
+		room_browser.sync(session.client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN)
+		if phase == -4 and browser_phase != -4: request_rooms()
+	browser_phase = phase
 
 func _process(_delta: float) -> void:
 	refresh()

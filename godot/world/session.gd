@@ -72,6 +72,7 @@ func lobby_host_allowed() -> bool:
 func lobby_clear() -> void:
 	release_pointer()
 	local_motion.reset()
+	browsing = false
 	client.disconnect_server()
 	snapshot_watch.reset()
 	presentation.clear_round()
@@ -104,7 +105,7 @@ func lobby_leave() -> void:
 	label.text = "Disconnected"
 
 func lobby_connect(url: String, player_name: String, room: String, map_id: String, mode: String, guest: bool, character: String = "", harness: String = "") -> void:
-	if not lobby_enabled or phase not in [-3, -1]: return
+	if not lobby_enabled or phase not in [-3, -1, -4]: return
 	lobby_clear()
 	# An explicit pair from the lobby surface replaces the session pair. An empty
 	# pair keeps whatever the CLI or an earlier explicit choice established, so
@@ -135,6 +136,26 @@ func lobby_connect(url: String, player_name: String, room: String, map_id: Strin
 		if "guest" in child: child.guest = guest
 	connect_selected_match()
 
+# Browse the current endpoint's advertised rooms without seating anywhere. This
+# is the same selected endpoint and the same connection as a join; there is no
+# scanning or discovery of any other address. Choosing a room then uses the
+# normal explicit join path, so the source's active-room spectator rule holds.
+func browse_rooms(url: String) -> void:
+	if not lobby_enabled or phase not in [-3, -1]: return
+	if not (url.begins_with("ws://") or url.begins_with("wss://")) or url.contains("@") or url.contains("\n"):
+		on_error("Use an explicit ws:// or wss:// endpoint without embedded credentials.")
+		return
+	lobby_clear()
+	endpoint = url
+	browsing = true
+	connect_selected_match()
+
+# True while the lobby's chat surface has focus and is capturing typing. The
+# gameplay input adapters gate on this exactly like SettingsAccess.overlay_open,
+# so typing a message cannot move or fire, and key releases still reach them.
+func social_capturing() -> bool:
+	return is_instance_valid(lobby_menu) and lobby_menu.has_method("capturing_input") and lobby_menu.capturing_input()
+
 func lobby_start() -> void:
 	if phase != 12 or not lobby_host_allowed(): return
 	if not MatchSetup.validate(catalog.entries, current_id, selected_mode).is_empty(): return
@@ -148,7 +169,7 @@ func can_capture_pointer() -> bool:
 	# Application focus notifications may lag the window's focus state (X11).
 	# Detached logic probes have no window; attached sessions must check it.
 	if is_inside_tree() and not get_window().has_focus(): return false
-	return application_focused and not SettingsAccess.overlay_open() and phase == 3 and received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control()
+	return application_focused and not SettingsAccess.overlay_open() and not social_capturing() and phase == 3 and received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control()
 
 func update_look(relative: Vector2) -> void:
 	if not can_capture_pointer() or not relative.is_finite(): return
@@ -170,7 +191,10 @@ var client := Client.new()
 var presentation := Presentation.new()
 var local_motion := LocalMotion.new()
 # Guest phases: 10 waits for join acknowledgement; 11 waits for host start.
+# Browse phase: -4 is a connected room-browser seat (no room joined); it shares
+# the editable pre-join form and is left by choosing a room and joining.
 var join_room_id: String = ""
+var browsing := false
 var phase: int = 0
 # Opt-in program-state evidence, never a claim of graphical acceptance.
 var trace_enabled: bool = false
@@ -625,7 +649,7 @@ func observe_combat_input(event: InputEvent) -> void:
 	combat_actions.record(event, combat_controls_active(), presentation.local_actor)
 
 func _input(event: InputEvent) -> void:
-	if SettingsAccess.overlay_open():
+	if SettingsAccess.overlay_open() or social_capturing():
 		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed:
 			combat_actions.record(event, false, presentation.local_actor)
 			weapon_selection.handle_event(event, false, presentation.local_actor)
@@ -637,7 +661,7 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if SettingsAccess.overlay_open(): return
+	if SettingsAccess.overlay_open() or social_capturing(): return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_ESCAPE: release_pointer()
 		if event.keycode == KEY_ENTER: request_restart()
@@ -665,7 +689,14 @@ func _process(delta: float) -> void:
 		on_error("Lifecycle smoke timeout")
 		return
 	if phase == 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
-		begin_room()
+		if browsing:
+			# Browse seat: connected but unseated. The lobby surface sends the
+			# `list` request once it sees phase -4 so one request owns one reply.
+			browsing = false
+			phase = -4
+			label.text = "Browsing server rooms…"
+		else:
+			begin_room()
 	if phase != 3: return
 	if client.spectating:
 		release_pointer()
