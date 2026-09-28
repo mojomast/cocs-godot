@@ -5,6 +5,7 @@ import {join, dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {options, HELP} from './options.mjs';
 import {settingsPath} from './settings_path.mjs';
+import {acquireCareer} from './career_path.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const executable = process.platform === 'win32' ? 'cocs.exe' : 'cocs.x86_64';
@@ -31,12 +32,12 @@ async function runRoute(plan, env) {
     ? (await import('./runtime/port/native-horde/authority.mjs')).createAuthority
     : (await import('./runtime/server/game-server.mjs')).createGameServer;
   const runtime = mkdtempSync(join(tmpdir(), 'cocs-native-'));
-  const childEnv = {...env};
+   const childEnv = {...env};
   if (debug) childEnv.COCS_DEBUG = '1';
   for (const name of ['XDG_DATA_HOME','XDG_CONFIG_HOME','XDG_CACHE_HOME']) {
     childEnv[name] = join(runtime, name); mkdirSync(childEnv[name]);
   }
-  let game;
+   let game,career;
   let child, childDone, stopping = false, signalCode = 0, serverFailure, killTimer, smokeTimer;
   const stop = () => {
     stopping = true;
@@ -50,11 +51,12 @@ async function runRoute(plan, env) {
   const terminate = () => { signalCode = 143; stop(); };
   const serverError = error => { serverFailure = error; stop(); };
   process.on('SIGINT', interrupt); process.on('SIGTERM', terminate);
-  try {
-    game = await factory?.(plan.nativeArena ? {port:0, host:'127.0.0.1', mapId:plan.map, mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds} : plan.identityZone ? {port:0, host:'127.0.0.1', mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds, fragLimit:plan.scoreLimit} : plan.experience === 'horde' ? {} : {historyPath:null, progressionPath:null});
+   try {
+     career=acquireCareer(plan,env);Object.assign(childEnv,career.env);
+     game = await factory?.(plan.nativeArena ? {port:0, host:'127.0.0.1', mapId:plan.map, mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds} : plan.identityZone ? {port:0, host:'127.0.0.1', mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds, fragLimit:plan.scoreLimit} : plan.experience === 'horde' ? {} : {historyPath:null, progressionPath:career.progressionPath});
     game?.server?.on('error', serverError);
-    let endpoint = plan.endpoint;
-    if (game) {
+     let endpoint = plan.endpoint;
+     if (game) {
       if (!(plan.nativeArena || plan.identityZone) || (!game.endpoint && !game.server?.listening)) await new Promise((resolve, reject) => {
         game.server.once('error', reject);
         game.server.listen(0, '127.0.0.1', () => { game.server.removeListener('error', reject); resolve(); });
@@ -104,17 +106,19 @@ async function runRoute(plan, env) {
     clearTimeout(killTimer);
     clearTimeout(smokeTimer);
     // The native process is gone: terminate any residual WS close handshake.
-    if (game) {
+     try { if (game) {
       for (const socket of game.wss?.clients ?? []) socket.terminate();
       game.server?.closeAllConnections();
-      await game.close();
-      game.server?.removeListener('error', serverError);
-    }
+       await game.close();
+       if (await game.progression?.whenPersisted?.() === false) throw Error('Career progression could not be persisted');
+       game.server?.removeListener('error', serverError);
+     } } finally { career?.release();
     process.removeListener('SIGINT', interrupt); process.removeListener('SIGTERM', terminate);
     rmSync(runtime, {recursive:true, force:true, maxRetries:5, retryDelay:100});
     if (previousDebug === undefined) delete process.env.COCS_DEBUG;
-    else process.env.COCS_DEBUG = previousDebug;
-    console.log('PACKAGE_STOPPED');
+     else process.env.COCS_DEBUG = previousDebug;
+     console.log('PACKAGE_STOPPED');
+     }
   }
 }
 

@@ -73,6 +73,7 @@ func connect_server(endpoint: String, maps: Dictionary, map_id: String) -> Error
 
 func disconnect_server() -> void:
 	career_clear()
+	identity_clear()
 	if peer.get_ready_state() != WebSocketPeer.STATE_CLOSED: peer.close()
 	peer = WebSocketPeer.new()
 	was_open = false
@@ -95,6 +96,7 @@ func reset_round() -> void:
 
 func fail(message: String) -> bool:
 	career_clear()
+	identity_clear()
 	spectator_notice_stage = 0
 	error = message
 	connection_error.emit(message)
@@ -108,7 +110,10 @@ func send_frame(frame: Dictionary) -> Error:
 
 func create_room(player_name: String = "Godot", character: String = "chatgpt", harness: String = "openclaw") -> Error:
 	var pair: Dictionary = Loadout.resolve(character, harness)
-	var result := send_frame({"type":"create", "name":"Godot port laboratory", "playerName":player_name, "character":pair.character, "harness":pair.harness, "v":3, "delta":0})
+	var frame := {"type":"create", "name":"Godot port laboratory", "playerName":player_name, "character":pair.character, "harness":pair.harness, "v":3, "delta":0}
+	frame.merge(identity_fields())
+	var result := send_frame(frame)
+	if result != OK: identity_clear()
 	if result == OK:
 		career_clear()
 		career_seated = false
@@ -118,7 +123,10 @@ func create_room(player_name: String = "Godot", character: String = "chatgpt", h
 func join_room(id: String, player_name: String = "Godot guest", character: String = "", harness: String = "") -> Error:
 	if id.is_empty(): return ERR_INVALID_PARAMETER
 	var pair: Dictionary = Loadout.resolve(character, harness)
-	var result := send_frame({"type":"join", "roomId":id, "name":player_name, "character":pair.character, "harness":pair.harness, "v":PROTOCOL_VERSION, "delta":0})
+	var frame := {"type":"join", "roomId":id, "name":player_name, "character":pair.character, "harness":pair.harness, "v":PROTOCOL_VERSION, "delta":0}
+	frame.merge(identity_fields())
+	var result := send_frame(frame)
+	if result != OK: identity_clear()
 	if result == OK:
 		career_clear()
 		career_seated = false
@@ -205,6 +213,9 @@ func decode_text(text: String) -> bool:
 			room_id = str(frame.get("roomId", ""))
 			peer_id = int(frame.get("peerId", -1))
 			if career_admitted: career_receive(frame)
+			if career_admitted:
+				if joined_room_request.is_empty() or frame.get("roomId") == joined_room_request: identity_accept(frame)
+				else: identity_clear()
 			spectator_notice_stage = 2 if spectator_notice_stage == 1 and room_id == joined_room_request and frame.get("spectate") == true and frame.get("host") == false and not frame.get("reconnected", false) else 0
 		"profile", "progression":
 			if career_seated and career_wire_open(): career_receive(frame)
@@ -287,6 +298,7 @@ func _process(_delta: float) -> void:
 			if not decode_text(packet.get_string_from_utf8()): return
 	elif state == WebSocketPeer.STATE_CLOSED and was_open:
 		career_clear()
+		identity_clear()
 		was_open = false
 		reset_round()
 		room_id = ""
@@ -302,3 +314,15 @@ func career_receive(frame: Dictionary) -> void:
 func career_clear() -> void:
 	var service := get_tree().root.get_node_or_null("Career") if is_inside_tree() else null
 	if service != null: service.clear_connection(self)
+
+func identity_fields() -> Dictionary:
+	var identity := get_tree().root.get_node_or_null("Identity") if is_inside_tree() else null
+	return identity.request_fields(self) if identity != null else {}
+
+func identity_accept(frame: Dictionary) -> void:
+	var identity := get_tree().root.get_node_or_null("Identity") if is_inside_tree() else null
+	if identity != null: identity.accept_welcome(self, frame)
+
+func identity_clear() -> void:
+	var identity := get_tree().root.get_node_or_null("Identity") if is_inside_tree() else null
+	if identity != null: identity.clear_connection(self)
