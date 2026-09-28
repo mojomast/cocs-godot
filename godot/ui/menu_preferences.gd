@@ -23,7 +23,9 @@ func load_from_disk(registry: Variant) -> void:
 		return
 	var text := file.get_as_text()
 	file.close()
-	var data: Variant = JSON.parse_string(text)
+	var parser := JSON.new()
+	if parser.parse(text) != OK: return
+	var data: Variant = parser.data
 	if not data is Dictionary or typeof(data.get("version")) != TYPE_FLOAT or data.get("version") != VERSION:
 		return
 	var saved: Variant = data.get("routes")
@@ -90,7 +92,7 @@ func remember(registry: Variant, route: Dictionary, selections: Dictionary) -> v
 func save_to_disk() -> bool:
 	var text := JSON.stringify({"version": VERSION, "last_route": last_route, "routes": routes})
 	if text.to_utf8_buffer().size() > MAX_BYTES: return false
-	var temp := path + ".tmp"
+	var temp := path + ".%d.tmp" % OS.get_process_id()
 	var file := FileAccess.open(temp, FileAccess.WRITE)
 	if file == null: return false
 	file.store_string(text)
