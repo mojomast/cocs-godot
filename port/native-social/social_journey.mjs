@@ -183,7 +183,7 @@ try {
     await cmd(guest, {op: 'resize', width: w, height: h});
     await sleep(250);
     const s = latest(guest);
-    const [vx, vy, vw, vh] = s.viewport;
+    const [vw, vh] = s.viewport;
     for (const name of ['chat_toggle', 'chat_panel']) {
       const [x, y, cw, ch] = s.ui[name].rect;
       pass(`${name} fits ${w}x${h} @150%`, x >= -1 && y >= -1 && x + cw <= vw + 1 && y + ch <= vh + 1);
@@ -257,6 +257,7 @@ try {
   if (game) { for (const socket of game.wss.clients) socket.terminate(); await game.close(); }
   summary.checks = checks;
   summary.cleanup = children.map(p=>({name:p.name,pid:p.pid,exit_code:p.exitCode,signal:p.signalCode}));
+  for (const p of [host,guest].filter(Boolean)) writeFileSync(resolve(out,`${p.name}-last-sample.json`),JSON.stringify(latest(p),null,2)+'\n');
   summary.wire = {frames: wire.length, sha256: createHash('sha256').update(JSON.stringify(wire)).digest('hex')};
   writeFileSync(resolve(out, 'summary.json'), JSON.stringify({...summary, expired}, null, 2) + '\n');
   rmSync(temp, {recursive: true, force: true});

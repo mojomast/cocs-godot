@@ -119,5 +119,5 @@ func _process(delta: float) -> bool:
 		"focused":root.has_focus(),"actors":session.presentation.actors.size(),
 		"local":{"x":local.get("x"),"z":local.get("z"),"shots":local.get("shots"),"health":local.get("health")},
 		"roster":menu.roster.text,"status":menu.status.text,"chat_status":chat.status.text,"chat_log":Array(chat_log),"rooms":rooms,
-		"error":session.label.text if session.phase == -1 else "","ui":ui,"viewport":[root.size.x,root.size.y] }))
+		"error":session.label.text if session.phase == -1 else "","ui":ui,"viewport":[root.get_visible_rect().size.x,root.get_visible_rect().size.y] }))
 	return false
