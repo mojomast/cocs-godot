@@ -77,7 +77,7 @@ func _ready() -> void:
 	receipt.hide()
 	delta.hide()
 	combat.hide()
-	control_hint.text = "C  COMMAND DECK   ·   TAB  SCORES   ·   ESC  RELEASE POINTER"
+	control_hint.text = "C  COMMAND DECK   ·   TAB  SCORES   ·   ESC  RELEASE POINTER   ·   F12 SETTINGS"
 	add_line(bottom_column, control_hint, 12, "a2b8c4")
 	resized.connect(layout)
 	layout()
@@ -119,7 +119,7 @@ func present(projection: Dictionary, target: Dictionary, topology: Dictionary, a
 	receipt.visible = not receipt.text.is_empty()
 	combat.text = combat_text.left(160)
 	combat.visible = not combat.text.is_empty()
-	control_hint.text = "RELEASED  ·  RELEASE CONTROLS, THEN CLICK WORLD TO RESUME   ·   C DECK" if controls == "released" else "C  COMMAND DECK   ·   TAB  SCORES   ·   ESC  RELEASE POINTER"
+	control_hint.text = "RELEASED  ·  RELEASE CONTROLS, THEN CLICK WORLD TO RESUME   ·   C DECK   ·   F12 SETTINGS" if controls == "released" else "C  COMMAND DECK   ·   TAB  SCORES   ·   ESC  RELEASE POINTER   ·   F12 SETTINGS"
 	var context: Dictionary = projection.get("context", {})
 	var identity := "%s/%s/%s" % [projection.get("map"), context.get("revision"), context.get("actor")]
 	if identity != epoch:

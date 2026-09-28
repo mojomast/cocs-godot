@@ -103,15 +103,30 @@ func _process(delta: float) -> bool:
 		call_deferred("route_step")
 	return false
 
-func settings_key() -> void:
+func tap_key(code: int) -> void:
 	var event := InputEventKey.new()
-	event.keycode = KEY_F12
-	event.physical_keycode = KEY_F12
+	event.keycode = code
+	event.physical_keycode = code
 	event.pressed = true
 	Input.parse_input_event(event)
 	event = event.duplicate()
 	event.pressed = false
 	Input.parse_input_event(event)
+
+func settings_key() -> void:
+	tap_key(KEY_F12)
+
+func open_deck() -> bool:
+	tap_key(KEY_C)
+	for i in 4: await RenderingServer.frame_post_draw
+	if not require_value(scene.world_commands.visible, "command deck did not open"): return false
+	var bounds: Rect2 = scene.world_commands.panel.get_rect()
+	var viewport: Vector2 = root.get_visible_rect().size
+	if not require_value(bounds.position.x >= 0 and bounds.position.y >= 0 and bounds.end.x <= viewport.x + 1 and bounds.end.y <= viewport.y + 1,
+		"live first-open command deck exceeds viewport"): return false
+	print("PRODUCT_JOURNEY_DECK ", JSON.stringify({"visit":record.visits,"first_open_fits":true,
+		"viewport":[viewport.x,viewport.y],"position":[bounds.position.x,bounds.position.y],"size":[bounds.size.x,bounds.size.y]}))
+	return true
 
 func capture_view(name: String) -> void:
 	for i in 4: await RenderingServer.frame_post_draw
@@ -121,16 +136,10 @@ func capture_view(name: String) -> void:
 		"window":[root.size.x,root.size.y],"scale":settings.values.ui_scale}))
 
 func capture_deck() -> void:
-	var event := InputEventKey.new()
-	event.keycode = KEY_C
-	event.physical_keycode = KEY_C
-	event.pressed = true
-	Input.parse_input_event(event)
-	event = event.duplicate()
-	event.pressed = false
-	Input.parse_input_event(event)
-	await process_frame
-	if not require_value(scene.world_commands.visible, "command deck did not open for capture"): return
+	if not await open_deck(): return
+	if scene.world_commands.nodes.item_count > 2:
+		scene.world_commands.nodes.select(2)
+		scene.world_commands.nodes.item_selected.emit(2)
 	root.size = Vector2i(1280,800)
 	await capture_view("deck-1280x800")
 	root.size = Vector2i(760,520)
@@ -148,6 +157,10 @@ func capture_deck() -> void:
 func route_step() -> void:
 	if route_id == "lattice-world" and int(record.visits) == 2 and OS.get_environment("COCS_JOURNEY_CAPTURE") == "1":
 		await capture_deck()
+	elif route_id == "lattice-world":
+		if not await open_deck(): return
+		scene.world_close_commands()
+		await process_frame
 	settings_key()
 	await process_frame
 	if not require_value(settings.overlay_open() and settings.rows.leave.visible, "F12 did not expose match Settings/Leave"): return

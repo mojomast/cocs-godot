@@ -43,6 +43,7 @@ simulation lock and verification evidence remain reproducible.
 | LATTICE world demo | Authoritative first-person traversal on Asterion/Monsoon, public objective markers and a same-connection tactical HOLD/recruitment panel |
 | Session handling | Local server launcher, host setup, guest transport, stale-state handling, focus release, death/respawn and round-boundary control resets |
 | Menu continuity | Last activity and validated per-activity choices are remembered locally across menu restarts; local cheats must be enabled explicitly each time |
+| Device settings | Home Settings and F12 in a route: master volume/mute, fullscreen, mouse sensitivity and interface scale; Back releases controls and Leave returns to the supervisor menu |
 
 Sports now have independent one-lap target victory, local-driver soccer scoring
 and results/restart acceptance. LATTICE offers both a command board and a
@@ -145,6 +146,18 @@ For the shared activity menu, run
 and each activity's valid options across match exits and application restarts.
 Preferences are local UI choices in `user://menu_preferences.json`; source
 validation still decides which requests are accepted.
+
+**Settings:** use the Home button or **F12** while in a route. **Esc / Back**
+closes Settings with the pointer released; **Leave Match** exits that route and
+returns to Home when launched through the menu. Direct CLI launches exit after
+leaving. Online matches continue while Settings is open.
+
+Device settings persist separately from match runtime files: development uses
+`.port-runtime/local_settings.json`; installed packages use the user's native
+configuration directory under `cocs-native/local_settings.json`. An absolute
+`COCS_SETTINGS_PATH` overrides that location. These files contain local audio,
+display and input preferences, not source-owned balances or unlocks. See the
+[shared shell implementation and verification](port/native-shell/README.md).
 
 `PORT=0` selects a free loopback port automatically. The launcher starts the
 server and closes it when the client exits. You do not need a separate server

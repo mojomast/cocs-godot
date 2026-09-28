@@ -46,6 +46,7 @@ try {code=await new Promise((resolve,reject)=>{child.once('error',reject);child.
 finally {clearTimeout(timer);writeFileSync(join(output,'console.log'),text);}
 const matches=text.split('\n').filter(line=>line.startsWith('PRODUCT_JOURNEY_MATCH ')).map(line=>JSON.parse(line.slice('PRODUCT_JOURNEY_MATCH '.length)));
 const captures=text.split('\n').filter(line=>line.startsWith('PRODUCT_JOURNEY_CAPTURE ')).map(line=>JSON.parse(line.slice('PRODUCT_JOURNEY_CAPTURE '.length)));
+const decks=text.split('\n').filter(line=>line.startsWith('PRODUCT_JOURNEY_DECK ')).map(line=>JSON.parse(line.slice('PRODUCT_JOURNEY_DECK '.length)));
 const ports=[...text.matchAll(/Owned local server ready at ws:\/\/127\.0\.0\.1:(\d+)/g)].map(match=>Number(match[1]));
 const closed=[];
 for(const port of new Set(ports))closed.push(await new Promise(resolve=>{
@@ -54,13 +55,13 @@ for(const port of new Set(ports))closed.push(await new Promise(resolve=>{
   socket.once('connect',()=>{socket.destroy();resolve(false);});
   socket.setTimeout(1000,()=>{socket.destroy();resolve(false);});
 }));
-const passed=code===0&&!text.includes('ERROR:')&&matches.length===9&&ports.length===9&&closed.every(Boolean)&&text.includes('PRODUCT_JOURNEY_COMPLETE ');
+const passed=code===0&&!text.includes('ERROR:')&&matches.length===9&&decks.length===3&&ports.length===9&&closed.every(Boolean)&&text.includes('PRODUCT_JOURNEY_COMPLETE ');
 const summary={scope:'source-driven scripted UI lifecycle; not natural rounds/human acceptance',passed,exit_code:code,
   port_commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),source_commit:sourceLock.source_commit,
   source_derivative_commit:derivative?.derivative_commit??null,
   input_sha256:Object.fromEntries(['godot/tests/product_journey/driver.gd','godot/ui/local_settings.gd','godot/lattice/world_commands.gd',
     'tools/godot-dev/product_journey.mjs','tools/godot-dev/launch.mjs'].map(path=>[path,hash(path)])),
-  source_sessions:matches,captures,owned_ports:ports,all_owned_ports_closed:closed.every(Boolean),state:JSON.parse(readFileSync(state)),output};
+  source_sessions:matches,deck_checks:decks,captures,owned_ports:ports,all_owned_ports_closed:closed.every(Boolean),state:JSON.parse(readFileSync(state)),output};
 for(const capture of captures)capture.sha256=hash(capture.path);
 writeFileSync(join(output,'summary.json'),JSON.stringify(summary,null,2)+'\n');
 console.log('PRODUCT_JOURNEY '+JSON.stringify(summary));

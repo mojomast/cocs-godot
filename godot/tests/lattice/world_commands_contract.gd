@@ -42,7 +42,7 @@ func fresh() -> void:
 	wire({"type":"start","mapId":demo.current_id,"config":{"mode":client.mode},"roundRevision":revision})
 	actor.health = 100
 	state.actors = [actor]
-	state.cocs = {"roundRevision":revision,"nodes":[{"id":"front-0","x":-52,"z":-8,"owner":null}],"flux":{"0":60},"fluxSpent":{"0":0},"roleBoard":{"0":{"allow":["fighter"],"threads":{"used":0,"cap":4},"spawned":0}}}
+	state.cocs = {"roundRevision":revision,"nodes":[{"id":"front-0","x":-52,"z":-8,"owner":null},{"id":"front-1","x":-20,"z":-8,"owner":null},{"id":"front-2","x":0,"z":-8,"owner":null},{"id":"front-3","x":20,"z":-8,"owner":null},{"id":"front-4","x":40,"z":-8,"owner":null},{"id":"front-5","x":60,"z":-8,"owner":null},{"id":"front-6","x":80,"z":-8,"owner":null}],"flux":{"0":60},"fluxSpent":{"0":0},"roleBoard":{"0":{"allow":["fighter"],"threads":{"used":0,"cap":4},"spawned":0}}}
 	panel.show()
 	snapshot()
 	panel.world_select(0)
@@ -56,6 +56,9 @@ func cleared(message: String) -> void:
 func _initialize() -> void: call_deferred("run")
 
 func run() -> void:
+	root.content_scale_size = Vector2i(1280, 800)
+	root.content_scale_factor = 1.0
+	root.size = Vector2i(1280, 800)
 	demo = Demo.new()
 	demo.client.free()
 	demo.client = QueueProbe.new()
@@ -78,6 +81,16 @@ func run() -> void:
 	panel.set_process(false)
 	panel.world_bind(demo)
 	fresh()
+	for _frame: int in range(5): await process_frame
+	var first_bounds: Rect2 = panel.panel.get_rect()
+	check(panel.node_ids.size() == 7 and first_bounds.position.y >= 0 and first_bounds.end.y <= panel.size.y, "first-open populated seven-node panel remains within standard viewport")
+	check(panel.header_margin.get_global_rect().position.y >= panel.panel.get_global_rect().position.y and panel.footer_margin.get_global_rect().end.y <= panel.panel.get_global_rect().end.y, "first-open header and footer remain inside populated panel")
+	# Godot may enlarge a newly populated panel before its hidden scroll pages
+	# settle, without sending another viewport resize. Refresh must recover it.
+	panel.panel.size.y = 1625
+	panel.panel.position.y = (panel.size.y - panel.panel.size.y) * 0.5
+	panel.world_refresh()
+	check(panel.panel.get_rect().is_equal_approx(Rect2(60, 50, 1160, 700)), "populated first-show overflow is recentered without a viewport resize")
 	check(client.actions.is_empty() and client.frames.is_empty(), "selection and consent never enqueue automatically")
 	panel.world_purchase()
 	panel.world_purchase()

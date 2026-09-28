@@ -125,6 +125,7 @@ func scroll_page(content: Control, title: String) -> ScrollContainer:
 	scroll.name = title
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	scroll.follow_focus = true
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll.add_child(content)
@@ -230,6 +231,7 @@ func _ready() -> void:
 	req_list_column.add_child(req_balance)
 	req_detail_scroll = ScrollContainer.new()
 	req_detail_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	req_detail_scroll.follow_focus = true
 	req_detail_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	req_detail_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	req_page.add_child(req_detail_scroll)
@@ -465,7 +467,7 @@ func world_refresh() -> void:
 	for i: int in range(node_ids.size()):
 		var node: Dictionary = p.nodes[i]
 		var fact: Dictionary = by_id.get(node.id, {})
-		var owner := "unknown" if not node.has("owner") else "Neutral" if node.owner == null else "Team %s" % str(node.owner)
+		var owner := "unknown" if not node.has("owner") else "Neutral" if node.owner == null else "Team %s" % str(int(node.owner))
 		var legality := "capture legal" if fact.get("capture_legal") == true else "own HOLD" if fact.get("mine") == true else "capture unknown" if fact.get("reach") == null or not fact.get("owner_known", false) else "capture unavailable"
 		var row := "%s · %s · %s · %s · supply %s" % [node.get("label", node.id), owner, "CONTESTED" if node.get("contested") == true else "live" if node.get("live") == true else "inactive", legality, fact.get("supply", "UNKNOWN")]
 		node_rows[node.id] = row
@@ -507,6 +509,14 @@ func world_refresh() -> void:
 		if action.get("reason") == "replaced": settlement = "card replaced; no capture evidence"
 		lines.append("%s · %s · %s%s" % [action.cardId, action.kind, settlement, " — " + client.rejection_text(action.reason) if action.reason != null else ""])
 	if not lines.is_empty(): history.text = "\n".join(lines)
+	# On first show, a populated hidden tab can briefly enlarge the panel while
+	# its scroll content settles. A viewport resize does not follow that change,
+	# so restore the intended bounds after the live text has been installed.
+	if visible:
+		var margin := 16.0 if size.x < 620 else 28.0
+		var intended := Vector2(minf(1160, size.x - margin), minf(700, size.y - margin))
+		if not panel.size.is_equal_approx(intended) or not panel.position.is_equal_approx((size - intended) * 0.5):
+			world_layout()
 
 ## Personal REQ picker. Everything shown is a mirror of the source catalogue plus
 ## recipient-observed state; the button only queues one ordinary BUY request.

@@ -222,6 +222,10 @@ func _process(_delta: float) -> void:
 	if hint == null: return
 	var scene := get_tree().current_scene
 	hint.visible = DisplayServer.get_name() != "headless" and scene != null and scene.scene_file_path != MENU_SCENE and not overlay_open()
+	# LATTICE integrates the shortcut into its own control ribbon. Its modal
+	# deck/setup surfaces must not acquire another overlapping footer overlay.
+	if hint.visible and "tactical_hud" in scene:
+		hint.hide()
 
 func open_panel(from_menu: bool = false, previous_focus: Control = null) -> void:
 	if panel == null or overlay_open(): return

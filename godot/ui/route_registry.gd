@@ -212,10 +212,10 @@ func authority_of(route: Dictionary) -> Dictionary:
 func capability_summary(route: Dictionary) -> String:
 	var authority := authority_of(route)
 	if authority.is_empty(): return ""
-	if bool(authority.get("offline", false)): return "Runs offline: no server or authority"
+	if bool(authority.get("offline", false)): return "Offline experience · no server needed"
 	if bool(authority.get("local", false)) and bool(authority.get("external", false)):
-		return "Owned local authority, or reuse an external host"
-	if bool(authority.get("local", false)): return "Owned local authority"
+		return "Start a local match, or connect to an existing host"
+	if bool(authority.get("local", false)): return "Local match · starts a server on this device"
 	return ""
 
 ## Key of the route param whose value selects a map ("" when the route has
