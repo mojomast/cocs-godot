@@ -154,6 +154,7 @@ func home_career_step(visit: int) -> bool:
 		await capture_view("career-home-760x520")
 		settings.set_value("ui_scale",150,false)
 		await process_frame
+		await process_frame # Nested containers settle after the viewport scale change.
 		if not career_bounds(): return false
 		await capture_view("career-home-760x520-scale150")
 		settings.set_value("ui_scale",100,false)
@@ -309,6 +310,7 @@ func live_career_step() -> bool:
 		if not career_bounds(): return false
 		await capture_view("career-live-profile-760x520")
 		settings.set_value("ui_scale",150,false)
+		await process_frame
 		await process_frame
 		if not career_bounds(): return false
 		await capture_view("career-live-profile-760x520-scale150")
