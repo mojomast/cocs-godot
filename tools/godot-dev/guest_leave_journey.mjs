@@ -106,7 +106,9 @@ try{
  assert.ok(evidence.guest.actor>=0 && evidence.guest.source_snapshots>0);
  assert.equal(evidence.guest.settings_path,env.COCS_SETTINGS_PATH);
   await until(()=>guestClosed,10000,'guest socket close',true);
-  await until(()=>frames.slice(joinedRosterIndex+1).some(f=>f.type==='lobby'&&f.players?.length===1&&f.players[0].peerId===welcome.peerId),10000,'host roster after guest disconnect',true);
+  const departedRoster=await until(()=>frames.slice(joinedRosterIndex+1).find(f=>f.type==='lobby'
+    &&f.players?.find(p=>p.peerId===welcome.peerId)?.connected===true
+    &&f.players?.find(p=>p.peerId===guestPeer)?.connected===false),10000,'source-observed disconnected guest',true);
  // Await the supervisor's child exit as well: a detached script quit is insufficient.
  const exitDeadline=Date.now()+10000;
  while(exitCode===null&&Date.now()<exitDeadline)await sleep(50);
@@ -119,9 +121,13 @@ try{
  const before=evidence.host_snapshots??0;
  await until(()=>evidence.host_snapshots>before,5000,'continuing host snapshot after launcher exit',true);
  const health=await (await fetch(`http://127.0.0.1:${port}`,{signal:AbortSignal.timeout(5000)})).json();
- assert.equal(health.players,1);
- assert.equal(health.rooms,1);
- evidence.health_after_leave={players:health.players,rooms:health.rooms};
+  // The source intentionally retains a disconnected peer for its reconnect
+  // grace interval. A client leave must not invent immediate roster deletion.
+  assert.equal(health.players,departedRoster.players.length);
+  assert.equal(health.rooms,1);
+  evidence.health_after_leave={players:health.players,rooms:health.rooms};
+  evidence.source_roster_after_leave=departedRoster.players.map(p=>({peer:p.peerId,connected:p.connected}));
+  evidence.guest_retained_by_source_grace=true;
  evidence.guest_joins=guestJoins;evidence.guest_disconnected=guestClosed;
  evidence.launcher_exit=exitCode;evidence.host_open_after_leave=true;evidence.passed=true;
 }catch(error){evidence.error=error.stack;process.exitCode=1;}

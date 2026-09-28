@@ -121,7 +121,7 @@ func run() -> void:
 				check(false, "route %s param '%s' has a known kind ('%s')" % [id, key, kind])
 			check_map_refs(id, param_dict, maps)
 
-	check_tree(routes, categories)
+	await check_tree(routes, categories)
 	check_preferences()
 	finish()
 
@@ -244,9 +244,59 @@ func check_tree(routes: Array, categories: Array) -> void:
 	var lobby_toggles: Array = menu.params_box.get_children().filter(func(child: Node) -> bool:
 		return child is CheckButton and not child.is_queued_for_deletion())
 	check(lobby_toggles.size() == 1, "multiplayer lobby displays read-only diagnostics without a cheat switch")
+	await check_responsive_layout(menu)
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(menu.preferences_path))
 	root.remove_child(menu)
 	menu.free()
+
+func check_responsive_layout(menu: Control) -> void:
+	var old_mode := root.content_scale_mode
+	var old_base := root.content_scale_size
+	var old_factor := root.content_scale_factor
+	root.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+	var columns := find_named(menu, "Columns") as BoxContainer
+	var scroll := find_named(menu, "ContentScroll") as ScrollContainer
+	var footer := find_named(menu, "Footer") as Label
+	var capability := find_named(menu, "RouteCapability") as Label
+	check(columns != null and scroll != null and footer != null and capability != null,
+		"Home exposes responsive columns, scroll, footer and authority summary")
+	if columns == null or scroll == null or footer == null or capability == null: return
+	check(scroll.follow_focus and scroll.horizontal_scroll_mode == ScrollContainer.SCROLL_MODE_DISABLED,
+		"Home scroll follows keyboard focus without horizontal scrolling")
+	check(footer.autowrap_mode != TextServer.AUTOWRAP_OFF and capability.autowrap_mode != TextServer.AUTOWRAP_OFF,
+		"Home footer and authority summary wrap at compact widths")
+	for case: Array in [[Vector2i(760, 520), 1.5], [Vector2i(760, 520), 1.0], [Vector2i(1280, 800), 1.0]]:
+		var base: Vector2i = case[0]
+		var factor: float = case[1]
+		root.content_scale_factor = factor
+		root.content_scale_size = base
+		for _wait: int in range(12):
+			await process_frame
+			if menu.size.is_equal_approx(Vector2(base) / factor): break
+		await process_frame
+		var label := "%dx%d@%.1fx" % [base.x, base.y, factor]
+		check(menu.size.is_equal_approx(Vector2(base) / factor), "Home tracks logical viewport " + label)
+		check(columns.is_vertical() == (menu.size.x < 800.0), "Home stacks columns at " + label)
+		for route_id: String in ["combat", "horde", "lattice-world", "sports"]:
+			var route: Dictionary = menu.registry.route_by_id(route_id)
+			menu.select_category(str(route.category))
+			menu.select_route(route_id)
+			await process_frame
+			check(columns.get_combined_minimum_size().x <= scroll.size.x + 1.0,
+				"%s central content fits horizontal viewport at %s" % [route_id, label])
+			check(menu.route_column.size.x <= scroll.size.x + 1.0,
+				"%s options column stays within scroll width at %s" % [route_id, label])
+		for action: Button in [menu.settings_button, menu.start, menu.quit_button]:
+			action.grab_focus()
+			await process_frame
+			await process_frame
+			var viewport_rect := Rect2(scroll.global_position, scroll.size)
+			var action_rect := Rect2(action.global_position, action.size)
+			check(viewport_rect.grow(1.0).encloses(action_rect),
+				"%s reachable by keyboard scroll at %s" % [action.name, label])
+	root.content_scale_factor = old_factor
+	root.content_scale_size = old_base
+	root.content_scale_mode = old_mode
 
 func isolated_preferences_path() -> String:
 	return "user://menu_contracts_%d_%d.json" % [OS.get_process_id(), Time.get_ticks_usec()]

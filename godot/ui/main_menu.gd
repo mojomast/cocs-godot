@@ -43,10 +43,25 @@ var status := Label.new()
 var start := Button.new()
 var quit_button := Button.new()
 var settings_button := Button.new()
+var columns: BoxContainer
+var content_scroll: ScrollContainer
+var category_column: VBoxContainer
+var route_column: VBoxContainer
+
+func update_layout() -> void:
+	if columns == null: return
+	var compact := size.x < 800.0
+	columns.set_vertical(compact)
+	columns.add_theme_constant_override("separation", 16 if compact else 28)
+	category_column.custom_minimum_size.x = 0 if compact else 240
+	category_description.custom_minimum_size.x = 0 if compact else 240
+	route_column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	build_ui()
+	resized.connect(update_layout)
+	update_layout()
 	if registry.open():
 		preferences = MenuPreferences.new(preferences_path)
 		preferences.load_from_disk(registry)
@@ -93,16 +108,19 @@ func build_ui() -> void:
 	title.text = "COCS: DESTINATIONS"
 	title.add_theme_font_size_override("font_size", 26)
 	stack.add_child(title)
-	var scroll := ScrollContainer.new()
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	stack.add_child(scroll)
-	var columns := HBoxContainer.new()
+	content_scroll = ScrollContainer.new()
+	content_scroll.name = "ContentScroll"
+	content_scroll.follow_focus = true
+	content_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	content_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	stack.add_child(content_scroll)
+	columns = BoxContainer.new()
 	columns.name = "Columns"
 	columns.add_theme_constant_override("separation", 28)
 	columns.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	scroll.add_child(columns)
+	content_scroll.add_child(columns)
 	var left := VBoxContainer.new()
+	category_column = left
 	left.name = "CategoryColumn"
 	left.add_theme_constant_override("separation", 8)
 	left.custom_minimum_size.x = 240
@@ -114,6 +132,7 @@ func build_ui() -> void:
 	category_description.custom_minimum_size = Vector2(240, 56)
 	left.add_child(category_description)
 	var right := VBoxContainer.new()
+	route_column = right
 	right.name = "RouteColumn"
 	right.add_theme_constant_override("separation", 8)
 	right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -125,6 +144,7 @@ func build_ui() -> void:
 	detail_description.custom_minimum_size = Vector2(0, 44)
 	right.add_child(detail_description)
 	capability_description.name = "RouteCapability"
+	capability_description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	capability_description.add_theme_color_override("font_color", CAPTION)
 	right.add_child(capability_description)
 	right.add_child(caption("OPTIONS"))
@@ -154,7 +174,10 @@ func build_ui() -> void:
 	actions.add_child(settings_button)
 	actions.add_child(quit_button)
 	right.add_child(actions)
-	stack.add_child(caption("Tab moves focus · Left/Right browses a choice · Settings adjusts this device · Esc quits"))
+	var footer := caption("Tab moves focus · Left/Right browses a choice · Settings adjusts this device · Esc quits")
+	footer.name = "Footer"
+	footer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	stack.add_child(footer)
 
 func populate() -> void:
 	for category: Dictionary in registry.categories:
