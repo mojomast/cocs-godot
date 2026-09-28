@@ -1,5 +1,6 @@
 """Run actual port gates; fail on Godot errors even when its exit code is zero."""
 import json
+import hashlib
 import os
 from pathlib import Path
 import subprocess
@@ -12,7 +13,19 @@ os.chdir(root)
 # rendered smoke gates; keep the aggregate self-contained on those machines.
 Path('/tmp/opencode').mkdir(parents=True, exist_ok=True)
 report_path = Path('port/reports/verification.json')
-report = {'status': 'running', 'gates': []}
+lock = json.loads(Path('port/contracts/source-lock.json').read_text())
+report = {
+    'status': 'running', 'gates': [],
+    'source_commit': lock['source_commit'],
+    'port_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+    'port_worktree_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], text=True).strip()),
+    'source_derivative': {'selection': 'none'},
+    'manual_acceptance': [
+        {'scope': 'Rendered visual fidelity and actual player input', 'state': 'owner-run / unrun'},
+        {'scope': 'Natural full-round and multiplayer source outcomes', 'state': 'owner-run / unrun'},
+        {'scope': 'Human playable acceptance', 'state': 'owner-run / unrun'},
+    ],
+}
 save_report(report_path, report)
 def fail_preflight(message):
     report.update(status='failed', failure_reason=message)
@@ -21,23 +34,16 @@ def fail_preflight(message):
 
 
 binary = os.environ.get("GODOT_BIN")
-if not binary:
-    fail_preflight("Set GODOT_BIN to the pinned editor")
-lock = json.loads(Path("port/contracts/source-lock.json").read_text())
-version, output = run_gate('toolchain-version', [binary, '--version'], 'port/reports/toolchain-version.log', timeout=10)
-report['gates'].append(version)
-if not version['passed']:
-    fail_preflight('Godot version probe failed')
-if output.strip() != lock["godot_version"]:
-    version.update(passed=False, failure_reason='version-mismatch')
-    fail_preflight("Godot version mismatch")
+derivative_path = os.environ.get('COCS_SOURCE_DERIVATIVE')
 for key, suffix in [("XDG_DATA_HOME", "data"), ("XDG_CONFIG_HOME", "config"), ("XDG_CACHE_HOME", "cache")]:
     os.environ.setdefault(key, str(root / ".port-runtime" / suffix))
     Path(os.environ[key]).mkdir(parents=True, exist_ok=True)
 commands = [
     ("gate-runner-tests", [sys.executable, "tools/godot-dev/test_gate_runner.py"]),
     ("playable-gate-registration", [sys.executable, "tools/godot-dev/test_playable_gates.py"]),
+    ("verifier-report-tests", [sys.executable, "tools/godot-dev/test_verifier_report.py"]),
     ("ci-artifact-tests", [sys.executable, "tools/godot-dev/test_ci_artifact.py"]),
+    ("native-ci-contracts", ["node", "--test", "port/native-ci/workflow.test.mjs", "port/native-ci/source-selection.test.mjs"]),
     ("export-tests", ["node", "--test", "tools/godot-export/semantic.test.mjs"]),
     ("moth-export", ["node", "--test", "tools/godot-moth/export.test.mjs"]),
     ("gltf-sides", ["node", "--test", "tools/godot-export/gltf_side.test.mjs"]),
@@ -60,6 +66,8 @@ commands = [
     ("horde-ownership", ["node", "--test", "tools/godot-package/horde_ownership.test.mjs"]),
     ("zone-routing", ["node", "--test", "port/native-zone-modes/route.test.mjs"]),
     ("combined-arms-evidence", [sys.executable, "-B", "-m", "unittest", "discover", "-s", "port/native-combined-arms", "-p", "test_validate.py"]),
+    ("lattice-req-generator-tests", ["node", "--test", "port/tools/native_lattice_req_catalog/export.test.mjs"]),
+    ("lattice-req-catalog-check", ["node", "port/tools/native_lattice_req_catalog/export.mjs", "--check"]),
     ("semantic-export", ["node", "tools/godot-export/semantic.mjs"]),
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),
     ("arms-race-source", ["node", "--test", "game/armsrace.test.mjs", "game/outcome.test.mjs", "game/input.test.mjs", "game/movement-input.test.mjs"]),
@@ -216,6 +224,16 @@ commands = [
     ("lattice-economy", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/economy.gd"]),
     ("lattice-world", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/world_contract.gd"]),
     ("lattice-world-commands", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/world_commands_contract.gd"]),
+    ("lattice-req-catalog", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/req_catalog_contract.gd"]),
+    ("lattice-req-purchase", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/req_purchase_contract.gd"]),
+    ("lattice-world-tactical", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/world_tactical_contract.gd"]),
+    ("lattice-flagship-l1", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/flagship_l1_contract.gd"]),
+    ("lattice-flagship-l2", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/flagship_l2_contract.gd"]),
+    ("lattice-flagship-l3-roles", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/flagship_l3_roles_contract.gd"]),
+    ("lattice-flagship-l3-evidence", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/flagship_l3_evidence_contract.gd"]),
+    ("lattice-flagship-assets", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/flagship_asset_contract.gd"]),
+    ("lattice-flagship-l3-static", ["node", "--test", "godot/tests/lattice/flagship_l3_contract.mjs"]),
+    ("lattice-flagship-l5-static", ["node", "--test", "godot/tests/lattice/flagship_l5_contract.mjs"]),
     ("lattice-world-usability", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/usability_contract.gd"]),
     ("objective-renderer", [binary, "--headless", "--path", "godot", "--script", "res://tests/objectives/renderer.gd"]),
     ("objective-controls", [binary, "--headless", "--path", "godot", "--script", "res://tests/objectives/controls.gd", "--", "--map=tidal-citadel"]),
@@ -234,8 +252,46 @@ commands = [
     ("remote-motion", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/remote_motion.gd"]),
     ("local-render-motion", [binary, "--headless", "--path", "godot", "--script", "res://tests/world_motion/unit.gd"]),
 ]
-report['source_commit'] = lock['source_commit']
-results = report['gates']
+report['planned_gate_names'] = ['toolchain-version', *(name for name, _ in commands), 'release-refused']
+report['unrun_gate_names'] = report['planned_gate_names'].copy()
+# Other gates are fast/headless contracts. Owner-only checks are listed above,
+# never inserted into the executable inventory as implied passes.
+report['gate_tiers'] = {
+    'rendered/input': ['first-person-binding', 'combat-actions', 'benchmark-autostart',
+                       'blood-live-native', 'loadout-loopback', 'horde-upgrade-fixture'],
+    'live-source': ['native-live', 'native-lifecycle', 'native-session', 'two-native-clients'],
+}
+report['execution'] = {'planned': len(report['planned_gate_names']), 'executed': 0,
+                       'unrun': len(report['unrun_gate_names'])}
+save_report(report_path, report)
+def record(result):
+    report['gates'].append(result)
+    report['unrun_gate_names'].remove(result['gate'])
+    report['execution']['executed'] = len(report['gates'])
+    report['execution']['unrun'] = len(report['unrun_gate_names'])
+    save_report(report_path, report)
+
+if derivative_path:
+    try:
+        derivative_bytes = Path(derivative_path).read_bytes()
+        derivative = json.loads(derivative_bytes)
+        report['source_derivative'] = {
+            'selection': 'explicit', 'path': derivative_path,
+            'sha256': hashlib.sha256(derivative_bytes).hexdigest(),
+            'source_commit': derivative['source_commit'],
+            'derivative_commit': derivative['derivative_commit'],
+        }
+        save_report(report_path, report)
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        fail_preflight(f'Invalid explicit COCS_SOURCE_DERIVATIVE: {error}')
+if not binary:
+    fail_preflight('Set GODOT_BIN to the pinned editor')
+version, output = run_gate('toolchain-version', [binary, '--version'], 'port/reports/toolchain-version.log', timeout=10)
+if version['passed'] and output.strip() != lock['godot_version']:
+    version.update(passed=False, failure_reason='version-mismatch')
+record(version)
+if not version['passed']:
+    fail_preflight('Godot version probe failed or version mismatch')
 # Documented engine-teardown noise, permitted only when the gate prints its own
 # success marker and exits zero. Godot's GLES3 reports the X11 cursor textures it
 # creates for pointer capture as leaked when a display run exits; a bare display
@@ -252,7 +308,7 @@ for name, command in commands:
     report['active_gate'] = name
     save_report(report_path, report)
     result, output = run_gate(name, command, f'port/reports/{name}.log', **gate_options.get(name, {}))
-    results.append(result)
+    record(result)
     report['status'] = 'running' if result['passed'] else 'failed'
     save_report(report_path, report)
     print(f"{name}: {'PASS' if result['passed'] else 'FAIL'}", flush=True)
@@ -264,7 +320,7 @@ save_report(report_path, report)
 release, output = run_gate('release-refused', ['node', 'tools/godot-export/semantic.mjs', '--release'], 'port/reports/release-refused.log')
 release['passed'] = release['exit_code'] not in (None, 0) and release['failure_reason'] == 'nonzero-exit' and 'Release disabled' in output
 release['failure_reason'] = None if release['passed'] else 'release-guard-failure'
-results.append(release)
+record(release)
 report['status'] = 'passed' if release['passed'] else 'failed'
 report.pop('active_gate', None)
 save_report(report_path, report)

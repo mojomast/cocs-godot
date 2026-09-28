@@ -2,7 +2,7 @@ name: Godot native
 
 on:
   push:
-    branches: [main]
+    branches: [main, port/lattice-flagship-next]
   pull_request:
   workflow_dispatch:
 
@@ -22,6 +22,7 @@ jobs:
         shell: bash
     env:
       PORT: "0"
+      COCS_SOURCE_DERIVATIVE: ${{ github.workspace }}/port/contracts/lattice-catalog-derivative.json
     steps:
       - uses: actions/checkout@v4
         with:

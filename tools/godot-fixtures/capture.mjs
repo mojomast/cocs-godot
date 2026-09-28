@@ -3,7 +3,9 @@ import {WebSocket} from 'ws';
 import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import assert from 'node:assert/strict';
 import {verifySource} from '../godot-export/semantic.mjs';
-const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));verifySource(lock);
+const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
+const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+verifySource(lock,derivative);
 const mapId='meridian-exchange';assert.ok(lock.map_ids.includes(mapId));
 const game=createGameServer({tickMs:1,tickDt:1/60,historyPath:null,progressionPath:null});
 const frames=[];const sockets=[];let largest=0,total=0,snapshots=0;
@@ -32,7 +34,7 @@ try{
  frames.push({direction:'server',client:1,frame:ack});
  const result=await a.until(m=>m.type==='results');assert.ok(result.state.over);assert.equal(result.state.mapId,mapId);
  a.send({type:'start'});const restart=await a.until(m=>m.type==='start');assert.equal(restart.mapId,mapId);
- const report={source_commit:lock.source_commit,protocol:3,delta:0,map_id:mapId,clients:2,bots:2,actor_id:actorId,peer_id:welcome.peerId,largest_frame_bytes:largest,total_received_bytes:total,snapshot_count:snapshots,results:true,restart:true,clock:'accelerated wall-clock: tickMs=1, unchanged dt=1/60; not latency/performance evidence'};
+ const report={source_commit:lock.source_commit,...(derivative?{source_derivative_commit:derivative.derivative_commit}:{}),protocol:3,delta:0,map_id:mapId,clients:2,bots:2,actor_id:actorId,peer_id:welcome.peerId,largest_frame_bytes:largest,total_received_bytes:total,snapshot_count:snapshots,results:true,restart:true,clock:'accelerated wall-clock: tickMs=1, unchanged dt=1/60; not latency/performance evidence'};
  // Omit only ephemeral reconnect/progress credentials; mark sanitization explicitly.
  for(const item of frames)for(const key of ['token','progressToken'])if(key in item.frame)item.frame[key]=null;
  mkdirSync('godot/tests/protocol',{recursive:true});writeFileSync('godot/tests/protocol/captured.json',JSON.stringify({report,redacted_fields:['welcome.token','welcome.progressToken'],frames},null,2)+'\n');

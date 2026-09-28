@@ -8,7 +8,8 @@ import {createHash} from 'node:crypto';
 
 const [project, out, map, mode, size] = process.argv.slice(2);
 const lock = JSON.parse(readFileSync('port/contracts/source-lock.json'));
-verifySource(lock);
+const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+verifySource(lock,derivative);
 const bin = process.env.GODOT_BIN;
 if (execFileSync(bin, ['--version'], {encoding:'utf8'}).trim() !== lock.godot_version) throw Error('Wrong Godot');
 if (process.env.PORT !== '0') throw Error('PORT=0 required');
@@ -46,7 +47,7 @@ try {
   const args = ['--audio-driver','Dummy','--path',project,'--resolution',size,'--script','res://tests/lattice/usability_observe.gd','--',`--endpoint=ws://127.0.0.1:${port}`,`--map=${map}`,`--mode=${mode}`,'--native-trace'];
   const files = ['world_demo.gd','world_hud.gd','world_guidance.gd','world_commands.gd'];
   const hash = path => createHash('sha256').update(readFileSync(path)).digest('hex');
-  const manifest = {base:'e1defc00e37c0b560ff9fa55f1e3c4ad9f853b21',source:lock.source_commit,godot:lock.godot_version,command:[bin,...args],port,display:process.env.DISPLAY,serverOptions:{historyPath:null,progressionPath:null},normalRate:true,hashes:Object.fromEntries(files.map(f => [`godot/lattice/${f}`,hash(join(project,'lattice',f))])),observer:hash(join(project,'tests/lattice/usability_observe.gd')),sourceHashes:Object.fromEntries(['game/cocs.mjs','game/cocs-intel.mjs','server/room.mjs'].map(f => [f,hash(f)]))};
+  const manifest = {base:'e1defc00e37c0b560ff9fa55f1e3c4ad9f853b21',source:lock.source_commit,...(derivative?{source_derivative_commit:derivative.derivative_commit}:{}),godot:lock.godot_version,command:[bin,...args],port,display:process.env.DISPLAY,serverOptions:{historyPath:null,progressionPath:null},normalRate:true,hashes:Object.fromEntries(files.map(f => [`godot/lattice/${f}`,hash(join(project,'lattice',f))])),observer:hash(join(project,'tests/lattice/usability_observe.gd')),sourceHashes:Object.fromEntries(['game/cocs.mjs','game/cocs-intel.mjs','server/room.mjs'].map(f => [f,hash(f)]))};
   child = spawn(bin,args,{env:process.env,stdio:'inherit'});
   manifest.nativePid = child.pid;
   writeFileSync(join(out,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');

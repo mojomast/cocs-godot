@@ -15,7 +15,8 @@ const map=process.argv.find(a=>a.startsWith('--map='))?.slice(6), mode={'meridia
 assert.ok(mode,'--map=meridian-exchange or verdant-reliquary required');
 const binary=process.env.GODOT_BIN, lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
 const base=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
-verifySource(lock);assert.equal(execFileSync(binary,['--version'],{encoding:'utf8'}).trim(),lock.godot_version);
+const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+verifySource(lock,derivative);assert.equal(execFileSync(binary,['--version'],{encoding:'utf8'}).trim(),lock.godot_version);
 const out=resolve('port/native-zone-modes/evidence',map+'-'+randomUUID());mkdirSync(out,{recursive:true});
 const temp=mkdtempSync('/tmp/opencode/zone-runtime-');
 const env={...process.env,HOME:temp,LIBGL_ALWAYS_SOFTWARE:'1'};
@@ -65,7 +66,7 @@ finally{
   writeFileSync(resolve(out,'archive.json'),JSON.stringify(archive,null,2));rmSync(temp,{recursive:true,force:true});
   const cleanup=children.map(p=>{let absent=false;try{process.kill(p.pid,0);}catch(e){absent=e.code==='ESRCH';}return{pid:p.pid,reaped:p.exitCode!==null||p.signalCode!==null,absent};});
   if(cleanup.some(p=>!p.absent||!p.reaped)||game?.server.listening||game?.wss.clients.size||existsSync(temp))exit=1;
-  writeFileSync(resolve(out,'summary.json'),JSON.stringify({map,mode,exit,reason,base,source:lock.source_commit,runtimeHashes,wall_ms:Date.now()-started,normalRate:true,botCount:0,timeLimit:60,cleanup,serverClosed:!game?.server.listening,sockets:game?.wss.clients.size??0,temporaryTreeRemoved:!existsSync(temp)},null,2));
+  writeFileSync(resolve(out,'summary.json'),JSON.stringify({map,mode,exit,reason,base,source:lock.source_commit,...(derivative?{source_derivative_commit:derivative.derivative_commit}:{}),runtimeHashes,wall_ms:Date.now()-started,normalRate:true,botCount:0,timeLimit:60,cleanup,serverClosed:!game?.server.listening,sockets:game?.wss.clients.size??0,temporaryTreeRemoved:!existsSync(temp)},null,2));
   console.log(JSON.stringify({exit,reason,evidence:out}));process.exitCode=exit;process.off('SIGINT',stop);process.off('SIGTERM',stop);
 }
 function compact(s){return{mapId:s.mapId,config:s.config,time:s.time,over:s.over,winner:s.winner,teamScores:s.teamScores,objectives:s.objectives,actors:s.actors.map(a=>({id:a.id,team:a.team,x:a.x,y:a.y,z:a.z,health:a.health,scoreStats:a.scoreStats}))};}

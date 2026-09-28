@@ -36,6 +36,8 @@ class PlayableGatesTest(unittest.TestCase):
             "main-menu-smoke": "res://ui/main_menu.tscn",
             "main-menu-contracts": "res://tests/main_menu/contracts.gd",
             "playable-gate-registration": "tools/godot-dev/test_playable_gates.py",
+            "verifier-report-tests": "tools/godot-dev/test_verifier_report.py",
+            "native-ci-contracts": "port/native-ci/source-selection.test.mjs",
             "loadout-unit": "res://tests/loadouts/unit.gd",
             "loadout-source-parity": "res://tests/loadouts/parity.gd",
             "loadout-client": "res://tests/loadouts/client_frames.gd",
@@ -48,6 +50,19 @@ class PlayableGatesTest(unittest.TestCase):
             "horde-upgrade-native": "res://tests/horde/upgrade_selection_test.gd",
             "horde-upgrade-fixture": "godot/tests/horde/upgrade_loopback.mjs",
             "lattice-topology": "res://tests/lattice/topology.gd",
+            "lattice-world-commands": "res://tests/lattice/world_commands_contract.gd",
+            "lattice-req-generator-tests": "port/tools/native_lattice_req_catalog/export.test.mjs",
+            "lattice-req-catalog-check": "port/tools/native_lattice_req_catalog/export.mjs",
+            "lattice-req-catalog": "res://tests/lattice/req_catalog_contract.gd",
+            "lattice-req-purchase": "res://tests/lattice/req_purchase_contract.gd",
+            "lattice-world-tactical": "res://tests/lattice/world_tactical_contract.gd",
+            "lattice-flagship-l1": "res://tests/lattice/flagship_l1_contract.gd",
+            "lattice-flagship-l2": "res://tests/lattice/flagship_l2_contract.gd",
+            "lattice-flagship-l3-roles": "res://tests/lattice/flagship_l3_roles_contract.gd",
+            "lattice-flagship-l3-evidence": "res://tests/lattice/flagship_l3_evidence_contract.gd",
+            "lattice-flagship-assets": "res://tests/lattice/flagship_asset_contract.gd",
+            "lattice-flagship-l3-static": "godot/tests/lattice/flagship_l3_contract.mjs",
+            "lattice-flagship-l5-static": "godot/tests/lattice/flagship_l5_contract.mjs",
             "local-render-motion": "res://tests/world_motion/unit.gd",
             "muzzle-sight-geometry": "res://tests/first_person/muzzle_geometry.gd",
             "muzzle-path-geometry": "res://tests/weapon_effects/muzzle_path_geometry.gd",
@@ -65,6 +80,16 @@ class PlayableGatesTest(unittest.TestCase):
                 if path.endswith(".gd"):
                     self.assertIn("--script", commands[name])
                     self.assertLess(names.index("godot-import"), names.index(name))
+        self.assertLess(names.index("lattice-req-generator-tests"), names.index("lattice-req-catalog-check"))
+        self.assertLess(names.index("lattice-req-catalog-check"), names.index("semantic-export"))
+        self.assertLess(names.index("semantic-export"), names.index("lattice-req-catalog"))
+        self.assertIn("--check", commands["lattice-req-catalog-check"])
+        focused = (Path(__file__).resolve().parents[2] / "port/tools/native_lattice_flagship/verify.py").read_text()
+        for name in ("req_catalog_contract.gd", "req_purchase_contract.gd", "world_tactical_contract.gd",
+                     "flagship_asset_contract.gd", "flagship_l1_contract.gd", "flagship_l2_contract.gd",
+                     "flagship_l3_roles_contract.gd", "flagship_l3_evidence_contract.gd"):
+            with self.subTest(focused=name):
+                self.assertIn('"' + name + '"', focused)
 
 
 if __name__ == "__main__":

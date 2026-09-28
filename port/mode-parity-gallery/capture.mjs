@@ -25,6 +25,7 @@ const head = execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'})
 const source = JSON.parse(readFileSync(join(root,'port/contracts/source-lock.json'))).source_commit;
 const originalStep = Match.prototype.step;
 let liveHorde = null;
+const recordLiveHorde = match => { liveHorde = match; };
 
 function pngInfo(file) {
   const bytes = readFileSync(file);
@@ -49,7 +50,7 @@ async function run(which) {
     if (horde) {
       Match.prototype.step = function (...args) {
         const result = originalStep.apply(this,args);
-        if (this.modeState?.kind === 'horde') liveHorde = this;
+        if (this.modeState?.kind === 'horde') recordLiveHorde(this);
         return result;
       };
     }

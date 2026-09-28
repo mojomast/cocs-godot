@@ -118,11 +118,14 @@ Graphical automation additionally uses Xvfb; normal play uses your desktop.
 ```sh
 git clone https://github.com/mojomast/cocs-godot.git
 cd cocs-godot
+git checkout port/lattice-flagship-next
 npm ci
 
 # Use an absolute path to your Godot 4.5.2 executable.
 export GODOT_BIN=/absolute/path/to/Godot_v4.5.2-stable_linux.x86_64
 export GUEST_NODE_MODULES="$PWD/node_modules"
+# Explicitly select this branch's frozen source-runtime derivative.
+export COCS_SOURCE_DERIVATIVE="$PWD/port/contracts/lattice-catalog-derivative.json"
 
 # Development helpers use this directory for isolated temporary projects.
 mkdir -p /tmp/opencode
@@ -139,6 +142,12 @@ PORT=0 node tools/godot-dev/launch.mjs --play --setup
 `PORT=0` selects a free loopback port automatically. The launcher starts the
 server and closes it when the client exits. You do not need a separate server
 process for this workflow.
+
+On this integration branch, export and development launch tools require the
+explicit derivative selection above. They still verify its exact source bytes
+and ancestry; omitting it preserves the strict original-source check. For the
+fresh-checkout native CI sequence, including browser-generated import probes,
+see [native CI](port/native-ci/README.md).
 
 ### Jump straight into combat
 

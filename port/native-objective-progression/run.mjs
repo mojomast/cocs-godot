@@ -10,7 +10,9 @@ import {gzipSync} from 'node:zlib';
 const args=process.argv.slice(2), map=args.find(x=>x.startsWith('--map='))?.slice(6);
 const pairs={'tidal-citadel':'ctf','sunscar-convoy':'payload'};
 if(!pairs[map])throw Error('Fixed --map required');
-const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));verifySource(lock);
+const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
+const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+verifySource(lock,derivative);
 const binary=process.env.GODOT_BIN;
 if(!binary || execFileSync(binary,['--version'],{encoding:'utf8',timeout:5000}).trim()!==lock.godot_version)throw Error('Pinned GODOT_BIN required');
 const seconds=map==='tidal-citadel'?60:90, deadline=150000;
@@ -64,7 +66,7 @@ finally{
  rmSync(temp,{recursive:true,force:true});
  const cleanup=children.map(p=>{let absent=false;try{process.kill(p.pid,0);}catch(e){absent=e.code==='ESRCH';}return{pid:p.pid,reaped:p.exitCode!==null||p.signalCode!==null,absent};});
  if(cleanup.some(p=>!p.absent||!p.reaped)||game?.server.listening||game?.wss.clients.size||existsSync(temp))exit=1;
- writeFileSync(resolve(out,'summary.json'),JSON.stringify({map,seconds,deadline,base:'d498479',source:lock.source_commit,runtimeHashes,exit,reason,normalRate:true,nativeCompletionProven:false,cleanup,serverClosed:!game?.server.listening,sockets:game?.wss.clients.size??0,temporaryTreeRemoved:!existsSync(temp)},null,2));
+ writeFileSync(resolve(out,'summary.json'),JSON.stringify({map,seconds,deadline,base:'d498479',source:lock.source_commit,...(derivative?{source_derivative_commit:derivative.derivative_commit}:{}),runtimeHashes,exit,reason,normalRate:true,nativeCompletionProven:false,cleanup,serverClosed:!game?.server.listening,sockets:game?.wss.clients.size??0,temporaryTreeRemoved:!existsSync(temp)},null,2));
  console.log(JSON.stringify({exit,reason,evidence:out,cleanup}));process.exitCode=exit;
  process.off('SIGINT',stop);process.off('SIGTERM',stop);
 }

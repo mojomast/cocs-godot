@@ -13,8 +13,11 @@ OS libraries and may request sudo on a developer machine.
 ```bash
 git clone https://github.com/mojomast/cocs-godot.git
 cd cocs-godot
-# Optionally: git checkout <commit-under-test>
+# For this integration snapshot: git checkout port/lattice-flagship-next
+# Or check out a specific commit on that branch.
 # A normal clone has the history required by the source and evidence gates.
+
+export COCS_SOURCE_DERIVATIVE="$PWD/port/contracts/lattice-catalog-derivative.json"
 
 state="$(mktemp -d "${TMPDIR:-/tmp}/cocs-native-ci.XXXXXX")"
 bash tools/godot-dev/ci_bootstrap.sh "$state"
@@ -51,10 +54,14 @@ needed for these editor/headless gates.
 
 ## Fresh-checkout dependencies and paths
 
-- **Full Git history:** `semantic.mjs` checks ancestry and locked source against
-  `51289b79c627a26a381ba556b92bab71f93f3732`; health evidence tests also read
-  historical files via `git show fe29ac3:...`. A source ZIP or shallow checkout
-  cannot satisfy those checks. For an existing shallow clone, first run
+- **Full Git history:** `semantic.mjs` checks ancestry against locked source
+  `515daf07589150dd3241f4ae1425cc1b093912f5` and validates the explicit
+  frozen derivative `fa6dda2dcac5ab41b5496517acab9055407e31ae` against
+  its exact tracked runtime inventory, bytes and ancestry. Set
+  `COCS_SOURCE_DERIVATIVE` to the absolute path shown above for this integration
+  branch; the bootstrap environment does not override it. Health evidence tests
+  also read historical files via `git show fe29ac3:...`. A source ZIP or shallow
+  checkout cannot satisfy those checks. For an existing shallow clone, first run
   `git fetch --unshallow`. Actions uses `fetch-depth: 0`.
 - **Ignored GLB probes:** `godot/tests/import.gd` requires
   `godot/content/probes/axis-weapon/world.glb` and
@@ -84,11 +91,22 @@ needed for these editor/headless gates.
 
 ## Workflow boundaries and evidence
 
-The integrated snapshot now has an independently observed successful
-[GitHub-hosted 50-gate run](../reports/native-ci-hosted/README.md). The original
+The canonical verifier includes REQ catalog generation/checking, purchase
+lifecycle, tactical HUD, and flagship recipient/asset contracts alongside the
+existing world-command checks. Its report records the port/source revisions,
+explicit derivative identity and manifest hash, planned gate names, actual
+executions and unrun gates after a failure. Owner-run acceptance is listed
+separately. `test_verifier_report.py` exercises missing-toolchain, invalid
+derivative, wrong-version and early-gate failure reports without starting Godot.
+
+An earlier snapshot has an independently observed successful
+[GitHub-hosted 50-gate run](../reports/native-ci-hosted/README.md). It does not
+establish a pass on this branch's current source/derivative identity. The original
 agent's local fresh-checkout evidence below remains scoped to its earlier base.
 
-Triggers are pushes to `main`, pull requests, and manual dispatch. Permissions
+Triggers are pushes to `main` and `port/lattice-flagship-next`, pull requests,
+and manual dispatch. The workflow supplies the derivative's absolute path from
+`github.workspace` to semantic export and verification. Permissions
 are `contents: read`; checkout does not persist credentials. The job has a
 30-minute timeout, and a newer run cancels an older run on the same ref.
 Checkout/setup-node retain the existing workflow's `@v4` versions;

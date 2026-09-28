@@ -9,7 +9,9 @@ for(const arg of args){const m=/^--(map|mode|bots|round-seconds)=(.+)$/.exec(arg
 const catalog=JSON.parse(readFileSync('port/contracts/map-selection.json'));
 if(!['koth','domination'].includes(values.mode)||!catalog.maps.find(m=>m.id===values.map)?.supported_modes.includes(values.mode))throw Error('Unsupported locked zone map/mode');
 for(const [key,min,max]of [['bots',0,8],['round-seconds',60,180]])if(!/^\d+$/.test(values[key])||+values[key]<min||+values[key]>max)throw Error(`Invalid ${key}`);
-const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));verifySource(lock);
+const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
+const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+verifySource(lock,derivative);
 const binary=process.env.GODOT_BIN;if(!binary||execFileSync(binary,['--version'],{encoding:'utf8'}).trim()!==lock.godot_version)throw Error('Pinned GODOT_BIN required');
 const temp=mkdtempSync('/tmp/opencode/zone-play-'),env={...process.env};
 for(const k of ['XDG_DATA_HOME','XDG_CONFIG_HOME','XDG_CACHE_HOME']){env[k]=resolve(temp,k);mkdirSync(env[k]);}

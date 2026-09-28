@@ -7,7 +7,9 @@ import {launchOptions,HELP} from './launch_options.mjs';
 if(process.argv.length===3&&process.argv[2]==='--help'){console.log(HELP);process.exit(0);}
 const catalog=JSON.parse(readFileSync('port/contracts/map-selection.json'));
 const plan=launchOptions(process.argv.slice(2),catalog);
-const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));verifySource(lock);
+const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
+const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+verifySource(lock,derivative);
 const binary=process.env.GODOT_BIN;if(!binary)throw Error('Set GODOT_BIN to pinned Godot 4.5.2 executable');
 if(execFileSync(binary,['--version'],{encoding:'utf8'}).trim()!==lock.godot_version)throw Error('Godot version differs from lock');
 

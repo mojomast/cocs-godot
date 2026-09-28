@@ -13,7 +13,8 @@ const play = 'play' in options;
 const out = resolve(options.output ?? `port/native-lattice-world/evidence/${Date.now()}-${map}-${mode}`);
 mkdirSync(out, {recursive:true});
 const lock = JSON.parse(readFileSync('port/contracts/source-lock.json'));
-verifySource(lock);
+const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+verifySource(lock,derivative);
 const bin = process.env.GODOT_BIN;
 if (!bin || execFileSync(bin, ['--version'], {encoding:'utf8'}).trim() !== lock.godot_version) throw Error('Pinned GODOT_BIN required');
 const runtime = mkdtempSync('/tmp/opencode/lattice-world-runtime-');
@@ -76,7 +77,7 @@ try {
   'godot/net/client.gd','godot/world/session.gd','godot/world/viewer.gd','godot/world/presentation.gd',
   'godot/lattice/transport.gd','godot/lattice/world_demo.gd','godot/lattice/world_transport.gd','godot/lattice/world_hud.gd',
   'godot/tests/lattice/world_walk.gd','port/native-lattice-world/run.mjs'];
- writeFileSync(join(out,'manifest.json'),JSON.stringify({base:'642c615',source:lock.source_commit,godot:lock.godot_version,
+ writeFileSync(join(out,'manifest.json'),JSON.stringify({base:'642c615',source:lock.source_commit,...(derivative?{source_derivative_commit:derivative.derivative_commit}:{}),godot:lock.godot_version,
   options,command:[bin,...args],port,display:env.DISPLAY,serverOptions:{historyPath:null,progressionPath:null},
   simulation:'default tickDt 1/60, tickMs 1000/60, snapshotHz unchanged',
   hashes:Object.fromEntries(files.map(file => [file,createHash('sha256').update(readFileSync(file)).digest('hex')]))},null,2)+'\n');

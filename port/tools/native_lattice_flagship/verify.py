@@ -108,9 +108,20 @@ def main():
             if (out / "engine-version.log").read_text().strip() != LOCK["godot_version"]:
                 results[-1]["passed"] = False
             if results[-1]["passed"]:
+                results.append(run("req-catalog-check", ["node", "port/tools/native_lattice_req_catalog/export.mjs", "--check"], out, env, 40))
+            if results[-1]["passed"]:
                 results.append(run("import", [binary, "--headless", "--path", "godot", "--editor", "--import"], out, env, 300))
             if results[-1]["passed"]:
-                for path in sorted((ROOT / "godot/tests/lattice").glob("flagship_l*.gd")):
+                # Keep the focused engine set in step with the aggregate's
+                # standalone recipient contracts; live scene drivers are separate.
+                fixtures = [
+                    "req_catalog_contract.gd", "req_purchase_contract.gd",
+                    "world_tactical_contract.gd", "flagship_asset_contract.gd",
+                    "flagship_l1_contract.gd", "flagship_l2_contract.gd",
+                    "flagship_l3_roles_contract.gd", "flagship_l3_evidence_contract.gd",
+                ]
+                for filename in fixtures:
+                    path = ROOT / "godot/tests/lattice" / filename
                     name = path.stem
                     results.append(run(name, [binary, "--headless", "--path", "godot", "--script",
                                                f"res://tests/lattice/{path.name}"], out, env, 40))

@@ -13,7 +13,8 @@ if (!['asterion-relay','monsoon-foundry'].includes(map) || !['960x640','1280x800
 const out = resolve(options.output);
 mkdirSync(out); // Exclusive: failed attempts are never overwritten.
 const lock = JSON.parse(readFileSync('port/contracts/source-lock.json'));
-verifySource(lock);
+const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+verifySource(lock,derivative);
 const bin = process.env.GODOT_BIN;
 if (!bin || execFileSync(bin, ['--version'], {encoding:'utf8'}).trim() !== lock.godot_version) throw Error('Pinned GODOT_BIN required');
 const sha = path => createHash('sha256').update(readFileSync(path)).digest('hex');
@@ -107,7 +108,7 @@ try {
   'godot/lattice/world_commands.gd','godot/tests/lattice/world_commands_live.gd','godot/tests/lattice/world_coop_live.gd',
   'port/native-lattice-world-coop/run.mjs','port/native-lattice-world-coop/audit.mjs','port/native-lattice-world-coop/verify.py'];
  manifest = {base:'8a58c97e48493e41903c2c9a729e753cb3579500',revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
-  source:lock.source_commit,godot:lock.godot_version,godotSha256:sha(bin),options,command:[bin,...args],
+   source:lock.source_commit,...(derivative?{source_derivative_commit:derivative.derivative_commit}:{}),godot:lock.godot_version,godotSha256:sha(bin),options,command:[bin,...args],
   port,display:env.DISPLAY,xvfb:{pid:xvfb.pid,command:['Xvfb',...xargs]},serverPid:process.pid,
   serverOptions:{historyPath:null,progressionPath:null},deadlineSeconds:210,
   simulation:'default tickDt 1/60, tickMs 1000/60, snapshotHz unchanged',input:'Godot engine events, not OS/human input',

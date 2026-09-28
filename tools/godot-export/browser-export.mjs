@@ -3,7 +3,9 @@ import {chromium} from 'playwright';
 import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {verifySource} from './semantic.mjs';
-const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));verifySource(lock);
+const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
+const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+verifySource(lock,derivative);
 const id=process.argv[2];if(id&&!lock.map_ids.includes(id))throw Error('Map not allowlisted');
 const server=await createServer({configFile:false,root:process.cwd(),server:{host:'127.0.0.1',port:0},optimizeDeps:{noDiscovery:true}});
 await server.listen();
@@ -17,7 +19,7 @@ try{
  const result=await page.evaluate(id=>id?window.exportMap(id):window.exportProbe(),id);
  const output=id?`godot/content/probes/${id}`:'godot/content/probes/axis-weapon';mkdirSync(output,{recursive:true});
  const bytes=Buffer.from(result.bytes);writeFileSync(`${output}/world.glb`,bytes);
- const report={source_commit:lock.source_commit,...result.report,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),messages};
+ const report={source_commit:lock.source_commit,...(derivative?{source_derivative_commit:derivative.derivative_commit}:{}),...result.report,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),messages};
   const reportDir=process.env.GLTF_REPORT_DIR??'port/reports';mkdirSync(reportDir,{recursive:true});
   writeFileSync(`${reportDir}/${id??'axis-weapon'}-glb.json`,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,nodes:report.nodes.length},null,2));
 }finally{await browser?.close();await server.close();}
