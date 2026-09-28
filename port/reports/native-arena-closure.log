@@ -1,34 +1,40 @@
 TAP version 13
-# Subtest: Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
-ok 1 - Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
+# Subtest: actual local 24-bot helpers ship on native routes, outside multiplayer and Horde
+ok 1 - actual local 24-bot helpers ship on native routes, outside multiplayer and Horde
   ---
-  duration_ms: 41.073819
+  duration_ms: 191.978759
+  type: 'test'
+  ...
+# Subtest: Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
+ok 2 - Native DM SYNTHETIC closure separates exact reviewed adapters from locked source and declares data without reading missing JSON
+  ---
+  duration_ms: 43.532196
   type: 'test'
   ...
 # Subtest: Identity zone SYNTHETIC closure keeps Domination adapters explicit and separate from locked source
-ok 2 - Identity zone SYNTHETIC closure keeps Domination adapters explicit and separate from locked source
+ok 3 - Identity zone SYNTHETIC closure keeps Domination adapters explicit and separate from locked source
   ---
-  duration_ms: 22.380868
+  duration_ms: 24.546653
   type: 'test'
   ...
 # Subtest: Identity zone SYNTHETIC closure rejects unreviewed route helpers
-ok 3 - Identity zone SYNTHETIC closure rejects unreviewed route helpers
+ok 4 - Identity zone SYNTHETIC closure rejects unreviewed route helpers
   ---
-  duration_ms: 19.446553
+  duration_ms: 25.202602
   type: 'test'
   ...
 # Subtest: Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules
-ok 4 - Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules
+ok 5 - Native DM SYNTHETIC closure rejects unreviewed helpers, runtime loading, dependencies and missing modules
   ---
-  duration_ms: 197.274323
+  duration_ms: 203.010289
   type: 'test'
   ...
-1..4
-# tests 4
+1..5
+# tests 5
 # suites 0
-# pass 4
+# pass 5
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 313.485961
+# duration_ms 525.073958

@@ -2,45 +2,69 @@ TAP version 13
 # Subtest: Horde package route is local-only, fixed default and rejects ignored options
 ok 1 - Horde package route is local-only, fixed default and rejects ignored options
   ---
-  duration_ms: 1.250011
+  duration_ms: 1.463682
+  type: 'test'
+  ...
+# Subtest: Horde package loadouts match pinned source and reach the scene
+ok 2 - Horde package loadouts match pinned source and reach the scene
+  ---
+  duration_ms: 1.281621
   type: 'test'
   ...
 # Subtest: package scene routing covers all nine locked identities and preserves native capability subsets
-ok 2 - package scene routing covers all nine locked identities and preserves native capability subsets
+ok 3 - package scene routing covers all nine locked identities and preserves native capability subsets
   ---
-  duration_ms: 0.631183
+  duration_ms: 0.494516
   type: 'test'
   ...
 # Subtest: bad package arguments fail before opening an owned server; no silent scene/mode fallback
-ok 3 - bad package arguments fail before opening an owned server; no silent scene/mode fallback
+ok 4 - bad package arguments fail before opening an owned server; no silent scene/mode fallback
   ---
-  duration_ms: 1.300546
+  duration_ms: 0.887053
   type: 'test'
   ...
 # Subtest: menu, viewer and operator-preview are parameterless special cases
-ok 4 - menu, viewer and operator-preview are parameterless special cases
+ok 5 - menu, viewer and operator-preview are parameterless special cases
   ---
-  duration_ms: 1.066307
+  duration_ms: 1.543201
   type: 'test'
   ...
 # Subtest: --debug-panel is accepted only by combat, horde, native-dm and identity-zones
-ok 5 - --debug-panel is accepted only by combat, horde, native-dm and identity-zones
+ok 6 - --debug-panel is accepted only by combat, horde, native-dm and identity-zones
   ---
-  duration_ms: 0.407513
+  duration_ms: 0.494126
   type: 'test'
   ...
 # Subtest: --waves is a horde-only reviewed 1..30 value, forwarded when supplied
-ok 6 - --waves is a horde-only reviewed 1..30 value, forwarded when supplied
+ok 7 - --waves is a horde-only reviewed 1..30 value, forwarded when supplied
   ---
-  duration_ms: 0.339415
+  duration_ms: 0.452137
   type: 'test'
   ...
-1..6
-# tests 6
+# Subtest: menu bot schemas match scene consumption and source bounds
+ok 8 - menu bot schemas match scene consumption and source bounds
+  ---
+  duration_ms: 0.253024
+  type: 'test'
+  ...
+# Subtest: diagnostics reach every route without enabling multiplayer cheats
+ok 9 - diagnostics reach every route without enabling multiplayer cheats
+  ---
+  duration_ms: 0.334056
+  type: 'test'
+  ...
+# Subtest: LATTICE package options preserve both scenes, 57 valid loadouts, rung ownership and join authority
+ok 10 - LATTICE package options preserve both scenes, 57 valid loadouts, rung ownership and join authority
+  ---
+  duration_ms: 1.646255
+  type: 'test'
+  ...
+1..10
+# tests 10
 # suites 0
-# pass 6
+# pass 10
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 38.141406
+# duration_ms 50.842513

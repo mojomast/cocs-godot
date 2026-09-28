@@ -1,0 +1,17 @@
+TAP version 13
+# L3 source/API/static checks PASS (not a GDScript parse or rendered test)
+# Subtest: godot/tests/lattice/flagship_l3_contract.mjs
+ok 1 - godot/tests/lattice/flagship_l3_contract.mjs
+  ---
+  duration_ms: 21.484697
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25.437132

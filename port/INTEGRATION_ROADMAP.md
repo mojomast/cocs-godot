@@ -21,6 +21,33 @@ This document is a **proposed implementation backlog**, not evidence that the
 milestones below are complete. It supersedes scattered handoffs for *sequencing*;
 the individual evidence records retain their original scope and results.
 
+### Implementation progress — 2026-09-28
+
+- **NATIVE-01 implemented:** integration-branch CI trigger and explicit frozen
+  derivative propagation through exports, active development launchers and
+  evidence runners. Original-source defaults remain strict. The inherited
+  gallery lint error is fixed.
+- **NATIVE-02 implemented and locally verified:** the canonical
+  runner now inventories 199 gates including REQ, tactical and flagship coverage.
+  Reports identify the tested port/source/derivative and distinguish executed
+  from unrun checks. Gate registration, preflight-report and source-selection
+  contracts cover the new plumbing.
+  The final Linux aggregate passed **199/199** at `6b782f2b`, with zero unrun
+  gates; full repository lint also passed. Hosted and owner-run results remain
+  distinct from this local verification.
+- **NATIVE-03-A implemented:** the existing process-based menu remembers the
+  selected activity and validated per-activity options using a versioned local
+  preference file. Headless menu contracts pass 776 checks, including repeated
+  menu lifetimes and corrupt preference recovery. This is a bounded first step;
+  general audio/display/input settings and common Back/Leave/focus behavior are
+  still backlog work.
+- **NATIVE-04–06 remain open**, including Cinderwake authority reconciliation,
+  extracted-package consolidation acceptance and the unified release.
+
+The research findings below describe the original baseline. Implementation
+results and remaining acceptance gaps are recorded in
+[consolidation evidence](native-ci/evidence/CONSOLIDATION_2026-09-28.md).
+
 ## 1. What is already together, and what is genuinely separate
 
 Four parallel DeepSeek V4.1 Flash research agents examined runtime/product

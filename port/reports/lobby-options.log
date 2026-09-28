@@ -2,25 +2,25 @@ TAP version 13
 # Subtest: package: opt-in lobby distinguishes owned and explicit external authority
 ok 1 - package: opt-in lobby distinguishes owned and explicit external authority
   ---
-  duration_ms: 0.909874
+  duration_ms: 0.940842
   type: 'test'
   ...
 # Subtest: package: invalid lobby configuration fails before starting anything
 ok 2 - package: invalid lobby configuration fails before starting anything
   ---
-  duration_ms: 0.591017
+  duration_ms: 0.570299
   type: 'test'
   ...
 # Subtest: dev: opt-in lobby distinguishes owned and explicit external authority
 ok 3 - dev: opt-in lobby distinguishes owned and explicit external authority
   ---
-  duration_ms: 0.41127
+  duration_ms: 0.499586
   type: 'test'
   ...
 # Subtest: dev: invalid lobby configuration fails before starting anything
 ok 4 - dev: invalid lobby configuration fails before starting anything
   ---
-  duration_ms: 0.465572
+  duration_ms: 0.526216
   type: 'test'
   ...
 1..4
@@ -31,4 +31,4 @@ ok 4 - dev: invalid lobby configuration fails before starting anything
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 37.904683
+# duration_ms 36.72971

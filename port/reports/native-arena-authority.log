@@ -2,139 +2,139 @@ TAP version 13
 # Subtest: SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
 ok 1 - SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
   ---
-  duration_ms: 452.551142
+  duration_ms: 356.32325
   type: 'test'
   ...
 # Subtest: SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
 ok 2 - SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
   ---
-  duration_ms: 4260.580435
+  duration_ms: 4251.589332
   type: 'test'
   ...
 # Subtest: SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
 ok 3 - SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
   ---
-  duration_ms: 12714.616614
+  duration_ms: 15718.100906
   type: 'test'
   ...
 # Subtest: loopback ownership and transport/envelope rejection leave no listeners
 ok 4 - loopback ownership and transport/envelope rejection leave no listeners
   ---
-  duration_ms: 15.048245
+  duration_ms: 15.05062
   type: 'test'
   ...
 # Subtest: launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
 ok 5 - launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
   ---
-  duration_ms: 12.227711
+  duration_ms: 12.725855
   type: 'test'
   ...
 # Subtest: unknown options and unknown map ids fail before any listener opens
 ok 6 - unknown options and unknown map ids fail before any listener opens
   ---
-  duration_ms: 0.510877
+  duration_ms: 0.487733
   type: 'test'
   ...
 # Subtest: HTTP readiness is the documented GET / probe only
 ok 7 - HTTP readiness is the documented GET / probe only
   ---
-  duration_ms: 7.255349
+  duration_ms: 7.120522
   type: 'test'
   ...
 # Subtest: FIFO keeps press/release order, source normalization and one-step pulses
 ok 8 - FIFO keeps press/release order, source normalization and one-step pulses
   ---
-  duration_ms: 1.181362
+  duration_ms: 0.975889
   type: 'test'
   ...
 # Subtest: queue age, held TTL, cancel and reset cannot replay ADS/actions
 ok 9 - queue age, held TTL, cancel and reset cannot replay ADS/actions
   ---
-  duration_ms: 0.63031
+  duration_ms: 0.626654
   type: 'test'
   ...
 # Subtest: event cursor retains payload IDs, handles serial gaps and repeated events by identity
 ok 10 - event cursor retains payload IDs, handles serial gaps and repeated events by identity
   ---
-  duration_ms: 0.224951
+  duration_ms: 0.217658
   type: 'test'
   ...
 # Subtest: only three native static asset paths; no source registry aliases
 ok 11 - only three native static asset paths; no source registry aliases
   ---
-  duration_ms: 0.920083
+  duration_ms: 1.159312
   type: 'test'
   ...
 # Subtest: SYNTHETIC: each supported identity parses to an independent envelope
 ok 12 - SYNTHETIC: each supported identity parses to an independent envelope
   ---
-  duration_ms: 3.717353
+  duration_ms: 2.320127
   type: 'test'
   ...
 # Subtest: strict deep generated-data validation rejects malformed/unsafe geometry
 ok 13 - strict deep generated-data validation rejects malformed/unsafe geometry
   ---
-  duration_ms: 1.657945
+  duration_ms: 1.938522
   type: 'test'
   ...
-# Subtest: Deathmatch bounded config stays source-supported and defaults to three bots
-ok 14 - Deathmatch bounded config stays source-supported and defaults to three bots
+# Subtest: Deathmatch bounded local config defaults to three bots and rejects counts above 24
+ok 14 - Deathmatch bounded local config defaults to three bots and rejects counts above 24
   ---
-  duration_ms: 0.479859
+  duration_ms: 0.572964
   type: 'test'
   ...
 # Subtest: geometryHash binds canonical arena content, independent of object key order
 ok 15 - geometryHash binds canonical arena content, independent of object key order
   ---
-  duration_ms: 0.385001
+  duration_ms: 0.598451
   type: 'test'
   ...
 # Subtest: identity catalog adds exactly the three reviewed ids beside the native three
 ok 16 - identity catalog adds exactly the three reviewed ids beside the native three
   ---
-  duration_ms: 0.218169
+  duration_ms: 0.171291
   type: 'test'
   ...
 # Subtest: SYNTHETIC: identity envelopes parse per family; the native parser never widens
 ok 17 - SYNTHETIC: identity envelopes parse per family; the native parser never widens
   ---
-  duration_ms: 3.19795
+  duration_ms: 3.465643
   type: 'test'
   ...
 # Subtest: identity strict validation rejects malformed presentation/objective/team fields
 ok 18 - identity strict validation rejects malformed presentation/objective/team fields
   ---
-  duration_ms: 3.156402
+  duration_ms: 6.57027
   type: 'test'
   ...
 # Subtest: identity objective/team fields validate strictly when authored (vermilion-fold form)
 ok 19 - identity objective/team fields validate strictly when authored (vermilion-fold form)
   ---
-  duration_ms: 1.997672
+  duration_ms: 1.522823
   type: 'test'
   ...
 # Subtest: source constructor seam is assignment before nav/spawns/actors, not options.arena
 ok 20 - source constructor seam is assignment before nav/spawns/actors, not options.arena
   ---
-  duration_ms: 0.902009
+  duration_ms: 0.938659
   type: 'test'
   ...
 # Subtest: SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
 ok 21 - SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
   ---
-  duration_ms: 29.801957
+  duration_ms: 28.765838
   type: 'test'
   ...
 # Subtest: SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
 ok 22 - SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
   ---
-  duration_ms: 94.81828
+  duration_ms: 101.669879
   type: 'test'
   ...
 # Subtest: SYNTHETIC: source bot attacks kill idle player and source respawn restores control
 ok 23 - SYNTHETIC: source bot attacks kill idle player and source respawn restores control
   ---
-  duration_ms: 36.966136
+  duration_ms: 61.112887
   type: 'test'
   ...
 1..23
@@ -145,4 +145,4 @@ ok 23 - SYNTHETIC: source bot attacks kill idle player and source respawn restor
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 18182.368822
+# duration_ms 21091.844914

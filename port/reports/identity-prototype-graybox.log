@@ -5,9 +5,9 @@ TAP version 13
 #     {
 #       "id": "lacuna-court",
 #       "geometryHash": "a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9",
-#       "constructionMs": 39.72098500000004,
+#       "constructionMs": 30.830847999999946,
 #       "prototypeColdMs": 6059.348,
-#       "speedup": 152.5,
+#       "speedup": 196.5,
 #       "wallSegments": 40,
 #       "wallEntries": 20,
 #       "blocks": 18,
@@ -104,9 +104,9 @@ TAP version 13
 #     {
 #       "id": "vermilion-fold",
 #       "geometryHash": "6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a",
-#       "constructionMs": 7.35463500000003,
+#       "constructionMs": 9.658376999999973,
 #       "prototypeColdMs": 2950.349,
-#       "speedup": 401.2,
+#       "speedup": 305.5,
 #       "wallSegments": 0,
 #       "wallEntries": 0,
 #       "blocks": 14,
@@ -236,26 +236,26 @@ TAP version 13
 #     },
 #     {
 #       "id": "nacre-engine",
-#       "geometryHash": "b3636effceec400a84a59107386f531d627d72c353391f66d51c18776179feb4",
-#       "constructionMs": 34.04826000000003,
+#       "geometryHash": "204e8eca728a8e75e7ec23dd99eb8e1b38d944f3e53c245b77612ee308a7d4c0",
+#       "constructionMs": 49.601870000000076,
 #       "prototypeColdMs": 14827.741,
-#       "speedup": 435.5,
+#       "speedup": 298.9,
 #       "wallSegments": 546,
 #       "wallEntries": 168,
-#       "blocks": 11,
+#       "blocks": 19,
 #       "artTriangles": 8112,
-#       "navNodes": 78,
-#       "navEdges": 272,
+#       "navNodes": 85,
+#       "navEdges": 328,
 #       "routes": [
 #         {
 #           "id": "retreat-loop",
 #           "forward": {
-#             "seconds": 25.15,
+#             "seconds": 19.433333333333334,
 #             "minY": 0,
 #             "maxY": 0
 #           },
 #           "reverse": {
-#             "seconds": 23,
+#             "seconds": 19.433333333333334,
 #             "minY": 0,
 #             "maxY": 0
 #           }
@@ -263,12 +263,51 @@ TAP version 13
 #         {
 #           "id": "inner-retreat",
 #           "forward": {
-#             "seconds": 12.2,
+#             "seconds": 12.95,
 #             "minY": 0,
 #             "maxY": 0
 #           },
 #           "reverse": {
-#             "seconds": 12.2,
+#             "seconds": 12.95,
+#             "minY": 0,
+#             "maxY": 0
+#           }
+#         },
+#         {
+#           "id": "west-workshop",
+#           "forward": {
+#             "seconds": 5.35,
+#             "minY": 0,
+#             "maxY": 0
+#           },
+#           "reverse": {
+#             "seconds": 5.35,
+#             "minY": 0,
+#             "maxY": 0
+#           }
+#         },
+#         {
+#           "id": "east-condenser",
+#           "forward": {
+#             "seconds": 5.35,
+#             "minY": 0,
+#             "maxY": 0
+#           },
+#           "reverse": {
+#             "seconds": 5.35,
+#             "minY": 0,
+#             "maxY": 0
+#           }
+#         },
+#         {
+#           "id": "boss-yard",
+#           "forward": {
+#             "seconds": 7.983333333333333,
+#             "minY": 0,
+#             "maxY": 0
+#           },
+#           "reverse": {
+#             "seconds": 7.983333333333333,
 #             "minY": 0,
 #             "maxY": 0
 #           }
@@ -278,13 +317,13 @@ TAP version 13
 #     }
 #   ],
 #   "failures": [],
-#   "checks": 36989,
+#   "checks": 42387,
 #   "passed": true
 # }
 # Subtest: port/native-identity-maps/graybox.test.mjs
 ok 1 - port/native-identity-maps/graybox.test.mjs
   ---
-  duration_ms: 860.075402
+  duration_ms: 1159.250149
   type: 'test'
   ...
 1..1
@@ -295,4 +334,4 @@ ok 1 - port/native-identity-maps/graybox.test.mjs
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 865.356102
+# duration_ms 1165.305325

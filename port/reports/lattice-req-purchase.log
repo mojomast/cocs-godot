@@ -1,0 +1,63 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+REQ_PURCHASE_CONTRACT finite launched catalogue mirrored true
+REQ_PURCHASE_CONTRACT equipment offered with known REQ true
+REQ_PURCHASE_CONTRACT Puma is OPERATIONS-only true
+REQ_PURCHASE_CONTRACT recipient-observed gate ready true
+REQ_PURCHASE_CONTRACT explicit buy queues true
+REQ_PURCHASE_CONTRACT exact ordinary BUY frame with bounded identity true
+REQ_PURCHASE_CONTRACT never a reserved FLUX/economy action or a stray depot true
+REQ_PURCHASE_CONTRACT queue is not acceptance and never optimistically debits true
+REQ_PURCHASE_CONTRACT unresolved buy never resends true
+REQ_PURCHASE_CONTRACT server acceptance is pending, not done true
+REQ_PURCHASE_CONTRACT authoritative debit and completion observed true
+REQ_PURCHASE_CONTRACT explicit retry gets fresh identity true
+REQ_PURCHASE_CONTRACT unrelated sequence refusal ignored true
+REQ_PURCHASE_CONTRACT correlated refusal settles the card true
+REQ_PURCHASE_CONTRACT target-sensitive buy queues true
+REQ_PURCHASE_CONTRACT no-target refusal settles the card true
+REQ_PURCHASE_CONTRACT no-target copy is explicit, not generic true
+REQ_PURCHASE_CONTRACT unsupported id refused: 'at-mine' true
+REQ_PURCHASE_CONTRACT unsupported id refused: 'smoke' true
+REQ_PURCHASE_CONTRACT unsupported id refused: 'barrier' true
+REQ_PURCHASE_CONTRACT unsupported id refused: 'supply-drop' true
+REQ_PURCHASE_CONTRACT unsupported id refused: 'tier-upgrade' true
+REQ_PURCHASE_CONTRACT unsupported id refused: 'oracle-unlock' true
+REQ_PURCHASE_CONTRACT unsupported id refused: 'respawn' true
+REQ_PURCHASE_CONTRACT unsupported id refused: 'reserve' true
+REQ_PURCHASE_CONTRACT unsupported id refused: 'flux' true
+REQ_PURCHASE_CONTRACT unsupported id refused: '' true
+REQ_PURCHASE_CONTRACT refusals never send a frame true
+REQ_PURCHASE_CONTRACT missing REQ stays unknown true
+REQ_PURCHASE_CONTRACT unknown REQ cannot spend true
+REQ_PURCHASE_CONTRACT active buff blocks another buff true
+REQ_PURCHASE_CONTRACT rebuy/equipment stay legal true
+REQ_PURCHASE_CONTRACT dead actor cannot buy true
+REQ_PURCHASE_CONTRACT stale state cannot buy true
+REQ_PURCHASE_CONTRACT missing depot list stays unknown true
+REQ_PURCHASE_CONTRACT no owned depot cannot spend true
+REQ_PURCHASE_CONTRACT enemy depot never counts as owned true
+REQ_PURCHASE_CONTRACT owned depot enables the Puma true
+REQ_PURCHASE_CONTRACT unowned/missing depot refused true
+REQ_PURCHASE_CONTRACT Puma buy queues against the owned depot true
+REQ_PURCHASE_CONTRACT Puma carries only the observed depot true
+REQ_PURCHASE_CONTRACT Puma is still an ordinary BUY true
+REQ_PURCHASE_CONTRACT GUI catalog offers the mirrored row true
+REQ_PURCHASE_CONTRACT picker enables an observed affordable item true
+REQ_PURCHASE_CONTRACT effect copy is shown true
+REQ_PURCHASE_CONTRACT explicit consent enables the buy true
+REQ_PURCHASE_CONTRACT GUI queues one buy and consumes consent true
+REQ_PURCHASE_CONTRACT queued copy never implies success true
+REQ_PURCHASE_CONTRACT pending copy comes from the authoritative card true
+REQ_PURCHASE_CONTRACT confirmed copy comes from the authoritative card true
+REQ_PURCHASE_CONTRACT authoritative debit is displayed true
+REQ_PURCHASE_CONTRACT balance change revokes consent true
+REQ_PURCHASE_CONTRACT missing REQ disables the GUI buy true
+REQ_PURCHASE_CONTRACT target-sensitive row is selectable true
+REQ_PURCHASE_CONTRACT server no-target refusal is surfaced in the picker true
+REQ_PURCHASE_CONTRACT picker lists exactly the owned depots true
+REQ_PURCHASE_CONTRACT puma exposes an explicit depot picker true
+REQ_PURCHASE_CONTRACT explicit depot selection is used true
+REQ_PURCHASE_CONTRACT frame carries the selected owned depot true
+REQ_PURCHASE_CONTRACT enemy depot is never selected true
+LATTICE_REQ_PURCHASE_CONTRACT checks=60 failures=0

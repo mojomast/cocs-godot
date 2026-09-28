@@ -1,5 +1,6 @@
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
+USABILITY_CHECK fixture authored topology accepted true
 USABILITY_CHECK no round means waiting and capture denied true
 USABILITY_CHECK start does not borrow a previous pose true
 USABILITY_CHECK fresh healthy wire enables click but remains released true
@@ -24,4 +25,4 @@ USABILITY_CHECK public capture retargets guidance to next live non-owned node tr
 USABILITY_CHECK no live candidate falls back to known nearest without inventing eligibility true
 USABILITY_CHECK missing co-op context is not a fabricated wave or closed window true
 USABILITY_CHECK co-op context reflects supplied public fields true
-USABILITY_CONTRACT checks=24 failures=0
+USABILITY_CONTRACT checks=25 failures=0

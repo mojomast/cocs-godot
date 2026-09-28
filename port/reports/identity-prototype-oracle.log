@@ -1,10 +1,10 @@
 {
-  "checks": 19976,
+  "checks": 21145,
   "failures": 0,
-  "elapsedMs": 378.4,
-  "evidence": "ray-report-1790269353365.json",
-  "fixtures": 6150
+  "elapsedMs": 457.3,
+  "evidence": "ray-report-1790625254175.json",
+  "fixtures": 7567
 }
 lacuna-court: 5211 rays, groups={"block-cover":36,"wall-face":24,"route-floor":66,"sightline":325,"eye-grid":4760}, probeMisses=0, visibleMismatch=0, eyeCeiling=4.472436, excludedMinY=0
 vermilion-fold: 7878 rays, groups={"block-cover":28,"route-floor":117,"sightline":893,"eye-grid":6840}, probeMisses=0, visibleMismatch=0, eyeCeiling=2.972436, excludedMinY=4
-nacre-engine: 6887 rays, groups={"block-cover":22,"wall-face":252,"route-floor":48,"sightline":325,"eye-grid":6240}, probeMisses=0, visibleMismatch=0, eyeCeiling=2.972436, excludedMinY=0
+nacre-engine: 8056 rays, groups={"block-cover":38,"wall-face":252,"route-floor":135,"sightline":1711,"eye-grid":5920}, probeMisses=0, visibleMismatch=0, eyeCeiling=2.972436, excludedMinY=0
