@@ -53,36 +53,41 @@ per-path inventories; a manifest with neither fails closed.
 
 ## Source identity anchoring
 
-Verification never reads `COCS_SOURCE_DERIVATIVE`, the current development
-runtime configuration, or the caller's working directory. `verify.py` strips
-`COCS_SOURCE_DERIVATIVE` from the validator environment explicitly.
+Verification reads **committed git objects only**, reached from the commits the
+manifest records. It never reads the working tree, `HEAD`,
+`COCS_SOURCE_DERIVATIVE`, the current development runtime configuration, or the
+caller's working directory. A valid older artifact therefore still verifies from
+a newer or dirty checkout whenever the referenced objects exist; `verify.py`
+also strips `COCS_SOURCE_DERIVATIVE` from the validator environment explicitly.
 
-1. `manifest.source_commit` must equal the repository source lock.
-2. Every source module in the closure is hashed at `manifest.source_commit`, or
-   at `manifest.source_derivative_commit` when it is listed in the derivative
-   contract's `runtime_files`; the shipped `runtime/<path>` byte-for-byte equals
-   that git object.
-3. Every adapter and every runtime data JSON is hashed at `manifest.port_commit`.
-4. The strict source-tree contract of `tools/godot-export/semantic.mjs` is
-   replayed against the manifested commit: no changed tracked source, no added
-   uninventoried source, and — when a derivative is recorded — the exact
-   `runtime_files` inventory with recorded bytes.
-5. Derivative binding: the repository contract at
-   `port/contracts/lattice-catalog-derivative.json` must hash to
-   `manifest.source_derivative_sha256`, and its `derivative_commit` /
-   `source_commit` / `schema_version` must match the manifest. A mismatch is a
-   hard failure ("derivative metadata mismatch"), never an ambient selection.
+The trust boundary, in order:
+
+1. The source lock is read with `git show <manifest.port_commit>:port/contracts/source-lock.json`; its `source_commit` must equal `manifest.source_commit` and its `godot_version` the manifest's.
+2. The derivative contract is read with `git show <manifest.port_commit>:port/contracts/lattice-catalog-derivative.json`; its SHA-256 must equal `manifest.source_derivative_sha256`, and its `derivative_commit` / `source_commit` / `schema_version` must match the manifest. Nothing on disk is consulted.
+3. `verifySourceState(repo, sourceCommit, derivative, {portCommit})` replays the strict source contract against `git diff source_commit..port_commit` (and `--diff-filter=A` for added files). No derivative recorded means no changed and no added tracked source; a derivative must match the exact union of modified and added files in `runtime_files`.
+4. Every source module is hashed at `manifest.source_commit`, or at the derivative's `derivative_commit` when it is in `runtime_files`; every adapter and every data JSON at `manifest.port_commit`; each shipped `runtime/<path>` must byte-for-byte equal that committed object.
+5. Root surface anchoring: `run.mjs`, `options.mjs`, `settings_path.mjs`, `endpoint.mjs`, `catalog.json`, `README.md` and the `.sh`/`.cmd` launchers must equal their committed sources at `port_commit` (`tools/godot-package/*`, `port/contracts/map-selection.json`, `port/native-*-package/PLAY.md`; Windows `.cmd` after the builder's LF→CRLF normalization). A rewritten launcher plus a forged `files` hash therefore fails.
+
+The build preflight still calls `tools/godot-export/semantic.mjs`'s
+`verifySource` against the working tree; that build-time check is unchanged and
+is not what artifact verification uses.
 
 ## Exact inventory and runtime closure
 
 - On-disk ordinary files (excluding `manifest.json`) must equal the `files`
   keys exactly: added files, deleted files and changed bytes all fail. Symlinks
-  fail.
-- The runtime tree is the discovered closure plus the locked `ws` package. A new
-  module — for example a Cinderwake horde-stages path — enters verification
-  automatically from `server_closure`, with no hardcoded allowlist to update.
-  Test/observer modules and any dependency other than `ws` fail even if a
-  manifest lists them.
+  fail. A caller-supplied `manifest`/`manifestPath` may only confirm the
+  package's own `manifest.json`; a mismatch fails.
+- The runtime closure is **re-derived**, not trusted: the committed
+  `tools/godot-package/discover.mjs` at `port_commit` is run against a bounded
+  temporary view materialized from the recorded commits (with derivative files
+  overlaid from `derivative_commit`), and its exact `modules` / `adapterModules`
+  / `dataFiles` / `identityDataFiles` / `hordeDataFiles` keys must match the
+  manifest. Dropping a module from disk, manifest and closure therefore still
+  fails. Ambient discovery at `HEAD` is never used.
+- A new module — for example a Cinderwake horde-stages path — enters through the
+  committed discovery automatically, with no hardcoded allowlist. Test/observer
+  modules and any dependency other than `ws` fail even if a manifest lists them.
 - The optional `hordeDataFiles` family (`godot/horde_maps/generated/*.json`) is
   verified the same way: hashed, anchored to `port_commit`, copied under
   `runtime/`, and recorded in `horde_map_data_sha256`. The field and the whole
@@ -121,6 +126,11 @@ python3 tools/godot-package/verify.py --package <extracted-package> --repo "$PWD
 node --test tools/godot-package/manifest_validation.test.mjs
 ```
 
+Artifact verification reads the recorded commits, so the checkout it runs from
+must contain those objects: the hosted verifiers need `actions/checkout` with
+full history (`fetch-depth: 0`). The repo path may be dirty; only the recorded
+commits matter.
+
 ## Coordination edits needed for the Cinderwake build
 
 - Source-owned modules (`game/**`, `server/**`) imported from a closure entry are
@@ -147,8 +157,9 @@ node --test tools/godot-package/manifest_validation.test.mjs
 - The later Career catalog (`godot/career/catalog.json`, 23 gear / 22 mods) and
   its generator `tools/godot-export/career_catalog.mjs` are optional build
   inputs: `build.py` includes them only when they exist (baseline builds do not
-  fail first), anchors the catalog to `HEAD`, records `career_catalog_sha256`,
-  and exports `career/*.json`. Career parity checks remain that lane's.
+  fail first), anchors the catalog to the recorded port commit, records
+  `career_catalog_sha256`, and exports `career/*.json`. Career parity checks
+  remain that lane's.
 - Keep `schema_version` at `1`; add a field rather than bumping. A bump requires
   adding the version to `SUPPORTED_SCHEMA_VERSIONS`.
 - Register the new test file as an aggregate gate; `tools/godot-dev/verify.py` is
@@ -157,7 +168,10 @@ node --test tools/godot-package/manifest_validation.test.mjs
 ## Status and limits
 
 This slice was implemented and checked with `node --check` / `py_compile` plus
-isolated validator smokes (temporary git repositories and the two real derivative
-contracts, read-only). No build, engine run, full suite or `npm install` ran. The
-fixture tests and the extracted-package journeys are executed by the parent in
-the serial slot. No release was built or published.
+isolated validator smokes on temporary git repositories (valid pass; advanced
+`HEAD`, dirty tree, planted ambient contract and bogus `COCS_SOURCE_DERIVATIVE`
+accepted; forged launcher, closure omission, manifest mismatch and committed
+contract-hash tamper rejected) and a read-only `verifySourceState` run against
+both real derivative contracts. No build, engine run, full suite or `npm install`
+ran. The fixture tests and the extracted-package journeys are executed by the
+parent in the serial slot. No release was built or published.

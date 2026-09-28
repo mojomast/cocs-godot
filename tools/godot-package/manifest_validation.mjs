@@ -1,20 +1,23 @@
 // Shared artifact validator for an already-extracted native Linux/Windows package.
 //
-// The single source of truth is the package's own `manifest.json` plus the git
-// objects at the commits that manifest records. Nothing here reads
-// COCS_SOURCE_DERIVATIVE, the repository's ambient derivative selection, or the
-// caller's working directory: an explicit package path and repository path are
-// always supplied. `tools/godot-package/verify.py` shells out to this CLI and
-// `tools/godot-package/verify_linux.mjs` imports it, so both use one validator.
+// The single source of truth is the package's own `manifest.json` plus git
+// objects reachable from the commits that manifest records. The trust boundary is
+// committed objects only: `verifyGitIdentity` reads the source lock, derivative
+// contract and every source byte with `git show <recorded-commit>:<path>`, and it
+// re-derives the runtime closure by running the *committed* discover.mjs against
+// a temporary view materialized from those commits. It never reads the working
+// tree, HEAD, COCS_SOURCE_DERIVATIVE, or the caller's directory. A valid older
+// artifact therefore still verifies from a newer/dirty checkout whenever the
+// referenced objects exist.
 //
 // It deliberately does not require fields the current builder does not yet
-// write (for example a future Cinderwake stage inventory). Unknown fields are
-// ignored, supported schema versions are listed explicitly, and anything else
-// fails closed.
-import {execFileSync} from 'node:child_process';
+// write. Unknown fields are ignored, supported schema versions are listed
+// explicitly, and anything else fails closed.
+import {execFileSync, spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {existsSync, lstatSync, readdirSync, readFileSync} from 'node:fs';
-import {join, relative, resolve, sep} from 'node:path';
+import {existsSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
+import {dirname, join, relative, resolve, sep} from 'node:path';
+import {tmpdir} from 'node:os';
 import {fileURLToPath} from 'node:url';
 
 // The repository that contains this module, not the process working directory.
@@ -113,11 +116,23 @@ function gitObjectHash(repo, commit, path) {
   return sha256(git(repo, ['show', `${commit}:${path}`], {binary: true}));
 }
 
+function gitObjectBytes(repo, commit, path) {
+  return git(repo, ['show', `${commit}:${path}`], {binary: true});
+}
+
+function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+  if (value !== null && typeof value === 'object') {
+    return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(',')}}`;
+  }
+  return JSON.stringify(value);
+}
+
 function requireSortedEqual(actual, expected, label) {
   const left = [...actual].sort();
   const right = [...expected].sort();
   require_(JSON.stringify(left) === JSON.stringify(right),
-    `${label} mismatch: manifest ${JSON.stringify(left)} != closure ${JSON.stringify(right)}`);
+    `${label} mismatch: ${JSON.stringify(left)} != ${JSON.stringify(right)}`);
 }
 
 // Validate the manifest's own shape and return a normalized identity.
@@ -366,55 +381,55 @@ export function validateRuntimeClosure(packageDir, identity) {
 }
 
 // Re-derive the strict source-tree contract that `tools/godot-export/semantic.mjs`
-// enforces, anchored to the manifest's recorded source commit and derivative.
-export function verifySourceState(repo, sourceCommit, derivative) {
+// enforces for the *build*, but evaluated against the artifact's recorded
+// commits only. This never reads the working tree, HEAD or an ambient selection:
+// the comparison tree is `head` (defaulting to the explicit `portCommit`).
+export function verifySourceState(repo, sourceCommit, derivative, {portCommit, head = portCommit} = {}) {
   require_(HEX40.test(sourceCommit), 'source_commit must be pinned');
-  require_(git(repo, ['merge-base', sourceCommit, 'HEAD']) === sourceCommit,
-    'Repository is not based on the manifested source commit');
+  require_(HEX40.test(portCommit ?? ''), 'verifySourceState requires an explicit portCommit');
+  require_(git(repo, ['merge-base', sourceCommit, head]) === sourceCommit,
+    'Manifested port commit is not based on the manifested source commit');
   const tracked = git(repo, ['ls-tree', '-r', '--name-only', sourceCommit])
     .split('\n')
     .filter(path => /^(game\/|server\/|assets\/|public\/|package.*json$)/.test(path));
   const changed = tracked.length
-    ? git(repo, ['diff', '--name-only', sourceCommit, '--', ...tracked]).split('\n').filter(Boolean)
+    ? git(repo, ['diff', '--name-only', sourceCommit, head, '--', ...tracked]).split('\n').filter(Boolean)
     : [];
+  const added = git(repo, ['diff', '--name-only', '--diff-filter=A', sourceCommit, head,
+    '--', 'game', 'server', 'assets', 'public', 'package.json', 'package-lock.json'])
+    .split('\n').filter(path => path && !path.endsWith('.test.mjs'));
   if (!derivative) {
-    require_(changed.length === 0, `Locked source differs from the repository tree: ${changed.join(', ')}`);
+    require_(changed.length === 0, `Recorded port commit changes locked source: ${changed.join(', ')}`);
+    require_(added.length === 0, `Recorded port commit adds uninventoried source: ${added.join(', ')}`);
     return;
   }
   require_(derivative.schema_version === 1, 'Derivative schema_version must be 1');
   require_(derivative.source_commit === sourceCommit, 'Derivative source_commit differs from the manifested source_commit');
   require_(HEX40.test(derivative.derivative_commit ?? ''), 'Derivative derivative_commit must be a 40-hex commit');
-  require_(git(repo, ['merge-base', derivative.derivative_commit, 'HEAD']) === derivative.derivative_commit,
-    'Derivative commit is not in the repository ancestry');
+  require_(git(repo, ['merge-base', derivative.derivative_commit, head]) === derivative.derivative_commit,
+    'Derivative commit is not in the recorded port commit ancestry');
   const runtimeFiles = derivative.runtime_files;
   require_(plainObject(runtimeFiles) && Object.keys(runtimeFiles).length > 0,
     'Derivative runtime inventory is missing');
-  // Mirror tools/godot-export/semantic.mjs: a reviewed derivative may introduce
-  // new source modules as well as modify locked files, and both kinds must
-  // appear in the recorded runtime inventory.
-  const added = git(repo, ['diff', '--name-only', '--diff-filter=A', sourceCommit, 'HEAD',
-    '--', 'game', 'server', 'assets', 'public', 'package.json', 'package-lock.json'])
-    .split('\n').filter(path => path && !path.endsWith('.test.mjs'));
+  // A reviewed derivative may introduce new source modules as well as modify
+  // locked files; both kinds must appear in the recorded runtime inventory.
   const actual = [...new Set([...changed, ...added])].filter(path => !path.endsWith('.test.mjs')).sort();
   requireSortedEqual(actual, Object.keys(runtimeFiles), 'Derivative source inventory');
   for (const [path, hash] of Object.entries(runtimeFiles)) {
     require_(/^(game|server)\/[a-z0-9-]+\.mjs$/.test(path), `Invalid derivative source entry: ${path}`);
-    require_(tracked.includes(path) || added.includes(path), `Derivative source is not present at the source commit: ${path}`);
+    require_(tracked.includes(path) || added.includes(path), `Derivative source is not present in the recorded port commit: ${path}`);
     require_(HEX64.test(hash), `Derivative source hash must be 64-hex: ${path}`);
     require_(gitObjectHash(repo, derivative.derivative_commit, path) === hash, `Derivative source byte mismatch: ${path}`);
-    require_(sha256File(join(repo, ...path.split('/'))) === hash, `Derivative working-tree byte mismatch: ${path}`);
   }
 }
 
-// Load and bind the derivative contract from the repository, checking it against
-// the manifest's recorded commit and hash. Ambient selection is never consulted.
+// Load and bind the derivative contract from the recorded port commit (never the
+// working tree), checking it against the manifest's recorded commit and hash.
 function loadDerivative(repo, identity) {
   if (identity.derivativeCommit === null) return null;
-  const path = join(repo, ...DERIVATIVE_CONTRACT.split('/'));
-  require_(existsSync(path), `Recorded derivative contract is missing from the repository: ${DERIVATIVE_CONTRACT}`);
-  const bytes = readFileSync(path);
+  const bytes = gitObjectBytes(repo, identity.port_commit, DERIVATIVE_CONTRACT);
   require_(sha256(bytes) === identity.derivativeHash,
-    'Derivative metadata mismatch: repository contract hash differs from manifest source_derivative_sha256');
+    'Derivative metadata mismatch: committed contract hash differs from manifest source_derivative_sha256');
   const derivative = JSON.parse(bytes.toString('utf8'));
   require_(derivative.derivative_commit === identity.derivativeCommit,
     'Derivative metadata mismatch: contract derivative_commit differs from manifest source_derivative_commit');
@@ -423,18 +438,102 @@ function loadDerivative(repo, identity) {
   return derivative;
 }
 
+// Materialize the committed `.mjs` graph (and the JSON families a discovery stub
+// may inspect) from the recorded port commit into a bounded temporary view, then
+// run the committed discover.mjs against it. This re-derives the closure from
+// committed bytes; an ambient/discover at HEAD is never used.
+function rederiveClosure(repo, identity, derivative) {
+  const temp = mkdtempSync(join(tmpdir(), 'cocs-closure-'));
+  try {
+    const listing = git(repo, ['ls-tree', '-r', '--name-only', identity.port_commit,
+      '--', 'game', 'server', 'port', 'tools/godot-package'])
+      .split('\n').filter(path => path.endsWith('.mjs'));
+    const godotJson = git(repo, ['ls-tree', '-r', '--name-only', identity.port_commit, '--', 'godot'])
+      .split('\n').filter(path => path.endsWith('.json'));
+    const paths = [...listing, ...godotJson];
+    require_(paths.includes('tools/godot-package/discover.mjs'), 'Committed discover.mjs is missing at port_commit');
+    const derivativeFiles = derivative ? derivative.runtime_files : {};
+    const requests = paths.map(path => Object.hasOwn(derivativeFiles, path)
+      ? `${derivative.derivative_commit}:${path}` : `${identity.port_commit}:${path}`);
+    const batch = spawnSync('git', ['cat-file', '--batch'],
+      {cwd: repo, input: requests.join('\n') + '\n', maxBuffer: 1024 * 1024 * 1024});
+    require_(!batch.error && batch.status === 0, `git cat-file --batch failed: ${batch.error?.message ?? batch.stderr?.toString()}`);
+    const buffer = batch.stdout;
+    let offset = 0;
+    for (const path of paths) {
+      const newline = buffer.indexOf(0x0a, offset);
+      require_(newline !== -1, 'git cat-file --batch output truncated');
+      const header = buffer.subarray(offset, newline).toString('utf8');
+      offset = newline + 1;
+      require_(!header.endsWith(' missing'), `Committed object missing at port_commit: ${path}`);
+      const size = Number(header.split(' ')[2]);
+      require_(Number.isInteger(size), `Unexpected git cat-file header: ${header}`);
+      const destination = join(temp, ...path.split('/'));
+      mkdirSync(dirname(destination), {recursive: true});
+      writeFileSync(destination, buffer.subarray(offset, offset + size));
+      offset += size + 1;
+    }
+    const discover = join(temp, 'tools', 'godot-package', 'discover.mjs');
+    let output;
+    try {
+      output = execFileSync(process.execPath, ['--no-warnings', '--experimental-vm-modules', discover, temp],
+        {encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe']});
+    } catch (error) {
+      const detail = (error.stderr ? error.stderr.toString() : error.message).trim();
+      throw new ValidationError(`Committed discovery failed: ${detail}`);
+    }
+    return JSON.parse(output);
+  } finally {
+    rmSync(temp, {recursive: true, force: true});
+  }
+}
+
+function verifyClosure(repo, identity, derivative) {
+  const discovered = rederiveClosure(repo, identity, derivative);
+  requireSortedEqual(identity.sourceModules, Object.keys(discovered.modules ?? {}), 'Committed discovery source modules');
+  requireSortedEqual(identity.adapters, Object.keys(discovered.adapterModules ?? {}), 'Committed discovery adapters');
+  requireSortedEqual(identity.dataFiles, discovered.dataFiles ?? [], 'Committed discovery data files');
+  requireSortedEqual(identity.identityDataFiles, discovered.identityDataFiles ?? [], 'Committed discovery identity data files');
+  requireSortedEqual(identity.hordeDataFiles, discovered.hordeDataFiles ?? [], 'Committed discovery horde data files');
+}
+
+function requireSameBytes(repo, commit, sourcePath, actualPath, label) {
+  const expected = gitObjectBytes(repo, commit, sourcePath);
+  const actual = readFileSync(actualPath);
+  require_(actual.equals(expected), `${label} differs from ${sourcePath} at ${commit}`);
+}
+
+function verifyLauncherSurface(repo, identity, packageDir) {
+  const {port_commit: commit, target} = identity;
+  for (const name of LAUNCHER_HELPERS) {
+    requireSameBytes(repo, commit, `tools/godot-package/${name}`, join(packageDir, name), name);
+  }
+  requireSameBytes(repo, commit, 'port/contracts/map-selection.json', join(packageDir, 'catalog.json'), 'catalog.json');
+  const play = target === 'windows' ? 'port/native-windows-package/PLAY.md' : 'port/native-linux-package/PLAY.md';
+  requireSameBytes(repo, commit, play, join(packageDir, 'README.md'), 'README.md');
+  if (target === 'linux') {
+    for (const name of LINUX_LAUNCHERS) {
+      requireSameBytes(repo, commit, `tools/godot-package/${name}`, join(packageDir, name), name);
+    }
+  } else {
+    const crlf = text => text.replace(/\r\n/g, '\n').replace(/\n/g, '\r\n');
+    for (const name of WINDOWS_LAUNCHERS) {
+      const expected = Buffer.from(crlf(gitObjectBytes(repo, commit, `tools/godot-package/${name}`).toString('utf8')), 'utf8');
+      require_(readFileSync(join(packageDir, name)).equals(expected), `${name} differs from its committed source`);
+    }
+  }
+}
+
 export function verifyGitIdentity(repo, identity, packageDir) {
   require_(existsSync(repo), `Repository path does not exist: ${repo}`);
-  const lockPath = join(repo, ...SOURCE_LOCK.split('/'));
-  require_(existsSync(lockPath), `Repository source lock is missing: ${SOURCE_LOCK}`);
-  const lock = JSON.parse(readFileSync(lockPath, 'utf8'));
+  const lock = JSON.parse(git(repo, ['show', `${identity.port_commit}:${SOURCE_LOCK}`]));
   require_(lock.source_commit === identity.source_commit,
-    `Manifest source_commit ${identity.source_commit} differs from repository source lock ${lock.source_commit}`);
+    `Manifest source_commit ${identity.source_commit} differs from the recorded source lock ${lock.source_commit}`);
   require_(lock.godot_version === identity.godot_version,
-    'Manifest godot_version differs from the repository source lock');
+    'Manifest godot_version differs from the recorded source lock');
 
   const derivative = loadDerivative(repo, identity);
-  verifySourceState(repo, identity.source_commit, derivative);
+  verifySourceState(repo, identity.source_commit, derivative, {portCommit: identity.port_commit});
   const derivativeFiles = derivative ? derivative.runtime_files : {};
 
   for (const path of identity.sourceModules) {
@@ -453,6 +552,8 @@ export function verifyGitIdentity(repo, identity, packageDir) {
     const actual = sha256File(join(packageDir, 'runtime', ...path.split('/')));
     require_(expected === actual, `Runtime data differs from port_commit: ${path}`);
   }
+  verifyLauncherSurface(repo, identity, packageDir);
+  verifyClosure(repo, identity, derivative);
 }
 
 export function validateArtifact({packageDir, repoRoot = REPO_ROOT, manifest = null, manifestPath = null} = {}) {
@@ -460,8 +561,18 @@ export function validateArtifact({packageDir, repoRoot = REPO_ROOT, manifest = n
   const resolvedPackage = resolve(packageDir);
   const resolvedRepo = resolve(repoRoot);
   require_(existsSync(resolvedPackage), `Package directory does not exist: ${resolvedPackage}`);
-  const loaded = manifest ?? JSON.parse(readFileSync(manifestPath ?? join(resolvedPackage, 'manifest.json'), 'utf8'));
-  const identity = normalizeManifest(loaded);
+  const ownBytes = readFileSync(join(resolvedPackage, 'manifest.json'));
+  const own = JSON.parse(ownBytes.toString('utf8'));
+  // A caller-supplied "trusted" manifest may only confirm the package's own
+  // manifest; it can never substitute for it.
+  if (manifestPath !== null) {
+    require_(existsSync(manifestPath), `Provided manifest path does not exist: ${manifestPath}`);
+    require_(readFileSync(manifestPath).equals(ownBytes), 'Provided manifest file does not match the package manifest.json');
+  }
+  if (manifest !== null) {
+    require_(canonicalJson(manifest) === canonicalJson(own), 'Provided manifest does not match the package manifest.json');
+  }
+  const identity = normalizeManifest(own);
   validatePackageInventory(resolvedPackage, identity);
   validateTargetStructure(resolvedPackage, identity);
   validateRuntimeClosure(resolvedPackage, identity);
