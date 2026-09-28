@@ -99,6 +99,22 @@ export function validateCinderwakeRun({wire,stdout,stderr,summary,launch}){
   const scene=lines(stdout,'CINDERWAKE_STAGE ');
   assert(scene.length===1&&scene[0].map===summary.map&&scene[0].nativeGateCount===2&&scene[0].stage==='B',
     'actual Cinderwake product did not load its two native gates');
+  if(summary.scenario==='motion'){
+    const samples=lines(stdout,'HORDE_MOTION ');
+    assert.equal(samples.length,1,'one ordinary-input Cinderwake motion trace required');
+    const motion=samples[0];
+    assert.equal(motion.source,'live Cinderwake Horde loopback, ordinary W key input');
+    assert(motion.seconds>=8&&motion.render_samples>30&&motion.snapshots_applied>90&&motion.ack>60&&motion.distance_m>1,
+      'camera movement needs source snapshots and acknowledged ordinary input');
+    assert(motion.largest_step_above_render_speed_cap_m<0.15&&motion.largest_camera_to_source_eye_m<3,
+      'Cinderwake render catch-up exceeded the Horde camera bounds');
+    const inputs=wire.filter(row=>row.direction==='in'&&row.frame?.type==='input');
+    assert(inputs.some(row=>!row.frame.cancel&&row.frame.input?.z < -0.5),
+      'ordinary forward input did not reach the source');
+    const positions=snapshots.flatMap(row=>row.frame.state.actors.filter(actor=>actor.id===0).map(actor=>[actor.x,actor.z]));
+    assert(positions.length>90&&Math.hypot(positions.at(-1)[0]-positions[0][0],positions.at(-1)[1]-positions[0][1])>1,
+      'source actor did not move with the visual camera');
+  }
   if(summary.scenario==='waves'){
     assert(summary.waves>=3,'source stage acceptance requires a later wave');
     const result=wire.find(row=>row.direction==='out'&&row.frame?.type==='results'&&row.round===1)?.frame.state;

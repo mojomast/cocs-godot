@@ -8,7 +8,7 @@
 //
 //   GODOT_BIN=<pinned 4.5.2> node port/native-identity-horde/run.mjs --scenario=waves --waves=3
 //
-// Scenarios: startup (wave 1 with enemies),
+// Scenarios: startup (wave 1 with enemies), motion (held-W camera/source trace),
 // waves (multi-wave combat and a
 // legal wave-target victory), defeat (natural deaths to a real defeat and a
 // clean restart), peak (clears as far as the bound allows and measures frame
@@ -31,11 +31,11 @@ const cinderwake = selectedMap === 'cinderwake-drydock';
 if (selectedMap !== IDENTITY_HORDE_MAP && !cinderwake) throw Error('Unsupported Horde observer map');
 // startup keeps the product default of ten waves so the default-ten contract is
 // exercised on the identity composition too; it finishes at wave one.
-const waves = Number(option('--waves', {startup: 10, waves: 3, stages: 6, defeat: 1, peak: 10}[scenario] ?? 1));
+const waves = Number(option('--waves', {startup: 10, motion: 10, waves: 3, stages: 6, defeat: 1, peak: 10}[scenario] ?? 1));
 const resolution = option('--resolution', '1280x800');
 const rendering = option('--rendering', '');
 const RENDERING_METHODS = ['', 'gl_compatibility', 'mobile', 'forward_plus'];
-const SCENARIOS = Object.freeze({startup: 95, waves: cinderwake ? 380 : 205,
+const SCENARIOS = Object.freeze({startup: 95, motion: 65, waves: cinderwake ? 380 : 205,
   ...(cinderwake ? {stages: 380} : {}), defeat: 205, peak: 195});
 // Full snapshots are retained for source/scene correlation; on the expanded
 // seven-spawn Horde map a natural three-wave run can exceed 96 MiB of raw JSON
