@@ -74,7 +74,7 @@ else {
     const forbidden = "throw Error('UNEXPECTED_AUTHORITY_IMPORT');";
     let script;
     if (kind === 'package') {
-      for (const name of ['run.mjs','options.mjs','endpoint.mjs','settings_path.mjs']) await copy('tools/godot-package/'+name,name);
+      for (const name of ['run.mjs','options.mjs','endpoint.mjs','settings_path.mjs','career_path.mjs']) await copy('tools/godot-package/'+name,name);
       await copy('port/contracts/map-selection.json','catalog.json');
       await put('runtime/port/native-arenas/authority.mjs',adapter);
       await put('runtime/server/game-server.mjs',forbidden);
@@ -85,6 +85,7 @@ else {
       for (const name of ['launch.mjs','launch_options.mjs']) await copy('tools/godot-dev/'+name,'tools/godot-dev/'+name);
       await copy('tools/godot-package/endpoint.mjs','tools/godot-package/endpoint.mjs');
       await copy('tools/godot-package/settings_path.mjs','tools/godot-package/settings_path.mjs');
+      await copy('tools/godot-package/career_path.mjs','tools/godot-package/career_path.mjs');
       await copy('port/contracts/map-selection.json','port/contracts/map-selection.json');
       await put('port/contracts/source-lock.json',JSON.stringify(lock));
       await put('tools/godot-export/semantic.mjs','export function verifySource(){} // fixture checkout');
