@@ -57,6 +57,10 @@ var reset_armed := false
 var linger_frames := 0
 var finished := false
 var quitted := false
+var finish_ok := false
+var closing_started := false
+var close_wait := 0.0
+var closed_frames := 0
 var evidence: Dictionary = {"label": LABEL, "notes": notes, "shots": []}
 
 func check(ok: bool, message: String) -> void:
@@ -144,19 +148,42 @@ func snapshot_evidence() -> Dictionary:
 func finish(ok: bool, message: String) -> void:
 	if finished: return
 	finished = true
-	evidence["ok"] = ok and failures == 0
+	finish_ok = ok
 	evidence["message"] = message
-	evidence["checks"] = checks
-	evidence["failures"] = failures
 	evidence.merge(snapshot_evidence())
-	print("HORDE_UPGRADE_LIVE ", JSON.stringify(evidence))
 	if not shot_prefix.is_empty():
 		await capture("final")
+	# Keep the engine and its network poll alive until the server has completed
+	# the close handshake. Abruptly quitting here can fail a queued per-tick
+	# snapshot send before the authority receives the socket's close event.
+	if is_instance_valid(session) and is_instance_valid(session.client):
+		session.client.peer.close(1000, "Fixture complete")
+	else:
+		closed_frames = 2
+	closing_started = true
+
+func finish_exit() -> void:
+	evidence["ok"] = finish_ok and failures == 0
+	evidence["checks"] = checks
+	evidence["failures"] = failures
+	print("HORDE_UPGRADE_LIVE ", JSON.stringify(evidence))
 	quitted = true
-	quit(0 if (ok and failures == 0) else 1)
+	quit(0 if evidence.ok else 1)
 
 func _process(delta: float) -> bool:
 	if quitted: return true
+	if finished:
+		if not closing_started: return false
+		close_wait += delta
+		if is_instance_valid(session) and is_instance_valid(session.client) \
+			and session.client.peer.get_ready_state() != WebSocketPeer.STATE_CLOSED:
+			closed_frames = 0
+		else:
+			closed_frames += 1
+		if closed_frames >= 2 or close_wait > 3.0:
+			check(closed_frames >= 2, "fixture socket did not finish its close handshake")
+			finish_exit()
+		return false
 	elapsed += delta
 	stage_frames += 1
 	if not is_instance_valid(session):
@@ -168,7 +195,6 @@ func _process(delta: float) -> bool:
 	if not finished and elapsed > DEFAULT_DEADLINE:
 		finish(false, "deadline %.1fs in stage %s entry=%s" % [elapsed, stage, session.label.text])
 		return false
-	if finished: return false
 	match stage:
 		"scene":
 			# Wait for the real handshake to reach the live round; the offer is
