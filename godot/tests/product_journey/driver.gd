@@ -3,6 +3,7 @@ extends SceneTree
 ## This is bounded lifecycle evidence, not natural rounds or human acceptance.
 var scene: Node
 var settings: Node
+var career: Node
 var record: Dictionary = {}
 var state_path := ""
 var scene_path := ""
@@ -31,6 +32,7 @@ func begin() -> void:
 	state_path = OS.get_environment("COCS_JOURNEY_STATE")
 	scene_path = OS.get_environment("COCS_JOURNEY_SCENE")
 	settings = root.get_node("LocalSettings")
+	career = root.get_node("Career")
 	record = JSON.parse_string(FileAccess.get_file_as_string(state_path))
 	if not require_value(settings.values.master_volume == record.expected_volume, "settings did not survive process boundary"): return
 	var packed: PackedScene = load(scene_path)
@@ -58,11 +60,13 @@ func menu_step() -> void:
 		settings.set_value("ui_scale",100,false)
 		root.size = Vector2i(1280,800)
 		await process_frame
+	if not await home_career_step(visit): return
 	if visit > 0:
 		if not require_value(scene.current_route.get("id") == record.route, "menu did not restore last activity"): return
 		for key: String in record.get("options", {}):
 			if not require_value(scene.selections.get(key) == record.options[key], "menu did not restore " + key): return
 	if visit == int(record.cycles) * record.itinerary.size():
+		write_record()
 		print("PRODUCT_JOURNEY_COMPLETE ", JSON.stringify(record))
 		scene.quit_menu()
 		return
@@ -108,6 +112,55 @@ func menu_step() -> void:
 	write_record()
 	print("PRODUCT_JOURNEY_HOME ", JSON.stringify({"visit":visit + 1,"route":next_route,"volume":volume}))
 	scene.on_start()
+
+func career_bounds() -> bool:
+	var scroll := career.details.get_parent() as Control
+	var viewport: Vector2 = root.get_visible_rect().size
+	var back := career.panel.find_child("CareerBack", true, false) as Control
+	var rows := career.details.find_child("CatalogRows", true, false) as VBoxContainer
+	if not require_value(rows != null and rows.get_child_count() > 0, "Career catalog did not load any rows"): return false
+	var first := rows.get_child(0) as Control
+	for control: Control in [scroll, career.details, back, first]:
+		var bounds := control.get_global_rect()
+		if not require_value(bounds.position.x >= -1 and bounds.end.x <= viewport.x + 1 and bounds.size.x > 0,
+			"Career content clips horizontally at this display scale"): return false
+	var back_rect := back.get_global_rect()
+	return require_value(back_rect.position.y >= 0 and back_rect.end.y <= viewport.y + 1,
+		"Career Back action is not visible without scrolling")
+
+func career_back() -> void:
+	var button := career.panel.find_child("CareerBack", true, false) as Button
+	button.pressed.emit()
+
+func home_career_step(visit: int) -> bool:
+	if not require_value(career.profile.is_empty(), "Home has a stale career from a previous process"): return false
+	scene.career_button.pressed.emit()
+	await process_frame
+	if not require_value(career.active() and not settings.overlay_open(), "Home Career button did not open a single overlay"): return false
+	if not require_value(career.state_label.text.contains("NO CONNECTED CAREER"), "Home fabricated a connected profile"): return false
+	var home_rows := career.details.find_child("CatalogRows", true, false) as VBoxContainer
+	if not require_value(home_rows != null and home_rows.get_child_count() > 0, "Home catalog missing"): return false
+	var first_label := home_rows.get_child(0).get_child(0) as Label
+	if not require_value(first_label != null and first_label.text.contains("NOT LOADED"), "Home catalog fabricated unlock status"): return false
+	if visit == 0 and OS.get_environment("COCS_JOURNEY_CAPTURE") == "1":
+		if not career_bounds(): return false
+		await capture_view("career-home-1280x800")
+		root.size = Vector2i(760,520)
+		await process_frame
+		if not career_bounds(): return false
+		await capture_view("career-home-760x520")
+		settings.set_value("ui_scale",150,false)
+		await process_frame
+		if not career_bounds(): return false
+		await capture_view("career-home-760x520-scale150")
+		settings.set_value("ui_scale",100,false)
+		root.size = Vector2i(1280,800)
+		await process_frame
+	career_back()
+	if not require_value(not career.active() and not scene.quitting and scene.career_button.has_focus(), "Home Career Back quit or lost focus"): return false
+	record.career_home_checks = int(record.get("career_home_checks",0)) + 1
+	print("PRODUCT_JOURNEY_CAREER ", JSON.stringify({"route":"home","has_profile":false,"bounds":true}))
+	return true
 
 func _process(delta: float) -> bool:
 	if not running: return false
@@ -204,6 +257,8 @@ func route_step() -> void:
 	settings_key()
 	await process_frame
 	if not require_value(settings.overlay_open() and settings.rows.leave.visible, "F12 did not expose match Settings/Leave"): return
+	if not await live_career_step(): return
+	if not require_value(settings.overlay_open() and settings.rows.leave.visible, "Career Back did not restore live Settings/Leave"): return
 	if not require_value(Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Settings retained pointer capture"): return
 	if not require_value(not paused, "Settings paused the client while authority runs"): return
 	await create_timer(0.2).timeout
@@ -216,3 +271,37 @@ func route_step() -> void:
 	print("PRODUCT_JOURNEY_MATCH ", JSON.stringify({"visit":record.visits,"route":route_id,"source_ready":true,
 		"settings_path":settings.path,"volume":settings.values.master_volume,"pointer_released":true}))
 	settings.rows.leave.pressed.emit()
+
+func live_career_step() -> bool:
+	if not require_value(settings.career_button.visible, "live Settings has no Career entry"): return false
+	settings.career_button.pressed.emit()
+	await process_frame
+	if not require_value(career.active() and not settings.overlay_open() and not paused, "live Career did not open while authority continued"): return false
+	var has_profile: bool = not career.profile.is_empty()
+	if route_id in ["combat", "lattice-world"]:
+		if not require_value(has_profile and scene.client.career_seated and scene.client.room_id != "", "source welcome did not seat a Career profile"): return false
+	if has_profile:
+		if not require_value(career.state_label.text.contains("CONNECTED SOURCE CAREER") and not career.state_label.text.contains("NO CONNECTED CAREER"), "live source profile not projected"): return false
+	else:
+		if not require_value(career.state_label.text.contains("NO CONNECTED CAREER"), "adapter without source profile invented progress"): return false
+	if route_id == "lattice-world" and int(record.visits) == 2 and OS.get_environment("COCS_JOURNEY_CAPTURE") == "1":
+		if not career_bounds(): return false
+		await capture_view("career-live-profile-1280x800")
+		root.size = Vector2i(760,520)
+		await process_frame
+		if not career_bounds(): return false
+		await capture_view("career-live-profile-760x520")
+		settings.set_value("ui_scale",150,false)
+		await process_frame
+		if not career_bounds(): return false
+		await capture_view("career-live-profile-760x520-scale150")
+		settings.set_value("ui_scale",100,false)
+		root.size = Vector2i(1280,800)
+		await process_frame
+	career_back()
+	await process_frame
+	if not require_value(not career.active() and settings.overlay_open() and settings.rows.back.has_focus(), "live Career Back did not restore SettingsBack focus"): return false
+	record.career_live_checks = int(record.get("career_live_checks",0)) + 1
+	write_record()
+	print("PRODUCT_JOURNEY_CAREER ", JSON.stringify({"route":route_id,"has_profile":has_profile,"bounds":true}))
+	return true

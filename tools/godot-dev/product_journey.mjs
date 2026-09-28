@@ -18,6 +18,7 @@ const registry=JSON.parse(readFileSync('godot/ui/routes.json'));
 const itinerary=journeyOptions(itineraryPath?JSON.parse(readFileSync(itineraryPath)):DEFAULT_ITINERARY,registry);
 const expectedSessions=itinerary.length*3;
 const expectedDecks=itinerary.filter(entry=>entry.route==='lattice-world').length*3;
+const expectedCareerHome=expectedSessions+1;
 const real = process.env.GODOT_BIN;
 assert.ok(real, 'Set pinned GODOT_BIN');
 assert.ok(process.env.DISPLAY, 'Run with a private Xvfb display');
@@ -27,7 +28,7 @@ const hash=path=>createHash('sha256').update(readFileSync(path)).digest('hex');
 mkdirSync('.port-runtime/product-journeys', {recursive:true});
 const output = mkdtempSync(resolve('.port-runtime/product-journeys/attempt-'));
 const state = join(output, 'state.json');
-writeFileSync(state, JSON.stringify({visits:0,expected_volume:100,itinerary,cycles:3}));
+writeFileSync(state, JSON.stringify({visits:0,expected_volume:100,itinerary,cycles:3,career_home_checks:0,career_live_checks:0}));
 const wrapper = join(output, 'godot-wrapper.mjs');
 writeFileSync(wrapper, `#!${process.execPath}
 import {spawn} from 'node:child_process';
@@ -58,6 +59,9 @@ finally {clearTimeout(timer);writeFileSync(join(output,'console.log'),text);}
 const matches=text.split('\n').filter(line=>line.startsWith('PRODUCT_JOURNEY_MATCH ')).map(line=>JSON.parse(line.slice('PRODUCT_JOURNEY_MATCH '.length)));
 const captures=text.split('\n').filter(line=>line.startsWith('PRODUCT_JOURNEY_CAPTURE ')).map(line=>JSON.parse(line.slice('PRODUCT_JOURNEY_CAPTURE '.length)));
 const decks=text.split('\n').filter(line=>line.startsWith('PRODUCT_JOURNEY_DECK ')).map(line=>JSON.parse(line.slice('PRODUCT_JOURNEY_DECK '.length)));
+const careers=text.split('\n').filter(line=>line.startsWith('PRODUCT_JOURNEY_CAREER ')).map(line=>JSON.parse(line.slice('PRODUCT_JOURNEY_CAREER '.length)));
+const careerHomes=careers.filter(row=>row.route==='home');
+const careerLives=careers.filter(row=>row.route!=='home');
 const ports=[...text.matchAll(/Owned local server ready at ws:\/\/127\.0\.0\.1:(\d+)/g)].map(match=>Number(match[1]));
 const closed=[];
 for(const port of new Set(ports))closed.push(await new Promise(resolve=>{
@@ -66,13 +70,20 @@ for(const port of new Set(ports))closed.push(await new Promise(resolve=>{
   socket.once('connect',()=>{socket.destroy();resolve(false);});
   socket.setTimeout(1000,()=>{socket.destroy();resolve(false);});
 }));
-const passed=code===0&&!text.includes('ERROR:')&&matches.length===expectedSessions&&decks.length===expectedDecks&&ports.length===expectedSessions&&closed.every(Boolean)&&text.includes('PRODUCT_JOURNEY_COMPLETE ');
+const finalState=JSON.parse(readFileSync(state));
+const careerPassed=careerHomes.length===expectedCareerHome&&careerLives.length===expectedSessions&&
+  careerHomes.every(row=>row.has_profile===false&&row.bounds===true)&&
+  careerLives.every(row=>row.bounds===true&&(!['combat','lattice-world'].includes(row.route)||row.has_profile===true))&&
+  finalState.career_home_checks===expectedCareerHome&&finalState.career_live_checks===expectedSessions;
+const passed=code===0&&!text.includes('ERROR:')&&matches.length===expectedSessions&&decks.length===expectedDecks&&careerPassed&&ports.length===expectedSessions&&closed.every(Boolean)&&text.includes('PRODUCT_JOURNEY_COMPLETE ');
 const summary={scope:'source-driven scripted UI lifecycle; not natural rounds/human acceptance',passed,exit_code:code,
   port_commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),source_commit:sourceLock.source_commit,
   source_derivative_commit:derivative?.derivative_commit??null,
-  input_sha256:Object.fromEntries(['godot/tests/product_journey/driver.gd','godot/ui/local_settings.gd','godot/lattice/world_commands.gd',
+  input_sha256:Object.fromEntries(['godot/tests/product_journey/driver.gd','godot/ui/local_settings.gd','godot/ui/main_menu.gd','godot/career/service.gd','godot/career/catalog.json','godot/lattice/world_commands.gd',
     'tools/godot-dev/product_journey.mjs','tools/godot-dev/launch.mjs'].map(path=>[path,hash(path)])),
-  itinerary,cycles:3,source_sessions:matches,deck_checks:decks,captures,owned_ports:ports,all_owned_ports_closed:closed.every(Boolean),state:JSON.parse(readFileSync(state)),output};
+  itinerary,cycles:3,source_sessions:matches,deck_checks:decks,career_checks:careers,
+  career_counts:{home:careerHomes.length,live:careerLives.length,expected_home:expectedCareerHome,expected_live:expectedSessions,passed:careerPassed},
+  captures,owned_ports:ports,all_owned_ports_closed:closed.every(Boolean),state:finalState,output};
 for(const capture of captures)capture.sha256=hash(capture.path);
 writeFileSync(join(output,'summary.json'),JSON.stringify(summary,null,2)+'\n');
 console.log('PRODUCT_JOURNEY '+JSON.stringify(summary));
