@@ -27,6 +27,18 @@ test('source room issues owned welcome, profile read, start and progression upda
   const updated=await next('progression');
   assert.equal(updated.profile.id,welcome.profile.id);
   assert.equal(updated.profile.attachments.optic,'red-dot');
+  assert.deepEqual(updated.gear,updated.profile.gear,'GEAR reply carries explicit equipment marker');
+  assert.deepEqual(updated.attachments,updated.profile.attachments);
+  await new Promise(resolve=>setTimeout(resolve,550));
+  send({type:'gear',gear:{primary:'scope',armor:'plating'},attachments:{optic:'marksman-optic'},finish:'finish-ion'});
+  const normalized=await next('progression');
+  assert.deepEqual(normalized.profile.gear,{},'locked gear is source-normalized, not confirmed');
+  assert.deepEqual(normalized.profile.attachments,{},'locked mod is source-normalized');
+  assert.equal(normalized.profile.finish,null,'locked finish is source-normalized');
+  await new Promise(resolve=>setTimeout(resolve,550));
+  send({type:'gear',gear:{},attachments:{optic:'red-dot'}});
+  const restored=await next('progression');
+  assert.equal(restored.profile.attachments.optic,'red-dot','unlocked mod can be equipped after normalization');
   send({type:'host',mapId:'meridian-exchange',config:{mode:'deathmatch',botCount:0}});
   send({type:'start'});
   const start=await next('start');

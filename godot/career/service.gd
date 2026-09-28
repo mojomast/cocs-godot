@@ -2,6 +2,7 @@ extends CanvasLayer
 ## Runtime-only view of the active source connection. No profile or credential
 ## enters local settings, menu preferences, command line or diagnostic output.
 const CareerProfile = preload("res://career/profile.gd")
+const Actions = preload("res://career/actions_model.gd")
 var catalog: Dictionary = {}
 var connection_owner: WeakRef
 var profile: Dictionary = {}
@@ -13,6 +14,10 @@ var return_focus: Control
 var return_settings := false
 var return_settings_menu := false
 var category := "gear"
+var pending: Dictionary = {}
+var action_status := ""
+var last_send_ms := -1000
+var cooldown_refresh := false
 
 func _ready() -> void:
 	layer = 99
@@ -54,6 +59,10 @@ func clear_connection(client: Node) -> void:
 	if connection_owner != null and connection_owner.get_ref() == client:
 		connection_owner = null
 		profile.clear()
+		pending.clear()
+		last_send_ms = -1000
+		cooldown_refresh = false
+		action_status = "Disconnected · pending selection unconfirmed."
 		refresh()
 
 func receive(client: Node, frame: Dictionary) -> void:
@@ -62,11 +71,20 @@ func receive(client: Node, frame: Dictionary) -> void:
 	if not ("room_id" in client) or str(client.room_id).is_empty() or not client.career_seated or not client.career_wire_open(): return
 	if frame.get("type") == "welcome":
 		# Only the seated connection's source welcome owns an identity.
+		pending.clear()
+		last_send_ms = -1000
+		cooldown_refresh = false
+		action_status = ""
 		connection_owner = weakref(client)
 		profile = CareerProfile.project(frame.get("profile"))
 	elif frame.get("type") == "progression" and connection_owner != null and connection_owner.get_ref() == client and not profile.is_empty():
 		var next: Dictionary = CareerProfile.project(frame.get("profile"))
 		if next.get("id") != profile.get("id"): return
+		if not pending.is_empty():
+			var outcome: String = Actions.outcome(pending, frame, next)
+			if outcome != "pending":
+				action_status = "Source confirmed selection · saved for next match." if outcome == "applied" else "Source adjusted/refused selection · see confirmed equipment below."
+				pending.clear()
 		profile = next
 	else: return
 	refresh()
@@ -100,7 +118,39 @@ func _process(_delta: float) -> void:
 	if connection_owner != null and not is_instance_valid(connection_owner.get_ref()):
 		connection_owner = null
 		profile.clear()
+		pending.clear()
+		last_send_ms = -1000
+		cooldown_refresh = false
+		action_status = "Disconnected · pending selection unconfirmed."
 		refresh()
+	if cooldown_refresh and Time.get_ticks_msec() - last_send_ms >= 550:
+		cooldown_refresh = false
+		refresh()
+	if not pending.is_empty() and not pending.get("timed_out", false) and Time.get_ticks_msec() - int(pending.get("sent_at", 0)) > Actions.TIMEOUT_MS:
+		pending.timed_out = true
+		action_status = "No source confirmation · outcome unknown. Reconnect before another selection."
+		refresh()
+
+func select_item(item: Dictionary) -> void:
+	if not pending.is_empty() or profile.is_empty() or connection_owner == null: return
+	if Time.get_ticks_msec() - last_send_ms < 550:
+		action_status = "Source gear cooldown · wait a moment and select again."
+		refresh()
+		return
+	var client: Node = connection_owner.get_ref()
+	if not is_instance_valid(client) or not client.career_wire_open() or not client.career_seated or str(client.room_id).is_empty() or client.spectating: return
+	# A complete loadout is sent on every write: omitted gear would clear slots.
+	if not profile.get("gear") is Dictionary or not profile.get("attachments") is Dictionary: return
+	var frame: Dictionary = Actions.request(profile, item)
+	if frame.is_empty(): return
+	if client.send_frame(frame) != OK:
+		action_status = "Selection could not be sent; confirmed equipment unchanged."
+	else:
+		last_send_ms = Time.get_ticks_msec()
+		cooldown_refresh = true
+		pending = {"identity":profile.id, "frame":frame, "sent_at":Time.get_ticks_msec()}
+		action_status = "Selection sent · awaiting source confirmation (next match)."
+	refresh()
 
 func _input(event: InputEvent) -> void:
 	if not event is InputEventKey or not event.pressed or event.echo: return
@@ -137,13 +187,13 @@ func build_panel() -> void:
 	details.add_child(heading)
 	state_label = Label.new()
 	state_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	details.add_child(state_label)
 	var back := Button.new()
 	back.name = "CareerBack"
 	back.text = "BACK (Esc)"
 	back.custom_minimum_size.y = 44
 	back.pressed.connect(close_panel)
 	details.add_child(back)
+	details.add_child(state_label)
 	var tabs := HFlowContainer.new()
 	details.add_child(tabs)
 	for entry: Dictionary in [{"id":"gear", "label":"GEAR"}, {"id":"attachment", "label":"MODS"}, {"id":"finish", "label":"FINISHES"}, {"id":"crosshair", "label":"RETICLES"}]:
@@ -170,19 +220,22 @@ func add_line(parent: Node, text: String, size: int = 16) -> void:
 func refresh() -> void:
 	if details == null or state_label == null: return
 	if profile.is_empty():
-		state_label.text = "NO CONNECTED CAREER · Browse the source Arsenal below. A career appears here after joining a source-server room in a live session (F12 → Career / Arsenal). Home has no active room; no progress has been loaded."
+		state_label.text = "NO CONNECTED CAREER · Join a room to see your source profile and equip unlocked items."
 	else:
 		var parts := []
-		for field: String in ["level", "xp", "prestige", "matches", "wins", "kills"]:
+		for field: String in ["level", "xp", "prestige"]:
 			parts.append(field.to_upper() + " " + (str(profile[field]) if profile.has(field) else "UNKNOWN"))
-		state_label.text = "CONNECTED SOURCE CAREER · " + "  ·  ".join(parts) + "\nRead-only current source-session profile; cross-launch identity continuity is not yet implemented. Career gear is separate from match-scoped REQ."
+		state_label.text = "CONNECTED SOURCE CAREER · " + " · ".join(parts) + "\nEquip for next match · Unlocks come from level and source progression."
 		var modes: Dictionary = profile.get("byMode", {})
-		if modes.is_empty(): state_label.text += "\nMODE HISTORY · No per-mode totals reported. Individual match history is not keyed by career identity on this wire."
-		else:
-			state_label.text += "\nMODE TOTALS (source profile):"
-		for mode: String in modes:
+		state_label.text += "\nMATCHES %s · WINS %s · KILLS %s" % [str(profile.get("matches", "?")), str(profile.get("wins", "?")), str(profile.get("kills", "?"))]
+		if not modes.is_empty():
+			var mode_parts := []
+			for mode: String in modes:
 				var stats: Dictionary = modes[mode]
-				state_label.text += "\n%s · %s matches · %s wins · %s kills" % [mode, str(stats.get("matches", "?")), str(stats.get("wins", "?")), str(stats.get("kills", "?"))]
+				mode_parts.append("%s %s/%s" % [mode, str(stats.get("wins", "?")), str(stats.get("matches", "?"))])
+			state_label.text += "\nMODE WINS/MATCHES · " + " · ".join(mode_parts)
+	if not action_status.is_empty(): state_label.text += "\n" + action_status
+	if category == "crosshair": state_label.text += "\nReticles are view-only: this server's GEAR wire does not carry a crosshair selection."
 	if catalog.is_empty(): state_label.text += "\nSource Arsenal catalog unavailable. Regenerate from the source modules."
 	var list := details.find_child("CatalogRows", true, false) as VBoxContainer
 	if list == null: return
@@ -200,3 +253,11 @@ func refresh() -> void:
 		for part: String in item.spec: spec.append(part)
 		if item.kind == "attachment": spec.append("ALL WEAPONS" if item.weapons.is_empty() else "FITS " + ", ".join(item.get("weaponNames", [])))
 		if not spec.is_empty(): add_line(box, " · ".join(spec), 14)
+		if item.kind != "crosshair":
+			var button := Button.new()
+			button.text = "EQUIPPED" if CareerProfile.item_state(profile, item) == "EQUIPPED" else "EQUIP · NEXT MATCH"
+			button.custom_minimum_size.y = 44
+			var client: Node = connection_owner.get_ref() if connection_owner != null else null
+			button.disabled = not pending.is_empty() or Time.get_ticks_msec() - last_send_ms < 550 or not is_instance_valid(client) or not client.career_wire_open() or not client.career_seated or client.spectating or not profile.get("gear") is Dictionary or not profile.get("attachments") is Dictionary or not Actions.available(profile, item) or CareerProfile.item_state(profile, item) == "EQUIPPED"
+			button.pressed.connect(select_item.bind(item))
+			box.add_child(button)

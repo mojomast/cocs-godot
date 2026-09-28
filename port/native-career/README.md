@@ -1,39 +1,45 @@
-# Native Career / Arsenal (first slice)
+# Native Career / Arsenal
 
-Home's **CAREER / ARSENAL** button opens the catalog in-process; during a live
-source-server session use **F12 → Career / Arsenal**. At Home it says **NO
-CONNECTED CAREER** and every lock status says **NOT LOADED**. Join/create a
-room through the existing match/lobby workflow; `server/room.mjs:966-974`
-returns `welcome.profile` to the seated connection. `godot/net/client.gd`
-passes that frame and subsequent `progression.profile` frames into the runtime
-projection. `server/room.mjs:1122-1123,1372` is the authoritative origin of
-those updates; this panel sends no gear or unlock messages. Esc closes the
-panel and returns to Settings when entered from Settings. During the match
-the panel is read-only and the match continues.
+Home's **CAREER / ARSENAL** opens the source-derived catalog without room
+authority. Join/create a source-server room and use **F12 → Career / Arsenal**
+to inspect the seated connection's profile. Gear (primary, armour, utility),
+mod slots and weapon finishes that are unlocked by level or source grant can
+be equipped here. There is no unlock purchase endpoint. Reticles are view-only:
+the source `GEAR` packet does not forward `crosshair` to `setGearOwned`.
 
-`game/progression.mjs` and `game/attachments.mjs` define the 23 gear and 22
-attachment items, levels, grants and equipment slots; cosmetics come from
-`game/cosmetics.mjs`; weapon fit names come from `game/data.mjs`.
-`tools/godot-export/career_catalog.mjs` projects source
-descriptions, modifiers, attachment fit and unlock IDs into
-`godot/career/catalog.json` and records source SHA-256 hashes. A missing
-source unlock or incomplete definition fails generation. Regenerate with
-`node tools/godot-export/career_catalog.mjs`; verify with `--check`.
+Each selection sends complete gear and attachment maps (preserving the other
+slots) on the seated connection. `server/room.mjs:setGear` replies with a
+`progression` frame containing `gear` and `attachments`; ordinary award frames
+do not settle a pending selection. The returned profile is compared against
+the exact requested maps and optional finish. Source-normalized/refused writes
+are shown as adjustments, never as successful equips. Only one write can be
+outstanding. A timeout means **unknown**, not a refusal: without a wire request
+ID a second write cannot be safely attributed until the first receives its
+reply or the connection is renewed. Disconnect clears pending state.
 
-The source profile contains `ownerToken`; `godot/career/profile.gd` projects
-only display fields. No owner token, progression token, or profile ID is
-printed or saved in Home preferences or local settings. The server's global
-`history` frame contains player names but no career IDs; the panel therefore
-shows **byMode totals** from the owned profile and does not call this an
-individual match timeline. On disconnect the in-memory projection clears.
-Cross-process identity persistence and reconnect credentials belong to the
-next slice; Home makes no claim to the prior process's career.
+The source permits `GEAR` during a match, but it updates the progression
+profile, not the existing match actor. The saved selection is for the **next
+match**; the current actor does not change on respawn. Mod descriptions show
+which source weapon types they fit, and their effects are applied only to
+compatible weapons when the source resolves that loadout. Esc closes the panel
+and returns to Settings when opened there.
 
-Verification (when the serial test slot is free):
+`tools/godot-export/career_catalog.mjs` projects source descriptions, slots,
+modifiers, weapon fit and unlock IDs from `game/progression.mjs`,
+`game/attachments.mjs`, `game/cosmetics.mjs` and `game/data.mjs` into
+`godot/career/catalog.json`, with source SHA-256 hashes. Regenerate using
+`node tools/godot-export/career_catalog.mjs`; check with `--check`.
+
+`godot/career/profile.gd` strips ownership credentials from the runtime view;
+no token, profile ID or loadout is saved into Home preferences or diagnostics.
+The panel displays aggregate profile/mode totals, not an individual match
+timeline. Home without a room offers browsing only.
+
+Verification (in the parent's serial test slot):
 `node tools/godot-export/career_catalog.mjs --check`,
 `node --test port/native-career/catalog.test.mjs`,
 `node --test port/native-career/wire.test.mjs`,
+`node --test port/native-career/equip-lifecycle.test.mjs`,
 `godot --headless --path godot --script res://tests/career/projection.gd`,
-`godot --headless --path godot --script res://tests/career/modal.gd`.
-The last two require an engine/import slot; the wire fixture runs a genuine
-ephemeral source authority and must wait for the shared server-test slot.
+`godot --headless --path godot --script res://tests/career/modal.gd`,
+`godot --headless --path godot --script res://tests/career/actions.gd`.
