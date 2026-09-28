@@ -45,8 +45,12 @@ Honesty rules implemented from those facts:
   instead of silently dropping. A send is shown as `Sending…` until the
   authority echoes it, then `No server confirmation (rate-limited or dropped by
   the authority)` after 2.5 s with no echo.
-- A `chat` refused with `{type:'error', message:'not in a room'}` and a malformed
-  `rooms`/`chat` frame are non-fatal `social_error` notices, not session teardown.
+- A `chat` refused with `{type:'error', message:'not in a room'}`, a server that
+  never implemented the verb (`unknown message type: chat` / `: list`) and a
+  malformed `rooms`/`chat` frame are non-fatal `social_error` notices, not
+  session teardown. A source adapter with no chat capability therefore reports
+  "not supported" honestly instead of faking a chat surface or dropping the
+  connection.
 
 Untrusted names/text render through plain `Label`s (no RichText/BBCode parsing).
 

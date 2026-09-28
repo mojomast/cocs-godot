@@ -130,6 +130,9 @@ func run() -> void:
 	check(menu.room_browser.status.text.to_lower().contains("malformed"), "malformed rooms reply is reported")
 	check(session.client.decode_text('{"type":"error","message":"not in a room"}'), "out-of-room chat refusal is not a teardown")
 	check(session.client.error.is_empty(), "out-of-room chat refusal keeps the connection")
+	check(session.client.decode_text('{"type":"error","message":"unknown message type: chat"}'), "a server without chat is not a teardown")
+	check(session.client.error.is_empty(), "missing chat capability keeps the connection")
+	check(menu.room_browser.status.text.contains("unknown message type"), "missing chat capability is reported honestly")
 
 	# --- Chat: send, source ACK renders, cooldown, scope clearing ------------
 	session.client.room_id = "AB12"

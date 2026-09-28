@@ -18,6 +18,10 @@ signal chat(message: Dictionary)
 signal social_error(message: String)
 
 const PROTOCOL_VERSION := 3
+# Social wire verbs (game/protocol.mjs MESSAGE.CHAT / MESSAGE.LIST). Only used to
+# classify an `unknown message type: <verb>` capability notice as non-fatal.
+const MESSAGE_VERB_CHAT := "chat"
+const MESSAGE_VERB_LIST := "list"
 const Loadout = preload("res://ui/loadout.gd")
 const MAX_FRAME_BYTES := 1048576 # bounded initial cap; capture is not all-map worst case
 var peer := WebSocketPeer.new()
@@ -149,6 +153,16 @@ func join_room(id: String, player_name: String = "Godot guest", character: Strin
 		joined_room_request = id
 		spectator_notice_stage = 1
 	return result
+
+# A social verb the server never implemented (`unknown message type: chat` /
+# `: list`) or a chat sent without a seat is a capability/seat notice, not a
+# protocol violation: the connection and the seated identity stay intact.
+func social_refusal(message: Variant) -> bool:
+	if not message is String: return false
+	if message == "not in a room": return true
+	if not message.begins_with("unknown message type: "): return false
+	var verb: String = message.trim_prefix("unknown message type: ").strip_edges()
+	return verb == MESSAGE_VERB_CHAT or verb == MESSAGE_VERB_LIST
 
 # Room browser. The authority answers a `list` request with a `rooms` frame on
 # this same connection; it never creates, joins or changes a seat. Browsing is
@@ -328,10 +342,10 @@ func decode_text(text: String) -> bool:
 			spectator_notice_stage = 0
 			if informational: return true
 			var message := str(frame.get("message", "Server error"))
-			# A chat sent without a seated room is a social refusal, not a
-			# protocol violation: keep the connection and report it to the
-			# social surface. Every other error frame stays fatal as before.
-			if frame.get("message") == "not in a room" and not frame.has("code"):
+			# A chat sent without a seated room, or a social verb a server never
+			# implemented, is a notice for the social surface: keep the
+			# connection. Every other error frame stays fatal as before.
+			if not frame.has("code") and social_refusal(frame.get("message")):
 				social_error.emit(message)
 				return true
 			return fail(message)
