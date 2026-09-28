@@ -12,6 +12,7 @@ var return_focus: Control
 var rows: Dictionary = {}
 var status: Label
 var hint: Label
+var career_button: Button
 var startup_display_override := false
 
 static func explicit_display_flag(args: PackedStringArray, user_args: PackedStringArray = PackedStringArray()) -> bool:
@@ -198,6 +199,12 @@ func build_panel() -> void:
 	column.add_child(back)
 	rows.back = back
 	back.pressed.connect(close_panel)
+	career_button = Button.new()
+	career_button.name = "SettingsCareer"
+	career_button.text = "Career / Arsenal · Read-only"
+	career_button.custom_minimum_size.y = 44
+	career_button.pressed.connect(open_career)
+	column.add_child(career_button)
 	var leave := Button.new()
 	leave.name = "LeaveMatch"
 	leave.text = "Leave match · Return Home"
@@ -221,7 +228,8 @@ func build_panel() -> void:
 func _process(_delta: float) -> void:
 	if hint == null: return
 	var scene := get_tree().current_scene
-	hint.visible = DisplayServer.get_name() != "headless" and scene != null and scene.scene_file_path != MENU_SCENE and not overlay_open()
+	var career := get_tree().root.get_node_or_null("Career")
+	hint.visible = DisplayServer.get_name() != "headless" and scene != null and scene.scene_file_path != MENU_SCENE and not overlay_open() and (career == null or not career.active())
 	# LATTICE integrates the shortcut into its own control ribbon. Its modal
 	# deck/setup surfaces must not acquire another overlapping footer overlay.
 	if hint.visible and "tactical_hud" in scene:
@@ -230,16 +238,7 @@ func _process(_delta: float) -> void:
 func open_panel(from_menu: bool = false, previous_focus: Control = null) -> void:
 	if panel == null or overlay_open(): return
 	return_focus = previous_focus
-	var scene := get_tree().current_scene
-	if not from_menu and scene != null:
-		if scene.has_method("world_neutral"): scene.world_neutral()
-		elif scene.has_method("release_pointer"): scene.release_pointer()
-		elif scene.has_method("release"): scene.release()
-		if "local_motion" in scene and scene.local_motion != null: scene.local_motion.reset()
-		if "controls" in scene and scene.controls != null:
-			if scene.controls.has_method("release"): scene.controls.release()
-			elif scene.controls.has_method("clear"): scene.controls.clear()
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	release_controls()
 	status.text = "The match continues while Settings is open. After Back, use the mode's click/Enter controls to resume input."
 	for key: String in ["master_volume", "mouse_sensitivity", "ui_scale"]: rows[key].set_value_no_signal(values[key])
 	for key: String in ["master_volume", "mouse_sensitivity", "ui_scale"]: rows[key + "_value"].text = "%d%%" % values[key]
@@ -249,6 +248,26 @@ func open_panel(from_menu: bool = false, previous_focus: Control = null) -> void
 	rows.back.text = "Back to Home (Esc)" if from_menu else "Back to game (Esc)"
 	panel.show()
 	rows.back.grab_focus()
+
+func release_controls() -> void:
+	var scene := get_tree().current_scene
+	if scene != null and scene.scene_file_path != MENU_SCENE:
+		if scene.has_method("world_neutral"): scene.world_neutral()
+		elif scene.has_method("release_pointer"): scene.release_pointer()
+		elif scene.has_method("release"): scene.release()
+		if "local_motion" in scene and scene.local_motion != null: scene.local_motion.reset()
+		if "controls" in scene and scene.controls != null:
+			if scene.controls.has_method("release"): scene.controls.release()
+			elif scene.controls.has_method("clear"): scene.controls.clear()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func open_career() -> void:
+	if not overlay_open(): return
+	var from_menu := not rows.leave.visible
+	var original_focus := return_focus
+	close_panel()
+	var career := get_tree().root.get_node_or_null("Career")
+	if career != null: career.open_panel(original_focus, true, from_menu)
 
 func close_panel() -> void:
 	if not overlay_open(): return

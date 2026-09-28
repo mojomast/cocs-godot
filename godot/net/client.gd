@@ -36,8 +36,15 @@ var assigned_character := ""
 var assigned_harness := ""
 # One adjacent handshake only: queued join -> spectator welcome -> active roster -> notice.
 var spectator_notice_stage := 0
+var career_welcome_pending := false
+var career_seated := false
+
+func career_wire_open() -> bool:
+	return peer.get_ready_state() == WebSocketPeer.STATE_OPEN
 
 func clear_join_context() -> void:
+	career_welcome_pending = false
+	career_seated = false
 	spectating = false
 	joined_room_request = ""
 	spectator_notice_stage = 0
@@ -101,13 +108,21 @@ func send_frame(frame: Dictionary) -> Error:
 
 func create_room(player_name: String = "Godot", character: String = "chatgpt", harness: String = "openclaw") -> Error:
 	var pair: Dictionary = Loadout.resolve(character, harness)
-	return send_frame({"type":"create", "name":"Godot port laboratory", "playerName":player_name, "character":pair.character, "harness":pair.harness, "v":3, "delta":0})
+	var result := send_frame({"type":"create", "name":"Godot port laboratory", "playerName":player_name, "character":pair.character, "harness":pair.harness, "v":3, "delta":0})
+	if result == OK:
+		career_clear()
+		career_seated = false
+		career_welcome_pending = true
+	return result
 
 func join_room(id: String, player_name: String = "Godot guest", character: String = "", harness: String = "") -> Error:
 	if id.is_empty(): return ERR_INVALID_PARAMETER
 	var pair: Dictionary = Loadout.resolve(character, harness)
 	var result := send_frame({"type":"join", "roomId":id, "name":player_name, "character":pair.character, "harness":pair.harness, "v":PROTOCOL_VERSION, "delta":0})
 	if result == OK:
+		career_clear()
+		career_seated = false
+		career_welcome_pending = true
 		joined_room_request = id
 		spectator_notice_stage = 1
 	return result
@@ -183,12 +198,16 @@ func decode_text(text: String) -> bool:
 		"welcome":
 			if frame.get("v") != PROTOCOL_VERSION: return fail("Protocol version mismatch")
 			if spectating: return fail("Unexpected welcome during spectator connection")
+			var career_admitted := career_welcome_pending and career_wire_open()
+			if career_admitted:
+				career_welcome_pending = false
+				career_seated = true
 			room_id = str(frame.get("roomId", ""))
 			peer_id = int(frame.get("peerId", -1))
-			career_receive(frame)
+			if career_admitted: career_receive(frame)
 			spectator_notice_stage = 2 if spectator_notice_stage == 1 and room_id == joined_room_request and frame.get("spectate") == true and frame.get("host") == false and not frame.get("reconnected", false) else 0
 		"profile", "progression":
-			career_receive(frame)
+			if career_seated and career_wire_open(): career_receive(frame)
 		"lobby":
 			# An unconfigured newly created server room has no selected content yet.
 			if frame.get("config") != null and not validate_map(frame.get("mapId")): return fail("Lobby map substitution")

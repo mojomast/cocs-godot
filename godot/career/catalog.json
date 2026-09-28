@@ -3,7 +3,8 @@
   "sources": {
     "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
     "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
-    "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a"
+    "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44"
   },
   "slots": {
     "gear": [
@@ -54,7 +55,8 @@
         "speed": 0.9
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "heavy-barrel",
@@ -70,7 +72,8 @@
         "speed": 0.97
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "light-frame",
@@ -86,7 +89,8 @@
         "armor": -5
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "plating",
@@ -101,7 +105,8 @@
         "speed": 0.98
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "reactive",
@@ -116,7 +121,8 @@
         "health": 10
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "stim",
@@ -131,7 +137,8 @@
         "speed": 1.04
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "servo",
@@ -146,7 +153,8 @@
         "spread": 1.07
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "mag",
@@ -161,7 +169,8 @@
         "speed": 0.99
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "runner-frame",
@@ -176,7 +185,8 @@
         "damage": 0.95
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "match-trigger",
@@ -191,7 +201,8 @@
         "damage": 0.91
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "breacher-kit",
@@ -207,7 +218,8 @@
         "spread": 1.03
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "siege-kit",
@@ -222,7 +234,8 @@
         "spread": 1.1
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "marksman-kit",
@@ -237,7 +250,8 @@
         "damage": 0.9
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "command-kit",
@@ -253,7 +267,8 @@
         "speed": 0.95
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "scout-plate",
@@ -269,7 +284,8 @@
         "damage": 0.94
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "gunner-harness",
@@ -285,7 +301,8 @@
         "damage": 0.91
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "assault-plate",
@@ -300,7 +317,8 @@
         "speed": 0.93
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "field-medic-rig",
@@ -316,7 +334,8 @@
         "spread": 1.11
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "overcharge-cell",
@@ -331,7 +350,8 @@
         "speed": 0.94
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "route-servo",
@@ -346,7 +366,8 @@
         "spread": 1.05
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "brace-satchel",
@@ -361,7 +382,8 @@
         "damage": 0.93
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "targeting-uplink",
@@ -376,7 +398,8 @@
         "speed": 0.92
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "fortress-plate",
@@ -392,7 +415,8 @@
         "spread": 1.09
       },
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "extended-mag",
@@ -417,6 +441,14 @@
         6,
         8,
         9
+      ],
+      "weaponNames": [
+        "Pulse Rifle",
+        "Scattergun",
+        "Plasma Driver",
+        "Shock Beam",
+        "Marksman Rifle",
+        "Submachine Gun"
       ]
     },
     {
@@ -440,6 +472,14 @@
         6,
         7,
         9
+      ],
+      "weaponNames": [
+        "Pulse Rifle",
+        "Scattergun",
+        "Plasma Driver",
+        "Shock Beam",
+        "Flak Cannon",
+        "Submachine Gun"
       ]
     },
     {
@@ -467,6 +507,14 @@
         6,
         8,
         9
+      ],
+      "weaponNames": [
+        "Pulse Rifle",
+        "Rail Lance",
+        "Plasma Driver",
+        "Shock Beam",
+        "Marksman Rifle",
+        "Submachine Gun"
       ]
     },
     {
@@ -487,7 +535,8 @@
         "-4% CYCLE",
         "-18% RELOAD"
       ],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "scope",
@@ -510,6 +559,12 @@
         2,
         4,
         8
+      ],
+      "weaponNames": [
+        "Pulse Rifle",
+        "Rail Lance",
+        "Plasma Driver",
+        "Marksman Rifle"
       ]
     },
     {
@@ -538,6 +593,13 @@
         6,
         8,
         9
+      ],
+      "weaponNames": [
+        "Pulse Rifle",
+        "Plasma Driver",
+        "Shock Beam",
+        "Marksman Rifle",
+        "Submachine Gun"
       ]
     },
     {
@@ -560,6 +622,11 @@
         0,
         4,
         9
+      ],
+      "weaponNames": [
+        "Pulse Rifle",
+        "Plasma Driver",
+        "Submachine Gun"
       ]
     },
     {
@@ -582,6 +649,10 @@
       "weapons": [
         4,
         6
+      ],
+      "weaponNames": [
+        "Plasma Driver",
+        "Shock Beam"
       ]
     },
     {
@@ -606,6 +677,11 @@
         0,
         4,
         9
+      ],
+      "weaponNames": [
+        "Pulse Rifle",
+        "Plasma Driver",
+        "Submachine Gun"
       ]
     },
     {
@@ -628,6 +704,10 @@
       "weapons": [
         2,
         8
+      ],
+      "weaponNames": [
+        "Rail Lance",
+        "Marksman Rifle"
       ]
     },
     {
@@ -650,6 +730,10 @@
       "weapons": [
         0,
         9
+      ],
+      "weaponNames": [
+        "Pulse Rifle",
+        "Submachine Gun"
       ]
     },
     {
@@ -673,6 +757,11 @@
         1,
         4,
         5
+      ],
+      "weaponNames": [
+        "Rocket Launcher",
+        "Plasma Driver",
+        "Grenade Launcher"
       ]
     },
     {
@@ -693,6 +782,10 @@
       "weapons": [
         1,
         4
+      ],
+      "weaponNames": [
+        "Rocket Launcher",
+        "Plasma Driver"
       ]
     },
     {
@@ -715,6 +808,10 @@
       "weapons": [
         4,
         6
+      ],
+      "weaponNames": [
+        "Plasma Driver",
+        "Shock Beam"
       ]
     },
     {
@@ -731,7 +828,8 @@
       "spec": [
         "-6% SPREAD"
       ],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "marksman-optic",
@@ -755,6 +853,11 @@
         2,
         6,
         8
+      ],
+      "weaponNames": [
+        "Rail Lance",
+        "Shock Beam",
+        "Marksman Rifle"
       ]
     },
     {
@@ -781,6 +884,11 @@
         3,
         7,
         9
+      ],
+      "weaponNames": [
+        "Scattergun",
+        "Flak Cannon",
+        "Submachine Gun"
       ]
     },
     {
@@ -801,7 +909,8 @@
         "-4% SPREAD",
         "-22% KICK"
       ],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "quick-mag",
@@ -825,6 +934,13 @@
         4,
         6,
         9
+      ],
+      "weaponNames": [
+        "Pulse Rifle",
+        "Scattergun",
+        "Plasma Driver",
+        "Shock Beam",
+        "Submachine Gun"
       ]
     },
     {
@@ -848,6 +964,10 @@
       "weapons": [
         2,
         8
+      ],
+      "weaponNames": [
+        "Rail Lance",
+        "Marksman Rifle"
       ]
     },
     {
@@ -866,7 +986,8 @@
         "-5% SPREAD",
         "+6% RELOAD"
       ],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "salvo-module",
@@ -889,6 +1010,11 @@
         0,
         4,
         9
+      ],
+      "weaponNames": [
+        "Pulse Rifle",
+        "Plasma Driver",
+        "Submachine Gun"
       ]
     },
     {
@@ -901,7 +1027,8 @@
       "level": 4,
       "modifiers": {},
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "finish-ember",
@@ -913,7 +1040,8 @@
       "level": 10,
       "modifiers": {},
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "finish-void",
@@ -925,7 +1053,8 @@
       "level": 18,
       "modifiers": {},
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "finish-toxic",
@@ -937,7 +1066,8 @@
       "level": 6,
       "modifiers": {},
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "finish-solar",
@@ -949,7 +1079,8 @@
       "level": 14,
       "modifiers": {},
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "finish-crimson",
@@ -961,7 +1092,8 @@
       "level": 22,
       "modifiers": {},
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "cross",
@@ -973,7 +1105,8 @@
       "level": 1,
       "modifiers": {},
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "dot",
@@ -985,7 +1118,8 @@
       "level": 1,
       "modifiers": {},
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "ring",
@@ -997,7 +1131,8 @@
       "level": 1,
       "modifiers": {},
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "chevron",
@@ -1009,7 +1144,8 @@
       "level": 8,
       "modifiers": {},
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     },
     {
       "id": "split",
@@ -1021,7 +1157,8 @@
       "level": 16,
       "modifiers": {},
       "spec": [],
-      "weapons": []
+      "weapons": [],
+      "weaponNames": []
     }
   ]
 }

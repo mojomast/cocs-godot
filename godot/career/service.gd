@@ -10,16 +10,42 @@ var details: VBoxContainer
 var state_label: Label
 var heading: Label
 var return_focus: Control
+var return_settings := false
+var return_settings_menu := false
 var category := "gear"
-var was_open := false
 
 func _ready() -> void:
 	layer = 99
 	var file := FileAccess.open("res://career/catalog.json", FileAccess.READ)
 	if file != null:
 		var parsed: Variant = JSON.parse_string(file.get_as_text())
-		if parsed is Dictionary and parsed.get("schema") == 1 and parsed.get("items") is Array: catalog = parsed
+		if valid_catalog(parsed): catalog = parsed
 	build_panel()
+
+static func valid_catalog(raw: Variant) -> bool:
+	if not raw is Dictionary or raw.get("schema") != 1 or not raw.get("items") is Array: return false
+	if raw.items.size() < 1 or raw.items.size() > 128: return false
+	var ids := {}
+	for entry: Variant in raw.items:
+		if not entry is Dictionary: return false
+		if entry.get("kind") not in ["gear", "attachment", "finish", "crosshair"]: return false
+		for field: String in ["id", "unlockId", "name", "description", "slot"]:
+			if not entry.get(field) is String or entry[field].length() > (600 if field == "description" else 128): return false
+		if entry.id.is_empty() or entry.name.is_empty() or entry.description.is_empty(): return false
+		if not entry.get("level") is int and not entry.get("level") is float: return false
+		if not is_finite(float(entry.level)) or float(entry.level) != floorf(float(entry.level)) or entry.level < 1 or entry.level > 60: return false
+		if not entry.get("modifiers") is Dictionary or not entry.get("spec") is Array or not entry.get("weapons") is Array: return false
+		if not entry.get("weaponNames") is Array or entry.weaponNames.size() > 16 or entry.spec.size() > 16 or entry.modifiers.size() > 16: return false
+		for value: Variant in entry.spec:
+			if not value is String or value.length() > 80: return false
+		for value: Variant in entry.weaponNames:
+			if not value is String or value.length() > 80: return false
+		for value: Variant in entry.modifiers.values():
+			if not (value is float or value is int) or not is_finite(float(value)): return false
+		var key := entry.kind + ":" + entry.id
+		if ids.has(key): return false
+		ids[key] = true
+	return true
 
 func active() -> bool:
 	return panel != null and panel.visible
@@ -33,7 +59,7 @@ func clear_connection(client: Node) -> void:
 func receive(client: Node, frame: Dictionary) -> void:
 	if not is_instance_valid(client): return
 	# A queued reply from a closed room cannot resurrect a disconnected career.
-	if not ("room_id" in client) or str(client.room_id).is_empty(): return
+	if not ("room_id" in client) or str(client.room_id).is_empty() or not client.career_seated or not client.career_wire_open(): return
 	if frame.get("type") == "welcome":
 		# Only the seated connection's source welcome owns an identity.
 		owner = weakref(client)
@@ -45,15 +71,13 @@ func receive(client: Node, frame: Dictionary) -> void:
 	else: return
 	refresh()
 
-func open_panel(focus: Control = null) -> void:
+func open_panel(focus: Control = null, from_settings: bool = false, settings_menu: bool = false) -> void:
 	var settings := get_tree().root.get_node_or_null("LocalSettings")
-	if active() or (settings != null and settings.overlay_open()): return
+	if active() or (settings != null and settings.overlay_open() and not from_settings): return
 	return_focus = focus
-	var scene := get_tree().current_scene
-	if scene != null:
-		if scene.has_method("world_neutral"): scene.world_neutral()
-		elif scene.has_method("release_pointer"): scene.release_pointer()
-		elif scene.has_method("release"): scene.release()
+	return_settings = from_settings
+	return_settings_menu = settings_menu
+	if settings != null: settings.release_controls()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	panel.show()
 	refresh()
@@ -64,8 +88,13 @@ func close_panel() -> void:
 	if not active(): return
 	panel.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if is_instance_valid(return_focus): return_focus.grab_focus()
+	if return_settings:
+		var settings := get_tree().root.get_node_or_null("LocalSettings")
+		if settings != null: settings.open_panel(return_settings_menu, return_focus)
+	elif is_instance_valid(return_focus): return_focus.grab_focus()
 	return_focus = null
+	return_settings = false
+	return_settings_menu = false
 
 func _process(_delta: float) -> void:
 	if owner != null and not is_instance_valid(owner.get_ref()):
@@ -73,16 +102,10 @@ func _process(_delta: float) -> void:
 		profile.clear()
 		refresh()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not event is InputEventKey or not event.pressed or event.echo: return
-	if active() and event.keycode == KEY_ESCAPE:
+	if active() and (event.keycode == KEY_ESCAPE or event.physical_keycode == KEY_ESCAPE):
 		close_panel()
-		get_viewport().set_input_as_handled()
-	elif event.keycode == KEY_F9:
-		var settings := get_tree().root.get_node_or_null("LocalSettings")
-		if settings != null and settings.overlay_open(): return
-		if active(): close_panel()
-		else: open_panel()
 		get_viewport().set_input_as_handled()
 
 func build_panel() -> void:
@@ -147,17 +170,17 @@ func add_line(parent: Node, text: String, size: int = 16) -> void:
 func refresh() -> void:
 	if details == null or state_label == null: return
 	if profile.is_empty():
-		state_label.text = "NO CONNECTED CAREER · Browse the source Arsenal below. A career appears here after joining a source-server room in a live session (F9). Home has no active room; no progress has been loaded."
+		state_label.text = "NO CONNECTED CAREER · Browse the source Arsenal below. A career appears here after joining a source-server room in a live session (F12 → Career / Arsenal). Home has no active room; no progress has been loaded."
 	else:
 		var parts := []
 		for field: String in ["level", "xp", "prestige", "matches", "wins", "kills"]:
 			parts.append(field.to_upper() + " " + (str(profile[field]) if profile.has(field) else "UNKNOWN"))
-		state_label.text = "CONNECTED SOURCE CAREER · " + "  ·  ".join(parts) + "\nRead-only · source room session only. Career gear is persistent in that server; it is separate from match-scoped REQ."
+		state_label.text = "CONNECTED SOURCE CAREER · " + "  ·  ".join(parts) + "\nRead-only current source-session profile; cross-launch identity continuity is not yet implemented. Career gear is separate from match-scoped REQ."
 		var modes: Dictionary = profile.get("byMode", {})
 		if modes.is_empty(): state_label.text += "\nMODE HISTORY · No per-mode totals reported. Individual match history is not keyed by career identity on this wire."
 		else:
 			state_label.text += "\nMODE TOTALS (source profile):"
-			for mode: String in modes:
+		for mode: String in modes:
 				var stats: Dictionary = modes[mode]
 				state_label.text += "\n%s · %s matches · %s wins · %s kills" % [mode, str(stats.get("matches", "?")), str(stats.get("wins", "?")), str(stats.get("kills", "?"))]
 	if catalog.is_empty(): state_label.text += "\nSource Arsenal catalog unavailable. Regenerate from the source modules."
@@ -175,5 +198,5 @@ func refresh() -> void:
 		var spec := []
 		for key: String in item.modifiers: spec.append(key + " " + str(item.modifiers[key]))
 		for part: String in item.spec: spec.append(part)
-		if item.kind == "attachment": spec.append("ALL WEAPONS" if item.weapons.is_empty() else "Weapon indices " + str(item.weapons))
+		if item.kind == "attachment": spec.append("ALL WEAPONS" if item.weapons.is_empty() else "FITS " + ", ".join(item.get("weaponNames", [])))
 		if not spec.is_empty(): add_line(box, " · ".join(spec), 14)

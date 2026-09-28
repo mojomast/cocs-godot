@@ -182,7 +182,7 @@ func build_ui() -> void:
 	actions.add_child(settings_button)
 	actions.add_child(quit_button)
 	right.add_child(actions)
-	var footer := caption("Tab moves focus · Left/Right browses a choice · F9 Career / Arsenal · Settings adjusts this device · Esc quits")
+	var footer := caption("Tab moves focus · Left/Right browses a choice · Career / Arsenal opens in this window · Esc quits")
 	footer.name = "Footer"
 	footer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	stack.add_child(footer)
