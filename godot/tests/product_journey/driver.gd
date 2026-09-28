@@ -60,24 +60,50 @@ func menu_step() -> void:
 		await process_frame
 	if visit > 0:
 		if not require_value(scene.current_route.get("id") == record.route, "menu did not restore last activity"): return
-	if visit == 9:
+		for key: String in record.get("options", {}):
+			if not require_value(scene.selections.get(key) == record.options[key], "menu did not restore " + key): return
+	if visit == int(record.cycles) * record.itinerary.size():
 		print("PRODUCT_JOURNEY_COMPLETE ", JSON.stringify(record))
 		scene.quit_menu()
 		return
-	var routes := ["combat", "lattice-world", "sports"]
-	var next_route: String = routes[visit % routes.size()]
+	var entry: Dictionary = record.itinerary[visit % record.itinerary.size()]
+	var next_route: String = entry.route
 	var descriptor: Dictionary = scene.registry.route_by_id(next_route)
 	scene.select_category(str(descriptor.category))
 	scene.select_route(next_route)
+	# Drive actual Home widgets, with map first so dependent choices rederive.
+	var choices: Array = entry.options.keys()
+	choices.sort()
+	if "map" in choices:
+		choices.erase("map")
+		choices.push_front("map")
+	for key: String in choices:
+		if scene.choice_rows.has(key):
+			var picker: Control = scene.choice_rows[key]
+			var found := false
+			for index: int in picker.item_count:
+				if picker.get_item_metadata(index) == entry.options[key]:
+					picker.select(index)
+					picker.item_selected.emit(index)
+					found = true
+					break
+			if not require_value(found, "unavailable Home choice: " + key): return
+		elif scene.slider_rows.has(key):
+			scene.slider_rows[key].value = entry.options[key]
+		else:
+			require_value(false, "unsupported Home widget: " + key)
+			return
+		if not require_value(scene.selections.get(key) == entry.options[key], "Home rejected option: " + key): return
 	# Drive the real Settings/Home control seam, not a private store mutation.
 	scene.settings_button.pressed.emit()
 	if not require_value(settings.overlay_open(), "Home Settings did not open"): return
-	var volume := 40 + visit * 5
+	var volume := 40 + (visit % 10) * 5
 	if not require_value(settings.set_value("master_volume", volume), "settings save failed"): return
 	settings.rows.back.pressed.emit()
 	if not require_value(not settings.overlay_open(), "Back did not close Settings"): return
 	record.expected_volume = volume
 	record.route = next_route
+	record.options = entry.options
 	record.visits = visit + 1
 	write_record()
 	print("PRODUCT_JOURNEY_HOME ", JSON.stringify({"visit":visit + 1,"route":next_route,"volume":volume}))
@@ -95,9 +121,12 @@ func _process(delta: float) -> bool:
 	var ready := false
 	if route_id == "sports":
 		ready = scene.phase == "active" and not scene.actor.is_empty() and not scene.vehicle.is_empty()
-	else:
+	elif "received_pose" in scene:
 		ready = scene.phase == 3 and scene.received_pose
 		if route_id == "lattice-world": ready = ready and not scene.client.projection.is_empty()
+	else:
+		require_value(false, "route does not expose the source-world readiness seam: " + route_id)
+		return false
 	if ready:
 		running = false
 		call_deferred("route_step")

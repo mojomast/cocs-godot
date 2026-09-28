@@ -89,6 +89,7 @@ node --test tools/godot-package/route_parity.test.mjs
 "$GODOT_BIN" --headless --path godot --script res://tests/lattice/world_commands_contract.gd
 "$GODOT_BIN" --headless --path godot --script res://tests/lattice/world_tactical_contract.gd
 python3 tools/godot-dev/xvfb_run.py node tools/godot-dev/product_journey.mjs --capture
+python3 tools/godot-dev/xvfb_run.py node tools/godot-dev/product_journey.mjs --itinerary=port/native-shell/itineraries/with-horde.json
 python3 tools/godot-dev/xvfb_run.py node tools/godot-dev/guest_leave_journey.mjs
 python3 tools/godot-dev/verify.py
 ```
@@ -100,6 +101,13 @@ processes, exercises Settings/Back/Leave, and checks every owned listener closes
 The separate guest journey uses one native guest and one protocol host and
 checks continued host snapshots after guest exit. Both are scripted lifecycle
 evidence, not natural rounds, two-native-human acceptance or hardware feel.
+
+The optional itinerary selects 1–6 source-backed routes and repeats them three
+times. Entries use `{"route":"combat","options":{"map":"verdant-reliquary"}}`;
+options are applied through the real Home controls, with map-dependent choices
+rederived first. Unsupported choices, debug routes, offline routes and private
+transport fields are rejected. The same route may appear twice with different
+map choices to verify ordinary Horde alongside staged content after integration.
 
 Attempt summaries/logs are retained under `.port-runtime/product-journeys/` and
 `.port-runtime/guest-leave/`. The aggregate records the tested commit, source
