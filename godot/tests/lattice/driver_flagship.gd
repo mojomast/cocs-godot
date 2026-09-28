@@ -16,6 +16,7 @@ var limit := 900
 var idle := false
 var capture_dir := ""
 var commands_captured := false
+var live_captures: Dictionary = {}
 
 func _initialize() -> void:
 	began = Time.get_ticks_msec()
@@ -70,6 +71,20 @@ func _process(_delta: float) -> bool:
 	if not commands_captured and client.get("last_snapshot_seq") >= 3:
 		commands_captured = true
 		call_deferred("capture_commands")
+	# Render actual recipient gameplay, never a fabricated snapshot. Screenshot
+	# names describe capture timing rather than claiming a human or a result.
+	if not capture_dir.is_empty() and client.get("last_snapshot_seq") >= 3:
+		var hud: Control = scene.get("tactical_hud")
+		if is_instance_valid(hud) and hud.visible and not scene.get("world_commands").visible:
+			for cue: Dictionary in [{"name":"live-entry","after":7000}, {"name":"live-frontier","after":26000}, {"name":"live-pressure","after":50000}]:
+				if elapsed >= cue.after and not live_captures.has(cue.name):
+					live_captures[cue.name] = true
+					call_deferred("capture_live", cue.name)
+			var recruitment: Dictionary = client.get("projection").get("recruitment", {})
+			if recruitment.get("wave") is float or recruitment.get("wave") is int:
+				if int(recruitment.wave) >= 2 and not live_captures.has("live-wave-2"):
+					live_captures["live-wave-2"] = true
+					call_deferred("capture_live", "live-wave-2")
 	if elapsed - last_input >= 85:
 		last_input = elapsed
 		var actor := local_actor(client)
@@ -109,6 +124,20 @@ func save_view(name: String) -> void:
 	var err := root.get_texture().get_image().save_png(path)
 	print("LATTICE_CAPTURE ", JSON.stringify({"name":name,"path":path,"error":err,"synthetic_input":true}))
 
+func capture_live(name: String) -> void:
+	var client: Node = scene.get("client")
+	var hud: Control = scene.get("tactical_hud")
+	if scene.get("phase") != 3 or not is_instance_valid(hud) or not hud.visible or client.get("projection").is_empty(): return
+	await RenderingServer.frame_post_draw
+	if not hud.visible or scene.get("world_commands").visible:
+		live_captures.erase(name)
+		return
+	await save_view(name)
+	print("LATTICE_GALLERY ", JSON.stringify({"image":name,"source_sequence":client.get("last_snapshot_seq"),
+		"mode":client.get("mode"),"revision":client.get("revision"),"wave":client.get("projection").get("recruitment", {}).get("wave"),
+		"hud_visible":hud.visible,"pointer_captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,
+		"engine_scripted_input":true,"human_input":false}))
+
 func setup_then_start() -> void:
 	await save_view("setup")
 	scene.call("world_start_requested")
@@ -118,6 +147,8 @@ func capture_commands() -> void:
 	var overlay: Control = scene.get("world_commands")
 	overlay.show()
 	overlay.call("world_refresh")
+	for _frame: int in range(3): await RenderingServer.frame_post_draw
+	overlay.call("world_layout")
 	await save_view("commands")
 	overlay.hide()
 

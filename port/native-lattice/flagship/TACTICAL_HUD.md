@@ -28,7 +28,7 @@ command deck hides the in-world cards and releases pointer capture as before.
 
 `godot/tests/lattice/world_tactical_contract.gd` verifies typed recipient
 contact isolation, missing-data clearing, explicit wallet and wave fields,
-card wording, and compact bounds (14 synthetic checks). The marker contract in
+card wording, pointer recovery, and compact bounds (16 synthetic checks). The marker contract in
 `world_hud_contract.gd` verifies known/unknown/legal/inactive labels.
 `tactical_hud_capture.gd` renders synthetic Operations and PvP/Recon examples
 at large and compact resolutions for visual review; the images do **not**
@@ -44,3 +44,15 @@ Use the newer [pointer-guidance revision](https://github.com/mojomast/cocs-godot
 from `1736d0f2` for hands-on testing: Linux SHA-256
 `8d0005c17c82c8fda7fcadeb872bfea76cea75d04d0908981fabb8c437488738`,
 Windows SHA-256 `3dd682bd5c6c7d75272b9fdfd3f098cdcb8ff29ed54c78b7b3b826805609d263`.
+
+## Source-driven screenshot gallery
+
+`driver_flagship.gd`'s existing `--render` route now captures `live-entry`,
+`live-frontier`, and `live-pressure` during a running native match, alongside
+the command and result screens. It saves in-world images only while a fresh
+recipient projection and the tactical HUD are visible. The September 28 gallery
+shows Asterion PvP and Monsoon Operations, with hashes, source sequences and
+capture identifiers in its separate gallery manifest. Input was
+**engine-scripted**, not human; the screenshots do not prove a live REQ
+purchase or an Operations five-wave win. The full source-driven run records
+remain in untracked `port/native-lattice/evidence/flagship/` evidence.
