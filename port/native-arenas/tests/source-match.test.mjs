@@ -10,9 +10,10 @@ import {syntheticArena, seededRandom, aimedControls} from './fixtures.mjs';
 test('source constructor seam is assignment before nav/spawns/actors, not options.arena', () => {
   const source = readFileSync(new URL('../../../game/core.mjs', import.meta.url), 'utf8');
   const constructor = source.slice(source.indexOf("constructor(character="), source.indexOf('initializeRace(){'));
-  assert.ok(constructor.includes('this.arena=getMap(mapId)'));
+  const assignment = 'this.arena=options.hordeArena?prepareHordeArena(options.hordeArena,this.config):getMap(mapId)';
+  assert.ok(constructor.includes(assignment), 'reviewed Horde-only intake retains the ordinary source lookup');
   assert.ok(!constructor.includes('options.arena'));
-  assert.ok(constructor.indexOf('this.arena=getMap(mapId)') < constructor.indexOf('matchNavigation(this.arena'));
+  assert.ok(constructor.indexOf(assignment) < constructor.indexOf('matchNavigation(this.arena'));
   assert.ok(constructor.indexOf('matchNavigation(this.arena') < constructor.indexOf('this.actors=['));
 });
 test('SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched', () => {
