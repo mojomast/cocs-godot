@@ -1,6 +1,7 @@
-import {openSync,closeSync,readFileSync,writeFileSync,mkdirSync,statSync,fstatSync,unlinkSync,existsSync,chmodSync} from 'node:fs';
+import {openSync,closeSync,readFileSync,writeFileSync,mkdirSync,statSync,fstatSync,unlinkSync,existsSync,chmodSync,renameSync} from 'node:fs';
 import {join,dirname,isAbsolute,resolve} from 'node:path';
 import {homedir} from 'node:os';
+import {createHash} from 'node:crypto';
 
 const MAX_STORE=16*1024*1024;
 const MAX_CREDENTIALS=256*1024;
@@ -12,7 +13,7 @@ export function careerPaths(env=process.env,{developmentRoot,home=homedir(),plat
  const selected=env.COCS_CAREER_PATH??join(root,'progression.json');
  if(!isAbsolute(selected))throw Error('Career path must be absolute');
  const location=env.COCS_CAREER_PATH?dirname(resolve(selected)):resolve(root);
- return {root:location,progressionPath:resolve(selected),credentialsPath:join(location,'identities.json'),lockPath:`${resolve(selected)}.lease`};
+  return {root:location,progressionPath:resolve(selected),legacyCredentialsPath:join(location,'identities.json')};
 }
 
 function inspect(file,max,kind){
@@ -26,6 +27,12 @@ function inspect(file,max,kind){
 
 function privateDirectory(path){mkdirSync(path,{recursive:true,mode:0o700});if(process.platform!=='win32')chmodSync(path,0o700);}
 function privateFile(path){if(process.platform!=='win32')chmodSync(path,0o600);}
+function validIdentities(value,legacy,scope){
+ if(value?.version!==1||!value.scopes||typeof value.scopes!=='object'||Array.isArray(value.scopes))throw Error('Career credential store has an unsupported schema');
+ const entries=Object.entries(value.scopes);
+ if(entries.length>(legacy?32:1)||entries.some(([key,pair])=>key.length>2048||!pair||typeof pair!=='object'||!(/^[A-Za-z0-9-]{8,64}$/.test(pair.playerId??''))||!(/^[A-Za-z0-9_-]{16,128}$/.test(pair.progressToken??''))||(!legacy&&key!==scope)))throw Error('Career credential store contains invalid identities');
+ return value;
+}
 
 // Exclusive for the entire authority lifetime: ProgressionStore holds a snapshot
 // in memory and cannot merge another instance's writes. No expiry while a PID
@@ -33,11 +40,15 @@ function privateFile(path){if(process.platform!=='win32')chmodSync(path,0o600);}
 export function acquireCareer(plan,env=process.env,options={}){
  const paths=careerPaths(env,options);
  const owned=!plan.nativeOnly&&!plan.endpoint&&!plan.nativeArena&&!plan.identityZone&&plan.experience!=='horde';
- const scope=owned?'owned:source-v3':plan.endpoint?`external:${new URL(plan.endpoint).href}`:null;
- if(!scope)return {env:{COCS_CAREER_CREDENTIALS_PATH:'',COCS_CAREER_SCOPE:'',COCS_CAREER_ENDPOINT:''},progressionPath:null,release(){}};
- privateDirectory(paths.root);
- // A shared credential file must not be edited concurrently by separate routes.
- const lease=`${paths.credentialsPath}.lease`;
+  const scope=owned?'owned:source-v3':plan.endpoint?`external:${new URL(plan.endpoint).href}`:null;
+  if(!scope)return {env:{COCS_CAREER_CREDENTIALS_PATH:'',COCS_CAREER_SCOPE:'',COCS_CAREER_ENDPOINT:''},progressionPath:null,release(){}};
+  privateDirectory(paths.root);
+  const identityDir=join(paths.root,'identities');
+  privateDirectory(identityDir);
+  // Hashing avoids leaking an external server's URL through filesystem names.
+  // The source-backed owned session leases only its own credential/store scope.
+  const credentialsPath=join(identityDir,`${createHash('sha256').update(scope).digest('hex')}.json`);
+  const lease=`${credentialsPath}.lease`;
  let fd;
  try{fd=openSync(lease,'wx',0o600);}catch(error){
   if(error.code!=='EEXIST')throw error;
@@ -73,15 +84,22 @@ export function acquireCareer(plan,env=process.env,options={}){
     privateFile(paths.progressionPath);
    }
   }
-  const identities=inspect(paths.credentialsPath,MAX_CREDENTIALS,'credential store');
-  if(identities===null)writeFileSync(paths.credentialsPath,JSON.stringify({version:1,scopes:{}}),{flag:'wx',mode:0o600});
-  else if(identities.version!==1||!identities.scopes||typeof identities.scopes!=='object'||Array.isArray(identities.scopes))throw Error('Career credential store has an unsupported schema');
-  if(identities!==null){
-   const entries=Object.entries(identities.scopes);
-   if(entries.length>32||entries.some(([key,pair])=>key.length>2048||!pair||typeof pair!=='object'||!(/^[A-Za-z0-9-]{8,64}$/.test(pair.playerId??''))||!(/^[A-Za-z0-9_-]{16,128}$/.test(pair.progressToken??''))))throw Error('Career credential store contains invalid identities');
-  }
-  privateFile(paths.credentialsPath);
-  if(owned&&process.platform!=='win32')previousMask=process.umask(0o077);
-  return {env:{COCS_CAREER_CREDENTIALS_PATH:paths.credentialsPath,COCS_CAREER_SCOPE:scope,COCS_CAREER_ENDPOINT:''},progressionPath:owned?paths.progressionPath:null,release};
+   // Legacy shared credentials are read-only migration input. Validate even if
+   // the per-scope file exists: malformed legacy data must not pass unnoticed.
+   const legacy=inspect(paths.legacyCredentialsPath,MAX_CREDENTIALS,'legacy credential store');
+   if(legacy!==null)validIdentities(legacy,true,scope);
+   const current=inspect(credentialsPath,MAX_CREDENTIALS,'credential store');
+   if(current!==null)validIdentities(current,false,scope);
+   else{
+    const pair=legacy?.scopes[scope];
+    const temp=`${credentialsPath}.${process.pid}.tmp`;
+    try{
+     writeFileSync(temp,JSON.stringify({version:1,scopes:pair?{[scope]:pair}:{}}),{flag:'wx',mode:0o600});
+     renameSync(temp,credentialsPath);
+    }catch(error){if(existsSync(temp))unlinkSync(temp);throw error;}
+   }
+   privateFile(credentialsPath);
+   if(owned&&process.platform!=='win32')previousMask=process.umask(0o077);
+   return {env:{COCS_CAREER_CREDENTIALS_PATH:credentialsPath,COCS_CAREER_SCOPE:scope,COCS_CAREER_ENDPOINT:''},progressionPath:owned?paths.progressionPath:null,release};
  }catch(error){release();throw error;}
 }
