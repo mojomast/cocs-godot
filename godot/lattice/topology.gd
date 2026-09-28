@@ -130,7 +130,9 @@ func visible_edges(visible_ids: Array) -> Array:
 
 func label_of(raw: Dictionary, id: String) -> String:
 	var wire: Variant = raw.get("label")
-	return label_for(id, wire if wire is String else "")
+	# Match the current recipient projection used by the objective list. Authored
+	# map copy is only a fallback, not a replacement for a live source label.
+	return wire if wire is String and not wire.is_empty() else label_for(id)
 
 ## A wire boolean is only true when it is exactly `true`: a mistyped field
 ## ("yes", 1, "0") stays false instead of aborting the projection.

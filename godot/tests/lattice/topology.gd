@@ -85,6 +85,11 @@ func _parsing() -> void:
 	check(not t.set_authored({"nodes": "nope", "lattice": [["a", "b"]]}) and t.edges.is_empty(), "non-array node list authors no topology")
 	check(t.set_authored(asterion()) and t.nodes.size() == 7 and t.edges.size() == 10, "the authored asterion shape parses to 7 nodes / 10 links with no invented edge")
 	check(t.adjacency.get("hq-0") == ["front-0"] and t.adjacency.get("front-0").size() == 4, "adjacency is the authored undirected link list")
+	check(t.label_of({"label":"LIVE SOURCE GATE"}, "front-0") == "LIVE SOURCE GATE",
+		"recipient source labels override authored fallback copy")
+	check(t.label_of({"label":17}, "front-0") == "WEST / ARCHIVE GATE"
+		and t.label_of({"label":""}, "front-0") == "WEST / ARCHIVE GATE",
+		"missing or malformed live labels retain the authored fallback")
 	var dirty := Topology.new()
 	check(dirty.set_authored({"nodes": [{"id": "a", "x": 0, "z": 0}, {"id": "b", "x": 1, "z": 0}, {"id": "b", "x": 2, "z": 0}],
 		"lattice": [["a", "b"], ["b", "a"], ["a", "a"], ["a", "ghost"], ["a"], "b", {"a": "b"}]})

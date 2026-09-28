@@ -22,6 +22,7 @@ const BENCHMARK_LEVEL := "COCS_BENCHMARK_LEVEL"
 var quality := 1
 var active := false
 var telemetry := false
+var shortcut_hint := true
 var remaining := 0.0
 var metrics: Dictionary = {}
 var text := Label.new()
@@ -64,6 +65,10 @@ func set_active(value: bool) -> void:
 	active = value
 	_refresh()
 
+func set_shortcut_hint(value: bool) -> void:
+	shortcut_hint = value
+	_refresh()
+
 func set_metrics(value: Dictionary) -> void:
 	metrics = value.duplicate(true)
 	_refresh()
@@ -97,7 +102,7 @@ func _refresh() -> void:
 	var hint := ""
 	if is_instance_valid(benchmark) and not benchmark.done:
 		hint = " · F7 benchmark running"
-	text.visible = active and (remaining > 0 or telemetry)
+	text.visible = active and ((shortcut_hint and remaining > 0) or telemetry)
 	text.text = "Combat effects: %s · F9 quality · F10 metrics · F7 benchmark%s" % [LEVELS[quality], hint]
 	if telemetry:
 		for key: String in metrics:

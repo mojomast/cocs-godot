@@ -80,6 +80,9 @@ func _ready() -> void:
 	add_child(pickups)
 	add_child(presentation)
 	add_child(combat)
+	# Tactical cards own this screen space. Metrics remain an explicit F10
+	# view; the effects shortcut must not cover the live mission header.
+	if is_instance_valid(combat.quality_controls): combat.quality_controls.set_shortcut_hint(false)
 	add_child(lattice_hud)
 	add_child(client)
 	# Exact received coordinates (no extrapolation) simplify recipient auditing.
