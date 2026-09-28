@@ -69,7 +69,7 @@ delete it. The substantive incompatibility is the selected source baseline.
 Source/native anchors: `game/config.mjs`, `godot/ui/routes.json`,
 `godot/ui/match_setup.gd`, `godot/net/client.gd:180-271`,
 `godot/horde/`, `godot/combined_arms/fleet.gd`,
-`godot/lattice/req_catalog.gd`, and `native-lattice/flagship/catalog/CAREER.md`.
+`godot/lattice/req_catalog.gd`, and `port/native-lattice/flagship/catalog/CAREER.md`.
 
 ## 2. The first engineering pass: make the baseline trustworthy
 
@@ -139,6 +139,11 @@ Keep labs accessible, but group player choices by activity rather than technical
 implementation ("Play", "Native", and "Modes" currently expose that distinction).
 Use a shared theme and predictable Back/Leave behavior. Preserve direct CLI
 routes for tests and development.
+
+Consolidate route/map/mode/authority capability metadata behind the existing
+route generator (`tools/godot-package/gen_routes.mjs`). Keep `routes.json`
+generated and make dev launch, packaged launch and setup consume the same
+capabilities instead of extending separate hardcoded lists for every new mode.
 
 Recommended ownership, with names illustrative rather than an imposed rewrite:
 
@@ -285,6 +290,12 @@ Develop with short-lived branches from the current integrated baseline. Parallel
 agents can discover independent concerns; land dependent implementation changes
 sequentially. Every new feature should extend the common product flow, rather
 than establishing another permanent alternate application.
+
+Upstream `origin/main` has also advanced beyond the current source pin. Keep an
+explicit source-intake queue for those changes (including projectile tuning and
+material updates), assess their native impact, and advance the pin with matching
+contracts/exports. An upstream frontend change is not automatically a missing
+native feature, and an upstream simulation change needs parity review.
 
 ## 7. Verification starting points for implementation
 
