@@ -72,11 +72,17 @@ sensitivity and interface scale. Home remembers the last activity/options.
 Back releases the pointer; click the world to resume controls. The source match
 keeps running while Settings or Career is open.
 
-**Career / Arsenal** opens from Home or F12 Settings. Browse source gear, weapon
-mods and cosmetics; connected source-server rooms supply their current profile
-and per-mode totals. This first slice is read-only. Disconnected Home and local
-adapters without a profile show **Not loaded**. Cross-launch career identity,
-equip/unlock requests and personal match history are not implemented.
+**Career / Arsenal** opens from Home or F12 Settings. Connected source-server rooms
+supply the profile and per-mode totals. Equip/remove unlocked gear, mods and
+finishes; wait for source confirmation before treating a selection as saved.
+Choices apply to the next match. Local source-backed careers persist across
+launches. Disconnected Home and adapters without profiles show **Not loaded**.
+Reticles remain view-only; unlocks come from source progression.
+
+**Multiplayer lobby:** Browse / Refresh lists rooms on the selected server.
+Select a room and join; active rounds preserve source spectator rules. The room
+Chat button releases gameplay controls while typing. Messages appear only after
+the source broadcasts them; Escape closes chat.
 
 **Horde** includes ordinary maps, Nacre Engine and **Cinderwake Drydock (Preview)**.
 Cinderwake's stage controller owns transit, warnings and physical bulkheads;

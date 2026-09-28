@@ -280,6 +280,11 @@ visual port or a forced fixture result.
 
 ### NATIVE-06 — One release of record
 
+**User-directed hold:** add Career continuity, source-confirmed Arsenal equipment,
+and room discovery/text chat before building or publishing the next release.
+See [the expansion record](NATIVE_EXPANSION_2026-09-28.md). Implementation proceeds
+in parallel; integrated verification and eventual packaging remain serial.
+
 **Implementation update, 2026-09-28:** extracted-artifact validation now binds
 source identity, launcher bytes and the re-derived runtime closure to the
 manifest's recorded commits. Its 35 fixture checks pass, including advanced/dirty

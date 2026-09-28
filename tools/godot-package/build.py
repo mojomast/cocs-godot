@@ -360,7 +360,7 @@ ssh_remote_deploy/enabled=false
         "maps":lock["map_ids"], "native_arenas":[Path(p).stem for p in arena_data],
         "identity_arenas":[Path(p).stem for p in identity_data], "horde_maps":[Path(p).stem for p in horde_data],
         "career_catalog_sha256":inputs.get(career_catalog), "server_closure":closure,
-        "server_data_reads":"Optional history/progression stores are null. Locked map modules and explicitly hashed native-arena, identity-map and horde-map JSON are included in the runtime closure.",
+        "server_data_reads":"History is disabled. Owned source-server progression uses a private persistent configuration path outside the artifact. Credentials are separate and endpoint-scoped. Locked map modules and explicitly hashed native-arena, identity-map and horde-map JSON are included in the runtime closure.",
         "ws":{"version":ws["version"], "integrity":ws["integrity"], "resolved":ws["resolved"], "license":"MIT; retained in runtime/node_modules/ws/LICENSE; optional native accelerators omitted"},
         "toolchain":{"checksums_source":BASE + "SHA512-SUMS.txt", "archives":{v[0]:v[1] for v in ARCHIVES.values()}, "editor_sha256":digest(editor), "release_template_sha256":digest(templates / template_name)},
         "inputs":inputs, "input_sha256":tree_hash(inputs), "generated_resources":resources,

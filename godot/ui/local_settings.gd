@@ -201,7 +201,7 @@ func build_panel() -> void:
 	back.pressed.connect(close_panel)
 	career_button = Button.new()
 	career_button.name = "SettingsCareer"
-	career_button.text = "Career / Arsenal · Read-only"
+	career_button.text = "Career / Arsenal"
 	career_button.custom_minimum_size.y = 44
 	career_button.pressed.connect(open_career)
 	column.add_child(career_button)

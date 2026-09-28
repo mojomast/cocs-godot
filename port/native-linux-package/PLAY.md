@@ -75,10 +75,17 @@ released; click the world to resume controls. The source match keeps running.
 Home remembers the last activity and its validated options.
 
 **Career / Arsenal** opens from Home or F12 Settings. Browse source gear, weapon
-mods and cosmetics; a connected source-server room also supplies its current
-profile and per-mode totals. This first slice is read-only. Disconnected Home
-and local adapters without a profile show **Not loaded**. Cross-launch career
-identity, equip/unlock requests and personal match history are not implemented.
+mods and cosmetics; a connected source-server room supplies its profile and
+per-mode totals. Equip or remove unlocked gear/mods/finishes and wait for source
+confirmation. Saved choices apply when the source constructs the next match.
+Local source-backed careers persist across launches. Disconnected Home and
+adapters without profiles show **Not loaded**. Reticles remain view-only;
+unlocks come from source progression, not local purchases.
+
+**Multiplayer lobby:** Browse / Refresh lists rooms on the selected server.
+Select a room and join; active rounds retain the source's spectator behavior.
+The room Chat button opens a typing panel that releases gameplay controls.
+Messages appear only after the source broadcasts them. Escape closes chat.
 
 **Deathmatch** (`--experience=native-dm`) has one local human and 1–7 bots on six
 reviewed arenas. Source movement, weapon damage, scoring and bot AI remain
