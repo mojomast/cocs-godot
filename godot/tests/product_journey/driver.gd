@@ -35,6 +35,8 @@ func begin() -> void:
 	if not require_value(settings.values.master_volume == record.expected_volume, "settings did not survive process boundary"): return
 	var packed: PackedScene = load(scene_path)
 	scene = packed.instantiate()
+	if scene_path == "res://ui/main_menu.tscn":
+		scene.preferences_path = state_path.get_base_dir().path_join("menu_preferences.json")
 	root.add_child(scene)
 	current_scene = scene
 	await process_frame

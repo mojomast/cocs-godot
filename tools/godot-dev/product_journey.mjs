@@ -13,7 +13,7 @@ mkdirSync('.port-runtime/product-journeys', {recursive:true});
 const output = mkdtempSync(resolve('.port-runtime/product-journeys/attempt-'));
 const state = join(output, 'state.json');
 writeFileSync(state, JSON.stringify({visits:0,expected_volume:100}));
-const wrapper = join(output, 'godot-wrapper');
+const wrapper = join(output, 'godot-wrapper.cjs');
 writeFileSync(wrapper, `#!${process.execPath}
 const {spawn}=require('node:child_process');
 let args=process.argv.slice(2),env={...process.env};
