@@ -40,6 +40,8 @@ func run() -> void:
 	wire(c, {"type":"welcome", "v":3, "roomId":"fixture", "peerId":1})
 	wire(c, {"type":"lobby", "players":[{"peerId":1,"actorId":0}]})
 	wire(c, {"type":"start", "mapId":demo.current_id, "config":{"mode":"cocs"}, "roundRevision":1})
+	# The detached fixture has no input loop to observe released controls after setup.
+	demo.world_wait_release = false
 	var actor := {"id":0,"team":0,"x":-100,"y":2,"z":4,"yaw":1,"pitch":0,"health":100,"eyeHeight":1.45}
 	var other: Dictionary = actor.duplicate(true)
 	other.id = 1

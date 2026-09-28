@@ -2,6 +2,7 @@ extends SceneTree
 ## Decoded recipient transitions + actual neutral queue; no authority simulation.
 const Demo = preload("res://lattice/world_demo.gd")
 const Guidance = preload("res://lattice/world_guidance.gd")
+const Commands = preload("res://lattice/world_commands.gd")
 class QueueProbe extends "res://lattice/world_transport.gd":
 	var frames: Array[Dictionary] = []
 	func connection_open() -> bool: return true
@@ -16,6 +17,7 @@ var client: Node
 var seq := 0
 var actor := {"id":0,"team":0,"x":0,"y":0,"z":0,"yaw":0,"pitch":0,"health":100,"eyeHeight":1.45}
 var node := {"id":"front","label":"FRONT","x":0,"z":-20,"owner":null,"progress":[0.25,0],"live":true}
+var home := {"id":"home","label":"HOME","x":0,"z":10,"owner":0,"live":true}
 var source := {"mapId":"asterion-relay"}
 
 func check(ok: bool, message: String) -> void:
@@ -44,6 +46,18 @@ func run() -> void:
 	demo.client = QueueProbe.new()
 	client = demo.client
 	demo.current_id = "asterion-relay"
+	demo.selected_mode = "cocs"
+	# Detached world fixture still needs the authored command seam for on_started.
+	demo.world_commands = Commands.new()
+	root.add_child(demo.world_commands)
+	demo.world_commands.authored_map_id = demo.current_id
+	demo.world_commands.hide()
+	root.add_child(demo.session_panel)
+	demo.session_panel.hide()
+	# The two visible nodes and their link are authored fixture facts. Without
+	# both an owned neighbor and a public live front, no goal is certified.
+	var authored := {"nodes":[{"id":"home","archetype":"hq","label":"HOME","x":0,"z":10}, {"id":"front","archetype":"front","label":"FRONT","x":0,"z":-20}], "lattice":[["home","front"]]}
+	check(demo.lattice_hud.bind_authored_map(demo.current_id, authored), "fixture authored topology accepted")
 	client.allowlist = {demo.current_id:{"modes":["cocs"]}}
 	client.requested_map = demo.current_id
 	client.lobby.connect(demo.on_lobby)
@@ -56,11 +70,13 @@ func run() -> void:
 	wire({"type":"lobby","players":[{"peerId":1,"actorId":0}]})
 	wire({"type":"start","mapId":demo.current_id,"config":{"mode":"cocs"},"roundRevision":1})
 	check(status("unavailable", false), "start does not borrow a previous pose")
+	# A detached fixture has no input frame to observe controls released after setup.
+	demo.world_wait_release = false
 	source.actors = [actor]
-	source.cocs = {"roundRevision":1,"nodes":[node]}
+	source.cocs = {"roundRevision":1,"nodes":[home,node]}
 	snapshot()
 	check(status("released", true), "fresh healthy wire enables click but remains released")
-	check(demo.world_label.text.contains("25%") and demo.world_label.text.contains("Neutral") and demo.world_label.text.contains("Ahead"), "source objective and camera-relative goal use decoded public state")
+	check(demo.world_label.text.contains("25%") and demo.world_label.text.contains("Neutral") and demo.world_label.text.contains("Ahead") and demo.world_label.text.contains("FRONT"), "source objective and camera-relative goal use decoded public state")
 	var original: String = demo.world_label.text
 	client.actions.append({"kind":"hold","status":"confirmed"})
 	client.projection.command = {"executor":0,"leaseUntil":9999}
@@ -68,9 +84,10 @@ func run() -> void:
 	check(demo.world_label.text == original and node.owner == null, "confirmed HOLD and executor lease cannot alter goal ownership/progress")
 	demo._notification(Node.NOTIFICATION_APPLICATION_FOCUS_OUT)
 	demo.refresh_world_hud()
-	var neutral: Dictionary = client.frames.back().input
+	var last_frame: Dictionary = client.frames.back() if not client.frames.is_empty() else {}
+	var neutral: Dictionary = last_frame.get("input", {}) if last_frame.get("input") is Dictionary else {}
 	check(status("unfocused", false) and demo.label.text.contains("UNFOCUSED"), "focus boundary labels update without a new snapshot")
-	check(neutral.x == 0 and neutral.z == 0 and not neutral.fire and not neutral.jump and not neutral.reload and not neutral.sprint and not neutral.crouch and not neutral.interact and not neutral.mobility and not neutral.has("weapon"), "unfocused feedback corresponds to actual same-adapter neutral queue")
+	check(last_frame.get("type") == "input" and neutral.get("x") == 0 and neutral.get("z") == 0 and neutral.get("fire") == false and neutral.get("jump") == false and neutral.get("reload") == false and neutral.get("sprint") == false and neutral.get("crouch") == false and neutral.get("interact") == false and neutral.get("mobility") == false and not neutral.has("weapon"), "unfocused feedback corresponds to actual same-adapter neutral queue")
 	demo._notification(Node.NOTIFICATION_APPLICATION_FOCUS_IN)
 	check(status("released", false) and demo.world_wait_release, "focus return requires release before recapture")
 	demo.world_wait_release = false
@@ -91,11 +108,11 @@ func run() -> void:
 	node.owner = 0
 	node.progress = [0,0]
 	snapshot()
-	check(demo.world_label.text.contains("Source node: Team 0") and demo.world_label.text.contains("0%"), "only received ownership transition updates source node label")
+	check(demo.lattice_hud.markers["front"].text.contains("Team 0") and demo.world_label.text.contains("No confirmed legal frontier"), "only received ownership transition updates source node label")
 	node.erase("progress")
 	node.erase("live")
 	snapshot()
-	check(demo.world_label.text.contains("progress unknown") and demo.world_label.text.contains("activity unknown") and demo.world_label.text.contains("FLUX unknown"), "withheld progress/activity/wallet remain unknown")
+	check(demo.lattice_hud.markers["front"].text.contains("activity unknown") and demo.lattice_hud.topology_model.by_id.front.progress == null and demo.world_label.text.contains("FLUX unknown"), "withheld progress/activity/wallet remain unknown")
 	source.erase("cocs")
 	snapshot()
 	check(status("unavailable", false) and demo.world_label.text.is_empty() and demo.lattice_hud.nearest.is_empty(), "missing projection clears goal and control together")
@@ -104,9 +121,10 @@ func run() -> void:
 	wire({"type":"lobby","players":[]})
 	demo.refresh_world_hud()
 	check(status("unavailable", false) and demo.world_label.text.is_empty(), "revoked recipient cannot retain goal")
+	source.winner = 0
 	wire({"type":"results","state":source})
 	demo.refresh_world_hud()
-	check(status("results", false) and demo.label.text.contains("Enter") and demo.world_label.text.is_empty(), "results replaces approach with restart instruction")
+	check(status("results", false) and demo.label.text.contains("Enter") and demo.world_label.text.contains("RESULT · winner team 0") and demo.world_label.text.contains("Guest: waiting for host restart") and not demo.world_label.text.contains("Goal:"), "results replaces approach with restart instruction")
 	demo.on_error("fixture disconnect")
 	demo.refresh_world_hud()
 	check(status("stopped", false) and demo.world_label.text == "fixture disconnect", "disconnect preserves error and releases controls")
@@ -135,7 +153,7 @@ func run() -> void:
 	check(hud.text(coop).contains("Wave unknown") and hud.text(coop).contains("window unknown"), "missing co-op context is not a fabricated wave or closed window")
 	coop.recruitment = {"wave":2,"phase":"intermission","open":true}
 	check(hud.text(coop).contains("Wave 2") and hud.text(coop).contains("window open"), "co-op context reflects supplied public fields")
-	for item: Node in [client,demo.session_panel,demo.camera,demo.sun,demo.environment,demo.label,demo.selector,demo.world_label,demo.combat_label,demo.pickups,demo.presentation,demo.combat,demo.lattice_hud]: item.free()
+	for item: Node in [client,demo.world_commands,demo.session_panel,demo.camera,demo.sun,demo.environment,demo.label,demo.selector,demo.world_label,demo.combat_label,demo.pickups,demo.presentation,demo.combat,demo.lattice_hud]: item.free()
 	demo.free()
 	print("USABILITY_CONTRACT checks=", checks, " failures=", failures)
 	await process_frame

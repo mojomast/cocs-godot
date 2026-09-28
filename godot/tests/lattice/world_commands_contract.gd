@@ -72,6 +72,9 @@ func run() -> void:
 	panel = Commands.new()
 	demo.world_commands = panel
 	root.add_child(panel)
+	# Construct the demo's session overlay so its member controls have a parent.
+	root.add_child(demo.session_panel)
+	demo.session_panel.hide()
 	panel.set_process(false)
 	panel.world_bind(demo)
 	fresh()
