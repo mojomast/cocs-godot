@@ -6,6 +6,7 @@ const Model = preload("res://lattice/world_tactical_model.gd")
 const HUD = preload("res://lattice/world_tactical_hud.gd")
 var checks := 0
 var failures := 0
+var hud: Control
 
 func check(ok: bool, message: String) -> void:
 	checks += 1
@@ -17,10 +18,23 @@ func check(ok: bool, message: String) -> void:
 func wire(client: Node, frame: Dictionary) -> bool:
 	return client.decode_text(JSON.stringify(frame))
 
+## The project uses CONTENT_SCALE_MODE_CANVAS_ITEMS with a fixed
+## content_scale_size, so the logical viewport is set through content_scale_size
+## (and factor), never root.size. Wait until the HUD control actually adopts it.
+func resize_hud(target: Vector2i) -> void:
+	root.content_scale_factor = 1.0
+	root.content_scale_size = target
+	for _wait: int in range(12):
+		await process_frame
+		if hud.size.is_equal_approx(Vector2(target.x, target.y)): break
+	await process_frame
+	check(hud.size.is_equal_approx(Vector2(target.x, target.y)), "HUD tracks %dx%d logical viewport" % [target.x, target.y])
+
 func _initialize() -> void: call_deferred("run")
 
 func run() -> void:
-	root.size = Vector2i(1280, 720)
+	root.content_scale_factor = 1.0
+	root.content_scale_size = Vector2i(1280, 720)
 	var client := Transport.new()
 	client.allowlist = {"asterion-relay":{"modes":["cocs", "cocs-coop"]}}
 	client.requested_map = "asterion-relay"
@@ -67,18 +81,16 @@ func run() -> void:
 	check(model.progress.contains("WAVE 3 / 5") and model.detail.contains("FORCE 7 / 13") and model.detail.contains("HQ 60 / 100"), "Operations counts are source-observed")
 	var layer := CanvasLayer.new()
 	root.add_child(layer)
-	var hud := HUD.new()
+	hud = HUD.new()
 	layer.add_child(hud)
 	hud.present(client.projection, target, topology, state.actors[0], [], "")
 	await process_frame
 	check(hud.visible and hud.progress.text.contains("WAVE 3") and hud.economy.text.contains("120"), "render panel consumes recipient model")
 	hud.present(client.projection, target, topology, state.actors[0], [], "", "released")
 	check(hud.control_hint.text.contains("CLICK WORLD TO RESUME"), "released pointer has explicit recovery cue")
-	root.size = Vector2i(1280, 800)
-	await process_frame
+	await resize_hud(Vector2i(1280, 800))
 	check(hud.objective_card.get_rect().end.x < hud.status_card.position.x and hud.status_card.get_rect().end.x <= 1280 and hud.bottom.position.y + hud.bottom.get_combined_minimum_size().y <= 800, "standard cards fit without overlap or clipping")
-	root.size = Vector2i(760, 520)
-	await process_frame
+	await resize_hud(Vector2i(760, 520))
 	check(hud.objective_card.get_rect().end.x < hud.status_card.position.x and hud.status_card.get_rect().end.x <= 760, "compact cards fit without overlap")
 	client.clear_projection()
 	hud.present(client.projection, {}, {}, {}, [], "")

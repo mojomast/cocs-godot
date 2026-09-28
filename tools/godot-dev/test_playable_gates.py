@@ -40,6 +40,8 @@ class PlayableGatesTest(unittest.TestCase):
             "native-ci-contracts": "port/native-ci/source-selection.test.mjs",
             "product-shell-supervisor": "tools/godot-package/menu_journey.test.mjs",
             "product-shell-settings": "res://tests/product_shell/settings_contract.gd",
+            "product-shell-journey": "tools/godot-dev/product_journey.mjs",
+            "product-shell-guest-leave": "tools/godot-dev/guest_leave_journey.mjs",
             "loadout-unit": "res://tests/loadouts/unit.gd",
             "loadout-source-parity": "res://tests/loadouts/parity.gd",
             "loadout-client": "res://tests/loadouts/client_frames.gd",

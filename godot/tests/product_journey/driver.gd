@@ -49,6 +49,15 @@ func begin() -> void:
 
 func menu_step() -> void:
 	var visit := int(record.visits)
+	if visit == 0 and OS.get_environment("COCS_JOURNEY_CAPTURE") == "1":
+		await capture_view("home-1280x800")
+		root.size = Vector2i(760,520)
+		await capture_view("home-760x520")
+		settings.set_value("ui_scale",150,false)
+		await capture_view("home-760x520-scale150")
+		settings.set_value("ui_scale",100,false)
+		root.size = Vector2i(1280,800)
+		await process_frame
 	if visit > 0:
 		if not require_value(scene.current_route.get("id") == record.route, "menu did not restore last activity"): return
 	if visit == 9:
@@ -104,7 +113,41 @@ func settings_key() -> void:
 	event.pressed = false
 	Input.parse_input_event(event)
 
+func capture_view(name: String) -> void:
+	for i in 4: await RenderingServer.frame_post_draw
+	var output := state_path.get_base_dir().path_join(name + ".png")
+	if not require_value(root.get_texture().get_image().save_png(output) == OK, "capture save failed"): return
+	print("PRODUCT_JOURNEY_CAPTURE ", JSON.stringify({"name":name,"path":output,"source_route":route_id,
+		"window":[root.size.x,root.size.y],"scale":settings.values.ui_scale}))
+
+func capture_deck() -> void:
+	var event := InputEventKey.new()
+	event.keycode = KEY_C
+	event.physical_keycode = KEY_C
+	event.pressed = true
+	Input.parse_input_event(event)
+	event = event.duplicate()
+	event.pressed = false
+	Input.parse_input_event(event)
+	await process_frame
+	if not require_value(scene.world_commands.visible, "command deck did not open for capture"): return
+	root.size = Vector2i(1280,800)
+	await capture_view("deck-1280x800")
+	root.size = Vector2i(760,520)
+	await capture_view("deck-760x520")
+	settings.set_value("ui_scale",150,false)
+	await capture_view("deck-760x520-scale150")
+	settings.open_panel()
+	await capture_view("settings-760x520-scale150")
+	settings.close_panel()
+	settings.set_value("ui_scale",100,false)
+	root.size = Vector2i(1280,800)
+	scene.world_close_commands()
+	await process_frame
+
 func route_step() -> void:
+	if route_id == "lattice-world" and int(record.visits) == 2 and OS.get_environment("COCS_JOURNEY_CAPTURE") == "1":
+		await capture_deck()
 	settings_key()
 	await process_frame
 	if not require_value(settings.overlay_open() and settings.rows.leave.visible, "F12 did not expose match Settings/Leave"): return

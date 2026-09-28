@@ -2,13 +2,17 @@
 // source authorities and the real dev supervisor. Only the UI actions are scripted.
 // Run under tools/godot-dev/xvfb_run.py with pinned GODOT_BIN and explicit derivative.
 import assert from 'node:assert/strict';
-import {spawn} from 'node:child_process';
+import {spawn, execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
 import {mkdtempSync, writeFileSync, chmodSync, readFileSync, mkdirSync} from 'node:fs';
 import {resolve, join} from 'node:path';
 import {createConnection} from 'node:net';
 const real = process.env.GODOT_BIN;
 assert.ok(real, 'Set pinned GODOT_BIN');
 assert.ok(process.env.DISPLAY, 'Run with a private Xvfb display');
+const sourceLock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
+const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const hash=path=>createHash('sha256').update(readFileSync(path)).digest('hex');
 mkdirSync('.port-runtime/product-journeys', {recursive:true});
 const output = mkdtempSync(resolve('.port-runtime/product-journeys/attempt-'));
 const state = join(output, 'state.json');
@@ -32,7 +36,7 @@ child.once('exit',(code,signal)=>{process.exitCode=code??(signal?1:0);});
 `);
 chmodSync(wrapper, 0o755);
 const env = {...process.env, GODOT_BIN:wrapper, COCS_JOURNEY_GODOT:real, COCS_JOURNEY_STATE:state,
-  COCS_SETTINGS_PATH:join(output,'local_settings.json'), PORT:'0'};
+  COCS_SETTINGS_PATH:join(output,'local_settings.json'), COCS_JOURNEY_CAPTURE:process.argv.includes('--capture')?'1':'0', PORT:'0'};
 const child = spawn(process.execPath,['tools/godot-dev/launch.mjs','--experience=menu'], {env,detached:true,stdio:['ignore','pipe','pipe']});
 let text='';
 for (const stream of [child.stdout,child.stderr])stream.on('data',chunk=>{text+=chunk;});
@@ -41,6 +45,7 @@ let code;
 try {code=await new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',resolve);});}
 finally {clearTimeout(timer);writeFileSync(join(output,'console.log'),text);}
 const matches=text.split('\n').filter(line=>line.startsWith('PRODUCT_JOURNEY_MATCH ')).map(line=>JSON.parse(line.slice('PRODUCT_JOURNEY_MATCH '.length)));
+const captures=text.split('\n').filter(line=>line.startsWith('PRODUCT_JOURNEY_CAPTURE ')).map(line=>JSON.parse(line.slice('PRODUCT_JOURNEY_CAPTURE '.length)));
 const ports=[...text.matchAll(/Owned local server ready at ws:\/\/127\.0\.0\.1:(\d+)/g)].map(match=>Number(match[1]));
 const closed=[];
 for(const port of new Set(ports))closed.push(await new Promise(resolve=>{
@@ -51,7 +56,12 @@ for(const port of new Set(ports))closed.push(await new Promise(resolve=>{
 }));
 const passed=code===0&&!text.includes('ERROR:')&&matches.length===9&&ports.length===9&&closed.every(Boolean)&&text.includes('PRODUCT_JOURNEY_COMPLETE ');
 const summary={scope:'source-driven scripted UI lifecycle; not natural rounds/human acceptance',passed,exit_code:code,
-  source_sessions:matches,owned_ports:ports,all_owned_ports_closed:closed.every(Boolean),state:JSON.parse(readFileSync(state)),output};
+  port_commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),source_commit:sourceLock.source_commit,
+  source_derivative_commit:derivative?.derivative_commit??null,
+  input_sha256:Object.fromEntries(['godot/tests/product_journey/driver.gd','godot/ui/local_settings.gd','godot/lattice/world_commands.gd',
+    'tools/godot-dev/product_journey.mjs','tools/godot-dev/launch.mjs'].map(path=>[path,hash(path)])),
+  source_sessions:matches,captures,owned_ports:ports,all_owned_ports_closed:closed.every(Boolean),state:JSON.parse(readFileSync(state)),output};
+for(const capture of captures)capture.sha256=hash(capture.path);
 writeFileSync(join(output,'summary.json'),JSON.stringify(summary,null,2)+'\n');
 console.log('PRODUCT_JOURNEY '+JSON.stringify(summary));
 if(!passed){console.error(text);process.exitCode=1;}

@@ -133,18 +133,32 @@ func run() -> void:
 	panel.world_purchase()
 	check(client.frames.back().action == "reinforce" and client.actions.size() == 1 and not panel.confirm_spend.button_pressed, "co-op purchase routes through existing activate once")
 	# Presentation layout fixture (synthetic geometry only): the deck must fit
-	# compact and standard viewports and never force horizontal overflow.
-	for view: Array in [[760, 520], [1280, 800]]:
-		root.size = Vector2i(int(view[0]), int(view[1]))
+	# compact, standard and 150%-scale logical viewports and never force
+	# horizontal overflow. The project uses CONTENT_SCALE_MODE_CANVAS_ITEMS, so
+	# the logical rect is [content_scale_size] divided by [content_scale_factor];
+	# 760x520 at 1.5 is the user's 150% case (logical ~507x347).
+	for case: Array in [[Vector2i(760, 520), 1.5], [Vector2i(760, 520), 1.0], [Vector2i(1280, 800), 1.0]]:
+		var scale_size: Vector2i = case[0]
+		var factor: float = case[1]
+		var expected: Vector2 = Vector2(scale_size) / factor
+		root.content_scale_factor = factor
+		root.content_scale_size = scale_size
 		panel.show()
 		panel.world_refresh()
+		for _wait: int in range(12):
+			await process_frame
+			if panel.size.is_equal_approx(expected): break
 		await process_frame
-		await process_frame
+		var logical := panel.size
+		var label := "%.0fx%.0f@%.1fx" % [logical.x, logical.y, factor]
+		check(logical.is_equal_approx(expected), "deck control tracks logical viewport %s" % label)
 		var bounds: Rect2 = panel.panel.get_rect()
-		check(bounds.position.x >= 0.0 and bounds.position.y >= 0.0 and bounds.end.x <= float(view[0]) + 0.5 and bounds.end.y <= float(view[1]) + 0.5, "deck panel fits %dx%d viewport" % [view[0], view[1]])
-		var page: Control = panel.tabs.get_child(panel.tabs.current_tab) as Control
-		check(page != null and page.get_combined_minimum_size().x <= page.size.x + 1.0, "objective cards fit their page at %dx%d" % [view[0], view[1]])
-		check(panel.nodes.custom_minimum_size.x > 0.0 and panel.nodes.custom_minimum_size.x <= 345.0, "objective list minimum stays bounded at %dx%d" % [view[0], view[1]])
+		check(bounds.position.x >= -0.5 and bounds.position.y >= -0.5 and bounds.end.x <= logical.x + 0.5 and bounds.end.y <= logical.y + 0.5, "deck panel fits logical viewport %s" % label)
+		var reflow: bool = logical.x < 700
+		check(panel.objectives_page.is_vertical() == reflow and panel.req_page.is_vertical() == reflow, "central pages reflow at %s" % label)
+		check(panel.objectives_page.get_combined_minimum_size().x <= panel.objectives_page.size.x + 1.0, "objectives page fits its width at %s" % label)
+		check(panel.req_page.get_combined_minimum_size().x <= panel.req_page.size.x + 1.0, "REQ page fits its width at %s" % label)
+		check(panel.nodes.custom_minimum_size.x > 0.0 and panel.nodes.custom_minimum_size.x <= 345.0, "objective list minimum stays bounded at %s" % label)
 	for node: Node in [panel,demo.session_panel,demo.client,demo.camera,demo.sun,demo.environment,demo.label,demo.selector,demo.world_label,demo.combat_label,demo.pickups,demo.presentation,demo.combat,demo.lattice_hud]: node.free()
 	demo.free()
 	print("WORLD_COMMANDS_CONTRACT checks=", checks, " failures=", failures)

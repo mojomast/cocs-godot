@@ -149,6 +149,8 @@ commands = [
     ("main-menu-smoke", [binary, "--headless", "--path", "godot", "res://ui/main_menu.tscn", "--", "--smoke"]),
     ("main-menu-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/main_menu/contracts.gd", "--", "--contracts"]),
     ("product-shell-settings", [binary, "--headless", "--path", "godot", "--script", "res://tests/product_shell/settings_contract.gd"]),
+    ("product-shell-journey", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "tools/godot-dev/product_journey.mjs"]),
+    ("product-shell-guest-leave", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "tools/godot-dev/guest_leave_journey.mjs"]),
     # coverage.mjs alone always exits 0; the floor wrapper makes a regression fail.
     ("material-coverage-floor", [sys.executable, "tools/godot-dev/coverage_floor.py"]),
     ("release-pipeline-tools", ["node", "--test", "tools/release/options.test.mjs", "tools/release/release.test.mjs"]),
@@ -260,8 +262,10 @@ report['unrun_gate_names'] = report['planned_gate_names'].copy()
 # never inserted into the executable inventory as implied passes.
 report['gate_tiers'] = {
     'rendered/input': ['first-person-binding', 'combat-actions', 'benchmark-autostart',
-                       'blood-live-native', 'loadout-loopback', 'horde-upgrade-fixture'],
-    'live-source': ['native-live', 'native-lifecycle', 'native-session', 'two-native-clients'],
+                       'blood-live-native', 'loadout-loopback', 'horde-upgrade-fixture',
+                       'product-shell-journey', 'product-shell-guest-leave'],
+    'live-source': ['native-live', 'native-lifecycle', 'native-session', 'two-native-clients',
+                    'product-shell-journey', 'product-shell-guest-leave'],
 }
 report['execution'] = {'planned': len(report['planned_gate_names']), 'executed': 0,
                        'unrun': len(report['unrun_gate_names'])}
@@ -300,6 +304,7 @@ if not version['passed']:
 # session and a session without capture produce no such line, so this is engine
 # teardown behaviour, not our content. Any other ERROR line still fails the gate.
 gate_options = {
+    'product-shell-journey': {'timeout': 300},
     'benchmark-autostart': {'success_marker': 'BENCHMARK_GATE_OK'},
     'combat-actions': {
         'success_marker': 'NATIVE_COMBAT_ACTIONS',

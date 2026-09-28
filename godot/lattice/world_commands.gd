@@ -44,9 +44,16 @@ var req_balance := Label.new()
 var req_state := Label.new()
 var header_margin := MarginContainer.new()
 var footer_margin := MarginContainer.new()
+var header_row: HBoxContainer
+var close_button: Button
 var header_eyebrow: Label
 var deck_title: Label
 var exit_help: Label
+## Central tab pages are raw BoxContainers so their orientation can be reflowed
+## at narrow logical widths (HBoxContainer/VBoxContainer are fixed orientation).
+var objectives_page: BoxContainer
+var req_page: BoxContainer
+var req_detail_scroll: ScrollContainer
 ## Full row text per objective id, so a clipped list row is always recoverable
 ## through its tooltip and the wrapping SELECTED TARGET copy.
 var node_rows: Dictionary = {}
@@ -107,6 +114,23 @@ func primary_action(button: Button) -> void:
 	button.add_theme_color_override("font_color", Color("f2fffa"))
 	button.add_theme_color_override("font_disabled_color", Color("869ca9"))
 
+## Wraps a tab page in a vertical scroll so a short logical viewport (interface
+## scale 150% shrinks the logical rect) scrolls the central content instead of
+## forcing the deck panel off-screen. Horizontal scrolling is disabled: the page
+## always matches the available width and wraps/clips inside its own controls.
+func scroll_page(content: Control, title: String) -> ScrollContainer:
+	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	content.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	var scroll := ScrollContainer.new()
+	scroll.name = title
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.add_child(content)
+	tabs.add_child(scroll)
+	return scroll
+
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
@@ -123,13 +147,13 @@ func _ready() -> void:
 	for side: String in ["left", "right"]: header_margin.add_theme_constant_override("margin_" + side, 28)
 	for side: String in ["top", "bottom"]: header_margin.add_theme_constant_override("margin_" + side, 18)
 	outer.add_child(header_margin)
-	var header := HBoxContainer.new()
-	header.add_theme_constant_override("separation", 20)
-	header_margin.add_child(header)
+	header_row = HBoxContainer.new()
+	header_row.add_theme_constant_override("separation", 20)
+	header_margin.add_child(header_row)
 	var title_stack := VBoxContainer.new()
 	title_stack.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	title_stack.add_theme_constant_override("separation", 2)
-	header.add_child(title_stack)
+	header_row.add_child(title_stack)
 	header_eyebrow = eyebrow("LATTICE  /  FIELD SYSTEMS", title_stack)
 	deck_title = world_label("Command deck", title_stack)
 	deck_title.add_theme_font_size_override("font_size", 27)
@@ -140,12 +164,12 @@ func _ready() -> void:
 	resources.autowrap_mode = TextServer.AUTOWRAP_OFF
 	resources.clip_text = true
 	resources.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	header.add_child(resources)
-	var close_button := Button.new()
+	header_row.add_child(resources)
+	close_button = Button.new()
 	close_button.text = "CLOSE  ×"
 	close_button.custom_minimum_size = Vector2(102, 44)
 	close_button.pressed.connect(func() -> void: close_requested.emit())
-	header.add_child(close_button)
+	header_row.add_child(close_button)
 	var divider := ColorRect.new()
 	divider.color = Color("30485a")
 	divider.custom_minimum_size.y = 1
@@ -153,13 +177,13 @@ func _ready() -> void:
 	tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	tabs.add_theme_font_size_override("font_size", 16)
 	outer.add_child(tabs)
-	var objectives := HBoxContainer.new()
-	objectives.name = "01  OBJECTIVES"
-	objectives.add_theme_constant_override("separation", SECTION_GAP)
-	tabs.add_child(objectives)
+	objectives_page = BoxContainer.new()
+	objectives_page.name = "01  OBJECTIVES"
+	objectives_page.add_theme_constant_override("separation", SECTION_GAP)
 	# The picker takes the wider share so long objective/legal/supply rows clip
-	# less; the wrapping detail card keeps the full selected facts readable.
-	var objective_list := section_card(objectives, CARD_BG, 1.5)
+	# less; the wrapping detail card keeps the full selected facts readable. The
+	# page reflows to one column at narrow logical widths.
+	var objective_list := section_card(objectives_page, CARD_BG, 1.5)
 	eyebrow("01 / MAP CONTROL", objective_list)
 	world_label("Choose an objective", objective_list).add_theme_font_size_override("font_size", 21)
 	world_label("The server decides legality and applies HOLD.", objective_list)
@@ -169,7 +193,7 @@ func _ready() -> void:
 	nodes.add_theme_constant_override("v_separation", 8)
 	nodes.item_selected.connect(world_select)
 	objective_list.add_child(nodes)
-	var objective_detail := section_card(objectives, DETAIL_BG)
+	var objective_detail := section_card(objectives_page, DETAIL_BG)
 	eyebrow("SELECTED TARGET", objective_detail)
 	objective_detail.add_child(selection)
 	selection.add_theme_font_size_override("font_size", 18)
@@ -180,10 +204,9 @@ func _ready() -> void:
 	hold_button.pressed.connect(world_hold)
 	objective_detail.add_child(hold_button)
 	world_label("A HOLD receipt records the request. It does not prove capture or supply change.", objective_detail)
-	var req_page := HBoxContainer.new()
+	req_page = BoxContainer.new()
 	req_page.name = "02  PERSONAL REQ"
-	req_page.add_theme_constant_override("separation", 16)
-	tabs.add_child(req_page)
+	req_page.add_theme_constant_override("separation", SECTION_GAP)
 	req_list_shell.add_theme_stylebox_override("panel", card_style(CARD_BG, CARD_BORDER))
 	req_list_shell.custom_minimum_size.x = 390
 	req_list_shell.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -205,7 +228,7 @@ func _ready() -> void:
 	req_list_column.add_child(req_items)
 	req_balance.add_theme_color_override("font_color", Color("a7c0ce"))
 	req_list_column.add_child(req_balance)
-	var req_detail_scroll := ScrollContainer.new()
+	req_detail_scroll = ScrollContainer.new()
 	req_detail_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	req_detail_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	req_detail_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -245,7 +268,6 @@ func _ready() -> void:
 	req_detail.add_child(req_notice)
 	var team_page := VBoxContainer.new()
 	team_page.name = "03  TEAM ECONOMY"
-	tabs.add_child(team_page)
 	var team_content := section_card(team_page, DETAIL_BG)
 	eyebrow("03 / SHARED TEAM FLUX", team_content)
 	world_label("Reinforce the line", team_content).add_theme_font_size_override("font_size", 25)
@@ -259,12 +281,16 @@ func _ready() -> void:
 	team_content.add_child(economy_help)
 	var activity_page := VBoxContainer.new()
 	activity_page.name = "04  ACTIVITY"
-	tabs.add_child(activity_page)
 	var activity := section_card(activity_page)
 	eyebrow("04 / SOURCE RECEIPTS", activity)
 	world_label("Recent decisions", activity).add_theme_font_size_override("font_size", 23)
 	world_label("QUEUED means a local request. ACCEPTED and SETTLED are separate source observations.", activity)
 	activity.add_child(history)
+	# Every central page scrolls vertically; horizontal overflow is disabled.
+	scroll_page(objectives_page, "01  OBJECTIVES")
+	scroll_page(req_page, "02  PERSONAL REQ")
+	scroll_page(team_page, "03  TEAM ECONOMY")
+	scroll_page(activity_page, "04  ACTIVITY")
 	for side: String in ["left", "right"]: footer_margin.add_theme_constant_override("margin_" + side, 26)
 	for side: String in ["top", "bottom"]: footer_margin.add_theme_constant_override("margin_" + side, 12)
 	outer.add_child(footer_margin)
@@ -277,9 +303,9 @@ func _ready() -> void:
 	exit_help.add_theme_font_size_override("font_size", 12)
 	exit_help.add_theme_color_override("font_color", Color("829eab"))
 	exit_help.custom_minimum_size.x = 320
-	exit_help.autowrap_mode = TextServer.AUTOWRAP_OFF
-	exit_help.clip_text = true
-	for label: Label in [selection, economy_help, notice, history, req_effect, req_help, req_notice]:
+	# Keep the hint wrapping (never clipped) so a narrow footer stays readable.
+	exit_help.clip_text = false
+	for label: Label in [selection, economy_help, notice, history, req_effect, req_help, req_notice, req_name, req_price, req_category, req_state, req_balance]:
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	resized.connect(world_layout)
 	world_layout()
@@ -289,27 +315,43 @@ func _ready() -> void:
 	hide()
 
 func world_layout() -> void:
+	# size is the logical viewport: interface scale shrinks it (150% of 760x520
+	# renders into roughly 506x346 logical pixels), so the deck must hold up well
+	# below the physical minimum.
 	var compact := size.y < 640 or size.x < 900
+	var narrow := size.x < 620
+	var reflow := size.x < 700
 	header_eyebrow.visible = not compact
-	deck_title.add_theme_font_size_override("font_size", 20 if compact else 27)
-	for side: String in ["top", "bottom"]: header_margin.add_theme_constant_override("margin_" + side, 8 if compact else 18)
-	for side: String in ["left", "right"]: header_margin.add_theme_constant_override("margin_" + side, 14 if compact else 28)
-	for side: String in ["top", "bottom"]: footer_margin.add_theme_constant_override("margin_" + side, 8 if compact else 12)
-	for side: String in ["left", "right"]: footer_margin.add_theme_constant_override("margin_" + side, 14 if compact else 26)
-	resources.custom_minimum_size.x = 225 if compact else 365
-	req_items.custom_minimum_size.y = 110 if compact else 240
-	tabs.add_theme_font_size_override("font_size", 14 if compact else 16)
+	deck_title.add_theme_font_size_override("font_size", 17 if narrow else 20 if compact else 27)
+	header_row.add_theme_constant_override("separation", 12 if narrow else 20)
+	resources.add_theme_font_size_override("font_size", 12 if narrow else 14)
+	resources.custom_minimum_size.x = 140 if narrow else 225 if compact else 365
+	close_button.text = "×" if narrow else "CLOSE  ×"
+	close_button.custom_minimum_size = Vector2(46, 40) if narrow else Vector2(102, 44)
+	for side: String in ["top", "bottom"]: header_margin.add_theme_constant_override("margin_" + side, 6 if narrow else 8 if compact else 18)
+	for side: String in ["left", "right"]: header_margin.add_theme_constant_override("margin_" + side, 12 if narrow else 14 if compact else 28)
+	for side: String in ["top", "bottom"]: footer_margin.add_theme_constant_override("margin_" + side, 6 if narrow else 8 if compact else 12)
+	for side: String in ["left", "right"]: footer_margin.add_theme_constant_override("margin_" + side, 12 if narrow else 14 if compact else 26)
+	req_items.custom_minimum_size.y = 72 if reflow else 110 if compact else 240
+	nodes.custom_minimum_size.y = 90 if reflow else 150 if compact else 180
+	req_detail_scroll.custom_minimum_size.y = 140 if reflow else 200
+	tabs.add_theme_font_size_override("font_size", 12 if narrow else 14 if compact else 16)
 	# Responsive panel: never wider or taller than the live viewport, and the
 	# standard capture gets extra width so objective rows need not clip.
-	panel.size = Vector2(minf(1160, size.x - 28), minf(700, size.y - 28))
+	var margin := 16.0 if narrow else 28.0
+	panel.size = Vector2(minf(1160, size.x - margin), minf(700, size.y - margin))
 	panel.position = (size - panel.size) * 0.5
 	# Minimum sizes shrink with the panel so no child forces horizontal overflow
 	# at compact widths; long ItemList rows scroll/ellipsize inside, with their
 	# full text mirrored in the wrapping SELECTED TARGET copy and a tooltip.
 	var page_width := maxf(260.0, panel.size.x - 24.0)
-	nodes.custom_minimum_size.x = clampf(page_width * 0.42, 180.0, 345.0)
-	req_list_shell.custom_minimum_size.x = clampf(panel.size.x * 0.39, 205.0, 390.0)
-	exit_help.custom_minimum_size.x = 220 if compact else 320
+	nodes.custom_minimum_size.x = clampf((page_width - 36.0) if reflow else page_width * 0.42, 180.0, 345.0)
+	req_list_shell.custom_minimum_size.x = 205.0 if reflow else clampf(panel.size.x * 0.39, 205.0, 390.0)
+	exit_help.custom_minimum_size.x = 150 if narrow else 220 if compact else 320
+	# Vertical reflow for the two central pages when a side-by-side layout would
+	# starve them; each page is its own vertical scroll at that width.
+	objectives_page.set_vertical(reflow)
+	req_page.set_vertical(reflow)
 
 func world_bind(owner_session: Node) -> void:
 	session = owner_session

@@ -117,6 +117,9 @@ func apply() -> void:
 	# Canvas-items stretch scales *existing* explicit HUD/deck font overrides and
 	# Home labels live. Do not also multiply font sizes, which would double-scale.
 	get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+	# Use the actual window as the layout basis, not the project's fixed 1280x800
+	# design resolution; resizing must reflow controls instead of shrinking text.
+	get_window().content_scale_size = Vector2i.ZERO
 	get_window().content_scale_factor = float(values.ui_scale) / 100.0
 
 func overlay_open() -> bool:

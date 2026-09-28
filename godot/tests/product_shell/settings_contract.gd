@@ -61,6 +61,7 @@ func run() -> void:
 		"explicit engine display switches are recognized without treating user args as display flags")
 	var previous_scale := root.content_scale_factor
 	var previous_stretch := root.content_scale_mode
+	var previous_base := root.content_scale_size
 	var first := Store.new()
 	root.add_child(first)
 	first.load_at(path)
@@ -72,7 +73,7 @@ func run() -> void:
 		"settings save atomically into a nested injected directory")
 	check(absf(first.sensitivity() - 1.5) < 0.001, "control gain reads current settings")
 	check(absf(root.content_scale_factor - 1.25) < 0.001
-		and root.content_scale_mode == Window.CONTENT_SCALE_MODE_CANVAS_ITEMS,
+		and root.content_scale_mode == Window.CONTENT_SCALE_MODE_CANVAS_ITEMS and root.content_scale_size == Vector2i.ZERO,
 		"UI scale changes the actual root canvas stretch live, including explicit HUD font overrides")
 	var master := AudioServer.get_bus_index("Master")
 	if master >= 0:
@@ -158,5 +159,6 @@ func run() -> void:
 	reset.free()
 	root.content_scale_factor = previous_scale
 	root.content_scale_mode = previous_stretch
+	root.content_scale_size = previous_base
 	print("SETTINGS_CONTRACT checks=", checks, " failures=", failed)
 	quit(1 if failed else 0)
