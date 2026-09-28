@@ -90,7 +90,7 @@ def main():
     parser.add_argument("--state", type=Path, required=True, help="owned /tmp/opencode directory outside any checkout")
     parser.add_argument("--archive-directory", type=Path, help="optional read-only source of editor.zip/templates.tpz; official hashes required")
     parser.add_argument("--target", choices=["linux", "windows"], default="linux")
-    parser.add_argument("--source-derivative", action="store_true", help="opt into the frozen LATTICE catalog source derivative; the original source lock stays unchanged")
+    parser.add_argument("--source-derivative", action="store_true", help="opt into the reviewed combined LATTICE/Horde source derivative; the original source lock stays unchanged")
     parser.add_argument("--operator-models", choices=["source-operators", "baseline", "candidate"], default="source-operators",
                         help="source-operators (default) ships the released presentation.gd source-operator preload; baseline is an accepted alias; candidate is retired")
     args = parser.parse_args()
@@ -166,6 +166,7 @@ def main():
         input_paths.add(career_catalog)
     if (ROOT / "tools/godot-export/career_catalog.mjs").is_file():
         input_paths.add("tools/godot-export/career_catalog.mjs")
+        run(["node", "tools/godot-export/career_catalog.mjs", "--check"], env=derivative_env)
     native_files = [p for p in git("ls-files", "godot").splitlines() if not p.startswith(("godot/tests/", "godot/content/", "godot/.godot/")) and p not in ["godot/.gitignore", "godot/export_presets.cfg"]]
     input_paths.update(native_files)
     input_paths.update(p.relative_to(ROOT).as_posix() for p in (ROOT / "tools/godot-package").glob("*") if p.is_file())

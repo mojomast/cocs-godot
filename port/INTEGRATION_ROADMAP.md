@@ -246,6 +246,14 @@ text. Owner review covers readability, audio and input feel on actual hardware.
 
 ### NATIVE-05 — Cinderwake/Nacre source and native integration
 
+**Implementation update, 2026-09-28:** combined source
+`61fca35c65488502b794900cde0a5247bfb123bf` preserves the LATTICE derivative and
+adds the reviewed Horde stage controller. The explicit derivative inventories
+all ten changed runtime files while retaining the original source lock. Native
+Cinderwake (Preview) is integrated alongside ordinary Horde and Nacre. An
+18-session source-backed Home journey passed across six route/map choices;
+package acceptance and natural campaign completion remain separate gates.
+
 1. Inventory the unmatched patches against the current integration tip. Treat
    Nacre and movement/kick work in `port/godot-destinations` as dependencies of
    the Cinderwake branch, not a second blind merge.
@@ -271,6 +279,12 @@ visual port or a forced fixture result.
 ## 5. Ship a consolidation checkpoint
 
 ### NATIVE-06 — One release of record
+
+**Implementation update, 2026-09-28:** extracted-artifact validation now binds
+source identity, launcher bytes and the re-derived runtime closure to the
+manifest's recorded commits. Its 35 fixture checks pass, including advanced/dirty
+ambient checkouts and artifact tampering. Building, exercising and publishing
+the consolidated artifacts remain release gates.
 
 - Run resource-heavy imports, rendering, builds and suites **serially**.
 - Build Linux and Windows from one reviewed port commit and resolved authority
@@ -302,6 +316,13 @@ small integration change; they do gate the claims that depend on them.
 ## 6. Resume Three.js feature migration through this foundation
 
 Recommended order after the consolidation checkpoint:
+
+The user requested concurrent slices, so the first read-only Career/Arsenal
+increment is now integrated in parallel with the release work: Home catalog
+browsing and **F12 Settings → Career / Arsenal** in a live source session.
+Profiles remain unknown when disconnected; per-mode source totals are shown
+without inventing a personal match-history API. Cross-process identity
+persistence and source-validated equip/unlock remain the next Career increment.
 
 1. **Native Career/Arsenal:** read-only source profile/history first, then
    source-validated equip/unlock interactions and results-to-career continuity.

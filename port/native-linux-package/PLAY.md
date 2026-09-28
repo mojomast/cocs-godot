@@ -38,6 +38,7 @@ node run.mjs --experience=native-dm --map=prism-foundry --bots=2 --round-seconds
 node run.mjs --experience=native-dm --map=vermilion-fold
 node run.mjs --experience=identity-zones
 node run.mjs --experience=horde --map=nacre-engine
+node run.mjs --experience=horde --map=cinderwake-drydock
 node run.mjs --experience=horde --map=nacre-engine --waves=10 --operator=claude --harness=claudecode
 node run.mjs --experience=showcase
 node run.mjs --experience=lobby
@@ -48,7 +49,7 @@ All nine original maps and ten source experience routes are retained, plus the
 three-map original native Deathmatch family (Prism Foundry, Aurora Basin, Cinder
 Array), the three identity arenas (Lacuna Court, Vermilion Fold, Nacre Engine),
 five native-only graphics routes, Domination on Vermilion Fold and Horde on Nacre
-Engine.
+Engine, plus the staged **Cinderwake Drydock (Preview)** Horde map.
 
 ## Controls
 
@@ -59,6 +60,7 @@ Engine.
 - **E** interact, **X** mobility, **Q** power, **F** melee, **G** grenade
 - **Z / MMB** alternate fire
 - **Tab** scores, **Escape** release the mouse; the match keeps running
+- **F12** Settings / Career / Leave match → Home
 - **Enter** restart after results, then release keys and click to resume
 - **F8** cycle Moth scenery detail: Full → Off → Low
 - **F9** cycle combat effects: Low → High → Extreme
@@ -66,6 +68,17 @@ Engine.
 - **F7** run the benchmark
 
 ## Modes
+
+Home Settings and the in-match F12 panel share persistent master volume/mute,
+window mode, mouse sensitivity and interface scale. Back leaves the pointer
+released; click the world to resume controls. The source match keeps running.
+Home remembers the last activity and its validated options.
+
+**Career / Arsenal** opens from Home or F12 Settings. Browse source gear, weapon
+mods and cosmetics; a connected source-server room also supplies its current
+profile and per-mode totals. This first slice is read-only. Disconnected Home
+and local adapters without a profile show **Not loaded**. Cross-launch career
+identity, equip/unlock requests and personal match history are not implemented.
 
 **Deathmatch** (`--experience=native-dm`) has one local human and 1–7 bots on six
 reviewed arenas. Source movement, weapon damage, scoring and bot AI remain
@@ -86,6 +99,11 @@ Select offered upgrades with the numbered buttons or matching number keys;
 the server confirms whether a choice was applied or refused. Full natural
 ten-wave completion has not been acceptance-tested; boss/endless modes remain
 outside this release's acceptance scope.
+
+**Cinderwake Drydock (Preview)** uses the same Horde controls and upgrade flow.
+The source stage controller determines transit, gate warnings and physical
+bulkheads. Its visuals do not select wave outcomes or open gates independently.
+Natural ten-wave/champion completion remains unobserved.
 
 **Graphics Showcase** (`--experience=showcase`, `--experience=aurora-basin`,
 `--experience=cinder-array`, `--experience=particle-lab`,

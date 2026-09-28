@@ -29,7 +29,7 @@ simulation lock and verification evidence remain reproducible.
 | Arena combat | Meridian Exchange, Verdant Reliquary and Ember Crucible; Deathmatch, Team Deathmatch, Instagib and Rocket Arena |
 | Multiplayer lobby | Popup-free host/join controls, roster, host-only start/restart, explicit Leave and read-only active-match spectators |
 | Arms Race | Three combat arenas, source-controlled ten-weapon ladder; independent kill-to-promotion and timed results/restart acceptance |
-| Local Horde | Three combat arenas, local-only source Match adapter, wave/enemy/lives/score HUD and source-default solo controls; ten-wave default |
+| Local Horde | Three combat arenas, Nacre Engine and Cinderwake Drydock (Preview); source-owned waves/upgrades, with snapshot-driven Cinderwake transit and bulkheads; ten-wave default |
 | Zone-control demo | KOTH / Domination HUD, objective rings, source capture/scoring, results and restart; independently exercised on Verdant / Meridian |
 | Combined-arms demo | Sunscar infantry and Puma mount / drive / brake tap / exit, with fresh controls after seat changes |
 | Native presentation | All nine map environments, 101 restored Moth texture planes, map-specific atmosphere, bounded scenery and ten first-person weapon models |
@@ -44,6 +44,13 @@ simulation lock and verification evidence remain reproducible.
 | Session handling | Local server launcher, host setup, guest transport, stale-state handling, focus release, death/respawn and round-boundary control resets |
 | Menu continuity | Last activity and validated per-activity choices are remembered locally across menu restarts; local cheats must be enabled explicitly each time |
 | Device settings | Home Settings and F12 in a route: master volume/mute, fullscreen, mouse sensitivity and interface scale; Back releases controls and Leave returns to the supervisor menu |
+| Career / Arsenal, first slice | Home catalog browsing; F12 Settings opens the current connected source profile and per-mode totals. Read-only, with explicit unknown state when disconnected |
+
+The integrated branch includes the shared shell, Cinderwake and initial Career
+work ahead of the published tactical-HUD playable build. Follow the
+[consolidation batch](port/CONSOLIDATION_BATCH_2026-09-28.md) for tested commits
+and packaging status. Natural Cinderwake ten-wave/champion completion and
+cross-launch career identity remain outstanding.
 
 Sports now have independent one-lap target victory, local-driver soccer scoring
 and results/restart acceptance. LATTICE offers both a command board and a

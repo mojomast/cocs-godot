@@ -29,6 +29,7 @@ not cocs.exe, so the local authoritative server is started and cleaned up.
 - **E** interact, **X** mobility, **Q** power, **F** melee, **G** grenade
 - **Z / MMB** alternate fire
 - **Tab** scores, **Escape** release mouse; the match keeps running
+- **F12** Settings / Career / Leave match → Home
 - **Enter** restart after results, then release keys and click to resume
 - **F8** cycle Moth scenery detail: Full → Off → Low
 - **F9** cycle combat effects: Low → High → Extreme
@@ -54,6 +55,8 @@ Play.cmd --experience=objectives --map=tidal-citadel
 Play.cmd --experience=objectives --map=sunscar-convoy
 Play.cmd --experience=lattice --map=asterion-relay
 Play.cmd --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
+Play.cmd --experience=horde --map=nacre-engine
+Play.cmd --experience=horde --map=cinderwake-drydock
 Play.cmd --help
 ```
 
@@ -63,6 +66,22 @@ loopback server, usable by clients on this computer. A separately hosted reachab
 server can be selected with `--experience=lobby --endpoint=ws://HOST:PORT`.
 
 ## New native maps and effects
+
+Home Settings and F12 share persistent master volume/mute, window mode, mouse
+sensitivity and interface scale. Home remembers the last activity/options.
+Back releases the pointer; click the world to resume controls. The source match
+keeps running while Settings or Career is open.
+
+**Career / Arsenal** opens from Home or F12 Settings. Browse source gear, weapon
+mods and cosmetics; connected source-server rooms supply their current profile
+and per-mode totals. This first slice is read-only. Disconnected Home and local
+adapters without a profile show **Not loaded**. Cross-launch career identity,
+equip/unlock requests and personal match history are not implemented.
+
+**Horde** includes ordinary maps, Nacre Engine and **Cinderwake Drydock (Preview)**.
+Cinderwake's stage controller owns transit, warnings and physical bulkheads;
+native visuals follow received source state. Natural ten-wave/champion completion
+remains unobserved. Native Windows execution is a separate owner acceptance check.
 
 **Native Deathmatch.cmd** opens the combat variants of all three maps. Each match
 has one local human and 1–7 bots. Choose the map in the launcher, then start the
