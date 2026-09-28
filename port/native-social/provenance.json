@@ -21,7 +21,7 @@
     "godot/social/social_model.gd": "c7ac11ba0b1d5ee9ad284c80323faeac53628573e8683c3f8b5670e387e546cd",
     "godot/social/room_browser.gd": "01bb823e8da10b25aab1607243723db376d2e547e696803758df280bd9caf5fd",
     "godot/social/chat_panel.gd": "766f5bd2722883cd77b744472dbde944b469079ea4bdd5d5c7ae6b393c77e8e5",
-    "godot/tests/protocol/lobby_social.gd": "22d9cdf218049025688940fcf50c7cd2e5f654066ca35e390827b254453f1fed",
+    "godot/tests/protocol/lobby_social.gd": "6aca750c7d902d63a1828f301d9ace599a3a516c9293e5d154d7f7d63bceb5c5",
     "port/native-social/social_authority.test.mjs": "08f55eab19b594294151e552c485590ac30a959d82372355182a5e5c382452e1",
     "port/native-social/run.sh": "df148e2e648fa98287ba3b38f61616bbfdc805c42d02edf93638725ce824a68c"
   },

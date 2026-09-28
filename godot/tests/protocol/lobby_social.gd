@@ -134,6 +134,16 @@ func run() -> void:
 	check(session.client.error.is_empty(), "missing chat capability keeps the connection")
 	check(menu.room_browser.status.text.contains("unknown message type"), "missing chat capability is reported honestly")
 
+	# A disconnect clears the advertised cache: no stale room from a previous
+	# socket can survive into the next connection.
+	session.client.rooms.emit([{"roomId":"IJ90","name":"Cached"}])
+	await settle()
+	check(menu.room_browser.list_box.get_child_count() == 1, "browser shows the advertised room before disconnect")
+	menu.room_browser.sync(false)
+	await settle()
+	check(menu.room_browser.list_box.get_child_count() == 0, "disconnect clears the cached room list")
+	check(menu.room_browser.status.text.contains("Not connected"), "disconnect state is worded")
+
 	# --- Chat: send, source ACK renders, cooldown, scope clearing ------------
 	session.client.room_id = "AB12"
 	session.client.peer_id = 5
@@ -180,6 +190,20 @@ func run() -> void:
 	session.client.chat.emit({"peerId":5,"name":"Host","text":"late leak"})
 	await settle()
 	check(log.get_child_count() == 0, "a late chat frame with no seat never renders")
+	menu.chat_panel.close()
+
+	# An unconfirmed send is reported after the timeout, never silently dropped.
+	session.client.room_id = "AB12"
+	await settle()
+	menu.chat_panel.open()
+	session.client.sent.clear()
+	menu.chat_panel.input.text = "no ack"
+	menu.chat_panel.send()
+	await settle()
+	check(session.client.sent.size() == 1 and session.client.sent[0].text == "no ack", "the unconfirmed draft was queued")
+	menu.chat_panel.pending_at = Time.get_ticks_msec() - 3000
+	await settle()
+	check(menu.chat_panel.status.text.contains("No server confirmation"), "an unconfirmed line is reported, not dropped silently")
 	menu.chat_panel.close()
 
 	# --- Compact geometry at 150% interface scale ----------------------------
