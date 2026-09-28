@@ -156,7 +156,8 @@ node --test tools/godot-package/manifest_validation.test.mjs
 
 ## Status and limits
 
-This slice was implemented and statically checked (`node --check`,
-`py_compile`) only. No build, engine run, full suite or `npm install` ran. The
+This slice was implemented and checked with `node --check` / `py_compile` plus
+isolated validator smokes (temporary git repositories and the two real derivative
+contracts, read-only). No build, engine run, full suite or `npm install` ran. The
 fixture tests and the extracted-package journeys are executed by the parent in
 the serial slot. No release was built or published.
