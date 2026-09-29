@@ -1,0 +1,62 @@
+{
+  "evidence": "/tmp/opencode/native-vehicle-expansion/117dfd77-0cea-452a-87a4-0e8d980efe84",
+  "classification": "3 distinct native clients, real Room wire; no authority position writes",
+  "stepsSeconds": {
+    "copy": 0.05,
+    "export": 0.82,
+    "import": 4.57,
+    "parse-demo": 0.62,
+    "parse-session_bridge": 0.16,
+    "parse-observe_crew_host": 0.67,
+    "parse-observe_crew_guest": 0.67,
+    "parse-observe_crew_passenger": 0.67,
+    "controls": 0.26,
+    "fleet": 0.26
+  },
+  "status": "FAIL",
+  "error": "fleet failed; inspect retained log",
+  "ownedProcessesReaped": true,
+  "elapsedSeconds": 8.8,
+  "retainedFiles": {
+    "controls.log": {
+      "bytes": 102,
+      "sha256": "8f51ca3a09570909fe06904f973e01ab2e3332650c291f6ea416093b4506fc67"
+    },
+    "export.log": {
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    "fleet.log": {
+      "bytes": 461,
+      "sha256": "9250f07eab36ab8ce4c0e296117ee244a818262c3dbe76aa10c5f0941d6e5c80"
+    },
+    "hashes.json": {
+      "bytes": 54165,
+      "sha256": "cc2bcbd383b2566ccd99cd2bd54a77a8a2d25832627d24732041cd0824e32c44"
+    },
+    "import.log": {
+      "bytes": 74759,
+      "sha256": "28c3c12cdc6e3303c0e9b5579000fc13c704a0a3088e997a0311e46e7af65b65"
+    },
+    "parse-demo.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_guest.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_host.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_passenger.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-session_bridge.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    }
+  }
+}

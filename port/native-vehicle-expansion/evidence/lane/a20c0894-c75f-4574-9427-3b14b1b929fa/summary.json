@@ -1,0 +1,129 @@
+{
+  "evidence": "/tmp/opencode/native-vehicle-expansion/a20c0894-c75f-4574-9427-3b14b1b929fa",
+  "classification": "3 distinct native clients, real Room wire; no authority position writes",
+  "stepsSeconds": {
+    "copy": 0.05,
+    "export": 0.82,
+    "import": 4.62,
+    "parse-demo": 0.61,
+    "parse-session_bridge": 0.16,
+    "parse-observe_crew_host": 0.67,
+    "parse-observe_crew_guest": 0.67,
+    "parse-observe_crew_passenger": 0.67,
+    "controls": 0.26,
+    "fleet": 0.26,
+    "shared-shots": 0.82,
+    "source-oracle": 0.77,
+    "room-edge-oracle": 0.82,
+    "three_native_live": 67.39
+  },
+  "live": {
+    "classification": "three distinct native processes, natural source entry; arranged five-kind oracle separate",
+    "native": {
+      "host": {
+        "sourceNativeCorrelations": 288,
+        "mountedSamples": 271,
+        "wireInputs": 905,
+        "completedSeconds": 60.259448222222
+      },
+      "guest": {
+        "sourceNativeCorrelations": 224,
+        "mountedSamples": 62,
+        "wireInputs": 974,
+        "completedSeconds": 50.6562962962961
+      },
+      "passenger": {
+        "sourceNativeCorrelations": 216,
+        "mountedSamples": 20,
+        "wireInputs": 1007,
+        "completedSeconds": 44.6793533333332
+      }
+    },
+    "sharedCrewSnapshots": 44,
+    "driverDisplacement": 27.842,
+    "gunnerVehicleShots": 84,
+    "acceptedJumpEdges": 1
+  },
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true,
+  "elapsedSeconds": 78.98,
+  "retainedFiles": {
+    "controls.log": {
+      "bytes": 102,
+      "sha256": "8f51ca3a09570909fe06904f973e01ab2e3332650c291f6ea416093b4506fc67"
+    },
+    "export.log": {
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    "fleet.log": {
+      "bytes": 123,
+      "sha256": "b1bb38e557e40184d371d0ec174035c1ee156a7f80232f276bf5264e55600db7"
+    },
+    "guest.log": {
+      "bytes": 4520724,
+      "sha256": "8b41ec80e71269bc5ef5301a971fb39841eed4c4274a94231c48e11ebb744596"
+    },
+    "hashes.json": {
+      "bytes": 54511,
+      "sha256": "399ff7817fab0ea1fdbb69dba754ea8f183223638e011940e05792b0cd8606ba"
+    },
+    "host.log": {
+      "bytes": 5885450,
+      "sha256": "552c1a39bf2f5ccc4576979051c0187b6a1d67ec102a7eb3876f9badcf1582a9"
+    },
+    "import.log": {
+      "bytes": 74933,
+      "sha256": "b4013543f9e0c395fbcc8c35c42b8098036fcab2bc2c860c25f0d7cbe0b92b6d"
+    },
+    "parse-demo.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_guest.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_host.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_passenger.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-session_bridge.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "passenger.log": {
+      "bytes": 4201638,
+      "sha256": "550698e16079a5b745fd51b5925124846f587364dc98da55a76683ab8af2f89a"
+    },
+    "room-edge-oracle.log": {
+      "bytes": 242,
+      "sha256": "788760344b23de8721adb695c6ea0c4be20263c74449908b16a0907428e3dff0"
+    },
+    "server.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "shared-shots.log": {
+      "bytes": 105,
+      "sha256": "fb9fcb18359113dab269fdf9af5a39f37fe16eb16a69144dc8445f86d328c009"
+    },
+    "source-oracle.log": {
+      "bytes": 1159,
+      "sha256": "6bd36ad0f8946a5a84b3d6153e114978a3cce542c2f111c25a21d9cd38f6c93e"
+    },
+    "wire.json.gz": {
+      "bytes": 139504,
+      "sha256": "6cef8df0339e6fbe7fad8efa3c9b0f984ca6bbea209ab829db0e683f7f7aa5d9"
+    },
+    "xvfb.log": {
+      "bytes": 396,
+      "sha256": "23dbac212d0ee37e6c72af4571c6fe45c23e07517d20e5a9f2336c39c747b00b"
+    }
+  }
+}

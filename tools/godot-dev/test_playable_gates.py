@@ -84,6 +84,8 @@ class PlayableGatesTest(unittest.TestCase):
             "vehicle-source-oracle": "port/native-vehicle-expansion/source-oracle.mjs",
             "vehicle-room-edge-oracle": "port/native-vehicle-expansion/room-edge-oracle.mjs",
             "vehicle-fleet-visuals": "res://tests/combined_arms/test_fleet_visuals.gd",
+            "vehicle-shared-shot-owner": "res://tests/combined_arms/test_shared_shots.gd",
+            "vehicle-three-native-crew": "port/native-vehicle-expansion/run.py",
             "audiovisual-assets": "tools/godot-audiovisual/music_pack.mjs",
             "audiovisual-weather-oracle": "res://tests/audio_new/weather_oracle.gd",
             "audiovisual-lifecycle": "res://tests/audio_new/lifecycle.gd",

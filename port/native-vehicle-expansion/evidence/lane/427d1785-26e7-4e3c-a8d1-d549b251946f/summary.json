@@ -1,0 +1,101 @@
+{
+  "evidence": "/tmp/opencode/native-vehicle-expansion/427d1785-26e7-4e3c-a8d1-d549b251946f",
+  "classification": "3 distinct native clients, real Room wire; no authority position writes",
+  "stepsSeconds": {
+    "copy": 0.05,
+    "export": 0.82,
+    "import": 4.62,
+    "parse-demo": 0.67,
+    "parse-session_bridge": 0.16,
+    "parse-observe_crew_host": 0.67,
+    "parse-observe_crew_guest": 0.67,
+    "parse-observe_crew_passenger": 0.67,
+    "controls": 0.26,
+    "fleet": 0.26,
+    "shared-shots": 0.82,
+    "source-oracle": 0.77,
+    "room-edge-oracle": 0.82
+  },
+  "status": "FAIL",
+  "error": "host native process failed",
+  "ownedProcessesReaped": true,
+  "elapsedSeconds": 230.94,
+  "retainedFiles": {
+    "controls.log": {
+      "bytes": 102,
+      "sha256": "8f51ca3a09570909fe06904f973e01ab2e3332650c291f6ea416093b4506fc67"
+    },
+    "export.log": {
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    "fleet.log": {
+      "bytes": 123,
+      "sha256": "b1bb38e557e40184d371d0ec174035c1ee156a7f80232f276bf5264e55600db7"
+    },
+    "guest.log": {
+      "bytes": 18292301,
+      "sha256": "939aa00fdc48d7f2db30fd53f72ba3b1473759796504ec6d8a8d4d19128166f9"
+    },
+    "hashes.json": {
+      "bytes": 54511,
+      "sha256": "0f7c7e6355f7ed4cda7ec4cda1faa1942db6e226cad0cc832721a5b13a4a6dc7"
+    },
+    "host.log": {
+      "bytes": 17961933,
+      "sha256": "d27d7393f5c3f40f3411f6f575361e61143c06ee73c017225338456bbef43809"
+    },
+    "import.log": {
+      "bytes": 74933,
+      "sha256": "b4013543f9e0c395fbcc8c35c42b8098036fcab2bc2c860c25f0d7cbe0b92b6d"
+    },
+    "parse-demo.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_guest.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_host.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_passenger.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-session_bridge.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "passenger.log": {
+      "bytes": 23320809,
+      "sha256": "0060d38e3289eee36f822076b84671352e17fcc3b670513a94afd0aa5050673e"
+    },
+    "room-edge-oracle.log": {
+      "bytes": 242,
+      "sha256": "788760344b23de8721adb695c6ea0c4be20263c74449908b16a0907428e3dff0"
+    },
+    "server.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "shared-shots.log": {
+      "bytes": 105,
+      "sha256": "fb9fcb18359113dab269fdf9af5a39f37fe16eb16a69144dc8445f86d328c009"
+    },
+    "source-oracle.log": {
+      "bytes": 1159,
+      "sha256": "6bd36ad0f8946a5a84b3d6153e114978a3cce542c2f111c25a21d9cd38f6c93e"
+    },
+    "wire.json.gz": {
+      "bytes": 377318,
+      "sha256": "f407c183b1e4c7b4ee95971626f7b84dcfdac27df46ed25903634c70caaec38c"
+    },
+    "xvfb.log": {
+      "bytes": 396,
+      "sha256": "23dbac212d0ee37e6c72af4571c6fe45c23e07517d20e5a9f2336c39c747b00b"
+    }
+  }
+}

@@ -99,7 +99,15 @@ aggregate registration remain with the parent integration owner.
   The exact source roster is Puma, Hornet, Titan, Scout and Transport; no sixth
   chassis is implied by source aliases. The shared seat bridge covers source
   actor/vehicle occupancy, mounted input, cameras and visible crew. Genuine
-  two-native-client crew evidence is pending the next serial slot.
+  three-native-client crew evidence passed twice after fixes through `a0c1c958`
+  (integrated through `4abcae6e`). Both normal-input journeys naturally boarded
+  one Puma, drove 27.842 m, fired 84 source gunner volleys and passenger personal
+  shots, and witnessed exactly one accepted brake edge. Each run took about
+  79 seconds. Five-kind/all-seat and Hornet jump behavior remain separately
+  labelled arranged source fixtures. All 18 attempt summaries, including 16
+  failures, are indexed in `native-vehicle-expansion/evidence/lane/`; raw logs
+  and compressed wire also have a disk-backed mirror recorded there. Source
+  bytes, process cleanup and private-state cleanup were verified in both passes.
 - Audiovisual lane: initial commit `7da98bad` packages 37 original orchestral Ogg
   samples, all 36 existing announcer takes (12 phrases) and the delivered Moth
   ritual bed. The lead is completing actual session/menu/weather-owner hooks

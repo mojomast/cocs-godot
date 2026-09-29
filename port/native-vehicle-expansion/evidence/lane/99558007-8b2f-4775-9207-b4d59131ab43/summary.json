@@ -1,0 +1,67 @@
+{
+  "evidence": "/tmp/opencode/native-vehicle-expansion/99558007-8b2f-4775-9207-b4d59131ab43",
+  "classification": "3 distinct native clients, real Room wire; no authority position writes",
+  "stepsSeconds": {
+    "copy": 0.05,
+    "export": 0.82,
+    "import": 4.57,
+    "parse-demo": 0.62,
+    "parse-session_bridge": 0.16,
+    "parse-observe_crew_host": 0.62,
+    "parse-observe_crew_guest": 0.67,
+    "parse-observe_crew_passenger": 0.67,
+    "controls": 0.27,
+    "fleet": 0.27,
+    "shared-shots": 0.82
+  },
+  "status": "FAIL",
+  "error": "shared-shots failed; inspect retained log",
+  "ownedProcessesReaped": true,
+  "elapsedSeconds": 9.57,
+  "retainedFiles": {
+    "controls.log": {
+      "bytes": 102,
+      "sha256": "8f51ca3a09570909fe06904f973e01ab2e3332650c291f6ea416093b4506fc67"
+    },
+    "export.log": {
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    "fleet.log": {
+      "bytes": 123,
+      "sha256": "b1bb38e557e40184d371d0ec174035c1ee156a7f80232f276bf5264e55600db7"
+    },
+    "hashes.json": {
+      "bytes": 54511,
+      "sha256": "dba9503f24a96f8ddbcf2f6fbdbbdae9a7b7dff16ff028d5e369c764ab6b66b8"
+    },
+    "import.log": {
+      "bytes": 74933,
+      "sha256": "b4013543f9e0c395fbcc8c35c42b8098036fcab2bc2c860c25f0d7cbe0b92b6d"
+    },
+    "parse-demo.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_guest.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_host.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_passenger.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-session_bridge.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "shared-shots.log": {
+      "bytes": 1222,
+      "sha256": "56b871783d04f9f4a676a442721b7404b1d0c818511b633caf683e40b56484c5"
+    }
+  }
+}

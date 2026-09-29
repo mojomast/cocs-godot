@@ -1,0 +1,32 @@
+{
+  "evidence": "/tmp/opencode/native-vehicle-expansion/a2c5bb59-308e-4aa9-bbb0-62b68eed58d4",
+  "classification": "3 distinct native clients, real Room wire; no authority position writes",
+  "stepsSeconds": {
+    "copy": 0.07,
+    "export": 0.82,
+    "import": 4.57,
+    "parse-demo": 0.16
+  },
+  "status": "FAIL",
+  "error": "parse-demo failed; inspect retained log",
+  "ownedProcessesReaped": true,
+  "elapsedSeconds": 5.68,
+  "retainedFiles": {
+    "export.log": {
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    "hashes.json": {
+      "bytes": 54165,
+      "sha256": "9d35e404b290b7ddf510f096159a2d834857a2e4774c0b89903e0bcd0f75bebb"
+    },
+    "import.log": {
+      "bytes": 74759,
+      "sha256": "28c3c12cdc6e3303c0e9b5579000fc13c704a0a3088e997a0311e46e7af65b65"
+    },
+    "parse-demo.log": {
+      "bytes": 682,
+      "sha256": "438f834e75f1b614cfcc8b8ae53a5dc59b7668e332dd015994db7e1a18ed80a8"
+    }
+  }
+}

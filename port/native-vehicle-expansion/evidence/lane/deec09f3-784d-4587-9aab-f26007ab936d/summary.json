@@ -1,0 +1,101 @@
+{
+  "evidence": "/tmp/opencode/native-vehicle-expansion/deec09f3-784d-4587-9aab-f26007ab936d",
+  "classification": "3 distinct native clients, real Room wire; no authority position writes",
+  "stepsSeconds": {
+    "copy": 0.05,
+    "export": 0.77,
+    "import": 4.57,
+    "parse-demo": 0.62,
+    "parse-session_bridge": 0.16,
+    "parse-observe_crew_host": 0.67,
+    "parse-observe_crew_guest": 0.61,
+    "parse-observe_crew_passenger": 0.66,
+    "controls": 0.26,
+    "fleet": 0.26,
+    "shared-shots": 0.82,
+    "source-oracle": 0.77,
+    "room-edge-oracle": 0.82
+  },
+  "status": "FAIL",
+  "error": "Command '['/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64', '--path', '/tmp/opencode/vehicle-native-a4063_y6/godot', '--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy', '--resolution', '800x680', '--script', 'res://tests/combined_arms/observe_crew_passenger.gd', '--', '--map=sunscar-convoy', '--endpoint=ws://127.0.0.1:40613', '--wait-for-players=3', '--join-room=SXZG']' timed out after 20 seconds",
+  "ownedProcessesReaped": true,
+  "elapsedSeconds": 99.36,
+  "retainedFiles": {
+    "controls.log": {
+      "bytes": 102,
+      "sha256": "8f51ca3a09570909fe06904f973e01ab2e3332650c291f6ea416093b4506fc67"
+    },
+    "export.log": {
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    "fleet.log": {
+      "bytes": 123,
+      "sha256": "b1bb38e557e40184d371d0ec174035c1ee156a7f80232f276bf5264e55600db7"
+    },
+    "guest.log": {
+      "bytes": 5820372,
+      "sha256": "948982d7f6c61c92669ed11c4c5e6910a8bb6e170d0b3da252c89f174460f72e"
+    },
+    "hashes.json": {
+      "bytes": 54511,
+      "sha256": "a2c4a13e667f77698af70893b7d387b4274b39ca6ef6efbf3861f5299a7e7cc3"
+    },
+    "host.log": {
+      "bytes": 327671,
+      "sha256": "4aaca180844cac5537455a558f189db7745680975cecf02c93a224833ec0de04"
+    },
+    "import.log": {
+      "bytes": 74933,
+      "sha256": "b4013543f9e0c395fbcc8c35c42b8098036fcab2bc2c860c25f0d7cbe0b92b6d"
+    },
+    "parse-demo.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_guest.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_host.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_passenger.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-session_bridge.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "passenger.log": {
+      "bytes": 8069006,
+      "sha256": "632c7436550496827d7369563bbe56850bbe41b9e3e84cb034e9b3ac7e62bf37"
+    },
+    "room-edge-oracle.log": {
+      "bytes": 242,
+      "sha256": "788760344b23de8721adb695c6ea0c4be20263c74449908b16a0907428e3dff0"
+    },
+    "server.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "shared-shots.log": {
+      "bytes": 105,
+      "sha256": "fb9fcb18359113dab269fdf9af5a39f37fe16eb16a69144dc8445f86d328c009"
+    },
+    "source-oracle.log": {
+      "bytes": 1159,
+      "sha256": "6bd36ad0f8946a5a84b3d6153e114978a3cce542c2f111c25a21d9cd38f6c93e"
+    },
+    "wire.json.gz": {
+      "bytes": 120676,
+      "sha256": "8dcf2b0655ea1392d33c672ef5dcdf4b5865befba27363451a6904f8e682022d"
+    },
+    "xvfb.log": {
+      "bytes": 396,
+      "sha256": "23dbac212d0ee37e6c72af4571c6fe45c23e07517d20e5a9f2336c39c747b00b"
+    }
+  }
+}

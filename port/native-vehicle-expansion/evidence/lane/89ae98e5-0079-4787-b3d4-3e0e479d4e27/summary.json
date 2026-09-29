@@ -1,0 +1,42 @@
+{
+  "evidence": "/tmp/opencode/native-vehicle-expansion/89ae98e5-0079-4787-b3d4-3e0e479d4e27",
+  "classification": "3 distinct native clients, real Room wire; no authority position writes",
+  "stepsSeconds": {
+    "copy": 0.05,
+    "export": 0.82,
+    "import": 4.57,
+    "parse-demo": 0.67,
+    "parse-session_bridge": 0.16,
+    "parse-observe_crew_host": 0.16
+  },
+  "status": "FAIL",
+  "error": "parse-observe_crew_host failed; inspect retained log",
+  "ownedProcessesReaped": true,
+  "elapsedSeconds": 6.48,
+  "retainedFiles": {
+    "export.log": {
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    "hashes.json": {
+      "bytes": 54511,
+      "sha256": "239bb51c5fe45b43b8969efd5102067838908cd61f4dea7b316552837c1e244f"
+    },
+    "import.log": {
+      "bytes": 74933,
+      "sha256": "b4013543f9e0c395fbcc8c35c42b8098036fcab2bc2c860c25f0d7cbe0b92b6d"
+    },
+    "parse-demo.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_host.log": {
+      "bytes": 434,
+      "sha256": "9ad75d6a010fc8abb9f06f2c20b6f7d2e3f7f0229f227e2a53fa776612af8836"
+    },
+    "parse-session_bridge.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    }
+  }
+}
