@@ -139,6 +139,9 @@ func on_lobby(frame: Dictionary) -> void:
 		if phase == "connecting": phase = "waiting"
 		return
 	if frame.get("hostId", -1) != net.peer_id or net.spectating: return
+	# Only the first round starts automatically once the requested crew arrives.
+	# Results require the host's explicit Enter; lobby refreshes may not rematch.
+	if phase in ["active", "results", "starting"]: return
 	if not configured:
 		configured = true
 		checked(net.configure_match("combined-arms", bot_count))

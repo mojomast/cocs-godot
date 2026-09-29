@@ -1,9 +1,9 @@
 extends SceneTree
-## Two independent native processes run this SceneTree against one authority room.
+## Three independent native processes run this SceneTree against one authority room.
 ## All actions enter through physical input events; snapshots are read-only evidence.
 const Demo = preload("res://combined_arms/demo.gd")
 const PUMA := "sunscar-0-puma"
-const DEADLINE := 190.0
+const DEADLINE := 200.0
 var role := "host"
 var demo
 var elapsed := 0.0
@@ -17,6 +17,9 @@ var approach_origin := Vector2.ZERO
 var mounted_origin := Vector2.ZERO
 var fired := false
 var shot_event := false
+var gunner_seen := false
+var personal_event := false
+var passenger_seen := false
 
 func log_line(kind: String, data: Dictionary = {}) -> void:
 	var row := {"role":role, "seconds":elapsed, "stage":stage, "room":demo.net.room_id if is_instance_valid(demo) else "", "peer":demo.net.peer_id if is_instance_valid(demo) else -1, "actor_id":demo.net.actor_id if is_instance_valid(demo) else -1}
@@ -36,9 +39,9 @@ func _initialize() -> void:
 		if arg.begins_with("--endpoint="): endpoint = true
 		if arg == "--map=sunscar-convoy": map = true
 		if arg.begins_with("--join-room="): join = not arg.trim_prefix("--join-room=").strip_edges().is_empty()
-		if arg == "--wait-for-players=2": wait = true
-	if not endpoint or not map or not wait or (role == "guest") != join:
-		print("CREW_USAGE " + JSON.stringify({"role":role,"required":"--map=sunscar-convoy --endpoint=ws://HOST:PORT --wait-for-players=2" + (" --join-room=ROOM" if role == "guest" else " (host creates room; omit --join-room)")}))
+		if arg == "--wait-for-players=3": wait = true
+	if not endpoint or not map or not wait or (role != "host") != join:
+		print("CREW_USAGE " + JSON.stringify({"role":role,"required":"--map=sunscar-convoy --endpoint=ws://HOST:PORT --wait-for-players=3" + (" --join-room=ROOM" if role != "host" else " (host creates room; omit --join-room)")}))
 		quit(2)
 		return
 	demo = Demo.new()
@@ -50,8 +53,12 @@ func _initialize() -> void:
 		log_line("START", {"frame":frame}))
 	demo.net.events.connect(func(items: Array) -> void:
 		for item: Variant in items:
-			if item is Dictionary and item.get("type") == "vehicle-shot" and item.get("actor") == demo.net.actor_id:
-				shot_event = true
+			if item is Dictionary and item.get("type") == "shot":
+				if item.get("actor") == demo.net.actor_id: personal_event = true
+				else: passenger_seen = true
+			if item is Dictionary and item.get("type") == "vehicle-shot" and item.get("vehicle") == PUMA:
+				if item.get("actor") == demo.net.actor_id: shot_event = true
+				else: gunner_seen = true
 		if not items.is_empty(): log_line("EVENTS", {"events":items}))
 	log_line("BOOT", {"pid":OS.get_process_id()})
 
@@ -123,7 +130,7 @@ func _process(delta: float) -> bool:
 	if float(a.get("health",0)) <= 0 or float(a.get("dead",0)) > 0:
 		fail("actor died before crew observation")
 		return false
-	if stage in ["mounted","drive","brake","gunner-fire","observe"] and (a.get("vehicleId") != PUMA or a.get("vehicleSeat") != ("driver" if role == "host" else "gunner")):
+	if stage in ["mounted","drive","brake","gunner-fire","passenger-fire","observe"] and (a.get("vehicleId") != PUMA or a.get("vehicleSeat") != ("driver" if role == "host" else ("gunner" if role == "guest" else "passenger"))):
 		fail("crew seat lease lost")
 		return false
 	var pos := Vector2(float(a.x), float(a.z))
@@ -133,13 +140,20 @@ func _process(delta: float) -> bool:
 		return false
 	match stage:
 		"boot":
+			if role == "passenger" and (v.get("gunner") == null or not gunner_seen): return false
+			if role == "guest" and v.get("driver") == null: return false
 			approach_origin = pos
 			# West spawn / east spawn respectively; these are authored freight-road waypoints.
-			path = [Vector2(-80,-10),Vector2(-62,-10),Vector2(-62,-6)] if role == "host" else [Vector2(78,-18),Vector2(54,-18),Vector2(14,-18),Vector2(0,18),Vector2(-44,18),Vector2(-54,-10),Vector2(-62,-10),Vector2(-62,-6)]
+			path = [Vector2(-80,-10),Vector2(-62,-10),Vector2(-62,-6)] if role != "guest" else [Vector2(78,-18),Vector2(54,-18),Vector2(14,-18),Vector2(0,18),Vector2(-44,18),Vector2(-54,-10),Vector2(-62,-10),Vector2(-62,-6)]
 			log_line("SPAWN", {"position":[pos.x,pos.y],"team":a.get("team"),"target":PUMA,"path":path.map(func(p: Vector2) -> Array: return [p.x,p.y])})
 			change("walk")
 			tap(KEY_ENTER)
 		"walk":
+			if not root.has_focus(): root.grab_focus()
+			if not root.has_focus() or not demo.controls.focused: return false
+			if not demo.controls.engaged:
+				tap(KEY_ENTER)
+				if not demo.controls.engaged: return false
 			if a.get("vehicleId") != null:
 				fail("unexpected mount before entry request")
 				return false
@@ -157,7 +171,7 @@ func _process(delta: float) -> bool:
 			if not demo.controls.keys.has(KEY_W): key(KEY_W, true)
 		"entry":
 			if not demo.vehicle.is_empty():
-				if a.get("vehicleId") != PUMA or a.get("vehicleSeat") != ("driver" if role == "host" else "gunner"):
+				if a.get("vehicleId") != PUMA or a.get("vehicleSeat") != ("driver" if role == "host" else ("gunner" if role == "guest" else "passenger")):
 					fail("wrong source vehicle or seat: " + str(a.get("vehicleId")) + "/" + str(a.get("vehicleSeat")))
 					return false
 				mounted_origin = Vector2(float(v.x),float(v.z))
@@ -166,15 +180,33 @@ func _process(delta: float) -> bool:
 			elif elapsed-stage_since > 4.0: fail("entry receipt failed")
 		"mounted":
 			if role == "host":
-				if v.get("gunner") != null and v.get("gunner") != a.get("id"):
+				# X11 cannot focus two native windows at once. Let guest fire
+				# independently first, then focus the host and drive with fresh input.
+				if v.get("gunner") != null and gunner_seen and v.get("passengers", []).has(2) and passenger_seen:
+					if not root.has_focus(): root.grab_focus()
+					if not root.has_focus() or not demo.controls.focused: return false
+					tap(KEY_ENTER)
+					if not demo.controls.engaged: return false
 					change("drive")
 					key(KEY_W, true)
-			else:
-				# Motion proves independent gunner turret ownership while host drives.
+			elif role == "guest":
+				# This distinct client's fire input proves independent gun ownership;
+				# the host drives after X11 focus is returned to its window.
 				if v.get("driver") != null and v.get("driver") != a.get("id"):
+					if not root.has_focus(): root.grab_focus()
+					if not root.has_focus() or not demo.controls.focused: return false
+					tap(KEY_ENTER)
+					if not demo.controls.engaged: return false
 					change("gunner-fire")
 					turn_to(Vector2(float(v.x)+12.0,float(v.z)))
 					mouse_button(true)
+			else:
+				if not root.has_focus(): root.grab_focus()
+				if not root.has_focus() or not demo.controls.focused: return false
+				tap(KEY_ENTER)
+				if not demo.controls.engaged: return false
+				change("passenger-fire")
+				mouse_button(true)
 		"drive":
 			if Vector2(float(v.x),float(v.z)).distance_to(mounted_origin) > 9.0:
 				change("brake")
@@ -189,10 +221,16 @@ func _process(delta: float) -> bool:
 				fired = true
 				mouse_button(false)
 				change("observe")
+		"passenger-fire":
+			if elapsed-stage_since > 1.5:
+				mouse_button(false)
+				change("observe")
 		"observe":
 			if role == "guest" and elapsed-stage_since > 8.0 and not shot_event:
 				fail("no authoritative vehicle-shot event for guest actor")
-			elif elapsed-stage_since > 2.0 and (role == "host" or (shot_event and Vector2(float(v.x),float(v.z)).distance_to(mounted_origin) > 9.0)):
-				log_line("COMPLETE", {"source_vehicle":PUMA,"seat":a.get("vehicleSeat"),"mounted_from_spawn":approach_origin.distance_to(pos) > 2.0,"driver_distance":Vector2(float(v.x),float(v.z)).distance_to(mounted_origin),"gunner_fired":shot_event if role == "guest" else null,"passenger_fire":"requires third independently controlled actor; two-client source seat order driver then gunner"})
+			elif role == "passenger" and elapsed-stage_since > 8.0 and not personal_event:
+				fail("no authoritative passenger personal shot event")
+			elif elapsed-stage_since > 2.0 and (role == "host" or ((shot_event if role == "guest" else personal_event) and Vector2(float(v.x),float(v.z)).distance_to(mounted_origin) > 9.0)):
+				log_line("COMPLETE", {"source_vehicle":PUMA,"seat":a.get("vehicleSeat"),"mounted_from_spawn":approach_origin.distance_to(pos) > 2.0,"driver_distance":Vector2(float(v.x),float(v.z)).distance_to(mounted_origin),"gunner_fired":shot_event if role == "guest" else null,"passenger_fired":personal_event if role == "passenger" else null})
 				quit()
 	return false

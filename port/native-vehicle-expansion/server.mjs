@@ -8,7 +8,7 @@ if (!root || !output) throw Error('server.mjs ROOT OUTPUT');
 const {createGameServer} = await import(pathToFileURL(resolve(root, 'server/game-server.mjs')));
 const game = createGameServer({historyPath:null, progressionPath:null});
 const witness = {classification:'unmodified Room; real WebSocket clients; default fixed step', connections:[], starts:[], inputs:[], accepted:[], snapshots:[], events:[]};
-let serial = 0, roomPublished = false;
+let serial = 0, roomPublished = false, guestPublished = false;
 const observed = new WeakSet();
 function witnessAccepted(roomId) {
   const match=game.registry.rooms.get(roomId)?.match;
@@ -47,6 +47,9 @@ game.wss.on('connection', socket => {
       if (!roomPublished && frame.roomId && frame.hostId===record.peerId) {
         roomPublished=true; console.log(`ROOM ${frame.roomId}`);
       }
+      if (!guestPublished && frame.roomId && frame.players?.filter(p=>p.connected && !p.spectate).length===2) {
+        guestPublished=true; console.log('GUEST_SEATED 2');
+      }
     }
     if (frame.type==='start') {
       witnessAccepted(record.roomId);
@@ -62,7 +65,7 @@ game.wss.on('connection', socket => {
         teamScores:state?.teamScores, objective:state?.objectives});
     }
     if (frame.type==='events' && witness.events.length<12000)
-      witness.events.push(...(frame.items??[]).filter(e=>e?.type?.startsWith('vehicle-'))
+      witness.events.push(...(frame.items??[]).filter(e=>e?.type?.startsWith('vehicle-') || e?.type==='shot')
         .map(e=>({connection,...e})));
     return send.call(this,raw,...args);
   };
@@ -79,4 +82,4 @@ async function close() {
   writeFileSync(output,JSON.stringify(witness));
 }
 process.on('SIGTERM',close); process.on('SIGINT',close);
-const deadline=setTimeout(close,155000);
+const deadline=setTimeout(close,235000);

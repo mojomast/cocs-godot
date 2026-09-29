@@ -74,7 +74,8 @@ try:
             'native':hashes(temp,['godot/combined_arms','godot/vehicles','godot/tests/combined_arms'])},indent=2)+'\n')
         run([BIN,'--headless','--path',str(temp/'godot'),'--editor','--import'],'import',env,90)
         for script in ['combined_arms/demo.gd','vehicles/session_bridge.gd',
-                       'tests/combined_arms/observe_crew_host.gd','tests/combined_arms/observe_crew_guest.gd']:
+                       'tests/combined_arms/observe_crew_host.gd','tests/combined_arms/observe_crew_guest.gd',
+                       'tests/combined_arms/observe_crew_passenger.gd']:
             run([BIN,'--headless','--path',str(temp/'godot'),'--check-only','--script','res://'+script],
                 'parse-'+pathlib.Path(script).stem,env,30)
         run([BIN,'--headless','--path',str(temp/'godot'),'--script','res://tests/combined_arms/test_controls.gd'], 'controls',env,30)
@@ -98,28 +99,33 @@ try:
                     endpoint=first.split(' ',1)[1]
                     command=[BIN,'--path',str(temp/'godot'),'--rendering-method','gl_compatibility',
                         '--audio-driver','Dummy','--resolution','800x680']
-                    with (OUT/'host.log').open('w') as host_log, (OUT/'guest.log').open('w') as guest_log:
+                    with (OUT/'host.log').open('w') as host_log, (OUT/'guest.log').open('w') as guest_log, (OUT/'passenger.log').open('w') as passenger_log:
                         host=subprocess.Popen(command+['--script','res://tests/combined_arms/observe_crew_host.gd','--',
-                            '--map=sunscar-convoy','--endpoint='+endpoint,'--wait-for-players=2'],
+                            '--map=sunscar-convoy','--endpoint='+endpoint,'--wait-for-players=3'],
                             stdout=host_log,stderr=subprocess.STDOUT,env=env)
                         children.append(host)
                         room=next_line(server.stdout,30)
                         assert room.startswith('ROOM ') and len(room)>5,room
                         guest=subprocess.Popen(command+['--script','res://tests/combined_arms/observe_crew_guest.gd','--',
-                            '--map=sunscar-convoy','--endpoint='+endpoint,'--join-room='+room[5:]],
+                            '--map=sunscar-convoy','--endpoint='+endpoint,'--wait-for-players=3','--join-room='+room[5:]],
                             stdout=guest_log,stderr=subprocess.STDOUT,env=env)
                         children.append(guest)
+                        assert next_line(server.stdout,30)=='GUEST_SEATED 2', 'guest must be actor 1 before passenger joins'
+                        passenger=subprocess.Popen(command+['--script','res://tests/combined_arms/observe_crew_passenger.gd','--',
+                            '--map=sunscar-convoy','--endpoint='+endpoint,'--wait-for-players=3','--join-room='+room[5:]],
+                            stdout=passenger_log,stderr=subprocess.STDOUT,env=env)
+                        children.append(passenger)
                         try:
-                            guest_code=guest.wait(135); host_code=host.wait(12)
-                        finally: stop(guest); stop(host)
-                    for role,code in [('host',host_code),('guest',guest_code)]:
+                            guest_code=guest.wait(210); passenger_code=passenger.wait(20); host_code=host.wait(20)
+                        finally: stop(passenger); stop(guest); stop(host)
+                    for role,code in [('host',host_code),('guest',guest_code),('passenger',passenger_code)]:
                         text=(OUT/(role+'.log')).read_text()
                         assert code==0 and 'SCRIPT ERROR' not in text and 'ERROR:' not in text,role+' native process failed'
                 finally: stop(server)
             stop(xvfb)
         assert source_hashes==hashes(temp,['game','server']), 'executed source changed'
         from validate import verify
-        report['live']=verify((OUT/'host.log').read_text(),(OUT/'guest.log').read_text(),json.loads((OUT/'wire.json').read_text()))
+        report['live']=verify({role:(OUT/(role+'.log')).read_text() for role in ['host','guest','passenger']},json.loads((OUT/'wire.json').read_text()))
     report['privateTempRemoved']=not temp.exists()
     report['status']='PASS'
 except Exception as exc:
