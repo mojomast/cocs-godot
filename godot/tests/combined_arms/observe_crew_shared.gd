@@ -61,7 +61,7 @@ func _initialize() -> void:
 	root.add_child.call_deferred(demo)
 	demo.input_queued.connect(func(seq: int, packet: Dictionary, result: int) -> void:
 		# Every input receipt carries the native client's packet and its wire sequence.
-		if stage == "settle" and neutral_seq < 0 and result == OK and is_zero_approx(float(packet.get("x", 1))) and is_zero_approx(float(packet.get("z", 1))) and not packet.get("interact", false): neutral_seq = seq
+		if stage in ["settle", "waypoint-settle"] and neutral_seq < 0 and result == OK and is_zero_approx(float(packet.get("x", 1))) and is_zero_approx(float(packet.get("z", 1))) and not packet.get("interact", false): neutral_seq = seq
 		if stage == "entry" and entry_seq < 0 and result == OK and packet.get("interact", false): entry_seq = seq
 		log_line("QUEUE", {"input_seq":seq,"packet":packet,"result":result}))
 	demo.net.started.connect(func(frame: Dictionary) -> void:
@@ -225,17 +225,36 @@ func _process(delta: float) -> bool:
 			# Never send E while the last acknowledged command is still W.
 			# A client frame stall can leave that command driving the authority
 			# for seconds before the interact edge reaches Room.
-			if waypoint >= path.size()-1 and pos.distance_to(Vector2(float(v.x),float(v.z))) < 6.0:
+			# The source Puma is the destination. A slower rendered client may
+			# pass close to it while still pursuing an intermediate waypoint;
+			# do not run another full-speed circle around that waypoint.
+			if pos.distance_to(Vector2(float(v.x),float(v.z))) < 4.5:
 				change("settle")
 				return false
-			if pos.distance_to(path[waypoint]) < 0.9:
-				waypoint += 1
-				key(KEY_W, false)
-				if waypoint == path.size():
-					change("settle")
-					return false
+			# A 0.9 m fly-through threshold could be missed between low-FPS
+			# source snapshots. Stop, wait for the neutral wire ACK and source
+			# velocity, then pick the next physical leg from a stationary actor.
+			if pos.distance_to(path[waypoint]) < 3.0:
+				change("waypoint-settle")
+				return false
 			turn_to(path[waypoint])
 			if not demo.controls.keys.has(KEY_W): key(KEY_W, true)
+		"waypoint-settle":
+			if elapsed-stage_since > 12.0:
+				fail("waypoint neutral input was not acknowledged: " + JSON.stringify({"waypoint":waypoint,"neutral_seq":neutral_seq,"ack":demo.net.last_ack,"position":[pos.x,pos.y]}))
+				return false
+			if neutral_seq < 0 or demo.net.last_ack < neutral_seq: return false
+			if Vector2(float(a.get("vx", 0)),float(a.get("vz", 0))).length() > 0.3: return false
+			if pos.distance_to(Vector2(float(v.x),float(v.z))) < 6.0:
+				change("settle")
+			elif pos.distance_to(path[waypoint]) < 3.5:
+				log_line("WAYPOINT", {"index":waypoint,"position":[pos.x,pos.y],"ack":demo.net.last_ack})
+				waypoint += 1
+				change("settle" if waypoint == path.size() else "walk")
+			else:
+				# A late acknowledgement may let the last W step cross the
+				# threshold. Steer again from the acknowledged resting position.
+				change("walk")
 		"settle":
 			# Check the exact source acknowledgement and source velocity before
 			# submitting E. This cannot be faked by a local proximity prompt.

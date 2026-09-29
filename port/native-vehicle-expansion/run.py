@@ -132,6 +132,13 @@ try:
                     endpoint=first.split(' ',1)[1]
                     command=[BIN,'--path',str(temp/'godot'),'--rendering-method','gl_compatibility',
                         '--audio-driver','Dummy','--resolution','800x680']
+                    # Optional stress probe: cap actual rendered frame cadence,
+                    # without changing the source Room clock or headless mode.
+                    max_fps=os.environ.get('VEHICLE_MAX_FPS')
+                    if max_fps:
+                        assert max_fps.isdecimal() and 5 <= int(max_fps) <= 30
+                        command += ['--max-fps',max_fps]
+                        report['renderFpsCap']=int(max_fps)
                     with (OUT/'host.log').open('w') as host_log, (OUT/'guest.log').open('w') as guest_log, (OUT/'passenger.log').open('w') as passenger_log:
                         host=subprocess.Popen(command+['--script','res://tests/combined_arms/observe_crew_host.gd','--',
                             '--map=sunscar-convoy','--endpoint='+endpoint,'--wait-for-players=3'],
