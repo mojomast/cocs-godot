@@ -61,8 +61,9 @@ the individual evidence records retain their original scope and results.
   revisions, failed attempts, native journeys and retained evidence.
 - **Reconnect / Career follow-up implemented:** explicit source-compatible Retry
   and Leave, round-result/XP summaries and recent server history with owned-server
-  persistence. Integrated source/native journeys passed; full-suite verification
-  is tracked in [the follow-up record](RECONNECT_CAREER_BATCH_2026-09-28.md).
+  persistence. Integrated source/native journeys passed, followed by **226/226
+  aggregate gates**, **228/228 server tests** and lint with zero errors at
+  `5c519b5d`. See [the follow-up record](RECONNECT_CAREER_BATCH_2026-09-28.md).
 - **NATIVE-05–06 acceptance remains open:** natural staged-campaign completion,
   extracted-package consolidation acceptance, fresh hosted confirmation and the
   unified release. Building/publishing remains on the user-directed hold.

@@ -2,139 +2,139 @@ TAP version 13
 # Subtest: SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
 ok 1 - SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
   ---
-  duration_ms: 363.021872
+  duration_ms: 347.822347
   type: 'test'
   ...
 # Subtest: SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
 ok 2 - SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
   ---
-  duration_ms: 4249.656967
+  duration_ms: 4247.754586
   type: 'test'
   ...
 # Subtest: SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
 ok 3 - SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
   ---
-  duration_ms: 15719.18488
+  duration_ms: 15711.145326
   type: 'test'
   ...
 # Subtest: loopback ownership and transport/envelope rejection leave no listeners
 ok 4 - loopback ownership and transport/envelope rejection leave no listeners
   ---
-  duration_ms: 16.715217
+  duration_ms: 35.623636
   type: 'test'
   ...
 # Subtest: launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
 ok 5 - launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
   ---
-  duration_ms: 14.163466
+  duration_ms: 34.010014
   type: 'test'
   ...
 # Subtest: unknown options and unknown map ids fail before any listener opens
 ok 6 - unknown options and unknown map ids fail before any listener opens
   ---
-  duration_ms: 0.481002
+  duration_ms: 1.065876
   type: 'test'
   ...
 # Subtest: HTTP readiness is the documented GET / probe only
 ok 7 - HTTP readiness is the documented GET / probe only
   ---
-  duration_ms: 8.807362
+  duration_ms: 27.338959
   type: 'test'
   ...
 # Subtest: FIFO keeps press/release order, source normalization and one-step pulses
 ok 8 - FIFO keeps press/release order, source normalization and one-step pulses
   ---
-  duration_ms: 0.9818
+  duration_ms: 1.265661
   type: 'test'
   ...
 # Subtest: queue age, held TTL, cancel and reset cannot replay ADS/actions
 ok 9 - queue age, held TTL, cancel and reset cannot replay ADS/actions
   ---
-  duration_ms: 0.648846
+  duration_ms: 0.698939
   type: 'test'
   ...
 # Subtest: event cursor retains payload IDs, handles serial gaps and repeated events by identity
 ok 10 - event cursor retains payload IDs, handles serial gaps and repeated events by identity
   ---
-  duration_ms: 0.223228
+  duration_ms: 0.264144
   type: 'test'
   ...
 # Subtest: only three native static asset paths; no source registry aliases
 ok 11 - only three native static asset paths; no source registry aliases
   ---
-  duration_ms: 1.030991
+  duration_ms: 1.035569
   type: 'test'
   ...
 # Subtest: SYNTHETIC: each supported identity parses to an independent envelope
 ok 12 - SYNTHETIC: each supported identity parses to an independent envelope
   ---
-  duration_ms: 2.651638
+  duration_ms: 2.435372
   type: 'test'
   ...
 # Subtest: strict deep generated-data validation rejects malformed/unsafe geometry
 ok 13 - strict deep generated-data validation rejects malformed/unsafe geometry
   ---
-  duration_ms: 2.035183
+  duration_ms: 1.71929
   type: 'test'
   ...
 # Subtest: Deathmatch bounded local config defaults to three bots and rejects counts above 24
 ok 14 - Deathmatch bounded local config defaults to three bots and rejects counts above 24
   ---
-  duration_ms: 0.695884
+  duration_ms: 0.74734
   type: 'test'
   ...
 # Subtest: geometryHash binds canonical arena content, independent of object key order
 ok 15 - geometryHash binds canonical arena content, independent of object key order
   ---
-  duration_ms: 0.529552
+  duration_ms: 0.727393
   type: 'test'
   ...
 # Subtest: identity catalog adds exactly the three reviewed ids beside the native three
 ok 16 - identity catalog adds exactly the three reviewed ids beside the native three
   ---
-  duration_ms: 0.200175
+  duration_ms: 0.200986
   type: 'test'
   ...
 # Subtest: SYNTHETIC: identity envelopes parse per family; the native parser never widens
 ok 17 - SYNTHETIC: identity envelopes parse per family; the native parser never widens
   ---
-  duration_ms: 3.975167
+  duration_ms: 3.150782
   type: 'test'
   ...
 # Subtest: identity strict validation rejects malformed presentation/objective/team fields
 ok 18 - identity strict validation rejects malformed presentation/objective/team fields
   ---
-  duration_ms: 4.63247
+  duration_ms: 2.619647
   type: 'test'
   ...
 # Subtest: identity objective/team fields validate strictly when authored (vermilion-fold form)
 ok 19 - identity objective/team fields validate strictly when authored (vermilion-fold form)
   ---
-  duration_ms: 2.141643
+  duration_ms: 2.428359
   type: 'test'
   ...
 # Subtest: source constructor seam is assignment before nav/spawns/actors, not options.arena
 ok 20 - source constructor seam is assignment before nav/spawns/actors, not options.arena
   ---
-  duration_ms: 1.301959
+  duration_ms: 2.132404
   type: 'test'
   ...
 # Subtest: SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
 ok 21 - SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
   ---
-  duration_ms: 26.90032
+  duration_ms: 37.779936
   type: 'test'
   ...
 # Subtest: SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
 ok 22 - SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
   ---
-  duration_ms: 110.16279
+  duration_ms: 113.108594
   type: 'test'
   ...
 # Subtest: SYNTHETIC: source bot attacks kill idle player and source respawn restores control
 ok 23 - SYNTHETIC: source bot attacks kill idle player and source respawn restores control
   ---
-  duration_ms: 38.957911
+  duration_ms: 35.644666
   type: 'test'
   ...
 1..23
@@ -145,4 +145,4 @@ ok 23 - SYNTHETIC: source bot attacks kill idle player and source respawn restor
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 21200.178662
+# duration_ms 21223.53277

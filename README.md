@@ -54,7 +54,8 @@ passed 218/218 local aggregate gates, 228/228 server tests and lint with zero er
 Natural Cinderwake ten-wave/champion completion and consolidated package acceptance
 remain outstanding. Building and publishing remain on hold at the user's request.
 The [reconnect and Career results/history follow-up](port/RECONNECT_CAREER_BATCH_2026-09-28.md)
-has passed its integrated native journeys; its full-suite result is tracked there.
+passed its integrated native journeys, **226/226 aggregate gates**, **228/228
+server tests** and lint with zero errors at `5c519b5d`.
 
 Sports now have independent one-lap target victory, local-driver soccer scoring
 and results/restart acceptance. LATTICE offers both a command board and a

@@ -2,145 +2,145 @@ TAP version 13
 # Subtest: release requires a safe tag and refuses to guess one
 ok 1 - release requires a safe tag and refuses to guess one
   ---
-  duration_ms: 0.965318
+  duration_ms: 0.888435
   type: 'test'
   ...
 # Subtest: release is a dry run unless --execute is explicit and never both
 ok 2 - release is a dry run unless --execute is explicit and never both
   ---
-  duration_ms: 0.865522
+  duration_ms: 0.69894
   type: 'test'
   ...
 # Subtest: defaults pin the toolchain, notes, landing zone and publication remote
 ok 3 - defaults pin the toolchain, notes, landing zone and publication remote
   ---
-  duration_ms: 0.541685
+  duration_ms: 0.481181
   type: 'test'
   ...
 # Subtest: resume, stop-after and verification modes are validated before any work
 ok 4 - resume, stop-after and verification modes are validated before any work
   ---
-  duration_ms: 0.177593
+  duration_ms: 0.179096
   type: 'test'
   ...
 # Subtest: targets, timeouts, list flags and unknown options are rejected or collected
 ok 5 - targets, timeouts, list flags and unknown options are rejected or collected
   ---
-  duration_ms: 0.358492
+  duration_ms: 0.352511
   type: 'test'
   ...
 # Subtest: help parses without a tag and does not throw
 ok 6 - help parses without a tag and does not throw
   ---
-  duration_ms: 0.065683
+  duration_ms: 0.062477
   type: 'test'
   ...
 # Subtest: dry run plans all six steps, writes records and performs no side effect
 ok 7 - dry run plans all six steps, writes records and performs no side effect
   ---
-  duration_ms: 16.36962
+  duration_ms: 18.679011
   type: 'test'
   ...
 # Subtest: preflight refuses a dirty runtime tree before anything else
 ok 8 - preflight refuses a dirty runtime tree before anything else
   ---
-  duration_ms: 4.20069
+  duration_ms: 4.116593
   type: 'test'
   ...
 # Subtest: preflight refuses an untracked runtime file but records untracked evidence
 ok 9 - preflight refuses an untracked runtime file but records untracked evidence
   ---
-  duration_ms: 8.67272
+  duration_ms: 8.43217
   type: 'test'
   ...
 # Subtest: a detached HEAD is a recorded warning, but --branch stays strict
 ok 10 - a detached HEAD is a recorded warning, but --branch stays strict
   ---
-  duration_ms: 15.080665
+  duration_ms: 6.199928
   type: 'test'
   ...
 # Subtest: an existing tag or release refuses even in a dry run
 ok 11 - an existing tag or release refuses even in a dry run
   ---
-  duration_ms: 6.497985
+  duration_ms: 5.073487
   type: 'test'
   ...
 # Subtest: missing GLB probes are generated before the verifier, as CI does, and can be refused
 ok 12 - missing GLB probes are generated before the verifier, as CI does, and can be refused
   ---
-  duration_ms: 16.063006
+  duration_ms: 21.273292
   type: 'test'
   ...
 # Subtest: a linux target cannot silently use the Windows verification workflow
 ok 13 - a linux target cannot silently use the Windows verification workflow
   ---
-  duration_ms: 3.881402
+  duration_ms: 4.239123
   type: 'test'
   ...
 # Subtest: an unowned or second state directory is never taken over
 ok 14 - an unowned or second state directory is never taken over
   ---
-  duration_ms: 5.719045
+  duration_ms: 7.015796
   type: 'test'
   ...
 # Subtest: a corrupted toolchain archive refuses preflight
 ok 15 - a corrupted toolchain archive refuses preflight
   ---
-  duration_ms: 3.524193
+  duration_ms: 3.109897
   type: 'test'
   ...
 # Subtest: a behind remote warns in a dry run and refuses an execute tag target
 ok 16 - a behind remote warns in a dry run and refuses an execute tag target
   ---
-  duration_ms: 12.513976
+  duration_ms: 13.056095
   type: 'test'
   ...
 # Subtest: execute walks verification, package, publish, hosted verify and push in order
 ok 17 - execute walks verification, package, publish, hosted verify and push in order
   ---
-  duration_ms: 6.860204
+  duration_ms: 6.750189
   type: 'test'
   ...
 # Subtest: step timeouts are seconds and reach the process layer as milliseconds
 ok 18 - step timeouts are seconds and reach the process layer as milliseconds
   ---
-  duration_ms: 4.839507
+  duration_ms: 6.171323
   type: 'test'
   ...
 # Subtest: a failed publish stops the pipeline and resume repeats only the publish
 ok 19 - a failed publish stops the pipeline and resume repeats only the publish
   ---
-  duration_ms: 8.561541
+  duration_ms: 9.932933
   type: 'test'
   ...
 # Subtest: a dry-run record cannot back an execute resume and a failed step cannot be skipped
 ok 20 - a dry-run record cannot back an execute resume and a failed step cannot be skipped
   ---
-  duration_ms: 12.00359
+  duration_ms: 13.68343
   type: 'test'
   ...
 # Subtest: a failing hosted verification is a hard stop and the branch is not pushed
 ok 21 - a failing hosted verification is a hard stop and the branch is not pushed
   ---
-  duration_ms: 9.46877
+  duration_ms: 8.979485
   type: 'test'
   ...
 # Subtest: stop-after resumes cleanly, and push is refused until a hosted run succeeds
 ok 22 - stop-after resumes cleanly, and push is refused until a hosted run succeeds
   ---
-  duration_ms: 9.987072
+  duration_ms: 10.874998
   type: 'test'
   ...
 # Subtest: resume without earlier records refuses and never invents state
 ok 23 - resume without earlier records refuses and never invents state
   ---
-  duration_ms: 1.52129
+  duration_ms: 1.788702
   type: 'test'
   ...
 # Subtest: every run is appended, never overwritten, and keeps its own evidence
 ok 24 - every run is appended, never overwritten, and keeps its own evidence
   ---
-  duration_ms: 4.03527
+  duration_ms: 13.964286
   type: 'test'
   ...
 1..24
@@ -151,4 +151,4 @@ ok 24 - every run is appended, never overwritten, and keeps its own evidence
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 191.499571
+# duration_ms 202.268134

@@ -2,61 +2,61 @@ TAP version 13
 # Subtest: Horde package route is local-only, fixed default and rejects ignored options
 ok 1 - Horde package route is local-only, fixed default and rejects ignored options
   ---
-  duration_ms: 2.122998
+  duration_ms: 1.502184
   type: 'test'
   ...
 # Subtest: Horde package loadouts match pinned source and reach the scene
 ok 2 - Horde package loadouts match pinned source and reach the scene
   ---
-  duration_ms: 1.66033
+  duration_ms: 2.163011
   type: 'test'
   ...
 # Subtest: package scene routing covers all nine locked identities and preserves native capability subsets
 ok 3 - package scene routing covers all nine locked identities and preserves native capability subsets
   ---
-  duration_ms: 0.584355
+  duration_ms: 0.719888
   type: 'test'
   ...
 # Subtest: bad package arguments fail before opening an owned server; no silent scene/mode fallback
 ok 4 - bad package arguments fail before opening an owned server; no silent scene/mode fallback
   ---
-  duration_ms: 1.019149
+  duration_ms: 0.978823
   type: 'test'
   ...
 # Subtest: menu, viewer and operator-preview are parameterless special cases
 ok 5 - menu, viewer and operator-preview are parameterless special cases
   ---
-  duration_ms: 1.669007
+  duration_ms: 1.73003
   type: 'test'
   ...
 # Subtest: --debug-panel is accepted only by combat, horde, native-dm and identity-zones
 ok 6 - --debug-panel is accepted only by combat, horde, native-dm and identity-zones
   ---
-  duration_ms: 0.663523
+  duration_ms: 0.572182
   type: 'test'
   ...
 # Subtest: --waves is a horde-only reviewed 1..30 value, forwarded when supplied
 ok 7 - --waves is a horde-only reviewed 1..30 value, forwarded when supplied
   ---
-  duration_ms: 0.782396
+  duration_ms: 0.493394
   type: 'test'
   ...
 # Subtest: menu bot schemas match scene consumption and source bounds
 ok 8 - menu bot schemas match scene consumption and source bounds
   ---
-  duration_ms: 0.366467
+  duration_ms: 0.278341
   type: 'test'
   ...
 # Subtest: diagnostics reach every route without enabling multiplayer cheats
 ok 9 - diagnostics reach every route without enabling multiplayer cheats
   ---
-  duration_ms: 0.406501
+  duration_ms: 0.40049
   type: 'test'
   ...
 # Subtest: LATTICE package options preserve both scenes, 57 valid loadouts, rung ownership and join authority
 ok 10 - LATTICE package options preserve both scenes, 57 valid loadouts, rung ownership and join authority
   ---
-  duration_ms: 1.837052
+  duration_ms: 2.255885
   type: 'test'
   ...
 1..10
@@ -67,4 +67,4 @@ ok 10 - LATTICE package options preserve both scenes, 57 valid loadouts, rung ow
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 51.571443
+# duration_ms 53.457111

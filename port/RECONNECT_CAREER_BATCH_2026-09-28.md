@@ -124,8 +124,16 @@ Implementation tested at `b5b0ac4f` unless noted. Retained records:
   failures outside multiplayer. `5c519b5d` limits deferral to a previously open
   multiplayer transport with an actual reconnect ticket. Control safety, window
   focus, session recovery, stall controls and snapshot-watch checks passed, and
-  the rendered Retry/Leave journey passed again. The final serial rerun is testing
-  `5c519b5d`; both failed aggregates remain retained in the validation checkout.
+  the rendered Retry/Leave journey passed again. Both failed aggregates remain
+  retained in the validation checkout and this batch's evidence directory.
+- **Final aggregate passed 226/226 with zero unrun**, followed serially by
+  **228/228 server tests** and lint with **zero errors** (916 warnings), at
+  `5c519b5d35ebb82b3bebc30b8a989901a0ced203`. The source derivative remains
+  `61fca35c65488502b794900cde0a5247bfb123bf`; its manifest SHA-256 remains
+  `d1809086734c3df66573db5b7efc023b23a337ab2b05d4f5019e985d26e7cff7`.
+  Retained report `verification-226.json` has SHA-256
+  `f1b99980c605e2335b737e339ce1d3ad372ccadeb07bb95d23e772205c31de55`.
+  Canonical `port/reports/verification.json` and gate logs now record this run.
 
 The first rendered reconnect attempt at `025a531b` timed out before guest join:
 the observer reused one mutable pressed/released event without allowing native
