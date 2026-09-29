@@ -82,6 +82,8 @@ try:
         run([BIN,'--headless','--path',str(temp/'godot'),'--script','res://tests/combined_arms/test_fleet_visuals.gd'], 'fleet',env,30)
         oracle=run(['node',str(ROOT/'port/native-vehicle-expansion/source-oracle.mjs')],'source-oracle',env,120)
         assert 'VEHICLE_SOURCE_ORACLE ' in oracle, 'arranged direct-Match fixture missing'
+        edge_oracle=run(['node',str(ROOT/'port/native-vehicle-expansion/room-edge-oracle.mjs')],'room-edge-oracle',env,120)
+        assert 'VEHICLE_ROOM_EDGE_ORACLE ' in edge_oracle, 'arranged direct-Room edge fixture missing'
         r,w=os.pipe()
         with (OUT/'xvfb.log').open('w') as log:
             xvfb=subprocess.Popen(['Xvfb','-displayfd',str(w),'-screen','0','1600x900x24','-nolisten','tcp','-nolisten','unix'],pass_fds=(w,),stdout=log,stderr=log)
