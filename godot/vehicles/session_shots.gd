@@ -7,7 +7,7 @@ var bound_client: Node
 var allowed: Callable
 var active := false
 
-func _ready() -> void:
+func _init() -> void:
 	add_child(shot_fx)
 
 func bind(client: Node, can_show: Callable) -> void:

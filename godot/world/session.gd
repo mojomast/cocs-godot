@@ -16,6 +16,11 @@ var vehicle_shots := VehicleShots.new()
 var audiovisual
 var audiovisual_round := ""
 
+func _init() -> void:
+	# Own the effects node even when a session is inspected without entering a
+	# SceneTree (for example, lobby models and refused setup paths).
+	add_child(vehicle_shots)
+
 func av_ensure() -> void:
 	if is_instance_valid(audiovisual): return
 	# Detached protocol fixtures can receive a start callback before entering the
