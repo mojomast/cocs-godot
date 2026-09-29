@@ -1,0 +1,401 @@
+{
+	"assertions": 1246,
+	"boundary_cases": 4,
+	"boundary_probes": [
+		{
+			"outside": "(0.0, -4.0, 0.0)",
+			"reset_position": "(-24.0, 7.06, 28.0)",
+			"reset_velocity": "(0.0, 0.0, 0.0)"
+		},
+		{
+			"outside": "(97.0, 12.0, 0.0)",
+			"reset_position": "(-24.0, 7.06, 28.0)",
+			"reset_velocity": "(0.0, 0.0, 0.0)"
+		},
+		{
+			"outside": "(0.0, 15.0, -89.0)",
+			"reset_position": "(-24.0, 7.06, 28.0)",
+			"reset_velocity": "(0.0, 0.0, 0.0)"
+		},
+		{
+			"outside": "(0.0, 90.0, 0.0)",
+			"reset_position": "(-24.0, 7.06, 28.0)",
+			"reset_velocity": "(0.0, 0.0, 0.0)"
+		}
+	],
+	"connections": [
+		{
+			"a": "(-21.0, 7.0, 21.0)",
+			"b": "(14.0, 12.0, 0.0)",
+			"name": "SuspendedSpan",
+			"profile": [
+				"(-21.0, 7.0, 21.0)",
+				"(-18.9, 7.0, 19.74)",
+				"(11.9, 12.0, 1.26)",
+				"(14.0, 12.0, 0.0)"
+			],
+			"width": 5.2
+		},
+		{
+			"a": "(26.0, 12.0, -14.0)",
+			"b": "(26.0, 12.0, -29.0)",
+			"name": "ExtractorAccess",
+			"profile": [
+				"(26.0, 12.0, -14.0)",
+				"(26.0, 12.0, -29.0)"
+			],
+			"width": 5.4
+		},
+		{
+			"a": "(26.0, 12.0, -31.0)",
+			"b": "(-8.0, 12.0, -31.0)",
+			"name": "BoreFloor",
+			"profile": [
+				"(26.0, 12.0, -31.0)",
+				"(-8.0, 12.0, -31.0)"
+			],
+			"width": 7.0
+		},
+		{
+			"a": "(-7.0, 12.0, -31.0)",
+			"b": "(-23.0, 16.0, -28.0)",
+			"name": "RimAscent",
+			"profile": [
+				"(-7.0, 12.0, -31.0)",
+				"(-12.92, 12.0, -29.89)",
+				"(-20.44, 16.0, -28.48)",
+				"(-23.0, 16.0, -28.0)"
+			],
+			"width": 5.4
+		},
+		{
+			"a": "(-35.0, 16.0, -21.0)",
+			"b": "(-41.0, 12.0, -6.0)",
+			"name": "WestDescent",
+			"profile": [
+				"(-35.0, 16.0, -21.0)",
+				"(-35.6, 16.0, -19.5)",
+				"(-39.14, 12.0, -10.65)",
+				"(-41.0, 12.0, -6.0)"
+			],
+			"width": 5.4
+		},
+		{
+			"a": "(-40.0, 12.0, -1.0)",
+			"b": "(-31.0, 7.0, 22.0)",
+			"name": "ReturnRamp",
+			"profile": [
+				"(-40.0, 12.0, -1.0)",
+				"(-39.28, 12.0, 0.84)",
+				"(-32.62, 7.0, 17.86)",
+				"(-31.0, 7.0, 22.0)"
+			],
+			"width": 5.4
+		}
+	],
+	"controller": {
+		"capsule_height": 1.79999995231628,
+		"capsule_radius": 0.349999994039536,
+		"entry_point": "step",
+		"floor_constant_speed": false,
+		"floor_snap_length": 0.300000011920929,
+		"input_adapter": "world wish direction to local axes; inherited production physics and capsule",
+		"safe_margin": 0.0199999995529652,
+		"script": "res://exploration/walker.gd"
+	},
+	"diagnostics": {
+		"areas": 6,
+		"authored_triangles": 23474,
+		"built": true,
+		"collision_shapes": 99,
+		"embers": 48,
+		"experience": "cinder-array",
+		"instanced_solids": 1180,
+		"lights": 4,
+		"mesh_nodes": 91,
+		"native_only": true,
+		"nodes": 212,
+		"renderer": "gl_compatibility",
+		"respawns": 4,
+		"route_points": 16,
+		"steam": 16
+	},
+	"failures": [],
+	"floor_probes": 342,
+	"godot": "4.5.2-stable (official)",
+	"max_ramp_degrees": 27.6007699367574,
+	"rail_probes": [
+		{
+			"across_m": 2.15529131889343,
+			"feet": "(-4.608889, 9.503828, 8.651854)",
+			"limit_m": 2.4,
+			"on_floor": true,
+			"outward_sprint_frames": 70,
+			"side": -1.0
+		},
+		{
+			"across_m": 2.15330219268799,
+			"feet": "(-2.392135, 9.503828, 12.34644)",
+			"limit_m": 2.4,
+			"on_floor": true,
+			"outward_sprint_frames": 70,
+			"side": 1.0
+		}
+	],
+	"traversals": [
+		{
+			"arrivals": [
+				{
+					"actual": "(-24.0, 7.004444, 28.0)",
+					"on_floor": true,
+					"physics_frame": 0,
+					"target": "(-24.0, 7.0, 28.0)"
+				},
+				{
+					"actual": "(-21.12437, 7.004444, 21.2902)",
+					"on_floor": true,
+					"physics_frame": 73,
+					"target": "(-21.0, 7.0, 21.0)"
+				},
+				{
+					"actual": "(13.68527, 12.01879, 0.190653)",
+					"on_floor": true,
+					"physics_frame": 487,
+					"target": "(14.0, 12.0, 0.0)"
+				},
+				{
+					"actual": "(21.74387, 12.01879, -4.840108)",
+					"on_floor": true,
+					"physics_frame": 582,
+					"target": "(22.0, 12.0, -5.0)"
+				},
+				{
+					"actual": "(25.87342, 12.01879, -13.72758)",
+					"on_floor": true,
+					"physics_frame": 680,
+					"target": "(26.0, 12.0, -14.0)"
+				},
+				{
+					"actual": "(25.99691, 12.01879, -28.62707)",
+					"on_floor": true,
+					"physics_frame": 829,
+					"target": "(26.0, 12.0, -29.0)"
+				},
+				{
+					"actual": "(19.27308, 12.01879, -30.90739)",
+					"on_floor": true,
+					"physics_frame": 900,
+					"target": "(19.0, 12.0, -31.0)"
+				},
+				{
+					"actual": "(7.373414, 12.01879, -30.99718)",
+					"on_floor": true,
+					"physics_frame": 1019,
+					"target": "(7.0, 12.0, -31.0)"
+				},
+				{
+					"actual": "(-6.626578, 12.01879, -30.99993)",
+					"on_floor": true,
+					"physics_frame": 1159,
+					"target": "(-7.0, 12.0, -31.0)"
+				},
+				{
+					"actual": "(-22.6799, 16.01895, -28.05895)",
+					"on_floor": true,
+					"physics_frame": 1343,
+					"target": "(-23.0, 16.0, -28.0)"
+				},
+				{
+					"actual": "(-28.67003, 16.01895, -26.1075)",
+					"on_floor": true,
+					"physics_frame": 1406,
+					"target": "(-29.0, 16.0, -26.0)"
+				},
+				{
+					"actual": "(-34.74041, 16.01895, -21.20945)",
+					"on_floor": true,
+					"physics_frame": 1484,
+					"target": "(-35.0, 16.0, -21.0)"
+				},
+				{
+					"actual": "(-40.88914, 12.0187, -6.269374)",
+					"on_floor": true,
+					"physics_frame": 1640,
+					"target": "(-41.0, 12.0, -6.0)"
+				},
+				{
+					"actual": "(-40.05721, 12.0187, -1.339067)",
+					"on_floor": true,
+					"physics_frame": 1690,
+					"target": "(-40.0, 12.0, -1.0)"
+				},
+				{
+					"actual": "(-31.10794, 7.018689, 21.72185)",
+					"on_floor": true,
+					"physics_frame": 1930,
+					"target": "(-31.0, 7.0, 22.0)"
+				},
+				{
+					"actual": "(-24.21254, 7.018689, 27.81227)",
+					"on_floor": true,
+					"physics_frame": 2022,
+					"target": "(-24.0, 7.0, 28.0)"
+				}
+			],
+			"controller_resets": 0,
+			"direction": "forward",
+			"off_floor_frames": 0,
+			"physics_frames": 2022,
+			"reached": 16,
+			"speed_m_s": 6.0,
+			"stalled_contacts": {
+
+			},
+			"waypoints": 16,
+			"worst_waypoint_height_error": 0.0189476013183594
+		},
+		{
+			"arrivals": [
+				{
+					"actual": "(-24.21254, 7.018689, 27.81227)",
+					"on_floor": true,
+					"physics_frame": 0,
+					"target": "(-24.0, 7.0, 28.0)"
+				},
+				{
+					"actual": "(-30.79545, 7.018689, 22.17516)",
+					"on_floor": true,
+					"physics_frame": 52,
+					"target": "(-31.0, 7.0, 22.0)"
+				},
+				{
+					"actual": "(-39.88942, 12.01878, -0.721059)",
+					"on_floor": true,
+					"physics_frame": 208,
+					"target": "(-40.0, 12.0, -1.0)"
+				},
+				{
+					"actual": "(-40.9531, 12.01878, -5.777052)",
+					"on_floor": true,
+					"physics_frame": 239,
+					"target": "(-41.0, 12.0, -6.0)"
+				},
+				{
+					"actual": "(-35.13031, 16.01621, -20.66803)",
+					"on_floor": true,
+					"physics_frame": 345,
+					"target": "(-35.0, 16.0, -21.0)"
+				},
+				{
+					"actual": "(-29.21981, 16.01621, -25.80881)",
+					"on_floor": true,
+					"physics_frame": 392,
+					"target": "(-29.0, 16.0, -26.0)"
+				},
+				{
+					"actual": "(-23.24629, 16.01621, -27.91323)",
+					"on_floor": true,
+					"physics_frame": 430,
+					"target": "(-23.0, 16.0, -28.0)"
+				},
+				{
+					"actual": "(-7.370433, 12.01869, -30.92962)",
+					"on_floor": true,
+					"physics_frame": 525,
+					"target": "(-7.0, 12.0, -31.0)"
+				},
+				{
+					"actual": "(6.629395, 12.01869, -30.99819)",
+					"on_floor": true,
+					"physics_frame": 609,
+					"target": "(7.0, 12.0, -31.0)"
+				},
+				{
+					"actual": "(18.6294, 12.01869, -30.99995)",
+					"on_floor": true,
+					"physics_frame": 681,
+					"target": "(19.0, 12.0, -31.0)"
+				},
+				{
+					"actual": "(25.70682, 12.01869, -29.07955)",
+					"on_floor": true,
+					"physics_frame": 725,
+					"target": "(26.0, 12.0, -29.0)"
+				},
+				{
+					"actual": "(25.99516, 12.01869, -14.24899)",
+					"on_floor": true,
+					"physics_frame": 814,
+					"target": "(26.0, 12.0, -14.0)"
+				},
+				{
+					"actual": "(22.09582, 12.01869, -5.221828)",
+					"on_floor": true,
+					"physics_frame": 873,
+					"target": "(22.0, 12.0, -5.0)"
+				},
+				{
+					"actual": "(14.25248, 12.01869, -0.162851)",
+					"on_floor": true,
+					"physics_frame": 929,
+					"target": "(14.0, 12.0, 0.0)"
+				},
+				{
+					"actual": "(-20.74647, 7.018687, 20.8478)",
+					"on_floor": true,
+					"physics_frame": 1171,
+					"target": "(-21.0, 7.0, 21.0)"
+				},
+				{
+					"actual": "(-23.852, 7.018687, 27.67464)",
+					"on_floor": true,
+					"physics_frame": 1216,
+					"target": "(-24.0, 7.0, 28.0)"
+				}
+			],
+			"controller_resets": 0,
+			"direction": "reverse-sprint",
+			"off_floor_frames": 0,
+			"physics_frames": 1216,
+			"reached": 16,
+			"speed_m_s": 10.0,
+			"stalled_contacts": {
+
+			},
+			"waypoints": 16,
+			"worst_waypoint_height_error": 0.0187835693359375
+		}
+	],
+	"tunnel_probes": [
+		{
+			"ceiling_hit": true,
+			"ceiling_position": "(-5.0, 17.2, -31.0)",
+			"head_clear": true,
+			"x": -5
+		},
+		{
+			"ceiling_hit": true,
+			"ceiling_position": "(0.0, 17.2, -31.0)",
+			"head_clear": true,
+			"x": 0
+		},
+		{
+			"ceiling_hit": true,
+			"ceiling_position": "(7.0, 17.2, -31.0)",
+			"head_clear": true,
+			"x": 7
+		},
+		{
+			"ceiling_hit": true,
+			"ceiling_position": "(14.0, 17.2, -31.0)",
+			"head_clear": true,
+			"x": 14
+		},
+		{
+			"ceiling_hit": true,
+			"ceiling_position": "(19.0, 17.2, -31.0)",
+			"head_clear": true,
+			"x": 19
+		}
+	]
+}

@@ -1,0 +1,407 @@
+{
+  "max_files": 80,
+  "max_bytes_per_file": 131072,
+  "files": [
+    {
+      "path": "setup/axis-export.log",
+      "source_bytes": 762,
+      "truncated": false
+    },
+    {
+      "path": "setup/bootstrap.log",
+      "source_bytes": 765,
+      "truncated": false
+    },
+    {
+      "path": "setup/chromium-install.log",
+      "source_bytes": 19444,
+      "truncated": false
+    },
+    {
+      "path": "setup/git-diff-check.log",
+      "source_bytes": 0,
+      "truncated": false
+    },
+    {
+      "path": "setup/meridian-export.log",
+      "source_bytes": 1689,
+      "truncated": false
+    },
+    {
+      "path": "setup/npm-ci.log",
+      "source_bytes": 27,
+      "truncated": false
+    },
+    {
+      "path": "setup/semantic-export.log",
+      "source_bytes": 61,
+      "truncated": false
+    },
+    {
+      "path": "setup/verify.log",
+      "source_bytes": 7371,
+      "truncated": false
+    },
+    {
+      "path": "reports/verification.json",
+      "source_bytes": 74625,
+      "truncated": false
+    },
+    {
+      "path": "reports/aurora-traversal.json",
+      "source_bytes": 4178,
+      "truncated": false
+    },
+    {
+      "path": "reports/axis-weapon-glb.json",
+      "source_bytes": 4396,
+      "truncated": false
+    },
+    {
+      "path": "reports/cinder-traversal.json",
+      "source_bytes": 9125,
+      "truncated": false
+    },
+    {
+      "path": "reports/horde-input-vectors.json",
+      "source_bytes": 20255,
+      "truncated": false
+    },
+    {
+      "path": "reports/meridian-exchange-glb.json",
+      "source_bytes": 6637,
+      "truncated": false
+    },
+    {
+      "path": "gates/alt-fire.log",
+      "source_bytes": 126,
+      "truncated": false
+    },
+    {
+      "path": "gates/arms-race-source.log",
+      "source_bytes": 7629,
+      "truncated": false
+    },
+    {
+      "path": "gates/arms-race.log",
+      "source_bytes": 195,
+      "truncated": false
+    },
+    {
+      "path": "gates/audio-feedback.log",
+      "source_bytes": 6636,
+      "truncated": false
+    },
+    {
+      "path": "gates/aurora-traversal.log",
+      "source_bytes": 5889,
+      "truncated": false
+    },
+    {
+      "path": "gates/benchmark-autostart.log",
+      "source_bytes": 10121,
+      "truncated": false
+    },
+    {
+      "path": "gates/benchmark-contracts.log",
+      "source_bytes": 186,
+      "truncated": false
+    },
+    {
+      "path": "gates/benchmark-tools.log",
+      "source_bytes": 1934,
+      "truncated": false
+    },
+    {
+      "path": "gates/blood-fx-contracts.log",
+      "source_bytes": 2095,
+      "truncated": false
+    },
+    {
+      "path": "gates/blood-fx-stress.log",
+      "source_bytes": 610,
+      "truncated": false
+    },
+    {
+      "path": "gates/blood-fx-surfaces.log",
+      "source_bytes": 1334,
+      "truncated": false
+    },
+    {
+      "path": "gates/blood-live-harness.log",
+      "source_bytes": 1120,
+      "truncated": false
+    },
+    {
+      "path": "gates/blood-live-native.log",
+      "source_bytes": 722,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-catalog-check.log",
+      "source_bytes": 0,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-equipment-native.log",
+      "source_bytes": 91,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-equipment-source.log",
+      "source_bytes": 364,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-history-native.log",
+      "source_bytes": 91,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-history-storage.log",
+      "source_bytes": 621,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-identity-native.log",
+      "source_bytes": 403,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-modal.log",
+      "source_bytes": 155,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-persistence.log",
+      "source_bytes": 1325,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-projection.log",
+      "source_bytes": 94,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-results-history-ui.log",
+      "source_bytes": 94,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-results-native.log",
+      "source_bytes": 91,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-results-source.log",
+      "source_bytes": 569,
+      "truncated": false
+    },
+    {
+      "path": "gates/career-source-contracts.log",
+      "source_bytes": 797,
+      "truncated": false
+    },
+    {
+      "path": "gates/ci-artifact-tests.log",
+      "source_bytes": 98,
+      "truncated": false
+    },
+    {
+      "path": "gates/cinder-traversal.log",
+      "source_bytes": 7124,
+      "truncated": false
+    },
+    {
+      "path": "gates/cinderwake-native.log",
+      "source_bytes": 108,
+      "truncated": false
+    },
+    {
+      "path": "gates/cinderwake-source.log",
+      "source_bytes": 4893,
+      "truncated": false
+    },
+    {
+      "path": "gates/combat-actions.log",
+      "source_bytes": 657,
+      "truncated": false
+    },
+    {
+      "path": "gates/combat-combined-integration.log",
+      "source_bytes": 129,
+      "truncated": false
+    },
+    {
+      "path": "gates/combat-feedback.log",
+      "source_bytes": 153,
+      "truncated": false
+    },
+    {
+      "path": "gates/combat-integration-oracle.log",
+      "source_bytes": 68,
+      "truncated": false
+    },
+    {
+      "path": "gates/combat-integration.log",
+      "source_bytes": 173,
+      "truncated": false
+    },
+    {
+      "path": "gates/combat-particles.log",
+      "source_bytes": 1005,
+      "truncated": false
+    },
+    {
+      "path": "gates/combat-pickup-assets.log",
+      "source_bytes": 187,
+      "truncated": false
+    },
+    {
+      "path": "gates/combat-remote-muzzle.log",
+      "source_bytes": 106,
+      "truncated": false
+    },
+    {
+      "path": "gates/combat-shield-capacity.log",
+      "source_bytes": 107,
+      "truncated": false
+    },
+    {
+      "path": "gates/combat-shields.log",
+      "source_bytes": 105,
+      "truncated": false
+    },
+    {
+      "path": "gates/combined-arms-controls.log",
+      "source_bytes": 102,
+      "truncated": false
+    },
+    {
+      "path": "gates/combined-arms-evidence.log",
+      "source_bytes": 107,
+      "truncated": false
+    },
+    {
+      "path": "gates/combined-arms-graphics.log",
+      "source_bytes": 141,
+      "truncated": false
+    },
+    {
+      "path": "gates/debug-panel.log",
+      "source_bytes": 152,
+      "truncated": false
+    },
+    {
+      "path": "gates/debug-tools.log",
+      "source_bytes": 4139,
+      "truncated": false
+    },
+    {
+      "path": "gates/entity-visuals.log",
+      "source_bytes": 121,
+      "truncated": false
+    },
+    {
+      "path": "gates/exploration-walker.log",
+      "source_bytes": 147,
+      "truncated": false
+    },
+    {
+      "path": "gates/export-tests.log",
+      "source_bytes": 1088,
+      "truncated": false
+    },
+    {
+      "path": "gates/first-person-ads.log",
+      "source_bytes": 121,
+      "truncated": false
+    },
+    {
+      "path": "gates/first-person-binding.log",
+      "source_bytes": 424,
+      "truncated": false
+    },
+    {
+      "path": "gates/first-person-recoil.log",
+      "source_bytes": 7069,
+      "truncated": false
+    },
+    {
+      "path": "gates/first-person-rig.log",
+      "source_bytes": 124,
+      "truncated": false
+    },
+    {
+      "path": "gates/game-hud-debug.log",
+      "source_bytes": 118,
+      "truncated": false
+    },
+    {
+      "path": "gates/game-hud-setup.log",
+      "source_bytes": 182,
+      "truncated": false
+    },
+    {
+      "path": "gates/game-hud.log",
+      "source_bytes": 182,
+      "truncated": false
+    },
+    {
+      "path": "gates/gate-runner-tests.log",
+      "source_bytes": 104,
+      "truncated": false
+    },
+    {
+      "path": "gates/glb-import.log",
+      "source_bytes": 187,
+      "truncated": false
+    },
+    {
+      "path": "gates/glb-sides.log",
+      "source_bytes": 160,
+      "truncated": false
+    },
+    {
+      "path": "gates/gltf-sides.log",
+      "source_bytes": 1395,
+      "truncated": false
+    },
+    {
+      "path": "gates/godot-import.log",
+      "source_bytes": 74623,
+      "truncated": false
+    },
+    {
+      "path": "gates/graphics-atmosphere.log",
+      "source_bytes": 192,
+      "truncated": false
+    },
+    {
+      "path": "gates/graphics-fx.log",
+      "source_bytes": 225,
+      "truncated": false
+    },
+    {
+      "path": "gates/graphics-terrain.log",
+      "source_bytes": 137,
+      "truncated": false
+    },
+    {
+      "path": "gates/guest-session.log",
+      "source_bytes": 113,
+      "truncated": false
+    },
+    {
+      "path": "gates/health-hud-evidence.log",
+      "source_bytes": 5719,
+      "truncated": false
+    },
+    {
+      "path": "gates/horde-adapter.log",
+      "source_bytes": 10961,
+      "truncated": false
+    }
+  ],
+  "omitted_files": 118
+}

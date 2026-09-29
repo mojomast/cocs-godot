@@ -1,0 +1,4 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+BENCHMARK_AUTOSTART map=prism-foundry bots=4 seconds=180
+BENCHMARK_CONTRACTS_RESULT {"checks":189,"failures":[]}

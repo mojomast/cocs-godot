@@ -131,6 +131,8 @@ commands = [
     ("exploration-walker", [binary, "--headless", "--path", "godot", "--script", "res://tests/graphics_batch/walker.gd"]),
     ("first-person-rig", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/lifecycle.gd"]),
     ("first-person-finishes", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/finishes.gd"]),
+    ("finish-source-journey", ["node", "tools/godot-weapons/finish-journey.mjs", "--output=" + str(root / ".port-runtime/finish-source-journey.json")]),
+    ("finish-native-source-replay", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/finishes_source.gd", "--", "--source-journey=" + str(root / ".port-runtime/finish-source-journey.json")]),
     # Real pointer capture is required by this fixture; the dummy display server
     # ignores MOUSE_MODE_CAPTURED, so the gate runs under a private owned Xvfb.
     ("first-person-binding", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--path", "godot", "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy", "--script", "res://tests/first_person/binding.gd"]),

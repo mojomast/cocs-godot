@@ -138,8 +138,24 @@ Implementation tested at `b5b0ac4f` unless noted. Retained records:
   `683ead4998796910936e9db0b3910d540643f4be`: typecheck, game/server tests, web
   build, rendered deployment checks and lint. See
   [run 36513677793](https://github.com/mojomast/cocs-godot/actions/runs/36513677793).
-  Hosted native confirmation is still pending separately; this result predates
-  the subsequent Arsenal presentation batch.
+  This result predates the subsequent Arsenal presentation batch.
+- **Hosted native CI failed** at the same revision:
+  [run 36513677768](https://github.com/mojomast/cocs-godot/actions/runs/36513677768)
+  executed 184/226 gates: **183 passed, 1 failed, 42 unrun**. The failure was
+  `horde-upgrade-fixture`: a stale input epoch refused the selection, then the
+  native child hit its 30-second timeout. Input TTL resets surrounded the
+  rendered offer capture; the test had launched that capture without awaiting
+  completion before its key-delivery stage. Clean-runner acceptance remains open.
+  The complete bounded hosted artifact is retained at
+  `port/native-shell/evidence/reconnect-career-2026-09-28/hosted-native-36513677768/`.
+  Its `reports/verification.json` SHA-256 is
+  `b382630fd19fd6979232fef4d62a560853177bc2e7a9f193b416a28b51b05d65`;
+  GitHub artifact ID `11010910764`, archive digest
+  `7270282814d053c28b3103255fcdc9d4418acbcd494acf22038cc7082684be29`.
+  A fixture repair is being verified with the subsequent Arsenal batch: await
+  optional capture, settle ordinary acknowledged input before the synthetic
+  press, and use a wall-clock observer deadline. Authority TTL, epoch validation
+  and all existing positive-loopback assertions remain intact.
 
 The first rendered reconnect attempt at `025a531b` timed out before guest join:
 the observer reused one mutable pressed/released event without allowing native

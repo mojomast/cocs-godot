@@ -23,6 +23,9 @@ const DELIVERY_RETRY_FRAMES := 30
 ## Frames to keep observing after the authority answered, so the ordinary input
 ## stream is proven to continue after the selection rather than racing the quit.
 const LINGER_FRAMES := 15
+## Readback/shader warm-up can exceed the unchanged authority input TTL. Wait
+## for ordinary acknowledged input to recover before emitting the fixture key.
+const READY_FRAMES := 12
 ## Delivery ladder for the synthetic key. The first entry is the engine's own
 ## parse path (the same call tests/horde/live.gd steers with); the later entries
 ## exist only for display servers that drop parsed events, and whichever entry
@@ -62,6 +65,11 @@ var closing_started := false
 var close_wait := 0.0
 var closed_frames := 0
 var evidence: Dictionary = {"label": LABEL, "notes": notes, "shots": []}
+var started_ms := 0
+var previous_frame_ms := 0
+var ready_frames := 0
+var ready_epoch := 0
+var ready_received := 0
 
 func check(ok: bool, message: String) -> void:
 	checks += 1
@@ -70,6 +78,8 @@ func check(ok: bool, message: String) -> void:
 		notes.append(message)
 
 func _initialize() -> void:
+	started_ms = Time.get_ticks_msec()
+	previous_frame_ms = started_ms
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
 		if arg.begins_with("--map="): map_id = arg.trim_prefix("--map=")
@@ -184,7 +194,12 @@ func _process(delta: float) -> bool:
 			check(closed_frames >= 2, "fixture socket did not finish its close handshake")
 			finish_exit()
 		return false
-	elapsed += delta
+	var now := Time.get_ticks_msec()
+	var frame_ms := now - previous_frame_ms
+	previous_frame_ms = now
+	# Engine delta is capped on stalled software-rendered frames. The fixture's
+	# own deadline must still expire before the parent's wall-clock timeout.
+	elapsed = float(now - started_ms) / 1000.0
 	stage_frames += 1
 	if not is_instance_valid(session):
 		finish(false, "product scene vanished")
@@ -213,9 +228,26 @@ func _process(delta: float) -> bool:
 				return false
 			if not session.horde.offer_pending: return false
 			_probe_offer()
-			stage = "press"
-			stage_frames = 0
+			stage = "capture_offer"
+			_prepare_press()
+		"settle":
+			var client: Node = session.horde_client
+			if frame_ms > 100 or ready_epoch != int(client.input_epoch):
+				ready_frames = 0
+				ready_epoch = int(client.input_epoch)
+				ready_received = int(client.received_input)
+			else:
+				ready_frames += 1
+			if ready_frames >= READY_FRAMES and int(client.received_input) >= ready_received + 5:
+				stage = "press"
+				stage_frames = 0
 		"press":
+			if frame_ms > 100 or ready_epoch != int(session.horde_client.input_epoch):
+				ready_frames = 0
+				ready_epoch = int(session.horde_client.input_epoch)
+				ready_received = int(session.horde_client.received_input)
+				stage = "settle"
+				return false
 			# Sample the live round immediately before the press: the authority's
 			# input TTL can cross an epoch boundary on a slow frame before this.
 			epoch_seen = int(session.horde_client.input_epoch)
@@ -290,7 +322,17 @@ func _probe_offer() -> void:
 	check(not chosen.is_empty() and offer_ids.has(chosen), "the hotkey target is one of the offered ids")
 	check(session.horde.offer_index(chosen) == 2, "the chosen id is the second offered id")
 	evidence["offer_button_texts"] = session.choice_buttons.map(func(button: Button) -> String: return button.text)
-	capture("offer")
+
+func _prepare_press() -> void:
+	# Complete optional evidence readback before the input flight. Never let an
+	# unawaited capture resume between sampling an epoch and delivering the key.
+	await capture("offer")
+	if finished: return
+	ready_epoch = int(session.horde_client.input_epoch)
+	ready_received = int(session.horde_client.received_input)
+	ready_frames = 0
+	stage = "settle"
+	stage_frames = 0
 
 func _after_press() -> void:
 	# The choice hotkey is intercepted before the control recorder: it must never

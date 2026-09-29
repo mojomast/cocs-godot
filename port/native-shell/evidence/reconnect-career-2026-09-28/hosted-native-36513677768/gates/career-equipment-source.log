@@ -1,0 +1,16 @@
+TAP version 13
+# Subtest: GEAR saves the career profile but an existing actor keeps its loadout until next match
+ok 1 - GEAR saves the career profile but an existing actor keeps its loadout until next match
+  ---
+  duration_ms: 41.385438
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1291.038284

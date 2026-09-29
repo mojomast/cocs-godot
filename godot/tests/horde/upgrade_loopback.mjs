@@ -140,7 +140,10 @@ try {
     ...(display.display ? [] : ['--headless']),
     ...(display.display ? ['--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy', '--resolution', '640x400'] : []),
     '--max-fps', '60', '--path', 'godot', '--script', 'res://tests/horde/upgrade_live.gd', '--',
-    `--map=${MAP}`, `--waves=${WAVES}`, `--endpoint=ws://127.0.0.1:${port}`, `--shot=${shotPrefix}`,
+    `--map=${MAP}`, `--waves=${WAVES}`, `--endpoint=ws://127.0.0.1:${port}`,
+    // Rendering and real engine input remain required. Expensive pixel readback
+    // is useful only when the caller actually retains the screenshot evidence.
+    ...(ARTIFACT_DIR ? [`--shot=${shotPrefix}`] : []),
   ];
   child = spawn(binary, argv, {env, stdio: ['ignore', 'pipe', 'pipe']});
   xvfb = display.xvfb;

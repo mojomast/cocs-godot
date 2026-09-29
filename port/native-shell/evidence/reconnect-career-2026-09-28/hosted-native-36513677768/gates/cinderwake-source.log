@@ -1,0 +1,131 @@
+TAP version 13
+# Subtest: clear causal chain, exact warning, arrival hold, subsequent wave and gates/rays
+ok 1 - clear causal chain, exact warning, arrival hold, subsequent wave and gates/rays
+  ---
+  duration_ms: 73.076169
+  type: 'test'
+  ...
+# Subtest: fallback opens routes but never waives living grounded arrival
+ok 2 - fallback opens routes but never waives living grounded arrival
+  ---
+  duration_ms: 31.109782
+  type: 'test'
+  ...
+# Subtest: closure defers for actors/projectiles/deployables and cancels without damage
+ok 3 - closure defers for actors/projectiles/deployables and cancels without damage
+  ---
+  duration_ms: 14.854834
+  type: 'test'
+  ...
+# Subtest: unoccupied closure changes source collision and clears cached bot routes
+ok 4 - unoccupied closure changes source collision and clears cached bot routes
+  ---
+  duration_ms: 11.536399
+  type: 'test'
+  ...
+# Subtest: target victory, clock and last life outrank transitions; restart is independent
+ok 5 - target victory, clock and last life outrank transitions; restart is independent
+  ---
+  duration_ms: 13.711739
+  type: 'test'
+  ...
+# Subtest: strict negative plan validation and mode refusal
+ok 6 - strict negative plan validation and mode refusal
+  ---
+  duration_ms: 1.732259
+  type: 'test'
+  ...
+# Subtest: Cinderwake literal launch route selects its new scene, bounded waves and local authority
+ok 7 - Cinderwake literal launch route selects its new scene, bounded waves and local authority
+  ---
+  duration_ms: 2.83123
+  type: 'test'
+  ...
+# Subtest: literal recipe validates and source intake is mandatory, never a static-play fallback
+ok 8 - literal recipe validates and source intake is mandatory, never a static-play fallback
+  ---
+  duration_ms: 337.841019
+  type: 'test'
+  ...
+# Subtest: ordinary local socket publishes matching source-stage snapshot and immutable map contract
+ok 9 - ordinary local socket publishes matching source-stage snapshot and immutable map contract
+  ---
+  duration_ms: 122.743862
+  type: 'test'
+  ...
+# Subtest: source-causal wave-2 transition and native open slab pass
+ok 10 - source-causal wave-2 transition and native open slab pass
+  ---
+  duration_ms: 1.33603
+  type: 'test'
+  ...
+# Subtest: wrong cause, early opening, no arrival hold or stale native mask each fail
+ok 11 - wrong cause, early opening, no arrival hold or stale native mask each fail
+  ---
+  duration_ms: 1.451687
+  type: 'test'
+  ...
+# Subtest: second source-causal transition demands CD gate, destination hold and wave-5 clear
+ok 12 - second source-causal transition demands CD gate, destination hold and wave-5 clear
+  ---
+  duration_ms: 1.153958
+  type: 'test'
+  ...
+# Subtest: new deterministic union recipe, exact schedule, pickup support and meaningful negative cases
+ok 13 - new deterministic union recipe, exact schedule, pickup support and meaningful negative cases
+  ---
+  duration_ms: 56.308621
+  type: 'test'
+  ...
+# Subtest: all four gate masks connect every stage spawn pool and arrival to E
+ok 14 - all four gate masks connect every stage spawn pool and arrival to E
+  ---
+  duration_ms: 1153.293452
+  type: 'test'
+  ...
+# Subtest: source capsule clearance along both directions of each route, supported seams and gate rays
+ok 15 - source capsule clearance along both directions of each route, supported seams and gate rays
+  ---
+  duration_ms: 36.554273
+  type: 'test'
+  ...
+# Subtest: normal-speed source moveActor physically walks all authored routes in both directions
+ok 16 - normal-speed source moveActor physically walks all authored routes in both directions
+  ---
+  duration_ms: 130.824213
+  type: 'test'
+  ...
+# Controlled pinned-source fixtures; integration revision 683ead4998796910936e9db0b3910d540643f4be
+# Subtest: real upstream controller consumes new recipe; each target 1..30 terminates before further transit
+ok 17 - real upstream controller consumes new recipe; each target 1..30 terminates before further transit
+  ---
+  duration_ms: 1713.055693
+  type: 'test'
+  ...
+# Subtest: source NPC archetypes, including champions and summons, spawn supported in every gate mask
+ok 18 - source NPC archetypes, including champions and summons, spawn supported in every gate mask
+  ---
+  duration_ms: 641.952922
+  type: 'test'
+  ...
+# Subtest: ordinary Match.step starts the natural first wave with unchanged pacing; death/restart uses source rules
+ok 19 - ordinary Match.step starts the natural first wave with unchanged pacing; death/restart uses source rules
+  ---
+  duration_ms: 133.874494
+  type: 'test'
+  ...
+# Subtest: controlled clear followed by actual input-driven travel causes arrival then later wave start
+ok 20 - controlled clear followed by actual input-driven travel causes arrival then later wave start
+  ---
+  duration_ms: 172.31755
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10815.72892
