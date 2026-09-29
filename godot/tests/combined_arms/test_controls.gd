@@ -78,7 +78,17 @@ func _initialize() -> void:
 	check(bridge.eligible(0, 0, true, false) and not bridge.eligible(0, 0.5, true, false), "shared bridge freshness")
 	check(bridge.adapt({"x":0.4,"z":0.8,"jump":true,"fire":true}, true).jump, "first flight ascent edge")
 	check(not bridge.adapt({"x":0.4,"z":0.8,"jump":true,"fire":true}, true).jump, "held jump never emits synthetic climb")
+	check(not bridge.adapt({"x":0.4,"z":0.8,"jump":false}, true).jump and bridge.adapt({"jump":true}, true).jump, "released jump permits a fresh rising edge")
 	check(bridge.adapt({"x":0.4,"z":0.8,"jump":false}, false).x == 0, "focus release neutralizes axes")
+	var passenger_actor := {"id":0,"health":100,"dead":0,"vehicleId":"transport","vehicleSeat":"passenger","vehicleSeatIndex":3}
+	var passenger_vehicle := {"id":"transport","kind":"transport","driver":1,"gunner":null,"passengers":[null,null,null,0],"health":300,"respawnTimer":0}
+	var passenger_state := {"actors":[passenger_actor],"vehicles":[passenger_vehicle]}
+	bridge.observe(passenger_state, 0)
+	check(bridge.eligible(0, 0.49, true, false) and not bridge.eligible(0, 0.5, true, false), "passenger lease obeys source snapshot staleness boundary")
+	var personal := bridge.adapt({"x":1.0,"z":-1.0,"jump":true,"fire":true,"reload":true,"weapon":"rifle"}, true)
+	check(personal.x == 0 and personal.z == 0 and not personal.jump and personal.fire and personal.reload and personal.weapon == "rifle", "passenger keeps personal input but cannot steer hull")
+	bridge.observe(mounted_state, 0)
+	check(bridge.adapt({"x":1.0,"fire":true}, false).x == 0 and not bridge.adapt({"fire":true}, false).fire, "focus loss clears passenger personal actions")
 	mounted_state.vehicles[0].driver = null
 	bridge.observe(mounted_state, 0)
 	check(not bridge.eligible(0, 0, true, false) and not bridge.adapt({"fire":true,"x":1.0}, true).fire, "broken seat lease cannot fire")

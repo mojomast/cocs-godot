@@ -31,6 +31,7 @@ func run() -> void:
 		check(model != null and model.position.is_equal_approx(Vector3(i, 2, -3)), "source XYZ " + kinds[i])
 		check(model.rotation_order == EULER_ORDER_XYZ and model.rotation.is_equal_approx(Vector3(0.14, PI / 2, -0.12)), "source yaw/roll/pitch " + kinds[i])
 		check(is_equal_approx(model.turret.rotation.y, 0.25), "relative turret " + kinds[i])
+		check(model.get("kind") == kinds[i] and model.get_child_count() > 1, "source-specific chassis geometry " + kinds[i])
 		if i > 0:
 			check(model.wheels.size() == {"hornet":0, "titan":16, "scout":4, "transport":6}[kinds[i]], "wheel/flight layout " + kinds[i])
 	var original: Node3D = fleet.vehicle_node(2)
@@ -64,6 +65,7 @@ func run() -> void:
 		"respawnTimer":3.5, "driver":0, "gunner":null, "passengers":[2]}, "driver")
 	check(card.contains("Seats 2/3") and card.contains("200 / 650") and card.contains("OVERHEATED") and card.contains("3.5s"), "read-only source vehicle card")
 	check(hud.vehicle_card({"kind":"titan"}, "driver").contains("Hull —") and hud.vehicle_card({"kind":"titan"}, "driver").contains("Heat —"), "missing telemetry cannot become fabricated zero")
+	check(hud.vehicle_card({"kind":"puma", "health":0, "maxHealth":300, "heat":0.0}, "driver").contains("0 / 300") and hud.vehicle_card({"kind":"puma", "health":0, "maxHealth":300, "heat":0.0}, "driver").contains("DESTROYED"), "source hull health telemetry preserves zero and destruction")
 	state.vehicles.clear()
 	check(fleet.apply_state(state) and fleet.vehicle_node(2) == null, "roster disappearance")
 	fleet.clear_round()
