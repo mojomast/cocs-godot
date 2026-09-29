@@ -31,6 +31,8 @@ func run() -> void:
 	demo.lattice_hud.authored_map_id = demo.current_id
 	c.allowlist = {"asterion-relay":{"modes":["cocs"]}}
 	c.requested_map = demo.current_id
+	# Detached fixture models the create request preceding this welcome.
+	c.career_welcome_pending = true
 	c.lobby.connect(demo.on_lobby)
 	c.started.connect(demo.on_started)
 	c.snapshot.connect(demo.on_snapshot)

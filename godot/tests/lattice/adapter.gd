@@ -19,6 +19,8 @@ func _initialize() -> void:
 	var c := Transport.new()
 	c.allowlist = {"asterion-relay": {"modes":["cocs", "cocs-coop"]}}
 	c.requested_map = "asterion-relay"
+	# Explicit queued-create witness for this synthetic welcome only.
+	c.career_welcome_pending = true
 	check(wire(c, {"type":"welcome", "v":3, "roomId":"test", "peerId":1}), "welcome")
 	check(wire(c, {"type":"lobby", "players":[{"peerId":1,"actorId":0}]}), "roster")
 	check(wire(c, {"type":"start", "mapId":"asterion-relay", "roundRevision":1, "config":{"mode":"cocs"}}), "start")

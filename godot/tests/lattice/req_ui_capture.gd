@@ -32,6 +32,8 @@ func capture() -> void:
 	client.mode = "cocs"
 	client.allowlist = {"asterion-relay":{"modes":["cocs"]}}
 	client.requested_map = "asterion-relay"
+	# The render-only fixture begins after an explicit create was queued.
+	client.career_welcome_pending = true
 	for message: Dictionary in [
 		{"type":"welcome","v":3,"roomId":"render-fixture","peerId":1},
 		{"type":"lobby","players":[{"peerId":1,"actorId":0}]},

@@ -36,6 +36,8 @@ func fresh() -> void:
 	demo.application_focused = true
 	demo.world_wait_release = false
 	client.mode = "cocs"
+	# Each synthetic fresh seat has its own explicit queued-create witness.
+	client.career_welcome_pending = true
 	wire({"type":"welcome","v":3,"roomId":"fixture","peerId":1})
 	wire({"type":"lobby","players":[{"peerId":1,"actorId":0}]})
 	revision += 1

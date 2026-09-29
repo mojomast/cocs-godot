@@ -100,6 +100,9 @@ func run() -> void:
 	d.launch_match("prism-foundry", "Fixture Operator", 1, 60)
 	d.begin_room()
 	check(d.client.writes.back().type == "create" and d.client.writes.back().playerName == "Fixture Operator" and d.client.writes.back().nativeArenaInput == 1, "explicit start creates named player and negotiates native input epochs")
+	# FixtureClient substitutes send_frame, so mark the successfully captured
+	# create as the sole admission for the following synthetic welcome.
+	d.client.career_welcome_pending = true
 	check(decode(d, {"type":"welcome","v":3,"roomId":"fixture","peerId":7}), "v3 welcome")
 	var roster := {"type":"lobby","players":[{"peerId":7,"actorId":0}], "config":null}
 	check(decode(d, roster), "unconfigured lobby")

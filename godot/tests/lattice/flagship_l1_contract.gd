@@ -46,6 +46,8 @@ func _initialize() -> void:
 	var c := Transport.new()
 	c.allowlist = {"asterion-relay":{"modes":["cocs"]}}
 	c.requested_map = "asterion-relay"
+	# Synthetic fixture models one previously queued create request.
+	c.career_welcome_pending = true
 	check(wire(c, {"type":"welcome","v":3,"roomId":"r","peerId":1}), "welcome")
 	check(wire(c, {"type":"lobby","mapId":"asterion-relay","hostId":1,"config":{"mode":"cocs"},"cocs":{"minHumans":2},"players":[{"peerId":1,"actorId":0,"connected":true,"spectate":false,"character":"chatgpt","harness":"openclaw"}]}), "roster")
 	check(c.roster_metadata.minimum_humans == 2 and c.roster_metadata.players.size() == 1, "complete sourced roster/floor survives projection")

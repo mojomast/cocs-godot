@@ -66,6 +66,8 @@ func run() -> void:
 	client.results.connect(demo.on_results)
 	demo.lattice_hud.heights.front = 0.0
 	check(status("waiting", false), "no round means waiting and capture denied")
+	# One queued create precedes this synthetic source welcome.
+	client.career_welcome_pending = true
 	wire({"type":"welcome","v":3,"roomId":"fixture","peerId":1})
 	wire({"type":"lobby","players":[{"peerId":1,"actorId":0}]})
 	wire({"type":"start","mapId":demo.current_id,"config":{"mode":"cocs"},"roundRevision":1})

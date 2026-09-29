@@ -51,6 +51,8 @@ func client(mode: String) -> RecordingTransport:
 	c.mode = mode
 	c.allowlist = {"asterion-relay":{"modes":["cocs","cocs-coop"]}}
 	c.requested_map = "asterion-relay"
+	# One queued create owns this fixture welcome; later frames do not rearm it.
+	c.career_welcome_pending = true
 	wire(c, {"type":"welcome","v":3,"roomId":"synthetic","peerId":1})
 	wire(c, {"type":"lobby","players":[{"peerId":1,"actorId":0}]})
 	wire(c, {"type":"start","mapId":"asterion-relay","roundRevision":1,"config":{"mode":mode}})

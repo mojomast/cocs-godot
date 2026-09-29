@@ -42,6 +42,8 @@ func run() -> void:
 	var client := Transport.new()
 	client.allowlist = {"asterion-relay":{"modes":["cocs", "cocs-coop"]}}
 	client.requested_map = "asterion-relay"
+	# Detached recipient fixture: one queued create owns this welcome.
+	client.career_welcome_pending = true
 	wire(client, {"type":"welcome", "v":3, "roomId":"fixture", "peerId":1})
 	wire(client, {"type":"lobby", "players":[{"peerId":1,"actorId":0}]})
 	wire(client, {"type":"start", "mapId":"asterion-relay", "roundRevision":1, "config":{"mode":"cocs"}})
