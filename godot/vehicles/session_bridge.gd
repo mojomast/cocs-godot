@@ -36,7 +36,7 @@ func adapt(packet: Dictionary, allowed: bool, jump_is_edge: bool = false) -> Dic
 	var jump: bool = packet.get("jump", false)
 	result.jump = allowed and jump and (jump_is_edge or not jump_down)
 	jump_down = jump
-	if not allowed:
+	if not allowed or (mounted() and vehicle.is_empty()):
 		for field: String in result:
 			if result[field] is bool: result[field] = false
 		result.x = 0.0
@@ -44,7 +44,6 @@ func adapt(packet: Dictionary, allowed: bool, jump_is_edge: bool = false) -> Dic
 		result.erase("weapon")
 		return result
 	if not mounted(): return result
-	if vehicle.is_empty(): return adapt(result, false)
 	var seat: String = actor.get("vehicleSeat", "")
 	if seat != "driver":
 		result.x = 0.0
