@@ -1,0 +1,60 @@
+{
+  "classification": "Local three-rendered-native-client Room acceptance after acknowledged-waypoint fixture repair; external files are retained locally, not committed",
+  "fixtureRevision": "0c6a008749df31bbb99a6b01b2d5fc314a421e1b",
+  "fixtureBase": "e906c64684563fb781caff81bb5d3235156fd8dc",
+  "fixtureSha256": {
+    "godot/tests/combined_arms/observe_crew_shared.gd": "ee9ae189a89ed8063b8d3ae9e56d17733eeaeee2dd939330d4bcbdaaca0f3e84",
+    "port/native-vehicle-expansion/run.py": "e0e41de08e7d9452f3a7af09bde214424b5be112a97da85333e6c881dfc69ac1"
+  },
+  "sourceInput": {
+    "description": "Identical 498-path game/server source mapping in each run's hashes.json; SHA-256 of sorted compact JSON mapping",
+    "sha256": "7916b4e7001e4240b74aa7d96c3a07cfe8e559d6f5018be7ba9886c5b86512c6",
+    "hashesJsonSha256": "1b794591449a8a972e80280386a5aac75a07f799b1d17004683056b1dc7a64ec"
+  },
+  "runs": [
+    {
+      "renderFpsCap": null,
+      "status": "PASS",
+      "evidence": "/tmp/opencode/native-vehicle-expansion/a905998e-e60f-495d-9003-cb72918d048e",
+      "invocationOutput": "/tmp/opencode/crew-waypoint-local.log",
+      "outputSha256": "b7a0bb622b10ddd88957865a08319def1af019db6166c46fc6ce0d653ed05f95",
+      "summarySha256": "b7a0bb622b10ddd88957865a08319def1af019db6166c46fc6ce0d653ed05f95",
+      "driverDisplacement": 27.872,
+      "gunnerVehicleShots": 86,
+      "acceptedJumpEdges": 1
+    },
+    {
+      "renderFpsCap": 10,
+      "status": "PASS",
+      "evidence": "/tmp/opencode/native-vehicle-expansion/f4cad31a-4192-47f9-b0c8-1ce103c4d219",
+      "invocationOutput": "/tmp/opencode/crew-waypoint-fps10.log",
+      "outputSha256": "bbc00c86814a9567206963d1774c5acf534e92fcb1414515b6f30cf066893692",
+      "summarySha256": "bbc00c86814a9567206963d1774c5acf534e92fcb1414515b6f30cf066893692",
+      "driverDisplacement": 27.881,
+      "gunnerVehicleShots": 82,
+      "acceptedJumpEdges": 1
+    },
+    {
+      "renderFpsCap": 8,
+      "status": "PASS",
+      "evidence": "/tmp/opencode/native-vehicle-expansion/33bb8f30-484c-4323-af66-ed60ff3fafbd",
+      "invocationOutput": "/tmp/opencode/crew-waypoint-fps8.log",
+      "outputSha256": "4ca71f3008aed53b75faae0098cd55a74525a94b6fcba3af85229aac52699e12",
+      "summarySha256": "4ca71f3008aed53b75faae0098cd55a74525a94b6fcba3af85229aac52699e12",
+      "driverDisplacement": 27.784999999999997,
+      "gunnerVehicleShots": 88,
+      "acceptedJumpEdges": 1
+    },
+    {
+      "renderFpsCap": 5,
+      "status": "FAIL",
+      "evidence": "/tmp/opencode/native-vehicle-expansion/b65cfb85-4bae-4269-9734-aee71649b2a2",
+      "invocationOutput": "/tmp/opencode/crew-waypoint-fps5.log",
+      "outputSha256": "92630cdaae13ca17111dfa088a2574e68c940e82b578b084437b896843f73c5d",
+      "summarySha256": "b67202e1d54967bcd3eceb56195eeecf09f3028f70255afe2434a46b35d29fef",
+      "failure": "guest mounted seat camera detached from source actor eye",
+      "observation": "All three native logs contain CREW_COMPLETE, but independent validate.py rejects mounted gunner camera distance. This run is a failure, not acceptance."
+    }
+  ],
+  "externalContents": "Each evidence directory holds summary.json, hashes.json, host.log, guest.log, passenger.log, wire.json.gz and auxiliary logs. summary.json records byte lengths and SHA-256 for retained files. No large replay logs or wire captures are committed."
+}
