@@ -25,6 +25,7 @@ var lobby_menu: CanvasLayer
 var lobby_enabled := false
 var lobby_player_name := "Godot"
 var lobby_roster: Dictionary = {}
+var disconnected_phase := -1
 # Debug facility: OFF by default, only created for a local single-human route
 # whose authority echoed a debug channel. Never in the multi-human lobby/guest
 # path (those are source-locked and stay fair).
@@ -103,6 +104,46 @@ func lobby_leave() -> void:
 	lobby_clear()
 	phase = -3
 	label.text = "Disconnected"
+
+func lobby_retry_reconnect() -> void:
+	if not lobby_enabled or phase != -5: return
+	var room: String = client.reconnect_ticket.room_id
+	if not client.reconnect_ticket.available(endpoint, current_id, room):
+		label.text = "Seat grace expired. Leave and join a room explicitly."
+		return
+	if client.retry_reconnect(endpoint, catalog.entries, current_id, room) != OK:
+		label.text = "Reconnect failed. Leave and join a room explicitly."
+		return
+	phase = -6
+	label.text = "Reconnecting to the same room…"
+
+func on_transport_dropped(message: String) -> void:
+	local_motion.reset()
+	release_pointer()
+	snapshot_watch.reset()
+	presentation.clear_round()
+	pickups.clear_round()
+	combat.clear_round()
+	received_pose = false
+	pose_actor_id = -1
+	send_elapsed = 0.0
+	disconnected_phase = phase
+	phase = -5
+	label.text = message
+	lobby_roster.clear()
+	if is_instance_valid(lobby_menu): lobby_menu.last_frame.clear()
+	emit_boundary_trace("transport_drop")
+
+func on_reconnect_outcome(resumed: bool, message: String) -> void:
+	if phase not in [-5, -6]: return
+	if not client.career_wire_open():
+		phase = -5
+		label.text = message
+		return
+	# Source may join a new spectator when its token has expired. Both paths
+	# await authoritative roster/start/results, never restore an old pose.
+	phase = 3 if disconnected_phase in [3, 4, 20] else (11 if not join_room_id.is_empty() else 12)
+	label.text = message
 
 func lobby_connect(url: String, player_name: String, room: String, map_id: String, mode: String, guest: bool, character: String = "", harness: String = "") -> void:
 	if not lobby_enabled or phase not in [-3, -1, -4]: return
@@ -358,6 +399,8 @@ func _ready() -> void:
 		return
 	ensure_debug_panel()
 	client.connection_error.connect(on_error)
+	client.transport_dropped.connect(on_transport_dropped)
+	client.reconnect_outcome.connect(on_reconnect_outcome)
 	client.lobby.connect(on_lobby)
 	client.started.connect(on_started)
 	client.snapshot.connect(on_snapshot)
@@ -427,7 +470,7 @@ func connect_selected_match() -> void:
 	label.text = "Connecting to isolated Node authority…"
 
 func on_started(_frame: Dictionary) -> void:
-	if lobby_enabled and phase not in [11, 12, 20, 3, 4]: return
+	if lobby_enabled and phase not in [11, 12, 20, 3, 4, -6]: return
 	# A host can start a new round without this client visiting results.
 	# Never carry interactive capture across an authoritative round boundary.
 	release_pointer()
@@ -487,7 +530,7 @@ func on_lobby(frame: Dictionary) -> void:
 		ensure_debug_panel()
 		if is_instance_valid(debug_panel): debug_panel.acknowledge(debug_authority_echo)
 	if lobby_enabled:
-		if phase not in [1, 2, 10, 11, 12, 20, 3, 4]: return
+		if phase not in [1, 2, 10, 11, 12, 20, 3, 4, -6]: return
 		lobby_roster = frame.duplicate(true)
 		if is_instance_valid(lobby_menu): lobby_menu.show_roster(frame)
 		# Narrow identity check: only a roster that actually carries this
@@ -725,6 +768,9 @@ func _process(delta: float) -> void:
 	if trace_enabled and trace_count < native_trace_limit():
 		emit_native_trace(trace_input(controls, queue_result))
 	if queue_result != OK:
+		# The client polls the close in its own process turn. A transport drop
+		# must reach its bounded ticket path, not the fatal session-error path.
+		if client.peer.get_ready_state() != WebSocketPeer.STATE_OPEN: return
 		on_error("Input could not be queued. Relaunch to reconnect.")
 
 func _exit_tree() -> void:

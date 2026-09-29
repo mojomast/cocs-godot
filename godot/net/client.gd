@@ -7,6 +7,8 @@ signal snapshot(frame: Dictionary)
 signal events(items: Array)
 signal results(frame: Dictionary)
 signal connection_error(message: String)
+signal transport_dropped(message: String)
+signal reconnect_outcome(resumed: bool, message: String)
 # ---------------------------------------------------------------------------
 # Additive social surface (room browser + room-scoped text chat). These never
 # participate in seating, identity, persistence or gameplay authority; they only
@@ -24,6 +26,7 @@ const MESSAGE_VERB_CHAT := "chat"
 const MESSAGE_VERB_LIST := "list"
 const SocialModel = preload("res://social/social_model.gd")
 const Loadout = preload("res://ui/loadout.gd")
+const ReconnectTicket = preload("res://net/reconnect_ticket.gd")
 const MAX_FRAME_BYTES := 1048576 # bounded initial cap; capture is not all-map worst case
 var peer := WebSocketPeer.new()
 var allowlist: Dictionary = {}
@@ -53,6 +56,16 @@ var assigned_harness := ""
 var spectator_notice_stage := 0
 var career_welcome_pending := false
 var career_seated := false
+var reconnect_ticket := ReconnectTicket.new()
+var reconnect_pending := false
+var reconnect_room := ""
+var reconnect_actor := -1
+var reconnect_spectator := false
+var reconnect_elapsed := 0.0
+var resumed_revision := -1
+var resume_start_expected := false
+var resumed_actor_expected := -2
+const RECONNECT_TIMEOUT := 8.0
 
 func career_wire_open() -> bool:
 	return peer.get_ready_state() == WebSocketPeer.STATE_OPEN
@@ -89,6 +102,11 @@ func connect_server(endpoint: String, maps: Dictionary, map_id: String) -> Error
 	return result
 
 func disconnect_server() -> void:
+	reconnect_ticket.clear()
+	reconnect_pending = false
+	resume_start_expected = false
+	resumed_actor_expected = -2
+	resumed_revision = -1
 	career_clear()
 	identity_clear()
 	if peer.get_ready_state() != WebSocketPeer.STATE_CLOSED: peer.close()
@@ -105,7 +123,9 @@ func disconnect_server() -> void:
 func reset_round() -> void:
 	spectator_notice_stage = 0
 	round_finished = false
-	input_seq = 0
+	# Source resets its received sequence on a real new round, but a resumed
+	# start belongs to the existing round. Its client high-water must survive.
+	if not reconnect_pending: input_seq = 0
 	last_ack = 0
 	last_snapshot_seq = -1
 	snapshots.clear()
@@ -113,6 +133,10 @@ func reset_round() -> void:
 	event_order.clear()
 
 func fail(message: String) -> bool:
+	reconnect_ticket.clear()
+	reconnect_pending = false
+	resume_start_expected = false
+	resumed_actor_expected = -2
 	career_clear()
 	identity_clear()
 	spectator_notice_stage = 0
@@ -154,6 +178,57 @@ func join_room(id: String, player_name: String = "Godot guest", character: Strin
 		joined_room_request = id
 		spectator_notice_stage = 1
 	return result
+
+# Called only by an explicit Retry action after a transport close. No source
+# credential is carried into settings, arguments, traces or diagnostics.
+func retry_reconnect(url: String, maps: Dictionary, map_id: String, expected_room: String) -> Error:
+	if not reconnect_ticket.available(url, map_id, expected_room): return ERR_UNAUTHORIZED
+	if reconnect_pending: return ERR_BUSY
+	var saved_actor: int = reconnect_ticket.actor_id
+	var saved_spectator: bool = reconnect_ticket.spectator
+	var saved_token: String = reconnect_ticket.token
+	# Replace transport and stale cached projections, retaining only this bounded
+	# in-memory ticket and the input sequence from the previous socket.
+	peer = WebSocketPeer.new()
+	peer.inbound_buffer_size = MAX_FRAME_BYTES * 2
+	peer.outbound_buffer_size = 65536
+	peer.max_queued_packets = 128
+	allowlist = maps
+	requested_map = map_id
+	connection_endpoint = url
+	was_open = false
+	room_id = ""
+	peer_id = -1
+	actor_id = -1
+	error = ""
+	clear_join_context()
+	last_ack = 0
+	last_snapshot_seq = -1
+	snapshots.clear()
+	seen_events.clear()
+	event_order.clear()
+	round_finished = false
+	reconnect_pending = true
+	resume_start_expected = false
+	resumed_actor_expected = -2
+	reconnect_room = expected_room
+	reconnect_actor = saved_actor
+	reconnect_spectator = saved_spectator
+	reconnect_elapsed = 0.0
+	# Keep the private token solely on this instance; queue join once OPEN.
+	reconnect_ticket.token = saved_token
+	var result := peer.connect_to_url(url)
+	if result != OK: reconnect_failed("Reconnect could not open the transport.")
+	return result
+
+func reconnect_failed(message: String) -> void:
+	reconnect_pending = false
+	resume_start_expected = false
+	resumed_actor_expected = -2
+	reconnect_ticket.clear()
+	if peer.get_ready_state() != WebSocketPeer.STATE_CLOSED: peer.close()
+	was_open = false
+	reconnect_outcome.emit(false, message)
 
 # A social verb the server never implemented (`unknown message type: chat` /
 # `: list`) or a chat sent without a seat is a capability/seat notice, not a
@@ -208,6 +283,7 @@ func valid_envelope(frame: Dictionary) -> bool:
 		"welcome":
 			for flag: String in ["spectate", "host", "reconnected"]:
 				if frame.has(flag) and not frame[flag] is bool: return false
+			if frame.has("token") and (not frame.token is String or frame.token.is_empty() or frame.token.length() > 128): return false
 			return frame.get("roomId") is String and wire_integer(frame.get("peerId"))
 		"lobby":
 			if not frame.get("players", []) is Array: return false
@@ -253,17 +329,34 @@ func decode_text(text: String) -> bool:
 		"welcome":
 			if frame.get("v") != PROTOCOL_VERSION: return fail("Protocol version mismatch")
 			if spectating: return fail("Unexpected welcome during spectator connection")
+			if reconnect_pending:
+				if frame.get("roomId") != reconnect_room: return fail("Reconnect room mismatch")
+				var resumed: bool = frame.get("reconnected") == true
+				if resumed and (frame.get("spectate") != reconnect_spectator or frame.get("token") != reconnect_ticket.token): return fail("Reconnect seat mismatch")
+				# A false reconnected flag is an ordinary new join, potentially a
+				# spectator in a live round. Never restore the old actor locally.
+				reconnect_pending = false
+				resume_start_expected = resumed
+				resumed_actor_expected = reconnect_actor if resumed else -2
+				if not resumed: input_seq = 0
+				reconnect_ticket.clear()
+				reconnect_outcome.emit(resumed, "Seat restored." if resumed else "Old seat expired; source admitted a fresh join. Live rounds are spectator-only.")
 			var career_admitted := career_welcome_pending and career_wire_open()
+			if not career_admitted and career_wire_open() and not reconnect_room.is_empty(): career_admitted = true
 			if career_admitted:
 				career_welcome_pending = false
 				career_seated = true
 			room_id = str(frame.get("roomId", ""))
 			peer_id = int(frame.get("peerId", -1))
+			if frame.get("token") is String:
+				reconnect_ticket.remember(frame.token, connection_endpoint, requested_map, room_id, reconnect_actor if frame.get("reconnected") == true else -1, frame.get("spectate") == true, frame.get("host") == true)
 			if career_admitted: career_receive(frame)
 			if career_admitted:
 				if joined_room_request.is_empty() or frame.get("roomId") == joined_room_request: identity_accept(frame)
 				else: identity_clear()
-			spectator_notice_stage = 2 if spectator_notice_stage == 1 and room_id == joined_room_request and frame.get("spectate") == true and frame.get("host") == false and not frame.get("reconnected", false) else 0
+			spectator_notice_stage = 2 if (spectator_notice_stage == 1 or (not reconnect_room.is_empty() and frame.get("reconnected") != true)) and room_id == (joined_room_request if not joined_room_request.is_empty() else reconnect_room) and frame.get("spectate") == true and frame.get("host") == false and not frame.get("reconnected", false) else 0
+			if frame.get("reconnected") == true and frame.get("spectate") == true: spectating = true
+			reconnect_room = ""
 		"profile", "progression":
 			if career_seated and career_wire_open(): career_receive(frame)
 		"lobby":
@@ -291,16 +384,33 @@ func decode_text(text: String) -> bool:
 			# Do not carry an old actor's high-water mark into a new assignment.
 			if next_actor_id != actor_id: last_ack = 0
 			actor_id = next_actor_id
+			if resumed_actor_expected != -2:
+				# A pre-start player has no actor yet; the host may have started
+				# while this transport was down. Existing actor ownership is strict.
+				if resumed_actor_expected >= 0 and next_actor_id != resumed_actor_expected: return fail("Reconnect actor mismatch")
+				resumed_actor_expected = -2
+			if not reconnect_ticket.token.is_empty() and room_id == reconnect_ticket.room_id:
+				reconnect_ticket.actor_id = next_actor_id
+				reconnect_ticket.spectator = spectating
+				reconnect_ticket.host = frame.get("hostId") == peer_id and not spectating
 			lobby.emit(frame)
 		"start":
 			if not validate_map(frame.get("mapId")): return fail("Start map substitution")
+			# The reattach start is an observation of the existing round. Clear
+			# snapshots/events but preserve the prior input high-water.
+			var previous_input: int = input_seq
 			reset_round()
+			if resume_start_expected and frame.get("roundRevision") == resumed_revision: input_seq = previous_input
+			resume_start_expected = false
+			if wire_integer(frame.get("roundRevision")): resumed_revision = int(frame.roundRevision)
+			if career_seated and career_wire_open(): career_receive(frame)
 			started.emit(frame)
 		"snapshot", "results":
 			if not frame.get("state") is Dictionary or not validate_map(frame.state.get("mapId")): return fail("Snapshot map substitution")
 			if round_finished: return true
 			if frame.type == "results":
 				round_finished = true
+				if career_seated and career_wire_open(): career_receive(frame)
 				results.emit(frame)
 				return true
 			var seq: int = int(frame.get("seq", -1))
@@ -324,6 +434,8 @@ func decode_text(text: String) -> bool:
 				if event_order.size() > 4096: seen_events.erase(event_order.pop_front())
 				fresh.append(item)
 			events.emit(fresh)
+		"history":
+			if career_seated and career_wire_open(): career_receive(frame)
 		"rooms":
 			# Additive room-browser reply. A malformed list is a social notice,
 			# never a session teardown or an invented empty room set.
@@ -351,12 +463,27 @@ func decode_text(text: String) -> bool:
 			if not frame.has("code") and social_refusal(frame.get("message")):
 				social_error.emit(message)
 				return true
+			if not frame.has("code") and message == "unknown message type: history":
+				if career_seated and career_wire_open(): career_receive({"type":"history-error", "message":message})
+				return true
 			return fail(message)
 	return true
 
 func _process(_delta: float) -> void:
 	peer.poll()
 	var state: int = peer.get_ready_state()
+	if reconnect_pending:
+		reconnect_elapsed += _delta
+		if reconnect_elapsed > RECONNECT_TIMEOUT or not reconnect_ticket.available(connection_endpoint, requested_map, reconnect_room):
+			reconnect_failed("Reconnect timed out or the seat grace window expired.")
+			return
+		if state == WebSocketPeer.STATE_OPEN and not was_open:
+			career_welcome_pending = true
+			joined_room_request = reconnect_room
+			spectator_notice_stage = 1
+			if send_frame({"type":"join", "roomId":reconnect_room, "token":reconnect_ticket.token, "v":PROTOCOL_VERSION, "delta":0}) != OK:
+				reconnect_failed("Reconnect request could not be queued.")
+				return
 	if state == WebSocketPeer.STATE_OPEN:
 		was_open = true
 		while peer.get_available_packet_count() > 0:
@@ -369,12 +496,20 @@ func _process(_delta: float) -> void:
 		career_clear()
 		identity_clear()
 		was_open = false
-		reset_round()
+		var recoverable := error.is_empty() and reconnect_ticket.dropped()
+		if reconnect_pending:
+			reconnect_failed("Reconnect transport closed before seat confirmation.")
+			return
+		last_snapshot_seq = -1
+		snapshots.clear()
+		seen_events.clear()
+		event_order.clear()
 		room_id = ""
 		peer_id = -1
 		actor_id = -1
 		clear_join_context()
-		connection_error.emit("Disconnected; reconnect requires explicit fresh join")
+		if recoverable: transport_dropped.emit("Connection lost. Retry the same room within the grace window, or Leave.")
+		else: connection_error.emit("Disconnected. Join a new room explicitly.")
 
 func career_receive(frame: Dictionary) -> void:
 	var service := get_tree().root.get_node_or_null("Career") if is_inside_tree() else null

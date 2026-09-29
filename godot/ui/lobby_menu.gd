@@ -24,6 +24,7 @@ var start_button := Button.new()
 var back_button := Button.new()
 var leave_button := Button.new()
 var restart_button := Button.new()
+var reconnect_button := Button.new()
 var entries: Dictionary = {}
 var last_frame: Dictionary = {}
 var room_browser
@@ -107,13 +108,15 @@ func _ready() -> void:
 	# 1280x800 without scrolling, and never clipped by the form.
 	var actions := HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 6)
-	for button: Button in [connect_button, start_button, back_button]:
+	for button: Button in [connect_button, start_button, reconnect_button, back_button]:
 		button.custom_minimum_size.y = 36
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		actions.add_child(button)
 	layout.add_child(actions)
 	connect_button.pressed.connect(func() -> void: session.lobby_connect(endpoint.text.strip_edges(), player_name.text.strip_edges(), room.text.strip_edges() if role.selected == 1 else "", str(maps.get_selected_metadata()), str(modes.get_selected_metadata()), role.selected == 1, selected_character(), selected_harness()))
 	start_button.pressed.connect(func() -> void: session.lobby_start())
+	reconnect_button.text = "Retry / Reconnect"
+	reconnect_button.pressed.connect(func() -> void: session.lobby_retry_reconnect())
 	back_button.pressed.connect(func() -> void: session.lobby_leave())
 	leave_button.text = "Leave match"
 	restart_button.text = "Restart round"
@@ -349,10 +352,12 @@ func refresh() -> void:
 	connect_button.text = "Retry with these settings" if phase == -1 else ("Join lobby" if role.selected == 1 else "Create lobby")
 	start_button.visible = phase == 12
 	start_button.disabled = not session.lobby_host_allowed()
+	reconnect_button.visible = phase == -5
+	reconnect_button.disabled = phase == -5 and not session.client.reconnect_ticket.available(session.endpoint, session.current_id, session.client.reconnect_ticket.room_id)
 	back_button.visible = phase != -3
-	back_button.text = "Cancel browse" if phase == -4 else "Back / Leave room"
+	back_button.text = "Leave" if phase in [-5, -6] else ("Cancel browse" if phase == -4 else "Back / Leave room")
 	var messages := {-3:"Disconnected · choose settings and connect explicitly.", -4:"Browsing server rooms · select a room, then Join lobby as guest.", 0:"Connecting…", 1:"Creating room…", 2:"Configuring…", 10:"Joining…", 11:"Waiting for host. Active-room joins stay read-only through restart. Leave and join between rounds to request play.", 12:"Lobby ready · share room code, wait for guests, then Start."}
-	var page_status: String = session.label.text if phase == -1 else str(messages.get(phase, ""))
+	var page_status: String = session.label.text if phase in [-1, -5, -6] else str(messages.get(phase, ""))
 	# A browsed-room note stays visible under the phase text only while the guest
 	# form is editable; it is dropped once the user connects or changes role.
 	if role.selected != 1 or phase not in [-3, -4]: selection_note = ""
