@@ -12,7 +12,7 @@ func assertion_witness() -> bool:
 # Source-derived Career catalog shape. Mirrors career/service.gd valid_catalog
 # plus the known gear/attachment families so a truncated or missing PCK entry
 # cannot pass as a shipped Arsenal.
-func career_catalog_ok() -> bool:
+static func career_catalog_ok() -> bool:
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://career/catalog.json"))
 	if not parsed is Dictionary or parsed.get("schema") != 1:
 		return false
@@ -36,9 +36,14 @@ func career_catalog_ok() -> bool:
 			return false
 		if entry.get("kind") not in ["gear", "attachment", "finish", "crosshair"]:
 			return false
-		for field: String in ["id", "unlockId", "name", "description", "slot"]:
+		for field: String in ["id", "unlockId", "name", "description"]:
 			if not entry.get(field) is String or (entry[field] as String).is_empty():
 				return false
+		if not entry.get("slot") is String:
+			return false
+		# Source finishes/reticles intentionally have no equipment slot.
+		if entry.kind in ["gear", "attachment"] and entry.slot.is_empty():
+			return false
 		if not entry.get("level") is int and not entry.get("level") is float:
 			return false
 		if not entry.get("modifiers") is Dictionary or not entry.get("spec") is Array:

@@ -94,6 +94,7 @@ commands = [
     ("horde-input-oracle", ["node", "port/native-horde/input-oracle.mjs", str(root / "port/reports/horde-input-vectors.json")]),
     ("godot-import", [binary, "--headless", "--path", "godot", "--editor", "--import"]),
     ("career-projection", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/projection.gd"]),
+    ("career-package-catalog", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/package_catalog.gd"]),
     ("career-identity-native", ["node", "--test", "tools/godot-package/career_native.test.mjs"]),
     ("career-equipment-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/actions.gd"]),
     ("career-results-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/results.gd"]),
