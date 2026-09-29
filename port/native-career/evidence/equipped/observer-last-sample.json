@@ -1,0 +1,104 @@
+{
+  "action_status": "Source confirmed selection · saved for next match.",
+  "actor": 0,
+  "actor_finish": null,
+  "actor_ids_after": [
+    "extended-mag"
+  ],
+  "actor_ids_before": [
+    "extended-mag"
+  ],
+  "back": [
+    24,
+    72,
+    450,
+    44
+  ],
+  "category": "loadout",
+  "command": 5,
+  "confirmed": true,
+  "equip": {
+    "id": "extended-mag",
+    "slot": "magazine"
+  },
+  "equipped": true,
+  "error": "",
+  "opened": true,
+  "pending": false,
+  "phase": 3,
+  "restarted": true,
+  "results": 1,
+  "room": "45E9",
+  "round_starts": 2,
+  "rows_bounds": [
+    24,
+    377,
+    450,
+    297
+  ],
+  "saved": {
+    "fields": {
+      "attachments": {
+        "barrel": {
+          "label": "Barrel",
+          "slot": "barrel",
+          "state": "stock"
+        },
+        "magazine": {
+          "id": "extended-mag",
+          "label": "Magazine",
+          "name": "Extended Magazine",
+          "slot": "magazine",
+          "state": "equipped"
+        },
+        "optic": {
+          "label": "Optic",
+          "slot": "optic",
+          "state": "stock"
+        },
+        "underbarrel": {
+          "label": "Underbarrel",
+          "slot": "underbarrel",
+          "state": "stock"
+        }
+      },
+      "gear": {
+        "armor": {
+          "label": "Armor",
+          "slot": "armor",
+          "state": "stock"
+        },
+        "primary": {
+          "label": "Primary",
+          "slot": "primary",
+          "state": "stock"
+        },
+        "utility": {
+          "label": "Utility",
+          "slot": "utility",
+          "state": "stock"
+        }
+      }
+    },
+    "finish": {
+      "label": "Finish",
+      "slot": "finish",
+      "state": "stock"
+    },
+    "ready": true
+  },
+  "seconds": 56.5475059999997,
+  "spectating": false,
+  "state_text": "CONNECTED SOURCE CAREER · LEVEL 1 · XP 40\nMATCHES 1 · WINS 0 · KILLS 0\nMODE WINS/MATCHES · deathmatch 0/1\nSource confirmed selection · saved for next match.",
+  "summary": "Saved for next match · Extended Magazine",
+  "tab_loadout": [
+    78,
+    241,
+    86,
+    44
+  ],
+  "viewport": [
+    506.666656494141,
+    346.666656494141
+  ]
+}

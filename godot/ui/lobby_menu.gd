@@ -6,6 +6,7 @@ const Choice = preload("res://ui/lobby_choice.gd")
 const Loadout = preload("res://ui/loadout.gd")
 const RoomBrowser = preload("res://social/room_browser.gd")
 const ChatPanel = preload("res://social/chat_panel.gd")
+const EquippedModel = preload("res://career/equipped_model.gd")
 var session: Node
 var panel := PanelContainer.new()
 var form := VBoxContainer.new()
@@ -19,6 +20,8 @@ var operator := Choice.new()
 var harness := Choice.new()
 var status := Label.new()
 var roster := Label.new()
+var loadout_summary := Label.new()
+var arsenal_button := Button.new()
 var connect_button := Button.new()
 var start_button := Button.new()
 var back_button := Button.new()
@@ -98,12 +101,25 @@ func _ready() -> void:
 	room_browser.refresh_requested.connect(request_rooms)
 	room_browser.room_selected.connect(select_room)
 	form.add_child(room_browser)
+	# Saved-loadout summary: a single wrapping line, never a horizontal scroller,
+	# so it cannot push the form wider than the viewport. It only ever reflects
+	# the seated owner's confirmed profile.
+	loadout_summary.name = "LoadoutSummary"
+	loadout_summary.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	form.add_child(loadout_summary)
 	for item: Label in [status, roster]:
 		item.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		form.add_child(item)
 	connect_button.text = "Connect / Create / Join"
 	start_button.text = "Start match"
 	back_button.text = "Back / Leave room"
+	# Open Arsenal sits with the summary inside the scrolling form rather than in
+	# the pinned action row: it adds no minimum width to that row, so Join/Create/
+	# Leave/Retry keep their pinned geometry at every supported size.
+	arsenal_button.text = "Open Arsenal"
+	arsenal_button.custom_minimum_size.y = 36
+	arsenal_button.pressed.connect(open_arsenal)
+	form.add_child(arsenal_button)
 	# Actions stay pinned below the scroll area: reachable at 960x640 and
 	# 1280x800 without scrolling, and never clipped by the form.
 	var actions := HBoxContainer.new()
@@ -321,6 +337,37 @@ func show_roster(frame: Dictionary) -> void:
 		lines.append(Names.plain(player.get("name"), "Player", 32) + " · " + Loadout.player_label(player) + tags)
 	roster.text = "\n".join(lines)
 
+## Owner-gated saved-loadout projection: only the seated connection that welcome
+## bound may expose a profile. A different client, endpoint or disconnected seat
+## leaves the summary at the explicit connect prompt.
+func loadout_connected() -> bool:
+	var career := get_tree().root.get_node_or_null("Career")
+	if career == null: return false
+	if not career.owned(session.client): return false
+	if not session.client.career_seated or not session.client.career_wire_open(): return false
+	return not career.profile.is_empty()
+
+func open_arsenal() -> void:
+	var career := get_tree().root.get_node_or_null("Career")
+	if career == null or not loadout_connected(): return
+	career.open_panel(arsenal_button)
+
+func refresh_loadout_summary() -> void:
+	var career := get_tree().root.get_node_or_null("Career")
+	if not loadout_connected():
+		loadout_summary.text = "Connect to load source loadout."
+		arsenal_button.disabled = true
+		if is_instance_valid(restart_button): restart_button.tooltip_text = ""
+		if is_instance_valid(leave_button): leave_button.tooltip_text = ""
+		return
+	var summary: Dictionary = career.equipment_summary()
+	var line: String = "Saved loadout for next match · " + EquippedModel.short_line(summary)
+	if not str(career.action_status).is_empty(): line += "\n" + str(career.action_status)
+	loadout_summary.text = line
+	arsenal_button.disabled = false
+	if is_instance_valid(restart_button): restart_button.tooltip_text = "Next match applies: " + EquippedModel.short_line(summary)
+	if is_instance_valid(leave_button): leave_button.tooltip_text = "Saved for next match: " + EquippedModel.short_line(summary)
+
 func refresh() -> void:
 	var phase: int = session.phase
 	var playing := phase in [3, 4, 20]
@@ -376,6 +423,11 @@ func refresh() -> void:
 		room_browser.set_endpoint(("Endpoint: %s" % session.endpoint) if (open and not session.endpoint.is_empty()) else "Endpoint: not connected")
 		if phase == -4 and browser_phase != -4: request_rooms()
 	browser_phase = phase
+	# The Arsenal entry is usable only with a seated source profile, so it never
+	# opens an empty panel. It is pinned with the other actions and stays disabled
+	# with a clear connect prompt before that.
+	arsenal_button.visible = phase in [-3, -4, -1, 11, 12]
+	refresh_loadout_summary()
 
 func _process(_delta: float) -> void:
 	refresh()

@@ -9,7 +9,13 @@ the source `GEAR` packet does not forward `crosshair` to `setGearOwned`.
 An equipped gear/mod slot can be cleared; an equipped finish sends explicit
 `null` to clear it. Other slots stay intact.
 Action buttons have stable node names `Equip_<unlockId>` and catalog ID/kind
-metadata for native journey selection, including level-one starter mods.
+metadata for native journey selection, including level-one starter mods. A new
+**LOADOUT** tab (with a one-line summary above every catalog list) names the
+confirmed profile's gear, attachment and finish IDs through the shipped catalog
+and labels them **Saved for next match**. It distinguishes an unknown field from
+a known empty (stock) field and from an unresolved catalog ID; it never renders a
+pending write as applied and never reverse-maps the live actor's resolved
+modifiers into item names. See `port/native-career/EQUIPPED.md`.
 
 Each selection sends complete gear and attachment maps (preserving the other
 slots) on the seated connection. `server/room.mjs:setGear` replies with a
@@ -55,12 +61,18 @@ Verification (in the parent's serial test slot):
 `node --test port/native-career/catalog.test.mjs`,
 `node --test port/native-career/wire.test.mjs`,
 `node --test port/native-career/equip-lifecycle.test.mjs`,
+`node --test port/native-career/equipped.test.mjs`,
 `node --test port/native-career/results-history.test.mjs`,
 `godot --headless --path godot --script res://tests/career/projection.gd`,
 `godot --headless --path godot --script res://tests/career/modal.gd`,
 `godot --headless --path godot --script res://tests/career/actions.gd`,
+`godot --headless --path godot --script res://tests/career/newloadout_model.gd`,
+`godot --headless --path godot --script res://tests/career/newloadout_ui.gd`,
+`godot --headless --path godot --script res://tests/career/newloadout_lobby.gd`,
 `godot --headless --path godot --script res://tests/career/results.gd`,
 `godot --headless --path godot --script res://tests/career/history.gd`,
 `godot --headless --path godot --script res://tests/career/results_history_ui.gd`.
-The native journey is verified as `node port/native-career/results-history-journey.mjs`
-with a pinned `GODOT_BIN` (19 checks; evidence under `port/native-career/evidence/`).
+The RESULTS/HISTORY native journey is verified as
+`node port/native-career/results-history-journey.mjs` and the saved-loadout
+journey as `node port/native-career/equipped-journey.mjs`, each with a pinned
+`GODOT_BIN` (evidence under `port/native-career/evidence/`).

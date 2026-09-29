@@ -53,3 +53,18 @@ secret. It exercises real results/progression/history (19 checks pass) with the
 parent's `client.career_receive` routing of `start`/`results`/`history` applied
 locally; without that routing it reports the not-ready status instead of a false
 pass. The first failing attempt is preserved beside the passing evidence.
+
+## Equipped loadout journey
+
+`port/native-career/equipped-journey.mjs` runs one owned authority and one real
+Godot session through `godot/tests/career/newloadout_observer.gd`. The observer
+hosts a legal short source match, opens the shipped Career panel, equips a
+level-one starter attachment through the displayed MODS tab, and waits for the
+source-marked GEAR reply. It asserts the saved LOADOUT summary names the
+confirmed attachment, that the **current** match actor keeps its resolved
+round-start attachments, that the round resolves, and that after the
+authoritative restart the **next** match actor carries the saved attachment. It
+also checks the compact 760x520 @150% Back/tab reachability and sweeps for
+credential leakage. It grants no unlock and claims no human visual acceptance;
+screenshots, the last observer sample and `summary.json` land in
+`port/native-career/evidence/equipped/`.

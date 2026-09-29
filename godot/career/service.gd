@@ -2,6 +2,13 @@ extends CanvasLayer
 ## Runtime-only view of the active source connection. No profile or credential
 ## enters local settings, menu preferences, command line or diagnostic output.
 ##
+## SAVED LOADOUT lane: the LOADOUT tab and the one-line summary name the
+## confirmed profile's gear, attachment and finish IDs through the shipped
+## catalog and label them "saved for next match". A pending write never renders
+## as applied, and the live actor's resolved modifiers are never reverse-mapped
+## into item names. A mid-match GEAR write updates the profile only, never the
+## current actor (which keeps its round-start loadout).
+##
 ## RESULTS/HISTORY lane: the reader shows the latest accepted source `results`
 ## state and the server's recent-match `history` reply. It never computes a
 ## win/loss, never claims a personal timeline and never persists a snapshot. The
@@ -11,6 +18,7 @@ const CareerProfile = preload("res://career/profile.gd")
 const Actions = preload("res://career/actions_model.gd")
 const ResultsModel = preload("res://career/results_model.gd")
 const HistoryModel = preload("res://career/history_model.gd")
+const EquippedModel = preload("res://career/equipped_model.gd")
 const HISTORY_TIMEOUT_MS := 8000
 const MAX_SEEN_ROUNDS := 8
 var catalog: Dictionary = {}
@@ -19,11 +27,18 @@ var profile: Dictionary = {}
 var panel: Control
 var details: VBoxContainer
 var state_label: Label
+var summary_label: Label
 var heading: Label
 var return_focus: Control
 var return_settings := false
 var return_settings_menu := false
 var category := "gear"
+# Saved-loadout projection cache. The revision bumps only when the confirmed
+# source profile changes; no credential and no digest of the raw profile is
+# computed or retained, and the lobby reads the summary through the owner check.
+var profile_revision := 0
+var equipment_cache: Dictionary = {}
+var equipment_cache_revision := -1
 var pending: Dictionary = {}
 var action_status := ""
 var last_send_ms := -1000
@@ -101,6 +116,7 @@ func clear_connection(client: Node) -> void:
 	if connection_owner != null and connection_owner.get_ref() == client:
 		connection_owner = null
 		profile.clear()
+		mark_profile_changed()
 		pending.clear()
 		last_send_ms = -1000
 		cooldown_refresh = false
@@ -112,6 +128,39 @@ func clear_connection(client: Node) -> void:
 ## A source frame is only ever admitted from the connection that welcome bound.
 func owned(client: Node) -> bool:
 	return connection_owner != null and connection_owner.get_ref() == client
+
+func mark_profile_changed() -> void:
+	profile_revision += 1
+	equipment_cache_revision = -1
+
+## Saved-loadout overview for the owner of this connection. The projection is
+## pure and read-only: it names the confirmed profile's gear/attachment/finish
+## IDs through the shipped catalog. It never reads another client's profile (call
+## `owned()` first) and never invents an "effective current item" from the live
+## actor's resolved modifiers. A live-actor finish is shown only when the parent
+## exposed a snapshot hook; otherwise every finish is saved-for-next-match.
+func equipment_summary() -> Dictionary:
+	var current: Variant = current_actor_snapshot()
+	if current == null and not equipment_cache.is_empty() and equipment_cache_revision == profile_revision:
+		return equipment_cache
+	var summary: Dictionary = EquippedModel.summary(profile, catalog, current)
+	if current == null:
+		equipment_cache = summary
+		equipment_cache_revision = profile_revision
+	return summary
+
+## Optional parent hook. A client may expose `current_actor_snapshot()` returning
+## a bounded dictionary such as {"finish": <id|null>}. Until the parent owns that
+## hook this returns null and the reader labels the finish saved-for-next-match;
+## it never reverse-resolves modifiers or claims current gear IDs.
+func current_actor_snapshot() -> Variant:
+	if connection_owner == null: return null
+	var client: Node = connection_owner.get_ref()
+	if not is_instance_valid(client): return null
+	if not ("career_seated" in client) or not client.career_seated: return null
+	if not client.has_method("current_actor_snapshot"): return null
+	var snapshot: Variant = client.call("current_actor_snapshot")
+	return snapshot if snapshot is Dictionary else null
 
 func receive(client: Node, frame: Dictionary) -> void:
 	if not is_instance_valid(client): return
@@ -141,6 +190,7 @@ func receive_welcome(client: Node, frame: Dictionary) -> void:
 	connection_owner = weakref(client)
 	connection_epoch += 1
 	profile = CareerProfile.project(frame.get("profile"))
+	mark_profile_changed()
 	reset_result_tracking()
 	reset_history()
 
@@ -185,6 +235,7 @@ func receive_progression(client: Node, frame: Dictionary) -> void:
 					action_status = "Source confirmed selection · saved for next match." if outcome == "applied" else "Source adjusted/refused selection · see confirmed equipment below."
 					pending.clear()
 			profile = next
+			mark_profile_changed()
 	if ResultsModel.is_award(frame):
 		receive_award(frame, current_actor_id(client))
 
@@ -353,6 +404,7 @@ func _process(_delta: float) -> void:
 	if connection_owner != null and not is_instance_valid(connection_owner.get_ref()):
 		connection_owner = null
 		profile.clear()
+		mark_profile_changed()
 		pending.clear()
 		last_send_ms = -1000
 		cooldown_refresh = false
@@ -439,7 +491,7 @@ func build_panel() -> void:
 	details.add_child(state_label)
 	var tabs := HFlowContainer.new()
 	details.add_child(tabs)
-	for entry: Dictionary in [{"id":"gear", "label":"GEAR"}, {"id":"attachment", "label":"MODS"}, {"id":"finish", "label":"FINISHES"}, {"id":"crosshair", "label":"RETICLES"}, {"id":"results", "label":"RESULTS"}, {"id":"history", "label":"HISTORY"}]:
+	for entry: Dictionary in [{"id":"gear", "label":"GEAR"}, {"id":"loadout", "label":"LOADOUT"}, {"id":"attachment", "label":"MODS"}, {"id":"finish", "label":"FINISHES"}, {"id":"crosshair", "label":"RETICLES"}, {"id":"results", "label":"RESULTS"}, {"id":"history", "label":"HISTORY"}]:
 		var id: String = entry.id
 		var button := Button.new()
 		button.name = "Tab_" + id
@@ -447,6 +499,14 @@ func build_panel() -> void:
 		button.custom_minimum_size.y = 44
 		button.pressed.connect(func() -> void: select_category(id))
 		tabs.add_child(button)
+	# One concise saved-loadout line stays above the item list in every catalog
+	# category. It is a sibling of CatalogRows, never a row, so the existing gear
+	# rows keep their NOT LOADED / Equip_<unlockId> shape unchanged.
+	summary_label = Label.new()
+	summary_label.name = "LoadoutSummary"
+	summary_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	summary_label.add_theme_font_size_override("font_size", 14)
+	details.add_child(summary_label)
 	var list := VBoxContainer.new()
 	list.name = "CatalogRows"
 	list.add_theme_constant_override("separation", 12)
@@ -468,20 +528,23 @@ func clear_rows(list: Node) -> void:
 
 func refresh() -> void:
 	if details == null or state_label == null: return
+	var summary: Dictionary = equipment_summary()
 	var lines: Array = []
 	if profile.is_empty():
 		lines.append("NO CONNECTED CAREER · Join a room to see your source profile and equip unlocked items.")
 	else:
+		# Concise header: level/XP plus at most two compact stat lines so the
+		# summary and item list stay visible at 760x520 @150%.
 		var parts := []
-		for field: String in ["level", "xp", "prestige"]:
+		for field: String in ["level", "xp"]:
 			parts.append(field.to_upper() + " " + (str(profile[field]) if profile.has(field) else "UNKNOWN"))
 		lines.append("CONNECTED SOURCE CAREER · " + " · ".join(parts))
-		lines.append("Equip for next match · Unlocks come from level and source progression.")
 		lines.append("MATCHES %s · WINS %s · KILLS %s" % [str(profile.get("matches", "?")), str(profile.get("wins", "?")), str(profile.get("kills", "?"))])
 		var modes: Dictionary = profile.get("byMode", {})
 		if not modes.is_empty():
 			var mode_parts := []
 			for mode: String in modes:
+				if mode_parts.size() >= 3: break
 				var stats: Dictionary = modes[mode]
 				mode_parts.append("%s %s/%s" % [mode, str(stats.get("wins", "?")), str(stats.get("matches", "?"))])
 			lines.append("MODE WINS/MATCHES · " + " · ".join(mode_parts))
@@ -489,12 +552,16 @@ func refresh() -> void:
 	var identity := get_tree().root.get_node_or_null("Identity")
 	if identity != null and not identity.status.is_empty(): lines.append(identity.status)
 	if category == "crosshair": lines.append("Reticles are view-only: this server's GEAR wire does not carry a crosshair selection.")
-	if category == "finish": lines.append("Finishes are saved to the source profile; native finish rendering is not implemented yet.")
-	if category in ["gear", "attachment", "finish", "crosshair"] and catalog.is_empty(): lines.append("Source Arsenal catalog unavailable. Regenerate from the source modules.")
+	if category == "finish": lines.append("Finishes save to your source profile for the next match. The native first-person viewmodel renders the equipped finish; third-person actors keep stock materials.")
+	if category in ["gear", "loadout", "attachment", "finish", "crosshair"] and catalog.is_empty(): lines.append("Source Arsenal catalog unavailable. Regenerate from the source modules.")
 	state_label.text = "\n".join(lines)
+	update_summary_label(summary)
 	var list := details.find_child("CatalogRows", true, false) as VBoxContainer
 	if list == null: return
 	clear_rows(list)
+	if category == "loadout":
+		render_loadout(list, summary)
+		return
 	if category == "results":
 		render_results(list)
 		return
@@ -524,6 +591,34 @@ func refresh() -> void:
 			button.disabled = not pending.is_empty() or Time.get_ticks_msec() - last_send_ms < 550 or not is_instance_valid(client) or not client.career_wire_open() or not client.career_seated or client.spectating or not Actions.complete(profile) or not Actions.available(profile, item)
 			button.pressed.connect(select_item.bind(item, equipped))
 			box.add_child(button)
+
+func update_summary_label(summary: Dictionary) -> void:
+	if summary_label == null: return
+	if profile.is_empty():
+		summary_label.text = "Connect to load source loadout."
+		return
+	var line: String = "Saved for next match · " + EquippedModel.short_line(summary)
+	var finish: Dictionary = summary.get("finish", {})
+	if finish.get("current") is Dictionary:
+		line += " · Current match finish: " + EquippedModel.finish_text(finish.current)
+	summary_label.text = line
+
+## The LOADOUT tab. It restates the confirmed saved loadout in slot order and
+## keeps the pending/unknown distinction explicit; it never renders an optimistic
+## write and never claims the live actor's resolved gear as a named item.
+func render_loadout(list: Node, summary: Dictionary) -> void:
+	add_line(list, "SAVED LOADOUT · APPLIES TO THE NEXT MATCH", 19)
+	add_line(list, "The current match keeps the loadout it started with. Only a confirmed source reply updates this view.", 14)
+	add_line(list, EquippedModel.field_text(summary, "gear"), 16)
+	add_line(list, EquippedModel.field_text(summary, "attachments"), 16)
+	var finish: Dictionary = summary.get("finish", {})
+	add_line(list, "Finish: " + EquippedModel.finish_text(finish), 16)
+	if finish.get("current") is Dictionary:
+		add_line(list, "Current match finish: " + EquippedModel.finish_text(finish.current) + " · live actor snapshot, not used to resolve saved gear.", 14)
+	if not pending.is_empty():
+		add_line(list, "Pending source confirmation · showing the last confirmed loadout, not an optimistic change.", 14)
+	elif not action_status.is_empty():
+		add_line(list, action_status, 14)
 
 func render_results(list: Node) -> void:
 	if result.is_empty():
