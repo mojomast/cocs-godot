@@ -3,6 +3,7 @@ const Gate = preload("res://combined_arms/controls.gd")
 const Lease = preload("res://combined_arms/lease.gd")
 const CameraRig = preload("res://combined_arms/camera.gd")
 const Fleet = preload("res://combined_arms/fleet.gd")
+const Bridge = preload("res://vehicles/session_bridge.gd")
 var checks := 0
 var failed := false
 func check(ok: bool, message: String) -> void:
@@ -30,8 +31,8 @@ func _initialize() -> void:
 	check(not Lease.permitted(s, a, {}, 0), "no infantry fallback on broken lease")
 	s.vehicles[0].driver = 0.0
 	check(not Lease.permitted(s, a, v, 0.5), "stale lease rejected")
-	s.config.mode = "puma-race"
-	check(not Lease.permitted(s, a, v, 0), "sports mode rejected")
+	s.config.mode = "ctf"
+	check(Lease.permitted(s, a, v, 0), "same lease works in source CTF vehicle mode")
 	s.config.mode = "combined-arms"
 	a.health = 0
 	check(Lease.vehicle_for(s, a).is_empty(), "death revokes lease")
@@ -43,6 +44,44 @@ func _initialize() -> void:
 	check(Lease.vehicle_for(s, a).is_empty(), "proximity grants no lease")
 	s.vehicles[0].respawnTimer = 1
 	check(Lease.nearby(s, a).is_empty(), "respawning chassis not enterable")
+	for kind: String in ["puma", "hornet", "titan", "scout", "transport"]:
+		var count: int = Lease.PASSENGERS[kind]
+		var record := {"id":kind, "kind":kind, "driver":0, "gunner":null, "passengers":[], "health":100, "respawnTimer":0}
+		var driver := {"id":0, "health":100, "dead":0, "vehicleId":kind, "vehicleSeat":"driver", "vehicleSeatIndex":0}
+		var fixture := {"actors":[driver], "vehicles":[record], "config":{"mode":"combined-arms"}}
+		check(not Lease.vehicle_for(fixture, driver).is_empty(), kind + " driver 0")
+		if kind != "scout":
+			record.gunner = 0
+			check(Lease.vehicle_for(fixture, driver).is_empty(), kind + " duplicate role claim rejected")
+			record.driver = null
+			driver.vehicleSeat = "gunner"
+			check(not Lease.vehicle_for(fixture, driver).is_empty(), kind + " gunner 0")
+			record.gunner = null
+		else:
+			record.driver = null
+			record.gunner = 0
+			driver.vehicleSeat = "gunner"
+			check(Lease.vehicle_for(fixture, driver).is_empty(), "scout gunner cannot lease")
+		record.gunner = null
+		driver.vehicleSeat = "passenger"
+		for index: int in range(count):
+			record.passengers = []
+			for ignored in range(index + 1): record.passengers.append(null)
+			record.passengers[index] = 0
+			driver.vehicleSeatIndex = index
+			check(not Lease.vehicle_for(fixture, driver).is_empty(), "%s passenger %d" % [kind, index])
+			driver.vehicleSeatIndex = index + 1
+			check(Lease.vehicle_for(fixture, driver).is_empty(), "%s wrong passenger index" % kind)
+	var bridge := Bridge.new()
+	var mounted_state := {"actors":[{"id":0,"health":100,"dead":0,"vehicleId":"hornet","vehicleSeat":"driver","vehicleSeatIndex":0}], "vehicles":[{"id":"hornet","kind":"hornet","driver":0,"gunner":null,"passengers":[],"health":240,"respawnTimer":0}]}
+	bridge.observe(mounted_state, 0)
+	check(bridge.eligible(0, 0, true, false) and not bridge.eligible(0, 0.5, true, false), "shared bridge freshness")
+	check(bridge.adapt({"x":0.4,"z":0.8,"jump":true,"fire":true}, true).jump, "first flight ascent edge")
+	check(not bridge.adapt({"x":0.4,"z":0.8,"jump":true,"fire":true}, true).jump, "held jump never emits synthetic climb")
+	check(bridge.adapt({"x":0.4,"z":0.8,"jump":false}, false).x == 0, "focus release neutralizes axes")
+	mounted_state.vehicles[0].driver = null
+	bridge.observe(mounted_state, 0)
+	check(not bridge.eligible(0, 0, true, false) and not bridge.adapt({"fire":true,"x":1.0}, true).fire, "broken seat lease cannot fire")
 	var g := Gate.new()
 	tap(g, KEY_ENTER)
 	key(g, KEY_W, true)
