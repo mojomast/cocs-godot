@@ -21,7 +21,7 @@ func tap(g, code: int) -> void:
 	key(g, code, false)
 func _initialize() -> void:
 	# JSON parser represents integral IDs as floats; zero is a valid owner.
-	var s: Dictionary = JSON.parse_string('{"config":{"mode":"combined-arms"},"actors":[{"id":0,"team":1,"health":100,"dead":0,"vehicleId":"p","vehicleSeat":"driver","x":0,"y":7,"z":0}],"vehicles":[{"id":"p","kind":"puma","driver":0,"gunner":null,"passengers":[],"health":300,"respawnTimer":0,"x":0,"y":7,"z":0}]}')
+	var s: Dictionary = JSON.parse_string('{"config":{"mode":"combined-arms"},"actors":[{"id":0,"team":1,"health":100,"dead":0,"vehicleId":"p","vehicleSeat":"driver","vehicleSeatIndex":0,"x":0,"y":7,"z":0}],"vehicles":[{"id":"p","kind":"puma","driver":0,"gunner":null,"passengers":[],"health":300,"respawnTimer":0,"x":0,"y":7,"z":0}]}')
 	var a := Lease.actor_for(s, 0)
 	var v := Lease.vehicle_for(s, a)
 	check(not v.is_empty() and Lease.permitted(s, a, v, 0), "float actor zero driver lease")

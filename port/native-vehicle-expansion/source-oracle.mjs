@@ -21,33 +21,50 @@ for (const vehicle of match.vehicles) {
 
 const samples = [];
 for (const kind of kinds) {
+  const def = VEHICLE_TYPES.find(x => x.id === kind);
   const m = new Match('chatgpt', 'openclaw', () => 0.5, 'sunscar-convoy',
-    {mode:'combined-arms', botCount:0, humanCount:2, skipNav:true});
+    {mode:'combined-arms', botCount:0, humanCount:def.capacity, skipNav:true});
   const v = m.vehicles.find(x => x.kind === kind);
   assert(v);
-  const [driver, gunner] = m.actors;
+  const [driver, second] = m.actors;
   // Controlled fixture placement near the selected vehicle: no claim that a
   // naturally spawned client can reach this seat in the same amount of time.
-  for (const a of [driver, gunner]) Object.assign(a, {x:v.position.x, y:v.position.y, z:v.position.z});
-  assert(m.enterVehicle(driver));
+  // Keep all arranged occupants on the same team so a passenger test cannot
+  // accidentally turn into an enemy-friendly-fire test inside this hull.
+  // One actual source entry operation per seat, in the source's role order.
+  // No arbitrary assignment of vehicle.driver/gunner/passengers is made.
+  for (const occupant of m.actors) {
+    occupant.team=driver.team;
+    Object.assign(occupant, {x:v.position.x, y:v.position.y, z:v.position.z});
+    assert(m.enterVehicle(occupant), `${kind}: entry actor ${occupant.id}`);
+  }
   assert.equal(driver.vehicleId, v.id);
   assert.equal(driver.vehicleSeat, 'driver');
   assert.equal(v.driver, driver.id); // actor 0 is a valid occupant.
-  assert(m.enterVehicle(gunner));
   const expected = kind === 'scout' ? 'passenger' : 'gunner';
-  assert.equal(gunner.vehicleSeat, expected);
+  assert.equal(second.vehicleSeat, expected);
+  const passengers = m.actors.filter(a => a.vehicleSeat==='passenger');
+  assert.equal(passengers.length, def.seatLayout.passengers.length);
+  passengers.forEach((a,i) => assert.equal(a.vehicleSeatIndex,i));
   const before = {x:v.position.x, z:v.position.z, y:v.position.y};
   const steering = {x:-Math.sin(driver.yaw), z:-Math.cos(driver.yaw),
     yaw:driver.yaw, pitch:0, sprint:true, fire:kind === 'scout'};
-  for (let i=0; i<90; i++) m.step(1/60, {inputs:{0:steering, 1:{yaw:gunner.yaw, pitch:0, fire:true}}});
+  for (let i=0; i<90; i++) m.step(1/60, {inputs:{0:steering, 1:{yaw:second.yaw, pitch:0, fire:true}}});
   const moved = Math.hypot(v.position.x-before.x, v.position.z-before.z);
   assert(moved > 0.01, `${kind} controlled driver fixture did not move`);
   const events = m.events.filter(e => e.type === 'vehicle-shot');
-  if (kind !== 'scout') assert(events.some(e => e.actor === gunner.id && e.vehicle === v.id), `${kind} gunner did not fire`);
+  if (kind !== 'scout') assert(events.some(e => e.actor === second.id && e.vehicle === v.id), `${kind} gunner did not fire`);
+  const passenger = passengers.at(-1);
+  for (let i=0; passenger.shotWait>0 && i<120; i++) m.step(1/60,{inputs:{}});
+  const shotBefore = passenger.shots;
+  m.step(1/60, {inputs:{[passenger.id]:{yaw:passenger.yaw,pitch:0,fire:true}}});
+  assert(passenger.shots > shotBefore, `${kind} passenger personal primary did not fire`);
+  assert(m.events.some(e=>e.type==='shot' && e.actor===passenger.id), `${kind} passenger source shot event absent`);
   samples.push({kind, id:v.id, driver:driver.id, secondRole:expected,
-    moved, shotEvents:events.length, altitude:v.position.y});
-  m.releaseVehicle(gunner, v);
-  assert.equal(gunner.vehicleId, null);
+    passengerIndexes:passengers.map(a=>a.vehicleSeatIndex), moved,
+    shotEvents:events.length, passengerShots:passenger.shots-shotBefore, altitude:v.position.y});
+  m.releaseVehicle(second, v);
+  assert.equal(second.vehicleId, null);
   m.damageVehicle(v, v.maxHealth+100, null);
   assert.equal(v.health, 0);
   assert.equal(driver.vehicleId, null);

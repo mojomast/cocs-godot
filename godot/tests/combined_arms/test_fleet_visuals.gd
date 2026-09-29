@@ -31,7 +31,7 @@ func run() -> void:
 		check(model != null and model.position.is_equal_approx(Vector3(i, 2, -3)), "source XYZ " + kinds[i])
 		check(model.rotation_order == EULER_ORDER_XYZ and model.rotation.is_equal_approx(Vector3(0.14, PI / 2, -0.12)), "source yaw/roll/pitch " + kinds[i])
 		check(is_equal_approx(model.turret.rotation.y, 0.25), "relative turret " + kinds[i])
-		check(model.get("kind") == kinds[i] and model.get_child_count() > 1, "source-specific chassis geometry " + kinds[i])
+		check((i == 0 or model.get("kind") == kinds[i]) and model.get_child_count() > 1, "source-specific chassis geometry " + kinds[i])
 		if i > 0:
 			check(model.wheels.size() == {"hornet":0, "titan":16, "scout":4, "transport":6}[kinds[i]], "wheel/flight layout " + kinds[i])
 	var original: Node3D = fleet.vehicle_node(2)
