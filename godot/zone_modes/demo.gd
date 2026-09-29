@@ -114,6 +114,8 @@ func apply_zones(frame: Dictionary) -> void:
 		evidence_count += 1
 
 func on_results(frame: Dictionary) -> void:
+	av_snapshot(frame.state)
+	av_finish(frame.state)
 	round_results += 1
 	phase = 4
 	presentation.apply_state(frame.state, client.actor_id)

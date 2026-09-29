@@ -177,6 +177,8 @@ func on_results(frame: Dictionary) -> void:
 	if frame.state.get("over") != true:
 		on_error("Invalid Assault results")
 		return
+	av_snapshot(frame.state)
+	av_finish(frame.state)
 	round_results += 1
 	phase = 4
 	presentation.apply_state(frame.state, client.actor_id)

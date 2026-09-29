@@ -12,6 +12,7 @@ extends Control
 const RouteRegistry = preload("res://ui/route_registry.gd")
 const MenuPreferences = preload("res://ui/menu_preferences.gd")
 const SettingsAccess = preload("res://ui/settings_access.gd")
+const Audiovisual = preload("res://audio/av_service.gd")
 const Choice = preload("res://ui/lobby_choice.gd")
 const CAPTION := Color("a3b7c9")
 const ERROR_INK := Color("e08282")
@@ -19,6 +20,7 @@ const PANEL_BG := Color(0.055, 0.07, 0.09, 1.0)
 const LABEL_WIDTH := 150
 
 var registry := RouteRegistry.new()
+var audiovisual
 var preferences_path := "user://menu_preferences.json" # Set before entering the tree to isolate a menu instance.
 var preferences = MenuPreferences.new()
 var restoring := false
@@ -59,6 +61,16 @@ func update_layout() -> void:
 	route_column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 func _ready() -> void:
+	audiovisual = Audiovisual.new()
+	audiovisual.name = "MenuAudiovisual"
+	add_child(audiovisual)
+	audiovisual.music.bind(self)
+	audiovisual.music.set_scene("menu")
+	var audio_settings := SettingsAccess.service()
+	if audio_settings != null:
+		audio_settings.audio_preferences_changed.connect(audiovisual.apply_settings)
+		audiovisual.apply_settings(audio_settings.values)
+	else: audiovisual.apply_settings({"mute":"--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args()})
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	build_ui()
 	resized.connect(update_layout)
@@ -466,6 +478,19 @@ func _unhandled_input(event: InputEvent) -> void:
 	if release_key(event):
 		quit_menu()
 		get_viewport().set_input_as_handled()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey or event is InputEventMouseButton:
+		if event.pressed and not quitting: audiovisual.music.start() # User gesture unlocks audio.
+
+func _process(delta: float) -> void:
+	if quitting or SettingsAccess.overlay_open() or not get_window().has_focus(): return
+	audiovisual.music.tick(delta)
+
+func _notification(what: int) -> void:
+	if not is_instance_valid(audiovisual): return
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT: audiovisual.set_focus(false)
+	if what == NOTIFICATION_APPLICATION_FOCUS_IN: audiovisual.set_focus(true)
 
 static func release_key(event: InputEvent) -> bool:
 	if not event is InputEventKey or event.echo or not event.pressed: return false

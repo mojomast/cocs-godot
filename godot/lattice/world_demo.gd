@@ -112,6 +112,7 @@ func _ready() -> void:
 	if not load_map(selected):
 		on_error(catalog.error)
 		return
+	av_ensure() # World session's _ready signal composition is bypassed here.
 	if not lattice_hud.bind_authored_map(current_id, catalog.resolve_map(current_id)):
 		world_error = "Authored objective links unavailable; guidance is uncertain"
 	world_commands.bind_authored_map(current_id, catalog.resolve_map(current_id))
@@ -132,7 +133,8 @@ func _ready() -> void:
 	client.events.connect(func(items: Array) -> void:
 		if phase == 3:
 			combat.apply_events(items, client.actor_id)
-			world_telemetry.events(items, client.projection))
+			world_telemetry.events(items, client.projection)
+			av_events(items))
 	refresh_session_setup()
 	connect_selected_match()
 	var asset_layer := preload("res://lattice_assets/world_layer.gd").new()
@@ -340,6 +342,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3: return
 	if client.projection.is_empty() or client.projection_actor != client.actor_id:
 		snapshot_watch.observe()
+		if is_instance_valid(audiovisual): audiovisual.suspend("missing_projection")
 		clear_world_pose()
 		pickups.clear_round()
 		combat.clear_round()
@@ -356,6 +359,8 @@ func on_snapshot(frame: Dictionary) -> void:
 	refresh_world_hud()
 
 func on_results(frame: Dictionary) -> void:
+	av_snapshot(frame.state)
+	av_finish(frame.state)
 	session_flow.observe_result(client.result_projection)
 	world_telemetry.finish_round()
 	if is_instance_valid(world_commands): world_commands.world_clear()
@@ -402,6 +407,7 @@ func _process(delta: float) -> void:
 	if session_panel.visible or is_instance_valid(world_commands) and world_commands.visible: release_pointer()
 	if world_wait_release and controls_released() and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): world_wait_release = false
 	super._process(delta)
+	if phase == 4: av_tick(delta)
 	if phase == 3 and snapshot_watch.stale():
 		if is_instance_valid(world_commands): world_commands.world_clear()
 		lattice_hud.clear_round()

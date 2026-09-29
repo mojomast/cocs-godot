@@ -113,6 +113,7 @@ func _ready() -> void:
 	if not load_selected_map(selected):
 		on_error(catalog.error)
 		return
+	av_ensure() # This composition does not call session._ready().
 	world.get_node("StaticPickupMarkers").hide()
 	client.connection_error.connect(on_error)
 	horde_client.input_reset.connect(func(_reason: String) -> void: release_pointer())
@@ -123,7 +124,8 @@ func _ready() -> void:
 	client.events.connect(func(items: Array) -> void:
 		if phase == 3:
 			combat.apply_events(items, client.actor_id)
-			apply_npc_deaths(items))
+			apply_npc_deaths(items)
+			av_events(items))
 	connect_selected_match()
 	# Horde's source-default desktop bindings, localized to this composition.
 	call_deferred("show_controls")
@@ -503,6 +505,8 @@ func on_results(frame: Dictionary) -> void:
 	# Consume already-received authoritative events before clear_round drains
 	# the shared effects pipeline; this is never a synthetic result-frame hit.
 	combat.flush_effects()
+	av_snapshot(frame.state)
+	av_finish(frame.state)
 	hold_terminal_blood()
 	round_results += 1
 	phase = 4
@@ -555,6 +559,8 @@ func _process(delta: float) -> void:
 		var was_stale := snapshot_watch.stale()
 		snapshot_watch.advance(delta)
 		if not was_stale and snapshot_watch.stale(): release_pointer()
+		if snapshot_watch.stale() or not application_focused or HordeSettingsAccess.overlay_open(): audiovisual.suspend("stale_or_focus")
+		else: av_tick(delta)
 		camera.rotation = Vector3(pitch, yaw, 0)
 		send_elapsed += delta
 		if send_elapsed >= 1.0 / 60.0:
@@ -566,6 +572,7 @@ func _process(delta: float) -> void:
 			if result == OK: controls.queued()
 			if trace_enabled: emit_native_trace(trace_input(sample, result))
 			if result != OK: on_error("Input could not be queued. Relaunch to reconnect.")
+	elif phase == 4: av_tick(delta)
 	horde_label.custom_minimum_size.x = maxf(240, get_viewport().get_visible_rect().size.x - 40)
 	if choice_layer != null: choice_layer.offset = Vector2(20, horde_label.position.y + horde_label.size.y + 10)
 	if phase == 3 and snapshot_watch.stale():

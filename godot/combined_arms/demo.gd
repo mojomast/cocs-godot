@@ -10,7 +10,9 @@ const CameraRig = preload("res://combined_arms/camera.gd")
 const HUD = preload("res://combined_arms/hud.gd")
 const Lease = preload("res://combined_arms/lease.gd")
 const SessionBridge = preload("res://vehicles/session_bridge.gd")
+const AVLifecycle = preload("res://sports/av_lifecycle.gd")
 var vehicle_bridge := SessionBridge.new()
+var audiovisual := AVLifecycle.new()
 var join_room_id := ""
 var wait_for_players := 1
 var bot_count := 0
@@ -70,6 +72,8 @@ func _ready() -> void:
 	if not world.load_map(map_id) or not chase.configure_map(map_id, world.catalog.resolve_map(map_id)):
 		get_tree().quit(2)
 		return
+	add_child(audiovisual)
+	audiovisual.configure(self, world.camera, world.catalog.resolve_map(map_id), "combined-arms", endpoint)
 	world.camera.current = true
 	add_child(fleet)
 	add_child(actors)
@@ -99,6 +103,7 @@ func update_graphics() -> void:
 func on_events(items: Array) -> void:
 	update_graphics()
 	graphics.apply_events(items)
+	if phase == "active": audiovisual.events(items)
 
 func clear_round() -> void:
 	release()
@@ -120,6 +125,7 @@ func checked(result: Error) -> bool:
 	return false
 
 func fail(message: String) -> void:
+	audiovisual.dropped()
 	error = message
 	phase = "error"
 	clear_round()
@@ -151,13 +157,16 @@ func on_lobby(frame: Dictionary) -> void:
 		checked(net.send_frame({"type":"start"}))
 	update_graphics()
 
-func on_started(_frame: Dictionary) -> void:
+func on_started(frame: Dictionary) -> void:
+	audiovisual.begin(frame, net.room_id)
 	clear_round()
 	phase = "active"
 	phase_age = 0
 
 func on_results(frame: Dictionary) -> void:
 	on_snapshot(frame)
+	if phase == "error": return
+	audiovisual.finish(frame.state, net.actor_id)
 	release()
 	if not net.spectating: checked(net.send_input(controls.command(yaw, pitch, false, false)))
 	if phase != "error": phase = "results"
@@ -167,6 +176,7 @@ func on_results(frame: Dictionary) -> void:
 func on_snapshot(frame: Dictionary) -> void:
 	state = frame.state
 	age = 0
+	audiovisual.snapshot(state, net.actor_id)
 	if not fleet.apply_state(state, net.actor_id):
 		fail("Invalid vehicle snapshot")
 		return
@@ -228,11 +238,15 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		controls.focus(false)
 		release()
-	if what == NOTIFICATION_APPLICATION_FOCUS_IN: controls.focus(true)
+		if audiovisual.started: audiovisual.service.set_focus(false)
+	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
+		controls.focus(true)
+		if audiovisual.started: audiovisual.service.set_focus(true)
 	if what in [NOTIFICATION_APPLICATION_FOCUS_OUT, NOTIFICATION_APPLICATION_FOCUS_IN]: update_graphics()
 
 func _process(delta: float) -> void:
 	age += delta
+	audiovisual.advance(delta, phase == "results" or phase == "active" and age < 0.5, get_window().has_focus(), SettingsAccess.overlay_open())
 	phase_age += delta
 	if not eligible() or SettingsAccess.overlay_open() or not get_window().has_focus() or (controls.engaged and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED): release()
 	if phase == "connecting" and not create_sent and net.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:

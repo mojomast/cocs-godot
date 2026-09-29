@@ -10,6 +10,7 @@ const Guidance = preload("res://sports/guidance.gd")
 const Progression = preload("res://sports/progression.gd")
 const SoccerGuidance = preload("res://sports/soccer_guidance.gd")
 const Practice = preload("res://sports/practice.gd")
+const AVLifecycle = preload("res://sports/av_lifecycle.gd")
 var net := Network.new()
 var world := World.new()
 var fleet := Fleet.new()
@@ -19,6 +20,7 @@ var hud := HUD.new()
 var guidance := Guidance.new()
 var progression := Progression.new()
 var soccer_guidance := SoccerGuidance.new()
+var audiovisual := AVLifecycle.new()
 var initial_camera := Transform3D.IDENTITY
 var time_limit := 0
 var round_target := 0
@@ -67,6 +69,8 @@ func _ready() -> void:
 	if not world.load_map(map_id):
 		get_tree().quit(2)
 		return
+	add_child(audiovisual)
+	audiovisual.configure(self, world.camera, world.catalog.resolve_map(map_id), mode, endpoint)
 	world.camera.current = true
 	initial_camera = world.camera.transform
 	if not chase.configure_map(map_id, world.catalog.resolve_map(map_id)):
@@ -92,7 +96,9 @@ func _ready() -> void:
 	net.snapshot.connect(on_snapshot)
 	net.results.connect(on_results)
 	net.events.connect(func(items: Array) -> void:
-		if phase == "active": progression.events(items, net.actor_id))
+		if phase == "active":
+			progression.events(items, net.actor_id)
+			audiovisual.events(items))
 	net.connection_error.connect(fail)
 	if net.connect_server(endpoint, world.catalog.entries, map_id) != OK: fail("Connection failed")
 
@@ -102,6 +108,7 @@ func checked(result: Error) -> bool:
 	return false
 
 func fail(message: String) -> void:
+	audiovisual.dropped()
 	error = message
 	phase = "error"
 	controls.release()
@@ -129,6 +136,7 @@ func clear_round() -> void:
 func on_results(frame: Dictionary) -> void:
 	on_snapshot(frame)
 	if phase == "error": return
+	audiovisual.finish(frame.state, net.actor_id)
 	controls.release()
 	# A final neutral receipt is explicit, even though source results stop stepping.
 	checked(net.send_input(controls.packet(float(vehicle.get("yaw", 0))-PI, false)))
@@ -155,7 +163,8 @@ func on_lobby(frame: Dictionary) -> void:
 		phase_age = 0
 		checked(net.send_frame({"type":"start"}))
 
-func on_started(_frame: Dictionary) -> void:
+func on_started(frame: Dictionary) -> void:
+	audiovisual.begin(frame, net.room_id)
 	clear_round()
 	age = 0
 	phase = "active"
@@ -164,6 +173,7 @@ func on_started(_frame: Dictionary) -> void:
 func on_snapshot(frame: Dictionary) -> void:
 	state = frame.state
 	age = 0
+	audiovisual.snapshot(state, net.actor_id)
 	actor = {}
 	var previous_id: Variant = vehicle.get("id")
 	vehicle = {}
@@ -200,12 +210,17 @@ func _input(event: InputEvent) -> void:
 		checked(net.send_frame({"type":"start"}))
 
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_APPLICATION_FOCUS_OUT: controls.focus(false)
-	if what == NOTIFICATION_APPLICATION_FOCUS_IN: controls.focus(true)
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		controls.focus(false)
+		if audiovisual.started: audiovisual.service.set_focus(false)
+	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
+		controls.focus(true)
+		if audiovisual.started: audiovisual.service.set_focus(true)
 
 func _process(delta: float) -> void:
 	phase_age += delta
 	age += delta
+	audiovisual.advance(delta, phase == "results" or phase == "active" and age < 0.5, get_window().has_focus(), SettingsAccess.overlay_open())
 	progression.advance(delta)
 	if not eligible(): controls.release()
 	if phase == "connecting" and not create_sent and net.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
