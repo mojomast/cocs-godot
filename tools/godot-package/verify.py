@@ -84,6 +84,7 @@ class X11:
             'XFlush': (C.c_int, [C.c_void_p]),
             'XCloseDisplay': (C.c_int, [C.c_void_p]),
             'XSetInputFocus': (C.c_int, [C.c_void_p, C.c_ulong, C.c_int, C.c_ulong]),
+            'XMoveResizeWindow': (C.c_int, [C.c_void_p, C.c_ulong, C.c_int, C.c_int, C.c_uint, C.c_uint]),
             'XKeysymToKeycode': (C.c_ubyte, [C.c_void_p, C.c_ulong]),
             'XSync': (C.c_int, [C.c_void_p, C.c_int]),
         }
@@ -162,6 +163,14 @@ class X11:
         self.lib.XFlush(self.display)
         self.lib.XSync(self.display, 0)
         self.check_errors()
+
+    def resize(self, window, width, height):
+        self.lib.XMoveResizeWindow(self.display, window, 0, 0, width, height)
+        self.lib.XSync(self.display, 0)
+        self.check_errors()
+        root, x, y, w, h, border, depth = C.c_ulong(), C.c_int(), C.c_int(), C.c_uint(), C.c_uint(), C.c_uint(), C.c_uint()
+        require(self.lib.XGetGeometry(self.display, window, C.byref(root), C.byref(x), C.byref(y), C.byref(w), C.byref(h), C.byref(border), C.byref(depth)), 'Window geometry unavailable')
+        require((w.value, h.value) == (width, height), 'Compact window resize failed')
 
     def close(self):
         self.lib.XCloseDisplay(self.display)
@@ -261,10 +270,15 @@ def main():
         env['DISPLAY'] = ':' + display
         x11 = X11(env['DISPLAY'])
 
-        def launch(name, cli, action='window', active=True, trace=True, external=None, expect_map=None):
+        def launch(name, cli, action='window', active=True, trace=True, external=None, expect_map=None, compact=False):
             log = output / (name + '.log')
+            case_env = dict(env)
+            if compact:
+                settings = output / (name + '-settings.json')
+                settings.write_text(json.dumps({'version': 1, 'settings': {'ui_scale': 150, 'window_mode': 'windowed'}}))
+                case_env['COCS_SETTINGS_PATH'] = str(settings)
             with log.open('w') as stream:
-                process = subprocess.Popen([nodebin / 'node', package / 'run.mjs', *cli], cwd=unrelated, env=env, stdout=stream, stderr=subprocess.STDOUT)
+                process = subprocess.Popen([nodebin / 'node', package / 'run.mjs', *cli], cwd=unrelated, env=case_env, stdout=stream, stderr=subprocess.STDOUT)
             children.append(process)
             deadline = time.monotonic() + 35
             earliest_setup = time.monotonic() + 8
@@ -301,8 +315,13 @@ def main():
             # inventing a readiness probe.
             if expect_map is not None:
                 require(ready.get('map') == expect_map, f'{name}: launcher reported map {ready.get("map")}, expected {expect_map}')
+            if compact:
+                x11.resize(x11.window(native_pid), 760, 520)
+                # Allow the exported Control tree to reflow before readback.
+                # PNG inspection, not the delay, establishes content visibility.
+                time.sleep(0.5)
             if action == 'window':
-                shot = subprocess.run(['/usr/bin/ffmpeg', '-loglevel', 'error', '-f', 'x11grab', '-video_size', '1280x800', '-i', env['DISPLAY'], '-frames:v', '1', '-threads', '1', '-update', '1', str(output / (name + '.png'))], cwd=unrelated, env=env, capture_output=True, timeout=20)
+                shot = subprocess.run(['/usr/bin/ffmpeg', '-loglevel', 'error', '-f', 'x11grab', '-video_size', '760x520' if compact else '1280x800', '-i', env['DISPLAY'], '-frames:v', '1', '-threads', '1', '-update', '1', str(output / (name + '.png'))], cwd=unrelated, env=env, capture_output=True, timeout=20)
                 require(shot.returncode == 0, f'Screenshot failed: {shot.stderr.decode()}')
             if name == 'lattice-world' and args.world_commands_capture:
                 x11.tap_key(x11.window(native_pid), ord('c'))
@@ -335,6 +354,7 @@ def main():
             require('SCRIPT ERROR' not in text and 'ERROR:' not in text, f'{name}: Godot error in native log')
             result = {'case':name, 'exit':code, 'scene':native['scene'], 'host':ready['host'], 'dynamic_port':ready['port'], 'reported_map':ready.get('map'), 'health':health, 'readiness':'local-horde-health-and-window; separate horde-product.json proves snapshots/wave' if ready.get('experience') == 'horde' else ('setup-window' if not active else ('native-trace' if trace else 'authority-traffic-and-window; inspect PNG separately')), 'round_start_seen':any(f['event'] == 'round_start' for f in frames), 'pose_snapshots_seen':sum(f['event'] == 'snapshot' and f.get('pose_present') for f in frames), 'native_pid':native_pid, 'native_closed':True, 'authority_owned_by_launcher':not bool(external), 'server_closed':not bool(external), 'external_authority_preserved':bool(external), 'action':action}
             results.append(result)
+            if compact: result.update(window=[760, 520], settings_ui_scale=150)
             (output / 'cases.json').write_text(json.dumps(results, indent=2) + '\n')
             print(name, 'PASS', flush=True)
 
@@ -428,6 +448,8 @@ process.once('SIGTERM',async()=>{for(const socket of game.wss.clients)socket.ter
                        '--map=' + map_id], trace=False)
         for map_id in ['tidal-citadel', 'sunscar-convoy']:
             launch('assault-' + map_id, ['--experience=assault', '--map=' + map_id], trace=False)
+        launch('assault-compact', ['--experience=assault', '--map=sunscar-convoy'], trace=False, compact=True)
+        launch('uplink-compact', ['--experience=zones', '--mode=uplink', '--map=meridian-exchange'], trace=False, compact=True)
         launch('combined-arms', ['--experience=combined-arms'], trace=False)
         launch('arms-race', ['--experience=arms-race'], trace=False)
         launch('race', ['--experience=sports','--map=ion-speedway'], trace=False)
