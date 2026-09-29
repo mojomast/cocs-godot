@@ -25,6 +25,10 @@ var last_progress := 0.0
 var last_position := Vector2.INF
 var crew_ready_since := -1.0
 var passenger_shot_since := -1.0
+var neutral_seq := -1
+var entry_seq := -1
+var approach_pulses := 0
+var entry_retries := 0
 
 func log_line(kind: String, data: Dictionary = {}) -> void:
 	var row := {"role":role, "seconds":elapsed, "stage":stage, "room":demo.net.room_id if is_instance_valid(demo) else "", "peer":demo.net.peer_id if is_instance_valid(demo) else -1, "actor_id":demo.net.actor_id if is_instance_valid(demo) else -1}
@@ -57,6 +61,8 @@ func _initialize() -> void:
 	root.add_child.call_deferred(demo)
 	demo.input_queued.connect(func(seq: int, packet: Dictionary, result: int) -> void:
 		# Every input receipt carries the native client's packet and its wire sequence.
+		if stage == "settle" and neutral_seq < 0 and result == OK and is_zero_approx(float(packet.get("x", 1))) and is_zero_approx(float(packet.get("z", 1))) and not packet.get("interact", false): neutral_seq = seq
+		if stage == "entry" and entry_seq < 0 and result == OK and packet.get("interact", false): entry_seq = seq
 		log_line("QUEUE", {"input_seq":seq,"packet":packet,"result":result}))
 	demo.net.started.connect(func(frame: Dictionary) -> void:
 		log_line("START", {"frame":frame}))
@@ -97,6 +103,8 @@ func change(next: String) -> void:
 	stage = next
 	stage_since = elapsed
 	last_progress = elapsed
+	neutral_seq = -1
+	entry_seq = -1
 	log_line("STAGE", {"next":stage,"snapshot_seq":demo.net.last_snapshot_seq})
 
 func turn_to(target: Vector2) -> void:
@@ -112,6 +120,21 @@ func source_puma() -> Dictionary:
 	for v: Dictionary in demo.state.get("vehicles", []):
 		if v.get("id") == PUMA: return v
 	return {}
+
+func retry_western_walk(pos: Vector2, distance: float) -> void:
+	entry_retries += 1
+	if entry_retries > 2:
+		fail("source entry recovery exhausted: " + JSON.stringify({"distance":distance,"ack":demo.net.last_ack,"position":[pos.x,pos.y]}))
+		return
+	# The only replay is another physical walk around the safe western
+	# approach; neither the actor nor vehicle position is assigned.
+	if pos.y > 0: path.assign([Vector2(-80,18),Vector2(-80,-10),Vector2(-62,-10),Vector2(-62,-4)])
+	else: path.assign([Vector2(-80,-10),Vector2(-62,-10),Vector2(-62,-4)])
+	waypoint = 0
+	last_position = pos
+	approach_pulses = 0
+	log_line("REAPPROACH", {"attempt":entry_retries,"source_distance":distance,"path":path.map(func(p: Vector2) -> Array: return [p.x,p.y])})
+	change("walk")
 
 func sample() -> void:
 	if demo.net.last_snapshot_seq == last_seq: return
@@ -199,21 +222,47 @@ func _process(delta: float) -> bool:
 			if a.get("vehicleId") != null:
 				fail("unexpected mount before entry request")
 				return false
-			# Submit the physical E edge inside the source's 2.4 m radius,
-			# before inertia carries the actor past a final point waypoint.
-			if waypoint >= path.size()-1 and pos.distance_to(Vector2(float(v.x),float(v.z))) < 1.8:
-				change("entry")
-				tap(KEY_E)
+			# Never send E while the last acknowledged command is still W.
+			# A client frame stall can leave that command driving the authority
+			# for seconds before the interact edge reaches Room.
+			if waypoint >= path.size()-1 and pos.distance_to(Vector2(float(v.x),float(v.z))) < 6.0:
+				change("settle")
 				return false
 			if pos.distance_to(path[waypoint]) < 0.9:
 				waypoint += 1
 				key(KEY_W, false)
 				if waypoint == path.size():
-					change("entry")
-					tap(KEY_E)
+					change("settle")
 					return false
 			turn_to(path[waypoint])
 			if not demo.controls.keys.has(KEY_W): key(KEY_W, true)
+		"settle":
+			# Check the exact source acknowledgement and source velocity before
+			# submitting E. This cannot be faked by a local proximity prompt.
+			if elapsed-stage_since > 12.0:
+				fail("foot approach failed to settle: " + JSON.stringify({"neutral_seq":neutral_seq,"ack":demo.net.last_ack,"velocity":[a.get("vx"),a.get("vz")],"position":[pos.x,pos.y]}))
+				return false
+			if neutral_seq < 0 or demo.net.last_ack < neutral_seq: return false
+			if Vector2(float(a.get("vx", 0)),float(a.get("vz", 0))).length() > 0.3: return false
+			var distance := pos.distance_to(Vector2(float(v.x),float(v.z)))
+			if distance < 1.6:
+				change("entry")
+				tap(KEY_E)
+			elif distance > 8.0:
+				retry_western_walk(pos, distance)
+			else:
+				if approach_pulses >= 25:
+					fail("bounded foot approach exhausted: " + JSON.stringify({"distance":distance,"ack":demo.net.last_ack}))
+					return false
+				approach_pulses += 1
+				turn_to(Vector2(float(v.x),float(v.z)))
+				change("approach-pulse")
+				key(KEY_W, true)
+		"approach-pulse":
+			if elapsed-stage_since > 4.0:
+				fail("physical approach pulse stalled before key release")
+				return false
+			if elapsed-stage_since >= 0.14: change("settle")
 		"entry":
 			if not demo.vehicle.is_empty():
 				if a.get("vehicleId") != PUMA or a.get("vehicleSeat") != ("driver" if role == "host" else ("gunner" if role == "guest" else "passenger")):
@@ -223,7 +272,12 @@ func _process(delta: float) -> bool:
 				change("mounted")
 				# Seat identity releases capture. Reacquire only in the role's
 				# active phase; idle host must not hold X11 pointer against crew.
-			elif elapsed-stage_since > 4.0: fail("entry receipt failed")
+			elif entry_seq >= 0 and demo.net.last_ack >= entry_seq and elapsed-stage_since > 0.5:
+				var distance := pos.distance_to(Vector2(float(v.x),float(v.z)))
+				if distance > 8.0: retry_western_walk(pos, distance)
+				elif distance >= 2.4: change("settle")
+				else: fail("source denied acknowledged nearby entry: " + JSON.stringify({"distance":distance,"entry_seq":entry_seq,"ack":demo.net.last_ack,"source_vehicle":v.get("id")}))
+			elif elapsed-stage_since > 6.0: fail("entry input was not acknowledged: " + JSON.stringify({"entry_seq":entry_seq,"ack":demo.net.last_ack}))
 		"mounted":
 			if role == "host":
 				var passenger_mounted := false
