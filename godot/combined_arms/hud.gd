@@ -60,9 +60,9 @@ func update(a: Dictionary, v: Dictionary, near: Dictionary, engaged: bool, phase
 	info.text = "Infantry  •  HP %.0f  •  Team %s" % [a.get("health", 0), a.get("team", "—")]
 	if mounted:
 		info.text = vehicle_card(v, a.get("vehicleSeat", ""))
-	help.text = "WASD move  •  Mouse look / LMB fire  •  E mount / exit\nSpace %s  •  Shift %s\nEnter capture controls  •  Esc release  •  Fresh Enter + keys after seat change" % ["brake tap" if mounted else "jump", "boost" if mounted else "sprint"]
-	if mounted and (v.kind != "puma" or a.get("vehicleSeat") != "driver"):
-		help.text = "Preview seat — Puma driver is the supported driving slice\nEnter then E to exit  •  Esc release"
+	help.text = "WASD move  •  Mouse look / LMB fire  •  E mount / exit\nSpace %s  •  Shift %s\nEnter capture controls  •  Esc release  •  Fresh Enter + keys after seat change" % ["lift" if mounted and v.get("kind") == "hornet" else ("brake tap" if mounted else "jump"), "boost" if mounted else "sprint"]
+	if mounted and a.get("vehicleSeat") != "driver":
+		help.text = "Seat: %s  •  E exit  •  Mouse look / LMB fire\nEnter capture controls  •  Esc release" % str(a.get("vehicleSeat", "")).capitalize())
 	prompt.text = "E  •  Exit vehicle" if mounted else ("E  •  Board %s" % str(near.kind).to_upper() if not near.is_empty() else "")
 	if phase != "active": prompt.text = error if not error.is_empty() else phase.capitalize()
 	elif age >= 0.5: prompt.text = "Snapshots stale — controls released"
