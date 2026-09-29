@@ -446,7 +446,7 @@ func select_item(item: Dictionary, clear: bool = false) -> void:
 		last_send_ms = Time.get_ticks_msec()
 		cooldown_refresh = true
 		pending = {"identity":profile.id, "frame":frame, "sent_at":Time.get_ticks_msec()}
-		action_status = "Selection sent · awaiting source confirmation (next match)."
+		action_status = "Selection sent · awaiting source confirmation. It applies to the next match, not this respawn."
 	refresh()
 
 func _input(event: InputEvent) -> void:
@@ -547,16 +547,18 @@ func clear_rows(list: Node) -> void:
 func refresh() -> void:
 	if details == null or state_label == null: return
 	var summary: Dictionary = equipment_summary()
-	# The pinned header stays at most two lines: level/XP and the raw kill
-	# totals. Mode and status paragraphs move below the tab strip so the LOADOUT
-	# slot details stay in the compact first screen; nothing is dropped.
+	# The pinned header stays at most two lines: the source identity/level/XP and a
+	# single context line that follows the active tab (the accepted result/award on
+	# RESULTS, the source-list status on HISTORY, the aggregate totals elsewhere).
+	# Mode and status paragraphs move below the tab strip so the LOADOUT slot
+	# details stay in the compact first screen; nothing is dropped.
 	if profile.is_empty():
 		state_label.text = "NO CONNECTED CAREER · Join a room to see your source profile and equip unlocked items."
 	else:
 		var parts := []
 		for field: String in ["level", "xp"]:
 			parts.append(field.to_upper() + " " + (str(profile[field]) if profile.has(field) else "UNKNOWN"))
-		state_label.text = "CONNECTED SOURCE CAREER · " + " · ".join(parts) + "\nMATCHES %s · WINS %s · KILLS %s" % [str(profile.get("matches", "?")), str(profile.get("wins", "?")), str(profile.get("kills", "?"))]
+		state_label.text = "CONNECTED SOURCE CAREER · " + " · ".join(parts) + "\n" + context_line()
 	update_summary_label(summary)
 	var list := details.find_child("CatalogRows", true, false) as VBoxContainer
 	if list == null: return
@@ -615,6 +617,40 @@ func update_summary_label(summary: Dictionary) -> void:
 		lines.append(action_status)
 	summary_label.text = "\n".join(lines)
 
+## The second pinned header line. It follows the active tab so the compact first
+## screen shows the fact that matters there, without dropping the aggregate
+## authority totals (still rendered on every non-result tab). It only ever states
+## what the source sent: an unrecognised or replayed award stays unknown, never a
+## zero.
+func context_line() -> String:
+	if category == "results": return results_headline()
+	if category == "history": return history_status_line()
+	return "MATCHES %s · WINS %s · KILLS %s" % [str(profile.get("matches", "?")), str(profile.get("wins", "?")), str(profile.get("kills", "?"))]
+
+func results_headline() -> String:
+	if result.is_empty():
+		return "Round in progress · no accepted result yet." if results_status == "live" else "No accepted source result on this connection."
+	var line := "ROUND COMPLETE"
+	if result.get("mode") is String: line += " · " + str(result.mode)
+	if result.get("map") is String: line += " · " + str(result.map)
+	var award: Dictionary = attributed_award()
+	if not award.is_empty() and award.has("gained"):
+		line += " · +%d XP" % int(award.gained)
+	elif not latest_award.is_empty() and latest_award.has("gained"):
+		line += " · award not confirmed for this round"
+	else:
+		line += " · award unknown"
+	return line
+
+func history_status_line() -> String:
+	match history_status:
+		"offline": return "Recent server matches · unavailable offline."
+		"loading": return "Recent server matches · requesting from source…"
+		"empty": return "Recent server matches · none recorded yet."
+		"error": return "Recent server matches · source error, showing last known."
+		"timeout": return "Recent server matches · no reply, status unknown."
+		_: return "Recent server matches · %d of up to 50 shown." % history_records.size()
+
 ## The LOADOUT tab. It lists every confirmed equipped slot and the finish first,
 ## then the stock/unknown slots, then the authority facts and status. Ordering by
 ## state keeps the actual equipped details in the compact first screen without
@@ -635,7 +671,7 @@ func render_loadout(list: Node, summary: Dictionary) -> void:
 			else:
 				other_lines.append(text)
 	if equipped_lines.is_empty():
-		add_line(list, "No slot equipped · saved for the next match.", 16)
+		add_line(list, loadout_empty_line(summary), 16)
 	else:
 		for line: String in equipped_lines: add_line(list, line, 16)
 	var finish: Dictionary = summary.get("finish", {})
@@ -644,9 +680,9 @@ func render_loadout(list: Node, summary: Dictionary) -> void:
 		add_line(list, "Current match finish: " + EquippedModel.finish_text(finish.current) + " · live actor snapshot, not used to resolve saved gear.", 14)
 	if not other_lines.is_empty():
 		add_line(list, "Stock / unknown · " + " · ".join(other_lines), 14)
-	add_line(list, "Saved for the next match: the current match keeps its round-start loadout. Only a confirmed source reply updates this view.", 14)
+	add_line(list, "Saved for the next match: this match and its respawns keep the round-start loadout. Only a confirmed source reply updates this view.", 14)
 	if not pending.is_empty():
-		add_line(list, "Pending source confirmation · showing the last confirmed loadout, not an optimistic change.", 14)
+		add_line(list, "Pending source confirmation · the last confirmed loadout still applies; nothing is applied optimistically.", 14)
 	elif not action_status.is_empty():
 		add_line(list, action_status, 14)
 	if not profile.is_empty():
@@ -661,6 +697,21 @@ func render_loadout(list: Node, summary: Dictionary) -> void:
 			add_line(list, "MODE WINS/MATCHES · " + " · ".join(mode_parts), 14)
 	var identity := get_tree().root.get_node_or_null("Identity")
 	if identity != null and not identity.status.is_empty(): add_line(list, identity.status, 14)
+
+## An honest account of an empty equipment list. A disconnected profile is not an
+## empty loadout; a field the source never reported is unknown; only a known,
+## entirely unselected saved loadout may claim no slot is equipped.
+func loadout_empty_line(summary: Dictionary) -> String:
+	if not summary.get("ready", false): return "Not connected · no confirmed saved loadout to show."
+	if has_unknown_slot(summary): return "Saved loadout unknown · the source did not report every equipped slot."
+	return "Stock saved loadout · no slot equipped for the next match."
+
+func has_unknown_slot(summary: Dictionary) -> bool:
+	for key: String in ["gear", "attachments"]:
+		var entries: Dictionary = summary.get("fields", {}).get(key, {})
+		for slot: String in entries:
+			if str(entries[slot].get("state", "")) == EquippedModel.STATE_UNKNOWN: return true
+	return false
 
 func render_results(list: Node) -> void:
 	if result.is_empty():

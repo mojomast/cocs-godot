@@ -39,6 +39,11 @@ const STATE_UNKNOWN := "unknown"
 const STATE_UNKNOWN_ID := "unknown-id"
 const MAX_ID := 64
 const MAX_NAME := 128
+# The one-line saved-loadout summary stays bounded so a fully equipped loadout
+# (all gear + mods + finish) or a long unresolved ID cannot push the compact
+# first screen off the fold. Slot detail and unknown-ID literals keep MAX_ID.
+const MAX_SUMMARY_PARTS := 4
+const MAX_SUMMARY_ID := 24
 
 static func slots_for(kind: String) -> Array:
 	return GEAR_SLOTS if kind == "gear" else ATTACHMENT_SLOTS
@@ -167,9 +172,18 @@ static func field_text(summary: Dictionary, key: String) -> String:
 		parts.append("%s: %s" % [str(entries[slot].get("label", slot)), entry_text(entries[slot])])
 	return " · ".join(parts)
 
+## A bounded literal for an unresolved ID inside the one-line summary. The slot
+## detail keeps the full MAX_ID text; the summary only needs enough to identify it.
+static func bounded_id(id: String) -> String:
+	var clean: String = id.left(MAX_ID)
+	if clean.length() <= MAX_SUMMARY_ID: return clean
+	return clean.left(MAX_SUMMARY_ID) + "…"
+
 ## One bounded, human-readable line for a header or pre-match summary. Equipped
-## items are named, stock slots are omitted, unresolved IDs stay literal and an
-## all-stock saved loadout says so rather than rendering as empty.
+## items are named, stock slots are omitted, unresolved IDs stay literal (bounded)
+## and an all-stock saved loadout says so rather than rendering as empty. Only the
+## first MAX_SUMMARY_PARTS names are shown; the rest are summarised as "+N more" so
+## a fully equipped loadout cannot overwhelm the compact first screen.
 static func short_line(summary: Dictionary) -> String:
 	if not summary.get("ready", false): return "Unknown (not connected)"
 	var parts: Array = []
@@ -183,7 +197,7 @@ static func short_line(summary: Dictionary) -> String:
 				parts.append(str(entry.get("name", "Unknown")))
 				stock_only = false
 			elif state == STATE_UNKNOWN_ID:
-				parts.append("Unknown item (" + str(entry.get("id", "")).left(MAX_ID) + ")")
+				parts.append("Unknown item (" + bounded_id(str(entry.get("id", ""))) + ")")
 				stock_only = false
 			elif state == STATE_UNKNOWN:
 				parts.append("Unknown")
@@ -194,11 +208,15 @@ static func short_line(summary: Dictionary) -> String:
 		parts.append(str(finish.get("name", "Unknown")))
 		stock_only = false
 	elif finish_state == STATE_UNKNOWN_ID:
-		parts.append("Unknown finish (" + str(finish.get("id", "")).left(MAX_ID) + ")")
+		parts.append("Unknown finish (" + bounded_id(str(finish.get("id", ""))) + ")")
 		stock_only = false
 	elif finish_state == STATE_UNKNOWN:
 		parts.append("Unknown finish")
 		stock_only = false
 	if parts.is_empty():
 		return "Stock / unselected" if stock_only else "Unknown"
+	if parts.size() > MAX_SUMMARY_PARTS:
+		var extra: int = parts.size() - MAX_SUMMARY_PARTS
+		parts.resize(MAX_SUMMARY_PARTS)
+		parts.append("+%d more" % extra)
 	return " · ".join(parts)
