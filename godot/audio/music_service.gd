@@ -90,6 +90,14 @@ func _ready() -> void:
 func bind(host: Node = null) -> void:
  host_ref = weakref(host) if host != null else null
 
+func _exit_tree() -> void:
+ running = false
+ for player: AudioStreamPlayer in players:
+  preload("res://audio/playback_cleanup.gd").release(player)
+ preload("res://audio/playback_cleanup.gd").release(announcer_player)
+ streams.clear()
+ preload("res://audio/playback_cleanup.gd").drain()
+
 func _load_manifests() -> void:
  var music_file := FileAccess.open("res://audio/music/manifest.json", FileAccess.READ)
  var voice_file := FileAccess.open("res://audio/announcer/manifest.json", FileAccess.READ)

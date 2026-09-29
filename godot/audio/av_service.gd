@@ -289,5 +289,7 @@ func _sync_weather_ownership() -> void:
 	weather.set_native_weather_suppressed(acknowledged)
 
 func _exit_tree() -> void:
+	preload("res://audio/playback_cleanup.gd").release(moth_bed)
 	if weather != null: weather.set_native_weather_suppressed(false)
 	for owner: Node in _weather_owners(): owner.set_weather_precipitation_suppressed(false)
+	preload("res://audio/playback_cleanup.gd").drain()
