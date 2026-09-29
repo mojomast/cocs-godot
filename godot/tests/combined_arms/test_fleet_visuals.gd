@@ -61,6 +61,7 @@ func run() -> void:
 	shots.clear_round()
 	check(shots.traces.is_empty() and shots.seen.is_empty(), "shot round reset")
 	var hud = HUD.new()
+	root.add_child(hud)
 	var card: String = hud.vehicle_card({"kind":"titan", "health":200, "maxHealth":650, "heat":1.0, "overheated":true,
 		"respawnTimer":3.5, "driver":0, "gunner":null, "passengers":[2]}, "driver")
 	check(card.contains("Seats 2/3") and card.contains("200 / 650") and card.contains("OVERHEATED") and card.contains("3.5s"), "read-only source vehicle card")
@@ -70,5 +71,15 @@ func run() -> void:
 	check(fleet.apply_state(state) and fleet.vehicle_node(2) == null, "roster disappearance")
 	fleet.clear_round()
 	check(fleet.secondary.is_empty() and fleet.secondary_stamps.is_empty() and fleet.nodes.is_empty(), "full round reset")
+	root.remove_child(shots)
+	shots.free()
+	root.remove_child(hud)
+	hud.free()
+	root.remove_child(fleet)
+	fleet.free()
+	# Both visual adapters defer freeing transient meshes on roster removal.
+	# Let their queued RID releases reach the render server before SceneTree quit.
+	await process_frame
+	await process_frame
 	print("FLEET VISUALS checks=", checks, " failures=", failures, " synthetic=true")
 	quit(1 if failures else 0)

@@ -12,6 +12,8 @@ room.start(1);
 assert.equal(room.match.config.mode,'combined-arms');
 const vehicle=room.match.vehicles.find(v=>v.kind==='hornet');
 assert(vehicle);
+// Source-authored spawn collides in this map; arrange an open test position.
+Object.assign(vehicle.position,{x:-60,y:2,z:30});
 const actor=room.match.actors[0];
 Object.assign(actor,{x:vehicle.position.x,y:vehicle.position.y,z:vehicle.position.z});
 assert(room.match.enterVehicle(actor));
@@ -31,4 +33,4 @@ room.input(1,{seq:29,input:{jump:false,yaw:actor.yaw}});room.tick(RULES.dt);
 room.input(1,{seq:30,input:{jump:true,yaw:actor.yaw}});room.tick(RULES.dt);
 assert.equal(accepted.filter(Boolean).length,2,'fresh release and press must make second accepted edge');
 console.log('VEHICLE_ROOM_EDGE_ORACLE '+JSON.stringify({classification:'arranged direct Room fixture, no socket/native client',
-  vehicle:vehicle.id,actor:actor.id,altitudeBefore,altitudeAfter,acceptedClimbEdges:2}));
+  vehicle:vehicle.id,actor:actor.id,controlledVehiclePosition:[-60,2,30],altitudeBefore,altitudeAfter,acceptedClimbEdges:2}));

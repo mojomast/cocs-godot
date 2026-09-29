@@ -26,6 +26,11 @@ for (const kind of kinds) {
     {mode:'combined-arms', botCount:0, humanCount:def.capacity, skipNav:true});
   const v = m.vehicles.find(x => x.kind === kind);
   assert(v);
+  // The authored Hornet spawn (-84,0,46) overlaps source collision and will
+  // not move even with lift. This direct Match fixture explicitly relocates
+  // that chassis to an open source floor; live native acceptance does NOT
+  // claim naturally launched Hornet flight from its original map spawn.
+  if (kind==='hornet') Object.assign(v.position,{x:-60,y:2,z:30});
   const [driver, second] = m.actors;
   // Controlled fixture placement near the selected vehicle: no claim that a
   // naturally spawned client can reach this seat in the same amount of time.
@@ -61,6 +66,7 @@ for (const kind of kinds) {
   assert(passenger.shots > shotBefore, `${kind} passenger personal primary did not fire`);
   assert(m.events.some(e=>e.type==='shot' && e.actor===passenger.id), `${kind} passenger source shot event absent`);
   samples.push({kind, id:v.id, driver:driver.id, secondRole:expected,
+    controlledVehiclePosition:kind==='hornet'?[-60,2,30]:null,
     passengerIndexes:passengers.map(a=>a.vehicleSeatIndex), moved,
     shotEvents:events.length, passengerShots:passenger.shots-shotBefore, altitude:v.position.y});
   m.releaseVehicle(second, v);
