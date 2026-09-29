@@ -81,7 +81,7 @@ try:
     assert pathlib.Path(DEPS).is_dir(), 'Approved ignored node_modules unavailable'
     derivative=ROOT/'port/contracts/lattice-catalog-derivative.json'
     assert derivative.is_file(), 'Explicit approved semantic derivative missing'
-    with tempfile.TemporaryDirectory(prefix='vehicle-native-',dir='/tmp/opencode') as tmp:
+    with tempfile.TemporaryDirectory(prefix='vehicle-native-',dir=OUT.parent) as tmp:
         temp=pathlib.Path(tmp)
         env=private_environment(temp/'tools',os.environ)
         copying=time.monotonic()
