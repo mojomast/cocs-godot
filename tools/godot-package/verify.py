@@ -260,9 +260,8 @@ def main():
     require(probe.returncode == 0 and 'PACKAGE_INSPECT_OK ' in probe.stdout and 'ERROR:' not in probe.stdout + probe.stderr, 'Release resource/feature probe failed')
     readfd, writefd = os.pipe()
     xvfb_log = (output / 'xvfb.log').open('w')
-    # This host cannot create a usable filesystem X socket. An abstract-only
-    # listener accepts Xlib probes but stalls the exported GLX initialization.
-    # Use the same explicit TCP transport exercised by xvfb_run.py's fallback;
+    # This host cannot create a usable filesystem X socket. Use the same
+    # explicit TCP transport exercised by xvfb_run.py's fallback;
     # only the verifier's display server inherits its tool environment. All game
     # processes still receive the isolated, Node-only runtime PATH below.
     xvfb = subprocess.Popen(['/usr/bin/Xvfb', '-displayfd', str(writefd), '-screen', '0', '1280x800x24', '-extension', 'MIT-SHM', '-listen', 'tcp', '-nolisten', 'unix'], pass_fds=(writefd,), stdout=xvfb_log, stderr=subprocess.STDOUT)
@@ -379,16 +378,20 @@ def main():
             text = home_log.read_text()
             require('PACKAGE_SERVER_READY ' not in text, 'Home created an authority before route selection')
             require(home.poll() is None, 'Home supervisor exited before displaying its menu')
-            if records(text, 'MENU_READY '):
-                child_list = Path(f'/proc/{home.pid}/task/{home.pid}/children')
-                for child_pid in child_list.read_text().split() if child_list.exists() else []:
-                    window = x11.window(int(child_pid))
-                    if window:
-                        home_pid, home_window = int(child_pid), window
-                        break
+            # Release Godot buffers its small stdout writes until exit. Waiting
+            # for MENU_READY here deadlocks an otherwise visible working Home.
+            # Observe the actual owned window now, then require its flushed
+            # readiness marker after the normal WM_DELETE shutdown below.
+            child_list = Path(f'/proc/{home.pid}/task/{home.pid}/children')
+            for child_pid in child_list.read_text().split() if child_list.exists() else []:
+                window = x11.window(int(child_pid))
+                if window:
+                    home_pid, home_window = int(child_pid), window
+                    break
             if home_window: break
             time.sleep(0.05)
         require(home_window is not None, 'Exported Home window/readiness timed out')
+        time.sleep(2)
         shot = subprocess.run(['/usr/bin/ffmpeg', '-loglevel', 'error', '-f', 'x11grab',
                                '-video_size', '1280x800', '-i', env['DISPLAY'], '-frames:v', '1',
                                '-threads', '1', '-update', '1', str(output / 'home.png')],
@@ -398,6 +401,7 @@ def main():
         require(home.wait(timeout=12) == 0, 'Home supervisor did not exit cleanly')
         require(not Path(f'/proc/{home_pid}').exists(), 'Home native process survived')
         text = home_log.read_text()
+        require(records(text, 'MENU_READY '), 'Exported Home did not complete menu initialization')
         require('PACKAGE_SERVER_READY ' not in text and 'SCRIPT ERROR' not in text and 'ERROR:' not in text,
                 'Home produced an authority or native error')
         results.append({'case':'home', 'exit':0, 'authority_owned_by_launcher':False,
