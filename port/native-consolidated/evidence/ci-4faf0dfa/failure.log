@@ -1,0 +1,582 @@
+verify	Import and verify native project	﻿2026-09-29T13:44:42.0376273Z ##[group]Run source "$RUNNER_TEMP/godot-native/environment.sh"
+verify	Import and verify native project	2026-09-29T13:44:42.0376751Z [36;1msource "$RUNNER_TEMP/godot-native/environment.sh"[0m
+verify	Import and verify native project	2026-09-29T13:44:42.0377195Z [36;1mexport VEHICLE_EVIDENCE_ROOT="$RUNNER_TEMP/godot-native/vehicle-evidence"[0m
+verify	Import and verify native project	2026-09-29T13:44:42.0377632Z [36;1mif [[ "" == "vehicle-diagnostic" ]]; then[0m
+verify	Import and verify native project	2026-09-29T13:44:42.0378237Z [36;1m  GUEST_NODE_MODULES="$PWD/node_modules" python3 port/native-vehicle-expansion/run.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"[0m
+verify	Import and verify native project	2026-09-29T13:44:42.0378928Z [36;1melse[0m
+verify	Import and verify native project	2026-09-29T13:44:42.0379274Z [36;1m  python3 tools/godot-dev/verify.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"[0m
+verify	Import and verify native project	2026-09-29T13:44:42.0379667Z [36;1mfi[0m
+verify	Import and verify native project	2026-09-29T13:44:42.0415517Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+verify	Import and verify native project	2026-09-29T13:44:42.0415864Z env:
+verify	Import and verify native project	2026-09-29T13:44:42.0416052Z   PORT: 0
+verify	Import and verify native project	2026-09-29T13:44:42.0416247Z   COCS_VERIFY_KEEP_GOING: 1
+verify	Import and verify native project	2026-09-29T13:44:42.0416719Z   COCS_SOURCE_DERIVATIVE: /home/runner/work/cocs-godot/cocs-godot/port/contracts/lattice-catalog-derivative.json
+verify	Import and verify native project	2026-09-29T13:44:42.0417266Z ##[endgroup]
+verify	Import and verify native project	2026-09-29T13:44:43.1730074Z gate-runner-tests: PASS
+verify	Import and verify native project	2026-09-29T13:44:43.2309912Z playable-gate-registration: PASS
+verify	Import and verify native project	2026-09-29T13:44:43.7357917Z verifier-report-tests: PASS
+verify	Import and verify native project	2026-09-29T13:44:43.8821215Z ci-artifact-tests: PASS
+verify	Import and verify native project	2026-09-29T13:44:59.2379468Z native-ci-contracts: PASS
+verify	Import and verify native project	2026-09-29T13:45:02.1747718Z export-tests: PASS
+verify	Import and verify native project	2026-09-29T13:45:02.8488568Z moth-export: PASS
+verify	Import and verify native project	2026-09-29T13:45:03.0009175Z gltf-sides: PASS
+verify	Import and verify native project	2026-09-29T13:45:05.4871689Z health-hud-evidence: PASS
+verify	Import and verify native project	2026-09-29T13:45:18.9531503Z projectile-navigation: PASS
+verify	Import and verify native project	2026-09-29T13:45:19.0567182Z objective-evidence: PASS
+verify	Import and verify native project	2026-09-29T13:45:20.5383335Z objective-progression-evidence: PASS
+verify	Import and verify native project	2026-09-29T13:45:27.2143933Z objective-completion-evidence: PASS
+verify	Import and verify native project	2026-09-29T13:45:27.3220391Z launcher-options: PASS
+verify	Import and verify native project	2026-09-29T13:45:27.4371452Z package-options: PASS
+verify	Import and verify native project	2026-09-29T13:45:28.8592320Z product-shell-supervisor: PASS
+verify	Import and verify native project	2026-09-29T13:45:28.9712476Z native-graphics-options: PASS
+verify	Import and verify native project	2026-09-29T13:45:34.3364150Z native-graphics-ownership: PASS
+verify	Import and verify native project	2026-09-29T13:45:34.4342814Z lobby-options: PASS
+verify	Import and verify native project	2026-09-29T13:45:34.9769594Z lobby-ownership: PASS
+verify	Import and verify native project	2026-09-29T13:45:37.3389478Z horde-closure: PASS
+verify	Import and verify native project	2026-09-29T13:45:38.2481484Z native-arena-closure: PASS
+verify	Import and verify native project	2026-09-29T13:45:38.3461330Z package-identity-routes: PASS
+verify	Import and verify native project	2026-09-29T13:46:05.0055134Z native-arena-authority: PASS
+verify	Import and verify native project	2026-09-29T13:46:10.4303500Z local-24-roster: PASS
+verify	Import and verify native project	2026-09-29T13:46:14.5328283Z horde-ownership: PASS
+verify	Import and verify native project	2026-09-29T13:46:46.9178954Z zone-routing: PASS
+verify	Import and verify native project	2026-09-29T13:46:47.9826609Z combined-arms-evidence: PASS
+verify	Import and verify native project	2026-09-29T13:46:48.1365190Z lattice-req-generator-tests: PASS
+verify	Import and verify native project	2026-09-29T13:46:48.1802758Z lattice-req-catalog-check: PASS
+verify	Import and verify native project	2026-09-29T13:46:49.8293709Z semantic-export: PASS
+verify	Import and verify native project	2026-09-29T13:46:51.7107901Z source-inventory: PASS
+verify	Import and verify native project	2026-09-29T13:46:55.7729428Z package-manifest-contracts: PASS
+verify	Import and verify native project	2026-09-29T13:46:55.8114211Z career-catalog-check: PASS
+verify	Import and verify native project	2026-09-29T13:46:55.8849988Z finish-catalog-check: PASS
+verify	Import and verify native project	2026-09-29T13:46:56.0176778Z finish-source-palette: PASS
+verify	Import and verify native project	2026-09-29T13:46:58.8303534Z career-source-contracts: PASS
+verify	Import and verify native project	2026-09-29T13:47:00.2929670Z career-persistence: PASS
+verify	Import and verify native project	2026-09-29T13:47:01.7867170Z career-history-storage: PASS
+verify	Import and verify native project	2026-09-29T13:47:03.9145220Z career-results-source: PASS
+verify	Import and verify native project	2026-09-29T13:47:05.3190824Z career-equipment-source: PASS
+verify	Import and verify native project	2026-09-29T13:47:06.7610805Z career-equipped-source: PASS
+verify	Import and verify native project	2026-09-29T13:47:09.0385228Z social-source: PASS
+verify	Import and verify native project	2026-09-29T13:47:15.5562450Z source-tests: PASS
+verify	Import and verify native project	2026-09-29T13:47:18.4091375Z arms-race-source: PASS
+verify	Import and verify native project	2026-09-29T13:48:23.5961068Z horde-source: PASS
+verify	Import and verify native project	2026-09-29T13:48:35.1292085Z cinderwake-source: PASS
+verify	Import and verify native project	2026-09-29T13:48:42.0453301Z horde-upgrade-adapter: PASS
+verify	Import and verify native project	2026-09-29T13:49:02.2042426Z horde-adapter: PASS
+verify	Import and verify native project	2026-09-29T13:49:02.4005442Z horde-death-wire: PASS
+verify	Import and verify native project	2026-09-29T13:49:02.4424618Z horde-input-oracle: PASS
+verify	Import and verify native project	2026-09-29T13:49:11.2239055Z godot-import: PASS
+verify	Import and verify native project	2026-09-29T13:49:11.7558270Z career-projection: PASS
+verify	Import and verify native project	2026-09-29T13:49:12.0987846Z career-package-catalog: PASS
+verify	Import and verify native project	2026-09-29T13:49:12.5308636Z career-identity-native: PASS
+verify	Import and verify native project	2026-09-29T13:49:13.4380275Z career-equipment-native: PASS
+verify	Import and verify native project	2026-09-29T13:49:13.8764514Z career-equipped-model: PASS
+verify	Import and verify native project	2026-09-29T13:49:14.4075194Z career-equipped-ui: PASS
+verify	Import and verify native project	2026-09-29T13:49:15.8118807Z career-player-flow-clarity-source: PASS
+verify	Import and verify native project	2026-09-29T13:49:16.2482788Z career-player-flow-clarity-model: PASS
+verify	Import and verify native project	2026-09-29T13:49:16.7801666Z career-player-flow-clarity-ui: PASS
+verify	Import and verify native project	2026-09-29T13:50:32.2791462Z career-player-flow-clarity-journey: PASS
+verify	Import and verify native project	2026-09-29T13:50:33.1852942Z career-equipped-lobby: PASS
+verify	Import and verify native project	2026-09-29T13:51:46.9891731Z career-equipped-journey: PASS
+verify	Import and verify native project	2026-09-29T13:51:48.2764517Z career-results-native: PASS
+verify	Import and verify native project	2026-09-29T13:51:48.7151951Z career-history-native: PASS
+verify	Import and verify native project	2026-09-29T13:51:49.3411467Z career-results-history-ui: PASS
+verify	Import and verify native project	2026-09-29T13:51:53.7795609Z social-native: PASS
+verify	Import and verify native project	2026-09-29T13:51:58.0406516Z reconnect-source-native: PASS
+verify	Import and verify native project	2026-09-29T13:52:00.3938909Z reconnect-offline-results: PASS
+verify	Import and verify native project	2026-09-29T13:52:00.8307322Z reconnect-menu: PASS
+verify	Import and verify native project	2026-09-29T13:52:02.0157511Z career-modal: PASS
+verify	Import and verify native project	2026-09-29T13:52:02.5480797Z cinderwake-native: PASS
+verify	Import and verify native project	2026-09-29T13:52:05.9661671Z identity-horde-composition: PASS
+verify	Import and verify native project	2026-09-29T13:52:06.4060485Z loadout-unit: PASS
+verify	Import and verify native project	2026-09-29T13:52:06.7512489Z loadout-source-parity: PASS
+verify	Import and verify native project	2026-09-29T13:52:07.0955520Z loadout-client: PASS
+verify	Import and verify native project	2026-09-29T13:52:07.9058481Z loadout-setup: PASS
+verify	Import and verify native project	2026-09-29T13:52:10.1112275Z loadout-lobby: PASS
+verify	Import and verify native project	2026-09-29T13:52:12.3196590Z loadout-session: PASS
+verify	Import and verify native project	2026-09-29T13:53:00.5556471Z loadout-loopback: PASS
+verify	Import and verify native project	2026-09-29T13:53:19.2850212Z loadout-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T13:53:23.7229792Z viewer-smoke: PASS
+verify	Import and verify native project	2026-09-29T13:53:26.4870216Z graphics-terrain: PASS
+verify	Import and verify native project	2026-09-29T13:53:26.8318810Z moth-resources: PASS
+verify	Import and verify native project	2026-09-29T13:53:30.9014176Z graphics-atmosphere: PASS
+verify	Import and verify native project	2026-09-29T13:53:31.3407491Z graphics-fx: PASS
+verify	Import and verify native project	2026-09-29T13:53:36.3385706Z moth-scenery: PASS
+verify	Import and verify native project	2026-09-29T13:53:36.6831987Z shader-lab: PASS
+verify	Import and verify native project	2026-09-29T13:53:37.6804568Z particle-lab: PASS
+verify	Import and verify native project	2026-09-29T13:53:43.4236628Z showcase-startup: PASS
+verify	Import and verify native project	2026-09-29T13:54:12.9563097Z aurora-traversal: PASS
+verify	Import and verify native project	2026-09-29T13:55:13.6378482Z cinder-traversal: PASS
+verify	Import and verify native project	2026-09-29T13:55:16.0292431Z exploration-walker: PASS
+verify	Import and verify native project	2026-09-29T13:55:16.5611857Z first-person-rig: PASS
+verify	Import and verify native project	2026-09-29T13:55:17.0945847Z first-person-finishes: PASS
+verify	Import and verify native project	2026-09-29T13:55:18.8249639Z finish-source-journey: PASS
+verify	Import and verify native project	2026-09-29T13:55:19.2656377Z finish-native-source-replay: PASS
+verify	Import and verify native project	2026-09-29T13:55:20.1810537Z first-person-binding: PASS
+verify	Import and verify native project	2026-09-29T13:55:20.7146728Z first-person-ads: PASS
+verify	Import and verify native project	2026-09-29T13:55:21.5272204Z first-person-recoil: PASS
+verify	Import and verify native project	2026-09-29T13:55:23.4265511Z combat-actions: PASS
+verify	Import and verify native project	2026-09-29T13:55:24.2368574Z combat-shields: PASS
+verify	Import and verify native project	2026-09-29T13:55:24.6773652Z combat-shield-capacity: PASS
+verify	Import and verify native project	2026-09-29T13:55:25.1158459Z combat-particles: PASS
+verify	Import and verify native project	2026-09-29T13:55:25.5551920Z combat-pickup-assets: PASS
+verify	Import and verify native project	2026-09-29T13:55:26.4603166Z weapon-effects: PASS
+verify	Import and verify native project	2026-09-29T13:55:26.9928507Z weapon-effects-rig: PASS
+verify	Import and verify native project	2026-09-29T13:55:27.5270271Z muzzle-sight-geometry: PASS
+verify	Import and verify native project	2026-09-29T13:55:28.1525807Z muzzle-path-geometry: PASS
+verify	Import and verify native project	2026-09-29T13:55:28.4987538Z projectile-flight: PASS
+verify	Import and verify native project	2026-09-29T13:55:28.9360064Z alt-fire: PASS
+verify	Import and verify native project	2026-09-29T13:55:30.0248113Z weapon-handling: PASS
+verify	Import and verify native project	2026-09-29T13:55:30.6547424Z weapon-detail: PASS
+verify	Import and verify native project	2026-09-29T13:55:31.4611551Z weapon-export: PASS
+verify	Import and verify native project	2026-09-29T13:55:31.5019513Z world-weapon-identity: PASS
+verify	Import and verify native project	2026-09-29T13:55:31.8476429Z player-fx-direction: PASS
+verify	Import and verify native project	2026-09-29T13:55:32.1939082Z player-fx-low-health: PASS
+verify	Import and verify native project	2026-09-29T13:55:32.5379164Z player-fx-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T13:55:33.0698583Z player-fx-marks: PASS
+verify	Import and verify native project	2026-09-29T13:55:33.6010093Z player-fx-impacts: PASS
+verify	Import and verify native project	2026-09-29T13:55:33.9450227Z player-fx-overlay: PASS
+verify	Import and verify native project	2026-09-29T13:55:35.2251746Z player-fx-integration: PASS
+verify	Import and verify native project	2026-09-29T13:55:36.7838423Z benchmark-contracts: PASS
+verify	Import and verify native project	2026-09-29T13:55:36.8844386Z benchmark-tools: PASS
+verify	Import and verify native project	2026-09-29T13:57:01.5984878Z benchmark-autostart: PASS
+verify	Import and verify native project	2026-09-29T13:57:02.0391088Z material-language: PASS
+verify	Import and verify native project	2026-09-29T13:57:02.6607356Z material-derived: PASS
+verify	Import and verify native project	2026-09-29T13:57:37.8357715Z identity-zone-route: PASS
+verify	Import and verify native project	2026-09-29T13:58:20.4525238Z debug-tools: PASS
+verify	Import and verify native project	2026-09-29T13:58:23.3164704Z debug-panel: PASS
+verify	Import and verify native project	2026-09-29T13:58:23.6628734Z mode-diagnostics: PASS
+verify	Import and verify native project	2026-09-29T13:58:35.0346196Z blood-live-harness: PASS
+verify	Import and verify native project	2026-09-29T13:59:10.9678862Z blood-live-native: PASS
+verify	Import and verify native project	2026-09-29T13:59:11.5219157Z route-parity: PASS
+verify	Import and verify native project	2026-09-29T13:59:12.6115839Z main-menu-smoke: PASS
+verify	Import and verify native project	2026-09-29T13:59:19.8412104Z main-menu-contracts: PASS
+verify	Import and verify native project	2026-09-29T13:59:21.5869980Z product-shell-settings: PASS
+verify	Import and verify native project	2026-09-29T14:02:11.6753951Z product-shell-journey: PASS
+verify	Import and verify native project	2026-09-29T14:03:24.9613991Z player-flow-journey: PASS
+verify	Import and verify native project	2026-09-29T14:03:26.8636747Z player-flow-controls: PASS
+verify	Import and verify native project	2026-09-29T14:03:37.8175830Z product-shell-guest-leave: PASS
+verify	Import and verify native project	2026-09-29T14:03:38.3568461Z material-coverage-floor: PASS
+verify	Import and verify native project	2026-09-29T14:03:38.8380705Z release-pipeline-tools: PASS
+verify	Import and verify native project	2026-09-29T14:03:39.4646714Z blood-fx-contracts: PASS
+verify	Import and verify native project	2026-09-29T14:03:40.2767702Z blood-fx-surfaces: PASS
+verify	Import and verify native project	2026-09-29T14:03:41.2753952Z blood-fx-stress: PASS
+verify	Import and verify native project	2026-09-29T14:03:42.6976220Z combat-integration-oracle: PASS
+verify	Import and verify native project	2026-09-29T14:03:45.8349202Z combat-integration: PASS
+verify	Import and verify native project	2026-09-29T14:03:47.1126681Z combat-combined-integration: PASS
+verify	Import and verify native project	2026-09-29T14:03:48.0169550Z combat-remote-muzzle: PASS
+verify	Import and verify native project	2026-09-29T14:03:48.4568129Z identity-horde-occlusion: PASS
+verify	Import and verify native project	2026-09-29T14:04:03.3428817Z native-arena-maps: PASS
+verify	Import and verify native project	2026-09-29T14:04:05.6443196Z native-arena-session: PASS
+verify	Import and verify native project	2026-09-29T14:04:08.3190980Z native-arena-composition: PASS
+verify	Import and verify native project	2026-09-29T14:04:10.2850707Z identity-prototype-graybox: PASS
+verify	Import and verify native project	2026-09-29T14:04:12.5138020Z identity-prototype-oracle: PASS
+verify	Import and verify native project	2026-09-29T14:04:13.2339093Z identity-prototype-rays: PASS
+verify	Import and verify native project	2026-09-29T14:04:14.3242221Z identity-prototype-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T14:04:21.7985399Z native-arena-prism: PASS
+verify	Import and verify native project	2026-09-29T14:04:30.5127406Z native-arena-aurora: PASS
+verify	Import and verify native project	2026-09-29T14:04:35.3518332Z native-arena-cinder: PASS
+verify	Import and verify native project	2026-09-29T14:04:35.6982855Z glb-import: PASS
+verify	Import and verify native project	2026-09-29T14:04:36.0448899Z glb-sides: PASS
+verify	Import and verify native project	2026-09-29T14:04:36.3944405Z input-queue: PASS
+verify	Import and verify native project	2026-09-29T14:04:36.7408531Z protocol-envelopes: PASS
+verify	Import and verify native project	2026-09-29T14:04:37.3706655Z packet-replay: PASS
+verify	Import and verify native project	2026-09-29T14:04:39.7583704Z native-live: PASS
+verify	Import and verify native project	2026-09-29T14:04:40.5728533Z presentation-replay: PASS
+verify	Import and verify native project	2026-09-29T14:04:42.1300348Z round-boundaries: PASS
+verify	Import and verify native project	2026-09-29T14:05:45.6835599Z native-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T14:05:46.7783010Z combat-feedback: PASS
+verify	Import and verify native project	2026-09-29T14:05:48.5284589Z projectiles: PASS
+verify	Import and verify native project	2026-09-29T14:05:51.3898372Z audio-feedback: PASS
+verify	Import and verify native project	2026-09-29T14:05:51.9219342Z local-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T14:05:52.3611864Z pickup-presentation: PASS
+verify	Import and verify native project	2026-09-29T14:05:52.8926843Z entity-visuals: PASS
+verify	Import and verify native project	2026-09-29T14:05:53.9830097Z operator-geometry: PASS
+verify	Import and verify native project	2026-09-29T14:05:54.3281152Z world-weapon-import: PASS
+verify	Import and verify native project	2026-09-29T14:05:55.2310343Z world-weapon-grips: PASS
+verify	Import and verify native project	2026-09-29T14:05:56.6986513Z native-trace: PASS
+verify	Import and verify native project	2026-09-29T14:05:58.1632801Z guest-session: PASS
+verify	Import and verify native project	2026-09-29T14:05:59.6268412Z lobby-flow: PASS
+verify	Import and verify native project	2026-09-29T14:05:59.9717039Z lobby-spectator-context: PASS
+verify	Import and verify native project	2026-09-29T14:06:01.4363389Z match-selection: PASS
+verify	Import and verify native project	2026-09-29T14:06:02.1551888Z scoreboard: PASS
+verify	Import and verify native project	2026-09-29T14:06:02.4991874Z team-scores: PASS
+verify	Import and verify native project	2026-09-29T14:06:05.0810069Z scoreboard-session: PASS
+verify	Import and verify native project	2026-09-29T14:06:07.7564957Z game-hud: PASS
+verify	Import and verify native project	2026-09-29T14:06:10.5227478Z game-hud-setup: PASS
+verify	Import and verify native project	2026-09-29T14:06:12.2642016Z game-hud-debug: PASS
+verify	Import and verify native project	2026-09-29T14:06:12.6096264Z puma-presentation: PASS
+verify	Import and verify native project	2026-09-29T14:06:14.0737328Z zone-modes: PASS
+verify	Import and verify native project	2026-09-29T14:06:14.2006196Z objective-expansion-routes: PASS
+verify	Import and verify native project	2026-09-29T14:06:16.7377462Z objective-source-completion: PASS
+verify	Import and verify native project	2026-09-29T14:07:19.9870830Z uplink-live-timeout: PASS
+verify	Import and verify native project	2026-09-29T14:08:23.3012659Z holdout-live-timeout: PASS
+verify	Import and verify native project	2026-09-29T14:09:26.7573858Z assault-live-timeout: PASS
+verify	Import and verify native project	2026-09-29T14:09:42.3248447Z uplink-controlled-completion: PASS
+verify	Import and verify native project	2026-09-29T14:10:27.0042674Z holdout-controlled-completion: PASS
+verify	Import and verify native project	2026-09-29T14:10:48.8624596Z assault-controlled-completion: PASS
+verify	Import and verify native project	2026-09-29T14:10:50.3268240Z objective-zone-variants: PASS
+verify	Import and verify native project	2026-09-29T14:10:50.6743759Z objective-assault-state: PASS
+verify	Import and verify native project	2026-09-29T14:10:51.0221725Z objective-scoreboard: PASS
+verify	Import and verify native project	2026-09-29T14:10:52.6942225Z vehicle-source-oracle: PASS
+verify	Import and verify native project	2026-09-29T14:10:54.3838036Z vehicle-room-edge-oracle: PASS
+verify	Import and verify native project	2026-09-29T14:10:54.7306429Z vehicle-fleet-visuals: PASS
+verify	Import and verify native project	2026-09-29T14:10:56.1960261Z vehicle-shared-shot-owner: PASS
+verify	Import and verify native project	2026-09-29T14:13:43.7112859Z vehicle-three-native-crew: FAIL
+verify	Import and verify native project	2026-09-29T14:13:43.7113660Z --- host.log (2096897 bytes): first errors ---
+verify	Import and verify native project	2026-09-29T14:13:43.7114126Z (none)
+verify	Import and verify native project	2026-09-29T14:13:43.7114500Z --- host.log: last 4096 bytes ---
+verify	Import and verify native project	2026-09-29T14:13:43.7115792Z ":false,"fire":false,"grenade":false,"interact":false,"jump":false,"pitch":0.0,"power":false,"reload":false,"sprint":false,"x":0.0,"yaw":2.74,"z":0.0},"peer":1,"result":0,"role":"host","room":"R9QZ","seconds":87.4847180000001,"stage":"mounted"}
+verify	Import and verify native project	2026-09-29T14:13:43.7135314Z CREW_SAMPLE {"ack":485,"actor":{"active":0.0,"activeSpeedMultiplier":1.6,"ads":false,"alt":false,"ammo":["∞",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"armor":5.0,"attachments":{"behaviors":[],"items":[],"modifiers":{"bloomMax":1.0,"bloomPerShot":1.0,"burst":0.0,"cap":0.0,"damage":1.0,"interval":1.0,"pellets":0.0,"range":1.0,"recoilKick":1.0,"reload":1.0,"spread":1.0},"visual":{"barrel":"stock","magazine":"stock","optic":"none","underbarrel":"none"}},"baseHeight":1.8,"bodyYaw":2.74,"bot":null,"botScan":43.189,"braceKnockbackScale":1.0,"braceMitigation":0.0,"braceTimer":0.0,"burst":0.0,"burstLeft":0.0,"burstTimer":0.0,"carrySpeedMultiplier":1.0,"carryingFlag":false,"character":"chatgpt","cooldown":0.0,"cooldownMultiplier":1.0,"coyote":0.1,"crouching":false,"damageMultiplier":1.0,"dead":0.0,"deaths":0.0,"eyeHeight":1.45,"finish":null,"firingThisTick":false,"frags":0.0,"gear":{"armor":0.0,"damage":1.0,"health":0.0,"speed":1.0,"spread":1.0},"gearDamage":1.0,"gearSpeed":1.0,"gearSpread":1.0,"glideSteer":0.0,"grenadeCooldown":0.0,"grounded":true,"harness":"hermes","health":100.0,"hitScale":1.0,"holsterSkip":0.0,"id":0.0,"inputCrouch":false,"inputJump":false,"inputMobility":false,"juggernaut":false,"juggernautDamage":1.0,"juggernautShield":0.0,"jumpBuffer":0.0,"jumpCutArmed":false,"jumpHeld":false,"ladder":0.0,"lastValid":{"x":-61.95,"y":0.2,"z":-3.6},"maxHealth":100.0,"melee":0.0,"moveSpeed":8.6,"movement":{"activeTime":0.0,"anchor":null,"chains":0.0,"charges":0.0,"cooldown":0.0,"enabled":true,"fuel":0.0,"fuelRecharge":0.0,"grapple":null,"grappleLanding":null,"landingArmed":false,"maxCharges":0.0,"maxFuel":0.0,"miss":0.0,"phase":"ready","recovery":0.0,"v":1.0,"verb":"grapple","windup":0.0},"movementLanded":false,"name":"Vehicle crew","pitch":0.0,"powerups":{},"protection":0.0,"punchPitch":0.0,"punchVelPitch":0.0,"punchVelYaw":0.0,"punchYaw":0.0,"reloadDuration":0.0,"reloadTimer":0.0,"reloadWeapon":-1.0,"reloading":false,"riderSpeedBonus":0.0,"riderSpeedTimer":0.0,"scoreStats":{"captures":0.0,"damage":0.0,"flagDrops":0.0,"flagPickups":0.0,"flagReturns":0.0,"hits":0.0,"objectiveCaptures":1.0,"objectiveContests":0.0,"objectiveNeutralizations":0.0,"objectiveTime":3.5,"shots":0.0},"shotWait":0.0,"shots":0.0,"slideCooldown":0.0,"slideTimer":0.0,"sliding":false,"slow":0.0,"slowMultiplier":0.55,"spawnArmor":5.0,"speedMultiplier":1.0,"spread":0.0,"sprinting":false,"streak":0.0,"team":0.0,"temporaryShield":0.0,"threatPing":0.0,"traversalCooldown":0.0,"traversalEvent":null,"traversalFlight":false,"traversalPad":null,"traversalTarget":null,"upgradeBase":-1.0,"upgradeTimer":0.0,"upgradeWeapon":null,"vehicleId":"sunscar-0-puma","vehicleSeat":"driver","vehicleSeatIndex":0.0,"verbState":{"active":true,"open":false,"shotsLeft":0.0,"verb":"adaptive","windowIn":0.0},"vx":0.0,"vy":0.0,"vz":0.0,"weapon":0.0,"weaponSwitch":0.0,"x":-61.95,"y":0.2,"yaw":2.74,"z":-3.6,"zipRide":null},"actor_id":0,"camera":[-71.0,5.0,-3.99816703796387],"eligible":true,"engaged":false,"focused":true,"hands_visible":false,"muzzle_count":0,"peer":1,"phase":"active","render_puma":[-62.0,0.0,-4.0],"role":"host","room":"R9QZ","round":null,"seconds":87.4847180000001,"snapshot_seq":2659,"source_puma":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":1.0,"health":300.0,"heat":0.0,"id":"sunscar-0-puma","kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.0,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":0.0,"vy":0.0,"vz":0.0,"x":-62.0,"y":0.0,"yaw":1.571,"z":-4.0},"stage":"mounted","vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":1.0,"health":300.0,"heat":0.0,"id":"sunscar-0-puma","kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.0,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":0.0,"vy":0.0,"vz":0.0,"x":-62.0,"y":0.0,"yaw":1.571,"z":-4.0},"window_focus":true}
+verify	Import and verify native project	2026-09-29T14:13:43.7147797Z 
+verify	Import and verify native project	2026-09-29T14:13:43.7148013Z --- guest.log (2167876 bytes): first errors ---
+verify	Import and verify native project	2026-09-29T14:13:43.7148338Z (none)
+verify	Import and verify native project	2026-09-29T14:13:43.7148590Z --- guest.log: last 4096 bytes ---
+verify	Import and verify native project	2026-09-29T14:13:43.7149333Z int":false,"x":0.0,"yaw":-1.57079637050629,"z":0.0},"peer":2,"result":0,"role":"guest","room":"R9QZ","seconds":78.7166666666668,"stage":"observe"}
+verify	Import and verify native project	2026-09-29T14:13:43.7166073Z CREW_SAMPLE {"ack":498,"actor":{"active":0.0,"activeSpeedMultiplier":1.0,"ads":false,"alt":false,"ammo":["∞",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,32.0],"armor":0.0,"attachments":{"behaviors":[],"items":[],"modifiers":{"bloomMax":1.0,"bloomPerShot":1.0,"burst":0.0,"cap":0.0,"damage":1.0,"interval":1.0,"pellets":0.0,"range":1.0,"recoilKick":1.0,"reload":1.0,"spread":1.0},"visual":{"barrel":"stock","magazine":"stock","optic":"none","underbarrel":"none"}},"baseHeight":1.8,"bodyYaw":-1.571,"bot":null,"botScan":43.189,"braceKnockbackScale":1.0,"braceMitigation":0.0,"braceTimer":0.0,"burst":0.0,"burstLeft":0.0,"burstTimer":0.0,"carrySpeedMultiplier":1.0,"carryingFlag":false,"character":"chatgpt","cooldown":0.0,"cooldownMultiplier":1.0,"coyote":0.1,"crouching":false,"damageMultiplier":1.0,"dead":0.0,"deaths":0.0,"eyeHeight":1.45,"finish":null,"firingThisTick":false,"frags":0.0,"gear":{"armor":0.0,"damage":1.0,"health":0.0,"speed":1.0,"spread":1.0},"gearDamage":1.0,"gearSpeed":1.0,"gearSpread":1.0,"glideSteer":0.0,"grenadeCooldown":0.0,"grounded":true,"harness":"openclaw","health":10.0,"hitScale":1.0,"holsterSkip":0.0,"id":1.0,"inputCrouch":false,"inputJump":false,"inputMobility":false,"juggernaut":false,"juggernautDamage":1.0,"juggernautShield":0.0,"jumpBuffer":0.0,"jumpCutArmed":false,"jumpHeld":false,"ladder":0.0,"lastValid":{"x":-54.461,"y":0.55,"z":-7.764},"maxHealth":100.0,"melee":0.0,"moveSpeed":8.6,"movement":{"activeTime":0.0,"anchor":null,"chains":0.0,"charges":0.0,"cooldown":0.0,"enabled":true,"fuel":0.0,"fuelRecharge":0.0,"grapple":null,"grappleLanding":null,"landingArmed":false,"maxCharges":0.0,"maxFuel":0.0,"miss":0.0,"phase":"ready","recovery":0.0,"v":1.0,"verb":"grapple","windup":0.0},"movementLanded":false,"name":"Godot guest","pitch":0.0,"powerups":{},"protection":0.0,"punchPitch":0.0,"punchVelPitch":0.0,"punchVelYaw":0.0,"punchYaw":0.0,"reloadDuration":0.0,"reloadTimer":0.0,"reloadWeapon":-1.0,"reloading":false,"riderSpeedBonus":0.0,"riderSpeedTimer":0.0,"scoreStats":{"captures":0.0,"damage":0.0,"flagDrops":0.0,"flagPickups":0.0,"flagReturns":0.0,"hits":0.0,"objectiveCaptures":0.0,"objectiveContests":0.0,"objectiveNeutralizations":0.0,"objectiveTime":0.0,"shots":132.0},"shotWait":0.0,"shots":132.0,"slideCooldown":0.0,"slideTimer":0.0,"sliding":false,"slow":0.0,"slowMultiplier":0.55,"spawnArmor":5.0,"speedMultiplier":1.0,"spread":0.0,"sprinting":false,"streak":0.0,"team":1.0,"temporaryShield":0.0,"threatPing":0.0,"traversalCooldown":0.0,"traversalEvent":null,"traversalFlight":false,"traversalPad":null,"traversalTarget":null,"upgradeBase":-1.0,"upgradeTimer":0.0,"upgradeWeapon":null,"vehicleId":"sunscar-0-puma","vehicleSeat":"gunner","vehicleSeatIndex":0.0,"verbState":{"active":true,"open":false,"shotsLeft":0.0,"verb":"adaptive","windowIn":0.0},"vx":1.082,"vy":0.0,"vz":-2.216,"weapon":9.0,"weaponSwitch":0.0,"x":-54.461,"y":0.55,"yaw":-1.571,"z":-7.764,"zipRide":null},"actor_id":1,"camera":[-54.4609985351562,2.0,-7.76399993896484],"eligible":true,"engaged":false,"focused":true,"hands_visible":false,"muzzle_count":0,"peer":2,"phase":"active","render_puma":[-54.0610008239746,0.0,-8.68099975585938],"role":"guest","room":"R9QZ","round":null,"seconds":78.7166666666668,"snapshot_seq":3364,"source_puma":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":1.0,"health":300.0,"heat":0.0,"id":"sunscar-0-puma","kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[2.0],"pitchBody":-0.025,"respawnTimer":0.0,"roll":-0.018,"turretYaw":-1.16,"vx":1.082,"vy":0.0,"vz":-2.216,"x":-54.061,"y":0.0,"yaw":2.73,"z":-8.681},"stage":"observe","vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":1.0,"health":300.0,"heat":0.0,"id":"sunscar-0-puma","kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[2.0],"pitchBody":-0.025,"respawnTimer":0.0,"roll":-0.018,"turretYaw":-1.16,"vx":1.082,"vy":0.0,"vz":-2.216,"x":-54.061,"y":0.0,"yaw":2.73,"z":-8.681},"window_focus":true}
+verify	Import and verify native project	2026-09-29T14:13:43.7176865Z 
+verify	Import and verify native project	2026-09-29T14:13:43.7177054Z --- passenger.log (2222314 bytes): first errors ---
+verify	Import and verify native project	2026-09-29T14:13:43.7177346Z (none)
+verify	Import and verify native project	2026-09-29T14:13:43.7177596Z --- passenger.log: last 4096 bytes ---
+verify	Import and verify native project	2026-09-29T14:13:43.7178185Z x":0.0,"yaw":-0.391,"z":0.0},"peer":3,"result":0,"role":"passenger","room":"R9QZ","seconds":71.7255310000001,"stage":"observe"}
+verify	Import and verify native project	2026-09-29T14:13:43.7194826Z CREW_SAMPLE {"ack":527,"actor":{"active":0.0,"activeSpeedMultiplier":1.0,"ads":false,"alt":false,"ammo":["∞",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"armor":5.0,"attachments":{"behaviors":[],"items":[],"modifiers":{"bloomMax":1.0,"bloomPerShot":1.0,"burst":0.0,"cap":0.0,"damage":1.0,"interval":1.0,"pellets":0.0,"range":1.0,"recoilKick":1.0,"reload":1.0,"spread":1.0},"visual":{"barrel":"stock","magazine":"stock","optic":"none","underbarrel":"none"}},"baseHeight":1.8,"bodyYaw":-0.391,"bot":null,"botScan":43.189,"braceKnockbackScale":1.0,"braceMitigation":0.0,"braceTimer":0.0,"burst":0.0,"burstLeft":0.0,"burstTimer":0.0,"carrySpeedMultiplier":1.0,"carryingFlag":false,"character":"chatgpt","cooldown":0.0,"cooldownMultiplier":1.0,"coyote":0.1,"crouching":false,"damageMultiplier":1.0,"dead":0.0,"deaths":0.0,"eyeHeight":1.45,"finish":null,"firingThisTick":false,"frags":0.0,"gear":{"armor":0.0,"damage":1.0,"health":0.0,"speed":1.0,"spread":1.0},"gearDamage":1.0,"gearSpeed":1.0,"gearSpread":1.0,"glideSteer":0.0,"grenadeCooldown":0.0,"grounded":true,"harness":"openclaw","health":100.0,"hitScale":1.0,"holsterSkip":0.0,"id":2.0,"inputCrouch":false,"inputJump":false,"inputMobility":false,"juggernaut":false,"juggernautDamage":1.0,"juggernautShield":0.0,"jumpBuffer":0.0,"jumpCutArmed":false,"jumpHeld":false,"ladder":0.0,"lastValid":{"x":-54.318,"y":0.2,"z":-9.081},"maxHealth":100.0,"melee":0.0,"moveSpeed":8.6,"movement":{"activeTime":0.0,"anchor":null,"chains":0.0,"charges":0.0,"cooldown":0.0,"enabled":true,"fuel":0.0,"fuelRecharge":0.0,"grapple":null,"grappleLanding":null,"landingArmed":false,"maxCharges":0.0,"maxFuel":0.0,"miss":0.0,"phase":"ready","recovery":0.0,"v":1.0,"verb":"grapple","windup":0.0},"movementLanded":false,"name":"Godot guest","pitch":0.0,"powerups":{},"protection":0.0,"punchPitch":0.0,"punchVelPitch":0.0,"punchVelYaw":0.0,"punchYaw":0.0,"reloadDuration":0.0,"reloadTimer":0.0,"reloadWeapon":-1.0,"reloading":false,"riderSpeedBonus":0.0,"riderSpeedTimer":0.0,"scoreStats":{"captures":0.0,"damage":0.0,"flagDrops":0.0,"flagPickups":0.0,"flagReturns":0.0,"hits":0.0,"objectiveCaptures":0.0,"objectiveContests":0.0,"objectiveNeutralizations":0.0,"objectiveTime":5.467,"shots":27.0},"shotWait":0.0,"shots":27.0,"slideCooldown":0.0,"slideTimer":0.0,"sliding":false,"slow":0.0,"slowMultiplier":0.55,"spawnArmor":5.0,"speedMultiplier":1.0,"spread":0.0,"sprinting":false,"streak":0.0,"team":0.0,"temporaryShield":0.0,"threatPing":0.0,"traversalCooldown":0.0,"traversalEvent":null,"traversalFlight":false,"traversalPad":null,"traversalTarget":null,"upgradeBase":-1.0,"upgradeTimer":0.0,"upgradeWeapon":null,"vehicleId":"sunscar-0-puma","vehicleSeat":"passenger","vehicleSeatIndex":0.0,"verbState":{"active":true,"open":false,"shotsLeft":0.0,"verb":"adaptive","windowIn":0.0},"vx":0.841,"vy":0.0,"vz":-1.864,"weapon":0.0,"weaponSwitch":0.0,"x":-54.318,"y":0.2,"yaw":-0.391,"z":-9.081,"zipRide":null},"actor_id":2,"camera":[-54.318000793457,1.64999997615814,-9.08100032806396],"eligible":true,"engaged":false,"focused":true,"hands_visible":false,"muzzle_count":0,"peer":3,"phase":"active","render_puma":[-53.9669990539551,0.0,-8.88199996948242],"role":"passenger","room":"R9QZ","round":null,"seconds":71.7255310000001,"snapshot_seq":3367,"source_puma":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":1.0,"health":300.0,"heat":0.0,"id":"sunscar-0-puma","kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[2.0],"pitchBody":-0.025,"respawnTimer":0.0,"roll":-0.011,"turretYaw":-1.179,"vx":0.841,"vy":0.0,"vz":-1.864,"x":-53.967,"y":0.0,"yaw":2.75,"z":-8.882},"stage":"observe","vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":1.0,"health":300.0,"heat":0.0,"id":"sunscar-0-puma","kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[2.0],"pitchBody":-0.025,"respawnTimer":0.0,"roll":-0.011,"turretYaw":-1.179,"vx":0.841,"vy":0.0,"vz":-1.864,"x":-53.967,"y":0.0,"yaw":2.75,"z":-8.882},"window_focus":true}
+verify	Import and verify native project	2026-09-29T14:13:43.7211299Z 
+verify	Import and verify native project	2026-09-29T14:13:43.7211539Z --- server.log (0 bytes): first errors ---
+verify	Import and verify native project	2026-09-29T14:13:43.7211824Z (none)
+verify	Import and verify native project	2026-09-29T14:13:43.7212091Z --- server.log: last 4096 bytes ---
+verify	Import and verify native project	2026-09-29T14:13:43.7212262Z 
+verify	Import and verify native project	2026-09-29T14:13:43.7212424Z --- xvfb.log (2348 bytes): first errors ---
+verify	Import and verify native project	2026-09-29T14:13:43.7212689Z (none)
+verify	Import and verify native project	2026-09-29T14:13:43.7212928Z --- xvfb.log: last 4096 bytes ---
+verify	Import and verify native project	2026-09-29T14:13:43.7213270Z The XKEYBOARD keymap compiler (xkbcomp) reports:
+verify	Import and verify native project	2026-09-29T14:13:43.7213710Z > Warning:          Could not resolve keysym XF86CameraAccessEnable
+verify	Import and verify native project	2026-09-29T14:13:43.7214184Z > Warning:          Could not resolve keysym XF86CameraAccessDisable
+verify	Import and verify native project	2026-09-29T14:13:43.7214632Z > Warning:          Could not resolve keysym XF86CameraAccessToggle
+verify	Import and verify native project	2026-09-29T14:13:43.7215287Z > Warning:          Could not resolve keysym XF86NextElement
+verify	Import and verify native project	2026-09-29T14:13:43.7215725Z > Warning:          Could not resolve keysym XF86PreviousElement
+verify	Import and verify native project	2026-09-29T14:13:43.7216188Z > Warning:          Could not resolve keysym XF86AutopilotEngageToggle
+verify	Import and verify native project	2026-09-29T14:13:43.7216638Z > Warning:          Could not resolve keysym XF86MarkWaypoint
+verify	Import and verify native project	2026-09-29T14:13:43.7217050Z > Warning:          Could not resolve keysym XF86Sos
+verify	Import and verify native project	2026-09-29T14:13:43.7217437Z > Warning:          Could not resolve keysym XF86NavChart
+verify	Import and verify native project	2026-09-29T14:13:43.7217844Z > Warning:          Could not resolve keysym XF86FishingChart
+verify	Import and verify native project	2026-09-29T14:13:43.7218268Z > Warning:          Could not resolve keysym XF86SingleRangeRadar
+verify	Import and verify native project	2026-09-29T14:13:43.7218703Z > Warning:          Could not resolve keysym XF86DualRangeRadar
+verify	Import and verify native project	2026-09-29T14:13:43.7219132Z > Warning:          Could not resolve keysym XF86RadarOverlay
+verify	Import and verify native project	2026-09-29T14:13:43.7219548Z > Warning:          Could not resolve keysym XF86TraditionalSonar
+verify	Import and verify native project	2026-09-29T14:13:43.7219971Z > Warning:          Could not resolve keysym XF86ClearvuSonar
+verify	Import and verify native project	2026-09-29T14:13:43.7220374Z > Warning:          Could not resolve keysym XF86SidevuSonar
+verify	Import and verify native project	2026-09-29T14:13:43.7220761Z > Warning:          Could not resolve keysym XF86NavInfo
+verify	Import and verify native project	2026-09-29T14:13:43.7221129Z Errors from xkbcomp are not fatal to the X server
+verify	Import and verify native project	2026-09-29T14:13:43.7221507Z The XKEYBOARD keymap compiler (xkbcomp) reports:
+verify	Import and verify native project	2026-09-29T14:13:43.7221921Z > Warning:          Could not resolve keysym XF86CameraAccessEnable
+verify	Import and verify native project	2026-09-29T14:13:43.7222367Z > Warning:          Could not resolve keysym XF86CameraAccessDisable
+verify	Import and verify native project	2026-09-29T14:13:43.7222815Z > Warning:          Could not resolve keysym XF86CameraAccessToggle
+verify	Import and verify native project	2026-09-29T14:13:43.7223233Z > Warning:          Could not resolve keysym XF86NextElement
+verify	Import and verify native project	2026-09-29T14:13:43.7223660Z > Warning:          Could not resolve keysym XF86PreviousElement
+verify	Import and verify native project	2026-09-29T14:13:43.7224111Z > Warning:          Could not resolve keysym XF86AutopilotEngageToggle
+verify	Import and verify native project	2026-09-29T14:13:43.7224548Z > Warning:          Could not resolve keysym XF86MarkWaypoint
+verify	Import and verify native project	2026-09-29T14:13:43.7224933Z > Warning:          Could not resolve keysym XF86Sos
+verify	Import and verify native project	2026-09-29T14:13:43.7225391Z > Warning:          Could not resolve keysym XF86NavChart
+verify	Import and verify native project	2026-09-29T14:13:43.7225792Z > Warning:          Could not resolve keysym XF86FishingChart
+verify	Import and verify native project	2026-09-29T14:13:43.7226526Z > Warning:          Could not resolve keysym XF86SingleRangeRadar
+verify	Import and verify native project	2026-09-29T14:13:43.7226958Z > Warning:          Could not resolve keysym XF86DualRangeRadar
+verify	Import and verify native project	2026-09-29T14:13:43.7227373Z > Warning:          Could not resolve keysym XF86RadarOverlay
+verify	Import and verify native project	2026-09-29T14:13:43.7227798Z > Warning:          Could not resolve keysym XF86TraditionalSonar
+verify	Import and verify native project	2026-09-29T14:13:43.7228221Z > Warning:          Could not resolve keysym XF86ClearvuSonar
+verify	Import and verify native project	2026-09-29T14:13:43.7228715Z > Warning:          Could not resolve keysym XF86SidevuSonar
+verify	Import and verify native project	2026-09-29T14:13:43.7229117Z > Warning:          Could not resolve keysym XF86NavInfo
+verify	Import and verify native project	2026-09-29T14:13:43.7229489Z Errors from xkbcomp are not fatal to the X server
+verify	Import and verify native project	2026-09-29T14:13:43.7229696Z 
+verify	Import and verify native project	2026-09-29T14:13:43.7229863Z --- import.log (101292 bytes): first errors ---
+verify	Import and verify native project	2026-09-29T14:13:43.7230140Z (none)
+verify	Import and verify native project	2026-09-29T14:13:43.7230381Z --- import.log: last 4096 bytes ---
+verify	Import and verify native project	2026-09-29T14:13:43.7230872Z [90m[1mimport[22m | Saving...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7231223Z [92m[ DONE ][39m [1mimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7231483Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7231824Z [  96% ] [90m[1mreimport[22m | weapon-0.glb[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7232332Z [   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7232818Z [   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7233289Z [   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7233714Z [  99% ] [90m[1mimport[22m | Saving...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7234060Z [92m[ DONE ][39m [1mimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7234304Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7234627Z [  96% ] [90m[1mreimport[22m | weapon-1.glb[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7235182Z [   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7235653Z [   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7236100Z [   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7236513Z [  99% ] [90m[1mimport[22m | Saving...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7236857Z [92m[ DONE ][39m [1mimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7237102Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7237418Z [  96% ] [90m[1mreimport[22m | weapon-2.glb[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7237897Z [   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7238358Z [   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7238809Z [   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7239219Z [  99% ] [90m[1mimport[22m | Saving...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7239585Z [92m[ DONE ][39m [1mimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7239833Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7240155Z [  97% ] [90m[1mreimport[22m | weapon-3.glb[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7240624Z [   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7241087Z [   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7241543Z [   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7241948Z [  99% ] [90m[1mimport[22m | Saving...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7242283Z [92m[ DONE ][39m [1mimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7242525Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7242833Z [  97% ] [90m[1mreimport[22m | weapon-4.glb[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7243301Z [   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7243775Z [   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7244217Z [   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7244618Z [  99% ] [90m[1mimport[22m | Saving...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7244955Z [92m[ DONE ][39m [1mimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7245270Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7245574Z [  97% ] [90m[1mreimport[22m | weapon-5.glb[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7246050Z [   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7246506Z [   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7247080Z [   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7247486Z [  99% ] [90m[1mimport[22m | Saving...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7247827Z [92m[ DONE ][39m [1mimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7248071Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7248381Z [  98% ] [90m[1mreimport[22m | weapon-6.glb[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7248849Z [   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7249380Z [   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7249825Z [   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7250238Z [  99% ] [90m[1mimport[22m | Saving...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7250575Z [92m[ DONE ][39m [1mimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7250825Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7251134Z [  98% ] [90m[1mreimport[22m | weapon-7.glb[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7251606Z [   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7252074Z [   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7252519Z [   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7252937Z [  99% ] [90m[1mimport[22m | Saving...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7253274Z [92m[ DONE ][39m [1mimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7253520Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7253840Z [  98% ] [90m[1mreimport[22m | weapon-8.glb[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7254315Z [   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7254778Z [   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7255566Z [   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7255997Z [  99% ] [90m[1mimport[22m | Saving...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7256347Z [92m[ DONE ][39m [1mimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7256703Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7257177Z [  99% ] [90m[1mreimport[22m | weapon-9.glb[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7257665Z [   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7258148Z [   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7258596Z [   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7259018Z [  99% ] [90m[1mimport[22m | Saving...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7259360Z [92m[ DONE ][39m [1mimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7259611Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7259971Z [  99% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7260371Z [92m[ DONE ][39m [1mreimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7260619Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7261044Z [   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (278 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7261630Z [   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7262061Z [92m[ DONE ][39m [1mreimport[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7262315Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7263104Z [   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7263974Z [   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+verify	Import and verify native project	2026-09-29T14:13:43.7264678Z [92m[ DONE ][39m [1mloading_editor_layout[22m
+verify	Import and verify native project	2026-09-29T14:13:43.7265228Z [0m
+verify	Import and verify native project	2026-09-29T14:13:43.7265374Z 
+verify	Import and verify native project	2026-09-29T14:13:43.7265487Z {
+verify	Import and verify native project	2026-09-29T14:13:43.7266139Z   "evidence": "/home/runner/work/_temp/godot-native/vehicle-evidence/3d64e295-d67f-4fd8-9438-c6843fbe5399",
+verify	Import and verify native project	2026-09-29T14:13:43.7266967Z   "classification": "3 distinct native clients, real Room wire; no authority position writes",
+verify	Import and verify native project	2026-09-29T14:13:43.7267390Z   "stepsSeconds": {
+verify	Import and verify native project	2026-09-29T14:13:43.7267604Z     "copy": 0.14,
+verify	Import and verify native project	2026-09-29T14:13:43.7267806Z     "export": 1.73,
+verify	Import and verify native project	2026-09-29T14:13:43.7268014Z     "import": 8.54,
+verify	Import and verify native project	2026-09-29T14:13:43.7268235Z     "parse-demo": 1.12,
+verify	Import and verify native project	2026-09-29T14:13:43.7268482Z     "parse-session_bridge": 0.16,
+verify	Import and verify native project	2026-09-29T14:13:43.7268764Z     "parse-observe_crew_host": 1.12,
+verify	Import and verify native project	2026-09-29T14:13:43.7269323Z     "parse-observe_crew_guest": 1.12,
+verify	Import and verify native project	2026-09-29T14:13:43.7269615Z     "parse-observe_crew_passenger": 1.12,
+verify	Import and verify native project	2026-09-29T14:13:43.7269891Z     "controls": 0.36,
+verify	Import and verify native project	2026-09-29T14:13:43.7270101Z     "fleet": 0.37,
+verify	Import and verify native project	2026-09-29T14:13:43.7270307Z     "shared-shots": 1.47,
+verify	Import and verify native project	2026-09-29T14:13:43.7270542Z     "source-oracle": 1.67,
+verify	Import and verify native project	2026-09-29T14:13:43.7270782Z     "room-edge-oracle": 1.72
+verify	Import and verify native project	2026-09-29T14:13:43.7271015Z   },
+verify	Import and verify native project	2026-09-29T14:13:43.7271206Z   "renderFpsCap": 30,
+verify	Import and verify native project	2026-09-29T14:13:43.7271513Z   "renderEnvironment": {
+verify	Import and verify native project	2026-09-29T14:13:43.7271741Z     "LP_NUM_THREADS": "1",
+verify	Import and verify native project	2026-09-29T14:13:43.7271977Z     "resolution": "640x360",
+verify	Import and verify native project	2026-09-29T14:13:43.7272210Z     "cpuAffinity": [
+verify	Import and verify native project	2026-09-29T14:13:43.7272416Z       0,
+verify	Import and verify native project	2026-09-29T14:13:43.7272595Z       1,
+verify	Import and verify native project	2026-09-29T14:13:43.7272782Z       2,
+verify	Import and verify native project	2026-09-29T14:13:43.7272957Z       3
+verify	Import and verify native project	2026-09-29T14:13:43.7273129Z     ]
+verify	Import and verify native project	2026-09-29T14:13:43.7273299Z   },
+verify	Import and verify native project	2026-09-29T14:13:43.7273520Z   "heldInputRecoveryProbe": false,
+verify	Import and verify native project	2026-09-29T14:13:43.7273773Z   "nativeExitCodes": {
+verify	Import and verify native project	2026-09-29T14:13:43.7273984Z     "host": 1,
+verify	Import and verify native project	2026-09-29T14:13:43.7274178Z     "guest": 0,
+verify	Import and verify native project	2026-09-29T14:13:43.7274372Z     "passenger": 0
+verify	Import and verify native project	2026-09-29T14:13:43.7274563Z   },
+verify	Import and verify native project	2026-09-29T14:13:43.7274741Z   "status": "FAIL",
+verify	Import and verify native project	2026-09-29T14:13:43.7275194Z   "error": "host native process failed (exit 1)",
+verify	Import and verify native project	2026-09-29T14:13:43.7275578Z   "ownedProcessesReaped": true,
+verify	Import and verify native project	2026-09-29T14:13:43.7275839Z   "elapsedSeconds": 167.21,
+verify	Import and verify native project	2026-09-29T14:13:43.7276072Z   "retainedFiles": {
+verify	Import and verify native project	2026-09-29T14:13:43.7276288Z     "controls.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7276502Z       "bytes": 102,
+verify	Import and verify native project	2026-09-29T14:13:43.7276867Z       "sha256": "8f51ca3a09570909fe06904f973e01ab2e3332650c291f6ea416093b4506fc67"
+verify	Import and verify native project	2026-09-29T14:13:43.7277233Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7277426Z     "export.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7277629Z       "bytes": 61,
+verify	Import and verify native project	2026-09-29T14:13:43.7277990Z       "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+verify	Import and verify native project	2026-09-29T14:13:43.7278357Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7278544Z     "fleet.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7278749Z       "bytes": 123,
+verify	Import and verify native project	2026-09-29T14:13:43.7279111Z       "sha256": "b1bb38e557e40184d371d0ec174035c1ee156a7f80232f276bf5264e55600db7"
+verify	Import and verify native project	2026-09-29T14:13:43.7279468Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7279651Z     "guest.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7279852Z       "bytes": 2167876,
+verify	Import and verify native project	2026-09-29T14:13:43.7280215Z       "sha256": "42f35ea6a30500fb5115719b1babb6068bd2c29d0b9049d7e31d7fdc9a982606"
+verify	Import and verify native project	2026-09-29T14:13:43.7280575Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7280775Z     "hashes.json": {
+verify	Import and verify native project	2026-09-29T14:13:43.7280989Z       "bytes": 55725,
+verify	Import and verify native project	2026-09-29T14:13:43.7281357Z       "sha256": "529fa6b59c57c241bdd2d7b0cbdac38fa04930e59c71d82e3283e86ffeb51798"
+verify	Import and verify native project	2026-09-29T14:13:43.7281721Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7281903Z     "host.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7282104Z       "bytes": 2096897,
+verify	Import and verify native project	2026-09-29T14:13:43.7282483Z       "sha256": "da7ff28e65fb96eb0a8f4e04dced06c53c71ebb2347400d6374f50689390d1ea"
+verify	Import and verify native project	2026-09-29T14:13:43.7282849Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7283033Z     "import.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7283235Z       "bytes": 101292,
+verify	Import and verify native project	2026-09-29T14:13:43.7283599Z       "sha256": "6e48aa3a1b3d59587fbf421a9bb824fa2832436528553c94f35bc0bd600ab73e"
+verify	Import and verify native project	2026-09-29T14:13:43.7283964Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7284149Z     "parse-demo.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7284365Z       "bytes": 73,
+verify	Import and verify native project	2026-09-29T14:13:43.7284721Z       "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+verify	Import and verify native project	2026-09-29T14:13:43.7285172Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7285392Z     "parse-observe_crew_guest.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7285659Z       "bytes": 73,
+verify	Import and verify native project	2026-09-29T14:13:43.7286021Z       "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+verify	Import and verify native project	2026-09-29T14:13:43.7286390Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7286607Z     "parse-observe_crew_host.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7286863Z       "bytes": 73,
+verify	Import and verify native project	2026-09-29T14:13:43.7287222Z       "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+verify	Import and verify native project	2026-09-29T14:13:43.7287592Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7287811Z     "parse-observe_crew_passenger.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7288198Z       "bytes": 73,
+verify	Import and verify native project	2026-09-29T14:13:43.7288554Z       "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+verify	Import and verify native project	2026-09-29T14:13:43.7288921Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7289134Z     "parse-session_bridge.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7289394Z       "bytes": 73,
+verify	Import and verify native project	2026-09-29T14:13:43.7289747Z       "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+verify	Import and verify native project	2026-09-29T14:13:43.7290111Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7290364Z     "passenger.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7290580Z       "bytes": 2222314,
+verify	Import and verify native project	2026-09-29T14:13:43.7290945Z       "sha256": "c71ff1af89475a648c7ca667642e75df40b63fdc5e0bca8d858f8306f941efaa"
+verify	Import and verify native project	2026-09-29T14:13:43.7291313Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7291511Z     "room-edge-oracle.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7291749Z       "bytes": 242,
+verify	Import and verify native project	2026-09-29T14:13:43.7292098Z       "sha256": "788760344b23de8721adb695c6ea0c4be20263c74449908b16a0907428e3dff0"
+verify	Import and verify native project	2026-09-29T14:13:43.7292453Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7292635Z     "server.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7292852Z       "bytes": 0,
+verify	Import and verify native project	2026-09-29T14:13:43.7293203Z       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+verify	Import and verify native project	2026-09-29T14:13:43.7293582Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7293773Z     "shared-shots.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7293996Z       "bytes": 105,
+verify	Import and verify native project	2026-09-29T14:13:43.7294361Z       "sha256": "fb9fcb18359113dab269fdf9af5a39f37fe16eb16a69144dc8445f86d328c009"
+verify	Import and verify native project	2026-09-29T14:13:43.7294724Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7294917Z     "source-oracle.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7295398Z       "bytes": 1159,
+verify	Import and verify native project	2026-09-29T14:13:43.7295766Z       "sha256": "6bd36ad0f8946a5a84b3d6153e114978a3cce542c2f111c25a21d9cd38f6c93e"
+verify	Import and verify native project	2026-09-29T14:13:43.7296129Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7296325Z     "wire.json.gz": {
+verify	Import and verify native project	2026-09-29T14:13:43.7296544Z       "bytes": 183949,
+verify	Import and verify native project	2026-09-29T14:13:43.7296901Z       "sha256": "0320c65a946df7d7d980dd53df034a73e4394d327493329352d61e2ad0b11b4a"
+verify	Import and verify native project	2026-09-29T14:13:43.7297253Z     },
+verify	Import and verify native project	2026-09-29T14:13:43.7297431Z     "xvfb.log": {
+verify	Import and verify native project	2026-09-29T14:13:43.7297631Z       "bytes": 2348,
+verify	Import and verify native project	2026-09-29T14:13:43.7298017Z       "sha256": "b987a262609a3720f450ab6815ed90b2069dd47b7b012959ca19c325aebf5d55"
+verify	Import and verify native project	2026-09-29T14:13:43.7298369Z     }
+verify	Import and verify native project	2026-09-29T14:13:43.7298541Z   }
+verify	Import and verify native project	2026-09-29T14:13:43.7298716Z }
+verify	Import and verify native project	2026-09-29T14:13:43.7298954Z Traceback (most recent call last):
+verify	Import and verify native project	2026-09-29T14:13:43.7299480Z   File "/home/runner/work/cocs-godot/cocs-godot/port/native-vehicle-expansion/run.py", line 173, in <module>
+verify	Import and verify native project	2026-09-29T14:13:43.7300231Z     assert code==0 and 'SCRIPT ERROR' not in text and 'ERROR:' not in text, f'{role} native process failed (exit {code})'
+verify	Import and verify native project	2026-09-29T14:13:43.7300769Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+verify	Import and verify native project	2026-09-29T14:13:43.7301155Z AssertionError: host native process failed (exit 1)
+verify	Import and verify native project	2026-09-29T14:13:43.7648966Z 
+verify	Import and verify native project	2026-09-29T14:13:43.7649528Z audiovisual-assets: PASS
+verify	Import and verify native project	2026-09-29T14:13:43.8120976Z weather-source-vectors: PASS
+verify	Import and verify native project	2026-09-29T14:13:44.1606917Z audiovisual-event-router: PASS
+verify	Import and verify native project	2026-09-29T14:13:44.5094721Z audiovisual-outcome: PASS
+verify	Import and verify native project	2026-09-29T14:13:44.8576095Z audiovisual-settings: PASS
+verify	Import and verify native project	2026-09-29T14:13:45.8558494Z audiovisual-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T14:13:46.4833683Z audiovisual-weather-ownership: PASS
+verify	Import and verify native project	2026-09-29T14:13:46.8316828Z audiovisual-weather-oracle: PASS
+verify	Import and verify native project	2026-09-29T14:13:47.3637650Z audiovisual-score-form: PASS
+verify	Import and verify native project	2026-09-29T14:13:48.4562379Z audiovisual-soak: PASS
+verify	Import and verify native project	2026-09-29T14:13:49.4552004Z audiovisual-standalone-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T14:13:53.1542307Z audiovisual-independent-event-binding: PASS
+verify	Import and verify native project	2026-09-29T14:13:57.5034112Z audiovisual-horde-recipe-binding: PASS
+verify	Import and verify native project	2026-09-29T14:14:03.6340144Z audiovisual-menu-rapid-lifetime: PASS
+verify	Import and verify native project	2026-09-29T14:14:03.9809692Z combined-arms-controls: PASS
+verify	Import and verify native project	2026-09-29T14:14:05.7274365Z combined-arms-graphics: PASS
+verify	Import and verify native project	2026-09-29T14:14:07.1932148Z arms-race: PASS
+verify	Import and verify native project	2026-09-29T14:14:08.7492899Z horde-model: PASS
+verify	Import and verify native project	2026-09-29T14:14:10.3165870Z horde-death-presentation: PASS
+verify	Import and verify native project	2026-09-29T14:14:11.7839696Z horde-upgrade-native: PASS
+verify	Import and verify native project	2026-09-29T14:14:40.4594064Z horde-upgrade-fixture: FAIL
+verify	Import and verify native project	2026-09-29T14:14:40.8132114Z HORDE_UPGRADE_LOOPBACK_FAIL {"label":"TEST-ONLY accelerated-offer fixture (not natural 3-wave gameplay)","harness":"godot/tests/horde/upgrade_loopback.mjs","ok":false,"checks":22,"failures":10,"failed":["exactly one authoritative upgrade-applied record","authoritative record has the live wave and count 1","applied choice is one of the offered rows","applied snapshot closes the offer and carries the pick","live intent and its answer share one input epoch","no control reset after the intent was sent","source match holds exactly the applied upgrade","native observer reported the same loopback","native observer delivery path is a real engine input path","godot child exited cleanly with no ERROR/SCRIPT ERROR"],"fixture":{"wave":3,"activated":1,"choices":["haste","overcharge","overshield"]},"authority":{"offerRows":["haste","overcharge","overshield"],"applied":[],"rejects":0,"controlResets":9,"intent":null,"answer":null},"native":{"checks":19,"chosen":"overcharge","confirmed_choice":"","confirmed_count":0,"delivery":"","elapsed":24.08,"epoch":0,"epoch_at_delivery":0,"failures":0,"horde_label":"HORDE · WAVE 3 / 10 · WAVE\nENEMIES 3 / 3 · LIVES 3 · SCORE 0 · SWARM\nUPGRADES · PICK 1..3: 1 Haste · 2 Overcharge · 3 Overshield","input_epoch":9,"input_seq":56,"label":"TEST-ONLY accelerated-offer fixture (not natural 3-wave gameplay)","message":"deadline 24.1s in stage settle entry=NODE-AUTHORITATIVE PROTOTYPE · horde\nMeridian Exchange | HP 59.0 | Armor 0.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE\nClick: capture/fire · RMB: ADS · Z/MMB: alt · Esc: release · WASD: move · Space: jump\nShift: sprint · Ctrl/C: crouch · R: reload · E: interact · X: mobility · Q: power · F: melee · G: grenade · 1–9/0 or wheel: weapon | ACK 55","model_applied":0,"model_offers":3,"model_selected":"","notes":[],"offer_button_texts":["1 · Haste","2 · Overcharge","3 · Overshield"],"offer_ids":["haste","overcharge","overshield"],"offer_observed_elapsed":15.6,"offer_wave":3,"ok":false,"received_input":55,"rejected_reason":"","resets":8,"resets_at_delivery":0,"resets_at_press":0,"seq_before":0,"shots":[],"stage":"settle","status":"","upgrade_sent":0},"records":2241,"steps":{"total":48,"afterApply":48,"monotonic":true},"display":":0","renderer":{"lpNumThreads":"1","maxFps":30},"shots":[],"copiedShots":[],"godotExit":{"code":1,"signal":null},"resetContext":[{"index":60,"reason":"stale-input","seqBefore":1,"seqAfter":3,"gapBeforeMs":242,"gapAfterMs":2140,"beforeOffer":true},{"index":352,"reason":"stale-input","seqBefore":3,"seqAfter":5,"gapBeforeMs":272,"gapAfterMs":1533,"beforeOffer":true},{"index":917,"reason":"stale-input","seqBefore":21,"seqAfter":23,"gapBeforeMs":257,"gapAfterMs":1974,"beforeOffer":false},{"index":1191,"reason":"stale-input","seqBefore":23,"seqAfter":25,"gapBeforeMs":237,"gapAfterMs":260,"beforeOffer":false},{"index":1383,"reason":"stale-input","seqBefore":30,"seqAfter":32,"gapBeforeMs":243,"gapAfterMs":658,"beforeOffer":false},{"index":1499,"reason":"stale-input","seqBefore":32,"seqAfter":34,"gapBeforeMs":258,"gapAfterMs":197,"beforeOffer":false},{"index":1842,"reason":"stale-input","seqBefore":45,"seqAfter":47,"gapBeforeMs":240,"gapAfterMs":240,"beforeOffer":false},{"index":1964,"reason":"stale-input","seqBefore":49,"seqAfter":51,"gapBeforeMs":241,"gapAfterMs":437,"beforeOffer":false},{"index":2192,"reason":"stale-input","seqBefore":56,"seqAfter":null,"gapBeforeMs":243,"gapAfterMs":null,"beforeOffer":false}]}
+verify	Import and verify native project	2026-09-29T14:14:40.8144580Z GODOT: Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+verify	Import and verify native project	2026-09-29T14:14:40.8145617Z GODOT: WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+verify	Import and verify native project	2026-09-29T14:14:40.8146414Z GODOT:      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+verify	Import and verify native project	2026-09-29T14:14:40.8147361Z GODOT: OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+verify	Import and verify native project	2026-09-29T14:14:40.8148032Z GODOT:
+verify	Import and verify native project	2026-09-29T14:14:40.8149630Z GODOT: HORDE_UPGRADE_LIVE_BOOT {"deliveries":["parse_input_event","viewport_push_input","handler_call"],"endpoint":"ws://127.0.0.1:38131","label":"TEST-ONLY accelerated-offer fixture (not natural 3-wave gameplay)","map":"meridian-exchange","scene":"res://horde/demo.tscn","script":"res://horde/demo.gd","waves":10}
+verify	Import and verify native project	2026-09-29T14:14:40.8156752Z GODOT: HORDE_UPGRADE_LIVE {"checks":19,"chosen":"overcharge","confirmed_choice":"","confirmed_count":0,"delivery":"","elapsed":24.08,"epoch":0,"epoch_at_delivery":0,"failures":0,"horde_label":"HORDE · WAVE 3 / 10 · WAVE\nENEMIES 3 / 3 · LIVES 3 · SCORE 0 · SWARM\nUPGRADES · PICK 1..3: 1 Haste · 2 Overcharge · 3 Overshield","input_epoch":9,"input_seq":56,"label":"TEST-ONLY accelerated-offer fixture (not natural 3-wave gameplay)","message":"deadline 24.1s in stage settle entry=NODE-AUTHORITATIVE PROTOTYPE · horde\nMeridian Exchange | HP 59.0 | Armor 0.0 | Weapon 0 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE\nClick: capture/fire · RMB: ADS · Z/MMB: alt · Esc: release · WASD: move · Space: jump\nShift: sprint · Ctrl/C: crouch · R: reload · E: interact · X: mobility · Q: power · F: melee · G: grenade · 1–9/0 or wheel: weapon | ACK 55","model_applied":0,"model_offers":3,"model_selected":"","notes":[],"offer_button_texts":["1 · Haste","2 · Overcharge","3 · Overshield"],"offer_ids":["haste","overcharge","overshield"],"offer_observed_elapsed":15.6,"offer_wave":3,"ok":false,"received_input":55,"rejected_reason":"","resets":8,"resets_at_delivery":0,"resets_at_press":0,"seq_before":0,"shots":[],"stage":"settle","status":"","upgrade_sent":0}
+verify	Import and verify native project	2026-09-29T14:14:40.8160961Z FAILED CHECK: exactly one authoritative upgrade-applied record :: []
+verify	Import and verify native project	2026-09-29T14:14:40.8161516Z FAILED CHECK: authoritative record has the live wave and count 1 :: null
+verify	Import and verify native project	2026-09-29T14:14:40.8162058Z FAILED CHECK: applied choice is one of the offered rows :: undefined
+verify	Import and verify native project	2026-09-29T14:14:40.8162613Z FAILED CHECK: applied snapshot closes the offer and carries the pick :: null
+verify	Import and verify native project	2026-09-29T14:14:40.8163260Z FAILED CHECK: live intent and its answer share one input epoch :: {"intent":null,"answer":null}
+verify	Import and verify native project	2026-09-29T14:14:40.8164500Z FAILED CHECK: no control reset after the intent was sent :: {"total":9,"reasons":["stale-input","stale-input","stale-input","stale-input","stale-input","stale-input","stale-input","stale-input","stale-input"],"intentRecord":null}
+verify	Import and verify native project	2026-09-29T14:14:40.8165678Z FAILED CHECK: source match holds exactly the applied upgrade :: {"upgrades":[],"wave":3}
+verify	Import and verify native project	2026-09-29T14:14:40.8166515Z FAILED CHECK: native observer reported the same loopback :: {"ok":false,"failures":0,"chosen":"overcharge","delivery":"","notes":[]}
+verify	Import and verify native project	2026-09-29T14:14:40.8167248Z FAILED CHECK: native observer delivery path is a real engine input path ::
+verify	Import and verify native project	2026-09-29T14:14:40.8168103Z FAILED CHECK: godot child exited cleanly with no ERROR/SCRIPT ERROR :: {"exit":{"code":1,"signal":null},"timedOut":false,"spawnError":null,"fatal":[]}
+verify	Import and verify native project	2026-09-29T14:14:40.8168619Z 
+verify	Import and verify native project	2026-09-29T14:14:40.8168747Z horde-controls: PASS
+verify	Import and verify native project	2026-09-29T14:14:41.4407529Z sports-controls: PASS
+verify	Import and verify native project	2026-09-29T14:14:41.7904515Z sports-polish: PASS
+verify	Import and verify native project	2026-09-29T14:14:42.4197952Z sports-progression: PASS
+verify	Import and verify native project	2026-09-29T14:14:42.7680204Z soccer-guidance: PASS
+verify	Import and verify native project	2026-09-29T14:14:43.1146005Z soccer-coaching: PASS
+verify	Import and verify native project	2026-09-29T14:14:43.4624574Z sports-bearing: PASS
+verify	Import and verify native project	2026-09-29T14:14:43.9047377Z lattice-adapter: PASS
+verify	Import and verify native project	2026-09-29T14:14:44.4410491Z lattice-ui: PASS
+verify	Import and verify native project	2026-09-29T14:14:45.1641502Z lattice-map: PASS
+verify	Import and verify native project	2026-09-29T14:14:45.7021884Z lattice-topology: PASS
+verify	Import and verify native project	2026-09-29T14:14:46.2377685Z lattice-economy: PASS
+verify	Import and verify native project	2026-09-29T14:14:48.0772176Z lattice-world: PASS
+verify	Import and verify native project	2026-09-29T14:14:50.1013861Z lattice-world-commands: PASS
+verify	Import and verify native project	2026-09-29T14:14:50.4489540Z lattice-req-catalog: PASS
+verify	Import and verify native project	2026-09-29T14:14:50.9843993Z lattice-req-purchase: PASS
+verify	Import and verify native project	2026-09-29T14:14:51.5184438Z lattice-world-tactical: PASS
+verify	Import and verify native project	2026-09-29T14:14:51.9599013Z lattice-flagship-l1: PASS
+verify	Import and verify native project	2026-09-29T14:14:52.3081096Z lattice-flagship-l2: PASS
+verify	Import and verify native project	2026-09-29T14:14:52.6562896Z lattice-flagship-l3-roles: PASS
+verify	Import and verify native project	2026-09-29T14:14:53.0056876Z lattice-flagship-l3-evidence: PASS
+verify	Import and verify native project	2026-09-29T14:14:53.3533900Z lattice-flagship-assets: PASS
+verify	Import and verify native project	2026-09-29T14:14:53.4329785Z lattice-flagship-l3-static: PASS
+verify	Import and verify native project	2026-09-29T14:14:53.5272225Z lattice-flagship-l5-static: PASS
+verify	Import and verify native project	2026-09-29T14:14:55.2726876Z lattice-world-usability: PASS
+verify	Import and verify native project	2026-09-29T14:14:55.6193941Z objective-renderer: PASS
+verify	Import and verify native project	2026-09-29T14:14:58.1108978Z objective-controls: PASS
+verify	Import and verify native project	2026-09-29T14:15:00.6023561Z objective-progression: PASS
+verify	Import and verify native project	2026-09-29T14:15:00.9521049Z objective-input-timing: PASS
+verify	Import and verify native project	2026-09-29T14:15:01.3010239Z payload-guidance: PASS
+verify	Import and verify native project	2026-09-29T14:15:05.0027993Z payload-guidance-hud: PASS
+verify	Import and verify native project	2026-09-29T14:15:06.5620637Z control-safety: PASS
+verify	Import and verify native project	2026-09-29T14:15:08.0306911Z window-focus: PASS
+verify	Import and verify native project	2026-09-29T14:15:09.4996542Z session-recovery: PASS
+verify	Import and verify native project	2026-09-29T14:15:10.9657120Z stall-controls: PASS
+verify	Import and verify native project	2026-09-29T14:15:11.3151895Z snapshot-watch: PASS
+verify	Import and verify native project	2026-09-29T14:15:16.1287729Z native-session: PASS
+verify	Import and verify native project	2026-09-29T14:15:19.4017765Z two-native-clients: PASS
+verify	Import and verify native project	2026-09-29T14:15:19.7495458Z motion-impairment: PASS
+verify	Import and verify native project	2026-09-29T14:15:20.2857959Z remote-motion: PASS
+verify	Import and verify native project	2026-09-29T14:15:20.6364938Z local-render-motion: PASS
+verify	Import and verify native project	2026-09-29T14:15:21.9061009Z Failed gates: vehicle-three-native-crew, horde-upgrade-fixture
+verify	Import and verify native project	2026-09-29T14:15:21.9142365Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,13 @@
+{
+  "gate": "horde-upgrade-fixture",
+  "command": [
+    "/usr/bin/python3",
+    "tools/godot-dev/xvfb_run.py",
+    "node",
+    "godot/tests/horde/upgrade_loopback.mjs"
+  ],
+  "exit_code": 0,
+  "passed": true,
+  "failure_reason": null,
+  "duration_seconds": 21.632
+}

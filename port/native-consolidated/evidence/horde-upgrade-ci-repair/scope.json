@@ -1,0 +1,6 @@
+{
+  "fixture_commit": "ef95d99a",
+  "result": "focused pass on cores30,31; contention failure on cores0,1 retained",
+  "source_modified": false,
+  "hosted_status": "pending"
+}

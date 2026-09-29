@@ -11,6 +11,8 @@ at `156cd370`: Uplink/Holdout/Assault, five-kind vehicles/crew, and audiovisual
 presentation. The full **273-gate** native suite and **228 server tests** pass;
 lint has zero errors. Consolidated Windows/Linux exports use that same revision;
 Linux extracted acceptance and actual Windows headless smoke checks passed.
+The consolidated prerelease is published with two remaining hosted rendered
+fixture failures documented (271/273 hosted gates); general CI passed.
 See [the expansion record](THREE_STREAM_EXPANSION_2026-09-29.md) for exact evidence
 and final artifact acceptance. The historical sequencing below is retained.
 

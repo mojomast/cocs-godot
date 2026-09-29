@@ -1,0 +1,13 @@
+{
+  "native": "https://github.com/mojomast/cocs-godot/actions/runs/36577144493",
+  "native_status": "failed",
+  "general": "https://github.com/mojomast/cocs-godot/actions/runs/36577144395",
+  "general_status": "passed",
+  "unresolved_gates": [
+    "vehicle-three-native-crew",
+    "horde-upgrade-fixture"
+  ],
+  "built_commit": "156cd37060b3935aa5a93459ce4de6b2710424ab",
+  "tested_commit": "4faf0dfa580cbf955691678c4523409fb01ef2e7",
+  "runtime_change_since_build": false
+}

@@ -1,6 +1,17 @@
 # Three-stream expansion and consolidated build
 
-## Final candidate: 156cd370
+## Published prerelease: 156cd370
+
+Release: <https://github.com/mojomast/cocs-godot/releases/tag/native-consolidated-2026-09-29>.
+Both requested platform builds and all three feature streams are complete.
+The release is explicitly a prerelease: the final complete hosted run at
+`4faf0dfa` executed all **273** gates with **271 passing** and two unresolved
+failures (`vehicle-three-native-crew`, `horde-upgrade-fixture`). It does not claim
+fully green hosted CI. Those fixtures pass locally but remain sensitive to the
+hosted rendering/input schedule. General CI passed. Reports are retained in
+`native-consolidated/evidence/ci-4faf0dfa/`; the later commits change test/evidence
+files, not the shipped runtime. Earlier failures and the 5 FPS camera-correlation
+stress limit remain preserved.
 
 Both platform packages are built from **`156cd37060b3935aa5a93459ce4de6b2710424ab`**.
 Its clean local run passed **273/273 native gates**, **228/228 server tests**, and

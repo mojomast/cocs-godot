@@ -32,6 +32,11 @@ cases** and verified **148 files**. Actual exported Assault/Uplink live captures
 passed strict bounds/non-overlap and visual review at **760×520/UI150** and
 **1280×800/UI100**. The earlier joining captures and failed live layout evidence
 remain preserved alongside the corrected final release evidence.
+
+Published as [a prerelease](https://github.com/mojomast/cocs-godot/releases/tag/native-consolidated-2026-09-29).
+Latest complete hosted native CI is **271/273**, with crew and Horde upgrade
+rendered fixtures unresolved; general CI is green. Local and package acceptance
+above remain valid, but fully green hosted CI is not claimed.
 The older dated tables below remain historical evidence, including their
 then-current preview limitations.
 
