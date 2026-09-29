@@ -37,3 +37,18 @@ The journey owns an isolated `COCS_CAREER_ROOT` beneath its unique attempt
 directory. It exercises source-session lifecycle, native equipment selection and
 cross-process identity restoration. It does not grant unlocks, perform a purchase,
 or replace human visual/play acceptance.
+
+## RESULTS/HISTORY journey
+
+`port/native-career/results-history-journey.mjs` runs one owned authority and one
+real Godot session through `godot/tests/career/results_history_observer.gd`. The
+observer hosts a legal short source match (`timeLimit: 60` pinned by the
+session's own lobby path), plays until the source reports results, then opens
+the shipped Career panel and drives the RESULTS/HISTORY tabs. It asserts the
+authority's real wire order (award before results), the attributed same-round
+award, a ready `Recent server matches` list from the owned server's persisted
+`history.json`, compact 760x520 @150% Back reachability, and the absence of any
+ownership token in the projection. It carries no credential file and requests no
+secret. It exercises real results/progression/history only once the parent routes
+`client.career_receive(frame)` for `start`/`results`/`history`; until then it
+reports the not-ready status instead of a false pass.

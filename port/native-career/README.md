@@ -41,11 +41,26 @@ no token, profile ID or loadout is saved into Home preferences or diagnostics.
 The panel displays aggregate profile/mode totals, not an individual match
 timeline. Home without a room offers browsing only.
 
+The **RESULTS** and **HISTORY** tabs add the latest accepted source result plus
+its same-round award and the server's recent-match list. Neither is a local
+authority: no win/loss is computed, no unknown stat becomes a zero and no
+history row is attributed to the local career. History is read-only and
+requested from the seated source; the owned server persists it beside the
+career root under the parent's supervisor lease. See
+`port/native-career/RESULTS-HISTORY.md` for the exact frame contract, status
+model and round/reconnect rules.
+
 Verification (in the parent's serial test slot):
 `node tools/godot-export/career_catalog.mjs --check`,
 `node --test port/native-career/catalog.test.mjs`,
 `node --test port/native-career/wire.test.mjs`,
 `node --test port/native-career/equip-lifecycle.test.mjs`,
+`node --test port/native-career/results-history.test.mjs`,
 `godot --headless --path godot --script res://tests/career/projection.gd`,
 `godot --headless --path godot --script res://tests/career/modal.gd`,
-`godot --headless --path godot --script res://tests/career/actions.gd`.
+`godot --headless --path godot --script res://tests/career/actions.gd`,
+`godot --headless --path godot --script res://tests/career/results.gd`,
+`godot --headless --path godot --script res://tests/career/history.gd`,
+`godot --headless --path godot --script res://tests/career/results_history_ui.gd`.
+The native journey is prepared as
+`node port/native-career/results-history-journey.mjs` with a pinned `GODOT_BIN`.
