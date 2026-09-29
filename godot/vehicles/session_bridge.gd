@@ -17,11 +17,14 @@ func reset() -> void:
 	jump_down = false
 
 func observe(value: Dictionary, actor_id: int) -> bool:
+	var was_mounted := mounted()
 	state = value
 	actor = Lease.actor_for(state, actor_id)
 	vehicle = Lease.vehicle_for(state, actor)
 	var next := "%s/%s/%s/%s/%s/%s" % [actor_id, actor.get("vehicleId"), actor.get("vehicleSeat"), actor.get("vehicleSeatIndex"), vehicle.get("id"), Lease.alive(actor)]
-	var changed := next != identity
+	# Infantry life/identity transitions belong to the infantry lifecycle. Only
+	# mounted transitions invalidate this separate vehicle input lease.
+	var changed := next != identity and (was_mounted or mounted())
 	identity = next
 	return changed
 
