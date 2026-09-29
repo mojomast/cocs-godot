@@ -32,7 +32,8 @@ func _process(delta: float) -> bool:
 	if not is_instance_valid(product) or capturing or snapshots < 3: return false
 	if product.phase != 3 or not product.received_pose or product.snapshot_watch.stale(): return false
 	if float(latest.state.time) <= first_time: return false
-	if root.size != Vector2i(760, 520): return false
+	var wanted := Vector2i(int(OS.get_environment("COMPACT_WIDTH")), int(OS.get_environment("COMPACT_HEIGHT")))
+	if root.size != wanted: return false
 	capturing = true
 	call_deferred("capture")
 	return false
@@ -41,6 +42,11 @@ func label_proof(label: Label) -> Dictionary:
 	var rect := label.get_global_rect()
 	var scale := Vector2(root.size) / root.get_visible_rect().size
 	return {"text":label.text,"visible":label.is_visible_in_tree(),"rect":[rect.position.x * scale.x,rect.position.y * scale.y,rect.size.x * scale.x,rect.size.y * scale.y],"font_size":label.get_theme_font_size("font_size"),"render_scale":[scale.x,scale.y]}
+
+func control_proof(control: Control) -> Dictionary:
+	var rect := control.get_global_rect()
+	var scale := Vector2(root.size) / root.get_visible_rect().size
+	return {"visible":control.is_visible_in_tree(),"rect":[rect.position.x * scale.x,rect.position.y * scale.y,rect.size.x * scale.x,rect.size.y * scale.y]}
 
 func capture() -> void:
 	await process_frame
@@ -61,5 +67,14 @@ func capture() -> void:
 		quit(1)
 		return
 	var settings: Node = load("res://ui/settings_access.gd").service()
-	print("COMPACT_PRODUCT_CAPTURE ", JSON.stringify({"scene":product.scene_file_path,"map":product.current_id,"mode":product.selected_mode,"phase":product.phase,"received_pose":product.received_pose,"stale":product.snapshot_watch.stale(),"snapshots":snapshots,"first_time":first_time,"state":latest.state,"actor_id":product.client.actor_id,"local_actor":product.presentation.local_actor,"hud":hud,"session_label":product.label.text,"ui_scale":settings.values.ui_scale,"size":[image.get_width(),image.get_height()],"path":path}))
+	var layout: Dictionary = {}
+	var presenter: Node = product.get("game_hud") if product.selected_mode == "assault" else product.zone_hud
+	if presenter != null:
+		for key: String in ["top", "objective_panel", "vitals", "weapon_panel", "status_panel", "controls"]:
+			if presenter.get(key) != null: layout[key] = control_proof(presenter.get(key))
+		for key: String in ["map_label", "score_label", "health_label", "armor_label", "weapon_label", "ammo_label", "controls"]:
+			hud[key] = label_proof(presenter.get(key))
+	if settings.hint != null: layout.settings_hint = control_proof(settings.hint)
+	if is_instance_valid(product.combat.quality_controls): layout.quality_hint = control_proof(product.combat.quality_controls.text)
+	print("COMPACT_PRODUCT_CAPTURE ", JSON.stringify({"scene":product.scene_file_path,"map":product.current_id,"mode":product.selected_mode,"phase":product.phase,"received_pose":product.received_pose,"stale":product.snapshot_watch.stale(),"snapshots":snapshots,"first_time":first_time,"state":latest.state,"actor_id":product.client.actor_id,"local_actor":product.presentation.local_actor,"hud":hud,"layout":layout,"session_label":product.label.text,"ui_scale":settings.values.ui_scale,"size":[image.get_width(),image.get_height()],"path":path}))
 	quit(0)

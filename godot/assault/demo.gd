@@ -7,6 +7,7 @@ const MAPS := ["tidal-citadel", "sunscar-convoy"]
 var assault := AssaultState.new()
 var sectors := AssaultRenderer.new()
 var scoreboard := preload("res://ui/scoreboard.gd").new()
+var game_hud := preload("res://assault/hud.gd").new()
 var chase := Chase.new()
 var round_seconds := 60
 var sector_count := 3
@@ -35,7 +36,7 @@ func _ready() -> void:
 		if widget is Label:
 			widget.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	selector.hide()
-	for node: Node in [pickups, presentation, combat, client, sectors, scoreboard]: add_child(node)
+	for node: Node in [pickups, presentation, combat, client, sectors, scoreboard, game_hud]: add_child(node)
 	presentation.interpolate_remote = true
 	selected_mode = "assault"
 	var selected := MAPS[0]
@@ -140,8 +141,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	refresh_objective_hud()
 
 func refresh_objective_hud() -> void:
-	objective_label.text = assault.text(presentation.local_actor.get("team"), phase == 4)
-	if phase == 3: objective_label.text += "\nSource clock: %.1fs remaining" % source_remaining
+	objective_label.text = game_hud.objective_text() if is_instance_valid(game_hud.session) else assault.text(presentation.local_actor.get("team"), phase == 4)
 	if not notice.is_empty(): objective_label.text += "\n" + notice
 	if mounted(): objective_label.text += "\nVEHICLE · Click to capture · WASD drive · Fire · Space/Shift/Ctrl · E exit"
 	elif phase == 3: objective_label.text += "\nE: enter nearby source vehicle"

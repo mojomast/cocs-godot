@@ -16,7 +16,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--package', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--engine', type=Path, help='Development-only engine; requires --project, never a release claim')
+    parser.add_argument('--project', type=Path, help='Development-only source project instead of release PCK')
+    parser.add_argument('--width', type=int, default=760)
+    parser.add_argument('--height', type=int, default=520)
+    parser.add_argument('--ui-scale', type=int, default=150)
+    parser.add_argument('--strict-layout', action='store_true', help='Assert visible HUD regions do not overlap')
     args = parser.parse_args()
+    require(bool(args.engine) == bool(args.project), '--engine and --project must be supplied together')
     package, output = args.package.resolve(), args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
     before = {name: sha(package / name) for name in ['cocs.pck', 'cocs.x86_64', 'manifest.json']}
@@ -34,7 +41,7 @@ def main():
     alsa.write_text('pcm.!default { type null }\n')
     env['ALSA_CONFIG_PATH'] = str(alsa)
     settings = output / 'settings.json'
-    settings.write_text(json.dumps({'version': 1, 'settings': {'ui_scale': 150, 'window_mode': 'windowed'}}))
+    settings.write_text(json.dumps({'version': 1, 'settings': {'ui_scale': args.ui_scale, 'window_mode': 'windowed'}}))
     env['COCS_SETTINGS_PATH'] = str(settings)
     readfd, writefd = os.pipe()
     children, results = [], []
@@ -58,8 +65,9 @@ def main():
                 time.sleep(.05)
             ready = records(authority_log.read_text(), 'COMPACT_AUTHORITY_READY ')[0]
             plan, port = ready['plan'], ready['port']
-            case_env = dict(env, COMPACT_SCENE=plan['scene'], COMPACT_PNG=str(output / (name + '-live.png')))
-            argv = [str(package / 'cocs.x86_64'), '--main-pack', str(package / 'cocs.pck'), '--script', str(ROOT / 'tools/godot-package/compact_observer.gd'), '--resolution', '760x520', '--position', '0,0', '--', *plan['userArgs'], f'--endpoint=ws://127.0.0.1:{port}']
+            case_env = dict(env, COMPACT_SCENE=plan['scene'], COMPACT_PNG=str(output / (name + '-live.png')), COMPACT_WIDTH=str(args.width), COMPACT_HEIGHT=str(args.height))
+            engine_args = [str(args.engine.resolve()), '--path', str(args.project.resolve())] if args.engine else [str(package / 'cocs.x86_64'), '--main-pack', str(package / 'cocs.pck')]
+            argv = [*engine_args, '--script', str(ROOT / 'tools/godot-package/compact_observer.gd'), '--resolution', f'{args.width}x{args.height}', '--position', '0,0', '--', *plan['userArgs'], f'--endpoint=ws://127.0.0.1:{port}']
             log = output / (name + '.log')
             with log.open('w') as stream:
                 native = subprocess.Popen(argv, cwd=private, env=case_env, stdout=stream, stderr=subprocess.STDOUT)
@@ -68,7 +76,7 @@ def main():
             while native.poll() is None and time.monotonic() < deadline:
                 window = x11.window(native.pid)
                 if window and not resized:
-                    x11.resize(window, 760, 520)
+                    x11.resize(window, args.width, args.height)
                     resized = True
                 time.sleep(.05)
             require(native.poll() == 0, f'{name}: native failed; see {log}')
@@ -76,12 +84,20 @@ def main():
             require('ERROR:' not in text, f'{name}: native error')
             proof = records(text, 'COMPACT_PRODUCT_CAPTURE ')[0]
             require(proof['phase'] == 3 and proof['received_pose'] and not proof['stale'] and proof['snapshots'] >= 3, 'No live client state')
-            require(proof['size'] == [760, 520] and proof['ui_scale'] == 150, 'Wrong compact settings')
+            require(proof['size'] == [args.width, args.height] and proof['ui_scale'] == args.ui_scale, 'Wrong compact settings')
             require(proof['map'] == plan['map'] and proof['mode'] == plan['mode'], 'Wrong route')
             for label in proof['hud'].values():
                 require(label['visible'] and label['text'] and 'waiting' not in label['text'].lower(), 'Objective HUD not live')
                 x, y, w, h = label['rect']
-                require(x >= 0 and y >= 0 and x + w <= 760 and y + h <= 520, 'Objective clipped')
+                require(x >= 0 and y >= 0 and x + w <= args.width + .1 and y + h <= args.height + .1, 'HUD label clipped')
+            if args.strict_layout:
+                visible = {key: value['rect'] for key, value in proof['layout'].items() if value['visible']}
+                require({'top', 'objective_panel', 'vitals', 'weapon_panel', 'controls', 'settings_hint'} <= visible.keys(), 'Missing required visible HUD region')
+                for key, (x, y, w, h) in visible.items():
+                    require(x >= 0 and y >= 0 and x + w <= args.width + .1 and y + h <= args.height + .1, f'{key} outside viewport')
+                    for other, (ox, oy, ow, oh) in visible.items():
+                        if key >= other: continue
+                        require(min(x+w, ox+ow)-max(x, ox) <= .5 or min(y+h, oy+oh)-max(y, oy) <= .5, f'HUD overlap: {key} / {other}')
             authority.terminate()
             require(authority.wait(timeout=10) == 0 and 'COMPACT_AUTHORITY_CLOSED' in authority_log.read_text(), 'Authority cleanup failed')
             with socket.socket() as connection:
@@ -91,7 +107,7 @@ def main():
             print(name, 'LIVE_CAPTURE_PASS (visual review required)', flush=True)
         after = {name: sha(package / name) for name in before}
         require(before == after, 'Package changed')
-        (output / 'summary.json').write_text(json.dumps({'live_capture_passed': True, 'visual_acceptance': 'requires image review; bounds alone do not establish legibility or non-overlap', 'package': str(package), 'unchanged_hashes': after, 'cases': results}, indent=2) + '\n')
+        (output / 'summary.json').write_text(json.dumps({'live_capture_passed': True, 'strict_layout_passed': args.strict_layout, 'execution_scope': 'development source project' if args.engine else 'unchanged release PCK', 'visual_acceptance': 'requires image review; bounds alone do not establish legibility or non-overlap', 'package': str(package), 'unchanged_hashes': after, 'cases': results}, indent=2) + '\n')
     finally:
         if x11: x11.close()
         os.close(readfd)

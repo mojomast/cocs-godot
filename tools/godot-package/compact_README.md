@@ -33,3 +33,34 @@ Scope for a parent-authorized fix: responsive Assault HUD composition plus
 shared zone/status/vitals/control layout at compact scaled viewport sizes.
 No production files are changed by this probe. Preserve previous failed or
 waiting-state screenshots; create a new evidence directory for each run.
+
+## Responsive-layout verification
+
+Use `--strict-layout` to require separate, in-bounds objective, top, vitals,
+weapon, controls, and Settings-hint regions. The observer records every visible
+region in physical pixels as well as essential label text. Optional quality
+help is included in overlap checks if visible. Direct PNG review is still
+required to assess legibility.
+
+The same probe accepts `--width 1280 --height 800 --ui-scale 100` for desktop
+verification. For development only, `--engine /absolute/Godot --project godot`
+runs source scenes against the package's unchanged ordinary authority and
+options parser. Its summary explicitly identifies **development source
+project**, not release-PCK verification. The final rebuilt PCK must subsequently
+pass the default release invocation at both sizes.
+
+The responsive product patch uses `res://ui/objective_hud.gd` for zone and
+Assault presenters. Compact layout is based on the **logical** viewport, with
+measured panel heights and a two-column health/equipment row. It keeps source
+objective/rule/time text, disables only the optional combat-quality startup
+hint, and reserves the existing single Settings hint. Desktop retains expanded
+controls and full-size vitals. No source state, scoring, timer, or input logic
+is changed.
+
+Development verification: both actual source scenes against ordinary packaged
+authority, at 760x520/UI150 and 1280x800/UI100; strict visible-region bounds and
+non-overlap assertions plus direct PNG review. Focused existing regressions:
+game HUD normal/setup/debug, scoreboard model/session/objective ranking,
+objective key-release timing, zone model/variants, Assault state, and seven
+objective-routing/Assault-composition Node assertions. Final release acceptance
+still requires rebuilding and running this same probe against the new PCK.
