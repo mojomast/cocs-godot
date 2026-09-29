@@ -60,9 +60,10 @@ func run() -> void:
 	shots.clear_round()
 	check(shots.traces.is_empty() and shots.seen.is_empty(), "shot round reset")
 	var hud = HUD.new()
-	var card: String = hud.vehicle_card({"kind":"titan", "health":200, "heat":1.0, "overheated":true,
+	var card: String = hud.vehicle_card({"kind":"titan", "health":200, "maxHealth":650, "heat":1.0, "overheated":true,
 		"respawnTimer":3.5, "driver":0, "gunner":null, "passengers":[2]}, "driver")
 	check(card.contains("Seats 2/3") and card.contains("200 / 650") and card.contains("OVERHEATED") and card.contains("3.5s"), "read-only source vehicle card")
+	check(hud.vehicle_card({"kind":"titan"}, "driver").contains("Hull —") and hud.vehicle_card({"kind":"titan"}, "driver").contains("Heat —"), "missing telemetry cannot become fabricated zero")
 	state.vehicles.clear()
 	check(fleet.apply_state(state) and fleet.vehicle_node(2) == null, "roster disappearance")
 	fleet.clear_round()

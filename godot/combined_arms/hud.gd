@@ -4,7 +4,6 @@ var info := Label.new()
 var help := Label.new()
 var prompt := Label.new()
 var aim := Label.new()
-const SOURCE_HEALTH := {"puma":300, "hornet":240, "titan":650, "scout":140, "transport":480}
 const SOURCE_SEATS := {"puma":4, "hornet":3, "titan":3, "scout":2, "transport":6}
 
 func vehicle_card(v: Dictionary, seat: Variant) -> String:
@@ -16,12 +15,14 @@ func vehicle_card(v: Dictionary, seat: Variant) -> String:
 	if passengers is Array:
 		for passenger: Variant in passengers:
 			if passenger != null: occupants += 1
-	var maximum: float = float(v.get("maxHealth", SOURCE_HEALTH.get(kind, 0)))
-	var result := "%s / %s  •  Seats %d/%d  •  Hull %.0f / %.0f  •  Heat %.0f%%" % [kind.to_upper(), str(seat), occupants, SOURCE_SEATS.get(kind, 0), float(v.get("health", 0)), maximum, float(v.get("heat", 0)) * 100.0]
+	# An absent field is not a measured zero; only the source snapshot may
+	# provide hull or heat telemetry (particularly around reconnect boundaries).
+	var hull := "%.0f / %.0f" % [float(v.health), float(v.maxHealth)] if (v.get("health") is float or v.get("health") is int) and (v.get("maxHealth") is float or v.get("maxHealth") is int) else "—"
+	var heat := "%.0f%%" % (float(v.heat) * 100.0) if v.get("heat") is float or v.get("heat") is int else "—"
+	var result := "%s / %s  •  Seats %d/%d  •  Hull %s  •  Heat %s" % [kind.to_upper(), str(seat), occupants, SOURCE_SEATS.get(kind, 0), hull, heat]
 	if v.get("overheated", false): result += "  •  OVERHEATED"
-	if float(v.get("health", 0)) <= 0: result += "  •  DESTROYED"
-	var respawn := float(v.get("respawnTimer", 0))
-	if respawn > 0: result += "  •  Respawn %.1fs" % respawn
+	if (v.get("health") is float or v.get("health") is int) and float(v.health) <= 0: result += "  •  DESTROYED"
+	if (v.get("respawnTimer") is float or v.get("respawnTimer") is int) and float(v.respawnTimer) > 0: result += "  •  Respawn %.1fs" % float(v.respawnTimer)
 	return result
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
