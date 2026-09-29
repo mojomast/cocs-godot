@@ -370,15 +370,19 @@ func flow_wait(predicate: Callable, message: String, timeout_ms: int = 12000) ->
 	return flow_check(bool(predicate.call()), message)
 
 func flow_actor_attachments() -> Array:
-	if scene.client.snapshots.is_empty(): return []
+	var actor := flow_latest_actor()
+	var ids := []
+	for item: Dictionary in actor.get("attachments", {}).get("items", []):
+		ids.append(item.get("id", ""))
+	return ids
+
+func flow_latest_actor() -> Dictionary:
+	if scene.client.snapshots.is_empty(): return {}
 	var snapshot: Dictionary = scene.client.snapshots.back()
 	for actor: Dictionary in snapshot.get("state", {}).get("actors", []):
 		if actor.get("id", -1) != scene.client.actor_id: continue
-		var ids := []
-		for item: Dictionary in actor.get("attachments", {}).get("items", []):
-			ids.append(item.get("id", ""))
-		return ids
-	return []
+		return actor
+	return {}
 
 func flow_capture(name: String) -> void:
 	if OS.get_environment("COCS_JOURNEY_CAPTURE") == "1": await capture_view(name)
@@ -411,6 +415,8 @@ func player_flow_step() -> void:
 	if not flow_check(not career.active() and menu.arsenal_button.has_focus(), "Arsenal Back restored lobby action focus"): return
 	menu.start_button.pressed.emit()
 	if not await flow_wait(func() -> bool: return scene.phase == 3 and scene.received_pose, "first source round became live"): return
+	var config: Dictionary = scene.client.snapshots.back().get("state", {}).get("config", {})
+	if not flow_check(config.get("timeLimit") == 60 and config.get("mode") == "deathmatch" and config.get("fragLimit") == 100, "source echoed the legal 60-second deathmatch preset"): return
 	var actor_id: int = scene.client.actor_id
 	var revision: int = scene.client.resumed_revision
 	scene.client.peer.close(4000, "Scripted player-flow transport interruption")
@@ -424,6 +430,7 @@ func player_flow_step() -> void:
 	if not flow_check(scene.client.actor_id == actor_id and scene.client.resumed_revision == revision and scene.client.room_id == room and str(career.profile.id) == identity, "Retry preserved source seat round and Career identity"): return
 	if not flow_check(Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Retry did not recapture controls"): return
 	if not await flow_wait(func() -> bool: return scene.phase == 4 and not career.result.is_empty(), "source settled the normal timed round", 75000): return
+	if not flow_check(career.result.get("ending") == "time" and float(career.result.get("time", -1)) >= 60.0 and float(career.result.get("time", INF)) <= 61.0, "accepted result reports a time-limit ending at 60 source seconds"): return
 	settings_key()
 	await process_frame
 	settings.career_button.pressed.emit()
@@ -436,9 +443,13 @@ func player_flow_step() -> void:
 	for i in 4: await process_frame
 	if not career_bounds(): return
 	await flow_capture("flow-results-760x520-scale150")
+	var actor: Dictionary = flow_latest_actor()
+	if not flow_check(actor.get("attachments") is Dictionary and actor.attachments.get("items") is Array, "retained actor attachment presentation is known"): return
 	var before: Array = flow_actor_attachments()
 	if not await equip_starter_attachment(): return
-	if not flow_check(flow_actor_attachments() == before, "confirmed saved equipment left the settled actor unchanged"): return
+	# The client ignores fresh snapshots after results. This proves presentation
+	# stability only; source non-mutation is covered by career-equipment-source.
+	if not flow_check(flow_actor_attachments() == before, "confirmed equipment did not overwrite the retained actor presentation"): return
 	career.select_category("loadout")
 	await process_frame
 	await flow_capture("flow-loadout-760x520-scale150")

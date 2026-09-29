@@ -55,3 +55,24 @@ readiness/cleanup case. This change will be exercised against the final package.
 
 Discovery findings, implementation commits, serial verification results and final
 package paths/hashes will be appended as work completes.
+
+## Objective discovery and implementation assignment
+
+All three IDs are implemented in the source. No map-catalog expansion or source
+authority edit is required:
+
+| Mode | Existing supported maps | Source semantics that native presentation must preserve |
+| --- | --- | --- |
+| `uplink` | Meridian Exchange, Verdant Reliquary, Ember Crucible | Three shared sequential stage captures; most banked captures wins. Objective kind is `koth`, not the mode ID. |
+| `holdout` | Meridian Exchange, Verdant Reliquary, Ember Crucible | Own a quorum of two zones continuously for 30 seconds; losing ownership quorum resets progress. Objective kind is `domination`. |
+| `assault` | Tidal Citadel, Sunscar Convoy | Attackers breach ordered sectors; defenders win an unbreached timeout. Sector count uses source `fragLimit` (1–9). Source vehicles stay enabled. |
+
+The objective-mode orchestrator owns one zone-family worker (Uplink/Holdout), one
+Assault worker, and shared mode launch/route/scoreboard integration. Assault must
+consume its source sectors from the snapshot's `zones` field and must not require
+a `contested` flag that the source does not publish. Source `over`, `overReason`
+and `winner` determine all endings, including timeout and tiebreak cases.
+
+The independent vehicle stream supplies reusable vehicle coverage for Assault;
+an infantry-only composition is not complete Assault parity. Shared package and
+aggregate registration remain with the parent integration owner.

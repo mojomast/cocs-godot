@@ -131,7 +131,7 @@ func run() -> void:
 	# --- LOADOUT pending/confirmed: only confirmation is applied --------------
 	service.select_category("loadout")
 	check(service.summary_label.text.contains("Stock / unselected"), "a known stock saved loadout is stated, not invented")
-	check(rows_text(service).contains("Stock saved loadout · no slot equipped for the next match."), "the LOADOUT tab states known stock honestly")
+	check(rows_text(service).contains("Stock gear and mods · no slot equipped for the next match."), "the LOADOUT tab states known stock honestly")
 	var item := find_attachment(service)
 	check(not item.is_empty(), "the shipped catalog offers a usable starter attachment")
 	if not item.is_empty():

@@ -15,7 +15,7 @@ results and history. No wire, server, render or session code is touched.
   * disconnected -> `Not connected · no confirmed saved loadout to show.`
   * any slot the source never reported -> `Saved loadout unknown · the source did
     not report every equipped slot.`
-  * a known, entirely unselected map -> `Stock saved loadout · no slot equipped
+  * known, entirely unselected gear/mod maps -> `Stock gear and mods · no slot equipped
     for the next match.`
 * **Result/XP on the first screen.** The pinned header's second line now follows
   the active tab: the accepted round and its same-round award XP on **RESULTS**,

@@ -69,7 +69,7 @@ func run() -> void:
 
 	var stock: Dictionary = EquippedModel.summary({"id":"player-one", "gear":{}, "attachments":{}, "finish":null}, cat, null)
 	check(not service.has_unknown_slot(stock), "known empty maps report no unknown slot")
-	check(service.loadout_empty_line(stock) == "Stock saved loadout · no slot equipped for the next match.", "only a known stock loadout may claim no slot is equipped")
+	check(service.loadout_empty_line(stock) == "Stock gear and mods · no slot equipped for the next match.", "only known stock gear and mods may claim no slot is equipped")
 	check(EquippedModel.finish_text(stock.finish) == "Stock / none", "explicit source null finish is stock")
 
 	var missing: Dictionary = EquippedModel.summary({"id":"player-one", "attachments":{}}, cat, null)
@@ -120,7 +120,7 @@ func run() -> void:
 	seats(service, client, {"id":"player-one","level":4,"unlocks":{},"gear":{},"attachments":{},"finish":null})
 	loadout_tab.pressed.emit()
 	text = rows_text(service)
-	check(text.contains("Stock saved loadout · no slot equipped for the next match."), "LOADOUT labels a known stock loadout as stock")
+	check(text.contains("Stock gear and mods · no slot equipped for the next match."), "LOADOUT labels known stock gear and mods as stock")
 	check(text.contains("Finish: Stock / none"), "LOADOUT labels an explicit null finish as stock")
 	check(not text.contains("Saved loadout unknown"), "a known stock loadout is never called unknown")
 	check(service.summary_label.text.contains("Saved for next match · Stock / unselected"), "the summary line agrees with the slot detail")
@@ -130,7 +130,7 @@ func run() -> void:
 	loadout_tab.pressed.emit()
 	text = rows_text(service)
 	check(text.contains("Saved loadout unknown · the source did not report every equipped slot."), "LOADOUT labels an unreported field as unknown")
-	check(not text.contains("Stock saved loadout · no slot equipped"), "unknown is never rendered as a stock loadout")
+	check(not text.contains("Stock gear and mods · no slot equipped"), "unknown is never rendered as stock gear and mods")
 	service.close_panel()
 	client.queue_free()
 	print("PLAYER_FLOW_CLARITY_MODEL_OK")

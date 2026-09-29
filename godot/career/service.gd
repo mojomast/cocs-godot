@@ -704,7 +704,7 @@ func render_loadout(list: Node, summary: Dictionary) -> void:
 func loadout_empty_line(summary: Dictionary) -> String:
 	if not summary.get("ready", false): return "Not connected · no confirmed saved loadout to show."
 	if has_unknown_slot(summary): return "Saved loadout unknown · the source did not report every equipped slot."
-	return "Stock saved loadout · no slot equipped for the next match."
+	return "Stock gear and mods · no slot equipped for the next match."
 
 func has_unknown_slot(summary: Dictionary) -> bool:
 	for key: String in ["gear", "attachments"]:
