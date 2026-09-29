@@ -1,5 +1,5 @@
 {
-  "port_commit": "683ead4998796910936e9db0b3910d540643f4be",
+  "port_commit": "edf2a669ffe4727c228a51ebf62383ed864d1209",
   "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
   "source_derivative_commit": null,
   "scope": "One native client equipping a saved attachment on an owned authority; not human acceptance",
@@ -61,8 +61,8 @@
   ],
   "status": "PASS",
   "display": ":3",
-  "port": 39019,
-  "endpoint": "ws://127.0.0.1:39019",
+  "port": 42851,
+  "endpoint": "ws://127.0.0.1:42851",
   "equip": {
     "id": "extended-mag",
     "slot": "magazine"
@@ -81,10 +81,10 @@
     }
   ],
   "wire": {
-    "frames": 5618,
-    "gear_request_index": 12,
-    "progression_index": 11,
-    "sha256": "f69e8a7e99a41e4ebbcb7597e67e83a65ed80245f269857c82f9d16d92909e3b"
+    "frames": 5691,
+    "gear_request_index": 13,
+    "progression_index": 12,
+    "sha256": "a5e591683526d3f7204d6d08a159bee5808f0f8e1baadaa0b8e65a3e9417ac8a"
   },
   "expired": false
 }

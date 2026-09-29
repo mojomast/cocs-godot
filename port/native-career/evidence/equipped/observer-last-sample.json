@@ -28,7 +28,7 @@
   "phase": 3,
   "restarted": true,
   "results": 1,
-  "room": "45E9",
+  "room": "K276",
   "round_starts": 2,
   "rows_bounds": [
     24,
@@ -87,7 +87,7 @@
     },
     "ready": true
   },
-  "seconds": 56.5475059999997,
+  "seconds": 58.127777777778,
   "spectating": false,
   "state_text": "CONNECTED SOURCE CAREER · LEVEL 1 · XP 40\nMATCHES 1 · WINS 0 · KILLS 0\nMODE WINS/MATCHES · deathmatch 0/1\nSource confirmed selection · saved for next match.",
   "summary": "Saved for next match · Extended Magazine",
