@@ -38,6 +38,15 @@ func first_row_label(service: Node) -> String:
 		if node is Label: return (node as Label).text
 	return ""
 
+func find_row_label(service: Node, needle: String) -> Label:
+	var rows := service.details.find_child("CatalogRows", true, false) as VBoxContainer
+	if rows == null: return null
+	for child: Node in rows.get_children():
+		if child is Label and (child as Label).text.contains(needle): return child
+		for node: Node in child.get_children():
+			if node is Label and (node as Label).text.contains(needle): return node
+	return null
+
 func run() -> void:
 	var service := root.get_node("Career")
 	var client := Probe.new()
@@ -64,8 +73,9 @@ func run() -> void:
 	loadout_tab.pressed.emit()
 	check(service.category == "loadout", "LOADOUT category active")
 	var text := rows_text(service)
-	check(text.contains("SAVED LOADOUT"), "LOADOUT tab renders the saved overview")
-	check(text.contains("Precision Scope") and text.contains("Stock"), "LOADOUT names equipped slots and marks stock")
+	check(text.contains("Primary: Precision Scope"), "LOADOUT tab renders the equipped slot detail")
+	check(text.contains("Stock"), "LOADOUT marks the unselected slots as stock")
+	check(text.contains("Finish:"), "LOADOUT renders the finish slot")
 	var gear_tab := service.panel.find_child("Tab_gear", true, false) as Button
 	gear_tab.pressed.emit()
 	check(first_row_label(service).contains("Precision Scope") or first_row_label(service).contains("UNLOCKED"), "GEAR rows render normally")
@@ -92,6 +102,16 @@ func run() -> void:
 	check(back_rect.position.x >= -1 and back_rect.position.y >= -1 and back_rect.end.x <= viewport.x + 1 and back_rect.end.y <= viewport.y + 1, "Back reachable without scrolling at 760x520 @150%")
 	var summary_rect: Rect2 = service.summary_label.get_global_rect()
 	check(summary_rect.position.x >= -1 and summary_rect.end.x <= viewport.x + 1, "summary wraps inside the compact width")
+	# The saved summary and a named equipped slot detail must start inside the
+	# compact first screen, not just Back and the tab strip. The current category
+	# is LOADOUT after the ACK above.
+	check(service.category == "loadout", "compact check stays on the LOADOUT tab")
+	check(summary_rect.position.y >= -1 and summary_rect.position.y <= viewport.y + 1, "saved summary starts inside the compact viewport")
+	var equipped := find_row_label(service, "Red Dot")
+	check(equipped != null, "compact overview renders the equipped slot detail line")
+	if equipped != null:
+		var equipped_rect := equipped.get_global_rect()
+		check(equipped_rect.position.y >= -1 and equipped_rect.position.y <= viewport.y + 1, "equipped slot detail starts inside the compact viewport")
 	service.close_panel()
 	check(not service.active(), "panel closes cleanly")
 	client.queue_free()

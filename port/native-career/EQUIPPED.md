@@ -38,6 +38,17 @@ is reported saved-for-next-match only. (The native first-person viewmodel alread
 binds `actor.finish` directly through `godot/first_person/finish.gd`; the Career
 reader does not depend on that file and claims no third-person finish rendering.)
 
+## Compact layout
+
+At 760x520 @150% the viewport is ~506x347 logical px. The header (title + Back)
+and the concise source header are pinned outside the scroll body, so Back is
+always reachable; only the 7-tab strip, the one-line summary and the item list
+scroll. The LOADOUT list is ordered equipped/unknown-id slots first, then the
+finish, then the stock/unknown line, then the authority facts (matches/wins/
+kills and mode totals) and status. The compact first screen therefore shows the
+confirmed saved summary, at least one named equipped slot and the finish. The
+checks assert those rects start inside the viewport, not only Back and the tabs.
+
 ## Owner gating and refresh
 
 `Career.equipment_summary()` is only meaningful for the connection that `welcome`

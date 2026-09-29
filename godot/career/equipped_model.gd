@@ -19,8 +19,10 @@ extends RefCounted
 ##
 ## States per slot:
 ##   equipped   - the field is known and the slot names a catalog item
-##   stock      - the field is known and the slot is absent/explicitly unset
-##   unknown    - the field itself is missing/malformed (source never said)
+##   stock      - the field is known and the slot is absent from it (the source
+##                emits only equipped slots, so absence means unselected)
+##   unknown    - the field itself is missing/malformed (source never said), or
+##                the slot holds a null/non-string value
 ##   unknown-id - the slot names an ID the catalog cannot resolve (bounded label)
 ## A known empty map ("{}") makes every slot `stock`. A missing/omitted field
 ## leaves every slot `unknown`, never an invented empty or stock value.

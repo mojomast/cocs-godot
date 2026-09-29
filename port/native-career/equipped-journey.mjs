@@ -165,6 +165,12 @@ try {
   pass('compact viewport is the exact 760x520 logical size @150%', Math.abs(vw - 760 / 1.5) <= 1.5 && Math.abs(vh - 520 / 1.5) <= 1.5);
   pass('Back stays inside the compact viewport', within(compact.back, vw, vh));
   pass('the LOADOUT tab stays inside the compact viewport', within(compact.tab_loadout, vw, vh));
+  // The compact first screen must show real saved content, not only chrome:
+  // the confirmed summary and the named equipped slot detail both start inside.
+  const equippedName = compact.saved?.fields?.attachments?.[slot]?.name;
+  const namedRow = (compact.row_rects ?? []).find(row => typeof row.text === 'string' && equippedName && row.text.includes(equippedName));
+  pass('the saved loadout summary is visible in the compact first screen', within(compact.summary_rect, vw, vh));
+  pass('the named equipped slot detail is visible in the compact first screen', Boolean(namedRow) && namedRow.rect[1] >= -1 && namedRow.rect[1] <= vh + 1);
   await cmd(observer, {op: 'capture', name: 'career-loadout-compact'});
   await until(() => existsSync(resolve(out, 'career-loadout-compact.png')), 10000, 'compact capture');
   pass('the LOADOUT tab was captured at the compact size', existsSync(resolve(out, 'career-loadout-compact.png')));

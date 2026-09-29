@@ -133,12 +133,14 @@ func mark_profile_changed() -> void:
 	profile_revision += 1
 	equipment_cache_revision = -1
 
-## Saved-loadout overview for the owner of this connection. The projection is
-## pure and read-only: it names the confirmed profile's gear/attachment/finish
-## IDs through the shipped catalog. It never reads another client's profile (call
-## `owned()` first) and never invents an "effective current item" from the live
-## actor's resolved modifiers. A live-actor finish is shown only when the parent
-## exposed a snapshot hook; otherwise every finish is saved-for-next-match.
+## Saved-loadout overview. The projection is pure and read-only: it names the
+## confirmed profile's gear/attachment/finish IDs through the shipped catalog,
+## and never invents an "effective current item" from the live actor's resolved
+## modifiers. This accessor does **not** enforce ownership itself: it projects
+## whatever `profile` this service currently holds. Callers must gate on
+## `owned(client)` (plus seated/wire state) before reading; the lobby does. A
+## live-actor finish is shown only when the parent exposed a snapshot hook;
+## otherwise every finish is saved-for-next-match.
 func equipment_summary() -> Dictionary:
 	var current: Variant = current_actor_snapshot()
 	if current == null and not equipment_cache.is_empty() and equipment_cache_revision == profile_revision:
@@ -465,38 +467,54 @@ func build_panel() -> void:
 	panel.add_child(shade)
 	var margin := MarginContainer.new()
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	for edge: String in ["left", "right", "top", "bottom"]: margin.add_theme_constant_override("margin_" + edge, 24)
+	for edge: String in ["left", "right", "top", "bottom"]: margin.add_theme_constant_override("margin_" + edge, 16)
 	panel.add_child(margin)
-	var scroll := ScrollContainer.new()
-	scroll.follow_focus = true
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	margin.add_child(scroll)
-	details = VBoxContainer.new()
-	details.custom_minimum_size.x = 280
-	details.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	details.add_theme_constant_override("separation", 12)
-	scroll.add_child(details)
+	# Pinned column: the header (title + Back) and the concise source header never
+	# scroll, so Back is always reachable even when the body overflows at
+	# 760x520 @150%. Only the tab strip, summary and item list scroll.
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override("separation", 8)
+	margin.add_child(column)
+	var header := HFlowContainer.new()
+	header.add_theme_constant_override("separation", 12)
+	column.add_child(header)
 	heading = Label.new()
 	heading.text = "CAREER / ARSENAL"
-	heading.add_theme_font_size_override("font_size", 26)
-	details.add_child(heading)
-	state_label = Label.new()
-	state_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	heading.add_theme_font_size_override("font_size", 24)
+	heading.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	header.add_child(heading)
 	var back := Button.new()
 	back.name = "CareerBack"
 	back.text = "BACK (Esc)"
-	back.custom_minimum_size.y = 44
+	back.custom_minimum_size = Vector2(132, 44)
 	back.pressed.connect(close_panel)
-	details.add_child(back)
-	details.add_child(state_label)
+	header.add_child(back)
+	# Concise source header. Matches/mode authority facts move into the LOADOUT
+	# body so they are kept, not removed, without pushing the tab strip and slot
+	# details below the compact fold.
+	state_label = Label.new()
+	state_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	state_label.add_theme_font_size_override("font_size", 15)
+	column.add_child(state_label)
+	var scroll := ScrollContainer.new()
+	scroll.follow_focus = true
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	column.add_child(scroll)
+	details = VBoxContainer.new()
+	details.custom_minimum_size.x = 280
+	details.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	details.add_theme_constant_override("separation", 8)
+	scroll.add_child(details)
 	var tabs := HFlowContainer.new()
+	tabs.add_theme_constant_override("separation", 6)
 	details.add_child(tabs)
 	for entry: Dictionary in [{"id":"gear", "label":"GEAR"}, {"id":"loadout", "label":"LOADOUT"}, {"id":"attachment", "label":"MODS"}, {"id":"finish", "label":"FINISHES"}, {"id":"crosshair", "label":"RETICLES"}, {"id":"results", "label":"RESULTS"}, {"id":"history", "label":"HISTORY"}]:
 		var id: String = entry.id
 		var button := Button.new()
 		button.name = "Tab_" + id
 		button.text = entry.label
-		button.custom_minimum_size.y = 44
+		button.custom_minimum_size.y = 32
 		button.pressed.connect(func() -> void: select_category(id))
 		tabs.add_child(button)
 	# One concise saved-loadout line stays above the item list in every catalog
@@ -505,11 +523,11 @@ func build_panel() -> void:
 	summary_label = Label.new()
 	summary_label.name = "LoadoutSummary"
 	summary_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	summary_label.add_theme_font_size_override("font_size", 14)
+	summary_label.add_theme_font_size_override("font_size", 15)
 	details.add_child(summary_label)
 	var list := VBoxContainer.new()
 	list.name = "CatalogRows"
-	list.add_theme_constant_override("separation", 12)
+	list.add_theme_constant_override("separation", 8)
 	details.add_child(list)
 	panel.hide()
 	refresh()
@@ -529,32 +547,16 @@ func clear_rows(list: Node) -> void:
 func refresh() -> void:
 	if details == null or state_label == null: return
 	var summary: Dictionary = equipment_summary()
-	var lines: Array = []
+	# The pinned header stays at most two lines: level/XP and the raw kill
+	# totals. Mode and status paragraphs move below the tab strip so the LOADOUT
+	# slot details stay in the compact first screen; nothing is dropped.
 	if profile.is_empty():
-		lines.append("NO CONNECTED CAREER · Join a room to see your source profile and equip unlocked items.")
+		state_label.text = "NO CONNECTED CAREER · Join a room to see your source profile and equip unlocked items."
 	else:
-		# Concise header: level/XP plus at most two compact stat lines so the
-		# summary and item list stay visible at 760x520 @150%.
 		var parts := []
 		for field: String in ["level", "xp"]:
 			parts.append(field.to_upper() + " " + (str(profile[field]) if profile.has(field) else "UNKNOWN"))
-		lines.append("CONNECTED SOURCE CAREER · " + " · ".join(parts))
-		lines.append("MATCHES %s · WINS %s · KILLS %s" % [str(profile.get("matches", "?")), str(profile.get("wins", "?")), str(profile.get("kills", "?"))])
-		var modes: Dictionary = profile.get("byMode", {})
-		if not modes.is_empty():
-			var mode_parts := []
-			for mode: String in modes:
-				if mode_parts.size() >= 3: break
-				var stats: Dictionary = modes[mode]
-				mode_parts.append("%s %s/%s" % [mode, str(stats.get("wins", "?")), str(stats.get("matches", "?"))])
-			lines.append("MODE WINS/MATCHES · " + " · ".join(mode_parts))
-	if not action_status.is_empty(): lines.append(action_status)
-	var identity := get_tree().root.get_node_or_null("Identity")
-	if identity != null and not identity.status.is_empty(): lines.append(identity.status)
-	if category == "crosshair": lines.append("Reticles are view-only: this server's GEAR wire does not carry a crosshair selection.")
-	if category == "finish": lines.append("Finishes save to your source profile for the next match. The native first-person viewmodel renders the equipped finish; third-person actors keep stock materials.")
-	if category in ["gear", "loadout", "attachment", "finish", "crosshair"] and catalog.is_empty(): lines.append("Source Arsenal catalog unavailable. Regenerate from the source modules.")
-	state_label.text = "\n".join(lines)
+		state_label.text = "CONNECTED SOURCE CAREER · " + " · ".join(parts) + "\nMATCHES %s · WINS %s · KILLS %s" % [str(profile.get("matches", "?")), str(profile.get("wins", "?")), str(profile.get("kills", "?"))]
 	update_summary_label(summary)
 	var list := details.find_child("CatalogRows", true, false) as VBoxContainer
 	if list == null: return
@@ -568,6 +570,12 @@ func refresh() -> void:
 	if category == "history":
 		render_history(list)
 		return
+	if category == "crosshair":
+		add_line(list, "Reticles are view-only: this server's GEAR wire does not carry a crosshair selection.", 14)
+	if category == "finish":
+		add_line(list, "Finishes save to your source profile for the next match. The native first-person viewmodel renders the equipped finish; third-person actors keep stock materials.", 14)
+	if catalog.is_empty():
+		add_line(list, "Source Arsenal catalog unavailable. Regenerate from the source modules.", 14)
 	for item: Dictionary in catalog.get("items", []):
 		if item.kind != category: continue
 		var box := VBoxContainer.new()
@@ -594,31 +602,65 @@ func refresh() -> void:
 
 func update_summary_label(summary: Dictionary) -> void:
 	if summary_label == null: return
+	var lines: Array = []
 	if profile.is_empty():
-		summary_label.text = "Connect to load source loadout."
-		return
-	var line: String = "Saved for next match · " + EquippedModel.short_line(summary)
-	var finish: Dictionary = summary.get("finish", {})
-	if finish.get("current") is Dictionary:
-		line += " · Current match finish: " + EquippedModel.finish_text(finish.current)
-	summary_label.text = line
+		lines.append("Connect to load source loadout.")
+	else:
+		var line: String = "Saved for next match · " + EquippedModel.short_line(summary)
+		var finish: Dictionary = summary.get("finish", {})
+		if finish.get("current") is Dictionary:
+			line += " · Current match finish: " + EquippedModel.finish_text(finish.current)
+		lines.append(line)
+	if not action_status.is_empty() and not str(action_status).contains("confirmed selection"):
+		lines.append(action_status)
+	summary_label.text = "\n".join(lines)
 
-## The LOADOUT tab. It restates the confirmed saved loadout in slot order and
-## keeps the pending/unknown distinction explicit; it never renders an optimistic
-## write and never claims the live actor's resolved gear as a named item.
+## The LOADOUT tab. It lists every confirmed equipped slot and the finish first,
+## then the stock/unknown slots, then the authority facts and status. Ordering by
+## state keeps the actual equipped details in the compact first screen without
+## dropping or inventing anything; it never renders an optimistic write and never
+## claims the live actor's resolved gear as a named item.
 func render_loadout(list: Node, summary: Dictionary) -> void:
-	add_line(list, "SAVED LOADOUT · APPLIES TO THE NEXT MATCH", 19)
-	add_line(list, "The current match keeps the loadout it started with. Only a confirmed source reply updates this view.", 14)
-	add_line(list, EquippedModel.field_text(summary, "gear"), 16)
-	add_line(list, EquippedModel.field_text(summary, "attachments"), 16)
+	var equipped_lines: Array = []
+	var other_lines: Array = []
+	for pair: Array in [["gear", "gear"], ["attachments", "attachment"]]:
+		var key: String = pair[0]
+		var kind: String = pair[1]
+		var entries: Dictionary = summary.get("fields", {}).get(key, {})
+		for slot: String in EquippedModel.slots_for(kind):
+			var entry: Dictionary = entries.get(slot, {})
+			var text: String = str(entry.get("label", slot)) + ": " + EquippedModel.entry_text(entry)
+			if str(entry.get("state", "")) in [EquippedModel.STATE_EQUIPPED, EquippedModel.STATE_UNKNOWN_ID]:
+				equipped_lines.append(text)
+			else:
+				other_lines.append(text)
+	if equipped_lines.is_empty():
+		add_line(list, "No slot equipped · saved for the next match.", 16)
+	else:
+		for line: String in equipped_lines: add_line(list, line, 16)
 	var finish: Dictionary = summary.get("finish", {})
 	add_line(list, "Finish: " + EquippedModel.finish_text(finish), 16)
 	if finish.get("current") is Dictionary:
 		add_line(list, "Current match finish: " + EquippedModel.finish_text(finish.current) + " · live actor snapshot, not used to resolve saved gear.", 14)
+	if not other_lines.is_empty():
+		add_line(list, "Stock / unknown · " + " · ".join(other_lines), 14)
+	add_line(list, "Saved for the next match: the current match keeps its round-start loadout. Only a confirmed source reply updates this view.", 14)
 	if not pending.is_empty():
 		add_line(list, "Pending source confirmation · showing the last confirmed loadout, not an optimistic change.", 14)
 	elif not action_status.is_empty():
 		add_line(list, action_status, 14)
+	if not profile.is_empty():
+		add_line(list, "MATCHES %s · WINS %s · KILLS %s" % [str(profile.get("matches", "?")), str(profile.get("wins", "?")), str(profile.get("kills", "?"))], 14)
+		var modes: Dictionary = profile.get("byMode", {})
+		if not modes.is_empty():
+			var mode_parts := []
+			for mode: String in modes:
+				if mode_parts.size() >= 3: break
+				var stats: Dictionary = modes[mode]
+				mode_parts.append("%s %s/%s" % [mode, str(stats.get("wins", "?")), str(stats.get("matches", "?"))])
+			add_line(list, "MODE WINS/MATCHES · " + " · ".join(mode_parts), 14)
+	var identity := get_tree().root.get_node_or_null("Identity")
+	if identity != null and not identity.status.is_empty(): add_line(list, identity.status, 14)
 
 func render_results(list: Node) -> void:
 	if result.is_empty():

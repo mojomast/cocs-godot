@@ -27,6 +27,7 @@ var opened := false
 var equipped := false
 var confirmed := false
 var restarted := false
+var before_captured := false
 var equip_slot := ""
 var equip_id := ""
 var first_actor_ids: Array = []
@@ -95,6 +96,20 @@ func rect(control: Control) -> Array:
 func rows_control() -> Control:
 	if career == null or career.details == null: return null
 	return career.details.find_child("CatalogRows", true, false) as Control
+
+func row_rects() -> Array:
+	# Bounded per-row text + global rect so the harness can prove a named slot
+	# detail actually starts inside the compact viewport, not only Back/tabs.
+	var out: Array = []
+	var rows := rows_control()
+	if rows == null: return out
+	for child: Node in rows.get_children():
+		if child is Label:
+			out.append({"text": (child as Label).text, "rect": rect(child)})
+		else:
+			for node: Node in child.get_children():
+				if node is Label: out.append({"text": (node as Label).text, "rect": rect(node)})
+	return out
 
 func live_actor_ids() -> Array:
 	# The source snapshot serializes each actor's *resolved* attachments; the
@@ -175,17 +190,18 @@ func _process(delta: float) -> bool:
 		career.select_category("loadout")
 		summary_line = career.summary_label.text
 	if opened and not equipped and session.phase == 3:
-		first_actor_ids = live_actor_ids()
+		# Capture the round-start actor once, before the write, so the "unchanged"
+		# claim can never be satisfied by a post-restart re-read.
+		if not before_captured:
+			before_captured = true
+			first_actor_ids = live_actor_ids()
+			actor_finish = live_actor_finish()
 		drive_equip()
 	# 2. Only a source ACK confirms; then the saved overview names the item.
 	if equipped and not confirmed and career.pending.is_empty() and career.profile.get("attachments", {}).get(equip_slot) == equip_id:
 		confirmed = true
 		summary_line = career.summary_label.text
 		career.select_category("loadout")
-	# 3. The current actor keeps its round-start loadout; capture before restart.
-	if confirmed and first_actor_ids.is_empty():
-		first_actor_ids = live_actor_ids()
-		actor_finish = live_actor_finish()
 	# 4. Restart after the authoritative result, then read the next actor's loadout.
 	if confirmed and not restarted and session.phase == 4 and session.lobby_host_allowed():
 		restarted = true
@@ -215,6 +231,8 @@ func _process(delta: float) -> bool:
 		"actor_ids_before": first_actor_ids, "actor_ids_after": second_actor_ids, "actor_finish": actor_finish,
 		"state_text": career.state_label.text if career != null else "",
 		"back": rect(named("CareerBack")), "tab_loadout": rect(named("Tab_loadout")),
+		"summary_rect": rect(career.summary_label) if career != null else [],
+		"row_rects": row_rects(),
 		"rows_bounds": rect(rows),
 		"viewport": [root.get_visible_rect().size.x, root.get_visible_rect().size.y],
 		"error": session.label.text if session.phase == -1 else "" }))
