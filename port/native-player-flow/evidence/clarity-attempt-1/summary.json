@@ -1,0 +1,31 @@
+{
+  "port_commit": "3a69c164f793bd3338858d2e41c51224de112690",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "scope": "One native client hosting a scripted source match on an owned authority; not human acceptance",
+  "checks": [],
+  "status": "FAIL",
+  "display": ":3",
+  "port": 45597,
+  "endpoint": "ws://127.0.0.1:45597",
+  "error": "Error: timeout: pending capture\n    at until (file:///home/mojo/.tmp-on-disk/cocs-player-flow-clarity/port/native-player-flow/clarity-journey.mjs:69:38)\n    at async file:///home/mojo/.tmp-on-disk/cocs-player-flow-clarity/port/native-player-flow/clarity-journey.mjs:128:19",
+  "cleanup": [
+    {
+      "name": "xvfb",
+      "exit_code": 0,
+      "signal": null
+    },
+    {
+      "name": "observer",
+      "exit_code": null,
+      "signal": "SIGTERM"
+    }
+  ],
+  "wire": {
+    "frames": 0,
+    "award_index": -1,
+    "results_index": -1,
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  "expired": false
+}

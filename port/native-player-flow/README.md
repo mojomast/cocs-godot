@@ -68,3 +68,30 @@ GODOT_BIN=/path/to/Godot_v4.5.2-stable_linux.x86_64 \
 The journey holds only the shipped client's own `_process` so a pending write
 cannot leave the client before its capture; it is a genuine wire state, not a
 fabricated frame. It grants no unlock and claims no human visual acceptance.
+
+## Verification status (this lane)
+
+Verified green on this branch (serial, pinned `Godot 4.5.2`, explicit
+`COCS_SOURCE_DERIVATIVE`, credentials env cleared):
+
+* `port/native-player-flow/clarity-states.test.mjs`
+* `res://tests/player_flow/clarity_model.gd`
+* `res://tests/player_flow/clarity_ui.gd`
+* the existing Career suite: `projection`, `actions`, `modal`,
+  `newloadout_model`, `newloadout_ui`, `newloadout_lobby`, `results`, `history`,
+  `results_history_ui`, `package_catalog`
+* `node --test port/native-career/results-history.test.mjs` (server + `ws`
+  connectivity)
+
+`clarity_ui.gd` settles two frames after each resize before measuring, so the
+bounds checks read the real layout rather than the previous frame's (the gap the
+earlier Back-only checks left open).
+
+The live `clarity-journey.mjs` could not be captured in this session: the native
+Godot session timed out at its WebSocket handshake (`phase -1`) before the Career
+panel opened, identically to a re-run of the existing `equipped-journey.mjs`. The
+owned authority and a `ws` client round-trip passed in the same session, so this
+is an environment-level Godot-client handshake failure, not a reader regression.
+The first attempt is retained under `evidence/clarity-attempt-1/` and the default
+`evidence/clarity/` directory is left free for a passing run in an integrated
+environment.
