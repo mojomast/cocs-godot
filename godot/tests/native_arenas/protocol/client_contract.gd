@@ -14,6 +14,8 @@ func _initialize() -> void:
 		var client: Node = script.new()
 		client.allowlist = {"prism-foundry":{"modes":["deathmatch"]}}
 		client.requested_map = "prism-foundry"
+		# Synthetic decoder fixture: model an already queued create request.
+		client.career_welcome_pending = true
 		check(client.decode_text(JSON.stringify({"type":"welcome", "v":3, "roomId":"local-native-arena", "peerId":0})), "welcome")
 		check(client.decode_text(JSON.stringify({"type":"lobby", "mapId":"prism-foundry", "config":{"mode":"deathmatch"},
 			"players":[{"peerId":0,"actorId":0}]})), "lobby")

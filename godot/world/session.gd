@@ -118,6 +118,9 @@ func lobby_retry_reconnect() -> void:
 	label.text = "Reconnecting to the same room…"
 
 func on_transport_dropped(message: String) -> void:
+	if not lobby_enabled:
+		on_error("Connection lost. Return to the launcher and join a room explicitly.")
+		return
 	local_motion.reset()
 	release_pointer()
 	snapshot_watch.reset()

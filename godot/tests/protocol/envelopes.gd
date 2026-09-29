@@ -30,6 +30,9 @@ func _initialize() -> void:
 	for frame: Dictionary in bad:
 		check(not net.decode_text(JSON.stringify(frame)))
 		check(net.seen_events.is_empty() and net.last_snapshot_seq == -1 and net.peer_id == -1)
+	# Decoder fixture stands in for a queued create; unsolicited welcomes now
+	# have no authority to establish a seat.
+	net.career_welcome_pending = true
 	check(net.decode_text('{"type":"welcome","v":3,"roomId":"x","peerId":1}'))
 	check(net.decode_text('{"type":"events","items":[{"id":1},{"id":"next"}]}'))
 	check(net.seen_events.size() == 2)
@@ -99,6 +102,7 @@ func _initialize() -> void:
 		check(net.actor_id == -1 and net.last_ack == 0)
 		check(net.last_snapshot_seq == next_seq and not net.snapshots.is_empty())
 	# Actor zero remains a real identity, not an unassigned sentinel.
+	net.career_welcome_pending = true
 	check(net.decode_text('{"type":"welcome","v":3,"roomId":"x","peerId":1}'))
 	check(net.decode_text('{"type":"lobby","players":[{"peerId":1,"actorId":0}]}'))
 	check(net.decode_text('{"type":"snapshot","seq":2,"acks":{"-1":999,"0":4},"state":{"mapId":"meridian-exchange"}}'))

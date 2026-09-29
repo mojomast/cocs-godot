@@ -65,7 +65,18 @@ var reconnect_elapsed := 0.0
 var resumed_revision := -1
 var resume_start_expected := false
 var resumed_actor_expected := -2
+var dropped_transport := false
 const RECONNECT_TIMEOUT := 8.0
+
+func clear_reconnect_context() -> void:
+	reconnect_pending = false
+	reconnect_room = ""
+	reconnect_actor = -1
+	reconnect_spectator = false
+	reconnect_elapsed = 0.0
+	resume_start_expected = false
+	resumed_actor_expected = -2
+	dropped_transport = false
 
 func career_wire_open() -> bool:
 	return peer.get_ready_state() == WebSocketPeer.STATE_OPEN
@@ -103,9 +114,7 @@ func connect_server(endpoint: String, maps: Dictionary, map_id: String) -> Error
 
 func disconnect_server() -> void:
 	reconnect_ticket.clear()
-	reconnect_pending = false
-	resume_start_expected = false
-	resumed_actor_expected = -2
+	clear_reconnect_context()
 	resumed_revision = -1
 	career_clear()
 	identity_clear()
@@ -134,9 +143,7 @@ func reset_round() -> void:
 
 func fail(message: String) -> bool:
 	reconnect_ticket.clear()
-	reconnect_pending = false
-	resume_start_expected = false
-	resumed_actor_expected = -2
+	clear_reconnect_context()
 	career_clear()
 	identity_clear()
 	spectator_notice_stage = 0
@@ -148,7 +155,12 @@ func fail(message: String) -> bool:
 func send_frame(frame: Dictionary) -> Error:
 	if spectating and frame.get("type") in ["create", "join", "host", "start", "input"]: return ERR_UNAUTHORIZED
 	if peer.get_ready_state() != WebSocketPeer.STATE_OPEN: return ERR_CONNECTION_ERROR
-	return peer.send_text(JSON.stringify(frame))
+	var result := peer.send_text(JSON.stringify(frame))
+	# Subclasses with a source-compatible create verb also own one welcome.
+	if result == OK and frame.get("type") in ["create", "join"]:
+		career_welcome_pending = true
+		joined_room_request = str(frame.get("roomId", "")) if frame.get("type") == "join" else ""
+	return result
 
 func create_room(player_name: String = "Godot", character: String = "chatgpt", harness: String = "openclaw") -> Error:
 	if not identity_storage_ready(): return ERR_FILE_CORRUPT
@@ -184,6 +196,7 @@ func join_room(id: String, player_name: String = "Godot guest", character: Strin
 func retry_reconnect(url: String, maps: Dictionary, map_id: String, expected_room: String) -> Error:
 	if not reconnect_ticket.available(url, map_id, expected_room): return ERR_UNAUTHORIZED
 	if reconnect_pending: return ERR_BUSY
+	if not dropped_transport or peer.get_ready_state() != WebSocketPeer.STATE_CLOSED or connection_endpoint != url or requested_map != map_id or not allowlist.has(map_id) or not maps.has(map_id): return ERR_UNAUTHORIZED
 	var saved_actor: int = reconnect_ticket.actor_id
 	var saved_spectator: bool = reconnect_ticket.spectator
 	var saved_token: String = reconnect_ticket.token
@@ -209,6 +222,7 @@ func retry_reconnect(url: String, maps: Dictionary, map_id: String, expected_roo
 	event_order.clear()
 	round_finished = false
 	reconnect_pending = true
+	dropped_transport = false
 	resume_start_expected = false
 	resumed_actor_expected = -2
 	reconnect_room = expected_room
@@ -222,10 +236,11 @@ func retry_reconnect(url: String, maps: Dictionary, map_id: String, expected_roo
 	return result
 
 func reconnect_failed(message: String) -> void:
-	reconnect_pending = false
-	resume_start_expected = false
-	resumed_actor_expected = -2
 	reconnect_ticket.clear()
+	clear_reconnect_context()
+	career_clear()
+	identity_clear()
+	clear_join_context()
 	if peer.get_ready_state() != WebSocketPeer.STATE_CLOSED: peer.close()
 	was_open = false
 	reconnect_outcome.emit(false, message)
@@ -284,7 +299,7 @@ func valid_envelope(frame: Dictionary) -> bool:
 			for flag: String in ["spectate", "host", "reconnected"]:
 				if frame.has(flag) and not frame[flag] is bool: return false
 			if frame.has("token") and (not frame.token is String or frame.token.is_empty() or frame.token.length() > 128): return false
-			return frame.get("roomId") is String and wire_integer(frame.get("peerId"))
+			return frame.get("roomId") is String and not frame.roomId.is_empty() and wire_integer(frame.get("peerId"))
 		"lobby":
 			if not frame.get("players", []) is Array: return false
 			var peers: Dictionary = {}
@@ -329,6 +344,11 @@ func decode_text(text: String) -> bool:
 		"welcome":
 			if frame.get("v") != PROTOCOL_VERSION: return fail("Protocol version mismatch")
 			if spectating: return fail("Unexpected welcome during spectator connection")
+			# No queued create/join owns an unsolicited or late welcome. In
+			# particular, a cancelled reconnect must never bind a new identity.
+			if not career_welcome_pending: return true
+			if not joined_room_request.is_empty() and frame.get("roomId") != joined_room_request: return fail("Welcome room mismatch")
+			var admitted_wire := career_wire_open()
 			if reconnect_pending:
 				if frame.get("roomId") != reconnect_room: return fail("Reconnect room mismatch")
 				var resumed: bool = frame.get("reconnected") == true
@@ -341,22 +361,20 @@ func decode_text(text: String) -> bool:
 				if not resumed: input_seq = 0
 				reconnect_ticket.clear()
 				reconnect_outcome.emit(resumed, "Seat restored." if resumed else "Old seat expired; source admitted a fresh join. Live rounds are spectator-only.")
-			var career_admitted := career_welcome_pending and career_wire_open()
-			if not career_admitted and career_wire_open() and not reconnect_room.is_empty(): career_admitted = true
-			if career_admitted:
-				career_welcome_pending = false
-				career_seated = true
+			career_welcome_pending = false
+			career_seated = admitted_wire
 			room_id = str(frame.get("roomId", ""))
 			peer_id = int(frame.get("peerId", -1))
-			if frame.get("token") is String:
+			if admitted_wire and frame.get("token") is String:
 				reconnect_ticket.remember(frame.token, connection_endpoint, requested_map, room_id, reconnect_actor if frame.get("reconnected") == true else -1, frame.get("spectate") == true, frame.get("host") == true)
-			if career_admitted: career_receive(frame)
-			if career_admitted:
-				if joined_room_request.is_empty() or frame.get("roomId") == joined_room_request: identity_accept(frame)
-				else: identity_clear()
+			if admitted_wire:
+				career_receive(frame)
+				identity_accept(frame)
 			spectator_notice_stage = 2 if (spectator_notice_stage == 1 or (not reconnect_room.is_empty() and frame.get("reconnected") != true)) and room_id == (joined_room_request if not joined_room_request.is_empty() else reconnect_room) and frame.get("spectate") == true and frame.get("host") == false and not frame.get("reconnected", false) else 0
 			if frame.get("reconnected") == true and frame.get("spectate") == true: spectating = true
 			reconnect_room = ""
+			reconnect_actor = -1
+			reconnect_spectator = false
 		"profile", "progression":
 			if career_seated and career_wire_open(): career_receive(frame)
 		"lobby":
@@ -386,8 +404,10 @@ func decode_text(text: String) -> bool:
 			actor_id = next_actor_id
 			if resumed_actor_expected != -2:
 				# A pre-start player has no actor yet; the host may have started
-				# while this transport was down. Existing actor ownership is strict.
-				if resumed_actor_expected >= 0 and next_actor_id != resumed_actor_expected: return fail("Reconnect actor mismatch")
+				# while this transport was down. A new source round can reseat
+				# actors; only the same known revision requires the old actor.
+				var same_round: bool = wire_integer(frame.get("roundRevision")) and int(frame.roundRevision) == resumed_revision
+				if same_round and resumed_actor_expected >= 0 and next_actor_id != resumed_actor_expected: return fail("Reconnect actor mismatch")
 				resumed_actor_expected = -2
 			if not reconnect_ticket.token.is_empty() and room_id == reconnect_ticket.room_id:
 				reconnect_ticket.actor_id = next_actor_id
@@ -478,10 +498,15 @@ func _process(_delta: float) -> void:
 			reconnect_failed("Reconnect timed out or the seat grace window expired.")
 			return
 		if state == WebSocketPeer.STATE_OPEN and not was_open:
+			if not identity_storage_ready():
+				reconnect_failed("Career credentials are unavailable for reconnect.")
+				return
 			career_welcome_pending = true
 			joined_room_request = reconnect_room
 			spectator_notice_stage = 1
-			if send_frame({"type":"join", "roomId":reconnect_room, "token":reconnect_ticket.token, "v":PROTOCOL_VERSION, "delta":0}) != OK:
+			var request := {"type":"join", "roomId":reconnect_room, "token":reconnect_ticket.token, "v":PROTOCOL_VERSION, "delta":0}
+			request.merge(identity_fields())
+			if send_frame(request) != OK:
 				reconnect_failed("Reconnect request could not be queued.")
 				return
 	if state == WebSocketPeer.STATE_OPEN:
@@ -500,6 +525,7 @@ func _process(_delta: float) -> void:
 		if reconnect_pending:
 			reconnect_failed("Reconnect transport closed before seat confirmation.")
 			return
+		dropped_transport = recoverable
 		last_snapshot_seq = -1
 		snapshots.clear()
 		seen_events.clear()

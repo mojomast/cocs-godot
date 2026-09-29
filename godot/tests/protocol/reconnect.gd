@@ -35,6 +35,11 @@ func run() -> void:
 	check(await until(func() -> bool: return c.career_wire_open()), "socket opens")
 	check(c.create_room("Reconnect") == OK, "create")
 	check(await until(func() -> bool: return not c.room_id.is_empty()), "source welcome")
+	var identity: Node = root.get_node_or_null("Identity")
+	var career: Node = root.get_node_or_null("Career")
+	var original_credentials: Dictionary = identity.get("_active").duplicate() if identity != null else {}
+	var original_profile: String = str(career.profile.get("id", "")) if career != null else ""
+	check(not original_credentials.is_empty() and not original_profile.is_empty(), "source-owned career identity admitted")
 	var room := c.room_id
 	check(c.configure_match("deathmatch", 0) == OK, "configure")
 	check(c.send_frame({"type":"start"}) == OK, "start")
@@ -58,6 +63,7 @@ func run() -> void:
 	check(c.send_input({"x":0,"z":0}) == OK and c.input_seq > previous_input, "post-resume seq increases")
 	check(await until(func() -> bool: return c.last_ack > 0), "fresh source ACK")
 	check(c.reconnect_ticket.host and not c.spectating, "host authority echoed by roster")
+	check(c.retry_reconnect(url, maps, "meridian-exchange", room) == ERR_UNAUTHORIZED, "open socket cannot reattach")
 	# A live-room join must remain read-only, including after reattaching its
 	# spectator ticket. The host's match continues on the same authority.
 	var spectator := Client.new()
@@ -91,11 +97,25 @@ func run() -> void:
 	check(expired.retry_reconnect(url, maps, "meridian-exchange", room) == OK, "retry within native bound")
 	check(await until(func() -> bool: return expired.spectating and expired.last_snapshot_seq >= 0), "source admitted fresh spectator after grace")
 	check(expired_outcomes == [false], "expired token never reports resumed")
+	check(str(career.profile.get("id", "")) == original_profile and identity.get("_active") == original_credentials, "expired room seat retains persistent career identity")
 	check(expired.actor_id == -1 and expired.send_input({"fire":true}) == ERR_UNAUTHORIZED, "expired seat never controls actor")
 	expired.disconnect_server()
 	expired.free()
 	c.disconnect_server()
 	check(c.reconnect_ticket.token.is_empty(), "intentional leave forgets ticket")
+	check(c.reconnect_room.is_empty() and not c.career_welcome_pending, "leave clears pending context")
+	c.reconnect_room = room
+	c.reconnect_pending = true
+	c.career_welcome_pending = true
+	c.reconnect_failed("Controlled cancelled retry")
+	check(c.reconnect_room.is_empty() and not c.career_welcome_pending and c.reconnect_ticket.token.is_empty(), "failed retry clears all admission context")
+	check(c.connect_server(url, maps, "meridian-exchange") == OK, "new unseated transport")
+	check(await until(func() -> bool: return c.career_wire_open()), "unseated socket opens")
+	# Controlled late envelope: the source does not issue this frame on an
+	# unseated connection. Its token must never create a native ticket.
+	check(c.decode_text(JSON.stringify({"type":"welcome","v":3,"roomId":room,"peerId":500,"token":"synthetic-late-ticket","profile":{"id":"synthetic-profile"}})), "late welcome ignored")
+	check(c.room_id.is_empty() and c.reconnect_ticket.token.is_empty() and not c.career_seated and identity.get("_active") == original_credentials, "late welcome cannot bind career or ticket")
+	c.disconnect_server()
 	c.free()
 	print("PORT_NATIVE_RECONNECT_OK checks=", checks, " genuine_source_socket=true")
 	quit(0)
