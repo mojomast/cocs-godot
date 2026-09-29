@@ -8,8 +8,51 @@ const WeaponSelection = preload("res://world/weapon_selection.gd")
 const CombatActions = preload("res://world/combat_actions.gd")
 const VehicleBridge = preload("res://vehicles/session_bridge.gd")
 const VehicleFleet = preload("res://combined_arms/fleet.gd")
+const Audiovisual = preload("res://audio/av_service.gd")
 var vehicle_bridge := VehicleBridge.new()
 var vehicle_fleet: Node3D
+var audiovisual
+var audiovisual_round := ""
+
+func av_ensure() -> void:
+	if is_instance_valid(audiovisual): return
+	audiovisual = Audiovisual.new()
+	audiovisual.name = "NativeAudiovisual"
+	add_child(audiovisual)
+	var local_settings := SettingsAccess.service()
+	if local_settings != null:
+		local_settings.audio_preferences_changed.connect(audiovisual.apply_settings)
+		audiovisual.apply_settings(local_settings.values)
+	else: audiovisual.apply_settings({"mute":"--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args()})
+
+func av_start(frame: Dictionary) -> void:
+	av_ensure()
+	var revision: Variant = frame.get("roundRevision", client.resumed_revision)
+	if not (revision is int or revision is float): revision = round_starts
+	var key := "%s|%s|%s" % [endpoint, client.room_id, str(revision)]
+	var arena: Dictionary = catalog.resolve_map(current_id)
+	if audiovisual_round != key:
+		audiovisual_round = key
+		audiovisual.bind_session(self, camera, arena, selected_mode, key, int(revision))
+		audiovisual.start_round(key)
+	else: audiovisual.start_round(key) # same revision reconnect does not reset IDs
+	if not application_focused: audiovisual.set_focus(false)
+
+func av_snapshot(state: Dictionary) -> void:
+	if not is_instance_valid(audiovisual): return
+	audiovisual.apply_snapshot(state, client.actor_id, not snapshot_watch.stale())
+	if SettingsAccess.overlay_open(): audiovisual.suspend("settings_overlay")
+
+func av_events(items: Array) -> void:
+	if is_instance_valid(audiovisual):
+		if SettingsAccess.overlay_open(): audiovisual.suspend("settings_overlay")
+		audiovisual.apply_events(items)
+
+func av_finish(state: Dictionary) -> void:
+	if is_instance_valid(audiovisual): audiovisual.finish_state(state, client.actor_id, selected_mode)
+
+func av_tick(delta: float) -> void:
+	if is_instance_valid(audiovisual): audiovisual.tick(delta)
 
 func clear_vehicles() -> void:
 	vehicle_bridge.reset()
@@ -94,6 +137,8 @@ func lobby_host_allowed() -> bool:
 	return false
 
 func lobby_clear() -> void:
+	if is_instance_valid(audiovisual): audiovisual.suspend("lobby")
+	audiovisual_round = ""
 	clear_vehicles()
 	release_pointer()
 	local_motion.reset()
@@ -142,6 +187,7 @@ func lobby_retry_reconnect() -> void:
 	label.text = "Reconnecting to the same room…"
 
 func on_transport_dropped(message: String) -> void:
+	if is_instance_valid(audiovisual): audiovisual.suspend("transport")
 	clear_vehicles()
 	if not lobby_enabled:
 		on_error("Connection lost. Return to the launcher and join a room explicitly.")
@@ -363,11 +409,13 @@ var application_focused: bool = true
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		if is_instance_valid(audiovisual): audiovisual.set_focus(false)
 		application_focused = false
 		local_motion.reset()
 		release_pointer()
 	elif what == NOTIFICATION_APPLICATION_FOCUS_IN:
 		application_focused = true
+		if is_instance_valid(audiovisual): audiovisual.set_focus(true)
 
 func advance_handshake(delta: float) -> bool:
 	if not is_finite(delta) or delta < 0.0: return false
@@ -396,7 +444,9 @@ func _ready() -> void:
 	combat_label.position = Vector2(24, 170)
 	combat_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	client.events.connect(func(items: Array) -> void:
-		if phase == 3: combat.apply_events(items, client.actor_id))
+		if phase == 3:
+			combat.apply_events(items, client.actor_id)
+			av_events(items))
 	presentation.interpolate_remote = true
 	camera.rotation_order = EULER_ORDER_YXZ
 	trace_enabled = "--native-trace" in OS.get_cmdline_user_args()
@@ -437,6 +487,8 @@ func _ready() -> void:
 		if lobby_enabled and phase != 3: return
 		round_results += 1
 		presentation.apply_state(f.state, client.actor_id)
+		av_snapshot(f.state)
+		av_finish(f.state)
 		observe_vehicles(f.state)
 		pickups.apply_state(f.state)
 		phase = 4
@@ -501,6 +553,7 @@ func connect_selected_match() -> void:
 
 func on_started(_frame: Dictionary) -> void:
 	if lobby_enabled and phase not in [11, 12, 20, 3, 4, -6]: return
+	av_start(_frame)
 	# A host can start a new round without this client visiting results.
 	# Never carry interactive capture across an authoritative round boundary.
 	release_pointer()
@@ -629,6 +682,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	pickups.apply_state(frame.state)
 	combat.apply_state(frame.state)
 	presentation.apply_state(frame.state, client.actor_id)
+	av_snapshot(frame.state)
 	observe_vehicles(frame.state)
 	if phase != 3: return
 	if is_inside_tree() and not is_instance_valid(first_person):
@@ -754,6 +808,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		update_look(MouseMotion.raw_delta(event))
 
 func _process(delta: float) -> void:
+	if phase == 4 and is_instance_valid(audiovisual) and application_focused and not SettingsAccess.overlay_open(): av_tick(delta)
+	if phase == 3 and is_instance_valid(audiovisual):
+		if snapshot_watch.stale() or not application_focused or SettingsAccess.overlay_open():
+			if audiovisual.fresh: audiovisual.suspend("settings_overlay" if SettingsAccess.overlay_open() else "stale_or_focus")
+		else: av_tick(delta)
 	if not advance_handshake(delta): return
 	weapon_selection.advance(delta, weapon_controls_active(), presentation.local_actor, client.last_ack)
 	combat_label.text = combat.text()

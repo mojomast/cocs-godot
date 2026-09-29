@@ -2,6 +2,7 @@ extends "res://horde/demo.gd"
 const DrydockCatalog = preload("res://horde_maps/catalog.gd")
 const Drydock = preload("res://horde_maps/cinderwake.gd")
 const DrydockEnvironment = preload("res://native_arenas/identity_environment.gd")
+const AudioBuses = preload("res://audio/buses.gd")
 var drydock: Node3D
 var horn := AudioStreamPlayer.new()
 var horn_key := ""
@@ -13,6 +14,8 @@ func native_trace_limit() -> int:
 	return 50000
 
 func _ready() -> void:
+	AudioBuses.ensure()
+	horn.bus = &"Effects"
 	# Short captioned three-beat warning. Received source ticks choose each beat;
 	# this audio player has no clock, trigger or callback into gameplay.
 	var audio := AudioStreamWAV.new()

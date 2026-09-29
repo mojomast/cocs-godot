@@ -33,6 +33,7 @@ var hit_remaining: float = 0.0
 var hurt_remaining: float = 0.0
 const Overlay = preload("res://world/combat_overlay.gd")
 const AudioFeedback = preload("res://world/audio_feedback.gd")
+const AudioBuses = preload("res://audio/buses.gd")
 const PlayerFx = preload("res://player_fx/director.gd")
 const Impacts = preload("res://player_fx/impacts.gd")
 var overlay: Control
@@ -354,7 +355,14 @@ func _ready() -> void:
 	moth_effects.configure(Callable(MothLibrary, "effect"))
 	audio_feedback = AudioFeedback.new()
 	add_child(audio_feedback)
-	audio_feedback.set_muted("--mute" in OS.get_cmdline_user_args())
+	var local_settings := get_tree().root.get_node_or_null("LocalSettings")
+	if local_settings != null:
+		local_settings.audio_preferences_changed.connect(func(options: Dictionary) -> void:
+			AudioBuses.apply(options)
+			audio_feedback.set_muted(options.get("mute", false) == true or "--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args()))
+		AudioBuses.apply(local_settings.values)
+		audio_feedback.set_muted(local_settings.values.get("mute", false) == true or "--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args())
+	else: audio_feedback.set_muted("--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args())
 	var layer := CanvasLayer.new()
 	layer.layer = 2
 	add_child(layer)

@@ -20,12 +20,17 @@ const QUALITIES := {
 }
 const BPM := {"menu":62.0,"explore":72.0,"combat":96.0,"results":84.0}
 const PALETTES := {
- "ctf": [1,0,2], "cocs": [1,0,2], "cocs-coop": [1,1,0],
- "horde": [0,1,0], "campaign": [0,0,2], "puma-race": [1,1,2],
- "puma-soccer": [1,0,0], "deathmatch": [0,0,2],
- "combined-arms": [1,1,0], "storm": [1,1,2], "night": [1,0,0],
- "cold": [0,0,2], "hot": [0,1,0]
-} # keys, shaker, pluck/register; remaining modes receive default orchestration
+ "default":[0,0,0,1.0], "deathmatch":[0,0,1,2.0], "teamdeathmatch":[1,0,0,2.0],
+ "instagib":[1,0,0,4.0], "rockets":[0,1,0,0.5], "arsenal":[1,0,1,2.0],
+ "armsrace":[1,1,0,4.0], "team-elimination":[1,1,0,0.5], "combined-arms":[1,1,1,0.5],
+ "ctf":[1,0,0,2.0], "koth":[1,0,1,2.0], "domination":[0,1,0,2.0],
+ "assault":[0,0,1,2.0], "payload":[1,1,0,0.5], "holdout":[0,1,1,0.5],
+ "uplink":[1,0,0,4.0], "vip-escort":[1,0,0,2.0],
+ "horde":[0,1,1,0.5], "juggernaut":[0,1,0,0.5], "campaign":[0,0,1,2.0],
+ "cocs":[1,0,1,2.0], "cocs-coop":[1,1,1,0.5],
+ "puma-race":[1,0,1,2.0], "puma-soccer":[1,0,1,0.5],
+ "storm":[1,1,0,2.0], "night":[1,0,0,0.5], "cold":[0,0,1,2.0], "hot":[0,1,0,0.5]
+} # source MUSIC_PALETTES keys/shaker/pluck/rotation (sample timbre rearranged)
 const CUES := ["capture","flag-pickup","flag-return","goal","killstreak","spree","multikill","victory","defeat","score","boss","objective"]
 const VOICES := 20 # Includes a single dedicated, never-stolen announcer player.
 
@@ -73,11 +78,13 @@ func _ready() -> void:
  for i in range(VOICES - 1):
   var player := AudioStreamPlayer.new()
   player.name = "ScoreVoice%d" % i
+  player.bus = &"Score"
   add_child(player)
   players.append(player)
   expires.append(0.0)
  announcer_player = AudioStreamPlayer.new()
  announcer_player.name = "AnnouncerVoice"
+ announcer_player.bus = &"Announcer"
  add_child(announcer_player)
 
 func bind(host: Node = null) -> void:
@@ -203,11 +210,11 @@ func _section() -> String:
  return "outro"
 
 func _palette() -> Array:
- var result: Array = PALETTES.get(mode_theme, [0,0,0]).duplicate()
+ var result: Array = PALETTES.get(mode_theme, PALETTES.default).duplicate()
  if PALETTES.has(biome):
   var overlay: Array = PALETTES[biome]
-  for i in range(3):
-   result[i] = maxi(int(result[i]), int(overlay[i]))
+  for i in range(3): result[i] = maxi(int(result[i]), int(overlay[i]))
+  result[3] = overlay[3]
  return result
 
 func _step_music() -> void:
@@ -229,7 +236,10 @@ func _step_music() -> void:
  if step == 8:
   _note("strings-pad", root + 19, 1.5, 0.07, false)
   if scene != "menu": _note("taiko", 36, 0.55, 0.15, strong)
- if step in ([0,10] if scene == "menu" else [0,6,10] if scene == "explore" else [0,3,8,11]):
+ var race := mode_theme == "puma-race" and scene in ["explore", "combat"]
+ var soccer := mode_theme == "puma-soccer" and scene in ["explore", "combat"]
+ var drum_steps := [0,4,8,12] if race else ([0,8,15] if soccer else ([0,10] if scene == "menu" else [0,6,10] if scene == "explore" else [0,3,8,11]))
+ if step in drum_steps:
   if section != "intro" or step == 0: _note("taiko", 36 if step == 0 else 41, 0.4, 0.12, strong)
  if scene == "combat" and (step == 4 or step == 12) and section != "intro":
   _note("low-strings-stacc", root + 12, 0.3, 0.11, strong)
@@ -240,7 +250,8 @@ func _step_music() -> void:
   var arp_degree: int = arp[step / 2]
   if step >= 12 and form_bar % 4 == 3: arp_degree = [5,4,2,0][(step-12)/2]
   if _hash(53) % 4 == 0: arp_degree += 7
-  _note("harp" if int(palette[2]) > 0 or scene == "menu" else "strings-pad", root + _degree(arp_degree) + 12, 0.42, 0.05, false)
+  var register := 0 if float(palette[3]) <= 0.5 else (24 if float(palette[3]) >= 4.0 else 12)
+  _note("harp" if int(palette[2]) > 0 or scene == "menu" else ("bells" if int(palette[0]) > 0 else "strings-pad"), root + _degree(arp_degree) + register, 0.42, 0.05, false)
  if step % 4 == 0 and (section != "intro" or scene == "menu"):
   var index := posmod(form_bar * 4 + beat, 16)
   if scene == "menu": index = posmod(int(floor(float(form_bar * 4 + beat) / 2.0)), 16)
@@ -253,7 +264,7 @@ func _step_music() -> void:
   _note("trumpet-pad" if strong else "strings-pad", note, 0.7, 0.12, strong)
  if step == 12 and (section == "transition" or section == "outro"):
   _note("tubular-bells", root + 24, 1.0, 0.10, false)
- if step % 2 == 1 and int(palette[1]) == 1 and section != "intro":
+ if step % 2 == 1 and (int(palette[1]) == 1 or race) and section != "intro":
   _note("taiko", 50, 0.18, 0.035, false)
  if step % 4 == 2 and tension > 0.5 and scene == "combat":
   _note("low-strings-stacc", root + 12, 0.2, 0.07 * tension, true)
@@ -341,6 +352,11 @@ func response(kind: String) -> bool:
  last_response = kind
  var pitch := {"capture":62,"loss":50,"accent":74,"final":69,"award":81}[kind]
  _note("tubular-bells" if kind in ["capture", "award", "final"] else "low-brass", pitch, 0.65, 0.09, true)
+ return true
+
+func countdown_beep(beat: int) -> bool:
+ if beat not in [0, 1, 2, 3] or not running or muted or not focused: return false
+ _note("bells", 84 if beat == 0 else 76, 0.3 if beat == 0 else 0.16, 0.15 if beat == 0 else 0.09, true)
  return true
 
 func status() -> Dictionary:

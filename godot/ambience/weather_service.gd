@@ -71,6 +71,7 @@ func _ready() -> void:
 	stream.mix_rate = AUDIO_RATE
 	stream.buffer_length = 0.2
 	_audio.stream = stream
+	_audio.bus = &"Ambience"
 	add_child(_audio)
 	_audio.play()
 	_playback = _audio.get_stream_playback() as AudioStreamGeneratorPlayback
@@ -153,7 +154,9 @@ func apply_snapshot(frame: Dictionary) -> void:
 			_strike_window = -1
 		_elapsed = float(timestamp)
 		_authoritative_time = true
-	var single: Variant = frame.get("singlePlayer", {})
+	# game/core.mjs snapshot() serializes the authored object as `singleplayer`
+	# (lowercase), not page-side `singlePlayer` or top-level weather.
+	var single: Variant = frame.get("singleplayer", {})
 	_snapshot_weather = ""
 	_snapshot_time = {}
 	if single is Dictionary:

@@ -21,7 +21,7 @@ var dropped := 0
 func _ready() -> void:
 	for i in MAX_VOICES:
 		var player := AudioStreamPlayer.new()
-		player.bus = &"Master"
+		player.bus = &"Effects"
 		add_child(player)
 		players.append(player)
 	for kind: String in SHAPES: streams[kind] = _render(SHAPES[kind])
@@ -89,7 +89,7 @@ func event_plan(plan: Dictionary) -> bool:
 	for player: AudioStreamPlayer in players:
 		if player.playing: continue
 		player.stream = streams[family]
-		player.volume_db = linear_to_db(maxf(0.001, volume * 0.18))
+		player.volume_db = linear_to_db(0.18)
 		player.play()
 		return true
 	dropped += 1

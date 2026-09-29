@@ -23,6 +23,7 @@ const Projectiles = preload("res://world/projectiles.gd")
 const TABLE_SIZE := 1024
 const NOISE_SECONDS := 0.6
 const PEAK_CEILING := 0.65
+const AudioBuses = preload("res://audio/buses.gd")
 
 ## Source feel hints, transcribed from the read-only source tables
 ## (`game/data.mjs` feel triples and `game/sfx-design.mjs` GUN_STYLES /
@@ -105,6 +106,7 @@ func _ready() -> void:
 
 func _initialize_audio() -> void:
 	if not _sounds.is_empty(): return
+	AudioBuses.ensure()
 	var started := Time.get_ticks_usec()
 	_build_tables()
 	for cue: String in CUE_SECONDS:
@@ -113,7 +115,7 @@ func _initialize_audio() -> void:
 		var voice := AudioStreamPlayer.new()
 		voice.name = "CueVoice%d" % index
 		voice.volume_db = DEFAULT_VOLUME_DB
-		voice.bus = &"Master"
+		voice.bus = &"Effects"
 		add_child(voice)
 		_voices.append(voice)
 	synth_usec = Time.get_ticks_usec() - started

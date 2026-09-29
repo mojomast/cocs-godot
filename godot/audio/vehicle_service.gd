@@ -14,7 +14,7 @@ var dropped := 0
 
 func _ready() -> void:
 	for player: AudioStreamPlayer in [engine, skid, report, hull]:
-		player.bus = &"Master"
+		player.bus = &"Effects"
 		add_child(player)
 	for kind: String in KINDS:
 		buffers[kind] = _wave(float(KINDS[kind]), 0.4, 0.22, true)
@@ -50,7 +50,7 @@ func apply_settings(settings: Dictionary) -> void:
 	enabled = settings.get("mute", false) != true and volume > 0.0
 	if not enabled: stop_all()
 	else:
-		for player: AudioStreamPlayer in [engine, skid, report, hull]: player.volume_db = linear_to_db(maxf(volume, 0.001))
+		for player: AudioStreamPlayer in [engine, skid, report, hull]: player.volume_db = 0.0
 
 func set_focus(value: bool) -> void:
 	focused = value
@@ -72,14 +72,14 @@ func apply_vehicle(vehicle: Dictionary, actor: Dictionary) -> void:
 	var boosting := vehicle.get("boosting", false) == true
 	if engine.stream != buffers[kind]: engine.stop(); engine.stream = buffers[kind]
 	engine.pitch_scale = clampf((1.0 + speed * 1.4) * (1.35 if boosting else 1.0), 0.5, 3.0)
-	engine.volume_db = linear_to_db(maxf(0.001, volume * (0.25 + speed * 0.4)))
+	engine.volume_db = linear_to_db(maxf(0.001, 0.25 + speed * 0.4))
 	if not engine.playing: engine.play()
 	var yaw := float(vehicle.get("yaw", vehicle.get("heading", 0.0)))
 	var slip := absf(vx * cos(yaw) - vz * sin(yaw))
 	if kind == "puma" and slip > 1.1:
 		skid.stream = buffers["skid"]
 		skid.pitch_scale = 1.0 + minf(slip, 12.0) * 0.12
-		skid.volume_db = linear_to_db(maxf(0.001, volume * minf(slip * 0.03, 0.35)))
+		skid.volume_db = linear_to_db(maxf(0.001, minf(slip * 0.03, 0.35)))
 		if not skid.playing: skid.play()
 	else: skid.stop()
 
