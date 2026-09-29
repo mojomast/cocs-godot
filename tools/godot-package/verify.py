@@ -420,6 +420,14 @@ process.once('SIGTERM',async()=>{for(const socket of game.wss.clients)socket.ter
         # never substitute a fixed wait for gameplay-completion evidence.
         launch('domination', ['--experience=zones','--map=meridian-exchange','--mode=domination'], trace=False)
         launch('koth', ['--experience=zones','--map=verdant-reliquary','--mode=koth'], trace=False)
+        # Extracted graphical startup/ownership for each new map/mode pairing.
+        # Source-correlated completion/crew journeys are separate gates.
+        for mode in ['uplink', 'holdout']:
+            for map_id in ['meridian-exchange', 'verdant-reliquary', 'ember-crucible']:
+                launch(mode + '-' + map_id, ['--experience=zones', '--mode=' + mode,
+                       '--map=' + map_id], trace=False)
+        for map_id in ['tidal-citadel', 'sunscar-convoy']:
+            launch('assault-' + map_id, ['--experience=assault', '--map=' + map_id], trace=False)
         launch('combined-arms', ['--experience=combined-arms'], trace=False)
         launch('arms-race', ['--experience=arms-race'], trace=False)
         launch('race', ['--experience=sports','--map=ion-speedway'], trace=False)

@@ -60,12 +60,36 @@ Play.cmd --experience=horde --map=cinderwake-drydock
 Play.cmd --help
 ```
 
-All nine original maps and ten source experience routes are retained, plus five
+All nine original maps and the existing source experience routes are retained, plus five
 native-only graphics routes and the three-map native Deathmatch route. Lobby defaults to an owned
 loopback server, usable by clients on this computer. A separately hosted reachable
 server can be selected with `--experience=lobby --endpoint=ws://HOST:PORT`.
 
 ## New native maps and effects
+
+**Uplink / Holdout:** choose either mode in the Zones route on Meridian Exchange,
+Verdant Reliquary or Ember Crucible. Uplink is a shared three-stage race, won by
+the team with the most banked captures. Holdout requires ownership of two zones
+continuously for 30 seconds; losing that quorum resets progress.
+
+**Assault:** choose Tidal Citadel or Sunscar Convoy. Team 0 attacks the active
+sector; team 1 defends. Breach the final sector to win as attackers, or hold until
+the source time limit to win as defenders. Its score-limit option specifies
+1–9 sectors. Source vehicles stay available.
+
+**Combined Arms:** Sunscar Convoy includes Puma, Hornet, Titan, Scout and
+Transport. **E** boards/exits; the source assigns driver, gunner or passenger.
+**WASD** drives, **Shift** requests boost, **Space** taps the ground brake.
+In Hornet, **Space** requests an upward pulse and **Ctrl** descends. Holding
+Space does not repeatedly ascend on the ordinary server. Gunners own mounted
+fire when occupied; passengers retain source-supported personal weapons and
+chassis-relative aim. Sports retain their separate controls.
+
+**Audio / weather:** Settings separates music, effects, announcer and ambience
+volume beneath Master. The native orchestral score uses reviewed source samples;
+spoken callouts use the existing 12 phrases, without arbitrary voiced dialogue.
+Cosmetic weather has detail, reduced-motion and lightning controls and never
+changes movement, damage or the source simulation.
 
 Home Settings and F12 share persistent master volume/mute, window mode, mouse
 sensitivity and interface scale. Home remembers the last activity/options.

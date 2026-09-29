@@ -42,10 +42,14 @@ node run.mjs --experience=horde --map=cinderwake-drydock
 node run.mjs --experience=horde --map=nacre-engine --waves=10 --operator=claude --harness=claudecode
 node run.mjs --experience=showcase
 node run.mjs --experience=lobby
+node run.mjs --experience=zones --mode=uplink --map=meridian-exchange
+node run.mjs --experience=zones --mode=holdout --map=verdant-reliquary
+node run.mjs --experience=assault --map=tidal-citadel
+node run.mjs --experience=combined-arms --map=sunscar-convoy
 node run.mjs --help
 ```
 
-All nine original maps and ten source experience routes are retained, plus the
+All nine original maps and the existing source experience routes are retained, plus the
 three-map original native Deathmatch family (Prism Foundry, Aurora Basin, Cinder
 Array), the three identity arenas (Lacuna Court, Vermilion Fold, Nacre Engine),
 five native-only graphics routes, Domination on Vermilion Fold and Horde on Nacre
@@ -127,6 +131,37 @@ Natural ten-wave/champion completion remains unobserved.
 `--experience=shader-lab`) opens standalone unarmed exploration, including the
 particle observatory with explicit 8K–1M settings and the Moth shader gallery.
 **P** photo views, **1–4** particle presets, **Space** pause, **Escape** release.
+
+## Objective and vehicle expansion
+
+**Uplink** is a shared three-stage race: capture the current node to advance;
+the team with the most banked captures wins. **Holdout** requires ownership of
+two zones continuously for 30 seconds; losing that ownership quorum resets the
+hold. Both use Meridian Exchange, Verdant Reliquary or Ember Crucible through
+the Zones route. The source determines capture modifiers, timeouts and ties.
+
+**Assault** uses Tidal Citadel or Sunscar Convoy. Team 0 attacks the active sector;
+team 1 defends. Breaching the final sector wins for attackers; reaching the time
+limit without a breach wins for defenders. Its score-limit option is the number
+of sectors (1–9). Vehicles remain available where the source map supplies them.
+
+**Combined Arms** on Sunscar Convoy includes Puma, Hornet, Titan, Scout and
+Transport, with source-assigned driver, gunner and passenger seats. **E** boards
+the first eligible nearby vehicle or exits; there is no direct seat selector.
+**WASD** drives, **Shift** requests boost, and **Space** taps the ground brake.
+In Hornet, **Space** requests an upward pulse and **Ctrl** descends. The ordinary
+server treats Space as a rising edge, so holding it does not repeatedly climb.
+An occupied gunner owns mounted fire; passengers retain their source-supported
+personal weapons and chassis-relative aim. Health, heat, repairs, destruction
+and respawn are driven by the source. Sports retain their separate controls.
+
+## Audio and weather
+
+Settings separates music, effects, announcer and ambience volume beneath Master.
+Music uses a bounded native orchestral arrangement with reviewed source samples;
+announcer speech uses the existing 12 phrases. Narrative text does not gain
+arbitrary spoken dialogue. Weather is cosmetic, with configurable detail and
+reduced-motion/lightning controls; it never changes movement or damage.
 
 ## Debug tools (off by default)
 

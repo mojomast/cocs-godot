@@ -41,6 +41,7 @@ derivative_path = os.environ.get('COCS_SOURCE_DERIVATIVE')
 (root / '.port-runtime').mkdir(exist_ok=True)
 os.environ['COCS_CAREER_ROOT'] = tempfile.mkdtemp(prefix='verification-career-', dir=root / '.port-runtime')
 os.environ['CAREER_EQUIPPED_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'equipped-journey')
+os.environ['CAREER_CLARITY_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'clarity-journey')
 for key, suffix in [("XDG_DATA_HOME", "data"), ("XDG_CONFIG_HOME", "config"), ("XDG_CACHE_HOME", "cache")]:
     os.environ.setdefault(key, str(root / ".port-runtime" / suffix))
     Path(os.environ[key]).mkdir(parents=True, exist_ok=True)
@@ -106,6 +107,7 @@ commands = [
     ("career-player-flow-clarity-source", ["node", "--test", "port/native-player-flow/clarity-states.test.mjs"]),
     ("career-player-flow-clarity-model", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_flow/clarity_model.gd"]),
     ("career-player-flow-clarity-ui", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_flow/clarity_ui.gd"]),
+    ("career-player-flow-clarity-journey", ["node", "port/native-player-flow/clarity-journey.mjs"]),
     ("career-equipped-lobby", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/newloadout_lobby.gd"]),
     ("career-equipped-journey", ["node", "port/native-career/equipped-journey.mjs"]),
     ("career-results-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/results.gd"]),
@@ -315,10 +317,10 @@ report['gate_tiers'] = {
     'rendered/input': ['first-person-binding', 'combat-actions', 'benchmark-autostart',
                         'blood-live-native', 'loadout-loopback', 'horde-upgrade-fixture',
                         'product-shell-journey', 'product-shell-guest-leave', 'career-equipped-journey',
-                        'player-flow-journey', 'player-flow-controls'],
+                        'player-flow-journey', 'player-flow-controls', 'career-player-flow-clarity-journey'],
     'live-source': ['native-live', 'native-lifecycle', 'native-session', 'two-native-clients',
                     'product-shell-journey', 'product-shell-guest-leave', 'career-equipped-journey',
-                    'finish-source-journey', 'player-flow-journey'],
+                    'finish-source-journey', 'player-flow-journey', 'career-player-flow-clarity-journey'],
 }
 report['execution'] = {'planned': len(report['planned_gate_names']), 'executed': 0,
                        'unrun': len(report['unrun_gate_names'])}
@@ -359,6 +361,7 @@ if not version['passed']:
 gate_options = {
     'product-shell-journey': {'timeout': 300},
     'player-flow-journey': {'timeout': 240},
+    'career-player-flow-clarity-journey': {'timeout': 240},
     'benchmark-autostart': {'success_marker': 'BENCHMARK_GATE_OK'},
     'combat-actions': {
         'success_marker': 'NATIVE_COMBAT_ACTIONS',
