@@ -77,7 +77,9 @@ func _ready() -> void:
 	client.snapshot.connect(on_snapshot)
 	client.results.connect(on_results)
 	client.events.connect(func(items: Array) -> void:
-		if phase == 3: combat.apply_events(items, client.actor_id))
+		if phase == 3:
+			combat.apply_events(items, client.actor_id)
+			av_events(items))
 	connect_selected_match()
 
 func on_lobby(frame: Dictionary) -> void:

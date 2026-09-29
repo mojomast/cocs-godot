@@ -148,8 +148,15 @@ func refresh_objective_hud() -> void:
 	if phase == 4: objective_label.text += "\nEnter: request source rematch"
 
 func on_events(items: Array) -> void:
-	if phase != 3 or snapshot_watch.stale(): return
+	if phase != 3: return
+	if snapshot_watch.stale():
+		# Preserve wire identities while context is absent; never play a stale
+		# sector announcement or infer an old local team/seat.
+		if is_instance_valid(audiovisual): audiovisual.suspend("stale_snapshot")
+		av_events(items)
+		return
 	combat.apply_events(items, client.actor_id)
+	av_events(items)
 	for item: Variant in items:
 		if not item is Dictionary: continue
 		match item.get("type"):
