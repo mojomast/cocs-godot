@@ -7,8 +7,23 @@ const [root, output] = process.argv.slice(2);
 if (!root || !output) throw Error('server.mjs ROOT OUTPUT');
 const {createGameServer} = await import(pathToFileURL(resolve(root, 'server/game-server.mjs')));
 const game = createGameServer({historyPath:null, progressionPath:null});
-const witness = {classification:'unmodified Room; real WebSocket clients; default fixed step', connections:[], starts:[], inputs:[], snapshots:[], events:[]};
+const witness = {classification:'unmodified Room; real WebSocket clients; default fixed step', connections:[], starts:[], inputs:[], accepted:[], snapshots:[], events:[]};
 let serial = 0, roomPublished = false;
+const observed = new WeakSet();
+function witnessAccepted(roomId) {
+  const match=game.registry.rooms.get(roomId)?.match;
+  if (!match || observed.has(match)) return;
+  observed.add(match);
+  // Transparent observation at the only Room->Match input boundary. Record
+  // effective rising edges after Room transformed the wire, then delegate
+  // unchanged arguments to the original source implementation exactly once.
+  const step=match.step;
+  match.step=function(dt, values) {
+    if (witness.accepted.length<12000) witness.accepted.push({roomId,time:this.time,
+      inputs:structuredClone(values?.inputs??{})});
+    return step.call(this,dt,values);
+  };
+}
 game.wss.on('connection', socket => {
   const connection = ++serial;
   const record = {connection, peerId:null, actorId:null, roomId:null};
@@ -33,9 +48,11 @@ game.wss.on('connection', socket => {
         roomPublished=true; console.log(`ROOM ${frame.roomId}`);
       }
     }
-    if (frame.type==='start' && witness.starts.length<20)
-      witness.starts.push({connection, mapId:frame.mapId, mode:frame.config?.mode,
+    if (frame.type==='start') {
+      witnessAccepted(record.roomId);
+      if (witness.starts.length<20) witness.starts.push({connection, mapId:frame.mapId, mode:frame.config?.mode,
         botCount:frame.config?.botCount, roundRevision:frame.roundRevision});
+    }
     if (frame.type==='snapshot' && witness.snapshots.length<16000) {
       const state=frame.state;
       witness.snapshots.push({connection, seq:frame.seq, ack:frame.acks?.[record.actorId],
