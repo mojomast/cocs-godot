@@ -1,0 +1,245 @@
+{
+  "original": "/tmp/opencode/audio-integration-lead",
+  "files": [
+    {
+      "path": "summary.json",
+      "sha256": "b6f8e9e69194d3c71735cd3b520ffd92de7580d89c0fcb1fe4a753fea7ba90a2",
+      "bytes": 5833
+    },
+    {
+      "path": "weather/rain-off.png",
+      "sha256": "25009098e728b1f124ad6a77e1b72a116a8097fdbaf9bbc07fe933086db533da",
+      "bytes": 999
+    },
+    {
+      "path": "weather/rain-on.png",
+      "sha256": "014f8839dbbefb958b7de66bd443aae2325952b102f696fde441fa8c099e3692",
+      "bytes": 1053
+    },
+    {
+      "path": "pcm/master-mix-seed137.wav",
+      "sha256": "a085267ee5112b5937d6b5b60e16338d25c27a7cea6866b6c5dbb98ad73dde28",
+      "bytes": 176444
+    },
+    {
+      "path": "pcm/master-mix-seed42.wav",
+      "sha256": "edc4dbb92141b08b1ae9b1412d9c4a492ad3e834c1852a64b79dd9381976721a",
+      "bytes": 176444
+    },
+    {
+      "path": "pcm/master-mix.wav",
+      "sha256": "370b272a6fca2b9a4c928cc8d48954d391d0a112299e4ea6776f294fd268edbd",
+      "bytes": 176444
+    },
+    {
+      "path": "logs/menu_rapid_lifetime.head.log",
+      "sha256": "359defeea1ecb741fb2b61628f74306b801c4a4a0e0ed2e532a399a4cfee3159",
+      "bytes": 632
+    },
+    {
+      "path": "logs/horde_recipe_binding.head.log",
+      "sha256": "4d19b37250c3e7531c309706e309e43c72fe8214fc065ae96283105ac0cfb924",
+      "bytes": 169
+    },
+    {
+      "path": "logs/independent_event_binding.head.log",
+      "sha256": "6746056a74f9358f29c9f697d02fa892a7d7097017e4cc9d54417368827e9200",
+      "bytes": 118
+    },
+    {
+      "path": "logs/standalone_lifecycle.head.log",
+      "sha256": "e8c968ae851a2e6210e9457502285c193a00d02344fbdb9a1f354d7fe53f27ea",
+      "bytes": 103
+    },
+    {
+      "path": "logs/soak.head.log",
+      "sha256": "95b41cd0702a54947e1b497672e5cc48a7683e2b9fef852d626c634b3ce9be09",
+      "bytes": 107
+    },
+    {
+      "path": "logs/score_form.head.log",
+      "sha256": "4de7fd047fa10040aadfd435bd92a26a18030c826abb9fd10236bceb08ea3a32",
+      "bytes": 118
+    },
+    {
+      "path": "logs/weather_oracle.head.log",
+      "sha256": "86e2f6ee94adc6a28737d570283828477d53666b43cbbed41ccb4d0c1ca382aa",
+      "bytes": 91
+    },
+    {
+      "path": "logs/weather_ownership.head.log",
+      "sha256": "5673a0ebf0b6a1fa05165b79759905aa1d56af717697f7182365ef6d2f14a601",
+      "bytes": 94
+    },
+    {
+      "path": "logs/lifecycle.head.log",
+      "sha256": "aedf875eeab5cae90c86e05d067315b5bd257f3c7f90d73e4cdb0a6c0cd1d513",
+      "bytes": 92
+    },
+    {
+      "path": "logs/settings.head.log",
+      "sha256": "87fd559ba743557a103f0577ac2fa4c0d4457123d49752726d87a25b84151e3f",
+      "bytes": 91
+    },
+    {
+      "path": "logs/outcome.head.log",
+      "sha256": "8dba2e43a31cdb947209bf46a783fd2cebd65e855b6b76f3f0aca7ebcf258e10",
+      "bytes": 90
+    },
+    {
+      "path": "logs/event_router.head.log",
+      "sha256": "be908a30796d32d7a20f508d973b7a74e073e480c3208c6a89ea2cb364fe63e2",
+      "bytes": 89
+    },
+    {
+      "path": "logs/product-shell-journey.head.log",
+      "sha256": "fbab6a46baca48c95be1e9680929eff06ccb9716599952388d0f00eaf5e5f04c",
+      "bytes": 8769
+    },
+    {
+      "path": "logs/weather_render.final.log",
+      "sha256": "03383c9e0c81a521b7c8fab80193073545724e63d6446b7612086f815322df7f",
+      "bytes": 428
+    },
+    {
+      "path": "logs/waveform_capture.final.log",
+      "sha256": "c0bff2b377b643a30c09a74971cfde679c55d07816ccd0dcf34d0902a7f6ac2c",
+      "bytes": 509
+    },
+    {
+      "path": "logs/zone_modes_variants.final.log",
+      "sha256": "3d7603f3f5cdc29fc83e42bd27d3f9ed25f296819afda95438dc4d66e916ee2c",
+      "bytes": 111
+    },
+    {
+      "path": "logs/objectives_controls.final.log",
+      "sha256": "d15be42a1ac159b6012cc678b8a90e38062f4a3dee58be0ef2e7de8bfef9cf69",
+      "bytes": 133
+    },
+    {
+      "path": "logs/arms_race_independent_fixtures.final.log",
+      "sha256": "d180bd47ee5176154178a559de946af93d687ff17102c470805bbc47dd29d85c",
+      "bytes": 195
+    },
+    {
+      "path": "logs/product-shell-journey.first.log",
+      "sha256": "efdc533936788e1223fbdf8d200f29c0a29049ecba29c885a763c0de5053a651",
+      "bytes": 8769
+    },
+    {
+      "path": "logs/holdout-live-timeout.final.log",
+      "sha256": "c3b0c63bffea68a6db90c39df38dd69f83e9be5592bf96823a5d19e347442aa7",
+      "bytes": 209
+    },
+    {
+      "path": "logs/native-lifecycle.final.log",
+      "sha256": "67edb0bbdc2eaac9991916c38250a7ca46f392f710507ed496e5b2479908baf3",
+      "bytes": 258
+    },
+    {
+      "path": "logs/native-arena-aurora.2.log",
+      "sha256": "2746f081bacc5d8755bec068a2e3fb126fe9fb85ca0983d7add0e6072cb8670f",
+      "bytes": 393
+    },
+    {
+      "path": "logs/native-arena-aurora.1.log",
+      "sha256": "5abd8cb80098679efa099b0b806b6aef182b0ead578b0f6b73765fc04e4732bb",
+      "bytes": 393
+    },
+    {
+      "path": "logs/product_shell_settings_contract.final.log",
+      "sha256": "5485dc0506ac02c6e0d76f44736ad9e990c25be77709cb92e23b0f3c4a3b57f2",
+      "bytes": 112
+    },
+    {
+      "path": "logs/horde_identity_composition_test.final.log",
+      "sha256": "bab94383f625297424aecbb33687455d50f24778f91fa62793ce9dbb6825ebe5",
+      "bytes": 121
+    },
+    {
+      "path": "logs/combined_arms_graphics.final.log",
+      "sha256": "49e8ae5c0a33241842e344561f0a9724dae8b731fe093d8a4b6332df89db69a0",
+      "bytes": 141
+    },
+    {
+      "path": "logs/sports_progression_test.final.log",
+      "sha256": "971ae7e3449fd9e10e3deb06250d93da358dc0f3aa8115e6582d31d402fd5724",
+      "bytes": 123
+    },
+    {
+      "path": "logs/sports_test_controls.final.log",
+      "sha256": "ac54d47c136756f407e8e72c1e47f88482084e1cb977a76a3982174e9bef1bb5",
+      "bytes": 100
+    },
+    {
+      "path": "logs/main-menu-contracts.first.log",
+      "sha256": "cdef7d036fec9f4ca4d992a8b893626eefc4dbde60197c41955f3886e4330007",
+      "bytes": 770
+    },
+    {
+      "path": "logs/score_form.initial.log",
+      "sha256": "4de7fd047fa10040aadfd435bd92a26a18030c826abb9fd10236bceb08ea3a32",
+      "bytes": 118
+    },
+    {
+      "path": "logs/weather_ownership.initial.log",
+      "sha256": "5673a0ebf0b6a1fa05165b79759905aa1d56af717697f7182365ef6d2f14a601",
+      "bytes": 94
+    },
+    {
+      "path": "logs/soak.initial.log",
+      "sha256": "95b41cd0702a54947e1b497672e5cc48a7683e2b9fef852d626c634b3ce9be09",
+      "bytes": 107
+    },
+    {
+      "path": "logs/standalone_lifecycle.initial.log",
+      "sha256": "e8c968ae851a2e6210e9457502285c193a00d02344fbdb9a1f354d7fe53f27ea",
+      "bytes": 103
+    },
+    {
+      "path": "logs/lifecycle.initial.log",
+      "sha256": "aedf875eeab5cae90c86e05d067315b5bd257f3c7f90d73e4cdb0a6c0cd1d513",
+      "bytes": 92
+    },
+    {
+      "path": "logs/independent_event_binding.initial.log",
+      "sha256": "6746056a74f9358f29c9f697d02fa892a7d7097017e4cc9d54417368827e9200",
+      "bytes": 118
+    },
+    {
+      "path": "logs/menu_rapid_lifetime.initial.log",
+      "sha256": "359defeea1ecb741fb2b61628f74306b801c4a4a0e0ed2e532a399a4cfee3159",
+      "bytes": 632
+    },
+    {
+      "path": "logs/horde_recipe_binding.initial.log",
+      "sha256": "4d19b37250c3e7531c309706e309e43c72fe8214fc065ae96283105ac0cfb924",
+      "bytes": 169
+    },
+    {
+      "path": "data/godot/app_userdata/COCS Destinations \u00b7 Port Laboratory/logs/godot2026-09-29T05.05.59.log",
+      "sha256": "4d19b37250c3e7531c309706e309e43c72fe8214fc065ae96283105ac0cfb924",
+      "bytes": 169
+    },
+    {
+      "path": "data/godot/app_userdata/COCS Destinations \u00b7 Port Laboratory/logs/godot2026-09-29T05.05.56.log",
+      "sha256": "6746056a74f9358f29c9f697d02fa892a7d7097017e4cc9d54417368827e9200",
+      "bytes": 118
+    },
+    {
+      "path": "data/godot/app_userdata/COCS Destinations \u00b7 Port Laboratory/logs/godot2026-09-29T05.05.53.log",
+      "sha256": "e8c968ae851a2e6210e9457502285c193a00d02344fbdb9a1f354d7fe53f27ea",
+      "bytes": 103
+    },
+    {
+      "path": "data/godot/app_userdata/COCS Destinations \u00b7 Port Laboratory/logs/godot2026-09-29T05.05.52.log",
+      "sha256": "95b41cd0702a54947e1b497672e5cc48a7683e2b9fef852d626c634b3ce9be09",
+      "bytes": 107
+    },
+    {
+      "path": "data/godot/app_userdata/COCS Destinations \u00b7 Port Laboratory/logs/godot.log",
+      "sha256": "359defeea1ecb741fb2b61628f74306b801c4a4a0e0ed2e532a399a4cfee3159",
+      "bytes": 632
+    }
+  ]
+}

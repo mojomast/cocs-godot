@@ -1,0 +1,161 @@
+{
+  "scope": "focused audiovisual serial slot; not aggregate or Windows playback",
+  "tested_head": "e53bcd49ecdbba23fca522d5a1b86ffb8a834b2a",
+  "godot": "4.5.2.stable.official.6ce3de25a",
+  "fixtures": {
+    "event_router": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/event_router.head.log",
+      "pass": true
+    },
+    "outcome": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/outcome.head.log",
+      "pass": true
+    },
+    "settings": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/settings.head.log",
+      "pass": true
+    },
+    "lifecycle": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/lifecycle.head.log",
+      "pass": true
+    },
+    "weather_ownership": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/weather_ownership.head.log",
+      "pass": true
+    },
+    "weather_oracle": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/weather_oracle.head.log",
+      "pass": true
+    },
+    "score_form": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/score_form.head.log",
+      "pass": true
+    },
+    "soak": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/soak.head.log",
+      "pass": true
+    },
+    "standalone_lifecycle": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/standalone_lifecycle.head.log",
+      "pass": true
+    },
+    "independent_event_binding": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/independent_event_binding.head.log",
+      "pass": true
+    },
+    "horde_recipe_binding": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/horde_recipe_binding.head.log",
+      "pass": true
+    },
+    "menu_rapid_lifetime": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/menu_rapid_lifetime.head.log",
+      "pass": true
+    }
+  },
+  "gates": {
+    "main-menu-contracts.first": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/main-menu-contracts.first.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "native-arena-aurora.1": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/native-arena-aurora.1.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "native-arena-aurora.2": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/native-arena-aurora.2.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "native-lifecycle.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/native-lifecycle.final.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "holdout-live-timeout.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/holdout-live-timeout.final.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "product-shell-journey.head": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/product-shell-journey.head.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "sports_test_controls.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/sports_test_controls.final.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "sports_progression_test.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/sports_progression_test.final.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "combined_arms_graphics.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/combined_arms_graphics.final.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "horde_identity_composition_test.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/horde_identity_composition_test.final.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "product_shell_settings_contract.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/product_shell_settings_contract.final.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "arms_race_independent_fixtures.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/arms_race_independent_fixtures.final.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "objectives_controls.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/objectives_controls.final.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "zone_modes_variants.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/zone_modes_variants.final.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "waveform_capture.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/waveform_capture.final.log",
+      "exists": true,
+      "engine_errors": false
+    },
+    "weather_render.final": {
+      "log": "/tmp/opencode/audio-integration-lead/logs/weather_render.final.log",
+      "exists": true,
+      "engine_errors": false
+    }
+  },
+  "evidence": {
+    "/tmp/opencode/audio-integration-lead/pcm/master-mix-seed137.wav": {
+      "sha256": "a085267ee5112b5937d6b5b60e16338d25c27a7cea6866b6c5dbb98ad73dde28",
+      "bytes": 176444
+    },
+    "/tmp/opencode/audio-integration-lead/pcm/master-mix-seed42.wav": {
+      "sha256": "edc4dbb92141b08b1ae9b1412d9c4a492ad3e834c1852a64b79dd9381976721a",
+      "bytes": 176444
+    },
+    "/tmp/opencode/audio-integration-lead/pcm/master-mix.wav": {
+      "sha256": "370b272a6fca2b9a4c928cc8d48954d391d0a112299e4ea6776f294fd268edbd",
+      "bytes": 176444
+    },
+    "/tmp/opencode/audio-integration-lead/weather/rain-off.png": {
+      "sha256": "25009098e728b1f124ad6a77e1b72a116a8097fdbaf9bbc07fe933086db533da",
+      "bytes": 999
+    },
+    "/tmp/opencode/audio-integration-lead/weather/rain-on.png": {
+      "sha256": "014f8839dbbefb958b7de66bd443aae2325952b102f696fde441fa8c099e3692",
+      "bytes": 1053
+    }
+  },
+  "baseline_failures": "/tmp/opencode/consolidated-diagnostic-w8tt2rts/report.json",
+  "earlier_audio_failures": "/tmp/opencode/audio-slot-20260929/logs/"
+}
