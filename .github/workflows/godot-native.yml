@@ -5,6 +5,12 @@ on:
     branches: [main, port/lattice-flagship-next]
   pull_request:
   workflow_dispatch:
+    inputs:
+      scope:
+        description: Verification scope (full suite is the release gate)
+        type: choice
+        options: [full, vehicle-diagnostic]
+        default: full
 
 permissions:
   contents: read
@@ -51,7 +57,11 @@ jobs:
         run: |
           source "$RUNNER_TEMP/godot-native/environment.sh"
           export VEHICLE_EVIDENCE_ROOT="$RUNNER_TEMP/godot-native/vehicle-evidence"
-          python3 tools/godot-dev/verify.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"
+          if [[ "${{ inputs.scope }}" == "vehicle-diagnostic" ]]; then
+            GUEST_NODE_MODULES="$PWD/node_modules" python3 port/native-vehicle-expansion/run.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"
+          else
+            python3 tools/godot-dev/verify.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"
+          fi
       - name: Check whitespace
         if: ${{ always() }}
         run: |
