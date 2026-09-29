@@ -1,4 +1,5 @@
 """Exercise verifier failure reports without starting an engine or game server."""
+import ast
 import hashlib
 import json
 import os
@@ -101,6 +102,24 @@ class VerifierReportTest(unittest.TestCase):
         self.assertEqual(report["source_derivative"]["derivative_commit"], "2" * 40)
         self.assertEqual(report["source_derivative"]["sha256"],
                          hashlib.sha256(path.read_bytes()).hexdigest())
+
+    def test_keep_going_retains_failure_after_later_success(self):
+        self.fake_version_probe(self.lock["godot_version"])
+        self.env["COCS_VERIFY_KEEP_GOING"] = "1"
+        path = self.root / "tools/godot-dev/verify.py"
+        tree = ast.parse(path.read_text())
+        inventory = next(node for node in tree.body if isinstance(node, ast.Assign)
+                         and any(isinstance(t, ast.Name) and t.id == "commands" for t in node.targets))
+        inventory.value = ast.parse("[('fixture-fail', [sys.executable, '-c', 'raise SystemExit(7)']), "
+                                    "('fixture-pass', [sys.executable, '-c', 'print(123)'])]", mode="eval").body
+        path.write_text(ast.unparse(tree))
+        guard = self.root / "tools/godot-export/semantic.mjs"
+        guard.parent.mkdir()
+        guard.write_text("console.log('Release disabled'); process.exit(1);\n")
+        report = self.run_verifier()
+        self.assertEqual(report["execution"]["unrun"], 0)
+        self.assertEqual(report["failed_gate_names"], ["fixture-fail"])
+        self.assertEqual([g["passed"] for g in report["gates"]], [True, False, True, True])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,582 @@
+gate-runner-tests: PASS
+playable-gate-registration: PASS
+verifier-report-tests: PASS
+ci-artifact-tests: PASS
+native-ci-contracts: PASS
+export-tests: PASS
+moth-export: PASS
+gltf-sides: PASS
+health-hud-evidence: PASS
+projectile-navigation: PASS
+objective-evidence: PASS
+objective-progression-evidence: PASS
+objective-completion-evidence: PASS
+launcher-options: PASS
+package-options: PASS
+product-shell-supervisor: PASS
+native-graphics-options: PASS
+native-graphics-ownership: PASS
+lobby-options: PASS
+lobby-ownership: PASS
+horde-closure: PASS
+native-arena-closure: PASS
+package-identity-routes: PASS
+native-arena-authority: PASS
+local-24-roster: PASS
+horde-ownership: PASS
+zone-routing: PASS
+combined-arms-evidence: PASS
+lattice-req-generator-tests: PASS
+lattice-req-catalog-check: PASS
+semantic-export: PASS
+source-inventory: PASS
+package-manifest-contracts: PASS
+career-catalog-check: PASS
+finish-catalog-check: PASS
+finish-source-palette: PASS
+career-source-contracts: PASS
+career-persistence: PASS
+career-history-storage: PASS
+career-results-source: PASS
+career-equipment-source: PASS
+career-equipped-source: PASS
+social-source: PASS
+source-tests: PASS
+arms-race-source: PASS
+horde-source: PASS
+cinderwake-source: PASS
+horde-upgrade-adapter: PASS
+horde-adapter: PASS
+horde-death-wire: PASS
+horde-input-oracle: PASS
+godot-import: PASS
+career-projection: PASS
+career-package-catalog: PASS
+career-identity-native: PASS
+career-equipment-native: PASS
+career-equipped-model: PASS
+career-equipped-ui: PASS
+career-player-flow-clarity-source: PASS
+career-player-flow-clarity-model: PASS
+career-player-flow-clarity-ui: PASS
+career-player-flow-clarity-journey: PASS
+career-equipped-lobby: PASS
+career-equipped-journey: PASS
+career-results-native: PASS
+career-history-native: PASS
+career-results-history-ui: PASS
+social-native: PASS
+reconnect-source-native: PASS
+reconnect-offline-results: PASS
+reconnect-menu: PASS
+career-modal: PASS
+cinderwake-native: PASS
+identity-horde-composition: PASS
+loadout-unit: PASS
+loadout-source-parity: PASS
+loadout-client: PASS
+loadout-setup: PASS
+loadout-lobby: PASS
+loadout-session: PASS
+loadout-loopback: PASS
+loadout-lifecycle: PASS
+viewer-smoke: PASS
+graphics-terrain: PASS
+moth-resources: PASS
+graphics-atmosphere: PASS
+graphics-fx: PASS
+moth-scenery: PASS
+shader-lab: PASS
+particle-lab: PASS
+showcase-startup: PASS
+aurora-traversal: PASS
+cinder-traversal: PASS
+exploration-walker: PASS
+first-person-rig: PASS
+first-person-finishes: PASS
+finish-source-journey: PASS
+finish-native-source-replay: PASS
+first-person-binding: PASS
+first-person-ads: PASS
+first-person-recoil: PASS
+combat-actions: PASS
+combat-shields: PASS
+combat-shield-capacity: PASS
+combat-particles: PASS
+combat-pickup-assets: PASS
+weapon-effects: PASS
+weapon-effects-rig: PASS
+muzzle-sight-geometry: PASS
+muzzle-path-geometry: PASS
+projectile-flight: PASS
+alt-fire: PASS
+weapon-handling: PASS
+weapon-detail: PASS
+weapon-export: PASS
+world-weapon-identity: PASS
+player-fx-direction: PASS
+player-fx-low-health: PASS
+player-fx-lifecycle: PASS
+player-fx-marks: PASS
+player-fx-impacts: PASS
+player-fx-overlay: PASS
+player-fx-integration: PASS
+benchmark-contracts: PASS
+benchmark-tools: PASS
+benchmark-autostart: PASS
+material-language: PASS
+material-derived: PASS
+identity-zone-route: PASS
+debug-tools: PASS
+debug-panel: PASS
+mode-diagnostics: PASS
+blood-live-harness: PASS
+blood-live-native: PASS
+route-parity: PASS
+main-menu-smoke: PASS
+main-menu-contracts: PASS
+product-shell-settings: PASS
+product-shell-journey: FAIL
+PRODUCT_JOURNEY {"scope":"source-driven scripted UI lifecycle; not natural rounds/human acceptance","passed":false,"exit_code":0,"port_commit":"95cd338cf42d7379315136062c85c546d0755db0","source_commit":"515daf07589150dd3241f4ae1425cc1b093912f5","source_derivative_commit":"61fca35c65488502b794900cde0a5247bfb123bf","input_sha256":{"godot/tests/product_journey/driver.gd":"079f121987632d2efb5d9a1f5f4e6120c8acc425b0fa015a24532e0924bc8a1c","godot/ui/local_settings.gd":"70612db5b2bfef85b0c260ed45c5c286b120b15210d838aa18ab794921856406","godot/ui/main_menu.gd":"863921b2fdd6283dd622a9ea6f87f961736903388ab45e99098612e28d4d4dd2","godot/career/service.gd":"1684e379a205b87604adac87c2616c8b8057fcaaa561e2c799146589cd489d1c","godot/career/catalog.json":"18061952fac08bfb5f1d5316c6a9f6137968324a6742730691abe817253a92c8","godot/lattice/world_commands.gd":"ce7de99109aecbd3a598441f2336f3d347f5592c8ca37693267e2aa4dce52a85","tools/godot-dev/product_journey.mjs":"292a8ed5498861c1ec9a6d913b8d158ff9d3e11e20982d3ac034106812ffe274","tools/godot-dev/launch.mjs":"9450f7bf6f4335b6c7e5271b47ad56c819e43436a7efb1700b7173243ce542b2"},"itinerary":[{"route":"combat","options":{}},{"route":"lattice-world","options":{}},{"route":"sports","options":{}},{"route":"horde","options":{"map":"meridian-exchange"}},{"route":"horde","options":{"map":"cinderwake-drydock"}},{"route":"horde","options":{"map":"nacre-engine"}}],"cycles":3,"player_flow":false,"source_sessions":[{"pointer_released":true,"route":"combat","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":1,"volume":40},{"pointer_released":true,"route":"lattice-world","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":2,"volume":45},{"pointer_released":true,"route":"sports","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":3,"volume":50},{"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":4,"volume":55},{"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":5,"volume":60},{"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":6,"volume":65},{"pointer_released":true,"route":"combat","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":7,"volume":70},{"pointer_released":true,"route":"lattice-world","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":8,"volume":75},{"pointer_released":true,"route":"sports","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":9,"volume":80},{"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":10,"volume":85},{"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":11,"volume":40},{"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":12,"volume":45},{"pointer_released":true,"route":"combat","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":13,"volume":50},{"pointer_released":true,"route":"lattice-world","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":14,"volume":55},{"pointer_released":true,"route":"sports","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":15,"volume":60},{"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":16,"volume":65},{"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":17,"volume":70},{"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":18,"volume":75}],"deck_checks":[{"first_open_fits":true,"position":[60,50],"size":[1160,700],"viewport":[1280,800],"visit":2},{"first_open_fits":true,"position":[60,50],"size":[1160,700],"viewport":[1280,800],"visit":8},{"first_open_fits":true,"position":[60,50],"size":[1160,700],"viewport":[1280,800],"visit":14}],"career_checks":[{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":true,"route":"combat"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":true,"route":"lattice-world"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":true,"route":"sports"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":false,"route":"horde"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":false,"route":"horde"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":false,"route":"horde"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":true,"route":"combat"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":true,"route":"lattice-world"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":true,"route":"sports"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":false,"route":"horde"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":false,"route":"horde"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":false,"route":"horde"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":true,"route":"combat"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":true,"route":"lattice-world"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":true,"route":"sports"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":false,"route":"horde"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":false,"route":"horde"},{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":false,"route":"horde"},{"bounds":true,"has_profile":false,"route":"home"}],"career_counts":{"home":19,"live":18,"expected_home":19,"expected_live":18,"passed":true},"captures":[],"owned_ports":[35365,37745,42933,40161,44575,35473,45053,36121,40775,45041,38879,39161,37271,39769,34265,38567,37769,38041],"all_owned_ports_closed":true,"state":{"career_equipment_confirmed":true,"career_home_checks":19,"career_identity_hash":"7df0f8d48d2fdf6a0cbd8b9f76dbe14ca2c6df2ae01b9320ba503993ce9dafc5","career_live_checks":18,"career_selection":{"id":"extended-mag","kind":"attachment","slot":"magazine"},"cycles":3,"expected_lobby_config":{"fragLimit":50,"mode":"deathmatch","timeLimit":60},"expected_volume":75,"itinerary":[{"options":{},"route":"combat"},{"options":{},"route":"lattice-world"},{"options":{},"route":"sports"},{"options":{"map":"meridian-exchange"},"route":"horde"},{"options":{"map":"cinderwake-drydock"},"route":"horde"},{"options":{"map":"nacre-engine"},"route":"horde"}],"options":{"map":"nacre-engine"},"player_flow":false,"route":"horde","visits":18},"output":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR"}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"combat","visit":1,"volume":40}
+MENU_ROUTE {"args":["--experience=combat","--play","--map=meridian-exchange","--mode=deathmatch","--bots=2"]}
+Owned local server ready at ws://127.0.0.1:35365; combat
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_EQUIPMENT {"id":"extended-mag","kind":"attachment","slot":"magazine","status":"source-confirmed"}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":true,"route":"combat"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"combat","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":1.0,"volume":40}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"lattice-world","visit":2,"volume":45}
+MENU_ROUTE {"args":["--experience=lattice-world","--map=asterion-relay","--mode=cocs","--time-limit=900","--bots=2"]}
+Owned local server ready at ws://127.0.0.1:37745; lattice-world
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_DECK {"first_open_fits":true,"position":[60.0,50.0],"size":[1160.0,700.0],"viewport":[1280.0,800.0],"visit":2.0}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":true,"route":"lattice-world"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"lattice-world","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":2.0,"volume":45}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"sports","visit":3,"volume":50}
+MENU_ROUTE {"args":["--experience=sports","--map=ion-speedway","--mode=puma-race","--time-limit=60","--round-target=5"]}
+Owned local server ready at ws://127.0.0.1:42933; sports
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":true,"route":"sports"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"sports","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":3.0,"volume":50}
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"horde","visit":4,"volume":55}
+MENU_ROUTE {"args":["--experience=horde","--map=meridian-exchange","--waves=10","--operator=chatgpt","--harness=openclaw"]}
+Owned local server ready at ws://127.0.0.1:40161; horde
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"horde"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":4.0,"volume":55}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"horde","visit":5,"volume":60}
+MENU_ROUTE {"args":["--experience=horde","--map=cinderwake-drydock","--waves=10","--operator=chatgpt","--harness=openclaw"]}
+Owned local server ready at ws://127.0.0.1:44575; horde
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"horde"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":5.0,"volume":60}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"horde","visit":6,"volume":65}
+MENU_ROUTE {"args":["--experience=horde","--map=nacre-engine","--waves=10","--operator=chatgpt","--harness=openclaw"]}
+Owned local server ready at ws://127.0.0.1:35473; horde
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"horde"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":6.0,"volume":65}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"combat","visit":7,"volume":70}
+MENU_ROUTE {"args":["--experience=combat","--play","--map=meridian-exchange","--mode=deathmatch","--bots=2"]}
+Owned local server ready at ws://127.0.0.1:45053; combat
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":true,"route":"combat"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"combat","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":7.0,"volume":70}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"lattice-world","visit":8,"volume":75}
+MENU_ROUTE {"args":["--experience=lattice-world","--map=asterion-relay","--mode=cocs","--time-limit=900","--bots=2"]}
+Owned local server ready at ws://127.0.0.1:36121; lattice-world
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_DECK {"first_open_fits":true,"position":[60.0,50.0],"size":[1160.0,700.0],"viewport":[1280.0,800.0],"visit":8.0}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":true,"route":"lattice-world"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"lattice-world","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":8.0,"volume":75}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"sports","visit":9,"volume":80}
+MENU_ROUTE {"args":["--experience=sports","--map=ion-speedway","--mode=puma-race","--time-limit=60","--round-target=5"]}
+Owned local server ready at ws://127.0.0.1:40775; sports
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":true,"route":"sports"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"sports","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":9.0,"volume":80}
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"horde","visit":10,"volume":85}
+MENU_ROUTE {"args":["--experience=horde","--map=meridian-exchange","--waves=10","--operator=chatgpt","--harness=openclaw"]}
+Owned local server ready at ws://127.0.0.1:45041; horde
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"horde"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":10.0,"volume":85}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"horde","visit":11,"volume":40}
+MENU_ROUTE {"args":["--experience=horde","--map=cinderwake-drydock","--waves=10","--operator=chatgpt","--harness=openclaw"]}
+Owned local server ready at ws://127.0.0.1:38879; horde
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"horde"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":11.0,"volume":40}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"horde","visit":12,"volume":45}
+MENU_ROUTE {"args":["--experience=horde","--map=nacre-engine","--waves=10","--operator=chatgpt","--harness=openclaw"]}
+Owned local server ready at ws://127.0.0.1:39161; horde
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"horde"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":12.0,"volume":45}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"combat","visit":13,"volume":50}
+MENU_ROUTE {"args":["--experience=combat","--play","--map=meridian-exchange","--mode=deathmatch","--bots=2"]}
+Owned local server ready at ws://127.0.0.1:37271; combat
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":true,"route":"combat"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"combat","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":13.0,"volume":50}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"lattice-world","visit":14,"volume":55}
+MENU_ROUTE {"args":["--experience=lattice-world","--map=asterion-relay","--mode=cocs","--time-limit=900","--bots=2"]}
+Owned local server ready at ws://127.0.0.1:39769; lattice-world
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_DECK {"first_open_fits":true,"position":[60.0,50.0],"size":[1160.0,700.0],"viewport":[1280.0,800.0],"visit":14.0}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":true,"route":"lattice-world"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"lattice-world","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":14.0,"volume":55}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"sports","visit":15,"volume":60}
+MENU_ROUTE {"args":["--experience=sports","--map=ion-speedway","--mode=puma-race","--time-limit=60","--round-target=5"]}
+Owned local server ready at ws://127.0.0.1:34265; sports
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":true,"route":"sports"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"sports","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":15.0,"volume":60}
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"horde","visit":16,"volume":65}
+MENU_ROUTE {"args":["--experience=horde","--map=meridian-exchange","--waves=10","--operator=chatgpt","--harness=openclaw"]}
+Owned local server ready at ws://127.0.0.1:38567; horde
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 251
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 294
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 301
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 308
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 315
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 322
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 329
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 336
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 343
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 350
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 357
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 364
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"horde"}
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 371
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 378
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 385
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 392
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 399
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 406
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 413
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 420
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 427
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":16.0,"volume":65}
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 434
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 2
+   Current serial number in output stream: 464
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1289)
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"horde","visit":17,"volume":70}
+MENU_ROUTE {"args":["--experience=horde","--map=cinderwake-drydock","--waves=10","--operator=chatgpt","--harness=openclaw"]}
+Owned local server ready at ws://127.0.0.1:37769; horde
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"horde"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":17.0,"volume":70}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"horde","visit":18,"volume":75}
+MENU_ROUTE {"args":["--experience=horde","--map=nacre-engine","--waves=10","--operator=chatgpt","--harness=openclaw"]}
+Owned local server ready at ws://127.0.0.1:38041; horde
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"horde"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"horde","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ydAxKR/local_settings.json","source_ready":true,"visit":18.0,"volume":75}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_COMPLETE {"career_equipment_confirmed":true,"career_home_checks":19,"career_identity_hash":"7df0f8d48d2fdf6a0cbd8b9f76dbe14ca2c6df2ae01b9320ba503993ce9dafc5","career_live_checks":18.0,"career_selection":{"id":"extended-mag","kind":"attachment","slot":"magazine"},"cycles":3.0,"expected_lobby_config":{"fragLimit":50.0,"mode":"deathmatch","timeLimit":60.0},"expected_volume":75.0,"itinerary":[{"options":{},"route":"combat"},{"options":{},"route":"lattice-world"},{"options":{},"route":"sports"},{"options":{"map":"meridian-exchange"},"route":"horde"},{"options":{"map":"cinderwake-drydock"},"route":"horde"},{"options":{"map":"nacre-engine"},"route":"horde"}],"options":{"map":"nacre-engine"},"player_flow":false,"route":"horde","visits":18.0}
+MENU_QUIT
+
+

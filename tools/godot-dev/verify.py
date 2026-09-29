@@ -397,26 +397,33 @@ gate_options = {
         'allowed_error_patterns': (r'^ERROR: Texture with GL ID of \d+: leaked \d+ bytes\.$',),
     },
 }
+keep_going = os.environ.get('COCS_VERIFY_KEEP_GOING') == '1'
+report['keep_going'] = keep_going
+failed_gates = []
 for name, command in commands:
     report['active_gate'] = name
     save_report(report_path, report)
     result, output = run_gate(name, command, f'port/reports/{name}.log', **gate_options.get(name, {}))
     record(result)
-    report['status'] = 'running' if result['passed'] else 'failed'
+    if not result['passed']: failed_gates.append(name)
+    report['failed_gate_names'] = failed_gates.copy()
+    report['status'] = 'failed' if failed_gates else 'running'
     save_report(report_path, report)
     print(f"{name}: {'PASS' if result['passed'] else 'FAIL'}", flush=True)
     if not result['passed']:
         print(output)
-        raise SystemExit(1)
+        if not keep_going: raise SystemExit(1)
 report['active_gate'] = 'release-refused'
 save_report(report_path, report)
 release, output = run_gate('release-refused', ['node', 'tools/godot-export/semantic.mjs', '--release'], 'port/reports/release-refused.log')
 release['passed'] = release['exit_code'] not in (None, 0) and release['failure_reason'] == 'nonzero-exit' and 'Release disabled' in output
 release['failure_reason'] = None if release['passed'] else 'release-guard-failure'
 record(release)
-report['status'] = 'passed' if release['passed'] else 'failed'
+if not release['passed']: failed_gates.append('release-refused')
+report['failed_gate_names'] = failed_gates.copy()
+report['status'] = 'failed' if failed_gates else 'passed'
 report.pop('active_gate', None)
 save_report(report_path, report)
-if not release['passed']:
-    raise SystemExit('Release gate failed open')
+if failed_gates:
+    raise SystemExit('Failed gates: ' + ', '.join(failed_gates))
 print("All implemented gates passed. Visual fidelity and playable acceptance remain OPEN.")

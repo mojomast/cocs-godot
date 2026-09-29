@@ -28,7 +28,12 @@ import time
 def start_server(prefer_unix: bool):
     """Start Xvfb and return (process, display, env) or (None, reason, None)."""
     read_fd, write_fd = os.pipe()
-    arguments = ["Xvfb", "-displayfd", str(write_fd), "-screen", "0", "1280x800x24"]
+    # A private display may use loopback TCP. MIT-SHM attachment is not valid
+    # across that transport and can fail after repeated native process lifetimes
+    # with BadShmSeg. Exercise the same real X11 renderer/input through ordinary
+    # image transport rather than advertising optional shared-memory transfer.
+    arguments = ["Xvfb", "-displayfd", str(write_fd), "-screen", "0", "1280x800x24",
+                 "-extension", "MIT-SHM"]
     arguments += ["-nolisten", "tcp"] if prefer_unix else ["-nolisten", "unix", "-listen", "tcp"]
     process = subprocess.Popen(
         arguments,
