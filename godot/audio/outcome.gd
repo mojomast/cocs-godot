@@ -18,8 +18,9 @@ static func resolve(state: Dictionary, mode: String, actor_id: int) -> String:
 		return "neutral" if winner == null else ("victory" if winner == actor_id else "defeat")
 	if mode in ["horde", "campaign"]:
 		var single: Variant = state.get("singleplayer")
-		if single is Dictionary and single.get("winner") != null:
-			return "victory" if single.winner == actor_id or single.winner == actor.get("team") else "defeat"
+		# game/singleplayer.mjs win/lose writes TEAM 0/1, not an actor ID.
+		if single is Dictionary and single.get("winner") != null and actor.get("team") != null:
+			return "victory" if single.winner == actor.team else "defeat"
 		return "neutral"
 	if mode == "puma-soccer":
 		var race: Variant = state.get("race")

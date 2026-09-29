@@ -147,7 +147,7 @@ func apply_snapshot(state: Dictionary, local_id: int, is_fresh: bool = true) -> 
 	var alive := actor.get("health", 0) is int or actor.get("health", 0) is float
 	var hp := float(actor.get("health", 0)) if alive else 0.0
 	var max_hp := float(actor.get("maxHealth", 100))
-	var low := not actor.has("vehicleId") and hp > 0 and max_hp > 0 and hp / max_hp <= 0.28
+	var low := actor.get("vehicleId") == null and hp > 0 and max_hp > 0 and hp / max_hp <= 0.28
 	music.set_tension(maxf(0.6 if low else 0.0, 0.25 * float(router.escalation)))
 	var active_peak := clampf(1.0 - maxf(0.0, last_time - intensity_stamp) / 5.0, 0.0, 1.0)
 	music.set_intensity(maxf(0.4 if low else 0.0, active_peak))
