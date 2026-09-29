@@ -3,12 +3,18 @@ extends "res://world/session.gd"
 ## does not connect, load a map or run the ordinary _ready composition; the test
 ## drives on_lobby/on_started/on_snapshot with synthetic public frames.
 const FixtureClient = preload("res://tests/debug/fixture_client.gd")
+const NativeCatalog = preload("res://native_arenas/catalog.gd")
 
 func _init() -> void:
 	client.free()
 	client = FixtureClient.new()
 
 func _ready() -> void:
+	# Start callbacks now validate presentation metadata as well as clearing the
+	# debug state. Use the same committed recipe as this fixture's start frame.
+	catalog = NativeCatalog.new()
+	assert(catalog.open_dm())
+	current_id = "prism-foundry"
 	for node: Node in [camera, label, selector, client, presentation, pickups, combat, combat_label, sun, environment]:
 		add_child(node)
 	for control: Control in [label, selector, combat_label]:

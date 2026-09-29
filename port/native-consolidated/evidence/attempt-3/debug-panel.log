@@ -1,0 +1,8 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: debug panel: the round boundary clears the god toggle
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/debug/panel.gd:18)
+       [1] run (res://tests/debug/panel.gd:128)
+DEBUG_PANEL_TESTS checks=45 failures=1
