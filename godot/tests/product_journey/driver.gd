@@ -390,7 +390,7 @@ func flow_capture(name: String) -> void:
 ## One integrated journey through the real supervisor, owned source server and
 ## shipping scenes. UI buttons are scripted signal activations; F12 uses engine
 ## input. A deliberate WebSocket close is the only fault injection. The source
-## runs its legal 60-second round normally; this is not human gameplay evidence.
+## runs its legal round normally; this is not human gameplay evidence.
 func player_flow_step() -> void:
 	if not await flow_wait(func() -> bool: return scene.phase == -3, "Home opened disconnected multiplayer setup"): return
 	var menu: Node = scene.lobby_menu
@@ -413,11 +413,13 @@ func player_flow_step() -> void:
 	career_back()
 	await process_frame
 	if not flow_check(not career.active() and menu.arsenal_button.has_focus(), "Arsenal Back restored lobby action focus"): return
+	var terminal := [{}]
+	scene.client.results.connect(func(frame: Dictionary) -> void: terminal[0] = frame.get("state", {}))
 	menu.start_button.pressed.emit()
 	if not await flow_wait(func() -> bool: return scene.phase == 3 and scene.received_pose, "first source round became live"): return
 	var config: Dictionary = scene.client.snapshots.back().get("state", {}).get("config", {})
 	var expected: Dictionary = record.expected_lobby_config
-	if not flow_check(config.get("timeLimit") == expected.timeLimit and config.get("mode") == expected.mode and config.get("fragLimit") == expected.fragLimit, "source echoed its normalized 60-second deathmatch preset"): return
+	if not flow_check(config.get("timeLimit") == expected.timeLimit and config.get("mode") == expected.mode and config.get("botCount") == expected.botCount and config.get("fragLimit") == expected.fragLimit, "source echoed its normalized 60-second deathmatch preset"): return
 	var actor_id: int = scene.client.actor_id
 	var revision: int = scene.client.resumed_revision
 	scene.client.peer.close(4000, "Scripted player-flow transport interruption")
@@ -430,8 +432,37 @@ func player_flow_step() -> void:
 	if not await flow_wait(func() -> bool: return scene.phase == 3 and scene.received_pose and not career.profile.is_empty(), "explicit Retry recovered the live source round"): return
 	if not flow_check(scene.client.actor_id == actor_id and scene.client.resumed_revision == revision and scene.client.room_id == room and str(career.profile.id) == identity, "Retry preserved source seat round and Career identity"): return
 	if not flow_check(Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Retry did not recapture controls"): return
-	if not await flow_wait(func() -> bool: return scene.phase == 4 and not career.result.is_empty(), "source settled the normal timed round", 75000): return
-	if not flow_check(career.result.get("ending") == "time" and float(career.result.get("time", -1)) >= 60.0 and float(career.result.get("time", INF)) <= 61.0, "accepted result reports a time-limit ending at 60 source seconds"): return
+	if not await flow_wait(func() -> bool: return scene.phase == 4 and not career.result.is_empty() and not terminal[0].is_empty(), "source settled the normal round and supplied an accepted result", 75000): return
+	var final_state: Dictionary = terminal[0]
+	var final_config: Dictionary = final_state.get("config", {})
+	var ending: String = str(final_state.get("overReason", ""))
+	var final_time: float = float(final_state.get("time", -1))
+	var leader_frags := -1
+	var leader_count := 0
+	var leader_name := ""
+	for competitor: Dictionary in final_state.get("actors", []):
+		var frags := int(competitor.get("frags", -1))
+		if frags > leader_frags:
+			leader_frags = frags
+			leader_count = 1
+			leader_name = str(competitor.get("name", ""))
+		elif frags == leader_frags:
+			leader_count += 1
+	var evidence := {"ending":ending, "time":final_time, "leader_frags":leader_frags,
+		"frag_limit":final_config.get("fragLimit"), "time_limit":final_config.get("timeLimit"),
+		"sudden_death":final_state.get("suddenDeath"), "leader_count":leader_count,
+		"result":career.result, "round_revision":scene.client.resumed_revision}
+	# Deathmatch has a source-declared 12-second sudden-death window. A tied
+	# leaderboard at 48 seconds can resolve with the next frag before the clock.
+	var timed: bool = ending == "time" and final_time >= float(expected.timeLimit) and final_time <= float(expected.timeLimit) + 1.0
+	var scored: bool = ending == "frag" and final_time <= float(expected.timeLimit) + 1.0 and leader_frags >= int(expected.fragLimit)
+	var tiebreak: bool = ending == "sudden-death" and final_state.get("suddenDeath") == true and final_time >= float(expected.timeLimit) - 12.0 and final_time <= float(expected.timeLimit) and leader_count == 1 and leader_frags > 0 and final_state.get("leaders", []).size() == 1 and final_state.leaders[0] == leader_name
+	var legal_end: bool = timed or scored or tiebreak
+	var round_key: String = (str(scene.client.connection_endpoint) + "\n" + room).sha256_text() + ":" + str(revision)
+	var matching_config: bool = final_config.get("mode") == expected.mode and final_config.get("botCount") == expected.botCount and final_config.get("timeLimit") == expected.timeLimit and final_config.get("fragLimit") == expected.fragLimit
+	var matching_result: bool = career.result.get("ending") == ending and career.result.get("time") == final_state.get("time") and career.result.get("mode") == expected.mode and career.result.get("round_key") == round_key and career.result.get("actor_count") == final_state.get("actors", []).size()
+	if not flow_check(final_state.get("over") == true and matching_config and legal_end and matching_result, "accepted result matches the authoritative legal deathmatch ending: " + JSON.stringify(evidence)): return
+	print("PRODUCT_JOURNEY_RESULT ", JSON.stringify({"ending":ending, "time":final_time, "leader_frags":leader_frags, "frag_limit":expected.fragLimit, "round_revision":revision}))
 	settings_key()
 	await process_frame
 	settings.career_button.pressed.emit()

@@ -35,7 +35,7 @@ const output = mkdtempSync(resolve('.port-runtime/product-journeys/attempt-'));
 const state = join(output, 'state.json');
 const lobbyConfig=normalizeConfig({mode:'deathmatch',botCount:2,timeLimit:60,fragLimit:100});
 writeFileSync(state, JSON.stringify({visits:0,expected_volume:100,itinerary,cycles,player_flow:playerFlow,
-  expected_lobby_config:{mode:lobbyConfig.mode,timeLimit:lobbyConfig.timeLimit,fragLimit:lobbyConfig.fragLimit},
+  expected_lobby_config:{mode:lobbyConfig.mode,botCount:lobbyConfig.botCount,timeLimit:lobbyConfig.timeLimit,fragLimit:lobbyConfig.fragLimit},
   career_home_checks:0,career_live_checks:0}));
 const wrapper = join(output, 'godot-wrapper.mjs');
 writeFileSync(wrapper, `#!${process.execPath}
