@@ -38,7 +38,23 @@ or human gameplay acceptance. `--capture` retains the browser, Retry, compact
 results and compact saved-loadout views. Tokens and source identity remain out
 of the public report.
 
-The two implementation lanes and integrated journey are in progress. Focused
-verification, integration findings and exact tested revisions will be recorded
-after the serial runs complete. Hardware feel, natural full-wave outcomes and
-Windows execution remain owner-run checks.
+## Lane progress
+
+Navigation commit `889ba831`, integrated as `e981a112`, adds:
+
+- Lobby Escape backs out of browse/room setup; from the disconnected form it
+  opens Settings/Leave. Live Escape retains its control-release behavior.
+- Selecting a room focuses explicit Join; source phase changes focus Start or an
+  eligible Retry without stealing focus from an open modal or chat.
+- Compact lobby/browser action rows reflow; Settings Back/Career/Leave stay
+  pinned outside the scroll body. Home has the existing F12 Settings shortcut.
+
+The focused Xvfb fixture dispatches real engine key events at compact scales
+against a labelled synthetic session. Existing Home/lobby/social/reconnect-menu
+and Career-modal checks passed in the lane. The 11-check rendered real-source
+guest Retry/Leave journey also passed, retaining the external host. Its report
+records baseline HEAD `04d940a4` because the lane changes were uncommitted when
+tested; integrated verification will provide the exact committed composition.
+
+Clarity work and integrated verification remain in progress. Hardware feel,
+natural full-wave outcomes and Windows execution remain owner-run checks.

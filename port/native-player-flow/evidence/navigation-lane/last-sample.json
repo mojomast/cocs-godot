@@ -1,0 +1,52 @@
+{
+  "ack": 0,
+  "actor": -1,
+  "chat_count": 0,
+  "chat_draft": 0,
+  "command": 7,
+  "controls": {
+    "back_button": {
+      "disabled": false,
+      "rect": [
+        323,
+        358,
+        285,
+        36
+      ],
+      "visible": false
+    },
+    "connect_button": {
+      "disabled": false,
+      "rect": [
+        32,
+        358,
+        576,
+        36
+      ],
+      "visible": true
+    },
+    "reconnect_button": {
+      "disabled": false,
+      "rect": [
+        32,
+        358,
+        285,
+        36
+      ],
+      "visible": false
+    }
+  },
+  "phase": -3,
+  "pointer": false,
+  "pose": false,
+  "profile_present": false,
+  "profile_stable": false,
+  "revision": 1,
+  "room_seated": false,
+  "seq": 0,
+  "ticket": false,
+  "viewport": [
+    640,
+    426.666656494141
+  ]
+}
