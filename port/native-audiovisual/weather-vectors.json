@@ -1,0 +1,2354 @@
+{
+  "source": "game/environment.mjs",
+  "mapSeeds": [
+    {
+      "id": "",
+      "seed": 293482336
+    },
+    {
+      "id": "arena",
+      "seed": 293482336
+    },
+    {
+      "id": "frost-gate",
+      "seed": 78187899
+    },
+    {
+      "id": "sunscar-dune",
+      "seed": 2511815311
+    },
+    {
+      "id": "neon-vertical",
+      "seed": 3538916582
+    },
+    {
+      "id": "☃-arena",
+      "seed": 4110215382
+    },
+    {
+      "id": "skybreak",
+      "seed": 2824188293
+    }
+  ],
+  "hashes": [
+    {
+      "seed": 0,
+      "salt": -17,
+      "unit": 0.09844204180371995
+    },
+    {
+      "seed": 0,
+      "salt": 0,
+      "unit": 0.9991615512406364
+    },
+    {
+      "seed": 0,
+      "salt": 1,
+      "unit": 0.7046038624142771
+    },
+    {
+      "seed": 0,
+      "salt": 2147483647,
+      "unit": 0.8849117732338867
+    },
+    {
+      "seed": 1,
+      "salt": -17,
+      "unit": 0.09844204180371995
+    },
+    {
+      "seed": 1,
+      "salt": 0,
+      "unit": 0.9991615512406364
+    },
+    {
+      "seed": 1,
+      "salt": 1,
+      "unit": 0.7046038624142771
+    },
+    {
+      "seed": 1,
+      "salt": 2147483647,
+      "unit": 0.8849117732338867
+    },
+    {
+      "seed": 7,
+      "salt": -17,
+      "unit": 0.9804333378515284
+    },
+    {
+      "seed": 7,
+      "salt": 0,
+      "unit": 0.14930405610923284
+    },
+    {
+      "seed": 7,
+      "salt": 1,
+      "unit": 0.317467689820907
+    },
+    {
+      "seed": 7,
+      "salt": 2147483647,
+      "unit": 0.09206945195143797
+    },
+    {
+      "seed": 2147483647,
+      "salt": -17,
+      "unit": 0.41826610090636324
+    },
+    {
+      "seed": 2147483647,
+      "salt": 0,
+      "unit": 0.34332675494796755
+    },
+    {
+      "seed": 2147483647,
+      "salt": 1,
+      "unit": 0.7290947732350544
+    },
+    {
+      "seed": 2147483647,
+      "salt": 2147483647,
+      "unit": 0.052667799185185646
+    },
+    {
+      "seed": 2147483648,
+      "salt": -17,
+      "unit": 0.26690652413920185
+    },
+    {
+      "seed": 2147483648,
+      "salt": 0,
+      "unit": 0.417458406746727
+    },
+    {
+      "seed": 2147483648,
+      "salt": 1,
+      "unit": 0.6555292149203664
+    },
+    {
+      "seed": 2147483648,
+      "salt": 2147483647,
+      "unit": 0.05646493380341328
+    },
+    {
+      "seed": 4294967295,
+      "salt": -17,
+      "unit": 0.29561388452900894
+    },
+    {
+      "seed": 4294967295,
+      "salt": 0,
+      "unit": 0.22076936630084398
+    },
+    {
+      "seed": 4294967295,
+      "salt": 1,
+      "unit": 0.8516780037553231
+    },
+    {
+      "seed": 4294967295,
+      "salt": 2147483647,
+      "unit": 0.9301354526379461
+    }
+  ],
+  "selection": [
+    {
+      "arena": {
+        "id": "frost-ember",
+        "biome": "forest"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "forest",
+        "mood": "default",
+        "tint": "#4f7a44",
+        "particles": "leaf"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "frost-ember",
+        "biome": "forest"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "forest",
+        "mood": "default",
+        "tint": "#4f7a44",
+        "particles": "leaf"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "frost-ember",
+        "biome": "forest"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "forest",
+        "mood": "default",
+        "tint": "#4f7a44",
+        "particles": "leaf"
+      },
+      "kind": "overcast"
+    },
+    {
+      "arena": {
+        "id": "sunscar-dune"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "volcanic",
+        "mood": "hot",
+        "tint": "#7a3a24",
+        "particles": "ember"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "sunscar-dune"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "volcanic",
+        "mood": "hot",
+        "tint": "#7a3a24",
+        "particles": "ember"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "sunscar-dune"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "volcanic",
+        "mood": "hot",
+        "tint": "#7a3a24",
+        "particles": "ember"
+      },
+      "kind": "ash"
+    },
+    {
+      "arena": {
+        "id": "ashen-frost"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "snow",
+        "mood": "cold",
+        "tint": "#c7dbe8",
+        "particles": "snow"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "ashen-frost"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "snow",
+        "mood": "cold",
+        "tint": "#c7dbe8",
+        "particles": "snow"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "ashen-frost"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "snow",
+        "mood": "cold",
+        "tint": "#c7dbe8",
+        "particles": "snow"
+      },
+      "kind": "snow"
+    },
+    {
+      "arena": {
+        "id": "neon-storm"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "urban",
+        "mood": "default",
+        "tint": "#6d747b",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "neon-storm"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "urban",
+        "mood": "default",
+        "tint": "#6d747b",
+        "particles": "dust"
+      },
+      "kind": "overcast"
+    },
+    {
+      "arena": {
+        "id": "neon-storm"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "urban",
+        "mood": "default",
+        "tint": "#6d747b",
+        "particles": "dust"
+      },
+      "kind": "rain"
+    },
+    {
+      "arena": {
+        "id": "snowfield",
+        "biome": "urban"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "urban",
+        "mood": "default",
+        "tint": "#6d747b",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "snowfield",
+        "biome": "urban"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "urban",
+        "mood": "default",
+        "tint": "#6d747b",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "snowfield",
+        "biome": "urban"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "urban",
+        "mood": "default",
+        "tint": "#6d747b",
+        "particles": "dust"
+      },
+      "kind": "snow"
+    },
+    {
+      "arena": {
+        "id": "titan-ruins",
+        "biome": "ruins"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "ruins",
+        "mood": "default",
+        "tint": "#9a8258",
+        "particles": "ash"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "titan-ruins",
+        "biome": "ruins"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "ruins",
+        "mood": "default",
+        "tint": "#9a8258",
+        "particles": "ash"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "titan-ruins",
+        "biome": "ruins"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "ruins",
+        "mood": "default",
+        "tint": "#9a8258",
+        "particles": "ash"
+      },
+      "kind": "ash"
+    },
+    {
+      "arena": {
+        "id": "deep-cave",
+        "biome": "cavern"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "cavern",
+        "mood": "night",
+        "tint": "#4a4550",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "deep-cave",
+        "biome": "cavern"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "cavern",
+        "mood": "night",
+        "tint": "#4a4550",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "deep-cave",
+        "biome": "cavern"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "cavern",
+        "mood": "night",
+        "tint": "#4a4550",
+        "particles": "dust"
+      },
+      "kind": "overcast"
+    },
+    {
+      "arena": {
+        "id": "open-land",
+        "biome": "unknown"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "canyon",
+        "mood": "hot",
+        "tint": "#8a6a44",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "open-land",
+        "biome": "unknown"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "canyon",
+        "mood": "hot",
+        "tint": "#8a6a44",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "open-land",
+        "biome": "unknown"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "canyon",
+        "mood": "hot",
+        "tint": "#8a6a44",
+        "particles": "dust"
+      },
+      "kind": "ash"
+    },
+    {
+      "arena": {
+        "id": "skybreak",
+        "biome": "snow"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "snow",
+        "mood": "cold",
+        "tint": "#c7dbe8",
+        "particles": "snow"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "skybreak",
+        "biome": "snow"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "snow",
+        "mood": "cold",
+        "tint": "#c7dbe8",
+        "particles": "snow"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "skybreak",
+        "biome": "snow"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "snow",
+        "mood": "cold",
+        "tint": "#c7dbe8",
+        "particles": "snow"
+      },
+      "kind": "snow"
+    },
+    {
+      "arena": {
+        "id": "dune-ravine",
+        "biome": "canyon"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "canyon",
+        "mood": "hot",
+        "tint": "#8a6a44",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "dune-ravine",
+        "biome": "canyon"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "canyon",
+        "mood": "hot",
+        "tint": "#8a6a44",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "dune-ravine",
+        "biome": "canyon"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "canyon",
+        "mood": "hot",
+        "tint": "#8a6a44",
+        "particles": "dust"
+      },
+      "kind": "overcast"
+    },
+    {
+      "arena": {
+        "id": "ember-caldera",
+        "biome": "volcanic"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "volcanic",
+        "mood": "hot",
+        "tint": "#7a3a24",
+        "particles": "ember"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "ember-caldera",
+        "biome": "volcanic"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "volcanic",
+        "mood": "hot",
+        "tint": "#7a3a24",
+        "particles": "ember"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "ember-caldera",
+        "biome": "volcanic"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "volcanic",
+        "mood": "hot",
+        "tint": "#7a3a24",
+        "particles": "ember"
+      },
+      "kind": "ash"
+    },
+    {
+      "arena": {
+        "id": "storm-station"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "canyon",
+        "mood": "hot",
+        "tint": "#8a6a44",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "storm-station"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "canyon",
+        "mood": "hot",
+        "tint": "#8a6a44",
+        "particles": "dust"
+      },
+      "kind": "overcast"
+    },
+    {
+      "arena": {
+        "id": "storm-station"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "canyon",
+        "mood": "hot",
+        "tint": "#8a6a44",
+        "particles": "dust"
+      },
+      "kind": "rain"
+    },
+    {
+      "arena": {
+        "id": "exchange"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "ruins",
+        "mood": "default",
+        "tint": "#9a8258",
+        "particles": "ash"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "exchange"
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "ruins",
+        "mood": "default",
+        "tint": "#9a8258",
+        "particles": "ash"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "exchange"
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "ruins",
+        "mood": "default",
+        "tint": "#9a8258",
+        "particles": "ash"
+      },
+      "kind": "ash"
+    },
+    {
+      "arena": {
+        "id": "glacier",
+        "reducedMotion": true
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "snow",
+        "mood": "cold",
+        "tint": "#c7dbe8",
+        "particles": "snow"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "glacier",
+        "reducedMotion": true
+      },
+      "seed": 7,
+      "time": {
+        "t": 2.5
+      },
+      "biome": {
+        "biome": "snow",
+        "mood": "cold",
+        "tint": "#c7dbe8",
+        "particles": "snow"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "glacier",
+        "reducedMotion": true
+      },
+      "seed": 4294967295,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "snow",
+        "mood": "cold",
+        "tint": "#c7dbe8",
+        "particles": "snow"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "neon-storm"
+      },
+      "seed": 2,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "urban",
+        "mood": "default",
+        "tint": "#6d747b",
+        "particles": "dust"
+      },
+      "kind": "storm"
+    },
+    {
+      "arena": {
+        "id": "neon-storm"
+      },
+      "seed": 3,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "urban",
+        "mood": "default",
+        "tint": "#6d747b",
+        "particles": "dust"
+      },
+      "kind": "rain"
+    },
+    {
+      "arena": {
+        "id": "neon-storm"
+      },
+      "seed": 4,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "urban",
+        "mood": "default",
+        "tint": "#6d747b",
+        "particles": "dust"
+      },
+      "kind": "overcast"
+    },
+    {
+      "arena": {
+        "id": "neon-storm"
+      },
+      "seed": 0,
+      "time": {
+        "t": 0
+      },
+      "biome": {
+        "biome": "urban",
+        "mood": "default",
+        "tint": "#6d747b",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    },
+    {
+      "arena": {
+        "id": "neon-storm"
+      },
+      "seed": 1,
+      "time": {
+        "t": 0
+      },
+      "reduced": true,
+      "biome": {
+        "biome": "urban",
+        "mood": "default",
+        "tint": "#6d747b",
+        "particles": "dust"
+      },
+      "kind": "clear"
+    }
+  ],
+  "times": [
+    {
+      "arena": {
+        "id": "arena",
+        "sky": "day"
+      },
+      "elapsed": 0,
+      "mode": "playing",
+      "expected": {
+        "phase": "day",
+        "from": "day",
+        "to": "dusk",
+        "blend": 0,
+        "cycle": "day",
+        "t": 0
+      }
+    },
+    {
+      "arena": {
+        "id": "arena",
+        "sky": "day"
+      },
+      "elapsed": 85,
+      "mode": "selection",
+      "expected": {
+        "phase": "day",
+        "from": "day",
+        "to": "dusk",
+        "blend": 0.44444444444444464,
+        "cycle": "day",
+        "t": 1.1111111111111112
+      }
+    },
+    {
+      "arena": {
+        "id": "skybreak"
+      },
+      "elapsed": 360,
+      "mode": "theater",
+      "expected": {
+        "phase": "day",
+        "from": "day",
+        "to": "dusk",
+        "blend": 0,
+        "cycle": "day",
+        "t": 4
+      }
+    },
+    {
+      "arena": {
+        "id": "☃-arena",
+        "sky": "dusk"
+      },
+      "elapsed": 1190,
+      "mode": "playing",
+      "expected": {
+        "phase": "dusk",
+        "from": "dusk",
+        "to": "night",
+        "blend": 0.3333333333333339,
+        "cycle": "dusk",
+        "t": 2.3333333333333335
+      }
+    },
+    {
+      "arena": {
+        "id": "arena",
+        "sky": "night",
+        "reducedMotion": true
+      },
+      "elapsed": 42,
+      "mode": "playing",
+      "expected": {
+        "phase": "night",
+        "t": 0,
+        "cycle": "night"
+      }
+    },
+    {
+      "arena": {
+        "id": "arena",
+        "sky": "dusk",
+        "timeOfDay": false
+      },
+      "elapsed": 13,
+      "mode": "progression",
+      "expected": {
+        "phase": "dusk",
+        "t": 0,
+        "cycle": "dusk"
+      }
+    },
+    {
+      "arena": {
+        "id": "arena",
+        "sky": "day",
+        "timeOfDayOverride": false
+      },
+      "elapsed": 80,
+      "mode": "playing",
+      "expected": {
+        "phase": "day",
+        "t": 0,
+        "cycle": "day"
+      }
+    },
+    {
+      "arena": {
+        "id": "arena",
+        "sky": "day"
+      },
+      "elapsed": -12,
+      "mode": "selection",
+      "expected": {
+        "phase": "day",
+        "from": "day",
+        "to": "dusk",
+        "blend": 0,
+        "cycle": "day",
+        "t": 0
+      }
+    }
+  ],
+  "winds": [
+    {
+      "time": 0,
+      "seed": 0,
+      "strength": 1,
+      "expected": 0.4
+    },
+    {
+      "time": 10.25,
+      "seed": 1,
+      "strength": 2,
+      "expected": 0.42128303981048265
+    },
+    {
+      "time": 120,
+      "seed": 4294967295,
+      "strength": 0,
+      "expected": 1
+    },
+    {
+      "time": -3.5,
+      "seed": 2147483648,
+      "strength": 0.5,
+      "expected": 0.8072169199365454
+    },
+    {
+      "time": 999,
+      "seed": 7,
+      "strength": 4,
+      "expected": 0.4
+    }
+  ],
+  "lightning": [
+    {
+      "kind": "clear",
+      "seed": 1,
+      "window": 60,
+      "count": 4,
+      "expected": []
+    },
+    {
+      "kind": "storm",
+      "seed": 0,
+      "window": 60,
+      "count": 4,
+      "expected": [
+        {
+          "time": 0.8123954821843654,
+          "intensity": 0.8524416318396106,
+          "distance": 0.6777573209954426,
+          "thunderGain": 0.5555979914963245,
+          "thunderDelay": 1.2721874456922526,
+          "pan": -0.2609632913954556
+        },
+        {
+          "time": 5.569113258365542,
+          "intensity": 0.5082466178573668,
+          "distance": 0.7115225708694197,
+          "thunderGain": 1.203170643770136,
+          "thunderDelay": 1.3295883704780134,
+          "pan": -0.4990977169945836
+        },
+        {
+          "time": 9.162959893443622,
+          "intensity": 0.9184668295783922,
+          "distance": 0.7339486283250153,
+          "thunderGain": 0.7585835113655777,
+          "thunderDelay": 1.3677126681525258,
+          "pan": 0.961691923905164
+        },
+        {
+          "time": 14.203887304966338,
+          "intensity": 0.8413013608660549,
+          "distance": 0.5624690769123845,
+          "thunderGain": 1.0846050241729244,
+          "thunderDelay": 1.0761974307510536,
+          "pan": -0.5681159868836403
+        }
+      ]
+    },
+    {
+      "kind": "storm",
+      "seed": 4294967295,
+      "window": 6,
+      "count": 24,
+      "expected": [
+        {
+          "time": 0.4132989154662937,
+          "intensity": 0.8154252659296617,
+          "distance": 0.43763656695373354,
+          "thunderGain": 1.2893722244072707,
+          "thunderDelay": 0.863982163821347,
+          "pan": 0.7481932402588427
+        },
+        {
+          "time": 5.6251722786109895,
+          "intensity": 0.9995314844418317,
+          "distance": 0.8205237205489538,
+          "thunderGain": 1.0767839579610154,
+          "thunderDelay": 1.5148903249332215,
+          "pan": -0.3140003103762865
+        }
+      ]
+    },
+    {
+      "kind": "rain",
+      "seed": 1,
+      "window": 60,
+      "count": 4,
+      "expected": []
+    },
+    {
+      "kind": "rain",
+      "seed": 42,
+      "window": 60,
+      "count": 4,
+      "expected": []
+    },
+    {
+      "kind": "rain",
+      "seed": 4782,
+      "window": 60,
+      "count": 4,
+      "expected": [
+        {
+          "time": 0.0958876758813858,
+          "intensity": 0.8400643395725638,
+          "distance": 0.411419857700821,
+          "thunderGain": 1.2534386211307718,
+          "thunderDelay": 0.8194137580913957,
+          "pan": -0.6496522109955549
+        },
+        {
+          "time": 6.909959099953994,
+          "intensity": 0.5917730476940051,
+          "distance": 0.7942742619430646,
+          "thunderGain": 1.0906418105587363,
+          "thunderDelay": 1.4702662453032098,
+          "pan": 0.025551761966198683
+        },
+        {
+          "time": 13.456765931332484,
+          "intensity": 0.738493753131479,
+          "distance": 0.9767742188298143,
+          "thunderGain": 1.824409420019947,
+          "thunderDelay": 1.7805161720106844,
+          "pan": -0.23577374313026667
+        },
+        {
+          "time": 17.91264602774754,
+          "intensity": 0.60686201590579,
+          "distance": 0.9997172679752111,
+          "thunderGain": 0.9991548860911279,
+          "thunderDelay": 1.8195193555578588,
+          "pan": -0.3943704622797668
+        }
+      ]
+    },
+    {
+      "kind": "overcast",
+      "seed": 1,
+      "window": 60,
+      "count": 4,
+      "expected": []
+    },
+    {
+      "kind": "overcast",
+      "seed": 7173,
+      "window": 60,
+      "count": 4,
+      "expected": [
+        {
+          "time": 4.4833721208851784,
+          "intensity": 0.5931297849165276,
+          "distance": 0.5007813145639375,
+          "thunderGain": 2.319816508423537,
+          "thunderDelay": 0.9713282347586937,
+          "pan": 0.9037141962908208
+        },
+        {
+          "time": 10.517522893613204,
+          "intensity": 0.760715045966208,
+          "distance": 0.48339982006000354,
+          "thunderGain": 1.8897626662859692,
+          "thunderDelay": 0.941779694102006,
+          "pan": -0.25839785020798445
+        },
+        {
+          "time": 20.889078394742683,
+          "intensity": 0.6364616205682978,
+          "distance": 0.7656669163610785,
+          "thunderGain": 2.0910312969703226,
+          "thunderDelay": 1.4216337578138334,
+          "pan": 0.6315886476077139
+        },
+        {
+          "time": 27.58646392193623,
+          "intensity": 0.564288396621123,
+          "distance": 0.5732814647606574,
+          "thunderGain": 1.6842592833330854,
+          "thunderDelay": 1.0945784900931175,
+          "pan": 0.38358928449451923
+        }
+      ]
+    },
+    {
+      "kind": "storm",
+      "seed": 7,
+      "window": 0,
+      "count": 0,
+      "expected": []
+    }
+  ],
+  "precipitation": [
+    {
+      "serial": 0,
+      "kind": "clear",
+      "origin": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "radius": 9,
+      "expected": []
+    },
+    {
+      "serial": 0,
+      "kind": "rain",
+      "origin": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "radius": 9,
+      "expected": [
+        {
+          "pos": {
+            "x": -0.6743786183881384,
+            "y": 8.547809667081527,
+            "z": -2.299844591623152
+          },
+          "color": "#aebccb",
+          "size": 0.03075445765646977,
+          "life": 1.0852441955695964,
+          "velocity": {
+            "x": 0.02395996344251558,
+            "y": -18.54223450093815,
+            "z": 0.006386298542233715
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": -7.968173346384464,
+            "y": 4.726782872976452,
+            "z": -1.752890880814153
+          },
+          "color": "#aebccb",
+          "size": 0.02945287965597885,
+          "life": 0.954695619501801,
+          "velocity": {
+            "x": 0.03638792338580543,
+            "y": -20.342848294645744,
+            "z": -0.04006822940778644
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": 5.197703656941642,
+            "y": 8.684852148100001,
+            "z": -3.317802747814562
+          },
+          "color": "#aebccb",
+          "size": 0.032747982610656874,
+          "life": 1.039932315880417,
+          "velocity": {
+            "x": -0.0783175770666724,
+            "y": -19.239338247242696,
+            "z": -0.008685951443315937
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": 7.459274761675994,
+            "y": 7.653639996343674,
+            "z": 4.800302636463141
+          },
+          "color": "#aebccb",
+          "size": 0.033648275724995944,
+          "life": 1.2476255472906923,
+          "velocity": {
+            "x": 0.07812275206742872,
+            "y": -21.2641811884507,
+            "z": 0.10656179493096699
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": -5.393328899620393,
+            "y": 4.617153390920058,
+            "z": 2.0381996950257077
+          },
+          "color": "#aebccb",
+          "size": 0.032402766101156076,
+          "life": 1.1488537871020041,
+          "velocity": {
+            "x": -0.08555518607854731,
+            "y": -18.49243209232633,
+            "z": -0.08521003030711087
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": -0.4977622771674439,
+            "y": 6.107411046537433,
+            "z": 7.785779715289004
+          },
+          "color": "#aebccb",
+          "size": 0.02489575968377659,
+          "life": 1.0283450736590531,
+          "velocity": {
+            "x": 0.07950745405501394,
+            "y": -21.0206505818457,
+            "z": 0.0930244194967729
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": 7.551286474773681,
+            "y": 7.754933147634131,
+            "z": -0.011826404441586363
+          },
+          "color": "#aebccb",
+          "size": 0.02371367682742739,
+          "life": 1.3197749053919163,
+          "velocity": {
+            "x": -0.0854766145838603,
+            "y": -20.87457805525618,
+            "z": 0.037876019874325956
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": -5.296442079475309,
+            "y": 6.671303273800598,
+            "z": 6.069886778178916
+          },
+          "color": "#aebccb",
+          "size": 0.027327837582986764,
+          "life": 1.0445759807677417,
+          "velocity": {
+            "x": -0.07168289988690124,
+            "y": -17.191259707496794,
+            "z": 0.04741909021335167
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": 1.0277923689636361,
+            "y": 9.669623506178526,
+            "z": 2.959974782963148
+          },
+          "color": "#aebccb",
+          "size": 0.034163873000574274,
+          "life": 1.3713516448650864,
+          "velocity": {
+            "x": 0.04316644467603564,
+            "y": -20.651477229688663,
+            "z": 0.12220526958052191
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": -0.05158159316812393,
+            "y": 9.273899988102238,
+            "z": -4.892797155793558
+          },
+          "color": "#aebccb",
+          "size": 0.027967812069684225,
+          "life": 1.182857866576607,
+          "velocity": {
+            "x": -0.029632333818504664,
+            "y": -16.19347956214181,
+            "z": -0.00805340209814101
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": -8.637885815299756,
+            "y": 8.776250093890411,
+            "z": 1.7389510319797774
+          },
+          "color": "#aebccb",
+          "size": 0.03002510587312866,
+          "life": 1.1007327291045181,
+          "velocity": {
+            "x": 0.09433467388603248,
+            "y": -17.697154805051895,
+            "z": -0.0836957358891833
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": -4.50620444202227,
+            "y": 8.48127711202979,
+            "z": -0.09946865531448758
+          },
+          "color": "#aebccb",
+          "size": 0.03582014274686113,
+          "life": 1.343090440189254,
+          "velocity": {
+            "x": 0.007354452538386569,
+            "y": -20.4848078888922,
+            "z": 0.07685220985483662
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": 6.051468208556706,
+            "y": 9.175440334988629,
+            "z": -2.784806732830219
+          },
+          "color": "#aebccb",
+          "size": 0.026052188213461124,
+          "life": 1.191565148213777,
+          "velocity": {
+            "x": 0.012837089513856231,
+            "y": -17.142212109382314,
+            "z": -0.09076795732038281
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": 0.6429815227961284,
+            "y": 8.068038650338547,
+            "z": -0.6836642851384513
+          },
+          "color": "#aebccb",
+          "size": 0.029982645821753574,
+          "life": 1.2738527327901341,
+          "velocity": {
+            "x": -0.004534527573160488,
+            "y": -20.07168346222529,
+            "z": -0.08704830076593167
+          },
+          "additive": false,
+          "streak": 1.3
+        },
+        {
+          "pos": {
+            "x": -1.4761522621559005,
+            "y": 9.857122932061815,
+            "z": 8.85104493879409
+          },
+          "color": "#aebccb",
+          "size": 0.02376798187190853,
+          "life": 1.1018183997044848,
+          "velocity": {
+            "x": -0.12355831311982085,
+            "y": -16.7471378223731,
+            "z": -0.10838345315618986
+          },
+          "additive": false,
+          "streak": 1.3
+        }
+      ]
+    },
+    {
+      "serial": 17,
+      "kind": "snow",
+      "origin": {
+        "x": 12,
+        "y": 3,
+        "z": -8
+      },
+      "radius": 3,
+      "expected": [
+        {
+          "pos": {
+            "x": 11.810958379683177,
+            "y": 11.153277586249931,
+            "z": -7.976482966731634
+          },
+          "color": "#eef6ff",
+          "size": 0.046084060963146406,
+          "life": 3.249186595578023,
+          "velocity": {
+            "x": 0.3991863154571471,
+            "y": -2.6763695250443114,
+            "z": -0.3773046794527454
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": 10.285875620396023,
+            "y": 8.930088850653286,
+            "z": -5.686981324420106
+          },
+          "color": "#eef6ff",
+          "size": 0.05620232206622658,
+          "life": 3.1436534090395214,
+          "velocity": {
+            "x": 0.4191841007953473,
+            "y": -2.5717159935579903,
+            "z": -0.07248983615368831
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": 13.892096862375436,
+            "y": 10.028480510466844,
+            "z": -8.255159150706373
+          },
+          "color": "#eef6ff",
+          "size": 0.04511625082584011,
+          "life": 3.8020063181505552,
+          "velocity": {
+            "x": 0.3860103282812075,
+            "y": -2.7121691392623277,
+            "z": -0.3138554649925454
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": 13.946078859744235,
+            "y": 9.460241704820712,
+            "z": -9.051928216399627
+          },
+          "color": "#eef6ff",
+          "size": 0.04103547435336175,
+          "life": 4.011440662334543,
+          "velocity": {
+            "x": 0.3742758792066657,
+            "y": -2.51664287092086,
+            "z": -0.34634537618755024
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": 11.647195690298712,
+            "y": 8.543884971538532,
+            "z": -9.337934220689375
+          },
+          "color": "#eef6ff",
+          "size": 0.04588207704559483,
+          "life": 3.7186554847375155,
+          "velocity": {
+            "x": 0.3364218645348265,
+            "y": -2.754633472411575,
+            "z": -0.024376535910269392
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": 14.386898025881091,
+            "y": 8.441652653143194,
+            "z": -9.691016725739813
+          },
+          "color": "#eef6ff",
+          "size": 0.05169656836118004,
+          "life": 3.7692514731384006,
+          "velocity": {
+            "x": -0.2755025485007797,
+            "y": -2.7548473946738166,
+            "z": -0.27683318214882935
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": 12.945449965873442,
+            "y": 8.349906643235569,
+            "z": -7.855953737763745
+          },
+          "color": "#eef6ff",
+          "size": 0.047600274282763776,
+          "life": 2.8256270180702274,
+          "velocity": {
+            "x": 0.47828741115012374,
+            "y": -2.0985402843119902,
+            "z": 0.4793106529347856
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": 10.365231606581194,
+            "y": 10.804393948010262,
+            "z": -5.660657191628874
+          },
+          "color": "#eef6ff",
+          "size": 0.03871036248717233,
+          "life": 3.47702447988955,
+          "velocity": {
+            "x": -0.16019152096942801,
+            "y": -2.176898139672563,
+            "z": -0.31381676108898054
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": 12.26213229326257,
+            "y": 7.9052442463359895,
+            "z": -9.969727891024716
+          },
+          "color": "#eef6ff",
+          "size": 0.05416408547239008,
+          "life": 3.5257669955132918,
+          "velocity": {
+            "x": 0.24918397323907915,
+            "y": -2.4899454223480877,
+            "z": -0.1941100188284437
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": 10.685052600136906,
+            "y": 9.474126447568212,
+            "z": -9.506399525225579
+          },
+          "color": "#eef6ff",
+          "size": 0.05129404439271754,
+          "life": 3.913401943164273,
+          "velocity": {
+            "x": 0.31060318365008643,
+            "y": -2.489303618680989,
+            "z": -0.062023333637514944
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": 13.596530294601465,
+            "y": 9.231502933947255,
+            "z": -6.026126117857472
+          },
+          "color": "#eef6ff",
+          "size": 0.051424947670643435,
+          "life": 3.8522474416932666,
+          "velocity": {
+            "x": -0.4646284920081097,
+            "y": -2.043459647801579,
+            "z": -0.28878773022182
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": 14.079893108475874,
+            "y": 12.281679226849619,
+            "z": -7.713276808328045
+          },
+          "color": "#eef6ff",
+          "size": 0.046545414282950906,
+          "life": 2.793369927348888,
+          "velocity": {
+            "x": 0.32735607186969273,
+            "y": -2.1011633150794458,
+            "z": -0.017312120301023137
+          },
+          "additive": true,
+          "streak": 0.4
+        }
+      ]
+    },
+    {
+      "serial": -3,
+      "kind": "ash",
+      "origin": {
+        "x": -4,
+        "y": 0,
+        "z": 2
+      },
+      "radius": 1,
+      "expected": [
+        {
+          "pos": {
+            "x": -3.7181082177138762,
+            "y": 8.208237355157788,
+            "z": 1.3271847366842306
+          },
+          "color": "#8f8880",
+          "size": 0.04193066601628221,
+          "life": 3.241340134339719,
+          "velocity": {
+            "x": 0.05979376874393641,
+            "y": -0.8219619262630498,
+            "z": -0.26159058973695865
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": -2.886857247502882,
+            "y": 8.826975304360262,
+            "z": 1.4475045887954625
+          },
+          "color": "#8f8880",
+          "size": 0.037268020798747435,
+          "life": 3.921953866091081,
+          "velocity": {
+            "x": -0.15917707620169433,
+            "y": -0.9783098857182334,
+            "z": 0.03142031515748709
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": -5.779970168597145,
+            "y": 5.444398807698022,
+            "z": 1.1305942805604574
+          },
+          "color": "#8f8880",
+          "size": 0.03537591709065622,
+          "life": 3.279673169981612,
+          "velocity": {
+            "x": 0.3323855412966539,
+            "y": -0.9106131211541623,
+            "z": 0.2676004085381516
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": -4.393530657045884,
+            "y": 7.160133647071229,
+            "z": 2.3129089865548322
+          },
+          "color": "#8f8880",
+          "size": 0.03814311326321753,
+          "life": 3.5372489867399564,
+          "velocity": {
+            "x": -0.038972129774971886,
+            "y": -0.7887129260398711,
+            "z": 0.39067722819528483
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": -2.7975515666869315,
+            "y": 7.173638580640228,
+            "z": 1.7962469463755937
+          },
+          "color": "#8f8880",
+          "size": 0.04390683354784429,
+          "life": 3.725333239930992,
+          "velocity": {
+            "x": -0.2778123222006979,
+            "y": -0.9250870973547192,
+            "z": -0.11627832514147235
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": -4.498655034500392,
+            "y": 9.992118712978465,
+            "z": 1.3922989338989606
+          },
+          "color": "#8f8880",
+          "size": 0.044650716650567655,
+          "life": 4.324829419275008,
+          "velocity": {
+            "x": 0.0496109790284212,
+            "y": -0.9608680035420386,
+            "z": -0.3919733772035626
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": -4.312467818803012,
+            "y": 6.277960939863222,
+            "z": 0.9964233219518805
+          },
+          "color": "#8f8880",
+          "size": 0.029238085989895767,
+          "life": 3.928825806567638,
+          "velocity": {
+            "x": 0.1640003431038932,
+            "y": -1.0170958552560994,
+            "z": 0.11647173103794267
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": -4.228166512830276,
+            "y": 9.770158605130892,
+            "z": 2.03414883184159
+          },
+          "color": "#8f8880",
+          "size": 0.04355834467070139,
+          "life": 3.2107588211658316,
+          "velocity": {
+            "x": 0.21762170917764811,
+            "y": -0.8353026267630753,
+            "z": -0.1581572709042014
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": -4.091284275156528,
+            "y": 8.723822127730545,
+            "z": 3.935169475193984
+          },
+          "color": "#8f8880",
+          "size": 0.04316039119222211,
+          "life": 3.2095160533323686,
+          "velocity": {
+            "x": 0.24509580616026555,
+            "y": -0.9173528029030079,
+            "z": -0.27166663964084975
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": -3.710824666208995,
+            "y": 6.668473083681537,
+            "z": 0.8379484710651002
+          },
+          "color": "#8f8880",
+          "size": 0.02812088420570849,
+          "life": 3.051385817102014,
+          "velocity": {
+            "x": 0.27373781666945146,
+            "y": -0.9559950965831511,
+            "z": -0.2919139459477537
+          },
+          "additive": true,
+          "streak": 0.4
+        },
+        {
+          "pos": {
+            "x": -2.464593174914517,
+            "y": 4.306412758377011,
+            "z": 2.5870547115173093
+          },
+          "color": "#8f8880",
+          "size": 0.037790186519336466,
+          "life": 3.796774363619456,
+          "velocity": {
+            "x": 0.07224507622240228,
+            "y": -0.8045567536166768,
+            "z": 0.34634343589338096
+          },
+          "additive": true,
+          "streak": 0.4
+        }
+      ]
+    },
+    {
+      "serial": 2147483647,
+      "kind": "storm",
+      "origin": {
+        "x": 1,
+        "y": -2,
+        "z": 9
+      },
+      "radius": 12,
+      "expected": [
+        {
+          "pos": {
+            "x": 3.5085611435945996,
+            "y": 4.452171125088858,
+            "z": 2.65887224110688
+          },
+          "color": "#9fb0c2",
+          "size": 0.02922422363171918,
+          "life": 1.6002634830400961,
+          "velocity": {
+            "x": -0.32737762035740947,
+            "y": -16.474628948775266,
+            "z": 0.04698266952693991
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": 2.5375790858662306,
+            "y": 7.789623754981352,
+            "z": 14.184248093650773
+          },
+          "color": "#9fb0c2",
+          "size": 0.03759176412075566,
+          "life": 1.2728341385146682,
+          "velocity": {
+            "x": 0.06883761433857438,
+            "y": -14.513081073472994,
+            "z": -0.0810995301304151
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": -6.1502510514300255,
+            "y": 7.891168215286725,
+            "z": 6.022455012984553
+          },
+          "color": "#9fb0c2",
+          "size": 0.03852486078593062,
+          "life": 1.6577270913444755,
+          "velocity": {
+            "x": -0.03831671175740581,
+            "y": -16.456759442623415,
+            "z": -0.27179387410213096
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": -3.58238123249422,
+            "y": 4.2836808344078445,
+            "z": 15.075117623356837
+          },
+          "color": "#9fb0c2",
+          "size": 0.030277616826416373,
+          "life": 1.5247491542819769,
+          "velocity": {
+            "x": 0.002131736989163768,
+            "y": -14.794302998353796,
+            "z": -0.07284607189308062
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": 5.6861004652924905,
+            "y": 6.557326345834259,
+            "z": 11.388373479006223
+          },
+          "color": "#9fb0c2",
+          "size": 0.03774352146376472,
+          "life": 1.122605317421864,
+          "velocity": {
+            "x": 0.29976994096063303,
+            "y": -16.545076793477655,
+            "z": -0.31284418074946013
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": -5.201795007331058,
+            "y": 7.626781425351925,
+            "z": 13.1595412382465
+          },
+          "color": "#9fb0c2",
+          "size": 0.02786962902356629,
+          "life": 1.2441743010385367,
+          "velocity": {
+            "x": 0.11970203613622625,
+            "y": -17.15665958307373,
+            "z": 0.17693323735774802
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": 12.952309266568712,
+            "y": 3.9078598003619955,
+            "z": 9.310298888575193
+          },
+          "color": "#9fb0c2",
+          "size": 0.03625620778330047,
+          "life": 1.362373836264567,
+          "velocity": {
+            "x": 0.2722979454142735,
+            "y": -13.174189931928225,
+            "z": -0.31695336002552726
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": 3.3136807382849343,
+            "y": 2.651230507216237,
+            "z": 9.936159025342533
+          },
+          "color": "#9fb0c2",
+          "size": 0.03662414031141069,
+          "life": 1.405256494368719,
+          "velocity": {
+            "x": 0.27743237303277296,
+            "y": -17.025881508778753,
+            "z": 0.33953817244375545
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": -0.6078653368408558,
+            "y": 3.4923396882350417,
+            "z": 10.866227176097944
+          },
+          "color": "#9fb0c2",
+          "size": 0.03785278810021765,
+          "life": 1.6306009565178772,
+          "velocity": {
+            "x": -0.04066351621660019,
+            "y": -17.021823501510504,
+            "z": -0.34834713046400506
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": 0.9959132427530751,
+            "y": 3.4295607715448275,
+            "z": 7.68260304461982
+          },
+          "color": "#9fb0c2",
+          "size": 0.038770297313754046,
+          "life": 1.4882883860842064,
+          "velocity": {
+            "x": 0.2847734459523981,
+            "y": -16.868772897897,
+            "z": 0.09085056803674682
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": -9.397347709491536,
+            "y": 2.5294994945939395,
+            "z": 11.758060269407135
+          },
+          "color": "#9fb0c2",
+          "size": 0.031453326697566855,
+          "life": 1.4338336375341363,
+          "velocity": {
+            "x": -0.33330538284110495,
+            "y": -16.630323226652184,
+            "z": 0.23556958185172858
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": 11.691048102474518,
+            "y": 6.825357795419488,
+            "z": 6.213285436720456
+          },
+          "color": "#9fb0c2",
+          "size": 0.029461120624202565,
+          "life": 1.3794977706529894,
+          "velocity": {
+            "x": 0.09906403290784545,
+            "y": -16.31974137878738,
+            "z": 0.13457159027098015
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": 7.546609996790489,
+            "y": 3.017402738569631,
+            "z": 14.491101615818188
+          },
+          "color": "#9fb0c2",
+          "size": 0.038338897727275945,
+          "life": 1.6129443502456284,
+          "velocity": {
+            "x": -0.016343259058507004,
+            "y": -13.89489352333939,
+            "z": 0.030617890805149883
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": -7.280879893569061,
+            "y": 2.7366874969416966,
+            "z": 11.187717372475294
+          },
+          "color": "#9fb0c2",
+          "size": 0.026163035427723788,
+          "life": 1.13051037399343,
+          "velocity": {
+            "x": 0.05953714614956106,
+            "y": -15.323253390629137,
+            "z": 0.19943917425103463
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": 11.863163686508608,
+            "y": 2.5960209003174723,
+            "z": 5.555714473321982
+          },
+          "color": "#9fb0c2",
+          "size": 0.035672448167035464,
+          "life": 1.3359666212219667,
+          "velocity": {
+            "x": 0.025673915649688295,
+            "y": -15.417734918805708,
+            "z": -0.14271985099015755
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": 8.427994108122482,
+            "y": 5.564504752299866,
+            "z": 12.958085697055331
+          },
+          "color": "#9fb0c2",
+          "size": 0.0381610068255479,
+          "life": 1.4503144017444722,
+          "velocity": {
+            "x": -0.215396171101694,
+            "y": -15.260165976944883,
+            "z": -0.21339009207752302
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": -3.4152214953006146,
+            "y": 6.5886032387122055,
+            "z": 11.97686500042693
+          },
+          "color": "#9fb0c2",
+          "size": 0.02527185059391704,
+          "life": 1.4487594137174915,
+          "velocity": {
+            "x": -0.3113040872060936,
+            "y": -15.223051481757558,
+            "z": -0.07298238077736047
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": 1.9691224785030161,
+            "y": 6.041868563285532,
+            "z": 17.525051996520695
+          },
+          "color": "#9fb0c2",
+          "size": 0.030776656660199315,
+          "life": 1.5718322299168985,
+          "velocity": {
+            "x": -0.1364842171982127,
+            "y": -16.163909169359577,
+            "z": -0.3222124332497391
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": -6.778064869122649,
+            "y": 6.976322458352969,
+            "z": 16.565156264148655
+          },
+          "color": "#9fb0c2",
+          "size": 0.033606850264735255,
+          "life": 1.1459598492146377,
+          "velocity": {
+            "x": -0.06081378930500098,
+            "y": -14.003299408534843,
+            "z": -0.22414145601776927
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": -0.9349730926506594,
+            "y": 5.0732951618436015,
+            "z": 4.002099906565499
+          },
+          "color": "#9fb0c2",
+          "size": 0.030397170157031427,
+          "life": 1.1261861849590638,
+          "velocity": {
+            "x": -0.044314911564419725,
+            "y": -15.451074088504788,
+            "z": -0.17601348169287978
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": -2.4833566416593422,
+            "y": 6.1859195195571335,
+            "z": 10.28097199015733
+          },
+          "color": "#9fb0c2",
+          "size": 0.026921252781041256,
+          "life": 1.633422864944074,
+          "velocity": {
+            "x": -0.2726338963077017,
+            "y": -16.425258309039116,
+            "z": 0.07077047003451042
+          },
+          "additive": false,
+          "streak": 1.15
+        },
+        {
+          "pos": {
+            "x": 1.452218132673435,
+            "y": 4.899005611170783,
+            "z": 17.064159828342827
+          },
+          "color": "#9fb0c2",
+          "size": 0.03736419189776391,
+          "life": 1.352314156310706,
+          "velocity": {
+            "x": 0.3489984206387303,
+            "y": -15.926390035002584,
+            "z": 0.058425346996734205
+          },
+          "additive": false,
+          "streak": 1.15
+        }
+      ]
+    }
+  ]
+}
