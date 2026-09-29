@@ -76,6 +76,18 @@ class PlayableGatesTest(unittest.TestCase):
             "combat-remote-muzzle": "res://tests/combat_integration/remote_muzzle.gd",
             "mode-diagnostics": "res://tests/debug/diagnostics.gd",
             "local-24-roster": "port/native-menu-debug-bots/tests/startup.test.mjs",
+            "player-flow-journey": "tools/godot-dev/product_journey.mjs",
+            "career-player-flow-clarity-journey": "port/native-player-flow/clarity-journey.mjs",
+            "objective-zone-variants": "res://tests/zone_modes/variants.gd",
+            "objective-assault-state": "res://tests/assault/state_test.gd",
+            "objective-scoreboard": "res://tests/objective_scoreboard.gd",
+            "vehicle-source-oracle": "port/native-vehicle-expansion/source-oracle.mjs",
+            "vehicle-room-edge-oracle": "port/native-vehicle-expansion/room-edge-oracle.mjs",
+            "vehicle-fleet-visuals": "res://tests/combined_arms/test_fleet_visuals.gd",
+            "audiovisual-assets": "tools/godot-audiovisual/music_pack.mjs",
+            "audiovisual-weather-oracle": "res://tests/audio_new/weather_oracle.gd",
+            "audiovisual-lifecycle": "res://tests/audio_new/lifecycle.gd",
+            "audiovisual-soak": "res://tests/audio_new/soak.gd",
         }
         for name, path in expected.items():
             with self.subTest(gate=name):
