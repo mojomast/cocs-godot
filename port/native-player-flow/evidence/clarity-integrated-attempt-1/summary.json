@@ -1,0 +1,47 @@
+{
+  "port_commit": "2d45b0b4d6251695aa653df3b8e2c8dcfde67ea4",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "scope": "One native client hosting a scripted source match on an owned authority; not human acceptance",
+  "checks": [
+    {
+      "name": "the pending selection is held before the source can answer"
+    },
+    {
+      "name": "pending copy says awaiting source confirmation"
+    },
+    {
+      "name": "a pending selection is never named as saved"
+    },
+    {
+      "name": "pending is captured at the exact 760x520 @150% size"
+    },
+    {
+      "name": "pending readability captured"
+    }
+  ],
+  "status": "FAIL",
+  "display": ":3",
+  "port": 35243,
+  "endpoint": "ws://127.0.0.1:35243",
+  "error": "AssertionError [ERR_ASSERTION]: the no-reply reader state is the honest timeout\n    at pass (file:///home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/port/native-player-flow/clarity-journey.mjs:39:47)\n    at file:///home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/port/native-player-flow/clarity-journey.mjs:137:3",
+  "cleanup": [
+    {
+      "name": "xvfb",
+      "exit_code": 0,
+      "signal": null
+    },
+    {
+      "name": "observer",
+      "exit_code": null,
+      "signal": "SIGTERM"
+    }
+  ],
+  "wire": {
+    "frames": 964,
+    "award_index": -1,
+    "results_index": -1,
+    "sha256": "272290e921e5591aa56bad6c78ca7ff139327ed2a01e1591d1d4157f540cbb99"
+  },
+  "expired": false
+}

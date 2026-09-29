@@ -1,0 +1,37 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":22,"version":1}
+PRODUCT_JOURNEY_CAPTURE {"name":"home-1280x800","path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/home-1280x800.png","scale":100,"source_route":"","window":[1280,800]}
+PRODUCT_JOURNEY_CAPTURE {"name":"home-760x520","path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/home-760x520.png","scale":100,"source_route":"","window":[760,520]}
+PRODUCT_JOURNEY_CAPTURE {"name":"home-760x520-scale150","path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/home-760x520-scale150.png","scale":150,"source_route":"","window":[760,520]}
+PRODUCT_JOURNEY_CAPTURE {"name":"career-home-1280x800","path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/career-home-1280x800.png","scale":100,"source_route":"","window":[1280,800]}
+PRODUCT_JOURNEY_CAPTURE {"name":"career-home-760x520","path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/career-home-760x520.png","scale":100,"source_route":"","window":[760,520]}
+PRODUCT_JOURNEY_CAPTURE {"name":"career-home-760x520-scale150","path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/career-home-760x520-scale150.png","scale":150,"source_route":"","window":[760,520]}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_HOME {"route":"lobby","visit":1,"volume":40}
+MENU_ROUTE {"args":["--experience=lobby","--map=meridian-exchange","--mode=deathmatch"]}
+Owned local server ready at ws://127.0.0.1:43471; lobby
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+PRODUCT_JOURNEY_CAPTURE {"name":"flow-room-browser","path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/flow-room-browser.png","scale":100,"source_route":"lobby","window":[1280,800]}
+PRODUCT_JOURNEY_CAPTURE {"name":"flow-retry","path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/flow-retry.png","scale":100,"source_route":"lobby","window":[1280,800]}
+PRODUCT_JOURNEY_CAPTURE {"name":"flow-results-760x520-scale150","path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/flow-results-760x520-scale150.png","scale":150,"source_route":"lobby","window":[760,520]}
+PRODUCT_JOURNEY_EQUIPMENT {"id":"extended-mag","kind":"attachment","slot":"magazine","status":"source-confirmed"}
+PRODUCT_JOURNEY_CAPTURE {"name":"flow-loadout-760x520-scale150","path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/flow-loadout-760x520-scale150.png","scale":150,"source_route":"lobby","window":[760,520]}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":true,"route":"lobby"}
+PRODUCT_JOURNEY_MATCH {"pointer_released":true,"route":"lobby","settings_path":"/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/local_settings.json","source_ready":true,"visit":1.0,"volume":40}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":22,"version":1}
+PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+PRODUCT_JOURNEY_COMPLETE {"career_equipment_confirmed":true,"career_home_checks":2,"career_identity_hash":"2498ac5c779bd912b7f728cadc3982254189e6592a3d4705276f5bbed94b7d0b","career_live_checks":1.0,"career_selection":{"id":"extended-mag","kind":"attachment","slot":"magazine"},"cycles":1.0,"expected_lobby_config":{"fragLimit":50.0,"mode":"deathmatch","timeLimit":60.0},"expected_volume":40.0,"itinerary":[{"options":{},"route":"lobby"}],"options":{},"player_flow":true,"player_flow_checks":["Home opened disconnected multiplayer setup","browser received a selected-server room list","browsing did not invent a seated Career","cancel browsing returned to explicit setup","source seated host and confirmed Career","lobby Arsenal opened with released pointer","Arsenal Back restored lobby action focus","first source round became live","source echoed its normalized 60-second deathmatch preset","transport interruption exposed explicit Retry","disconnect cleared stale Career and pose and released controls","same-room reconnect action is available","explicit Retry recovered the live source round","Retry preserved source seat round and Career identity","Retry did not recapture controls","source settled the normal timed round","accepted result reports a time-limit ending at 60 source seconds","Results displays an accepted result with its same-round award","retained actor attachment presentation is known","confirmed equipment did not overwrite the retained actor presentation","Career Back restored match Settings","Settings Back released controls at results","Rematch started a new source round","new source actor carries the confirmed saved attachment"],"player_flow_complete":true,"route":"lobby","visits":1.0}
+MENU_QUIT

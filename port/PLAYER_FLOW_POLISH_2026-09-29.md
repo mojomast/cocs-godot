@@ -1,5 +1,30 @@
 # Player flow polish · 2026-09-29
 
+## Integrated journey verification
+
+- `2d45b0b4`: captured Home → selected-server browser → create/start → transport
+  interruption → explicit Retry → normal 60-second source result → Career award
+  → confirmed attachment → authoritative rematch → Home, **24 flow checks**.
+  The supervisor also verified two Home Career visits, one live Career visit,
+  ten captures and closure of every owned server port. Evidence:
+  `native-player-flow/evidence/integrated-flow/`.
+- `436903a8`: compact pending → timeout/unknown → source-confirmed → timed
+  results journey passed **34 checks**, including source award-before-results
+  order and persisted history. Evidence: `native-player-flow/evidence/clarity/`.
+- Retained failures: `integrated-attempt-1/` exposed the fixture's incorrect
+  expectation that requested deathmatch limit 100 survived source normalization
+  (the source clamps it to 50). The fixture now imports `normalizeConfig`.
+  `clarity-integrated-attempt-1/` exposed an observer capture race: polling resumed
+  before unknown-state observation. It now awaits the harness's explicit resume
+  after both the sample and PNG exist. No source rule changed.
+- Equipment-at-results evidence is accurately labelled retained client
+  presentation stability: after results the client stops accepting snapshots, so
+  this check cannot establish fresh source actor non-mutation. Separate existing
+  source equipment tests own that assertion.
+
+These focused runs precede the three-stream expansion. The final expanded
+composition still requires aggregate and extracted-package verification.
+
 User-approved follow-up to the native finishes/loadout batch, with parallel
 implementation and serial resource-heavy verification. Baseline `04d940a4`
 records both hosted workflows passing at `b6eec0cf` (237 native gates, zero unrun).

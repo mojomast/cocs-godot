@@ -1,0 +1,94 @@
+{
+  "action_status": "Source confirmed selection · saved for next match.",
+  "actor": 0,
+  "attributed": {
+    "achievementXp": 0,
+    "baseGained": 40,
+    "flagged": false,
+    "gained": 40,
+    "levelUp": false,
+    "mode": "deathmatch",
+    "prestigeBonus": 0,
+    "prestigeUp": false,
+    "progress": 0.08,
+    "result": "loss",
+    "toNext": 460
+  },
+  "back": [
+    237,
+    16,
+    132,
+    44
+  ],
+  "category": "results",
+  "command": 1,
+  "confirmed": true,
+  "equip": {
+    "id": "extended-mag",
+    "name": "Extended Magazine",
+    "slot": "magazine"
+  },
+  "error": "",
+  "frozen": false,
+  "opened": true,
+  "pending": false,
+  "pending_captured": true,
+  "phase": 4,
+  "pressed": true,
+  "result": {
+    "actor_count": 3,
+    "actor_id": 0,
+    "deaths": 0,
+    "ending": "time",
+    "frags": 0,
+    "map": "Meridian Exchange",
+    "mode": "deathmatch",
+    "replayed": false,
+    "round_key": "9e4fa55c03416f0f5d1bd72365878c13e116a76300b9be2c7b83be038acfdab5:1",
+    "time": 60.0166666666645
+  },
+  "results_captured": true,
+  "results_seen": 1,
+  "room": "9NCQ",
+  "rows": [
+    "Round complete · deathmatch · Meridian Exchange",
+    "Ended · time · Elapsed 60.0s",
+    "You · 0 frags · 0 deaths",
+    "Source award · +40 XP",
+    "base 40"
+  ],
+  "rows_bounds": [
+    16,
+    229,
+    466,
+    175
+  ],
+  "seconds": 56.1714283333336,
+  "spectating": false,
+  "state_text": "CONNECTED SOURCE CAREER · LEVEL 1 · XP 40\nROUND COMPLETE · deathmatch · Meridian Exchange · +40 XP",
+  "summary": "Saved for next match · Extended Magazine",
+  "summary_rect": [
+    16,
+    199,
+    466,
+    22
+  ],
+  "tab_loadout": [
+    70,
+    123,
+    86,
+    32
+  ],
+  "tab_results": [
+    384,
+    123,
+    75,
+    32
+  ],
+  "timed_out": false,
+  "unknown_captured": true,
+  "viewport": [
+    506.666656494141,
+    346.666656494141
+  ]
+}

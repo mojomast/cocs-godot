@@ -1,0 +1,233 @@
+{
+  "scope": "source-driven scripted UI lifecycle; not natural rounds/human acceptance",
+  "passed": true,
+  "exit_code": 0,
+  "port_commit": "2d45b0b4d6251695aa653df3b8e2c8dcfde67ea4",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "input_sha256": {
+    "godot/tests/product_journey/driver.gd": "079f121987632d2efb5d9a1f5f4e6120c8acc425b0fa015a24532e0924bc8a1c",
+    "godot/ui/local_settings.gd": "77e61681d607e63c81415b2cea9740df94750276065c50be1d951e1d703c2fed",
+    "godot/ui/main_menu.gd": "a2b32ed4b55d839b6e5ddd6c0a30f1bb92bd210427e7798d1531cbd5904abfda",
+    "godot/career/service.gd": "1684e379a205b87604adac87c2616c8b8057fcaaa561e2c799146589cd489d1c",
+    "godot/career/catalog.json": "18061952fac08bfb5f1d5316c6a9f6137968324a6742730691abe817253a92c8",
+    "godot/lattice/world_commands.gd": "ce7de99109aecbd3a598441f2336f3d347f5592c8ca37693267e2aa4dce52a85",
+    "tools/godot-dev/product_journey.mjs": "292a8ed5498861c1ec9a6d913b8d158ff9d3e11e20982d3ac034106812ffe274",
+    "tools/godot-dev/launch.mjs": "9450f7bf6f4335b6c7e5271b47ad56c819e43436a7efb1700b7173243ce542b2"
+  },
+  "itinerary": [
+    {
+      "route": "lobby",
+      "options": {}
+    }
+  ],
+  "cycles": 1,
+  "player_flow": true,
+  "source_sessions": [
+    {
+      "pointer_released": true,
+      "route": "lobby",
+      "settings_path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/local_settings.json",
+      "source_ready": true,
+      "visit": 1,
+      "volume": 40
+    }
+  ],
+  "deck_checks": [],
+  "career_checks": [
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": true,
+      "route": "lobby"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    }
+  ],
+  "career_counts": {
+    "home": 2,
+    "live": 1,
+    "expected_home": 2,
+    "expected_live": 1,
+    "passed": true
+  },
+  "captures": [
+    {
+      "name": "home-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/home-1280x800.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "31bbf379fa0677b5fa3cf654dd46ce7eb8c05fb8da0a9423ebfca9191c3b05cb"
+    },
+    {
+      "name": "home-760x520",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/home-760x520.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "35fe77f32d51f3ccdc8290d00b818164b193a56c462d9995170de1d8f340b140"
+    },
+    {
+      "name": "home-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/home-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "c8a04b0e0136af56257764ab02fa62ccf7059ce56ab135cae48409105d338679"
+    },
+    {
+      "name": "career-home-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/career-home-1280x800.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "c022137fcd5e10dae3f3df7904bfe9fd96cb07ca0bb92b75f9b78fede895fed9"
+    },
+    {
+      "name": "career-home-760x520",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/career-home-760x520.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "f735da06be5670ff47760e0131d265caa6919d59e602195562af1b90a0d2a4b6"
+    },
+    {
+      "name": "career-home-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/career-home-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "8cc8e0bbeb412aed2f88c0645c15a0fbc74e3f9456217f301a83d42904c471f4"
+    },
+    {
+      "name": "flow-room-browser",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/flow-room-browser.png",
+      "scale": 100,
+      "source_route": "lobby",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "3ff1dbe54663765c67e21141d1050aea6322f7b734ad23b39515cd2110a919d8"
+    },
+    {
+      "name": "flow-retry",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/flow-retry.png",
+      "scale": 100,
+      "source_route": "lobby",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "02be0595d57a5ee7a9a008c4513a4ddc560f4e9d40a3d19fdd3df498664164b5"
+    },
+    {
+      "name": "flow-results-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/flow-results-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "lobby",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "3188c82651ba2999985dabea7bd78f48a5171dc46a9533383cf4765a90ec74e8"
+    },
+    {
+      "name": "flow-loadout-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g/flow-loadout-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "lobby",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "2278e6ed27b6fcd5c06ec2e9c8bd1f91c6a961dde9d2997a789dc0f08b2c8cd5"
+    }
+  ],
+  "owned_ports": [
+    43471
+  ],
+  "all_owned_ports_closed": true,
+  "state": {
+    "career_equipment_confirmed": true,
+    "career_home_checks": 2,
+    "career_identity_hash": "2498ac5c779bd912b7f728cadc3982254189e6592a3d4705276f5bbed94b7d0b",
+    "career_live_checks": 1,
+    "career_selection": {
+      "id": "extended-mag",
+      "kind": "attachment",
+      "slot": "magazine"
+    },
+    "cycles": 1,
+    "expected_lobby_config": {
+      "fragLimit": 50,
+      "mode": "deathmatch",
+      "timeLimit": 60
+    },
+    "expected_volume": 40,
+    "itinerary": [
+      {
+        "options": {},
+        "route": "lobby"
+      }
+    ],
+    "options": {},
+    "player_flow": true,
+    "player_flow_checks": [
+      "Home opened disconnected multiplayer setup",
+      "browser received a selected-server room list",
+      "browsing did not invent a seated Career",
+      "cancel browsing returned to explicit setup",
+      "source seated host and confirmed Career",
+      "lobby Arsenal opened with released pointer",
+      "Arsenal Back restored lobby action focus",
+      "first source round became live",
+      "source echoed its normalized 60-second deathmatch preset",
+      "transport interruption exposed explicit Retry",
+      "disconnect cleared stale Career and pose and released controls",
+      "same-room reconnect action is available",
+      "explicit Retry recovered the live source round",
+      "Retry preserved source seat round and Career identity",
+      "Retry did not recapture controls",
+      "source settled the normal timed round",
+      "accepted result reports a time-limit ending at 60 source seconds",
+      "Results displays an accepted result with its same-round award",
+      "retained actor attachment presentation is known",
+      "confirmed equipment did not overwrite the retained actor presentation",
+      "Career Back restored match Settings",
+      "Settings Back released controls at results",
+      "Rematch started a new source round",
+      "new source actor carries the confirmed saved attachment"
+    ],
+    "player_flow_complete": true,
+    "route": "lobby",
+    "visits": 1
+  },
+  "output": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-ZQpw3g"
+}

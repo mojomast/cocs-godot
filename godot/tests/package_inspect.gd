@@ -1,7 +1,7 @@
 extends SceneTree
 ## External release-runtime probe; never exported into the production PCK.
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible", "tidal-citadel", "sunscar-convoy", "asterion-relay", "monsoon-foundry", "ion-speedway", "aurora-stadium"]
-const SCENES := ["world/session", "sports/demo", "objectives/demo", "lattice/board", "lattice/world_demo", "zone_modes/demo", "combined_arms/demo", "arms_race/demo", "horde/demo", "horde_maps/demo", "native_arenas/demo", "native_arenas/identity_horde_demo"]
+const SCENES := ["world/session", "sports/demo", "objectives/demo", "assault/demo", "lattice/board", "lattice/world_demo", "zone_modes/demo", "combined_arms/demo", "arms_race/demo", "horde/demo", "horde_maps/demo", "native_arenas/demo", "native_arenas/identity_horde_demo"]
 const NATIVE_SCENES := ["showcase/demo", "aurora_basin/demo", "cinder_array/demo", "particle_lab/demo", "shader_lab/demo"]
 var assertion_ran := false
 
@@ -61,6 +61,41 @@ static func career_catalog_ok() -> bool:
 func fail(message: String) -> void:
 	push_error("PACKAGE_INSPECT_FAILED " + message)
 	quit(1)
+
+func audio_inventory() -> Dictionary:
+	var counts := {"music_samples": 0, "announcer_takes": 0, "announcer_phrases": 0, "moth_beds": 0}
+	var music: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://audio/music/manifest.json"))
+	var speech: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://audio/announcer/manifest.json"))
+	var moth: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://audio/moth/manifest.json"))
+	if not music is Dictionary or not music.get("samples") is Array or not speech is Dictionary or not speech.get("clips") is Array or not moth is Dictionary:
+		return {}
+	var ids := {}
+	for sample: Variant in music.samples:
+		if not sample is Dictionary or not sample.get("file") is String or not sample.get("id") is String: return {}
+		if ids.has(sample.id) or not sample.get("sha256") is String or sample.sha256.length() != 64: return {}
+		ids[sample.id] = true
+		var stream: Variant = load("res://audio/music/" + sample.file)
+		if not stream is AudioStreamOggVorbis or stream.get_length() <= 0: return {}
+		if sample.get("loopStart") != null and sample.get("loopEnd") != null:
+			if float(sample.loopStart) < 0 or float(sample.loopEnd) <= float(sample.loopStart) or float(sample.loopEnd) > stream.get_length() + 0.05: return {}
+		counts.music_samples += 1
+	var phrases := {}
+	var takes := {}
+	for clip: Variant in speech.clips:
+		if not clip is Dictionary or not clip.get("file") is String or not clip.get("cue") is String: return {}
+		if takes.has(clip.file) or not clip.get("sha256") is String or clip.sha256.length() != 64: return {}
+		takes[clip.file] = true
+		phrases[clip.cue] = true
+		var stream: Variant = load("res://audio/announcer/" + clip.file)
+		if not stream is AudioStreamWAV or stream.get_length() <= 0: return {}
+		counts.announcer_takes += 1
+	counts.announcer_phrases = phrases.size()
+	if not moth.get("file") is String or moth.get("sha256") != "d518d47b8f4e1722d47a5a5261921edb8d9063bbe6645adc71e54f5509dc829e": return {}
+	var bed: Variant = load("res://audio/moth/" + moth.file)
+	if not bed is AudioStreamWAV or bed.get_length() < 10.5: return {}
+	counts.moth_beds = 1
+	if counts.music_samples != 37 or counts.announcer_takes != 36 or counts.announcer_phrases != 12: return {}
+	return counts
 
 func _initialize() -> void:
 	call_deferred("inspect")
@@ -156,6 +191,11 @@ func inspect() -> void:
 		fail("Career catalog shape mismatch")
 		return
 	print("PACKAGE_CAREER_OK ")
+	var audio := audio_inventory()
+	if audio.is_empty():
+		fail("Packaged music, announcer or Moth resource inventory invalid")
+		return
+	print("PACKAGE_AUDIO_OK ", JSON.stringify(audio))
 	# Autoload scripts must resolve and compile from the exported PCK.
 	for path: String in ["res://debug/diagnostics.gd", "res://ui/local_settings.gd", "res://career/service.gd"]:
 		var autoload_script: Variant = load(path)

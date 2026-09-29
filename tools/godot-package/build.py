@@ -171,6 +171,18 @@ def main():
     if (ROOT / finish_catalog).is_file():
         input_paths.update([finish_catalog, "tools/godot-weapons/finishes.mjs"])
         run(["node", "tools/godot-weapons/finishes.mjs", "--check"], env=derivative_env)
+    audio_pack = ROOT / "tools/godot-audiovisual/music_pack.mjs"
+    if audio_pack.is_file():
+        run(["node", audio_pack, "--check"], env=derivative_env)
+        input_paths.update(git("ls-files", "tools/godot-audiovisual", "assets/music/THIRD_PARTY_LICENSES.md").splitlines())
+        input_paths.update(["game/music.mjs", "game/sampler.mjs", "game/feedback.mjs",
+                            "game/lattice-feedback.mjs", "game/environment.mjs", "game/announcer-clips.mjs",
+                            "public/music/manifest.json", "public/audio/announcer/manifest.json"])
+        music = json.loads((ROOT / "godot/audio/music/manifest.json").read_text())
+        voices = json.loads((ROOT / "godot/audio/announcer/manifest.json").read_text())
+        input_paths.update("public/music/" + entry["file"] for entry in music["samples"])
+        input_paths.update("public/audio/announcer/" + entry["file"] for entry in voices["clips"])
+        input_paths.add("public/moth/files/bed-ritual/clip.wav")
     native_files = [p for p in git("ls-files", "godot").splitlines() if not p.startswith(("godot/tests/", "godot/content/", "godot/.godot/")) and p not in ["godot/.gitignore", "godot/export_presets.cfg"]]
     input_paths.update(native_files)
     input_paths.update(p.relative_to(ROOT).as_posix() for p in (ROOT / "tools/godot-package").glob("*") if p.is_file())
@@ -248,7 +260,7 @@ advanced_options=false
 dedicated_server=false
 custom_features="private_local_prototype"
 export_filter="all_resources"
-include_filter="content/generated/*.json,content/generated/maps/*/*.json,moth/generated/*.json,first_person/*.json,first_person/generated/*.json,native_arenas/generated/*.json,identity_maps/generated/*.json,horde_maps/generated/*.json,career/*.json,ui/*.json"
+include_filter="content/generated/*.json,content/generated/maps/*/*.json,moth/generated/*.json,first_person/*.json,first_person/generated/*.json,native_arenas/generated/*.json,identity_maps/generated/*.json,horde_maps/generated/*.json,career/*.json,ui/*.json,audio/music/*.json,audio/announcer/*.json,audio/moth/*.json"
 exclude_filter="tests/*,content/probes/*"
 export_path=""
 script_export_mode=2
@@ -346,6 +358,9 @@ ssh_remote_deploy/enabled=false
             raise RuntimeError(f"Launcher surface file missing: {name}")
     for name in ["LICENSE.txt", "COPYRIGHT.txt"]:
         download(f"https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/{name}", notices / ("Godot-" + name))
+    if audio_pack.is_file():
+        copy(ROOT / "assets/music/THIRD_PARTY_LICENSES.md", notices / "MUSIC_CC0_NOTICES.md")
+        copy(ROOT / "godot/audio/README.md", notices / "AUDIO_PROVENANCE.md")
     resources = {"content/generated/" + k:v for k,v in tree(generated).items()}
     # Inventory generated import/export resources, not editor layout/lock caches.
     for p in sorted((project / ".godot").rglob("*")):

@@ -1,0 +1,72 @@
+{
+  "action_status": "Source confirmed selection · saved for next match.",
+  "actor": 0,
+  "attributed": {},
+  "back": [
+    237,
+    16,
+    132,
+    44
+  ],
+  "category": "loadout",
+  "command": -1,
+  "confirmed": true,
+  "equip": {
+    "id": "extended-mag",
+    "name": "Extended Magazine",
+    "slot": "magazine"
+  },
+  "error": "",
+  "frozen": false,
+  "opened": true,
+  "pending": false,
+  "pending_captured": true,
+  "phase": 3,
+  "pressed": true,
+  "result": {},
+  "results_captured": false,
+  "results_seen": 0,
+  "room": "N87H",
+  "rows": [
+    "Magazine: Extended Magazine",
+    "Finish: Stock / none",
+    "Stock / unknown · Primary: Stock / unselected · Armor: Stock / unselected · Utility: Stock / unselected · Optic: Stock / unselected · Barrel: Stock / unselected · Underbarrel: Stock / unselected",
+    "Saved for the next match: this match and its respawns keep the round-start loadout. Only a confirmed source reply updates this view.",
+    "Source confirmed selection · saved for next match.",
+    "MATCHES 0 · WINS 0 · KILLS 0"
+  ],
+  "rows_bounds": [
+    16,
+    229,
+    466,
+    258
+  ],
+  "seconds": 8.64715,
+  "spectating": false,
+  "state_text": "CONNECTED SOURCE CAREER · LEVEL 1 · XP 0\nMATCHES 0 · WINS 0 · KILLS 0",
+  "summary": "Saved for next match · Extended Magazine",
+  "summary_rect": [
+    16,
+    199,
+    466,
+    22
+  ],
+  "tab_loadout": [
+    70,
+    123,
+    86,
+    32
+  ],
+  "tab_results": [
+    384,
+    123,
+    75,
+    32
+  ],
+  "timed_out": false,
+  "unknown_captured": true,
+  "viewport": [
+    506.666656494141,
+    346.666656494141
+  ]
+}

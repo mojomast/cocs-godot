@@ -1,0 +1,134 @@
+{
+  "port_commit": "436903a8958f7eab18f296d0b27dfafcdb275c0a",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "scope": "One native client hosting a scripted source match on an owned authority; not human acceptance",
+  "checks": [
+    {
+      "name": "the pending selection is held before the source can answer"
+    },
+    {
+      "name": "pending copy says awaiting source confirmation"
+    },
+    {
+      "name": "a pending selection is never named as saved"
+    },
+    {
+      "name": "pending is captured at the exact 760x520 @150% size"
+    },
+    {
+      "name": "pending readability captured"
+    },
+    {
+      "name": "the no-reply reader state is the honest timeout"
+    },
+    {
+      "name": "the timeout copy stays unknown, not a refusal"
+    },
+    {
+      "name": "a timed-out selection is never named as saved"
+    },
+    {
+      "name": "unknown is captured at the exact 760x520 @150% size"
+    },
+    {
+      "name": "unknown readability captured"
+    },
+    {
+      "name": "only the source reply settles the selection"
+    },
+    {
+      "name": "the confirmed saved summary names the item"
+    },
+    {
+      "name": "confirmed is captured at the exact 760x520 @150% size"
+    },
+    {
+      "name": "confirmed readability captured"
+    },
+    {
+      "name": "the real session received an accepted source result"
+    },
+    {
+      "name": "the pinned header shows the accepted round and award"
+    },
+    {
+      "name": "the RESULTS rows render the accepted result"
+    },
+    {
+      "name": "the same-round source award was attributed"
+    },
+    {
+      "name": "results is captured at the exact 760x520 @150% size"
+    },
+    {
+      "name": "results readability captured"
+    },
+    {
+      "name": "pending: Back stays inside the compact viewport"
+    },
+    {
+      "name": "pending: the reader rows stay within the compact width"
+    },
+    {
+      "name": "unknown: Back stays inside the compact viewport"
+    },
+    {
+      "name": "unknown: the reader rows stay within the compact width"
+    },
+    {
+      "name": "confirmed: Back stays inside the compact viewport"
+    },
+    {
+      "name": "confirmed: the reader rows stay within the compact width"
+    },
+    {
+      "name": "results: Back stays inside the compact viewport"
+    },
+    {
+      "name": "results: the reader rows stay within the compact width"
+    },
+    {
+      "name": "the authority sent an award frame"
+    },
+    {
+      "name": "the authority sent a results frame"
+    },
+    {
+      "name": "award precedes results on the real wire"
+    },
+    {
+      "name": "no ownership token serialized"
+    },
+    {
+      "name": "no native script/parse/render errors"
+    },
+    {
+      "name": "the owned server persisted history.json"
+    }
+  ],
+  "status": "PASS",
+  "display": ":3",
+  "port": 38685,
+  "endpoint": "ws://127.0.0.1:38685",
+  "history_entries": 1,
+  "cleanup": [
+    {
+      "name": "xvfb",
+      "exit_code": 0,
+      "signal": null
+    },
+    {
+      "name": "observer",
+      "exit_code": null,
+      "signal": "SIGTERM"
+    }
+  ],
+  "wire": {
+    "frames": 6859,
+    "award_index": 6856,
+    "results_index": 6857,
+    "sha256": "979b7aa14e2255c49c5f7ad5cce55195ae4676fe5aad32e28db0ffa98b7dfbbb"
+  },
+  "expired": false
+}
