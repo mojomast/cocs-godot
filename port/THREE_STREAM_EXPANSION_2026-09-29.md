@@ -115,3 +115,26 @@ aggregate registration remain with the parent integration owner.
 - Cosmetic weather cannot alter authority, movement, damage or gameplay RNG.
   Its precipitation must have one native owner so existing map effects are not
   doubled.
+
+## Final integration queue
+
+1. Objective lane: focused source/native completion, timeout and rematch checks;
+   common Assault vehicle composition and Combined Arms launcher contracts.
+2. Vehicle lane: all-kind/seat fixtures, separate arranged Room jump-edge oracle,
+   and a natural-entry journey with three distinct native processes sharing one
+   source hull as driver, gunner and passenger. Raw wire evidence is bounded,
+   compressed and retained outside Git with hash manifests; each role has private
+   settings and Career roots.
+3. Audiovisual lane: parser/runtime checks, source weather vectors, bounded
+   lifecycle/long-round tests, same-state weather captures, and actual native DSP
+   PCM capture. Virtual output is not human listening or Windows acceptance.
+4. Parent: reconcile focused fixes; import one fresh integrated checkout; run the
+   full native aggregate, server tests and lint serially; retain reports and
+   refresh hosted CI. Build Windows and Linux from the same reviewed revision,
+   then verify extracted Linux behavior and both artifact manifests.
+
+At integration `2887962d`, all three implementation streams and their prepared
+fixtures are present. Source `game/`, `server/` and `public/` bytes are unchanged
+from the accepted pre-expansion `04d940a4` baseline. The native CI time budget is
+45 minutes for the expanded serial gate inventory; this is a deadline, not a
+claim that unrun gates have passed.
