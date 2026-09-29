@@ -33,6 +33,8 @@ var last_frame: Dictionary = {}
 var room_browser
 var chat_panel
 var browser_phase: int = -999
+var previous_phase: int = -999
+var actions: BoxContainer
 # Sticky browsed-room note, kept visible under the per-phase status text until
 # the user connects, clears the room, or changes role.
 var selection_note := ""
@@ -67,6 +69,7 @@ func _ready() -> void:
 	var title := Label.new()
 	title.text = "NATIVE MULTIPLAYER · 60s rounds · 2 bots"
 	title.add_theme_font_size_override("font_size", 24)
+	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	form.add_child(title)
 	endpoint.text = session.endpoint
 	endpoint.placeholder_text = "ws://127.0.0.1:PORT"
@@ -122,7 +125,7 @@ func _ready() -> void:
 	form.add_child(arsenal_button)
 	# Actions stay pinned below the scroll area: reachable at 960x640 and
 	# 1280x800 without scrolling, and never clipped by the form.
-	var actions := HBoxContainer.new()
+	actions = BoxContainer.new()
 	actions.add_theme_constant_override("separation", 6)
 	for button: Button in [connect_button, start_button, reconnect_button, back_button]:
 		button.custom_minimum_size.y = 36
@@ -133,12 +136,12 @@ func _ready() -> void:
 	start_button.pressed.connect(func() -> void: session.lobby_start())
 	reconnect_button.text = "Retry / Reconnect"
 	reconnect_button.pressed.connect(func() -> void: session.lobby_retry_reconnect())
-	back_button.pressed.connect(func() -> void: session.lobby_leave())
+	back_button.pressed.connect(leave_room)
 	leave_button.text = "Leave match"
 	restart_button.text = "Restart round"
 	add_child(leave_button)
 	add_child(restart_button)
-	leave_button.pressed.connect(func() -> void: session.lobby_leave())
+	leave_button.pressed.connect(leave_room)
 	restart_button.pressed.connect(func() -> void: session.request_restart())
 	# Room chat rides the same connection and shows in both the lobby and the live
 	# round. It is modal while open so typing cannot move or fire.
@@ -206,6 +209,33 @@ func select_room(record: Dictionary) -> void:
 		else: note += "."
 	selection_note = note
 	status.text = note
+	connect_button.grab_focus()
+
+func leave_room() -> void:
+	selection_note = ""
+	session.lobby_leave()
+	connect_button.grab_focus()
+
+func focus_phase(expected: int, button: Button) -> void:
+	if session.phase != expected or not button.visible or button.disabled: return
+	const SettingsAccess = preload("res://ui/settings_access.gd")
+	if not SettingsAccess.overlay_open() and not capturing_input(): button.grab_focus()
+
+# Escape backs out of the room/browse seat; from the disconnected form it
+# opens the existing Settings/Leave path to Home. Modal Escape is owned by its
+# overlay, and no Back operation pauses or captures a running match.
+func _unhandled_input(event: InputEvent) -> void:
+	if not event is InputEventKey or not event.pressed or event.echo: return
+	if event.keycode != KEY_ESCAPE and event.physical_keycode != KEY_ESCAPE: return
+	const SettingsAccess = preload("res://ui/settings_access.gd")
+	if SettingsAccess.overlay_open() or capturing_input(): return
+	if session.phase in [-3, -1]:
+		SettingsAccess.open_panel(false, connect_button)
+	elif session.phase not in [3, 4, 20]:
+		leave_room()
+	else:
+		return # Live Escape releases pointer in the session, never leaves a match.
+	get_viewport().set_input_as_handled()
 
 func map_index(id: String) -> int:
 	for index: int in maps.item_count:
@@ -316,8 +346,16 @@ func populate_modes() -> void:
 
 func resize_panel() -> void:
 	var viewport := get_viewport().get_visible_rect().size
-	panel.size = Vector2(minf(700, viewport.x - 32), viewport.y - 32)
+	# The visible rect is in canvas coordinates after UI scale. Budget against
+	# both it and the physical window so pinned actions stay inside either size.
+	var scale := get_window().content_scale_factor
+	viewport = viewport.min(Vector2(get_window().size) / maxf(scale, 0.01))
+	var desired_width := minf(700, viewport.x - 32)
+	if actions != null: actions.set_vertical(desired_width < 600)
+	if is_instance_valid(room_browser): room_browser.set_compact(desired_width < 600)
+	panel.size = Vector2(desired_width, viewport.y - 32)
 	panel.position = (viewport - panel.size) / 2
+	# At 150% UI scale the logical width of a 760px window is about 507px.
 	leave_button.position = Vector2(viewport.x - 150, 70)
 	restart_button.position = Vector2(viewport.x - 150, 112)
 
@@ -370,6 +408,12 @@ func refresh_loadout_summary() -> void:
 
 func refresh() -> void:
 	var phase: int = session.phase
+	if phase != previous_phase:
+		# Never steal focus from typing, Career, Settings, or live pointer input.
+		if phase == -5: focus_phase.call_deferred(phase, reconnect_button)
+		elif phase == 12 and session.lobby_host_allowed(): focus_phase.call_deferred(phase, start_button)
+		elif phase == -3 and previous_phase != -999: focus_phase.call_deferred(phase, connect_button)
+	previous_phase = phase
 	var playing := phase in [3, 4, 20]
 	panel.visible = not playing
 	leave_button.visible = playing and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED

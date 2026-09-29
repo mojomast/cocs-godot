@@ -142,10 +142,13 @@ func build_panel() -> void:
 	for edge: String in ["left", "top", "right", "bottom"]:
 		margin.add_theme_constant_override("margin_" + edge, 24)
 	panel.add_child(margin)
+	var stack := VBoxContainer.new()
+	margin.add_child(stack)
 	var scroll := ScrollContainer.new()
 	scroll.follow_focus = true
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	margin.add_child(scroll)
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	stack.add_child(scroll)
 	var column := VBoxContainer.new()
 	column.custom_minimum_size.x = 280
 	column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -193,10 +196,14 @@ func build_panel() -> void:
 	status = Label.new()
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(status)
+	var actions := HFlowContainer.new()
+	actions.add_theme_constant_override("separation", 8)
+	stack.add_child(actions)
 	var back := Button.new()
 	back.name = "SettingsBack"
 	back.text = "Back to game (Esc)"
-	column.add_child(back)
+	back.custom_minimum_size = Vector2(140, 40)
+	actions.add_child(back)
 	rows.back = back
 	back.pressed.connect(close_panel)
 	career_button = Button.new()
@@ -204,11 +211,12 @@ func build_panel() -> void:
 	career_button.text = "Career / Arsenal"
 	career_button.custom_minimum_size.y = 44
 	career_button.pressed.connect(open_career)
-	column.add_child(career_button)
+	actions.add_child(career_button)
 	var leave := Button.new()
 	leave.name = "LeaveMatch"
 	leave.text = "Leave match · Return Home"
-	column.add_child(leave)
+	leave.custom_minimum_size = Vector2(170, 40)
+	actions.add_child(leave)
 	rows.leave = leave
 	leave.pressed.connect(leave_match)
 	panel.hide()

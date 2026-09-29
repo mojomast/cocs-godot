@@ -23,6 +23,7 @@ var search := LineEdit.new()
 var hide_started := CheckButton.new()
 var list_box := VBoxContainer.new()
 var empty_note := Label.new()
+var controls := BoxContainer.new()
 
 var all_rooms: Array = []
 # Sentinel true so the first `sync(false)` performs the disconnected transition.
@@ -40,7 +41,6 @@ func _ready() -> void:
 	endpoint_label.add_theme_color_override("font_color", Color(0.68, 0.76, 0.82))
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	status.add_theme_color_override("font_color", Color(0.68, 0.76, 0.82))
-	var controls := HBoxContainer.new()
 	controls.add_theme_constant_override("separation", 6)
 	refresh_button.text = "Browse / Refresh"
 	refresh_button.tooltip_text = "Connect to the entered endpoint and list its rooms"
@@ -62,6 +62,9 @@ func _ready() -> void:
 		add_child(node)
 	sync(false)
 	rebuild()
+
+func set_compact(compact: bool) -> void:
+	controls.set_vertical(compact)
 
 # The endpoint this browser is actually bound to (the open connection), not the
 # editable field text. Set every frame by the lobby.

@@ -182,7 +182,7 @@ func build_ui() -> void:
 	actions.add_child(settings_button)
 	actions.add_child(quit_button)
 	right.add_child(actions)
-	var footer := caption("Tab moves focus · Left/Right browses a choice · Career / Arsenal opens in this window · Esc quits")
+	var footer := caption("Tab moves focus · Left/Right browses a choice · F12 Settings · Career / Arsenal opens in this window · Esc quits")
 	footer.name = "Footer"
 	footer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	stack.add_child(footer)
@@ -459,6 +459,10 @@ func save_preferences() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if quitting or SettingsAccess.overlay_open(): return
+	if event is InputEventKey and event.pressed and not event.echo and (event.keycode == KEY_F12 or event.physical_keycode == KEY_F12):
+		SettingsAccess.open_panel(true, settings_button)
+		get_viewport().set_input_as_handled()
+		return
 	if release_key(event):
 		quit_menu()
 		get_viewport().set_input_as_handled()
