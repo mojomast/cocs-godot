@@ -59,6 +59,10 @@ the individual evidence records retain their original scope and results.
   passed **218/218**, server tests **228/228**, and lint with zero errors at
   `0d8bd78c`. See [the expansion record](NATIVE_EXPANSION_2026-09-28.md) for exact
   revisions, failed attempts, native journeys and retained evidence.
+- **Reconnect / Career follow-up implemented:** explicit source-compatible Retry
+  and Leave, round-result/XP summaries and recent server history with owned-server
+  persistence. Integrated source/native journeys passed; full-suite verification
+  is tracked in [the follow-up record](RECONNECT_CAREER_BATCH_2026-09-28.md).
 - **NATIVE-05–06 acceptance remains open:** natural staged-campaign completion,
   extracted-package consolidation acceptance, fresh hosted confirmation and the
   unified release. Building/publishing remains on the user-directed hold.
