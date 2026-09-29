@@ -13,9 +13,12 @@ import {createConnection} from 'node:net';
 const exec = promisify(execFile);
 const repo = fileURLToPath(new URL('../../', import.meta.url));
 const authority = `import http from 'node:http';
-export function createGameServer() {
+import {appendFileSync} from 'node:fs';
+export function createGameServer(options) {
+ const audit=(record)=>appendFileSync(process.env.SHELL_JOURNEY_STATE+'.authority',JSON.stringify(record)+'\\n');
+ audit({phase:'create',historyPath:options.historyPath,progressionPath:options.progressionPath});
  const server=http.createServer((_req,res)=>{res.setHeader('content-type','application/json');res.end(JSON.stringify({service:'token-arena-game-server',port:server.address().port}));});
- return {server,wss:{clients:[]},close:()=>new Promise(resolve=>server.close(resolve))};
+ return {server,wss:{clients:[]},history:{whenPersisted:async()=>{audit({phase:'history-flushed'});return true;}},close:()=>new Promise(resolve=>server.close(resolve))};
 }`;
 const native = `#!${process.execPath}
 const fs=require('node:fs');
@@ -86,7 +89,13 @@ for (const kind of ['dev','package']) {
       const state=JSON.parse(await readFile(join(root,'state.json'),'utf8'));
       assert.equal(state.menu,10);assert.equal(state.routes,9);
       assert.deepEqual([...new Set(state.paths)],[settings]);
-      assert.deepEqual(JSON.parse(await readFile(settings,'utf8')),{visits:9});
+       assert.deepEqual(JSON.parse(await readFile(settings,'utf8')),{visits:9});
+       const authorityAudit=(await readFile(join(root,'state.json.authority'),'utf8')).trim().split('\n').map(line=>JSON.parse(line));
+       assert.equal(authorityAudit.length,18);
+       for(let i=0;i<9;i++){
+         assert.deepEqual(authorityAudit[i*2],{phase:'create',historyPath:join(root,'career','history.json'),progressionPath:join(root,'career','progression.json')});
+         assert.deepEqual(authorityAudit[i*2+1],{phase:'history-flushed'},'supervisor waits for history persistence before the next route');
+       }
       const ports=kind==='package'
         ? stdout.split('\n').filter(line=>line.startsWith('PACKAGE_SERVER_READY ')).map(line=>JSON.parse(line.slice('PACKAGE_SERVER_READY '.length)).port)
         : [...stdout.matchAll(/Owned local server ready at ws:\/\/127\.0\.0\.1:(\d+)/g)].map(match=>Number(match[1]));

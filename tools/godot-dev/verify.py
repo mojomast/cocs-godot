@@ -80,6 +80,7 @@ commands = [
     ("career-catalog-check", ["node", "tools/godot-export/career_catalog.mjs", "--check"]),
     ("career-source-contracts", ["node", "--test", "--test-concurrency=1", "port/native-career/catalog.test.mjs", "port/native-career/wire.test.mjs"]),
     ("career-persistence", ["node", "--test", "tools/godot-package/career_path.test.mjs"]),
+    ("career-history-storage", ["node", "--test", "tools/godot-package/history_storage.test.mjs"]),
     ("career-equipment-source", ["node", "--test", "port/native-career/equip-lifecycle.test.mjs"]),
     ("social-source", ["node", "--test", "port/native-social/social_authority.test.mjs"]),
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),

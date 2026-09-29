@@ -13,7 +13,7 @@ export function careerPaths(env=process.env,{developmentRoot,home=homedir(),plat
  const selected=env.COCS_CAREER_PATH??join(root,'progression.json');
  if(!isAbsolute(selected))throw Error('Career path must be absolute');
  const location=env.COCS_CAREER_PATH?dirname(resolve(selected)):resolve(root);
-  return {root:location,progressionPath:resolve(selected),legacyCredentialsPath:join(location,'identities.json')};
+  return {root:location,progressionPath:resolve(selected),historyPath:join(location,'history.json'),legacyCredentialsPath:join(location,'identities.json')};
 }
 
 function inspect(file,max,kind){
@@ -22,6 +22,7 @@ function inspect(file,max,kind){
  if(!stat.isFile()||stat.size>max||stat.size===0)throw Error(`Career ${kind} is invalid; repair the existing file before launching`);
  let value;
  try{value=JSON.parse(readFileSync(file,'utf8'));}catch{throw Error(`Career ${kind} is malformed; repair the existing file before launching`);}
+ if(value===null)throw Error(`Career ${kind} is invalid; repair the existing file before launching`);
  return value;
 }
 
@@ -41,7 +42,7 @@ export function acquireCareer(plan,env=process.env,options={}){
  const paths=careerPaths(env,options);
  const owned=!plan.nativeOnly&&!plan.endpoint&&!plan.nativeArena&&!plan.identityZone&&plan.experience!=='horde';
   const scope=owned?'owned:source-v3':plan.endpoint?`external:${new URL(plan.endpoint).href}`:null;
-  if(!scope)return {env:{COCS_CAREER_CREDENTIALS_PATH:'',COCS_CAREER_SCOPE:'',COCS_CAREER_ENDPOINT:''},progressionPath:null,release(){}};
+  if(!scope)return {env:{COCS_CAREER_CREDENTIALS_PATH:'',COCS_CAREER_SCOPE:'',COCS_CAREER_ENDPOINT:''},progressionPath:null,historyPath:null,release(){}};
   privateDirectory(paths.root);
   const identityDir=join(paths.root,'identities');
   privateDirectory(identityDir);
@@ -71,8 +72,16 @@ export function acquireCareer(plan,env=process.env,options={}){
  const release=()=>{if(released)return;released=true;if(previousMask!==undefined)process.umask(previousMask);try{if(statSync(lease).ino===fstatSync(fd).ino)unlinkSync(lease);}catch(error){if(error.code!=='ENOENT')throw error;}finally{closeSync(fd);}};
  try{
   writeFileSync(fd,String(process.pid));privateFile(lease);
-  if(owned){
-   privateDirectory(dirname(paths.progressionPath));
+   if(owned){
+    privateDirectory(dirname(paths.progressionPath));
+    // MatchHistory owns the contents and the 50-match retention policy. Check
+    // its loaded shape before construction so corruption cannot silently become
+    // an empty history and overwrite the existing record on the next match.
+    const history=inspect(paths.historyPath,MAX_STORE,'history store');
+    if(history!==null){
+     if(!Array.isArray(history)||history.some(match=>!match||typeof match!=='object'||Array.isArray(match)||!Array.isArray(match.players)||match.players.some(player=>!player||typeof player!=='object'||Array.isArray(player))))throw Error('Career history store has an unsupported schema');
+     privateFile(paths.historyPath);
+    }
    const store=inspect(paths.progressionPath,MAX_STORE,'progression store');
    if(store!==null){if(!(Array.isArray(store)||store&&typeof store==='object'&&Array.isArray(store.players)&&store.version===2))throw Error('Career progression store has an unsupported schema');
     for(const entry of Array.isArray(store)?store:store.players){
@@ -100,6 +109,6 @@ export function acquireCareer(plan,env=process.env,options={}){
    }
    privateFile(credentialsPath);
    if(owned&&process.platform!=='win32')previousMask=process.umask(0o077);
-   return {env:{COCS_CAREER_CREDENTIALS_PATH:credentialsPath,COCS_CAREER_SCOPE:scope,COCS_CAREER_ENDPOINT:''},progressionPath:owned?paths.progressionPath:null,release};
+   return {env:{COCS_CAREER_CREDENTIALS_PATH:credentialsPath,COCS_CAREER_SCOPE:scope,COCS_CAREER_ENDPOINT:''},progressionPath:owned?paths.progressionPath:null,historyPath:owned?paths.historyPath:null,release};
  }catch(error){release();throw error;}
 }

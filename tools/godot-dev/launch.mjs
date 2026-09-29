@@ -38,7 +38,7 @@ async function runRoute(plan){
  process.once('SIGINT',interrupt);process.once('SIGTERM',terminate);
   try{
    career=acquireCareer(plan,env,{developmentRoot:process.cwd()});Object.assign(env,career.env);
-   game=await factory?.(plan.nativeArena?{port:0,host:'127.0.0.1',mapId:plan.map,mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds}:plan.identityZone?{port:0,host:'127.0.0.1',mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds,fragLimit:plan.scoreLimit}:plan.experience==='horde'?{}:{historyPath:null,progressionPath:career.progressionPath});
+   game=await factory?.(plan.nativeArena?{port:0,host:'127.0.0.1',mapId:plan.map,mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds}:plan.identityZone?{port:0,host:'127.0.0.1',mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds,fragLimit:plan.scoreLimit}:plan.experience==='horde'?{}:{historyPath:career.historyPath,progressionPath:career.progressionPath});
   game?.server?.on('error',serverError);
   let endpoint=plan.endpoint;
   if(game){
@@ -81,7 +81,7 @@ async function runRoute(plan){
   }finally{
    stop();if(childDone)await childDone.catch(()=>{});clearTimeout(killTimer);clearTimeout(smokeTimer);
     try{
-     if(game){for(const socket of game.wss?.clients??[])socket.terminate();game.server?.closeAllConnections();await game.close();if(await game.progression?.whenPersisted?.()===false)throw Error('Career progression could not be persisted');}
+     if(game){for(const socket of game.wss?.clients??[])socket.terminate();game.server?.closeAllConnections();await game.close();if(await game.progression?.whenPersisted?.()===false)throw Error('Career progression could not be persisted');if(await game.history?.whenPersisted?.()===false)throw Error('Career server history could not be persisted');}
     }finally{
      game?.server?.removeListener('error',serverError);
      career?.release();
