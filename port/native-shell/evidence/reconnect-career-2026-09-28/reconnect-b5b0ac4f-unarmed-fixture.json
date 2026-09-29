@@ -1,0 +1,2294 @@
+{
+  "status": "failed",
+  "gates": [
+    {
+      "gate": "toolchain-version",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--version"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.014
+    },
+    {
+      "gate": "gate-runner-tests",
+      "command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/test_gate_runner.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.302
+    },
+    {
+      "gate": "playable-gate-registration",
+      "command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/test_playable_gates.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.034
+    },
+    {
+      "gate": "verifier-report-tests",
+      "command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/test_verifier_report.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.208
+    },
+    {
+      "gate": "ci-artifact-tests",
+      "command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/test_ci_artifact.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.059
+    },
+    {
+      "gate": "native-ci-contracts",
+      "command": [
+        "node",
+        "--test",
+        "port/native-ci/workflow.test.mjs",
+        "port/native-ci/source-selection.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 7.325
+    },
+    {
+      "gate": "export-tests",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-export/semantic.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.353
+    },
+    {
+      "gate": "moth-export",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-moth/export.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.346
+    },
+    {
+      "gate": "gltf-sides",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-export/gltf_side.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.088
+    },
+    {
+      "gate": "health-hud-evidence",
+      "command": [
+        "node",
+        "--test",
+        "port/tools/native_health_damage/analyze.test.mjs",
+        "port/tools/native_health_damage/test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.322
+    },
+    {
+      "gate": "projectile-navigation",
+      "command": [
+        "node",
+        "--test",
+        "port/native-projectile-combat/route.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 6.968
+    },
+    {
+      "gate": "objective-evidence",
+      "command": [
+        "node",
+        "--test",
+        "port/tools/native_objective_demo/test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.063
+    },
+    {
+      "gate": "objective-progression-evidence",
+      "command": [
+        "node",
+        "--test",
+        "port/native-objective-progression/test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.822
+    },
+    {
+      "gate": "objective-completion-evidence",
+      "command": [
+        "node",
+        "--test",
+        "port/native-objective-completion/test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 3.669
+    },
+    {
+      "gate": "launcher-options",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-dev/launch_options.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.07
+    },
+    {
+      "gate": "package-options",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/options.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.069
+    },
+    {
+      "gate": "product-shell-supervisor",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/settings_path.test.mjs",
+        "tools/godot-package/menu_journey.test.mjs",
+        "tools/godot-dev/journey_options.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.875
+    },
+    {
+      "gate": "native-graphics-options",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/native_showcase_options.test.mjs",
+        "tools/godot-dev/native_showcase_options.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.065
+    },
+    {
+      "gate": "native-graphics-ownership",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/native_showcase_ownership.test.mjs",
+        "tools/godot-dev/native_showcase_ownership.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 4.496
+    },
+    {
+      "gate": "lobby-options",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/lobby_options.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.056
+    },
+    {
+      "gate": "lobby-ownership",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/lobby_ownership.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.327
+    },
+    {
+      "gate": "horde-closure",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/horde_closure.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.245
+    },
+    {
+      "gate": "native-arena-closure",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/native_arena_closure.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.507
+    },
+    {
+      "gate": "package-identity-routes",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/native_identity_options.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.058
+    },
+    {
+      "gate": "native-arena-authority",
+      "command": [
+        "node",
+        "--test",
+        "port/native-arenas/tests/authority.test.mjs",
+        "port/native-arenas/tests/input-events.test.mjs",
+        "port/native-arenas/tests/source-match.test.mjs",
+        "port/native-arenas/tests/schema.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 21.129
+    },
+    {
+      "gate": "local-24-roster",
+      "command": [
+        "node",
+        "--test",
+        "port/native-menu-debug-bots/tests/startup.test.mjs",
+        "port/native-menu-debug-bots/tests/debug-24.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.492
+    },
+    {
+      "gate": "horde-ownership",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/horde_ownership.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.928
+    },
+    {
+      "gate": "zone-routing",
+      "command": [
+        "node",
+        "--test",
+        "port/native-zone-modes/route.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 13.67
+    },
+    {
+      "gate": "combined-arms-evidence",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "port/native-combined-arms",
+        "-p",
+        "test_validate.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.591
+    },
+    {
+      "gate": "lattice-req-generator-tests",
+      "command": [
+        "node",
+        "--test",
+        "port/tools/native_lattice_req_catalog/export.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.097
+    },
+    {
+      "gate": "lattice-req-catalog-check",
+      "command": [
+        "node",
+        "port/tools/native_lattice_req_catalog/export.mjs",
+        "--check"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.025
+    },
+    {
+      "gate": "semantic-export",
+      "command": [
+        "node",
+        "tools/godot-export/semantic.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.838
+    },
+    {
+      "gate": "source-inventory",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-export/source-inventory.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.981
+    },
+    {
+      "gate": "package-manifest-contracts",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/manifest_validation.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.505
+    },
+    {
+      "gate": "career-catalog-check",
+      "command": [
+        "node",
+        "tools/godot-export/career_catalog.mjs",
+        "--check"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.023
+    },
+    {
+      "gate": "career-source-contracts",
+      "command": [
+        "node",
+        "--test",
+        "--test-concurrency=1",
+        "port/native-career/catalog.test.mjs",
+        "port/native-career/wire.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.933
+    },
+    {
+      "gate": "career-persistence",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/career_path.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.791
+    },
+    {
+      "gate": "career-history-storage",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/history_storage.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.707
+    },
+    {
+      "gate": "career-results-source",
+      "command": [
+        "node",
+        "--test",
+        "port/native-career/results-history.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.973
+    },
+    {
+      "gate": "career-equipment-source",
+      "command": [
+        "node",
+        "--test",
+        "port/native-career/equip-lifecycle.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.661
+    },
+    {
+      "gate": "social-source",
+      "command": [
+        "node",
+        "--test",
+        "port/native-social/social_authority.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.486
+    },
+    {
+      "gate": "source-tests",
+      "command": [
+        "node",
+        "--test",
+        "game/protocol.test.mjs",
+        "game/arena-movement.test.mjs",
+        "game/map-schema.test.mjs",
+        "game/destination-maps.test.mjs",
+        "game/destination-sports.test.mjs",
+        "game/destination-lattice.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.825
+    },
+    {
+      "gate": "arms-race-source",
+      "command": [
+        "node",
+        "--test",
+        "game/armsrace.test.mjs",
+        "game/outcome.test.mjs",
+        "game/input.test.mjs",
+        "game/movement-input.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.907
+    },
+    {
+      "gate": "horde-source",
+      "command": [
+        "node",
+        "--test",
+        "game/singleplayer.test.mjs",
+        "game/singleplayer-ui.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 32.117
+    },
+    {
+      "gate": "cinderwake-source",
+      "command": [
+        "node",
+        "--test",
+        "--test-concurrency=1",
+        "game/horde-stages.test.mjs",
+        "tools/godot-horde-maps/cinderwake.test.mjs",
+        "tools/godot-horde-maps/source-fixture.test.mjs",
+        "port/native-horde/cinderwake.test.mjs",
+        "port/native-identity-horde/validate_cinderwake.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 5.494
+    },
+    {
+      "gate": "horde-upgrade-adapter",
+      "command": [
+        "node",
+        "--test",
+        "port/native-horde/upgrade.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 5.999
+    },
+    {
+      "gate": "horde-adapter",
+      "command": [
+        "node",
+        "--test",
+        "port/native-horde/test.mjs",
+        "port/native-horde/input-buffer.test.mjs",
+        "port/native-horde/repair-regression.test.mjs",
+        "port/native-horde/event-cursor.test.mjs",
+        "port/native-horde/npc-kills.test.mjs",
+        "port/native-horde/melee-hold.test.mjs",
+        "port/native-horde/interpolated.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 15.17
+    },
+    {
+      "gate": "horde-death-wire",
+      "command": [
+        "node",
+        "--test",
+        "port/native-horde-deaths/wire.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.113
+    },
+    {
+      "gate": "horde-input-oracle",
+      "command": [
+        "node",
+        "port/native-horde/input-oracle.mjs",
+        "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/port/reports/horde-input-vectors.json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.022
+    },
+    {
+      "gate": "godot-import",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--editor",
+        "--import"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.692
+    },
+    {
+      "gate": "career-projection",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/career/projection.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.333
+    },
+    {
+      "gate": "career-identity-native",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/career_native.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.302
+    },
+    {
+      "gate": "career-equipment-native",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/career/actions.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.528
+    },
+    {
+      "gate": "career-results-native",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/career/results.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.807
+    },
+    {
+      "gate": "career-history-native",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/career/history.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.241
+    },
+    {
+      "gate": "career-results-history-ui",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/career/results_history_ui.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.428
+    },
+    {
+      "gate": "social-native",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/protocol/lobby_social.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 3.777
+    },
+    {
+      "gate": "reconnect-source-native",
+      "command": [
+        "node",
+        "port/native-reconnect/journey.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 3.197
+    },
+    {
+      "gate": "reconnect-offline-results",
+      "command": [
+        "node",
+        "port/native-reconnect/offline-results.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.245
+    },
+    {
+      "gate": "reconnect-menu",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/protocol/reconnect_menu.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.333
+    },
+    {
+      "gate": "career-modal",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/career/modal.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.334
+    },
+    {
+      "gate": "cinderwake-native",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/horde/cinderwake_test.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.342
+    },
+    {
+      "gate": "identity-horde-composition",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/horde/identity_composition_test.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.179
+    },
+    {
+      "gate": "loadout-unit",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/loadouts/unit.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.24
+    },
+    {
+      "gate": "loadout-source-parity",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/loadouts/parity.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.239
+    },
+    {
+      "gate": "loadout-client",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/loadouts/client_frames.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.245
+    },
+    {
+      "gate": "loadout-setup",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/loadouts/setup_menu.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.705
+    },
+    {
+      "gate": "loadout-lobby",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/loadouts/lobby_menu.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.102
+    },
+    {
+      "gate": "loadout-session",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/loadouts/session_flow.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.179
+    },
+    {
+      "gate": "loadout-loopback",
+      "command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "node",
+        "godot/tests/loadouts/loopback.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 7.203
+    },
+    {
+      "gate": "loadout-lifecycle",
+      "command": [
+        "node",
+        "--test",
+        "godot/tests/loadouts/loopback_lifecycle.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 15.032
+    },
+    {
+      "gate": "viewer-smoke",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--",
+        "--smoke"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.476
+    },
+    {
+      "gate": "graphics-terrain",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/graphics_batch/terrain_contract.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.636
+    },
+    {
+      "gate": "moth-resources",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/moth/validate.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.248
+    },
+    {
+      "gate": "graphics-atmosphere",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/graphics_atmosphere/verify.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.293
+    },
+    {
+      "gate": "graphics-fx",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/graphics_fx/regression.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.335
+    },
+    {
+      "gate": "moth-scenery",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/moth_scenery/verify.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.846
+    },
+    {
+      "gate": "shader-lab",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/shader_lab/validate.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.242
+    },
+    {
+      "gate": "particle-lab",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/particle_lab/verify.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.896
+    },
+    {
+      "gate": "showcase-startup",
+      "command": [
+        "node",
+        "tools/godot-dev/launch.mjs",
+        "--experience=showcase",
+        "--smoke"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 4.862
+    },
+    {
+      "gate": "aurora-traversal",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/aurora_basin/validate.gd",
+        "--",
+        "--output=/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/port/reports/aurora-traversal.json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 29.437
+    },
+    {
+      "gate": "cinder-traversal",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/cinder_array/verify.gd",
+        "--",
+        "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/port/reports/cinder-traversal.json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 60.568
+    },
+    {
+      "gate": "exploration-walker",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/graphics_batch/walker.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.38
+    },
+    {
+      "gate": "first-person-rig",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/first_person/lifecycle.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.342
+    },
+    {
+      "gate": "first-person-binding",
+      "command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "res://tests/first_person/binding.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.033
+    },
+    {
+      "gate": "first-person-ads",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/first_person/ads_contract.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.332
+    },
+    {
+      "gate": "first-person-recoil",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/first_person/recoil.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.433
+    },
+    {
+      "gate": "combat-actions",
+      "command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--path",
+        "godot",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "res://tests/combat_actions/controls.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.475
+    },
+    {
+      "gate": "combat-shields",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/combat_shields/validate.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.524
+    },
+    {
+      "gate": "combat-shield-capacity",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/combat_shields/capacity.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.239
+    },
+    {
+      "gate": "combat-particles",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/combat_particles/contracts.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.244
+    },
+    {
+      "gate": "combat-pickup-assets",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/combat_pickup_assets/validate.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.244
+    },
+    {
+      "gate": "weapon-effects",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/weapon_effects/lifecycle.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.521
+    },
+    {
+      "gate": "weapon-effects-rig",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/weapon_effects/rig_integration.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.339
+    },
+    {
+      "gate": "muzzle-sight-geometry",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/first_person/muzzle_geometry.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.333
+    },
+    {
+      "gate": "muzzle-path-geometry",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/weapon_effects/muzzle_path_geometry.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.333
+    },
+    {
+      "gate": "projectile-flight",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/weapon_effects/projectile_flight.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.247
+    },
+    {
+      "gate": "alt-fire",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/weapon_effects/alt_fire.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.333
+    },
+    {
+      "gate": "weapon-handling",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/first_person/handling.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.611
+    },
+    {
+      "gate": "weapon-detail",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/first_person/detail.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.334
+    },
+    {
+      "gate": "weapon-export",
+      "command": [
+        "node",
+        "tools/godot-weapons/verify.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.421
+    },
+    {
+      "gate": "world-weapon-identity",
+      "command": [
+        "node",
+        "port/native-world-weapon-identity/check.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.029
+    },
+    {
+      "gate": "player-fx-direction",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/player_fx/direction.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.243
+    },
+    {
+      "gate": "player-fx-low-health",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/player_fx/low_health.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.241
+    },
+    {
+      "gate": "player-fx-lifecycle",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/player_fx/lifecycle.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.243
+    },
+    {
+      "gate": "player-fx-marks",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/player_fx/marks.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.338
+    },
+    {
+      "gate": "player-fx-impacts",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/player_fx/impacts.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.337
+    },
+    {
+      "gate": "player-fx-overlay",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/player_fx/overlay.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.242
+    },
+    {
+      "gate": "player-fx-integration",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/player_fx/integration.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.804
+    },
+    {
+      "gate": "benchmark-contracts",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/benchmark/contracts.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.802
+    },
+    {
+      "gate": "benchmark-tools",
+      "command": [
+        "node",
+        "--test",
+        "port/native-benchmark/test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.055
+    },
+    {
+      "gate": "benchmark-autostart",
+      "command": [
+        "node",
+        "port/native-benchmark/run_benchmark.mjs",
+        "--gate=all",
+        "--resolution=640x400",
+        "--level=low",
+        "--bots=1",
+        "--out=/tmp/opencode/benchmark-autostart-gate"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 56.235
+    },
+    {
+      "gate": "material-language",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/material_language/validate.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.335
+    },
+    {
+      "gate": "material-derived",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-moth/derive.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.302
+    },
+    {
+      "gate": "identity-zone-route",
+      "command": [
+        "node",
+        "--test",
+        "port/native-identity-zones/tests/route.test.mjs",
+        "port/native-identity-zones/tests/match.test.mjs",
+        "port/native-identity-zones/tests/authority.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 61.087
+    },
+    {
+      "gate": "debug-tools",
+      "command": [
+        "node",
+        "--test",
+        "port/native-debug/debug.test.mjs",
+        "port/native-arenas/tests/debug.test.mjs",
+        "port/native-horde/debug.test.mjs",
+        "port/native-identity-zones/tests/debug.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 40.629
+    },
+    {
+      "gate": "debug-panel",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/debug/panel.gd",
+        "--",
+        "--debug-panel"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.807
+    },
+    {
+      "gate": "mode-diagnostics",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/debug/diagnostics.gd",
+        "--",
+        "--diagnostics"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.241
+    },
+    {
+      "gate": "blood-live-harness",
+      "command": [
+        "node",
+        "--test",
+        "port/native-blood-fx/tests/live_budget.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 7.654
+    },
+    {
+      "gate": "blood-live-native",
+      "command": [
+        "node",
+        "port/native-blood-fx/live.mjs",
+        "--ci-render-budget"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 8.01
+    },
+    {
+      "gate": "route-parity",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/route_parity.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.258
+    },
+    {
+      "gate": "main-menu-smoke",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "res://ui/main_menu.tscn",
+        "--",
+        "--smoke"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.238
+    },
+    {
+      "gate": "main-menu-contracts",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/main_menu/contracts.gd",
+        "--",
+        "--contracts"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.52
+    },
+    {
+      "gate": "product-shell-settings",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/product_shell/settings_contract.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.895
+    },
+    {
+      "gate": "product-shell-journey",
+      "command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "node",
+        "tools/godot-dev/product_journey.mjs",
+        "--itinerary=port/native-shell/itineraries/consolidated.json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 51.716
+    },
+    {
+      "gate": "product-shell-guest-leave",
+      "command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "node",
+        "tools/godot-dev/guest_leave_journey.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 5.369
+    },
+    {
+      "gate": "material-coverage-floor",
+      "command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/coverage_floor.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.306
+    },
+    {
+      "gate": "release-pipeline-tools",
+      "command": [
+        "node",
+        "--test",
+        "tools/release/options.test.mjs",
+        "tools/release/release.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.167
+    },
+    {
+      "gate": "blood-fx-contracts",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/blood_fx/contracts.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.336
+    },
+    {
+      "gate": "blood-fx-surfaces",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/blood_fx/surfaces.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.528
+    },
+    {
+      "gate": "blood-fx-stress",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/blood_fx/stress.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.616
+    },
+    {
+      "gate": "combat-integration-oracle",
+      "command": [
+        "node",
+        "port/native-combat-integration/export-fixtures.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.686
+    },
+    {
+      "gate": "combat-integration",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/combat_integration/contracts.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.209
+    },
+    {
+      "gate": "combat-combined-integration",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/combat_integration/combined_adapter.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.711
+    },
+    {
+      "gate": "combat-remote-muzzle",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/combat_integration/remote_muzzle.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.523
+    },
+    {
+      "gate": "identity-horde-occlusion",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/combat_integration/identity_horde_occlusion.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.243
+    },
+    {
+      "gate": "native-arena-maps",
+      "command": [
+        "node",
+        "--test",
+        "port/native-arenas/tests/actual-maps.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 7.487
+    },
+    {
+      "gate": "native-arena-session",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/native_arenas/session/test.gd",
+        "--",
+        "--mute"
+      ],
+      "exit_code": 1,
+      "passed": false,
+      "failure_reason": "nonzero-exit",
+      "duration_seconds": 0.893
+    }
+  ],
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "port_commit": "b5b0ac4fcff6ad573676ebab269c71f778cde884",
+  "port_worktree_dirty": true,
+  "source_derivative": {
+    "selection": "explicit",
+    "path": "/home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/port/contracts/lattice-catalog-derivative.json",
+    "sha256": "d1809086734c3df66573db5b7efc023b23a337ab2b05d4f5019e985d26e7cff7",
+    "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+    "derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf"
+  },
+  "manual_acceptance": [
+    {
+      "scope": "Rendered visual fidelity and actual player input",
+      "state": "owner-run / unrun"
+    },
+    {
+      "scope": "Natural full-round and multiplayer source outcomes",
+      "state": "owner-run / unrun"
+    },
+    {
+      "scope": "Human playable acceptance",
+      "state": "owner-run / unrun"
+    }
+  ],
+  "planned_gate_names": [
+    "toolchain-version",
+    "gate-runner-tests",
+    "playable-gate-registration",
+    "verifier-report-tests",
+    "ci-artifact-tests",
+    "native-ci-contracts",
+    "export-tests",
+    "moth-export",
+    "gltf-sides",
+    "health-hud-evidence",
+    "projectile-navigation",
+    "objective-evidence",
+    "objective-progression-evidence",
+    "objective-completion-evidence",
+    "launcher-options",
+    "package-options",
+    "product-shell-supervisor",
+    "native-graphics-options",
+    "native-graphics-ownership",
+    "lobby-options",
+    "lobby-ownership",
+    "horde-closure",
+    "native-arena-closure",
+    "package-identity-routes",
+    "native-arena-authority",
+    "local-24-roster",
+    "horde-ownership",
+    "zone-routing",
+    "combined-arms-evidence",
+    "lattice-req-generator-tests",
+    "lattice-req-catalog-check",
+    "semantic-export",
+    "source-inventory",
+    "package-manifest-contracts",
+    "career-catalog-check",
+    "career-source-contracts",
+    "career-persistence",
+    "career-history-storage",
+    "career-results-source",
+    "career-equipment-source",
+    "social-source",
+    "source-tests",
+    "arms-race-source",
+    "horde-source",
+    "cinderwake-source",
+    "horde-upgrade-adapter",
+    "horde-adapter",
+    "horde-death-wire",
+    "horde-input-oracle",
+    "godot-import",
+    "career-projection",
+    "career-identity-native",
+    "career-equipment-native",
+    "career-results-native",
+    "career-history-native",
+    "career-results-history-ui",
+    "social-native",
+    "reconnect-source-native",
+    "reconnect-offline-results",
+    "reconnect-menu",
+    "career-modal",
+    "cinderwake-native",
+    "identity-horde-composition",
+    "loadout-unit",
+    "loadout-source-parity",
+    "loadout-client",
+    "loadout-setup",
+    "loadout-lobby",
+    "loadout-session",
+    "loadout-loopback",
+    "loadout-lifecycle",
+    "viewer-smoke",
+    "graphics-terrain",
+    "moth-resources",
+    "graphics-atmosphere",
+    "graphics-fx",
+    "moth-scenery",
+    "shader-lab",
+    "particle-lab",
+    "showcase-startup",
+    "aurora-traversal",
+    "cinder-traversal",
+    "exploration-walker",
+    "first-person-rig",
+    "first-person-binding",
+    "first-person-ads",
+    "first-person-recoil",
+    "combat-actions",
+    "combat-shields",
+    "combat-shield-capacity",
+    "combat-particles",
+    "combat-pickup-assets",
+    "weapon-effects",
+    "weapon-effects-rig",
+    "muzzle-sight-geometry",
+    "muzzle-path-geometry",
+    "projectile-flight",
+    "alt-fire",
+    "weapon-handling",
+    "weapon-detail",
+    "weapon-export",
+    "world-weapon-identity",
+    "player-fx-direction",
+    "player-fx-low-health",
+    "player-fx-lifecycle",
+    "player-fx-marks",
+    "player-fx-impacts",
+    "player-fx-overlay",
+    "player-fx-integration",
+    "benchmark-contracts",
+    "benchmark-tools",
+    "benchmark-autostart",
+    "material-language",
+    "material-derived",
+    "identity-zone-route",
+    "debug-tools",
+    "debug-panel",
+    "mode-diagnostics",
+    "blood-live-harness",
+    "blood-live-native",
+    "route-parity",
+    "main-menu-smoke",
+    "main-menu-contracts",
+    "product-shell-settings",
+    "product-shell-journey",
+    "product-shell-guest-leave",
+    "material-coverage-floor",
+    "release-pipeline-tools",
+    "blood-fx-contracts",
+    "blood-fx-surfaces",
+    "blood-fx-stress",
+    "combat-integration-oracle",
+    "combat-integration",
+    "combat-combined-integration",
+    "combat-remote-muzzle",
+    "identity-horde-occlusion",
+    "native-arena-maps",
+    "native-arena-session",
+    "native-arena-composition",
+    "identity-prototype-graybox",
+    "identity-prototype-oracle",
+    "identity-prototype-rays",
+    "identity-prototype-lifecycle",
+    "native-arena-prism",
+    "native-arena-aurora",
+    "native-arena-cinder",
+    "glb-import",
+    "glb-sides",
+    "input-queue",
+    "protocol-envelopes",
+    "packet-replay",
+    "native-live",
+    "presentation-replay",
+    "round-boundaries",
+    "native-lifecycle",
+    "combat-feedback",
+    "projectiles",
+    "audio-feedback",
+    "local-lifecycle",
+    "pickup-presentation",
+    "entity-visuals",
+    "operator-geometry",
+    "world-weapon-import",
+    "world-weapon-grips",
+    "native-trace",
+    "guest-session",
+    "lobby-flow",
+    "lobby-spectator-context",
+    "match-selection",
+    "scoreboard",
+    "team-scores",
+    "scoreboard-session",
+    "game-hud",
+    "game-hud-setup",
+    "game-hud-debug",
+    "puma-presentation",
+    "zone-modes",
+    "combined-arms-controls",
+    "combined-arms-graphics",
+    "arms-race",
+    "horde-model",
+    "horde-death-presentation",
+    "horde-upgrade-native",
+    "horde-upgrade-fixture",
+    "horde-controls",
+    "sports-controls",
+    "sports-polish",
+    "sports-progression",
+    "soccer-guidance",
+    "soccer-coaching",
+    "sports-bearing",
+    "lattice-adapter",
+    "lattice-ui",
+    "lattice-map",
+    "lattice-topology",
+    "lattice-economy",
+    "lattice-world",
+    "lattice-world-commands",
+    "lattice-req-catalog",
+    "lattice-req-purchase",
+    "lattice-world-tactical",
+    "lattice-flagship-l1",
+    "lattice-flagship-l2",
+    "lattice-flagship-l3-roles",
+    "lattice-flagship-l3-evidence",
+    "lattice-flagship-assets",
+    "lattice-flagship-l3-static",
+    "lattice-flagship-l5-static",
+    "lattice-world-usability",
+    "objective-renderer",
+    "objective-controls",
+    "objective-progression",
+    "objective-input-timing",
+    "payload-guidance",
+    "payload-guidance-hud",
+    "control-safety",
+    "window-focus",
+    "session-recovery",
+    "stall-controls",
+    "snapshot-watch",
+    "native-session",
+    "two-native-clients",
+    "motion-impairment",
+    "remote-motion",
+    "local-render-motion",
+    "release-refused"
+  ],
+  "unrun_gate_names": [
+    "native-arena-composition",
+    "identity-prototype-graybox",
+    "identity-prototype-oracle",
+    "identity-prototype-rays",
+    "identity-prototype-lifecycle",
+    "native-arena-prism",
+    "native-arena-aurora",
+    "native-arena-cinder",
+    "glb-import",
+    "glb-sides",
+    "input-queue",
+    "protocol-envelopes",
+    "packet-replay",
+    "native-live",
+    "presentation-replay",
+    "round-boundaries",
+    "native-lifecycle",
+    "combat-feedback",
+    "projectiles",
+    "audio-feedback",
+    "local-lifecycle",
+    "pickup-presentation",
+    "entity-visuals",
+    "operator-geometry",
+    "world-weapon-import",
+    "world-weapon-grips",
+    "native-trace",
+    "guest-session",
+    "lobby-flow",
+    "lobby-spectator-context",
+    "match-selection",
+    "scoreboard",
+    "team-scores",
+    "scoreboard-session",
+    "game-hud",
+    "game-hud-setup",
+    "game-hud-debug",
+    "puma-presentation",
+    "zone-modes",
+    "combined-arms-controls",
+    "combined-arms-graphics",
+    "arms-race",
+    "horde-model",
+    "horde-death-presentation",
+    "horde-upgrade-native",
+    "horde-upgrade-fixture",
+    "horde-controls",
+    "sports-controls",
+    "sports-polish",
+    "sports-progression",
+    "soccer-guidance",
+    "soccer-coaching",
+    "sports-bearing",
+    "lattice-adapter",
+    "lattice-ui",
+    "lattice-map",
+    "lattice-topology",
+    "lattice-economy",
+    "lattice-world",
+    "lattice-world-commands",
+    "lattice-req-catalog",
+    "lattice-req-purchase",
+    "lattice-world-tactical",
+    "lattice-flagship-l1",
+    "lattice-flagship-l2",
+    "lattice-flagship-l3-roles",
+    "lattice-flagship-l3-evidence",
+    "lattice-flagship-assets",
+    "lattice-flagship-l3-static",
+    "lattice-flagship-l5-static",
+    "lattice-world-usability",
+    "objective-renderer",
+    "objective-controls",
+    "objective-progression",
+    "objective-input-timing",
+    "payload-guidance",
+    "payload-guidance-hud",
+    "control-safety",
+    "window-focus",
+    "session-recovery",
+    "stall-controls",
+    "snapshot-watch",
+    "native-session",
+    "two-native-clients",
+    "motion-impairment",
+    "remote-motion",
+    "local-render-motion",
+    "release-refused"
+  ],
+  "gate_tiers": {
+    "rendered/input": [
+      "first-person-binding",
+      "combat-actions",
+      "benchmark-autostart",
+      "blood-live-native",
+      "loadout-loopback",
+      "horde-upgrade-fixture",
+      "product-shell-journey",
+      "product-shell-guest-leave"
+    ],
+    "live-source": [
+      "native-live",
+      "native-lifecycle",
+      "native-session",
+      "two-native-clients",
+      "product-shell-journey",
+      "product-shell-guest-leave"
+    ]
+  },
+  "execution": {
+    "planned": 226,
+    "executed": 138,
+    "unrun": 88
+  },
+  "active_gate": "native-arena-session"
+}

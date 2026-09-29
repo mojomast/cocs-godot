@@ -111,8 +111,21 @@ Implementation tested at `b5b0ac4f` unless noted. Retained records:
 - **18-session captured product journey passed**, with 19 Home and 18 live Career
   checks, source-confirmed equipment retained across processes and all owned ports
   closed. Existing combat/LATTICE/sports/Horde/Cinderwake/Nacre routes remain covered.
-- The full aggregate, server suite and lint are running serially; their final
-  result will be recorded here when complete.
+- The first full aggregate at `b5b0ac4f` stopped at gate 138/226 on the native-arena
+  session fixture's missing queued-welcome context. `c62c3753` repairs that and
+  related detached LATTICE fixtures. `05d7e5c3` replays the recorded outbound
+  create/join before captured responses and omits only declared redacted
+  credential placeholders. Live admission/token validation is unchanged.
+  All affected headless fixtures passed, including the captured protocol and
+  presentation replays. The render-only REQ fixture also passed with its required
+  capture argument; an initial invocation without that argument exited 2.
+- The second aggregate at `5555e402` reached gate 216/226 and caught a control
+  safety regression: deferring failed input sends for reconnect had also deferred
+  failures outside multiplayer. `5c519b5d` limits deferral to a previously open
+  multiplayer transport with an actual reconnect ticket. Control safety, window
+  focus, session recovery, stall controls and snapshot-watch checks passed, and
+  the rendered Retry/Leave journey passed again. The final serial rerun is testing
+  `5c519b5d`; both failed aggregates remain retained in the validation checkout.
 
 The first rendered reconnect attempt at `025a531b` timed out before guest join:
 the observer reused one mutable pressed/released event without allowing native
