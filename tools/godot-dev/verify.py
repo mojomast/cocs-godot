@@ -190,6 +190,7 @@ commands = [
     ("main-menu-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/main_menu/contracts.gd", "--", "--contracts"]),
     ("product-shell-settings", [binary, "--headless", "--path", "godot", "--script", "res://tests/product_shell/settings_contract.gd"]),
     ("product-shell-journey", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "tools/godot-dev/product_journey.mjs", "--itinerary=port/native-shell/itineraries/consolidated.json"]),
+    ("player-flow-journey", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "tools/godot-dev/product_journey.mjs", "--player-flow"]),
     ("product-shell-guest-leave", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "tools/godot-dev/guest_leave_journey.mjs"]),
     # coverage.mjs alone always exits 0; the floor wrapper makes a regression fail.
     ("material-coverage-floor", [sys.executable, "tools/godot-dev/coverage_floor.py"]),
@@ -303,10 +304,11 @@ report['unrun_gate_names'] = report['planned_gate_names'].copy()
 report['gate_tiers'] = {
     'rendered/input': ['first-person-binding', 'combat-actions', 'benchmark-autostart',
                         'blood-live-native', 'loadout-loopback', 'horde-upgrade-fixture',
-                        'product-shell-journey', 'product-shell-guest-leave', 'career-equipped-journey'],
+                        'product-shell-journey', 'product-shell-guest-leave', 'career-equipped-journey',
+                        'player-flow-journey'],
     'live-source': ['native-live', 'native-lifecycle', 'native-session', 'two-native-clients',
                     'product-shell-journey', 'product-shell-guest-leave', 'career-equipped-journey',
-                    'finish-source-journey'],
+                    'finish-source-journey', 'player-flow-journey'],
 }
 report['execution'] = {'planned': len(report['planned_gate_names']), 'executed': 0,
                        'unrun': len(report['unrun_gate_names'])}
@@ -346,6 +348,7 @@ if not version['passed']:
 # teardown behaviour, not our content. Any other ERROR line still fails the gate.
 gate_options = {
     'product-shell-journey': {'timeout': 300},
+    'player-flow-journey': {'timeout': 240},
     'benchmark-autostart': {'success_marker': 'BENCHMARK_GATE_OK'},
     'combat-actions': {
         'success_marker': 'NATIVE_COMBAT_ACTIONS',

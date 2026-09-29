@@ -48,7 +48,10 @@ func begin() -> void:
 		await menu_step()
 	else:
 		route_id = str(record.route)
-		running = true
+		if record.get("player_flow", false):
+			call_deferred("player_flow_step")
+		else:
+			running = true
 
 func menu_step() -> void:
 	var visit := int(record.visits)
@@ -283,7 +286,7 @@ func live_career_step() -> bool:
 	await process_frame
 	if not require_value(career.active() and not settings.overlay_open() and not paused, "live Career did not open while authority continued"): return false
 	var has_profile: bool = not career.profile.is_empty()
-	if route_id in ["combat", "lattice-world"]:
+	if route_id in ["combat", "lattice-world", "lobby"]:
 		if not require_value(has_profile and scene.client.career_seated and scene.client.room_id != "", "source welcome did not seat a Career profile"): return false
 	if has_profile:
 		if not require_value(career.state_label.text.contains("CONNECTED SOURCE CAREER") and not career.state_label.text.contains("NO CONNECTED CAREER"), "live source profile not projected"): return false
@@ -346,9 +349,112 @@ func equip_starter_attachment() -> bool:
 	var deadline := Time.get_ticks_msec() + 7000
 	while not career.pending.is_empty() and Time.get_ticks_msec() < deadline:
 		await create_timer(0.05).timeout
-	if not require_value(career.pending.is_empty() and career.action_status.contains("Source confirmed") and career.profile.get("attachments", {}).get(item.slot) == item.id, "source did not confirm starter attachment"): return false
+	if not require_value(career.pending.is_empty() and career.profile.get("attachments", {}).get(item.slot) == item.id, "source did not confirm starter attachment"): return false
 	record.career_selection = {"kind":"attachment", "slot":item.slot, "id":item.id}
 	record.career_equipment_confirmed = true
 	write_record()
 	print("PRODUCT_JOURNEY_EQUIPMENT ", JSON.stringify({"status":"source-confirmed", "kind":"attachment", "slot":item.slot, "id":item.id}))
 	return true
+
+func flow_check(ok: bool, message: String) -> bool:
+	if not require_value(ok, "player flow: " + message): return false
+	var checks: Array = record.get("player_flow_checks", [])
+	checks.append(message)
+	record.player_flow_checks = checks
+	return true
+
+func flow_wait(predicate: Callable, message: String, timeout_ms: int = 12000) -> bool:
+	var deadline := Time.get_ticks_msec() + timeout_ms
+	while not predicate.call() and Time.get_ticks_msec() < deadline:
+		await create_timer(0.05).timeout
+	return flow_check(bool(predicate.call()), message)
+
+func flow_actor_attachments() -> Array:
+	if scene.client.snapshots.is_empty(): return []
+	var snapshot: Dictionary = scene.client.snapshots.back()
+	for actor: Dictionary in snapshot.get("state", {}).get("actors", []):
+		if actor.get("id", -1) != scene.client.actor_id: continue
+		var ids := []
+		for item: Dictionary in actor.get("attachments", {}).get("items", []):
+			ids.append(item.get("id", ""))
+		return ids
+	return []
+
+func flow_capture(name: String) -> void:
+	if OS.get_environment("COCS_JOURNEY_CAPTURE") == "1": await capture_view(name)
+
+## One integrated journey through the real supervisor, owned source server and
+## shipping scenes. UI buttons are scripted signal activations; F12 uses engine
+## input. A deliberate WebSocket close is the only fault injection. The source
+## runs its legal 60-second round normally; this is not human gameplay evidence.
+func player_flow_step() -> void:
+	if not await flow_wait(func() -> bool: return scene.phase == -3, "Home opened disconnected multiplayer setup"): return
+	var menu: Node = scene.lobby_menu
+	var rooms_seen := [false]
+	scene.client.rooms.connect(func(_items: Array) -> void: rooms_seen[0] = true)
+	menu.room_browser.refresh_button.pressed.emit()
+	if not await flow_wait(func() -> bool: return scene.phase == -4 and rooms_seen[0], "browser received a selected-server room list"): return
+	if not flow_check(career.profile.is_empty(), "browsing did not invent a seated Career"): return
+	await flow_capture("flow-room-browser")
+	menu.back_button.pressed.emit()
+	if not await flow_wait(func() -> bool: return scene.phase == -3, "cancel browsing returned to explicit setup"): return
+	menu.connect_button.pressed.emit()
+	if not await flow_wait(func() -> bool: return scene.phase == 12 and scene.lobby_host_allowed() and not career.profile.is_empty(), "source seated host and confirmed Career"): return
+	var identity: String = str(career.profile.id) # Internal equality only, never retained.
+	var room: String = scene.client.room_id
+	await process_frame
+	menu.arsenal_button.pressed.emit()
+	await process_frame
+	if not flow_check(career.active() and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "lobby Arsenal opened with released pointer"): return
+	career_back()
+	await process_frame
+	if not flow_check(not career.active() and menu.arsenal_button.has_focus(), "Arsenal Back restored lobby action focus"): return
+	menu.start_button.pressed.emit()
+	if not await flow_wait(func() -> bool: return scene.phase == 3 and scene.received_pose, "first source round became live"): return
+	var actor_id: int = scene.client.actor_id
+	var revision: int = scene.client.resumed_revision
+	scene.client.peer.close(4000, "Scripted player-flow transport interruption")
+	if not await flow_wait(func() -> bool: return scene.phase == -5, "transport interruption exposed explicit Retry"): return
+	if not flow_check(career.profile.is_empty() and not scene.received_pose and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "disconnect cleared stale Career and pose and released controls"): return
+	await process_frame
+	if not flow_check(menu.reconnect_button.visible and not menu.reconnect_button.disabled, "same-room reconnect action is available"): return
+	await flow_capture("flow-retry")
+	menu.reconnect_button.pressed.emit()
+	if not await flow_wait(func() -> bool: return scene.phase == 3 and scene.received_pose and not career.profile.is_empty(), "explicit Retry recovered the live source round"): return
+	if not flow_check(scene.client.actor_id == actor_id and scene.client.resumed_revision == revision and scene.client.room_id == room and str(career.profile.id) == identity, "Retry preserved source seat round and Career identity"): return
+	if not flow_check(Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Retry did not recapture controls"): return
+	if not await flow_wait(func() -> bool: return scene.phase == 4 and not career.result.is_empty(), "source settled the normal timed round", 75000): return
+	settings_key()
+	await process_frame
+	settings.career_button.pressed.emit()
+	await process_frame
+	career.select_category("results")
+	await process_frame
+	if not flow_check(career.active() and not career.attributed_award().is_empty(), "Results displays an accepted result with its same-round award"): return
+	root.size = Vector2i(760, 520)
+	settings.set_value("ui_scale", 150, false)
+	for i in 4: await process_frame
+	if not career_bounds(): return
+	await flow_capture("flow-results-760x520-scale150")
+	var before: Array = flow_actor_attachments()
+	if not await equip_starter_attachment(): return
+	if not flow_check(flow_actor_attachments() == before, "confirmed saved equipment left the settled actor unchanged"): return
+	career.select_category("loadout")
+	await process_frame
+	await flow_capture("flow-loadout-760x520-scale150")
+	career_back()
+	await process_frame
+	if not flow_check(settings.overlay_open(), "Career Back restored match Settings"): return
+	settings.rows.back.pressed.emit()
+	await process_frame
+	if not flow_check(not settings.overlay_open() and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Settings Back released controls at results"): return
+	menu.restart_button.pressed.emit()
+	if not await flow_wait(func() -> bool: return scene.phase == 3 and scene.received_pose and scene.client.resumed_revision > revision, "Rematch started a new source round"): return
+	if not await flow_wait(func() -> bool: return record.career_selection.id in flow_actor_attachments(), "new source actor carries the confirmed saved attachment"): return
+	settings.set_value("ui_scale", 100, false)
+	root.size = Vector2i(1280, 800)
+	record.player_flow_complete = true
+	write_record()
+	# The common final step verifies Settings/Career once more, then the actual
+	# supervisor returns Home and proves the owned authority has shut down.
+	await route_step()
