@@ -3,10 +3,10 @@ extends RefCounted
 const KINDS := {
 	"clear": {"particles": 0, "mood": "default", "wind": 1.0},
 	"overcast": {"particles": 0, "mood": "storm", "wind": 1.25},
-	"rain": {"particles": 90, "mood": "storm", "wind": 1.5},
-	"snow": {"particles": 72, "mood": "cold", "wind": 1.1},
-	"ash": {"particles": 64, "mood": "hot", "wind": 1.2},
-	"storm": {"particles": 130, "mood": "storm", "wind": 2.0},
+	"rain": {"particles": 90, "mood": "storm", "wind": 1.5, "color": "aebccb", "size": 0.028, "life": 1.15, "fall": 19.0, "drift": 0.25, "streakRatio": 1.3},
+	"snow": {"particles": 72, "mood": "cold", "wind": 1.1, "color": "eef6ff", "size": 0.045, "life": 3.4, "fall": 2.4, "drift": 1.0, "streakRatio": 0.4},
+	"ash": {"particles": 64, "mood": "hot", "wind": 1.2, "color": "8f8880", "size": 0.035, "life": 3.8, "fall": 0.9, "drift": 0.8, "streakRatio": 0.4},
+	"storm": {"particles": 130, "mood": "storm", "wind": 2.0, "color": "9fb0c2", "size": 0.03, "life": 1.4, "fall": 15.0, "drift": 0.7, "streakRatio": 1.15},
 }
 const BIOMES := {
 	"canyon": {"mood": "hot", "tint": "8a6a44", "particles": "dust"},

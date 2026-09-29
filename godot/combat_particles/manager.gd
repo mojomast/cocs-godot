@@ -48,6 +48,14 @@ var _suspended := true
 var _serial := 0
 var _ambient_profile := 5
 var _ambient_tint := Color(0.3, 0.7, 0.65)
+var _weather_precipitation_suppressed := false
+
+## Only falling ice (profile 4) overlaps precipitation. Cinder and reactor
+## fields remain architectural ambient fields, including across map changes.
+func set_weather_precipitation_suppressed(value: bool) -> bool:
+	_weather_precipitation_suppressed = value
+	_sync_suspension()
+	return true
 
 func _init() -> void:
 	_ids.resize(ID_WINDOW)
@@ -207,7 +215,7 @@ func _sync_suspension() -> void:
 	_suspended = not active or paused or not focused or tree_paused or hidden
 	for slot: Dictionary in slots:
 		slot.node.speed_scale = 0.0 if _suspended else 1.0
-		slot.node.visible = not _suspended and slot.remaining > 0
+		slot.node.visible = not _suspended and slot.remaining > 0 and not (_weather_precipitation_suppressed and slot.profile == 4)
 
 func apply_state(public_state: Dictionary, local_id: int = -1) -> void:
 	if not configured: return
@@ -327,7 +335,7 @@ func _start(slot: Dictionary, profile: int, pos: Vector3, id: int, priority: flo
 	mat.set_shader_parameter("tint", Color(0.16, 0.65, 1.0) if profile == 2 else Color(0.95, 0.42, 0.1))
 	slot.node.restart(true)
 	slot.node.speed_scale = 0.0 if _suspended else 1.0
-	slot.node.visible = not _suspended
+	slot.node.visible = not _suspended and not (_weather_precipitation_suppressed and profile == 4)
 	spawned += 1
 
 func _ambient() -> void:

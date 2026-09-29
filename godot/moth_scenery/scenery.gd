@@ -27,6 +27,16 @@ var _detail := -1
 var _clock := -1.0
 var _counts: Dictionary = {}
 var _map_id := ""
+var _weather_precipitation_suppressed := false
+
+## Hide only falling snow pockets; dust, pollen, rising ash and vent motes
+## remain local architectural scenery. Rebuilding detail preserves the choice.
+func set_weather_precipitation_suppressed(value: bool) -> bool:
+	_weather_precipitation_suppressed = value
+	for child: Node in get_children():
+		if str(child.name).begins_with("Ambient_") and _profile.get("air") == "snow":
+			child.visible = not value
+	return true
 
 static func create(map: Dictionary, parent: Node3D, detail: int = Detail.FULL) -> Node3D:
 	clear(parent)
@@ -83,6 +93,7 @@ func set_detail(level: int) -> void:
 				mm.set_instance_transform(i, Transform3D(Basis.IDENTITY, point.position))
 				mm.set_instance_custom_data(i, point.custom)
 			var batch := _batch("Ambient_" + str(_counts.pockets), mm, mote_material)
+			if _profile.air == "snow": batch.visible = not _weather_precipitation_suppressed
 			batch.custom_aabb = pocket.bounds
 			batch.visibility_range_end = 55.0
 			_counts.motes += pocket.points.size()
