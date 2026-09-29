@@ -11,14 +11,12 @@ Source references (read-only): `game/config.mjs`, `game/assault.mjs`, `game/obje
 
 ## Vehicles
 
-Source `modeRule(mode).vehicles !== false` enables the authored vehicle roster for **both** maps. This scene sends no vehicles override. Composition reuses:
+Source `modeRule(mode).vehicles !== false` enables the authored vehicle roster for **both** maps. This scene sends no vehicles override. Composition delegates to the shared session bridge:
 
-- `combined_arms/fleet.gd`: `apply_state(state, actor_id)`, `clear_round()`; Puma and secondary chassis rendering.
-- `combined_arms/lease.gd`: `vehicle_for(state, actor)` for source seat matching. Its `permitted()` is **not** reusable unchanged: it hard-codes `combined-arms`. Assault uses the session lifecycle/focus/staleness gate plus a resolved vehicle lease.
-- `combined_arms/controls.gd`: `accept(event, eligible, false)`, `command(yaw, pitch, eligible, is_driver)`, `release()` while mounted.
-- `combined_arms/camera.gd`: `configure_map(id, map)`, `follow(vehicle, delta)`, `reset()`.
+- `world/session.gd` owns `vehicle_bridge` (source seat lease, input adaptation, crew visibility) and `vehicle_fleet` (five-chassis rendering). Assault calls the ordinary shared snapshot/input/focus path.
+- `combined_arms/camera.gd`: `configure_map(id, map)`, `mounted(vehicle, actor, yaw, pitch, delta)`, `reset()` supplies the mounted chase camera only.
 
-Infantry uses the shared session input/first-person path. Mounted snapshots hide seated actor meshes and use the vehicle input/chase path. Enter/exit remain source-owned `interact`; source seat changes release all held controls. Unlike the Combined Arms demo, Assault does not suppress secondary vehicle input. No shared composition API changes are required. Full aircraft/gunner visual and control acceptance still requires the serial runtime pass; these reused controls were originally acceptance-tested as a Puma slice.
+Infantry and mounted seats use shared session input. Source seat changes release held controls through its bridge; Enter/exit remain source-owned `interact`. Unlike the earlier Puma-only demo, secondary vehicle inputs are not suppressed. Full aircraft/gunner visual and control acceptance still requires the serial runtime pass.
 
 ## Verification
 

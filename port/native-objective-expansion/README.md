@@ -25,8 +25,31 @@ Bounded checks (no server/render import):
 ```sh
 node tools/godot-package/gen_routes.mjs --check
 node --test tools/godot-package/objective_routes.test.mjs tools/godot-package/route_parity.test.mjs
+node --test tools/godot-package/combined_guest_options.test.mjs port/native-objective-expansion/source_completion.test.mjs
 ```
 
 Godot projection fixtures requiring the shared serial runtime slot:
 `godot/tests/zone_modes/variants.gd`, `godot/tests/assault/state_test.gd`,
 and `godot/tests/objective_scoreboard.gd`.
+
+With the parent-granted serialized runtime slot, use the pinned `GODOT_BIN`,
+an isolated local Node authority, and the derivative provenance environment:
+
+```sh
+export GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64
+export COCS_SOURCE_DERIVATIVE="$PWD/port/contracts/lattice-catalog-derivative.json"
+node port/native-objective-expansion/live.mjs --mode=uplink --map=meridian-exchange
+node port/native-objective-expansion/live.mjs --mode=holdout --map=verdant-reliquary
+node port/native-objective-expansion/live.mjs --mode=assault --map=tidal-citadel
+node port/native-objective-expansion/live.mjs --mode=assault --map=tidal-citadel --controlled-completion
+```
+
+The live driver records source start/snapshot/results/ACK evidence and native
+HUD/marker/vehicle-renderer checks, then requests an authoritative rematch.
+Without the controlled flag it runs a **normal-rate 60s natural timeout**;
+all eight eligible map/mode pairs were exercised. The flag explicitly places
+an actor at source objective coordinates on the isolated *test server* to
+exercise completion/results; source rules and WebSocket transport remain live,
+but this is **not** natural human movement. The direct `Match` completion
+suite similarly labels controlled placement. No claim of natural-input full
+objective completion or human vehicle entry/exit follows from these checks.

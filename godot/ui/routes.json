@@ -950,7 +950,7 @@
         "authority": {
           "offline": false,
           "local": true,
-          "external": false
+          "external": true
         },
         "scope": {
           "maps": [

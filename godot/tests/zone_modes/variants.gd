@@ -2,13 +2,13 @@ extends SceneTree
 const Adapter = preload("res://zone_modes/adapter.gd")
 const Demo = preload("res://zone_modes/demo.gd")
 var checks := 0
+var failures := 0
 
 func check(condition: bool, message: String) -> void:
 	checks += 1
 	if not condition:
+		failures += 1
 		push_error(message)
-		quit(1)
-		assert(condition, message)
 
 func zone(id: String, x: float) -> Dictionary:
 	return {"id":id,"x":x,"y":1.0,"z":-4.0,"radius":4.0,"progress":0.0,"captureSeconds":4.0,"owner":null,"captureTeam":null,"contested":false}
@@ -84,8 +84,12 @@ func _initialize() -> void:
 	combined.objectives.erase("holdSeconds")
 	combined.objectives.erase("holdProgress")
 	combined.objectives.erase("holdTeam")
-	check(adapter.apply(combined,7,combined.mapId,"combined-arms") and "COMBINED ARMS" in adapter.text().title, "exact combined-arms config accepts source domination objective")
+	combined.over = false
+	combined.winner = null
+	combined.objectives.winner = null
+	var combined_accepted := adapter.apply(combined,7,combined.mapId,"combined-arms")
+	check(combined_accepted and "COMBINED ARMS" in adapter.text().title, "exact combined-arms config accepts source domination objective")
 	check(not adapter.apply(combined,7,combined.mapId,"domination") and adapter.projection.is_empty(), "cannot alias combined-arms snapshot as domination")
 	renderer.free()
-	print("ZONE_VARIANTS_OK checks=", checks)
-	quit()
+	print("ZONE_VARIANTS_%s checks=%d failures=%d" % ["OK" if failures == 0 else "FAILED", checks, failures])
+	quit(1 if failures else 0)

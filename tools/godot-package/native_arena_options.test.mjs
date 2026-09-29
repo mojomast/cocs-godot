@@ -50,7 +50,7 @@ test('package Native DM rejects unreviewed options and malformed or excessive bo
   // The three source-owned combat families have their own 0..8 option; no
   // other scene inherits the native adapter's 24-seat capability.
   for (const experience of [...Object.keys(EXPERIENCES), ...Object.keys(NATIVE_EXPERIENCES)]) {
-    if (!['combat', 'zones', 'assault', 'lattice', 'lattice-world'].includes(experience)) {
+    if (!['combat', 'zones', 'assault', 'combined-arms', 'lattice', 'lattice-world'].includes(experience)) {
       assert.throws(() => options([`--experience=${experience}`, '--bots=2'], catalog), Error, experience);
     }
     if (!['zones', 'assault'].includes(experience)) assert.throws(() => options([`--experience=${experience}`, '--round-seconds=120'], catalog), Error, experience);

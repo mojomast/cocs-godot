@@ -40,7 +40,7 @@ export function options(argv, catalog) {
   const values = {}, flags = new Set();
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['experience','map','mode','endpoint','join-room','rung','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(k => arg === `--${k}` || arg.startsWith(`--${k}=`));
+    const key = ['experience','map','mode','endpoint','join-room','wait-for-players','rung','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(k => arg === `--${k}` || arg.startsWith(`--${k}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       const maxLength = key === 'endpoint' ? 2048 : 64;
@@ -55,7 +55,8 @@ export function options(argv, catalog) {
   // Default boot (no arguments at all) opens the main menu; any explicit
   // argument keeps today's combat default.
   const experience = argv.length === 0 ? 'menu' : (values.experience ?? 'combat');
-  if (!['lattice', 'lattice-world'].includes(experience)) for (const key of ['join-room', 'rung']) if (values[key] !== undefined) throw Error(`--${key} requires lattice-world`);
+  if (!['lattice', 'lattice-world', 'combined-arms'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires lattice-world or combined-arms');
+  if (!['lattice', 'lattice-world'].includes(experience) && values.rung !== undefined) throw Error('--rung requires lattice-world');
   const diagnostics = flags.has('--diagnostics') ? ['--diagnostics'] : [];
   if (experience === 'native-dm') {
     for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds'].includes(key)) throw Error(`--${key} is not supported by native-dm`);
@@ -98,8 +99,8 @@ export function options(argv, catalog) {
       userArgs: [...diagnostics, ...(flags.has('--smoke') ? ['--smoke'] : [])]};
   }
   if (values.bots !== undefined) {
-    if (!['combat','zones','assault','lattice','lattice-world'].includes(experience)) throw Error('--bots requires combat, zones, assault, lattice, lattice-world, native-dm or identity-zones');
-    if (!/^\d+$/.test(values.bots) || Number(values.bots) > (experience.startsWith('lattice') ? 16 : 8)) throw Error(`--bots must be 0..${experience.startsWith('lattice') ? 16 : 8}`);
+    if (!['combat','zones','assault','combined-arms','lattice','lattice-world'].includes(experience)) throw Error('--bots requires combat, zones, assault, combined-arms, lattice, lattice-world, native-dm or identity-zones');
+    if (!/^\d+$/.test(values.bots) || Number(values.bots) > (experience.startsWith('lattice') || experience === 'combined-arms' ? 16 : 8)) throw Error(`--bots must be 0..${experience.startsWith('lattice') || experience === 'combined-arms' ? 16 : 8}`);
   }
   for (const key of ['round-seconds','score-limit']) if (values[key] !== undefined && !['zones','assault'].includes(experience)) throw Error(`--${key} requires native-dm, identity-zones, zones or assault`);
   if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
@@ -144,6 +145,20 @@ export function options(argv, catalog) {
   // entry above is their allowlist and carries its own scene.
   if (!allowed.includes(mode) || (!identity && !catalog.maps.find(m => m.id === map)?.supported_modes.includes(mode))) throw Error(`Unsupported ${map} / ${mode}`);
   const scene = identity?.scene ?? selected.scene;
+  if (experience === 'combined-arms') {
+    for (const flag of flags) if (flag !== '--diagnostics') throw Error(`${flag} is not supported by combined-arms`);
+    if (values['wait-for-players'] !== undefined && (!/^\d+$/.test(values['wait-for-players']) || !Number.isSafeInteger(Number(values['wait-for-players'])) || Number(values['wait-for-players']) < 1 || Number(values['wait-for-players']) > 8)) throw Error('--wait-for-players must be 1..8');
+    if (values['join-room'] !== undefined && (!endpoint || !values['join-room'].trim() || ['bots','wait-for-players'].some(key => supplied.has(key)))) throw Error('Combined Arms guest requires --endpoint and --join-room without host settings');
+    const userArgs = [`--map=${map}`, `--mode=${mode}`];
+    if (values['join-room'] !== undefined) userArgs.push(`--join-room=${values['join-room']}`);
+    else {
+      if (values.bots !== undefined) userArgs.push(`--bots=${values.bots}`);
+      if (values['wait-for-players'] !== undefined) userArgs.push(`--wait-for-players=${values['wait-for-players']}`);
+    }
+    userArgs.push(...diagnostics);
+    return {experience,map,mode,scene,userArgs,endpoint};
+  }
+  if (values['wait-for-players'] !== undefined) throw Error('--wait-for-players requires combined-arms');
   if (experience === 'lattice' || experience === 'lattice-world') {
     for (const flag of ['--play','--setup','--mute','--debug-hud','--smoke','--debug-panel']) if (flags.has(flag)) throw Error(`${flag} is not supported by ${experience}`);
     for (const [key,min,max,fallback] of [['time-limit',60,900,900],['bots',0,16,2]]) {

@@ -25,11 +25,12 @@ test('native composition consumes authority and preserves vehicle support', () =
   assert.match(demo, /extends "res:\/\/world\/session.gd"/);
   assert.match(demo, /MAPS := \["tidal-citadel", "sunscar-convoy"\]/);
   for (const field of ['"mode":"assault"', '"botCount":selected_bot_count', '"timeLimit":round_seconds', '"fragLimit":sector_count']) assert.ok(demo.includes(field));
-  assert.match(demo, /fleet\.apply_state\(frame\.state, client\.actor_id\)/);
-  assert.match(demo, /VehicleLease\.vehicle_for/);
-  assert.doesNotMatch(demo, /VehicleLease\.permitted|"vehicles"\s*:\s*false/);
-  assert.match(demo, /vehicle_controls\.command/);
-  assert.match(demo, /chase\.follow/);
+  const shared = read('godot/world/session.gd');
+  assert.match(shared, /observe_vehicles\(frame\.state\)/);
+  assert.match(shared, /vehicle_bridge\.adapt\(controls/);
+  assert.match(shared, /vehicle_fleet\.apply_state\(value, client\.actor_id\)/);
+  assert.doesNotMatch(demo, /VehicleLease|VehicleControls|Fleet\.new|"vehicles"\s*:\s*false/);
+  assert.match(demo, /chase\.mounted\(vehicle_bridge\.vehicle/);
   assert.match(demo, /snapshot_watch\.age > 10/);
 });
 

@@ -18,6 +18,10 @@ func state(mode: String, actors: Array) -> Dictionary:
 		"actors":actors, "teamScores":{"0":3,"1":4}}
 
 func _initialize() -> void:
+	call_deferred("run")
+
+func run() -> void:
+	root.size = Vector2i(960, 640)
 	var board := Board.new()
 	root.add_child(board)
 	var actors := [actor(0,40,0,1.0,0), actor(1,1,2,8.5,3)]
@@ -27,6 +31,8 @@ func _initialize() -> void:
 		check(board.objective_rank_text.contains("Objective order"), mode + " ordering explained")
 	board.apply_state(state("holdout",[actor(0,40,2,1.0,3),actor(1,1,0,8.5,0)]), 0)
 	check(board.entries[0].order == 1, "holdout ranks by exact fractional objective time")
+	board.render()
+	check(Rect2(Vector2.ZERO, root.size).encloses(board.panel.get_rect()), "compact objective scoreboard fits 960×640 viewport")
 	var unknown := actors.duplicate(true)
 	unknown[1].erase("scoreStats")
 	board.apply_state(state("uplink",unknown), 0)

@@ -721,9 +721,9 @@ func on_snapshot(frame: Dictionary) -> void:
 		var angles := ControlMath.look(float(actor.yaw), float(actor.pitch))
 		yaw = angles.x
 		pitch = angles.y
-	if vehicle_bridge.actor.get("vehicleSeat") == "passenger": yaw = float(actor.get("yaw", yaw))
 		initial_position = camera.position
 		received_pose = true
+	if vehicle_bridge.actor.get("vehicleSeat") == "passenger": yaw = float(actor.get("yaw", yaw))
 	pose_actor_id = client.actor_id
 	# A respawn must not silently reactivate controls held before death.
 	# Keep the pose for authoritative camera tracking, but require recapture.

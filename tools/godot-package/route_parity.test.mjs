@@ -252,7 +252,7 @@ test('authority ownership is derived, bounded and identical across dev/package p
     }
   }
   const external = registry.routes.filter(route => route.capability.authority.external).map(route => route.id);
-  assert.deepEqual([...new Set(external)].sort(), ['lattice', 'lattice-world', 'lobby']);
+  assert.deepEqual([...new Set(external)].sort(), ['combined-arms', 'lattice', 'lattice-world', 'lobby']);
 });
 
 test('external authority reuse can never construct a local authority', () => {

@@ -9,7 +9,7 @@ static func number(value: Variant) -> bool:
 	return (value is int or value is float) and is_finite(float(value))
 
 static func team(value: Variant) -> bool:
-	return value == null or (number(value) and value in [0, 1])
+	return value == null or (number(value) and float(value) in [0.0, 1.0])
 
 func clear_round() -> void:
 	objective.clear()

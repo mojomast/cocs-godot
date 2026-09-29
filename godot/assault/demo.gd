@@ -2,19 +2,12 @@ extends "res://world/session.gd"
 ## Standalone native route. Match/Room remain the sole gameplay authority.
 const AssaultState = preload("res://assault/state.gd")
 const AssaultRenderer = preload("res://assault/renderer.gd")
-const Fleet = preload("res://combined_arms/fleet.gd")
-const VehicleLease = preload("res://combined_arms/lease.gd")
-const VehicleControls = preload("res://combined_arms/controls.gd")
 const Chase = preload("res://combined_arms/camera.gd")
 const MAPS := ["tidal-citadel", "sunscar-convoy"]
 var assault := AssaultState.new()
 var sectors := AssaultRenderer.new()
-var fleet := Fleet.new()
 var scoreboard := preload("res://ui/scoreboard.gd").new()
-var vehicle_controls := VehicleControls.new()
 var chase := Chase.new()
-var vehicle: Dictionary = {}
-var vehicle_identity := ""
 var round_seconds := 60
 var sector_count := 3
 var objective_label := Label.new()
@@ -36,7 +29,7 @@ func _ready() -> void:
 		panel.add_child(widget)
 		widget.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	selector.hide()
-	for node: Node in [pickups, presentation, combat, client, sectors, fleet, scoreboard]: add_child(node)
+	for node: Node in [pickups, presentation, combat, client, sectors, scoreboard]: add_child(node)
 	presentation.interpolate_remote = true
 	selected_mode = "assault"
 	var selected := MAPS[0]
@@ -94,10 +87,7 @@ func on_lobby(frame: Dictionary) -> void:
 func clear_assault() -> void:
 	assault.clear_round()
 	sectors.clear_round()
-	fleet.clear_round()
-	vehicle.clear()
-	vehicle_identity = ""
-	vehicle_controls.release()
+	clear_vehicles()
 	chase.reset()
 	notice = ""
 	notice_age = 0
@@ -126,11 +116,12 @@ func observe_assault(frame: Dictionary) -> bool:
 		return false
 	var state: Dictionary = frame.state
 	var config: Variant = state.get("config")
-	if state.get("mapId") != current_id or not config is Dictionary or config.get("mode") != "assault" or config.get("botCount") != selected_bot_count or config.get("fragLimit") != sector_count or config.get("timeLimit") != round_seconds or not state.get("over") is bool or not state.has("winner") or not AssaultState.team(state.winner) or not AssaultState.number(state.get("time")) or not state.get("actors") is Array or not state.get("vehicles") is Array or not assault.apply_state(state):
+	if state.get("mapId") != current_id or not config is Dictionary or config.get("mode") != "assault" or config.get("botCount") != selected_bot_count or config.get("fragLimit") != sector_count or config.get("timeLimit") != round_seconds or not state.get("over") is bool or not state.has("winner") or not AssaultState.team(state.winner) or not AssaultState.number(state.get("time")) or not state.get("actors") is Array or not state.get("vehicles") is Array:
 		on_error("Malformed Assault snapshot; presentation cleared")
 		return false
-	if not fleet.apply_state(frame.state, client.actor_id):
-		on_error("Malformed Assault vehicle snapshot; presentation cleared")
+	if not assault.apply_state(state):
+		var explanation := assault.error
+		on_error("Malformed Assault snapshot: " + explanation)
 		return false
 	source_remaining = maxf(0, round_seconds-float(state.time))
 	sectors.apply_sector(assault.active_sector())
@@ -139,15 +130,7 @@ func observe_assault(frame: Dictionary) -> bool:
 func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3 or not observe_assault(frame): return
 	super.on_snapshot(frame)
-	for actor: Dictionary in frame.state.get("actors", []):
-		if actor.get("vehicleId") != null and presentation.actors.has(int(actor.id)): presentation.actors[int(actor.id)].hide()
-	vehicle = VehicleLease.vehicle_for(frame.state, presentation.local_actor)
-	var next := "%s/%s/%s" % [client.actor_id, presentation.local_actor.get("vehicleId"), presentation.local_actor.get("vehicleSeat")]
-	if next != vehicle_identity:
-		release_pointer()
-		chase.reset()
-		local_motion.reset()
-		vehicle_identity = next
+	if phase != 3: return
 	refresh_objective_hud()
 
 func refresh_objective_hud() -> void:
@@ -185,61 +168,27 @@ func on_results(frame: Dictionary) -> void:
 	pickups.apply_state(frame.state)
 	combat.clear_round()
 	sectors.clear_round()
-	vehicle.clear()
 	release_pointer()
 	label.text = "Source round complete"
 	refresh_objective_hud()
 
 func mounted() -> bool:
-	return presentation.local_actor.get("vehicleId") != null
-
-func weapon_controls_active() -> bool:
-	return not mounted() and super.weapon_controls_active()
-
-func combat_controls_active() -> bool:
-	return not mounted() and super.combat_controls_active()
+	return vehicle_bridge.mounted()
 
 func _request_restart() -> bool:
 	if not super._request_restart(): return false
 	clear_assault()
 	return true
 
-func can_capture_pointer() -> bool:
-	return super.can_capture_pointer() and (not mounted() or not vehicle.is_empty())
-
-func release_pointer() -> void:
-	vehicle_controls.release()
-	super.release_pointer()
-
-func _input(event: InputEvent) -> void:
-	if not mounted():
-		super._input(event)
-		return
-	vehicle_controls.accept(event, can_capture_pointer(), false)
-
-func _unhandled_input(event: InputEvent) -> void:
-	super._unhandled_input(event)
-	if mounted() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and can_capture_pointer(): vehicle_controls.engaged = true
-
 func render_local_translation(now: float) -> void:
 	if not mounted(): super.render_local_translation(now)
 
 func _process(delta: float) -> void:
-	if not mounted() or phase != 3:
-		super._process(delta)
-	else:
-		# One input owner per frame. Source seat identity selects vehicle commands.
-		snapshot_watch.advance(delta)
-		if not can_capture_pointer(): release_pointer()
-		send_elapsed += delta
-		if not client.spectating and send_elapsed >= 1.0 / 60.0:
-			send_elapsed = 0
-			var packet := vehicle_controls.command(yaw, pitch, can_capture_pointer(), presentation.local_actor.get("vehicleSeat") == "driver")
-			if client.send_input(packet) != OK: on_error("Vehicle input could not be queued")
-		if not vehicle.is_empty() and not snapshot_watch.stale():
-			var pose := chase.follow(vehicle, delta)
-			camera.position = pose.eye
-			camera.look_at(pose.target)
+	super._process(delta)
+	if phase == 3 and not vehicle_bridge.vehicle.is_empty() and not snapshot_watch.stale():
+		var pose := chase.mounted(vehicle_bridge.vehicle, vehicle_bridge.actor, yaw, pitch, delta)
+		camera.position = pose.eye
+		camera.look_at(pose.target)
 	if phase == 3 and snapshot_watch.stale():
 		clear_assault()
 		objective_label.text = "ASSAULT · " + snapshot_watch.message()

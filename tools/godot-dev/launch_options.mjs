@@ -39,7 +39,7 @@ export function launchOptions(argv, catalog) {
   const values = {}, flags = new Set(), sessionOptions = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['map','mode','experience','endpoint','join-room','rung','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
+    const key = ['map','mode','experience','endpoint','join-room','wait-for-players','rung','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       if (!value || value.startsWith('--')) throw Error(`--${key} requires a value`);
@@ -84,7 +84,8 @@ export function launchOptions(argv, catalog) {
   const play = flags.has('--play') || flags.has('--setup') || values.experience || values.map || values.mode || values.bots !== undefined ||
     ['--native-trace','--mute','--debug-hud','--debug-panel','--session-smoke','--lifecycle-smoke'].some(arg => flags.has(arg));
   const experience = values.experience ?? 'combat';
-  if (!['lattice', 'lattice-world'].includes(experience)) for (const key of ['join-room', 'rung']) if (values[key] !== undefined) throw Error(`--${key} requires lattice-world`);
+  if (!['lattice', 'lattice-world', 'combined-arms'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires lattice-world or combined-arms');
+  if (!['lattice', 'lattice-world'].includes(experience) && values.rung !== undefined) throw Error('--rung requires lattice-world');
   if (experience === 'native-dm') {
     for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds'].includes(key)) throw Error(`--${key} is not supported by native-dm`);
     for (const flag of flags) if (!['--smoke','--diagnostics','--debug-panel'].includes(flag)) throw Error(`${flag} is not supported by native-dm`);
@@ -119,6 +120,21 @@ export function launchOptions(argv, catalog) {
       sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,`--score-limit=${scoreLimit}`,...cheats,...diagnostics,...(smoke ? [smoke] : [])],
       args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot','res://native_arenas/identity_zone_demo.tscn']};
   }
+  if (experience === 'combined-arms') {
+    for (const key of Object.keys(values)) if (!['experience','map','mode','endpoint','join-room','bots','wait-for-players'].includes(key)) throw Error(`--${key} is not supported by combined-arms`);
+    for (const flag of flags) if (flag !== '--diagnostics') throw Error(`${flag} is not supported by combined-arms`);
+    const map = values.map ?? 'sunscar-convoy', mode = values.mode ?? 'combined-arms';
+    if (map !== 'sunscar-convoy' || mode !== 'combined-arms' || !catalog.maps.find(entry => entry.id === map)?.supported_modes.includes(mode)) throw Error('Combined Arms requires the locked Sunscar Convoy / combined-arms pair');
+    for (const [key,min,max] of [['bots',0,16],['wait-for-players',1,8]]) if (values[key] !== undefined && (!/^\d+$/.test(values[key]) || !Number.isSafeInteger(Number(values[key])) || Number(values[key]) < min || Number(values[key]) > max)) throw Error(`--${key} must be ${min}..${max}`);
+    const endpoint = lobbyEndpoint(values.endpoint,experience);
+    if (values['join-room'] !== undefined && (!endpoint || !values['join-room'].trim() || values.bots !== undefined || values['wait-for-players'] !== undefined)) throw Error('Combined Arms guest requires --endpoint and --join-room without host settings');
+    const sessionOptions = [`--map=${map}`,`--mode=${mode}`];
+    if (values['join-room'] !== undefined) sessionOptions.push(`--join-room=${values['join-room']}`);
+    else for (const key of ['bots','wait-for-players']) if (values[key] !== undefined) sessionOptions.push(`--${key}=${values[key]}`);
+    sessionOptions.push(...diagnostics);
+    return {experience,map,mode,endpoint,smoke:null,sessionOptions,args:[...(diagnostics.length ? ['--verbose'] : []),'--path','godot',EXPERIENCES[experience].scene]};
+  }
+  if (values['wait-for-players'] !== undefined) throw Error('--wait-for-players requires combined-arms');
   if (experience === 'lattice' || experience === 'lattice-world') {
     const supplied = new Set(Object.keys(values));
     const maps = ['asterion-relay','monsoon-foundry'], modes = ['cocs','cocs-coop'];

@@ -1,0 +1,330 @@
+{
+  "scope": "objective modes; wire normal-rate timeout all eight pairs, controlled completion one per mode plus both assault vehicle maps",
+  "entries": [
+    {
+      "mode": "uplink",
+      "map": "meridian-exchange",
+      "kind": "normal-rate natural timeout",
+      "evidence": "/tmp/opencode/objective-uplink-meridian-exchange-be6765cf-05d9-4d19-b176-1f044205f6eb.json",
+      "result": {
+        "type": "results",
+        "winner": 0,
+        "reason": "time",
+        "time": 60.01666666666454,
+        "mode": "uplink"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "geometry": 1800,
+        "map": "meridian-exchange",
+        "mode": "uplink",
+        "normal_rate": true,
+        "reason": "time",
+        "rounds": 2,
+        "snapshots": 1800,
+        "winner": 0
+      }
+    },
+    {
+      "mode": "uplink",
+      "map": "meridian-exchange",
+      "kind": "controlled source completion",
+      "evidence": "/tmp/opencode/objective-uplink-meridian-exchange-e4d1a0bb-b66b-4d82-8ac1-7b84f112be53.json",
+      "result": {
+        "type": "results",
+        "winner": 0,
+        "reason": "objective",
+        "time": 12.03333333333351,
+        "mode": "uplink"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "controlled_fixture_placement": true,
+        "geometry": 361,
+        "map": "meridian-exchange",
+        "mode": "uplink",
+        "normal_rate": true,
+        "reason": "objective",
+        "rounds": 2,
+        "snapshots": 361,
+        "winner": 0
+      }
+    },
+    {
+      "mode": "holdout",
+      "map": "meridian-exchange",
+      "kind": "normal-rate natural timeout",
+      "evidence": "/tmp/opencode/objective-holdout-meridian-exchange-c5e9bc3a-1c5c-4f74-a0d4-e0239fe3ee19.json",
+      "result": {
+        "type": "results",
+        "winner": 0,
+        "reason": "time",
+        "time": 60.01666666666454,
+        "mode": "holdout"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "geometry": 5400,
+        "map": "meridian-exchange",
+        "mode": "holdout",
+        "normal_rate": true,
+        "reason": "time",
+        "rounds": 2,
+        "snapshots": 1800,
+        "winner": 0
+      }
+    },
+    {
+      "mode": "holdout",
+      "map": "meridian-exchange",
+      "kind": "controlled source completion",
+      "evidence": "/tmp/opencode/objective-holdout-meridian-exchange-97d74371-216a-4df3-be8d-8d747955d0be.json",
+      "result": {
+        "type": "results",
+        "winner": 0,
+        "reason": "objective",
+        "time": 42.049999999998896,
+        "mode": "holdout"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "controlled_fixture_placement": true,
+        "geometry": 3783,
+        "map": "meridian-exchange",
+        "mode": "holdout",
+        "normal_rate": true,
+        "reason": "objective",
+        "rounds": 2,
+        "snapshots": 1261,
+        "winner": 0
+      }
+    },
+    {
+      "mode": "uplink",
+      "map": "verdant-reliquary",
+      "kind": "normal-rate natural timeout",
+      "evidence": "/tmp/opencode/objective-uplink-verdant-reliquary-b51b4688-b4ea-4555-be86-944a6b269f8f.json",
+      "result": {
+        "type": "results",
+        "winner": 0,
+        "reason": "time",
+        "time": 60.01666666666454,
+        "mode": "uplink"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "geometry": 1800,
+        "map": "verdant-reliquary",
+        "mode": "uplink",
+        "normal_rate": true,
+        "reason": "time",
+        "rounds": 2,
+        "snapshots": 1800,
+        "winner": 0
+      }
+    },
+    {
+      "mode": "holdout",
+      "map": "verdant-reliquary",
+      "kind": "normal-rate natural timeout",
+      "evidence": "/tmp/opencode/objective-holdout-verdant-reliquary-6793109d-ab0c-4f6e-8272-d08fe4d4236d.json",
+      "result": {
+        "type": "results",
+        "winner": 0,
+        "reason": "time",
+        "time": 60.01666666666454,
+        "mode": "holdout"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "geometry": 5400,
+        "map": "verdant-reliquary",
+        "mode": "holdout",
+        "normal_rate": true,
+        "reason": "time",
+        "rounds": 2,
+        "snapshots": 1800,
+        "winner": 0
+      }
+    },
+    {
+      "mode": "uplink",
+      "map": "ember-crucible",
+      "kind": "normal-rate natural timeout",
+      "evidence": "/tmp/opencode/objective-uplink-ember-crucible-9441a9b0-719f-47ef-8e3b-de88d998be2b.json",
+      "result": {
+        "type": "results",
+        "winner": 0,
+        "reason": "time",
+        "time": 60.01666666666454,
+        "mode": "uplink"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "geometry": 1800,
+        "map": "ember-crucible",
+        "mode": "uplink",
+        "normal_rate": true,
+        "reason": "time",
+        "rounds": 2,
+        "snapshots": 1800,
+        "winner": 0
+      }
+    },
+    {
+      "mode": "holdout",
+      "map": "ember-crucible",
+      "kind": "normal-rate natural timeout",
+      "evidence": "/tmp/opencode/objective-holdout-ember-crucible-3381aafb-5641-4235-b2f1-64a4c24ef54d.json",
+      "result": {
+        "type": "results",
+        "winner": 0,
+        "reason": "time",
+        "time": 60.01666666666454,
+        "mode": "holdout"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "geometry": 5400,
+        "map": "ember-crucible",
+        "mode": "holdout",
+        "normal_rate": true,
+        "reason": "time",
+        "rounds": 2,
+        "snapshots": 1800,
+        "winner": 0
+      }
+    },
+    {
+      "mode": "assault",
+      "map": "tidal-citadel",
+      "kind": "normal-rate natural timeout",
+      "evidence": "/tmp/opencode/objective-assault-tidal-citadel-c299e4df-1738-4794-b499-4bbae1c12abc.json",
+      "result": {
+        "type": "results",
+        "winner": 1,
+        "reason": "time",
+        "time": 60.01666666666454,
+        "mode": "assault"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "geometry": 1800,
+        "map": "tidal-citadel",
+        "mode": "assault",
+        "normal_rate": true,
+        "reason": "time",
+        "rounds": 2,
+        "snapshots": 1800,
+        "winner": 1
+      }
+    },
+    {
+      "mode": "assault",
+      "map": "tidal-citadel",
+      "kind": "controlled source completion",
+      "evidence": "/tmp/opencode/objective-assault-tidal-citadel-704cf11e-bf66-4b7b-aaa8-1feb96dc56e3.json",
+      "result": {
+        "type": "results",
+        "winner": 0,
+        "reason": "objective",
+        "time": 18.066666666666922,
+        "mode": "assault"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "controlled_fixture_placement": true,
+        "geometry": 541,
+        "map": "tidal-citadel",
+        "mode": "assault",
+        "normal_rate": true,
+        "reason": "objective",
+        "rounds": 2,
+        "snapshots": 542,
+        "vehicle_frames": 542,
+        "winner": 0
+      }
+    },
+    {
+      "mode": "assault",
+      "map": "sunscar-convoy",
+      "kind": "normal-rate natural timeout",
+      "evidence": "/tmp/opencode/objective-assault-sunscar-convoy-28861604-7815-476f-92b3-dbc1b727d8db.json",
+      "result": {
+        "type": "results",
+        "winner": 1,
+        "reason": "time",
+        "time": 60.01666666666454,
+        "mode": "assault"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "geometry": 1800,
+        "map": "sunscar-convoy",
+        "mode": "assault",
+        "normal_rate": true,
+        "reason": "time",
+        "rounds": 2,
+        "snapshots": 1800,
+        "winner": 1
+      }
+    },
+    {
+      "mode": "assault",
+      "map": "sunscar-convoy",
+      "kind": "controlled source completion",
+      "evidence": "/tmp/opencode/objective-assault-sunscar-convoy-de5eac3f-cda7-4b01-ba32-e53703d7cb62.json",
+      "result": {
+        "type": "results",
+        "winner": 0,
+        "reason": "objective",
+        "time": 18.083333333333588,
+        "mode": "assault"
+      },
+      "rematchStarts": 2,
+      "native": {
+        "controlled_fixture_placement": true,
+        "geometry": 542,
+        "map": "sunscar-convoy",
+        "mode": "assault",
+        "normal_rate": true,
+        "reason": "objective",
+        "rounds": 2,
+        "snapshots": 542,
+        "vehicle_frames": 542,
+        "winner": 0
+      }
+    }
+  ],
+  "failedAttempts": [
+    {
+      "mode": "assault",
+      "map": "tidal-citadel",
+      "evidence": "/tmp/opencode/objective-assault-tidal-citadel-c53a8b88-4b34-450e-878c-aeddce770d49.json",
+      "error": "Error: native exit 1/null: Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org\n\nASSAULT_INVALID_ENVELOPE {\"actors_array\":true,\"config\":{\"berserk\":false,\"bigHead\":false,\"botCount\":0.0,\"bounty\":false,\"checkpoint\":null,\"damage\":1.0,\"difficulty\":\"easy\",\"endless\":f"
+    },
+    {
+      "mode": "assault",
+      "map": "tidal-citadel",
+      "evidence": "/tmp/opencode/objective-assault-tidal-citadel-d65f0eb4-cdd4-4846-98e4-4c9c6c89ccd4.json",
+      "error": "Error: native exit 1/null: Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org\n\n ERROR: OBJECTIVE_LIVE_FAIL assault/tidal-citadel source results timeout or session error: Malformed Assault snapshot; presentation cleared\n   at: push_error (core/variant/variant_"
+    },
+    {
+      "mode": "assault",
+      "map": "tidal-citadel",
+      "evidence": "/tmp/opencode/objective-assault-tidal-citadel-df0bfe95-3572-4a55-b05e-5b54b67b4f34.json",
+      "error": "Error: native exit 1/null: Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org\n\n ERROR: OBJECTIVE_LIVE_FAIL assault/tidal-citadel source results timeout or session error: Malformed Assault snapshot; presentation cleared\n   at: push_error (core/variant/variant_"
+    },
+    {
+      "mode": "uplink",
+      "map": "meridian-exchange",
+      "evidence": "/tmp/opencode/objective-uplink-meridian-exchange-3a35d2ce-5d0b-4276-8d18-509c8d3af843.json",
+      "error": "Error: native exit 1/null: Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org\n\n ERROR: OBJECTIVE_LIVE_FAIL uplink/meridian-exchange variant HUD mode identity\n   at: push_error (core/variant/variant_utility.cpp:1024)\n   GDScript backtrace (most recent call fir"
+    }
+  ],
+  "notes": [
+    "Controlled placement is not natural-input completion",
+    "Screenshots and human vehicle entry/exit not established",
+    "Source/game and server untouched"
+  ]
+}
