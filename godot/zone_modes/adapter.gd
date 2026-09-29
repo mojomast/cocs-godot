@@ -77,6 +77,7 @@ func apply(state: Dictionary, local_id: int, map_id: String, mode: String) -> bo
 			if not number(zone.get(field)): return false
 		if zone.radius <= 0 or zone.progress < 0 or zone.progress > 100 or zone.captureSeconds <= 0: return false
 		if mode == "uplink" and zone.captureSeconds != 4: return false
+		if mode == "holdout" and zone.captureSeconds != 6: return false
 		for field: String in ["owner", "captureTeam"]:
 			if not zone.has(field) or not nullable_team(zone[field]): return false
 		# Source's initial start may omit contested; snapshots after the first tick

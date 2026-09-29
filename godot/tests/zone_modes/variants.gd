@@ -16,6 +16,8 @@ func zone(id: String, x: float) -> Dictionary:
 func state(mode: String, map_id: String) -> Dictionary:
 	var objective := {"kind":"koth" if mode == "uplink" else "domination", "winner":null,
 		"zones":[zone("hill", 12.0)] if mode == "uplink" else [zone("alpha", 2.0),zone("bravo", 12.0),zone("charlie", 25.0)]}
+	if mode == "holdout":
+		for entry: Dictionary in objective.zones: entry.captureSeconds = 6.0
 	if mode == "uplink": objective.merge({"stage":0,"stageCount":3,"stageCaptures":{"0":0,"1":0}})
 	else: objective.merge({"holdCount":2,"holdSeconds":30,"holdProgress":{"0":0.0,"1":0.0},"holdTeam":null})
 	return {"mapId":map_id,"config":{"mode":mode,"timeLimit":900,"fragLimit":1},"time":1.0,"over":false,"winner":null,
