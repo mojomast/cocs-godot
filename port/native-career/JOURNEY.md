@@ -49,6 +49,7 @@ authority's real wire order (award before results), the attributed same-round
 award, a ready `Recent server matches` list from the owned server's persisted
 `history.json`, compact 760x520 @150% Back reachability, and the absence of any
 ownership token in the projection. It carries no credential file and requests no
-secret. It exercises real results/progression/history only once the parent routes
-`client.career_receive(frame)` for `start`/`results`/`history`; until then it
-reports the not-ready status instead of a false pass.
+secret. It exercises real results/progression/history (19 checks pass) with the
+parent's `client.career_receive` routing of `start`/`results`/`history` applied
+locally; without that routing it reports the not-ready status instead of a false
+pass. The first failing attempt is preserved beside the passing evidence.

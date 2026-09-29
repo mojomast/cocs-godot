@@ -34,6 +34,7 @@ var cooldown_refresh := false
 # arrives. A welcome opens a new connection epoch and clears every per-round
 # witness, so a replayed result after reconnect can never reuse an old award.
 var round_key := ""
+var round_known := false
 var connection_epoch := 0
 var result: Dictionary = {}
 var result_seen: Dictionary = {}
@@ -44,8 +45,11 @@ var latest_award: Dictionary = {}
 var latest_award_identity := ""
 var results_status := "none" # none | live | complete
 # History is a read-only request/response surface. "offline" also covers Home
-# (no seated authority). Unknown is never rendered as an empty match list.
+# (no seated authority). Unknown is never rendered as an empty match list. The
+# source has no request id, so only one request may be outstanding; a reply that
+# arrives without a pending request is a delayed observation, not fresh data.
 var history_status := "offline" # offline | loading | ready | empty | error | timeout
+var history_pending := false
 var history_records: Array = []
 var history_invalid := 0
 var history_notice := ""
@@ -141,9 +145,12 @@ func receive_welcome(client: Node, frame: Dictionary) -> void:
 	reset_history()
 
 func receive_start(_client: Node, frame: Dictionary) -> void:
-	# The accepted result has no revision of its own; pair it with the started
-	# round's key so a following award can be consumed exactly once.
-	round_key = round_source_key() + ":" + str(int_or(frame.get("roundRevision"), -1))
+	# The accepted result has no revision of its own. Pair it with the started
+	# round only when the source supplied a valid revision: a missing/ malformed
+	# revision must never be stringified into a fake key that could later match.
+	var revision: Variant = ResultsModel.safe_int(frame.get("roundRevision"))
+	round_known = revision != null and int(revision) >= 0
+	round_key = (round_source_key() + ":" + str(int(revision))) if round_known else ""
 	round_award = {}
 	round_award_key = ""
 	results_status = "live"
@@ -151,15 +158,14 @@ func receive_start(_client: Node, frame: Dictionary) -> void:
 func receive_results(client: Node, frame: Dictionary) -> void:
 	var state: Variant = frame.get("state")
 	if not state is Dictionary: return
-	var key := round_key
-	var reconnect := key.is_empty()
-	if reconnect: key = round_source_key() + ":reconnect"
+	var reconnect := not round_known
+	var key := round_key if round_known else round_source_key() + ":reconnect"
 	var replayed := result_seen.has(key)
 	if not replayed:
 		result_seen[key] = true
 		result_order.append(key)
 		while result_order.size() > MAX_SEEN_ROUNDS: result_seen.erase(result_order.pop_front())
-	var projected: Dictionary = ResultsModel.project(state, int_or(client.get("actor_id"), -1), key, replayed)
+	var projected: Dictionary = ResultsModel.project(state, current_actor_id(client), key, replayed)
 	if projected.is_empty(): return
 	if reconnect: projected.reconnect = true
 	result = projected
@@ -180,9 +186,9 @@ func receive_progression(client: Node, frame: Dictionary) -> void:
 					pending.clear()
 			profile = next
 	if ResultsModel.is_award(frame):
-		receive_award(frame)
+		receive_award(frame, current_actor_id(client))
 
-func receive_award(frame: Dictionary) -> void:
+func receive_award(frame: Dictionary, actor_id: int) -> void:
 	var award: Dictionary = ResultsModel.project_award(frame)
 	if award.is_empty(): return
 	var identity := ""
@@ -194,42 +200,72 @@ func receive_award(frame: Dictionary) -> void:
 	if not ours.is_empty() and identity != ours: return
 	latest_award = award
 	latest_award_identity = identity
-	if not ours.is_empty() and identity == ours and not round_key.is_empty():
-		round_award = award
-		round_award_key = round_key
+	# Pair a reward with the accepted result only for a *known* started revision
+	# and the same known source actor. Missing/uncorrelated context stays generic.
+	if not round_known or round_key.is_empty(): return
+	if ours.is_empty() or identity != ours: return
+	var award_actor: Variant = null
+	if frame.get("actor") is Dictionary: award_actor = ResultsModel.safe_int(frame.actor.get("id"))
+	if actor_id < 0 or award_actor == null or int(award_actor) != actor_id: return
+	round_award = award
+	round_award_key = round_key
 
 func receive_history(frame: Dictionary) -> void:
+	var pending := history_pending
 	var projected: Dictionary = HistoryModel.project(frame.get("matches"))
 	if projected.is_empty():
-		# Malformed reply: keep every known fact and report the error instead of
-		# faking an empty list.
+		# Malformed envelope: keep every known fact and report the error.
+		if pending: history_pending = false
 		history_status = "error"
 		history_notice = "Malformed source history reply · showing last known."
 		return
-	history_records = projected.records
-	history_invalid = int(projected.invalid)
-	history_status = "empty" if history_records.is_empty() else "ready"
-	history_notice = "" if history_invalid <= 0 else "%d malformed record(s) ignored" % history_invalid
+	var records: Array = projected.records
+	var invalid := int(projected.invalid)
+	if records.is_empty() and invalid > 0:
+		# Every record was malformed: never claim "no history"; keep the last
+		# known list and report the error.
+		if pending: history_pending = false
+		history_status = "error"
+		history_notice = "All %d source history records malformed · showing last known." % invalid
+		return
+	if not pending:
+		# The source has no request id: a reply with nothing outstanding is a
+		# delayed observation. Update the snapshot but claim no fresh readiness.
+		if not records.is_empty():
+			history_records = records
+			history_invalid = invalid
+		history_notice = "Delayed source history received · request outcome unknown."
+		return
+	history_pending = false
+	history_records = records
+	history_invalid = invalid
+	history_status = "empty" if records.is_empty() else "ready"
+	history_notice = "" if invalid <= 0 else "%d malformed record(s) ignored" % invalid
 
 func receive_history_error(frame: Dictionary) -> void:
+	if history_pending: history_pending = false
 	history_status = "error"
 	var message := ResultsModel.text(frame.get("message"), 120)
 	history_notice = message if not message.is_empty() else "Source history unavailable."
 
+## A bounded, opaque correlation key. The raw endpoint is never placed in the
+## public projection: only its SHA-256 (plus the room) is used internally and
+## exposed as the round key, so a long URL can never be clipped into a mismatch.
 func round_source_key() -> String:
 	var client: Node = connection_owner.get_ref() if connection_owner != null else null
-	if not is_instance_valid(client): return "source"
+	if not is_instance_valid(client): return "source".sha256_text()
 	var endpoint := str(client.get("connection_endpoint")) if "connection_endpoint" in client else ""
 	if endpoint.is_empty(): endpoint = "source"
-	return endpoint + "/" + str(client.get("room_id"))
+	return (endpoint + "\n" + str(client.get("room_id"))).sha256_text()
 
-func int_or(value: Variant, fallback: int) -> int:
-	if value is bool: return fallback
-	if value is int or value is float: return int(value) if is_finite(float(value)) else fallback
-	return fallback
+func current_actor_id(client: Node) -> int:
+	if not is_instance_valid(client) or not ("actor_id" in client): return -1
+	var value: Variant = ResultsModel.safe_int(client.get("actor_id"))
+	return int(value) if value != null and int(value) >= 0 else -1
 
 func reset_result_tracking() -> void:
 	round_key = ""
+	round_known = false
 	result = {}
 	result_seen.clear()
 	result_order.clear()
@@ -241,6 +277,7 @@ func reset_result_tracking() -> void:
 
 func reset_history() -> void:
 	history_status = "offline"
+	history_pending = false
 	history_records = []
 	history_invalid = 0
 	history_notice = ""
@@ -260,17 +297,23 @@ func history_connected() -> bool:
 ## Ask the seated source for its recent-match list. Read-only: the request is
 ## the existing `history` verb and no local store is created. Allowed for a
 ## spectator seat too (the source reply is server-wide, not personal data).
+## The wire has no request id, so only one request may be outstanding: `force`
+## cannot bypass a pending request without risking mismatched replies.
 func request_history(force: bool = false) -> void:
 	if not history_connected():
 		history_status = "offline"
+		history_pending = false
 		refresh()
 		return
+	if history_pending: return
 	if history_status == "loading" and not force: return
 	var client: Node = connection_owner.get_ref()
+	history_pending = true
 	history_status = "loading"
 	history_notice = ""
 	history_requested_at = Time.get_ticks_msec()
 	if client.send_frame({"type":"history"}) != OK:
+		history_pending = false
 		history_status = "error"
 		history_notice = "History request could not be sent."
 	refresh()
@@ -317,7 +360,10 @@ func _process(_delta: float) -> void:
 		reset_result_tracking()
 		reset_history()
 		refresh()
-	if history_status == "loading" and history_requested_at >= 0 and Time.get_ticks_msec() - history_requested_at > HISTORY_TIMEOUT_MS:
+	if history_status == "loading" and history_pending and Time.get_ticks_msec() - history_requested_at > HISTORY_TIMEOUT_MS:
+		# No request id: the outcome is unknown. Release the slot so an explicit
+		# refresh can retry; a late reply is later treated as an observation.
+		history_pending = false
 		history_status = "timeout"
 		history_notice = "No source history reply · status unknown."
 		refresh()
@@ -493,7 +539,7 @@ func render_results(list: Node) -> void:
 	add_line(list, headline, 19)
 	var detail := []
 	if result.get("ending") is String: detail.append("Ended · " + str(result.ending))
-	if result.has("time"): detail.append("Elapsed %ds" % int(result.time))
+	if result.has("time"): detail.append("Elapsed " + format_seconds(float(result.time)))
 	if detail.size() > 0: add_line(list, " · ".join(detail), 14)
 	if result.has("frags") or result.has("deaths"):
 		add_line(list, "You · %s frags · %s deaths" % [str(result.get("frags", "?")), str(result.get("deaths", "?"))], 16)
@@ -575,9 +621,13 @@ func history_headline(record: Dictionary) -> String:
 	if record.get("ending") is String: parts.append(str(record.ending))
 	return " · ".join(parts) if parts.size() > 0 else "Source match"
 
+func format_seconds(value: float) -> String:
+	if is_equal_approx(value, roundf(value)): return "%ds" % int(roundf(value))
+	return "%.1fs" % value
+
 func history_meta(record: Dictionary) -> String:
 	var parts := []
-	if record.has("duration"): parts.append("%ds" % int(record.duration))
+	if record.has("duration"): parts.append(format_seconds(float(record.duration)))
 	if record.get("leader") is String: parts.append("Source leader " + str(record.leader))
 	var players: Variant = record.get("players", [])
 	if players is Array and players.size() > 0: parts.append("%d players" % players.size())

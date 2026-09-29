@@ -90,12 +90,22 @@ const historyPath = join(careerRoot, 'history.json');
 const progressionPath = join(careerRoot, 'progression.json');
 
 const sourceLock = JSON.parse(readFileSync('port/contracts/source-lock.json'));
+const derivative = process.env.COCS_SOURCE_DERIVATIVE ? JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)) : null;
+assert.equal(execFileSync(binary, ['--version'], {encoding: 'utf8'}).trim(), sourceLock.godot_version, 'pinned engine version');
 const summary = {port_commit: execFileSync('git', ['rev-parse', 'HEAD'], {encoding: 'utf8'}).trim(),
   source_commit: sourceLock.source_commit,
+  source_derivative_commit: derivative?.derivative_commit ?? null,
   scope: 'One native client hosting a scripted source match on an owned authority; not human acceptance',
   checks: [], status: 'RUNNING'};
 let game, observer, xvfb, expired = false;
-const timer = setTimeout(() => { expired = true; for (const p of children) { try { p.kill('SIGTERM'); } catch {} } }, 210000);
+const timer = setTimeout(() => { expired = true; for (const p of children) { try { p.kill('SIGTERM'); } catch {} } }, 300000);
+const within = (rect, vw, vh) => rect.length === 4 && rect[0] >= -1 && rect[1] >= -1 && rect[0] + rect[2] <= vw + 1 && rect[1] + rect[3] <= vh + 1;
+const compactSettled = samples => {
+  const tail = samples.slice(-2);
+  if (tail.length < 2) return false;
+  const expected = [760 / 1.5, 520 / 1.5];
+  return tail.every(s => s.back?.length === 4 && Math.abs(s.viewport[0] - expected[0]) <= 1.5 && Math.abs(s.viewport[1] - expected[1]) <= 1.5);
+};
 
 try {
   xvfb = spawnOwned('xvfb', 'Xvfb', ['-displayfd', '3', '-screen', '0', '1600x900x24', '-nolisten', 'tcp', '-nolisten', 'unix'], {stdio: ['ignore', 'ignore', 'pipe', 'pipe']});
@@ -128,25 +138,42 @@ try {
     `--career-inbox=${inbox}`, `--career-out=${out}`], {env, stdio: ['ignore', 'pipe', 'pipe']});
   observer.inbox = inbox;
 
-  // The controlled source match resolves on the 60 s clock; allow startup + play.
-  const resolved = await until(() => latest(observer)?.results_seen >= 1 && latest(observer)?.phase === 4, 150000, 'source results');
+  // The controlled source match resolves on the 60 s clock; allow startup + play
+  // and a possible sudden-death extension without forcing an outcome.
+  const resolved = await until(() => { const s = latest(observer); return s && s.results_seen >= 1 && s.phase === 4 ? s : null; }, 240000, 'source results');
   pass('the real session received an accepted source result', resolved.phase === 4);
-  const awarded = await until(() => { const s = latest(observer); return s && s.attributed && Object.keys(s.attributed).length > 0; }, 20000, 'attributed award');
+  const awarded = await until(() => { const s = latest(observer); return s && Object.keys(s.attributed ?? {}).length > 0 ? s : null; }, 30000, 'attributed award');
   pass('the same-round source award was attributed', typeof awarded.attributed.gained === 'number');
   pass('the result renders the source mode and map', awarded.result.mode === 'deathmatch' && Boolean(awarded.result.map));
-  const ready = await until(() => latest(observer)?.category === 'history' && latest(observer)?.history_status === 'ready', 20000, 'history ready');
+  await cmd(observer, {op: 'capture', name: 'career-results'});
+  await until(() => existsSync(resolve(out, 'career-results.png')), 10000, 'results capture');
+  pass('RESULTS tab captured before history', existsSync(resolve(out, 'career-results.png')));
+
+  // Now drive the HISTORY tab through the observer (it no longer auto-selects).
+  await cmd(observer, {op: 'select', category: 'history'});
+  const ready = await until(() => { const s = latest(observer); return s && s.category === 'history' && s.history_status === 'ready' ? s : null; }, 30000, 'history ready');
   pass('the HISTORY tab shows a ready source list', ready.history_count >= 1);
   pass('history is labelled as server-wide', ready.rows.join('\n').includes('Recent server matches'));
   pass('history carries real source facts', ready.rows.join('\n').toLowerCase().includes('deathmatch'));
 
-  // Compact reader geometry at 150%.
+  // Compact reader geometry at 150%: exact logical 760/1.5 x 520/1.5, settled.
   await cmd(observer, {op: 'scale', value: 1.5});
   await cmd(observer, {op: 'resize', width: 760, height: 520});
-  const compact = await until(() => { const s = latest(observer); return s && s.viewport[0] > 0 && s.back.length === 4; }, 5000, 'compact sample');
-  const [bx, by, bw, bh] = compact.back;
+  const compact = await until(() => compactSettled(observer.samples) && latest(observer), 10000, 'compact settled');
   const [vw, vh] = compact.viewport;
-  pass('Back stays inside 760x520 @150%', bx >= -1 && by >= -1 && bx + bw <= vw + 1 && by + bh <= vh + 1);
+  pass('compact viewport is the exact 760x520 logical size @150%', Math.abs(vw - 760 / 1.5) <= 1.5 && Math.abs(vh - 520 / 1.5) <= 1.5);
+  pass('Back stays inside the compact viewport', within(compact.back, vw, vh));
+  pass('the RESULTS and HISTORY tabs stay inside the compact viewport', within(compact.tab_results, vw, vh) && within(compact.tab_history, vw, vh));
+  pass('the reader rows stay within the compact width', compact.rows_bounds.length === 4 && compact.rows_bounds[0] >= -1 && compact.rows_bounds[0] + compact.rows_bounds[2] <= vw + 1);
+  await cmd(observer, {op: 'capture', name: 'career-history-compact'});
+  await until(() => existsSync(resolve(out, 'career-history-compact.png')), 10000, 'compact history capture');
+  pass('HISTORY tab captured at the compact size', existsSync(resolve(out, 'career-history-compact.png')));
+  // Full-size capture so the actual source records are visible, not only the header.
+  await cmd(observer, {op: 'scale', value: 1.0});
+  await cmd(observer, {op: 'resize', width: 1280, height: 800});
   await cmd(observer, {op: 'capture', name: 'career-history'});
+  await until(() => existsSync(resolve(out, 'career-history.png')), 10000, 'history capture');
+  pass('HISTORY records captured at full size', existsSync(resolve(out, 'career-history.png')));
 
   // Wire order: award BEFORE results, as the authority actually sends.
   const awardIndex = wire.findIndex(f => f.dir === 'send' && f.frame.type === 'progression' && 'gained' in f.frame);
@@ -158,7 +185,7 @@ try {
   // No credential material anywhere in the observer output or the projection.
   const dumped = JSON.stringify(samples);
   pass('no ownership token serialized', !dumped.includes('ownerToken') && !dumped.includes('progressToken'));
-  pass('no native script errors', !/SCRIPT ERROR|Parse Error/.test(observer.text + observer.err));
+  pass('no native script/parse/render errors', !/SCRIPT ERROR|Parse Error|ERROR:/.test(observer.text + observer.err));
 
   // The owned server persisted the match beside the career root.
   const persisted = await until(() => { try { return new MatchHistory(historyPath).all().length >= 1; } catch { return false; } }, 10000, 'persisted history');

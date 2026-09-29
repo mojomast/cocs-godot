@@ -89,10 +89,13 @@ func rect(control: Control) -> Array:
 	var r := control.get_global_rect()
 	return [r.position.x, r.position.y, r.size.x, r.size.y]
 
+func rows_control() -> Control:
+	if career == null or career.details == null: return null
+	return career.details.find_child("CatalogRows", true, false) as Control
+
 func row_texts() -> Array:
 	var texts: Array = []
-	if career == null or career.details == null: return texts
-	var rows := career.details.find_child("CatalogRows", true, false)
+	var rows := rows_control()
 	if rows == null: return texts
 	for child: Node in rows.get_children():
 		if child is Label: texts.append((child as Label).text)
@@ -119,12 +122,12 @@ func _process(delta: float) -> bool:
 	# 2. a little play so the source has live actors until it resolves
 	if started and session.phase == 3 and session.client.actor_id >= 0 and fmod(elapsed, 0.5) < delta:
 		session.client.send_input({"forward": true, "fire": fmod(elapsed, 2.0) < 1.0})
-	# 3. open the Career reader after the first accepted result
+	# 3. open the Career reader after the first accepted result. RESULTS first so
+	# the harness can capture it before the HISTORY tab requests the source.
 	if not opened and results_seen >= 1 and career != null:
 		opened = true
 		career.open_panel()
 		career.select_category("results")
-		career.select_category("history")
 	if FileAccess.file_exists(inbox):
 		var c: Variant = JSON.parse_string(FileAccess.get_file_as_string(inbox))
 		if c is Dictionary and int(c.get("id", -1)) > last_command:
@@ -149,6 +152,7 @@ func _process(delta: float) -> bool:
 		"rows": row_texts(),
 		"back": rect(named("CareerBack")), "refresh": rect(named("HistoryRefresh")),
 		"tab_results": rect(named("Tab_results")), "tab_history": rect(named("Tab_history")),
+		"rows_bounds": rect(rows_control()),
 		"viewport": [root.get_visible_rect().size.x, root.get_visible_rect().size.y],
 		"captured": Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,
 		"error": session.label.text if session.phase == -1 else "" }))

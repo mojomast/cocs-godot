@@ -62,5 +62,5 @@ Verification (in the parent's serial test slot):
 `godot --headless --path godot --script res://tests/career/results.gd`,
 `godot --headless --path godot --script res://tests/career/history.gd`,
 `godot --headless --path godot --script res://tests/career/results_history_ui.gd`.
-The native journey is prepared as
-`node port/native-career/results-history-journey.mjs` with a pinned `GODOT_BIN`.
+The native journey is verified as `node port/native-career/results-history-journey.mjs`
+with a pinned `GODOT_BIN` (19 checks; evidence under `port/native-career/evidence/`).

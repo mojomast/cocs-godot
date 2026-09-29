@@ -7,28 +7,41 @@ extends RefCounted
 ## This model never associates a record with the local profile, never guesses an
 ## owner from a name and never turns an unknown stat into a zero.
 ##
-## A malformed top-level `matches` value returns {} so the service can report an
-## error and keep its last known list. A malformed record is counted and skipped;
-## every remaining record keeps whatever known facts it carried.
+## Numeric policy matches results_model.gd: counts are exact safe integers (a
+## fractional or negative count is unknown, never floored or zeroed), while
+## duration/objectiveTime/damage keep their real source precision as finite
+## non-negative decimals. A malformed top-level `matches` value returns {} so the
+## service can report an error and keep its last known list. A malformed record
+## is counted and skipped; every remaining record keeps whatever known facts it
+## carried.
 
 const MAX_RECORDS := 50
 const MAX_PLAYERS := 32
-const SCORE_STAT_KEYS := [
-	"captures", "flagReturns", "flagPickups", "flagDrops", "objectiveTime",
+const SAFE_INT := 9007199254740991
+const SCORE_DECIMAL_KEYS := ["objectiveTime", "damage"]
+const SCORE_COUNT_KEYS := [
+	"captures", "flagReturns", "flagPickups", "flagDrops",
 	"objectiveCaptures", "objectiveNeutralizations", "objectiveContests",
-	"goals", "assists", "revives", "damage", "shots", "hits",
+	"goals", "assists", "revives", "shots", "hits",
 ]
 
-static func number(value: Variant) -> Variant:
-	if value is bool: return null
-	if value is int or value is float:
-		return int(value) if is_finite(float(value)) else null
-	return null
+static func safe_int(value: Variant) -> Variant:
+	if value is bool or not (value is int or value is float): return null
+	var number := float(value)
+	if not is_finite(number) or number != floorf(number): return null
+	if number > float(SAFE_INT) or number < -float(SAFE_INT): return null
+	return int(number)
 
-static func nonneg(value: Variant) -> Variant:
-	var n: Variant = number(value)
-	if n == null or int(n) < 0: return null
-	return int(n)
+static func count(value: Variant) -> Variant:
+	var number: Variant = safe_int(value)
+	if number == null or int(number) < 0: return null
+	return int(number)
+
+static func decimal(value: Variant) -> Variant:
+	if value is bool or not (value is int or value is float): return null
+	var number := float(value)
+	if not is_finite(number) or number < 0.0: return null
+	return number
 
 static func text(value: Variant, limit: int) -> String:
 	if not value is String: return ""
@@ -62,11 +75,11 @@ static func project_record(raw: Variant) -> Dictionary:
 	if not room.is_empty(): out.room = room
 	var ended := text(raw.get("endedBy"), 40)
 	if not ended.is_empty(): out.ending = ended
-	var duration: Variant = nonneg(raw.get("duration"))
+	var duration: Variant = decimal(raw.get("duration"))
 	if duration != null: out.duration = duration
-	var frag_limit: Variant = nonneg(raw.get("fragLimit"))
+	var frag_limit: Variant = count(raw.get("fragLimit"))
 	if frag_limit != null: out.frag_limit = frag_limit
-	var time_limit: Variant = nonneg(raw.get("timeLimit"))
+	var time_limit: Variant = count(raw.get("timeLimit"))
 	if time_limit != null: out.time_limit = time_limit
 	var leader := text(raw.get("leader"), 80)
 	if not leader.is_empty(): out.leader = leader
@@ -90,17 +103,20 @@ static func project_player(raw: Variant) -> Dictionary:
 	if not character.is_empty(): out.character = character
 	var harness := text(raw.get("harness"), 40)
 	if not harness.is_empty(): out.harness = harness
-	var frags: Variant = nonneg(raw.get("frags"))
+	var frags: Variant = count(raw.get("frags"))
 	if frags != null: out.frags = frags
-	var deaths: Variant = nonneg(raw.get("deaths"))
+	var deaths: Variant = count(raw.get("deaths"))
 	if deaths != null: out.deaths = deaths
-	var goals: Variant = nonneg(raw.get("goals"))
+	var goals: Variant = count(raw.get("goals"))
 	if goals != null: out.goals = goals
 	var stats: Variant = raw.get("scoreStats")
 	if stats is Dictionary:
 		var kept: Dictionary = {}
-		for key: String in SCORE_STAT_KEYS:
-			var amount: Variant = nonneg(stats.get(key))
+		for key: String in SCORE_DECIMAL_KEYS:
+			var amount: Variant = decimal(stats.get(key))
+			if amount != null and amount > 0.0: kept[key] = amount
+		for key: String in SCORE_COUNT_KEYS:
+			var amount: Variant = count(stats.get(key))
 			if amount != null and int(amount) > 0: kept[key] = amount
 		if not kept.is_empty(): out.score_stats = kept
 	if out.is_empty(): return {}
