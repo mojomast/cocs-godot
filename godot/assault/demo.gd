@@ -10,11 +10,12 @@ const MAPS := ["tidal-citadel", "sunscar-convoy"]
 var assault := AssaultState.new()
 var sectors := AssaultRenderer.new()
 var fleet := Fleet.new()
+var scoreboard := preload("res://ui/scoreboard.gd").new()
 var vehicle_controls := VehicleControls.new()
 var chase := Chase.new()
 var vehicle: Dictionary = {}
 var vehicle_identity := ""
-var round_seconds := 180
+var round_seconds := 60
 var sector_count := 3
 var objective_label := Label.new()
 var notice := ""
@@ -35,7 +36,7 @@ func _ready() -> void:
 		panel.add_child(widget)
 		widget.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	selector.hide()
-	for node: Node in [pickups, presentation, combat, client, sectors, fleet]: add_child(node)
+	for node: Node in [pickups, presentation, combat, client, sectors, fleet, scoreboard]: add_child(node)
 	presentation.interpolate_remote = true
 	selected_mode = "assault"
 	var selected := MAPS[0]
@@ -45,7 +46,7 @@ func _ready() -> void:
 		if arg.begins_with("--mode=") and arg != "--mode=assault":
 			on_error("This scene requires mode assault")
 			return
-		for setting: Dictionary in [{"flag":"--bots=", "min":0, "max":8}, {"flag":"--round-seconds=", "min":60, "max":900}, {"flag":"--sectors=", "min":1, "max":9}]:
+		for setting: Dictionary in [{"flag":"--bots=", "min":0, "max":8}, {"flag":"--round-seconds=", "min":60, "max":900}, {"flag":"--score-limit=", "min":1, "max":9}]:
 			if not arg.begins_with(setting.flag): continue
 			var value := arg.trim_prefix(setting.flag)
 			if not value.is_valid_int() or int(value) < setting.min or int(value) > setting.max:
@@ -54,7 +55,7 @@ func _ready() -> void:
 			match setting.flag:
 				"--bots=": selected_bot_count = int(value)
 				"--round-seconds=": round_seconds = int(value)
-				"--sectors=": sector_count = int(value)
+				"--score-limit=": sector_count = int(value)
 	if not catalog.open():
 		on_error(catalog.error)
 		return
@@ -120,14 +121,18 @@ func on_reconnect_outcome(resumed: bool, message: String) -> void:
 	super.on_reconnect_outcome(resumed, message)
 
 func observe_assault(frame: Dictionary) -> bool:
-	if not frame.get("state") is Dictionary or not assault.apply_state(frame.state):
+	if not frame.get("state") is Dictionary:
+		on_error("Malformed Assault snapshot; presentation cleared")
+		return false
+	var state: Dictionary = frame.state
+	var config: Variant = state.get("config")
+	if state.get("mapId") != current_id or not config is Dictionary or config.get("mode") != "assault" or config.get("botCount") != selected_bot_count or config.get("fragLimit") != sector_count or config.get("timeLimit") != round_seconds or not state.get("over") is bool or not state.has("winner") or not AssaultState.team(state.winner) or not AssaultState.number(state.get("time")) or not state.get("actors") is Array or not state.get("vehicles") is Array or not assault.apply_state(state):
 		on_error("Malformed Assault snapshot; presentation cleared")
 		return false
 	if not fleet.apply_state(frame.state, client.actor_id):
 		on_error("Malformed Assault vehicle snapshot; presentation cleared")
 		return false
-	if AssaultState.number(frame.state.get("time")):
-		source_remaining = maxf(0, round_seconds-float(frame.state.time))
+	source_remaining = maxf(0, round_seconds-float(state.time))
 	sectors.apply_sector(assault.active_sector())
 	return true
 

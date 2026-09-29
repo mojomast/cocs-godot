@@ -2,8 +2,8 @@
 
 Scene: `res://assault/demo.tscn`. The integration lead owns launcher/routes and scoreboard wiring.
 
-Arguments: `--endpoint=ws://HOST:PORT --map=tidal-citadel --mode=assault --bots=2 --round-seconds=180 --sectors=3`.
-Maps are restricted to `tidal-citadel` and `sunscar-convoy`; bots 0–8, seconds 60–900, sectors 1–9. The sector count is sent as source `fragLimit`, default 3. Configuration must be echoed before start. Enter requests a source rematch after results. Setup/start time out through the shared session guard; missing live snapshots clear presentation immediately at staleness and fail after 10 seconds.
+Arguments: `--endpoint=ws://HOST:PORT --map=tidal-citadel --mode=assault --bots=2 --round-seconds=60 --score-limit=3`.
+Maps are restricted to `tidal-citadel` and `sunscar-convoy`; bots 0–8, seconds 60–900 (default 60), sectors 1–9. The sector count is sent as source `fragLimit`, default 3. Configuration must be echoed before start. Enter requests a source rematch after results. Setup/start time out through the shared session guard; missing live snapshots clear presentation immediately at staleness and fail after 10 seconds.
 
 `state.gd` reads `state.objectives.kind == assault`, active/attacker/defender/breached/winner and bounded zones with id/x/y/z/radius/owner/captureTeam/progress/captureSeconds. `contested` is optional. Team 0 attacks; team 1 defends. The only world marker is the active source sector. Source snapshots own all progress and outcomes; events provide temporary notices only. No native capture timer, winner inference, or countdown extrapolation exists.
 

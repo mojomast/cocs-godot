@@ -1,6 +1,8 @@
 extends RefCounted
 ## Read-only wire projection. No capture clocks, event mutation, or winner inference.
 var objective: Dictionary = {}
+var result_team: Variant = null
+var over_reason := ""
 var error := ""
 
 static func number(value: Variant) -> bool:
@@ -11,6 +13,8 @@ static func team(value: Variant) -> bool:
 
 func clear_round() -> void:
 	objective.clear()
+	result_team = null
+	over_reason = ""
 	error = ""
 
 func reject(message: String) -> bool:
@@ -37,6 +41,8 @@ func apply_state(state: Dictionary) -> bool:
 			if not zone.has(key) or not team(zone[key]): return reject("Invalid sector team")
 	# `contested` is not part of the required Assault wire schema.
 	objective = value.duplicate(true)
+	result_team = state.get("winner")
+	over_reason = str(state.get("overReason", "")) if state.get("overReason") != null else ""
 	error = ""
 	return true
 
@@ -49,8 +55,8 @@ func text(local_team: Variant, complete: bool) -> String:
 	var role := "ATTACK" if local_team == 0 else ("DEFEND" if local_team == 1 else "SPECTATOR")
 	var heading := "ASSAULT · %s · Team 0 attacks / Team 1 defends" % role
 	if complete:
-		var result := "No winner reported" if objective.winner == null else ("Attackers win" if objective.winner == 0 else "Defenders win")
-		return heading + "\nSOURCE RESULTS · " + result
+		var result := "No winner reported" if result_team == null else ("Attackers win" if result_team == 0 else "Defenders win")
+		return heading + "\nSOURCE RESULTS · " + result + (" · " + over_reason.to_upper() if not over_reason.is_empty() else "")
 	var sector := active_sector()
 	if sector.is_empty(): return heading + "\nAwaiting source results"
 	return heading + "\nSector %d/%d · %s · %.1f%%\nAttack alone: %.1fs · Defend alone: full drain · Both: 0.6× drain · Empty: retains" % [int(objective.active)+1, objective.zones.size(), str(sector.id).to_upper(), float(sector.progress), float(sector.captureSeconds)]

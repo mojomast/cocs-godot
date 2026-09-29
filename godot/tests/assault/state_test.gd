@@ -6,7 +6,7 @@ func fixture(count: int = 3) -> Dictionary:
 	var zones: Array = []
 	for index in range(count):
 		zones.append({"id":"sector-%d" % index, "x":index*10, "y":2, "z":-3, "radius":3.5, "owner":null, "captureTeam":null, "progress":0, "captureSeconds":6})
-	return {"config":{"mode":"assault"}, "objectives":{"kind":"assault", "active":0, "attacker":0, "defender":1, "breached":false, "winner":null, "zones":zones}}
+	return {"config":{"mode":"assault"}, "winner":null, "objectives":{"kind":"assault", "active":0, "attacker":0, "defender":1, "breached":false, "winner":null, "zones":zones}}
 
 func _init() -> void:
 	var model := State.new()
@@ -58,10 +58,12 @@ func _init() -> void:
 	assert(model.active_sector().is_empty())
 	assert("No winner reported" in model.text(0, true))
 	frame.objectives.winner = 0
+	frame.winner = 0
 	assert(model.apply_state(frame))
 	assert("Attackers win" in model.text(0, true))
 	frame = fixture()
 	frame.objectives.winner = 1
+	frame.winner = 1
 	assert(model.apply_state(frame))
 	assert("Defenders win" in model.text(1, true))
 	model.clear_round()

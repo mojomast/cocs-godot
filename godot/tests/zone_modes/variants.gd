@@ -78,6 +78,14 @@ func _initialize() -> void:
 	malformed.objectives.holdTeam = 0
 	check(not adapter.apply(malformed,7,holdout.mapId,"holdout") and adapter.projection.is_empty(), "invalid winner-only hold team clears stale")
 	check(not adapter.apply(holdout,7,"ember-crucible","holdout"), "map mismatch clears projection")
+	var combined := holdout.duplicate(true)
+	combined.config.mode = "combined-arms"
+	combined.objectives.erase("holdCount")
+	combined.objectives.erase("holdSeconds")
+	combined.objectives.erase("holdProgress")
+	combined.objectives.erase("holdTeam")
+	check(adapter.apply(combined,7,combined.mapId,"combined-arms") and "COMBINED ARMS" in adapter.text().title, "exact combined-arms config accepts source domination objective")
+	check(not adapter.apply(combined,7,combined.mapId,"domination") and adapter.projection.is_empty(), "cannot alias combined-arms snapshot as domination")
 	renderer.free()
 	print("ZONE_VARIANTS_OK checks=", checks)
 	quit()

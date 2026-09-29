@@ -28,11 +28,11 @@ func clear() -> void:
 
 func apply(state: Dictionary, local_id: int, map_id: String, mode: String) -> bool:
 	clear()
-	if mode not in ["koth", "domination", "uplink", "holdout"] or state.get("mapId") != map_id:
+	if mode not in ["koth", "domination", "uplink", "holdout", "combined-arms"] or state.get("mapId") != map_id:
 		return false
 	var config: Variant = state.get("config")
 	var objective: Variant = state.get("objectives")
-	var kind := "koth" if mode == "uplink" else ("domination" if mode == "holdout" else mode)
+	var kind := "koth" if mode == "uplink" else ("domination" if mode in ["holdout", "combined-arms"] else mode)
 	if not config is Dictionary or config.get("mode") != mode or not objective is Dictionary or objective.get("kind") != kind:
 		return false
 	var zones: Variant = objective.get("zones")
@@ -114,7 +114,7 @@ func target() -> Dictionary:
 func text() -> Dictionary:
 	if projection.is_empty(): return {"title":error, "detail":"", "hint":""}
 	var p := projection
-	var names := {"koth":"KING OF THE HILL", "domination":"DOMINATION", "uplink":"UPLINK", "holdout":"HOLDOUT"}
+	var names := {"koth":"KING OF THE HILL", "domination":"DOMINATION", "uplink":"UPLINK", "holdout":"HOLDOUT", "combined-arms":"COMBINED ARMS"}
 	var title := "%s · YOU: TEAM %d · %.1f : %.1f · %.0fs remaining" % [names[p.mode], p.team, p.scores[p.team], p.scores[1-p.team], maxf(0, p.limit-p.time)]
 	if p.over: title = "RESULTS · " + ("DRAW" if p.winner == null else ("VICTORY" if int(p.winner) == p.team else "DEFEAT")) + " · %.1f : %.1f" % [p.scores[p.team], p.scores[1-p.team]]
 	var lines: PackedStringArray = []

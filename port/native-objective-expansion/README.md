@@ -28,4 +28,5 @@ node --test tools/godot-package/objective_routes.test.mjs tools/godot-package/ro
 ```
 
 Godot projection fixtures requiring the shared serial runtime slot:
-`godot/tests/zone_modes/variants.gd` and `godot/tests/assault/variants.gd`.
+`godot/tests/zone_modes/variants.gd`, `godot/tests/assault/state_test.gd`,
+and `godot/tests/objective_scoreboard.gd`.
