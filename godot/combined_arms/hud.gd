@@ -68,3 +68,16 @@ func update(a: Dictionary, v: Dictionary, near: Dictionary, engaged: bool, phase
 	if phase != "active": prompt.text = error if not error.is_empty() else phase.capitalize()
 	elif age >= 0.5: prompt.text = "Snapshots stale — controls released"
 	elif not engaged: prompt.text = "Enter  •  Capture fresh controls"
+
+func objective(state: Dictionary, host: bool) -> void:
+	var objective_state: Variant = state.get("objectives")
+	if objective_state is Dictionary and objective_state.get("kind") == "domination":
+		var scores: Dictionary = state.get("teamScores", {})
+		var zones: Array = objective_state.get("zones", [])
+		var line := "ZONE CONTROL  %s : %s  /  %s limit  •  %d zones" % [scores.get("0", scores.get(0, "?")), scores.get("1", scores.get(1, "?")), state.get("config", {}).get("fragLimit", "?"), zones.size()]
+		info.text += "\n" + line
+	if phase_text_results(state):
+		prompt.text = "Results · Enter to request rematch" if host else "Results · Waiting for host rematch"
+
+func phase_text_results(state: Dictionary) -> bool:
+	return state.get("over", false) == true

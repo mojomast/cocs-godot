@@ -13,6 +13,7 @@ const SessionBridge = preload("res://vehicles/session_bridge.gd")
 var vehicle_bridge := SessionBridge.new()
 var join_room_id := ""
 var wait_for_players := 1
+var bot_count := 0
 var roster: Dictionary = {}
 const Motion = preload("res://world/control_math.gd")
 const LocalMotion = preload("res://world/local_motion.gd")
@@ -50,6 +51,13 @@ func _ready() -> void:
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
 		if arg.begins_with("--join-room="): join_room_id = arg.trim_prefix("--join-room=").strip_edges()
 		if arg.begins_with("--wait-for-players="): wait_for_players = clampi(int(arg.trim_prefix("--wait-for-players=")), 1, 16)
+		if arg.begins_with("--bots="):
+			var value := arg.trim_prefix("--bots=")
+			if not value.is_valid_int() or value.to_int() < 0 or value.to_int() > 16:
+				push_error("Combined Arms requires --bots=0..16")
+				get_tree().quit(2)
+				return
+			bot_count = value.to_int()
 	if map_id != "sunscar-convoy" or endpoint.is_empty():
 		push_error("Require --map=sunscar-convoy --endpoint=ws://HOST:PORT")
 		get_tree().quit(2)
@@ -127,7 +135,7 @@ func on_lobby(frame: Dictionary) -> void:
 	if frame.get("hostId", -1) != net.peer_id or net.spectating: return
 	if not configured:
 		configured = true
-		checked(net.configure_match("combined-arms", 0))
+		checked(net.configure_match("combined-arms", bot_count))
 	elif frame.get("config") != null and not start_sent:
 		if frame.config.get("mode") != "combined-arms":
 			fail("Authority returned a different match mode")
@@ -153,6 +161,7 @@ func on_results(frame: Dictionary) -> void:
 	release()
 	if not net.spectating: checked(net.send_input(controls.command(yaw, pitch, false, false)))
 	if phase != "error": phase = "results"
+	start_sent = false
 	graphics.reset()
 
 func on_snapshot(frame: Dictionary) -> void:
@@ -176,6 +185,9 @@ func on_snapshot(frame: Dictionary) -> void:
 		yaw = float(actor.get("yaw", 0))
 		pitch = float(actor.get("pitch", 0))
 		identity = next
+	# Passenger facing is source chassis heading - PI on every sync; no free
+	# passenger yaw exists in the authority or snapshot contract.
+	if actor.get("vehicleSeat") == "passenger": yaw = float(actor.get("yaw", yaw))
 	if vehicle.is_empty() and actor.get("vehicleId") == null and Lease.alive(actor):
 		local_motion.ingest(chase.infantry(actor, yaw, pitch).eye, true, Time.get_ticks_usec() / 1000000.0)
 	else:
@@ -203,8 +215,13 @@ func _input(event: InputEvent) -> void:
 		var gain := 0.003 * SettingsAccess.sensitivity() * (0.85 if aim_requested() else 1.0)
 		var delta := MouseMotion.raw_delta(event)
 		var look := Motion.look(yaw-delta.x*gain, pitch-delta.y*gain)
-		yaw = look.x
+		if actor.get("vehicleSeat") != "passenger": yaw = look.x
 		pitch = look.y
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_ENTER and phase == "results" and join_room_id.is_empty() and not net.spectating and roster.get("hostId", -1) == net.peer_id:
+		if checked(net.send_frame({"type":"start"})):
+			start_sent = true
+			phase = "starting"
+			phase_age = 0
 	update_graphics()
 
 func _notification(what: int) -> void:
@@ -245,6 +262,7 @@ func _process(delta: float) -> void:
 		world.camera.look_at(pose.target)
 	update_graphics()
 	hud.update(actor, vehicle, Lease.nearby(state, actor), controls.engaged, phase, age, error)
+	hud.objective(state, join_room_id.is_empty() and not net.spectating and roster.get("hostId", -1) == net.peer_id)
 	if phase == "waiting": hud.info.text += "\nRoom %s · waiting for host / %d connected players" % [net.room_id, wait_for_players]
 
 func _exit_tree() -> void:

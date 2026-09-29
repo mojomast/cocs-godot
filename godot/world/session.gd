@@ -247,7 +247,7 @@ func update_look(relative: Vector2) -> void:
 	if not can_capture_pointer() or not relative.is_finite(): return
 	var gain := 0.003 * SettingsAccess.sensitivity() * (0.85 if aim_requested() else 1.0)
 	var angles := ControlMath.look(yaw - relative.x * gain, pitch - relative.y * gain)
-	yaw = angles.x
+	if vehicle_bridge.actor.get("vehicleSeat") != "passenger": yaw = angles.x
 	pitch = angles.y
 
 const SnapshotWatch = preload("res://net/snapshot_watch.gd")
@@ -667,6 +667,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		var angles := ControlMath.look(float(actor.yaw), float(actor.pitch))
 		yaw = angles.x
 		pitch = angles.y
+	if vehicle_bridge.actor.get("vehicleSeat") == "passenger": yaw = float(actor.get("yaw", yaw))
 		initial_position = camera.position
 		received_pose = true
 	pose_actor_id = client.actor_id

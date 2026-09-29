@@ -57,7 +57,8 @@ func adapt(packet: Dictionary, allowed: bool, jump_is_edge: bool = false) -> Dic
 	return result
 
 func crew_visibility(presentation: Node) -> void:
-	# Presentation reapplies ordinary visibility each snapshot; hide only validated crew.
+	# Source mounted actors are still individually targetable. Their snapshot seat
+	# anchors are already drawn by Presentation; never blanket-hide hull riders.
 	for member: Dictionary in state.get("actors", []):
 		if not Lease.vehicle_for(state, member).is_empty() and presentation.actors.has(int(member.id)):
-			presentation.actors[int(member.id)].hide()
+			presentation.actors[int(member.id)].visible = int(member.id) != presentation.local_actor_id and Lease.alive(member)
