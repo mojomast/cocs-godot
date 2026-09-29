@@ -182,3 +182,12 @@ the integrated crew fixture; the UI worker investigates real-click and Home
 contracts. Parent `e66a2197` keeps on-foot respawn releases in the infantry
 lifecycle while preserving all mounted lease transitions. Final clean aggregate,
 server/lint and package acceptance are still required.
+
+The integrated crew failure was traced to a physically queued entry arriving
+after previously held movement had already carried the passenger out of range;
+source correctly refused it. `723bc8b1` keeps natural input but waits for the
+released movement packet's source ACK and stationary pose before E, with bounded
+physical reapproach on a miss. Its rerun is pending the serial slot. The lobby
+fixture's synthetic click now includes complete pointer/mask coordinates and
+fails promptly instead of indexing a missing result (`d85c4701`). Neither
+repair changes source admission or seat assignment.
