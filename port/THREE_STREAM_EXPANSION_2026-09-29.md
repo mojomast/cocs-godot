@@ -110,8 +110,16 @@ aggregate registration remain with the parent integration owner.
   bytes, process cleanup and private-state cleanup were verified in both passes.
 - Audiovisual lane: initial commit `7da98bad` packages 37 original orchestral Ogg
   samples, all 36 existing announcer takes (12 phrases) and the delivered Moth
-  ritual bed. The lead is completing actual session/menu/weather-owner hooks
-  before runtime checks. Initial asset packaging alone is not playback evidence.
+  ritual bed. Final fix `87c13766` (integrated as `b8127f4a`, identical native
+  bytes) passed the pinned import and all ten audiovisual/weather fixtures plus
+  selective legacy settings, combat-audio, Horde and LATTICE regressions. Source
+  weather vectors and original asset hashes passed. A private ALSA null sink
+  captured 44,100 nonzero native DSP frames (peak 0.2551); two seeded captures had
+  distinct pitch plans and PCM zero-crossing rates. Dummy failed the negative
+  control. The same-state weather render differed by 18 pixels. These are DSP
+  and renderer proofs, not human mix/hardware/Windows acceptance. All 163 retained
+  artifacts, including initial silent-capture and shutdown-resource failures,
+  are indexed in `native-audiovisual/evidence/lane/manifest.json`.
 - Package integration: explicit audio JSON export filters, asset provenance and
   CC0 music notices; external PCK probes for stream types, lengths and loop
   bounds; expanded graphical startup coverage for every new objective map/mode
@@ -153,3 +161,7 @@ fixtures are present. Source `game/`, `server/` and `public/` bytes are unchange
 from the accepted pre-expansion `04d940a4` baseline. The native CI time budget is
 45 minutes for the expanded serial gate inventory; this is a deadline, not a
 claim that unrun gates have passed.
+
+The three focused lanes have now released their slots. Parent integration
+`b8127f4a` is running the **271-gate** full native suite in the isolated validation
+checkout. No consolidated export has yet been produced at this checkpoint.

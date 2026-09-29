@@ -32,7 +32,7 @@ then-current preview limitations.
 | Player-flow polish | Compact Career state/XP clarity, navigation/focus, explicit Retry and next-match loadout flow | Captured source flow 24 checks; compact pending/unknown/confirmed/results journey 34 checks; failures retained |
 | Objective expansion | Uplink, Holdout and Assault, source-aware ranking and generated launch routes | All eight pairs passed normal-rate Room timeout/results/rematch; controlled-placement completion passed for each mode; 53 Node checks and four Godot fixtures passed; final post-audio composition pending aggregate |
 | Vehicle expansion | Five chassis, source driver/gunner/passenger controls, visible crew, shared vehicle bridge and Combined Arms guest composition | Two three-native-client natural-entry Puma journeys passed: 27.842 m driving, 84 gunner volleys, passenger fire, one brake edge; five-kind/seat and Hornet coverage separately arranged; post-audio aggregate pending |
-| Audio/weather | Native score, existing announcer takes, event/vehicle cues, ambience/weather and lifecycle/settings integration | Asset hashes checked; native playback, weather and lifecycle verification pending serial slot |
+| Audio/weather | Native score, existing announcer takes, event/vehicle cues, ambience/weather and lifecycle/settings integration | Ten native fixtures plus legacy regressions passed; ALSA-null native PCM and distinct seeded output captured; same-state weather render passed; human listening/hardware/Windows unclaimed |
 | Consolidated packages | Commit-bound inputs, audio/resource probes and expanded extracted destination startup cases | Windows/Linux builds pending final integrated checks |
 
 ### Graphics expansion — September 22, 2026

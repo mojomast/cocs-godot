@@ -1,0 +1,40 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: Cannot infer the type of "boosting" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://audio/vehicle_service.gd:72)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://audio/av_service.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://sports/av_lifecycle.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/audio_new/standalone_lifecycle.gd:0)
+ERROR: Failed to load script "res://tests/audio_new/standalone_lifecycle.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:3041)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _ready (res://audio/av_service.gd:39)
+          GDScript backtrace (most recent call first):
+              [0] _ready (res://audio/av_service.gd:39)
+              [1] configure (res://sports/av_lifecycle.gd:23)
+              [2] run (res://tests/audio_new/standalone_lifecycle.gd:15)
+SCRIPT ERROR: Invalid call. Nonexistent function 'bind' in base 'Nil'.
+          at: bind_session (res://audio/av_service.gd:64)
+          GDScript backtrace (most recent call first):
+              [0] bind_session (res://audio/av_service.gd:64)
+              [1] begin (res://sports/av_lifecycle.gd:36)
+              [2] run (res://tests/audio_new/standalone_lifecycle.gd:16)
+SCRIPT ERROR: Invalid call. Nonexistent function 'stop_all' in base 'Nil'.
+          at: start_round (res://audio/av_service.gd:81)
+          GDScript backtrace (most recent call first):
+              [0] start_round (res://audio/av_service.gd:81)
+              [1] begin (res://sports/av_lifecycle.gd:37)
+              [2] run (res://tests/audio_new/standalone_lifecycle.gd:16)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] snapshot (res://sports/av_lifecycle.gd:41)
+              [2] run (res://tests/audio_new/standalone_lifecycle.gd:20)
+SCRIPT ERROR: Assertion failed.
+          at: run (res://tests/audio_new/standalone_lifecycle.gd:21)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/audio_new/standalone_lifecycle.gd:21)

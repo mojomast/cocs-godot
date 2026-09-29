@@ -1,0 +1,17 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+INDEPENDENT_AUDIO_EVENTS_STEP=assault:construct
+INDEPENDENT_AUDIO_EVENTS_STEP=assault:ready
+INDEPENDENT_AUDIO_EVENTS_STEP=assault:start
+INDEPENDENT_AUDIO_EVENTS_STEP=assault:pre_snapshot
+INDEPENDENT_AUDIO_EVENTS_STEP=assault:snapshot
+INDEPENDENT_AUDIO_EVENTS_STEP=zone:construct
+INDEPENDENT_AUDIO_EVENTS_STEP=zone:ready
+INDEPENDENT_AUDIO_EVENTS_STEP=zone:start
+INDEPENDENT_AUDIO_EVENTS_STEP=zone:pre_snapshot
+INDEPENDENT_AUDIO_EVENTS_STEP=zone:snapshot
+INDEPENDENT_AUDIO_EVENTS_OK assault=1 zone=1
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:804)

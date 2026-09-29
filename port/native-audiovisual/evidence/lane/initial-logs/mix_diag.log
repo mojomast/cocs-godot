@@ -1,0 +1,16 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+DIAG_STATUS {"cue_ok":true,"motif_ok":true,"status":{"active_voices":5,"announcer_active":true,"asset_bytes":3068476,"bar":0,"dropped_cues":0,"dropped_notes":0,"error":"","escalation":0,"last_cue_id":"objective","last_response":"","loaded_failures":0,"loaded_streams":73,"mode":"default","outcome":"","samples":37,"scene":"combat","section":"intro","state":"running","step":1,"takes":12,"tension":0.0,"variation":137}}
+DIAG_BUS 0 name=Master volume=1.0 mute=false send=
+DIAG_BUS 1 name=Effects volume=1.0 mute=false send=Master
+DIAG_BUS 2 name=Score volume=1.0 mute=false send=Master
+DIAG_BUS 3 name=Ambience volume=1.0 mute=false send=Master
+DIAG_BUS 4 name=Announcer volume=1.0 mute=false send=Master
+DIAG_PLAYER 0 bus=Score db=-18.6362819671631 pitch=1.12246203422546 stream=<AudioStreamOggVorbis#-9223371999928121542> len=2.08149671554565
+DIAG_PLAYER 1 bus=Score db=-22.8533496856689 pitch=1.0 stream=<AudioStreamOggVorbis#-9223371999743572164> len=3.01077103614807
+DIAG_PLAYER 2 bus=Score db=-19.8279972076416 pitch=1.0 stream=<AudioStreamOggVorbis#-9223371998082627762> len=2.99115657806396
+DIAG_PLAYER 3 bus=Score db=-27.5350151062012 pitch=1.0 stream=<AudioStreamOggVorbis#-9223371995129837714> len=8.0
+DIAG_PLAYER 4 bus=Score db=-19.3315258026123 pitch=1.0 stream=<AudioStreamOggVorbis#-9223371994022541446> len=1.22473919391632
+DIAG_ANNOUNCER playing=true stream=<AudioStreamWAV#-9223371988133738588>
+DIAG_MOTIF bus=Effects db=-14.8945503234863 stream=<AudioStreamWAV#-9223371986841892902>
+DIAG_CAPTURE frames=368640 peak=0.0 voices=0 dropped_notes=0 load_failures=0

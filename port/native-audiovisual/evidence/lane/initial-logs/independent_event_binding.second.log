@@ -1,0 +1,56 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: Cannot infer the type of "boosting" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://audio/vehicle_service.gd:72)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://audio/av_service.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://world/session.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://assault/demo.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/audio_new/assault_no_network.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/audio_new/independent_event_binding.gd:0)
+ERROR: Failed to load script "res://tests/audio_new/independent_event_binding.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:3041)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _ready (res://audio/av_service.gd:39)
+          GDScript backtrace (most recent call first):
+              [0] _ready (res://audio/av_service.gd:39)
+              [1] av_ensure (res://world/session.gd:23)
+              [2] av_start (res://world/session.gd:31)
+              [3] run (res://tests/audio_new/independent_event_binding.gd:17)
+SCRIPT ERROR: Invalid call. Nonexistent function 'bind' in base 'Nil'.
+          at: bind_session (res://audio/av_service.gd:64)
+          GDScript backtrace (most recent call first):
+              [0] bind_session (res://audio/av_service.gd:64)
+              [1] av_start (res://world/session.gd:38)
+              [2] run (res://tests/audio_new/independent_event_binding.gd:17)
+SCRIPT ERROR: Invalid call. Nonexistent function 'stop_all' in base 'Nil'.
+          at: start_round (res://audio/av_service.gd:81)
+          GDScript backtrace (most recent call first):
+              [0] start_round (res://audio/av_service.gd:81)
+              [1] av_start (res://world/session.gd:39)
+              [2] run (res://tests/audio_new/independent_event_binding.gd:17)
+SCRIPT ERROR: Invalid call. Nonexistent function 'stop_all' in base 'Nil'.
+          at: suspend (res://audio/av_service.gd:255)
+          GDScript backtrace (most recent call first):
+              [0] suspend (res://audio/av_service.gd:255)
+              [1] on_events (res://assault/demo.gd:155)
+              [2] run (res://tests/audio_new/independent_event_binding.gd:21)
+SCRIPT ERROR: Invalid call. Nonexistent function 'status' in base 'Nil'.
+          at: status (res://audio/av_service.gd:261)
+          GDScript backtrace (most recent call first):
+              [0] status (res://audio/av_service.gd:261)
+              [1] run (res://tests/audio_new/independent_event_binding.gd:22)
+SCRIPT ERROR: Invalid access to property or key 'routing' on a base object of type 'Dictionary'.
+          at: run (res://tests/audio_new/independent_event_binding.gd:22)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/audio_new/independent_event_binding.gd:22)
+ERROR: Assault event-binding fixture setup: Input could not be queued. Relaunch to reconnect.
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] on_error (res://tests/audio_new/assault_no_network.gd:7)
+       [1] _process (res://world/session.gd:899)
+       [2] _process (res://assault/demo.gd:200)

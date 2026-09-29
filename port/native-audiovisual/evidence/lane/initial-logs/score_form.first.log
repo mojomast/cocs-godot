@@ -1,0 +1,12 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: Cannot infer the type of "pitch" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://audio/music_service.gd:353)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/audio_new/score_form.gd:0)
+ERROR: Failed to load script "res://tests/audio_new/score_form.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:3041)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: run (res://tests/audio_new/score_form.gd:10)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/audio_new/score_form.gd:10)

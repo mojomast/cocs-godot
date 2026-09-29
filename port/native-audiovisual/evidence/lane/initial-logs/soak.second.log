@@ -1,0 +1,519 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: Cannot infer the type of "boosting" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://audio/vehicle_service.gd:72)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://audio/av_service.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/audio_new/soak.gd:0)
+ERROR: Failed to load script "res://tests/audio_new/soak.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:3041)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: _ready (res://audio/av_service.gd:39)
+          GDScript backtrace (most recent call first):
+              [0] _ready (res://audio/av_service.gd:39)
+              [1] run (res://tests/audio_new/soak.gd:14)
+SCRIPT ERROR: Invalid call. Nonexistent function 'bind' in base 'Nil'.
+          at: bind_session (res://audio/av_service.gd:64)
+          GDScript backtrace (most recent call first):
+              [0] bind_session (res://audio/av_service.gd:64)
+              [1] run (res://tests/audio_new/soak.gd:17)
+SCRIPT ERROR: Invalid call. Nonexistent function 'stop_all' in base 'Nil'.
+          at: start_round (res://audio/av_service.gd:81)
+          GDScript backtrace (most recent call first):
+              [0] start_round (res://audio/av_service.gd:81)
+              [1] run (res://tests/audio_new/soak.gd:18)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:21)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'event_plan' in base 'Nil'.
+          at: apply_events (res://audio/av_service.gd:207)
+          GDScript backtrace (most recent call first):
+              [0] apply_events (res://audio/av_service.gd:207)
+              [1] run (res://tests/audio_new/soak.gd:28)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] run (res://tests/audio_new/soak.gd:30)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: tick (res://audio/av_service.gd:240)
+          GDScript backtrace (most recent call first):
+              [0] tick (res://audio/av_service.gd:240)
+              [1] run (res://tests/audio_new/soak.gd:31)
+SCRIPT ERROR: Invalid call. Nonexistent function 'status' in base 'Nil'.
+          at: status (res://audio/av_service.gd:261)
+          GDScript backtrace (most recent call first):
+              [0] status (res://audio/av_service.gd:261)
+              [1] run (res://tests/audio_new/soak.gd:32)
+SCRIPT ERROR: Invalid access to property or key 'routing' on a base object of type 'Dictionary'.
+          at: run (res://tests/audio_new/soak.gd:33)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/audio_new/soak.gd:33)

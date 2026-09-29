@@ -1,0 +1,5 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+Can't load the script "res://tests/audio_new/zone_no_network.gd" as it doesn't inherit from SceneTree or MainLoop.
+ERROR: Can't load the script "res://tests/audio_new/zone_no_network.gd" as it doesn't inherit from SceneTree or MainLoop.
+   at: start (main/main.cpp:4181)

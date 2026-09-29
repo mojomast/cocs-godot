@@ -1,0 +1,522 @@
+WorkerThreadPool: 32 threads, 9 max low-priority.
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+TextServer: Added interface "Dummy"
+TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
+Unrecognized output string "misc2" in mapping:
+030000000d0f0000ab01000011010000,Horipad Steam,a:b0,b:b1,back:b10,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b6,leftstick:b13,lefttrigger:a5,leftx:a0,lefty:a1,misc2:b2,paddle1:b19,paddle2:b18,paddle3:b15,paddle4:b5,rightshoulder:b7,rightstick:b14,righttrigger:a4,rightx:a2,righty:a3,start:b11,x:b3,y:b4,platform:Linux,
+Unrecognized output string "misc2" in mapping:
+050000000d0f00009601000091000000,Horipad Steam,a:b0,b:b1,back:b10,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b6,leftstick:b13,lefttrigger:a5,leftx:a0,lefty:a1,misc2:b2,paddle1:b19,paddle2:b18,paddle3:b15,paddle4:b5,rightshoulder:b7,rightstick:b14,righttrigger:a4,rightx:a2,righty:a3,start:b11,x:b3,y:b4,platform:Linux,
+Unrecognized output string "misc2" in mapping:
+030000007e0500006920000011010000,Nintendo Switch 2 Pro Controller,a:b0,b:b1,back:b14,dpdown:b8,dpleft:b10,dpright:b9,dpup:b11,guide:b16,leftshoulder:b12,leftstick:b15,lefttrigger:b13,leftx:a0,lefty:a1~,misc1:b17,misc2:b20,paddle1:b18,paddle2:b19,rightshoulder:b4,rightstick:b7,righttrigger:b5,rightx:a2,righty:a3~,start:b6,x:b2,y:b3,platform:Linux,
+SDL: Init OK!
+Using "default" pen tablet driver...
+
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
+CORE API HASH: 3758106041
+EDITOR API HASH: 1819551975
+Loading resource: res://tests/audio_new/independent_event_binding.gd
+Loading resource: res://debug/debug_panel.tscn
+Loading resource: res://debug/debug_panel.gd
+Loading resource: res://moth/surface.gdshader
+Loading resource: res://graphics_atmosphere/horizon.gdshader
+Loading resource: res://graphics_atmosphere/distant_ground.gdshader
+Loading resource: res://material_language/family.gdshader
+Loading resource: res://moth_scenery/panel.gdshader
+Loading resource: res://moth_scenery/motes.gdshader
+Loading resource: res://combat_pickup_assets/energy.gdshader
+Loading resource: res://shader_lab/moth_common.gdshaderinc
+Loading resource: res://graphics_fx/moth_world.gdshader
+Loading resource: res://player_fx/mark.gdshader
+Loading resource: res://combat_shields/interference.gdshader
+Loading resource: res://shader_lab/shield.gdshader
+Loading resource: res://shader_lab/conduit.gdshader
+Loading resource: res://shader_lab/phase.gdshader
+Loading resource: res://blood_fx/fluid.gdshader
+Loading resource: res://blood_fx/fluid_draw.gdshader
+Loading resource: res://blood_fx/stain.gdshader
+Loading resource: res://benchmark/benchmark.tscn
+Loading resource: res://benchmark/driver.gd
+Loading resource: res://weapon_effects/flash.gdshader
+Loading resource: res://combat_particles/simulation.gdshader
+Loading resource: res://combat_particles/draw.gdshader
+SceneTreeFTI: traversal method DEFAULT
+Loading resource: res://debug/diagnostics.gd
+Loading resource: res://ui/local_settings.gd
+Loading resource: res://career/service.gd
+Loading resource: res://career/identity.gd
+Loaded system CA certificates
+Loading resource: res://moth/generated/effects/spark-impact-0.png
+Loading resource: res://.godot/imported/spark-impact-0.png-af03ea4032170be2f29ef5946e92e2fa.ctex
+Loading resource: res://moth/generated/effects/spark-impact-1.png
+Loading resource: res://.godot/imported/spark-impact-1.png-763d180fb108d1984f2b7e8372b15698.ctex
+Loading resource: res://moth/generated/effects/effect-explosion-0.png
+Loading resource: res://.godot/imported/effect-explosion-0.png-1a7e5a2c664087a13e6b2a23d3855e1a.ctex
+Loading resource: res://moth/generated/effects/effect-explosion-1.png
+Loading resource: res://.godot/imported/effect-explosion-1.png-014acee80f3e406b2f9bbce7d9d36bff.ctex
+Loading resource: res://moth/generated/effects/effect-explosion-2.png
+Loading resource: res://.godot/imported/effect-explosion-2.png-9cdff3b5b2cceff04bb56a2f0dcb85e4.ctex
+Loading resource: res://moth/generated/effects/effect-teleport-0.png
+Loading resource: res://.godot/imported/effect-teleport-0.png-db1731d107ed82f266caddb69b1ef6ec.ctex
+Loading resource: res://moth/generated/effects/effect-teleport-1.png
+Loading resource: res://.godot/imported/effect-teleport-1.png-906756d4c6bfe606e3e3750560b095eb.ctex
+Loading resource: res://moth/generated/effects/effect-teleport-2.png
+Loading resource: res://.godot/imported/effect-teleport-2.png-78c852a358c2fc46476b0389def1ad1b.ctex
+Loading resource: res://moth/generated/effects/effect-heal-0.png
+Loading resource: res://.godot/imported/effect-heal-0.png-d99efbafa86cbed363262765172c2292.ctex
+Loading resource: res://moth/generated/effects/effect-heal-1.png
+Loading resource: res://.godot/imported/effect-heal-1.png-ae51df4f468d074eee5dedd214ca27ce.ctex
+Loading resource: res://moth/generated/effects/effect-heal-2.png
+Loading resource: res://.godot/imported/effect-heal-2.png-2a0847fe6615df9b1fa698b8689201a6.ctex
+Loading resource: res://moth/generated/effects/arc-burst-0.png
+Loading resource: res://.godot/imported/arc-burst-0.png-0e329c4515b52b802a9a90bb7dd8540d.ctex
+Loading resource: res://moth/generated/effects/arc-burst-1.png
+Loading resource: res://.godot/imported/arc-burst-1.png-3ed31b1a79c48ace1a07d0eaf6dc1152.ctex
+Loading resource: res://moth/generated/effects/arc-burst-2.png
+Loading resource: res://.godot/imported/arc-burst-2.png-833ed3681f532d3dd94cb543fa359624.ctex
+Loading resource: res://moth/generated/sky/frost.png
+Loading resource: res://.godot/imported/frost.png-8b585e99353e10862e272c2db8b8d49d.ctex
+Loading resource: res://moth/derived/data/sand.png
+Loading resource: res://.godot/imported/sand.png-c5bcaa8b203088facaaedeeac1d8513e.ctex
+Loading resource: res://moth/generated/textures/weathered_concrete.png
+Loading resource: res://.godot/imported/weathered_concrete.png-c23a43a02e7b79afcdaccfb29ade1614.ctex
+Loading resource: res://moth/generated/normals/weathered_concrete.png
+Loading resource: res://.godot/imported/weathered_concrete.png-424be0385752d180e89e8b0ce3c8f231.ctex
+Loading resource: res://moth/derived/data/weathered_concrete.png
+Loading resource: res://.godot/imported/weathered_concrete.png-860376ea0e0564a829b67badaaae3c16.ctex
+Loading resource: res://moth/generated/materials/entanglement-ceramic-r.png
+Loading resource: res://.godot/imported/entanglement-ceramic-r.png-12bc7fc0178949e6352e4dc690619e07.ctex
+Loading resource: res://moth/generated/materials/entanglement-ceramic-t.png
+Loading resource: res://.godot/imported/entanglement-ceramic-t.png-eb94fe45e7a12a02704cc10c91d863d6.ctex
+Loading resource: res://moth/generated/textures/hex_paneling.png
+Loading resource: res://.godot/imported/hex_paneling.png-0e9e022ae616ecc8fe10b63e6553ed90.ctex
+Loading resource: res://moth/generated/normals/hex_paneling.png
+Loading resource: res://.godot/imported/hex_paneling.png-72fcb2abb65c6de1ed60dea5856a4055.ctex
+Loading resource: res://moth/derived/data/hex_paneling.png
+Loading resource: res://.godot/imported/hex_paneling.png-2ced69042e4f5f3a340094b3074d5d24.ctex
+Loading resource: res://moth/generated/textures/diamond_plate.png
+Loading resource: res://.godot/imported/diamond_plate.png-f6114599fc8e827b2fe7709e0c6d7e1c.ctex
+Loading resource: res://moth/generated/normals/diamond_plate.png
+Loading resource: res://.godot/imported/diamond_plate.png-79971d9c47bdc02d231a8b783a697ec8.ctex
+Loading resource: res://moth/derived/data/diamond_plate.png
+Loading resource: res://.godot/imported/diamond_plate.png-472cb8c22e765fe0c06a6c824361da3c.ctex
+Loading resource: res://moth/generated/materials/entanglement-r.png
+Loading resource: res://.godot/imported/entanglement-r.png-977964749f217cf9c41f53bf3fe61c91.ctex
+Loading resource: res://moth/generated/materials/entanglement-t.png
+Loading resource: res://.godot/imported/entanglement-t.png-666e88d23cef47be683ab2f4a10547f3.ctex
+Loading resource: res://moth/generated/textures/rock-moss.png
+Loading resource: res://.godot/imported/rock-moss.png-897d3f9bc0a96915e10c29a7fcaed1a4.ctex
+Loading resource: res://moth/derived/normals/rock-moss.png
+Loading resource: res://.godot/imported/rock-moss.png-bb79c073269739342c57e8661ce65057.ctex
+Loading resource: res://moth/derived/data/rock-moss.png
+Loading resource: res://.godot/imported/rock-moss.png-c734d275556d94e3941cb7252a25d133.ctex
+Loading resource: res://moth/generated/materials/entanglement-void-r.png
+Loading resource: res://.godot/imported/entanglement-void-r.png-7b6a69ec3739234c5cc08ddcdc6fc65d.ctex
+Loading resource: res://moth/generated/materials/entanglement-void-t.png
+Loading resource: res://.godot/imported/entanglement-void-t.png-d086774f1be3622ee22c69803afc795f.ctex
+Loading resource: res://moth/generated/textures/ice-cracked.png
+Loading resource: res://.godot/imported/ice-cracked.png-86ecb3c91b335190ca24990ac18485fc.ctex
+Loading resource: res://moth/generated/normals/ice.png
+Loading resource: res://.godot/imported/ice.png-38801bea27097e70a8e9f491043811a4.ctex
+Loading resource: res://moth/generated/normals/rock.png
+Loading resource: res://.godot/imported/rock.png-1739983025489a92e6106fc1214adae5.ctex
+Loading resource: res://moth/generated/textures/grass.png
+Loading resource: res://.godot/imported/grass.png-dd9c5821d686b480d4eae02f20da38b1.ctex
+Loading resource: res://moth/generated/normals/grass.png
+Loading resource: res://.godot/imported/grass.png-81b3fb0fe305662ccf8985c3c4b55f42.ctex
+Loading resource: res://moth/derived/data/grass.png
+Loading resource: res://.godot/imported/grass.png-b5beb6694554786fbc3223407a7c21f3.ctex
+Loading resource: res://moth/generated/textures/brushed_metal.png
+Loading resource: res://.godot/imported/brushed_metal.png-dd07e5ffe30b97e7f80e28d2039ed875.ctex
+Loading resource: res://moth/generated/normals/metal.png
+Loading resource: res://.godot/imported/metal.png-2c3f2847cd4f3d02239550af49e9883f.ctex
+Loading resource: res://moth/derived/data/brushed_metal.png
+Loading resource: res://.godot/imported/brushed_metal.png-d00bf969e6581330a861c7dfe70e68b0.ctex
+Loading resource: res://moth/generated/textures/metal_grating.png
+Loading resource: res://.godot/imported/metal_grating.png-b7721911038c454ee6b855911b3c965f.ctex
+Loading resource: res://moth/generated/normals/metal_grating.png
+Loading resource: res://.godot/imported/metal_grating.png-865c350a2efbdebf27f973057cc7f93f.ctex
+Loading resource: res://moth/derived/data/metal_grating.png
+Loading resource: res://.godot/imported/metal_grating.png-0a9ca5eeb1bd78dca0ae387e0f2e302e.ctex
+Loading resource: res://moth/derived/masks/hazard_stripes.png
+Loading resource: res://.godot/imported/hazard_stripes.png-a2128397c49eac9f1cf4cded2dc66b1f.ctex
+Loading resource: res://moth/generated/materials/entanglement-ember-r.png
+Loading resource: res://.godot/imported/entanglement-ember-r.png-c42b363a336969c7e3447ff7a350e2c1.ctex
+Loading resource: res://moth/generated/materials/entanglement-ember-t.png
+Loading resource: res://.godot/imported/entanglement-ember-t.png-578dcd6450fd55b940465291c4a0b37b.ctex
+Loading resource: res://moth/generated/textures/flow-field.png
+Loading resource: res://.godot/imported/flow-field.png-ee19c7637fc78926a75625922569f84b.ctex
+Loading resource: res://moth/generated/textures/holographic_grid.png
+Loading resource: res://.godot/imported/holographic_grid.png-249fda1e8e03cf859dc0d2dbc6dac505.ctex
+Loading resource: res://moth/generated/textures/circuit_board-etch.png
+Loading resource: res://.godot/imported/circuit_board-etch.png-f73093e200c97677e971f68e786ea036.ctex
+Loading resource: res://moth/generated/normals/holographic_grid.png
+Loading resource: res://.godot/imported/holographic_grid.png-cde5b87340141284d058a5fa5824cb66.ctex
+Loading resource: res://moth/generated/textures/corrugated_metal.png
+Loading resource: res://.godot/imported/corrugated_metal.png-96d3ccf9f110d4f9ea301a1ca37fef61.ctex
+Loading resource: res://moth/generated/normals/corrugated_metal.png
+Loading resource: res://.godot/imported/corrugated_metal.png-7ac1f2c729a35531f3a2c2e9d1feefa9.ctex
+Loading resource: res://moth/derived/data/corrugated_metal.png
+Loading resource: res://.godot/imported/corrugated_metal.png-d956b83cd16f98c538a93d979418af0c.ctex
+Loading resource: res://moth/generated/textures/dust-field.png
+Loading resource: res://.godot/imported/dust-field.png-35b887882c2bc3e0feaedf3324d04b20.ctex
+Loading resource: res://moth/generated/effects/effect-weather-snow-0.png
+Loading resource: res://.godot/imported/effect-weather-snow-0.png-3a19a0b311fac4e1df91a998a55c7ae3.ctex
+Loading resource: res://moth/generated/effects/effect-weather-snow-1.png
+Loading resource: res://.godot/imported/effect-weather-snow-1.png-bb54d049849208f7e7d960a3ec74f588.ctex
+Loading resource: res://moth/generated/effects/effect-weather-snow-2.png
+Loading resource: res://.godot/imported/effect-weather-snow-2.png-8cc8db0738751afe2ea9d7587fafcd50.ctex
+Loading resource: res://audio/music/samples/strings-pad-cello-c3-p.ogg
+Loading resource: res://.godot/imported/strings-pad-cello-c3-p.ogg-4d63491ac282d0b099a85776a9d7e232.oggvorbisstr
+Loading resource: res://audio/music/samples/strings-pad-viola-f3-p.ogg
+Loading resource: res://.godot/imported/strings-pad-viola-f3-p.ogg-60046e32e53d9e57bad9cf89ac751ddb.oggvorbisstr
+Loading resource: res://audio/music/samples/strings-pad-violin-a3-p.ogg
+Loading resource: res://.godot/imported/strings-pad-violin-a3-p.ogg-b5f997d64dfb98f112681089e3af02c9.oggvorbisstr
+Loading resource: res://audio/music/samples/strings-pad-violin-a3-mf.ogg
+Loading resource: res://.godot/imported/strings-pad-violin-a3-mf.ogg-2adc8c45d00afa6660aabbdf8c887e2d.oggvorbisstr
+Loading resource: res://audio/music/samples/strings-pad-viola-c4-p.ogg
+Loading resource: res://.godot/imported/strings-pad-viola-c4-p.ogg-5bb19cc114afc44f318b5ccfc4726485.oggvorbisstr
+Loading resource: res://audio/music/samples/strings-pad-violin-e4-mf.ogg
+Loading resource: res://.godot/imported/strings-pad-violin-e4-mf.ogg-9997eb7d055a530c10fb156912d04613.oggvorbisstr
+Loading resource: res://audio/music/samples/low-strings-stacc-cello-rr1-d2-p.ogg
+Loading resource: res://.godot/imported/low-strings-stacc-cello-rr1-d2-p.ogg-14b2cf0539bece8824413e97fc8adcf3.oggvorbisstr
+Loading resource: res://audio/music/samples/low-strings-stacc-cello-rr2-d2-mf.ogg
+Loading resource: res://.godot/imported/low-strings-stacc-cello-rr2-d2-mf.ogg-7856ca0b1b7a12f3650c466383348916.oggvorbisstr
+Loading resource: res://audio/music/samples/low-strings-stacc-viola-rr1-f3-p.ogg
+Loading resource: res://.godot/imported/low-strings-stacc-viola-rr1-f3-p.ogg-a7bf5d1dbf493a54e2a98be36069c48d.oggvorbisstr
+Loading resource: res://audio/music/samples/low-strings-stacc-violin-rr1-c4-mf.ogg
+Loading resource: res://.godot/imported/low-strings-stacc-violin-rr1-c4-mf.ogg-7748c2c673c804eceb3ad390ac124114.oggvorbisstr
+Loading resource: res://audio/music/samples/low-brass-tuba-d2-p.ogg
+Loading resource: res://.godot/imported/low-brass-tuba-d2-p.ogg-4a5de09d8f7f03a05b97891542761fb0.oggvorbisstr
+Loading resource: res://audio/music/samples/low-brass-tuba-f2-mf.ogg
+Loading resource: res://.godot/imported/low-brass-tuba-f2-mf.ogg-9b168a6634cca9db53e3cbb9da9fca04.oggvorbisstr
+Loading resource: res://audio/music/samples/low-brass-fhorn-c3-p.ogg
+Loading resource: res://.godot/imported/low-brass-fhorn-c3-p.ogg-edee0bdb06d9820cd9d9f028c8549674.oggvorbisstr
+Loading resource: res://audio/music/samples/low-brass-trombone-f3-mf.ogg
+Loading resource: res://.godot/imported/low-brass-trombone-f3-mf.ogg-0c38b94c8962f132c83bd53752073347.oggvorbisstr
+Loading resource: res://audio/music/samples/brass-stacc-tuba-rr1-d2-mf.ogg
+Loading resource: res://.godot/imported/brass-stacc-tuba-rr1-d2-mf.ogg-5b8053949b284f12689ecb7838c38a71.oggvorbisstr
+Loading resource: res://audio/music/samples/brass-stacc-horn-rr1-f2-p.ogg
+Loading resource: res://.godot/imported/brass-stacc-horn-rr1-f2-p.ogg-84a54cd8ce52943938d91834e9b947f5.oggvorbisstr
+Loading resource: res://audio/music/samples/brass-stacc-horn-rr2-f2-mf.ogg
+Loading resource: res://.godot/imported/brass-stacc-horn-rr2-f2-mf.ogg-bcdc96bd869192470b9e39b6ffd2c4b4.oggvorbisstr
+Loading resource: res://audio/music/samples/brass-stacc-trumpet-rr1-d4-mf.ogg
+Loading resource: res://.godot/imported/brass-stacc-trumpet-rr1-d4-mf.ogg-8b423091695d9007d3ec334a6f60ce43.oggvorbisstr
+Loading resource: res://audio/music/samples/trumpet-pad-trumpet-d4-p.ogg
+Loading resource: res://.godot/imported/trumpet-pad-trumpet-d4-p.ogg-3f08417f18184fa9b21a02be784a2057.oggvorbisstr
+Loading resource: res://audio/music/samples/trumpet-pad-trumpet-a4-mf.ogg
+Loading resource: res://.godot/imported/trumpet-pad-trumpet-a4-mf.ogg-e25b40e063af72d3e719a711771d3cfb.oggvorbisstr
+Loading resource: res://audio/music/samples/timpani-timp1-fs2-p.ogg
+Loading resource: res://.godot/imported/timpani-timp1-fs2-p.ogg-bf9ba5cd28e3c3a10db8a22b2beff368.oggvorbisstr
+Loading resource: res://audio/music/samples/timpani-timp4-e3-mf.ogg
+Loading resource: res://.godot/imported/timpani-timp4-e3-mf.ogg-65070d5ddaec8dfd130ccf7c882d9747.oggvorbisstr
+Loading resource: res://audio/music/samples/timpani-roll-timp1-fs2-p.ogg
+Loading resource: res://.godot/imported/timpani-roll-timp1-fs2-p.ogg-ee642b8d64bcd5db1e0901753df8d7b1.oggvorbisstr
+Loading resource: res://audio/music/samples/bells-glock-g4-p.ogg
+Loading resource: res://.godot/imported/bells-glock-g4-p.ogg-9c11943559e229a0a877f7f1c4abd63d.oggvorbisstr
+Loading resource: res://audio/music/samples/bells-glock-c5-mf.ogg
+Loading resource: res://.godot/imported/bells-glock-c5-mf.ogg-1b44f9c331929ab7b818f1c9b1936aaa.oggvorbisstr
+Loading resource: res://audio/music/samples/tubular-bells-chimes-c3-mf.ogg
+Loading resource: res://.godot/imported/tubular-bells-chimes-c3-mf.ogg-bc0b2bc6a61c8e799fbf29386a3d8a9b.oggvorbisstr
+Loading resource: res://audio/music/samples/gong-gong-c4-mf.ogg
+Loading resource: res://.godot/imported/gong-gong-c4-mf.ogg-78942ea7d07cc59d9fe0951e1243b5f9.oggvorbisstr
+Loading resource: res://audio/music/samples/cymbal-swell-swell1-c4-p.ogg
+Loading resource: res://.godot/imported/cymbal-swell-swell1-c4-p.ogg-4be23ffdf280fefef50367f9c830e642.oggvorbisstr
+Loading resource: res://audio/music/samples/cymbal-crash-crash3-c4-mf.ogg
+Loading resource: res://.godot/imported/cymbal-crash-crash3-c4-mf.ogg-ffb4ce03b75a6dba9ad0532190dcb48f.oggvorbisstr
+Loading resource: res://audio/music/samples/harp-harp-d2-p.ogg
+Loading resource: res://.godot/imported/harp-harp-d2-p.ogg-9620baa26337bcd14248e8ebb518ae30.oggvorbisstr
+Loading resource: res://audio/music/samples/harp-harp-d4-p.ogg
+Loading resource: res://.godot/imported/harp-harp-d4-p.ogg-d15f87a0d617002906b114cbddc2ed8c.oggvorbisstr
+Loading resource: res://audio/music/samples/harp-harp-a4-p.ogg
+Loading resource: res://.godot/imported/harp-harp-a4-p.ogg-cc1271d7714a3cb7ba943c4674dcc30e.oggvorbisstr
+Loading resource: res://audio/music/samples/taiko-bassdrum-c2-p.ogg
+Loading resource: res://.godot/imported/taiko-bassdrum-c2-p.ogg-d4976764a48eadb6b27f413ef6e1c312.oggvorbisstr
+Loading resource: res://audio/music/samples/taiko-bassdrum-c2-mf.ogg
+Loading resource: res://.godot/imported/taiko-bassdrum-c2-mf.ogg-f444f522f912cc29160e745609754425.oggvorbisstr
+Loading resource: res://audio/music/samples/taiko-framel-f2-p.ogg
+Loading resource: res://.godot/imported/taiko-framel-f2-p.ogg-acdbfcf4bdf3d0ab6d32ab50ba57922b.oggvorbisstr
+Loading resource: res://audio/music/samples/taiko-framel-muted-a2-mf.ogg
+Loading resource: res://.godot/imported/taiko-framel-muted-a2-mf.ogg-e2c30644c414f395ec5fc60e1cba5e22.oggvorbisstr
+Loading resource: res://audio/music/samples/taiko-frames-d3-mf.ogg
+Loading resource: res://.godot/imported/taiko-frames-d3-mf.ogg-6d5d16d4841133dd1066b0d97d214d14.oggvorbisstr
+Loading resource: res://audio/announcer/capture-42.wav
+Loading resource: res://.godot/imported/capture-42.wav-d26380d738fd1e19e7a934a305a43a1f.sample
+Loading resource: res://audio/announcer/capture-137.wav
+Loading resource: res://.godot/imported/capture-137.wav-32c14eedb3ad7f415e8ec53687de89aa.sample
+Loading resource: res://audio/announcer/capture-526.wav
+Loading resource: res://.godot/imported/capture-526.wav-2dbc658456303cbcffa977c3cc3e5fda.sample
+Loading resource: res://audio/announcer/flag-pickup-42.wav
+Loading resource: res://.godot/imported/flag-pickup-42.wav-2933ef01c326de908c1a73310101bde6.sample
+Loading resource: res://audio/announcer/flag-pickup-137.wav
+Loading resource: res://.godot/imported/flag-pickup-137.wav-e9c5412e7415f34fd7757aa97a12a496.sample
+Loading resource: res://audio/announcer/flag-pickup-526.wav
+Loading resource: res://.godot/imported/flag-pickup-526.wav-dd3ddb2912ca9ea94675363dcb554738.sample
+Loading resource: res://audio/announcer/flag-return-42.wav
+Loading resource: res://.godot/imported/flag-return-42.wav-3f23fb46a3872d1efedc350e13e0943e.sample
+Loading resource: res://audio/announcer/flag-return-137.wav
+Loading resource: res://.godot/imported/flag-return-137.wav-4edd535bd4eec0c4649fe7f920c23715.sample
+Loading resource: res://audio/announcer/flag-return-526.wav
+Loading resource: res://.godot/imported/flag-return-526.wav-da2bb687cb6ee2be30ff66bd4b27c69a.sample
+Loading resource: res://audio/announcer/goal-42.wav
+Loading resource: res://.godot/imported/goal-42.wav-2c11d461bb6c6ecee6e97d588e37e664.sample
+Loading resource: res://audio/announcer/goal-137.wav
+Loading resource: res://.godot/imported/goal-137.wav-cc40793a8585d88d7f292f49e6b640e8.sample
+Loading resource: res://audio/announcer/goal-526.wav
+Loading resource: res://.godot/imported/goal-526.wav-87b6de77070f7775447cb155e9d564ec.sample
+Loading resource: res://audio/announcer/killstreak-42.wav
+Loading resource: res://.godot/imported/killstreak-42.wav-d3df926ab3840f31d07d10ad115635d8.sample
+Loading resource: res://audio/announcer/killstreak-137.wav
+Loading resource: res://.godot/imported/killstreak-137.wav-89ab41950f4bdd7b2298681f8ec31acd.sample
+Loading resource: res://audio/announcer/killstreak-526.wav
+Loading resource: res://.godot/imported/killstreak-526.wav-c78eb32bcacde06c74c44213b075b200.sample
+Loading resource: res://audio/announcer/spree-42.wav
+Loading resource: res://.godot/imported/spree-42.wav-b3be388f3ead4b11f1bbdb71f3e904e5.sample
+Loading resource: res://audio/announcer/spree-137.wav
+Loading resource: res://.godot/imported/spree-137.wav-7f6a1187315ab4dce0ef1e3a16db40da.sample
+Loading resource: res://audio/announcer/spree-526.wav
+Loading resource: res://.godot/imported/spree-526.wav-a17b64bde01f3d907056739f9f73e952.sample
+Loading resource: res://audio/announcer/multikill-42.wav
+Loading resource: res://.godot/imported/multikill-42.wav-f499bf766651e4678fe8433c95bcb998.sample
+Loading resource: res://audio/announcer/multikill-137.wav
+Loading resource: res://.godot/imported/multikill-137.wav-80e09bf324ea0e98fe99fd406a9a8706.sample
+Loading resource: res://audio/announcer/multikill-526.wav
+Loading resource: res://.godot/imported/multikill-526.wav-1fb616723b85039d47bb4d3740fd09b3.sample
+Loading resource: res://audio/announcer/victory-42.wav
+Loading resource: res://.godot/imported/victory-42.wav-9caf1886a0ac0865073cb2292d009f14.sample
+Loading resource: res://audio/announcer/victory-137.wav
+Loading resource: res://.godot/imported/victory-137.wav-dfc3d56d4e719fe55e443553cf091cc2.sample
+Loading resource: res://audio/announcer/victory-526.wav
+Loading resource: res://.godot/imported/victory-526.wav-8da42eef6ec74d1295743f5b77d2825f.sample
+Loading resource: res://audio/announcer/defeat-42.wav
+Loading resource: res://.godot/imported/defeat-42.wav-e8d0a88d96e26bd15ea6a241742227d8.sample
+Loading resource: res://audio/announcer/defeat-137.wav
+Loading resource: res://.godot/imported/defeat-137.wav-2b2f2b1b883b83041e3df62e274b90ab.sample
+Loading resource: res://audio/announcer/defeat-526.wav
+Loading resource: res://.godot/imported/defeat-526.wav-936c829e8fc38a9eaada0cf86409ae43.sample
+Loading resource: res://audio/announcer/score-42.wav
+Loading resource: res://.godot/imported/score-42.wav-a208dc69e00b496fd5c76d7f513f655e.sample
+Loading resource: res://audio/announcer/score-137.wav
+Loading resource: res://.godot/imported/score-137.wav-c520ea342930456f0fdd29f5cdd45add.sample
+Loading resource: res://audio/announcer/score-526.wav
+Loading resource: res://.godot/imported/score-526.wav-dd58f0407f9ffc1bfa6dfb1ce6670c4f.sample
+Loading resource: res://audio/announcer/boss-42.wav
+Loading resource: res://.godot/imported/boss-42.wav-82fb85917511263f2e7b5038edd86d74.sample
+Loading resource: res://audio/announcer/boss-137.wav
+Loading resource: res://.godot/imported/boss-137.wav-b58ac6e9346cc36c210681bb770d7aa6.sample
+Loading resource: res://audio/announcer/boss-526.wav
+Loading resource: res://.godot/imported/boss-526.wav-d02c10ac643c629384ecf5187546017f.sample
+Loading resource: res://audio/announcer/objective-42.wav
+Loading resource: res://.godot/imported/objective-42.wav-573e06dc998ca38c6033ee1e2a12d1c7.sample
+Loading resource: res://audio/announcer/objective-137.wav
+Loading resource: res://.godot/imported/objective-137.wav-84a3e5a56f4edcfa847ab866bd24266f.sample
+Loading resource: res://audio/announcer/objective-526.wav
+Loading resource: res://.godot/imported/objective-526.wav-dbba0fecc617df6ddf82946cf8d056aa.sample
+Loading resource: res://audio/moth/bed-ritual.wav
+Loading resource: res://.godot/imported/bed-ritual.wav-55e206d52b8004dadf78c65c12666a0b.sample
+Loading resource: res://moth/generated/sky/nebula.png
+Loading resource: res://.godot/imported/nebula.png-27898debdef05b3c6fd7c741b95984e5.ctex
+Loading resource: res://moth/generated/textures/metal.png
+Loading resource: res://.godot/imported/metal.png-dd66db57c55e0cef63187626ac61204d.ctex
+Loading resource: res://moth/generated/materials/entanglement-arcane-r.png
+Loading resource: res://.godot/imported/entanglement-arcane-r.png-d5a93cb42eb232b4fdf244d95fdf9523.ctex
+Loading resource: res://moth/generated/materials/entanglement-arcane-t.png
+Loading resource: res://.godot/imported/entanglement-arcane-t.png-8224289b37b04ae07bede49ad12fb062.ctex
+Loading resource: res://audio/music/samples/strings-pad-cello-c3-p.ogg
+Loading resource: res://.godot/imported/strings-pad-cello-c3-p.ogg-4d63491ac282d0b099a85776a9d7e232.oggvorbisstr
+Loading resource: res://audio/music/samples/strings-pad-viola-f3-p.ogg
+Loading resource: res://.godot/imported/strings-pad-viola-f3-p.ogg-60046e32e53d9e57bad9cf89ac751ddb.oggvorbisstr
+Loading resource: res://audio/music/samples/strings-pad-violin-a3-p.ogg
+Loading resource: res://.godot/imported/strings-pad-violin-a3-p.ogg-b5f997d64dfb98f112681089e3af02c9.oggvorbisstr
+Loading resource: res://audio/music/samples/strings-pad-violin-a3-mf.ogg
+Loading resource: res://.godot/imported/strings-pad-violin-a3-mf.ogg-2adc8c45d00afa6660aabbdf8c887e2d.oggvorbisstr
+Loading resource: res://audio/music/samples/strings-pad-viola-c4-p.ogg
+Loading resource: res://.godot/imported/strings-pad-viola-c4-p.ogg-5bb19cc114afc44f318b5ccfc4726485.oggvorbisstr
+Loading resource: res://audio/music/samples/strings-pad-violin-e4-mf.ogg
+Loading resource: res://.godot/imported/strings-pad-violin-e4-mf.ogg-9997eb7d055a530c10fb156912d04613.oggvorbisstr
+Loading resource: res://audio/music/samples/low-strings-stacc-cello-rr1-d2-p.ogg
+Loading resource: res://.godot/imported/low-strings-stacc-cello-rr1-d2-p.ogg-14b2cf0539bece8824413e97fc8adcf3.oggvorbisstr
+Loading resource: res://audio/music/samples/low-strings-stacc-cello-rr2-d2-mf.ogg
+Loading resource: res://.godot/imported/low-strings-stacc-cello-rr2-d2-mf.ogg-7856ca0b1b7a12f3650c466383348916.oggvorbisstr
+Loading resource: res://audio/music/samples/low-strings-stacc-viola-rr1-f3-p.ogg
+Loading resource: res://.godot/imported/low-strings-stacc-viola-rr1-f3-p.ogg-a7bf5d1dbf493a54e2a98be36069c48d.oggvorbisstr
+Loading resource: res://audio/music/samples/low-strings-stacc-violin-rr1-c4-mf.ogg
+Loading resource: res://.godot/imported/low-strings-stacc-violin-rr1-c4-mf.ogg-7748c2c673c804eceb3ad390ac124114.oggvorbisstr
+Loading resource: res://audio/music/samples/low-brass-tuba-d2-p.ogg
+Loading resource: res://.godot/imported/low-brass-tuba-d2-p.ogg-4a5de09d8f7f03a05b97891542761fb0.oggvorbisstr
+Loading resource: res://audio/music/samples/low-brass-tuba-f2-mf.ogg
+Loading resource: res://.godot/imported/low-brass-tuba-f2-mf.ogg-9b168a6634cca9db53e3cbb9da9fca04.oggvorbisstr
+Loading resource: res://audio/music/samples/low-brass-fhorn-c3-p.ogg
+Loading resource: res://.godot/imported/low-brass-fhorn-c3-p.ogg-edee0bdb06d9820cd9d9f028c8549674.oggvorbisstr
+Loading resource: res://audio/music/samples/low-brass-trombone-f3-mf.ogg
+Loading resource: res://.godot/imported/low-brass-trombone-f3-mf.ogg-0c38b94c8962f132c83bd53752073347.oggvorbisstr
+Loading resource: res://audio/music/samples/brass-stacc-tuba-rr1-d2-mf.ogg
+Loading resource: res://.godot/imported/brass-stacc-tuba-rr1-d2-mf.ogg-5b8053949b284f12689ecb7838c38a71.oggvorbisstr
+Loading resource: res://audio/music/samples/brass-stacc-horn-rr1-f2-p.ogg
+Loading resource: res://.godot/imported/brass-stacc-horn-rr1-f2-p.ogg-84a54cd8ce52943938d91834e9b947f5.oggvorbisstr
+Loading resource: res://audio/music/samples/brass-stacc-horn-rr2-f2-mf.ogg
+Loading resource: res://.godot/imported/brass-stacc-horn-rr2-f2-mf.ogg-bcdc96bd869192470b9e39b6ffd2c4b4.oggvorbisstr
+Loading resource: res://audio/music/samples/brass-stacc-trumpet-rr1-d4-mf.ogg
+Loading resource: res://.godot/imported/brass-stacc-trumpet-rr1-d4-mf.ogg-8b423091695d9007d3ec334a6f60ce43.oggvorbisstr
+Loading resource: res://audio/music/samples/trumpet-pad-trumpet-d4-p.ogg
+Loading resource: res://.godot/imported/trumpet-pad-trumpet-d4-p.ogg-3f08417f18184fa9b21a02be784a2057.oggvorbisstr
+Loading resource: res://audio/music/samples/trumpet-pad-trumpet-a4-mf.ogg
+Loading resource: res://.godot/imported/trumpet-pad-trumpet-a4-mf.ogg-e25b40e063af72d3e719a711771d3cfb.oggvorbisstr
+Loading resource: res://audio/music/samples/timpani-timp1-fs2-p.ogg
+Loading resource: res://.godot/imported/timpani-timp1-fs2-p.ogg-bf9ba5cd28e3c3a10db8a22b2beff368.oggvorbisstr
+Loading resource: res://audio/music/samples/timpani-timp4-e3-mf.ogg
+Loading resource: res://.godot/imported/timpani-timp4-e3-mf.ogg-65070d5ddaec8dfd130ccf7c882d9747.oggvorbisstr
+Loading resource: res://audio/music/samples/timpani-roll-timp1-fs2-p.ogg
+Loading resource: res://.godot/imported/timpani-roll-timp1-fs2-p.ogg-ee642b8d64bcd5db1e0901753df8d7b1.oggvorbisstr
+Loading resource: res://audio/music/samples/bells-glock-g4-p.ogg
+Loading resource: res://.godot/imported/bells-glock-g4-p.ogg-9c11943559e229a0a877f7f1c4abd63d.oggvorbisstr
+Loading resource: res://audio/music/samples/bells-glock-c5-mf.ogg
+Loading resource: res://.godot/imported/bells-glock-c5-mf.ogg-1b44f9c331929ab7b818f1c9b1936aaa.oggvorbisstr
+Loading resource: res://audio/music/samples/gong-gong-c4-mf.ogg
+Loading resource: res://.godot/imported/gong-gong-c4-mf.ogg-78942ea7d07cc59d9fe0951e1243b5f9.oggvorbisstr
+Loading resource: res://audio/music/samples/cymbal-swell-swell1-c4-p.ogg
+Loading resource: res://.godot/imported/cymbal-swell-swell1-c4-p.ogg-4be23ffdf280fefef50367f9c830e642.oggvorbisstr
+Loading resource: res://audio/music/samples/cymbal-crash-crash3-c4-mf.ogg
+Loading resource: res://.godot/imported/cymbal-crash-crash3-c4-mf.ogg-ffb4ce03b75a6dba9ad0532190dcb48f.oggvorbisstr
+Loading resource: res://audio/music/samples/harp-harp-d2-p.ogg
+Loading resource: res://.godot/imported/harp-harp-d2-p.ogg-9620baa26337bcd14248e8ebb518ae30.oggvorbisstr
+Loading resource: res://audio/music/samples/harp-harp-d4-p.ogg
+Loading resource: res://.godot/imported/harp-harp-d4-p.ogg-d15f87a0d617002906b114cbddc2ed8c.oggvorbisstr
+Loading resource: res://audio/music/samples/harp-harp-a4-p.ogg
+Loading resource: res://.godot/imported/harp-harp-a4-p.ogg-cc1271d7714a3cb7ba943c4674dcc30e.oggvorbisstr
+Loading resource: res://audio/music/samples/taiko-bassdrum-c2-p.ogg
+Loading resource: res://.godot/imported/taiko-bassdrum-c2-p.ogg-d4976764a48eadb6b27f413ef6e1c312.oggvorbisstr
+Loading resource: res://audio/music/samples/taiko-bassdrum-c2-mf.ogg
+Loading resource: res://.godot/imported/taiko-bassdrum-c2-mf.ogg-f444f522f912cc29160e745609754425.oggvorbisstr
+Loading resource: res://audio/music/samples/taiko-framel-f2-p.ogg
+Loading resource: res://.godot/imported/taiko-framel-f2-p.ogg-acdbfcf4bdf3d0ab6d32ab50ba57922b.oggvorbisstr
+Loading resource: res://audio/music/samples/taiko-framel-muted-a2-mf.ogg
+Loading resource: res://.godot/imported/taiko-framel-muted-a2-mf.ogg-e2c30644c414f395ec5fc60e1cba5e22.oggvorbisstr
+Loading resource: res://audio/music/samples/taiko-frames-d3-mf.ogg
+Loading resource: res://.godot/imported/taiko-frames-d3-mf.ogg-6d5d16d4841133dd1066b0d97d214d14.oggvorbisstr
+Loading resource: res://audio/announcer/capture-42.wav
+Loading resource: res://.godot/imported/capture-42.wav-d26380d738fd1e19e7a934a305a43a1f.sample
+Loading resource: res://audio/announcer/capture-137.wav
+Loading resource: res://.godot/imported/capture-137.wav-32c14eedb3ad7f415e8ec53687de89aa.sample
+Loading resource: res://audio/announcer/capture-526.wav
+Loading resource: res://.godot/imported/capture-526.wav-2dbc658456303cbcffa977c3cc3e5fda.sample
+Loading resource: res://audio/announcer/flag-pickup-42.wav
+Loading resource: res://.godot/imported/flag-pickup-42.wav-2933ef01c326de908c1a73310101bde6.sample
+Loading resource: res://audio/announcer/flag-pickup-137.wav
+Loading resource: res://.godot/imported/flag-pickup-137.wav-e9c5412e7415f34fd7757aa97a12a496.sample
+Loading resource: res://audio/announcer/flag-pickup-526.wav
+Loading resource: res://.godot/imported/flag-pickup-526.wav-dd3ddb2912ca9ea94675363dcb554738.sample
+Loading resource: res://audio/announcer/flag-return-42.wav
+Loading resource: res://.godot/imported/flag-return-42.wav-3f23fb46a3872d1efedc350e13e0943e.sample
+Loading resource: res://audio/announcer/flag-return-137.wav
+Loading resource: res://.godot/imported/flag-return-137.wav-4edd535bd4eec0c4649fe7f920c23715.sample
+Loading resource: res://audio/announcer/flag-return-526.wav
+Loading resource: res://.godot/imported/flag-return-526.wav-da2bb687cb6ee2be30ff66bd4b27c69a.sample
+Loading resource: res://audio/announcer/goal-42.wav
+Loading resource: res://.godot/imported/goal-42.wav-2c11d461bb6c6ecee6e97d588e37e664.sample
+Loading resource: res://audio/announcer/goal-137.wav
+Loading resource: res://.godot/imported/goal-137.wav-cc40793a8585d88d7f292f49e6b640e8.sample
+Loading resource: res://audio/announcer/goal-526.wav
+Loading resource: res://.godot/imported/goal-526.wav-87b6de77070f7775447cb155e9d564ec.sample
+Loading resource: res://audio/announcer/killstreak-42.wav
+Loading resource: res://.godot/imported/killstreak-42.wav-d3df926ab3840f31d07d10ad115635d8.sample
+Loading resource: res://audio/announcer/killstreak-137.wav
+Loading resource: res://.godot/imported/killstreak-137.wav-89ab41950f4bdd7b2298681f8ec31acd.sample
+Loading resource: res://audio/announcer/killstreak-526.wav
+Loading resource: res://.godot/imported/killstreak-526.wav-c78eb32bcacde06c74c44213b075b200.sample
+Loading resource: res://audio/announcer/spree-42.wav
+Loading resource: res://.godot/imported/spree-42.wav-b3be388f3ead4b11f1bbdb71f3e904e5.sample
+Loading resource: res://audio/announcer/spree-137.wav
+Loading resource: res://.godot/imported/spree-137.wav-7f6a1187315ab4dce0ef1e3a16db40da.sample
+Loading resource: res://audio/announcer/spree-526.wav
+Loading resource: res://.godot/imported/spree-526.wav-a17b64bde01f3d907056739f9f73e952.sample
+Loading resource: res://audio/announcer/multikill-42.wav
+Loading resource: res://.godot/imported/multikill-42.wav-f499bf766651e4678fe8433c95bcb998.sample
+Loading resource: res://audio/announcer/multikill-137.wav
+Loading resource: res://.godot/imported/multikill-137.wav-80e09bf324ea0e98fe99fd406a9a8706.sample
+Loading resource: res://audio/announcer/multikill-526.wav
+Loading resource: res://.godot/imported/multikill-526.wav-1fb616723b85039d47bb4d3740fd09b3.sample
+Loading resource: res://audio/announcer/victory-42.wav
+Loading resource: res://.godot/imported/victory-42.wav-9caf1886a0ac0865073cb2292d009f14.sample
+Loading resource: res://audio/announcer/victory-137.wav
+Loading resource: res://.godot/imported/victory-137.wav-dfc3d56d4e719fe55e443553cf091cc2.sample
+Loading resource: res://audio/announcer/victory-526.wav
+Loading resource: res://.godot/imported/victory-526.wav-8da42eef6ec74d1295743f5b77d2825f.sample
+Loading resource: res://audio/announcer/defeat-42.wav
+Loading resource: res://.godot/imported/defeat-42.wav-e8d0a88d96e26bd15ea6a241742227d8.sample
+Loading resource: res://audio/announcer/defeat-137.wav
+Loading resource: res://.godot/imported/defeat-137.wav-2b2f2b1b883b83041e3df62e274b90ab.sample
+Loading resource: res://audio/announcer/defeat-526.wav
+Loading resource: res://.godot/imported/defeat-526.wav-936c829e8fc38a9eaada0cf86409ae43.sample
+Loading resource: res://audio/announcer/score-42.wav
+Loading resource: res://.godot/imported/score-42.wav-a208dc69e00b496fd5c76d7f513f655e.sample
+Loading resource: res://audio/announcer/score-137.wav
+Loading resource: res://.godot/imported/score-137.wav-c520ea342930456f0fdd29f5cdd45add.sample
+Loading resource: res://audio/announcer/score-526.wav
+Loading resource: res://.godot/imported/score-526.wav-dd58f0407f9ffc1bfa6dfb1ce6670c4f.sample
+Loading resource: res://audio/announcer/boss-42.wav
+Loading resource: res://.godot/imported/boss-42.wav-82fb85917511263f2e7b5038edd86d74.sample
+Loading resource: res://audio/announcer/boss-137.wav
+Loading resource: res://.godot/imported/boss-137.wav-b58ac6e9346cc36c210681bb770d7aa6.sample
+Loading resource: res://audio/announcer/boss-526.wav
+Loading resource: res://.godot/imported/boss-526.wav-d02c10ac643c629384ecf5187546017f.sample
+Loading resource: res://audio/announcer/objective-42.wav
+Loading resource: res://.godot/imported/objective-42.wav-573e06dc998ca38c6033ee1e2a12d1c7.sample
+Loading resource: res://audio/announcer/objective-137.wav
+Loading resource: res://.godot/imported/objective-137.wav-84a3e5a56f4edcfa847ab866bd24266f.sample
+Loading resource: res://audio/announcer/objective-526.wav
+Loading resource: res://.godot/imported/objective-526.wav-dbba0fecc617df6ddf82946cf8d056aa.sample
+Loading resource: res://audio/moth/bed-ritual.wav
+Loading resource: res://.godot/imported/bed-ritual.wav-55e206d52b8004dadf78c65c12666a0b.sample
+INDEPENDENT_AUDIO_EVENTS_OK assault=1 zone=1
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+Leaked instance: GDScriptNativeClass:9223372048816931500
+Leaked instance: GDScript:9223372066265236867 - Resource path: res://vehicles/session_shots.gd
+Leaked instance: GDScript:9223372081113073091 - Resource path: res://vehicles/shot_fx.gd
+ERROR: Cannot get path of node as it is not in a scene tree.
+   at: get_path (scene/main/node.cpp:2374)
+Leaked instance: Node3D:131063613367 - Node path: 
+ERROR: Cannot get path of node as it is not in a scene tree.
+   at: get_path (scene/main/node.cpp:2374)
+Leaked instance: Node3D:131080390584 - Node path: 
+ERROR: Cannot get path of node as it is not in a scene tree.
+   at: get_path (scene/main/node.cpp:2374)
+Leaked instance: Node3D:78097942483 - Node path: 
+ERROR: Cannot get path of node as it is not in a scene tree.
+   at: get_path (scene/main/node.cpp:2374)
+Leaked instance: Node3D:78114719700 - Node path: 
+Hint: Leaked instances typically happen when nodes are removed from the scene tree (with `remove_child()`) but not freed (with `free()` or `queue_free()`).
+ERROR: 2 resources still in use at exit.
+   at: clear (core/io/resource.cpp:799)
+Resource still in use: res://vehicles/session_shots.gd (GDScript)
+Resource still in use: res://vehicles/shot_fx.gd (GDScript)
+Orphan StringName: allowed (static: 0, total: 5)
+Orphan StringName: bound_client (static: 0, total: 5)
+Orphan StringName: _ready (static: 1, total: 2)
+Orphan StringName: Ambience (static: 0, total: 10)
+Orphan StringName: _exit_tree (static: 1, total: 2)
+Orphan StringName: remove_trace (static: 0, total: 1)
+Orphan StringName: traces (static: 0, total: 5)
+Orphan StringName: clear_round (static: 0, total: 2)
+Orphan StringName: shot_fx (static: 0, total: 5)
+Orphan StringName: active (static: 0, total: 6)
+Orphan StringName: _on_events (static: 0, total: 1)
+Orphan StringName: "vehicles/shot_fx.gd" (static: 0, total: 1)
+Orphan StringName: apply_events (static: 0, total: 1)
+Orphan StringName: point (static: 0, total: 1)
+Orphan StringName: Node3D (static: 1, total: 4)
+Orphan StringName: "vehicles/session_shots.gd" (static: 0, total: 1)
+Orphan StringName: highest (static: 0, total: 6)
+Orphan StringName: ID_WINDOW (static: 0, total: 1)
+Orphan StringName: bind (static: 0, total: 1)
+Orphan StringName: _process (static: 3, total: 5)
+Orphan StringName: Node (static: 1, total: 3)
+Orphan StringName: seen (static: 0, total: 5)
+Orphan StringName: MAX_TRACES (static: 0, total: 1)
+Orphan StringName: set_active (static: 0, total: 1)
+Orphan StringName: ShotFX (static: 0, total: 1)
+Orphan StringName: LIFE (static: 0, total: 1)
+StringName: 26 unclaimed string names at exit.

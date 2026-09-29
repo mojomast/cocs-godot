@@ -1,0 +1,985 @@
+{
+  "tested_commit": "87c13766a97fd06c9d3ddab416e98fadd692d089",
+  "integrated_commit": "b8127f4a",
+  "scope": "native DSP through isolated ALSA null sink and deterministic weather rendering; not human listening, hardware or Windows playback",
+  "files": [
+    {
+      "path": "final-logs/event_router.acceptance.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/event_router.acceptance.log",
+      "bytes": 89,
+      "sha256": "be908a30796d32d7a20f508d973b7a74e073e480c3208c6a89ea2cb364fe63e2"
+    },
+    {
+      "path": "final-logs/event_router.final.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/event_router.final.log",
+      "bytes": 89,
+      "sha256": "be908a30796d32d7a20f508d973b7a74e073e480c3208c6a89ea2cb364fe63e2"
+    },
+    {
+      "path": "final-logs/independent.verbose.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/independent.verbose.log",
+      "bytes": 38508,
+      "sha256": "244d73edd863a769abc0ac425999903cd1c3398ac831cf567118ab961d745770"
+    },
+    {
+      "path": "final-logs/independent_event_binding.acceptance.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/independent_event_binding.acceptance.log",
+      "bytes": 118,
+      "sha256": "6746056a74f9358f29c9f697d02fa892a7d7097017e4cc9d54417368827e9200"
+    },
+    {
+      "path": "final-logs/independent_event_binding.clean-1.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/independent_event_binding.clean-1.log",
+      "bytes": 118,
+      "sha256": "6746056a74f9358f29c9f697d02fa892a7d7097017e4cc9d54417368827e9200"
+    },
+    {
+      "path": "final-logs/independent_event_binding.clean-2.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/independent_event_binding.clean-2.log",
+      "bytes": 118,
+      "sha256": "6746056a74f9358f29c9f697d02fa892a7d7097017e4cc9d54417368827e9200"
+    },
+    {
+      "path": "final-logs/independent_event_binding.final.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/independent_event_binding.final.log",
+      "bytes": 118,
+      "sha256": "6746056a74f9358f29c9f697d02fa892a7d7097017e4cc9d54417368827e9200"
+    },
+    {
+      "path": "final-logs/independent_event_binding.final2.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/independent_event_binding.final2.log",
+      "bytes": 356,
+      "sha256": "81aa75e0e3ee150a4a24b413f6e396956843001ae410bd6524071e1dba49fa7f"
+    },
+    {
+      "path": "final-logs/independent_event_binding.final3.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/independent_event_binding.final3.log",
+      "bytes": 356,
+      "sha256": "81aa75e0e3ee150a4a24b413f6e396956843001ae410bd6524071e1dba49fa7f"
+    },
+    {
+      "path": "final-logs/independent_event_binding.final_verbose.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/independent_event_binding.final_verbose.log",
+      "bytes": 38411,
+      "sha256": "4b06d7ca69f4d257a0eb5df8ae2db4998294b7bd97fc082d04d8e17b6dd8405d"
+    },
+    {
+      "path": "final-logs/lifecycle.acceptance.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/lifecycle.acceptance.log",
+      "bytes": 330,
+      "sha256": "050d4ffb656f67ae8d8894488c3ca4cea480b6683d1913debd493e6941959e0c"
+    },
+    {
+      "path": "final-logs/lifecycle.cleanup.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/lifecycle.cleanup.log",
+      "bytes": 330,
+      "sha256": "050d4ffb656f67ae8d8894488c3ca4cea480b6683d1913debd493e6941959e0c"
+    },
+    {
+      "path": "final-logs/lifecycle.final.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/lifecycle.final.log",
+      "bytes": 92,
+      "sha256": "aedf875eeab5cae90c86e05d067315b5bd257f3c7f90d73e4cdb0a6c0cd1d513"
+    },
+    {
+      "path": "final-logs/lifecycle.timer.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/lifecycle.timer.log",
+      "bytes": 92,
+      "sha256": "aedf875eeab5cae90c86e05d067315b5bd257f3c7f90d73e4cdb0a6c0cd1d513"
+    },
+    {
+      "path": "final-logs/lifecycle.verbose.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/lifecycle.verbose.log",
+      "bytes": 16890,
+      "sha256": "94393e7ede3cd3dd0fe69045a46a4767a30893445a8c096ab65fc3d88114dfae"
+    },
+    {
+      "path": "final-logs/outcome.acceptance.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/outcome.acceptance.log",
+      "bytes": 90,
+      "sha256": "8dba2e43a31cdb947209bf46a783fd2cebd65e855b6b76f3f0aca7ebcf258e10"
+    },
+    {
+      "path": "final-logs/outcome.final.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/outcome.final.log",
+      "bytes": 90,
+      "sha256": "8dba2e43a31cdb947209bf46a783fd2cebd65e855b6b76f3f0aca7ebcf258e10"
+    },
+    {
+      "path": "final-logs/score_form.acceptance.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/score_form.acceptance.log",
+      "bytes": 357,
+      "sha256": "cbd44068ac0e75e24226dc38c74d2831320e2ecaacfff199a0d5727147316ef0"
+    },
+    {
+      "path": "final-logs/score_form.cleanup.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/score_form.cleanup.log",
+      "bytes": 357,
+      "sha256": "cbd44068ac0e75e24226dc38c74d2831320e2ecaacfff199a0d5727147316ef0"
+    },
+    {
+      "path": "final-logs/score_form.final.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/score_form.final.log",
+      "bytes": 118,
+      "sha256": "4de7fd047fa10040aadfd435bd92a26a18030c826abb9fd10236bceb08ea3a32"
+    },
+    {
+      "path": "final-logs/score_form.timer.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/score_form.timer.log",
+      "bytes": 118,
+      "sha256": "4de7fd047fa10040aadfd435bd92a26a18030c826abb9fd10236bceb08ea3a32"
+    },
+    {
+      "path": "final-logs/score_form.verbose.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/score_form.verbose.log",
+      "bytes": 18184,
+      "sha256": "810d90c9581dd16bc85887de6c78f2a9c1deb9a1d818cd94aa15f189bde4e28e"
+    },
+    {
+      "path": "final-logs/settings.acceptance.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/settings.acceptance.log",
+      "bytes": 91,
+      "sha256": "87fd559ba743557a103f0577ac2fa4c0d4457123d49752726d87a25b84151e3f"
+    },
+    {
+      "path": "final-logs/settings.final.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/settings.final.log",
+      "bytes": 91,
+      "sha256": "87fd559ba743557a103f0577ac2fa4c0d4457123d49752726d87a25b84151e3f"
+    },
+    {
+      "path": "final-logs/soak.acceptance.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/soak.acceptance.log",
+      "bytes": 107,
+      "sha256": "95b41cd0702a54947e1b497672e5cc48a7683e2b9fef852d626c634b3ce9be09"
+    },
+    {
+      "path": "final-logs/soak.clean-1.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/soak.clean-1.log",
+      "bytes": 107,
+      "sha256": "95b41cd0702a54947e1b497672e5cc48a7683e2b9fef852d626c634b3ce9be09"
+    },
+    {
+      "path": "final-logs/soak.clean-2.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/soak.clean-2.log",
+      "bytes": 107,
+      "sha256": "95b41cd0702a54947e1b497672e5cc48a7683e2b9fef852d626c634b3ce9be09"
+    },
+    {
+      "path": "final-logs/soak.final.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/soak.final.log",
+      "bytes": 346,
+      "sha256": "654e6418aa7d6cd64d3ea91dc3c156f24349d30bdef11ccb01384de55cf88a30"
+    },
+    {
+      "path": "final-logs/standalone_lifecycle.acceptance.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/standalone_lifecycle.acceptance.log",
+      "bytes": 341,
+      "sha256": "5fabff41d25eea916753c513b24d18f3a2c3008637ad23d1097bae9d293a37ff"
+    },
+    {
+      "path": "final-logs/standalone_lifecycle.cleanup.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/standalone_lifecycle.cleanup.log",
+      "bytes": 341,
+      "sha256": "5fabff41d25eea916753c513b24d18f3a2c3008637ad23d1097bae9d293a37ff"
+    },
+    {
+      "path": "final-logs/standalone_lifecycle.final.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/standalone_lifecycle.final.log",
+      "bytes": 103,
+      "sha256": "e8c968ae851a2e6210e9457502285c193a00d02344fbdb9a1f354d7fe53f27ea"
+    },
+    {
+      "path": "final-logs/standalone_lifecycle.timer.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/standalone_lifecycle.timer.log",
+      "bytes": 103,
+      "sha256": "e8c968ae851a2e6210e9457502285c193a00d02344fbdb9a1f354d7fe53f27ea"
+    },
+    {
+      "path": "final-logs/standalone_lifecycle.verbose.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/standalone_lifecycle.verbose.log",
+      "bytes": 16170,
+      "sha256": "d1e0b4b43f66a6aa145dc8d7663197ca301df9487dbcf3d273b72e50a3532368"
+    },
+    {
+      "path": "final-logs/weather_oracle.acceptance.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/weather_oracle.acceptance.log",
+      "bytes": 91,
+      "sha256": "86e2f6ee94adc6a28737d570283828477d53666b43cbbed41ccb4d0c1ca382aa"
+    },
+    {
+      "path": "final-logs/weather_oracle.final.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/weather_oracle.final.log",
+      "bytes": 91,
+      "sha256": "86e2f6ee94adc6a28737d570283828477d53666b43cbbed41ccb4d0c1ca382aa"
+    },
+    {
+      "path": "final-logs/weather_ownership.acceptance.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/weather_ownership.acceptance.log",
+      "bytes": 94,
+      "sha256": "5673a0ebf0b6a1fa05165b79759905aa1d56af717697f7182365ef6d2f14a601"
+    },
+    {
+      "path": "final-logs/weather_ownership.final.log",
+      "original": "/tmp/opencode/audio-lead-slot/logs/weather_ownership.final.log",
+      "bytes": 94,
+      "sha256": "5673a0ebf0b6a1fa05165b79759905aa1d56af717697f7182365ef6d2f14a601"
+    },
+    {
+      "path": "initial-logs/assault_no_network.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/assault_no_network.third.log",
+      "bytes": 350,
+      "sha256": "8e3953a4b845e9edf438e243d5dc9fbfda8e0bb359e15f24fe5518e0ad67c191"
+    },
+    {
+      "path": "initial-logs/bus_probe.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/bus_probe.log",
+      "bytes": 263,
+      "sha256": "1329244e4b683ff7b850671a9732264dbb117a2eadab05597e5f0126dc73e35b"
+    },
+    {
+      "path": "initial-logs/check_pcm_bus_capture_probe.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/check_pcm_bus_capture_probe.log",
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "path": "initial-logs/check_pcm_driver_probe.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/check_pcm_driver_probe.log",
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "path": "initial-logs/check_pcm_mix_diagnostic.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/check_pcm_mix_diagnostic.log",
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "path": "initial-logs/check_pcm_ogg_probe.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/check_pcm_ogg_probe.log",
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "path": "initial-logs/check_waveform_capture.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/check_waveform_capture.log",
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "path": "initial-logs/event_router.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/event_router.first.log",
+      "bytes": 809,
+      "sha256": "4026b8d982c4e585aed326f3494ff2075aa3919747439a3f0dcca493f7c51f22"
+    },
+    {
+      "path": "initial-logs/event_router.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/event_router.second.log",
+      "bytes": 89,
+      "sha256": "be908a30796d32d7a20f508d973b7a74e073e480c3208c6a89ea2cb364fe63e2"
+    },
+    {
+      "path": "initial-logs/event_router.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/event_router.third.log",
+      "bytes": 89,
+      "sha256": "be908a30796d32d7a20f508d973b7a74e073e480c3208c6a89ea2cb364fe63e2"
+    },
+    {
+      "path": "initial-logs/import-first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/import-first.log",
+      "bytes": 93644,
+      "sha256": "f0ac155836e93bdfd23bb2a807ad5370375d1a853c78142d4bc1371f6708f59a"
+    },
+    {
+      "path": "initial-logs/independent_event_binding.clean.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/independent_event_binding.clean.log",
+      "bytes": 356,
+      "sha256": "81aa75e0e3ee150a4a24b413f6e396956843001ae410bd6524071e1dba49fa7f"
+    },
+    {
+      "path": "initial-logs/independent_event_binding.final.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/independent_event_binding.final.log",
+      "bytes": 356,
+      "sha256": "81aa75e0e3ee150a4a24b413f6e396956843001ae410bd6524071e1dba49fa7f"
+    },
+    {
+      "path": "initial-logs/independent_event_binding.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/independent_event_binding.first.log",
+      "bytes": 2285,
+      "sha256": "933939885052b50f77a0ffffd6a44e84fb728d9aa560b69d514fc25cb8c836c7"
+    },
+    {
+      "path": "initial-logs/independent_event_binding.fourth.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/independent_event_binding.fourth.log",
+      "bytes": 809,
+      "sha256": "5d7aea4f1b25c64f6d45d774bbacc7a80ee264e4e13e752944678d49a7a21e04"
+    },
+    {
+      "path": "initial-logs/independent_event_binding.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/independent_event_binding.second.log",
+      "bytes": 3633,
+      "sha256": "3535f94e0cde1e99926eff763e19d2da4abfd46d24456fb8a698f2b2bf3843fe"
+    },
+    {
+      "path": "initial-logs/independent_event_binding.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/independent_event_binding.third.log",
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "path": "initial-logs/independent_event_binding.verbose.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/independent_event_binding.verbose.log",
+      "bytes": 41129,
+      "sha256": "f314055601c8bc4c4cf842b246a6bff8c0d4f156a2c81a4c96a5ea3b624701d9"
+    },
+    {
+      "path": "initial-logs/lifecycle.final.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/lifecycle.final.log",
+      "bytes": 330,
+      "sha256": "050d4ffb656f67ae8d8894488c3ca4cea480b6683d1913debd493e6941959e0c"
+    },
+    {
+      "path": "initial-logs/lifecycle.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/lifecycle.first.log",
+      "bytes": 794,
+      "sha256": "501c535c39d51b3ad47fa09f253fb4bc2eb91406fb27eedd341fea466a4fa018"
+    },
+    {
+      "path": "initial-logs/lifecycle.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/lifecycle.second.log",
+      "bytes": 2790,
+      "sha256": "e086d12570c24a18a121695a06b33ca09ed5e79c7ea041db89c1c39028d4877a"
+    },
+    {
+      "path": "initial-logs/lifecycle.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/lifecycle.third.log",
+      "bytes": 1961,
+      "sha256": "4e93cdee5ea3d98333ea4aa9bf67dc46e68b159e6a62f738825c36e68dd644d3"
+    },
+    {
+      "path": "initial-logs/mix_diag.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/mix_diag.log",
+      "bytes": 1650,
+      "sha256": "4c4da1c31ad557f7b3701ac41fd5cf9e67eaff163495b2c75b6ed0281bf9fee9"
+    },
+    {
+      "path": "initial-logs/ogg_probe.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/ogg_probe.log",
+      "bytes": 225,
+      "sha256": "304b6e6e92897848b838ea567ab2eab22be5410fd5edb2ac15e861f881b13504"
+    },
+    {
+      "path": "initial-logs/outcome.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/outcome.first.log",
+      "bytes": 90,
+      "sha256": "8dba2e43a31cdb947209bf46a783fd2cebd65e855b6b76f3f0aca7ebcf258e10"
+    },
+    {
+      "path": "initial-logs/outcome.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/outcome.third.log",
+      "bytes": 90,
+      "sha256": "8dba2e43a31cdb947209bf46a783fd2cebd65e855b6b76f3f0aca7ebcf258e10"
+    },
+    {
+      "path": "initial-logs/pcm_attempt2_silent_race.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/pcm_attempt2_silent_race.log",
+      "bytes": 14727,
+      "sha256": "8c5f037ce074b7ac1a80a3d57579096168ca5d874c9887a0d62f6743ba263dc6"
+    },
+    {
+      "path": "initial-logs/pcm_final_verbose.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/pcm_final_verbose.log",
+      "bytes": 14812,
+      "sha256": "5c58ef3096e6366cffc377b52bfab49b39a9f741080b2c6313a3ad5508c513bd"
+    },
+    {
+      "path": "initial-logs/pcm_first_attempt_missing_path.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/pcm_first_attempt_missing_path.log",
+      "bytes": 2368,
+      "sha256": "70d7a1131bea3aa2020bc81aec299cb8f05d1dba7d1657db80e48fb4a852600d"
+    },
+    {
+      "path": "initial-logs/pcm_negative_dummy.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/pcm_negative_dummy.log",
+      "bytes": 373,
+      "sha256": "c1943c42b89b9805f5eca8f398e0f16439dc11be90e18750f240c8591b589dc5"
+    },
+    {
+      "path": "initial-logs/pcm_run2.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/pcm_run2.log",
+      "bytes": 463,
+      "sha256": "26088c768bd29701d58d3fb2f6f3928aaf14cababa43239933e1e835d4d0d4ed"
+    },
+    {
+      "path": "initial-logs/pcm_run3.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/pcm_run3.log",
+      "bytes": 463,
+      "sha256": "9a341bbcc21ad2fcf933fe211d45615193f074a2bb8eee9793c5ffcaccf97df6"
+    },
+    {
+      "path": "initial-logs/pcm_run_repeat.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/pcm_run_repeat.log",
+      "bytes": 465,
+      "sha256": "59db7095e00f306c4992f06e8b3e1eeafec3f742e171a9094e0e1ea761486595"
+    },
+    {
+      "path": "initial-logs/pcm_run_tightdrain.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/pcm_run_tightdrain.log",
+      "bytes": 14766,
+      "sha256": "5473a7f7355a92472e32ee18bf0d122ee1b9524676d71fb5c8324d2999f6d15f"
+    },
+    {
+      "path": "initial-logs/pcm_syntax_check.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/pcm_syntax_check.log",
+      "bytes": 503,
+      "sha256": "08500076e1982ec16c4a8ef50a54c9e5d74a7a19fb74f06f23642c0be18dbb4d"
+    },
+    {
+      "path": "initial-logs/peer_lifecycle.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/peer_lifecycle.log",
+      "bytes": 330,
+      "sha256": "050d4ffb656f67ae8d8894488c3ca4cea480b6683d1913debd493e6941959e0c"
+    },
+    {
+      "path": "initial-logs/peer_soak.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/peer_soak.log",
+      "bytes": 346,
+      "sha256": "654e6418aa7d6cd64d3ea91dc3c156f24349d30bdef11ccb01384de55cf88a30"
+    },
+    {
+      "path": "initial-logs/probe_ALSA.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/probe_ALSA.log",
+      "bytes": 3648,
+      "sha256": "ed69b9b87200a1f59b40122f3c89436704c8af1cd5634f9d5ef519f4ed6a1688"
+    },
+    {
+      "path": "initial-logs/probe_ALSA_null.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/probe_ALSA_null.log",
+      "bytes": 2257,
+      "sha256": "1ef93cf2e9143a420fa954b0b22b2798fc30b5029246d3196cc792c79ba54dd9"
+    },
+    {
+      "path": "initial-logs/probe_Dummy.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/probe_Dummy.log",
+      "bytes": 2624,
+      "sha256": "4a7a0d7268d239ac4d71e978403b73278e401a428e42cbc71d9546a00f2ea425"
+    },
+    {
+      "path": "initial-logs/probe_PulseAudio.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/probe_PulseAudio.log",
+      "bytes": 3648,
+      "sha256": "150c0a9e65aba283fc1f0225b9b4534b5dcee154ed2f18da9a30c6b93611ee2f"
+    },
+    {
+      "path": "initial-logs/probe_alsa_lat15.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/probe_alsa_lat15.log",
+      "bytes": 307,
+      "sha256": "86cf642a72a54882fa8a81cf650ed356db3635fcf8019b6cc918877b634b5ce9"
+    },
+    {
+      "path": "initial-logs/probe_alsa_lat500.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/probe_alsa_lat500.log",
+      "bytes": 307,
+      "sha256": "86cf642a72a54882fa8a81cf650ed356db3635fcf8019b6cc918877b634b5ce9"
+    },
+    {
+      "path": "initial-logs/probe_dummy.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/probe_dummy.log",
+      "bytes": 386,
+      "sha256": "dbdb7b1c14f3652f2852ce4f7a2efefb26e48734a2dbc42664326548fa9cfd8f"
+    },
+    {
+      "path": "initial-logs/regression-audio_new_independent_event_binding.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-audio_new_independent_event_binding.third.log",
+      "bytes": 809,
+      "sha256": "5d7aea4f1b25c64f6d45d774bbacc7a80ee264e4e13e752944678d49a7a21e04"
+    },
+    {
+      "path": "initial-logs/regression-horde_cinderwake_test.final.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-horde_cinderwake_test.final.log",
+      "bytes": 108,
+      "sha256": "4f8ecdd258cb155063983655afed9a3512c0e864c1e2ac2fce1faa16a532d98c"
+    },
+    {
+      "path": "initial-logs/regression-horde_cinderwake_test.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-horde_cinderwake_test.first.log",
+      "bytes": 108,
+      "sha256": "4f8ecdd258cb155063983655afed9a3512c0e864c1e2ac2fce1faa16a532d98c"
+    },
+    {
+      "path": "initial-logs/regression-horde_identity_composition_test.final.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-horde_identity_composition_test.final.log",
+      "bytes": 359,
+      "sha256": "078281cb0c76bacce64b36a13fc6a68d8821d7d776ff94377f61fd67bd93719d"
+    },
+    {
+      "path": "initial-logs/regression-horde_identity_composition_test.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-horde_identity_composition_test.first.log",
+      "bytes": 359,
+      "sha256": "078281cb0c76bacce64b36a13fc6a68d8821d7d776ff94377f61fd67bd93719d"
+    },
+    {
+      "path": "initial-logs/regression-horde_identity_composition_test.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-horde_identity_composition_test.second.log",
+      "bytes": 359,
+      "sha256": "078281cb0c76bacce64b36a13fc6a68d8821d7d776ff94377f61fd67bd93719d"
+    },
+    {
+      "path": "initial-logs/regression-horde_test.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-horde_test.first.log",
+      "bytes": 1299,
+      "sha256": "bd5168fde4cb473f9967f07f8f9e259f4754ba3776489e92e470c37e8d16f4f7"
+    },
+    {
+      "path": "initial-logs/regression-horde_test.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-horde_test.second.log",
+      "bytes": 1299,
+      "sha256": "bd5168fde4cb473f9967f07f8f9e259f4754ba3776489e92e470c37e8d16f4f7"
+    },
+    {
+      "path": "initial-logs/regression-horde_test.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-horde_test.third.log",
+      "bytes": 344,
+      "sha256": "33b70109505dc2daa387d3a2814e267aa7c518e079e7bbbe4a5769adfc65c1b0"
+    },
+    {
+      "path": "initial-logs/regression-lattice_ui.final.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-lattice_ui.final.log",
+      "bytes": 145,
+      "sha256": "4c0a299da2345b323cb3ffcc772364855f43ac65334482d5e5bd34b1f04b3279"
+    },
+    {
+      "path": "initial-logs/regression-lattice_ui.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-lattice_ui.first.log",
+      "bytes": 145,
+      "sha256": "4c0a299da2345b323cb3ffcc772364855f43ac65334482d5e5bd34b1f04b3279"
+    },
+    {
+      "path": "initial-logs/regression-lattice_world_contract.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-lattice_world_contract.first.log",
+      "bytes": 10033,
+      "sha256": "0c466c30eaf6c25b4c04b9d8c17e907886a776207e6a8181c62c85a68c164df7"
+    },
+    {
+      "path": "initial-logs/regression-lattice_world_contract.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-lattice_world_contract.second.log",
+      "bytes": 10033,
+      "sha256": "0c466c30eaf6c25b4c04b9d8c17e907886a776207e6a8181c62c85a68c164df7"
+    },
+    {
+      "path": "initial-logs/regression-lattice_world_contract.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-lattice_world_contract.third.log",
+      "bytes": 1296,
+      "sha256": "fedeb2db57cbe3d27b19a8d4869cbd18d3602fdd94d31026a98e103c28ff1b07"
+    },
+    {
+      "path": "initial-logs/regression-lattice_world_tactical_contract.final.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-lattice_world_tactical_contract.final.log",
+      "bytes": 1812,
+      "sha256": "ff555feb2dd53bcc265846cf43aec3f1ac4ce5402bdb25179b1577df1fbf3ff2"
+    },
+    {
+      "path": "initial-logs/regression-lattice_world_tactical_contract.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-lattice_world_tactical_contract.first.log",
+      "bytes": 1812,
+      "sha256": "ff555feb2dd53bcc265846cf43aec3f1ac4ce5402bdb25179b1577df1fbf3ff2"
+    },
+    {
+      "path": "initial-logs/regression-lattice_world_tactical_contract.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-lattice_world_tactical_contract.second.log",
+      "bytes": 1812,
+      "sha256": "ff555feb2dd53bcc265846cf43aec3f1ac4ce5402bdb25179b1577df1fbf3ff2"
+    },
+    {
+      "path": "initial-logs/regression-product_shell_settings_contract.final.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-product_shell_settings_contract.final.log",
+      "bytes": 112,
+      "sha256": "5485dc0506ac02c6e0d76f44736ad9e990c25be77709cb92e23b0f3c4a3b57f2"
+    },
+    {
+      "path": "initial-logs/regression-product_shell_settings_contract.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-product_shell_settings_contract.first.log",
+      "bytes": 404,
+      "sha256": "d51a2fa2ba8e085932fd20981ec7bd1cd15d9c026db68e26a22fdd1f36004407"
+    },
+    {
+      "path": "initial-logs/regression-product_shell_settings_contract.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-product_shell_settings_contract.second.log",
+      "bytes": 112,
+      "sha256": "5485dc0506ac02c6e0d76f44736ad9e990c25be77709cb92e23b0f3c4a3b57f2"
+    },
+    {
+      "path": "initial-logs/regression-protocol_audio_feedback.final.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-protocol_audio_feedback.final.log",
+      "bytes": 6634,
+      "sha256": "4ee902a744ae865371d3715958b37769f8f5c874744d55d8064226a2fbfb3d88"
+    },
+    {
+      "path": "initial-logs/regression-protocol_audio_feedback.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/regression-protocol_audio_feedback.first.log",
+      "bytes": 6634,
+      "sha256": "24682b0c61c87291de6ac1c5e53904a435b910c02a0fdccdfdcb9eec605a47c1"
+    },
+    {
+      "path": "initial-logs/score_form.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/score_form.first.log",
+      "bytes": 788,
+      "sha256": "4468df86b1f537f6d7e37631f19b058ed3d590857d05c30d2c657a536cfec44a"
+    },
+    {
+      "path": "initial-logs/score_form.fourth.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/score_form.fourth.log",
+      "bytes": 357,
+      "sha256": "cbd44068ac0e75e24226dc38c74d2831320e2ecaacfff199a0d5727147316ef0"
+    },
+    {
+      "path": "initial-logs/score_form.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/score_form.second.log",
+      "bytes": 357,
+      "sha256": "cbd44068ac0e75e24226dc38c74d2831320e2ecaacfff199a0d5727147316ef0"
+    },
+    {
+      "path": "initial-logs/score_form.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/score_form.third.log",
+      "bytes": 357,
+      "sha256": "cbd44068ac0e75e24226dc38c74d2831320e2ecaacfff199a0d5727147316ef0"
+    },
+    {
+      "path": "initial-logs/settings.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/settings.first.log",
+      "bytes": 294,
+      "sha256": "d3fc89c342a59a4657a36be5270fdf5cc17bfc1cb691a1dc9d9b701ea8fae198"
+    },
+    {
+      "path": "initial-logs/settings.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/settings.second.log",
+      "bytes": 91,
+      "sha256": "87fd559ba743557a103f0577ac2fa4c0d4457123d49752726d87a25b84151e3f"
+    },
+    {
+      "path": "initial-logs/settings.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/settings.third.log",
+      "bytes": 91,
+      "sha256": "87fd559ba743557a103f0577ac2fa4c0d4457123d49752726d87a25b84151e3f"
+    },
+    {
+      "path": "initial-logs/soak.cleanup.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/soak.cleanup.log",
+      "bytes": 107,
+      "sha256": "95b41cd0702a54947e1b497672e5cc48a7683e2b9fef852d626c634b3ce9be09"
+    },
+    {
+      "path": "initial-logs/soak.final.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/soak.final.log",
+      "bytes": 346,
+      "sha256": "654e6418aa7d6cd64d3ea91dc3c156f24349d30bdef11ccb01384de55cf88a30"
+    },
+    {
+      "path": "initial-logs/soak.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/soak.first.log",
+      "bytes": 392,
+      "sha256": "36ebb9b31074e525e7845ca599bde0c5646be6b97aa36e8965a9b04d2a267e31"
+    },
+    {
+      "path": "initial-logs/soak.fourth.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/soak.fourth.log",
+      "bytes": 107,
+      "sha256": "95b41cd0702a54947e1b497672e5cc48a7683e2b9fef852d626c634b3ce9be09"
+    },
+    {
+      "path": "initial-logs/soak.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/soak.second.log",
+      "bytes": 31676,
+      "sha256": "586cfa9f02ec22991e09f0e6433f4d81b8a4370a5a46011fb7d7d603ce8ec0db"
+    },
+    {
+      "path": "initial-logs/soak.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/soak.third.log",
+      "bytes": 439,
+      "sha256": "2daaf4e4139832c82f9d397bc2a3aceba534c12c7036e2562def228aa0f453f7"
+    },
+    {
+      "path": "initial-logs/standalone_lifecycle.cleanup.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/standalone_lifecycle.cleanup.log",
+      "bytes": 341,
+      "sha256": "5fabff41d25eea916753c513b24d18f3a2c3008637ad23d1097bae9d293a37ff"
+    },
+    {
+      "path": "initial-logs/standalone_lifecycle.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/standalone_lifecycle.first.log",
+      "bytes": 800,
+      "sha256": "369ebc0a5855f09ef349437723077161b33083e4f94b9b7bb7b69c86d5d73215"
+    },
+    {
+      "path": "initial-logs/standalone_lifecycle.fourth.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/standalone_lifecycle.fourth.log",
+      "bytes": 341,
+      "sha256": "5fabff41d25eea916753c513b24d18f3a2c3008637ad23d1097bae9d293a37ff"
+    },
+    {
+      "path": "initial-logs/standalone_lifecycle.second.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/standalone_lifecycle.second.log",
+      "bytes": 2564,
+      "sha256": "d609888d3a65ad63e96197bf5f47e8429c4c1a0ce57cecff0c4080847cd86264"
+    },
+    {
+      "path": "initial-logs/standalone_lifecycle.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/standalone_lifecycle.third.log",
+      "bytes": 341,
+      "sha256": "5fabff41d25eea916753c513b24d18f3a2c3008637ad23d1097bae9d293a37ff"
+    },
+    {
+      "path": "initial-logs/weather_oracle.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/weather_oracle.first.log",
+      "bytes": 91,
+      "sha256": "86e2f6ee94adc6a28737d570283828477d53666b43cbbed41ccb4d0c1ca382aa"
+    },
+    {
+      "path": "initial-logs/weather_oracle.fourth.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/weather_oracle.fourth.log",
+      "bytes": 91,
+      "sha256": "86e2f6ee94adc6a28737d570283828477d53666b43cbbed41ccb4d0c1ca382aa"
+    },
+    {
+      "path": "initial-logs/weather_oracle.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/weather_oracle.third.log",
+      "bytes": 91,
+      "sha256": "86e2f6ee94adc6a28737d570283828477d53666b43cbbed41ccb4d0c1ca382aa"
+    },
+    {
+      "path": "initial-logs/weather_ownership.final.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/weather_ownership.final.log",
+      "bytes": 94,
+      "sha256": "5673a0ebf0b6a1fa05165b79759905aa1d56af717697f7182365ef6d2f14a601"
+    },
+    {
+      "path": "initial-logs/weather_ownership.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/weather_ownership.first.log",
+      "bytes": 385,
+      "sha256": "9d99b6316efabf237a88bf85880a26000928c7d44647dda52925049a63224263"
+    },
+    {
+      "path": "initial-logs/weather_ownership.fourth.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/weather_ownership.fourth.log",
+      "bytes": 94,
+      "sha256": "5673a0ebf0b6a1fa05165b79759905aa1d56af717697f7182365ef6d2f14a601"
+    },
+    {
+      "path": "initial-logs/weather_ownership.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/weather_ownership.third.log",
+      "bytes": 385,
+      "sha256": "9d99b6316efabf237a88bf85880a26000928c7d44647dda52925049a63224263"
+    },
+    {
+      "path": "initial-logs/weather_render.final.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/weather_render.final.log",
+      "bytes": 428,
+      "sha256": "03383c9e0c81a521b7c8fab80193073545724e63d6446b7612086f815322df7f"
+    },
+    {
+      "path": "initial-logs/weather_render.first.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/weather_render.first.log",
+      "bytes": 2325,
+      "sha256": "6470ddcd100e1c928e5e27ae906fb2b5adb71743b70e1039afce4faf318517d1"
+    },
+    {
+      "path": "initial-logs/zone_no_network.third.log",
+      "original": "/tmp/opencode/audio-slot-20260929/logs/zone_no_network.third.log",
+      "bytes": 344,
+      "sha256": "43336b2160ce2922c7ccc8ef39e82d7c3f3d8cbfa469c2afb43ecb0672821d3b"
+    },
+    {
+      "path": "pcm-logs/bus_probe.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/bus_probe.log",
+      "bytes": 263,
+      "sha256": "1329244e4b683ff7b850671a9732264dbb117a2eadab05597e5f0126dc73e35b"
+    },
+    {
+      "path": "pcm-logs/check_pcm_bus_capture_probe.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/check_pcm_bus_capture_probe.log",
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "path": "pcm-logs/check_pcm_driver_probe.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/check_pcm_driver_probe.log",
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "path": "pcm-logs/check_pcm_mix_diagnostic.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/check_pcm_mix_diagnostic.log",
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "path": "pcm-logs/check_pcm_ogg_probe.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/check_pcm_ogg_probe.log",
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "path": "pcm-logs/check_waveform_capture.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/check_waveform_capture.log",
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "path": "pcm-logs/mix_diag.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/mix_diag.log",
+      "bytes": 1650,
+      "sha256": "4c4da1c31ad557f7b3701ac41fd5cf9e67eaff163495b2c75b6ed0281bf9fee9"
+    },
+    {
+      "path": "pcm-logs/ogg_probe.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/ogg_probe.log",
+      "bytes": 225,
+      "sha256": "304b6e6e92897848b838ea567ab2eab22be5410fd5edb2ac15e861f881b13504"
+    },
+    {
+      "path": "pcm-logs/pcm_attempt2_silent_race.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/pcm_attempt2_silent_race.log",
+      "bytes": 14727,
+      "sha256": "8c5f037ce074b7ac1a80a3d57579096168ca5d874c9887a0d62f6743ba263dc6"
+    },
+    {
+      "path": "pcm-logs/pcm_final_verbose.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/pcm_final_verbose.log",
+      "bytes": 14814,
+      "sha256": "07bbe91b1d720c61116286a33368c53144470b712492f9e23a2c267e87e7e9b9"
+    },
+    {
+      "path": "pcm-logs/pcm_first_attempt_missing_path.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/pcm_first_attempt_missing_path.log",
+      "bytes": 2368,
+      "sha256": "70d7a1131bea3aa2020bc81aec299cb8f05d1dba7d1657db80e48fb4a852600d"
+    },
+    {
+      "path": "pcm-logs/pcm_negative_dummy.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/pcm_negative_dummy.log",
+      "bytes": 373,
+      "sha256": "c1943c42b89b9805f5eca8f398e0f16439dc11be90e18750f240c8591b589dc5"
+    },
+    {
+      "path": "pcm-logs/pcm_run2.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/pcm_run2.log",
+      "bytes": 463,
+      "sha256": "26088c768bd29701d58d3fb2f6f3928aaf14cababa43239933e1e835d4d0d4ed"
+    },
+    {
+      "path": "pcm-logs/pcm_run3.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/pcm_run3.log",
+      "bytes": 463,
+      "sha256": "9a341bbcc21ad2fcf933fe211d45615193f074a2bb8eee9793c5ffcaccf97df6"
+    },
+    {
+      "path": "pcm-logs/pcm_run_repeat.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/pcm_run_repeat.log",
+      "bytes": 465,
+      "sha256": "59db7095e00f306c4992f06e8b3e1eeafec3f742e171a9094e0e1ea761486595"
+    },
+    {
+      "path": "pcm-logs/pcm_run_tightdrain.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/pcm_run_tightdrain.log",
+      "bytes": 14766,
+      "sha256": "5473a7f7355a92472e32ee18bf0d122ee1b9524676d71fb5c8324d2999f6d15f"
+    },
+    {
+      "path": "pcm-logs/pcm_syntax_check.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/pcm_syntax_check.log",
+      "bytes": 503,
+      "sha256": "08500076e1982ec16c4a8ef50a54c9e5d74a7a19fb74f06f23642c0be18dbb4d"
+    },
+    {
+      "path": "pcm-logs/peer_lifecycle.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/peer_lifecycle.log",
+      "bytes": 330,
+      "sha256": "050d4ffb656f67ae8d8894488c3ca4cea480b6683d1913debd493e6941959e0c"
+    },
+    {
+      "path": "pcm-logs/peer_soak.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/peer_soak.log",
+      "bytes": 346,
+      "sha256": "654e6418aa7d6cd64d3ea91dc3c156f24349d30bdef11ccb01384de55cf88a30"
+    },
+    {
+      "path": "pcm-logs/probe_ALSA.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/probe_ALSA.log",
+      "bytes": 3648,
+      "sha256": "ed69b9b87200a1f59b40122f3c89436704c8af1cd5634f9d5ef519f4ed6a1688"
+    },
+    {
+      "path": "pcm-logs/probe_ALSA_null.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/probe_ALSA_null.log",
+      "bytes": 2257,
+      "sha256": "1ef93cf2e9143a420fa954b0b22b2798fc30b5029246d3196cc792c79ba54dd9"
+    },
+    {
+      "path": "pcm-logs/probe_Dummy.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/probe_Dummy.log",
+      "bytes": 2624,
+      "sha256": "4a7a0d7268d239ac4d71e978403b73278e401a428e42cbc71d9546a00f2ea425"
+    },
+    {
+      "path": "pcm-logs/probe_PulseAudio.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/probe_PulseAudio.log",
+      "bytes": 3648,
+      "sha256": "150c0a9e65aba283fc1f0225b9b4534b5dcee154ed2f18da9a30c6b93611ee2f"
+    },
+    {
+      "path": "pcm-logs/probe_alsa_lat15.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/probe_alsa_lat15.log",
+      "bytes": 307,
+      "sha256": "86cf642a72a54882fa8a81cf650ed356db3635fcf8019b6cc918877b634b5ce9"
+    },
+    {
+      "path": "pcm-logs/probe_alsa_lat500.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/probe_alsa_lat500.log",
+      "bytes": 307,
+      "sha256": "86cf642a72a54882fa8a81cf650ed356db3635fcf8019b6cc918877b634b5ce9"
+    },
+    {
+      "path": "pcm-logs/probe_dummy.log",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/logs/probe_dummy.log",
+      "bytes": 386,
+      "sha256": "dbdb7b1c14f3652f2852ce4f7a2efefb26e48734a2dbc42664326548fa9cfd8f"
+    },
+    {
+      "path": "weather/rain-off.png",
+      "original": "/tmp/opencode/audio-slot-20260929/weather/rain-off.png",
+      "bytes": 999,
+      "sha256": "25009098e728b1f124ad6a77e1b72a116a8097fdbaf9bbc07fe933086db533da"
+    },
+    {
+      "path": "weather/rain-on.png",
+      "original": "/tmp/opencode/audio-slot-20260929/weather/rain-on.png",
+      "bytes": 1053,
+      "sha256": "014f8839dbbefb958b7de66bd443aae2325952b102f696fde441fa8c099e3692"
+    },
+    {
+      "path": "pcm/master-mix.wav",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/master-mix.wav",
+      "bytes": 176444,
+      "sha256": "0177ec7994600a2f6e723b2a19a55f19971b41ca3a46cc5ddee48093369c64ed"
+    },
+    {
+      "path": "pcm/master-mix-seed42.wav",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/master-mix-seed42.wav",
+      "bytes": 176444,
+      "sha256": "f265e5f351912b5da1a95b1ac1c92bf69ad5f9d67a99973f3fbe9defb630b5f1"
+    },
+    {
+      "path": "pcm/master-mix-seed137.wav",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/master-mix-seed137.wav",
+      "bytes": 176444,
+      "sha256": "ac2469f7b72940ed6903f412f7bbfb6b3fc6749c8a94e7c8b7cb6078f747d8e5"
+    },
+    {
+      "path": "pcm/EVIDENCE.md",
+      "original": "/tmp/opencode/audio-slot-20260929/pcm/EVIDENCE.md",
+      "bytes": 8517,
+      "sha256": "433c3bfc3f034987f112e733545f6f89b570ec9bd8f7eb6b363ee795aa73b709"
+    }
+  ]
+}

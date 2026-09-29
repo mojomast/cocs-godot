@@ -1,0 +1,9 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: Condition "active" is true.
+   at: clear_buffer (servers/audio/effects/audio_stream_generator.cpp:164)
+   GDScript backtrace (most recent call first):
+       [0] apply_settings (res://ambience/weather_service.gd:129)
+       [1] apply_settings (res://audio/av_service.gd:107)
+       [2] run (res://tests/audio_new/soak.gd:40)
+AUDIO_SOAK_OK ids=4096 streams=73

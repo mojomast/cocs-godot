@@ -1,0 +1,166 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SCRIPT ERROR: Invalid call. Nonexistent function 'bind' in base 'Nil'.
+          at: bind_session (res://audio/av_service.gd:61)
+          GDScript backtrace (most recent call first):
+              [0] bind_session (res://audio/av_service.gd:61)
+              [1] av_start (res://world/session.gd:38)
+              [2] on_started (res://world/session.gd:572)
+              [3] on_started (res://lattice/world_demo.gd:320)
+              [4] decode_text (res://net/client.gd:427)
+              [5] decode_text (res://lattice/transport.gd:163)
+              [6] wire (res://tests/lattice/world_contract.gd:14)
+              [7] run (res://tests/lattice/world_contract.gd:44)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_outcome' in base 'Nil'.
+          at: start_round (res://audio/av_service.gd:79)
+          GDScript backtrace (most recent call first):
+              [0] start_round (res://audio/av_service.gd:79)
+              [1] av_start (res://world/session.gd:39)
+              [2] on_started (res://world/session.gd:572)
+              [3] on_started (res://lattice/world_demo.gd:320)
+              [4] decode_text (res://net/client.gd:427)
+              [5] decode_text (res://lattice/transport.gd:163)
+              [6] wire (res://tests/lattice/world_contract.gd:14)
+              [7] run (res://tests/lattice/world_contract.gd:44)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] av_snapshot (res://world/session.gd:45)
+              [2] on_snapshot (res://world/session.gd:701)
+              [3] on_snapshot (res://lattice/world_demo.gd:351)
+              [4] decode_text (res://net/client.gd:444)
+              [5] decode_text (res://lattice/transport.gd:163)
+              [6] wire (res://tests/lattice/world_contract.gd:14)
+              [7] run (res://tests/lattice/world_contract.gd:52)
+WORLD_CHECK valid wire accepted true
+WORLD_CHECK owned living pose enables capture true
+WORLD_CHECK camera uses exact source eye position true
+WORLD_CHECK withheld wallets remain unknown true
+WORLD_CHECK only received actors rendered true
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: set_focus (res://audio/av_service.gd:244)
+          GDScript backtrace (most recent call first):
+              [0] set_focus (res://audio/av_service.gd:244)
+              [1] _notification (res://world/session.gd:425)
+              [2] _notification (res://lattice/world_demo.gd:248)
+              [3] run (res://tests/lattice/world_contract.gd:57)
+WORLD_CHECK focus loss blocks look/capture true
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: set_focus (res://audio/av_service.gd:244)
+          GDScript backtrace (most recent call first):
+              [0] set_focus (res://audio/av_service.gd:244)
+              [1] _notification (res://world/session.gd:432)
+              [2] _notification (res://lattice/world_demo.gd:248)
+              [3] run (res://tests/lattice/world_contract.gd:61)
+WORLD_CHECK stale pose blocks capture true
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] av_snapshot (res://world/session.gd:45)
+              [2] on_snapshot (res://world/session.gd:701)
+              [3] on_snapshot (res://lattice/world_demo.gd:351)
+              [4] decode_text (res://net/client.gd:444)
+              [5] decode_text (res://lattice/transport.gd:163)
+              [6] wire (res://tests/lattice/world_contract.gd:14)
+              [7] run (res://tests/lattice/world_contract.gd:65)
+WORLD_CHECK absent remote retired without reconstruction true
+SCRIPT ERROR: Invalid call. Nonexistent function 'reset' in base 'Nil'.
+          at: suspend (res://audio/av_service.gd:254)
+          GDScript backtrace (most recent call first):
+              [0] suspend (res://audio/av_service.gd:254)
+              [1] on_snapshot (res://lattice/world_demo.gd:345)
+              [2] decode_text (res://net/client.gd:444)
+              [3] decode_text (res://lattice/transport.gd:163)
+              [4] wire (res://tests/lattice/world_contract.gd:14)
+              [5] run (res://tests/lattice/world_contract.gd:68)
+WORLD_CHECK missing projection clears controls and visuals true
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] av_snapshot (res://world/session.gd:45)
+              [2] on_snapshot (res://world/session.gd:701)
+              [3] on_snapshot (res://lattice/world_demo.gd:351)
+              [4] decode_text (res://net/client.gd:444)
+              [5] decode_text (res://lattice/transport.gd:163)
+              [6] wire (res://tests/lattice/world_contract.gd:14)
+              [7] run (res://tests/lattice/world_contract.gd:71)
+WORLD_CHECK revoked owner cannot retain old pose true
+SCRIPT ERROR: Invalid call. Nonexistent function 'reset' in base 'Nil'.
+          at: suspend (res://audio/av_service.gd:254)
+          GDScript backtrace (most recent call first):
+              [0] suspend (res://audio/av_service.gd:254)
+              [1] on_snapshot (res://lattice/world_demo.gd:345)
+              [2] decode_text (res://net/client.gd:444)
+              [3] decode_text (res://lattice/transport.gd:163)
+              [4] wire (res://tests/lattice/world_contract.gd:14)
+              [5] run (res://tests/lattice/world_contract.gd:75)
+WORLD_CHECK new owner absent from snapshot cannot borrow actor zero true
+WORLD_CHECK typed actor consumer guarded true
+WORLD_CHECK nonfinite pose rejected true
+WORLD_CHECK duplicate actor identity rejected true
+WORLD_CHECK malformed objective projection rejected true
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] av_snapshot (res://world/session.gd:45)
+              [2] on_snapshot (res://world/session.gd:701)
+              [3] on_snapshot (res://lattice/world_demo.gd:351)
+              [4] decode_text (res://net/client.gd:444)
+              [5] decode_text (res://lattice/transport.gd:163)
+              [6] wire (res://tests/lattice/world_contract.gd:14)
+              [7] run (res://tests/lattice/world_contract.gd:89)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_focus' in base 'Nil'.
+          at: apply_snapshot (res://audio/av_service.gd:127)
+          GDScript backtrace (most recent call first):
+              [0] apply_snapshot (res://audio/av_service.gd:127)
+              [1] av_snapshot (res://world/session.gd:45)
+              [2] on_results (res://lattice/world_demo.gd:362)
+              [3] decode_text (res://net/client.gd:434)
+              [4] decode_text (res://lattice/transport.gd:163)
+              [5] wire (res://tests/lattice/world_contract.gd:14)
+              [6] run (res://tests/lattice/world_contract.gd:91)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_outcome' in base 'Nil'.
+          at: finish (res://audio/av_service.gd:213)
+          GDScript backtrace (most recent call first):
+              [0] finish (res://audio/av_service.gd:213)
+              [1] finish_state (res://audio/av_service.gd:218)
+              [2] av_finish (res://world/session.gd:54)
+              [3] on_results (res://lattice/world_demo.gd:363)
+              [4] decode_text (res://net/client.gd:434)
+              [5] decode_text (res://lattice/transport.gd:163)
+              [6] wire (res://tests/lattice/world_contract.gd:14)
+              [7] run (res://tests/lattice/world_contract.gd:91)
+WORLD_CHECK results reset control and private projection true
+SCRIPT ERROR: Invalid call. Nonexistent function 'bind' in base 'Nil'.
+          at: bind_session (res://audio/av_service.gd:61)
+          GDScript backtrace (most recent call first):
+              [0] bind_session (res://audio/av_service.gd:61)
+              [1] av_start (res://world/session.gd:38)
+              [2] on_started (res://world/session.gd:572)
+              [3] on_started (res://lattice/world_demo.gd:320)
+              [4] decode_text (res://net/client.gd:427)
+              [5] decode_text (res://lattice/transport.gd:163)
+              [6] wire (res://tests/lattice/world_contract.gd:14)
+              [7] run (res://tests/lattice/world_contract.gd:93)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_outcome' in base 'Nil'.
+          at: start_round (res://audio/av_service.gd:79)
+          GDScript backtrace (most recent call first):
+              [0] start_round (res://audio/av_service.gd:79)
+              [1] av_start (res://world/session.gd:39)
+              [2] on_started (res://world/session.gd:572)
+              [3] on_started (res://lattice/world_demo.gd:320)
+              [4] decode_text (res://net/client.gd:427)
+              [5] decode_text (res://lattice/transport.gd:163)
+              [6] wire (res://tests/lattice/world_contract.gd:14)
+              [7] run (res://tests/lattice/world_contract.gd:93)
+WORLD_CHECK restart requires fresh owned pose true
+WORLD_CHECK error disconnect clears identity/control true
+WORLD_CONTRACT checks=18 failures=0
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:804)

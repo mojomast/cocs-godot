@@ -1,0 +1,3 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+AUDIO_WAVEFORM_OK driver=ALSA frames=44100 peak=0.24819521605968 energy=55.1971198601111 streams=73 variation_frames=44100,44100 variation_peaks=0.06726046651602,0.06726046651602 pitch_plans=[1.0, 2.0, 1.1225],[1.0, 1.2599, 1.0] variation_pcm_equal=false file=/tmp/opencode/audio-slot-20260929/pcm/run3/master-mix.wav sha256=67a5e2af8f5cdb57c8d518ddb7797ac20c7561ac57749fbb5c8a003f41a96323

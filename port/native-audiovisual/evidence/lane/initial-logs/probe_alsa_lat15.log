@@ -1,0 +1,4 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PCM_PROBE_INFO {"bus_count":1,"device_count":1,"driver_name":"ALSA","has_driver_name":true,"mix_rate":44100.0,"output_device":"Default","speaker_mode":0}
+PCM_PROBE_RESULT pushed=22050 frames=491520 peak=0.49999988079071 captured=true
