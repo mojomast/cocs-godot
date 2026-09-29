@@ -1,40 +1,52 @@
 TAP version 13
-# Subtest: dev: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
-ok 1 - dev: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
+# Subtest: default journey is unchanged and independent entries can select the same route twice
+ok 1 - default journey is unchanged and independent entries can select the same route twice
   ---
-  duration_ms: 443.16903
+  duration_ms: 1.551407
+  type: 'test'
+  ...
+# Subtest: itinerary rejects unbounded, debug, offline and private transport controls
+ok 2 - itinerary rejects unbounded, debug, offline and private transport controls
+  ---
+  duration_ms: 0.660257
+  type: 'test'
+  ...
+# Subtest: dev: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
+ok 3 - dev: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
+  ---
+  duration_ms: 467.517935
   type: 'test'
   ...
 # Subtest: package: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
-ok 2 - package: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
+ok 4 - package: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
   ---
-  duration_ms: 432.493112
+  duration_ms: 470.444538
   type: 'test'
   ...
 # Subtest: explicit isolated preference path wins over development and platform defaults
-ok 3 - explicit isolated preference path wins over development and platform defaults
+ok 5 - explicit isolated preference path wins over development and platform defaults
   ---
-  duration_ms: 0.600084
+  duration_ms: 0.669104
   type: 'test'
   ...
 # Subtest: development preferences live outside disposable route runtime directories
-ok 4 - development preferences live outside disposable route runtime directories
+ok 6 - development preferences live outside disposable route runtime directories
   ---
-  duration_ms: 0.099576
+  duration_ms: 0.100568
   type: 'test'
   ...
 # Subtest: installed preferences use native per-user config roots without depending on cwd
-ok 5 - installed preferences use native per-user config roots without depending on cwd
+ok 7 - installed preferences use native per-user config roots without depending on cwd
   ---
-  duration_ms: 0.176671
+  duration_ms: 0.252894
   type: 'test'
   ...
-1..5
-# tests 5
+1..7
+# tests 7
 # suites 0
-# pass 5
+# pass 7
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 915.324225
+# duration_ms 975.469837

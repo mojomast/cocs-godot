@@ -103,7 +103,15 @@ Evidence: `port/native-shell/evidence/expansion-2026-09-28/`.
   explicit chat close and guest leave while the external host continued running.
 - The first expanded aggregate stopped at gate 19/218 because native graphics
   fixture copies omitted the newly imported `career_path.mjs`. `0d8bd78c` adds
-  it to the graphics and native arena fixture closures; the rerun is pending.
+  it to the graphics and native arena fixture closures.
+- **Final aggregate passed 218/218, zero unrun**, at
+  `0d8bd78cacaf7b2d49dafa2a5a060dcdd74fb50b`, followed serially by **228/228 server
+  tests** and repository lint (**zero errors**, 915 warnings). The selected source
+  derivative remains `61fca35c65488502b794900cde0a5247bfb123bf`, with manifest SHA-256
+  `d1809086734c3df66573db5b7efc023b23a337ab2b05d4f5019e985d26e7cff7`.
+  `verification-218.json` has SHA-256
+  `26bde668efe0bcd18ecbafa9a56018b6148aa67ca899f87ce950d341b214e4e2`.
+  Canonical `port/reports/verification.json` and gate logs now record this run.
 
 Failed attempts remain retained rather than being relabelled:
 

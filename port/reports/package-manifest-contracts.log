@@ -1,0 +1,226 @@
+TAP version 13
+# Subtest: valid Linux package passes end to end
+ok 1 - valid Linux package passes end to end
+  ---
+  duration_ms: 105.574112
+  type: 'test'
+  ...
+# Subtest: valid Windows package structure passes without executing the engine
+ok 2 - valid Windows package structure passes without executing the engine
+  ---
+  duration_ms: 83.120734
+  type: 'test'
+  ...
+# Subtest: a career-capable recorded launcher requires its committed helper even if the inventory is forged
+ok 3 - a career-capable recorded launcher requires its committed helper even if the inventory is forged
+  ---
+  duration_ms: 127.961327
+  type: 'test'
+  ...
+# Subtest: a genuinely new source module (Cinderwake horde-stages style) is discovered dynamically
+ok 4 - a genuinely new source module (Cinderwake horde-stages style) is discovered dynamically
+  ---
+  duration_ms: 81.41597
+  type: 'test'
+  ...
+# Subtest: a valid older artifact still passes from an advanced, dirty checkout with a bogus ambient contract
+ok 5 - a valid older artifact still passes from an advanced, dirty checkout with a bogus ambient contract
+  ---
+  duration_ms: 79.17963
+  type: 'test'
+  ...
+# Subtest: changed runtime bytes fail the exact inventory
+ok 6 - changed runtime bytes fail the exact inventory
+  ---
+  duration_ms: 39.335669
+  type: 'test'
+  ...
+# Subtest: changed runtime bytes with a refreshed manifest fail the git anchor
+ok 7 - changed runtime bytes with a refreshed manifest fail the git anchor
+  ---
+  duration_ms: 44.675163
+  type: 'test'
+  ...
+# Subtest: an extra file not in the manifest fails
+ok 8 - an extra file not in the manifest fails
+  ---
+  duration_ms: 38.998037
+  type: 'test'
+  ...
+# Subtest: an uninventoried runtime file inside the inventory fails
+ok 9 - an uninventoried runtime file inside the inventory fails
+  ---
+  duration_ms: 36.660967
+  type: 'test'
+  ...
+# Subtest: an extra bundled dependency fails
+ok 10 - an extra bundled dependency fails
+  ---
+  duration_ms: 41.508831
+  type: 'test'
+  ...
+# Subtest: a missing packaged file fails
+ok 11 - a missing packaged file fails
+  ---
+  duration_ms: 32.293134
+  type: 'test'
+  ...
+# Subtest: a shipped test module fails even when the closure claims it
+ok 12 - a shipped test module fails even when the closure claims it
+  ---
+  duration_ms: 30.073786
+  type: 'test'
+  ...
+# Subtest: a missing ws LICENSE fails
+ok 13 - a missing ws LICENSE fails
+  ---
+  duration_ms: 35.510993
+  type: 'test'
+  ...
+# Subtest: a missing settings_path helper fails
+ok 14 - a missing settings_path helper fails
+  ---
+  duration_ms: 29.622651
+  type: 'test'
+  ...
+# Subtest: a settings_path helper without the shared export fails
+ok 15 - a settings_path helper without the shared export fails
+  ---
+  duration_ms: 30.184723
+  type: 'test'
+  ...
+# Subtest: a forged launcher and forged file hash cannot claim the recorded commit
+ok 16 - a forged launcher and forged file hash cannot claim the recorded commit
+  ---
+  duration_ms: 50.81711
+  type: 'test'
+  ...
+# Subtest: a forged catalog.json cannot claim the recorded map selection
+ok 17 - a forged catalog.json cannot claim the recorded map selection
+  ---
+  duration_ms: 46.533304
+  type: 'test'
+  ...
+# Subtest: dropping a module from disk, manifest and closure fails committed discovery
+ok 18 - dropping a module from disk, manifest and closure fails committed discovery
+  ---
+  duration_ms: 81.131507
+  type: 'test'
+  ...
+# Subtest: a provided manifest that disagrees with the package manifest fails
+ok 19 - a provided manifest that disagrees with the package manifest fails
+  ---
+  duration_ms: 30.587909
+  type: 'test'
+  ...
+# Subtest: a provided manifestPath that disagrees with the package manifest fails
+ok 20 - a provided manifestPath that disagrees with the package manifest fails
+  ---
+  duration_ms: 38.665463
+  type: 'test'
+  ...
+# Subtest: a wrong port commit fails against the recorded commit
+ok 21 - a wrong port commit fails against the recorded commit
+  ---
+  duration_ms: 33.020116
+  type: 'test'
+  ...
+# Subtest: a wrong source commit fails against the recorded source lock
+ok 22 - a wrong source commit fails against the recorded source lock
+  ---
+  duration_ms: 31.418766
+  type: 'test'
+  ...
+# Subtest: missing source metadata fails closed
+ok 23 - missing source metadata fails closed
+  ---
+  duration_ms: 39.780503
+  type: 'test'
+  ...
+# Subtest: a future manifest schema version fails closed
+ok 24 - a future manifest schema version fails closed
+  ---
+  duration_ms: 30.307254
+  type: 'test'
+  ...
+# Subtest: optional fields a future lane might add are not required
+ok 25 - optional fields a future lane might add are not required
+  ---
+  duration_ms: 72.619519
+  type: 'test'
+  ...
+# Subtest: a valid derivative-bound package passes
+ok 26 - a valid derivative-bound package passes
+  ---
+  duration_ms: 89.906928
+  type: 'test'
+  ...
+# Subtest: a derivative that adds a reviewed source module passes
+ok 27 - a derivative that adds a reviewed source module passes
+  ---
+  duration_ms: 95.81603
+  type: 'test'
+  ...
+# Subtest: a derivative-added source module outside runtime_files fails
+ok 28 - a derivative-added source module outside runtime_files fails
+  ---
+  duration_ms: 47.226603
+  type: 'test'
+  ...
+# Subtest: a tampered recorded committed contract hash fails
+ok 29 - a tampered recorded committed contract hash fails
+  ---
+  duration_ms: 48.512522
+  type: 'test'
+  ...
+# Subtest: a tampered recorded contract source commit fails
+ok 30 - a tampered recorded contract source commit fails
+  ---
+  duration_ms: 47.13949
+  type: 'test'
+  ...
+# Subtest: a mismatched recorded derivative commit fails
+ok 31 - a mismatched recorded derivative commit fails
+  ---
+  duration_ms: 49.05026
+  type: 'test'
+  ...
+# Subtest: the optional horde-map data family is hashed, anchored and shipped
+ok 32 - the optional horde-map data family is hashed, anchored and shipped
+  ---
+  duration_ms: 71.229124
+  type: 'test'
+  ...
+# Subtest: a tampered horde-map data byte fails the port-commit anchor
+ok 33 - a tampered horde-map data byte fails the port-commit anchor
+  ---
+  duration_ms: 52.653791
+  type: 'test'
+  ...
+# Subtest: an absent hordeDataFiles closure field stays valid on the baseline
+ok 34 - an absent hordeDataFiles closure field stays valid on the baseline
+  ---
+  duration_ms: 75.467625
+  type: 'test'
+  ...
+# Subtest: validation is independent of the caller working directory
+ok 35 - validation is independent of the caller working directory
+  ---
+  duration_ms: 78.270276
+  type: 'test'
+  ...
+# Subtest: the CLI reports JSON and a nonzero exit on failure
+ok 36 - the CLI reports JSON and a nonzero exit on failure
+  ---
+  duration_ms: 131.54952
+  type: 'test'
+  ...
+1..36
+# tests 36
+# suites 0
+# pass 36
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2129.307861

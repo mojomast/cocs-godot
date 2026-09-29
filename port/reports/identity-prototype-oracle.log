@@ -1,8 +1,8 @@
 {
   "checks": 21145,
   "failures": 0,
-  "elapsedMs": 396.1,
-  "evidence": "ray-report-1790630613296.json",
+  "elapsedMs": 416.7,
+  "evidence": "ray-report-1790640417034.json",
   "fixtures": 7567
 }
 lacuna-court: 5211 rays, groups={"block-cover":36,"wall-face":24,"route-floor":66,"sightline":325,"eye-grid":4760}, probeMisses=0, visibleMismatch=0, eyeCeiling=4.472436, excludedMinY=0

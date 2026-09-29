@@ -46,12 +46,13 @@ simulation lock and verification evidence remain reproducible.
 | Device settings | Home Settings and F12 in a route: master volume/mute, fullscreen, mouse sensitivity and interface scale; Back releases controls and Leave returns to the supervisor menu |
 | Career / Arsenal | Home catalog browsing; F12 Settings opens the connected source profile and equipment actions. Owned local careers persist across launches; gear/mod/finish changes wait for source confirmation and apply to the next match |
 
-The integrated branch includes the shared shell, Cinderwake and initial Career
+The integrated branch includes the shared shell, Cinderwake, Career and multiplayer
 work ahead of the published tactical-HUD playable build. Follow the
 [consolidation batch](port/CONSOLIDATION_BATCH_2026-09-28.md) for tested commits
-and packaging status. Natural Cinderwake ten-wave/champion completion and
-the final expanded-batch verification remain outstanding. The user requested
-[Career, Arsenal and multiplayer additions before shipping](port/NATIVE_EXPANSION_2026-09-28.md).
+and packaging status. The [Career, Arsenal and multiplayer expansion](port/NATIVE_EXPANSION_2026-09-28.md)
+passed 218/218 local aggregate gates, 228/228 server tests and lint with zero errors.
+Natural Cinderwake ten-wave/champion completion and consolidated package acceptance
+remain outstanding. Building and publishing remain on hold at the user's request.
 
 Sports now have independent one-lap target victory, local-driver soccer scoring
 and results/restart acceptance. LATTICE offers both a command board and a

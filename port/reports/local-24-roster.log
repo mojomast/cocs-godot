@@ -2,37 +2,37 @@ TAP version 13
 # Subtest: local debug parser extends only bot count and rejects malformed counts
 ok 1 - local debug parser extends only bot count and rejects malformed counts
   ---
-  duration_ms: 1.668495
+  duration_ms: 1.166496
   type: 'test'
   ...
 # Subtest: local authority debug queues 24, starts 25 actual seats, retains live override and rejects 25
 ok 2 - local authority debug queues 24, starts 25 actual seats, retains live override and rejects 25
   ---
-  duration_ms: 1825.338383
+  duration_ms: 1896.905184
   type: 'test'
   ...
 # Subtest: local bot debug extension retains the shared plain-envelope gate
 ok 3 - local bot debug extension retains the shared plain-envelope gate
   ---
-  duration_ms: 0.744324
+  duration_ms: 0.737121
   type: 'test'
   ...
 # Subtest: 24 genuine source bot seats start on both reviewed local routes, supported and separated
 ok 4 - 24 genuine source bot seats start on both reviewed local routes, supported and separated
   ---
-  duration_ms: 1689.094374
+  duration_ms: 1656.22551
   type: 'test'
   ...
 # Subtest: live debug config reassignment preserves small rosters on both routes
 ok 5 - live debug config reassignment preserves small rosters on both routes
   ---
-  duration_ms: 80.51601
+  duration_ms: 88.504641
   type: 'test'
   ...
 # Subtest: native interactive setup exposes the same 24-seat limit as its authority
 ok 6 - native interactive setup exposes the same 24-seat limit as its authority
   ---
-  duration_ms: 0.510055
+  duration_ms: 0.410429
   type: 'test'
   ...
 1..6
@@ -43,4 +43,4 @@ ok 6 - native interactive setup exposes the same 24-seat limit as its authority
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 2511.215144
+# duration_ms 2647.685356

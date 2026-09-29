@@ -2,37 +2,37 @@ TAP version 13
 # Subtest: package native-dm routes the three identity maps to the Deathmatch scene
 ok 1 - package native-dm routes the three identity maps to the Deathmatch scene
   ---
-  duration_ms: 1.232529
+  duration_ms: 1.583648
   type: 'test'
   ...
 # Subtest: package identity ids are rejected where they are not reviewed routes
 ok 2 - package identity ids are rejected where they are not reviewed routes
   ---
-  duration_ms: 0.858668
+  duration_ms: 1.38755
   type: 'test'
   ...
 # Subtest: package identity-zones routes Domination on Vermilion Fold only
 ok 3 - package identity-zones routes Domination on Vermilion Fold only
   ---
-  duration_ms: 0.301845
+  duration_ms: 0.472035
   type: 'test'
   ...
 # Subtest: Windows menus present all six maps as Deathmatch
 ok 4 - Windows menus present all six maps as Deathmatch
   ---
-  duration_ms: 0.656058
+  duration_ms: 0.827891
   type: 'test'
   ...
 # Subtest: menus expose Domination and the cheat panel as reviewed local routes
 ok 5 - menus expose Domination and the cheat panel as reviewed local routes
   ---
-  duration_ms: 0.395401
+  duration_ms: 0.505808
   type: 'test'
   ...
 # Subtest: Linux launchers mirror the Windows entry points with the same routes
 ok 6 - Linux launchers mirror the Windows entry points with the same routes
   ---
-  duration_ms: 0.711763
+  duration_ms: 0.457147
   type: 'test'
   ...
 1..6
@@ -43,4 +43,4 @@ ok 6 - Linux launchers mirror the Windows entry points with the same routes
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 44.244327
+# duration_ms 42.13834

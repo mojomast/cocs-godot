@@ -51,8 +51,17 @@ the individual evidence records retain their original scope and results.
   combat diagnostics, wrapped selected-objective facts, scrollable and responsive
   objective/REQ pages, and first-open live-layout recovery. Broader cross-mode
   theme unification and human readability/feel acceptance remain open.
-- **NATIVE-05–06 remain open**, including Cinderwake authority reconciliation,
-  extracted-package consolidation acceptance and the unified release.
+- **NATIVE-05 authority integration is implemented:** the combined LATTICE/Horde
+  derivative supplies Cinderwake stages while preserving ordinary Horde and
+  Nacre. Source-correlated motion checks and the six-route journey passed.
+- **Pre-release expansion implemented and locally verified:** persistent Career,
+  source-confirmed Arsenal actions and room discovery/chat. The final aggregate
+  passed **218/218**, server tests **228/228**, and lint with zero errors at
+  `0d8bd78c`. See [the expansion record](NATIVE_EXPANSION_2026-09-28.md) for exact
+  revisions, failed attempts, native journeys and retained evidence.
+- **NATIVE-05–06 acceptance remains open:** natural staged-campaign completion,
+  extracted-package consolidation acceptance, fresh hosted confirmation and the
+  unified release. Building/publishing remains on the user-directed hold.
 
 The shell increment passed **203/203 local aggregate gates, zero unrun**, at
 `a9dbeaab`. The subsequent ESM-only journey-wrapper change was checked by

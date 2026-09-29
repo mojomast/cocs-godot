@@ -2,109 +2,109 @@ TAP version 13
 # Subtest: debug is off by default and a debug frame is the unchanged protocol error
 ok 1 - debug is off by default and a debug frame is the unchanged protocol error
   ---
-  duration_ms: 62.798777
+  duration_ms: 67.493736
   type: 'test'
   ...
 # Subtest: DEBUG_RESTART_BOUNDS is the extended local route bound
 ok 2 - DEBUG_RESTART_BOUNDS is the extended local route bound
   ---
-  duration_ms: 0.462225
+  duration_ms: 0.188343
   type: 'test'
   ...
 # Subtest: live source damage multiplier: applied amounts and real pool deltas at 1.0 vs 2.0
 ok 3 - live source damage multiplier: applied amounts and real pool deltas at 1.0 vs 2.0
   ---
-  duration_ms: 4334.912236
+  duration_ms: 4338.435581
   type: 'test'
   ...
 # Subtest: god mode survives lethal damage, is reversible, and clears at the round boundary
 ok 4 - god mode survives lethal damage, is reversible, and clears at the round boundary
   ---
-  duration_ms: 26720.395541
+  duration_ms: 26698.167626
   type: 'test'
   ...
 # Subtest: unlock all weapons grants every slot, the source runs it, and it is reversible
 ok 5 - unlock all weapons grants every slot, the source runs it, and it is reversible
   ---
-  duration_ms: 3877.313105
+  duration_ms: 3870.569604
   type: 'test'
   ...
 # Subtest: the remaining source mutators are live, echoed in the public snapshot config, and respawn is live
 ok 6 - the remaining source mutators are live, echoed in the public snapshot config, and respawn is live
   ---
-  duration_ms: 2908.48657
+  duration_ms: 2912.71962
   type: 'test'
   ...
 # Subtest: malformed debug frames change nothing and never take the socket down
 ok 7 - malformed debug frames change nothing and never take the socket down
   ---
-  duration_ms: 2159.285625
+  duration_ms: 2161.09141
   type: 'test'
   ...
 # Subtest: a debug frame without a live round queues restart knobs and refuses self-damage
 ok 8 - a debug frame without a live round queues restart knobs and refuses self-damage
   ---
-  duration_ms: 3.423579
+  duration_ms: 3.457198
   type: 'test'
   ...
 # Subtest: debug frame validation refuses unknown, malformed, unbounded and prototype keys
 ok 9 - debug frame validation refuses unknown, malformed, unbounded and prototype keys
   ---
-  duration_ms: 1.454372
+  duration_ms: 1.504779
   type: 'test'
   ...
 # Subtest: debug state partitions live, queued and port-only knobs; clear resets all
 ok 10 - debug state partitions live, queued and port-only knobs; clear resets all
   ---
-  duration_ms: 0.349915
+  duration_ms: 0.349155
   type: 'test'
   ...
 # Subtest: live config overrides rebuild from the reviewed base and restore on clear
 ok 11 - live config overrides rebuild from the reviewed base and restore on clear
   ---
-  duration_ms: 0.496549
+  duration_ms: 0.481181
   type: 'test'
   ...
 # Subtest: human guard scales and caps only the human seat; bots pass through untouched
 ok 12 - human guard scales and caps only the human seat; bots pass through untouched
   ---
-  duration_ms: 0.185858
+  duration_ms: 0.195806
   type: 'test'
   ...
 # Subtest: post-step reconcile restores the human seat, clears death and grants the ammo belt
 ok 13 - post-step reconcile restores the human seat, clears death and grants the ammo belt
   ---
-  duration_ms: 0.209391
+  duration_ms: 0.216295
   type: 'test'
   ...
 # Subtest: debug echo publishes live, queued and route restart bounds
 ok 14 - debug echo publishes live, queued and route restart bounds
   ---
-  duration_ms: 0.16006
+  duration_ms: 0.161753
   type: 'test'
   ...
 # Subtest: solo Horde debug is off by default and refuses construction-time knobs when on
 ok 15 - solo Horde debug is off by default and refuses construction-time knobs when on
   ---
-  duration_ms: 231.994551
+  duration_ms: 247.260314
   type: 'test'
   ...
 # Subtest: solo Horde god mode, live damage multiplier, incoming scale and unlock-all
 ok 16 - solo Horde god mode, live damage multiplier, incoming scale and unlock-all
   ---
-  duration_ms: 4025.472843
+  duration_ms: 4027.214962
   type: 'test'
   ...
 # Subtest: identity zone debug channel: capability echo, live knobs, god mode, refusal
 ok 17 - identity zone debug channel: capability echo, live knobs, god mode, refusal
   ---
-  duration_ms: 493.272866
+  duration_ms: 491.73089
   type: 'test'
   ...
 # Subtest: debug channel stays closed by default and the two-human room is untouched
 ok 18 - debug channel stays closed by default and the two-human room is untouched
   ---
-  duration_ms: 32.607015
+  duration_ms: 35.134207
   type: 'test'
   ...
 1..18
@@ -115,4 +115,4 @@ ok 18 - debug channel stays closed by default and the two-human room is untouche
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 40800.752791
+# duration_ms 40842.62459

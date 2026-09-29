@@ -1,5 +1,6 @@
 {
-  "source_commit": "51289b79c627a26a381ba556b92bab71f93f3732",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
   "godot_version": "4.5.2.stable.official.6ce3de25a",
   "map_id": "meridian-exchange",
   "native_clients": 2,
@@ -16,10 +17,10 @@
         1
       ],
       "peer_id": 1,
-      "remote_poses": 135
+      "remote_poses": 123
     },
     {
-      "ack": 17,
+      "ack": 16,
       "actor_id": 1,
       "actors": 4,
       "both_moved": true,
@@ -28,7 +29,7 @@
         1
       ],
       "peer_id": 2,
-      "remote_poses": 135
+      "remote_poses": 123
     }
   ]
 }
