@@ -40,6 +40,7 @@ derivative_path = os.environ.get('COCS_SOURCE_DERIVATIVE')
 # authority/credential root so scripted matches cannot mutate a real career.
 (root / '.port-runtime').mkdir(exist_ok=True)
 os.environ['COCS_CAREER_ROOT'] = tempfile.mkdtemp(prefix='verification-career-', dir=root / '.port-runtime')
+os.environ['CAREER_EQUIPPED_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'equipped-journey')
 for key, suffix in [("XDG_DATA_HOME", "data"), ("XDG_CONFIG_HOME", "config"), ("XDG_CACHE_HOME", "cache")]:
     os.environ.setdefault(key, str(root / ".port-runtime" / suffix))
     Path(os.environ[key]).mkdir(parents=True, exist_ok=True)
@@ -85,6 +86,7 @@ commands = [
     ("career-history-storage", ["node", "--test", "tools/godot-package/history_storage.test.mjs"]),
     ("career-results-source", ["node", "--test", "port/native-career/results-history.test.mjs"]),
     ("career-equipment-source", ["node", "--test", "port/native-career/equip-lifecycle.test.mjs"]),
+    ("career-equipped-source", ["node", "--test", "port/native-career/equipped.test.mjs"]),
     ("social-source", ["node", "--test", "port/native-social/social_authority.test.mjs"]),
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),
     ("arms-race-source", ["node", "--test", "game/armsrace.test.mjs", "game/outcome.test.mjs", "game/input.test.mjs", "game/movement-input.test.mjs"]),
@@ -99,6 +101,10 @@ commands = [
     ("career-package-catalog", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/package_catalog.gd"]),
     ("career-identity-native", ["node", "--test", "tools/godot-package/career_native.test.mjs"]),
     ("career-equipment-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/actions.gd"]),
+    ("career-equipped-model", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/newloadout_model.gd"]),
+    ("career-equipped-ui", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/newloadout_ui.gd"]),
+    ("career-equipped-lobby", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/newloadout_lobby.gd"]),
+    ("career-equipped-journey", ["node", "port/native-career/equipped-journey.mjs"]),
     ("career-results-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/results.gd"]),
     ("career-history-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/history.gd"]),
     ("career-results-history-ui", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/results_history_ui.gd"]),
@@ -296,10 +302,11 @@ report['unrun_gate_names'] = report['planned_gate_names'].copy()
 # never inserted into the executable inventory as implied passes.
 report['gate_tiers'] = {
     'rendered/input': ['first-person-binding', 'combat-actions', 'benchmark-autostart',
-                       'blood-live-native', 'loadout-loopback', 'horde-upgrade-fixture',
-                       'product-shell-journey', 'product-shell-guest-leave'],
+                        'blood-live-native', 'loadout-loopback', 'horde-upgrade-fixture',
+                        'product-shell-journey', 'product-shell-guest-leave', 'career-equipped-journey'],
     'live-source': ['native-live', 'native-lifecycle', 'native-session', 'two-native-clients',
-                    'product-shell-journey', 'product-shell-guest-leave'],
+                    'product-shell-journey', 'product-shell-guest-leave', 'career-equipped-journey',
+                    'finish-source-journey'],
 }
 report['execution'] = {'planned': len(report['planned_gate_names']), 'executed': 0,
                        'unrun': len(report['unrun_gate_names'])}

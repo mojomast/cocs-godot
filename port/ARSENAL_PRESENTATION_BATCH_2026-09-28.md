@@ -76,5 +76,17 @@ confirmation is tracked against `683ead49`; later implementation is separate.
   captured public actor fields against actual material channels. This is not a
   claim of natural eligibility or a fully interactive native equip journey.
 - Aggregate registration covers generator freshness, the source palette oracle,
-  material lifecycle, fresh source journey and native replay. Corrected renders,
-  loadout lane results and integrated verification remain pending.
+  material lifecycle, fresh source journey and native replay.
+- Corrected finish evidence `19540503` integrated as `af253e94`: generator and
+  Three.js oracle passed, material lifecycle 71 checks, existing rig lifecycle 63
+  checks, source rounds 1→2 and native material replay passed. Fresh rendered
+  captures show all six finishes distinct from stock (2,399–2,420 changed samples).
+- Loadout commits `edf2a669` / `8897a35c` integrated as `7a42bde2` / `ac6129e4`.
+  Focused model/UI/lobby and existing Career tests passed; a real native equip →
+  source-confirmed Extended Magazine → next-match journey passed 18 checks. This
+  uses a naturally eligible level-one attachment without a progression grant.
+  The initial compact screenshot exposed insufficient visible content despite
+  passing tab/Back geometry checks; a focused layout follow-up is underway.
+- The aggregate also registers source-backed saved-loadout rules, native
+  model/UI/lobby checks and the rendered native journey, with a fresh isolated
+  output directory per invocation. Integrated verification remains pending.
