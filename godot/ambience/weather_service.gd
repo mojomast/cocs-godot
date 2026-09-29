@@ -208,7 +208,7 @@ func _update_particles() -> void:
 		for i in count:
 			# Source precipParticleAdds: salt=serial*17+i*131, radial sqrt
 			# distribution, fall/life/size jitter and deterministic drift.
-			var salt := (serial + _seed) * 17 + i * 131
+			var salt := serial * 17 + i * 131
 			var angle := Profile.hash_unit(salt, 1) * TAU
 			var distance := sqrt(Profile.hash_unit(salt, 2)) * 9.0
 			var life: float = preset.life * (0.8 + Profile.hash_unit(salt, 4) * 0.4)

@@ -21,14 +21,12 @@ with a 0.00002 absolute tolerance, and prints `WEATHER_ORACLE_OK` on success.
 The test was not run while generating these vectors (pure Node only).
 
 Precipitation vectors specify the source helper's serial and origin explicitly.
-The native weather service uses the same hash and spawn arithmetic, but salts
-with `(serial + _seed) * 17` and fixes radius at 9; its quality setting also
-changes spawn count. The oracle checks the native hash/profile formula with a
-zero seed offset and the fixture's explicit radii/origins; it does not claim
-that the service's nonzero-seed spawn sequence is identical to the source
-helper called with the same unadjusted serial. `weather_profile.gd` does not
-expose a particle-add helper; the precipitation assertion reconstructs the
-service formula from native `hash_unit` and `KINDS` data.
+The native service now salts with **`serial * 17 + index * 131` regardless of
+the arena seed**, matching `precipParticleAdds`. Its presentation camera radius
+is 9 and its quality slider changes spawn count; the pure oracle checks explicit
+radii and full-quality source recipe separately. `weather_profile.gd` does not
+expose a particle-add helper; the assertion reconstructs the service formula
+from native `hash_unit` and `KINDS` data.
 
 The source sky-phase color/luminance fallback needs Three.js Color and is not
 evaluated by this dependency-free exporter: time vectors use explicit sky

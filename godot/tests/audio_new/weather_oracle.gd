@@ -46,7 +46,8 @@ func _equal(actual: Variant, expected: Variant, label: String) -> void:
 		assert(actual == expected, label + ": %s != %s" % [actual, expected])
 
 # Reconstruct the service's spawn fields from its native hash/profile primitives.
-# With seed offset zero, the service salt is serial*17+i*131, like JS.
+# Service salt is exactly serial*17+i*131 for any seed; the arena seed only
+# selects the weather/wind/lightning, never perturbs source precipitation IDs.
 func _precip(row: Dictionary) -> Array:
 	var kind: String = row.kind
 	if not Profile.KINDS.has(kind): return []

@@ -64,7 +64,7 @@ func run() -> void:
 		bytes.encode_s16(i * 4 + 2, roundi(clampf(pcm[i].y, -1.0, 1.0) * 32767.0))
 	var stream := AudioStreamWAV.new()
 	stream.format = AudioStreamWAV.FORMAT_16_BITS
-	stream.mix_rate = AudioServer.get_mix_rate()
+	stream.mix_rate = int(AudioServer.get_mix_rate())
 	stream.stereo = true
 	stream.data = bytes
 	var result := stream.save_to_wav(path)

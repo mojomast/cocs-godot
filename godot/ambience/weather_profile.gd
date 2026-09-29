@@ -9,13 +9,13 @@ const KINDS := {
 	"storm": {"particles": 130, "mood": "storm", "wind": 2.0, "color": "9fb0c2", "size": 0.03, "life": 1.4, "fall": 15.0, "drift": 0.7, "streakRatio": 1.15},
 }
 const BIOMES := {
-	"canyon": {"mood": "hot", "tint": "8a6a44", "particles": "dust"},
-	"forest": {"mood": "default", "tint": "4f7a44", "particles": "leaf"},
-	"snow": {"mood": "cold", "tint": "c7dbe8", "particles": "snow"},
-	"volcanic": {"mood": "hot", "tint": "7a3a24", "particles": "ember"},
-	"urban": {"mood": "default", "tint": "6d747b", "particles": "dust"},
-	"ruins": {"mood": "default", "tint": "9a8258", "particles": "ash"},
-	"cavern": {"mood": "night", "tint": "4a4550", "particles": "dust"},
+	"canyon": {"mood": "hot", "tint": "#8a6a44", "particles": "dust"},
+	"forest": {"mood": "default", "tint": "#4f7a44", "particles": "leaf"},
+	"snow": {"mood": "cold", "tint": "#c7dbe8", "particles": "snow"},
+	"volcanic": {"mood": "hot", "tint": "#7a3a24", "particles": "ember"},
+	"urban": {"mood": "default", "tint": "#6d747b", "particles": "dust"},
+	"ruins": {"mood": "default", "tint": "#9a8258", "particles": "ash"},
+	"cavern": {"mood": "night", "tint": "#4a4550", "particles": "dust"},
 }
 const NIGHT_IDS := ["exchange", "launchpad", "crosswire", "derelict-station", "skybreak", "aether", "neon-vertical", "substation", "skyfall-basin", "signal-ridge", "catwalk-breach", "ironfall-megastructure", "puma-circuit", "puma-pitch", "colosseum", "frost-gate", "sunken-hill", "catacombs", "titan-valley", "convoy-line", "proving-grounds", "atrium"]
 
