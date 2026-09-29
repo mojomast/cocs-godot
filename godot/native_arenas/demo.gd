@@ -94,7 +94,9 @@ func build_composition() -> void:
 	client.snapshot.connect(on_snapshot)
 	client.results.connect(on_results)
 	client.events.connect(func(items: Array) -> void:
-		if phase == 3: combat.apply_events(items, client.actor_id))
+		if phase == 3:
+			combat.apply_events(items, client.actor_id)
+			av_events(items))
 	var shared_hud := GameHUD.new()
 	shared_hud.name = "GameHUD"
 	add_child(shared_hud)
@@ -276,6 +278,8 @@ func on_results(frame: Dictionary) -> void:
 	if frame.state.get("over") != true:
 		on_error("Native authority results must finish the round.")
 		return
+	av_snapshot(frame.state)
+	av_finish(frame.state)
 	round_results += 1
 	presentation.apply_state(frame.state, client.actor_id)
 	pickups.apply_state(frame.state)

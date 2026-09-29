@@ -30,19 +30,28 @@ func av_ensure() -> void:
 		audiovisual.apply_settings(local_settings.values)
 	else: audiovisual.apply_settings({"mute":"--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args()})
 
-func av_start(frame: Dictionary) -> void:
+## Source-map sessions consume the verified semantic source map. Native Horde
+## compositions override this seam with their already-validated arena recipe.
+func av_arena() -> Dictionary:
+	return catalog.resolve_map(current_id)
+
+func av_start(frame: Dictionary) -> bool:
 	av_ensure()
-	if not is_instance_valid(audiovisual): return
+	if not is_instance_valid(audiovisual): return true # detached protocol fixture
 	var revision: Variant = frame.get("roundRevision", client.resumed_revision)
 	if not (revision is int or revision is float): revision = round_starts
 	var key := "%s|%s|%s" % [endpoint, client.room_id, str(revision)]
-	var arena: Dictionary = catalog.resolve_map(current_id)
+	var arena: Dictionary = av_arena()
+	if arena.is_empty() or str(arena.get("id", "")) != current_id or not arena.get("bounds") is Dictionary:
+		on_error("Could not verify audiovisual arena recipe: " + current_id)
+		return false
 	if audiovisual_round != key:
 		audiovisual_round = key
 		audiovisual.bind_session(self, camera, arena, selected_mode, key, int(revision))
 		audiovisual.start_round(key)
 	else: audiovisual.start_round(key) # same revision reconnect does not reset IDs
 	if not application_focused: audiovisual.set_focus(false)
+	return true
 
 func av_snapshot(state: Dictionary) -> void:
 	if not is_instance_valid(audiovisual): return
@@ -578,7 +587,7 @@ func connect_selected_match() -> void:
 func on_started(_frame: Dictionary) -> void:
 	bind_vehicle_shots()
 	if lobby_enabled and phase not in [11, 12, 20, 3, 4, -6]: return
-	av_start(_frame)
+	if not av_start(_frame): return
 	# A host can start a new round without this client visiting results.
 	# Never carry interactive capture across an authoritative round boundary.
 	release_pointer()
@@ -598,6 +607,7 @@ func on_started(_frame: Dictionary) -> void:
 	emit_boundary_trace("round_start")
 
 func on_error(message: String) -> void:
+	if is_instance_valid(audiovisual): audiovisual.suspend("transport_error")
 	clear_vehicles()
 	local_motion.reset()
 	if is_instance_valid(setup_menu): setup_menu.hide()

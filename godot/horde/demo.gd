@@ -308,6 +308,15 @@ func map_supports_horde(id: String) -> bool:
 func load_selected_map(id: String) -> bool:
 	return load_map(id)
 
+func av_arena() -> Dictionary:
+	# Cinderwake and Nacre use their published, validated recipe envelopes;
+	# source Horde maps retain the locked semantic export from PortCatalog.
+	if not catalog.has_method("resolve_envelope"): return super.av_arena()
+	var envelope: Dictionary = catalog.resolve_envelope(current_id)
+	var arena: Variant = envelope.get("arena")
+	if not arena is Dictionary or arena.get("id") != current_id: return {}
+	return arena
+
 func update_look(relative: Vector2) -> void:
 	if not can_capture_pointer() or not relative.is_finite(): return
 	var angles := controls.look(yaw, pitch, relative)

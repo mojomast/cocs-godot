@@ -76,11 +76,15 @@ func _ready() -> void:
 	client.started.connect(on_started)
 	client.snapshot.connect(on_snapshot)
 	client.events.connect(func(items: Array) -> void:
-		if phase == 3: combat.apply_events(items, client.actor_id))
+		if phase == 3:
+			combat.apply_events(items, client.actor_id)
+			av_events(items))
 	client.results.connect(on_results)
 	connect_selected_match()
 
 func on_results(frame: Dictionary) -> void:
+	av_snapshot(frame.state)
+	av_finish(frame.state)
 	round_results += 1
 	phase = 4
 	presentation.apply_state(frame.state, client.actor_id)
