@@ -153,6 +153,15 @@ func inspect() -> void:
 	if planes != 101:
 		fail("Moth resource inventory mismatch")
 		return
+	var derived: Dictionary = moth.derived_manifest()
+	if derived.get("version") != 1 or derived.get("derived", {}).is_empty():
+		fail("Missing derived Moth material manifest")
+		return
+	for key: String in derived.derived:
+		if not moth.derived_texture(key) is Texture2D:
+			fail("Missing derived Moth material " + key)
+			return
+	print("PACKAGE_MOTH_DERIVED_OK ", derived.derived.size())
 	for index in range(10):
 		if not load("res://first_person/generated/weapon-%d.glb" % index) is PackedScene:
 			fail("Missing first-person weapon " + str(index))
