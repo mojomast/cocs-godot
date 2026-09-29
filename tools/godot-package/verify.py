@@ -214,7 +214,9 @@ def main():
     build = json.loads(args.build_result.read_text())
     archive = Path(build['archive'])
     require(sha(archive) == build['archive_sha256'], 'Archive SHA mismatch')
-    fresh = Path(tempfile.mkdtemp(prefix='cocs-package-play-', dir='/tmp/opencode'))
+    # Keep the full extracted artifact on the caller's owned evidence volume.
+    # A disk-backed --output avoids consuming tmpfs with the consolidated PCK.
+    fresh = Path(tempfile.mkdtemp(prefix='cocs-package-play-', dir=output))
     unrelated = fresh / 'unrelated-working-directory'
     unrelated.mkdir()
     nodebin = fresh / 'bin'
