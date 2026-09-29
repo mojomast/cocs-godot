@@ -50,7 +50,7 @@ func _ready() -> void:
 		if arg.begins_with("--map="): map_id = arg.trim_prefix("--map=")
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
 		if arg.begins_with("--join-room="): join_room_id = arg.trim_prefix("--join-room=").strip_edges()
-		if arg.begins_with("--wait-for-players="): wait_for_players = clampi(int(arg.trim_prefix("--wait-for-players=")), 1, 16)
+		if arg.begins_with("--wait-for-players="): wait_for_players = clampi(int(arg.trim_prefix("--wait-for-players=")), 1, 8)
 		if arg.begins_with("--bots="):
 			var value := arg.trim_prefix("--bots=")
 			if not value.is_valid_int() or value.to_int() < 0 or value.to_int() > 16:

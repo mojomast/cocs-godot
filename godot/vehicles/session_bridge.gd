@@ -12,7 +12,9 @@ func reset() -> void:
 	vehicle = {}
 	state = {}
 	identity = ""
-	# Preserve physical jump across boundaries until a released sample arrives.
+	# The owning input adapter clears held controls at this boundary and requires
+	# a fresh physical press; do not carry a stale edge into the next round.
+	jump_down = false
 
 func observe(value: Dictionary, actor_id: int) -> bool:
 	state = value
