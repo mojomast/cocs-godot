@@ -1,0 +1,37 @@
+[
+	{
+		"changed_from_stock": 0,
+		"finish": "stock",
+		"opaque_samples": 4197
+	},
+	{
+		"changed_from_stock": 2419,
+		"finish": "finish-ion",
+		"opaque_samples": 4197
+	},
+	{
+		"changed_from_stock": 2418,
+		"finish": "finish-ember",
+		"opaque_samples": 4197
+	},
+	{
+		"changed_from_stock": 2419,
+		"finish": "finish-void",
+		"opaque_samples": 4197
+	},
+	{
+		"changed_from_stock": 2399,
+		"finish": "finish-toxic",
+		"opaque_samples": 4197
+	},
+	{
+		"changed_from_stock": 2420,
+		"finish": "finish-solar",
+		"opaque_samples": 4197
+	},
+	{
+		"changed_from_stock": 2418,
+		"finish": "finish-crimson",
+		"opaque_samples": 4197
+	}
+]

@@ -4,6 +4,10 @@
   "sourceLevel": 4,
   "sourceGate": 4,
   "profileSaved": "finish-ion",
+  "sourceRounds": [
+    1,
+    2
+  ],
   "actors": [
     {
       "id": 0,
