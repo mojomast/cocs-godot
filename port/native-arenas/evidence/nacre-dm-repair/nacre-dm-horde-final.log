@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: committed Nacre recipe preserves canonical geometry and strictly validates Horde metadata for DM
+ok 1 - committed Nacre recipe preserves canonical geometry and strictly validates Horde metadata for DM
+  ---
+  duration_ms: 132.608949
+  type: 'test'
+  ...
+# Subtest: committed Nacre DM authority: readiness, real room host/start and source snapshot
+ok 2 - committed Nacre DM authority: readiness, real room host/start and source snapshot
+  ---
+  duration_ms: 107.412877
+  type: 'test'
+  ...
+# Subtest: identity allowlist is a frozen static literal
+ok 3 - identity allowlist is a frozen static literal
+  ---
+  duration_ms: 1.038917
+  type: 'test'
+  ...
+# Subtest: host contract accepts the identity map and nothing path-like
+ok 4 - host contract accepts the identity map and nothing path-like
+  ---
+  duration_ms: 0.747591
+  type: 'test'
+  ...
+# Subtest: readIdentityMap resolves only the allowlisted static recipe
+ok 5 - readIdentityMap resolves only the allowlisted static recipe
+  ---
+  duration_ms: 9.704304
+  type: 'test'
+  ...
+# Subtest: a tampered envelope fails closed before any Match exists
+ok 6 - a tampered envelope fails closed before any Match exists
+  ---
+  duration_ms: 68.598719
+  type: 'test'
+  ...
+# Subtest: canonical hash is key-order independent and array-order sensitive
+ok 7 - canonical hash is key-order independent and array-order sensitive
+  ---
+  duration_ms: 7.183721
+  type: 'test'
+  ...
+# Subtest: identity factory constructs a single-human source Match with the authored Horde start
+ok 8 - identity factory constructs a single-human source Match with the authored Horde start
+  ---
+  duration_ms: 51.299443
+  type: 'test'
+  ...
+# Subtest: identity Horde seats every valid source operator and harness, including Claude lock
+ok 9 - identity Horde seats every valid source operator and harness, including Claude lock
+  ---
+  duration_ms: 19.928261
+  type: 'test'
+  ...
+# Subtest: all Nacre supply stations have supported floor and reachable pickup clearance
+ok 10 - all Nacre supply stations have supported floor and reachable pickup clearance
+  ---
+  duration_ms: 7.681474
+  type: 'test'
+  ...
+# Subtest: source wave transitions open real Nacre weapons in order; all ten waves can complete
+ok 11 - source wave transitions open real Nacre weapons in order; all ten waves can complete
+  ---
+  duration_ms: 66.749624
+  type: 'test'
+  ...
+# Subtest: source maps keep the historical constructor through the same hook
+ok 12 - source maps keep the historical constructor through the same hook
+  ---
+  duration_ms: 227.400187
+  type: 'test'
+  ...
+# Subtest: enemy collision uses the shared capsule, never the display scale
+ok 13 - enemy collision uses the shared capsule, never the display scale
+  ---
+  duration_ms: 4.50949
+  type: 'test'
+  ...
+# Subtest: the baked nav graph is stricter than the enemy capsule
+ok 14 - the baked nav graph is stricter than the enemy capsule
+  ---
+  duration_ms: 3673.751469
+  type: 'test'
+  ...
+# Subtest: every authored spawn and approach reaches the arena centre on the graph
+ok 15 - every authored spawn and approach reaches the arena centre on the graph
+  ---
+  duration_ms: 5938.52524
+  type: 'test'
+  ...
+# Subtest: identity authority is loopback-only, single-client and bounded
+ok 16 - identity authority is loopback-only, single-client and bounded
+  ---
+  duration_ms: 17.981533
+  type: 'test'
+  ...
+# Subtest: committed Nacre Horde authority hosts and starts the authored mode over loopback
+ok 17 - committed Nacre Horde authority hosts and starts the authored mode over loopback
+  ---
+  duration_ms: 34.581498
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11596.356706

@@ -1,0 +1,338 @@
+TAP version 13
+# Subtest: SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
+ok 1 - SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
+  ---
+  duration_ms: 331.895027
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
+ok 2 - SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
+  ---
+  duration_ms: 4253.252082
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
+ok 3 - SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
+  ---
+  duration_ms: 15718.037755
+  type: 'test'
+  ...
+# Subtest: loopback ownership and transport/envelope rejection leave no listeners
+ok 4 - loopback ownership and transport/envelope rejection leave no listeners
+  ---
+  duration_ms: 14.610948
+  type: 'test'
+  ...
+# Subtest: launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
+ok 5 - launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
+  ---
+  duration_ms: 15.04472
+  type: 'test'
+  ...
+# Subtest: unknown options and unknown map ids fail before any listener opens
+ok 6 - unknown options and unknown map ids fail before any listener opens
+  ---
+  duration_ms: 0.51741
+  type: 'test'
+  ...
+# Subtest: HTTP readiness is the documented GET / probe only
+ok 7 - HTTP readiness is the documented GET / probe only
+  ---
+  duration_ms: 8.292358
+  type: 'test'
+  ...
+# Subtest: debug is off by default and a debug frame is the unchanged protocol error
+ok 8 - debug is off by default and a debug frame is the unchanged protocol error
+  ---
+  duration_ms: 59.603924
+  type: 'test'
+  ...
+# Subtest: DEBUG_RESTART_BOUNDS is the extended local route bound
+ok 9 - DEBUG_RESTART_BOUNDS is the extended local route bound
+  ---
+  duration_ms: 0.177292
+  type: 'test'
+  ...
+# Subtest: live source damage multiplier: applied amounts and real pool deltas at 1.0 vs 2.0
+ok 10 - live source damage multiplier: applied amounts and real pool deltas at 1.0 vs 2.0
+  ---
+  duration_ms: 4338.910807
+  type: 'test'
+  ...
+# Subtest: god mode survives lethal damage, is reversible, and clears at the round boundary
+ok 11 - god mode survives lethal damage, is reversible, and clears at the round boundary
+  ---
+  duration_ms: 26534.501018
+  type: 'test'
+  ...
+# Subtest: unlock all weapons grants every slot, the source runs it, and it is reversible
+ok 12 - unlock all weapons grants every slot, the source runs it, and it is reversible
+  ---
+  duration_ms: 3870.916701
+  type: 'test'
+  ...
+# Subtest: the remaining source mutators are live, echoed in the public snapshot config, and respawn is live
+ok 13 - the remaining source mutators are live, echoed in the public snapshot config, and respawn is live
+  ---
+  duration_ms: 2908.439506
+  type: 'test'
+  ...
+# Subtest: malformed debug frames change nothing and never take the socket down
+ok 14 - malformed debug frames change nothing and never take the socket down
+  ---
+  duration_ms: 2158.734068
+  type: 'test'
+  ...
+# Subtest: a debug frame without a live round queues restart knobs and refuses self-damage
+ok 15 - a debug frame without a live round queues restart knobs and refuses self-damage
+  ---
+  duration_ms: 3.263555
+  type: 'test'
+  ...
+# {"gate":"generated-identity-source-deathmatch","mapId":"lacuna-court","mode":"deathmatch","geometryHash":"a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9","nav":83,"time":60.01666666666454,"reason":"time","stats":{"shots":728,"kills":5,"pickups":15,"powers":8,"respawns":9,"falls":0,"grenades":25},"frags":[0,3,2,0],"deaths":[0,0,3,2],"botMoved":true,"routed":true}
+# {"gate":"generated-identity-source-deathmatch","mapId":"vermilion-fold","mode":"deathmatch","geometryHash":"6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a","nav":103,"time":49.84999999999845,"reason":"frag","stats":{"shots":606,"kills":7,"pickups":11,"powers":5,"respawns":10,"falls":0,"grenades":23},"frags":[5,0,0,2],"deaths":[0,1,4,2],"botMoved":true,"routed":true}
+# {"gate":"generated-identity-source-deathmatch","mapId":"nacre-engine","mode":"deathmatch","geometryHash":"204e8eca728a8e75e7ec23dd99eb8e1b38d944f3e53c245b77612ee308a7d4c0","nav":85,"time":37.59999999999915,"reason":"frag","stats":{"shots":408,"kills":8,"pickups":22,"powers":7,"respawns":10,"falls":0,"grenades":12},"frags":[5,0,3,0],"deaths":[1,3,1,3],"botMoved":true,"routed":true}
+# Subtest: GENERATED lacuna-court: source Deathmatch AI/combat, results and restart
+ok 16 - GENERATED lacuna-court: source Deathmatch AI/combat, results and restart
+  ---
+  duration_ms: 351.957709
+  type: 'test'
+  ...
+# Subtest: GENERATED vermilion-fold: source Deathmatch AI/combat, results and restart
+ok 17 - GENERATED vermilion-fold: source Deathmatch AI/combat, results and restart
+  ---
+  duration_ms: 198.477792
+  type: 'test'
+  ...
+# Subtest: GENERATED nacre-engine: source Deathmatch AI/combat, results and restart
+ok 18 - GENERATED nacre-engine: source Deathmatch AI/combat, results and restart
+  ---
+  duration_ms: 424.86462
+  type: 'test'
+  ...
+# {"gate":"identity-authority-deathmatch","mapId":"lacuna-court","frags":[0,5,1],"shots":503,"kills":6,"restarted":true,"geometryHash":"a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9"}
+# Subtest: identity authority: real loopback Deathmatch, source damage/frags/results and restart
+ok 19 - identity authority: real loopback Deathmatch, source damage/frags/results and restart
+  ---
+  duration_ms: 48542.928208
+  type: 'test'
+  ...
+# Subtest: FIFO keeps press/release order, source normalization and one-step pulses
+ok 20 - FIFO keeps press/release order, source normalization and one-step pulses
+  ---
+  duration_ms: 1.121943
+  type: 'test'
+  ...
+# Subtest: queue age, held TTL, cancel and reset cannot replay ADS/actions
+ok 21 - queue age, held TTL, cancel and reset cannot replay ADS/actions
+  ---
+  duration_ms: 0.693189
+  type: 'test'
+  ...
+# Subtest: event cursor retains payload IDs, handles serial gaps and repeated events by identity
+ok 22 - event cursor retains payload IDs, handles serial gaps and repeated events by identity
+  ---
+  duration_ms: 0.218259
+  type: 'test'
+  ...
+# Subtest: committed Nacre recipe preserves canonical geometry and strictly validates Horde metadata for DM
+ok 23 - committed Nacre recipe preserves canonical geometry and strictly validates Horde metadata for DM
+  ---
+  duration_ms: 155.319143
+  type: 'test'
+  ...
+# Subtest: committed Nacre DM authority: readiness, real room host/start and source snapshot
+ok 24 - committed Nacre DM authority: readiness, real room host/start and source snapshot
+  ---
+  duration_ms: 102.722328
+  type: 'test'
+  ...
+# Subtest: only three native static asset paths; no source registry aliases
+ok 25 - only three native static asset paths; no source registry aliases
+  ---
+  duration_ms: 0.879398
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: each supported identity parses to an independent envelope
+ok 26 - SYNTHETIC: each supported identity parses to an independent envelope
+  ---
+  duration_ms: 1.854755
+  type: 'test'
+  ...
+# Subtest: strict deep generated-data validation rejects malformed/unsafe geometry
+ok 27 - strict deep generated-data validation rejects malformed/unsafe geometry
+  ---
+  duration_ms: 1.547239
+  type: 'test'
+  ...
+# Subtest: Deathmatch bounded local config defaults to three bots and rejects counts above 24
+ok 28 - Deathmatch bounded local config defaults to three bots and rejects counts above 24
+  ---
+  duration_ms: 0.526035
+  type: 'test'
+  ...
+# Subtest: geometryHash binds canonical arena content, independent of object key order
+ok 29 - geometryHash binds canonical arena content, independent of object key order
+  ---
+  duration_ms: 0.397715
+  type: 'test'
+  ...
+# Subtest: identity catalog adds exactly the three reviewed ids beside the native three
+ok 30 - identity catalog adds exactly the three reviewed ids beside the native three
+  ---
+  duration_ms: 0.156774
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: identity envelopes parse per family; the native parser never widens
+ok 31 - SYNTHETIC: identity envelopes parse per family; the native parser never widens
+  ---
+  duration_ms: 2.899263
+  type: 'test'
+  ...
+# Subtest: identity strict validation rejects malformed presentation/objective/team fields
+ok 32 - identity strict validation rejects malformed presentation/objective/team fields
+  ---
+  duration_ms: 4.53052
+  type: 'test'
+  ...
+# Subtest: identity objective/team fields validate strictly when authored (vermilion-fold form)
+ok 33 - identity objective/team fields validate strictly when authored (vermilion-fold form)
+  ---
+  duration_ms: 1.58505
+  type: 'test'
+  ...
+# Subtest: source constructor seam is assignment before nav/spawns/actors, not options.arena
+ok 34 - source constructor seam is assignment before nav/spawns/actors, not options.arena
+  ---
+  duration_ms: 1.033637
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
+ok 35 - SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
+  ---
+  duration_ms: 20.89378
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
+ok 36 - SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
+  ---
+  duration_ms: 96.442712
+  type: 'test'
+  ...
+# Subtest: SYNTHETIC: source bot attacks kill idle player and source respawn restores control
+ok 37 - SYNTHETIC: source bot attacks kill idle player and source respawn restores control
+  ---
+  duration_ms: 36.355552
+  type: 'test'
+  ...
+# Subtest: identity allowlist is a frozen static literal
+not ok 38 - identity allowlist is a frozen static literal
+  ---
+  duration_ms: 1.278506
+  type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-nacre-dm-repair-20260929/port/native-identity-horde/identity-horde.test.mjs:24:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    5 !== 4
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 4
+  actual: 5
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-nacre-dm-repair-20260929/port/native-identity-horde/identity-horde.test.mjs:29:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: host contract accepts the identity map and nothing path-like
+ok 39 - host contract accepts the identity map and nothing path-like
+  ---
+  duration_ms: 0.671709
+  type: 'test'
+  ...
+# Subtest: readIdentityMap resolves only the allowlisted static recipe
+ok 40 - readIdentityMap resolves only the allowlisted static recipe
+  ---
+  duration_ms: 9.454305
+  type: 'test'
+  ...
+# Subtest: a tampered envelope fails closed before any Match exists
+ok 41 - a tampered envelope fails closed before any Match exists
+  ---
+  duration_ms: 65.653019
+  type: 'test'
+  ...
+# Subtest: canonical hash is key-order independent and array-order sensitive
+ok 42 - canonical hash is key-order independent and array-order sensitive
+  ---
+  duration_ms: 6.138742
+  type: 'test'
+  ...
+# Subtest: identity factory constructs a single-human source Match with the authored Horde start
+ok 43 - identity factory constructs a single-human source Match with the authored Horde start
+  ---
+  duration_ms: 53.523671
+  type: 'test'
+  ...
+# Subtest: identity Horde seats every valid source operator and harness, including Claude lock
+ok 44 - identity Horde seats every valid source operator and harness, including Claude lock
+  ---
+  duration_ms: 19.374844
+  type: 'test'
+  ...
+# Subtest: all Nacre supply stations have supported floor and reachable pickup clearance
+ok 45 - all Nacre supply stations have supported floor and reachable pickup clearance
+  ---
+  duration_ms: 6.955744
+  type: 'test'
+  ...
+# Subtest: source wave transitions open real Nacre weapons in order; all ten waves can complete
+ok 46 - source wave transitions open real Nacre weapons in order; all ten waves can complete
+  ---
+  duration_ms: 68.950938
+  type: 'test'
+  ...
+# Subtest: source maps keep the historical constructor through the same hook
+ok 47 - source maps keep the historical constructor through the same hook
+  ---
+  duration_ms: 235.095145
+  type: 'test'
+  ...
+# Subtest: enemy collision uses the shared capsule, never the display scale
+ok 48 - enemy collision uses the shared capsule, never the display scale
+  ---
+  duration_ms: 4.586234
+  type: 'test'
+  ...
+# Subtest: the baked nav graph is stricter than the enemy capsule
+ok 49 - the baked nav graph is stricter than the enemy capsule
+  ---
+  duration_ms: 3677.007209
+  type: 'test'
+  ...
+# Subtest: every authored spawn and approach reaches the arena centre on the graph
+ok 50 - every authored spawn and approach reaches the arena centre on the graph
+  ---
+  duration_ms: 5988.726248
+  type: 'test'
+  ...
+# Subtest: identity authority is loopback-only, single-client and bounded
+ok 51 - identity authority is loopback-only, single-client and bounded
+  ---
+  duration_ms: 19.101922
+  type: 'test'
+  ...
+1..51
+# tests 51
+# suites 0
+# pass 50
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 124803.718975

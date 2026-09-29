@@ -69,7 +69,7 @@ commands = [
     ("horde-closure", ["node", "--test", "tools/godot-package/horde_closure.test.mjs"]),
     ("native-arena-closure", ["node", "--test", "tools/godot-package/native_arena_closure.test.mjs"]),
     ("package-identity-routes", ["node", "--test", "tools/godot-package/native_identity_options.test.mjs"]),
-    ("native-arena-authority", ["node", "--test", "port/native-arenas/tests/authority.test.mjs", "port/native-arenas/tests/input-events.test.mjs", "port/native-arenas/tests/source-match.test.mjs", "port/native-arenas/tests/schema.test.mjs"]),
+    ("native-arena-authority", ["node", "--test", "--test-concurrency=1", "port/native-arenas/tests/authority.test.mjs", "port/native-arenas/tests/input-events.test.mjs", "port/native-arenas/tests/source-match.test.mjs", "port/native-arenas/tests/schema.test.mjs", "port/native-arenas/tests/nacre-authority.test.mjs"]),
     ("local-24-roster", ["node", "--test", "port/native-menu-debug-bots/tests/startup.test.mjs", "port/native-menu-debug-bots/tests/debug-24.test.mjs"]),
     ("horde-ownership", ["node", "--test", "tools/godot-package/horde_ownership.test.mjs"]),
     ("zone-routing", ["node", "--test", "port/native-zone-modes/route.test.mjs"]),

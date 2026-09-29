@@ -13,7 +13,7 @@ test('committed Nacre recipe preserves canonical geometry and strictly validates
   const data = parseIdentityArena(recipe, 'nacre-engine');
   assert.deepEqual(data, recipe);
   assert.equal(nativeArenaGeometryHash(data.arena), recipe.geometryHash);
-  assert.equal(data.arena.teamSpawns[0].length, 1);
+  assert.equal(data.arena.teamSpawns[0].length, 2);
   assert.ok(data.arena.pickups.some(p => p[0] === 'megahealth'));
   const reject = (edit, reason) => {
     const changed = structuredClone(recipe);

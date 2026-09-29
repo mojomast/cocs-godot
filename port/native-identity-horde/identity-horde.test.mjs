@@ -10,6 +10,7 @@ import {readFileSync} from 'node:fs';
 import {RULES} from '../../game/data.mjs';
 import {floorAt, obstructed} from '../../game/core.mjs';
 import {ENEMY_TYPES, applyEnemyFields} from '../../game/enemy-types.mjs';
+import {connect} from '../native-arenas/tests/socket-helper.mjs';
 import {
   IDENTITY_MAPS, HORDE_MAPS, MAPS, canonicalArenaJSON, identityArenaHash,
   readIdentityMap, validateIdentityEnvelope, createHordeMatch, validateConfig, createAuthority,
@@ -26,7 +27,7 @@ test('identity allowlist is a frozen static literal', () => {
   assert.ok(Object.isFrozen(IDENTITY_MAPS));
   assert.ok(Object.isFrozen(HORDE_MAPS));
   assert.deepEqual(HORDE_MAPS.slice(0, MAPS.length), MAPS);
-  assert.equal(HORDE_MAPS.length, MAPS.length + 1);
+  assert.deepEqual([...HORDE_MAPS], [...MAPS, 'nacre-engine', 'cinderwake-drydock']);
 });
 
 test('host contract accepts the identity map and nothing path-like', () => {
@@ -283,4 +284,24 @@ test('identity authority is loopback-only, single-client and bounded', async () 
     await authority.close();
   }
   assert.equal(authority.server.listening, false);
+});
+
+test('committed Nacre Horde authority hosts and starts the authored mode over loopback', {timeout:30000}, async t => {
+  const authority = createAuthority();
+  t.after(() => authority.close());
+  await new Promise(resolve => authority.server.listen(0, '127.0.0.1', resolve));
+  const client = await connect(`ws://127.0.0.1:${authority.server.address().port}`);
+  t.after(() => client.ws.terminate());
+  client.send({type:'create', v:3});
+  await client.wait(f => f.type === 'welcome');
+  client.send({type:'host', mapId:IDENTITY_HORDE_MAP, config:{mode:'horde', fragLimit:10}});
+  await client.wait(f => f.type === 'lobby' && f.config);
+  client.send({type:'start'});
+  const frame = await client.wait(f => f.type === 'snapshot');
+  assert.equal(frame.state.mapId, IDENTITY_HORDE_MAP);
+  assert.equal(frame.state.config.mode, 'horde');
+  assert.equal(frame.state.config.botCount, 0);
+  assert.ok(frame.state.singleplayer);
+  assert.equal(frame.state.actors.filter(a => !a.bot).length, 1);
+  assert.equal(client.frames.some(f => f.type === 'error'), false);
 });
