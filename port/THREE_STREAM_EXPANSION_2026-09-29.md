@@ -85,9 +85,16 @@ aggregate registration remain with the parent integration owner.
   `native-player-flow/evidence/`.
 - Objective implementation: six reviewed lane commits integrated through
   `27d5ffa7`, including Uplink/Holdout projections, Assault and the 23-route
-  generated registry. Its lead holds the serial slot for focused runtime
-  verification and is replacing Assault's temporary vehicle composition with
-  the shared vehicle bridge.
+  generated registry. Follow-up `66559cba` (integrated as `96273b9a`) replaces
+  Assault's temporary vehicle composition with the shared bridge and verifies
+  normal-rate Room timeout/results/rematch across all eight eligible pairs.
+  Controlled-placement completion/results/rematch passed for all three modes,
+  with both Assault maps covered. These are not natural-input completion claims.
+  Node checks passed 53/53, four Godot fixtures passed, and existing KOTH and
+  Domination real-input capture/scoring/rematch regressions passed. Sixteen
+  original success/failure reports are retained with hashes beneath
+  `native-objective-expansion/evidence/objective-lane/`. Post-audio-merge
+  verification remains part of the final aggregate.
 - Vehicle implementation: ten lane commits integrated through `bfa71652`.
   The exact source roster is Puma, Hornet, Titan, Scout and Transport; no sixth
   chassis is implied by source aliases. The shared seat bridge covers source

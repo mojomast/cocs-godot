@@ -3,7 +3,6 @@
 import {createGameServer} from '../../server/game-server.mjs';
 import {spawn} from 'node:child_process';
 import {mkdtempSync, mkdirSync, writeFileSync, rmSync} from 'node:fs';
-import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {randomUUID} from 'node:crypto';
 import {floorAt} from '../../game/core.mjs';
@@ -16,7 +15,9 @@ if (!['uplink','holdout','assault'].includes(mode) || !valid.includes(map)) thro
 const bin = process.env.GODOT_BIN;
 if (!bin) throw Error('GODOT_BIN required');
 const temp = mkdtempSync('/tmp/opencode/objective-live-');
-const env = {...process.env, HOME:temp};
+const env = {...process.env, HOME:temp, COCS_CAREER_ROOT:join(temp,'career'),
+  COCS_SETTINGS_PATH:join(temp,'settings.json'), COCS_CAREER_CREDENTIALS_PATH:'',
+  COCS_CAREER_SCOPE:'', COCS_CAREER_ENDPOINT:''};
 for (const key of ['XDG_CONFIG_HOME','XDG_CACHE_HOME','XDG_DATA_HOME']) {env[key]=join(temp,key);mkdirSync(env[key]);}
 let game, child, timer, placement, output='', error='', result='unstarted', exit=1, placements=0;
 const received=[],sent=[];

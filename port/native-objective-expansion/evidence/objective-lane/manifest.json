@@ -1,0 +1,102 @@
+{
+  "scope": "retained original objective lane evidence; final integrated aggregate is separate",
+  "implementation_commit": "66559cbaf787c7e6575ac149cd8bd62c4fe29494",
+  "files": [
+    {
+      "original_path": "/tmp/opencode/objective-uplink-meridian-exchange-be6765cf-05d9-4d19-b176-1f044205f6eb.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-uplink-meridian-exchange-be6765cf-05d9-4d19-b176-1f044205f6eb.json",
+      "sha256": "9490ad19b71a298110f6d1b2e2f360cb70df534750dfd592eee5fd684d0260bb",
+      "bytes": 11197
+    },
+    {
+      "original_path": "/tmp/opencode/objective-uplink-meridian-exchange-e4d1a0bb-b66b-4d82-8ac1-7b84f112be53.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-uplink-meridian-exchange-e4d1a0bb-b66b-4d82-8ac1-7b84f112be53.json",
+      "sha256": "a6cceab12d9a3741f33ba304fe9157accaf7603b0adcffe434663f7ded8cec16",
+      "bytes": 9410
+    },
+    {
+      "original_path": "/tmp/opencode/objective-holdout-meridian-exchange-c5e9bc3a-1c5c-4f74-a0d4-e0239fe3ee19.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-holdout-meridian-exchange-c5e9bc3a-1c5c-4f74-a0d4-e0239fe3ee19.json",
+      "sha256": "af748826e85b0f0c3a0fc7ecefe9a95f593a92a63c899d15c8a7b7babd31d657",
+      "bytes": 11260
+    },
+    {
+      "original_path": "/tmp/opencode/objective-holdout-meridian-exchange-97d74371-216a-4df3-be8d-8d747955d0be.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-holdout-meridian-exchange-97d74371-216a-4df3-be8d-8d747955d0be.json",
+      "sha256": "886fe37be52f9987d38ce8df109043352a422506f6b4bc5d382273686131d659",
+      "bytes": 10599
+    },
+    {
+      "original_path": "/tmp/opencode/objective-uplink-verdant-reliquary-b51b4688-b4ea-4555-be86-944a6b269f8f.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-uplink-verdant-reliquary-b51b4688-b4ea-4555-be86-944a6b269f8f.json",
+      "sha256": "79d4776dbd0d2d60d98d26766f66840d70d180b6421285154c9b8b26b6f6e8f8",
+      "bytes": 11196
+    },
+    {
+      "original_path": "/tmp/opencode/objective-holdout-verdant-reliquary-6793109d-ab0c-4f6e-8272-d08fe4d4236d.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-holdout-verdant-reliquary-6793109d-ab0c-4f6e-8272-d08fe4d4236d.json",
+      "sha256": "4d8bbc286fdbec4f9adbc62b5f4088909cfeb6d942f6055512fe05fbf19a4c83",
+      "bytes": 11260
+    },
+    {
+      "original_path": "/tmp/opencode/objective-uplink-ember-crucible-9441a9b0-719f-47ef-8e3b-de88d998be2b.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-uplink-ember-crucible-9441a9b0-719f-47ef-8e3b-de88d998be2b.json",
+      "sha256": "1d4283d0cc5653ad273bc46b304cc8672b7cb6020407556b274d28d80c726d77",
+      "bytes": 11187
+    },
+    {
+      "original_path": "/tmp/opencode/objective-holdout-ember-crucible-3381aafb-5641-4235-b2f1-64a4c24ef54d.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-holdout-ember-crucible-3381aafb-5641-4235-b2f1-64a4c24ef54d.json",
+      "sha256": "4c93c6cdc04fac1c23e67261806ac765ea580af6bd4c14d2c9eb5de1676e990e",
+      "bytes": 11251
+    },
+    {
+      "original_path": "/tmp/opencode/objective-assault-tidal-citadel-c299e4df-1738-4794-b499-4bbae1c12abc.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-assault-tidal-citadel-c299e4df-1738-4794-b499-4bbae1c12abc.json",
+      "sha256": "f3812ef5a8caa930623d67f016231462eb83ce3ac38161d6cc4ecfeb7a989939",
+      "bytes": 11246
+    },
+    {
+      "original_path": "/tmp/opencode/objective-assault-tidal-citadel-704cf11e-bf66-4b7b-aaa8-1feb96dc56e3.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-assault-tidal-citadel-704cf11e-bf66-4b7b-aaa8-1feb96dc56e3.json",
+      "sha256": "f13ef9b15c905677b799f3bbee61e1a3ab6ee1622b297a155aac277ed302af54",
+      "bytes": 9632
+    },
+    {
+      "original_path": "/tmp/opencode/objective-assault-sunscar-convoy-28861604-7815-476f-92b3-dbc1b727d8db.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-assault-sunscar-convoy-28861604-7815-476f-92b3-dbc1b727d8db.json",
+      "sha256": "4e1c85b08f56dab790d47569f70af503027b50730e30bd9ccb9a60dc30ea2ea2",
+      "bytes": 11248
+    },
+    {
+      "original_path": "/tmp/opencode/objective-assault-sunscar-convoy-de5eac3f-cda7-4b01-ba32-e53703d7cb62.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-assault-sunscar-convoy-de5eac3f-cda7-4b01-ba32-e53703d7cb62.json",
+      "sha256": "4134037a01f5a9a9cb932707f499f0d94b0b3c12827623060d0cb018f83069ca",
+      "bytes": 9635
+    },
+    {
+      "original_path": "/tmp/opencode/objective-assault-tidal-citadel-c53a8b88-4b34-450e-878c-aeddce770d49.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-assault-tidal-citadel-c53a8b88-4b34-450e-878c-aeddce770d49.json",
+      "sha256": "caf2dc95e65932f17b4f7ffc89bbf036e0df6e6700c33358d30dee6a73c60c43",
+      "bytes": 13478
+    },
+    {
+      "original_path": "/tmp/opencode/objective-assault-tidal-citadel-d65f0eb4-cdd4-4846-98e4-4c9c6c89ccd4.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-assault-tidal-citadel-d65f0eb4-cdd4-4846-98e4-4c9c6c89ccd4.json",
+      "sha256": "7d21b7222ef7b5417ac5b7510e89ced61eab130070f5e1fe304ac36a32d62bac",
+      "bytes": 11848
+    },
+    {
+      "original_path": "/tmp/opencode/objective-assault-tidal-citadel-df0bfe95-3572-4a55-b05e-5b54b67b4f34.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-assault-tidal-citadel-df0bfe95-3572-4a55-b05e-5b54b67b4f34.json",
+      "sha256": "6883c76c73bebb20303df586189d54fec15b62b2a6ec0ac75714850f10c073f8",
+      "bytes": 11848
+    },
+    {
+      "original_path": "/tmp/opencode/objective-uplink-meridian-exchange-3a35d2ce-5d0b-4276-8d18-509c8d3af843.json",
+      "path": "port/native-objective-expansion/evidence/objective-lane/objective-uplink-meridian-exchange-3a35d2ce-5d0b-4276-8d18-509c8d3af843.json",
+      "sha256": "b8b107f82676f4ca0c8777ae5bfaf03607f09df200584b7954f56b94848f13ee",
+      "bytes": 10004
+    }
+  ]
+}
