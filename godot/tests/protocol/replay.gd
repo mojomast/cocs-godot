@@ -2,6 +2,7 @@ extends SceneTree
 
 const Client = preload("res://net/client.gd")
 const Catalog = preload("res://world/catalog.gd")
+const Recording = preload("res://tests/protocol/recording.gd")
 
 func _initialize() -> void:
 	var catalog := Catalog.new()
@@ -16,8 +17,12 @@ func _initialize() -> void:
 	var decoded: int = 0
 	var acknowledged: bool = false
 	for record: Dictionary in captured.frames:
-		if record.direction != "server" or record.client != 1: continue
-		if not client.decode_text(JSON.stringify(record.frame)):
+		if record.client != 1: continue
+		if record.direction == "client":
+			Recording.request(client, record.frame)
+			continue
+		if record.direction != "server": continue
+		if not client.decode_text(JSON.stringify(Recording.response(captured, record.frame))):
 			push_error(client.error)
 			client.free()
 			quit(1)

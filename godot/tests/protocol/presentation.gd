@@ -1,4 +1,5 @@
 extends SceneTree
+const Recording = preload("res://tests/protocol/recording.gd")
 
 const Presentation = preload("res://world/presentation.gd")
 const Client = preload("res://net/client.gd")
@@ -29,8 +30,12 @@ func run() -> void:
 	var results_count: int = 0
 	var last_state: Dictionary = {}
 	for record: Dictionary in capture.frames:
-		if record.direction != "server" or record.client != 1: continue
-		check(client.decode_text(JSON.stringify(record.frame)), "decode")
+		if record.client != 1: continue
+		if record.direction == "client":
+			Recording.request(client, record.frame)
+			continue
+		if record.direction != "server": continue
+		check(client.decode_text(JSON.stringify(Recording.response(capture, record.frame))), "decode")
 		if record.frame.type not in ["snapshot", "results"]: continue
 		var state: Dictionary = record.frame.state
 		last_state = state
