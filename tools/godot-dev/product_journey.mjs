@@ -8,6 +8,7 @@ import {mkdtempSync, writeFileSync, chmodSync, readFileSync, mkdirSync, statSync
 import {resolve, join} from 'node:path';
 import {createConnection} from 'node:net';
 import {DEFAULT_ITINERARY, journeyOptions} from './journey_options.mjs';
+import {normalizeConfig} from '../../game/config.mjs';
 const args=process.argv.slice(2);
 assert.ok(args.every(arg=>arg==='--capture'||arg==='--player-flow'||arg.startsWith('--itinerary=')), 'Unknown journey option');
 const playerFlow=args.includes('--player-flow');
@@ -32,7 +33,10 @@ const hash=path=>createHash('sha256').update(readFileSync(path)).digest('hex');
 mkdirSync('.port-runtime/product-journeys', {recursive:true});
 const output = mkdtempSync(resolve('.port-runtime/product-journeys/attempt-'));
 const state = join(output, 'state.json');
-writeFileSync(state, JSON.stringify({visits:0,expected_volume:100,itinerary,cycles,player_flow:playerFlow,career_home_checks:0,career_live_checks:0}));
+const lobbyConfig=normalizeConfig({mode:'deathmatch',botCount:2,timeLimit:60,fragLimit:100});
+writeFileSync(state, JSON.stringify({visits:0,expected_volume:100,itinerary,cycles,player_flow:playerFlow,
+  expected_lobby_config:{mode:lobbyConfig.mode,timeLimit:lobbyConfig.timeLimit,fragLimit:lobbyConfig.fragLimit},
+  career_home_checks:0,career_live_checks:0}));
 const wrapper = join(output, 'godot-wrapper.mjs');
 writeFileSync(wrapper, `#!${process.execPath}
 import {spawn} from 'node:child_process';

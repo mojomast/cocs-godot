@@ -416,7 +416,8 @@ func player_flow_step() -> void:
 	menu.start_button.pressed.emit()
 	if not await flow_wait(func() -> bool: return scene.phase == 3 and scene.received_pose, "first source round became live"): return
 	var config: Dictionary = scene.client.snapshots.back().get("state", {}).get("config", {})
-	if not flow_check(config.get("timeLimit") == 60 and config.get("mode") == "deathmatch" and config.get("fragLimit") == 100, "source echoed the legal 60-second deathmatch preset"): return
+	var expected: Dictionary = record.expected_lobby_config
+	if not flow_check(config.get("timeLimit") == expected.timeLimit and config.get("mode") == expected.mode and config.get("fragLimit") == expected.fragLimit, "source echoed its normalized 60-second deathmatch preset"): return
 	var actor_id: int = scene.client.actor_id
 	var revision: int = scene.client.resumed_revision
 	scene.client.peer.close(4000, "Scripted player-flow transport interruption")

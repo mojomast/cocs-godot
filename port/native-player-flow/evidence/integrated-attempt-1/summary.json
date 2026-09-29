@@ -1,0 +1,147 @@
+{
+  "scope": "source-driven scripted UI lifecycle; not natural rounds/human acceptance",
+  "passed": false,
+  "exit_code": 0,
+  "port_commit": "8ec6faacabe4699053fcb8a8986acbb446cf8f2c",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "input_sha256": {
+    "godot/tests/product_journey/driver.gd": "a0c9fcb6dbfc43df24ca92f3d458ffc24a22fa3b56a2221fbf9a09e661943d90",
+    "godot/ui/local_settings.gd": "77e61681d607e63c81415b2cea9740df94750276065c50be1d951e1d703c2fed",
+    "godot/ui/main_menu.gd": "a2b32ed4b55d839b6e5ddd6c0a30f1bb92bd210427e7798d1531cbd5904abfda",
+    "godot/career/service.gd": "1684e379a205b87604adac87c2616c8b8057fcaaa561e2c799146589cd489d1c",
+    "godot/career/catalog.json": "18061952fac08bfb5f1d5316c6a9f6137968324a6742730691abe817253a92c8",
+    "godot/lattice/world_commands.gd": "ce7de99109aecbd3a598441f2336f3d347f5592c8ca37693267e2aa4dce52a85",
+    "tools/godot-dev/product_journey.mjs": "1ba5aab9a8a308f0e01c4080c08bca0d3628c8b59a768750b01ec25bf8b37ac8",
+    "tools/godot-dev/launch.mjs": "9450f7bf6f4335b6c7e5271b47ad56c819e43436a7efb1700b7173243ce542b2"
+  },
+  "itinerary": [
+    {
+      "route": "lobby",
+      "options": {}
+    }
+  ],
+  "cycles": 1,
+  "player_flow": true,
+  "source_sessions": [],
+  "deck_checks": [],
+  "career_checks": [
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    },
+    {
+      "bounds": true,
+      "has_profile": false,
+      "route": "home"
+    }
+  ],
+  "career_counts": {
+    "home": 2,
+    "live": 0,
+    "expected_home": 2,
+    "expected_live": 1,
+    "passed": false
+  },
+  "captures": [
+    {
+      "name": "home-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-xHoGEL/home-1280x800.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "31bbf379fa0677b5fa3cf654dd46ce7eb8c05fb8da0a9423ebfca9191c3b05cb"
+    },
+    {
+      "name": "home-760x520",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-xHoGEL/home-760x520.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "35fe77f32d51f3ccdc8290d00b818164b193a56c462d9995170de1d8f340b140"
+    },
+    {
+      "name": "home-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-xHoGEL/home-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "c8a04b0e0136af56257764ab02fa62ccf7059ce56ab135cae48409105d338679"
+    },
+    {
+      "name": "career-home-1280x800",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-xHoGEL/career-home-1280x800.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "c022137fcd5e10dae3f3df7904bfe9fd96cb07ca0bb92b75f9b78fede895fed9"
+    },
+    {
+      "name": "career-home-760x520",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-xHoGEL/career-home-760x520.png",
+      "scale": 100,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "f735da06be5670ff47760e0131d265caa6919d59e602195562af1b90a0d2a4b6"
+    },
+    {
+      "name": "career-home-760x520-scale150",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-xHoGEL/career-home-760x520-scale150.png",
+      "scale": 150,
+      "source_route": "",
+      "window": [
+        760,
+        520
+      ],
+      "sha256": "8cc8e0bbeb412aed2f88c0645c15a0fbc74e3f9456217f301a83d42904c471f4"
+    },
+    {
+      "name": "flow-room-browser",
+      "path": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-xHoGEL/flow-room-browser.png",
+      "scale": 100,
+      "source_route": "lobby",
+      "window": [
+        1280,
+        800
+      ],
+      "sha256": "dd01b520373b3732a0c3336386723b705bf037016007a6e3b11922e04d72d9cd"
+    }
+  ],
+  "owned_ports": [
+    45281
+  ],
+  "all_owned_ports_closed": true,
+  "state": {
+    "career_home_checks": 2,
+    "career_live_checks": 0,
+    "cycles": 1,
+    "expected_volume": 40,
+    "itinerary": [
+      {
+        "options": {},
+        "route": "lobby"
+      }
+    ],
+    "options": {},
+    "player_flow": true,
+    "route": "lobby",
+    "visits": 1
+  },
+  "output": "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/.port-runtime/product-journeys/attempt-xHoGEL"
+}
