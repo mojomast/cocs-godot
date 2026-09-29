@@ -19,6 +19,22 @@ campaign is not the new design specification; the draft handoff is inactive.
 
 ## Evidence levels and current acceptance
 
+### Consolidated expansion — September 29, 2026
+
+The owner authorized completing the three recommended feature streams and then
+building one Windows/Linux product. Current implementation and acceptance are
+tracked in [the expansion record](THREE_STREAM_EXPANSION_2026-09-29.md).
+The older dated tables below remain historical evidence, including their
+then-current preview limitations.
+
+| Stream | Integrated implementation | Current verification |
+| --- | --- | --- |
+| Player-flow polish | Compact Career state/XP clarity, navigation/focus, explicit Retry and next-match loadout flow | Captured source flow 24 checks; compact pending/unknown/confirmed/results journey 34 checks; failures retained |
+| Objective expansion | Uplink, Holdout and Assault, source-aware ranking and generated launch routes | Focused source/native runtime verification in progress |
+| Vehicle expansion | Five chassis, source driver/gunner/passenger controls, visible crew, shared vehicle bridge and Combined Arms guest composition | Source and three-native-client fixtures prepared; runtime acceptance pending serial slot |
+| Audio/weather | Native score, existing announcer takes, event/vehicle cues, ambience/weather and lifecycle/settings integration | Asset hashes checked; native playback, weather and lifecycle verification pending serial slot |
+| Consolidated packages | Commit-bound inputs, audio/resource probes and expanded extracted destination startup cases | Windows/Linux builds pending final integrated checks |
+
 ### Graphics expansion — September 22, 2026
 
 The owner requested parallel graphics development, new native showcase maps and

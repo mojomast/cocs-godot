@@ -258,6 +258,7 @@ commands = [
     ("objective-assault-state", [binary, "--headless", "--path", "godot", "--script", "res://tests/assault/state_test.gd"]),
     ("objective-scoreboard", [binary, "--headless", "--path", "godot", "--script", "res://tests/objective_scoreboard.gd"]),
     ("vehicle-source-oracle", ["node", "port/native-vehicle-expansion/source-oracle.mjs"]),
+    ("vehicle-room-edge-oracle", ["node", "port/native-vehicle-expansion/room-edge-oracle.mjs"]),
     ("vehicle-fleet-visuals", [binary, "--headless", "--path", "godot", "--script", "res://tests/combined_arms/test_fleet_visuals.gd"]),
     ("combined-arms-controls", [binary, "--headless", "--path", "godot", "--script", "res://tests/combined_arms/test_controls.gd"]),
     ("combined-arms-graphics", [binary, "--headless", "--path", "godot", "--script", "res://tests/combined_arms/graphics.gd"]),
