@@ -76,6 +76,9 @@ func named(control_name: String) -> Control:
 
 func command(c: Dictionary) -> void:
 	match str(c.get("op", "")):
+		"resume_wire":
+			session.client.set_process(true)
+			frozen = false
 		"focus": root.grab_focus()
 		"resize": root.size = Vector2i(int(c.get("width", 760)), int(c.get("height", 520)))
 		"scale": root.content_scale_factor = float(c.get("value", 1.0))
@@ -161,9 +164,6 @@ func _process(delta: float) -> bool:
 	elif not started and connected and session.phase == 12 and session.lobby_host_allowed():
 		started = true
 		session.lobby_start()
-	# 2. a little play so the source has live actors until it resolves
-	if started and not frozen and session.phase == 3 and session.client.actor_id >= 0 and fmod(elapsed, 0.5) < delta:
-		session.client.send_input({"forward": true, "fire": fmod(elapsed, 2.0) < 1.0})
 	# 3. open the shipped LOADOUT reader and walk the states.
 	if started and session.phase == 3 and not opened and career != null:
 		opened = true
@@ -184,9 +184,7 @@ func _process(delta: float) -> bool:
 		compact()
 		career.refresh()
 		capture.call_deferred("clarity-unknown-compact")
-		# Release the held write so the real source can settle it.
-		session.client.set_process(true)
-		frozen = false
+		# The harness releases polling only after observing this state and PNG.
 	# confirmed: the source-marked GEAR reply names the item.
 	if pressed and not confirmed and not frozen and career.pending.is_empty() and career.profile.get("attachments", {}).get(equip_slot) == equip_id:
 		confirmed = true

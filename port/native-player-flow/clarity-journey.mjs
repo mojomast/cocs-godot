@@ -141,6 +141,8 @@ try {
   await until(() => existsSync(resolve(out, 'clarity-unknown-compact.png')), 10000, 'unknown png');
   pass('unknown readability captured', existsSync(resolve(out, 'clarity-unknown-compact.png')));
 
+  writeFileSync(inbox, JSON.stringify({id: 1, op: 'resume_wire'}));
+
   const confirmed = await until(() => samples.find(s => s.confirmed), 30000, 'confirmed state');
   pass('only the source reply settles the selection', confirmed.pending === false);
   pass('the confirmed saved summary names the item', String(confirmed.summary).includes(confirmed.equip.name));
