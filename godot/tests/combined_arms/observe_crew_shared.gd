@@ -20,6 +20,11 @@ var shot_event := false
 var gunner_seen := false
 var personal_event := false
 var passenger_seen := false
+var host_create_sent := false
+var last_progress := 0.0
+var last_position := Vector2.INF
+var crew_ready_since := -1.0
+var passenger_shot_since := -1.0
 
 func log_line(kind: String, data: Dictionary = {}) -> void:
 	var row := {"role":role, "seconds":elapsed, "stage":stage, "room":demo.net.room_id if is_instance_valid(demo) else "", "peer":demo.net.peer_id if is_instance_valid(demo) else -1, "actor_id":demo.net.actor_id if is_instance_valid(demo) else -1}
@@ -45,6 +50,10 @@ func _initialize() -> void:
 		quit(2)
 		return
 	demo = Demo.new()
+	# The native host selects a non-autogunner loadout through the ordinary
+	# create request. Default OpenClaw would shoot the opposing-team gunner
+	# during the natural approach before that player can take the seat.
+	if role == "host": demo.create_sent = true
 	root.add_child.call_deferred(demo)
 	demo.input_queued.connect(func(seq: int, packet: Dictionary, result: int) -> void:
 		# Every input receipt carries the native client's packet and its wire sequence.
@@ -54,11 +63,13 @@ func _initialize() -> void:
 	demo.net.events.connect(func(items: Array) -> void:
 		for item: Variant in items:
 			if item is Dictionary and item.get("type") == "shot":
-				if item.get("actor") == demo.net.actor_id: personal_event = true
-				else: passenger_seen = true
+				if role == "passenger" and int(item.get("actor", -1)) == 2: personal_event = true
+				if int(item.get("actor", -1)) == 2:
+					passenger_seen = true
+					if passenger_shot_since < 0: passenger_shot_since = elapsed
 			if item is Dictionary and item.get("type") == "vehicle-shot" and item.get("vehicle") == PUMA:
-				if item.get("actor") == demo.net.actor_id: shot_event = true
-				else: gunner_seen = true
+				if role == "guest" and int(item.get("actor", -1)) == 1: shot_event = true
+				if int(item.get("actor", -1)) == 1: gunner_seen = true
 		if not items.is_empty(): log_line("EVENTS", {"events":items}))
 	log_line("BOOT", {"pid":OS.get_process_id()})
 
@@ -85,6 +96,7 @@ func change(next: String) -> void:
 	mouse_button(false)
 	stage = next
 	stage_since = elapsed
+	last_progress = elapsed
 	log_line("STAGE", {"next":stage,"snapshot_seq":demo.net.last_snapshot_seq})
 
 func turn_to(target: Vector2) -> void:
@@ -117,6 +129,11 @@ func _process(delta: float) -> bool:
 		fail("deadline at " + stage)
 		return false
 	if not is_instance_valid(demo) or not demo.is_node_ready(): return false
+	if role == "host" and not host_create_sent and demo.net.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		host_create_sent = true
+		var result: Error = demo.net.create_room("Vehicle crew", "chatgpt", "hermes")
+		log_line("CREATE", {"result":result,"character":"chatgpt","harness":"hermes"})
+		if result != OK: fail("host create request failed")
 	if demo.phase == "error":
 		fail("demo error: " + demo.error)
 		return false
@@ -125,15 +142,25 @@ func _process(delta: float) -> bool:
 		log_line("ROOM", {"join_room":demo.net.room_id})
 	if demo.actor.is_empty(): return false
 	sample()
-	if not demo.eligible(): return false
 	var a: Dictionary = demo.actor
 	if float(a.get("health",0)) <= 0 or float(a.get("dead",0)) > 0:
-		fail("actor died before crew observation")
+		fail("actor died before crew observation: " + JSON.stringify({"stage":stage,"waypoint":waypoint,"position":[a.get("x"),a.get("z")],"snapshot_seq":demo.net.last_snapshot_seq,"ack":demo.net.last_ack}))
 		return false
+	if role == "host" and a.get("harness") != "hermes":
+		fail("host source actor did not receive requested non-autogunner harness")
+		return false
+	if not demo.eligible(): return false
 	if stage in ["mounted","drive","brake","gunner-fire","passenger-fire","observe"] and (a.get("vehicleId") != PUMA or a.get("vehicleSeat") != ("driver" if role == "host" else ("gunner" if role == "guest" else "passenger"))):
 		fail("crew seat lease lost")
 		return false
 	var pos := Vector2(float(a.x), float(a.z))
+	if stage == "walk":
+		if pos.distance_to(last_position) > 0.3:
+			last_position = pos
+			last_progress = elapsed
+		if elapsed - last_progress > 8.0:
+			fail("walk stalled: " + JSON.stringify({"waypoint":waypoint,"position":[pos.x,pos.y],"focus":root.has_focus(),"engaged":demo.controls.engaged,"snapshot_seq":demo.net.last_snapshot_seq,"ack":demo.net.last_ack}))
+			return false
 	var v := source_puma()
 	if v.is_empty():
 		fail("source Puma absent")
@@ -142,11 +169,26 @@ func _process(delta: float) -> bool:
 		"boot":
 			if role == "passenger" and (v.get("gunner") == null or not gunner_seen): return false
 			if role == "guest" and v.get("driver") == null: return false
+			if role != "host":
+				if crew_ready_since < 0: crew_ready_since = elapsed
+				# Only one X11 client may own the pointer grab. Let the prior
+				# rider release it with physical Esc before the next approaches.
+				if elapsed-crew_ready_since < (3.0 if role == "passenger" else 1.0): return false
 			approach_origin = pos
 			# West spawn / east spawn respectively; these are authored freight-road waypoints.
-			path = [Vector2(-80,-10),Vector2(-62,-10),Vector2(-62,-6)] if role != "guest" else [Vector2(78,-18),Vector2(54,-18),Vector2(14,-18),Vector2(0,18),Vector2(-44,18),Vector2(-54,-10),Vector2(-62,-10),Vector2(-62,-6)]
+			if role == "guest":
+				if pos.y > 0:
+					# North/east source spawns cannot travel straight through
+					# the Sun Gate pillar at x=78, z≈-7. Go west above it.
+					path.assign([Vector2(78,0),Vector2(54,0),Vector2(54,-18)])
+				else:
+					path.assign([Vector2(78,-18),Vector2(54,-18)])
+				path.append_array([Vector2(14,-18),Vector2(0,18),Vector2(-44,18),Vector2(-54,-10),Vector2(-62,-10),Vector2(-62,-4)])
+			else:
+				path.assign([Vector2(-80,-10),Vector2(-62,-10),Vector2(-62,-4)])
 			log_line("SPAWN", {"position":[pos.x,pos.y],"team":a.get("team"),"target":PUMA,"path":path.map(func(p: Vector2) -> Array: return [p.x,p.y])})
 			change("walk")
+			last_position = pos
 			tap(KEY_ENTER)
 		"walk":
 			if not root.has_focus(): root.grab_focus()
@@ -157,13 +199,16 @@ func _process(delta: float) -> bool:
 			if a.get("vehicleId") != null:
 				fail("unexpected mount before entry request")
 				return false
+			# Submit the physical E edge inside the source's 2.4 m radius,
+			# before inertia carries the actor past a final point waypoint.
+			if waypoint >= path.size()-1 and pos.distance_to(Vector2(float(v.x),float(v.z))) < 1.8:
+				change("entry")
+				tap(KEY_E)
+				return false
 			if pos.distance_to(path[waypoint]) < 0.9:
 				waypoint += 1
 				key(KEY_W, false)
 				if waypoint == path.size():
-					if pos.distance_to(Vector2(float(v.x),float(v.z))) >= 2.4:
-						fail("route finished outside source enter radius")
-						return false
 					change("entry")
 					tap(KEY_E)
 					return false
@@ -176,19 +221,25 @@ func _process(delta: float) -> bool:
 					return false
 				mounted_origin = Vector2(float(v.x),float(v.z))
 				change("mounted")
-				tap(KEY_ENTER) # identity transition released capture; recapture via physical Enter.
+				# Seat identity releases capture. Reacquire only in the role's
+				# active phase; idle host must not hold X11 pointer against crew.
 			elif elapsed-stage_since > 4.0: fail("entry receipt failed")
 		"mounted":
 			if role == "host":
+				var passenger_mounted := false
+				for occupant: Variant in v.get("passengers", []):
+					if occupant != null and int(occupant) == 2: passenger_mounted = true
 				# X11 cannot focus two native windows at once. Let guest fire
 				# independently first, then focus the host and drive with fresh input.
-				if v.get("gunner") != null and gunner_seen and v.get("passengers", []).has(2) and passenger_seen:
+				if v.get("gunner") != null and gunner_seen and passenger_mounted and passenger_seen and elapsed-passenger_shot_since > 2.5:
 					if not root.has_focus(): root.grab_focus()
 					if not root.has_focus() or not demo.controls.focused: return false
 					tap(KEY_ENTER)
 					if not demo.controls.engaged: return false
 					change("drive")
 					key(KEY_W, true)
+				elif elapsed-stage_since > 60.0:
+					fail("crew wait stalled: " + JSON.stringify({"gunner":v.get("gunner"),"gunner_seen":gunner_seen,"passenger_mounted":passenger_mounted,"passenger_seen":passenger_seen,"shot_age":elapsed-passenger_shot_since}))
 			elif role == "guest":
 				# This distinct client's fire input proves independent gun ownership;
 				# the host drives after X11 focus is returned to its window.
@@ -221,11 +272,16 @@ func _process(delta: float) -> bool:
 				fired = true
 				mouse_button(false)
 				change("observe")
+				tap(KEY_ESCAPE)
 		"passenger-fire":
 			if elapsed-stage_since > 1.5:
 				mouse_button(false)
 				change("observe")
+				tap(KEY_ESCAPE)
 		"observe":
+			if elapsed-stage_since > 45.0:
+				fail("source drive observation stalled: " + JSON.stringify({"shot_event":shot_event,"personal_event":personal_event,"driver_distance":Vector2(float(v.x),float(v.z)).distance_to(mounted_origin)}))
+				return false
 			if role == "guest" and elapsed-stage_since > 8.0 and not shot_event:
 				fail("no authoritative vehicle-shot event for guest actor")
 			elif role == "passenger" and elapsed-stage_since > 8.0 and not personal_event:

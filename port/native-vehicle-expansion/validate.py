@@ -30,6 +30,7 @@ def verify(logs, wire):
     assert len({c['peerId'] for c in connected})==len({c['actorId'] for c in connected})==3
     assert [c['actorId'] for c in connected]==[0,1,2], 'native client seating order not source driver/gunner/passenger'
     assert [c['commands'][0]['type'] for c in connected]==['create','join','join']
+    assert connected[0]['commands'][0]['character']=='chatgpt' and connected[0]['commands'][0]['harness']=='hermes', 'native driver must request documented non-autogunner loadout'
     assert connected[0]['commands'][1]['type']=='host'
     assert connected[0]['commands'][1]['mode']=='combined-arms' and connected[0]['commands'][1]['botCount']==0
     room=connected[0]['roomId']
@@ -61,6 +62,8 @@ def verify(logs, wire):
         assert complete[0]['actor_id']==index-1 and complete[0]['source_vehicle']==PUMA
         assert complete[0]['mounted_from_spawn'] is True, role+' did not walk from spawn'
         assert complete[0]['seat']=={'host':'driver','guest':'gunner','passenger':'passenger'}[role]
+        if role=='host':
+            assert len(records(text,'CREATE'))==1 and records(text,'CREATE')[0]['result']==0
         queues=records(text,'QUEUE')
         assert len(queues)>10 and all(q['result']==0 for q in queues),role+' insufficient queued controls'
         native_inputs={}
@@ -77,6 +80,7 @@ def verify(logs, wire):
             if source is None: continue
             assert source['actorId']==item['actor_id'] and source['ack']==item['ack']
             assert same(source['actor'],item['actor']),role+' actor source mismatch'
+            if role=='host': assert item['actor']['harness']=='hermes', 'authority did not seat selected Hermes driver'
             vehicle=next((v for v in source['vehicles'] if v['id']==PUMA),None)
             assert vehicle is not None and same(vehicle,item['source_puma'])
             assert item['render_puma'] and math.dist(item['render_puma'],[vehicle[k] for k in ('x','y','z')])<1e-4,role+' source XYZ != native root'

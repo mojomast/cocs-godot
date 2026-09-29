@@ -34,6 +34,7 @@ game.wss.on('connection', socket => {
       witness.inputs.push({connection, seq:frame.seq, input:frame.input});
     else if (['create','join','host','start'].includes(frame.type))
       (record.commands??=[]).push({type:frame.type, roomId:frame.roomId??null,
+        character:frame.character??null, harness:frame.harness??null,
         mapId:frame.mapId??null, mode:frame.config?.mode??null, botCount:frame.config?.botCount??null});
   });
   const send = socket.send;
