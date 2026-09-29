@@ -80,6 +80,9 @@ func popup_nodes(node: Node) -> int:
 	return count
 
 func run() -> void:
+	# Headless SceneTree scripts start at 64x64; clicks outside that viewport
+	# never reach GUI controls even when the panel is visible in the tree.
+	root.size = Vector2i(960, 640)
 	var session := SessionDouble.new()
 	root.add_child(session)
 	await settle()
