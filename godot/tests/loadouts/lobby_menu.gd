@@ -55,10 +55,18 @@ func key(code: int, shift := false) -> void:
 	await settle()
 
 func click(control: Control) -> void:
+	var point := control.get_global_rect().get_center()
+	var motion := InputEventMouseMotion.new()
+	motion.position = point
+	motion.global_position = point
+	Input.parse_input_event(motion)
+	await process_frame
 	for pressed: bool in [true, false]:
 		var event := InputEventMouseButton.new()
-		event.position = control.get_global_rect().get_center()
+		event.position = point
+		event.global_position = point
 		event.button_index = MOUSE_BUTTON_LEFT
+		event.button_mask = MOUSE_BUTTON_MASK_LEFT if pressed else 0
 		event.pressed = pressed
 		Input.parse_input_event(event)
 		await process_frame
@@ -102,6 +110,9 @@ func run() -> void:
 	session.calls.clear()
 	await click(menu.connect_button)
 	check(session.calls.size() == 1 and session.calls[0].call == "lobby_connect", "connect button calls lobby_connect once: " + str(session.calls))
+	if session.calls.size() != 1:
+		quit(1)
+		return
 	check(session.calls[0].character == "grok" and session.calls[0].harness == "codex", "host click passes the chosen pair: " + str(session.calls))
 	check(session.calls[0].guest == false and session.calls[0].room == "", "host click keeps the existing guest/room contract")
 
@@ -120,6 +131,9 @@ func run() -> void:
 	session.calls.clear()
 	await click(menu.connect_button)
 	check(session.calls.size() == 1 and session.calls[0].guest == true and session.calls[0].room == "room-code", "guest click passes room and guest flag: " + str(session.calls))
+	if session.calls.size() != 1:
+		quit(1)
+		return
 	check(session.calls[0].character == "deepseek" and session.calls[0].harness == "hermes", "guest click passes the guest pair: " + str(session.calls))
 
 	# The authority echo drives the roster, never the local pick.
