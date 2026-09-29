@@ -71,9 +71,40 @@ func run() -> void:
 	if result != OK:
 		fail("Cannot save actual Master bus capture: %d" % result)
 		return
-	print("AUDIO_WAVEFORM_OK frames=",pcm.size()," peak=",peak," energy=",energy," streams=",music.status().loaded_streams," file=",path)
+	# Two bar-11 lead ornaments differ by a seeded semitone choice. Capture the
+	# actual Ogg mix for both takes and record the player pitch plans as a second,
+	# deterministic explanation of any waveform difference.
+	var first: Dictionary = await variation_take(42)
+	var second: Dictionary = await variation_take(137)
+	if first.frames < 2205 or second.frames < 2205 or first.peak <= MIN_PEAK or second.peak <= MIN_PEAK or first.pitches == second.pitches:
+		fail("Music variation produced no distinct audible Ogg pitch plans: %s vs %s" % [str(first),str(second)])
+		return
+	print("AUDIO_WAVEFORM_OK frames=",pcm.size()," peak=",peak," energy=",energy," streams=",music.status().loaded_streams,
+		" variation_peaks=",first.peak,",",second.peak," pitch_plans=",first.pitches,",",second.pitches," file=",path)
 	cleanup()
 	quit(0)
+
+func variation_take(value: int) -> Dictionary:
+	for player: AudioStreamPlayer in music.players: player.stop()
+	capture.clear_buffer()
+	music.set_scene("combat")
+	music.set_variation(value)
+	music.form_bar = 11
+	music.step = 12
+	music._step_music()
+	var pitches := []
+	for player: AudioStreamPlayer in music.players:
+		if player.playing: pitches.append(snappedf(player.pitch_scale, 0.0001))
+	var count := 0
+	var peak := 0.0
+	for frame in 28:
+		await process_frame
+		var available := mini(capture.get_frames_available(), 4096)
+		if available <= 0: continue
+		var samples: PackedVector2Array = capture.get_buffer(available)
+		count += samples.size()
+		for item: Vector2 in samples: peak = maxf(peak, maxf(absf(item.x), absf(item.y)))
+	return {"frames":count,"peak":peak,"pitches":pitches}
 
 func fail(message: String) -> void:
 	push_error(message)

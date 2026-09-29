@@ -25,7 +25,7 @@ COCS_WEATHER_CAPTURE_DIR=/absolute/isolated/weather godot --path godot --script 
 - `score_form.gd` checks 32-bar form, all mode palettes, imported samples, outcome-safe mute and seeded changes.
 - `soak.gd` checks thousands of long-round events, bounded dedupe/state and pooled voices.
 - `standalone_lifecycle.gd` exercises Sports/Combined Arms adapter semantics including countdown and reconnect.
-- `waveform_capture.gd` requires a real audio driver, captures actual Ogg/WAV/earcon Master mix, fails on silence or Dummy and writes isolated WAV evidence.
+- `waveform_capture.gd` requires a real audio driver, captures actual Ogg/WAV/earcon Master mix and two seeded bar-11 Ogg variation windows, fails on silence/Dummy or identical pitch plans, and writes isolated WAV evidence.
 - `weather_render.gd` requires a renderer and compares weather on/off from the same authoritative frame; optional PNG evidence is isolated.
 
 These are prepared scripts, not results. Run only after the serial heavy-slot grant. The
