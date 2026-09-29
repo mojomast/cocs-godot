@@ -47,6 +47,10 @@ var create_sent := false
 var error := ""
 signal input_queued(seq: int, packet: Dictionary, result: int)
 
+func _init() -> void:
+	# Keep the AV owner attached even when a fixture constructs us without _ready().
+	add_child(audiovisual)
+
 func _ready() -> void:
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--map="): map_id = arg.trim_prefix("--map=")
@@ -72,7 +76,6 @@ func _ready() -> void:
 	if not world.load_map(map_id) or not chase.configure_map(map_id, world.catalog.resolve_map(map_id)):
 		get_tree().quit(2)
 		return
-	add_child(audiovisual)
 	audiovisual.configure(self, world.camera, world.catalog.resolve_map(map_id), "combined-arms", endpoint)
 	world.camera.current = true
 	add_child(fleet)

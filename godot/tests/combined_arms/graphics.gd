@@ -127,6 +127,7 @@ func run() -> void:
 	check(g.rig.recoil_count == 1 and g.feedback.shots == 1, "snapshot/refresh does not replay effects")
 	state.actors[0].vehicleId = "p"
 	state.actors[0].vehicleSeat = "driver"
+	state.actors[0].vehicleSeatIndex = 0
 	state.vehicles[0].driver = 0
 	snapshot(state)
 	check(not g.rig.showing and g.rig.recoil == 0 and not demo.controls.engaged and not demo.vehicle.is_empty(), "boarding Puma hides and clears infantry immediately")
@@ -139,6 +140,7 @@ func run() -> void:
 	check(demo.vehicle.is_empty() and not g.rig.showing, "broken mounted lease never falls back to infantry")
 	state.actors[0].vehicleId = null
 	state.actors[0].vehicleSeat = null
+	state.actors[0].vehicleSeatIndex = null
 	state.vehicles[0].driver = null
 	snapshot(state)
 	check(not g.rig.showing and not demo.controls.engaged, "dismount respects release latch")

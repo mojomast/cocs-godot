@@ -44,6 +44,7 @@ func _init() -> void:
 	# Own the new helper even for existing out-of-tree acceptance fixtures.
 	add_child(guidance)
 	add_child(soccer_guidance)
+	add_child(audiovisual)
 
 func _ready() -> void:
 	var option_error := Practice.option_error(OS.get_cmdline_user_args())
@@ -69,7 +70,6 @@ func _ready() -> void:
 	if not world.load_map(map_id):
 		get_tree().quit(2)
 		return
-	add_child(audiovisual)
 	audiovisual.configure(self, world.camera, world.catalog.resolve_map(map_id), mode, endpoint)
 	world.camera.current = true
 	initial_camera = world.camera.transform
