@@ -2,61 +2,61 @@ TAP version 13
 # Subtest: Horde is default-ten-wave local-only and refuses unsupported or ignored controls
 ok 1 - Horde is default-ten-wave local-only and refuses unsupported or ignored controls
   ---
-  duration_ms: 2.212935
+  duration_ms: 2.095768
   type: 'test'
   ...
 # Subtest: existing viewer, combat setup and smoke routes stay compatible
 ok 2 - existing viewer, combat setup and smoke routes stay compatible
   ---
-  duration_ms: 0.21373
+  duration_ms: 0.249958
   type: 'test'
   ...
 # Subtest: each standalone map/mode reaches its actual scene and locked identity
 ok 3 - each standalone map/mode reaches its actual scene and locked identity
   ---
-  duration_ms: 1.107284
+  duration_ms: 1.084943
   type: 'test'
   ...
 # Subtest: standalone selection rejects substitutions, unsupported modes and ignored options
 ok 4 - standalone selection rejects substitutions, unsupported modes and ignored options
   ---
-  duration_ms: 0.679954
+  duration_ms: 0.639198
   type: 'test'
   ...
 # Subtest: sports round options preserve legal ordinary configuration without silent clamping
 ok 5 - sports round options preserve legal ordinary configuration without silent clamping
   ---
-  duration_ms: 0.53407
+  duration_ms: 0.45905
   type: 'test'
   ...
 # Subtest: dev menu route opens the main menu scene without authority; no-arg default stays the viewer
 ok 6 - dev menu route opens the main menu scene without authority; no-arg default stays the viewer
   ---
-  duration_ms: 0.255719
+  duration_ms: 0.239919
   type: 'test'
   ...
 # Subtest: world traversal and command board remain distinct native scenes
 ok 7 - world traversal and command board remain distinct native scenes
   ---
-  duration_ms: 0.177212
+  duration_ms: 0.166422
   type: 'test'
   ...
 # Subtest: identity-zones routes Domination on Vermilion Fold only
 ok 8 - identity-zones routes Domination on Vermilion Fold only
   ---
-  duration_ms: 0.331191
+  duration_ms: 0.30922
   type: 'test'
   ...
 # Subtest: dev launcher mirrors owned route bot and diagnostics bounds
 ok 9 - dev launcher mirrors owned route bot and diagnostics bounds
   ---
-  duration_ms: 0.334196
+  duration_ms: 0.310102
   type: 'test'
   ...
 # Subtest: LATTICE dev/package argv and native flags are equivalent and validate host/guest contracts
 ok 10 - LATTICE dev/package argv and native flags are equivalent and validate host/guest contracts
   ---
-  duration_ms: 1.95905
+  duration_ms: 1.9898
   type: 'test'
   ...
 1..10
@@ -67,4 +67,4 @@ ok 10 - LATTICE dev/package argv and native flags are equivalent and validate ho
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 43.703551
+# duration_ms 40.868162

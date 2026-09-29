@@ -17,10 +17,10 @@
         1
       ],
       "peer_id": 1,
-      "remote_poses": 132
+      "remote_poses": 135
     },
     {
-      "ack": 16,
+      "ack": 17,
       "actor_id": 1,
       "actors": 4,
       "both_moved": true,
@@ -29,7 +29,7 @@
         1
       ],
       "peer_id": 2,
-      "remote_poses": 132
+      "remote_poses": 135
     }
   ]
 }

@@ -1,0 +1,96 @@
+{
+  "port_commit": "22892e79a29fd7a0eea0544ead232e1fef11527d",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "scope": "One native client equipping a saved attachment on an owned authority; not human acceptance",
+  "checks": [
+    {
+      "name": "the panel opened on a source profile"
+    },
+    {
+      "name": "a saved attachment was confirmed by the source reply"
+    },
+    {
+      "name": "the catalog names the confirmed attachment"
+    },
+    {
+      "name": "the saved summary is labelled for the next match"
+    },
+    {
+      "name": "the saved summary names the confirmed attachment"
+    },
+    {
+      "name": "the current match actor was not rewritten by the saved write"
+    },
+    {
+      "name": "the authoritative next round started"
+    },
+    {
+      "name": "the next match actor carries the saved attachment"
+    },
+    {
+      "name": "the LOADOUT tab was captured"
+    },
+    {
+      "name": "compact viewport is the exact 760x520 logical size @150%"
+    },
+    {
+      "name": "Back stays inside the compact viewport"
+    },
+    {
+      "name": "the LOADOUT tab stays inside the compact viewport"
+    },
+    {
+      "name": "the saved loadout summary is visible in the compact first screen"
+    },
+    {
+      "name": "the named equipped slot detail is visible in the compact first screen"
+    },
+    {
+      "name": "the LOADOUT tab was captured at the compact size"
+    },
+    {
+      "name": "the client sent a GEAR write"
+    },
+    {
+      "name": "the source replied with an equipment progression frame"
+    },
+    {
+      "name": "the GEAR write carried a complete equipment map"
+    },
+    {
+      "name": "no ownership token serialized"
+    },
+    {
+      "name": "no native script/parse/render errors"
+    }
+  ],
+  "status": "PASS",
+  "display": ":3",
+  "port": 40781,
+  "endpoint": "ws://127.0.0.1:40781",
+  "equip": {
+    "id": "extended-mag",
+    "slot": "magazine"
+  },
+  "summary": "Saved for next match · Extended Magazine",
+  "cleanup": [
+    {
+      "name": "xvfb",
+      "exit_code": 0,
+      "signal": null
+    },
+    {
+      "name": "observer",
+      "exit_code": null,
+      "signal": "SIGTERM"
+    }
+  ],
+  "wire": {
+    "frames": 5729,
+    "gear_request_index": 13,
+    "progression_index": 12,
+    "sha256": "9480d1627cea559799d6cd9f88585ef55fb5a0fcce56ceaf0f4aefcb0db94403"
+  },
+  "expired": false
+}

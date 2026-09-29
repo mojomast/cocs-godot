@@ -2,43 +2,43 @@ TAP version 13
 # Subtest: default journey is unchanged and independent entries can select the same route twice
 ok 1 - default journey is unchanged and independent entries can select the same route twice
   ---
-  duration_ms: 1.416072
+  duration_ms: 1.418929
   type: 'test'
   ...
 # Subtest: itinerary rejects unbounded, debug, offline and private transport controls
 ok 2 - itinerary rejects unbounded, debug, offline and private transport controls
   ---
-  duration_ms: 0.609582
+  duration_ms: 0.600515
   type: 'test'
   ...
 # Subtest: dev: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
 ok 3 - dev: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
   ---
-  duration_ms: 411.988337
+  duration_ms: 403.025008
   type: 'test'
   ...
 # Subtest: package: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
 ok 4 - package: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
   ---
-  duration_ms: 401.033087
+  duration_ms: 403.119786
   type: 'test'
   ...
 # Subtest: explicit isolated preference path wins over development and platform defaults
 ok 5 - explicit isolated preference path wins over development and platform defaults
   ---
-  duration_ms: 0.686566
+  duration_ms: 0.616506
   type: 'test'
   ...
 # Subtest: development preferences live outside disposable route runtime directories
 ok 6 - development preferences live outside disposable route runtime directories
   ---
-  duration_ms: 0.100158
+  duration_ms: 0.09032
   type: 'test'
   ...
 # Subtest: installed preferences use native per-user config roots without depending on cwd
 ok 7 - installed preferences use native per-user config roots without depending on cwd
   ---
-  duration_ms: 0.188583
+  duration_ms: 0.174257
   type: 'test'
   ...
 1..7
@@ -49,4 +49,4 @@ ok 7 - installed preferences use native per-user config roots without depending 
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 850.325268
+# duration_ms 837.097683

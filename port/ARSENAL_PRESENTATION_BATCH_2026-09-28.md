@@ -86,7 +86,46 @@ confirmation is tracked against `683ead49`; later implementation is separate.
   source-confirmed Extended Magazine → next-match journey passed 18 checks. This
   uses a naturally eligible level-one attachment without a progression grant.
   The initial compact screenshot exposed insufficient visible content despite
-  passing tab/Back geometry checks; a focused layout follow-up is underway.
+   passing tab/Back geometry checks. The layout repair `e90d1e77` and evidence
+   `2a14331d` integrated as `1dc43358` / `22892e79`: pinned title/Back and concise
+   profile facts, wrapping tabs and equipped-slot-first details. The fresh native
+   journey passed **20 checks**, including visible saved-summary and named-slot
+   bounds at 760×520 @150%. Prior compact evidence remains in
+   `port/native-career/evidence/equipped-attempt-1/`.
 - The aggregate also registers source-backed saved-loadout rules, native
   model/UI/lobby checks and the rendered native journey, with a fresh isolated
-  output directory per invocation. Integrated verification remains pending.
+   output directory per invocation. Integrated verification remains pending.
+
+## Integrated verification
+
+Validation checkout: `/home/mojo/.tmp-on-disk/cocs-arsenal-verify-20260928`, runtime
+revision `22892e79`. Dependencies and generated probe inputs were reused from the
+previous validation checkout; a fresh pinned editor import passed without script
+errors. Aggregate runs explicitly select the combined source derivative.
+
+The repaired Horde upgrade fixture passed **22 harness + 38 native checks** on
+this integrated revision, including real engine key delivery, source settlement
+and retained offer/final captures. Two source input-TTL resets occurred before
+selection; the intent and accepted answer both carried epoch 3, with zero
+refusals or post-intent resets. Evidence:
+`port/native-shell/evidence/arsenal-2026-09-28/horde-upgrade-repair/`.
+
+The full serial aggregate passed **237/237 gates, zero unrun**, at
+`22892e79a29fd7a0eea0544ead232e1fef11527d`. It includes the 20-check native
+equipment/rematch journey against the combined derivative, fresh finish source
+capture plus material replay, shared product-shell journeys, the exact package
+catalog probes and the repaired Horde fixture. Canonical `port/reports/` outputs
+are refreshed; retained report:
+`port/native-shell/evidence/arsenal-2026-09-28/verification-237.json`, SHA-256
+`6ea437a0a2dd4ac10bdacfbefe93b8e19914a01dd67881702170bc47b90cceb0`.
+The integrated compact/full loadout captures and 20-check summary are retained
+beside it under `equipped-integrated-22892e79/`.
+
+Following the aggregate, serial **server tests passed 228/228** and **lint passed
+with zero errors, 916 warnings** at the same runtime revision. Logs are retained
+as `server.log` and `lint.log` beside the report. No runtime edits followed these
+checks; subsequent commits record documentation and evidence.
+
+Fresh hosted confirmation remains pending. No package acceptance or owner-run
+hardware/natural-play acceptance is implied by the local checks. The playable
+build/release hold remains in place.

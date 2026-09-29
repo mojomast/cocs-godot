@@ -63,7 +63,17 @@ the individual evidence records retain their original scope and results.
   and Leave, round-result/XP summaries and recent server history with owned-server
   persistence. Integrated source/native journeys passed, followed by **226/226
   aggregate gates**, **228/228 server tests** and lint with zero errors at
-  `5c519b5d`. See [the follow-up record](RECONNECT_CAREER_BATCH_2026-09-28.md).
+   `5c519b5d`. See [the follow-up record](RECONNECT_CAREER_BATCH_2026-09-28.md).
+- **Arsenal presentation integrated:** source-derived first-person finishes and
+  source-confirmed saved-loadout summaries in Career and connected match setup.
+  Integrated **237/237 native gates, zero unrun**, passed at `22892e79`, including
+  source/native journeys and compact-layout checks. Server tests passed
+  **228/228**, and lint passed with **zero errors**. See
+  [the presentation record](ARSENAL_PRESENTATION_BATCH_2026-09-28.md).
+- **Hosted confirmation update:** general CI passed at `683ead49`; native CI
+  reached 183 passing gates before the Horde upgrade fixture failed (42 gates
+  unrun). Its capture/input-order repair passed the focused integrated loopback;
+  a fresh hosted run remains required.
 - **NATIVE-05–06 acceptance remains open:** natural staged-campaign completion,
   extracted-package consolidation acceptance, fresh hosted confirmation and the
   unified release. Building/publishing remains on the user-directed hold.
@@ -294,10 +304,14 @@ visual port or a forced fixture result.
 
 ### NATIVE-06 — One release of record
 
-**User-directed hold:** add Career continuity, source-confirmed Arsenal equipment,
-and room discovery/text chat before building or publishing the next release.
-See [the expansion record](NATIVE_EXPANSION_2026-09-28.md). Implementation proceeds
-in parallel; integrated verification and eventual packaging remain serial.
+**User-directed hold:** Career continuity, source-confirmed Arsenal equipment,
+room discovery/chat and reconnect are integrated. The approved native finishes
+and equipped-loadout presentation batch passed integrated local verification;
+fresh hosted confirmation remains pending. See the
+[expansion record](NATIVE_EXPANSION_2026-09-28.md) and
+[presentation record](ARSENAL_PRESENTATION_BATCH_2026-09-28.md). Building and
+publishing await the user's release decision; resource-heavy verification and
+eventual packaging remain serial.
 
 **Implementation update, 2026-09-28:** extracted-artifact validation now binds
 source identity, launcher bytes and the re-derived runtime closure to the
@@ -336,12 +350,12 @@ small integration change; they do gate the claims that depend on them.
 
 Recommended order after the consolidation checkpoint:
 
-The user requested concurrent slices, so the first read-only Career/Arsenal
-increment is now integrated in parallel with the release work: Home catalog
-browsing and **F12 Settings → Career / Arsenal** in a live source session.
-Profiles remain unknown when disconnected; per-mode source totals are shown
-without inventing a personal match-history API. Cross-process identity
-persistence and source-validated equip/unlock remain the next Career increment.
+The user requested concurrent slices. Home catalog browsing and **F12 Settings →
+Career / Arsenal**, persistent identity, source-validated equipment, results and
+recent server history are integrated. Profiles remain unknown when disconnected;
+per-mode totals do not invent a personal match-history API. Room discovery, chat
+and explicit source-compatible reconnect are also integrated. The current
+presentation batch adds visible first-person finishes and saved-loadout summaries.
 
 1. **Native Career/Arsenal:** read-only source profile/history first, then
    source-validated equip/unlock interactions and results-to-career continuity.

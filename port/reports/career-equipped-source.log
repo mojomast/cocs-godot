@@ -1,0 +1,28 @@
+TAP version 13
+# Subtest: the saved loadout is source-normalized and only the next match applies it
+ok 1 - the saved loadout is source-normalized and only the next match applies it
+  ---
+  duration_ms: 18.784995
+  type: 'test'
+  ...
+# Subtest: the saved finish is a validated cosmetic with explicit null clearing
+ok 2 - the saved finish is a validated cosmetic with explicit null clearing
+  ---
+  duration_ms: 3.483739
+  type: 'test'
+  ...
+# Subtest: a low-level career refuses a level-gated finish and keeps explicit null stock
+ok 3 - a low-level career refuses a level-gated finish and keeps explicit null stock
+  ---
+  duration_ms: 1.155045
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 637.745112
