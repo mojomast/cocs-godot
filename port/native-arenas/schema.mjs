@@ -80,7 +80,7 @@ function mesh(surface, label, wall = false) {
 }
 
 const COLLIDER_KINDS = ['convex', 'triangles', 'box', 'cylinder', 'sphere', 'capsule'];
-const PICKUP_KINDS = ['health', 'armor', 'ammo', 'rocket', 'rail', 'scatter', 'plasma', 'grenade', 'shock', 'flak', 'marksman', 'smg', 'overcharge', 'haste', 'overshield', 'cloak'];
+const PICKUP_KINDS = ['health', 'armor', 'ammo', 'megahealth', 'rocket', 'rail', 'scatter', 'plasma', 'grenade', 'shock', 'flak', 'marksman', 'smg', 'overcharge', 'haste', 'overshield', 'cloak'];
 const IDENTITY_MODES = ['deathmatch', 'domination', 'horde'];
 const TEAM_KEYS = ['0', '1', 'red', 'blue', 'west', 'east'];
 const teamOf = key => ['0', 'red', 'west'].includes(key) ? 0 : 1;
@@ -131,13 +131,13 @@ function validateIdentityZones(zones, bounds, support, id, voidY) {
     if (!Number.isFinite(y) || y <= voidY) fail('objectiveZone lacks walkable support above void');
   }
 }
-function validateIdentityTeamSpawns(teamSpawns, bounds, support, voidY) {
-  keys(teamSpawns, TEAM_KEYS, 'teamSpawns');
+function validateIdentityTeamSpawns(teamSpawns, bounds, support, voidY, horde = false) {
+  keys(teamSpawns, horde ? ['0', '1'] : TEAM_KEYS, 'teamSpawns');
   const entries = Object.entries(teamSpawns);
   if (entries.length !== 2) fail('teamSpawns must name two teams');
   const covered = new Set();
   for (const [key, pool] of entries) {
-    list(pool, 2, 16, `teamSpawns.${key}`);
+    list(pool, horde ? (key === '0' ? 1 : 4) : 2, horde ? (key === '0' ? 4 : 32) : 16, `teamSpawns.${key}`);
     covered.add(teamOf(key));
     for (const spawn of pool) {
       list(spawn, 2, 2, `teamSpawns.${key} point`);
@@ -149,6 +149,23 @@ function validateIdentityTeamSpawns(teamSpawns, bounds, support, voidY) {
     }
   }
   if (covered.size !== 2) fail('teamSpawns must cover both teams');
+}
+
+// Nacre's reviewed Horde cache contract (native-horde/authority.mjs). These
+// gates are consumed only by that adapter, never by source Deathmatch. Keep
+// them in the canonical arena/hash, but reject unknown keys and invalid gates.
+function validateIdentityHordeCaches(arena) {
+  list(arena.hordeCaches, 1, 12, 'hordeCaches');
+  const seen = new Set();
+  let lastWave = 0;
+  for (const cache of arena.hordeCaches) {
+    keys(cache, ['pickupId', 'wave', 'zone'], 'horde cache');
+    if (!Number.isInteger(cache.pickupId) || cache.pickupId < 0 || cache.pickupId >= arena.pickups.length || seen.has(cache.pickupId)) fail('horde cache id');
+    if (!Number.isInteger(cache.wave) || cache.wave < 1 || cache.wave > 30 || cache.wave < lastWave) fail('horde cache wave');
+    if (typeof cache.zone !== 'string' || !/^[A-Za-z -]{1,48}$/.test(cache.zone)) fail('horde cache zone');
+    if (!['scatter', 'plasma', 'shock', 'rocket', 'flak'].includes(arena.pickups[cache.pickupId][0])) fail('horde cache weapon');
+    seen.add(cache.pickupId); lastWave = cache.wave;
+  }
 }
 
 /** Parse the generated envelope, not a source-map path or client map JSON.
@@ -297,9 +314,10 @@ export function parseIdentityArena(data, expectedId) {
     }
   }
   const a = data.arena;
+  const horde = data.id === 'nacre-engine' && data.mode === 'horde';
   keys(a, ['id', 'name', 'description', 'tag', 'color', 'background', 'bounds', 'minX', 'maxX', 'minZ', 'maxZ',
     'spawns', 'pickups', 'navNodes', 'blocks', 'terrain', 'voidY', 'ceilingY', 'raised', 'nextGen',
-    'teamSpawns', 'objectiveZones'], 'arena fields');
+    'teamSpawns', 'objectiveZones', ...(horde ? ['hordeCaches'] : [])], 'arena fields');
   if (a.id !== data.id || a.name !== data.name) fail('arena identity');
   for (const key of ['description', 'tag', 'color', 'background']) if (a[key] !== undefined) text(a[key], key, 512);
   keys(a.bounds, ['minX', 'maxX', 'minZ', 'maxZ'], 'bounds');
@@ -362,7 +380,8 @@ export function parseIdentityArena(data, expectedId) {
     for (const p of route.points) { keys(p, ['x', 'y', 'z'], 'route point'); point([p.x, p.y, p.z], 'route point'); xz(p.x, p.z, 'route point'); }
   }
   if (a.objectiveZones !== undefined) validateIdentityZones(a.objectiveZones, a.bounds, support, a.id, a.voidY);
-  if (a.teamSpawns !== undefined) validateIdentityTeamSpawns(a.teamSpawns, a.bounds, support, a.voidY);
+  if (a.teamSpawns !== undefined || horde) validateIdentityTeamSpawns(a.teamSpawns, a.bounds, support, a.voidY, horde);
+  if (horde) validateIdentityHordeCaches(a);
   validateColliderSources(data);
   validateProvenance(data);
   if (nativeArenaGeometryHash(a) !== data.geometryHash) fail('geometryHash does not match canonical arena');

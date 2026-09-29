@@ -3,7 +3,8 @@
 //   native   — the three original Prism Foundry / Aurora Basin / Cinder Array arenas
 //   identity — the three identity maps (Lacuna Court / Vermilion Fold / Nacre Engine)
 // The identity JSON envelope is a superset of the native one (mode/palette/art plus
-// optional objectiveZones/teamSpawns); `schema.mjs` validates each family strictly.
+// optional objectiveZones/teamSpawns and Nacre's Horde cache plan);
+// `schema.mjs` validates each family strictly before source construction.
 const nativeEntry = (id, name) => Object.freeze({id, name, family:'native',
   path:`godot/native_arenas/generated/${id}.json`});
 const identityEntry = (id, name) => Object.freeze({id, name, family:'identity',
