@@ -1,0 +1,27 @@
+{
+  "fixture": "CONTROLLED GRANT: awardOwned source progression reward, 200 credited frags; not natural play",
+  "transport": "real WebSocket protocol v3; source Room + ProgressionStore + Match",
+  "sourceLevel": 4,
+  "sourceGate": 4,
+  "profileSaved": "finish-ion",
+  "actors": [
+    {
+      "id": 0,
+      "weapon": 0,
+      "health": 100,
+      "finish": null
+    },
+    {
+      "id": 0,
+      "weapon": 0,
+      "health": 100,
+      "finish": null
+    },
+    {
+      "id": 0,
+      "weapon": 0,
+      "health": 100,
+      "finish": "finish-ion"
+    }
+  ]
+}

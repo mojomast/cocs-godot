@@ -2,6 +2,7 @@ extends Node
 ## Cosmetic only: isolated transparent world, source snapshots/events, no input/aim writes.
 const Catalog = preload("res://first_person/generated/catalog.gd")
 const Handling = preload("res://first_person/handling.gd")
+const Finish = preload("res://first_person/finish.gd")
 const MAX_SEEN := 4096
 var source_camera: Camera3D
 var viewport: SubViewport
@@ -60,6 +61,7 @@ var elbows: Dictionary = {}
 var ads_pose := Transform3D.IDENTITY
 var presentation: Dictionary = {}
 var handling := Handling.new()
+var finish := Finish.new()
 
 func attach_to(camera: Camera3D) -> void:
 	assert(is_inside_tree(), "Add the rig to the session before attach_to")
@@ -142,6 +144,7 @@ func apply_actor(actor: Dictionary, can_show: bool) -> void:
 		actor_id = next_id
 	if eligible and id != current_weapon: _select_weapon(id)
 	if showing and not eligible: _clear_motion()
+	finish.apply(actor.get("finish") if eligible else null)
 	showing = eligible
 	overlay.visible = eligible
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS if eligible else SubViewport.UPDATE_DISABLED
@@ -250,6 +253,7 @@ func _select_weapon(id: int) -> void:
 		for surface: int in node.mesh.get_surface_count():
 			var mat: Material = node.mesh.surface_get_material(surface)
 			if mat != null: node.set_surface_override_material(surface, mat.duplicate())
+	finish.bind(weapon)
 	for name: String in ["feed", "barrel-assembly", "shock-emitter", "flak-barrel", "bolt"]:
 		var part := weapon.find_child(name, true, false) as Node3D
 		if part != null:
@@ -384,6 +388,7 @@ func _clear_motion() -> void:
 
 func reset() -> void:
 	_clear_motion()
+	finish.clear()
 	showing = false
 	actor_id = -1
 	speed = 0.0
