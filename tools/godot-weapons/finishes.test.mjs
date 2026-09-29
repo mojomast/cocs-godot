@@ -7,8 +7,10 @@ import {Color} from 'three';
 
 test('generated native palette is source-derived and maps the Three.js material roles', async () => {
   const source = await readFile(new URL('../../game/cosmetics.mjs', import.meta.url));
+  const renderer = await readFile(new URL('../../game/view.mjs', import.meta.url));
   const native = await readFile(new URL('../../godot/first_person/generated/finishes.gd', import.meta.url), 'utf8');
   assert.match(native, new RegExp(createHash('sha256').update(source).digest('hex')));
+  assert.match(native, new RegExp(createHash('sha256').update(renderer).digest('hex')));
   const palette = JSON.parse(native.slice(native.indexOf('const PALETTES = ') + 17));
   assert.equal(Object.keys(palette).length, 6);
   for (const item of WEAPON_FINISHES) {

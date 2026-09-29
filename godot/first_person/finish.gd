@@ -36,10 +36,10 @@ func apply(value: Variant) -> void:
 			material.albedo_color = slot.base
 			if slot.role == "glow": material.emission = slot.emission
 		else:
-			# Three.js Color.set(hex) converts sRGB into linear for PBR; Godot's
-			# StandardMaterial3D stores linear albedo/emission. Keep the source
-			# conversion before the renderer's linear-to-display transfer.
-			var color := Color(palette[slot.role]).srgb_to_linear()
+			# Source hex is sRGB. StandardMaterial3D albedo/emission uniforms
+			# are tagged source_color: Godot converts this sRGB Color to linear
+			# for the shader, just as Three.js Color(hex) does on its side.
+			var color := Color(palette[slot.role])
 			material.albedo_color = color
 			if slot.role == "glow": material.emission = color
 		write_count += 1

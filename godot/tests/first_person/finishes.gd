@@ -19,14 +19,20 @@ func actor(id: int, weapon_id: int, finish_id: Variant) -> Dictionary:
 func matches(rig: Node, palette: Dictionary) -> bool:
 	for slot: Dictionary in rig.finish.slots:
 		var material: StandardMaterial3D = slot.material
-		var expected: Color = slot.base
+		var base: Color = slot.base
+		var expected: Color = base.srgb_to_linear()
 		if not palette.is_empty():
 			var source: Array = palette.linear[slot.role]
 			expected = Color(source[0],source[1],source[2])
-		if not material.albedo_color.is_equal_approx(expected): return false
+		if not material.albedo_color.srgb_to_linear().is_equal_approx(expected): return false
+		if palette.is_empty() and material.albedo_color != slot.base: return false
+		if not palette.is_empty() and not material.albedo_color.is_equal_approx(Color(palette[slot.role])): return false
 		if slot.role == "glow":
-			var emission: Color = expected if not palette.is_empty() else slot.emission
-			if not material.emission.is_equal_approx(emission): return false
+			var base_emission: Color = slot.emission
+			var emission_expected: Color = expected if not palette.is_empty() else base_emission.srgb_to_linear()
+			if not material.emission.srgb_to_linear().is_equal_approx(emission_expected): return false
+			if palette.is_empty() and material.emission != slot.emission: return false
+			if not palette.is_empty() and not material.emission.is_equal_approx(Color(palette.glow)): return false
 	return not rig.finish.slots.is_empty()
 
 func run() -> void:
