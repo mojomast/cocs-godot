@@ -71,8 +71,10 @@ func run() -> void:
 	var path := "user://settings_contract_%d/nested/local.json" % OS.get_process_id()
 	var clean: Dictionary = Store.normalize({"master_volume": 8, "mute": true,
 		"window_mode": "fullscreen", "mouse_sensitivity": 175, "ui_scale": 125, "wallet": 1000})
-	check(clean.size() == 5 and clean.master_volume == 8 and clean.mute and clean.ui_scale == 125,
-		"only device settings survive normalization")
+	check(clean.size() == Store.DEFAULTS.size() and not clean.has("wallet")
+		and clean.master_volume == 8 and clean.mute and clean.ui_scale == 125
+		and clean.music_enabled and not clean.announcer_enabled,
+		"only device settings survive normalization, including new opt-in audio preferences")
 	clean = Store.normalize({"master_volume": -300, "mouse_sensitivity": 9999,
 		"ui_scale": NAN, "mute": "true", "window_mode": "malicious"})
 	check(clean.master_volume == 0 and clean.mouse_sensitivity == 250 and clean.ui_scale == 100

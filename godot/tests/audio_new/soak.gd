@@ -34,7 +34,7 @@ func run() -> void:
 	assert(status.music.active_voices <= 19 and status.vehicle.voices <= 4 and status.motifs.active_voices <= 4)
 	assert(status.weather.particles <= 48 and status.weather.particle_limit == 48)
 	assert(status.music.loaded_streams == 73 and status.music.loaded_failures == 0)
-	var remembered := status.routing.remembered_events
+	var remembered: int = int(status.routing.remembered_events)
 	audio.start_round("room:42")
 	assert(audio.status().routing.remembered_events == remembered)
 	audio.apply_settings({"mute":true,"music_enabled":true,"announcer_enabled":true,"ambience_enabled":true})
@@ -43,4 +43,7 @@ func run() -> void:
 	audio.start_round("room:43")
 	assert(audio.status().routing.remembered_events == 0)
 	print("AUDIO_SOAK_OK ids=",remembered," streams=",status.music.loaded_streams)
+	audio.suspend("fixture_cleanup")
+	host.free()
+	await create_timer(0.25).timeout
 	quit(0)

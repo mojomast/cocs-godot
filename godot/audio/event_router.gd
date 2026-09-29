@@ -111,7 +111,7 @@ func consume(items: Array, actor: int = -1, team: Variant = null, ready: bool = 
 		# infer an old seat/team from a previous round or replay on recovery.
 		if not ready: continue
 		var kind := str(event.get("type", ""))
-		var local := actor >= 0 and event.get("actor") == actor
+		var local: bool = actor >= 0 and event.get("actor") == actor
 		if kind == "vehicle-damage":
 			# Event actor is the ATTACKER, not the rider. Match the snapshot seat.
 			if local_vehicle == null or event.get("vehicle") != local_vehicle: continue

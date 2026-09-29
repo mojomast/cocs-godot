@@ -73,8 +73,17 @@ func _ready() -> void:
 	_audio.stream = stream
 	_audio.bus = &"Ambience"
 	add_child(_audio)
-	_audio.play()
-	_playback = _audio.get_stream_playback() as AudioStreamGeneratorPlayback
+	_sync_audio_playback()
+
+func _sync_audio_playback() -> void:
+	# GeneratorPlayback.clear_buffer() rejects an active stream. Stopping it
+	# discards buffered weather on mute/disable/focus loss; resume fresh.
+	if _muted or not _enabled or not _focused:
+		if _audio.playing: _audio.stop()
+		_playback = null
+	elif not _audio.playing:
+		_audio.play()
+		_playback = _audio.get_stream_playback() as AudioStreamGeneratorPlayback
 
 ## Source arena metadata only. No synthesized geometry or map parameters.
 func bind(arena: Dictionary, camera: Camera3D, mode: String = "playing", seed: int = 1) -> void:
@@ -126,12 +135,11 @@ func apply_settings(settings: Dictionary) -> void:
 	var volume: Variant = settings.get("ambience_volume", _volume * 100.0)
 	if (volume is float or volume is int) and is_finite(float(volume)):
 		_volume = clampf(float(volume) / 100.0, 0.0, 1.0) * 0.25
-	if _muted and _playback != null: _playback.clear_buffer()
 	if not _enabled or _reduced or _quality <= 0.0:
 		_mesh.visible_instance_count = 0
 		_active_particles = 0
 		_flash.light_energy = 0.0
-	if not _enabled and _playback != null: _playback.clear_buffer()
+	_sync_audio_playback()
 	_refresh()
 
 func set_focus(focused: bool) -> void:
@@ -141,6 +149,7 @@ func set_focus(focused: bool) -> void:
 		_active_particles = 0
 		_flash.light_energy = 0.0
 		_thunder_until = -1.0
+	_sync_audio_playback()
 	_audio.volume_db = -80.0 if not focused or _muted or not _enabled else linear_to_db(maxf(_volume, 0.0001))
 
 ## Read weather/timeOfDay exclusively from the single-player snapshot object.

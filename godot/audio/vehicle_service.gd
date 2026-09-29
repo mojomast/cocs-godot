@@ -69,7 +69,7 @@ func apply_vehicle(vehicle: Dictionary, actor: Dictionary) -> void:
 	var vx := float(vehicle.get("vx", 0.0))
 	var vz := float(vehicle.get("vz", 0.0))
 	var speed := clampf(Vector2(vx, vz).length() / 20.0, 0.0, 1.0)
-	var boosting := vehicle.get("boosting", false) == true
+	var boosting: bool = vehicle.get("boosting", false) == true
 	if engine.stream != buffers[kind]: engine.stop(); engine.stream = buffers[kind]
 	engine.pitch_scale = clampf((1.0 + speed * 1.4) * (1.35 if boosting else 1.0), 0.5, 3.0)
 	engine.volume_db = linear_to_db(maxf(0.001, 0.25 + speed * 0.4))

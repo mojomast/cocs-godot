@@ -2,6 +2,9 @@ extends SceneTree
 const Settings = preload("res://ui/local_settings.gd")
 
 func _initialize() -> void:
+	call_deferred("run")
+
+func run() -> void:
 	var old := Settings.normalize({"master_volume":77,"mouse_sensitivity":120,"ui_scale":90,"mute":false})
 	assert(old.master_volume == 77 and old.music_enabled and old.ambience_enabled)
 	assert(not old.announcer_enabled, "opt-in recorded voice")

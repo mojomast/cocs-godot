@@ -37,4 +37,7 @@ func run() -> void:
 	lane.begin({"roundRevision":8}, "public-room")
 	assert(lane.service.status().routing.remembered_events == 0)
 	print("AUDIO_STANDALONE_LIFECYCLE_OK")
+	lane.service.suspend("fixture_cleanup")
+	host.free()
+	await create_timer(0.25).timeout
 	quit(0)

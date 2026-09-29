@@ -350,7 +350,7 @@ func response(kind: String) -> bool:
  if now - response_at < 250: return false
  response_at = now
  last_response = kind
- var pitch := {"capture":62,"loss":50,"accent":74,"final":69,"award":81}[kind]
+ var pitch: int = {"capture":62,"loss":50,"accent":74,"final":69,"award":81}[kind]
  _note("tubular-bells" if kind in ["capture", "award", "final"] else "low-brass", pitch, 0.65, 0.09, true)
  return true
 

@@ -4,7 +4,7 @@ extends Node
 const Service = preload("res://audio/av_service.gd")
 const SettingsAccess = preload("res://ui/settings_access.gd")
 var service
-var owner: Node
+var session_host: Node
 var eye: Camera3D
 var arena: Dictionary
 var mode := ""
@@ -13,7 +13,7 @@ var round_key := ""
 var started := false
 
 func configure(session: Node, camera: Camera3D, source_arena: Dictionary, match_mode: String, server: String) -> void:
-	owner = session
+	session_host = session
 	eye = camera
 	arena = source_arena
 	mode = match_mode
@@ -33,7 +33,7 @@ func begin(frame: Dictionary, room: String) -> void:
 	var key := "%s|%s|%s" % [endpoint, room, str(revision)]
 	if key != round_key:
 		round_key = key
-		service.bind_session(owner, eye, arena, mode, key, int(revision))
+		service.bind_session(session_host, eye, arena, mode, key, int(revision))
 	service.start_round(key)
 	started = true
 

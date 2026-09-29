@@ -18,6 +18,9 @@ var audiovisual_round := ""
 
 func av_ensure() -> void:
 	if is_instance_valid(audiovisual): return
+	# Detached protocol fixtures can receive a start callback before entering the
+	# tree. Child _ready (and its audio players) cannot run in that state.
+	if not is_inside_tree(): return
 	audiovisual = Audiovisual.new()
 	audiovisual.name = "NativeAudiovisual"
 	add_child(audiovisual)
@@ -29,6 +32,7 @@ func av_ensure() -> void:
 
 func av_start(frame: Dictionary) -> void:
 	av_ensure()
+	if not is_instance_valid(audiovisual): return
 	var revision: Variant = frame.get("roundRevision", client.resumed_revision)
 	if not (revision is int or revision is float): revision = round_starts
 	var key := "%s|%s|%s" % [endpoint, client.room_id, str(revision)]

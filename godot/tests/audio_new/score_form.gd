@@ -54,4 +54,5 @@ func run() -> void:
 	assert(score.status().active_voices == 0 and not score.announcer_player.playing, "mute drains active audio")
 	print("AUDIO_SCORE_FORM_OK samples=",score.samples.size()," bytes=",score.status().asset_bytes)
 	score.free()
+	await create_timer(0.25).timeout
 	quit(0)

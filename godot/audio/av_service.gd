@@ -182,7 +182,7 @@ func apply_events(events: Array) -> void:
 			var kind := str(value.get("type", ""))
 			if not kind in ["shot", "vehicle-shot", "launch", "explosion", "death", "melee", "near-rocket"]: continue
 			var position: Variant = value.get("from", value.get("pos"))
-			var near := value.get("actor") == actor_id
+			var near: bool = value.get("actor") == actor_id
 			var radius := 18.0 if kind == "near-rocket" else 34.0
 			if position is Dictionary and (position.get("x") is int or position.get("x") is float):
 				if (position.get("z") is int or position.get("z") is float) and (actor.get("x") is int or actor.get("x") is float) and (actor.get("z") is int or actor.get("z") is float):

@@ -2,6 +2,9 @@ extends SceneTree
 const Service = preload("res://audio/av_service.gd")
 
 func _initialize() -> void:
+	call_deferred("run")
+
+func run() -> void:
 	var host := Node3D.new()
 	root.add_child(host)
 	var eye := Camera3D.new()
@@ -35,4 +38,7 @@ func _initialize() -> void:
 	audio.apply_snapshot(state, 7)
 	assert(audio.status().current_scene == "results", "combat polling cannot override final music")
 	print("AUDIO_LIFECYCLE_OK")
+	audio.suspend("fixture_cleanup")
+	host.free()
+	await create_timer(0.25).timeout
 	quit()
