@@ -16,5 +16,7 @@ test('native verify job exports the frozen derivative to semantic export and ver
   assert.ok(jobEnv, 'expected a job-level environment shared by export and verification steps');
   assert.match(jobEnv, /^      COCS_SOURCE_DERIVATIVE: \$\{\{ github\.workspace \}\}\/port\/contracts\/lattice-catalog-derivative\.json$/m);
   assert.match(workflow, /^          node tools\/godot-export\/semantic\.mjs\b/m);
-  assert.match(workflow, /^          python3 tools\/godot-dev\/verify\.py\b/m);
+  assert.match(workflow, /^ {10,}python3 tools\/godot-dev\/verify\.py\b/m);
+  assert.match(workflow, /default: full\b/);
+  assert.match(workflow, /else\n +python3 tools\/godot-dev\/verify\.py\b/);
 });
