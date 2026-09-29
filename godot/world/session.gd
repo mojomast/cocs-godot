@@ -773,7 +773,7 @@ func _process(delta: float) -> void:
 	if queue_result != OK:
 		# The client polls the close in its own process turn. A transport drop
 		# must reach its bounded ticket path, not the fatal session-error path.
-		if client.peer.get_ready_state() != WebSocketPeer.STATE_OPEN: return
+		if lobby_enabled and client.was_open and not client.reconnect_ticket.token.is_empty() and client.peer.get_ready_state() != WebSocketPeer.STATE_OPEN: return
 		on_error("Input could not be queued. Relaunch to reconnect.")
 
 func _exit_tree() -> void:
