@@ -4,7 +4,8 @@
 
 1. Download `cocs-native-windows.zip` from the GitHub release.
 2. Right-click the ZIP → **Extract All**. Open the extracted `cocs-native-windows` folder.
-3. Double-click **Play.cmd** to open the **main menu** with bots.
+3. Double-click **Play.cmd** to open **Home**, choose a destination and options,
+   then press **Start**. Bot counts are selected per supported activity.
 4. Click inside the game window to engage the mouse and controls.
 
 **Graphics Showcase.cmd** opens the new map and effects menu (details below).
