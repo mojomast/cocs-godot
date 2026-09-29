@@ -144,6 +144,7 @@ func apply_snapshot(state: Dictionary, local_id: int, is_fresh: bool = true) -> 
 	_sync_weather_ownership()
 	var config: Variant = state.get("config")
 	if config is Dictionary and config.get("mode") is String: music.set_mode_theme(config.mode)
+	if focused and settings.get("mute", false) != true: music.start()
 	var alive := actor.get("health", 0) is int or actor.get("health", 0) is float
 	var hp := float(actor.get("health", 0)) if alive else 0.0
 	var max_hp := float(actor.get("maxHealth", 100))
@@ -170,7 +171,6 @@ func apply_snapshot(state: Dictionary, local_id: int, is_fresh: bool = true) -> 
 			if not music.response("final"): motifs.event_plan({"type":"sudden-death"})
 	if focused and settings.get("mute", false) != true:
 		suspension_reason = ""
-		music.start()
 
 func apply_events(events: Array) -> void:
 	# Source feedback.mjs intensity is a five-second presentation envelope.
