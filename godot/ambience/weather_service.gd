@@ -85,6 +85,11 @@ func _sync_audio_playback() -> void:
 		_audio.play()
 		_playback = _audio.get_stream_playback() as AudioStreamGeneratorPlayback
 
+func _exit_tree() -> void:
+	_audio.stop()
+	_playback = null
+	_audio.stream = null
+
 ## Source arena metadata only. No synthesized geometry or map parameters.
 func bind(arena: Dictionary, camera: Camera3D, mode: String = "playing", seed: int = 1) -> void:
 	_arena = arena.duplicate(true)

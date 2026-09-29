@@ -1,0 +1,82 @@
+gate-runner-tests: PASS
+playable-gate-registration: PASS
+verifier-report-tests: PASS
+ci-artifact-tests: PASS
+native-ci-contracts: PASS
+export-tests: PASS
+moth-export: PASS
+gltf-sides: PASS
+health-hud-evidence: PASS
+projectile-navigation: PASS
+objective-evidence: PASS
+objective-progression-evidence: PASS
+objective-completion-evidence: PASS
+launcher-options: PASS
+package-options: PASS
+product-shell-supervisor: PASS
+native-graphics-options: PASS
+native-graphics-ownership: PASS
+lobby-options: PASS
+lobby-ownership: PASS
+horde-closure: PASS
+native-arena-closure: PASS
+package-identity-routes: PASS
+native-arena-authority: PASS
+local-24-roster: PASS
+horde-ownership: PASS
+zone-routing: PASS
+combined-arms-evidence: PASS
+lattice-req-generator-tests: PASS
+lattice-req-catalog-check: PASS
+semantic-export: PASS
+source-inventory: PASS
+package-manifest-contracts: PASS
+career-catalog-check: PASS
+finish-catalog-check: PASS
+finish-source-palette: PASS
+career-source-contracts: PASS
+career-persistence: PASS
+career-history-storage: PASS
+career-results-source: PASS
+career-equipment-source: PASS
+career-equipped-source: PASS
+social-source: PASS
+source-tests: PASS
+arms-race-source: PASS
+horde-source: PASS
+cinderwake-source: PASS
+horde-upgrade-adapter: PASS
+horde-adapter: PASS
+horde-death-wire: PASS
+horde-input-oracle: PASS
+godot-import: PASS
+career-projection: PASS
+career-package-catalog: PASS
+career-identity-native: PASS
+career-equipment-native: PASS
+career-equipped-model: PASS
+career-equipped-ui: PASS
+career-player-flow-clarity-source: PASS
+career-player-flow-clarity-model: PASS
+career-player-flow-clarity-ui: PASS
+career-player-flow-clarity-journey: PASS
+career-equipped-lobby: PASS
+career-equipped-journey: PASS
+career-results-native: PASS
+career-history-native: PASS
+career-results-history-ui: PASS
+social-native: PASS
+reconnect-source-native: PASS
+reconnect-offline-results: PASS
+reconnect-menu: PASS
+career-modal: PASS
+cinderwake-native: PASS
+identity-horde-composition: FAIL
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+HORDE_IDENTITY_COMPOSITION checks=28 failures=0
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:804)
+

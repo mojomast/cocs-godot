@@ -12,14 +12,9 @@ const Audiovisual = preload("res://audio/av_service.gd")
 const VehicleShots = preload("res://vehicles/session_shots.gd")
 var vehicle_bridge := VehicleBridge.new()
 var vehicle_fleet: Node3D
-var vehicle_shots := VehicleShots.new()
+var vehicle_shots: Node3D
 var audiovisual
 var audiovisual_round := ""
-
-func _init() -> void:
-	# Own the effects node even when a session is inspected without entering a
-	# SceneTree (for example, lobby models and refused setup paths).
-	add_child(vehicle_shots)
 
 func av_ensure() -> void:
 	if is_instance_valid(audiovisual): return
@@ -67,8 +62,13 @@ func av_tick(delta: float) -> void:
 
 func bind_vehicle_shots() -> void:
 	if not is_inside_tree(): return
-	if not vehicle_shots.is_inside_tree(): add_child(vehicle_shots)
+	if not is_instance_valid(vehicle_shots):
+		vehicle_shots = VehicleShots.new()
+		add_child(vehicle_shots)
 	vehicle_shots.bind(client, vehicle_shots_allowed)
+
+func set_vehicle_shots_active(value: bool) -> void:
+	if is_instance_valid(vehicle_shots): vehicle_shots.set_active(value)
 
 func vehicle_shots_allowed() -> bool:
 	return phase == 3 and application_focused and not snapshot_watch.stale() and not SettingsAccess.overlay_open()
@@ -76,11 +76,11 @@ func vehicle_shots_allowed() -> bool:
 func clear_vehicles() -> void:
 	vehicle_bridge.reset()
 	if is_instance_valid(vehicle_fleet): vehicle_fleet.clear_round()
-	vehicle_shots.clear_round()
+	if is_instance_valid(vehicle_shots): vehicle_shots.clear_round()
 
 func observe_vehicles(value: Dictionary) -> void:
 	bind_vehicle_shots()
-	vehicle_shots.set_active(vehicle_shots_allowed())
+	set_vehicle_shots_active(vehicle_shots_allowed())
 	var changed := vehicle_bridge.observe(value, client.actor_id)
 	if changed:
 		release_pointer()
@@ -433,7 +433,7 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		if is_instance_valid(audiovisual): audiovisual.set_focus(false)
 		application_focused = false
-		vehicle_shots.set_active(false)
+		set_vehicle_shots_active(false)
 		local_motion.reset()
 		release_pointer()
 	elif what == NOTIFICATION_APPLICATION_FOCUS_IN:
@@ -508,7 +508,7 @@ func _ready() -> void:
 	client.snapshot.connect(on_snapshot)
 	client.results.connect(func(f: Dictionary) -> void:
 		if lobby_enabled and phase != 3: return
-		vehicle_shots.set_active(false)
+		set_vehicle_shots_active(false)
 		round_results += 1
 		presentation.apply_state(f.state, client.actor_id)
 		av_snapshot(f.state)
@@ -838,7 +838,7 @@ func _process(delta: float) -> void:
 		if snapshot_watch.stale() or not application_focused or SettingsAccess.overlay_open():
 			if audiovisual.fresh: audiovisual.suspend("settings_overlay" if SettingsAccess.overlay_open() else "stale_or_focus")
 		else: av_tick(delta)
-	if phase != 3 or not application_focused or SettingsAccess.overlay_open(): vehicle_shots.set_active(false)
+	if phase != 3 or not application_focused or SettingsAccess.overlay_open(): set_vehicle_shots_active(false)
 	if not advance_handshake(delta): return
 	weapon_selection.advance(delta, weapon_controls_active(), presentation.local_actor, client.last_ack)
 	combat_label.text = combat.text()
@@ -848,7 +848,7 @@ func _process(delta: float) -> void:
 		# Do not silently resume held controls when snapshots recover.
 		if not was_stale and snapshot_watch.stale(): release_pointer()
 		if snapshot_watch.stale():
-			vehicle_shots.set_active(false)
+			set_vehicle_shots_active(false)
 			combat_label.text = snapshot_watch.message()
 	elapsed += delta
 	if smoke and elapsed > 20:
