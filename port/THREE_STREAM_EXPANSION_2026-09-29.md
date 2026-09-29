@@ -1,5 +1,122 @@
 # Three-stream expansion and consolidated build
 
+## Final candidate: 156cd370
+
+Both platform packages are built from **`156cd37060b3935aa5a93459ce4de6b2710424ab`**.
+Its clean local run passed **273/273 native gates**, **228/228 server tests**, and
+lint with **zero errors / 916 warnings**. Exact reports and artifact manifests are
+under `native-consolidated/evidence/verified-156cd370/` and `packages-156cd370/`.
+
+This revision includes responsive Assault/Uplink HUD composition proven live at
+760×520/UI150 and 1280×800/UI100 in development. It also repairs the crew fixture's
+intermediate-waypoint orbit by waiting for neutral source ACK/velocity before
+turning, and entering the Puma whenever the actual source position is in range.
+Three-client gates passed at normal rendering, 10 FPS and 8 FPS. The 5 FPS camera
+correlation stress failure remains recorded under `native-vehicle-expansion/evidence/ci-repair/`.
+
+| Final candidate artifact | SHA-256 |
+| --- | --- |
+| `cocs-native-linux.tar.gz` | `3935146e7c90ed33424dea8daf11628acca2dca894d048f7c77f5da4ab51ef27` |
+| `cocs-native-windows.zip` | `ae69daa594a30b26324ed826145da1a067ceb2b7bfb52fefceb5019fc8b82f2f` |
+
+Fresh extracted acceptance passed **31 Linux launcher/runtime cases**, **six
+Horde product checks**, both manifest validations and **17 actual Windows
+headless cases** with all 148 packaged files verified. Actual release-PCK live
+Assault/Uplink captures passed strict bounds/non-overlap and direct visual review
+at **760×520/UI150** and **1280×800/UI100**. Package binary/PCK/manifest bytes
+remained unchanged. Final evidence is retained under `native-consolidated/evidence/`
+in `linux-package-156cd370/`, `windows-ci-156cd370/`, `compact-release-156cd370/`,
+`desktop-release-156cd370/`, and `release-layout-review-156cd370.json`.
+
+Hosted native: <https://github.com/mojomast/cocs-godot/actions/runs/36565120535>.
+This hosted run stopped in the three-renderer crew fixture during the driver's
+approach; local normal/10FPS/8FPS runs passed. The hosted log shows a large
+source-snapshot/input-processing gap and is retained under `ci-156cd370/`.
+A constrained-CPU fixture diagnosis is in progress; hosted green is not claimed.
+General: <https://github.com/mojomast/cocs-godot/actions/runs/36565120586>.
+Windows: <https://github.com/mojomast/cocs-godot/actions/runs/36567727776>.
+
+## Previous candidate: 8ba6371b
+
+`8ba6371b92658b44ccb6b28fd51f06309b037c78` adds the final Nacre DM adapter
+repair and source-legal player-flow outcome check. Its full rerun passed **273/273
+native gates**, **228/228 server tests**, and lint with **zero errors / 916 warnings**.
+Both fresh exports completed from clean checkouts at that exact revision.
+Evidence is in `native-consolidated/evidence/verified-8ba6371b/` and
+`native-consolidated/evidence/packages-8ba6371b/`. Hosted native and general
+runs are <https://github.com/mojomast/cocs-godot/actions/runs/36558651282> and
+<https://github.com/mojomast/cocs-godot/actions/runs/36558651274>.
+
+| Final artifact | SHA-256 |
+| --- | --- |
+| `cocs-native-linux.tar.gz` | `425f76d483d89db3b73ac2cbba77b6ac004117581b7a896830ec1bae5a36786a` |
+| `cocs-native-windows.zip` | `18ce3faba3b21afcba4f21b71141448df7a9adb44c9fbb19479442941e0d67e3` |
+
+Extracted Linux acceptance passed **31 launcher/runtime cases** and **six Horde
+product captures**, using an unrelated working directory and a Node-only PATH,
+without an editor, Git or npm. Both final manifest validations passed and package
+bytes stayed unchanged. Original compact screenshots showed joining rather than
+the live HUD, so a focused source-observed recapture is pending before those
+images can support live compact-HUD acceptance.
+
+The final Windows runner passed **17
+headless smoke/resource cases**, verified **148 files** against the manifest,
+and confirmed owned listener/process cleanup. Actual Nacre DM passed. Evidence:
+`native-consolidated/evidence/windows-ci-final/`. Windows:
+<https://github.com/mojomast/cocs-godot/actions/runs/36561065502>.
+
+- The first Windows candidate exposed strict DM schema rejection of the shipped
+  Nacre recipe's `hordeCaches` and source-supported `megahealth`. The bounded
+  adapter repair preserves the canonical recipe/hash and rejects unknown fields.
+  Actual native-arena tests passed 37/37; targeted Nacre DM/Horde checks passed
+  17/17, with actual DM combat/results/restart and separately scripted Horde
+  wave coverage. No authoritative source or generated recipe bytes changed.
+- The first hosted player-flow run ended legally in sudden death at 48.07 source
+  seconds. The fixture's unconditional 60-second assertion was wrong. The new
+  check correlates the accepted Career result with the exact terminal frame and
+  validates time, frag-limit or sudden-death conditions. The two-bot product
+  preset is unchanged. The focused corrected journey passed.
+- Exported acceptance now clicks LATTICE's real Connect/Start controls; these
+  routes intentionally wait for the host. Release Home/trace records can be
+  stdout-buffered until normal close, so the verifier observes windows and source
+  health live and checks the full required trace/readiness content after close.
+
+## Previous candidate verification (superseded artifacts)
+
+At **`79c7b8c74468d840277e44d5ec5f4024880e7a70`**, the full native aggregate
+passed **273/273 gates, zero unrun**. Server tests passed **228/228**; lint passed
+with **zero errors and 916 warnings**. Canonical logs are in `port/reports/`, with
+the exact final report, server/lint logs and SHA-256 manifest retained in
+`native-consolidated/evidence/verified-79c7b8c7/`. Earlier failures remain under
+`native-consolidated/evidence/attempt-*/` and `diagnostic-1/`.
+
+The passing full run includes the normal-rate objective and controlled-placement
+completion gates, three-native crew journey, source weather vectors, all audio
+lifecycle fixtures, older-mode regressions and complete player flows. Human
+acceptance and physical Windows/audio/control testing remain distinct.
+
+Both platform exports were produced from that exact verified revision, with
+clean build checkouts and identical generated-resource inventory hashes.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `cocs-native-linux.tar.gz` | `1e8eeac90c89a03e85bf038967fe9e27f3f68e86f3ed20a162100d7bfba7b941` |
+| `cocs-native-windows.zip` | `aa7b4e7266731acdde4f04fb10d9bfb62e316ab5dc3bda14d3cfb7f4890ce456` |
+
+Windows static commit-bound artifact validation passed. Extracted Linux startup
+acceptance is being completed with actual clicks for the intentionally manual
+LATTICE setup. Release resource probes passed: 13 scenes, 38 derived Moth
+textures, 101 source Moth planes, ten first-person weapons, 37 score samples,
+36 announcer takes/12 phrases and the delivered Moth bed.
+
+Hosted native CI: <https://github.com/mojomast/cocs-godot/actions/runs/36554919515>.
+Hosted general CI: <https://github.com/mojomast/cocs-godot/actions/runs/36554919531>.
+General CI passed; the first native CI run stopped on the player-flow ending
+assertion and its original log is retained in `native-consolidated/evidence/ci-79c7b8c7/`.
+The fixture correction and hosted rerun are pending. The actual Windows package
+is also exercising the existing Windows runner workflow:
+<https://github.com/mojomast/cocs-godot/actions/runs/36557214690>.
+
 The user authorized all three recommended additions and a final consolidated
 build on 2026-09-29. This supersedes the earlier **build hold**. Windows and Linux
 packages will be generated serially from one reviewed integration revision after

@@ -1,0 +1,6 @@
+PACKAGE_SERVER_READY {"pid":7400,"host":"127.0.0.1","port":62592,"experience":"native-dm","map":"cinder-array","mode":"deathmatch","health":{"service":"cocs-native-arenas","v":3,"localOnly":true,"humanCount":1,"mapId":"cinder-array","geometryHash":"f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca","port":62592}}
+PACKAGE_NATIVE_STARTED {"pid":6872,"scene":"res://native_arenas/demo.tscn"}
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+NATIVE_DM_SMOKE_OK {"acks":11,"actors":3,"camera":"public-actor","fired":true,"geometryHash":"f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca","localAlive":true,"map":"cinder-array","mode":"deathmatch","moved":true,"snapshots":28}
+PACKAGE_STOPPED

@@ -1,0 +1,11 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PACKAGE_MOTH_DERIVED_OK 38
+PACKAGE_HORDE_MAPS_OK {"maps":["cinderwake-drydock"]}
+PACKAGE_SOURCE_CATALOG_OK {"operators":9}
+PACKAGE_CAREER_OK 
+PACKAGE_AUDIO_OK {"announcer_phrases":12,"announcer_takes":36,"moth_beds":1,"music_samples":37}
+PACKAGE_AUTOLOAD_OK 
+PACKAGE_GRAPHICS_OK moth_planes=101 first_person_weapons=10
+PACKAGE_COMBAT_EXPANSION_OK native_arenas=3 combat_resources=4
+PACKAGE_INSPECT_OK {"assertion_ran":false,"debug":false,"editor":false,"horde_maps":["cinderwake-drydock"],"maps":["meridian-exchange","verdant-reliquary","ember-crucible","tidal-citadel","sunscar-convoy","asterion-relay","monsoon-foundry","ion-speedway","aurora-stadium"],"probes_in_pck":false,"scenes":13,"tests_in_pck":false}

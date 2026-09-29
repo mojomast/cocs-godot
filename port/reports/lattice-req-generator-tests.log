@@ -2,55 +2,55 @@ TAP version 13
 # Subtest: launched rows are mirrored with source cost/copy/modes/flags
 ok 1 - launched rows are mirrored with source cost/copy/modes/flags
   ---
-  duration_ms: 1.03537
+  duration_ms: 0.963406
   type: 'test'
   ...
 # Subtest: the imported and text source views agree field-for-field
 ok 2 - the imported and text source views agree field-for-field
   ---
-  duration_ms: 3.120909
+  duration_ms: 1.366731
   type: 'test'
   ...
 # Subtest: an unknown effect kind is refused instead of offered (fail-closed)
 ok 3 - an unknown effect kind is refused instead of offered (fail-closed)
   ---
-  duration_ms: 0.77337
+  duration_ms: 0.317224
   type: 'test'
   ...
 # Subtest: a launched row without a machine effect is refused
 ok 4 - a launched row without a machine effect is refused
   ---
-  duration_ms: 0.125375
+  duration_ms: 0.082885
   type: 'test'
   ...
 # Subtest: modes without a launch flag are refused (no pay-for-no-op)
 ok 5 - modes without a launch flag are refused (no pay-for-no-op)
   ---
-  duration_ms: 0.120446
+  duration_ms: 0.069871
   type: 'test'
   ...
 # Subtest: a launched row with empty modes is refused (never offered)
 ok 6 - a launched row with empty modes is refused (never offered)
   ---
-  duration_ms: 0.096441
+  duration_ms: 0.068078
   type: 'test'
   ...
 # Subtest: rendering is deterministic and keeps the generated markers
 ok 7 - rendering is deterministic and keeps the generated markers
   ---
-  duration_ms: 1.720244
+  duration_ms: 0.610173
   type: 'test'
   ...
 # Subtest: replaceBlock rewrites only the marked region
 ok 8 - replaceBlock rewrites only the marked region
   ---
-  duration_ms: 0.205555
+  duration_ms: 0.182662
   type: 'test'
   ...
 # Subtest: committed mirror is current, and a newly launched source row would be stale
 ok 9 - committed mirror is current, and a newly launched source row would be stale
   ---
-  duration_ms: 27.350257
+  duration_ms: 24.634837
   type: 'test'
   ...
 1..9
@@ -61,4 +61,4 @@ ok 9 - committed mirror is current, and a newly launched source row would be sta
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 74.417818
+# duration_ms 69.170494

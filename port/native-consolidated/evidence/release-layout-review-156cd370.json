@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "method": "Direct review of actual release-PCK post-draw live snapshots plus strict visible-region bounds/non-overlap",
+  "commit": "156cd37060b3935aa5a93459ce4de6b2710424ab",
+  "sizes": [
+    [
+      760,
+      520,
+      150
+    ],
+    [
+      1280,
+      800,
+      100
+    ]
+  ],
+  "modes": [
+    "assault/sunscar-convoy",
+    "uplink/meridian-exchange"
+  ],
+  "findings": "Objective/rule/time text, health/armor, weapon/ammo, controls and Settings remain visible in distinct regions; previous panel/quality-overlay overlap resolved."
+}

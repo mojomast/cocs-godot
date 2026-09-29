@@ -1,0 +1,34 @@
+verify	Import and verify native project	﻿2026-09-29T11:39:29.4237584Z ##[group]Run source "$RUNNER_TEMP/godot-native/environment.sh"
+verify	Import and verify native project	2026-09-29T11:39:29.4238617Z [36;1msource "$RUNNER_TEMP/godot-native/environment.sh"[0m
+verify	Import and verify native project	2026-09-29T11:39:29.4239431Z [36;1mexport VEHICLE_EVIDENCE_ROOT="$RUNNER_TEMP/godot-native/vehicle-evidence"[0m
+verify	Import and verify native project	2026-09-29T11:39:29.4240329Z [36;1mif [[ "vehicle-diagnostic" == "vehicle-diagnostic" ]]; then[0m
+verify	Import and verify native project	2026-09-29T11:39:29.4241578Z [36;1m  GUEST_NODE_MODULES="$PWD/node_modules" python3 port/native-vehicle-expansion/run.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"[0m
+verify	Import and verify native project	2026-09-29T11:39:29.4242664Z [36;1melse[0m
+verify	Import and verify native project	2026-09-29T11:39:29.4243290Z [36;1m  python3 tools/godot-dev/verify.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"[0m
+verify	Import and verify native project	2026-09-29T11:39:29.4244232Z [36;1mfi[0m
+verify	Import and verify native project	2026-09-29T11:39:29.4321909Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+verify	Import and verify native project	2026-09-29T11:39:29.4322478Z env:
+verify	Import and verify native project	2026-09-29T11:39:29.4322771Z   PORT: 0
+verify	Import and verify native project	2026-09-29T11:39:29.4323550Z   COCS_SOURCE_DERIVATIVE: /home/runner/work/cocs-godot/cocs-godot/port/contracts/lattice-catalog-derivative.json
+verify	Import and verify native project	2026-09-29T11:39:29.4324512Z ##[endgroup]
+verify	Import and verify native project	2026-09-29T11:39:29.4954126Z {
+verify	Import and verify native project	2026-09-29T11:39:29.4955115Z   "evidence": "/home/runner/work/_temp/godot-native/vehicle-evidence/ea8c8148-dc73-417f-a4ca-24787c13b490",
+verify	Import and verify native project	2026-09-29T11:39:29.4956465Z   "classification": "3 distinct native clients, real Room wire; no authority position writes",
+verify	Import and verify native project	2026-09-29T11:39:29.4957274Z   "stepsSeconds": {},
+verify	Import and verify native project	2026-09-29T11:39:29.4957645Z   "status": "FAIL",
+verify	Import and verify native project	2026-09-29T11:39:29.4958552Z   "error": "[Errno 2] No such file or directory: '/tmp/opencode/vehicle-native-vhwsid2v'",
+verify	Import and verify native project	2026-09-29T11:39:29.4959357Z   "ownedProcessesReaped": true,
+verify	Import and verify native project	2026-09-29T11:39:29.4959797Z   "elapsedSeconds": 0.02,
+verify	Import and verify native project	2026-09-29T11:39:29.4960224Z   "retainedFiles": {}
+verify	Import and verify native project	2026-09-29T11:39:29.4960569Z }
+verify	Import and verify native project	2026-09-29T11:39:29.9702082Z Traceback (most recent call last):
+verify	Import and verify native project	2026-09-29T11:39:29.9703198Z   File "/home/runner/work/cocs-godot/cocs-godot/port/native-vehicle-expansion/run.py", line 84, in <module>
+verify	Import and verify native project	2026-09-29T11:39:29.9704555Z     with tempfile.TemporaryDirectory(prefix='vehicle-native-',dir='/tmp/opencode') as tmp:
+verify	Import and verify native project	2026-09-29T11:39:29.9709313Z          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+verify	Import and verify native project	2026-09-29T11:39:29.9710142Z   File "/usr/lib/python3.12/tempfile.py", line 1021, in __init__
+verify	Import and verify native project	2026-09-29T11:39:29.9710853Z     self.name = mkdtemp(suffix, prefix, dir)
+verify	Import and verify native project	2026-09-29T11:39:29.9711411Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+verify	Import and verify native project	2026-09-29T11:39:29.9712078Z   File "/usr/lib/python3.12/tempfile.py", line 523, in mkdtemp
+verify	Import and verify native project	2026-09-29T11:39:29.9712683Z     _os.mkdir(file, 0o700)
+verify	Import and verify native project	2026-09-29T11:39:29.9713631Z FileNotFoundError: [Errno 2] No such file or directory: '/tmp/opencode/vehicle-native-vhwsid2v'
+verify	Import and verify native project	2026-09-29T11:39:29.9862653Z ##[error]Process completed with exit code 1.

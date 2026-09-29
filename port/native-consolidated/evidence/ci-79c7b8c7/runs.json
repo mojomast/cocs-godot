@@ -1,0 +1,12 @@
+{
+  "commit": "79c7b8c74468d840277e44d5ec5f4024880e7a70",
+  "native": {
+    "status": "failure",
+    "url": "https://github.com/mojomast/cocs-godot/actions/runs/36554919515",
+    "gate": "player-flow-journey"
+  },
+  "general": {
+    "status": "success",
+    "url": "https://github.com/mojomast/cocs-godot/actions/runs/36554919531"
+  }
+}

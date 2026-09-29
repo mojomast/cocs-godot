@@ -1,0 +1,4 @@
+PACKAGE_SERVER_READY {"pid":3176628,"host":"127.0.0.1","port":39687,"experience":"combat","map":"meridian-exchange","mode":"deathmatch","health":{"service":"token-arena-game-server","release":"v8.8","codename":"DESTINATIONS","commit":"unknown","buildId":"v8.8-unknown","protocol":3,"version":"v8.8","rooms":1,"players":0,"port":39687,"snapshot":{"deltaFrames":0,"fullFrames":0}}}
+PACKAGE_NATIVE_STARTED {"scene":"res://world/session.tscn"}
+PACKAGE_STOPPED
+Package launch failed: spawn /home/mojo/.tmp-on-disk/cocs-consolidated-evidence-20260929/linux-package-156cd370/cocs-package-play-jtx8q0i4/cocs-native-linux/cocs.x86_64 ENOENT

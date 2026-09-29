@@ -1,0 +1,183 @@
+verify	Import and verify native project	﻿2026-09-29T10:21:39.2049228Z ##[group]Run source "$RUNNER_TEMP/godot-native/environment.sh"
+verify	Import and verify native project	2026-09-29T10:21:39.2049644Z [36;1msource "$RUNNER_TEMP/godot-native/environment.sh"[0m
+verify	Import and verify native project	2026-09-29T10:21:39.2050025Z [36;1mpython3 tools/godot-dev/verify.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"[0m
+verify	Import and verify native project	2026-09-29T10:21:39.2106782Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+verify	Import and verify native project	2026-09-29T10:21:39.2107078Z env:
+verify	Import and verify native project	2026-09-29T10:21:39.2107235Z   PORT: 0
+verify	Import and verify native project	2026-09-29T10:21:39.2107606Z   COCS_SOURCE_DERIVATIVE: /home/runner/work/cocs-godot/cocs-godot/port/contracts/lattice-catalog-derivative.json
+verify	Import and verify native project	2026-09-29T10:21:39.2108015Z ##[endgroup]
+verify	Import and verify native project	2026-09-29T10:21:40.0892707Z gate-runner-tests: PASS
+verify	Import and verify native project	2026-09-29T10:21:40.1392071Z playable-gate-registration: PASS
+verify	Import and verify native project	2026-09-29T10:21:40.6039516Z verifier-report-tests: PASS
+verify	Import and verify native project	2026-09-29T10:21:40.6929296Z ci-artifact-tests: PASS
+verify	Import and verify native project	2026-09-29T10:21:52.3288070Z native-ci-contracts: PASS
+verify	Import and verify native project	2026-09-29T10:21:54.5765390Z export-tests: PASS
+verify	Import and verify native project	2026-09-29T10:21:55.2825372Z moth-export: PASS
+verify	Import and verify native project	2026-09-29T10:21:55.6693162Z gltf-sides: PASS
+verify	Import and verify native project	2026-09-29T10:21:57.8424798Z health-hud-evidence: PASS
+verify	Import and verify native project	2026-09-29T10:22:07.5150868Z projectile-navigation: PASS
+verify	Import and verify native project	2026-09-29T10:22:07.6064387Z objective-evidence: PASS
+verify	Import and verify native project	2026-09-29T10:22:08.8285182Z objective-progression-evidence: PASS
+verify	Import and verify native project	2026-09-29T10:22:14.2937595Z objective-completion-evidence: PASS
+verify	Import and verify native project	2026-09-29T10:22:14.3833911Z launcher-options: PASS
+verify	Import and verify native project	2026-09-29T10:22:14.4779368Z package-options: PASS
+verify	Import and verify native project	2026-09-29T10:22:16.0912294Z product-shell-supervisor: PASS
+verify	Import and verify native project	2026-09-29T10:22:16.1811469Z native-graphics-options: PASS
+verify	Import and verify native project	2026-09-29T10:22:21.9258836Z native-graphics-ownership: PASS
+verify	Import and verify native project	2026-09-29T10:22:22.0064452Z lobby-options: PASS
+verify	Import and verify native project	2026-09-29T10:22:22.4705302Z lobby-ownership: PASS
+verify	Import and verify native project	2026-09-29T10:22:24.2785098Z horde-closure: PASS
+verify	Import and verify native project	2026-09-29T10:22:25.0310963Z native-arena-closure: PASS
+verify	Import and verify native project	2026-09-29T10:22:25.1149235Z package-identity-routes: PASS
+verify	Import and verify native project	2026-09-29T10:22:47.3713216Z native-arena-authority: PASS
+verify	Import and verify native project	2026-09-29T10:22:51.4765447Z local-24-roster: PASS
+verify	Import and verify native project	2026-09-29T10:22:55.1185118Z horde-ownership: PASS
+verify	Import and verify native project	2026-09-29T10:23:12.7363948Z zone-routing: PASS
+verify	Import and verify native project	2026-09-29T10:23:13.7014198Z combined-arms-evidence: PASS
+verify	Import and verify native project	2026-09-29T10:23:13.8342775Z lattice-req-generator-tests: PASS
+verify	Import and verify native project	2026-09-29T10:23:13.8726258Z lattice-req-catalog-check: PASS
+verify	Import and verify native project	2026-09-29T10:23:15.1752893Z semantic-export: PASS
+verify	Import and verify native project	2026-09-29T10:23:16.6427918Z source-inventory: PASS
+verify	Import and verify native project	2026-09-29T10:23:20.7941381Z package-manifest-contracts: PASS
+verify	Import and verify native project	2026-09-29T10:23:20.8280852Z career-catalog-check: PASS
+verify	Import and verify native project	2026-09-29T10:23:20.8888679Z finish-catalog-check: PASS
+verify	Import and verify native project	2026-09-29T10:23:21.0003582Z finish-source-palette: PASS
+verify	Import and verify native project	2026-09-29T10:23:23.3704024Z career-source-contracts: PASS
+verify	Import and verify native project	2026-09-29T10:23:24.4728350Z career-persistence: PASS
+verify	Import and verify native project	2026-09-29T10:23:25.5725316Z career-history-storage: PASS
+verify	Import and verify native project	2026-09-29T10:23:27.1562491Z career-results-source: PASS
+verify	Import and verify native project	2026-09-29T10:23:28.2104032Z career-equipment-source: PASS
+verify	Import and verify native project	2026-09-29T10:23:29.2638191Z career-equipped-source: PASS
+verify	Import and verify native project	2026-09-29T10:23:31.1353789Z social-source: PASS
+verify	Import and verify native project	2026-09-29T10:23:35.9656906Z source-tests: PASS
+verify	Import and verify native project	2026-09-29T10:23:38.0892519Z arms-race-source: PASS
+verify	Import and verify native project	2026-09-29T10:24:29.6547395Z horde-source: PASS
+verify	Import and verify native project	2026-09-29T10:24:38.0189555Z cinderwake-source: PASS
+verify	Import and verify native project	2026-09-29T10:24:44.4313677Z horde-upgrade-adapter: PASS
+verify	Import and verify native project	2026-09-29T10:25:02.7360166Z horde-adapter: PASS
+verify	Import and verify native project	2026-09-29T10:25:02.8902179Z horde-death-wire: PASS
+verify	Import and verify native project	2026-09-29T10:25:02.9250646Z horde-input-oracle: PASS
+verify	Import and verify native project	2026-09-29T10:25:11.2010800Z godot-import: PASS
+verify	Import and verify native project	2026-09-29T10:25:11.6345999Z career-projection: PASS
+verify	Import and verify native project	2026-09-29T10:25:11.9713214Z career-package-catalog: PASS
+verify	Import and verify native project	2026-09-29T10:25:12.2938255Z career-identity-native: PASS
+verify	Import and verify native project	2026-09-29T10:25:13.0085903Z career-equipment-native: PASS
+verify	Import and verify native project	2026-09-29T10:25:13.3456956Z career-equipped-model: PASS
+verify	Import and verify native project	2026-09-29T10:25:13.7757778Z career-equipped-ui: PASS
+verify	Import and verify native project	2026-09-29T10:25:14.8305666Z career-player-flow-clarity-source: PASS
+verify	Import and verify native project	2026-09-29T10:25:15.1687176Z career-player-flow-clarity-model: PASS
+verify	Import and verify native project	2026-09-29T10:25:15.5986666Z career-player-flow-clarity-ui: PASS
+verify	Import and verify native project	2026-09-29T10:26:27.2388746Z career-player-flow-clarity-journey: PASS
+verify	Import and verify native project	2026-09-29T10:26:28.2391513Z career-equipped-lobby: PASS
+verify	Import and verify native project	2026-09-29T10:27:37.3633824Z career-equipped-journey: PASS
+verify	Import and verify native project	2026-09-29T10:27:38.4593943Z career-results-native: PASS
+verify	Import and verify native project	2026-09-29T10:27:38.7959011Z career-history-native: PASS
+verify	Import and verify native project	2026-09-29T10:27:39.2256519Z career-results-history-ui: PASS
+verify	Import and verify native project	2026-09-29T10:27:43.1885531Z social-native: PASS
+verify	Import and verify native project	2026-09-29T10:27:46.8066767Z reconnect-source-native: PASS
+verify	Import and verify native project	2026-09-29T10:27:48.5703791Z reconnect-offline-results: PASS
+verify	Import and verify native project	2026-09-29T10:27:48.9055892Z reconnect-menu: PASS
+verify	Import and verify native project	2026-09-29T10:27:49.9866458Z career-modal: PASS
+verify	Import and verify native project	2026-09-29T10:27:50.3228179Z cinderwake-native: PASS
+verify	Import and verify native project	2026-09-29T10:27:53.0824910Z identity-horde-composition: PASS
+verify	Import and verify native project	2026-09-29T10:27:53.4168346Z loadout-unit: PASS
+verify	Import and verify native project	2026-09-29T10:27:53.7521386Z loadout-source-parity: PASS
+verify	Import and verify native project	2026-09-29T10:27:54.0888599Z loadout-client: PASS
+verify	Import and verify native project	2026-09-29T10:27:54.8894114Z loadout-setup: PASS
+verify	Import and verify native project	2026-09-29T10:27:56.9910488Z loadout-lobby: PASS
+verify	Import and verify native project	2026-09-29T10:27:58.4452603Z loadout-session: PASS
+verify	Import and verify native project	2026-09-29T10:28:33.3646921Z loadout-loopback: PASS
+verify	Import and verify native project	2026-09-29T10:28:50.0440091Z loadout-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T10:28:53.0790997Z viewer-smoke: PASS
+verify	Import and verify native project	2026-09-29T10:28:55.0002678Z graphics-terrain: PASS
+verify	Import and verify native project	2026-09-29T10:28:55.3357687Z moth-resources: PASS
+verify	Import and verify native project	2026-09-29T10:28:58.4686988Z graphics-atmosphere: PASS
+verify	Import and verify native project	2026-09-29T10:28:58.8041786Z graphics-fx: PASS
+verify	Import and verify native project	2026-09-29T10:29:02.3977705Z moth-scenery: PASS
+verify	Import and verify native project	2026-09-29T10:29:02.7344472Z shader-lab: PASS
+verify	Import and verify native project	2026-09-29T10:29:03.6283049Z particle-lab: PASS
+verify	Import and verify native project	2026-09-29T10:29:08.8962760Z showcase-startup: PASS
+verify	Import and verify native project	2026-09-29T10:29:38.3330574Z aurora-traversal: PASS
+verify	Import and verify native project	2026-09-29T10:30:39.0083645Z cinder-traversal: PASS
+verify	Import and verify native project	2026-09-29T10:30:41.3938962Z exploration-walker: PASS
+verify	Import and verify native project	2026-09-29T10:30:41.8243137Z first-person-rig: PASS
+verify	Import and verify native project	2026-09-29T10:30:42.1609289Z first-person-finishes: PASS
+verify	Import and verify native project	2026-09-29T10:30:43.3994894Z finish-source-journey: PASS
+verify	Import and verify native project	2026-09-29T10:30:43.7382879Z finish-native-source-replay: PASS
+verify	Import and verify native project	2026-09-29T10:30:44.5268874Z first-person-binding: PASS
+verify	Import and verify native project	2026-09-29T10:30:44.9563242Z first-person-ads: PASS
+verify	Import and verify native project	2026-09-29T10:30:45.5730694Z first-person-recoil: PASS
+verify	Import and verify native project	2026-09-29T10:30:47.0002233Z combat-actions: PASS
+verify	Import and verify native project	2026-09-29T10:30:47.6192136Z combat-shields: PASS
+verify	Import and verify native project	2026-09-29T10:30:47.9588372Z combat-shield-capacity: PASS
+verify	Import and verify native project	2026-09-29T10:30:48.2963293Z combat-particles: PASS
+verify	Import and verify native project	2026-09-29T10:30:48.6342533Z combat-pickup-assets: PASS
+verify	Import and verify native project	2026-09-29T10:30:49.3436638Z weapon-effects: PASS
+verify	Import and verify native project	2026-09-29T10:30:49.7759520Z weapon-effects-rig: PASS
+verify	Import and verify native project	2026-09-29T10:30:50.2096579Z muzzle-sight-geometry: PASS
+verify	Import and verify native project	2026-09-29T10:30:50.6407253Z muzzle-path-geometry: PASS
+verify	Import and verify native project	2026-09-29T10:30:50.9786023Z projectile-flight: PASS
+verify	Import and verify native project	2026-09-29T10:30:51.3158963Z alt-fire: PASS
+verify	Import and verify native project	2026-09-29T10:30:52.0252397Z weapon-handling: PASS
+verify	Import and verify native project	2026-09-29T10:30:52.4564404Z weapon-detail: PASS
+verify	Import and verify native project	2026-09-29T10:30:53.1040173Z weapon-export: PASS
+verify	Import and verify native project	2026-09-29T10:30:53.1404322Z world-weapon-identity: PASS
+verify	Import and verify native project	2026-09-29T10:30:53.4778778Z player-fx-direction: PASS
+verify	Import and verify native project	2026-09-29T10:30:53.7221067Z player-fx-low-health: PASS
+verify	Import and verify native project	2026-09-29T10:30:53.9682110Z player-fx-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T10:30:54.4018635Z player-fx-marks: PASS
+verify	Import and verify native project	2026-09-29T10:30:54.8342777Z player-fx-impacts: PASS
+verify	Import and verify native project	2026-09-29T10:30:55.0784862Z player-fx-overlay: PASS
+verify	Import and verify native project	2026-09-29T10:30:55.9775917Z player-fx-integration: PASS
+verify	Import and verify native project	2026-09-29T10:30:57.0627544Z benchmark-contracts: PASS
+verify	Import and verify native project	2026-09-29T10:30:57.1465765Z benchmark-tools: PASS
+verify	Import and verify native project	2026-09-29T10:32:09.2167067Z benchmark-autostart: PASS
+verify	Import and verify native project	2026-09-29T10:32:09.5520312Z material-language: PASS
+verify	Import and verify native project	2026-09-29T10:32:10.0124029Z material-derived: PASS
+verify	Import and verify native project	2026-09-29T10:32:52.0839517Z identity-zone-route: PASS
+verify	Import and verify native project	2026-09-29T10:33:34.0447436Z debug-tools: PASS
+verify	Import and verify native project	2026-09-29T10:33:36.1529353Z debug-panel: PASS
+verify	Import and verify native project	2026-09-29T10:33:36.3960622Z mode-diagnostics: PASS
+verify	Import and verify native project	2026-09-29T10:33:45.7807832Z blood-live-harness: PASS
+verify	Import and verify native project	2026-09-29T10:34:12.8190906Z blood-live-native: PASS
+verify	Import and verify native project	2026-09-29T10:34:13.2173771Z route-parity: PASS
+verify	Import and verify native project	2026-09-29T10:34:14.2057900Z main-menu-smoke: PASS
+verify	Import and verify native project	2026-09-29T10:34:21.3322572Z main-menu-contracts: PASS
+verify	Import and verify native project	2026-09-29T10:34:22.5096136Z product-shell-settings: PASS
+verify	Import and verify native project	2026-09-29T10:36:33.0026417Z product-shell-journey: PASS
+verify	Import and verify native project	2026-09-29T10:37:30.0843637Z player-flow-journey: FAIL
+verify	Import and verify native project	2026-09-29T10:37:30.0850286Z PRODUCT_JOURNEY {"scope":"source-driven scripted UI lifecycle; not natural rounds/human acceptance","passed":false,"exit_code":0,"port_commit":"79c7b8c74468d840277e44d5ec5f4024880e7a70","source_commit":"515daf07589150dd3241f4ae1425cc1b093912f5","source_derivative_commit":"61fca35c65488502b794900cde0a5247bfb123bf","input_sha256":{"godot/tests/product_journey/driver.gd":"079f121987632d2efb5d9a1f5f4e6120c8acc425b0fa015a24532e0924bc8a1c","godot/ui/local_settings.gd":"70612db5b2bfef85b0c260ed45c5c286b120b15210d838aa18ab794921856406","godot/ui/main_menu.gd":"863921b2fdd6283dd622a9ea6f87f961736903388ab45e99098612e28d4d4dd2","godot/career/service.gd":"1684e379a205b87604adac87c2616c8b8057fcaaa561e2c799146589cd489d1c","godot/career/catalog.json":"18061952fac08bfb5f1d5316c6a9f6137968324a6742730691abe817253a92c8","godot/lattice/world_commands.gd":"ce7de99109aecbd3a598441f2336f3d347f5592c8ca37693267e2aa4dce52a85","tools/godot-dev/product_journey.mjs":"292a8ed5498861c1ec9a6d913b8d158ff9d3e11e20982d3ac034106812ffe274","tools/godot-dev/launch.mjs":"9450f7bf6f4335b6c7e5271b47ad56c819e43436a7efb1700b7173243ce542b2"},"itinerary":[{"route":"lobby","options":{}}],"cycles":1,"player_flow":true,"source_sessions":[],"deck_checks":[],"career_checks":[{"bounds":true,"has_profile":false,"route":"home"},{"bounds":true,"has_profile":false,"route":"home"}],"career_counts":{"home":2,"live":0,"expected_home":2,"expected_live":1,"passed":false},"captures":[],"owned_ports":[45951],"all_owned_ports_closed":true,"state":{"career_home_checks":2,"career_live_checks":0,"cycles":1,"expected_lobby_config":{"fragLimit":50,"mode":"deathmatch","timeLimit":60},"expected_volume":40,"itinerary":[{"options":{},"route":"lobby"}],"options":{},"player_flow":true,"route":"lobby","visits":1},"output":"/home/runner/work/cocs-godot/cocs-godot/.port-runtime/product-journeys/attempt-k4eYFn"}
+verify	Import and verify native project	2026-09-29T10:37:30.0855697Z Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+verify	Import and verify native project	2026-09-29T10:37:30.0856263Z WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+verify	Import and verify native project	2026-09-29T10:37:30.0856728Z      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+verify	Import and verify native project	2026-09-29T10:37:30.0857316Z OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+verify	Import and verify native project	2026-09-29T10:37:30.0857658Z 
+verify	Import and verify native project	2026-09-29T10:37:30.0857852Z MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+verify	Import and verify native project	2026-09-29T10:37:30.0858260Z PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+verify	Import and verify native project	2026-09-29T10:37:30.0858652Z PRODUCT_JOURNEY_HOME {"route":"lobby","visit":1,"volume":40}
+verify	Import and verify native project	2026-09-29T10:37:30.0859091Z MENU_ROUTE {"args":["--experience=lobby","--map=meridian-exchange","--mode=deathmatch"]}
+verify	Import and verify native project	2026-09-29T10:37:30.0859501Z Owned local server ready at ws://127.0.0.1:45951; lobby
+verify	Import and verify native project	2026-09-29T10:37:30.0859892Z Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+verify	Import and verify native project	2026-09-29T10:37:30.0860386Z WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+verify	Import and verify native project	2026-09-29T10:37:30.0860820Z      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+verify	Import and verify native project	2026-09-29T10:37:30.0861382Z OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+verify	Import and verify native project	2026-09-29T10:37:30.0861714Z 
+verify	Import and verify native project	2026-09-29T10:37:30.0862238Z ERROR: PRODUCT_JOURNEY player flow: accepted result reports a time-limit ending at 60 source seconds
+verify	Import and verify native project	2026-09-29T10:37:30.0862671Z    at: push_error (core/variant/variant_utility.cpp:1024)
+verify	Import and verify native project	2026-09-29T10:37:30.0862963Z    GDScript backtrace (most recent call first):
+verify	Import and verify native project	2026-09-29T10:37:30.0863289Z        [0] require_value (res://tests/product_journey/driver.gd:21)
+verify	Import and verify native project	2026-09-29T10:37:30.0863619Z        [1] flow_check (res://tests/product_journey/driver.gd:360)
+verify	Import and verify native project	2026-09-29T10:37:30.0863962Z        [2] player_flow_step (res://tests/product_journey/driver.gd:434)
+verify	Import and verify native project	2026-09-29T10:37:30.0864291Z        [3] flow_wait (res://tests/product_journey/driver.gd:370)
+verify	Import and verify native project	2026-09-29T10:37:30.0864806Z Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+verify	Import and verify native project	2026-09-29T10:37:30.0865292Z WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+verify	Import and verify native project	2026-09-29T10:37:30.0865717Z      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+verify	Import and verify native project	2026-09-29T10:37:30.0866272Z OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+verify	Import and verify native project	2026-09-29T10:37:30.0866606Z 
+verify	Import and verify native project	2026-09-29T10:37:30.0866793Z MENU_READY {"categories":5,"debug":false,"routes":23,"version":1}
+verify	Import and verify native project	2026-09-29T10:37:30.0867185Z PRODUCT_JOURNEY_CAREER {"bounds":true,"has_profile":false,"route":"home"}
+verify	Import and verify native project	2026-09-29T10:37:30.0868277Z PRODUCT_JOURNEY_COMPLETE {"career_home_checks":2,"career_live_checks":0.0,"cycles":1.0,"expected_lobby_config":{"fragLimit":50.0,"mode":"deathmatch","timeLimit":60.0},"expected_volume":40.0,"itinerary":[{"options":{},"route":"lobby"}],"options":{},"player_flow":true,"route":"lobby","visits":1.0}
+verify	Import and verify native project	2026-09-29T10:37:30.0869131Z MENU_QUIT
+verify	Import and verify native project	2026-09-29T10:37:30.0869223Z 
+verify	Import and verify native project	2026-09-29T10:37:30.0869229Z 
+verify	Import and verify native project	2026-09-29T10:37:30.0912627Z ##[error]Process completed with exit code 1.

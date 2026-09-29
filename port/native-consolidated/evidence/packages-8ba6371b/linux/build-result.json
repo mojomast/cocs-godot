@@ -1,0 +1,9 @@
+{
+  "archive": "/home/mojo/.tmp-on-disk/cocs-consolidated-package-20260929-final/builds/1790680706292276384/cocs-native-linux.tar.gz",
+  "archive_sha256": "425f76d483d89db3b73ac2cbba77b6ac004117581b7a896830ec1bae5a36786a",
+  "build": "/home/mojo/.tmp-on-disk/cocs-consolidated-package-20260929-final/builds/1790680706292276384",
+  "generated_resources_sha256": "ce7ccf248788bd9c1342093036f106b0bc8734118dc0f691aa83e686a83cd198",
+  "inputs_sha256": "799629821aada7d7790f6a9b2efab4b7c2468cc0a0ec0e9fed534334045f6d00",
+  "manifest_sha256": "4e08717f9f114e45e77d54d8d173f498c292ec3fb23bd4e12d93af58c665dbb4",
+  "package": "/home/mojo/.tmp-on-disk/cocs-consolidated-package-20260929-final/builds/1790680706292276384/cocs-native-linux"
+}

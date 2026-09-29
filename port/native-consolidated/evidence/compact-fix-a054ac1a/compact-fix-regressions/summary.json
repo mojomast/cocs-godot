@@ -1,0 +1,52 @@
+[
+  {
+    "case": "game-hud",
+    "passed": true,
+    "exit": 0
+  },
+  {
+    "case": "game-hud-setup",
+    "passed": true,
+    "exit": 0
+  },
+  {
+    "case": "game-hud-debug",
+    "passed": true,
+    "exit": 0
+  },
+  {
+    "case": "scoreboard",
+    "passed": true,
+    "exit": 0
+  },
+  {
+    "case": "scoreboard-session",
+    "passed": true,
+    "exit": 0
+  },
+  {
+    "case": "objective-scoreboard",
+    "passed": true,
+    "exit": 0
+  },
+  {
+    "case": "objective-input-timing",
+    "passed": true,
+    "exit": 0
+  },
+  {
+    "case": "zone-modes",
+    "passed": true,
+    "exit": 0
+  },
+  {
+    "case": "zone-variants",
+    "passed": true,
+    "exit": 0
+  },
+  {
+    "case": "assault-state",
+    "passed": true,
+    "exit": 0
+  }
+]

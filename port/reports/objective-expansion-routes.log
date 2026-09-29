@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: source contract still supplies sequential six-second Assault with both drain rates
+ok 1 - source contract still supplies sequential six-second Assault with both drain rates
+  ---
+  duration_ms: 1.692421
+  type: 'test'
+  ...
+# Subtest: native composition consumes authority and preserves vehicle support
+ok 2 - native composition consumes authority and preserves vehicle support
+  ---
+  duration_ms: 0.289432
+  type: 'test'
+  ...
+# Subtest: projection requires wire fields without requiring contested or advancing local capture
+ok 3 - projection requires wire fields without requiring contested or advancing local capture
+  ---
+  duration_ms: 0.236283
+  type: 'test'
+  ...
+# Subtest: Combined Arms host and genuine external guest preserve one locked identity and owner
+ok 4 - Combined Arms host and genuine external guest preserve one locked identity and owner
+  ---
+  duration_ms: 1.712048
+  type: 'test'
+  ...
+# Subtest: Combined Arms guest rejects host settings and other routes reject its host/guest controls
+ok 5 - Combined Arms guest rejects host settings and other routes reject its host/guest controls
+  ---
+  duration_ms: 0.518652
+  type: 'test'
+  ...
+# Subtest: five locked objective pairs keep separate source-backed scenes and host options
+ok 6 - five locked objective pairs keep separate source-backed scenes and host options
+  ---
+  duration_ms: 2.473985
+  type: 'test'
+  ...
+# Subtest: objective aliases, wrong maps and out-of-range host config fail before scene launch
+ok 7 - objective aliases, wrong maps and out-of-range host config fail before scene launch
+  ---
+  duration_ms: 1.696078
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 36.91774

@@ -1,0 +1,86 @@
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	﻿2026-09-29T10:43:26.8325414Z ##[group]Run & "$env:DEMO_ROOT\node.exe" tools/godot-package/verify_windows.mjs "$env:DEMO_ROOT" "$env:RUNNER_TEMP\windows-evidence"
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:43:26.8326458Z [36;1m& "$env:DEMO_ROOT\node.exe" tools/godot-package/verify_windows.mjs "$env:DEMO_ROOT" "$env:RUNNER_TEMP\windows-evidence"[0m
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:43:26.8327107Z [36;1mif ($LASTEXITCODE -ne 0) { throw 'Native Windows smoke failed' }[0m
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:43:26.8401248Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:43:26.8401600Z env:
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:43:26.8401871Z   DEMO_ROOT: D:\a\_temp\fresh Windows demo\cocs-native-windows
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:43:26.8402205Z ##[endgroup]
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0951472Z {
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0951995Z   "platform": "win32",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0952427Z   "status": "failed",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0952771Z   "cases": [
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0953053Z     {
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0953351Z       "map": "meridian-exchange",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0953764Z       "passed": true,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0954559Z       "port": 49604,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0954946Z       "native_pid": 4940,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0955269Z       "cleanup": true
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0955561Z     },
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0955729Z     {
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0955913Z       "map": "verdant-reliquary",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0956170Z       "passed": true,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0956373Z       "port": 49609,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0956567Z       "native_pid": 1052,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0956780Z       "cleanup": true
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0956964Z     },
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0957114Z     {
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0957290Z       "map": "ember-crucible",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0957510Z       "passed": true,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0957693Z       "port": 49618,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0957882Z       "native_pid": 5732,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0958397Z       "cleanup": true
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0958571Z     },
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0958718Z     {
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0958884Z       "experience": "native-dm",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0959535Z       "map": "prism-foundry",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0959775Z       "passed": true,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0959958Z       "port": 49622,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0960142Z       "native_pid": 2664,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0960337Z       "cleanup": true
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0960510Z     },
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0960675Z     {
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0960892Z       "experience": "native-dm",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0961118Z       "map": "aurora-basin",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0961324Z       "passed": true,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0961502Z       "port": 49632,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0961691Z       "native_pid": 4904,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0961883Z       "cleanup": true
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0962058Z     },
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0962207Z     {
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0962370Z       "experience": "native-dm",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0962597Z       "map": "cinder-array",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0962799Z       "passed": true,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0962979Z       "port": 49636,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0963159Z       "native_pid": 8696,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0963354Z       "cleanup": true
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0963550Z     },
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0963703Z     {
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0963872Z       "experience": "native-dm",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0964094Z       "map": "lacuna-court",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0964295Z       "passed": true,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0964471Z       "port": 49642,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0964650Z       "native_pid": 3888,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0964847Z       "cleanup": true
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0965020Z     },
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0965169Z     {
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0965330Z       "experience": "native-dm",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0965558Z       "map": "vermilion-fold",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0965766Z       "passed": true,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0965944Z       "port": 49651,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0966127Z       "native_pid": 9980,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0966320Z       "cleanup": true
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0966489Z     }
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0966631Z   ],
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0966784Z   "graphical": false,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0967129Z   "manifest_sha256": "ad23a21d9931527c1ae51223a062587e392d04355deb7a8333fc1c29a3b34b2e",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0969957Z   "port_commit": "79c7b8c74468d840277e44d5ec5f4024880e7a70",
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0970273Z   "files_verified": 148,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0970490Z   "preview_load": true,
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0975657Z   "error": "Error: Command failed: C:\\Windows\\system32\\cmd.exe /d /s /c \"\"D:\\a\\_temp\\fresh Windows demo\\cocs-native-windows\\Native Deathmatch.cmd\" --experience=native-dm --map=nacre-engine --smoke\"\nPackage launch failed: Invalid native arena: arena fields\n\n    at genericNodeError (node:internal/errors:983:15)\n    at wrappedFn (node:internal/errors:537:14)\n    at ChildProcess.exithandler (node:child_process:417:12)\n    at ChildProcess.emit (node:events:519:28)\n    at maybeClose (node:internal/child_process:1101:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:304:5)"
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.0978013Z }
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.3242426Z [31;1mException: [0mD:\a\_temp\e86cfe72-ca09-4047-9a4d-55a6e7742e49.ps1:3[0m
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.3244138Z [31;1m[0m[36;1mLine |[0m
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.3244953Z [31;1m[0m[36;1m[36;1m   3 | [0m if ($LASTEXITCODE -ne 0) { [36;1mthrow 'Native Windows smoke failed'[0m }[0m
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.3246178Z [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.3246823Z [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mNative Windows smoke failed[0m
+windows-smoke	Bundled runtimes, three combat maps, five graphics routes and cleanup	2026-09-29T10:44:12.3478083Z ##[error]Process completed with exit code 1.

@@ -2,61 +2,61 @@ TAP version 13
 # Subtest: a complete, controlled run validates
 ok 1 - a complete, controlled run validates
   ---
-  duration_ms: 0.809537
+  duration_ms: 0.633517
   type: 'test'
   ...
 # Subtest: control time is bounded by the measured window, not the whole plan
 ok 2 - control time is bounded by the measured window, not the whole plan
   ---
-  duration_ms: 0.963947
+  duration_ms: 0.694932
   type: 'test'
   ...
 # Subtest: missing or dishonest fields are rejected
 ok 3 - missing or dishonest fields are rejected
   ---
-  duration_ms: 0.178875
+  duration_ms: 0.166562
   type: 'test'
   ...
 # Subtest: a software result must carry the hardware caveat
 ok 4 - a software result must carry the hardware caveat
   ---
-  duration_ms: 0.0857
+  duration_ms: 0.083987
   type: 'test'
   ...
 # Subtest: an unknown renderer class is neither software nor hardware
 ok 5 - an unknown renderer class is neither software nor hardware
   ---
-  duration_ms: 0.10695
+  duration_ms: 0.057969
   type: 'test'
   ...
 # Subtest: console output is parsed from the last BENCHMARK_RESULT line
 ok 6 - console output is parsed from the last BENCHMARK_RESULT line
   ---
-  duration_ms: 0.30417
+  duration_ms: 0.271419
   type: 'test'
   ...
 # Subtest: the arming audit separates an autostarted run from a parked setup screen
 ok 7 - the arming audit separates an autostarted run from a parked setup screen
   ---
-  duration_ms: 0.185518
+  duration_ms: 0.185978
   type: 'test'
   ...
 # Subtest: lineSummary names resolution, quality and renderer class
 ok 8 - lineSummary names resolution, quality and renderer class
   ---
-  duration_ms: 0.105187
+  duration_ms: 0.094607
   type: 'test'
   ...
 # Subtest: comparison refuses mismatched compositions
 ok 9 - comparison refuses mismatched compositions
   ---
-  duration_ms: 0.482815
+  duration_ms: 0.423102
   type: 'test'
   ...
 # Subtest: a level change that does not slow the frame down is reported as not slower
 ok 10 - a level change that does not slow the frame down is reported as not slower
   ---
-  duration_ms: 0.21884
+  duration_ms: 0.20823
   type: 'test'
   ...
 1..10
@@ -67,4 +67,4 @@ ok 10 - a level change that does not slow the frame down is reported as not slow
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 68.036247
+# duration_ms 37.031874

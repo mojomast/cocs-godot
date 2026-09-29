@@ -24,16 +24,24 @@ campaign is not the new design specification; the draft handoff is inactive.
 The owner authorized completing the three recommended feature streams and then
 building one Windows/Linux product. Current implementation and acceptance are
 tracked in [the expansion record](THREE_STREAM_EXPANSION_2026-09-29.md).
+Final integration `156cd370` passed **273/273 native gates**, **228/228 server
+tests**, and lint with **zero errors / 916 warnings**. Both exports use this
+revision. Extracted Linux acceptance passed **31 launcher/runtime cases** plus
+**six Horde product captures**; actual Windows passed **17 headless smoke/resource
+cases** and verified **148 files**. Actual exported Assault/Uplink live captures
+passed strict bounds/non-overlap and visual review at **760×520/UI150** and
+**1280×800/UI100**. The earlier joining captures and failed live layout evidence
+remain preserved alongside the corrected final release evidence.
 The older dated tables below remain historical evidence, including their
 then-current preview limitations.
 
 | Stream | Integrated implementation | Current verification |
 | --- | --- | --- |
 | Player-flow polish | Compact Career state/XP clarity, navigation/focus, explicit Retry and next-match loadout flow | Captured source flow 24 checks; compact pending/unknown/confirmed/results journey 34 checks; failures retained |
-| Objective expansion | Uplink, Holdout and Assault, source-aware ranking and generated launch routes | All eight pairs passed normal-rate Room timeout/results/rematch; controlled-placement completion passed for each mode; 53 Node checks and four Godot fixtures passed; final post-audio composition pending aggregate |
-| Vehicle expansion | Five chassis, source driver/gunner/passenger controls, visible crew, shared vehicle bridge and Combined Arms guest composition | Two three-native-client natural-entry Puma journeys passed: 27.842 m driving, 84 gunner volleys, passenger fire, one brake edge; five-kind/seat and Hornet coverage separately arranged; post-audio aggregate pending |
+| Objective expansion | Uplink, Holdout and Assault, source-aware ranking and generated launch routes | All eight pairs passed normal-rate Room timeout/results/rematch; controlled-placement completion passed for each mode; integrated 273-gate suite passed |
+| Vehicle expansion | Five chassis, source driver/gunner/passenger controls, visible crew, shared vehicle bridge and Combined Arms guest composition | Three-native-client natural-entry Puma journeys and final integrated crew gate passed; five-kind/seat and Hornet coverage separately arranged |
 | Audio/weather | Native score, existing announcer takes, event/vehicle cues, ambience/weather and lifecycle/settings integration | Ten native fixtures plus legacy regressions passed; ALSA-null native PCM and distinct seeded output captured; same-state weather render passed; human listening/hardware/Windows unclaimed |
-| Consolidated packages | Commit-bound inputs, audio/resource probes and expanded extracted destination startup cases | Windows/Linux builds pending final integrated checks |
+| Consolidated packages | Commit-bound inputs, audio/resource probes and expanded extracted destination startup cases | Both exports built at `156cd370`; Linux 31 runtime/launcher + six Horde cases, Windows 17 headless cases, and compact/desktop live-HUD release captures passed |
 
 ### Graphics expansion — September 22, 2026
 

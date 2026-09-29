@@ -1,0 +1,25 @@
+{
+  "commit": "a054ac1a",
+  "scope": "Development source scenes with Godot 4.5.2 against unchanged ordinary packaged authority; not rebuilt release-PCK acceptance",
+  "reviewed_directly": [
+    "compact-fix-a054ac1a-compact-2/assault-live.png",
+    "compact-fix-a054ac1a-compact-2/uplink-live.png",
+    "compact-fix-a054ac1a-desktop-2/assault-live.png",
+    "compact-fix-a054ac1a-desktop-2/uplink-live.png"
+  ],
+  "sizes": [[760, 520, 150], [1280, 800, 100]],
+  "live_capture_passed": true,
+  "strict_region_geometry_passed": true,
+  "visual_review_passed": true,
+  "findings": [
+    "Assault source role, team assignment, sector/progress, capture/drain rules and remaining clock are legible",
+    "Uplink source team score, clock, relay/completed/banked status, hill progress and capture guidance are legible",
+    "Health, armor, weapon and ammo are visible in separate panels",
+    "No quality startup overlay overprinting objectives",
+    "Controls fit above the single visible F12 Settings/Leave hint",
+    "Desktop retains full-size vitals and expanded controls including weapon-switch help"
+  ],
+  "regressions": "10 focused Godot cases passed in compact-fix-regressions/summary.json; 7 Node routing/Assault composition tests passed",
+  "preserved_failed_evidence": true,
+  "next_release_gate": "Rebuild both packages from integrated final commit; run compact_verify.py --strict-layout on new Linux package at both sizes"
+}

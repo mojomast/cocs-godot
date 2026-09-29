@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: arranged source completion uplink/meridian-exchange (controlled fixture placement)
+ok 1 - arranged source completion uplink/meridian-exchange (controlled fixture placement)
+  ---
+  duration_ms: 92.199378
+  type: 'test'
+  ...
+# Subtest: arranged source completion holdout/meridian-exchange (controlled fixture placement)
+ok 2 - arranged source completion holdout/meridian-exchange (controlled fixture placement)
+  ---
+  duration_ms: 19.462094
+  type: 'test'
+  ...
+# Subtest: arranged source completion uplink/verdant-reliquary (controlled fixture placement)
+ok 3 - arranged source completion uplink/verdant-reliquary (controlled fixture placement)
+  ---
+  duration_ms: 67.12671
+  type: 'test'
+  ...
+# Subtest: arranged source completion holdout/verdant-reliquary (controlled fixture placement)
+ok 4 - arranged source completion holdout/verdant-reliquary (controlled fixture placement)
+  ---
+  duration_ms: 20.533362
+  type: 'test'
+  ...
+# Subtest: arranged source completion uplink/ember-crucible (controlled fixture placement)
+ok 5 - arranged source completion uplink/ember-crucible (controlled fixture placement)
+  ---
+  duration_ms: 73.320425
+  type: 'test'
+  ...
+# Subtest: arranged source completion holdout/ember-crucible (controlled fixture placement)
+ok 6 - arranged source completion holdout/ember-crucible (controlled fixture placement)
+  ---
+  duration_ms: 13.472492
+  type: 'test'
+  ...
+# Subtest: arranged source completion assault/tidal-citadel (controlled fixture placement)
+ok 7 - arranged source completion assault/tidal-citadel (controlled fixture placement)
+  ---
+  duration_ms: 140.399736
+  type: 'test'
+  ...
+# Subtest: arranged source completion assault/sunscar-convoy (controlled fixture placement)
+ok 8 - arranged source completion assault/sunscar-convoy (controlled fixture placement)
+  ---
+  duration_ms: 149.447539
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1200.130967

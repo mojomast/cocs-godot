@@ -1,0 +1,22 @@
+{
+  "tested_commit": "156cd37060b3935aa5a93459ce4de6b2710424ab",
+  "native": {
+    "planned": 273,
+    "executed": 273,
+    "unrun": 0
+  },
+  "server": {
+    "passed": 228,
+    "failed": 0
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 916
+  },
+  "files": {
+    "verification.json": "6de7c8c828a5e86548874aab723749b91776d21d0e12b9d27448e33632253367",
+    "aggregate.log": "afda9ee202ad63739aa8b03b8f2510903e755b40bcac2061f1e1122dd77f228d",
+    "server.log": "0469f5e3033ef7e1fda31745bd501901d61c4df4bce246a63616da2431f82efd",
+    "lint.log": "f390b57ab89250456425f3d3dbcc40c4d18e994108bac71a9c62b75f1355a2c3"
+  }
+}

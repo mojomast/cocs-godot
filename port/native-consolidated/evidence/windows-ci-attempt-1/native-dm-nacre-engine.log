@@ -1,0 +1,5 @@
+PACKAGE_STOPPED
+Package launch failed: Invalid native arena: arena fields
+
+Command failed: C:\Windows\system32\cmd.exe /d /s /c ""D:\a\_temp\fresh Windows demo\cocs-native-windows\Native Deathmatch.cmd" --experience=native-dm --map=nacre-engine --smoke"
+Package launch failed: Invalid native arena: arena fields

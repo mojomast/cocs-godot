@@ -1,0 +1,249 @@
+verify	Import and verify native project	﻿2026-09-29T11:35:02.9463331Z ##[group]Run source "$RUNNER_TEMP/godot-native/environment.sh"
+verify	Import and verify native project	2026-09-29T11:35:02.9463624Z [36;1msource "$RUNNER_TEMP/godot-native/environment.sh"[0m
+verify	Import and verify native project	2026-09-29T11:35:02.9463880Z [36;1mexport VEHICLE_EVIDENCE_ROOT="$RUNNER_TEMP/godot-native/vehicle-evidence"[0m
+verify	Import and verify native project	2026-09-29T11:35:02.9464641Z [36;1mif [[ "" == "vehicle-diagnostic" ]]; then[0m
+verify	Import and verify native project	2026-09-29T11:35:02.9465169Z [36;1m  GUEST_NODE_MODULES="$PWD/node_modules" python3 port/native-vehicle-expansion/run.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"[0m
+verify	Import and verify native project	2026-09-29T11:35:02.9465557Z [36;1melse[0m
+verify	Import and verify native project	2026-09-29T11:35:02.9465767Z [36;1m  python3 tools/godot-dev/verify.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"[0m
+verify	Import and verify native project	2026-09-29T11:35:02.9466013Z [36;1mfi[0m
+verify	Import and verify native project	2026-09-29T11:35:02.9519319Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+verify	Import and verify native project	2026-09-29T11:35:02.9519528Z env:
+verify	Import and verify native project	2026-09-29T11:35:02.9519648Z   PORT: 0
+verify	Import and verify native project	2026-09-29T11:35:02.9519900Z   COCS_SOURCE_DERIVATIVE: /home/runner/work/cocs-godot/cocs-godot/port/contracts/lattice-catalog-derivative.json
+verify	Import and verify native project	2026-09-29T11:35:02.9520458Z ##[endgroup]
+verify	Import and verify native project	2026-09-29T11:35:04.1594532Z gate-runner-tests: PASS
+verify	Import and verify native project	2026-09-29T11:35:04.2023149Z playable-gate-registration: PASS
+verify	Import and verify native project	2026-09-29T11:35:04.6485222Z verifier-report-tests: PASS
+verify	Import and verify native project	2026-09-29T11:35:04.7674651Z ci-artifact-tests: PASS
+verify	Import and verify native project	2026-09-29T11:35:14.3909710Z native-ci-contracts: FAIL
+verify	Import and verify native project	2026-09-29T11:35:14.3910084Z TAP version 13
+verify	Import and verify native project	2026-09-29T11:35:14.3910629Z # Subtest: dev launcher rejects unselected and inventoried-wrong sources before Godot, accepts explicit frozen derivative
+verify	Import and verify native project	2026-09-29T11:35:14.3911248Z ok 1 - dev launcher rejects unselected and inventoried-wrong sources before Godot, accepts explicit frozen derivative
+verify	Import and verify native project	2026-09-29T11:35:14.3911682Z   ---
+verify	Import and verify native project	2026-09-29T11:35:14.3911871Z   duration_ms: 9554.18329
+verify	Import and verify native project	2026-09-29T11:35:14.3912074Z   type: 'test'
+verify	Import and verify native project	2026-09-29T11:35:14.3912242Z   ...
+verify	Import and verify native project	2026-09-29T11:35:14.3912500Z # Subtest: native push CI covers the integration branch
+verify	Import and verify native project	2026-09-29T11:35:14.3912845Z ok 2 - native push CI covers the integration branch
+verify	Import and verify native project	2026-09-29T11:35:14.3913050Z   ---
+verify	Import and verify native project	2026-09-29T11:35:14.3913162Z   duration_ms: 0.653317
+verify	Import and verify native project	2026-09-29T11:35:14.3913284Z   type: 'test'
+verify	Import and verify native project	2026-09-29T11:35:14.3913387Z   ...
+verify	Import and verify native project	2026-09-29T11:35:14.3913632Z # Subtest: native verify job exports the frozen derivative to semantic export and verification
+verify	Import and verify native project	2026-09-29T11:35:14.3914153Z not ok 3 - native verify job exports the frozen derivative to semantic export and verification
+verify	Import and verify native project	2026-09-29T11:35:14.3914450Z   ---
+verify	Import and verify native project	2026-09-29T11:35:14.3914559Z   duration_ms: 0.824616
+verify	Import and verify native project	2026-09-29T11:35:14.3914679Z   type: 'test'
+verify	Import and verify native project	2026-09-29T11:35:14.3914913Z   location: '/home/runner/work/cocs-godot/cocs-godot/port/native-ci/workflow.test.mjs:14:1'
+verify	Import and verify native project	2026-09-29T11:35:14.3915182Z   failureType: 'testCodeFailure'
+verify	Import and verify native project	2026-09-29T11:35:14.3915352Z   error: |-
+verify	Import and verify native project	2026-09-29T11:35:14.3915644Z     The input did not match the regular expression /^          python3 tools\/godot-dev\/verify\.py\b/m. Input:
+verify	Import and verify native project	2026-09-29T11:35:14.3915903Z     
+verify	Import and verify native project	2026-09-29T11:35:14.3916018Z     'name: Godot native\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3916159Z       '\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3916272Z       'on:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3916388Z       '  push:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3916558Z       '    branches: [main, port/lattice-flagship-next]\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3916742Z       '  pull_request:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3916896Z       '  workflow_dispatch:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3917040Z       '    inputs:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3917166Z       '      scope:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3917380Z       '        description: Verification scope (full suite is the release gate)\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3917625Z       '        type: choice\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3917800Z       '        options: [full, vehicle-diagnostic]\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3917979Z       '        default: full\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3918114Z       '\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3918231Z       'permissions:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3918363Z       '  contents: read\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3918491Z       '\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3918601Z       'concurrency:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3919032Z       '  group: godot-native-${{ github.workflow }}-${{ github.ref }}\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3919262Z       '  cancel-in-progress: true\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3919408Z       '\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3919517Z       'jobs:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3919662Z       '  verify:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3919803Z       '    runs-on: ubuntu-24.04\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3919968Z       '    timeout-minutes: 45\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3920115Z       '    defaults:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3920243Z       '      run:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3920378Z       '        shell: bash\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3920512Z       '    env:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3920633Z       '      PORT: "0"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3920931Z       '      COCS_SOURCE_DERIVATIVE: ${{ github.workspace }}/port/contracts/lattice-catalog-derivative.json\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3921203Z       '    steps:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3921361Z       '      - uses: actions/checkout@v4\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3921525Z       '        with:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3921794Z       '          fetch-depth: 0\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3921975Z       '          persist-credentials: false\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3922176Z       '      - uses: actions/setup-node@v4\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3922345Z       '        with:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3922499Z       '          node-version: "22"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3922726Z       '      - name: Install pinned official Godot and isolate runtime\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3922938Z       '        run: |\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3923118Z       '          mkdir -p "$RUNNER_TEMP/godot-native"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3923510Z       '          bash tools/godot-dev/ci_bootstrap.sh "$RUNNER_TEMP/godot-native" 2>&1 | tee "$RUNNER_TEMP/godot-native/bootstrap.log"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3923866Z       '      - name: Install locked npm dependencies\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3924373Z       '        run: npm ci 2>&1 | tee "$RUNNER_TEMP/godot-native/npm-ci.log"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3924660Z       '      - name: Install locked Playwright Chromium for GLB generation\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3924876Z       '        run: |\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3925154Z       '          source "$RUNNER_TEMP/godot-native/environment.sh"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3925665Z       '          npx --no-install playwright install --with-deps chromium 2>&1 | tee "$RUNNER_TEMP/godot-native/chromium-install.log"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3926142Z       '      - name: Generate fresh semantic data and required GLB probes\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3926359Z       '        run: |\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3926541Z       '          source "$RUNNER_TEMP/godot-native/environment.sh"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3926871Z       '          node tools/godot-export/semantic.mjs 2>&1 | tee "$RUNNER_TEMP/godot-native/semantic-export.log"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3927282Z       '          node tools/godot-export/browser-export.mjs 2>&1 | tee "$RUNNER_TEMP/godot-native/axis-export.log"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3927751Z       '          node tools/godot-export/browser-export.mjs meridian-exchange 2>&1 | tee "$RUNNER_TEMP/godot-native/meridian-export.log"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3928117Z       '      - name: Import and verify native project\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3928303Z       '        run: |\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3928508Z       '          source "$RUNNER_TEMP/godot-native/environment.sh"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3928808Z       '          export VEHICLE_EVIDENCE_ROOT="$RUNNER_TEMP/godot-native/vehicle-evidence"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3929108Z       '          if [[ "${{ inputs.scope }}" == "vehicle-diagnostic" ]]; then\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3929578Z       '            GUEST_NODE_MODULES="$PWD/node_modules" python3 port/native-vehicle-expansion/run.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3929937Z       '          else\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3930222Z       '            python3 tools/godot-dev/verify.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3930473Z       '          fi\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3930620Z       '      - name: Check whitespace\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3930917Z       '        if: ${{ always() }}\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3931065Z       '        run: |\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3931234Z       '          mkdir -p "$RUNNER_TEMP/godot-native"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3931511Z       '          git diff --check 2>&1 | tee "$RUNNER_TEMP/godot-native/git-diff-check.log"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3931783Z       '      - name: Collect bounded current-run evidence\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3931971Z       '        if: ${{ always() }}\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3932224Z       '        run: python3 tools/godot-dev/ci_bootstrap.py "$RUNNER_TEMP/godot-native"\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3932496Z       '      - uses: actions/upload-artifact@v4\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3932681Z       '        if: ${{ always() }}\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3932834Z       '        with:\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3933058Z       '          name: godot-native-${{ github.run_id }}-${{ github.run_attempt }}\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3933329Z       '          path: ${{ runner.temp }}/godot-native/artifact/\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3933635Z       '          if-no-files-found: warn\n' +
+verify	Import and verify native project	2026-09-29T11:35:14.3933812Z       '          retention-days: 7\n'
+verify	Import and verify native project	2026-09-29T11:35:14.3933949Z     
+verify	Import and verify native project	2026-09-29T11:35:14.3934280Z   code: 'ERR_ASSERTION'
+verify	Import and verify native project	2026-09-29T11:35:14.3934413Z   name: 'AssertionError'
+verify	Import and verify native project	2026-09-29T11:35:14.3934544Z   expected:
+verify	Import and verify native project	2026-09-29T11:35:14.3934652Z   actual: |-
+verify	Import and verify native project	2026-09-29T11:35:14.3934762Z     name: Godot native
+verify	Import and verify native project	2026-09-29T11:35:14.3934880Z     
+verify	Import and verify native project	2026-09-29T11:35:14.3934983Z     on:
+verify	Import and verify native project	2026-09-29T11:35:14.3935086Z       push:
+verify	Import and verify native project	2026-09-29T11:35:14.3935237Z         branches: [main, port/lattice-flagship-next]
+verify	Import and verify native project	2026-09-29T11:35:14.3935408Z       pull_request:
+verify	Import and verify native project	2026-09-29T11:35:14.3935537Z       workflow_dispatch:
+verify	Import and verify native project	2026-09-29T11:35:14.3935660Z         inputs:
+verify	Import and verify native project	2026-09-29T11:35:14.3935769Z           scope:
+verify	Import and verify native project	2026-09-29T11:35:14.3935961Z             description: Verification scope (full suite is the release gate)
+verify	Import and verify native project	2026-09-29T11:35:14.3936185Z             type: choice
+verify	Import and verify native project	2026-09-29T11:35:14.3936364Z             options: [full, vehicle-diagnostic]
+verify	Import and verify native project	2026-09-29T11:35:14.3936536Z             default: full
+verify	Import and verify native project	2026-09-29T11:35:14.3936659Z     
+verify	Import and verify native project	2026-09-29T11:35:14.3936762Z     permissions:
+verify	Import and verify native project	2026-09-29T11:35:14.3936880Z       contents: read
+verify	Import and verify native project	2026-09-29T11:35:14.3937001Z     
+verify	Import and verify native project	2026-09-29T11:35:14.3937104Z     concurrency:
+verify	Import and verify native project	2026-09-29T11:35:14.3937285Z       group: godot-native-${{ github.workflow }}-${{ github.ref }}
+verify	Import and verify native project	2026-09-29T11:35:14.3937485Z       cancel-in-progress: true
+verify	Import and verify native project	2026-09-29T11:35:14.3937620Z     
+verify	Import and verify native project	2026-09-29T11:35:14.3937775Z     jobs:
+verify	Import and verify native project	2026-09-29T11:35:14.3937906Z       verify:
+verify	Import and verify native project	2026-09-29T11:35:14.3938055Z         runs-on: ubuntu-24.04
+verify	Import and verify native project	2026-09-29T11:35:14.3938237Z         timeout-minutes: 45
+verify	Import and verify native project	2026-09-29T11:35:14.3938417Z         defaults:
+verify	Import and verify native project	2026-09-29T11:35:14.3938542Z           run:
+verify	Import and verify native project	2026-09-29T11:35:14.3938659Z             shell: bash
+verify	Import and verify native project	2026-09-29T11:35:14.3938777Z         env:
+verify	Import and verify native project	2026-09-29T11:35:14.3938891Z           PORT: "0"
+verify	Import and verify native project	2026-09-29T11:35:14.3939159Z           COCS_SOURCE_DERIVATIVE: ${{ github.workspace }}/port/contracts/lattice-catalog-derivative.json
+verify	Import and verify native project	2026-09-29T11:35:14.3939426Z         steps:
+verify	Import and verify native project	2026-09-29T11:35:14.3939561Z           - uses: actions/checkout@v4
+verify	Import and verify native project	2026-09-29T11:35:14.3939703Z             with:
+verify	Import and verify native project	2026-09-29T11:35:14.3939825Z               fetch-depth: 0
+verify	Import and verify native project	2026-09-29T11:35:14.3939996Z               persist-credentials: false
+verify	Import and verify native project	2026-09-29T11:35:14.3940204Z           - uses: actions/setup-node@v4
+verify	Import and verify native project	2026-09-29T11:35:14.3940350Z             with:
+verify	Import and verify native project	2026-09-29T11:35:14.3940476Z               node-version: "22"
+verify	Import and verify native project	2026-09-29T11:35:14.3940677Z           - name: Install pinned official Godot and isolate runtime
+verify	Import and verify native project	2026-09-29T11:35:14.3940859Z             run: |
+verify	Import and verify native project	2026-09-29T11:35:14.3941009Z               mkdir -p "$RUNNER_TEMP/godot-native"
+verify	Import and verify native project	2026-09-29T11:35:14.3941358Z               bash tools/godot-dev/ci_bootstrap.sh "$RUNNER_TEMP/godot-native" 2>&1 | tee "$RUNNER_TEMP/godot-native/bootstrap.log"
+verify	Import and verify native project	2026-09-29T11:35:14.3941694Z           - name: Install locked npm dependencies
+verify	Import and verify native project	2026-09-29T11:35:14.3942041Z             run: npm ci 2>&1 | tee "$RUNNER_TEMP/godot-native/npm-ci.log"
+verify	Import and verify native project	2026-09-29T11:35:14.3942326Z           - name: Install locked Playwright Chromium for GLB generation
+verify	Import and verify native project	2026-09-29T11:35:14.3942509Z             run: |
+verify	Import and verify native project	2026-09-29T11:35:14.3942672Z               source "$RUNNER_TEMP/godot-native/environment.sh"
+verify	Import and verify native project	2026-09-29T11:35:14.3943056Z               npx --no-install playwright install --with-deps chromium 2>&1 | tee "$RUNNER_TEMP/godot-native/chromium-install.log"
+verify	Import and verify native project	2026-09-29T11:35:14.3943413Z           - name: Generate fresh semantic data and required GLB probes
+verify	Import and verify native project	2026-09-29T11:35:14.3943607Z             run: |
+verify	Import and verify native project	2026-09-29T11:35:14.3943775Z               source "$RUNNER_TEMP/godot-native/environment.sh"
+verify	Import and verify native project	2026-09-29T11:35:14.3944251Z               node tools/godot-export/semantic.mjs 2>&1 | tee "$RUNNER_TEMP/godot-native/semantic-export.log"
+verify	Import and verify native project	2026-09-29T11:35:14.3944678Z               node tools/godot-export/browser-export.mjs 2>&1 | tee "$RUNNER_TEMP/godot-native/axis-export.log"
+verify	Import and verify native project	2026-09-29T11:35:14.3945225Z               node tools/godot-export/browser-export.mjs meridian-exchange 2>&1 | tee "$RUNNER_TEMP/godot-native/meridian-export.log"
+verify	Import and verify native project	2026-09-29T11:35:14.3945567Z           - name: Import and verify native project
+verify	Import and verify native project	2026-09-29T11:35:14.3945740Z             run: |
+verify	Import and verify native project	2026-09-29T11:35:14.3945905Z               source "$RUNNER_TEMP/godot-native/environment.sh"
+verify	Import and verify native project	2026-09-29T11:35:14.3946186Z               export VEHICLE_EVIDENCE_ROOT="$RUNNER_TEMP/godot-native/vehicle-evidence"
+verify	Import and verify native project	2026-09-29T11:35:14.3946468Z               if [[ "${{ inputs.scope }}" == "vehicle-diagnostic" ]]; then
+verify	Import and verify native project	2026-09-29T11:35:14.3946873Z                 GUEST_NODE_MODULES="$PWD/node_modules" python3 port/native-vehicle-expansion/run.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"
+verify	Import and verify native project	2026-09-29T11:35:14.3947225Z               else
+verify	Import and verify native project	2026-09-29T11:35:14.3947471Z                 python3 tools/godot-dev/verify.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"
+verify	Import and verify native project	2026-09-29T11:35:14.3947709Z               fi
+verify	Import and verify native project	2026-09-29T11:35:14.3947845Z           - name: Check whitespace
+verify	Import and verify native project	2026-09-29T11:35:14.3948015Z             if: ${{ always() }}
+verify	Import and verify native project	2026-09-29T11:35:14.3948141Z             run: |
+verify	Import and verify native project	2026-09-29T11:35:14.3948286Z               mkdir -p "$RUNNER_TEMP/godot-native"
+verify	Import and verify native project	2026-09-29T11:35:14.3948532Z               git diff --check 2>&1 | tee "$RUNNER_TEMP/godot-native/git-diff-check.log"
+verify	Import and verify native project	2026-09-29T11:35:14.3948779Z           - name: Collect bounded current-run evidence
+verify	Import and verify native project	2026-09-29T11:35:14.3948953Z             if: ${{ always() }}
+verify	Import and verify native project	2026-09-29T11:35:14.3949172Z             run: python3 tools/godot-dev/ci_bootstrap.py "$RUNNER_TEMP/godot-native"
+verify	Import and verify native project	2026-09-29T11:35:14.3949416Z           - uses: actions/upload-artifact@v4
+verify	Import and verify native project	2026-09-29T11:35:14.3949591Z             if: ${{ always() }}
+verify	Import and verify native project	2026-09-29T11:35:14.3949729Z             with:
+verify	Import and verify native project	2026-09-29T11:35:14.3949931Z               name: godot-native-${{ github.run_id }}-${{ github.run_attempt }}
+verify	Import and verify native project	2026-09-29T11:35:14.3950194Z               path: ${{ runner.temp }}/godot-native/artifact/
+verify	Import and verify native project	2026-09-29T11:35:14.3950413Z               if-no-files-found: warn
+verify	Import and verify native project	2026-09-29T11:35:14.3950594Z               retention-days: 7
+verify	Import and verify native project	2026-09-29T11:35:14.3950729Z     
+verify	Import and verify native project	2026-09-29T11:35:14.3950837Z   operator: 'match'
+verify	Import and verify native project	2026-09-29T11:35:14.3950958Z   stack: |-
+verify	Import and verify native project	2026-09-29T11:35:14.3951255Z     TestContext.<anonymous> (file:///home/runner/work/cocs-godot/cocs-godot/port/native-ci/workflow.test.mjs:19:10)
+verify	Import and verify native project	2026-09-29T11:35:14.3951599Z     Test.runInAsyncScope (node:async_hooks:214:14)
+verify	Import and verify native project	2026-09-29T11:35:14.3951824Z     Test.run (node:internal/test_runner/test:1047:25)
+verify	Import and verify native project	2026-09-29T11:35:14.3952073Z     Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+verify	Import and verify native project	2026-09-29T11:35:14.3952336Z     Test.postRun (node:internal/test_runner/test:1173:19)
+verify	Import and verify native project	2026-09-29T11:35:14.3952552Z     Test.run (node:internal/test_runner/test:1101:12)
+verify	Import and verify native project	2026-09-29T11:35:14.3952825Z     async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+verify	Import and verify native project	2026-09-29T11:35:14.3953055Z   ...
+verify	Import and verify native project	2026-09-29T11:35:14.3953154Z 1..3
+verify	Import and verify native project	2026-09-29T11:35:14.3953258Z # tests 3
+verify	Import and verify native project	2026-09-29T11:35:14.3953468Z # suites 0
+verify	Import and verify native project	2026-09-29T11:35:14.3953577Z # pass 2
+verify	Import and verify native project	2026-09-29T11:35:14.3953677Z # fail 1
+verify	Import and verify native project	2026-09-29T11:35:14.3953780Z # cancelled 0
+verify	Import and verify native project	2026-09-29T11:35:14.3953899Z # skipped 0
+verify	Import and verify native project	2026-09-29T11:35:14.3954130Z # todo 0
+verify	Import and verify native project	2026-09-29T11:35:14.3954385Z # duration_ms 9592.884754
+verify	Import and verify native project	2026-09-29T11:35:14.3954616Z 
+verify	Import and verify native project	2026-09-29T11:35:14.3991336Z ##[error]Process completed with exit code 1.
+verify	Check whitespace	﻿2026-09-29T11:35:14.4039103Z ##[group]Run mkdir -p "$RUNNER_TEMP/godot-native"
+verify	Check whitespace	2026-09-29T11:35:14.4039338Z [36;1mmkdir -p "$RUNNER_TEMP/godot-native"[0m
+verify	Check whitespace	2026-09-29T11:35:14.4039565Z [36;1mgit diff --check 2>&1 | tee "$RUNNER_TEMP/godot-native/git-diff-check.log"[0m
+verify	Check whitespace	2026-09-29T11:35:14.4091131Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+verify	Check whitespace	2026-09-29T11:35:14.4091333Z env:
+verify	Check whitespace	2026-09-29T11:35:14.4091445Z   PORT: 0
+verify	Check whitespace	2026-09-29T11:35:14.4091687Z   COCS_SOURCE_DERIVATIVE: /home/runner/work/cocs-godot/cocs-godot/port/contracts/lattice-catalog-derivative.json
+verify	Check whitespace	2026-09-29T11:35:14.4091962Z ##[endgroup]
+verify	Check whitespace	2026-09-29T11:35:14.4307386Z port/reports/native-ci-contracts.log:23: trailing whitespace.
+verify	Check whitespace	2026-09-29T11:35:14.4308007Z +    
+verify	Check whitespace	2026-09-29T11:35:14.4308257Z port/reports/native-ci-contracts.log:103: trailing whitespace.
+verify	Check whitespace	2026-09-29T11:35:14.4308484Z +    
+verify	Check whitespace	2026-09-29T11:35:14.4308708Z port/reports/native-ci-contracts.log:109: trailing whitespace.
+verify	Check whitespace	2026-09-29T11:35:14.4308916Z +    
+verify	Check whitespace	2026-09-29T11:35:14.4309111Z port/reports/native-ci-contracts.log:121: trailing whitespace.
+verify	Check whitespace	2026-09-29T11:35:14.4309346Z +    
+verify	Check whitespace	2026-09-29T11:35:14.4309539Z port/reports/native-ci-contracts.log:124: trailing whitespace.
+verify	Check whitespace	2026-09-29T11:35:14.4309726Z +    
+verify	Check whitespace	2026-09-29T11:35:14.4309906Z port/reports/native-ci-contracts.log:128: trailing whitespace.
+verify	Check whitespace	2026-09-29T11:35:14.4310085Z +    
+verify	Check whitespace	2026-09-29T11:35:14.4310259Z port/reports/native-ci-contracts.log:187: trailing whitespace.
+verify	Check whitespace	2026-09-29T11:35:14.4310433Z +    
+verify	Check whitespace	2026-09-29T11:35:14.4474214Z ##[error]Process completed with exit code 2.

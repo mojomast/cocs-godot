@@ -1,0 +1,325 @@
+verify	Import and verify native project	﻿2026-09-29T10:58:03.8997947Z ##[group]Run source "$RUNNER_TEMP/godot-native/environment.sh"
+verify	Import and verify native project	2026-09-29T10:58:03.8998737Z [36;1msource "$RUNNER_TEMP/godot-native/environment.sh"[0m
+verify	Import and verify native project	2026-09-29T10:58:03.8999574Z [36;1mpython3 tools/godot-dev/verify.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"[0m
+verify	Import and verify native project	2026-09-29T10:58:03.9080987Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+verify	Import and verify native project	2026-09-29T10:58:03.9081567Z env:
+verify	Import and verify native project	2026-09-29T10:58:03.9081864Z   PORT: 0
+verify	Import and verify native project	2026-09-29T10:58:03.9082637Z   COCS_SOURCE_DERIVATIVE: /home/runner/work/cocs-godot/cocs-godot/port/contracts/lattice-catalog-derivative.json
+verify	Import and verify native project	2026-09-29T10:58:03.9083564Z ##[endgroup]
+verify	Import and verify native project	2026-09-29T10:58:04.8548027Z gate-runner-tests: PASS
+verify	Import and verify native project	2026-09-29T10:58:04.9185046Z playable-gate-registration: PASS
+verify	Import and verify native project	2026-09-29T10:58:05.5216720Z verifier-report-tests: PASS
+verify	Import and verify native project	2026-09-29T10:58:05.6405796Z ci-artifact-tests: PASS
+verify	Import and verify native project	2026-09-29T10:58:20.8615504Z native-ci-contracts: PASS
+verify	Import and verify native project	2026-09-29T10:58:23.7871663Z export-tests: PASS
+verify	Import and verify native project	2026-09-29T10:58:24.5593038Z moth-export: PASS
+verify	Import and verify native project	2026-09-29T10:58:24.7275476Z gltf-sides: PASS
+verify	Import and verify native project	2026-09-29T10:58:27.2309281Z health-hud-evidence: PASS
+verify	Import and verify native project	2026-09-29T10:58:41.8439529Z projectile-navigation: PASS
+verify	Import and verify native project	2026-09-29T10:58:41.9527698Z objective-evidence: PASS
+verify	Import and verify native project	2026-09-29T10:58:43.4423757Z objective-progression-evidence: PASS
+verify	Import and verify native project	2026-09-29T10:58:50.1395084Z objective-completion-evidence: PASS
+verify	Import and verify native project	2026-09-29T10:58:50.2607650Z launcher-options: PASS
+verify	Import and verify native project	2026-09-29T10:58:50.3857123Z package-options: PASS
+verify	Import and verify native project	2026-09-29T10:58:51.9139300Z product-shell-supervisor: PASS
+verify	Import and verify native project	2026-09-29T10:58:52.0331974Z native-graphics-options: PASS
+verify	Import and verify native project	2026-09-29T10:58:57.6415120Z native-graphics-ownership: PASS
+verify	Import and verify native project	2026-09-29T10:58:57.7493230Z lobby-options: PASS
+verify	Import and verify native project	2026-09-29T10:58:58.3327730Z lobby-ownership: PASS
+verify	Import and verify native project	2026-09-29T10:59:00.7069430Z horde-closure: PASS
+verify	Import and verify native project	2026-09-29T10:59:01.6556317Z native-arena-closure: PASS
+verify	Import and verify native project	2026-09-29T10:59:01.7637151Z package-identity-routes: PASS
+verify	Import and verify native project	2026-09-29T10:59:25.3109577Z native-arena-authority: PASS
+verify	Import and verify native project	2026-09-29T10:59:30.7554646Z local-24-roster: PASS
+verify	Import and verify native project	2026-09-29T10:59:35.0975593Z horde-ownership: PASS
+verify	Import and verify native project	2026-09-29T11:00:08.7298915Z zone-routing: PASS
+verify	Import and verify native project	2026-09-29T11:00:09.9615262Z combined-arms-evidence: PASS
+verify	Import and verify native project	2026-09-29T11:00:10.1296376Z lattice-req-generator-tests: PASS
+verify	Import and verify native project	2026-09-29T11:00:10.1763042Z lattice-req-catalog-check: PASS
+verify	Import and verify native project	2026-09-29T11:00:11.7996511Z semantic-export: PASS
+verify	Import and verify native project	2026-09-29T11:00:13.6738504Z source-inventory: PASS
+verify	Import and verify native project	2026-09-29T11:00:18.9279589Z package-manifest-contracts: PASS
+verify	Import and verify native project	2026-09-29T11:00:18.9693348Z career-catalog-check: PASS
+verify	Import and verify native project	2026-09-29T11:00:19.0479663Z finish-catalog-check: PASS
+verify	Import and verify native project	2026-09-29T11:00:19.1897597Z finish-source-palette: PASS
+verify	Import and verify native project	2026-09-29T11:00:21.9781287Z career-source-contracts: PASS
+verify	Import and verify native project	2026-09-29T11:00:23.4143441Z career-persistence: PASS
+verify	Import and verify native project	2026-09-29T11:00:24.8578610Z career-history-storage: PASS
+verify	Import and verify native project	2026-09-29T11:00:26.9562177Z career-results-source: PASS
+verify	Import and verify native project	2026-09-29T11:00:28.3358934Z career-equipment-source: PASS
+verify	Import and verify native project	2026-09-29T11:00:29.7309316Z career-equipped-source: PASS
+verify	Import and verify native project	2026-09-29T11:00:31.9145655Z social-source: PASS
+verify	Import and verify native project	2026-09-29T11:00:38.2598965Z source-tests: PASS
+verify	Import and verify native project	2026-09-29T11:00:41.0620463Z arms-race-source: PASS
+verify	Import and verify native project	2026-09-29T11:01:48.3060455Z horde-source: PASS
+verify	Import and verify native project	2026-09-29T11:01:59.4845821Z cinderwake-source: PASS
+verify	Import and verify native project	2026-09-29T11:02:06.3469474Z horde-upgrade-adapter: PASS
+verify	Import and verify native project	2026-09-29T11:02:26.3312125Z horde-adapter: PASS
+verify	Import and verify native project	2026-09-29T11:02:26.5338655Z horde-death-wire: PASS
+verify	Import and verify native project	2026-09-29T11:02:26.5792166Z horde-input-oracle: PASS
+verify	Import and verify native project	2026-09-29T11:02:35.4875307Z godot-import: PASS
+verify	Import and verify native project	2026-09-29T11:02:36.0243274Z career-projection: PASS
+verify	Import and verify native project	2026-09-29T11:02:36.3736161Z career-package-catalog: PASS
+verify	Import and verify native project	2026-09-29T11:02:36.8264499Z career-identity-native: PASS
+verify	Import and verify native project	2026-09-29T11:02:37.7487067Z career-equipment-native: PASS
+verify	Import and verify native project	2026-09-29T11:02:38.1943715Z career-equipped-model: PASS
+verify	Import and verify native project	2026-09-29T11:02:38.7312451Z career-equipped-ui: PASS
+verify	Import and verify native project	2026-09-29T11:02:40.0466307Z career-player-flow-clarity-source: PASS
+verify	Import and verify native project	2026-09-29T11:02:40.4915523Z career-player-flow-clarity-model: PASS
+verify	Import and verify native project	2026-09-29T11:02:41.0357512Z career-player-flow-clarity-ui: PASS
+verify	Import and verify native project	2026-09-29T11:03:53.9508790Z career-player-flow-clarity-journey: PASS
+verify	Import and verify native project	2026-09-29T11:03:54.7648611Z career-equipped-lobby: PASS
+verify	Import and verify native project	2026-09-29T11:05:08.3949308Z career-equipped-journey: PASS
+verify	Import and verify native project	2026-09-29T11:05:09.7846764Z career-results-native: PASS
+verify	Import and verify native project	2026-09-29T11:05:10.2260084Z career-history-native: PASS
+verify	Import and verify native project	2026-09-29T11:05:10.8548164Z career-results-history-ui: PASS
+verify	Import and verify native project	2026-09-29T11:05:15.2050358Z social-native: PASS
+verify	Import and verify native project	2026-09-29T11:05:19.4389649Z reconnect-source-native: PASS
+verify	Import and verify native project	2026-09-29T11:05:21.7119127Z reconnect-offline-results: PASS
+verify	Import and verify native project	2026-09-29T11:05:22.1522311Z reconnect-menu: PASS
+verify	Import and verify native project	2026-09-29T11:05:23.3421378Z career-modal: PASS
+verify	Import and verify native project	2026-09-29T11:05:23.7829925Z cinderwake-native: PASS
+verify	Import and verify native project	2026-09-29T11:05:27.0221222Z identity-horde-composition: PASS
+verify	Import and verify native project	2026-09-29T11:05:27.4644880Z loadout-unit: PASS
+verify	Import and verify native project	2026-09-29T11:05:27.8124486Z loadout-source-parity: PASS
+verify	Import and verify native project	2026-09-29T11:05:28.1626660Z loadout-client: PASS
+verify	Import and verify native project	2026-09-29T11:05:28.9756959Z loadout-setup: PASS
+verify	Import and verify native project	2026-09-29T11:05:31.1837962Z loadout-lobby: PASS
+verify	Import and verify native project	2026-09-29T11:05:33.2121153Z loadout-session: PASS
+verify	Import and verify native project	2026-09-29T11:06:25.6605904Z loadout-loopback: PASS
+verify	Import and verify native project	2026-09-29T11:06:44.1574759Z loadout-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T11:06:48.6036362Z viewer-smoke: PASS
+verify	Import and verify native project	2026-09-29T11:06:51.3750556Z graphics-terrain: PASS
+verify	Import and verify native project	2026-09-29T11:06:51.7236201Z moth-resources: PASS
+verify	Import and verify native project	2026-09-29T11:06:55.8945890Z graphics-atmosphere: PASS
+verify	Import and verify native project	2026-09-29T11:06:56.3355019Z graphics-fx: PASS
+verify	Import and verify native project	2026-09-29T11:07:01.3422011Z moth-scenery: PASS
+verify	Import and verify native project	2026-09-29T11:07:01.6882280Z shader-lab: PASS
+verify	Import and verify native project	2026-09-29T11:07:02.6898070Z particle-lab: PASS
+verify	Import and verify native project	2026-09-29T11:07:08.4219229Z showcase-startup: PASS
+verify	Import and verify native project	2026-09-29T11:07:37.9709096Z aurora-traversal: PASS
+verify	Import and verify native project	2026-09-29T11:08:38.6665691Z cinder-traversal: PASS
+verify	Import and verify native project	2026-09-29T11:08:41.0633162Z exploration-walker: PASS
+verify	Import and verify native project	2026-09-29T11:08:41.5997571Z first-person-rig: PASS
+verify	Import and verify native project	2026-09-29T11:08:42.0430722Z first-person-finishes: PASS
+verify	Import and verify native project	2026-09-29T11:08:43.6702267Z finish-source-journey: PASS
+verify	Import and verify native project	2026-09-29T11:08:44.1129604Z finish-native-source-replay: PASS
+verify	Import and verify native project	2026-09-29T11:08:45.0491771Z first-person-binding: PASS
+verify	Import and verify native project	2026-09-29T11:08:45.5875542Z first-person-ads: PASS
+verify	Import and verify native project	2026-09-29T11:08:46.4009683Z first-person-recoil: PASS
+verify	Import and verify native project	2026-09-29T11:08:48.1318751Z combat-actions: PASS
+verify	Import and verify native project	2026-09-29T11:08:48.9459918Z combat-shields: PASS
+verify	Import and verify native project	2026-09-29T11:08:49.3872959Z combat-shield-capacity: PASS
+verify	Import and verify native project	2026-09-29T11:08:49.8276408Z combat-particles: PASS
+verify	Import and verify native project	2026-09-29T11:08:50.1761473Z combat-pickup-assets: PASS
+verify	Import and verify native project	2026-09-29T11:08:51.0840703Z weapon-effects: PASS
+verify	Import and verify native project	2026-09-29T11:08:51.6204958Z weapon-effects-rig: PASS
+verify	Import and verify native project	2026-09-29T11:08:52.1570288Z muzzle-sight-geometry: PASS
+verify	Import and verify native project	2026-09-29T11:08:52.6916460Z muzzle-path-geometry: PASS
+verify	Import and verify native project	2026-09-29T11:08:53.0402712Z projectile-flight: PASS
+verify	Import and verify native project	2026-09-29T11:08:53.4847222Z alt-fire: PASS
+verify	Import and verify native project	2026-09-29T11:08:54.5814685Z weapon-handling: PASS
+verify	Import and verify native project	2026-09-29T11:08:55.2090901Z weapon-detail: PASS
+verify	Import and verify native project	2026-09-29T11:08:56.0534971Z weapon-export: PASS
+verify	Import and verify native project	2026-09-29T11:08:56.0987344Z world-weapon-identity: PASS
+verify	Import and verify native project	2026-09-29T11:08:56.4519812Z player-fx-direction: PASS
+verify	Import and verify native project	2026-09-29T11:08:56.7996517Z player-fx-low-health: PASS
+verify	Import and verify native project	2026-09-29T11:08:57.1487388Z player-fx-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T11:08:57.6886496Z player-fx-marks: PASS
+verify	Import and verify native project	2026-09-29T11:08:58.2268289Z player-fx-impacts: PASS
+verify	Import and verify native project	2026-09-29T11:08:58.5805500Z player-fx-overlay: PASS
+verify	Import and verify native project	2026-09-29T11:08:59.7715487Z player-fx-integration: PASS
+verify	Import and verify native project	2026-09-29T11:09:01.1472222Z benchmark-contracts: PASS
+verify	Import and verify native project	2026-09-29T11:09:01.2585240Z benchmark-tools: PASS
+verify	Import and verify native project	2026-09-29T11:10:21.2439360Z benchmark-autostart: PASS
+verify	Import and verify native project	2026-09-29T11:10:21.6887044Z material-language: PASS
+verify	Import and verify native project	2026-09-29T11:10:22.2893168Z material-derived: PASS
+verify	Import and verify native project	2026-09-29T11:11:02.7472700Z identity-zone-route: PASS
+verify	Import and verify native project	2026-09-29T11:11:45.0834720Z debug-tools: PASS
+verify	Import and verify native project	2026-09-29T11:11:47.7672024Z debug-panel: PASS
+verify	Import and verify native project	2026-09-29T11:11:48.1190109Z mode-diagnostics: PASS
+verify	Import and verify native project	2026-09-29T11:11:59.3769870Z blood-live-harness: PASS
+verify	Import and verify native project	2026-09-29T11:12:33.6030312Z blood-live-native: PASS
+verify	Import and verify native project	2026-09-29T11:12:34.2090909Z route-parity: PASS
+verify	Import and verify native project	2026-09-29T11:12:35.3048858Z main-menu-smoke: PASS
+verify	Import and verify native project	2026-09-29T11:12:42.5405101Z main-menu-contracts: PASS
+verify	Import and verify native project	2026-09-29T11:12:44.1020088Z product-shell-settings: PASS
+verify	Import and verify native project	2026-09-29T11:15:33.9849526Z product-shell-journey: PASS
+verify	Import and verify native project	2026-09-29T11:16:46.4097075Z player-flow-journey: PASS
+verify	Import and verify native project	2026-09-29T11:16:48.3512472Z player-flow-controls: PASS
+verify	Import and verify native project	2026-09-29T11:16:58.5404298Z product-shell-guest-leave: PASS
+verify	Import and verify native project	2026-09-29T11:16:59.1096019Z material-coverage-floor: PASS
+verify	Import and verify native project	2026-09-29T11:16:59.7106764Z release-pipeline-tools: PASS
+verify	Import and verify native project	2026-09-29T11:17:00.3416949Z blood-fx-contracts: PASS
+verify	Import and verify native project	2026-09-29T11:17:01.1637563Z blood-fx-surfaces: PASS
+verify	Import and verify native project	2026-09-29T11:17:02.2602101Z blood-fx-stress: PASS
+verify	Import and verify native project	2026-09-29T11:17:03.5963066Z combat-integration-oracle: PASS
+verify	Import and verify native project	2026-09-29T11:17:06.7431896Z combat-integration: PASS
+verify	Import and verify native project	2026-09-29T11:17:07.9342695Z combat-combined-integration: PASS
+verify	Import and verify native project	2026-09-29T11:17:08.7530129Z combat-remote-muzzle: PASS
+verify	Import and verify native project	2026-09-29T11:17:09.1978108Z identity-horde-occlusion: PASS
+verify	Import and verify native project	2026-09-29T11:17:24.5225387Z native-arena-maps: PASS
+verify	Import and verify native project	2026-09-29T11:17:26.7375715Z native-arena-session: PASS
+verify	Import and verify native project	2026-09-29T11:17:29.2327622Z native-arena-composition: PASS
+verify	Import and verify native project	2026-09-29T11:17:31.2005477Z identity-prototype-graybox: PASS
+verify	Import and verify native project	2026-09-29T11:17:33.3561483Z identity-prototype-oracle: PASS
+verify	Import and verify native project	2026-09-29T11:17:34.0810407Z identity-prototype-rays: PASS
+verify	Import and verify native project	2026-09-29T11:17:35.0835180Z identity-prototype-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T11:17:42.5581173Z native-arena-prism: PASS
+verify	Import and verify native project	2026-09-29T11:17:51.3876914Z native-arena-aurora: PASS
+verify	Import and verify native project	2026-09-29T11:17:56.0761045Z native-arena-cinder: PASS
+verify	Import and verify native project	2026-09-29T11:17:56.4257222Z glb-import: PASS
+verify	Import and verify native project	2026-09-29T11:17:56.7760682Z glb-sides: PASS
+verify	Import and verify native project	2026-09-29T11:17:57.1275105Z input-queue: PASS
+verify	Import and verify native project	2026-09-29T11:17:57.4826546Z protocol-envelopes: PASS
+verify	Import and verify native project	2026-09-29T11:17:58.0205343Z packet-replay: PASS
+verify	Import and verify native project	2026-09-29T11:18:00.3656666Z native-live: PASS
+verify	Import and verify native project	2026-09-29T11:18:01.1854128Z presentation-replay: PASS
+verify	Import and verify native project	2026-09-29T11:18:02.5595609Z round-boundaries: PASS
+verify	Import and verify native project	2026-09-29T11:19:05.8596532Z native-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T11:19:06.8642360Z combat-feedback: PASS
+verify	Import and verify native project	2026-09-29T11:19:08.4290444Z projectiles: PASS
+verify	Import and verify native project	2026-09-29T11:19:11.3902466Z audio-feedback: PASS
+verify	Import and verify native project	2026-09-29T11:19:11.8370586Z local-lifecycle: PASS
+verify	Import and verify native project	2026-09-29T11:19:12.2829408Z pickup-presentation: PASS
+verify	Import and verify native project	2026-09-29T11:19:12.8199024Z entity-visuals: PASS
+verify	Import and verify native project	2026-09-29T11:19:14.0103100Z operator-geometry: PASS
+verify	Import and verify native project	2026-09-29T11:19:14.3612566Z world-weapon-import: PASS
+verify	Import and verify native project	2026-09-29T11:19:15.2709723Z world-weapon-grips: PASS
+verify	Import and verify native project	2026-09-29T11:19:16.6495079Z native-trace: PASS
+verify	Import and verify native project	2026-09-29T11:19:18.0300376Z guest-session: PASS
+verify	Import and verify native project	2026-09-29T11:19:19.4106622Z lobby-flow: PASS
+verify	Import and verify native project	2026-09-29T11:19:19.8570645Z lobby-spectator-context: PASS
+verify	Import and verify native project	2026-09-29T11:19:21.2354826Z match-selection: PASS
+verify	Import and verify native project	2026-09-29T11:19:21.9649474Z scoreboard: PASS
+verify	Import and verify native project	2026-09-29T11:19:22.4110974Z team-scores: PASS
+verify	Import and verify native project	2026-09-29T11:19:25.0974325Z scoreboard-session: PASS
+verify	Import and verify native project	2026-09-29T11:19:27.7838464Z game-hud: PASS
+verify	Import and verify native project	2026-09-29T11:19:30.5627591Z game-hud-setup: PASS
+verify	Import and verify native project	2026-09-29T11:19:32.2218263Z game-hud-debug: PASS
+verify	Import and verify native project	2026-09-29T11:19:32.5757304Z puma-presentation: PASS
+verify	Import and verify native project	2026-09-29T11:19:33.9566139Z zone-modes: PASS
+verify	Import and verify native project	2026-09-29T11:19:34.1005369Z objective-expansion-routes: PASS
+verify	Import and verify native project	2026-09-29T11:19:36.6568675Z objective-source-completion: PASS
+verify	Import and verify native project	2026-09-29T11:20:39.3618246Z uplink-live-timeout: PASS
+verify	Import and verify native project	2026-09-29T11:21:42.0506008Z holdout-live-timeout: PASS
+verify	Import and verify native project	2026-09-29T11:22:45.1910542Z assault-live-timeout: PASS
+verify	Import and verify native project	2026-09-29T11:23:00.6145365Z uplink-controlled-completion: PASS
+verify	Import and verify native project	2026-09-29T11:23:45.8676169Z holdout-controlled-completion: PASS
+verify	Import and verify native project	2026-09-29T11:24:07.4676318Z assault-controlled-completion: PASS
+verify	Import and verify native project	2026-09-29T11:24:08.8452740Z objective-zone-variants: PASS
+verify	Import and verify native project	2026-09-29T11:24:09.1987613Z objective-assault-state: PASS
+verify	Import and verify native project	2026-09-29T11:24:09.5488697Z objective-scoreboard: PASS
+verify	Import and verify native project	2026-09-29T11:24:11.1962708Z vehicle-source-oracle: PASS
+verify	Import and verify native project	2026-09-29T11:24:12.8049681Z vehicle-room-edge-oracle: PASS
+verify	Import and verify native project	2026-09-29T11:24:13.1573761Z vehicle-fleet-visuals: PASS
+verify	Import and verify native project	2026-09-29T11:24:14.5355909Z vehicle-shared-shot-owner: PASS
+verify	Import and verify native project	2026-09-29T11:28:32.8507533Z vehicle-three-native-crew: FAIL
+verify	Import and verify native project	2026-09-29T11:28:32.8508051Z {
+verify	Import and verify native project	2026-09-29T11:28:32.8508749Z   "evidence": "/tmp/opencode/native-vehicle-expansion/b147317c-c4c2-4516-a78d-f657333934c4",
+verify	Import and verify native project	2026-09-29T11:28:32.8509883Z   "classification": "3 distinct native clients, real Room wire; no authority position writes",
+verify	Import and verify native project	2026-09-29T11:28:32.8510885Z   "stepsSeconds": {
+verify	Import and verify native project	2026-09-29T11:28:32.8511276Z     "copy": 0.24,
+verify	Import and verify native project	2026-09-29T11:28:32.8511585Z     "export": 1.62,
+verify	Import and verify native project	2026-09-29T11:28:32.8511898Z     "import": 8.44,
+verify	Import and verify native project	2026-09-29T11:28:32.8512228Z     "parse-demo": 1.02,
+verify	Import and verify native project	2026-09-29T11:28:32.8512607Z     "parse-session_bridge": 0.16,
+verify	Import and verify native project	2026-09-29T11:28:32.8513046Z     "parse-observe_crew_host": 1.02,
+verify	Import and verify native project	2026-09-29T11:28:32.8513490Z     "parse-observe_crew_guest": 1.02,
+verify	Import and verify native project	2026-09-29T11:28:32.8513943Z     "parse-observe_crew_passenger": 1.02,
+verify	Import and verify native project	2026-09-29T11:28:32.8514630Z     "controls": 0.37,
+verify	Import and verify native project	2026-09-29T11:28:32.8515018Z     "fleet": 0.36,
+verify	Import and verify native project	2026-09-29T11:28:32.8515335Z     "shared-shots": 1.42,
+verify	Import and verify native project	2026-09-29T11:28:32.8515685Z     "source-oracle": 1.68,
+verify	Import and verify native project	2026-09-29T11:28:32.8516042Z     "room-edge-oracle": 1.62
+verify	Import and verify native project	2026-09-29T11:28:32.8516387Z   },
+verify	Import and verify native project	2026-09-29T11:28:32.8516901Z   "status": "FAIL",
+verify	Import and verify native project	2026-09-29T11:28:32.8517281Z   "error": "host native process failed",
+verify	Import and verify native project	2026-09-29T11:28:32.8517747Z   "ownedProcessesReaped": true,
+verify	Import and verify native project	2026-09-29T11:28:32.8518132Z   "elapsedSeconds": 258.06,
+verify	Import and verify native project	2026-09-29T11:28:32.8518497Z   "retainedFiles": {
+verify	Import and verify native project	2026-09-29T11:28:32.8518814Z     "controls.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8519127Z       "bytes": 102,
+verify	Import and verify native project	2026-09-29T11:28:32.8519714Z       "sha256": "8f51ca3a09570909fe06904f973e01ab2e3332650c291f6ea416093b4506fc67"
+verify	Import and verify native project	2026-09-29T11:28:32.8520328Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8520635Z     "export.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8520988Z       "bytes": 61,
+verify	Import and verify native project	2026-09-29T11:28:32.8521683Z       "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+verify	Import and verify native project	2026-09-29T11:28:32.8522343Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8522650Z     "fleet.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8522986Z       "bytes": 123,
+verify	Import and verify native project	2026-09-29T11:28:32.8523620Z       "sha256": "b1bb38e557e40184d371d0ec174035c1ee156a7f80232f276bf5264e55600db7"
+verify	Import and verify native project	2026-09-29T11:28:32.8524612Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8525004Z     "guest.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8525353Z       "bytes": 4662036,
+verify	Import and verify native project	2026-09-29T11:28:32.8526030Z       "sha256": "4735b5741af8d783d0c700a9542923cff370db557ac7b3ca5cdcf2f1691f2a69"
+verify	Import and verify native project	2026-09-29T11:28:32.8526691Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8527010Z     "hashes.json": {
+verify	Import and verify native project	2026-09-29T11:28:32.8527358Z       "bytes": 55725,
+verify	Import and verify native project	2026-09-29T11:28:32.8528003Z       "sha256": "4bdea0c7eaa799c94d319dea71eb2ff9f837942503f063c44c0f81579e36977c"
+verify	Import and verify native project	2026-09-29T11:28:32.8528569Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8528850Z     "host.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8529186Z       "bytes": 333952,
+verify	Import and verify native project	2026-09-29T11:28:32.8529844Z       "sha256": "dffc3aab35523953fad2101d186bb2514bd033b43ae253a31be93cc4e32c2455"
+verify	Import and verify native project	2026-09-29T11:28:32.8530503Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8530803Z     "import.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8531159Z       "bytes": 101176,
+verify	Import and verify native project	2026-09-29T11:28:32.8531854Z       "sha256": "b96a345378c8036e9debfc05c81b9a3744c8e1509dbbc38fbb83133cb90b9810"
+verify	Import and verify native project	2026-09-29T11:28:32.8532553Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8532890Z     "parse-demo.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8533293Z       "bytes": 73,
+verify	Import and verify native project	2026-09-29T11:28:32.8534197Z       "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+verify	Import and verify native project	2026-09-29T11:28:32.8534883Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8535359Z     "parse-observe_crew_guest.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8535828Z       "bytes": 73,
+verify	Import and verify native project	2026-09-29T11:28:32.8536518Z       "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+verify	Import and verify native project	2026-09-29T11:28:32.8537198Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8537589Z     "parse-observe_crew_host.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8538058Z       "bytes": 73,
+verify	Import and verify native project	2026-09-29T11:28:32.8538751Z       "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+verify	Import and verify native project	2026-09-29T11:28:32.8539426Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8539822Z     "parse-observe_crew_passenger.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8540347Z       "bytes": 73,
+verify	Import and verify native project	2026-09-29T11:28:32.8552773Z       "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+verify	Import and verify native project	2026-09-29T11:28:32.8553541Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8553965Z     "parse-session_bridge.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8554633Z       "bytes": 73,
+verify	Import and verify native project	2026-09-29T11:28:32.8555307Z       "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+verify	Import and verify native project	2026-09-29T11:28:32.8556243Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8556590Z     "passenger.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8556978Z       "bytes": 4628143,
+verify	Import and verify native project	2026-09-29T11:28:32.8557689Z       "sha256": "ccf414fe4e7a37aefcf012fa8de3077e93839242fc3b220dba8b913fd902bdf5"
+verify	Import and verify native project	2026-09-29T11:28:32.8558450Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8558823Z     "room-edge-oracle.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8559253Z       "bytes": 242,
+verify	Import and verify native project	2026-09-29T11:28:32.8559932Z       "sha256": "788760344b23de8721adb695c6ea0c4be20263c74449908b16a0907428e3dff0"
+verify	Import and verify native project	2026-09-29T11:28:32.8560606Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8560929Z     "server.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8561269Z       "bytes": 0,
+verify	Import and verify native project	2026-09-29T11:28:32.8561879Z       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+verify	Import and verify native project	2026-09-29T11:28:32.8562567Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8562905Z     "shared-shots.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8563511Z       "bytes": 105,
+verify	Import and verify native project	2026-09-29T11:28:32.8564374Z       "sha256": "fb9fcb18359113dab269fdf9af5a39f37fe16eb16a69144dc8445f86d328c009"
+verify	Import and verify native project	2026-09-29T11:28:32.8565063Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8565415Z     "source-oracle.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8565835Z       "bytes": 1159,
+verify	Import and verify native project	2026-09-29T11:28:32.8566506Z       "sha256": "6bd36ad0f8946a5a84b3d6153e114978a3cce542c2f111c25a21d9cd38f6c93e"
+verify	Import and verify native project	2026-09-29T11:28:32.8567153Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8567480Z     "wire.json.gz": {
+verify	Import and verify native project	2026-09-29T11:28:32.8567854Z       "bytes": 211980,
+verify	Import and verify native project	2026-09-29T11:28:32.8568506Z       "sha256": "48b10c62d1b356ce790cef3572c1b3650a13bb0f38632ea1657c4a37084c62e4"
+verify	Import and verify native project	2026-09-29T11:28:32.8569210Z     },
+verify	Import and verify native project	2026-09-29T11:28:32.8569516Z     "xvfb.log": {
+verify	Import and verify native project	2026-09-29T11:28:32.8569863Z       "bytes": 2348,
+verify	Import and verify native project	2026-09-29T11:28:32.8570510Z       "sha256": "b987a262609a3720f450ab6815ed90b2069dd47b7b012959ca19c325aebf5d55"
+verify	Import and verify native project	2026-09-29T11:28:32.8571179Z     }
+verify	Import and verify native project	2026-09-29T11:28:32.8571466Z   }
+verify	Import and verify native project	2026-09-29T11:28:32.8571764Z }
+verify	Import and verify native project	2026-09-29T11:28:32.8572152Z Traceback (most recent call last):
+verify	Import and verify native project	2026-09-29T11:28:32.8573071Z   File "/home/runner/work/cocs-godot/cocs-godot/port/native-vehicle-expansion/run.py", line 153, in <module>
+verify	Import and verify native project	2026-09-29T11:28:32.8574538Z     assert code==0 and 'SCRIPT ERROR' not in text and 'ERROR:' not in text,role+' native process failed'
+verify	Import and verify native project	2026-09-29T11:28:32.8575446Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+verify	Import and verify native project	2026-09-29T11:28:32.8576126Z AssertionError: host native process failed
+verify	Import and verify native project	2026-09-29T11:28:32.8576496Z 
+verify	Import and verify native project	2026-09-29T11:28:32.8607527Z ##[error]Process completed with exit code 1.

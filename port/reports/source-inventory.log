@@ -2,13 +2,13 @@ TAP version 13
 # Subtest: temporary Git checkout inventories the original lock and exactly ten combined runtime files
 ok 1 - temporary Git checkout inventories the original lock and exactly ten combined runtime files
   ---
-  duration_ms: 234.641938
+  duration_ms: 222.466211
   type: 'test'
   ...
 # Subtest: selected combined derivative retains the seven LATTICE runtime hashes and adds only three Horde files
 ok 2 - selected combined derivative retains the seven LATTICE runtime hashes and adds only three Horde files
   ---
-  duration_ms: 115.971765
+  duration_ms: 123.437583
   type: 'test'
   ...
 1..2
@@ -19,4 +19,4 @@ ok 2 - selected combined derivative retains the seven LATTICE runtime hashes and
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 955.647059
+# duration_ms 928.867231

@@ -1,0 +1,137 @@
+{
+  "platform": "win32",
+  "status": "passed",
+  "cases": [
+    {
+      "map": "meridian-exchange",
+      "passed": true,
+      "port": 56566,
+      "native_pid": 9364,
+      "cleanup": true
+    },
+    {
+      "map": "verdant-reliquary",
+      "passed": true,
+      "port": 56570,
+      "native_pid": 9264,
+      "cleanup": true
+    },
+    {
+      "map": "ember-crucible",
+      "passed": true,
+      "port": 56575,
+      "native_pid": 9144,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "prism-foundry",
+      "passed": true,
+      "port": 56584,
+      "native_pid": 3140,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "aurora-basin",
+      "passed": true,
+      "port": 56589,
+      "native_pid": 3280,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "cinder-array",
+      "passed": true,
+      "port": 56598,
+      "native_pid": 668,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "lacuna-court",
+      "passed": true,
+      "port": 56602,
+      "native_pid": 9968,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "vermilion-fold",
+      "passed": true,
+      "port": 56607,
+      "native_pid": 10152,
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm",
+      "map": "nacre-engine",
+      "passed": true,
+      "port": 56616,
+      "native_pid": 2036,
+      "cleanup": true
+    },
+    {
+      "experience": "identity-zones",
+      "map": "vermilion-fold",
+      "mode": "domination",
+      "passed": true,
+      "port": 56620,
+      "native_pid": 7508,
+      "geometry_hash": "6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a",
+      "cleanup": true
+    },
+    {
+      "experience": "native-dm-identity-resources",
+      "passed": true,
+      "pck": true
+    },
+    {
+      "experience": "showcase",
+      "passed": true,
+      "authority": false,
+      "native_pid": 1252,
+      "cleanup": true
+    },
+    {
+      "experience": "aurora-basin",
+      "passed": true,
+      "authority": false,
+      "native_pid": 9128,
+      "cleanup": true
+    },
+    {
+      "experience": "cinder-array",
+      "passed": true,
+      "authority": false,
+      "native_pid": 2168,
+      "cleanup": true
+    },
+    {
+      "experience": "particle-lab",
+      "passed": true,
+      "authority": false,
+      "native_pid": 8724,
+      "cleanup": true
+    },
+    {
+      "experience": "shader-lab",
+      "passed": true,
+      "authority": false,
+      "native_pid": 9532,
+      "cleanup": true
+    },
+    {
+      "experience": "menu",
+      "smoke": true,
+      "passed": true
+    }
+  ],
+  "graphical": false,
+  "manifest_sha256": "f4fde56f370a54ee2bf9832f4ec868b9970ddd76f2566c8ad2f3959b408c4ff6",
+  "port_commit": "156cd37060b3935aa5a93459ce4de6b2710424ab",
+  "files_verified": 148,
+  "preview_load": true,
+  "identity_resources": true,
+  "graphics_resources": true
+}

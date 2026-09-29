@@ -1,0 +1,12 @@
+{
+  "commit": "8ba6371b92658b44ccb6b28fd51f06309b037c78",
+  "native": {
+    "status": "failure",
+    "url": "https://github.com/mojomast/cocs-godot/actions/runs/36558651282",
+    "gate": "vehicle-three-native-crew"
+  },
+  "general": {
+    "status": "success",
+    "url": "https://github.com/mojomast/cocs-godot/actions/runs/36558651274"
+  }
+}

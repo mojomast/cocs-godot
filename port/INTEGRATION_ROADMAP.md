@@ -6,6 +6,14 @@ Upstream source repository is `mojomast/cocs` (remote `origin`).
 
 ## Decision in brief
 
+**2026-09-29 checkpoint:** all three authorized follow-up streams are integrated
+at `156cd370`: Uplink/Holdout/Assault, five-kind vehicles/crew, and audiovisual
+presentation. The full **273-gate** native suite and **228 server tests** pass;
+lint has zero errors. Consolidated Windows/Linux exports use that same revision;
+Linux extracted acceptance and actual Windows headless smoke checks passed.
+See [the expansion record](THREE_STREAM_EXPANSION_2026-09-29.md) for exact evidence
+and final artifact acceptance. The historical sequencing below is retained.
+
 Make the next milestone **one coherent native build**, then resume source-feature
 migration through complete player journeys. Most earlier native feature lanes are
 already integrated. The immediate work is to consolidate their entry points,

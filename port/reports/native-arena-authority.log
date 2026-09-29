@@ -2,147 +2,159 @@ TAP version 13
 # Subtest: SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
 ok 1 - SYNTHETIC loopback: ordinary v3 lifecycle, ADS true/false, FIFO ACK and stale cancellation
   ---
-  duration_ms: 359.604533
+  duration_ms: 356.433944
   type: 'test'
   ...
 # Subtest: SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
 ok 2 - SYNTHETIC loopback: epoch-aware cancel rejects old/death/round controls
   ---
-  duration_ms: 4251.033346
+  duration_ms: 4243.274604
   type: 'test'
   ...
 # Subtest: SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
 ok 3 - SYNTHETIC real-time loopback: source weapon damage/frags/results and clean restart
   ---
-  duration_ms: 15719.743038
+  duration_ms: 12685.214352
   type: 'test'
   ...
 # Subtest: loopback ownership and transport/envelope rejection leave no listeners
 ok 4 - loopback ownership and transport/envelope rejection leave no listeners
   ---
-  duration_ms: 16.202275
+  duration_ms: 16.200103
   type: 'test'
   ...
 # Subtest: launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
 ok 5 - launcher aliases mode/bots/roundSeconds and HTTP readiness use the delivered interface
   ---
-  duration_ms: 15.590047
+  duration_ms: 11.611677
   type: 'test'
   ...
 # Subtest: unknown options and unknown map ids fail before any listener opens
 ok 6 - unknown options and unknown map ids fail before any listener opens
   ---
-  duration_ms: 0.494787
+  duration_ms: 0.450865
   type: 'test'
   ...
 # Subtest: HTTP readiness is the documented GET / probe only
 ok 7 - HTTP readiness is the documented GET / probe only
   ---
-  duration_ms: 7.828542
+  duration_ms: 7.000798
   type: 'test'
   ...
 # Subtest: FIFO keeps press/release order, source normalization and one-step pulses
 ok 8 - FIFO keeps press/release order, source normalization and one-step pulses
   ---
-  duration_ms: 1.209397
+  duration_ms: 1.042944
   type: 'test'
   ...
 # Subtest: queue age, held TTL, cancel and reset cannot replay ADS/actions
 ok 9 - queue age, held TTL, cancel and reset cannot replay ADS/actions
   ---
-  duration_ms: 0.634709
+  duration_ms: 0.568966
   type: 'test'
   ...
 # Subtest: event cursor retains payload IDs, handles serial gaps and repeated events by identity
 ok 10 - event cursor retains payload IDs, handles serial gaps and repeated events by identity
   ---
-  duration_ms: 0.235711
+  duration_ms: 0.20813
+  type: 'test'
+  ...
+# Subtest: committed Nacre recipe preserves canonical geometry and strictly validates Horde metadata for DM
+ok 11 - committed Nacre recipe preserves canonical geometry and strictly validates Horde metadata for DM
+  ---
+  duration_ms: 164.859534
+  type: 'test'
+  ...
+# Subtest: committed Nacre DM authority: readiness, real room host/start and source snapshot
+ok 12 - committed Nacre DM authority: readiness, real room host/start and source snapshot
+  ---
+  duration_ms: 100.037157
   type: 'test'
   ...
 # Subtest: only three native static asset paths; no source registry aliases
-ok 11 - only three native static asset paths; no source registry aliases
+ok 13 - only three native static asset paths; no source registry aliases
   ---
-  duration_ms: 0.954228
+  duration_ms: 0.883595
   type: 'test'
   ...
 # Subtest: SYNTHETIC: each supported identity parses to an independent envelope
-ok 12 - SYNTHETIC: each supported identity parses to an independent envelope
+ok 14 - SYNTHETIC: each supported identity parses to an independent envelope
   ---
-  duration_ms: 1.977215
+  duration_ms: 1.860025
   type: 'test'
   ...
 # Subtest: strict deep generated-data validation rejects malformed/unsafe geometry
-ok 13 - strict deep generated-data validation rejects malformed/unsafe geometry
+ok 15 - strict deep generated-data validation rejects malformed/unsafe geometry
   ---
-  duration_ms: 1.583328
+  duration_ms: 1.529697
   type: 'test'
   ...
 # Subtest: Deathmatch bounded local config defaults to three bots and rejects counts above 24
-ok 14 - Deathmatch bounded local config defaults to three bots and rejects counts above 24
+ok 16 - Deathmatch bounded local config defaults to three bots and rejects counts above 24
   ---
-  duration_ms: 0.491932
+  duration_ms: 0.459652
   type: 'test'
   ...
 # Subtest: geometryHash binds canonical arena content, independent of object key order
-ok 15 - geometryHash binds canonical arena content, independent of object key order
+ok 17 - geometryHash binds canonical arena content, independent of object key order
   ---
-  duration_ms: 0.40525
+  duration_ms: 0.365755
   type: 'test'
   ...
 # Subtest: identity catalog adds exactly the three reviewed ids beside the native three
-ok 16 - identity catalog adds exactly the three reviewed ids beside the native three
+ok 18 - identity catalog adds exactly the three reviewed ids beside the native three
   ---
-  duration_ms: 0.169477
+  duration_ms: 0.16527
   type: 'test'
   ...
 # Subtest: SYNTHETIC: identity envelopes parse per family; the native parser never widens
-ok 17 - SYNTHETIC: identity envelopes parse per family; the native parser never widens
+ok 19 - SYNTHETIC: identity envelopes parse per family; the native parser never widens
   ---
-  duration_ms: 4.633674
+  duration_ms: 2.894374
   type: 'test'
   ...
 # Subtest: identity strict validation rejects malformed presentation/objective/team fields
-ok 18 - identity strict validation rejects malformed presentation/objective/team fields
+ok 20 - identity strict validation rejects malformed presentation/objective/team fields
   ---
-  duration_ms: 2.467284
+  duration_ms: 4.883981
   type: 'test'
   ...
 # Subtest: identity objective/team fields validate strictly when authored (vermilion-fold form)
-ok 19 - identity objective/team fields validate strictly when authored (vermilion-fold form)
+ok 21 - identity objective/team fields validate strictly when authored (vermilion-fold form)
   ---
-  duration_ms: 1.78738
+  duration_ms: 1.718339
   type: 'test'
   ...
 # Subtest: source constructor seam is assignment before nav/spawns/actors, not options.arena
-ok 20 - source constructor seam is assignment before nav/spawns/actors, not options.arena
+ok 22 - source constructor seam is assignment before nav/spawns/actors, not options.arena
   ---
-  duration_ms: 1.143533
+  duration_ms: 0.965098
   type: 'test'
   ...
 # Subtest: SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
-ok 21 - SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
+ok 23 - SYNTHETIC: constructor initializes native nav/spawns/pickups/actors; source registry is untouched
   ---
-  duration_ms: 22.205115
+  duration_ms: 21.256287
   type: 'test'
   ...
 # Subtest: SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
-ok 22 - SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
+ok 24 - SYNTHETIC: ordinary player input causes source damage, kills, frags, bot navigation and results
   ---
-  duration_ms: 106.678538
+  duration_ms: 88.62233
   type: 'test'
   ...
 # Subtest: SYNTHETIC: source bot attacks kill idle player and source respawn restores control
-ok 23 - SYNTHETIC: source bot attacks kill idle player and source respawn restores control
+ok 25 - SYNTHETIC: source bot attacks kill idle player and source respawn restores control
   ---
-  duration_ms: 36.048089
+  duration_ms: 34.84557
   type: 'test'
   ...
-1..23
-# tests 23
+1..25
+# tests 25
 # suites 0
-# pass 23
+# pass 25
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 21122.475969
+# duration_ms 20329.5885
