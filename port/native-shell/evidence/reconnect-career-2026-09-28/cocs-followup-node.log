@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: source award precedes results, stays distinct from equipment, and history persists
+ok 1 - source award precedes results, stays distinct from equipment, and history persists
+  ---
+  duration_ms: 264.559682
+  type: 'test'
+  ...
+# Subtest: read-only history endpoint returns the persisted recent server matches
+ok 2 - read-only history endpoint returns the persisted recent server matches
+  ---
+  duration_ms: 29.846539
+  type: 'test'
+  ...
+# Subtest: source authority survives close and recreation with the same profile, award and gear
+ok 3 - source authority survives close and recreation with the same profile, award and gear
+  ---
+  duration_ms: 19.451831
+  type: 'test'
+  ...
+# Subtest: owned authority and external guest coexist; only the same authority scope contends
+ok 4 - owned authority and external guest coexist; only the same authority scope contends
+  ---
+  duration_ms: 0.96162
+  type: 'test'
+  ...
+# Subtest: malformed existing store blocks minting and releases lease; stale crash lease is reclaimable
+ok 5 - malformed existing store blocks minting and releases lease; stale crash lease is reclaimable
+  ---
+  duration_ms: 0.516026
+  type: 'test'
+  ...
+# Subtest: shared legacy credentials migrate only the requested scope without deleting the original
+ok 6 - shared legacy credentials migrate only the requested scope without deleting the original
+  ---
+  duration_ms: 0.629348
+  type: 'test'
+  ...
+# Subtest: competing process cannot open an owned store; crashed owner lease is recovered
+ok 7 - competing process cannot open an owned store; crashed owner lease is recovered
+  ---
+  duration_ms: 22.342002
+  type: 'test'
+  ...
+# Subtest: source-owned recent history survives authority restart and retains source ordering/cap
+ok 8 - source-owned recent history survives authority restart and retains source ordering/cap
+  ---
+  duration_ms: 17.329428
+  type: 'test'
+  ...
+# Subtest: corrupt local history blocks overwrite, releases its lease, and never affects external guests
+ok 9 - corrupt local history blocks overwrite, releases its lease, and never affects external guests
+  ---
+  duration_ms: 1.423003
+  type: 'test'
+  ...
+# Subtest: dev: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
+ok 10 - dev: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
+  ---
+  duration_ms: 400.398114
+  type: 'test'
+  ...
+# Subtest: package: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
+ok 11 - package: three menu/combat/LATTICE/sports cycles preserve settings and close owned listeners
+  ---
+  duration_ms: 396.122039
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3069.58581

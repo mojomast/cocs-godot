@@ -1,0 +1,10 @@
+RECONNECT_EVIDENCE /tmp/opencode/native-reconnect-evidence-597056
+file:///home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/port/native-reconnect/rendered-journey.mjs:22
+async function until(predicate,ms,label){const end=Date.now()+ms;while(Date.now()<end){const value=predicate();if(value)return value;await sleep(60);}throw Error(`timeout: ${label}`);}
+                                                                                                                                                            ^
+
+Error: timeout: native guest lobby
+    at until (file:///home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/port/native-reconnect/rendered-journey.mjs:22:157)
+    at async file:///home/mojo/.tmp-on-disk/cocs-consolidation-verify-20260928/port/native-reconnect/rendered-journey.mjs:55:2
+
+Node.js v22.23.1

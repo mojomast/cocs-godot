@@ -66,3 +66,59 @@ overwrite itself on the next result.
 
 No build or release publication is part of this batch. Native Windows execution,
 natural full campaigns, hardware feel and eight-human acceptance remain owner-run.
+
+## Implemented behavior
+
+- Multiplayer transport loss offers **Retry / Reconnect** and **Leave**. Retry
+  sends the in-memory room token only to its original endpoint/room/map, with
+  separately endpoint-bound Career credentials. An expired room ticket can
+  therefore become a source-admitted fresh spectator seat without creating a
+  different Career. Leaving, cancelling, or rejecting the protocol clears the
+  admission context. An unsolicited late welcome cannot bind a profile or ticket.
+- A resumed same-round roster must retain the actor; a source-authorized new
+  revision can reseat it. Source reattachment resets its receive counters; the
+  native client keeps its own sequence monotonic for an existing round and verifies
+  fresh source ACKs. Snapshots, events and chat state are cleared on transport loss.
+- Career now has **RESULTS** and **HISTORY** tabs. Results display known source
+  round facts and a same-profile, same-actor, same-revision witnessed award. A
+  reconnect replay with no award witness stays unknown. Equipment confirmation
+  cannot be mistaken for an award, including malformed mixed frames.
+- History is read-only and labelled **Recent server matches**. Requests are
+  bounded; timeouts and delayed replies remain distinguishable from a fresh
+  response. All-invalid records cannot fabricate an empty history. Fractional IDs,
+  counters and XP remain unknown, while valid decimal durations are preserved.
+
+## Integrated verification
+
+Implementation tested at `b5b0ac4f` unless noted. Retained records:
+`port/native-shell/evidence/reconnect-career-2026-09-28/`.
+
+- **11/11 Node checks passed** at `025a531b`: source awards/results/history,
+  Career storage/leases, source history retention/reload, corrupt-store refusal,
+  external guest isolation, and dev/package supervisor persistence plumbing.
+- Pinned Godot import passed at `025a531b`; the source-backed native reconnect
+  fixture passed **59 checks**, including fresh-seat Career continuity and late
+  welcome rejection. Offline source-settled result recovery also passed.
+- Native Career projection/actions/modal/results/history/UI, protocol envelope,
+  reconnect menu and social checks passed on the integrated implementation.
+- **Rendered reconnect journey passed 11 checks**: an external source host and a
+  real `world/session.tscn` guest, genuine socket termination, visible Retry/Leave
+  at 960×640 / 150%, same actor/round/Career, fresh ACKs, no pointer recapture,
+  cleared chat, and explicit Leave while the external host kept running.
+- **Career results/history journey passed 19 checks**: a real 60-second source
+  match, source award-before-results order, confirmed +40 XP, server history
+  request and persistence, and 760×520 / 150% reader bounds.
+- **18-session captured product journey passed**, with 19 Home and 18 live Career
+  checks, source-confirmed equipment retained across processes and all owned ports
+  closed. Existing combat/LATTICE/sports/Horde/Cinderwake/Nacre routes remain covered.
+- The full aggregate, server suite and lint are running serially; their final
+  result will be recorded here when complete.
+
+The first rendered reconnect attempt at `025a531b` timed out before guest join:
+the observer reused one mutable pressed/released event without allowing native
+input processing. `b5b0ac4f` uses distinct events, settled focus/layout, and scaled
+pointer coordinates. The failed attempt is retained separately.
+
+Earlier Career lane evidence records `cdfbeaa8` with Sol's routing patch applied
+locally during its run. The integrated `b5b0ac4f` journey above supersedes that
+provisional composition for acceptance; neither historical report is rewritten.

@@ -27,7 +27,7 @@ simulation lock and verification evidence remain reproducible.
 | Area | Available now |
 |---|---|
 | Arena combat | Meridian Exchange, Verdant Reliquary and Ember Crucible; Deathmatch, Team Deathmatch, Instagib and Rocket Arena |
-| Multiplayer lobby | Popup-free host/join controls, selected-server room browser, source-echoed room chat, host-only start/restart, explicit Leave and read-only active-match spectators |
+| Multiplayer lobby | Popup-free host/join controls, selected-server room browser, source-echoed room chat, explicit same-room reconnect/Leave, host-only start/restart and read-only active-match spectators |
 | Arms Race | Three combat arenas, source-controlled ten-weapon ladder; independent kill-to-promotion and timed results/restart acceptance |
 | Local Horde | Three combat arenas, Nacre Engine and Cinderwake Drydock (Preview); source-owned waves/upgrades, with snapshot-driven Cinderwake transit and bulkheads; ten-wave default |
 | Zone-control demo | KOTH / Domination HUD, objective rings, source capture/scoring, results and restart; independently exercised on Verdant / Meridian |
@@ -44,7 +44,7 @@ simulation lock and verification evidence remain reproducible.
 | Session handling | Local server launcher, host setup, guest transport, stale-state handling, focus release, death/respawn and round-boundary control resets |
 | Menu continuity | Last activity and validated per-activity choices are remembered locally across menu restarts; local cheats must be enabled explicitly each time |
 | Device settings | Home Settings and F12 in a route: master volume/mute, fullscreen, mouse sensitivity and interface scale; Back releases controls and Leave returns to the supervisor menu |
-| Career / Arsenal | Home catalog browsing; F12 Settings opens the connected source profile and equipment actions. Owned local careers persist across launches; gear/mod/finish changes wait for source confirmation and apply to the next match |
+| Career / Arsenal | Home catalog browsing; F12 opens the connected source profile, equipment actions, results/award summary and recent server history. Owned local careers/history persist across launches; equipment changes wait for source confirmation and apply next match |
 
 The integrated branch includes the shared shell, Cinderwake, Career and multiplayer
 work ahead of the published tactical-HUD playable build. Follow the
@@ -53,6 +53,8 @@ and packaging status. The [Career, Arsenal and multiplayer expansion](port/NATIV
 passed 218/218 local aggregate gates, 228/228 server tests and lint with zero errors.
 Natural Cinderwake ten-wave/champion completion and consolidated package acceptance
 remain outstanding. Building and publishing remain on hold at the user's request.
+The [reconnect and Career results/history follow-up](port/RECONNECT_CAREER_BATCH_2026-09-28.md)
+has passed its integrated native journeys; its full-suite result is tracked there.
 
 Sports now have independent one-lap target victory, local-driver soccer scoring
 and results/restart acceptance. LATTICE offers both a command board and a

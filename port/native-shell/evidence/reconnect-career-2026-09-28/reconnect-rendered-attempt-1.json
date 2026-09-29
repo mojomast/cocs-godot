@@ -1,0 +1,10 @@
+{
+  "port_commit": "025a531b9d64ae397b0487752f49f5960a24a368",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "engine": "4.5.2.stable.official.6ce3de25a",
+  "checks": [],
+  "status": "FAIL",
+  "scope": "scripted native GUI and real source; not human acceptance",
+  "failure": "Native journey failed; see named check or timeout in runner output."
+}

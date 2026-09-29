@@ -1,0 +1,28 @@
+{
+  "port_commit": "b5b0ac4fcff6ad573676ebab269c71f778cde884",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "engine": "4.5.2.stable.official.6ce3de25a",
+  "checks": [
+    "guest joined as a player",
+    "source round revision observed",
+    "reconnect_button visible and fits 960x640 @150%",
+    "back_button visible and fits 960x640 @150%",
+    "pointer released and source cache cleared on drop",
+    "disconnected native screen captured",
+    "same actor and revision with monotonic native sequence",
+    "source career identity stable and pointer not recaptured",
+    "host authority remains live",
+    "Leave forgets reconnect ticket",
+    "external host still running"
+  ],
+  "status": "PASS",
+  "scope": "scripted native GUI and real source; not human acceptance",
+  "cleanup": {
+    "native_exit": null,
+    "native_signal": "SIGTERM",
+    "xvfb_exit": 0,
+    "xvfb_signal": null,
+    "server_listening": false
+  }
+}

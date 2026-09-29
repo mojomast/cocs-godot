@@ -84,6 +84,16 @@ Select a room and join; active rounds preserve source spectator rules. The room
 Chat button releases gameplay controls while typing. Messages appear only after
 the source broadcasts them; Escape closes chat.
 
+On a dropped multiplayer connection, use **Retry / Reconnect** to request the
+same room. Its source-issued ticket stays in process memory. The server may
+restore the seat or admit an expired ticket as a fresh spectator; controls remain
+released. **Leave** forgets the ticket.
+
+Career's **RESULTS** tab shows source round facts and witnessed XP awards.
+Missing awards stay unknown. **HISTORY** shows recent server matches, not a
+personal archive. Owned local source servers retain history across launches;
+external servers supply their own history.
+
 **Horde** includes ordinary maps, Nacre Engine and **Cinderwake Drydock (Preview)**.
 Cinderwake's stage controller owns transit, warnings and physical bulkheads;
 native visuals follow received source state. Natural ten-wave/champion completion

@@ -87,6 +87,16 @@ Select a room and join; active rounds retain the source's spectator behavior.
 The room Chat button opens a typing panel that releases gameplay controls.
 Messages appear only after the source broadcasts them. Escape closes chat.
 
+If a multiplayer connection drops, **Retry / Reconnect** requests the same room
+using its source-issued, memory-only ticket. The server decides whether the old
+seat can resume; an expired seat may instead join a live round as a spectator.
+Controls stay released until a fresh click. **Leave** forgets the ticket.
+
+Career's **RESULTS** tab shows source round facts and any witnessed XP award.
+An award missed while disconnected stays unknown. **HISTORY** requests recent
+server matches, not a personal identity-linked archive. Owned local source
+servers retain this history across launches; external servers supply their own.
+
 **Deathmatch** (`--experience=native-dm`) has one local human and 1–7 bots on six
 reviewed arenas. Source movement, weapon damage, scoring and bot AI remain
 authoritative.
