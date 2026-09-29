@@ -165,3 +165,20 @@ claim that unrun gates have passed.
 The three focused lanes have now released their slots. Parent integration
 `b8127f4a` is running the **271-gate** full native suite in the isolated validation
 checkout. No consolidated export has yet been produced at this checkpoint.
+
+### Integrated failures retained before export
+
+The first full run stopped at social-scene cleanup (69/271 gates executed).
+The second progressed through social and stopped at identity-Horde cleanup.
+The shared vehicle visual node now allocates only when bound to a live scene;
+weather generators explicitly release playback on exit. Both formerly failing
+fixtures and the shared-shot/independent-audio fixtures passed after that repair.
+
+A diagnostic sweep at `b5abb584` exercised the remaining 196 gates and retained
+11 failures under `native-consolidated/evidence/diagnostic-1/`. It is not a full
+aggregate pass. Follow-up ownership is bounded: the audio lead repairs older
+scene lifetimes and source-map metadata lookup; the vehicle lead investigates
+the integrated crew fixture; the UI worker investigates real-click and Home
+contracts. Parent `e66a2197` keeps on-foot respawn releases in the infantry
+lifecycle while preserving all mounted lease transitions. Final clean aggregate,
+server/lint and package acceptance are still required.
