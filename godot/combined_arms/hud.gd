@@ -4,6 +4,25 @@ var info := Label.new()
 var help := Label.new()
 var prompt := Label.new()
 var aim := Label.new()
+const SOURCE_HEALTH := {"puma":300, "hornet":240, "titan":650, "scout":140, "transport":480}
+const SOURCE_SEATS := {"puma":4, "hornet":3, "titan":3, "scout":2, "transport":6}
+
+func vehicle_card(v: Dictionary, seat: Variant) -> String:
+	var kind := str(v.get("kind", ""))
+	var occupants := 0
+	for role: String in ["driver", "gunner"]:
+		if v.get(role) != null: occupants += 1
+	var passengers: Variant = v.get("passengers", [])
+	if passengers is Array:
+		for passenger: Variant in passengers:
+			if passenger != null: occupants += 1
+	var maximum: float = float(v.get("maxHealth", SOURCE_HEALTH.get(kind, 0)))
+	var result := "%s / %s  •  Seats %d/%d  •  Hull %.0f / %.0f  •  Heat %.0f%%" % [kind.to_upper(), str(seat), occupants, SOURCE_SEATS.get(kind, 0), float(v.get("health", 0)), maximum, float(v.get("heat", 0)) * 100.0]
+	if v.get("overheated", false): result += "  •  OVERHEATED"
+	if float(v.get("health", 0)) <= 0: result += "  •  DESTROYED"
+	var respawn := float(v.get("respawnTimer", 0))
+	if respawn > 0: result += "  •  Respawn %.1fs" % respawn
+	return result
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -40,7 +59,7 @@ func update(a: Dictionary, v: Dictionary, near: Dictionary, engaged: bool, phase
 	aim.visible = not mounted and engaged
 	info.text = "Infantry  •  HP %.0f  •  Team %s" % [a.get("health", 0), a.get("team", "—")]
 	if mounted:
-		info.text = "%s / %s  •  %.1f m/s  •  Hull %.0f / %.0f  •  Heat %.0f%%" % [str(v.kind).to_upper(), a.get("vehicleSeat", ""), Vector2(v.vx, v.vz).length(), v.health, v.get("maxHealth", 300), float(v.get("heat", 0))*100]
+		info.text = vehicle_card(v, a.get("vehicleSeat", ""))
 	help.text = "WASD move  •  Mouse look / LMB fire  •  E mount / exit\nSpace %s  •  Shift %s\nEnter capture controls  •  Esc release  •  Fresh Enter + keys after seat change" % ["brake tap" if mounted else "jump", "boost" if mounted else "sprint"]
 	if mounted and (v.kind != "puma" or a.get("vehicleSeat") != "driver"):
 		help.text = "Preview seat — Puma driver is the supported driving slice\nEnter then E to exit  •  Esc release"
