@@ -5,11 +5,13 @@
   "actor_ids_after": [
     "extended-mag"
   ],
-  "actor_ids_before": [],
+  "actor_ids_before": [
+    "extended-mag"
+  ],
   "back": [
-    237,
-    16,
-    132,
+    24,
+    72,
+    450,
     44
   ],
   "category": "loadout",
@@ -26,78 +28,13 @@
   "phase": 3,
   "restarted": true,
   "results": 1,
-  "room": "Z9ZT",
+  "room": "K276",
   "round_starts": 2,
-  "row_rects": [
-    {
-      "rect": [
-        16,
-        229,
-        466,
-        23
-      ],
-      "text": "Magazine: Extended Magazine"
-    },
-    {
-      "rect": [
-        16,
-        260,
-        466,
-        23
-      ],
-      "text": "Finish: Stock / none"
-    },
-    {
-      "rect": [
-        16,
-        291,
-        466,
-        66
-      ],
-      "text": "Stock / unknown · Primary: Stock / unselected · Armor: Stock / unselected · Utility: Stock / unselected · Optic: Stock / unselected · Barrel: Stock / unselected · Underbarrel: Stock / unselected"
-    },
-    {
-      "rect": [
-        16,
-        365,
-        466,
-        43
-      ],
-      "text": "Saved for the next match: the current match keeps its round-start loadout. Only a confirmed source reply updates this view."
-    },
-    {
-      "rect": [
-        16,
-        416,
-        466,
-        20
-      ],
-      "text": "Source confirmed selection · saved for next match."
-    },
-    {
-      "rect": [
-        16,
-        444,
-        466,
-        20
-      ],
-      "text": "MATCHES 1 · WINS 0 · KILLS 0"
-    },
-    {
-      "rect": [
-        16,
-        472,
-        466,
-        20
-      ],
-      "text": "MODE WINS/MATCHES · deathmatch 0/1"
-    }
-  ],
   "rows_bounds": [
-    16,
-    229,
-    466,
-    263
+    24,
+    377,
+    450,
+    297
   ],
   "saved": {
     "fields": {
@@ -150,21 +87,15 @@
     },
     "ready": true
   },
-  "seconds": 58.0272308484845,
+  "seconds": 58.127777777778,
   "spectating": false,
-  "state_text": "CONNECTED SOURCE CAREER · LEVEL 1 · XP 40\nMATCHES 1 · WINS 0 · KILLS 0",
+  "state_text": "CONNECTED SOURCE CAREER · LEVEL 1 · XP 40\nMATCHES 1 · WINS 0 · KILLS 0\nMODE WINS/MATCHES · deathmatch 0/1\nSource confirmed selection · saved for next match.",
   "summary": "Saved for next match · Extended Magazine",
-  "summary_rect": [
-    16,
-    199,
-    466,
-    22
-  ],
   "tab_loadout": [
-    70,
-    123,
+    78,
+    241,
     86,
-    32
+    44
   ],
   "viewport": [
     506.666656494141,
