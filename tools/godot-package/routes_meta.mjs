@@ -92,7 +92,7 @@ const latticeParams = () => ([
   {key: 'bots', kind: 'range', label: 'Practice Bots', min: 0, max: 16, default: 2, step: 1},
 ]);
 
-// Exactly the 22 route ids of SPEC section 4, in menu order (category order,
+// The original 22 route ids plus one source-backed Assault destination, in menu order (category order,
 // then table order inside each category).
 export const ROUTES = [
   // --- play ---
@@ -140,21 +140,35 @@ export const ROUTES = [
   {
     id: 'zones', category: 'modes',
     label: 'Zones',
-    description: 'King of the Hill and Domination on combat arenas, Domination on Tidal and Sunscar',
+    description: 'King of the Hill, Domination, Uplink and Holdout on combat arenas; Domination on Tidal and Sunscar',
     params: [
       {key: 'map', kind: 'choice', label: 'Map',
        values: [...COMBAT_MAPS, 'tidal-citadel', 'sunscar-convoy'],
        default: 'meridian-exchange'},
       {key: 'mode', kind: 'choice', label: 'Mode',
        values_by_map: {
-         'meridian-exchange': ['domination', 'koth'],
-         'verdant-reliquary': ['koth', 'domination'],
-         'ember-crucible':    ['koth', 'domination'],
+         'meridian-exchange': ['domination', 'koth', 'uplink', 'holdout'],
+         'verdant-reliquary': ['koth', 'domination', 'uplink', 'holdout'],
+         'ember-crucible':    ['koth', 'domination', 'uplink', 'holdout'],
          'tidal-citadel':     ['domination'],
          'sunscar-convoy':    ['domination'],
        },
        default: 'domination'},
       {key: 'bots', kind: 'range', label: 'Bots', min: 0, max: 8, default: 2, step: 1},
+      {key: 'round-seconds', kind: 'range', label: 'Round seconds', min: 60, max: 900, default: 60, step: 1},
+      {key: 'score-limit', kind: 'range', label: 'Frag limit', min: 1, max: 900, default: 100, step: 1},
+    ],
+  },
+  {
+    id: 'assault', category: 'modes',
+    label: 'Assault',
+    description: 'Attack or defend source-owned sectors on Tidal Citadel and Sunscar Convoy, with vehicles',
+    params: [
+      {key: 'map', kind: 'choice', label: 'Map', values: ['tidal-citadel', 'sunscar-convoy'], default: 'tidal-citadel'},
+      {key: 'mode', kind: 'choice', label: 'Mode', values_by_map: {'tidal-citadel':['assault'], 'sunscar-convoy':['assault']}, default: 'assault'},
+      {key: 'bots', kind: 'range', label: 'Bots', min: 0, max: 8, default: 2, step: 1},
+      {key: 'round-seconds', kind: 'range', label: 'Round seconds', min: 60, max: 900, default: 60, step: 1},
+      {key: 'score-limit', kind: 'range', label: 'Sectors', min: 1, max: 9, default: 3, step: 1},
     ],
   },
   {

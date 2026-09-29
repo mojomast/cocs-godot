@@ -5,7 +5,7 @@ import {launchOptions, EXPERIENCES, NATIVE_EXPERIENCES, HELP} from './launch_opt
 import {nativeScenes, rejectedOptions} from '../../port/native-graphics-launchers/fixtures.mjs';
 
 test('source graphics routes are native-only, headless only on request, outside the map catalog', () => {
-  assert.equal(Object.keys(EXPERIENCES).length,10);
+  assert.equal(Object.keys(EXPERIENCES).length,11);
   assert.deepEqual(Object.keys(NATIVE_EXPERIENCES),Object.keys(nativeScenes));
   const catalog = JSON.parse(readFileSync(new URL('../../port/contracts/map-selection.json',import.meta.url)));
   assert.equal(catalog.maps.length,9);

@@ -38,7 +38,7 @@ const EXPECTED_IDS = [
   // native
   'native-dm', 'identity-zones', 'horde',
   // modes
-  'arms-race', 'zones', 'objectives', 'combined-arms', 'sports', 'lattice', 'lattice-world',
+  'arms-race', 'zones', 'assault', 'objectives', 'combined-arms', 'sports', 'lattice', 'lattice-world',
   // lab
   'viewer', 'operator-preview', 'showcase', 'aurora-basin', 'cinder-array',
   'particle-lab', 'shader-lab',
@@ -64,19 +64,19 @@ test('routes.json regeneration is idempotent (gen_routes --check)', () => {
   execFileSync(process.execPath, [join(here, 'gen_routes.mjs'), '--check'], {stdio: 'pipe'});
 });
 
-test('registry declares exactly the 22 SPEC routes and covers every experience', () => {
+test('registry declares the original 22 routes plus Assault and covers every experience', () => {
   assert.equal(registry.version, 1);
   assert.equal(registry.generated_by, 'tools/godot-package/gen_routes.mjs');
   assert.deepEqual(registry.categories, META_CATEGORIES);
   const ids = registry.routes.map(route => route.id);
-  assert.equal(ids.length, 22);
+  assert.equal(ids.length, 23);
   assert.deepEqual([...ids].sort(), [...EXPECTED_IDS].sort());
   // Menu order matches the hand-written metadata order.
   assert.deepEqual(ids, META_ROUTES.map(route => route.id));
-  assert.equal(new Set(ids).size, 22, 'route ids must be unique');
+  assert.equal(new Set(ids).size, 23, 'route ids must be unique');
 
-  // Table counts stay 10/5 (SPEC 5.2: no count changes).
-  assert.equal(Object.keys(EXPERIENCES).length, 10);
+  // Assault adds one source-backed experience; five offline labs unchanged.
+  assert.equal(Object.keys(EXPERIENCES).length, 11);
   assert.equal(Object.keys(NATIVE_EXPERIENCES).length, 5);
   for (const key of Object.keys(EXPERIENCES)) assert.ok(ids.includes(key), `EXPERIENCES.${key} uncovered`);
   for (const key of Object.keys(NATIVE_EXPERIENCES)) assert.ok(ids.includes(key), `NATIVE_EXPERIENCES.${key} uncovered`);
@@ -188,6 +188,7 @@ test('optional diagnostics and cheats flags stay separate on every route', () =>
   const zones = registry.routes.find(route => route.id === 'zones');
   assert.deepEqual(zones.params.find(param => param.key === 'bots'),
     {key:'bots', kind:'range', label:'Bots', min:0, max:8, default:2, step:1});
+  assert.equal(registry.routes.find(route => route.id === 'assault').params.find(param => param.key === 'score-limit').max, 9);
 });
 
 test('generated capability matches a fresh parser probe for every route', () => {

@@ -13,7 +13,8 @@ export const EXPERIENCES = {
     // Reviewed static identity entry: outside the locked nine-map catalog, so the
     // scene and modes come only from this allowlist.
     identity:{'nacre-engine':{scene:'res://native_arenas/identity_horde_demo.tscn', modes:['horde']},'cinderwake-drydock':{scene:'res://horde_maps/demo.tscn', modes:['horde']}}},
-  zones: {scene:'res://zone_modes/demo.tscn', maps:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
+  zones: {scene:'res://zone_modes/demo.tscn', maps:{'meridian-exchange':['domination','koth','uplink','holdout'], 'verdant-reliquary':['koth','domination','uplink','holdout'], 'ember-crucible':['koth','domination','uplink','holdout'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
+  assault: {scene:'res://assault/demo.tscn', maps:{'tidal-citadel':['assault'], 'sunscar-convoy':['assault']}},
   'combined-arms': {scene:'res://combined_arms/demo.tscn', maps:{'sunscar-convoy':['combined-arms']}},
   sports: {scene:'res://sports/demo.tscn', maps:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
   objectives: {scene:'res://objectives/demo.tscn', maps:{'tidal-citadel':['ctf'], 'sunscar-convoy':['payload']}},
@@ -97,10 +98,10 @@ export function options(argv, catalog) {
       userArgs: [...diagnostics, ...(flags.has('--smoke') ? ['--smoke'] : [])]};
   }
   if (values.bots !== undefined) {
-    if (!['combat','zones','lattice','lattice-world'].includes(experience)) throw Error('--bots requires combat, zones, lattice, lattice-world, native-dm or identity-zones');
+    if (!['combat','zones','assault','lattice','lattice-world'].includes(experience)) throw Error('--bots requires combat, zones, assault, lattice, lattice-world, native-dm or identity-zones');
     if (!/^\d+$/.test(values.bots) || Number(values.bots) > (experience.startsWith('lattice') ? 16 : 8)) throw Error(`--bots must be 0..${experience.startsWith('lattice') ? 16 : 8}`);
   }
-  for (const key of ['round-seconds','score-limit']) if (values[key] !== undefined) throw Error(`--${key} requires native-dm or identity-zones`);
+  for (const key of ['round-seconds','score-limit']) if (values[key] !== undefined && !['zones','assault'].includes(experience)) throw Error(`--${key} requires native-dm, identity-zones, zones or assault`);
   if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
     for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by native-only ${experience}`);
     for (const flag of flags) if (flag !== '--smoke' && flag !== '--diagnostics') throw Error(`${flag} is not supported by native-only ${experience}`);
@@ -133,6 +134,11 @@ export function options(argv, catalog) {
   if (!identity && !Object.hasOwn(selected.maps, map)) throw Error(`${experience} does not support map ${map}`);
   const allowed = identity ? identity.modes : selected.maps[map];
   const mode = values.mode ?? allowed[0];
+  if (['zones','assault'].includes(experience)) {
+    for (const [key,min,max] of [['round-seconds',60,900],['score-limit',1,mode === 'assault' ? 9 : 900]]) {
+      if (values[key] !== undefined && (!/^\d+$/.test(values[key]) || !Number.isSafeInteger(Number(values[key])) || Number(values[key]) < min || Number(values[key]) > max)) throw Error(`--${key} must be ${min}..${max}`);
+    }
+  }
   if (values.bots !== undefined && experience === 'combat' && values.endpoint !== undefined) throw Error('--bots requires owned local combat authority');
   // Identity maps are outside the locked nine-map catalog; the reviewed static
   // entry above is their allowlist and carries its own scene.
@@ -174,7 +180,7 @@ export function options(argv, catalog) {
     if (!/^\d+$/.test(values[key]) || !Number.isSafeInteger(Number(values[key])) || Number(values[key]) < min || Number(values[key]) > max) throw Error(`--${key} must be ${min}..${max}`);
   }
   const userArgs = [`--map=${map}`, `--mode=${mode}`];
-  for (const key of ['time-limit','round-target']) if (values[key] !== undefined) userArgs.push(`--${key}=${values[key]}`);
+  for (const key of ['time-limit','round-target','round-seconds','score-limit']) if (values[key] !== undefined) userArgs.push(`--${key}=${values[key]}`);
   if (values.waves !== undefined) userArgs.push(`--waves=${values.waves}`);
   if (values.operator !== undefined) userArgs.push(`--operator=${values.operator}`);
   if (values.harness !== undefined) userArgs.push(`--harness=${values.harness}`);
@@ -199,6 +205,9 @@ export const HELP = `COCS native demo — Node >=22.13.0 (bundled on Windows)
   node run.mjs --play --map=meridian-exchange --mode=deathmatch
   node run.mjs --experience=zones --map=meridian-exchange --mode=domination
   node run.mjs --experience=zones --map=verdant-reliquary --mode=koth
+  node run.mjs --experience=zones --map=meridian-exchange --mode=uplink
+  node run.mjs --experience=zones --map=ember-crucible --mode=holdout
+  node run.mjs --experience=assault --map=tidal-citadel --mode=assault
   node run.mjs --experience=combined-arms
   node run.mjs --experience=arms-race --map=meridian-exchange
   node run.mjs --experience=horde --map=meridian-exchange
@@ -257,8 +266,11 @@ Horde: three combat arenas; local-only solo authority, default ten waves.
   Click to engage; Tab scores; Escape releases controls; Enter restarts results.
 Arms Race: three combat arenas; two Normal bots, ten weapons, 180-second rounds.
   Source locks weapons. Click to engage; Enter restarts results.
-Zones: koth/domination on combat arenas; domination on Tidal/Sunscar.
-  Two bots, 60-second rounds. Click to engage; Enter restarts results.
+Zones: koth/domination/uplink/holdout on combat arenas; domination on Tidal/Sunscar.
+  Assault: sector attack/defend on Tidal/Sunscar, including source vehicles.
+  --round-seconds=60..900; --score-limit=1..900 is a frag limit for zones,
+  while --score-limit=1..9 chooses assault sectors. Defaults 60 / 100 or 3.
+  Two bots by default. Click to engage; Enter restarts authoritative results.
 Combined arms: Sunscar Puma slice. Enter engages; E mounts/exits; Space brake tap.
 LATTICE board: maps/modes available; Practice/Operations defaults 900 seconds and 2 bots.
 LATTICE world: --time-limit=60..900 (default 900), --bots=0..16 for Practice/Operations,

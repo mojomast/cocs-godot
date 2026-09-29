@@ -53,7 +53,7 @@ func _initialize() -> void:
 	uplink.over = true
 	uplink.winner = 1
 	uplink.objectives.winner = 0
-	check(adapter.apply(uplink,7,uplink.mapId,"uplink") and "VICTORY" in adapter.text().title and "COMPLETED 3" in adapter.text().detail, "objective winner priority independent of score or frag limit")
+	check(adapter.apply(uplink,7,uplink.mapId,"uplink") and "DEFEAT" in adapter.text().title and "COMPLETED 3" in adapter.text().detail, "source final winner remains sole authority even if objective metadata disagrees")
 	var malformed := uplink.duplicate(true)
 	malformed.objectives.stageCaptures["1"] = -1
 	check(not adapter.apply(malformed,7,uplink.mapId,"uplink") and adapter.projection.is_empty(), "invalid bank clears prior result")

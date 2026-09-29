@@ -135,8 +135,8 @@ const buildParams = route => {
 };
 
 const buildRegistry = () => {
-  assert.equal(ROUTES.length, 22, 'SPEC section 4 fixes the route count at 22');
-  assert.equal(new Set(ROUTES.map(route => route.id)).size, 22, 'route ids must be unique');
+  assert.equal(ROUTES.length, 23, 'original 22 destinations plus Assault');
+  assert.equal(new Set(ROUTES.map(route => route.id)).size, 23, 'route ids must be unique');
   const categoryIds = new Set(CATEGORIES.map(category => category.id));
   const mapIds = new Set(catalog.maps.map(map => map.id));
 

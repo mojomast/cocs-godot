@@ -11,7 +11,7 @@ const nativeMaps = ['prism-foundry', 'aurora-basin', 'cinder-array'];
 // reviewed local 1..24 roster and must test that contract directly instead of
 // changing expectations for the independent standalone launcher.
 test('package Native DM accepts real local 1..24 bot launches on reviewed arenas', () => {
-  assert.equal(Object.keys(EXPERIENCES).length, 10);
+  assert.equal(Object.keys(EXPERIENCES).length, 11);
   assert.equal(Object.keys(NATIVE_EXPERIENCES).length, 5);
   const defaults = options(['--experience=native-dm'], catalog);
   assert.deepEqual([defaults.map, defaults.mode, defaults.bots, defaults.roundSeconds],
@@ -47,12 +47,12 @@ test('package Native DM rejects unreviewed options and malformed or excessive bo
     ['--round-seconds=60', '--round-seconds=60'], ['--smoke', '--smoke']]) {
     assert.throws(() => options(['--experience=native-dm', ...args], catalog), Error, args.join(' '));
   }
-  // The two source-owned combat families have their own 0..8 option; no
+  // The three source-owned combat families have their own 0..8 option; no
   // other scene inherits the native adapter's 24-seat capability.
   for (const experience of [...Object.keys(EXPERIENCES), ...Object.keys(NATIVE_EXPERIENCES)]) {
-    if (!['combat', 'zones'].includes(experience)) {
+    if (!['combat', 'zones', 'assault', 'lattice', 'lattice-world'].includes(experience)) {
       assert.throws(() => options([`--experience=${experience}`, '--bots=2'], catalog), Error, experience);
     }
-    assert.throws(() => options([`--experience=${experience}`, '--round-seconds=120'], catalog), Error, experience);
+    if (!['zones', 'assault'].includes(experience)) assert.throws(() => options([`--experience=${experience}`, '--round-seconds=120'], catalog), Error, experience);
   }
 });

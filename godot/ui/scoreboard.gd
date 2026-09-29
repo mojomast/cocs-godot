@@ -30,6 +30,7 @@ var local_actor_id := -1
 var map_mode := ""
 var clock_text := ""
 var team_score_text := ""
+var objective_rank_text := ""
 var dirty := true
 var last_phase := -999
 var panel := PanelContainer.new()
@@ -100,6 +101,7 @@ func clear_round() -> void:
 	map_mode = ""
 	clock_text = ""
 	team_score_text = ""
+	objective_rank_text = ""
 	dirty = true
 	panel.hide()
 	for row: Dictionary in rows: row.node.hide()
@@ -158,7 +160,18 @@ static func number(value: Variant) -> Variant:
 		return int(clampf(float(value), -1000000000, 1000000000))
 	return null
 
+static func metric(value: Variant) -> Variant:
+	if (value is int or value is float) and is_finite(float(value)): return float(value)
+	return null
+
 static func ranked_before(a: Dictionary, b: Dictionary) -> bool:
+	if a.get("objective_mode", false) or b.get("objective_mode", false):
+		# Never imply frag ordering is the authoritative objective ordering when
+		# source scoreStats are absent on an actor. Keep the wire roster order.
+		if not a.get("objective_known", false) or not b.get("objective_known", false): return a.order < b.order
+		for i: int in range(3):
+			if a.objective_rank[i] != b.objective_rank[i]: return a.objective_rank[i] > b.objective_rank[i]
+		return a.order < b.order
 	if a.frags_sort != b.frags_sort: return a.frags_sort > b.frags_sort
 	if a.deaths_sort != b.deaths_sort: return a.deaths_sort < b.deaths_sort
 	var name_order: int = a.player_name.naturalnocasecmp_to(b.player_name)
@@ -194,16 +207,30 @@ static func roster_text(total: int, humans: int, bots: int, npcs: int) -> String
 static func team_totals(state: Dictionary) -> String:
 	var config: Variant = state.get("config")
 	# Source emits teamScores even in FFA. Only expose totals for the enabled team mode.
-	if not config is Dictionary or config.get("mode") != "teamdeathmatch": return ""
+	if not config is Dictionary or config.get("mode") not in ["teamdeathmatch", "uplink", "holdout", "assault"]: return ""
 	var scores: Variant = state.get("teamScores")
 	var red: Variant = number(scores.get("0")) if scores is Dictionary else null
 	var blue: Variant = number(scores.get("1")) if scores is Dictionary else null
 	return "Team totals  ·  Red %s  ·  Blue %s" % [str(red) if red != null else "—", str(blue) if blue != null else "—"]
 
+static func objective_rank(actor: Dictionary, mode: String) -> Dictionary:
+	if mode not in ["uplink", "holdout", "assault"]: return {"objective_mode":false}
+	var stats: Variant = actor.get("scoreStats")
+	var primary := "objectiveCaptures" if mode != "holdout" else "objectiveTime"
+	var secondary := "objectiveContests" if mode == "uplink" else ("objectiveCaptures" if mode == "holdout" else "objectiveTime")
+	var frags: Variant = number(actor.get("frags"))
+	if not stats is Dictionary or metric(stats.get(primary)) == null or metric(stats.get(secondary)) == null or frags == null:
+		return {"objective_mode":true, "objective_known":false, "objective_rank":[], "objective_label":"objective stats pending"}
+	return {"objective_mode":true, "objective_known":true,
+		"objective_rank":[metric(stats[primary]), metric(stats[secondary]), frags],
+		"objective_label":"%s %s · %s %s" % ["time" if mode == "holdout" else "captures", str(stats[primary]), "contests" if mode == "uplink" else ("captures" if mode == "holdout" else "time"), str(stats[secondary])]}
+
 func apply_state(state: Dictionary, local_id: int, is_results: bool = false) -> void:
 	# Keep only presentation scalars, never the large simulation snapshot.
 	var next: Array[Dictionary] = []
 	var actors: Array = state.get("actors", []) if state.get("actors", []) is Array else []
+	var config: Dictionary = state.get("config", {}) if state.get("config", {}) is Dictionary else {}
+	var mode: String = str(config.get("mode", ""))
 	if actor_count != actors.size(): dirty = true
 	actor_count = actors.size()
 	for i: int in range(mini(actors.size(), MAX_ACTORS)):
@@ -213,14 +240,21 @@ func apply_state(state: Dictionary, local_id: int, is_results: bool = false) -> 
 		var deaths: Variant = number(actor.get("deaths"))
 		var team_text := team_label(actor.get("team"))
 		var id: Variant = number(actor.get("id"))
+		var rank := objective_rank(actor, mode)
 		next.append({"order":i, "player_name":plain(actor.get("name"), "Player %s" % (str(id) if id != null else "?")),
 			"local":id != null and local_id >= 0 and id == local_id, "team":team_text,
 			"frags":str(frags) if frags != null else "—", "deaths":str(deaths) if deaths != null else "—",
 			"frags_sort":frags if frags != null else 0, "deaths_sort":deaths if deaths != null else 0,
 			"npc":actor.get("isNpc") == true,
-			"bot":actor.get("isNpc") != true and actor.get("bot") != null})
+			"bot":actor.get("isNpc") != true and actor.get("bot") != null}.merged(rank))
+	if mode in ["uplink", "holdout", "assault"] and next.any(func(item: Dictionary) -> bool: return not item.get("objective_known", false)):
+		for item: Dictionary in next: item.objective_known = false
 	next.sort_custom(ranked_before)
-	var config: Dictionary = state.get("config", {}) if state.get("config", {}) is Dictionary else {}
+	var next_objective := ""
+	if mode in ["uplink", "holdout", "assault"]:
+		next_objective = "Objective order: captures / contests / frags" if mode == "uplink" else ("Objective order: time / captures / frags" if mode == "holdout" else "Objective order: sectors / time / frags")
+		if next.any(func(item: Dictionary) -> bool: return not item.get("objective_known", false)):
+			next_objective = "Objective stats pending · source roster order (not frag ranking)"
 	var next_map_mode := "%s  ·  %s" % [plain(state.get("mapName"), plain(state.get("mapId"), "Map unknown")), plain(state.get("modeName"), plain(config.get("mode"), "Mode unknown"))]
 	var elapsed: Variant = number(state.get("time"))
 	var next_clock := "Elapsed —"
@@ -229,12 +263,13 @@ func apply_state(state: Dictionary, local_id: int, is_results: bool = false) -> 
 	if elapsed != null:
 		var seconds: int = maxi(0, elapsed)
 		next_clock = "Elapsed %d:%02d" % [seconds / 60, seconds % 60]
-	if entries != next or map_mode != next_map_mode or clock_text != next_clock or team_score_text != next_team_scores or finished != is_results or local_actor_id != local_id:
+	if entries != next or map_mode != next_map_mode or clock_text != next_clock or team_score_text != next_team_scores or objective_rank_text != next_objective or finished != is_results or local_actor_id != local_id:
 		dirty = true
 	entries = next
 	map_mode = next_map_mode
 	clock_text = next_clock
 	team_score_text = next_team_scores
+	objective_rank_text = next_objective
 	local_actor_id = local_id
 	active = true
 	finished = is_results
@@ -470,6 +505,7 @@ func render() -> void:
 	var round_text := "Round %d  ·  " % round_number if round_number > 0 else ""
 	summary.text = summary_text(round_text + clock_text, roster_label())
 	if not team_score_text.is_empty(): summary.text += "\n" + team_score_text
+	if not objective_rank_text.is_empty(): summary.text += "\n" + objective_rank_text
 	var first := page * page_size
 	for i: int in range(rows.size()):
 		var row: Dictionary = rows[i]

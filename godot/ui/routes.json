@@ -633,7 +633,7 @@
       "id": "zones",
       "category": "modes",
       "label": "Zones",
-      "description": "King of the Hill and Domination on combat arenas, Domination on Tidal and Sunscar",
+      "description": "King of the Hill, Domination, Uplink and Holdout on combat arenas; Domination on Tidal and Sunscar",
       "flags": [
         "--experience=zones"
       ],
@@ -658,15 +658,21 @@
           "values_by_map": {
             "meridian-exchange": [
               "domination",
-              "koth"
+              "koth",
+              "uplink",
+              "holdout"
             ],
             "verdant-reliquary": [
               "koth",
-              "domination"
+              "domination",
+              "uplink",
+              "holdout"
             ],
             "ember-crucible": [
               "koth",
-              "domination"
+              "domination",
+              "uplink",
+              "holdout"
             ],
             "tidal-citadel": [
               "domination"
@@ -684,6 +690,24 @@
           "min": 0,
           "max": 8,
           "default": 2,
+          "step": 1
+        },
+        {
+          "key": "round-seconds",
+          "kind": "range",
+          "label": "Round seconds",
+          "min": 60,
+          "max": 900,
+          "default": 60,
+          "step": 1
+        },
+        {
+          "key": "score-limit",
+          "kind": "range",
+          "label": "Frag limit",
+          "min": 1,
+          "max": 900,
+          "default": 100,
           "step": 1
         }
       ],
@@ -712,11 +736,15 @@
           "modes_by_map": {
             "ember-crucible": [
               "domination",
-              "koth"
+              "holdout",
+              "koth",
+              "uplink"
             ],
             "meridian-exchange": [
               "domination",
-              "koth"
+              "holdout",
+              "koth",
+              "uplink"
             ],
             "sunscar-convoy": [
               "domination"
@@ -726,13 +754,110 @@
             ],
             "verdant-reliquary": [
               "domination",
-              "koth"
+              "holdout",
+              "koth",
+              "uplink"
             ]
           }
         },
         "defaults": {
           "map": "meridian-exchange",
           "mode": "domination"
+        }
+      }
+    },
+    {
+      "id": "assault",
+      "category": "modes",
+      "label": "Assault",
+      "description": "Attack or defend source-owned sectors on Tidal Citadel and Sunscar Convoy, with vehicles",
+      "flags": [
+        "--experience=assault"
+      ],
+      "params": [
+        {
+          "key": "map",
+          "kind": "choice",
+          "label": "Map",
+          "values": [
+            "tidal-citadel",
+            "sunscar-convoy"
+          ],
+          "default": "tidal-citadel"
+        },
+        {
+          "key": "mode",
+          "kind": "choice",
+          "label": "Mode",
+          "values_by_map": {
+            "tidal-citadel": [
+              "assault"
+            ],
+            "sunscar-convoy": [
+              "assault"
+            ]
+          },
+          "default": "assault"
+        },
+        {
+          "key": "bots",
+          "kind": "range",
+          "label": "Bots",
+          "min": 0,
+          "max": 8,
+          "default": 2,
+          "step": 1
+        },
+        {
+          "key": "round-seconds",
+          "kind": "range",
+          "label": "Round seconds",
+          "min": 60,
+          "max": 900,
+          "default": 60,
+          "step": 1
+        },
+        {
+          "key": "score-limit",
+          "kind": "range",
+          "label": "Sectors",
+          "min": 1,
+          "max": 9,
+          "default": 3,
+          "step": 1
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics overlay (F11)",
+          "default": false
+        }
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "sunscar-convoy",
+            "tidal-citadel"
+          ],
+          "modes_by_map": {
+            "sunscar-convoy": [
+              "assault"
+            ],
+            "tidal-citadel": [
+              "assault"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "tidal-citadel",
+          "mode": "assault"
         }
       }
     },

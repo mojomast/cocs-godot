@@ -4,8 +4,8 @@ import {readFileSync} from 'node:fs';
 import {options, EXPERIENCES, NATIVE_EXPERIENCES, HELP} from './options.mjs';
 import {nativeScenes, rejectedOptions} from '../../port/native-graphics-launchers/fixtures.mjs';
 
-test('package graphics routes are independent of the ten source routes and nine map identities', () => {
-  assert.equal(Object.keys(EXPERIENCES).length,10);
+test('package graphics routes are independent of the source routes and nine map identities', () => {
+  assert.equal(Object.keys(EXPERIENCES).length,11);
   assert.deepEqual(Object.keys(NATIVE_EXPERIENCES),Object.keys(nativeScenes));
   const catalog = JSON.parse(readFileSync(new URL('../../port/contracts/map-selection.json',import.meta.url)));
   assert.equal(catalog.maps.length,9);

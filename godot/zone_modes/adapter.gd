@@ -85,7 +85,7 @@ func apply(state: Dictionary, local_id: int, map_id: String, mode: String) -> bo
 		parsed.append(zone.duplicate(true))
 	projection = {"mode":mode, "zones":parsed, "team":int(local.team), "scores":scores,
 		"actor":local.duplicate(true), "time":float(state.time), "limit":float(config.timeLimit),
-		"over":state.over, "winner":objective.winner if objective.winner != null else state.winner, "objective_winner":objective.winner}
+		"over":state.over, "winner":state.winner, "objective_winner":objective.winner}
 	projection.merge(variant)
 	error = ""
 	return true

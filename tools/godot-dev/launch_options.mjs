@@ -12,7 +12,8 @@ export const EXPERIENCES = {
     // Reviewed static identity entry: the identity maps are outside the locked
     // nine-map catalog, so the scene and mode come from this allowlist only.
     identity:{'nacre-engine':{scene:'res://native_arenas/identity_horde_demo.tscn', modes:['horde']},'cinderwake-drydock':{scene:'res://horde_maps/demo.tscn', modes:['horde']}}},
-  zones: {scene:'res://zone_modes/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['domination','koth'], 'verdant-reliquary':['koth','domination'], 'ember-crucible':['koth','domination'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
+  zones: {scene:'res://zone_modes/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['domination','koth','uplink','holdout'], 'verdant-reliquary':['koth','domination','uplink','holdout'], 'ember-crucible':['koth','domination','uplink','holdout'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
+  assault: {scene:'res://assault/demo.tscn', map:'tidal-citadel', modes:{'tidal-citadel':['assault'], 'sunscar-convoy':['assault']}},
   'combined-arms': {scene:'res://combined_arms/demo.tscn', map:'sunscar-convoy', modes:{'sunscar-convoy':['combined-arms']}},
   sports: {scene:'res://sports/demo.tscn', map:'ion-speedway', modes:{'ion-speedway':['puma-race'], 'aurora-stadium':['puma-soccer']}},
   objectives: {scene:'res://objectives/demo.tscn', map:'tidal-citadel', modes:{'tidal-citadel':['ctf'], 'sunscar-convoy':['payload']}},
@@ -150,7 +151,7 @@ export function launchOptions(argv, catalog) {
     return {args,sessionOptions:opts,experience,map,mode,smoke:null,endpoint:lobbyEndpoint(values.endpoint,experience)};
   }
   if (values.bots !== undefined) {
-    if (!['combat','zones'].includes(experience)) throw Error('--bots requires combat, zones, native-dm or identity-zones');
+    if (!['combat','zones','assault'].includes(experience)) throw Error('--bots requires combat, zones, assault, native-dm or identity-zones');
     if (!/^\d+$/.test(values.bots) || Number(values.bots) > 8) throw Error('--bots must be 0..8');
     if (experience === 'combat' && values.endpoint !== undefined) throw Error('--bots requires owned local combat authority');
   }
@@ -160,7 +161,7 @@ export function launchOptions(argv, catalog) {
     const character = values.operator ?? 'chatgpt', harness = values.harness ?? 'openclaw';
     if (!HORDE_OPERATORS.includes(character) || !HORDE_HARNESSES.includes(harness) || (character === 'claude' && harness !== 'claudecode')) throw Error('Invalid Horde operator/harness pair');
   }
-  for (const key of ['round-seconds','score-limit']) if (values[key] !== undefined) throw Error(`--${key} requires native-dm or identity-zones`);
+  for (const key of ['round-seconds','score-limit']) if (values[key] !== undefined && !['zones','assault'].includes(experience)) throw Error(`--${key} requires native-dm, identity-zones, zones or assault`);
   if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
     for (const key of Object.keys(values)) if (key !== 'experience') throw Error(`--${key} is not supported by native-only ${experience}`);
     for (const flag of flags) if (!['--smoke','--diagnostics'].includes(flag)) throw Error(`${flag} is not supported by native-only ${experience}`);
@@ -205,7 +206,10 @@ export function launchOptions(argv, catalog) {
   if (values['round-target'] !== undefined && (Number(values['round-target']) < 1 || Number(values['round-target']) > maxTarget)) {
     throw Error(`--round-target must be 1..${maxTarget} for the selected sports map`);
   }
-  for (const key of ['map','mode','time-limit','round-target','bots','waves','operator','harness']) if (values[key] !== undefined) sessionOptions.push(`--${key}=${values[key]}`);
+  if (['zones','assault'].includes(experience)) for (const [key,min,max] of [['round-seconds',60,900],['score-limit',1,values.mode === 'assault' ? 9 : 900]]) {
+    if (values[key] !== undefined && (!/^\d+$/.test(values[key]) || !Number.isSafeInteger(Number(values[key])) || Number(values[key]) < min || Number(values[key]) > max)) throw Error(`--${key} must be ${min}..${max}`);
+  }
+  for (const key of ['map','mode','time-limit','round-target','round-seconds','score-limit','bots','waves','operator','harness']) if (values[key] !== undefined) sessionOptions.push(`--${key}=${values[key]}`);
   for (const flag of ['--setup','--native-trace','--mute','--debug-hud']) if (flags.has(flag)) sessionOptions.push(flag);
   sessionOptions.push(...cheats,...diagnostics);
   const smoke = smokeFlags[0];
