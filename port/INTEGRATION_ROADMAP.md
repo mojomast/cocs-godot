@@ -76,7 +76,8 @@ the individual evidence records retain their original scope and results.
   and report hashes are recorded in the presentation record.
 - **NATIVE-05–06 acceptance remains open:** natural staged-campaign completion,
   extracted-package consolidation acceptance and the
-  unified release. Building/publishing remains on the user-directed hold.
+  unified release. The 2026-09-29 request authorizes consolidated builds after the
+  three additional feature streams and current player-flow polish are complete.
 
 The shell increment passed **203/203 local aggregate gates, zero unrun**, at
 `a9dbeaab`. The subsequent ESM-only journey-wrapper change was checked by
@@ -304,14 +305,16 @@ visual port or a forced fixture result.
 
 ### NATIVE-06 — One release of record
 
-**User-directed hold:** Career continuity, source-confirmed Arsenal equipment,
-room discovery/chat and reconnect are integrated. The approved native finishes
-and equipped-loadout presentation batch passed integrated local verification
-and both hosted workflows. See the
-[expansion record](NATIVE_EXPANSION_2026-09-28.md) and
-[presentation record](ARSENAL_PRESENTATION_BATCH_2026-09-28.md). Building and
-publishing await the user's release decision; resource-heavy verification and
-eventual packaging remain serial.
+**Build authorized, 2026-09-29:** Career continuity, source-confirmed Arsenal
+equipment, room discovery/chat, reconnect and native finishes/loadout presentation
+are integrated and verified. The user now requests all three additional streams
+(Uplink/Assault/Holdout, remaining source vehicle coverage, and audiovisual
+presentation), followed by consolidated Windows/Linux builds. Player-flow polish
+is being integrated first. See the
+[three-stream plan](THREE_STREAM_EXPANSION_2026-09-29.md),
+[player-flow record](PLAYER_FLOW_POLISH_2026-09-29.md) and
+[presentation record](ARSENAL_PRESENTATION_BATCH_2026-09-28.md). Resource-heavy
+verification and packaging remain serial.
 
 **Implementation update, 2026-09-28:** extracted-artifact validation now binds
 source identity, launcher bytes and the re-derived runtime closure to the

@@ -338,7 +338,47 @@ def main():
             (output / 'cases.json').write_text(json.dumps(results, indent=2) + '\n')
             print(name, 'PASS', flush=True)
 
-        launch('host-setup', [], active=False)
+        # Default boot is the shared Home supervisor, which intentionally owns
+        # no source server until a route is selected. Observe the actual exported
+        # menu child rather than applying the old combat-setup readiness rule.
+        home_log = output / 'home.log'
+        with home_log.open('w') as stream:
+            home = subprocess.Popen([nodebin / 'node', package / 'run.mjs'], cwd=unrelated,
+                                    env=env, stdout=stream, stderr=subprocess.STDOUT)
+        children.append(home)
+        deadline = time.monotonic() + 35
+        home_pid, home_window = None, None
+        while time.monotonic() < deadline:
+            text = home_log.read_text()
+            require('PACKAGE_SERVER_READY ' not in text, 'Home created an authority before route selection')
+            require(home.poll() is None, 'Home supervisor exited before displaying its menu')
+            if records(text, 'MENU_READY '):
+                child_list = Path(f'/proc/{home.pid}/task/{home.pid}/children')
+                for child_pid in child_list.read_text().split() if child_list.exists() else []:
+                    window = x11.window(int(child_pid))
+                    if window:
+                        home_pid, home_window = int(child_pid), window
+                        break
+            if home_window: break
+            time.sleep(0.05)
+        require(home_window is not None, 'Exported Home window/readiness timed out')
+        shot = subprocess.run(['/usr/bin/ffmpeg', '-loglevel', 'error', '-f', 'x11grab',
+                               '-video_size', '1280x800', '-i', env['DISPLAY'], '-frames:v', '1',
+                               '-threads', '1', '-update', '1', str(output / 'home.png')],
+                              cwd=unrelated, env=env, capture_output=True, timeout=20)
+        require(shot.returncode == 0, f'Home screenshot failed: {shot.stderr.decode()}')
+        x11.close_window(home_window)
+        require(home.wait(timeout=12) == 0, 'Home supervisor did not exit cleanly')
+        require(not Path(f'/proc/{home_pid}').exists(), 'Home native process survived')
+        text = home_log.read_text()
+        require('PACKAGE_SERVER_READY ' not in text and 'SCRIPT ERROR' not in text and 'ERROR:' not in text,
+                'Home produced an authority or native error')
+        results.append({'case':'home', 'exit':0, 'authority_owned_by_launcher':False,
+                        'native_pid':home_pid, 'native_closed':True, 'readiness':'exported-menu-marker-and-window'})
+        (output / 'cases.json').write_text(json.dumps(results, indent=2) + '\n')
+        print('home PASS', flush=True)
+
+        launch('host-setup', ['--experience=combat'], active=False)
         launch('lobby-menu', ['--experience=lobby'], active=False)
         # An independent authority belongs to this verifier, not the launcher.
         # Check actual exported-client close/interrupt without stopping that server.

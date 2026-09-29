@@ -15,7 +15,9 @@ records both hosted workflows passing at `b6eec0cf` (237 native gates, zero unru
   transport interruption → explicit Retry → results → Arsenal → rematch → Home
   journey, using the shipping supervisor/scenes and owned source server.
 
-The build/release hold remains in effect. This pass changes native presentation
+The original build hold for this pass was superseded by the user's subsequent
+[three-stream expansion and build request](THREE_STREAM_EXPANSION_2026-09-29.md).
+This pass changes native presentation
 and input ownership; source rules, balances, admission, progression and purchases
 remain source-authoritative. F12 opens Settings/Leave and Career; F9/F10 retain
 their existing functions. Back/Escape releases controls without pausing the
