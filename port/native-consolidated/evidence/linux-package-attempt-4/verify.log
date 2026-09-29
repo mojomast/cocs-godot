@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-lattice-flagship-20260925-sol/tools/godot-package/verify.py", line 523, in <module>
+    main()
+    ~~~~^^
+  File "/home/mojo/.tmp-on-disk/cocs-lattice-flagship-20260925-sol/tools/godot-package/verify.py", line 395, in main
+    shot = subprocess.run(['/usr/bin/ffmpeg', '-loglevel', 'error', '-f', 'x11grab',
+                           '-video_size', '1280x800', '-i', env['DISPLAY'], '-frames:v', '1',
+                           '-threads', '1', '-update', '1', str(output / 'home.png')],
+                          cwd=unrelated, env=env, capture_output=True, timeout=20)
+  File "/usr/lib/python3.13/subprocess.py", line 556, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1222, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 2129, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1269, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['/usr/bin/ffmpeg', '-loglevel', 'error', '-f', 'x11grab', '-video_size', '1280x800', '-i', 'localhost:3', '-frames:v', '1', '-threads', '1', '-update', '1', '/home/mojo/.tmp-on-disk/cocs-consolidated-evidence-20260929/linux-package-attempt-4/home.png']' timed out after 20 seconds

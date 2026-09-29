@@ -260,11 +260,9 @@ def main():
     require(probe.returncode == 0 and 'PACKAGE_INSPECT_OK ' in probe.stdout and 'ERROR:' not in probe.stdout + probe.stderr, 'Release resource/feature probe failed')
     readfd, writefd = os.pipe()
     xvfb_log = (output / 'xvfb.log').open('w')
-    # This host cannot create a usable filesystem X socket. Use the same
-    # explicit TCP transport exercised by xvfb_run.py's fallback;
-    # only the verifier's display server inherits its tool environment. All game
-    # processes still receive the isolated, Node-only runtime PATH below.
-    xvfb = subprocess.Popen(['/usr/bin/Xvfb', '-displayfd', str(writefd), '-screen', '0', '1280x800x24', '-extension', 'MIT-SHM', '-listen', 'tcp', '-nolisten', 'unix'], pass_fds=(writefd,), stdout=xvfb_log, stderr=subprocess.STDOUT)
+    # Keep local shared-memory transfer available for ffmpeg's X11 grabber.
+    # Linux's abstract listener avoids the root-owned filesystem socket path.
+    xvfb = subprocess.Popen(['/usr/bin/Xvfb', '-displayfd', str(writefd), '-screen', '0', '1280x800x24', '-nolisten', 'tcp', '-nolisten', 'unix'], pass_fds=(writefd,), stdout=xvfb_log, stderr=subprocess.STDOUT, env=env)
     os.close(writefd)
     x11 = None
     children = []
@@ -273,7 +271,7 @@ def main():
         require(select.select([readfd], [], [], 10)[0], 'Xvfb display allocation timed out')
         display = os.read(readfd, 100).decode().strip()
         require(display.isdecimal(), 'Bad private display number')
-        env['DISPLAY'] = 'localhost:' + display
+        env['DISPLAY'] = ':' + display
         x11 = X11(env['DISPLAY'])
 
         def launch(name, cli, action='window', active=True, trace=True, external=None, expect_map=None, compact=False):
