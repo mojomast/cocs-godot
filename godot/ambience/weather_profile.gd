@@ -122,16 +122,20 @@ static func lightning(seed: int, window: float = 60.0, count: int = 4, kind: Str
 	var state := u32(seed) if u32(seed) != 0 else 1
 	state = u32(state * 1664525 + 1013904223)
 	if float(state) / 4294967296.0 > chance: return []
-	var draws: Array[float] = []
-	for i in range(1 + clampi(count, 0, 24) * 5):
-		state = u32(state * 1664525 + 1013904223)
-		draws.append(float(state) / 4294967296.0)
 	var strikes: Array[Dictionary] = []
-	var t := draws[0] * maxf(0.2, gaps[0])
+	state = u32(state * 1664525 + 1013904223)
+	var t := float(state) / 4294967296.0 * maxf(0.2, gaps[0])
 	for i in range(clampi(count, 0, 24)):
 		if t >= (window if is_finite(window) and window > 0 else 60.0): break
-		var n := 1 + i * 5
-		var distance: float = 0.35 + draws[n] * 0.65
-		strikes.append({"time": t, "distance": distance, "intensity": 0.5 + draws[n + 1] * 0.5, "thunderGain": thunder[0] + draws[n + 2] * (thunder[1] - thunder[0]), "thunderDelay": 0.12 + distance * 1.7, "pan": draws[n + 3] * 2.0 - 1.0})
-		t += maxf(0.2, gaps[0]) + draws[n + 4] * maxf(0.0, gaps[1] - gaps[0])
+		state = u32(state * 1664525 + 1013904223)
+		var distance: float = 0.35 + float(state) / 4294967296.0 * 0.65
+		state = u32(state * 1664525 + 1013904223)
+		var intensity := 0.5 + float(state) / 4294967296.0 * 0.5
+		state = u32(state * 1664525 + 1013904223)
+		var thunder_gain: float = thunder[0] + float(state) / 4294967296.0 * (thunder[1] - thunder[0])
+		state = u32(state * 1664525 + 1013904223)
+		var pan := float(state) / 4294967296.0 * 2.0 - 1.0
+		strikes.append({"time": t, "distance": distance, "intensity": intensity, "thunderGain": thunder_gain, "thunderDelay": 0.12 + distance * 1.7, "pan": pan})
+		state = u32(state * 1664525 + 1013904223)
+		t += maxf(0.2, gaps[0]) + float(state) / 4294967296.0 * maxf(0.0, gaps[1] - gaps[0])
 	return strikes

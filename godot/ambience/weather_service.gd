@@ -3,7 +3,8 @@ extends Node3D
 ## Existing combat_particles ambient fields and Moth scenery motes must be
 ## suppressed by the host before acknowledging precipitation ownership.
 const Profile = preload("res://ambience/weather_profile.gd")
-const MAX_PARTICLES := 130
+const MAX_PARTICLES := 48
+const MAX_EMITS_PER_TICK := 44
 const AUDIO_RATE := 22050
 var _arena: Dictionary = {}
 var _camera: Camera3D
@@ -17,6 +18,9 @@ var _snapshot_time: Dictionary = {}
 var _focused := true
 var _muted := false
 var _reduced := false
+var _enabled := true
+var _lightning_enabled := true
+var _quality := 1.0
 var _volume := 0.25
 var _suppressed := false
 var _mesh := MultiMesh.new()
@@ -30,6 +34,9 @@ var _strikes: Array[Dictionary] = []
 var _strike_window := -1
 var _active_particles := 0
 var _flash_count := 0
+var _thunder_until := -1.0
+var _thunder_count := 0
+var _lightning_claimed: Dictionary = {}
 
 func _ready() -> void:
 	var quad := QuadMesh.new()
@@ -74,6 +81,8 @@ func bind(arena: Dictionary, camera: Camera3D, mode: String = "playing", seed: i
 	_snapshot_weather = ""
 	_snapshot_time = {}
 	_strike_window = -1
+	_lightning_claimed.clear()
+	_thunder_until = -1.0
 	_audio_state = Profile.u32(seed) if Profile.u32(seed) != 0 else 1
 	_audio_frames = 0
 	_refresh()
@@ -85,11 +94,19 @@ func set_native_weather_suppressed(acknowledged: bool) -> void:
 	if not acknowledged: _mesh.visible_instance_count = 0
 
 func apply_settings(settings: Dictionary) -> void:
-	_muted = settings.get("muted", _muted) == true
+	_muted = settings.get("mute", settings.get("muted", _muted)) == true or settings.get("ambience_enabled", true) == false or settings.get("ambience_volume", 100) == 0
 	_reduced = settings.get("reduced_motion", _reduced) == true
-	var volume: Variant = settings.get("ambient_volume", _volume)
+	_enabled = settings.get("weather_enabled", _enabled) == true
+	_lightning_enabled = settings.get("lightning_flashes", _lightning_enabled) == true
+	var quality: Variant = settings.get("weather_quality", 100)
+	if (quality is float or quality is int) and is_finite(float(quality)): _quality = clampf(float(quality) / 100.0, 0.0, 1.0)
+	var volume: Variant = settings.get("ambience_volume", _volume * 100.0)
 	if (volume is float or volume is int) and is_finite(float(volume)):
-		_volume = clampf(float(volume), 0.0, 1.0)
+		_volume = clampf(float(volume) / 100.0, 0.0, 1.0) * 0.25
+	if _muted and _playback != null: _playback.clear_buffer()
+	if not _enabled:
+		_mesh.visible_instance_count = 0
+		_flash.light_energy = 0.0
 	_refresh()
 
 func set_focus(focused: bool) -> void:
@@ -98,6 +115,7 @@ func set_focus(focused: bool) -> void:
 		_mesh.visible_instance_count = 0
 		_active_particles = 0
 		_flash.light_energy = 0.0
+		_thunder_until = -1.0
 	_audio.volume_db = -80.0 if not focused or _muted else linear_to_db(maxf(_volume, 0.0001))
 
 ## Read weather/timeOfDay exclusively from the single-player snapshot object.
@@ -130,7 +148,7 @@ func _refresh() -> void:
 		still["reducedMotion"] = true
 		_time = Profile.time_at(still, _elapsed, _mode)
 	var next: String = _snapshot_weather if not _snapshot_weather.is_empty() else Profile.select(_arena, _time, _seed, _reduced)
-	if _reduced: next = "clear"
+	if _reduced or not _enabled: next = "clear"
 	if next != _weather:
 		_weather = next
 		_strike_window = -1
@@ -138,10 +156,10 @@ func _refresh() -> void:
 
 func _update_particles() -> void:
 	_active_particles = 0
-	if not _suppressed or _reduced or not is_instance_valid(_camera) or not _weather in ["rain", "snow", "ash", "storm"]:
+	if not _suppressed or _reduced or not _enabled or not is_instance_valid(_camera) or not _weather in ["rain", "snow", "ash", "storm"]:
 		_mesh.visible_instance_count = 0
 		return
-	var count: int = Profile.KINDS[_weather].particles
+	var count: int = mini(MAX_EMITS_PER_TICK, roundi(mini(MAX_PARTICLES, int(Profile.KINDS[_weather].particles)) * _quality))
 	var color := Color("aebccb" if _weather == "rain" else ("eef6ff" if _weather == "snow" else ("8f8880" if _weather == "ash" else "9fb0c2")))
 	var gust := Profile.gust(_elapsed, _seed, float(Profile.KINDS[_weather].wind))
 	var speed := 2.4 if _weather == "snow" else (0.9 if _weather == "ash" else (19.0 if _weather == "rain" else 15.0))
@@ -162,30 +180,39 @@ func _update_particles() -> void:
 
 func _update_lightning() -> void:
 	_flash.light_energy = 0.0
-	if _reduced or not _suppressed or not _weather in ["storm", "rain", "overcast"]: return
+	if _reduced or not _enabled or not _lightning_enabled or not _suppressed or not _weather in ["storm", "rain", "overcast"]: return
 	var window := floori(_elapsed / 60.0)
 	if window != _strike_window:
 		_strike_window = window
 		_strikes = Profile.lightning(Profile.u32(_seed + window), 60.0, 12, _weather)
-	for strike: Dictionary in _strikes:
+		_lightning_claimed.clear()
+	for index in _strikes.size():
+		var strike: Dictionary = _strikes[index]
 		var offset: float = _elapsed - 60.0 * window - float(strike.time)
 		if offset >= 0.0 and offset < 0.12:
 			_flash.light_energy = float(strike.intensity) * (1.0 - offset / 0.12) * 2.0
-			_flash_count += 1
+			if not _lightning_claimed.has(index):
+				_lightning_claimed[index] = true
+				_flash_count += 1
 			break
+		if offset >= float(strike.thunderDelay) and offset < float(strike.thunderDelay) + 0.1 and not _lightning_claimed.has("thunder:%d" % index):
+			_lightning_claimed["thunder:%d" % index] = true
+			_thunder_until = _elapsed + 1.6
+			_thunder_count += 1
 
 func _fill_audio() -> void:
 	if _playback == null or _muted: return
 	# Bounded stereo procedural air bed; no playback events or asset dependency.
 	var n := mini(_playback.get_frames_available(), 1024)
 	var amplitude := 0.025 if _weather in ["clear", "snow", "ash"] else 0.065
+	var thunder := clampf((_thunder_until - _elapsed) / 1.6, 0.0, 1.0) if _thunder_until > _elapsed else 0.0
 	for i in n:
 		_audio_state = Profile.u32(_audio_state * 1664525 + 1013904223)
 		var noise := float(_audio_state) / 2147483648.0 - 1.0
 		var wind := sin(float(_audio_frames) * TAU * 75.0 / AUDIO_RATE) * 0.12
-		var sample := (noise * 0.35 + wind) * amplitude
+		var sample := (noise * 0.35 + wind) * amplitude + (noise * 0.17 + sin(float(_audio_frames) * TAU * 63.0 / AUDIO_RATE) * 0.1) * thunder
 		_playback.push_frame(Vector2(sample, sample))
 		_audio_frames += 1
 
 func diagnostics() -> Dictionary:
-	return {"biome": Profile.biome(_arena), "weather": _weather, "time": _time.duplicate(true), "seed": _seed, "wind": Profile.gust(_elapsed, _seed), "particles": _active_particles, "particle_limit": MAX_PARTICLES, "native_weather_suppressed": _suppressed, "lightning_flashes": _flash_count, "muted": _muted, "focused": _focused, "reduced_motion": _reduced, "audio_frames": _audio_frames}
+	return {"biome": Profile.biome(_arena), "weather": _weather, "time": _time.duplicate(true), "seed": _seed, "wind": Profile.gust(_elapsed, _seed), "particles": _active_particles, "particle_limit": MAX_PARTICLES, "emits_per_tick_limit": MAX_EMITS_PER_TICK, "native_weather_suppressed": _suppressed, "lightning_flashes": _flash_count, "thunder_count": _thunder_count, "muted": _muted, "enabled": _enabled, "focused": _focused, "reduced_motion": _reduced, "audio_frames": _audio_frames}

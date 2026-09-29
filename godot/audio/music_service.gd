@@ -42,7 +42,7 @@ var music_volume := 0.7
 var announcer_volume := 1.0
 var muted := false
 var music_enabled := true
-var announcer_enabled := true
+var announcer_enabled := false
 var focused := true
 var running := false
 var form_bar := 0
@@ -60,6 +60,12 @@ var expires := []
 var announcer_player: AudioStreamPlayer
 var host_ref: WeakRef
 var error := ""
+var dropped_notes := 0
+var dropped_cues := 0
+var load_failures := 0
+var last_response := ""
+var response_at := -100000
+var outcome := ""
 
 func _ready() -> void:
  _load_manifests()
@@ -95,9 +101,23 @@ func _load_manifests() -> void:
    var cue: String = str(entry.get("cue", ""))
    if not takes.has(cue): takes[cue] = []
    takes[cue].append(entry)
+ # Local-only assets are loaded before live dispatch. Never import/fetch on an
+ # event path where a late response would replay a stale beat.
+ for entry: Dictionary in samples.values(): _stream("music/" + str(entry.get("file", "")))
+ for group: Array in takes.values():
+  for entry: Dictionary in group: _stream("announcer/" + str(entry.get("file", "")))
 
 func set_scene(value: String) -> void:
- if BPM.has(value): scene = value
+ if BPM.has(value):
+  if scene == "results" and value != "results" and not outcome.is_empty(): return
+  scene = value
+
+func set_outcome(value: String) -> void:
+ if value in ["victory", "defeat", "neutral"]:
+  outcome = value
+  scene = "results"
+  if value in ["victory", "defeat"]: cue(value)
+ elif value.is_empty(): outcome = ""
 
 func set_mode_theme(value: String) -> void:
  mode_theme = value
@@ -121,15 +141,18 @@ func set_escalation(value: int) -> void:
  escalation = clampi(value, 0, 3)
 
 func set_settings(options: Dictionary) -> void:
- if options.has("master"): master_volume = clampf(float(options.master), 0.0, 1.0)
- if options.has("music"): music_volume = clampf(float(options.music), 0.0, 1.0)
- if options.has("announcer_volume"): announcer_volume = clampf(float(options.announcer_volume), 0.0, 1.0)
- if options.has("muted"): muted = options.muted == true
+ # Master is controlled only by LocalSettings' Master bus; never multiply it
+ # again here. Legacy normalized options remain supported for detached tests.
+ if options.has("music_volume"): music_volume = clampf(float(options.music_volume) / 100.0, 0.0, 1.0)
+ elif options.has("music"): music_volume = clampf(float(options.music), 0.0, 1.0)
+ if options.has("announcer_volume"): announcer_volume = clampf(float(options.announcer_volume) / (100.0 if options.has("music_volume") else 1.0), 0.0, 1.0)
+ if options.has("mute"): muted = options.mute == true
+ elif options.has("muted"): muted = options.muted == true
  if options.has("music_enabled"): music_enabled = options.music_enabled == true
  if options.has("announcer_enabled"): announcer_enabled = options.announcer_enabled == true
- if muted or not music_enabled:
+ if muted or not music_enabled or music_volume <= 0.0:
   for player: AudioStreamPlayer in players: player.stop()
- if muted or not announcer_enabled: announcer_player.stop()
+ if muted or not announcer_enabled or announcer_volume <= 0.0: announcer_player.stop()
 
 func set_focus(value: bool) -> void:
  focused = value
@@ -145,7 +168,7 @@ func start() -> void:
  if focused and error.is_empty(): running = true
 
 func tick(delta: float) -> void:
- if not running or not focused or not music_enabled or muted or error != "": return
+ if not running or not focused or not music_enabled or music_volume <= 0.0 or muted or error != "": return
  if not is_finite(delta) or delta < 0.0: return
  var step_seconds: float = 60.0 / float(BPM[scene]) / 4.0
  # A suspended frame is discarded rather than replaying minutes of music.
@@ -244,10 +267,11 @@ func _stream(path: String) -> AudioStream:
  if loaded is AudioStream:
   streams[path] = loaded
   return loaded
+ load_failures += 1
  return null
 
 func _note(instrument: String, midi: int, duration: float, gain: float, loud: bool) -> void:
- if not music_enabled or muted or not focused: return
+ if not music_enabled or music_volume <= 0.0 or muted or not focused: return
  var nearest: Dictionary = {}
  var distance := 999
  for entry: Dictionary in samples.values():
@@ -265,23 +289,27 @@ func _note(instrument: String, midi: int, duration: float, gain: float, loud: bo
   if expires[i] < now or not players[i].playing:
    slot = i
    break
- if slot < 0: return # bounded polyphony, never steal the announcer
+ if slot < 0:
+  dropped_notes += 1
+  return # bounded polyphony, never steal the announcer
  var player: AudioStreamPlayer = players[slot]
  player.stop()
  player.stream = stream
  player.pitch_scale = clampf(pow(2.0, float(midi - int(nearest.midi)) / 12.0), 0.5, 2.0)
- player.volume_db = linear_to_db(maxf(0.001, gain * float(nearest.get("gain",1.0)) * master_volume * music_volume))
+ player.volume_db = linear_to_db(maxf(0.001, gain * float(nearest.get("gain",1.0)) * music_volume))
  # Ogg streams are one-shots here; attack/loop offsets require sampler playback
  # controls unavailable on imported Godot streams. Re-articulation stays bounded.
  player.play()
  expires[slot] = now + duration
 
 func cue(name: String) -> bool:
- if not CUES.has(name) or not announcer_enabled or muted or not focused or error != "": return false
+ if not CUES.has(name) or not announcer_enabled or announcer_volume <= 0.0 or muted or not focused or error != "":
+  dropped_cues += 1
+  return false
  var now := Time.get_ticks_msec()
- if name == last_cue and now - last_cue_at < 1800: return false
- if now - last_cue_at < 500: return false
- if announcer_player.playing and name not in ["goal","victory","defeat"]: return false
+ if name == last_cue and now - last_cue_at < 1800: dropped_cues += 1; return false
+ if now - last_cue_at < 1200: dropped_cues += 1; return false
+ if announcer_player.playing and name not in ["goal","victory","defeat"]: dropped_cues += 1; return false
  var options: Array = takes.get(name, [])
  if options.is_empty(): return false
  var ordinal: int = int(cue_ordinal.get(name,0))
@@ -293,7 +321,7 @@ func cue(name: String) -> bool:
  last_cue_at = now
  announcer_player.stop()
  announcer_player.stream = stream
- announcer_player.volume_db = linear_to_db(maxf(0.001, master_volume * announcer_volume * 0.82))
+ announcer_player.volume_db = linear_to_db(maxf(0.001, announcer_volume * 0.82))
  announcer_player.play()
  # Source score responds harmonically without queuing past events.
  if name in ["goal","capture","victory","score"]:
@@ -302,8 +330,20 @@ func cue(name: String) -> bool:
   _note("gong", 60, 1.0, 0.08, true)
  return true
 
+func response(kind: String) -> bool:
+ if not kind in ["capture", "loss", "accent", "final", "award"] or muted or not music_enabled or music_volume <= 0.0 or not running: return false
+ var now := Time.get_ticks_msec()
+ if now - response_at < 250: return false
+ response_at = now
+ last_response = kind
+ var pitch := {"capture":62,"loss":50,"accent":74,"final":69,"award":81}[kind]
+ _note("tubular-bells" if kind in ["capture", "award", "final"] else "low-brass", pitch, 0.65, 0.09, true)
+ return true
+
 func status() -> Dictionary:
  return {"state":"running" if running and focused else "stopped", "scene":scene,
   "mode":mode_theme,"bar":form_bar,"step":step,"section":_section(),
   "escalation":escalation,"tension":tension,"variation":variation,
-  "samples":samples.size(),"takes":takes.size(),"error":error}
+  "samples":samples.size(),"takes":takes.size(),"loaded_streams":streams.size(),"loaded_failures":load_failures,
+  "active_voices":players.filter(func(p: AudioStreamPlayer) -> bool: return p.playing).size(),"announcer_active":announcer_player != null and announcer_player.playing,
+  "dropped_notes":dropped_notes,"dropped_cues":dropped_cues,"last_cue_id":last_cue,"last_response":last_response,"outcome":outcome,"error":error}
