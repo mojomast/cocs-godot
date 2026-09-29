@@ -76,3 +76,42 @@ and `winner` determine all endings, including timeout and tiebreak cases.
 The independent vehicle stream supplies reusable vehicle coverage for Assault;
 an infantry-only composition is not complete Assault parity. Shared package and
 aggregate registration remain with the parent integration owner.
+
+## Integrated implementation checkpoints
+
+- Player-flow polish: source-driven integrated flow passed 24 checks at
+  `2d45b0b4`; compact pending/unknown/confirmed/results flow passed 34 checks at
+  `436903a8`. Both successes and the preceding fixture failures are retained in
+  `native-player-flow/evidence/`.
+- Objective implementation: six reviewed lane commits integrated through
+  `27d5ffa7`, including Uplink/Holdout projections, Assault and the 23-route
+  generated registry. Its lead holds the serial slot for focused runtime
+  verification and is replacing Assault's temporary vehicle composition with
+  the shared vehicle bridge.
+- Vehicle implementation: ten lane commits integrated through `bfa71652`.
+  The exact source roster is Puma, Hornet, Titan, Scout and Transport; no sixth
+  chassis is implied by source aliases. The shared seat bridge covers source
+  actor/vehicle occupancy, mounted input, cameras and visible crew. Genuine
+  two-native-client crew evidence is pending the next serial slot.
+- Audiovisual lane: initial commit `7da98bad` packages 37 original orchestral Ogg
+  samples, all 36 existing announcer takes (12 phrases) and the delivered Moth
+  ritual bed. The lead is completing actual session/menu/weather-owner hooks
+  before runtime checks. Initial asset packaging alone is not playback evidence.
+- Package integration: explicit audio JSON export filters, asset provenance and
+  CC0 music notices; external PCK probes for stream types, lengths and loop
+  bounds; expanded graphical startup coverage for every new objective map/mode
+  pairing. Package generation awaits the fully tested composition.
+
+### Source limits carried into the product
+
+- Ordinary source rooms edge-trigger jump. Hornet Space is an upward pulse,
+  not held continuous ascent; native input does not synthesize repeated edges.
+- Seat assignment remains source-driven. Passengers retain the source's
+  chassis-relative yaw, and Titan's mounted cannon remains a ray weapon.
+- Existing announcer recordings do not constitute arbitrary spoken narrative,
+  wave numbers or custom vehicle alarms. Source narrative text keeps generic
+  objective cues. Music's bounded native arrangement is distinguished from an
+  exact port of every browser scheduling detail.
+- Cosmetic weather cannot alter authority, movement, damage or gameplay RNG.
+  Its precipitation must have one native owner so existing map effects are not
+  doubled.
