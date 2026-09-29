@@ -89,7 +89,9 @@ func _initialize() -> void:
 			if value.is_valid_int(): waves = value.to_int()
 	# The port expects a real window (a headless default viewport is 64x64 and
 	# the Horde choice layer would lay out off-screen), so pin the harness size.
-	root.size = Vector2i(960, 600)
+	# Match the launcher instead of silently doubling its software-rendered
+	# pixel budget. 480px leaves room for all three real offer buttons.
+	root.size = Vector2i(640, 480)
 	session = DemoScene.instantiate()
 	root.add_child(session)
 	print("HORDE_UPGRADE_LIVE_BOOT ", JSON.stringify({"label": LABEL, "scene": session.scene_file_path,
@@ -223,10 +225,15 @@ func _process(delta: float) -> bool:
 				stage = "offer"
 				stage_frames = 0
 		"offer":
-			if elapsed > OFFER_LIMIT:
-				finish(false, "no pending offer snapshot within %.0fs (phase=%d label=%s)" % [OFFER_LIMIT, session.phase, session.label.text])
+			# A cold rendered frame can cross the offer-wait limit while the
+			# network poll publishes the offer. Inspect readiness first: an offer
+			# already in the model is not a missing snapshot. The overall wall
+			# deadline above still bounds the complete input/confirmation flight.
+			if not session.horde.offer_pending:
+				if elapsed > OFFER_LIMIT:
+					finish(false, "no pending offer snapshot within %.0fs (phase=%d label=%s)" % [OFFER_LIMIT, session.phase, session.label.text])
 				return false
-			if not session.horde.offer_pending: return false
+			evidence["offer_observed_elapsed"] = snappedf(elapsed, 0.01)
 			_probe_offer()
 			stage = "capture_offer"
 			_prepare_press()
@@ -318,6 +325,9 @@ func _probe_offer() -> void:
 		check("UPGRADES" in session.horde_label.text and "1" in session.horde_label.text, "the Horde strip renders the offer with its hotkeys")
 		for index in session.choice_buttons.size():
 			check(session.choice_buttons[index].mouse_filter == Control.MOUSE_FILTER_STOP, "choice button %d consumes clicks" % (index + 1))
+			var button: Button = session.choice_buttons[index]
+			var visible_rect := Rect2(button.get_global_transform_with_canvas().origin, button.size)
+			check(root.get_visible_rect().encloses(visible_rect), "choice button %d fits inside the rendered viewport" % (index + 1))
 	check(session.intercept_offer_key(KEY_2) == 2, "KEY_2 maps to the second offered row")
 	check(not chosen.is_empty() and offer_ids.has(chosen), "the hotkey target is one of the offered ids")
 	check(session.horde.offer_index(chosen) == 2, "the chosen id is the second offered id")

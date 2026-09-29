@@ -80,7 +80,7 @@ const stableConfig = config => JSON.stringify({mode: config?.mode, botCount: con
 // ---------------------------------------------------------------------------
 async function startDisplay(env) {
   if (process.env.DISPLAY) return {display: process.env.DISPLAY, xvfb: null, private: false};
-  const xvfb = spawn('Xvfb', ['-displayfd', '3', '-screen', '0', '640x400x24', '-nolisten', 'tcp', '-nolisten', 'unix'], {
+  const xvfb = spawn('Xvfb', ['-displayfd', '3', '-screen', '0', '640x480x24', '-nolisten', 'tcp', '-nolisten', 'unix'], {
     env, stdio: ['ignore', 'ignore', 'pipe', 'pipe']});
   xvfb.stderr.resume();
   const number = await Promise.race([
@@ -109,7 +109,10 @@ const stop = child => new Promise(resolveExit => {
 // One run.
 // ---------------------------------------------------------------------------
 const temp = mkdtempSync('/tmp/horde-upgrade-loopback-');
-const env = {...process.env};
+// llvmpipe's default worker pool competes with the real authority and engine
+// input poll on small CI workers. Bound this rendered fixture's CPU demand;
+// keep the product's input TTL and the observer's deadlines unchanged.
+const env = {...process.env, LP_NUM_THREADS: '1'};
 for (const key of ['XDG_DATA_HOME', 'XDG_CONFIG_HOME', 'XDG_CACHE_HOME', 'XDG_RUNTIME_DIR']) {
   env[key] = resolve(temp, key);
   mkdirSync(env[key], {recursive: true});
@@ -138,8 +141,8 @@ try {
   }
   const argv = [
     ...(display.display ? [] : ['--headless']),
-    ...(display.display ? ['--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy', '--resolution', '640x400'] : []),
-    '--max-fps', '60', '--path', 'godot', '--script', 'res://tests/horde/upgrade_live.gd', '--',
+    ...(display.display ? ['--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy', '--resolution', '640x480'] : []),
+    '--max-fps', '30', '--path', 'godot', '--script', 'res://tests/horde/upgrade_live.gd', '--',
     `--map=${MAP}`, `--waves=${WAVES}`, `--endpoint=ws://127.0.0.1:${port}`,
     // Rendering and real engine input remain required. Expensive pixel readback
     // is useful only when the caller actually retains the screenshot evidence.
@@ -302,15 +305,17 @@ const result = {
   fixture: {wave: fixture.wave, activated: fixture.activations, choices: fixture.choices},
   authority: {offerRows: offerIds, applied: applied.map(r => ({choice: r.choice, wave: r.wave, count: r.count})), rejects: rejected.length, controlResets: controlResets.length,
     intent: intent ? frame(intent) : null, answer: answer ? frame(answer) : null},
-  native: godotEvidence ? {delivery: godotEvidence.delivery, checks: godotEvidence.checks, failures: godotEvidence.failures, chosen: godotEvidence.chosen, status: godotEvidence.status_after_confirm} : null,
+  native: godotEvidence,
   records: records.length,
   steps: {total: steps.length, afterApply: stepsAfter.length, monotonic},
   display: display?.display ?? null,
+  renderer: {lpNumThreads: env.LP_NUM_THREADS, maxFps: 30},
   shots: godotShots,
   copiedShots,
   godotExit: exit,
   resetContext,
 };
 console.log(`${result.ok ? 'HORDE_UPGRADE_LOOPBACK_OK' : 'HORDE_UPGRADE_LOOPBACK_FAIL'} ${JSON.stringify(result)}`);
-for (const entry of failures) console.error(`FAILED CHECK: ${entry.name} :: ${entry.detail}`);
+if (!result.ok) for (const line of godot) console.error(`GODOT: ${line}`.trimEnd());
+for (const entry of failures) console.error(`FAILED CHECK: ${entry.name} :: ${entry.detail}`.trimEnd());
 if (!result.ok) process.exitCode = 1;
