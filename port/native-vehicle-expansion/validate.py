@@ -88,6 +88,10 @@ def verify(logs, wire):
                 elif role=='guest': assert vehicle['gunner']==item['actor_id']
                 else: assert item['actor_id'] in vehicle['passengers']
                 assert math.dist(item['camera'],[vehicle[k] for k in ('x','y','z')])<20,role+' camera detached from source vehicle'
+                assert item['hands_visible'] is False and item['muzzle_count']==0,role+' mounted infantry hands/muzzle leaked'
+                if role!='host' and item['stage'] in ('gunner-fire','passenger-fire','observe'):
+                    eye=[item['actor']['x'],item['actor']['y']+item['actor'].get('eyeHeight',1.45),item['actor']['z']]
+                    assert math.dist(item['camera'],eye)<3.0,role+' mounted seat camera detached from source actor eye'
                 mounted.append(item)
             correlated+=1
         assert correlated>30 and len(mounted)>8,role+' insufficient exact source/native correlations'

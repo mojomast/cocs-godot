@@ -109,7 +109,7 @@ func sample() -> void:
 	var node = demo.fleet.vehicle_node(PUMA)
 	if is_instance_valid(node): render = [node.position.x,node.position.y,node.position.z]
 	var c: Vector3 = demo.world.camera.position
-	log_line("SAMPLE", {"snapshot_seq":last_seq,"ack":demo.net.last_ack,"round":demo.state.get("roundRevision"),"phase":demo.phase,"actor":demo.actor,"vehicle":demo.vehicle,"source_puma":v,"render_puma":render,"camera":[c.x,c.y,c.z],"engaged":demo.controls.engaged,"focused":demo.controls.focused,"window_focus":root.has_focus(),"eligible":demo.eligible()})
+	log_line("SAMPLE", {"snapshot_seq":last_seq,"ack":demo.net.last_ack,"round":demo.state.get("roundRevision"),"phase":demo.phase,"actor":demo.actor,"vehicle":demo.vehicle,"source_puma":v,"render_puma":render,"camera":[c.x,c.y,c.z],"hands_visible":demo.graphics.rig.showing,"muzzle_count":demo.graphics.rig.get_muzzle_count(),"engaged":demo.controls.engaged,"focused":demo.controls.focused,"window_focus":root.has_focus(),"eligible":demo.eligible()})
 
 func _process(delta: float) -> bool:
 	elapsed += delta
