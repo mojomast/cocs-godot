@@ -191,6 +191,17 @@ class X11:
         self.lib.XSync(self.display, 0)
         self.check_errors()
 
+    def click(self, window, x, y):
+        xtest = C.CDLL(ctypes.util.find_library('Xtst'))
+        xtest.XTestFakeMotionEvent.argtypes = [C.c_void_p, C.c_int, C.c_int, C.c_int, C.c_ulong]
+        xtest.XTestFakeButtonEvent.argtypes = [C.c_void_p, C.c_uint, C.c_int, C.c_ulong]
+        self.lib.XSetInputFocus(self.display, window, 2, 0)
+        require(xtest.XTestFakeMotionEvent(self.display, -1, x, y, 0), 'Pointer motion failed')
+        require(xtest.XTestFakeButtonEvent(self.display, 1, 1, 0), 'Pointer press failed')
+        require(xtest.XTestFakeButtonEvent(self.display, 1, 0, 0), 'Pointer release failed')
+        self.lib.XSync(self.display, 0)
+        self.check_errors()
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -274,7 +285,7 @@ def main():
         env['DISPLAY'] = ':' + display
         x11 = X11(env['DISPLAY'])
 
-        def launch(name, cli, action='window', active=True, trace=True, external=None, expect_map=None, compact=False):
+        def launch(name, cli, action='window', active=True, trace=True, external=None, expect_map=None, compact=False, start_click=None, connect_click=None):
             log = output / (name + '.log')
             case_env = dict(env)
             if compact:
@@ -287,6 +298,8 @@ def main():
             deadline = time.monotonic() + 35
             earliest_setup = time.monotonic() + 8
             ready, native, frames, health = None, None, [], None
+            start_clicked = False
+            connect_clicked = False
             while time.monotonic() < deadline:
                 text = log.read_text()
                 ready_records = records(text, 'PACKAGE_SERVER_READY ')
@@ -297,9 +310,18 @@ def main():
                 native = native_records[0] if native_records else None
                 frames = records(text, 'PORT_NATIVE_TRACE ')
                 if ready and native and native.get('pid') and x11.window(native['pid']):
-                    if ((not active or not trace) and time.monotonic() >= earliest_setup) or (active and trace and any(f['event'] == 'round_start' for f in frames) and sum(f['event'] == 'snapshot' and f.get('pose_present') and f.get('phase') == 3 for f in frames) >= 3):
+                    if connect_click and not connect_clicked and time.monotonic() >= earliest_setup - 4:
+                        x11.click(x11.window(native['pid']), *connect_click)
+                        connect_clicked = True
+                    if start_click and not start_clicked and time.monotonic() >= earliest_setup:
+                        # LATTICE intentionally waits for the host's explicit
+                        # Start. Use the visible 1280x800 button coordinates;
+                        # source snapshots/traces below prove the request worked.
+                        x11.click(x11.window(native['pid']), *start_click)
+                        start_clicked = True
+                    if ((not active or (ready.get('experience') == 'horde' and not trace)) and time.monotonic() >= earliest_setup) or (active and trace and any(f['event'] == 'round_start' for f in frames) and sum(f['event'] == 'snapshot' and f.get('pose_present') and f.get('phase') == 3 for f in frames) >= 3):
                         break
-                    if active and trace and action == 'window' and time.monotonic() >= earliest_setup:
+                    if active and (not trace or action == 'window') and time.monotonic() >= earliest_setup:
                         with urllib.request.urlopen(f"http://127.0.0.1:{ready['port']}/", timeout=5) as response:
                             observed = json.load(response)
                         if observed.get('players') == 1 and observed.get('snapshot', {}).get('fullFrames', 0) >= 3:
@@ -370,6 +392,8 @@ def main():
             require('SCRIPT ERROR' not in text and 'ERROR:' not in text, f'{name}: Godot error in native log')
             result = {'case':name, 'exit':code, 'scene':native['scene'], 'host':ready['host'], 'dynamic_port':ready['port'], 'reported_map':ready.get('map'), 'health':health, 'readiness':'local-horde-health-and-window; separate horde-product.json proves snapshots/wave' if ready.get('experience') == 'horde' else ('setup-window' if not active else ('native-trace' if trace else 'authority-traffic-and-window; inspect PNG separately')), 'round_start_seen':any(f['event'] == 'round_start' for f in frames), 'pose_snapshots_seen':sum(f['event'] == 'snapshot' and f.get('pose_present') for f in frames), 'native_pid':native_pid, 'native_closed':True, 'authority_owned_by_launcher':not bool(external), 'server_closed':not bool(external), 'external_authority_preserved':bool(external), 'action':action}
             results.append(result)
+            if start_click: result.update(start_click=list(start_click), start_clicked=start_clicked)
+            if connect_click: result.update(connect_click=list(connect_click), connect_clicked=connect_clicked)
             if compact: result.update(window=[760, 520], settings_ui_scale=150)
             (output / 'cases.json').write_text(json.dumps(results, indent=2) + '\n')
             print(name, 'PASS', flush=True)
@@ -454,8 +478,8 @@ process.once('SIGTERM',async()=>{for(const socket of game.wss.clients)socket.ter
             require(connection.connect_ex(('127.0.0.1', external_port)) != 0, 'Verifier authority listener survived')
         launch('combat', ['--play','--native-trace'])
         launch('combat-instagib', ['--play','--map=meridian-exchange','--mode=instagib','--native-trace'])
-        launch('lattice-world', ['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop','--native-trace'])
-        launch('lattice-board', ['--experience=lattice','--map=asterion-relay','--mode=cocs'], trace=False, expect_map='asterion-relay')
+        launch('lattice-world', ['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop','--native-trace'], start_click=(640, 556))
+        launch('lattice-board', ['--experience=lattice','--map=asterion-relay','--mode=cocs'], trace=False, expect_map='asterion-relay', connect_click=(95, 151), start_click=(260, 151))
         # These standalone routes do not expose the combat trace option. Require
         # actual authority traffic and review their exported HUD screenshots;
         # never substitute a fixed wait for gameplay-completion evidence.
