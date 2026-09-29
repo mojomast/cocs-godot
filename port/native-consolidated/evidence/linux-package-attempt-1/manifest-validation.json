@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "target": "linux",
+  "kind": "private-local-linux-prototype",
+  "package": "/home/mojo/.tmp-on-disk/cocs-consolidated-evidence-20260929/linux-package-attempt-1/cocs-package-play-jla2jgf7/cocs-native-linux",
+  "repo": "/home/mojo/.tmp-on-disk/cocs-consolidated-build-20260929",
+  "port_commit": "79c7b8c74468d840277e44d5ec5f4024880e7a70",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "derivative_sha256": "d1809086734c3df66573db5b7efc023b23a337ab2b05d4f5019e985d26e7cff7",
+  "files": 141,
+  "source_modules": 85,
+  "adapters": 15,
+  "data_files": 3,
+  "identity_data_files": 3,
+  "horde_data_files": 1,
+  "ws_files": 19
+}

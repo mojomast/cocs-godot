@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-lattice-flagship-20260925-sol/tools/godot-package/verify.py", line 514, in <module>
+    main()
+    ~~~~^^
+  File "/home/mojo/.tmp-on-disk/cocs-lattice-flagship-20260925-sol/tools/godot-package/verify.py", line 386, in main
+    require(home_window is not None, 'Exported Home window/readiness timed out')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mojo/.tmp-on-disk/cocs-lattice-flagship-20260925-sol/tools/godot-package/verify.py", line 24, in require
+    raise RuntimeError(message)
+RuntimeError: Exported Home window/readiness timed out
