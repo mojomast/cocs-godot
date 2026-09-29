@@ -118,6 +118,7 @@ def main():
     logs = work / "logs"
     logs.mkdir()
     lock = json.loads((ROOT / "port/contracts/source-lock.json").read_text())
+    port_commit = git("rev-parse", "HEAD")
     derivative_path = ROOT / "port/contracts/lattice-catalog-derivative.json"
     derivative = json.loads(derivative_path.read_text()) if args.source_derivative else None
     if lock["godot_version"] != EXACT or git("rev-parse", "--is-shallow-repository") != "false":
@@ -183,12 +184,27 @@ def main():
         input_paths.update("public/music/" + entry["file"] for entry in music["samples"])
         input_paths.update("public/audio/announcer/" + entry["file"] for entry in voices["clips"])
         input_paths.add("public/moth/files/bed-ritual/clip.wav")
+        bed_hash = "d518d47b8f4e1722d47a5a5261921edb8d9063bbe6645adc71e54f5509dc829e"
+        bed = json.loads((ROOT / "godot/audio/moth/manifest.json").read_text())
+        if (bed.get("sha256") != bed_hash or bed.get("file") != "bed-ritual.wav"
+                or digest(ROOT / "public/moth/files/bed-ritual/clip.wav") != bed_hash
+                or digest(ROOT / "godot/audio/moth/bed-ritual.wav") != bed_hash):
+            raise RuntimeError("Moth ritual bed differs from reviewed source asset")
     native_files = [p for p in git("ls-files", "godot").splitlines() if not p.startswith(("godot/tests/", "godot/content/", "godot/.godot/")) and p not in ["godot/.gitignore", "godot/export_presets.cfg"]]
     input_paths.update(native_files)
     input_paths.update(p.relative_to(ROOT).as_posix() for p in (ROOT / "tools/godot-package").glob("*") if p.is_file())
     input_paths.add("port/native-linux-package/PLAY.md")
     if windows:
         input_paths.add("port/native-windows-package/PLAY.md")
+    # Bind native presentation/assets and packaging tools to the same reviewed
+    # revision as the authority. Unrelated untracked evidence may remain, but no
+    # undeclared or locally modified build input may enter either platform.
+    tracked_inputs = set(git("ls-files", "--", *sorted(input_paths)).splitlines())
+    if input_paths - tracked_inputs:
+        raise RuntimeError(f"Uncommitted build inputs: {sorted(input_paths - tracked_inputs)}")
+    changed_inputs = git("diff", "--name-only", port_commit, "--", *sorted(input_paths))
+    if changed_inputs:
+        raise RuntimeError(f"Build inputs differ from reviewed HEAD:\n{changed_inputs}")
     inputs = {p:digest(ROOT / p) for p in sorted(input_paths)}
     # New/untracked authoritative modules must not silently enter the closure.
     for p in closure["modules"]:
@@ -369,12 +385,14 @@ ssh_remote_deploy/enabled=false
     run(["node", "--input-type=module", "-e", verify], env=env)
     if inputs != {p:digest(ROOT / p) for p in inputs}:
         raise RuntimeError("Build inputs changed during packaging")
+    if git("rev-parse", "HEAD") != port_commit:
+        raise RuntimeError("Reviewed revision changed during packaging")
     manifest = {
         "schema_version":1, "kind":"windows-playable-demo" if windows else "private-local-linux-prototype", "release_ready":False,
         "target":args.target, "operator_models":args.operator_models, "staged_native_overrides":staged_overrides,
         "redistribution_rights":"unresolved; local use only; no asset rights asserted",
         "source_commit":lock["source_commit"], "source_derivative_commit":derivative["derivative_commit"] if derivative else None,
-        "source_derivative_sha256":digest(derivative_path) if derivative else None, "port_commit":git("rev-parse", "HEAD"),
+        "source_derivative_sha256":digest(derivative_path) if derivative else None, "port_commit":port_commit,
         "worktree_status":git("status", "--short"), "full_history":True, "godot_version":EXACT,
         "godot_export":"release template; assertions disabled; no test fixtures in production PCK",
         "build_node":run(["node", "--version"]), "play_node":f"{NODE_VERSION} (bundled)" if windows else ">=22.13.0 (external prerequisite)", "bundled_node":bundled_node,
