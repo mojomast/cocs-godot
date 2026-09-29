@@ -1,0 +1,9 @@
+# Weather ambience integration request
+
+`res://ambience/weather_service.gd` is an eventless, opt-in Node3D. Add it to the presentation viewer, call `bind(source_arena, camera, mode, deterministic_seed)` on map changes, `tick(delta)` with the presentation clock, `apply_snapshot(frame)` for authoritative single-player weather/time, `apply_settings({"muted": bool, "ambient_volume": 0..1, "reduced_motion": bool})`, and `set_focus(bool)` on focus changes. `diagnostics()` reports active effect counts and suppression state. Never feed pose, collisions, input, or arbitrary top-level snapshot weather into it.
+
+**Required suppression hook before activation:** `combat_particles/manager.gd` creates four native ambient weather fields via `_ambient()` and `moth_scenery/scenery.gd` creates weather-like motes. The owning integrator must suppress the four native ambient fields and disable the Moth weather-mote field when enabling this service's precipitation, then call `set_native_weather_suppressed(true)`. On removal/restore call `set_native_weather_suppressed(false)` first. Until the integrator acknowledges this handoff, precipitation and lightning remain hidden; the default is false. Do not change those systems from this scoped lane.
+
+Pure selection and seeded wind/lightning calculations live in `weather_profile.gd`, based on `game/environment.mjs:511-653`. Biome matching honors explicit biome before ID tokens. Local weather is cosmetic; only `frame.singlePlayer.weather` and `frame.singlePlayer.timeOfDay` may override it. The menus `selection`, `theater`, and `progression` cycle every 90 seconds adjusted by source arena ID hash; play cycles every 600 seconds with the same adjustment.
+
+Integration and runtime verification are pending ownership grant for world/native suppression edits and engine/test execution.
