@@ -299,6 +299,13 @@ def main():
                 if ready and native and native.get('pid') and x11.window(native['pid']):
                     if ((not active or not trace) and time.monotonic() >= earliest_setup) or (active and trace and any(f['event'] == 'round_start' for f in frames) and sum(f['event'] == 'snapshot' and f.get('pose_present') and f.get('phase') == 3 for f in frames) >= 3):
                         break
+                    if active and trace and action == 'window' and time.monotonic() >= earliest_setup:
+                        with urllib.request.urlopen(f"http://127.0.0.1:{ready['port']}/", timeout=5) as response:
+                            observed = json.load(response)
+                        if observed.get('players') == 1 and observed.get('snapshot', {}).get('fullFrames', 0) >= 3:
+                            # Release traces may remain in stdout's buffer until
+                            # normal close. Require their exact content below.
+                            break
                 require(process.poll() is None, f'{name}: launcher exited early; see {log}')
                 time.sleep(0.05)
             else:
@@ -348,6 +355,11 @@ def main():
                 raise RuntimeError(f'{name}: close timed out; native_alive={Path(f"/proc/{native_pid}").exists()}; log={log.read_text()[-2000:]}')
             text = log.read_text()
             require(code == expected and 'PACKAGE_STOPPED' in text, f'{name}: cleanup/exit mismatch {code}; see {log}')
+            if active and trace and action == 'window':
+                frames = records(text, 'PORT_NATIVE_TRACE ')
+                require(any(f['event'] == 'round_start' for f in frames)
+                        and sum(f['event'] == 'snapshot' and f.get('pose_present') and f.get('phase') == 3 for f in frames) >= 3,
+                        f'{name}: exported round/actor trace missing after normal close')
             require(not Path(f'/proc/{native_pid}').exists(), f'{name}: native process survived')
             with socket.socket() as connection:
                 connected = connection.connect_ex(('127.0.0.1', ready['port'])) == 0

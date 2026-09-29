@@ -1,0 +1,17 @@
+home PASS
+host-setup PASS
+lobby-menu PASS
+lobby-external PASS
+lobby-external-interrupt PASS
+combat PASS
+combat-instagib PASS
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-lattice-flagship-20260925-sol/tools/godot-package/verify.py", line 521, in <module>
+    main()
+    ~~~~^^
+  File "/home/mojo/.tmp-on-disk/cocs-lattice-flagship-20260925-sol/tools/godot-package/verify.py", line 445, in main
+    launch('lattice-world', ['--experience=lattice-world','--map=monsoon-foundry','--mode=cocs-coop','--native-trace'])
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mojo/.tmp-on-disk/cocs-lattice-flagship-20260925-sol/tools/godot-package/verify.py", line 305, in launch
+    raise RuntimeError(f'{name}: actual started/snapshot/window evidence timed out; see {log}')
+RuntimeError: lattice-world: actual started/snapshot/window evidence timed out; see /home/mojo/.tmp-on-disk/cocs-consolidated-evidence-20260929/linux-package-attempt-5/lattice-world.log
