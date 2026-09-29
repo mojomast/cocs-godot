@@ -1,0 +1,5 @@
+{
+  "status": "FAIL",
+  "checks": 7,
+  "error": "AssertionError [ERR_ASSERTION]: the next match actor carries the saved attachment\n    at pass (file:///home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/port/native-career/equipped-journey.mjs:39:47)\n    at file:///home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/port/native-career/equipped-journey.mjs:153:3"
+}

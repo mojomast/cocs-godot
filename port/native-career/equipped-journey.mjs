@@ -148,7 +148,7 @@ try {
   pass('the current match actor was not rewritten by the saved write', Array.isArray(confirmed.actor_ids_before) && !confirmed.actor_ids_before.includes(confirmed.equip.id));
 
   // 2. Let the round resolve and restart; the next actor carries the saved mod.
-  const rematch = await until(() => { const s = latest(observer); return s && s.restarted === true && Array.isArray(s.actor_ids_after) && s.actor_ids_after.length >= 0 && s.round_starts >= 2 ? s : null; }, 180000, 'next-match restart');
+  const rematch = await until(() => { const s = latest(observer); return s && s.restarted === true && s.actor_after_captured === true && Array.isArray(s.actor_ids_after) && s.round_starts >= 2 ? s : null; }, 180000, 'next-match actor snapshot');
   pass('the authoritative next round started', rematch.round_starts >= 2);
   pass('the next match actor carries the saved attachment', Array.isArray(rematch.actor_ids_after) && rematch.actor_ids_after.includes(rematch.equip.id));
 

@@ -28,6 +28,7 @@ var equipped := false
 var confirmed := false
 var restarted := false
 var before_captured := false
+var after_captured := false
 var equip_slot := ""
 var equip_id := ""
 var first_actor_ids: Array = []
@@ -206,8 +207,11 @@ func _process(delta: float) -> bool:
 	if confirmed and not restarted and session.phase == 4 and session.lobby_host_allowed():
 		restarted = true
 		session.request_restart()
-	if restarted and session.phase == 3 and session.round_starts >= 2 and second_actor_ids.is_empty():
+	# START resets the transport snapshots before the new actor arrives. An empty
+	# array at that boundary is not evidence of a new actor with no attachment.
+	if restarted and session.phase == 3 and session.round_starts >= 2 and not after_captured and session.received_pose and not session.client.snapshots.is_empty():
 		second_actor_ids = live_actor_ids()
+		after_captured = true
 	sampled += delta
 	if sampled < 0.2: return false
 	sampled = 0
@@ -228,7 +232,7 @@ func _process(delta: float) -> bool:
 		"saved": career.equipment_summary() if career != null else {},
 		"pending": career.pending.is_empty() == false if career != null else false,
 		"action_status": career.action_status if career != null else "",
-		"actor_ids_before": first_actor_ids, "actor_ids_after": second_actor_ids, "actor_finish": actor_finish,
+		"actor_ids_before": first_actor_ids, "actor_ids_after": second_actor_ids, "actor_after_captured": after_captured, "actor_finish": actor_finish,
 		"state_text": career.state_label.text if career != null else "",
 		"back": rect(named("CareerBack")), "tab_loadout": rect(named("Tab_loadout")),
 		"summary_rect": rect(career.summary_label) if career != null else [],
