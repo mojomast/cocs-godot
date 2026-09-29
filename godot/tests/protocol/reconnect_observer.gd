@@ -32,16 +32,21 @@ func action(command: Dictionary) -> void:
 		"click":
 			var control: Control = menu.get(str(command.get("name", "")))
 			if control == null or not control.is_visible_in_tree(): return
+			root.grab_focus()
 			control.grab_focus()
+			await process_frame
+			await process_frame
 			var rect := control.get_global_rect()
 			var event := InputEventMouseButton.new()
-			event.position = rect.get_center()
+			event.position = rect.get_center() * root.content_scale_factor
 			event.global_position = event.position
 			event.button_index = MOUSE_BUTTON_LEFT
 			event.pressed = true
 			Input.parse_input_event(event)
-			event.pressed = false
-			Input.parse_input_event(event)
+			await process_frame
+			var released := event.duplicate() as InputEventMouseButton
+			released.pressed = false
+			Input.parse_input_event(released)
 		"capture":
 			await RenderingServer.frame_post_draw
 			root.get_texture().get_image().save_png(screenshot)

@@ -21,6 +21,13 @@ for(const key of ['XDG_DATA_HOME','XDG_CONFIG_HOME','XDG_CACHE_HOME','XDG_RUNTIM
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 async function until(predicate,ms,label){const end=Date.now()+ms;while(Date.now()<end){const value=predicate();if(value)return value;await sleep(60);}throw Error(`timeout: ${label}`);}
 function check(label,value){assert.ok(value,label);summary.checks.push(label);}
+async function stopChild(child){
+ if(!child||child.exitCode!==null||child.signalCode!==null)return;
+ const done=new Promise(resolveExit=>{child.once('close',resolveExit);child.once('error',resolveExit);});
+ child.kill('SIGTERM');
+ const kill=setTimeout(()=>child.kill('SIGKILL'),2500);
+ try{await done;}finally{clearTimeout(kill);}
+}
 let xvfb,native,host,game,timeout=false,guestSocket=null,commandId=0,output='',samples=[],lastCommand=-1,received=[];
 const inbox=resolve(temp,'command.json'),shot=resolve(temp,'disconnected.png');
 const timer=setTimeout(()=>{timeout=true;native?.kill('SIGKILL');xvfb?.kill('SIGKILL');},105000);
@@ -94,13 +101,17 @@ try {
  summary.status='FAIL';
  summary.failure='Native journey failed; see named check or timeout in runner output.';
  throw error;
-} finally {
+ } finally {
  clearTimeout(timer);
- native?.kill('SIGKILL');
+ await stopChild(native);
  host?.terminate();
+ for(const socket of game?.wss.clients??[])socket.terminate();
  await game?.close();
- xvfb?.kill('SIGKILL');
- mkdirSync(evidence,{recursive:true});
+ await stopChild(xvfb);
+ summary.cleanup={native_exit:native?.exitCode,native_signal:native?.signalCode,xvfb_exit:xvfb?.exitCode,xvfb_signal:xvfb?.signalCode,server_listening:game?.server.listening??false};
+  mkdirSync(evidence,{recursive:true});
+  writeFileSync(resolve(evidence,'last-sample.json'),JSON.stringify(samples.at(-1)??null,null,2));
+  writeFileSync(resolve(evidence,'native.log'),output);
  writeFileSync(resolve(evidence,'summary.json'),JSON.stringify(summary,null,2));
  if(existsSync(shot))writeFileSync(resolve(evidence,'disconnected.png'),readFileSync(shot));
  console.log(`RECONNECT_EVIDENCE ${evidence}`);
