@@ -5,6 +5,8 @@ var blocked: Dictionary = {}
 var interact_pending := false
 var fire := false
 var ads := false
+var jump_pending := false
+var pulses: Dictionary = {}
 
 func cancel_aim() -> void:
 	ads = false
@@ -13,6 +15,8 @@ func release() -> void:
 	super.release()
 	blocked = down.duplicate()
 	interact_pending = false
+	jump_pending = false
+	pulses.clear()
 	fire = false
 	cancel_aim()
 
@@ -29,6 +33,10 @@ func accept(event: InputEvent, eligible: bool, infantry: bool = true) -> void:
 			down[code] = true
 		if blocked.has(code): return
 		if code == KEY_R and event.pressed: cancel_aim()
+		if code == KEY_SPACE and event.pressed and engaged and focused and eligible: jump_pending = true
+		if event.pressed and engaged and focused and eligible:
+			if code == KEY_R: pulses.reload = true
+			if code == KEY_G: pulses.grenade = true
 		if code == KEY_E:
 			if event.pressed and engaged and focused and eligible: interact_pending = true
 			return
@@ -63,10 +71,15 @@ func command(yaw: float, pitch: float, eligible: bool, driving: bool) -> Diction
 		p.x = direction.x
 		p.z = direction.y
 	p.pitch = pitch
+	p.jump = engaged and jump_pending
+	jump_pending = false
 	p.interact = engaged and interact_pending
 	interact_pending = false
 	p.fire = engaged and fire
-	p.crouch = engaged and keys.has(KEY_CTRL)
-	p.reload = engaged and keys.has(KEY_R)
+	p.crouch = engaged and (keys.has(KEY_CTRL) or keys.has(KEY_C))
+	p.reload = engaged and pulses.has("reload")
+	p.grenade = engaged and pulses.has("grenade")
+	p.altFire = engaged and keys.has(KEY_Z)
+	pulses.clear()
 	p.ads = engaged and focused and eligible and not driving and ads
 	return p

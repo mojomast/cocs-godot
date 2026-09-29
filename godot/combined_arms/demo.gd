@@ -9,6 +9,11 @@ const Controls = preload("res://combined_arms/controls.gd")
 const CameraRig = preload("res://combined_arms/camera.gd")
 const HUD = preload("res://combined_arms/hud.gd")
 const Lease = preload("res://combined_arms/lease.gd")
+const SessionBridge = preload("res://vehicles/session_bridge.gd")
+var vehicle_bridge := SessionBridge.new()
+var join_room_id := ""
+var wait_for_players := 1
+var roster: Dictionary = {}
 const Motion = preload("res://world/control_math.gd")
 const LocalMotion = preload("res://world/local_motion.gd")
 const Graphics = preload("res://combined_arms/graphics.gd")
@@ -43,6 +48,8 @@ func _ready() -> void:
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--map="): map_id = arg.trim_prefix("--map=")
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
+		if arg.begins_with("--join-room="): join_room_id = arg.trim_prefix("--join-room=").strip_edges()
+		if arg.begins_with("--wait-for-players="): wait_for_players = clampi(int(arg.trim_prefix("--wait-for-players=")), 1, 16)
 	if map_id != "sunscar-convoy" or endpoint.is_empty():
 		push_error("Require --map=sunscar-convoy --endpoint=ws://HOST:PORT")
 		get_tree().quit(2)
@@ -70,6 +77,7 @@ func _ready() -> void:
 	net.events.connect(on_events)
 	net.results.connect(on_results)
 	net.connection_error.connect(fail)
+	net.transport_dropped.connect(fail)
 	checked(net.connect_server(endpoint, world.catalog.entries, map_id))
 
 func release() -> void:
@@ -90,6 +98,7 @@ func clear_round() -> void:
 	actor = {}
 	vehicle = {}
 	identity = ""
+	vehicle_bridge.reset()
 	fleet.clear_round()
 	actors.clear_round()
 	chase.reset()
@@ -110,10 +119,24 @@ func fail(message: String) -> void:
 
 func on_lobby(frame: Dictionary) -> void:
 	if phase == "error": return
+	roster = frame
+	if actor.get("id", -1) != net.actor_id: release()
+	if not join_room_id.is_empty():
+		if phase == "connecting": phase = "waiting"
+		return
+	if frame.get("hostId", -1) != net.peer_id or net.spectating: return
 	if not configured:
 		configured = true
 		checked(net.configure_match("combined-arms", 0))
 	elif frame.get("config") != null and not start_sent:
+		if frame.config.get("mode") != "combined-arms":
+			fail("Authority returned a different match mode")
+			return
+		phase = "waiting"
+		var players := 0
+		for player: Dictionary in frame.get("players", []):
+			if player.get("connected", false) and not player.get("spectate", false): players += 1
+		if players < wait_for_players: return
 		start_sent = true
 		phase = "starting"
 		phase_age = 0
@@ -128,7 +151,7 @@ func on_started(_frame: Dictionary) -> void:
 func on_results(frame: Dictionary) -> void:
 	on_snapshot(frame)
 	release()
-	checked(net.send_input(controls.command(yaw, pitch, false, false)))
+	if not net.spectating: checked(net.send_input(controls.command(yaw, pitch, false, false)))
 	if phase != "error": phase = "results"
 	graphics.reset()
 
@@ -139,14 +162,13 @@ func on_snapshot(frame: Dictionary) -> void:
 		fail("Invalid vehicle snapshot")
 		return
 	actors.apply_state(state, net.actor_id)
-	# No standing soldiers inside vehicle hulls.
-	for a: Dictionary in state.get("actors", []):
-		if a.get("vehicleId") != null and actors.actors.has(int(a.id)): actors.actors[int(a.id)].hide()
+	vehicle_bridge.observe(state, net.actor_id)
+	vehicle_bridge.crew_visibility(actors)
 	var previous_weapon: int = int(actor.get("weapon", -1))
-	actor = Lease.actor_for(state, net.actor_id)
+	actor = vehicle_bridge.actor
 	if previous_weapon != int(actor.get("weapon", -1)) or actor.get("reloading", false): controls.cancel_aim()
-	vehicle = Lease.vehicle_for(state, actor)
-	var next := "%s/%s/%s/%s/%s" % [net.actor_id, actor.get("vehicleId"), actor.get("vehicleSeat"), vehicle.get("id"), Lease.alive(actor)]
+	vehicle = vehicle_bridge.vehicle
+	var next: String = vehicle_bridge.identity
 	if next != identity:
 		release()
 		chase.reset()
@@ -163,17 +185,18 @@ func on_snapshot(frame: Dictionary) -> void:
 	graphics.apply_state()
 
 func eligible() -> bool:
-	return phase == "active" and Lease.permitted(state, actor, vehicle, age) and actor.get("id") == net.actor_id
+	return vehicle_bridge.eligible(net.actor_id, age, phase == "active", net.spectating)
 
 func aim_requested() -> bool:
-	return eligible() and not net.spectating and vehicle.is_empty() and not actor.get("reloading", false) and controls.engaged and controls.focused and get_window().has_focus() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and controls.ads
+	return eligible() and not net.spectating and (vehicle.is_empty() or actor.get("vehicleSeat") == "passenger") and not actor.get("reloading", false) and controls.engaged and controls.focused and get_window().has_focus() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and controls.ads
 
 func _input(event: InputEvent) -> void:
 	if SettingsAccess.overlay_open():
+		release()
 		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed: controls.accept(event, false)
 		return
 	var focused := get_window().has_focus() and controls.focused
-	controls.accept(event, eligible() and focused, vehicle.is_empty() and not actor.get("reloading", false) and not net.spectating)
+	controls.accept(event, eligible() and focused, (vehicle.is_empty() or actor.get("vehicleSeat") == "passenger") and not actor.get("reloading", false) and not net.spectating)
 	if controls.engaged and focused: Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event is InputEventMouseMotion and controls.engaged and eligible() and focused:
@@ -194,29 +217,24 @@ func _notification(what: int) -> void:
 func _process(delta: float) -> void:
 	age += delta
 	phase_age += delta
-	if not eligible() or not get_window().has_focus() or (controls.engaged and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED): release()
+	if not eligible() or SettingsAccess.overlay_open() or not get_window().has_focus() or (controls.engaged and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED): release()
 	if phase == "connecting" and not create_sent and net.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		create_sent = true
-		checked(net.create_room())
+		checked(net.create_room() if join_room_id.is_empty() else net.join_room(join_room_id))
 	if phase in ["connecting", "starting"] and phase_age > 15: fail("Setup timed out")
 	if phase == "active" and age > 10: fail("Authoritative snapshots timed out")
-	if phase == "active":
+	if phase == "active" and not net.spectating:
 		send_age += delta
 		if send_age >= 1.0/30.0:
 			send_age = 0
 			var p := controls.command(yaw, pitch, eligible(), not vehicle.is_empty() and actor.get("vehicleSeat") == "driver")
 			p.ads = aim_requested()
-			# This vertical slice accepts Puma driving. Secondary silhouettes still
-			# permit safe ordinary exit; no unaccepted flight/seat controls advertised.
-			if not vehicle.is_empty() and (vehicle.get("kind") != "puma" or actor.get("vehicleSeat") != "driver"):
-				p.x = 0.0
-				p.z = 0.0
-				for field in ["fire", "jump", "sprint", "crouch", "reload"]: p[field] = false
+			p = vehicle_bridge.adapt(p, eligible() and controls.engaged and controls.focused and not SettingsAccess.overlay_open(), true)
 			var result := net.send_input(p)
 			input_queued.emit(net.input_seq, p, result)
 			checked(result)
 	if not actor.is_empty():
-		var pose := chase.follow(vehicle, delta) if not vehicle.is_empty() else chase.infantry(actor, yaw, pitch)
+		var pose := chase.mounted(vehicle, actor, yaw, pitch, delta) if not vehicle.is_empty() else chase.infantry(actor, yaw, pitch)
 		if vehicle.is_empty() and eligible() and get_window().has_focus() and local_motion.ready():
 			var forward: Vector3 = pose.target - pose.eye
 			pose.eye = local_motion.sample(Time.get_ticks_usec() / 1000000.0)
@@ -227,6 +245,7 @@ func _process(delta: float) -> void:
 		world.camera.look_at(pose.target)
 	update_graphics()
 	hud.update(actor, vehicle, Lease.nearby(state, actor), controls.engaged, phase, age, error)
+	if phase == "waiting": hud.info.text += "\nRoom %s · waiting for host / %d connected players" % [net.room_id, wait_for_players]
 
 func _exit_tree() -> void:
 	release()

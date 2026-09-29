@@ -1,0 +1,63 @@
+extends RefCounted
+## Shared source-snapshot lease and wire-input adapter. No simulation or seat requests.
+const Lease = preload("res://combined_arms/lease.gd")
+var actor: Dictionary = {}
+var vehicle: Dictionary = {}
+var state: Dictionary = {}
+var identity := ""
+var jump_down := false
+
+func reset() -> void:
+	actor = {}
+	vehicle = {}
+	state = {}
+	identity = ""
+	# Preserve physical jump across boundaries until a released sample arrives.
+
+func observe(value: Dictionary, actor_id: int) -> bool:
+	state = value
+	actor = Lease.actor_for(state, actor_id)
+	vehicle = Lease.vehicle_for(state, actor)
+	var next := "%s/%s/%s/%s/%s/%s" % [actor_id, actor.get("vehicleId"), actor.get("vehicleSeat"), actor.get("vehicleSeatIndex"), vehicle.get("id"), Lease.alive(actor)]
+	var changed := next != identity
+	identity = next
+	return changed
+
+func eligible(actor_id: int, age: float, active: bool, spectating: bool) -> bool:
+	return active and not spectating and actor_id >= 0 and actor.get("id") == actor_id and Lease.permitted(state, actor, vehicle, age)
+
+func mounted() -> bool:
+	return actor.get("vehicleId") != null
+
+func adapt(packet: Dictionary, allowed: bool, jump_is_edge: bool = false) -> Dictionary:
+	var result := packet.duplicate()
+	var jump: bool = packet.get("jump", false)
+	result.jump = allowed and jump and (jump_is_edge or not jump_down)
+	jump_down = jump
+	if not allowed:
+		for field: String in result:
+			if result[field] is bool: result[field] = false
+		result.x = 0.0
+		result.z = 0.0
+		result.erase("weapon")
+		return result
+	if not mounted(): return result
+	if vehicle.is_empty(): return adapt(result, false)
+	var seat: String = actor.get("vehicleSeat", "")
+	if seat != "driver":
+		result.x = 0.0
+		result.z = 0.0
+		result.jump = false
+		result.sprint = false
+		result.crouch = false
+	if seat != "passenger":
+		for field in ["ads", "reload", "altFire", "melee", "grenade", "mobility", "power"]: result[field] = false
+		result.erase("weapon")
+	if seat == "driver" and vehicle.get("gunner") != null: result.fire = false
+	return result
+
+func crew_visibility(presentation: Node) -> void:
+	# Presentation reapplies ordinary visibility each snapshot; hide only validated crew.
+	for member: Dictionary in state.get("actors", []):
+		if not Lease.vehicle_for(state, member).is_empty() and presentation.actors.has(int(member.id)):
+			presentation.actors[int(member.id)].hide()

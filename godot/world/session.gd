@@ -6,6 +6,29 @@ const MouseMotion = preload("res://ui/mouse_motion.gd")
 const ControlMath = preload("res://world/control_math.gd")
 const WeaponSelection = preload("res://world/weapon_selection.gd")
 const CombatActions = preload("res://world/combat_actions.gd")
+const VehicleBridge = preload("res://vehicles/session_bridge.gd")
+const VehicleFleet = preload("res://combined_arms/fleet.gd")
+var vehicle_bridge := VehicleBridge.new()
+var vehicle_fleet: Node3D
+
+func clear_vehicles() -> void:
+	vehicle_bridge.reset()
+	if is_instance_valid(vehicle_fleet): vehicle_fleet.clear_round()
+
+func observe_vehicles(value: Dictionary) -> void:
+	var changed := vehicle_bridge.observe(value, client.actor_id)
+	if changed:
+		release_pointer()
+		local_motion.reset()
+	if not value.get("vehicles", []).is_empty() and not is_instance_valid(vehicle_fleet) and is_inside_tree():
+		vehicle_fleet = VehicleFleet.new()
+		add_child(vehicle_fleet)
+	if is_instance_valid(vehicle_fleet):
+		if not vehicle_fleet.apply_state(value, client.actor_id):
+			on_error("Invalid vehicle snapshot")
+			return
+	vehicle_bridge.crew_visibility(presentation)
+
 var combat_actions := CombatActions.new()
 const FirstPersonBinding = preload("res://first_person/session_binding.gd")
 var first_person: Node
@@ -71,6 +94,7 @@ func lobby_host_allowed() -> bool:
 	return false
 
 func lobby_clear() -> void:
+	clear_vehicles()
 	release_pointer()
 	local_motion.reset()
 	browsing = false
@@ -118,6 +142,7 @@ func lobby_retry_reconnect() -> void:
 	label.text = "Reconnecting to the same room…"
 
 func on_transport_dropped(message: String) -> void:
+	clear_vehicles()
 	if not lobby_enabled:
 		on_error("Connection lost. Return to the launcher and join a room explicitly.")
 		return
@@ -212,6 +237,7 @@ func lobby_start() -> void:
 
 func can_capture_pointer() -> bool:
 	if client.spectating: return false
+	if vehicle_bridge.mounted() and not vehicle_bridge.eligible(client.actor_id, 0.0, phase == 3, client.spectating): return false
 	# Application focus notifications may lag the window's focus state (X11).
 	# Detached logic probes have no window; attached sessions must check it.
 	if is_inside_tree() and not get_window().has_focus(): return false
@@ -411,6 +437,7 @@ func _ready() -> void:
 		if lobby_enabled and phase != 3: return
 		round_results += 1
 		presentation.apply_state(f.state, client.actor_id)
+		observe_vehicles(f.state)
 		pickups.apply_state(f.state)
 		phase = 4
 		combat.clear_round()
@@ -477,6 +504,7 @@ func on_started(_frame: Dictionary) -> void:
 	# A host can start a new round without this client visiting results.
 	# Never carry interactive capture across an authoritative round boundary.
 	release_pointer()
+	clear_vehicles()
 	local_motion.reset()
 	if is_instance_valid(debug_panel): debug_panel.round_started()
 	round_starts += 1
@@ -492,6 +520,7 @@ func on_started(_frame: Dictionary) -> void:
 	emit_boundary_trace("round_start")
 
 func on_error(message: String) -> void:
+	clear_vehicles()
 	local_motion.reset()
 	if is_instance_valid(setup_menu): setup_menu.hide()
 	label.show()
@@ -600,6 +629,8 @@ func on_snapshot(frame: Dictionary) -> void:
 	pickups.apply_state(frame.state)
 	combat.apply_state(frame.state)
 	presentation.apply_state(frame.state, client.actor_id)
+	observe_vehicles(frame.state)
+	if phase != 3: return
 	if is_inside_tree() and not is_instance_valid(first_person):
 		first_person = FirstPersonBinding.new()
 		first_person.name = "FirstPerson"
@@ -680,6 +711,7 @@ func render_local_translation(now: float) -> void:
 	if local_motion.ready(): camera.position = local_motion.sample(now)
 
 func weapon_controls_active() -> bool:
+	if vehicle_bridge.mounted() and vehicle_bridge.actor.get("vehicleSeat") != "passenger": return false
 	return can_capture_pointer() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 
 func combat_controls_active() -> bool:
@@ -687,6 +719,7 @@ func combat_controls_active() -> bool:
 	return can_capture_pointer() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 
 func aim_requested() -> bool:
+	if vehicle_bridge.mounted() and vehicle_bridge.actor.get("vehicleSeat") != "passenger": return false
 	combat_actions.observe_actor(presentation.local_actor)
 	if not combat_controls_active():
 		combat_actions.clear()
@@ -765,6 +798,16 @@ func _process(delta: float) -> void:
 		controls.fire = true
 	if weapon_controls_active() and weapon_selection.pending >= 0:
 		controls["weapon"] = weapon_selection.pending
+	if vehicle_bridge.mounted():
+		# Source driveVehicle projects world axes into throttle and negative right.
+		if vehicle_bridge.actor.get("vehicleSeat") == "driver":
+			var throttle := float(combat_actions.key(KEY_W)) - float(combat_actions.key(KEY_S))
+			var steer := float(combat_actions.key(KEY_D)) - float(combat_actions.key(KEY_A))
+			var axes := Vector2(-sin(yaw)*throttle-cos(yaw)*steer, -cos(yaw)*throttle+sin(yaw)*steer)
+			axes /= maxf(1.0, maxf(absf(axes.x), absf(axes.y)))
+			controls.x = axes.x
+			controls.z = axes.y
+		controls = vehicle_bridge.adapt(controls, active and vehicle_bridge.eligible(client.actor_id, 0.0, phase == 3 and not snapshot_watch.stale(), client.spectating))
 	var queue_result: Error = client.send_input(controls)
 	if queue_result == OK: combat_actions.queued()
 	if queue_result == OK and controls.has("weapon"): weapon_selection.queued(client.input_seq)
