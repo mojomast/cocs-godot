@@ -22,12 +22,18 @@ func _ready() -> void:
 	var layer := CanvasLayer.new()
 	add_child(layer)
 	var panel := VBoxContainer.new()
-	panel.position = Vector2(20, 20)
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	layer.add_child(panel)
+	panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	panel.offset_left = 20
+	panel.offset_top = 20
+	panel.offset_right = -20
+	panel.offset_bottom = -20
 	for widget: Control in [objective_label, label, selector, combat_label]:
 		panel.add_child(widget)
 		widget.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if widget is Label:
+			widget.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	selector.hide()
 	for node: Node in [pickups, presentation, combat, client, sectors, scoreboard]: add_child(node)
 	presentation.interpolate_remote = true
