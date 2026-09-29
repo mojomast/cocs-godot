@@ -8,14 +8,22 @@ and team assignments are controlled fixture setup, not a natural journey.
 Run only when the parent grants the serialized heavy slot:
 `node port/native-vehicle-expansion/source-oracle.mjs`.
 
-`run.py` prepares the distinct **live Room-wire acceptance**: two separate
-Godot processes plus a third native passenger, one unmodified server at default step, real host room code,
+`run.py` prepares the distinct **live Room-wire acceptance**: three separate
+Godot processes (driver, gunner, passenger), one unmodified server at default step, real host room code,
 normal native physical input events, copied source hash attestations, bounded
 logs, and strict cleanup. It uses the explicit approved semantic derivative
 and ignored node_modules from the approved verification worktree. Do **not**
 run it concurrently with any other team's heavy job. A prepared harness is
 not evidence until its retained summary says PASS and its independent wire
-validator accepts both native clients.
+validator accepts all three native clients.
+
+Live evidence is retained **outside Git**, beneath
+`/tmp/opencode/native-vehicle-expansion/<attempt-id>/`. Every attempt keeps its
+own summary and SHA-256/size manifest, a compressed `wire.json.gz`, native
+logs, and failure traces. Credentials are never retained from `welcome`, and
+each native client gets separate private HOME/XDG/career/settings roots with
+inherited credential scope cleared. Replay an attempt with
+`python3 port/native-vehicle-expansion/validate.py /tmp/opencode/native-vehicle-expansion/<attempt-id>`.
 
 `room-edge-oracle.mjs` is a separate **arranged direct-Room fixture** for
 Hornet: one held `jump` accepts one ascent edge, a release and new press accepts

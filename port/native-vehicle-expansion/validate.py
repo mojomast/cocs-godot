@@ -1,4 +1,5 @@
 """Independent replay of two-plus native seats against passive Room wire evidence."""
+import gzip
 import json
 import math
 import pathlib
@@ -131,4 +132,6 @@ def verify(logs, wire):
 if __name__=='__main__':
     root=pathlib.Path(sys.argv[1])
     logs={role:(root/(role+'.log')).read_text() for role in ROLES}
-    print(json.dumps(verify(logs,json.loads((root/'wire.json').read_text())),indent=2))
+    plain=root/'wire.json'
+    wire=json.loads(plain.read_text() if plain.exists() else gzip.open(root/'wire.json.gz','rt').read())
+    print(json.dumps(verify(logs,wire),indent=2))

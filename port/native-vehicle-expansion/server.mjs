@@ -1,4 +1,4 @@
-// Passive wire witness for TWO separately launched native Godot processes.
+// Passive wire witness for THREE separately launched native Godot processes.
 // The Room and GameServer run unmodified; neither authority nor input is seeded.
 import {pathToFileURL} from 'node:url';
 import {resolve} from 'node:path';
@@ -30,7 +30,7 @@ game.wss.on('connection', socket => {
   witness.connections.push(record);
   socket.on('message', raw => {
     let frame; try {frame=JSON.parse(raw.toString());} catch {return;}
-    if (frame.type==='input' && witness.inputs.length<12000)
+    if (frame.type==='input' && witness.inputs.length<21000)
       witness.inputs.push({connection, seq:frame.seq, input:frame.input});
     else if (['create','join','host','start'].includes(frame.type))
       (record.commands??=[]).push({type:frame.type, roomId:frame.roomId??null,
@@ -56,7 +56,9 @@ game.wss.on('connection', socket => {
       if (witness.starts.length<20) witness.starts.push({connection, mapId:frame.mapId, mode:frame.config?.mode,
         botCount:frame.config?.botCount, roundRevision:frame.roundRevision});
     }
-    if (frame.type==='snapshot' && witness.snapshots.length<16000) {
+    // Keep one of five full per-recipient frames across the *entire* journey
+    // (including late driving), not the first N which would erase completion.
+    if (frame.type==='snapshot' && (frame.seq<=10 || frame.seq%5===0) && witness.snapshots.length<4500) {
       const state=frame.state;
       witness.snapshots.push({connection, seq:frame.seq, ack:frame.acks?.[record.actorId],
         actorId:record.actorId, time:state?.time,
