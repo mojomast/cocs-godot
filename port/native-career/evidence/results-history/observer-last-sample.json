@@ -1,0 +1,97 @@
+{
+  "actor": 0,
+  "attributed": {
+    "achievementXp": 0,
+    "baseGained": 40,
+    "flagged": false,
+    "gained": 40,
+    "levelUp": false,
+    "mode": "deathmatch",
+    "prestigeBonus": 0,
+    "prestigeUp": false,
+    "progress": 0.08,
+    "result": "loss",
+    "toNext": 460
+  },
+  "back": [
+    24,
+    72,
+    1232,
+    44
+  ],
+  "captured": false,
+  "category": "history",
+  "command": 8,
+  "error": "",
+  "history_count": 1,
+  "history_status": "ready",
+  "latest": {
+    "achievementXp": 0,
+    "baseGained": 40,
+    "flagged": false,
+    "gained": 40,
+    "levelUp": false,
+    "mode": "deathmatch",
+    "prestigeBonus": 0,
+    "prestigeUp": false,
+    "progress": 0.08,
+    "result": "loss",
+    "toNext": 460
+  },
+  "opened": true,
+  "phase": 4,
+  "refresh": [
+    24,
+    364,
+    1232,
+    44
+  ],
+  "result": {
+    "actor_count": 3,
+    "actor_id": 0,
+    "deaths": 0,
+    "ending": "time",
+    "frags": 0,
+    "map": "Meridian Exchange",
+    "mode": "deathmatch",
+    "replayed": false,
+    "round_key": "70d2f271000061e0f9849506d60ab0509578df5be77fcba3f982fa2b21fc8568:1",
+    "time": 60.0166666666645
+  },
+  "results_seen": 1,
+  "results_status": "complete",
+  "room": "4ZXK",
+  "round_revision": 1,
+  "rows": [
+    "Recent server matches · source-recorded; not a personal timeline.",
+    "Showing 1 of up to 50 source records.",
+    "meridian-exchange · deathmatch · time",
+    "60s · Source leader Career host & Claude & Grok · 3 players",
+    "Career host F0 D0 · Claude F0 D0 · Grok F0 D0"
+  ],
+  "rows_bounds": [
+    24,
+    297,
+    1232,
+    198
+  ],
+  "seconds": 59.0970446666664,
+  "spectating": false,
+  "state_text": "CONNECTED SOURCE CAREER · LEVEL 1 · XP 40 · PRESTIGE 0\nEquip for next match · Unlocks come from level and source progression.\nMATCHES 1 · WINS 0 · KILLS 0\nMODE WINS/MATCHES · deathmatch 0/1",
+  "tab_history": [
+    381,
+    241,
+    76,
+    44
+  ],
+  "tab_results": [
+    302,
+    241,
+    75,
+    44
+  ],
+  "viewport": [
+    1280,
+    800
+  ]
+}

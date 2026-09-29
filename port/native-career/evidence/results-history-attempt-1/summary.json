@@ -1,0 +1,31 @@
+{
+  "port_commit": "d2c3feab21a86e071eb81355bf3d8a57006b857b",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": null,
+  "scope": "One native client hosting a scripted source match on an owned authority; not human acceptance",
+  "checks": [],
+  "status": "FAIL",
+  "display": ":3",
+  "port": 43195,
+  "endpoint": "ws://127.0.0.1:43195",
+  "error": "AssertionError [ERR_ASSERTION]: the real session received an accepted source result\n    at pass (file:///home/mojo/.tmp-on-disk/cocs-career-results/port/native-career/results-history-journey.mjs:41:47)\n    at file:///home/mojo/.tmp-on-disk/cocs-career-results/port/native-career/results-history-journey.mjs:144:3",
+  "cleanup": [
+    {
+      "name": "xvfb",
+      "exit_code": 0,
+      "signal": null
+    },
+    {
+      "name": "observer",
+      "exit_code": null,
+      "signal": "SIGTERM"
+    }
+  ],
+  "wire": {
+    "frames": 4879,
+    "award_index": 4876,
+    "results_index": 4877,
+    "sha256": "96b5d4ebb846497f77478164e0b5534f15f8a1c0e9ddb92afad6452c44c462f1"
+  },
+  "expired": false
+}

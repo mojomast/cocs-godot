@@ -1,0 +1,89 @@
+{
+  "port_commit": "cdfbeaa89a19c2b6ede718fa1d2ff1d630b8d5ea",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "source_derivative_commit": null,
+  "scope": "One native client hosting a scripted source match on an owned authority; not human acceptance",
+  "checks": [
+    {
+      "name": "the real session received an accepted source result"
+    },
+    {
+      "name": "the same-round source award was attributed"
+    },
+    {
+      "name": "the result renders the source mode and map"
+    },
+    {
+      "name": "RESULTS tab captured before history"
+    },
+    {
+      "name": "the HISTORY tab shows a ready source list"
+    },
+    {
+      "name": "history is labelled as server-wide"
+    },
+    {
+      "name": "history carries real source facts"
+    },
+    {
+      "name": "compact viewport is the exact 760x520 logical size @150%"
+    },
+    {
+      "name": "Back stays inside the compact viewport"
+    },
+    {
+      "name": "the RESULTS and HISTORY tabs stay inside the compact viewport"
+    },
+    {
+      "name": "the reader rows stay within the compact width"
+    },
+    {
+      "name": "HISTORY tab captured at the compact size"
+    },
+    {
+      "name": "HISTORY records captured at full size"
+    },
+    {
+      "name": "the authority sent an award frame"
+    },
+    {
+      "name": "the authority sent a results frame"
+    },
+    {
+      "name": "award precedes results on the real wire"
+    },
+    {
+      "name": "no ownership token serialized"
+    },
+    {
+      "name": "no native script/parse/render errors"
+    },
+    {
+      "name": "the owned server persisted history.json"
+    }
+  ],
+  "status": "PASS",
+  "display": ":3",
+  "port": 42745,
+  "endpoint": "ws://127.0.0.1:42745",
+  "history_entries": 1,
+  "cleanup": [
+    {
+      "name": "xvfb",
+      "exit_code": 0,
+      "signal": null
+    },
+    {
+      "name": "observer",
+      "exit_code": null,
+      "signal": "SIGTERM"
+    }
+  ],
+  "wire": {
+    "frames": 4494,
+    "award_index": 4489,
+    "results_index": 4490,
+    "sha256": "1ed18fe32b2fbb6f6da1798e9ab84ffd19309d5abf625412ef72ab8d859aaa8d"
+  },
+  "expired": false
+}
