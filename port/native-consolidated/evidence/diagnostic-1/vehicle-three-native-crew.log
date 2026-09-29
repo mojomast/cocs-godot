@@ -1,0 +1,106 @@
+{
+  "evidence": "/tmp/opencode/native-vehicle-expansion/6cc08bc2-72cf-431e-b277-cefb8f3730e3",
+  "classification": "3 distinct native clients, real Room wire; no authority position writes",
+  "stepsSeconds": {
+    "copy": 0.28,
+    "export": 0.82,
+    "import": 4.57,
+    "parse-demo": 0.67,
+    "parse-session_bridge": 0.16,
+    "parse-observe_crew_host": 0.67,
+    "parse-observe_crew_guest": 0.67,
+    "parse-observe_crew_passenger": 0.67,
+    "controls": 0.26,
+    "fleet": 0.26,
+    "shared-shots": 0.82,
+    "source-oracle": 0.77,
+    "room-edge-oracle": 0.82
+  },
+  "status": "FAIL",
+  "error": "host native process failed",
+  "ownedProcessesReaped": true,
+  "elapsedSeconds": 117.97,
+  "retainedFiles": {
+    "controls.log": {
+      "bytes": 102,
+      "sha256": "8f51ca3a09570909fe06904f973e01ab2e3332650c291f6ea416093b4506fc67"
+    },
+    "export.log": {
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    "fleet.log": {
+      "bytes": 123,
+      "sha256": "b1bb38e557e40184d371d0ec174035c1ee156a7f80232f276bf5264e55600db7"
+    },
+    "guest.log": {
+      "bytes": 9022542,
+      "sha256": "8d2fdb497e9509e81b44529bae6c11a061031cfe85e017f92cf963530a084fb1"
+    },
+    "hashes.json": {
+      "bytes": 55725,
+      "sha256": "35faf38a943fac96963fec3a5e5c0d09bc8a11e7d9cbc786197195cbba112a34"
+    },
+    "host.log": {
+      "bytes": 7012321,
+      "sha256": "5783815a29de3eace13afc9c52864284965b73e34c21db7c649fddba1fab5c8e"
+    },
+    "import.log": {
+      "bytes": 100828,
+      "sha256": "b765a75fd21ab324b78e07af75b2b5b53812386464f7488fe2bf407f6500b1d2"
+    },
+    "parse-demo.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_guest.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_host.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_passenger.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-session_bridge.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "passenger.log": {
+      "bytes": 4452249,
+      "sha256": "968416b22a2cee167d35f56d8bf09913e5734e15963a7a92b193a47198f9d277"
+    },
+    "room-edge-oracle.log": {
+      "bytes": 242,
+      "sha256": "788760344b23de8721adb695c6ea0c4be20263c74449908b16a0907428e3dff0"
+    },
+    "server.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "shared-shots.log": {
+      "bytes": 105,
+      "sha256": "fb9fcb18359113dab269fdf9af5a39f37fe16eb16a69144dc8445f86d328c009"
+    },
+    "source-oracle.log": {
+      "bytes": 1159,
+      "sha256": "6bd36ad0f8946a5a84b3d6153e114978a3cce542c2f111c25a21d9cd38f6c93e"
+    },
+    "wire.json.gz": {
+      "bytes": 183593,
+      "sha256": "7414e33be113d8a2cb24b34d4e26a8514ab2c79077ce192a8f4a2f39d02a27bb"
+    },
+    "xvfb.log": {
+      "bytes": 396,
+      "sha256": "23dbac212d0ee37e6c72af4571c6fe45c23e07517d20e5a9f2336c39c747b00b"
+    }
+  }
+}
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-player-flow-verify-20260929/port/native-vehicle-expansion/run.py", line 153, in <module>
+    assert code==0 and 'SCRIPT ERROR' not in text and 'ERROR:' not in text,role+' native process failed'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: host native process failed

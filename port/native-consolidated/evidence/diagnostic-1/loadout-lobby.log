@@ -1,0 +1,15 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: LOADOUT_LOBBY connect button calls lobby_connect once: []
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/loadouts/lobby_menu.gd:40)
+       [1] run (res://tests/loadouts/lobby_menu.gd:104)
+       [2] click (res://tests/loadouts/lobby_menu.gd:65)
+       [3] settle (res://tests/loadouts/lobby_menu.gd:44)
+SCRIPT ERROR: Out of bounds get index '0' (on base: 'Array')
+          at: run (res://tests/loadouts/lobby_menu.gd:105)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/loadouts/lobby_menu.gd:105)
+              [1] click (res://tests/loadouts/lobby_menu.gd:65)
+              [2] settle (res://tests/loadouts/lobby_menu.gd:44)

@@ -1,0 +1,17 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+ERROR: Control safety assertion 2442
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/control_safety.gd:22)
+       [1] _initialize (res://tests/protocol/control_safety.gd:214)
+ERROR: Control safety assertion 2459
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/control_safety.gd:22)
+       [1] _initialize (res://tests/protocol/control_safety.gd:237)
+ERROR: Control safety assertion 2461
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/protocol/control_safety.gd:22)
+       [1] _initialize (res://tests/protocol/control_safety.gd:240)
