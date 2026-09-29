@@ -4,6 +4,11 @@ extends SceneTree
 const Demo = preload("res://combined_arms/demo.gd")
 const PUMA := "sunscar-0-puma"
 const DEADLINE := 200.0
+class FrameWitness extends Node:
+	var observe: Callable
+	func _process(_delta: float) -> void:
+		observe.call()
+
 var role := "host"
 var demo
 var elapsed := 0.0
@@ -29,6 +34,14 @@ var neutral_seq := -1
 var entry_seq := -1
 var approach_pulses := 0
 var entry_retries := 0
+var witnessed_mounted_samples := 0
+var held_input_probe_sent := false
+var held_input_probe_pending := false
+var capture_released := false
+
+func released_capture(who: String) -> bool:
+	var directory := OS.get_environment("VEHICLE_HANDOFF_ROOT")
+	return not directory.is_empty() and FileAccess.file_exists(directory.path_join(who + ".released"))
 
 func log_line(kind: String, data: Dictionary = {}) -> void:
 	var row := {"role":role, "seconds":elapsed, "stage":stage, "room":demo.net.room_id if is_instance_valid(demo) else "", "peer":demo.net.peer_id if is_instance_valid(demo) else -1, "actor_id":demo.net.actor_id if is_instance_valid(demo) else -1}
@@ -54,6 +67,12 @@ func _initialize() -> void:
 		quit(2)
 		return
 	demo = Demo.new()
+	# First child runs after Demo updates its camera, before the network child
+	# polls the next snapshot. SceneTree._process observes the previous camera
+	# paired with newly received actor state, which is not a coherent frame.
+	var witness := FrameWitness.new()
+	witness.observe = sample
+	demo.add_child(witness)
 	# The native host selects a non-autogunner loadout through the ordinary
 	# create request. Default OpenClaw would shoot the opposing-team gunner
 	# during the natural approach before that player can take the seat.
@@ -137,8 +156,14 @@ func retry_western_walk(pos: Vector2, distance: float) -> void:
 	change("walk")
 
 func sample() -> void:
+	if demo.actor.is_empty(): return
 	if demo.net.last_snapshot_seq == last_seq: return
 	last_seq = demo.net.last_snapshot_seq
+	# The passive wire witness retains seq <= 10 or seq % 5 == 0. At low
+	# render cadence, completion must collect enough actual overlapping frames
+	# rather than assuming a few elapsed seconds imply camera/seat evidence.
+	if not demo.vehicle.is_empty() and (last_seq <= 10 or last_seq % 5 == 0):
+		witnessed_mounted_samples += 1
 	var v := source_puma()
 	var render := []
 	var node = demo.fleet.vehicle_node(PUMA)
@@ -164,7 +189,6 @@ func _process(delta: float) -> bool:
 		room_reported = true
 		log_line("ROOM", {"join_room":demo.net.room_id})
 	if demo.actor.is_empty(): return false
-	sample()
 	var a: Dictionary = demo.actor
 	if float(a.get("health",0)) <= 0 or float(a.get("dead",0)) > 0:
 		fail("actor died before crew observation: " + JSON.stringify({"stage":stage,"waypoint":waypoint,"position":[a.get("x"),a.get("z")],"snapshot_seq":demo.net.last_snapshot_seq,"ack":demo.net.last_ack}))
@@ -191,6 +215,7 @@ func _process(delta: float) -> bool:
 	match stage:
 		"boot":
 			if role == "passenger" and (v.get("gunner") == null or not gunner_seen): return false
+			if role == "passenger" and not released_capture("guest"): return false
 			if role == "guest" and v.get("driver") == null: return false
 			if role != "host":
 				if crew_ready_since < 0: crew_ready_since = elapsed
@@ -214,6 +239,16 @@ func _process(delta: float) -> bool:
 			last_position = pos
 			tap(KEY_ENTER)
 		"walk":
+			if held_input_probe_pending:
+				held_input_probe_pending = false
+				log_line("HELD_RELEASE", {"down_w":demo.controls.down.has(KEY_W),"active_w":demo.controls.keys.has(KEY_W),"engaged":demo.controls.engaged})
+			# Optional regression probe of the same held-key release contract as
+			# focus loss or stale snapshots, using ordinary physical Esc/Enter.
+			if OS.get_environment("VEHICLE_RECOVER_HELD_INPUT") == "1" and not held_input_probe_sent and demo.controls.keys.has(KEY_W):
+				held_input_probe_sent = true
+				held_input_probe_pending = true
+				tap(KEY_ESCAPE)
+				return false
 			if not root.has_focus(): root.grab_focus()
 			if not root.has_focus() or not demo.controls.focused: return false
 			if not demo.controls.engaged:
@@ -238,7 +273,11 @@ func _process(delta: float) -> bool:
 				change("waypoint-settle")
 				return false
 			turn_to(path[waypoint])
-			if not demo.controls.keys.has(KEY_W): key(KEY_W, true)
+			if not demo.controls.keys.has(KEY_W):
+				# Focus/stale-snapshot release deliberately blocks held keys until
+				# a real key-up. Repeated downs alone remain neutral forever.
+				key(KEY_W, false)
+				key(KEY_W, true)
 		"waypoint-settle":
 			if elapsed-stage_since > 12.0:
 				fail("waypoint neutral input was not acknowledged: " + JSON.stringify({"waypoint":waypoint,"neutral_seq":neutral_seq,"ack":demo.net.last_ack,"position":[pos.x,pos.y]}))
@@ -304,7 +343,7 @@ func _process(delta: float) -> bool:
 					if occupant != null and int(occupant) == 2: passenger_mounted = true
 				# X11 cannot focus two native windows at once. Let guest fire
 				# independently first, then focus the host and drive with fresh input.
-				if v.get("gunner") != null and gunner_seen and passenger_mounted and passenger_seen and elapsed-passenger_shot_since > 2.5:
+				if v.get("gunner") != null and gunner_seen and passenger_mounted and passenger_seen and elapsed-passenger_shot_since > 2.5 and released_capture("passenger"):
 					if not root.has_focus(): root.grab_focus()
 					if not root.has_focus() or not demo.controls.focused: return false
 					tap(KEY_ENTER)
@@ -352,6 +391,18 @@ func _process(delta: float) -> bool:
 				change("observe")
 				tap(KEY_ESCAPE)
 		"observe":
+			# Process clocks diverge under load. Transfer the shared X11 pointer
+			# only after Esc has actually been consumed by the previous rider.
+			if role != "host" and not capture_released and not demo.controls.engaged and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+				var directory := OS.get_environment("VEHICLE_HANDOFF_ROOT")
+				var receipt := FileAccess.open(directory.path_join(role + ".released"), FileAccess.WRITE)
+				if receipt == null:
+					fail("cannot publish physical capture release")
+					return false
+				receipt.store_string("physical Esc consumed\n")
+				receipt.close()
+				capture_released = true
+				log_line("CAPTURE_RELEASED")
 			if elapsed-stage_since > 45.0:
 				fail("source drive observation stalled: " + JSON.stringify({"shot_event":shot_event,"personal_event":personal_event,"driver_distance":Vector2(float(v.x),float(v.z)).distance_to(mounted_origin)}))
 				return false
@@ -359,7 +410,7 @@ func _process(delta: float) -> bool:
 				fail("no authoritative vehicle-shot event for guest actor")
 			elif role == "passenger" and elapsed-stage_since > 8.0 and not personal_event:
 				fail("no authoritative passenger personal shot event")
-			elif elapsed-stage_since > 2.0 and (role == "host" or ((shot_event if role == "guest" else personal_event) and Vector2(float(v.x),float(v.z)).distance_to(mounted_origin) > 9.0)):
+			elif witnessed_mounted_samples >= 12 and elapsed-stage_since > 2.0 and (role == "host" or ((shot_event if role == "guest" else personal_event) and Vector2(float(v.x),float(v.z)).distance_to(mounted_origin) > 9.0)):
 				log_line("COMPLETE", {"source_vehicle":PUMA,"seat":a.get("vehicleSeat"),"mounted_from_spawn":approach_origin.distance_to(pos) > 2.0,"driver_distance":Vector2(float(v.x),float(v.z)).distance_to(mounted_origin),"gunner_fired":shot_event if role == "guest" else null,"passenger_fired":personal_event if role == "passenger" else null})
 				quit()
 	return false

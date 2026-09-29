@@ -62,6 +62,10 @@ def verify(logs, wire):
         assert complete[0]['actor_id']==index-1 and complete[0]['source_vehicle']==PUMA
         assert complete[0]['mounted_from_spawn'] is True, role+' did not walk from spawn'
         assert complete[0]['seat']=={'host':'driver','guest':'gunner','passenger':'passenger'}[role]
+        recovery=records(text,'HELD_RELEASE')
+        if recovery:
+            assert len(recovery)==1 and recovery[0]['down_w'] is True and recovery[0]['active_w'] is False and recovery[0]['engaged'] is False,role+' held-key probe did not exercise released input'
+            assert recovery[0]['seconds']<complete[0]['seconds'],role+' completed before held-key recovery'
         if role=='host':
             assert len(records(text,'CREATE'))==1 and records(text,'CREATE')[0]['result']==0
         queues=records(text,'QUEUE')

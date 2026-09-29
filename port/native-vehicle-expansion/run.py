@@ -121,7 +121,13 @@ try:
             host_env=private_environment(temp/'host',env)
             guest_env=private_environment(temp/'guest',env)
             passenger_env=private_environment(temp/'passenger',env)
-            for private in (host_env,guest_env,passenger_env): private['DISPLAY']=env['DISPLAY']
+            handoff=temp/'crew-handoff'; handoff.mkdir()
+            for private in (host_env,guest_env,passenger_env):
+                private['DISPLAY']=env['DISPLAY']
+                private['VEHICLE_HANDOFF_ROOT']=str(handoff)
+                # Three software renderers share small hosted workers. Mesa's
+                # per-process default pool otherwise oversubscribes their CPUs.
+                private['LP_NUM_THREADS']='1'
             with (OUT/'server.log').open('w') as server_log:
                 server=subprocess.Popen(['node',str(ROOT/'port/native-vehicle-expansion/server.mjs'),tmp,str(OUT/'wire.json')],
                     stdout=subprocess.PIPE,stderr=server_log,text=True,env=env)
@@ -131,14 +137,17 @@ try:
                     assert first.startswith('ENDPOINT ws://127.0.0.1:'),first
                     endpoint=first.split(' ',1)[1]
                     command=[BIN,'--path',str(temp/'godot'),'--rendering-method','gl_compatibility',
-                        '--audio-driver','Dummy','--resolution','800x680']
+                        '--audio-driver','Dummy','--resolution','640x360']
                     # Optional stress probe: cap actual rendered frame cadence,
                     # without changing the source Room clock or headless mode.
-                    max_fps=os.environ.get('VEHICLE_MAX_FPS')
+                    max_fps=os.environ.get('VEHICLE_MAX_FPS','30')
                     if max_fps:
                         assert max_fps.isdecimal() and 5 <= int(max_fps) <= 30
                         command += ['--max-fps',max_fps]
                         report['renderFpsCap']=int(max_fps)
+                    report['renderEnvironment']={'LP_NUM_THREADS':'1','resolution':'640x360',
+                        'cpuAffinity':sorted(os.sched_getaffinity(0))}
+                    report['heldInputRecoveryProbe']=os.environ.get('VEHICLE_RECOVER_HELD_INPUT')=='1'
                     with (OUT/'host.log').open('w') as host_log, (OUT/'guest.log').open('w') as guest_log, (OUT/'passenger.log').open('w') as passenger_log:
                         host=subprocess.Popen(command+['--script','res://tests/combined_arms/observe_crew_host.gd','--',
                             '--map=sunscar-convoy','--endpoint='+endpoint,'--wait-for-players=3'],
