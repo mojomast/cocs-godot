@@ -6,11 +6,12 @@ var zone_hud := preload("res://zone_modes/hud.gd").new()
 var scoreboard := preload("res://ui/scoreboard.gd").new()
 var bot_count := 2
 var round_seconds := 60
+var frag_limit := 100
 var evidence := false
 var evidence_count := 0
 
 static func validate_options(entries: Dictionary, map_id: String, mode: String) -> bool:
-	return mode in ["koth", "domination"] and entries.has(map_id) and mode in entries[map_id].get("modes", [])
+	return mode in ["koth", "domination", "uplink", "holdout"] and entries.has(map_id) and mode in entries[map_id].get("modes", [])
 
 func _ready() -> void:
 	add_child(camera)
@@ -50,15 +51,21 @@ func _ready() -> void:
 			bot_count = value.to_int()
 		if arg.begins_with("--round-seconds="):
 			var value := arg.trim_prefix("--round-seconds=")
-			if not value.is_valid_int() or value.to_int() < 60 or value.to_int() > 180:
-				on_error("Round seconds must be 60..180")
+			if not value.is_valid_int() or value.to_int() < 60 or value.to_int() > 900:
+				on_error("Round seconds must be 60..900")
 				return
 			round_seconds = value.to_int()
+		if arg.begins_with("--score-limit=") or arg.begins_with("--frag-limit="):
+			var value := arg.trim_prefix("--score-limit=").trim_prefix("--frag-limit=")
+			if not value.is_valid_int() or value.to_int() < 1 or value.to_int() > 900:
+				on_error("Frag limit must be 1..900")
+				return
+			frag_limit = value.to_int()
 		if arg in ["--session-smoke", "--lifecycle-smoke", "--setup"] or arg.begins_with("--join"):
 			on_error("Zone scene requires a standalone host")
 			return
 	if not validate_options(catalog.entries, selected, selected_mode):
-		on_error("Choose a locked destination supporting koth or domination")
+		on_error("Choose a locked destination supporting this zone mode")
 		return
 	if not load_map(selected):
 		on_error(catalog.error)
@@ -75,7 +82,7 @@ func _ready() -> void:
 
 func on_lobby(frame: Dictionary) -> void:
 	if phase == 1:
-		if client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":selected_mode, "botCount":bot_count, "timeLimit":round_seconds}}) != OK:
+		if client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":selected_mode, "botCount":bot_count, "timeLimit":round_seconds, "fragLimit":frag_limit}}) != OK:
 			on_error("Could not configure zone match")
 		else: phase = 2
 		return
@@ -97,7 +104,9 @@ func on_snapshot(frame: Dictionary) -> void:
 	apply_zones(frame)
 
 func apply_zones(frame: Dictionary) -> void:
-	zones.apply(frame.state, client.actor_id, current_id, selected_mode)
+	var state: Variant = frame.get("state")
+	if state is Dictionary: zones.apply(state, client.actor_id, current_id, selected_mode)
+	else: zones.clear()
 	zone_renderer.apply(zones.projection)
 	if zones.projection.is_empty(): release_pointer()
 	if evidence and evidence_count < 6000:
