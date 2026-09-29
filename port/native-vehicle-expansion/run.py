@@ -110,7 +110,10 @@ try:
         live_started=time.monotonic()
         r,w=os.pipe()
         with (OUT/'xvfb.log').open('w') as log:
-            xvfb=subprocess.Popen(['Xvfb','-displayfd',str(w),'-screen','0','1600x900x24','-nolisten','tcp','-nolisten','unix'],pass_fds=(w,),stdout=log,stderr=log)
+            # Match xvfb_run.py: MIT-SHM has produced BadShmSeg after repeated
+            # native process lifetimes; ordinary X11 image transport suffices.
+            xvfb=subprocess.Popen(['Xvfb','-displayfd',str(w),'-screen','0','1600x900x24',
+                '-extension','MIT-SHM','-nolisten','tcp','-nolisten','unix'],pass_fds=(w,),stdout=log,stderr=log)
             children.append(xvfb); os.close(w)
             with os.fdopen(r) as stream: display=next_line(stream,10)
             assert display.isdigit() and xvfb.poll() is None
@@ -148,9 +151,10 @@ try:
                         try:
                             guest_code=guest.wait(210); passenger_code=passenger.wait(20); host_code=host.wait(20)
                         finally: stop(passenger); stop(guest); stop(host)
+                    report['nativeExitCodes']={'host':host_code,'guest':guest_code,'passenger':passenger_code}
                     for role,code in [('host',host_code),('guest',guest_code),('passenger',passenger_code)]:
                         text=(OUT/(role+'.log')).read_text()
-                        assert code==0 and 'SCRIPT ERROR' not in text and 'ERROR:' not in text,role+' native process failed'
+                        assert code==0 and 'SCRIPT ERROR' not in text and 'ERROR:' not in text, f'{role} native process failed (exit {code})'
                 finally: stop(server)
             stop(xvfb)
         report['stepsSeconds']['three_native_live']=round(time.monotonic()-live_started,2)
@@ -172,6 +176,25 @@ finally:
     if cleanup:
         report['status']='FAIL'
         report['cleanupErrors']=cleanup
+    if report['status']=='FAIL':
+        # Print diagnostics before the summary/traceback: CI does not otherwise
+        # expose the private /tmp evidence directory. Bound each role's output
+        # even when a client has produced megabytes of repetitive messages.
+        for name in ('host','guest','passenger','server','xvfb','import'):
+            path=OUT/(name+'.log')
+            if not path.is_file():
+                continue
+            with path.open('rb') as stream:
+                first_errors=[]
+                for line in stream:
+                    if b'ERROR:' in line or b'SCRIPT ERROR' in line or b'X Error' in line or b'BadShmSeg' in line:
+                        first_errors.append(line[:500].decode('utf-8',errors='replace').rstrip())
+                        if len(first_errors)==5: break
+                stream.seek(max(0,path.stat().st_size-4096))
+                tail=stream.read().decode('utf-8',errors='replace')[-4096:]
+            print(f'--- {name}.log ({path.stat().st_size} bytes): first errors ---',flush=True)
+            print('\n'.join(first_errors) if first_errors else '(none)',flush=True)
+            print(f'--- {name}.log: last 4096 bytes ---\n{tail}',flush=True)
     report['elapsedSeconds']=round(time.monotonic()-began,2)
     raw=OUT/'wire.json'
     if raw.exists():

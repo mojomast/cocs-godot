@@ -21,7 +21,8 @@ if started.exists():
                 if path.stat().st_mtime_ns >= since]
 
 limit = 128 * 1024
-manifest = {"max_files": 80, "max_bytes_per_file": limit, "files": [],
+manifest = {"max_files": 80, "max_bytes_per_file": limit, "max_vehicle_files": 8,
+            "files": [],
             "omitted_files": max(0, len(sources) - 80)}
 for group, source in sources[:80]:
     size = source.stat().st_size
@@ -33,5 +34,29 @@ for group, source in sources[:80]:
         target.write_bytes(stream.read(limit))
     manifest["files"].append({"path": str(target.relative_to(destination)),
                               "source_bytes": size, "truncated": truncated})
+# Crew evidence lives outside port/reports and is private to this CI attempt.
+# Stage the latest attempt independently of the 80 gate-report slots. Raw logs
+# are capped; compressed wire is useful only if it fits intact.
+attempts = sorted((state / "vehicle-evidence").glob("*/summary.json"),
+                  key=lambda path: path.stat().st_mtime_ns)
+if attempts:
+    attempt = attempts[-1].parent
+    for name in ("summary.json", "host.log", "guest.log", "passenger.log",
+                 "server.log", "xvfb.log", "import.log", "wire.json.gz"):
+        source = attempt / name
+        if not source.is_file():
+            continue
+        size = source.stat().st_size
+        if name.endswith(".gz") and size > 512 * 1024:
+            manifest.setdefault("vehicle_omitted", []).append({"name": name, "source_bytes": size})
+            continue
+        cap = 128 * 1024 if name.endswith(".log") else 512 * 1024
+        target = destination / "vehicle" / (name + (".tail.txt" if size > cap else ""))
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with source.open("rb") as stream:
+            stream.seek(max(0, size - cap))
+            target.write_bytes(stream.read(cap))
+        manifest["files"].append({"path": str(target.relative_to(destination)),
+                                  "source_bytes": size, "truncated": size > cap})
 (destination / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
 print(f"Staged {len(manifest['files'])} files in {destination}")

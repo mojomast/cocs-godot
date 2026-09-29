@@ -50,6 +50,7 @@ jobs:
       - name: Import and verify native project
         run: |
           source "$RUNNER_TEMP/godot-native/environment.sh"
+          export VEHICLE_EVIDENCE_ROOT="$RUNNER_TEMP/godot-native/vehicle-evidence"
           python3 tools/godot-dev/verify.py 2>&1 | tee "$RUNNER_TEMP/godot-native/verify.log"
       - name: Check whitespace
         if: ${{ always() }}
