@@ -1,9 +1,21 @@
 # Vehicle expansion verification boundary
 
 `source-oracle.mjs` is an **arranged direct-Match fixture**, not live Room-wire
-or native-Godot proof. It intentionally places two source actors at a vehicle
-for each of the five kinds. Run only when the parent grants the serialized
-heavy slot: `node port/native-vehicle-expansion/source-oracle.mjs`.
+or native-Godot proof. It places a full source crew at each of the five kinds,
+uses actual `enterVehicle` for every seat, steps driving and mounted gunner /
+passenger personal fire, then source destruction and respawn. The positions
+and team assignments are controlled fixture setup, not a natural journey.
+Run only when the parent grants the serialized heavy slot:
+`node port/native-vehicle-expansion/source-oracle.mjs`.
+
+`run.py` prepares the distinct **live Room-wire acceptance**: two separate
+Godot processes, one unmodified server at default step, real host room code,
+normal native physical input events, copied source hash attestations, bounded
+logs, and strict cleanup. It uses the explicit approved semantic derivative
+and ignored node_modules from the approved verification worktree. Do **not**
+run it concurrently with any other team's heavy job. A prepared harness is
+not evidence until its retained summary says PASS and its independent wire
+validator accepts both native clients.
 
 Required separate live acceptance (not implied by that fixture): launch an
 unmodified source `Room` over real WebSockets, seat **two distinct native
