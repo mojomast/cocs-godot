@@ -156,6 +156,13 @@ Implementation tested at `b5b0ac4f` unless noted. Retained records:
   optional capture, settle ordinary acknowledged input before the synthetic
   press, and use a wall-clock observer deadline. Authority TTL, epoch validation
   and all existing positive-loopback assertions remain intact.
+- **Subsequent hosted confirmation passed:** the integrated Arsenal batch at
+  `b6eec0cf` passed **237/237 native gates, zero unrun**, including that fixture
+  repair, in [run 36517857172](https://github.com/mojomast/cocs-godot/actions/runs/36517857172).
+  General hosted CI also passed at the same revision. The earlier failed attempt
+  above remains historical evidence; see
+  [the Arsenal batch record](ARSENAL_PRESENTATION_BATCH_2026-09-28.md) for the
+  retained successful artifact and report hashes.
 
 The first rendered reconnect attempt at `025a531b` timed out before guest join:
 the observer reused one mutable pressed/released event without allowing native

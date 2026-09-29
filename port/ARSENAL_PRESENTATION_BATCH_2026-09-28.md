@@ -126,6 +126,26 @@ with zero errors, 916 warnings** at the same runtime revision. Logs are retained
 as `server.log` and `lint.log` beside the report. No runtime edits followed these
 checks; subsequent commits record documentation and evidence.
 
-Fresh hosted confirmation remains pending. No package acceptance or owner-run
-hardware/natural-play acceptance is implied by the local checks. The playable
-build/release hold remains in place.
+**General hosted CI passed** at pushed revision
+`b6eec0cfdd106bc870ecbf5327c759a7fb250d20`: typecheck, game/server tests, web build,
+rendered deployment checks and lint. See
+[run 36517857075](https://github.com/mojomast/cocs-godot/actions/runs/36517857075)
+and retained `hosted-general-ci.json` beside the local report.
+
+**Native hosted CI passed 237/237 gates, zero unrun**:
+[run 36517857172](https://github.com/mojomast/cocs-godot/actions/runs/36517857172),
+targeting the same pushed revision `b6eec0cf`. Pinned-engine bootstrap, fresh
+semantic/GLB generation, project import, full aggregate and whitespace checks
+all passed, including the repaired Horde upgrade fixture.
+
+The complete hosted artifact is retained as `hosted-native-36517857172.zip`
+beside the local evidence. Its SHA-256 matches GitHub's artifact digest:
+`ca33ca1a00e94a054ba377aaaab5bbcd56b4a6714abe78847a52dfc38ed2101b`.
+The extracted `hosted-verification-237.json` has SHA-256
+`e5aa05b5914e58c5d60d8213741193a6cc2fb2389022d877c710fbb30e092270`.
+Run identity, counts and artifact ID are recorded in `hosted-native-ci.json`.
+The earlier failed run remains preserved in the reconnect/Career record.
+
+Both hosted workflows are green for the integrated batch. No package acceptance
+or owner-run hardware/natural-play acceptance is implied by these checks. The
+playable build/release hold remains in place.

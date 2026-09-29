@@ -1,0 +1,19 @@
+{
+  "run_id": 36517857075,
+  "workflow": "CI",
+  "head_sha": "b6eec0cfdd106bc870ecbf5327c759a7fb250d20",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/mojomast/cocs-godot/actions/runs/36517857075",
+  "created_at": "2026-09-29T03:36:03Z",
+  "completed_at": "2026-09-29T03:45:16Z",
+  "successful_checks": [
+    "Typecheck",
+    "Game tests",
+    "Server tests",
+    "Build",
+    "Rendered HTML and deployment asset tests",
+    "Lint"
+  ],
+  "scope": "Hosted general CI for the integrated Arsenal presentation batch; native hosted verification and extracted-package acceptance are separate."
+}

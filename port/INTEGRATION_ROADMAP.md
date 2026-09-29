@@ -70,12 +70,12 @@ the individual evidence records retain their original scope and results.
   source/native journeys and compact-layout checks. Server tests passed
   **228/228**, and lint passed with **zero errors**. See
   [the presentation record](ARSENAL_PRESENTATION_BATCH_2026-09-28.md).
-- **Hosted confirmation update:** general CI passed at `683ead49`; native CI
-  reached 183 passing gates before the Horde upgrade fixture failed (42 gates
-  unrun). Its capture/input-order repair passed the focused integrated loopback;
-  a fresh hosted run remains required.
+- **Hosted confirmation complete:** general CI and native **237/237 gates, zero
+  unrun**, passed at `b6eec0cf`. This includes the Horde capture/input-order repair;
+  the prior failed run at `683ead49` remains preserved. Exact run URLs, artifact
+  and report hashes are recorded in the presentation record.
 - **NATIVE-05–06 acceptance remains open:** natural staged-campaign completion,
-  extracted-package consolidation acceptance, fresh hosted confirmation and the
+  extracted-package consolidation acceptance and the
   unified release. Building/publishing remains on the user-directed hold.
 
 The shell increment passed **203/203 local aggregate gates, zero unrun**, at
@@ -306,8 +306,8 @@ visual port or a forced fixture result.
 
 **User-directed hold:** Career continuity, source-confirmed Arsenal equipment,
 room discovery/chat and reconnect are integrated. The approved native finishes
-and equipped-loadout presentation batch passed integrated local verification;
-fresh hosted confirmation remains pending. See the
+and equipped-loadout presentation batch passed integrated local verification
+and both hosted workflows. See the
 [expansion record](NATIVE_EXPANSION_2026-09-28.md) and
 [presentation record](ARSENAL_PRESENTATION_BATCH_2026-09-28.md). Building and
 publishing await the user's release decision; resource-heavy verification and

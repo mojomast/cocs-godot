@@ -1,0 +1,17 @@
+{
+  "run_id": 36517857172,
+  "workflow": "Godot native",
+  "head_sha": "b6eec0cfdd106bc870ecbf5327c759a7fb250d20",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/mojomast/cocs-godot/actions/runs/36517857172",
+  "created_at": "2026-09-29T03:36:03Z",
+  "completed_at": "2026-09-29T03:51:32Z",
+  "gates": {"planned": 237, "passed": 237, "unrun": 0},
+  "report": "hosted-verification-237.json",
+  "report_sha256": "e5aa05b5914e58c5d60d8213741193a6cc2fb2389022d877c710fbb30e092270",
+  "artifact_id": 11012256916,
+  "artifact": "hosted-native-36517857172.zip",
+  "artifact_sha256": "ca33ca1a00e94a054ba377aaaab5bbcd56b4a6714abe78847a52dfc38ed2101b",
+  "scope": "Fresh hosted native verification of the integrated Arsenal presentation batch, including the repaired Horde upgrade fixture. Extracted-package and owner-run acceptance remain separate."
+}
