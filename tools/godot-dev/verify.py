@@ -281,6 +281,8 @@ commands = [
     ("audiovisual-soak", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/soak.gd"]),
     ("audiovisual-standalone-lifecycle", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/standalone_lifecycle.gd"]),
     ("audiovisual-independent-event-binding", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/independent_event_binding.gd"]),
+    ("audiovisual-horde-recipe-binding", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/horde_recipe_binding.gd"]),
+    ("audiovisual-menu-rapid-lifetime", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/menu_rapid_lifetime.gd"]),
     ("combined-arms-controls", [binary, "--headless", "--path", "godot", "--script", "res://tests/combined_arms/test_controls.gd"]),
     ("combined-arms-graphics", [binary, "--headless", "--path", "godot", "--script", "res://tests/combined_arms/graphics.gd"]),
     ("arms-race", [binary, "--headless", "--path", "godot", "--script", "res://tests/arms_race/independent_fixtures.gd"]),
