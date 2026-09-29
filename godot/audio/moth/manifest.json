@@ -1,0 +1,11 @@
+{
+  "source": "public/moth/files/bed-ritual/clip.wav",
+  "file": "bed-ritual.wav",
+  "sha256": "d518d47b8f4e1722d47a5a5261921edb8d9063bbe6645adc71e54f5509dc829e",
+  "sampleRate": 22050,
+  "channels": 1,
+  "frames": 235494,
+  "loopStartSeconds": 0.5,
+  "loopEndSeconds": 10.5,
+  "note": "Only delivered bed-ritual clip; no proposed additional Moth beds or IR plugin. Source rights are not relabelled CC0."
+}

@@ -63,6 +63,7 @@ var error := ""
 var dropped_notes := 0
 var dropped_cues := 0
 var load_failures := 0
+var asset_bytes := 0
 var last_response := ""
 var response_at := -100000
 var outcome := ""
@@ -266,6 +267,8 @@ func _stream(path: String) -> AudioStream:
  var loaded: Resource = load("res://audio/" + path)
  if loaded is AudioStream:
   streams[path] = loaded
+  var file := FileAccess.open("res://audio/" + path, FileAccess.READ)
+  if file != null: asset_bytes += file.get_length()
   return loaded
  load_failures += 1
  return null
@@ -308,7 +311,7 @@ func cue(name: String) -> bool:
   return false
  var now := Time.get_ticks_msec()
  if name == last_cue and now - last_cue_at < 1800: dropped_cues += 1; return false
- if now - last_cue_at < 1200: dropped_cues += 1; return false
+ if now - last_cue_at < 1200 and name not in ["goal", "victory", "defeat"]: dropped_cues += 1; return false
  if announcer_player.playing and name not in ["goal","victory","defeat"]: dropped_cues += 1; return false
  var options: Array = takes.get(name, [])
  if options.is_empty(): return false
@@ -344,6 +347,6 @@ func status() -> Dictionary:
  return {"state":"running" if running and focused else "stopped", "scene":scene,
   "mode":mode_theme,"bar":form_bar,"step":step,"section":_section(),
   "escalation":escalation,"tension":tension,"variation":variation,
-  "samples":samples.size(),"takes":takes.size(),"loaded_streams":streams.size(),"loaded_failures":load_failures,
+  "samples":samples.size(),"takes":takes.size(),"loaded_streams":streams.size(),"asset_bytes":asset_bytes,"loaded_failures":load_failures,
   "active_voices":players.filter(func(p: AudioStreamPlayer) -> bool: return p.playing).size(),"announcer_active":announcer_player != null and announcer_player.playing,
   "dropped_notes":dropped_notes,"dropped_cues":dropped_cues,"last_cue_id":last_cue,"last_response":last_response,"outcome":outcome,"error":error}

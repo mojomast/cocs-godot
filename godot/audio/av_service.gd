@@ -10,6 +10,7 @@ var music
 var vehicle
 var motifs
 var weather
+var moth_bed := AudioStreamPlayer.new()
 var router := Router.new()
 var host: Node
 var camera: Camera3D
@@ -34,6 +35,15 @@ func _ready() -> void:
 	add_child(motifs)
 	weather = Weather.new()
 	add_child(weather)
+	moth_bed.name = "ReviewedMothBed"
+	add_child(moth_bed)
+	var delivered: Resource = load("res://audio/moth/bed-ritual.wav")
+	if delivered is AudioStreamWAV:
+		var wav := delivered.duplicate() as AudioStreamWAV
+		wav.loop_mode = AudioStreamWAV.LOOP_FORWARD
+		wav.loop_begin = 11025 # 0.5 seconds at original 22050 Hz
+		wav.loop_end = 231525 # 10.5 seconds, within delivered 10.68s
+		moth_bed.stream = wav
 	apply_settings(settings)
 
 func bind_session(owner: Node, eye: Camera3D, arena: Dictionary, match_mode: String, round_identity: Variant, seed: int = 1) -> void:
@@ -77,6 +87,11 @@ func apply_settings(normalized: Dictionary) -> void:
 	if vehicle != null: vehicle.apply_settings(settings)
 	if motifs != null: motifs.apply_settings(settings)
 	if weather != null: weather.apply_settings(settings)
+	if moth_bed.stream != null:
+		var ambience: Variant = settings.get("ambience_volume", 100)
+		var level := clampf(float(ambience) / 100.0, 0.0, 1.0) if ambience is int or ambience is float else 1.0
+		moth_bed.volume_db = linear_to_db(maxf(0.001, level * 0.4))
+		if settings.get("mute", false) == true or settings.get("ambience_enabled", true) == false or level <= 0.0: moth_bed.stop()
 	if settings.get("mute", false) == true:
 		suspension_reason = "muted"
 		if music != null: music.reset()
@@ -113,7 +128,9 @@ func apply_snapshot(state: Dictionary, local_id: int, is_fresh: bool = true) -> 
 	var low := not actor.has("vehicleId") and hp > 0 and max_hp > 0 and hp / max_hp <= 0.28
 	music.set_tension(0.6 if low else 0.0)
 	music.set_intensity(maxf(0.4 if low else 0.0, music.intensity * 0.95))
-	if scene != "results": music.set_scene("combat" if music.intensity >= 0.34 else "explore")
+	if scene != "results":
+		scene = "combat" if music.intensity >= 0.34 else "explore"
+		music.set_scene(scene)
 	var vehicles: Variant = state.get("vehicles", [])
 	var mounted: Dictionary = {}
 	if vehicles is Array and actor.get("vehicleId") != null:
@@ -151,6 +168,9 @@ func finish(outcome: String = "neutral") -> void:
 
 func tick(delta: float) -> void:
 	if not focused or not fresh or settings.get("mute", false) == true: return
+	if moth_bed.stream != null:
+		if scene in ["menu", "explore"] and settings.get("ambience_enabled", true) == true and not moth_bed.playing: moth_bed.play()
+		elif scene not in ["menu", "explore"] and moth_bed.playing: moth_bed.stop()
 	music.tick(delta)
 	weather.tick(delta)
 
@@ -160,6 +180,7 @@ func set_focus(value: bool) -> void:
 	vehicle.set_focus(value)
 	motifs.set_focus(value)
 	weather.set_focus(value)
+	if not value: moth_bed.stop()
 	if not value: suspend("focus")
 
 func suspend(reason: String) -> void:
@@ -169,8 +190,9 @@ func suspend(reason: String) -> void:
 	vehicle.stop_all()
 	motifs.stop_all()
 	weather.set_focus(false)
+	moth_bed.stop()
 
 func status() -> Dictionary:
 	return {"music":music.status(), "vehicle":vehicle.status(), "motifs":motifs.status(), "weather":weather.diagnostics(), "routing":router.status(),
 		"current_scene":scene, "last_cue_id":last_cue, "suspension_reason":suspension_reason,
-		"ready":context_ready, "fresh":fresh, "focused":focused}
+		"moth_bed":moth_bed.playing, "ready":context_ready, "fresh":fresh, "focused":focused}

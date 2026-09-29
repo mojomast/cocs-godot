@@ -7,12 +7,26 @@ action. The presentation loop calls `tick(delta)` once per frame. Set
 `set_biome(mood)`, `set_intensity(0..1)`, `set_tension(0..1)`,
 `set_escalation(0..3)`, `set_seed(int)` and `set_variation(int)` as game context
 changes. `cue(id)` returns whether a voice take played; `status()` reports
-transport/asset state. `set_settings({"master":0..1, "music":0..1,
-"announcer_volume":0..1, "muted":bool, "music_enabled":bool,
+transport/asset state. `set_settings({"music_volume":0..100,
+"announcer_volume":0..100, "mute":bool, "music_enabled":bool,
 "announcer_enabled":bool})` updates gain and switches. On blur call
 `set_focus(false)`; on refocus call `set_focus(true)` and `start()` after user
 interaction. `reset()` drops transport backlog and stops active voices. Free the
 node at shutdown. No autoload, world references or shared project settings.
+
+The composition entry point is `res://audio/av_service.gd`: it owns this
+score, source-event dedupe, objective earcons, mounted-only foley and the
+opt-in weather node. Use `bind_session(owner, camera, source_arena, mode,
+round_identity, seed)`, `start_round(round_identity)`,
+`apply_snapshot(authority_state, local_actor_id, freshness)`,
+`apply_events(authority_events)`, `tick(delta)`, `finish(outcome)` and
+`apply_settings(LocalSettings.values)`. `status()` includes bounded
+voice/stream/route/weather counters. Detailed owner-only hooks are in
+`port/native-audiovisual/HOOK_REQUEST.md`; no overlapping world/Horde/LATTICE
+files are changed by this branch.
+The delivered Moth `bed-ritual` clip is copied byte-for-byte with a SHA-256
+manifest and a 0.5–10.5s loop in menu/exploration only. Its rights are not
+relabelled as music-sample CC0; no unshipped beds or convolution IR are claimed.
 
 Native score adapts the browser's original D minor COCS motif (16 degrees),
 modal eight-chord sequences and scene-specific tempos. Its shared 32-bar form
@@ -56,7 +70,8 @@ can preempt. Muting/blur stops voice immediately. Take selection rotates
 deterministically without an immediate repeat per cue.
 
 Repackage from unchanged source files with
-`node tools/godot-audiovisual/music_pack.mjs`. The script verifies every WAV
+`node tools/godot-audiovisual/music_pack.mjs`; verify without writing with
+`node tools/godot-audiovisual/music_pack.mjs --check`. The script verifies every WAV
 against its source SHA-256 and writes native Ogg SHA-256 in
 `music/manifest.json`. Upstream sample provenance and CC0 terms are documented
 in `assets/music/THIRD_PARTY_LICENSES.md`; native manifests retain per-sample
