@@ -102,6 +102,7 @@ try:
                 'parse-'+pathlib.Path(script).stem,env,30)
         run([BIN,'--headless','--path',str(temp/'godot'),'--script','res://tests/combined_arms/test_controls.gd'], 'controls',env,30)
         run([BIN,'--headless','--path',str(temp/'godot'),'--script','res://tests/combined_arms/test_fleet_visuals.gd'], 'fleet',env,30)
+        run([BIN,'--headless','--path',str(temp/'godot'),'--script','res://tests/combined_arms/test_shared_shots.gd'], 'shared-shots',env,30)
         oracle=run(['node',str(ROOT/'port/native-vehicle-expansion/source-oracle.mjs')],'source-oracle',env,120)
         assert 'VEHICLE_SOURCE_ORACLE ' in oracle, 'arranged direct-Match fixture missing'
         edge_oracle=run(['node',str(ROOT/'port/native-vehicle-expansion/room-edge-oracle.mjs')],'room-edge-oracle',env,120)
