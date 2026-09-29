@@ -78,6 +78,8 @@ commands = [
     ("source-inventory", ["node", "--test", "tools/godot-export/source-inventory.test.mjs"]),
     ("package-manifest-contracts", ["node", "--test", "tools/godot-package/manifest_validation.test.mjs"]),
     ("career-catalog-check", ["node", "tools/godot-export/career_catalog.mjs", "--check"]),
+    ("finish-catalog-check", ["node", "tools/godot-weapons/finishes.mjs", "--check"]),
+    ("finish-source-palette", ["node", "--test", "tools/godot-weapons/finishes.test.mjs"]),
     ("career-source-contracts", ["node", "--test", "--test-concurrency=1", "port/native-career/catalog.test.mjs", "port/native-career/wire.test.mjs"]),
     ("career-persistence", ["node", "--test", "tools/godot-package/career_path.test.mjs"]),
     ("career-history-storage", ["node", "--test", "tools/godot-package/history_storage.test.mjs"]),
@@ -128,6 +130,7 @@ commands = [
     ("cinder-traversal", [binary, "--headless", "--path", "godot", "--script", "res://tests/cinder_array/verify.gd", "--", str(root / "port/reports/cinder-traversal.json")]),
     ("exploration-walker", [binary, "--headless", "--path", "godot", "--script", "res://tests/graphics_batch/walker.gd"]),
     ("first-person-rig", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/lifecycle.gd"]),
+    ("first-person-finishes", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/finishes.gd"]),
     # Real pointer capture is required by this fixture; the dummy display server
     # ignores MOUSE_MODE_CAPTURED, so the gate runs under a private owned Xvfb.
     ("first-person-binding", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--path", "godot", "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy", "--script", "res://tests/first_person/binding.gd"]),

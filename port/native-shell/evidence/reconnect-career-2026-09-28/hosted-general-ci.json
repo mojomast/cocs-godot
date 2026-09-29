@@ -1,0 +1,19 @@
+{
+  "run_id": 36513677793,
+  "workflow": "CI",
+  "head_sha": "683ead4998796910936e9db0b3910d540643f4be",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/mojomast/cocs-godot/actions/runs/36513677793",
+  "created_at": "2026-09-29T02:40:15Z",
+  "completed_at": "2026-09-29T02:49:39Z",
+  "successful_checks": [
+    "Typecheck",
+    "Game tests",
+    "Server tests",
+    "Build",
+    "Rendered HTML and deployment asset tests",
+    "Lint"
+  ],
+  "scope": "Hosted general CI for the completed reconnect/Career batch; does not cover later Arsenal presentation work or native package acceptance."
+}

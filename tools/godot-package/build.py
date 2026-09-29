@@ -167,6 +167,10 @@ def main():
     if (ROOT / "tools/godot-export/career_catalog.mjs").is_file():
         input_paths.add("tools/godot-export/career_catalog.mjs")
         run(["node", "tools/godot-export/career_catalog.mjs", "--check"], env=derivative_env)
+    finish_catalog = "godot/first_person/generated/finishes.gd"
+    if (ROOT / finish_catalog).is_file():
+        input_paths.update([finish_catalog, "tools/godot-weapons/finishes.mjs"])
+        run(["node", "tools/godot-weapons/finishes.mjs", "--check"], env=derivative_env)
     native_files = [p for p in git("ls-files", "godot").splitlines() if not p.startswith(("godot/tests/", "godot/content/", "godot/.godot/")) and p not in ["godot/.gitignore", "godot/export_presets.cfg"]]
     input_paths.update(native_files)
     input_paths.update(p.relative_to(ROOT).as_posix() for p in (ROOT / "tools/godot-package").glob("*") if p.is_file())
@@ -185,6 +189,8 @@ def main():
     port_owned = [*closure["adapterModules"], *arena_data, *identity_data, *horde_data]
     if career_catalog in input_paths:
         port_owned.append(career_catalog)
+    if finish_catalog in input_paths:
+        port_owned.append(finish_catalog)
     for p in port_owned:
         expected = subprocess.check_output(["git", "show", f"HEAD:{p}"], cwd=ROOT)
         if hashlib.sha256(expected).hexdigest() != inputs[p]:

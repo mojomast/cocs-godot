@@ -134,6 +134,12 @@ Implementation tested at `b5b0ac4f` unless noted. Retained records:
   Retained report `verification-226.json` has SHA-256
   `f1b99980c605e2335b737e339ce1d3ad372ccadeb07bb95d23e772205c31de55`.
   Canonical `port/reports/verification.json` and gate logs now record this run.
+- **General hosted CI passed** at pushed revision
+  `683ead4998796910936e9db0b3910d540643f4be`: typecheck, game/server tests, web
+  build, rendered deployment checks and lint. See
+  [run 36513677793](https://github.com/mojomast/cocs-godot/actions/runs/36513677793).
+  Hosted native confirmation is still pending separately; this result predates
+  the subsequent Arsenal presentation batch.
 
 The first rendered reconnect attempt at `025a531b` timed out before guest join:
 the observer reused one mutable pressed/released event without allowing native
