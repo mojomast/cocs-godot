@@ -28,6 +28,7 @@ jobs:
         shell: bash
     env:
       PORT: "0"
+      COCS_VERIFY_KEEP_GOING: "1"
       COCS_SOURCE_DERIVATIVE: ${{ github.workspace }}/port/contracts/lattice-catalog-derivative.json
     steps:
       - uses: actions/checkout@v4

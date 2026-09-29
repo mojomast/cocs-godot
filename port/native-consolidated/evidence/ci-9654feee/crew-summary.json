@@ -1,0 +1,146 @@
+{
+  "evidence": "/home/runner/work/_temp/godot-native/vehicle-evidence/fdd0c8c5-c73e-4a66-b30e-2eca86efd4c1",
+  "classification": "3 distinct native clients, real Room wire; no authority position writes",
+  "stepsSeconds": {
+    "copy": 0.24,
+    "export": 1.57,
+    "import": 8.49,
+    "parse-demo": 1.02,
+    "parse-session_bridge": 0.16,
+    "parse-observe_crew_host": 1.02,
+    "parse-observe_crew_guest": 1.02,
+    "parse-observe_crew_passenger": 1.02,
+    "controls": 0.36,
+    "fleet": 0.36,
+    "shared-shots": 1.32,
+    "source-oracle": 1.72,
+    "room-edge-oracle": 1.62,
+    "three_native_live": 128.93
+  },
+  "renderFpsCap": 30,
+  "renderEnvironment": {
+    "LP_NUM_THREADS": "1",
+    "resolution": "640x360",
+    "cpuAffinity": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "heldInputRecoveryProbe": false,
+  "nativeExitCodes": {
+    "host": 0,
+    "guest": 0,
+    "passenger": 0
+  },
+  "live": {
+    "classification": "three distinct native processes, natural source entry; arranged five-kind oracle separate",
+    "native": {
+      "host": {
+        "sourceNativeCorrelations": 108,
+        "mountedSamples": 97,
+        "wireInputs": 523,
+        "completedSeconds": 92.1858493333333
+      },
+      "guest": {
+        "sourceNativeCorrelations": 76,
+        "mountedSamples": 19,
+        "wireInputs": 380,
+        "completedSeconds": 63.6917086666666
+      },
+      "passenger": {
+        "sourceNativeCorrelations": 117,
+        "mountedSamples": 12,
+        "wireInputs": 482,
+        "completedSeconds": 65.4011167777777
+      }
+    },
+    "sharedCrewSnapshots": 63,
+    "driverDisplacement": 27.793,
+    "gunnerVehicleShots": 128,
+    "acceptedJumpEdges": 1
+  },
+  "privateTempRemoved": true,
+  "status": "PASS",
+  "ownedProcessesReaped": true,
+  "elapsedSeconds": 149.91,
+  "retainedFiles": {
+    "controls.log": {
+      "bytes": 102,
+      "sha256": "8f51ca3a09570909fe06904f973e01ab2e3332650c291f6ea416093b4506fc67"
+    },
+    "export.log": {
+      "bytes": 61,
+      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
+    },
+    "fleet.log": {
+      "bytes": 123,
+      "sha256": "b1bb38e557e40184d371d0ec174035c1ee156a7f80232f276bf5264e55600db7"
+    },
+    "guest.log": {
+      "bytes": 1670993,
+      "sha256": "5571b3a4a9cab6adbde8711d27242c7a9e6bb050d3951f802ea75854bfd77b03"
+    },
+    "hashes.json": {
+      "bytes": 55725,
+      "sha256": "529fa6b59c57c241bdd2d7b0cbdac38fa04930e59c71d82e3283e86ffeb51798"
+    },
+    "host.log": {
+      "bytes": 2292715,
+      "sha256": "3445b294cd7587c2715710662d5e610b32b7d7de249865c847dd80a3517fa099"
+    },
+    "import.log": {
+      "bytes": 101292,
+      "sha256": "6e48aa3a1b3d59587fbf421a9bb824fa2832436528553c94f35bc0bd600ab73e"
+    },
+    "parse-demo.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_guest.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_host.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-observe_crew_passenger.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "parse-session_bridge.log": {
+      "bytes": 73,
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "passenger.log": {
+      "bytes": 2017225,
+      "sha256": "9c3a046512a27b72716c90a9b6055e8eddd0f865dd7551bb7e3dbb7f4fd43e7e"
+    },
+    "room-edge-oracle.log": {
+      "bytes": 242,
+      "sha256": "788760344b23de8721adb695c6ea0c4be20263c74449908b16a0907428e3dff0"
+    },
+    "server.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "shared-shots.log": {
+      "bytes": 105,
+      "sha256": "fb9fcb18359113dab269fdf9af5a39f37fe16eb16a69144dc8445f86d328c009"
+    },
+    "source-oracle.log": {
+      "bytes": 1159,
+      "sha256": "6bd36ad0f8946a5a84b3d6153e114978a3cce542c2f111c25a21d9cd38f6c93e"
+    },
+    "wire.json.gz": {
+      "bytes": 161069,
+      "sha256": "487e3670ed5279e0a7afb71aa4614993f60015ff2aa94c12afbe177df647f16f"
+    },
+    "xvfb.log": {
+      "bytes": 2348,
+      "sha256": "b987a262609a3720f450ab6815ed90b2069dd47b7b012959ca19c325aebf5d55"
+    }
+  }
+}
