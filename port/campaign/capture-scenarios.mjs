@@ -29,12 +29,18 @@ export function createCaptureScenarios() {
       deployEncounter(match,match.modeState,{roster:{mortar:1,bulwark:1,skirmisher:1}},anchor);
       // Use supported authored/nav positions near the focal anchor; source role
       // spawning supplies real actors/profiles, this fixture only composes them.
-      const positions = data.arena.navNodes.filter(p=>Math.hypot(p.x-anchor.x,p.z-anchor.z)<=9)
+      // Sparse nav vertices can leave no candidates inside nine metres. Include
+      // a bounded supported-ground grid instead of retaining source spawnGroup's
+      // unrelated initial spawn height when placeGroup has no local nav node.
+      const grid=[];
+      for(let x=-8;x<=8;x+=2)for(let z=-8;z<=8;z+=2)grid.push({x:anchor.x+x,z:anchor.z+z});
+      const positions = [...data.arena.navNodes,...grid].filter(p=>Math.hypot(p.x-anchor.x,p.z-anchor.z)<=9)
         .map(supported).filter(Boolean).sort((a,b)=>Math.hypot(a.x-anchor.x,a.z-anchor.z)-Math.hypot(b.x-anchor.x,b.z-anchor.z));
       const used=[];
       for (const actor of match.actors.filter(a=>a.npcModel)) {
         const target=positions.find(p=>used.every(q=>Math.hypot(p.x-q.x,p.z-q.z)>2));
-        if(target){place(actor,target);used.push(target);}
+        if(!target)throw Error('No distinct supported robot pose for capture');
+        place(actor,target);used.push(target);
         actor.yaw=Math.atan2(-(point.x-actor.x),-(point.z-actor.z));actor.bodyYaw=actor.yaw;
       }
     }

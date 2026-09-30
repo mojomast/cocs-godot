@@ -20,6 +20,13 @@ captures the pointer. Enter retries a death or continues a completed chapter.
 Settings, focus loss, stale state, death, errors and every fresh start release it.
 Focus regain and retry never silently capture. Leave disconnects and exits.
 
+The pre-network brief uses an authored `briefing` camera when present, otherwise
+a supported near-start elevated view along the critical path, with temporary
+lighting removed on authoritative start. The HUD measures content upward from
+the shared footer, bounds long comms in a scroll viewport (Esc releases the cursor
+to scroll), keeps modal actions fixed, and suppresses the live HUD behind results.
+Compact UI and source render evidence are documented in `CAPTURE.md`.
+
 ## Composition and integration
 
 - `demo.gd` extends `world/session.gd`, preserving actual controller, first person,
@@ -69,7 +76,10 @@ robot visual instance before accepting `CAMPAIGN_SMOKE_OK`. Evidence is written 
 a fresh `/tmp/opencode/campaign-smoke-*` directory. It does not claim human timing,
 rendered performance, whole-campaign completion, or visual acceptance.
 
-Engine import/tests have **not been run by this lane**, per serialized-slot rule.
+The initial lane delivery deferred engine tests until the serialized slot. The
+subsequent UI repair slot passed the session regression and all eight source
+map/profile capture combinations; retained evidence and limitations are in
+`CAPTURE.md`. Parent owns final exported-package verification.
 `node --check port/campaign/live-smoke.mjs` and `git diff --check` pass.
 The tests cover terminal null markers, action deduplication, epoch/hash refusal,
 base result-latch reset, actor-cache retirement, held fire/mobility retry and

@@ -30,6 +30,10 @@ func run() -> void:
 	hud.show_brief("rootfall-verge")
 	assert(hud.card.visible and hud.primary.text == "Begin chapter")
 	hud.hide_brief()
+	hud.observe_boss({"singleplayer":{"boss":{"alive":true,"hp":750,"maxHp":1000,"phase":2}}})
+	assert(hud.boss.visible and hud.boss.text.contains("75%") and hud.boss.text.contains("Phase 2"))
+	hud.observe_boss({"singleplayer":{"boss":null}})
+	assert(not hud.boss.visible, "Absent authoritative boss cannot retain stale health")
 	demo.phase = 3
 	var fire := InputEventMouseButton.new()
 	fire.button_index = MOUSE_BUTTON_LEFT

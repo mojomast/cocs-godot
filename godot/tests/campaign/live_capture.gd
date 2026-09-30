@@ -94,12 +94,8 @@ func run() -> void:
 		require(false, session.startup_error)
 		finish()
 		return
-	# Explicit scripted preview camera only for the pre-network briefing. Playing
-	# captures always use the source session's received actor-eye camera.
-	var start: Dictionary = session.world.recipe.campaign.anchors.start
-	var feet := Vector3(start.x, start.y, start.z)
-	session.camera.position = feet + Vector3(8, 8, 10)
-	session.camera.look_at(feet + Vector3(0, 1, 0))
+	# Observe the production briefing camera; never repair it in the fixture.
+	require(session.camera.position.y > session.world.height_at(session.camera.position.x, session.camera.position.z) + 1, "Production briefing camera must be above terrain")
 	await capture("briefing")
 	await capture_actions("briefing-actions")
 	session.launch_campaign()
@@ -111,6 +107,10 @@ func run() -> void:
 	await capture("gameplay")
 	await stage("long-subtitle")
 	await capture("long-subtitle")
+	session.release_pointer()
+	session.campaign_hud.comms.scroll_vertical = int(session.campaign_hud.comms.get_v_scroll_bar().max_value)
+	await capture("long-subtitle-tail")
+	require(session.campaign_hud.subtitle.get_global_rect().end.y <= session.campaign_hud.comms.get_global_rect().end.y + 1, "Full comms tail must be reachable inside its scroll viewport")
 	# Exercise the actual Settings button rather than painting an overlay.
 	session.campaign_hud.settings.pressed.emit()
 	await capture("settings-overlay")
@@ -159,20 +159,28 @@ func scroller(node: Node) -> ScrollContainer:
 func shown(node: Control) -> bool:
 	return node.is_visible_in_tree() and (not node is Label or not node.text.is_empty())
 
+func painted_rect(node: Control) -> Rect2:
+	var rect := node.get_global_rect()
+	var parent := node.get_parent()
+	while parent != null:
+		if parent is Control and parent.clip_contents: rect = rect.intersection(parent.get_global_rect())
+		parent = parent.get_parent()
+	return rect
+
 func ui_checks(name: String) -> Dictionary:
 	var hud: Control = session.campaign_hud
 	var viewport := Rect2(Vector2.ZERO, root.get_visible_rect().size)
 	var widgets := {"objective":hud.objective,"detail":hud.detail,"notice":hud.notice,"status":hud.status,
 		"subtitle":hud.subtitle,"vitals":hud.vitals,"waypoint":hud.waypoint,"crosshair":hud.crosshair,
 		"card":hud.card,"heading":hud.heading,"body":hud.body,"primary":hud.primary,"restart":hud.restart,
-		"settings":hud.settings,"leave":hud.leave}
+		"settings":hud.settings,"leave":hud.leave,"comms":hud.comms,"boss":hud.boss}
 	var records := {}
 	for key: String in widgets:
 		var node: Control = widgets[key]
 		if not shown(node): continue
 		var rect := node.get_global_rect()
 		var scroll := scroller(node)
-		records[key] = {"rect":rect_data(rect),"scrollable":scroll != null}
+		records[key] = {"rect":rect_data(rect),"paintedRect":rect_data(painted_rect(node)),"scrollable":scroll != null}
 		if node is Label:
 			records[key]["lines"] = node.get_line_count()
 			records[key]["text"] = node.text
@@ -189,12 +197,13 @@ func ui_checks(name: String) -> Dictionary:
 	var pairs := [["objective","settings"],["objective","leave"],["detail","settings"],
 		["subtitle","vitals"],["subtitle","crosshair"],["status","crosshair"],
 		["objective","crosshair"],["detail","crosshair"],["waypoint","crosshair"],
-		["waypoint","subtitle"],["card","subtitle"],["card","vitals"],["card","waypoint"]]
+		["waypoint","subtitle"],["card","subtitle"],["card","vitals"],["card","waypoint"],
+		["comms","crosshair"],["comms","vitals"],["comms","waypoint"],["boss","crosshair"]]
 	if not settings.overlay_open():
 		for pair: Array in pairs:
 			var a: Control = widgets[pair[0]]
 			var b: Control = widgets[pair[1]]
-			if shown(a) and shown(b): require(not a.get_global_rect().intersects(b.get_global_rect()), name + ": overlap " + pair[0] + "/" + pair[1])
+			if shown(a) and shown(b): require(not painted_rect(a).intersects(painted_rect(b)), name + ": overlap " + pair[0] + "/" + pair[1])
 	if settings.overlay_open():
 		require(not hud.crosshair.visible and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED, name + ": overlay retains crosshair/capture")
 		require(viewport.grow(1).encloses(settings.panel.get_global_rect()), name + ": Settings outside viewport")
@@ -207,7 +216,8 @@ func ui_checks(name: String) -> Dictionary:
 	if name == "long-subtitle": require(hud.subtitle.get_line_count() > 1, "Long subtitle must wrap")
 	if name.ends_with("-actions"):
 		var scroll := scroller(hud.primary)
-		require(scroll != null and scroll.get_global_rect().grow(1).encloses(hud.primary.get_global_rect()), name + ": primary action not reachable in scroll viewport")
+		var allowed: Rect2 = scroll.get_global_rect() if scroll != null else hud.card.get_global_rect()
+		require(allowed.grow(1).encloses(hud.primary.get_global_rect()) and viewport.grow(1).encloses(hud.primary.get_global_rect()), name + ": primary action not fully reachable")
 	return records
 
 func capture_actions(name: String) -> void:
@@ -222,6 +232,20 @@ func capture_actions(name: String) -> void:
 func capture(name: String) -> void:
 	banner.text = "SCRIPTED AUTHORITY FIXTURE | " + name
 	await settle()
+	if name in ["gameplay", "long-subtitle"]:
+		# Slow software frames can trigger the legitimate 250 ms input TTL. A
+		# scripted explicit click after that boundary may recapture; production
+		# focus/input policy is never bypassed or disabled for screenshots.
+		for attempt: int in range(4):
+			root.grab_focus()
+			await process_frame
+			var click := InputEventMouseButton.new()
+			click.button_index = MOUSE_BUTTON_LEFT
+			click.pressed = true
+			session._unhandled_input(click)
+			await process_frame
+			await RenderingServer.frame_post_draw
+			if is_instance_valid(session.first_person) and session.first_person.rig.showing: break
 	var before := failures.size()
 	var widgets := ui_checks(name)
 	var robot_count := 0
@@ -242,6 +266,8 @@ func capture(name: String) -> void:
 	var expected := Vector2i(760,520) if profile == "compact" else Vector2i(1280,800)
 	require(image.get_size() == expected, name + ": physical capture dimensions differ from requested profile")
 	captures.append({"scenario":name,"scripted":true,"path":path,"map":session.current_id,"profile":profile,
+		"camera":[session.camera.position.x,session.camera.position.y,session.camera.position.z],"yaw":session.yaw,"pitch":session.pitch,
+		"focused":session.application_focused,"windowFocused":root.has_focus(),"captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,"eligible":session.can_capture_pointer(),
 		"physicalSize":[image.get_width(),image.get_height()],"logicalSize":[root.get_visible_rect().size.x,root.get_visible_rect().size.y],
 		"uiScale":settings.values.ui_scale,"phase":session.phase,"campaignPhase":session.campaign.state.get("phase", "briefing"),
 		"starts":session.round_starts,"epoch":session.client.input_epoch,"acks":session.client.last_ack,

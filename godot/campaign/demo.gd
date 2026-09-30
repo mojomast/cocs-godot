@@ -46,6 +46,7 @@ var action_pending := false
 var authority_geometry_hash := ""
 var robot_instances := 0
 var ground_tells := Telegraphs.new()
+var briefing_lighting: Node3D
 
 func _init() -> void:
 	catalog = CampaignCatalog.new()
@@ -83,6 +84,9 @@ func _ready() -> void:
 	presentation.actor_visual_factory = create_visual
 	presentation.interpolate_remote = true
 	for child: Node in [pickups, presentation, combat, client, ground_tells]: add_child(child)
+	# Campaign owns its compact mission HUD; don't print the transient shared
+	# quality tutorial across objective text. F9/F10 remain available explicitly.
+	if is_instance_valid(combat.quality_controls): combat.quality_controls.set_shortcut_hint(false)
 	client.connection_error.connect(on_error)
 	client.transport_dropped.connect(on_transport_dropped)
 	client.connect("input_reset", func(_reason: String) -> void: release_pointer())
@@ -149,7 +153,49 @@ func load_map(id: String) -> bool:
 	world = next
 	current_id = id
 	ground_tells.bind_terrain(world)
+	if phase == -2: position_briefing_camera()
 	return true
+
+func position_briefing_camera() -> void:
+	# Live atmosphere is installed by av_start only after connecting. Terrain is
+	# geometry-only, so the pre-network brief needs its own temporary lighting.
+	briefing_lighting = Node3D.new()
+	briefing_lighting.name = "BriefingLighting"
+	world.add_child(briefing_lighting)
+	var preview_environment := WorldEnvironment.new()
+	var preview := Environment.new()
+	preview.background_mode = Environment.BG_COLOR
+	preview.background_color = Color("263946")
+	preview.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	preview.ambient_light_color = Color("c9d6db")
+	preview.ambient_light_energy = 0.8
+	preview_environment.environment = preview
+	briefing_lighting.add_child(preview_environment)
+	var preview_sun := DirectionalLight3D.new()
+	preview_sun.rotation_degrees = Vector3(-48, -35, 0)
+	preview_sun.light_energy = 1.0
+	briefing_lighting.add_child(preview_sun)
+	var recipe: Dictionary = world.recipe
+	var start: Dictionary = recipe.campaign.anchors.start
+	var origin := Vector3(start.x, start.y, start.z)
+	var target := origin + Vector3(0, 0, -20)
+	for point: Dictionary in recipe.campaign.criticalPath:
+		var next := Vector3(point.x, point.y, point.z)
+		if Vector2(next.x - origin.x, next.z - origin.z).length() >= 16:
+			target = next
+			break
+	var direction := Vector3(target.x - origin.x, 0, target.z - origin.z).normalized()
+	var eye := origin - direction * 6 + Vector3(direction.z * 4, 8, -direction.x * 4)
+	for entry: Dictionary in recipe.get("cameras", []):
+		# Overview/gallery cameras may be beyond the near-world visibility bands.
+		if entry.get("id") == "briefing" and entry.get("at") is Array and entry.at.size() == 3 and entry.get("target") is Array and entry.target.size() == 3:
+			eye = Vector3(entry.at[0], entry.at[1], entry.at[2])
+			target = Vector3(entry.target[0], entry.target[1], entry.target[2])
+			break
+	# Preview placement is cosmetic. The first received actor still seeds real play.
+	eye.y = maxf(eye.y, float(world.height_at(eye.x, eye.z)) + 6)
+	camera.position = eye
+	if eye.distance_to(target) > 0.1: camera.look_at(target)
 
 func launch_campaign() -> void:
 	if phase != -2: return
@@ -166,6 +212,7 @@ func on_lobby(frame: Dictionary) -> void:
 	super.on_lobby(frame)
 
 func on_started(frame: Dictionary) -> void:
+	if is_instance_valid(briefing_lighting): briefing_lighting.free()
 	ground_tells.clear_round()
 	var id := str(frame.get("mapId", ""))
 	if not catalog.entries.has(id) or frame.get("geometryHash") != catalog.entries[id].geometryHash:
@@ -190,6 +237,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	super.on_snapshot(frame)
 	smoke = checking
 	ground_tells.apply_state(frame.state)
+	campaign_hud.observe_boss(frame.state)
 	if not campaign.playing():
 		release_pointer()
 		ground_tells.clear_round()
