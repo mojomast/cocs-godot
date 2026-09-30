@@ -10,7 +10,11 @@ targeting, guard clear conditions, or kill accounting.
 
 Entity feet positions come from authored route points and are checked against the
 same source floor and obstruction queries as player movement, including adjacent
-terrain clearance. The server alone selects active chapter beats and publishes
+terrain clearance. One arena-keyed cache holds both operator and puppy placements;
+replaced terrain surfaces or authored route/anchor identities invalidate it. The
+terrain height-grid cache follows the same surfaces identity. Checkpoint retry
+reuses the reviewed placements without rebuilding source navigation. The server
+alone selects active chapter beats and publishes
 `snapshot.campaign.story` version 1 per `port/campaign/STORY_EVENTS.md`.
 Captions have stable IDs and only appear once on proximity; a short display and
 cooldown prevent them from replacing one another each frame. The player can pet
@@ -28,7 +32,8 @@ Neither story proximity nor coordinates are accepted from the wire. The final
 Continue retains the completed match, so the final pet and reunion remain in the
 terminal results snapshot.
 
-Light checks: `node --test port/native-campaign/story.test.mjs
-port/native-campaign/authority.test.mjs`. Full campaign simulation and visual
+Light checks: `node --test port/native-campaign/navigation-cache.test.mjs
+port/native-campaign/story.test.mjs port/native-campaign/authority.test.mjs`.
+Full campaign simulation and visual
 acceptance use the normal campaign integration gates when the shared engine slot
 is available.

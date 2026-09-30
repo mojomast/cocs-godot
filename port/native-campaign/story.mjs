@@ -29,6 +29,10 @@ const scripts={
     ['reunion',5,'mara','wave','Mara','ECHO got through. Ivo, Patch, everyone made it. The corridor is ours again.']]
 };
 const near=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
+// Reviewed maps are immutable. Separate arena identities, replaced terrain
+// surfaces, or replaced authored route/anchors each require a fresh placement.
+// The WeakMap bounds retained geometry to the lifetime of its arena.
+const placementCache=new WeakMap();
 
 /** Resolve a nearby reviewed critical-path point, retaining a walkable route to
  * each character. Source collision and adjacent terrain clearance validate it. */
@@ -51,18 +55,26 @@ function place(data,anchor,offset) {
   throw new Error(`No supported story position near ${anchor.x},${anchor.z}`);
 }
 
-export function storyPlacement(data) {
-  const a=data.campaign.anchors;
-  return {arrival:place(data,a.start,6),archive:place(data,a['encounter-1'],-7),
+function storyPositions(data) {
+  const arena=data.arena,surfaces=arena.terrain.surfaces,path=data.campaign.criticalPath,a=data.campaign.anchors;
+  const cached=placementCache.get(arena);
+  if(cached?.surfaces===surfaces&&cached.path===path&&cached.anchors===a)return cached.positions;
+  const operators={arrival:place(data,a.start,6),archive:place(data,a['encounter-1'],-7),
     repeater:place(data,a['encounter-3'],-7),departure:place(data,a.exit,-9),
     pump:place(data,a['encounter-2'],-7),bridge:place(data,a['encounter-4'],-7),
     bus:place(data,a['encounter-2'],-7),uplink:place(data,a['encounter-4'],-7),
     feeder:place(data,a['encounter-2'],-7),cradle:place(data,a['encounter-3'],-7),
     reunion:place(data,a.exit,-12)};
+  const puppies={arrival:place(data,a.start,9),reunion:place(data,a.exit,-15)};
+  for(const p of [...Object.values(operators),...Object.values(puppies)])Object.freeze(p);
+  const positions=Object.freeze({operators:Object.freeze(operators),puppies:Object.freeze(puppies)});
+  placementCache.set(arena,{surfaces,path,anchors:a,positions});
+  return positions;
 }
+export function storyPlacement(data) {return storyPositions(data).operators;}
 
 export function createCampaignStory(data,carry={}) {
-  const chapter=data.id,placements=storyPlacement(data),beats=scripts[chapter];
+  const chapter=data.id,{operators:placements,puppies:puppyPlaces}=storyPositions(data),beats=scripts[chapter];
   if(!beats)throw new TypeError('Unknown story chapter');
   const previous=structuredClone(carry.chapters??{}),saved=previous[chapter]??{};
   const completed=new Set(saved.completed??[]),petIds=new Set(saved.petIds??[]);
@@ -71,8 +83,6 @@ export function createCampaignStory(data,carry={}) {
   let reactionSerial=saved.reactionSerial??0,caption=null,captionUntil=0,nextCaptionAt=0,held=false,lastPetAt=saved.lastPetAt??-Infinity;
   const puppyPositions=chapter==='crown-array'?['arrival','reunion']:['arrival'];
   const puppyId=key=>key==='arrival'?'patch':`patch-${key}`;
-  const puppyPlaces={arrival:place(data,data.campaign.anchors.start,9),
-    reunion:place(data,data.campaign.anchors.exit,-15)};
   const puppyAt=(step)=>puppyPositions.find(key=>key==='arrival'?step<=1:step>=5);
   const mandatory=(state,player)=>{
     const e=state.encounter,marker=state.marker;

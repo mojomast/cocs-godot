@@ -34,11 +34,12 @@ function indexGrid(arena) {
     }
   }
   if(cells.size!==(maxX-minX)*(maxZ-minZ)/(step*step))fail('terrain holes');
-  const grid={heights,step};grids.set(arena,grid);return grid;
+  const grid={heights,step};grids.set(arena,{surfaces:arena.terrain.surfaces,grid});return grid;
 }
 
 export function campaignSupportAt(arena,x,z) {
-  const {heights,step}=grids.get(arena)??indexGrid(arena),{minX,maxX,minZ,maxZ}=arena.bounds;
+  const cached=grids.get(arena),{heights,step}=cached?.surfaces===arena.terrain.surfaces?cached.grid:indexGrid(arena),
+    {minX,maxX,minZ,maxZ}=arena.bounds;
   if(!Number.isFinite(x)||!Number.isFinite(z)||x<minX||x>maxX||z<minZ||z>maxZ)return null;
   const ix=Math.min(maxX-step,Math.floor((x-minX)/step)*step+minX),iz=Math.min(maxZ-step,Math.floor((z-minZ)/step)*step+minZ),u=(x-ix)/step,v=(z-iz)/step;
   const a=heights.get(gridKey(ix,iz)),b=heights.get(gridKey(ix,iz+step)),c=heights.get(gridKey(ix+step,iz+step)),d=heights.get(gridKey(ix+step,iz));
