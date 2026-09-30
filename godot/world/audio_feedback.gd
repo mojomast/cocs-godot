@@ -24,6 +24,7 @@ const TABLE_SIZE := 1024
 const NOISE_SECONDS := 0.6
 const PEAK_CEILING := 0.65
 const AudioBuses = preload("res://audio/buses.gd")
+const MeleeFeedback = preload("res://world/melee_feedback.gd")
 
 ## Source feel hints, transcribed from the read-only source tables
 ## (`game/data.mjs` feel triples and `game/sfx-design.mjs` GUN_STYLES /
@@ -105,7 +106,7 @@ func _ready() -> void:
 	_initialize_audio()
 
 func _initialize_audio() -> void:
-	if not _sounds.is_empty(): return
+	if not _voices.is_empty(): return
 	AudioBuses.ensure()
 	var started := Time.get_ticks_usec()
 	_build_tables()
@@ -208,12 +209,22 @@ func apply_events(items: Array, local_id: int) -> void:
 				if not is_finite(float(amount)) or float(amount) <= 0.0: continue
 				if actor == local_id:
 					_play_cue("hurt")
-				elif _identity(item.get("source")) == local_id:
+				elif _identity(item.get("source")) == local_id and not _melee_damage(item, items):
 					# Damage events carry no weapon; confirm with the last local
 					# weapon's impact voice (presentation only).
 					_play_cue("hit", _last_weapon)
 			"pickup":
 				if actor == local_id: _play_cue("pickup")
+
+func _melee_damage(damage: Dictionary, events: Array) -> bool:
+	# An accepted strike already has its own thump/crack, independent of the gun
+	# last held. Match this batch's exact source/victim/time, not a timed heuristic.
+	for value: Variant in events:
+		if not value is Dictionary or value.get("type") != "melee": continue
+		if not MeleeFeedback.confirmed(value) or _identity(value.get("id")) < 0: continue
+		if value.get("actor") == damage.get("source") and value.get("hit") == damage.get("actor") and value.get("time") != null and value.get("time") == damage.get("time"):
+			return true
+	return false
 
 func _identity(value: Variant) -> int:
 	# JSON numbers are floats; null, booleans and strings must never become actor 0.
@@ -275,7 +286,9 @@ func _make_sound(cue: String, duration: float, weapon: int = -1, alt_id: String 
 	var count: int = maxi(16, int(SAMPLE_RATE * duration))
 	var raw := PackedFloat32Array()
 	raw.resize(count)
-	if not alt_id.is_empty() and cue in ALT_CUES:
+	if cue in ["melee-whoosh", "melee-impact"]:
+		_synth_melee(raw, count, cue)
+	elif not alt_id.is_empty() and cue in ALT_CUES:
 		_synth_alt(raw, count, cue, alt_id)
 	elif cue in WEAPON_CUES and weapon >= 0 and weapon < FEEL.size():
 		_synth_weapon(raw, count, cue, weapon)
@@ -307,7 +320,7 @@ func _make_sound(cue: String, duration: float, weapon: int = -1, alt_id: String 
 	if peak > 0.02:
 		# Weapon voices and the rebuilt explosion normalise to their target. The
 		# original hurt/pickup cues only scale down: their levels are unchanged.
-		if weapon < 0 and cue != "explosion":
+		if weapon < 0 and cue not in ["explosion", "melee-whoosh", "melee-impact"]:
 			gain = minf(target / peak, 1.0)
 		else:
 			gain = target / peak
@@ -322,6 +335,36 @@ func _make_sound(cue: String, duration: float, weapon: int = -1, alt_id: String 
 	sound.loop_mode = AudioStreamWAV.LOOP_DISABLED
 	sound.data = pcm
 	return sound
+
+## Original melee voices share the deterministic noise bank, PCM envelope and
+## peak ceiling. The shared melee consumer owns spatial playback and event IDs.
+func melee_sound(impact: bool) -> AudioStreamWAV:
+	_build_tables()
+	var cue := "melee-impact" if impact else "melee-whoosh"
+	if not _sounds.has(cue):
+		_sounds[cue] = _make_sound(cue, 0.22 if impact else 0.16)
+	return _sounds[cue]
+
+func _synth_melee(raw: PackedFloat32Array, count: int, cue: String) -> void:
+	var phase := 0.0
+	var filtered := 0.0
+	for index: int in count:
+		var t := float(index) / SAMPLE_RATE
+		var progress := float(index) / float(maxi(1, count - 1))
+		var mid := _noise_mid[index % _noise_mid.size()]
+		var low := _noise_low[index % _noise_low.size()]
+		if cue == "melee-whoosh":
+			# Fast air sweep, falling cloth/body movement; no impact transient.
+			filtered += (mid - filtered) * lerpf(0.85, 0.06, progress)
+			var swell := sin(PI * pow(progress, 0.65))
+			phase += TAU * lerpf(155.0, 52.0, progress) / SAMPLE_RATE
+			raw[index] = filtered * swell * 0.7 + low * swell * 0.18 + sin(phase) * swell * 0.07
+		else:
+			# Dry contact crack over a falling chesty thump and short material tail.
+			phase += TAU * lerpf(118.0, 43.0, minf(1.0, t / 0.12)) / SAMPLE_RATE
+			var crack := (mid - low * 0.35) * exp(-t / 0.009)
+			var body := sin(phase) * exp(-t / 0.065)
+			raw[index] = crack * 0.9 + body * 0.65 + low * exp(-t / 0.042) * 0.38 + mid * exp(-t / 0.03) * 0.16
 
 ## Normalised 0..1 heft of a source kick triple (light automatic -> heavy).
 func _heft(weapon: int) -> float:

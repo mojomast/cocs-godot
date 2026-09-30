@@ -33,11 +33,13 @@ var hit_remaining: float = 0.0
 var hurt_remaining: float = 0.0
 const Overlay = preload("res://world/combat_overlay.gd")
 const AudioFeedback = preload("res://world/audio_feedback.gd")
+const MeleeFeedback = preload("res://world/melee_feedback.gd")
 const AudioBuses = preload("res://audio/buses.gd")
 const PlayerFx = preload("res://player_fx/director.gd")
 const Impacts = preload("res://player_fx/impacts.gd")
 var overlay: Control
 var audio_feedback: Node
+var melee_feedback: Node3D
 var player_fx: Node
 var impacts: Node3D
 const CombatShields = preload("res://combat_shields/controller.gd")
@@ -72,6 +74,7 @@ var map_error := ""
 func configure_effects(camera: Camera3D, session: Node) -> void:
 	effect_camera = camera
 	effect_session = session
+	if is_instance_valid(melee_feedback): melee_feedback.configure(audio_feedback, camera)
 	if not is_instance_valid(weapon_effects):
 		weapon_effects = WeaponEffects.new()
 		add_child(weapon_effects)
@@ -113,6 +116,7 @@ func configure_effects(camera: Camera3D, session: Node) -> void:
 	_attach_rig()
 
 func _quality_changed(level: int) -> void:
+	if is_instance_valid(melee_feedback): melee_feedback.set_quality(level)
 	if is_instance_valid(shields): shields.set_quality("low" if level == 0 else "high")
 	# Low retains essential weapon cues, dropping secondary smoke/casings.
 	if is_instance_valid(weapon_effects): weapon_effects.set_quality(1 if level == 0 else 2)
@@ -192,6 +196,7 @@ func _sync_activity() -> void:
 		if is_instance_valid(world_particles): world_particles.reset()
 		if is_instance_valid(projectiles): projectiles.clear_round()
 		if is_instance_valid(audio_feedback): audio_feedback.clear_round()
+		if is_instance_valid(melee_feedback): melee_feedback.clear_transient()
 		if is_instance_valid(player_fx): player_fx.clear_transient()
 		if is_instance_valid(impacts): impacts.reset()
 		if is_instance_valid(blood_fx): blood_fx.reset()
@@ -355,14 +360,21 @@ func _ready() -> void:
 	moth_effects.configure(Callable(MothLibrary, "effect"))
 	audio_feedback = AudioFeedback.new()
 	add_child(audio_feedback)
+	melee_feedback = MeleeFeedback.new()
+	add_child(melee_feedback)
+	melee_feedback.configure(audio_feedback, effect_camera)
 	var local_settings := get_tree().root.get_node_or_null("LocalSettings")
 	if local_settings != null:
 		local_settings.audio_preferences_changed.connect(func(options: Dictionary) -> void:
 			AudioBuses.apply(options)
-			audio_feedback.set_muted(options.get("mute", false) == true or "--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args()))
+			audio_feedback.set_muted(options.get("mute", false) == true or "--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args())
+			melee_feedback.set_muted(audio_feedback._muted)
+			melee_feedback.set_reduced_motion(options.get("reduced_motion", false) == true))
 		AudioBuses.apply(local_settings.values)
+		melee_feedback.set_reduced_motion(local_settings.values.get("reduced_motion", false) == true)
 		audio_feedback.set_muted(local_settings.values.get("mute", false) == true or "--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args())
 	else: audio_feedback.set_muted("--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args())
+	melee_feedback.set_muted(audio_feedback._muted)
 	var layer := CanvasLayer.new()
 	layer.layer = 2
 	add_child(layer)
@@ -392,6 +404,7 @@ func apply_events(items: Array, local_id: int) -> void:
 	else:
 		if is_instance_valid(moth_effects): moth_effects.consume(items, local_id, public_actors)
 	if is_instance_valid(audio_feedback) and (not integrated or effects_active): audio_feedback.apply_events(items, local_id)
+	if is_instance_valid(melee_feedback): melee_feedback.consume(items, public_actors, not integrated or effects_active)
 	for value: Variant in items:
 		if not value is Dictionary: continue
 		var item: Dictionary = value
@@ -472,6 +485,7 @@ func advance(delta: float) -> void:
 	hurt_remaining = maxf(0.0, hurt_remaining - maxf(delta, 0.0))
 	if is_instance_valid(player_fx): player_fx.advance(delta)
 	if is_instance_valid(impacts): impacts.advance(delta)
+	if is_instance_valid(melee_feedback): melee_feedback.advance(delta)
 	for index: int in range(tracers.size() - 1, -1, -1):
 		tracers[index].remaining -= maxf(delta, 0.0)
 		if tracers[index].remaining <= 0: remove_tracer(index)
@@ -536,6 +550,7 @@ func clear_round() -> void:
 	local_launches = 0
 	explosions = 0
 	if is_instance_valid(audio_feedback): audio_feedback.clear_round()
+	if is_instance_valid(melee_feedback): melee_feedback.clear_round()
 	while not tracers.is_empty(): remove_tracer(0)
 	shots = 0
 	hits = 0
