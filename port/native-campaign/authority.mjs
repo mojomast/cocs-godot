@@ -29,11 +29,11 @@ export function validateCampaignInput(frame) {
 
 /** Unbound local authority. mapLoader is a trusted in-process deterministic-test seam. */
 export function createAuthority(options={}) {
-  keys(options,['mapId','difficulty','random','observe','mapLoader']);
-  const {mapId='rootfall-verge',difficulty='normal',random=Math.random,observe=()=>{},mapLoader=loadCampaignMap}=options;
+  keys(options,['mapId','difficulty','random','observe','mapLoader','matchFactory']);
+  const {mapId='rootfall-verge',difficulty='normal',random=Math.random,observe=()=>{},mapLoader=loadCampaignMap,matchFactory=createCampaignMatch}=options;
   missionForCampaign(mapId);
   if (!['easy','normal','hard'].includes(difficulty)) throw new TypeError('Unsupported difficulty');
-  if ([random,observe,mapLoader].some(fn=>typeof fn!=='function')) throw new TypeError('Invalid authority callbacks');
+  if ([random,observe,mapLoader,matchFactory].some(fn=>typeof fn!=='function')) throw new TypeError('Invalid authority callbacks');
   let data=mapLoader(mapId), socket=null, match=null, created=false, selected=false, epochRequired=false;
   let epoch=0,seq=0,round=0,cursor=null,closing=false,closePromise,finished=false,playerName='Operator',chapterKills=0;
   let wall=performance.now(),accumulator=0,tokens=LIMITS.burst,tokenAt=wall;
@@ -66,7 +66,7 @@ export function createAuthority(options={}) {
   function snapshot(type='snapshot') {send({type,seq:++seq,acks:{0:inputs.applied},inputEpoch:epoch,
     nativeArenaInput:inputs.status(),state:match.snapshot()});}
   function start(resume={}) {
-    match=createCampaignMatch({...resume,mapId:data.id,difficulty,random,mapData:data});
+    match=matchFactory({...resume,mapId:data.id,difficulty,random,mapData:data});
     match.actors[0].name=playerName;
     inputs.reset();epoch++;seq=0;round++;finished=false;cursor=new EventCursor();
     wall=performance.now();accumulator=0;
@@ -117,7 +117,15 @@ export function createAuthority(options={}) {
           }else if(f.action==='restart')start({totalElapsed:Math.max(0,status.totalElapsed-status.elapsed),kills:chapterKills});
           else if(status.phase==='level-complete'){
             if(status.nextMapId){chapterKills=status.kills;data=mapLoader(status.nextMapId);start({totalElapsed:status.totalElapsed,kills:status.kills});}
-            else{reset('campaign-complete');match.completeCampaign();snapshot('results');}
+            else{
+              // A terminal chapter already latched all client result guards.
+              // Reopen the same completed match as a fresh transport round,
+              // without rebuilding actors, objectives, elapsed time or kills.
+              inputs.reset();epoch++;seq=0;round++;finished=true;accumulator=0;
+              match.completeCampaign();
+              send({type:'start',mapId:data.id,geometryHash:data.geometryHash,inputEpoch:epoch,roundRevision:round});
+              snapshot('results');
+            }
           }
         }else if(f.type==='ping'&&created){keys(f,['type','t']);send({type:'pong',...(Number.isFinite(f.t)?{t:f.t}:{})});
         }else throw new TypeError('Invalid campaign lifecycle command');

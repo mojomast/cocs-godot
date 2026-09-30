@@ -4,8 +4,9 @@ import {once} from 'node:events';
 import {WebSocket} from 'ws';
 import {createAuthority} from './authority.mjs';
 
-async function connect(t) {
-  const observed=[],authority=createAuthority({observe:event=>observed.push(event),random:()=>.5});
+async function connect(t, options={}) {
+  const mapId=options.mapId??'rootfall-verge';
+  const observed=[],authority=createAuthority({...options,observe:event=>observed.push(event),random:()=>.5});
   t.after(()=>authority.close());
   authority.server.listen(0,'127.0.0.1');await once(authority.server,'listening');
   const port=authority.server.address().port;
@@ -22,8 +23,8 @@ async function connect(t) {
     });
   }
   send({type:'create',v:3,delta:0,nativeArenaInput:1,playerName:'Campaign test'});await wait(f=>f.type==='welcome');
-  send({type:'host',mapId:'rootfall-verge',config:{mode:'campaign',difficulty:'normal',botCount:0,timeLimit:900,fragLimit:5}});
-  await wait(f=>f.type==='lobby'&&f.mapId==='rootfall-verge');
+  send({type:'host',mapId,config:{mode:'campaign',difficulty:'normal',botCount:0,timeLimit:900,fragLimit:5}});
+  await wait(f=>f.type==='lobby'&&f.mapId===mapId);
   send({type:'start'});const start=await wait(f=>f.type==='start');
   return {authority,ws,frames,send,wait,start,observed,port};
 }
@@ -59,4 +60,26 @@ test('wire cannot select arbitrary geometry or non-finite controls',async t=>{
   c.ws.send(`{"type":"input","seq":1,"inputEpoch":${c.start.inputEpoch},"input":{"x":1e999}}`);
   await closed;
   assert.ok(c.observed.some(e=>e.direction==='transport-error'&&e.reason.includes('Non-finite')));
+});
+test('final Continue emits fresh same-map start then terminal results without reconstruction',async t=>{
+  let constructions=0,phase='playing';
+  const fake={actors:[{id:0,health:100}],events:[],time:17,over:false,
+    step(){phase='level-complete';this.over=true;},
+    completeCampaign(){phase='campaign-complete';},
+    snapshot(){return {campaign:{mapId:'crown-array',phase,nextMapId:null,elapsed:17,totalElapsed:83,kills:27}};}};
+  const c=await connect(t,{mapId:'crown-array',matchFactory:()=>{constructions++;return fake;}});
+  const completed=await c.wait(f=>f.type==='results'&&f.state.campaign.phase==='level-complete');
+  c.send({type:'campaign-action',action:'continue',inputEpoch:completed.inputEpoch});
+  const final=await c.wait(f=>f.type==='results'&&f.state.campaign.phase==='campaign-complete');
+  const index=c.frames.indexOf(final),start=c.frames[index-1];
+  assert.equal(start.type,'start');assert.equal(start.mapId,'crown-array');
+  assert.equal(start.geometryHash,c.start.geometryHash);
+  assert.ok(start.inputEpoch>completed.inputEpoch);assert.ok(start.roundRevision>c.start.roundRevision);
+  assert.equal(final.inputEpoch,start.inputEpoch);assert.equal(final.seq,1);
+  assert.equal(final.state.campaign.totalElapsed,83);assert.equal(final.state.campaign.kills,27);
+  assert.equal(constructions,1);
+  // A stale duplicate cannot start another terminal round.
+  c.send({type:'campaign-action',action:'continue',inputEpoch:completed.inputEpoch});
+  c.send({type:'ping',t:5678});await c.wait(f=>f.type==='pong'&&f.t===5678);
+  assert.equal(c.frames.filter(f=>f.type==='start').length,2);
 });
