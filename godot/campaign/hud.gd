@@ -222,8 +222,15 @@ func _process(delta: float) -> void:
 	var blocked: bool = session.camera.is_position_behind(target)
 	for reserved: Control in [objective_scroll, bottom, crosshair, menu]:
 		if reserved.visible and waypoint.get_rect().intersects(reserved.get_rect().grow(8)): blocked = true
+	var story_overlay: Control = session.get("story_widgets")
+	var story_visible := false
+	if is_instance_valid(story_overlay):
+		for reserved: Control in [story_overlay.get("caption"), story_overlay.get("prompt")]:
+			if reserved.visible:
+				story_visible = true
+				if waypoint.get_rect().intersects(reserved.get_rect().grow(8)): blocked = true
 	if blocked:
-		waypoint.position = Vector2(view.x - waypoint.size.x - 16, (objective_scroll.position.y + objective_scroll.size.y + bottom.position.y - waypoint.size.y) * 0.5)
+		waypoint.position = Vector2(view.x - waypoint.size.x - 16, objective_scroll.position.y + objective_scroll.size.y + 12 if story_visible else (objective_scroll.position.y + objective_scroll.size.y + bottom.position.y - waypoint.size.y) * 0.5)
 		waypoint.text = "→ ◇ %d m" % roundi(distance)
 	waypoint.show()
 

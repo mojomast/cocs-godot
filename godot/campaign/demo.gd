@@ -115,6 +115,7 @@ func _ready() -> void:
 	campaign_hud.bind_session(self)
 	story_widgets = StoryWidgets.new()
 	layer.add_child(story_widgets)
+	story_widgets.session = self
 	var args := OS.get_cmdline_user_args()
 	smoke = "--smoke" in args
 	trace_enabled = "--native-trace" in args
@@ -320,6 +321,7 @@ func request_campaign_action(action: String) -> void:
 func release_pointer() -> void:
 	var captured := Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 	super.release_pointer()
+	if is_instance_valid(story_widgets): story_widgets.refresh()
 	if captured and phase == 3: client.call("send_controls", {}, true)
 
 func leave_campaign() -> void:
@@ -332,6 +334,7 @@ func leave_campaign() -> void:
 
 func on_error(message: String) -> void:
 	robot_voices.clear_round()
+	if is_instance_valid(story_widgets): story_widgets.observe({}, false)
 	startup_error = message
 	super.on_error(message)
 	label.hide()
@@ -339,4 +342,5 @@ func on_error(message: String) -> void:
 
 func on_transport_dropped(message: String) -> void:
 	robot_voices.clear_round()
+	if is_instance_valid(story_widgets): story_widgets.observe({}, false)
 	super.on_transport_dropped(message)

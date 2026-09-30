@@ -5,6 +5,7 @@ var caption := Label.new()
 var prompt := Label.new()
 var story: Dictionary = {}
 var allowed := false
+var session: Node
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
@@ -28,6 +29,8 @@ func observe(value: Dictionary, can_show: bool) -> void:
 
 func refresh() -> void:
 	var show_: bool = allowed and not Settings.overlay_open()
+	if is_instance_valid(session):
+		show_ = show_ and session.get("application_focused") and session.get("phase") == 3 and not session.get("action_pending") and str(session.get("startup_error")).is_empty() and session.get("campaign").playing()
 	var line: Variant = story.get("caption")
 	caption.text = "%s: %s" % [line.get("speaker", ""), line.get("text", "")] if line is Dictionary else ""
 	caption.visible = show_ and not caption.text.is_empty()
@@ -35,11 +38,16 @@ func refresh() -> void:
 	# The authority chooses eligibility. The player's actual Interact binding is
 	# owned by shared controls (currently E), not by this decorative overlay.
 	prompt.text = "[E] Pet Patch" if pet is Dictionary and pet.get("action") == "pet" else ""
-	prompt.visible = show_ and not prompt.text.is_empty()
+	prompt.visible = show_ and not prompt.text.is_empty() and (not is_instance_valid(session) or Input.mouse_mode == Input.MOUSE_MODE_CAPTURED)
 	layout()
 
 func _process(_dt: float) -> void:
-	if not story.is_empty(): refresh()
+	refresh()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		caption.hide()
+		prompt.hide()
 
 func layout() -> void:
 	var view := get_viewport_rect().size
@@ -47,7 +55,7 @@ func layout() -> void:
 	var compact := view.y < 540 or view.x < 800
 	caption.add_theme_font_size_override("font_size", 13 if compact else 17)
 	prompt.add_theme_font_size_override("font_size", 14 if compact else 19)
-	caption.position = Vector2((view.x - width) * 0.5, view.y * (0.59 if compact else 0.69))
+	caption.position = Vector2((view.x - width) * 0.5, minf(view.y * (0.60 if compact else 0.69), view.y - 155))
 	caption.size = Vector2(width, 38 if compact else 52)
-	prompt.position = Vector2((view.x - width) * 0.5, view.y * 0.54)
+	prompt.position = caption.position - Vector2(0, 32)
 	prompt.size = Vector2(width, 26)

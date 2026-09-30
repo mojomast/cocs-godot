@@ -1,10 +1,12 @@
 extends Node3D
 ## Patch: small, feet-anchored, collision-free companion. -Z is forward.
 static var materials: Dictionary = {}
+static var spheres: Dictionary = {}
 var body: Node3D
 var head: Node3D
 var tail: Node3D
 var ears: Array[Node3D] = []
+var paws: Array[Node3D] = []
 var time := 0.0
 var reaction := 0.0
 var pose := "idle"
@@ -18,17 +20,24 @@ static func coat(color: String) -> StandardMaterial3D:
 		materials[color] = mat
 	return materials[color]
 
+static func sphere(color: String) -> SphereMesh:
+	if not spheres.has(color):
+		var mesh := SphereMesh.new()
+		mesh.radius = 1.0
+		mesh.height = 2.0
+		mesh.radial_segments = 12
+		mesh.rings = 6
+		mesh.material = coat(color)
+		spheres[color] = mesh
+	return spheres[color]
+
 func part(parent: Node3D, name_: String, color: String, at: Vector3, scale_: Vector3) -> Node3D:
 	var pivot := Node3D.new()
 	pivot.name = name_
 	pivot.position = at
 	parent.add_child(pivot)
 	var mesh := MeshInstance3D.new()
-	var sphere := SphereMesh.new()
-	sphere.radius = 1.0
-	sphere.height = 2.0
-	mesh.mesh = sphere
-	mesh.mesh.material = coat(color)
+	mesh.mesh = sphere(color)
 	mesh.scale = scale_
 	pivot.add_child(mesh)
 	return pivot
@@ -41,7 +50,7 @@ func _ready() -> void:
 	part(body, "Chest", "f2ddae", Vector3(0, 0.42, -0.29), Vector3(0.25, 0.28, 0.19))
 	for side: int in [-1, 1]:
 		for z: float in [-0.29, 0.40]:
-			part(body, "Paw", "e9cc98", Vector3(side * 0.23, 0.13, z), Vector3(0.105, 0.13, 0.15))
+			paws.append(part(body, "Paw", "e9cc98", Vector3(side * 0.23, 0.13, z), Vector3(0.105, 0.13, 0.15)))
 	tail = part(body, "Tail", "b77847", Vector3(0, 0.65, 0.49), Vector3(0.095, 0.25, 0.10))
 	tail.rotation.x = -0.8
 	head = Node3D.new()
@@ -82,6 +91,8 @@ func _process(dt: float) -> void:
 	# Keep the paws at or just above the authoritative ground plane, even sitting.
 	body.position.y = (0.09 if sitting else 0.02) + sin(time * (7 if happy else 2.8)) * (0.012 if happy else 0.008)
 	body.rotation.x = 0.12 if sitting else 0.0
+	for i: int in range(paws.size()):
+		paws[i].position.y = 0.13 + (maxf(0, sin(time * 9 + (PI if i in [0, 3] else 0))) * 0.09 if pose == "walk" else 0.0)
 	head.rotation.z = sin(time * 2.1) * 0.10 + (0.20 if happy else 0.0)
 	head.rotation.x = (0.18 if pose == "work" else 0.0) - (0.26 * sin(reaction * 4.5) if reaction > 0 else 0.0)
 	# Lean toward the offered hand, then settle. No camera or player rig movement.

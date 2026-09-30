@@ -36,7 +36,9 @@ func apply(value: Dictionary, map_id: String) -> void:
 				visual.set("automatic_animation", false)
 				var nodes: Dictionary = visual.get("nodes")
 				if nodes.has("weapon"): nodes.weapon.hide()
-		var goal := Vector3(float(entity.x), float(entity.y), float(entity.z))
+		# Shared source operator roots are center anchors; their source child is -0.9.
+		# Puppy roots are already at authoritative feet height.
+		var goal := Vector3(float(entity.x), float(entity.y), float(entity.z)) + (Vector3.UP * 0.9 if entity.kind == "operator" else Vector3.ZERO)
 		if not visual.has_meta("story_placed"):
 			visual.position = goal
 			visual.set_meta("story_placed", true)
@@ -77,9 +79,13 @@ func _process(dt: float) -> void:
 		if visual is Operator:
 			visual.call("advance", dt)
 			var nodes: Dictionary = visual.get("nodes")
-			var arm: Node3D = nodes.get("armR")
-			if arm == null: continue
+			if not nodes.has("armUpperR") or not nodes.has("forearmR"): continue
+			var rig: RefCounted = visual.get("rig")
 			match str(visual.get_meta("story_pose", "idle")):
-				"wave": arm.rotation.z = -0.75 + sin(Time.get_ticks_msec() * 0.006) * 0.26
-				"point": arm.rotation.x = -0.5
+				"wave":
+					rig.call("rotate_joint", "armUpperR", Vector3(-1.05, 0, -0.65))
+					rig.call("rotate_joint", "forearmR", Vector3(-0.35 + sin(Time.get_ticks_msec() * 0.009) * 0.25, 0, 0))
+				"point":
+					rig.call("rotate_joint", "armUpperR", Vector3(-0.95, 0, -0.25))
+					rig.call("rotate_joint", "forearmR", Vector3(-0.10, 0, 0))
 				_: pass

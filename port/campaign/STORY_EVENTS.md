@@ -67,12 +67,19 @@ observed reaction serial (including after a chapter start or retry) is a baselin
 only a subsequent higher serial plays Patch's nuzzle/wag. Hidden/reappearing
 entities keep their serial within a chapter. Long authority staging cuts hide
 briefly before revealing rather than visibly sliding an actor across the map.
-Patch's paws sit at the supplied authoritative feet coordinates. Cosmetics
-are distance culled and coat materials reused. `story_widgets.gd` overlays
+Wire JSON integer counters accept finite, nonnegative integer-valued numbers
+(including float-decoded literals) up to 2,147,483,647 and are converted to
+integers only after validation.
+Patch's paws sit at the supplied authoritative feet coordinates; source
+operators use the shared center-root offset of +0.9m above authoritative feet.
+Patch uses a cached 12-segment/6-ring sphere per coat color (roughly 18 draws,
+under 2,200 triangles at near LOD); distant face details are hidden and all
+actors are distance culled. `story_widgets.gd` overlays
 short caption and `[E] Pet Patch` from the authority prompt, with the actual
 physical E interaction still handled by shared controls. The story overlay
-is non-interactive, hides for settings, death and terminal phases, and does
-not take input focus or capture the pointer.
+is non-interactive, hides immediately for settings, focus loss, errors,
+disconnect, death and terminal phases; pet prompts show only while controlling
+the player. It does not take input focus or capture the pointer.
 
 Lightweight contract/animation/compact-layout probe:
 `godot --headless --path godot --script res://tests/campaign/story_presentation.gd`.
