@@ -1,9 +1,45 @@
-# The Quiet Relay — authored worlds, revision 2
+# The Quiet Relay — authored worlds, terrain-variety revision
 
 The first worlds revision proved collision, scale and interfaces but repeated a
 parallel-trench macro-layout. Parent visual review rejected that repetition.
-This revision replaces the footprints, landmark kits and presentation while
-preserving the integration interfaces and source-grounded collision semantics.
+Revision 2 replaced those footprints. The user then rejected its repeated
+sawtooth ridges. This revision preserves the four footprints and interfaces but
+replaces the ridge construction, rock massings and skyline distribution.
+
+## User-requested terrain variety
+
+The teeth had several causes: a near-uniform 8 m ridge rise on a 4 m grid,
+nearest-route-segment floor discontinuities propagating into crests, periodic
+vertex detail, dense tall-prism scatter, flat per-triangle normals and whole-cell
+material boundaries that drew bright triangular fringes along slopes.
+
+The replacement is actual shared terrain geometry, complemented by appropriate
+shading rather than a colour-only change:
+
+- Low-frequency, unequal 35–100 m landforms establish independent upland heights.
+  Weighted surrounding road elevations avoid nearest-segment height jumps.
+- Irregular rise/setback profiles form weathered fans, benches, shelves and
+  plateaus. Four unequal Rootfall island noses preserve required ravine bends
+  while intervening shoulders can open out. Combat floors are coherent shallow
+  planes across their entire flank circuits.
+- Two compact antialiasing passes affect exposed transitions only, protecting
+  walkable floors and retaining broad authored landforms. Shared vertex normals
+  and interpolated soil/gravel/rock transitions remove grid-frequency shading
+  fringes without changing collision triangles.
+- Rootfall uses softer vegetated shoulders and weathered boulders; Siltwake uses
+  layered bluffs, benches and spurs; Emberline uses massive planar basalt shelves
+  and slab breaks; Crown uses broad highland shoulders and selected hero crags.
+- Four different rock solids replace the repeated prism: weathered boulder,
+  layered mesa, basalt slab and leaning broken spur. Scale, orientation and
+  cluster density vary. Bases are sunk using footprint terrain samples.
+- Distant rocks form a few unequal clusters with large gaps, rather than a
+  uniformly populated perimeter. The collar has non-periodic large landforms.
+
+The final meshes retain the original **4 m resolution and triangle counts**.
+A verified 2 m experiment quadrupled triangles and increased this machine's full
+Node suite from about 25 s to 186 s; it was rejected. The broad landforms and
+edge treatment also worked at 4 m. Parser/height indexing can decode the two
+reviewed resolutions, but all committed recipes use 4 m.
 
 ## Four distinct footprints
 
@@ -46,10 +82,10 @@ Generated with `node tools/godot-campaign/compile.mjs`.
 
 | Map | Footprint | Area vs 96×80 arena | Ordered route | Mandatory-gate walking estimate | Arrival → exit feet |
 |---|---:|---:|---:|---:|---:|
-| Rootfall Verge | 320×224 m | 9.33× | 1,009.5 m | 920.8 m | 4 → 18 m |
-| Siltwake Crossing | 352×256 m | 11.73× | 1,207.7 m | 1,019.2 m | 18 → 36 m |
-| Emberline Ascent | 384×256 m | 12.80× | 1,382.6 m | 1,164.9 m | 36 → 62 m |
-| Crown Array | 416×288 m | 15.60× | 1,360.1 m | 1,264.2 m | 62 → 72 m |
+| Rootfall Verge | 320×224 m | 9.33× | 1,010.0 m | 904.8 m | 4 → 18 m |
+| Siltwake Crossing | 352×256 m | 11.73× | 1,208.0 m | 950.2 m | 18 → 36 m |
+| Emberline Ascent | 384×256 m | 12.80× | 1,383.5 m | 1,098.6 m | 36 → 62 m |
+| Crown Array | 416×288 m | 15.60× | 1,360.4 m | 1,084.8 m | 62 → 72 m |
 
 Mandatory estimates are 4 m-grid walking routes through all seven gate disks in
 order. Edges sample swept terrain/cover clearance; the same arrival state is
@@ -64,13 +100,13 @@ resized copies of the same footprint. Exact adjacent handoff heights (18, 36,
 
 | Map | Terrain triangles | Terrain groups | Horizon groups | Recipe art props | Source blocks | Nav nodes |
 |---|---:|---:|---:|---:|---:|---:|
-| Rootfall | 8,960 | 181 | 112 | 933 | 351 | 287 |
-| Siltwake | 11,264 | 215 | 104 | 909 | 404 | 322 |
-| Emberline | 12,288 | 237 | 96 | 942 | 497 | 350 |
-| Crown | 14,976 | 259 | 144 | 1,016 | 450 | 348 |
+| Rootfall | 8,960 | 179 | 112 | 893 | 353 | 287 |
+| Siltwake | 11,264 | 215 | 104 | 562 | 404 | 322 |
+| Emberline | 12,288 | 237 | 96 | 607 | 497 | 350 |
+| Crown | 14,976 | 279 | 144 | 842 | 444 | 348 |
 
 Scenery/solid MultiMesh instance totals including the horizon are respectively
-1,461 / 1,486 / 1,615 / 1,626. These are bounded allocated counts, not measured
+1,360 / 984 / 1,115 / 1,371. These are bounded allocated counts, not measured
 on-screen draw calls. Terrain material groups occupy at most 32×32 m; scenery
 batches use local 32 m origins. The horizon uses 64 m groups.
 
@@ -82,7 +118,8 @@ world-imposed match timer is used.
 ## Original biome presentation restored
 
 The renderer reuses the actual existing assets from `godot/biomes/map.gd`:
-branching trunks, asymmetric lobed crowns, fern blades and faceted cliff meshes.
+branching trunks, asymmetric lobed crowns and fern blades. Rock meshes now use
+the four distinct geological solids described above.
 Their vertex colours and normals are retained while normalizing the assets for
 metre-based recipe scaling. It also directly reuses:
 
@@ -144,34 +181,63 @@ dependencies. No original biome file was edited.
 All heavy work ran serially with `LP_NUM_THREADS=1` and the pinned Godot
 `4.5.2.stable.official.6ce3de25a`.
 
-- **14/14 Node tests pass**, including actual source `moveActor` through every
+- **20/20 Node tests pass**, including actual source `moveActor` through every
   mandatory path segment and all twenty local loops, independent source triangle
   support checks, mandatory gate metrics, strict parser rejection, independent
-  footprint checks and exact chapter handoffs.
+  footprint checks and exact chapter handoffs. At least three of Crown's four
+  authored guardian spawn points also pass a **1.65 m radius** footprint check,
+  with 16 supported perimeter samples and grounded-block clearance.
 - Godot headless test: **`CAMPAIGN_TERRAIN failures=0`** across all four maps.
   Checks compare feet/interpolation with real physics ray hits, verify cull
   bounds, foliage colours, and bounded terrain/horizon/instance counts.
 - GL compatibility test under Xvfb/llvmpipe: **zero failures**, including reading
   real renderer MultiMesh transforms. Dummy/headless uses the bounded CPU mirror
   because that server returns identity instance transforms.
-- **Twelve final 1280×720 captures** cover all four vistas and two player-height
-  views per chapter. Cameras now follow the actual approach tangent. All twelve
-  were reviewed in the final contact sheet.
+- **Twenty final 1280×720 captures**: all twelve original vistas/route views plus
+  two additional supported player-height ridge views per chapter. All were
+  reviewed in the final two contact sheets. The original twelve use the exact
+  camera recipe from `9df627d4` via the fixture's `--camera-reference` option;
+  camera transforms are retained in `after/cameras.json`. Inspection lighting
+  remains unchanged; the parent's persistent daylight component was not edited.
+
+The new geometry-profile detector samples 31–54 non-combat route-side profiles
+per map, independently of generator parameters. It combines discrete curvature
+with prominent alternating-slope frequency, permitting isolated bench breaks
+but rejecting repeated sawteeth. Synthetic repeated teeth, irregular broad
+relief and an isolated step independently exercise the detector. It also requires
+more than 12 m of variation in sampled ridge clearance, rejecting a constant
+trench or featureless mound. Before/after 90th-percentile curvature ratios:
+
+| Map | Before | After | Ridge-clearance spread, before → after |
+|---|---:|---:|---:|
+| Rootfall | 0.961 | 0.476 | 19.0 → 21.6 m |
+| Siltwake | 0.866 | 0.482 | 29.4 → 32.4 m |
+| Emberline | 1.026 | 0.576 | 25.7 → 28.7 m |
+| Crown | 1.025 | 0.393 | 21.0 → 23.3 m |
+
+These are geometry regression diagnostics, not a substitute for the user's
+visual approval. Remaining occasional hero crags and angular breaks are
+intentional; the goal was varied landforms rather than eliminating all edges.
 
 Final revised evidence:
-`/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20260930/revised-worlds/`
+`/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20260930/terrain-variety/`
 
-Start with `worlds-contact-sheet.png`. Final logs are `compiler-final.log`,
+Start with `before-after-player-height.png`. Each `<map-id>-comparison.png`
+contains all three original before/after camera pairs. Full final galleries are
+`after/worlds-contact-sheet.png` and `after/ridge-contact-sheet.png`.
+Final logs are `compiler-final.log`,
 `node-terrain-final.log`, `godot-terrain-final.log`, `godot-render-final.log`.
-Intermediate diagnostic logs remain in the same folder. Original first-revision
+Intermediate failures/diagnostics, including the rejected 2 m experiment, remain
+in the same folder. Original gallery PNGs and recipes are copied under `before/`;
+the sibling `revised-worlds/` evidence is untouched. Original first-revision
 captures, movement failure, importer crash/retry and successful proof logs remain
 untouched under the sibling `worlds/` directory.
 
 ```sh
 node tools/godot-campaign/compile.mjs
-LP_NUM_THREADS=1 node --test tools/godot-campaign/terrain.test.mjs
+LP_NUM_THREADS=1 CAMPAIGN_TERRAIN_BASELINE="$BEFORE" node --test tools/godot-campaign/terrain.test.mjs
 LP_NUM_THREADS=1 "$GODOT" --headless --path godot --script res://tests/campaign/terrain.gd
-LP_NUM_THREADS=1 xvfb-run -a "$GODOT" --path godot --rendering-method gl_compatibility --audio-driver Dummy --script res://tests/campaign/terrain.gd -- --render="$EVIDENCE"
+LP_NUM_THREADS=1 xvfb-run -a "$GODOT" --path godot --rendering-method gl_compatibility --audio-driver Dummy --script res://tests/campaign/terrain.gd -- --render="$EVIDENCE/after" --camera-reference="$BEFORE"
 ```
 
 The Godot fixture additionally accepts `--map=<campaign-id>` for focused visual
@@ -196,8 +262,8 @@ followed. Directly consulted sources:
 Final geometry hashes:
 
 ```text
-rootfall-verge      81a5b2bf0dc508be76b35ef268b51ed4d676102c939673f06982feffcc7272a0
-siltwake-crossing   24c647a5e4755a2c30a111f716ed33e23792a8d17e11d72ef286171c8847a02f
-emberline-ascent    122459c3015108408a8d07f69d826a281b14ca05183214b7ebc43c5edf0791ce
-crown-array        b7350e8d6ebcdc08cad66ee2631017352557ffb7d8792872957628851efb0744
+rootfall-verge      dbd85402b89e277389a28e3d91b2efaf8b21207c565010a06d3042c0b751a446
+siltwake-crossing   581eac2c45b050676766dc8d137fb4c162d8f6c30e91fe31019fe30ed41959e2
+emberline-ascent    d5fac0852937dae2332d1e4d16e3c4e4828d8d5298a8de238aeb6c5c0ad66b32
+crown-array        779e0dc63fe7475ad843f1afe5c99cddd99da8a178d3d4ca8de404085b38c89b
 ```

@@ -3,6 +3,7 @@ extends Node3D
 ## Heights are feet heights. Scenery has no gameplay collision; blocks do.
 const IDS := ["rootfall-verge", "siltwake-crossing", "emberline-ascent", "crown-array"]
 const CELL := 4.0
+var cell_size := 4.0
 const CHUNK := 32.0
 const BiomeVisual = preload("res://biomes/map.gd")
 const SURFACE = preload("res://biomes/surface.gdshader")
@@ -10,6 +11,8 @@ const FOLIAGE = preload("res://biomes/foliage.gdshader")
 var recipe: Dictionary = {}
 var materials: Dictionary = {}
 var heights: Dictionary = {}
+var terrain_normals: Dictionary = {}
+var trail_distances: Dictionary = {}
 var terrain_chunks := 0
 var art_batches := 0
 var art_instances := 0
@@ -29,11 +32,17 @@ func build(id: String) -> bool:
 	if not parsed is Dictionary: return false
 	var data: Dictionary = parsed
 	if data.get("schemaVersion") != 1 or data.get("id") != id: return false
+	var first: Array = data.arena.terrain.surfaces[0].vertices
+	var decoded_cell := float(first[1][2])-float(first[0][2])
+	if decoded_cell not in [2.0,4.0]: return false
 	for child: Node in get_children():
 		remove_child(child)
 		child.queue_free()
 	recipe = data
+	cell_size = decoded_cell
 	heights.clear()
+	terrain_normals.clear()
+	trail_distances.clear()
 	materials.clear()
 	_meshes.clear()
 	terrain_chunks = 0
@@ -43,6 +52,30 @@ func build(id: String) -> bool:
 	_make_materials()
 	for surface: Dictionary in recipe.arena.terrain.surfaces:
 		for v: Array in surface.vertices: heights[Vector2i(roundi(v[0]), roundi(v[2]))] = float(v[1])
+	# Shared vertex normals prevent a diagonal broad slope from reading as an
+	# alternating row of triangular teeth. Geometry/collision stay unchanged;
+	# the separately authored boulders, shelves and machinery retain flat facets.
+	var bounds: Dictionary = recipe.arena.bounds
+	for key: Vector2i in heights:
+		var left := maxf(bounds.minX, key.x-CELL)
+		var right := minf(bounds.maxX, key.x+CELL)
+		var back := maxf(bounds.minZ, key.y-CELL)
+		var front := minf(bounds.maxZ, key.y+CELL)
+		terrain_normals[key] = Vector3(-(height_at(right,key.y)-height_at(left,key.y))/(right-left), 1, -(height_at(key.x,front)-height_at(key.x,back))/(front-back)).normalized()
+	var path: Array = recipe.campaign.criticalPath
+	for i: int in range(1,path.size()):
+		var a := Vector2(path[i-1].x,path[i-1].z)
+		var b := Vector2(path[i].x,path[i].z)
+		var axis := b-a
+		for x: int in range(floori((minf(a.x,b.x)-7)/cell_size)*int(cell_size),ceili((maxf(a.x,b.x)+7)/cell_size)*int(cell_size)+1,int(cell_size)):
+			for z: int in range(floori((minf(a.y,b.y)-7)/cell_size)*int(cell_size),ceili((maxf(a.y,b.y)+7)/cell_size)*int(cell_size)+1,int(cell_size)):
+				var key := Vector2i(x,z)
+				if not heights.has(key): continue
+				var p := Vector2(x,z)
+				var t := clampf((p-a).dot(axis)/axis.length_squared(),0,1)
+				var distance := p.distance_to(a+axis*t)
+				trail_distances[key] = minf(trail_distances.get(key,INF),distance)
+	for surface: Dictionary in recipe.arena.terrain.surfaces:
 		_surface(surface)
 	_build_blocks()
 	_build_art()
@@ -53,14 +86,14 @@ func height_at(x: float, z: float) -> float:
 	if recipe.is_empty() or not is_finite(x) or not is_finite(z): return NAN
 	var bounds: Dictionary = recipe.arena.bounds
 	if x < bounds.minX or x > bounds.maxX or z < bounds.minZ or z > bounds.maxZ: return NAN
-	var ix := mini(floori((x - float(bounds.minX)) / CELL) * int(CELL) + int(bounds.minX), int(bounds.maxX) - int(CELL))
-	var iz := mini(floori((z - float(bounds.minZ)) / CELL) * int(CELL) + int(bounds.minZ), int(bounds.maxZ) - int(CELL))
-	var u := (x - ix) / CELL
-	var v := (z - iz) / CELL
+	var ix := mini(floori((x - float(bounds.minX)) / cell_size) * int(cell_size) + int(bounds.minX), int(bounds.maxX) - int(cell_size))
+	var iz := mini(floori((z - float(bounds.minZ)) / cell_size) * int(cell_size) + int(bounds.minZ), int(bounds.maxZ) - int(cell_size))
+	var u := (x - ix) / cell_size
+	var v := (z - iz) / cell_size
 	var a: float = heights[Vector2i(ix, iz)]
-	var b: float = heights[Vector2i(ix, iz + int(CELL))]
-	var c: float = heights[Vector2i(ix + int(CELL), iz + int(CELL))]
-	var d: float = heights[Vector2i(ix + int(CELL), iz)]
+	var b: float = heights[Vector2i(ix, iz + int(cell_size))]
+	var c: float = heights[Vector2i(ix + int(cell_size), iz + int(cell_size))]
+	var d: float = heights[Vector2i(ix + int(cell_size), iz)]
 	return a + (c-b)*u + (b-a)*v if v >= u else a + (d-a)*u + (c-d)*v
 
 func _make_materials() -> void:
@@ -88,6 +121,18 @@ func _make_materials() -> void:
 	water.metallic = 0.35
 	water.roughness = 0.22
 	materials.water = water
+	# Keep the original biome grain/seam shader, but interpolate ecological
+	# material transitions per vertex. Whole-cell material labels otherwise draw
+	# a row of bright triangular "teeth" even on a geometrically smooth slope.
+	var terrain_shader := Shader.new()
+	terrain_shader.code = SURFACE.code.replace("uniform float grain_scale", "uniform vec4 trail_color : source_color;\nuniform vec4 rock_color : source_color;\nvarying vec2 terrain_blend;\nuniform float grain_scale").replace("void vertex() {", "void vertex() { terrain_blend = COLOR.rg;").replace("ALBEDO = base_color.rgb *", "ALBEDO = mix(mix(base_color.rgb,trail_color.rgb,terrain_blend.x),rock_color.rgb,terrain_blend.y) *")
+	var terrain_material := ShaderMaterial.new()
+	terrain_material.shader = terrain_shader
+	terrain_material.set_shader_parameter("base_color",Color(str(recipe.palette[0])))
+	terrain_material.set_shader_parameter("trail_color",Color(str(recipe.palette[1])))
+	terrain_material.set_shader_parameter("rock_color",Color(str(recipe.palette[2])))
+	terrain_material.set_shader_parameter("grain_scale",3.5)
+	materials.terrain = terrain_material
 
 static func _v(p: Array) -> Vector3:
 	return Vector3(float(p[0]), float(p[1]), float(p[2]))
@@ -105,14 +150,20 @@ func _surface(surface: Dictionary, collide := true) -> void:
 		var normal := (b-a).cross(c-a).normalized()
 		# Source upward winding; Godot clockwise front faces.
 		for p: Vector3 in [a, c, b]:
-			st.set_normal(normal)
+			var world_point := p+origin
+			var key := Vector2i(roundi(world_point.x),roundi(world_point.z))
+			var vertex_normal: Vector3 = terrain_normals[key] if collide else normal
+			st.set_normal(vertex_normal)
+			var trail := 1.0-smoothstep(2.0,6.0,float(trail_distances.get(key,INF))) if collide else 0.0
+			var rock := 1.0-smoothstep(0.58,0.90,vertex_normal.y)
+			st.set_color(Color(trail,rock,0,1))
 			st.add_vertex(p)
 		faces.append_array(PackedVector3Array([a, b, c]))
 	var mesh := MeshInstance3D.new()
 	mesh.name = str(surface.id)
 	mesh.position = origin
 	mesh.mesh = st.commit()
-	mesh.material_override = materials[surface.material]
+	mesh.material_override = materials.terrain if collide and surface.material in ["ground","trail","rock"] else materials[surface.material]
 	add_child(mesh)
 	if not collide:
 		horizon_chunks += 1
@@ -146,13 +197,19 @@ func _build_blocks() -> void:
 	for group: Dictionary in groups.values(): _batch(group, true)
 
 func _group(groups: Dictionary, kind: String, material: String, at: Vector3, size: Vector3) -> void:
+	var rock := kind in ["crag", "mountain"]
+	var seed_value := int(absf(sin(at.x*0.071+at.z*0.053))*1000.0)
+	var preferred: int = [0,1,2,0][int(recipe.campaign.index)]
+	var variant := preferred if seed_value%5 < 3 else seed_value%4
+	var asset_kind := kind + "-%d" % variant if rock else kind
 	var cell := Vector2i(floori(at.x / CHUNK), floori(at.z / CHUNK))
-	var key := "%s/%s/%d/%d" % [kind, material, cell.x, cell.y]
+	var key := "%s/%s/%d/%d" % [asset_kind, material, cell.x, cell.y]
 	if not groups.has(key):
-		groups[key] = {"kind":kind, "material":material, "origin":Vector3(cell.x*CHUNK, 0, cell.y*CHUNK), "transforms":[]}
+		groups[key] = {"kind":asset_kind, "material":material, "origin":Vector3(cell.x*CHUNK, 0, cell.y*CHUNK), "transforms":[]}
 	var group: Dictionary = groups[key]
 	var origin: Vector3 = group.origin
-	var transform := Transform3D(Basis.from_scale(size), at - origin)
+	var basis := Basis(Vector3.UP, fposmod(at.x*0.217+at.z*0.139,TAU)).scaled(size) if rock else Basis.from_scale(size)
+	var transform := Transform3D(basis, at - origin)
 	group.transforms.append(transform)
 
 func _build_art() -> void:
@@ -190,7 +247,7 @@ func _batch(group: Dictionary, solid: bool) -> void:
 	node.set_meta("instance_transforms", group.transforms.duplicate())
 	# Never range-hide physical cover or guidance. Only distant small scenery
 	# fades; chunk-local origins make range culling meaningful across this map.
-	if not solid and kind in ["tree", "crag", "fern"]:
+	if not solid and (kind in ["tree", "fern"] or kind.begins_with("crag-")):
 		node.visibility_range_end = 140.0 if kind == "fern" else 650.0
 		node.visibility_range_end_margin = 25.0
 	add_child(node)
@@ -199,12 +256,13 @@ func _batch(group: Dictionary, solid: bool) -> void:
 
 func _prop_mesh(kind: String) -> Mesh:
 	if kind in ["box", "water"]: return BoxMesh.new()
-	if kind in ["tree", "fern", "mountain"]:
+	if kind.begins_with("crag-") or kind.begins_with("mountain-"): return _rock_mesh(int(kind.get_slice("-",1)))
+	if kind in ["tree", "fern"]:
 		# Reuse the actual Canopy/Basalt authored branching/lobed assets, not a
 		# cone-tree approximation. Normalize once so recipe scales stay metres.
 		var original := BiomeVisual.new()
 		original.forest = int(recipe.campaign.index) in [0, 3]
-		var mesh: ArrayMesh = original._tree_mesh() if kind == "tree" else original._plant_mesh() if kind == "fern" else original._cliff_mesh(1.0, 1.0, 0.7)
+		var mesh: ArrayMesh = original._tree_mesh() if kind == "tree" else original._plant_mesh()
 		original.free()
 		var arrays: Array = mesh.surface_get_arrays(0)
 		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
@@ -249,6 +307,33 @@ func _prop_mesh(kind: String) -> Mesh:
 		_prism(st, Vector3.ZERO, Vector3(0.12, 1, -0.04), 0.5, 0.28, 6, Color.WHITE)
 	return st.commit()
 
+func _rock_mesh(variant: int) -> ArrayMesh:
+	# Four geological solids, not recoloured copies of one pointed prism:
+	# weathered boulder, layered mesa, massive basalt slab, leaning broken spur.
+	var levels: Array = [[0.0,0.16,0.64,0.94],[0.0,0.16,0.23,0.64,0.71,1.0],[0.0,0.14,0.76,1.0],[0.0,0.12,0.45,0.80,1.0]][variant]
+	var radii: Array = [[0.30,0.54,0.48,0.26],[0.43,0.48,0.54,0.43,0.48,0.37],[0.50,0.53,0.47,0.38],[0.43,0.54,0.43,0.31,0.18]][variant]
+	var sides := 5 if variant == 2 else 7 if variant == 0 else 6
+	var rings: Array = []
+	for ring: int in levels.size():
+		var points: Array[Vector3] = []
+		for side: int in sides:
+			var angle := float(side)*TAU/sides
+			var radius: float = radii[ring]*(1.0+0.09*cos(angle*2.0+variant))
+			var shift := float(levels[ring])*(0.19 if variant == 3 else -0.07)
+			points.append(Vector3(cos(angle)*radius+shift, levels[ring], sin(angle)*radius))
+		rings.append(points)
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for ring: int in range(rings.size()-1):
+		for side: int in sides:
+			var next := (side+1)%sides
+			_tri(st,rings[ring][side],rings[ring+1][side],rings[ring][next],Color.WHITE)
+			_tri(st,rings[ring][next],rings[ring+1][side],rings[ring+1][next],Color.WHITE)
+	for side: int in range(1,sides-1):
+		_tri(st,rings.back()[0],rings.back()[side+1],rings.back()[side],Color.WHITE)
+		_tri(st,rings.front()[0],rings.front()[side],rings.front()[side+1],Color.WHITE)
+	return st.commit()
+
 func _prism(st: SurfaceTool, low: Vector3, high: Vector3, lower: float, upper: float, sides: int, color: Color) -> void:
 	for i: int in sides:
 		var angle := float(i)*TAU/sides
@@ -279,7 +364,17 @@ func _horizon_height(x: float, z: float) -> float:
 	var distance := Vector2(x-cx, z-cz).length()
 	var blend := smoothstep(0.0, 96.0, distance)
 	var base: float = recipe.campaign.anchors.start.y + 12.0
-	var mountain := base + 12.0 + 28.0*pow(sin(x*0.017)*cos(z*0.021), 2)
+	var mountain := base + 8.0
+	# Unequal, low-frequency surrounding landforms, with genuinely quiet gaps.
+	# No periodic sine-grid hill pattern and no uniformly spaced cliff ring.
+	var index: int = recipe.campaign.index
+	var masses := [Vector4(-0.9,-0.65,95,25),Vector4(0.7,-1.1,140,38),Vector4(1.3,0.4,85,19),Vector4(-0.3,1.2,170,12)]
+	for i: int in masses.size():
+		var m: Vector4 = masses[(i+index)%masses.size()]
+		var dx := (x-m.x*(float(b.maxX)+110.0))/m.z
+		var dz := (z-m.y*(float(b.maxZ)+100.0))/(m.z*0.75)
+		var shape := 1.0-smoothstep(0.35,1.15,maxf(absf(dx),absf(dz))) if index == 2 else 1.0-smoothstep(0.35,1.1,sqrt(dx*dx+dz*dz)) if index == 1 else exp(-(dx*dx+dz*dz)*1.8)
+		mountain += m.w*shape
 	return lerpf(height_at(cx, cz), mountain, blend)
 
 func _build_horizon() -> void:
@@ -301,12 +396,29 @@ func _build_horizon() -> void:
 	var scenery: Dictionary = {}
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 76312 + int(recipe.campaign.index)
-	for i: int in 180:
-		var angle := float(i)*2.399
-		var x := cos(angle)*(float(b.maxX)+rng.randf_range(28,160))
-		var z := sin(angle)*(float(b.maxZ)+rng.randf_range(28,160))
-		if x > b.minX-12 and x < b.maxX+12 and z > b.minZ-12 and z < b.maxZ+12: continue
-		var wooded := int(recipe.campaign.index) in [0,3] and i%4 != 0
-		var size := Vector3(7, rng.randf_range(9,17), 7) if wooded else Vector3(rng.randf_range(12,24), rng.randf_range(20,42), rng.randf_range(12,24))
-		_group(scenery, "tree" if wooded else "mountain", "foliage" if wooded else "rock", Vector3(x,_horizon_height(x,z)-1,z), size)
+	var index: int = recipe.campaign.index
+	var angles: Array = [[12,31,118,206,218],[7,29,54,176,188,272],[45,58,151,239],[16,102,121,244]][index]
+	for cluster: int in angles.size():
+		var angle := deg_to_rad(float(angles[cluster]))
+		var direction := Vector2(cos(angle),sin(angle))
+		var edge := minf(float(b.maxX)/maxf(absf(direction.x),0.01),float(b.maxZ)/maxf(absf(direction.y),0.01))
+		var center := direction*(edge+rng.randf_range(105,140))
+		var count := 2+cluster%3
+		for i: int in count:
+			var x := center.x+rng.randf_range(-27,27)
+			var z := center.y+rng.randf_range(-25,25)
+			var width := rng.randf_range(24,65)
+			var height := rng.randf_range(7,23) if index == 0 else rng.randf_range(16,43)
+			if index == 3 and cluster%2 == 1: height *= 0.45
+			var depth := rng.randf_range(18,48)
+			var base := _horizon_height(x,z)
+			var radius := maxf(width,depth)*0.6
+			for sample: int in 8: base = minf(base,_horizon_height(x+cos(sample*TAU/8.0)*radius,z+sin(sample*TAU/8.0)*radius))
+			_group(scenery,"mountain","rock",Vector3(x,base-0.5,z),Vector3(width,height,depth))
+		if index in [0,3]:
+			for i: int in 14+cluster*3:
+				var x := center.x+rng.randf_range(-50,50)
+				var z := center.y+rng.randf_range(-42,42)
+				if x > b.minX-15 and x < b.maxX+15 and z > b.minZ-15 and z < b.maxZ+15: continue
+				_group(scenery,"tree","foliage",Vector3(x,_horizon_height(x,z)-0.3,z),Vector3(7,rng.randf_range(9,17),7))
 	for group: Dictionary in scenery.values(): _batch(group, false)

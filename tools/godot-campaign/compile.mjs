@@ -7,6 +7,8 @@ export const CELL = 4;
 const round = n => +n.toFixed(5);
 const clamp = (v,a,b) => Math.max(a,Math.min(b,v));
 const smooth = v => {v=clamp(v,0,1);return v*v*(3-2*v);};
+const blendKnots=(t,values)=>{const u=clamp(t,0,1)*(values.length-1),i=Math.min(values.length-2,Math.floor(u));return values[i]+(values[i+1]-values[i])*smooth(u-i);};
+const mound=(x,z,cx,cz,rx,rz,angle=0)=>{const dx=x-cx,dz=z-cz,u=(dx*Math.cos(angle)+dz*Math.sin(angle))/rx,v=(-dx*Math.sin(angle)+dz*Math.cos(angle))/rz;return Math.exp(-(u*u+v*v)*1.8);};
 const chapters = [
   {name:'Rootfall Verge',w:320,h:224,base:4,rise:14,palette:['536b45','9caa72','778a80','c0bda0','476775','85f3cf'],landmarks:['Fallen relay','Root archive','Fern sluice','Ravine transformer','Siltwake gate']},
   {name:'Siltwake Crossing',w:352,h:256,base:18,rise:18,palette:['b4875d','cfad79','815e49','bab4a0','526c77','85f3cf'],landmarks:['Rootfall gate','Riverworks intake','Bridge relays','Dry spillway','Emberline lift']},
@@ -35,7 +37,7 @@ export function compileCampaign(id) {
   const segments=[];let length=0;
   for(let i=1;i<corners.length;i++) {const a=corners[i-1],b=corners[i],len=Math.hypot(b[0]-a[0],b[1]-a[1]);segments.push({a,b,len,start:length});length+=len;}
   const nearest=(x,z)=>{
-    let best={d:Infinity,s:0};for(const seg of segments) {const hit=distance([x,z],seg.a,seg.b);if(hit.d<best.d)best={d:hit.d,s:seg.start+hit.t*seg.len};}return best;
+    let best={d:Infinity,s:0,i:0};for(const [i,seg]of segments.entries()) {const hit=distance([x,z],seg.a,seg.b);if(hit.d<best.d)best={d:hit.d,s:seg.start+hit.t*seg.len,i};}return best;
   };
   const at=s=>{const seg=segments.find(v=>v.start+v.len>=s)??segments.at(-1),t=clamp((s-seg.start)/seg.len,0,1);return [seg.a[0]+(seg.b[0]-seg.a[0])*t,seg.a[1]+(seg.b[1]-seg.a[1])*t];};
   const siteSegments=[[1,4,7,10,13],[2,4,8,13,17],[1,6,10,14,17],[2,5,9,13,18]][index];
@@ -49,13 +51,68 @@ export function compileCampaign(id) {
     const roll=index===0?3.4*Math.sin(t*Math.PI*6):index===1?3*Math.sin(t*Math.PI*4.4):5.5*Math.sin(t*Math.PI*3);
     return c.base+c.rise*t+roll*Math.sin(Math.PI*t);
   };
+  // Broad, non-periodic geological control fields. The route floor remains
+  // authoritative, but the upland no longer inherits discontinuous nearest-
+  // segment elevations. Named masses are 35–100m across, not vertex noise.
+  const landforms=[
+    [[-91,-38,67,42,15,.3],[35,-29,62,34,23,-.25],[-44,47,58,36,10,-.5],[112,39,42,54,19,.15]],
+    [[-93,8,54,76,21,-.4],[96,45,72,43,31,.25],[-10,-98,84,31,16,-.1],[35,-30,35,52,24,.55]],
+    [[-115,-63,58,43,20,0],[23,-10,81,47,32,.55],[121,58,51,53,18,-.3],[-67,97,72,35,12,0]],
+    [[-132,13,66,92,13,-.15],[42,-81,95,39,22,.2],[115,71,64,57,11,-.3],[-2,20,41,35,17,.25]],
+  ][index];
+  const crestKnots=[[15,22,12,29,18,11,25,17],[23,34,17,28,39,20,31],[26,17,35,22,31,18,28],[15,24,12,20,30,16,23]][index];
+  const runKnots=[[24,34,22,29,38,23,32],[29,38,25,43,28,36,24],[22,31,20,35,24,30,21],[29,39,24,35,28,42,26]][index];
+  const buttresses=index===0?[4,9,10,12].map((i,j)=>{
+    const before=segments[i-1],after=segments[i],dx=(after.b[0]-after.a[0])/after.len-(before.b[0]-before.a[0])/before.len,dz=(after.b[1]-after.a[1])/after.len-(before.b[1]-before.a[1])/before.len,n=Math.hypot(dx,dz);
+    return [corners[i][0]+dx/n*18,corners[i][1]+dz/n*18,[17,23,15,21][j],[23,16,25,18][j],[16,21,14,19][j],Math.atan2(dz,dx)];
+  }):[];
+  const geology=(x,z,hit,edge)=>{
+    if(edge<=0)return floor(hit.s);
+    let weighted=0,weightedCrest=0,weight=0,other=Infinity;
+    for(const [i,seg]of segments.entries()){
+      const q=distance([x,z],seg.a,seg.b),w=1/(q.d*q.d+64)**2;
+      weighted+=floor(seg.start+q.t*seg.len)*w;weightedCrest+=blendKnots((seg.start+q.t*seg.len)/length,crestKnots)*w;weight+=w;
+      if(Math.abs(i-hit.i)>1)other=Math.min(other,q.d);
+    }
+    const ground=floor(hit.s)*(1-smooth(edge/14))+(weighted/weight)*smooth(edge/14);
+    const mass=landforms.reduce((sum,[cx,cz,rx,rz,height,angle])=>{
+      const dx=x-cx,dz=z-cz,u=(dx*Math.cos(angle)+dz*Math.sin(angle))/rx,v=(-dx*Math.sin(angle)+dz*Math.cos(angle))/rz;
+      const shape=index===2?1-smooth((Math.max(Math.abs(u),Math.abs(v))-.48)/.65):index===1?1-smooth((Math.hypot(u,v)-.38)/.75):Math.exp(-(u*u+v*v)*1.8);
+      return sum+height*shape;
+    },0);
+    const crest=weightedCrest/weight;
+    const upland=Math.max(ground+crest,c.base+c.rise*.5+12+mass);
+    // Keep a cliff divide where two non-neighbouring route legs converge, but
+    // open outward-facing shoulders into wide scree fans and weathered slopes.
+    const crowded=1-smooth((other-hit.d-7)/20);
+    const run=blendKnots(hit.s/length,runKnots)*(1-crowded)+14*crowded;
+    const u=edge/run;
+    let profile;
+    if(index===0)profile=.12*smooth(edge/4)+.18*smooth(u/.6)+.70*smooth((u-.35)/.65);
+    else if(index===1)profile=.20*smooth(u/.25)+.43*smooth((u-.37)/.20)+.37*smooth((u-.78)/.22);
+    else if(index===2)profile=.14*smooth(edge/4)+.10*smooth(u/.32)+.76*smooth((u-.48)/.52);
+    else profile=.30*smooth(u/.62)+.70*smooth((u-.35)/.65);
+    // Sparse large spurs, recesses and saddles are described by the landforms;
+    // there is intentionally no short-period sinusoid or modulo cliff height.
+    return ground+(upland-ground)*profile;
+  };
   const authoredHeight=(x,z)=>{
     const hit=nearest(x,z), clearing=Math.min(...sites.map(p=>Math.hypot(x-p[0],z-p[1])));
     const edge=Math.min(hit.d-width(hit.s),clearing-25);
-    const organic=4*Math.sin(x*.031+z*.043)+3*Math.cos(z*.039-x*.021);
-    const ridge=(index===0?18+organic:index===1?24+organic:index===2?22+4*Math.floor((x+z+400)/52)%5:17+organic*.4)*smooth(edge/8);
-    const detail=.3*Math.sin(x*.065)*Math.cos(z*.08)*Math.sin(Math.PI*hit.s/length)+smooth(edge/8)*(1.8*Math.sin(x*.09)**2+Math.cos(z*.11));
-    let y=floor(hit.s)+ridge+detail;
+    const detail=.3*Math.sin(x*.065)*Math.cos(z*.08)*Math.sin(Math.PI*hit.s/length)*(1-smooth(edge/16));
+    let y=geology(x,z,hit,edge)+detail;
+    // Four unequal weathered island noses hold Rootfall's required ravine
+    // bends while the intervening shoulders can open into broad gentle fans.
+    // This avoids restoring a uniformly steep trench wall along the whole map.
+    for(const [cx,cz,rx,rz,height,angle]of buttresses)y+=height*mound(x,z,cx,cz,rx,rz,angle)*smooth(edge/5);
+    // Local combat floors are coherent planes, including their full flank
+    // circuits. Finer tessellation must not reveal a nearest-segment height
+    // discontinuity where a loop approaches a bend in a terraced road.
+    for(let i=0;i<sites.length;i++){
+      const [sx,sz]=sites[i],d=Math.hypot(x-sx,z-sz);if(d>=30)continue;
+      const seg=segments[siteSegments[i]],plane=floor(seg.start+seg.len*.5)+((x-sx)*frames[i].dx+(z-sz)*frames[i].dz)*.02+detail;
+      const blend=smooth((d-23)/7);y=plane*(1-blend)+y*blend;
+    }
     // The river drops below its bank roads. At the two actual crossings the
     // single support sheet narrows into a causeway instead of a second floor.
     if(index===1){const river=Math.abs(x-12*Math.sin(z*.023));const carve=(1-smooth((river-7)/10))*smooth((hit.d-8)/7)*smooth((clearing-26)/7);y=y*(1-carve)+(c.base-9+.012*z)*carve;}
@@ -65,6 +122,18 @@ export function compileCampaign(id) {
   const arena={id,name:c.name,description:['A fern ravine follows the fallen forest power line into Siltwake.','Riverworks terraces wind around sandstone spines and restored bridge relays.','Basalt retaining terraces climb from the riverworks to the isolated uplink.','Highland forest returns around the Crown Array and its guardian court.'][index],bounds:{minX:-c.w/2,maxX:c.w/2,minZ:-c.h/2,maxZ:c.h/2},spawns:[],pickups:[],navNodes:[],blocks:[],terrain:{maxSlope:.65,surfaces:[],walls:[]},voidY:-24,ceilingY:160,raised:false,nextGen:true};
   const heights=new Map(),key=(x,z)=>`${x},${z}`;
   for(let x=-c.w/2;x<=c.w/2;x+=CELL)for(let z=-c.h/2;z<=c.h/2;z+=CELL)heights.set(key(x,z),authoredHeight(x,z));
+  // Antialias only exposed landform transitions, not traversal floors. Two
+  // compact grid passes remove grid-frequency corrugation on oblique bench faces;
+  // authored 20–100m shelves, saddles, mesas and island noses remain intact.
+  for(let pass=0;pass<2;pass++){
+    const source=new Map(heights);
+    for(let x=-c.w/2;x<=c.w/2;x+=CELL)for(let z=-c.h/2;z<=c.h/2;z+=CELL){
+      const hit=nearest(x,z),clearing=Math.min(...sites.map(p=>Math.hypot(x-p[0],z-p[1]))),edge=Math.min(hit.d-width(hit.s),clearing-25),amount=smooth((edge-2)/8);
+      if(amount===0)continue;
+      let sum=0;for(let dx=-1;dx<=1;dx++)for(let dz=-1;dz<=1;dz++)sum+=source.get(key(clamp(x+dx*CELL,-c.w/2,c.w/2),clamp(z+dz*CELL,-c.h/2,c.h/2)))*(dx===0?2:1)*(dz===0?2:1);
+      heights.set(key(x,z),round(source.get(key(x,z))*(1-amount)+sum/16*amount));
+    }
+  }
   const h=(x,z)=>heights.get(key(x,z));
   const support=(x,z)=>{
     const ix=clamp(Math.floor((x+c.w/2)/CELL)*CELL-c.w/2,-c.w/2,c.w/2-CELL),iz=clamp(Math.floor((z+c.h/2)/CELL)*CELL-c.h/2,-c.h/2,c.h/2-CELL),u=(x-ix)/CELL,v=(z-iz)/CELL;
@@ -74,11 +143,11 @@ export function compileCampaign(id) {
   const point=([x,z])=>({x:round(x),y:support(round(x),round(z)),z:round(z)});
   const chunks=new Map();
   for(let x=-c.w/2;x<c.w/2;x+=CELL)for(let z=-c.h/2;z<c.h/2;z+=CELL) {
-    const hit=nearest(x+2,z+2),bridge=index===1&&Math.abs(x-12*Math.sin(z*.023))<12;
-    const clearing=Math.min(...sites.map(p=>Math.hypot(x+2-p[0],z+2-p[1])));
-    const slope=Math.max(h(x,z),h(x+4,z),h(x,z+4),h(x+4,z+4))-Math.min(h(x,z),h(x+4,z),h(x,z+4),h(x+4,z+4));
+    const hit=nearest(x+CELL/2,z+CELL/2),bridge=index===1&&Math.abs(x-12*Math.sin(z*.023))<12;
+    const clearing=Math.min(...sites.map(p=>Math.hypot(x+CELL/2-p[0],z+CELL/2-p[1])));
+    const slope=(Math.max(h(x,z),h(x+CELL,z),h(x,z+CELL),h(x+CELL,z+CELL))-Math.min(h(x,z),h(x+CELL,z),h(x,z+CELL),h(x+CELL,z+CELL)))/CELL;
     const wooded=(index===0&&hit.s<length*.8)||index===3;
-    const material=bridge&&hit.d<8?'metal':hit.d<3.5?'trail':hit.d<width(hit.s)+2||clearing<26||wooded&&slope<2?'ground':'rock';
+    const material=bridge&&hit.d<8?'metal':hit.d<3.5?'trail':hit.d<width(hit.s)+2||clearing<26||wooded&&slope<.5?'ground':'rock';
     const chunk=`terrain-${Math.floor((x+c.w/2)/32)}-${Math.floor((z+c.h/2)/32)}-${material}`;
     if(!chunks.has(chunk))chunks.set(chunk,{id:chunk,material,walkable:true,vertices:[],triangles:[]});
     const s=chunks.get(chunk),i=s.vertices.length;s.vertices.push([x,h(x,z),z],[x,h(x,z+CELL),z+CELL],[x+CELL,h(x+CELL,z+CELL),z+CELL],[x+CELL,h(x+CELL,z),z]);s.triangles.push([i,i+1,i+2],[i,i+2,i+3]);
@@ -88,7 +157,13 @@ export function compileCampaign(id) {
   const route=(rid,cs)=>{const points=[];for(let i=1;i<cs.length;i++){const a=cs[i-1],b=cs[i],n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/3);for(let j=0;j<n;j++)points.push(point([a[0]+(b[0]-a[0])*j/n,a[1]+(b[1]-a[1])*j/n]));}points.push(point(cs.at(-1)));routes.push({id:rid,points});return points;};
   const criticalPath=route('critical-path',corners),anchors={start:{...criticalPath[0],radius:5}};
   const art=[];
-  const prop=(kind,material,x,z,sx,sy,sz,y=support(x,z))=>art.push({kind,material,position:[round(x),round(y),round(z)],scale:[sx,sy,sz]});
+  const prop=(kind,material,x,z,sx,sy,sz,y=support(x,z))=>{
+    if(kind==='crag'){
+      const radius=Math.max(sx,sz)*.6;
+      y=Math.min(y,...Array.from({length:8},(_,i)=>support(clamp(x+Math.cos(i*Math.PI/4)*radius,-c.w/2,c.w/2),clamp(z+Math.sin(i*Math.PI/4)*radius,-c.h/2,c.h/2))))-.15;
+    }
+    art.push({kind,material,position:[round(x),round(y),round(z)],scale:[sx,sy,sz]});
+  };
   // Source spatial.mjs treats every block as [0,h], regardless of baseY.
   // Keep these grounded and render exactly that volume; no overhead blocks.
   const box=(bid,x,z,w,d,rise,material='stone')=>arena.blocks.push({id:bid,x:round(x),z:round(z),w,d,baseY:0,h:round(support(x,z)+rise),material});
@@ -117,9 +192,9 @@ export function compileCampaign(id) {
     for(const si of [6,16]){const seg=segments[si],mid=at(seg.start+seg.len*.5),dx=(seg.b[0]-seg.a[0])/seg.len,dz=(seg.b[1]-seg.a[1])/seg.len;for(const side of [-1,1]){const x=mid[0]-dz*side*12,z=mid[1]+dx*side*12;box(`bridgeworks-${si}-${side}`,x,z,3,3,15,'stone');prop('beacon','light',x,z,.6,6,.6,support(x,z)+15);}}
   }
   if(index===2) {
-    for(let i=0;i<5;i++) {
-      for(let j=0;j<4;j++){const [x,z]=local(i,-14+j*8,-26);prop('crag','rock',x,z,5,12+j*2,5);}
-    }
+    // Two unequal bedrock groups, rather than four identical spikes at every
+    // fight. The upright regularly spaced elements are machinery, not geology.
+    for(const [i,u,v,w,h,d]of [[1,-12,-28,14,8,8],[1,9,-31,8,13,11],[3,-9,-24,18,7,11],[3,15,-23,9,10,7]]){const [x,z]=local(i,u,v);prop('crag','rock',x,z,w,h,d);}
   }
   if(index===3) {
     const [x,z]=local(4,0,-27);
@@ -133,7 +208,8 @@ export function compileCampaign(id) {
   // Buried grounded cliff cores follow the actual organic footprint, rather
   // than drawing visible rectangular maze walls. Their tops lie inside the
   // rock volume; source movement cannot jump through unsupported cliff faces.
-  for(let x=-c.w/2+4;x<c.w/2;x+=8)for(let z=-c.h/2+4;z<c.h/2;z+=8){const hit=nearest(x,z),clearing=Math.min(...sites.map(p=>Math.hypot(x-p[0],z-p[1])));if(hit.d<width(hit.s)+10||hit.d>width(hit.s)+25||clearing<35)continue;const top=Math.min(...[-4,0,4].flatMap(dx=>[-4,0,4].map(dz=>support(x+dx,z+dz))))-1;arena.blocks.push({id:`cliff-core-${x}-${z}`,x,z,w:8,d:8,baseY:0,h:round(Math.max(1,top)),material:'rock'});}
+  const coreSamples=Array.from({length:8/CELL+1},(_,i)=>-4+i*CELL);
+  for(let x=-c.w/2+4;x<c.w/2;x+=8)for(let z=-c.h/2+4;z<c.h/2;z+=8){const hit=nearest(x,z),clearing=Math.min(...sites.map(p=>Math.hypot(x-p[0],z-p[1])));if(hit.d<width(hit.s)+10||hit.d>width(hit.s)+25||clearing<35)continue;const top=Math.min(...coreSamples.flatMap(dx=>coreSamples.map(dz=>support(x+dx,z+dz))))-1;arena.blocks.push({id:`cliff-core-${x}-${z}`,x,z,w:8,d:8,baseY:0,h:round(Math.max(1,top)),material:'rock'});}
   for(let s=24;s<length;s+=42) {const [x,z]=at(s),seg=segments.find(v=>v.start+v.len>=s);prop('beacon','light',x-(seg.b[1]-seg.a[1])/seg.len*6,z+(seg.b[0]-seg.a[0])/seg.len*6,.2,1.4,.2);}
   // Deterministic bounded scatter, outside route/loop clearance. Forest fades
   // into sandstone at chapter one exit and returns on chapter four's crown.
@@ -144,7 +220,14 @@ export function compileCampaign(id) {
     if((hit.d<20&&!shoulder)||sites.some(p=>Math.hypot(x-p[0],z-p[1])<31))continue;
     const wooded=index===0?hit.s/length<.80:index===3?random()<.64:false;
     if(wooded){const sy=7+random()*7;prop('tree','foliage',x,z,5+random()*3,sy,5+random()*3);if(shoulder)box(`shoulder-trunk-${n}`,x,z,.7,.7,sy*.72,'rock');}
-    else prop('crag','rock',x,z,2+random()*3,3+random()*8,2+random()*3);
+    else {
+      // Outcrops cluster around a few coherent rock masses, leaving actual
+      // skyline gaps. Most are broad boulders/shelves; tall crags are rare.
+      const cluster=Math.max(...landforms.map(([cx,cz,rx,rz])=>mound(x,z,cx,cz,rx*.7,rz*.7)));
+      if(random()>.10+cluster*.36)continue;
+      const hero=random()<.07;
+      prop('crag','rock',x,z,hero?8+random()*5:4+random()*7,hero?10+random()*7:1.8+random()*4.5,4+random()*6);
+    }
   }
   for(let n=0;n<2400;n++) {
     const x=(random()-.5)*(c.w-16),z=(random()-.5)*(c.h-16),hit=nearest(x,z);

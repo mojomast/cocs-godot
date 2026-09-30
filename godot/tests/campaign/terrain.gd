@@ -3,6 +3,7 @@ const Terrain = preload("res://campaign/terrain.gd")
 var failures := 0
 var render_dir := ""
 var only_id := ""
+var camera_reference_dir := ""
 
 func _initialize() -> void:
 	call_deferred("_run")
@@ -16,6 +17,7 @@ func _run() -> void:
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--render="): render_dir = arg.trim_prefix("--render=")
 		if arg.begins_with("--map="): only_id = arg.trim_prefix("--map=")
+		if arg.begins_with("--camera-reference="): camera_reference_dir = arg.trim_prefix("--camera-reference=")
 	root.size = Vector2i(1280, 720)
 	var world := Node3D.new()
 	root.add_child(world)
@@ -44,6 +46,7 @@ func _run() -> void:
 	label.add_theme_color_override("font_outline_color", Color.BLACK)
 	label.add_theme_constant_override("outline_size", 5)
 	root.add_child(label)
+	var camera_manifest: Array = []
 	for id: String in Terrain.IDS:
 		if not only_id.is_empty() and id != only_id: continue
 		var terrain := Terrain.new()
@@ -81,15 +84,22 @@ func _run() -> void:
 			var colors: PackedColorArray = tree_arrays[Mesh.ARRAY_COLOR]
 			check(colors[200].g > colors[200].r and colors[200].a > 0.9, "original branching foliage retains green leaf colours")
 		check(terrain.horizon_chunks > 0 and terrain.horizon_chunks <= 160, "bounded stitched horizon")
+		check(terrain.terrain_normals.size() == terrain.heights.size(), "shared normals cover every authoritative terrain vertex")
+		for normal: Vector3 in terrain.terrain_normals.values(): check(normal.is_finite() and absf(normal.length()-1.0) < 0.0001, "finite unit terrain normal")
 		if not render_dir.is_empty():
-			var bounds: Dictionary = terrain.recipe.arena.bounds
+			var view_recipe: Dictionary = terrain.recipe
+			if not camera_reference_dir.is_empty():
+				var reference: Variant = JSON.parse_string(FileAccess.get_file_as_string(camera_reference_dir+"/"+id+".json"))
+				check(reference is Dictionary,"before/after camera reference "+id)
+				if reference is Dictionary: view_recipe = reference
+			var bounds: Dictionary = view_recipe.arena.bounds
 			var width: float = bounds.maxX - bounds.minX
 			var height: float = bounds.maxZ - bounds.minZ
-			var base: float = terrain.recipe.campaign.anchors.start.y
+			var base: float = view_recipe.campaign.anchors.start.y
 			var views := [{"id":"vista", "at":Vector3(-width*0.50, base+width*0.75, height*0.70), "target":Vector3(0, base+20, 0)}]
 			for encounter: int in [1, 5]:
-				var p: Dictionary = terrain.recipe.campaign.anchors["encounter-%d" % encounter]
-				var route: Array = terrain.recipe.campaign.criticalPath
+				var p: Dictionary = view_recipe.campaign.anchors["encounter-%d" % encounter]
+				var route: Array = view_recipe.campaign.criticalPath
 				var nearest := 0
 				var best := INF
 				for j: int in route.size():
@@ -99,6 +109,16 @@ func _run() -> void:
 						nearest = j
 				var eye: Dictionary = route[maxi(0,nearest-9)]
 				views.append({"id":"route-%d" % encounter, "at":Vector3(eye.x,eye.y+1.65,eye.z), "target":Vector3(p.x,p.y+2,p.z)})
+			# Additional supported player-height views inspect actual traversed
+			# ridge walls between fights, rather than only cleared combat sites.
+			var path_points: Array = view_recipe.campaign.criticalPath
+			for fraction: float in [0.23,0.62]:
+				var j := int(float(path_points.size()-1)*fraction)
+				var p: Dictionary = path_points[j]
+				var q: Dictionary = path_points[mini(j+6,path_points.size()-1)]
+				var direction := Vector2(q.x-p.x,q.z-p.z).normalized()
+				var side := Vector2(-direction.y,direction.x)*(1.0 if fraction < 0.5 else -1.0)
+				views.append({"id":"ridge-%d" % (1 if fraction < 0.5 else 2),"at":Vector3(p.x,p.y+1.65,p.z),"target":Vector3(p.x+direction.x*18+side.x*18,p.y+6,p.z+direction.y*18+side.y*18)})
 			for view: Dictionary in views:
 				camera.position = view.at
 				camera.look_at(view.target)
@@ -107,8 +127,13 @@ func _run() -> void:
 				await RenderingServer.frame_post_draw
 				var image := root.get_texture().get_image()
 				check(image.save_png(render_dir + "/" + id + "-" + str(view.id) + ".png") == OK, "capture " + id)
+				camera_manifest.append({"map":id,"view":view.id,"at":[view.at.x,view.at.y,view.at.z],"target":[view.target.x,view.target.y,view.target.z]})
 		terrain.queue_free()
 		await process_frame
 	world.queue_free()
+	if not render_dir.is_empty():
+		var manifest_file := FileAccess.open(render_dir+"/cameras.json",FileAccess.WRITE)
+		check(manifest_file != null,"camera comparison manifest")
+		if manifest_file != null: manifest_file.store_string(JSON.stringify(camera_manifest,"\t"))
 	print("CAMPAIGN_TERRAIN failures=", failures)
 	quit(0 if failures == 0 else 1)

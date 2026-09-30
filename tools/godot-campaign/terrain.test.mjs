@@ -47,6 +47,53 @@ export function gateRouteMetrics(data,step=4) {
   return {gridStep:step,orderedMeters:routeLength(data.campaign.criticalPath),gateWalkingMeters:cumulative.at(-1),gateCumulativeMeters:cumulative};
 }
 
+// Signal metrics operate on sampled geometry, not generator parameters. A
+// repeated sawtooth has high discrete curvature and frequent prominent slope
+// reversals; a broad bench or isolated cliff break does not. Test the detector
+// on synthetic counterexamples as well as the generated route-side profiles.
+export function profileMetrics(values) {
+  let slopeEnergy=0,curvatureEnergy=0,teeth=0;
+  for(let i=1;i<values.length;i++)slopeEnergy+=(values[i]-values[i-1])**2;
+  for(let i=1;i<values.length-1;i++){
+    const left=values[i]-values[i-1],right=values[i+1]-values[i];
+    curvatureEnergy+=(right-left)**2;
+    if(left*right<0&&Math.min(Math.abs(left),Math.abs(right))>.55)teeth++;
+  }
+  return {roughness:slopeEnergy>1e-6?curvatureEnergy/slopeEnergy:0,toothRate:teeth/Math.max(1,values.length-2)};
+}
+
+export function terrainVarietyMetrics(data) {
+  const a=data.arena,unrestricted={...a,terrain:{...a.terrain,maxSlope:Math.PI/2}},path=data.campaign.criticalPath;
+  const profiles=[],clearances=[];
+  for(const offset of [-32,-24,24,32]) {
+    let values=[],previousDirection=null;
+    const flush=()=>{if(values.length>=10)profiles.push(profileMetrics(values));values=[];};
+    for(let i=1;i<path.length-1;i++) {
+      const p=path[i],q=path[i+1],dx=q.x-p.x,dz=q.z-p.z,d=Math.hypot(dx,dz),direction=[dx/d,dz/d];
+      const nearFight=Object.values(data.campaign.anchors).some(v=>Math.hypot(v.x-p.x,v.z-p.z)<32);
+      if(nearFight||previousDirection&&direction[0]*previousDirection[0]+direction[1]*previousDirection[1]<.995)flush();
+      previousDirection=direction;
+      if(nearFight)continue;
+      const side=campaignSupportAt(unrestricted,p.x-direction[1]*offset,p.z+direction[0]*offset);
+      if(!side){flush();continue;}
+      const clearance=side.y-p.y;values.push(clearance);
+      if(Math.abs(offset)===32)clearances.push(clearance);
+    }
+    flush();
+  }
+  const percentile=(v,t)=>v.slice().sort((a,b)=>a-b)[Math.floor((v.length-1)*t)];
+  return {profiles:profiles.length,roughness90:percentile(profiles.map(p=>p.roughness),.90),toothRate90:percentile(profiles.map(p=>p.toothRate),.90),ridgeRelief80:percentile(clearances,.90)-percentile(clearances,.10)};
+}
+
+test('terrain profile detector rejects repeated teeth but permits broad irregular relief',()=>{
+  const teeth=Array.from({length:80},(_,i)=>i%2?14:18);
+  const varied=Array.from({length:80},(_,i)=>8+13*Math.exp(-(((i-21)/17)**2))+6*Math.exp(-(((i-63)/9)**2)));
+  assert.ok(profileMetrics(teeth).roughness>3&&profileMetrics(teeth).toothRate>.9);
+  assert.ok(profileMetrics(varied).roughness<.1&&profileMetrics(varied).toothRate===0);
+  const bench=profileMetrics(Array.from({length:80},(_,i)=>i<40?5:17));
+  assert.ok(bench.roughness>1&&bench.toothRate===0,'an isolated geological step is not repeated teeth');
+});
+
 for(const [index,id] of CAMPAIGN_MAP_IDS.entries()) {
   test(`${id}: generated geometry, supported routes and chapter identity`,()=>{
     const data=loadCampaignMap(id),a=data.arena;
@@ -80,6 +127,15 @@ for(const [index,id] of CAMPAIGN_MAP_IDS.entries()) {
     assert.ok(metrics.gateWalkingMeters>metrics.orderedMeters*.78,'ridge geography preserves route budget');
     assert.ok(metrics.gateWalkingMeters>900,'minimum mandatory walking distance');
   });
+  test(`${id}: route-side ridge geometry avoids repeated teeth and has broad relief variety`,()=>{
+    const metrics=terrainVarietyMetrics(loadCampaignMap(id));
+    console.log(`${id} terrain variety ${JSON.stringify(metrics)}`);
+    if(process.env.CAMPAIGN_TERRAIN_BASELINE){const before=JSON.parse(readFileSync(`${process.env.CAMPAIGN_TERRAIN_BASELINE}/${id}.json`));console.log(`${id} before terrain variety ${JSON.stringify(terrainVarietyMetrics(before))}`);}
+    assert.ok(metrics.profiles>=8,'sample enough actual non-combat ridge profiles');
+    assert.ok(metrics.roughness90<.9||metrics.toothRate90<.12,'short-period alternating wall geometry (isolated bench breaks are allowed)');
+    assert.ok(metrics.toothRate90<.18,'repeated prominent teeth along player-height ridge views');
+    assert.ok(metrics.ridgeRelief80>12,'varied ridge setbacks/heights, not a constant-height trench or featureless mound');
+  });
 }
 
 test('strict campaign parser rejects unsafe identity, geometry and unsupported content',()=>{
@@ -106,4 +162,14 @@ test('chapters retain genuinely different normalized route footprints and exact 
       assert.ok(common/union<.55,`${data[i].id}/${data[j].id} rescaled footprints too similar: ${common/union}`);
     }
   }
+});
+
+test('Crown guardian authored deployment pool retains several clear 1.65m-radius feet positions',()=>{
+  const data=loadCampaignMap('crown-array'),a=data.arena,pool=data.spawnPoints.slice(17,21),radius=1.65;
+  const clear=p=>{
+    if(a.blocks.some(b=>Math.abs(p.x-b.x)<b.w/2+radius&&Math.abs(p.z-b.z)<b.d/2+radius&&p.y<b.h))return false;
+    for(let i=0;i<16;i++){const angle=i*Math.PI/8,s=campaignSupportAt(a,p.x+Math.cos(angle)*radius,p.z+Math.sin(angle)*radius);if(!s||Math.abs(s.y-p.y)>.3)return false;}
+    return true;
+  };
+  assert.ok(pool.filter(clear).length>=3,`only ${pool.filter(clear).length}/4 authored guardian positions have large-body clearance`);
 });

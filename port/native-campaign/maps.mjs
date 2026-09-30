@@ -16,7 +16,9 @@ const gridKey=(x,z)=>`${x},${z}`;
 // heights and precisely the same diagonal used by the source's terrain reader.
 // Chunking/material splits can change freely without hardcoding any map bounds.
 function indexGrid(arena) {
-  const {minX,maxX,minZ,maxZ}=arena.bounds,step=4,heights=new Map(),cells=new Set();
+  const {minX,maxX,minZ,maxZ}=arena.bounds,first=arena.terrain.surfaces[0]?.vertices;
+  const step=first?.[1]?.[2]-first?.[0]?.[2],heights=new Map(),cells=new Set();
+  if(![2,4].includes(step))fail('reviewed terrain resolution');
   for(const s of arena.terrain.surfaces) {
     keys(s,['id','material','walkable','vertices','triangles']);text(s.id);
     if(!materials.includes(s.material)||s.walkable!==true)fail('surface material/walkable');
