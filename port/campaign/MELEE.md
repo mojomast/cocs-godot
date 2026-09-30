@@ -40,3 +40,10 @@ and pooled contact rings. Engine verification and WAV audition export are pendin
 the heavy slot. The mechanics lane is implementing the matching event contract:
 `pos` remains the origin; `impact` and `direction` describe contact; `hit` is null
 unless a target actually received damage. See `docs/melee-feedback.md`.
+
+The mechanics branch is merged preserving `0326b435` ancestry for explicit source
+derivative verification. It implements the 0.30 s cooldown, fresh-press admission,
+bounded 0.85 m collision-swept shove and actual-damage event contract. Its input,
+gameplay and integration tests await the shared heavy verification slot; syntax
+and three Git/text provenance checks passed in isolation. Full pending commands
+and event fields are in `port/MELEE_AUTHORITY_2026-09-30.md`.

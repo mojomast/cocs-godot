@@ -133,7 +133,7 @@ func _ready() -> void:
 func show_controls() -> void:
 	var hud: Node = get_node_or_null("GameHUD")
 	if hud != null:
-		hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · Q power · E use\nLMB fire · RMB ADS · Z/MMB alt · R reload · F kick (hold to repeat) · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release"
+		hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · Q power · E use\nLMB fire · RMB ADS · Z/MMB alt · R reload · F kick (tap each time) · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release"
 
 ## ---------------------------------------------------------------------------
 ## Horde run upgrades: visible choice buttons plus 1..9 hotkeys. The authority
