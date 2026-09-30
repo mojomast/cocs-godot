@@ -8,6 +8,8 @@ const LocalLifecycle = preload("res://world/local_lifecycle.gd")
 var lifecycle := LocalLifecycle.new()
 var motion := RemoteMotion.new()
 var interpolate_remote: bool = false
+## Route-owned factory: (actor, local_id) -> Node3D. Empty retains source visuals.
+var actor_visual_factory: Callable
 var local_actor_id: int = -1
 var actors: Dictionary = {}
 var rendered_remote_poses: int = 0
@@ -54,13 +56,13 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 		var id: int = int(actor.id)
 		present[id] = true
 		if not actors.has(id):
-			var node := ActorVisual.new()
+			var node: Node3D = actor_visual_factory.call(actor, local_id) if actor_visual_factory.is_valid() else ActorVisual.new()
 			node.name = "Actor_%d" % id
-			node.local_id = local_id
+			if "local_id" in node: node.local_id = local_id
 			add_child(node)
 			actors[id] = node
 		var visual: Node3D = actors[id]
-		visual.local_id = local_id
+		if "local_id" in visual: visual.local_id = local_id
 		# Snapshot-driven source pose; the host still owns position and body yaw.
 		visual.apply_actor(actor)
 		var position: Vector3 = Vector3(actor.x, actor.y + 0.9, actor.z)

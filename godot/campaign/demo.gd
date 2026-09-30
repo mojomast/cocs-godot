@@ -1,0 +1,239 @@
+extends "res://world/session.gd"
+## Real shared session composition, with port-owned campaign content and protocol.
+const CampaignCatalog = preload("res://campaign/catalog.gd")
+const CampaignClient = preload("res://campaign/client.gd")
+const CampaignModel = preload("res://campaign/model.gd")
+const CampaignHUD = preload("res://campaign/hud.gd")
+const SourceVisual = preload("res://source_operators/operator_visual.gd")
+
+class CampaignCombat extends "res://world/combat_feedback.gd":
+	## The shared feedback catalog knows source maps only. Supply the built native
+	## colliders directly to its existing visibility, impact and particle services.
+	func _configure_map(state: Dictionary) -> void:
+		if not is_instance_valid(effect_camera) or not is_instance_valid(effect_session): return
+		var terrain: Node3D = effect_session.world
+		if not is_instance_valid(terrain): return
+		var id := str(state.get("mapId", ""))
+		var key := "%s/%s" % [id, terrain.get_instance_id()]
+		if map_key == key: return
+		if not map_key.is_empty(): clear_round()
+		map_key = key
+		var arena: Dictionary = effect_session.catalog.resolve_map(id)
+		var bounds: Dictionary = arena.get("bounds", {})
+		if bounds.is_empty():
+			map_error = "Campaign effects recipe has no bounds"
+			return
+		var map := {"id":id, "bounds":AABB(Vector3(bounds.minX, -32, bounds.minZ), Vector3(bounds.maxX - bounds.minX, 192, bounds.maxZ - bounds.minZ)), "collision_root":terrain}
+		occlusion.configure(effect_camera, map)
+		map_error = "" if occlusion.ready else "Campaign collision geometry unavailable"
+		if is_instance_valid(impacts):
+			impacts.configure(effect_camera, occlusion)
+			impacts.set_map(map)
+		if is_instance_valid(world_particles):
+			var result: Dictionary = world_particles.configure(effect_camera, map)
+			if not result.get("ok", false): map_error = str(result.get("error", "Campaign particle configuration failed"))
+		if is_instance_valid(blood_fx):
+			var result: Dictionary = blood_fx.configure(effect_camera, map)
+			if not result.get("ok", false): map_error = str(result.get("error", "Campaign surface configuration failed"))
+		if is_instance_valid(projectiles): projectiles.configure_occlusion(occlusion.segment_blocked)
+
+var campaign := CampaignModel.new()
+var campaign_hud: Control
+var difficulty := "normal"
+var startup_error := ""
+var action_pending := false
+var authority_geometry_hash := ""
+var robot_instances := 0
+
+func _init() -> void:
+	catalog = CampaignCatalog.new()
+	client.free()
+	client = CampaignClient.new()
+	combat.free()
+	combat = CampaignCombat.new()
+	sun.free()
+	environment.free()
+
+static func parse_options(args: PackedStringArray) -> Dictionary:
+	var options := {"map":"rootfall-verge", "endpoint":"", "difficulty":"normal", "error":""}
+	for arg: String in args:
+		for key: String in ["map", "endpoint", "difficulty"]:
+			if arg.begins_with("--" + key + "="): options[key] = arg.trim_prefix("--" + key + "=")
+		if arg.begins_with("--mode=") and arg != "--mode=campaign": options.error = "This route requires campaign mode."
+	if options.map not in CampaignCatalog.MAP_IDS: options.error = "Unknown campaign chapter."
+	if options.difficulty not in ["easy", "normal", "hard"]: options.error = "Difficulty must be easy, normal, or hard."
+	var match_url := RegEx.create_from_string("^ws://127\\.0\\.0\\.1:([1-9][0-9]{0,4})/native-campaign$").search(options.endpoint)
+	if match_url == null or match_url.get_string() != options.endpoint or match_url.get_string(1).to_int() > 65535:
+		options.error = "Launch with an owned ws://127.0.0.1:PORT/native-campaign endpoint."
+	return options
+
+func _ready() -> void:
+	phase = -2
+	camera.far = 2000
+	camera.rotation_order = EULER_ORDER_YXZ
+	add_child(camera)
+	camera.make_current()
+	var layer := CanvasLayer.new()
+	add_child(layer)
+	for item: Control in [label, selector, combat_label]:
+		layer.add_child(item)
+		item.hide()
+	presentation.actor_visual_factory = create_visual
+	presentation.interpolate_remote = true
+	for child: Node in [pickups, presentation, combat, client]: add_child(child)
+	client.connection_error.connect(on_error)
+	client.transport_dropped.connect(on_transport_dropped)
+	client.connect("input_reset", func(_reason: String) -> void: release_pointer())
+	client.lobby.connect(on_lobby)
+	client.started.connect(on_started)
+	client.snapshot.connect(on_snapshot)
+	client.results.connect(on_results)
+	client.events.connect(func(items: Array) -> void:
+		if phase == 3:
+			combat.apply_events(items, client.actor_id)
+			av_events(items))
+	campaign_hud = CampaignHUD.new()
+	layer.layer = 5
+	layer.add_child(campaign_hud)
+	campaign_hud.bind_session(self)
+	var args := OS.get_cmdline_user_args()
+	smoke = "--smoke" in args
+	trace_enabled = "--native-trace" in args
+	var options := parse_options(args)
+	if not options.error.is_empty():
+		on_error(options.error)
+		return
+	endpoint = options.endpoint
+	difficulty = options.difficulty
+	selected_mode = "campaign"
+	if not catalog.open() or not load_map(options.map):
+		on_error(catalog.error)
+		return
+	ids = CampaignCatalog.MAP_IDS.duplicate()
+	campaign_hud.show_brief(current_id)
+	if smoke: launch_campaign()
+
+func create_visual(actor: Dictionary, local_id: int) -> Node3D:
+	if actor.get("npcModel") in CampaignModel.ROBOTS:
+		var script: GDScript = load("res://campaign/robot_visual.gd")
+		var robot: Node3D = script.new()
+		robot.configure(actor, local_id)
+		robot_instances += 1
+		return robot
+	var operator := SourceVisual.new()
+	operator.local_id = local_id
+	return operator
+
+func load_map(id: String) -> bool:
+	if not catalog.entries.has(id):
+		catalog.error = "Unknown campaign map: " + id
+		return false
+	var script: GDScript = load("res://campaign/terrain.gd")
+	if script == null or not script.can_instantiate():
+		catalog.error = "Campaign terrain unavailable"
+		return false
+	var next: Node3D = script.new()
+	add_child(next)
+	if next.build(id) != true:
+		next.free()
+		catalog.error = "Campaign terrain refused: " + id
+		return false
+	var markers := Node3D.new()
+	markers.name = "StaticPickupMarkers"
+	markers.hide()
+	next.add_child(markers)
+	if is_instance_valid(world): world.free()
+	world = next
+	current_id = id
+	return true
+
+func launch_campaign() -> void:
+	if phase != -2: return
+	campaign_hud.hide_brief()
+	elapsed = 0
+	connect_selected_match()
+
+func on_lobby(frame: Dictionary) -> void:
+	if phase == 1:
+		if client.send_frame({"type":"host", "mapId":current_id, "config":{"mode":"campaign", "difficulty":difficulty}}) != OK:
+			on_error("Campaign configuration could not be queued.")
+		else: phase = 2
+		return
+	super.on_lobby(frame)
+
+func on_started(frame: Dictionary) -> void:
+	var id := str(frame.get("mapId", ""))
+	if not catalog.entries.has(id) or frame.get("geometryHash") != catalog.entries[id].geometryHash:
+		on_error("Campaign authority and terrain geometry differ.")
+		return
+	if id != current_id and not load_map(id):
+		on_error(catalog.error)
+		return
+	authority_geometry_hash = frame.geometryHash
+	campaign.state.clear()
+	action_pending = false
+	audiovisual_round = "" # every chapter/checkpoint start owns a fresh audio epoch
+	super.on_started(frame)
+
+func on_snapshot(frame: Dictionary) -> void:
+	if phase != 3: return
+	if not campaign.apply(frame.state.get("campaign")):
+		on_error(campaign.error)
+		return
+	var checking := smoke
+	smoke = false
+	super.on_snapshot(frame)
+	smoke = checking
+	if not campaign.playing(): release_pointer()
+	campaign_hud.refresh()
+	if checking and moved and fired and client.last_ack > 10 and robot_instances > 0 and combat.shots > 0 and combat.map_error.is_empty() and combat.occlusion.ready and authority_geometry_hash == catalog.entries[current_id].geometryHash:
+		print("CAMPAIGN_SMOKE_OK ", JSON.stringify({"map":current_id, "moved":moved, "fired":fired, "acks":client.last_ack, "robotsLoaded":robot_instances, "combatShots":combat.shots, "geometryHash":authority_geometry_hash, "firstPerson":is_instance_valid(first_person)}))
+		client.disconnect_server()
+		get_tree().quit(0)
+
+func on_results(frame: Dictionary) -> void:
+	if phase != 3: return
+	on_snapshot(frame)
+	if phase != 3: return
+	av_finish(frame.state)
+	phase = 4
+	release_pointer()
+	campaign_hud.refresh()
+
+func can_capture_pointer() -> bool:
+	return campaign.playing() and not action_pending and super.can_capture_pointer()
+
+func _process(delta: float) -> void:
+	super._process(delta)
+	for visual: Node3D in presentation.actors.values():
+		if visual.has_method("select_distance"):
+			visual.select_distance(camera.position.distance_to(visual.position))
+
+func request_restart() -> void:
+	request_campaign_action(campaign.action())
+
+func request_campaign_action(action: String) -> void:
+	if action_pending or phase not in [3, 4] or action.is_empty(): return
+	if action != "restart" and action != campaign.action(): return
+	release_pointer()
+	if client.call("campaign_action", action) != OK:
+		on_error("Campaign action could not be queued.")
+		return
+	action_pending = true
+	phase = 20
+
+func release_pointer() -> void:
+	var captured := Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
+	super.release_pointer()
+	if captured and phase == 3: client.call("send_controls", {}, true)
+
+func leave_campaign() -> void:
+	release_pointer()
+	client.disconnect_server()
+	get_tree().quit()
+
+func on_error(message: String) -> void:
+	startup_error = message
+	super.on_error(message)
+	label.hide()
+	if is_instance_valid(campaign_hud): campaign_hud.refresh()
