@@ -126,9 +126,19 @@ pass. Full logs and verification-generated files are preserved under
 - `925e15ea` → `610aaa99`: exact expanded route/menu test expectations;
   all eight focused parser tests pass.
 
-The worlds lane now owns the exclusive heavy slot for terrain-variety physics,
-source-route checks and same-camera before/after renders. The orchestrator waits
-for that scoped commit before final integrated verification and exports.
+The terrain-variety revision `c6c3a0e1` is integrated as `5c14ab41`: twenty
+source terrain tests and Godot physics/render checks pass. Same-camera comparison
+images and twenty revised views are retained in `terrain-variety/`; comparisons
+and contact sheets are uploaded to the public development gallery.
 
-Export waits for the requested terrain-variety revision and final integration
-acceptance. The existing screenshot gallery is explicitly work in progress.
+The integrated `5c14ab41` authority, terrain, environment, session and all four
+native smoke runs pass, including revised geometry hashes. Evidence lives in
+`integrated-5c14ab41/`. Its graphical run `captures/run-0uYhBT/` failed: the
+lighting assertion counts two environments/three suns after first-person setup,
+and some software-rendered gameplay frames lose pointer capture/weapon display.
+The capture-repair Astra lane (`ses_f0bf53d86ffeAtBriqa8u8lJtq`) now owns the
+exclusive heavy slot to diagnose these failures and verify a scoped repair.
+Production input/focus safeguards and effective world lighting remain required.
+
+Export waits for final integrated graphical acceptance. The existing screenshot
+gallery is explicitly work in progress, with earlier images retained and labelled.

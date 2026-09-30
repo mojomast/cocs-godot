@@ -26,6 +26,9 @@ human first-playthrough timing and balance remain to be measured.
 - Checkpoint retry, chapter restart, difficulty selection, Continue transitions
   and a final ending.
 - Terrain-following danger rings tied to authoritative mortar/boss attack state.
+- Varied biome terrain: wooded shoulders, layered canyon benches, basalt shelves
+  and highland plateaus, with irregular crestlines and selective crags.
+- Persistent chapter daylight through briefing, gameplay, retries and results.
 - Research notes and implementation documentation in `port/campaign/`.
 
 ## Launch
