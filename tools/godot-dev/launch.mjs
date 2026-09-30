@@ -21,14 +21,16 @@ const localSettingsPath=settingsPath(process.env,{developmentRoot:process.cwd()}
 async function runRoute(plan){
   const debug=plan.sessionOptions.includes('--debug-panel'),previousDebug=process.env.COCS_DEBUG;
   if(debug)process.env.COCS_DEBUG='1';
-  const factory=plan.nativeOnly||plan.endpoint ? null : plan.nativeArena
+  const factory=plan.nativeOnly||plan.endpoint ? null : plan.campaign
+ ? (await import('../../port/native-campaign/authority.mjs')).createAuthority
+ : plan.nativeArena
  ? (await import('../../port/native-arenas/authority.mjs')).createNativeArenaAuthority
  : plan.identityZone
  ? (await import('../../port/native-identity-zones/authority.mjs')).createIdentityZoneAuthority
  : plan.experience==='horde'
  ? (await import('../../port/native-horde/authority.mjs')).createAuthority
  : (await import('../../server/game-server.mjs')).createGameServer;
- const privateRuntime=plan.nativeOnly||plan.nativeArena;
+ const privateRuntime=plan.nativeOnly||plan.nativeArena||plan.campaign;
  const runtime=privateRuntime?mkdtempSync(join(tmpdir(),'cocs-native-')):resolve('.port-runtime');mkdirSync(runtime,{recursive:true});
    const env={...process.env,COCS_SETTINGS_PATH:localSettingsPath};for(const [name,dir] of [['XDG_DATA_HOME','data'],['XDG_CONFIG_HOME','config'],['XDG_CACHE_HOME','cache']]){env[name]=resolve(runtime,dir);mkdirSync(env[name],{recursive:true});}
   let career;
@@ -38,11 +40,11 @@ async function runRoute(plan){
  process.once('SIGINT',interrupt);process.once('SIGTERM',terminate);
   try{
    career=acquireCareer(plan,env,{developmentRoot:process.cwd()});Object.assign(env,career.env);
-   game=await factory?.(plan.nativeArena?{port:0,host:'127.0.0.1',mapId:plan.map,mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds}:plan.identityZone?{port:0,host:'127.0.0.1',mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds,fragLimit:plan.scoreLimit}:plan.experience==='horde'?{}:{historyPath:career.historyPath,progressionPath:career.progressionPath});
+   game=await factory?.(plan.campaign?{mapId:plan.map,difficulty:plan.difficulty}:plan.nativeArena?{port:0,host:'127.0.0.1',mapId:plan.map,mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds}:plan.identityZone?{port:0,host:'127.0.0.1',mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds,fragLimit:plan.scoreLimit}:plan.experience==='horde'?{}:{historyPath:career.historyPath,progressionPath:career.progressionPath});
   game?.server?.on('error',serverError);
   let endpoint=plan.endpoint;
   if(game){
-   if(!(plan.nativeArena||plan.identityZone) || (!game.endpoint && !game.server?.listening))await new Promise((resolve,reject)=>{game.server.once('error',reject);game.server.listen(plan.nativeArena?0:Number(process.env.PORT??0),'127.0.0.1',()=>{game.server.removeListener('error',reject);resolve();});});
+   if(!(plan.nativeArena||plan.identityZone) || (!game.endpoint && !game.server?.listening))await new Promise((resolve,reject)=>{game.server.once('error',reject);game.server.listen(plan.nativeArena||plan.campaign?0:Number(process.env.PORT??0),'127.0.0.1',()=>{game.server.removeListener('error',reject);resolve();});});
    const ownedEndpoint=(plan.nativeArena||plan.identityZone)&&game.endpoint?game.endpoint:`ws://127.0.0.1:${game.server.address().port}`;
    const owned=new URL(ownedEndpoint);
    // Each owned authority supports exactly its own documented routes. Check the
@@ -52,7 +54,10 @@ async function runRoute(plan){
     :owned.pathname==='/';
    if(owned.protocol!=='ws:'||owned.hostname!=='127.0.0.1'||!owned.port||owned.username||owned.password||!allowedPath||owned.search||owned.hash)throw Error('Owned authority must use a private loopback endpoint');
    const port=Number(owned.port);const health=await fetch(`http://127.0.0.1:${port}`,{signal:AbortSignal.timeout(5000)});if(!health.ok)throw Error('Server readiness failed');
-   if(plan.nativeArena){
+   if(plan.campaign){
+    const status=await health.json();
+    if(status?.service!=='cocs-native-campaign'||status.localOnly!==true||status.port!==port)throw Error('Campaign readiness identity failed');
+   }else if(plan.nativeArena){
     const status=await health.json();
     if(status?.localOnly!==true||status.port!==port)throw Error('Native DM readiness identity failed');
    }else if(plan.identityZone){
@@ -62,7 +67,7 @@ async function runRoute(plan){
     const status=await health.json();
     if(status?.service!=='cocs-local-horde'||status.transport!==1||status.localOnly!==true||status.port!==port)throw Error('Horde readiness identity failed');
    }
-   endpoint=`ws://127.0.0.1:${port}${plan.nativeArena&&owned.pathname==='/native-arenas'?'/native-arenas':''}`;
+   endpoint=`ws://127.0.0.1:${port}${plan.campaign?'/native-campaign':plan.nativeArena&&owned.pathname==='/native-arenas'?'/native-arenas':''}`;
    console.log(`Owned local server ready at ${endpoint}; ${plan.smoke??plan.experience}`);
    }else if(plan.nativeOnly)console.log(`Native-only ${plan.experience}; no authority; this launcher owns the native client`);
    else console.log('Using existing authority; this launcher owns only the native client');

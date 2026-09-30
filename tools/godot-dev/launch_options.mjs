@@ -5,6 +5,7 @@ import {lobbyEndpoint} from '../godot-package/endpoint.mjs';
 const HORDE_OPERATORS = ['chatgpt','claude','grok','meta','gemini','deepseek','mistral','kimi','qwen'];
 const HORDE_HARNESSES = ['openclaw','hermes','opencode','claudecode','codex','cline','roo'];
 export const EXPERIENCES = {
+  campaign: {scene:'res://campaign/demo.tscn', map:'rootfall-verge', modes:Object.fromEntries(['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array'].map(id => [id,['campaign']]))},
   combat: {scene:'res://world/session.tscn', map:'meridian-exchange'},
   lobby: {scene:'res://world/session.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   'arms-race': {scene:'res://arms_race/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['armsrace'], 'verdant-reliquary':['armsrace'], 'ember-crucible':['armsrace']}},
@@ -40,7 +41,7 @@ export function launchOptions(argv, catalog) {
   const values = {}, flags = new Set(), sessionOptions = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['map','mode','experience','endpoint','join-room','wait-for-players','rung','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
+    const key = ['map','mode','experience','difficulty','endpoint','join-room','wait-for-players','rung','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       if (!value || value.startsWith('--')) throw Error(`--${key} requires a value`);
@@ -85,6 +86,18 @@ export function launchOptions(argv, catalog) {
   const play = flags.has('--play') || flags.has('--setup') || values.experience || values.map || values.mode || values.bots !== undefined ||
     ['--native-trace','--mute','--debug-hud','--debug-panel','--session-smoke','--lifecycle-smoke'].some(arg => flags.has(arg));
   const experience = values.experience ?? 'combat';
+  if (values.difficulty !== undefined && experience !== 'campaign') throw Error('--difficulty requires campaign');
+  if (experience === 'campaign') {
+    for (const key of Object.keys(values)) if (!['experience','map','mode','difficulty'].includes(key)) throw Error(`--${key} is not supported by campaign`);
+    for (const flag of flags) if (!['--smoke','--diagnostics'].includes(flag)) throw Error(`${flag} is not supported by campaign`);
+    const map = values.map ?? 'rootfall-verge', mode = values.mode ?? 'campaign', difficulty = values.difficulty ?? 'normal';
+    if (!Object.hasOwn(EXPERIENCES.campaign.modes, map) || mode !== 'campaign') throw Error('Unsupported campaign map/mode');
+    if (!['easy','normal','hard'].includes(difficulty)) throw Error('Campaign difficulty must be easy, normal or hard');
+    const smoke = flags.has('--smoke') ? '--smoke' : null;
+    return {experience, campaign:true, map, mode, difficulty, endpoint:null, smoke,
+      sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--difficulty=${difficulty}`,...diagnostics,...(smoke ? [smoke] : [])],
+      args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot',EXPERIENCES.campaign.scene]};
+  }
   if (!['lattice', 'lattice-world', 'combined-arms'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires lattice-world or combined-arms');
   if (!['lattice', 'lattice-world'].includes(experience) && values.rung !== undefined) throw Error('--rung requires lattice-world');
   if (experience === 'native-dm') {
@@ -242,6 +255,7 @@ export const HELP = `Native COCS launcher — source matches and native-only gra
 
   node tools/godot-dev/launch.mjs --play --setup
   node tools/godot-dev/launch.mjs --experience=lobby
+  node tools/godot-dev/launch.mjs --experience=campaign --map=rootfall-verge --difficulty=normal
   node tools/godot-dev/launch.mjs --experience=lobby --endpoint=ws://127.0.0.1:PORT
   node tools/godot-dev/launch.mjs --experience=zones --map=meridian-exchange --mode=domination
   node tools/godot-dev/launch.mjs --experience=zones --map=verdant-reliquary --mode=koth
@@ -283,6 +297,10 @@ Lobby: explicit Host/Create or Guest/Join, roster and host-only Start/Restart.
   Guests select the expected host map. Escape exposes Leave match.
 
 Combat: --map, --mode, --setup, --mute, --debug-hud, --native-trace
+Campaign: The Quiet Relay, four linked solo chapters. --map selects the starting
+  chapter: rootfall-verge, siltwake-crossing, emberline-ascent or crown-array.
+  --mode=campaign; --difficulty=easy|normal|hard (default normal).
+  Owned loopback authority only; --smoke and --diagnostics supported.
 Native DM: prism-foundry (default), aurora-basin, cinder-array, lacuna-court,
   vermilion-fold, nacre-engine; Deathmatch only.
   Owned local loopback authority, one human plus --bots=1..24 (default 2).

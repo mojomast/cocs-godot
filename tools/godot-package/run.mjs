@@ -24,7 +24,9 @@ async function runRoute(plan, env) {
   if (debug) process.env.COCS_DEBUG = '1';
   // These paths are relative to this artifact, never to the caller's cwd/repo.
   // Native-only scenes and external lobby never import local authority adapters.
-  const factory = plan.nativeOnly || plan.endpoint ? null : plan.nativeArena
+  const factory = plan.nativeOnly || plan.endpoint ? null : plan.campaign
+    ? (await import('./runtime/port/native-campaign/authority.mjs')).createAuthority
+    : plan.nativeArena
     ? (await import('./runtime/port/native-arenas/authority.mjs')).createNativeArenaAuthority
     : plan.identityZone
     ? (await import('./runtime/port/native-identity-zones/authority.mjs')).createIdentityZoneAuthority
@@ -53,7 +55,7 @@ async function runRoute(plan, env) {
   process.on('SIGINT', interrupt); process.on('SIGTERM', terminate);
    try {
      career=acquireCareer(plan,env);Object.assign(childEnv,career.env);
-     game = await factory?.(plan.nativeArena ? {port:0, host:'127.0.0.1', mapId:plan.map, mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds} : plan.identityZone ? {port:0, host:'127.0.0.1', mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds, fragLimit:plan.scoreLimit} : plan.experience === 'horde' ? {} : {historyPath:career.historyPath, progressionPath:career.progressionPath});
+     game = await factory?.(plan.campaign ? {mapId:plan.map, difficulty:plan.difficulty} : plan.nativeArena ? {port:0, host:'127.0.0.1', mapId:plan.map, mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds} : plan.identityZone ? {port:0, host:'127.0.0.1', mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds, fragLimit:plan.scoreLimit} : plan.experience === 'horde' ? {} : {historyPath:career.historyPath, progressionPath:career.progressionPath});
     game?.server?.on('error', serverError);
      let endpoint = plan.endpoint;
      if (game) {
@@ -71,7 +73,8 @@ async function runRoute(plan, env) {
       const port = Number(owned.port);
       const health = await fetch(`http://127.0.0.1:${port}/`, {signal:AbortSignal.timeout(5000)});
       const status = await health.json();
-      const identity = plan.nativeArena ? status?.localOnly === true
+      const identity = plan.campaign ? status?.service === 'cocs-native-campaign' && status.localOnly === true
+        : plan.nativeArena ? status?.localOnly === true
         : plan.identityZone ? status?.localOnly === true && status?.mode === 'domination'
         : plan.experience === 'horde'
         ? status?.service === 'cocs-local-horde' && status.transport === 1 && status.localOnly === true
@@ -79,7 +82,8 @@ async function runRoute(plan, env) {
       if (!health.ok || status?.port !== port || !identity) throw Error('Owned server health check failed');
       if (stopping) return signalCode || 1;
       console.log('PACKAGE_SERVER_READY ' + JSON.stringify({pid:process.pid, host:'127.0.0.1', port, experience:plan.experience, map:plan.map, mode:plan.mode, health:status}));
-      const ownedPath = plan.nativeArena && owned.pathname === '/native-arenas' ? '/native-arenas'
+      const ownedPath = plan.campaign ? '/native-campaign'
+        : plan.nativeArena && owned.pathname === '/native-arenas' ? '/native-arenas'
         : plan.identityZone && owned.pathname === '/native-zones' ? '/native-zones' : '';
        endpoint = `ws://127.0.0.1:${port}${ownedPath}`;
     } else if (plan.nativeOnly) {

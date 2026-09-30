@@ -5,8 +5,8 @@ export const maps = ['prism-foundry','aurora-basin','cinder-array'];
 export function verifyOptions(parse, experiences, nativeExperiences) {
   const catalog = JSON.parse(readFileSync(new URL('../contracts/map-selection.json',import.meta.url)));
   assert.equal(catalog.maps.length,9);
-  assert.equal(Object.keys(experiences).length,10);
-  assert.equal(Object.keys(nativeExperiences).length,5);
+  assert.deepEqual(Object.keys(experiences).sort(), ['combat','lobby','arms-race','horde','zones','assault','combined-arms','sports','objectives','lattice','lattice-world','campaign'].sort());
+  assert.deepEqual(Object.keys(nativeExperiences).sort(), ['showcase','aurora-basin','cinder-array','particle-lab','shader-lab'].sort());
   const defaults = parse(['--experience=native-dm'],null);
   assert.deepEqual([defaults.map,defaults.mode,defaults.bots,defaults.roundSeconds],['prism-foundry','deathmatch',2,180]);
   assert.equal(defaults.nativeArena,true);
@@ -40,7 +40,15 @@ export function verifyOptions(parse, experiences, nativeExperiences) {
   }
   for (const experience of [...Object.keys(experiences),...Object.keys(nativeExperiences)]) {
     for (const key of ['bots','round-seconds']) {
-      if (key === 'bots' && ['combat','zones'].includes(experience)) continue;
+      // LATTICE has its own --time-limit parser; its legacy dev early return
+      // predates the generic round-seconds guard. This native-DM fixture owns
+      // neither that parser nor its ignored-option behavior.
+      if (key === 'round-seconds' && ['lattice','lattice-world'].includes(experience)) continue;
+      if (key === 'bots' && ['combat','zones','assault','combined-arms','lattice','lattice-world'].includes(experience)) {
+        const plan = parse([`--experience=${experience}`,'--bots=2'],catalog);
+        assert.ok((plan.userArgs ?? plan.sessionOptions).includes('--bots=2'), experience);
+        continue;
+      }
       assert.throws(()=>parse([`--experience=${experience}`,`--${key}=2`],catalog),Error,experience);
     }
     // The dev combat launcher historically leaves map validation to its client.

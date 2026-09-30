@@ -18,9 +18,11 @@ echo G. New maps, shaders and particle experiments
 echo D. Native Deathmatch - Prism, Aurora, Cinder, Lacuna, Vermilion, Nacre, Canopy, Basalt
 echo C. Domination - Vermilion Fold capture zones
 echo X. Cheats and debug panel
+echo Q. The Quiet Relay campaign
 echo 0. Exit
-choice /c 123456789GDCX0 /n /m "Choose a demo: "
-if errorlevel 14 exit /b 0
+choice /c 123456789GDCXQ0 /n /m "Choose a demo: "
+if errorlevel 15 exit /b 0
+if errorlevel 14 goto campaign
 if errorlevel 13 goto cheats
 if errorlevel 12 goto domination
 if errorlevel 11 goto native_dm
@@ -70,4 +72,7 @@ call "%~dp0Domination.cmd"
 goto menu
 :cheats
 call "%~dp0Cheats.cmd"
+goto menu
+:campaign
+call "%~dp0Campaign.cmd"
 goto menu

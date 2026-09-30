@@ -80,11 +80,98 @@
     "basalt-reach": {
       "name": "Basalt Reach"
     },
+    "rootfall-verge": {
+      "name": "Rootfall Verge"
+    },
+    "siltwake-crossing": {
+      "name": "Siltwake Crossing"
+    },
+    "emberline-ascent": {
+      "name": "Emberline Ascent"
+    },
+    "crown-array": {
+      "name": "Crown Array"
+    },
     "cinderwake-drydock": {
       "name": "Cinderwake Drydock (Preview)"
     }
   },
   "routes": [
+    {
+      "id": "campaign",
+      "category": "play",
+      "label": "The Quiet Relay",
+      "description": "Four linked solo chapters through forest ravines and canyon relay works, against security robots",
+      "flags": [
+        "--experience=campaign"
+      ],
+      "params": [
+        {
+          "key": "map",
+          "kind": "choice",
+          "label": "Chapter",
+          "values": [
+            "rootfall-verge",
+            "siltwake-crossing",
+            "emberline-ascent",
+            "crown-array"
+          ],
+          "default": "rootfall-verge"
+        },
+        {
+          "key": "difficulty",
+          "kind": "choice",
+          "label": "Difficulty",
+          "values": [
+            "easy",
+            "normal",
+            "hard"
+          ],
+          "default": "normal"
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics overlay (F11)",
+          "default": false
+        }
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": false
+        },
+        "scope": {
+          "maps": [
+            "crown-array",
+            "emberline-ascent",
+            "rootfall-verge",
+            "siltwake-crossing"
+          ],
+          "modes_by_map": {
+            "crown-array": [
+              "campaign"
+            ],
+            "emberline-ascent": [
+              "campaign"
+            ],
+            "rootfall-verge": [
+              "campaign"
+            ],
+            "siltwake-crossing": [
+              "campaign"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "rootfall-verge",
+          "mode": "campaign"
+        }
+      }
+    },
     {
       "id": "combat",
       "category": "play",

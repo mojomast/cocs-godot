@@ -23,8 +23,10 @@ const localRosterAdapters = ['port/native-menu-debug-bots/debug-frame.mjs',
 // adapter and static catalog, exactly like the native-arena family.
 const identityZoneAdapters = ['port/native-identity-zones/authority.mjs',
   'port/native-identity-zones/match.mjs', 'port/native-identity-zones/catalog.mjs'];
+const campaignAdapters = ['authority','maps','match','missions','enemies','schema']
+  .map(name => `port/native-campaign/${name}.mjs`);
 const adapters = [...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters,
-  ...localRosterAdapters, ...identityZoneAdapters];
+  ...localRosterAdapters, ...identityZoneAdapters, ...campaignAdapters];
 // Explicit dynamic data-read manifest: the builder hashes committed bytes and
 // copies these paths under runtime/, preserving catalog.mjs URL resolution.
 // `dataFiles` stays the original native-arena family (existing consumers);
@@ -60,7 +62,11 @@ const nativeArenaEntry = nativeArenaAdapters[0];
 const nativeArena = existsSync(resolve(root, nativeArenaEntry)) ? discover(nativeArenaEntry) : null;
 const identityZoneEntry = identityZoneAdapters[0];
 const identityZones = existsSync(resolve(root, identityZoneEntry)) ? discover(identityZoneEntry) : null;
-const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules};
+const campaignEntry = campaignAdapters[0];
+const campaign = existsSync(resolve(root, campaignEntry)) ? discover(campaignEntry) : null;
+const campaignDataFiles = campaign ? ['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array']
+  .map(id => `godot/campaign/generated/${id}.json`) : [];
+const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules, ...campaign?.modules};
 const dataFiles = nativeArena ? nativeArenaData : [];
 const identityDataFiles = nativeArena || identityZones ? identityArenaData : [];
 const hordeDataFiles = Object.hasOwn(horde.modules,'port/native-horde/cinderwake-schema.mjs') ? ['godot/horde_maps/generated/cinderwake-drydock.json'] : [];
@@ -68,16 +74,17 @@ const sorted = value => Object.fromEntries(Object.entries(value).sort());
 const sourceModules = {}, adapterModules = {};
 for (const [path, dependencies] of Object.entries(all)) (adapters.includes(path) ? adapterModules : sourceModules)[path] = dependencies;
 console.log(JSON.stringify({entry:'server/game-server.mjs', hordeEntry:hordeAdapters[0], nativeArenaEntry,
-  identityZoneEntry,
+  identityZoneEntry, campaignEntry,
   modules:sorted(sourceModules), adapterModules:sorted(adapterModules), external:ordinary.external,
-  dataFiles, identityDataFiles, hordeDataFiles,
+  dataFiles, identityDataFiles, hordeDataFiles, campaignDataFiles,
   dataReads:Object.fromEntries([
+    ...(campaign ? [['port/native-campaign/maps.mjs', campaignDataFiles]] : []),
     ...(nativeArena ? [['port/native-arenas/catalog.mjs', [...dataFiles, ...identityDataFiles]]] : []),
     ...(identityZones ? [['port/native-identity-zones/catalog.mjs', [...identityDataFiles]]] : []),
     ...(hordeDataFiles.length ? [['port/native-horde/cinderwake-schema.mjs', hordeDataFiles]] : []),
   ]),
   routes:{ordinary:Object.keys(ordinary.modules).sort(), horde:Object.keys(horde.modules).sort(), nativeArena:Object.keys(nativeArena?.modules ?? {}).sort(),
-    identityZones:Object.keys(identityZones?.modules ?? {}).sort()},
+    identityZones:Object.keys(identityZones?.modules ?? {}).sort(), campaign:Object.keys(campaign?.modules ?? {}).sort()},
   nativeArenaAdditionalSource:Object.keys(nativeArena?.modules ?? {}).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p)).sort(),
   identityZoneAdditionalSource:Object.keys(identityZones?.modules ?? {}).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p) && !Object.hasOwn(horde.modules,p)).sort(),
   hordeAdditionalSource:Object.keys(horde.modules).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p)).sort()}, null, 2));

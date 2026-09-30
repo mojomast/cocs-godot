@@ -26,6 +26,10 @@ export const CATEGORIES = [
 // native arenas (which include the three identity maps). Catalog maps resolve
 // their `name` field directly and must never be duplicated here.
 export const MAP_NAMES = {
+  'rootfall-verge': 'Rootfall Verge',
+  'siltwake-crossing': 'Siltwake Crossing',
+  'emberline-ascent': 'Emberline Ascent',
+  'crown-array': 'Crown Array',
   'prism-foundry':  'Prism Foundry',
   'aurora-basin':   'Aurora Basin',
   'cinder-array':   'Cinder Array',
@@ -98,6 +102,14 @@ const latticeParams = () => ([
 // then table order inside each category).
 export const ROUTES = [
   // --- play ---
+  {
+    id: 'campaign', category: 'play', label: 'The Quiet Relay',
+    description: 'Four linked solo chapters through forest ravines and canyon relay works, against security robots',
+    params: [
+      {key:'map', kind:'choice', label:'Chapter', values:['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array'], default:'rootfall-verge'},
+      {key:'difficulty', kind:'choice', label:'Difficulty', values:['easy','normal','hard'], default:'normal'},
+    ],
+  },
   {
     id: 'combat', category: 'play',
     label: 'Combat',

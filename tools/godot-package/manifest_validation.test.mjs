@@ -27,7 +27,7 @@ for (const path of all) (path.startsWith('port/') ? adapterModules : modules)[pa
 const family = dir => existsSync(join(root, dir)) ? readdirSync(join(root, dir)).filter(name => name.endsWith('.json')).sort().map(name => dir + '/' + name) : [];
 console.log(JSON.stringify({entry: 'server/game-server.mjs', modules, adapterModules,
   dataFiles: family('godot/native_arenas/generated'), identityDataFiles: family('godot/identity_maps/generated'),
-  hordeDataFiles: family('godot/horde_maps/generated')}));
+  hordeDataFiles: family('godot/horde_maps/generated'), campaignDataFiles: family('godot/campaign/generated')}));
 `;
 
 const HELPERS = {
@@ -79,7 +79,7 @@ function inventory(dir) {
 }
 
 function buildFixture({
-  target = 'linux', derivative = false, data = false, hordeData = false,
+  target = 'linux', derivative = false, data = false, hordeData = false, campaignData = false,
   derivativeAdded = null, extraSource = {}, extraTestModule = null,
   dropAddedFromContract = false, contractSourceCommitOverride = null,
 } = {}) {
@@ -106,14 +106,16 @@ function buildFixture({
   const adapterFiles = {'port/native-horde/authority.mjs': "import '../../game/cocs.mjs';\n"};
   const dataFiles = data ? {'godot/native_arenas/generated/prism-foundry.json': '{"ok":true}\n'} : {};
   const hordeDataFiles = hordeData ? {'godot/horde_maps/generated/cinderwake-drydock.json': '{"map":"cinderwake"}\n'} : {};
+  const campaignDataFiles = campaignData ? Object.fromEntries(['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array'].map(id => [`godot/campaign/generated/${id}.json`, JSON.stringify({id})+'\n'])) : {};
   // A reviewed derivative may add a source module, not only modify locked files.
   const addedModules = derivativeAdded ? {[derivativeAdded]: 'export const stages = [];\n'} : {};
 
-  for (const [path, content] of Object.entries({...sourceFiles, ...adapterFiles, ...dataFiles, ...hordeDataFiles})) {
+  for (const [path, content] of Object.entries({...sourceFiles, ...adapterFiles, ...dataFiles, ...hordeDataFiles, ...campaignDataFiles})) {
     write(repo, path, content);
   }
   for (const [name, content] of Object.entries(HELPERS)) write(repo, `tools/godot-package/${name}`, content);
   for (const [name, content] of Object.entries(COMMANDS)) write(repo, `tools/godot-package/${name}`, content);
+  if (campaignData) write(repo, 'tools/godot-package/Campaign.cmd', 'node run.mjs --experience=campaign\n');
   write(repo, 'port/contracts/map-selection.json', '{}\n');
   write(repo, 'port/native-linux-package/PLAY.md', 'linux readme\n');
   write(repo, 'port/native-windows-package/PLAY.md', 'windows readme\n');
@@ -172,6 +174,7 @@ function buildFixture({
   write(packageDir, 'licenses/Godot-COPYRIGHT.txt', 'godot copyright\n');
   const launcherSet = target === 'windows' ? Object.keys(COMMANDS) : ['Domination.sh', 'Cheats.sh'];
   if (target === 'windows') {
+    if (campaignData) write(packageDir, 'Campaign.cmd', crlf(show(portCommit, 'tools/godot-package/Campaign.cmd').toString('utf8')));
     write(packageDir, 'node.exe', 'node-binary\n');
     write(packageDir, 'licenses/Node-LICENSE.txt', 'node license\n');
     for (const name of Object.keys(COMMANDS)) {
@@ -185,7 +188,7 @@ function buildFixture({
   const sourceModules = [...Object.keys(sourceFiles), ...Object.keys(addedModules)];
   for (const path of sourceModules) write(packageDir, `runtime/${path}`, show(revisionFor(path), path));
   for (const path of Object.keys(adapterFiles)) write(packageDir, `runtime/${path}`, show(portCommit, path));
-  for (const path of [...Object.keys(dataFiles), ...Object.keys(hordeDataFiles)]) write(packageDir, `runtime/${path}`, show(portCommit, path));
+  for (const path of [...Object.keys(dataFiles), ...Object.keys(hordeDataFiles), ...Object.keys(campaignDataFiles)]) write(packageDir, `runtime/${path}`, show(portCommit, path));
   write(packageDir, 'runtime/node_modules/ws/LICENSE', 'ws license\n');
   write(packageDir, 'runtime/node_modules/ws/package.json', '{"name":"ws"}\n');
   write(packageDir, 'runtime/node_modules/ws/index.js', 'module.exports = {};\n');
@@ -209,6 +212,7 @@ function buildFixture({
       dataFiles: Object.keys(dataFiles),
       identityDataFiles: [],
       hordeDataFiles: Object.keys(hordeDataFiles),
+      ...(campaignData ? {campaignDataFiles:Object.keys(campaignDataFiles)} : {}),
       external: ['ws'],
     },
     source_runtime_sha256: Object.fromEntries(sourceModules
@@ -219,6 +223,8 @@ function buildFixture({
       .map(path => [path, sha256(readFileSync(join(packageDir, 'runtime', ...path.split('/'))))])),
     horde_map_data_sha256: Object.fromEntries(Object.keys(hordeDataFiles)
       .map(path => [path, sha256(readFileSync(join(packageDir, 'runtime', ...path.split('/'))))])),
+    ...(campaignData ? {campaign_data_sha256:Object.fromEntries(Object.keys(campaignDataFiles)
+      .map(path => [path, sha256(readFileSync(join(packageDir, 'runtime', ...path.split('/'))))]))} : {}),
     source_derivative_commit: derivative ? derivativeCommit : null,
     source_derivative_sha256: derivative
       ? sha256(readFileSync(join(repo, 'port/contracts/lattice-catalog-derivative.json'))) : null,
@@ -486,6 +492,29 @@ test('an absent hordeDataFiles closure field stays valid on the baseline', () =>
   delete fixture.manifest.horde_map_data_sha256;
   fixture.save();
   assert.equal(validateArtifact({packageDir: fixture.packageDir, repoRoot: fixture.repo}).horde_data_files, 0);
+}));
+
+for (const target of ['linux','windows']) test(`${target}: campaign data family is shipped and anchored`, () => withFixture({target,campaignData:true}, fixture => {
+  assert.equal(validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}).campaign_data_files,4);
+}));
+
+test('campaign data tampering fails despite refreshed file hashes', () => withFixture({campaignData:true}, fixture => {
+  write(fixture.packageDir,'runtime/godot/campaign/generated/rootfall-verge.json','{"tampered":true}\n');
+  refreshInventory(fixture);
+  fails(() => validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}), /Runtime data differs from port_commit/);
+}));
+
+test('omitting a campaign chapter from every inventory fails committed discovery', () => withFixture({campaignData:true}, fixture => {
+  const path='godot/campaign/generated/crown-array.json';
+  unlinkSync(join(fixture.packageDir,'runtime',path));
+  fixture.manifest.server_closure.campaignDataFiles=fixture.manifest.server_closure.campaignDataFiles.filter(p=>p!==path);
+  delete fixture.manifest.campaign_data_sha256[path];
+  refreshInventory(fixture);
+  fails(() => validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}), /Committed discovery campaign data files/);
+}));
+
+test('older manifests without campaign fields continue to validate', () => withFixture({}, fixture => {
+  assert.equal(validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}).campaign_data_files,0);
 }));
 
 test('validation is independent of the caller working directory', () => withFixture({}, fixture => {

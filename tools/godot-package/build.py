@@ -136,10 +136,13 @@ def main():
     # Optional discovery family introduced by the Cinderwake lane. Absent on the
     # baseline discover.mjs, so an empty list is valid there.
     horde_data = closure.get("hordeDataFiles", [])
+    campaign_data = closure.get("campaignDataFiles", [])
+    allowed_campaign_data = {f"godot/campaign/generated/{name}.json" for name in ["rootfall-verge", "siltwake-crossing", "emberline-ascent", "crown-array"]}
     allowed_arena_data = {f"godot/native_arenas/generated/{name}.json" for name in ["prism-foundry", "aurora-basin", "cinder-array"]}
     allowed_identity_data = {f"godot/identity_maps/generated/{name}.json" for name in ["lacuna-court", "vermilion-fold", "nacre-engine", "canopy-divide", "basalt-reach"]}
     for label, declared, allowed in [("native-arena", arena_data, allowed_arena_data),
-                                     ("identity-map", identity_data, allowed_identity_data)]:
+                                     ("identity-map", identity_data, allowed_identity_data),
+                                     ("campaign", campaign_data, allowed_campaign_data)]:
         if (not isinstance(declared, list) or any(not isinstance(p, str) or p not in allowed for p in declared)
                 or len(declared) != len(set(declared))):
             raise RuntimeError(f"Unexpected {label} data closure")
@@ -153,10 +156,14 @@ def main():
         if set(arena_data) != allowed_arena_data or set(identity_data) != allowed_identity_data:
             raise RuntimeError("Native deathmatch adapter requires all six committed arena data files")
     input_paths = set(closure["modules"])
+    if any(p.startswith("port/native-campaign/") for p in closure["adapterModules"]):
+        if set(campaign_data) != allowed_campaign_data:
+            raise RuntimeError("Campaign adapter requires all four committed chapter data files")
     input_paths.update(closure["adapterModules"])
     input_paths.update(arena_data)
     input_paths.update(identity_data)
     input_paths.update(horde_data)
+    input_paths.update(campaign_data)
     input_paths.update(["package.json", "package-lock.json", "port/contracts/source-lock.json", "port/contracts/map-selection.json", "tools/godot-export/semantic.mjs"])
     if derivative:
         input_paths.add("port/contracts/lattice-catalog-derivative.json")
@@ -214,7 +221,7 @@ def main():
             raise RuntimeError(f"Runtime source differs from lock: {p}")
     # Port-owned adapters and data have separate provenance, never source-lock
     # exemptions. Require committed reviewed bytes; record exact hashes.
-    port_owned = [*closure["adapterModules"], *arena_data, *identity_data, *horde_data]
+    port_owned = [*closure["adapterModules"], *arena_data, *identity_data, *horde_data, *campaign_data]
     if career_catalog in input_paths:
         port_owned.append(career_catalog)
     if finish_catalog in input_paths:
@@ -276,7 +283,7 @@ advanced_options=false
 dedicated_server=false
 custom_features="private_local_prototype"
 export_filter="all_resources"
-include_filter="content/generated/*.json,content/generated/maps/*/*.json,moth/generated/*.json,moth/derived/*.json,first_person/*.json,first_person/generated/*.json,native_arenas/generated/*.json,identity_maps/generated/*.json,horde_maps/generated/*.json,career/*.json,ui/*.json,audio/music/*.json,audio/announcer/*.json,audio/moth/*.json"
+include_filter="content/generated/*.json,content/generated/maps/*/*.json,moth/generated/*.json,moth/derived/*.json,first_person/*.json,first_person/generated/*.json,native_arenas/generated/*.json,identity_maps/generated/*.json,horde_maps/generated/*.json,campaign/generated/*.json,career/*.json,ui/*.json,audio/music/*.json,audio/announcer/*.json,audio/moth/*.json"
 exclude_filter="tests/*,content/probes/*"
 export_path=""
 script_export_mode=2
@@ -304,7 +311,7 @@ ssh_remote_deploy/enabled=false
         raise RuntimeError("Expected separate PCK")
     if not windows and run([package / executable, "--version"], env=env) != EXACT:
         raise RuntimeError("Exported runtime exact version mismatch")
-    for p in [*closure["modules"], *closure["adapterModules"], *arena_data, *identity_data, *horde_data]:
+    for p in [*closure["modules"], *closure["adapterModules"], *arena_data, *identity_data, *horde_data, *campaign_data]:
         copy(ROOT / p, package / "runtime" / p)
 
     # Fetch only the already-locked ordinary ws dependency. No npm/install scripts.
@@ -354,7 +361,7 @@ ssh_remote_deploy/enabled=false
             (package / "node.exe").write_bytes(archive.read(prefix + "node.exe"))
             (notices / "Node-LICENSE.txt").write_bytes(archive.read(prefix + "LICENSE"))
         bundled_node = {"version":NODE_VERSION, "url":node_base + node_name, "archive_sha256":NODE_WINDOWS_SHA256, "executable_sha256":digest(package / "node.exe")}
-        for name in ["Play.cmd", "Demo Menu.cmd", "Operator Preview.cmd", "Graphics Showcase.cmd", "Native Deathmatch.cmd", "Domination.cmd", "Cheats.cmd"]:
+        for name in ["Play.cmd", "Demo Menu.cmd", "Campaign.cmd", "Operator Preview.cmd", "Graphics Showcase.cmd", "Native Deathmatch.cmd", "Domination.cmd", "Cheats.cmd"]:
             (package / name).write_bytes((ROOT / "tools/godot-package" / name).read_text().replace("\r\n", "\n").replace("\n", "\r\n").encode())
     else:
         # Linux parity: the same reviewed entry points as shell scripts, copied with
@@ -368,7 +375,7 @@ ssh_remote_deploy/enabled=false
     # `settings_path.mjs` is the shared menu/route preference-path helper; a
     # missing entry point must fail the build, never ship a partial surface.
     launchers = [*launcher_helpers, "catalog.json", "README.md",
-                 *(["Play.cmd", "Demo Menu.cmd", "Operator Preview.cmd", "Graphics Showcase.cmd", "Native Deathmatch.cmd", "Domination.cmd", "Cheats.cmd"] if windows else ["Domination.sh", "Cheats.sh"])]
+                 *(["Play.cmd", "Demo Menu.cmd", "Campaign.cmd", "Operator Preview.cmd", "Graphics Showcase.cmd", "Native Deathmatch.cmd", "Domination.cmd", "Cheats.cmd"] if windows else ["Domination.sh", "Cheats.sh"])]
     for name in launchers:
         if not (package / name).is_file():
             raise RuntimeError(f"Launcher surface file missing: {name}")
@@ -408,6 +415,7 @@ ssh_remote_deploy/enabled=false
         "native_arena_data_sha256":{p:inputs[p] for p in arena_data},
         "identity_arena_data_sha256":{p:inputs[p] for p in identity_data},
         "horde_map_data_sha256":{p:inputs[p] for p in horde_data},
+        "campaign_data_sha256":{p:inputs[p] for p in campaign_data},
         "generated_resources_sha256":tree_hash(resources), "staged_export_preset":preset,
         "launchers":launchers,
         "files":tree(package),

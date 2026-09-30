@@ -11,8 +11,8 @@ const nativeMaps = ['prism-foundry', 'aurora-basin', 'cinder-array'];
 // reviewed local 1..24 roster and must test that contract directly instead of
 // changing expectations for the independent standalone launcher.
 test('package Native DM accepts real local 1..24 bot launches on reviewed arenas', () => {
-  assert.equal(Object.keys(EXPERIENCES).length, 11);
-  assert.equal(Object.keys(NATIVE_EXPERIENCES).length, 5);
+  assert.deepEqual(Object.keys(EXPERIENCES).sort(), ['combat','lobby','arms-race','horde','zones','assault','combined-arms','sports','objectives','lattice','lattice-world','campaign'].sort());
+  assert.deepEqual(Object.keys(NATIVE_EXPERIENCES).sort(), ['showcase','aurora-basin','cinder-array','particle-lab','shader-lab'].sort());
   const defaults = options(['--experience=native-dm'], catalog);
   assert.deepEqual([defaults.map, defaults.mode, defaults.bots, defaults.roundSeconds],
     ['prism-foundry', 'deathmatch', 2, 180]);

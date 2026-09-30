@@ -40,7 +40,7 @@ function validIdentities(value,legacy,scope){
 // exists; crashed processes leave a reclaimable PID lease.
 export function acquireCareer(plan,env=process.env,options={}){
  const paths=careerPaths(env,options);
- const owned=!plan.nativeOnly&&!plan.endpoint&&!plan.nativeArena&&!plan.identityZone&&plan.experience!=='horde';
+ const owned=!plan.nativeOnly&&!plan.endpoint&&!plan.nativeArena&&!plan.identityZone&&!plan.campaign&&plan.experience!=='horde';
   const scope=owned?'owned:source-v3':plan.endpoint?`external:${new URL(plan.endpoint).href}`:null;
   if(!scope)return {env:{COCS_CAREER_CREDENTIALS_PATH:'',COCS_CAREER_SCOPE:'',COCS_CAREER_ENDPOINT:''},progressionPath:null,historyPath:null,release(){}};
   privateDirectory(paths.root);

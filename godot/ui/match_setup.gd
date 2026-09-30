@@ -51,7 +51,7 @@ static func validate(maps: Dictionary, map_id: String, mode: String) -> String:
 	var route: String = STANDALONE.get(map_id, {}).get(mode, "")
 	if not route.is_empty():
 		return "Separate demo. Close this window and relaunch with:\n--experience=%s --map=%s --mode=%s" % [route, map_id, mode]
-	if mode == "campaign": return "Campaign remake deferred for planning and research."
+	if mode == "campaign": return "Play The Quiet Relay from the main menu: four linked campaign chapters."
 	if map_id not in MAPS: return "Native gameplay pending for " + map_id
 	if mode not in MODES: return "Native mode pending: " + mode
 	return ""
@@ -333,7 +333,7 @@ func populate_modes(preferred: String = DEFAULT_MODE) -> void:
 		var pending := selected_map() not in MAPS or mode not in MODES
 		var suffix := ""
 		if pending:
-			suffix = " — separate demo" if STANDALONE.get(selected_map(), {}).has(mode) else (" — deferred" if mode == "campaign" else " — pending")
+			suffix = " — separate demo" if STANDALONE.get(selected_map(), {}).has(mode) else (" — main menu" if mode == "campaign" else " — pending")
 		mode_choice.add_item(MODE_NAMES.get(mode, mode.capitalize()) + suffix)
 		mode_choice.set_item_metadata(mode_choice.item_count - 1, mode)
 		if mode == preferred: mode_choice.select(mode_choice.item_count - 1)

@@ -27,7 +27,7 @@ const defaultOut = fileURLToPath(new URL('../../godot/ui/routes.json', import.me
 // has a single owner. Maps/modes are candidate inputs only; membership is
 // observed from actual plans (see route_capabilities.mjs).
 const CAPABILITY_CANDIDATES = {
-  maps: candidateMaps(catalog, [...NATIVE_ARENA_MAPS, ...Object.keys(EXPERIENCES.horde.identity ?? {})]),
+  maps: candidateMaps(catalog, [...NATIVE_ARENA_MAPS, ...Object.keys(EXPERIENCES.campaign.maps), ...Object.keys(EXPERIENCES.horde.identity ?? {})]),
   modes: candidateModes(EXPERIENCES),
 };
 const capabilityByExperience = new Map();
@@ -135,8 +135,8 @@ const buildParams = route => {
 };
 
 const buildRegistry = () => {
-  assert.equal(ROUTES.length, 23, 'original 22 destinations plus Assault');
-  assert.equal(new Set(ROUTES.map(route => route.id)).size, 23, 'route ids must be unique');
+  assert.equal(ROUTES.length, 24, 'existing 23 destinations plus Campaign');
+  assert.equal(new Set(ROUTES.map(route => route.id)).size, 24, 'route ids must be unique');
   const categoryIds = new Set(CATEGORIES.map(category => category.id));
   const mapIds = new Set(catalog.maps.map(map => map.id));
 
@@ -219,7 +219,7 @@ const buildRegistry = () => {
     assert.ok(entry.name, `${entry.id}: catalog entry has no display name`);
     maps[entry.id] = {name: entry.name};
   }
-  for (const id of new Set([...NATIVE_ARENA_MAPS, ...Object.keys(EXPERIENCES.horde.identity ?? {})])) {
+  for (const id of new Set([...NATIVE_ARENA_MAPS, ...Object.keys(EXPERIENCES.campaign.maps), ...Object.keys(EXPERIENCES.horde.identity ?? {})])) {
     assert.ok(MAP_NAMES[id], `${id}: missing display name in routes_meta MAP_NAMES`);
     maps[id] = {name: MAP_NAMES[id]};
   }

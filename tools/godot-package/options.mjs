@@ -6,6 +6,7 @@ export const HORDE_OPERATORS = Object.freeze(['chatgpt','claude','grok','meta','
 export const HORDE_HARNESSES = Object.freeze(['openclaw','hermes','opencode','claudecode','codex','cline','roo']);
 const validHordeLoadout = (character,harness) => HORDE_OPERATORS.includes(character) && HORDE_HARNESSES.includes(harness) && (character !== 'claude' || harness === 'claudecode');
 export const EXPERIENCES = {
+  campaign: {scene:'res://campaign/demo.tscn', maps:Object.fromEntries(['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array'].map(id => [id,['campaign']]))},
   combat: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   lobby: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   'arms-race': {scene:'res://arms_race/demo.tscn', maps:{'meridian-exchange':['armsrace'], 'verdant-reliquary':['armsrace'], 'ember-crucible':['armsrace']}},
@@ -41,7 +42,7 @@ export function options(argv, catalog) {
   const values = {}, flags = new Set();
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['experience','map','mode','endpoint','join-room','wait-for-players','rung','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(k => arg === `--${k}` || arg.startsWith(`--${k}=`));
+    const key = ['experience','map','mode','difficulty','endpoint','join-room','wait-for-players','rung','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(k => arg === `--${k}` || arg.startsWith(`--${k}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       const maxLength = key === 'endpoint' ? 2048 : 64;
@@ -59,6 +60,16 @@ export function options(argv, catalog) {
   if (!['lattice', 'lattice-world', 'combined-arms'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires lattice-world or combined-arms');
   if (!['lattice', 'lattice-world'].includes(experience) && values.rung !== undefined) throw Error('--rung requires lattice-world');
   const diagnostics = flags.has('--diagnostics') ? ['--diagnostics'] : [];
+  if (values.difficulty !== undefined && experience !== 'campaign') throw Error('--difficulty requires campaign');
+  if (experience === 'campaign') {
+    for (const key of Object.keys(values)) if (!['experience','map','mode','difficulty'].includes(key)) throw Error(`--${key} is not supported by campaign`);
+    for (const flag of flags) if (!['--smoke','--diagnostics'].includes(flag)) throw Error(`${flag} is not supported by campaign`);
+    const map = values.map ?? 'rootfall-verge', mode = values.mode ?? 'campaign', difficulty = values.difficulty ?? 'normal';
+    if (!Object.hasOwn(EXPERIENCES.campaign.maps, map) || mode !== 'campaign') throw Error('Unsupported campaign map/mode');
+    if (!['easy','normal','hard'].includes(difficulty)) throw Error('Campaign difficulty must be easy, normal or hard');
+    return {experience, campaign:true, map, mode, difficulty, endpoint:null, scene:EXPERIENCES.campaign.scene,
+      userArgs:[`--map=${map}`,`--mode=${mode}`,`--difficulty=${difficulty}`,...diagnostics,...(flags.has('--smoke') ? ['--smoke'] : [])]};
+  }
   if (experience === 'native-dm') {
     for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds'].includes(key)) throw Error(`--${key} is not supported by native-dm`);
     for (const flag of flags) if (!['--smoke','--debug-panel','--diagnostics'].includes(flag)) throw Error(`${flag} is not supported by native-dm`);
@@ -217,6 +228,7 @@ export const HELP = `COCS native demo — Node >=22.13.0 (bundled on Windows)
   node run.mjs --experience=operator-preview  Operator model preview, no authority
   node run.mjs --experience=combat --play   Native combat host setup
   node run.mjs --experience=lobby            Multiplayer lobby, owned loopback server
+  node run.mjs --experience=campaign --map=rootfall-verge --difficulty=normal
   node run.mjs --experience=lobby --endpoint=ws://127.0.0.1:PORT
   node run.mjs --play --map=meridian-exchange --mode=deathmatch
   node run.mjs --experience=zones --map=meridian-exchange --mode=domination
@@ -269,6 +281,10 @@ Native-only graphics: showcase, aurora-basin, cinder-array, particle-lab, shader
   --map, --mode, --endpoint and source-match controls are rejected.
 
 Combat: 3 combat maps; deathmatch/teamdeathmatch/instagib/rockets.
+Campaign: The Quiet Relay, four linked solo chapters. --map selects the starting
+  chapter: rootfall-verge, siltwake-crossing, emberline-ascent or crown-array.
+  --mode=campaign; --difficulty=easy|normal|hard (default normal).
+  Owned loopback authority only; --smoke and --diagnostics supported.
 Native DM: prism-foundry (default), aurora-basin, cinder-array, lacuna-court,
   vermilion-fold, nacre-engine; Deathmatch only.
   Owned local loopback authority, one human plus --bots=1..24 (default 2).

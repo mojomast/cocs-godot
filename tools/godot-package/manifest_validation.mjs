@@ -214,6 +214,7 @@ function runtimeClosure(manifest) {
   let dataFiles;
   let identityDataFiles;
   let hordeDataFiles;
+  let campaignDataFiles;
 
   if (manifest.server_closure !== undefined) {
     const closure = manifest.server_closure;
@@ -227,6 +228,7 @@ function runtimeClosure(manifest) {
     // Optional discovery family from the Cinderwake lane; absent on older
     // builders and therefore an empty list, never a required field.
     hordeDataFiles = closure.hordeDataFiles ?? [];
+    campaignDataFiles = closure.campaignDataFiles ?? [];
   } else {
     require_(plainObject(manifest.source_runtime_sha256) && Object.keys(manifest.source_runtime_sha256).length > 0,
       'Manifest has neither server_closure nor source_runtime_sha256');
@@ -235,13 +237,16 @@ function runtimeClosure(manifest) {
     dataFiles = Object.keys(manifest.native_arena_data_sha256 ?? {});
     identityDataFiles = Object.keys(manifest.identity_arena_data_sha256 ?? {});
     hordeDataFiles = Object.keys(manifest.horde_map_data_sha256 ?? {});
+    campaignDataFiles = Object.keys(manifest.campaign_data_sha256 ?? {});
   }
 
   for (const path of sourceModules) assertRelPath(path, 'Source module');
   for (const path of sourceModules) require_(SOURCE_MODULE.test(path), `Source module must be game/ or server/: ${path}`);
   for (const path of adapters) assertRelPath(path, 'Adapter module');
   for (const path of adapters) require_(ADAPTER_MODULE.test(path), `Adapter module must be under port/: ${path}`);
-  for (const path of [...dataFiles, ...identityDataFiles, ...hordeDataFiles]) {
+  require_(Array.isArray(campaignDataFiles) && new Set(campaignDataFiles).size === campaignDataFiles.length, 'Invalid campaign data closure');
+  for (const path of campaignDataFiles) require_(/^godot\/campaign\/generated\/(rootfall-verge|siltwake-crossing|emberline-ascent|crown-array)\.json$/.test(path), `Unexpected campaign data file: ${path}`);
+  for (const path of [...dataFiles, ...identityDataFiles, ...hordeDataFiles, ...campaignDataFiles]) {
     assertRelPath(path, 'Runtime data file');
     require_(DATA_FILE.test(path), `Runtime data file must be a godot/ JSON path: ${path}`);
   }
@@ -265,7 +270,10 @@ function runtimeClosure(manifest) {
   if (manifest.horde_map_data_sha256 !== undefined) {
     requireSortedEqual(Object.keys(manifest.horde_map_data_sha256), hordeDataFiles, 'horde_map_data_sha256');
   }
-  return {sourceModules, adapters, dataFiles, identityDataFiles, hordeDataFiles};
+  if (manifest.campaign_data_sha256 !== undefined) {
+    requireSortedEqual(Object.keys(manifest.campaign_data_sha256), campaignDataFiles, 'campaign_data_sha256');
+  }
+  return {sourceModules, adapters, dataFiles, identityDataFiles, hordeDataFiles, campaignDataFiles};
 }
 
 // Every packaged byte must be in the manifest and every manifest byte on disk.
@@ -303,6 +311,7 @@ export function validateTargetStructure(packageDir, identity) {
   ];
   if (target === 'windows') {
     required.push('cocs.exe', 'node.exe', 'licenses/Node-LICENSE.txt', ...WINDOWS_LAUNCHERS);
+    if (identity.campaignDataFiles.length) required.push('Campaign.cmd');
   } else {
     required.push('cocs.x86_64', ...LINUX_LAUNCHERS);
   }
@@ -353,6 +362,7 @@ export function validateRuntimeClosure(packageDir, identity) {
     ...identity.dataFiles.map(path => `runtime/${path}`),
     ...identity.identityDataFiles.map(path => `runtime/${path}`),
     ...identity.hordeDataFiles.map(path => `runtime/${path}`),
+    ...identity.campaignDataFiles.map(path => `runtime/${path}`),
   ];
   const allowed = new Set(closurePaths);
   for (const path of closurePaths) {
@@ -495,6 +505,7 @@ function verifyClosure(repo, identity, derivative) {
   requireSortedEqual(identity.dataFiles, discovered.dataFiles ?? [], 'Committed discovery data files');
   requireSortedEqual(identity.identityDataFiles, discovered.identityDataFiles ?? [], 'Committed discovery identity data files');
   requireSortedEqual(identity.hordeDataFiles, discovered.hordeDataFiles ?? [], 'Committed discovery horde data files');
+  requireSortedEqual(identity.campaignDataFiles, discovered.campaignDataFiles ?? [], 'Committed discovery campaign data files');
 }
 
 function requireSameBytes(repo, commit, sourcePath, actualPath, label) {
@@ -523,7 +534,7 @@ function verifyLauncherSurface(repo, identity, packageDir) {
     }
   } else {
     const crlf = text => text.replace(/\r\n/g, '\n').replace(/\n/g, '\r\n');
-    for (const name of WINDOWS_LAUNCHERS) {
+    for (const name of [...WINDOWS_LAUNCHERS, ...(identity.campaignDataFiles.length || Object.hasOwn(identity.files, 'Campaign.cmd') ? ['Campaign.cmd'] : [])]) {
       const expected = Buffer.from(crlf(gitObjectBytes(repo, commit, `tools/godot-package/${name}`).toString('utf8')), 'utf8');
       require_(readFileSync(join(packageDir, name)).equals(expected), `${name} differs from its committed source`);
     }
@@ -553,7 +564,7 @@ export function verifyGitIdentity(repo, identity, packageDir) {
     const actual = sha256File(join(packageDir, 'runtime', ...path.split('/')));
     require_(expected === actual, `Runtime adapter differs from port_commit: ${path}`);
   }
-  for (const path of [...identity.dataFiles, ...identity.identityDataFiles, ...identity.hordeDataFiles]) {
+  for (const path of [...identity.dataFiles, ...identity.identityDataFiles, ...identity.hordeDataFiles, ...identity.campaignDataFiles]) {
     const expected = gitObjectHash(repo, identity.port_commit, path);
     const actual = sha256File(join(packageDir, 'runtime', ...path.split('/')));
     require_(expected === actual, `Runtime data differs from port_commit: ${path}`);
@@ -600,6 +611,7 @@ export function validateArtifact({packageDir, repoRoot = REPO_ROOT, manifest = n
     data_files: identity.dataFiles.length,
     identity_data_files: identity.identityDataFiles.length,
     horde_data_files: identity.hordeDataFiles.length,
+    campaign_data_files: identity.campaignDataFiles.length,
     ws_files: wsFiles,
   };
 }
