@@ -261,3 +261,12 @@ arena-keyed cache covers operator and puppy placement, with terrain-surface,
 route and anchor identity invalidation. The terrain support grid now invalidates
 with replaced surfaces. All fifteen isolated navigation/story/authority checks
 passed, retaining zero repeated triangle reads and no navigation rebuild on retry.
+
+Orchestral source revision `a91a5a8c` is integrated as `e6dabc10`. **This checkout
+requires the pending generated stem assets before music playback or export.**
+Render with `tools/godot-audiovisual/orchestral_score.py`, validate with
+`orchestral_verify.py`, import, then run the score-form/lifetime tests and the
+actual-engine audition described in `docs/orchestral-score-20260930.md`. The
+parent has instructed the capture-repair lane to finish its current command,
+return its scoped fix/results and release the slot; repeating all old-base
+captures is superseded by the forthcoming full integrated acceptance pass.
