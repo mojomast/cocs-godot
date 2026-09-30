@@ -63,7 +63,7 @@ func run() -> void:
  assert(orchestra.player.playing and orchestra.phase < 1.0)
  score.set_outcome("victory")
  assert(orchestra.mix_targets(score.scene, 1.0, 1.0, 3, 3, score.outcome) == [0.65, 0.0, 0.65, 0.0])
- var weak_player := weakref(orchestra.player)
+ var weak_player: WeakRef = weakref(orchestra.player)
  score.free()
  await create_timer(0.25).timeout
  assert(weak_player.get_ref() == null, "scene cleanup releases synchronized playback")

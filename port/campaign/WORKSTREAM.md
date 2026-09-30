@@ -270,3 +270,25 @@ actual-engine audition described in `docs/orchestral-score-20260930.md`. The
 parent has instructed the capture-repair lane to finish its current command,
 return its scoped fix/results and release the slot; repeating all old-base
 captures is superseded by the forthcoming full integrated acceptance pass.
+
+## Music render and trailer / attract-demo request
+
+The heavy slot returned with capture repair `eae68904`, integrated as `8b1bacbc`.
+Its old-base eight profile runs/82 PNGs passed; later additions remain unverified.
+The parent rendered all four orchestral PCM stems, passed the stem integrity,
+headroom and phase verifier, and completed editor import without errors. The
+first engine score test exposed a strict inferred-Variant warning in its WeakRef
+fixture; an explicit type fixes it. A paced PulseAudio audition and score/lifetime
+checks are running serially; the initial failure is retained.
+
+The owner now also requests a cinematic campaign trailer and main-menu attract
+demo. Astra `campaign/trailer` (`ses_f0b446962ffeoJrAVel3PjJYIz`) owns storyboard,
+actual in-engine capture and music-synced editing/MP4/Theora production. Sol
+`campaign/menu-attract` (`ses_f0b44196bffeLTLjawLXO4kDmZ`) owns background menu
+playback, focus/settings lifecycle and silent-video integration. The owner
+clarified that the demo must play beneath the usable menu, like original COCS:
+no fullscreen takeover, idle delay or input consumption. Both lanes received this
+correction; the menu cut omits promotional title overlays.
+Both initially edit only while music audition holds the heavy slot. The trailer
+must feature terrain, combat, operator NPCs, petting Patch, robots and the finale,
+with authored text overlays and documented scripted in-engine footage.

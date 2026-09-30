@@ -1,0 +1,392 @@
+{
+  "schema": 1,
+  "title": "Relay / Warden",
+  "original_composition": true,
+  "bpm": 80,
+  "bars": 16,
+  "sample_rate": 32000,
+  "frames": 1536000,
+  "composition_sha256": "879fcff3b03b67a25676d48e48eb0c007ca81f13dcd9e4a35c8f432e6d41cbce",
+  "max_adaptive_peak_bound": 0.33793455734860345,
+  "normalization": 1,
+  "stems": [
+    {
+      "id": "strings",
+      "file": "strings.wav",
+      "frames": 1536000,
+      "peak": 0.0987306535243988,
+      "bytes": 6144044,
+      "sha256": "cde44f63a2c6fe5faaf5995ee72f15f846655c572c644d4a91517ed065825525"
+    },
+    {
+      "id": "motion",
+      "file": "motion.wav",
+      "frames": 1536000,
+      "peak": 0.134123295545578,
+      "bytes": 6144044,
+      "sha256": "d9a31831dfa2f4c3726b0cf7a92411f3017d9a9a5e918d52ca055a26858f5bc7"
+    },
+    {
+      "id": "brass",
+      "file": "brass.wav",
+      "frames": 1536000,
+      "peak": 0.1996035873889923,
+      "bytes": 6144044,
+      "sha256": "949009f252382c3ab4d6107403451858fe9395e41a46d6a3143c7c70beaf2653"
+    },
+    {
+      "id": "warden",
+      "file": "warden.wav",
+      "frames": 1536000,
+      "peak": 0.16963909566402435,
+      "bytes": 6144044,
+      "sha256": "cb7e317f7c63570beb9e80e1ca5607fa0be83622c99e014225c2c7a770709053"
+    }
+  ],
+  "sources": [
+    {
+      "id": "strings-pad-cello-c3-p",
+      "file": "samples/strings-pad-cello-c3-p.ogg",
+      "source": "VSCO 2 CE \u2014 Cello Section susvib",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "d56909c678bd69142d4569dcb4dcddae9417631b254462c9f1244dc1ab78adb7"
+    },
+    {
+      "id": "strings-pad-viola-f3-p",
+      "file": "samples/strings-pad-viola-f3-p.ogg",
+      "source": "VSCO 2 CE \u2014 Viola Section susvib",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "7a370fa2561857c7aab9c09705f8dc60fe8d737dd413cfa3765b53b76a5cd0fd"
+    },
+    {
+      "id": "strings-pad-violin-b4-p",
+      "file": "samples/strings-pad-violin-b4-p.ogg",
+      "source": "VSCO 2 CE \u2014 Violin Section susVib",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "a7d8cbc93262ffb4860f89c6aa5855c348a96b70430fbb848396dbee0f80a834"
+    },
+    {
+      "id": "harp-harp-f4-p",
+      "file": "samples/harp-harp-f4-p.ogg",
+      "source": "VSCO 2 CE \u2014 Harp",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "73849b7e2a12977d1560a23ac55952d8cd3f3f51cf5f973e41dcfbdb1a3008df"
+    },
+    {
+      "id": "harp-harp-c5-p",
+      "file": "samples/harp-harp-c5-p.ogg",
+      "source": "VSCO 2 CE \u2014 Harp",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "a9afe60a2b50a804d27af7c9ba14ee5302da3105789298d0a7b9417e0e78a0cf"
+    },
+    {
+      "id": "low-strings-stacc-cello-rr1-d2-mf",
+      "file": "samples/low-strings-stacc-cello-rr1-d2-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Cello Section spiccato",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "eb6621e87fd642e732108b550e5305c4cc13625a8a5d01ac2b0a4806a759eb8d"
+    },
+    {
+      "id": "low-strings-stacc-cello-rr2-c3-p",
+      "file": "samples/low-strings-stacc-cello-rr2-c3-p.ogg",
+      "source": "VSCO 2 CE \u2014 Cello Section spiccato",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "d1a174d7bbcbcebc4ed1efcb48046a4adff73fe670f12090a066b747f8046059"
+    },
+    {
+      "id": "low-strings-stacc-cello-rr1-c3-p",
+      "file": "samples/low-strings-stacc-cello-rr1-c3-p.ogg",
+      "source": "VSCO 2 CE \u2014 Cello Section spiccato",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "f58c663037e8bf394432ff472609bb6d71e8892ea6f782a0db53398918627ab2"
+    },
+    {
+      "id": "low-strings-stacc-cello-rr2-d2-mf",
+      "file": "samples/low-strings-stacc-cello-rr2-d2-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Cello Section spiccato",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "4cd6798f6f07a0058b85b5dce3909f0389357175be276d079d4fa2f612c6b307"
+    },
+    {
+      "id": "low-strings-stacc-cello-rr1-c3-mf",
+      "file": "samples/low-strings-stacc-cello-rr1-c3-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Cello Section spiccato",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "f780cc033098040603711be48a0713ac81344e5f506c8630aeb03b691b40a21f"
+    },
+    {
+      "id": "timpani-timp3-cs3-p",
+      "file": "samples/timpani-timp3-cs3-p.ogg",
+      "source": "VCSL \u2014 Timpani 3 Hit",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VCSL",
+      "sha256": "52be9d4c7f7a4e468c5d05b8ca9759f673c07a2bebfd5e9a36a871b257c668ff"
+    },
+    {
+      "id": "taiko-bassdrum-c2-mf",
+      "file": "samples/taiko-bassdrum-c2-mf.ogg",
+      "source": "VCSL \u2014 Bass Drum",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VCSL",
+      "sha256": "158e9adc47de002bc89c7f027f3678bbf70b67d4ee681fd4d465b82d9ab2d1b4"
+    },
+    {
+      "id": "low-brass-fhorn-c3-mf",
+      "file": "samples/low-brass-fhorn-c3-mf.ogg",
+      "source": "VSCO 2 CE \u2014 F Horn sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "9c5646a8bc725ba88996af39c2ee93779d46adfd02d482c641a60e5103557a80"
+    },
+    {
+      "id": "low-brass-trombone-f3-mf",
+      "file": "samples/low-brass-trombone-f3-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Tenor Trombone sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "27cd81d231c5959aec4980089665f6a4da9cd1b709dcbf8b8b8d31d071e64930"
+    },
+    {
+      "id": "low-brass-tuba-d2-p",
+      "file": "samples/low-brass-tuba-d2-p.ogg",
+      "source": "VSCO 2 CE \u2014 Tuba sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "4ff7e03abdf8b05d055f33e35266210e6710e4c7a52b81150cb62c1e70754466"
+    },
+    {
+      "id": "low-strings-stacc-violin-rr1-g4-mf",
+      "file": "samples/low-strings-stacc-violin-rr1-g4-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Violin Section spiccato",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "60ddc2fa4612dc1b6efc47ab78fe30e7c254a6063fa882731ad21ed8d7793451"
+    },
+    {
+      "id": "low-strings-stacc-violin-rr2-g4-mf",
+      "file": "samples/low-strings-stacc-violin-rr2-g4-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Violin Section spiccato",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "efab8a09187c832faa2457688e49954bd100d86b7254985559f5a602540c0e0d"
+    },
+    {
+      "id": "low-brass-tuba-d2-mf",
+      "file": "samples/low-brass-tuba-d2-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Tuba sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "4b49c5438055f9ace887610f79f3a02c500f0eb34f071f8b855a9bcac3b9ad8b"
+    },
+    {
+      "id": "brass-stacc-horn-rr1-c3-mf",
+      "file": "samples/brass-stacc-horn-rr1-c3-mf.ogg",
+      "source": "VSCO 2 CE \u2014 F Horn staccato",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "3dde44ccde9ced900ef914fc39045a7e999e285b9abea2dcf1d3f9cc6ddf6774"
+    },
+    {
+      "id": "cymbal-crash-crash3-c4-mf",
+      "file": "samples/cymbal-crash-crash3-c4-mf.ogg",
+      "source": "VCSL \u2014 Clash Cymbals 1",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VCSL",
+      "sha256": "52e8c0358ff17f5d4a6c8ee8fd3980ac8ab587cfb61310e9a012b7a0d76d119e"
+    },
+    {
+      "id": "timpani-timp2-as2-p",
+      "file": "samples/timpani-timp2-as2-p.ogg",
+      "source": "VCSL \u2014 Timpani 2 Hit",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VCSL",
+      "sha256": "3b1d6640cb100d3b0f3b9540026330db580a6b12c6315194dbbfabd6197a7cfe"
+    },
+    {
+      "id": "low-brass-tuba-as1-p",
+      "file": "samples/low-brass-tuba-as1-p.ogg",
+      "source": "VSCO 2 CE \u2014 Tuba sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "340c73b1dffb53f70bdac88af9f9975d6f217f6e4ca5a3ca745ab5009b6a8496"
+    },
+    {
+      "id": "low-brass-tuba-as1-mf",
+      "file": "samples/low-brass-tuba-as1-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Tuba sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "d5d0060eed794e170dcc0bb7b28409dda422f9d01ab3eda3249aad70fef77953"
+    },
+    {
+      "id": "brass-stacc-horn-rr1-f2-mf",
+      "file": "samples/brass-stacc-horn-rr1-f2-mf.ogg",
+      "source": "VSCO 2 CE \u2014 F Horn staccato",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "031f6a8bda00e9dfb56b655dd62b4551316017a9a407d53d91f398cd59e2413f"
+    },
+    {
+      "id": "strings-pad-cello-g3-p",
+      "file": "samples/strings-pad-cello-g3-p.ogg",
+      "source": "VSCO 2 CE \u2014 Cello Section susvib",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "82ca33f596eb4e705b36d24902ba173049238e415ba352345886b5b631f7fc1b"
+    },
+    {
+      "id": "low-strings-stacc-cello-rr1-f2-mf",
+      "file": "samples/low-strings-stacc-cello-rr1-f2-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Cello Section spiccato",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "8837f50af25bd2fbaa38a347d99edb341639e1696c8fc9279ad343e61461e69a"
+    },
+    {
+      "id": "low-strings-stacc-cello-rr2-f2-mf",
+      "file": "samples/low-strings-stacc-cello-rr2-f2-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Cello Section spiccato",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "bebf988452c1649a48d925582ee042b77747bd30591cdda170124d6b582c17de"
+    },
+    {
+      "id": "timpani-timp4-e3-p",
+      "file": "samples/timpani-timp4-e3-p.ogg",
+      "source": "VCSL \u2014 Timpani 4 Hit",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VCSL",
+      "sha256": "7791ee9d7af109c748f2be6ff08e59a180d2d500962d57cca1b09431a8809ac1"
+    },
+    {
+      "id": "low-brass-tuba-f2-p",
+      "file": "samples/low-brass-tuba-f2-p.ogg",
+      "source": "VSCO 2 CE \u2014 Tuba sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "facd7dd37a6f6b5a08419a3e43d2ae0e4b86ddb875e0f6f15a32f18fd8942296"
+    },
+    {
+      "id": "low-brass-tuba-f2-mf",
+      "file": "samples/low-brass-tuba-f2-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Tuba sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "c475a768ba2fa100d42f1836548769e4f9cbaec01ab84c50f810ef7216618953"
+    },
+    {
+      "id": "strings-pad-violin-e4-p",
+      "file": "samples/strings-pad-violin-e4-p.ogg",
+      "source": "VSCO 2 CE \u2014 Violin Section susVib",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "f296b6d0d73f43d927f0c6ff986190fd19b60048a91c538eb315e8039a8f7734"
+    },
+    {
+      "id": "timpani-roll-timp1-fs2-p",
+      "file": "samples/timpani-roll-timp1-fs2-p.ogg",
+      "source": "VCSL \u2014 Timpani 1 Roll",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VCSL",
+      "sha256": "6a3682103433bb78509d48873a1ed28e8f1b161e4ed396c08f79b3c4416e5741"
+    },
+    {
+      "id": "cymbal-swell-swell1-c4-p",
+      "file": "samples/cymbal-swell-swell1-c4-p.ogg",
+      "source": "VCSL \u2014 Suspended Cymbal 1 crescendo",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VCSL",
+      "sha256": "e7eda032d7c4757f749a356704f03231e842312da54e54e925c51937c47f6212"
+    },
+    {
+      "id": "timpani-roll-timp4-e3-p",
+      "file": "samples/timpani-roll-timp4-e3-p.ogg",
+      "source": "VCSL \u2014 Timpani 4 Roll",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VCSL",
+      "sha256": "2d2035d6c00a3e918f48732ead3331cd31d9a1d39ae39c2e7dddd771c8ddc466"
+    },
+    {
+      "id": "strings-pad-viola-a3-p",
+      "file": "samples/strings-pad-viola-a3-p.ogg",
+      "source": "VSCO 2 CE \u2014 Viola Section susvib",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "d3d3f26a5a65760b5f928f559fe146f50e6d2eaa67c4efcab9b903553a41ad30"
+    },
+    {
+      "id": "harp-harp-a4-p",
+      "file": "samples/harp-harp-a4-p.ogg",
+      "source": "VSCO 2 CE \u2014 Harp",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "4130380a4975fd362433b9ad6797b47fb0600068a5a003709945c46f08ea861e"
+    },
+    {
+      "id": "trumpet-pad-trumpet-d4-mf",
+      "file": "samples/trumpet-pad-trumpet-d4-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Trumpet sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "4e6a31db47b9c9e9e7e21be7b0d5aff4083160bc5b7a83be0a68514f64108cd9"
+    },
+    {
+      "id": "trumpet-pad-trumpet-f4-mf",
+      "file": "samples/trumpet-pad-trumpet-f4-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Trumpet sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "4d1bdbb193948ab68cc7f0f8088840896bf7221a21c679d77342ef49f0664f37"
+    },
+    {
+      "id": "trumpet-pad-trumpet-a4-mf",
+      "file": "samples/trumpet-pad-trumpet-a4-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Trumpet sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "9fb6de27437c038c4b1b21b6b75a36094f9e21ff29c4468b188c93e3a5de807c"
+    },
+    {
+      "id": "low-brass-fhorn-f2-mf",
+      "file": "samples/low-brass-fhorn-f2-mf.ogg",
+      "source": "VSCO 2 CE \u2014 F Horn sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "d75c0337cb623d69536111c4905367cdbb18b0ba6473c4d7470753d084f1a953"
+    },
+    {
+      "id": "low-brass-fhorn-a2-mf",
+      "file": "samples/low-brass-fhorn-a2-mf.ogg",
+      "source": "VSCO 2 CE \u2014 F Horn sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "32afafc4efca20b3cf070a46c46d099c1a80c99ee79f7b9c5cb5fb52d56d35da"
+    },
+    {
+      "id": "trumpet-pad-trumpet-c5-mf",
+      "file": "samples/trumpet-pad-trumpet-c5-mf.ogg",
+      "source": "VSCO 2 CE \u2014 Trumpet sus",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VSCO-2-CE",
+      "sha256": "4858f0c2593ca0876c260e81197300401c6bac807402b2cb684ab3334a8f327e"
+    },
+    {
+      "id": "tubular-bells-chimes-as3-mf",
+      "file": "samples/tubular-bells-chimes-as3-mf.ogg",
+      "source": "VCSL \u2014 Tubular Bells",
+      "license": "CC0-1.0",
+      "url": "https://github.com/sgossner/VCSL",
+      "sha256": "f2f2ddfe543b2e8cfd0aa457b824776e215f9fedd089c364b0cb800017a9d2ff"
+    }
+  ]
+}
