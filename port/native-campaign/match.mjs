@@ -1,4 +1,4 @@
-import {Match, floorAt, obstructed} from '../../game/core.mjs';
+import {Match, floorAt, obstructed} from './core.generated.mjs';
 import {updateEnemyRoles, updateHealthRegen} from '../../game/singleplayer.mjs';
 import {loadCampaignMap} from './maps.mjs';
 import {missionForCampaign} from './missions.mjs';
@@ -84,7 +84,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
       const alive=remaining(this);
       if (encounter.mechanic==='hold' && near) state.holdProgress=Math.min(encounter.seconds,state.holdProgress+dt);
       if (alive>0) return;
-      let done=encounter.mechanic==='clear'||encounter.mechanic==='guardian';
+      let done=(encounter.mechanic==='clear'||encounter.mechanic==='guardian')&&near;
       if (encounter.mechanic==='interact') done=near && controls.interact===true;
       if (encounter.mechanic==='restore') {
         if (near && controls.interact===true) state.restoring=true;
@@ -115,7 +115,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
           mechanic==='restore'?'Clear guards, press Interact to begin, then stay inside the marker.':
           mechanic==='interact'?'Clear the guards, then press Interact inside the marker.':
           mechanic==='hold'?'Remain inside the marker and clear all guards. Progress is retained when you dodge.':
-          encounter?'Eliminate the deployed security robots.':'Reach the exit to continue.',
+          encounter?(state.deployed&&remaining(this)===0?'Area clear—reach the relay marker':'Eliminate the deployed security robots.'):'Reach the exit to continue.',
         marker:state.phase==='playing'?{x:marker.x,y:marker.y,z:marker.z,radius:marker.radius}:null,
         phase:state.phase,checkpoint:state.checkpoint,elapsed:state.elapsed,totalElapsed:state.totalElapsed,
         kills:state.bankedKills+state.enemies.filter(id=>this.actors[id]?.health<=0).length,enemiesRemaining:remaining(this),

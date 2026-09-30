@@ -58,6 +58,16 @@ test('ordinary ticks gate future anchors, require combat, and advance exactly on
   assert.equal(match.snapshot().campaign.stepIndex,1);
   assert.equal(match.events.filter(e=>e.type==='campaign-objective-complete').length,1);
 });
+test('clearing guards from outside the relay zone does not skip mandatory anchor traversal',()=>{
+  const match=make(),data=loadCampaignMap(MISSION_IDS[0]),anchor=data.campaign.anchors['encounter-1'];
+  at(match,anchor);tick(match);clear(match);
+  at(match,data.campaign.anchors.start);tick(match);
+  assert.equal(match.snapshot().campaign.enemiesRemaining,0);
+  assert.equal(match.snapshot().campaign.stepIndex,0);
+  assert.equal(match.snapshot().campaign.detail,'Area clear—reach the relay marker');
+  at(match,anchor);tick(match);
+  assert.equal(match.snapshot().campaign.stepIndex,1);
+});
 test('death freezes controls and retry reconstructs an unsolved checkpoint without stale actors/projectiles',()=>{
   const match=make('crown-array'),data=loadCampaignMap('crown-array');
   at(match,data.campaign.anchors['encounter-1']);tick(match);

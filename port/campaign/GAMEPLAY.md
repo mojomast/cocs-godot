@@ -27,7 +27,9 @@ navigation playtests remain required; deterministic tests prove sequencing.
 | Emberline | Cooling terrace; armoured lock; maintenance bus; uplink hold; service-lift release |
 | Crown | Highland approach; feeder restoration; archive hold; guardian; repair-key transmission |
 
-**Clear / guardian:** kill every deployed guard. **Interact:** clear guards and
+**Clear / guardian:** kill every deployed guard and reach the relay marker at its
+supported height. Clearing from a doorway leaves “Area clear—reach the relay
+marker” active until arrival; no timer is imposed. **Interact:** clear guards and
 press Interact inside the marker. **Restore:** clear guards, press Interact once
 to begin, then remain inside the marker for 6–8 seconds. **Hold:** accumulate
 12–15 seconds inside the marker while fighting and eliminate all guards. Hold
@@ -71,13 +73,32 @@ exactly once per active frame. The owned loop has no clock failure, and the base
 `ROBOTS` declares separately the scaled main-chassis dimensions `[width,height,
 depth]`, chassis centre above feet (`chassisY`) and authoritative `hitScale`.
 Hit scales are `.72, .86, 1.28, 1.15, 1.5, 2` in table order, assigned **after**
-source spawn. Source hitboxes remain upright boxes `.85*s` wide/deep and `1.8*s`
-high; animated limbs and antennae are decorative, not separate damage volumes.
-The chassis dimensions reflect the robot lane's current `npcProfile.scale`
-geometry; they are not promises of exact mesh silhouette collision. Warden
+source spawn. Explicit `npcHitVolume` now overrides the scalar NPC hitbox:
+`robotHitVolume(model)` uses chassis width/depth and the feet-relative chassis
+bottom through central sensor top. Upper heights are `.63, 1.372, 1.12, 1.28225,
+2.3925, 1.784` metres in table order. Low scrappers no longer inherit tall humanoid
+damage boxes, nor does Warden inherit a 3.6 m-high box. Thin animated limbs,
+barrels and antennae remain decorative. These are bounded axis-aligned body
+volumes, not exact animated mesh collision. Warden
 deployment additionally requires 1.65 m clear radius and 2 m from other bodies;
-source movement radius stays unchanged. Art/hitbox gallery review is still an
-integration requirement before claiming visible-body shot compatibility.
+source movement radius stays unchanged. Art/hitbox gallery review remains an
+integration requirement; tests check visible-body hits and overhead misses
+through source hitscan slabs and source projectile stepping.
+
+The private source `actorHit` function has no subclass seam. Runtime imports the
+committed static `core.generated.mjs`, generated from exactly `game/core.mjs`
+SHA256 `2905696af09ccace8c2dbb384139748ef80146be25bbbe75bf8111d28dc146e8`.
+Only 34 relative imports and `actorHit` differ. The NPC-only explicit volume is
+finite/bounded (width/depth .1–4 m, bottom >=0, top <=4 m). Human and absent/invalid
+volume behaviour retain the original scalar path. Every other source byte is
+verified by an independent inverse comparison. There is no runtime generation,
+dynamic import or evaluation, and no locked source file is edited.
+
+Regenerate with `node port/native-campaign/generate-core.mjs`; unknown source
+hashes fail closed and require review. Text-only `core-provenance.test.mjs` pins
+source drift and committed-byte reproducibility. Runtime packaging must include
+`port/native-campaign/core.generated.mjs`; the generator/provenance test are
+build/review tools, not runtime dependencies.
 
 ## Authority API and protocol
 
@@ -87,7 +108,7 @@ readiness service `cocs-native-campaign`; WebSocket `/native-campaign` is the
 campaign route (`/` is accepted for standard local-client compatibility).
 
 Options: `mapId`, `difficulty` (`easy|normal|hard`), `random`, `observe`; trusted
-in-process `mapLoader` is a deterministic test seam, never a wire option.
+in-process `mapLoader` and `matchFactory` are deterministic test seams, never wire options.
 `observe` receives copied input/output frames and applied control samples.
 `close()` is idempotent and owns its timer, HTTP and WebSocket resources.
 
@@ -105,7 +126,9 @@ kills plus this attempt's current kills; retry discards failed-attempt kills.
 `{type:'campaign-action', action:'retry'|'restart'|'continue', inputEpoch}`:
 retry is accepted only when dead, continue only at level completion, restart at
 any chapter phase. Non-final Continue constructs the next chapter and emits a
-fresh start. Final Continue emits campaign-complete results. Each boundary
+fresh start. Final Continue emits a fresh same-map/hash start with advanced epoch
+and round revision, resets sequence, then emits campaign-complete results with
+sequence 1. The completed match is preserved without reconstruction. Each boundary
 resets controls and advances the epoch. Old-epoch frames are ignored. Held input
 expires after 250 ms; pulse controls use the existing bounded input FIFO.
 
@@ -116,7 +139,7 @@ finite and buttons boolean before source normalization. One human socket only.
 ## Verification (run serially in the integration slot)
 
 ```sh
-node --test --test-concurrency=1 port/native-campaign/campaign.test.mjs port/native-campaign/authority.test.mjs
+node --test --test-concurrency=1 port/native-campaign/core-provenance.test.mjs port/native-campaign/campaign.test.mjs port/native-campaign/hit-volume.test.mjs port/native-campaign/authority.test.mjs
 ```
 
 Tests use seeded source matches and real source damage, ordinary ticks for

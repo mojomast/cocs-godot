@@ -1,5 +1,5 @@
 import {spawnGroup, placeGroup} from '../../game/singleplayer.mjs';
-import {obstructed} from '../../game/core.mjs';
+import {obstructed} from './core.generated.mjs';
 
 // Visual identity is additive. Every brain and damage primitive is source-owned.
 export const ROBOTS = Object.freeze({
@@ -11,6 +11,15 @@ export const ROBOTS = Object.freeze({
   warden:{npcType:'warden', name:'Quarantine Warden', hitScale:2, chassis:[1.68,.64,1.44], chassisY:1.152},
 });
 export const MAX_ACTIVE_ENEMIES = 10;
+// Main chassis plus central sensor housing. Feet-relative boxes deliberately
+// exclude thin moving limbs, barrels and antennas. Width/depth come from the
+// separately declared scaled art chassis; vertical tops include its sensor.
+export function robotHitVolume(model) {
+  const robot=ROBOTS[model];
+  if(!robot)throw new TypeError(`Unknown robot: ${model}`);
+  const top={scrapper:.63,skirmisher:1.372,sentinel:1.12,mortar:1.28225,bulwark:2.3925,warden:1.784}[model];
+  return {width:robot.chassis[0],depth:robot.chassis[2],bottom:robot.chassisY-robot.chassis[1]/2,top};
+}
 export function deployEncounter(match, state, encounter, anchor) {
   const count = Object.values(encounter.roster).reduce((a, b) => a + b, 0);
   if (count > MAX_ACTIVE_ENEMIES || Object.keys(encounter.roster).length > 3) throw new Error('Encounter budget exceeded');
@@ -25,6 +34,7 @@ export function deployEncounter(match, state, encounter, anchor) {
     for (const id of ids) {
       const actor = match.actors.find(actor => actor.id === id);
       actor.npcModel = model; actor.name = robot.name; actor.hitScale=robot.hitScale;
+      actor.npcHitVolume=robotHitVolume(model);
     }
   }
   placeGroup(match, match.actors.filter(actor=>state.enemies.includes(actor.id)), anchor.x, anchor.z, 14);
