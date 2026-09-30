@@ -3,7 +3,7 @@ import {readFileSync, writeFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
 
-export const SOURCE_SHA256='2905696af09ccace8c2dbb384139748ef80146be25bbbe75bf8111d28dc146e8';
+export const SOURCE_SHA256='58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9';
 const original="function actorHit(o,d,a,max){const s=Number.isFinite(a.hitScale)&&a.hitScale>0?a.hitScale:1;return boxHit(o,d,{x:a.x,z:a.z,w:.85*s,d:.85*s,h:1.8*s},max);}";
 const replacement=`function actorHit(o,d,a,max){
  const h=a.isNpc===true?a.npcHitVolume:null;

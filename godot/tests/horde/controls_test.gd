@@ -26,9 +26,6 @@ func _initialize() -> void:
 		var actual := model.sample(0.7, 0.2)
 		for field: String in case.expected:
 			var expected: Variant = case.expected[field]
-			# Horde's held-F UX extends the source desktop press vector; only
-			# Match.melee's own cooldown can admit repeated attacks.
-			if field == "melee" and model.keys.has(KEY_F): expected = true
 			var value: Variant = actual.get(field, false)
 			var ok: bool = absf(float(value)-float(expected)) < 0.00001 if expected is float else value == expected
 			if not ok:
@@ -78,11 +75,12 @@ func _initialize() -> void:
 	var held := Controls.new()
 	held.record(press, true)
 	for i: int in 45:
-		if not held.sample(0.0, 0.0).melee:
-			push_error("Held F must remain a source request after queueing")
+		if held.sample(0.0, 0.0).melee != (i == 0):
+			push_error("Held F must request exactly one kick")
 			quit(1)
 			return
 		held.queued()
+		held.record(press, true) # Duplicate non-echo press still is not a new edge.
 	held.record(release, true)
 	if held.sample(0.0, 0.0).melee:
 		push_error("Released F must stop requesting melee")
@@ -90,6 +88,12 @@ func _initialize() -> void:
 		return
 	held.record(press, true)
 	held.focus(false) # pointer release, modal opening, stale/death or focus loss
+	held.focus(true)
+	held.record(press, true)
+	if held.sample(0.0, 0.0).melee:
+		push_error("Focus recovery requires physical release before a fresh press")
+		quit(1)
+		return
 	held.record(release, false) # modal consumes releases; this may be absent
 	held.focus(true)
 	if held.sample(0.0, 0.0).melee:
@@ -106,7 +110,7 @@ func _initialize() -> void:
 		push_error("Neutral send cannot carry a latched melee request")
 		quit(1)
 		return
-	print("HORDE_MELEE_HOLD_OK frames=45 neutral_after_modal=true fresh_press=true")
+	print("HORDE_MELEE_EDGE_OK frames=45 neutral_after_modal=true fresh_press=true")
 	print("HORDE_FOCUS_OK samples=1 focused=", focus_model.focused)
 	print("HORDE_SOURCE_INPUT_OK samples=", count)
 	print("HORDE_SOURCE_LOOK_OK samples=", vectors.lookCases.size())
