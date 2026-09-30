@@ -5,10 +5,17 @@ import {launchOptions, EXPERIENCES, NATIVE_EXPERIENCES, HELP} from './launch_opt
 import {nativeScenes, rejectedOptions} from '../../port/native-graphics-launchers/fixtures.mjs';
 
 test('source graphics routes are native-only, headless only on request, outside the map catalog', () => {
-  assert.equal(Object.keys(EXPERIENCES).length,11);
+  assert.deepEqual(Object.keys(EXPERIENCES).sort(), ['combat','lobby','arms-race','horde','zones','assault','combined-arms','sports','objectives','lattice','lattice-world','campaign'].sort());
   assert.deepEqual(Object.keys(NATIVE_EXPERIENCES),Object.keys(nativeScenes));
   const catalog = JSON.parse(readFileSync(new URL('../../port/contracts/map-selection.json',import.meta.url)));
   assert.equal(catalog.maps.length,9);
+  const campaign = launchOptions(['--experience=campaign','--smoke'],catalog);
+  assert.equal(campaign.campaign,true);
+  assert.equal(campaign.nativeOnly,undefined);
+  assert.equal(campaign.endpoint,null);
+  assert.ok(campaign.args.includes('res://campaign/demo.tscn'));
+  assert.ok(!catalog.maps.some(map=>map.id===campaign.map));
+  assert.ok(!Object.hasOwn(NATIVE_EXPERIENCES,'campaign'));
   for (const [experience,scene] of Object.entries(nativeScenes)) {
     assert.ok(!catalog.maps.some(map=>map.id===experience));
     assert.ok(!Object.hasOwn(EXPERIENCES,experience));

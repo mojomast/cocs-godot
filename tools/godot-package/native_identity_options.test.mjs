@@ -28,7 +28,7 @@ test('package identity ids are rejected where they are not reviewed routes', () 
     assert.throws(() => options(['--experience=horde', `--map=${map}`], catalog), Error, `horde ${map}`);
   }
   for (const map of ['lacuna-court', 'vermilion-fold', 'nacre-engine']) {
-    for (const experience of ['combat', 'lobby', 'zones', 'sports', 'objectives', 'lattice', 'combined-arms', 'arms-race']) {
+    for (const experience of ['combat', 'lobby', 'zones', 'sports', 'objectives', 'lattice', 'combined-arms', 'arms-race', 'campaign']) {
       assert.throws(() => options([`--experience=${experience}`, `--map=${map}`], catalog), Error, `${experience} ${map}`);
     }
   }
@@ -87,7 +87,13 @@ test('menus expose Domination and the cheat panel as reviewed local routes', () 
   }
   assert.ok(cheats.includes('F4'), 'god-mode key documented');
   const demo = readFileSync(new URL('./Demo Menu.cmd', import.meta.url), 'utf8');
-  assert.match(demo, /choice \/c 123456789GDCX0/);
+  assert.match(demo, /choice \/c 123456789GDCXQ0 \/n/);
+  assert.match(demo, /echo Q\. The Quiet Relay campaign/);
+  assert.match(demo, /if errorlevel 15 exit \/b 0\r?\nif errorlevel 14 goto campaign\r?\nif errorlevel 13 goto cheats\r?\nif errorlevel 12 goto domination/);
+  assert.match(demo, /:campaign\r?\ncall "%~dp0Campaign\.cmd"\r?\ngoto menu/);
+  const campaign = readFileSync(new URL('./Campaign.cmd', import.meta.url), 'utf8');
+  assert.match(campaign, /call "%~dp0Play\.cmd" --experience=campaign %\*/);
+  assert.doesNotMatch(campaign, /COCS_DEBUG|--debug-panel/);
   for (const label of ['Domination', 'Cheats']) assert.ok(demo.includes(label), label);
   for (const file of ['Domination.cmd', 'Cheats.cmd']) assert.ok(demo.includes(file), file);
 });
