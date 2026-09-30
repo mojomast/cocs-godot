@@ -174,3 +174,16 @@ quips should distinguish personalities rather than repitching a common beep.
 The lane will supply individual audio previews and a labelled audition reel.
 It owns new campaign voice modules and minimal campaign session hooks; shared
 weapon/kick feedback remains with the melee lane. Heavy tests await slot release.
+
+## Additional user request: splashy animated damage numbers
+
+The owner requested creative animated numeric damage indicators. Isolated Astra
+lane `campaign/damage-numbers` (`ses_f0b5b1ff2ffeh76nLiUS96d0SI`) owns shared
+native presentation: authoritative outgoing-hit numbers at targets and distinct
+incoming player-damage numbers near the HUD. Direction is a brief splash,
+squash/stretch pop, slight arc/tumble and fade, with bounded burst aggregation
+and heavier treatment for larger real hits. Requirements include no invented
+critical hits, duplicate replay or enemy-vs-enemy clutter, readable compact UI,
+reduced-motion behavior, lifecycle cleanup and a rendered animation preview.
+This lane starts from integrated melee mechanics/feedback; engine work awaits
+the capture-repair lane's heavy-slot release.
