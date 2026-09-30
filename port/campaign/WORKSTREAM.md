@@ -61,10 +61,12 @@ All five first implementation commits have been integrated. Initial results:
   queries and twelve renders. Visual review requested a second pass because
   the chapters shared an overly similar terrace-corridor layout.
 
-The worlds lane currently owns the exclusive heavy verification slot for that
-layout/art revision. The client lane is preparing live graphical acceptance
-fixtures. Final campaign hit-volume/ending changes, full regression verification
-and exports remain pending integration acceptance.
+The second world pass is integrated: four distinct footprints, original biome
+surface/foliage assets, a stitched landscape collar, exact chapter handoff
+heights, and 14/14 source route tests. The live graphical acceptance fixtures
+are integrated too. The orchestrator now owns the heavy verification slot for
+final collision/ending/cache checks, native smokes, compact UI review, full
+regression verification and exports.
 
 Initial integration logs are retained under the campaign evidence root in
 `integration-first/` and `integration-live-first/`; failures are preserved.

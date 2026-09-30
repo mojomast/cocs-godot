@@ -31,7 +31,8 @@ Use the objective text, relay marker and terrain beacons to follow the route.
 Clear the guards, then reach the relay at its supported height. Interaction
 objectives require a press of **Interact**; restoration requires one press and
 remaining nearby until the connection completes. Hold objectives progress while
-you remain inside their marker after clearing the defenders.
+you remain inside their marker, including under enemy pressure. Completing one
+also requires eliminating its guards and being inside the marker.
 
 Checkpoints restore the current encounter after death; choose **Retry**. They
 last for the current play session. Chapter selection permits returning directly

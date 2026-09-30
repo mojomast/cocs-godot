@@ -194,7 +194,7 @@ commands = [
     ("campaign-options", ["node", "--test", "tools/godot-package/campaign_options.test.mjs"]),
     ("campaign-ownership", ["node", "--test", "tools/godot-package/campaign_ownership.test.mjs"]),
     ("campaign-closure", ["node", "--test", "tools/godot-package/campaign_closure.test.mjs"]),
-    ("campaign-authority", ["node", "--test", "--test-concurrency=1", "port/native-campaign/core-provenance.test.mjs", "port/native-campaign/hit-volume.test.mjs", "port/native-campaign/authority.test.mjs", "port/native-campaign/campaign.test.mjs"]),
+    ("campaign-authority", ["node", "--test", "--test-concurrency=1", "port/native-campaign/core-provenance.test.mjs", "port/native-campaign/navigation-cache.test.mjs", "port/native-campaign/hit-volume.test.mjs", "port/native-campaign/authority.test.mjs", "port/native-campaign/campaign.test.mjs"]),
     ("campaign-world-routes", ["node", "--test", "--test-concurrency=1", "tools/godot-campaign/terrain.test.mjs"]),
     ("campaign-robots", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/robots.gd"]),
     ("campaign-death-presentation", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/death_presentation.gd"]),
