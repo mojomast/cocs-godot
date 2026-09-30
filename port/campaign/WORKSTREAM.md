@@ -225,3 +225,11 @@ runtime gate registered. It consumes authoritative damage totals (including
 absorption), groups same-target hits in fixed 100 ms windows, and bounds animated
 draw slots to sixteen. Parse checks passed; runtime and wide/compact/reduced-motion
 visual checks remain pending. Reproduction commands are in `docs/damage-numbers.md`.
+
+Sol story authority `838228cf` + `c50bb373` is integrated as `753b72e3` +
+`0be8260e`: sixteen phase/proximity beats, Mara/Ivo continuity and Patch petting
+with source visibility and a one-second reaction cooldown. Twelve isolated
+lightweight tests passed. Review requested a follow-up to cache supported story
+placements across retries and preserve existing navigation-cache tests. Client
+`02427e22` remains isolated pending fixes for JSON numeric transport, operator
+feet anchoring, actual rig joints, puppy mesh cost and modal/focus UI behavior.
