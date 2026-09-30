@@ -78,7 +78,7 @@ for(const [index,id] of CAMPAIGN_MAP_IDS.entries()) {
     const data=loadCampaignMap(id),metrics=gateRouteMetrics(data);
     console.log(`${id} gate route metrics ${JSON.stringify(metrics)}`);
     assert.ok(metrics.gateWalkingMeters>metrics.orderedMeters*.78,'ridge geography preserves route budget');
-    assert.ok(metrics.gateWalkingMeters>800,'minimum mandatory walking distance');
+    assert.ok(metrics.gateWalkingMeters>900,'minimum mandatory walking distance');
   });
 }
 
@@ -94,4 +94,16 @@ test('strict campaign parser rejects unsafe identity, geometry and unsupported c
   bad(d=>d.arena.terrain.surfaces.pop());
   const first=loadCampaignMap(CAMPAIGN_MAP_IDS[0]);first.arena.spawns[0][0]=999;
   assert.notEqual(loadCampaignMap(CAMPAIGN_MAP_IDS[0]).arena.spawns[0][0],999,'loads are independent');
+});
+
+test('chapters retain genuinely different normalized route footprints and exact handoffs',()=>{
+  const data=CAMPAIGN_MAP_IDS.map(loadCampaignMap);
+  const footprints=data.map(d=>{const b=d.arena.bounds;return new Set(d.campaign.criticalPath.map(p=>`${Math.floor((p.x-b.minX)/(b.maxX-b.minX)*20)},${Math.floor((p.z-b.minZ)/(b.maxZ-b.minZ)*20)}`));});
+  for(let i=0;i<data.length;i++){
+    if(i<3)assert.equal(data[i].campaign.anchors.exit.y,data[i+1].campaign.anchors.start.y,'exact chapter seam elevation');
+    for(let j=i+1;j<data.length;j++){
+      const common=[...footprints[i]].filter(k=>footprints[j].has(k)).length,union=new Set([...footprints[i],...footprints[j]]).size;
+      assert.ok(common/union<.55,`${data[i].id}/${data[j].id} rescaled footprints too similar: ${common/union}`);
+    }
+  }
 });

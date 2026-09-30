@@ -1,218 +1,203 @@
-# The Quiet Relay — world implementation
+# The Quiet Relay — authored worlds, revision 2
 
-## Interfaces and ownership
+The first worlds revision proved collision, scale and interfaces but repeated a
+parallel-trench macro-layout. Parent visual review rejected that repetition.
+This revision replaces the footprints, landmark kits and presentation while
+preserving the integration interfaces and source-grounded collision semantics.
 
-- `port/native-campaign/maps.mjs` exports the frozen, ordered `CAMPAIGN_MAP_IDS`,
-  `loadCampaignMap(id)`, `parseCampaignMap(input, expectedId?)`, and the exact
-  single-sheet helper `campaignSupportAt(arena, x, z)`.
-- `loadCampaignMap` rejects unknown IDs before constructing a filename and returns
-  an independent validated envelope. Arena geometry is source-compatible; no
-  multiplayer registry or validator was changed. Geometry hashes use the existing
-  recursively canonical SHA-256 convention.
-- `godot/campaign/terrain.gd` extends `Node3D` and provides `build(id) -> bool`,
-  `recipe`, `height_at(x,z)`, `get_arena_id()`, `get_spawn_points()`, and
-  `visible_cost()`. Same-ID builds are idempotent; another valid ID rebuilds.
-  Invalid IDs return false and retain the current map.
-- All envelope points/anchors are **feet coordinates**, directly suitable for
-  source actor spawn/mission logic. The renderer does not offset actors.
-- `height_at` interpolates the exact emitted diagonal, with bounds read from the
-  map and a reviewed 4 m grid. Out-of-bounds height queries return `NAN`; source
-  helper queries return null. Steep triangles remain visible/collidable, but the
-  source helper only returns support within the arena's 0.65-radian slope limit.
-- Each chapter has the required five encounter anchors, start, exit, six routes
-  (ordered critical route plus one complete local combat loop per encounter),
-  21 spawn positions, and 17 pickups. Spawn zero is the player arrival; the next
-  twenty are four supported deployment positions per encounter. **Authority
-  chooses deployment/checkpoint positions; these are not automatic enemy waves.**
+## Four distinct footprints
 
-## Geometry and measured authored budget
+- **Rootfall Verge — winding forest ravine.** Three off-axis sweeps curve around
+  irregular wooded ridge islands, with variable 10–12.5 m half-widths, rolling
+  ravine floors and widened combat clearings. Fallen lattice equipment, low stone
+  archive ruins and small receivers replace the repeated entrance columns.
+  Vegetation fades into exposed geology near the Siltwake handoff.
+- **Siltwake Crossing — riverbank/causeway circuit.** The route alternates banks,
+  overlooks and two river crossings, then turns inward along the opposite bank.
+  A separately carved low river channel and bounded water strips appear below
+  the single-sheet causeways. Paired pump pipes, receiver installations and
+  bridge towers give this chapter its own industrial silhouette.
+- **Emberline Ascent — angular highland switchbacks.** Orthogonal service cuts,
+  diagonal ascents and projecting basalt terraces form an irregular stepped
+  circuit. Five authored elevation terraces concentrate climbing into broad
+  ramps rather than one imperceptibly sloped floor. Column groups and tall
+  radiator/uplink banks replace the forest/canyon landmark kits.
+- **Crown Array — perimeter into nested service courts.** An outer highland
+  approach contracts into an inner octagonal/spiral circuit and the guardian
+  court. The walkable floor rises and dips between courts. Pale buttresses,
+  receivers and seven crown fins frame the final 30 m dish.
 
-Generated using `node tools/godot-campaign/compile.mjs`.
+Every encounter has a widened clearing, four staggered physical cover pieces,
+an 8 m clear central deployment disk, and a complete local supply loop. Loops
+and cover are oriented to each encounter's local approach, not world-axis rows.
+Health/armor/ammunition sit on the side circuits; encounters 2 and 4 add
+scatter/rocket pickups. Guidance beacons follow route shoulders every 42 m.
 
-| Map | Footprint | Area vs 96×80 arena | Ordered route | Walkable arrival → exit | Terrain triangles | Terrain chunks | Authored art instances |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| Rootfall Verge | 320×224 m | 9.33× | 1,047.5 m | 4 → 18 m | 8,960 | 180 | 929 |
-| Siltwake Crossing | 352×256 m | 11.73× | 1,204.1 m | 18 → 36 m | 11,264 | 240 | 903 |
-| Emberline Ascent | 384×256 m | 12.80× | 1,332.0 m | 36 → 62 m | 12,288 | 262 | 864 |
-| Crown Array | 416×288 m | 15.60× | 1,489.3 m | 62 → 72 m | 14,976 | 278 | 1,041 |
+Grounded, buried cliff cores follow the actual ridge contours. Each core's top
+is below **all nine terrain vertices across its 8×8 m footprint**, ensuring the
+box remains inside the rock volume rather than appearing as a rectangular wall.
+These cores and steep terrain shoulders prevent the long route from becoming a
+painted serpentine on otherwise open ground. There are no visible rectangular
+perimeter walls.
 
-Measured mandatory-gate walking estimates (4 m grid, all seven gate disks in
-order) are **958.2, 1,121.4, 1,241.5, 1,401.5 m**, respectively: **91.5–94.1%**
-of the authored route budget. These account for legal corner cutting inside the
-corridors; they exclude jumping and are not a formal speedrun lower bound.
+## Measured route and geometry budget
 
-Nearest ordered-route chainages of encounters 1–5 (metres):
+Generated with `node tools/godot-campaign/compile.mjs`.
 
-- Rootfall: **87.9, 379.4, 597.9, 726.6, 959.6**.
-- Siltwake: **101.1, 437.0, 687.8, 834.8, 1,103.1**.
-- Emberline: **112.0, 483.3, 756.8, 925.7, 1,220.0**.
-- Crown: **125.2, 541.1, 847.2, 1,034.3, 1,364.1**.
+| Map | Footprint | Area vs 96×80 arena | Ordered route | Mandatory-gate walking estimate | Arrival → exit feet |
+|---|---:|---:|---:|---:|---:|
+| Rootfall Verge | 320×224 m | 9.33× | 1,009.5 m | 920.8 m | 4 → 18 m |
+| Siltwake Crossing | 352×256 m | 11.73× | 1,207.7 m | 1,019.2 m | 18 → 36 m |
+| Emberline Ascent | 384×256 m | 12.80× | 1,382.6 m | 1,164.9 m | 36 → 62 m |
+| Crown Array | 416×288 m | 15.60× | 1,360.1 m | 1,264.2 m | 62 → 72 m |
 
-The longer travel intervals contain a saddle/bridge vista and intermediate
-beacons at 42 m intervals. Local supply loops are ~125 m long, reconnect at
-both ends of the combat field, and place health, armor, and ammunition away from
-the direct firing lane. Encounters 2 and 4 add scatter/rocket pickups. Four
-staggered physical cover pieces surround each 8 m clear central deployment disk.
-The mandatory route passes within 6 m of each 12 m objective disk.
+Mandatory estimates are 4 m-grid walking routes through all seven gate disks in
+order. Edges sample swept terrain/cover clearance; the same arrival state is
+carried through each successive gate. They account for legal corner cutting,
+exclude jumping, and are not formal speedrun lower bounds. Tests require **over
+900 m** and over 78% of the authored route budget. All four pass.
 
-**These lengths are not a duration claim.** At 8 m/s, authored travel alone is
-131–186 seconds; sprinting is faster. The 300–600 second target requires the
-authority's combat/interaction pacing and first-playthrough human measurement.
-There are no world-imposed timers or artificial traversal waits.
+The normalized critical-route occupancy is also compared pairwise on a 20×20
+grid. Jaccard overlap must stay below 55%; this catches a regression back to
+resized copies of the same footprint. Exact adjacent handoff heights (18, 36,
+62 m) are tested independently.
 
-## Geography, tactical structure and identity
+| Map | Terrain triangles | Terrain groups | Horizon groups | Recipe art props | Source blocks | Nav nodes |
+|---|---:|---:|---:|---:|---:|---:|
+| Rootfall | 8,960 | 181 | 112 | 933 | 351 | 287 |
+| Siltwake | 11,264 | 215 | 104 | 909 | 404 | 322 |
+| Emberline | 12,288 | 237 | 96 | 942 | 497 | 350 |
+| Crown | 14,976 | 259 | 144 | 1,016 | 450 | 348 |
 
-Every chapter follows four inhabited terraces around three long rock spines.
-Each spine has a **solid, source-authoritative block barrier**, rising at least
-5 m above its sampled crest, terminating at alternating authored saddles.
-Steep triangulated ridge shoulders accompany these barriers. Thus the long route
-is a corridor imposed by geography, not a painted serpentine on open ground.
-Combat clearings widen the terrain around the five objectives; the route narrows
-again before its next landmark. The player's central entry lane, inner cover,
-and outer supply loop support different tactical positions rather than one
-doorway firing position.
+Scenery/solid MultiMesh instance totals including the horizon are respectively
+1,461 / 1,486 / 1,615 / 1,626. These are bounded allocated counts, not measured
+on-screen draw calls. Terrain material groups occupy at most 32×32 m; scenery
+batches use local 32 m origins. The horizon uses 64 m groups.
 
-- **Rootfall**: moss/fern-coloured ravine, asymmetric faceted trees on the
-  shoulders, fallen lattice relay, archive receiver and stone relay ruins.
-  Vegetation fades out over the final fifth toward Siltwake's exposed geology.
-- **Siltwake**: ochre sandstone, exposed crags, riverworks receivers and a metal
-  bridge deck over a sculpted dry gully at the first saddle. The bridge has real
-  parapets and towers. Its support is the terrain sheet
-  itself: there is deliberately no second hidden floor or walkable underpass.
-- **Emberline**: charcoal basalt, rising service terraces and column groups,
-  metal switching infrastructure and a 22 m uplink receiver silhouette.
-- **Crown**: pale industrial stone and returning highland canopy; seven varying
-  crown fins and a 30 m receiver overlook the guardian court. The five encounter
-  fields preserve space for multi-legged robots and readable attack motion.
+**Length does not prove duration.** Travel alone takes about 126–173 seconds at
+8 m/s, less when sprinting. The 300–600 second first-playthrough target still
+requires encounter/interaction pacing and human timing. No forced waiting or
+world-imposed match timer is used.
 
-Arrival/departure pylons reuse the same proportions and mint guidance colour.
-Adjacent chapter exit/start feet heights agree **exactly** (18, 36, 62 m).
-Rootfall's final sandstone reach becomes Siltwake; the riverworks lift leads to
-basalt terraces; the uplink's pass opens into Crown woodland. Chapters have local
-coordinate origins and load through the authority's transition, not continuous
-simultaneous streaming of four maps.
+## Original biome presentation restored
 
-## Shared collision, bounded presentation and parsing
+The renderer reuses the actual existing assets from `godot/biomes/map.gd`:
+branching trunks, asymmetric lobed crowns, fern blades and faceted cliff meshes.
+Their vertex colours and normals are retained while normalizing the assets for
+metre-based recipe scaling. It also directly reuses:
 
-- Terrain is a single, continuous triangulated support sheet. Compiler feet
-  heights, source support and Godot interpolation use the same cell vertices and
-  diagonal, including the two different triangle halves. No analytic render-only
-  floor is substituted at runtime.
-- Terrain material/chunk groups cover at most a 32×32 m region. Godot emits exact
-  local-coordinate meshes and concave collision per group. Terrain is never
-  range-hidden. All block `baseY` values are zero, matching source spatial
-  movement/rays' actual `[0,h]` solid convention and Godot box shapes exactly.
-  Source ignores nonzero `baseY`: an initially authored bridge crossbeam was
-  caught by the actual movement test, removed, and the suite rerun successfully.
-  Raised decorative receivers/mast lattice are explicitly presentation-only;
-  there are no overhead authoritative block underpasses.
-- Scenery is deterministic and bounded: 1,100 tree/crag scatter attempts plus
-  2,400 small fern/scrub attempts per map, rejected near central routes/clearings,
-  plus authored landmark/guidance props. Ridge scatter trees/crags are
-  presentation-only and stand outside traversable clearings. Accessible shoulder
-  trees have authoritative narrow grounded trunk blocks.
-  Architectural cover, pillars, bridge rails, ridge barriers and pylons are
-  authoritative blocks.
-- Props and blocks use spatially grouped MultiMeshes. Their origins are the
-  local 32 m cell, not world zero. Every custom AABB is the union of transformed
-  mesh bounds, including crown overhangs and tall receiver ornaments. Tree/crag
-  batches have a 650 m visibility range (preserving overview silhouettes), and
-  small ferns/scrub use 140 m; physical solids, receivers, and beacons are
-  retained. Full geometry, including boundary block meshes, has
-  correct extended cull bounds rather than being clipped to its nominal cell.
-- The strict campaign parser caps file size, recursive JSON complexity, field
-  sets, array sizes, map IDs/order, finite coordinates and reviewed dimensions
-  up to 512 m. It validates complete non-overlapping regular cell coverage,
-  shared-vertex seams, exact triangle winding/indices, source hash, spawn/anchor
-  support, ordered gates, route grades, swept route clearance and block overlap.
-  Existing multiplayer bounds remain unchanged at their original limits.
+- `res://biomes/surface.gdshader`: world-space coarse/grain detail and rock seams,
+  with distinct moss/soil, gravel, rock, stone and metal materials.
+- `res://biomes/foliage.gdshader`: original leaf/bark treatment and subtle wind.
 
-## Research applied
+Unused MultiMesh custom-data streams are deliberately disabled: enabling them
+in this compatibility-render path blackened the original foliage. The final
+rendered leaf colours were visually reviewed; the mesh colour contract is also
+tested. Vegetation AABBs include a conservative 2 m wind margin.
 
-The shared `RESEARCH.md`/`CONTRACT.md` were read before implementation. Source
-pages consulted directly:
+Gentle forest/highland ridge tops use ground/moss material, while steep faces
+remain rock. A **192 m stitched scenery collar** samples the exact map boundary
+heights and blends into irregular surrounding hills. Bounded outer trees and
+cliffs complete the skyline, avoiding a floating rectangular diorama. The collar
+is presentation-only outside authoritative bounds, never substitute gameplay
+support. It adds no source navigation or collision.
 
-- [Level Design Book: encounters](https://book.leveldesignbook.com/process/combat/encounter)
-  — entry footholds, deliberate before/during/after structure, readable combat
-  fronts, and reasons to leave the doorway. Applied through open entry lanes,
-  distributed cover, optional loops, reward placement and distinct landmarks.
-- [Godot: MultiMeshes](https://docs.godotengine.org/en/stable/tutorials/performance/using_multimesh.html)
-  — a MultiMesh is all-or-nothing for instance culling. Applied through spatial
-  batches, local origins and explicit transformed bounds instead of one giant
-  forest batch. The current web page identifies itself as 4.7 documentation;
-  implementation uses existing project-compatible Godot 4.x APIs.
+Large vegetation/crags retain a 650 m range for vistas; small ferns/scrub use
+140 m. Physical solids, landmarks and beacons are retained. All cull boxes are
+unions of transformed mesh bounds, not arbitrary cell-sized boxes.
 
-## Verification and remaining evidence
+## Integration contract (unchanged)
 
-Completed in the worlds lane (all heavy invocations serialized with
-`LP_NUM_THREADS=1`):
+- `port/native-campaign/maps.mjs` exports ordered/frozen `CAMPAIGN_MAP_IDS`,
+  `loadCampaignMap(id)`, `parseCampaignMap(input, expectedId?)`, and
+  `campaignSupportAt(arena,x,z)`.
+- Loading rejects unknown IDs before filename construction and returns an
+  independent strictly validated envelope. No multiplayer registry/schema was
+  loosened. Canonical hashes retain the existing recursive SHA-256 convention.
+- `godot/campaign/terrain.gd` is `Node3D` with `build(id) -> bool`, `recipe`,
+  `height_at(x,z)`, `get_arena_id()`, `get_spawn_points()`, and `visible_cost()`.
+  Same-ID builds are idempotent; a different valid ID rebuilds; invalid IDs retain
+  the current map and return false.
+- Envelope coordinates are **source feet heights**, without actor visual offsets.
+  Each map retains five encounter anchors plus start/exit, six routes, 21 spawn
+  points, and 17 pickups. Spawn zero is arrival; the next twenty provide four
+  deployment points per encounter. Authority owns actual deployment/checkpoints.
+- Heights interpolate the exact 4 m cell diagonal used by source triangles.
+  Godot out-of-bounds queries return `NAN`; source helper queries return null.
+  Steep terrain is rendered/collidable but only slopes ≤0.65 radians provide
+  source walkable support. Source and Godot consume identical terrain triangles.
+- All blocks use grounded `[0,h]` geometry. Source movement/rays ignore nonzero
+  `baseY`; revision 1 caught an overhead bridge beam blocking actual movement.
+  It was removed. No authoritative overhead block underpass is used here.
+- Campaign validation checks bounded JSON, exact field sets/order/IDs, finite
+  geometry, complete regular cell coverage, shared seams, triangle winding,
+  supported feet, ordered anchors, route continuity/clearance, and geometry hash.
+  Campaign blocks are bounded at 1,024; dimensions remain reviewed up to 512 m.
+  Multiplayer's original 160 m limit remains unchanged.
 
-- Lightweight compiler generation and strict parse for all four maps.
-- Node syntax checks for parser and terrain tests; `git diff --check`.
-- Explicit authored route, triangle/chunk/prop, chainage, handoff and hash metrics.
-- **13/13 Node tests passed**, including actual source movement on every
-  critical route and all twenty flank loops, independent source triangle support,
-  gate-route metrics and parser rejection checks.
-- Godot **4.5.2.stable.official.6ce3de25a** headless physics/terrain test:
-  `CAMPAIGN_TERRAIN failures=0` for all four maps.
-- Real GL compatibility run under Xvfb/llvmpipe: `failures=0`, including querying
-  real renderer MultiMesh instance transforms for cull bounds. In dummy headless
-  mode Godot returns identity instance transforms; the headless test uses the
-  bounded CPU transform mirror instead.
-- **Twelve 1280×720 PNG captures**: one overview and two player-height views per
-  map. Reviewed all twelve in `worlds-contact-sheet.png`; the final visual pass
-  repaired coplanar housing/pier faces, added shoulder vegetation and low scrub,
-  retained forest silhouettes in vistas, and broke up the perimeter skyline.
+The new renderer preloads the existing biome map script and both shaders. Release
+resource closure must include these existing resources and their static script
+dependencies. No original biome file was edited.
 
-Reproduction:
+## Verification and retained evidence
+
+All heavy work ran serially with `LP_NUM_THREADS=1` and the pinned Godot
+`4.5.2.stable.official.6ce3de25a`.
+
+- **14/14 Node tests pass**, including actual source `moveActor` through every
+  mandatory path segment and all twenty local loops, independent source triangle
+  support checks, mandatory gate metrics, strict parser rejection, independent
+  footprint checks and exact chapter handoffs.
+- Godot headless test: **`CAMPAIGN_TERRAIN failures=0`** across all four maps.
+  Checks compare feet/interpolation with real physics ray hits, verify cull
+  bounds, foliage colours, and bounded terrain/horizon/instance counts.
+- GL compatibility test under Xvfb/llvmpipe: **zero failures**, including reading
+  real renderer MultiMesh transforms. Dummy/headless uses the bounded CPU mirror
+  because that server returns identity instance transforms.
+- **Twelve final 1280×720 captures** cover all four vistas and two player-height
+  views per chapter. Cameras now follow the actual approach tangent. All twelve
+  were reviewed in the final contact sheet.
+
+Final revised evidence:
+`/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20260930/revised-worlds/`
+
+Start with `worlds-contact-sheet.png`. Final logs are `compiler-final.log`,
+`node-terrain-final.log`, `godot-terrain-final.log`, `godot-render-final.log`.
+Intermediate diagnostic logs remain in the same folder. Original first-revision
+captures, movement failure, importer crash/retry and successful proof logs remain
+untouched under the sibling `worlds/` directory.
 
 ```sh
+node tools/godot-campaign/compile.mjs
 LP_NUM_THREADS=1 node --test tools/godot-campaign/terrain.test.mjs
 LP_NUM_THREADS=1 "$GODOT" --headless --path godot --script res://tests/campaign/terrain.gd
 LP_NUM_THREADS=1 xvfb-run -a "$GODOT" --path godot --rendering-method gl_compatibility --audio-driver Dummy --script res://tests/campaign/terrain.gd -- --render="$EVIDENCE"
 ```
 
-The Node suite compares deterministic generated content, independently checks
-feet against `game/terrain.mjs`, drives **actual source `moveActor` through every
-segment of the critical route and all five loops**, and rejects malformed map
-geometry/metadata. This catches the source 0.3 m per-move rise rejection rather
-than treating endpoint support as movement proof.
+The Godot fixture additionally accepts `--map=<campaign-id>` for focused visual
+diagnostics. Remaining integration evidence: revised-map authority/client smoke,
+human pacing/combat/shortcut review and real-GPU performance. Parent's initial
+all-four authority/client smoke passed before this layout revision; this lane
+does not claim that earlier run verifies the revised hashes or placements.
 
-It also prints a 4 m-grid, walking-only shortest-route estimate through the
-mandatory encounter disks. Graph edges sample swept terrain/cover clearance;
-multi-source distances carry the actual arrival state through successive gates.
-It asserts the estimated required travel remains >78% of the authored route and
->800 m. Final measured values are reported above.
-The metric excludes jumping and is not a formal speedrun lower bound. Human
-shortcut/flow review is still needed.
+## Research applied
 
-The Godot suite checks every chapter's route feet against real physics ray hits,
-both terrain/interpolation agreement and MultiMesh bounds, invalid-ID behavior,
-and bounded geometry/scenery counts. It requires engine import/physics work.
+The shared research/contract and independent source-movement clarification were
+followed. Directly consulted sources:
 
-Evidence retained outside the worktree at
-`/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20260930/worlds/`:
-
-- `compiler-final.log`, `node-terrain-final.log`, `godot-terrain-final.log`,
-  `godot-render-final.log` and twelve map/view PNGs plus contact sheet.
-- Initial failure/diagnostic logs are retained. The first editor import crashed
-  during audio asset import; the single incremental retry exited successfully.
-  The first source movement failure documents the unsupported overhead block
-  assumption; the final run passes after correcting the geometry.
-
-Not yet established: real hardware performance (renders used llvmpipe), human
-5–10 minute timings, encounter balance, robot-versus-cover readability, or
-end-to-end chapter transitions with the other lanes. The four maps deliberately
-share a power-corridor terrace macro-layout; biome geology, ascent, vegetation,
-bridge gully and receiver/crown silhouettes provide their differences. This is
-not four unrelated open-world layouts. The worlds lane did not edit the launcher,
-authority, client, robot models, or locked source gameplay.
+- [Level Design Book: encounters](https://book.leveldesignbook.com/process/combat/encounter)
+  — entry footholds, readable combat fronts and incentives to leave the doorway.
+  Applied through varied approaches, central clearance, cover and supply loops.
+- [Godot: MultiMeshes](https://docs.godotengine.org/en/stable/tutorials/performance/using_multimesh.html)
+  — per-instance culling limitations motivate bounded spatial groups, local
+  origins and transformed bounds. The web page currently identifies itself as
+  4.7; implementation uses the project's verified Godot 4.5.2 APIs.
 
 Final geometry hashes:
 
 ```text
-rootfall-verge      e80dd423ac730db881aefe308683c94f62cfbf756a4dff56d9e4ea2624969dd0
-siltwake-crossing   398500b3bc89ae1ad8b29bf7bd4c8c305a251bd1f543eef3a0ac919b530f3945
-emberline-ascent    b746300f0ebb834bb4dc8b4b4d1de5ed2cdfa973d0b05b6438a440f3a8b62207
-crown-array        47245c9a95cb2e8485f9ba66a0adf32423aa08023abdcec3ced4220440bdf9fd
+rootfall-verge      81a5b2bf0dc508be76b35ef268b51ed4d676102c939673f06982feffcc7272a0
+siltwake-crossing   24c647a5e4755a2c30a111f716ed33e23792a8d17e11d72ef286171c8847a02f
+emberline-ascent    122459c3015108408a8d07f69d826a281b14ca05183214b7ebc43c5edf0791ce
+crown-array        b7350e8d6ebcdc08cad66ee2631017352557ffb7d8792872957628851efb0744
 ```

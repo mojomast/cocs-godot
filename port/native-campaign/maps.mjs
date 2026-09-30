@@ -8,7 +8,7 @@ const num=(n,a=-1024,b=1024)=>{if(typeof n!=='number'||!Number.isFinite(n)||n<a|
 const list=(v,min,max)=>{if(!Array.isArray(v)||v.length<min||v.length>max)fail('list');};
 const keys=(v,names)=>{if(!v||typeof v!=='object'||Array.isArray(v)||![Object.prototype,null].includes(Object.getPrototypeOf(v))||Object.keys(v).some(k=>!names.includes(k))||names.some(k=>!(k in v)))fail('keys');};
 const text=v=>{if(typeof v!=='string'||v.length<1||v.length>256||/[\x00-\x1f\x7f]/.test(v))fail('text');};
-const materials=['ground','trail','rock','stone','metal','light','foliage'];
+const materials=['ground','trail','rock','stone','metal','light','foliage','water'];
 const vector=v=>{list(v,3,3);v.forEach(n=>num(n));};
 const gridKey=(x,z)=>`${x},${z}`;
 
@@ -61,7 +61,7 @@ export function parseCampaignMap(input,expectedId) {
   for(const axis of ['X','Z']) {const extent=a.bounds[`max${axis}`]-a.bounds[`min${axis}`];if(extent<224||extent>512||extent%4)fail('bounds extent');}
   num(a.voidY,-128,0);num(a.ceilingY,64,256);
   keys(a.terrain,['maxSlope','surfaces','walls']);num(a.terrain.maxSlope,.1,.7);list(a.terrain.surfaces,1,1024);list(a.terrain.walls,0,0);indexGrid(a);
-  list(a.blocks,0,512);const blockIds=new Set();
+  list(a.blocks,0,1024);const blockIds=new Set();
   for(const b of a.blocks){keys(b,['id','x','z','w','d','baseY','h','material']);text(b.id);if(blockIds.has(b.id)||!materials.includes(b.material))fail('block identity');blockIds.add(b.id);num(b.x,a.bounds.minX,a.bounds.maxX);num(b.z,a.bounds.minZ,a.bounds.maxZ);num(b.w,.1,512);num(b.d,.1,512);if(b.baseY!==0)fail('source blocks require grounded base');num(b.h,.01,256);if(b.x-b.w/2<a.bounds.minX-.001||b.x+b.w/2>a.bounds.maxX+.001||b.z-b.d/2<a.bounds.minZ-.001||b.z+b.d/2>a.bounds.maxZ+.001)fail('block footprint');}
   const supported=(x,z,y)=>{const s=campaignSupportAt(a,x,z);if(!s||s.y<=a.voidY||y!==undefined&&Math.abs(y-s.y)>.001)fail(`unsupported feet at ${x},${z}`);const block=a.blocks.find(b=>Math.abs(x-b.x)<b.w/2+.65&&Math.abs(z-b.z)<b.d/2+.65&&b.h>s.y+.15&&b.baseY<s.y+1.8);if(block)fail(`blocked feet at ${x},${z}: ${block.id}`);return s.y;};
   for(const field of ['spawns','navNodes']) {list(a[field],1,4096);for(const p of a[field]){list(p,2,2);p.forEach(n=>num(n));supported(...p);}}
@@ -80,7 +80,7 @@ export function parseCampaignMap(input,expectedId) {
   let previous=0;
   for(let i=1;i<=5;i++){if(!ids.has(`encounter-${i}-supply-loop`))fail('fight loop');const p=c.anchors[`encounter-${i}`];let nearest=Infinity,at=0;c.criticalPath.forEach((q,j)=>{const distance=Math.hypot(p.x-q.x,p.z-q.z);if(distance<nearest){nearest=distance;at=cumulative[j];}});if(nearest>=6||at-previous<(i===1?70:90))fail('anchor connectivity/order/spacing');previous=at;}
   list(data.palette,6,6);if(data.palette.some(p=>typeof p!=='string'||! /^[a-fA-F0-9]{6}$/.test(p)))fail('palette');
-  list(data.art,1,1600);for(const p of data.art){keys(p,['kind','material','position','scale']);if(!['tree','crag','beacon','dish','fallen-relay','fern'].includes(p.kind)||!materials.includes(p.material))fail('prop kind');vector(p.position);vector(p.scale);p.scale.forEach(n=>num(n,.01,32));num(p.position[0],a.bounds.minX,a.bounds.maxX);num(p.position[2],a.bounds.minZ,a.bounds.maxZ);}
+  list(data.art,1,1600);for(const p of data.art){keys(p,['kind','material','position','scale']);if(!['tree','crag','beacon','dish','fallen-relay','fern','water','pipe'].includes(p.kind)||!materials.includes(p.material))fail('prop kind');vector(p.position);vector(p.scale);p.scale.forEach(n=>num(n,.01,32));num(p.position[0],a.bounds.minX,a.bounds.maxX);num(p.position[2],a.bounds.minZ,a.bounds.maxZ);}
   list(data.cameras,1,8);for(const c of data.cameras){keys(c,['id','at','target']);text(c.id);vector(c.at);vector(c.target);}
   if(typeof data.geometryHash!=='string'||!/^[a-f0-9]{64}$/.test(data.geometryHash)||data.geometryHash!==nativeArenaGeometryHash(a))fail('geometry hash');
   return data;

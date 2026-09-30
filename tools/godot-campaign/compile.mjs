@@ -22,32 +22,45 @@ export function routeLength(points) {return points.slice(1).reduce((n,p,i)=>n+Ma
 
 export function compileCampaign(id) {
   const index=CAMPAIGN_MAP_IDS.indexOf(id);if(index<0)throw Error('Unknown campaign map');
-  const c=chapters[index],L=c.w/2-52,Z=c.h/2-32;
-  // Four inhabited terraces follow a power/river corridor. Long rock spines
-  // physically separate them; each end has a deliberate saddle/chokepoint.
-  const rows=[-Z,-Z/3,Z/3,Z],corners=[];
-  for(let row=0;row<4;row++) {
-    const sign=row%2===0?1:-1,z=rows[row];
-    corners.push([-L*sign,z],[-L*.35*sign,z+4],[L*.35*sign,z-4],[L*sign,z]);
-    if(row<3) corners.push([(L+14)*sign,(z+rows[row+1])/2]);
-  }
+  const c=chapters[index];
+  // Deliberately independent footprints, not four rescaled row mazes. These
+  // are the inhabited power corridor: geology is carved around their shapes.
+  const layouts=[
+    [[-140,-84],[-84,-88],[-20,-52],[52,-84],[128,-56],[124,8],[60,24],[4,-4],[-60,12],[-128,-8],[-132,56],[-76,88],[-12,60],[56,88],[132,72],[136,32]],
+    [[-152,-104],[-80,-108],[-56,-72],[-116,-28],[-144,36],[-96,96],[-24,92],[28,64],[112,104],[148,44],[100,8],[60,16],[56,-20],[64,-64],[144,-76],[140,-108],[40,-108],[-8,-64],[-20,-8],[-64,32]],
+    [[-164,100],[-164,28],[-104,28],[-104,-36],[-160,-36],[-160,-100],[-68,-104],[-28,-64],[44,-96],[140,-96],[164,-36],[88,-36],[48,12],[124,32],[156,100],[64,100],[24,60],[-44,88],[-68,40],[-16,8],[20,-24]],
+    [[-180,104],[-184,16],[-156,-84],[-76,-112],[36,-112],[148,-80],[180,16],[148,104],[52,112],[-48,96],[-116,56],[-116,-16],[-76,-56],[16,-64],[92,-32],[104,28],[56,64],[-4,44],[-32,4],[0,-12],[28,4]].map(p=>p.map(n=>n*.86)),
+  ];
+  const corners=layouts[index];
   const segments=[];let length=0;
   for(let i=1;i<corners.length;i++) {const a=corners[i-1],b=corners[i],len=Math.hypot(b[0]-a[0],b[1]-a[1]);segments.push({a,b,len,start:length});length+=len;}
   const nearest=(x,z)=>{
     let best={d:Infinity,s:0};for(const seg of segments) {const hit=distance([x,z],seg.a,seg.b);if(hit.d<best.d)best={d:hit.d,s:seg.start+hit.t*seg.len};}return best;
   };
   const at=s=>{const seg=segments.find(v=>v.start+v.len>=s)??segments.at(-1),t=clamp((s-seg.start)/seg.len,0,1);return [seg.a[0]+(seg.b[0]-seg.a[0])*t,seg.a[1]+(seg.b[1]-seg.a[1])*t];};
-  // Encounter sites are chosen on straight terraces, not blindly on switchbacks.
-  const sites=[[-L*.20,rows[0]], [L*.05,rows[1]],[-L*.60,rows[2]], [L*.60,rows[2]],[-L*.20,rows[3]]];
-  const floor=(s)=>c.base+c.rise*s/length+1.1*Math.sin(s*.025)*Math.sin(Math.PI*s/length);
+  const siteSegments=[[1,4,7,10,13],[2,4,8,13,17],[1,6,10,14,17],[2,5,9,13,18]][index];
+  const sites=siteSegments.map(i=>at(segments[i].start+segments[i].len*.5));
+  const frames=siteSegments.map(i=>{const s=segments[i];return {dx:(s.b[0]-s.a[0])/s.len,dz:(s.b[1]-s.a[1])/s.len};});
+  const local=(i,u,v)=>{const [x,z]=sites[i],{dx,dz}=frames[i];return [x+u*dx-v*dz,z+u*dz+v*dx];};
+  const width=s=>index===0?10+2.5*Math.sin(s*.031)**2:index===1?9+2*Math.sin(s*.017)**2:index===2?10:10+1.5*Math.sin(s*.019)**2;
+  const floor=s=>{
+    const t=s/length;
+    if(index===2){const terrace=t*5;return c.base+c.rise*(Math.floor(terrace)+smooth((terrace%1-.5)/.35))/5+1.2*Math.sin(s*.025)*Math.sin(Math.PI*t);}
+    const roll=index===0?3.4*Math.sin(t*Math.PI*6):index===1?3*Math.sin(t*Math.PI*4.4):5.5*Math.sin(t*Math.PI*3);
+    return c.base+c.rise*t+roll*Math.sin(Math.PI*t);
+  };
   const authoredHeight=(x,z)=>{
     const hit=nearest(x,z), clearing=Math.min(...sites.map(p=>Math.hypot(x-p[0],z-p[1])));
-    const edge=Math.min(hit.d-13,clearing-25);
-    const ridge=(index===0?22:index===1?28:24)*smooth(edge/10);
-    // Broad supported floor, rolling shoulders, faceted unclimbable ridge crests.
-    const detail=(.24*Math.sin(x*.065)*Math.cos(z*.08)*Math.sin(Math.PI*hit.s/length)+1.4*smooth(edge/8)*Math.sin(x*.07)**2);
-    const bridgeGully=index===1?16*smooth((hit.d-8)/8)*smooth((22-Math.abs(z-(rows[0]+rows[1])/2))/8)*smooth((x-L+8)/12):0;
-    return round(floor(hit.s)+ridge+detail-bridgeGully);
+    const edge=Math.min(hit.d-width(hit.s),clearing-25);
+    const organic=4*Math.sin(x*.031+z*.043)+3*Math.cos(z*.039-x*.021);
+    const ridge=(index===0?18+organic:index===1?24+organic:index===2?22+4*Math.floor((x+z+400)/52)%5:17+organic*.4)*smooth(edge/8);
+    const detail=.3*Math.sin(x*.065)*Math.cos(z*.08)*Math.sin(Math.PI*hit.s/length)+smooth(edge/8)*(1.8*Math.sin(x*.09)**2+Math.cos(z*.11));
+    let y=floor(hit.s)+ridge+detail;
+    // The river drops below its bank roads. At the two actual crossings the
+    // single support sheet narrows into a causeway instead of a second floor.
+    if(index===1){const river=Math.abs(x-12*Math.sin(z*.023));const carve=(1-smooth((river-7)/10))*smooth((hit.d-8)/7)*smooth((clearing-26)/7);y=y*(1-carve)+(c.base-9+.012*z)*carve;}
+    for(const [p,target]of [[corners[0],c.base],[corners.at(-1),c.base+c.rise]]){const blend=smooth((Math.hypot(x-p[0],z-p[1])-8)/8);y=y*blend+target*(1-blend);}
+    return round(y);
   };
   const arena={id,name:c.name,description:['A fern ravine follows the fallen forest power line into Siltwake.','Riverworks terraces wind around sandstone spines and restored bridge relays.','Basalt retaining terraces climb from the riverworks to the isolated uplink.','Highland forest returns around the Crown Array and its guardian court.'][index],bounds:{minX:-c.w/2,maxX:c.w/2,minZ:-c.h/2,maxZ:c.h/2},spawns:[],pickups:[],navNodes:[],blocks:[],terrain:{maxSlope:.65,surfaces:[],walls:[]},voidY:-24,ceilingY:160,raised:false,nextGen:true};
   const heights=new Map(),key=(x,z)=>`${x},${z}`;
@@ -61,8 +74,11 @@ export function compileCampaign(id) {
   const point=([x,z])=>({x:round(x),y:support(round(x),round(z)),z:round(z)});
   const chunks=new Map();
   for(let x=-c.w/2;x<c.w/2;x+=CELL)for(let z=-c.h/2;z<c.h/2;z+=CELL) {
-    const hit=nearest(x+2,z+2),bridge=index===1&&x>L-4&&z>rows[0]+10&&z<rows[1]-10;
-    const material=bridge&&hit.d<8?'metal':hit.d<7?'trail':hit.d<18?'ground':'rock';
+    const hit=nearest(x+2,z+2),bridge=index===1&&Math.abs(x-12*Math.sin(z*.023))<12;
+    const clearing=Math.min(...sites.map(p=>Math.hypot(x+2-p[0],z+2-p[1])));
+    const slope=Math.max(h(x,z),h(x+4,z),h(x,z+4),h(x+4,z+4))-Math.min(h(x,z),h(x+4,z),h(x,z+4),h(x+4,z+4));
+    const wooded=(index===0&&hit.s<length*.8)||index===3;
+    const material=bridge&&hit.d<8?'metal':hit.d<3.5?'trail':hit.d<width(hit.s)+2||clearing<26||wooded&&slope<2?'ground':'rock';
     const chunk=`terrain-${Math.floor((x+c.w/2)/32)}-${Math.floor((z+c.h/2)/32)}-${material}`;
     if(!chunks.has(chunk))chunks.set(chunk,{id:chunk,material,walkable:true,vertices:[],triangles:[]});
     const s=chunks.get(chunk),i=s.vertices.length;s.vertices.push([x,h(x,z),z],[x,h(x,z+CELL),z+CELL],[x+CELL,h(x+CELL,z+CELL),z+CELL],[x+CELL,h(x+CELL,z),z]);s.triangles.push([i,i+1,i+2],[i,i+2,i+3]);
@@ -78,79 +94,56 @@ export function compileCampaign(id) {
   const box=(bid,x,z,w,d,rise,material='stone')=>arena.blocks.push({id:bid,x:round(x),z:round(z),w,d,baseY:0,h:round(support(x,z)+rise),material});
   for(let i=0;i<5;i++) {
     const [x,z]=sites[i],a=point(sites[i]);anchors[`encounter-${i+1}`]={...a,radius:12};
-    const loop=route(`encounter-${i+1}-supply-loop`,[[x-22,z],[x-16,z+14],[x+16,z+14],[x+22,z],[x+16,z-14],[x-16,z-14],[x-22,z]]);
-    arena.pickups.push(['health',x-15,z+14],['ammo',x+15,z-14],['armor',x,z+14]);
-    if(i===1||i===3)arena.pickups.push([i===1?'scatter':'rocket',x+16,z+14]);
+    const loop=route(`encounter-${i+1}-supply-loop`,[[-22,0],[-16,14],[16,14],[22,0],[16,-14],[-16,-14],[-22,0]].map(p=>local(i,...p)));
+    arena.pickups.push(['health',...local(i,-15,14)],['ammo',...local(i,15,-14)],['armor',...local(i,0,14)]);
+    if(i===1||i===3)arena.pickups.push([i===1?'scatter':'rocket',...local(i,16,14)]);
     // Staggered inner cover: the side circuits go around both the entry screen
     // and target machinery. Actor deployment has a clear 8m central disk.
-    for(const side of [-1,1]) {box(`fight-${i+1}-cover-${side}`,x+side*11,z+side*8,5,3,1.9);box(`fight-${i+1}-screen-${side}`,x+side*5,z-side*9,3,3,3.1,'metal');}
-    box(`landmark-${i+1}-${c.landmarks[i]}`,x,z-20,5,4,7+i,'metal');
-    prop('beacon','light',x,z-20,.7,12+i,.7,support(x,z-20)+6);
-    // Crown ribs / relay housing piers, with no phantom support deck.
-    for(const side of [-1,1])box(`relay-${i+1}-pier-${side}`,x+side*8,z-20,2,3,11+i,'stone');
-    const housingY=Math.max(support(x-8,z-20),support(x+8,z-20))+7+i;
-    arena.blocks.push({id:`relay-${i+1}-housing`,x:round(x),z:round(z-20),w:13.8,d:2,baseY:0,h:round(housingY+1.2),material:'metal'});
+    for(const side of [-1,1]) {box(`fight-${i+1}-cover-${side}`,...local(i,side*11,side*8),3.5,3,1.6+index*.15,index===2?'metal':'stone');box(`fight-${i+1}-screen-${side}`,...local(i,side*5,-side*9),2.6,2.6,2.7,'metal');}
+    const [lx,lz]=local(i,0,-22);
+    prop('beacon','light',lx,lz,.55,6+i,.55,support(lx,lz)+4);
+    if(index===0){box(`landmark-${i+1}-${c.landmarks[i]}`,lx,lz,5,3,2+i*.5,'stone');prop(i===0?'fallen-relay':'dish',i===0?'metal':'stone',lx,lz,i===0?26:8,i===0?4:5,i===0?4:8,support(lx,lz)+3);}
+    if(index===1){for(const side of [-1,1]){const [px,pz]=local(i,side*8,-22);box(`pump-${i}-${side}`,px,pz,4,4,4+i,'metal');prop('pipe','metal',px,pz,3,9+i,3,support(px,pz)+3);}prop('dish','metal',lx,lz,11,5,11,support(lx,lz)+9);}
+    if(index===2){for(let j=0;j<4;j++){const [px,pz]=local(i,-10+j*6,-23);box(`basalt-uplink-${i}-${j}`,px,pz,3,3,6+j*2,'metal');prop('beacon','light',px,pz,.4,2,.4,support(px,pz)+6+j*2);}if(i===3)prop('dish','metal',lx,lz,24,12,24,support(lx,lz)+15);}
+    if(index===3){for(const side of [-1,1])box(`court-buttress-${i}-${side}`,...local(i,side*10,-23),3,5,8+i,'stone');if(i<4)prop('dish','metal',lx,lz,10+i,7,10+i,support(lx,lz)+9);}
     // Enemy pools are supported feet positions on each local combat circuit.
     for(const p of [loop[8],loop[20],loop[32],a])arena.spawns.push([p.x,p.z]);
   }
   anchors.exit={...criticalPath.at(-1),radius:6};arena.spawns.unshift([anchors.start.x,anchors.start.z]);
   // Biome-specific silhouettes complement (rather than recolour) the common
   // relay kit. Presentation ornaments sit on/behind solid landmark footprints.
-  if(index===0) {
-    const [x,z]=sites[0];
-    prop('fallen-relay','metal',x,z-23,30,4,4,support(x,z-23)+8);
-    prop('dish','stone',sites[1][0],sites[1][1]-20,12,8,12,support(sites[1][0],sites[1][1]-20)+9);
-  }
   if(index===1) {
-    const x=L+14,z=(rows[0]+rows[1])/2;
-    for(const side of [-1,1]) {
-      box(`bridge-parapet-${side}`,x+side*10,z,1.5,14,1.4,'metal');
-      box(`bridgeworks-tower-${side}`,x+side*13,z,3,5,18,'stone');
-    }
-    for(const [sx,sz]of [sites[1],sites[3]])prop('dish','metal',sx,sz-20,14,6,14,support(sx,sz-20)+10);
+    for(let z=-120;z<120;z+=12)prop('water','water',12*Math.sin(z*.023),z,15,.1,15,c.base-6);
+    for(const si of [6,16]){const seg=segments[si],mid=at(seg.start+seg.len*.5),dx=(seg.b[0]-seg.a[0])/seg.len,dz=(seg.b[1]-seg.a[1])/seg.len;for(const side of [-1,1]){const x=mid[0]-dz*side*12,z=mid[1]+dx*side*12;box(`bridgeworks-${si}-${side}`,x,z,3,3,15,'stone');prop('beacon','light',x,z,.6,6,.6,support(x,z)+15);}}
   }
   if(index===2) {
     for(let i=0;i<5;i++) {
-      const [x,z]=sites[i];
-      for(let j=0;j<4;j++)prop('crag','rock',x-14+j*8,z-24,5,12+j*2,5);
+      for(let j=0;j<4;j++){const [x,z]=local(i,-14+j*8,-26);prop('crag','rock',x,z,5,12+j*2,5);}
     }
-    const [x,z]=sites[3];prop('dish','metal',x,z-20,22,12,22,support(x,z-20)+14);
   }
   if(index===3) {
-    const [x,z]=sites[4];
-    prop('dish','stone',x,z-20,30,12,30,support(x,z-20)+14);
+    const [x,z]=local(4,0,-27);
+    prop('dish','stone',x,z,30,12,30,support(x,z)+14);
     for(let i=0;i<7;i++) {
-      const px=x-24+i*8,pz=z-24-Math.sin(i*Math.PI/6)*7;
+      const [px,pz]=local(4,-24+i*8,-28-Math.sin(i*Math.PI/6)*7);
       box(`crown-fin-${i}`,px,pz,2,3,18+8*Math.sin(i*Math.PI/6),'metal');
       prop('beacon','light',px,pz,.5,3,.5,support(px,pz)+18+8*Math.sin(i*Math.PI/6));
     }
   }
-  // Closed rock ribs enforce geography even if source movement would otherwise
-  // slide up a steep support sheet. Gaps alternate at the authored saddles.
-  for(let row=0;row<3;row++) {
-    const z=(rows[row]+rows[row+1])/2,side=row%2===0?1:-1;
-    const min=side===1?-c.w/2:L*-1+31,max=side===1?L-31:c.w/2;
-    for(let x=min;x<max;x+=12) {
-      const w=Math.min(12,max-x),cx=x+w/2;
-      box(`ridge-${row}-${round(x)}`,cx,z,w,5,5,'rock');
-    }
-  }
-  // Boundary masses share real block collision and visually terminate the
-  // exterior shelves. Passage at chapter entry/exit remains inside bounds.
-  for(const side of [-1,1]) {
-    for(let z=-c.h/2;z<c.h/2;z+=16)box(`edge-x-${side}-${z}`,side*(c.w/2-2),z+8,4,16,6+3*Math.sin(z*.17)**2,'rock');
-    for(let x=-c.w/2+4;x<c.w/2-4;x+=16){const w=Math.min(16,c.w/2-4-x);box(`edge-z-${side}-${x}`,x+w/2,side*(c.h/2-2),w,4,6+4*Math.cos(x*.13)**2,'rock');}
-  }
-  for(let s=24;s<length;s+=42) {const [x,z]=at(s);prop('beacon','light',x,z+7,.25,2.4,.25);}
+  // Buried grounded cliff cores follow the actual organic footprint, rather
+  // than drawing visible rectangular maze walls. Their tops lie inside the
+  // rock volume; source movement cannot jump through unsupported cliff faces.
+  for(let x=-c.w/2+4;x<c.w/2;x+=8)for(let z=-c.h/2+4;z<c.h/2;z+=8){const hit=nearest(x,z),clearing=Math.min(...sites.map(p=>Math.hypot(x-p[0],z-p[1])));if(hit.d<width(hit.s)+10||hit.d>width(hit.s)+25||clearing<35)continue;const top=Math.min(...[-4,0,4].flatMap(dx=>[-4,0,4].map(dz=>support(x+dx,z+dz))))-1;arena.blocks.push({id:`cliff-core-${x}-${z}`,x,z,w:8,d:8,baseY:0,h:round(Math.max(1,top)),material:'rock'});}
+  for(let s=24;s<length;s+=42) {const [x,z]=at(s),seg=segments.find(v=>v.start+v.len>=s);prop('beacon','light',x-(seg.b[1]-seg.a[1])/seg.len*6,z+(seg.b[0]-seg.a[0])/seg.len*6,.2,1.4,.2);}
   // Deterministic bounded scatter, outside route/loop clearance. Forest fades
   // into sandstone at chapter one exit and returns on chapter four's crown.
   let seed=9001+index;const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
   for(let n=0;n<1100;n++) {
     const x=(random()-.5)*(c.w-16),z=(random()-.5)*(c.h-16),hit=nearest(x,z);
-    const shoulder=(index===0||index===3)&&hit.d>=10&&hit.d<13;
+    const shoulder=(index===0||index===3)&&hit.d>=9&&hit.d<12;
     if((hit.d<20&&!shoulder)||sites.some(p=>Math.hypot(x-p[0],z-p[1])<31))continue;
     const wooded=index===0?hit.s/length<.80:index===3?random()<.64:false;
-    if(wooded){const sy=7+random()*7;prop('tree','foliage',x,z,2.8+random()*1.6,sy,2.8+random()*1.6);if(shoulder)box(`shoulder-trunk-${n}`,x,z,.7,.7,sy*.72,'rock');}
+    if(wooded){const sy=7+random()*7;prop('tree','foliage',x,z,5+random()*3,sy,5+random()*3);if(shoulder)box(`shoulder-trunk-${n}`,x,z,.7,.7,sy*.72,'rock');}
     else prop('crag','rock',x,z,2+random()*3,3+random()*8,2+random()*3);
   }
   for(let n=0;n<2400;n++) {
@@ -160,10 +153,7 @@ export function compileCampaign(id) {
   }
   // Chapter handoff landmarks repeat verbatim: same gate proportions, beacon
   // colour and floor elevation at Rootfall/Siltwake/Emberline/Crown joins.
-  for(const [label,p] of [['arrival',anchors.start],['departure',anchors.exit]]) {
-    for(const side of [-1,1])box(`${label}-power-pylon-${side}`,p.x,p.z+side*9,3,3,15,'metal');
-    prop('beacon','light',p.x,p.z+9,.6,4,.6,support(p.x,p.z+9)+15);
-  }
+  for(const [p,seg]of [[anchors.start,segments[0]],[anchors.exit,segments.at(-1)]])prop('beacon','light',p.x-(seg.b[1]-seg.a[1])/seg.len*6,p.z+(seg.b[0]-seg.a[0])/seg.len*6,.5,5,.5,p.y);
   // Nav samples retain ordered routes plus complete combat loops; source nav
   // owns adjacency/line-of-sight rather than trusting metadata as collision.
   const nav=new Map();for(const r of routes)for(let i=0;i<r.points.length;i+=2){const p=r.points[i];nav.set(key(p.x,p.z),[p.x,p.z]);}arena.navNodes=[...nav.values()];

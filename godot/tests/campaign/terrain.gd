@@ -2,6 +2,7 @@ extends SceneTree
 const Terrain = preload("res://campaign/terrain.gd")
 var failures := 0
 var render_dir := ""
+var only_id := ""
 
 func _initialize() -> void:
 	call_deferred("_run")
@@ -14,6 +15,7 @@ func check(value: bool, message: String) -> void:
 func _run() -> void:
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--render="): render_dir = arg.trim_prefix("--render=")
+		if arg.begins_with("--map="): only_id = arg.trim_prefix("--map=")
 	root.size = Vector2i(1280, 720)
 	var world := Node3D.new()
 	root.add_child(world)
@@ -43,6 +45,7 @@ func _run() -> void:
 	label.add_theme_constant_override("outline_size", 5)
 	root.add_child(label)
 	for id: String in Terrain.IDS:
+		if not only_id.is_empty() and id != only_id: continue
 		var terrain := Terrain.new()
 		world.add_child(terrain)
 		check(terrain.build(id), "build " + id)
@@ -73,6 +76,11 @@ func _run() -> void:
 		check(terrain.terrain_chunks <= 320, "bounded terrain chunks")
 		check(terrain.art_instances < 2200, "bounded scenery")
 		print("CAMPAIGN_TERRAIN ", id, " ", terrain.visible_cost())
+		if terrain._meshes.has("tree"):
+			var tree_arrays: Array = terrain._meshes.tree.surface_get_arrays(0)
+			var colors: PackedColorArray = tree_arrays[Mesh.ARRAY_COLOR]
+			check(colors[200].g > colors[200].r and colors[200].a > 0.9, "original branching foliage retains green leaf colours")
+		check(terrain.horizon_chunks > 0 and terrain.horizon_chunks <= 160, "bounded stitched horizon")
 		if not render_dir.is_empty():
 			var bounds: Dictionary = terrain.recipe.arena.bounds
 			var width: float = bounds.maxX - bounds.minX
@@ -81,10 +89,16 @@ func _run() -> void:
 			var views := [{"id":"vista", "at":Vector3(-width*0.50, base+width*0.75, height*0.70), "target":Vector3(0, base+20, 0)}]
 			for encounter: int in [1, 5]:
 				var p: Dictionary = terrain.recipe.campaign.anchors["encounter-%d" % encounter]
-				var direction := 1.0 if encounter == 1 else -1.0
-				var x: float = p.x-direction*28
-				var z: float = p.z+4
-				views.append({"id":"route-%d" % encounter, "at":Vector3(x,terrain.height_at(x,z)+1.65,z), "target":Vector3(p.x+direction*8,p.y+3,p.z-10)})
+				var route: Array = terrain.recipe.campaign.criticalPath
+				var nearest := 0
+				var best := INF
+				for j: int in route.size():
+					var distance := Vector2(route[j].x-p.x,route[j].z-p.z).length()
+					if distance < best:
+						best = distance
+						nearest = j
+				var eye: Dictionary = route[maxi(0,nearest-9)]
+				views.append({"id":"route-%d" % encounter, "at":Vector3(eye.x,eye.y+1.65,eye.z), "target":Vector3(p.x,p.y+2,p.z)})
 			for view: Dictionary in views:
 				camera.position = view.at
 				camera.look_at(view.target)

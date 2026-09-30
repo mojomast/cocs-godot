@@ -4,12 +4,16 @@ extends Node3D
 const IDS := ["rootfall-verge", "siltwake-crossing", "emberline-ascent", "crown-array"]
 const CELL := 4.0
 const CHUNK := 32.0
+const BiomeVisual = preload("res://biomes/map.gd")
+const SURFACE = preload("res://biomes/surface.gdshader")
+const FOLIAGE = preload("res://biomes/foliage.gdshader")
 var recipe: Dictionary = {}
 var materials: Dictionary = {}
 var heights: Dictionary = {}
 var terrain_chunks := 0
 var art_batches := 0
 var art_instances := 0
+var horizon_chunks := 0
 var _meshes: Dictionary = {}
 
 func get_arena_id() -> String:
@@ -35,12 +39,14 @@ func build(id: String) -> bool:
 	terrain_chunks = 0
 	art_batches = 0
 	art_instances = 0
+	horizon_chunks = 0
 	_make_materials()
 	for surface: Dictionary in recipe.arena.terrain.surfaces:
 		for v: Array in surface.vertices: heights[Vector2i(roundi(v[0]), roundi(v[2]))] = float(v[1])
 		_surface(surface)
 	_build_blocks()
 	_build_art()
+	_build_horizon()
 	return true
 
 func height_at(x: float, z: float) -> float:
@@ -60,26 +66,33 @@ func height_at(x: float, z: float) -> float:
 func _make_materials() -> void:
 	var names := ["ground", "trail", "rock", "stone", "metal", "light"]
 	for i: int in names.size():
-		var mat := StandardMaterial3D.new()
-		mat.albedo_color = Color(str(recipe.palette[i]))
-		mat.roughness = 0.92
-		if names[i] == "metal":
-			mat.metallic = 0.35
-			mat.roughness = 0.65
 		if names[i] == "light":
+			var mat := StandardMaterial3D.new()
+			mat.albedo_color = Color(str(recipe.palette[i]))
 			mat.emission_enabled = true
 			mat.emission = mat.albedo_color
-			mat.emission_energy_multiplier = 1.4
-		materials[names[i]] = mat
-	var foliage := StandardMaterial3D.new()
-	foliage.vertex_color_use_as_albedo = true
-	foliage.roughness = 1.0
+			mat.emission_energy_multiplier = 0.7
+			materials[names[i]] = mat
+		else:
+			var mat := ShaderMaterial.new()
+			mat.shader = SURFACE
+			mat.set_shader_parameter("base_color", Color(str(recipe.palette[i])))
+			mat.set_shader_parameter("grain_scale", 5.0 if names[i] == "trail" else 2.4)
+			mat.set_shader_parameter("metal", 0.65 if names[i] == "metal" else 0.0)
+			materials[names[i]] = mat
+	var foliage := ShaderMaterial.new()
+	foliage.shader = FOLIAGE
 	materials.foliage = foliage
+	var water := StandardMaterial3D.new()
+	water.albedo_color = Color("386b73")
+	water.metallic = 0.35
+	water.roughness = 0.22
+	materials.water = water
 
 static func _v(p: Array) -> Vector3:
 	return Vector3(float(p[0]), float(p[1]), float(p[2]))
 
-func _surface(surface: Dictionary) -> void:
+func _surface(surface: Dictionary, collide := true) -> void:
 	var origin := _v(surface.vertices[0])
 	origin.y = 0.0
 	var st := SurfaceTool.new()
@@ -101,6 +114,9 @@ func _surface(surface: Dictionary) -> void:
 	mesh.mesh = st.commit()
 	mesh.material_override = materials[surface.material]
 	add_child(mesh)
+	if not collide:
+		horizon_chunks += 1
+		return
 	var body := StaticBody3D.new()
 	body.position = origin
 	var collision := CollisionShape3D.new()
@@ -161,7 +177,9 @@ func _batch(group: Dictionary, solid: bool) -> void:
 		bounds = instance_bounds if i == 0 else bounds.merge(instance_bounds)
 	# Explicit union includes full scaled crowns, beacon tops, and giant ridge
 	# blocks; a fixed 32m cell box would incorrectly cull their overhangs.
-	multi.custom_aabb = bounds.grow(0.1)
+	# Original foliage wind displaces local X by <=0.1*local leaf height.
+	# These normalized foliage assets/scales stay within a conservative 2m pad.
+	multi.custom_aabb = bounds.grow(2.0 if group.material == "foliage" else 0.1)
 	var node := MultiMeshInstance3D.new()
 	node.name = ("Solid_" if solid else "Scenery_") + kind
 	node.position = group.origin
@@ -180,26 +198,31 @@ func _batch(group: Dictionary, solid: bool) -> void:
 	art_instances += multi.instance_count
 
 func _prop_mesh(kind: String) -> Mesh:
-	if kind == "box": return BoxMesh.new()
+	if kind in ["box", "water"]: return BoxMesh.new()
+	if kind in ["tree", "fern", "mountain"]:
+		# Reuse the actual Canopy/Basalt authored branching/lobed assets, not a
+		# cone-tree approximation. Normalize once so recipe scales stay metres.
+		var original := BiomeVisual.new()
+		original.forest = int(recipe.campaign.index) in [0, 3]
+		var mesh: ArrayMesh = original._tree_mesh() if kind == "tree" else original._plant_mesh() if kind == "fern" else original._cliff_mesh(1.0, 1.0, 0.7)
+		original.free()
+		var arrays: Array = mesh.surface_get_arrays(0)
+		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+		var normals: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL]
+		var divisor := Vector3(6.4, 7.4, 6.4) if kind == "tree" else Vector3(1.4, 0.8, 1.4) if kind == "fern" else Vector3.ONE
+		for i: int in vertices.size():
+			vertices[i] /= divisor
+			normals[i] = (normals[i]*divisor).normalized()
+		arrays[Mesh.ARRAY_VERTEX] = vertices
+		arrays[Mesh.ARRAY_NORMAL] = normals
+		var result := ArrayMesh.new()
+		result.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+		return result
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	if kind == "tree":
-		_prism(st, Vector3(0, 0, 0), Vector3(0.025, 0.72, 0), 0.075, 0.035, 6, Color("645241"))
-		# Asymmetric interlocking faceted crowns, not identical cone trees.
-		_prism(st, Vector3(-0.13, 0.36, 0.03), Vector3(-0.18, 0.80, 0.05), 0.33, 0.12, 7, Color("496d48"))
-		_prism(st, Vector3(0.15, 0.46, -0.07), Vector3(0.19, 0.88, -0.09), 0.32, 0.10, 7, Color("668752"))
-		_prism(st, Vector3(0.02, 0.62, 0), Vector3(0, 1, 0), 0.29, 0.045, 7, Color("78945e"))
-	elif kind == "fern":
-		var color := Color("527842") if int(recipe.campaign.index) in [0, 3] else Color("93805d")
-		for i: int in 9:
-			var angle := float(i)*2.399
-			var tip := Vector3(cos(angle)*0.5, 0.2+float(i%3)*0.2, sin(angle)*0.5)
-			var side := Vector3(-sin(angle), 0, cos(angle))*0.085
-			var mid := tip*0.55 + Vector3(0, 0.25, 0)
-			_tri(st, Vector3.ZERO, mid+side, tip, color)
-			_tri(st, Vector3.ZERO, tip, mid-side, color)
-			_tri(st, Vector3.ZERO, tip, mid+side, color)
-			_tri(st, Vector3.ZERO, mid-side, tip, color)
+	if kind == "pipe":
+		_prism(st, Vector3.ZERO, Vector3(0, 1, 0), 0.4, 0.4, 10, Color.WHITE)
+		for y: float in [0.1, 0.45, 0.9]: _prism(st, Vector3(0, y, 0), Vector3(0, y+0.045, 0), 0.5, 0.5, 10, Color.WHITE)
 	elif kind == "dish":
 		_prism(st, Vector3.ZERO, Vector3(0, 0.3, 0), 0.065, 0.09, 8, Color.WHITE)
 		# Open segmented receiver bowl: a legible skyline silhouette.
@@ -212,8 +235,6 @@ func _prop_mesh(kind: String) -> Mesh:
 			var outer_b := Vector3(cos(b)*0.5, 0.70, sin(b)*0.5)
 			_tri(st, inner_a, outer_b, outer_a, Color.WHITE)
 			_tri(st, inner_a, inner_b, outer_b, Color.WHITE)
-			_tri(st, inner_a, outer_a, outer_b, Color.WHITE)
-			_tri(st, inner_a, outer_b, inner_b, Color.WHITE)
 		_prism(st, Vector3(0, 0.3, 0), Vector3(0, 1, 0), 0.018, 0.008, 6, Color.WHITE)
 	elif kind == "fallen-relay":
 		# Tumbled lattice mast, authored above the fallen relay's solid housing.
@@ -249,4 +270,43 @@ func _tri(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, color: Color) -> 
 		st.add_vertex(p)
 
 func visible_cost() -> Dictionary:
-	return {"terrain_chunks":terrain_chunks, "art_batches":art_batches, "art_instances":art_instances}
+	return {"terrain_chunks":terrain_chunks, "horizon_chunks":horizon_chunks, "art_batches":art_batches, "art_instances":art_instances}
+
+func _horizon_height(x: float, z: float) -> float:
+	var b: Dictionary = recipe.arena.bounds
+	var cx := clampf(x, b.minX, b.maxX)
+	var cz := clampf(z, b.minZ, b.maxZ)
+	var distance := Vector2(x-cx, z-cz).length()
+	var blend := smoothstep(0.0, 96.0, distance)
+	var base: float = recipe.campaign.anchors.start.y + 12.0
+	var mountain := base + 12.0 + 28.0*pow(sin(x*0.017)*cos(z*0.021), 2)
+	return lerpf(height_at(cx, cz), mountain, blend)
+
+func _build_horizon() -> void:
+	# A 192m stitched scenery collar hides rectangular map edges. Boundary
+	# vertices use exact height_at samples; no skirt is gameplay support.
+	var b: Dictionary = recipe.arena.bounds
+	var groups: Dictionary = {}
+	for x: int in range(int(b.minX)-192, int(b.maxX)+192, 4):
+		for z: int in range(int(b.minZ)-192, int(b.maxZ)+192, 4):
+			if x >= b.minX and x < b.maxX and z >= b.minZ and z < b.maxZ: continue
+			var key := "%d-%d" % [floori(float(x)/64.0), floori(float(z)/64.0)]
+			if not groups.has(key): groups[key] = {"id":"horizon-"+key, "material":"ground" if int(recipe.campaign.index) in [0,3] else "rock", "vertices":[], "triangles":[]}
+			var surface: Dictionary = groups[key]
+			var i: int = surface.vertices.size()
+			for p: Vector2 in [Vector2(x,z), Vector2(x,z+4), Vector2(x+4,z+4), Vector2(x+4,z)]: surface.vertices.append([p.x,_horizon_height(p.x,p.y),p.y])
+			surface.triangles.append([i,i+1,i+2])
+			surface.triangles.append([i,i+2,i+3])
+	for surface: Dictionary in groups.values(): _surface(surface, false)
+	var scenery: Dictionary = {}
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 76312 + int(recipe.campaign.index)
+	for i: int in 180:
+		var angle := float(i)*2.399
+		var x := cos(angle)*(float(b.maxX)+rng.randf_range(28,160))
+		var z := sin(angle)*(float(b.maxZ)+rng.randf_range(28,160))
+		if x > b.minX-12 and x < b.maxX+12 and z > b.minZ-12 and z < b.maxZ+12: continue
+		var wooded := int(recipe.campaign.index) in [0,3] and i%4 != 0
+		var size := Vector3(7, rng.randf_range(9,17), 7) if wooded else Vector3(rng.randf_range(12,24), rng.randf_range(20,42), rng.randf_range(12,24))
+		_group(scenery, "tree" if wooded else "mountain", "foliage" if wooded else "rock", Vector3(x,_horizon_height(x,z)-1,z), size)
+	for group: Dictionary in scenery.values(): _batch(group, false)
