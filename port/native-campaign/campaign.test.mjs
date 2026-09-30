@@ -134,6 +134,26 @@ test('restoration requires an interaction pulse, pauses outside, then finishes o
   at(match,anchor);for(let i=0;i<370;i++)tick(match);
   assert.equal(match.snapshot().campaign.stepIndex,3);
 });
+test('hold progresses with live guards but requires full duration, all guards dead and relay arrival',()=>{
+  const match=make('siltwake-crossing',{checkpoint:3}),data=loadCampaignMap('siltwake-crossing');
+  const anchor=data.campaign.anchors['encounter-4'];
+  at(match,anchor);tick(match);
+  // Sequence proof: empty externally supplied controls disable enemy AI inputs,
+  // while actual role ticks continue. The player's fixture protection prevents
+  // damage from masking objective assertions; this is not a difficulty test.
+  const heldTick=()=>match.step(1/60,{inputs:Object.fromEntries(match.actors.map(a=>[a.id,{}]))});
+  for(let i=0;i<60;i++)heldTick();
+  assert.ok(match.snapshot().campaign.holdProgress>0);
+  assert.ok(match.snapshot().campaign.enemiesRemaining>0);
+  assert.equal(match.snapshot().campaign.detail,'Hold the relay and eliminate its guards');
+  for(let i=0;i<750;i++)heldTick();
+  assert.equal(match.snapshot().campaign.holdProgress,1);
+  assert.equal(match.snapshot().campaign.stepIndex,3,'fulfilled duration cannot bypass live guards');
+  at(match,data.campaign.anchors.start);heldTick();clear(match);heldTick();
+  assert.equal(match.snapshot().campaign.holdProgress,1,'leaving retains progress');
+  assert.equal(match.snapshot().campaign.stepIndex,3,'completed hold plus cleared guards still needs relay arrival');
+  at(match,anchor);heldTick();assert.equal(match.snapshot().campaign.stepIndex,4);
+});
 test('source hitscan collision accepts shots through every visible chassis after spawn',()=>{
   for(const [model,robot] of Object.entries(ROBOTS)) {
     const match=make(),anchor=loadCampaignMap(MISSION_IDS[0]).campaign.anchors['encounter-1'];

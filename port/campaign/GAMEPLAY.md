@@ -33,6 +33,8 @@ marker” active until arrival; no timer is imposed. **Interact:** clear guards 
 press Interact inside the marker. **Restore:** clear guards, press Interact once
 to begin, then remain inside the marker for 6–8 seconds. **Hold:** accumulate
 12–15 seconds inside the marker while fighting and eliminate all guards. Hold
+completion also requires being inside the marker. Progress accumulates with live
+guards present, so the position is defended rather than timed after a clear. Hold
 and restore progress pauses outside the marker, so dodging is never punished by
 a reset. NativeClient treats Interact as a pulse; restoration deliberately does
 not require a held input. These are active objective beats, not long forced waits.
@@ -100,6 +102,17 @@ source drift and committed-byte reproducibility. Runtime packaging must include
 `port/native-campaign/core.generated.mjs`; the generator/provenance test are
 build/review tools, not runtime dependencies.
 
+Source bots still import the original core's floor/navigation helpers. Because
+the original and generated modules own separate private floor-query caches,
+`primeCampaignSourceNavigation(arena)` invokes original `navigation(arena)` before
+generated Match construction. A weak arena-keyed memo records the exact
+`terrain.surfaces` reference: retry reuses initialization, while a replaced
+surfaces reference primes again. The returned source graph is discarded; source
+rules and generated-core provenance are unchanged. `navigation-cache.test.mjs`
+tracks reads of triangle vertices to prove original and generated `floorAt` and
+`walkEdge` use baked arrays, agree on heights, reuse retry state, and invalidate
+after immutable terrain edits. No timing threshold is used.
+
 ## Authority API and protocol
 
 `createAuthority(options={})` and alias `createCampaignAuthority` return unbound
@@ -139,7 +152,7 @@ finite and buttons boolean before source normalization. One human socket only.
 ## Verification (run serially in the integration slot)
 
 ```sh
-node --test --test-concurrency=1 port/native-campaign/core-provenance.test.mjs port/native-campaign/campaign.test.mjs port/native-campaign/hit-volume.test.mjs port/native-campaign/authority.test.mjs
+node --test --test-concurrency=1 port/native-campaign/core-provenance.test.mjs port/native-campaign/navigation-cache.test.mjs port/native-campaign/campaign.test.mjs port/native-campaign/hit-volume.test.mjs port/native-campaign/authority.test.mjs
 ```
 
 Tests use seeded source matches and real source damage, ordinary ticks for

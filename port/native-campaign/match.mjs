@@ -1,8 +1,23 @@
 import {Match, floorAt, obstructed} from './core.generated.mjs';
+import {navigation as sourceNavigation} from '../../game/core.mjs';
 import {updateEnemyRoles, updateHealthRegen} from '../../game/singleplayer.mjs';
 import {loadCampaignMap} from './maps.mjs';
 import {missionForCampaign} from './missions.mjs';
 import {deployEncounter} from './enemies.mjs';
+
+const primedSourceSurfaces=new WeakMap();
+/** Source bots import the original core's private floor-query cache. Bake that
+ * cache explicitly as well as the generated Match cache. Retrying the same
+ * immutable arena does no work; terrain edits replacing surfaces must re-prime.
+ * Store only after success so a failed initialization remains retryable. */
+export function primeCampaignSourceNavigation(arena) {
+  if (!arena?.terrain) return false;
+  const surfaces=arena.terrain.surfaces;
+  if (primedSourceSurfaces.has(arena)&&primedSourceSurfaces.get(arena)===surfaces) return false;
+  sourceNavigation(arena);
+  primedSourceSurfaces.set(arena,surfaces);
+  return true;
+}
 
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const place = (actor, point) => Object.assign(actor, {x:point.x,y:point.y,z:point.z,
@@ -82,7 +97,11 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
       }
       if (!state.deployed) return;
       const alive=remaining(this);
-      if (encounter.mechanic==='hold' && near) state.holdProgress=Math.min(encounter.seconds,state.holdProgress+dt);
+      // Hold progress belongs to the contested position, not a post-clear wait.
+      // Leaving pauses progress; living guards still block completion below.
+      if (encounter.mechanic==='hold' && near) {
+        state.holdProgress=Math.min(encounter.seconds,state.holdProgress+dt);
+      }
       if (alive>0) return;
       let done=(encounter.mechanic==='clear'||encounter.mechanic==='guardian')&&near;
       if (encounter.mechanic==='interact') done=near && controls.interact===true;
@@ -91,7 +110,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         if (near && state.restoring) state.holdProgress=Math.min(encounter.seconds,state.holdProgress+dt);
         done=state.holdProgress>=encounter.seconds;
       }
-      if (encounter.mechanic==='hold') done=state.holdProgress>=encounter.seconds;
+      if (encounter.mechanic==='hold') done=near&&state.holdProgress>=encounter.seconds;
       if (!done) return;
       this.emit('campaign-objective-complete',{step:state.stepIndex});
       state.bankedKills+=state.enemies.filter(id=>this.actors[id]?.health<=0).length;
@@ -114,7 +133,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         detail:!state.deployed&&encounter?'Follow the waypoint. Optional supply routes branch from the service path.':
           mechanic==='restore'?'Clear guards, press Interact to begin, then stay inside the marker.':
           mechanic==='interact'?'Clear the guards, then press Interact inside the marker.':
-          mechanic==='hold'?'Remain inside the marker and clear all guards. Progress is retained when you dodge.':
+          mechanic==='hold'?(remaining(this)>0?'Hold the relay and eliminate its guards':'Remain inside the relay marker to finish synchronization. Progress is retained when you dodge.'):
           encounter?(state.deployed&&remaining(this)===0?'Area clear—reach the relay marker':'Eliminate the deployed security robots.'):'Reach the exit to continue.',
         marker:state.phase==='playing'?{x:marker.x,y:marker.y,z:marker.z,radius:marker.radius}:null,
         phase:state.phase,checkpoint:state.checkpoint,elapsed:state.elapsed,totalElapsed:state.totalElapsed,
@@ -123,5 +142,6 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
       return snapshot;
     }
   }
+  primeCampaignSourceNavigation(data.arena);
   return new CampaignMatch('chatgpt','openclaw',random,mapId,{mode:'campaign',difficulty,botCount:0,humanCount:1});
 }
