@@ -163,3 +163,14 @@ circuit details, with team colors and silhouettes readable at gameplay distance.
 Matched before/after captures, identity/team/pose checks and material resource
 costs are required before integration. The lane initially edits only while the
 capture-repair lane holds the heavy slot. Kick work continues independently.
+
+## Additional user request: distinct robot voice quips
+
+The owner requested a distinctive voice-like sound for each enemy. Isolated
+Astra lane `campaign/robot-voices` (`ses_f0b609999ffe9BcN6uRYikiXfY`) owns six
+synthetic vocal identities, contextual authoritative-state/event admission,
+spatial playback, repetition limits and session cleanup. Short formant/syllabic
+quips should distinguish personalities rather than repitching a common beep.
+The lane will supply individual audio previews and a labelled audition reel.
+It owns new campaign voice modules and minimal campaign session hooks; shared
+weapon/kick feedback remains with the melee lane. Heavy tests await slot release.
