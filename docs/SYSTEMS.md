@@ -248,8 +248,12 @@ normal protection/armor/suicide path. `blastUnsafe(weapon, distance)` is
   line is aligned to the weapon camera's centre ray; sights themselves are open
   (notch/aperture/front post, thin holo frame, open-ended scope) and the optic
   attachment mounts on the same interpolated sight line.
-- `Match.melee(a)` uses `MELEE = { range: 2.4, damage: 45, cooldown: .6, arc: .2 }`,
-  selecting the nearest enemy inside the arc with line of sight.
+- `Match.melee(a)` uses `MELEE = { range: 2.4, damage: 45, cooldown: .3, arc: .2, knockback: .85 }`,
+  selecting the nearest living enemy inside the arc with line of sight to its
+  contact point. A fresh press attempts once; a press refused during cooldown is
+  consumed. Actual damage applies a bounded collision-swept shove, preserving
+  locomotion velocity and grounded support. See `port/MELEE_AUTHORITY_2026-09-30.md`
+  for the event contract and explicit source derivative provenance.
 - `Match.throwGrenade(a)` launches the slot-5 launcher's grenade physics with a flat
   aim, `vy 5.5`, life `2.6`, and a 7 s actor cooldown.
 

@@ -5,6 +5,7 @@ const EDGE_KEYS := {KEY_SPACE:"jump", KEY_R:"reload", KEY_E:"interact", KEY_Q:"p
 const Weapons = preload("res://world/weapon_selection.gd")
 const SettingsAccess = preload("res://ui/settings_access.gd")
 var keys := {}
+var down := {} # Physical keys survive focus/modal clears until release.
 var mouse := {}
 var pulses := {}
 var weapon := -1
@@ -31,10 +32,12 @@ func record(event: InputEvent, active: bool, actor: Dictionary = {}) -> void:
 		var code: int = event.physical_keycode
 		if not event.pressed:
 			keys.erase(code)
+			down.erase(code)
 			return
+		if event.echo or down.has(code): return
+		down[code] = true
 		if not active: return
 		keys[code] = true
-		if event.echo: return
 		if EDGE_KEYS.has(code): pulses[EDGE_KEYS[code]] = true
 		var index := Weapons.key_index(code)
 		if index >= 0 and Weapons.available(actor, index): weapon = index
@@ -68,9 +71,6 @@ func sample(yaw: float, pitch: float) -> Dictionary:
 		"ads":mouse.has(MOUSE_BUTTON_RIGHT), "altFire":keys.has(KEY_Z) or mouse.has(MOUSE_BUTTON_MIDDLE)}
 	for action: String in ["reload", "interact", "power", "melee", "grenade"]:
 		value[action] = pulses.has(action)
-	# The source's own cooldown accepts or refuses each repeated melee request.
-	# Retain the edge pulse when a queued render sample is delayed.
-	value.melee = keys.has(KEY_F) or pulses.has("melee")
 	if weapon >= 0: value.weapon = weapon
 	return value
 

@@ -48,3 +48,18 @@ test('humans and actors without valid explicit volumes retain exact scalar fallb
   enemy.isNpc=true;enemy.npcHitVolume={width:Infinity,depth:1,bottom:0,top:1};
   assert.ok(ray(match,enemy,.9)>0,'invalid volume cannot create an unbounded hitbox');
 });
+
+test('campaign kicks contact every robot body and shove through the shared authority',()=>{
+  for(const model of Object.keys(ROBOTS)){
+    const {match,enemy}=fixture(model),volume=enemy.npcHitVolume,actor=match.actors[0];
+    match.arena={blocks:[],bounds:{minX:-20,maxX:20,minZ:-20,maxZ:20}};
+    Object.assign(actor,{x:0,y:0,z:2,yaw:0,pitch:0,melee:0});
+    Object.assign(enemy,{x:0,y:0,z:0,health:1000,armor:0,grounded:true});
+    assert.equal(match.melee(actor),true,model);
+    const event=match.events.filter(e=>e.type==='melee').at(-1);
+    assert.equal(event.hit,enemy.id,model);assert.equal(event.outcome,'hit',model);
+    assert.ok(event.impact.y>=volume.bottom&&event.impact.y<=volume.top,`${model}: body contact`);
+    assert.ok(Math.abs(event.impact.z)<=volume.depth/2+1e-6,`${model}: contact before shove`);
+    assert.ok(enemy.z<0,`${model}: authoritative shove`);
+  }
+});

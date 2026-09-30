@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
-  "derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "derivative_commit": "0326b435a2fdd88e6e7a01b8a7325feccc4d15cb",
   "runtime_files": {
     "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
     "game/cocs-coop.mjs": "36038e1f524b1a25c9fd991990b0fddf62ccaae89c87566486f372e9e684e2a6",
     "game/cocs-economy.mjs": "1fdbdddeeabb32eff1dbb1d73bc34506d63c2e3e2ac6fb0a37851465865f8f93",
     "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
-    "game/core.mjs": "2905696af09ccace8c2dbb384139748ef80146be25bbbe75bf8111d28dc146e8",
+    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
     "game/horde-stages.mjs": "132bb551f0e517ed037d2e97fbd8ff510802eaaa7163e39da10e59745d656afb",
     "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
     "game/singleplayer.mjs": "60ab39e4cc9dd07f38fed27c39f25b2383e0ea1257dba5ee29f2ebe7762189ce",

@@ -37,6 +37,7 @@ func accept(event: InputEvent, eligible: bool, infantry: bool = true) -> void:
 		if event.pressed and engaged and focused and eligible:
 			if code == KEY_R: pulses.reload = true
 			if code == KEY_G: pulses.grenade = true
+			if code == KEY_F: pulses.melee = true
 		if code == KEY_E:
 			if event.pressed and engaged and focused and eligible: interact_pending = true
 			return
@@ -79,6 +80,7 @@ func command(yaw: float, pitch: float, eligible: bool, driving: bool) -> Diction
 	p.crouch = engaged and (keys.has(KEY_CTRL) or keys.has(KEY_C))
 	p.reload = engaged and pulses.has("reload")
 	p.grenade = engaged and pulses.has("grenade")
+	p.melee = engaged and focused and eligible and not driving and pulses.has("melee")
 	p.altFire = engaged and keys.has(KEY_Z)
 	pulses.clear()
 	p.ads = engaged and focused and eligible and not driving and ads
