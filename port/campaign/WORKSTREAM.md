@@ -70,3 +70,32 @@ regression verification and exports.
 
 Initial integration logs are retained under the campaign evidence root in
 `integration-first/` and `integration-live-first/`; failures are preserved.
+
+## Final integration repair checkpoint
+
+Revised-world native smokes pass on all four chapters. The first final focused
+pass caught a blocked Crown guardian placement, fixture assertion issues, and
+compact-screen HUD/capture failures. Runtime repair `c03cd249` passes **23/23
+Node tests**, including all-four scripted progression, final Continue, actual
+hitscan/projectile volumes, cache behavior and guardian placement across five
+seeds. See `integration-final-focused/node-authority-repair-2.log`.
+
+Client repair `a64979d5` fixes the actual briefing camera, compact layout,
+scrollable comms, modal actions, waypoint placement and boss readout. All four
+maps passed both wide/compact profiles: **82 captures, zero failures**. Every
+gameplay capture has three robots, one danger ring, visible first person, ACKs
+and active control eligibility. Both Crown profiles verify real Continue →
+fresh start → ending results. Evidence: `live-captures/run-wBDkBR/` (compact)
+and `live-captures/run-kZEpPZ/` (wide). Initial failed graphical evidence remains
+in `live-captures/run-tjyEKy/`. The orchestrator now owns the heavy slot.
+
+Parent change `adea4b65` enables camera-driven robot LOD in actual play and adds
+three live-camera checks. All **267 robot checks** and the updated session
+contracts pass. A compact campaign UI gate is registered in `verify.py`.
+
+After the client releases its slot: generate the axis/meridian GLB probes,
+run the full canonical keep-going verifier with explicit source derivative,
+repair relevant failures, commit one runtime identity, export both platforms,
+verify extracted packages and recorded Git identity, render release-PCK evidence,
+and publish a separate Quiet Relay testing prerelease. Existing published tags
+and archives retain their prior identities.

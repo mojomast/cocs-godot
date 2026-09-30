@@ -203,6 +203,7 @@ commands = [
     ("campaign-client", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/client.gd"]),
     ("campaign-session", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/session.gd"]),
     ("campaign-smoke-route", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/smoke_route.gd"]),
+    ("campaign-compact-ui", ["xvfb-run", "-a", "-s", "-screen 0 1280x800x24", "node", "port/campaign/live-capture.mjs", "--map=crown-array", "--profile=compact", "--output=" + os.environ.get("COCS_CAMPAIGN_CAPTURE_OUT", "/tmp/opencode/campaign-ui-verification")]),
     ("campaign-terrain", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/terrain.gd"]),
     ("campaign-rootfall", ["node", "tools/godot-dev/launch.mjs", "--experience=campaign", "--map=rootfall-verge", "--smoke"]),
     ("campaign-siltwake", ["node", "tools/godot-dev/launch.mjs", "--experience=campaign", "--map=siltwake-crossing", "--smoke"]),
@@ -404,6 +405,7 @@ if not version['passed']:
 # session and a session without capture produce no such line, so this is engine
 # teardown behaviour, not our content. Any other ERROR line still fails the gate.
 gate_options = {
+    'campaign-compact-ui': {'timeout': 300},
     'product-shell-journey': {'timeout': 300},
     'player-flow-journey': {'timeout': 240},
     'career-player-flow-clarity-journey': {'timeout': 240},
