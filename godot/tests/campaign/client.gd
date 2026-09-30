@@ -40,5 +40,24 @@ func _initialize() -> void:
 		frame.merge(bad)
 		assert(not probe.decode_text(JSON.stringify(frame)), "duplicate start epoch or geometry substitution refused")
 		probe.free()
+	# Final Continue remains on Crown Array but must un-latch base results before
+	# the ending frame. This is not a next-map transition or campaign loop.
+	var final_client := RecordingClient.new()
+	final_client.allowlist = {"crown-array":{"geometryHash":"final"}}
+	final_client.requested_map = "crown-array"
+	var ending_phases: Array[String] = []
+	final_client.results.connect(func(frame: Dictionary) -> void: ending_phases.append(frame.state.campaign.phase))
+	assert(final_client.decode_text(JSON.stringify({"type":"start","mapId":"crown-array","geometryHash":"final","inputEpoch":1})))
+	assert(final_client.decode_text(JSON.stringify({"type":"results","inputEpoch":2,"state":{"mapId":"crown-array","campaign":{"mapId":"crown-array","phase":"level-complete","nextMapId":null}}})))
+	assert(final_client.round_finished and final_client.expected_next.is_empty())
+	assert(final_client.campaign_action("continue") == OK)
+	assert(final_client.decode_text(JSON.stringify({"type":"start","mapId":"crown-array","geometryHash":"final","inputEpoch":3})))
+	assert(not final_client.round_finished and not final_client.action_pending and final_client.requested_map == "crown-array")
+	var ending := {"type":"results","inputEpoch":4,"state":{"mapId":"crown-array","campaign":{"mapId":"crown-array","phase":"campaign-complete","nextMapId":null}}}
+	assert(final_client.decode_text(JSON.stringify(ending)))
+	assert(final_client.round_finished and ending_phases == ["level-complete", "campaign-complete"], "ending survives base results latch")
+	assert(final_client.decode_text(JSON.stringify(ending)) and ending_phases.size() == 2, "duplicate ending cannot re-emit results")
+	assert(final_client.campaign_action("continue") == ERR_UNAUTHORIZED, "ending cannot loop the final chapter")
+	final_client.free()
 	print("CAMPAIGN_CLIENT_OK")
 	quit()

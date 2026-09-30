@@ -842,6 +842,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		update_look(MouseMotion.raw_delta(event))
 
+## Route-specific smoke guidance; interactive sampling never calls these hooks.
+func smoke_deadline() -> float:
+	return 20.0
+
+func smoke_controls(controls: Dictionary) -> Dictionary:
+	var direction := ControlMath.movement(yaw, 1.0, 0.0)
+	controls.x = direction.x
+	controls.z = direction.y
+	controls.fire = true
+	return controls
+
 func _process(delta: float) -> void:
 	if phase == 4 and is_instance_valid(audiovisual) and application_focused and not SettingsAccess.overlay_open(): av_tick(delta)
 	if phase == 3 and is_instance_valid(audiovisual):
@@ -861,7 +872,7 @@ func _process(delta: float) -> void:
 			set_vehicle_shots_active(false)
 			combat_label.text = snapshot_watch.message()
 	elapsed += delta
-	if smoke and elapsed > 20:
+	if smoke and elapsed > smoke_deadline():
 		on_error("Session smoke timeout")
 		return
 	if lifecycle_smoke and elapsed > 90:
@@ -890,10 +901,8 @@ func _process(delta: float) -> void:
 	var controls := combat_actions.sample(yaw, pitch, active)
 	# Explicit legacy smoke stimulus is isolated from ordinary event input.
 	if smoke and received_pose and not snapshot_watch.stale() and presentation.lifecycle.can_control():
-		var direction := ControlMath.movement(yaw, 1.0, 0.0)
-		controls.x = direction.x
-		controls.z = direction.y
-		controls.fire = true
+		controls = smoke_controls(controls)
+		if phase != 3: return # route guidance may report an honest blocked-path error
 	if weapon_controls_active() and weapon_selection.pending >= 0:
 		controls["weapon"] = weapon_selection.pending
 	if vehicle_bridge.mounted():

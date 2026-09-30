@@ -49,7 +49,7 @@ for (const mapId of maps) {
       child.stderr.on('data', data => { log += data; });
       child.once('error', reject);
       child.once('exit', (code, signal) => resolve({code,signal}));
-      timer = setTimeout(() => child.kill('SIGKILL'), 30000);
+      timer = setTimeout(() => child.kill('SIGKILL'), 120000);
     });
     const result = await done;
     const line = log.split(/\r?\n/).find(line => line.startsWith('CAMPAIGN_SMOKE_OK '));

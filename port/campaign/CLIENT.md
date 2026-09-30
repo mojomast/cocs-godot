@@ -7,6 +7,14 @@ Entry scene: `res://campaign/demo.tscn`. CLI:
 ```
 
 `--smoke` begins automatically and drives the **shared session's real network input**.
+Campaign guidance walks `world.recipe.campaign.criticalPath` vertices in authored
+order using received actor feet coordinates, turning its movement/look at each
+vertex and firing through the existing normal-rate input queue. It never teleports,
+skips to a nearby later leg, or changes enemy deployment. A 12-second no-progress
+watchdog reports blocked geometry honestly; the campaign deadline is 90 seconds.
+The shared Session defaults remain forward/fire and 20 seconds for other routes.
+The owned live-smoke driver's outer process timeout is 120 seconds; packaged
+verifiers should also allow 120 seconds to collect a 90-second failure report.
 Interactive entry shows a chapter brief; Begin connects, and clicking the world
 captures the pointer. Enter retries a death or continues a completed chapter.
 Settings, focus loss, stale state, death, errors and every fresh start release it.
@@ -50,6 +58,7 @@ $GODOT_BIN --headless --path godot --script res://tests/campaign/model.gd
 $GODOT_BIN --headless --path godot --script res://tests/campaign/client.gd
 $GODOT_BIN --headless --path godot --script res://tests/campaign/session.gd
 $GODOT_BIN --headless --path godot --script res://tests/campaign/death_presentation.gd
+$GODOT_BIN --headless --path godot --script res://tests/campaign/smoke_route.gd
 GODOT_BIN=/path/to/pinned/godot node port/campaign/live-smoke.mjs rootfall-verge siltwake-crossing emberline-ascent crown-array
 ```
 

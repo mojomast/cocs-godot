@@ -211,6 +211,31 @@ func on_results(frame: Dictionary) -> void:
 func can_capture_pointer() -> bool:
 	return campaign.playing() and not action_pending and super.can_capture_pointer()
 
+var smoke_route := preload("res://campaign/smoke_route.gd").new()
+var smoke_route_round := -1
+
+func smoke_deadline() -> float:
+	return 90.0
+
+func smoke_controls(controls: Dictionary) -> Dictionary:
+	if not campaign.playing() or action_pending: return controls
+	if smoke_route_round != round_starts:
+		var recipe: Dictionary = world.get("recipe")
+		if not smoke_route.configure(recipe, elapsed):
+			on_error(smoke_route.error)
+			return controls
+		smoke_route_round = round_starts
+	var actor: Dictionary = presentation.local_actor
+	var feet := Vector3(float(actor.get("x", 0)), float(actor.get("y", 0)), float(actor.get("z", 0)))
+	var guidance: Dictionary = smoke_route.sample(feet, elapsed)
+	if not smoke_route.error.is_empty():
+		on_error(smoke_route.error)
+		return controls
+	controls.merge(guidance, true)
+	yaw = float(guidance.yaw)
+	pitch = float(guidance.pitch)
+	return controls
+
 func _process(delta: float) -> void:
 	super._process(delta)
 	for visual: Node3D in presentation.actors.values():
