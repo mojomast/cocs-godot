@@ -151,3 +151,15 @@ knockback and a confirmed-hit shockwave. See [MELEE.md](MELEE.md). Two isolated
 Astra lanes own mechanics/input and shared native audio/VFX. Capture repair
 continues to own the heavy slot; these lanes are initially edit-only. Export
 also waits for this requested upgrade's integrated acceptance.
+
+## Additional user request: operator detail textures
+
+The owner requested armor-panel and circuit-board texture detail on the playable
+operator models. Isolated Astra lane `campaign/operator-textures`
+(`ses_f0b620f69ffesvd6lTn1bhtHmt`) owns an explicit native material/detail layer
+across the nine identities, keeping source GLB provenance and rigging intact.
+The intended finish includes panel seams, fasteners, vents and selective recessed
+circuit details, with team colors and silhouettes readable at gameplay distance.
+Matched before/after captures, identity/team/pose checks and material resource
+costs are required before integration. The lane initially edits only while the
+capture-repair lane holds the heavy slot. Kick work continues independently.
