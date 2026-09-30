@@ -6,6 +6,13 @@ Upstream source repository is `mojomast/cocs` (remote `origin`).
 
 ## Decision in brief
 
+**2026-09-30 campaign checkpoint:** the owner authorized four substantially larger
+connected biome levels, a varied robot roster, and campaign story/pacing design.
+Flash research preceded the Astra implementation lanes. **The Quiet Relay** is
+now integrated on `feature/relay-campaign`; its active verification/export work
+is recorded in [the campaign workstream](campaign/WORKSTREAM.md). The older
+campaign-deferral statements below describe the September 28 baseline.
+
 **2026-09-29 checkpoint:** all three authorized follow-up streams are integrated
 at `156cd370`: Uplink/Holdout/Assault, five-kind vehicles/crew, and audiovisual
 presentation. The full **273-gate** native suite and **228 server tests** pass;

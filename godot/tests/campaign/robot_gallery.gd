@@ -65,6 +65,7 @@ func build() -> void:
 		robot.position = Vector3(x, 0.9, z)
 		robot.rotation.y = PI - 0.25
 		robot.automatic_animation = false
+		robot.automatic_lod = false
 		robot.configure({"id":i, "npcModel":Robot.IDS[i], "health":100, "vx":2.0, "shots":0, "npcProfile":{"scale":1.35 if i == 5 else 1.0}})
 		robots.append(robot)
 		robot.set_lod(gallery_lod)

@@ -106,5 +106,26 @@ func run() -> void:
 		robot.apply_actor(actor, 9)
 		check(robot.visible_cost().draws == 0, "hidden cost is zero")
 		robot.free()
+	# Live presentation does not call select_distance: verify the actual scene's
+	# camera-driven path, rather than only the manual gallery LOD helper.
+	var camera := Camera3D.new()
+	root.add_child(camera)
+	camera.make_current()
+	var live := Robot.new()
+	live.automatic_animation = false
+	root.add_child(live)
+	live.configure({"id":10, "npcModel":"warden", "health":100})
+	camera.position = Vector3(0, 0, 3)
+	live._process(0.016)
+	check(live.lod_level == 0, "live camera selects near detail")
+	camera.position = Vector3(0, 0, 100)
+	live._process(0.016)
+	check(live.lod_level == 2, "live camera selects far detail")
+	live.automatic_lod = false
+	live.set_lod(1)
+	live._process(0.016)
+	check(live.lod_level == 1, "manual capture detail remains explicit")
+	live.free()
+	camera.free()
 	print("CAMPAIGN_ROBOTS_OK" if failures == 0 else "CAMPAIGN_ROBOTS_FAILED", " checks=", checks, " failures=", failures)
 	quit(0 if failures == 0 else 1)

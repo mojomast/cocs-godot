@@ -22,7 +22,9 @@ reset_pose()
 ```
 
 `automatic_animation` defaults to true. Set it false when the host calls
-`advance`. The host positions/orients the root; the model does not change world
+`advance`. `automatic_lod` defaults to true and selects detail from the live
+viewport camera each frame; deterministic galleries may disable it before
+calling `set_lod`. The host positions/orients the root; the model does not change world
 position, root rotation, collision, or actor dictionaries. Host centre is source
 feet y + 0.9, local forward is −Z. `FeetOrigin` is always at −0.9. The received
 `npcProfile.scale` (default 1, bounded 0.25–3) scales the anatomy **around that

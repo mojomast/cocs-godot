@@ -4,6 +4,7 @@ const Parts = preload("res://campaign/robot_parts.gd")
 const IDS := ["scrapper", "skirmisher", "sentinel", "mortar", "bulwark", "warden"]
 const COLORS := [Color("b17e46"), Color("719486"), Color("66849d"), Color("98817f"), Color("577c8b"), Color("975d4c")]
 var automatic_animation: bool = true
+var automatic_lod: bool = true
 var model_id: String = ""
 var snapshot: Dictionary = {}
 var lod_level: int = 0
@@ -256,3 +257,6 @@ func visible_cost() -> Dictionary:
 
 func _process(dt: float) -> void:
 	if automatic_animation: advance(dt)
+	if automatic_lod:
+		var camera: Camera3D = get_viewport().get_camera_3d()
+		if camera != null: select_distance(global_position.distance_to(camera.global_position))
