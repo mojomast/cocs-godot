@@ -22,6 +22,10 @@ Focus regain and retry never silently capture. Leave disconnects and exits.
   presentation applies position, visibility/death, identity and genuine-shot recoil.
   Campaign distance selection calls `select_distance`; robot automatic animation
   retains responsibility for advancing its own articulation.
+  Robot `wants_death_pose()` opts into a visible 0.65-second collapse with a short
+  settled beat, bounded to 0.8 seconds. The robot hides itself at expiry between
+  snapshots; local bodies remain hidden, source visuals still hide immediately,
+  and authority actor removal/round clearing still retires nodes immediately.
 - A route-local `CampaignCombat` subclass supplies campaign terrain colliders and
   recipe bounds to the existing occlusion, impact, particles and blood services;
   the shared feedback's source-only catalog cannot resolve campaign IDs. Its
@@ -45,6 +49,7 @@ Focus regain and retry never silently capture. Leave disconnects and exits.
 $GODOT_BIN --headless --path godot --script res://tests/campaign/model.gd
 $GODOT_BIN --headless --path godot --script res://tests/campaign/client.gd
 $GODOT_BIN --headless --path godot --script res://tests/campaign/session.gd
+$GODOT_BIN --headless --path godot --script res://tests/campaign/death_presentation.gd
 GODOT_BIN=/path/to/pinned/godot node port/campaign/live-smoke.mjs rootfall-verge siltwake-crossing emberline-ascent crown-array
 ```
 

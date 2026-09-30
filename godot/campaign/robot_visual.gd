@@ -31,6 +31,7 @@ func _init() -> void:
 	optic_material.emission_energy_multiplier = 0.65
 
 func configure(actor: Dictionary, local_actor_id: int = -1) -> void:
+	local_id = local_actor_id
 	apply_actor(actor, local_actor_id)
 
 func apply_identity(actor: Dictionary) -> void:
@@ -157,14 +158,16 @@ func _build(level: int) -> void:
 	rigs.append({"body":body, "turret":turret, "gun":gun, "legs":legs, "knees":knees, "shield":shield})
 
 func apply_actor(actor: Dictionary, local_actor_id: int = -1) -> void:
-	local_id = local_actor_id
+	# Presentation assigns local_id before its one-argument apply_actor call.
+	# An omitted argument must not turn a local body into a remote one.
+	if local_actor_id >= 0: local_id = local_actor_id
 	apply_identity(actor)
 	if not snapshot.is_empty():
 		if int(actor.get("shots", 0)) > int(snapshot.get("shots", 0)): kick()
 		if float(actor.get("melee", 0)) > float(snapshot.get("melee", 0)): kick(0.7)
 		if float(actor.get("health", 100)) > 0 and float(snapshot.get("health", 100)) <= 0: reset_pose()
 	snapshot = actor.duplicate(true)
-	visible = int(actor.get("id", -2)) != local_id
+	visible = int(actor.get("id", -2)) != local_id and (float(actor.get("health", 100)) > 0 or wants_death_pose())
 	var profile: Dictionary = actor.get("npcProfile", {})
 	var source_scale: float = clampf(float(profile.get("scale", 1.0)), 0.25, 3.0)
 	feet.scale = Vector3.ONE * source_scale
@@ -185,13 +188,19 @@ func _tell(actor: Dictionary) -> float:
 		return 0.3 + 0.7 * (1.0 - clampf(float(actor.bossStompWindup) / duration, 0, 1))
 	return 0.0
 
+func wants_death_pose() -> bool:
+	# The 0.65-second collapse gets a short settled beat, never an immortal corpse.
+	return not snapshot.is_empty() and float(snapshot.get("health", 100)) <= 0 and death_elapsed < 0.8
+
 func advance(dt: float) -> void:
 	if not is_finite(dt) or dt <= 0: return
 	elapsed += dt
 	var speed := Vector2(float(snapshot.get("vx", 0)), float(snapshot.get("vz", 0))).length()
 	gait_phase = fmod(gait_phase + dt * minf(speed, 18.0) * 2.8, TAU)
 	recoil *= exp(-dt * 12.0)
-	if float(snapshot.get("health", 100)) <= 0: death_elapsed += dt
+	if float(snapshot.get("health", 100)) <= 0:
+		death_elapsed += dt
+		if not wants_death_pose(): hide()
 	_pose()
 
 func _pose() -> void:

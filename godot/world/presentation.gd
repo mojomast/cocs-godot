@@ -72,7 +72,10 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 		var pose: Dictionary = motion.sample(id, now)
 		visual.position = pose.position if interpolate_remote and id != local_id else position
 		visual.rotation.y = pose.yaw if interpolate_remote and id != local_id else body_yaw
-		visual.visible = id != local_id and alive
+		# Opt-in visuals may finish a bounded cosmetic collapse. They own expiry
+		# between snapshots; source actors retain immediate death hiding.
+		var death_pose: bool = not alive and visual.has_method("wants_death_pose") and visual.wants_death_pose()
+		visual.visible = id != local_id and (alive or death_pose)
 		# Recoil only on genuine increasing authoritative shot counts, never on
 		# round resets or snapshot reordering.
 		var shots: int = int(actor.get("shots", 0))
