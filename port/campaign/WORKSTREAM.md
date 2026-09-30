@@ -187,3 +187,20 @@ critical hits, duplicate replay or enemy-vs-enemy clutter, readable compact UI,
 reduced-motion behavior, lifecycle cleanup and a rendered animation preview.
 This lane starts from integrated melee mechanics/feedback; engine work awaits
 the capture-repair lane's heavy-slot release.
+
+Operator texture implementation `a04c5c16` is integrated as `bb79136f` and its
+runtime gate is registered. It uses cached face-fitted overlay UVs and four shared
+authored textures, preserving original GLBs and adding no overlay draw calls.
+Import/runtime checks and before/after renders remain pending the heavy slot.
+
+## Additional user request: epic orchestral score
+
+The owner rejected the music they heard and requested an epic orchestral feel.
+Isolated Astra lane `campaign/orchestral-score`
+(`ses_f0b5a382cffemwXzsQGV35HbnL`) owns a substantive composition/orchestration
+revision using the existing sampled strings, brass and orchestral percussion.
+The direction is coherent themes, string ostinatos, brass phrases, low strings,
+timpani/cymbal builds, quieter exploration and a stronger Warden finale. A
+45–90 second audition showing the transitions is required for subjective review;
+automated audio/timing tests do not establish musical quality. Heavy rendering
+and audio baking remain serialized behind capture repair.

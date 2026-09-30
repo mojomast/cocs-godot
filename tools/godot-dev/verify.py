@@ -260,6 +260,7 @@ commands = [
     ("operator-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_models/geometry.gd"]),
     ("world-weapon-import", [binary, "--headless", "--path", "godot", "--script", "res://tests/source_operators/weapons.gd"]),
     ("world-weapon-grips", [binary, "--headless", "--path", "godot", "--script", "res://tests/source_operators/grips.gd"]),
+    ("operator-detail-textures", [binary, "--headless", "--path", "godot", "--script", "res://tests/source_operators/textures.gd"]),
     ("native-trace", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/native_trace.gd"]),
     ("guest-session", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/guest_session.gd"]),
     ("lobby-flow", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/lobby_flow.gd"]),
