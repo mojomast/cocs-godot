@@ -7,6 +7,8 @@ const CampaignHUD = preload("res://campaign/hud.gd")
 const SourceVisual = preload("res://source_operators/operator_visual.gd")
 const Telegraphs = preload("res://campaign/telegraphs.gd")
 const CampaignEnvironment = preload("res://campaign/environment.gd")
+const StoryDirector = preload("res://campaign/story_director.gd")
+const StoryWidgets = preload("res://campaign/story_widgets.gd")
 
 class CampaignCombat extends "res://world/combat_feedback.gd":
 	## The shared feedback catalog knows source maps only. Supply the built native
@@ -48,6 +50,8 @@ var authority_geometry_hash := ""
 var robot_instances := 0
 var ground_tells := Telegraphs.new()
 var robot_voices := preload("res://campaign/robot_voices.gd").new()
+var story_director := StoryDirector.new()
+var story_widgets: Control
 
 func _init() -> void:
 	catalog = CampaignCatalog.new()
@@ -84,7 +88,7 @@ func _ready() -> void:
 		item.hide()
 	presentation.actor_visual_factory = create_visual
 	presentation.interpolate_remote = true
-	for child: Node in [pickups, presentation, combat, client, ground_tells, robot_voices]: add_child(child)
+	for child: Node in [pickups, presentation, combat, client, ground_tells, robot_voices, story_director]: add_child(child)
 	var voice_settings := SettingsAccess.service()
 	if voice_settings != null:
 		voice_settings.audio_preferences_changed.connect(robot_voices.apply_settings)
@@ -109,6 +113,8 @@ func _ready() -> void:
 	layer.layer = 5
 	layer.add_child(campaign_hud)
 	campaign_hud.bind_session(self)
+	story_widgets = StoryWidgets.new()
+	layer.add_child(story_widgets)
 	var args := OS.get_cmdline_user_args()
 	smoke = "--smoke" in args
 	trace_enabled = "--native-trace" in args
@@ -166,6 +172,7 @@ func load_map(id: String) -> bool:
 	world = next
 	current_id = id
 	ground_tells.bind_terrain(world)
+	story_director.clear_round()
 	if phase == -2: position_briefing_camera()
 	return true
 
@@ -210,6 +217,7 @@ func on_lobby(frame: Dictionary) -> void:
 func on_started(frame: Dictionary) -> void:
 	robot_voices.clear_round()
 	ground_tells.clear_round()
+	story_director.clear_round()
 	var id := str(frame.get("mapId", ""))
 	if not catalog.entries.has(id) or frame.get("geometryHash") != catalog.entries[id].geometryHash:
 		on_error("Campaign authority and terrain geometry differ.")
@@ -233,12 +241,15 @@ func on_snapshot(frame: Dictionary) -> void:
 	super.on_snapshot(frame)
 	smoke = checking
 	ground_tells.apply_state(frame.state)
+	story_director.apply(campaign.state.get("story", {}), current_id)
+	story_widgets.observe(campaign.state.get("story", {}), campaign.playing() and not action_pending and application_focused and phase == 3)
 	robot_voices.set_active(campaign.playing() and vehicle_shots_allowed() and not action_pending)
 	robot_voices.apply_state(frame.state, camera.global_position)
 	campaign_hud.observe_boss(frame.state)
 	if not campaign.playing():
 		release_pointer()
 		ground_tells.clear_round()
+		story_widgets.observe({}, false)
 	campaign_hud.refresh()
 	if checking and moved and fired and client.last_ack > 10 and robot_instances > 0 and combat.shots > 0 and combat.map_error.is_empty() and combat.occlusion.ready and authority_geometry_hash == catalog.entries[current_id].geometryHash:
 		print("CAMPAIGN_SMOKE_OK ", JSON.stringify({"map":current_id, "moved":moved, "fired":fired, "acks":client.last_ack, "robotsLoaded":robot_instances, "combatShots":combat.shots, "geometryHash":authority_geometry_hash, "firstPerson":is_instance_valid(first_person)}))
@@ -252,6 +263,7 @@ func on_results(frame: Dictionary) -> void:
 	if phase != 3: return
 	av_finish(frame.state)
 	phase = 4
+	story_widgets.observe({}, false)
 	robot_voices.clear_round()
 	release_pointer()
 	campaign_hud.refresh()
@@ -314,6 +326,7 @@ func leave_campaign() -> void:
 	robot_voices.clear_round()
 	release_pointer()
 	ground_tells.clear_round()
+	story_director.clear_round()
 	client.disconnect_server()
 	get_tree().quit()
 

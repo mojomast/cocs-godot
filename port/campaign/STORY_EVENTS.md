@@ -57,3 +57,26 @@ mandatory. No new client-provided position/trigger claims or trusted wire fields
   currently owns the slot; initial work is editing and lightweight checks only.
 - Require actual-authority interaction proof and captures of NPC staging,
   repeated puppy appearances and petting before claiming the feature accepted.
+
+## Presentation implementation
+
+`godot/campaign/story_director.gd` consumes validated `campaign.story` snapshots.
+It owns distinct non-colliding visual nodes for Patch and friendly source operators;
+it never inserts them into `presentation.actors` or sends controls. The first
+observed reaction serial (including after a chapter start or retry) is a baseline;
+only a subsequent higher serial plays Patch's nuzzle/wag. Hidden/reappearing
+entities keep their serial within a chapter. Long authority staging cuts hide
+briefly before revealing rather than visibly sliding an actor across the map.
+Patch's paws sit at the supplied authoritative feet coordinates. Cosmetics
+are distance culled and coat materials reused. `story_widgets.gd` overlays
+short caption and `[E] Pet Patch` from the authority prompt, with the actual
+physical E interaction still handled by shared controls. The story overlay
+is non-interactive, hides for settings, death and terminal phases, and does
+not take input focus or capture the pointer.
+
+Lightweight contract/animation/compact-layout probe:
+`godot --headless --path godot --script res://tests/campaign/story_presentation.gd`.
+Authored visual fixture gallery (four chapter identities and repeated Patch):
+`godot --path godot --script res://tests/campaign/story_gallery.gd`.
+The gallery uses local synthetic snapshots solely for presentation review;
+acceptance still requires proof against real authority snapshots.

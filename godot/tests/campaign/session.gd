@@ -89,7 +89,7 @@ func run() -> void:
 	assert(Input.mouse_mode != Input.MOUSE_MODE_CAPTURED, "focus regain never captures")
 	hud.free()
 	# Detached session owns these eager children until composition attaches them.
-	for node: Node in [demo.camera, demo.label, demo.selector, demo.combat_label, demo.pickups, demo.presentation, demo.combat, demo.client, demo.ground_tells]: node.free()
+	for node: Node in [demo.camera, demo.label, demo.selector, demo.combat_label, demo.pickups, demo.presentation, demo.combat, demo.client, demo.ground_tells, demo.story_director, demo.robot_voices]: node.free()
 	demo.free()
 	print("CAMPAIGN_SESSION_OK")
 	quit()
