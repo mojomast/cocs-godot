@@ -224,6 +224,9 @@ func populate() -> void:
 		route_buttons[id] = button
 	if registry.categories.is_empty(): return
 	var route: Dictionary = registry.route_by_id(preferences.last_route)
+	# New destinations may be listed before Combat. Invalid/absent preferences
+	# keep the established safe default rather than depending on display order.
+	if route.is_empty(): route = registry.route_by_id("combat")
 	restoring = true
 	select_category(str(route.get("category", registry.categories[0].get("id", ""))))
 	if not route.is_empty(): select_route(str(route.get("id", "")))

@@ -99,3 +99,36 @@ repair relevant failures, commit one runtime identity, export both platforms,
 verify extracted packages and recorded Git identity, render release-PCK evidence,
 and publish a separate Quiet Relay testing prerelease. Existing published tags
 and archives retain their prior identities.
+
+## User art feedback and pending integration
+
+The owner reviewed the public
+[development screenshot gallery](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-gallery-2026-09-30)
+and requested an Astra revision of the monotonous, repeated jagged terrain.
+The worlds lane (`ses_f0bf6227cffewV7OwI2Pg2zL4h`) is revising actual ridge
+geometry and skyline composition in its isolated `campaign/worlds` worktree:
+broader landforms, varied crests and wall profiles, per-biome geology, selective
+outcrops and less uniformly repeated scenery. Routes, encounters, collision
+agreement and chapter continuity remain acceptance requirements. New same-camera
+comparison renders will be shared publicly when verified.
+
+The canonical run at `51136196` completed **288/291 gates**. Its three failures
+were the expanded route-count/menu expectations and the menu's implicit default
+changing with display order. Exact expectations are updated; invalid preferences
+now explicitly retain Combat as their safe default. All affected focused checks
+pass. Full logs and verification-generated files are preserved under
+`canonical-51136196/` outside the checkout. Integrated follow-ups:
+
+- `57488031` → `7e643693`: persistent per-map daylight, since AV owns
+  audio/particles and does not install the missing live world sky/sun. Includes
+  lifecycle/capture regression checks; environment and session headless checks
+  now pass. Graphical confirmation will use the forthcoming revised terrain.
+- `925e15ea` → `610aaa99`: exact expanded route/menu test expectations;
+  all eight focused parser tests pass.
+
+The worlds lane now owns the exclusive heavy slot for terrain-variety physics,
+source-route checks and same-camera before/after renders. The orchestrator waits
+for that scoped commit before final integrated verification and exports.
+
+Export waits for the requested terrain-variety revision and final integration
+acceptance. The existing screenshot gallery is explicitly work in progress.
