@@ -201,6 +201,7 @@ commands = [
     ("campaign-telegraphs", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/telegraphs.gd"]),
     ("campaign-model", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/model.gd"]),
     ("campaign-environment", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/environment.gd"]),
+    ("campaign-robot-voices", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/robot_voices.gd"]),
     ("campaign-client", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/client.gd"]),
     ("campaign-session", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/session.gd"]),
     ("campaign-smoke-route", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/smoke_route.gd"]),

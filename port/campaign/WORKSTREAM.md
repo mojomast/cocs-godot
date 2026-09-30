@@ -204,3 +204,18 @@ timpani/cymbal builds, quieter exploration and a stronger Warden finale. A
 45–90 second audition showing the transitions is required for subjective review;
 automated audio/timing tests do not establish musical quality. Heavy rendering
 and audio baking remain serialized behind capture repair.
+
+Robot voice implementation `25006b95` is integrated as `e543ab66`, with a
+registered runtime gate. Forty-eight baked clips and the six-voice audition reel
+pass deterministic generation, peak and uniqueness checks. Engine integration
+and subjective listening are still pending.
+
+## Additional user request: Sol scripted events and recurring puppy
+
+The owner explicitly requested Sol subagents for more scripted events, operator
+NPCs and a recurring pettable puppy. `STORY_EVENTS.md` defines the additive
+authority/client contract. Sol authority lane `ses_f0b551e14ffecYoeyDSA3smVhk`
+owns staged chapter content, authoritative interaction and continuity; Sol client
+lane `ses_f0b551dceffey79hEa9L61i9Pp` owns friendly operator staging, Patch the
+puppy's articulated model/reactions and contextual UI. Both use isolated branches
+from `63251774`, initially edit-only while capture repair owns the heavy slot.
