@@ -9,6 +9,12 @@
 4. Click inside the game window to engage the mouse and controls.
 
 **Graphics Showcase.cmd** opens the new map and effects menu (details below).
+**Campaign.cmd** starts **The Quiet Relay**, a four-chapter single-player robot
+campaign. Home also offers chapter and difficulty selection. Clear each encounter
+and reach its marker; press **E** once for interactions, then remain nearby for
+restoration. **Enter** retries a checkpoint after death or continues to the next
+chapter after completion. Checkpoints last for the current session. The 5–10
+minute chapter duration is a design target awaiting human timing.
 **Native Deathmatch.cmd** selects bot combat on Prism Foundry, Aurora Basin or
 Cinder Array, with weapons, scoring, respawns and round restart.
 **Demo Menu.cmd** offers other arenas, Horde, Arms Race, the lobby, vehicles,
@@ -58,6 +64,10 @@ Play.cmd --experience=lattice --map=asterion-relay
 Play.cmd --experience=lattice-world --map=monsoon-foundry --mode=cocs-coop
 Play.cmd --experience=horde --map=nacre-engine
 Play.cmd --experience=horde --map=cinderwake-drydock
+Campaign.cmd --map=rootfall-verge --difficulty=normal
+Campaign.cmd --map=siltwake-crossing --difficulty=easy
+Campaign.cmd --map=emberline-ascent
+Campaign.cmd --map=crown-array
 Play.cmd --help
 ```
 

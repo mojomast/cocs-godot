@@ -46,5 +46,25 @@ NativeClient chapter validation/input-reset behavior, actor-ID model reuse and
 mandatory-route versus drawn-polyline distance. These clarifications were sent
 to the relevant implementation lanes before integration.
 
-The robot lane has the first exclusive engine/testing slot. Other lanes remain
-on code generation and lightweight checks until that slot is released.
+## Integration progress
+
+All five first implementation commits have been integrated. Initial results:
+
+- 58 launcher/package identity tests passed.
+- All four chapters passed real owned-authority native smoke: movement, firing,
+  input ACKs, first-person/effects, robot instances and matching geometry hash.
+- Authority/mission tests and route closure passed.
+- Robot, death-presentation, ground-warning, campaign model/client and terrain
+  Godot contracts passed. The session fixture initially needed an explicit
+  WeakRef type and cleanup of the newly added ground-warning node; corrected.
+- The first world pass passed 13 source movement/route tests, Godot support
+  queries and twelve renders. Visual review requested a second pass because
+  the chapters shared an overly similar terrace-corridor layout.
+
+The worlds lane currently owns the exclusive heavy verification slot for that
+layout/art revision. The client lane is preparing live graphical acceptance
+fixtures. Final campaign hit-volume/ending changes, full regression verification
+and exports remain pending integration acceptance.
+
+Initial integration logs are retained under the campaign evidence root in
+`integration-first/` and `integration-live-first/`; failures are preserved.

@@ -46,6 +46,7 @@ node run.mjs --experience=zones --mode=uplink --map=meridian-exchange
 node run.mjs --experience=zones --mode=holdout --map=verdant-reliquary
 node run.mjs --experience=assault --map=tidal-citadel
 node run.mjs --experience=combined-arms --map=sunscar-convoy
+node run.mjs --experience=campaign --map=rootfall-verge --difficulty=normal
 node run.mjs --help
 ```
 
@@ -54,6 +55,20 @@ three-map original native Deathmatch family (Prism Foundry, Aurora Basin, Cinder
 Array), the three identity arenas (Lacuna Court, Vermilion Fold, Nacre Engine),
 five native-only graphics routes, Domination on Vermilion Fold and Horde on Nacre
 Engine, plus the staged **Cinderwake Drydock (Preview)** Horde map.
+
+## The Quiet Relay campaign
+
+Choose The Quiet Relay from Home, or use `--experience=campaign`. Chapters run
+in order: **Rootfall Verge → Siltwake Crossing → Emberline Ascent → Crown Array**.
+Their CLI IDs are `rootfall-verge`, `siltwake-crossing`, `emberline-ascent` and
+`crown-array`. Use `--map=<id>` to select a chapter and
+`--difficulty=easy|normal|hard` to select difficulty.
+
+Clear guards and reach each marker; press **E** once to interact. Restoration
+requires staying nearby after that press. **Enter** retries after death or
+continues after chapter completion. Checkpoints last for the current session;
+chapter selection lets you return directly to a later level. Each chapter
+targets **5–10 minutes**; human first-playthrough timing remains unmeasured.
 
 ## Controls
 
