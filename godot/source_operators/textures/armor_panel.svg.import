@@ -1,0 +1,13 @@
+[remap]
+importer="texture"
+type="CompressedTexture2D"
+path="res://.godot/imported/armor_panel.svg-b314edc5965944bcda2c4e66246588ef.ctex"
+
+[deps]
+source_file="res://source_operators/textures/armor_panel.svg"
+dest_files=["res://.godot/imported/armor_panel.svg-b314edc5965944bcda2c4e66246588ef.ctex"]
+
+[params]
+compress/mode=0
+mipmaps/generate=true
+detect_3d/compress_to=0

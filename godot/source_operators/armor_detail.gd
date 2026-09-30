@@ -2,6 +2,8 @@ extends RefCounted
 ## Articulated, bevelled armor overlays. Shared finite meshes, no physics or
 ## changes to source anatomy, joint anchors, teams, weapons or hit geometry.
 const Builder = preload("res://player_models/builder.gd")
+const SurfaceDetail = preload("res://source_operators/surface_detail.gd")
+static var materials: Dictionary = {}
 const COLORS := {"chatgpt":"69d6bb","claude":"dd9978","grok":"aebeca","meta":"64b6f1","gemini":"99a9f1","deepseek":"61c5dc","mistral":"e8b563","kimi":"e7a4c3","qwen":"b2a0e3"}
 
 static func build(joints: Dictionary, character: String, team_armor: Material) -> Array[MeshInstance3D]:
@@ -46,19 +48,33 @@ static func build(joints: Dictionary, character: String, team_armor: Material) -
 		_add(result,joints.head,"SideOptic",Vector3(-0.19,0.06,-0.095),Vector3(0.075,0.07,0.075),visor)
 	return result
 
+static func apply_team(details: Array[MeshInstance3D], base: StandardMaterial3D) -> void:
+	SurfaceDetail.apply_team(details,base)
+
 static func _add(result: Array[MeshInstance3D], parent: Node3D, label: String, position: Vector3, size: Vector3, material: Material, roll := 0.0) -> void:
 	var mesh := MeshInstance3D.new()
 	mesh.name = label
 	mesh.mesh = Builder.mesh_for({"size":[size.x,size.y,size.z],"lower":0.8,"upper":1.0,"bevel":0.14})
 	mesh.material_override = material
+	var style := SurfaceDetail.style_for(label)
+	if not style.is_empty():
+		mesh.mesh = SurfaceDetail.mesh_for(size)
+		mesh.material_override = SurfaceDetail.material_for(material as StandardMaterial3D,style)
+		mesh.set_meta("detail_style",style)
+		mesh.set_meta("undetailed_material",material)
+		if label.begins_with("Breastplate") or label.begins_with("Pauldron") or label.begins_with("ThighPlate"):
+			mesh.set_meta("team_detail",true)
 	mesh.position = position
 	mesh.rotation.z = roll
 	parent.add_child(mesh)
 	result.append(mesh)
 
 static func _material(color: Color, metallic: float, roughness: float) -> StandardMaterial3D:
+	var key := "%s:%s:%s" % [color.to_html(),metallic,roughness]
+	if materials.has(key): return materials[key]
 	var material := StandardMaterial3D.new()
 	material.albedo_color = color
 	material.metallic = metallic
 	material.roughness = roughness
+	materials[key] = material
 	return material

@@ -49,6 +49,7 @@ func apply_identity(actor: Dictionary) -> void:
 	set_meta("team",actor.get("team",""))
 	if character == next:
 		_apply_team(actor.get("team"))
+		ArmorDetail.apply_team(armor_details,team_material)
 		return
 	_clear_death_animation()
 	if is_instance_valid(source):

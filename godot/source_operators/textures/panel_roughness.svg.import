@@ -1,0 +1,13 @@
+[remap]
+importer="texture"
+type="CompressedTexture2D"
+path="res://.godot/imported/panel_roughness.svg-c6123cd22c31515fc5f9bab36bd6a3a0.ctex"
+
+[deps]
+source_file="res://source_operators/textures/panel_roughness.svg"
+dest_files=["res://.godot/imported/panel_roughness.svg-c6123cd22c31515fc5f9bab36bd6a3a0.ctex"]
+
+[params]
+compress/mode=0
+mipmaps/generate=true
+detect_3d/compress_to=0

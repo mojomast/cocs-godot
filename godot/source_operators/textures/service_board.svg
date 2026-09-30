@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<rect width="512" height="512" fill="#cbd0d2"/>
+<path d="M61 44H451V463H61Z" fill="#48555c"/><path d="M73 56H439V451H73Z" fill="#e3e8e9"/>
+<!-- Gasket, chamfer, then bounded recessed service board. -->
+<path d="M99 116H413V408H99Z" fill="#27323a"/><path d="M113 130H399V394H113Z" fill="#78878b"/><path d="M122 143H390V385H122Z" fill="#193d38"/>
+<g fill="none" stroke="#789681" stroke-width="5"><path d="M139 166H188L211 189V222M140 191H166L191 216V254H227M139 360H175L207 328V292M369 163H319L294 188V225M373 192H345L320 217V263H286M374 359H324L300 335V300M234 368V323M264 368V315"/></g>
+<g fill="#baa86b"><circle cx="139" cy="166" r="7"/><circle cx="139" cy="360" r="7"/><circle cx="369" cy="163" r="7"/><circle cx="374" cy="359" r="7"/></g>
+<g stroke="#9aa5a3" stroke-width="6"><path d="M223 218V307M240 218V307M257 218V307M274 218V307M207 237H290M207 257H290M207 277H290"/></g>
+<rect x="217" y="231" width="66" height="63" rx="4" fill="#111d24"/><path d="M233 244H265M233 252H253" stroke="#66787d" stroke-width="3"/>
+<g fill="#39484f"><rect x="139" y="272" width="29" height="50"/><rect x="342" y="249" width="27" height="53"/></g>
+<path d="M139 276H168M139 317H168M342 253H369M342 297H369" stroke="#b4b6a1" stroke-width="7"/>
+<path d="M140 85H273M141 429H239M316 85H370" stroke="#738086" stroke-width="8"/>
+<g fill="#55636a" stroke="#fff" stroke-width="3"><circle cx="88" cy="78" r="9"/><circle cx="424" cy="78" r="9"/><circle cx="88" cy="430" r="9"/><circle cx="424" cy="430" r="9"/></g>
+</svg>

@@ -1,0 +1,13 @@
+[remap]
+importer="texture"
+type="CompressedTexture2D"
+path="res://.godot/imported/service_board.svg-ec077aa51510b2ad278e642aeb3688f8.ctex"
+
+[deps]
+source_file="res://source_operators/textures/service_board.svg"
+dest_files=["res://.godot/imported/service_board.svg-ec077aa51510b2ad278e642aeb3688f8.ctex"]
+
+[params]
+compress/mode=0
+mipmaps/generate=true
+detect_3d/compress_to=0

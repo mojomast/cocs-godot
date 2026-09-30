@@ -23,7 +23,7 @@ func camera_pose(distance: float, angle: float) -> void:
 	camera.position = Vector3(sin(angle)*distance,1.05,-cos(angle)*distance)
 	camera.look_at(Vector3(0,1.05,0))
 
-func run() -> void:
+func setup_stage() -> void:
 	evidence = OS.get_environment("OPERATOR_EVIDENCE")
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	Engine.max_fps = 0
@@ -50,6 +50,9 @@ func run() -> void:
 	visual = Visual.new(); stage.add_child(visual); visual.automatic_animation = false
 	# Visual wrapper retains actor-center API; stage feet stay on source origin.
 	visual.position.y = 0.9
+
+func run() -> void:
+	setup_stage()
 	for size: Vector2i in [Vector2i(1280,800),Vector2i(1920,1080)]:
 		root.size = size
 		for id: String in ["claude","grok","meta"]:

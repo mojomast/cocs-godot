@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- Original native presentation artwork. Paint multiplies identity/team tint. -->
+<rect width="512" height="512" fill="#cbd0d2"/>
+<path d="M62 43H450L476 77V426L444 464H68L36 426V77Z" fill="#353f46"/>
+<path d="M72 53H440L465 84V419L435 451H77L48 419V84Z" fill="#929c9f"/>
+<path d="M80 62H433L453 89V411L429 438H83L61 411V90Z" fill="#e8ebec"/>
+<path d="M65 167H170L210 207H450M258 207V435" fill="none" stroke="#626f75" stroke-width="11"/>
+<path d="M68 159H175L215 199H449M267 211V431" fill="none" stroke="#fff" stroke-width="3"/>
+<path d="M89 290H214V391H89Z" fill="#b3bdc0"/>
+<path d="M101 307H201M101 326H201M101 345H201M101 364H180" stroke="#637077" stroke-width="8"/>
+<path d="M305 273H414V314H305Z" fill="#78858b"/>
+<path d="M316 284H339V303H316ZM348 284H361V303H348ZM370 284H402V290H370" fill="#e9edee"/>
+<g fill="#4b5961" stroke="#f7f8f8" stroke-width="3"><circle cx="92" cy="99" r="13"/><circle cx="420" cy="99" r="13"/><circle cx="92" cy="414" r="11"/><circle cx="420" cy="414" r="11"/></g>
+<path d="M85 99H99M413 99H427M85 414H99M413 414H427" stroke="#1e282f" stroke-width="4"/>
+<path d="M120 63H161M452 343V366M291 437H321M62 217V235" stroke="#fff" stroke-width="5"/>
+</svg>
