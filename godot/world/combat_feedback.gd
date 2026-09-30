@@ -34,6 +34,8 @@ var hurt_remaining: float = 0.0
 const Overlay = preload("res://world/combat_overlay.gd")
 const AudioFeedback = preload("res://world/audio_feedback.gd")
 const MeleeFeedback = preload("res://world/melee_feedback.gd")
+const DamageNumbers = preload("res://world/damage_numbers.gd")
+var damage_numbers: Control
 const AudioBuses = preload("res://audio/buses.gd")
 const PlayerFx = preload("res://player_fx/director.gd")
 const Impacts = preload("res://player_fx/impacts.gd")
@@ -74,6 +76,7 @@ var map_error := ""
 func configure_effects(camera: Camera3D, session: Node) -> void:
 	effect_camera = camera
 	effect_session = session
+	if is_instance_valid(damage_numbers): damage_numbers.configure(camera, occlusion.segment_blocked)
 	if is_instance_valid(melee_feedback): melee_feedback.configure(audio_feedback, camera)
 	if not is_instance_valid(weapon_effects):
 		weapon_effects = WeaponEffects.new()
@@ -116,6 +119,7 @@ func configure_effects(camera: Camera3D, session: Node) -> void:
 	_attach_rig()
 
 func _quality_changed(level: int) -> void:
+	if is_instance_valid(damage_numbers): damage_numbers.set_quality(level)
 	if is_instance_valid(melee_feedback): melee_feedback.set_quality(level)
 	if is_instance_valid(shields): shields.set_quality("low" if level == 0 else "high")
 	# Low retains essential weapon cues, dropping secondary smoke/casings.
@@ -192,6 +196,7 @@ func _sync_activity() -> void:
 	if not active:
 		# Drain, rather than freeze/replay held bursts when focus/freshness returns.
 		pending_events.clear()
+		if is_instance_valid(damage_numbers): damage_numbers.clear_transient()
 		if is_instance_valid(weapon_effects): weapon_effects.reset()
 		if is_instance_valid(world_particles): world_particles.reset()
 		if is_instance_valid(projectiles): projectiles.clear_round()
@@ -243,6 +248,7 @@ func flush_effects() -> void:
 		if event.get("type") == "launch" and WeaponEffects.numeric(event.get("time")) and absf(float(event.time)-source_time) <= 0.25 and is_instance_valid(projectiles):
 			projectiles.cache_launch(event, weapon_effects.resolve_launch_origin(event, effect_local_id), effect_local_id)
 	shields.apply_events(events, effect_local_id)
+	if is_instance_valid(damage_numbers): damage_numbers.consume(events, effect_local_id, public_actors)
 	world_particles.consume(events, effect_local_id)
 	if is_instance_valid(blood_fx): blood_fx.apply_events(events, effect_local_id)
 	if is_instance_valid(player_fx): player_fx.apply_events(safe, effect_local_id)
@@ -337,6 +343,7 @@ func apply_state(state: Dictionary) -> void:
 	if WeaponEffects.numeric(time): source_time = float(time)
 	last_state_usec = Time.get_ticks_usec()
 	public_actors = state.get("actors", []) if state.get("actors", []) is Array else []
+	if is_instance_valid(damage_numbers): damage_numbers.apply_state(public_actors, effect_local_id)
 	_sync_activity()
 	if is_instance_valid(effect_camera) and not effects_active: return
 	if is_instance_valid(player_fx): player_fx.apply_state(state, effect_local_id)
@@ -363,6 +370,11 @@ func _ready() -> void:
 	melee_feedback = MeleeFeedback.new()
 	add_child(melee_feedback)
 	melee_feedback.configure(audio_feedback, effect_camera)
+	var numbers_layer := CanvasLayer.new()
+	numbers_layer.layer = 2
+	add_child(numbers_layer)
+	damage_numbers = DamageNumbers.new()
+	numbers_layer.add_child(damage_numbers)
 	var local_settings := get_tree().root.get_node_or_null("LocalSettings")
 	if local_settings != null:
 		local_settings.audio_preferences_changed.connect(func(options: Dictionary) -> void:
@@ -370,6 +382,9 @@ func _ready() -> void:
 			audio_feedback.set_muted(options.get("mute", false) == true or "--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args())
 			melee_feedback.set_muted(audio_feedback._muted)
 			melee_feedback.set_reduced_motion(options.get("reduced_motion", false) == true))
+		local_settings.audio_preferences_changed.connect(func(options: Dictionary) -> void:
+			damage_numbers.reduced_motion = options.get("reduced_motion", false) == true)
+		damage_numbers.reduced_motion = local_settings.values.get("reduced_motion", false) == true
 		AudioBuses.apply(local_settings.values)
 		melee_feedback.set_reduced_motion(local_settings.values.get("reduced_motion", false) == true)
 		audio_feedback.set_muted(local_settings.values.get("mute", false) == true or "--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args())
@@ -486,6 +501,7 @@ func advance(delta: float) -> void:
 	if is_instance_valid(player_fx): player_fx.advance(delta)
 	if is_instance_valid(impacts): impacts.advance(delta)
 	if is_instance_valid(melee_feedback): melee_feedback.advance(delta)
+	if is_instance_valid(damage_numbers): damage_numbers.advance(delta)
 	for index: int in range(tracers.size() - 1, -1, -1):
 		tracers[index].remaining -= maxf(delta, 0.0)
 		if tracers[index].remaining <= 0: remove_tracer(index)
@@ -528,6 +544,7 @@ func text() -> String:
 	return ("HIT CONFIRMED " if hit_remaining > 0 else "") + ("TAKING DAMAGE" if hurt_remaining > 0 else "")
 
 func clear_round() -> void:
+	if is_instance_valid(damage_numbers): damage_numbers.clear_round()
 	pending_events.clear()
 	event_ids.clear()
 	highest_event = -1
