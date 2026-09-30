@@ -15,9 +15,11 @@ terrain clearance. The server alone selects active chapter beats and publishes
 Captions have stable IDs and only appear once on proximity; a short display and
 cooldown prevent them from replacing one another each frame. The player can pet
 Patch using a new Interact press within 2.6 horizontal / 1.4 vertical units and
-sampled terrain/block line of sight. A usable mandatory relay interaction always
-has priority. Every accepted press advances Patch's `reactionSerial` and the
-campaign-wide `pets` count; holding Interact does not repeat it.
+the source's terrain/block visibility ray. A usable mandatory relay interaction
+always has priority. Every accepted press advances Patch's `reactionSerial` and
+the campaign-wide `pets` count; holding Interact does not repeat it, and a one
+second reaction cooldown survives checkpoint retry. Patch recognizes the player
+on the first pet in subsequent chapters based on campaign-wide pet history.
 
 `campaignCheckpoint()` carries a server-local chapter story record on retry.
 Continue carries it into the next chapter; restart removes only the current

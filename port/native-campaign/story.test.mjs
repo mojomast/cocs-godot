@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {CAMPAIGN_MAP_IDS,loadCampaignMap,campaignSupportAt} from './maps.mjs';
 import {createCampaignMatch} from './match.mjs';
 import {createCampaignStory,storyPlacement} from './story.mjs';
-import {floorAt,obstructed} from './core.generated.mjs';
+import {floorAt,obstructed,visible} from './core.generated.mjs';
 
 const tick=(match,input={})=>match.step(1/60,{inputs:{0:input}});
 const at=(match,p)=>Object.assign(match.actors[0],{x:p.x,y:p.y,z:p.z,vx:0,vy:0,vz:0,
@@ -31,7 +31,9 @@ test('all four authored chapters stage operators and Patch on source-supported r
     assert.equal(pet.pets,1,id);assert.equal(pet.entities.find(e=>e.id==='patch').reactionSerial,1,id);
     for(let i=0;i<5;i++)tick(match,{interact:true});
     assert.equal(match.snapshot().campaign.story.pets,1,'held E must not repeat');
-    tick(match);tick(match,{interact:true});assert.equal(match.snapshot().campaign.story.pets,2,'fresh E pets again');
+    tick(match);tick(match,{interact:true});assert.equal(match.snapshot().campaign.story.pets,1,'rapid taps respect reaction cooldown');
+    tick(match);for(let i=0;i<61;i++)tick(match);
+    tick(match,{interact:true});assert.equal(match.snapshot().campaign.story.pets,2,'later fresh E pets again');
     assert.equal(match.actors.filter(a=>a.isNpc).length,0,'friendlies never become hostile actors');
     assert.equal(match.snapshot().campaign.kills,0);
   }
@@ -77,10 +79,33 @@ test('mandatory E wins, and remote/vertical/occluded pets are rejected',()=>{
   const protectedPet=story.update(mandatory,pup,true,data.arena);
   assert.equal(protectedPet.prompt,null);assert.equal(protectedPet.pets,0);
   story.update(base,pup,false,data.arena);
-  // A test-only opaque wall across the sight ray leaves the route and entity unchanged.
-  const blocked={...data.arena,blocks:[...data.arena.blocks,{x:pup.x+.8,z:pup.z,w:.6,d:3,baseY:0,h:100}]};
+  // Ordinary source block: h is absolute top and baseY is absent.
+  const blocked={...data.arena,blocks:[...data.arena.blocks,{x:pup.x+.8,z:pup.z,w:.6,d:3,h:pup.y+2}]};
   const position={...pup,x:pup.x+1.6};
+  assert.equal(visible({x:position.x,y:position.y+1.15,z:position.z},
+    {x:pup.x,y:pup.y+.55,z:pup.z},blocked),false);
   assert.equal(story.update(base,position,true,blocked).pets,0);
+  story.update(base,pup,false,data.arena);
+  const raised={...data.arena,blocks:[...data.arena.blocks,{x:pup.x+.8,z:pup.z,w:.6,d:3,h:pup.y+.8}]};
+  assert.equal(story.update(base,position,true,raised).pets,0,'raised ground block occludes low puppy ray');
+});
+
+test('source terrain crest occludes a low pet ray',()=>{
+  const ridge={terrain:{surfaces:[{vertices:[[0,0,0],[0,0,1],[1,2,1],[1,2,0]],triangles:[[0,1,2],[0,2,3]]},
+    {vertices:[[1,2,0],[1,2,1],[2,0,1],[2,0,0]],triangles:[[0,1,2],[0,2,3]]}],walls:[],maxSlope:1.2},blocks:[]};
+  assert.equal(visible({x:.05,y:1.15,z:.5},{x:1.95,y:.55,z:.5},ridge),false);
+});
+
+test('only the current phase beat can fire near an earlier visit from the same operator',()=>{
+  const data=loadCampaignMap('rootfall-verge'),points=storyPlacement(data),story=createCampaignStory(data);
+  const state=(step,time)=>({stepIndex:step,totalElapsed:time,encounter:null,deployed:false,marker:points.arrival});
+  const initial=story.update(state(0,0),points.arrival,false,data.arena);
+  assert.equal(initial.caption.id,'rootfall-verge-arrival');
+  const returned=story.update(state(3,10),points.arrival,false,data.arena);
+  assert.equal(returned.caption,null);
+  assert.deepEqual(returned.completed,['rootfall-verge-arrival']);
+  const next=story.update(state(3,11),points.repeater,false,data.arena);
+  assert.equal(next.caption.id,'rootfall-verge-repeater');
 });
 
 test('retry preserves chapter completion and pet serial; restart drops only current chapter',()=>{
@@ -91,9 +116,16 @@ test('retry preserves chapter completion and pet serial; restart drops only curr
   const retry=createCampaignMatch({...checkpoint,random:()=>.5}),replay=retry.snapshot().campaign.story;
   assert.equal(replay.pets,1);assert.equal(replay.entities.find(e=>e.id==='patch').reactionSerial,1);
   assert.ok(replay.completed.includes('rootfall-verge-arrival'));
+  at(retry,replay.entities.find(e=>e.id==='patch'));tick(retry,{interact:true});
+  assert.equal(retry.snapshot().campaign.story.pets,1,'retry cannot bypass reaction cooldown');
+  tick(retry);for(let i=0;i<61;i++)tick(retry);
+  tick(retry,{interact:true});assert.equal(retry.snapshot().campaign.story.pets,2);
   const next=createCampaignMatch({mapId:'siltwake-crossing',storyCarry:retry.campaignStoryContinuity(),random:()=>.5});
-  assert.equal(next.snapshot().campaign.story.pets,1);
+  assert.equal(next.snapshot().campaign.story.pets,2);
+  const nextPup=next.snapshot().campaign.story.entities.find(e=>e.id==='patch');
+  at(next,nextPup);tick(next);tick(next,{interact:true});
+  assert.equal(next.snapshot().campaign.story.caption.text,'Patch recognizes you and bounds over for another scratch.');
   const reset={chapters:{...next.campaignStoryContinuity().chapters}};
   delete reset.chapters['siltwake-crossing'];
-  assert.equal(createCampaignMatch({mapId:'siltwake-crossing',storyCarry:reset,random:()=>.5}).snapshot().campaign.story.pets,1);
+  assert.equal(createCampaignMatch({mapId:'siltwake-crossing',storyCarry:reset,random:()=>.5}).snapshot().campaign.story.pets,2);
 });

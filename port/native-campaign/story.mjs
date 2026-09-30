@@ -1,4 +1,4 @@
-import {floorAt, obstructed} from './core.generated.mjs';
+import {floorAt, obstructed, visible} from './core.generated.mjs';
 import {campaignSupportAt} from './maps.mjs';
 
 // The same two rescued maintenance operators return throughout the corridor.
@@ -30,9 +30,8 @@ const scripts={
 };
 const near=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 
-/** Resolve a point on the reviewed critical path, rather than depending on generated
- * world coordinates. Lateral offsets are accepted only with source collision and
- * sampled terrain support/gradient clearance. The centre-line is the fallback. */
+/** Resolve a nearby reviewed critical-path point, retaining a walkable route to
+ * each character. Source collision and adjacent terrain clearance validate it. */
 function place(data,anchor,offset) {
   const path=data.campaign.criticalPath,arena=data.arena;
   let index=0,best=Infinity;
@@ -62,23 +61,14 @@ export function storyPlacement(data) {
     reunion:place(data,a.exit,-12)};
 }
 
-function sight(arena,player,target) {
-  const d=near(player,target),fromY=player.y+1.15,toY=target.y+.55;
-  for(let i=1,n=Math.ceil(d/.3);i<n;i++){
-    const t=i/n,x=player.x+(target.x-player.x)*t,z=player.z+(target.z-player.z)*t,y=fromY+(toY-fromY)*t;
-    const floor=campaignSupportAt(arena,x,z);
-    if(!floor||floor.y>y-.12||arena.blocks.some(b=>Math.abs(x-b.x)<b.w/2&&Math.abs(z-b.z)<b.d/2&&b.baseY+b.h>y))return false;
-  }
-  return true;
-}
-
 export function createCampaignStory(data,carry={}) {
   const chapter=data.id,placements=storyPlacement(data),beats=scripts[chapter];
   if(!beats)throw new TypeError('Unknown story chapter');
   const previous=structuredClone(carry.chapters??{}),saved=previous[chapter]??{};
   const completed=new Set(saved.completed??[]),petIds=new Set(saved.petIds??[]);
   let petCount=saved.petCount??0;
-  let reactionSerial=saved.reactionSerial??0,caption=null,captionUntil=0,nextCaptionAt=0,held=false;
+  const previousPets=Object.entries(previous).reduce((n,[id,v])=>n+(id===chapter?0:v.petCount??0),0);
+  let reactionSerial=saved.reactionSerial??0,caption=null,captionUntil=0,nextCaptionAt=0,held=false,lastPetAt=saved.lastPetAt??-Infinity;
   const puppyPositions=chapter==='crown-array'?['arrival','reunion']:['arrival'];
   const puppyId=key=>key==='arrival'?'patch':`patch-${key}`;
   const puppyPlaces={arrival:place(data,data.campaign.anchors.start,9),
@@ -89,31 +79,33 @@ export function createCampaignStory(data,carry={}) {
     return e&&['interact','restore'].includes(e.mechanic)&&state.deployed&&state.enemiesRemaining===0&&
       near(player,marker)<=marker.radius&&Math.abs(player.y-marker.y)<3;
   };
+  const activeBeat=step=>beats.findLast(([,required])=>step>=required);
   function entities(step) {
-    const active=beats.filter(([,required],i)=>step>=required&&(i===beats.length-1||step<beats[i+1][1]));
-    const out=active.map(([key,,who,pose])=>({...OPERATORS[who],...placements[key],yaw:0,pose,active:true,reactionSerial:0}));
+    const beat=activeBeat(step),out=beat?[{...OPERATORS[beat[2]],...placements[beat[0]],yaw:0,pose:beat[3],active:true,reactionSerial:0}]:[];
     const puppy=puppyAt(step);
     if(puppy){const p=puppyPlaces[puppy];out.push({...PATCH,...p,yaw:0,pose:petIds.has(puppyId(puppy))?'happy':'sit',active:true,reactionSerial});}
     return out;
   }
   function update(state,player,interact,arena) {
     const step=state.stepIndex,now=state.totalElapsed,active=entities(step),pup=active.find(e=>e.kind==='puppy');
-    const eligible=pup&&near(player,pup)<=2.6&&Math.abs(player.y-pup.y)<=1.4&&sight(arena,player,pup);
+    const eligible=pup&&near(player,pup)<=2.6&&Math.abs(player.y-pup.y)<=1.4&&
+      visible({x:player.x,y:player.y+1.15,z:player.z},{x:pup.x,y:pup.y+.55,z:pup.z},arena);
     const prompt=eligible&&!mandatory(state,player)?{entityId:pup.id,action:'pet',text:'E  Pet Patch'}:null;
-    if(interact&&!held&&prompt){
+    if(interact&&!held&&prompt&&now-lastPetAt>=1){
       reactionSerial++;petCount++;petIds.add(puppyId(puppyAt(step)));
-      caption={id:`${chapter}-pet-${reactionSerial}`,speaker:'Patch',text:reactionSerial===1?'Patch leans into your hand and wags his tail.':'Patch recognizes you and bounds over for another scratch.'};
+      lastPetAt=now;
+      caption={id:`${chapter}-pet-${reactionSerial}`,speaker:'Patch',text:previousPets+petCount===1?'Patch leans into your hand and wags his tail.':'Patch recognizes you and bounds over for another scratch.'};
       captionUntil=now+4;nextCaptionAt=captionUntil+.4;
     }
     held=interact;
     if(now>=nextCaptionAt){
-      const beat=beats.find(([key],i)=>active.some(e=>e.id===beats[i][2])&&!completed.has(key)&&near(player,placements[key])<13&&Math.abs(player.y-placements[key].y)<3);
-      if(beat){completed.add(beat[0]);caption={id:`${chapter}-${beat[0]}`,speaker:beat[4],text:beat[5]};captionUntil=now+5;nextCaptionAt=captionUntil+.5;}
+      const beat=activeBeat(step),key=beat?.[0];
+      if(beat&&!completed.has(key)&&near(player,placements[key])<13&&Math.abs(player.y-placements[key].y)<3){completed.add(key);caption={id:`${chapter}-${key}`,speaker:beat[4],text:beat[5]};captionUntil=now+5;nextCaptionAt=captionUntil+.5;}
     }
     if(caption&&now>=captionUntil)caption=null;
     return {version:1,entities:entities(step),prompt,caption,completed:[...completed].map(id=>`${chapter}-${id}`),
-      pets:Object.entries(previous).reduce((n,[id,v])=>n+(id===chapter?0:v.petCount??0),0)+petCount};
+      pets:previousPets+petCount};
   }
-  function continuity(){return {chapters:{...previous,[chapter]:{completed:[...completed],petIds:[...petIds],petCount,reactionSerial}}};}
+  function continuity(){return {chapters:{...previous,[chapter]:{completed:[...completed],petIds:[...petIds],petCount,reactionSerial,lastPetAt}}};}
   return {update,continuity};
 }
