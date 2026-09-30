@@ -142,3 +142,12 @@ Production input/focus safeguards and effective world lighting remain required.
 
 Export waits for final integrated graphical acceptance. The existing screenshot
 gallery is explicitly work in progress, with earlier images retained and labelled.
+
+## Additional user request: melee kick response
+
+The owner confirmed the existing kick and requested swoosh/smack impact audio,
+fresh-press-only input with a short rapid-tap cooldown, authoritative enemy
+knockback and a confirmed-hit shockwave. See [MELEE.md](MELEE.md). Two isolated
+Astra lanes own mechanics/input and shared native audio/VFX. Capture repair
+continues to own the heavy slot; these lanes are initially edit-only. Export
+also waits for this requested upgrade's integrated acceptance.
