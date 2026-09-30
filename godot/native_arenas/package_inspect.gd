@@ -3,7 +3,7 @@ extends SceneTree
 ## Runs from the exported cocs.pck with no project directory and fails if the
 ## source-operator composition or any identity-map JSON/builder is missing.
 const NativeCatalog = preload("res://native_arenas/catalog.gd")
-const IDENTITY_IDS := ["lacuna-court", "vermilion-fold", "nacre-engine"]
+const IDENTITY_IDS := ["lacuna-court", "vermilion-fold", "nacre-engine", "canopy-divide", "basalt-reach"]
 const OPERATOR_IDS := ["chatgpt", "claude", "grok", "meta", "gemini", "deepseek", "mistral", "kimi", "qwen"]
 
 func _initialize() -> void:
@@ -93,11 +93,15 @@ func inspect() -> void:
 	if not native_catalog.open_dm():
 		fail("catalog: " + str(native_catalog.error))
 		return
-	if native_catalog.entries.size() != 6:
+	if native_catalog.entries.size() != 8:
 		fail("roster size " + str(native_catalog.entries.size()))
 		return
 	var hashes := {}
 	for id: String in IDENTITY_IDS:
+		var renderer: Variant = load(NativeCatalog.RENDERERS[id])
+		if not renderer is GDScript or not renderer.can_instantiate():
+			fail("map renderer missing: " + id)
+			return
 		var data: Dictionary = native_catalog.resolve_envelope(id)
 		if data.is_empty():
 			fail(id + ": " + str(native_catalog.error))
