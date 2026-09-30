@@ -177,7 +177,31 @@ export const MOVE={friction:6,stopSpeed:2,groundAccel:10,airAccel:3.5,airCap:1.6
 // loadout an answer inside its own face and a reason to finish hurt targets.
 // `arc` is the minimum forward alignment (a dot threshold: larger is tighter);
 // OpenClaw's Grip passive widens the cone, relaxing the threshold.
-export const MELEE={range:2.4,damage:45,cooldown:.6,arc:.2};
+export const MELEE={range:2.4,damage:45,cooldown:.3,arc:.2,knockback:.85};
+// A bounded authority shove, separate from locomotion velocity. Sweep in small
+// increments, keep grounded feet on support and stop at walls/voids/steep edges.
+// Mounted/traversal actors retain their movement owner's position.
+export function meleeKnockback(a,direction,arena,distance=MELEE.knockback){
+ const from=v(a.x,a.y,a.z),length=Math.hypot(direction.x,direction.z);
+ if(a.health<=0||a.vehicleId!=null||a.zipRide||a.traversalFlight||length<1e-6)return v();
+ const amount=clamp(distance,0,MELEE.knockback),steps=Math.ceil(amount/.08),bounds=boundsOf(arena);
+ for(let i=0;i<steps;i++){
+  const x=a.x+direction.x/length*amount/steps,z=a.z+direction.z/length*amount/steps;
+  if(x<bounds.minX+RULES.radius||x>bounds.maxX-RULES.radius||z<bounds.minZ+RULES.radius||z>bounds.maxZ-RULES.radius)break;
+  let y=a.y;
+  if(a.grounded){
+   const support=(px,pz)=>{const top=floorAt(px,pz,arena);if(top>a.y+.25&&top<a.y+RULES.height)return top;let f=floorBelow(px,pz,a.y+.25,arena);for(const b of candidates(arena,px,pz,0))if(b.h<=a.y+.25&&Math.abs(px-b.x)<=b.w/2&&Math.abs(pz-b.z)<=b.d/2)f=Math.max(f??-Infinity,b.h);return f;};
+   const floor=support(x,z);
+   if(floor===null||Math.abs(floor-a.y)>.25||bodyOffsets(RULES.radius).some(([dx,dz])=>{const f=support(x+dx,z+dz);return f===null||Math.abs(f-a.y)>.25;}))break;
+   y=floor;
+  }
+  const sweepY=Math.max(a.y,y)+.01;
+  if(obstructed(x,y,z,RULES.radius,arena)||!grappleSweepClear(v(a.x,sweepY,a.z),{x,y:sweepY,z},RULES.radius,arena))break;
+  a.x=x;a.y=y;a.z=z;
+ }
+ if(a.grounded)a.lastValid=v(a.x,a.y,a.z);
+ return v(a.x-from.x,a.y-from.y,a.z-from.z);
+}
 const canStand=(x,y,z,r,arena)=>!candidates(arena,x,z,r).some(b=>Math.abs(x-b.x)<b.w/2+r&&Math.abs(z-b.z)<b.d/2+r&&y<b.h-1e-6&&b.h<y+MOVE.baseHeight);
 const accelerate=(a,ix,iz,wishSpeed,accel,dt)=>{const add=wishSpeed-(a.vx*ix+a.vz*iz);if(add<=0)return;const amount=Math.min(accel*dt*wishSpeed,add);a.vx+=ix*amount;a.vz+=iz*amount;};
 export const SELF_BLAST_MARGIN=1.15;
@@ -1170,7 +1194,25 @@ export class Match{
   juggernautKill(source,target){const state=this.objectiveState;if(!state||state.kind!=='juggernaut')return;const rules=modeRule(this.config.mode),points=state.points||(state.points={}),killer=source&&source!==target&&source.health>0?source:null;if(target.id===state.juggernautId){if(killer)points[killer.id]=(points[killer.id]||0)+(rules.juggernautBounty??3);const next=killer||this.actors.find(a=>a!==target&&a.health>0);this.setJuggernaut(next?next.id:null);if(killer&&Number.isFinite(rules.juggernautTransferShield))killer.juggernautShield=(killer.juggernautShield||0)+rules.juggernautTransferShield;}else if(killer&&source.id===state.juggernautId){points[killer.id]=(points[killer.id]||0)+(rules.juggernautKillBonus??2);}}
     applyKillstreak(a){a.streak=(a.streak||0)+1;const reward=a.streak===3?'scavenger':a.streak===5?'overcharge':a.streak===7?'overshield':null;if(!reward)return;a.streak===3?(a.health=Math.min(a.maxHealth,a.health+20),(()=>{const w=this.weaponForIndex(a,a.weapon);if(Number.isFinite(w?.cap)&&!this.config.unlimitedAmmo)a.ammo[a.weapon]=Math.min(w.cap,(a.ammo[a.weapon]||0)+w.ammo);})()):(()=>{const p=POWERUPS.find(x=>x.id===reward);if(p){a.powerups[p.id]=p.duration;this.refreshPowerups(a);if(p.effect.armor)a.temporaryShield=p.effect.armor;}})();this.emit('killstreak',{actor:a.id,streak:a.streak,reward});}
     throwGrenade(a){if(this.over||a.health<=0||a.vehicleId!==null||(a.grenadeCooldown||0)>0)return false;const w=WEAPONS[5],flat=aim(a.yaw+(a.punchYaw||0),0),from=eye(a);this.rockets.push({id:++this.serial,owner:a.id,weapon:5,pos:from,dir:norm(v(flat.x,0,flat.z)),vy:5.5,damageMultiplier:1,life:2.6,bounces:0,homing:0,homingTurnRate:0});a.grenadeCooldown=7;this.stats.grenades=(this.stats.grenades||0)+1;this.emit('grenade',{actor:a.id,pos:from});return true;}
-  melee(a){if(this.over||a.health<=0||(a.melee||0)>0)return false;a.protection=0;a.melee=MELEE.cooldown;const reach=TOOL_USE.meleeRange(a.verbState,MELEE.range),arc=MELEE.arc/passiveScale(a.harness,'melee-arc'),dir=aim(a.yaw,a.pitch),origin=eye(a);let best=null,bestD=Infinity;for(const b of this.actors){if(b===a||b.health<=0||(teamMode(this.config)&&b.team===a.team))continue;const d=dist(a,b);if(d>reach||d>=bestD)continue;const target=eye(b),to=norm(v(target.x-origin.x,target.y-origin.y,target.z-origin.z));if((to.x*dir.x+to.y*dir.y+to.z*dir.z)<arc)continue;if(!this.visible(origin,target))continue;best=b;bestD=d;}if(best)this.damage(best,(a.meleeDamage??MELEE.damage),a);this.emit('melee',{actor:a.id,hit:best?.id??null,pos:origin});return true;}
+  melee(a){
+   if(this.over||this.race||a.health<=0||a.vehicleId!=null||(a.melee||0)>0)return false;
+   a.protection=0;a.melee=MELEE.cooldown;
+   const reach=TOOL_USE.meleeRange(a.verbState,MELEE.range),arc=MELEE.arc/passiveScale(a.harness,'melee-arc'),dir=aim(a.yaw,a.pitch),origin=eye(a);
+   let best=null,bestD=Infinity,contact=null,direction=dir;
+   for(const b of this.actors){
+    if(b===a||b.health<=0||(teamMode(this.config)&&b.team===a.team))continue;
+    const d=dist(a,b);if(d>reach||d>=bestD)continue;
+    const volume=b.isNpc===true?b.npcHitVolume:null,target=volume?v(b.x,b.y+(volume.bottom+volume.top)/2,b.z):eye(b),to=norm(v(target.x-origin.x,target.y-origin.y,target.z-origin.z));
+    if((to.x*dir.x+to.y*dir.y+to.z*dir.z)<arc)continue;
+    const t=hitActor(origin,to,b,reach+RULES.radius);if(t===null)continue;
+    const pos=add(origin,to,t);if(!this.visible(origin,pos))continue;
+    best=b;bestD=d;contact=pos;direction=to;
+   }
+   const damage=best?this.damage(best,(a.meleeDamage??MELEE.damage),a):0;
+   const knockback=damage>0?meleeKnockback(best,direction,this.arena,MELEE.knockback*this._knockbackScale(best)):v();
+   this.emit('melee',{actor:a.id,hit:damage>0?best.id:null,target:best?.id??null,outcome:damage>0?'hit':best?'blocked':'miss',damage,pos:origin,impact:contact,direction,normal:contact?v(-direction.x,-direction.y,-direction.z):null,knockback});
+   return true;
+  }
      explode(r,hit){const source=this.actors[r.owner],baseWeapon=WEAPONS[r.weapon??1],spec=r.alt===true?altSpecFor(r.weapon):null,w=spec?{...baseWeapon,damage:spec.damage,splash:spec.splash,radius:spec.radius}:baseWeapon,affinityDamage=r.damageMultiplier||1,blast={x:r.pos.x,y:(r.pos.y??0)+.35,z:r.pos.z};if(hit)this.damage(hit,clampSingleHit(w.damage*affinityDamage,{targetHealth:hit.maxHealth}),source);for(const a of this.actors){const p=eye(a),d=dist(r.pos,p);if(a.health>0&&(a===source||!teamMode(this.config)||a.team!==source?.team)&&d<w.radius&&(d<w.radius*.6||this.visible(blast,p))){this.damage(a,clampSingleHit(w.splash*affinityDamage*(1-d/w.radius),{targetHealth:a.maxHealth}),source);const n=norm(v(a.x-r.pos.x,.5,a.z-r.pos.z)),braced=this._knockbackScale(a);a.vx+=n.x*8*braced;a.vz+=n.z*8*braced;a.vy+=4*braced;}}for(const vehicle of this.vehicles){const d=Math.hypot(vehicle.position.x-r.pos.x,vehicle.position.z-r.pos.z);if(vehicle.health>0&&d<w.radius&&(d<w.radius*.6||this.visible(blast,vehicle.position))&&!this.vehicleFriendlyFire(vehicle,source))this.damageVehicle(vehicle,w.splash*affinityDamage*(1-d/w.radius),source);}this.emit('explosion',{pos:{...r.pos},weapon:r.weapon??1,...(spec?{alt:true,altId:spec.id,projectile:Number.isInteger(r.id)?r.id:null}:{})});}
   useful(a,p){if(this.mutators.instagib&&p.kind!=='health'&&p.kind!=='armor')return false;if(p.kind==='health')return a.health<a.maxHealth;if(p.kind==='armor')return a.armor<100;if(p.kind==='megahealth')return a.health<a.maxHealth||a.armor<100;if(p.kind==='ammo'){const n=pickupWeapon(p.weapon??a.weapon);return n!==undefined&&loadoutAllows(this.loadout,n)&&a.ammo[n]<this.weaponForIndex(a,n).cap;}if(POWERUPS.some(x=>x.id===p.kind))return true;if(economyPickup(p.kind))return true;const n=pickupWeapon(p.kind);return n!==undefined&&loadoutAllows(this.loadout,n)&&a.ammo[n]<this.weaponForIndex(a,n).cap;}
    collect(a,p){if(!this.useful(a,p))return false;const power=POWERUPS.find(x=>x.id===p.kind),economy=economyPickup(p.kind);if(p.kind==='health')a.health=Math.min(a.maxHealth,a.health+35);else if(p.kind==='armor')a.armor=Math.min(100,a.armor+40);else if(p.kind==='megahealth'){a.health=Math.max(a.health,Math.min(a.maxHealth,150));a.armor=Math.min(150,a.armor+75);}else if(p.kind==='ammo'){const n=pickupWeapon(p.weapon??a.weapon),w=this.weaponForIndex(a,n),tool=TOOL_USE.onPickup(a.verbState,{magazine:w.ammo,ammo:a.ammo[n],cap:w.cap});a.ammo[n]=this.config.unlimitedAmmo?Infinity:Math.min(w.cap,a.ammo[n]+w.ammo+tool.reload);if(a.weapon===0&&this.config.mode!=='armsrace')a.weapon=n;}else if(power){a.powerups[power.id]=power.duration;this.refreshPowerups(a);if(power.effect.armor)a.temporaryShield=power.effect.armor;this.emit('powerup',{actor:a.id,kind:power.id,duration:a.powerups[power.id],effect:{...power.effect},pos:eye(a)});}else if(economy){if(economy.id==='weaponUpgrade')this.applyWeaponUpgrade(a,economy.duration);else if(economy.id==='deployable')this.deploySentry(a,economy.duration);}else{const n=pickupWeapon(p.kind),w=this.weaponForIndex(a,n),tool=TOOL_USE.onPickup(a.verbState,{magazine:w.ammo,ammo:a.ammo[n],cap:w.cap});a.ammo[n]=this.config.unlimitedAmmo?Infinity:Math.min(w.cap,a.ammo[n]+w.ammo+tool.reload);if(a.weapon===0&&this.config.mode!=='armsrace')a.weapon=n;}p.wait=p.kind==='health'||p.kind==='armor'?12:15;this.stats.pickups++;this.emit('pickup',{actor:a.id,kind:p.kind,powerup:!!power,economy:!!economy});return true;}
@@ -1203,12 +1245,14 @@ export class Match{
   const given=inputs.inputs||{0:inputs};
   for(const p of this.pickups)p.wait=Math.max(0,p.wait-dt);
   for(const vehicle of this.vehicles){if(vehicle.respawnTimer>0){vehicle.respawnTimer=Math.max(0,vehicle.respawnTimer-dt);if(vehicle.respawnTimer===0){respawnVehicle(vehicle,vehicle.spawn,vehicle.spawnYaw??vehicle.heading);this.emit('vehicle-respawn',{vehicle:vehicle.id,vehicleId:vehicle.id,kind:vehicle.kind,x:vehicle.position.x,y:vehicle.position.y,z:vehicle.position.z,pos:{...vehicle.position}});}}else if(vehicle.driver===null)stepVehicle(vehicle,{},dt);}this.resolveVehicleRams(dt);
-  for(const a of this.actors){if(this.over)break;if(a.health<=0){a.dead-=dt;if(a.dead<=0)this.spawn(a);continue;}
+  for(const a of this.actors){if(this.over)break;if(a.health<=0){a.meleeHeld=given[a.id]?.melee===true;a.dead-=dt;if(a.dead<=0)this.spawn(a);continue;}
   a.slow=Math.max(0,(a.slow||0)-dt);a.cooldown=Math.max(0,a.cooldown-dt);a.active=Math.max(0,a.active-dt);a.shotWait=Math.max(0,a.shotWait-dt);a.grenadeCooldown=Math.max(0,(a.grenadeCooldown||0)-dt);a.protection=Math.max(0,a.protection-dt);a.weaponSwitch=Math.max(0,(a.weaponSwitch||0)-dt);a.burstTimer=Math.max(0,(a.burstTimer||0)-dt);if(a.burstTimer<=0)a.burst=0;a.melee=Math.max(0,(a.melee||0)-dt);a.riderSpeedTimer=Math.max(0,(a.riderSpeedTimer||0)-dt);if(a.reloading){a.reloadTimer-=dt;if(a.reloadTimer<=0){const reloadWeapon=a.reloadWeapon,w=WEAPONS[reloadWeapon],cap=a.reloadCap??w?.cap,amount=a.reloadAmount??w?.ammo??0;a.ammo[reloadWeapon]=this.config.unlimitedAmmo?Infinity:Math.min(Number.isFinite(cap)?cap:Infinity,(a.ammo[reloadWeapon]||0)+amount);a.reloading=false;a.reloadTimer=0;a.reloadDuration=0;a.reloadWeapon=-1;a.reloadCap=undefined;a.reloadAmount=undefined;this.emit('reload',{actor:a.id,weapon:reloadWeapon,state:'end'});}}const wsel=this.weaponFor(a),recoil=wsel.recoil||{kick:0,recover:12},bloom=wsel.bloom,recover=recoil.recover??12;a.punchPitch=(a.punchPitch||0)+(a.punchVelPitch||0)*dt;a.punchYaw=(a.punchYaw||0)+(a.punchVelYaw||0)*dt;a.punchVelPitch=(a.punchVelPitch||0)+(-a.punchPitch*recover*recover-(a.punchVelPitch||0)*2*recover)*dt;a.punchVelYaw=(a.punchVelYaw||0)+(-a.punchYaw*recover*recover-(a.punchVelYaw||0)*2*recover)*dt;a.punchPitch=clamp(a.punchPitch,-.4,.4);a.punchYaw=clamp(a.punchYaw,-.4,.4);a.spread=Math.max(0,(a.spread||0)-(bloom?.recovery??.1)*dt);let expired=false;for(const id of Object.keys(a.powerups)){a.powerups[id]-=dt;if(a.powerups[id]<=0){delete a.powerups[id];expired=true;}}if(expired){this.refreshPowerups(a);if(!a.powerups.overshield)a.temporaryShield=0;}
    if((a.upgradeTimer||0)>0){a.upgradeTimer=Math.max(0,a.upgradeTimer-dt);if(a.upgradeTimer===0)this.clearWeaponUpgrade(a);}
    if(a.burstLeft>0&&a.shotWait<=0&&a.health>0&&a.ammo[a.weapon]>0){this.fire(a);a.burstLeft--;const burstWeapon=this.weaponFor(a);a.shotWait=Math.min(a.shotWait||Infinity,burstWeapon.burstDelay||.12);}else if(a.ammo[a.weapon]<=0)a.burstLeft=0;
    const ext=given[a.id];
-   if(ext){if(Number.isFinite(ext.yaw))a.yaw=ext.yaw;if(Number.isFinite(ext.pitch))a.pitch=Math.max(-1.45,Math.min(1.45,ext.pitch));if(this.config.mode!=='armsrace'&&Number.isInteger(ext.weapon))this.switchWeapon(a,ext.weapon,{source:'request'});if(ext.reload)this.startReload(a,a.weapon);if(ext.melee)this.melee(a);}
+   if(ext){if(Number.isFinite(ext.yaw))a.yaw=ext.yaw;if(Number.isFinite(ext.pitch))a.pitch=Math.max(-1.45,Math.min(1.45,ext.pitch));if(this.config.mode!=='armsrace'&&Number.isInteger(ext.weapon))this.switchWeapon(a,ext.weapon,{source:'request'});if(ext.reload)this.startReload(a,a.weapon);if(ext.melee&&!a.meleeHeld)this.melee(a);}
+   // Consume even a refused press. Holding through cooldown never queues a kick.
+   a.meleeHeld=ext?.melee===true;
    // Alt-fire held state: one `alt-state` event per flip, with the resolved
    // weapon so presentation can swap the alt visual/HUD in the same frame.
    const altHeld=ext?.altFire===true;if(altHeld!==(a.alt===true)){a.alt=altHeld;this.emit('alt-state',{actor:a.id,weapon:a.weapon,alt:altHeld,pos:eye(a)});}
