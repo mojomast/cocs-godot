@@ -32,7 +32,7 @@ for(const mapId of maps)for(const profile of profiles){
   try{
     authority=createAuthority({mapId,difficulty:'easy',random:()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/4294967296),matchFactory:fixture.matchFactory,observe(record){
       const f=record.frame;
-      if(f&&['start','results','campaign-action','error','events'].includes(f.type))wire.push(record);
+      if(f&&['start','results','campaign-action','native-arena-input-reset','error','events'].includes(f.type))wire.push(record);
     }});
     await new Promise((resolve,reject)=>{authority.server.once('error',reject);authority.server.listen(0,'127.0.0.1',resolve);});
     control=http.createServer((req,res)=>{
