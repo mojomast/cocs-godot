@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import {once} from 'node:events';
 import {WebSocket} from 'ws';
 import {createAuthority} from './authority.mjs';
+import {createCampaignMatch} from './match.mjs';
+import {loadCampaignMap} from './maps.mjs';
 
 async function connect(t, options={}) {
   const mapId=options.mapId??'rootfall-verge';
@@ -84,4 +86,48 @@ test('final Continue emits fresh same-map start then terminal results without re
   c.send({type:'campaign-action',action:'continue',inputEpoch:completed.inputEpoch});
   c.send({type:'ping',t:5678});await c.wait(f=>f.type==='pong'&&f.t===5678);
   assert.equal(c.frames.filter(f=>f.type==='start').length,2);
+});
+test('actual authority accepts fresh E pet, preserves it on retry, and clears chapter on restart',async t=>{
+  let match;
+  const c=await connect(t,{matchFactory:options=>(match=createCampaignMatch(options))});
+  const epoch=c.start.inputEpoch;
+  const pup=match.snapshot().campaign.story.entities.find(e=>e.id==='patch');
+  Object.assign(match.actors[0],{x:pup.x,y:pup.y,z:pup.z,vx:0,vy:0,vz:0,
+    lastValid:{x:pup.x,y:pup.y,z:pup.z},protection:100});
+  const input=(seq,e,interact)=>c.send({type:'input',seq,inputEpoch:e,input:{interact}});
+  input(1,epoch,false);
+  await c.wait(f=>f.type==='snapshot'&&f.inputEpoch===epoch&&f.acks?.[0]===1&&f.state.campaign.story.prompt?.entityId==='patch');
+  input(2,epoch,true);
+  const petted=await c.wait(f=>f.type==='snapshot'&&f.inputEpoch===epoch&&f.acks?.[0]===2&&f.state.campaign.story.pets===1);
+  assert.equal(petted.state.campaign.story.entities.find(e=>e.id==='patch').reactionSerial,1);
+  input(3,epoch,true);
+  const held=await c.wait(f=>f.type==='snapshot'&&f.inputEpoch===epoch&&f.acks?.[0]===3);
+  assert.equal(held.state.campaign.story.pets,1);
+  match.actors[0].health=0;
+  const dead=await c.wait(f=>f.type==='results'&&f.state.campaign.phase==='dead');
+  c.send({type:'campaign-action',action:'retry',inputEpoch:dead.inputEpoch});
+  const retry=await c.wait(f=>f.type==='snapshot'&&f.inputEpoch>dead.inputEpoch&&f.state.campaign.phase==='playing');
+  assert.equal(retry.state.campaign.story.pets,1);
+  assert.equal(retry.state.campaign.story.entities.find(e=>e.id==='patch').reactionSerial,1);
+  c.send({type:'campaign-action',action:'restart',inputEpoch:retry.inputEpoch});
+  const restarted=await c.wait(f=>f.type==='snapshot'&&f.inputEpoch>retry.inputEpoch);
+  assert.equal(restarted.state.campaign.story.pets,0);
+  assert.equal(restarted.state.campaign.story.entities.find(e=>e.id==='patch').reactionSerial,0);
+});
+test('actual authority Continue carries story pets into the next chapter',async t=>{
+  let match;
+  const c=await connect(t,{matchFactory:options=>(match=createCampaignMatch(options.mapId==='rootfall-verge'
+    ?{...options,checkpoint:5,storyCarry:{chapters:{'rootfall-verge':{completed:['arrival'],petIds:['patch'],petCount:1,reactionSerial:1}}}}
+    :options))});
+  const exit=loadCampaignMap('rootfall-verge').campaign.anchors.exit;
+  // Complete the already secured chapter through its real exit gate, not a fake snapshot.
+  Object.assign(match.actors[0],{x:exit.x,y:exit.y,z:exit.z,vx:0,vy:0,vz:0,
+    lastValid:{x:exit.x,y:exit.y,z:exit.z},protection:100});
+  const done=await c.wait(f=>f.type==='results'&&f.state.campaign.phase==='level-complete');
+  c.send({type:'campaign-action',action:'continue',inputEpoch:done.inputEpoch});
+  const next=await c.wait(f=>f.type==='snapshot'&&f.state.campaign.mapId==='siltwake-crossing');
+  assert.ok(next.inputEpoch>done.inputEpoch);
+  assert.equal(next.state.campaign.story.entities.find(e=>e.id==='patch')?.name,'Patch');
+  assert.equal(next.state.campaign.story.version,1);
+  assert.equal(next.state.campaign.story.pets,1);
 });

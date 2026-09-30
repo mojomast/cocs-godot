@@ -35,7 +35,7 @@ export function createAuthority(options={}) {
   if (!['easy','normal','hard'].includes(difficulty)) throw new TypeError('Unsupported difficulty');
   if ([random,observe,mapLoader,matchFactory].some(fn=>typeof fn!=='function')) throw new TypeError('Invalid authority callbacks');
   let data=mapLoader(mapId), socket=null, match=null, created=false, selected=false, epochRequired=false;
-  let epoch=0,seq=0,round=0,cursor=null,closing=false,closePromise,finished=false,playerName='Operator',chapterKills=0;
+   let epoch=0,seq=0,round=0,cursor=null,closing=false,closePromise,finished=false,playerName='Operator',chapterKills=0,storyCarry={};
   let wall=performance.now(),accumulator=0,tokens=LIMITS.burst,tokenAt=wall;
   const inputs=new InputBuffer();
   const report=value=>observe({...value,round,observedMs:performance.now()});
@@ -80,7 +80,7 @@ export function createAuthority(options={}) {
   server.on('clientError',(_error,stream)=>stream.destroy());
   wss.on('error',()=>terminate('WebSocket server error'));
   wss.on('connection',ws=>{
-    socket=ws;tokens=LIMITS.burst;tokenAt=performance.now();data=mapLoader(mapId);chapterKills=0;
+     socket=ws;tokens=LIMITS.burst;tokenAt=performance.now();data=mapLoader(mapId);chapterKills=0;storyCarry={};
     ws.on('error',()=>{detach(ws);ws.terminate();});ws.on('close',()=>detach(ws));
     ws.on('message',(bytes,binary)=>{
       if(socket!==ws||closing)return;
@@ -113,10 +113,15 @@ export function createAuthority(options={}) {
           const status=match.snapshot().campaign;
           if(f.action==='retry'){
             if(status.phase!=='dead')return;
-            start(match.campaignCheckpoint());
-          }else if(f.action==='restart')start({totalElapsed:Math.max(0,status.totalElapsed-status.elapsed),kills:chapterKills});
+             start(match.campaignCheckpoint());
+           }else if(f.action==='restart'){
+             const previous=match.campaignStoryContinuity?.()??storyCarry;
+             storyCarry={chapters:{...previous.chapters}};delete storyCarry.chapters[data.id];
+             start({totalElapsed:Math.max(0,status.totalElapsed-status.elapsed),kills:chapterKills,storyCarry});
+           }
           else if(status.phase==='level-complete'){
-            if(status.nextMapId){chapterKills=status.kills;data=mapLoader(status.nextMapId);start({totalElapsed:status.totalElapsed,kills:status.kills});}
+             if(status.nextMapId){chapterKills=status.kills;storyCarry=match.campaignStoryContinuity?.()??storyCarry;
+               data=mapLoader(status.nextMapId);start({totalElapsed:status.totalElapsed,kills:status.kills,storyCarry});}
             else{
               // A terminal chapter already latched all client result guards.
               // Reopen the same completed match as a fresh transport round,
