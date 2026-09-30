@@ -85,8 +85,11 @@ not a relaxation of the existing multiplayer/DM validator. No unbounded scatter.
   `apply_actor(actor:Dictionary, local_id:int=-1)`, `apply_identity(actor)`,
   `advance(dt)`, `select_distance(distance)`, `set_lod(level)`,
   `visible_cost()->Dictionary`, `kick(amount=1.0)`, `reset_pose()`;
-  `automatic_animation` bool. Root position uses source actor centre y,
-  so feet are at local y≈-0.9 (scale for bosses explicitly).
+  `automatic_animation` bool. Snapshot actor.y is FEET height; existing world
+  presentation positions the visual root at actor.y + 0.9. Therefore unscaled
+  model feet are local y≈-0.9. Enlarge bosses about their FEET, not that visual
+  root; apply a compensating child offset as needed. Source movement clearance
+  remains fixed; visual scale is not automatically authoritative hitScale.
 - Known source fields supply animation/telegraphs; document exact consumed
   fields. Optional `campaignTell` string and `campaignTellProgress` number may
   be used only if authority explicitly produces them. Art must not fake damage.
@@ -116,3 +119,35 @@ tests and run lightweight syntax/type inspection; request a testing slot before
 running engine imports or heavyweight simulations. Finish with scoped commits,
 explicit test instructions and known issues. Cross-lane contract changes need
 notification, not silent guesses.
+
+## Independent Astra pre-merge review clarifications
+
+- Authority explicitly sets human team0 and enemy team1; suppresses automatic
+  NPC/human respawn while dead; ticks source role updates exactly once; and
+  disables BOTH source singleplayer and base Match clock endings. Maintain
+  source actor-ID/index invariants. Test deaths beyond the normal respawn delay.
+- Declare per-robot visual dimensions and authoritative hitScale separately.
+  Source spawn resets hitScale: set reviewed values after spawn. Large bosses
+  need clearance appropriate to their art even though source movement radius
+  stays fixed. Test damage at visible body points.
+- World presentation caches nodes by actor ID. Reused IDs across retries or
+  chapters must clear/rebuild if npcModel changes.
+- Base NativeClient pins requested_map and latches round_finished. A campaign
+  transition validates allowed next map/hash, cancels held input, adopts expected
+  map before base validation, resets presentation, accepts fresh start then its
+  snapshot. Retry/restart also emit fresh start. Epochs stay connection-monotonic.
+  NativeClient does not emit input_reset for changed epochs on start: campaign
+  client must explicitly release controls there.
+- Campaign projection is `frame.state.campaign` on the wire. Marker is a finite
+  `{x,y,z,radius}` dictionary while playing, null in terminal states. Checkpoint
+  is a nonnegative integer step index. Transmission is always `{speaker,text}`
+  (empty strings if absent); nextMapId is a known ID or null at the final chapter.
+- `elapsed` is active simulation seconds in the current level, including retried
+  attempts; `totalElapsed` accumulates completed levels plus current elapsed.
+  Dead/result screens do not add active time; restart resets current-level time.
+  These counters are telemetry, not proof of human first-playthrough duration.
+- Validate every critical path segment with source movement, not just endpoint
+  support or nav graph connectivity. Source floor step-up rejects rises >=0.3 m
+  per move; small geometry discontinuities can block an otherwise supported path.
+  Measure mandatory gate route distances, not arbitrary optional serpentine
+  polyline lengths across an open field.

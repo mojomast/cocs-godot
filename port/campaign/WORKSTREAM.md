@@ -30,3 +30,21 @@ Flash research completed before the five Astra implementation lanes launched.
 See [research](RESEARCH.md) and the [shared implementation contract](CONTRACT.md).
 Packaging/route integration ownership is delegated to `campaign/packaging`;
 the orchestrator owns integration verification, evidence and final exports.
+
+## Integration preparation
+
+The source semantic export completed on the integration checkout. The first
+pinned-editor import completed its asset scan/import work but crashed on editor
+shutdown (signal 11). An incremental retry with `LP_NUM_THREADS=1` exited zero.
+Both logs are retained under
+`/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20260930/`; this baseline failure
+preceded integration of any campaign runtime code.
+
+An independent Astra interface review identified and clarified feet-vs-centre
+coordinates, visual-vs-hitbox scaling, base Match respawn/timeout behavior,
+NativeClient chapter validation/input-reset behavior, actor-ID model reuse and
+mandatory-route versus drawn-polyline distance. These clarifications were sent
+to the relevant implementation lanes before integration.
+
+The robot lane has the first exclusive engine/testing slot. Other lanes remain
+on code generation and lightweight checks until that slot is released.

@@ -13,9 +13,13 @@ intent. Visual comparisons inform quality; exact original-art/effect parity is
 not itself a release requirement. Historical parity reports retain their original
 claims and limitations. Native presentation quality and usability still need review.
 
-Campaign direction has changed: the owner wants an entirely new campaign and
-has deferred implementation until substantial planning and research. The old
-campaign is not the new design specification; the draft handoff is inactive.
+Campaign direction (September 30): the owner has authorized a new four-level
+biome campaign after Flash research, implemented by Astra subagents. The active
+design is [The Quiet Relay](campaign/CONTRACT.md), with substantially larger maps,
+six robot enemy models and a 5–10 minute per-level playtime target. The old
+campaign is a technical reference, not the new design specification. See
+[research](campaign/RESEARCH.md) and [workstream status](campaign/WORKSTREAM.md);
+implementation and acceptance are in progress.
 
 ## Evidence levels and current acceptance
 

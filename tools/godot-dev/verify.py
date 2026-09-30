@@ -196,6 +196,8 @@ commands = [
     ("campaign-closure", ["node", "--test", "tools/godot-package/campaign_closure.test.mjs"]),
     ("campaign-authority", ["node", "--test", "--test-concurrency=1", "port/native-campaign/authority.test.mjs", "port/native-campaign/campaign.test.mjs"]),
     ("campaign-robots", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/robots.gd"]),
+    ("campaign-death-presentation", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/death_presentation.gd"]),
+    ("campaign-telegraphs", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/telegraphs.gd"]),
     ("campaign-model", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/model.gd"]),
     ("campaign-client", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/client.gd"]),
     ("campaign-session", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/session.gd"]),

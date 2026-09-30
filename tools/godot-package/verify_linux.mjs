@@ -105,6 +105,21 @@ try {
     assert.throws(()=>process.kill(native.pid,0), 'Native arena process exited');
     report.cases.push({experience:'native-dm',map,passed:true,port:ready.port,native_pid:native.pid,cleanup:true});
   }
+  for (const path of manifest.server_closure?.campaignDataFiles ?? []) {
+    const map = path.split('/').at(-1).replace(/\.json$/, '');
+    const result = await runManager(['--experience=campaign', `--map=${map}`, '--smoke'], 'campaign-'+map, 90000);
+    const text = result.stdout+result.stderr;
+    assert.doesNotMatch(text, /SCRIPT ERROR|ERROR:|Assertion failed/);
+    assert.match(text, /CAMPAIGN_SMOKE_OK/);
+    assert.match(text, /PACKAGE_STOPPED/);
+    const ready = JSON.parse(result.stdout.split('\n').find(line=>line.startsWith('PACKAGE_SERVER_READY ')).slice(21));
+    const native = JSON.parse(result.stdout.split('\n').find(line=>line.startsWith('PACKAGE_NATIVE_STARTED ')).slice(23));
+    assert.equal(ready.map, map);
+    assert.equal(ready.health?.service, 'cocs-native-campaign');
+    assert.ok(await closed(ready.port), 'Campaign authority listener closed');
+    assert.throws(()=>process.kill(native.pid,0), 'Campaign process exited');
+    report.cases.push({experience:'campaign',map,passed:true,port:ready.port,native_pid:native.pid,cleanup:true});
+  }
   // The reviewed Domination route: its own authority modules, /native-zones route and
   // identity scene must all resolve inside the extracted package. The shared session
   // smoke driver ends the round once combat is live, before the zone scene's stricter

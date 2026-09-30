@@ -5,6 +5,7 @@ const CampaignClient = preload("res://campaign/client.gd")
 const CampaignModel = preload("res://campaign/model.gd")
 const CampaignHUD = preload("res://campaign/hud.gd")
 const SourceVisual = preload("res://source_operators/operator_visual.gd")
+const Telegraphs = preload("res://campaign/telegraphs.gd")
 
 class CampaignCombat extends "res://world/combat_feedback.gd":
 	## The shared feedback catalog knows source maps only. Supply the built native
@@ -44,6 +45,7 @@ var startup_error := ""
 var action_pending := false
 var authority_geometry_hash := ""
 var robot_instances := 0
+var ground_tells := Telegraphs.new()
 
 func _init() -> void:
 	catalog = CampaignCatalog.new()
@@ -80,7 +82,7 @@ func _ready() -> void:
 		item.hide()
 	presentation.actor_visual_factory = create_visual
 	presentation.interpolate_remote = true
-	for child: Node in [pickups, presentation, combat, client]: add_child(child)
+	for child: Node in [pickups, presentation, combat, client, ground_tells]: add_child(child)
 	client.connection_error.connect(on_error)
 	client.transport_dropped.connect(on_transport_dropped)
 	client.connect("input_reset", func(_reason: String) -> void: release_pointer())
@@ -90,6 +92,7 @@ func _ready() -> void:
 	client.results.connect(on_results)
 	client.events.connect(func(items: Array) -> void:
 		if phase == 3:
+			ground_tells.apply_events(items)
 			combat.apply_events(items, client.actor_id)
 			av_events(items))
 	campaign_hud = CampaignHUD.new()
@@ -145,6 +148,7 @@ func load_map(id: String) -> bool:
 	if is_instance_valid(world): world.free()
 	world = next
 	current_id = id
+	ground_tells.bind_terrain(world)
 	return true
 
 func launch_campaign() -> void:
@@ -162,6 +166,7 @@ func on_lobby(frame: Dictionary) -> void:
 	super.on_lobby(frame)
 
 func on_started(frame: Dictionary) -> void:
+	ground_tells.clear_round()
 	var id := str(frame.get("mapId", ""))
 	if not catalog.entries.has(id) or frame.get("geometryHash") != catalog.entries[id].geometryHash:
 		on_error("Campaign authority and terrain geometry differ.")
@@ -184,7 +189,10 @@ func on_snapshot(frame: Dictionary) -> void:
 	smoke = false
 	super.on_snapshot(frame)
 	smoke = checking
-	if not campaign.playing(): release_pointer()
+	ground_tells.apply_state(frame.state)
+	if not campaign.playing():
+		release_pointer()
+		ground_tells.clear_round()
 	campaign_hud.refresh()
 	if checking and moved and fired and client.last_ack > 10 and robot_instances > 0 and combat.shots > 0 and combat.map_error.is_empty() and combat.occlusion.ready and authority_geometry_hash == catalog.entries[current_id].geometryHash:
 		print("CAMPAIGN_SMOKE_OK ", JSON.stringify({"map":current_id, "moved":moved, "fired":fired, "acks":client.last_ack, "robotsLoaded":robot_instances, "combatShots":combat.shots, "geometryHash":authority_geometry_hash, "firstPerson":is_instance_valid(first_person)}))
@@ -229,6 +237,7 @@ func release_pointer() -> void:
 
 func leave_campaign() -> void:
 	release_pointer()
+	ground_tells.clear_round()
 	client.disconnect_server()
 	get_tree().quit()
 
