@@ -122,6 +122,7 @@ func run() -> void:
 			check_map_refs(id, param_dict, maps)
 
 	await check_tree(routes, categories)
+	await check_attract(routes.size(), categories.size())
 	check_preferences()
 	finish()
 
@@ -396,6 +397,87 @@ func check_preferences() -> void:
 		"normal route restores valid options without arming local cheats")
 	discard_menu(normal)
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+
+func check_attract(route_count: int, category_count: int) -> void:
+	var settings := root.get_node_or_null("LocalSettings")
+	var previous := settings.values.duplicate() if settings != null else {}
+	if settings != null:
+		settings.set_value("attract_demo_enabled", true, false)
+		settings.set_value("reduced_motion", false, false)
+	var menu: Control = PREF_SCENE.instantiate()
+	menu.preferences_path = isolated_preferences_path()
+	menu.attract_test_media = true
+	root.add_child(menu)
+	menu.refresh_attract()
+	check(menu.attract_active and menu.attract_background.visible and menu.attract_player.loop,
+		"mock reel loops behind the menu immediately without an idle timer")
+	check(menu.get_child(menu.attract_background.get_index() + 1).name == "Shell",
+		"backdrop draws before all menu interface widgets")
+	var backdrop_nodes := [menu.attract_background, menu.attract_player,
+		menu.attract_background.get_node("AttractFrame"), menu.attract_background.get_node("AttractVeil")]
+	check(backdrop_nodes.all(func(node: Control) -> bool:
+		return node.mouse_filter == Control.MOUSE_FILTER_IGNORE and node.focus_mode == Control.FOCUS_NONE),
+		"reel and its overlays ignore pointer and keyboard focus")
+	var category := menu.current_category
+	menu.category_buttons["modes"].emit_signal("pressed")
+	check(menu.current_category == "modes" and menu.start.visible and menu.settings_button.visible,
+		"route navigation and action buttons remain available over the reel")
+	menu.category_buttons[category].grab_focus()
+	await process_frame
+	check(menu.get_viewport().gui_get_focus_owner() == menu.category_buttons[category],
+		"keyboard focus remains on foreground category controls")
+	var frame := menu.attract_background.get_node("AttractFrame") as AspectRatioContainer
+	var old_base := root.content_scale_size
+	var old_factor := root.content_scale_factor
+	var old_mode := root.content_scale_mode
+	root.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+	for logical: Vector2i in [Vector2i(1280, 800), Vector2i(760, 520)]:
+		root.content_scale_size = logical
+		root.content_scale_factor = 1.0
+		for _wait: int in range(12):
+			await process_frame
+			if menu.size.is_equal_approx(Vector2(logical)): break
+		await process_frame
+		var video_size: Vector2 = menu.attract_player.size
+		check(frame.size.is_equal_approx(menu.size) and video_size.x <= frame.size.x + 1.0
+			and video_size.y <= frame.size.y + 1.0 and absf(video_size.x / maxf(video_size.y, 1.0) - 16.0 / 9.0) < 0.02,
+			"reel letterboxes without stretch at %dx%d" % [logical.x, logical.y])
+	root.content_scale_size = old_base
+	root.content_scale_factor = old_factor
+	root.content_scale_mode = old_mode
+	var route_nodes := {}
+	var category_nodes := {}
+	collect_prefixed(menu, "Route_", route_nodes)
+	collect_prefixed(menu, "Category_", category_nodes)
+	check(route_nodes.size() == route_count and category_nodes.size() == category_count,
+		"background adds no routes or categories")
+	if settings != null:
+		settings.open_panel(true, menu.settings_button)
+		menu.refresh_attract()
+		check(not menu.attract_active, "Settings overlay pauses the background")
+		settings.close_panel()
+		menu.refresh_attract()
+		check(menu.attract_active, "background resumes after closing Settings")
+		settings.set_value("attract_demo_enabled", false, false)
+		check(not menu.attract_active and not menu.attract_background.visible,
+			"local animation toggle stops and hides the reel")
+		settings.set_value("attract_demo_enabled", true, false)
+		settings.set_value("reduced_motion", true, false)
+		check(not menu.attract_active, "reduced motion stops the reel")
+		settings.set_value("reduced_motion", false, false)
+		check(menu.attract_active, "background resumes on settings change")
+	menu.hide()
+	check(not menu.attract_active, "hidden menu stops playback")
+	menu.show()
+	menu.refresh_attract()
+	check(menu.attract_active, "menu resumes when visible")
+	menu.stop_attract()
+	check(not menu.attract_active, "scene leave stops playback")
+	var pref_path: String = menu.preferences_path
+	discard_menu(menu)
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(pref_path))
+	if settings != null:
+		for key: String in previous: settings.set_value(key, previous[key], false)
 
 func collect_prefixed(node: Node, prefix: String, found: Dictionary) -> void:
 	for child: Node in node.get_children():

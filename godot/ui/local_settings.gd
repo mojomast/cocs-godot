@@ -7,8 +7,9 @@ const MENU_SCENE := "res://ui/main_menu.tscn"
 const DEFAULTS := {"master_volume": 100, "mute": false, "window_mode": "windowed", "mouse_sensitivity": 100, "ui_scale": 100,
 	"music_enabled": true, "music_volume": 100, "effects_volume": 100, "ambience_enabled": true, "ambience_volume": 100,
 	"announcer_enabled": false, "announcer_volume": 100, "weather_enabled": true, "weather_quality": 100,
-	"reduced_motion": false, "lightning_flashes": true}
+	"reduced_motion": false, "lightning_flashes": true, "attract_demo_enabled": true}
 signal audio_preferences_changed(preferences: Dictionary)
+signal preferences_changed(preferences: Dictionary)
 var path := "user://local_settings.json"
 var values: Dictionary = DEFAULTS.duplicate()
 var panel: Control
@@ -52,7 +53,7 @@ static func normalize(raw: Variant) -> Dictionary:
 		var high := 250 if key == "mouse_sensitivity" else (150 if key == "ui_scale" else 100)
 		result[key] = clampi(roundi(clampf(float(value), low, high)), low, high)
 	if raw.get("mute") is bool: result.mute = raw.mute
-	for key: String in ["music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "reduced_motion", "lightning_flashes"]:
+	for key: String in ["music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "reduced_motion", "lightning_flashes", "attract_demo_enabled"]:
 		if raw.get(key) is bool: result[key] = raw[key]
 	if raw.get("window_mode") in ["windowed", "fullscreen"]: result.window_mode = raw.window_mode
 	return result
@@ -93,7 +94,7 @@ func save() -> bool:
 
 func set_value(key: String, value: Variant, persist: bool = true) -> bool:
 	if not DEFAULTS.has(key): return false
-	if key in ["mute", "music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "reduced_motion", "lightning_flashes"] and not value is bool: return false
+	if key in ["mute", "music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "reduced_motion", "lightning_flashes", "attract_demo_enabled"] and not value is bool: return false
 	if key == "window_mode" and value not in ["windowed", "fullscreen"]: return false
 	if key in ["master_volume", "mouse_sensitivity", "ui_scale", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality"]:
 		if typeof(value) not in [TYPE_INT, TYPE_FLOAT]: return false
@@ -120,6 +121,7 @@ func apply() -> void:
 	# Gameplay services must discard muted events rather than queueing a burst
 	# behind the Master bus. They receive normalized device-local preferences.
 	audio_preferences_changed.emit(values.duplicate())
+	preferences_changed.emit(values.duplicate())
 	if DisplayServer.get_name() != "headless":
 		if not startup_display_override:
 			var desired := Window.MODE_FULLSCREEN if values.window_mode == "fullscreen" else Window.MODE_WINDOWED
@@ -205,7 +207,8 @@ func build_panel() -> void:
 	for entry: Dictionary in [
 		{"key":"music_enabled", "label":"Music"}, {"key":"ambience_enabled", "label":"Ambient sound"},
 		{"key":"announcer_enabled", "label":"Announcer voice"}, {"key":"weather_enabled", "label":"Cosmetic weather"},
-		{"key":"lightning_flashes", "label":"Lightning flashes"}, {"key":"reduced_motion", "label":"Reduced weather motion"}]:
+		{"key":"lightning_flashes", "label":"Lightning flashes"}, {"key":"reduced_motion", "label":"Reduced weather motion"},
+		{"key":"attract_demo_enabled", "label":"Animated menu background"}]:
 		var toggle := CheckButton.new()
 		var key: String = entry.key
 		toggle.text = entry.label
@@ -275,7 +278,7 @@ func open_panel(from_menu: bool = false, previous_focus: Control = null) -> void
 	for key: String in ["master_volume", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality", "mouse_sensitivity", "ui_scale"]: rows[key].set_value_no_signal(values[key])
 	for key: String in ["master_volume", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality", "mouse_sensitivity", "ui_scale"]: rows[key + "_value"].text = "%d%%" % values[key]
 	rows.mute.set_pressed_no_signal(values.mute)
-	for key: String in ["music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "lightning_flashes", "reduced_motion"]: rows[key].set_pressed_no_signal(values[key])
+	for key: String in ["music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "lightning_flashes", "reduced_motion", "attract_demo_enabled"]: rows[key].set_pressed_no_signal(values[key])
 	rows.window_mode.set_pressed_no_signal(values.window_mode == "fullscreen")
 	rows.leave.visible = not from_menu
 	rows.back.text = "Back to Home (Esc)" if from_menu else "Back to game (Esc)"

@@ -17,6 +17,7 @@ const Choice = preload("res://ui/lobby_choice.gd")
 const CAPTION := Color("a3b7c9")
 const ERROR_INK := Color("e08282")
 const PANEL_BG := Color(0.055, 0.07, 0.09, 1.0)
+const ATTRACT_STREAM := "res://ui/attract/quiet-relay.ogv"
 const LABEL_WIDTH := 150
 
 var registry := RouteRegistry.new()
@@ -35,6 +36,13 @@ var choice_rows: Dictionary = {}
 var slider_rows: Dictionary = {}
 var value_labels: Dictionary = {}
 var quitting := false
+## Test seam: simulate media presence in headless contracts without decoding a clip.
+var attract_test_media := false
+var attract_active := false
+var attract_stream_checked := false
+var attract_stream: VideoStream
+var attract_background: Control
+var attract_player: VideoStreamPlayer
 var categories_box := VBoxContainer.new()
 var routes_box := VBoxContainer.new()
 var params_box := VBoxContainer.new()
@@ -70,9 +78,12 @@ func _ready() -> void:
 	if audio_settings != null:
 		audio_settings.audio_preferences_changed.connect(audiovisual.apply_settings)
 		audiovisual.apply_settings(audio_settings.values)
+		if audio_settings.has_signal("preferences_changed"):
+			audio_settings.preferences_changed.connect(_on_local_preferences_changed)
 	else: audiovisual.apply_settings({"mute":"--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args()})
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	build_ui()
+	build_attract_background()
 	resized.connect(update_layout)
 	update_layout()
 	if registry.open():
@@ -84,6 +95,7 @@ func _ready() -> void:
 		registry_error = "Registry unavailable: " + registry.error
 		detail_description.text = registry_error
 	refresh_status()
+	refresh_attract()
 	# The supervisor greps this line; it is printed on every path (SPEC §7).
 	var payload := {"version": registry.version, "routes": registry.routes.size(),
 		"categories": registry.categories.size(), "debug": OS.get_environment("COCS_DEBUG") == "1"}
@@ -103,7 +115,9 @@ func caption(text: String) -> Label:
 
 func build_ui() -> void:
 	var background := StyleBoxFlat.new()
-	background.bg_color = PANEL_BG
+	# Keep the route labels readable while allowing the reel behind the shell
+	# to remain visible. An absent reel still has the opaque base below it.
+	background.bg_color = Color(PANEL_BG.r, PANEL_BG.g, PANEL_BG.b, 0.65)
 	var shell := PanelContainer.new()
 	shell.name = "Shell"
 	shell.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -198,6 +212,85 @@ func build_ui() -> void:
 	footer.name = "Footer"
 	footer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	stack.add_child(footer)
+
+func build_attract_background() -> void:
+	# The backdrop precedes the shell in draw order and cannot take mouse or
+	# keyboard focus from the normal menu controls.
+	attract_background = Control.new()
+	attract_background.name = "AttractBackground"
+	attract_background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	attract_background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	attract_background.focus_mode = Control.FOCUS_NONE
+	add_child(attract_background)
+	move_child(attract_background, 1) # MenuAudiovisual, backdrop, Shell.
+	var base := ColorRect.new()
+	base.color = PANEL_BG
+	base.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	base.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	attract_background.add_child(base)
+	var frame := AspectRatioContainer.new()
+	frame.name = "AttractFrame"
+	frame.ratio = 16.0 / 9.0
+	frame.stretch_mode = AspectRatioContainer.STRETCH_FIT
+	frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	frame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	attract_background.add_child(frame)
+	attract_player = VideoStreamPlayer.new()
+	attract_player.name = "AttractVideo"
+	attract_player.expand = true
+	attract_player.loop = true
+	attract_player.autoplay = false
+	attract_player.volume = 0.0 # The reel is silent; only the existing menu music plays.
+	attract_player.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	attract_player.focus_mode = Control.FOCUS_NONE
+	frame.add_child(attract_player)
+	var veil := ColorRect.new()
+	veil.name = "AttractVeil"
+	veil.color = Color(0.02, 0.03, 0.05, 0.23)
+	veil.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	veil.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	attract_background.add_child(veil)
+	attract_background.hide()
+
+func _attract_allowed() -> bool:
+	if quitting or not is_inside_tree() or not visible: return false
+	if not attract_test_media and not get_window().has_focus(): return false
+	if get_window().mode == Window.MODE_MINIMIZED or SettingsAccess.overlay_open(): return false
+	var settings := SettingsAccess.service()
+	if settings != null and (not settings.values.get("attract_demo_enabled", true) or settings.values.get("reduced_motion", false)):
+		return false
+	return attract_test_media or DisplayServer.get_name() != "headless"
+
+func refresh_attract() -> void:
+	if attract_player == null: return
+	if not _attract_allowed():
+		stop_attract()
+		return
+	if not attract_stream_checked:
+		attract_stream_checked = true
+		if not attract_test_media:
+			if not ResourceLoader.exists(ATTRACT_STREAM, "VideoStream"):
+				print("MENU_ATTRACT unavailable: ", ATTRACT_STREAM)
+				return
+			attract_stream = ResourceLoader.load(ATTRACT_STREAM, "VideoStream") as VideoStream
+			if attract_stream == null:
+				print("MENU_ATTRACT unavailable: ", ATTRACT_STREAM)
+				return
+			attract_player.stream = attract_stream
+	if not attract_test_media and attract_stream == null: return
+	if attract_active: return
+	attract_active = true
+	attract_background.show()
+	if not attract_test_media: attract_player.play()
+
+func stop_attract() -> void:
+	if not attract_active: return
+	attract_active = false
+	attract_player.stop()
+	attract_background.hide()
+
+func _on_local_preferences_changed(_values: Dictionary) -> void:
+	refresh_attract()
 
 func populate() -> void:
 	for category: Dictionary in registry.categories:
@@ -453,6 +546,7 @@ func on_start() -> void:
 		refresh_status()
 		return
 	var args := registry.assemble_args(current_route, selections)
+	stop_attract()
 	save_preferences()
 	print("MENU_ROUTE ", JSON.stringify({"args": args}))
 	get_tree().call_deferred("quit", 0)
@@ -460,6 +554,7 @@ func on_start() -> void:
 func quit_menu() -> void:
 	if quitting: return
 	quitting = true
+	stop_attract()
 	save_preferences()
 	print("MENU_QUIT")
 	# Deferred like START so the marker line flushes before the pipe closes.
@@ -487,13 +582,22 @@ func _input(event: InputEvent) -> void:
 		if event.pressed and not quitting: audiovisual.music.start() # User gesture unlocks audio.
 
 func _process(delta: float) -> void:
+	refresh_attract()
 	if quitting or SettingsAccess.overlay_open() or not get_window().has_focus(): return
 	audiovisual.music.tick(delta)
 
 func _notification(what: int) -> void:
 	if not is_instance_valid(audiovisual): return
-	if what == NOTIFICATION_APPLICATION_FOCUS_OUT: audiovisual.set_focus(false)
-	if what == NOTIFICATION_APPLICATION_FOCUS_IN: audiovisual.set_focus(true)
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		audiovisual.set_focus(false)
+		stop_attract()
+	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
+		audiovisual.set_focus(true)
+		call_deferred("refresh_attract")
+	if what == NOTIFICATION_VISIBILITY_CHANGED and not visible: stop_attract()
+
+func _exit_tree() -> void:
+	stop_attract()
 
 static func release_key(event: InputEvent) -> bool:
 	if not event is InputEventKey or event.echo or not event.pressed: return false

@@ -73,8 +73,11 @@ func run() -> void:
 		"window_mode": "fullscreen", "mouse_sensitivity": 175, "ui_scale": 125, "wallet": 1000})
 	check(clean.size() == Store.DEFAULTS.size() and not clean.has("wallet")
 		and clean.master_volume == 8 and clean.mute and clean.ui_scale == 125
-		and clean.music_enabled and not clean.announcer_enabled,
+		and clean.music_enabled and not clean.announcer_enabled and clean.attract_demo_enabled,
 		"only device settings survive normalization, including new opt-in audio preferences")
+	check(not Store.normalize({"attract_demo_enabled": false}).attract_demo_enabled
+		and Store.normalize({"attract_demo_enabled": "false"}).attract_demo_enabled,
+		"older settings enable the backdrop and only a real boolean disables it")
 	clean = Store.normalize({"master_volume": -300, "mouse_sensitivity": 9999,
 		"ui_scale": NAN, "mute": "true", "window_mode": "malicious"})
 	check(clean.master_volume == 0 and clean.mouse_sensitivity == 250 and clean.ui_scale == 100
@@ -94,6 +97,8 @@ func run() -> void:
 	root.add_child(first)
 	first.load_at(path)
 	check(first.values == Store.DEFAULTS, "absent file uses defaults")
+	check(first.set_value("attract_demo_enabled", false) and not first.values.attract_demo_enabled,
+		"animated menu background switch persists in the local settings store")
 	check(not first.set_value("wallet", 3, false) and not first.set_value("mute", "yes", false),
 		"invalid mutation cannot enter the store")
 	check(first.set_value("master_volume", 35) and first.set_value("mute", true)
