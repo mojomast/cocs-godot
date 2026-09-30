@@ -1,0 +1,9 @@
+{
+  "archive": "/home/mojo/.tmp-on-disk/cocs-biome-preview-package-c415c722/builds/1790799546915718694/cocs-native-windows.zip",
+  "archive_sha256": "198e821e7bbb4641459419f5172d1768f5a4791826b383a0a34fda663f4045a2",
+  "manifest_sha256": "d544e5e3f8faa5b5ed644e5943cc25148c8a930e466116dc0cac17f080ca6bc9",
+  "package": "/home/mojo/.tmp-on-disk/cocs-biome-preview-package-c415c722/builds/1790799546915718694/cocs-native-windows",
+  "build": "/home/mojo/.tmp-on-disk/cocs-biome-preview-package-c415c722/builds/1790799546915718694",
+  "inputs_sha256": "0ab29ecc3b1110723fb0072d406cc7d348abec3bcd2f4f1554dff171708c917c",
+  "generated_resources_sha256": "5662923c9063802634b62b6ba0d6180c6eaea7a37434cfde3ed938557dde37c1"
+}

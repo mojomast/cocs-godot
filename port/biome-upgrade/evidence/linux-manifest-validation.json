@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "target": "linux",
+  "kind": "private-local-linux-prototype",
+  "package": "/home/mojo/.tmp-on-disk/cocs-biome-preview-evidence-20260930/final-c415c722/extracted linux/cocs-native-linux",
+  "repo": "/home/mojo/.tmp-on-disk/cocs-biome-review-20260930",
+  "port_commit": "c415c7222ecbecd33ec67f8fc560d814969696eb",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "derivative_commit": "61fca35c65488502b794900cde0a5247bfb123bf",
+  "derivative_sha256": "d1809086734c3df66573db5b7efc023b23a337ab2b05d4f5019e985d26e7cff7",
+  "files": 143,
+  "source_modules": 85,
+  "adapters": 15,
+  "data_files": 3,
+  "identity_data_files": 5,
+  "horde_data_files": 1,
+  "ws_files": 19
+}

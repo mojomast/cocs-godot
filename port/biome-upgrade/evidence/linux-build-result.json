@@ -1,0 +1,9 @@
+{
+  "archive": "/home/mojo/.tmp-on-disk/cocs-biome-preview-package-c415c722/builds/1790799525917943272/cocs-native-linux.tar.gz",
+  "archive_sha256": "c8a757a0ce8b357a0f052e3873a82bf2d5a6b29b8aae979b67f313310239d60c",
+  "manifest_sha256": "501a7f405fd8254651ccc61ec3a11e814454b77e21955b6b13e53bbb8c6022e2",
+  "package": "/home/mojo/.tmp-on-disk/cocs-biome-preview-package-c415c722/builds/1790799525917943272/cocs-native-linux",
+  "build": "/home/mojo/.tmp-on-disk/cocs-biome-preview-package-c415c722/builds/1790799525917943272",
+  "inputs_sha256": "ddd8c8fb07ef3e211c711a547235e2ad578cf3b6797d42867437e5daa613e101",
+  "generated_resources_sha256": "5662923c9063802634b62b6ba0d6180c6eaea7a37434cfde3ed938557dde37c1"
+}
