@@ -219,3 +219,9 @@ owns staged chapter content, authoritative interaction and continuity; Sol clien
 lane `ses_f0b551dceffey79hEa9L61i9Pp` owns friendly operator staging, Patch the
 puppy's articulated model/reactions and contextual UI. Both use isolated branches
 from `63251774`, initially edit-only while capture repair owns the heavy slot.
+
+Damage-number implementation `8247678c` is integrated as `c474e687`, with its
+runtime gate registered. It consumes authoritative damage totals (including
+absorption), groups same-target hits in fixed 100 ms windows, and bounds animated
+draw slots to sixteen. Parse checks passed; runtime and wide/compact/reduced-motion
+visual checks remain pending. Reproduction commands are in `docs/damage-numbers.md`.
