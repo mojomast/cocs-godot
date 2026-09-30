@@ -11,8 +11,8 @@ then choose Canopy Divide or Basalt Reach. Alternatively, from a terminal in
 the extracted directory:
 
 ```bat
-"Native Deathmatch.cmd" --map=canopy-divide --bots=7
-"Native Deathmatch.cmd" --map=basalt-reach --bots=7
+"Native Deathmatch.cmd" --experience=native-dm --map=canopy-divide --bots=7
+"Native Deathmatch.cmd" --experience=native-dm --map=basalt-reach --bots=7
 ```
 
 Linux requires Node.js >=22.13.0. Extract the archive and run:
