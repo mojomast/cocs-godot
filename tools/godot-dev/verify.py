@@ -205,6 +205,7 @@ commands = [
     ("campaign-robot-voices", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/robot_voices.gd"]),
     ("campaign-client", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/client.gd"]),
     ("campaign-session", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/session.gd"]),
+    ("campaign-story-presentation", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/story_presentation.gd"]),
     ("campaign-smoke-route", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/smoke_route.gd"]),
     ("campaign-compact-ui", ["xvfb-run", "-a", "-s", "-screen 0 1280x800x24", "node", "port/campaign/live-capture.mjs", "--map=crown-array", "--profile=compact", "--output=" + os.environ.get("COCS_CAMPAIGN_CAPTURE_OUT", "/tmp/opencode/campaign-ui-verification")]),
     ("campaign-terrain", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/terrain.gd"]),

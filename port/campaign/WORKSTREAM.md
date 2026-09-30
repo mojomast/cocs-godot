@@ -233,3 +233,25 @@ lightweight tests passed. Review requested a follow-up to cache supported story
 placements across retries and preserve existing navigation-cache tests. Client
 `02427e22` remains isolated pending fixes for JSON numeric transport, operator
 feet anchoring, actual rig joints, puppy mesh cost and modal/focus UI behavior.
+
+Sol story client `02427e22` + `643d9ab1` is now integrated as `4f46799d` +
+`0dc108e9`; its runtime gate is registered. The reviewed issues have code fixes
+and probes, but engine checks have not run. No completed visual/petting evidence
+is claimed yet.
+
+## Serialized verification queue
+
+The capture-repair lane remains the sole owner of heavy engine work. Once it
+returns, integrate its scoped repair and run an editor import before the new
+runtime tests: melee mechanics/controls/feedback, operator textures, robot voices,
+damage numbers, story authority/client and campaign session contracts. Then
+produce the promised audio exports and operator/damage/story graphical previews,
+followed by actual-authority petting and all four integrated campaign captures.
+The orchestral lane still owes its composition commit and audition artifact.
+
+The new explicitly audited melee derivative is `0326b435`; source verification
+has passed in the parent checkout. The broad canonical run at `51136196` predates
+all these gameplay/presentation additions. A fresh canonical acceptance pass is
+needed on final integrated inputs before committing one export identity and
+building/verifying Linux and Windows serially. Earlier failed logs and existing
+published releases remain retained.
