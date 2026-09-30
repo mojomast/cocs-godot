@@ -1,7 +1,11 @@
 # Relay campaign implementation contract
 
-Flash research precedes this contract. Astra lanes implement the following
-interfaces in isolated worktrees. No changes to locked `game/` or `server/`.
+Flash research precedes this contract. Implementation lanes use isolated
+worktrees. The original source lock remains immutable. The later user-requested
+melee upgrade explicitly selects audited derivative `0326b435`; its source bytes
+are pinned in `port/contracts/lattice-catalog-derivative.json`. Other source
+changes require the same explicit provenance review rather than silently changing
+locked runtime bytes. See `port/MELEE_AUTHORITY_2026-09-30.md`.
 
 ## Campaign: The Quiet Relay
 
@@ -60,7 +64,8 @@ not a relaxation of the existing multiplayer/DM validator. No unbounded scatter.
   campaign-only core copy adds bounded NPC body volumes so low robot bodies do
   not inherit tall humanoid damage boxes. Its fixed source hash, deterministic
   generator and independent inverse comparison allow only 34 import rewrites
-  and that helper change. Existing `game/core.mjs` and other modes stay pinned.
+  and that helper change. Its input `game/core.mjs` is pinned to the explicitly
+  selected audited source derivative, including the shared melee upgrade.
 - Source `npcType` remains a known brain alias; `npcModel` identifies visual.
 - Input epochs/cancellation follow the existing native-arena protocol and reset
   on death/retry/map transitions; one human only. Normal create/start/input frames

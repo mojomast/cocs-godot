@@ -255,3 +255,9 @@ all these gameplay/presentation additions. A fresh canonical acceptance pass is
 needed on final integrated inputs before committing one export identity and
 building/verifying Linux and Windows serially. Earlier failed logs and existing
 published releases remain retained.
+
+Story placement-cache follow-up `fee59843` is integrated as `8bd4f0f9`. One
+arena-keyed cache covers operator and puppy placement, with terrain-surface,
+route and anchor identity invalidation. The terrain support grid now invalidates
+with replaced surfaces. All fifteen isolated navigation/story/authority checks
+passed, retaining zero repeated triangle reads and no navigation rebuild on retry.
