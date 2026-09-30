@@ -14,8 +14,8 @@ extends SceneTree
 ##     godot --path godot --display-driver headless --audio-driver ALSA \
 ##       --script res://tests/audio_new/waveform_capture.gd
 ##
-## Writes <path> for the Master mix plus <path-basename>-seed42/-seed137.wav for
-## the two seeded variation takes.
+## Writes <path> for the Master mix plus <path-basename>-explore/-combat.wav for
+## two adaptive orchestration takes. Musical quality requires human audition.
 
 const Music = preload("res://audio/music_service.gd")
 const Motifs = preload("res://audio/objective_motifs.gd")
@@ -79,28 +79,25 @@ func run() -> void:
 	if saved != OK:
 		fail("Cannot save actual Master bus capture: %d" % saved)
 		return
-	# Two bar-11 lead ornaments differ by a seeded semitone choice. Capture the
-	# actual mix for both takes and record the player pitch plans as the
-	# deterministic explanation of the waveform difference.
-	var first: Dictionary = variation_take(42)
-	var second: Dictionary = variation_take(137)
+	# Authored harmony stays stable; actual layer mixes differ with gameplay.
+	var first: Dictionary = adaptive_take(false)
+	var second: Dictionary = adaptive_take(true)
 	if not sounded(first) or not sounded(second):
-		fail("Seeded variation produced no mixed frames: take42(frames=%d peak=%f zcr=%f) take137(frames=%d peak=%f zcr=%f)" %
+		fail("Adaptive score produced no mixed frames: explore(frames=%d peak=%f zcr=%f) combat(frames=%d peak=%f zcr=%f)" %
 			[first.frames, first.peak, first.zcr, second.frames, second.peak, second.zcr])
 		return
-	if first.pitches == second.pitches:
-		fail("Music variation produced identical seeded pitch plans: %s vs %s" %
-			[str(first.pitches), str(second.pitches)])
+	if first.targets == second.targets:
+		fail("Music produced identical adaptive gain plans: %s vs %s" %
+			[str(first.targets), str(second.targets)])
 		return
-	if absf(first.zcr - second.zcr) <= 0.001:
-		fail("Seeded pitch plans differ but captured PCM zero-crossing rates do not: %f vs %f" %
-			[first.zcr, second.zcr])
+	if first.fingerprint == second.fingerprint:
+		fail("Adaptive plans differ but captured PCM is identical")
 		return
 	var base := path.get_basename()
-	var result_a := save_wav(base + "-seed42.wav", first.samples)
-	var result_b := save_wav(base + "-seed137.wav", second.samples)
+	var result_a := save_wav(base + "-explore.wav", first.samples)
+	var result_b := save_wav(base + "-combat.wav", second.samples)
 	if result_a != OK or result_b != OK:
-		fail("Cannot save seeded variation captures: %d, %d" % [result_a, result_b])
+		fail("Cannot save adaptive captures: %d, %d" % [result_a, result_b])
 		return
 	print("AUDIO_WAVEFORM_OK driver=", driver,
 		" frames=", main.frames, " peak=", main.peak, " energy=", main.energy,
@@ -108,7 +105,7 @@ func run() -> void:
 		" variation_frames=", first.frames, ",", second.frames,
 		" variation_peaks=", first.peak, ",", second.peak,
 		" variation_zcr=", first.zcr, ",", second.zcr,
-		" pitch_plans=", first.pitches, ",", second.pitches,
+		" gain_plans=", first.targets, ",", second.targets,
 		" variation_pcm_equal=", first.fingerprint == second.fingerprint,
 		" file=", path, " sha256=", FileAccess.get_sha256(path))
 	cleanup()
@@ -164,21 +161,17 @@ func capture_window(trigger: Callable = Callable()) -> Dictionary:
 	result["fingerprint"] = fingerprint(samples)
 	return result
 
-func variation_take(value: int) -> Dictionary:
-	for player: AudioStreamPlayer in music.players: player.stop()
-	if music.announcer_player != null: music.announcer_player.stop()
+func adaptive_take(combat: bool) -> Dictionary:
+	music.reset()
 	for player: AudioStreamPlayer in motifs.players: player.stop()
-	music.set_scene("combat")
-	music.set_variation(value)
-	music.form_bar = 11
-	music.step = 12
+	music.set_scene("combat" if combat else "explore")
+	music.set_intensity(1.0 if combat else 0.0)
+	music.set_boss_phase(0)
 	var window: Dictionary = capture_window(func() -> Variant:
-		music._step_music()
-		var plan := []
-		for player: AudioStreamPlayer in music.players:
-			if player.playing: plan.append(snappedf(player.pitch_scale, 0.0001))
-		return plan)
-	window["pitches"] = window["trigger"]
+		music.start()
+		for i in range(12): music.tick(0.1)
+		return music.orchestra.targets.duplicate())
+	window["targets"] = window["trigger"]
 	return window
 
 func fingerprint(samples: PackedVector2Array) -> String:

@@ -12,7 +12,7 @@ func run() -> void:
 		root.add_child(menu)
 		assert(menu.audiovisual.music != null)
 		menu.audiovisual.music.start()
-		menu.audiovisual.music._step_music()
+		menu.audiovisual.music.tick(0.1)
 		menu.free()
 		assert(not is_instance_valid(menu), "Home owns its AV service across rapid teardown")
 	print("AUDIO_MENU_LIFETIME_OK menus=8")

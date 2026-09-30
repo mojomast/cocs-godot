@@ -152,6 +152,13 @@ func apply_snapshot(state: Dictionary, local_id: int, is_fresh: bool = true) -> 
 	music.set_tension(maxf(0.6 if low else 0.0, 0.25 * float(router.escalation)))
 	var active_peak := clampf(1.0 - maxf(0.0, last_time - intensity_stamp) / 5.0, 0.0, 1.0)
 	music.set_intensity(maxf(0.4 if low else 0.0, active_peak))
+	# Presentation-only Warden adaptation from the existing authoritative snapshot.
+	var singleplayer: Variant = state.get("singleplayer", {})
+	var boss: Variant = singleplayer.get("boss") if singleplayer is Dictionary else null
+	var boss_phase := 0
+	if boss is Dictionary and boss.get("alive", false) and float(boss.get("hp", 0)) > 0.0:
+		boss_phase = clampi(int(boss.get("phase", 1)), 1, 3)
+	music.set_boss_phase(boss_phase)
 	if scene != "results":
 		scene = "combat" if music.intensity >= 0.34 else "explore"
 		music.set_scene(scene)

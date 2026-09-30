@@ -3,56 +3,69 @@ const Music = preload("res://audio/music_service.gd")
 const Buses = preload("res://audio/buses.gd")
 
 func _initialize() -> void:
-	call_deferred("run")
+ call_deferred("run")
 
 func run() -> void:
-	Buses.ensure()
-	var score := Music.new()
-	root.add_child(score)
-	assert(score.samples.size() == 37 and score.takes.size() == 12 and score.streams.size() == 73, "actual packaged Ogg/WAV resources imported")
-	assert(score.load_failures == 0)
-	assert(score.players.size() == 19 and score.announcer_player != null)
-	score.set_settings({"music_enabled":true,"announcer_enabled":true,"music_volume":100,"announcer_volume":100,"mute":false})
-	score.start()
-	var profiles := ["menu","explore","combat","results"]
-	for scene: String in profiles:
-		score.set_scene(scene)
-		var actual: Array = Music.PROGRESSIONS[scene]
-		assert(actual.size() == 8 and Music.QUALITIES[scene].size() == 8)
-	for mode: String in ["deathmatch","teamdeathmatch","instagib","rockets","arsenal","armsrace","team-elimination","combined-arms","ctf","koth","domination","assault","payload","holdout","uplink","vip-escort","horde","juggernaut","campaign","cocs","cocs-coop","puma-race","puma-soccer"]:
-		assert(Music.PALETTES.has(mode), "source-authored mode palette missing: " + mode)
-		score.set_mode_theme(mode)
-		assert(score._palette().size() == 4)
-	score.set_scene("combat")
-	score.set_variation(42)
-	var hashes_a := []
-	for bar in 32:
-		score.form_bar = bar
-		hashes_a.append(score._hash(31) % 5)
-		assert(score._section() == ("intro" if bar < 8 else "build" if bar < 16 else "climax" if bar < 24 else "transition" if bar < 28 else "outro"))
-	score.set_variation(137)
-	var hashes_b := []
-	for bar in 32:
-		score.form_bar = bar
-		hashes_b.append(score._hash(31) % 5)
-	assert(hashes_a != hashes_b, "seeded ornaments need an actual distinct 32-bar performance")
-	for level in [0,1,2,3]:
-		score.set_escalation(level)
-		var seen := {}
-		for bar in 32:
-			score.form_bar = bar
-			seen[score._section()] = true
-		assert(seen.size() == 5, "each escalation retains all form sections")
-	score.set_escalation(0)
-	score.form_bar = 0
-	score.step = 0
-	score._step_music()
-	assert(score.status().active_voices > 0, "first bar plays imported instruments")
-	assert(score.cue("objective"), "existing recorded take plays")
-	assert(score.announcer_player.playing)
-	score.set_settings({"mute":true,"music_enabled":true,"announcer_enabled":true,"music_volume":100,"announcer_volume":100})
-	assert(score.status().active_voices == 0 and not score.announcer_player.playing, "mute drains active audio")
-	print("AUDIO_SCORE_FORM_OK samples=",score.samples.size()," bytes=",score.status().asset_bytes)
-	score.free()
-	await create_timer(0.25).timeout
-	quit(0)
+ Buses.ensure()
+ var score := Music.new()
+ root.add_child(score)
+ assert(score.error.is_empty(), score.error)
+ assert(score.samples.size() == 37 and score.takes.size() == 12)
+ assert(score.load_failures == 0)
+ var orchestra: Node = score.orchestra
+ assert(orchestra.synchronized.stream_count == 4)
+ for i in range(4):
+  var stream: AudioStreamWAV = orchestra.synchronized.get_sync_stream(i)
+  assert(stream.get_length() == 48.0 and stream.mix_rate == 32000)
+  assert(stream.loop_begin == 0 and stream.loop_end == 1536000)
+  assert(stream.loop_mode == AudioStreamWAV.LOOP_FORWARD)
+ assert(orchestra.bytes == 24576000, "bounded PCM memory")
+ score.set_settings({"music_enabled":true,"music_volume":100,"mute":false})
+ score.set_scene("explore")
+ score.start()
+ score.tick(0.1)
+ assert(orchestra.player.playing)
+ assert(orchestra.targets == [0.72, 0.0, 0.0, 0.0])
+ await create_timer(0.2).timeout
+ score.tick(0.1)
+ var position: float = orchestra.player.get_playback_position()
+ score.set_scene("combat")
+ score.set_intensity(1.0)
+ score.set_boss_phase(3)
+ score.tick(0.01)
+ assert(orchestra.player.get_playback_position() >= position, "transition must not restart clock")
+ assert(orchestra.targets == [0.72, 0.0, 0.0, 0.0], "wait for musical bar")
+ orchestra.last_bar = -1 # simulate observing the next audio bar, no clock seek
+ score.tick(0.1)
+ assert(orchestra.targets == [0.95, 1.0, 1.0, 1.0])
+ for gain: float in orchestra.gains: assert(is_finite(gain) and gain >= 0.0 and gain <= 1.0)
+ var previous: Array = orchestra.gains.duplicate()
+ score.tick(NAN)
+ score.tick(-1.0)
+ assert(orchestra.gains == previous, "invalid deltas cannot poison mixer")
+ score.set_settings({"mute":true})
+ assert(not orchestra.player.playing and orchestra.gains == [0.0, 0.0, 0.0, 0.0])
+ score.set_settings({"mute":false,"music_enabled":false})
+ score.tick(0.1)
+ assert(not orchestra.player.playing)
+ score.set_settings({"music_enabled":true,"music_volume":0})
+ score.tick(0.1)
+ assert(not orchestra.player.playing)
+ score.set_settings({"music_volume":100})
+ score.tick(0.1)
+ assert(orchestra.player.playing)
+ score.set_focus(false)
+ score.tick(0.1)
+ assert(not score.running and not orchestra.player.playing)
+ score.set_focus(true)
+ score.start()
+ score.tick(0.1)
+ assert(orchestra.player.playing and orchestra.phase < 1.0)
+ score.set_outcome("victory")
+ assert(orchestra.mix_targets(score.scene, 1.0, 1.0, 3, 3, score.outcome) == [0.65, 0.0, 0.65, 0.0])
+ var weak_player := weakref(orchestra.player)
+ score.free()
+ await create_timer(0.25).timeout
+ assert(weak_player.get_ref() == null, "scene cleanup releases synchronized playback")
+ print("AUDIO_ORCHESTRAL_FORM_OK frames=1536000 stems=4 pcm_bytes=24576000")
+ quit(0)

@@ -1,36 +1,8 @@
 extends Node
-## Source-derived D minor adaptive score. Explicit tick(delta) is owned by the
-## presentation loop; no autoplay and no unbounded work after focus loss.
-## Based on game/music.mjs HALO_THEME, HALO_PROGRESSIONS / QUALITIES,
-## COCS_MOTIF, HALO_ARRANGEMENTS, FORM_BARS and MUSIC_PALETTES.
-const ROOT_MIDI := 38 # D2 = 73.416 Hz
-const SCALE := [0, 2, 3, 5, 7, 8, 10]
-const MOTIF := [0, 2, 4, 3, 2, 4, 6, 4, 5, 4, 3, 2, 1, 2, 0, 0]
-const PROGRESSIONS := {
- "menu": [0, 5, 2, 6, 0, 5, 3, 4],
- "explore": [0, 5, 3, 4, 0, 6, 5, 4],
- "combat": [0, 5, 2, 6, 3, 4, 4, 0],
- "results": [0, 5, 2, 3, 4, 0, 4, 0]
-}
-const QUALITIES := {
- "menu": [0, 1, 1, 1, 0, 1, 0, 0],
- "explore": [0, 1, 0, 0, 0, 1, 1, 0],
- "combat": [0, 1, 1, 1, 0, 0, 1, 0],
- "results": [0, 1, 1, 1, 1, 0, 1, 1]
-}
-const BPM := {"menu":62.0,"explore":72.0,"combat":96.0,"results":84.0}
-const PALETTES := {
- "default":[0,0,0,1.0], "deathmatch":[0,0,1,2.0], "teamdeathmatch":[1,0,0,2.0],
- "instagib":[1,0,0,4.0], "rockets":[0,1,0,0.5], "arsenal":[1,0,1,2.0],
- "armsrace":[1,1,0,4.0], "team-elimination":[1,1,0,0.5], "combined-arms":[1,1,1,0.5],
- "ctf":[1,0,0,2.0], "koth":[1,0,1,2.0], "domination":[0,1,0,2.0],
- "assault":[0,0,1,2.0], "payload":[1,1,0,0.5], "holdout":[0,1,1,0.5],
- "uplink":[1,0,0,4.0], "vip-escort":[1,0,0,2.0],
- "horde":[0,1,1,0.5], "juggernaut":[0,1,0,0.5], "campaign":[0,0,1,2.0],
- "cocs":[1,0,1,2.0], "cocs-coop":[1,1,1,0.5],
- "puma-race":[1,0,1,2.0], "puma-soccer":[1,0,1,0.5],
- "storm":[1,1,0,2.0], "night":[1,0,0,0.5], "cold":[0,0,1,2.0], "hot":[0,1,0,0.5]
-} # source MUSIC_PALETTES keys/shaker/pluck/rotation (sample timbre rearranged)
+## Original Relay / Warden orchestral score. Explicit tick(delta) is owned by
+## presentation; synchronized PCM stems replace the old frame-timed arranger.
+## Existing bounded sample voices serve short presentation cues only.
+const SCENES := ["menu", "explore", "combat", "results"]
 const CUES := ["capture","flag-pickup","flag-return","goal","killstreak","spree","multikill","victory","defeat","score","boss","objective"]
 const VOICES := 20 # Includes a single dedicated, never-stolen announcer player.
 
@@ -72,9 +44,14 @@ var asset_bytes := 0
 var last_response := ""
 var response_at := -100000
 var outcome := ""
+var boss_phase := 0
+var orchestra: Node
 
 func _ready() -> void:
  _load_manifests()
+ orchestra = preload("res://audio/orchestral_score.gd").new()
+ add_child(orchestra)
+ if not orchestra.error.is_empty(): error = orchestra.error
  for i in range(VOICES - 1):
   var player := AudioStreamPlayer.new()
   player.name = "ScoreVoice%d" % i
@@ -124,7 +101,7 @@ func _load_manifests() -> void:
   for entry: Dictionary in group: _stream("announcer/" + str(entry.get("file", "")))
 
 func set_scene(value: String) -> void:
- if BPM.has(value):
+ if value in SCENES:
   if scene == "results" and value != "results" and not outcome.is_empty(): return
   scene = value
 
@@ -156,6 +133,9 @@ func set_intensity(value: float) -> void:
 func set_escalation(value: int) -> void:
  escalation = clampi(value, 0, 3)
 
+func set_boss_phase(value: int) -> void:
+ boss_phase = clampi(value, 0, 3)
+
 func set_settings(options: Dictionary) -> void:
  # Master is controlled only by LocalSettings' Master bus; never multiply it
  # again here. Legacy normalized options remain supported for detached tests.
@@ -168,6 +148,7 @@ func set_settings(options: Dictionary) -> void:
  if options.has("announcer_enabled"): announcer_enabled = options.announcer_enabled == true
  if muted or not music_enabled or music_volume <= 0.0:
   for player: AudioStreamPlayer in players: player.stop()
+  if orchestra != null: orchestra.stop()
  if muted or not announcer_enabled or announcer_volume <= 0.0: announcer_player.stop()
 
 func set_focus(value: bool) -> void:
@@ -177,6 +158,9 @@ func set_focus(value: bool) -> void:
 func reset() -> void:
  accumulator = 0.0
  running = false
+ form_bar = 0
+ step = 0
+ if orchestra != null: orchestra.stop()
  for player: AudioStreamPlayer in players: player.stop()
  if announcer_player != null: announcer_player.stop()
 
@@ -186,100 +170,15 @@ func start() -> void:
 func tick(delta: float) -> void:
  if not running or not focused or not music_enabled or music_volume <= 0.0 or muted or error != "": return
  if not is_finite(delta) or delta < 0.0: return
- var step_seconds: float = 60.0 / float(BPM[scene]) / 4.0
- # A suspended frame is discarded rather than replaying minutes of music.
- if delta > 0.3: accumulator = 0.0
- else: accumulator += delta
- var count := 0
- while accumulator >= step_seconds and count < 3:
-  accumulator -= step_seconds
-  _step_music()
-  count += 1
- if count == 3: accumulator = 0.0
-
-func _degree(n: int) -> int:
- return int(SCALE[posmod(n, 7)]) + 12 * int(floor(float(n) / 7.0))
-
-func _hash(n: int) -> int:
- # Deterministic per-bar ornaments: no global RNG / frame-rate dependency.
- var x: int = seed_value ^ (form_bar * 214013) ^ (variation * 2531011) ^ n
- x = (x ^ (x >> 16)) * 1103515245
- return (x ^ (x >> 15)) & 0x7fffffff
+ orchestra.tick(delta, scene, intensity, tension, escalation, boss_phase, outcome, music_volume)
+ form_bar = int(orchestra.phase / 3.0)
+ step = int(fposmod(orchestra.phase, 3.0) / 0.1875)
 
 func _section() -> String:
- # 8 intro + 8 build + 8 climax + 4 transition + 4 outro.
- var length: int = [32,24,16,8][escalation]
- var position := posmod(form_bar, length)
- var scaled := float(position) * 32.0 / float(length)
- if scaled < 8.0: return "intro"
- if scaled < 16.0: return "build"
- if scaled < 24.0: return "climax"
- if scaled < 28.0: return "transition"
- return "outro"
-
-func _palette() -> Array:
- var result: Array = PALETTES.get(mode_theme, PALETTES.default).duplicate()
- if PALETTES.has(biome):
-  var overlay: Array = PALETTES[biome]
-  for i in range(3): result[i] = maxi(int(result[i]), int(overlay[i]))
-  result[3] = overlay[3]
- return result
-
-func _step_music() -> void:
- var section := _section()
- var chord_index := posmod(form_bar, 8)
- var root: int = ROOT_MIDI + _degree(int(PROGRESSIONS[scene][chord_index]))
- var major: bool = QUALITIES[scene][chord_index] == 1
- var palette := _palette()
- var strong := section == "climax" or intensity > 0.62
- var beat: int = step / 4
- # Chord quality changes the actual third, including borrowed V and Picardy I.
- if step == 0:
-  _note("strings-pad", root + 12, 2.6, 0.13, strong)
-  _note("strings-pad", root + (4 if major else 3) + 12, 2.2, 0.08, false)
-  _note("low-brass", root, 1.9, 0.12, strong)
-  if section != "intro": _note("timpani", root, 0.55, 0.13, strong)
-  if section == "climax" and form_bar % 4 == 0: _note("cymbal-crash", 60, 1.2, 0.12, true)
-  if form_bar % 8 == 0: _note("gong", 60, 1.8, 0.06, false)
- if step == 8:
-  _note("strings-pad", root + 19, 1.5, 0.07, false)
-  if scene != "menu": _note("taiko", 36, 0.55, 0.15, strong)
- var race := mode_theme == "puma-race" and scene in ["explore", "combat"]
- var soccer := mode_theme == "puma-soccer" and scene in ["explore", "combat"]
- var drum_steps := [0,4,8,12] if race else ([0,8,15] if soccer else ([0,10] if scene == "menu" else [0,6,10] if scene == "explore" else [0,3,8,11]))
- if step in drum_steps:
-  if section != "intro" or step == 0: _note("taiko", 36 if step == 0 else 41, 0.4, 0.12, strong)
- if scene == "combat" and (step == 4 or step == 12) and section != "intro":
-  _note("low-strings-stacc", root + 12, 0.3, 0.11, strong)
- if section == "climax" and step % 4 == 0:
-  _note("brass-stacc", root + (7 if step == 12 else 0), 0.4, 0.10, strong)
- if step % 2 == 0 and section != "intro":
-  var arp := [0,2,4,2,3,5,4,2]
-  var arp_degree: int = arp[step / 2]
-  if step >= 12 and form_bar % 4 == 3: arp_degree = [5,4,2,0][(step-12)/2]
-  if _hash(53) % 4 == 0: arp_degree += 7
-  var register := 0 if float(palette[3]) <= 0.5 else (24 if float(palette[3]) >= 4.0 else 12)
-  _note("harp" if int(palette[2]) > 0 or scene == "menu" else ("bells" if int(palette[0]) > 0 else "strings-pad"), root + _degree(arp_degree) + register, 0.42, 0.05, false)
- if step % 4 == 0 and (section != "intro" or scene == "menu"):
-  var index := posmod(form_bar * 4 + beat, 16)
-  if scene == "menu": index = posmod(int(floor(float(form_bar * 4 + beat) / 2.0)), 16)
-  var degree_value: int = MOTIF[index]
-  if form_bar % 8 >= 4: degree_value += 2
-  if scene == "combat" and form_bar % 8 >= 4: degree_value = 8 - MOTIF[index]
-  if _hash(31) % 5 == 0 and beat == 3: degree_value += 1
-  var note: int = root + _degree(degree_value) + 12
-  if scene == "results" and posmod(degree_value,7) == 2: note += 1
-  _note("trumpet-pad" if strong else "strings-pad", note, 0.7, 0.12, strong)
- if step == 12 and (section == "transition" or section == "outro"):
-  _note("tubular-bells", root + 24, 1.0, 0.10, false)
- if step % 2 == 1 and (int(palette[1]) == 1 or race) and section != "intro":
-  _note("taiko", 50, 0.18, 0.035, false)
- if step % 4 == 2 and tension > 0.5 and scene == "combat":
-  _note("low-strings-stacc", root + 12, 0.2, 0.07 * tension, true)
- step += 1
- if step == 16:
-  step = 0
-  form_bar += 1
+ if form_bar < 4: return "statement"
+ if form_bar < 8: return "answer"
+ if form_bar < 12: return "development"
+ return "cadence"
 
 func _stream(path: String) -> AudioStream:
  if streams.has(path): return streams[path]
@@ -372,5 +271,6 @@ func status() -> Dictionary:
   "mode":mode_theme,"bar":form_bar,"step":step,"section":_section(),
   "escalation":escalation,"tension":tension,"variation":variation,
   "samples":samples.size(),"takes":takes.size(),"loaded_streams":streams.size(),"asset_bytes":asset_bytes,"loaded_failures":load_failures,
-  "active_voices":players.filter(func(p: AudioStreamPlayer) -> bool: return p.playing).size(),"announcer_active":announcer_player != null and announcer_player.playing,
-  "dropped_notes":dropped_notes,"dropped_cues":dropped_cues,"last_cue_id":last_cue,"last_response":last_response,"outcome":outcome,"error":error}
+   "active_voices":players.filter(func(p: AudioStreamPlayer) -> bool: return p.playing).size() + (4 if orchestra != null and orchestra.player.playing else 0),"announcer_active":announcer_player != null and announcer_player.playing,
+   "dropped_notes":dropped_notes,"dropped_cues":dropped_cues,"last_cue_id":last_cue,"last_response":last_response,"outcome":outcome,
+   "orchestra":orchestra.status() if orchestra != null else {},"boss_phase":boss_phase,"error":error}
