@@ -130,7 +130,7 @@ static func parse_options(args: PackedStringArray) -> Dictionary:
 				options.error = option + " must be an integer."
 			else: options["bots" if option == "bots" else "seconds"] = value.to_int()
 	if options.map not in NativeCatalog.DM_MAP_IDS:
-		options.error = "Choose Prism Foundry, Aurora Basin, Cinder Array, Lacuna Court, Vermilion Fold or Nacre Engine."
+		options.error = "Choose a map from the native arena roster."
 	if options.bots < 1 or options.bots > 24: options.error = "bots must be 1..24."
 	if options.seconds < 60 or options.seconds > 300: options.error = "round-seconds must be 60..300."
 	var url: String = options.endpoint

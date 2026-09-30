@@ -137,7 +137,7 @@ def main():
     # baseline discover.mjs, so an empty list is valid there.
     horde_data = closure.get("hordeDataFiles", [])
     allowed_arena_data = {f"godot/native_arenas/generated/{name}.json" for name in ["prism-foundry", "aurora-basin", "cinder-array"]}
-    allowed_identity_data = {f"godot/identity_maps/generated/{name}.json" for name in ["lacuna-court", "vermilion-fold", "nacre-engine"]}
+    allowed_identity_data = {f"godot/identity_maps/generated/{name}.json" for name in ["lacuna-court", "vermilion-fold", "nacre-engine", "canopy-divide", "basalt-reach"]}
     for label, declared, allowed in [("native-arena", arena_data, allowed_arena_data),
                                      ("identity-map", identity_data, allowed_identity_data)]:
         if (not isinstance(declared, list) or any(not isinstance(p, str) or p not in allowed for p in declared)

@@ -6,6 +6,8 @@ const Catalog = preload("res://source_operators/generated/catalog.gd")
 const Rig = preload("res://source_operators/character_rig.gd")
 const WorldWeapons = preload("res://source_operators/generated/world_weapons/catalog.gd")
 const HandGrips = preload("res://source_operators/hand_grips.gd")
+const ArmorDetail = preload("res://source_operators/armor_detail.gd")
+const Locomotion = preload("res://source_operators/locomotion.gd")
 const WORLD_WEAPON_DIR := "res://source_operators/generated/world_weapons/"
 const DEATH_DURATION := 0.8
 var identity_key: String = ""
@@ -33,6 +35,8 @@ var death_duration: float = DEATH_DURATION
 var death_start: Dictionary = {}
 var death_target: Dictionary = {}
 var last_live_pose: Dictionary = {}
+var armor_details: Array[MeshInstance3D] = []
+var locomotion := Locomotion.new()
 
 func apply_identity(actor: Dictionary) -> void:
 	if Catalog.OPERATORS.is_empty(): return
@@ -73,6 +77,8 @@ func apply_identity(actor: Dictionary) -> void:
 	add_child(source)
 	_collect(source)
 	_apply_team(actor.get("team"))
+	armor_details = ArmorDetail.build(nodes,character,team_material)
+	locomotion.reset()
 	rig.configure(nodes)
 	lod_level = -1
 	set_lod(0)
@@ -170,6 +176,7 @@ func apply_actor(actor: Dictionary) -> void:
 func reset_pose() -> void:
 	_clear_death_animation()
 	rig.reset()
+	locomotion.reset()
 	recoil = 0.0
 	if is_instance_valid(source): last_live_pose = _capture_pose()
 
@@ -244,6 +251,7 @@ func advance(dt: float) -> void:
 	var state: Dictionary = {"dt":dt,"time":elapsed,"speed":0 if mounted else Vector2(vx,vz).length(),"maxSpeed":a.get("moveSpeed",8),"grounded":true if mounted else a.get("grounded",true),"crouch":not mounted and a.get("crouching",false),"ads":not mounted and a.get("ads",false),"reload":1 if not mounted and a.get("reloading",false) else 0,"strafe":0 if mounted else clampf((vx*cos(body_yaw)-vz*sin(body_yaw))/3.0,-1,1),"forward":0 if mounted else clampf(-(vx*sin(body_yaw)+vz*cos(body_yaw))/3.0,-1,1),"focusYaw":focus,"focusPitch":-float(a.get("pitch",0)),"bank":clampf((yaw-body_yaw)*1.1,-1,1),"hit":a.get("hit",0),"sliding":a.get("sliding",false),"reduced":a.get("reduced",false)}
 	if state.reduced: state.bank = 0.0
 	rig.update(state)
+	locomotion.apply(rig,state,a,dt)
 	recoil = maxf(0.0,recoil-dt*7.0)
 	var mount: Node3D = nodes.gunAnchor
 	mount.quaternion = Quaternion.IDENTITY if state.reduced else Rig.xyz_quaternion(Vector3(clampf(float(a.get("pitch",0)),-0.7,0.7)-recoil*0.06,clampf(focus,-0.9,0.9),0))
@@ -267,6 +275,8 @@ func select_distance(distance: float) -> void:
 func set_lod(level: int) -> void:
 	if level == lod_level: return
 	lod_level = clampi(level,0,2)
+	for mesh: MeshInstance3D in armor_details:
+		mesh.visible = lod_level < 2
 	for mesh: MeshInstance3D in batches:
 		# Name survives import, independently of glTF extras preservation.
 		var mask: int = int(str(mesh.name).split("_")[0].trim_prefix("LOD"))

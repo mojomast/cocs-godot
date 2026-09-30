@@ -33,6 +33,7 @@ simulation lock and verification evidence remain reproducible.
 | Zone-control demo | KOTH / Domination HUD, objective rings, source capture/scoring, results and restart; independently exercised on Verdant / Meridian |
 | Combined-arms demo | Sunscar infantry and Puma mount / drive / brake tap / exit, with fresh controls after seat changes |
 | Native presentation | All nine map environments, 101 restored Moth texture planes, map-specific atmosphere, bounded scenery and ten first-person weapon models |
+| Terrain biomes and characters | [Canopy Divide and Basalt Reach](port/biome-upgrade/README.md): playable Deathmatch terrain, vegetation and structures; articulated armor and directional animation for all nine operators |
 | Native exploration maps | Prism Foundry reactor complex, Aurora Basin polar observatory and Cinder Array volcanic loop; local Godot collision and movement |
 | Shader and particle labs | Three interactive Moth materials; four particle effects, stateful GPU simulation and explicit analytic backend, selectable 8K–1M counts with measured frame cadence |
 | Combat feedback | Reticle, confirmed-hit and damage indicators, source-driven projectiles and explosion flashes, procedural sound cues |

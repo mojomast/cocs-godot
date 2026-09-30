@@ -15,7 +15,7 @@ echo 7. Sunscar vehicle demo
 echo 8. Ion Speedway race
 echo 9. Operator model viewer
 echo G. New maps, shaders and particle experiments
-echo D. Native Deathmatch - Prism, Aurora, Cinder, Lacuna, Vermilion, Nacre
+echo D. Native Deathmatch - Prism, Aurora, Cinder, Lacuna, Vermilion, Nacre, Canopy, Basalt
 echo C. Domination - Vermilion Fold capture zones
 echo X. Cheats and debug panel
 echo 0. Exit

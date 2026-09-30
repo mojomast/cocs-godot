@@ -10,12 +10,14 @@ const IDENTITY_ROOT := "res://identity_maps/generated/"
 const MAP_IDS := ["prism-foundry", "aurora-basin", "cinder-array"]
 const IDENTITY_MAP_IDS := ["lacuna-court", "vermilion-fold", "nacre-engine"]
 const DM_MAP_IDS := ["prism-foundry", "aurora-basin", "cinder-array",
-	"lacuna-court", "vermilion-fold", "nacre-engine"]
+	"lacuna-court", "vermilion-fold", "nacre-engine", "canopy-divide", "basalt-reach"]
 const FAMILY := {
+	"canopy-divide":"identity", "basalt-reach":"identity",
 	"prism-foundry":"native", "aurora-basin":"native", "cinder-array":"native",
 	"lacuna-court":"identity", "vermilion-fold":"identity", "nacre-engine":"identity",
 }
 const RENDERERS := {
+	"canopy-divide":"res://biomes/map.gd", "basalt-reach":"res://biomes/map.gd",
 	"prism-foundry":"res://native_arenas/maps/prism-foundry.gd",
 	"aurora-basin":"res://native_arenas/maps/aurora-basin.gd",
 	"cinder-array":"res://native_arenas/maps/cinder-array.gd",
@@ -24,6 +26,7 @@ const RENDERERS := {
 	"nacre-engine":"res://identity_maps/map.gd",
 }
 const TITLES := {
+	"canopy-divide":"Canopy Divide", "basalt-reach":"Basalt Reach",
 	"prism-foundry":"Prism Foundry",
 	"aurora-basin":"Aurora Basin",
 	"cinder-array":"Cinder Array",
@@ -32,6 +35,8 @@ const TITLES := {
 	"nacre-engine":"Nacre Engine",
 }
 const ORIENTATION := {
+	"canopy-divide":"Use the sheltered ravine or climb either ridge. Four broad ascents connect the high circuits; watch the exposed central rewards.",
+	"basalt-reach":"Rotate between the canyon floor and sandstone shelves. Take the carved switchbacks to flank the relay cover above.",
 	"prism-foundry":"Read the foundry's colored lanes. Use elevated routes to change your angle, and cover to break pursuit.",
 	"aurora-basin":"Track the basin's height changes. Cross open ground with purpose and contest the upper approaches.",
 	"cinder-array":"Work the array's platforms and sightlines. Reposition between bursts and watch the routes above you.",

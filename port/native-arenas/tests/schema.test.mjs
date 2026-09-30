@@ -58,11 +58,11 @@ test('geometryHash binds canonical arena content, independent of object key orde
   data.arena.name = data.name = 'Tampered valid name';
   assert.throws(() => parseNativeArena(data), /geometryHash/);
 });
-test('identity catalog adds exactly the three reviewed ids beside the native three', () => {
+test('arena catalog includes the native, identity and biome rosters', () => {
   assert.deepEqual(IDENTITY_ARENA_IDS, ['lacuna-court', 'vermilion-fold', 'nacre-engine']);
   assert.deepEqual(DEATHMATCH_ARENA_IDS, ['prism-foundry', 'aurora-basin', 'cinder-array',
-    'lacuna-court', 'vermilion-fold', 'nacre-engine']);
-  assert.equal(ARENA_CATALOG.length, 6);
+    'lacuna-court', 'vermilion-fold', 'nacre-engine', 'canopy-divide', 'basalt-reach']);
+  assert.equal(ARENA_CATALOG.length, 8);
   assert.ok(ARENA_CATALOG.every(entry => ['native', 'identity'].includes(entry.family)));
   for (const id of DEATHMATCH_ARENA_IDS) assert.equal(nativeArenaEntry(id).id, id);
   for (const id of ['lacuna-court.json', '../lacuna-court', 'Lacuna-Court', 'lacuna court', 'identity', '']) {

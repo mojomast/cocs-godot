@@ -12,9 +12,13 @@ echo 3. Cinder Array
 echo 4. Lacuna Court
 echo 5. Vermilion Fold
 echo 6. Nacre Engine
+echo 7. Canopy Divide
+echo 8. Basalt Reach
 echo 0. Exit
-choice /c 1234560 /n /m "Choose a Deathmatch arena: "
-if errorlevel 7 exit /b 0
+choice /c 123456780 /n /m "Choose a Deathmatch arena: "
+if errorlevel 9 exit /b 0
+if errorlevel 8 goto basalt
+if errorlevel 7 goto canopy
 if errorlevel 6 goto nacre
 if errorlevel 5 goto vermilion
 if errorlevel 4 goto lacuna
@@ -36,6 +40,12 @@ call "%~dp0Play.cmd" --experience=native-dm --map=vermilion-fold
 goto menu
 :nacre
 call "%~dp0Play.cmd" --experience=native-dm --map=nacre-engine
+goto menu
+:canopy
+call "%~dp0Play.cmd" --experience=native-dm --map=canopy-divide
+goto menu
+:basalt
+call "%~dp0Play.cmd" --experience=native-dm --map=basalt-reach
 goto menu
 :forward
 call "%~dp0Play.cmd" %*

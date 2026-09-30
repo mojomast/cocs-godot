@@ -33,7 +33,8 @@ export const NATIVE_EXPERIENCES = {
 // Deathmatch roster: the three original native arenas plus the three identity
 // maps. Every entry is a reviewed static asset resolved by id only.
 export const IDENTITY_ARENA_MAPS = ['lacuna-court','vermilion-fold','nacre-engine'];
-export const NATIVE_ARENA_MAPS = ['prism-foundry','aurora-basin','cinder-array',...IDENTITY_ARENA_MAPS];
+export const BIOME_ARENA_MAPS = ['canopy-divide','basalt-reach'];
+export const NATIVE_ARENA_MAPS = ['prism-foundry','aurora-basin','cinder-array',...IDENTITY_ARENA_MAPS,...BIOME_ARENA_MAPS];
 
 export function launchOptions(argv, catalog) {
   const values = {}, flags = new Set(), sessionOptions = [];

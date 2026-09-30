@@ -74,6 +74,12 @@
     "nacre-engine": {
       "name": "Nacre Engine"
     },
+    "canopy-divide": {
+      "name": "Canopy Divide"
+    },
+    "basalt-reach": {
+      "name": "Basalt Reach"
+    },
     "cinderwake-drydock": {
       "name": "Cinderwake Drydock (Preview)"
     }
@@ -287,7 +293,7 @@
       "id": "native-dm",
       "category": "native",
       "label": "Native Deathmatch",
-      "description": "One human plus bots, six arenas, local loopback authority",
+      "description": "One human plus bots, eight arenas, local loopback authority",
       "flags": [
         "--experience=native-dm"
       ],
@@ -302,7 +308,9 @@
             "cinder-array",
             "lacuna-court",
             "vermilion-fold",
-            "nacre-engine"
+            "nacre-engine",
+            "canopy-divide",
+            "basalt-reach"
           ],
           "default": "prism-foundry"
         },
@@ -348,6 +356,8 @@
         "scope": {
           "maps": [
             "aurora-basin",
+            "basalt-reach",
+            "canopy-divide",
             "cinder-array",
             "lacuna-court",
             "nacre-engine",
@@ -356,6 +366,12 @@
           ],
           "modes_by_map": {
             "aurora-basin": [
+              "deathmatch"
+            ],
+            "basalt-reach": [
+              "deathmatch"
+            ],
+            "canopy-divide": [
               "deathmatch"
             ],
             "cinder-array": [
@@ -1477,7 +1493,9 @@
             "cinder-array",
             "lacuna-court",
             "vermilion-fold",
-            "nacre-engine"
+            "nacre-engine",
+            "canopy-divide",
+            "basalt-reach"
           ],
           "default": "prism-foundry"
         },
@@ -1517,6 +1535,8 @@
         "scope": {
           "maps": [
             "aurora-basin",
+            "basalt-reach",
+            "canopy-divide",
             "cinder-array",
             "lacuna-court",
             "nacre-engine",
@@ -1525,6 +1545,12 @@
           ],
           "modes_by_map": {
             "aurora-basin": [
+              "deathmatch"
+            ],
+            "basalt-reach": [
+              "deathmatch"
+            ],
+            "canopy-divide": [
               "deathmatch"
             ],
             "cinder-array": [

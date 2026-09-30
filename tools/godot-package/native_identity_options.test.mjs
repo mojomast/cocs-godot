@@ -6,7 +6,7 @@ const catalog = JSON.parse(readFileSync(new URL('../../port/contracts/map-select
 
 test('package native-dm routes the three identity maps to the Deathmatch scene', () => {
   assert.deepEqual(IDENTITY_ARENA_MAPS, ['lacuna-court', 'vermilion-fold', 'nacre-engine']);
-  assert.deepEqual(NATIVE_ARENA_MAPS, ['prism-foundry', 'aurora-basin', 'cinder-array', 'lacuna-court', 'vermilion-fold', 'nacre-engine']);
+  assert.deepEqual(NATIVE_ARENA_MAPS, ['prism-foundry', 'aurora-basin', 'cinder-array', 'lacuna-court', 'vermilion-fold', 'nacre-engine', 'canopy-divide', 'basalt-reach']);
   for (const map of IDENTITY_ARENA_MAPS) {
     const plan = options(['--experience=native-dm', `--map=${map}`, '--smoke'], catalog);
     assert.equal(plan.experience, 'native-dm');
@@ -60,11 +60,11 @@ test('package identity-zones routes Domination on Vermilion Fold only', () => {
     assert.throws(() => options(['--experience=identity-zones', ...argv], catalog), Error, argv.join(' '));
   }
 });
-test('Windows menus present all six maps as Deathmatch', () => {
+test('Windows menus present all eight maps as Deathmatch', () => {
   const menu = readFileSync(new URL('./Native Deathmatch.cmd', import.meta.url), 'utf8');
   assert.match(menu, /Native Deathmatch/);
   assert.match(menu, /Local Deathmatch/);
-  assert.match(menu, /choice \/c 1234560/);
+  assert.match(menu, /choice \/c 123456780/);
   for (const map of NATIVE_ARENA_MAPS) assert.ok(menu.includes(`--map=${map}`), map);
   for (const label of ['Prism Foundry', 'Aurora Basin', 'Cinder Array', 'Lacuna Court', 'Vermilion Fold', 'Nacre Engine']) {
     assert.ok(menu.includes(label), label);

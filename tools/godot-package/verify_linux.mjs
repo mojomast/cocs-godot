@@ -93,7 +93,7 @@ try {
   await writeFile(join(output,'preview.log'),preview.stdout+preview.stderr);
   assert.doesNotMatch(preview.stdout+preview.stderr,/SCRIPT ERROR|ERROR:/);
   report.preview_load = true;
-  for (const map of ['prism-foundry','aurora-basin','cinder-array','lacuna-court','vermilion-fold','nacre-engine']) {
+  for (const map of ['prism-foundry','aurora-basin','cinder-array','lacuna-court','vermilion-fold','nacre-engine','canopy-divide','basalt-reach']) {
     const result = await runManager(['--experience=native-dm', `--map=${map}`, '--smoke'], 'native-dm-'+map, 60000);
     const text = result.stdout+result.stderr;
     assert.doesNotMatch(text, /SCRIPT ERROR|ERROR:|Assertion failed/);

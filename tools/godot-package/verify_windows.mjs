@@ -73,7 +73,7 @@ try {
   await writeFile(join(output,'preview.log'),preview.stdout+preview.stderr);
   assert.doesNotMatch(preview.stdout+preview.stderr,/SCRIPT ERROR|ERROR:/);
   report.preview_load = true;
-  for (const map of ['prism-foundry','aurora-basin','cinder-array','lacuna-court','vermilion-fold','nacre-engine']) {
+  for (const map of ['prism-foundry','aurora-basin','cinder-array','lacuna-court','vermilion-fold','nacre-engine','canopy-divide','basalt-reach']) {
     let result;
     try {
       result = await exec(process.env.ComSpec || 'cmd.exe', ['/d','/s','/c',`""${join(root,'Native Deathmatch.cmd')}" --experience=native-dm --map=${map} --smoke"`], {cwd:sandbox,env,windowsVerbatimArguments:true,timeout:45000,maxBuffer:4*1024*1024});

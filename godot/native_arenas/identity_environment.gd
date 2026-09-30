@@ -41,6 +41,13 @@ func build(recipe: Dictionary) -> bool:
 	environment.background_mode = Environment.BG_SKY
 	environment.sky = sky
 	environment.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
+	if str(recipe.get("id", "")) in ["canopy-divide","basalt-reach"]:
+		var forest: bool = recipe.id == "canopy-divide"
+		sky_material.sky_top_color = Color("789cb2" if forest else "66758e")
+		sky_material.sky_horizon_color = Color("becbc6" if forest else "d9b89c")
+		environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+		environment.ambient_light_color = Color("bdcdd4")
+		environment.ambient_light_energy = 0.48
 	environment.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
 	environment.tonemap_mode = Environment.TONE_MAPPER_LINEAR
 	environment.tonemap_exposure = 1.0

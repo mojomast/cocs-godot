@@ -6,7 +6,7 @@ const catalog = JSON.parse(readFileSync(new URL('../../port/contracts/map-select
 
 test('dev native-dm routes the three identity maps to the Deathmatch scene', () => {
   assert.deepEqual(IDENTITY_ARENA_MAPS, ['lacuna-court', 'vermilion-fold', 'nacre-engine']);
-  assert.deepEqual(NATIVE_ARENA_MAPS, ['prism-foundry', 'aurora-basin', 'cinder-array', 'lacuna-court', 'vermilion-fold', 'nacre-engine']);
+  assert.deepEqual(NATIVE_ARENA_MAPS, ['prism-foundry', 'aurora-basin', 'cinder-array', 'lacuna-court', 'vermilion-fold', 'nacre-engine', 'canopy-divide', 'basalt-reach']);
   for (const map of IDENTITY_ARENA_MAPS) {
     const plan = launchOptions(['--experience=native-dm', `--map=${map}`, '--smoke'], catalog);
     assert.equal(plan.experience, 'native-dm');

@@ -11,7 +11,7 @@ import {fileURLToPath} from 'node:url';
 const script = fileURLToPath(new URL('./discover.mjs',import.meta.url));
 const discover = root => JSON.parse(execFileSync(process.execPath,['--no-warnings','--experimental-vm-modules',script,root],{encoding:'utf8',stdio:['ignore','pipe','pipe']}));
 const dataFiles = ['prism-foundry','aurora-basin','cinder-array'].map(id=>`godot/native_arenas/generated/${id}.json`);
-const identityDataFiles = ['lacuna-court','vermilion-fold','nacre-engine'].map(id=>`godot/identity_maps/generated/${id}.json`);
+const identityDataFiles = ['lacuna-court','vermilion-fold','nacre-engine','canopy-divide','basalt-reach'].map(id=>`godot/identity_maps/generated/${id}.json`);
 test('actual local 24-bot helpers ship on native routes, outside multiplayer and Horde',()=>{
   const closure=discover(fileURLToPath(new URL('../../',import.meta.url)));
   for(const path of ['port/native-menu-debug-bots/seats.mjs','port/native-menu-debug-bots/debug-frame.mjs']){

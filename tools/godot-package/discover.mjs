@@ -31,7 +31,7 @@ const adapters = [...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters,
 // `identityDataFiles` is the identity-map family added beside it.
 const nativeArenaData = ['prism-foundry','aurora-basin','cinder-array']
   .map(id => `godot/native_arenas/generated/${id}.json`);
-const identityArenaData = ['lacuna-court','vermilion-fold','nacre-engine']
+const identityArenaData = ['lacuna-court','vermilion-fold','nacre-engine','canopy-divide','basalt-reach']
   .map(id => `godot/identity_maps/generated/${id}.json`);
 function discover(entry) {
   const pending = [entry], modules = {}, external = new Set();

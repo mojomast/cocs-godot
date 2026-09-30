@@ -22,7 +22,7 @@ export const CATEGORIES = [
   {id: 'cheats', label: 'Cheats',     description: 'Local debug panel routes'},
 ];
 
-// Display names for maps absent from port/contracts/map-selection.json: the six
+// Display names for maps absent from port/contracts/map-selection.json: the eight
 // native arenas (which include the three identity maps). Catalog maps resolve
 // their `name` field directly and must never be duplicated here.
 export const MAP_NAMES = {
@@ -33,6 +33,8 @@ export const MAP_NAMES = {
   'vermilion-fold': 'Vermilion Fold',
   'nacre-engine':   'Nacre Engine',
   'cinderwake-drydock': 'Cinderwake Drydock (Preview)',
+  'canopy-divide': 'Canopy Divide',
+  'basalt-reach': 'Basalt Reach',
 };
 
 // The three locked combat arenas (options.mjs EXPERIENCES combat/lobby/...).
@@ -58,7 +60,7 @@ const soloCombatParams = () => ([...combatParams(),
 const nativeDmParams = () => ([
   {key: 'map', kind: 'choice', label: 'Map',
    values: ['prism-foundry', 'aurora-basin', 'cinder-array',
-            'lacuna-court', 'vermilion-fold', 'nacre-engine'],
+            'lacuna-court', 'vermilion-fold', 'nacre-engine', 'canopy-divide', 'basalt-reach'],
    default: 'prism-foundry'},
   {key: 'bots', kind: 'range', label: 'Bots', min: 1, max: 24, default: 2, step: 1},
   {key: 'round-seconds', kind: 'range', label: 'Round', min: 60, max: 300,
@@ -112,7 +114,7 @@ export const ROUTES = [
   {
     id: 'native-dm', category: 'native',
     label: 'Native Deathmatch',
-    description: 'One human plus bots, six arenas, local loopback authority',
+    description: 'One human plus bots, eight arenas, local loopback authority',
     params: nativeDmParams(),
   },
   {
