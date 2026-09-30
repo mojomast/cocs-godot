@@ -41,6 +41,9 @@ export function createCaptureScenarios() {
         const target=positions.find(p=>used.every(q=>Math.hypot(p.x-q.x,p.z-q.z)>2));
         if(!target)throw Error('No distinct supported robot pose for capture');
         place(actor,target);used.push(target);
+        // Scripted poses do not tick combat timers. Clear only fixture robots'
+        // spawn protection so frozen bubbles cannot obscure chassis acceptance.
+        actor.protection=0;
         actor.yaw=Math.atan2(-(point.x-actor.x),-(point.z-actor.z));actor.bodyYaw=actor.yaw;
       }
     }

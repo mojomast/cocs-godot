@@ -11,6 +11,7 @@ var captures: Array = []
 var banner: Label
 var finished := false
 var started_ms := 0
+var atmosphere_ids: Dictionary = {}
 
 func _initialize() -> void:
 	started_ms = Time.get_ticks_msec()
@@ -248,9 +249,12 @@ func capture(name: String) -> void:
 			if is_instance_valid(session.first_person) and session.first_person.rig.showing: break
 	var before := failures.size()
 	var widgets := ui_checks(name)
+	var lighting := inspect_lighting(name)
 	var robot_count := 0
 	for visual: Node3D in session.presentation.actors.values():
-		if visual.visible and visual.get_script().resource_path == "res://campaign/robot_visual.gd" and session.camera.is_position_in_frustum(visual.global_position): robot_count += 1
+		if visual.visible and visual.get_script().resource_path == "res://campaign/robot_visual.gd" and session.camera.is_position_in_frustum(visual.global_position):
+			robot_count += 1
+			if name in ["gameplay", "long-subtitle"]: require(float(visual.snapshot.get("protection", 0)) <= 0, name + ": frozen fixture robot must not retain spawn-protection bubble")
 	var rings := 0
 	if "ground_tells" in session:
 		for entry: Dictionary in session.ground_tells.rings.values():
@@ -266,12 +270,37 @@ func capture(name: String) -> void:
 	var expected := Vector2i(760,520) if profile == "compact" else Vector2i(1280,800)
 	require(image.get_size() == expected, name + ": physical capture dimensions differ from requested profile")
 	captures.append({"scenario":name,"scripted":true,"path":path,"map":session.current_id,"profile":profile,
+		"lighting":lighting,
 		"camera":[session.camera.position.x,session.camera.position.y,session.camera.position.z],"yaw":session.yaw,"pitch":session.pitch,
 		"focused":session.application_focused,"windowFocused":root.has_focus(),"captured":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,"eligible":session.can_capture_pointer(),
 		"physicalSize":[image.get_width(),image.get_height()],"logicalSize":[root.get_visible_rect().size.x,root.get_visible_rect().size.y],
 		"uiScale":settings.values.ui_scale,"phase":session.phase,"campaignPhase":session.campaign.state.get("phase", "briefing"),
 		"starts":session.round_starts,"epoch":session.client.input_epoch,"acks":session.client.last_ack,
 		"robotsInFrustum":robot_count,"groundRingsInFrustum":rings,"widgets":widgets,"newFailures":failures.size()-before})
+
+func inspect_lighting(stage_name: String) -> Dictionary:
+	var environments := root.find_children("*", "WorldEnvironment", true, false)
+	var suns := root.find_children("*", "DirectionalLight3D", true, false)
+	require(environments.size() == 1 and suns.size() == 1, stage_name + ": exactly one persistent campaign sky and sun required")
+	if environments.size() != 1 or suns.size() != 1: return {"environments":environments.size(),"suns":suns.size()}
+	var sky_node := environments[0] as WorldEnvironment
+	var sun := suns[0] as DirectionalLight3D
+	var env: Environment = sky_node.environment
+	require(session.world.is_ancestor_of(sky_node) and session.world.is_ancestor_of(sun), stage_name + ": lighting must belong to the real world, not the fixture")
+	var atmosphere: Node = session.world.get_node_or_null("CampaignEnvironment")
+	require(atmosphere != null and atmosphere.map_id == session.current_id, stage_name + ": daylight profile must match the active chapter")
+	var identity := [sky_node.get_instance_id(), sun.get_instance_id()]
+	if atmosphere_ids.has(session.current_id): require(atmosphere_ids[session.current_id] == identity, stage_name + ": start/retry must preserve the map lighting instances")
+	else: atmosphere_ids[session.current_id] = identity
+	require(env != null and env.background_mode == Environment.BG_SKY and env.sky != null, stage_name + ": sky background missing")
+	if env == null or env.sky == null: return {"environments":1,"suns":1,"valid":false}
+	require(session.camera.get_world_3d().environment == env, stage_name + ": campaign sky must be the effective world environment")
+	require(env.ambient_light_source == Environment.AMBIENT_SOURCE_COLOR and env.ambient_light_energy >= 0.35, stage_name + ": daylight ambient fill missing")
+	require(sun.visible and sun.light_energy >= 0.5 and sun.shadow_enabled, stage_name + ": daylight shadow sun missing")
+	var material := env.sky.sky_material as ProceduralSkyMaterial
+	require(material != null and material.sky_top_color.get_luminance() > 0.35, stage_name + ": sky palette must be daylight")
+	return {"environments":1,"suns":1,"instanceIDs":identity,"sunEnergy":sun.light_energy,"shadows":sun.shadow_enabled,
+		"ambientEnergy":env.ambient_light_energy,"skyTop":material.sky_top_color.to_html() if material != null else "invalid"}
 
 func finish() -> void:
 	if finished: return

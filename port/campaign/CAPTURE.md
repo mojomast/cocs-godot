@@ -15,8 +15,9 @@ normal-rate snapshots, events, ACKs and input epochs. A scripted 25-second morta
 windup gives the renderer a reproducible ground-warning view; it is not a claim
 about production attack timing. The briefing uses the unmodified production
 preview camera and checks its above-ground clearance; gameplay uses the normal
-received player-eye camera. The production preview now provides temporary ambient
-and sun lighting until `av_start` installs live atmosphere.
+received player-eye camera. One map-owned `CampaignEnvironment` supplies the sky,
+ambient fill and sun throughout every lifecycle phase. AV/weather owns no lighting.
+The fixture itself never creates lights or environments.
 
 Death sets the authoritative player's health to zero and runs the actual campaign
 step. Retry goes through the real HUD button, WebSocket action and fresh start.
@@ -110,7 +111,16 @@ nonzero and records failures for fixing, rather than treating screenshot creatio
 as acceptance. Camera-frustum presence is not proof of unoccluded visibility;
 review the actual PNGs for occlusion, robot readability and terrain composition.
 
-## Verified source acceptance — 2026-09-30
+## Historical UI evidence — 2026-09-30 (daylight acceptance superseded)
+
+**These runs passed the old UI checks but missed a production lighting defect:**
+temporary briefing lighting was freed on start without any live replacement.
+They must not be cited as daylight acceptance. The atmosphere follow-up now checks
+exactly one effective WorldEnvironment and shadow-casting sun, daylight sky/fill,
+world ownership, and stable node identities across briefing/start/retry/results.
+Re-run the same commands after integration; retain the older evidence as failures
+of lighting coverage. Source compilation/rendering of this follow-up remains
+pending the parent's serialized slot (see `ATMOSPHERE.md`).
 
 Pinned Godot 4.5.2, compatibility renderer, llvmpipe/Xvfb, `LP_NUM_THREADS=1`.
 All four maps passed each profile, including actual rig/robot/ground-ring checks,
@@ -135,7 +145,10 @@ sparse nav candidates left staged enemies at unrelated spawn heights, and stale
 input epochs during slow initialization released capture before the screenshot.
 The fixture now requires distinct supported robot positions and makes bounded
 explicit recapture clicks after initialization without bypassing focus/lifecycle
-checks. Production pointer policy is unchanged.
+checks. Production pointer policy is unchanged. A further fixture correction clears
+only staged robots' spawn-protection timers: frozen actors otherwise retain bubbles
+forever. Public robot snapshots are checked for zero protection during captures;
+production spawning and protection rules are unchanged.
 
 Product fixes use content-measured bottom anchoring, bounded scrollable comms and
 mission text, compact typography, a fixed modal action footer, exclusive modal

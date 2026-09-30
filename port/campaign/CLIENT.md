@@ -21,8 +21,9 @@ Settings, focus loss, stale state, death, errors and every fresh start release i
 Focus regain and retry never silently capture. Leave disconnects and exits.
 
 The pre-network brief uses an authored `briefing` camera when present, otherwise
-a supported near-start elevated view along the critical path, with temporary
-lighting removed on authoritative start. The HUD measures content upward from
+a supported near-start elevated view along the critical path. Its map-owned
+`CampaignEnvironment` supplies persistent daylight during briefing, play, retry
+and results; AV/weather provides no replacement sky or sun. The HUD measures content upward from
 the shared footer, bounds long comms in a scroll viewport (Esc releases the cursor
 to scroll), keeps modal actions fixed, and suppresses the live HUD behind results.
 Compact UI and source render evidence are documented in `CAPTURE.md`.
@@ -64,6 +65,7 @@ Compact UI and source render evidence are documented in `CAPTURE.md`.
 $GODOT_BIN --headless --path godot --script res://tests/campaign/model.gd
 $GODOT_BIN --headless --path godot --script res://tests/campaign/client.gd
 $GODOT_BIN --headless --path godot --script res://tests/campaign/session.gd
+$GODOT_BIN --headless --path godot --script res://tests/campaign/environment.gd
 $GODOT_BIN --headless --path godot --script res://tests/campaign/death_presentation.gd
 $GODOT_BIN --headless --path godot --script res://tests/campaign/smoke_route.gd
 GODOT_BIN=/path/to/pinned/godot node port/campaign/live-smoke.mjs rootfall-verge siltwake-crossing emberline-ascent crown-array

@@ -6,6 +6,7 @@ const CampaignModel = preload("res://campaign/model.gd")
 const CampaignHUD = preload("res://campaign/hud.gd")
 const SourceVisual = preload("res://source_operators/operator_visual.gd")
 const Telegraphs = preload("res://campaign/telegraphs.gd")
+const CampaignEnvironment = preload("res://campaign/environment.gd")
 
 class CampaignCombat extends "res://world/combat_feedback.gd":
 	## The shared feedback catalog knows source maps only. Supply the built native
@@ -46,7 +47,6 @@ var action_pending := false
 var authority_geometry_hash := ""
 var robot_instances := 0
 var ground_tells := Telegraphs.new()
-var briefing_lighting: Node3D
 
 func _init() -> void:
 	catalog = CampaignCatalog.new()
@@ -149,7 +149,14 @@ func load_map(id: String) -> bool:
 	markers.name = "StaticPickupMarkers"
 	markers.hide()
 	next.add_child(markers)
+	var atmosphere := CampaignEnvironment.new()
+	if not atmosphere.build(next.recipe):
+		atmosphere.free()
+		next.free()
+		catalog.error = "Campaign daylight recipe refused: " + id
+		return false
 	if is_instance_valid(world): world.free()
+	next.add_child(atmosphere)
 	world = next
 	current_id = id
 	ground_tells.bind_terrain(world)
@@ -157,24 +164,7 @@ func load_map(id: String) -> bool:
 	return true
 
 func position_briefing_camera() -> void:
-	# Live atmosphere is installed by av_start only after connecting. Terrain is
-	# geometry-only, so the pre-network brief needs its own temporary lighting.
-	briefing_lighting = Node3D.new()
-	briefing_lighting.name = "BriefingLighting"
-	world.add_child(briefing_lighting)
-	var preview_environment := WorldEnvironment.new()
-	var preview := Environment.new()
-	preview.background_mode = Environment.BG_COLOR
-	preview.background_color = Color("263946")
-	preview.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	preview.ambient_light_color = Color("c9d6db")
-	preview.ambient_light_energy = 0.8
-	preview_environment.environment = preview
-	briefing_lighting.add_child(preview_environment)
-	var preview_sun := DirectionalLight3D.new()
-	preview_sun.rotation_degrees = Vector3(-48, -35, 0)
-	preview_sun.light_energy = 1.0
-	briefing_lighting.add_child(preview_sun)
+	# Camera only: the map's persistent CampaignEnvironment lights every phase.
 	var recipe: Dictionary = world.recipe
 	var start: Dictionary = recipe.campaign.anchors.start
 	var origin := Vector3(start.x, start.y, start.z)
@@ -212,7 +202,6 @@ func on_lobby(frame: Dictionary) -> void:
 	super.on_lobby(frame)
 
 func on_started(frame: Dictionary) -> void:
-	if is_instance_valid(briefing_lighting): briefing_lighting.free()
 	ground_tells.clear_round()
 	var id := str(frame.get("mapId", ""))
 	if not catalog.entries.has(id) or frame.get("geometryHash") != catalog.entries[id].geometryHash:
