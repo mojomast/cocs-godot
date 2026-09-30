@@ -183,3 +183,69 @@ attack anticipation/action/recovery
 import-only automatic mesh LOD constraints. Render review and hardware frame
 timing remain parent-owned evidence; budgets are structural bounds, not measured
 GPU performance.
+
+## Targeted ground telegraphs (follow-up)
+
+`res://campaign/telegraphs.gd` is a standalone `Node3D` for source artillery and
+boss-slam target warnings. Parent/client owns wiring; this follow-up does not
+modify the demo, client, presentation, or robot visual scripts.
+
+```gdscript
+const Telegraphs = preload("res://campaign/telegraphs.gd")
+var ground_tells = Telegraphs.new()
+add_child(ground_tells) # world-space identity transform
+ground_tells.bind_terrain(terrain) # height_at(world_x, world_z)
+ground_tells.apply_state(snapshot_state) # {time, actors}; not the outer wire frame
+ground_tells.apply_events(source_events)
+ground_tells.clear_round() # every start/retry/map transition/leave
+```
+
+API: `bind_terrain(terrain: Node3D)`, `apply_events(items: Array)`,
+`apply_state(state: Dictionary)`, `clear_round()`. Component and terrain must be
+in the same world-coordinate convention. All warning vertices sample
+`terrain.height_at` independently with a 0.055 m surface offset, including both
+edges of the 72-segment circumference and the inward hazard pointers. Outer
+radius and x/z come from source events; geometry never predicts target motion.
+
+Recognized source events (`core.mjs:760` supplies numeric `id` and `time`):
+
+- `enemy-telegraph` with `kind: "artillery" | "boss"`: consumes `actor`, `x`,
+  `z`, `radius`, `duration`, `time`, `id`. Boss radius comes from the event rather
+  than guessing a phase profile; `phase` need not be present in the snapshot.
+- `enemy-artillery` / `boss-slam`: brief 0.22 **authority-second** pale boundary
+  flash at the confirmed event location/radius. A flash reports execution, not
+  player damage; `hit: false` can still be a real impact.
+
+The component has no `_process`, wall-clock countdown, or attack/damage emitter.
+Only `snapshot.time` advances progress, value pulses, expiry, and impact flashes.
+Event-before-state and state-before-event are supported. Future events wait for
+their corresponding snapshot; old snapshots do not rewind cues. Source actors
+must be present/alive. Warning rings reconcile against `artilleryWindup` +
+`artilleryMark`, or `bossStompWindup` + `bossStompMark`: missing/nonpositive
+windup, missing actor, death, mismatched mark, or event deadline cancels the
+warning. A changed mark waits for its new event rather than reusing an old
+radius. Late/expired events cannot revive a warning. Clearing a round releases
+meshes, actors, clock, and event-ID deduplication for fresh event serials.
+
+Amber/orange cues also use alternating brightness dashes, a growing pale arc,
+authority-time pulse, and **four artillery vs eight boss inward pointers**;
+meaning is not conveyed by color alone. Bounded at 24 keyed actor/kind rings,
+one mesh/surface each, and 256 remembered event IDs. Unsupported kinds, malformed
+fields, unknown/dead sources, radius >64 m, or duration >30 s produce no cue.
+An unknown future source can occupy pending bounded state but renders nothing
+until an authoritative living actor arrives. Valid shipped timings/radii are
+well inside these bounds. No sounds or fabricated explosions are added.
+
+Follow-up tests are authored but **not engine-run yet**: worlds owns the heavy
+slot. Parent should run serially once a slot is available:
+
+```sh
+LP_NUM_THREADS=1 godot --headless --path godot --script res://tests/campaign/telegraphs.gd
+```
+
+Tests cover sloped nonzero-height sampled mesh vertices, exact outer radius,
+event/state ordering, duplicate IDs, wall-clock invariance, authority progress,
+stale snapshots, cancelled/changed/dead/missing sources, source-only impact
+flash/expiry, boss radius without profile guessing, bounded flood state, reset
+and reused event IDs, and malformed/unknown events. Existing robot/gallery
+verification above predates this separate follow-up and is not evidence for it.
