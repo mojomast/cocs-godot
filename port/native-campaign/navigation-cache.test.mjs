@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createCampaignMatch,primeCampaignSourceNavigation} from './match.mjs';
-import {floorAt as sourceFloorAt,walkEdge as sourceWalkEdge} from '../../game/core.mjs';
+import {floorAt as sourceFloorAt,walkEdge as sourceWalkEdge,navigation as sourceNavigation} from '../../game/core.mjs';
 import {floorAt as generatedFloorAt,walkEdge as generatedWalkEdge} from './core.generated.mjs';
 import {terrainTriangles} from '../../game/terrain.mjs';
 
@@ -27,8 +27,8 @@ function trackTriangleReads(terrain) {
 function assertCachedAgreement(arena,height,tracker) {
   tracker.reset();
   for(const [x,z] of [[0,0],[-3,1],[4,-2]]) {
-    assert.equal(sourceFloorAt(x,z,arena),height);
-    assert.equal(generatedFloorAt(x,z,arena),height);
+    assert.ok(Math.abs(sourceFloorAt(x,z,arena)-height)<1e-9);
+    assert.ok(Math.abs(generatedFloorAt(x,z,arena)-height)<1e-9);
   }
   const a={x:-2,y:height,z:0},b={x:2,y:height,z:0};
   assert.equal(sourceWalkEdge(a,b,arena),true);
@@ -42,16 +42,25 @@ test('generated campaign construction primes original bot floor queries and retr
   assert.ok(tracker.reads>0,'cold source query scans triangle vertices');
   const first=createCampaignMatch({mapData:data,random:()=>.5});
   assertCachedAgreement(data.arena,2,tracker);
-  let authoredNavReads=0;
+  let graphBuildIterations=0;
   const authoredNodes=data.arena.navNodes;
-  Object.defineProperty(data.arena,'navNodes',{configurable:true,get(){authoredNavReads++;return authoredNodes;}});
+  // objectiveTemplate also iterates this metadata on every construction. Count
+  // only iterations originating in the pinned source navigation() implementation.
+  Object.defineProperty(authoredNodes,Symbol.iterator,{configurable:true,value:function*(){
+    if(/\bat navigation\b/.test(new Error().stack))graphBuildIterations++;
+    yield* Array.prototype.values.call(this);
+  }});
   assert.equal(primeCampaignSourceNavigation(data.arena),false,'same arena/surfaces is already primed');
   assert.equal(tracker.reads,0);
   const retry=createCampaignMatch({...first.campaignCheckpoint(),mapData:data,random:()=>.5});
   assert.equal(retry.arena,data.arena);
-  assert.equal(authoredNavReads,0,'retry must not rebuild either navigation graph');
+  assert.equal(graphBuildIterations,0,'retry must not rebuild either navigation graph');
+  assert.equal(retry.nav,first.nav,'generated navigation graph identity is reused');
+  assert.equal(retry.edges,first.edges,'generated graph edges are reused');
   assert.equal(tracker.reads,0,'retry construction must not rebuild a floor lattice');
   assertCachedAgreement(data.arena,2,tracker);
+  sourceNavigation(data.arena);
+  assert.equal(graphBuildIterations,1,'positive control detects an actual original-core graph rebuild');
 });
 test('new surfaces invalidate the bridge and a second arena with shared surfaces is independently primed',()=>{
   const data=envelope();createCampaignMatch({mapData:data,random:()=>.5});

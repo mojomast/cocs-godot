@@ -3,11 +3,12 @@ import assert from 'node:assert/strict';
 import {createCampaignMatch} from './match.mjs';
 import {loadCampaignMap} from './maps.mjs';
 import {MISSION_IDS, MISSIONS} from './missions.mjs';
-import {ROBOTS, MAX_ACTIVE_ENEMIES, deployEncounter} from './enemies.mjs';
+import {ROBOTS, MAX_ACTIVE_ENEMIES, deployEncounter, deploymentReachable} from './enemies.mjs';
+import {floorAt,obstructed} from './core.generated.mjs';
 import {validateCampaignInput} from './authority.mjs';
 import {updateEnemyRoles} from '../../game/singleplayer.mjs';
 
-const rng=()=>{let n=8157;return()=>((n=Math.imul(n,1664525)+1013904223>>>0)/4294967296);};
+const rng=(seed=8157)=>{let n=seed;return()=>((n=Math.imul(n,1664525)+1013904223>>>0)/4294967296);};
 function make(id=MISSION_IDS[0], extra={}) {return createCampaignMatch({mapId:id,random:rng(),...extra});}
 function at(match, point) {Object.assign(match.actors[0],{x:point.x,y:point.y,z:point.z,vx:0,vy:0,vz:0,lastValid:{x:point.x,y:point.y,z:point.z},protection:100});}
 function tick(match, input={}) {match.step(1/60,{inputs:{0:input}});}
@@ -89,9 +90,13 @@ test('dead NPC indexed slots stay dead beyond respawn delay and the base clock c
   at(match,data.campaign.anchors['encounter-1']);tick(match);
   const enemy=match.actors[1];enemy.protection=0;
   for(let i=0;i<100&&enemy.health>0;i++)match.damage(enemy,1000,match.actors[0],true);
-  for(let i=0;i<900;i++)tick(match);
+  // Isolate respawn/clock behaviour: live source powers can shove a protected
+  // player off the terrain, which is a legitimate death unrelated to this test.
+  const idle=()=>match.step(1/60,{inputs:Object.fromEntries(match.actors.map(a=>[a.id,{}]))});
+  for(let i=0;i<900;i++)idle();
   assert.ok(enemy.health<=0);assert.equal(match.actors[enemy.id],enemy);
-  match.config.timeLimit=1;tick(match);
+  assert.equal(match.snapshot().campaign.phase,'playing');
+  match.config.timeLimit=1;idle();
   assert.equal(match.over,false);
   assert.equal(match.actors[0].team,0);
   assert.ok(match.actors.filter(a=>a.isNpc).every(a=>a.team===1));
@@ -106,6 +111,28 @@ test('all four chapters complete through ticks, interaction gates, and a non-loo
     assert.ok(status.totalElapsed>elapsed);elapsed=status.totalElapsed;kills=status.kills;
     match.completeCampaign();
     assert.equal(match.snapshot().campaign.phase,index===3?'campaign-complete':'level-complete');
+  }
+});
+test('Crown guardian deploys locally with full body clearance on five fixed seeds',()=>{
+  const data=loadCampaignMap('crown-array'),anchor=data.campaign.anchors['encounter-4'];
+  for(const seed of [1,7,42,8157,99991]) {
+    const match=make('crown-array',{checkpoint:3,random:rng(seed)});
+    at(match,anchor);assert.doesNotThrow(()=>tick(match),`normal deployment tick seed ${seed}`);
+    const active=match.actors.filter(a=>a.isNpc&&a.health>0),guardian=active.find(a=>a.npcModel==='warden');
+    assert.ok(guardian);assert.equal(active.length,8);assert.ok(active.length<=MAX_ACTIVE_ENEMIES);
+    assert.ok(match.actors.every((actor,index)=>actor.id===index));
+    for(const actor of active) {
+      assert.ok(Math.hypot(actor.x-anchor.x,actor.z-anchor.z)<=24);
+      assert.ok(Math.abs(actor.y-floorAt(actor.x,actor.z,match.arena))<1e-9);
+      assert.ok(deploymentReachable(match,anchor,actor));
+    }
+    assert.equal(obstructed(guardian.x,guardian.y,guardian.z,1.65,match.arena),false);
+    assert.ok(match.actors.every(a=>a===guardian||a.health<=0||Math.hypot(a.x-guardian.x,a.z-guardian.z)>2));
+    for(const [dx,dz] of [[1.65,0],[-1.65,0],[0,1.65],[0,-1.65]]) {
+      const y=floorAt(guardian.x+dx,guardian.z+dz,match.arena);
+      assert.ok(Number.isFinite(y)&&Math.abs(y-guardian.y)<=.65);
+    }
+    assert.ok(data.spawnPoints.some(p=>Math.hypot(p.x-guardian.x,p.z-guardian.z)<1e-9),'prefer reviewed authored spawn');
   }
 });
 test('source artillery telegraphs a fixed point and resolves real damage',()=>{

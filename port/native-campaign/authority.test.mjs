@@ -71,7 +71,9 @@ test('final Continue emits fresh same-map start then terminal results without re
   const completed=await c.wait(f=>f.type==='results'&&f.state.campaign.phase==='level-complete');
   c.send({type:'campaign-action',action:'continue',inputEpoch:completed.inputEpoch});
   const final=await c.wait(f=>f.type==='results'&&f.state.campaign.phase==='campaign-complete');
-  const index=c.frames.indexOf(final),start=c.frames[index-1];
+  // wait() parses its own copy of an arriving frame; locate the recorded wire
+  // frame by protocol identity rather than JavaScript object identity.
+  const index=c.frames.findIndex(f=>f.type==='results'&&f.inputEpoch===final.inputEpoch&&f.seq===final.seq),start=c.frames[index-1];
   assert.equal(start.type,'start');assert.equal(start.mapId,'crown-array');
   assert.equal(start.geometryHash,c.start.geometryHash);
   assert.ok(start.inputEpoch>completed.inputEpoch);assert.ok(start.roundRevision>c.start.roundRevision);

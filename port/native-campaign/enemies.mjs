@@ -1,5 +1,5 @@
-import {spawnGroup, placeGroup} from '../../game/singleplayer.mjs';
-import {obstructed} from './core.generated.mjs';
+import {spawnGroup} from '../../game/singleplayer.mjs';
+import {floorAt, obstructed, walkEdge} from './core.generated.mjs';
 
 // Visual identity is additive. Every brain and damage primitive is source-owned.
 export const ROBOTS = Object.freeze({
@@ -20,6 +20,46 @@ export function robotHitVolume(model) {
   const top={scrapper:.63,skirmisher:1.372,sentinel:1.12,mortar:1.28225,bulwark:2.3925,warden:1.784}[model];
   return {width:robot.chassis[0],depth:robot.chassis[2],bottom:robot.chassisY-robot.chassis[1]/2,top};
 }
+export function deploymentReachable(match,anchor,point) {
+  const length=Math.hypot(point.x-anchor.x,point.z-anchor.z),steps=Math.max(1,Math.ceil(length/4));
+  let previous={x:anchor.x,y:floorAt(anchor.x,anchor.z,match.arena),z:anchor.z};
+  if(!Number.isFinite(previous.y))return false;
+  for(let i=1;i<=steps;i++) {
+    const x=anchor.x+(point.x-anchor.x)*i/steps,z=anchor.z+(point.z-anchor.z)*i/steps;
+    const next={x,y:floorAt(x,z,match.arena),z};
+    if(!Number.isFinite(next.y)||!walkEdge(previous,next,match.arena))return false;
+    previous=next;
+  }
+  return true;
+}
+function supportedClearance(match,point,radius) {
+  if(obstructed(point.x,point.y,point.z,radius,match.arena))return false;
+  for(const [dx,dz] of [[radius,0],[-radius,0],[0,radius],[0,-radius]]) {
+    const y=floorAt(point.x+dx,point.z+dz,match.arena);
+    if(!Number.isFinite(y)||Math.abs(y-point.y)>.65)return false;
+  }
+  return true;
+}
+function placeEncounter(match,actors,anchor) {
+  // navigation() keeps only its largest component. Authored campaign routes
+  // can be physically traversable without belonging to that sampled component.
+  // Start with reviewed map spawns, then bounded local candidates; every used
+  // point must be supported and walkEdge-reachable from the actual anchor.
+  const raw=match.spawns.filter(p=>Math.hypot(p.x-anchor.x,p.z-anchor.z)<=24);
+  for(let z=-18;z<=18;z+=3)for(let x=-18;x<=18;x+=3)if(Math.hypot(x,z)<=18)raw.push({x:anchor.x+x,z:anchor.z+z});
+  const candidates=raw.map(p=>({x:p.x,y:floorAt(p.x,p.z,match.arena),z:p.z}))
+    .filter(p=>Number.isFinite(p.y)&&deploymentReachable(match,anchor,p));
+  const placed=[{...match.actors[0],radius:.52}];
+  for(const actor of [...actors].sort((a,b)=>Number(b.npcModel==='warden')-Number(a.npcModel==='warden'))) {
+    const radius=actor.npcModel==='warden'?1.65:.7;
+    const point=candidates.find(p=>supportedClearance(match,p,radius)&&
+      placed.every(other=>Math.hypot(other.x-p.x,other.z-p.z)>radius+other.radius));
+    if(!point)throw new Error(`Encounter ${stateLabel(anchor)} lacks supported reachable deployment clearance for ${actor.npcModel}`);
+    Object.assign(actor,{...point,vx:0,vy:0,vz:0,grounded:true,lastValid:{...point}});
+    placed.push({...point,radius});
+  }
+}
+const stateLabel=anchor=>`${anchor.x},${anchor.z}`;
 export function deployEncounter(match, state, encounter, anchor) {
   const count = Object.values(encounter.roster).reduce((a, b) => a + b, 0);
   if (count > MAX_ACTIVE_ENEMIES || Object.keys(encounter.roster).length > 3) throw new Error('Encounter budget exceeded');
@@ -37,13 +77,5 @@ export function deployEncounter(match, state, encounter, anchor) {
       actor.npcHitVolume=robotHitVolume(model);
     }
   }
-  placeGroup(match, match.actors.filter(actor=>state.enemies.includes(actor.id)), anchor.x, anchor.z, 14);
-  for (const actor of match.actors.filter(actor=>state.enemies.includes(actor.id)&&actor.npcModel==='warden')) {
-    const point=match.nav.filter(node=>Math.hypot(node.x-anchor.x,node.z-anchor.z)<=18 &&
-      !obstructed(node.x,node.y,node.z,1.65,match.arena) &&
-      match.actors.every(other=>other===actor||other.health<=0||Math.hypot(other.x-node.x,other.z-node.z)>2))
-      .sort((a,b)=>Math.hypot(a.x-anchor.x,a.z-anchor.z)-Math.hypot(b.x-anchor.x,b.z-anchor.z))[0];
-    if (!point) throw new Error('Guardian anchor lacks 1.65 m visual clearance');
-    Object.assign(actor,{x:point.x,y:point.y,z:point.z,lastValid:{x:point.x,y:point.y,z:point.z}});
-  }
+  placeEncounter(match,match.actors.filter(actor=>state.enemies.includes(actor.id)),anchor);
 }

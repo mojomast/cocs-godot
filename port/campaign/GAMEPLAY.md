@@ -61,8 +61,16 @@ chapter start. Checkpoints are session-local; no filesystem save option is added
 from locked singleplayer code. The subclass retains source movement, collision,
 weapons, bots and damage. The mission loop does not call source mission lookup.
 There are no frontend-authored damage events or custom `campaignTell` fields.
-NPC roles retain source stats and difficulty behaviour. Groups are spread across
-distinct local nav nodes. Every palette has at most three models and every fight
+NPC roles retain source stats and difficulty behaviour. Groups use authored local
+spawn points first, then a bounded 3 m local grid if more positions are needed.
+Every used point has supported feet, body clearance and a segmented source
+`walkEdge` path from its encounter anchor. This does not depend on membership in
+the source navigation graph's largest sampled component: revised Crown encounter
+4 is physically reachable but absent from that component. Candidates stay within
+24 m of the anchor (grid candidates within 18 m); the guardian is placed first
+with its full 1.65 m clearance, then escorts are separated around it. Missing
+valid geometry still raises an explicit deployment error rather than teleporting
+the fight elsewhere or weakening collision checks. Every palette has at most three models and every fight
 at most eight enemies (hard cap ten); no reinforcements or infinite spawners.
 
 Dead actors remain inert indexed slots until the chapter/retry boundary. This
@@ -160,3 +168,18 @@ progression, restoration/hold gating, all-four ending, checkpoint reconstruction
 source artillery telegraph/damage and real WebSocket input cancellation, expiry,
 restart epochs and finite-frame rejection. The test completion driver moves the
 human to authored anchors; it does not claim human navigation or timing evidence.
+
+### Revised-world integration verification
+
+The focused authority suite passed **23/23** tests serially after the revised
+worlds merge, including four-chapter tick-driven completion and Crown encounter-4
+deployment on seeds `1, 7, 42, 8157, 99991`. The guardian used reviewed authored
+positions in all five cases; tests check supported feet, full clearance, local
+source reachability, body separation, live-enemy budget and actor ID/index parity.
+
+Retained integration evidence:
+`/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20260930/integration-final-focused/node-authority-repair-2.log`.
+The clock/respawn fixture disables live enemy controls because source powers can
+legitimately shove even a damage-protected player off terrain. Cache tests allow
+1e-9 interpolation tolerance and distinguish ordinary objective-metadata reads
+from navigation rebuilds, with a positive-control rebuild proving the detector.
