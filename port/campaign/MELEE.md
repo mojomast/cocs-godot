@@ -31,3 +31,12 @@ Effects must follow authoritative events, avoid duplicate replay, respect audio
 and effects settings, and clear on session lifecycle boundaries. Automated
 signal/geometry checks do not establish subjective audio satisfaction; an
 audition artifact should accompany the implementation for review.
+
+## Integration checkpoint
+
+Feedback implementation `2d872ac3` is integrated as `a0f38f5a`: short synthesized
+whoosh and impact layers, spatial Effects-bus playback, bounded event deduplication
+and pooled contact rings. Engine verification and WAV audition export are pending
+the heavy slot. The mechanics lane is implementing the matching event contract:
+`pos` remains the origin; `impact` and `direction` describe contact; `hit` is null
+unless a target actually received damage. See `docs/melee-feedback.md`.
