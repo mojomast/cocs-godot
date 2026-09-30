@@ -47,6 +47,7 @@ var action_pending := false
 var authority_geometry_hash := ""
 var robot_instances := 0
 var ground_tells := Telegraphs.new()
+var robot_voices := preload("res://campaign/robot_voices.gd").new()
 
 func _init() -> void:
 	catalog = CampaignCatalog.new()
@@ -83,7 +84,12 @@ func _ready() -> void:
 		item.hide()
 	presentation.actor_visual_factory = create_visual
 	presentation.interpolate_remote = true
-	for child: Node in [pickups, presentation, combat, client, ground_tells]: add_child(child)
+	for child: Node in [pickups, presentation, combat, client, ground_tells, robot_voices]: add_child(child)
+	var voice_settings := SettingsAccess.service()
+	if voice_settings != null:
+		voice_settings.audio_preferences_changed.connect(robot_voices.apply_settings)
+		robot_voices.apply_settings(voice_settings.values)
+	else: robot_voices.apply_settings({})
 	# Campaign owns its compact mission HUD; don't print the transient shared
 	# quality tutorial across objective text. F9/F10 remain available explicitly.
 	if is_instance_valid(combat.quality_controls): combat.quality_controls.set_shortcut_hint(false)
@@ -202,6 +208,7 @@ func on_lobby(frame: Dictionary) -> void:
 	super.on_lobby(frame)
 
 func on_started(frame: Dictionary) -> void:
+	robot_voices.clear_round()
 	ground_tells.clear_round()
 	var id := str(frame.get("mapId", ""))
 	if not catalog.entries.has(id) or frame.get("geometryHash") != catalog.entries[id].geometryHash:
@@ -226,6 +233,8 @@ func on_snapshot(frame: Dictionary) -> void:
 	super.on_snapshot(frame)
 	smoke = checking
 	ground_tells.apply_state(frame.state)
+	robot_voices.set_active(campaign.playing() and vehicle_shots_allowed() and not action_pending)
+	robot_voices.apply_state(frame.state, camera.global_position)
 	campaign_hud.observe_boss(frame.state)
 	if not campaign.playing():
 		release_pointer()
@@ -237,11 +246,13 @@ func on_snapshot(frame: Dictionary) -> void:
 		get_tree().quit(0)
 
 func on_results(frame: Dictionary) -> void:
+	robot_voices.set_active(false)
 	if phase != 3: return
 	on_snapshot(frame)
 	if phase != 3: return
 	av_finish(frame.state)
 	phase = 4
+	robot_voices.clear_round()
 	release_pointer()
 	campaign_hud.refresh()
 
@@ -275,6 +286,7 @@ func smoke_controls(controls: Dictionary) -> Dictionary:
 
 func _process(delta: float) -> void:
 	super._process(delta)
+	robot_voices.set_active(campaign.playing() and vehicle_shots_allowed() and not action_pending)
 	for visual: Node3D in presentation.actors.values():
 		if visual.has_method("select_distance"):
 			visual.select_distance(camera.position.distance_to(visual.position))
@@ -290,6 +302,7 @@ func request_campaign_action(action: String) -> void:
 		on_error("Campaign action could not be queued.")
 		return
 	action_pending = true
+	robot_voices.clear_round()
 	phase = 20
 
 func release_pointer() -> void:
@@ -298,13 +311,19 @@ func release_pointer() -> void:
 	if captured and phase == 3: client.call("send_controls", {}, true)
 
 func leave_campaign() -> void:
+	robot_voices.clear_round()
 	release_pointer()
 	ground_tells.clear_round()
 	client.disconnect_server()
 	get_tree().quit()
 
 func on_error(message: String) -> void:
+	robot_voices.clear_round()
 	startup_error = message
 	super.on_error(message)
 	label.hide()
 	if is_instance_valid(campaign_hud): campaign_hud.refresh()
+
+func on_transport_dropped(message: String) -> void:
+	robot_voices.clear_round()
+	super.on_transport_dropped(message)
