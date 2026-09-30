@@ -30,7 +30,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
     return Number.isFinite(y)&&!obstructed(player.x,y,player.z,undefined,match.arena)
       ? {x:player.x,y,z:player.z} : {...state.checkpointPoint};
   };
-  const finish = (match, phase) => {state.phase=phase; match.over=true; match.overReason=phase;};
+  const finish = (match, phase) => {state.phase=phase; state.winner=phase==='dead'?1:0; match.over=true; match.overReason=phase;};
   class CampaignMatch extends Match {
     spawn(actor) {
       // Retry/restart construct fresh actors; base automatic respawn is barred.

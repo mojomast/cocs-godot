@@ -34,6 +34,7 @@ simulation lock and verification evidence remain reproducible.
 | Combined-arms demo | Sunscar infantry and Puma mount / drive / brake tap / exit, with fresh controls after seat changes |
 | Native presentation | All nine map environments, 101 restored Moth texture planes, map-specific atmosphere, bounded scenery and ten first-person weapon models |
 | Terrain biomes and characters | [Canopy Divide and Basalt Reach](port/biome-upgrade/README.md): playable Deathmatch terrain, vegetation and structures; articulated armor and directional animation for all nine operators |
+| Single-player campaign | [The Quiet Relay](port/campaign/GAMEPLAY.md): four connected large biome chapters, six articulated robot enemies, authored objectives, checkpoint retry and a final ending; 5–10 minutes per chapter is a playtime target awaiting human timing |
 | Native exploration maps | Prism Foundry reactor complex, Aurora Basin polar observatory and Cinder Array volcanic loop; local Godot collision and movement |
 | Shader and particle labs | Three interactive Moth materials; four particle effects, stateful GPU simulation and explicit analytic backend, selectable 8K–1M counts with measured frame cadence |
 | Combat feedback | Reticle, confirmed-hit and damage indicators, source-driven projectiles and explosion flashes, procedural sound cues |
@@ -47,13 +48,14 @@ simulation lock and verification evidence remain reproducible.
 | Device settings | Home Settings and F12 in a route: master volume/mute, fullscreen, mouse sensitivity and interface scale; Back releases controls and Leave returns to the supervisor menu |
 | Career / Arsenal | Home catalog browsing; F12 opens the connected source profile, equipment actions, results/award summary and recent server history. Owned local careers/history persist across launches; equipment changes wait for source confirmation and apply next match |
 
-The integrated branch includes the shared shell, Cinderwake, Career and multiplayer
-work ahead of the published tactical-HUD playable build. Follow the
-[consolidation batch](port/CONSOLIDATION_BATCH_2026-09-28.md) for tested commits
-and packaging status. The [Career, Arsenal and multiplayer expansion](port/NATIVE_EXPANSION_2026-09-28.md)
-passed 218/218 local aggregate gates, 228/228 server tests and lint with zero errors.
-Natural Cinderwake ten-wave/champion completion and consolidated package acceptance
-remain outstanding. Building and publishing remain on hold at the user's request.
+Published build identities and acceptance are recorded in the
+[consolidated expansion](port/THREE_STREAM_EXPANSION_2026-09-29.md) and
+[biome preview](port/biome-upgrade/RELEASE_2026-09-30.md). The new campaign is
+tracked in its [implementation workstream](port/campaign/WORKSTREAM.md).
+Earlier [consolidation](port/CONSOLIDATION_BATCH_2026-09-28.md) and
+[Career/Arsenal expansion](port/NATIVE_EXPANSION_2026-09-28.md) records retain
+their dated acceptance. Natural Cinderwake ten-wave/champion completion remains
+unobserved.
 The [reconnect and Career results/history follow-up](port/RECONNECT_CAREER_BATCH_2026-09-28.md)
 passed its integrated native journeys, **226/226 aggregate gates**, **228/228
 server tests** and lint with zero errors at `5c519b5d`.
@@ -64,7 +66,10 @@ first-person world with tactical HOLD/recruitment controls; full strategy
 rounds remain open. CTF pass/capture and full Payload delivery also have
 independent normal-rate acceptance; broader combat/objective interactions remain open.
 See the [release matrix](port/RELEASE_MATRIX.md) for evidence and remaining work.
-Campaign work is deferred for substantial planning and research toward a remake.
+The campaign remake follows [Flash research and an Astra implementation plan](port/campaign/RESEARCH.md).
+Launch it with `node tools/godot-dev/launch.mjs --experience=campaign`, or select
+The Quiet Relay from Home. Checkpoints last for the current play session;
+chapter selection also lets you start any of the four levels directly.
 
 <details>
 <summary>More native screenshots</summary>

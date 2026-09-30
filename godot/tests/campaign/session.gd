@@ -53,7 +53,7 @@ func run() -> void:
 	var old_visual := Node3D.new()
 	demo.presentation.add_child(old_visual)
 	demo.presentation.actors[1] = old_visual
-	var old_ref := weakref(old_visual)
+	var old_ref: WeakRef = weakref(old_visual)
 	demo.on_started({"mapId":"rootfall-verge", "geometryHash":"one"})
 	assert(demo.phase == 3 and not demo.action_pending and old_ref.get_ref() == null and demo.presentation.actors.is_empty())
 	demo.combat_actions.record(fire, true)
@@ -85,7 +85,7 @@ func run() -> void:
 	assert(Input.mouse_mode != Input.MOUSE_MODE_CAPTURED, "focus regain never captures")
 	hud.free()
 	# Detached session owns these eager children until composition attaches them.
-	for node: Node in [demo.camera, demo.label, demo.selector, demo.combat_label, demo.pickups, demo.presentation, demo.combat, demo.client]: node.free()
+	for node: Node in [demo.camera, demo.label, demo.selector, demo.combat_label, demo.pickups, demo.presentation, demo.combat, demo.client, demo.ground_tells]: node.free()
 	demo.free()
 	print("CAMPAIGN_SESSION_OK")
 	quit()

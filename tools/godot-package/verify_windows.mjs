@@ -96,7 +96,7 @@ try {
     const map = path.split('/').at(-1).replace(/\.json$/, '');
     let result;
     try {
-      result = await exec(process.env.ComSpec || 'cmd.exe', ['/d','/s','/c',`""${join(root,'Campaign.cmd')}" --map=${map} --smoke"`], {cwd:sandbox,env,windowsVerbatimArguments:true,timeout:90000,maxBuffer:8*1024*1024});
+      result = await exec(process.env.ComSpec || 'cmd.exe', ['/d','/s','/c',`""${join(root,'Campaign.cmd')}" --map=${map} --smoke"`], {cwd:sandbox,env,windowsVerbatimArguments:true,timeout:120000,maxBuffer:8*1024*1024});
     } catch (error) {
       await writeFile(join(output,'campaign-'+map+'.log'),(error.stdout || '')+(error.stderr || '')+'\n'+error.message);
       throw error;

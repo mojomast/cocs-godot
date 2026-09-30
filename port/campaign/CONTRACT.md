@@ -56,6 +56,11 @@ not a relaxation of the existing multiplayer/DM validator. No unbounded scatter.
   `observe` and optional trusted test seams, never wire-provided geometry/files.
 - Reuse source Match movement/weapons/bots/roles via subclass seams. Avoid the
   source mission-ID fallback: port owns its mission loop/state explicitly.
+- The private source actor-hit helper has no subclass seam. A narrowly generated
+  campaign-only core copy adds bounded NPC body volumes so low robot bodies do
+  not inherit tall humanoid damage boxes. Its fixed source hash, deterministic
+  generator and independent inverse comparison allow only 34 import rewrites
+  and that helper change. Existing `game/core.mjs` and other modes stay pinned.
 - Source `npcType` remains a known brain alias; `npcModel` identifies visual.
 - Input epochs/cancellation follow the existing native-arena protocol and reset
   on death/retry/map transitions; one human only. Normal create/start/input frames

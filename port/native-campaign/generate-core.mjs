@@ -24,5 +24,8 @@ export function generateCampaignCore(source) {
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const source=readFileSync(new URL('../../game/core.mjs',import.meta.url),'utf8');
-  writeFileSync(new URL('./core.generated.mjs',import.meta.url),generateCampaignCore(source));
+  const output=new URL('./core.generated.mjs',import.meta.url), generated=generateCampaignCore(source);
+  if(process.argv.includes('--check')) {
+    if(readFileSync(output,'utf8')!==generated)throw new Error('Campaign core adapter is stale');
+  } else writeFileSync(output,generated);
 }

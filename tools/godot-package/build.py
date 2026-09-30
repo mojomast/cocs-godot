@@ -165,6 +165,10 @@ def main():
     input_paths.update(horde_data)
     input_paths.update(campaign_data)
     input_paths.update(["package.json", "package-lock.json", "port/contracts/source-lock.json", "port/contracts/map-selection.json", "tools/godot-export/semantic.mjs"])
+    campaign_core_generator = "port/native-campaign/generate-core.mjs"
+    if (ROOT / campaign_core_generator).is_file():
+        run(["node", campaign_core_generator, "--check"], env=derivative_env)
+        input_paths.add(campaign_core_generator)
     if derivative:
         input_paths.add("port/contracts/lattice-catalog-derivative.json")
     # The Career catalog and its generator arrive with a later lane; include them

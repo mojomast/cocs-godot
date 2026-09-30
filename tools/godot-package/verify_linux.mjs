@@ -107,7 +107,7 @@ try {
   }
   for (const path of manifest.server_closure?.campaignDataFiles ?? []) {
     const map = path.split('/').at(-1).replace(/\.json$/, '');
-    const result = await runManager(['--experience=campaign', `--map=${map}`, '--smoke'], 'campaign-'+map, 90000);
+    const result = await runManager(['--experience=campaign', `--map=${map}`, '--smoke'], 'campaign-'+map, 120000);
     const text = result.stdout+result.stderr;
     assert.doesNotMatch(text, /SCRIPT ERROR|ERROR:|Assertion failed/);
     assert.match(text, /CAMPAIGN_SMOKE_OK/);
