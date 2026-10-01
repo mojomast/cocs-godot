@@ -4,6 +4,24 @@ Engine: Godot 4.5.2, exclusive slot granted by parent, `LP_NUM_THREADS=1`.
 Evidence root: `/home/mojo/.tmp-on-disk/cocs-singleplayer-feel-evidence-20261001/`.
 All rendered runs use private Xvfb and llvmpipe, **not human GPU performance evidence**.
 
+## Final acceptance: PASS
+
+Code checkpoint **`b800000d`**. Campaign: **`live-rdpsmH/acceptance.json`**, native exit 0,
+`passed=true`, `wireOK=true`, no failures. Horde: **`live-gt49GI/acceptance.json`**, pass.
+
+The final campaign journey confirmed:
+
+* Ordinary movement to the first encounter and **7 confirmed hits / 1 robot kill** before enabling any cheat. Health/armor remained **140/60**. First aimed fire to kill was **11.90 source seconds** including approach, misses and input recaptures; this is not ideal-hit or human TTK.
+* All ten actual authority weapon events with first-person recoil confirmation; all menu widget commands, wide/compact screenshots, pause time freeze and held-input cancellation.
+* Flight rise **6.60 m**, settled eye error **0.0311 m**, authoritative landing after clear, final F3 resume and gameplay screenshot.
+* All ten before/after weapon WAV pairs plus **17.090 s** Master-bus recording, peak **0.4166**, RMS **0.05441**. Files are in `live-rdpsmH/` under the evidence root.
+* **10 explicit recaptures** after software-rendered freshness resets and **2,758** coalesced presentation snapshots. These counts remain visible limitations, not GPU performance acceptance. TTL and authority stale-command rejection were preserved.
+
+**Engine slot released after this run.** The owned Godot child and local authority exited;
+no further native execution is scheduled by this agent. Parent may proceed with urban
+acceptance/integration/rebuild. Owner listening, subjective enjoyment, full-chapter pacing
+and hardware-frame-time acceptance remain for the next playtest.
+
 ## First failures and repairs
 
 1. `motion-first.log`: source velocity alone reduced a batched-camera spike from 50.74 to 18.05 m/s, still above the bound. Exponential correction was adding a second artificial velocity. Explicit-velocity campaign motion now caps correction speed at 6 m/s. Final irregular peak **14.70 m/s**; regular-stream peak **9.76 m/s**. Fixed exact float equality in two test assertions to use approximate Vector3 precision; source ordering assertions remain.

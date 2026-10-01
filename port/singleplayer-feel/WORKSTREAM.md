@@ -122,3 +122,18 @@ recaptures after legitimate stale-input resets; no input TTL was relaxed.
 It is scripted native authority/input evidence, not a human enjoyment test or
 a GPU performance benchmark. Full chapter duration and subjective auditory/
 gunfeel approval still require owner playtesting after the parent rebuild.
+
+### Final native closure and engine release
+
+Implementation committed as **`b800000d`**. Full campaign journey passed on that
+checkpoint: **`live-rdpsmH/acceptance.json`**, native exit 0, `wireOK=true`, no
+failures. Cheats-off encounter: 7 hits/1 kill; all ten weapons fired with recoil;
+all commands and compact controls accepted; flight rose 6.6 m and settled within
+0.0311 m, then landed on clear; final F3 resume passed. Exported 20 comparison
+WAVs and a 17.09-second real Master-bus mix. The accepted run still recorded ten
+fresh recaptures after software-rendered stale resets, explicitly documented.
+
+**Astra releases the exclusive Godot slot now.** Owned engine/authority processes
+have exited. Parent can merge `improvement/singleplayer-feel`, continue urban
+acceptance and rebuild the next testing package. Full evidence and limitations
+are in NATIVE.md; no human auditory/enjoyment acceptance is claimed.
