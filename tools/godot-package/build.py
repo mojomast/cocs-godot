@@ -185,6 +185,9 @@ def main():
         run(["node", world_catalog_generator, "--check"])
         input_paths.add(world_catalog_generator)
         input_paths.update(git("ls-files", "port/native-multiplayer-worlds/worlds").splitlines())
+        # Editable masters, recipe generators and Blender scripts are part of
+        # the reviewed build provenance even though only GLBs ship in the PCK.
+        input_paths.update(git("ls-files", "tools/godot-multiplayer").splitlines())
     if derivative:
         input_paths.add("port/contracts/lattice-catalog-derivative.json")
     # The Career catalog and its generator arrive with a later lane; include them
