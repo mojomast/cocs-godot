@@ -115,6 +115,7 @@ func checked(result: Error) -> bool:
 	return false
 
 func fail(message: String) -> void:
+	if "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_SPORTS_ERROR ",message)
 	audiovisual.dropped()
 	error = message
 	phase = "error"
@@ -141,6 +142,7 @@ func clear_round() -> void:
 	age = 999
 
 func on_results(frame: Dictionary) -> void:
+	if "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_SPORTS_RESULTS ",JSON.stringify({"map":map_id,"mode":mode,"hash":expected_hash,"peer":net.peer_id,"race":frame.state.get("race",{}),"winner":frame.state.get("winner")}))
 	on_snapshot(frame)
 	if phase == "error": return
 	audiovisual.finish(frame.state, net.actor_id)
@@ -166,6 +168,8 @@ func on_lobby(frame: Dictionary) -> void:
 		else:
 			checked(net.configure_match(mode, world_bots))
 	elif frame.get("config") != null and not start_sent:
+		if not join_room_id.is_empty(): return
+		if "--world-fixture-three" in OS.get_cmdline_user_args() and frame.get("players",[]).size() < 3: return
 		start_sent = true
 		phase = "starting"
 		phase_age = 0
