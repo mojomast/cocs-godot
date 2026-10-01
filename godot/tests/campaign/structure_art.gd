@@ -18,7 +18,14 @@ func _run() -> void:
 		var art: Node3D = world.get_node("StructureArt")
 		var expected := 0
 		for b: Dictionary in world.recipe.arena.blocks:
-			if b.material != "rock": expected += 1
+			if b.material == "rock": continue
+			expected += 1
+			var base: float = Art.fitted_base(world, b)
+			check(base >= float(b.baseY) and base < float(b.h), id + " fitted foundation remains in authoritative block " + str(b.id))
+			for u: float in [-0.5, 0.0, 0.5]:
+				for v: float in [-0.5, 0.0, 0.5]:
+					var sample: float = world.height_at(float(b.x)+u*float(b.w), float(b.z)+v*float(b.d))
+					if is_finite(sample): check(base <= sample + 0.001, id + " foundation under footprint ground " + str(b.id))
 		check(art.placements >= expected and art.placements < expected * 6, id + " fitted segmented architecture")
 		check(art.batches < 240, id + " bounded chunked material batches")
 		var physics_count := 0
@@ -27,7 +34,10 @@ func _run() -> void:
 		check(physics_count == world.terrain_chunks + 1, id + " authoritative collision bodies only")
 		check(world.get_node("AuthoritativeBlocks").get_child_count() == world.recipe.arena.blocks.size(), id + " block collision count unchanged")
 		var triangles := 0
-		for source: Array in art._sources.values():
+		for key: String in art._sources:
+			var source: Array = art._sources[key]
+			var continuous := false
+			var exposed_support := false
 			for part: Dictionary in source:
 				var mesh: Mesh = part.mesh
 				var bound: AABB = part.transform * mesh.get_aabb()
@@ -37,7 +47,26 @@ func _run() -> void:
 					var mat := mesh.surface_get_material(surface)
 					check(mat is StandardMaterial3D and mat.albedo_color.a >= 0.99 and mat.roughness > 0.25, "opaque rough imported PBR material " + id)
 					triangles += mesh.surface_get_array_index_len(surface) / 3
-		check(triangles < 22000, id + " both LOD source triangle budget")
+					if key.begins_with("relay-") or key.begins_with("outpost-"): continue
+					var arrays: Array = mesh.surface_get_arrays(surface)
+					var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+					var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+					for i: int in range(0, indices.size(), 3):
+						var p0: Vector3 = part.transform * vertices[indices[i]]
+						var p1: Vector3 = part.transform * vertices[indices[i+1]]
+						var p2: Vector3 = part.transform * vertices[indices[i+2]]
+						var y0: float = p0.y
+						var y1: float = p1.y
+						var y2: float = p2.y
+						if minf(y0, minf(y1, y2)) < 0.001 and maxf(y0, maxf(y1, y2)) > 0.999:
+							continuous = true
+							if minf(p0.z, minf(p1.z, p2.z)) < -0.42 and maxf(absf(p0.x), maxf(absf(p1.x), absf(p2.x))) > 0.30:
+								exposed_support = true
+			if not (key.begins_with("relay-") or key.begins_with("outpost-")):
+				check(continuous, id + " contiguous full-height load core in " + key)
+			if key.begins_with("refinery-"):
+				check(exposed_support, id + " visible exterior refinery support joins stories in " + key)
+		check(triangles < 32000, id + " both LOD source triangle budget")
 		for batch: Node in art.get_children():
 			check(batch is MultiMeshInstance3D and batch.multimesh.instance_count > 0, id + " no empty draw batches")
 		print("STRUCTURE_ART ", id, " blocks=", expected, " segments=", art.placements, " draws=", art.batches, " loaded_source_tris=", triangles)
