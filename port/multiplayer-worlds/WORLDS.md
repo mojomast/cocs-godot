@@ -73,13 +73,17 @@ GLB triangles are promoted to broad approximate authority colliders.
 Cheap checks: `node --test tools/godot-multiplayer/worlds/recipes.test.mjs` uses
 the actual source floor, obstruction and walk-edge functions for all mandatory
 markers and infantry routes, schema topology, race gate/track markers and soccer
-net access. Heavy verification still requires Blender export, Godot import,
-host/guest visual walkthroughs, real vehicle route playback, bot navigation to
-every mandatory objective and captures in the separate evidence directory.
+net access; it also connects both teams to mandatory objectives through the
+source bot navigation graph. `node --test
+tools/godot-multiplayer/worlds/vehicle-route.test.mjs` runs the **source Puma
+stepVehicle physics** around all 14 race sectors and across the dock freight
+switchback / archipelago causeway with the actual collision footprints. Heavy
+verification still requires Godot import, host/guest visual walkthroughs,
+live mode rounds and captures in the separate evidence directory.
 
 ## Verification status
 
-Recipes and static physics probes pass. Corrected Blender masters and batched
+Recipes, source bot graph and Puma physics route probes pass. Corrected Blender masters and batched
 GLBs have been exported for all five IDs; glTF accessor bounds verify the
 world X/Z extents and positive Y elevations with zero rotated nodes. Godot
 import/render, host/guest simulation and screenshots await the engine grant.
