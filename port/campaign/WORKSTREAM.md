@@ -588,3 +588,16 @@ released it; architecture refinement waits for weapons to finish. Parent avoids
 competing engine/build work. Combined final galleries and trailer refresh follow
 the accepted structure and weapon revisions rather than publishing intermediate
 architecture as the finished result.
+
+Weapon first pass `c80487fb` contains twenty GLBs and editable first/world masters
+for ten classes, preserving canonical exports through an explicit native art layer.
+Lane checks passed (910 ADS, 482 handling, source/grip/finish/reticle contracts).
+Parent reviewed normal/ADS/world captures and found visually detached rear sight
+posts on the Pulse Rifle plus a largely blank camera-facing receiver. A scoped
+mount/detail refinement is requested before accepting and publishing the assets;
+rear-facing breech treatments must read as closures rather than extra muzzles.
+The weapon lane may regenerate Blender assets but waits for another Godot grant.
+
+Architecture now has the exclusive Godot slot for its distinct-family refinement,
+including combined environment artwork and collision/terrain checks. Weapon first
+pass remains unmerged pending corrected rendered review.
