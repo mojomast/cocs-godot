@@ -5,6 +5,21 @@ const Atmosphere = preload("res://native_arenas/identity_environment.gd")
 const ID := "blackwater-reclamation"
 var builder: Node3D
 var last_serial := 0
+var mission_notice := ""
+var mission_notice_until := -1.0
+
+func _ready() -> void:
+	super()
+	client.events.connect(on_blackwater_events)
+
+func on_blackwater_events(items: Array) -> void:
+	for item: Variant in items:
+		if not item is Dictionary: continue
+		var kind := str(item.get("type", ""))
+		if kind not in ["blackwater-station-armed", "blackwater-station-restored"]: continue
+		var station := str(item.get("station", "")).replace("-", " ").to_upper()
+		mission_notice = "%s · %s" % [station, "REPAIR ARMED · HOLD THE AREA" if kind == "blackwater-station-armed" else "RESTORED · SUPPLY ONLINE"]
+		mission_notice_until = float(item.get("time", 0.0)) + 5.0
 
 func _init() -> void:
 	super()
@@ -58,6 +73,8 @@ func load_selected_map(id: String) -> bool:
 
 func on_started(frame: Dictionary) -> void:
 	last_serial = 0
+	mission_notice = ""
+	mission_notice_until = -1.0
 	super.on_started(frame)
 
 func on_snapshot(frame: Dictionary) -> void:
@@ -75,6 +92,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		on_error("Blackwater authoritative stage/director snapshot missing")
 		return
 	builder.call("apply_source_stage", stage, str(frame.get("inputEpoch", "")))
+	builder.call("apply_station_state", mission)
 	var target := ""
 	for item: Variant in mission.get("stations", []):
 		if not item is Dictionary or item.get("id") in mission.get("completed", []) or not item.get("available", false): continue
@@ -82,7 +100,15 @@ func on_snapshot(frame: Dictionary) -> void:
 		if str(item.id) == str(mission.get("active", "")): target += " · WORKING"
 		else: target += " · E TO ARM"
 		break
-	if not target.is_empty(): horde_label.text += "\n" + target
+	if not target.is_empty():
+		for item: Variant in mission.get("stations", []):
+			if item is Dictionary and target.begins_with(str(item.get("caption", ""))):
+				var local: Dictionary = presentation.local_actor
+				if not local.is_empty(): target += " · %.0fm" % Vector2(float(item.x), float(item.z)).distance_to(Vector2(float(local.x), float(local.z)))
+				break
+		horde_label.text += "\n" + target
+	if not mission_notice.is_empty() and float(state.get("time", 0.0)) <= mission_notice_until:
+		horde_label.text += "\n" + mission_notice
 	var transit: Variant = stage.get("transit")
 	if transit is Dictionary:
 		var to := str(transit.get("to", ""))

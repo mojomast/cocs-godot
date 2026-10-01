@@ -3,6 +3,9 @@
 ## Route registration for integrator
 
 - New map ID: `blackwater-reclamation`, mode `horde`, display name **Blackwater Reclamation**.
+- Global launcher/menu/package registration was integrated at `ad511d9c` on
+  `expansion/mp-urban` and merged into this branch. Do not cherry-pick the
+  equivalent Horde implementation commits again.
 - Client scene: `res://horde_maps/blackwater_demo.tscn` with mandatory
   `--map=blackwater-reclamation --endpoint=ws://127.0.0.1:PORT --waves=1..30`.
 - Native local authority: `port/native-horde/authority.mjs`, `HORDE_MAPS` now
@@ -52,6 +55,11 @@ The generator and JS-only contracts can run without Blender/Godot:
 `python3 tools/godot-horde/blackwater.py` then
 `python3 tools/godot-horde/check_assets.py` and
 `node --test port/native-horde/blackwater.test.mjs port/native-horde/robot-roles.test.mjs port/native-horde/robot-authority.test.mjs`.
+Socket acceptance: `node --test port/native-horde/robot-network-census.test.mjs`
+(~60 seconds; one real wave on every local Horde map, then a real movement/E
+repair on Blackwater). Disconnect terminates the solo match; reconnect creates
+a fresh round and input epoch. This route does not support late joining or
+multiplayer teammates, and does not claim either.
 Asset counts: five batched Blender materials/meshes, 13,548 triangles,
 616,176-byte GLB, 1,035,139-byte editable master; source recipe owns 213
 collision blocks, 30 walkable surfaces, and 184 focused navigation hints. All
