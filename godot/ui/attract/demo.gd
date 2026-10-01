@@ -15,7 +15,7 @@ const FRAME_INTERVAL := 1.0 / 18.0
 var mock_scene := false # Headless contract: exercise lifecycle without building GPU geometry.
 var active := false
 var building := false
-var ready := false
+var scene_ready := false
 var chapter_index := -1
 var chapter_time := 0.0
 var frame_time := 0.0
@@ -161,7 +161,7 @@ func clear_chapter() -> void:
 	flash_until = -1.0
 	last_event_frame = -1
 	building = false
-	ready = false
+	scene_ready = false
 
 func advance_chapter() -> void:
 	generation += 1
@@ -171,7 +171,7 @@ func advance_chapter() -> void:
 	frame_index = 0
 	clear_chapter()
 	if mock_scene:
-		ready = true
+		scene_ready = true
 		return
 	building = true
 	_build_chapter.call_deferred(generation)
@@ -227,7 +227,7 @@ func _build_chapter(serial: int) -> void:
 	_build_nearby_cover(recipe)
 	_build_cast()
 	building = false
-	ready = true
+	scene_ready = true
 	_apply_frame(clip.frames[0], clip.frames[1], 0.0)
 	_consume_events(clip.frames[0], 0)
 	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
@@ -320,7 +320,7 @@ func _build_cast() -> void:
 	flash_light.hide()
 
 func _process(delta: float) -> void:
-	if not active or not ready: return
+	if not active or not scene_ready: return
 	chapter_time += minf(delta, 0.1)
 	if mock_scene: return
 	var clip: Dictionary = clips[chapter_index]
@@ -328,7 +328,7 @@ func _process(delta: float) -> void:
 		advance_chapter()
 		return
 	var frames: Array = clip.frames
-	while frame_index + 1 < frames.size() - 1 and float(frames[frame_index + 1].t) <= chapter_time:
+	while frame_index + 1 < frames.size() and float(frames[frame_index + 1].t) <= chapter_time:
 		frame_index += 1
 		_consume_events(frames[frame_index], frame_index)
 	var current: Dictionary = frames[frame_index]

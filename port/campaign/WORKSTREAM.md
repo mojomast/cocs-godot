@@ -353,3 +353,10 @@ identified asynchronous build readiness, descendant processing during pause,
 story-operator visibility and camera/event fidelity issues. The Sol lane owns a
 follow-up correction and meaningful runtime fixture, still edit-only while the
 trailer has the exclusive slot. Live menu rendering is not yet accepted.
+
+Menu hardening `dc86ea29` is integrated as `172a574b`: construction holds the
+replay clock, paused worlds stop descendant processing, interrupted builds reset,
+and production story rendering includes Mara, Ivo and Patch. Parent review also
+renames the readiness flag to avoid Node's `ready` signal and includes the last
+frame when consuming replay events. Engine and visible-menu acceptance remain
+queued behind the trailer's exclusive render job and packaged replay asset.

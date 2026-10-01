@@ -485,7 +485,7 @@ func check_attract(route_count: int, category_count: int) -> void:
 	menu.attract_stage.advance_chapter()
 	check(menu.attract_stage.chapter_index == chapter_before,
 		"scripted replay cycles back to its first chapter")
-	menu.attract_stage.ready = false
+	menu.attract_stage.scene_ready = false
 	menu.attract_stage.building = true
 	menu.attract_stage.camera = Camera3D.new()
 	menu.attract_stage._process(0.5)
@@ -494,7 +494,7 @@ func check_attract(route_count: int, category_count: int) -> void:
 	menu.attract_stage.camera.free()
 	menu.attract_stage.camera = null
 	menu.attract_stage.building = false
-	menu.attract_stage.ready = true
+	menu.attract_stage.scene_ready = true
 	menu.attract_stage._consume_events(sample.frames[0], 0)
 	var first_flash: Vector3 = menu.attract_stage.flash_origin
 	menu.attract_stage._consume_events({"t":0.4,"events":[{"type":"shot", "pos":{"x":99,"y":99,"z":99}}]}, 0)
@@ -515,10 +515,10 @@ func check_attract(route_count: int, category_count: int) -> void:
 		menu.attract_stage.building = true
 		menu.stop_attract()
 		check(menu.attract_stage.world == null and menu.attract_stage.chapter_index == -1
-			and not menu.attract_stage.ready,
+			and not menu.attract_stage.scene_ready,
 			"pausing an unfinished chapter discards its partial world")
 		menu.refresh_attract()
-		check(menu.attract_stage.ready and menu.attract_stage.active,
+		check(menu.attract_stage.scene_ready and menu.attract_stage.active,
 			"interrupted chapter restarts cleanly on resume")
 		settings.set_value("attract_demo_enabled", false, false)
 		check(not menu.attract_active and not menu.attract_background.visible
