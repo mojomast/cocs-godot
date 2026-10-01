@@ -9,6 +9,7 @@ const MENU_SCENE_PATH := "res://ui/main_menu.tscn"
 const ROUTES_PATH := "res://ui/routes.json"
 const MIN_ROUTES := 22
 const PREF_SCENE := preload("res://ui/main_menu.tscn")
+const MENU_SCRIPT := preload("res://ui/main_menu.gd")
 
 var failed := false
 var checks := 0
@@ -409,6 +410,11 @@ func check_attract(route_count: int, category_count: int) -> void:
 	menu.attract_test_media = true
 	root.add_child(menu)
 	menu.refresh_attract()
+	check(not MENU_SCRIPT.attract_window_active(Window.MODE_MINIMIZED, true)
+		and not MENU_SCRIPT.attract_window_active(Window.MODE_WINDOWED, false)
+		and MENU_SCRIPT.attract_window_active(Window.MODE_WINDOWED, true)
+		and MENU_SCRIPT.attract_window_active(Window.MODE_MINIMIZED, false, true),
+		"real minimized and unfocused windows cannot animate; virtual headless test windows can")
 	check(menu.attract_active and menu.attract_background.visible and menu.attract_player.loop,
 		"mock reel loops behind the menu immediately without an idle timer")
 	check(menu.get_child(menu.attract_background.get_index() + 1).name == "Shell",

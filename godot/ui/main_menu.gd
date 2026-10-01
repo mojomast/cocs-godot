@@ -254,12 +254,18 @@ func build_attract_background() -> void:
 
 func _attract_allowed() -> bool:
 	if quitting or not is_inside_tree() or not visible: return false
-	if not attract_test_media and not get_window().has_focus(): return false
-	if get_window().mode == Window.MODE_MINIMIZED or SettingsAccess.overlay_open(): return false
+	# The headless display server reports MINIMIZED unconditionally, even for
+	# test windows. Only the mock-media seam bypasses that virtual window state.
+	var headless_mock := attract_test_media and DisplayServer.get_name() == "headless"
+	if not attract_window_active(get_window().mode, get_window().has_focus(), headless_mock): return false
+	if SettingsAccess.overlay_open(): return false
 	var settings := SettingsAccess.service()
 	if settings != null and (not settings.values.get("attract_demo_enabled", true) or settings.values.get("reduced_motion", false)):
 		return false
 	return attract_test_media or DisplayServer.get_name() != "headless"
+
+static func attract_window_active(mode: int, focused: bool, headless_mock: bool = false) -> bool:
+	return headless_mock or (mode != Window.MODE_MINIMIZED and focused)
 
 func refresh_attract() -> void:
 	if attract_player == null: return
