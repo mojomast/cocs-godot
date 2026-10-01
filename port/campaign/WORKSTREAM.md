@@ -441,3 +441,12 @@ is delivered, and the observer remains in its readiness stage. Both failures are
 preserved (`canonical-5d724abd/`, `repair-4e2d8483/`). Astra now owns the exclusive
 engine slot for a bounded diagnosis and repair of this final failing gate,
 retaining actual engine input, authority acknowledgement and unchanged input TTL.
+
+Horde fixture repair `133a6291` integrated as `d4acfded`. Profiling established
+software-render stalls crossing the unchanged 250 ms input TTL; rendering this
+fixture's 3D view at half scale while retaining 640×480 UI/input resolves them.
+Exact canonical and screenshot-enabled checks passed 23/23 harness and 41/41
+native checks, with real parsed KEY_2 input applying Overcharge once and no
+post-delivery resets. Source gameplay/protocol bytes and deadlines are unchanged.
+Evidence and rejected profiling attempts remain in `horde-upgrade-repair/`.
+Parent now owns the heavy slot for a fresh full integrated canonical run.
