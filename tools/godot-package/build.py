@@ -138,6 +138,10 @@ def main():
     horde_data = closure.get("hordeDataFiles", [])
     campaign_data = closure.get("campaignDataFiles", [])
     world_data = closure.get("worldDataFiles", [])
+    edge_data = closure.get("edgeDataFiles", [])
+    expected_edge_data = ["port/edge-effects/structure-faces.json"] if "port/edge-effects/structure-rays.mjs" in closure["adapterModules"] else []
+    if edge_data != expected_edge_data:
+        raise RuntimeError("Unexpected campaign facade data closure")
     allowed_campaign_data = {f"godot/campaign/generated/{name}.json" for name in ["rootfall-verge", "siltwake-crossing", "emberline-ascent", "crown-array"]}
     allowed_world_data = {f"godot/multiplayer_worlds/generated/{name}.json" for name in ["switchyard-ward", "rainmarket-exchange", "breakwater-exchange", "thermal-divide", "sirocco-circuit", "copper-bowl", "tern-archipelago"]}
     allowed_arena_data = {f"godot/native_arenas/generated/{name}.json" for name in ["prism-foundry", "aurora-basin", "cinder-array"]}
@@ -171,6 +175,10 @@ def main():
     input_paths.update(horde_data)
     input_paths.update(campaign_data)
     input_paths.update(world_data)
+    input_paths.update(edge_data)
+    if edge_data:
+        run(["node", "port/edge-effects/bake-structures.mjs", "--check"])
+        input_paths.add("port/edge-effects/bake-structures.mjs")
     input_paths.update(["package.json", "package-lock.json", "port/contracts/source-lock.json", "port/contracts/map-selection.json", "tools/godot-export/semantic.mjs"])
     campaign_core_generator = "port/native-campaign/generate-core.mjs"
     if (ROOT / campaign_core_generator).is_file():
@@ -244,7 +252,7 @@ def main():
             raise RuntimeError(f"Runtime source differs from lock: {p}")
     # Port-owned adapters and data have separate provenance, never source-lock
     # exemptions. Require committed reviewed bytes; record exact hashes.
-    port_owned = [*closure["adapterModules"], *arena_data, *identity_data, *horde_data, *campaign_data, *world_data]
+    port_owned = [*closure["adapterModules"], *arena_data, *identity_data, *horde_data, *campaign_data, *world_data, *edge_data]
     if career_catalog in input_paths:
         port_owned.append(career_catalog)
     if finish_catalog in input_paths:
@@ -334,7 +342,7 @@ ssh_remote_deploy/enabled=false
         raise RuntimeError("Expected separate PCK")
     if not windows and run([package / executable, "--version"], env=env) != EXACT:
         raise RuntimeError("Exported runtime exact version mismatch")
-    for p in [*closure["modules"], *closure["adapterModules"], *arena_data, *identity_data, *horde_data, *campaign_data, *world_data]:
+    for p in [*closure["modules"], *closure["adapterModules"], *arena_data, *identity_data, *horde_data, *campaign_data, *world_data, *edge_data]:
         copy(ROOT / p, package / "runtime" / p)
 
     # Fetch only the already-locked ordinary ws dependency. No npm/install scripts.
@@ -439,6 +447,7 @@ ssh_remote_deploy/enabled=false
         "identity_arena_data_sha256":{p:inputs[p] for p in identity_data},
         "horde_map_data_sha256":{p:inputs[p] for p in horde_data},
         "campaign_data_sha256":{p:inputs[p] for p in campaign_data},
+        "edge_data_sha256":{p:inputs[p] for p in edge_data},
         "generated_resources_sha256":tree_hash(resources), "staged_export_preset":preset,
         "launchers":launchers,
         "files":tree(package),

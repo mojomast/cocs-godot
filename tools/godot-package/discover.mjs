@@ -27,7 +27,8 @@ const campaignAdapters = ['authority','maps','match','missions','enemies','story
   .map(name => `port/native-campaign/${name}.mjs`);
 const worldAdapters = ['catalog','match','derived/core','derived/payload','derived/room','derived/rooms','derived/game-server']
   .map(name => `port/multiplayer-worlds/${name}.mjs`);
-const adapters = [...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters,
+const edgeAdapters = ['port/edge-effects/structure-rays.mjs'];
+const adapters = [...edgeAdapters, ...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters,
   ...localRosterAdapters, ...identityZoneAdapters, ...campaignAdapters, ...worldAdapters];
 // Explicit dynamic data-read manifest: the builder hashes committed bytes and
 // copies these paths under runtime/, preserving catalog.mjs URL resolution.
@@ -72,6 +73,7 @@ const worlds = existsSync(resolve(root, worldEntry)) ? discover(worldEntry) : nu
 const campaignDataFiles = campaign ? ['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array']
   .map(id => `godot/campaign/generated/${id}.json`) : [];
 const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules, ...campaign?.modules, ...worlds?.modules};
+const edgeDataFiles = Object.hasOwn(all, edgeAdapters[0]) ? ['port/edge-effects/structure-faces.json'] : [];
 const dataFiles = nativeArena ? nativeArenaData : [];
 const identityDataFiles = nativeArena || identityZones ? identityArenaData : [];
 const hordeDataFiles = [
@@ -84,8 +86,9 @@ for (const [path, dependencies] of Object.entries(all)) (adapters.includes(path)
 console.log(JSON.stringify({entry:'server/game-server.mjs', hordeEntry:hordeAdapters[0], nativeArenaEntry,
   identityZoneEntry, campaignEntry,
   modules:sorted(sourceModules), adapterModules:sorted(adapterModules), external:ordinary.external,
-  dataFiles, identityDataFiles, hordeDataFiles, campaignDataFiles, worldDataFiles:worlds ? worldData : [],
+  dataFiles, identityDataFiles, hordeDataFiles, campaignDataFiles, edgeDataFiles, worldDataFiles:worlds ? worldData : [],
   dataReads:Object.fromEntries([
+    ...(edgeDataFiles.length ? [[edgeAdapters[0], edgeDataFiles]] : []),
     ...(campaign ? [['port/native-campaign/maps.mjs', campaignDataFiles]] : []),
     ...(nativeArena ? [['port/native-arenas/catalog.mjs', [...dataFiles, ...identityDataFiles]]] : []),
     ...(identityZones ? [['port/native-identity-zones/catalog.mjs', [...identityDataFiles]]] : []),

@@ -216,6 +216,7 @@ function runtimeClosure(manifest) {
   let hordeDataFiles;
   let campaignDataFiles;
   let worldDataFiles;
+  let edgeDataFiles;
 
   if (manifest.server_closure !== undefined) {
     const closure = manifest.server_closure;
@@ -231,6 +232,7 @@ function runtimeClosure(manifest) {
     hordeDataFiles = closure.hordeDataFiles ?? [];
     campaignDataFiles = closure.campaignDataFiles ?? [];
     worldDataFiles = closure.worldDataFiles ?? [];
+    edgeDataFiles = closure.edgeDataFiles ?? [];
   } else {
     require_(plainObject(manifest.source_runtime_sha256) && Object.keys(manifest.source_runtime_sha256).length > 0,
       'Manifest has neither server_closure nor source_runtime_sha256');
@@ -241,12 +243,14 @@ function runtimeClosure(manifest) {
     hordeDataFiles = Object.keys(manifest.horde_map_data_sha256 ?? {});
     campaignDataFiles = Object.keys(manifest.campaign_data_sha256 ?? {});
     worldDataFiles = [];
+    edgeDataFiles = Object.keys(manifest.edge_data_sha256 ?? {});
   }
 
   for (const path of sourceModules) assertRelPath(path, 'Source module');
   for (const path of sourceModules) require_(SOURCE_MODULE.test(path), `Source module must be game/ or server/: ${path}`);
   for (const path of adapters) assertRelPath(path, 'Adapter module');
   for (const path of adapters) require_(ADAPTER_MODULE.test(path), `Adapter module must be under port/: ${path}`);
+  requireSortedEqual(edgeDataFiles, adapters.includes('port/edge-effects/structure-rays.mjs') ? ['port/edge-effects/structure-faces.json'] : [], 'Campaign facade data closure');
   require_(Array.isArray(campaignDataFiles) && new Set(campaignDataFiles).size === campaignDataFiles.length, 'Invalid campaign data closure');
   for (const path of campaignDataFiles) require_(/^godot\/campaign\/generated\/(rootfall-verge|siltwake-crossing|emberline-ascent|crown-array)\.json$/.test(path), `Unexpected campaign data file: ${path}`);
   require_(Array.isArray(worldDataFiles) && new Set(worldDataFiles).size === worldDataFiles.length, 'Invalid multiplayer world data closure');
@@ -278,7 +282,8 @@ function runtimeClosure(manifest) {
   if (manifest.campaign_data_sha256 !== undefined) {
     requireSortedEqual(Object.keys(manifest.campaign_data_sha256), campaignDataFiles, 'campaign_data_sha256');
   }
-  return {sourceModules, adapters, dataFiles, identityDataFiles, hordeDataFiles, campaignDataFiles, worldDataFiles};
+  if (manifest.edge_data_sha256 !== undefined) requireSortedEqual(Object.keys(manifest.edge_data_sha256), edgeDataFiles, 'edge_data_sha256');
+  return {sourceModules, adapters, dataFiles, identityDataFiles, hordeDataFiles, campaignDataFiles, worldDataFiles, edgeDataFiles};
 }
 
 // Every packaged byte must be in the manifest and every manifest byte on disk.
@@ -369,6 +374,7 @@ export function validateRuntimeClosure(packageDir, identity) {
     ...identity.hordeDataFiles.map(path => `runtime/${path}`),
     ...identity.campaignDataFiles.map(path => `runtime/${path}`),
     ...identity.worldDataFiles.map(path => `runtime/${path}`),
+    ...identity.edgeDataFiles.map(path => `runtime/${path}`),
   ];
   const allowed = new Set(closurePaths);
   for (const path of closurePaths) {
@@ -393,7 +399,7 @@ export function validateRuntimeClosure(packageDir, identity) {
   }
   const portRuntime = runtimeFiles.filter(path => path.startsWith('runtime/port/'))
     .map(path => path.slice('runtime/'.length));
-  requireSortedEqual(portRuntime, identity.adapters.filter(path => path.startsWith('port/')), 'runtime/port adapter');
+  requireSortedEqual(portRuntime, [...identity.adapters.filter(path => path.startsWith('port/')), ...identity.edgeDataFiles], 'runtime/port adapter and data');
 }
 
 // Re-derive the strict source-tree contract that `tools/godot-export/semantic.mjs`
@@ -466,7 +472,9 @@ export function rederiveClosure(repo, identity, derivative) {
       .split('\n').filter(path => path.endsWith('.mjs'));
     const godotJson = git(repo, ['ls-tree', '-r', '--name-only', identity.port_commit, '--', 'godot'])
       .split('\n').filter(path => path.endsWith('.json'));
-    const paths = [...listing, ...godotJson];
+    const edgeJson = git(repo, ['ls-tree', '-r', '--name-only', identity.port_commit,
+      '--', 'port/edge-effects/structure-faces.json']).split('\n').filter(Boolean);
+    const paths = [...listing, ...godotJson, ...edgeJson];
     require_(paths.includes('tools/godot-package/discover.mjs'), 'Committed discover.mjs is missing at port_commit');
     const derivativeFiles = derivative ? derivative.runtime_files : {};
     const requests = paths.map(path => Object.hasOwn(derivativeFiles, path)
@@ -513,6 +521,7 @@ function verifyClosure(repo, identity, derivative) {
   requireSortedEqual(identity.hordeDataFiles, discovered.hordeDataFiles ?? [], 'Committed discovery horde data files');
   requireSortedEqual(identity.campaignDataFiles, discovered.campaignDataFiles ?? [], 'Committed discovery campaign data files');
   requireSortedEqual(identity.worldDataFiles, discovered.worldDataFiles ?? [], 'Committed discovery multiplayer world data files');
+  requireSortedEqual(identity.edgeDataFiles, discovered.edgeDataFiles ?? [], 'Committed discovery campaign facade data files');
 }
 
 function requireSameBytes(repo, commit, sourcePath, actualPath, label) {
@@ -571,7 +580,7 @@ export function verifyGitIdentity(repo, identity, packageDir) {
     const actual = sha256File(join(packageDir, 'runtime', ...path.split('/')));
     require_(expected === actual, `Runtime adapter differs from port_commit: ${path}`);
   }
-  for (const path of [...identity.dataFiles, ...identity.identityDataFiles, ...identity.hordeDataFiles, ...identity.campaignDataFiles, ...identity.worldDataFiles]) {
+  for (const path of [...identity.dataFiles, ...identity.identityDataFiles, ...identity.hordeDataFiles, ...identity.campaignDataFiles, ...identity.worldDataFiles, ...identity.edgeDataFiles]) {
     const expected = gitObjectHash(repo, identity.port_commit, path);
     const actual = sha256File(join(packageDir, 'runtime', ...path.split('/')));
     require_(expected === actual, `Runtime data differs from port_commit: ${path}`);

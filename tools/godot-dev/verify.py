@@ -44,6 +44,9 @@ os.environ['CAREER_EQUIPPED_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / '
 os.environ['CAREER_CLARITY_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'clarity-journey')
 os.environ['ACTOR_ANIMATION_POINTS'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'animated-body-points.json')
 os.environ['CAMPAIGN_TARGETING_POINTS'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'targeting-body-points.json')
+os.environ['EDGE_SOURCE_EVENTS'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-source-events.json')
+os.environ['EDGE_MAP_CASES'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-map-cases.json')
+os.environ['EDGE_RENDER_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-render')
 # Verification-owned loopback authorities must not inherit a user's fixed server
 # port. The launchers resolve and pass the actual ephemeral endpoint to Godot.
 os.environ['PORT'] = '0'
@@ -220,6 +223,13 @@ commands = [
     ("animation-actors", [binary, "--headless", "--path", "godot", "--script", "res://tests/animation_pass/actors.gd"]),
     ("animation-actor-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/animation_pass/geometry.gd"]),
     ("animation-actor-fire", ["node", "--test", "port/animation-pass/actors-fire.test.mjs"]),
+    ("edge-structure-bake", ["node", "port/edge-effects/bake-structures.mjs", "--check"]),
+    ("edge-source-hits", ["node", "--test", "port/edge-effects/edges.test.mjs"]),
+    ("edge-map-fixtures", ["node", "port/edge-effects/measure.mjs"]),
+    ("edge-map-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/edge_effects/maps.gd"]),
+    ("edge-contact-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/edge_effects/contracts.gd"]),
+    ("edge-weapon-effects", [binary, "--headless", "--path", "godot", "--script", "res://tests/edge_effects/weapons.gd"]),
+    ("edge-render-masks", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--path", "godot", "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy", "--script", "res://tests/edge_effects/render.gd"]),
     ("campaign-interludes-authority", ["node", "--test", "port/native-campaign/interludes.test.mjs"]),
     ("campaign-interludes-fixtures", ["node", "tools/godot-campaign/interlude-fixtures.mjs", str(root / ".port-runtime" / "interlude-fixtures.json")]),
     ("campaign-interludes-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/interludes.gd", "--", "--fixtures=" + str(root / ".port-runtime" / "interlude-fixtures.json")]),

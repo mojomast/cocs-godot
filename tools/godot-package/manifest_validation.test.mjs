@@ -27,7 +27,7 @@ for (const path of all) (path.startsWith('port/') ? adapterModules : modules)[pa
 const family = dir => existsSync(join(root, dir)) ? readdirSync(join(root, dir)).filter(name => name.endsWith('.json')).sort().map(name => dir + '/' + name) : [];
 console.log(JSON.stringify({entry: 'server/game-server.mjs', modules, adapterModules,
   dataFiles: family('godot/native_arenas/generated'), identityDataFiles: family('godot/identity_maps/generated'),
-  hordeDataFiles: family('godot/horde_maps/generated'), campaignDataFiles: family('godot/campaign/generated'), worldDataFiles: family('godot/multiplayer_worlds/generated')}));
+  hordeDataFiles: family('godot/horde_maps/generated'), campaignDataFiles: family('godot/campaign/generated'), worldDataFiles: family('godot/multiplayer_worlds/generated'), edgeDataFiles: family('port/edge-effects')}));
 `;
 
 const HELPERS = {
@@ -79,7 +79,7 @@ function inventory(dir) {
 }
 
 function buildFixture({
-  target = 'linux', derivative = false, data = false, hordeData = false, campaignData = false, worldData = false,
+  target = 'linux', derivative = false, data = false, hordeData = false, campaignData = false, worldData = false, edgeData = false,
   derivativeAdded = null, extraSource = {}, extraTestModule = null,
   dropAddedFromContract = false, contractSourceCommitOverride = null,
 } = {}) {
@@ -104,6 +104,8 @@ function buildFixture({
   };
   if (extraTestModule) sourceFiles[extraTestModule] = 'export const t = 1;\n';
   const adapterFiles = {'port/native-horde/authority.mjs': "import '../../game/cocs.mjs';\n"};
+  if (edgeData) adapterFiles['port/edge-effects/structure-rays.mjs'] = '// committed facade adapter\n';
+  const edgeDataFiles = edgeData ? {'port/edge-effects/structure-faces.json':'{"faces":[]}\n'} : {};
   const dataFiles = data ? {'godot/native_arenas/generated/prism-foundry.json': '{"ok":true}\n'} : {};
   const hordeDataFiles = hordeData ? {'godot/horde_maps/generated/cinderwake-drydock.json': '{"map":"cinderwake"}\n'} : {};
   const campaignDataFiles = campaignData ? Object.fromEntries(['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array'].map(id => [`godot/campaign/generated/${id}.json`, JSON.stringify({id})+'\n'])) : {};
@@ -111,7 +113,7 @@ function buildFixture({
   // A reviewed derivative may add a source module, not only modify locked files.
   const addedModules = derivativeAdded ? {[derivativeAdded]: 'export const stages = [];\n'} : {};
 
-  for (const [path, content] of Object.entries({...sourceFiles, ...adapterFiles, ...dataFiles, ...hordeDataFiles, ...campaignDataFiles, ...worldDataFiles})) {
+  for (const [path, content] of Object.entries({...sourceFiles, ...adapterFiles, ...dataFiles, ...hordeDataFiles, ...campaignDataFiles, ...worldDataFiles, ...edgeDataFiles})) {
     write(repo, path, content);
   }
   for (const [name, content] of Object.entries(HELPERS)) write(repo, `tools/godot-package/${name}`, content);
@@ -189,7 +191,7 @@ function buildFixture({
   const sourceModules = [...Object.keys(sourceFiles), ...Object.keys(addedModules)];
   for (const path of sourceModules) write(packageDir, `runtime/${path}`, show(revisionFor(path), path));
   for (const path of Object.keys(adapterFiles)) write(packageDir, `runtime/${path}`, show(portCommit, path));
-  for (const path of [...Object.keys(dataFiles), ...Object.keys(hordeDataFiles), ...Object.keys(campaignDataFiles), ...Object.keys(worldDataFiles)]) write(packageDir, `runtime/${path}`, show(portCommit, path));
+  for (const path of [...Object.keys(dataFiles), ...Object.keys(hordeDataFiles), ...Object.keys(campaignDataFiles), ...Object.keys(worldDataFiles), ...Object.keys(edgeDataFiles)]) write(packageDir, `runtime/${path}`, show(portCommit, path));
   write(packageDir, 'runtime/node_modules/ws/LICENSE', 'ws license\n');
   write(packageDir, 'runtime/node_modules/ws/package.json', '{"name":"ws"}\n');
   write(packageDir, 'runtime/node_modules/ws/index.js', 'module.exports = {};\n');
@@ -215,6 +217,7 @@ function buildFixture({
       hordeDataFiles: Object.keys(hordeDataFiles),
       ...(campaignData ? {campaignDataFiles:Object.keys(campaignDataFiles)} : {}),
       ...(worldData ? {worldDataFiles:Object.keys(worldDataFiles)} : {}),
+      ...(edgeData ? {edgeDataFiles:Object.keys(edgeDataFiles)} : {}),
       external: ['ws'],
     },
     source_runtime_sha256: Object.fromEntries(sourceModules
@@ -277,6 +280,20 @@ test('valid Linux package passes end to end', () => withFixture({}, fixture => {
 
 test('valid Windows package structure passes without executing the engine', () => withFixture({target: 'windows'}, fixture => {
   assert.equal(validateArtifact({packageDir: fixture.packageDir, repoRoot: fixture.repo}).target, 'windows');
+}));
+
+test('campaign facade data is verified against recorded Git bytes even with a forged inventory', () => withFixture({edgeData:true}, fixture => {
+  assert.equal(validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}).status,'passed');
+  write(fixture.packageDir,'runtime/port/edge-effects/structure-faces.json','{"tampered":true}\n');
+  refreshInventory(fixture);
+  fails(()=>validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}),/Runtime data differs from port_commit/);
+}));
+
+test('facade adapter cannot ship with its JSON omitted or redirected', () => withFixture({edgeData:true}, fixture => {
+  fixture.manifest.server_closure.edgeDataFiles=[];fixture.save();
+  fails(()=>validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}),/Campaign facade data closure/);
+  fixture.manifest.server_closure.edgeDataFiles=['port/edge-effects/other.json'];fixture.save();
+  fails(()=>validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}),/Campaign facade data closure/);
 }));
 
 test('seven multiplayer world files are bound to the recorded discovery and Git bytes', () => withFixture({worldData:true}, fixture => {

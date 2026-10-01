@@ -11,6 +11,9 @@ test('campaign authority closure includes reviewed adapters and all four runtime
   const data = maps.map(id => `godot/campaign/generated/${id}.json`);
   assert.deepEqual(closure.campaignDataFiles, data);
   assert.deepEqual(closure.dataReads['port/native-campaign/maps.mjs'], data);
+  assert.deepEqual(closure.edgeDataFiles, ['port/edge-effects/structure-faces.json']);
+  assert.deepEqual(closure.dataReads['port/edge-effects/structure-rays.mjs'], closure.edgeDataFiles);
+  assert.ok(closure.routes.campaign.includes('port/edge-effects/structure-rays.mjs'));
   for (const name of ['authority','maps','match','missions','enemies','story','core.generated','feel','targeting','interludes','interlude-definitions']) {
     assert.ok(Object.hasOwn(closure.adapterModules, `port/native-campaign/${name}.mjs`), name);
     assert.ok(closure.routes.campaign.includes(`port/native-campaign/${name}.mjs`), name);
