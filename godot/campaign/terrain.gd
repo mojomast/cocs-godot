@@ -10,6 +10,8 @@ const SURFACE = preload("res://biomes/surface.gdshader")
 const FOLIAGE = preload("res://biomes/foliage.gdshader")
 const StructureArt = preload("res://campaign/structure_art.gd")
 const EnvironmentArt = preload("res://campaign/environment_art.gd")
+const Wreck = preload("res://campaign/art/landmarks/fallen-relay.glb")
+const CrownReceiver = preload("res://campaign/art/landmarks/crown-receiver.glb")
 var recipe: Dictionary = {}
 var materials: Dictionary = {}
 var heights: Dictionary = {}
@@ -225,8 +227,27 @@ func _group(groups: Dictionary, kind: String, material: String, at: Vector3, siz
 func _build_art() -> void:
 	var groups: Dictionary = {}
 	for prop: Dictionary in recipe.art:
+		if prop.kind == "fallen-relay" or (get_arena_id() == "crown-array" and prop.kind == "dish" and float(prop.scale[0]) > 20.0):
+			_landmark(prop)
+			continue
 		_group(groups, str(prop.kind), str(prop.material), _v(prop.position), _v(prop.scale))
 	for group: Dictionary in groups.values(): _batch(group, false)
+
+func _landmark(prop: Dictionary) -> void:
+	var fallen: bool = prop.kind == "fallen-relay"
+	var scene: PackedScene = Wreck if fallen else CrownReceiver
+	var instance: Node3D = scene.instantiate()
+	instance.name = "Scenery_" + ("FallenRelay" if fallen else "CrownReceiver")
+	instance.position = _v(prop.position)
+	if fallen:
+		# Recipe X/Z and size are authoritative. The original Y was three metres
+		# above the nearby ground; settle the left broken end on the actual sheet.
+		# The arched saddle crosses the existing relay roof at its unchanged top.
+		instance.position.y = height_at(instance.position.x - float(prop.scale[0]) * 0.48, instance.position.z - float(prop.scale[2]) * 0.55)
+	instance.scale = _v(prop.scale)
+	add_child(instance)
+	art_batches += 3 # three merged, material-separated Blender surfaces
+	art_instances += 1
 
 func _batch(group: Dictionary, solid: bool) -> void:
 	var kind: String = group.kind
@@ -304,13 +325,6 @@ func _prop_mesh(kind: String) -> Mesh:
 			_tri(st, inner_a, outer_b, outer_a, Color.WHITE)
 			_tri(st, inner_a, inner_b, outer_b, Color.WHITE)
 		_prism(st, Vector3(0, 0.3, 0), Vector3(0, 1, 0), 0.018, 0.008, 6, Color.WHITE)
-	elif kind == "fallen-relay":
-		# Tumbled lattice mast, authored above the fallen relay's solid housing.
-		for i: int in 8:
-			var x := -0.5+float(i)/7.0
-			_prism(st, Vector3(x, 0, -0.25), Vector3(x+0.03, 0.8, 0.25), 0.015, 0.015, 4, Color.WHITE)
-		_prism(st, Vector3(-0.5, 0, -0.25), Vector3(0.5, 0.25, -0.25), 0.025, 0.025, 4, Color.WHITE)
-		_prism(st, Vector3(-0.5, 0.8, 0.25), Vector3(0.5, 1, 0.25), 0.025, 0.025, 4, Color.WHITE)
 	elif kind == "beacon":
 		_prism(st, Vector3.ZERO, Vector3(0, 1, 0), 0.5, 0.35, 4, Color.WHITE)
 	else:
