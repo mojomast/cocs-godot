@@ -85,6 +85,6 @@ func _process(delta: float) -> bool:
 		push_error("EXPANSION_ZONES_MISSING"); quit(2); return false
 	if not horde and product.get("current_id") != null and str(product.get("current_id")) != map_id:
 		push_error("EXPANSION_PRODUCT_SCENE_MAP_MISMATCH"); quit(2); return false
-	print("EXPANSION_PRODUCT_READY ", JSON.stringify({"scene":scene_path,"map":map_id,"mode":mode,"hash":start_hash,"snapshots":snapshots,"actors":state.get("actors", []).size(),"objective":objectives.get("kind", ""),"race":race.get("kind", ""),"robots":robots,"blackwater":state.get("blackwater", {}).get("version", 0)}))
+	print("EXPANSION_PRODUCT_READY ", JSON.stringify({"scene":scene_path,"map":map_id,"mode":mode,"hash":start_hash,"snapshots":snapshots,"actors":state.get("actors", []).size(),"objective":objectives.get("kind", ""),"race":race.get("phase", ""),"robots":robots,"blackwater":state.get("blackwater", {}).get("version", 0)}))
 	quit(0)
 	return false

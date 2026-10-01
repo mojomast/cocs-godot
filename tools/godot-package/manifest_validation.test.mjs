@@ -27,7 +27,7 @@ for (const path of all) (path.startsWith('port/') ? adapterModules : modules)[pa
 const family = dir => existsSync(join(root, dir)) ? readdirSync(join(root, dir)).filter(name => name.endsWith('.json')).sort().map(name => dir + '/' + name) : [];
 console.log(JSON.stringify({entry: 'server/game-server.mjs', modules, adapterModules,
   dataFiles: family('godot/native_arenas/generated'), identityDataFiles: family('godot/identity_maps/generated'),
-  hordeDataFiles: family('godot/horde_maps/generated'), campaignDataFiles: family('godot/campaign/generated')}));
+  hordeDataFiles: family('godot/horde_maps/generated'), campaignDataFiles: family('godot/campaign/generated'), worldDataFiles: family('godot/multiplayer_worlds/generated')}));
 `;
 
 const HELPERS = {
@@ -79,7 +79,7 @@ function inventory(dir) {
 }
 
 function buildFixture({
-  target = 'linux', derivative = false, data = false, hordeData = false, campaignData = false,
+  target = 'linux', derivative = false, data = false, hordeData = false, campaignData = false, worldData = false,
   derivativeAdded = null, extraSource = {}, extraTestModule = null,
   dropAddedFromContract = false, contractSourceCommitOverride = null,
 } = {}) {
@@ -107,10 +107,11 @@ function buildFixture({
   const dataFiles = data ? {'godot/native_arenas/generated/prism-foundry.json': '{"ok":true}\n'} : {};
   const hordeDataFiles = hordeData ? {'godot/horde_maps/generated/cinderwake-drydock.json': '{"map":"cinderwake"}\n'} : {};
   const campaignDataFiles = campaignData ? Object.fromEntries(['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array'].map(id => [`godot/campaign/generated/${id}.json`, JSON.stringify({id})+'\n'])) : {};
+  const worldDataFiles = worldData ? Object.fromEntries(['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago'].map(id => [`godot/multiplayer_worlds/generated/${id}.json`, JSON.stringify({id})+'\n'])) : {};
   // A reviewed derivative may add a source module, not only modify locked files.
   const addedModules = derivativeAdded ? {[derivativeAdded]: 'export const stages = [];\n'} : {};
 
-  for (const [path, content] of Object.entries({...sourceFiles, ...adapterFiles, ...dataFiles, ...hordeDataFiles, ...campaignDataFiles})) {
+  for (const [path, content] of Object.entries({...sourceFiles, ...adapterFiles, ...dataFiles, ...hordeDataFiles, ...campaignDataFiles, ...worldDataFiles})) {
     write(repo, path, content);
   }
   for (const [name, content] of Object.entries(HELPERS)) write(repo, `tools/godot-package/${name}`, content);
@@ -188,7 +189,7 @@ function buildFixture({
   const sourceModules = [...Object.keys(sourceFiles), ...Object.keys(addedModules)];
   for (const path of sourceModules) write(packageDir, `runtime/${path}`, show(revisionFor(path), path));
   for (const path of Object.keys(adapterFiles)) write(packageDir, `runtime/${path}`, show(portCommit, path));
-  for (const path of [...Object.keys(dataFiles), ...Object.keys(hordeDataFiles), ...Object.keys(campaignDataFiles)]) write(packageDir, `runtime/${path}`, show(portCommit, path));
+  for (const path of [...Object.keys(dataFiles), ...Object.keys(hordeDataFiles), ...Object.keys(campaignDataFiles), ...Object.keys(worldDataFiles)]) write(packageDir, `runtime/${path}`, show(portCommit, path));
   write(packageDir, 'runtime/node_modules/ws/LICENSE', 'ws license\n');
   write(packageDir, 'runtime/node_modules/ws/package.json', '{"name":"ws"}\n');
   write(packageDir, 'runtime/node_modules/ws/index.js', 'module.exports = {};\n');
@@ -213,6 +214,7 @@ function buildFixture({
       identityDataFiles: [],
       hordeDataFiles: Object.keys(hordeDataFiles),
       ...(campaignData ? {campaignDataFiles:Object.keys(campaignDataFiles)} : {}),
+      ...(worldData ? {worldDataFiles:Object.keys(worldDataFiles)} : {}),
       external: ['ws'],
     },
     source_runtime_sha256: Object.fromEntries(sourceModules
@@ -275,6 +277,23 @@ test('valid Linux package passes end to end', () => withFixture({}, fixture => {
 
 test('valid Windows package structure passes without executing the engine', () => withFixture({target: 'windows'}, fixture => {
   assert.equal(validateArtifact({packageDir: fixture.packageDir, repoRoot: fixture.repo}).target, 'windows');
+}));
+
+test('seven multiplayer world files are bound to the recorded discovery and Git bytes', () => withFixture({worldData:true}, fixture => {
+  assert.equal(validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}).world_data_files,7);
+  const path=fixture.manifest.server_closure.worldDataFiles[0];
+  write(fixture.packageDir,`runtime/${path}`,'{"tampered":true}\n');
+  refreshInventory(fixture);
+  fails(()=>validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}),/Runtime data differs from port_commit/);
+}));
+
+test('world closure cannot omit a packaged file or hide a file recorded by discovery', () => withFixture({worldData:true}, fixture => {
+  const path=fixture.manifest.server_closure.worldDataFiles.pop();
+  fixture.save();
+  fails(()=>validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}),/Uninventoried runtime file/);
+  unlinkSync(join(fixture.packageDir,'runtime',path));
+  refreshInventory(fixture);
+  fails(()=>validateArtifact({packageDir:fixture.packageDir,repoRoot:fixture.repo}),/Committed discovery multiplayer world data files/);
 }));
 
 test('a career-capable recorded launcher requires its committed helper even if the inventory is forged', () => withFixture({}, fixture => {

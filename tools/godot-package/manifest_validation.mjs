@@ -215,6 +215,7 @@ function runtimeClosure(manifest) {
   let identityDataFiles;
   let hordeDataFiles;
   let campaignDataFiles;
+  let worldDataFiles;
 
   if (manifest.server_closure !== undefined) {
     const closure = manifest.server_closure;
@@ -229,6 +230,7 @@ function runtimeClosure(manifest) {
     // builders and therefore an empty list, never a required field.
     hordeDataFiles = closure.hordeDataFiles ?? [];
     campaignDataFiles = closure.campaignDataFiles ?? [];
+    worldDataFiles = closure.worldDataFiles ?? [];
   } else {
     require_(plainObject(manifest.source_runtime_sha256) && Object.keys(manifest.source_runtime_sha256).length > 0,
       'Manifest has neither server_closure nor source_runtime_sha256');
@@ -238,6 +240,7 @@ function runtimeClosure(manifest) {
     identityDataFiles = Object.keys(manifest.identity_arena_data_sha256 ?? {});
     hordeDataFiles = Object.keys(manifest.horde_map_data_sha256 ?? {});
     campaignDataFiles = Object.keys(manifest.campaign_data_sha256 ?? {});
+    worldDataFiles = [];
   }
 
   for (const path of sourceModules) assertRelPath(path, 'Source module');
@@ -246,7 +249,9 @@ function runtimeClosure(manifest) {
   for (const path of adapters) require_(ADAPTER_MODULE.test(path), `Adapter module must be under port/: ${path}`);
   require_(Array.isArray(campaignDataFiles) && new Set(campaignDataFiles).size === campaignDataFiles.length, 'Invalid campaign data closure');
   for (const path of campaignDataFiles) require_(/^godot\/campaign\/generated\/(rootfall-verge|siltwake-crossing|emberline-ascent|crown-array)\.json$/.test(path), `Unexpected campaign data file: ${path}`);
-  for (const path of [...dataFiles, ...identityDataFiles, ...hordeDataFiles, ...campaignDataFiles]) {
+  require_(Array.isArray(worldDataFiles) && new Set(worldDataFiles).size === worldDataFiles.length, 'Invalid multiplayer world data closure');
+  for (const path of worldDataFiles) require_(/^godot\/multiplayer_worlds\/generated\/(switchyard-ward|rainmarket-exchange|breakwater-exchange|thermal-divide|sirocco-circuit|copper-bowl|tern-archipelago)\.json$/.test(path), `Unexpected multiplayer world data file: ${path}`);
+  for (const path of [...dataFiles, ...identityDataFiles, ...hordeDataFiles, ...campaignDataFiles, ...worldDataFiles]) {
     assertRelPath(path, 'Runtime data file');
     require_(DATA_FILE.test(path), `Runtime data file must be a godot/ JSON path: ${path}`);
   }
@@ -273,7 +278,7 @@ function runtimeClosure(manifest) {
   if (manifest.campaign_data_sha256 !== undefined) {
     requireSortedEqual(Object.keys(manifest.campaign_data_sha256), campaignDataFiles, 'campaign_data_sha256');
   }
-  return {sourceModules, adapters, dataFiles, identityDataFiles, hordeDataFiles, campaignDataFiles};
+  return {sourceModules, adapters, dataFiles, identityDataFiles, hordeDataFiles, campaignDataFiles, worldDataFiles};
 }
 
 // Every packaged byte must be in the manifest and every manifest byte on disk.
@@ -363,6 +368,7 @@ export function validateRuntimeClosure(packageDir, identity) {
     ...identity.identityDataFiles.map(path => `runtime/${path}`),
     ...identity.hordeDataFiles.map(path => `runtime/${path}`),
     ...identity.campaignDataFiles.map(path => `runtime/${path}`),
+    ...identity.worldDataFiles.map(path => `runtime/${path}`),
   ];
   const allowed = new Set(closurePaths);
   for (const path of closurePaths) {
@@ -506,6 +512,7 @@ function verifyClosure(repo, identity, derivative) {
   requireSortedEqual(identity.identityDataFiles, discovered.identityDataFiles ?? [], 'Committed discovery identity data files');
   requireSortedEqual(identity.hordeDataFiles, discovered.hordeDataFiles ?? [], 'Committed discovery horde data files');
   requireSortedEqual(identity.campaignDataFiles, discovered.campaignDataFiles ?? [], 'Committed discovery campaign data files');
+  requireSortedEqual(identity.worldDataFiles, discovered.worldDataFiles ?? [], 'Committed discovery multiplayer world data files');
 }
 
 function requireSameBytes(repo, commit, sourcePath, actualPath, label) {
@@ -564,7 +571,7 @@ export function verifyGitIdentity(repo, identity, packageDir) {
     const actual = sha256File(join(packageDir, 'runtime', ...path.split('/')));
     require_(expected === actual, `Runtime adapter differs from port_commit: ${path}`);
   }
-  for (const path of [...identity.dataFiles, ...identity.identityDataFiles, ...identity.hordeDataFiles, ...identity.campaignDataFiles]) {
+  for (const path of [...identity.dataFiles, ...identity.identityDataFiles, ...identity.hordeDataFiles, ...identity.campaignDataFiles, ...identity.worldDataFiles]) {
     const expected = gitObjectHash(repo, identity.port_commit, path);
     const actual = sha256File(join(packageDir, 'runtime', ...path.split('/')));
     require_(expected === actual, `Runtime data differs from port_commit: ${path}`);
@@ -612,6 +619,7 @@ export function validateArtifact({packageDir, repoRoot = REPO_ROOT, manifest = n
     identity_data_files: identity.identityDataFiles.length,
     horde_data_files: identity.hordeDataFiles.length,
     campaign_data_files: identity.campaignDataFiles.length,
+    world_data_files: identity.worldDataFiles.length,
     ws_files: wsFiles,
   };
 }

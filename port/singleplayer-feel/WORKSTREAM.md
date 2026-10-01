@@ -2,6 +2,22 @@
 
 ## Current integration status
 
+Runtime/package anchor: `091b1333`. Linux export succeeded; the first extracted
+check stopped before launching because the artifact validator omitted
+`worldDataFiles` from inventory, committed discovery and Git-byte checks. That
+external verifier now binds all seven world files; its 43 tests pass, including
+forged inventory bytes and an omitted declared/discovered world. The unchanged
+Linux archive then passed all 23 base launch/resource cases and 39 expansion
+pairs. Sports stopped on the external probe reporting nonexistent `race.kind`
+instead of the already-validated source `race.phase`; that field is corrected.
+The complete 44-case expansion helper is rerunning on the same extracted archive.
+These are verification-tool repairs, not modifications to packaged game bytes.
+
+Both platforms will use runtime `091b1333`; a detached packaging worktree at
+`/home/mojo/.tmp-on-disk/cocs-package-091b1333` preserves that anchor while parent
+commits external verifier fixes for Windows CI. Linux build state:
+`/home/mojo/.tmp-on-disk/cocs-feel-expansion-linux-091b1333/`.
+
 The integrated canonical run executed **318/318 gates: 311 passed, seven failed**.
 Five synthetic launcher ownership suites inherited the caller's relative
 `COCS_SOURCE_DERIVATIVE` into their temporary stub checkouts; those fixtures now
