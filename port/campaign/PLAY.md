@@ -6,6 +6,10 @@ archive signal from the forest relay to the Crown Array. Each chapter targets
 
 ## Start
 
+[Download the October 1 campaign playtest (Windows / Linux)](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-playtest-2026-10-01).
+Build `614e11ad`; see release notes and `playtest-acceptance.json` for recorded
+verification and known intermittent automation/startup failures.
+
 - **Windows package:** extract the whole ZIP, then run **`Campaign.cmd`**.
 - **Either platform:** open **The Quiet Relay** from Home to choose a chapter
   and difficulty.

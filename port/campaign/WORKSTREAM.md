@@ -752,3 +752,27 @@ second Blender slot and waits for Godot; Horde continues code/static work until
 explicit permission. These changes target a later build, preserving this campaign
 playtest identity. Parent must relay the shared map contract once the urban lane
 delivers it, and review genuine mode-specific gameplay/collision/network coverage.
+
+## Campaign playtest published
+
+Public prerelease:
+https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-playtest-2026-10-01
+
+- Windows: `cocs-native-windows.zip`, 109,471,360 bytes, SHA-256
+  `65e8e7ba1503c289f1e86e56ab6342a9451832034834072b6d09e70d3bfbb45d`.
+- Linux: `cocs-native-linux.tar.gz`, 69,312,028 bytes, SHA-256
+  `98a760df0e3cb928eeeb98308425d0695fe41e56676a5ffae4e6715aa4f4bc65`.
+- Both packages remain exact runtime identity `614e11ad`; later documentation
+  commits do not imply rebuilt binaries. Checksums, manifests, acceptance JSON,
+  platform smoke reports and four actual release-PCK gameplay fixtures accompany
+  the downloads.
+
+Windows run `36819034670` attempt 1 passed fourteen cases (including the first
+three chapters) then disconnected during Crown startup. Attempt 2 passed all
+23 cases with the unchanged archive. Both results are preserved under the export
+evidence root; the initial failure's cause is unconfirmed and disclosed publicly.
+Linux passed 23 cases and all eight release-PCK graphical map/profile captures.
+Full source suite remains accurately reported as 305/306, with the intermittent
+Horde input fixture failure retained. Human campaign timing/balance and real-GPU
+performance remain for the requested owner playtest. The parallel multiplayer/
+robot-Horde expansion continues separately with the previously assigned slots.
