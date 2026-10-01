@@ -119,7 +119,7 @@ test('Crown guardian deploys locally with full body clearance on five fixed seed
     const match=make('crown-array',{checkpoint:3,random:rng(seed)});
     at(match,anchor);assert.doesNotThrow(()=>tick(match),`normal deployment tick seed ${seed}`);
     const active=match.actors.filter(a=>a.isNpc&&a.health>0),guardian=active.find(a=>a.npcModel==='warden');
-    assert.ok(guardian);assert.equal(active.length,8);assert.ok(active.length<=MAX_ACTIVE_ENEMIES);
+    assert.ok(guardian);assert.equal(active.length,5);assert.ok(active.length<=MAX_ACTIVE_ENEMIES);
     assert.ok(match.actors.every((actor,index)=>actor.id===index));
     for(const actor of active) {
       assert.ok(Math.hypot(actor.x-anchor.x,actor.z-anchor.z)<=24);
@@ -144,7 +144,7 @@ test('source artillery telegraphs a fixed point and resolves real damage',()=>{
   updateEnemyRoles(match,match.modeState,1/60);
   assert.ok(mortar.artilleryMark);assert.ok(match.events.some(e=>e.type==='enemy-telegraph'&&e.kind==='artillery'));
   const health=player.health;
-  updateEnemyRoles(match,match.modeState,1.3);
+  updateEnemyRoles(match,match.modeState,mortar.npcArtillery.telegraph+.1);
   assert.ok(player.health<health);assert.ok(match.events.some(e=>e.type==='enemy-artillery'&&e.hit));
 });
 test('restoration requires an interaction pulse, pauses outside, then finishes on natural ticks',()=>{

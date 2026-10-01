@@ -1,29 +1,29 @@
 const encounter = (title, mechanic, roster, text, seconds = 0) => ({title, mechanic, roster, text, seconds});
 export const MISSIONS = Object.freeze({
   'rootfall-verge': {title:'Rootfall Verge', brief:'Follow the surviving archive signal through the fallen forest relay.', encounters:[
-    encounter('Clear the fallen relay', 'clear', {scrapper:5}, 'ECHO: Maintenance signature accepted. Those cutters cannot distinguish you from the quarantine.'),
+    encounter('Clear the fallen relay', 'clear', {scrapper:3}, 'ECHO: Maintenance signature accepted. Those cutters cannot distinguish you from the quarantine.'),
     encounter('Recover the archive fragment', 'interact', {scrapper:4, skirmisher:2}, 'ECHO: Keep moving around the runners. Clear the terminal, then press Interact to copy my archive.'),
-    encounter('Restore the forest repeater', 'restore', {scrapper:5, skirmisher:3}, 'ECHO: Press Interact once, then stay close to reconnect the repeater. You can break off safely.', 6),
+    encounter('Restore the forest repeater', 'restore', {scrapper:3, skirmisher:2}, 'ECHO: Start the repeater while you fight. Break away to dodge; the connection remembers your progress.', 6),
     encounter('Break the shield formation', 'clear', {sentinel:1, skirmisher:4}, 'ECHO: That tripod broadcasts a shield pulse. Separate its escorts before the pulse lands.'),
-    encounter('Secure the canyon access key', 'interact', {sentinel:2, scrapper:5}, 'ECHO: The archive is a rescue request. Take the access key to the riverworks.')], outro:'Archive recovered. The signal leads across the canyon.'},
+    encounter('Secure the canyon access key', 'interact', {sentinel:1, scrapper:3}, 'ECHO: Rush the console to cut the shield network, or clear its guards first. Then take the rescue archive to the riverworks.')], outro:'Archive recovered. The signal leads across the canyon.'},
   'siltwake-crossing': {title:'Siltwake Crossing', brief:'Restore the riverworks relays and open the canyon crossing.', encounters:[
     encounter('Take the river intake', 'clear', {skirmisher:5, sentinel:1}, 'ECHO: The bridge relays still have power. We need a clear approach.'),
-    encounter('Restart the west pump', 'restore', {scrapper:5, sentinel:2}, 'ECHO: Clear the guards, press Interact once beside the pump, then stay nearby.', 7),
+    encounter('Restart the west pump', 'restore', {scrapper:3, sentinel:1}, 'ECHO: A small maintenance patrol. Start the pump and use its platform to catch your breath.', 5),
     encounter('Silence the mortar overlook', 'clear', {mortar:2, skirmisher:4}, 'ECHO: Artillery marks your last position before firing. Leave the marked circle; cover alone will not save you.'),
-    encounter('Hold the bridge synchronizer', 'hold', {mortar:2, scrapper:6}, 'ECHO: Stay in the relay circle to synchronize. Step out to dodge shells; accumulated progress is retained.', 12),
+    encounter('Hold the bridge synchronizer', 'hold', {mortar:1, scrapper:5}, 'ECHO: Stay in the relay circle to synchronize. Step out to dodge shells; accumulated progress is retained.', 12),
     encounter('Authorize the crossing', 'interact', {mortar:2, sentinel:2, skirmisher:4}, 'ECHO: The bridge is stable. Clear its security lock and press Interact. I remember people waiting on the other side.')], outro:'Crossing restored. Climb toward the uplink works.'},
   'emberline-ascent': {title:'Emberline Ascent', brief:'Climb the basalt works and isolate the corrupted uplink.', encounters:[
     encounter('Clear the cooling terrace', 'clear', {mortar:2, skirmisher:5}, 'ECHO: The uplink repeats a quarantine order that should have expired years ago.'),
     encounter('Disable the armoured lock', 'interact', {bulwark:1, scrapper:5}, 'ECHO: The slab unit absorbs frontal fire. Use the side route and strike its back.'),
-    encounter('Restore the maintenance bus', 'restore', {bulwark:2, skirmisher:4}, 'ECHO: The maintenance bus carries the repair key. Clear the guards, press Interact once at the console, then stay nearby.', 8),
+    encounter('Restore the maintenance bus', 'restore', {skirmisher:3}, 'ECHO: The repair bus is lightly guarded. Start the transfer, recover, then choose your weapons for the isolator.', 5),
     encounter('Hold the uplink isolator', 'hold', {bulwark:2, mortar:2, scrapper:4}, 'ECHO: Hold the isolation circle. Keep circling the armour and move when artillery marks the ground.', 14),
-    encounter('Release the Crown service lift', 'interact', {bulwark:2, sentinel:2, skirmisher:4}, 'ECHO: The command was never a weapon. It was a plea to stop the quarantine. Take the repair key to the Crown.')], outro:'Uplink isolated. The Crown Array can now receive the key.'},
+    encounter('Release the Crown service lift', 'interact', {bulwark:1, sentinel:1, skirmisher:3}, 'ECHO: Bypass the lift console to drop their guards. The command was never a weapon. Take the repair key to the Crown.')], outro:'Uplink isolated. The Crown Array can now receive the key.'},
   'crown-array': {title:'Crown Array', brief:'Reach the Crown transmitter and return the corridor to quiet.', encounters:[
     encounter('Secure the highland approach', 'clear', {bulwark:2, skirmisher:5}, 'ECHO: This is the last relay. Everything we restored leads here.'),
-    encounter('Restore the crown feeder', 'restore', {mortar:2, sentinel:2, scrapper:4}, 'ECHO: Reconnect the feeder. The guardian is listening.', 8),
+    encounter('Restore the crown feeder', 'restore', {sentinel:1, scrapper:3}, 'ECHO: Reconnect the feeder. A quiet pocket before the cradle; the guardian is listening.', 5),
     encounter('Hold the archive cradle', 'hold', {bulwark:2, mortar:2, skirmisher:4}, 'ECHO: Keep the archive inside the receiver circle while its checksum settles.', 15),
-    encounter('Defeat the quarantine guardian', 'guardian', {warden:1, sentinel:2, scrapper:5}, 'ECHO: Checkpoint secured. The guardian marks its ground slam before impact. Keep clear and break its escort formation.'),
-    encounter('Transmit the repair key', 'restore', {bulwark:2, skirmisher:4}, 'ECHO: One final security lock. Clear it, press Interact once, then stay nearby to transmit. Let them hear us.', 8)], outro:'The repair key is received. Quarantine lifted. Along the corridor, machines lower their weapons. ECHO: Thank you. We can be quiet now.'},
+    encounter('Defeat the quarantine guardian', 'guardian', {warden:1, sentinel:1, scrapper:3}, 'ECHO: Dodge its marked slam, then strike while its core recovers. Break the shield escort first.'),
+    encounter('Transmit the repair key', 'restore', {skirmisher:2}, 'ECHO: Only two runners remain. Start the final transmission. Let them hear us.', 5)], outro:'The repair key is received. Quarantine lifted. Along the corridor, machines lower their weapons. ECHO: Thank you. We can be quiet now.'},
 });
 export const MISSION_IDS = Object.freeze(Object.keys(MISSIONS));
 export function missionForCampaign(id) {
