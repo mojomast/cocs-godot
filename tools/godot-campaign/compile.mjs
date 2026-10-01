@@ -2,6 +2,7 @@ import {mkdirSync, writeFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {nativeArenaGeometryHash} from '../../port/native-arenas/schema.mjs';
 import {CAMPAIGN_MAP_IDS, parseCampaignMap} from '../../port/native-campaign/maps.mjs';
+import {INTERLUDE_DEFINITIONS} from '../../port/native-campaign/interlude-definitions.mjs';
 
 export const CELL = 4;
 const round = n => +n.toFixed(5);
@@ -44,6 +45,12 @@ export function compileCampaign(id) {
   const sites=siteSegments.map(i=>at(segments[i].start+segments[i].len*.5));
   const frames=siteSegments.map(i=>{const s=segments[i];return {dx:(s.b[0]-s.a[0])/s.len,dz:(s.b[1]-s.a[1])/s.len};});
   const local=(i,u,v)=>{const [x,z]=sites[i],{dx,dz}=frames[i];return [x+u*dx-v*dz,z+u*dz+v*dx];};
+  const interludes=INTERLUDE_DEFINITIONS[id].map(def=>{
+    const seg=segments[def.segment],s=seg.start+seg.len*.5,[x,z]=at(s),dx=(seg.b[0]-seg.a[0])/seg.len,dz=(seg.b[1]-seg.a[1])/seg.len;
+    // Put the workshop on the inward shoulder, keeping ample bounds clearance.
+    const side=(-dz*x+dx*z)>0?-1:1;
+    return {...def,s,x,z,dx,dz,side,local:(u,v)=>[x+u*dx-v*dz*side,z+u*dz+v*dx*side]};
+  });
   const width=s=>index===0?10+2.5*Math.sin(s*.031)**2:index===1?9+2*Math.sin(s*.017)**2:index===2?10:10+1.5*Math.sin(s*.019)**2;
   const floor=s=>{
     const t=s/length;
@@ -116,6 +123,15 @@ export function compileCampaign(id) {
     // The river drops below its bank roads. At the two actual crossings the
     // single support sheet narrows into a causeway instead of a second floor.
     if(index===1){const river=Math.abs(x-12*Math.sin(z*.023));const carve=(1-smooth((river-7)/10))*smooth((hit.d-8)/7)*smooth((clearing-26)/7);y=y*(1-carve)+(c.base-9+.012*z)*carve;}
+    // Authored workshop shoulders: broad walk-in benches, not jump puzzles.
+    // Preserve the road center and blend back into geology outside the space.
+    for(const beat of interludes){
+      const u=(x-beat.x)*beat.dx+(z-beat.z)*beat.dz,v=(-(x-beat.x)*beat.dz+(z-beat.z)*beat.dx)*beat.side;
+      const falloff=index===3?10:4;
+      const mix=(1-smooth((Math.abs(u)-19)/falloff))*(1-smooth((v-19)/falloff))*smooth(v/5);
+      const target=floor(beat.s+u)+detail;
+      y=y*(1-mix)+target*mix;
+    }
     for(const [p,target]of [[corners[0],c.base],[corners.at(-1),c.base+c.rise]]){const blend=smooth((Math.hypot(x-p[0],z-p[1])-8)/8);y=y*blend+target*(1-blend);}
     return round(y);
   };
@@ -167,6 +183,30 @@ export function compileCampaign(id) {
   // Source spatial.mjs treats every block as [0,h], regardless of baseY.
   // Keep these grounded and render exactly that volume; no overhead blocks.
   const box=(bid,x,z,w,d,rise,material='stone')=>arena.blocks.push({id:bid,x:round(x),z:round(z),w,d,baseY:0,h:round(support(x,z)+rise),material});
+  for(const beat of interludes){
+    const a=beat.local(...beat.a),b=beat.local(...beat.b);
+    route(`interlude-${beat.id}-a`,[beat.local(-20,0),beat.local(-15,4),a]);
+    route(`interlude-${beat.id}-b`,[beat.local(20,0),beat.local(15,4),b]);
+    route(`interlude-${beat.id}-link`,[a,beat.local(0,15),b]);
+    // Distinct solid architecture frames each small discovery space. These
+    // grounded blocks are shared source/native colliders and enter the hash.
+    const wall=(name,u,v,w,d,h,mat='metal')=>box(`interlude-${beat.id}-${name}`,...beat.local(u,v),w,d,h,mat);
+    if(index===0){
+      for(const [j,u]of [-14,0,14].entries())wall(`nursery-rib-${j}`,u,20,2.5,3,4+j*2,'stone');
+      wall('machine-base',0,20,8,3,1.3,'stone');
+      prop('fallen-relay','metal',...beat.local(0,25),22,3,3,support(...beat.local(0,25))+2);
+    }else if(index===1){
+      wall('wheel-house',0,23,8,5,9);wall('dry-berth-left',-15,18,3,5,3,'stone');wall('dry-berth-right',15,18,3,5,3,'stone');
+      prop('pipe','metal',...beat.local(-6,22),3,12,3,support(...beat.local(-6,22))+3);
+    }else if(index===2){
+      for(const [j,u]of [-14,-5,5,14].entries())wall(`cooling-fin-${j}`,u,22,3,5,5+j*3);
+      wall('machine-base',0,20,7,3,2.4);
+      prop('pipe','metal',...beat.local(0,22),3,16,3,support(...beat.local(0,22))+4);
+    }else{
+      for(const [j,u]of [-16,-8,0,8,16].entries())wall(`choir-pier-${j}`,u,22+Math.sin(j*Math.PI/4)*4,2.5,3,5+Math.sin(j*Math.PI/4)*9,'stone');
+      prop('dish','metal',...beat.local(0,25),16,8,16,support(...beat.local(0,25))+14);
+    }
+  }
   for(let i=0;i<5;i++) {
     const [x,z]=sites[i],a=point(sites[i]);anchors[`encounter-${i+1}`]={...a,radius:12};
     const loop=route(`encounter-${i+1}-supply-loop`,[[-22,0],[-16,14],[16,14],[22,0],[16,-14],[-16,-14],[-22,0]].map(p=>local(i,...p)));
@@ -189,7 +229,7 @@ export function compileCampaign(id) {
   // relay kit. Presentation ornaments sit on/behind solid landmark footprints.
   if(index===1) {
     for(let z=-120;z<120;z+=12)prop('water','water',12*Math.sin(z*.023),z,15,.1,15,c.base-6);
-    for(const si of [6,16]){const seg=segments[si],mid=at(seg.start+seg.len*.5),dx=(seg.b[0]-seg.a[0])/seg.len,dz=(seg.b[1]-seg.a[1])/seg.len;for(const side of [-1,1]){const x=mid[0]-dz*side*12,z=mid[1]+dx*side*12;box(`bridgeworks-${si}-${side}`,x,z,3,3,15,'stone');prop('beacon','light',x,z,.6,6,.6,support(x,z)+15);}}
+    for(const si of [6,16]){const seg=segments[si],mid=at(seg.start+seg.len*.5),dx=(seg.b[0]-seg.a[0])/seg.len,dz=(seg.b[1]-seg.a[1])/seg.len;for(const side of [-1,1]){const offset=si===6?28:12,x=mid[0]-dz*side*offset,z=mid[1]+dx*side*offset;box(`bridgeworks-${si}-${side}`,x,z,3,3,15,'stone');prop('beacon','light',x,z,.6,6,.6,support(x,z)+15);}}
   }
   if(index===2) {
     // Two unequal bedrock groups, rather than four identical spikes at every
@@ -217,7 +257,7 @@ export function compileCampaign(id) {
   for(let n=0;n<1100;n++) {
     const x=(random()-.5)*(c.w-16),z=(random()-.5)*(c.h-16),hit=nearest(x,z);
     const shoulder=(index===0||index===3)&&hit.d>=9&&hit.d<12;
-    if((hit.d<20&&!shoulder)||sites.some(p=>Math.hypot(x-p[0],z-p[1])<31))continue;
+    if((hit.d<20&&!shoulder)||sites.some(p=>Math.hypot(x-p[0],z-p[1])<31)||interludes.some(b=>Math.hypot(x-b.x,z-b.z)<34))continue;
     const wooded=index===0?hit.s/length<.80:index===3?random()<.64:false;
     if(wooded){const sy=7+random()*7;prop('tree','foliage',x,z,5+random()*3,sy,5+random()*3);if(shoulder)box(`shoulder-trunk-${n}`,x,z,.7,.7,sy*.72,'rock');}
     else {

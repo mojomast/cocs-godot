@@ -5,6 +5,7 @@ import {floorAt as sourceFloorAt,walkEdge as sourceWalkEdge,navigation as source
 import {floorAt as generatedFloorAt,walkEdge as generatedWalkEdge} from './core.generated.mjs';
 import {terrainTriangles} from '../../game/terrain.mjs';
 import {storyPlacement} from './story.mjs';
+import {INTERLUDE_DEFINITIONS} from './interlude-definitions.mjs';
 
 function terrain(y=2) {
   const vertices=[],triangles=[];
@@ -18,8 +19,9 @@ function terrain(y=2) {
 function envelope() {
   const point={x:-6,y:2,z:0,radius:3};
   return {id:'rootfall-verge',name:'Cache bridge fixture',geometryHash:'cache-fixture',
+    routes:INTERLUDE_DEFINITIONS['rootfall-verge'].flatMap(b=>['a','b','link'].map(s=>({id:`interlude-${b.id}-${s}`,points:[{x:-2,y:2,z:0},{x:2,y:2,z:0}]}))),
     arena:{id:'rootfall-verge',name:'Cache bridge fixture',nextGen:true,raised:false,
-      bounds:{minX:-12,maxX:12,minZ:-12,maxZ:12},blocks:[],pickups:[],spawns:[[-6,0],[6,0]],
+      bounds:{minX:-12,maxX:12,minZ:-12,maxZ:12},blocks:INTERLUDE_DEFINITIONS['rootfall-verge'].map(b=>({id:`interlude-${b.id}-machine-base`,x:10,z:10,w:1,d:1,h:1,baseY:0})),pickups:[],spawns:[[-6,0],[6,0]],
       navNodes:[],terrain:terrain()},
     campaign:{index:0,nextMapId:'siltwake-crossing',criticalPath:Array.from({length:19},(_,i)=>({x:i-9,y:2,z:0})),
       anchors:{start:{...point},exit:{...point},

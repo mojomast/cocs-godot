@@ -39,6 +39,9 @@ func apply(value: Variant) -> bool:
 	if value.has("story") and not valid_story(value.story):
 		error = "Invalid campaign story"
 		return false
+	if value.has("interludes") and not valid_interludes(value.interludes):
+		error = "Invalid campaign workshops"
+		return false
 	if not state.is_empty() and (state.get("mapId") != value.mapId or state.get("checkpoint") != value.get("checkpoint")):
 		checkpoint_notice = "Checkpoint secured · " + str(value.get("checkpoint", ""))
 	state = value.duplicate(true)
@@ -62,6 +65,21 @@ static func valid_story(value: Variant) -> bool:
 			var number: Variant = entry.get(field)
 			if not (number is int or number is float) or not is_finite(float(number)): return false
 		if entry.kind == "operator" and (not entry.get("character") is String or str(entry.character).is_empty()): return false
+	return true
+
+static func valid_interludes(value: Variant) -> bool:
+	if not value is Dictionary or value.get("version") != 1 or not value.get("beats") is Array or value.beats.size() != 2: return false
+	for beat: Variant in value.beats:
+		if not beat is Dictionary or not beat.get("id") is String or not beat.get("title") is String or beat.get("family") not in ["link", "align", "choice"] or not beat.get("theme") is String or not beat.get("completed") is bool or beat.get("stage") not in [0, 1, 2]: return false
+		if not beat.get("actions") is Array or beat.actions.size() != 2 or not beat.actions[0] is String or not beat.actions[1] is String: return false
+		if not beat.get("cable") is Array or beat.cable.size() < 2 or beat.cable.size() > 64: return false
+		for p: Variant in [beat.get("a"), beat.get("b"), beat.get("machine"), beat.get("entry")] + beat.cable:
+			if not p is Dictionary: return false
+			for axis: String in ["x", "y", "z"]:
+				if not (p.get(axis) is float or p.get(axis) is int) or not is_finite(float(p[axis])): return false
+		if beat.get("choice") != null and beat.choice not in ["a", "b"]: return false
+	if value.get("prompt") != null and (not value.prompt is Dictionary or not value.prompt.get("text") is String): return false
+	if value.get("feedback") != null and (not value.feedback is Dictionary or not value.feedback.get("text") is String or not value.feedback.get("speaker") is String): return false
 	return true
 
 static func valid_count(value: Variant) -> bool:

@@ -51,6 +51,7 @@ var robot_instances := 0
 var ground_tells := Telegraphs.new()
 var robot_voices := preload("res://campaign/robot_voices.gd").new()
 var story_director := StoryDirector.new()
+var interlude_director := preload("res://campaign/interlude_director.gd").new()
 var story_widgets: Control
 var solo_cheats: CanvasLayer
 
@@ -89,7 +90,7 @@ func _ready() -> void:
 		item.hide()
 	presentation.actor_visual_factory = create_visual
 	presentation.interpolate_remote = true
-	for child: Node in [pickups, presentation, combat, client, ground_tells, robot_voices, story_director]: add_child(child)
+	for child: Node in [pickups, presentation, combat, client, ground_tells, robot_voices, story_director, interlude_director]: add_child(child)
 	var voice_settings := SettingsAccess.service()
 	if voice_settings != null:
 		voice_settings.audio_preferences_changed.connect(robot_voices.apply_settings)
@@ -178,6 +179,7 @@ func load_map(id: String) -> bool:
 	current_id = id
 	ground_tells.bind_terrain(world)
 	story_director.clear_round()
+	interlude_director.clear_round()
 	if phase == -2: position_briefing_camera()
 	return true
 
@@ -247,7 +249,8 @@ func on_snapshot(frame: Dictionary) -> void:
 	smoke = checking
 	ground_tells.apply_state(frame.state)
 	story_director.apply(campaign.state.get("story", {}), current_id)
-	story_widgets.observe(campaign.state.get("story", {}), campaign.playing() and not action_pending and application_focused and phase == 3)
+	interlude_director.apply(campaign.state.get("interludes", {}), current_id)
+	story_widgets.observe(campaign.state.get("story", {}), campaign.playing() and not action_pending and application_focused and phase == 3, campaign.state.get("interludes", {}))
 	robot_voices.set_active(campaign.playing() and vehicle_shots_allowed() and not action_pending)
 	robot_voices.apply_state(frame.state, camera.global_position)
 	campaign_hud.observe_boss(frame.state)

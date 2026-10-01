@@ -7,6 +7,7 @@ import {loadCampaignMap} from './maps.mjs';
 import {missionForCampaign} from './missions.mjs';
 import {deployEncounter} from './enemies.mjs';
 import {createCampaignStory} from './story.mjs';
+import {createCampaignInterludes} from './interludes.mjs';
 
 const primedSourceSurfaces=new WeakMap();
 /** Source bots import the original core's private floor-query cache. Bake that
@@ -26,7 +27,7 @@ const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const place = (actor, point) => Object.assign(actor, {x:point.x,y:point.y,z:point.z,
   vx:0,vy:0,vz:0,grounded:true,lastValid:{x:point.x,y:point.y,z:point.z}});
 export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal', random=Math.random,
-  mapData, checkpoint=0, elapsed=0, totalElapsed=0, kills=0, checkpointPoint, storyCarry} = {}) {
+  mapData, checkpoint=0, elapsed=0, totalElapsed=0, kills=0, checkpointPoint, storyCarry, interludeCarry} = {}) {
   const mission = missionForCampaign(mapId);
   if (!['easy','normal','hard'].includes(difficulty)) throw new TypeError('Unsupported difficulty');
   if (typeof random !== 'function') throw new TypeError('RNG must be a function');
@@ -35,6 +36,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
   if (data.id !== mapId) throw new TypeError('Campaign map identity mismatch');
   const anchors = data.campaign.anchors;
   const story=createCampaignStory(data,storyCarry);
+  const interludes=createCampaignInterludes(data,interludeCarry);
   let storySnapshot;
   // Closure state is ready before super() invokes the virtual initializer.
   const state = {kind:'campaign', playerId:0, phase:'playing', stepIndex:checkpoint,
@@ -120,6 +122,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
       storySnapshot=story.update({stepIndex:state.stepIndex,totalElapsed:state.totalElapsed,
         encounter:encounterForStory,deployed:state.deployed,
         enemiesRemaining:remaining(this),marker:anchor},player,controls.interact===true,this.arena);
+      interludes.update(this,state,controls,near||!!storySnapshot.prompt);
       if (state.stepIndex===5) {
         if (near) {state.transmission={speaker:'ECHO',text:mission.outro}; this.objectiveState.winner=0; finish(this,'level-complete');}
         return;
@@ -176,7 +179,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         marker:currentAnchor()},player,controls.interact===true,this.arena);
     }
     campaignCheckpoint() {return {mapId,difficulty,checkpoint:state.checkpoint,checkpointPoint:{...state.checkpointPoint},
-      elapsed:state.elapsed,totalElapsed:state.totalElapsed,kills:state.bankedKills,storyCarry:story.continuity()};}
+      elapsed:state.elapsed,totalElapsed:state.totalElapsed,kills:state.bankedKills,storyCarry:story.continuity(),interludeCarry:interludes.continuity()};}
     campaignStoryContinuity() {return story.continuity();}
     completeCampaign() {if (state.phase==='level-complete' && data.campaign.nextMapId===null) finish(this,'campaign-complete');}
     snapshot() {
@@ -199,6 +202,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         phase:state.phase,checkpoint:state.checkpoint,elapsed:state.elapsed,totalElapsed:state.totalElapsed,
         kills:state.bankedKills+state.enemies.filter(id=>this.actors[id]?.health<=0).length,enemiesRemaining:remaining(this),
          holdProgress:encounter?.seconds?state.holdProgress/encounter.seconds:0,transmission:{...state.transmission},nextMapId:data.campaign.nextMapId,
+         interludes:interludes.snapshot(state.phase==='playing'),
          story:state.phase==='dead'?{...(storySnapshot??=story.update({stepIndex:state.stepIndex,totalElapsed:state.totalElapsed,
            encounter,deployed:state.deployed,enemiesRemaining:remaining(this),marker},this.actors[0],false,this.arena)),prompt:null}:
            storySnapshot??=story.update({stepIndex:state.stepIndex,totalElapsed:state.totalElapsed,

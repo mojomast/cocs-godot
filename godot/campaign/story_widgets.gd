@@ -4,6 +4,7 @@ const Settings = preload("res://ui/settings_access.gd")
 var caption := Label.new()
 var prompt := Label.new()
 var story: Dictionary = {}
+var interludes: Dictionary = {}
 var allowed := false
 var session: Node
 
@@ -22,8 +23,9 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(layout)
 	layout()
 
-func observe(value: Dictionary, can_show: bool) -> void:
+func observe(value: Dictionary, can_show: bool, activities: Dictionary = {}) -> void:
 	story = value
+	interludes = activities
 	allowed = can_show
 	refresh()
 
@@ -32,12 +34,14 @@ func refresh() -> void:
 	if is_instance_valid(session):
 		show_ = show_ and session.get("application_focused") and session.get("phase") == 3 and not session.get("action_pending") and str(session.get("startup_error")).is_empty() and session.get("campaign").playing()
 	var line: Variant = story.get("caption")
+	if interludes.get("feedback") is Dictionary: line = interludes.feedback
 	caption.text = "%s: %s" % [line.get("speaker", ""), line.get("text", "")] if line is Dictionary else ""
 	caption.visible = show_ and not caption.text.is_empty()
 	var pet: Variant = story.get("prompt")
 	# The authority chooses eligibility. The player's actual Interact binding is
 	# owned by shared controls (currently E), not by this decorative overlay.
 	prompt.text = "[E] Pet Patch" if pet is Dictionary and pet.get("action") == "pet" else ""
+	if prompt.text.is_empty() and interludes.get("prompt") is Dictionary: prompt.text = str(interludes.prompt.text)
 	prompt.visible = show_ and not prompt.text.is_empty() and (not is_instance_valid(session) or Input.mouse_mode == Input.MOUSE_MODE_CAPTURED)
 	layout()
 
