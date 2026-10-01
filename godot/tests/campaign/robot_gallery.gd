@@ -8,6 +8,8 @@ var capture_path: String = ""
 var frames: int = 0
 var fixed_pose: int = -1
 var gallery_lod: int = 0
+var focus: int = -1
+var frames_dir: String = ""
 
 func _initialize() -> void:
 	call_deferred("build")
@@ -17,6 +19,8 @@ func build() -> void:
 		if arg.begins_with("--capture="): capture_path = arg.trim_prefix("--capture=")
 		if arg.begins_with("--pose="): fixed_pose = int(arg.trim_prefix("--pose="))
 		if arg.begins_with("--lod="): gallery_lod = clampi(int(arg.trim_prefix("--lod=")), 0, 2)
+		if arg.begins_with("--focus="): focus = clampi(int(arg.trim_prefix("--focus=")), 0, 5)
+		if arg.begins_with("--frames-dir="): frames_dir = arg.trim_prefix("--frames-dir=")
 	root.size = Vector2i(1600, 1000)
 	var scene := Node3D.new()
 	root.add_child(scene)
@@ -46,10 +50,15 @@ func build() -> void:
 	camera.look_at(Vector3(0, 0.5, 0))
 	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
 	camera.size = 13.5
+	if focus >= 0:
+		camera.position = Vector3(3.2, 2.8, 5.6)
+		camera.look_at(Vector3(0, 0.8, 0))
+		camera.size = 3.7
 	camera.current = true
 	for i: int in range(6):
-		var x: float = (i % 3 - 1) * 4.5
-		var z: float = -2.8 if i < 3 else 2.8
+		if focus >= 0 and i != focus: continue
+		var x: float = 0.0 if focus >= 0 else (i % 3 - 1) * 4.5
+		var z: float = 0.0 if focus >= 0 else (-2.8 if i < 3 else 2.8)
 		var pedestal := MeshInstance3D.new()
 		var mesh := CylinderMesh.new()
 		mesh.top_radius = 1.85; mesh.bottom_radius = 1.95; mesh.height = 0.18; mesh.radial_segments = 12
@@ -71,7 +80,7 @@ func build() -> void:
 		robot.set_lod(gallery_lod)
 		var label := Label3D.new()
 		label.text = "%02d / %s" % [i + 1, str(Robot.IDS[i]).to_upper()]
-		label.position = Vector3(x, 0.08, z + 1.8)
+		label.position = Vector3(x, 0.08, z + (1.4 if focus >= 0 else 1.8))
 		label.rotation_degrees.x = -65
 		label.font_size = 46; label.pixel_size = 0.008
 		label.modulate = Color("e3c49a")
@@ -89,7 +98,7 @@ func build() -> void:
 
 func _process(dt: float) -> bool:
 	if robots.is_empty(): return false
-	var step: float = dt if capture_path.is_empty() else 1.0 / 60.0
+	var step: float = dt if capture_path.is_empty() and frames_dir.is_empty() else 1.0 / 60.0
 	time += step
 	frames += 1
 	var next: int = fixed_pose if fixed_pose >= 0 else int(time / 2.0) % 5
@@ -109,9 +118,19 @@ func _process(dt: float) -> bool:
 			if stage == 2: actor.shots = int(actor.get("shots", 0)) + 1
 			robot.apply_actor(actor)
 	for robot: Node3D in robots: robot.advance(step)
+	if not frames_dir.is_empty() and frames % 5 == 0 and frames <= 600:
+		var frame_path: String = "%s/frame-%03d.png" % [frames_dir, frames / 5 - 1]
+		capture_frame(frame_path, frames == 600)
 	if not capture_path.is_empty() and frames == 45:
 		await RenderingServer.frame_post_draw
 		var error: int = root.get_texture().get_image().save_png(capture_path)
 		print("CAMPAIGN_ROBOT_GALLERY capture=", capture_path, " error=", error)
 		quit(error)
 	return false
+
+func capture_frame(path: String, last: bool) -> void:
+	await RenderingServer.frame_post_draw
+	root.get_texture().get_image().save_png(path)
+	if last:
+		print("CAMPAIGN_ROBOT_GALLERY clip_frames=120 path=", frames_dir)
+		quit()

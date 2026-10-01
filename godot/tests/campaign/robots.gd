@@ -45,6 +45,24 @@ func run() -> void:
 		root.add_child(robot)
 		var actor := {"id":9, "npcModel":id, "health":100, "shots":0, "vx":3.0, "vz":0.0, "npcProfile":{"scale":1.6}}
 		robot.configure(actor)
+		var authored: Dictionary = Robot.art_meshes.get(id, {})
+		check(authored.size() >= 20, id + " Blender-authored assemblies imported")
+		var chassis: MeshInstance3D = robot.rigs[0].body.get_node("ArmorAndVents")
+		check(chassis.mesh == authored.get("L0_Chassis"), id + " rendered chassis uses Blender mesh")
+		for level: int in range(3):
+			var rig: Dictionary = robot.rigs[level]
+			var prefix: String = "L%d_" % level
+			check((rig.turret.get_node("SensorHousing") as MeshInstance3D).mesh == authored.get(prefix + "Turret"), id + " sensor retains turret pivot at LOD" + str(level))
+			check((rig.turret.get_node("Optics") as MeshInstance3D).mesh == authored.get(prefix + "Optics"), id + " imported optic at LOD" + str(level))
+			check((rig.gun.get_node("Weapon") as MeshInstance3D).mesh == authored.get(prefix + "Weapon"), id + " weapon retains recoil pivot at LOD" + str(level))
+			for leg: int in range(rig.legs.size()):
+				var upper: MeshInstance3D = rig.legs[leg].get_node("CombinedLeg" if level == 2 else "UpperLink")
+				check(upper.mesh == authored.get(prefix + "Hip" + str(leg)), id + " authored articulated hip")
+				if level < 2:
+					check((rig.knees[leg].get_node("ShinAndFoot") as MeshInstance3D).mesh == authored.get(prefix + "Shin" + str(leg)), id + " authored knee/sole")
+			if id == "bulwark": check((rig.shield.get_node("SlabShield") as MeshInstance3D).mesh == authored.get(prefix + "Shield"), "bulwark shield arm")
+		var colors: PackedColorArray = chassis.mesh.surface_get_arrays(0)[Mesh.ARRAY_COLOR]
+		check(colors.size() > 0 and colors[0] != colors[colors.size() / 2], id + " Blender vertex-painted armor palette")
 		check(robot.rigs[0].legs.size() == leg_counts[Robot.IDS.find(id)], id + " anatomy")
 		check(is_equal_approx(robot.feet.position.y, -0.9) and is_equal_approx(robot.feet.scale.x, 1.6), "scale around feet")
 		actor.vx = 0.0
@@ -70,7 +88,7 @@ func run() -> void:
 			var cost: Dictionary = robot.visible_cost()
 			var measured: Dictionary = actual_cost(robot)
 			check(cost.draws == measured.draws and cost.triangles == measured.triangles, id + " every visible assembly accounted")
-			check(cost.triangles < previous and cost.draws <= 18, id + " authored LOD budget")
+			check(cost.triangles < previous and cost.draws <= 18 and cost.triangles < [6000, 4000, 3000][level], id + " authored LOD budget")
 			previous = cost.triangles
 			print(id, " LOD", level, " ", cost)
 		robot.set_lod(0)

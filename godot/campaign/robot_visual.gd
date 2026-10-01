@@ -3,6 +3,7 @@ extends Node3D
 const Parts = preload("res://campaign/robot_parts.gd")
 const IDS := ["scrapper", "skirmisher", "sentinel", "mortar", "bulwark", "warden"]
 const COLORS := [Color("b17e46"), Color("719486"), Color("66849d"), Color("98817f"), Color("577c8b"), Color("975d4c")]
+static var art_meshes: Dictionary = {}
 var automatic_animation: bool = true
 var automatic_lod: bool = true
 var model_id: String = ""
@@ -20,6 +21,7 @@ var feet: Node3D
 var armor_material: StandardMaterial3D
 var optic_material: StandardMaterial3D
 var tell_strength: float = 0.0
+var building_level: int = 0
 
 func _init() -> void:
 	armor_material = StandardMaterial3D.new()
@@ -42,6 +44,7 @@ func apply_identity(actor: Dictionary) -> void:
 	for child: Node in get_children(): child.free()
 	bands.clear(); rigs.clear(); batches.clear()
 	model_id = next
+	_load_art(next)
 	feet = Node3D.new()
 	feet.name = "FeetOrigin"
 	feet.position.y = -0.9
@@ -58,10 +61,42 @@ func _joint(parent: Node3D, label: String, pos: Vector3) -> Node3D:
 	parent.add_child(joint)
 	return joint
 
+static func _load_art(id: String) -> void:
+	if art_meshes.has(id): return
+	var meshes: Dictionary = {}
+	var path: String = "res://campaign/art/robots/%s.glb" % id
+	if ResourceLoader.exists(path):
+		var packed: PackedScene = load(path)
+		var scene: Node = packed.instantiate()
+		for node: Node in scene.find_children("*", "MeshInstance3D", true, false):
+			meshes[node.name] = (node as MeshInstance3D).mesh
+		scene.free()
+	art_meshes[id] = meshes
+
+func _art_key(parent: Node3D, label: String) -> String:
+	var assembly: String = parent.name
+	if label == "Optics": assembly = "Optics"
+	elif assembly == "Knee": assembly = "Shin" + parent.get_parent().name.trim_prefix("Hip")
+	elif assembly == "WeaponCradle": assembly = "Weapon"
+	elif assembly == "ShieldArm": assembly = "Shield"
+	return "L%d_%s" % [building_level, assembly]
+
 func _finish(parts: RefCounted, parent: Node3D, label: String, luminous: bool = false) -> void:
-	batches.append(parts.finish(parent, optic_material if luminous else armor_material, label))
+	var instance: MeshInstance3D = parts.finish(parent, optic_material if luminous else armor_material, label)
+	var authored: Dictionary = art_meshes.get(model_id, {})
+	var key: String = _art_key(parent, label)
+	if authored.has(key):
+		instance.mesh = authored[key]
+		var count: int = 0
+		for surface: int in range(instance.mesh.get_surface_count()):
+			var arrays: Array = instance.mesh.surface_get_arrays(surface)
+			var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX] if arrays[Mesh.ARRAY_INDEX] != null else PackedInt32Array()
+			count += (indices.size() if not indices.is_empty() else (arrays[Mesh.ARRAY_VERTEX] as PackedVector3Array).size()) / 3
+		instance.set_meta("triangles", count)
+	batches.append(instance)
 
 func _build(level: int) -> void:
+	building_level = level
 	var band := _joint(feet, "LOD%d" % level, Vector3.ZERO)
 	bands.append(band)
 	var color: Color = COLORS[IDS.find(model_id)]
