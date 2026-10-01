@@ -52,6 +52,14 @@ func _ready() -> void:
    "interior":[Vector3(26,1.8,19),Vector3(18,1,19)],
    "roof":[Vector3(-26,4.8,-4),Vector3(-8,1,-4)],
    "objective":[Vector3(16,12,28),Vector3(0,0,-7)]}}
+ if not positions.has(id):
+  var arena: Dictionary = catalog.recipes[id].arena
+  var bounds: Dictionary = arena.bounds
+  var width := float(bounds.maxX) - float(bounds.minX)
+  var depth := float(bounds.maxZ) - float(bounds.minZ)
+  var center := Vector3((float(bounds.minX)+float(bounds.maxX))/2,0,(float(bounds.minZ)+float(bounds.maxZ))/2)
+  positions[id] = {"overview":[center+Vector3(width*.37,maxf(35,width*.21),depth*.37),center],
+   "ground":[center+Vector3(-width*.23,2.2,depth*.23),center+Vector3(0,1,0)]}
  for key: String in positions[id]:
   camera.position = positions[id][key][0]
   camera.look_at(positions[id][key][1])

@@ -175,6 +175,7 @@ func on_started(frame: Dictionary) -> void:
 	if str(frame.get("geometryHash", "")) != expected_hash:
 		fail("World geometry differs from authority")
 		return
+	if "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_SPORTS_START ",JSON.stringify({"map":map_id,"mode":mode,"hash":expected_hash,"peer":net.peer_id,"actor":net.actor_id,"room":net.room_id}))
 	audiovisual.begin(frame, net.room_id)
 	clear_round()
 	age = 0
@@ -183,6 +184,7 @@ func on_started(frame: Dictionary) -> void:
 
 func on_snapshot(frame: Dictionary) -> void:
 	state = frame.state
+	if "--world-evidence" in OS.get_cmdline_user_args() and net.last_ack % 30 == 0: print("WORLD_SPORTS_SNAPSHOT ",JSON.stringify({"map":map_id,"mode":mode,"ack":net.last_ack,"race":state.get("race",{})}))
 	age = 0
 	audiovisual.snapshot(state, net.actor_id)
 	actor = {}

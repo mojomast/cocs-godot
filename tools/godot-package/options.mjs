@@ -119,7 +119,8 @@ export function options(argv, catalog) {
   }
   if (values.bots !== undefined) {
     if (!['combat','zones','assault','combined-arms','lattice','lattice-world','multiplayer-worlds'].includes(experience)) throw Error('--bots requires combat, zones, assault, combined-arms, lattice, lattice-world, multiplayer-worlds, native-dm or identity-zones');
-    if (!/^\d+$/.test(values.bots) || Number(values.bots) > (experience.startsWith('lattice') || experience === 'combined-arms' ? 16 : 8)) throw Error(`--bots must be 0..${experience.startsWith('lattice') || experience === 'combined-arms' ? 16 : 8}`);
+    const cap = experience.startsWith('lattice') || experience === 'combined-arms' || experience === 'multiplayer-worlds' && values.map === 'tern-archipelago' ? 16 : 8;
+    if (!/^\d+$/.test(values.bots) || Number(values.bots) > cap) throw Error(`--bots must be 0..${cap}`);
   }
   for (const key of ['round-seconds','score-limit']) if (values[key] !== undefined && !['zones','assault'].includes(experience)) throw Error(`--${key} requires native-dm, identity-zones, zones or assault`);
   if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
@@ -166,9 +167,11 @@ export function options(argv, catalog) {
   const scene = identity?.scene ?? selected.scene;
   if (experience === 'multiplayer-worlds') {
     for (const flag of flags) if (flag !== '--diagnostics') throw Error(`${flag} is not supported by multiplayer-worlds`);
-    for (const key of supplied) if (!['experience','map','mode','bots','endpoint','join-room'].includes(key)) throw Error(`--${key} is not supported by multiplayer-worlds`);
-    if (values['join-room'] !== undefined && (!endpoint || !values['join-room'].trim() || supplied.has('bots'))) throw Error('Multiplayer-worlds guest requires --endpoint and --join-room without host bot settings');
-    return {experience,map,mode,scene,endpoint,world:true,bots:Number(values.bots ?? 2),userArgs:[`--map=${map}`,`--mode=${mode}`,...(values['join-room'] === undefined ? [`--bots=${values.bots ?? 2}`] : [`--join-room=${values['join-room']}`]),...diagnostics]};
+    for (const key of supplied) if (!['experience','map','mode','bots','endpoint','join-room','time-limit','round-target'].includes(key)) throw Error(`--${key} is not supported by multiplayer-worlds`);
+    const sports=mode.startsWith('puma-');
+    for (const [key,min,max] of [['time-limit',60,900],['round-target',1,mode==='puma-race'?10:15]]) if (values[key]!==undefined && (!sports || !/^\d+$/.test(values[key]) || Number(values[key])<min || Number(values[key])>max)) throw Error(`--${key} requires Puma sports and ${min}..${max}`);
+    if (values['join-room'] !== undefined && (!endpoint || !values['join-room'].trim() || ['bots','time-limit','round-target'].some(key=>supplied.has(key)))) throw Error('Multiplayer-worlds guest requires --endpoint and --join-room without host settings');
+    return {experience,map,mode,scene,endpoint,world:true,bots:Number(values.bots ?? 2),userArgs:[`--map=${map}`,`--mode=${mode}`,...(values['join-room'] === undefined ? [`--bots=${values.bots ?? 2}`,...['time-limit','round-target'].filter(key=>values[key]!==undefined).map(key=>`--${key}=${values[key]}`)] : [`--join-room=${values['join-room']}`]),...diagnostics]};
   }
   if (experience === 'combined-arms') {
     for (const flag of flags) if (flag !== '--diagnostics') throw Error(`${flag} is not supported by combined-arms`);

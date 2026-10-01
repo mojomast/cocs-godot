@@ -142,7 +142,7 @@ export function launchOptions(argv, catalog) {
       args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot','res://native_arenas/identity_zone_demo.tscn']};
   }
   if (experience === 'multiplayer-worlds') {
-    for (const key of Object.keys(values)) if (!['experience','map','mode','endpoint','join-room','bots'].includes(key)) throw Error(`--${key} is not supported by multiplayer-worlds`);
+    for (const key of Object.keys(values)) if (!['experience','map','mode','endpoint','join-room','bots','time-limit','round-target'].includes(key)) throw Error(`--${key} is not supported by multiplayer-worlds`);
     for (const flag of flags) if (flag !== '--diagnostics') throw Error(`${flag} is not supported by multiplayer-worlds`);
     const map=values.map??'switchyard-ward', modes=EXPERIENCES[experience].modes[map];
     if (!modes) throw Error(`Unknown multiplayer world ${map}`);
@@ -150,8 +150,10 @@ export function launchOptions(argv, catalog) {
     if (!modes.includes(mode)) throw Error(`Unsupported multiplayer world/mode ${map}/${mode}`);
     if (values.bots !== undefined && (!/^\d+$/.test(values.bots)||Number(values.bots)>(mode.startsWith('cocs') ? 16 : 8))) throw Error('--bots must be within the selected mode capacity');
     const endpoint=lobbyEndpoint(values.endpoint,experience);
-    if (values['join-room'] !== undefined && (!endpoint||!values['join-room'].trim()||values.bots!==undefined)) throw Error('Multiplayer-worlds guest requires --endpoint and --join-room without host bots');
-    const sessionOptions=[`--map=${map}`,`--mode=${mode}`,...(values['join-room']===undefined?[`--bots=${values.bots??2}`]:[`--join-room=${values['join-room']}`]),...diagnostics];
+    const sports=mode.startsWith('puma-');
+    for (const [key,min,max] of [['time-limit',60,900],['round-target',1,mode==='puma-race'?10:15]]) if (values[key]!==undefined && (!sports||!/^\d+$/.test(values[key])||Number(values[key])<min||Number(values[key])>max)) throw Error(`--${key} requires Puma sports and ${min}..${max}`);
+    if (values['join-room'] !== undefined && (!endpoint||!values['join-room'].trim()||['bots','time-limit','round-target'].some(key=>values[key]!==undefined))) throw Error('Multiplayer-worlds guest requires --endpoint and --join-room without host settings');
+    const sessionOptions=[`--map=${map}`,`--mode=${mode}`,...(values['join-room']===undefined?[`--bots=${values.bots??2}`,...['time-limit','round-target'].filter(key=>values[key]!==undefined).map(key=>`--${key}=${values[key]}`)]:[`--join-room=${values['join-room']}`]),...diagnostics];
     return {experience,map,mode,world:true,bots:Number(values.bots??2),endpoint,smoke:null,sessionOptions,args:[...(diagnostics.length?['--verbose']:[]),'--path','godot',EXPERIENCES[experience].identity[map].scene]};
   }
   if (experience === 'combined-arms') {

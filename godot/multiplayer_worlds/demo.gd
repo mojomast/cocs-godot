@@ -4,9 +4,13 @@ const WorldMap = preload("res://multiplayer_worlds/map.gd")
 const ZoneAdapter = preload("res://zone_modes/adapter.gd")
 const ZoneRenderer = preload("res://zone_modes/renderer.gd")
 const ObjectiveRenderer = preload("res://objectives/renderer.gd")
+const AssaultState = preload("res://assault/state.gd")
+const AssaultRenderer = preload("res://assault/renderer.gd")
 var zones := ZoneAdapter.new()
 var zone_renderer := ZoneRenderer.new()
 var objective_renderer := ObjectiveRenderer.new()
+var assault := AssaultState.new()
+var assault_renderer := AssaultRenderer.new()
 var objective_text := Label.new()
 var evidence := false
 var expected_hash := ""
@@ -43,7 +47,7 @@ func _ready() -> void:
   control.mouse_filter = Control.MOUSE_FILTER_IGNORE
  selector.hide()
  objective_text.custom_minimum_size.x = 600
- for child: Node in [pickups,presentation,combat,client,zone_renderer,objective_renderer]: add_child(child)
+ for child: Node in [pickups,presentation,combat,client,zone_renderer,objective_renderer,assault_renderer]: add_child(child)
  presentation.interpolate_remote = true
  if not catalog.open():
   on_error(catalog.error)
@@ -108,6 +112,8 @@ func on_started(frame: Dictionary) -> void:
  zones.clear()
  zone_renderer.clear_round()
  objective_renderer.clear_round()
+ assault.clear_round()
+ assault_renderer.clear_round()
  super.on_started(frame)
  if selected_mode in ["ctf","payload"]: objective_renderer.configure_map(catalog.resolve_map(current_id), selected_mode)
 
@@ -117,7 +123,11 @@ func on_snapshot(frame: Dictionary) -> void:
  if selected_mode in ["ctf","payload"]:
   objective_renderer.apply_state(frame.state,client.actor_id)
   objective_text.text = objective_renderer.hud_text
- elif selected_mode in ["domination","koth","uplink","holdout"]:
+ elif selected_mode == "assault":
+  if assault.apply_state(frame.state):
+   assault_renderer.apply_sector(assault.active_sector())
+   objective_text.text = assault.text(presentation.local_actor.get("team"),false)
+ elif selected_mode in ["domination","koth","uplink","holdout","combined-arms"]:
   if zones.apply(frame.state,client.actor_id,current_id,selected_mode):
    zone_renderer.apply(zones.projection)
    objective_text.text = "%s / %s | score %s" % [current_id,selected_mode,str(zones.projection.scores)]
