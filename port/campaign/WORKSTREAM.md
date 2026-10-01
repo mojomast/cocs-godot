@@ -542,3 +542,12 @@ the two single-thread Blender export slots. Parent grants weapon generation when
 one is released. Godot rendering remains serialized: architecture first,
 environment next, then weapons, unless explicitly reassigned. All three agents
 work concurrently in isolated worktrees; no parent heavy verifier/build runs.
+
+Environment lane delivered edit/export checkpoint `41817d5a`: fifteen editable
+Blender sources and compact GLBs, a four-biome decorator and campaign ground
+shader. Import, runtime acceptance and actual before/after renders are pending
+its Godot slot. Parent static review requests full prop-footprint/flank clearance,
+safe replacement only after valid mesh loading, horizon preservation and actual
+material-surface draw counts. The checkpoint remains unmerged until verification.
+Its Blender export slot is released and explicitly granted to the weapon lane;
+architecture retains the current Godot slot, environment is next.
