@@ -572,3 +572,19 @@ check so every runtime-selected profile resolves to a GLB (relay/outpost current
 have top-only exports) and updated tests for the new naming/budgets. Environment
 still owns Godot; weapon rendering is next, with structural-refinement checks
 afterward unless weapon generation is not ready when the slot becomes free.
+
+Environment acceptance completed and merged with its tested first-pass architecture
+dependency: `16985275` → `60179f97`; environment `41817d5a`, `d990a65a`,
+`a382fb03`, `c1e497e4` → `32ae99a9`, `67076f90`, `6b1c3f50`, `8e3e6e87`.
+All-four-map environment, terrain and structure checks passed in that lane;
+parent reviewed the combined comparison/detail sheets. Collision/route heights
+are unchanged, with safe whole-batch replacement, footprint screening, imported
+materials and root placement correction. Structure refinement `09017079` plus
+profile coverage `aa81b235` remain queued for rendered acceptance before merge.
+Both world-art contracts are registered in the canonical verifier.
+
+Weapon lane now has the exclusive Godot import/render slot. Environment has
+released it; architecture refinement waits for weapons to finish. Parent avoids
+competing engine/build work. Combined final galleries and trailer refresh follow
+the accepted structure and weapon revisions rather than publishing intermediate
+architecture as the finished result.
