@@ -43,8 +43,11 @@ func run() -> void:
 		var beat: Dictionary
 		for entry: Dictionary in fixture.before.interludes.beats:
 			if entry.id == fixture.id: beat = entry
-		camera.position = director.point(beat.entry)+Vector3(0,2.0,0)
-		camera.look_at(director.point(beat.machine)+Vector3(0,-0.5,0))
+		camera.position = director.point(beat.entry)+Vector3(0,1.7,0)
+		# Keep the controls and route in view as well as the taller landmark.
+		var focus := director.point(beat.a).lerp(director.point(beat.b),0.5)
+		focus.y += 2.5
+		camera.look_at(focus)
 		for phase: String in ["before","after"]:
 			var state: Dictionary = fixture[phase]
 			director.apply(state.interludes,map_id)

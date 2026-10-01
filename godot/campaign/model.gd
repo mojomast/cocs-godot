@@ -70,7 +70,7 @@ static func valid_story(value: Variant) -> bool:
 static func valid_interludes(value: Variant) -> bool:
 	if not value is Dictionary or value.get("version") != 1 or not value.get("beats") is Array or value.beats.size() != 2: return false
 	for beat: Variant in value.beats:
-		if not beat is Dictionary or not beat.get("id") is String or not beat.get("title") is String or beat.get("family") not in ["link", "align", "choice"] or not beat.get("theme") is String or not beat.get("completed") is bool or beat.get("stage") not in [0, 1, 2]: return false
+		if not beat is Dictionary or not beat.get("id") is String or not beat.get("title") is String or beat.get("family") not in ["link", "align", "choice"] or not beat.get("theme") is String or not beat.get("completed") is bool or not valid_count(beat.get("stage")) or float(beat.stage) > 2: return false
 		if not beat.get("actions") is Array or beat.actions.size() != 2 or not beat.actions[0] is String or not beat.actions[1] is String: return false
 		if not beat.get("cable") is Array or beat.cable.size() < 2 or beat.cable.size() > 64: return false
 		for p: Variant in [beat.get("a"), beat.get("b"), beat.get("machine"), beat.get("entry")] + beat.cable:

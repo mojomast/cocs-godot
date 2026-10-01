@@ -59,6 +59,7 @@ func label(host: Node3D, text: String, at: Vector3, size_: int) -> Label3D:
 	node.modulate = Color("fff1d4")
 	node.outline_size = 8
 	node.visibility_range_end = 23
+	node.visibility_range_begin = 3
 	host.add_child(node)
 	return node
 
@@ -99,8 +100,14 @@ func build(beat: Dictionary) -> Node3D:
 	var machine := Node3D.new()
 	root.add_child(machine)
 	machine.position = point(beat.machine)
+	# Face the approach instead of an arbitrary world axis. Keep the operating
+	# wheel above its solid housing so the restored silhouette is readable.
+	var approach := point(beat.entry)
+	approach.y = machine.position.y
+	machine.look_at(approach)
 	var rotor := Node3D.new()
 	machine.add_child(rotor)
+	rotor.position.y = 3.1
 	var ring := TorusMesh.new()
 	ring.inner_radius = 2.6 if beat.theme == "waterwheel" else 1.8
 	ring.outer_radius = 3.1 if beat.theme == "waterwheel" else 2.1
@@ -110,9 +117,18 @@ func build(beat: Dictionary) -> Node3D:
 		var spoke := box(rotor, Vector3.ZERO, Vector3(0.16,5.4,0.18), metal)
 		spoke.rotation.z = i*PI/4
 	var panels: Array[MeshInstance3D] = []
+	# The garden's visible reward follows the player's cable route, rather than
+	# only switching lamps on the distant tower. Nursery trays use the same
+	# supported points, set just outside the walking line.
+	if beat.theme in ["nursery", "garden"]:
+		for i: int in range(1,path.size()-1,2):
+			var p := point(path[i])+Vector3(0.8,0,0.8)
+			box(root,p+Vector3(0,0.2,0),Vector3(0.65,0.4,0.65),copper)
+			tube(root,p,p+Vector3.UP*1.5,0.08,metal)
+			panels.append(box(root,p+Vector3.UP*1.5,Vector3(0.4,0.65,0.4),dark))
 	for i: int in 5:
-		var p := Vector3((i-2)*1.15, 0.3+sin(i*PI/4)*2, 0.6)
-		panels.append(box(machine,p,Vector3(0.65,0.9,0.25),dark))
+		var p := Vector3((i-2)*1.15, 0.3+sin(i*PI/4)*2, -0.6)
+		panels.append(box(machine,p,Vector3(0.85,1.2,0.35),dark))
 	# Chapter-specific machinery silhouettes: a wheel, vent stack, seed trays,
 	# or a radial choir. These sit above already-solid authored architecture.
 	rotor.visible = beat.theme in ["waterwheel", "receiver", "choir", "nursery"]

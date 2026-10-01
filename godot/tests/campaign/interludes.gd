@@ -41,7 +41,11 @@ func run() -> void:
 				if not str(route.id).begins_with("interlude-"): continue
 				for p: Dictionary in route.points: assert(absf(world.height_at(p.x,p.z)-float(p.y)) < 0.001)
 		for state: Dictionary in [fixture.before,fixture.linked,fixture.after]:
-			assert(Model.new().apply(state), "Source wire state validates")
+			var model := Model.new()
+			if not model.apply(state):
+				printerr("WORKSHOP_MODEL_ERROR ",model.error," ",JSON.stringify(state.interludes))
+				quit(1)
+				return
 			director.apply(state.interludes, map_id)
 			widgets.observe(state.story,true,state.interludes)
 			assert(director.workshops.size() == 2)

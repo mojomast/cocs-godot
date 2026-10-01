@@ -1,6 +1,6 @@
 # Variety lane acceptance
 
-Status: **Node verified; READY FOR ENGINE.** No Godot, renderer, import or Blender process was started in this lane before an exclusive engine grant. Native scripts and source-produced fixtures are ready; native execution and visual inspection are still pending.
+Status: **Source, native geometry/presentation, live native protocol interactions and rendered visual review passed.** Parent granted exclusive Godot use after targeting released its slot. Engine work used Godot 4.5.2 with `LP_NUM_THREADS=1`, serialized; no Blender was needed. Parent targeting `0afd4d7e` and input-flow `75e9b3a0` were merged before native acceptance.
 
 ## Node evidence
 
@@ -14,6 +14,7 @@ node tools/godot-campaign/interlude-fixtures.mjs /home/mojo/.tmp-on-disk/cocs-le
 ```
 
 * `node-final2.log`: **60/60 passed**, including all source-authority lifecycle/protocol, campaign completion, story/Patch, navigation cache, core provenance, geometry, terrain and new workshop scenarios.
+* `node-merged.log`: **65/65 passed** after merging targeting and input flow, including the new targeting tests and all preceding workshop/terrain coverage.
 * Each workshop scenario starts at a legitimate previous-fight checkpoint, walks the actual critical path and side approach using `Match.step` controls, accepts E through authority logic, rejoins the road, and checks persistent claims on retry. No teleport is used on the acceptance walking route. Fixtures place a checkpoint at the workshop entry only to avoid replaying prior combat for native presentation inspection.
 * All reviewed routes—including all 24 new approach/link routes—also pass the independent original-source `moveActor` traversal test with no jumps. This caught a Crown cable-edge slope failure that the A-only alignment interaction test would not catch; the shoulder blend was widened and the full suite then passed.
 * Rejected remote, vertically displaced, inside-solid, dead, priority-conflicting and initial-held E. Look-away alignment fails; correct source yaw succeeds. Mutually exclusive A/B salvage, useful scattergun reward, duplicate taps and checkpoint claim retention are covered.
@@ -26,13 +27,20 @@ node tools/godot-campaign/interlude-fixtures.mjs /home/mojo/.tmp-on-disk/cocs-le
 
 `interludes-first.log` exposed incorrect test assumptions about passive armor recharge and the infinite-ammo starter gun; ammo reward now always includes a useful loaded scattergun. `terrain-first.log` exposed shortcut erosion in Siltwake/Emberline; the workshop outer blends were tightened. `node-final.log` caught the Crown cable-edge slope and the navigation fixture lacking the new authored route metadata. `compile-reposition.log` caught the waterwheel apron intersecting a bridge abutment; the bridge frame was widened in actual shared geometry. All files are retained alongside the passing `node-final2.log`.
 
-## Native checks prepared for exclusive slot
+## Actual native acceptance
 
-1. Import this worktree with Godot 4.5.2 after the targeting lane releases the engine.
-2. Run `res://tests/campaign/interludes.gd -- --fixtures=<evidence>/native-fixtures.json`. It validates actual wire snapshots through the campaign model, builds all four native maps, compares every added solid to its actual BoxShape3D, verifies route support heights, and checks energized cables/panels/restored signs/lids and prompt cleanup.
-3. Run existing `res://tests/campaign/story_presentation.gd` to check Patch priority/widget compatibility.
-4. Render `res://tests/campaign/interlude_gallery.gd -- --fixtures=<evidence>/native-fixtures.json --capture-dir=<evidence>/native-gallery`. Inspect all eight before/after pairs against source state. This is source-state replay presentation, not a human playthrough.
-5. Run a native authority-connected interaction journey if the engine slot allows; record actual controls/protocol and visible feedback separately from replay captures.
+* Import passed (`import-first.log`), with UID cache recreation warnings and no script errors.
+* `native-first.log` preserved the first assertion failure. Godot JSON parses numbers as floats; an integer-array membership check rejected valid workshop stages. `model.gd` now uses the existing integral-number validator and bounds stages to 0–2. Diagnostic failure is retained in `native-model-diagnostic.log`.
+* `native-final-interludes.log`: **all eight pass**. Actual wire snapshots validate through the campaign model; all four native maps build; all 34 new collision boxes match the source dimensions/positions; geometry hashes agree; authored route heights match rendered terrain; energized cables/panels/restored signs/lids and prompt cleanup pass.
+* `native-final-story_presentation.log`: **PASS**, existing story/Patch/widget compatibility.
+* `native-final-input_flow.log`: **614 checks, zero failures** on the combined implementation.
+* `native-final-targeting_geometry.log`: **PASS**, 2,988 Blender-body sample points and campaign/Horde pose isolation; campaign plasma presentation measures 138m/s.
+* `live-first.log`: **8/8 connected native journeys pass**, using `tools/godot-campaign/interlude-live.mjs <godot-binary>`. This starts the real `createAuthority`, real input FIFO/protocol and real campaign native client. A trusted match-factory seam sets each initial workshop-entry checkpoint. From there the native client sends ordinary movement, source yaw and fresh E controls, traverses the actual approaches/cables, and verifies linked/completed states, restored native presentation, feedback and duplicate-interaction stability. No position changes or fabricated completion snapshots occur during the journeys. This is a headless client-controls test, not physical-keyboard/menu automation or a combat playthrough. Reward exactness, retry persistence and skip-to-ending remain independently covered by the source tests.
+* `gallery-reviewed.log`: **16 rendered PNGs**, actual terrain/environment/structure art and source-produced before/after states. All eight pairs were visually inspected. First review exposed wheels hidden by their housing and near-camera oversized labels; machinery now faces the approach with raised wheels, labels suppress inside 3m, and nursery/garden lamps light along the actual cable route. The final camera keeps controls and route in view. Earlier galleries are retained.
+
+Final screenshot pairs are in `<evidence>/native-gallery-reviewed/`, named `<map>-<beat>-before.png` and `-after.png`. `contact-0.png` shows Crown/Emberline; `contact-1.png` shows Rootfall/Siltwake. These are source-state replay captures, separately from the live WebSocket journeys. Distant tall machinery can extend above the approach-camera frame; the interactable terminals and route-level changes remain visible. Artwork uses existing chapter facade assets and procedural machinery, not new Blender masters.
+
+Reproduce native replay with `godot --headless --path godot --script res://tests/campaign/interludes.gd -- --fixtures=<evidence>/native-fixtures.json`; render using `tools/godot-dev/xvfb_run.py` and `res://tests/campaign/interlude_gallery.gd -- --fixtures=<evidence>/native-fixtures.json --capture-dir=<output>`, `--rendering-method gl_compatibility`.
 
 No packaged Windows/Linux result or human-paced 5–10-minute chapter claim is made by this lane. Parent owns merged package closure, final export and release.
 
@@ -40,4 +48,4 @@ No packaged Windows/Linux result or human-paced 5–10-minute chapter claim is m
 
 New authority runtime imports: `port/native-campaign/interludes.mjs` and `interlude-definitions.mjs`. New native runtime script: `godot/campaign/interlude_director.gd`. Include these in explicit packaging/closure lists. New authored routes and 34 solids require all four generated JSON files; mixing new authority with old maps intentionally fails loudly.
 
-Resolve the small `match.mjs` and `demo.gd` overlaps manually if targeting changes nearby combat snapshot/presentation lines. Keep targeting's combat methods. This lane adds only `campaign.interludes` to the main snapshot and `interludeCarry` to checkpoints. `model.gd` accepts and validates the new field. `story_widgets.gd` accepts an optional third argument; existing callers still work.
+The parent targeting and flow commits merged cleanly. Keep targeting's combat methods when integrating further changes. This lane adds only `campaign.interludes` to the main snapshot and `interludeCarry` to checkpoints. `model.gd` accepts and validates the new field. `story_widgets.gd` accepts an optional third argument; existing callers still work. Parent can cherry-pick the implementation commit `f8e75e2f` and the subsequent native-acceptance fix commit, rather than replaying parent merge commits.
