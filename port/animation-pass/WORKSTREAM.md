@@ -43,6 +43,13 @@ tests passed in the lane; semantic/native/capture acceptance is **pending**.
 Actor Sol still owns the exclusive engine slot; physics Sol is READYFORENGINE
 and has not launched any engine process. See `PHYSICS.md` for sources and scope.
 
+Supplemental physics checkpoint `35368568` is integrated as `ca825b91`, with a
+canonical world-animation gate. It prepares native workshop frame-rate/stage
+tests, actual campaign host pause/focus/death/stale lifecycle checks, vehicle
+wheel bounds/reset coverage and casing-pool trajectory checks. It also preserves
+immediate source-sample wheel angle publication. These tests are prepared and
+syntax-checked, **not yet executed by Godot**; the engine grant is unchanged.
+
 Use primary developer/documentation sources with precise citations. Implement a
 practical form of physics-informed animation where supported by the research and
 current architecture. Distinguish cosmetic response from authoritative movement.
