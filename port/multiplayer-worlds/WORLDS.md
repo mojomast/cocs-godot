@@ -159,3 +159,16 @@ diagnostic images at the previous camera positions are labelled
 `/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/worlds/ART-CHECKPOINT.md`
 for the offline review and next-grant render checklist. Horde has the Godot
 slot; the world lane has not reimported or re-rendered these new assets in it.
+
+### Breakwater jib connectivity correction (offline)
+
+Parent identified free-ended diagonal struts in the player-height ground
+diagnostic. Both wall-mounted jibs now use paired upper/lower chords, closed
+end posts, alternating triangular webs, cross-ties, an anchored tip/hoist and
+a connected counterweight. Dock gantries gained lower chords and end posts;
+warehouse sawtooth frames gained far-end rafters and eave chords. Foreground
+quay panels/loading marks are now flush to within ~1 cm of the exported floor.
+`check_jib.py` audits the exact emitted segment graph for connected joints and
+no unsupported web endpoint. `*-BEFORE-TRUSS.png` preserves old diagnostics;
+the updated `*-BLENDER-DIAGNOSTIC.png` remains **offline only**. Godot import
+and native visual approval remain pending.

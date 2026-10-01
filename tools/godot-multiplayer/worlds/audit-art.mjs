@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {readFileSync,statSync} from 'node:fs';
 const root=new URL('../../../godot/multiplayer_worlds/art/worlds/',import.meta.url);
 const expected={
- 'breakwater-exchange':{vertices:13000,height:18.5,materials:['bronze','charcoal','glow-amber','safety-yellow']},
+ 'breakwater-exchange':{vertices:33000,height:18.5,materials:['bronze','charcoal','glow-amber','safety-yellow']},
  'thermal-divide':{vertices:8000,height:30,materials:['basalt','bronze','charcoal','ice-blue','sediment']},
  'sirocco-circuit':{vertices:16000,height:30,materials:['sandstone','red-earth','bronze','glow-amber']},
  'copper-bowl':{vertices:3500,height:15,materials:['pitch','copper','charcoal','salt','hazard-white']},

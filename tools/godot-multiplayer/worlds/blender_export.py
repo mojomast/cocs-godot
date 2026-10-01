@@ -182,7 +182,7 @@ def surface_stripes(label,axis,at,start,end,step,width,material):
     value=start
     while value<=end:
         x,z=(value,at) if axis=='x' else (at,value)
-        detail(label+'.%02d'%count,x,.025,z,width if axis=='x' else .18,.02,.18 if axis=='x' else width,material)
+        detail(label+'.%02d'%count,x,-.015,z,width if axis=='x' else .18,.006,.18 if axis=='x' else width,material)
         value+=step;count+=1
 
 def architecture():

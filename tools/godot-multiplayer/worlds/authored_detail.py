@@ -9,6 +9,50 @@ thin marking; cliffs/ships/shore rocks are beyond the source boundary.
 import math
 
 
+def jib_frame(x,z):
+    """Source-wall-mounted box-truss joints/members in recipe XYZ metres.
+
+    Shared by the emitter and the offline connectivity audit. Both side faces
+    contain complete chords, end posts and alternating diagonal webs; nothing
+    terminates in open air except the anchored wire below the tip.
+    """
+    members=[]
+    add=lambda label,a,b,r,material:members.append((label,a,b,r,material))
+    for side in (-.55,.55):
+        top=[(x+side,18.8-2.6*i/6,z+4*i) for i in range(7)]
+        bottom=[(x+side,16.65-1.9*i/6,z+4*i) for i in range(7)]
+        for i in range(6):
+            add('jib.top-chord',top[i],top[i+1],.24,'safety-yellow')
+            add('jib.bottom-chord',bottom[i],bottom[i+1],.22,'iron')
+            add('jib.triangle',top[i] if i%2==0 else bottom[i],
+                bottom[i+1] if i%2==0 else top[i+1],.135,'bronze')
+        for i in range(7):
+            add('jib.web-post',top[i],bottom[i],.14,'charcoal')
+        # Counterjib closes on the *same* mast nodes rather than extending a
+        # single cantilevered stick into empty space.
+        tail_top=(x+side,14.0,z-9)
+        tail_bottom=(x+side,12.9,z-9)
+        add('jib.counter-top',top[0],tail_top,.20,'bronze')
+        add('jib.counter-bottom',bottom[0],tail_bottom,.19,'iron')
+        add('jib.counter-endpost',tail_top,tail_bottom,.16,'charcoal')
+        add('jib.counter-web',top[0],tail_bottom,.125,'safety-yellow')
+    # Transverse braces rigidly tie the side faces to one closed spatial frame.
+    for i in (0,3,6):
+        for y in (18.8-2.6*i/6,16.65-1.9*i/6):
+            add('jib.cross-tie',(x-.55,y,z+4*i),(x+.55,y,z+4*i),.14,'charcoal')
+    for y in (14.0,12.9):
+        add('jib.counter-cross-tie',(x-.55,y,z-9),(x+.55,y,z-9),.14,'charcoal')
+    # Root/mast ties terminate on the real source bulkhead wall beneath.
+    add('jib.mast',(x,7.7,z),(x,19,z),.43,'charcoal')
+    for side in (-.55,.55):
+        add('jib.root-brace',(x,11,z),(x+side,16.65,z),.20,'iron')
+        add('jib.mast-head',(x,19,z),(x+side,18.8,z),.15,'bronze')
+    add('jib.tip-crossbar',(x-.55,16.2,z+24),(x,16.2,z+24),.20,'bronze')
+    add('jib.tip-crossbar',(x,16.2,z+24),(x+.55,16.2,z+24),.20,'bronze')
+    add('jib.hoist-wire',(x,16.2,z+24),(x,8.4,z+24),.07,'charcoal')
+    return members
+
+
 def build(map_id, data, emit, box, tube):
     def beam(name, a, b, radius, material, sides=6):
         dx,dy,dz=(b[i]-a[i] for i in range(3))
@@ -79,13 +123,9 @@ def build(map_id, data, emit, box, tube):
         # hook ends remain >8m above walk and Puma height.
         for x,z in ((-47,-7),(47,27)):
             tube('jib.turntable',x,7.45,z,1.38,.8,'bronze',14)
-            beam('jib.vertical',(x,7.7,z),(x,19,z),.42,'charcoal')
-            beam('jib.main-derrick',(x,18.8,z),(x,16.2,z+24),.34,'safety-yellow')
-            beam('jib.counterweight',(x,17.8,z),(x,13.2,z-9),.28,'bronze')
-            for n in range(1,5):
-                p=z+n*5
-                beam('jib.truss-web',(x,18.8-(n-1)*.55,p-5),(x,16.5-n*.46,p),.16,'iron')
-            beam('jib.hoist-wire',(x,16.2,z+24),(x,8.4,z+24),.07,'charcoal')
+            for label,a,b,r,material in jib_frame(x,z):
+                beam(label,a,b,r,material)
+            box('jib.counterweight-block',x,12.55,z-9,2.2,.75,1.4,'bronze')
             box('jib.load-hook',x,8.2,z+24,.7,.48,.7,'glow-amber')
         for sign in (-1,1):
             x=sign*31
@@ -98,9 +138,12 @@ def build(map_id, data, emit, box, tube):
             # Warehouse roofs are source overhead slabs; these substantial
             # pitched monitor bays, ducts and trusses are unreachable from play.
             for dx in (-6,0,6):
-                beam('warehouse.sawtooth-rise',(x+dx,7.92,35),(x+dx+2,10.8,35),.19,'bronze')
-                beam('warehouse.sawtooth-fall',(x+dx+2,10.8,35),(x+dx+4,7.92,35),.19,'iron')
+                for z in (35,47):
+                    beam('warehouse.sawtooth-rise',(x+dx,7.92,z),(x+dx+2,10.8,z),.19,'bronze')
+                    beam('warehouse.sawtooth-fall',(x+dx+2,10.8,z),(x+dx+4,7.92,z),.19,'iron')
                 beam('warehouse.roof-spine',(x+dx+2,10.8,35),(x+dx+2,10.8,47),.18,'charcoal')
+                for edge in (dx,dx+4):
+                    beam('warehouse.eave-chord',(x+edge,7.92,35),(x+edge,7.92,47),.17,'bronze')
             for z in (37,41,45):
                 box('warehouse.skylight',x,8.0,z,13,.075,1.1,'ice-blue')
             for px in (x-7.4,x+7.4):
@@ -117,6 +160,9 @@ def build(map_id, data, emit, box, tube):
                     beam('crane.portal-diagonal',(a,13.65,z),(a+2,17.1,z),.23,'safety-yellow')
                     beam('crane.portal-counter',(a+2,17.1,z),(a+4,13.65,z),.23,'iron')
                 beam('crane.high-chord',(x-12,17.1,z),(x+12,17.1,z),.29,'bronze')
+                beam('crane.lower-chord',(x-12,13.65,z),(x+12,13.65,z),.24,'iron')
+                for xx in (x-12,x+12):
+                    beam('crane.end-post',(xx,13.65,z),(xx,17.1,z),.20,'safety-yellow')
             for xx in (x-8,x+8):
                 beam('crane.hoist-cable',(xx,13.5,-56),(xx,8.5,-56),.075,'charcoal')
                 box('crane.hoist-hook',xx,8.3,-56,.95,.42,1.0,'glow-amber')
@@ -134,25 +180,25 @@ def build(map_id, data, emit, box, tube):
                 beam('ferry.rigging',(xx,13,-83),(xx+5,3.5,-84),.08,'safety-yellow')
         # Road surface divisions are shallow paint over the same source floor.
         for z in (-47,18,41):
-            box('dock.route-inlay',0,.041,z,165,.022,.18,'bronze')
+            box('dock.route-inlay',0,-.015,z,165,.006,.18,'bronze')
         for bx in range(-90,91,15):
             for z in (-39,-32,31,50):
                 # Shore road/warehouse concrete has readable loading bays and
                 # transverse dark expansion joints at eye height (no step).
-                box('freight.loading-bay',bx,.034,z,9,.022,2.8,'sediment')
+                box('freight.loading-bay',bx,-.017,z,9,.008,2.8,'sediment')
                 for xx in (bx-4,bx+4):
-                    box('freight.stop-bar',xx,.049,z,.20,.023,3.2,'safety-yellow')
+                    box('freight.stop-bar',xx,-.012,z,.20,.006,3.2,'safety-yellow')
         for x in (-67,-36,-2,36,67):
-            box('freight.crossing-stripe',x,.036,5,3.6,.02,.32,'hazard-white')
+            box('freight.crossing-stripe',x,-.015,5,3.6,.006,.32,'hazard-white')
         # Wide bolted quay plates read from player eye level. They are only
         # color/normal changes (~2 cm), not new traversability or obstacles.
         for row,z in enumerate((-22,-14,-6,2,10,18,26)):
             for column,x in enumerate(range(-99,100,9)):
                 if (row+column)%3==0:continue
-                box('quay.riveted-panel',x,.002,z,6.8,.012,5.2,
+                box('quay.riveted-panel',x,-.015,z,6.8,.008,5.2,
                     'sediment' if (row+column)%2 else 'iron')
                 for bolt_x in (x-3.2,x+3.2):
-                    box('quay.rivet',bolt_x,.012,z, .11,.006,.11,'bronze')
+                    box('quay.rivet',bolt_x,-.013,z, .11,.006,.11,'bronze')
 
     elif map_id=='thermal-divide':
         # Actual sources end at z=68 and x=+/-92. A jagged alpine skyline and
