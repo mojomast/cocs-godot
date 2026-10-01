@@ -450,3 +450,41 @@ native checks, with real parsed KEY_2 input applying Overcharge once and no
 post-delivery resets. Source gameplay/protocol bytes and deadlines are unchanged.
 Evidence and rejected profiling attempts remain in `horde-upgrade-repair/`.
 Parent now owns the heavy slot for a fresh full integrated canonical run.
+
+## Owner-requested Blender enemy upgrade
+
+The owner explicitly requested a **Sol subagent to install Blender and improve
+the enemy models**. Lane `campaign/enemy-blender`, session
+`ses_f0ac2321effeoS4WFZuHWdCa4t`, works in
+`/home/mojo/.tmp-on-disk/cocs-enemy-blender-20260930` from `82168aae`.
+It owns user-local official Blender installation, original hard-surface upgrades
+for all six robot classes, production asset/LOD integration and matched actual
+Godot before/after renders. Existing gameplay hitboxes, rigs/animation behaviors
+and authority remain the integration contract.
+
+The lane may install/download and prepare code while parent canonical run
+`canonical-82168aae` owns the heavy slot; Blender generation/render and Godot
+acceptance wait for explicit handoff. Final downloadable builds follow the new
+art integration and acceptance. The current public trailer remains the earlier
+enemy-model version until refreshed after review.
+
+Blender lane first pass `710f9267` delivered six editable Blender sources and GLB
+assemblies with 447 robot checks reported passing, plus death/tell checks and a
+ten-second Warden animation. Parent reviewed the matched gallery and closeups:
+silhouettes and layered armor are improved, but Scrapper/Mortar upper-front armor
+shows jagged surface intersections. A scoped geometry correction is assigned
+before integration/publication. Blender 4.5.14 LTS is installed under
+`/home/mojo/.tmp-on-disk/cocs-blender-toolchain/` with upstream checksum recorded.
+The lane ran its first heavy work before the required slot grant; any overlapping
+canonical timing failures must be treated as potentially contended evidence.
+It is now explicitly edit-only until parent releases the slot. Parent has not
+merged the new models into the still-running canonical identity.
+
+The superseded `canonical-82168aae` run was deliberately stopped at **225/301**
+gates to prioritize the requested model revision. Its complete partial reports
+and interruption reason are archived; 76 gates were unrun. The two observed
+failures (`native-live`, `native-lifecycle`) are fixed-port collisions on 4332,
+not animation failures. Canonical verification now explicitly selects ephemeral
+ports rather than inheriting a shell's fixed port. The unrelated listener is left
+alone. Sol has the exclusive heavy slot to regenerate the corrected turntables
+and Mortar muzzle and verify matching renders before the art is integrated.

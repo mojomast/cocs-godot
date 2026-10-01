@@ -42,6 +42,9 @@ derivative_path = os.environ.get('COCS_SOURCE_DERIVATIVE')
 os.environ['COCS_CAREER_ROOT'] = tempfile.mkdtemp(prefix='verification-career-', dir=root / '.port-runtime')
 os.environ['CAREER_EQUIPPED_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'equipped-journey')
 os.environ['CAREER_CLARITY_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'clarity-journey')
+# Verification-owned loopback authorities must not inherit a user's fixed server
+# port. The launchers resolve and pass the actual ephemeral endpoint to Godot.
+os.environ['PORT'] = '0'
 os.environ.setdefault('COCS_ATTRACT_EVIDENCE', str(Path(os.environ['COCS_CAREER_ROOT']) / 'live-menu'))
 for key, suffix in [("XDG_DATA_HOME", "data"), ("XDG_CONFIG_HOME", "config"), ("XDG_CACHE_HOME", "cache")]:
     os.environ.setdefault(key, str(root / ".port-runtime" / suffix))
