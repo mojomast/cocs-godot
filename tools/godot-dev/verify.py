@@ -217,6 +217,7 @@ commands = [
     ("campaign-crown", ["node", "tools/godot-dev/launch.mjs", "--experience=campaign", "--map=crown-array", "--smoke"]),
     ("main-menu-smoke", [binary, "--headless", "--path", "godot", "res://ui/main_menu.tscn", "--", "--smoke"]),
     ("main-menu-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/main_menu/contracts.gd", "--", "--contracts"]),
+    ("main-menu-attract-lifetime", [binary, "--headless", "--path", "godot", "--script", "res://tests/main_menu/lifetime.gd"]),
     ("main-menu-live-attract", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--path", "godot", "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy", "--script", "res://tests/main_menu/live_attract.gd"]),
     ("product-shell-settings", [binary, "--headless", "--path", "godot", "--script", "res://tests/product_shell/settings_contract.gd"]),
     ("product-shell-journey", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "tools/godot-dev/product_journey.mjs", "--itinerary=port/native-shell/itineraries/consolidated.json"]),

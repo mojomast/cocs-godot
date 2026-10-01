@@ -425,3 +425,12 @@ The Sol lane owns the exclusive heavy slot to fix actual async terrain teardown
 remaining at campaign-environment exit. The Horde accelerated upgrade fixture
 also timed out amid stale-input resets; parent will investigate after slot release.
 No packaging/release acceptance is claimed while these gates remain unresolved.
+
+Menu lifetime repair `fdaf5b25` is integrated as `4e2d8483`: bounded incremental
+terrain construction replaces suspended coroutines. Mid-build scene removal,
+player-flow controls and verbose campaign environment checks pass without their
+previous errors; two detached environment-fixture nodes are now freed. Menu
+contracts pass 970/970 and visible replay/lifecycle passes 56/56 again. Evidence:
+`live-menu-lifetime/run-1/` and `run-2/`. The new lifetime gate is registered.
+Parent owns the heavy slot and is running the corrected source transport test and
+the original Horde upgrade fixture before deciding whether further fixes are needed.
