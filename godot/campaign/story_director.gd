@@ -2,7 +2,9 @@ extends Node3D
 ## Snapshot presentation only. No colliders, input handling, or story progression.
 const Puppy = preload("res://campaign/puppy_visual.gd")
 const Operator = preload("res://source_operators/operator_visual.gd")
+const Gesture = preload("res://campaign/story_gesture.gd")
 var actors: Dictionary = {}
+var gestures: Dictionary = {}
 var last_serial: Dictionary = {}
 var story: Dictionary = {}
 var chapter := ""
@@ -10,6 +12,7 @@ var chapter := ""
 func clear_round() -> void:
 	for actor: Node3D in actors.values(): actor.queue_free()
 	actors.clear()
+	gestures.clear()
 	last_serial.clear()
 	story.clear()
 	chapter = ""
@@ -58,7 +61,10 @@ func apply(value: Dictionary, map_id: String) -> void:
 		if entity.kind == "puppy": visual.call("set_pose", str(entity.pose))
 		else:
 			var pose: String = str(entity.pose)
-			visual.set("snapshot", {"yaw":float(entity.yaw), "bodyYaw":float(entity.yaw), "vx":sin(float(entity.yaw)) * 1.4 if pose == "walk" else 0.0, "vz":-cos(float(entity.yaw)) * 1.4 if pose == "walk" else 0.0, "grounded":true, "ads":pose == "point", "crouching":pose == "work"})
+			visual.set("snapshot", {"yaw":float(entity.yaw), "bodyYaw":float(entity.yaw), "vx":sin(float(entity.yaw)) * 1.4 if pose == "walk" else 0.0, "vz":-cos(float(entity.yaw)) * 1.4 if pose == "walk" else 0.0, "grounded":true, "ads":false, "crouching":false})
+			if not gestures.has(id): gestures[id] = Gesture.new()
+			gestures[id].select(pose)
+			gestures[id].apply_to(visual)
 			visual.set_meta("story_pose", pose)
 	for id: String in actors.keys():
 		if present.has(id): continue
@@ -77,15 +83,5 @@ func _process(dt: float) -> void:
 			visual.visible = distance < 90 and reveal <= 0
 			visual.call("select_distance", distance)
 		if visual is Operator:
-			visual.call("advance", dt)
-			var nodes: Dictionary = visual.get("nodes")
-			if not nodes.has("armUpperR") or not nodes.has("forearmR"): continue
-			var rig: RefCounted = visual.get("rig")
-			match str(visual.get_meta("story_pose", "idle")):
-				"wave":
-					rig.call("rotate_joint", "armUpperR", Vector3(-1.05, 0, -0.65))
-					rig.call("rotate_joint", "forearmR", Vector3(-0.35 + sin(Time.get_ticks_msec() * 0.009) * 0.25, 0, 0))
-				"point":
-					rig.call("rotate_joint", "armUpperR", Vector3(-0.95, 0, -0.25))
-					rig.call("rotate_joint", "forearmR", Vector3(-0.10, 0, 0))
-				_: pass
+			gestures[id].advance(dt)
+			gestures[id].apply_to(visual)
