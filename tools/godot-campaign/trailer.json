@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "title": "THE QUIET RELAY",
+  "credit": "Scripted in-engine footage",
+  "fps": 24,
+  "width": 960,
+  "height": 540,
+  "seed": 420930,
+  "barSeconds": 3,
+  "musicBpm": 80,
+  "musicOffset": 0,
+  "loudness": {"integratedLUFS": -16, "truePeakDBTP": -1.5, "rangeLU": 9},
+  "shots": [
+    {"id":"forest", "map":"rootfall-verge", "seconds":3, "kind":"terrain", "height":9, "text":"A SIGNAL BENEATH THE SILENCE", "menu":true},
+    {"id":"river", "map":"siltwake-crossing", "seconds":3, "kind":"terrain", "height":32, "text":"FOUR CONNECTED CHAPTERS", "menu":true},
+    {"id":"forge", "map":"emberline-ascent", "seconds":3, "kind":"terrain", "height":7, "text":"", "menu":true},
+    {"id":"crown", "map":"crown-array", "seconds":3, "kind":"terrain", "height":40, "text":"", "menu":true},
+    {"id":"mara", "map":"rootfall-verge", "seconds":3, "kind":"npc", "subject":"mara", "text":"MARA / KEEP THE SIGNAL ALIVE", "menu":true},
+    {"id":"ivo", "map":"siltwake-crossing", "seconds":3, "kind":"npc", "subject":"ivo", "text":"IVO / BRING EVERYONE HOME", "menu":false},
+    {"id":"patch", "map":"rootfall-verge", "seconds":6, "kind":"pet", "subject":"patch", "text":"SOME CONNECTIONS NEED NO WORDS", "menu":true},
+    {"id":"robots", "map":"emberline-ascent", "seconds":3, "kind":"combat", "camera":"external", "text":"BREAK THE QUARANTINE", "menu":false},
+    {"id":"fire", "map":"siltwake-crossing", "seconds":6, "kind":"combat", "camera":"fp", "text":"", "menu":true},
+    {"id":"kick", "map":"rootfall-verge", "seconds":3, "kind":"melee", "camera":"fp", "text":"", "menu":false},
+    {"id":"danger", "map":"emberline-ascent", "seconds":3, "kind":"artillery", "camera":"external", "text":"", "menu":false},
+    {"id":"warden", "map":"crown-array", "seconds":3, "kind":"warden", "camera":"external", "text":"THE LAST GUARDIAN", "menu":false},
+    {"id":"title", "map":"crown-array", "seconds":6, "kind":"terrain", "height":22, "text":"THE QUIET RELAY|FOUR CONNECTED CHAPTERS|PLAY THE CAMPAIGN", "menu":false}
+  ]
+}

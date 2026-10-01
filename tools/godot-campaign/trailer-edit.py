@@ -1,0 +1,184 @@
+#!/usr/bin/env python3
+"""Bounded, reproducible FFmpeg edit. Default writes a command plan, never encodes.
+
+Full execution requires --execute --slot-granted. Keep evidence outside checkout.
+"""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import shlex
+import subprocess
+
+ROOT = Path(__file__).resolve().parents[2]
+MANIFEST = Path(__file__).with_name('trailer.json')
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--evidence', type=Path, required=True)
+    p.add_argument('--stems', type=Path, required=True)
+    p.add_argument('--sfx', type=Path, help='JSON cues: [{path, at, gainDB}], actual game SFX only')
+    p.add_argument('--font', type=Path, default=Path('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'))
+    p.add_argument('--execute', action='store_true')
+    p.add_argument('--slot-granted', action='store_true')
+    args = p.parse_args()
+    if args.execute and not args.slot_granted:
+        p.error('Encoding requires exclusive heavy-slot grant')
+    out = args.evidence.resolve()
+    if out == ROOT or ROOT in out.parents:
+        p.error('Evidence must be outside checkout')
+    out.mkdir(parents=True, exist_ok=True)
+    work = out / 'edit'
+    work.mkdir(exist_ok=True)
+    m = json.loads(MANIFEST.read_text())
+    if args.execute:
+        for path in [args.font] + [args.stems / (n + '.wav') for n in ('strings', 'motion', 'brass', 'warden')]:
+            if not path.is_file():
+                raise FileNotFoundError(path)
+    fps, total = m['fps'], sum(s['seconds'] for s in m['shots'])
+    assert fps == 24 and total * fps <= 1440
+    assert all(s['seconds'] % m['barSeconds'] == 0 for s in m['shots'])
+    commands, clips, clean, timeline = [], [], [], []
+    t = 0
+
+    def run(arguments, log=None):
+        cmd = ['ffmpeg', '-hide_banner', '-nostdin', '-y', '-threads', '2',
+               '-filter_threads', '1', '-filter_complex_threads', '1'] + list(map(str, arguments))
+        commands.append(shlex.join(cmd))
+        if args.execute:
+            result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+            if log:
+                log.write_text(result.stderr)
+            return result.stderr
+        return ''
+
+    def escaped(path):
+        # FFmpeg filter value quoting (shell quoting is handled independently).
+        return str(path).replace('\\', '\\\\').replace(':', '\\:').replace("'", "'\\''")
+
+    for shot in m['shots']:
+        directory = out / shot['id']
+        raw = work / (shot['id'] + '-clean.mp4')
+        decorated = work / (shot['id'] + '-trailer.mp4')
+        if args.execute:
+            frames = sorted((directory / 'frames').glob('*.png'))
+            expected = shot['seconds'] * fps
+            if len(frames) != expected or any(f.name != f'{i:06}.png' for i, f in enumerate(frames)):
+                raise RuntimeError(f'{shot["id"]}: expected contiguous {expected} frames, got {len(frames)}')
+        run(['-framerate', fps, '-start_number', 0, '-i', directory / 'frames/%06d.png',
+             '-frames:v', shot['seconds'] * fps, '-an', '-c:v', 'libx264', '-preset', 'fast',
+             '-crf', 16, '-pix_fmt', 'yuv420p', raw])
+        filters = ['drawbox=x=0:y=0:w=iw:h=22:color=black:t=fill',
+                   'drawbox=x=0:y=ih-22:w=iw:h=22:color=black:t=fill']
+        texts = shot['text'].split('|') if shot['text'] else []
+        for i, text in enumerate(texts):
+            textfile = work / f'{shot["id"]}-{i}.txt'
+            textfile.write_text(text)
+            title = shot['id'] == 'title'
+            y, size = (195 + i * 56, 42 if i == 0 else 19) if title else (42, 22)
+            filters.append(f"drawtext=fontfile='{escaped(args.font)}':textfile='{escaped(textfile)}':"
+                           f'fontsize={size}:fontcolor=white:shadowcolor=black@0.8:shadowx=2:shadowy=2:'
+                           f'x=(w-tw)/2:y={y}:alpha=min(1\\,t*3)')
+        credit = work / 'credit.txt'
+        credit.write_text(m['credit'])
+        filters.append(f"drawtext=fontfile='{escaped(args.font)}':textfile='{escaped(credit)}':"
+                       'fontsize=12:fontcolor=white@0.8:x=18:y=h-17')
+        # Brief dip at story/act boundaries, not around combat or at the loop seam.
+        if shot['id'] in ('mara', 'robots', 'title'):
+            filters.append('fade=t=in:st=0:d=0.125')
+        run(['-i', raw, '-vf', ','.join(filters), '-an', '-c:v', 'libx264', '-preset', 'fast',
+             '-crf', 18, '-pix_fmt', 'yuv420p', decorated])
+        clips.append(decorated)
+        if shot['menu']:
+            clean.append((raw, shot['seconds']))
+        timeline.append(dict(shot=shot['id'], start=t, end=t + shot['seconds'],
+                             sourceIn=0, sourceOut=shot['seconds'], text=texts,
+                             transition='dip 3 frames' if shot['id'] in ('mara', 'robots', 'title') else 'bar cut'))
+        t += shot['seconds']
+
+    concat = work / 'trailer-concat.txt'
+    concat.write_text(''.join("file '" + str(c).replace("'", "'\\''") + "'\n" for c in clips))
+    silent = work / 'trailer-silent.mp4'
+    run(['-f', 'concat', '-safe', 0, '-i', concat, '-c', 'copy', silent])
+
+    # Four phase-locked stems, gain changes on bar boundaries; no music time stretch.
+    inputs, afilters = [], []
+    gains = ['0.70', 'if(gte(t,18),0.44,0.08)', 'if(gte(t,24),0.38,0.08)', 'if(gte(t,36),0.42,0)']
+    for i, name in enumerate(['strings', 'motion', 'brass', 'warden']):
+        inputs += ['-i', args.stems / (name + '.wav')]
+        afilters.append(f"[{i}:a]atrim=duration={total},asetpts=PTS-STARTPTS,"
+                        f"volume='{gains[i]}':eval=frame[a{i}]")
+    cues = json.loads(args.sfx.read_text()) if args.sfx else []
+    for i, cue in enumerate(cues, 4):
+        path = Path(cue['path']).resolve()
+        if ROOT not in path.parents:
+            raise ValueError('SFX must reference real game assets in this checkout')
+        if not 0 <= cue['at'] < total or cue['gainDB'] > -6:
+            raise ValueError('SFX cues need an in-range time and gain <= -6 dB')
+        inputs += ['-i', path]
+        afilters.append(f"[{i}:a]volume={cue['gainDB']}dB,adelay={round(cue['at']*1000)}:all=1[a{i}]")
+    afilters.append(''.join(f'[a{i}]' for i in range(4 + len(cues))) +
+                    f'amix=inputs={4 + len(cues)}:normalize=0:duration=longest,atrim=duration={total},'
+                    f'afade=t=in:d=0.25,afade=t=out:st={total-2.25}:d=2.25[mix]')
+    mix = work / 'score-mix.wav'
+    run(inputs + ['-filter_complex', ';'.join(afilters), '-map', '[mix]', '-ar', 48000, '-c:a', 'pcm_s24le', mix])
+    loud = m['loudness']
+    norm = f"loudnorm=I={loud['integratedLUFS']}:TP={loud['truePeakDBTP']}:LRA={loud['rangeLU']}"
+    report = work / 'loudness-pass1.log'
+    measured = run(['-i', mix, '-af', norm + ':print_format=json', '-f', 'null', '-'], report)
+    if args.execute:
+        values = json.loads(measured[measured.rfind('{'):measured.rfind('}') + 1])
+        for key, field in [('measured_I', 'input_i'), ('measured_TP', 'input_tp'),
+                           ('measured_LRA', 'input_lra'), ('measured_thresh', 'input_thresh'), ('offset', 'target_offset')]:
+            norm += f':{key}={values[field]}'
+        norm += ':linear=true'
+        (work / 'loudness-measured.json').write_text(json.dumps(values, indent=2))
+    else:
+        commands.append('# Execution inserts measured two-pass loudnorm values from loudness-pass1.log')
+    public = out / 'quiet-relay-trailer.mp4'
+    run(['-i', silent, '-i', mix, '-map', '0:v:0', '-map', '1:a:0', '-c:v', 'copy',
+         '-af', norm, '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-t', total, '-movflags', '+faststart', public])
+
+    # Menu uses ONLY the clean picture intermediates, no promotional typography,
+    # letterbox, fades to black, title card or audio. Serial joins bound memory.
+    menu, duration = clean[0]
+    for i, (clip, length) in enumerate(clean[1:]):
+        joined = work / f'menu-join-{i}.mp4'
+        run(['-i', menu, '-i', clip, '-filter_complex',
+             f'[0:v][1:v]xfade=transition=fade:duration=0.25:offset={duration-.25}[v]',
+             '-map', '[v]', '-an', '-c:v', 'libx264', '-crf', 18, '-pix_fmt', 'yuv420p', joined])
+        menu, duration = joined, duration + length - .25
+    ogv = out / 'quiet-relay.ogv'
+    seam = (f'[0:v]split=3[a][b][c];[a]trim=start=0.5:end={duration-.5},setpts=PTS-STARTPTS[mid];'
+            f'[b]trim=start={duration-.5}:end={duration},setpts=PTS-STARTPTS[tail];'
+            '[c]trim=end=0.5,setpts=PTS-STARTPTS[head];'
+            '[tail][head]xfade=transition=fade:duration=0.5:offset=0[seam];'
+            '[mid][seam]concat=n=2:v=1:a=0,format=yuv420p[v]')
+    run(['-i', menu, '-filter_complex', seam, '-map', '[v]', '-an', '-c:v', 'libtheora',
+         '-b:v', '1400k', '-g', 48, '-r', fps, ogv])
+    if args.execute:
+        if ogv.stat().st_size > 20 * 1024**2:
+            raise RuntimeError('Menu asset exceeds 20 MiB; reduce bitrate and re-encode')
+        for path in (public, ogv):
+            probe = subprocess.check_output(['ffprobe', '-v', 'error', '-show_format', '-show_streams', '-of', 'json', str(path)], text=True)
+            (out / (path.name + '.probe.json')).write_text(probe)
+            data = json.loads(probe)
+            video = next(s for s in data['streams'] if s['codec_type'] == 'video')
+            if video['codec_name'] != ('theora' if path == ogv else 'h264') or video['width'] != 960 or video['height'] != 540:
+                raise RuntimeError(f'Unexpected video format: {path}')
+            expected_duration = duration-.5 if path == ogv else total
+            if abs(float(data['format']['duration']) - expected_duration) > 0.15:
+                raise RuntimeError(f'Unexpected duration: {path}')
+            if path == ogv and any(s['codec_type'] == 'audio' for s in data['streams']):
+                raise RuntimeError('Menu video unexpectedly contains audio')
+            (out / (path.name + '.sha256')).write_text(hashlib.sha256(path.read_bytes()).hexdigest() + '\n')
+    (out / 'edit-commands.sh').write_text('#!/usr/bin/env bash\nset -euo pipefail\n' + '\n'.join(commands) + '\n')
+    (out / 'edit-timeline.json').write_text(json.dumps(dict(timeline=timeline, fps=fps,
+        duration=total, menuDuration=duration-.5, menuSilent=True, loudnessTarget=loud,
+        sfx=cues, executed=args.execute, credit=m['credit']), indent=2))
+    print('TRAILER_EDIT', 'encoded; visual/audio approval still required' if args.execute else 'plan only', out)
+
+
+if __name__ == '__main__':
+    main()
