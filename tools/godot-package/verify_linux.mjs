@@ -11,6 +11,7 @@ import {join, resolve} from 'node:path';
 import {tmpdir} from 'node:os';
 import {createConnection} from 'node:net';
 import {REPO_ROOT, validateArtifact} from './manifest_validation.mjs';
+import {verify as verifyExpansion} from './verify_expansion.mjs';
 const exec = promisify(execFile);
 const root = resolve(process.argv[2]);
 const output = resolve(process.argv[3]);
@@ -105,6 +106,10 @@ try {
     assert.throws(()=>process.kill(native.pid,0), 'Native arena process exited');
     report.cases.push({experience:'native-dm',map,passed:true,port:ready.port,native_pid:native.pid,cleanup:true});
   }
+  // Campaign was optional on pre-expansion manifests only. An expansion build
+  // that advertises seven worlds must carry all four campaign data inputs.
+  if (manifest.server_closure?.worldDataFiles?.length)
+    assert.equal(manifest.server_closure.campaignDataFiles?.length,4,'Expansion manifest omitted campaign data');
   for (const path of manifest.server_closure?.campaignDataFiles ?? []) {
     const map = path.split('/').at(-1).replace(/\.json$/, '');
     const result = await runManager(['--experience=campaign', `--map=${map}`, '--smoke'], 'campaign-'+map, 120000);
@@ -177,6 +182,7 @@ try {
   assert.doesNotMatch(inspection.stdout+inspection.stderr,/SCRIPT ERROR|ERROR:|Assertion failed/);
   assert.match(inspection.stdout,/PACKAGE_GRAPHICS_OK moth_planes=101 first_person_weapons=10/);
   report.graphics_resources = true;
+  report.expansion = await verifyExpansion(root,join(output,'expansion'));
   report.status = 'passed';
 } catch (error) {
   report.status = 'failed'; report.error = error.stack; process.exitCode = 1;
