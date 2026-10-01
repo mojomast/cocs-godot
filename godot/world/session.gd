@@ -748,7 +748,11 @@ func on_snapshot(frame: Dictionary) -> void:
 	if reseeded: local_motion.reset()
 	var eye: Vector3 = presentation.eye_position()
 	var now: float = Time.get_ticks_usec() / 1000000.0
-	local_motion.ingest(eye, presentation.lifecycle.can_control(), now, local_motion_source_time(frame.state))
+	var authority_velocity := Vector3.INF
+	if selected_mode == "campaign":
+		var actor: Dictionary = presentation.local_actor
+		authority_velocity = Vector3(float(actor.get("vx", 0)), float(actor.get("vy", 0)), float(actor.get("vz", 0)))
+	local_motion.ingest(eye, presentation.lifecycle.can_control(), now, local_motion_source_time(frame.state), authority_velocity)
 	apply_local_snapshot_pose(eye, now, reseeded)
 	if reseeded:
 		weapon_selection.clear()
@@ -784,6 +788,7 @@ func on_snapshot(frame: Dictionary) -> void:
 
 ## Horde can use source ticks while ordinary sessions retain receive-time motion.
 func local_motion_source_time(_state: Dictionary) -> float:
+	if selected_mode == "campaign": return float(_state.get("time", NAN))
 	return NAN
 
 func apply_local_snapshot_pose(eye: Vector3, now: float, _reseeded: bool) -> void:

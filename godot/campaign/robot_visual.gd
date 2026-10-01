@@ -12,6 +12,7 @@ var lod_level: int = 0
 var elapsed: float = 0.0
 var gait_phase: float = 0.0
 var recoil: float = 0.0
+var hit_reaction: float = 0.0
 var death_elapsed: float = 0.0
 var local_id: int = -1
 var bands: Array[Node3D] = []
@@ -202,6 +203,9 @@ func apply_actor(actor: Dictionary, local_actor_id: int = -1) -> void:
 		if int(actor.get("shots", 0)) > int(snapshot.get("shots", 0)): kick()
 		if float(actor.get("melee", 0)) > float(snapshot.get("melee", 0)): kick(0.7)
 		if float(actor.get("health", 100)) > 0 and float(snapshot.get("health", 100)) <= 0: reset_pose()
+	if not snapshot.is_empty():
+		var loss: float = float(snapshot.get("health", 0)) + float(snapshot.get("armor", 0)) - float(actor.get("health", 0)) - float(actor.get("armor", 0))
+		if loss > 0: hit_reaction = maxf(hit_reaction, clampf(loss / 35.0, 0.18, 1.0))
 	snapshot = actor.duplicate(true)
 	visible = int(actor.get("id", -2)) != local_id and (float(actor.get("health", 100)) > 0 or wants_death_pose())
 	var profile: Dictionary = actor.get("npcProfile", {})
@@ -214,13 +218,14 @@ func apply_actor(actor: Dictionary, local_actor_id: int = -1) -> void:
 	_pose()
 
 func _tell(actor: Dictionary) -> float:
+	if float(actor.get("campaignAttackWindup", 0)) > 0: return 0.65
 	var fields := [["artilleryWindup", "npcArtillery", 1.2], ["phalanxWindup", "npcPhalanx", 0.55], ["flankWindup", "npcFlank", 0.5]]
 	for entry: Array in fields:
 		if actor.get(entry[0]) is float or actor.get(entry[0]) is int:
 			var profile: Dictionary = actor.get(entry[1], {})
 			return 0.3 + 0.7 * (1.0 - clampf(float(actor[entry[0]]) / maxf(0.01, float(profile.get("telegraph", entry[2]))), 0, 1))
 	if actor.get("bossStompWindup") is float or actor.get("bossStompWindup") is int:
-		var duration: float = [1.1, 0.95, 0.8][clampi(int(actor.get("bossPhase", 1)) - 1, 0, 2)]
+		var duration: float = float(actor.get("campaignSlamDuration", [1.1, 0.95, 0.8][clampi(int(actor.get("bossPhase", 1)) - 1, 0, 2)]))
 		return 0.3 + 0.7 * (1.0 - clampf(float(actor.bossStompWindup) / duration, 0, 1))
 	return 0.0
 
@@ -234,6 +239,7 @@ func advance(dt: float) -> void:
 	var speed := Vector2(float(snapshot.get("vx", 0)), float(snapshot.get("vz", 0))).length()
 	gait_phase = fmod(gait_phase + dt * minf(speed, 18.0) * 2.8, TAU)
 	recoil *= exp(-dt * 12.0)
+	hit_reaction *= exp(-dt * 15.0)
 	if float(snapshot.get("health", 100)) <= 0:
 		death_elapsed += dt
 		if not wants_death_pose(): hide()
@@ -249,7 +255,8 @@ func _pose() -> void:
 	var body: Node3D = rig.body
 	body.position = body.get_meta("rest")
 	body.position.y += sin(gait_phase * 2) * 0.025 * stride - collapse * 0.32 - tell_strength * 0.09
-	body.rotation = Vector3(tell_strength * -0.12, 0, collapse * 0.22)
+	body.rotation = Vector3(tell_strength * -0.12 + hit_reaction * 0.14, 0, collapse * 0.22 + hit_reaction * 0.06)
+	body.position.z += hit_reaction * 0.065
 	var turret: Node3D = rig.turret
 	turret.rotation = Vector3(clampf(float(snapshot.get("pitch", 0)), -0.5, 0.5), wrapf(float(snapshot.get("yaw", 0)) - float(snapshot.get("bodyYaw", snapshot.get("yaw", 0))), -PI, PI), collapse * 0.35)
 	var gun: Node3D = rig.gun
@@ -261,7 +268,7 @@ func _pose() -> void:
 		rig.legs[i].rotation.x = sin(phase) * 0.28 * stride + collapse * 0.35
 		if model_id == "warden" and i < 2: rig.legs[i].rotation.x -= tell_strength * 0.42
 		rig.knees[i].rotation.x = maxf(0, cos(phase)) * 0.32 * stride - collapse * 0.6
-	if rig.shield != null: rig.shield.rotation.x = -tell_strength * 0.2 + collapse * 0.45
+	if rig.shield != null: rig.shield.rotation.x = -tell_strength * 0.2 + collapse * 0.45 + (0.9 if float(snapshot.get("campaignExposed", 0)) > 0 else 0.0)
 	optic_material.emission_energy_multiplier = 0.0 if dead else 0.65 + tell_strength * 1.5
 
 func kick(amount: float = 1.0) -> void:
@@ -269,7 +276,7 @@ func kick(amount: float = 1.0) -> void:
 	_pose()
 
 func reset_pose() -> void:
-	elapsed = 0; gait_phase = 0; recoil = 0; death_elapsed = 0; tell_strength = 0
+	elapsed = 0; gait_phase = 0; recoil = 0; hit_reaction = 0; death_elapsed = 0; tell_strength = 0
 	_pose()
 
 func select_distance(distance: float) -> void:

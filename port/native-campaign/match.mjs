@@ -1,6 +1,7 @@
 import {Match, floorAt, obstructed} from './core.generated.mjs';
 import {navigation as sourceNavigation} from '../../game/core.mjs';
-import {updateEnemyRoles, updateHealthRegen} from '../../game/singleplayer.mjs';
+import {updateEnemyRoles} from '../../game/singleplayer.mjs';
+import {createFeel} from './feel.mjs';
 import {loadCampaignMap} from './maps.mjs';
 import {missionForCampaign} from './missions.mjs';
 import {deployEncounter} from './enemies.mjs';
@@ -38,9 +39,10 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
   const state = {kind:'campaign', playerId:0, phase:'playing', stepIndex:checkpoint,
     checkpoint, checkpointPoint:checkpointPoint ?? anchors.start, elapsed, totalElapsed,
     bankedKills:kills, nextId:1, enemies:[], allies:[], groups:{}, steps:[],
-    holdProgress:0, restoring:false, deployed:false, boss:null, bossPhase:1, summonCount:0,
+     holdProgress:0, restoring:false, bypassed:false, deployed:false, boss:null, bossPhase:1, summonCount:0,
     transmission:{speaker:'ECHO',text:mission.brief}};
   let controls = {}, arenaAssigned = false;
+  const feel=createFeel(difficulty);
   const remaining = match => match.actors.filter(a => a.isNpc && a.health > 0).length;
   const currentAnchor = () => anchors[state.stepIndex < 5 ? `encounter-${state.stepIndex + 1}` : 'exit'];
   const checkpointPosition = (match, player) => {
@@ -50,6 +52,29 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
   };
   const finish = (match, phase) => {state.phase=phase; state.winner=phase==='dead'?1:0; match.over=true; match.overReason=phase;};
   class CampaignMatch extends Match {
+    emit(type,event) {feel.event(this,type,event);return super.emit(type,event);}
+    damage(target,amount,source,ability=false) {
+      const adjusted=feel.incoming(this,target,feel.outgoing(this,target,amount,source),source);
+      if(adjusted<=0)return 0;
+      const actual=super.damage(target,adjusted,source,ability);
+      feel.damaged(this,target,source,actual,adjusted);
+      return actual;
+    }
+    fire(actor,direction) {
+      if(!feel.attack(this,actor))return false;
+      const fired=super.fire(actor,direction);
+      if(fired)feel.afterAttack(this,actor,'gun');
+      return fired;
+    }
+    altFire(actor) {return actor.isNpc?false:super.altFire(actor);}
+    throwGrenade(actor) {return actor.isNpc?false:super.throwGrenade(actor);}
+    power(actor) {return actor.isNpc?false:super.power(actor);}
+    botInput(actor,dt) {
+      const input=super.botInput(actor,dt);
+      if(input.melee){input.melee=feel.attack(this,actor,'melee');if(input.melee)feel.afterAttack(this,actor,'melee');}
+      if(this.time<(actor.campaignStaggerUntil??0)||this.time<(actor.campaignExposedUntil??0)){input.x=0;input.z=0;input.melee=false;}
+      return input;
+    }
     spawn(actor) {
       // Retry/restart construct fresh actors; base automatic respawn is barred.
       if (this.modeState===state && actor.deaths>0) return;
@@ -63,6 +88,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
     initializeSinglePlayer() {
       this.modeState=state; this.humanCount=1; this.actors=this.actors.filter(a => a.id===0);
       this.actors[0].team=0; place(this.actors[0], state.checkpointPoint);
+      this.actors[0].health=this.actors[0].maxHealth=feel.tuning.health;this.actors[0].armor=feel.tuning.armor;
       this.objectiveState={kind:'campaign',zones:[],winner:null,singleplayer:true};
       return state;
     }
@@ -84,7 +110,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         if (phase!==state.bossPhase) this.emit('boss-phase',{actor:boss.id,phase});
         state.bossPhase=phase;
       }
-      updateEnemyRoles(this,state,dt); updateHealthRegen(this,state,dt);
+      updateEnemyRoles(this,state,dt); feel.update(this,dt);
       if (player.health<=0) {finish(this,'dead'); return;}
       const anchor=currentAnchor(), near=distance(player,anchor)<=anchor.radius && Math.abs(player.y-anchor.y)<3;
       const encounterForStory=mission.encounters[state.stepIndex];
@@ -109,20 +135,34 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
       if (encounter.mechanic==='hold' && near) {
         state.holdProgress=Math.min(encounter.seconds,state.holdProgress+dt);
       }
-      if (alive>0) return;
+       // Let the player choose a risky console rush to dismantle the formation.
+       // Completion still requires every guard; bypass never skips a checkpoint.
+       if(encounter.mechanic==='interact'&&near&&controls.interact===true&&!state.bypassed) {
+         state.bypassed=true;
+         for(const actor of this.actors)if(state.enemies.includes(actor.id)) {
+           actor.npcPhalanx=null;actor.phalanxWindup=undefined;actor.temporaryShield=0;
+           actor.npcShield=null;actor.campaignSavedShield=null;
+           actor.campaignExposedUntil=this.time+2.2;
+         }
+         this.emit('campaign-bypass',{step:state.stepIndex});
+         state.transmission={speaker:'ECHO',text:'Security bypassed. Their guard network is down.'};
+       }
+       if(encounter.mechanic==='restore') {
+         if(near&&controls.interact===true)state.restoring=true;
+         if(near&&state.restoring)state.holdProgress=Math.min(encounter.seconds,state.holdProgress+dt);
+       }
+       if (alive>0) return;
       let done=(encounter.mechanic==='clear'||encounter.mechanic==='guardian')&&near;
       if (encounter.mechanic==='interact') done=near && controls.interact===true;
-      if (encounter.mechanic==='restore') {
-        if (near && controls.interact===true) state.restoring=true;
-        if (near && state.restoring) state.holdProgress=Math.min(encounter.seconds,state.holdProgress+dt);
-        done=state.holdProgress>=encounter.seconds;
+       if (encounter.mechanic==='restore') {
+         done=near&&state.holdProgress>=encounter.seconds;
       }
       if (encounter.mechanic==='hold') done=near&&state.holdProgress>=encounter.seconds;
       if (!done) return;
       this.emit('campaign-objective-complete',{step:state.stepIndex});
       state.bankedKills+=state.enemies.filter(id=>this.actors[id]?.health<=0).length;
       state.enemies=[]; state.boss=null;
-      state.stepIndex++; state.deployed=false; state.holdProgress=0; state.restoring=false;
+       state.stepIndex++; state.deployed=false; state.holdProgress=0; state.restoring=false;state.bypassed=false;
       state.checkpoint=state.stepIndex; state.checkpointPoint=checkpointPosition(this,player);
       player.health=Math.max(player.health,player.maxHealth*.8); player.armor=Math.max(player.armor,40);
       player.ammo.forEach((amount,i)=>{const cap=this.weaponForIndex(player,i)?.cap;
@@ -138,12 +178,17 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
     completeCampaign() {if (state.phase==='level-complete' && data.campaign.nextMapId===null) finish(this,'campaign-complete');}
     snapshot() {
       const snapshot=super.snapshot(), encounter=mission.encounters[state.stepIndex], marker=currentAnchor();
+      for(const actor of snapshot.actors){const source=this.actors[actor.id];if(!source?.isNpc)continue;
+        actor.campaignAttackWindup=Math.max(0,(source.campaignFireAt??0)-this.time);
+        actor.campaignSlamDuration=source.campaignSlamDuration??1.15;
+        actor.campaignStagger=Math.max(0,(source.campaignStaggerUntil??0)-this.time);
+        actor.campaignExposed=Math.max(0,(source.campaignExposedUntil??0)-this.time);}
       const mechanic=encounter?.mechanic;
       snapshot.campaign={id:'quiet-relay',mapId,index:data.campaign.index,title:mission.title,
         stepIndex:state.stepIndex,stepCount:6,objective:encounter?.title??'Follow the service route to the exit',
         detail:!state.deployed&&encounter?'Follow the waypoint. Optional supply routes branch from the service path.':
-          mechanic==='restore'?'Clear guards, press Interact to begin, then stay inside the marker.':
-          mechanic==='interact'?'Clear the guards, then press Interact inside the marker.':
+          mechanic==='restore'?'Press Interact to start the transfer. Defend nearby; dodge without losing progress.':
+          mechanic==='interact'?(state.bypassed?'Guard network disabled. Finish the guards and return to the console.':'Clear the guards, or rush the console and press Interact to disable their guards.'): 
           mechanic==='hold'?(remaining(this)>0?'Hold the relay and eliminate its guards':'Remain inside the relay marker to finish synchronization. Progress is retained when you dodge.'):
           encounter?(state.deployed&&remaining(this)===0?'Area clear—reach the relay marker':'Eliminate the deployed security robots.'):'Reach the exit to continue.',
         marker:state.phase==='playing'?{x:marker.x,y:marker.y,z:marker.z,radius:marker.radius}:null,

@@ -1,7 +1,9 @@
 import {spawnGroup} from '../../game/singleplayer.mjs';
 import {floorAt, obstructed, walkEdge} from './core.generated.mjs';
+import {tuneRobot} from './feel.mjs';
 
-// Visual identity is additive. Every brain and damage primitive is source-owned.
+// Visual identity plus campaign tuning; navigation/aim and damage primitives
+// remain source-owned, with campaign attack/recovery policy in feel.mjs.
 export const ROBOTS = Object.freeze({
   scrapper:{npcType:'husk', name:'Scrapper', hitScale:.72, chassis:[.5184,.288,.648], chassisY:.3456},
   skirmisher:{npcType:'lancer', name:'Skirmisher', hitScale:.86, chassis:[.3268,.473,.4472], chassisY:.9632},
@@ -50,9 +52,18 @@ function placeEncounter(match,actors,anchor) {
   const candidates=raw.map(p=>({x:p.x,y:floorAt(p.x,p.z,match.arena),z:p.z}))
     .filter(p=>Number.isFinite(p.y)&&deploymentReachable(match,anchor,p));
   const placed=[{...match.actors[0],radius:.52}];
+  const player=match.actors[0],length=Math.hypot(anchor.x-player.x,anchor.z-player.z);
+  const forward=length>1?{x:(anchor.x-player.x)/length,z:(anchor.z-player.z)/length}:{x:0,z:1};
   for(const actor of [...actors].sort((a,b)=>Number(b.npcModel==='warden')-Number(a.npcModel==='warden'))) {
     const radius=actor.npcModel==='warden'?1.65:.7;
-    const point=candidates.find(p=>supportedClearance(match,p,radius)&&
+    // Keep a readable front, flanking runners and a rear artillery position.
+    // Rank supported/reachable sites rather than teleporting to unchecked art.
+    const side=actor.npcModel==='skirmisher'?(actor.id%2?9:-9):(actor.id%2?3:-3);
+    const depth=actor.npcModel==='mortar'?12:actor.npcModel==='warden'?9:actor.npcModel==='scrapper'?-5:4;
+    const goal={x:anchor.x+forward.x*depth+forward.z*side,z:anchor.z+forward.z*depth-forward.x*side};
+    const score=p=>Math.hypot(p.x-goal.x,p.z-goal.z)-(actor.npcModel==='warden'&&match.spawns.some(s=>s.x===p.x&&s.z===p.z)?1000:0);
+    const point=[...candidates].sort((a,b)=>score(a)-score(b)).find(p=>
+      Math.hypot(p.x-player.x,p.z-player.z)>=7&&supportedClearance(match,p,radius)&&
       placed.every(other=>Math.hypot(other.x-p.x,other.z-p.z)>radius+other.radius));
     if(!point)throw new Error(`Encounter ${stateLabel(anchor)} lacks supported reachable deployment clearance for ${actor.npcModel}`);
     Object.assign(actor,{...point,vx:0,vy:0,vz:0,grounded:true,lastValid:{...point}});
@@ -75,6 +86,7 @@ export function deployEncounter(match, state, encounter, anchor) {
       const actor = match.actors.find(actor => actor.id === id);
       actor.npcModel = model; actor.name = robot.name; actor.hitScale=robot.hitScale;
       actor.npcHitVolume=robotHitVolume(model);
+      tuneRobot(actor,match.time);
     }
   }
   placeEncounter(match,match.actors.filter(actor=>state.enemies.includes(actor.id)),anchor);

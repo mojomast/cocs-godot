@@ -29,10 +29,12 @@ func reset() -> void:
 func ready() -> bool:
 	return _has_snapshot
 
-func ingest(eye: Vector3, alive: bool, now: float, source_time: float = NAN) -> void:
+func ingest(eye: Vector3, alive: bool, now: float, source_time: float = NAN, authority_velocity: Vector3 = Vector3.INF) -> void:
 	if not eye.is_finite() or not is_finite(now):
 		return
-	if _has_snapshot and now <= _time:
+	if _has_snapshot and (now < _time or (now == _time and not is_finite(source_time))):
+		return
+	if _has_snapshot and is_finite(source_time) and is_finite(_source_time) and source_time <= _source_time:
 		return
 	if not _has_snapshot or alive != _alive or eye.distance_to(_eye) > TELEPORT_DISTANCE:
 		_anchor(eye, alive, now, source_time)
@@ -52,6 +54,8 @@ func ingest(eye: Vector3, alive: bool, now: float, source_time: float = NAN) -> 
 	if alive and interval >= 0.0001 and interval <= MAX_VELOCITY_INTERVAL:
 		velocity = (eye - _eye) / interval
 		velocity = velocity.limit_length(MAX_VELOCITY)
+	if alive and authority_velocity.is_finite():
+		velocity = authority_velocity.limit_length(MAX_VELOCITY)
 	_eye = eye
 	_time = now
 	_source_time = source_time
@@ -59,6 +63,11 @@ func ingest(eye: Vector3, alive: bool, now: float, source_time: float = NAN) -> 
 	# The newly received pose starts exactly where the prior visual path ended.
 	# This offset decays as the camera catches up to the authoritative eye.
 	_correction = previous_visual - eye if alive else Vector3.ZERO
+	# An authoritative stop/collision must not coast through the blocking wall.
+	# Keep vertical stair settling; only discard the stopped horizontal axes.
+	if authority_velocity.is_finite():
+		if absf(authority_velocity.x) < 0.001: _correction.x = 0.0
+		if absf(authority_velocity.z) < 0.001: _correction.z = 0.0
 
 func sample(now: float) -> Vector3:
 	if not _has_snapshot:

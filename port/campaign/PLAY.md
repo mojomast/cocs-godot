@@ -32,9 +32,11 @@ ending.
 ## Objectives and recovery
 
 Use the objective text, relay marker and terrain beacons to follow the route.
-Clear the guards, then reach the relay at its supported height. Interaction
-objectives require a press of **Interact**; restoration requires one press and
-remaining nearby until the connection completes. Hold objectives progress while
+Reach the relay at its supported height. Interaction objectives require a press
+of **Interact**; rushing the console before clearing its guards disables their
+shield network. You still need to finish the guards. Restoration requires one
+press and remaining nearby until the connection completes; you can begin while
+fighting, and dodge away without losing progress. Hold objectives progress while
 you remain inside their marker, including under enemy pressure. Completing one
 also requires eliminating its guards and being inside the marker.
 
@@ -42,6 +44,12 @@ Checkpoints restore the current encounter after death; choose **Retry**. They
 last for the current play session. Chapter selection permits returning directly
 to a later chapter after closing the application. There is no campaign clock
 failure. Supply/flanking routes provide additional resources and firing angles.
+
+Normal starts with **140 health / 60 armor**. After three damage-free seconds,
+health recovers even while returning fire; after five seconds armor recovers to
+40. Nearby robot kills restore up to 8 health / 6 armor. Easy grants more reserves
+and fewer overlapping attackers; Hard tightens recovery and attack pressure.
+These changes are in the development feel pass, not the older `614e11ad` download.
 
 ## People along the relay
 
@@ -66,8 +74,10 @@ damage, rather than an estimated change in health alone.
 - **Sentinels:** tripod units reinforce nearby robots with shield pulses.
 - **Mortars:** heavy walkers mark a ground circle before firing; leave it before
   the impact rather than relying on cover alone.
-- **Bulwarks:** slab-armoured units reward a flank and focused body shots.
-- **Warden:** the large guardian has phase changes and telegraphed area attacks.
+- **Bulwarks:** flank their slab armor, or concentrate fire to break the guard
+  for 2.2 seconds. The lowered shield shows the opening.
+- **Warden:** leave its marked slam circle, then attack during the 1.6-second
+  recovery window for increased damage. Later phases still allow escape time.
 
 Robot body hit volumes are authoritative. Thin antennae and extended decorative
 limbs are not damage targets. Ground warning rings follow the authoritative
