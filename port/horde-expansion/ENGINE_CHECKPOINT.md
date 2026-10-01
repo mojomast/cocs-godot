@@ -1,5 +1,32 @@
 # Horde engine checkpoint — exclusive slot released
 
+## 2026-10-01 resumed grant: integrated candidate, bounded chain failed
+
+Merged `feature/relay-campaign` into this lane, then ran exactly one bounded
+`node port/native-horde/blackwater-headless-live.mjs chain` with cheats
+disabled (`debug:false`), source clock and 250 ms TTL unchanged. Evidence is
+`/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/horde/headless-chain.{log,json}`
+and `chain-after-merge-console.log` (these replace the earlier full chain files
+listed below). The source ran 459.37 seconds; 27,309 native samples were applied
+over 27,563 steps, maximum gap 137.38 ms, no stale-input resets, no runtime
+script errors. Both feeders and the **switch pump** were restored with native E
+and hold. Wave three source gate mask 1 and `horde-stage-entered` B passed;
+native HUD displayed pump `RESTORED · SUPPLY ONLINE`, and source station serial
+reached 3. Three source deaths ended the run in **wave 6**, stage B, with relief
+valve incomplete. Source C gate/arrival and Warden were **not observed in this
+run**. `headless-chain.json` reports `passed:false` and `message: ... lost`.
+
+The automated fixture had left visible authority upgrade offers unselected.
+After this failure it was changed to send the existing native 1–9 choice
+hotkey once per offered wave (prioritizing Overshield if actually offered);
+authority still decides applicability and effects. **This change has not been
+engine-tested.** No second chain case or boss case was launched on this grant.
+On the next explicit engine grant, rerun `node port/native-horde/blackwater-headless-live.mjs chain`;
+check the `BLACKWATER_INPUT_UPGRADE` and source upgrade acknowledgement along
+with all four station, gate, HUD and reward receipts. Only then run `boss`.
+
+## Earlier checkpoint (before current integrated run)
+
 Integrated base: `b871ce98` (worlds/urban art); Horde headless fixture follow-up
 is on `expansion/horde-robots`. This checkpoint does **not** claim the full
 Blackwater chain or live Warden acceptance.

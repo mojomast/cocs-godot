@@ -38,6 +38,7 @@ var route_graphs: Dictionary = {}
 var combat_goal := Vector2.INF
 var planned_usec := 0
 var route_mask := -1
+var last_offer_wave := -1
 
 func _ready() -> void:
 	started_usec = Time.get_ticks_usec()
@@ -83,6 +84,21 @@ func pulse_interact() -> void:
 	key(KEY_E,false)
 	print("BLACKWATER_INPUT_INTERACT ",JSON.stringify({"epoch":session.horde_client.input_epoch,
 		"last_ack":session.client.last_ack,"source_time":session.latest.get("time")}))
+
+func choose_native_upgrade() -> void:
+	if not session.horde.offer_pending or session.horde.offer_wave==last_offer_wave: return
+	var choices: Array = session.horde.offers
+	if choices.is_empty(): return
+	var selected := 0
+	for i: int in choices.size():
+		if str(choices[i].get("id", ""))=="overshield": selected=i; break
+	var hotkeys := [KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9]
+	if selected>=hotkeys.size(): return
+	last_offer_wave = session.horde.offer_wave
+	key(hotkeys[selected],true)
+	key(hotkeys[selected],false)
+	print("BLACKWATER_INPUT_UPGRADE ",JSON.stringify({"wave":last_offer_wave,"index":selected+1,
+		"id":choices[selected].get("id"),"source_time":session.latest.get("time")}))
 
 func aim_at(target: Dictionary, player: Dictionary) -> void:
 	var delta := Vector3(float(target.x)-float(player.x),float(target.get("y",player.y))+0.9-session.camera.position.y,
@@ -326,6 +342,7 @@ func _process(_delta: float) -> void:
 	var mission: Dictionary = session.latest.get("blackwater",{})
 	if player.is_empty() or state.is_empty() or mission.is_empty(): return
 	observe_state(player,state,mission)
+	choose_native_upgrade()
 	if chain_complete(state,mission):
 		if last_phase != 1:
 			last_phase = 1

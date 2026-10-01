@@ -1,5 +1,12 @@
 # Horde expansion intake contract (branch `expansion/horde-robots`)
 
+**Live acceptance status (2026-10-01):** the integrated normal-clock native-input
+chain run restored both feeders and the switch pump and source-entered stage B,
+then lost in wave six before the relief valve, stage C, or Warden. Full chain
+and live boss are still unverified. See `ENGINE_CHECKPOINT.md` and the retained
+`headless-chain.{log,json}` evidence for exact commands, receipts and the
+test-only native upgrade-hotkey fix made after that failed run.
+
 ## Route registration for integrator
 
 - New map ID: `blackwater-reclamation`, mode `horde`, display name **Blackwater Reclamation**.
