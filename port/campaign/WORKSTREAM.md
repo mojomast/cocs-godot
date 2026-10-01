@@ -337,3 +337,13 @@ which owns the heavy slot, is instructed to finish its current safe command and
 prioritize the real operator texture gallery under
 `operator-textures/rendered-20260930/`, then return images for parent review and
 public upload. Trailer progress is preserved and will resume after that handoff.
+
+Operator gallery completed: **164 original PNGs plus three comparison crops**.
+Parent reviewed Claude/Grok before-after and the nine-identity roster; thirteen
+selected images are published with the `operator-details-` prefix on the gallery
+release. No operator render fixes were needed. Trailer checkpoint `0ba1bfed`
+integrated as `f1dc8d91`; all thirteen authority receipts and Patch/fire/terrain
+samples passed in that lane. The exclusive slot has returned to the trailer
+lane for final MP4 and the live-menu JSON, with Theora explicitly canceled.
+The old video-background menu contracts passed after the window-state fix; the
+replacement engine-demo component will require its own runtime verification.
