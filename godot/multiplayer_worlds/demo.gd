@@ -16,6 +16,17 @@ var evidence := false
 var expected_hash := ""
 var startup_error := ""
 var auto_start := true
+var fixture_retreat_elapsed := 0.0
+var fixture_retreat_send := 0.0
+
+func _process(delta: float) -> void:
+ super._process(delta)
+ if "--world-fixture-retreat" not in OS.get_cmdline_user_args() or phase != 3: return
+ fixture_retreat_elapsed += delta
+ fixture_retreat_send += delta
+ if fixture_retreat_elapsed < 14.0 and fixture_retreat_send >= 0.05:
+  fixture_retreat_send = 0.0
+  client.send_input({"x":0.0,"z":1.0,"sprint":true})
 
 func _init() -> void:
  catalog = WorldCatalog.new()
@@ -102,6 +113,16 @@ func load_map(id: String) -> bool:
  return true
 
 func on_lobby(frame: Dictionary) -> void:
+ if "--world-fixture-three" in OS.get_cmdline_user_args() and phase == 1:
+  # Direct scene-only bounded acceptance: two real native peers plus a third
+  # wire-controlled human. No positions, objectives or scores are injected.
+  var target := 3 if selected_mode == "assault" else 1
+  if client.send_frame({"type":"host","mapId":current_id,"config":{"mode":selected_mode,"botCount":0,"timeLimit":900,"fragLimit":target}}) != OK:
+   on_error("World fixture configuration could not be queued")
+   return
+  phase=2
+  return
+ if "--world-fixture-three" in OS.get_cmdline_user_args() and phase == 2 and frame.get("players",[]).size() < 3: return
  if not auto_start and phase == 2 and frame.get("players",[]).size() < 2: return
  super.on_lobby(frame)
 
@@ -135,6 +156,7 @@ func on_snapshot(frame: Dictionary) -> void:
   print("WORLD_NATIVE ",JSON.stringify({"map":current_id,"mode":selected_mode,"hash":expected_hash,"round":round_starts,"peer":client.peer_id,"actor":client.actor_id,"ack":client.last_ack,"phase":phase,"state":frame.state.get("objectives",{})}))
 
 func on_results(frame: Dictionary) -> void:
+ if evidence: print("WORLD_NATIVE_RESULTS ",JSON.stringify({"map":current_id,"mode":selected_mode,"hash":expected_hash,"peer":client.peer_id,"winner":frame.state.get("winner"),"state":frame.state.get("objectives",{})}))
  av_snapshot(frame.state)
  av_finish(frame.state)
  round_results += 1

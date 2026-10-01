@@ -116,3 +116,21 @@ ground markers, 10 overhead slabs and seven alpine bridge samples against
 Godot physics with all five exact catalog hashes. Latest source mode matrix
 passes 43 registered map/mode pairs; source navigation and Puma route probes
 remain green. These are geometry/scene checks, not claims of completed rounds.
+
+## Completed native/live source acceptance
+
+Detailed commands, limitations, screenshots and per-peer logs:
+`/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/worlds/RESULTS.md`.
+Three standalone, bounded fixture scripts live beside the port adapter:
+`worlds-live.mjs`, `worlds-sports-live.mjs`, `worlds-tern-live.mjs`. Each holds
+two native Godot clients online while a third human sends actual sequenced
+controls over the socket. Source server ticks alone own movement, collisions,
+objectives, scoring and endings. Breakwater completed assault's three sectors,
+payload's seven authored waypoints to delivery, and a combined-arms scout
+drive/capture/win. Thermal completed CTF carry/capture and zone win. A Puma
+driven by third-peer inputs traversed all fourteen Sirocco directional gates
+and won a full lap; the same wire driver scored Copper's match-ending goal.
+Tern yielded source territory capture/order events and a 60-second time-result
+win with seven nodes. Both native clients observed start/hash and result frames
+for every scenario. These are explicitly fixture-guided rounds, not unaided
+human matches; no actor state or result is teleported/injected.
