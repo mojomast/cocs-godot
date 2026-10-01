@@ -29,6 +29,14 @@ human first-playthrough timing and balance remain to be measured.
 - Varied biome terrain: wooded shoulders, layered canyon benches, basalt shelves
   and highland plateaus, with irregular crestlines and selective crags.
 - Persistent chapter daylight through briefing, gameplay, retries and results.
+- Recurring maintenance operators Mara and Ivo, sixteen optional story beats,
+  and Patch, a puppy you can meet and pet across the corridor.
+- Textured operator armor panels, vents and circuit-board insets.
+- Fresh-press melee kicks with a short cooldown, collision-aware knockback,
+  a swoosh on the swing and a smack/shockwave on confirmed damage.
+- Animated authoritative damage numbers and six distinct synthetic robot voices.
+- The original **Relay / Warden** orchestral score, with synchronized adaptive
+  exploration, combat and guardian layers.
 - Research notes and implementation documentation in `port/campaign/`.
 
 ## Launch
@@ -46,7 +54,9 @@ Linux requires Node ≥22.13. The other chapter IDs are `siltwake-crossing`,
 `emberline-ascent` and `crown-array`. Difficulty may be `easy`, `normal` or `hard`.
 
 WASD/mouse move and aim; LMB fires; **E** interacts. Restoration needs one press
-and staying nearby. **Enter** retries after death or continues after a chapter.
+and staying nearby. Near Patch, **E** pets him when the prompt appears. **F** kicks;
+tap for each attempt, with a 0.3-second cooldown. **Enter** retries after death or
+continues after a chapter.
 Checkpoints last for the current session; chapter selection lets you return to
 a later level after closing the game.
 

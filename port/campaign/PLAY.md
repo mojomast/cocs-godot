@@ -39,6 +39,22 @@ last for the current play session. Chapter selection permits returning directly
 to a later chapter after closing the application. There is no campaign clock
 failure. Supply/flanking routes provide additional resources and firing angles.
 
+## People along the relay
+
+Mara and Ivo appear along the service route with optional, proximity-triggered
+story moments. Patch, their puppy, reappears across the chapters. Approach him
+and press **Interact** when the pet prompt appears; he reacts to the accepted
+interaction and remembers earlier pets during the campaign session. Main relay
+interactions take priority if their interaction ranges overlap.
+
+## Close-range kick and feedback
+
+Press **F** for a melee kick. Each press makes one attempt; holding does not
+repeat. The 0.3-second cooldown supports rapid tapping. A confirmed damaging hit
+adds a contact smack, short shockwave and bounded collision-aware knockback.
+Floating damage numbers show authoritative damage totals, including absorbed
+damage, rather than an estimated change in health alone.
+
 ## Robot counterplay
 
 - **Scrappers:** low quadrupeds close into melee; move and aim down at the body.
