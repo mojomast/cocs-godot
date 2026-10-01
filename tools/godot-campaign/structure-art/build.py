@@ -67,78 +67,150 @@ def tube(name, loc, radius, depth, mat, vertices=10, rotation=(0, 0, 0)):
     return obj
 
 
-def build(kind, lod):
+def beam(name, start, end, width, depth, mat):
+    a, b = start, end
+    obj = box(name, ((a[0]+b[0])/2, (a[1]+b[1])/2, a[2]),
+              (width, math.dist(a, b), depth), mat, .006)
+    obj.rotation_euler.z = -math.atan2(b[0]-a[0], b[1]-a[1])
+
+
+def roof(name, mat, ridge=.975):
+    # Four real pitched sheet faces / two solid closed gables; no floating trim.
+    vertices = [(-.48, .82, -.485), (0, ridge, -.485), (.48, .82, -.485),
+                (-.48, .82, .485), (0, ridge, .485), (.48, .82, .485)]
+    faces = [(0, 3, 4, 1), (1, 4, 5, 2), (0, 1, 2), (3, 5, 4)]
+    mesh = bpy.data.meshes.new(name)
+    mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+    obj = bpy.data.objects.new(name, mesh)
+    bpy.context.collection.objects.link(obj)
+    mesh.materials.append(mat)
+
+
+def build(kind, lod, profile='top'):
     bpy.ops.object.select_all(action='SELECT')
     bpy.ops.object.delete(use_global=False)
+    bpy.data.orphans_purge(do_recursive=True)
     colors = PALETTES[kind]
-    mats = [material(f'{kind}_{n}', color, .65 if n in (0, 2, 3) else .15, .73 if n in (0, 1) else .43)
+    mats = [material(f'{kind}_{n}', color, .58 if n in (0, 2, 3) else .14, .81 if n in (0, 1) else .49)
             for n, color in enumerate(colors)]
     fine = lod == 0
-    # Primary closed masonry/metal mass: no false portals or passable arches.
-    core_width = .83 if kind in ('receiver', 'gate', 'refinery') else .88
-    box('Closed structural core', (0, .47, 0), (core_width, .91, .85), mats[0], .022)
-    box('Cast foundation, sealed to blocked footprint', (0, .075, 0), (.97, .15, .97), mats[1], .012)
-    box('Continuous cap flashing', (0, .94, 0), (.97, .10, .97), mats[2], .012)
-    # Facade planes and panel recesses sit inside the box footprint.
-    for side in (-1, 1):
-        z = side * .435
-        for x in (-.32, .32):
-            box('Exposed load-bearing pier', (x, .52, z), (.115, .75, .115), mats[1], .009)
-        box('Recessed blind service bay', (0, .50, side * .433), (.50, .47, .018), mats[2], .005)
-        box('Gasketed hatch face', (0, .50, side * .448), (.40, .36, .012), mats[0], .004)
-        if fine:
-            for y in (.36, .43, .50, .57, .64):
-                box('Slatted ventilation', (0, y, side * .458), (.32, .013, .014), mats[3], .003)
-            for x in (-.16, .16):
-                tube('Hatch bolt', (x, .31, side * .462), .013, .015, mats[1], 8, (math.pi/2, 0, 0))
-    for side in (-1, 1):
-        box('Side buttress', (side * .44, .35, 0), (.095, .57, .57), mats[1], .012)
-        box('Side inset dark reveal', (side * .477, .62, 0), (.012, .24, .42), mats[2], .002)
-
-    if kind in ('relay', 'outpost'):
-        # Low, shingled weather hood; all ribs are tied to the original mass.
-        for z in (-.29, 0, .29):
-            box('Forest station roof rib', (0, .865, z), (.83, .07, .055), mats[3], .01)
-        for x in (-.24, .24):
-            box('Relay cable trunk', (x, .74, -.478), (.055, .33, .028), mats[2], .008)
-        if kind == 'relay':
-            box('Fallen mast socket', (0, .945, 0), (.41, .07, .40), mats[3], .01)
-            for x in (-.22, .22):
-                box('Sheared mast mounting rail', (x, .89, 0), (.035, .12, .72), mats[1], .006)
-    elif kind in ('pump', 'abutment'):
-        for x in (-.30, .30):
-            tube('Intake valve collar', (x, .76, -.434), .105, .08, mats[3], 12)
-            tube('Intake dark center', (x, .76, -.482), .059, .01, mats[2], 12)
-        if kind == 'abutment':
-            for y in (.22, .43, .67):
-                box('Flood wall terrace course', (0, y, 0), (.99, .055, .98), mats[1], .012)
-        else:
-            for z in (-.24, 0, .24):
-                box('Grated pump service roof', (0, .994, z), (.72, .011, .05), mats[3], .001)
-    elif kind in ('refinery', 'uplink'):
-        for x in (-.28, .28):
-            box('Heavy refinery corner brace', (x, .5, -.47), (.085, .78, .046), mats[3], .006)
-        for y in (.24, .75):
-            box('Heat-exchanger header', (0, y, -.48), (.57, .046, .027), mats[1], .005)
-        if kind == 'refinery':
-            for x in (-.19, .19):
-                tube('Exhaust stack in roof silhouette', (x, .905, .12), .055, .18, mats[2], 10)
-        else:
-            for z in (-.2, .2):
-                box('Uplink heat vanes', (0, .92, z), (.50, .12, .045), mats[3], .006)
+    # Continuous support on all stories; base plinth only at ground level and
+    # roof termination only at the final story. All faces are solid/closed.
+    if kind == 'receiver':
+        tube('Hexagonal receiver monolith', (0, .50, 0), .43, .97, mats[0], 6, (math.pi/2, 0, 0))
+    elif kind == 'outpost':
+        box('Forest service cabin', (0, .43, 0), (.82, .84, .85), mats[0], .025)
+    elif kind == 'abutment':
+        box('Broad coursed river pier', (0, .50, 0), (.91, .98, .93), mats[1], .012)
+    elif kind == 'gate':
+        box('Closed fortified gate pier', (0, .50, 0), (.90, .98, .86), mats[0], .028)
     else:
-        # Crown's repeated radial forms read as an engineered receiver / gate.
-        for x in (-.27, .27):
-            box('Receiver vertical spine', (x, .53, -.477), (.07, .73, .032), mats[3], .005)
-        box('Signal aperture, sealed face', (0, .74, -.478), (.35, .075, .03), mats[4], .007)
-        if kind == 'receiver':
-            for z in (-.29, .29):
-                box('Antenna foot', (0, .98, z), (.49, .026, .08), mats[1], .003)
-        else:
-            box('Gate tympanum', (0, .83, -.476), (.64, .075, .038), mats[1], .005)
-            for x in (-.20, .20):
-                box('Gate axial relief', (x, .43, -.48), (.035, .56, .026), mats[4], .003)
+        width = .76 if kind == 'relay' else .84
+        box('Closed machinery-bearing mass', (0, .50, 0), (width, .97, .84), mats[0], .025)
+    if profile == 'base':
+        box('Single ground footing', (0, .055, 0), (.98, .11, .98), mats[1], .012)
+    if kind == 'outpost':
+        if profile == 'top':
+            roof('Folded pitched forest hood', mats[1])
+            for z in (-.36, .36):
+                beam('Exposed pitched timber strut', (-.45, .84, z), (0, .973, z), .027, .03, mats[3])
+                beam('Exposed pitched timber strut', (0, .973, z), (.45, .84, z), .027, .03, mats[3])
+        for side in (-1, 1):
+            box('Inset shutter frame', (0, .48, side*.434), (.44, .32, .015), mats[1], .008)
+            box('Sealed shutters', (0, .48, side*.445), (.35, .23, .012), mats[2], .004)
+            if fine:
+                for y in (.41, .47, .53): box('Weathered shutter rails', (0, y, side*.46), (.34, .012, .012), mats[3], .002)
+        for x in (-.36, .36): box('Corner timber', (x, .44, -.45), (.065, .76, .065), mats[1], .008)
+    elif kind == 'relay':
+        # Fallen relay mount remains unmistakable even without a tall free mast.
+        for x in (-.37, .37):
+            box('Continuous relay uprights', (x, .52, -.435), (.075, .87, .08), mats[1], .009)
+        for x in (-.21, .21):
+            box('Exposed vertical cable trunk', (x, .51, -.442), (.06, .76, .042), mats[2], .006)
+        box('Sealed coil cavity', (0, .50, -.453), (.26, .42, .025), mats[3], .01)
+        if profile == 'top':
+            box('Low mast saddle', (0, .935, 0), (.50, .11, .49), mats[1], .012)
+            box('Sheared relay cradle', (0, .993, 0), (.29, .012, .47), mats[3], .002)
+        if fine:
+            for y in (.30, .42, .54, .66): box('Coil winding', (0, y, -.472), (.20, .014, .016), mats[2], .002)
+    elif kind == 'pump':
+        # Substantial opposed impeller housings and manifolds, not square hatches.
+        for x in (-.21, .21):
+            tube('Large pump bowl', (x, .49, -.435), .167, .08, mats[1], 14)
+            tube('Sealed dark impeller disk', (x, .49, -.481), .118, .012, mats[2], 14)
+            tube('Central spindle boss', (x, .49, -.489), .040, .012, mats[3], 10)
+            box('Vertical water riser', (x, .51, .44), (.07, .84, .07), mats[3], .006)
+        box('Cross-connected manifold', (0, .82, -.445), (.70, .075, .08), mats[3], .009)
+        if profile == 'top':
+            box('Gasketed pump weather lid', (0, .975, 0), (.94, .04, .93), mats[1], .01)
+        if fine:
+            for x in (-.21, .21):
+                for a in range(8):
+                    angle = a*math.tau/8
+                    tube('Impeller rim fastener', (x + .142*math.cos(angle), .49 + .142*math.sin(angle), -.486),
+                         .009, .008, mats[3], 6)
+    elif kind == 'abutment':
+        for y in (.24, .49, .74):
+            box('Cut-stone continuous bed course', (0, y, -.475), (.94, .055, .027), mats[0], .006)
+        for x in (-.36, 0, .36):
+            box('Vertical masonry bearing rib', (x, .50, -.483), (.055, .89, .024), mats[0], .006)
+        for x in (-.38, .38):
+            beam('Inclined flood buttress', (x, .11, -.46), (x*.70, .85, -.46), .075, .045, mats[2])
+        if profile == 'top': box('Bridge pier bearing plate', (0, .98, 0), (.96, .03, .95), mats[2], .006)
+        if fine:
+            for x in (-.18, .18):
+                box('Stone key seam', (x, .37, -.492), (.012, .20, .012), mats[2], .001)
+    elif kind == 'refinery':
+        # Heat exchanger is a real bank of long parallel blades between headers.
+        for x in (-.35, .35):
+            box('Vertical refractory support', (x, .50, -.44), (.09, .92, .085), mats[1], .009)
+        for x in (-.23, -.115, 0, .115, .23):
+            box('External heat-exchanger fin', (x, .50, -.467), (.045, .62, .055), mats[3], .007)
+        for y in (.18, .83): box('Exchanger header', (0, y, -.47), (.72, .075, .055), mats[2], .006)
+        if profile == 'top':
+            for x in (-.26, .26):
+                tube('Compact chimney behind header', (x, .91, .20), .07, .17, mats[2], 10, (math.pi/2, 0, 0))
+        if fine:
+            for y in (.28, .70): box('Oxidized coupling', (0, y, -.489), (.49, .024, .012), mats[1], .003)
+    elif kind == 'uplink':
+        for x in (-.37, .37):
+            box('Full-height insulated support', (x, .50, -.438), (.065, .92, .075), mats[1], .007)
+        box('Deep recessed radiator', (0, .50, -.437), (.55, .69, .024), mats[2], .005)
+        for x in (-.24, -.12, 0, .12, .24):
+            box('Copper thermal vane', (x, .50, -.473), (.034, .65, .055), mats[3], .003)
+        if profile == 'top':
+            for x in (-.36, .36):
+                beam('Slanted antenna support', (x, .76, -.42), (x*.60, .982, -.42), .055, .05, mats[1])
+        if fine:
+            for y in (.20, .80): box('Heat header', (0, y, -.483), (.56, .025, .02), mats[1], .004)
+    elif kind == 'receiver':
+        # Faceted central spine and unbroken external rails define the array.
+        for x in (-.38, .38):
+            box('Continuous receiver spar', (x, .50, -.38), (.065, .94, .075), mats[1], .008)
+        box('Sealed deep signal recess', (0, .53, -.388), (.39, .30, .028), mats[2], .008)
+        box('Receiver glass-metal plate', (0, .53, -.407), (.29, .20, .018), mats[4], .006)
+        if profile == 'top':
+            box('Radial receiver crown', (0, .968, 0), (.72, .053, .74), mats[3], .009)
+        if fine:
+            for y in (.45, .54, .63): box('Signal slot divider', (0, y, -.422), (.25, .011, .012), mats[3], .002)
+    else:  # gate
+        for x in (-.38, .38):
+            beam('Reinforced sloping closed jamb', (x, .11, -.443), (x*.85, .87, -.443), .11, .06, mats[1])
+        box('Blind reinforced portal face', (0, .49, -.445), (.47, .63, .026), mats[2], .007)
+        box('Central steel seal spine', (0, .49, -.465), (.07, .56, .022), mats[3], .004)
+        if profile == 'top': box('Stone gate lintel', (0, .955, 0), (.95, .08, .91), mats[1], .014)
+        if fine:
+            for y in (.26, .49, .72):
+                box('Gate reinforcement bar', (0, y, -.48), (.48, .025, .016), mats[1], .003)
 
+    # Bake angled braces and cylinder orientations before batching: otherwise
+    # a rotated active object makes the imported AABB overly conservative.
+    for obj in list(bpy.context.scene.objects):
+        bpy.ops.object.select_all(action='DESELECT')
+        obj.select_set(True)
+        bpy.context.view_layer.objects.active = obj
+        bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
     # Collapse equal-material objects to one surface each: bounded draw count.
     for mat in mats:
         objects = [o for o in bpy.context.scene.objects if o.type == 'MESH' and o.data.materials[0] == mat]
@@ -156,12 +228,14 @@ def build(kind, lod):
     upright = Matrix.Rotation(math.pi / 2, 4, 'X')
     for obj in bpy.context.scene.objects:
         obj.matrix_world = upright @ obj.matrix_world
-    bpy.ops.wm.save_as_mainfile(filepath=str(BLENDS / f'{kind}-{lod}.blend'))
-    bpy.ops.export_scene.gltf(filepath=str(OUT / f'{kind}-{lod}.glb'), export_format='GLB', export_yup=True,
+    tag = f'{kind}-{profile}-{lod}'
+    bpy.ops.wm.save_as_mainfile(filepath=str(BLENDS / f'{tag}.blend'))
+    bpy.ops.export_scene.gltf(filepath=str(OUT / f'{tag}.glb'), export_format='GLB', export_yup=True,
                                export_apply=True, export_materials='EXPORT', export_cameras=False, export_lights=False)
-    print(f'STRUCTURE {kind} LOD{lod}: {len(bpy.context.scene.objects)} material batches')
+    print(f'STRUCTURE {tag}: {len(bpy.context.scene.objects)} material batches')
 
 
 for style in PALETTES:
-    for detail in (0, 1):
-        build(style, detail)
+    for profile in (('top',) if style in ('relay', 'outpost') else ('base', 'shaft', 'top')):
+        for detail in (0, 1):
+            build(style, detail, profile)

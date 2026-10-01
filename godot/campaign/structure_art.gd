@@ -26,21 +26,22 @@ func build(host: Node3D) -> void:
 		var exposed := minf(float(block.h) - float(block.baseY), maxf(1.0, float(block.h) - ground + 0.35))
 		var segments := maxi(1, ceili(exposed / 5.0))
 		for segment: int in segments:
+			var profile := "top" if segment == segments - 1 else "base" if segment == 0 else "shaft"
 			var y0: float = float(block.h) - exposed + exposed * segment / segments
 			var height: float = exposed / segments
 			var at := Vector3(float(block.x), y0, float(block.z))
 			var scale := Vector3(float(block.w), height, float(block.d))
 			var cell := Vector2i(floori(at.x / CELL), floori(at.z / CELL))
 			for lod: int in 2:
-				var key := "%s/%d/%d/%d" % [style, lod, cell.x, cell.y]
-				if not groups.has(key): groups[key] = {"style":style, "lod":lod, "origin":Vector3(cell.x*CELL, 0, cell.y*CELL), "transforms":[]}
+				var key := "%s/%s/%d/%d/%d" % [style, profile, lod, cell.x, cell.y]
+				if not groups.has(key): groups[key] = {"style":style, "profile":profile, "lod":lod, "origin":Vector3(cell.x*CELL, 0, cell.y*CELL), "transforms":[]}
 				groups[key].transforms.append(Transform3D(Basis.from_scale(scale), at - groups[key].origin))
 			placements += 1
 	for group: Dictionary in groups.values():
 		_batch(group)
 
 func _batch(group: Dictionary) -> void:
-	var source_key := "%s-%d" % [group.style, group.lod]
+	var source_key := "%s-%s-%d" % [group.style, group.profile, group.lod]
 	if not _sources.has(source_key):
 		var scene: PackedScene = load(PATH + source_key + ".glb")
 		var instance := scene.instantiate()
@@ -61,7 +62,7 @@ func _batch(group: Dictionary) -> void:
 			bounds = box if i == 0 else bounds.merge(box)
 		multi.custom_aabb = bounds.grow(0.05)
 		var node := MultiMeshInstance3D.new()
-		node.name = "Structure_%s_LOD%d" % [group.style, group.lod]
+		node.name = "Structure_%s_%s_LOD%d" % [group.style, group.profile, group.lod]
 		node.position = group.origin
 		node.multimesh = multi
 		if int(group.lod) == 0:
