@@ -360,3 +360,17 @@ and production story rendering includes Mara, Ivo and Patch. Parent review also
 renames the readiness flag to avoid Node's `ready` signal and includes the last
 frame when consuming replay events. Engine and visible-menu acceptance remain
 queued behind the trailer's exclusive render job and packaged replay asset.
+
+Trailer is complete and public: `quiet-relay-trailer.mp4` on the gallery release,
+48 seconds, 960×540/24 fps, H.264/stereo AAC, 15,639,711 bytes. Parent reviewed the
+all-shot contact sheet before publication. All thirteen captures, MP4 decode and
+authority action receipts passed; final decoded audio is -16.03 LUFS / -2.20 dBTP.
+Evidence is `/home/mojo/.tmp-on-disk/cocs-trailer-evidence-20260930/`, preserving
+earlier framing and AAC-headroom failures. Trailer commits `cd986a29`, `cec6663e`,
+`00718672` integrated as `e95ac445`, `8c735cff`, `a3d848eb`.
+
+The live menu replay asset is committed: four clips, eighteen seconds, 216
+snapshots, all 230 source events retained exactly once. No menu video exists.
+The Sol menu lane now owns the **exclusive heavy slot** to import, repair, run
+contracts and capture the actual in-engine scene beneath usable menu controls.
+Parent full-verifier/build work waits for that slot to return.
