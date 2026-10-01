@@ -5,6 +5,7 @@ extends Node
 ## authority snapshots and scene receipts; never sets actor, wave or mission.
 @onready var session: Node = $NativeHorde
 const STATIONS := ["north-feeder", "south-feeder", "switch-pump", "relief-valve"]
+const ROUTE_FILE := "res://tests/horde/blackwater_fixture_routes.json"
 const LOOK_GAIN := 0.002
 var held: Dictionary = {}
 var firing := false
@@ -31,11 +32,23 @@ var route_key := ""
 var route: Array[Vector2] = []
 var route_index := 0
 var done := false
+var wall_limit := 780.0
+var route_data: Dictionary = {}
+var route_graphs: Dictionary = {}
+var combat_goal := Vector2.INF
+var planned_usec := 0
+var route_mask := -1
 
 func _ready() -> void:
 	started_usec = Time.get_ticks_usec()
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(ROUTE_FILE))
+	if parsed is Dictionary:
+		route_data = parsed.get("paths",{})
+		route_graphs = parsed.get("graphs",{})
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--goal="): goal = arg.trim_prefix("--goal=")
+		if arg.begins_with("--diagnostic-wall="): wall_limit = clampf(float(arg.trim_prefix("--diagnostic-wall=")),20,300)
+	if wall_limit == 780.0: wall_limit = 620.0 if goal == "chain" else 760.0
 	if goal not in ["chain", "boss"]:
 		finish(false,"unknown bounded fixture goal")
 		return
@@ -89,7 +102,7 @@ func move_towards(target: Vector2, player: Dictionary, enemy: Dictionary = {}) -
 	# while aiming a robot across the route. No direct wire/world-axis injection.
 	var forward := -sin(session.yaw)*direction.x-cos(session.yaw)*direction.y
 	var right := cos(session.yaw)*direction.x-sin(session.yaw)*direction.y
-	var moving := current.distance_to(target)>2.3
+	var moving := current.distance_to(target)>0.9
 	key(KEY_W,moving and forward>0.35)
 	key(KEY_S,moving and forward< -0.35)
 	key(KEY_D,moving and right>0.35)
@@ -102,21 +115,107 @@ func set_route(id: String, waypoints: Array[Vector2]) -> void:
 	route_key = id
 	route = waypoints
 	route_index = 0
-	print("BLACKWATER_INPUT_ROUTE ",JSON.stringify({"id":id,"points":route.map(func(p: Vector2)->Array: return [p.x,p.y])}))
+	print("BLACKWATER_INPUT_ROUTE ",JSON.stringify({"id":id,"nodes":route.size(),
+		"first":route.slice(0,4).map(func(p: Vector2)->Array: return [p.x,p.y]),
+		"last":route.slice(-3).map(func(p: Vector2)->Array: return [p.x,p.y])}))
+
+func dynamic_route(player: Dictionary, target: Vector2, mask: int) -> Array[Vector2]:
+	var result: Array[Vector2] = []
+	var graph: Dictionary = route_graphs.get(str(mask),{})
+	var nav: Array = graph.get("nodes",[])
+	var edges: Array = graph.get("edges",[])
+	if nav.is_empty() or edges.size()!=nav.size(): return result
+	var start := -1
+	var end := -1
+	var start_dist := INF
+	var end_dist := INF
+	var origin := Vector2(float(player.x),float(player.z))
+	for i: int in nav.size():
+		var row: Array = nav[i]
+		var point := Vector2(float(row[0]),float(row[2]))
+		var from_distance := point.distance_to(origin)
+		if absf(float(row[1])-float(player.y))<1.0 and from_distance<start_dist:
+			start=i
+			start_dist=from_distance
+		var to_distance := point.distance_to(target)
+		if to_distance<end_dist:
+			end=i
+			end_dist=to_distance
+	if start<0 or end<0: return result
+	var cost := PackedFloat64Array()
+	cost.resize(nav.size())
+	cost.fill(INF)
+	var previous := PackedInt32Array()
+	previous.resize(nav.size())
+	previous.fill(-1)
+	var open := {}
+	open[start]=true
+	cost[start]=0
+	while not open.is_empty():
+		var current := -1
+		var best := INF
+		for value: Variant in open.keys():
+			var i := int(value)
+			var row: Array = nav[i]
+			var estimate: float = cost[i]+Vector2(float(row[0]),float(row[2])).distance_to(target)
+			if estimate<best: best=estimate; current=i
+		open.erase(current)
+		if current==end: break
+		var origin_row: Array = nav[current]
+		var from := Vector2(float(origin_row[0]),float(origin_row[2]))
+		for next_value: Variant in edges[current]:
+			var next := int(next_value)
+			var row: Array = nav[next]
+			var proposal: float = cost[current]+from.distance_to(Vector2(float(row[0]),float(row[2])))
+			if proposal>=cost[next]: continue
+			cost[next]=proposal
+			previous[next]=current
+			open[next]=true
+	if not is_finite(cost[end]): return result
+	var cursor := end
+	while cursor>=0:
+		var row: Array = nav[cursor]
+		result.push_front(Vector2(float(row[0]),float(row[2])))
+		if cursor==start: break
+		cursor=previous[cursor]
+	result.append(target)
+	return result
+
+func set_dynamic_route(id: String, player: Dictionary, target: Vector2, mask: int) -> void:
+	var now := Time.get_ticks_usec()
+	if route_key==id and route_mask==mask and not route.is_empty() and not combat_goal.is_finite(): return
+	if route_key==id and route_mask==mask and not route.is_empty() and combat_goal.is_finite() and \
+		combat_goal.distance_to(target)<8 and now-planned_usec<4000000 and route_index<route.size()-1: return
+	combat_goal = target if id.begins_with("combat") else Vector2.INF
+	planned_usec = now
+	route_mask = mask
+	route_key = ""
+	set_route(id,dynamic_route(player,target,mask))
+
+func source_route(id: String) -> Array[Vector2]:
+	var result: Array[Vector2] = []
+	for row: Array in route_data.get(id,[]): result.append(Vector2(float(row[0]),float(row[1])))
+	return result
 
 func follow_route(player: Dictionary, enemy: Dictionary = {}) -> bool:
 	if route.is_empty(): return false
 	var pos := Vector2(float(player.x),float(player.z))
-	while route_index < route.size()-1 and pos.distance_to(route[route_index])<4:
+	while route_index < route.size()-1 and pos.distance_to(route[route_index])<1.5:
 		route_index += 1
-	return move_towards(route[route_index],player,enemy)<4 and route_index==route.size()-1
+	return move_towards(route[route_index],player,enemy)<1.5 and route_index==route.size()-1
 
-func station_route(id: String) -> Array[Vector2]:
+func station_route(id: String, player: Dictionary) -> Array[Vector2]:
 	match id:
-		"north-feeder": return [Vector2(-170,0),Vector2(-170,-40),Vector2(-170,78)]
-		"south-feeder": return [Vector2(-170,0),Vector2(-170,-40),Vector2(-82,-40),Vector2(-82,-78)]
-		"switch-pump": return [Vector2(-82,-40),Vector2(0,-40),Vector2(0,78)]
-		"relief-valve": return [Vector2(0,-40),Vector2(170,-40),Vector2(170,-82)]
+		"north-feeder":
+			var starts := [Vector2(-183,0),Vector2(-179,18),Vector2(-179,-18)]
+			var index := 0
+			var current := Vector2(float(player.x),float(player.z))
+			for i: int in starts.size():
+				if current.distance_to(starts[i])<current.distance_to(starts[index]): index=i
+			return source_route("start%d-north" % index)
+		"south-feeder": return source_route("north-south")
+		"switch-pump": return source_route("arrivalB-switch")
+		"relief-valve": return source_route("arrivalC-relief")
 	return []
 
 func nearest_enemy(player: Dictionary) -> Dictionary:
@@ -198,7 +297,8 @@ func observe_state(player: Dictionary, state: Dictionary, mission: Dictionary) -
 		last_position_log = now
 		print("BLACKWATER_NATIVE_INPUT ",JSON.stringify({"position":[player.get("x"),player.get("y"),player.get("z")],
 			"health":player.get("health"),"wave":wave,"source_time":session.latest.get("time"),
-			"route":route_key,"ack":session.client.last_ack,"epoch":session.horde_client.input_epoch,
+			"route":route_key,"route_index":route_index,"enemies":session.latest.get("actors",[]).filter(func(a: Dictionary)->bool: return a.get("isNpc")==true and float(a.get("health",0))>0).map(func(a: Dictionary)->Array: return [a.get("id"),a.get("x"),a.get("z"),a.get("health")]),
+			"ack":session.client.last_ack,"epoch":session.horde_client.input_epoch,
 			"fifo":session.horde_client.input_status,"native_controls":session.controls.sample(session.yaw,session.pitch)}))
 
 func chain_complete(state: Dictionary, mission: Dictionary) -> bool:
@@ -211,7 +311,7 @@ func chain_complete(state: Dictionary, mission: Dictionary) -> bool:
 func _process(_delta: float) -> void:
 	if done: return
 	var elapsed := float(Time.get_ticks_usec()-started_usec)/1000000.0
-	if elapsed>(620.0 if goal == "chain" else 760.0):
+	if elapsed>wall_limit:
 		finish(false,"normal-clock bounded wall time expired")
 		return
 	if session.phase == -1:
@@ -248,8 +348,8 @@ func _process(_delta: float) -> void:
 	var transit: Variant = stage.get("transit")
 	if transit is Dictionary:
 		var to := str(transit.get("to",""))
-		if to=="B": set_route("transit-B",[Vector2(-170,-40),Vector2(-82,-40),Vector2(0,-40),Vector2(0,0)])
-		elif to=="C": set_route("transit-C",[Vector2(0,-40),Vector2(170,-40),Vector2(170,0)])
+		if to=="B": set_dynamic_route("transit-B",player,Vector2(0,0),int(stage.get("gateMask",0)))
+		elif to=="C": set_dynamic_route("transit-C",player,Vector2(170,0),int(stage.get("gateMask",0)))
 		follow_route(player)
 		mouse(false)
 		return
@@ -261,10 +361,13 @@ func _process(_delta: float) -> void:
 				station=s
 				break
 		if not station.is_empty(): break
-	var fight := int(state.get("enemiesAlive",0))>0 and (station.is_empty() or str(station.get("id")) not in ["north-feeder","south-feeder"])
+	# Pump and relief valve are wave-gated *during combat*. Reaching/arming
+	# them must take priority just as the two feeders do; a seven-second
+	# intermission is not enough to cross a district after fighting elsewhere.
+	var fight := int(state.get("enemiesAlive",0))>0 and station.is_empty()
 	if not station.is_empty() and not fight:
 		var id := str(station.id)
-		set_route(id,station_route(id))
+		set_dynamic_route(id,player,Vector2(float(station.x),float(station.z)),int(stage.get("gateMask",0)))
 		var at_station := Vector2(float(player.x),float(player.z)).distance_to(Vector2(float(station.x),float(station.z)))<4.2
 		if at_station:
 			neutral()
@@ -280,9 +383,14 @@ func _process(_delta: float) -> void:
 		return
 	if not enemy.is_empty():
 		var distance := Vector2(float(enemy.x)-float(player.x),float(enemy.z)-float(player.z)).length()
-		move_towards(Vector2(float(enemy.x),float(enemy.z)),player,enemy)
+		set_dynamic_route("combat-%d" % int(enemy.id),player,Vector2(float(enemy.x),float(enemy.z)),int(stage.get("gateMask",0)))
+		if not route.is_empty(): follow_route(player,enemy)
+		else: move_towards(Vector2(float(enemy.x),float(enemy.z)),player,enemy)
 		mouse(true)
-		key(KEY_R,player.get("ammo",[]) is Array and int(player.get("weapon",0))<player.get("ammo",[]).size() and player.get("ammo",[])[int(player.get("weapon",0))]==0)
+		var ammo: Variant = player.get("ammo",[])
+		var weapon := int(player.get("weapon",0))
+		var loaded: Variant = ammo[weapon] if ammo is Array and weapon>=0 and weapon<ammo.size() else null
+		key(KEY_R,(loaded is int or loaded is float) and loaded==0)
 		if distance<14: key(KEY_SHIFT,false)
 	else:
 		neutral()
@@ -297,4 +405,9 @@ func finish(ok: bool, message: String) -> void:
 		"stage_events":stage_events,"gate_events":gate_events,"rewards":reward_events.size(),
 		"warden_phase":last_warden_phase,"warden_tell":boss_tell,"warden_voice":boss_voice,
 		"wall_seconds":float(Time.get_ticks_usec()-started_usec)/1000000.0}))
-	get_tree().quit(0 if ok else 1)
+	call_deferred("cleanup",0 if ok else 1)
+
+func cleanup(code: int) -> void:
+	session.queue_free()
+	for i: int in 8: await get_tree().process_frame
+	get_tree().quit(code)

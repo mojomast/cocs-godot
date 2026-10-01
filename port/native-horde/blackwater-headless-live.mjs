@@ -8,9 +8,12 @@ import {createAuthority} from './authority.mjs';
 
 const goal=process.argv[2]??'chain';
 if(!['chain','boss'].includes(goal))throw Error('Expected chain or boss');
+const diagnostic=process.env.BLACKWATER_DIAGNOSTIC_WALL;
+if(diagnostic&&(!Number.isFinite(Number(diagnostic))||Number(diagnostic)<20||Number(diagnostic)>300))throw Error('Diagnostic wall bound must be 20..300 seconds');
+const label=`${goal}${diagnostic?'-diagnostic':''}`;
 const out='/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/horde';
 mkdirSync(out,{recursive:true});
-const log=createWriteStream(`${out}/headless-${goal}.log`);
+const log=createWriteStream(`${out}/headless-${label}.log`);
 const binary=process.env.GODOT_BIN??'/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64';
 const evidence={goal,normalClock:true,fixtureControls:'native InputEvent -> HordeControls.sample -> HordeClient.send_controls',
  debug:false,events:[],resetReasons:[],steps:0,appliedSamples:0,cancelledInputFrames:0,maxInputGapMs:0,
@@ -41,31 +44,36 @@ const authority=createAuthority({debug:false,observe:record=>{
  if(record.direction==='transport-error')evidence.events.push({type:'transport-error',reason:record.reason});
 }});
 await new Promise(resolve=>authority.server.listen(0,'127.0.0.1',resolve));
-let child,output='',code=null,timedOut=false;
+let child,output='',code=null,timedOut=false,doneAt=null;
 const deadline=goal==='chain'?660000:800000;
 try{
  const endpoint=`ws://127.0.0.1:${authority.server.address().port}`;
  const started=Date.now();
- child=spawn(binary,['--headless','--audio-driver','Dummy','--path','godot',
-  'res://tests/horde/blackwater_headless.tscn','--',`--endpoint=${endpoint}`,
-  '--map=blackwater-reclamation','--waves=10',`--goal=${goal}`],
+  child=spawn(binary,['--headless','--audio-driver','Dummy','--path','godot',
+   'res://tests/horde/blackwater_headless.tscn','--',`--endpoint=${endpoint}`,
+   '--map=blackwater-reclamation','--waves=10',`--goal=${goal}`,
+   ...(diagnostic?[`--diagnostic-wall=${diagnostic}`]:[])],
  {env:{...process.env,BLACKWATER_HEADLESS_FIXTURE:'1',LP_NUM_THREADS:'1'}});
- child.stdout.on('data',part=>{output+=String(part);log.write(part)});
+ child.stdout.on('data',part=>{output+=String(part);log.write(part);if(doneAt===null&&output.includes('BLACKWATER_HEADLESS_DONE '))doneAt=performance.now()});
  child.stderr.on('data',part=>{output+=String(part);log.write(part)});
  const exit=new Promise(resolve=>child.once('exit',resolve));
- const timeout=new Promise(resolve=>setTimeout(()=>{timedOut=true;child.kill('SIGTERM');resolve(null)},deadline));
- code=await Promise.race([exit,timeout]);
+  let timer;
+  const timeout=new Promise(resolve=>{timer=setTimeout(()=>{timedOut=true;child.kill('SIGTERM');resolve(null)},deadline)});
+  code=await Promise.race([exit,timeout]);
+  clearTimeout(timer);
  evidence.wallSeconds=(Date.now()-started)/1000;
  const line=output.split('\n').findLast(row=>row.startsWith('BLACKWATER_HEADLESS_DONE '));
  evidence.nativeDone=line?JSON.parse(line.slice('BLACKWATER_HEADLESS_DONE '.length)):null;
- evidence.engineErrors=output.split('\n').filter(row=>/SCRIPT ERROR|Parse Error|ERROR:/.test(row)).slice(0,30);
+ evidence.shutdownLeaks=output.split('\n').filter(row=>/ERROR: (\d+ RID allocations|\d+ resources still in use)/.test(row)).slice(0,30);
+ evidence.engineErrors=output.split('\n').filter(row=>/SCRIPT ERROR|Parse Error|ERROR:/.test(row)&&
+  !/ERROR: (\d+ RID allocations|\d+ resources still in use)/.test(row)).slice(0,30);
  evidence.code=code;evidence.timedOut=timedOut;
  evidence.passed=code===0&&!timedOut&&evidence.nativeDone?.ok===true&&!evidence.engineErrors.length&&
-  evidence.steps>300&&evidence.appliedSamples>100&&evidence.resetReasons.every(row=>row.reason!=='stale-input')&&
+  evidence.steps>300&&evidence.appliedSamples>100&&evidence.resetReasons.every(row=>row.reason!=='stale-input'||doneAt!==null&&row.at>=doneAt)&&
   evidence.events.some(row=>row.type==='horde-stage-entered'&&row.stageId==='B')&&
   evidence.events.some(row=>row.type==='horde-stage-entered'&&row.stageId==='C')&&
   (!('boss'===goal)||evidence.events.some(row=>row.type==='boss-phase'&&row.phase===3));
- writeFileSync(`${out}/headless-${goal}.json`,JSON.stringify(evidence,null,2)+'\n');
+ writeFileSync(`${out}/headless-${label}.json`,JSON.stringify(evidence,null,2)+'\n');
  console.log('BLACKWATER_HEADLESS_RESULT '+JSON.stringify({goal,passed:evidence.passed,code,timedOut,
   wallSeconds:evidence.wallSeconds,sourceSeconds:(evidence.lastSourceTime??0)-(evidence.firstSourceTime??0),
   steps:evidence.steps,appliedSamples:evidence.appliedSamples,maxInputGapMs:evidence.maxInputGapMs,
