@@ -134,3 +134,28 @@ Tern yielded source territory capture/order events and a 60-second time-result
 win with seven nodes. Both native clients observed start/hash and result frames
 for every scenario. These are explicitly fixture-guided rounds, not unaided
 human matches; no actor state or result is teleported/injected.
+
+## Art checkpoint after parent review · waiting for Godot
+
+The 25 earlier native renders are **before** the subsequent authored-detail
+pass and are not visual acceptance of the new GLBs. Parent review found bare
+Breakwater walls/ground, a flat white Thermal slab and Copper's opaque goal
+backboard obscuring the net. Added `authored_detail.py` as a deterministic
+architectural pass over the existing recipe assets, with a distinct silhouette
+and material language for each of the five maps. Goal pocket proxies remain
+source-solid collision but no longer export their opaque back-wall art; open
+frame/net now sits on the source scoring mouth. Cliffs, reefs and ships are
+outside the authoritative play boundary; all in-play ground markings are low
+profile, and major turbine/crane/stand assemblies sit above existing solid
+roof/gantry/terrace supports. No gameplay recipe, catalog hash or native
+authority changed in this art-only pass.
+
+Blender silently returned exit code zero on an initial missing-module error;
+this exposed why checking exit code alone could leave the old GLB in place.
+The corrected module import, explicit `WORLD_EXPORT` log marker and
+`audit-art.mjs` validate all five newly batched GLBs offline. Blender CPU
+diagnostic images at the previous camera positions are labelled
+`*-BLENDER-DIAGNOSTIC.png` and are **not** Godot acceptance. See
+`/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/worlds/ART-CHECKPOINT.md`
+for the offline review and next-grant render checklist. Horde has the Godot
+slot; the world lane has not reimported or re-rendered these new assets in it.
