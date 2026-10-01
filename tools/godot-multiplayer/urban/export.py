@@ -161,9 +161,18 @@ def shop_details(arena,p,market):
                                 ('north-station',11,-25,15,11,'south'),('east-warehouse',28,-17,12,11,'west')]):
         # Polished beam grid above player collision height, tied into side walls.
         for j in range(4):
-            zz=z-d/2+.65+j*(d-1.3)/3
-            cube(f'{name}-interior-rib-{j}',x,3.33,zz,w-.98,.18,.16,p['metal'])
-            cube(f'{name}-interior-inlay-{j}',x,3.18,zz,w-.98,.055,.09,p['trim'])
+            if entry in ('east','west'):
+                xx=x-w/2+.65+j*(w-1.3)/3
+                cube(f'{name}-interior-rib-{j}',xx,3.33,z,.16,.18,d-.98,p['metal'])
+                cube(f'{name}-interior-inlay-{j}',xx,3.18,z,.09,.055,d-.98,p['trim'])
+                for side in (-1,1):
+                    cube(f'{name}-rib-wall-corbel-{j}-{side}',xx,3.52,z+side*(d/2-.53),.18,.52,.18,p['metal'])
+            else:
+                zz=z-d/2+.65+j*(d-1.3)/3
+                cube(f'{name}-interior-rib-{j}',x,3.33,zz,w-.98,.18,.16,p['metal'])
+                cube(f'{name}-interior-inlay-{j}',x,3.18,zz,w-.98,.055,.09,p['trim'])
+                for side in (-1,1):
+                    cube(f'{name}-rib-wall-corbel-{j}-{side}',x+side*(w/2-.53),3.52,zz,.18,.52,.18,p['metal'])
         for side in (-1,1):
             xx=x+side*(w/2-.48)
             for j in range(4):
@@ -377,6 +386,15 @@ for map_id in selected:
         if key.endswith('-mass'):roof_mass(block,p,market)
         elif block['h']-block.get('baseY',0)>=3 and (block['w']<1 or block['d']<1):wall_detail(block,p,market)
         else:actual_cover(block,p)
+    for slab in arena['overhead']:
+        # Art exceeds each source top and underside by 2cm. The shared Godot
+        # renderer still draws collision planes, but neither is coplanar with
+        # the visible two-sided box faces; the room stays sealed in graphics.
+        height=slab['maxY']-slab['minY']+.04
+        cube(slab['id']+'-sealed-roof-and-ceiling',slab['x'],(slab['minY']+slab['maxY'])/2,slab['z'],slab['w'],height,slab['d'],p['roof'] if market else p['metal'])
+        for i in range(1,5):
+            xx=slab['x']-slab['w']/2+i*slab['w']/5
+            cube(slab['id']+f'-roof-seam-{i}',xx,slab['maxY']+.025,slab['z'],.035,.01,slab['d']-.2,p['trim'])
     street_details(arena,p,market)
     shop_details(arena,p,market)
     localized_details(arena,p,market)

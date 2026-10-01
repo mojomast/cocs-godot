@@ -1,6 +1,7 @@
 extends "res://world/session.gd"
 const WorldCatalog = preload("res://multiplayer_worlds/catalog.gd")
 const WorldMap = preload("res://multiplayer_worlds/map.gd")
+const UrbanLighting = preload("res://multiplayer_worlds/urban_lighting.gd")
 const ZoneAdapter = preload("res://zone_modes/adapter.gd")
 const ZoneRenderer = preload("res://zone_modes/renderer.gd")
 const ObjectiveRenderer = preload("res://objectives/renderer.gd")
@@ -134,6 +135,11 @@ func load_map(id: String) -> bool:
  if not next.build(data):
   next.queue_free()
   return false
+ if not data.arena.get("overhead",[]).is_empty() and data.id in ["switchyard-ward","rainmarket-exchange"]:
+  var room_lights := UrbanLighting.new()
+  room_lights.name = "AuthoredInteriorLighting"
+  next.add_child(room_lights)
+  room_lights.build(data.arena,id == "rainmarket-exchange")
  if is_instance_valid(world):
   remove_child(world)
   world.free()

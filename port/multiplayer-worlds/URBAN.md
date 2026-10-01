@@ -45,18 +45,43 @@ Exported **GLB accessor counts**: Switchyard 30,166 triangles in 11 material bat
 
 The eight `*-blender.png` files in `/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/urban/` are **Blender CPU review views** of the committed masters with temporary authoritative terrain overlaid; `refined-audit.json`, `refined-two-client.log` and `refined-mode-matrix.json` are matching source evidence. Earlier Godot captures have the former hashes and are preserved as *before* images. **Post-art native Godot evidence** is in `/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/urban/post-art/`: eight street/interior/roof/objective inspection screenshots, two additional *live* CTF-flag/Payload-cart captures with the game HUD and peer presentation, a fresh GLB import log, `physics.log`, full-round `switchyard-ward-ctf-*` and `rainmarket-exchange-payload-*` peer logs, and JSON route/score records. Native physics verifies both recipe hashes, eight doorway apertures with standing-capsule clearance on both sides of the wall, 20 raised curbs, 16 source counters, 15 upper guards (side rays as well as top), five ramps and five roofs, and supported spawns/objectives. The fixtures run **two genuine Godot clients**; the guest sends normal input and moves more than three units in authority state, while a third human WebSocket peer navigates source graph edges and sends only movement inputs to capture the CTF flag or escort the Payload cart to delivery. A late spectator receives the matching hash/start/snapshot; both native clients receive results and revision-2 restart. No actor positions, objective state or scores are injected in this full-round fixture. The exporter fixes Blender→Godot horizontal Z sign before export so asymmetric market facades, props and collision now coincide.
 
-Reproduce the native acceptance from the checkout with the pinned Godot binary and `LP_NUM_THREADS=1` (exclusive engine slot required):
+The subsequent shared-renderer review enabled directional sun shadows, which
+exposed the missing Rainmarket east-kiosk ceiling in the historical
+`urban/post-shadow/rainmarket-exchange-interior.png`. The roof closure below
+addresses that geometry defect. Those `post-art`/`post-shadow` native images
+and live logs refer to the **earlier hashes**, and remain preserved as before
+evidence rather than acceptance of the new ceiling meshes.
 
-The subsequent shared-renderer follow-up enabled directional sun shadows in
-both the production multiplayer-world demo and urban inspection, matching
-the inspection sun/ambient to production. A new native Rainmarket east-kiosk
-interior view is at `urban/post-shadow/rainmarket-exchange-interior.png` in the
-evidence directory; older `urban/post-art/` captures remain unchanged. The
-source has walls and decorative ceiling ribs but **no overhead roof surface
-or collider** over that kiosk, and its exported art has no spanning roof there.
-The sky-colored opening is real geometry coverage, not a material cull or
-lighting bug. A solid walkable roof requires a separate authority/recipe
-change; the geometry hashes were left intact.
+### Eight sealed urban shops — ready for the next native engine pass
+
+`generate.mjs` now authoritatively closes all eight enterable shops, four per
+city. Each has a 24cm overhead slab with a non-walkable top at **Y=4.02**, an
+underside at **Y=3.78**, and four thin collision sides. No ground-to-ceiling
+solid fills an interior. Ground support remains at Y=0, standing-height door
+openings stay clear, and the existing accessible roofs/ramps remain the only
+upper nav routes. The spanning beam orientation is tied to continuous side
+walls, with corbels meeting the new ceiling. The art GLB has a closed box whose
+top/underside extend 2cm past the corresponding drawn source planes to avoid
+coplanar Z-fighting. Four non-shadowed port-owned interior lamps per map light
+the enclosed rooms without changing the shared renderer or source authority.
+
+The new canonical hashes are Switchyard
+`9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9`
+and Rainmarket
+`3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587`.
+The source audit verifies every roof is sealed on both faces and all four
+sides, *not* a walkable route, while floor and nav inside remain supported.
+The 43 map/mode matrix and two-WebSocket CTF/Domination/Payload, late join and
+restart checks pass against these hashes. Exported GLBs are 30,790 and 28,175
+triangles, respectively, each 11 material batches under the same budget.
+Offline Blender interior views are under `urban/roof-candidate/`; these are
+composition checks, **not native Godot acceptance**. The port-owned
+`urban_physics.tscn` includes the new top, underside, ground-floor and capsule
+probes, but must run with fresh Godot import/captures and live peer journeys
+when the exclusive engine slot returns from Horde.
+
+Reproduce the native acceptance from the checkout with the pinned Godot binary
+and `LP_NUM_THREADS=1` (exclusive engine slot required):
 
 ```sh
 LP_NUM_THREADS=1 URBAN_NATIVE_VISUAL=1 GODOT_BIN=/path/to/pinned/Godot_v4.5.2-stable_linux.x86_64 node port/multiplayer-worlds/urban-native-live.mjs switchyard-ward ctf

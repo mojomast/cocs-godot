@@ -18,6 +18,7 @@ for(const [id,theme] of [['switchyard-ward','ward'],['rainmarket-exchange','mark
  assert.ok(primitives.length<=12,`${id}: art draw-call budget`);
  assert.ok(json.materials.some(m=>/windows|glazing/.test(m.name))&&json.materials.some(m=>m.name.includes(theme)),`${id}: distinct facade palette`);
  assert.ok(glb.byteLength<3_000_000,`${id}: GLB byte budget`);
+ assert.equal(arena.overhead?.length,4,`${id}: all four shops need a sealed overhead slab`);
  for(const block of arena.blocks.filter(b=>b.id.includes('-counter-')||b.id.includes('-guard-'))){
   assert.ok(block.h>block.baseY&&block.w>0&&block.d>0);
   if(block.id.includes('-guard-')){
@@ -35,6 +36,6 @@ for(const [id,theme] of [['switchyard-ward','ward'],['rainmarket-exchange','mark
   const x=(a[0]+c[0])/2,z=(a[2]+c[2])/2;
   assert.ok(Math.abs(floorAt(x,z,arena)-.12)<.02,`${id}/${surface.id}: sidewalk not on source floor`);
  }
- result.push({id,geometryHash,glbBytes:glb.byteLength,triangles,drawBatches:primitives.length,sidewalks:sidewalks.length,collidableCounters:arena.blocks.filter(b=>b.id.includes('-counter-')).length,roofGuards:arena.blocks.filter(b=>b.id.includes('-guard-')).length});
+ result.push({id,geometryHash,glbBytes:glb.byteLength,triangles,drawBatches:primitives.length,sidewalks:sidewalks.length,collidableCounters:arena.blocks.filter(b=>b.id.includes('-counter-')).length,roofGuards:arena.blocks.filter(b=>b.id.includes('-guard-')).length,sealedShops:arena.overhead.length});
 }
 console.log(JSON.stringify(result,null,2));

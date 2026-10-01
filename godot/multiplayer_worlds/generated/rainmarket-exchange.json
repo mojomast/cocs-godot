@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "rainmarket-exchange",
   "name": "Rainmarket Exchange",
-  "geometryHash": "1915800c641672c6403f9251d16827c45a8638473b0653cdc177fdbfe6313771",
+  "geometryHash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
   "arena": {
     "id": "rainmarket-exchange",
     "name": "Rainmarket Exchange",
@@ -2928,6 +2928,44 @@
         "material": "steel"
       }
     ],
+    "overhead": [
+      {
+        "id": "east-kiosk-ceiling",
+        "x": 26,
+        "z": 19,
+        "w": 13,
+        "d": 11,
+        "minY": 3.78,
+        "maxY": 4.02
+      },
+      {
+        "id": "west-foodhall-ceiling",
+        "x": -25,
+        "z": 20,
+        "w": 12,
+        "d": 9,
+        "minY": 3.78,
+        "maxY": 4.02
+      },
+      {
+        "id": "north-station-ceiling",
+        "x": 11,
+        "z": -25,
+        "w": 15,
+        "d": 11,
+        "minY": 3.78,
+        "maxY": 4.02
+      },
+      {
+        "id": "east-warehouse-ceiling",
+        "x": 28,
+        "z": -17,
+        "w": 12,
+        "d": 11,
+        "minY": 3.78,
+        "maxY": 4.02
+      }
+    ],
     "terrain": {
       "maxSlope": 0.5,
       "surfaces": [
@@ -3049,6 +3087,84 @@
           ]
         },
         {
+          "id": "east-kiosk-ceiling-underside",
+          "material": "concrete",
+          "walkable": false,
+          "vertices": [
+            [
+              19.5,
+              3.78,
+              13.5
+            ],
+            [
+              19.5,
+              3.78,
+              24.5
+            ],
+            [
+              32.5,
+              3.78,
+              24.5
+            ],
+            [
+              32.5,
+              3.78,
+              13.5
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              3,
+              2
+            ]
+          ]
+        },
+        {
+          "id": "east-kiosk-roof-top",
+          "material": "roof",
+          "walkable": false,
+          "vertices": [
+            [
+              19.5,
+              4.02,
+              13.5
+            ],
+            [
+              19.5,
+              4.02,
+              24.5
+            ],
+            [
+              32.5,
+              4.02,
+              24.5
+            ],
+            [
+              32.5,
+              4.02,
+              13.5
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
           "id": "east-kiosk-front-sidewalk",
           "material": "paving",
           "walkable": true,
@@ -3111,6 +3227,84 @@
               34.3,
               0.12,
               25.05
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "west-foodhall-ceiling-underside",
+          "material": "brick",
+          "walkable": false,
+          "vertices": [
+            [
+              -31,
+              3.78,
+              15.5
+            ],
+            [
+              -31,
+              3.78,
+              24.5
+            ],
+            [
+              -19,
+              3.78,
+              24.5
+            ],
+            [
+              -19,
+              3.78,
+              15.5
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              3,
+              2
+            ]
+          ]
+        },
+        {
+          "id": "west-foodhall-roof-top",
+          "material": "roof",
+          "walkable": false,
+          "vertices": [
+            [
+              -31,
+              4.02,
+              15.5
+            ],
+            [
+              -31,
+              4.02,
+              24.5
+            ],
+            [
+              -19,
+              4.02,
+              24.5
+            ],
+            [
+              -19,
+              4.02,
+              15.5
             ]
           ],
           "triangles": [
@@ -3205,6 +3399,84 @@
           ]
         },
         {
+          "id": "north-station-ceiling-underside",
+          "material": "steel",
+          "walkable": false,
+          "vertices": [
+            [
+              3.5,
+              3.78,
+              -30.5
+            ],
+            [
+              3.5,
+              3.78,
+              -19.5
+            ],
+            [
+              18.5,
+              3.78,
+              -19.5
+            ],
+            [
+              18.5,
+              3.78,
+              -30.5
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              3,
+              2
+            ]
+          ]
+        },
+        {
+          "id": "north-station-roof-top",
+          "material": "roof",
+          "walkable": false,
+          "vertices": [
+            [
+              3.5,
+              4.02,
+              -30.5
+            ],
+            [
+              3.5,
+              4.02,
+              -19.5
+            ],
+            [
+              18.5,
+              4.02,
+              -19.5
+            ],
+            [
+              18.5,
+              4.02,
+              -30.5
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
           "id": "north-station-front-sidewalk",
           "material": "paving",
           "walkable": true,
@@ -3267,6 +3539,84 @@
               20.3,
               0.12,
               -18.95
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "east-warehouse-ceiling-underside",
+          "material": "brick",
+          "walkable": false,
+          "vertices": [
+            [
+              22,
+              3.78,
+              -22.5
+            ],
+            [
+              22,
+              3.78,
+              -11.5
+            ],
+            [
+              34,
+              3.78,
+              -11.5
+            ],
+            [
+              34,
+              3.78,
+              -22.5
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              3,
+              2
+            ]
+          ]
+        },
+        {
+          "id": "east-warehouse-roof-top",
+          "material": "roof",
+          "walkable": false,
+          "vertices": [
+            [
+              22,
+              4.02,
+              -22.5
+            ],
+            [
+              22,
+              4.02,
+              -11.5
+            ],
+            [
+              34,
+              4.02,
+              -11.5
+            ],
+            [
+              34,
+              4.02,
+              -22.5
             ]
           ],
           "triangles": [
@@ -3439,7 +3789,424 @@
           ]
         }
       ],
-      "walls": []
+      "walls": [
+        {
+          "id": "east-kiosk-roof-north",
+          "material": "concrete",
+          "vertices": [
+            [
+              19.5,
+              3.78,
+              13.5
+            ],
+            [
+              32.5,
+              3.78,
+              13.5
+            ],
+            [
+              32.5,
+              4.02,
+              13.5
+            ],
+            [
+              19.5,
+              4.02,
+              13.5
+            ]
+          ]
+        },
+        {
+          "id": "east-kiosk-roof-south",
+          "material": "concrete",
+          "vertices": [
+            [
+              32.5,
+              3.78,
+              24.5
+            ],
+            [
+              19.5,
+              3.78,
+              24.5
+            ],
+            [
+              19.5,
+              4.02,
+              24.5
+            ],
+            [
+              32.5,
+              4.02,
+              24.5
+            ]
+          ]
+        },
+        {
+          "id": "east-kiosk-roof-west",
+          "material": "concrete",
+          "vertices": [
+            [
+              19.5,
+              3.78,
+              24.5
+            ],
+            [
+              19.5,
+              3.78,
+              13.5
+            ],
+            [
+              19.5,
+              4.02,
+              13.5
+            ],
+            [
+              19.5,
+              4.02,
+              24.5
+            ]
+          ]
+        },
+        {
+          "id": "east-kiosk-roof-east",
+          "material": "concrete",
+          "vertices": [
+            [
+              32.5,
+              3.78,
+              13.5
+            ],
+            [
+              32.5,
+              3.78,
+              24.5
+            ],
+            [
+              32.5,
+              4.02,
+              24.5
+            ],
+            [
+              32.5,
+              4.02,
+              13.5
+            ]
+          ]
+        },
+        {
+          "id": "west-foodhall-roof-north",
+          "material": "brick",
+          "vertices": [
+            [
+              -31,
+              3.78,
+              15.5
+            ],
+            [
+              -19,
+              3.78,
+              15.5
+            ],
+            [
+              -19,
+              4.02,
+              15.5
+            ],
+            [
+              -31,
+              4.02,
+              15.5
+            ]
+          ]
+        },
+        {
+          "id": "west-foodhall-roof-south",
+          "material": "brick",
+          "vertices": [
+            [
+              -19,
+              3.78,
+              24.5
+            ],
+            [
+              -31,
+              3.78,
+              24.5
+            ],
+            [
+              -31,
+              4.02,
+              24.5
+            ],
+            [
+              -19,
+              4.02,
+              24.5
+            ]
+          ]
+        },
+        {
+          "id": "west-foodhall-roof-west",
+          "material": "brick",
+          "vertices": [
+            [
+              -31,
+              3.78,
+              24.5
+            ],
+            [
+              -31,
+              3.78,
+              15.5
+            ],
+            [
+              -31,
+              4.02,
+              15.5
+            ],
+            [
+              -31,
+              4.02,
+              24.5
+            ]
+          ]
+        },
+        {
+          "id": "west-foodhall-roof-east",
+          "material": "brick",
+          "vertices": [
+            [
+              -19,
+              3.78,
+              15.5
+            ],
+            [
+              -19,
+              3.78,
+              24.5
+            ],
+            [
+              -19,
+              4.02,
+              24.5
+            ],
+            [
+              -19,
+              4.02,
+              15.5
+            ]
+          ]
+        },
+        {
+          "id": "north-station-roof-north",
+          "material": "steel",
+          "vertices": [
+            [
+              3.5,
+              3.78,
+              -30.5
+            ],
+            [
+              18.5,
+              3.78,
+              -30.5
+            ],
+            [
+              18.5,
+              4.02,
+              -30.5
+            ],
+            [
+              3.5,
+              4.02,
+              -30.5
+            ]
+          ]
+        },
+        {
+          "id": "north-station-roof-south",
+          "material": "steel",
+          "vertices": [
+            [
+              18.5,
+              3.78,
+              -19.5
+            ],
+            [
+              3.5,
+              3.78,
+              -19.5
+            ],
+            [
+              3.5,
+              4.02,
+              -19.5
+            ],
+            [
+              18.5,
+              4.02,
+              -19.5
+            ]
+          ]
+        },
+        {
+          "id": "north-station-roof-west",
+          "material": "steel",
+          "vertices": [
+            [
+              3.5,
+              3.78,
+              -19.5
+            ],
+            [
+              3.5,
+              3.78,
+              -30.5
+            ],
+            [
+              3.5,
+              4.02,
+              -30.5
+            ],
+            [
+              3.5,
+              4.02,
+              -19.5
+            ]
+          ]
+        },
+        {
+          "id": "north-station-roof-east",
+          "material": "steel",
+          "vertices": [
+            [
+              18.5,
+              3.78,
+              -30.5
+            ],
+            [
+              18.5,
+              3.78,
+              -19.5
+            ],
+            [
+              18.5,
+              4.02,
+              -19.5
+            ],
+            [
+              18.5,
+              4.02,
+              -30.5
+            ]
+          ]
+        },
+        {
+          "id": "east-warehouse-roof-north",
+          "material": "brick",
+          "vertices": [
+            [
+              22,
+              3.78,
+              -22.5
+            ],
+            [
+              34,
+              3.78,
+              -22.5
+            ],
+            [
+              34,
+              4.02,
+              -22.5
+            ],
+            [
+              22,
+              4.02,
+              -22.5
+            ]
+          ]
+        },
+        {
+          "id": "east-warehouse-roof-south",
+          "material": "brick",
+          "vertices": [
+            [
+              34,
+              3.78,
+              -11.5
+            ],
+            [
+              22,
+              3.78,
+              -11.5
+            ],
+            [
+              22,
+              4.02,
+              -11.5
+            ],
+            [
+              34,
+              4.02,
+              -11.5
+            ]
+          ]
+        },
+        {
+          "id": "east-warehouse-roof-west",
+          "material": "brick",
+          "vertices": [
+            [
+              22,
+              3.78,
+              -11.5
+            ],
+            [
+              22,
+              3.78,
+              -22.5
+            ],
+            [
+              22,
+              4.02,
+              -22.5
+            ],
+            [
+              22,
+              4.02,
+              -11.5
+            ]
+          ]
+        },
+        {
+          "id": "east-warehouse-roof-east",
+          "material": "brick",
+          "vertices": [
+            [
+              34,
+              3.78,
+              -22.5
+            ],
+            [
+              34,
+              3.78,
+              -11.5
+            ],
+            [
+              34,
+              4.02,
+              -11.5
+            ],
+            [
+              34,
+              4.02,
+              -22.5
+            ]
+          ]
+        }
+      ]
     },
     "voidY": -20,
     "ceilingY": 32,

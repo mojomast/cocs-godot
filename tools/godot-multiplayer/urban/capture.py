@@ -58,6 +58,13 @@ for map_id,views in VIEWS.items():
   bpy.context.collection.objects.link(obj)
   obj.location=loc
   obj.rotation_euler=(Vector((0,0,0))-obj.location).to_track_quat('-Z','Y').to_euler()
+ for slab in arena.get('overhead',[]):
+  lamp=bpy.data.lights.new(slab['id']+' interior visual probe','POINT')
+  lamp.energy=210
+  lamp.shadow_soft_size=1.2
+  obj=bpy.data.objects.new(slab['id']+' interior visual probe',lamp)
+  bpy.context.collection.objects.link(obj)
+  obj.location=(slab['x'],-slab['z'],slab['minY']-.49)
  scene.render.resolution_x=1280
  scene.render.resolution_y=800
  scene.render.resolution_percentage=100
