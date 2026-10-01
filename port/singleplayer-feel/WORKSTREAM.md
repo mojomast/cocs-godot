@@ -93,3 +93,32 @@ wire check proves ordinary-launch menu capability, pause, grant and resume.
 The broader 17-test set first passed 16: the new test expected null for infinite
 pistol ammo, but source snapshots use the string `∞`. Correcting that assertion
 produced 2/2 focused passes. Native Horde menu acceptance is still pending.
+
+## Astra native follow-up (supersedes earlier pending-native notes)
+
+Merged parent through `328084e5` before native closure. The bounded real Horde
+menu journey passes on standard Meridian (`live-gt49GI`): visible launcher,
+authority pause/time freeze, invulnerability toggle, all-weapon grant, clear,
+F3 resume and new input epoch. No wave-chain acceptance claim.
+
+Native discoveries produced bounded camera correction, first-packet-safe weapon
+selection expiry, campaign-only snapshot presentation coalescing, dead-player
+menu guards with retained resume, and retry of a pending UI command after a
+confirmed newer epoch. Source/server/core files and parent Horde authority/demo
+were not edited in this follow-up. Menu changes were explicitly permitted.
+
+Passing focused native checks: shared motion 99; robot presentation 459;
+weapon selection 66; campaign client lifecycle and menu epoch/dead-state checks;
+prior scoped audio 411, recoil and Horde composition 28. Final focused Node
+feel/authority/cheat/Horde run 21/21, provenance 3/3. Irregular-stream camera peak
+50.7424 → 14.6956 m/s; regular campaign peak 9.7604 m/s.
+
+Native full-scene runs have confirmed ordinary cheats-off encounter movement
+and robot kills, all ten actual weapon events/recoil, menu widget commands,
+pause/input clearing, flight ascent/settling/landing, and audio exports. First
+failures, individual run status and complete reproduction commands are retained
+in [NATIVE.md](NATIVE.md). The reduced-resolution llvmpipe fixture requires fresh
+recaptures after legitimate stale-input resets; no input TTL was relaxed.
+It is scripted native authority/input evidence, not a human enjoyment test or
+a GPU performance benchmark. Full chapter duration and subjective auditory/
+gunfeel approval still require owner playtesting after the parent rebuild.

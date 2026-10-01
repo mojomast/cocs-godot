@@ -38,4 +38,4 @@ Authored critical paths: Rootfall 1,010 m, Siltwake 1,208 m, Emberline 1,383 m, 
 
 ## Acceptance status
 
-Node authority/campaign/provenance/feel suite: **41/41 passing**, including the final proportional boss-warning adjustment. Engine motion, presentation and live campaign acceptance await the exclusive slot. No claim of subjective fun or native visual acceptance is made from Node tests alone.
+Initial Node authority/campaign/provenance/feel suite: **41/41 passing**, including the final proportional boss-warning adjustment. Native follow-up evidence, first failures, repairs and live-run status are recorded in [NATIVE.md](NATIVE.md). Measured camera irregular-stream peak fell from **50.74 to 14.70 m/s**, with a **9.76 m/s** regular-stream peak. Shared motion, robot presentation, audio, recoil, campaign client lifecycle and Horde menu integration have passed scoped native gates. No subjective fun or human auditory acceptance is claimed from scripted checks.

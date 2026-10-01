@@ -11,6 +11,9 @@ class WireProbe extends Network:
 		return OK
 
 class SessionProbe extends Session:
+	# This transport/input fixture has no loaded audiovisual arena.
+	func av_snapshot(_state: Dictionary) -> void: pass
+	func av_start(_frame: Dictionary) -> bool: return true
 	func _ready() -> void:
 		for node: Node in [camera,label,selector,client,presentation,pickups,combat,combat_label,sun,environment]: add_child(node)
 		for control: Control in [label, selector, combat_label]: control.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -60,7 +63,7 @@ func capture() -> void:
 	event.position = Vector2(800, 500)
 	Input.parse_input_event(event)
 	Input.flush_buffered_events()
-	check(session.weapon_controls_active(), "fresh capture is active (eligible=%s focused=%s mode=%s age=%s)" % [session.can_capture_pointer(), root.has_focus(), Input.mouse_mode, session.snapshot_watch.age])
+	check(session.weapon_controls_active(), "fresh capture is active (eligible=%s focused=%s mode=%s age=%s phase=%s pose=%s lifecycle=%s overlay=%s application=%s)" % [session.can_capture_pointer(), root.has_focus(), Input.mouse_mode, session.snapshot_watch.age, session.phase, session.received_pose, session.presentation.lifecycle.status, session.SettingsAccess.overlay_open(), session.application_focused])
 
 func tick() -> Dictionary:
 	session._process(1.0 / 60.0)
@@ -70,6 +73,13 @@ func _initialize() -> void:
 	call_deferred("run")
 
 func run() -> void:
+	var slow_frame := Selection.new()
+	slow_frame.request(1, KEY_2, {"weapon":0,"ammo":["∞",6]})
+	slow_frame.advance(.4, true, {"weapon":0,"ammo":["∞",6]}, 0)
+	check(slow_frame.pending == 1, "slow first frame cannot discard an unsent request")
+	slow_frame.queued(1)
+	slow_frame.advance(.4, true, {"weapon":0,"ammo":["∞",6]}, 0)
+	check(slow_frame.pending == -1, "sent request still expires without acknowledgment")
 	# Uses the real session input dispatch, eligibility and send cadence; only
 	# the final transport is synthetic. Run on a private graphical display.
 	session = SessionProbe.new()
