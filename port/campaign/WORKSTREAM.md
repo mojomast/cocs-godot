@@ -501,3 +501,30 @@ Nine public assets with prefix `robot-blender-` are on the development gallery:
 matched comparison, lineup, six closeups and the ten-second Warden animation.
 Original/first-pass/diagnostic renders remain preserved. Parent owns the heavy
 slot for import and final integrated acceptance with the corrected assets.
+
+## Parallel Sol Blender world fidelity work
+
+The owner expanded the task to **parallel Sol subagents** using Blender for
+single-player map, structure and asset fidelity. The older canonical run at
+`78f770c0` is intentionally interrupted after **93/301 gates, zero failures**;
+208 gates are unrun. Its reports and interruption reason are preserved in
+`canonical-78f770c0/`. Final verification follows the new world art integration.
+
+- Architecture: `campaign/blender-structures`, session
+  `ses_f0aa034f5ffei0zMTa7jQeNF1F`, worktree
+  `/home/mojo/.tmp-on-disk/cocs-blender-structures-20260930`. Owns original
+  Blender modular structures, `structure_art.gd`, structural GLBs/source assets,
+  tests, and its single integration hook in `campaign/terrain.gd`.
+- Biome/environment: `campaign/blender-environment`, session
+  `ses_f0aa034d2ffeiVza812xj2A21Z`, worktree
+  `/home/mojo/.tmp-on-disk/cocs-blender-environment-20260930`. Owns natural props,
+  campaign-local surface detail, `environment_art.gd`, GLBs/source assets and
+  tests. Parent adds its terrain hook after merge to avoid concurrent file edits.
+
+Both lanes target all four chapters with matched player-height/vista evidence,
+editable Blender sources, game-ready instanced/LOD assets and route-safe staging.
+Authoritative terrain, collision, navigation, objectives and character animation
+contracts stay intact. Blender export may run in parallel at **one thread/process
+per lane**; architecture has the first exclusive Godot import/render slot.
+Environment waits for explicit Godot handoff. Parent starts no competing heavy
+verification/builds. The current public trailer and galleries predate this work.
