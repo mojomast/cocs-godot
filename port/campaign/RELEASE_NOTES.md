@@ -22,6 +22,8 @@ human first-playthrough timing and balance remain to be measured.
 - **Six articulated robot models:** Scrapper, Skirmisher, Sentinel, Mortar,
   Bulwark and the Quarantine Warden. Distinct silhouettes, source-driven attack
   tells, three distance-detail levels and bounded body hit volumes.
+- Blender-authored enemy armor and mechanical assemblies, with beveled panels,
+  exposed joints, vents, class-specific sensors and editable source models.
 - Clear, interact, restore, contested relay-hold and guardian objectives.
 - Checkpoint retry, chapter restart, difficulty selection, Continue transitions
   and a final ending.
@@ -38,6 +40,8 @@ human first-playthrough timing and balance remain to be measured.
 - The original **Relay / Warden** orchestral score, with synchronized adaptive
   exploration, combat and guardian layers.
 - Research notes and implementation documentation in `port/campaign/`.
+- A live in-engine scripted 3D demo behind the usable main menu, with an animation
+  toggle and focus/overlay pausing. Story operators use finite, settling gestures.
 
 ## Launch
 

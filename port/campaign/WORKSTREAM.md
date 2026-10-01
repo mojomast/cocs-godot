@@ -488,3 +488,16 @@ not animation failures. Canonical verification now explicitly selects ephemeral
 ports rather than inheriting a shell's fixed port. The unrelated listener is left
 alone. Sol has the exclusive heavy slot to regenerate the corrected turntables
 and Mortar muzzle and verify matching renders before the art is integrated.
+
+Blender enemy models are integrated: `710f9267` → `94ce7c7d`, then corrected
+geometry `7cff4ec5` → `cce419a1`. Final diagnosis was the dark chassis frame
+breaking through beveled shoulders; the fix recesses it, moves vents onto exposed
+side armor and corrects turret-cylinder orientation. Parent inspected corrected
+Scrapper/Mortar closeups. All six GLBs and editable `.blend` sources are committed.
+Lane acceptance: 447/447 robot checks, death and telegraph checks; all three LODs
+reviewed for affected models. Warden tops out at 5,564 triangles / sixteen draws.
+
+Nine public assets with prefix `robot-blender-` are on the development gallery:
+matched comparison, lineup, six closeups and the ten-second Warden animation.
+Original/first-pass/diagnostic renders remain preserved. Parent owns the heavy
+slot for import and final integrated acceptance with the corrected assets.
