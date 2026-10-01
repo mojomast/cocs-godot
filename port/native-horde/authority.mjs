@@ -6,10 +6,13 @@ import {WebSocketServer, WebSocket} from 'ws';
 import {Match, floorAt, obstructed} from '../../game/core.mjs';
 import {normalizeConfig} from '../../game/config.mjs';
 import {parseInputEnvelope} from '../../game/protocol.mjs';
-import {selectHordeUpgrade} from '../../game/singleplayer.mjs';
+import {selectHordeUpgrade,spawnGroup} from '../../game/singleplayer.mjs';
 import {validLoadout} from '../../game/data.mjs';
 import {InputBuffer} from './input-buffer.mjs';
+import {applyRobotHitVolume,hordeRobotState} from './robot-roles.mjs';
 import {readCinderwake} from './cinderwake-schema.mjs';
+import {BLACKWATER_ID,readBlackwater} from './blackwater-schema.mjs';
+import {BlackwaterDirector} from './blackwater-director.mjs';
 import {applyDebugFrame, applyLiveOverrides, createDebugState, debugEcho, installHumanGuard,
   parseDebugFrame, reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT} from '../native-debug/debug.mjs';
 export const MAPS = ['meridian-exchange','verdant-reliquary','ember-crucible'];
@@ -41,8 +44,30 @@ export const MAPS = ['meridian-exchange','verdant-reliquary','ember-crucible'];
 // lane review. `game/core.mjs` is already in the closure.
 // ---------------------------------------------------------------------------
 export const IDENTITY_MAPS = Object.freeze(['nacre-engine']);
-export const HORDE_MAPS = Object.freeze([...MAPS, ...IDENTITY_MAPS, 'cinderwake-drydock']);
+export const HORDE_MAPS = Object.freeze([...MAPS, ...IDENTITY_MAPS, 'cinderwake-drydock', BLACKWATER_ID]);
 const hordeMapContracts = new WeakMap();
+class RobotHordeMatch extends Match {
+ constructor(...args){super(...args);this.wardenWave=0;}
+ spawn(actor,...args){
+  const result=super.spawn(actor,...args);
+  applyRobotHitVolume(actor);
+  return result;
+ }
+ step(dt,context){
+  const result=super.step(dt,context),state=this.modeState;
+  // The source's bounded wave plan has a Harbinger on nine but no Warden.
+  // One final source-class Warden joins wave ten, exactly once. spawnGroup is
+  // the frozen source's actor/brain/phase/death registration path; its ids,
+  // attacks, scoring, lives and upgrade effects retain source ownership.
+  if(!this.over&&state?.kind==='horde'&&state.wave===10&&state.phase==='wave'&&
+     this.wardenWave!==10&&state.boss==null&&state.enemies?.length>0){
+   this.wardenWave=10;
+   const ids=spawnGroup(this,state,{type:'warden',count:1,group:'wave-10-warden'},{team:1});
+   this.emit('horde-warden-arrived',{wave:10,actor:ids[0],count:state.enemies.length});
+  }
+  return result;
+ }
+}
 const IDENTITY_HORDE_MODE = 'horde';
 const IDENTITY_MAP_SOURCES = Object.freeze({
  'nacre-engine':'godot/identity_maps/generated/nacre-engine.json',
@@ -197,18 +222,30 @@ export function createHordeMatch({mapId, config, random = Math.random, character
   if (typeof random !== 'function') throw Error('RNG must be a function');
   if (!config || config.mode !== 'horde' || config.botCount !== 0) throw Error('Normalized Horde config required');
   if (!validLoadout(character,harness)) throw Error('Unsupported Horde operator/harness');
+  if (mapId === BLACKWATER_ID) {
+   const data=readBlackwater();
+   class BlackwaterMatch extends RobotHordeMatch {
+    constructor(...args){super(...args);this.blackwater=new BlackwaterDirector();}
+    step(dt,context){const result=super.step(dt,context);this.blackwater.step(this,context?.inputs?.[0]??{},dt);return result;}
+    snapshot(){const state=super.snapshot();if(this.blackwater)state.blackwater=this.blackwater.snapshot(this);return state;}
+   }
+   const match=new BlackwaterMatch(character,harness,random,mapId,{...config,humanCount:1,hordeArena:data.arena});
+   if(match.arena.id!==mapId||match.humanCount!==1||match.modeState?.stage?.stageId!=='A')throw Error('Blackwater source constructor contract');
+   hordeMapContracts.set(match,Object.freeze({version:1,geometryHash:data.geometryHash,planHash:data.planHash}));
+   return match;
+  }
   if (mapId === 'cinderwake-drydock') {
    if (typeof Match.prototype.applyHordeGateMask !== 'function') throw Error('Cinderwake requires approved source Horde-stage intake');
    const data = readCinderwake();
-   const match = new Match(character,harness,random,mapId,{...config,humanCount:1,hordeArena:data.arena});
+    const match = new RobotHordeMatch(character,harness,random,mapId,{...config,humanCount:1,hordeArena:data.arena});
    if (match.arena.id !== mapId || !match.modeState?.stage || match.humanCount !== 1 || match.modeState.lives !== 3) throw Error('Cinderwake source constructor contract');
    hordeMapContracts.set(match,Object.freeze({version:1,geometryHash:data.geometryHash,planHash:data.planHash}));
    return match;
   }
-  if (!IDENTITY_MAPS.includes(mapId)) return new Match(character,harness,random,mapId,config);
+   if (!IDENTITY_MAPS.includes(mapId)) return new RobotHordeMatch(character,harness,random,mapId,config);
  const arena = readIdentityMap(mapId);
   let assigned = false;
-  class IdentityHordeMatch extends Match {
+   class IdentityHordeMatch extends RobotHordeMatch {
    get arena() { return arena; }
    set arena(_sourceFallback) {
     if (assigned) throw Error('Identity arena reassignment refused');
@@ -532,10 +569,10 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
     // Every-tick snapshots, same cadence as the native-arena and identity-zone
     // authorities (see port/native-motion-smoothness/).
     send({type:'snapshot',seq:++seq,acks:{0:inputs.applied},
-     inputEpoch:epoch,hordeInput:inputs.status(),state:active.snapshot(),...(hordeMapContracts.has(active)?{hordeMapContract:hordeMapContracts.get(active)}:{})});
+      inputEpoch:epoch,hordeInput:inputs.status(),state:hordeRobotState(active.snapshot()),...(hordeMapContracts.has(active)?{hordeMapContract:hordeMapContracts.get(active)}:{})});
     if (active.over) {
      finished=true; inputs.cancel();
-     send({type:'results',inputEpoch:epoch,hordeInput:inputs.status(),state:active.snapshot()});
+      send({type:'results',inputEpoch:epoch,hordeInput:inputs.status(),state:hordeRobotState(active.snapshot())});
     }
    }
   } catch (error) { terminate(`Authority step failed: ${error.message}`); }

@@ -155,6 +155,10 @@ func _configure_map(state: Dictionary) -> void:
 		var bounds := AABB(Vector3(-100, -4, -100), Vector3(200, 90, 200))
 		if id == "cinder-array": bounds = AABB(Vector3(-92, -2, -82), Vector3(184, 87, 164))
 		map = {"id":id, "bounds":bounds, "collision_root":native}
+	elif is_instance_valid(world) and world.get_meta("multiplayer_world", false) == true:
+		# Expanded worlds publish exactly the StaticBody3D geometry they simulate;
+		# no locked semantic-catalog lookup is appropriate for a new map ID.
+		map = {"id":id,"bounds":AABB(Vector3(-100,-4,-100),Vector3(200,90,200)),"collision_root":world}
 	else:
 		var catalog := Occlusion.Catalog.new()
 		if catalog.open() and catalog.entries.has(id): map = catalog.resolve_map(id)

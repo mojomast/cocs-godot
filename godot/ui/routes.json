@@ -94,6 +94,30 @@
     },
     "cinderwake-drydock": {
       "name": "Cinderwake Drydock (Preview)"
+    },
+    "blackwater-reclamation": {
+      "name": "Blackwater Reclamation"
+    },
+    "switchyard-ward": {
+      "name": "Switchyard Ward"
+    },
+    "rainmarket-exchange": {
+      "name": "Rainmarket Exchange"
+    },
+    "breakwater-exchange": {
+      "name": "Breakwater Exchange"
+    },
+    "thermal-divide": {
+      "name": "Thermal Divide"
+    },
+    "sirocco-circuit": {
+      "name": "Sirocco Circuit"
+    },
+    "copper-bowl": {
+      "name": "Copper Bowl"
+    },
+    "tern-archipelago": {
+      "name": "Tern Archipelago"
     }
   },
   "routes": [
@@ -377,6 +401,195 @@
       }
     },
     {
+      "id": "multiplayer-worlds",
+      "category": "play",
+      "label": "Multiplayer Worlds",
+      "description": "Seven authored source-backed worlds: urban infantry, freight, alpine, Puma sports and LATTICE",
+      "flags": [
+        "--experience=multiplayer-worlds"
+      ],
+      "params": [
+        {
+          "key": "map",
+          "kind": "choice",
+          "label": "Map",
+          "values": [
+            "switchyard-ward",
+            "rainmarket-exchange",
+            "breakwater-exchange",
+            "thermal-divide",
+            "sirocco-circuit",
+            "copper-bowl",
+            "tern-archipelago"
+          ],
+          "default": "switchyard-ward"
+        },
+        {
+          "key": "mode",
+          "kind": "choice",
+          "label": "Mode",
+          "values_by_map": {
+            "switchyard-ward": [
+              "deathmatch",
+              "teamdeathmatch",
+              "instagib",
+              "rockets",
+              "armsrace",
+              "ctf",
+              "domination",
+              "koth",
+              "uplink",
+              "holdout",
+              "assault"
+            ],
+            "rainmarket-exchange": [
+              "deathmatch",
+              "teamdeathmatch",
+              "instagib",
+              "rockets",
+              "armsrace",
+              "domination",
+              "koth",
+              "uplink",
+              "holdout",
+              "assault",
+              "payload"
+            ],
+            "breakwater-exchange": [
+              "deathmatch",
+              "teamdeathmatch",
+              "domination",
+              "assault",
+              "payload",
+              "combined-arms"
+            ],
+            "thermal-divide": [
+              "deathmatch",
+              "teamdeathmatch",
+              "instagib",
+              "rockets",
+              "armsrace",
+              "ctf",
+              "domination",
+              "koth",
+              "uplink",
+              "holdout",
+              "assault"
+            ],
+            "sirocco-circuit": [
+              "puma-race"
+            ],
+            "copper-bowl": [
+              "puma-soccer"
+            ],
+            "tern-archipelago": [
+              "cocs",
+              "cocs-coop"
+            ]
+          },
+          "default": "deathmatch"
+        },
+        {
+          "key": "bots",
+          "kind": "range",
+          "label": "Bots",
+          "min": 0,
+          "max": 8,
+          "default": 2,
+          "step": 1
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics overlay (F11)",
+          "default": false
+        }
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": true
+        },
+        "scope": {
+          "maps": [
+            "breakwater-exchange",
+            "copper-bowl",
+            "rainmarket-exchange",
+            "sirocco-circuit",
+            "switchyard-ward",
+            "tern-archipelago",
+            "thermal-divide"
+          ],
+          "modes_by_map": {
+            "breakwater-exchange": [
+              "assault",
+              "combined-arms",
+              "deathmatch",
+              "domination",
+              "payload",
+              "teamdeathmatch"
+            ],
+            "copper-bowl": [
+              "puma-soccer"
+            ],
+            "rainmarket-exchange": [
+              "armsrace",
+              "assault",
+              "deathmatch",
+              "domination",
+              "holdout",
+              "instagib",
+              "koth",
+              "payload",
+              "rockets",
+              "teamdeathmatch",
+              "uplink"
+            ],
+            "sirocco-circuit": [
+              "puma-race"
+            ],
+            "switchyard-ward": [
+              "armsrace",
+              "assault",
+              "ctf",
+              "deathmatch",
+              "domination",
+              "holdout",
+              "instagib",
+              "koth",
+              "rockets",
+              "teamdeathmatch",
+              "uplink"
+            ],
+            "tern-archipelago": [
+              "cocs",
+              "cocs-coop"
+            ],
+            "thermal-divide": [
+              "armsrace",
+              "assault",
+              "ctf",
+              "deathmatch",
+              "domination",
+              "holdout",
+              "instagib",
+              "koth",
+              "rockets",
+              "teamdeathmatch",
+              "uplink"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "switchyard-ward",
+          "mode": "deathmatch"
+        }
+      }
+    },
+    {
       "id": "native-dm",
       "category": "native",
       "label": "Native Deathmatch",
@@ -561,7 +774,7 @@
       "id": "horde",
       "category": "native",
       "label": "Horde",
-      "description": "Hold out on a combat arena, Nacre Engine or Cinderwake Drydock preview, local authority",
+      "description": "Hold out against security robots in combat arenas or the scripted Blackwater Reclamation mission",
       "flags": [
         "--experience=horde"
       ],
@@ -575,7 +788,8 @@
             "verdant-reliquary",
             "ember-crucible",
             "nacre-engine",
-            "cinderwake-drydock"
+            "cinderwake-drydock",
+            "blackwater-reclamation"
           ],
           "default": "meridian-exchange"
         },
@@ -643,6 +857,7 @@
         },
         "scope": {
           "maps": [
+            "blackwater-reclamation",
             "cinderwake-drydock",
             "ember-crucible",
             "meridian-exchange",
@@ -650,6 +865,9 @@
             "verdant-reliquary"
           ],
           "modes_by_map": {
+            "blackwater-reclamation": [
+              "horde"
+            ],
             "cinderwake-drydock": [
               "horde"
             ],
@@ -1750,7 +1968,8 @@
             "verdant-reliquary",
             "ember-crucible",
             "nacre-engine",
-            "cinderwake-drydock"
+            "cinderwake-drydock",
+            "blackwater-reclamation"
           ],
           "default": "meridian-exchange"
         },
@@ -1812,6 +2031,7 @@
         },
         "scope": {
           "maps": [
+            "blackwater-reclamation",
             "cinderwake-drydock",
             "ember-crucible",
             "meridian-exchange",
@@ -1819,6 +2039,9 @@
             "verdant-reliquary"
           ],
           "modes_by_map": {
+            "blackwater-reclamation": [
+              "horde"
+            ],
             "cinderwake-drydock": [
               "horde"
             ],

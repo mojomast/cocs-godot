@@ -23,6 +23,8 @@ async function runRoute(plan){
   if(debug)process.env.COCS_DEBUG='1';
   const factory=plan.nativeOnly||plan.endpoint ? null : plan.campaign
  ? (await import('../../port/native-campaign/authority.mjs')).createAuthority
+ : plan.world
+ ? (await import('../../port/multiplayer-worlds/derived/game-server.mjs')).createGameServer
  : plan.nativeArena
  ? (await import('../../port/native-arenas/authority.mjs')).createNativeArenaAuthority
  : plan.identityZone
@@ -30,7 +32,7 @@ async function runRoute(plan){
  : plan.experience==='horde'
  ? (await import('../../port/native-horde/authority.mjs')).createAuthority
  : (await import('../../server/game-server.mjs')).createGameServer;
- const privateRuntime=plan.nativeOnly||plan.nativeArena||plan.campaign;
+ const privateRuntime=plan.nativeOnly||plan.nativeArena||plan.campaign||plan.world;
  const runtime=privateRuntime?mkdtempSync(join(tmpdir(),'cocs-native-')):resolve('.port-runtime');mkdirSync(runtime,{recursive:true});
    const env={...process.env,COCS_SETTINGS_PATH:localSettingsPath};for(const [name,dir] of [['XDG_DATA_HOME','data'],['XDG_CONFIG_HOME','config'],['XDG_CACHE_HOME','cache']]){env[name]=resolve(runtime,dir);mkdirSync(env[name],{recursive:true});}
   let career;
@@ -40,11 +42,11 @@ async function runRoute(plan){
  process.once('SIGINT',interrupt);process.once('SIGTERM',terminate);
   try{
    career=acquireCareer(plan,env,{developmentRoot:process.cwd()});Object.assign(env,career.env);
-   game=await factory?.(plan.campaign?{mapId:plan.map,difficulty:plan.difficulty}:plan.nativeArena?{port:0,host:'127.0.0.1',mapId:plan.map,mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds}:plan.identityZone?{port:0,host:'127.0.0.1',mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds,fragLimit:plan.scoreLimit}:plan.experience==='horde'?{}:{historyPath:career.historyPath,progressionPath:career.progressionPath});
+   game=await factory?.(plan.campaign?{mapId:plan.map,difficulty:plan.difficulty}:plan.nativeArena?{port:0,host:'127.0.0.1',mapId:plan.map,mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds}:plan.identityZone?{port:0,host:'127.0.0.1',mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds,fragLimit:plan.scoreLimit}:plan.experience==='horde'?{}:plan.world?{}:{historyPath:career.historyPath,progressionPath:career.progressionPath});
   game?.server?.on('error',serverError);
   let endpoint=plan.endpoint;
   if(game){
-   if(!(plan.nativeArena||plan.identityZone) || (!game.endpoint && !game.server?.listening))await new Promise((resolve,reject)=>{game.server.once('error',reject);game.server.listen(plan.nativeArena||plan.campaign?0:Number(process.env.PORT??0),'127.0.0.1',()=>{game.server.removeListener('error',reject);resolve();});});
+   if(!(plan.nativeArena||plan.identityZone) || (!game.endpoint && !game.server?.listening))await new Promise((resolve,reject)=>{game.server.once('error',reject);game.server.listen(plan.nativeArena||plan.campaign||plan.world?0:Number(process.env.PORT??0),'127.0.0.1',()=>{game.server.removeListener('error',reject);resolve();});});
    const ownedEndpoint=(plan.nativeArena||plan.identityZone)&&game.endpoint?game.endpoint:`ws://127.0.0.1:${game.server.address().port}`;
    const owned=new URL(ownedEndpoint);
    // Each owned authority supports exactly its own documented routes. Check the

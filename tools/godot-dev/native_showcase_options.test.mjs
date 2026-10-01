@@ -5,7 +5,7 @@ import {launchOptions, EXPERIENCES, NATIVE_EXPERIENCES, HELP} from './launch_opt
 import {nativeScenes, rejectedOptions} from '../../port/native-graphics-launchers/fixtures.mjs';
 
 test('source graphics routes are native-only, headless only on request, outside the map catalog', () => {
-  assert.deepEqual(Object.keys(EXPERIENCES).sort(), ['combat','lobby','arms-race','horde','zones','assault','combined-arms','sports','objectives','lattice','lattice-world','campaign'].sort());
+  assert.deepEqual(Object.keys(EXPERIENCES).sort(), ['combat','lobby','arms-race','horde','zones','assault','combined-arms','sports','objectives','lattice','lattice-world','campaign','multiplayer-worlds'].sort());
   assert.deepEqual(Object.keys(NATIVE_EXPERIENCES),Object.keys(nativeScenes));
   const catalog = JSON.parse(readFileSync(new URL('../../port/contracts/map-selection.json',import.meta.url)));
   assert.equal(catalog.maps.length,9);

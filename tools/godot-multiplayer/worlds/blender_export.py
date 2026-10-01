@@ -16,6 +16,8 @@ ID = sys.argv[sys.argv.index('--') + 1]
 DATA = json.loads((ROOT / 'port/native-multiplayer-worlds/worlds' / (ID + '.json')).read_text())
 ART = ROOT / 'godot/multiplayer_worlds/art/worlds'
 ART.mkdir(parents=True, exist_ok=True)
+MASTER = ROOT / 'tools/godot-multiplayer/worlds/masters'
+MASTER.mkdir(parents=True, exist_ok=True)
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
 
@@ -100,7 +102,7 @@ for name,(verts,faces) in groups.items():
     obj.data.materials.append(materials[name])
     obj['recipe_id']=ID
 
-bpy.ops.wm.save_as_mainfile(filepath=str(ART/(ID+'.blend')))
+bpy.ops.wm.save_as_mainfile(filepath=str(MASTER/(ID+'.blend')))
 bpy.ops.object.select_all(action='DESELECT')
 for obj in render.objects: obj.select_set(True)
 bpy.context.view_layer.objects.active=next(iter(render.objects))

@@ -6,6 +6,13 @@ export const HORDE_OPERATORS = Object.freeze(['chatgpt','claude','grok','meta','
 export const HORDE_HARNESSES = Object.freeze(['openclaw','hermes','opencode','claudecode','codex','cline','roo']);
 const validHordeLoadout = (character,harness) => HORDE_OPERATORS.includes(character) && HORDE_HARNESSES.includes(harness) && (character !== 'claude' || harness === 'claudecode');
 export const EXPERIENCES = {
+  'multiplayer-worlds': {scene:'res://multiplayer_worlds/demo.tscn',maps:{
+    'switchyard-ward':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'],
+    'rainmarket-exchange':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','domination','koth','uplink','holdout','assault','payload'],
+    'breakwater-exchange':['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms'],
+    'thermal-divide':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'],
+    'sirocco-circuit':['puma-race'],'copper-bowl':['puma-soccer'],'tern-archipelago':['cocs','cocs-coop']},
+    identity:Object.fromEntries([['switchyard-ward',['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault']],['rainmarket-exchange',['deathmatch','teamdeathmatch','instagib','rockets','armsrace','domination','koth','uplink','holdout','assault','payload']],['breakwater-exchange',['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms']],['thermal-divide',['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault']],['sirocco-circuit',['puma-race']],['copper-bowl',['puma-soccer']],['tern-archipelago',['cocs','cocs-coop']]].map(([id,modes])=>[id,{scene:`res://multiplayer_worlds/${id==='tern-archipelago'?'lattice_demo':modes[0].startsWith('puma-')?'sports_demo':'demo'}.tscn`,modes}]))},
   campaign: {scene:'res://campaign/demo.tscn', maps:Object.fromEntries(['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array'].map(id => [id,['campaign']]))},
   combat: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
   lobby: {scene:'res://world/session.tscn', maps:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
@@ -13,7 +20,7 @@ export const EXPERIENCES = {
   horde: {scene:'res://horde/demo.tscn', maps:{'meridian-exchange':['horde'], 'verdant-reliquary':['horde'], 'ember-crucible':['horde']},
     // Reviewed static identity entry: outside the locked nine-map catalog, so the
     // scene and modes come only from this allowlist.
-    identity:{'nacre-engine':{scene:'res://native_arenas/identity_horde_demo.tscn', modes:['horde']},'cinderwake-drydock':{scene:'res://horde_maps/demo.tscn', modes:['horde']}}},
+    identity:{'nacre-engine':{scene:'res://native_arenas/identity_horde_demo.tscn', modes:['horde']},'cinderwake-drydock':{scene:'res://horde_maps/demo.tscn', modes:['horde']},'blackwater-reclamation':{scene:'res://horde_maps/blackwater_demo.tscn',modes:['horde']}}},
   zones: {scene:'res://zone_modes/demo.tscn', maps:{'meridian-exchange':['domination','koth','uplink','holdout'], 'verdant-reliquary':['koth','domination','uplink','holdout'], 'ember-crucible':['koth','domination','uplink','holdout'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
   assault: {scene:'res://assault/demo.tscn', maps:{'tidal-citadel':['assault'], 'sunscar-convoy':['assault']}},
   'combined-arms': {scene:'res://combined_arms/demo.tscn', maps:{'sunscar-convoy':['combined-arms']}},
@@ -57,7 +64,7 @@ export function options(argv, catalog) {
   // Default boot (no arguments at all) opens the main menu; any explicit
   // argument keeps today's combat default.
   const experience = argv.length === 0 ? 'menu' : (values.experience ?? 'combat');
-  if (!['lattice', 'lattice-world', 'combined-arms'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires lattice-world or combined-arms');
+  if (!['lattice', 'lattice-world', 'combined-arms', 'multiplayer-worlds'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires lattice-world, combined-arms or multiplayer-worlds');
   if (!['lattice', 'lattice-world'].includes(experience) && values.rung !== undefined) throw Error('--rung requires lattice-world');
   const diagnostics = flags.has('--diagnostics') ? ['--diagnostics'] : [];
   if (values.difficulty !== undefined && experience !== 'campaign') throw Error('--difficulty requires campaign');
@@ -111,8 +118,9 @@ export function options(argv, catalog) {
       userArgs: [...diagnostics, ...(flags.has('--smoke') ? ['--smoke'] : [])]};
   }
   if (values.bots !== undefined) {
-    if (!['combat','zones','assault','combined-arms','lattice','lattice-world'].includes(experience)) throw Error('--bots requires combat, zones, assault, combined-arms, lattice, lattice-world, native-dm or identity-zones');
-    if (!/^\d+$/.test(values.bots) || Number(values.bots) > (experience.startsWith('lattice') || experience === 'combined-arms' ? 16 : 8)) throw Error(`--bots must be 0..${experience.startsWith('lattice') || experience === 'combined-arms' ? 16 : 8}`);
+    if (!['combat','zones','assault','combined-arms','lattice','lattice-world','multiplayer-worlds'].includes(experience)) throw Error('--bots requires combat, zones, assault, combined-arms, lattice, lattice-world, multiplayer-worlds, native-dm or identity-zones');
+    const cap = experience.startsWith('lattice') || experience === 'combined-arms' || experience === 'multiplayer-worlds' && values.map === 'tern-archipelago' ? 16 : 8;
+    if (!/^\d+$/.test(values.bots) || Number(values.bots) > cap) throw Error(`--bots must be 0..${cap}`);
   }
   for (const key of ['round-seconds','score-limit']) if (values[key] !== undefined && !['zones','assault'].includes(experience)) throw Error(`--${key} requires native-dm, identity-zones, zones or assault`);
   if (Object.hasOwn(NATIVE_EXPERIENCES, experience)) {
@@ -157,6 +165,14 @@ export function options(argv, catalog) {
   // entry above is their allowlist and carries its own scene.
   if (!allowed.includes(mode) || (!identity && !catalog.maps.find(m => m.id === map)?.supported_modes.includes(mode))) throw Error(`Unsupported ${map} / ${mode}`);
   const scene = identity?.scene ?? selected.scene;
+  if (experience === 'multiplayer-worlds') {
+    for (const flag of flags) if (flag !== '--diagnostics') throw Error(`${flag} is not supported by multiplayer-worlds`);
+    for (const key of supplied) if (!['experience','map','mode','bots','endpoint','join-room','time-limit','round-target'].includes(key)) throw Error(`--${key} is not supported by multiplayer-worlds`);
+    const sports=mode.startsWith('puma-');
+    for (const [key,min,max] of [['time-limit',60,900],['round-target',1,mode==='puma-race'?10:15]]) if (values[key]!==undefined && (!sports || !/^\d+$/.test(values[key]) || Number(values[key])<min || Number(values[key])>max)) throw Error(`--${key} requires Puma sports and ${min}..${max}`);
+    if (values['join-room'] !== undefined && (!endpoint || !values['join-room'].trim() || ['bots','time-limit','round-target'].some(key=>supplied.has(key)))) throw Error('Multiplayer-worlds guest requires --endpoint and --join-room without host settings');
+    return {experience,map,mode,scene,endpoint,world:true,bots:Number(values.bots ?? 2),userArgs:[`--map=${map}`,`--mode=${mode}`,...(values['join-room'] === undefined ? [`--bots=${values.bots ?? 2}`,...['time-limit','round-target'].filter(key=>values[key]!==undefined).map(key=>`--${key}=${values[key]}`)] : [`--join-room=${values['join-room']}`]),...diagnostics]};
+  }
   if (experience === 'combined-arms') {
     for (const flag of flags) if (flag !== '--diagnostics') throw Error(`${flag} is not supported by combined-arms`);
     if (values['wait-for-players'] !== undefined && (!/^\d+$/.test(values['wait-for-players']) || !Number.isSafeInteger(Number(values['wait-for-players'])) || Number(values['wait-for-players']) < 1 || Number(values['wait-for-players']) > 8)) throw Error('--wait-for-players must be 1..8');
@@ -230,6 +246,8 @@ export const HELP = `COCS native demo — Node >=22.13.0 (bundled on Windows)
   node run.mjs --experience=lobby            Multiplayer lobby, owned loopback server
   node run.mjs --experience=campaign --map=rootfall-verge --difficulty=normal
   node run.mjs --experience=lobby --endpoint=ws://127.0.0.1:PORT
+  node run.mjs --experience=multiplayer-worlds --map=switchyard-ward --mode=ctf
+  node run.mjs --experience=multiplayer-worlds --map=rainmarket-exchange --mode=payload
   node run.mjs --play --map=meridian-exchange --mode=deathmatch
   node run.mjs --experience=zones --map=meridian-exchange --mode=domination
   node run.mjs --experience=zones --map=verdant-reliquary --mode=koth
