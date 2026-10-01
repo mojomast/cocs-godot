@@ -82,6 +82,8 @@ func build(host: Node3D) -> void:
 				var width := 1.24 if index == 1 else 1.12
 				var height := 1.85 if index == 1 else 1.55 if index == 2 else 1.25
 				basis = basis.scaled(Vector3(width,height,width))
+			# Root tips overlap the sampled ground even on sloped triangles.
+			if family == "tree": world.y -= .25
 			groups[asset][chunk_key].transforms.append(Transform3D(basis,world-groups[asset][chunk_key].origin))
 		replacements.append(node)
 	for asset: String in groups:
