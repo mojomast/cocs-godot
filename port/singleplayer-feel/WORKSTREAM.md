@@ -2,6 +2,22 @@
 
 ## Current integration status
 
+Windows attempt 2 failed again at Crown after 14 passing base cases; both attempts
+are archived. Publication is blocked. Diagnostic workflow `36905902348` uses
+three Crown starts from the unchanged ZIP with authority termination, socket
+closure and native callback/timing evidence. Astra's `04543d31` analysis and probe
+are integrated: Godot's full receive queue applies backpressure rather than
+disconnecting automatically; the authority's 2 MiB outbound limit is a candidate
+termination path, not yet a confirmed Windows cause. A Linux reference diagnostic
+is running against the unchanged extracted archive; its external script parses.
+
+Horde released local Godot at checkpoint `5249cb95` (parent `59fce2c4`): native
+inputs restored both feeders and switch pump, reached stage B and opened the first
+gate, then lost in wave six before relief valve/stage C. Max input gap 137.38 ms,
+no stale reset/script error, cheats off. A fixture upgrade-choice omission is
+corrected but unrerun. Full-chain/Warden acceptance stays unverified. Parent now
+owns local Godot for startup diagnostics and any required release repair.
+
 Windows first run `36904489179` failed after 14 base cases at Crown startup with
 `Disconnected. Join a new room explicitly.` Its full artifact is preserved in
 `integrated-release/windows-36904489179-attempt1/`. This repeats the historical
