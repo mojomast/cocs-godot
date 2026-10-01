@@ -33,6 +33,19 @@ lattice=replace(lattice,'const SessionOptions = preload("res://lattice/session_o
 lattice=replace(lattice,'preload("res://lattice/session_flow.gd")','preload("res://multiplayer_worlds/lattice_flow.gd")');
 lattice=replace(lattice,'const WORLD_MAPS := ["asterion-relay", "monsoon-foundry"]','const WORLD_MAPS := ["tern-archipelago"]');
 lattice=replace(lattice,'client = WorldTransport.new()','client = WorldTransport.new()\n\tcatalog = WorldCatalog.new()');
+lattice=replace(lattice,'add_child(environment)\n\tcamera.far = 2000',`add_child(environment)
+	# The world scene bypasses the base viewer _ready; establish its own sun and
+	# ambient fill so geographic silhouettes and indoor thresholds remain legible.
+	sun.rotation_degrees = Vector3(-42,-28,0)
+	sun.light_energy = 1.35
+	var daylight := Environment.new()
+	daylight.background_mode = Environment.BG_COLOR
+	daylight.background_color = Color("6a8793")
+	daylight.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	daylight.ambient_light_color = Color("a4b3b3")
+	daylight.ambient_light_energy = 0.62
+	environment.environment = daylight
+	camera.far = 2000`);
 lattice=replace(lattice,'"Require Asterion/Monsoon and cocs/cocs-coop"','"Require Tern Archipelago and cocs/cocs-coop"');
 lattice=replace(lattice,'func on_lobby(frame: Dictionary) -> void:','func on_lobby(frame: Dictionary) -> void:\n\tif "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_LATTICE_LOBBY ",JSON.stringify({"phase":phase,"map":frame.get("mapId"),"mode":frame.get("config",{}),"players":frame.get("players",[]).size()}))');
 lattice=replace(lattice,'func on_error(message: String) -> void:','func on_error(message: String) -> void:\n\tif "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_LATTICE_ERROR ",message)');

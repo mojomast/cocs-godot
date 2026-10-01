@@ -93,3 +93,26 @@ LATTICE modes. Two render captures per world and console logs are under
 `/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/urban/`.
 The world lane's exclusive Godot pass should now drive full rounds, human peer
 objectives, vehicle playback and world-specific presentation evidence.
+
+## World-lane visual and engine acceptance (post-`ad511d9c` merge)
+
+The world lane moved the duplicate Blender masters to the integration-owned
+`tools/godot-multiplayer/worlds/masters/` location (byte-identical copies),
+retaining only GLBs under `godot/multiplayer_worlds/art/worlds/`. The renderer
+draws authored GLB-covered world surfaces once while still installing **all**
+source terrain triangles, roof undersides/sides and ground-up blocks as Godot
+collision. Urban GLBs do not claim terrain coverage, so their terrain mesh
+remains rendered. Five world GLBs now include map-specific architecture/route
+markings within existing solids or at ground level; Breakwater adds four ferry
+cistern colliders and two through-offices outside the reserved routes, Thermal
+adds six grounded support piers beneath the bridge. Tern's islands/causeways
+are geographic low-tide surface cues on deliberately walkable tidal flats.
+
+Scoped scene `res://multiplayer_worlds/worlds/inspection.tscn` captures 25
+world views (five per map), including player-height interiors and routes, to
+`/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/worlds/`.
+`res://multiplayer_worlds/worlds/physics_probe.tscn` ray-tests 94 gameplay
+ground markers, 10 overhead slabs and seven alpine bridge samples against
+Godot physics with all five exact catalog hashes. Latest source mode matrix
+passes 43 registered map/mode pairs; source navigation and Puma route probes
+remain green. These are geometry/scene checks, not claims of completed rounds.

@@ -20,6 +20,12 @@ func build(data: Dictionary) -> bool:
  var arena: Dictionary = data.arena
  geometry_hash = str(data.get("geometryHash", ""))
  if geometry_hash.length() != 64: return false
+ var art_path := "res://multiplayer_worlds/art/" + ("worlds/" if data.has("recipeHash") else "") + str(data.id) + ".glb"
+ # World-lane GLBs cover their authored terrain, bridge and overhead slabs.
+ # Keep every source triangle as collision, but avoid drawing those same planes
+ # twice (the old coplanar roofs flickered into black/white stripes). Urban
+ # GLBs contain facades only, so their authority terrain stays visible.
+ var art_covers_surfaces: bool = data.has("recipeHash") and arena.get("art") is Dictionary and (arena.get("art",{}) as Dictionary).has("ground") and ResourceLoader.exists(art_path)
  set_meta("multiplayer_world",true)
  var markers := Node3D.new()
  markers.name = "StaticPickupMarkers"
@@ -56,10 +62,11 @@ func build(data: Dictionary) -> bool:
   var mesh := ArrayMesh.new()
   mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
   mesh.surface_set_material(0,material(str(surface.material)))
-  var instance := MeshInstance3D.new()
-  instance.name = str(surface.id)
-  instance.mesh = mesh
-  add_child(instance)
+  if not art_covers_surfaces:
+   var instance := MeshInstance3D.new()
+   instance.name = str(surface.id)
+   instance.mesh = mesh
+   add_child(instance)
   var body := StaticBody3D.new()
   body.name = str(surface.id) + "Collider"
   var shape := ConcavePolygonShape3D.new()
@@ -85,7 +92,6 @@ func build(data: Dictionary) -> bool:
   body.add_child(collider)
   add_child(body)
   count += faces.size()/3
- var art_path := "res://multiplayer_worlds/art/" + ("worlds/" if data.has("recipeHash") else "") + str(data.id) + ".glb"
  if ResourceLoader.exists(art_path):
   var scene: Variant = load(art_path)
   if scene is PackedScene:

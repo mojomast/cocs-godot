@@ -42,6 +42,17 @@ func _ready() -> void:
 	add_child(camera)
 	add_child(sun)
 	add_child(environment)
+	# The world scene bypasses the base viewer _ready; establish its own sun and
+	# ambient fill so geographic silhouettes and indoor thresholds remain legible.
+	sun.rotation_degrees = Vector3(-42,-28,0)
+	sun.light_energy = 1.35
+	var daylight := Environment.new()
+	daylight.background_mode = Environment.BG_COLOR
+	daylight.background_color = Color("6a8793")
+	daylight.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	daylight.ambient_light_color = Color("a4b3b3")
+	daylight.ambient_light_energy = 0.62
+	environment.environment = daylight
 	camera.far = 2000
 	camera.rotation_order = EULER_ORDER_YXZ
 	var layer := CanvasLayer.new()
