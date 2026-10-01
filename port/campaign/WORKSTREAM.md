@@ -551,3 +551,16 @@ safe replacement only after valid mesh loading, horizon preservation and actual
 material-surface draw counts. The checkpoint remains unmerged until verification.
 Its Blender export slot is released and explicitly granted to the weapon lane;
 architecture retains the current Godot slot, environment is next.
+
+Architecture first pass `16985275` supplies eight fitted two-LOD Blender kits,
+136 replaced block visuals and reported passing structure/terrain checks.
+Parent reviewed player-height captures and requested stronger visible separation
+between kit families: the initial shared vented facade repeats too uniformly,
+especially on stacked tall blocks, and roof-specific details are partly hidden
+under common caps. The lane is refining continuous base/body/top forms and
+distinct pump/abutment/refinery/receiver silhouettes before acceptance.
+
+Environment now has the explicit exclusive Godot slot for import, tests and
+four-biome rendering. Weapon generation continues on one Blender slot; architecture
+may regenerate the refinement on the second single-thread Blender slot but awaits
+Godot permission. Parent keeps `16985275` unmerged pending that visual refinement.
