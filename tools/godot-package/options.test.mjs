@@ -38,10 +38,10 @@ test('package scene routing covers all nine locked identities and preserves nati
   const covered = new Set();
   for (const [experience, value] of Object.entries(EXPERIENCES)) {
     for (const [map, modes] of Object.entries(value.maps)) {
-      if (experience !== 'campaign') covered.add(map);
+      if (experience !== 'campaign' && experience !== 'multiplayer-worlds') covered.add(map);
       for (const mode of modes) {
         const plan = options([`--experience=${experience}`, `--map=${map}`, `--mode=${mode}`], catalog);
-        assert.equal(plan.scene, value.scene);
+        assert.equal(plan.scene, value.identity?.[map]?.scene ?? value.scene);
         assert.ok(plan.userArgs.includes(`--map=${map}`));
         assert.ok(plan.userArgs.includes(`--mode=${mode}`));
       }

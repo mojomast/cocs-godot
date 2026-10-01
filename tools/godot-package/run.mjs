@@ -26,6 +26,8 @@ async function runRoute(plan, env) {
   // Native-only scenes and external lobby never import local authority adapters.
   const factory = plan.nativeOnly || plan.endpoint ? null : plan.campaign
     ? (await import('./runtime/port/native-campaign/authority.mjs')).createAuthority
+    : plan.world
+    ? (await import('./runtime/port/multiplayer-worlds/derived/game-server.mjs')).createGameServer
     : plan.nativeArena
     ? (await import('./runtime/port/native-arenas/authority.mjs')).createNativeArenaAuthority
     : plan.identityZone
@@ -55,7 +57,7 @@ async function runRoute(plan, env) {
   process.on('SIGINT', interrupt); process.on('SIGTERM', terminate);
    try {
      career=acquireCareer(plan,env);Object.assign(childEnv,career.env);
-     game = await factory?.(plan.campaign ? {mapId:plan.map, difficulty:plan.difficulty} : plan.nativeArena ? {port:0, host:'127.0.0.1', mapId:plan.map, mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds} : plan.identityZone ? {port:0, host:'127.0.0.1', mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds, fragLimit:plan.scoreLimit} : plan.experience === 'horde' ? {} : {historyPath:career.historyPath, progressionPath:career.progressionPath});
+     game = await factory?.(plan.campaign ? {mapId:plan.map, difficulty:plan.difficulty} : plan.nativeArena ? {port:0, host:'127.0.0.1', mapId:plan.map, mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds} : plan.identityZone ? {port:0, host:'127.0.0.1', mode:plan.mode, bots:plan.bots, roundSeconds:plan.roundSeconds, fragLimit:plan.scoreLimit} : plan.experience === 'horde' ? {} : plan.world ? {} : {historyPath:career.historyPath, progressionPath:career.progressionPath});
     game?.server?.on('error', serverError);
      let endpoint = plan.endpoint;
      if (game) {

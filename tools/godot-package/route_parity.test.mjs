@@ -21,7 +21,7 @@ const godotDir = fileURLToPath(new URL('../../godot/', import.meta.url));
 // Same candidate inputs the generator uses; capability membership is always
 // re-observed from the parsers, never copied from a hand-written list.
 const CAPABILITY_CANDIDATES = {
-  maps: candidateMaps(catalog, [...NATIVE_ARENA_MAPS, ...Object.keys(EXPERIENCES.campaign.maps), ...Object.keys(EXPERIENCES.horde.identity ?? {})]),
+  maps: candidateMaps(catalog, [...NATIVE_ARENA_MAPS, ...Object.keys(EXPERIENCES.campaign.maps), ...Object.keys(EXPERIENCES.horde.identity ?? {}), ...Object.keys(EXPERIENCES['multiplayer-worlds'].maps)]),
   modes: candidateModes(EXPERIENCES),
 };
 const EXTERNAL_ENDPOINT = 'ws://127.0.0.1:12345';
@@ -34,7 +34,7 @@ const endpointAccepted = (parse, baseArgs) => {
 
 const EXPECTED_IDS = [
   // play
-  'campaign', 'combat', 'lobby',
+  'campaign', 'combat', 'lobby', 'multiplayer-worlds',
   // native
   'native-dm', 'identity-zones', 'horde',
   // modes
@@ -69,14 +69,14 @@ test('registry preserves the existing 23 routes and adds Campaign, covering ever
   assert.equal(registry.generated_by, 'tools/godot-package/gen_routes.mjs');
   assert.deepEqual(registry.categories, META_CATEGORIES);
   const ids = registry.routes.map(route => route.id);
-  assert.equal(ids.length, 24);
+  assert.equal(ids.length, 25);
   assert.deepEqual([...ids].sort(), [...EXPECTED_IDS].sort());
   // Menu order matches the hand-written metadata order.
   assert.deepEqual(ids, META_ROUTES.map(route => route.id));
-  assert.equal(new Set(ids).size, 24, 'route ids must be unique');
+  assert.equal(new Set(ids).size, 25, 'route ids must be unique');
 
   // Assault adds one source-backed experience; five offline labs unchanged.
-  assert.equal(Object.keys(EXPERIENCES).length, 12);
+  assert.equal(Object.keys(EXPERIENCES).length, 13);
   assert.equal(Object.keys(NATIVE_EXPERIENCES).length, 5);
   for (const key of Object.keys(EXPERIENCES)) assert.ok(ids.includes(key), `EXPERIENCES.${key} uncovered`);
   for (const key of Object.keys(NATIVE_EXPERIENCES)) assert.ok(ids.includes(key), `NATIVE_EXPERIENCES.${key} uncovered`);
@@ -252,7 +252,7 @@ test('authority ownership is derived, bounded and identical across dev/package p
     }
   }
   const external = registry.routes.filter(route => route.capability.authority.external).map(route => route.id);
-  assert.deepEqual([...new Set(external)].sort(), ['combined-arms', 'lattice', 'lattice-world', 'lobby']);
+  assert.deepEqual([...new Set(external)].sort(), ['combined-arms', 'lattice', 'lattice-world', 'lobby', 'multiplayer-worlds']);
 });
 
 test('external authority reuse can never construct a local authority', () => {

@@ -58,7 +58,7 @@ func _initialize() -> void:
 	d.on_started({})
 	check(d.presentation.actors.is_empty() and d.horde.state.is_empty() and d.latest.is_empty(), "full round cleanup")
 	# Detached components are not owned by the scene until _ready; free explicitly.
-	for node: Node in [d.camera,d.sun,d.environment,d.label,d.selector,d.combat_label,d.pickups,d.presentation,d.combat,d.client,d.horde_label]: node.free()
+	for node: Node in [d.camera,d.sun,d.environment,d.label,d.selector,d.combat_label,d.pickups,d.presentation,d.combat,d.client,d.horde_label,d.robot_tells,d.robot_voices]: node.free()
 	d.free()
 	print("HORDE_TESTS checks=",count," failures=",failures)
 	quit(0 if failures == 0 else 1)
