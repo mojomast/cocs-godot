@@ -6,6 +6,10 @@ on:
         description: Release tag containing cocs-native-windows.zip
         required: true
         type: string
+      startup_diagnostic:
+        description: Observe three Crown startups instead of the platform suite
+        type: boolean
+        default: false
 permissions:
   # GitHub requires write access to see unpublished draft release assets.
   # This job only downloads; it never publishes or modifies a release.
@@ -32,10 +36,21 @@ jobs:
           Expand-Archive $zip $extract
           "DEMO_ROOT=$extract\cocs-native-windows" >> $env:GITHUB_ENV
       - name: Bundled runtimes, expansion mode pairs and cleanup
+        if: ${{ !inputs.startup_diagnostic }}
         shell: pwsh
         run: |
           & "$env:DEMO_ROOT\node.exe" tools/godot-package/verify_windows.mjs "$env:DEMO_ROOT" "$env:RUNNER_TEMP\windows-evidence"
           if ($LASTEXITCODE -ne 0) { throw 'Native Windows smoke failed' }
+      - name: Three independent Crown startup observations
+        if: ${{ inputs.startup_diagnostic }}
+        shell: pwsh
+        run: |
+          $failed = 0
+          foreach ($attempt in 1..3) {
+            & "$env:DEMO_ROOT\node.exe" port/singleplayer-feel/startup_probe.mjs --run-native "--package=$env:DEMO_ROOT" "--output=$env:RUNNER_TEMP\windows-evidence\startup-attempt-$attempt"
+            if ($LASTEXITCODE -ne 0) { $failed += 1 }
+          }
+          if ($failed -gt 0) { throw "$failed of 3 startup observations failed; inspect transport/native evidence" }
       - uses: actions/upload-artifact@v4
         if: always()
         with:
