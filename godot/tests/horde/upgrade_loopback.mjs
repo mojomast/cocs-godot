@@ -37,6 +37,10 @@ const MAP = 'meridian-exchange';
 const WAVES = 10;
 const TIMEOUT_MS = 30000;
 const ARTIFACT_DIR = process.env.HORDE_LOOPBACK_ARTIFACTS ?? '';
+// UI stays 640x480; only the real 3D world renders at a lower pixel budget.
+// Override is for reproducible A/B profiling, not an adaptive pass/retry ladder.
+const RENDER_SCALE = Number(process.env.HORDE_UPGRADE_3D_SCALE ?? .5);
+assert.ok(Number.isFinite(RENDER_SCALE) && RENDER_SCALE >= .25 && RENDER_SCALE <= 1, 'valid fixture 3D scale');
 const binary = process.env.GODOT_BIN;
 if (!binary) throw Error('GODOT_BIN must point at the pinned 4.5.2 engine');
 
@@ -144,6 +148,8 @@ try {
     ...(display.display ? ['--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy', '--resolution', '640x480'] : []),
     '--max-fps', '30', '--path', 'godot', '--script', 'res://tests/horde/upgrade_live.gd', '--',
     `--map=${MAP}`, `--waves=${WAVES}`, `--endpoint=ws://127.0.0.1:${port}`,
+    ...(process.env.HORDE_UPGRADE_PROFILE ? ['--fixture-profile'] : []),
+    `--fixture-3d-scale=${RENDER_SCALE}`,
     // Rendering and real engine input remain required. Expensive pixel readback
     // is useful only when the caller actually retains the screenshot evidence.
     ...(ARTIFACT_DIR ? [`--shot=${shotPrefix}`] : []),
@@ -290,6 +296,9 @@ check('native observer reported the same loopback', godotEvidence?.ok === true &
   && godotEvidence?.offer_wave === 3,
   JSON.stringify(godotEvidence ? {ok: godotEvidence.ok, failures: godotEvidence.failures, chosen: godotEvidence.chosen, delivery: godotEvidence.delivery, status: godotEvidence.status_after_confirm, notes: godotEvidence.notes} : null));
 check('native observer delivery path is a real engine input path', ['parse_input_event', 'viewport_push_input'].includes(godotEvidence?.delivery), String(godotEvidence?.delivery));
+check('fixture preserves full UI resolution and the explicit 3D pixel budget',
+  JSON.stringify(godotEvidence?.frameTiming?.uiSize) === '[640,480]' && godotEvidence?.frameTiming?.renderScale === RENDER_SCALE,
+  JSON.stringify({uiSize:godotEvidence?.frameTiming?.uiSize, renderScale:godotEvidence?.frameTiming?.renderScale}));
 check('godot child exited cleanly with no ERROR/SCRIPT ERROR', exit?.code === 0 && fatal.length === 0 && !timedOut && !spawnError,
   JSON.stringify({exit, timedOut, spawnError: spawnError?.message ?? null, fatal: fatal.slice(0, 3)}));
 check('authority closed with no live sockets', authorityStatus.closed === true && authorityStatus.listening === false && authorityStatus.clients === 0, JSON.stringify(authorityStatus));
@@ -309,7 +318,7 @@ const result = {
   records: records.length,
   steps: {total: steps.length, afterApply: stepsAfter.length, monotonic},
   display: display?.display ?? null,
-  renderer: {lpNumThreads: env.LP_NUM_THREADS, maxFps: 30},
+  renderer: {lpNumThreads: env.LP_NUM_THREADS, maxFps: 30, render3dScale: RENDER_SCALE, uiSize:[640,480]},
   shots: godotShots,
   copiedShots,
   godotExit: exit,

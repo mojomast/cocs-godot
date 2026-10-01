@@ -26,11 +26,9 @@ const LINGER_FRAMES := 15
 ## Readback/shader warm-up can exceed the unchanged authority input TTL. Wait
 ## for ordinary acknowledged input to recover before emitting the fixture key.
 const READY_FRAMES := 12
-## Delivery ladder for the synthetic key. The first entry is the engine's own
-## parse path (the same call tests/horde/live.gd steers with); the later entries
-## exist only for display servers that drop parsed events, and whichever entry
-## actually reached the product input handler is reported as `delivery`.
-const DELIVERIES := ["parse_input_event", "viewport_push_input", "handler_call"]
+## Both delivery paths dispatch through the engine. Never bypass input routing
+## with a direct handler call, even as a diagnostic fallback.
+const DELIVERIES := ["parse_input_event", "viewport_push_input"]
 var endpoint := ""
 var map_id := "meridian-exchange"
 var waves := 10
@@ -70,6 +68,31 @@ var previous_frame_ms := 0
 var ready_frames := 0
 var ready_epoch := 0
 var ready_received := 0
+var frame_profile: Array = []
+var profile_verbose := false
+## This fixture validates full-resolution UI/input, not scene image quality.
+## llvmpipe profiling: full 3D gave 93ms median live frames / 76ms render time,
+## plus >250ms stalls. Half-resolution 3D preserves 640x480 UI and input while
+## leaving the real authority/network poll enough scheduling headroom.
+var render_scale := 0.5
+var process_end_us := 0
+var process_start_us := 0
+var node_process_ms := 0.0
+
+class FrameEnd extends Node:
+	var observer: SceneTree
+	func _process(_dt: float) -> void:
+		observer.process_end_us = Time.get_ticks_usec()
+		observer.node_process_ms = float(observer.process_end_us - observer.process_start_us) / 1000.0
+
+func frame_timing() -> Dictionary:
+	var times: Array = frame_profile.map(func(row: Dictionary) -> float: return row.frameMs)
+	times.sort()
+	return {"frames":times.size(), "p50Ms":times[times.size() / 2] if not times.is_empty() else 0,
+		"p95Ms":times[mini(times.size() - 1, int(times.size() * 0.95))] if not times.is_empty() else 0,
+		"maxMs":times.back() if not times.is_empty() else 0,
+		"renderScale":root.scaling_3d_scale, "uiSize":[root.size.x, root.size.y],
+		"samples":frame_profile if profile_verbose else frame_profile.filter(func(row: Dictionary) -> bool: return row.frameMs > 250).slice(0, 24)}
 
 func check(ok: bool, message: String) -> void:
 	checks += 1
@@ -81,6 +104,8 @@ func _initialize() -> void:
 	started_ms = Time.get_ticks_msec()
 	previous_frame_ms = started_ms
 	for arg: String in OS.get_cmdline_user_args():
+		if arg == "--fixture-profile": profile_verbose = true
+		if arg.begins_with("--fixture-3d-scale="): render_scale = clampf(arg.trim_prefix("--fixture-3d-scale=").to_float(), 0.25, 1.0)
 		if arg.begins_with("--endpoint="): endpoint = arg.trim_prefix("--endpoint=")
 		if arg.begins_with("--map="): map_id = arg.trim_prefix("--map=")
 		if arg.begins_with("--shot="): shot_prefix = arg.trim_prefix("--shot=")
@@ -92,8 +117,14 @@ func _initialize() -> void:
 	# Match the launcher instead of silently doubling its software-rendered
 	# pixel budget. 480px leaves room for all three real offer buttons.
 	root.size = Vector2i(640, 480)
+	root.scaling_3d_scale = render_scale
+	RenderingServer.viewport_set_measure_render_time(root.get_viewport_rid(), true)
 	session = DemoScene.instantiate()
 	root.add_child(session)
+	var end := FrameEnd.new()
+	end.observer = self
+	end.process_priority = 10000
+	root.add_child(end)
 	print("HORDE_UPGRADE_LIVE_BOOT ", JSON.stringify({"label": LABEL, "scene": session.scene_file_path,
 		"script": session.get_script().resource_path, "endpoint": endpoint, "map": map_id, "waves": waves,
 		"deliveries": DELIVERIES}))
@@ -113,10 +144,8 @@ func emit_key(code: int, pressed: bool) -> void:
 	var event := key_event(code, pressed)
 	if delivery == "parse_input_event":
 		Input.parse_input_event(event)
-	elif delivery == "viewport_push_input":
-		session.get_viewport().push_input(event)
 	else:
-		session.call("_input", event)
+		session.get_viewport().push_input(event)
 
 func reacted() -> bool:
 	if not is_instance_valid(session): return false
@@ -137,6 +166,7 @@ func capture(tag: String) -> void:
 
 func snapshot_evidence() -> Dictionary:
 	var result := {"stage": stage, "delivery": delivery, "chosen": chosen, "offer_ids": offer_ids,
+		"frameTiming":frame_timing(),
 		"offer_wave": offer_wave, "epoch": epoch_seen, "seq_before": seq_before, "resets": reset_count,
 		"resets_at_press": resets_at_press, "resets_at_delivery": resets_at_delivery,
 		"epoch_at_delivery": epoch_at_delivery,
@@ -197,7 +227,15 @@ func _process(delta: float) -> bool:
 			finish_exit()
 		return false
 	var now := Time.get_ticks_msec()
+	process_start_us = Time.get_ticks_usec()
 	var frame_ms := now - previous_frame_ms
+	if frame_profile.size() < 1024:
+		frame_profile.append({"atMs":now - started_ms,"stage":stage,"frameMs":float(frame_ms),
+			"nodeProcessMs":snappedf(node_process_ms, 0.01),
+			"betweenProcessMs":snappedf(float(process_start_us - process_end_us) / 1000.0, 0.01) if process_end_us > 0 else 0,
+			"renderCpuMs":snappedf(RenderingServer.viewport_get_measured_render_time_cpu(root.get_viewport_rid()), 0.01),
+			"renderGpuMs":snappedf(RenderingServer.viewport_get_measured_render_time_gpu(root.get_viewport_rid()), 0.01),
+			"epoch":int(session.horde_client.input_epoch) if is_instance_valid(session) else 0})
 	previous_frame_ms = now
 	# Engine delta is capped on stalled software-rendered frames. The fixture's
 	# own deadline must still expire before the parent's wall-clock timeout.
