@@ -385,3 +385,15 @@ heavy slot. The correction must use deliberate pose transitions, restrained
 joint motion and deterministic animation timing shared by campaign, live menu
 and trailer. Revised motion must be reviewed in rendered samples before encoding
 and publishing `quiet-relay-trailer-v2.mp4`.
+
+Live menu follow-up `0cad738d` integrated as `280b93c4`. Actual private-viewport
+render/lifecycle checks passed **56/56**, menu contracts **970/970**, settings
+**50/50**. Parent inspected Mara/Patch menu screenshots in `live-menu-engine/run-5/`:
+the real 3D scene is visible behind readable controls. Editor import aborted on
+shutdown with a double-free after finishing asset imports; later focused runtime
+and graphical checks passed. Preserve and revisit this during full verification.
+The visible live-menu fixture is registered in the canonical verifier.
+
+The exclusive heavy slot is now granted to Astra for gesture motion samples and
+the revised trailer. Parent will publish the replacement only after inspecting
+the corrected motion; the original video is retained as earlier evidence.

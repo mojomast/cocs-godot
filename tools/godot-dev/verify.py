@@ -42,6 +42,7 @@ derivative_path = os.environ.get('COCS_SOURCE_DERIVATIVE')
 os.environ['COCS_CAREER_ROOT'] = tempfile.mkdtemp(prefix='verification-career-', dir=root / '.port-runtime')
 os.environ['CAREER_EQUIPPED_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'equipped-journey')
 os.environ['CAREER_CLARITY_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'clarity-journey')
+os.environ.setdefault('COCS_ATTRACT_EVIDENCE', str(Path(os.environ['COCS_CAREER_ROOT']) / 'live-menu'))
 for key, suffix in [("XDG_DATA_HOME", "data"), ("XDG_CONFIG_HOME", "config"), ("XDG_CACHE_HOME", "cache")]:
     os.environ.setdefault(key, str(root / ".port-runtime" / suffix))
     Path(os.environ[key]).mkdir(parents=True, exist_ok=True)
@@ -215,6 +216,7 @@ commands = [
     ("campaign-crown", ["node", "tools/godot-dev/launch.mjs", "--experience=campaign", "--map=crown-array", "--smoke"]),
     ("main-menu-smoke", [binary, "--headless", "--path", "godot", "res://ui/main_menu.tscn", "--", "--smoke"]),
     ("main-menu-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/main_menu/contracts.gd", "--", "--contracts"]),
+    ("main-menu-live-attract", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--path", "godot", "--rendering-method", "gl_compatibility", "--audio-driver", "Dummy", "--script", "res://tests/main_menu/live_attract.gd"]),
     ("product-shell-settings", [binary, "--headless", "--path", "godot", "--script", "res://tests/product_shell/settings_contract.gd"]),
     ("product-shell-journey", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "tools/godot-dev/product_journey.mjs", "--itinerary=port/native-shell/itineraries/consolidated.json"]),
     ("player-flow-journey", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "tools/godot-dev/product_journey.mjs", "--player-flow"]),
