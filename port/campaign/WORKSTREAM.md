@@ -601,3 +601,9 @@ The weapon lane may regenerate Blender assets but waits for another Godot grant.
 Architecture now has the exclusive Godot slot for its distinct-family refinement,
 including combined environment artwork and collision/terrain checks. Weapon first
 pass remains unmerged pending corrected rendered review.
+
+Weapon fidelity follow-up `5fbfd805` is exported on top of `c80487fb`: physical
+sight/optic mounts, visible Pulse action detail and closed Scattergun/Grenade rear
+breeches. Static geometry/source-hash audit passes; updated Godot renders and
+ADS/framing/handling checks await the slot after architecture. The prior weapon
+screenshots explicitly predate this correction. Blender export slot is released.
