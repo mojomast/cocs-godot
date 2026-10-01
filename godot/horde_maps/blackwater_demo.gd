@@ -3,11 +3,58 @@ const BlackwaterCatalog = preload("res://horde_maps/blackwater_catalog.gd")
 const BlackwaterMap = preload("res://horde_maps/blackwater.gd")
 const Atmosphere = preload("res://native_arenas/identity_environment.gd")
 const ID := "blackwater-reclamation"
+class BlackwaterCombat extends "res://world/combat_feedback.gd":
+	func _configure_map(state: Dictionary) -> void:
+		if not is_instance_valid(effect_camera) or not is_instance_valid(effect_session): return
+		var terrain: Node3D = effect_session.world
+		if not is_instance_valid(terrain): return
+		var id := str(state.get("mapId", ""))
+		var key := "%s/%s" % [id, terrain.get_instance_id()]
+		if map_key == key: return
+		if not map_key.is_empty(): clear_round()
+		map_key = key
+		var envelope: Dictionary = effect_session.catalog.resolve_envelope(id)
+		var arena: Dictionary = envelope.get("arena", {})
+		var bounds: Dictionary = arena.get("bounds", {})
+		if bounds.is_empty():
+			map_error = "Blackwater effects recipe has no bounds"
+			return
+		var map := {"id":id,"bounds":AABB(Vector3(bounds.minX, -32, bounds.minZ),
+			Vector3(bounds.maxX - bounds.minX, 192, bounds.maxZ - bounds.minZ)),"collision_root":terrain}
+		occlusion.configure(effect_camera, map)
+		map_error = "" if occlusion.ready else "Blackwater collision geometry unavailable"
+		if is_instance_valid(impacts):
+			impacts.configure(effect_camera, occlusion)
+			impacts.set_map(map)
+		if is_instance_valid(world_particles):
+			var result: Dictionary = world_particles.configure(effect_camera, map)
+			if not result.get("ok", false): map_error = str(result.get("error", "Blackwater particles failed"))
+		if is_instance_valid(blood_fx):
+			var result: Dictionary = blood_fx.configure(effect_camera, map)
+			if not result.get("ok", false): map_error = str(result.get("error", "Blackwater blood surfaces failed"))
+		if is_instance_valid(projectiles): projectiles.configure_occlusion(occlusion.segment_blocked)
 var builder: Node3D
 var last_serial := 0
+var mission_notice := ""
+var mission_notice_until := -1.0
+
+func _ready() -> void:
+	super()
+	client.events.connect(on_blackwater_events)
+
+func on_blackwater_events(items: Array) -> void:
+	for item: Variant in items:
+		if not item is Dictionary: continue
+		var kind := str(item.get("type", ""))
+		if kind not in ["blackwater-station-armed", "blackwater-station-restored"]: continue
+		var station := str(item.get("station", "")).replace("-", " ").to_upper()
+		mission_notice = "%s · %s" % [station, "REPAIR ARMED · HOLD THE AREA" if kind == "blackwater-station-armed" else "RESTORED · SUPPLY ONLINE"]
+		mission_notice_until = float(item.get("time", 0.0)) + 5.0
 
 func _init() -> void:
 	super()
+	combat.free()
+	combat = BlackwaterCombat.new()
 	catalog = BlackwaterCatalog.new()
 	sun.free()
 	environment.free()
@@ -58,6 +105,8 @@ func load_selected_map(id: String) -> bool:
 
 func on_started(frame: Dictionary) -> void:
 	last_serial = 0
+	mission_notice = ""
+	mission_notice_until = -1.0
 	super.on_started(frame)
 
 func on_snapshot(frame: Dictionary) -> void:
@@ -75,6 +124,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		on_error("Blackwater authoritative stage/director snapshot missing")
 		return
 	builder.call("apply_source_stage", stage, str(frame.get("inputEpoch", "")))
+	builder.call("apply_station_state", mission)
 	var target := ""
 	for item: Variant in mission.get("stations", []):
 		if not item is Dictionary or item.get("id") in mission.get("completed", []) or not item.get("available", false): continue
@@ -82,7 +132,15 @@ func on_snapshot(frame: Dictionary) -> void:
 		if str(item.id) == str(mission.get("active", "")): target += " · WORKING"
 		else: target += " · E TO ARM"
 		break
-	if not target.is_empty(): horde_label.text += "\n" + target
+	if not target.is_empty():
+		for item: Variant in mission.get("stations", []):
+			if item is Dictionary and target.begins_with(str(item.get("caption", ""))):
+				var local: Dictionary = presentation.local_actor
+				if not local.is_empty(): target += " · %.0fm" % Vector2(float(item.x), float(item.z)).distance_to(Vector2(float(local.x), float(local.z)))
+				break
+		horde_label.text += "\n" + target
+	if not mission_notice.is_empty() and float(state.get("time", 0.0)) <= mission_notice_until:
+		horde_label.text += "\n" + mission_notice
 	var transit: Variant = stage.get("transit")
 	if transit is Dictionary:
 		var to := str(transit.get("to", ""))

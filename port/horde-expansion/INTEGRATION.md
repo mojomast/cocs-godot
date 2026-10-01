@@ -3,6 +3,9 @@
 ## Route registration for integrator
 
 - New map ID: `blackwater-reclamation`, mode `horde`, display name **Blackwater Reclamation**.
+- Global launcher/menu/package registration was integrated at `ad511d9c` on
+  `expansion/mp-urban` and merged into this branch. Do not cherry-pick the
+  equivalent Horde implementation commits again.
 - Client scene: `res://horde_maps/blackwater_demo.tscn` with mandatory
   `--map=blackwater-reclamation --endpoint=ws://127.0.0.1:PORT --waves=1..30`.
 - Native local authority: `port/native-horde/authority.mjs`, `HORDE_MAPS` now
@@ -46,19 +49,62 @@ This local Horde transport supports one human seat; no coop claim or simulated
 team contribution is made. Standard maps remain wave-survival without story
 objectives.
 
-## Pending engine verification after explicit parent resource grant
+## Exclusive-slot engine acceptance (2026-10-01)
 
 The generator and JS-only contracts can run without Blender/Godot:
 `python3 tools/godot-horde/blackwater.py` then
 `python3 tools/godot-horde/check_assets.py` and
 `node --test port/native-horde/blackwater.test.mjs port/native-horde/robot-roles.test.mjs port/native-horde/robot-authority.test.mjs`.
-Asset counts: five batched Blender materials/meshes, 13,548 triangles,
-616,176-byte GLB, 1,035,139-byte editable master; source recipe owns 213
+Socket acceptance: `node --test port/native-horde/robot-network-census.test.mjs`
+(~60 seconds; one real wave on every local Horde map, then a real movement/E
+repair on Blackwater). Disconnect terminates the solo match; reconnect creates
+a fresh round and input epoch. This route does not support late joining or
+multiplayer teammates, and does not claim either.
+Asset counts after the district/tunnel/spillway fidelity pass: five batched
+Blender materials/meshes, 48,284 triangles, 2,133,344-byte GLB,
+2,216,755-byte editable master; source recipe owns 220
 collision blocks, 30 walkable surfaces, and 184 focused navigation hints. All
 three stage anchor pools and four interaction stations are source-graph reachable
 under closed, first-open and both-open floodgate masks. Real Match authority
 steps cover the objective chain under a **controlled intermission fixture**;
 this is not proof of natural combat completion.
-The scene, all-Horde live NPC visual census, natural-play objective route,
-all mission beats, late join/restart, screenshots and gameplay clip require the
-reserved export/import/render slot. Do not treat static tests as live evidence.
+
+The Godot 4.5.2 import succeeds. A shipping Blackwater renderer instantiation
+finds the exact 252 source-aligned static bodies, all five Blender batches, a
+five-metre physical gantry, and four visible authority-controlled station signs.
+Native ray probes from **both sides** of both gates under masks 0/1/3 verify
+real closed/open collision changes (`godot/tests/horde/blackwater_map.gd`,
+24/24). This is a physics fixture, **not** proof of a successful natural wave
+transit or softlock-free seven-wave playthrough. The source graph walk tests
+also pass under all three masks.
+
+Native loopback startup census uses the product scenes on all six Horde maps:
+3/3 first-wave NPCs per route use the expected campaign robot meshes while
+the human still uses `operator_visual.gd`. Source role/hit-scale tests cover
+all six identities and the bounded wave-ten Warden; campaign native robot,
+telegraph, and voice checks pass (447/447, 21/21, 238/238). A native full
+wave-ten fight, Warden phase/voice event, and hit confirmation **have not**
+been observed. The Blackwater combat-effects renderer was bound to the actual
+Blackwater scene collision to avoid the unrelated semantic-map catalog error.
+
+Evidence is outside the worktree at
+`/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/horde/`:
+eight real Godot rendered district/ground/gantry/tunnel screenshots
+`blackwater-*.png`, first-wave native HUD image `blackwater-live-wave1.png`,
+and `blackwater-live-gameplay.mp4` (17 seconds of real engine video; early
+wave-one traversal with the actual HUD, **not** an objective completion clip).
+`native-census.json`, `native-census-summary.log`, `inspection-refined.log`,
+`import-refined.log`, `network-retest.log`, `node-scoped-suite.log` and
+`live-attempt.log` preserve successes and failures. The scoped native-Horde
+Node suite passes 64/64, including real loopback movement/E arming and
+restoration of the north feeder and fresh-session reset/input epoch.
+
+**Unmet acceptance:** Natural native-controlled full feeder → pump → valve
+chain, stage B/C source wave transit, Warden live phases, and natural survival
+balance remain unproved. The bounded Godot native runner
+(`port/native-horde/blackwater-native-live.mjs`) produced a genuine first-wave
+loss (`live-attempt.log`); under software X11 the live scene measured roughly
+4 FPS at 1280×800 and control samples were repeatedly cancelled, so no
+later-stage screenshot or chain success is claimed. The route's source-valid
+fixture tests do not write outcome state; neither they nor standalone physics
+probes should be represented as natural-play completion.

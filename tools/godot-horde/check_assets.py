@@ -34,7 +34,7 @@ assert arena['bounds'] == dict(minX=-220, maxX=220, minZ=-190, maxZ=190)
 assert -220 <= extent[0] < -160 and 160 < maximum[0] <= 220
 assert -190 <= extent[2] < -80 and 80 < maximum[2] <= 190
 assert -0.01 <= extent[1] <= 0.01 and 20 <= maximum[1] <= 38
-assert 10000 < triangles < 25000 and len(arena['blocks']) < 300
+assert 25000 < triangles < 55000 and len(arena['blocks']) < 300
 assert 20 <= len(arena['terrain']['surfaces']) <= 60
 assert master.exists() and 100_000 < master.stat().st_size < 30_000_000
 assert len(b) < 4_000_000

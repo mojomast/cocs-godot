@@ -4,6 +4,7 @@ extends "res://horde_maps/cinderwake.gd"
 const ID := "blackwater-reclamation"
 const PATH := "res://horde_maps/generated/blackwater-reclamation.json"
 const ART := "res://horde_maps/art/blackwater-reclamation.glb"
+var station_signs: Dictionary = {}
 
 func height_at(x: float, z: float) -> float:
 	for center: float in [-170.0, -82.0, 0.0, 82.0, 170.0]:
@@ -37,8 +38,11 @@ func build(id: String = ID, gray: bool = false) -> bool:
 	for gate: Dictionary in recipe.arena.hordeStagePlan.gates: gate_bodies.append(_solid(gate, true))
 	for row: Array in [["A", Vector3(-170, 6, 8)], ["B", Vector3(0, 7, 8)], ["C", Vector3(170, 8, 8)]]:
 		stage_signs[str(row[0])] = _sign(str(recipe.presentation.stages[row[0]]), row[1], Color("e4d2af"))
-	for row: Array in [[-170, 78, "NORTH FEEDER"], [-82, -78, "SOUTH FEEDER"], [0, 78, "SWITCH PUMP"], [170, -82, "RELIEF VALVE"]]:
-		_sign("E · " + str(row[2]), Vector3(float(row[0]), 3.5, float(row[1])), Color("9bd7de"))
+	for row: Array in [["north-feeder", -170, 78, "NORTH FEEDER"], ["south-feeder", -82, -78, "SOUTH FEEDER"], ["switch-pump", 0, 78, "SWITCH PUMP"], ["relief-valve", 170, -82, "RELIEF VALVE"]]:
+		var sign := _sign(str(row[3]), Vector3(float(row[1]), 3.5, float(row[2])), Color("9bd7de"))
+		sign.name = "Station_" + str(row[0])
+		sign.visible = false # Only received director state can activate a station.
+		station_signs[str(row[0])] = sign
 	if not gray and ResourceLoader.exists(ART):
 		var authored: PackedScene = load(ART)
 		var art: Node = authored.instantiate()
@@ -46,6 +50,29 @@ func build(id: String = ID, gray: bool = false) -> bool:
 		add_child(art)
 	built = true
 	return true
+
+func apply_station_state(mission: Dictionary) -> void:
+	var completed: Array = mission.get("completed", [])
+	var active: String = str(mission.get("active", ""))
+	for value: Variant in mission.get("stations", []):
+		if not value is Dictionary: continue
+		var id: String = str(value.get("id", ""))
+		if not station_signs.has(id): continue
+		var sign: Label3D = station_signs[id]
+		var done := id in completed
+		var available := bool(value.get("available", false))
+		sign.visible = done or available
+		if not sign.visible: continue
+		var title: String = str(value.get("caption", id)).to_upper()
+		if done:
+			sign.text = title + "\nRESTORED · SUPPLY AVAILABLE"
+			sign.modulate = Color("78ddaa")
+		elif id == active:
+			sign.text = "%s\nDEFEND · %.1f / %.1fs" % [title, float(value.get("progress", 0.0)), float(value.get("required", 1.0))]
+			sign.modulate = Color("ffd381")
+		else:
+			sign.text = title + "\n[E] ARM REPAIR"
+			sign.modulate = Color("9bd7de")
 
 func apply_source_stage(stage: Dictionary, round_id: String) -> void:
 	# Source geometryRevision is monotonically increasing within each epoch.
