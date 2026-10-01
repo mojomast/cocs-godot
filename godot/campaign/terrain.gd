@@ -8,6 +8,7 @@ const CHUNK := 32.0
 const BiomeVisual = preload("res://biomes/map.gd")
 const SURFACE = preload("res://biomes/surface.gdshader")
 const FOLIAGE = preload("res://biomes/foliage.gdshader")
+const StructureArt = preload("res://campaign/structure_art.gd")
 var recipe: Dictionary = {}
 var materials: Dictionary = {}
 var heights: Dictionary = {}
@@ -78,6 +79,10 @@ func build(id: String) -> bool:
 	for surface: Dictionary in recipe.arena.terrain.surfaces:
 		_surface(surface)
 	_build_blocks()
+	var structures := StructureArt.new()
+	structures.name = "StructureArt"
+	add_child(structures)
+	structures.build(self)
 	_build_art()
 	_build_horizon()
 	return true
@@ -193,7 +198,7 @@ func _build_blocks() -> void:
 		collision.position = center
 		collision.shape = shape
 		body.add_child(collision)
-		_group(groups, "box", str(block.material), center, size)
+		if block.material == "rock": _group(groups, "box", str(block.material), center, size)
 	for group: Dictionary in groups.values(): _batch(group, true)
 
 func _group(groups: Dictionary, kind: String, material: String, at: Vector3, size: Vector3) -> void:
