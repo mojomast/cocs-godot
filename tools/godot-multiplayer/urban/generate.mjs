@@ -27,7 +27,25 @@ const perimeter = (blocks,spec) => {
     blocks.push(box(`${id}-entry-n`,xx,(near+z-door)/2,side,z-door-near,3.8,accent));
     blocks.push(box(`${id}-entry-s`,xx,(z+door+far)/2,side,far-z-door,3.8,accent));
   }
+  // Authored interior equipment: both short runs stay against the rear wall,
+  // leaving a continuous >3m route from the open door through the centre.
+  const rearZ=open==='north'?near+1.25:open==='south'?far-1.25:z;
+  const rearX=open==='east'?left+1.25:open==='west'?right-1.25:x;
+  if(open==='north'||open==='south'){
+    blocks.push(box(`${id}-counter-l`,x-w*.25,rearZ,2.1,.9,1.05,accent));
+    blocks.push(box(`${id}-counter-r`,x+w*.25,rearZ,2.1,.9,1.05,accent));
+  }else{
+    blocks.push(box(`${id}-counter-n`,rearX,z-d*.25,.9,2,1.05,accent));
+    blocks.push(box(`${id}-counter-s`,rearX,z+d*.25,.9,2,1.05,accent));
+  }
 };
+const roofRailing=(blocks,id,x,z,w,d,entry)=>{
+ const y=3.2,top=3.9;
+ blocks.push(box(`${id}-guard-n`,x,z-d/2+.12,w,.24,top,'steel',y));
+ blocks.push(box(`${id}-guard-s`,x,z+d/2-.12,w,.24,top,'steel',y));
+ blocks.push(box(`${id}-guard-out`,x+(entry==='west'?1:-1)*(w/2-.12),z,.24,d-.5,top,'steel',y));
+};
+const sidewalk=(surfaces,id,x0,x1,z0,z1)=>surfaces.push(rect(`${id}-sidewalk`,x0,x1,z0,z1,.12,.12,'paving'));
 function switchyard(){
   const id='switchyard-ward',name='Switchyard Ward',surfaces=[rect('asphalt-city-grid',-38,38,-34,34,0,0,'asphalt')],blocks=[];
   // Four accessible roofs are SOLID roof decks, not an upper floor over an
@@ -43,6 +61,7 @@ function switchyard(){
     blocks.push(box(`${n}-mass`,x,z,11,11.5,3.19,'brick'));
     blocks.push(box(`${n}-roof-cover-a`,x-3,z-3.8,2.2,1.1,4.4,'steel',3.2));
     blocks.push(box(`${n}-roof-cover-b`,x+3,z+3.8,2.2,1.1,4.4,'steel',3.2));
+    roofRailing(blocks,n,x,z,14,12,side<0?'east':'west');
   }
   // Shops are single floor, truly enterable through their 4.2m doorway;
   // architectural canopy/upper trim is decoration, never phantom support.
@@ -51,7 +70,12 @@ function switchyard(){
     {id:'east-service',x:18,z:0,w:11,d:9,open:'west',accent:'concrete'},
     {id:'north-ticket',x:0,z:-24,w:10,d:9,open:'south',accent:'brick'},
     {id:'south-depot',x:0,z:24,w:10,d:9,open:'north',accent:'concrete'}
-  ])perimeter(blocks,spec);
+  ]){
+    perimeter(blocks,spec);
+    sidewalk(surfaces,spec.id+'-front',spec.x-spec.w/2-1.7,spec.x+spec.w/2+1.7,spec.z-spec.d/2-1.8,spec.z-spec.d/2-.55);
+    sidewalk(surfaces,spec.id+'-back',spec.x-spec.w/2-1.7,spec.x+spec.w/2+1.7,spec.z+spec.d/2+.55,spec.z+spec.d/2+1.8);
+  }
+  for(const [side,x0,x1] of [['west',-38,-35.5],['east',35.5,38]])sidewalk(surfaces,side+'-promenade',x0,x1,-34,34);
   // Staggered rail furniture interrupts the 76m streets while keeping
   // symmetric >3m service, flank and flag routes around each courtyard.
   for(const [n,x,z,w,d] of [['rail-w',-5,-12,2,5],['rail-e',5,12,2,5],['shed-w',-5,11,3,2],['shed-e',5,-11,3,2],['island-n',0,-7,2.4,2],['island-s',0,7,2.4,2]])
@@ -74,12 +98,21 @@ function rainmarket(){
   surfaces.push(rect('arcade-overlook',-34,-19,-10,1,2.7,2.7,'roof'));
   surfaces.push(rect('arcade-ramp',-19,-9,-8,-2,2.7,0,'grating'));
   blocks.push(box('arcade-mass',-26.5,-4.5,13,10.5,2.69,'brick'));
+  blocks.push(box('arcade-guard-n',-26.5,-9.87,15,.25,3.4,'steel',2.7));
+  blocks.push(box('arcade-guard-s',-26.5,.87,15,.25,3.4,'steel',2.7));
+  blocks.push(box('arcade-guard-w',-33.87,-4.5,.25,10.5,3.4,'steel',2.7));
   for(const spec of [
     {id:'east-kiosk',x:26,z:19,w:13,d:11,open:'west',accent:'concrete'},
     {id:'west-foodhall',x:-25,z:20,w:12,d:9,open:'east',accent:'brick'},
     {id:'north-station',x:11,z:-25,w:15,d:11,open:'south',accent:'steel'},
     {id:'east-warehouse',x:28,z:-17,w:12,d:11,open:'west',accent:'brick'}
-  ])perimeter(blocks,spec);
+  ]){
+    perimeter(blocks,spec);
+    sidewalk(surfaces,spec.id+'-front',spec.x-spec.w/2-1.8,spec.x+spec.w/2+1.8,spec.z-spec.d/2-2,spec.z-spec.d/2-.55);
+    sidewalk(surfaces,spec.id+'-back',spec.x-spec.w/2-1.8,spec.x+spec.w/2+1.8,spec.z+spec.d/2+.55,spec.z+spec.d/2+2);
+  }
+  sidewalk(surfaces,'tram-boardwalk-west',-39,-36,-35,35);
+  sidewalk(surfaces,'tram-boardwalk-east',36,39,-35,35);
   for(const [n,x,z,w,d,h] of [
     ['tram-platform',0,-17,18,2,1.1],['route-wall-west',-12,12,2,13,3],['route-wall-east',12,-3,2,13,3],
     ['stall-a',-5,13,3.2,2.2,1.6],['stall-b',2,17,3.2,2.2,1.6],['stall-c',8,11,3.2,2.2,1.6],

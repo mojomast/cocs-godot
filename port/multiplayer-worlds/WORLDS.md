@@ -134,3 +134,73 @@ Tern yielded source territory capture/order events and a 60-second time-result
 win with seven nodes. Both native clients observed start/hash and result frames
 for every scenario. These are explicitly fixture-guided rounds, not unaided
 human matches; no actor state or result is teleported/injected.
+
+## Art checkpoint after parent review · waiting for Godot
+
+The 25 earlier native renders are **before** the subsequent authored-detail
+pass and are not visual acceptance of the new GLBs. Parent review found bare
+Breakwater walls/ground, a flat white Thermal slab and Copper's opaque goal
+backboard obscuring the net. Added `authored_detail.py` as a deterministic
+architectural pass over the existing recipe assets, with a distinct silhouette
+and material language for each of the five maps. Goal pocket proxies remain
+source-solid collision but no longer export their opaque back-wall art; open
+frame/net now sits on the source scoring mouth. Cliffs, reefs and ships are
+outside the authoritative play boundary; all in-play ground markings are low
+profile, and major turbine/crane/stand assemblies sit above existing solid
+roof/gantry/terrace supports. No gameplay recipe, catalog hash or native
+authority changed in this art-only pass.
+
+Blender silently returned exit code zero on an initial missing-module error;
+this exposed why checking exit code alone could leave the old GLB in place.
+The corrected module import, explicit `WORLD_EXPORT` log marker and
+`audit-art.mjs` validate all five newly batched GLBs offline. Blender CPU
+diagnostic images at the previous camera positions are labelled
+`*-BLENDER-DIAGNOSTIC.png` and are **not** Godot acceptance. See
+`/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/worlds/ART-CHECKPOINT.md`
+for the offline review and next-grant render checklist. Horde has the Godot
+slot; the world lane has not reimported or re-rendered these new assets in it.
+
+### Breakwater jib connectivity correction (offline)
+
+Parent identified free-ended diagonal struts in the player-height ground
+diagnostic. Both wall-mounted jibs now use paired upper/lower chords, closed
+end posts, alternating triangular webs, cross-ties, an anchored tip/hoist and
+a connected counterweight. Dock gantries gained lower chords and end posts;
+warehouse sawtooth frames gained far-end rafters and eave chords. Foreground
+quay panels/loading marks are now flush to within ~1 cm of the exported floor.
+`check_jib.py` audits the exact emitted segment graph for connected joints and
+no unsupported web endpoint. `*-BEFORE-TRUSS.png` preserves old diagnostics;
+the updated `*-BLENDER-DIAGNOSTIC.png` remains **offline only**. Godot import
+and native visual approval remain pending.
+
+### Native post-art inspection after `bb4ef8bd` integration
+
+After fast-forwarding the urban/Horde integration, the five revised world GLBs
+were reimported in Godot 4.5.2 and 28 native views were captured under
+`/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/worlds/post-art/`.
+The actual ground, interior, objective and overview views were reviewed for
+each map, including the extra Breakwater quay, Thermal plant and Copper
+sideline views. The Breakwater crane web is closed in the native ground view;
+Thermal's rooftop turbines and plant remain visible, Sirocco has canyon and
+pit silhouettes, Copper shows its net through the open source-aligned goal,
+and Tern has visible shoreline/causeway/bastion detail. The inspected views
+show sun shadows, no observed floating quay slabs or coplanar roof flicker.
+This is scoped visual acceptance for those cameras, not a packaged export.
+
+Native `physics_probe.tscn` passes 94 ground points, 10 overhead checks, seven
+Thermal bridge samples and 12 standing-capsule passage positions at these art
+review approaches. The unchanged source 43-pair mode matrix passes after the
+merge, and the five source geometry hashes in native capture/probe logs match
+the catalog. Urban's export Z-axis correction uses the same `(x,-z,y)`
+pre-rotation as the world exporter: no second flip was applied to world GLBs.
+Production `multiplayer_worlds/demo.gd` and urban `inspection.gd` now enable
+sun shadows; the latter matches production sun/ambient values. A fresh
+shadow-lit Rainmarket interior is in `urban/post-shadow/`.
+
+**Urban roof limitation:** Rainmarket east kiosk source has wall blocks and
+decorative overhead ribs, but no terrain roof surface or overhead collider at
+the room. The exporter's `shop_details()` likewise emits ribs, not a spanning
+roof. The sky-colored area in the old interior view is thus a genuine open
+ceiling, not merely an unshadowed underside. The new shadow-lit interior shows
+that opening more clearly. Adding a solid accessible roof would require an
+authority/recipe change; none was made during this art/lighting review.

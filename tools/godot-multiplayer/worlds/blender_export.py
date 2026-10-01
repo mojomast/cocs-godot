@@ -9,6 +9,8 @@ import json
 import math
 import pathlib
 import sys
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from authored_detail import build as build_architecture
 import bpy
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]
@@ -20,6 +22,7 @@ MASTER = ROOT / 'tools/godot-multiplayer/worlds/masters'
 MASTER.mkdir(parents=True, exist_ok=True)
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
+bpy.context.preferences.filepaths.save_version = 0
 
 COLORS = {
     'quay': (.34,.45,.48,1), 'tidal-silt': (.2,.39,.47,1), 'granite': (.51,.53,.54,1),
@@ -33,7 +36,10 @@ COLORS = {
     'safety-yellow': (.92,.61,.13,1), 'hazard-white': (.85,.85,.71,1),
     'rust': (.42,.21,.13,1), 'signal-red': (.82,.14,.1,1),
     'ice-blue': (.38,.71,.78,1), 'field-line': (.78,.86,.75,1),
-    'deep-water': (.06,.22,.34,1),
+    'deep-water': (.06,.22,.34,1), 'charcoal': (.08,.13,.17,1),
+    'bronze': (.5,.32,.13,1), 'glow-amber': (.94,.54,.09,1),
+    'sediment': (.30,.34,.32,1), 'cedar': (.18,.28,.25,1),
+    'red-earth': (.43,.21,.13,1), 'salt': (.55,.66,.68,1),
 }
 materials={}
 for name, color in COLORS.items():
@@ -43,7 +49,10 @@ for name, color in COLORS.items():
     principled=material.node_tree.nodes.get('Principled BSDF')
     # Blender node colors are linear. Keep the port's non-photometric kit below
     # clipping under the actual Godot sun rather than flooding every slab white.
-    principled.inputs['Base Color'].default_value=tuple(c*.56 for c in color[:3])+(1,)
+    # Avoid washed-out overhead slabs in the native daytime sun. Distinct
+    # deliberately dark structural colors preserve form in ground-level views.
+    factor=.37 if name in ('granite','plaster','sandstone','quay') else .55
+    principled.inputs['Base Color'].default_value=tuple(c*factor for c in color[:3])+(1,)
     principled.inputs['Roughness'].default_value=.84 if name not in ('iron','water') else .42
     materials[name]=material
 
@@ -106,6 +115,13 @@ if ID=='tern-archipelago':
         top=[(x,.034,z)]+[(px,.034,pz) for px,pz in outline]
         faces=[(0,i+1,(i+1)%14+1) for i in range(14)]
         emit(label+'.high-tide-bank',top,faces,'island-ground')
+        outer=[(x+(px-x)*1.22,z+(pz-z)*1.22) for px,pz in outline]
+        for i in range(14):
+            j=(i+1)%14
+            emit(label+'.faceted-shore.%02d'%i,
+                 [(outline[i][0],.03,outline[i][1]),(outline[j][0],.03,outline[j][1]),
+                  (outer[j][0],-.145,outer[j][1]),(outer[i][0],-.145,outer[i][1])],
+                 [(0,1,2),(0,2,3)],'limestone' if i%3 else 'sediment')
         for i in range(14):
             a=outline[i];b=outline[(i+1)%14]
             emit(label+'.retaining-face.%02d'%i,
@@ -136,6 +152,15 @@ for index,p in enumerate(DATA['art']['pieces']):
     # INSIDE the same authoritative 3.6 m square collision footprint.
     if ID=='breakwater-exchange' and p['kind']=='box' and p['z']==58 and p['h']==6 and abs(p['x']) in (70,79):
         continue
+    # The three unsupported infield cones read as isolated traffic cones at
+    # arena scale. Out-of-bound canyon landforms replace them below.
+    if ID=='sirocco-circuit' and p['kind']=='cone':
+        continue
+    # Goal backboard remains source-solid collision, but the opaque proxy hid
+    # the entire mouth from the actual player camera. Render its back wall as
+    # an open framed net pocket in the detail pass instead.
+    if ID=='copper-bowl' and p['kind']=='box' and p['w']==1 and p['d']==16 and p['h']==5:
+        continue
     {'box':cube,'roof':cube,'cone':cone,'ramp':ramp}[p['kind']](p,'%s.%04d'%(p['kind'],index))
 
 def detail(label,x,y,z,w,h,d,material):
@@ -157,7 +182,7 @@ def surface_stripes(label,axis,at,start,end,step,width,material):
     value=start
     while value<=end:
         x,z=(value,at) if axis=='x' else (at,value)
-        detail(label+'.%02d'%count,x,.025,z,width if axis=='x' else .18,.02,.18 if axis=='x' else width,material)
+        detail(label+'.%02d'%count,x,-.015,z,width if axis=='x' else .18,.006,.18 if axis=='x' else width,material)
         value+=step;count+=1
 
 def architecture():
@@ -269,6 +294,7 @@ def architecture():
             detail('depot-sign',x,.035,z,2,.02,2,'safety-yellow')
 
 architecture()
+build_architecture(ID,DATA,emit,detail,tube)
 
 # Preserve editable components in the .blend; export only the per-material batches.
 for name,(verts,faces) in groups.items():
