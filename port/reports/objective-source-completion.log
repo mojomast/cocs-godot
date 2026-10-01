@@ -2,49 +2,49 @@ TAP version 13
 # Subtest: arranged source completion uplink/meridian-exchange (controlled fixture placement)
 ok 1 - arranged source completion uplink/meridian-exchange (controlled fixture placement)
   ---
-  duration_ms: 92.199378
+  duration_ms: 88.046433
   type: 'test'
   ...
 # Subtest: arranged source completion holdout/meridian-exchange (controlled fixture placement)
 ok 2 - arranged source completion holdout/meridian-exchange (controlled fixture placement)
   ---
-  duration_ms: 19.462094
+  duration_ms: 18.548989
   type: 'test'
   ...
 # Subtest: arranged source completion uplink/verdant-reliquary (controlled fixture placement)
 ok 3 - arranged source completion uplink/verdant-reliquary (controlled fixture placement)
   ---
-  duration_ms: 67.12671
+  duration_ms: 78.471611
   type: 'test'
   ...
 # Subtest: arranged source completion holdout/verdant-reliquary (controlled fixture placement)
 ok 4 - arranged source completion holdout/verdant-reliquary (controlled fixture placement)
   ---
-  duration_ms: 20.533362
+  duration_ms: 15.254609
   type: 'test'
   ...
 # Subtest: arranged source completion uplink/ember-crucible (controlled fixture placement)
 ok 5 - arranged source completion uplink/ember-crucible (controlled fixture placement)
   ---
-  duration_ms: 73.320425
+  duration_ms: 77.708181
   type: 'test'
   ...
 # Subtest: arranged source completion holdout/ember-crucible (controlled fixture placement)
 ok 6 - arranged source completion holdout/ember-crucible (controlled fixture placement)
   ---
-  duration_ms: 13.472492
+  duration_ms: 12.636776
   type: 'test'
   ...
 # Subtest: arranged source completion assault/tidal-citadel (controlled fixture placement)
 ok 7 - arranged source completion assault/tidal-citadel (controlled fixture placement)
   ---
-  duration_ms: 140.399736
+  duration_ms: 125.048961
   type: 'test'
   ...
 # Subtest: arranged source completion assault/sunscar-convoy (controlled fixture placement)
 ok 8 - arranged source completion assault/sunscar-convoy (controlled fixture placement)
   ---
-  duration_ms: 149.447539
+  duration_ms: 154.37913
   type: 'test'
   ...
 1..8
@@ -55,4 +55,4 @@ ok 8 - arranged source completion assault/sunscar-convoy (controlled fixture pla
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 1200.130967
+# duration_ms 1178.207118

@@ -4,7 +4,7 @@ WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by 
 OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
 
 NATIVE_COMBAT_ACTIONS checks=90 failures=0 synthetic=true
-ERROR: Texture with GL ID of 23: leaked 87380 bytes.
+ERROR: Texture with GL ID of 27: leaked 87380 bytes.
    at: ~Utilities (drivers/gles3/storage/utilities.cpp:77)
-ERROR: Texture with GL ID of 24: leaked 87380 bytes.
+ERROR: Texture with GL ID of 28: leaked 87380 bytes.
    at: ~Utilities (drivers/gles3/storage/utilities.cpp:77)

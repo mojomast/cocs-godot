@@ -46,7 +46,7 @@ else { console.log('CHILD '+JSON.stringify({args:process.argv.slice(2),career:pr
       const args=['--experience=campaign','--map=emberline-ascent','--difficulty=hard','--smoke'];
       if (scenario==='bad-args') args.push('--endpoint=ws://example.org');
       const result=spawnSync(process.execPath,[script,...args],{cwd:root,encoding:'utf8',timeout:10000,
-        env:{...process.env,SCENARIO:scenario,PORT:'must-not-be-used',GODOT_BIN:join(root,'cocs.x86_64'),TMPDIR:root}});
+        env:{...process.env,COCS_SOURCE_DERIVATIVE:'',SCENARIO:scenario,PORT:'must-not-be-used',GODOT_BIN:join(root,'cocs.x86_64'),TMPDIR:root}});
       const text=result.stdout+result.stderr;
       assert.equal(result.status,scenario==='exit'?0:scenario==='native-failure'?17:1,text);
       assert.doesNotMatch(text,/WRONG_AUTHORITY/);

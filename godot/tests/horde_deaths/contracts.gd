@@ -102,7 +102,7 @@ func run() -> void:
 		"returning shared controller drains and restores normal round ownership")
 	for detached: Node in [horde.camera, horde.label, horde.selector,
 			horde.environment, horde.sun, horde.horde_label, horde.pickups,
-			horde.presentation, horde.client, horde.combat_label]:
+			horde.presentation, horde.client, horde.combat_label, horde.robot_voices, horde.robot_tells]:
 		if is_instance_valid(detached) and detached.get_parent() == null: detached.free()
 	horde.free()
 	print("HORDE_DEATH_CONTRACTS checks=%d failures=%d" % [checks, failures])

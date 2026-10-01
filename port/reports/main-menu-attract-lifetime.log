@@ -1,0 +1,12 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+PASS chapter 0 begins a real incremental terrain build
+PASS chapter 0 remains part-built at removal
+PASS chapter 0 teardown frees the partial world with no deferred resumption
+PASS chapter 1 begins a real incremental terrain build
+PASS chapter 1 remains part-built at removal
+PASS chapter 1 teardown frees the partial world with no deferred resumption
+PASS chapter 2 begins a real incremental terrain build
+PASS chapter 2 remains part-built at removal
+PASS chapter 2 teardown frees the partial world with no deferred resumption
+MENU_ATTRACT_LIFETIME_OK

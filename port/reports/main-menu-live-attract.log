@@ -1,0 +1,63 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+MENU_READY {"categories":5,"debug":false,"routes":25,"version":1}
+PASS verified four-clip replay loaded; menu starts immediately
+PASS 3D viewport stays behind foreground actions
+PASS chapter 0 loads bounded real campaign triangles
+PASS chapter 0 has one private daylight environment and no root camera
+PASS chapter 0 instantiates production story cast
+PASS saved 3D stage 00-forest-a
+PASS visible image 00-forest-a
+PASS saved screenshot 00-forest-a
+PASS saved 3D stage 00-forest-b
+PASS visible image 00-forest-b
+PASS saved screenshot 00-forest-b
+PASS chapter 0 has live in-engine camera/model animation
+PASS chapter 1 loads bounded real campaign triangles
+PASS chapter 1 has one private daylight environment and no root camera
+PASS chapter 1 instantiates production story cast
+PASS saved 3D stage 01-mara-a
+PASS visible image 01-mara-a
+PASS saved screenshot 01-mara-a
+PASS saved 3D stage 01-mara-b
+PASS visible image 01-mara-b
+PASS saved screenshot 01-mara-b
+PASS chapter 1 has live in-engine camera/model animation
+PASS chapter 2 loads bounded real campaign triangles
+PASS chapter 2 has one private daylight environment and no root camera
+PASS chapter 2 instantiates production story cast
+PASS saved 3D stage 02-patch-a
+PASS visible image 02-patch-a
+PASS saved screenshot 02-patch-a
+PASS saved 3D stage 02-patch-b
+PASS visible image 02-patch-b
+PASS saved screenshot 02-patch-b
+PASS chapter 2 has live in-engine camera/model animation
+PASS recorded Patch pet reaction serial reaches production story director
+PASS chapter 3 loads bounded real campaign triangles
+PASS chapter 3 has one private daylight environment and no root camera
+PASS chapter 3 instantiates production story cast
+PASS saved 3D stage 03-fire-a
+PASS visible image 03-fire-a
+PASS saved screenshot 03-fire-a
+PASS saved 3D stage 03-fire-b
+PASS visible image 03-fire-b
+PASS saved screenshot 03-fire-b
+PASS chapter 3 has live in-engine camera/model animation
+PASS combat replay creates production actor and robot visuals plus bounded event effect
+PASS production replay contains a recorded projectile origin
+PASS combat flash follows exact authority shot origin rather than a guessed player muzzle
+PASS loop frees old chapter and retains one world
+PASS route click and keyboard focus work over the moving replay
+PASS Settings overlay pauses viewport and every descendant animator
+PASS Settings close resumes same private world
+PASS reduced motion disables live replay
+PASS animation switch leaves opaque dark background
+PASS animation switch resumes without a second world
+PASS focus loss pauses replay
+PASS focus regain resumes replay
+PASS menu exit disables viewport rendering
+LIVE_ATTRACT checks=56 failures=0

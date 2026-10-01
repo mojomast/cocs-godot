@@ -46,7 +46,7 @@ for (const kind of ['package', 'dev']) {
         if (scenario === 'missing-native') await rm(fake);
         let result;
         try {
-          result = await exec(process.execPath,[script,'--experience=lobby','--endpoint=ws://127.0.0.1:12345'],{cwd:root,env:{...process.env,TMPDIR:root,COCS_CAREER_ROOT:join(root,'career'),GODOT_BIN:fake,STUB_EXIT:scenario==='native-failure'?'17':'0'},timeout:10000});
+          result = await exec(process.execPath,[script,'--experience=lobby','--endpoint=ws://127.0.0.1:12345'],{cwd:root,env:{...process.env,COCS_SOURCE_DERIVATIVE:'',TMPDIR:root,COCS_CAREER_ROOT:join(root,'career'),GODOT_BIN:fake,STUB_EXIT:scenario==='native-failure'?'17':'0'},timeout:10000});
           result.code = 0;
         } catch (error) { result = error; }
         assert.equal(result.code, scenario==='exit'?0:scenario==='native-failure'?17:1, result.stderr);

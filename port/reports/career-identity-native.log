@@ -2,7 +2,7 @@ TAP version 13
 # Subtest: native identity persists privately, rejects switched endpoints/late welcome, and reports malformed storage
 ok 1 - native identity persists privately, rejects switched endpoints/late welcome, and reports malformed storage
   ---
-  duration_ms: 238.246575
+  duration_ms: 247.768974
   type: 'test'
   ...
 1..1
@@ -13,4 +13,4 @@ ok 1 - native identity persists privately, rejects switched endpoints/late welco
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 274.234804
+# duration_ms 288.565762

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "switchyard-ward",
+    "geometryHash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+    "sourceNavNodes": 510,
+    "connected": 510,
+    "roofNodes": 90,
+    "groundNodes": 412,
+    "minimumOpposingSpawnDistance": 20,
+    "roofCount": 4,
+    "enclosedShops": 4,
+    "objectiveCount": 3
+  },
+  {
+    "id": "rainmarket-exchange",
+    "geometryHash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+    "sourceNavNodes": 530,
+    "connected": 530,
+    "roofNodes": 24,
+    "groundNodes": 504,
+    "minimumOpposingSpawnDistance": 51.92301994298868,
+    "roofCount": 1,
+    "enclosedShops": 4,
+    "objectiveCount": 3
+  }
+]

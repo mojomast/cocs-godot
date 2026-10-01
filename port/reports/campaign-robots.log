@@ -1,0 +1,27 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+scrapper rest dimensions=(1.66, 1.03, 1.43)
+scrapper LOD0 { "draws": 12, "surfaces": 12, "triangles": 3840, "meshes": 12, "lod": 0 }
+scrapper LOD1 { "draws": 12, "surfaces": 12, "triangles": 2628, "meshes": 12, "lod": 1 }
+scrapper LOD2 { "draws": 8, "surfaces": 8, "triangles": 1920, "meshes": 8, "lod": 2 }
+skirmisher rest dimensions=(0.82, 1.964441, 1.205)
+skirmisher LOD0 { "draws": 8, "surfaces": 8, "triangles": 2632, "meshes": 8, "lod": 0 }
+skirmisher LOD1 { "draws": 8, "surfaces": 8, "triangles": 1784, "meshes": 8, "lod": 1 }
+skirmisher LOD2 { "draws": 6, "surfaces": 6, "triangles": 1308, "meshes": 6, "lod": 2 }
+sentinel rest dimensions=(1.652243, 1.09, 1.89)
+sentinel LOD0 { "draws": 10, "surfaces": 10, "triangles": 3392, "meshes": 10, "lod": 0 }
+sentinel LOD1 { "draws": 10, "surfaces": 10, "triangles": 2340, "meshes": 10, "lod": 1 }
+sentinel LOD2 { "draws": 7, "surfaces": 7, "triangles": 1748, "meshes": 7, "lod": 2 }
+mortar rest dimensions=(1.73, 1.4105, 1.450056)
+mortar LOD0 { "draws": 12, "surfaces": 12, "triangles": 3932, "meshes": 12, "lod": 0 }
+mortar LOD1 { "draws": 12, "surfaces": 12, "triangles": 2632, "meshes": 12, "lod": 1 }
+mortar LOD2 { "draws": 8, "surfaces": 8, "triangles": 1836, "meshes": 8, "lod": 2 }
+bulwark rest dimensions=(1.220978, 1.75, 1.205)
+bulwark LOD0 { "draws": 9, "surfaces": 9, "triangles": 2692, "meshes": 9, "lod": 0 }
+bulwark LOD1 { "draws": 9, "surfaces": 9, "triangles": 1756, "meshes": 9, "lod": 1 }
+bulwark LOD2 { "draws": 7, "surfaces": 7, "triangles": 1192, "meshes": 7, "lod": 2 }
+warden rest dimensions=(2.06, 1.595, 1.69)
+warden LOD0 { "draws": 16, "surfaces": 16, "triangles": 5564, "meshes": 16, "lod": 0 }
+warden LOD1 { "draws": 16, "surfaces": 16, "triangles": 3900, "meshes": 16, "lod": 1 }
+warden LOD2 { "draws": 10, "surfaces": 10, "triangles": 2872, "meshes": 10, "lod": 2 }
+CAMPAIGN_ROBOTS_OK checks=459 failures=0

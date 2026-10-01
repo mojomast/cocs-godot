@@ -82,7 +82,7 @@ for (const kind of ['dev','package']) {
       }
       const settings=join(root,'preferences','local_settings.json');
       const {stdout,stderr}=await exec(process.execPath,[script,'--experience=menu'],{
-        cwd:root,env:{...process.env,PORT:'0',TMPDIR:root,GODOT_BIN:join(root,'cocs.x86_64'),
+        cwd:root,env:{...process.env,COCS_SOURCE_DERIVATIVE:'',PORT:'0',TMPDIR:root,GODOT_BIN:join(root,'cocs.x86_64'),
           COCS_SETTINGS_PATH:settings,COCS_CAREER_ROOT:join(root,'career'),SHELL_JOURNEY_STATE:join(root,'state.json')},timeout:25000,
       });
       assert.doesNotMatch(stderr,/Error|ERROR/);

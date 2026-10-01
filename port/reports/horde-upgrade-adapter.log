@@ -2,37 +2,37 @@ TAP version 13
 # Subtest: fixture: a source offer is projected without inventing or reordering rows
 ok 1 - fixture: a source offer is projected without inventing or reordering rows
   ---
-  duration_ms: 93.275464
+  duration_ms: 90.274754
   type: 'test'
   ...
 # Subtest: fixture: malformed intents are refused and leave the offer untouched
 ok 2 - fixture: malformed intents are refused and leave the offer untouched
   ---
-  duration_ms: 10.687915
+  duration_ms: 11.440226
   type: 'test'
   ...
 # Subtest: fixture: unknown ids, wrong offers and stale views are refused; the source intent is accepted
 ok 3 - fixture: unknown ids, wrong offers and stale views are refused; the source intent is accepted
   ---
-  duration_ms: 9.993794
+  duration_ms: 10.61975
   type: 'test'
   ...
 # Subtest: fixture: a non-horde or finished round has no offer to authorize
 ok 4 - fixture: a non-horde or finished round has no offer to authorize
   ---
-  duration_ms: 10.19971
+  duration_ms: 9.757925
   type: 'test'
   ...
 # Subtest: fixture: record shape is bounded and carries no client-authored fields
 ok 5 - fixture: record shape is bounded and carries no client-authored fields
   ---
-  duration_ms: 0.173856
+  duration_ms: 0.203401
   type: 'test'
   ...
 # Subtest: wire: malformed, stale and out-of-phase intents are refused without ending the round
 ok 6 - wire: malformed, stale and out-of-phase intents are refused without ending the round
   ---
-  duration_ms: 235.57536
+  duration_ms: 234.172199
   type: 'test'
   ...
 1..6
@@ -43,4 +43,4 @@ ok 6 - wire: malformed, stale and out-of-phase intents are refused without endin
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 5981.606022
+# duration_ms 5975.428839

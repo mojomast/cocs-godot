@@ -1,0 +1,99 @@
+{
+  "scope": "Focused repair rerun of seven failed canonical gates; first aggregate preserved",
+  "gates": [
+    {
+      "gate": "product-shell-supervisor",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/settings_path.test.mjs",
+        "tools/godot-package/menu_journey.test.mjs",
+        "tools/godot-dev/journey_options.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.066
+    },
+    {
+      "gate": "native-graphics-ownership",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/native_showcase_ownership.test.mjs",
+        "tools/godot-dev/native_showcase_ownership.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 4.473
+    },
+    {
+      "gate": "lobby-ownership",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/lobby_ownership.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.325
+    },
+    {
+      "gate": "horde-ownership",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/horde_ownership.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 2.857
+    },
+    {
+      "gate": "campaign-ownership",
+      "command": [
+        "node",
+        "--test",
+        "tools/godot-package/campaign_ownership.test.mjs"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.641
+    },
+    {
+      "gate": "horde-death-presentation",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/horde_deaths/contracts.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 1.005
+    },
+    {
+      "gate": "horde-upgrade-native",
+      "command": [
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/horde/upgrade_selection_test.gd"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "failure_reason": null,
+      "duration_seconds": 0.901
+    }
+  ],
+  "status": "passed"
+}

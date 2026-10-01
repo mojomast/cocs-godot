@@ -1,0 +1,392 @@
+{
+  "pairs": 43,
+  "rows": [
+    {
+      "map": "switchyard-ward",
+      "mode": "deathmatch",
+      "hash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+      "humans": 2,
+      "bots": 2,
+      "nav": 510,
+      "objective": "combat"
+    },
+    {
+      "map": "switchyard-ward",
+      "mode": "teamdeathmatch",
+      "hash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+      "humans": 2,
+      "bots": 2,
+      "nav": 510,
+      "objective": "combat"
+    },
+    {
+      "map": "switchyard-ward",
+      "mode": "instagib",
+      "hash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+      "humans": 2,
+      "bots": 2,
+      "nav": 510,
+      "objective": "combat"
+    },
+    {
+      "map": "switchyard-ward",
+      "mode": "rockets",
+      "hash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+      "humans": 2,
+      "bots": 2,
+      "nav": 510,
+      "objective": "combat"
+    },
+    {
+      "map": "switchyard-ward",
+      "mode": "armsrace",
+      "hash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+      "humans": 2,
+      "bots": 2,
+      "nav": 510,
+      "objective": "combat"
+    },
+    {
+      "map": "switchyard-ward",
+      "mode": "ctf",
+      "hash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+      "humans": 2,
+      "bots": 2,
+      "nav": 510,
+      "objective": "flags"
+    },
+    {
+      "map": "switchyard-ward",
+      "mode": "domination",
+      "hash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+      "humans": 2,
+      "bots": 2,
+      "nav": 510,
+      "objective": "domination"
+    },
+    {
+      "map": "switchyard-ward",
+      "mode": "koth",
+      "hash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+      "humans": 2,
+      "bots": 2,
+      "nav": 510,
+      "objective": "koth"
+    },
+    {
+      "map": "switchyard-ward",
+      "mode": "uplink",
+      "hash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+      "humans": 2,
+      "bots": 2,
+      "nav": 510,
+      "objective": "koth"
+    },
+    {
+      "map": "switchyard-ward",
+      "mode": "holdout",
+      "hash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+      "humans": 2,
+      "bots": 2,
+      "nav": 510,
+      "objective": "domination"
+    },
+    {
+      "map": "switchyard-ward",
+      "mode": "assault",
+      "hash": "9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9",
+      "humans": 2,
+      "bots": 2,
+      "nav": 510,
+      "objective": "assault"
+    },
+    {
+      "map": "rainmarket-exchange",
+      "mode": "deathmatch",
+      "hash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+      "humans": 2,
+      "bots": 2,
+      "nav": 530,
+      "objective": "combat"
+    },
+    {
+      "map": "rainmarket-exchange",
+      "mode": "teamdeathmatch",
+      "hash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+      "humans": 2,
+      "bots": 2,
+      "nav": 530,
+      "objective": "combat"
+    },
+    {
+      "map": "rainmarket-exchange",
+      "mode": "instagib",
+      "hash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+      "humans": 2,
+      "bots": 2,
+      "nav": 530,
+      "objective": "combat"
+    },
+    {
+      "map": "rainmarket-exchange",
+      "mode": "rockets",
+      "hash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+      "humans": 2,
+      "bots": 2,
+      "nav": 530,
+      "objective": "combat"
+    },
+    {
+      "map": "rainmarket-exchange",
+      "mode": "armsrace",
+      "hash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+      "humans": 2,
+      "bots": 2,
+      "nav": 530,
+      "objective": "combat"
+    },
+    {
+      "map": "rainmarket-exchange",
+      "mode": "domination",
+      "hash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+      "humans": 2,
+      "bots": 2,
+      "nav": 530,
+      "objective": "domination"
+    },
+    {
+      "map": "rainmarket-exchange",
+      "mode": "koth",
+      "hash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+      "humans": 2,
+      "bots": 2,
+      "nav": 530,
+      "objective": "koth"
+    },
+    {
+      "map": "rainmarket-exchange",
+      "mode": "uplink",
+      "hash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+      "humans": 2,
+      "bots": 2,
+      "nav": 530,
+      "objective": "koth"
+    },
+    {
+      "map": "rainmarket-exchange",
+      "mode": "holdout",
+      "hash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+      "humans": 2,
+      "bots": 2,
+      "nav": 530,
+      "objective": "domination"
+    },
+    {
+      "map": "rainmarket-exchange",
+      "mode": "assault",
+      "hash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+      "humans": 2,
+      "bots": 2,
+      "nav": 530,
+      "objective": "assault"
+    },
+    {
+      "map": "rainmarket-exchange",
+      "mode": "payload",
+      "hash": "3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587",
+      "humans": 2,
+      "bots": 2,
+      "nav": 530,
+      "objective": "payload"
+    },
+    {
+      "map": "breakwater-exchange",
+      "mode": "deathmatch",
+      "hash": "b8747e295f07029333228674dad9ddbcd17e1a232442c2dbef5dc288a3ca5767",
+      "humans": 2,
+      "bots": 2,
+      "nav": 1068,
+      "objective": "combat"
+    },
+    {
+      "map": "breakwater-exchange",
+      "mode": "teamdeathmatch",
+      "hash": "b8747e295f07029333228674dad9ddbcd17e1a232442c2dbef5dc288a3ca5767",
+      "humans": 2,
+      "bots": 2,
+      "nav": 1068,
+      "objective": "combat"
+    },
+    {
+      "map": "breakwater-exchange",
+      "mode": "domination",
+      "hash": "b8747e295f07029333228674dad9ddbcd17e1a232442c2dbef5dc288a3ca5767",
+      "humans": 2,
+      "bots": 2,
+      "nav": 1068,
+      "objective": "domination"
+    },
+    {
+      "map": "breakwater-exchange",
+      "mode": "assault",
+      "hash": "b8747e295f07029333228674dad9ddbcd17e1a232442c2dbef5dc288a3ca5767",
+      "humans": 2,
+      "bots": 2,
+      "nav": 1068,
+      "objective": "assault"
+    },
+    {
+      "map": "breakwater-exchange",
+      "mode": "payload",
+      "hash": "b8747e295f07029333228674dad9ddbcd17e1a232442c2dbef5dc288a3ca5767",
+      "humans": 2,
+      "bots": 2,
+      "nav": 1068,
+      "objective": "payload"
+    },
+    {
+      "map": "breakwater-exchange",
+      "mode": "combined-arms",
+      "hash": "b8747e295f07029333228674dad9ddbcd17e1a232442c2dbef5dc288a3ca5767",
+      "humans": 2,
+      "bots": 2,
+      "nav": 1068,
+      "objective": "domination"
+    },
+    {
+      "map": "thermal-divide",
+      "mode": "deathmatch",
+      "hash": "e1dd09e1a2f735c2e7fdfbc0f66d77674c8a6f9771e8d3faccaff3f6639e20d0",
+      "humans": 2,
+      "bots": 2,
+      "nav": 921,
+      "objective": "combat"
+    },
+    {
+      "map": "thermal-divide",
+      "mode": "teamdeathmatch",
+      "hash": "e1dd09e1a2f735c2e7fdfbc0f66d77674c8a6f9771e8d3faccaff3f6639e20d0",
+      "humans": 2,
+      "bots": 2,
+      "nav": 921,
+      "objective": "combat"
+    },
+    {
+      "map": "thermal-divide",
+      "mode": "instagib",
+      "hash": "e1dd09e1a2f735c2e7fdfbc0f66d77674c8a6f9771e8d3faccaff3f6639e20d0",
+      "humans": 2,
+      "bots": 2,
+      "nav": 921,
+      "objective": "combat"
+    },
+    {
+      "map": "thermal-divide",
+      "mode": "rockets",
+      "hash": "e1dd09e1a2f735c2e7fdfbc0f66d77674c8a6f9771e8d3faccaff3f6639e20d0",
+      "humans": 2,
+      "bots": 2,
+      "nav": 921,
+      "objective": "combat"
+    },
+    {
+      "map": "thermal-divide",
+      "mode": "armsrace",
+      "hash": "e1dd09e1a2f735c2e7fdfbc0f66d77674c8a6f9771e8d3faccaff3f6639e20d0",
+      "humans": 2,
+      "bots": 2,
+      "nav": 921,
+      "objective": "combat"
+    },
+    {
+      "map": "thermal-divide",
+      "mode": "ctf",
+      "hash": "e1dd09e1a2f735c2e7fdfbc0f66d77674c8a6f9771e8d3faccaff3f6639e20d0",
+      "humans": 2,
+      "bots": 2,
+      "nav": 921,
+      "objective": "flags"
+    },
+    {
+      "map": "thermal-divide",
+      "mode": "domination",
+      "hash": "e1dd09e1a2f735c2e7fdfbc0f66d77674c8a6f9771e8d3faccaff3f6639e20d0",
+      "humans": 2,
+      "bots": 2,
+      "nav": 921,
+      "objective": "domination"
+    },
+    {
+      "map": "thermal-divide",
+      "mode": "koth",
+      "hash": "e1dd09e1a2f735c2e7fdfbc0f66d77674c8a6f9771e8d3faccaff3f6639e20d0",
+      "humans": 2,
+      "bots": 2,
+      "nav": 921,
+      "objective": "koth"
+    },
+    {
+      "map": "thermal-divide",
+      "mode": "uplink",
+      "hash": "e1dd09e1a2f735c2e7fdfbc0f66d77674c8a6f9771e8d3faccaff3f6639e20d0",
+      "humans": 2,
+      "bots": 2,
+      "nav": 921,
+      "objective": "koth"
+    },
+    {
+      "map": "thermal-divide",
+      "mode": "holdout",
+      "hash": "e1dd09e1a2f735c2e7fdfbc0f66d77674c8a6f9771e8d3faccaff3f6639e20d0",
+      "humans": 2,
+      "bots": 2,
+      "nav": 921,
+      "objective": "domination"
+    },
+    {
+      "map": "thermal-divide",
+      "mode": "assault",
+      "hash": "e1dd09e1a2f735c2e7fdfbc0f66d77674c8a6f9771e8d3faccaff3f6639e20d0",
+      "humans": 2,
+      "bots": 2,
+      "nav": 921,
+      "objective": "assault"
+    },
+    {
+      "map": "sirocco-circuit",
+      "mode": "puma-race",
+      "hash": "51b79009c93bfcfe36feba42c88a837840bdddce57d062b7bee435e99b851f36",
+      "humans": 2,
+      "bots": 2,
+      "nav": 0,
+      "objective": "combat"
+    },
+    {
+      "map": "copper-bowl",
+      "mode": "puma-soccer",
+      "hash": "8b3fc61ea5fefa2a913ae1e7bf41c846234e9003e679d5f61d79af36f16b00f2",
+      "humans": 2,
+      "bots": 2,
+      "nav": 0,
+      "objective": "soccer"
+    },
+    {
+      "map": "tern-archipelago",
+      "mode": "cocs",
+      "hash": "486eddd236d8028d58fc5da5234bb1b4b0c36cc3f932346e4326bcb95ed1dbc6",
+      "humans": 2,
+      "bots": 2,
+      "nav": 2580,
+      "objective": "cocs"
+    },
+    {
+      "map": "tern-archipelago",
+      "mode": "cocs-coop",
+      "hash": "486eddd236d8028d58fc5da5234bb1b4b0c36cc3f932346e4326bcb95ed1dbc6",
+      "humans": 2,
+      "bots": 2,
+      "nav": 2580,
+      "objective": "cocs"
+    }
+  ]
+}

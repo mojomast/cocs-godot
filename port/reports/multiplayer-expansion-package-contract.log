@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: the extracted manifest and packaged options require seven worlds and all 43 pairs
+ok 1 - the extracted manifest and packaged options require seven worlds and all 43 pairs
+  ---
+  duration_ms: 1.068632
+  type: 'test'
+  ...
+# Subtest: missing manifest family or packaged catalog option fails instead of silently skipping expansion
+ok 2 - missing manifest family or packaged catalog option fails instead of silently skipping expansion
+  ---
+  duration_ms: 1.187133
+  type: 'test'
+  ...
+# Subtest: external probe loads production scenes/PCK resources and never substitutes product authority
+ok 3 - external probe loads production scenes/PCK resources and never substitutes product authority
+  ---
+  duration_ms: 0.599793
+  type: 'test'
+  ...
+# Subtest: real Node child accepts cross-platform stdin shutdown; broken close times out and is forcibly reaped
+ok 4 - real Node child accepts cross-platform stdin shutdown; broken close times out and is forcibly reaped
+  ---
+  duration_ms: 230.851848
+  type: 'test'
+  ...
+# Subtest: real world snapshots have the shapes consumed by the external probe
+ok 5 - real world snapshots have the shapes consumed by the external probe
+  ---
+  duration_ms: 402.076666
+  type: 'test'
+  ...
+# Subtest: actual Blackwater wire start contract carries the source geometry hash
+ok 6 - actual Blackwater wire start contract carries the source geometry hash
+  ---
+  duration_ms: 244.970128
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1519.450556

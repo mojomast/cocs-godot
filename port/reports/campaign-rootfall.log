@@ -1,0 +1,4 @@
+Owned local server ready at ws://127.0.0.1:41233/native-campaign; --smoke
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+CAMPAIGN_SMOKE_OK {"acks":398,"combatShots":58,"fired":true,"firstPerson":true,"geometryHash":"dbd85402b89e277389a28e3d91b2efaf8b21207c565010a06d3042c0b751a446","map":"rootfall-verge","moved":true,"robotsLoaded":3}

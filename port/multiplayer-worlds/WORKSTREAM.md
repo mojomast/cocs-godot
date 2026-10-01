@@ -82,3 +82,23 @@ native import/ceiling/capsule/lighting/peer evidence is still required at these
 new hashes. Previous post-art native evidence applies only to the prior hashes.
 Astra currently owns Godot for the higher-priority campaign feel/cheat work;
 urban roof native acceptance follows its explicit release.
+
+## Final roof acceptance integrated
+
+Urban `75cd3dc2` is merged on the parent. Fresh native import and all eight
+interior images passed review, including the continuous lit east-kiosk ceiling.
+Native probes passed eight ceiling underside/top pairs, 32 sides, standing
+capsules, 72 doorway floor/capsule samples and the prior roof/ramp/curb/guard
+routes. New-hash two-native-client CTF and Payload journeys reached results,
+late-spectator synchronization and revision-2 restarts. Payload's first contested
+cart stall is preserved; the guest fixture now moves its defender away via normal
+inputs. Evidence: `urban/post-roof/` in the multiplayer evidence root.
+
+Astra's final native campaign/cheat fixes `b800000d` and passing journey record
+`04e7ddc6` are also integrated. Both lanes explicitly released Godot. Parent now
+owns the engine for canonical integrated verification, followed by serialized
+Linux/Windows exports and extracted-artifact verification. The canonical run uses
+the explicit LATTICE derivative and keep-going reporting. Its prior report tree
+was archived under the single-player evidence root's
+`integrated-release/reports-before-integrated/`; new aggregate output is
+`integrated-release/canonical.log`. No expansion download is published yet.

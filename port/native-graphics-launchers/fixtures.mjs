@@ -101,7 +101,8 @@ if(process.argv.includes('--version')){
     try {
       result = await exec(process.execPath,args,{
         cwd:kind === 'package' ? join(root,'unrelated caller') : root,
-        env:{...process.env, NODE_OPTIONS:`--require="${join(root,'deny-listen.cjs')}"`,
+        // This isolated stub owns a synthetic source lock, not the caller's derivative.
+        env:{...process.env, COCS_SOURCE_DERIVATIVE:'', NODE_OPTIONS:`--require="${join(root,'deny-listen.cjs')}"`,
           TMPDIR:root, GODOT_BIN:binary, PORT:'invalid-native-route-must-ignore-port', SCENARIO:scenario},
         timeout:12000,
       });

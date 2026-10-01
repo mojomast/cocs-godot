@@ -18,7 +18,7 @@ func check(ok: bool, message: String) -> void:
 ## Detached components are not owned by the scene until _ready; the test frees
 ## the composition's whole detached field set explicitly.
 func drop_composition(d: Node) -> void:
-	for node: Node in [d.camera,d.sun,d.environment,d.label,d.selector,d.combat_label,d.pickups,d.presentation,d.combat,d.client,d.horde_label]: node.free()
+	for node: Node in [d.camera,d.sun,d.environment,d.label,d.selector,d.combat_label,d.pickups,d.presentation,d.combat,d.client,d.horde_label,d.robot_voices,d.robot_tells]: node.free()
 	d.free()
 
 func offer_state(ids: Array, wave: int = 3, rows: int = -1) -> Dictionary:

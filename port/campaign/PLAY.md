@@ -51,6 +51,25 @@ health recovers even while returning fire; after five seconds armor recovers to
 and fewer overlapping attackers; Hard tightens recovery and attack pressure.
 These changes are in the development feel pass, not the older `614e11ad` download.
 
+## In-game cheats (upcoming testing build)
+
+Press **F3** or release the pointer with **Esc** and click **Cheats**. Opening
+the menu pauses the single-player action. Choose:
+
+- **Invulnerability** — protects the player and restores health/armor when enabled.
+- **Unlimited ammo** — refills your available weapons as you play.
+- **Give all 10 weapons + ammo** — immediately grants the full arsenal.
+- **Restore health and armor** — a one-time refill.
+- **Fly / noclip** — WASD moves, Space rises, Ctrl descends, and Shift flies faster.
+  Switching flight off lands on supported clear ground or returns to takeoff.
+- **Switch off all cheats** — disables the toggles; granted weapons remain yours.
+
+Press **F3**, **Esc**, or **Resume game** to return to play. Enabled cheats are
+shown on the HUD. Toggle choices carry across campaign chapter/retry transitions
+within the connected session and reset on a new connection. The same menu is
+available in ordinary solo Horde launches. These controls are included in the
+development build; the published `614e11ad` package predates them.
+
 ## People along the relay
 
 Mara and Ivo appear along the service route with optional, proximity-triggered

@@ -2,31 +2,31 @@ TAP version 13
 # Subtest: list answers rooms with the exact summary fields the browser renders
 ok 1 - list answers rooms with the exact summary fields the browser renders
   ---
-  duration_ms: 17.721885
+  duration_ms: 18.704131
   type: 'test'
   ...
 # Subtest: chat is room-scoped, sanitized, and shared with a seated spectator
 ok 2 - chat is room-scoped, sanitized, and shared with a seated spectator
   ---
-  duration_ms: 7.373446
+  duration_ms: 10.043851
   type: 'test'
   ...
 # Subtest: the source ceiling counts UTF-16 units and trims JS whitespace
 ok 3 - the source ceiling counts UTF-16 units and trims JS whitespace
   ---
-  duration_ms: 403.863972
+  duration_ms: 406.154954
   type: 'test'
   ...
 # Subtest: the 300 ms source floor drops a same-peer chat burst
 ok 4 - the 300 ms source floor drops a same-peer chat burst
   ---
-  duration_ms: 404.134719
+  duration_ms: 404.350444
   type: 'test'
   ...
 # Subtest: chat without a seat and an unknown verb answer a correlated error
 ok 5 - chat without a seat and an unknown verb answer a correlated error
   ---
-  duration_ms: 2.215611
+  duration_ms: 2.053055
   type: 'test'
   ...
 1..5
@@ -37,4 +37,4 @@ ok 5 - chat without a seat and an unknown verb answer a correlated error
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 1485.119881
+# duration_ms 1507.109483

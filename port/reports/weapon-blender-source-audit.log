@@ -1,0 +1,89 @@
+{
+  "sourceExports": "sha256 intact",
+  "art": [
+    {
+      "id": 0,
+      "name": "Pulse Rifle",
+      "firstPersonTriangles": 7340,
+      "worldTriangles": 1156,
+      "firstPersonBatches": 13,
+      "worldBatches": 13
+    },
+    {
+      "id": 1,
+      "name": "Rocket Launcher",
+      "firstPersonTriangles": 4644,
+      "worldTriangles": 788,
+      "firstPersonBatches": 8,
+      "worldBatches": 8
+    },
+    {
+      "id": 2,
+      "name": "Rail Lance",
+      "firstPersonTriangles": 6788,
+      "worldTriangles": 1132,
+      "firstPersonBatches": 12,
+      "worldBatches": 12
+    },
+    {
+      "id": 3,
+      "name": "Scattergun",
+      "firstPersonTriangles": 4640,
+      "worldTriangles": 720,
+      "firstPersonBatches": 13,
+      "worldBatches": 13
+    },
+    {
+      "id": 4,
+      "name": "Plasma Driver",
+      "firstPersonTriangles": 5404,
+      "worldTriangles": 780,
+      "firstPersonBatches": 9,
+      "worldBatches": 9
+    },
+    {
+      "id": 5,
+      "name": "Grenade Launcher",
+      "firstPersonTriangles": 3680,
+      "worldTriangles": 584,
+      "firstPersonBatches": 10,
+      "worldBatches": 10
+    },
+    {
+      "id": 6,
+      "name": "Shock Beam",
+      "firstPersonTriangles": 4120,
+      "worldTriangles": 704,
+      "firstPersonBatches": 11,
+      "worldBatches": 11
+    },
+    {
+      "id": 7,
+      "name": "Flak Cannon",
+      "firstPersonTriangles": 4656,
+      "worldTriangles": 600,
+      "firstPersonBatches": 11,
+      "worldBatches": 11
+    },
+    {
+      "id": 8,
+      "name": "Marksman Rifle",
+      "firstPersonTriangles": 5804,
+      "worldTriangles": 1116,
+      "firstPersonBatches": 12,
+      "worldBatches": 12
+    },
+    {
+      "id": 9,
+      "name": "Submachine Gun",
+      "firstPersonTriangles": 3716,
+      "worldTriangles": 556,
+      "firstPersonBatches": 11,
+      "worldBatches": 11
+    }
+  ],
+  "maxVertexProfileIoU": {
+    "side": 0.3938,
+    "top": 0.3712
+  }
+}

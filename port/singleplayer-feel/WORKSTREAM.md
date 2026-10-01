@@ -1,5 +1,27 @@
 # Single-player feel and in-game cheats — owner playtest feedback
 
+## Current integration status
+
+The integrated canonical run executed **318/318 gates: 311 passed, seven failed**.
+Five synthetic launcher ownership suites inherited the caller's relative
+`COCS_SOURCE_DERIVATIVE` into their temporary stub checkouts; those fixtures now
+explicitly clear that selection while the aggregate retains it. Two detached
+Horde fixtures omitted the new robot voice/tell nodes from explicit cleanup;
+both now free them without relaxing object-count or engine-error assertions.
+All seven failed gates passed a focused repair rerun. The first aggregate remains
+unchanged in `integrated-release/canonical-first-311-of-318/`; rerun results are
+`integrated-release/repair-result.json`. This is a repaired run, not a clean first
+aggregate. Fresh package export/acceptance is now the next step.
+
+Parent has integrated Astra's final native fixes and acceptance (`b800000d`,
+`04e7ddc6`) plus final urban roof acceptance (`75cd3dc2`). Both lanes released the
+engine. Parent is running the combined canonical suite with the explicit source
+derivative, preserving prior reports and failures. New output lives in the evidence
+root's `integrated-release/`. Fresh Linux/Windows archives and extracted-package
+verification follow the aggregate. The currently published `614e11ad` build still
+predates these improvements. Historical checkpoints below retain their original
+pending states; current native results are in `NATIVE.md`.
+
 The owner reports bullet-sponge enemies, fragile player health, weak weapon
 impact, occasional jerky movement and bland campaign pacing. They explicitly
 requested an Astra subagent to research enjoyable gunplay and improve the game,

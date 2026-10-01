@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: package: synthetic campaign ownership exit
+ok 1 - package: synthetic campaign ownership exit
+  ---
+  duration_ms: 63.798347
+  type: 'test'
+  ...
+# Subtest: package: synthetic campaign ownership native-failure
+ok 2 - package: synthetic campaign ownership native-failure
+  ---
+  duration_ms: 65.997587
+  type: 'test'
+  ...
+# Subtest: package: synthetic campaign ownership bad-health
+ok 3 - package: synthetic campaign ownership bad-health
+  ---
+  duration_ms: 45.715511
+  type: 'test'
+  ...
+# Subtest: package: synthetic campaign ownership not-local
+ok 4 - package: synthetic campaign ownership not-local
+  ---
+  duration_ms: 51.672016
+  type: 'test'
+  ...
+# Subtest: package: synthetic campaign ownership bad-args
+ok 5 - package: synthetic campaign ownership bad-args
+  ---
+  duration_ms: 21.940342
+  type: 'test'
+  ...
+# Subtest: dev: synthetic campaign ownership exit
+ok 6 - dev: synthetic campaign ownership exit
+  ---
+  duration_ms: 83.092073
+  type: 'test'
+  ...
+# Subtest: dev: synthetic campaign ownership native-failure
+ok 7 - dev: synthetic campaign ownership native-failure
+  ---
+  duration_ms: 82.908068
+  type: 'test'
+  ...
+# Subtest: dev: synthetic campaign ownership bad-health
+ok 8 - dev: synthetic campaign ownership bad-health
+  ---
+  duration_ms: 70.979316
+  type: 'test'
+  ...
+# Subtest: dev: synthetic campaign ownership not-local
+ok 9 - dev: synthetic campaign ownership not-local
+  ---
+  duration_ms: 73.061436
+  type: 'test'
+  ...
+# Subtest: dev: synthetic campaign ownership bad-args
+ok 10 - dev: synthetic campaign ownership bad-args
+  ---
+  duration_ms: 22.556997
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 620.265539

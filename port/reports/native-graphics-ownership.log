@@ -1,244 +1,919 @@
 TAP version 13
 # Subtest: source native-only stub: showcase exit
-ok 1 - source native-only stub: showcase exit
+not ok 1 - source native-only stub: showcase exit
   ---
-  duration_ms: 61.745782
+  duration_ms: 31.084948
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%20DsLosA/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%20DsLosA/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
   ...
 # Subtest: source native-only stub: showcase smoke
-ok 2 - source native-only stub: showcase smoke
+not ok 2 - source native-only stub: showcase smoke
   ---
-  duration_ms: 56.842255
+  duration_ms: 24.301995
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%20zgYeRB/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%20zgYeRB/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: aurora-basin exit
-ok 3 - source native-only stub: aurora-basin exit
+not ok 3 - source native-only stub: aurora-basin exit
   ---
-  duration_ms: 56.849788
+  duration_ms: 23.512807
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%20mpfv5p/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%20mpfv5p/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: aurora-basin smoke
-ok 4 - source native-only stub: aurora-basin smoke
+not ok 4 - source native-only stub: aurora-basin smoke
   ---
-  duration_ms: 58.006636
+  duration_ms: 25.427603
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%203XYvgQ/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%203XYvgQ/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: cinder-array exit
-ok 5 - source native-only stub: cinder-array exit
+not ok 5 - source native-only stub: cinder-array exit
   ---
-  duration_ms: 62.24086
+  duration_ms: 24.509914
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%20pQqHDu/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%20pQqHDu/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: cinder-array smoke
-ok 6 - source native-only stub: cinder-array smoke
+not ok 6 - source native-only stub: cinder-array smoke
   ---
-  duration_ms: 57.546944
+  duration_ms: 22.412025
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%202B7J9G/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%202B7J9G/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: particle-lab exit
-ok 7 - source native-only stub: particle-lab exit
+not ok 7 - source native-only stub: particle-lab exit
   ---
-  duration_ms: 59.811567
+  duration_ms: 25.744637
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%20lQcaR9/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%20lQcaR9/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: particle-lab smoke
-ok 8 - source native-only stub: particle-lab smoke
+not ok 8 - source native-only stub: particle-lab smoke
   ---
-  duration_ms: 57.542947
+  duration_ms: 27.387303
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%20HlfM7t/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%20HlfM7t/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: shader-lab exit
-ok 9 - source native-only stub: shader-lab exit
+not ok 9 - source native-only stub: shader-lab exit
   ---
-  duration_ms: 64.632059
+  duration_ms: 25.880671
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%20jiHly8/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%20jiHly8/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: shader-lab smoke
-ok 10 - source native-only stub: shader-lab smoke
+not ok 10 - source native-only stub: shader-lab smoke
   ---
-  duration_ms: 58.853092
+  duration_ms: 22.378372
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%20cLhMHs/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%20cLhMHs/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: native-failure
-ok 11 - source native-only stub ownership: native-failure
+not ok 11 - source native-only stub ownership: native-failure
   ---
-  duration_ms: 61.548071
+  duration_ms: 23.792541
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%20O2w8XC/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 17
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 17
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%20O2w8XC/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: native-crash
-ok 12 - source native-only stub ownership: native-crash
+not ok 12 - source native-only stub ownership: native-crash
   ---
-  duration_ms: 64.260324
+  duration_ms: 27.04352
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%20YL9ROM/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%20YL9ROM/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:118:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: missing-native
-ok 13 - source native-only stub ownership: missing-native
+not ok 13 - source native-only stub ownership: missing-native
   ---
-  duration_ms: 25.583636
+  duration_ms: 25.216027
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:139:32)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: spawn-failure
-ok 14 - source native-only stub ownership: spawn-failure
+not ok 14 - source native-only stub ownership: spawn-failure
   ---
-  duration_ms: 48.634626
+  duration_ms: 26.818638
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:139:32)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: wrong-version
-ok 15 - source native-only stub ownership: wrong-version
+not ok 15 - source native-only stub ownership: wrong-version
   ---
-  duration_ms: 42.118556
+  duration_ms: 21.884447
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:139:32)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: invalid-lock
-ok 16 - source native-only stub ownership: invalid-lock
+not ok 16 - source native-only stub ownership: invalid-lock
   ---
-  duration_ms: 22.865112
+  duration_ms: 23.913888
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:139:32)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: interrupt
-ok 17 - source native-only stub ownership: interrupt
+not ok 17 - source native-only stub ownership: interrupt
   ---
-  duration_ms: 168.032869
+  duration_ms: 24.707674
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%207ZLrqg/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 130
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 130
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%207ZLrqg/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: terminate
-ok 18 - source native-only stub ownership: terminate
+not ok 18 - source native-only stub ownership: terminate
   ---
-  duration_ms: 164.007889
+  duration_ms: 26.977105
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%204h5p3X/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 143
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 143
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%204h5p3X/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: uncooperative
-ok 19 - source native-only stub ownership: uncooperative
+not ok 19 - source native-only stub ownership: uncooperative
   ---
-  duration_ms: 3164.161288
+  duration_ms: 22.695476
   type: 'test'
+  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:fs:560
+      return binding.open(
+                     ^
+    
+    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
+        at Object.openSync (node:fs:560:18)
+        at readFileSync (node:fs:444:35)
+        at file:///tmp/native%20graphics%20launcher%20stub%200NqaWO/tools/godot-dev/launch.mjs:13:64
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'port/contracts/lattice-catalog-derivative.json'
+    }
+    
+    Node.js v22.23.1
+    
+    
+    1 !== 143
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 143
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    file:///tmp/native%20graphics%20launcher%20stub%200NqaWO/tools/godot-dev/launch.mjs:13:64
+    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: bad-args
 ok 20 - source native-only stub ownership: bad-args
   ---
-  duration_ms: 29.550658
+  duration_ms: 26.358697
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: ambiguous-help
 ok 21 - source native-only stub ownership: ambiguous-help
   ---
-  duration_ms: 26.901986
+  duration_ms: 21.679193
   type: 'test'
   ...
 # Subtest: package native-only stub: showcase exit
 ok 22 - package native-only stub: showcase exit
   ---
-  duration_ms: 45.270272
+  duration_ms: 56.823254
   type: 'test'
   ...
 # Subtest: package native-only stub: showcase smoke
 ok 23 - package native-only stub: showcase smoke
   ---
-  duration_ms: 47.967686
+  duration_ms: 45.711954
   type: 'test'
   ...
 # Subtest: package native-only stub: aurora-basin exit
 ok 24 - package native-only stub: aurora-basin exit
   ---
-  duration_ms: 48.329735
+  duration_ms: 44.608056
   type: 'test'
   ...
 # Subtest: package native-only stub: aurora-basin smoke
 ok 25 - package native-only stub: aurora-basin smoke
   ---
-  duration_ms: 41.043583
+  duration_ms: 42.468699
   type: 'test'
   ...
 # Subtest: package native-only stub: cinder-array exit
 ok 26 - package native-only stub: cinder-array exit
   ---
-  duration_ms: 49.873267
+  duration_ms: 49.937287
   type: 'test'
   ...
 # Subtest: package native-only stub: cinder-array smoke
 ok 27 - package native-only stub: cinder-array smoke
   ---
-  duration_ms: 43.884316
+  duration_ms: 45.139892
   type: 'test'
   ...
 # Subtest: package native-only stub: particle-lab exit
 ok 28 - package native-only stub: particle-lab exit
   ---
-  duration_ms: 43.831947
+  duration_ms: 47.489743
   type: 'test'
   ...
 # Subtest: package native-only stub: particle-lab smoke
 ok 29 - package native-only stub: particle-lab smoke
   ---
-  duration_ms: 39.431672
+  duration_ms: 43.502115
   type: 'test'
   ...
 # Subtest: package native-only stub: shader-lab exit
 ok 30 - package native-only stub: shader-lab exit
   ---
-  duration_ms: 42.170865
+  duration_ms: 45.833922
   type: 'test'
   ...
 # Subtest: package native-only stub: shader-lab smoke
 ok 31 - package native-only stub: shader-lab smoke
   ---
-  duration_ms: 44.497264
+  duration_ms: 39.429036
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: native-failure
 ok 32 - package native-only stub ownership: native-failure
   ---
-  duration_ms: 40.598488
+  duration_ms: 45.348533
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: native-crash
 ok 33 - package native-only stub ownership: native-crash
   ---
-  duration_ms: 39.963159
+  duration_ms: 37.663821
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: missing-native
 ok 34 - package native-only stub ownership: missing-native
   ---
-  duration_ms: 25.802836
+  duration_ms: 27.319998
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: interrupt
 ok 35 - package native-only stub ownership: interrupt
   ---
-  duration_ms: 143.894172
+  duration_ms: 147.063414
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: terminate
 ok 36 - package native-only stub ownership: terminate
   ---
-  duration_ms: 144.869679
+  duration_ms: 144.500053
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: uncooperative
 ok 37 - package native-only stub ownership: uncooperative
   ---
-  duration_ms: 3152.846487
+  duration_ms: 3151.811881
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: bad-args
 ok 38 - package native-only stub ownership: bad-args
   ---
-  duration_ms: 23.4139
+  duration_ms: 23.509641
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: ambiguous-help
 ok 39 - package native-only stub ownership: ambiguous-help
   ---
-  duration_ms: 24.037829
+  duration_ms: 25.781406
   type: 'test'
   ...
 1..39
 # tests 39
 # suites 0
-# pass 39
-# fail 0
+# pass 20
+# fail 19
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 4449.955616
+# duration_ms 4101.742087

@@ -1,0 +1,138 @@
+TAP version 13
+# rootfall-verge gate route metrics {"gridStep":4,"orderedMeters":1010.0205542325346,"gateWalkingMeters":904.8353028308758,"gateCumulativeMeters":[79.34480547080366,287.73127431359177,463.40967605394354,634.5637691501009,835.2609686312405,904.8353028308758]}
+# rootfall-verge terrain variety {"profiles":31,"roughness90":0.47586940029668234,"toothRate90":0,"ridgeRelief80":21.616119663019386}
+# siltwake-crossing gate route metrics {"gridStep":4,"orderedMeters":1207.9519713745708,"gateWalkingMeters":950.1929827288044,"gateCumulativeMeters":[109.44408848630204,246.5010669127651,504.3028233698021,696.1207944614562,852.6441306485008,950.1929827288044]}
+# siltwake-crossing terrain variety {"profiles":48,"roughness90":0.48241878927739307,"toothRate90":0.07692307692307693,"ridgeRelief80":32.36062706613943}
+# emberline-ascent gate route metrics {"gridStep":4,"orderedMeters":1383.4679439260362,"gateWalkingMeters":1098.6332004251344,"gateCumulativeMeters":[72.35467475124065,327.62207627688343,557.9319596133131,805.2905701867065,981.0577647315602,1098.6332004251344]}
+# emberline-ascent terrain variety {"profiles":54,"roughness90":0.5762805546347542,"toothRate90":0,"ridgeRelief80":28.73137721223835}
+# crown-array gate route metrics {"gridStep":4,"orderedMeters":1360.4078400319968,"gateWalkingMeters":1084.8178632580916,"gateCumulativeMeters":[183.96146805808755,452.3389576775935,760.083071152399,984.6432296963461,1053.5032409836201,1084.8178632580916]}
+# crown-array terrain variety {"profiles":52,"roughness90":0.3934594160068865,"toothRate90":0,"ridgeRelief80":23.329702470900955}
+# Subtest: terrain profile detector rejects repeated teeth but permits broad irregular relief
+ok 1 - terrain profile detector rejects repeated teeth but permits broad irregular relief
+  ---
+  duration_ms: 0.682518
+  type: 'test'
+  ...
+# Subtest: rootfall-verge: generated geometry, supported routes and chapter identity
+ok 2 - rootfall-verge: generated geometry, supported routes and chapter identity
+  ---
+  duration_ms: 165.65077
+  type: 'test'
+  ...
+# Subtest: rootfall-verge: actual source movement traverses every critical and flank segment
+ok 3 - rootfall-verge: actual source movement traverses every critical and flank segment
+  ---
+  duration_ms: 3713.583432
+  type: 'test'
+  ...
+# Subtest: rootfall-verge: mandatory gates cannot collapse into an open-ground diagonal
+ok 4 - rootfall-verge: mandatory gates cannot collapse into an open-ground diagonal
+  ---
+  duration_ms: 273.156636
+  type: 'test'
+  ...
+# Subtest: rootfall-verge: route-side ridge geometry avoids repeated teeth and has broad relief variety
+ok 5 - rootfall-verge: route-side ridge geometry avoids repeated teeth and has broad relief variety
+  ---
+  duration_ms: 33.355969
+  type: 'test'
+  ...
+# Subtest: siltwake-crossing: generated geometry, supported routes and chapter identity
+ok 6 - siltwake-crossing: generated geometry, supported routes and chapter identity
+  ---
+  duration_ms: 149.319614
+  type: 'test'
+  ...
+# Subtest: siltwake-crossing: actual source movement traverses every critical and flank segment
+ok 7 - siltwake-crossing: actual source movement traverses every critical and flank segment
+  ---
+  duration_ms: 5050.260011
+  type: 'test'
+  ...
+# Subtest: siltwake-crossing: mandatory gates cannot collapse into an open-ground diagonal
+ok 8 - siltwake-crossing: mandatory gates cannot collapse into an open-ground diagonal
+  ---
+  duration_ms: 274.402319
+  type: 'test'
+  ...
+# Subtest: siltwake-crossing: route-side ridge geometry avoids repeated teeth and has broad relief variety
+ok 9 - siltwake-crossing: route-side ridge geometry avoids repeated teeth and has broad relief variety
+  ---
+  duration_ms: 35.846934
+  type: 'test'
+  ...
+# Subtest: emberline-ascent: generated geometry, supported routes and chapter identity
+ok 10 - emberline-ascent: generated geometry, supported routes and chapter identity
+  ---
+  duration_ms: 158.959038
+  type: 'test'
+  ...
+# Subtest: emberline-ascent: actual source movement traverses every critical and flank segment
+ok 11 - emberline-ascent: actual source movement traverses every critical and flank segment
+  ---
+  duration_ms: 5919.422612
+  type: 'test'
+  ...
+# Subtest: emberline-ascent: mandatory gates cannot collapse into an open-ground diagonal
+ok 12 - emberline-ascent: mandatory gates cannot collapse into an open-ground diagonal
+  ---
+  duration_ms: 346.980372
+  type: 'test'
+  ...
+# Subtest: emberline-ascent: route-side ridge geometry avoids repeated teeth and has broad relief variety
+ok 13 - emberline-ascent: route-side ridge geometry avoids repeated teeth and has broad relief variety
+  ---
+  duration_ms: 41.730713
+  type: 'test'
+  ...
+# Subtest: crown-array: generated geometry, supported routes and chapter identity
+ok 14 - crown-array: generated geometry, supported routes and chapter identity
+  ---
+  duration_ms: 195.722488
+  type: 'test'
+  ...
+# Subtest: crown-array: actual source movement traverses every critical and flank segment
+ok 15 - crown-array: actual source movement traverses every critical and flank segment
+  ---
+  duration_ms: 7503.669228
+  type: 'test'
+  ...
+# Subtest: crown-array: mandatory gates cannot collapse into an open-ground diagonal
+ok 16 - crown-array: mandatory gates cannot collapse into an open-ground diagonal
+  ---
+  duration_ms: 560.163921
+  type: 'test'
+  ...
+# Subtest: crown-array: route-side ridge geometry avoids repeated teeth and has broad relief variety
+ok 17 - crown-array: route-side ridge geometry avoids repeated teeth and has broad relief variety
+  ---
+  duration_ms: 48.53174
+  type: 'test'
+  ...
+# Subtest: strict campaign parser rejects unsafe identity, geometry and unsupported content
+ok 18 - strict campaign parser rejects unsafe identity, geometry and unsupported content
+  ---
+  duration_ms: 406.21678
+  type: 'test'
+  ...
+# Subtest: chapters retain genuinely different normalized route footprints and exact handoffs
+ok 19 - chapters retain genuinely different normalized route footprints and exact handoffs
+  ---
+  duration_ms: 142.32219
+  type: 'test'
+  ...
+# Subtest: Crown guardian authored deployment pool retains several clear 1.65m-radius feet positions
+ok 20 - Crown guardian authored deployment pool retains several clear 1.65m-radius feet positions
+  ---
+  duration_ms: 45.723851
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25734.160491
