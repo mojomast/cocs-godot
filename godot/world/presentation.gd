@@ -14,6 +14,7 @@ var local_actor_id: int = -1
 var actors: Dictionary = {}
 var rendered_remote_poses: int = 0
 var last_shots: Dictionary = {}
+var current_pose_npcs: Dictionary = {}
 signal render_frame(now: float)
 
 func _process(_delta: float) -> void:
@@ -23,7 +24,7 @@ func _process(_delta: float) -> void:
 	render_frame.emit(now)
 	if not interpolate_remote: return
 	for id: int in actors:
-		if id == local_actor_id: continue
+		if id == local_actor_id or current_pose_npcs.has(id): continue
 		var pose: Dictionary = motion.sample(id, now)
 		if pose.is_empty(): continue
 		actors[id].position = pose.position
@@ -39,6 +40,7 @@ func clear_round() -> void:
 	local_actor_id = -1
 	rendered_remote_poses = 0
 	last_shots.clear()
+	current_pose_npcs.clear()
 	for node: Node3D in actors.values():
 		remove_child(node)
 		node.free()
@@ -52,8 +54,12 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 	var now: float = Time.get_ticks_usec() / 1000000.0
 	var present: Dictionary = {}
 	local_actor = {}
+	current_pose_npcs.clear()
+	var solo: bool = str(state.get("config", {}).get("mode", "")) in ["campaign", "horde"]
 	for actor: Dictionary in state.get("actors", []):
 		var id: int = int(actor.id)
+		# Local authoritative solo targets must not trail their collision by 100ms.
+		if solo and actor.get("isNpc") == true: current_pose_npcs[id] = true
 		present[id] = true
 		if not actors.has(id):
 			var node: Node3D = actor_visual_factory.call(actor, local_id) if actor_visual_factory.is_valid() else ActorVisual.new()
@@ -70,8 +76,9 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 		var alive: bool = LocalLifecycle.actor_alive(actor)
 		motion.ingest(id, position, body_yaw, alive, now)
 		var pose: Dictionary = motion.sample(id, now)
-		visual.position = pose.position if interpolate_remote and id != local_id else position
-		visual.rotation.y = pose.yaw if interpolate_remote and id != local_id else body_yaw
+		var delayed: bool = interpolate_remote and id != local_id and not current_pose_npcs.has(id)
+		visual.position = pose.position if delayed else position
+		visual.rotation.y = pose.yaw if delayed else body_yaw
 		# Opt-in visuals may finish a bounded cosmetic collapse. They own expiry
 		# between snapshots; source actors retain immediate death hiding.
 		var death_pose: bool = not alive and visual.has_method("wants_death_pose") and visual.wants_death_pose()

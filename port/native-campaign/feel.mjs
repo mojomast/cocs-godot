@@ -100,6 +100,12 @@ export function createFeel(difficulty) {
     },
     event(match,type,event) {
       const actor=match.actors?.[event.actor];
+      if(type==='damage'&&actor?.npcShield&&event.source===0&&event.amount>0) {
+        const source=match.actors[0],dx=source.x-actor.x,dz=source.z-actor.z,length=Math.hypot(dx,dz);
+        if(length>0&&(-Math.sin(actor.yaw||0)*dx-Math.cos(actor.yaw||0)*dz)/length>=Math.cos(actor.npcShield.arc??.6)) {
+          actor.campaignShieldHitUntil=match.time+.18;event.shieldBlocked=true;
+        }
+      }
       if(type==='enemy-telegraph'&&event.kind==='boss'&&actor){event.duration=Math.max(1.15,event.duration,(event.radius||0)/8.6+.35);actor.bossStompWindup=event.duration;actor.campaignSlamDuration=event.duration;}
       if(type==='boss-slam'&&actor){actor.campaignExposedUntil=match.time+1.6;match.emit('campaign-exposed',{actor:actor.id,duration:1.6});}
     },

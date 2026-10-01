@@ -21,6 +21,7 @@ var batches: Array[MeshInstance3D] = []
 var feet: Node3D
 var armor_material: StandardMaterial3D
 var optic_material: StandardMaterial3D
+var shield_material: StandardMaterial3D
 var tell_strength: float = 0.0
 var building_level: int = 0
 
@@ -33,6 +34,10 @@ func _init() -> void:
 	optic_material.emission_enabled = true
 	optic_material.emission = Color("ff773b")
 	optic_material.emission_energy_multiplier = 0.65
+	shield_material = armor_material.duplicate()
+	shield_material.emission_enabled = true
+	shield_material.emission = Color("ffbc51")
+	shield_material.emission_energy_multiplier = 0.0
 
 func configure(actor: Dictionary, local_actor_id: int = -1) -> void:
 	local_id = local_actor_id
@@ -84,6 +89,7 @@ func _art_key(parent: Node3D, label: String) -> String:
 
 func _finish(parts: RefCounted, parent: Node3D, label: String, luminous: bool = false) -> void:
 	var instance: MeshInstance3D = parts.finish(parent, optic_material if luminous else armor_material, label)
+	if label == "SlabShield": instance.material_override = shield_material
 	var authored: Dictionary = art_meshes.get(model_id, {})
 	var key: String = _art_key(parent, label)
 	if authored.has(key):
@@ -273,6 +279,8 @@ func _pose() -> void:
 	# stays cool-colored for exactly the authority's punish window.
 	optic_material.emission = Color("b8edff") if float(snapshot.get("campaignExposed", 0)) > 0 else Color("ff773b")
 	optic_material.emission_energy_multiplier = 0.0 if dead else 0.65 + tell_strength * 1.5 + hit_reaction * 2.0
+	# Amber plate flash confirms an authority-reduced shield contact, unlike a miss.
+	shield_material.emission_energy_multiplier = 2.4 if float(snapshot.get("campaignShieldHit", 0)) > 0 and not dead else 0.0
 
 func kick(amount: float = 1.0) -> void:
 	recoil = maxf(recoil, clampf(amount, 0, 2))

@@ -13,14 +13,24 @@ export const ROBOTS = Object.freeze({
   warden:{npcType:'warden', name:'Quarantine Warden', hitScale:2, chassis:[1.68,.64,1.44], chassisY:1.152},
 });
 export const MAX_ACTIVE_ENEMIES = 10;
-// Main chassis plus central sensor housing. Feet-relative boxes deliberately
-// exclude thin moving limbs, barrels and antennas. Width/depth come from the
-// separately declared scaled art chassis; vertical tops include its sensor.
+// Imported main chassis plus sensor housing, feet-relative and yaw-local.
+// Excludes moving limbs, weapon barrels and the separately articulated shield.
 export function robotHitVolume(model) {
   const robot=ROBOTS[model];
   if(!robot)throw new TypeError(`Unknown robot: ${model}`);
-  const top={scrapper:.63,skirmisher:1.372,sentinel:1.12,mortar:1.28225,bulwark:2.3925,warden:1.784}[model];
-  return {width:robot.chassis[0],depth:robot.chassis[2],bottom:robot.chassisY-robot.chassis[1]/2,top};
+  // Measured imported L0_Chassis + sensor housing, not procedural fallback.
+  // Feet-relative, yaw-local; 6 cm per edge absorbs bounded gait/recoil motion.
+  const [left,right,back,front,bottom,top]={
+    scrapper:[-.292,.292,-.375,.303,.176,.742],
+    skirmisher:[-.379,.214,-.340,.241,.629,1.690],
+    sentinel:[-.519,.519,-.538,.538,.313,1.396],
+    mortar:[-.466,.466,-.483,.483,.557,1.461],
+    bulwark:[-.608,.608,-.592,.420,1.327,2.626],
+    warden:[-.976,.976,-.720,.720,.776,2.552],
+  }[model];
+  return {width:right-left+.12,depth:front-back+.12,offsetX:(left+right)/2,
+    offsetZ:(back+front)/2,bottom:bottom-.06,top:top+.06,
+    ...(model==='bulwark'?{shield:{width:1.05,depth:.54,offsetX:-.69,offsetZ:-.69,bottom:.81,top:2.52}}:{})};
 }
 export function deploymentReachable(match,anchor,point) {
   const length=Math.hypot(point.x-anchor.x,point.z-anchor.z),steps=Math.max(1,Math.ceil(length/4));

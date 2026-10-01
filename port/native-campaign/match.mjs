@@ -2,6 +2,7 @@ import {Match, floorAt, obstructed} from './core.generated.mjs';
 import {navigation as sourceNavigation} from '../../game/core.mjs';
 import {updateEnemyRoles} from '../../game/singleplayer.mjs';
 import {createFeel} from './feel.mjs';
+import {playerWeapon,projectileWeapon,trackingInput} from './targeting.mjs';
 import {loadCampaignMap} from './maps.mjs';
 import {missionForCampaign} from './missions.mjs';
 import {deployEncounter} from './enemies.mjs';
@@ -52,6 +53,8 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
   };
   const finish = (match, phase) => {state.phase=phase; state.winner=phase==='dead'?1:0; match.over=true; match.overReason=phase;};
   class CampaignMatch extends Match {
+    weaponForIndex(actor,index) {return playerWeapon(actor,super.weaponForIndex(actor,index),Number.isInteger(index)?index:actor.weapon);}
+    projectileWeapon(projectile) {return projectileWeapon(this,projectile);}
     emit(type,event) {feel.event(this,type,event);return super.emit(type,event);}
     damage(target,amount,source,ability=false) {
       const adjusted=feel.incoming(this,target,feel.outgoing(this,target,amount,source),source);
@@ -73,7 +76,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
       const input=super.botInput(actor,dt);
       if(input.melee){input.melee=feel.attack(this,actor,'melee');if(input.melee)feel.afterAttack(this,actor,'melee');}
       if(this.time<(actor.campaignStaggerUntil??0)||this.time<(actor.campaignExposedUntil??0)){input.x=0;input.z=0;input.melee=false;}
-      return input;
+      return trackingInput(this,actor,input,difficulty);
     }
     spawn(actor) {
       // Retry/restart construct fresh actors; base automatic respawn is barred.
@@ -182,6 +185,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         actor.campaignAttackWindup=Math.max(0,(source.campaignFireAt??0)-this.time);
         actor.campaignSlamDuration=source.campaignSlamDuration??1.15;
         actor.campaignStagger=Math.max(0,(source.campaignStaggerUntil??0)-this.time);
+        actor.campaignShieldHit=Math.max(0,(source.campaignShieldHitUntil??0)-this.time);
         actor.campaignExposed=Math.max(0,(source.campaignExposedUntil??0)-this.time);}
       const mechanic=encounter?.mechanic;
       snapshot.campaign={id:'quiet-relay',mapId,index:data.campaign.index,title:mission.title,

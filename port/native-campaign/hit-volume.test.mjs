@@ -11,7 +11,7 @@ function fixture(model) {
   const enemy=match.actor(1,'chatgpt','openclaw');
   enemy.isNpc=true;applyEnemyFields(enemy,ROBOTS[model].npcType);
   match.actors.push(enemy);match.spawn(enemy);enemy.bot=null;
-  Object.assign(enemy,{x:0,y:20,z:0,vx:0,vy:0,vz:0,protection:0,hitScale:ROBOTS[model].hitScale,npcHitVolume:robotHitVolume(model)});
+  Object.assign(enemy,{x:0,y:20,z:0,bodyYaw:0,vx:0,vy:0,vz:0,protection:0,hitScale:ROBOTS[model].hitScale,npcHitVolume:robotHitVolume(model)});
   Object.assign(match.actors[0],{x:8,y:20,z:8,vx:0,vy:0,vz:0,protection:100});
   return {match,enemy};
 }
@@ -59,7 +59,7 @@ test('campaign kicks contact every robot body and shove through the shared autho
     const event=match.events.filter(e=>e.type==='melee').at(-1);
     assert.equal(event.hit,enemy.id,model);assert.equal(event.outcome,'hit',model);
     assert.ok(event.impact.y>=volume.bottom&&event.impact.y<=volume.top,`${model}: body contact`);
-    assert.ok(Math.abs(event.impact.z)<=volume.depth/2+1e-6,`${model}: contact before shove`);
+    assert.ok(Math.abs(event.impact.z-(volume.offsetZ||0))<=volume.depth/2+1e-6,`${model}: contact before shove`);
     assert.ok(enemy.z<0,`${model}: authoritative shove`);
   }
 });
