@@ -52,7 +52,7 @@ addresses that geometry defect. Those `post-art`/`post-shadow` native images
 and live logs refer to the **earlier hashes**, and remain preserved as before
 evidence rather than acceptance of the new ceiling meshes.
 
-### Eight sealed urban shops — ready for the next native engine pass
+### Eight sealed urban shops — native acceptance at current hashes
 
 `generate.mjs` now authoritatively closes all eight enterable shops, four per
 city. Each has a 24cm overhead slab with a non-walkable top at **Y=4.02**, an
@@ -74,18 +74,39 @@ sides, *not* a walkable route, while floor and nav inside remain supported.
 The 43 map/mode matrix and two-WebSocket CTF/Domination/Payload, late join and
 restart checks pass against these hashes. Exported GLBs are 30,790 and 28,175
 triangles, respectively, each 11 material batches under the same budget.
-Offline Blender interior views are under `urban/roof-candidate/`; these are
-composition checks, **not native Godot acceptance**. The port-owned
-`urban_physics.tscn` includes the new top, underside, ground-floor and capsule
-probes, but must run with fresh Godot import/captures and live peer journeys
-when the exclusive engine slot returns from Horde.
+Offline Blender interior views remain under `urban/roof-candidate/`. Fresh
+Godot import, native collision and visual evidence for these **new hashes** is
+under `urban/post-roof/`: `import.log`, `physics.log`, 16 inspection screenshots
+(street, interior, accessible roof, objective and each of the eight individual
+shop interiors), including `rainmarket-exchange-interior-east-kiosk.png`.
+Actual Godot render review confirms all eight have a continuous ceiling and
+readable lighting, including the previously roofless kiosk. The native physics
+fixture checks eight ground floors, eight undersides and tops, 32 slab sides,
+72 aperture capsule/floor traversal samples across eight doors, standing
+capsules in every room, the existing five reachable elevated surfaces/ramps,
+guards, curbs, counters, spawns and objectives. North/south door probes are
+bounded to the aperture; raised sidewalk curbs beyond those doors have their
+own checks. The first three exploratory sweep failures are archived as
+`physics-*-failure.log`; the final `physics.log` passes.
+
+`switchyard-ward-ctf-live.json` and `rainmarket-exchange-payload-live.json`
+record **two native Godot clients** each, matching hashes, real guest movement,
+a third movement-input-only source objective driver, late spectator, completed
+CTF/Payload results and round-revision-2 restart. Native host/guest logs and
+live objective screenshots accompany them. Rainmarket's first native Payload
+run reached 79% then was legitimately contested by the randomly placed guest;
+its unmodified failure logs and debug trace are preserved under
+`post-roof/payload-first-failure/`. A subsequent round completed, and the
+bounded fixture now moves its defender guest farther from the cart lane using
+ordinary client inputs; the final recorded Payload run completed with that
+change. These are fixture-only controls, not injected objective state.
 
 Reproduce the native acceptance from the checkout with the pinned Godot binary
 and `LP_NUM_THREADS=1` (exclusive engine slot required):
 
 ```sh
-LP_NUM_THREADS=1 URBAN_NATIVE_VISUAL=1 GODOT_BIN=/path/to/pinned/Godot_v4.5.2-stable_linux.x86_64 node port/multiplayer-worlds/urban-native-live.mjs switchyard-ward ctf
-LP_NUM_THREADS=1 URBAN_NATIVE_VISUAL=1 GODOT_BIN=/path/to/pinned/Godot_v4.5.2-stable_linux.x86_64 node port/multiplayer-worlds/urban-native-live.mjs rainmarket-exchange payload
+LP_NUM_THREADS=1 URBAN_NATIVE_VISUAL=1 URBAN_NATIVE_EVIDENCE_DIR=/path/to/new/evidence GODOT_BIN=/path/to/pinned/Godot_v4.5.2-stable_linux.x86_64 node port/multiplayer-worlds/urban-native-live.mjs switchyard-ward ctf
+LP_NUM_THREADS=1 URBAN_NATIVE_VISUAL=1 URBAN_NATIVE_EVIDENCE_DIR=/path/to/new/evidence GODOT_BIN=/path/to/pinned/Godot_v4.5.2-stable_linux.x86_64 node port/multiplayer-worlds/urban-native-live.mjs rainmarket-exchange payload
 LP_NUM_THREADS=1 /path/to/pinned/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot res://multiplayer_worlds/urban_physics.tscn
 ```
 

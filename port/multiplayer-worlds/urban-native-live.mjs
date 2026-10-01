@@ -9,7 +9,7 @@ import {readWorld} from './catalog.mjs';
 
 const map=process.argv[2]??'switchyard-ward',mode=process.argv[3]??'ctf';
 if(![['switchyard-ward','ctf'],['rainmarket-exchange','payload']].some(pair=>pair[0]===map&&pair[1]===mode))throw Error('Urban native journey supports Switchyard CTF or Rainmarket Payload');
-const root='/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/urban/post-art';
+const root=process.env.URBAN_NATIVE_EVIDENCE_DIR??'/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/urban/post-art';
 mkdirSync(root,{recursive:true});
 const godot=process.env.GODOT_BIN??'/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64';
 const visual=process.env.URBAN_NATIVE_VISUAL==='1';
@@ -97,11 +97,11 @@ try{
    const input={type:'input',seq:++seq,input:{x:d>1?dx/d:0,z:d>1?dz/d:0,yaw:Math.atan2(-dx,-dz),sprint:true}};
   ws.send(JSON.stringify(input));controls++;
   if(controls%20===0)route.push({x:actor.x,z:actor.z,stage:key,owner:target.owner,cart:match.objectiveState?.distance,health:actor.health});
-   debug={controls,actor:{x:actor.x,y:actor.y,z:actor.z,team:actor.team,health:actor.health,dead:actor.dead},target:{x:target.x,z:target.z,progress:target.progress},stages:stages.slice(-12),route:route.slice(-12),over:match.over};
+   debug={controls,actor:{x:actor.x,y:actor.y,z:actor.z,team:actor.team,health:actor.health,dead:actor.dead},actors:match.actors.map(a=>({id:a.id,x:a.x,y:a.y,z:a.z,team:a.team,health:a.health})),payload:match.objectiveState?{position:match.objectiveState.position,contested:match.objectiveState.contested,distance:match.objectiveState.distance}:null,target:{x:target.x,z:target.z,progress:target.progress},stages:stages.slice(-12),route:route.slice(-12),over:match.over};
  };
  const timer=setInterval(tick,50);
  try{
-   await until(`${mode} full round source outcome`,()=>match.over,mode==='payload'?240000:160000);
+   await until(`${mode} full round source outcome`,()=>match.over,Number(process.env.URBAN_NATIVE_TIMEOUT_MS??(mode==='payload'?240000:160000)));
  }finally{clearInterval(timer);}
  await until('both native result receipts',()=>host.output.includes('WORLD_NATIVE_RESULTS ')&&guest.output.includes('WORLD_NATIVE_RESULTS '),12000);
   const snap=match.snapshot();

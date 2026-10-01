@@ -45,7 +45,11 @@ func _process(delta: float) -> void:
  if "--urban-fixture-move-guest" in OS.get_cmdline_user_args() and phase == 3:
   urban_guest_control_elapsed += delta
   urban_guest_control_send += delta
-  if urban_guest_control_elapsed < 2.5 and urban_guest_control_send >= .05:
+  # Payload's late route passes the defender's near spawn. Continue the
+  # native guest's ordinary movement away from that lane so its position
+  # cannot randomly contest the wire driver's final escort.
+  var guest_move_duration := 8.0 if selected_mode == "payload" else 2.5
+  if urban_guest_control_elapsed < guest_move_duration and urban_guest_control_send >= .05:
    urban_guest_control_send = 0.0
    if client.send_input({"x":-1.0 if selected_mode == "ctf" else 0.0,"z":0.0 if selected_mode == "ctf" else -1.0,"sprint":true}) == OK:
     urban_guest_control_count += 1
