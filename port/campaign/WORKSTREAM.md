@@ -663,3 +663,22 @@ and waits for explicit Blender/Godot permission after that run completes. Its
 new before/after evidence belongs in
 `/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20261001/world-prop-polish/`.
 The current aggregate covers the accepted pre-polish art, not the future revision.
+
+Canonical `e2818781` completed all **305 gates: 289 passed, 16 failed**. Full
+before/after reports and generated combat fixtures are externally archived; parent
+restored only tracked verifier outputs afterward. Fourteen failures are renderer
+error cases; sampled traces consistently show a null-material error during
+`operator_visual.gd:set_weapon()` freeing the prior world weapon. Grips,
+presentation and live-mode traces agree; career wrappers also reject engine errors.
+The native Blender art test passes but does not cover the failing lifetime pattern
+adequately. Investigate per-instance material disposal rather than suppress errors.
+Two independent failures remain: compact campaign capture pixel matching (the
+visible weapon is present, but matched/opaque=1232/1564; long subtitle leaves only
+four unoccluded samples), and Horde's graphical input fixture (post-delivery
+stale-input resets despite the applied choice). Preserve input TTL and rendering
+assertion intent when fixing those tests; do not simply lower acceptance thresholds.
+
+The landmark polish Sol now has explicit permission for Blender exports and the
+exclusive Godot slot. Parent audits/fixes unrelated code while engine reruns wait
+for that lane to release the slot. Final aggregate will include the polish and
+verified lifetime/capture/fixture corrections.
