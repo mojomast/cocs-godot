@@ -266,6 +266,7 @@ static func attract_window_active(mode: int, focused: bool, headless_mock: bool 
 
 func refresh_attract() -> void:
 	if attract_stage == null: return
+	if attract_active and not attract_stage.active: stop_attract()
 	if not _attract_allowed():
 		stop_attract()
 		return

@@ -3,8 +3,12 @@
 The Godot home screen renders a silent, cosmetic **in-engine scripted replay**
 behind its normal route, Settings, Career and Quit controls. A private 3D
 `SubViewport` owns the current chapter's cropped production campaign terrain,
-daylight, source operator and robot models, Patch, a bounded combat flash and
-an animated orbit/first-person camera. Its source is the compact version-1
+daylight, source operator and robot models, and the production story director
+for Mara, Ivo and Patch (including poses and pet reactions). A bounded flash
+uses a recorded combat event's position or source actor, not an invented menu
+attack. The moving camera uses the recorded actor's yaw/pitch for FP clips and
+an orbit for wide clips. These all run in
+an animated 3D viewport. Its source is the compact version-1
 authority replay at `res://ui/attract/demo.json`, documented in
 `port/campaign/ATTRACT_DEMO.md`. This is recorded campaign activity presented
 by Godot each frame, not live AI or a second campaign authority. The public

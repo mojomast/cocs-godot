@@ -3,8 +3,8 @@ extends SubViewportContainer
 ## Only a cropped patch of one packaged campaign chapter exists at a time.
 const Operator = preload("res://source_operators/operator_visual.gd")
 const Robot = preload("res://campaign/robot_visual.gd")
-const Puppy = preload("res://campaign/puppy_visual.gd")
 const Daylight = preload("res://campaign/environment.gd")
+const StoryDirector = preload("res://campaign/story_director.gd")
 const CHAPTERS := ["rootfall-verge", "siltwake-crossing", "emberline-ascent", "crown-array"]
 const REPLAY_PATH := "res://ui/attract/demo.json"
 const MAX_REPLAY_BYTES := 8 * 1024 * 1024
@@ -14,6 +14,8 @@ const FRAME_INTERVAL := 1.0 / 18.0
 
 var mock_scene := false # Headless contract: exercise lifecycle without building GPU geometry.
 var active := false
+var building := false
+var ready := false
 var chapter_index := -1
 var chapter_time := 0.0
 var frame_time := 0.0
@@ -24,14 +26,16 @@ var world: Node3D
 var camera: Camera3D
 var viewport: SubViewport
 var actors: Dictionary = {}
-var patch_visual: Node3D
+var story_director: Node3D
 var flash: MeshInstance3D
 var flash_light: OmniLight3D
 var marker: Vector3
 var forward: Vector3
 var generation := 0
 var terrain_triangles := 0
-var last_pet_serial := -1
+var flash_until := -1.0
+var flash_origin := Vector3.ZERO
+var last_event_frame := -1
 
 func _ready() -> void:
 	name = "AttractStage"
@@ -57,6 +61,7 @@ func start() -> void:
 	if not mock_scene and not _load_replay(): return
 	active = true
 	show()
+	if world != null: world.process_mode = Node.PROCESS_MODE_INHERIT
 	set_process(true)
 	if chapter_index < 0: advance_chapter()
 	if not mock_scene: viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
@@ -110,10 +115,14 @@ static func _valid_clip(clip: Variant) -> bool:
 				if not _finite_number(actor.get(axis)): return false
 		for event: Variant in frame.events:
 			if not event is Dictionary: return false
-		var story: Variant = frame.state.campaign.get("story", {})
+		var story: Variant = frame.state.campaign.get("story")
+		if story == null: story = {}
 		if not story is Dictionary or not story.get("entities", []) is Array or story.get("entities", []).size() > 12: return false
 		for entity: Variant in story.get("entities", []):
-			if not entity is Dictionary: return false
+			if not entity is Dictionary or not entity.get("id") is String: return false
+			if entity.get("kind") not in ["operator", "puppy"]: return false
+			for axis: String in ["x", "y", "z", "yaw"]:
+				if not _finite_number(entity.get(axis)): return false
 		last = float(frame.t)
 	return true
 
@@ -125,7 +134,8 @@ func stop() -> void:
 	active = false
 	set_process(false)
 	if viewport != null: viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
-	if world != null and patch_visual == null:
+	if world != null: world.process_mode = Node.PROCESS_MODE_DISABLED
+	if building:
 		# A settings/focus interruption during incremental construction must not
 		# resume an abandoned half-built chapter on a later menu frame.
 		generation += 1
@@ -143,12 +153,15 @@ func clear_chapter() -> void:
 		world.free()
 		world = null
 	actors.clear()
-	patch_visual = null
+	story_director = null
 	flash = null
 	flash_light = null
 	camera = null
 	terrain_triangles = 0
-	last_pet_serial = -1
+	flash_until = -1.0
+	last_event_frame = -1
+	building = false
+	ready = false
 
 func advance_chapter() -> void:
 	generation += 1
@@ -157,7 +170,10 @@ func advance_chapter() -> void:
 	frame_time = 0.0
 	frame_index = 0
 	clear_chapter()
-	if mock_scene: return
+	if mock_scene:
+		ready = true
+		return
+	building = true
 	_build_chapter.call_deferred(generation)
 
 func _build_chapter(serial: int) -> void:
@@ -167,11 +183,13 @@ func _build_chapter(serial: int) -> void:
 	var path := "res://campaign/generated/" + id + ".json"
 	if not FileAccess.file_exists(path):
 		print("MENU_ATTRACT unavailable: ", path)
+		clips.clear()
 		stop()
 		return
 	var recipe: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
 	if not recipe is Dictionary or recipe.get("id") != id:
 		print("MENU_ATTRACT unavailable: ", path)
+		clips.clear()
 		stop()
 		return
 	var focus: Dictionary = clip.focus
@@ -187,6 +205,7 @@ func _build_chapter(serial: int) -> void:
 	world.add_child(environment)
 	if not environment.build(recipe):
 		print("MENU_ATTRACT unavailable: daylight ", id)
+		clips.clear()
 		stop()
 		clear_chapter()
 		return
@@ -200,9 +219,17 @@ func _build_chapter(serial: int) -> void:
 	# periodically so the menu's foreground input remains responsive.
 	await _build_terrain(recipe, serial)
 	if not active or serial != generation: return
+	if terrain_triangles == 0:
+		print("MENU_ATTRACT unavailable: no campaign terrain near replay focus for ", id)
+		clips.clear()
+		stop()
+		return
 	_build_nearby_cover(recipe)
 	_build_cast()
+	building = false
+	ready = true
 	_apply_frame(clip.frames[0], clip.frames[1], 0.0)
+	_consume_events(clip.frames[0], 0)
 	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 func _build_terrain(recipe: Dictionary, serial: int) -> void:
@@ -269,10 +296,10 @@ func _build_nearby_cover(recipe: Dictionary) -> void:
 		count += 1
 
 func _build_cast() -> void:
-	patch_visual = Puppy.new()
-	patch_visual.name = "Patch"
-	world.add_child(patch_visual)
-	patch_visual.hide()
+	# The production director owns Mara, Ivo and Patch, including their authored
+	# pose/reaction changes. No companion-only substitute that drops the NPCs.
+	story_director = StoryDirector.new()
+	world.add_child(story_director)
 	flash = MeshInstance3D.new()
 	flash.name = "ScriptedMuzzleFlash"
 	var ball := SphereMesh.new()
@@ -293,17 +320,17 @@ func _build_cast() -> void:
 	flash_light.hide()
 
 func _process(delta: float) -> void:
-	if not active: return
+	if not active or not ready: return
 	chapter_time += minf(delta, 0.1)
 	if mock_scene: return
 	var clip: Dictionary = clips[chapter_index]
 	if chapter_time >= float(clip.duration):
 		advance_chapter()
 		return
-	if camera == null: return
 	var frames: Array = clip.frames
 	while frame_index + 1 < frames.size() - 1 and float(frames[frame_index + 1].t) <= chapter_time:
 		frame_index += 1
+		_consume_events(frames[frame_index], frame_index)
 	var current: Dictionary = frames[frame_index]
 	var following: Dictionary = frames[mini(frame_index + 1, frames.size() - 1)]
 	var span := maxf(0.001, float(following.t) - float(current.t))
@@ -313,6 +340,28 @@ func _process(delta: float) -> void:
 		frame_time = fmod(frame_time, FRAME_INTERVAL)
 		viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
+func _consume_events(frame: Dictionary, index: int) -> void:
+	if index <= last_event_frame: return
+	last_event_frame = index
+	# The frame's event array is already aggregated by the capture exporter.
+	# Select one authored event, once, and place the cosmetic flash at its
+	# recorded point or its actual source actor; never synthesize a player shot
+	# just because a remote actor took damage.
+	for event: Dictionary in frame.events:
+		var kind := str(event.get("type", ""))
+		if kind not in ["shot", "fire", "projectile", "impact", "hit", "npc-attack"]: continue
+		var point: Variant = event.get("pos", event.get("origin"))
+		if point is Dictionary and _finite_number(point.get("x")) and _finite_number(point.get("y")) and _finite_number(point.get("z")):
+			flash_origin = Vector3(float(point.x), float(point.y), float(point.z))
+		elif _finite_number(event.get("x")) and _finite_number(event.get("y")) and _finite_number(event.get("z")):
+			flash_origin = Vector3(float(event.x), float(event.y), float(event.z))
+		else:
+			var owner: Node3D = actors.get(int(event.get("actor", event.get("sourceActor", -1))))
+			if owner == null: continue
+			flash_origin = owner.position - owner.global_basis.z * 0.7
+		flash_until = float(frame.t) + 0.12
+		break
+
 func _apply_frame(current: Dictionary, following: Dictionary, weight: float) -> void:
 	var now: Dictionary = current.state
 	var future: Dictionary = following.state
@@ -320,6 +369,7 @@ func _apply_frame(current: Dictionary, following: Dictionary, weight: float) -> 
 	for candidate: Dictionary in future.actors: future_actors[int(candidate.get("id", -1))] = candidate
 	var present := {}
 	var focus_actor: Node3D
+	var focus_snapshot: Dictionary = {}
 	for actor: Dictionary in now.actors:
 		if not actor.get("x") is float and not actor.get("x") is int: continue
 		var id := int(actor.get("id", -1))
@@ -336,35 +386,23 @@ func _apply_frame(current: Dictionary, following: Dictionary, weight: float) -> 
 		var next: Dictionary = future_actors.get(id, actor)
 		var origin := Vector3(float(actor.get("x", 0)), float(actor.get("y", 0)), float(actor.get("z", 0)))
 		var destination := Vector3(float(next.get("x", origin.x)), float(next.get("y", origin.y)), float(next.get("z", origin.z)))
-		visual.position = origin.lerp(destination, weight)
+		# Shared world/presentation.gd places source and robot roots 0.9 above
+		# authoritative feet; story operators are offset by their director too.
+		visual.position = origin.lerp(destination, weight) + Vector3.UP * 0.9
 		visual.rotation.y = lerp_angle(float(actor.get("bodyYaw", actor.get("yaw", 0))), float(next.get("bodyYaw", next.get("yaw", 0))), weight)
-		if focus_actor == null and visual is Operator and float(actor.get("health", 0)) > 0: focus_actor = visual
+		if visual is Operator and float(actor.get("health", 0)) > 0 and (focus_actor == null or id == 0):
+			focus_actor = visual
+			focus_snapshot = actor
 	for id: int in actors.keys():
 		if present.has(id): continue
 		actors[id].free()
 		actors.erase(id)
-	var story: Dictionary = now.campaign.get("story", {})
-	patch_visual.hide()
-	for entity: Dictionary in story.get("entities", []):
-		if entity.get("kind") != "puppy" or not entity.get("active", false): continue
-		patch_visual.show()
-		patch_visual.position = Vector3(float(entity.get("x", 0)), float(entity.get("y", 0)), float(entity.get("z", 0)))
-		patch_visual.rotation.y = float(entity.get("yaw", 0))
-		patch_visual.call("set_pose", str(entity.get("pose", "walk")))
-		var serial := int(entity.get("reactionSerial", 0))
-		if last_pet_serial >= 0 and serial > last_pet_serial: patch_visual.call("pet")
-		last_pet_serial = serial
-		break
-	var event_flash := false
-	for event: Dictionary in current.events:
-		if str(event.get("type", event.get("kind", ""))) in ["shot", "hit", "npc-attack", "projectile", "damage"]:
-			event_flash = true
-			break
-	var firing := event_flash and chapter_time - float(current.t) < 0.13
-	flash.visible = firing and focus_actor != null
+	var story: Variant = now.campaign.get("story")
+	story_director.call("apply", story if story is Dictionary else {}, str(clips[chapter_index].map))
+	flash.visible = chapter_time < flash_until
 	flash_light.visible = flash.visible
 	if flash.visible:
-		flash.position = focus_actor.position + -focus_actor.global_basis.z * 0.8 + Vector3.UP * 0.1
+		flash.position = flash_origin
 		flash_light.position = flash.position
 	var clip: Dictionary = clips[chapter_index]
 	var subject: Vector3 = focus_actor.position if focus_actor != null else marker
@@ -372,9 +410,12 @@ func _apply_frame(current: Dictionary, following: Dictionary, weight: float) -> 
 	var orbit := chapter_time * 0.18
 	var eye := subject - forward * (9.0 + 2.0 * sin(orbit)) + side * (7.0 + 3.0 * cos(orbit)) + Vector3.UP * 5.0
 	if clip.camera == "fp" and focus_actor != null:
-		eye = subject + Vector3.UP * 0.55 + forward * 0.35
-		camera.position = eye
-		camera.look_at(eye + forward * 14.0 + Vector3.UP * 0.2)
+		# Same eye-height and yaw/pitch convention as the real campaign session.
+		# Hide only this local body in FP; all other models remain in the shot.
+		focus_actor.hide()
+		camera.position = subject - Vector3.UP * 0.9 + Vector3.UP * float(focus_snapshot.get("eyeHeight", 1.45))
+		camera.rotation_order = EULER_ORDER_YXZ
+		camera.rotation = Vector3(float(focus_snapshot.get("pitch", 0)), float(focus_snapshot.get("yaw", 0)), 0)
 	else:
 		camera.position = eye
 		camera.look_at(subject + forward * 2.5 + Vector3.UP * 0.8)

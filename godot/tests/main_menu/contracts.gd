@@ -403,11 +403,18 @@ func check_preferences() -> void:
 func check_attract(route_count: int, category_count: int) -> void:
 	var sample := {"id":"relay-test","map":"rootfall-verge","kind":"combat","camera":"orbit",
 		"duration":1.0,"focus":{"x":0,"y":0,"z":0},"frames":[
-			{"t":0.0,"state":{"time":0,"actors":[],"campaign":{"story":{}}},"events":[]},
+			{"t":0.0,"state":{"time":0,"actors":[],"campaign":{"story":{"entities":[
+				{"id":"mara","kind":"operator","x":0,"y":0,"z":0,"yaw":0,"active":true},
+				{"id":"patch","kind":"puppy","x":1,"y":0,"z":0,"yaw":0,"active":true}]}}},
+				"events":[{"type":"shot","actor":2,"pos":{"x":2,"y":3,"z":4}}]},
 			{"t":1.0,"state":{"time":1,"actors":[],"campaign":{"story":{}}},"events":[]}]}
 	check(ATTRACT_SCRIPT._valid_clip(sample) and not ATTRACT_SCRIPT._valid_clip(sample.merged({"camera":"video"}, true))
 		and not ATTRACT_SCRIPT._valid_clip(sample.merged({"focus":{"x":NAN,"y":0,"z":0}}, true)),
 		"bounded version-1 replay clip accepts authoritative frames, rejects invalid camera and nonfinite focus")
+	var combat_only: Dictionary = sample.duplicate(true)
+	combat_only.frames[0].state.campaign.story = null
+	check(ATTRACT_SCRIPT._valid_clip(combat_only),
+		"combat chapters may have no active campaign story while companion chapters retain story entities")
 	var settings := root.get_node_or_null("LocalSettings")
 	var previous: Dictionary = settings.values.duplicate() if settings != null else {}
 	if settings != null:
@@ -478,13 +485,41 @@ func check_attract(route_count: int, category_count: int) -> void:
 	menu.attract_stage.advance_chapter()
 	check(menu.attract_stage.chapter_index == chapter_before,
 		"scripted replay cycles back to its first chapter")
+	menu.attract_stage.ready = false
+	menu.attract_stage.building = true
+	menu.attract_stage.camera = Camera3D.new()
+	menu.attract_stage._process(0.5)
+	check(menu.attract_stage.chapter_time == 0.0 and menu.attract_stage.frame_index == 0,
+		"camera construction alone cannot advance time or consume frames before cast and terrain are ready")
+	menu.attract_stage.camera.free()
+	menu.attract_stage.camera = null
+	menu.attract_stage.building = false
+	menu.attract_stage.ready = true
+	menu.attract_stage._consume_events(sample.frames[0], 0)
+	var first_flash: Vector3 = menu.attract_stage.flash_origin
+	menu.attract_stage._consume_events({"t":0.4,"events":[{"type":"shot", "pos":{"x":99,"y":99,"z":99}}]}, 0)
+	check(first_flash == Vector3(2, 3, 4) and menu.attract_stage.flash_origin == first_flash,
+		"recorded shot origin is used once; duplicate frame cannot replay the event")
 	if settings != null:
+		var dummy_world := Node3D.new()
+		menu.attract_stage.viewport.add_child(dummy_world)
+		menu.attract_stage.world = dummy_world
 		settings.open_panel(true, menu.settings_button)
 		menu.refresh_attract()
-		check(not menu.attract_active, "Settings overlay pauses the background")
+		check(not menu.attract_active and dummy_world.process_mode == Node.PROCESS_MODE_DISABLED,
+			"Settings overlay freezes the private world and its animated descendants")
 		settings.close_panel()
 		menu.refresh_attract()
-		check(menu.attract_active, "background resumes after closing Settings")
+		check(menu.attract_active and dummy_world.process_mode == Node.PROCESS_MODE_INHERIT,
+			"background and its animated descendants resume after closing Settings")
+		menu.attract_stage.building = true
+		menu.stop_attract()
+		check(menu.attract_stage.world == null and menu.attract_stage.chapter_index == -1
+			and not menu.attract_stage.ready,
+			"pausing an unfinished chapter discards its partial world")
+		menu.refresh_attract()
+		check(menu.attract_stage.ready and menu.attract_stage.active,
+			"interrupted chapter restarts cleanly on resume")
 		settings.set_value("attract_demo_enabled", false, false)
 		check(not menu.attract_active and not menu.attract_background.visible
 			and menu.attract_stage.viewport.render_target_update_mode == SubViewport.UPDATE_DISABLED
