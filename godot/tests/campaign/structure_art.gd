@@ -37,7 +37,7 @@ func _run() -> void:
 					var mat := mesh.surface_get_material(surface)
 					check(mat is StandardMaterial3D and mat.albedo_color.a >= 0.99 and mat.roughness > 0.25, "opaque rough imported PBR material " + id)
 					triangles += mesh.surface_get_array_index_len(surface) / 3
-		check(triangles < 22000, id + " both LOD source triangle budget")
+		check(triangles < 32000, id + " both LOD source triangle budget")
 		for batch: Node in art.get_children():
 			check(batch is MultiMeshInstance3D and batch.multimesh.instance_count > 0, id + " no empty draw batches")
 		print("STRUCTURE_ART ", id, " blocks=", expected, " segments=", art.placements, " draws=", art.batches, " loaded_source_tris=", triangles)

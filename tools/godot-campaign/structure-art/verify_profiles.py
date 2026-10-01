@@ -77,7 +77,7 @@ for map_id in IDS:
     batch_count = sum(material_counts[kind, profile, lod][0] for kind, profile, lod, _, _ in groups)
     source_triangles = sum(cost[1] for cost in material_counts.values())
     assert batch_count < 240, (map_id, batch_count)
-    assert source_triangles < 22000, (map_id, source_triangles)
+    assert source_triangles < 32000, (map_id, source_triangles)
     assert max_forest_height < 5.0, (map_id, max_forest_height)
     print(map_id, 'styles/profiles=', sorted(used.items()), 'segments=', segments_total,
           'two-LOD-groups=', len(groups), 'estimated-material-batches=', batch_count,

@@ -204,6 +204,36 @@ def build(kind, lod, profile='top'):
             for y in (.26, .49, .72):
                 box('Gate reinforcement bar', (0, y, -.48), (.48, .025, .016), mats[1], .003)
 
+    # The route sees either side of the unrotated recipe block. Reproduce the
+    # functional elevation on the reverse wall, rather than leaving a blank
+    # dark cube whenever the route approaches from +Z. Roofs/core are excluded.
+    if kind != 'outpost':
+        front_parts = [obj for obj in bpy.context.scene.objects if obj.type == 'MESH' and obj.location.z < -.35]
+        for obj in front_parts:
+            back = obj.copy()
+            back.data = obj.data.copy()
+            back.name = obj.name + ' / reverse elevation'
+            bpy.context.collection.objects.link(back)
+            back.location.z *= -1
+    # Side-facing elevations have their own load systems; these are particularly
+    # important for the long route views approaching the pump and Crown fins.
+    if kind in ('pump', 'refinery', 'uplink', 'receiver', 'gate', 'relay'):
+        side_mat = mats[3] if kind in ('pump', 'refinery', 'uplink', 'relay') else mats[1]
+        for side in (-1, 1):
+            for y in (.24, .50, .76):
+                box('Side maintenance rib', (side*.44, y, 0), (.045, .035, .69), side_mat, .005)
+            if kind in ('uplink', 'receiver', 'relay'):
+                for z in (-.26, .26):
+                    box('Side continuous rail', (side*.453, .50, z), (.034, .88, .045), side_mat, .005)
+            elif kind == 'pump':
+                box('Side vertical pressure header', (side*.46, .50, 0), (.05, .77, .09), mats[1], .007)
+            elif kind == 'refinery':
+                for z in (-.21, 0, .21):
+                    box('Side exchanger cooling fin', (side*.46, .50, z), (.06, .62, .045), side_mat, .005)
+            else:
+                for z in (-.24, .24):
+                    box('Side gate bearing spar', (side*.46, .50, z), (.054, .79, .058), side_mat, .008)
+
     # Bake angled braces and cylinder orientations before batching: otherwise
     # a rotated active object makes the imported AABB overly conservative.
     for obj in list(bpy.context.scene.objects):
