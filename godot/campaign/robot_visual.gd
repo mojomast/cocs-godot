@@ -1,6 +1,8 @@
 extends Node3D
 ## Presentation only. Host owns actor centre transform; local forward is -Z.
 const Parts = preload("res://campaign/robot_parts.gd")
+const Motion = preload("res://source_operators/motion_math.gd")
+const Ground = preload("res://source_operators/ground_contact.gd")
 const IDS := ["scrapper", "skirmisher", "sentinel", "mortar", "bulwark", "warden"]
 const COLORS := [Color("b17e46"), Color("719486"), Color("66849d"), Color("98817f"), Color("577c8b"), Color("975d4c")]
 static var art_meshes: Dictionary = {}
@@ -24,6 +26,12 @@ var optic_material: StandardMaterial3D
 var shield_material: StandardMaterial3D
 var tell_strength: float = 0.0
 var building_level: int = 0
+var stride_weight := 0.0
+var stride_velocity := 0.0
+var travel := Vector3.FORWARD
+var tell_pose := 0.0
+var tell_velocity := 0.0
+var ground_offsets: Array[float] = []
 
 func _init() -> void:
 	armor_material = StandardMaterial3D.new()
@@ -130,6 +138,7 @@ func _build(level: int) -> void:
 	_finish(p, body, "ArmorAndVents")
 	var legs: Array[Node3D] = []
 	var knees: Array[Node3D] = []
+	var ends: Array[Vector3] = []
 	var count: int = 2 if biped else (3 if model_id == "sentinel" else (6 if model_id == "warden" else 4))
 	for i: int in range(count):
 		var side: float = -1.0 if i % 2 == 0 else 1.0
@@ -151,6 +160,7 @@ func _build(level: int) -> void:
 			p.cylinder(Vector3.ZERO, 0.13, 0.19, Parts.STEEL, 6, Vector3(0, 0, PI / 2))
 			p.beam(knee_pos * 0.2, knee_pos * 0.8, 0.22 if heavy else 0.14, color)
 		var end: Vector3 = tip - origin - knee_pos
+		ends.append(end)
 		if level == 2:
 			# Far band preserves hip gait, merging each shin into its upper link.
 			p.beam(knee_pos, tip - origin, 0.14 if heavy else 0.085, Parts.STEEL)
@@ -198,7 +208,7 @@ func _build(level: int) -> void:
 			p.box(Vector3(0, -0.05, -0.265), Vector3(0.11, 0.92, 0.03), Parts.STEEL)
 			p.box(Vector3(0, 0.17, -0.28), Vector3(0.42, 0.08, 0.04), Parts.DARK)
 		_finish(p, shield, "SlabShield")
-	rigs.append({"body":body, "turret":turret, "gun":gun, "legs":legs, "knees":knees, "shield":shield})
+	rigs.append({"body":body, "turret":turret, "gun":gun, "legs":legs, "knees":knees, "ends":ends, "shield":shield})
 
 func apply_actor(actor: Dictionary, local_actor_id: int = -1) -> void:
 	# Presentation assigns local_id before its one-argument apply_actor call.
@@ -243,7 +253,27 @@ func advance(dt: float) -> void:
 	if not is_finite(dt) or dt <= 0: return
 	elapsed += dt
 	var speed := Vector2(float(snapshot.get("vx", 0)), float(snapshot.get("vz", 0))).length()
-	gait_phase = fmod(gait_phase + dt * minf(speed, 18.0) * 2.8, TAU)
+	var planted := tell_strength > 0.0 or float(snapshot.get("campaignStagger", 0)) > 0 or float(snapshot.get("campaignExposed", 0)) > 0
+	var grounded: bool = snapshot.get("grounded", true)
+	var target := clampf(speed / 1.2, 0.0, 1.0) if grounded and not planted else 0.0
+	var stride := Motion.spring(stride_weight, stride_velocity, target, 18.0, dt)
+	stride_weight = stride.x; stride_velocity = stride.y
+	var tell := Motion.spring(tell_pose, tell_velocity, tell_strength, 22.0, dt)
+	tell_pose = tell.x; tell_velocity = tell.y
+	if grounded and not planted and speed > 0.04:
+		gait_phase = fposmod(gait_phase + dt * minf(speed, 18.0) * TAU / _cycle_length(), TAU)
+		var yaw := float(snapshot.get("bodyYaw", snapshot.get("yaw", 0)))
+		var velocity := Vector3(float(snapshot.get("vx", 0)), 0, float(snapshot.get("vz", 0)))
+		travel = travel.lerp(Basis(Vector3.UP, -yaw) * velocity.normalized(), 1.0-exp(-14.0*dt))
+	if grounded and not rigs.is_empty():
+		var rig: Dictionary = rigs[lod_level]
+		ground_offsets.resize(rig.legs.size())
+		for i in rig.legs.size():
+			var hip: Node3D = rig.legs[i]
+			var rest: Vector3 = hip.position + rig.knees[i].get_meta("rest") + rig.ends[i]
+			var point: Vector3 = bands[lod_level].to_global(rest)
+			var height := Ground.offset(self,point,feet.global_position.y,0.12*feet.scale.y)/feet.scale.y
+			ground_offsets[i] = lerpf(ground_offsets[i],height,1.0-exp(-18.0*dt))
 	recoil *= exp(-dt * 12.0)
 	hit_reaction *= exp(-dt * 15.0)
 	if float(snapshot.get("health", 100)) <= 0:
@@ -255,26 +285,46 @@ func _pose() -> void:
 	if rigs.is_empty(): return
 	var rig: Dictionary = rigs[lod_level]
 	var dead: bool = float(snapshot.get("health", 100)) <= 0
-	var collapse: float = clampf(death_elapsed / 0.65, 0, 1) if dead else 0.0
+	var collapse: float = Motion.smooth(death_elapsed / 0.65) if dead else 0.0
 	var speed := Vector2(float(snapshot.get("vx", 0)), float(snapshot.get("vz", 0))).length()
-	var stride: float = minf(speed / 4.0, 1.0) * (1.0 - collapse) * (1.0 - tell_strength * 0.75)
+	var stride: float = stride_weight * (1.0 - collapse)
 	var body: Node3D = rig.body
 	body.position = body.get_meta("rest")
-	body.position.y += sin(gait_phase * 2) * 0.025 * stride - collapse * 0.32 - tell_strength * 0.09
-	body.rotation = Vector3(tell_strength * -0.12 + hit_reaction * 0.14, 0, collapse * 0.22 + hit_reaction * 0.06)
-	body.position.z += hit_reaction * 0.065
+	# Keep living damage surfaces inside the reviewed six-centimetre margin.
+	# Role anticipation is in the cradle/legs, never a displaced hitbox chassis.
+	body.position.y += sin(gait_phase * 2) * 0.008 * stride - collapse * 0.32
+	body.rotation = Vector3(0, 0, collapse * 0.22)
+	body.position.z += hit_reaction * 0.012
 	var turret: Node3D = rig.turret
-	turret.rotation = Vector3(clampf(float(snapshot.get("pitch", 0)), -0.5, 0.5), wrapf(float(snapshot.get("yaw", 0)) - float(snapshot.get("bodyYaw", snapshot.get("yaw", 0))), -PI, PI), collapse * 0.35)
+	var focus := wrapf(float(snapshot.get("yaw",0))-float(snapshot.get("bodyYaw",snapshot.get("yaw",0))),-PI,PI)
+	# Wide solid sensor towers stay in the body-yaw volume; the excluded cradle
+	# carries the remaining aim articulation, rather than inventing a wider torso.
+	turret.rotation = Vector3(clampf(float(snapshot.get("pitch", 0)), -0.4, 0.4), clampf(focus,-0.025,0.025), collapse * 0.35)
 	var gun: Node3D = rig.gun
 	gun.position = gun.get_meta("rest")
 	gun.position.z += recoil * 0.13
-	gun.rotation.x = -tell_strength * (0.45 if model_id == "mortar" else 0.2) + recoil * 0.12 + collapse * 0.6
+	gun.rotation.y = focus-turret.rotation.y
+	gun.rotation.x = -tell_pose * (0.45 if model_id == "mortar" else 0.2) + recoil * 0.12 + collapse * 0.6
 	for i: int in range(rig.legs.size()):
-		var phase: float = gait_phase + (PI if i % 2 == 0 else 0.0) + floorf(i / 2.0) * 0.75
-		rig.legs[i].rotation.x = sin(phase) * 0.28 * stride + collapse * 0.35
-		if model_id == "warden" and i < 2: rig.legs[i].rotation.x -= tell_strength * 0.42
-		rig.knees[i].rotation.x = maxf(0, cos(phase)) * 0.32 * stride - collapse * 0.6
-	if rig.shield != null: rig.shield.rotation.x = -tell_strength * 0.2 + collapse * 0.45 + (0.9 if float(snapshot.get("campaignExposed", 0)) > 0 else 0.0)
+		# Alternating bipeds, ripple tripod, diagonal quadrupeds, alternating hexapod.
+		var offset := TAU * float(i) / 3.0 if rig.legs.size() == 3 else (PI if (i + i / 2) % 2 == 0 else 0.0)
+		var step := Motion.contact(gait_phase + offset, _cycle_length(), 0.10 if model_id in ["skirmisher", "scrapper"] else 0.065) * stride
+		var hip: Node3D = rig.legs[i]
+		var knee: Node3D = rig.knees[i]
+		var upper: Vector3 = knee.get_meta("rest")
+		var lower: Vector3 = rig.ends[i]
+		var foot := upper + lower + travel.normalized() * step.x + Vector3.UP * step.y
+		if ground_offsets.size() > i: foot.y += ground_offsets[i]
+		if model_id == "warden" and i < 2: foot.y += tell_pose * 0.15
+		var rotations := Motion.two_link(upper, lower, foot, upper)
+		hip.quaternion = rotations[0]
+		knee.quaternion = rotations[1]
+		if lod_level == 2:
+			# Far mesh has a fused shin: retain a low-cost directional rigid swing.
+			hip.rotation = Vector3(step.x * -travel.z, 0, step.x * travel.x)
+		if dead:
+			hip.rotate_x(collapse * 0.35); knee.rotate_x(-collapse * 0.6)
+	if rig.shield != null: rig.shield.rotation.x = -tell_pose * 0.2 + collapse * 0.45 + (0.9 if float(snapshot.get("campaignExposed", 0)) > 0 else 0.0)
 	# A short sensor flare accompanies confirmed chassis loss; an exposed core
 	# stays cool-colored for exactly the authority's punish window.
 	optic_material.emission = Color("b8edff") if float(snapshot.get("campaignExposed", 0)) > 0 else Color("ff773b")
@@ -288,7 +338,12 @@ func kick(amount: float = 1.0) -> void:
 
 func reset_pose() -> void:
 	elapsed = 0; gait_phase = 0; recoil = 0; hit_reaction = 0; death_elapsed = 0; tell_strength = 0
+	stride_weight = 0; stride_velocity = 0; tell_pose = 0; tell_velocity = 0; travel = Vector3.FORWARD
+	ground_offsets.clear()
 	_pose()
+
+func _cycle_length() -> float:
+	return {"scrapper":0.9, "skirmisher":1.05, "sentinel":0.7, "mortar":0.8, "bulwark":0.85, "warden":0.95}.get(model_id, 0.9)
 
 func select_distance(distance: float) -> void:
 	set_lod(0 if distance < 22 else (1 if distance < 48 else 2))

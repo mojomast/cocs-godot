@@ -2,7 +2,7 @@ extends RefCounted
 ## Direct native port of game/rig.mjs placeLimb + alignLivingCharacter hand pass.
 ## Applied after CharacterRig, gun aim/recoil, and source weapon replacement.
 
-static func align(nodes: Dictionary, weapon: Node3D, diagnostics: Dictionary = {}) -> Dictionary:
+static func align(nodes: Dictionary, weapon: Node3D, diagnostics: Dictionary = {}, offsets: Dictionary = {}) -> Dictionary:
 	var errors: Dictionary = {}
 	var orientation: Quaternion = weapon.global_basis.get_rotation_quaternion()
 	for side: String in ["L","R"]:
@@ -10,7 +10,7 @@ static func align(nodes: Dictionary, weapon: Node3D, diagnostics: Dictionary = {
 		var grip: Node3D = nodes["grip"+side]
 		var contact: Node3D = weapon.find_child("WeaponGripLeft" if side == "L" else "WeaponGripRight",true,false)
 		if contact == null: continue
-		var target: Vector3 = contact.global_position
+		var target: Vector3 = contact.global_position + orientation * offsets.get(side,Vector3.ZERO)
 		var wrist: Vector3 = target - orientation * (grip.position * hand.global_basis.get_scale())
 		var clamp: Dictionary = {}
 		place_limb(nodes["armUpper"+side],nodes["forearm"+side],hand,wrist,orientation,Vector3(-1 if side == "L" else 1,-0.4,0.25),clamp)

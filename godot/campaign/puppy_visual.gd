@@ -1,4 +1,5 @@
 extends Node3D
+const Motion = preload("res://source_operators/motion_math.gd")
 ## Patch: small, feet-anchored, collision-free companion. -Z is forward.
 static var materials: Dictionary = {}
 static var spheres: Dictionary = {}
@@ -11,6 +12,20 @@ var time := 0.0
 var reaction := 0.0
 var pose := "idle"
 var lod := 0
+var walk_weight := 0.0
+var walk_velocity := 0.0
+var sit_weight := 0.0
+var sit_velocity := 0.0
+var happy_weight := 0.0
+var happy_velocity := 0.0
+var gait_phase := 0.0
+var movement_speed := 0.0
+var sampled_movement := false
+var automatic_animation := true
+
+func set_movement(speed: float) -> void:
+	movement_speed = clampf(speed,0.0,4.0)
+	sampled_movement = true
 
 static func coat(color: String) -> StandardMaterial3D:
 	if not materials.has(color):
@@ -83,19 +98,32 @@ func select_distance(distance: float) -> void:
 		if part_.name in ["EyeGlint", "Blaze"]: part_.visible = lod == 0
 
 func _process(dt: float) -> void:
+	if automatic_animation: advance(dt)
+
+func advance(dt: float) -> void:
 	if body == null: return
+	if not is_finite(dt) or dt <= 0.0: return
 	time += dt
 	reaction = maxf(0, reaction - dt)
 	var happy := reaction > 0 or pose == "happy"
-	var sitting := pose == "sit"
-	# Keep the paws at or just above the authoritative ground plane, even sitting.
-	body.position.y = (0.09 if sitting else 0.02) + sin(time * (7 if happy else 2.8)) * (0.012 if happy else 0.008)
-	body.rotation.x = 0.12 if sitting else 0.0
+	var walk := Motion.spring(walk_weight,walk_velocity,clampf(movement_speed/0.8,0,1) if sampled_movement else (1.0 if pose=="walk" else 0.0),18.0,dt)
+	walk_weight = walk.x; walk_velocity = walk.y
+	var sit := Motion.spring(sit_weight,sit_velocity,1.0 if pose=="sit" else 0.0,14.0,dt)
+	sit_weight = sit.x; sit_velocity = sit.y
+	var joy := Motion.spring(happy_weight,happy_velocity,1.0 if happy else 0.0,16.0,dt)
+	happy_weight = joy.x; happy_velocity = joy.y
+	var speed := movement_speed if sampled_movement else (0.9 if pose=="walk" else 0.0)
+	if speed > 0.02: gait_phase = fposmod(gait_phase + speed*dt*TAU/0.65,TAU)
+	# Breathing belongs to chest/head, never the support paws or entire body.
+	body.position.y = sit_weight*0.035
+	body.rotation.x = sit_weight*0.08
 	for i: int in range(paws.size()):
-		paws[i].position.y = 0.13 + (maxf(0, sin(time * 9 + (PI if i in [0, 3] else 0))) * 0.09 if pose == "walk" else 0.0)
-	head.rotation.z = sin(time * 2.1) * 0.10 + (0.20 if happy else 0.0)
-	head.rotation.x = (0.18 if pose == "work" else 0.0) - (0.26 * sin(reaction * 4.5) if reaction > 0 else 0.0)
+		var step := Motion.contact(gait_phase + (PI if i in [0,3] else 0.0),0.65,0.09)*walk_weight
+		paws[i].position.z = (-0.29 if i%2==0 else 0.40)-step.x
+		paws[i].position.y = 0.13 + step.y - body.position.y + sin(body.rotation.x)*paws[i].position.z
+	head.rotation.z = sin(time*1.1)*0.035 + happy_weight*0.16
+	head.rotation.x = (0.18 if pose == "work" else 0.0) - happy_weight*0.08*sin(time*3.0)
 	# Lean toward the offered hand, then settle. No camera or player rig movement.
 	head.position.z = -0.40 - (0.12 * sin(PI * clampf(reaction / 1.8, 0, 1)) if reaction > 0 else 0.0)
-	tail.rotation.z = sin(time * (19 if happy else 6)) * (0.85 if happy else 0.28)
-	for ear: Node3D in ears: ear.rotation.x = sin(time * 5) * (0.15 if happy else 0.04)
+	tail.rotation.z = sin(time*8.0)*(0.18+happy_weight*0.55)
+	for ear: Node3D in ears: ear.rotation.x = sin(time*8.0-0.55)*(0.025+happy_weight*0.10)+head.rotation.x*-0.25

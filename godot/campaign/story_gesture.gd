@@ -3,6 +3,7 @@ extends RefCounted
 ## Joint angles use CharacterRig's source convention (it flips pitch on apply).
 ## No animation tracks accumulate transforms, use wall time, or loop greetings.
 const Rig = preload("res://source_operators/character_rig.gd")
+const Motion = preload("res://source_operators/motion_math.gd")
 const JOINTS := ["armUpperL", "armUpperR", "forearmL", "forearmR", "handL", "handR", "torso", "chest", "head"]
 const POSES := ["idle", "walk", "wave", "point", "work"]
 var pose := "idle"
@@ -10,6 +11,12 @@ var age := 0.0
 var time := 0.0
 var entry: Dictionary = rest()
 var entry_walk := 0.0
+var measured_speed := -1.0
+var distance_phase := 0.0
+
+func set_movement(speed: float, distance: float) -> void:
+	measured_speed = clampf(speed,0.0,4.0)
+	distance_phase = fposmod(distance_phase + distance*TAU/0.85,TAU)
 
 static func rest() -> Dictionary:
 	return {"armUpperL":Vector3(0.035, 0, -0.055), "armUpperR":Vector3(0.035, 0, 0.055),
@@ -19,7 +26,7 @@ static func rest() -> Dictionary:
 
 static func smooth_weight(value: float) -> float:
 	var x := clampf(value, 0.0, 1.0)
-	return x * x * (3.0 - 2.0 * x)
+	return Motion.smooth(x)
 
 static func blend(a: Dictionary, b: Dictionary, weight: float) -> Dictionary:
 	var out := {}
@@ -94,8 +101,8 @@ func sample() -> Dictionary:
 
 func apply_to(visual: Node3D) -> void:
 	var rig: RefCounted = visual.get("rig")
-	var weight := walk_weight()
-	var phase := time * TAU * 0.60
+	var weight := walk_weight() if measured_speed < 0 else clampf(measured_speed/1.4,0,1)
+	var phase := time * TAU * 0.60 if measured_speed < 0 else distance_phase
 	var body: Dictionary = Rig.solve({"speedNorm":weight * 0.175, "forward":weight,
 		"time":time, "phase":phase, "grounded":true, "contactGait":true})
 	var angles := sample()

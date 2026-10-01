@@ -10,6 +10,8 @@ const WeaponArt = preload("res://first_person/art_adapter.gd")
 const WeaponFinish = preload("res://first_person/finish.gd")
 const ArmorDetail = preload("res://source_operators/armor_detail.gd")
 const Locomotion = preload("res://source_operators/locomotion.gd")
+const Motion = preload("res://source_operators/motion_math.gd")
+const Ground = preload("res://source_operators/ground_contact.gd")
 const WORLD_WEAPON_DIR := "res://source_operators/generated/world_weapons/"
 const DEATH_DURATION := 0.8
 var identity_key: String = ""
@@ -40,6 +42,8 @@ var death_target: Dictionary = {}
 var last_live_pose: Dictionary = {}
 var armor_details: Array[MeshInstance3D] = []
 var locomotion := Locomotion.new()
+var handling_weight := Vector3.ZERO
+var handling_velocity := Vector3.ZERO
 
 func apply_identity(actor: Dictionary) -> void:
 	if Catalog.OPERATORS.is_empty(): return
@@ -84,6 +88,7 @@ func apply_identity(actor: Dictionary) -> void:
 	_apply_team(actor.get("team"))
 	armor_details = ArmorDetail.build(nodes,character,team_material)
 	locomotion.reset()
+	handling_weight = Vector3.ZERO; handling_velocity = Vector3.ZERO
 	rig.configure(nodes)
 	lod_level = -1
 	set_lod(0)
@@ -185,6 +190,7 @@ func reset_pose() -> void:
 	_clear_death_animation()
 	rig.reset()
 	locomotion.reset()
+	handling_weight = Vector3.ZERO; handling_velocity = Vector3.ZERO
 	recoil = 0.0
 	if is_instance_valid(source): last_live_pose = _capture_pose()
 
@@ -245,6 +251,7 @@ func _process(dt: float) -> void:
 	if camera: select_distance(global_position.distance_to(camera.global_position))
 
 func advance(dt: float) -> void:
+	if not is_finite(dt) or dt <= 0.0: return
 	if death_active:
 		_advance_death(dt)
 		return
@@ -259,15 +266,27 @@ func advance(dt: float) -> void:
 	var state: Dictionary = {"dt":dt,"time":elapsed,"speed":0 if mounted else Vector2(vx,vz).length(),"maxSpeed":a.get("moveSpeed",8),"grounded":true if mounted else a.get("grounded",true),"crouch":not mounted and a.get("crouching",false),"ads":not mounted and a.get("ads",false),"reload":1 if not mounted and a.get("reloading",false) else 0,"strafe":0 if mounted else clampf((vx*cos(body_yaw)-vz*sin(body_yaw))/3.0,-1,1),"forward":0 if mounted else clampf(-(vx*sin(body_yaw)+vz*cos(body_yaw))/3.0,-1,1),"focusYaw":focus,"focusPitch":-float(a.get("pitch",0)),"bank":clampf((yaw-body_yaw)*1.1,-1,1),"hit":a.get("hit",0),"sliding":a.get("sliding",false),"reduced":a.get("reduced",false)}
 	if state.reduced: state.bank = 0.0
 	rig.update(state)
+	if state.grounded and not mounted:
+		for i in 2:
+			var point := source.to_global(Vector3(-0.14 if i==0 else 0.14,0,0))
+			var floor_height := Ground.offset(self,point,source.global_position.y)
+			locomotion.floor_offsets[i] = lerpf(locomotion.floor_offsets[i],floor_height,1.0-exp(-18.0*dt))
 	locomotion.apply(rig,state,a,dt)
-	recoil = maxf(0.0,recoil-dt*7.0)
+	recoil *= exp(-dt*14.0)
+	var handling_target := Vector3(1.0 if a.get("reloading",false) else 0.0,clampf(float(a.get("weaponSwitch",0))*5.0,0,1),clampf(float(a.get("melee",0))*4.0,0,1)) if not mounted and not state.reduced else Vector3.ZERO
+	for i in 3:
+		var response := Motion.spring(handling_weight[i],handling_velocity[i],handling_target[i],24.0,dt)
+		handling_weight[i] = response.x; handling_velocity[i] = response.y
 	var mount: Node3D = nodes.gunAnchor
-	mount.quaternion = Quaternion.IDENTITY if state.reduced else Rig.xyz_quaternion(Vector3(clampf(float(a.get("pitch",0)),-0.7,0.7)-recoil*0.06,clampf(focus,-0.9,0.9),0))
-	mount.position = rig.bind.gunAnchor.origin + Vector3(0,0,0 if state.reduced else recoil*0.035)
+	mount.quaternion = Quaternion.IDENTITY if state.reduced else Rig.xyz_quaternion(Vector3(clampf(float(a.get("pitch",0)),-0.7,0.7)-recoil*0.06+handling_weight.x*0.10+handling_weight.y*0.16,clampf(focus,-0.9,0.9),handling_weight.x*-0.12))
+	mount.position = rig.bind.gunAnchor.origin + (Vector3.ZERO if state.reduced else Vector3(0,-handling_weight.x*0.055-handling_weight.y*0.10,recoil*0.035-handling_weight.z*0.08))
 	if is_instance_valid(world_weapon):
 		# Source post-pose hand pass, after the source weapon was replaced.
 		grip_clamp.clear()
-		grip_error = HandGrips.align(nodes, world_weapon, grip_clamp)
+		# Left palm services the magazine while the right hand retains its grip.
+		var progress := 1.0-clampf(float(a.get("reloadTimer",0))/maxf(0.01,float(a.get("reloadDuration",1))),0,1)
+		var service := sin(PI*progress)*handling_weight.x
+		grip_error = HandGrips.align(nodes, world_weapon, grip_clamp,{"L":Vector3(0.08,-0.08,0.06)*service})
 	last_live_pose = _capture_pose()
 
 func select_distance(distance: float) -> void:

@@ -52,9 +52,9 @@ func apply(value: Dictionary, map_id: String) -> void:
 				visual.hide()
 				visual.position = goal
 				visual.set_meta("story_reveal", 0.35)
-			else:
-				visual.position = goal if distance < 0.3 else visual.position.move_toward(goal, 0.3)
-		visual.rotation.y = float(entity.yaw)
+		visual.set_meta("story_goal", goal)
+		visual.set_meta("story_yaw", float(entity.yaw))
+		if created: visual.rotation.y = float(entity.yaw)
 		var serial: int = int(entity.get("reactionSerial", 0))
 		if not created and last_serial.has(id) and serial > int(last_serial[id]) and entity.kind == "puppy": visual.call("pet")
 		last_serial[id] = maxi(serial, int(last_serial.get(id, serial)))
@@ -73,9 +73,16 @@ func apply(value: Dictionary, map_id: String) -> void:
 		# Keep serial baseline for temporarily inactive entities in this chapter.
 
 func _process(dt: float) -> void:
+	if not is_finite(dt) or dt <= 0: return
 	var camera := get_viewport().get_camera_3d()
 	for id: String in actors:
 		var visual: Node3D = actors[id]
+		var previous := visual.position
+		visual.position = visual.position.lerp(visual.get_meta("story_goal",previous),1.0-exp(-14.0*dt))
+		visual.rotation.y = lerp_angle(visual.rotation.y,float(visual.get_meta("story_yaw",visual.rotation.y)),1.0-exp(-12.0*dt))
+		var moved := Vector2(visual.position.x-previous.x,visual.position.z-previous.z).length()
+		if visual is Puppy: visual.set_movement(moved/dt)
+		elif gestures.has(id): gestures[id].set_movement(moved/dt, moved)
 		if camera:
 			var distance := visual.global_position.distance_to(camera.global_position)
 			var reveal := maxf(0, float(visual.get_meta("story_reveal", 0.0)) - dt)
