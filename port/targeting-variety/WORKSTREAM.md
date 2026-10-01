@@ -13,6 +13,32 @@ Existing archives and evidence remain unchanged.
 
 ## Parallel ownership
 
+Targeting commit `b7574c83` is integrated as `0afd4d7e`. Parent flow-control
+commit `75e9b3a0` passed its native 614 checks in the targeting lane. Targeting
+released Godot; **level-variety Astra now holds the exclusive Godot slot**, plus
+permission for one serialized Blender process if needed. Parent remains engine-idle.
+
+Targeting intake: actual imported chassis/sensor bounds replace smaller fallback
+hit regions, with body yaw/asymmetric offsets and 6 cm edge padding. Solo NPCs
+use latest snapshot poses rather than the added 100 ms multiplayer delay.
+Campaign movement uses slower role speeds, committed directions and planted
+windows. Player plasma/rocket/grenade speeds are 138/60/36 m/s. An explicit
+generator projectile-weapon lookup hook retains source swept collision and
+leaves frozen source and global weapon tables unchanged. Parent reviewed the
+generator/callsite and added the helper to package closure and two canonical gates.
+
+Lane evidence: 42 campaign Node tests, 11,952 fire-to-damage checks using 2,988
+native mesh samples, 459 robot checks and 614 input-flow checks passed. Headless
+geometry/presentation acceptance is complete; new combined gameplay and Windows
+package acceptance remain pending. Full measurements and provenance are in
+`port/native-campaign/TARGETING.md`.
+
+Parent integrated Node acceptance passed **57/57**, including campaign lifecycle,
+hit geometry/projectile tests, source provenance, cheat effects, prior feel policy
+and package closure. Log: `cocs-targeting-evidence-20261001/parent-integrated-node.log`.
+The final combined pass must still exercise an actual native input journey after
+the level-variety lane lands, then verify fresh extracted Windows/Linux archives.
+
 ### Targeting — Astra
 
 - Session: `ses_f0708252dffevsEhnC1yJEnfnD`.
