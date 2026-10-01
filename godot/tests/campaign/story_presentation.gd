@@ -84,7 +84,7 @@ func run() -> void:
 	var operator := {"id":"mara", "kind":"operator", "name":"Mara", "character":"chatgpt", "x":-2.0, "y":1.0, "z":-3.0, "yaw":0.0, "pose":"wave", "active":true, "reactionSerial":0}
 	director.apply(story([puppy(), operator]), "siltwake-crossing")
 	var friendly: Node3D = director.actors.mara
-	assert(friendly.position.y == 1.9 and is_equal_approx(friendly.get("source").position.y, -0.9))
+	assert(is_equal_approx(friendly.position.y, 1.9) and is_equal_approx(friendly.get("source").position.y, -0.9))
 	var nodes: Dictionary = friendly.get("nodes")
 	assert(nodes.has("armUpperR") and nodes.has("forearmR") and nodes.has("weapon"))
 	assert(not nodes.weapon.visible and friendly.get("world_weapon") == null, "Friendly operator is disarmed without changing shared rig")

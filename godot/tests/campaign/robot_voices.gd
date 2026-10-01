@@ -124,7 +124,7 @@ func run() -> void:
 	check(not voices.enabled and not voices.players[0].playing and not voices.players[1].playing, "terminal campaign phase stops every voice")
 	for player: AudioStreamPlayer3D in voices.players:
 		check(player.bus == &"Effects" and player.max_distance == 42, "spatial effects routing and attenuation")
-	var weak_player := weakref(voices.players[0])
+	var weak_player: WeakRef = weakref(voices.players[0])
 	voices.free()
 	check(weak_player.get_ref() == null, "service teardown frees owned spatial players")
 	print("ROBOT_VOICES ", checks, " checks; ", failures, " failures")

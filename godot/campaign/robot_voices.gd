@@ -44,7 +44,7 @@ func apply_settings(options: Dictionary) -> void:
 	# Announcer is the existing opt-in recorded narration channel. Creature
 	# vocalizations are diegetic Effects; its slider is applied once by Buses.
 	Buses.apply(options)
-	var next_muted := options.get("mute", false) == true or float(options.get("effects_volume", 100)) <= 0 or "--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args()
+	var next_muted: bool = options.get("mute", false) == true or float(options.get("effects_volume", 100)) <= 0 or "--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args()
 	if muted and not next_muted and authority_time >= 0: drain_next = true
 	muted = next_muted
 	if muted: stop_voices()

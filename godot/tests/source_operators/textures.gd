@@ -14,7 +14,7 @@ func run() -> void:
 		var actor = Visual.new(); root.add_child(actor)
 		actor.automatic_animation = false
 		actor.apply_identity({"character":id})
-		var count := actor.armor_details.size()
+		var count: int = actor.armor_details.size()
 		var plate: MeshInstance3D = actor.nodes.chest.get_node("BreastplateL")
 		var bind := plate.transform
 		var neutral: Color = plate.material_override.albedo_color

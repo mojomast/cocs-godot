@@ -400,7 +400,7 @@ func check_preferences() -> void:
 
 func check_attract(route_count: int, category_count: int) -> void:
 	var settings := root.get_node_or_null("LocalSettings")
-	var previous := settings.values.duplicate() if settings != null else {}
+	var previous: Dictionary = settings.values.duplicate() if settings != null else {}
 	if settings != null:
 		settings.set_value("attract_demo_enabled", true, false)
 		settings.set_value("reduced_motion", false, false)
@@ -418,7 +418,7 @@ func check_attract(route_count: int, category_count: int) -> void:
 	check(backdrop_nodes.all(func(node: Control) -> bool:
 		return node.mouse_filter == Control.MOUSE_FILTER_IGNORE and node.focus_mode == Control.FOCUS_NONE),
 		"reel and its overlays ignore pointer and keyboard focus")
-	var category := menu.current_category
+	var category: String = menu.current_category
 	menu.category_buttons["modes"].emit_signal("pressed")
 	check(menu.current_category == "modes" and menu.start.visible and menu.settings_button.visible,
 		"route navigation and action buttons remain available over the reel")
