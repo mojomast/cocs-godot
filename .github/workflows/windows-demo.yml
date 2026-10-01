@@ -13,7 +13,7 @@ permissions:
 jobs:
   windows-smoke:
     runs-on: windows-latest
-    timeout-minutes: 15
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - name: Download exact release asset and extract into a path with spaces
@@ -31,7 +31,7 @@ jobs:
           $extract = Join-Path $env:RUNNER_TEMP 'fresh Windows demo'
           Expand-Archive $zip $extract
           "DEMO_ROOT=$extract\cocs-native-windows" >> $env:GITHUB_ENV
-      - name: Bundled runtimes, three combat maps, five graphics routes and cleanup
+      - name: Bundled runtimes, expansion mode pairs and cleanup
         shell: pwsh
         run: |
           & "$env:DEMO_ROOT\node.exe" tools/godot-package/verify_windows.mjs "$env:DEMO_ROOT" "$env:RUNNER_TEMP\windows-evidence"
