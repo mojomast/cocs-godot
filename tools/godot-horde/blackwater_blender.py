@@ -17,10 +17,11 @@ master = root / 'tools/godot-horde/masters'
 master.mkdir(exist_ok=True, parents=True)
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
+bpy.context.preferences.filepaths.save_version = 0
 materials = {
     'steel':(0.085, 0.16, 0.19, 1), 'oxidized':(0.16, 0.29, 0.32, 1),
     'concrete':(0.23, 0.31, 0.32, 1), 'hazard':(0.72, 0.39, 0.12, 1),
-    'lamp':(0.20, 0.71, 0.72, 1), 'water':(0.07, 0.27, 0.36, 1),
+    'lamp':(0.20, 0.71, 0.72, 1),
 }
 for name, color in materials.items():
     mat = bpy.data.materials.new('BW_' + name)
@@ -88,8 +89,9 @@ for index,(name,x) in enumerate(districts):
     # Gantry rail geometry mirrors the JSON walkable deck, feet land on it.
     for rail in [-16,-8]:
         for side in [-1,1]:
-            prism(name+'_gantry_guard',(x,6,rail),(55,2,0.28),'hazard')
+            prism(name+'_gantry_guard',(x+side*16.5,6,rail),(23,2,0.28),'hazard')
         for offset in range(-26,27,8):
+            if abs(offset)<5: continue
             prism(name+'_gantry_post',(x+offset,5.55,rail),(0.25,1.1,0.25),'steel')
     # Cable bridge hangs high and is deliberately decoration-only.
     for j in range(9):
