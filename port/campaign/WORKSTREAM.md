@@ -644,3 +644,22 @@ development gallery. Full evidence is in `structures/final-grounded/`, preservin
 every earlier iteration. All three Sol art lanes have completed and released
 their engine/export slots. Parent resumes serialized integrated verification,
 trailer refresh and final package work with all reviewed art now integrated.
+
+## Owner-requested landmark polish — 2026-10-01
+
+After viewing Rootfall, the owner identified the railway-track-looking fallen
+relay and requested a Sol agent to tighten it up and address other noticed issues.
+New lane `campaign/world-prop-polish`, session `ses_f0a55fad0ffeXJTmYVe55ZQBTq`,
+works at `/home/mojo/.tmp-on-disk/cocs-world-polish-20261001` from `e2818781`.
+It will replace the old procedural ladder-like mast with recognizable Blender
+communications wreckage and audit the four maps for concrete prop readability,
+grounding, support and intersection defects, including the Crown receiver bowl.
+Authoritative collision, routes, terrain and source provenance stay intact.
+
+Canonical verification of `e2818781` is already running, with evidence at
+`/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20260930/canonical-e2818781/`.
+It retains the exclusive heavy slot. The new lane begins inspection/design/code
+and waits for explicit Blender/Godot permission after that run completes. Its
+new before/after evidence belongs in
+`/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20261001/world-prop-polish/`.
+The current aggregate covers the accepted pre-polish art, not the future revision.
