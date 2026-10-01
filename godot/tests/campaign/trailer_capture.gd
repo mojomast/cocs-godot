@@ -37,6 +37,7 @@ func run() -> void:
  session.camera.fov = 65
  # Let all production nodes initialize before starting the frame clock.
  for i: int in range(4): await process_frame
+ var motion := FileAccess.open(output.get_base_dir().path_join("motion.jsonl"), FileAccess.WRITE)
  var index := 0
  while not file.eof_reached():
   var line := file.get_line()
@@ -100,6 +101,26 @@ func run() -> void:
     session.camera.look_at(center + Vector3(lerpf(-4, 4, t), 0, 0))
   root.get_node("LocalSettings").hint.hide()
   await RenderingServer.frame_post_draw
+  if motion != null:
+   var story_trace := []
+   for id: String in session.story_director.actors:
+    var actor: Node3D = session.story_director.actors[id]
+    var center := actor.global_position + Vector3.UP * 0.25
+    var point: Vector2 = session.camera.unproject_position(center)
+    var visible: bool = actor.is_visible_in_tree() and not session.camera.is_position_behind(center) and Rect2(0, 0, 960, 540).grow(25).has_point(point)
+    var entry := {"id":id, "potentiallyVisible":visible, "screen":[point.x, point.y]}
+    if session.story_director.gestures.has(id):
+     var gesture: RefCounted = session.story_director.gestures[id]
+     entry["pose"] = gesture.pose
+     entry["age"] = gesture.age
+     entry["joints"] = {}
+     for joint: String in ["armUpperR", "forearmR", "handR", "handL"]:
+      var node: Node3D = actor.nodes[joint]
+      var p := node.global_position
+      var q := node.quaternion
+      entry.joints[joint] = {"position":[p.x, p.y, p.z], "quaternion":[q.x, q.y, q.z, q.w]}
+    story_trace.append(entry)
+   motion.store_line(JSON.stringify({"frame":index,"story":story_trace}))
   var error := root.get_texture().get_image().save_png(output.path_join("%06d.png" % index))
   if error != OK:
    push_error("Trailer frame write failed")
@@ -109,5 +130,6 @@ func run() -> void:
   if limit > 0 and index >= limit: break
   await process_frame
  file.close()
+ if motion != null: motion.close()
  print("TRAILER_CAPTURE_OK ", shot.id, " frames=", index)
  quit(0)

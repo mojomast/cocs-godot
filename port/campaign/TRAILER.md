@@ -4,7 +4,13 @@
 
 The trailer is rendered video. The menu uses a **live in-engine scripted replay**;
 the owner canceled the earlier Theora menu-video plan.
-**Completed:** `/home/mojo/.tmp-on-disk/cocs-trailer-evidence-20260930/quiet-relay-trailer.mp4`.
+**Latest, gesture-corrected v2:**
+`/home/mojo/.tmp-on-disk/cocs-trailer-evidence-20260930-r2/quiet-relay-trailer-v2.mp4`.
+48.000 seconds, 1,152 frames, H.264 960×540 / 24 fps, stereo AAC 48 kHz,
+15,661,031 bytes. SHA-256:
+`287f501c68e6df26d86064d0eedb9c7868fba6050613905ead32e5bf05dbe939`.
+
+**Archived v1 (preserved):** `/home/mojo/.tmp-on-disk/cocs-trailer-evidence-20260930/quiet-relay-trailer.mp4`.
 48.000 seconds, 1,152 frames, H.264 960×540 / 24 fps, stereo AAC 48 kHz,
 15,639,711 bytes. SHA-256:
 `28740c780f71ef88efbdfba94955e8492801e9c9085d937eac3551debb97c1f1`.
@@ -199,3 +205,74 @@ Useful extracted media in the evidence directory: `final-contact-sheet.png`,
 `poster.png`, `pet-confirmed.png`, `melee-confirmed.png`,
 `artillery-confirmed.png`, `end-frame.png`. These are actual decoded MP4 frames.
 No Theora/menu video was generated or installed.
+
+## Gesture revision (v2)
+
+The published v1 master above is preserved. Revised footage and review evidence
+live in `/home/mojo/.tmp-on-disk/cocs-trailer-evidence-20260930-r2/`; the revised
+output is named `quiet-relay-trailer-v2.mp4`.
+The completed v2 fully decodes and measures -16.03 LUFS / -2.20 dBTP / LRA
+4.80 LU. Its AAC stream is byte-identical to v1 (stream MD5
+`d1370d360c4b3ac19dc70dddb69bd098`). Both the v1 master SHA-256 and the retained
+source PNG hashes were checked after v2 assembly. Final decoded hold/settled
+NPC frames and the ending were inspected in addition to the motion previews.
+
+The visible problem was confirmed against multiple v1 Mara frames: the hand
+kept moving beside/in front of the face while the arm remained raised. The old
+story director sampled `sin(Time.get_ticks_msec() * 0.009)` forever. A slow
+fixed-frame capture therefore sampled unrelated wall-clock wave phases. Its
+negative right-shoulder roll also directed the hand inward. Point/work poses
+inherited armed ADS/crouch channels before the gesture override.
+
+`campaign/story_gesture.gd` now owns unarmed story performance, shared by campaign,
+live menu and trailer. It provides finite greeting, pointing and service-board
+inspection gestures with anticipation, hold and settling. The greeting uses one
+small wrist acknowledgment while the elbow holds, with positive right-shoulder
+abduction to keep the palm outside the face. All finish in a relaxed unarmed
+pose. Quiet breathing/head motion and the production planted-foot walking solver
+remain. Pose changes blend from the exact displayed pose; repeated snapshots do
+not restart animation. Every transform is assigned absolutely from the analytic
+delta-time clock, never multiplied onto the previous frame or driven by wall time.
+Puppy petting still depends on the accepted authority reaction serial.
+
+Selective recapture is evidence-driven: `trailer-gesture-audit.py` evaluates all
+v1 camera paths against a conservative 1.5m operator sphere and the director's
+visibility distance, ignoring occlusion. Mara, Ivo, Patch and FP fire were
+recaptured (432 frames), including possible peripheral/background operators.
+The nine other shots reuse their 720 exact v1 PNGs. `reused-v1.json` stores their
+hashes and makes the capture runner refuse to overwrite them. The authority
+replays/receipts are copied byte-for-byte; this is a renderer correction, not a
+claim of new authority tests for old footage. `capture-provenance.json` records
+the distinction and the published v1 master is never overwritten.
+
+Verification:
+- `story_gestures.gd`: 7,615 passing checks, including actual imported rig chunk
+  invariance, finite joint angles, interruption continuity, planted feet, snapshot
+  repetition, no cumulative transforms, unarmed poses and controller cleanup.
+- Existing `story_presentation.gd` passes, including puppy serial behavior.
+- Actual three-second Mara and Ivo captures were inspected as timed motion strips
+  showing rest → raise → hold → settle. Each has 72 frames, a strict 1/24s clock,
+  and 16 settled frames after 2.35s with constant shoulder rotation. Maximum
+  rendered hand step is 0.08836m (24fps); no wall-clock phase jumps remain.
+- Focused real-menu graphical spot check: 12/12; the same finite controller
+  settles beneath the visible functional menu. The full menu lifecycle suite
+  remains owned by the menu integration lane and was not repeated here.
+
+Shareable motion previews: `mara-gesture-v2.gif`, `ivo-gesture-v2.gif`,
+`mara-gesture-strip.png`, `ivo-gesture-strip.png`. The strips are timestamped
+crops of actual captured frames; the GIFs contain the three-second animations.
+`motion.jsonl` in recaptured shot directories records pose ages, joint positions
+and quaternions for inspection; `gesture-motion-measurements.json` summarizes them.
+
+```bash
+GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64
+R2=/home/mojo/.tmp-on-disk/cocs-trailer-evidence-20260930-r2
+LP_NUM_THREADS=1 "$GODOT_BIN" --headless --path godot --script res://tests/campaign/story_gestures.gd
+LP_NUM_THREADS=1 "$GODOT_BIN" --headless --path godot --script res://tests/campaign/story_presentation.gd
+COCS_ATTRACT_EVIDENCE="$R2/menu-spot" LP_NUM_THREADS=1 xvfb-run -a "$GODOT_BIN" --path godot --rendering-method gl_compatibility --audio-driver Dummy --fixed-fps 24 --script res://tests/campaign/trailer_gesture_menu.gd
+# Render only affected shots into empty, non-reused frame directories.
+LP_NUM_THREADS=1 GODOT_BIN="$GODOT_BIN" xvfb-run -a node tools/godot-campaign/trailer-capture.mjs --render --slot-granted --shot=mara --output="$R2"
+# Repeat for ivo, patch, fire, then assemble the complete 48-second v2 master.
+node tools/godot-campaign/trailer-sfx-cues.mjs --evidence="$R2"
+python3 tools/godot-campaign/trailer-edit.py --evidence="$R2" --stems=godot/audio/music/orchestral --sfx="$R2/sfx-cues.json" --execute --slot-granted --name=quiet-relay-trailer-v2
+```

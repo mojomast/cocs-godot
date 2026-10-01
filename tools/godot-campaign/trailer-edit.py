@@ -23,7 +23,10 @@ def main():
     p.add_argument('--execute', action='store_true')
     p.add_argument('--slot-granted', action='store_true')
     p.add_argument('--reuse-picture', action='store_true', help='Reuse already-reviewed picture intermediates for audio-only remaster')
+    p.add_argument('--name', default='quiet-relay-trailer', help='Output basename, without extension')
     args = p.parse_args()
+    if not args.name or any(c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_' for c in args.name):
+        p.error('--name must be an alphanumeric basename')
     if args.execute and not args.slot_granted:
         p.error('Encoding requires exclusive heavy-slot grant')
     out = args.evidence.resolve()
@@ -146,7 +149,7 @@ def main():
         (work / 'loudness-measured.json').write_text(json.dumps(values, indent=2))
     else:
         commands.append('# Execution inserts measured two-pass loudnorm values from loudness-pass1.log')
-    public = out / 'quiet-relay-trailer.mp4'
+    public = out / (args.name + '.mp4')
     run(['-i', silent, '-i', mix, '-map', '0:v:0', '-map', '1:a:0', '-c:v', 'copy',
          '-af', norm, '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-t', total, '-movflags', '+faststart', public])
 

@@ -25,6 +25,8 @@ await writeFile(join(out,'edit-manifest.json'),JSON.stringify(manifest,null,2));
 for(const shot of shots){
  const directory=join(out,shot.id), replay=join(directory,'replay.jsonl');
  await mkdir(directory,{recursive:true});
+ const retained=await readFile(join(directory,'reused-v1.json'),'utf8').catch(()=>null);
+ if(retained)throw Error(`${shot.id}: immutable reused evidence; recapture into a new empty directory`);
  if(args.includes('--prepare')){
   const {createTrailerFixture}=await import('./trailer-fixture.mjs');
   const fixture=createTrailerFixture(shot,manifest.seed),file=await open(replay,'w');
