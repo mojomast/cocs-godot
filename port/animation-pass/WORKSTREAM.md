@@ -34,6 +34,12 @@ Both agents use `openai/gpt-6.1-sol`, explicitly selected for the owner's reques
 
 ## Acceptance
 
+Subsequent owner feedback adds an Astra edge-hit/impact-mark/weapon-shader lane;
+see `port/edge-effects/WORKSTREAM.md`. Physics Sol retains its current engine
+grant and completes native animation acceptance first. Astra begins with code
+and source tests, preserving animation changes, then receives the next engine
+slot. Combined release includes verified results from both workstreams.
+
 Actor commit `d4d23766` is integrated as `c37224e2`. Parent reviewed the overview
 and close cast contact sheets. Operator/robot/gesture/Patch locomotion now uses
 contact-aware procedural motion and bounded springs; source-fire acceptance
