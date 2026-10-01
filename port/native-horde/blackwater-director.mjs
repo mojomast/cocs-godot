@@ -1,6 +1,7 @@
 // Local-authority mission overlay. No protocol frame can set phase or progress;
 // server proximity + a real input pulse arm each station. Source owns waves,
 // combat, lives, victory, upgrade offers and map gates.
+import {resupplyHorde} from '../../game/singleplayer.mjs';
 const STATIONS=Object.freeze([
  {id:'north-feeder',x:-170,z:78,seconds:5,wave:1,caption:'NORTH FEEDER · HOLD POSITION'},
  {id:'south-feeder',x:-82,z:-78,seconds:5,wave:1,caption:'SOUTH FEEDER · HOLD POSITION'},
@@ -28,10 +29,12 @@ export class BlackwaterDirector{
   this.progress[station.id]=Math.min(station.seconds,this.progress[station.id]+dt);
   if(this.progress[station.id]<station.seconds)return;
   this.done.push(station.id);this.active=null;this.serial++;
-  // Public pickup state is the source pickup instance. The optional repair
-  // opens a genuine refill; no direct health, armor, score or win fabrication.
+  // Public pickup state is the source pickup instance. Completing the longer
+  // hold/valve also invokes the source's real resupply (including upgrade
+  // reapplication), rather than painting a cosmetic HUD success.
   const pickup=match.pickups.find(p=>Math.hypot(p.x-station.x,p.z-station.z)<48);
   if(pickup)pickup.wait=0;
+  if(station.id==='switch-pump'||station.id==='relief-valve')resupplyHorde(match,match.modeState);
   match.emit('blackwater-station-restored',{station:station.id,serial:this.serial,x:station.x,z:station.z,pickupId:pickup?.id??null});
  }
  snapshot(match){

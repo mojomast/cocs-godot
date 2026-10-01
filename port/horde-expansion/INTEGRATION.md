@@ -33,7 +33,9 @@ Blackwater uses the existing frozen-source `hordeArena` constructor intake and
 Horde stage gates. Authored bounds are 440 × 380 source units. The server-side
 director adds north/south feeder arming, a repair hold, and a relief valve;
 progress, objective dependency, cache opening and notices are included in each
-snapshot. Horde wave 3 and 6 transit gates are still wholly source-driven.
+snapshot. Pump and valve completion call the source's real `resupplyHorde` for
+health/armor/ammo and run-upgrade reapplication. Horde wave 3 and 6 transit
+gates are still wholly source-driven.
 This local Horde transport supports one human seat; no coop claim or simulated
 team contribution is made. Standard maps remain wave-survival without story
 objectives.
