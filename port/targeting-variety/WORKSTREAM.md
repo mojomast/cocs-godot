@@ -1,5 +1,15 @@
 # Targeting and level variety — second owner playtest pass
 
+## Published combined update
+
+https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01
+
+Runtime `1c1f6e34` includes targeting, authored interludes, both Sol animation
+lanes, Astra edge/decal/shader fixes and bounded campaign input flow. Both
+platforms passed 23 base + 44 expansion cases; Windows additionally passed three
+instrumented Crown starts. Initial canonical 333/337 and 4/4 focused repair
+evidence remain public. Current play instructions: `port/campaign/PLAY.md`.
+
 ## Goal
 
 The owner reports that enemies are difficult to hit, move too fast, and appear

@@ -6,6 +6,12 @@ targeting and campaign-variety pass before its combined release.
 
 ## Current status
 
+**PUBLISHED** in runtime `1c1f6e34`:
+https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01
+Windows and Linux each passed 67 package cases; Windows also passed three extra
+instrumented Crown starts. All agents/engine jobs are released. Earlier pending
+export/resource-grant notes below are retained history.
+
 **Both Sol lanes are integrated and have released Godot.** Final physics
 acceptance commit `cd15d7b3` is integrated as `c391b3d9`. The combined actor /
 physics build passed 23 native suites, including 18 physics and 52 world-animation

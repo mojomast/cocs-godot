@@ -182,3 +182,20 @@ an unready consumer rather than expanding queues. Any broader steady-state flow
 control would need explicit snapshot delivery acknowledgment; input ACKs acknowledge
 server-applied controls, not client-consumed snapshots. No production fix is made
 until parent coordination and the actual Windows transport evidence.
+# Follow-up resolution in runtime 1c1f6e34
+
+Original-launcher trace `36915750362` reproduced Crown failure as **Input queue
+limit**, with zero outgoing buffered bytes at the receive-path termination.
+Campaign client admission now uses a four-sample source-acknowledged window;
+pending action pulses are retained on backpressure. Cancellation and epoch reset
+release credit. Authority queue limit 16 and input TTL 250ms were not relaxed.
+
+Published replacement:
+https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01
+
+Windows full-suite `36936434712` passed all 67 cases with 21 transport trace files,
+and original-launcher diagnostic `36936475680` passed three additional Crown
+starts. Linux also passed all 67 cases. Controlled shutdown socket observations
+remain in the evidence. These observations support the captured FIFO repair;
+they do not establish that every possible startup condition is failure-free.
+Historical hypotheses and earlier unsuccessful observations below are retained.

@@ -1,5 +1,20 @@
 # Edge hit detection, round impact marks and shader effects
 
+## Published
+
+https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01
+
+Runtime `1c1f6e34607cd1935629009dcfe2a9ae9316271a` is published for Windows and
+Linux. Both passed 23 base + 44 expansion package cases. Windows `36936434712`
+passed with 21 trace files; Crown repeats `36936475680` passed 3/3. All 1,647
+shared build inputs and generated resources match. Exported Linux graphical
+acceptance passed after test-only correction `95652f05` on unchanged archive.
+
+Public assets include checksums, `playtest-acceptance.json`, build comparison,
+retained canonical initial/focused and platform evidence, and labelled packaged
+screenshots. All engine/CI jobs are finished. The historical pending/grant notes
+below are superseded by this published status.
+
 Owner reports unreliable hit detection around edges and square borders on bullet
 holes, and requests an Astra subagent to repair both and add weapon effects and
 shaders. This extends the combined targeting/variety/animation update.

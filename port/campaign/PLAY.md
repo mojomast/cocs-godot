@@ -6,13 +6,18 @@ archive signal from the forest relay to the Crown Array. Each chapter targets
 
 ## Start
 
-[Download the combat-feel and multiplayer expansion playtest (Windows / Linux)](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-feel-expansion-2026-10-01).
-Build `091b1333` includes the balance, movement, weapon-feedback and F3 cheat-menu
-improvements below. Both platforms passed 23 base and 44 expansion package cases.
-Two earlier Windows attempts disconnected at Crown startup; the unchanged ZIP
-passed the complete third run. The cause remains unresolved. Release notes and
-`playtest-acceptance.json` preserve all attempts. The [earlier campaign build](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-playtest-2026-10-01)
-remains available unchanged.
+[Download the targeting, animation and effects playtest (Windows / Linux)](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01).
+Runtime **`1c1f6e34`** includes all balance/F3 controls below, corrected robot and
+building-edge targeting, faster projectiles, more deliberate enemies, eight
+optional activities, improved animation, round impact marks and new shaders.
+Both platforms passed **23 base + 44 expansion package cases**. Windows passed
+the full suite with transport traces and three additional Crown starts. Campaign
+input flow addresses the input-queue overflow captured from the preceding build.
+Release notes and `playtest-acceptance.json` preserve results and limitations.
+
+The [previous feel-expansion build](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-feel-expansion-2026-10-01)
+and [original campaign build](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-playtest-2026-10-01)
+remain available unchanged.
 
 - **Windows package:** extract the whole ZIP, then run **`Campaign.cmd`**.
 - **Either platform:** open **The Quiet Relay** from Home to choose a chapter
@@ -32,6 +37,29 @@ Add `--map=<id>` to start a specific chapter, or `--difficulty=easy` / `hard`.
 The default is Rootfall Verge on normal difficulty. At a chapter's exit, choose
 **Continue** to move to the next map. Continue after Crown Array resolves the
 ending.
+
+## New targeting, animation and optional activities
+
+Robots now have hit regions fitted to their visible bodies and more deliberate
+movement, including planted attack windows. Plasma travels at 138m/s, rockets at
+60m/s and grenades at 36m/s. Campaign weapon cover follows actual building facades;
+movement still uses conservative structure bounds. Bullet impacts have round
+coverage, with material-specific bursts and more distinct energy/explosion effects.
+
+Look for two optional workshops per chapter. Approach their controls and use
+fresh **E** presses as prompted: reconnect machinery, face and align a receiver,
+or select one of two resource allocations. Restored machinery changes visibly;
+rewards are granted once and remembered across Retry. These are all skippable.
+
+- **Rootfall:** seed nursery and canopy receiver.
+- **Siltwake:** waterwheel and ferry salvage.
+- **Emberline:** condenser and field forge.
+- **Crown:** signal choir and beacon garden.
+
+Operator/robot gait, Mara/Ivo gestures and Patch reactions are smoother and more
+grounded. Bounded springs add weapon inertia, recoil recovery and landing response;
+they do not delay aiming. Existing reduced-motion and effects-quality controls
+apply to the added effects.
 
 ## Objectives and recovery
 
@@ -53,7 +81,7 @@ Normal starts with **140 health / 60 armor**. After three damage-free seconds,
 health recovers even while returning fire; after five seconds armor recovers to
 40. Nearby robot kills restore up to 8 health / 6 armor. Easy grants more reserves
 and fewer overlapping attackers; Hard tightens recovery and attack pressure.
-These changes are included in build `091b1333`.
+These recovery changes were introduced in `091b1333` and remain in `1c1f6e34`.
 
 ## In-game cheats
 
@@ -72,7 +100,7 @@ Press **F3**, **Esc**, or **Resume game** to return to play. Enabled cheats are
 shown on the HUD. Toggle choices carry across campaign chapter/retry transitions
 within the connected session and reset on a new connection. The same menu is
 available in ordinary solo Horde launches. These controls are included in the
-linked `091b1333` playtest; the older `614e11ad` package predates them.
+linked `1c1f6e34` playtest and preceding `091b1333`; the older `614e11ad` package predates them.
 
 ## People along the relay
 

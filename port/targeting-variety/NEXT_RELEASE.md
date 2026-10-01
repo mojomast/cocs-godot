@@ -1,7 +1,10 @@
-# Combined playtest — pending verification and packaging
+# Combined playtest — published runtime 1c1f6e34
 
-This is the draft change inventory for the next Windows/Linux playtest. Public
-runtime `091b1333` remains available; this document does not announce a new build.
+Published: https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01
+
+Both platforms passed 23 base + 44 expansion cases. Windows full suite
+`36936434712` includes transport tracing; `36936475680` passed three additional
+Crown starts. Previous `091b1333` archives remain unchanged.
 
 ## Targeting and combat responsiveness
 
@@ -49,9 +52,11 @@ have distinct bounded effects. Existing quality and reduced-motion controls appl
 ## Evidence and remaining acceptance
 
 Lane source/native/render tests and the animation real-wire scripted journey
-passed. Parent combined canonical, fresh exports and extracted Windows/Linux
-verification are required before publishing. Existing failures/evidence stay
-preserved. Source movement still uses conservative campaign structure bounds;
+passed. Combined canonical passed 333/337 initially, followed by 4/4 focused
+fixture repairs. Both fresh platform exports passed all 67 package cases. The
+exported Linux graphical fixture passed after an external pixel-proof correction;
+the archive was unchanged. Existing failures/evidence are public release assets.
+Source movement still uses conservative campaign structure bounds;
 weapon cover is more precise. Tiny bevel contacts may omit a scar. Human chapter
 timing, subjective play feel and hardware performance are not established by
 software-rendered fixtures. Full Blackwater chain/Warden acceptance remains open.
