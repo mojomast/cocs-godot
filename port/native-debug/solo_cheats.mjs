@@ -85,7 +85,7 @@ export function attachSoloCheats(match, preferences = soloCheatPreferences()) {
     state,
     apply({action,enabled}) {
       const actor = player();
-      if (!actor || actor.health <= 0 || match.over) return false;
+      if (!actor || ((actor.health <= 0 || match.over) && !(action==='pause'&&enabled===false&&state.paused))) return false;
       if (TOGGLES.includes(action)) {
         if (action === 'flight' && enabled && !state.flight) takeoff = pose(actor);
         if (action === 'flight' && !enabled && state.flight) {setPose(actor,landing(actor));actor.grounded=true;}

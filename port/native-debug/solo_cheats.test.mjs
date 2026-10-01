@@ -8,6 +8,15 @@ import {deployEncounter} from '../native-campaign/enemies.mjs';
 import {attachSoloCheats, parseSoloCheat, soloCheatPreferences} from './solo_cheats.mjs';
 
 const make = () => createCampaignMatch({random:()=>.5});
+test('a dead solo actor cannot enable cheats but can release an existing pause',()=>{
+  const match=make(),cheats=attachSoloCheats(match);
+  cheats.apply({action:'pause',enabled:true});
+  match.actors[0].health=0;
+  assert.equal(cheats.apply({action:'heal'}),false);
+  assert.equal(cheats.apply({action:'flight',enabled:true}),false);
+  assert.equal(cheats.apply({action:'pause',enabled:false}),true);
+  assert.equal(cheats.state.paused,false);
+});
 test('disabled solo cheats leave the source campaign simulation unchanged', () => {
   const baseline=make(), wrapped=make();
   attachSoloCheats(wrapped);

@@ -269,7 +269,10 @@ func _pose() -> void:
 		if model_id == "warden" and i < 2: rig.legs[i].rotation.x -= tell_strength * 0.42
 		rig.knees[i].rotation.x = maxf(0, cos(phase)) * 0.32 * stride - collapse * 0.6
 	if rig.shield != null: rig.shield.rotation.x = -tell_strength * 0.2 + collapse * 0.45 + (0.9 if float(snapshot.get("campaignExposed", 0)) > 0 else 0.0)
-	optic_material.emission_energy_multiplier = 0.0 if dead else 0.65 + tell_strength * 1.5
+	# A short sensor flare accompanies confirmed chassis loss; an exposed core
+	# stays cool-colored for exactly the authority's punish window.
+	optic_material.emission = Color("b8edff") if float(snapshot.get("campaignExposed", 0)) > 0 else Color("ff773b")
+	optic_material.emission_energy_multiplier = 0.0 if dead else 0.65 + tell_strength * 1.5 + hit_reaction * 2.0
 
 func kick(amount: float = 1.0) -> void:
 	recoil = maxf(recoil, clampf(amount, 0, 2))

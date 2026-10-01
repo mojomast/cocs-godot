@@ -750,7 +750,6 @@ func on_snapshot(frame: Dictionary) -> void:
 	var now: float = Time.get_ticks_usec() / 1000000.0
 	var authority_velocity := Vector3.INF
 	if selected_mode == "campaign":
-		var actor: Dictionary = presentation.local_actor
 		authority_velocity = Vector3(float(actor.get("vx", 0)), float(actor.get("vy", 0)), float(actor.get("vz", 0)))
 	local_motion.ingest(eye, presentation.lifecycle.can_control(), now, local_motion_source_time(frame.state), authority_velocity)
 	apply_local_snapshot_pose(eye, now, reseeded)

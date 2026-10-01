@@ -119,6 +119,15 @@ func run() -> void:
 		actor.erase("artilleryWindup")
 		robot.apply_actor(actor)
 		check(robot.tell_strength == 0 and robot.recoil >= 0.7, "role cradle settles")
+		actor.health = 80
+		robot.apply_actor(actor)
+		robot.advance(0.01)
+		check(robot.hit_reaction > 0 and robot.optic_material.emission_energy_multiplier > 0.65, "confirmed damage produces sensor flare")
+		actor.campaignExposed = 0.5
+		robot.apply_actor(actor)
+		robot.advance(0.01)
+		check(robot.optic_material.emission == Color("b8edff"), "authority punish window reveals cool core")
+		actor.erase("campaignExposed")
 		actor.health = 0
 		robot.apply_actor(actor)
 		robot.advance(0.65)

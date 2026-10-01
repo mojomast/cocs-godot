@@ -15,6 +15,8 @@ var pending := false
 var pending_age := 0.0
 var requested_revision := -1
 var want_open := false
+var pending_frame: Dictionary = {}
+var pending_retries := 0
 
 func bind_session(owner: Node) -> void:
 	session = owner
@@ -120,7 +122,10 @@ func resize() -> void:
 	panel.position = (viewport - panel.size) * 0.5
 
 func available() -> bool:
-	return is_instance_valid(session) and session.phase == 3 and state.get("available") == true
+	return is_instance_valid(session) and session.phase == 3 and state.get("available") == true and (living_player() or state.get("paused", false))
+
+func living_player() -> bool:
+	return is_instance_valid(session) and float(session.presentation.local_actor.get("health", 0)) > 0
 
 func toggle_menu() -> void:
 	if pending or not available() or Settings.overlay_open(): return
@@ -132,7 +137,7 @@ func toggle_menu() -> void:
 	send_command("pause", want_open)
 
 func send_command(action: String, value: Variant = null) -> void:
-	if pending or not available():
+	if pending or not available() or (not living_player() and not (action == "pause" and value == false)):
 		refresh()
 		return
 	var frame := {"type":"solo-cheat", "v":1, "action":action, "inputEpoch":session.client.input_epoch}
@@ -143,6 +148,8 @@ func send_command(action: String, value: Variant = null) -> void:
 	pending = true
 	pending_age = 0.0
 	requested_revision = int(state.get("revision", 0))
+	pending_frame = frame.duplicate(true)
+	pending_retries = 0
 	refresh()
 
 func observe(frame: Dictionary) -> void:
@@ -156,14 +163,22 @@ func observe(frame: Dictionary) -> void:
 			if available() and session.application_focused and not Settings.overlay_open():
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 				session.combat_actions.captured()
+	elif pending and pending_retries < 3 and session.client.input_epoch > int(pending_frame.get("inputEpoch", 0)):
+		# Wait for the snapshot before retrying: our own pause acknowledgment also
+		# changes epochs, but carries a newer revision and is handled above.
+		# A genuinely stale command remains rejected by the authority. Re-send
+		# only this current UI intent after observing its new input boundary.
+		pending_frame.inputEpoch = session.client.input_epoch
+		pending_retries += 1
+		session.client.send_frame(pending_frame)
 	refresh()
 
 func refresh() -> void:
 	launcher.disabled = not available()
 	for key: String in toggles:
 		toggles[key].set_pressed_no_signal(state.get(key, false) == true)
-		toggles[key].disabled = pending or not available()
-	for button: Button in actions: button.disabled = pending or not available()
+		toggles[key].disabled = pending or not available() or not living_player()
+	for button: Button in actions: button.disabled = pending or not available() or not living_player()
 	resume.disabled = pending or not available()
 	status.text = "Applying…" if pending else ("Paused · " + str(state.get("notice", ""))).strip_edges()
 	var labels: Array[String] = []
@@ -185,6 +200,7 @@ func _process(delta: float) -> void:
 		if pending_age > 4.0:
 			pending = false
 			want_open = state.get("paused", false) == true
+			overlay.visible = want_open
 			refresh()
 			status.text = "No confirmation yet. Check the connection and try again."
 	if is_instance_valid(session) and session.phase != 3 and overlay.visible:
