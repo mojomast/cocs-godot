@@ -292,3 +292,12 @@ correction; the menu cut omits promotional title overlays.
 Both initially edit only while music audition holds the heavy slot. The trailer
 must feature terrain, combat, operator NPCs, petting Patch, robots and the finale,
 with authored text overlays and documented scripted in-engine footage.
+
+Music preview completed: the four stems are committed in `5258591d` with explicit
+uncompressed PCM import settings. Score-form and menu rapid-lifetime tests pass.
+Actual Godot/PulseAudio 72-second audition passes at 44.1 kHz stereo with no
+dropped capture frames. A linearly level-adjusted MP3 (roughly -16 LUFS, dynamics
+retained) and raw WAV are published on the development gallery release. Evidence:
+`orchestral-score/audition-results-4.json`, `quiet-relay-orchestral-preview.wav.json`
+and `mp3-linear-encode.log`. Earlier parse/import/audio-server failures are retained.
+Music quality remains subject to the owner's listening feedback.

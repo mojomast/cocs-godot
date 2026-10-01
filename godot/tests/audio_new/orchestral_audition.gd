@@ -19,11 +19,17 @@ func _initialize() -> void:
 
 func begin() -> void:
  Buses.ensure()
- assert(AudioServer.get_driver_name() != "Dummy", "use a real audio driver for audition")
+ if AudioServer.get_driver_name() == "Dummy":
+  push_error("Use a real, paced audio driver for audition")
+  quit(1)
+  return
  var script: Script = load(legacy if not legacy.is_empty() else "res://audio/music_service.gd")
  score = script.new()
  root.add_child(score)
- assert(score.error.is_empty(), score.error)
+ if not score.error.is_empty():
+  push_error(score.error)
+  quit(1)
+  return
  score.set_settings({"music_volume":100,"music_enabled":true,"announcer_enabled":false,"mute":false})
  score.set_mode_theme("campaign")
  score.set_seed(42)
