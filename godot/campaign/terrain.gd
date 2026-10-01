@@ -9,6 +9,7 @@ const BiomeVisual = preload("res://biomes/map.gd")
 const SURFACE = preload("res://biomes/surface.gdshader")
 const FOLIAGE = preload("res://biomes/foliage.gdshader")
 const StructureArt = preload("res://campaign/structure_art.gd")
+const EnvironmentArt = preload("res://campaign/environment_art.gd")
 var recipe: Dictionary = {}
 var materials: Dictionary = {}
 var heights: Dictionary = {}
@@ -85,6 +86,10 @@ func build(id: String) -> bool:
 	structures.build(self)
 	_build_art()
 	_build_horizon()
+	var biome_art := EnvironmentArt.new()
+	biome_art.name = "CampaignEnvironmentArt"
+	add_child(biome_art)
+	biome_art.build(self)
 	return true
 
 func height_at(x: float, z: float) -> float:

@@ -501,3 +501,90 @@ Nine public assets with prefix `robot-blender-` are on the development gallery:
 matched comparison, lineup, six closeups and the ten-second Warden animation.
 Original/first-pass/diagnostic renders remain preserved. Parent owns the heavy
 slot for import and final integrated acceptance with the corrected assets.
+
+## Parallel Sol Blender world fidelity work
+
+The owner expanded the task to **parallel Sol subagents** using Blender for
+single-player map, structure and asset fidelity. The older canonical run at
+`78f770c0` is intentionally interrupted after **93/301 gates, zero failures**;
+208 gates are unrun. Its reports and interruption reason are preserved in
+`canonical-78f770c0/`. Final verification follows the new world art integration.
+
+- Architecture: `campaign/blender-structures`, session
+  `ses_f0aa034f5ffei0zMTa7jQeNF1F`, worktree
+  `/home/mojo/.tmp-on-disk/cocs-blender-structures-20260930`. Owns original
+  Blender modular structures, `structure_art.gd`, structural GLBs/source assets,
+  tests, and its single integration hook in `campaign/terrain.gd`.
+- Biome/environment: `campaign/blender-environment`, session
+  `ses_f0aa034d2ffeiVza812xj2A21Z`, worktree
+  `/home/mojo/.tmp-on-disk/cocs-blender-environment-20260930`. Owns natural props,
+  campaign-local surface detail, `environment_art.gd`, GLBs/source assets and
+  tests. Parent adds its terrain hook after merge to avoid concurrent file edits.
+
+Both lanes target all four chapters with matched player-height/vista evidence,
+editable Blender sources, game-ready instanced/LOD assets and route-safe staging.
+Authoritative terrain, collision, navigation, objectives and character animation
+contracts stay intact. Blender export may run in parallel at **one thread/process
+per lane**; architecture has the first exclusive Godot import/render slot.
+Environment waits for explicit Godot handoff. Parent starts no competing heavy
+verification/builds. The current public trailer and galleries predate this work.
+
+The owner added a **third Sol lane for better, more unique weapons**:
+`campaign/blender-weapons`, session `ses_f0a9d2847ffe27Qc82NglxKMXL`, worktree
+`/home/mojo/.tmp-on-disk/cocs-blender-weapons-20260930` from `78f770c0`.
+It owns original Blender weapon art for the complete player arsenal, first-person
+and world presentation, preserving IDs, gameplay, muzzle/ADS/grip/reload anchors,
+finishes and source-export provenance. It must provide actual rendered normal/
+ADS comparisons and animation checks with editable source models.
+
+Weapon work begins with inspection/design/code while the first two lanes hold
+the two single-thread Blender export slots. Parent grants weapon generation when
+one is released. Godot rendering remains serialized: architecture first,
+environment next, then weapons, unless explicitly reassigned. All three agents
+work concurrently in isolated worktrees; no parent heavy verifier/build runs.
+
+Environment lane delivered edit/export checkpoint `41817d5a`: fifteen editable
+Blender sources and compact GLBs, a four-biome decorator and campaign ground
+shader. Import, runtime acceptance and actual before/after renders are pending
+its Godot slot. Parent static review requests full prop-footprint/flank clearance,
+safe replacement only after valid mesh loading, horizon preservation and actual
+material-surface draw counts. The checkpoint remains unmerged until verification.
+Its Blender export slot is released and explicitly granted to the weapon lane;
+architecture retains the current Godot slot, environment is next.
+
+Architecture first pass `16985275` supplies eight fitted two-LOD Blender kits,
+136 replaced block visuals and reported passing structure/terrain checks.
+Parent reviewed player-height captures and requested stronger visible separation
+between kit families: the initial shared vented facade repeats too uniformly,
+especially on stacked tall blocks, and roof-specific details are partly hidden
+under common caps. The lane is refining continuous base/body/top forms and
+distinct pump/abutment/refinery/receiver silhouettes before acceptance.
+
+Environment now has the explicit exclusive Godot slot for import, tests and
+four-biome rendering. Weapon generation continues on one Blender slot; architecture
+may regenerate the refinement on the second single-thread Blender slot but awaits
+Godot permission. Parent keeps `16985275` unmerged pending that visual refinement.
+
+Architecture refinement export `09017079` is ready: distinct family forms and
+base/shaft/top profiles, forty bounded GLBs with editable sources. This is an
+export checkpoint, not rendered acceptance. Parent requested a static coverage
+check so every runtime-selected profile resolves to a GLB (relay/outpost currently
+have top-only exports) and updated tests for the new naming/budgets. Environment
+still owns Godot; weapon rendering is next, with structural-refinement checks
+afterward unless weapon generation is not ready when the slot becomes free.
+
+Environment acceptance completed and merged with its tested first-pass architecture
+dependency: `16985275` → `60179f97`; environment `41817d5a`, `d990a65a`,
+`a382fb03`, `c1e497e4` → `32ae99a9`, `67076f90`, `6b1c3f50`, `8e3e6e87`.
+All-four-map environment, terrain and structure checks passed in that lane;
+parent reviewed the combined comparison/detail sheets. Collision/route heights
+are unchanged, with safe whole-batch replacement, footprint screening, imported
+materials and root placement correction. Structure refinement `09017079` plus
+profile coverage `aa81b235` remain queued for rendered acceptance before merge.
+Both world-art contracts are registered in the canonical verifier.
+
+Weapon lane now has the exclusive Godot import/render slot. Environment has
+released it; architecture refinement waits for weapons to finish. Parent avoids
+competing engine/build work. Combined final galleries and trailer refresh follow
+the accepted structure and weapon revisions rather than publishing intermediate
+architecture as the finished result.

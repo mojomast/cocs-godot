@@ -1,0 +1,20 @@
+# Campaign biome scenery
+
+Run `LP_NUM_THREADS=1 /path/to/blender -b -t 1 --python tools/godot-campaign/environment-art/build.py` from the repository root to regenerate 15 editable `.blend` files and their compact `.glb` runtime exports. All assets are independently modeled meshes with physically based, texture-free material slots, ground origin and unit-scale bounds. Blender source is kept next to the generator; no proprietary source files or downloaded art.
+
+Biome mapping: Rootfall = forked trees, roots, serrated ferns, mossy shoulders and fallen logs; Siltwake = reeds/cattails, wet stones and riverbank cobbles; Emberline = scrub, low basalt and slag/industrial remnants; Crown = wind-clipped trees, dry grass, lichen boulders and weathered technological scraps. The terrain shader adds continuous ground weathering and gently breaks up hard trail and stone color transitions, without changing the triangle mesh.
+
+## Production hook for terrain owner
+
+`godot/campaign/terrain.gd` calls the decorator immediately after `_build_horizon()` in `build(id)` and before `return true`:
+
+```gdscript
+var biome_art := preload("res://campaign/environment_art.gd").new()
+biome_art.name = "CampaignEnvironmentArt"
+add_child(biome_art)
+biome_art.build(self)
+```
+
+This decorator identifies **only** recipe tree, fern and crag MultiMesh batches by their existing `instance_transforms` metadata and an exact recipe-position lookup (Godot auto-names repeated chunk nodes, so node names are unreliable). It hides each original visual batch only after confirming every transform matches the recipe within the playable arena and an intact Blender mesh with material slots is available. Mixed edge/horizon batches remain wholly visible. It recreates the batch at its exact transform positions. It preserves skyline trees beyond the playable bounds, authored relay/bridge/pump facilities, block visuals, authoritative surfaces, water and every collision shape. Do not also draw primitive foliage/crags from those successfully replaced batches after this hook. The decorator is a child so terrain's existing rebuild child cleanup removes it naturally. The imported GLB meshes retain their own Blender-authored material slots and batch by 32 m chunk and kind. Small accent candidates are screened against the full rotated footprint, navigation/flank waypoints, spawn and pickup sites, cover blocks, mission anchors and the critical route.
+
+Production validation: `godot --headless --path godot --script res://tests/campaign/environment_art.gd`. This test builds every terrain recipe with its decorator, checks collision and height invariance, placement clearance, bounds, and batched draw-call budget. `godot/tests/campaign/environment_art_capture.gd` captures player-height, ridge, vista, and detail views from all four worlds.
