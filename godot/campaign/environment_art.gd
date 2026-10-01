@@ -38,6 +38,7 @@ func build(host: Node3D) -> void:
 		ground.set_shader_parameter("stone_color", Color(str(palette[2])))
 		ground.set_shader_parameter("weather_color", Color(str(palette[4])).darkened(.32))
 		ground.set_shader_parameter("moisture", 1.0 if index == 1 else .25 if index == 0 else .05)
+		ground.set_shader_parameter("biome_index", index)
 	var selected: Dictionary = BIOMES[index]
 	# Only touch precisely identified original scenery batches carrying the terrain
 	# builder's CPU transform mirror. Preserve horizon trees outside play bounds.

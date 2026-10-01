@@ -1,6 +1,5 @@
 extends SceneTree
 const Terrain = preload("res://campaign/terrain.gd")
-const EnvironmentArt = preload("res://campaign/environment_art.gd")
 
 func _initialize() -> void:
 	call_deferred("run")
@@ -16,10 +15,11 @@ func run() -> void:
 		for point: Vector2 in locations: baseline.append(host.height_at(point.x,point.y))
 		for node in host.get_children():
 			if node is StaticBody3D: original_solids += 1
-		var visual := EnvironmentArt.new()
-		host.add_child(visual)
-		visual.build(host)
-		assert(visual.replacement_instances > 200, id + " missing authored scenery")
+		var visual: Node3D = host.get_node("CampaignEnvironmentArt")
+		var expected_replacements := 0
+		for prop: Dictionary in host.recipe.art:
+			if prop.kind in ["tree","fern","crag"]: expected_replacements += 1
+		assert(visual.replacement_instances == expected_replacements, id + " missing or duplicated authored scenery")
 		assert(visual.accent_instances > 0 and visual.accent_instances < 100, id + " accent budget")
 		assert(visual.batch_count < 280 and visual.surface_draws < 850, id + " excessive surface draws")
 		assert(visual.triangle_instances > visual.replacement_instances and visual.triangle_instances < 550000, id + " triangle budget")
@@ -32,6 +32,8 @@ func run() -> void:
 		for child in visual.get_children():
 			assert(child is MultiMeshInstance3D and child.multimesh.instance_count > 0)
 			assert(child.multimesh.custom_aabb.has_volume())
+			for transform: Transform3D in child.get_meta("instance_transforms"):
+				assert(child.multimesh.custom_aabb.encloses(transform * child.multimesh.mesh.get_aabb()), id + " visual cull box clips imported GLB")
 			for surface in range(child.multimesh.mesh.get_surface_count()):
 				assert(child.multimesh.mesh.surface_get_material(surface) != null, id + " missing Blender material")
 			if child.name.begins_with("Accent_"):

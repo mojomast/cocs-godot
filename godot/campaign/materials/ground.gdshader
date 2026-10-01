@@ -5,6 +5,7 @@ uniform vec4 trail_color : source_color = vec4(.61,.66,.46,1.);
 uniform vec4 stone_color : source_color = vec4(.44,.51,.48,1.);
 uniform vec4 weather_color : source_color = vec4(.26,.34,.22,1.);
 uniform float moisture = 0.0;
+uniform int biome_index = 0;
 varying vec3 world_pos;
 varying vec2 blend_mask;
 float hash(vec2 p) { return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
@@ -28,6 +29,20 @@ void fragment() {
  base=mix(base,stone_color.rgb,rock*.9);
  float drainage=smoothstep(.58,.84,coarse)*(.45+.4*moisture)*(1.-trail*.6);
  base=mix(base,weather_color.rgb,drainage*.32);
+ float detail=0.;
+ if (biome_index == 0) {
+  // Interleaved patches of humus under the canopy, continuous across chunks.
+  detail=smoothstep(.51,.77,noise(p*.23+vec2(9.,17.)))*.19;
+ } else if (biome_index == 1) {
+  // Elongated, unequal silt deposits parallel to the channel.
+  detail=smoothstep(.43,.72,noise(vec2(p.x*.21,p.y*.057)+vec2(31.,-4.)))*.24;
+ } else if (biome_index == 2) {
+  // Broad cooled flows and fine oxidation along exposed shelves.
+  detail=smoothstep(.48,.77,noise(vec2(p.x*.10+p.y*.028,p.y*.14)))*.22;
+ } else {
+  detail=smoothstep(.57,.83,noise(p*.31+vec2(-12.,7.)))*.17;
+ }
+ base=mix(base,weather_color.rgb,detail*(1.-trail*.7));
  // Micro-aggregate variation and damp seams along slopes; continuous world-space mapping.
  base*=.86+coarse*.14+patches*.13+grains*.08;
  ALBEDO=base;

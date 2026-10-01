@@ -2,7 +2,6 @@ extends SceneTree
 ## Matched cameras from tests/campaign/terrain.gd, plus low asset-detail views.
 ## -- --render=/absolute/output/directory
 const Terrain = preload("res://campaign/terrain.gd")
-const EnvironmentArt = preload("res://campaign/environment_art.gd")
 
 func _initialize() -> void:
 	call_deferred("run")
@@ -49,9 +48,7 @@ func run() -> void:
 		var terrain := Terrain.new()
 		world.add_child(terrain)
 		assert(terrain.build(id))
-		var decorator := EnvironmentArt.new()
-		terrain.add_child(decorator)
-		decorator.build(terrain)
+		var decorator: Node3D = terrain.get_node("CampaignEnvironmentArt")
 		assert(decorator.replacement_instances > 200)
 		var recipe: Dictionary = terrain.recipe
 		var bounds: Dictionary = recipe.arena.bounds
