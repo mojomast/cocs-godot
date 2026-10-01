@@ -68,8 +68,16 @@ func _process(delta: float) -> bool:
 	var horde := mode == "horde"
 	var robots := []
 	if horde:
-		if last.get("hordeMapContract", {}).get("geometryHash") != expected_hash or state.get("blackwater", {}).get("version") != 1 or state.get("singleplayer", {}).get("wave") != 1:
+		if last.get("hordeMapContract", {}).get("geometryHash") != expected_hash or state.get("blackwater", {}).get("version") != 1:
 			push_error("EXPANSION_BLACKWATER_CONTRACT_MISMATCH")
+			quit(2)
+			return false
+		# The production authority starts with a seven-second wave-zero intermission.
+		# Keep the bounded deadline and wait for its ordinary wave-one transition.
+		var wave := int(state.get("singleplayer", {}).get("wave", -1))
+		if wave == 0: return false
+		if wave != 1:
+			push_error("EXPANSION_BLACKWATER_WAVE_MISMATCH")
 			quit(2)
 			return false
 		for actor: Dictionary in state.get("actors", []):

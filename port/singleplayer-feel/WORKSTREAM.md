@@ -2,6 +2,16 @@
 
 ## Current integration status
 
+Expansion follow-up: all 43 multiplayer pairs passed on the extracted Linux PCK.
+Blackwater initially failed because the external probe required wave one after
+three snapshots, during the normal seven-second wave-zero intermission. It now
+waits for ordinary wave one under its unchanged 35-second deadline. The focused
+packaged Blackwater rerun passed with 421 snapshots and three robot NPCs. The
+complete Linux platform verifier is running again for one final report, keeping
+all earlier failures. Draft release `quiet-relay-feel-expansion-2026-10-01` exists;
+it is not published. Public gallery now includes `solo-cheats-wide.png`, compact
+menu images and `post-roof-*` native images without replacing older evidence.
+
 Runtime/package anchor: `091b1333`. Linux export succeeded; the first extracted
 check stopped before launching because the artifact validator omitted
 `worldDataFiles` from inventory, committed discovery and Git-byte checks. That
