@@ -22,6 +22,8 @@ func run() -> void:
  var header: Dictionary = JSON.parse_string(file.get_line())
  var shot: Dictionary = header.shot
  root.size = Vector2i(960, 540)
+ root.get_node("LocalSettings").set_process(false)
+ root.get_node("LocalSettings").hint.hide()
  Engine.max_fps = 24
  session = load("res://tests/campaign/trailer_session.gd").new()
  root.add_child(session)
@@ -31,6 +33,7 @@ func run() -> void:
  session.presentation.interpolate_remote = false
  session.on_started({"mapId":shot.map,"geometryHash":header.geometryHash,"inputEpoch":1})
  session.campaign_hud.hide_brief()
+ session.campaign_hud.set_process(false)
  session.camera.fov = 65
  # Let all production nodes initialize before starting the frame clock.
  for i: int in range(4): await process_frame
@@ -50,7 +53,10 @@ func run() -> void:
   var t := float(index) / maxf(1.0, float(shot.seconds * 24 - 1))
   var focus := Vector3(header.focus.x, header.focus.y, header.focus.z)
   var fp: bool = shot.get("camera", "") == "fp"
+  session.combat.overlay.modulate.a = 1.0 if fp else 0.0
   session.campaign_hud.visible = fp
+  if fp:
+   for item: Control in [session.campaign_hud.objective, session.campaign_hud.detail, session.campaign_hud.notice, session.campaign_hud.status, session.campaign_hud.settings, session.campaign_hud.leave, session.campaign_hud.waypoint, session.campaign_hud.comms]: item.hide()
   session.story_widgets.visible = shot.kind in ["npc", "pet"]
   if is_instance_valid(session.first_person):
    session.first_person.set_process(false)
@@ -76,10 +82,19 @@ func run() -> void:
     distance = 14.0
     height = 9.0
    var angle := lerpf(-0.45, 0.35, t)
+   if shot.kind in ["pet", "npc"]: angle += PI
    var eye := focus + Vector3(sin(angle) * distance, height, cos(angle) * distance)
    eye.y = maxf(eye.y, float(session.world.height_at(eye.x, eye.z)) + 1.2)
    session.camera.position = eye
-   session.camera.look_at(focus + Vector3(0, 0.8, 0))
+   session.camera.look_at(focus + Vector3(0, 0.5 if shot.kind == "pet" else 0.8, 0))
+   if shot.kind == "terrain":
+    var view: Dictionary = session.world.recipe.cameras[0]
+    var center := Vector3(view.target[0], view.target[1], view.target[2])
+    var overview := Vector3(view.at[0], view.at[1], view.at[2])
+    var scale_: float = 0.9 if float(shot.get("height", 15)) >= 30 else 0.68
+    session.camera.position = center + (overview - center) * scale_ + Vector3(lerpf(-10, 10, t), 0, lerpf(-5, 5, t))
+    session.camera.look_at(center + Vector3(lerpf(-4, 4, t), 0, 0))
+  root.get_node("LocalSettings").hint.hide()
   await RenderingServer.frame_post_draw
   var error := root.get_texture().get_image().save_png(output.path_join("%06d.png" % index))
   if error != OK:
