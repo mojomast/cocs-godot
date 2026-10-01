@@ -13,7 +13,7 @@ extends SceneTree
 ##      rotating feed cannot produce a false positive),
 ##   5. no authored detail within 12 mm of the sight line (the rendered ADS gate
 ##      `tests/first_person/ads.gd` separately proves the 4x4 px target gap),
-##   6. per-weapon idle sway is distinct between weapons and exactly zero at a
+##   6. neutral idle remains still without clock-driven drift, exactly zero at a
 ##      settled cheek weld.
 const Rig = preload("res://first_person/rig.gd")
 const BARREL_NAMES: Array[String] = ["barrel-assembly", "shock-emitter", "flak-barrel"]
@@ -74,7 +74,6 @@ func run() -> void:
 	rig.attach_to(camera)
 	rig.set_process(false)
 	var actor := {"id": 7, "weapon": 0, "health": 100, "reloadDuration": 2.0, "reloadTimer": 1.0}
-	var traces: Array[PackedFloat32Array] = []
 	var identities := {"massing": {}, "feed": {}, "muzzle": {}, "stock": {}, "sight": {}, "accent": {}}
 	for id: int in 10:
 		rig.reset()
@@ -145,12 +144,14 @@ func run() -> void:
 				var point := frame * rear.lerp(front, sample / 40.0)
 				worst_sight = minf(worst_sight, box_distance(point, box))
 		check(worst_sight >= SIGHT_CLEARANCE, "detail clear of the sight line weapon %d (%.4f m)" % [id, worst_sight])
-		# 6. Presentation: distinct idle sway per weapon, exactly zero at ADS.
+		# 6. Secondary motion is source-driven; neutral idle must not drift.
 		var trace := PackedFloat32Array()
 		for frame: int in 90:
 			rig.advance(1.0 / 60.0)
 			trace.append(rig.pivot.position.y)
-		traces.append(trace)
+		var idle_still := true
+		for value: float in trace: idle_still = idle_still and absf(value - trace[0]) < 0.000001
+		check(idle_still, "neutral idle has no drift weapon %d" % id)
 		rig.apply_aim(true)
 		step(rig, 150)
 		var settled := rig.pivot.transform
@@ -161,9 +162,6 @@ func run() -> void:
 		measured.append({"weapon": id, "name": info.name, "batches": meshes.size(), "triangles": triangles,
 			"detail_triangles": int(info.detailTriangles), "detail_primitives": int(info.detailPrimitives),
 			"hand_clearance_m": worst_hand, "sight_clearance_m": worst_sight, "sway_rate": float(info.presentation.sway.rate)})
-	for a: int in traces.size():
-		for b: int in range(a + 1, traces.size()):
-			check(not traces[a] == traces[b], "idle sway differs weapon %d vs %d" % [a, b])
 	rig.free()
 	camera.free()
 	print("FIRST_PERSON_DETAIL ", JSON.stringify({"checks": checks, "failures": failures, "weapons": measured}))

@@ -39,6 +39,7 @@ func apply_state(state: Dictionary, local_actor_id: int = -1) -> bool:
 			add_child(created)
 			nodes[v.id] = created
 		var n = nodes[v.id]
+		var discontinuity: bool = not n.visible or n.position.distance_to(Vector3(v.x, v.y, v.z)) > 4.0
 		n.position = Vector3(v.x, v.y, v.z)
 		# Three.js default Euler XYZ corresponds to Godot EULER_ORDER_XYZ.
 		n.rotation_order = EULER_ORDER_XYZ
@@ -60,8 +61,7 @@ func apply_state(state: Dictionary, local_actor_id: int = -1) -> bool:
 			if stamp >= previous:
 				if n.visible:
 					var speed: float = float(v.vx) * sin(float(v.yaw)) + float(v.vz) * cos(float(v.yaw))
-					for wheel: Node3D in n.wheels:
-						wheel.rotation.x = wrapf(wheel.rotation.x + speed * clampf(stamp - previous, 0, 0.1) / 0.42, -PI, PI)
+					n.observe_roll(speed, clampf(stamp - previous, 0, 0.1), discontinuity or stamp - previous > 0.25)
 				stamps[v.id] = stamp
 	for id: Variant in nodes.keys():
 		if not active.has(id):

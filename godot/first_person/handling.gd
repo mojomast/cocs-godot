@@ -224,7 +224,7 @@ func fire() -> void:
 ## never run outside the source reloading state.
 func advance(delta: float, reloading: bool, progress: float, aim_weight: float, reduced_motion: bool) -> void:
 	if not is_instance_valid(_fx_root): return
-	var dt := clampf(delta, 0.0, 0.05)
+	var dt := maxf(delta, 0.0) if is_finite(delta) else 0.0
 	var info: Dictionary = _info
 	var cycle := maxf(0.02, float(info.get("cycle", 0.09)))
 	var stroke := maxf(0.0, float(info.get("stroke", 0.05)))

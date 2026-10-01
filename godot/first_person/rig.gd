@@ -4,6 +4,10 @@ const Catalog = preload("res://first_person/generated/catalog.gd")
 const Handling = preload("res://first_person/handling.gd")
 const Finish = preload("res://first_person/finish.gd")
 const Art = preload("res://first_person/art_adapter.gd")
+const Inertia = preload("res://first_person/inertia.gd")
+const Spring = preload("res://animation/critical_spring.gd")
+var inertia := Inertia.new()
+var punch_spring := Spring.new()
 const MAX_SEEN := 4096
 var source_camera: Camera3D
 var viewport: SubViewport
@@ -24,6 +28,7 @@ var current_weapon := -1
 var actor_id := -1
 var showing := false
 var reduced_motion := false
+var flight_mode := false # Public soloCheats.flight presentation gate.
 var speed := 0.0
 var reloading := false
 var reload_progress := 0.0
@@ -149,6 +154,7 @@ func apply_actor(actor: Dictionary, can_show: bool) -> void:
 	showing = eligible
 	overlay.visible = eligible
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS if eligible else SubViewport.UPDATE_DISABLED
+	if eligible: inertia.observe(actor, source_camera.global_basis, flight_mode)
 	speed = minf(12.0, Vector2(number(actor.get("vx")), number(actor.get("vz"))).length()) if eligible and actor.get("grounded", true) != false else 0.0
 	reloading = eligible and actor.get("reloading", false) == true
 	aim_blocked = reloading or actor.get("sprinting", false) == true or number(actor.get("weaponSwitch")) > 0.0
@@ -216,6 +222,8 @@ func apply_events(events: Array, local_id: int) -> void:
 		if not showing or owner != local_id or owner != actor_id or kind != current_weapon: continue
 		recoil = minf(1.5, recoil + 1.0)
 		punch = minf(1.25, punch + 1.0)
+		punch_spring.value = punch
+		punch_spring.velocity = 0.0
 		punch_sign = -punch_sign
 		flash_remaining = float(manifest.weapons[kind].muzzle[1])
 		recoil_count += 1
@@ -231,7 +239,7 @@ func _remember(key: String, time: float) -> void:
 
 func apply_look_delta(radians: Vector2) -> void:
 	if showing and radians.is_finite() and not reduced_motion:
-		look_lag = (look_lag - radians * 0.22).clamp(Vector2(-0.025, -0.02), Vector2(0.025, 0.02))
+		inertia.look(radians)
 
 func _select_weapon(id: int) -> void:
 	_clear_motion()
@@ -312,14 +320,14 @@ func advance(delta: float) -> void:
 	if not _attached or not is_finite(delta) or delta < 0: return
 	_sync_camera()
 	if not showing: return
-	var dt := minf(delta, 0.05)
+	var dt := delta
 	age += dt
 	var info: Dictionary = manifest.weapons[current_weapon]
 	# Sustained recoil settles at ~78% of the source recover rate (noticeably
 	# heavier) while the transient punch decays much faster.
 	recoil = move_toward(recoil, 0.0, dt * handling.recover_speed)
 	if punch > 0.0:
-		punch *= exp(-dt * handling.transient_rate)
+		punch = punch_spring.advance(dt, 0.0, handling.transient_rate * 1.5, 1.25)
 		if punch < 0.0005: punch = 0.0
 	flash_remaining = maxf(0.0, flash_remaining - dt)
 	switch_remaining = maxf(0.0, switch_remaining - dt)
@@ -328,9 +336,11 @@ func advance(delta: float) -> void:
 	aim_weight = lerpf(aim_weight, target, 1.0 - exp(-dt * rate))
 	if absf(aim_weight - target) < 0.00001: aim_weight = target
 	look_lag *= exp(-dt * 12.0)
-	var bob := minf(speed / 8.0, 1.0) if not reduced_motion else 0.0
-	var breathe := sin(age * 1.7) * 0.0015 if not reduced_motion else 0.0
-	var reload_curve := sin(reload_progress * PI) if reloading else 0.0
+	var motion: Dictionary = inertia.advance(dt, reduced_motion)
+	var heft_weight := lerpf(0.75, 1.25, Handling.recoil_heft(info.kick))
+	# Lift/hold/seat rather than a symmetric sine: source progress still owns
+	# the complete window and cancellation returns immediately to the grip.
+	var reload_curve := smoothstep(0.0, 0.22, reload_progress) * (1.0 - smoothstep(0.72, 1.0, reload_progress)) if reloading else 0.0
 	# Keep the receiver below/right in hip fire, but align the *barrel axis*
 	# with the source camera ray. The old 0.22-rad yaw made the visible gun
 	# point off the crosshair even though source shots used the correct ray.
@@ -349,16 +359,9 @@ func advance(delta: float) -> void:
 	kick_shove = shove
 	kick_lift = lift
 	kick_roll = roll
-	pivot.position += Vector3(sin(age * 8.0) * bob * 0.004 * free_motion, (breathe + cos(age * 16.0) * bob * 0.003) * free_motion - switch_remaining * 0.32 - reload_curve * 0.045, shove)
-	pivot.basis *= Basis.from_euler(Vector3(lift + look_lag.y * free_motion, look_lag.x * free_motion, reload_curve * 0.16 + roll))
-	# Per-weapon idle sway character: presentation only, a pure function of local
-	# age and the exported profile, scaled by (1 - aim_weight) so the settled
-	# cheek weld is exactly still. Never touches aim, recoil, spread or ammo.
-	if not reduced_motion and free_motion > 0.0 and not presentation.is_empty():
-		var sway: Dictionary = presentation.get("sway", {})
-		var phase := age * float(sway.get("rate", 1.9))
-		pivot.position += Vector3(sin(phase) * float(sway.get("x", 0.0012)), cos(phase * float(sway.get("skewY", 0.83))) * float(sway.get("y", 0.0010)), 0.0) * free_motion
-		pivot.basis *= Basis.from_euler(Vector3(0.0, 0.0, sin(phase * float(sway.get("skewRoll", 0.5))) * float(sway.get("roll", 0.0014)) * free_motion))
+	var switch_drop := smoothstep(0.0, 1.0, switch_remaining / 0.22) * 0.0704
+	pivot.position += motion.position * free_motion * heft_weight + Vector3(0.0, -switch_drop - reload_curve * 0.045, shove)
+	pivot.basis *= Basis.from_euler(motion.rotation * free_motion * heft_weight + Vector3(lift, 0.0, reload_curve * 0.16 + roll))
 	flash.visible = flash_remaining > 0 and not external_muzzle_fx
 	# Presentation-only handling: bolt/slide cycle, charging handle, authoritative
 	# magazine window, barrel heat. Never writes recoil/spread/ammo authority.
@@ -373,6 +376,8 @@ func advance(delta: float) -> void:
 func _clear_motion() -> void:
 	recoil = 0.0
 	punch = 0.0
+	punch_spring.reset()
+	inertia.reset()
 	punch_sign = 1.0
 	flash_remaining = 0.0
 	switch_remaining = 0.0
@@ -473,7 +478,9 @@ func _advance_kick(delta: float) -> void:
 	kick_leg.visible = showing and kick_age < KICK_SECONDS
 	if not kick_leg.visible: return
 	var phase := kick_age / KICK_SECONDS
-	var extension := sin(phase * PI)
+	# Accepted event is already contact authority; this visual windup never
+	# schedules a second impact. Quick extension, short contact hold, followthrough.
+	var extension := smoothstep(0.0, 0.28, phase) * (1.0 - smoothstep(0.40, 1.0, phase))
 	if reduced_motion: extension *= 0.55
 	kick_leg.position = Vector3(-0.35, -0.68, -0.58).lerp(Vector3(-0.16, -0.18, -0.65), extension)
 	kick_leg.rotation = Vector3(-0.17 - 0.33 * extension, -0.10 * extension, -0.16 * extension)

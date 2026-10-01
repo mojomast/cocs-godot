@@ -2,6 +2,7 @@ extends Node
 ## Optional passive adapter for existing native session/mode roots.
 ## Add this child after the root's _ready, or as a scene child (deferred binding).
 const Rig = preload("res://first_person/rig.gd")
+const SettingsAccess = preload("res://ui/settings_access.gd")
 var session: Node
 var rig := Rig.new()
 var _last_phase := -999
@@ -39,6 +40,12 @@ func refresh() -> void:
 	if allowed and session.has_method("can_capture_pointer"):
 		allowed = session.can_capture_pointer()
 	allowed = allowed and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
+	rig.flight_mode = false
+	if "solo_cheats" in session and is_instance_valid(session.solo_cheats):
+		rig.flight_mode = session.solo_cheats.state.get("flight", false) == true
+		allowed = allowed and session.solo_cheats.state.get("paused", false) != true
+	var settings := SettingsAccess.service()
+	if settings != null: rig.reduced_motion = settings.values.get("reduced_motion", false) == true
 	rig.apply_actor(session.presentation.local_actor, allowed)
 	var aiming := false
 	if allowed:

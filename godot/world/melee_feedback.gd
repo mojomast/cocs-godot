@@ -150,7 +150,9 @@ func advance(delta: float) -> void:
 		if slot.remaining <= 0.0: continue
 		slot.remaining = maxf(0.0, slot.remaining - delta)
 		var progress := 1.0 - float(slot.remaining) / float(slot.life)
-		slot.node.scale = Vector3.ONE * lerpf(0.12, 0.55 if quality == 0 or reduced_motion else 0.85, progress)
+		# Fast contact expansion with a decelerating release, not constant speed.
+		var release := 1.0 - pow(1.0 - progress, 3.0)
+		slot.node.scale = Vector3.ONE * lerpf(0.12, 0.55 if quality == 0 or reduced_motion else 0.85, release)
 		slot.material.albedo_color = Color(1.0, 0.86, 0.58, 0.85 * pow(1.0 - progress, 1.4))
 		if slot.remaining <= 0.0: slot.node.hide()
 

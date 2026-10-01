@@ -4,11 +4,16 @@ extends Node3D
 var chapter := ""
 var workshops: Dictionary = {}
 var clock := 0.0
+var animation_suspended := false # Optional host gate for source/debug pause.
+const Spring = preload("res://animation/critical_spring.gd")
+const SettingsAccess = preload("res://ui/settings_access.gd")
 
 func clear_round() -> void:
 	for node: Node3D in workshops.values(): node.queue_free()
 	workshops.clear()
 	chapter = ""
+	clock = 0.0
+	animation_suspended = false
 
 func material(color: Color, glow := false) -> StandardMaterial3D:
 	var mat := StandardMaterial3D.new()
@@ -150,7 +155,26 @@ func build(beat: Dictionary) -> Node3D:
 	root.set_meta("rotor",rotor)
 	root.set_meta("title",title)
 	root.set_meta("stage",-1)
+	root.set_meta("lid_springs",[Spring.new(), Spring.new()])
+	root.set_meta("lid_targets",[0.0, 0.0])
+	root.set_meta("rotor_speed",Spring.new())
+	root.set_meta("light_transitions",[])
 	return root
+
+func transition(root: Node3D, node: MeshInstance3D, target: StandardMaterial3D) -> void:
+	var previous := node.material_override as StandardMaterial3D
+	var start := previous.albedo_color if previous != null else target.albedo_color
+	var energy := previous.emission_energy_multiplier if previous != null and previous.emission_enabled else 0.0
+	var goal_energy := target.emission_energy_multiplier if target.emission_enabled else 0.0
+	# Stage changes only allocate a material; the render loop mutates fixed references.
+	node.material_override = target.duplicate()
+	var mat := node.material_override as StandardMaterial3D
+	mat.albedo_color = start
+	mat.emission_enabled = true
+	mat.emission = target.albedo_color
+	mat.emission_energy_multiplier = energy
+	var transitions: Array = root.get_meta("light_transitions")
+	transitions.append({"material":mat,"color":target.albedo_color,"energy":goal_energy})
 
 func apply(value: Dictionary, map_id: String) -> void:
 	if chapter != map_id:
@@ -164,24 +188,48 @@ func apply(value: Dictionary, map_id: String) -> void:
 		var stage := int(beat.stage)
 		if int(root.get_meta("stage")) == stage: continue
 		root.set_meta("stage",stage)
+		root.set_meta("light_transitions",[])
 		var live := material(Color("7effcc"),true)
 		var lamps: Array = root.get_meta("lamps")
 		for i: int in lamps.size():
-			lamps[i].material_override = live if stage == 2 or stage == 1 and i == 0 else material(Color("c39445"),true)
+			transition(root, lamps[i], live if stage == 2 or stage == 1 and i == 0 else material(Color("c39445"),true))
 		var wires: Array = root.get_meta("wires")
 		for i: int in wires.size():
-			wires[i].material_override = live if stage == 2 or stage == 1 and i < wires.size()/2 else material(Color("cb8746"))
+			transition(root, wires[i], live if stage == 2 or stage == 1 and i < wires.size()/2 else material(Color("cb8746")))
 		for panel: MeshInstance3D in root.get_meta("panels"):
-			panel.material_override = live if stage == 2 else material(Color("253843"))
+			transition(root, panel, live if stage == 2 else material(Color("253843")))
 		var title: Label3D = root.get_meta("title")
 		title.text = str(beat.title)+("\nRESTORED" if stage == 2 else "\nOPTIONAL WORKSHOP")
 		var lids: Array = root.get_meta("lids")
 		for i: int in lids.size():
-			lids[i].rotation.x = -0.65 if stage == 2 and (beat.choice == null or beat.choice == ("a" if i == 0 else "b")) else 0
+			root.get_meta("lid_targets")[i] = -0.65 if stage == 2 and (beat.choice == null or beat.choice == ("a" if i == 0 else "b")) else 0.0
 
 func _process(dt: float) -> void:
+	if not is_finite(dt) or dt < 0.0: return
+	if animation_suspended or SettingsAccess.overlay_open(): return
 	clock += dt
+	var settings := SettingsAccess.service()
+	var reduced: bool = settings != null and settings.values.get("reduced_motion", false) == true
 	for root: Node3D in workshops.values():
-		if int(root.get_meta("stage")) == 2:
-			var rotor: Node3D = root.get_meta("rotor")
-			rotor.rotation.z += dt*0.8
+		var restored := int(root.get_meta("stage")) == 2
+		var springs: Array = root.get_meta("lid_springs")
+		var lids: Array = root.get_meta("lids")
+		var targets: Array = root.get_meta("lid_targets")
+		for i: int in lids.size():
+			lids[i].rotation.x = springs[i].advance(dt, float(targets[i]), 18.0 if reduced else 12.0, 0.65)
+		var motor: RefCounted = root.get_meta("rotor_speed")
+		var rotor: Node3D = root.get_meta("rotor")
+		# Integrate the critical spring exactly so angular distance, not just
+		# final motor speed, is independent of the render cadence.
+		var goal := 0.8 if restored and not reduced else 0.0
+		var offset: float = motor.value - goal
+		var j: float = motor.velocity + 6.0 * offset
+		var decay := exp(-6.0 * dt)
+		var travel: float = goal * dt + offset * (1.0 - decay) / 6.0 + j * (1.0 - decay * (1.0 + 6.0 * dt)) / 36.0
+		motor.advance(dt, goal, 6.0, 0.8)
+		rotor.rotation.z = wrapf(rotor.rotation.z + travel, -PI, PI)
+		for entry: Dictionary in root.get_meta("light_transitions"):
+			var mat: StandardMaterial3D = entry.material
+			var weight := 1.0 - exp(-dt * 10.0)
+			mat.albedo_color = mat.albedo_color.lerp(entry.color, weight)
+			mat.emission_energy_multiplier = lerpf(mat.emission_energy_multiplier, float(entry.energy), weight)

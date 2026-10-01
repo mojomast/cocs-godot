@@ -583,6 +583,8 @@ func advance(delta: float) -> void:
 			continue
 		slot.node.position += slot.velocity * delta
 		if slot.kind == 12:
+			# Closed-form cosmetic casing gravity: same arc at 30/60/144 Hz.
+			slot.node.position.y -= 0.5 * 2.5 * delta * delta
 			slot.velocity.y -= delta*2.5
 			slot.node.rotate_x(delta*13.0)
 		_update_slot(slot)

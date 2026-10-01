@@ -3,6 +3,29 @@ extends Node3D
 var wheels: Array[Node3D] = []
 var accent := StandardMaterial3D.new()
 var turret := Node3D.new()
+var roll_angle := 0.0
+var roll_speed := 0.0
+var roll_age := 0.0
+const SettingsAccess = preload("res://ui/settings_access.gd")
+
+func observe_roll(speed: float, elapsed: float, discontinuity: bool) -> void:
+	if discontinuity:
+		roll_angle = 0.0
+	else:
+		roll_angle = wrapf(roll_angle + speed * elapsed / 0.42, -PI, PI)
+	roll_speed = speed
+	roll_age = 0.0
+
+func _process(delta: float) -> void:
+	if not visible or not is_finite(delta): return
+	if SettingsAccess.overlay_open(): return
+	roll_age = minf(0.1, roll_age + maxf(0.0, delta))
+	var settings := SettingsAccess.service()
+	var reduced: bool = settings != null and settings.values.get("reduced_motion", false) == true
+	# Wheels only: bounded visual lead between source samples. Root, turret and
+	# source pitch/roll remain immediate; no steering channel exists on wire.
+	var angle := roll_angle + (0.0 if reduced else roll_speed * roll_age / 0.42)
+	for wheel: Node3D in wheels: wheel.rotation.x = wrapf(angle, -PI, PI)
 
 func material(color: Color) -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
