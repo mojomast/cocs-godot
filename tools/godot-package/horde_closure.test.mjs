@@ -14,9 +14,10 @@ test('actual Horde transitive closure is classified separately and source-byte l
   const lock = JSON.parse(readFileSync(join(root,'port/contracts/source-lock.json')));
   const derivative = process.env.COCS_SOURCE_DERIVATIVE ? JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)) : null;
   verifySource(lock, derivative);
-  assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-horde/')), ['port/native-horde/authority.mjs','port/native-horde/cinderwake-schema.mjs','port/native-horde/input-buffer.mjs']);
-  assert.deepEqual(closure.hordeDataFiles,['godot/horde_maps/generated/cinderwake-drydock.json']);
-  assert.deepEqual(closure.dataReads['port/native-horde/cinderwake-schema.mjs'],closure.hordeDataFiles);
+  assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-horde/')), ['authority','blackwater-director','blackwater-schema','cinderwake-schema','input-buffer','robot-roles'].map(name=>`port/native-horde/${name}.mjs`));
+  assert.deepEqual(closure.hordeDataFiles,['godot/horde_maps/generated/cinderwake-drydock.json','godot/horde_maps/generated/blackwater-reclamation.json']);
+  assert.deepEqual(closure.dataReads['port/native-horde/cinderwake-schema.mjs'],[closure.hordeDataFiles[0]]);
+  assert.deepEqual(closure.dataReads['port/native-horde/blackwater-schema.mjs'],[closure.hordeDataFiles[1]]);
   assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-arenas/')).sort(), [
     'authority','catalog','event-cursor','input-buffer','match','schema',
   ].map(name=>`port/native-arenas/${name}.mjs`).sort());

@@ -37,8 +37,16 @@ export const MAP_NAMES = {
   'vermilion-fold': 'Vermilion Fold',
   'nacre-engine':   'Nacre Engine',
   'cinderwake-drydock': 'Cinderwake Drydock (Preview)',
+  'blackwater-reclamation': 'Blackwater Reclamation',
   'canopy-divide': 'Canopy Divide',
   'basalt-reach': 'Basalt Reach',
+  'switchyard-ward': 'Switchyard Ward',
+  'rainmarket-exchange': 'Rainmarket Exchange',
+  'breakwater-exchange': 'Breakwater Exchange',
+  'thermal-divide': 'Thermal Divide',
+  'sirocco-circuit': 'Sirocco Circuit',
+  'copper-bowl': 'Copper Bowl',
+  'tern-archipelago': 'Tern Archipelago',
 };
 
 // The three locked combat arenas (options.mjs EXPERIENCES combat/lobby/...).
@@ -81,7 +89,7 @@ const identityZonesParams = () => ([
 
 const hordeParams = () => ([
   {key: 'map', kind: 'choice', label: 'Map',
-    values: [...COMBAT_MAPS, 'nacre-engine', 'cinderwake-drydock'], default: 'meridian-exchange'},
+    values: [...COMBAT_MAPS, 'nacre-engine', 'cinderwake-drydock', 'blackwater-reclamation'], default: 'meridian-exchange'},
   {key: 'waves', kind: 'range', label: 'Waves', min: 1, max: 30, default: 10, step: 1},
   {key: 'operator', kind: 'choice', label: 'Operator',
     values: ['chatgpt','claude','grok','meta','gemini','deepseek','mistral','kimi','qwen'], default: 'chatgpt'},
@@ -122,6 +130,20 @@ export const ROUTES = [
     description: 'Host or join a human-vs-human loopback match; no debug variant ever',
     params: combatParams(),
   },
+  {
+    id: 'multiplayer-worlds', category: 'play', label: 'Multiplayer Worlds',
+    description: 'Seven authored source-backed worlds: urban infantry, freight, alpine, Puma sports and LATTICE',
+    params: [
+      {key:'map',kind:'choice',label:'Map',values:['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago'],default:'switchyard-ward'},
+      {key:'mode',kind:'choice',label:'Mode',values_by_map:{
+        'switchyard-ward':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'],
+        'rainmarket-exchange':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','domination','koth','uplink','holdout','assault','payload'],
+        'breakwater-exchange':['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms'],
+        'thermal-divide':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'],
+        'sirocco-circuit':['puma-race'],'copper-bowl':['puma-soccer'],'tern-archipelago':['cocs','cocs-coop']},default:'deathmatch'},
+      {key:'bots',kind:'range',label:'Bots',min:0,max:8,default:2,step:1},
+    ],
+  },
   // --- native ---
   {
     id: 'native-dm', category: 'native',
@@ -138,7 +160,7 @@ export const ROUTES = [
   {
     id: 'horde', category: 'native',
     label: 'Horde',
-    description: 'Hold out on a combat arena, Nacre Engine or Cinderwake Drydock preview, local authority',
+    description: 'Hold out against security robots in combat arenas or the scripted Blackwater Reclamation mission',
     params: hordeParams(),
   },
   // --- modes ---
