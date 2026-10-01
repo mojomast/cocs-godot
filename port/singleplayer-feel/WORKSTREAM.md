@@ -2,6 +2,30 @@
 
 ## Current integration status
 
+**PUBLISHED:** https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-feel-expansion-2026-10-01
+
+Runtime `091b1333` is available for Windows and Linux, with unchanged archives
+and SHA-256 files. Linux final verification passed 23 base + 44 expansion cases.
+Windows workflow `36907576628` also passed all 67 cases after the two Crown
+startup failures in `36904489179` attempts 1/2. The failing attempts, 318-gate
+first aggregate and seven repaired gates are public evidence assets. Full Horde
+chain/Warden, human feel/timing and real-GPU performance remain explicitly open.
+
+Important diagnostic distinction: `36907576628` attempted a preload through
+`GITHUB_ENV`, but GitHub rejected `NODE_OPTIONS`. It therefore represents an
+ordinary original-launcher suite pass, with no transport trace and no proven
+startup fix. The optional workflow now sets the preload within the executing
+PowerShell process and refuses missing trace output; that workflow-only repair
+does not change either released archive. External-SceneTree diagnostic `36905902348`
+passed three starts but did not reproduce the original-launcher failure.
+
+Public assets include `playtest-acceptance.json`, integrated and platform evidence,
+native feel/cheat reports and weapon audio comparisons. Play instructions and
+F3 controls are in `port/campaign/PLAY.md`. Historical checkpoints below remain
+as a record; the current release and limitations above supersede their pending
+publication statuses. Trailer refresh and conclusive startup diagnostics remain
+follow-up work.
+
 Windows attempt 2 failed again at Crown after 14 passing base cases; both attempts
 are archived. Publication is blocked. Diagnostic workflow `36905902348` uses
 three Crown starts from the unchanged ZIP with authority termination, socket

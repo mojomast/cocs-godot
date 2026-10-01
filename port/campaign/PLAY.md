@@ -6,9 +6,13 @@ archive signal from the forest relay to the Crown Array. Each chapter targets
 
 ## Start
 
-[Download the October 1 campaign playtest (Windows / Linux)](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-playtest-2026-10-01).
-Build `614e11ad`; see release notes and `playtest-acceptance.json` for recorded
-verification and known intermittent automation/startup failures.
+[Download the combat-feel and multiplayer expansion playtest (Windows / Linux)](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-feel-expansion-2026-10-01).
+Build `091b1333` includes the balance, movement, weapon-feedback and F3 cheat-menu
+improvements below. Both platforms passed 23 base and 44 expansion package cases.
+Two earlier Windows attempts disconnected at Crown startup; the unchanged ZIP
+passed the complete third run. The cause remains unresolved. Release notes and
+`playtest-acceptance.json` preserve all attempts. The [earlier campaign build](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-playtest-2026-10-01)
+remains available unchanged.
 
 - **Windows package:** extract the whole ZIP, then run **`Campaign.cmd`**.
 - **Either platform:** open **The Quiet Relay** from Home to choose a chapter
@@ -49,9 +53,9 @@ Normal starts with **140 health / 60 armor**. After three damage-free seconds,
 health recovers even while returning fire; after five seconds armor recovers to
 40. Nearby robot kills restore up to 8 health / 6 armor. Easy grants more reserves
 and fewer overlapping attackers; Hard tightens recovery and attack pressure.
-These changes are in the development feel pass, not the older `614e11ad` download.
+These changes are included in build `091b1333`.
 
-## In-game cheats (upcoming testing build)
+## In-game cheats
 
 Press **F3** or release the pointer with **Esc** and click **Cheats**. Opening
 the menu pauses the single-player action. Choose:
@@ -68,7 +72,7 @@ Press **F3**, **Esc**, or **Resume game** to return to play. Enabled cheats are
 shown on the HUD. Toggle choices carry across campaign chapter/retry transitions
 within the connected session and reset on a new connection. The same menu is
 available in ordinary solo Horde launches. These controls are included in the
-development build; the published `614e11ad` package predates them.
+linked `091b1333` playtest; the older `614e11ad` package predates them.
 
 ## People along the relay
 

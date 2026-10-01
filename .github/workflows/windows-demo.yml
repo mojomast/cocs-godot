@@ -7,7 +7,7 @@ on:
         required: true
         type: string
       startup_diagnostic:
-        description: Observe three Crown startups instead of the platform suite
+        description: Observe three original Campaign.cmd Crown startups instead of the suite
         type: boolean
         default: false
       transport_trace:
@@ -39,27 +39,33 @@ jobs:
           $extract = Join-Path $env:RUNNER_TEMP 'fresh Windows demo'
           Expand-Archive $zip $extract
           "DEMO_ROOT=$extract\cocs-native-windows" >> $env:GITHUB_ENV
-      - name: Enable original-launcher transport observation
-        if: ${{ inputs.transport_trace }}
-        shell: pwsh
-        run: |
-          $preload = ([System.Uri](Resolve-Path 'port/singleplayer-feel/startup_preload.mjs').Path).AbsoluteUri
-          "COCS_STARTUP_PACKAGE=$env:DEMO_ROOT" >> $env:GITHUB_ENV
-          "COCS_STARTUP_OUTPUT=$env:RUNNER_TEMP\windows-evidence\original-suite-ws" >> $env:GITHUB_ENV
-          "NODE_OPTIONS=$env:NODE_OPTIONS --import=$preload" >> $env:GITHUB_ENV
       - name: Bundled runtimes, expansion mode pairs and cleanup
         if: ${{ !inputs.startup_diagnostic }}
         shell: pwsh
+        env:
+          TRANSPORT_TRACE: ${{ inputs.transport_trace }}
         run: |
-          & "$env:DEMO_ROOT\node.exe" tools/godot-package/verify_windows.mjs "$env:DEMO_ROOT" "$env:RUNNER_TEMP\windows-evidence"
-          if ($LASTEXITCODE -ne 0) { throw 'Native Windows smoke failed' }
+          $previousNodeOptions = $env:NODE_OPTIONS
+          try {
+            if ($env:TRANSPORT_TRACE -eq 'true') {
+              $preload = ([System.Uri](Resolve-Path 'port/singleplayer-feel/startup_preload.mjs').Path).AbsoluteUri
+              $env:COCS_STARTUP_PACKAGE = $env:DEMO_ROOT
+              $env:COCS_STARTUP_OUTPUT = "$env:RUNNER_TEMP\windows-evidence\original-suite-ws"
+              $env:NODE_OPTIONS = "$previousNodeOptions --import=$preload"
+            }
+            & "$env:DEMO_ROOT\node.exe" tools/godot-package/verify_windows.mjs "$env:DEMO_ROOT" "$env:RUNNER_TEMP\windows-evidence"
+            if ($LASTEXITCODE -ne 0) { throw 'Native Windows smoke failed' }
+            if ($env:TRANSPORT_TRACE -eq 'true' -and !(Get-ChildItem "$env:COCS_STARTUP_OUTPUT\startup-ws-*.jsonl" -ErrorAction SilentlyContinue)) {
+              throw 'Requested transport observation produced no evidence'
+            }
+          } finally { $env:NODE_OPTIONS = $previousNodeOptions }
       - name: Three independent Crown startup observations
         if: ${{ inputs.startup_diagnostic }}
         shell: pwsh
         run: |
           $failed = 0
           foreach ($attempt in 1..3) {
-            & "$env:DEMO_ROOT\node.exe" port/singleplayer-feel/startup_probe.mjs --run-native "--package=$env:DEMO_ROOT" "--output=$env:RUNNER_TEMP\windows-evidence\startup-attempt-$attempt"
+            & "$env:DEMO_ROOT\node.exe" port/singleplayer-feel/startup_probe.mjs --run-launcher "--package=$env:DEMO_ROOT" "--output=$env:RUNNER_TEMP\windows-evidence\startup-attempt-$attempt"
             if ($LASTEXITCODE -ne 0) { $failed += 1 }
           }
           if ($failed -gt 0) { throw "$failed of 3 startup observations failed; inspect transport/native evidence" }
