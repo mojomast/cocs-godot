@@ -33,6 +33,13 @@ def ramp(label, x0, x1, z0, z1, low, high):
                          triangles=[[0, 1, 2], [0, 2, 3]]))
 
 
+def ramp_z(label, x0, x1, z0, z1, low, high):
+    surfaces.append(dict(id=label, material='cut', walkable=True,
+                         vertices=[[x0, low, z0], [x0, high, z1],
+                                   [x1, high, z1], [x1, low, z0]],
+                         triangles=[[0, 1, 2], [0, 2, 3]]))
+
+
 def canonical(v):
     if isinstance(v, float) and v.is_integer():
         v = int(v)
@@ -88,7 +95,6 @@ for x in [-170, -82, 0, 82, 170]:
     for z in [-82, 78]:
         box(f'pier-{x}-{z}-east', x + 24, z, 6, 30, 2.5, 0, 'trim')
         box(f'pier-{x}-{z}-west', x - 24, z, 6, 30, 2.5, 0, 'trim')
-        box(f'pier-{x}-{z}-end', x, z + 15, 52, 5, 2.5, 0, 'trim')
 
 # Upper service gantries are genuine source walkable decks and Godot colliders.
 # Their ends meet shallow sloped walkable ramps; nav points sample each surface.
@@ -96,11 +102,14 @@ for i, x in enumerate([-170, -82, 0, 82, 170]):
     floor(f'gantry-{i}', x - 28, x + 28, -16, -8, 5.0, 'cut')
     ramp(f'gantry-ramp-west-{i}', x - 48, x - 28, -16, -8, 0, 5)
     ramp(f'gantry-ramp-east-{i}', x + 28, x + 48, -16, -8, 5, 0)
+    ramp_z(f'gantry-crossing-south-{i}', x - 4, x + 4, -36, -16, 0, 5)
+    ramp_z(f'gantry-crossing-north-{i}', x - 4, x + 4, -8, 12, 5, 0)
     # Avoid invisible blocking legs under the deck: posts are narrow and skirted.
     for px in [x - 27, x + 27]:
         box(f'gantry-post-{i}-{px}', px, -12, 1.2, 1.2, 5.0, 0, 'trim')
     for edge in [-16, -8]:
-        box(f'gantry-guard-{i}-{edge}', x, edge, 55, 0.3, 7.0, 5.0, 'accent')
+        for side in [-1, 1]:
+            box(f'gantry-guard-{i}-{edge}-{side}', x + side * 16.5, edge, 23, 0.3, 7.0, 5.0, 'accent')
     height = 18 + i * 3
     for side in [-1, 1]:
         box(f'{i}-tower-{side}', x + side * 38, 104, 5, 5, height, 0, 'shell')
@@ -126,6 +135,8 @@ for key, x, z in [('north', -170, 78), ('south', -82, -78), ('pump', 0, 78), ('v
 for x in [-170, -82, 0, 82, 170]:
     for offset in [-48, -42, -36, -30, -28, -22, -16, -10, -4, 2, 8, 14, 20, 26, 28, 32, 38, 44, 48]:
         nav.append([x + offset, -12])
+    for z in range(-36, 13, 3):
+        nav.append([x, z])
 nav.extend([[-170, 78], [-82, -78], [0, 78], [170, -82]])
 
 spawns = [[-183, 0], [-179, 18], [-179, -18]]

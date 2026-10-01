@@ -3,7 +3,14 @@ import assert from 'node:assert/strict';
 import {readBlackwater} from './blackwater-schema.mjs';
 import {BlackwaterDirector,BLACKWATER_STATIONS} from './blackwater-director.mjs';
 import {validateHordeStagePlan} from '../../game/horde-stages.mjs';
-import {floorAt,obstructed} from '../../game/core.mjs';
+import {Match,floorAt,obstructed,walkEdge,nearest} from '../../game/core.mjs';
+import {updateSinglePlayer} from '../../game/singleplayer.mjs';
+
+const realMatch=()=>{
+ const a=readBlackwater().arena;
+ return new Match('chatgpt','openclaw',()=>.5,a.id,
+  {mode:'horde',botCount:0,difficulty:'easy',fragLimit:10,timeLimit:900,humanCount:1,hordeArena:a});
+};
 
 test('authored Blackwater extent, stage gates, distinct districts and hash',()=>{
  const d=readBlackwater(),a=d.arena;
@@ -69,4 +76,30 @@ test('ordered feeder/repair/valve chain executes actual source resupply only aft
  assert.equal(player.health,100);
  assert.equal(player.armor,100);
  assert.equal(events.filter(e=>e.kind==='blackwater-station-restored').length,4);
+});
+
+test('real source physics graph links every district, station and stage with each floodgate mask',()=>{
+ const m=realMatch();
+ for(const mask of [0,1,3]){
+  m.applyHordeGateMask(mask);
+  assert(m.nav.length>3000,'district graph should not be pruned to a pocket');
+  for(const stage of m.arena.hordeStagePlan.stages)assert(m.hordeStageReachable(stage),`stage ${stage.id} reachable under mask ${mask}`);
+  for(const station of BLACKWATER_STATIONS){
+   const y=floorAt(station.x,station.z,m.arena),p={x:station.x,y,z:station.z};
+   const node=m.nav[nearest(p,m.nav)];
+   assert(walkEdge(p,node,m.arena),`${station.id} has a source walk edge at mask ${mask}`);
+  }
+ }
+});
+
+test('source wave-clear and timed Blackwater gate opening change actual ray/collision mask',()=>{
+ const m=realMatch(),gate=m.arena.hordeStagePlan.gates[0];
+ assert(obstructed(gate.x,0,gate.z,.5,m.arena));
+ m.modeState.wave=3;m.modeState.phase='wave';m.modeState.enemies=[];
+ updateSinglePlayer(m,1/60);
+ assert.equal(m.modeState.stage.transit.to,'B');
+ for(let n=0;n<180;n++)updateSinglePlayer(m,1/60);
+ assert.equal(m.modeState.stage.gateMask&1,1);
+ assert(!obstructed(gate.x,0,gate.z,.5,m.arena));
+ assert(m.hordeStageReachable(m.arena.hordeStagePlan.stages[1]));
 });

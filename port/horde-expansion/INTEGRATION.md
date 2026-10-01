@@ -13,9 +13,10 @@
   `port/native-horde/blackwater-schema.mjs`, `port/native-horde/blackwater-director.mjs`,
   `godot/horde/ground_tells.gd`,
   `godot/horde_maps/blackwater_catalog.gd`, `blackwater.gd`,
-  `blackwater_demo.gd`, `blackwater_demo.tscn`, generated JSON and (after the
-  exclusive Blender token) `godot/horde_maps/art/blackwater-reclamation.glb`.
-  Include Blender master and generator under `tools/godot-horde/` in source
+  `blackwater_demo.gd`, `blackwater_demo.tscn`, generated JSON and
+  `godot/horde_maps/art/blackwater-reclamation.glb`.
+  Include editable Blender master `tools/godot-horde/masters/blackwater-reclamation.blend`
+  and `blackwater_blender.py`, `blackwater.py`, `check_assets.py` under `tools/godot-horde/` in source
   distribution. Integrator owns shared launchers, package manifests, map menus
   and route discovery; no shared files are modified in this branch.
 
@@ -27,7 +28,12 @@ same Horde demo factory: only snapshot NPCs with `isNpc===true` and a mapped
 attacks, telegraphs, source hit geometry, upgrades, score, death events and
 input protocol remain source-owned. Operators remain source operator visuals.
 The Horde-only adapter adds `npcModel` on **outgoing snapshots and results**;
-it does not mutate source actors or frozen source modules.
+it does not mutate source modules. Its source `Match` subclass uses the existing
+`hitScale` field for NPC chassis-sized hits (players remain at source hitScale
+1), and on bounded wave ten uses source `spawnGroup` to field exactly one Warden
+with genuine AI, attack phases, health, damage and death IDs. Existing
+Harbinger champion timing is unchanged. The final easy live count is 13: the
+source cap of 12 plus the one authored boss.
 
 Blackwater uses the existing frozen-source `hordeArena` constructor intake and
 Horde stage gates. Authored bounds are 440 × 380 source units. The server-side
@@ -44,7 +50,15 @@ objectives.
 
 The generator and JS-only contracts can run without Blender/Godot:
 `python3 tools/godot-horde/blackwater.py` then
-`node --test port/native-horde/blackwater.test.mjs port/native-horde/robot-roles.test.mjs`.
-The scene, authored GLB, all-Horde live NPC visual census, playable routes,
+`python3 tools/godot-horde/check_assets.py` and
+`node --test port/native-horde/blackwater.test.mjs port/native-horde/robot-roles.test.mjs port/native-horde/robot-authority.test.mjs`.
+Asset counts: five batched Blender materials/meshes, 13,548 triangles,
+616,176-byte GLB, 1,035,139-byte editable master; source recipe owns 213
+collision blocks, 30 walkable surfaces, and 184 focused navigation hints. All
+three stage anchor pools and four interaction stations are source-graph reachable
+under closed, first-open and both-open floodgate masks. Real Match authority
+steps cover the objective chain under a **controlled intermission fixture**;
+this is not proof of natural combat completion.
+The scene, all-Horde live NPC visual census, natural-play objective route,
 all mission beats, late join/restart, screenshots and gameplay clip require the
 reserved export/import/render slot. Do not treat static tests as live evidence.

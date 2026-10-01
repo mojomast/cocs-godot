@@ -6,6 +6,10 @@ const PATH := "res://horde_maps/generated/blackwater-reclamation.json"
 const ART := "res://horde_maps/art/blackwater-reclamation.glb"
 
 func height_at(x: float, z: float) -> float:
+	for center: float in [-170.0, -82.0, 0.0, 82.0, 170.0]:
+		if absf(x - center) <= 4.0:
+			if z >= -36.0 and z < -16.0: return (z + 36.0) * 0.25
+			if z > -8.0 and z <= 12.0: return (12.0 - z) * 0.25
 	if z >= -16 and z <= -8:
 		for center: float in [-170.0, -82.0, 0.0, 82.0, 170.0]:
 			var offset := x - center
