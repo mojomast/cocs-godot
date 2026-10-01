@@ -158,6 +158,9 @@ def main():
     if any(p.startswith("port/native-arenas/") for p in closure["adapterModules"]):
         if set(arena_data) != allowed_arena_data or set(identity_data) != allowed_identity_data:
             raise RuntimeError("Native deathmatch adapter requires all six committed arena data files")
+    if any(p.startswith("port/multiplayer-worlds/") for p in closure["adapterModules"]):
+        if set(world_data) != allowed_world_data:
+            raise RuntimeError("Multiplayer world adapter requires exactly seven committed gameplay recipes")
     input_paths = set(closure["modules"])
     if any(p.startswith("port/native-campaign/") for p in closure["adapterModules"]):
         if set(campaign_data) != allowed_campaign_data:
