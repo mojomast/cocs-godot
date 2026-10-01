@@ -172,3 +172,35 @@ quay panels/loading marks are now flush to within ~1 cm of the exported floor.
 no unsupported web endpoint. `*-BEFORE-TRUSS.png` preserves old diagnostics;
 the updated `*-BLENDER-DIAGNOSTIC.png` remains **offline only**. Godot import
 and native visual approval remain pending.
+
+### Native post-art inspection after `bb4ef8bd` integration
+
+After fast-forwarding the urban/Horde integration, the five revised world GLBs
+were reimported in Godot 4.5.2 and 28 native views were captured under
+`/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/worlds/post-art/`.
+The actual ground, interior, objective and overview views were reviewed for
+each map, including the extra Breakwater quay, Thermal plant and Copper
+sideline views. The Breakwater crane web is closed in the native ground view;
+Thermal's rooftop turbines and plant remain visible, Sirocco has canyon and
+pit silhouettes, Copper shows its net through the open source-aligned goal,
+and Tern has visible shoreline/causeway/bastion detail. The inspected views
+show sun shadows, no observed floating quay slabs or coplanar roof flicker.
+This is scoped visual acceptance for those cameras, not a packaged export.
+
+Native `physics_probe.tscn` passes 94 ground points, 10 overhead checks, seven
+Thermal bridge samples and 12 standing-capsule passage positions at these art
+review approaches. The unchanged source 43-pair mode matrix passes after the
+merge, and the five source geometry hashes in native capture/probe logs match
+the catalog. Urban's export Z-axis correction uses the same `(x,-z,y)`
+pre-rotation as the world exporter: no second flip was applied to world GLBs.
+Production `multiplayer_worlds/demo.gd` and urban `inspection.gd` now enable
+sun shadows; the latter matches production sun/ambient values. A fresh
+shadow-lit Rainmarket interior is in `urban/post-shadow/`.
+
+**Urban roof limitation:** Rainmarket east kiosk source has wall blocks and
+decorative overhead ribs, but no terrain roof surface or overhead collider at
+the room. The exporter's `shop_details()` likewise emits ribs, not a spanning
+roof. The sky-colored area in the old interior view is thus a genuine open
+ceiling, not merely an unshadowed underside. The new shadow-lit interior shows
+that opening more clearly. Adding a solid accessible roof would require an
+authority/recipe change; none was made during this art/lighting review.

@@ -47,6 +47,17 @@ The eight `*-blender.png` files in `/home/mojo/.tmp-on-disk/cocs-multiplayer-evi
 
 Reproduce the native acceptance from the checkout with the pinned Godot binary and `LP_NUM_THREADS=1` (exclusive engine slot required):
 
+The subsequent shared-renderer follow-up enabled directional sun shadows in
+both the production multiplayer-world demo and urban inspection, matching
+the inspection sun/ambient to production. A new native Rainmarket east-kiosk
+interior view is at `urban/post-shadow/rainmarket-exchange-interior.png` in the
+evidence directory; older `urban/post-art/` captures remain unchanged. The
+source has walls and decorative ceiling ribs but **no overhead roof surface
+or collider** over that kiosk, and its exported art has no spanning roof there.
+The sky-colored opening is real geometry coverage, not a material cull or
+lighting bug. A solid walkable roof requires a separate authority/recipe
+change; the geometry hashes were left intact.
+
 ```sh
 LP_NUM_THREADS=1 URBAN_NATIVE_VISUAL=1 GODOT_BIN=/path/to/pinned/Godot_v4.5.2-stable_linux.x86_64 node port/multiplayer-worlds/urban-native-live.mjs switchyard-ward ctf
 LP_NUM_THREADS=1 URBAN_NATIVE_VISUAL=1 GODOT_BIN=/path/to/pinned/Godot_v4.5.2-stable_linux.x86_64 node port/multiplayer-worlds/urban-native-live.mjs rainmarket-exchange payload

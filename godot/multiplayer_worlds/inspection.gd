@@ -29,15 +29,16 @@ func _ready() -> void:
  add_child(camera)
  camera.make_current()
  var sun := DirectionalLight3D.new()
- sun.rotation_degrees = Vector3(-48,-22,0)
- sun.light_energy = 1.9
+ sun.rotation_degrees = Vector3(-44,-30,0)
+ sun.light_energy = 1.25
+ sun.shadow_enabled = true
  add_child(sun)
  var env := Environment.new()
  env.background_mode = Environment.BG_COLOR
- env.background_color = Color("5d7689")
+ env.background_color = Color("627985")
  env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
- env.ambient_light_color = Color("b6c4c4")
- env.ambient_light_energy = 0.8
+ env.ambient_light_color = Color("a0adb5")
+ env.ambient_light_energy = 0.68
  var world_env := WorldEnvironment.new()
  world_env.environment = env
  add_child(world_env)
