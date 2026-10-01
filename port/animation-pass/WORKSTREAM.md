@@ -4,6 +4,27 @@ Owner request: use **Sol subagents** to improve all animations and research
 best practices for a feasible form of physics-based movement. This extends the
 targeting and campaign-variety pass before its combined release.
 
+## Current status
+
+**Both Sol lanes are integrated and have released Godot.** Final physics
+acceptance commit `cd15d7b3` is integrated as `c391b3d9`. The combined actor /
+physics build passed 23 native suites, including 18 physics and 52 world-animation
+checks, all ten weapons, eight workshop fixtures and the actor containment suite.
+A real connected scripted-input journey passed (`live-CU6C03`): three confirmed
+hits and one kill before cheats, ten-weapon trigger/recoil agreement, and real-wire
+pause/resume, flight, weapon grant and clearing. This is not human-paced play.
+
+Parent reviewed both ten-weapon contact sheets and the eight-workshop gallery.
+The paired weapon, workshop and vehicle clips are published in the existing
+`quiet-relay-gallery-2026-09-30` release as `weapons-before-after.mp4`,
+`workshop-before-after.mp4`, and `vehicle-before-after.mp4`; the existing actor
+and cast comparison clips are preserved. Evidence includes 730 native images;
+llvmpipe captures do not establish hardware performance.
+
+**Edge/effects Astra now holds the exclusive engine slot.** New combined exports
+and platform verification follow that lane's integration. The ownership/grant
+notes below preserve earlier checkpoints; this current status supersedes them.
+
 ## Integration baseline
 
 `4d41cdef` contains accurate campaign robot hit regions, readable enemy movement,

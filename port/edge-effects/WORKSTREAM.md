@@ -4,6 +4,14 @@ Owner reports unreliable hit detection around edges and square borders on bullet
 holes, and requests an Astra subagent to repair both and add weapon effects and
 shaders. This extends the combined targeting/variety/animation update.
 
+## Current resource grant
+
+Physics Sol completed native acceptance and explicitly released all engine
+processes. **Astra now has the exclusive Godot slot**, granted after final Sol
+commit `cd15d7b3` (integrated as `c391b3d9`). Sol made no controller/FX production
+changes during acceptance; Astra's implementation ownership is clear. Parent
+remains engine-idle until Astra releases the slot.
+
 ## Ownership and resources
 
 - Astra: `ses_f06b5ec31ffeX85Xf9bXNZguTV`, `openai/gpt-6-astra`.
