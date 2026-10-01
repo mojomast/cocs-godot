@@ -2,6 +2,32 @@
 
 ## Current integration status
 
+Windows first run `36904489179` failed after 14 base cases at Crown startup with
+`Disconnected. Join a new room explicitly.` Its full artifact is preserved in
+`integrated-release/windows-36904489179-attempt1/`. This repeats the historical
+first-attempt Crown symptom; it is not labelled a passing run. The unchanged ZIP
+is undergoing attempt 2. Astra is independently investigating campaign startup
+transport and preparing a bounded external diagnostic if needed, code-only while
+Horde owns local Godot. The release remains an unpublished draft.
+
+**Linux final package acceptance passed:** 23 base cases + 44 expansion cases,
+no owned-process leftovers, unchanged archive at runtime `091b1333`. Windows
+export also succeeded from the detached `091b1333` packaging worktree; its fresh
+extracted manifest validates. Both archives/checksums are uploaded to the draft.
+Windows execution is running at
+https://github.com/mojomast/cocs-godot/actions/runs/36904489179 (verifier `c902d45e`).
+The two generated-resource inventories differ only in Godot's export `file_cache`;
+shared build inputs match, with the Windows README as its one additional input.
+
+Linux SHA-256: `8c7fb13a952211430c03a33ce3d0ed31fbd65736a147226662921f0b814429f8`.
+Windows SHA-256: `f62395abf14e18d686bbf021da8abd22ca2a815307780043cb4770f3039123c5`.
+
+Parent has granted the now-free **local Godot slot back to Horde Sol**
+`ses_f0a2032a7ffeXurQGXEp7rPDw6` for a bounded normal-input chain rerun and, if it
+passes, the live boss case. Windows CI runs remotely. This does not change the
+packaged runtime or remove the pending full-chain/Warden disclosure; runtime fixes
+require a new integration decision. No competing parent local engine task is active.
+
 Expansion follow-up: all 43 multiplayer pairs passed on the extracted Linux PCK.
 Blackwater initially failed because the external probe required wave one after
 three snapshots, during the normal seven-second wave-zero intermission. It now
