@@ -15,11 +15,11 @@ Imported scene presets turn off Godot's redundant mesh LOD/shadow mesh generatio
 
 | Class | Near | Medium | Far |
 |---|---:|---:|---:|
-| Scrapper | 3928; 12 | 2628; 12 | 1920; 8 |
-| Skirmisher | 2720; 8 | 1784; 8 | 1308; 6 |
-| Sentinel | 3480; 10 | 2340; 10 | 1748; 7 |
-| Mortar | 4020; 12 | 2632; 12 | 1836; 8 |
-| Bulwark | 2780; 9 | 1756; 9 | 1192; 7 |
-| Warden | 5652; 16 | 3900; 16 | 2872; 10 |
+| Scrapper | 3840; 12 | 2628; 12 | 1920; 8 |
+| Skirmisher | 2632; 8 | 1784; 8 | 1308; 6 |
+| Sentinel | 3392; 10 | 2340; 10 | 1748; 7 |
+| Mortar | 3932; 12 | 2632; 12 | 1836; 8 |
+| Bulwark | 2692; 9 | 1756; 9 | 1192; 7 |
+| Warden | 5564; 16 | 3900; 16 | 2872; 10 |
 
-Matched Godot-lit synthetic evidence is stored outside the repository at `/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20260930/enemy-blender/{before,after}/`: pose-0 galleries, six class closeups, after LOD1/2 and attack tell/recoil galleries, plus the Warden's 10-second `warden-animation.mp4` (gait, windup, recoil, collapse, reset). The fixture is `godot/tests/campaign/robot_gallery.gd` with `--capture=... --focus=0..5 --pose=0..3 --lod=0..2` or `--frames-dir=...`.
+Matched Godot-lit synthetic evidence is stored outside the repository at `/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20260930/enemy-blender/`: original `before/` gallery and closeups, superseded first `after/` pass, and the accepted `repair-2/final/` gallery (all LODs), six class closeups, Scrapper/Mortar near/medium/far closeups, plus the Warden's 10-second `warden-animation.mp4` (gait, windup, recoil, collapse, reset). The fixture is `godot/tests/campaign/robot_gallery.gd` with `--capture=... --focus=0..5 --pose=0..3 --lod=0..2` or `--frames-dir=...`.

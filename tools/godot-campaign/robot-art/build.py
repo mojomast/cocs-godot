@@ -59,7 +59,9 @@ def box(name, pos, size, color, bevel=0.0, angle=0.0):
     save_piece(name, color, bevel)
 
 
-def cyl(name, pos, radius, depth, color, vertices=10, axis='Y'):
+def cyl(name, pos, radius, depth, color, vertices=10, axis='UP'):
+    # Blender's native cylinder axis is Z, which exports as Godot's vertical Y.
+    # Explicit Y means a front-facing cylinder along Godot -Z (optics/barrels).
     bpy.ops.mesh.primitive_cylinder_add(vertices=vertices, radius=radius, depth=depth,
                                       location=(pos[0], -pos[2], pos[1]))
     obj = bpy.context.object
@@ -93,7 +95,9 @@ def build(kind, lod):
     mid = lod < 2
     chassis = key('Chassis')
     # Broad massing remains inside original class hit-volume envelope.
-    box(chassis, (0, 0, 0), (width, 0.48 if biped else 0.38, 0.84 if not biped else 0.56), DARK, 0.07)
+    # Recess the black frame below the bevel's lowest upper edge (y=.165).
+    # Its previous y=.19 top broke through the enamel shoulder as triangles.
+    box(chassis, (0, -0.045, 0), (width, 0.37, 0.84 if not biped else 0.56), DARK, 0.07)
     box(chassis, (0, 0.085, -0.015), (width * 1.05, 0.34, 0.72 if not biped else 0.51), color, 0.09)
     box(chassis, (0, 0.24, 0.08), (width * 0.85, 0.09, 0.36), STEEL, 0.024)
     if mid:
@@ -105,9 +109,12 @@ def build(kind, lod):
                 box(chassis, (side * width * 0.36, 0.27, 0.16), (0.19, 0.12, 0.39), DARK, 0.03)
     if detail:
         for side in (-1, 1):
-            box(chassis, (side * width * 0.39, 0.20, -0.10), (0.12, 0.08, 0.35), EDGE, 0.018)
-            for z in (-0.20, -0.10, 0.0):
-                box(chassis, (side * width * 0.37, 0.269, z), (0.078, 0.014, 0.025), RECESS, 0.004)
+            # Keep this shoulder clean. An inset silver strip formerly cut
+            # across the main shell's bevel and exposed thin sliver triangles.
+            # Side-pod vent slits sit outside the skin instead of under turret.
+            for z in (-0.17, -0.08, 0.01):
+                box(chassis, (side * (width * 0.46 + 0.067), 0.08, z),
+                    (0.014, 0.12, 0.027), RECESS, 0.002)
         box(chassis, (0, -0.02, -0.377), (width * 0.5, 0.12, 0.035), DARK, 0.012)
     if kind == 'skirmisher':
         box(chassis, (-0.29, 0.09, 0), (0.3, 0.25, 0.40), color, 0.055)
@@ -158,7 +165,9 @@ def build(kind, lod):
                 cyl(shin, (0, 0, 0), 0.11, 0.16, EDGE, 8, 'X')
 
     turret = key('Turret')
-    cyl(turret, (0, 0, 0), width * 0.32, 0.23, RECESS, 8 if mid else 6)
+    # Seat the vertical turntable just below the chassis top: the prior
+    # horizontal cylinder cut through the plate and caused jagged streaks.
+    cyl(turret, (0, 0.12, 0), width * 0.32, 0.19, RECESS, 8 if mid else 6)
     box(turret, (0, 0.12, 0), (width * 0.84, 0.15, 0.45), color, 0.052)
     box(turret, (0, 0.19, -0.11), (width * 0.68, 0.10, 0.24), DARK, 0.025)
     if mid:

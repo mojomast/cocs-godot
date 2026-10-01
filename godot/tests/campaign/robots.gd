@@ -62,7 +62,12 @@ func run() -> void:
 					check((rig.knees[leg].get_node("ShinAndFoot") as MeshInstance3D).mesh == authored.get(prefix + "Shin" + str(leg)), id + " authored knee/sole")
 			if id == "bulwark": check((rig.shield.get_node("SlabShield") as MeshInstance3D).mesh == authored.get(prefix + "Shield"), "bulwark shield arm")
 		var colors: PackedColorArray = chassis.mesh.surface_get_arrays(0)[Mesh.ARRAY_COLOR]
-		check(colors.size() > 0 and colors[0] != colors[colors.size() / 2], id + " Blender vertex-painted armor palette")
+		var varied: bool = false
+		for color: Color in colors:
+			if color != colors[0]:
+				varied = true
+				break
+		check(varied, id + " Blender vertex-painted armor palette")
 		check(robot.rigs[0].legs.size() == leg_counts[Robot.IDS.find(id)], id + " anatomy")
 		check(is_equal_approx(robot.feet.position.y, -0.9) and is_equal_approx(robot.feet.scale.x, 1.6), "scale around feet")
 		actor.vx = 0.0
