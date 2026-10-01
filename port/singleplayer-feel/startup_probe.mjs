@@ -4,12 +4,58 @@ import {resolve,join,dirname} from 'node:path';
 import {pathToFileURL,fileURLToPath} from 'node:url';
 import {EventEmitter} from 'node:events';
 import {spawn} from 'node:child_process';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,writeFile,mkdtemp,rm,readdir,readFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
 const args=process.argv.slice(2),arg=(key,fallback)=>args.find(x=>x.startsWith(`--${key}=`))?.split('=').slice(1).join('=')??fallback;
-const pkg=arg('package'), mode=args.includes('--model-stall')?'model':args.includes('--run-native')?'native':null;
-if(!mode)throw Error('Choose --model-stall (no engine) or --run-native (requires permission)');
-if(mode==='native'&&!pkg)throw Error('--package=<extracted unchanged package> required');
+const pkg=arg('package'), mode=args.includes('--run-launcher')?'launcher':args.includes('--model-stall')?'model':args.includes('--run-native')?'native':null;
+if(!mode)throw Error('Choose --model-stall, --run-native (external SceneTree), or --run-launcher (original entrypoint)');
+if(mode!=='model'&&!pkg)throw Error('--package=<extracted unchanged package> required');
 const base=pkg?resolve(pkg):resolve(dirname(fileURLToPath(import.meta.url)),'../..');
+if(mode==='launcher'){
+ const output=resolve(arg('output',join(tmpdir(),'campaign-launcher-probe')));await mkdir(output,{recursive:true});
+ const sandbox=await mkdtemp(join(tmpdir(),'cocs windows smoke '));
+ const preload=new URL('./startup_preload.mjs',import.meta.url).href;
+ const env={...process.env,TEMP:sandbox,TMP:sandbox,APPDATA:join(sandbox,'roaming'),LOCALAPPDATA:join(sandbox,'local'),
+  COCS_STARTUP_PACKAGE:base,COCS_STARTUP_OUTPUT:output,NODE_OPTIONS:`${process.env.NODE_OPTIONS??''} --import=${preload}`.trim()};
+ await mkdir(env.APPDATA);await mkdir(env.LOCALAPPDATA);
+ const map=arg('map','crown-array');if(!/^[a-z0-9-]+$/.test(map))throw Error('Invalid map');
+ const windows=process.platform==='win32';
+ if(!windows){for(const key of ['XDG_DATA_HOME','XDG_CONFIG_HOME','XDG_CACHE_HOME']){env[key]=join(sandbox,key);await mkdir(env[key]);}env.LP_NUM_THREADS='1';}
+ const executable=windows?(process.env.ComSpec||'cmd.exe'):process.execPath;
+ const command=windows?['/d','/s','/c',`""${join(base,'Campaign.cmd')}" --map=${map} --smoke"`]:[join(base,'run.mjs'),'--experience=campaign',`--map=${map}`,'--smoke'];
+ const began=process.hrtime.bigint(),beganWall=Date.now(),chunks=[];let bytes=0,child,timer,killTimer,timedOut=false,result;
+ const record=(kind,extra={})=>chunks.push({kind,wall:Date.now(),monoNs:String(process.hrtime.bigint()),ms:Number(process.hrtime.bigint()-began)/1e6,pid:child?.pid,...extra});
+ await writeFile(join(output,'launcher-invocation.json'),JSON.stringify({executable,command,cwd:sandbox,preload,package:base,sandbox,platform:process.platform},null,2));
+ try{
+  child=spawn(executable,command,{cwd:sandbox,env,windowsVerbatimArguments:windows,detached:!windows,stdio:['ignore','pipe','pipe']});
+  record('spawn');
+  for(const name of ['stdout','stderr'])child[name].on('data',b=>{if(bytes<8*1024*1024){bytes+=b.length;record(name,{text:b.toString()});}});
+  const killTree=force=>{
+   record('owned-tree-stop',{force});
+   if(windows){const killer=spawn('taskkill',['/PID',String(child.pid),'/T',...(force?['/F']:[])],{stdio:'ignore',env:{...process.env,NODE_OPTIONS:''}});killer.on('error',e=>record('taskkill-error',{message:e.message}));}
+   else try{process.kill(-child.pid,force?'SIGKILL':'SIGTERM');}catch{}
+  };
+  // Same 120-second campaign bound as verify_windows. Windows uses owned-tree
+  // termination directly so cmd.exe cannot exit first and orphan its manager.
+  timer=setTimeout(()=>{timedOut=true;killTree(windows);if(!windows)killTimer=setTimeout(()=>killTree(true),2000);},120000);
+  result=await new Promise((r,j)=>{child.once('error',j);child.once('close',(code,signal)=>r({code,signal}));});
+  record('child-exit',result);
+ }finally{
+  clearTimeout(timer);clearTimeout(killTimer);
+  const text=chunks.filter(x=>x.text).map(x=>x.text).join('');
+  const observerRows=[];
+  for(const name of await readdir(output))if(/^startup-ws-\d+\.jsonl$/.test(name)){
+   for(const line of (await readFile(join(output,name),'utf8')).split('\n'))try{const row=JSON.parse(line);if(row.wall>=beganWall)observerRows.push(row);}catch{}
+  }
+  const instrumented=observerRows.some(x=>x.kind==='socket-observed')&&!observerRows.some(x=>x.kind==='preload-setup-failed');
+  const passed=instrumented&&result?.code===0&&!timedOut&&text.includes('CAMPAIGN_SMOKE_OK')&&!/SCRIPT ERROR|ERROR:|Assertion failed/.test(text);
+  await writeFile(join(output,'launcher-stream.jsonl'),chunks.map(x=>JSON.stringify(x)).join('\n')+'\n');
+  await writeFile(join(output,'launcher.log'),text);
+  await writeFile(join(output,'launcher-result.json'),JSON.stringify({passed,instrumented,result,timedOut,platform:process.platform,map},null,2));
+  await rm(sandbox,{recursive:true,force:true});
+  console.log('STARTUP_LAUNCHER',JSON.stringify({passed,result,timedOut,output}));if(!passed)process.exitCode=1;
+ }
+}else{
 const modulePath=join(base,pkg?'runtime/port/native-campaign/authority.mjs':'port/native-campaign/authority.mjs');
 const {createAuthority,LIMITS}=await import(pathToFileURL(modulePath));
 const output=resolve(arg('output','/tmp/opencode/campaign-startup-probe'));
@@ -66,5 +112,6 @@ try{
 }finally{
  clearTimeout(timer);await authority.close();
  await writeFile(join(output,'transport.json'),JSON.stringify({summary,timeline},null,2));
- console.log('STARTUP_DIAGNOSTIC',JSON.stringify(summary));
+  console.log('STARTUP_DIAGNOSTIC',JSON.stringify(summary));
+}
 }

@@ -1,4 +1,92 @@
-# Windows Crown startup investigation (no local engine execution)
+# Windows Crown startup investigation
+
+## Original-launcher follow-up (supersedes external-entrypoint acceptance)
+
+Windows diagnostic `36905902348` passed all three external SceneTree attempts,
+but unchanged full verifier `36904489179` attempts 1 and 2 both failed at Crown
+after 14 cases. External SceneTree startup ordering is different and those passes
+do not resolve the production-entrypoint failure. Parent supplied the results;
+no runtime fix is justified yet.
+
+`startup_probe.mjs --run-launcher` now executes the original entrypoint:
+
+* Windows: `cmd.exe /d /s /c ""PACKAGE\Campaign.cmd" --map=crown-array --smoke"`,
+  verbatim Windows argument handling, unrelated fresh sandbox cwd and isolated
+  TEMP/TMP/APPDATA/LOCALAPPDATA, matching `verify_windows.mjs`.
+* Linux: `node PACKAGE/run.mjs --experience=campaign --map=crown-array --smoke`,
+  same sandbox plus isolated XDG directories and `LP_NUM_THREADS=1`.
+* The campaign deadline stays at the verifier's 120 seconds. On watchdog,
+  Windows invokes `taskkill /PID <owned cmd pid> /T /F`; Linux terminates its owned
+  process group, escalating after two seconds.
+
+The runner injects `NODE_OPTIONS=--import=<external preload file URL>` only into
+the child environment. `startup_preload.mjs` imports **exactly**
+`COCS_STARTUP_PACKAGE/runtime/node_modules/ws/index.js`; no dependency fallback,
+authority factory override, script entrypoint change, input injection or queue/
+TTL adjustment. It observes original `send/close/terminate` methods and accepted
+connections, preserving arguments, callbacks, return values and thrown errors.
+It logs first command of each type (including start/input), map/route, counts,
+bytes, 250-ms unsent-buffer samples, socket/TCP closure/errors, and terminate/close
+call stacks. Stack line locations distinguish authority limits from launcher
+cleanup. Timing uses both wall-clock milliseconds and monotonic nanoseconds.
+Telemetry itself incurs modest overhead, so a diagnostic pass cannot clear the
+unmodified failing full-suite gate.
+
+Each Node process writes `startup-ws-PID.jsonl`, including argv/cwd and package
+identity. Processes not using the packaged ws prototype emit only preload metadata.
+Thus the same preload can instrument all 23+44 cases without file collisions.
+The launcher runner additionally saves timestamped stdout/stderr chunks with its
+child PID in `launcher-stream.jsonl`, raw `launcher.log`, invocation and result.
+Package markers in those streams identify the authority and native child PIDs.
+The result requires a real observed socket and no preload setup failure.
+
+### Parent Windows commands (workflow remains parent-owned)
+
+Single original Crown launch:
+
+```powershell
+node port/singleplayer-feel/startup_probe.mjs --run-launcher "--package=$package" "--output=$evidence\original-crown"
+```
+
+Full existing verifier, without editing it or the archive:
+
+```powershell
+$oldNodeOptions = $env:NODE_OPTIONS
+$preload = ([System.Uri](Resolve-Path 'port/singleplayer-feel/startup_preload.mjs').Path).AbsoluteUri
+$env:COCS_STARTUP_PACKAGE = $package
+$env:COCS_STARTUP_OUTPUT = "$evidence\original-suite-ws"
+$env:NODE_OPTIONS = "$oldNodeOptions --import=$preload".Trim()
+try {
+  node tools/godot-package/verify_windows.mjs $package "$evidence\original-suite"
+} finally {
+  $env:NODE_OPTIONS = $oldNodeOptions
+  Remove-Item Env:COCS_STARTUP_PACKAGE, Env:COCS_STARTUP_OUTPUT
+}
+```
+
+Keep the normal verifier assertions; upload the preload output even on failure.
+The root verifier can also load the preload harmlessly; the prototype identity
+only affects that exact packaged ws module, and every child PID has its own log.
+
+### Bounded local verification
+
+Granted local slot was used only for original-launcher Crown checks; released
+afterward. Linux `091b1333` proof, **not Windows acceptance**:
+`integrated-release/linux-original-launcher-probe-2/launcher-result.json` reports
+`passed=true`, `instrumented=true`, exit 0. Its 96 telemetry rows include 2,349
+outbound frames and 1,172 incoming frames, a peer close handshake code 1000 with
+zero buffered bytes, then a teardown `write ECONNRESET`. No authority terminate
+was observed. All **174 package-manifest hashes** were checked afterward and
+remain unchanged, commit `091b13332fcb935af871d1affff1768a26f572e5`.
+
+The first local probe caught packaged ws's CommonJS export shape: named ESM
+`WebSocketServer` was undefined. Fixed to use the exact default export's
+`WebSocketServer`/`Server` property; the runner now rejects missing instrumentation.
+A Node-only real socket check verified callback-once, original send return value,
+original thrown TypeError and logged terminate stacks. Its first test incorrectly
+used invalid `close(999)`, which ws itself leaves CLOSING before throwing; that
+test was bounded out and replaced by invalid send data without state mutation.
+No production code changed and no root-cause conclusion is drawn from Linux.
 
 ## Findings and limits
 
