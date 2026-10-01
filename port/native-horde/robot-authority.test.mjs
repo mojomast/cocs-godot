@@ -39,6 +39,31 @@ test('source role brain and health are preserved while derived hit volumes track
  }
 });
 
+test('Horde Warden health beats drive source boss-phase profiles through actual source damage',()=>{
+ const match=createHordeMatch({mapId:'blackwater-reclamation',config,random:()=>.5});
+ // Controlled wave-entry setup, explicitly not a live natural wave-ten clear.
+ match.modeState.wave=9;match.modeState.phase='intermission';match.modeState.timer=0;
+ match.step(1/60,{inputs:{0:{}}});
+ const boss=match.actors.find(a=>a.npcType==='warden');
+ assert(boss&&boss.health>0);
+ assert.equal(match.modeState.bossPhase,1);
+ while(boss.protection>0)match.step(1/60,{inputs:{0:{}}});
+ assert(boss.health>0,'source-spawned Warden survived its normal protection window');
+ const baseSpeed=boss.speedMultiplier,baseDamage=boss.damageMultiplier;
+ match.damage(boss,boss.armor+boss.health-boss.maxHealth*.55,match.actors[0]);
+ match.step(1/60,{inputs:{0:{}}});
+ assert.equal(match.modeState.bossPhase,2);
+ match.step(1/60,{inputs:{0:{}}});
+ assert.equal(boss.bossPhase,2);
+ assert(boss.speedMultiplier>baseSpeed&&boss.damageMultiplier>baseDamage);
+ match.damage(boss,boss.armor+boss.health-boss.maxHealth*.2,match.actors[0]);
+ match.step(1/60,{inputs:{0:{}}});
+ assert.equal(match.modeState.bossPhase,3);
+ match.step(1/60,{inputs:{0:{}}});
+ assert.equal(boss.bossPhase,3);
+ assert.deepEqual(match.events.filter(e=>e.type==='boss-phase').map(e=>e.phase),[1,2,3]);
+});
+
 test('full Blackwater objective chain advances through real authority steps and resets independently',()=>{
  const match=createHordeMatch({mapId:'blackwater-reclamation',config,random:()=>.5});
  const player=match.actors[0];
