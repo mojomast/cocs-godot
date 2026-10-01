@@ -145,6 +145,8 @@ commands = [
     ("cinder-traversal", [binary, "--headless", "--path", "godot", "--script", "res://tests/cinder_array/verify.gd", "--", str(root / "port/reports/cinder-traversal.json")]),
     ("exploration-walker", [binary, "--headless", "--path", "godot", "--script", "res://tests/graphics_batch/walker.gd"]),
     ("first-person-rig", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/lifecycle.gd"]),
+    ("weapon-blender-art", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/art_override.gd"]),
+    ("weapon-blender-source-audit", [sys.executable, "tools/godot-weapons/blender-art/verify.py"]),
     ("first-person-finishes", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/finishes.gd"]),
     ("finish-source-journey", ["node", "tools/godot-weapons/finish-journey.mjs", "--output=" + str(root / ".port-runtime/finish-source-journey.json")]),
     ("finish-native-source-replay", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/finishes_source.gd", "--", "--source-journey=" + str(root / ".port-runtime/finish-source-journey.json")]),

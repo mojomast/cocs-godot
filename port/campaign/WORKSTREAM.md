@@ -620,3 +620,17 @@ Weapons now owns the exclusive Godot slot for the `5fbfd805` sight/action/breech
 revision and fresh normal/ADS/world renders. Architecture may export its bounded
 fix with one Blender thread, but waits for the next Godot grant. Final structure
 merge/publication waits for corrected grounding and continuity captures.
+
+Weapon revision-2 completed and reviewed: `c80487fb` → `5fbfd805` → `72657eec`
+integrated as `be5387a4` → `9146f920` → `5c436cf6`. Parent inspected the corrected
+Pulse sight mount/action and all-ten first-person/world sheets, and reran the GLB
+source/budget/distinctness audit successfully. Final lane framing passes at two
+resolutions, ADS 910 and handling 482; art/finish/grip/source contracts pass.
+Seven `weapon-blender-*` gallery images/clips are published on the existing
+development gallery, with updated notes. Canonical verifier now includes the
+native art override and static source/GLB audit. Final integrated verification
+remains pending; these are scripted gallery/animation captures.
+
+Architecture has the exclusive Godot slot for final `e418e343` grounding/core
+continuity acceptance and fresh `final-grounded/` captures. Weapons released the
+slot; parent is performing integration/docs/media work only until it returns.
