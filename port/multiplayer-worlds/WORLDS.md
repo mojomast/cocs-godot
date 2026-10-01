@@ -79,8 +79,7 @@ every mandatory objective and captures in the separate evidence directory.
 
 ## Verification status
 
-Recipes and static physics probes pass. The first Blender pass produced five
-editable masters and batched GLBs. A subsequent review corrected the Y-up
-export transform and shallow-water overlay; the current binary exports must
-be regenerated once the Blender slot is regranted. Godot import/render,
-host/guest simulation and screenshots await the engine grant.
+Recipes and static physics probes pass. Corrected Blender masters and batched
+GLBs have been exported for all five IDs; glTF accessor bounds verify the
+world X/Z extents and positive Y elevations with zero rotated nodes. Godot
+import/render, host/guest simulation and screenshots await the engine grant.
