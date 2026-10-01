@@ -16,7 +16,7 @@ modified. No hand rig is replaced.
 | 0 | Pulse Rifle | floating vented handguard, open collars, skeleton stock |
 | 1 | Rocket Launcher | massive circular launch tube, side-loading canister, exhaust rings |
 | 2 | Rail Lance | parallel accelerator rails, exposed center channel, optic |
-| 3 | Scattergun | separate twin bores on moving barrel pivot, break-action receiver |
+| 3 | Scattergun | separate twin forward bores, rear **closed** breech plates and break-action receiver |
 | 4 | Plasma Driver | opposed ceramic radiator blades, reactor and energy aperture |
 | 5 | Grenade Launcher | shell-width muzzle, cylinder drum, squared shoulder stock |
 | 6 | Shock Beam | twin long capacitor prongs around recessed shock emitter |
@@ -26,6 +26,11 @@ modified. No hand rig is replaced.
 
 The camera-facing breech/stock cap is also class-specific, so mechanical
 identity reads in the actual hip-fire framing as well as at world-model angles.
+The Pulse Rifle has a near-side machined service hatch, captive fasteners,
+cooling mouths, dorsal charging track and visible reciprocating bolt. Rear iron
+ears seat on full-width receiver saddles; front blades seat on barrel/hood
+bridges. The two scoped weapons clamp their hollow optics to receiver feet and
+front handguard/rail brackets. These mounts sit below the source ADS ray.
 
 Palette roles `dark`, `light`, `glow` retain native finish bindings in both
 first-person and on remote operators. `trim`,
@@ -42,9 +47,9 @@ python3 tools/godot-weapons/blender-art/verify.py
 
 The static audit reads actual GLB vertex positions and projected silhouettes,
 checks both canonical SHA-256 manifests, material slots, group topology, Blender
-masters and triangle/batch budgets. Across all ten: first-person **3,284–6,268**
-triangles and **8–12** batches each; world **508–1,028** triangles and **8–12**
-batches each. Largest actual vertex-profile IoU is **0.382** side and **0.329**
+masters and triangle/batch budgets. Across all ten: first-person **3,680–7,148**
+triangles and **8–13** batches each; world **556–1,132** triangles and **8–13**
+batches each. Largest actual vertex-profile IoU is **0.394** side and **0.371**
 top. `godot/tests/first_person/art_override.gd` checks the live adapter,
 moving feed, source anchors and separate first-person/world layers.
 

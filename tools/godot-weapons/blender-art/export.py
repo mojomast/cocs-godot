@@ -93,12 +93,43 @@ def sights(id,sight,front):
             collar(z,r,.013,'dark',sight[1]); collar(z,r-.008,.005,'trim',sight[1])
         for sx in (-1,1): rod((sx*.052,sight[1],sight[2]-.08),(sx*.056,sight[1],front[2]+.025),.006,'light')
         block((0,sight[1]-.062,sight[2]-.17),(.075,.045,.14),'dark')
-    else:
+        # Scope tube cradle: real clamped feet into the receiver top, not an
+        # isolated optic hovering over the action. The center ray stays hollow.
+        roof=(.055 if id==2 else .067)
+        foot_top=sight[1]-.078
         for sx in (-1,1):
+            block((sx*.033,(roof+foot_top)*.5,sight[2]-.17),(.020,foot_top-roof+.022,.105),'trim')
+            block((sx*.043,roof+.010,sight[2]-.17),(.046,.018,.13),'dark')
+        # The front ring rides the rail/handguard through lateral cantilevers.
+        front_rail=(.049 if id==2 else .039)
+        if id==8:
+            block((0,.050,front[2]+.025),(.178,.017,.047),'dark')
+        for sx in (-1,1):
+            rod((sx*.092,front_rail-.006,front[2]+.025),
+                (sx*.057,sight[1]-.025,front[2]+.025),.008,'trim')
+    else:
+        roofs=(.065,.057,.055,.057,.087,.075,.025,.118,.067,.119)
+        roof=roofs[id]
+        post_bottom=sight[1]-.048
+        # Full-width saddle is mechanically seated on the receiver, then two
+        # separate side ears rise into the open notch (no central ADS occluder).
+        block((0,roof+.007,sight[2]),(.122,.016,.065),'dark')
+        for sx in (-1,1):
+            span=max(.012,post_bottom-roof+.012)
+            block((sx*.039,(roof+post_bottom)*.5,sight[2]),(.019,span,.034),'light')
             block((sx*.039,sight[1]-.018,sight[2]),(.012,.06,.014),'trim')
         # Front blade terminates at, never above, the authored ADS target ray.
         block((0,front[1]-.042,front[2]),(.011,.084,.012),'trim')
         block((0,front[1]-.058,front[2]),(.085,.012,.05),'dark')
+        # Front sight shoe goes down to the *actual* local barrel/hood roof.
+        # On the double barrel a cross-brace spans the two separate tubes.
+        front_roofs=(.073,.137,.050,.098,.085,.142,.048,.095,.048,.100)
+        if id==3:
+            block((0,.101,front[2]),(.26,.018,.055),'light')
+        gap=max(.008,front[1]-.055-front_roofs[id])
+        if gap>.012:
+            block((0,(front[1]-.055+front_roofs[id])*.5,front[2]),
+                  (.037,gap+.018,.041),'trim')
 
 def action_cap(id):
     """Camera-facing breech/stock mechanisms, visible in the shipping hip pose.
@@ -122,20 +153,23 @@ def action_cap(id):
             block((x,-.045,z+.013),(.007,.078,.007),'glow',bevel=0)
         block((0,-.109,z),(.096,.019,.024),'trim')
     elif id==3:
+        # Closed twin breech plates with exposed locking dogs, not rearward
+        # hollow muzzle rings aimed into the player's face.
         for x in (-.065,.065):
-            collar(z,.048,.013,'trim',-.04,x)
-            tube((x,-.04,z+.004),.029,.009,'cavity')
-        block((0,-.10,z),(.034,.028,.03),'glow')
+            block((x,-.04,z),(.091,.101,.027),'dark')
+            block((x,-.04,z+.017),(.072,.077,.009),'trim')
+            block((x,-.04,z+.024),(.011,.063,.006),'cavity',bevel=0)
+        block((0,-.105,z+.018),(.035,.024,.016),'glow')
     elif id==4:
         collar(z,.074,.018,'ceramic',-.055)
         collar(z+.009,.050,.010,'glow',-.055)
         for x in (-.092,.092): block((x,-.055,z),(.019,.10,.027),'trim')
     elif id==5:
-        collar(z,.080,.018,'trim',-.055)
-        for i in range(6):
-            angle=math.tau*i/6
-            tube((math.cos(angle)*.051,-.055+math.sin(angle)*.051,z+.014),.012,.008,'cavity',vertices=8)
-        tube((0,-.055,z+.012),.014,.009,'glow')
+        block((0,-.055,z),(.17,.145,.025),'dark')
+        block((0,-.055,z+.016),(.145,.115,.010),'trim')
+        for x in (-.051,0,.051):
+            block((x,-.052,z+.025),(.026,.076,.006),'cavity',bevel=0)
+        block((0,-.117,z+.026),(.092,.009,.008),'glow',bevel=0)
     elif id==6:
         for x in (-.066,.066):
             block((x,-.047,z),(.028,.125,.026),'light')
@@ -161,6 +195,19 @@ def build(id, low):
     s,f,tip,y,gr,sup,mg=architecture(id,CAT[id])
     if id==0: # pulse: narrow modular burst rifle / long floating vented handguard
         plate(0,-.015,-.12,.17,.16,.42,'light'); plate(0,.049,-.12,.145,.016,.34,'dark')
+        # Service hatch on the *visible near side*: deep polymer insert,
+        # exposed bolt track, engraved cooling mouths and captive latch screws.
+        # It breaks up the large blank slab seen during first-person hip fire.
+        plate(.093,-.013,-.123,.017,.109,.266,'dark')
+        plate(.104,.043,-.125,.009,.011,.242,'trim',.002)
+        plate(.105,-.073,-.125,.009,.009,.242,'trim',.002)
+        for z in (-.225,-.165,-.105):
+            plate(.105,.009,z,.010,.028,.034,'cavity',.002)
+            plate(.111,.027,z,.006,.006,.022,'trim',.001)
+        for z in (-.235,-.012):
+            plate(.107,-.055,z,.008,.012,.012,'ceramic',.001)
+        plate(.083,.065,-.083,.040,.023,.16,'light')
+        plate(.091,.079,-.083,.012,.008,.115,'glow',.002)
         tube((0,y,tip+.15),.041,.31,'cavity','barrel-assembly')
         for side in (-1,1):
             rod((side*.097,-.018,-.67),(side*.097,-.018,-.25),.01,'trim')
@@ -256,6 +303,9 @@ def build(id, low):
             block((mg[0]-.001,mg[1]-.019,z),(width+.005,.009,.012),'trim','feed')
         block((mg[0],mg[1]-.085,mg[2]),(width+.012,.015,depth),'light','feed')
     block((.069,-.006,-.135),(.019,.034,.13),'trim','bolt')
+    if id==0:
+        block((.106,-.012,-.018),(.018,.034,.071),'trim','bolt')
+        block((.119,-.012,-.017),(.007,.015,.043),'cavity','bolt',bevel=.002)
     # Palm-indexed angled grip, trigger cage and unobstructed support station.
     plate(gr[0],gr[1]-.015,gr[2]+.013,.09,.165,.10,'rubber')
     for n in range(3 if not lod else 1):
