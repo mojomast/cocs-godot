@@ -5,6 +5,13 @@ import {lobbyEndpoint} from '../godot-package/endpoint.mjs';
 const HORDE_OPERATORS = ['chatgpt','claude','grok','meta','gemini','deepseek','mistral','kimi','qwen'];
 const HORDE_HARNESSES = ['openclaw','hermes','opencode','claudecode','codex','cline','roo'];
 export const EXPERIENCES = {
+  'multiplayer-worlds': {scene:'res://multiplayer_worlds/demo.tscn',map:'switchyard-ward',modes:{
+    'switchyard-ward':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'],
+    'rainmarket-exchange':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','domination','koth','uplink','holdout','assault','payload'],
+    'breakwater-exchange':['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms'],
+    'thermal-divide':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'],
+    'sirocco-circuit':['puma-race'],'copper-bowl':['puma-soccer'],'tern-archipelago':['cocs','cocs-coop']},
+    identity:Object.fromEntries([['switchyard-ward',['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault']],['rainmarket-exchange',['deathmatch','teamdeathmatch','instagib','rockets','armsrace','domination','koth','uplink','holdout','assault','payload']],['breakwater-exchange',['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms']],['thermal-divide',['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault']],['sirocco-circuit',['puma-race']],['copper-bowl',['puma-soccer']],['tern-archipelago',['cocs','cocs-coop']]].map(([id,modes])=>[id,{scene:`res://multiplayer_worlds/${id==='tern-archipelago'?'lattice_demo':modes[0].startsWith('puma-')?'sports_demo':'demo'}.tscn`,modes}]))},
   campaign: {scene:'res://campaign/demo.tscn', map:'rootfall-verge', modes:Object.fromEntries(['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array'].map(id => [id,['campaign']]))},
   combat: {scene:'res://world/session.tscn', map:'meridian-exchange'},
   lobby: {scene:'res://world/session.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['deathmatch','teamdeathmatch','instagib','rockets'], 'verdant-reliquary':['deathmatch','teamdeathmatch','instagib','rockets'], 'ember-crucible':['deathmatch','teamdeathmatch','instagib','rockets']}},
@@ -12,7 +19,7 @@ export const EXPERIENCES = {
   horde: {scene:'res://horde/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['horde'], 'verdant-reliquary':['horde'], 'ember-crucible':['horde']},
     // Reviewed static identity entry: the identity maps are outside the locked
     // nine-map catalog, so the scene and mode come from this allowlist only.
-    identity:{'nacre-engine':{scene:'res://native_arenas/identity_horde_demo.tscn', modes:['horde']},'cinderwake-drydock':{scene:'res://horde_maps/demo.tscn', modes:['horde']}}},
+    identity:{'nacre-engine':{scene:'res://native_arenas/identity_horde_demo.tscn', modes:['horde']},'cinderwake-drydock':{scene:'res://horde_maps/demo.tscn', modes:['horde']},'blackwater-reclamation':{scene:'res://horde_maps/blackwater_demo.tscn',modes:['horde']}}},
   zones: {scene:'res://zone_modes/demo.tscn', map:'meridian-exchange', modes:{'meridian-exchange':['domination','koth','uplink','holdout'], 'verdant-reliquary':['koth','domination','uplink','holdout'], 'ember-crucible':['koth','domination','uplink','holdout'], 'tidal-citadel':['domination'], 'sunscar-convoy':['domination']}},
   assault: {scene:'res://assault/demo.tscn', map:'tidal-citadel', modes:{'tidal-citadel':['assault'], 'sunscar-convoy':['assault']}},
   'combined-arms': {scene:'res://combined_arms/demo.tscn', map:'sunscar-convoy', modes:{'sunscar-convoy':['combined-arms']}},
@@ -98,7 +105,7 @@ export function launchOptions(argv, catalog) {
       sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--difficulty=${difficulty}`,...diagnostics,...(smoke ? [smoke] : [])],
       args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot',EXPERIENCES.campaign.scene]};
   }
-  if (!['lattice', 'lattice-world', 'combined-arms'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires lattice-world or combined-arms');
+  if (!['lattice', 'lattice-world', 'combined-arms', 'multiplayer-worlds'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires lattice-world, combined-arms or multiplayer-worlds');
   if (!['lattice', 'lattice-world'].includes(experience) && values.rung !== undefined) throw Error('--rung requires lattice-world');
   if (experience === 'native-dm') {
     for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds'].includes(key)) throw Error(`--${key} is not supported by native-dm`);
@@ -133,6 +140,19 @@ export function launchOptions(argv, catalog) {
     return {experience, identityZone:true, map, mode, bots, roundSeconds, scoreLimit, endpoint:null, smoke,
       sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,`--score-limit=${scoreLimit}`,...cheats,...diagnostics,...(smoke ? [smoke] : [])],
       args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot','res://native_arenas/identity_zone_demo.tscn']};
+  }
+  if (experience === 'multiplayer-worlds') {
+    for (const key of Object.keys(values)) if (!['experience','map','mode','endpoint','join-room','bots'].includes(key)) throw Error(`--${key} is not supported by multiplayer-worlds`);
+    for (const flag of flags) if (flag !== '--diagnostics') throw Error(`${flag} is not supported by multiplayer-worlds`);
+    const map=values.map??'switchyard-ward', modes=EXPERIENCES[experience].modes[map];
+    if (!modes) throw Error(`Unknown multiplayer world ${map}`);
+    const mode=values.mode??modes[0];
+    if (!modes.includes(mode)) throw Error(`Unsupported multiplayer world/mode ${map}/${mode}`);
+    if (values.bots !== undefined && (!/^\d+$/.test(values.bots)||Number(values.bots)>(mode.startsWith('cocs') ? 16 : 8))) throw Error('--bots must be within the selected mode capacity');
+    const endpoint=lobbyEndpoint(values.endpoint,experience);
+    if (values['join-room'] !== undefined && (!endpoint||!values['join-room'].trim()||values.bots!==undefined)) throw Error('Multiplayer-worlds guest requires --endpoint and --join-room without host bots');
+    const sessionOptions=[`--map=${map}`,`--mode=${mode}`,...(values['join-room']===undefined?[`--bots=${values.bots??2}`]:[`--join-room=${values['join-room']}`]),...diagnostics];
+    return {experience,map,mode,world:true,bots:Number(values.bots??2),endpoint,smoke:null,sessionOptions,args:[...(diagnostics.length?['--verbose']:[]),'--path','godot',EXPERIENCES[experience].identity[map].scene]};
   }
   if (experience === 'combined-arms') {
     for (const key of Object.keys(values)) if (!['experience','map','mode','endpoint','join-room','bots','wait-for-players'].includes(key)) throw Error(`--${key} is not supported by combined-arms`);
