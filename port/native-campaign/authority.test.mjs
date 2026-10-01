@@ -65,7 +65,7 @@ test('wire cannot select arbitrary geometry or non-finite controls',async t=>{
 });
 test('final Continue emits fresh same-map start then terminal results without reconstruction',async t=>{
   let constructions=0,phase='playing';
-  const fake={actors:[{id:0,health:100}],events:[],time:17,over:false,
+  const fake={humanCount:1,config:{mode:'campaign'},actors:[{id:0,health:100,x:0,y:0,z:0}],events:[],time:17,over:false,
     step(){phase='level-complete';this.over=true;},
     completeCampaign(){phase='campaign-complete';},
     snapshot(){return {campaign:{mapId:'crown-array',phase,nextMapId:null,elapsed:17,totalElapsed:83,kills:27}};}};

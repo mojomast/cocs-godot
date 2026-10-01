@@ -52,6 +52,7 @@ var ground_tells := Telegraphs.new()
 var robot_voices := preload("res://campaign/robot_voices.gd").new()
 var story_director := StoryDirector.new()
 var story_widgets: Control
+var solo_cheats: CanvasLayer
 
 func _init() -> void:
 	catalog = CampaignCatalog.new()
@@ -116,6 +117,9 @@ func _ready() -> void:
 	story_widgets = StoryWidgets.new()
 	layer.add_child(story_widgets)
 	story_widgets.session = self
+	solo_cheats = preload("res://debug/solo_cheats.gd").new()
+	add_child(solo_cheats)
+	solo_cheats.bind_session(self)
 	var args := OS.get_cmdline_user_args()
 	smoke = "--smoke" in args
 	trace_enabled = "--native-trace" in args

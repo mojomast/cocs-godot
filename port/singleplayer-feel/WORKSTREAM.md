@@ -1,0 +1,47 @@
+# Single-player feel and in-game cheats — owner playtest feedback
+
+The owner reports bullet-sponge enemies, fragile player health, weak weapon
+impact, occasional jerky movement and bland campaign pacing. They explicitly
+requested an Astra subagent to research enjoyable gunplay and improve the game,
+plus an in-game debug menu with weapons, ammo, invulnerability and flight.
+
+## Ownership
+
+- Astra `ses_f0849000fffe15qmvUqCVdBI4b`, branch `improvement/singleplayer-feel`,
+  worktree `/home/mojo/.tmp-on-disk/cocs-singleplayer-feel-20261001`, base `6e2c6a32`:
+  cited gunplay research, campaign balance/encounter pacing, weapon feedback and
+  movement root-cause fixes, before/after measurements and meaningful checks.
+  Avoids parent-owned campaign authority/demo cheat hooks and active Horde lane.
+- Parent: `port/native-debug/solo_cheats.mjs`, `godot/debug/solo_cheats.gd`,
+  campaign authority/demo integration and tests. Horde integration follows its
+  active native-chain acceptance, avoiding concurrent edits to its authority.
+
+## In-game menu design / current implementation
+
+Visible Cheats button and F3 during single-player play; no environment flag or
+special launcher. Authority-confirmed toggles for invulnerability, unlimited ammo
+and flight/noclip; all ten weapons/ammo and health/armor actions; clear toggles.
+Opening pauses the owned single-player simulation, while snapshots continue;
+closing resumes with fresh input state. Flight uses WASD, Space up, Ctrl down,
+Shift faster; switching off lands on a clear source-supported surface or returns
+to takeoff if no supported landing is available. No multiplayer-room integration.
+
+The parent implementation has **not been parsed or rendered by Godot**. Five
+Node tests cover unchanged normal simulation, strict commands, reversible effects,
+flight/landing, and a real campaign wire pause/resume/stale-command/new-connection
+journey. The focused campaign authority/package-closure set passed 15/15 before
+the fifth no-op test was added; all five cheat tests then passed. Initial failures
+were a test assuming finite pistol ammo and a lifecycle stub missing its solo
+identity fields; both were corrected. Native menu/flight acceptance and a new
+build remain pending. Flight publishes actual velocity for smooth presentation.
+
+## Scheduling / delivery
+
+Horde retains exclusive Godot for the full Blackwater chain and Warden test.
+Urban roof acceptance follows briefly, then Astra/parent single-player engine
+verification. Astra currently has research/code/Node-only permission.
+The existing campaign playtest remains published at `614e11ad`. The next testing
+build should incorporate the owner's balance/feel and cheat-menu improvements,
+alongside the separately verified multiplayer expansion, after integration checks.
+
+Evidence target: `/home/mojo/.tmp-on-disk/cocs-singleplayer-feel-evidence-20261001/`.
