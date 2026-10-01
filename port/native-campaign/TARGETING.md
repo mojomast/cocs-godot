@@ -27,8 +27,10 @@
   clones; enemy weapons, alt fire, global tables, gravity/splash/lifetime,
   RNG/shot cadence and frozen source remain unchanged. The generator checks SHA
   `58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9`;
-  inverse comparison inventories all three permitted differences: imports,
-  actorHit, projectile lookup. Do not patch the generated file manually.
+  inverse comparison inventories imports, actorHit and projectile lookup. The
+  subsequent edge-effects pass adds a fourth, event-only correction: blocked
+  muzzle shots publish `hit:false` rather than an undamaged camera candidate.
+  See `port/edge-effects/DIAGNOSIS.md`. Do not patch the generated file manually.
 
 ## Measurements
 

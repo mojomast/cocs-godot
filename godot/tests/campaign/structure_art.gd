@@ -27,12 +27,17 @@ func _run() -> void:
 					var sample: float = world.height_at(float(b.x)+u*float(b.w), float(b.z)+v*float(b.d))
 					if is_finite(sample): check(base <= sample + 0.001, id + " foundation under footprint ground " + str(b.id))
 		check(art.placements >= expected and art.placements < expected * 6, id + " fitted segmented architecture")
-		check(art.batches < 240, id + " bounded chunked material batches")
+		# Eight workshop additions in the integrated baseline raise the observed
+		# peak to 272. Collision adds no draw batches; retain a finite art budget.
+		check(art.batches < 320, id + " bounded chunked material batches")
 		var physics_count := 0
 		for child: Node in world.get_children():
 			if child is StaticBody3D: physics_count += 1
 		check(physics_count == world.terrain_chunks + 1, id + " authoritative collision bodies only")
-		check(world.get_node("AuthoritativeBlocks").get_child_count() == world.recipe.arena.blocks.size(), id + " block collision count unchanged")
+		var rocks := 0
+		for block: Dictionary in world.recipe.arena.blocks:
+			if block.material == "rock": rocks += 1
+		check(world.get_node("AuthoritativeBlocks").get_child_count() == rocks, id + " rock cover retains exact box collision")
 		var triangles := 0
 		for key: String in art._sources:
 			var source: Array = art._sources[key]
@@ -68,7 +73,12 @@ func _run() -> void:
 				check(exposed_support, id + " visible exterior refinery support joins stories in " + key)
 		check(triangles < 32000, id + " both LOD source triangle budget")
 		for batch: Node in art.get_children():
-			check(batch is MultiMeshInstance3D and batch.multimesh.instance_count > 0, id + " no empty draw batches")
+			if batch is StaticBody3D:
+				check(batch.get_child_count()>0,id+" facade collision has receiving surfaces")
+				for collider: CollisionShape3D in batch.get_children():
+					check(collider.shape is ConcavePolygonShape3D and collider.transform == Transform3D.IDENTITY,id+" facade transforms baked into real triangles")
+			else:
+				check(batch is MultiMeshInstance3D and batch.multimesh.instance_count > 0, id + " no empty draw batches")
 		print("STRUCTURE_ART ", id, " blocks=", expected, " segments=", art.placements, " draws=", art.batches, " loaded_source_tris=", triangles)
 		world.queue_free()
 		await process_frame

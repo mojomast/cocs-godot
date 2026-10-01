@@ -24,6 +24,7 @@ extends Node3D
 
 const Surface = preload("res://player_fx/surface.gd")
 const MarkPool = preload("res://player_fx/mark_pool.gd")
+const BurstShader = preload("res://player_fx/burst.gdshader")
 
 const LIMITS := [6, 12, 20] # F9 Low / High / Extreme (burst pool)
 const LIVES := [0.18, 0.28, 0.32]
@@ -156,7 +157,7 @@ func _make_effect() -> Dictionary:
 	core_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	core_material.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
 	core_material.billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
-	core_material.no_depth_test = true
+	core_material.no_depth_test = false
 	var core := MeshInstance3D.new()
 	var core_mesh := SphereMesh.new()
 	core_mesh.radius = 0.15
@@ -168,11 +169,8 @@ func _make_effect() -> Dictionary:
 	core.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	core.visible = false
 	add_child(core)
-	var dust_material := StandardMaterial3D.new()
-	dust_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	dust_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	dust_material.billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
-	dust_material.no_depth_test = true
+	var dust_material := ShaderMaterial.new()
+	dust_material.shader = BurstShader
 	var dust := MeshInstance3D.new()
 	dust.mesh = QuadMesh.new()
 	dust.mesh.size = Vector2(0.8, 0.8)
@@ -242,12 +240,14 @@ func _shot(event: Dictionary) -> void:
 	if from == null or to == null: return
 	var offset: Vector3 = to - from
 	var distance := offset.length()
-	if distance < 0.6 or distance > 400.0: return
+	# Source muzzle-cover rays are legitimately shorter than a barrel. The old
+	# 60cm cutoff erased their contact cue exactly when peeking around corners.
+	if distance < 0.001 or distance > 400.0: return
 	var direction := offset / distance
 	var probe := _probe(to, direction, true, true)
 	if probe.is_empty(): return
 	counters.confirmed += 1
-	_spawn(to, probe.normal, probe.family)
+	_spawn(probe.get("point", to), probe.normal, probe.family)
 	var seed := float(posmod(identity(event.get("id")), 100000))
 	_place_mark(probe.get("point", to), probe.normal, probe.family, MarkPool.POCK, _mark_size(probe.family), seed)
 	_sync_marks()
@@ -274,7 +274,7 @@ func _blast(event: Dictionary, death: bool) -> void:
 		if death: counters.death_scorches += 1
 		last_blast = "death" if death else ("large" if large else "small")
 	if large and quality > 0:
-		if marks.place_ring(surface.position, surface.normal, size * 1.15, seed + 3.0):
+		if _place_mark(surface.position, surface.normal, family, MarkPool.RING, size * 1.15, seed + 3.0):
 			counters.shockwaves_placed += 1
 	_puff(surface.position, surface.normal, family, 1.0 if large else 0.8, PUFF_SECONDS)
 	_sync_marks()
@@ -306,34 +306,26 @@ func _probe(to: Vector3, direction: Vector3, tally := true, for_mark := false) -
 ## counter side effects. `_probe` wraps it for shot endpoints; `_blast_surface`
 ## walks it downward for blast floors.
 func _surface_at(to: Vector3, direction: Vector3) -> Dictionary:
-	var floor_y := 0.0
-	var bounds: Variant = map.get("bounds")
-	if bounds is AABB: floor_y = bounds.position.y
-	var collision_root: Variant = occlusion.collision_root
-	if is_instance_valid(collision_root):
-		return _probe_native(to, direction, floor_y)
-	return _probe_semantic(to, direction)
+	var hit := _contact(to - direction * PROBE, to + direction * PROBE)
+	# Search reach is not contact forgiveness: a max-range ray ending in air
+	# near a wall, or an unqueryable tiny bevel, must not scar the next face.
+	if not hit.is_empty() and hit.point.distance_to(to) > 0.006: return {}
+	return hit
 
-func _probe_native(to: Vector3, direction: Vector3, floor_y: float) -> Dictionary:
-	var result := {"normal": -direction, "family": Surface.classify(map, "", "", false), "name": "", "point": to}
-	var space := camera.get_world_3d().direct_space_state
-	if space == null: return result
-	var query := PhysicsRayQueryParameters3D.create(to + direction * PROBE, to - direction * PROBE)
-	query.hit_from_inside = true
-	query.hit_back_faces = true
-	var excluded: Array[RID] = []
-	for _attempt in range(12):
-		query.exclude = excluded
-		var hit := space.intersect_ray(query)
-		if hit.is_empty(): break
-		if occlusion.bodies.has(hit.rid):
-			var name := _node_path(hit.collider)
-			var ground: bool = hit.normal.y >= 0.7 and to.y <= floor_y + FLOOR_BAND
-			var hit_point: Variant = hit.get("position")
-			return {"normal": hit.normal, "family": Surface.classify(map, name, "", ground), "name": name,
-				"point": hit_point if hit_point is Vector3 else to}
-		excluded.append(hit.rid)
-	return result
+func _contact(from: Vector3, to: Vector3) -> Dictionary:
+	var hit: Dictionary = occlusion.contact(from, to)
+	if hit.is_empty(): return {}
+	var normal: Vector3 = hit.normal
+	if normal.dot(to-from) > 0.0: normal = -normal
+	var label := _node_path(hit.get("collider"))
+	var kind := ""
+	var blocks: Array = map.get("blocks", [])
+	var index := int(hit.get("block", -1))
+	if index >= 0 and index < blocks.size():
+		label = str(blocks[index].get("material", ""))
+		kind = str(blocks[index].get("kind", ""))
+	var ground := normal.y > 0.7 and (not hit.has("block") and not hit.has("collider") or label.to_lower().contains("terrain"))
+	return {"point":hit.position,"normal":normal,"family":Surface.classify(map,label,kind,ground),"name":label}
 
 func _node_path(node: Variant) -> String:
 	if not node is Node: return ""
@@ -346,58 +338,6 @@ func _node_path(node: Variant) -> String:
 		current = current.get_parent()
 	return "/".join(parts)
 
-func _probe_semantic(to: Vector3, direction: Vector3) -> Dictionary:
-	var terrain: Variant = occlusion.terrain
-	if terrain is TriangleMesh:
-		var crossing: Variant = terrain.intersect_segment(to - direction * PROBE, to + direction * PROBE)
-		if crossing is PackedVector3Array and not (crossing as PackedVector3Array).is_empty():
-			return {"normal": Vector3.UP, "family": Surface.GROUND, "name": "support", "point": (crossing as PackedVector3Array)[0]}
-		if crossing is Vector3:
-			return {"normal": Vector3.UP, "family": Surface.GROUND, "name": "support", "point": crossing}
-	var blocks: Array = map.get("blocks", []) if map.get("blocks", []) is Array else []
-	var boxes: Array = occlusion.boxes if occlusion.boxes is Array else []
-	var best := {}
-	var best_distance := INF
-	for index: int in range(mini(blocks.size(), boxes.size())):
-		var box: AABB = boxes[index]
-		if not blocks[index] is Dictionary: continue
-		if not box.has_point(to + direction * PROBE) and not box.has_point(to - direction * PROBE) and box.intersects_segment(to - direction * PROBE, to + direction * PROBE) == null: continue
-		var block: Dictionary = blocks[index]
-		var relative := to - box.get_center()
-		var normal := Vector3.ZERO
-		if absf(relative.x) / maxf(box.size.x, 0.001) >= absf(relative.y) / maxf(box.size.y, 0.001) and absf(relative.x) / maxf(box.size.x, 0.001) >= absf(relative.z) / maxf(box.size.z, 0.001):
-			normal = Vector3(signf(relative.x), 0, 0)
-		elif absf(relative.y) / maxf(box.size.y, 0.001) >= absf(relative.z) / maxf(box.size.z, 0.001):
-			normal = Vector3(0, signf(relative.y), 0)
-		else:
-			normal = Vector3(0, 0, signf(relative.z))
-		if normal == Vector3.ZERO: normal = -direction
-		var top := box.position.y + box.size.y
-		var ground := normal.y >= 0.7 and absf(to.y - top) <= PROBE * 2.0 and box.size.y <= FLOOR_BAND
-		var hint := str(block.get("material", ""))
-		var candidate := {"normal": normal, "family": Surface.classify(map, hint, str(block.get("kind", "")), ground), "kind": str(block.get("kind", "")),
-			"point": _face_point(to, box, normal)}
-		var delta := (to - box.get_center()).length()
-		if delta < best_distance:
-			best_distance = delta
-			best = candidate
-	if not best.is_empty(): return best
-	if bool(occlusion.implicit_floor) and to.y <= PROBE * 2.0:
-		return {"normal": Vector3.UP, "family": Surface.GROUND, "name": "floor", "point": Vector3(to.x, 0.0, to.z)}
-	return {}
-
-## Snap a probe point onto the chosen box face so marks sit exactly in the
-## confirmed plane instead of a probe-length away from it.
-static func _face_point(to: Vector3, box: AABB, normal: Vector3) -> Vector3:
-	var point := to
-	if absf(normal.x) > 0.5:
-		point.x = box.position.x if normal.x < 0.0 else box.position.x + box.size.x
-	elif absf(normal.y) > 0.5:
-		point.y = box.position.y if normal.y < 0.0 else box.position.y + box.size.y
-	elif absf(normal.z) > 0.5:
-		point.z = box.position.z if normal.z < 0.0 else box.position.z + box.size.z
-	return point
-
 ## First surface directly below a blast origin, bounded by BLAST_REACH, then the
 ## same camera/occlusion confirmation shots get. Never guesses a floor.
 func _blast_surface(origin: Vector3) -> Dictionary:
@@ -405,19 +345,11 @@ func _blast_surface(origin: Vector3) -> Dictionary:
 	if camera.global_position.distance_to(origin) > BLAST_MAX_DISTANCE:
 		counters.blasts_skipped_far += 1
 		return {}
-	var contact := {}
-	var point := Vector3.ZERO
-	var steps := int(BLAST_REACH / BLAST_STEP)
-	for index in range(1, steps + 1):
-		var candidate := origin + Vector3.DOWN * (float(index) * BLAST_STEP)
-		contact = _surface_at(candidate, Vector3.DOWN)
-		if not contact.is_empty():
-			var snap: Variant = contact.get("point")
-			point = snap if snap is Vector3 else candidate
-			break
+	var contact := _contact(origin + Vector3.UP * PROBE, origin + Vector3.DOWN * BLAST_REACH)
 	if contact.is_empty():
 		counters.blasts_skipped_no_ground += 1
 		return {}
+	var point: Vector3 = contact.point
 	if camera.is_position_behind(point):
 		counters.blasts_skipped_occluded += 1
 		return {}
@@ -448,12 +380,15 @@ func _mark_size(family: String) -> float:
 ## once and skipped rather than drawn floating past the edge.
 func _mark_flat(point: Vector3, normal: Vector3, basis: Basis, size: float) -> bool:
 	if occlusion == null or not bool(occlusion.ready): return true
-	var reach := PROBE * 2.0 + size * 0.6
 	var half := size * 0.5
-	var corners: Array[Vector3] = [Vector3.ZERO, basis.x * half, -basis.x * half, basis.y * half, -basis.y * half]
+	var corners: Array[Vector3] = [Vector3.ZERO]
+	for x: float in [-1.0, 0.0, 1.0]:
+		for y: float in [-1.0, 0.0, 1.0]:
+			corners.append((basis.x*x + basis.y*y) * half)
 	for corner: Vector3 in corners:
 		var probe := point + corner
-		if not bool(occlusion.segment_blocked(probe + normal * PROBE, probe - normal * reach)): return false
+		var hit: Dictionary = occlusion.contact(probe + normal * PROBE, probe - normal * PROBE)
+		if hit.is_empty() or hit.normal.dot(normal) < 0.995 or absf((hit.position-probe).dot(normal)) > 0.006: return false
 	return true
 
 func _place_mark(at: Vector3, normal: Vector3, family: String, kind: int, size: float, seed: float) -> bool:
@@ -464,7 +399,6 @@ func _place_mark(at: Vector3, normal: Vector3, family: String, kind: int, size: 
 	var basis := MarkPool.basis(unit, seed)
 	if not _mark_flat(at, unit, basis, width):
 		width = maxf(width * MARK_EDGE_SHRINK, 0.0)
-		basis = MarkPool.basis(unit, seed + 0.5)
 		if width < MARK_MIN_SIZE or not _mark_flat(at, unit, basis, width):
 			counters.marks_skipped_edge += 1
 			return false
@@ -483,7 +417,11 @@ func _spawn(at: Vector3, normal: Vector3, family: String) -> void:
 	var dust: MeshInstance3D = effect.dust
 	var palette: Array = COLORS.get(family, COLORS[Surface.STONE])
 	core.material_override.albedo_color = palette[0]
-	dust.material_override.albedo_color = palette[1]
+	dust.material_override.set_shader_parameter("tint", palette[1])
+	dust.material_override.set_shader_parameter("family", MarkPool._family_index(family))
+	dust.material_override.set_shader_parameter("puff", false)
+	dust.material_override.set_shader_parameter("phase", 0.0)
+	dust.material_override.set_shader_parameter("opacity", 1.0)
 	effect.family = family
 	effect.kind = FLASH
 	effect.strength = 1.0
@@ -515,7 +453,10 @@ func _puff(at: Vector3, normal: Vector3, family: String, strength: float, second
 	effect.remaining = effect.life
 	effect.progress = 0.0
 	effect.core.visible = false
-	effect.dust.material_override.albedo_color = PUFF_COLORS.get(family, PUFF_COLORS["stone"])
+	effect.dust.material_override.set_shader_parameter("tint", PUFF_COLORS.get(family, PUFF_COLORS["stone"]))
+	effect.dust.material_override.set_shader_parameter("puff", true)
+	effect.dust.material_override.set_shader_parameter("phase", 0.0)
+	effect.dust.material_override.set_shader_parameter("opacity", 0.5)
 	effect.dust.global_position = at + unit * 0.08
 	effect.dust.scale = Vector3.ONE * 0.5
 	effect.dust.visible = quality > 0
@@ -546,14 +487,15 @@ func advance(delta: float) -> void:
 			core.visible = false
 			dust.visible = quality > 0 and effect.remaining > 0.0
 			dust.scale = Vector3.ONE * lerpf(0.5, 2.6, progress) * float(effect.strength)
-			dust.material_override.albedo_color.a = effect.base * fade
+			dust.material_override.set_shader_parameter("opacity", effect.base * fade)
 		else:
 			core.visible = effect.remaining > 0.0
 			core.scale = Vector3.ONE * lerpf(0.55, 1.5, progress)
 			core.material_override.albedo_color.a = effect.base * fade
 			dust.visible = quality > 0 and effect.remaining > 0.0
 			dust.scale = Vector3.ONE * lerpf(0.45, 1.35, progress)
-			dust.material_override.albedo_color.a = 0.5 * fade
+			dust.material_override.set_shader_parameter("opacity", fade)
+		dust.material_override.set_shader_parameter("phase", progress)
 		if effect.remaining <= 0.0:
 			core.visible = false
 			dust.visible = false

@@ -30,13 +30,15 @@ test('committed static adapter is exactly reproducible from the pinned source',(
   assert.equal(generated,generateCampaignCore(source));
   assert.throws(()=>generateCampaignCore(source+'\n'),/Locked core drift/);
 });
-test('independent inverse comparison preserves every source byte outside imports, actorHit and projectile lookup',()=>{
+test('independent inverse comparison preserves every source byte outside four reviewed adapters',()=>{
   const sourceStart=source.indexOf('function actorHit('),sourceEnd=source.indexOf('function hitActor(',sourceStart);
   assert.ok(sourceStart>0&&sourceEnd>sourceStart);
   const body=generated.split('\n').slice(2).join('\n').replace(/from '\.\.\/\.\.\/game\//g,"from './");
   const start=body.indexOf('function actorHit('),end=body.indexOf('function hitActor(',start);
   assert.ok(start>0&&end>start);
-  const restored=(body.slice(0,start)+source.slice(sourceStart,sourceEnd)+body.slice(end)).replace('baseWeapon=this.projectileWeapon?.(r)??WEAPONS[r.weapon??1],w=altSpec?', 'baseWeapon=WEAPONS[r.weapon??1],w=altSpec?');
+  const restored=(body.slice(0,start)+source.slice(sourceStart,sourceEnd)+body.slice(end)).replace('baseWeapon=this.projectileWeapon?.(r)??WEAPONS[r.weapon??1],w=altSpec?', 'baseWeapon=WEAPONS[r.weapon??1],w=altSpec?')
+    .replaceAll('hit:clear?(target?.id??vehicleTarget?.id??sentryTarget?.id??false):false,falloff','hit:target?.id??vehicleTarget?.id??sentryTarget?.id??false,falloff');
+  assert.equal(generated.split('hit:clear?').length-1,2);
   assert.equal(restored,source);
   assert.equal((generated.match(/from '\.\.\/\.\.\/game\//g)||[]).length,34);
   assert.ok(!/\b(?:eval|Function)\s*\(|\bimport\s*\(/.test(generated));

@@ -34,8 +34,8 @@ const LIVES := [6.0, 14.0, 22.0]
 const RING_SECONDS := 0.45
 const RING_START_SCALE := 0.35
 const FADE := 0.35 # alpha fades over this fraction of life, at the end
-const OFFSET := 0.02
-const OFFSET_PER_SIZE := 0.012
+const OFFSET := 0.003
+const OFFSET_PER_SIZE := 0.001
 const MAX_MARKS_SEEN := 1000.0
 
 var camera: Camera3D

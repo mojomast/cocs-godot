@@ -1,5 +1,6 @@
 extends Node3D
-## Non-colliding Blender facades fitted entirely inside authoritative recipe blocks.
+## Blender facades fitted inside recipe movement bounds. Weapon/impact collision
+## uses their real LOD0 surfaces, matching the campaign-only source ray adapter.
 const PATH := "res://campaign/art/structures/"
 const CELL := 48.0
 var placements := 0
@@ -64,6 +65,22 @@ func _batch(group: Dictionary) -> void:
 		_sources[source_key] = meshes
 		instance.free()
 	for part: Dictionary in _sources[source_key]:
+		if int(group.lod) == 0:
+			# Same LOD0 triangle bytes/node transforms as structure-rays.mjs.
+			# Bake the full nonuniform art transform into collision vertices. Physics
+			# shape transforms do not preserve these anisotropic rotated imports.
+			var faces: PackedVector3Array = part.mesh.get_faces()
+			var body := StaticBody3D.new()
+			body.name = "Facade_%s_%s" % [group.style, group.profile]
+			body.position = group.origin
+			for placement: Transform3D in group.transforms:
+				var shape := ConcavePolygonShape3D.new()
+				shape.backface_collision = true
+				shape.set_faces((placement * part.transform) * faces)
+				var collider := CollisionShape3D.new()
+				collider.shape = shape
+				body.add_child(collider)
+			add_child(body)
 		var multi := MultiMesh.new()
 		multi.transform_format = MultiMesh.TRANSFORM_3D
 		multi.mesh = part.mesh

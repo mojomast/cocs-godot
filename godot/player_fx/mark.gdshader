@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, unshaded, cull_disabled, depth_draw_never, shadows_disabled;
+render_mode blend_mix, unshaded, cull_back, depth_draw_never, shadows_disabled;
 
 // Pooled surface-damage decal for the impact FX lane (player_fx/mark_pool.gd).
 //
@@ -81,6 +81,10 @@ float damage_height(vec2 q, float radius, float depth, float detail_amount) {
 void fragment() {
 	vec2 p = UV * 2.0 - 1.0;
 	float d = length(p);
+	// All families, including late expanding rings, have transparent corners.
+	// No texture sampler or alpha mip can reintroduce the underlying card.
+	if (d >= 0.98) { discard; }
+	float boundary = 1.0 - smoothstep(0.90, 0.98, d);
 	float e = 0.045;
 	float radius = 0.52 + 0.12 * hash(vec2(2.0, 5.0));
 	float depth = 0.4;
@@ -124,7 +128,7 @@ void fragment() {
 		float outer = inner + 0.24 - 0.10 * progress;
 		float band = smoothstep(inner, inner + 0.10, d) * (1.0 - smoothstep(outer - 0.10, outer, d));
 		float grain = 0.75 + 0.5 * hash(floor(p * 14.0));
-		float alpha = band * grain * opacity;
+		float alpha = band * grain * opacity * boundary;
 		if (alpha < 0.006) { discard; }
 		ALBEDO = mix(vec3(0.82, 0.76, 0.62), vec3(1.0, 0.86, 0.6), progress);
 		ALPHA = min(alpha, 0.72);
@@ -148,7 +152,7 @@ void fragment() {
 		ember *= (1.0 - age) * 0.55;
 		vec3 albedo = mix(vec3(0.035, 0.031, 0.03), dark, soot * 0.3);
 		albedo = mix(albedo, vec3(0.46, 0.21, 0.08), ember);
-		float alpha = body * opacity * (0.72 + 0.18 * soot);
+		float alpha = body * opacity * (0.72 + 0.18 * soot) * boundary;
 		if (alpha < 0.006) { discard; }
 		ALBEDO = albedo;
 		ALPHA = min(alpha, 0.88);
@@ -176,7 +180,7 @@ void fragment() {
 		albedo += vec3(sparkle) * rim * diffuse * max(0.0, 1.0 - d / (radius * 1.2));
 		albedo *= mix(1.0, 0.82, age);
 		float body = 1.0 - smoothstep(radius * 0.86, radius * 1.08, d);
-		float alpha = body * grain * opacity;
+		float alpha = body * grain * opacity * boundary;
 		if (alpha < 0.006) { discard; }
 		ALBEDO = albedo;
 		ALPHA = min(alpha, 0.96);

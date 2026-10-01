@@ -8,6 +8,7 @@ import {missionForCampaign} from './missions.mjs';
 import {deployEncounter} from './enemies.mjs';
 import {createCampaignStory} from './story.mjs';
 import {createCampaignInterludes} from './interludes.mjs';
+import {createStructureRay} from '../edge-effects/structure-rays.mjs';
 
 const primedSourceSurfaces=new WeakMap();
 /** Source bots import the original core's private floor-query cache. Bake that
@@ -46,6 +47,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
     transmission:{speaker:'ECHO',text:mission.brief}};
   let controls = {}, arenaAssigned = false;
   const feel=createFeel(difficulty);
+  const structureRay=createStructureRay(data);
   const remaining = match => match.actors.filter(a => a.isNpc && a.health > 0).length;
   const currentAnchor = () => anchors[state.stepIndex < 5 ? `encounter-${state.stepIndex + 1}` : 'exit'];
   const checkpointPosition = (match, player) => {
@@ -55,6 +57,15 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
   };
   const finish = (match, phase) => {state.phase=phase; state.winner=phase==='dead'?1:0; match.over=true; match.overReason=phase;};
   class CampaignMatch extends Match {
+
+    rayWorld(origin,direction,max) {return structureRay(origin,direction,max);}
+    visible(a,b) {
+      if(!a||!b||!['x','y','z'].every(k=>Number.isFinite(a[k])&&Number.isFinite(b[k])))return false;
+      const d={x:b.x-a.x,y:b.y-a.y,z:b.z-a.z},length=Math.hypot(d.x,d.y,d.z);
+      if(length<=1e-9)return true;
+      for(const k of ['x','y','z'])d[k]/=length;
+      return structureRay(a,d,length)>=length-.08; // existing source visibility tolerance
+    }
     weaponForIndex(actor,index) {return playerWeapon(actor,super.weaponForIndex(actor,index),Number.isInteger(index)?index:actor.weapon);}
     projectileWeapon(projectile) {return projectileWeapon(this,projectile);}
     emit(type,event) {feel.event(this,type,event);return super.emit(type,event);}

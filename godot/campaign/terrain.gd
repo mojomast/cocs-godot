@@ -8,6 +8,7 @@ const CHUNK := 32.0
 const BiomeVisual = preload("res://biomes/map.gd")
 const SURFACE = preload("res://biomes/surface.gdshader")
 const FOLIAGE = preload("res://biomes/foliage.gdshader")
+const CONDUIT = preload("res://weapon_effects/conduit.gdshader")
 const StructureArt = preload("res://campaign/structure_art.gd")
 const EnvironmentArt = preload("res://campaign/environment_art.gd")
 const Wreck = preload("res://campaign/art/landmarks/fallen-relay.glb")
@@ -112,11 +113,9 @@ func _make_materials() -> void:
 	var names := ["ground", "trail", "rock", "stone", "metal", "light"]
 	for i: int in names.size():
 		if names[i] == "light":
-			var mat := StandardMaterial3D.new()
-			mat.albedo_color = Color(str(recipe.palette[i]))
-			mat.emission_enabled = true
-			mat.emission = mat.albedo_color
-			mat.emission_energy_multiplier = 0.7
+			var mat := ShaderMaterial.new()
+			mat.shader = CONDUIT
+			mat.set_shader_parameter("tint", Color(str(recipe.palette[i])))
 			materials[names[i]] = mat
 		else:
 			var mat := ShaderMaterial.new()
@@ -182,6 +181,7 @@ func _surface(surface: Dictionary, collide := true) -> void:
 		return
 	var body := StaticBody3D.new()
 	body.position = origin
+	body.name = "Terrain_%d" % terrain_chunks
 	var collision := CollisionShape3D.new()
 	var shape := ConcavePolygonShape3D.new()
 	shape.backface_collision = true
@@ -197,6 +197,9 @@ func _build_blocks() -> void:
 	body.name = "AuthoritativeBlocks"
 	add_child(body)
 	for block: Dictionary in recipe.arena.blocks:
+		# Weapon/impact cover follows the imported closed facade, built below by
+		# StructureArt. Its containing recipe AABB includes visible empty air.
+		if block.material != "rock": continue
 		var size := Vector3(block.w, block.h - block.baseY, block.d)
 		var center := Vector3(block.x, (block.h + block.baseY)*0.5, block.z)
 		var shape := BoxShape3D.new()

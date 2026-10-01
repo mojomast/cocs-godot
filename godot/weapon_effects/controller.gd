@@ -6,6 +6,8 @@ extends Node3D
 const Profiles = preload("res://weapon_effects/profiles.gd")
 const Origin = preload("res://weapon_effects/origin.gd")
 const FlashShader = preload("res://weapon_effects/flash.gdshader")
+const TrailShader = preload("res://weapon_effects/trail.gdshader")
+const DischargeShader = preload("res://weapon_effects/discharge.gdshader")
 const CAP := 64
 const LINE_CAP := 128
 const SEEN_CAP := 4096
@@ -44,6 +46,7 @@ var collision_mask := 1
 var occlusion_provider: Callable
 var physics_occlusion_enabled := false
 var quality := 2
+var reduced_motion := false
 var slots: Array[Dictionary] = []
 var lines: Array[Dictionary] = []
 var lights: Array[Dictionary] = []
@@ -85,6 +88,7 @@ func attach_rig(rig: Node) -> void:
 	configure(rig.get("source_camera"), func() -> Dictionary:
 		var current: Node = reference.get_ref()
 		if not is_instance_valid(current): return {}
+		reduced_motion = current.get("reduced_motion") == true
 		var anchors: Dictionary = current.get("anchors")
 		var tips: Array = []
 		for index: int in current.get_muzzle_count():
@@ -274,6 +278,7 @@ func _slot(parent: Node, kind: int) -> Dictionary:
 	slot.node.mesh = casing if kind == 12 else quad
 	slot.node.visible = true
 	slot.merge({"kind":kind, "serial":serial, "velocity":Vector3.ZERO, "sheet":"", "remaining":0.1, "total":0.1, "size":0.1, "opacity":1.0, "growth":0.35, "fade":0.65}, true)
+	slot.material.shader = DischargeShader if kind == 17 else FlashShader
 	slot.material.set_shader_parameter("kind", kind)
 	slot.material.set_shader_parameter("billboard", kind != 12)
 	slot.material.set_shader_parameter("use_sheet", false)
@@ -313,7 +318,12 @@ func _fire(tip: Node3D, weapon: int, rig: Dictionary) -> void:
 			jet.node.position.z = -profile.size*0.45
 			_update_slot(jet)
 	_barrel_light(tip, profile)
-	if quality < 2: return
+	if quality >= 2 and not reduced_motion and weapon in [0, 2, 4, 6]:
+		var discharge := _slot(tip, 17)
+		discharge.merge({"remaining":0.19, "total":0.19, "size":minf(flash_size, 0.22)*1.6, "opacity":0.45}, true)
+		discharge.material.set_shader_parameter("tint", profile.color)
+		_update_slot(discharge)
+	if quality < 2 or reduced_motion: return
 	var smoke := _slot(tip, 10)
 	smoke.merge({"remaining":profile.smoke, "total":profile.smoke, "size":profile.size*1.4, "opacity":0.22, "velocity":Vector3(0.025, 0.28, -0.14), "growth":1.8}, true)
 	smoke.material.set_shader_parameter("tint", Color("809099"))
@@ -394,18 +404,48 @@ func _impact(pos: Vector3, normal: Vector3, weapon: int) -> void:
 ## The authoritative position is used exactly; no ground contact is invented.
 func _consume_explosion(event: Dictionary) -> void:
 	var kind := blast_kind(event)
-	if kind.is_empty() or quality == 0: return
+	var weapon := identity(event.get("weapon"))
+	var primary: bool = event.get("alt") != true and weapon in [1,4,5]
+	if (kind.is_empty() and not primary) or quality == 0: return
 	var pos: Variant = point(event.get("pos"))
 	if pos == null: return
 	var time: float = float(event.time) if numeric(event.get("time")) else 0.0
 	var id := identity(event.get("id"))
 	if id >= 0 and not _remember("blast/%d/%s" % [id, str(time)], time): return
+	if primary:
+		_primary_blast(pos,weapon)
+		blasts += 1
+		return
 	match kind:
 		"cluster": _cluster_blast(pos, identity(event.get("bomblet")))
 		"mortar": _mortar_blast(pos)
 		"mine": _mine_blast(pos)
 		"bomb": _bomb_blast(pos)
 	blasts += 1
+
+func _primary_blast(pos: Vector3, weapon: int) -> void:
+	var tint: Color = Profiles.ITEMS[weapon].color
+	if weapon == 4:
+		# Ion shell collapses around the real explosion, never at a predicted hit.
+		_blast_card(pos,17,0.85,0.28,tint,0.0 if reduced_motion else 1.4,0.6)
+		return
+	var smoke := _blast_card(pos,10,0.7,0.5,Color("777064"),1.2,0.7)
+	smoke.opacity = 0.24
+	smoke.velocity = Vector3.ZERO if reduced_motion else Vector3(0,0.35,0)
+	if reduced_motion: smoke.growth = 0.0
+	_update_slot(smoke)
+	if weapon == 1:
+		_blast_card(pos,13,0.9,0.18,tint,0.7,0.8)
+	elif not reduced_motion:
+		# Four short-lived fragments share the casing pool and its exact gravity.
+		for index: int in (4 if quality == 2 else 2):
+			var angle := float(index)*2.3999632
+			var shard := _slot(self,12)
+			shard.merge({"remaining":0.22,"total":0.22,"size":4.0,"velocity":Vector3(cos(angle),0.6,sin(angle))*2.2},true)
+			shard.node.global_position = pos
+			shard.material.set_shader_parameter("tint",tint)
+			_update_slot(shard)
+			blast_shards += 1
 
 func _blast_card(at: Vector3, kind: int, size: float, life: float, tint: Color, growth: float, fade: float) -> Dictionary:
 	var slot := _slot(self, kind)
@@ -491,11 +531,8 @@ func _spawn_line(start: Vector3, join: Vector3, end: Vector3, weapon: int, tip: 
 			node.mesh = ImmediateMesh.new()
 			node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 			node.top_level = true
-			var material := StandardMaterial3D.new()
-			material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-			material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-			material.vertex_color_use_as_albedo = true
-			material.cull_mode = BaseMaterial3D.CULL_DISABLED
+			var material := ShaderMaterial.new()
+			material.shader = TrailShader
 			node.material_override = material
 			add_child(node)
 			slot = {"node":node,"material":material}
@@ -519,7 +556,9 @@ func _draw_line(slot: Dictionary) -> void:
 	var core: Color = color.lerp(Color(1.0,0.97,0.9),float(profile.tracer_core))
 	var width := float(profile.tracer_width)
 	var glow := float(profile.tracer_glow)
-	slot.material.albedo_color = Color(1.0,1.0,1.0,fade)
+	slot.material.set_shader_parameter("fade", fade)
+	slot.material.set_shader_parameter("phase", 0.0 if reduced_motion else phase)
+	slot.material.set_shader_parameter("weapon", slot.weapon)
 	mesh.surface_begin(Mesh.PRIMITIVE_TRIANGLES)
 	# 1. Wide soft trail, brightest at the muzzle and fading down the ray.
 	_segment(mesh,slot.start,slot.join,width*3.4,color,glow*0.9,glow*0.75)
@@ -545,10 +584,12 @@ func _segment(mesh: ImmediateMesh, from: Vector3, to: Vector3, width: float, col
 	var view := source_camera.get_camera_transform().origin - (from+to)*0.5 if is_instance_valid(source_camera) else Vector3.UP
 	var side := (to-from).cross(view).normalized()*width*0.5
 	if side.length_squared() < 0.00000001: side = Vector3.RIGHT*width*0.5
-	mesh.surface_set_color(Color(color.r,color.g,color.b,from_alpha))
-	for vertex: Vector3 in [from-side,from+side,to+side]: mesh.surface_add_vertex(vertex)
-	mesh.surface_set_color(Color(color.r,color.g,color.b,to_alpha))
-	for vertex: Vector3 in [from-side,to+side,to-side]: mesh.surface_add_vertex(vertex)
+	var vertices: Array[Vector3] = [from-side,from+side,to+side,from-side,to+side,to-side]
+	var uvs: Array[Vector2] = [Vector2(0,0),Vector2(0,1),Vector2(1,1),Vector2(0,0),Vector2(1,1),Vector2(1,0)]
+	for index: int in 6:
+		mesh.surface_set_color(Color(color.r,color.g,color.b,lerpf(from_alpha,to_alpha,uvs[index].x)))
+		mesh.surface_set_uv(uvs[index])
+		mesh.surface_add_vertex(vertices[index])
 
 func _update_slot(slot: Dictionary) -> void:
 	var phase: float = 1.0-slot.remaining/slot.total
@@ -557,7 +598,7 @@ func _update_slot(slot: Dictionary) -> void:
 		slot.node.hide()
 		return
 	slot.node.visible = true
-	slot.material.set_shader_parameter("phase", phase)
+	slot.material.set_shader_parameter("phase", 0.0 if reduced_motion and slot.kind == 17 else phase)
 	slot.material.set_shader_parameter("opacity", slot.opacity * pow(1.0-phase, float(slot.get("fade", 0.65))))
 	var size: float = slot.size * (1.0 + phase*float(slot.get("growth", 0.35)))
 	slot.node.scale = Vector3.ONE * size

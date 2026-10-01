@@ -255,7 +255,8 @@ func run() -> void:
 	fx.consume([{"id":3,"time":2.0,"type":"explosion","weapon":1,"alt":true,"altId":"cluster","bomblet":2,"pos":{"x":0,"y":0,"z":1}}], 0, [])
 	check(fx.blasts == after, "alt blast events are deduplicated by identity")
 	fx.consume([{"id":9,"time":3.0,"type":"explosion","weapon":1,"pos":{"x":0,"y":0,"z":0}}], 0, [])
-	check(fx.blasts == after, "primary explosions keep their existing presentation")
+	check(fx.blasts == after + 1, "primary rocket gets its own compact burst, not an alt cluster split")
+	after = fx.blasts
 	fx.set_quality(0)
 	fx.consume([{"id":10,"time":4.0,"type":"explosion","weapon":4,"alt":true,"altId":"mortar","pos":{"x":0,"y":0,"z":0}}], 0, [])
 	check(fx.blasts == after, "quality 0 suppresses alt bursts")
