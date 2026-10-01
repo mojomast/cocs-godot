@@ -37,6 +37,11 @@ it does not mutate source modules. Its source `Match` subclass uses the existing
 with genuine AI, attack phases, health, damage and death IDs. Existing
 Harbinger champion timing is unchanged. The final easy live count is 13: the
 source cap of 12 plus the one authored boss.
+The Horde-only health-beat adapter now raises the source Warden `bossPhase`
+counter at 60% and 25% health and emits `boss-phase`; the frozen source applies
+its speed/damage/stomp profile on the next normal step. A controlled source-
+damage test exercises all three profiles. Live wave-ten phase, telegraph and
+voice receipt still require the reserved engine fixture below.
 
 Blackwater uses the existing frozen-source `hordeArena` constructor intake and
 Horde stage gates. Authored bounds are 440 × 380 source units. The server-side
@@ -108,3 +113,31 @@ loss (`live-attempt.log`); under software X11 the live scene measured roughly
 later-stage screenshot or chain success is claimed. The route's source-valid
 fixture tests do not write outcome state; neither they nor standalone physics
 probes should be represented as natural-play completion.
+
+## Prepared native-input acceptance — **NOT YET RUN**
+
+`node port/native-horde/blackwater-headless-live.mjs chain` and the equivalent
+`boss` invocation are reserved for a future **explicit exclusive Godot slot**.
+They instantiate the shipping Blackwater scene with a test-only headless focus
+seam, then send ordinary InputEventKey/MouseButton/Motion through
+HordeControls.sample, HordeClient.send_controls and the normal-clock local
+authority. The seam only replaces OS window focus/mouse capture unavailable in
+headless; it does not replace client sampling, source input epochs, FIFO TTL,
+combat, scoring, actor positions, inventory, health, stage or director state.
+The fixture uses the real easy/10-wave product config and `debug:false`.
+`chain` requires four restored source events, native progress HUD/sign receipts,
+two actual stage-entered events, gate body revisions and source resupply.
+`boss` continues the same normal waves until the wave-ten Warden shows source
+phases 1–3, a boss ground telegraph and a native voice asset scheduled for the
+Warden actor. Both are bounded failures if these conditions do not occur; neither
+is human playtime evidence. Native event/input observations are written to
+`headless-chain.{log,json}` or `headless-boss.{log,json}` in the evidence directory.
+
+The rendering bottleneck and source expiry are distinct: InputBuffer keeps its
+250 ms TTL. Software X11 sampled roughly every 250 ms at 4 FPS, crossing that
+threshold on slow frames. The headless fixture records real `stale-input`
+resets, cancelled frames and largest input gap instead of relaxing the product
+contract. The scoped JS-only pregrant suite passes 65/65 (log:
+`node-static-pregrant.log`). The new GDScript fixture has **not** been imported
+or parsed by Godot yet; resolve any engine parse/runtime errors under the next
+explicit grant. No headless success is claimed until that engine grant and run.

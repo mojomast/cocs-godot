@@ -59,13 +59,30 @@ class RobotHordeMatch extends Match {
   // One final source-class Warden joins wave ten, exactly once. spawnGroup is
   // the frozen source's actor/brain/phase/death registration path; its ids,
   // attacks, scoring, lives and upgrade effects retain source ownership.
-  if(!this.over&&state?.kind==='horde'&&state.wave===10&&state.phase==='wave'&&
-     this.wardenWave!==10&&state.boss==null&&state.enemies?.length>0){
+   if(!this.over&&state?.kind==='horde'&&state.wave===10&&state.phase==='wave'&&
+      this.wardenWave!==10&&state.boss==null&&state.enemies?.length>0){
    this.wardenWave=10;
    const ids=spawnGroup(this,state,{type:'warden',count:1,group:'wave-10-warden'},{team:1});
-   this.emit('horde-warden-arrived',{wave:10,actor:ids[0],count:state.enemies.length});
-  }
-  return result;
+    this.emit('horde-warden-arrived',{wave:10,actor:ids[0],count:state.enemies.length});
+   }
+   // Campaign scripts normally set the source's bossPhase counter at health
+   // beats. Horde has no campaign script: advance only its wave-ten Warden
+   // using the same source counter/event. Source updateBosses owns the actual
+   // damage, speed, stomp telegraph and phase profile on the following step.
+   if(!this.over&&state?.kind==='horde'&&state.wave===10&&state.phase==='wave'&&this.wardenWave===10){
+    const boss=this.actors.find(actor=>actor.id===state.boss&&actor.isNpc&&actor.npcType==='warden'&&actor.health>0);
+    if(boss){
+     const fraction=boss.health/boss.maxHealth;
+     const phase=fraction<=.25?3:fraction<=.6?2:1;
+     if(phase>(state.bossPhase||0)){
+      state.bossPhase=phase;
+      state.bossPhaseMax=3;
+      state.bossPhaseName=['','WARDEN','OVERCLOCKED','LEGION'][phase];
+      this.emit('boss-phase',{actor:boss.id,phase,name:state.bossPhaseName,wave:10});
+     }
+    }
+   }
+   return result;
  }
 }
 const IDENTITY_HORDE_MODE = 'horde';
