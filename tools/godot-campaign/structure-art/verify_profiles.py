@@ -57,7 +57,12 @@ for map_id in IDS:
         if block['material'] == 'rock':
             continue
         kind = style(recipe['campaign']['index'], block['id'])
-        exposed = min(block['h']-block['baseY'], max(1, block['h']-height_at(block['x'], block['z'])+.35))
+        samples = [height_at(block['x']+u*block['w'], block['z']+v*block['d'])
+                   for u in (-.5, 0, .5) for v in (-.5, 0, .5)]
+        fitted_base = min(max(min(samples)-.25, block['baseY']), block['h']-.5)
+        assert fitted_base >= block['baseY']
+        assert fitted_base <= min(samples)
+        exposed = block['h']-fitted_base
         count = 1 if kind in ('relay', 'outpost') else max(1, math.ceil(exposed/5))
         if kind in ('relay', 'outpost'):
             max_forest_height = max(max_forest_height, exposed)

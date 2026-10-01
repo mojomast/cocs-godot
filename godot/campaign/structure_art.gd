@@ -22,14 +22,14 @@ func build(host: Node3D) -> void:
 	for block: Dictionary in host.recipe.arena.blocks:
 		if block.material == "rock": continue
 		var style := style_for(int(host.recipe.campaign.index), str(block.id))
-		var ground: float = host.height_at(float(block.x), float(block.z))
-		var exposed := minf(float(block.h) - float(block.baseY), maxf(1.0, float(block.h) - ground + 0.35))
+		var base := fitted_base(host, block)
+		var exposed: float = float(block.h) - base
 		# Forest cabins and relay pedestals have a complete pitched/saddle roof
 		# kit, not modular tower shafts. They always use one closed fitted shell.
 		var segments := 1 if style in ["relay", "outpost"] else maxi(1, ceili(exposed / 5.0))
 		for segment: int in segments:
 			var profile := "top" if segment == segments - 1 else "base" if segment == 0 else "shaft"
-			var y0: float = float(block.h) - exposed + exposed * segment / segments
+			var y0: float = base + exposed * segment / segments
 			var height: float = exposed / segments
 			var at := Vector3(float(block.x), y0, float(block.z))
 			var scale := Vector3(float(block.w), height, float(block.d))
@@ -41,6 +41,18 @@ func build(host: Node3D) -> void:
 			placements += 1
 	for group: Dictionary in groups.values():
 		_batch(group)
+
+static func fitted_base(host: Node3D, block: Dictionary) -> float:
+	# The center can be metres higher than a downhill footprint edge. Sample
+	# corners, four edge midpoints and the center, so the closed skirt meets the
+	# lowest supported ground without leaving the original blocked volume.
+	var ground := INF
+	for u: float in [-0.5, 0.0, 0.5]:
+		for v: float in [-0.5, 0.0, 0.5]:
+			var y: float = host.height_at(float(block.x) + u * float(block.w), float(block.z) + v * float(block.d))
+			if is_finite(y): ground = minf(ground, y)
+	if not is_finite(ground): return float(block.baseY)
+	return clampf(ground - 0.25, float(block.baseY), float(block.h) - 0.5)
 
 func _batch(group: Dictionary) -> void:
 	var source_key := "%s-%s-%d" % [group.style, group.profile, group.lod]

@@ -108,6 +108,11 @@ def build(kind, lod, profile='top'):
     else:
         width = .76 if kind == 'relay' else .84
         box('Closed machinery-bearing mass', (0, .50, 0), (width, .97, .84), mats[0], .025)
+    if kind not in ('relay', 'outpost'):
+        # Story courses may retain a shadow seam, but the structural interior
+        # runs flush from 0 to 1. Adjacent modules meet at a real, opaque
+        # load-bearing core rather than revealing a 15 cm air gap.
+        box('Unbroken inner load core', (0, .50, 0), (.68, 1.0, .70), mats[2], 0)
     if profile == 'base':
         box('Single ground footing', (0, .055, 0), (.98, .11, .98), mats[1], .012)
     if kind == 'outpost':
