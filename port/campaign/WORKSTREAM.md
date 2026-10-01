@@ -331,3 +331,9 @@ export compact verified authority replay data instead of Theora. The Sol menu
 lane replaces VideoStream playback with isolated real 3D rendering behind the
 usable interface. `ATTRACT_DEMO.md` defines their shared replay contract. Earlier
 Theora plans are historical and superseded; no menu video will be installed.
+
+The owner requested operator-detail screenshots immediately. The trailer lane,
+which owns the heavy slot, is instructed to finish its current safe command and
+prioritize the real operator texture gallery under
+`operator-textures/rendered-20260930/`, then return images for parent review and
+public upload. Trailer progress is preserved and will resume after that handoff.

@@ -40,11 +40,11 @@ hides all overlays at the existing distance threshold.
 
 ## Verification and matched gallery
 
-Lightweight checks completed: SVG XML parsing; all nine GLB SHA-256 hashes match
-the existing exporter manifest; `git diff --check`. Engine import, GDScript runtime
-tests and visual evaluation are **pending the exclusive heavy-slot grant**.
-Compatibility support uses stock `StandardMaterial3D`, but has not yet been
-confirmed by a render in this worktree.
+Completed checks include SVG XML parsing, all nine original GLB SHA-256 hashes,
+editor import and the integrated `textures.gd` runtime contracts. The integration
+corrected one strict inferred-type error in the test fixture; the passing log is
+`feature-integration-bfb91314/repair-1/textures.log` under the campaign evidence
+root. Compatibility visual evaluation remains pending the screenshot capture.
 
 After the heavy slot is granted, import the project, then run:
 
