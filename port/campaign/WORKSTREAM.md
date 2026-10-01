@@ -607,3 +607,16 @@ sight/optic mounts, visible Pulse action detail and closed Scattergun/Grenade re
 breeches. Static geometry/source-hash audit passes; updated Godot renders and
 ADS/framing/handling checks await the slot after architecture. The prior weapon
 screenshots explicitly predate this correction. Blender export slot is released.
+
+Refined architecture runtime checkpoint `1423f3cf` passes structure/environment/
+terrain checks and supplies eight closeups. Parent review confirms distinct family
+faces, but found visible segment gaps in refinery towers (the 0.97-height beveled
+cores leave a gap between profiles) and a pump foundation above sloping ground.
+A final bounded correction must bridge profile cores continuously and ground the
+lowest foundation across the footprint while staying inside original colliders.
+No further art direction expansion is requested; these are physical assembly fixes.
+
+Weapons now owns the exclusive Godot slot for the `5fbfd805` sight/action/breech
+revision and fresh normal/ADS/world renders. Architecture may export its bounded
+fix with one Blender thread, but waits for the next Godot grant. Final structure
+merge/publication waits for corrected grounding and continuity captures.
