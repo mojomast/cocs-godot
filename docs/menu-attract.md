@@ -1,24 +1,32 @@
-# Native menu cinematic background
+# Native menu in-engine scripted replay
 
-The Godot main menu plays `res://ui/attract/quiet-relay.ogv` in a looping,
-silent `VideoStreamPlayer` behind its ordinary route, Settings, Career and Quit
-controls. The video fits within the viewport at 16:9, with dark letterboxing
-and a translucent menu shell for legible text at compact sizes and UI scale.
-There is no idle trigger or menu input takeover; the existing menu music remains
-the only audio source. The original browser menu also places its live showcase
-behind the selection interface and offers a Menu showcase setting.
+The Godot home screen renders a silent, cosmetic **in-engine scripted replay**
+behind its normal route, Settings, Career and Quit controls. A private 3D
+`SubViewport` owns the current chapter's cropped production campaign terrain,
+daylight, source operator and robot models, Patch, a bounded combat flash and
+an animated orbit/first-person camera. Its source is the compact version-1
+authority replay at `res://ui/attract/demo.json`, documented in
+`port/campaign/ATTRACT_DEMO.md`. This is recorded campaign activity presented
+by Godot each frame, not live AI or a second campaign authority. The public
+trailer remains an independent video; menu runtime uses no movie decoder.
 
-Settings → **Animated menu background** is enabled by default, and **Reduced
-weather motion** also suppresses the moving background. Both settings persist
-in the existing version-1 `user://local_settings.json`; older files get the
-enabled default. No video is loaded in headless runs. If the asset is absent,
-the menu retains its dark background and prints one `MENU_ATTRACT unavailable`
-line; route launch and menu startup remain unaffected. Playback stops on
-Settings/Career overlay, focus loss, minimization, hiding, route launch and
-scene exit, and resumes when the menu is visible and focused again.
+The foreground remains usable immediately and never intercepts input. The
+replay renderer has its own world, no physics picking, no audio, and a render
+resolution capped at 960×540, updating at up to 18 frames per second. One
+chapter world exists at a time; at most 3,200 local terrain triangles and 36
+nearby cover pieces are constructed, yielding while terrain is assembled.
+The existing menu music remains the only soundtrack. A dark base and
+translucent shell keep route text legible; the stage letterboxes at 16:9.
 
-The trailer lane supplies the silent Theora file at that exact resource path.
-`godot/tests/main_menu/contracts.gd` uses a mock-media switch on the menu
-instance to exercise placement, foreground controls, preferences and lifecycle
-without importing or decoding a movie. Once the clip lands, verify the actual
-import and rendering in the packaged Godot build as well.
+Settings → **Animated menu background** is enabled by default; **Reduced
+weather motion** also suppresses the replay. Older version-1 local settings
+files receive the enabled default. Playback/render updates stop on Settings or
+Career overlays, focus loss, minimization, hiding, route launch and scene exit.
+If the replay file is absent or invalid, the normal dark menu stays usable and
+the missing-file notice is printed once. No runtime path depends on tests,
+Node, a capture generator, or external evidence.
+
+`godot/tests/main_menu/contracts.gd` uses a headless mock stage for the
+foreground and lifecycle contracts and checks the replay clip schema; final
+integration also requires a visible Godot render with the verified packaged
+`demo.json` and a transition between two production chapters.

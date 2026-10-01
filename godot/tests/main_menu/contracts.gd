@@ -10,6 +10,7 @@ const ROUTES_PATH := "res://ui/routes.json"
 const MIN_ROUTES := 22
 const PREF_SCENE := preload("res://ui/main_menu.tscn")
 const MENU_SCRIPT := preload("res://ui/main_menu.gd")
+const ATTRACT_SCRIPT := preload("res://ui/attract/demo.gd")
 
 var failed := false
 var checks := 0
@@ -400,6 +401,13 @@ func check_preferences() -> void:
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 
 func check_attract(route_count: int, category_count: int) -> void:
+	var sample := {"id":"relay-test","map":"rootfall-verge","kind":"combat","camera":"orbit",
+		"duration":1.0,"focus":{"x":0,"y":0,"z":0},"frames":[
+			{"t":0.0,"state":{"time":0,"actors":[],"campaign":{"story":{}}},"events":[]},
+			{"t":1.0,"state":{"time":1,"actors":[],"campaign":{"story":{}}},"events":[]}]}
+	check(ATTRACT_SCRIPT._valid_clip(sample) and not ATTRACT_SCRIPT._valid_clip(sample.merged({"camera":"video"}, true))
+		and not ATTRACT_SCRIPT._valid_clip(sample.merged({"focus":{"x":NAN,"y":0,"z":0}}, true)),
+		"bounded version-1 replay clip accepts authoritative frames, rejects invalid camera and nonfinite focus")
 	var settings := root.get_node_or_null("LocalSettings")
 	var previous: Dictionary = settings.values.duplicate() if settings != null else {}
 	if settings != null:
@@ -407,7 +415,7 @@ func check_attract(route_count: int, category_count: int) -> void:
 		settings.set_value("reduced_motion", false, false)
 	var menu: Control = PREF_SCENE.instantiate()
 	menu.preferences_path = isolated_preferences_path()
-	menu.attract_test_media = true
+	menu.attract_test_scene = true
 	root.add_child(menu)
 	menu.refresh_attract()
 	check(not MENU_SCRIPT.attract_window_active(Window.MODE_MINIMIZED, true)
@@ -415,15 +423,18 @@ func check_attract(route_count: int, category_count: int) -> void:
 		and MENU_SCRIPT.attract_window_active(Window.MODE_WINDOWED, true)
 		and MENU_SCRIPT.attract_window_active(Window.MODE_MINIMIZED, false, true),
 		"real minimized and unfocused windows cannot animate; virtual headless test windows can")
-	check(menu.attract_active and menu.attract_background.visible and menu.attract_player.loop,
-		"mock reel loops behind the menu immediately without an idle timer")
+	check(menu.attract_active and menu.attract_background.visible and menu.attract_stage.active
+		and menu.attract_stage.viewport.own_world_3d and not menu.attract_stage.viewport.physics_object_picking,
+		"isolated in-engine replay starts beneath the menu without physics input")
+	check(menu.attract_stage is SubViewportContainer and find_named(menu, "AttractVideo") == null,
+		"menu backdrop uses a private Godot 3D viewport rather than movie playback")
 	check(menu.get_child(menu.attract_background.get_index() + 1).name == "Shell",
 		"backdrop draws before all menu interface widgets")
-	var backdrop_nodes := [menu.attract_background, menu.attract_player,
+	var backdrop_nodes := [menu.attract_background, menu.attract_stage,
 		menu.attract_background.get_node("AttractFrame"), menu.attract_background.get_node("AttractVeil")]
 	check(backdrop_nodes.all(func(node: Control) -> bool:
 		return node.mouse_filter == Control.MOUSE_FILTER_IGNORE and node.focus_mode == Control.FOCUS_NONE),
-		"reel and its overlays ignore pointer and keyboard focus")
+		"3D stage and its overlays ignore pointer and keyboard focus")
 	var category: String = menu.current_category
 	menu.category_buttons["modes"].emit_signal("pressed")
 	check(menu.current_category == "modes" and menu.start.visible and menu.settings_button.visible,
@@ -444,10 +455,12 @@ func check_attract(route_count: int, category_count: int) -> void:
 			await process_frame
 			if menu.size.is_equal_approx(Vector2(logical)): break
 		await process_frame
-		var video_size: Vector2 = menu.attract_player.size
-		check(frame.size.is_equal_approx(menu.size) and video_size.x <= frame.size.x + 1.0
-			and video_size.y <= frame.size.y + 1.0 and absf(video_size.x / maxf(video_size.y, 1.0) - 16.0 / 9.0) < 0.02,
-			"reel letterboxes without stretch at %dx%d" % [logical.x, logical.y])
+		var stage_size: Vector2 = menu.attract_stage.size
+		check(frame.size.is_equal_approx(menu.size) and stage_size.x <= frame.size.x + 1.0
+			and stage_size.y <= frame.size.y + 1.0 and absf(stage_size.x / maxf(stage_size.y, 1.0) - 16.0 / 9.0) < 0.02,
+			"3D viewport letterboxes without stretch at %dx%d" % [logical.x, logical.y])
+		check(menu.attract_stage.viewport.size.x <= 960 and menu.attract_stage.viewport.size.y <= 540,
+			"private 3D render resolution is capped at %dx%d" % [logical.x, logical.y])
 	root.content_scale_size = old_base
 	root.content_scale_factor = old_factor
 	root.content_scale_mode = old_mode
@@ -457,6 +470,14 @@ func check_attract(route_count: int, category_count: int) -> void:
 	collect_prefixed(menu, "Category_", category_nodes)
 	check(route_nodes.size() == route_count and category_nodes.size() == category_count,
 		"background adds no routes or categories")
+	menu.attract_stage.clips = [sample, sample.merged({"id":"second","map":"crown-array"}, true)]
+	var chapter_before: int = menu.attract_stage.chapter_index
+	menu.attract_stage.advance_chapter()
+	check(menu.attract_stage.chapter_index == (chapter_before + 1) % 2 and menu.attract_stage.world == null,
+		"scripted replay advances chapters without loading an authority or GPU world in the headless fixture")
+	menu.attract_stage.advance_chapter()
+	check(menu.attract_stage.chapter_index == chapter_before,
+		"scripted replay cycles back to its first chapter")
 	if settings != null:
 		settings.open_panel(true, menu.settings_button)
 		menu.refresh_attract()
@@ -465,8 +486,10 @@ func check_attract(route_count: int, category_count: int) -> void:
 		menu.refresh_attract()
 		check(menu.attract_active, "background resumes after closing Settings")
 		settings.set_value("attract_demo_enabled", false, false)
-		check(not menu.attract_active and not menu.attract_background.visible,
-			"local animation toggle stops and hides the reel")
+		check(not menu.attract_active and not menu.attract_background.visible
+			and menu.attract_stage.viewport.render_target_update_mode == SubViewport.UPDATE_DISABLED
+			and menu.get_node("AttractBase").visible,
+			"local animation toggle stops and hides the 3D renderer")
 		settings.set_value("attract_demo_enabled", true, false)
 		settings.set_value("reduced_motion", true, false)
 		check(not menu.attract_active, "reduced motion stops the reel")

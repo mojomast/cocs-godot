@@ -14,10 +14,10 @@ const MenuPreferences = preload("res://ui/menu_preferences.gd")
 const SettingsAccess = preload("res://ui/settings_access.gd")
 const Audiovisual = preload("res://audio/av_service.gd")
 const Choice = preload("res://ui/lobby_choice.gd")
+const AttractStage = preload("res://ui/attract/demo.gd")
 const CAPTION := Color("a3b7c9")
 const ERROR_INK := Color("e08282")
 const PANEL_BG := Color(0.055, 0.07, 0.09, 1.0)
-const ATTRACT_STREAM := "res://ui/attract/quiet-relay.ogv"
 const LABEL_WIDTH := 150
 
 var registry := RouteRegistry.new()
@@ -36,13 +36,11 @@ var choice_rows: Dictionary = {}
 var slider_rows: Dictionary = {}
 var value_labels: Dictionary = {}
 var quitting := false
-## Test seam: simulate media presence in headless contracts without decoding a clip.
-var attract_test_media := false
+## Test seam: validate UI and lifecycle without allocating a headless GPU world.
+var attract_test_scene := false
 var attract_active := false
-var attract_stream_checked := false
-var attract_stream: VideoStream
 var attract_background: Control
-var attract_player: VideoStreamPlayer
+var attract_stage
 var categories_box := VBoxContainer.new()
 var routes_box := VBoxContainer.new()
 var params_box := VBoxContainer.new()
@@ -115,8 +113,8 @@ func caption(text: String) -> Label:
 
 func build_ui() -> void:
 	var background := StyleBoxFlat.new()
-	# Keep the route labels readable while allowing the reel behind the shell
-	# to remain visible. An absent reel still has the opaque base below it.
+	# Keep route labels readable over the private 3D viewport; the opaque
+	# background below the shell remains when replay data is unavailable.
 	background.bg_color = Color(PANEL_BG.r, PANEL_BG.g, PANEL_BG.b, 0.65)
 	var shell := PanelContainer.new()
 	shell.name = "Shell"
@@ -216,18 +214,20 @@ func build_ui() -> void:
 func build_attract_background() -> void:
 	# The backdrop precedes the shell in draw order and cannot take mouse or
 	# keyboard focus from the normal menu controls.
+	var base := ColorRect.new()
+	base.name = "AttractBase"
+	base.color = PANEL_BG
+	base.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	base.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(base)
+	move_child(base, 1)
 	attract_background = Control.new()
 	attract_background.name = "AttractBackground"
 	attract_background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	attract_background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	attract_background.focus_mode = Control.FOCUS_NONE
 	add_child(attract_background)
-	move_child(attract_background, 1) # MenuAudiovisual, backdrop, Shell.
-	var base := ColorRect.new()
-	base.color = PANEL_BG
-	base.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	base.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	attract_background.add_child(base)
+	move_child(attract_background, 2) # MenuAudiovisual, base, stage, Shell.
 	var frame := AspectRatioContainer.new()
 	frame.name = "AttractFrame"
 	frame.ratio = 16.0 / 9.0
@@ -235,15 +235,12 @@ func build_attract_background() -> void:
 	frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	frame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	attract_background.add_child(frame)
-	attract_player = VideoStreamPlayer.new()
-	attract_player.name = "AttractVideo"
-	attract_player.expand = true
-	attract_player.loop = true
-	attract_player.autoplay = false
-	attract_player.volume = 0.0 # The reel is silent; only the existing menu music plays.
-	attract_player.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	attract_player.focus_mode = Control.FOCUS_NONE
-	frame.add_child(attract_player)
+	attract_stage = AttractStage.new()
+	attract_stage.mock_scene = attract_test_scene
+	attract_stage.name = "AttractStage"
+	attract_stage.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	attract_stage.focus_mode = Control.FOCUS_NONE
+	frame.add_child(attract_stage)
 	var veil := ColorRect.new()
 	veil.name = "AttractVeil"
 	veil.color = Color(0.02, 0.03, 0.05, 0.23)
@@ -255,44 +252,33 @@ func build_attract_background() -> void:
 func _attract_allowed() -> bool:
 	if quitting or not is_inside_tree() or not visible: return false
 	# The headless display server reports MINIMIZED unconditionally, even for
-	# test windows. Only the mock-media seam bypasses that virtual window state.
-	var headless_mock := attract_test_media and DisplayServer.get_name() == "headless"
+	# test windows. Only the mock-stage seam bypasses that virtual window state.
+	var headless_mock := attract_test_scene and DisplayServer.get_name() == "headless"
 	if not attract_window_active(get_window().mode, get_window().has_focus(), headless_mock): return false
 	if SettingsAccess.overlay_open(): return false
 	var settings := SettingsAccess.service()
 	if settings != null and (not settings.values.get("attract_demo_enabled", true) or settings.values.get("reduced_motion", false)):
 		return false
-	return attract_test_media or DisplayServer.get_name() != "headless"
+	return attract_test_scene or DisplayServer.get_name() != "headless"
 
 static func attract_window_active(mode: int, focused: bool, headless_mock: bool = false) -> bool:
 	return headless_mock or (mode != Window.MODE_MINIMIZED and focused)
 
 func refresh_attract() -> void:
-	if attract_player == null: return
+	if attract_stage == null: return
 	if not _attract_allowed():
 		stop_attract()
 		return
-	if not attract_stream_checked:
-		attract_stream_checked = true
-		if not attract_test_media:
-			if not ResourceLoader.exists(ATTRACT_STREAM, "VideoStream"):
-				print("MENU_ATTRACT unavailable: ", ATTRACT_STREAM)
-				return
-			attract_stream = ResourceLoader.load(ATTRACT_STREAM, "VideoStream") as VideoStream
-			if attract_stream == null:
-				print("MENU_ATTRACT unavailable: ", ATTRACT_STREAM)
-				return
-			attract_player.stream = attract_stream
-	if not attract_test_media and attract_stream == null: return
 	if attract_active: return
+	attract_stage.start()
+	if not attract_stage.active: return
 	attract_active = true
 	attract_background.show()
-	if not attract_test_media: attract_player.play()
 
 func stop_attract() -> void:
 	if not attract_active: return
 	attract_active = false
-	attract_player.stop()
+	attract_stage.stop()
 	attract_background.hide()
 
 func _on_local_preferences_changed(_values: Dictionary) -> void:
