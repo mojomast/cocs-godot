@@ -9,7 +9,7 @@
   "barSeconds": 3,
   "musicBpm": 80,
   "musicOffset": 0,
-  "loudness": {"integratedLUFS": -16, "truePeakDBTP": -1.5, "rangeLU": 9},
+  "loudness": {"integratedLUFS": -16, "truePeakDBTP": -1.5, "encodeTruePeakDBTP": -2.2, "rangeLU": 9},
   "shots": [
     {"id":"forest", "map":"rootfall-verge", "seconds":3, "kind":"terrain", "height":9, "text":"A SIGNAL BENEATH THE SILENCE", "menu":true},
     {"id":"river", "map":"siltwake-crossing", "seconds":3, "kind":"terrain", "height":32, "text":"FOUR CONNECTED CHAPTERS", "menu":true},

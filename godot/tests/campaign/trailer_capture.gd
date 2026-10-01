@@ -76,17 +76,21 @@ func run() -> void:
     distance = 3.4
     height = 1.4
    elif shot.kind == "npc":
-    distance = 5.0
-    height = 2.2
+    distance = 3.3
+    height = 1.5
    elif shot.kind == "artillery":
     distance = 14.0
     height = 9.0
    var angle := lerpf(-0.45, 0.35, t)
    if shot.kind in ["pet", "npc"]: angle += PI
+   if shot.kind in ["combat", "warden"] and header.has("vantage"):
+    angle = atan2(float(header.vantage.x) - focus.x, float(header.vantage.z) - focus.z) + lerpf(-0.12, 0.12, t)
+    distance = 10.0 if shot.kind == "combat" else 5.5
+    height = 2.3
    var eye := focus + Vector3(sin(angle) * distance, height, cos(angle) * distance)
    eye.y = maxf(eye.y, float(session.world.height_at(eye.x, eye.z)) + 1.2)
    session.camera.position = eye
-   session.camera.look_at(focus + Vector3(0, 0.5 if shot.kind == "pet" else 0.8, 0))
+   session.camera.look_at(focus + Vector3(0, 0.5 if shot.kind == "pet" else (1.3 if shot.kind == "warden" else 0.8), 0))
    if shot.kind == "terrain":
     var view: Dictionary = session.world.recipe.cameras[0]
     var center := Vector3(view.target[0], view.target[1], view.target[2])

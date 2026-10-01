@@ -25,7 +25,12 @@ for(const id of ['forest','mara','patch','fire']){
  if(frames.length!==header.shot.seconds*12)throw Error(`${id}: incorrect replay length`);
  if(id==='patch'&&!frames.some(f=>f.state.campaign.story.pets>0))throw Error('Accepted pet missing');
  if(id==='fire'&&!frames.some(f=>f.events.some(e=>e.type==='damage'&&e.source===0)))throw Error('Actual player damage missing');
- clips.push({id,map:header.shot.map,kind:header.shot.kind,camera:'orbit',duration:header.shot.seconds,focus:header.focus,frames});
+ let focus=header.focus;
+ if(header.shot.kind==='terrain'){
+  const recipe=JSON.parse(await readFile(new URL(`../../godot/campaign/generated/${header.shot.map}.json`,import.meta.url),'utf8'));
+  const at=recipe.cameras[0].target;focus={x:at[0],y:at[1],z:at[2]};
+ }
+ clips.push({id,map:header.shot.map,kind:header.shot.kind,camera:'orbit',duration:header.shot.seconds,focus,frames});
  audit.push({id,sourceSHA256:receipt.sha256,frames:frames.length,events:totalEvents,petReceipts:receipt.interactions});
 }
 const data={version:1,fps:12,provenance:{scripted:true,authorityRevision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),description:'Production-authority fixed-step replay; camera/placement/AI staged. No live authority or gameplay inputs in menu.'},clips};

@@ -22,6 +22,7 @@ def main():
     p.add_argument('--font', type=Path, default=Path('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'))
     p.add_argument('--execute', action='store_true')
     p.add_argument('--slot-granted', action='store_true')
+    p.add_argument('--reuse-picture', action='store_true', help='Reuse already-reviewed picture intermediates for audio-only remaster')
     args = p.parse_args()
     if args.execute and not args.slot_granted:
         p.error('Encoding requires exclusive heavy-slot grant')
@@ -43,13 +44,21 @@ def main():
     t = 0
 
     def run(arguments, log=None):
+        arguments = list(map(str, arguments))
+        target = Path(arguments[-1])
+        if args.reuse_picture and target.parent == work and target.suffix == '.mp4' and target.is_file():
+            commands.append('# Reusing reviewed picture: ' + str(target))
+            return ''
         cmd = ['ffmpeg', '-hide_banner', '-nostdin', '-y', '-threads', '2',
-               '-filter_threads', '1', '-filter_complex_threads', '1'] + list(map(str, arguments))
+               '-filter_threads', '1', '-filter_complex_threads', '1'] + arguments[:-1] + ['-threads', '2', arguments[-1]]
         commands.append(shlex.join(cmd))
         if args.execute:
-            result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            (work / f'ffmpeg-{len(commands):03}.log').write_text(result.stderr)
+            (out / 'edit-commands-in-progress.sh').write_text('\n'.join(commands) + '\n')
             if log:
                 log.write_text(result.stderr)
+            result.check_returncode()
             return result.stderr
         return ''
 
@@ -104,7 +113,8 @@ def main():
 
     # Four phase-locked stems, gain changes on bar boundaries; no music time stretch.
     inputs, afilters = [], []
-    gains = ['0.70', 'if(gte(t,18),0.44,0.08)', 'if(gte(t,24),0.38,0.08)', 'if(gte(t,36),0.42,0)']
+    gains = ['0.70', '0.08+0.36*clip((t-18)/0.75,0,1)',
+             '0.08+0.30*clip((t-24)/0.75,0,1)', '0.42*clip((t-36)/0.75,0,1)']
     for i, name in enumerate(['strings', 'motion', 'brass', 'warden']):
         inputs += ['-i', args.stems / (name + '.wav')]
         afilters.append(f"[{i}:a]atrim=duration={total},asetpts=PTS-STARTPTS,"
@@ -112,8 +122,8 @@ def main():
     cues = json.loads(args.sfx.read_text()) if args.sfx else []
     for i, cue in enumerate(cues, 4):
         path = Path(cue['path']).resolve()
-        if ROOT not in path.parents:
-            raise ValueError('SFX must reference real game assets in this checkout')
+        if ROOT not in path.parents and (out / 'sfx') not in path.parents:
+            raise ValueError('SFX must be game assets or production-synth exports in evidence/sfx')
         if not 0 <= cue['at'] < total or cue['gainDB'] > -6:
             raise ValueError('SFX cues need an in-range time and gain <= -6 dB')
         inputs += ['-i', path]
@@ -124,7 +134,7 @@ def main():
     mix = work / 'score-mix.wav'
     run(inputs + ['-filter_complex', ';'.join(afilters), '-map', '[mix]', '-ar', 48000, '-c:a', 'pcm_s24le', mix])
     loud = m['loudness']
-    norm = f"loudnorm=I={loud['integratedLUFS']}:TP={loud['truePeakDBTP']}:LRA={loud['rangeLU']}"
+    norm = f"loudnorm=I={loud['integratedLUFS']}:TP={loud.get('encodeTruePeakDBTP', loud['truePeakDBTP'])}:LRA={loud['rangeLU']}"
     report = work / 'loudness-pass1.log'
     measured = run(['-i', mix, '-af', norm + ':print_format=json', '-f', 'null', '-'], report)
     if args.execute:
@@ -140,42 +150,23 @@ def main():
     run(['-i', silent, '-i', mix, '-map', '0:v:0', '-map', '1:a:0', '-c:v', 'copy',
          '-af', norm, '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-t', total, '-movflags', '+faststart', public])
 
-    # Menu uses ONLY the clean picture intermediates, no promotional typography,
-    # letterbox, fades to black, title card or audio. Serial joins bound memory.
-    menu, duration = clean[0]
-    for i, (clip, length) in enumerate(clean[1:]):
-        joined = work / f'menu-join-{i}.mp4'
-        run(['-i', menu, '-i', clip, '-filter_complex',
-             f'[0:v][1:v]xfade=transition=fade:duration=0.25:offset={duration-.25}[v]',
-             '-map', '[v]', '-an', '-c:v', 'libx264', '-crf', 18, '-pix_fmt', 'yuv420p', joined])
-        menu, duration = joined, duration + length - .25
-    ogv = out / 'quiet-relay.ogv'
-    seam = (f'[0:v]split=3[a][b][c];[a]trim=start=0.5:end={duration-.5},setpts=PTS-STARTPTS[mid];'
-            f'[b]trim=start={duration-.5}:end={duration},setpts=PTS-STARTPTS[tail];'
-            '[c]trim=end=0.5,setpts=PTS-STARTPTS[head];'
-            '[tail][head]xfade=transition=fade:duration=0.5:offset=0[seam];'
-            '[mid][seam]concat=n=2:v=1:a=0,format=yuv420p[v]')
-    run(['-i', menu, '-filter_complex', seam, '-map', '[v]', '-an', '-c:v', 'libtheora',
-         '-b:v', '1400k', '-g', 48, '-r', fps, ogv])
+    # Menu is a live Godot replay now: trailer-demo.mjs exports its JSON data.
+    # No menu movie is produced or installed.
     if args.execute:
-        if ogv.stat().st_size > 20 * 1024**2:
-            raise RuntimeError('Menu asset exceeds 20 MiB; reduce bitrate and re-encode')
-        for path in (public, ogv):
+        for path in (public,):
             probe = subprocess.check_output(['ffprobe', '-v', 'error', '-show_format', '-show_streams', '-of', 'json', str(path)], text=True)
             (out / (path.name + '.probe.json')).write_text(probe)
             data = json.loads(probe)
             video = next(s for s in data['streams'] if s['codec_type'] == 'video')
-            if video['codec_name'] != ('theora' if path == ogv else 'h264') or video['width'] != 960 or video['height'] != 540:
+            if video['codec_name'] != 'h264' or video['width'] != 960 or video['height'] != 540:
                 raise RuntimeError(f'Unexpected video format: {path}')
-            expected_duration = duration-.5 if path == ogv else total
+            expected_duration = total
             if abs(float(data['format']['duration']) - expected_duration) > 0.15:
                 raise RuntimeError(f'Unexpected duration: {path}')
-            if path == ogv and any(s['codec_type'] == 'audio' for s in data['streams']):
-                raise RuntimeError('Menu video unexpectedly contains audio')
             (out / (path.name + '.sha256')).write_text(hashlib.sha256(path.read_bytes()).hexdigest() + '\n')
     (out / 'edit-commands.sh').write_text('#!/usr/bin/env bash\nset -euo pipefail\n' + '\n'.join(commands) + '\n')
     (out / 'edit-timeline.json').write_text(json.dumps(dict(timeline=timeline, fps=fps,
-        duration=total, menuDuration=duration-.5, menuSilent=True, loudnessTarget=loud,
+        duration=total, menuAsset='live engine demo.json; no video', loudnessTarget=loud,
         sfx=cues, executed=args.execute, credit=m['credit']), indent=2))
     print('TRAILER_EDIT', 'encoded; visual/audio approval still required' if args.execute else 'plan only', out)
 

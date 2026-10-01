@@ -38,14 +38,15 @@ export function createTrailerFixture(shot, seed) {
     match.modeState.deployed=true;
     const robots=match.actors.filter(a=>a.npcModel);
     robots.forEach((a,i)=>{place(a,nearby(anchor,2+i*3));a.protection=0;});
-    target=robots[0];place(player,nearby(target,shot.kind==='melee'?1.5:10,true));aim(target);
+    target=robots[0];place(player,nearby(target,shot.kind==='melee'?2.1:10,true));aim(target);
+    if(shot.kind==='warden')target.bodyYaw=target.yaw=Math.atan2(-(player.x-target.x),-(player.z-target.z));
     if(shot.kind==='artillery')target.artilleryCooldown=.75;
     player.protection=0;
   }
   const focal=shot.kind==='artillery'?{x:(target.x+player.x)/2,y:(target.y+player.y)/2,z:(target.z+player.z)/2}:
     target??data.campaign.anchors['encounter-1'];
   return {
-    header:{shot,geometryHash:data.geometryHash,focus:{x:focal.x,y:focal.y,z:focal.z},start:data.campaign.anchors.start},
+    header:{shot,geometryHash:data.geometryHash,focus:{x:focal.x,y:focal.y,z:focal.z},vantage:{x:player.x,y:player.y,z:player.z},start:data.campaign.anchors.start},
     step(frame,fps) {
       // Logical E/F/fire inputs traverse the same validator and FIFO as the local
       // server; ACK here means fixed-step input application, NOT a network ACK.

@@ -2,10 +2,15 @@
 
 ## Delivery state
 
-**Prepared tooling/storyboard; capture and media are pending the exclusive heavy
-slot. No MP4 or OGV has been rendered or visually approved by this lane yet.**
-Base: `8b1bacbc3d4128c84e0af101ac02d7ddd8d2875e`, branch `campaign/trailer`.
-Do not publish a readiness flag or install a placeholder at the menu asset path.
+The trailer is rendered video. The menu uses a **live in-engine scripted replay**;
+the owner canceled the earlier Theora menu-video plan.
+**Completed:** `/home/mojo/.tmp-on-disk/cocs-trailer-evidence-20260930/quiet-relay-trailer.mp4`.
+48.000 seconds, 1,152 frames, H.264 960×540 / 24 fps, stereo AAC 48 kHz,
+15,639,711 bytes. SHA-256:
+`28740c780f71ef88efbdfba94955e8492801e9c9085d937eac3551debb97c1f1`.
+
+Initial base `8b1bacbc`, integrated with parent `19884ca1`, branch `campaign/trailer`.
+Do not install a menu movie or substitute prerendered images for the live viewport.
 
 The release caption and trailer credit are **“Scripted in-engine footage.”**
 These are actual Godot campaign terrain, operators, robots, animation, effects
@@ -21,9 +26,9 @@ There are no generated substitute game images or commercial media assets.
 
 | Time | Shot | Picture / action | Edit and sound |
 |---|---|---|---|
-| 00–03 | Forest | Low moving Rootfall terrain reveal; foreground depth | “A SIGNAL BENEATH THE SILENCE”; strings establish |
+| 00–03 | Forest | Closer Rootfall aerial reveal; foreground depth | “A SIGNAL BENEATH THE SILENCE”; strings establish |
 | 03–06 | River | High Siltwake sweep, same screen direction | “FOUR CONNECTED CHAPTERS”; movement match cut |
-| 06–09 | Forge | Low Emberline ridge sweep | Let the environment breathe |
+| 06–09 | Forge | Closer Emberline ridge sweep | Let the environment breathe |
 | 09–12 | Crown | High Crown terrain, elevated destination | Match direction, open scale |
 | 12–15 | Mara | Textured operator, authored proximity dialogue | Three-frame dip, small namecard above subject |
 | 15–18 | Ivo | Textured operator and authored greeting | Readable namecard; game caption retained |
@@ -44,9 +49,9 @@ copy, not fabricated NPC quotations. Actual dialogue stays in the game widgets.
 
 Typography uses local DejaVu Sans Bold by default (redistributed font is not
 needed). Trailer-only letterbox is 22px top/bottom. No marketing overlays appear
-during FP combat. Camera movement is a restrained 0.8-radian arc with ground
-clearance, matching left-to-right across chapters. Final visual review must
-confirm the authored arc actually sees the biome and doesn't traverse props.
+during FP combat. Actor cameras use a restrained 0.8-radian arc with ground
+clearance. Terrain cameras dolly across the authored overview with matched
+direction; the initial near-ground prototype was rejected for ridge occlusion.
 
 ## Authority provenance and determinism
 
@@ -101,17 +106,28 @@ node tools/godot-campaign/trailer-capture.mjs --render --slot-granted --shot=pat
 # Full capture only after samples pass. Reuses/overwrites those initial frames.
 node tools/godot-campaign/trailer-capture.mjs --prepare --render --slot-granted --output="$EVIDENCE"
 
+# Resume only complete, error-free shots after interruption:
+node tools/godot-campaign/trailer-capture.mjs --render --resume --slot-granted --output="$EVIDENCE"
+
+# Export exact production PCM and align accents to actual event frames:
+TRAILER_SFX_OUTPUT="$EVIDENCE/sfx" "$GODOT_BIN" --headless --path godot --script res://tests/campaign/trailer_sfx.gd
+node tools/godot-campaign/trailer-sfx-cues.mjs --evidence="$EVIDENCE"
+
 # Plan only: emits reproducible timeline and shell commands; no FFmpeg launched.
 python3 tools/godot-campaign/trailer-edit.py --evidence="$EVIDENCE" --stems="$STEMS"
 
 # Execute only while still owning the slot. Add --sfx=/path/to/cues.json after
 # choosing actual game SFX and confirming event timestamps in replay JSONL.
-python3 tools/godot-campaign/trailer-edit.py --evidence="$EVIDENCE" --stems="$STEMS" --execute --slot-granted
+python3 tools/godot-campaign/trailer-edit.py --evidence="$EVIDENCE" --stems="$STEMS" --sfx="$EVIDENCE/sfx-cues.json" --execute --slot-granted
+
+# Compact live-engine menu data, no rendering/video decoding:
+node tools/godot-campaign/trailer-demo.mjs --evidence="$EVIDENCE"
 ```
 
 SFX cue schema: `[{"path":"/absolute/checkout/game-asset.wav","at":28.0,"gainDB":-12}]`.
 Use real shot, melee and artillery sounds at the recorded event timestamps;
-avoid continuous gunfire walls. Cues must point inside the current checkout,
+avoid continuous gunfire walls. Cues must point inside the current checkout or
+the owned evidence/sfx export directory,
 have in-range times and gain at most -6 dB. Empty cues are supported for the
 music-only rough cut; the finished public cut should include reviewed accents.
 
@@ -122,41 +138,64 @@ normalization to **-16 LUFS / -1.5 dBTP / LRA 9**. Preserve
 plan is generated first, but execute mode regenerates it with measured values.
 The 72-second adaptive audition is not required: the exact 48-second stem form
 provides the intended whole-phrase cadence.
+The encoding ceiling is -2.2 dBTP to leave AAC headroom. The **decoded final AAC**
+measures **-16.03 LUFS, -2.20 dBTP, LRA 4.80 LU**. The first master reached
+-1.05 dBTP after AAC encoding and was remastered; its evidence is retained under
+`pre-aac-headroom-*`. `--reuse-picture` reuses reviewed picture intermediates for
+this audio-only remaster; copied H.264 stream MD5 remained
+`d706e66d9cc97a24fe35b9b880c47cce`. No time-stretching or music tempo change.
 
-## Separate beneath-menu cut
+## Separate live in-engine beneath-menu replay
 
-The main menu remains **visible, functional and continuously over the movie**,
+The main menu remains **visible, functional and continuously over the 3D viewport**,
 as in original CoCS: no idle wait, takeover, or “Press any key” screen.
 
-Menu footage is selected from the clean intermediates (forest, river, forge,
-Crown, Mara, Patch, fire). No promotional overlays, title cards, letterbox,
-black-frame ending or audio are added. Internal 0.25s dissolves and a 0.5s
-tail-to-head seam create an approximately **25-second loop**; movement remains
-around the interface. Native dialogue/HUD may remain visible in the underlying
-picture; review with the actual menu to avoid competing text at its controls.
-The menu's own orchestral service supplies music; the Theora stream is silent.
+`trailer-demo.mjs` exports `godot/ui/attract/demo.json` against the exact
+`port/campaign/ATTRACT_DEMO.md` version-1 contract: fps 12, provenance with
+scripted/authorityRevision, clips with id/map/kind/camera/duration/focus, frames
+with t/state/events. Production actors and campaign/story state retain pet
+reaction serials. **Every event** from both 24 Hz source frames is aggregated
+into each retained 12 Hz frame; downsampling discards no events.
 
-Output: `quiet-relay.ogv`, Theora 960×540/24fps, 1.4 Mbit/s target, hard checked
-at <=20 MiB and no audio stream. Install the approved output at
-`godot/ui/attract/quiet-relay.ogv` (**`res://ui/attract/quiet-relay.ogv`**).
-The separate menu component owner handles loading/looping/visibility. This
-tooling does not alter the menu or mark an absent/broken movie ready.
+Four clips: forest (3s), Mara (3s), Patch (6s), fire (6s), approximately 1.43 MB
+for 18 seconds. All request orbit cameras. The menu lane owns live camera
+interpolation, looping, visibility and cleanup in its real Godot SubViewport.
+This is state data, not video or images. No menu movie is generated/installed.
+The menu's existing orchestral service owns audio; replay data adds no sound.
+Input/ACK receipts remain in external evidence rather than the runtime asset.
 
 Public output: `quiet-relay-trailer.mp4`, H.264/yuv420p + AAC 192k, faststart.
 Evidence includes per-shot invocation/log/receipt, JSONL states/events, PNGs,
 edit timeline/commands, loudness measurement, ffprobe metadata and SHA-256s.
+The menu export records retained frame/event counts, source hashes and pet
+receipts separately in `demo-export-audit.json`.
 
-## Pending acceptance before publication
+## Completed capture and review
 
-1. Grant slot; prepare fixtures; repair any failed real-action receipts.
-2. Godot parse/import and two-second graphical samples (Patch, fire, terrain).
-3. Inspect the actual samples before rendering the 1,152-frame full sequence.
-4. Listen to the measured stem mix; select and align real SFX accents.
-5. Inspect MP4 start/mid/end and readable NPC/Patch beats; check real melee
-   knockback/shockwave and mortar ring appear on camera, not only in the log.
-6. Inspect menu seam twice beneath the actual menu UI, confirm moving scenery
-   remains visible, no title crop/black flash/audio, and OGV decodes in Godot.
-7. Install only approved OGV, provide public MP4 path/link and retain evidence.
+- All 13 shot preparations and graphical runs pass. Exactly 1,152 numbered PNGs;
+  all Godot logs contain success markers and no script/resource errors.
+- Patch accepts E at frame 24 / input sequence 25, applied sequence 25,
+  `pets=1`, `reactionSerial=1`. No visual pet method is called by capture tooling.
+- Fire records ten actual player damage events. Kick records one melee hit and
+  actual damage; the rendered foot, “45” number and shockwave were inspected.
+- The actual artillery role emits a danger ring, visible in the final MP4.
+- Samples were inspected before full capture. Repairs addressed imported-resource
+  availability, NPC/puppy facing, rifle aim at the real small chassis hit volume,
+  camera obstruction and NPC/Warden framing. Rejected evidence was preserved.
+- Final contact sheet covers all acts; final decoded PNGs confirm readable
+  captions, typography, Patch reaction, melee/ring and ending title. Picture
+  stream identity was rechecked after the audio-only remaster.
+- Five original production PCM cues were exported through the game synthesizer;
+  27 sparse accents align to real recorded event frames. Audio QC checks decoded
+  loudness/true peak and event timing. The source orchestral audition was reviewed
+  by the parent; this lane does not claim a separate subjective listening pass.
+- Full MP4 decode passed. `final-validation.json`, `final-loudness.json`, probe
+  metadata, SHA-256 and edit command/timeline files accompany the media.
+- Live-menu export retains every original event exactly once: forest 1, Mara 1,
+  Patch 1, fire 227 (230 total). 216 runtime snapshots, 18 seconds, 1,428,193 bytes.
+  Parent/menu lane owns the integrated live viewport/UI/focus/cleanup checks.
 
-No rendering, audio encoding or Godot import was performed while the music
-audition lane held the exclusive slot. These are pending actions, not passes.
+Useful extracted media in the evidence directory: `final-contact-sheet.png`,
+`poster.png`, `pet-confirmed.png`, `melee-confirmed.png`,
+`artillery-confirmed.png`, `end-frame.png`. These are actual decoded MP4 frames.
+No Theora/menu video was generated or installed.

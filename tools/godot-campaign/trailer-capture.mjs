@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 // Prepare deterministic replay, then render only with the explicitly granted slot.
-import {readFile,mkdir,open,writeFile} from 'node:fs/promises';
+import {readFile,mkdir,open,writeFile,readdir} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {spawn} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const args=process.argv.slice(2),opt=k=>args.find(a=>a.startsWith(`--${k}=`))?.slice(k.length+3);
-if(args.some(a=>!['output','shot','frames'].some(k=>a.startsWith(`--${k}=`))&&!['--render','--prepare','--slot-granted'].includes(a)))throw Error('Unknown trailer option');
+if(args.some(a=>!['output','shot','frames'].some(k=>a.startsWith(`--${k}=`))&&!['--render','--prepare','--slot-granted','--resume'].includes(a)))throw Error('Unknown trailer option');
 const manifest=JSON.parse(await readFile(new URL('./trailer.json',import.meta.url)));
 const total=manifest.shots.reduce((n,s)=>n+s.seconds*manifest.fps,0);
 if(total>1440||manifest.fps!==24)throw Error('Frame budget exceeded');
@@ -57,6 +57,13 @@ for(const shot of shots){
  }
  if(args.includes('--render')){
   const pngs=join(directory,'frames');await mkdir(pngs,{recursive:true});
+  if(args.includes('--resume')){
+   const prior=await readFile(join(directory,'godot.log'),'utf8').catch(()=> '');
+   const count=(await readdir(pngs)).filter(n=>/^\d{6}\.png$/.test(n)).length;
+   if(count===shot.seconds*manifest.fps&&prior.includes(`frames=${count}`)&&prior.includes('TRAILER_CAPTURE_OK')&&!/SCRIPT ERROR|^ERROR:/m.test(prior)){
+    console.log('TRAILER_SHOT_RESUMED',shot.id);continue;
+   }
+  }
   const command=['--path',join(root,'godot'),'--rendering-method','gl_compatibility','--audio-driver','Dummy','--fixed-fps','24',
    '--resolution','960x540','--script',join(root,'godot/tests/campaign/trailer_capture.gd'),'--',
    `--map=${shot.map}`,'--mode=campaign','--mute','--endpoint=ws://127.0.0.1:1/native-campaign',
