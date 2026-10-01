@@ -67,6 +67,15 @@ func _ready() -> void:
   var center := Vector3((float(bounds.minX)+float(bounds.maxX))/2,0,(float(bounds.minZ)+float(bounds.maxZ))/2)
   positions[id] = {"overview":[center+Vector3(width*.37,maxf(35,width*.21),depth*.37),center],
    "ground":[center+Vector3(-width*.23,2.2,depth*.23),center+Vector3(0,1,0)]}
+ if id in ["switchyard-ward","rainmarket-exchange"]:
+  for slab: Dictionary in catalog.recipes[id].arena.overhead:
+   var label: String = str(slab.id).trim_suffix("-ceiling")
+   var door_direction := Vector3(-1,0,0) if label in ["east-service","east-kiosk","east-warehouse"] else Vector3(1,0,0)
+   if label in ["north-ticket","north-station"]: door_direction = Vector3(0,0,-1)
+   if label == "south-depot": door_direction = Vector3(0,0,1)
+   var center := Vector3(float(slab.x),1.8,float(slab.z))
+   var length: float = float(slab.w) if absf(door_direction.x)>0 else float(slab.d)
+   positions[id]["interior-"+label] = [center+door_direction*(length*.25),center-door_direction*(length*.2)]
  for key: String in positions[id]:
   camera.position = positions[id][key][0]
   camera.look_at(positions[id][key][1])

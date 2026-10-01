@@ -25,6 +25,12 @@ func clearance(space: PhysicsDirectSpaceState3D, floor_position: Vector3, id: St
   push_error("Urban actor clearance " + id + " at " + str(floor_position))
   get_tree().quit(2)
 
+func side_probe(space: PhysicsDirectSpaceState3D, from: Vector3, to: Vector3, expected: float, id: String) -> void:
+ var hit: Dictionary = space.intersect_ray(PhysicsRayQueryParameters3D.create(from,to))
+ if hit.is_empty() or absf(from.distance_to(hit.position)-expected)>.07:
+  push_error("Urban slab side " + id + " expected distance=" + str(expected) + " got " + str(hit))
+  get_tree().quit(2)
+
 func _ready() -> void:
  var catalog := Catalog.new()
  if not catalog.open():
@@ -70,6 +76,8 @@ func _ready() -> void:
   var counters := 0
   var guards := 0
   var ceilings := 0
+  var doorway_sweep_points := 0
+  var slab_sides := 0
   var doors := 0
   var actor_points := 0
   var entries := {"switchyard-ward":[[-18.0,0.0,5.5,0.0],[18.0,0.0,-5.5,0.0],[0.0,-24.0,0.0,-4.5],[0.0,24.0,0.0,4.5]],
@@ -84,6 +92,14 @@ func _ready() -> void:
     var point := opening + Vector3(-signf(dx)*offset,0,-signf(dz)*offset)
     clearance(space,point,id + " door " + str(door) + "/" + str(offset))
     actor_points+=1
+   var direction := Vector3(signf(dx),0,signf(dz))
+   # Probe the aperture itself, not the separately raised 12cm sidewalk
+   # farther outside the north/south doors (which has its own curb tests).
+   for step: int in range(-4,5):
+    var crossing := opening + direction * (float(step)*(.0625 if absf(dz)>0 else .25))
+    probe(space,crossing+Vector3(0,2,0),crossing-Vector3(0,1,0),0,id + " door crossing floor " + str(door) + "/" + str(step))
+    clearance(space,crossing,id + " doorway traversal " + str(door) + "/" + str(step))
+    doorway_sweep_points+=1
    doors+=1
   for surface: Dictionary in arena.terrain.surfaces:
    if surface.walkable and ("roof" in surface.id or "overlook" in surface.id):
@@ -98,6 +114,11 @@ func _ready() -> void:
    probe(space,Vector3(x,1,z),Vector3(x,5,z),float(slab.minY),id + " sealed underside " + slab.id)
    probe(space,Vector3(x,6,z),Vector3(x,3,z),float(slab.maxY),id + " sealed roof top " + slab.id)
    clearance(space,Vector3(x,0,z),id + " standing inside " + slab.id)
+   var mid: float = (float(slab.minY)+float(slab.maxY))*.5
+   for side: Vector3 in [Vector3.RIGHT,Vector3.LEFT,Vector3.FORWARD,Vector3.BACK]:
+    var reach: float = float(slab.w)*.5 if absf(side.x)>0 else float(slab.d)*.5
+    side_probe(space,Vector3(x,mid,z),Vector3(x,mid,z)+side*(reach+1),reach,id + " sealed roof side " + slab.id + "/" + str(side))
+    slab_sides+=1
    ceilings+=1
   for block: Dictionary in arena.blocks:
    if "-counter-" in block.id:
@@ -113,7 +134,7 @@ func _ready() -> void:
      get_tree().quit(2)
      return
     guards+=1
-  rows.append({"id":id,"hash":world.geometry_hash,"ground":ground,"curbs":curbs,"roofs":roofs,"ramps":ramps,"counters":counters,"guards":guards,"doors":doors,"sealedShopCeilings":ceilings,"actorClearancePoints":actor_points})
+  rows.append({"id":id,"hash":world.geometry_hash,"ground":ground,"curbs":curbs,"roofs":roofs,"ramps":ramps,"counters":counters,"guards":guards,"doors":doors,"sealedShopCeilings":ceilings,"slabSides":slab_sides,"doorwaySweepPoints":doorway_sweep_points,"actorClearancePoints":actor_points})
   remove_child(world)
   world.free()
   await get_tree().physics_frame
