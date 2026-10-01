@@ -6,6 +6,29 @@ shaders. This extends the combined targeting/variety/animation update.
 
 ## Current resource grant
 
+**Implemented and integrated:** Astra `6700aac1` is parent `4d700437`.
+Astra released all engine processes. Parent owns the serialized engine for the
+combined canonical run, packaging and extracted-platform acceptance.
+
+Confirmed causes: campaign facade-containing boxes blocked visible air; blocked
+muzzle events carried the camera actor candidate; an 18cm cover impact was
+suppressed by a 60cm cue cutoff; the square border came from a uniform dust quad.
+The implementation adds campaign facade-triangle weapon cover, corrected event
+classification, real contact queries, radial effects and four production shader
+families. Parent reviewed `review-final.png` and published it and the paired
+square/round images plus source wall mark to the existing gallery release.
+
+Lane acceptance: 52 Node tests, 1,041 source/native structural-face comparisons,
+239 all-weapon effect checks, and 366 Compatibility checks including 72 pixel
+mask cases. Parent added explicit facade JSON/module package provenance and
+canonical source/native/render gates. Package manifest/closure tests passed
+47/47 after repairing two newly exposed data-inventory/rederivation omissions;
+all three attempt logs are retained under `/tmp/opencode/edge-package-closure-tests*`.
+
+Combined canonical verification is running from `33b6016e`, with keep-going
+enabled and log `/tmp/opencode/combined-animation-edge-verification.log`.
+No new game archive has yet been published. The following grant notes are history.
+
 Physics Sol completed native acceptance and explicitly released all engine
 processes. **Astra now has the exclusive Godot slot**, granted after final Sol
 commit `cd15d7b3` (integrated as `c391b3d9`). Sol made no controller/FX production
