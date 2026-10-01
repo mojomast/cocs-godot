@@ -374,3 +374,14 @@ snapshots, all 230 source events retained exactly once. No menu video exists.
 The Sol menu lane now owns the **exclusive heavy slot** to import, repair, run
 contracts and capture the actual in-engine scene beneath usable menu controls.
 Parent full-verifier/build work waits for that slot to return.
+
+## Owner feedback: operator gestures in the trailer
+
+The owner reports flapping hands and requests proper gestures. The Astra trailer
+lane is correcting production story/operator animation and will render a revised
+trailer, preserving the first published cut. Its initial work is edit-only while
+the Sol menu lane completes its current bounded acceptance and releases the
+heavy slot. The correction must use deliberate pose transitions, restrained
+joint motion and deterministic animation timing shared by campaign, live menu
+and trailer. Revised motion must be reviewed in rendered samples before encoding
+and publishing `quiet-relay-trailer-v2.mp4`.
