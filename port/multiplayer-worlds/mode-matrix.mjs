@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict';
 import {Room} from './derived/room.mjs';
 import {WORLDS,readWorld} from './catalog.mjs';
+import {floorAt,obstructed,rayWorld} from './derived/core.mjs';
 
 const rows=[];
 for(const [map,entry] of Object.entries(WORLDS)){
@@ -25,6 +26,20 @@ for(const [map,entry] of Object.entries(WORLDS)){
   const state=room.match.snapshot();
   if(mode==='ctf')assert.equal(state.objectives.flags.length,2);
   if(mode==='payload')assert.ok(state.objectives.payload.total>60);
+  if(mode==='payload' && room.match.arena.payloadPath){
+   const path=room.match.objectiveState.path;
+   for(const point of room.match.arena.payloadPath)assert.ok(path.some(p=>Math.hypot(p.x-point.x,p.z-point.z)<.15),`${map}: freight cart missed ${JSON.stringify(point)}`);
+  }
+  for(const box of room.match.arena.overhead??[]){
+   // Ground access remains open beneath the roof, while an authority ray
+   // upward is stopped by precisely the authored underside height.
+   assert.equal(obstructed(box.x,0,box.z,.65,room.match.arena),false,`${map}/${box.id}: walk-under sealed`);
+   assert.ok(floorAt(box.x,box.z,room.match.arena)!==null,`${map}/${box.id}: missing ground`);
+   const hit=rayWorld({x:box.x,y:1,z:box.z},{x:0,y:1,z:0},box.maxY+1,room.match.arena);
+   assert.ok(Math.abs(hit-(box.minY-1))<.02,`${map}/${box.id}: roof underside authority mismatch ${hit}`);
+  }
+  if(mode==='puma-race')assert.equal(room.match.race.gates.length,14);
+  if(mode==='cocs'||mode==='cocs-coop')assert.equal(room.match.arena.nodes.length,7);
   if(['koth','domination','uplink','holdout','assault'].includes(mode))assert.ok(state.objectives.zones.length>=1);
   rows.push({map,mode,hash,humans:2,bots:2,nav:room.match.nav.length,objective:state.objectives?.kind??state.race?.kind??(mode==='ctf'?'flags':'combat')});
  }

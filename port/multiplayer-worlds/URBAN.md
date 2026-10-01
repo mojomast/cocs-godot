@@ -34,4 +34,16 @@ node tools/godot-package/gen_routes.mjs --check
 node --test tools/godot-package/route_parity.test.mjs
 ```
 
-The five non-urban recipes are tracked separately in `WORLDS.md`; their mode bindings are proposals until source-compatible terrain/overhead/vehicle and LATTICE runtime seams plus Godot peer evidence are accepted.
+The five non-urban recipes are tracked separately in `WORLDS.md`. The reviewed derivative in `derived/core.mjs` resolves the new sports map before source constructor preflight; `derived/payload.mjs` stitches Breakwater's seven authored anchors with source walking edges. `build-world-catalog.mjs` converts exact overhead AABBs into non-walkable roof/underside triangles and side walls, then writes matching source/client `geometryHash` values. The Godot collision renderer consumes those same triangles and walls. Sports launches use `sports_demo.tscn`; Tern uses `lattice_demo.tscn` with source-compatible command deck and a port-scoped map/flow parser. The generated Godot scene derivatives and JS derivatives are reproducibility-gated at build time.
+
+Additional source checkout launches:
+
+```sh
+node tools/godot-dev/launch.mjs --experience=multiplayer-worlds --map=breakwater-exchange --mode=payload --bots=2
+node tools/godot-dev/launch.mjs --experience=multiplayer-worlds --map=thermal-divide --mode=ctf --bots=2
+node tools/godot-dev/launch.mjs --experience=multiplayer-worlds --map=sirocco-circuit --mode=puma-race --round-target=3 --time-limit=180
+node tools/godot-dev/launch.mjs --experience=multiplayer-worlds --map=copper-bowl --mode=puma-soccer --round-target=5 --time-limit=180
+node tools/godot-dev/launch.mjs --experience=multiplayer-worlds --map=tern-archipelago --mode=cocs --bots=2
+```
+
+The sports target maximum is **mode-based**: 10 race laps, 15 soccer goals. The main-menu world route offers the same legal map/mode pairs with default target and timer; CLI flags expose the bounded sports overrides. `mode-matrix.mjs` executes all 43 pairs with two human seats and two source bots/vehicles. Renderer inspection captured two views each of all five additional worlds after moving the Blender masters out of Godot's import tree, so GLBs are actually imported. Godot live authority logs prove Breakwater Payload/Combined Arms, Thermal CTF, Sirocco Race, Copper Soccer, and Tern PvP/Co-op start with matching gameplay hashes. Mode-specific complete-round and two-native-client journeys remain for the world lane's next exclusive engine pass.

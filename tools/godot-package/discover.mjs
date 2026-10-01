@@ -67,10 +67,11 @@ const identityZoneEntry = identityZoneAdapters[0];
 const identityZones = existsSync(resolve(root, identityZoneEntry)) ? discover(identityZoneEntry) : null;
 const campaignEntry = campaignAdapters[0];
 const campaign = existsSync(resolve(root, campaignEntry)) ? discover(campaignEntry) : null;
-const worlds = discover('port/multiplayer-worlds/derived/game-server.mjs');
+const worldEntry = 'port/multiplayer-worlds/derived/game-server.mjs';
+const worlds = existsSync(resolve(root, worldEntry)) ? discover(worldEntry) : null;
 const campaignDataFiles = campaign ? ['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array']
   .map(id => `godot/campaign/generated/${id}.json`) : [];
-const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules, ...campaign?.modules, ...worlds.modules};
+const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules, ...campaign?.modules, ...worlds?.modules};
 const dataFiles = nativeArena ? nativeArenaData : [];
 const identityDataFiles = nativeArena || identityZones ? identityArenaData : [];
 const hordeDataFiles = [
@@ -83,17 +84,17 @@ for (const [path, dependencies] of Object.entries(all)) (adapters.includes(path)
 console.log(JSON.stringify({entry:'server/game-server.mjs', hordeEntry:hordeAdapters[0], nativeArenaEntry,
   identityZoneEntry, campaignEntry,
   modules:sorted(sourceModules), adapterModules:sorted(adapterModules), external:ordinary.external,
-  dataFiles, identityDataFiles, hordeDataFiles, campaignDataFiles, worldDataFiles:worldData,
+  dataFiles, identityDataFiles, hordeDataFiles, campaignDataFiles, worldDataFiles:worlds ? worldData : [],
   dataReads:Object.fromEntries([
     ...(campaign ? [['port/native-campaign/maps.mjs', campaignDataFiles]] : []),
     ...(nativeArena ? [['port/native-arenas/catalog.mjs', [...dataFiles, ...identityDataFiles]]] : []),
     ...(identityZones ? [['port/native-identity-zones/catalog.mjs', [...identityDataFiles]]] : []),
     ...(hordeDataFiles.includes('godot/horde_maps/generated/cinderwake-drydock.json') ? [['port/native-horde/cinderwake-schema.mjs', ['godot/horde_maps/generated/cinderwake-drydock.json']]] : []),
     ...(hordeDataFiles.includes('godot/horde_maps/generated/blackwater-reclamation.json') ? [['port/native-horde/blackwater-schema.mjs', ['godot/horde_maps/generated/blackwater-reclamation.json']]] : []),
-    ['port/multiplayer-worlds/catalog.mjs',worldData],
+    ...(worlds ? [['port/multiplayer-worlds/catalog.mjs',worldData]] : []),
   ]),
   routes:{ordinary:Object.keys(ordinary.modules).sort(), horde:Object.keys(horde.modules).sort(), nativeArena:Object.keys(nativeArena?.modules ?? {}).sort(),
-    identityZones:Object.keys(identityZones?.modules ?? {}).sort(), campaign:Object.keys(campaign?.modules ?? {}).sort(), worlds:Object.keys(worlds.modules).sort()},
+    identityZones:Object.keys(identityZones?.modules ?? {}).sort(), campaign:Object.keys(campaign?.modules ?? {}).sort(), worlds:Object.keys(worlds?.modules ?? {}).sort()},
   nativeArenaAdditionalSource:Object.keys(nativeArena?.modules ?? {}).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p)).sort(),
   identityZoneAdditionalSource:Object.keys(identityZones?.modules ?? {}).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p) && !Object.hasOwn(horde.modules,p)).sort(),
   hordeAdditionalSource:Object.keys(horde.modules).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p)).sort()}, null, 2));

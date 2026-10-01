@@ -85,5 +85,11 @@ live mode rounds and captures in the separate evidence directory.
 
 Recipes, source bot graph and Puma physics route probes pass. Corrected Blender masters and batched
 GLBs have been exported for all five IDs; glTF accessor bounds verify the
-world X/Z extents and positive Y elevations with zero rotated nodes. Godot
-import/render, host/guest simulation and screenshots await the engine grant.
+world X/Z extents and positive Y elevations with zero rotated nodes. Shared adapter commit
+`59d27407` plus follow-up `c00e2104` registers 21 nonurban pairs on source-backed
+authority and five imported Godot visuals; scene-specific live starts passed for
+Breakwater Payload/Combined Arms, Thermal CTF, both Puma modes and both Tern
+LATTICE modes. Two render captures per world and console logs are under
+`/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/urban/`.
+The world lane's exclusive Godot pass should now drive full rounds, human peer
+objectives, vehicle playback and world-specific presentation evidence.
