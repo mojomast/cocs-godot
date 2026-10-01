@@ -145,7 +145,7 @@ def build(kind, lod, profile='top'):
             tube('Large pump bowl', (x, .49, -.435), .167, .08, mats[1], 14)
             tube('Sealed dark impeller disk', (x, .49, -.481), .118, .012, mats[2], 14)
             tube('Central spindle boss', (x, .49, -.489), .040, .012, mats[3], 10)
-            box('Vertical water riser', (x, .51, .44), (.07, .84, .07), mats[3], .006)
+            box('Vertical water riser', (x, .50, .44), (.07, 1.0, .07), mats[3], 0)
         box('Cross-connected manifold', (0, .82, -.445), (.70, .075, .08), mats[3], .009)
         if profile == 'top':
             box('Gasketed pump weather lid', (0, .975, 0), (.94, .04, .93), mats[1], .01)
@@ -159,7 +159,7 @@ def build(kind, lod, profile='top'):
         for y in (.24, .49, .74):
             box('Cut-stone continuous bed course', (0, y, -.475), (.94, .055, .027), mats[0], .006)
         for x in (-.36, 0, .36):
-            box('Vertical masonry bearing rib', (x, .50, -.483), (.055, .89, .024), mats[0], .006)
+            box('Vertical masonry bearing rib', (x, .50, -.483), (.055, 1.0, .024), mats[0], 0)
         for x in (-.38, .38):
             beam('Inclined flood buttress', (x, .11, -.46), (x*.70, .85, -.46), .075, .045, mats[2])
         if profile == 'top': box('Bridge pier bearing plate', (0, .98, 0), (.96, .03, .95), mats[2], .006)
@@ -169,7 +169,7 @@ def build(kind, lod, profile='top'):
     elif kind == 'refinery':
         # Heat exchanger is a real bank of long parallel blades between headers.
         for x in (-.35, .35):
-            box('Vertical refractory support', (x, .50, -.44), (.09, .92, .085), mats[1], .009)
+            box('Vertical refractory support', (x, .50, -.44), (.09, 1.0, .085), mats[1], 0)
         for x in (-.23, -.115, 0, .115, .23):
             box('External heat-exchanger fin', (x, .50, -.467), (.045, .62, .055), mats[3], .007)
         for y in (.18, .83): box('Exchanger header', (0, y, -.47), (.72, .075, .055), mats[2], .006)
@@ -180,7 +180,7 @@ def build(kind, lod, profile='top'):
             for y in (.28, .70): box('Oxidized coupling', (0, y, -.489), (.49, .024, .012), mats[1], .003)
     elif kind == 'uplink':
         for x in (-.37, .37):
-            box('Full-height insulated support', (x, .50, -.438), (.065, .92, .075), mats[1], .007)
+            box('Full-height insulated support', (x, .50, -.438), (.065, 1.0, .075), mats[1], 0)
         box('Deep recessed radiator', (0, .50, -.437), (.55, .69, .024), mats[2], .005)
         for x in (-.24, -.12, 0, .12, .24):
             box('Copper thermal vane', (x, .50, -.473), (.034, .65, .055), mats[3], .003)
@@ -192,7 +192,7 @@ def build(kind, lod, profile='top'):
     elif kind == 'receiver':
         # Faceted central spine and unbroken external rails define the array.
         for x in (-.38, .38):
-            box('Continuous receiver spar', (x, .50, -.38), (.065, .94, .075), mats[1], .008)
+            box('Continuous receiver spar', (x, .50, -.38), (.065, 1.0, .075), mats[1], 0)
         box('Sealed deep signal recess', (0, .53, -.388), (.39, .30, .028), mats[2], .008)
         box('Receiver glass-metal plate', (0, .53, -.407), (.29, .20, .018), mats[4], .006)
         if profile == 'top':
@@ -229,15 +229,15 @@ def build(kind, lod, profile='top'):
                 box('Side maintenance rib', (side*.44, y, 0), (.045, .035, .69), side_mat, .005)
             if kind in ('uplink', 'receiver', 'relay'):
                 for z in (-.26, .26):
-                    box('Side continuous rail', (side*.453, .50, z), (.034, .88, .045), side_mat, .005)
+                    box('Side continuous rail', (side*.453, .50, z), (.034, 1.0, .045), side_mat, 0)
             elif kind == 'pump':
-                box('Side vertical pressure header', (side*.46, .50, 0), (.05, .77, .09), mats[1], .007)
+                box('Side vertical pressure header', (side*.46, .50, 0), (.05, 1.0, .09), mats[1], 0)
             elif kind == 'refinery':
                 for z in (-.21, 0, .21):
-                    box('Side exchanger cooling fin', (side*.46, .50, z), (.06, .62, .045), side_mat, .005)
+                    box('Side exchanger cooling fin', (side*.46, .50, z), (.06, 1.0, .045), side_mat, 0)
             else:
                 for z in (-.24, .24):
-                    box('Side gate bearing spar', (side*.46, .50, z), (.054, .79, .058), side_mat, .008)
+                    box('Side gate bearing spar', (side*.46, .50, z), (.054, 1.0, .058), side_mat, 0)
 
     # Bake angled braces and cylinder orientations before batching: otherwise
     # a rotated active object makes the imported AABB overly conservative.

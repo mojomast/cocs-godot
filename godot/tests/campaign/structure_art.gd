@@ -37,6 +37,7 @@ func _run() -> void:
 		for key: String in art._sources:
 			var source: Array = art._sources[key]
 			var continuous := false
+			var exposed_support := false
 			for part: Dictionary in source:
 				var mesh: Mesh = part.mesh
 				var bound: AABB = part.transform * mesh.get_aabb()
@@ -51,14 +52,20 @@ func _run() -> void:
 					var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
 					var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
 					for i: int in range(0, indices.size(), 3):
-						var y0: float = (part.transform * vertices[indices[i]]).y
-						var y1: float = (part.transform * vertices[indices[i+1]]).y
-						var y2: float = (part.transform * vertices[indices[i+2]]).y
+						var p0: Vector3 = part.transform * vertices[indices[i]]
+						var p1: Vector3 = part.transform * vertices[indices[i+1]]
+						var p2: Vector3 = part.transform * vertices[indices[i+2]]
+						var y0: float = p0.y
+						var y1: float = p1.y
+						var y2: float = p2.y
 						if minf(y0, minf(y1, y2)) < 0.001 and maxf(y0, maxf(y1, y2)) > 0.999:
 							continuous = true
-							break
+							if minf(p0.z, minf(p1.z, p2.z)) < -0.42 and maxf(absf(p0.x), maxf(absf(p1.x), absf(p2.x))) > 0.30:
+								exposed_support = true
 			if not (key.begins_with("relay-") or key.begins_with("outpost-")):
 				check(continuous, id + " contiguous full-height load core in " + key)
+			if key.begins_with("refinery-"):
+				check(exposed_support, id + " visible exterior refinery support joins stories in " + key)
 		check(triangles < 32000, id + " both LOD source triangle budget")
 		for batch: Node in art.get_children():
 			check(batch is MultiMeshInstance3D and batch.multimesh.instance_count > 0, id + " no empty draw batches")
