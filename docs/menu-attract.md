@@ -32,5 +32,10 @@ Node, a capture generator, or external evidence.
 
 `godot/tests/main_menu/contracts.gd` uses a headless mock stage for the
 foreground and lifecycle contracts and checks the replay clip schema; final
-integration also requires a visible Godot render with the verified packaged
-`demo.json` and a transition between two production chapters.
+integration uses `godot/tests/main_menu/live_attract.gd` under a visible display
+with `COCS_ATTRACT_EVIDENCE` set to an absolute output directory. It loads the
+packaged `demo.json`, captures two distinct rendered frames per chapter,
+checks one isolated environment and one resident world through a full loop,
+verifies Mara/Patch and the pet reaction serial, and compares a combat flash
+with its recorded shot origin. It also exercises foreground route/focus,
+settings/reduced-motion/animation toggles and focus-loss pause/resume.

@@ -350,7 +350,7 @@ func _consume_events(frame: Dictionary, index: int) -> void:
 	for event: Dictionary in frame.events:
 		var kind := str(event.get("type", ""))
 		if kind not in ["shot", "fire", "projectile", "impact", "hit", "npc-attack"]: continue
-		var point: Variant = event.get("pos", event.get("origin"))
+		var point: Variant = event.get("from", event.get("pos", event.get("origin")))
 		if point is Dictionary and _finite_number(point.get("x")) and _finite_number(point.get("y")) and _finite_number(point.get("z")):
 			flash_origin = Vector3(float(point.x), float(point.y), float(point.z))
 		elif _finite_number(event.get("x")) and _finite_number(event.get("y")) and _finite_number(event.get("z")):
@@ -406,9 +406,17 @@ func _apply_frame(current: Dictionary, following: Dictionary, weight: float) -> 
 		flash_light.position = flash.position
 	var clip: Dictionary = clips[chapter_index]
 	var subject: Vector3 = focus_actor.position if focus_actor != null else marker
+	if clip.kind == "terrain": subject = marker
+	elif clip.kind == "pet" and story_director.actors.has("patch"):
+		subject = story_director.actors["patch"].position
+	elif clip.kind == "npc" and story_director.actors.has("mara"):
+		subject = story_director.actors["mara"].position
 	var side := Vector3(-forward.z, 0, forward.x)
 	var orbit := chapter_time * 0.18
-	var eye := subject - forward * (9.0 + 2.0 * sin(orbit)) + side * (7.0 + 3.0 * cos(orbit)) + Vector3.UP * 5.0
+	var distance := 34.0 if clip.kind == "terrain" else (9.0 if clip.kind == "combat" else 5.2)
+	var eye := (subject - forward * (distance + sin(orbit) * distance * 0.12)
+		+ side * (distance * (0.9 + cos(orbit) * 0.12))
+		+ Vector3.UP * (19.0 if clip.kind == "terrain" else (5.0 if clip.kind == "combat" else 2.8)))
 	if clip.camera == "fp" and focus_actor != null:
 		# Same eye-height and yaw/pitch convention as the real campaign session.
 		# Hide only this local body in FP; all other models remain in the shot.
@@ -418,4 +426,4 @@ func _apply_frame(current: Dictionary, following: Dictionary, weight: float) -> 
 		camera.rotation = Vector3(float(focus_snapshot.get("pitch", 0)), float(focus_snapshot.get("yaw", 0)), 0)
 	else:
 		camera.position = eye
-		camera.look_at(subject + forward * 2.5 + Vector3.UP * 0.8)
+		camera.look_at(subject + forward * (2.5 if clip.kind == "combat" else 0.0) + Vector3.UP * (0.6 if clip.kind == "terrain" else 0.8))
