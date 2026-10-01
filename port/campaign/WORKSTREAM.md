@@ -682,3 +682,35 @@ The landmark polish Sol now has explicit permission for Blender exports and the
 exclusive Godot slot. Parent audits/fixes unrelated code while engine reruns wait
 for that lane to release the slot. Final aggregate will include the polish and
 verified lifetime/capture/fixture corrections.
+
+Landmark polish `5b9eb18e` is reviewed and integrated as `65327249`: Rootfall's
+Blender triangular mast wreck rests on terrain and its relay saddle, with sampled
+flank clearance 2.65 m; Crown's open receiver bears on the existing buttresses
+and clears the fin sector. All four lane terrain/environment/structure checks,
+new landmark acceptance and twenty source-route tests pass. Six `landmark-*`
+screenshots are published in the development gallery. No active art lane remains.
+
+The owner explicitly prioritized a playable Windows/Linux test build immediately
+after this polish. Trailer refresh is deferred until those downloads are available.
+Parent reproduced the world-weapon material teardown failure, then made only
+finish-tinted roles instance-private; immutable hardware retains cached imported
+materials. The previously failing 450-case grip test now passes without engine
+errors. The affected-gate rerun is in progress with evidence under
+`cocs-campaign-evidence-20261001/verification-repairs/`. Compact capture repair
+adds subpixel-aware comparison and supplemental HUD-free composition evidence
+when the deliberately long subtitle fully occludes the narrow weapon; full-UI
+screenshots and the color/coverage assertions remain. Engine validation is pending.
+
+Focused repair validation is complete: all fourteen material-error gates pass
+after rerunning the two career journeys with fresh owned evidence directories;
+Horde's real KEY_2/ACK/no-post-delivery-reset check also passes without changes to
+the input TTL or fixture. The expanded art contract passes switching, teardown
+and independent actor finish slots. The compact capture now passes using the
+same late-frame click path for supplemental proof, retaining freshness/epoch
+safety. Its first failed supplemental frame is preserved; image readback had
+crossed the TTL before the proof frame. Final passing evidence:
+`verification-repairs/compact-final/run-eIVrrO/` (2026-10-01 evidence root).
+
+Parent is proceeding with a fresh complete canonical run, then serialized Linux
+and Windows exports and extracted-package checks. Final source/art identity must
+remain fixed across those steps; report outputs are archived/restored separately.

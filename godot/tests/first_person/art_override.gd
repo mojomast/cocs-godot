@@ -29,6 +29,8 @@ func run() -> void:
 	rig.attach_to(camera)
 	var visual := Visual.new()
 	root.add_child(visual)
+	var other := Visual.new()
+	root.add_child(other)
 	for id: int in range(10):
 		var actor := {"id":7,"weapon":id,"health":100,"character":"claude","team":2}
 		rig.apply_actor(actor,true)
@@ -64,6 +66,17 @@ func run() -> void:
 		check(not rig.finish.slots.is_empty(),"finish slots %d" % id)
 		check(rig.finish.active == "finish-ion","finish binding active %d" % id)
 		check(visual.weapon_finish.active == "finish-ion","world finish binding active %d" % id)
+		other.apply_actor({"id":9,"weapon":id,"health":100,"character":"claude","team":2})
+		check(other.weapon_finish.slots.size() == visual.weapon_finish.slots.size(),"matching finish slot layouts %d" % id)
+		for slot: int in mini(other.weapon_finish.slots.size(), visual.weapon_finish.slots.size()):
+			check(other.weapon_finish.slots[slot].material != visual.weapon_finish.slots[slot].material,"private tint material %d/%d" % [id,slot])
+			check(other.weapon_finish.slots[slot].material.albedo_color == other.weapon_finish.slots[slot].base,"other actor retains stock color %d/%d" % [id,slot])
 		metrics.append({"id":id,"firstPerson":fp.size(),"world":world.size(),"source":source_meshes,"finishSlots":rig.finish.slots.size(),"worldFinishSlots":visual.weapon_finish.slots.size()})
+		await process_frame
+	visual.free()
+	other.free()
+	rig.free()
+	camera.free()
+	await process_frame
 	print("BLENDER_WEAPON_ART ",JSON.stringify({"passed":failures.is_empty(),"weapons":metrics,"failures":failures}))
 	quit(0 if failures.is_empty() else 1)

@@ -24,6 +24,12 @@ human first-playthrough timing and balance remain to be measured.
   tells, three distance-detail levels and bounded body hit volumes.
 - Blender-authored enemy armor and mechanical assemblies, with beveled panels,
   exposed joints, vents, class-specific sensors and editable source models.
+- Ten Blender-authored player weapons with distinct first-person and world
+  models, supported sights, mechanical detail and retained aiming/reload anchors.
+- Fifteen biome assets and eight regional structure families with two detail
+  levels, fitted foundations and continuous tower supports.
+- A grounded, broken triangular relay mast in Rootfall and an open receiver
+  supported by Crown's existing buttresses, replacing ambiguous early props.
 - Clear, interact, restore, contested relay-hold and guardian objectives.
 - Checkpoint retry, chapter restart, difficulty selection, Continue transitions
   and a final ending.

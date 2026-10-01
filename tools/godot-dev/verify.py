@@ -214,6 +214,7 @@ commands = [
     ("campaign-story-presentation", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/story_presentation.gd"]),
     ("campaign-story-gestures", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/story_gestures.gd"]),
     ("campaign-structure-art", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/structure_art.gd"]),
+    ("campaign-landmark-art", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/landmark_art.gd"]),
     ("campaign-environment-art", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/environment_art.gd"]),
     ("campaign-smoke-route", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/smoke_route.gd"]),
     ("campaign-compact-ui", ["xvfb-run", "-a", "-s", "-screen 0 1280x800x24", "node", "port/campaign/live-capture.mjs", "--map=crown-array", "--profile=compact", "--output=" + os.environ.get("COCS_CAMPAIGN_CAPTURE_OUT", "/tmp/opencode/campaign-ui-verification")]),

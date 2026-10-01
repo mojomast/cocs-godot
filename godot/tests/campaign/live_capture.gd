@@ -292,25 +292,33 @@ func capture(name: String) -> void:
 		require(Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and session.can_capture_pointer(), name + ": capture must obey live focus/freshness/lifecycle eligibility")
 		require(session.client.last_ack > 0, name + ": no real input ACK")
 	var image := root.get_texture().get_image()
-	var rig_pixels := {"opaque":0,"matched":0}
+	var rig_pixels := {"opaque":0,"matched":0,"occluded":0}
 	if name in ["gameplay", "long-subtitle"] and is_instance_valid(session.first_person):
 		var weapon: Image = session.first_person.rig.viewport.get_texture().get_image()
-		# UI scaling makes the rig's logical viewport smaller than the physical
-		# screenshot. Match the full-screen TextureRect's rendered dimensions.
-		if weapon.get_size() != image.get_size(): weapon.resize(image.get_width(), image.get_height(), Image.INTERPOLATE_BILINEAR)
-		if weapon.get_size() == image.get_size():
-			for y: int in range(0, weapon.get_height(), 2):
-				for x: int in range(0, weapon.get_width(), 2):
-					var logical := Vector2(x, y) * root.get_visible_rect().size / Vector2(image.get_size())
-					# Comms/vitals and the shared footer legitimately composite over
-					# the rig. Verify only unoccluded pixels, including at UI150.
-					if session.campaign_hud.bottom.get_global_rect().grow(2).has_point(logical) or logical.y >= root.get_visible_rect().size.y - 40: continue
-					var pixel := weapon.get_pixel(x, y)
-					if pixel.a < 0.99: continue
-					rig_pixels.opaque += 1
-					var actual := image.get_pixel(x, y)
-					if absf(pixel.r - actual.r) + absf(pixel.g - actual.g) + absf(pixel.b - actual.b) < 0.12: rig_pixels.matched += 1
-		require(rig_pixels.opaque > 10 and rig_pixels.matched > rig_pixels.opaque * 0.8, name + ": rendered weapon pixels must appear in final screenshot")
+		rig_pixels = compare_weapon_pixels(image, weapon, true)
+		if name == "long-subtitle" and rig_pixels.opaque <= 10 and rig_pixels.occluded > 100:
+			# The deliberately oversized scrolling subtitle can cover the whole
+			# narrow gun at UI150. Keep that full-UI screenshot, and separately
+			# prove actual composition with only the occluding HUD hidden.
+			# Image readback may cross the authority's unchanged input TTL. Use
+			# the same late-frame user click path as the primary capture.
+			for attempt: int in range(4):
+				root.grab_focus()
+				capture_click.pending = true
+				await capture_click.applied
+				session.campaign_hud.hide()
+				await RenderingServer.frame_post_draw
+				if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and session.can_capture_pointer() and session.first_person.rig.showing: break
+			require(Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and session.can_capture_pointer() and session.first_person.rig.showing, name + ": supplemental capture remains input-eligible")
+			var proof := root.get_texture().get_image()
+			var proof_weapon: Image = session.first_person.rig.viewport.get_texture().get_image()
+			var proof_pixels := compare_weapon_pixels(proof, proof_weapon, false)
+			session.campaign_hud.show()
+			require(proof.save_png(output.path_join(name + "-weapon-proof.png")) == OK, "Save supplemental weapon composition proof")
+			require(proof_pixels.opaque > 100 and proof_pixels.matched > proof_pixels.opaque * 0.8, name + ": HUD-free supplemental weapon composition")
+			rig_pixels["supplemental"] = proof_pixels
+		else:
+			require(rig_pixels.opaque > 10 and rig_pixels.matched > rig_pixels.opaque * 0.8, name + ": rendered weapon pixels must appear in final screenshot")
 	var path := output.path_join(name + ".png")
 	require(image.save_png(path) == OK, "Could not save " + path)
 	var expected := Vector2i(760,520) if profile == "compact" else Vector2i(1280,800)
@@ -325,6 +333,28 @@ func capture(name: String) -> void:
 		"uiScale":settings.values.ui_scale,"phase":session.phase,"campaignPhase":session.campaign.state.get("phase", "briefing"),
 		"starts":session.round_starts,"epoch":session.client.input_epoch,"acks":session.client.last_ack,
 		"robotsInFrustum":robot_count,"groundRingsInFrustum":rings,"widgets":widgets,"newFailures":failures.size()-before})
+
+func compare_weapon_pixels(image: Image, weapon: Image, mask_hud: bool) -> Dictionary:
+	var result := {"opaque":0,"matched":0,"occluded":0}
+	# CPU resizing and the GPU TextureRect sampler differ at subpixel edges.
+	# Match within one physical pixel, retaining the color and 80% coverage gates.
+	if weapon.get_size() != image.get_size(): weapon.resize(image.get_width(), image.get_height(), Image.INTERPOLATE_BILINEAR)
+	for y: int in range(1, weapon.get_height() - 1, 2):
+		for x: int in range(1, weapon.get_width() - 1, 2):
+			var pixel := weapon.get_pixel(x, y)
+			if pixel.a < 0.99: continue
+			var logical := Vector2(x, y) * root.get_visible_rect().size / Vector2(image.get_size())
+			if logical.y >= root.get_visible_rect().size.y - 40 or (mask_hud and session.campaign_hud.bottom.get_global_rect().grow(2).has_point(logical)):
+				result.occluded += 1
+				continue
+			result.opaque += 1
+			var matched := false
+			for dy: int in range(-1, 2):
+				for dx: int in range(-1, 2):
+					var actual := image.get_pixel(x + dx, y + dy)
+					if absf(pixel.r - actual.r) + absf(pixel.g - actual.g) + absf(pixel.b - actual.b) < 0.12: matched = true
+			if matched: result.matched += 1
+	return result
 
 static func world_lights(tree_root: Node, target: World3D) -> Dictionary:
 	var census := {"environments":[],"suns":[],"separateWorlds":[],"unresolved":[]}

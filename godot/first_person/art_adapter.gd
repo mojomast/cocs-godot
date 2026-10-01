@@ -44,5 +44,8 @@ static func install(model: Node3D, id: int, world: bool = false) -> bool:
 		mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF if not world else GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 		for surface: int in mesh.mesh.get_surface_count():
 			var mat: Material = mesh.mesh.surface_get_material(surface)
-			if mat != null: mesh.set_surface_override_material(surface, mat.duplicate())
+			# Only finish-tinted roles need instance-private materials. Hardware
+			# retains the cached imported material, including during mesh teardown.
+			var tintable := str(mesh.name).ends_with("-dark") or str(mesh.name).ends_with("-light") or str(mesh.name).ends_with("-glow")
+			if mat != null: mesh.set_surface_override_material(surface, mat.duplicate() if tintable else mat)
 	return true
