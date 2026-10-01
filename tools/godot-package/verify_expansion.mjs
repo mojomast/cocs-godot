@@ -8,6 +8,7 @@ import {tmpdir} from 'node:os';
 import {pathToFileURL} from 'node:url';
 import {createConnection} from 'node:net';
 import {fileURLToPath} from 'node:url';
+import {createInterface} from 'node:readline';
 
 const IDS=['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago'];
 const HEX=/^[a-f0-9]{64}$/;
@@ -30,11 +31,19 @@ async function authority(entry) {
   // The sole dynamic import is an absolute file URL inside extracted runtime/.
   const {createGameServer,createAuthority}=await import(pathToFileURL(resolve(entry)).href);
   const game=createGameServer?createGameServer({historyPath:null,progressionPath:null}):createAuthority();
-  const finish=async()=>{await game.close();console.log('EXPANSION_AUTHORITY_CLOSED');};
-  process.once('SIGTERM',()=>{finish().then(()=>process.exit(0)).catch(()=>process.exit(1));});
-  process.once('SIGINT',()=>{finish().then(()=>process.exit(0)).catch(()=>process.exit(1));});
   await new Promise((ok,fail)=>{game.server.once('error',fail);game.server.listen(0,'127.0.0.1',ok);});
   console.log('EXPANSION_AUTHORITY_READY '+JSON.stringify({port:game.server.address().port,pid:process.pid}));
+  // Windows child.kill('SIGTERM') is TerminateProcess, not a Node signal.
+  // A line on the owned stdin pipe is an explicit, cross-platform handshake.
+  const commands=createInterface({input:process.stdin});
+  commands.once('line',line=>{
+    if(line!=='STOP'){console.error('EXPANSION_AUTHORITY_FAILED unknown command');process.exitCode=2;commands.close();return;}
+    game.close().then(()=>{
+      console.log('EXPANSION_AUTHORITY_CLOSED');commands.close();
+    }).catch(error=>{
+      console.error('EXPANSION_AUTHORITY_FAILED '+error.stack);process.exitCode=1;commands.close();
+    });
+  });
 }
 
 async function closed(port) {
@@ -45,14 +54,40 @@ async function closed(port) {
     socket.once('error',e=>e.code==='ECONNREFUSED'?ok(true):fail(e));
   });
 }
-async function stop(child) {
+export async function waitExit(child,ms) {
+  if(child.exitCode!==null || child.signalCode!==null)return {code:child.exitCode,signal:child.signalCode};
+  return new Promise((ok,fail)=>{
+    const timeout=setTimeout(()=>{child.off('exit',exit);fail(Error(`Owned child ${child.pid} did not exit in ${ms}ms`));},ms);
+    function exit(code,signal){clearTimeout(timeout);ok({code,signal});}
+    child.once('exit',exit);
+    // The exit may race registration after the initial check.
+    if(child.exitCode!==null || child.signalCode!==null){clearTimeout(timeout);child.off('exit',exit);ok({code:child.exitCode,signal:child.signalCode});}
+  });
+}
+export async function forceStop(child) {
   if(child.exitCode!==null || child.signalCode!==null)return;
   child.kill('SIGTERM');
-  await Promise.race([new Promise(ok=>child.once('exit',ok)),new Promise(ok=>setTimeout(ok,4000))]);
-  if(child.exitCode===null){child.kill('SIGKILL');await new Promise(ok=>child.once('exit',ok));}
+  try{await waitExit(child,4000);}catch{
+    child.kill('SIGKILL');await waitExit(child,4000);
+  }
+}
+export async function gracefulAuthority(owned,ms=5000) {
+  const {child,read}=owned;
+  assert.ok(child.exitCode===null && child.signalCode===null,'Authority exited before shutdown request');
+  child.stdin.write('STOP\n');
+  const until=Date.now()+ms;
+  while(Date.now()<until){
+    if(read().includes('EXPANSION_AUTHORITY_CLOSED'))break;
+    if(read().includes('EXPANSION_AUTHORITY_FAILED') || child.exitCode!==null || child.signalCode!==null)
+      throw Error('Authority closed without acknowledgement: '+read().slice(-1200));
+    await new Promise(ok=>setTimeout(ok,20));
+  }
+  assert.match(read(),/EXPANSION_AUTHORITY_CLOSED/,'Authority shutdown acknowledgment timed out');
+  const exit=await waitExit(child,Math.max(1,until-Date.now()));
+  assert.deepEqual(exit,{code:0,signal:null},'Authority did not exit normally after acknowledgment');
 }
 async function launch(exe,args,cwd,env) {
-  const child=spawn(exe,args,{cwd,env,stdio:['ignore','pipe','pipe'],windowsHide:true});
+  const child=spawn(exe,args,{cwd,env,stdio:['pipe','pipe','pipe'],windowsHide:true});
   let text='';
   child.stdout.on('data',part=>{text+=String(part);});
   child.stderr.on('data',part=>{text+=String(part);});
@@ -65,7 +100,7 @@ async function marker(process,prefix,ms) {
     const text=process.read();
     const line=text.split(/\r?\n/).find(row=>row.startsWith(prefix));
     if(line)return JSON.parse(line.slice(prefix.length));
-    if(process.child.exitCode!==null)throw Error(`${prefix} missing; exited ${process.child.exitCode}: ${text.slice(-2500)}`);
+    if(process.child.exitCode!==null || process.child.signalCode!==null)throw Error(`${prefix} missing; exited ${process.child.exitCode}/${process.child.signalCode}: ${text.slice(-2500)}`);
     await new Promise(ok=>setTimeout(ok,40));
   }
   throw Error(`${prefix} timeout: ${process.read().slice(-2500)}`);
@@ -123,28 +158,33 @@ export async function verify(root,output,{node=process.platform==='win32'?join(r
         assert.ok(proof.snapshots>=3 && proof.actors>0,'Native client received advancing state');
         if(horde){assert.equal(proof.blackwater,1);assert.ok(proof.robots.every(id=>['scrapper','skirmisher','sentinel','mortar','bulwark','warden'].includes(id)));}
         if(mode.startsWith('puma-'))assert.ok(proof.race,'Sports race state absent');
-        assert.doesNotMatch(server.read()+native.read(),/SCRIPT ERROR|ERROR:|Assertion failed/);
-        await new Promise((ok,fail)=>{if(native.child.exitCode!==null)return native.child.exitCode===0?ok():fail(Error(native.read()));native.child.once('exit',code=>code===0?ok():fail(Error(native.read())));});
-        await stop(server.child);
-        assert.match(server.read(),/EXPANSION_AUTHORITY_CLOSED/);
-        assert.equal(server.child.exitCode,0,'Owned authority did not exit normally');
+        const nativeExit=await waitExit(native.child,10000);
+        assert.deepEqual(nativeExit,{code:0,signal:null},'Native probe did not exit normally');
+        await gracefulAuthority(server);
+        // Parse/errors can arrive after the ready marker, including teardown.
+        assert.doesNotMatch(server.read()+native.read(),/SCRIPT ERROR|ERROR:|Assertion failed|EXPANSION_AUTHORITY_FAILED/);
         assert.ok(await closed(port),'Authority listener survived');
-        report.cases.push({map,mode,hash:data.geometryHash,scene:proof.scene,actors:proof.actors,snapshots:proof.snapshots,robots:proof.robots,cleanup:true});
-        await writeFile(join(output,name+'.log'),server.read()+'\n'+native.read());
+        report.cases.push({map,mode,hash:data.geometryHash,scene:proof.scene,actors:proof.actors,snapshots:proof.snapshots,robots:proof.robots,
+          authority_pid:server.child.pid,native_pid:native.child.pid,port,native_exit:nativeExit.code,authority_exit:server.child.exitCode,listener_closed:true,cleanup:true});
       }catch(error){
-        await writeFile(join(output,name+'.log'),(server?.read()??'')+'\n'+(native?.read()??'')+'\n'+error.stack);
         throw error;
       }finally{
-        if(native)await stop(native.child);
-        if(server)await stop(server.child);
+        let teardownError;
+        if(native)try{await forceStop(native.child);}catch(error){teardownError=error;}
+        if(server && server.child.exitCode===null && server.child.signalCode===null){
+          try{await gracefulAuthority(server);}catch(error){teardownError??=error;}
+        }
+        if(server)try{await forceStop(server.child);}catch(error){teardownError??=error;}
+        await writeFile(join(output,name+'.log'),(server?.read()??'')+'\n'+(native?.read()??'')+(teardownError?'\n'+teardownError.stack:''));
         active=active.filter(child=>child!==native?.child && child!==server?.child);
         if(port)assert.ok(await closed(port),'Authority cleanup failed after case');
+        if(teardownError)throw teardownError;
       }
     }
     report.status='passed';report.pairs=pairs.length;report.blackwater=true;
   }catch(error){report.status='failed';report.error=error.stack;throw error;}
   finally{
-    for(const child of active)await stop(child);
+    for(const child of active)await forceStop(child);
     report.orphans=(await readdir(sandbox)).filter(x=>x.startsWith('cocs-native-'));
     if(report.orphans.length){report.status='failed';report.error='Owned native process directories survived: '+report.orphans.join(',');}
     await writeFile(join(output,'expansion-result.json'),JSON.stringify(report,null,2)+'\n');
