@@ -33,6 +33,12 @@ var marker: Vector3
 var forward: Vector3
 var generation := 0
 var terrain_triangles := 0
+var build_recipe: Dictionary = {}
+var build_materials: Dictionary = {}
+var build_surface_index := 0
+var build_triangle_index := 0
+var build_tool: SurfaceTool
+var build_count := 0
 var flash_until := -1.0
 var flash_origin := Vector3.ZERO
 var last_event_frame := -1
@@ -64,7 +70,7 @@ func start() -> void:
 	if world != null: world.process_mode = Node.PROCESS_MODE_INHERIT
 	set_process(true)
 	if chapter_index < 0: advance_chapter()
-	if not mock_scene: viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+	if not mock_scene and active: viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 func _load_replay() -> bool:
 	if replay_checked: return not clips.is_empty()
@@ -152,6 +158,12 @@ func clear_chapter() -> void:
 	if world != null:
 		world.free()
 		world = null
+	build_recipe.clear()
+	build_materials.clear()
+	build_surface_index = 0
+	build_triangle_index = 0
+	build_tool = null
+	build_count = 0
 	actors.clear()
 	story_director = null
 	flash = null
@@ -174,7 +186,7 @@ func advance_chapter() -> void:
 		scene_ready = true
 		return
 	building = true
-	_build_chapter.call_deferred(generation)
+	_build_chapter(generation)
 
 func _build_chapter(serial: int) -> void:
 	if not active or serial != generation: return
@@ -215,10 +227,24 @@ func _build_chapter(serial: int) -> void:
 	camera.fov = 64
 	world.add_child(camera)
 	camera.make_current()
-	# Source terrain triangles, cropped near the cast; mesh construction yields
-	# periodically so the menu's foreground input remains responsive.
-	await _build_terrain(recipe, serial)
-	if not active or serial != generation: return
+	# State lives on this node and is advanced by _process in bounded slices.
+	# No suspended coroutine can resume after menu/viewport destruction.
+	build_recipe = recipe
+	var palette: Array = recipe.palette
+	var colors := {"ground":0,"trail":1,"rock":2,"stone":3,"metal":4,"light":5}
+	for key: String in colors:
+		var material := StandardMaterial3D.new()
+		material.albedo_color = Color(str(palette[colors[key]]))
+		material.roughness = 0.82
+		build_materials[key] = material
+
+func _complete_chapter() -> void:
+	var recipe := build_recipe
+	build_recipe = {}
+	build_materials.clear()
+	build_tool = null
+	var clip: Dictionary = clips[chapter_index]
+	var id: String = str(clip.map)
 	if terrain_triangles == 0:
 		print("MENU_ATTRACT unavailable: no campaign terrain near replay focus for ", id)
 		clips.clear()
@@ -232,47 +258,54 @@ func _build_chapter(serial: int) -> void:
 	_consume_events(clip.frames[0], 0)
 	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
-func _build_terrain(recipe: Dictionary, serial: int) -> void:
-	var palette: Array = recipe.palette
-	var colors := {"ground":0,"trail":1,"rock":2,"stone":3,"metal":4,"light":5}
-	var materials := {}
-	for key: String in colors:
-		var material := StandardMaterial3D.new()
-		material.albedo_color = Color(str(palette[colors[key]]))
-		material.roughness = 0.82
-		materials[key] = material
-	for surface: Dictionary in recipe.arena.terrain.surfaces:
-		if serial != generation or not active or terrain_triangles >= MAX_TRIANGLES: return
+func _step_terrain() -> void:
+	var surfaces: Array = build_recipe.arena.terrain.surfaces
+	var budget := 320 # Input, layout and lifecycle get a turn every frame.
+	while budget > 0 and build_surface_index < surfaces.size() and terrain_triangles < MAX_TRIANGLES:
+		var surface: Dictionary = surfaces[build_surface_index]
+		var triangles: Array = surface.triangles
+		if build_tool == null:
+			build_tool = SurfaceTool.new()
+			build_tool.begin(Mesh.PRIMITIVE_TRIANGLES)
+		if build_triangle_index >= triangles.size():
+			if build_count > 0:
+				var mesh := MeshInstance3D.new()
+				mesh.mesh = build_tool.commit()
+				mesh.material_override = build_materials.get(str(surface.material), build_materials.ground)
+				world.add_child(mesh)
+			build_tool = null
+			build_count = 0
+			build_triangle_index = 0
+			build_surface_index += 1
+			continue
 		var vertices: Array = surface.vertices
-		var tool := SurfaceTool.new()
-		tool.begin(Mesh.PRIMITIVE_TRIANGLES)
-		var count := 0
-		for triangle: Array in surface.triangles:
-			var a: Array = vertices[int(triangle[0])]
-			var b: Array = vertices[int(triangle[1])]
-			var c: Array = vertices[int(triangle[2])]
-			var center := Vector2((float(a[0]) + float(b[0]) + float(c[0])) / 3.0,
-				(float(a[2]) + float(b[2]) + float(c[2])) / 3.0)
-			if center.distance_to(Vector2(marker.x, marker.z)) > PATCH_RADIUS: continue
-			var p := Vector3(float(a[0]), float(a[1]), float(a[2]))
-			var q := Vector3(float(b[0]), float(b[1]), float(b[2]))
-			var r := Vector3(float(c[0]), float(c[1]), float(c[2]))
-			var normal := (q - p).cross(r - p).normalized()
-			for point: Vector3 in [p, r, q]:
-				tool.set_normal(normal)
-				tool.add_vertex(point)
-			count += 1
-			terrain_triangles += 1
-			if count % 320 == 0:
-				await get_tree().process_frame
-				if serial != generation or not active: return
-			if terrain_triangles >= MAX_TRIANGLES: break
-		if count > 0 and serial == generation and active:
+		var triangle: Array = triangles[build_triangle_index]
+		build_triangle_index += 1
+		budget -= 1
+		var a: Array = vertices[int(triangle[0])]
+		var b: Array = vertices[int(triangle[1])]
+		var c: Array = vertices[int(triangle[2])]
+		var center := Vector2((float(a[0]) + float(b[0]) + float(c[0])) / 3.0,
+			(float(a[2]) + float(b[2]) + float(c[2])) / 3.0)
+		if center.distance_to(Vector2(marker.x, marker.z)) > PATCH_RADIUS: continue
+		var p := Vector3(float(a[0]), float(a[1]), float(a[2]))
+		var q := Vector3(float(b[0]), float(b[1]), float(b[2]))
+		var r := Vector3(float(c[0]), float(c[1]), float(c[2]))
+		var normal := (q - p).cross(r - p).normalized()
+		for point: Vector3 in [p, r, q]:
+			build_tool.set_normal(normal)
+			build_tool.add_vertex(point)
+		build_count += 1
+		terrain_triangles += 1
+	if build_surface_index >= surfaces.size() or terrain_triangles >= MAX_TRIANGLES:
+		# A cap reached partway through a surface still commits its final patch.
+		if build_tool != null and build_count > 0:
+			var surface: Dictionary = surfaces[build_surface_index]
 			var mesh := MeshInstance3D.new()
-			mesh.mesh = tool.commit()
-			mesh.material_override = materials.get(str(surface.material), materials.ground)
+			mesh.mesh = build_tool.commit()
+			mesh.material_override = build_materials.get(str(surface.material), build_materials.ground)
 			world.add_child(mesh)
-		await get_tree().process_frame
+		_complete_chapter()
 
 func _build_nearby_cover(recipe: Dictionary) -> void:
 	var palette: Array = recipe.palette
@@ -320,9 +353,12 @@ func _build_cast() -> void:
 	flash_light.hide()
 
 func _process(delta: float) -> void:
-	if not active or not scene_ready: return
+	if not active or mock_scene: return
+	if building:
+		_step_terrain()
+		return
+	if not scene_ready: return
 	chapter_time += minf(delta, 0.1)
-	if mock_scene: return
 	var clip: Dictionary = clips[chapter_index]
 	if chapter_time >= float(clip.duration):
 		advance_chapter()
