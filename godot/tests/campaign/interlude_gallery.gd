@@ -24,6 +24,7 @@ func run() -> void:
 	camera.make_current()
 	var director := Director.new()
 	root.add_child(director)
+	director.set_process(false)
 	var layer := CanvasLayer.new()
 	root.add_child(layer)
 	var widgets := Widgets.new()
@@ -51,6 +52,9 @@ func run() -> void:
 		for phase: String in ["before","after"]:
 			var state: Dictionary = fixture[phase]
 			director.apply(state.interludes,map_id)
+			# Fixed elapsed-time settlement: frame count alone is not a reliable
+			# restoration clock on software-rendered or high-refresh captures.
+			director._process(2.0)
 			widgets.observe(state.story,true,state.interludes)
 			for i: int in 12: await process_frame
 			await RenderingServer.frame_post_draw

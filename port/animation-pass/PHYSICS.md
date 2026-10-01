@@ -89,7 +89,7 @@ Set `interlude_director.animation_suspended` from top-level
 The director already freezes while the settings overlay is open, and normal
 SceneTree pause stops its processing. No shared session/presentation file edited.
 
-## Verification / engine-slot handoff
+## Verification / engine-slot handoff (initial independent phase)
 
 Engine is reserved by ActorSol. **No Godot, Blender or import process was
 launched during independent coding. Native acceptance and capture remain pending
@@ -150,9 +150,125 @@ Actual casing pool/advance tests compare its ballistic arc to the independent
 constant-gravity equation at three rates and irregular/hitch timings, verify
 velocity, lifetime expiry, node reuse and reset freeing.
 
-All supplemental native tests remain **unexecuted until engine grant**. Before
+At the supplemental-preparation checkpoint these native tests remained
+**unexecuted until engine grant**. Before
 capturing workshop restored colors, advance at least 2 seconds after source
 stage 2 so screenshots represent the intended settled illumination.
+
+## Final native acceptance after exclusive engine grant
+
+ActorSol's exact `d4d23766` is included locally as `900454ad`. The integrated
+actor/player/world code was imported and tested with Godot
+`4.5.2.stable.official.6ce3de25a`, `LP_NUM_THREADS=1`, and serialized engine
+processes. Native rendering uses Xvfb / Mesa llvmpipe compatibility mode.
+This is functional/visual evidence, **not hardware performance acceptance**.
+
+**Import/semantic compilation passed. All 23 native regression suites passed.**
+
+| Native suite | Checks / result |
+|---|---|
+| `animation/physics.gd` | 18 passed; analytic reference, frame rates, hitch, flight, reduced motion and reset |
+| `animation/world_physics.gd` | 52 passed; real host pause/focus/stale/death/pending gates, workshop transitions, wheel lead/reset, casing arcs/pool |
+| First-person lifecycle / ADS / recoil | 63 / 93 / 190 passed |
+| First-person handling / detail / muzzle geometry | 5,295 / 310 / 274 passed; all ten weapons |
+| First-person art override | passed |
+| First-person binding under Xvfb | 19 passed; real pointer capture |
+| Weapon effects lifecycle / rig integration | passed |
+| Weapon effects muzzle-path geometry / projectile flight / alt fire | 279 / 22 / 105 passed |
+| Puma presentation | 19 passed |
+| Source-confirmed melee feedback | 50 passed; miss/duplicate/rejection cannot invent contact |
+| Campaign feel motion / targeting geometry | passed |
+| Campaign input flow | 614 passed |
+| Campaign interludes | all eight source-produced before/linked/after fixtures passed, including geometry hashes/colliders/routes |
+| Actor animation / geometry | 3,258,456 checks / 18,468 geometry samples passed with combined physics lane |
+
+The first `world_physics` attempt failed due to **fixture issues**: teardown
+reflected detached Node3D global properties and an exact float comparison
+rejected an unchanged turret value. The corrected fixture uses explicit owned
+node fields and approximate transform/scalar comparison. Attempt 2 passes
+cleanly; both logs are retained. No production controller/FX regression fix was
+needed during engine acceptance. The immediate Puma snapshot-angle compatibility
+fix was already in supplemental `35368568`.
+
+### Real connected gameplay input journey
+
+Command: `GODOT_BIN=<pinned 4.5.2> LP_NUM_THREADS=1 python3
+tools/godot-dev/xvfb_run.py node port/singleplayer-feel/live.mjs --run-native
+--output=<evidence>/connected`.
+
+`connected/live-CU6C03/acceptance.json` reports **passed=true, wireOK=true,
+exit=0, no failures**. The journal comes from the real Node campaign authority;
+there is no actor-state injection, fabricated shot event, matchFactory or
+control server. Inputs are scripted, so this is not a natural human playtest.
+
+Before any cheats, normal combat recorded **3 confirmed hits / 1 kill**, reaching
+route vertex 20. The later real-wire diagnostic segment exercises pause/resume,
+invulnerability, unlimited ammo, weapon grant, heal, flight and cheat clearing.
+Flight rises 6.8m and the camera settles within 0.0317m of source translation
+after landing; existing local smoothing remains intact.
+
+All ten weapon diagnostic trigger checks match rig recoil events to accepted
+trigger volleys: weapons 0 and 9 each record `2 shots / 2 recoil events`, and
+weapons 1–8 each record `1 / 1`. Whole-journey source shot/launch event counts are
+`{0:37,1:2,2:1,3:8,4:2,5:1,6:1,7:12,8:1,9:4}`. These are **event counts, not
+trigger counts**: pellet/fragment events must not be mistaken for extra recoil.
+The real journey exports four native screenshots and raw journal/report/logs.
+Its audio-before comparison belongs to the existing audio harness, not this
+animation pass; no audio improvement claim is made here.
+
+### Coherent paired native rendering and inspection
+
+`baseline-manifest.json` records SHA-256 values for all eight modified production
+dependencies. Before captures restore **all eight** from `4d41cdef` together:
+rig, handling, session binding, weapon-FX controller, melee feedback, interlude
+director, Puma and vehicle renderer. Therefore the before rig does not use the
+new handling code. Actor files are held at the integrated ActorSol revision in
+both fixtures; these isolated captures do not invoke actor animation. Every
+current dependency was restored and verified against its saved after hash.
+
+Native raw image counts (composite review images excluded):
+
+* Weapons: **226 before + 226 after**; ten identities, fire/recovery, settled ADS,
+  source reload progress, acceleration, landing and accepted melee.
+* Eight workshop gallery: **16 before + 16 after**, with fixed 2s settlement
+  before reading restored colors. The capture no longer assumes 12 render frames
+  are enough elapsed time on every renderer.
+* Native waterwheel restoration / Puma wheel sequences: **121 before + 121
+  after**. Waterwheel completion uses source-generated workshop fixture states;
+  Puma uses labelled synthetic 20Hz velocity samples for cosmetic comparison.
+* Connected gameplay: **4** screenshots.
+* Total: **730 native PNGs**, plus derived contact sheets/comparison frames.
+
+Three derived, labelled side-by-side native-frame clips:
+
+* `review/weapons-before-after.mp4`: **27.833s / 835 review frames**. Short fire
+  phases are held longer for readable comparison; this is an editorial review
+  timeline, not a real-time gameplay recording. Transparent weapon captures are
+  composited over a neutral background for the comparison.
+* `review/workshop-before-after.mp4`: **2s / 60 frames**.
+* `review/vehicle-before-after.mp4`: **1s / 60 frames**.
+
+Inspected native representative fire/melee frames, both all-ten-weapon contact
+sheets (idle/fire/ADS/reload), all eight settled workshop views, an early paired
+waterwheel transition frame, Puma wheel frames and the actual connected combat
+screenshot. Fire/reload identities remain legible, settled ADS remains aligned,
+the kick follows through without fabricating contact, restored machinery stays
+above its existing solid housing, and wheel rotation is confined to the wheels.
+The deterministic tests supply boundedness/cadence/clearance checks that still
+images cannot establish. Inspection here is of frame sequences/keyframes,
+not a claim that a human watched all clips or performed auditory acceptance.
+
+Evidence root remains
+`/home/mojo/.tmp-on-disk/cocs-animation-physics-evidence-20261001/`.
+All test/capture attempts and the initial isolated-review packaging interpreter
+failure are retained/documented; the latter was resolved by using the existing
+Python venv with Pillow rather than system Python. Source/authority files and
+shared parent hooks were not changed during final acceptance. The generated
+targeting geometry output is copied into evidence rather than committed over
+the tracked fixture; parent `7f150681` provides the opt-in path fix separately.
+
+**Final engine slot release:** all native import/test/render processes are
+complete. No Blender process was used. Slot released for parent/Astra work.
 
 Native before/after rendering must be captured and inspected after the slot
 grant. At this stage **0 clips / 0 native screenshots / no hardware-performance

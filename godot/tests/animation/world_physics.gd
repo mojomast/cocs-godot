@@ -148,8 +148,8 @@ func host_pause() -> void:
 		check(not director.animation_suspended and not same(sample(director),frozen) and absf(director.clock-clock-0.025) < 0.00001,"actual host %s resumes without paused-time catch-up" % reason)
 	# Free detached composition's preallocated nodes; no network startup occurred.
 	root.remove_child(director)
-	for property: Dictionary in host.get_property_list():
-		var value: Variant = host.get(property.name)
+	for property: String in ["camera","label","selector","combat","combat_label","pickups","client","presentation","ground_tells","robot_voices","story_director","interlude_director","solo_cheats"]:
+		var value: Variant = host.get(property)
 		if is_instance_valid(value) and value is Node and value.get_parent() == null: value.free()
 	host.free()
 
@@ -171,7 +171,7 @@ func vehicles(settings: Node) -> void:
 	var capped: float = car.wheels[0].rotation.x
 	car._process(0.5)
 	check(absf(capped-1.5) < 0.00001 and car.wheels[0].rotation.x == capped,"wheel lead bounded at 100ms then freezes on stale sample")
-	check(car.transform == source_transform and car.turret.rotation.y == 0.2,"wheel animation never moves authoritative root/turret")
+	check(car.transform.is_equal_approx(source_transform) and is_equal_approx(car.turret.rotation.y,0.2),"wheel animation never moves authoritative root/turret")
 	for rate: int in [30,60,144]:
 		car.observe_roll(4.2,0.0,true)
 		for dt: float in steps(rate,0.075): car._process(dt)
