@@ -71,3 +71,25 @@ on the combined code, including enemy damage and unchanged disabled behavior.
 Parent requested Horde yield Godot after its current bounded case so the owner's
 campaign fixes can proceed. Do not start another engine until Horde explicitly
 releases it. Brief urban roof acceptance and then Astra/cheat native checks follow.
+
+## Engine handoff and Horde menu integration
+
+Horde released Godot at `77dd1275`: its normal-clock fixture restored both
+feeders, opened both gates and reached source stages B/C, then lost at wave seven
+before pump/valve completion. 32,512 input samples, maximum gap 125 ms, no
+active-play stale reset. Full mission/Warden acceptance remains incomplete;
+routing fixes are committed but unrerun. Parent preserved that checkpoint.
+
+Parent explicitly granted **exclusive Godot to Astra now**, prioritizing owner
+campaign feedback. Urban roof remains code/Blender-only until Astra releases.
+Astra owns native feel/movement/audio and cheat-menu interaction acceptance,
+including parser/UI repairs if necessary; parent performs no competing engine run.
+
+The parent additionally wired the shared solo menu/effects into ordinary Horde
+launches, including Blackwater. Explicit legacy debug-panel launches retain that
+existing panel. Source/Node checks across all six Horde maps prove unchanged
+simulation with cheats off and functioning bounded flight/grants; a Blackwater
+wire check proves ordinary-launch menu capability, pause, grant and resume.
+The broader 17-test set first passed 16: the new test expected null for infinite
+pistol ammo, but source snapshots use the string `∞`. Correcting that assertion
+produced 2/2 focused passes. Native Horde menu acceptance is still pending.

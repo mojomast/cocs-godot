@@ -46,6 +46,7 @@ var corpses: Array[Dictionary] = []
 var corpse_events: Dictionary = {}
 var terminal_blood: Node3D
 var terminal_blood_age := 0.0
+var solo_cheats: CanvasLayer
 
 func _init() -> void:
 	# The inherited field creates a detached Node. Free it before specializing;
@@ -141,6 +142,10 @@ func _ready() -> void:
 			combat.apply_events(items, client.actor_id)
 			apply_npc_deaths(items)
 			av_events(items))
+	if not debug_requested():
+		solo_cheats = preload("res://debug/solo_cheats.gd").new()
+		add_child(solo_cheats)
+		solo_cheats.bind_session(self)
 	connect_selected_match()
 	# Horde's source-default desktop bindings, localized to this composition.
 	call_deferred("show_controls")

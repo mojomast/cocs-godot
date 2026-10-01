@@ -207,7 +207,7 @@ commands = [
     ("multiplayer-world-network", ["node", "port/multiplayer-worlds/two-client.mjs"]),
     ("horde-robot-expansion", ["node", "--test", "--test-concurrency=1", "port/native-horde/robot-roles.test.mjs", "port/native-horde/robot-authority.test.mjs", "port/native-horde/blackwater.test.mjs", "port/native-horde/robot-network-census.test.mjs"]),
     ("campaign-options", ["node", "--test", "tools/godot-package/campaign_options.test.mjs"]),
-    ("solo-cheats-authority", ["node", "--test", "port/native-debug/solo_cheats.test.mjs"]),
+    ("solo-cheats-authority", ["node", "--test", "--test-concurrency=1", "port/native-debug/solo_cheats.test.mjs", "port/native-debug/solo_horde.test.mjs"]),
     ("campaign-feel-authority", ["node", "--test", "port/singleplayer-feel/feel.test.mjs"]),
     ("campaign-feel-motion", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/feel_motion.gd"]),
     ("campaign-ownership", ["node", "--test", "tools/godot-package/campaign_ownership.test.mjs"]),
