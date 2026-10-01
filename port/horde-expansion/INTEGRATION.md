@@ -11,6 +11,7 @@
   mismatched geometry/plan hashes on each snapshot.
 - Package closure additions: `port/native-horde/robot-roles.mjs`,
   `port/native-horde/blackwater-schema.mjs`, `port/native-horde/blackwater-director.mjs`,
+  `godot/horde/ground_tells.gd`,
   `godot/horde_maps/blackwater_catalog.gd`, `blackwater.gd`,
   `blackwater_demo.gd`, `blackwater_demo.tscn`, generated JSON and (after the
   exclusive Blender token) `godot/horde_maps/art/blackwater-reclamation.glb`.
