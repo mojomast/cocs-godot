@@ -4,7 +4,7 @@ import {once} from 'node:events';
 import {WebSocket} from 'ws';
 import {createCampaignMatch} from '../native-campaign/match.mjs';
 import {createAuthority} from '../native-campaign/authority.mjs';
-import {spawnGroup} from '../../game/singleplayer.mjs';
+import {deployEncounter} from '../native-campaign/enemies.mjs';
 import {attachSoloCheats, parseSoloCheat, soloCheatPreferences} from './solo_cheats.mjs';
 
 const make = () => createCampaignMatch({random:()=>.5});
@@ -34,8 +34,8 @@ test('human-only invulnerability is reversible; ammo and grants do not change so
   const health=player.health, armor=player.armor;
   match.damage(player,10000,null);
   assert.equal(player.health,health);assert.equal(player.armor,armor);assert.equal(match.over,false);
-  const [npcId]=spawnGroup(match,match.modeState,{type:'husk',count:1,group:'cheat-isolation'},{team:1});
-  const npc=match.actors.find(actor=>actor.id===npcId);
+  deployEncounter(match,match.modeState,{roster:{scrapper:1}},match.snapshot().campaign.marker);
+  const npc=match.actors.find(actor=>actor.isNpc);
   npc.protection=0;npc.armor=0;
   const npcHealth=npc.health;
   match.damage(npc,10,player);

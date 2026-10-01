@@ -45,3 +45,29 @@ build should incorporate the owner's balance/feel and cheat-menu improvements,
 alongside the separately verified multiplayer expansion, after integration checks.
 
 Evidence target: `/home/mojo/.tmp-on-disk/cocs-singleplayer-feel-evidence-20261001/`.
+
+## Astra implementation intake
+
+`83480dfc` is integrated on parent as `0d987f9d`, alongside cheat checkpoint
+`07023a8d`. Astra's 41 Node checks pass; no native execution yet. Consulted sources
+and precise access scope are in RESEARCH.md (DOOM GDC abstract, Griesemer/Halo,
+Vlambeer Gun Godz, Fiedler timestep/interpolation). CHANGELOG.md and the 140-row
+ideal-hit matrix document measured before/after durability, not human TTK.
+
+Normal now starts 140 health/60 armor, with campaign-only attack-lane/crossfire
+budgets, recovery while returning fire, bounded close-kill salvage, readable
+NPC attacks and breakable shields. Role positions, relief encounters and combat-
+overlapping restores target pacing. Source-clock/velocity camera reconstruction
+targets batched-snapshot jerk. Mechanical firing tails and robot reactions add
+impact; subjective gunfeel and native playback still require review.
+
+Parent added the new `feel.mjs` to the explicit package closure and registered
+authority/motion verification gates. Integration run: 34/35 initially passed;
+the cheat isolation test manually spawned an untagged source NPC rather than
+using campaign deployment, causing the new robot policy to lack its model.
+The test now uses actual campaign deployment; all five focused cheat tests pass
+on the combined code, including enemy damage and unchanged disabled behavior.
+
+Parent requested Horde yield Godot after its current bounded case so the owner's
+campaign fixes can proceed. Do not start another engine until Horde explicitly
+releases it. Brief urban roof acceptance and then Astra/cheat native checks follow.
