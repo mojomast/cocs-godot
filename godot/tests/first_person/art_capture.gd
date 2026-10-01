@@ -83,4 +83,16 @@ func run() -> void:
 		rig.apply_actor(actor,true)
 		rig.advance(1.0/30.0)
 		await image("sequence-%02d.png" % frame)
+	actor.weapon=0
+	actor.reloading=false
+	rig.apply_actor(actor,true)
+	for i: int in 10: rig.advance(.05)
+	rig.apply_events([{"id":2,"time":2.0,"type":"shot","actor":7,"weapon":0}],7)
+	for frame: int in range(24):
+		if frame == 8: actor.reloading=true
+		if frame >= 8 and frame < 20: actor.reloadTimer = 1.8 * (20-frame)/12.0
+		if frame == 20: actor.reloading=false
+		rig.apply_actor(actor,true)
+		rig.advance(1.0/30.0)
+		await image("pulse-action-%02d.png" % frame)
 	quit()

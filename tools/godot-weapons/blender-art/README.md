@@ -47,8 +47,8 @@ python3 tools/godot-weapons/blender-art/verify.py
 
 The static audit reads actual GLB vertex positions and projected silhouettes,
 checks both canonical SHA-256 manifests, material slots, group topology, Blender
-masters and triangle/batch budgets. Across all ten: first-person **3,680–7,148**
-triangles and **8–13** batches each; world **556–1,132** triangles and **8–13**
+masters and triangle/batch budgets. Across all ten: first-person **3,680–7,340**
+triangles and **8–13** batches each; world **556–1,156** triangles and **8–13**
 batches each. Largest actual vertex-profile IoU is **0.394** side and **0.371**
 top. `godot/tests/first_person/art_override.gd` checks the live adapter,
 moving feed, source anchors and separate first-person/world layers.
@@ -58,5 +58,5 @@ detail, lifecycle, finishes, handling, muzzle geometry, ADS and source-world
 grips/weapons; rendered framing has a clear central 48×48px area at both
 960×640 and 1280×800, rendered ADS has 910 checks, and handling captures have
 482 checks. Matched baseline/override normal, ADS and world screenshots for all
-ten IDs plus an engine-animated switch/reload/recoil clip:
-`/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20260930/blender-weapons/`.
+ten IDs plus engine-animated switch/reload/recoil and Pulse-action clips:
+`/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20260930/blender-weapons/revision-2/`.

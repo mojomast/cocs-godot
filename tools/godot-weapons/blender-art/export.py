@@ -198,16 +198,26 @@ def build(id, low):
         # Service hatch on the *visible near side*: deep polymer insert,
         # exposed bolt track, engraved cooling mouths and captive latch screws.
         # It breaks up the large blank slab seen during first-person hip fire.
-        plate(.093,-.013,-.123,.017,.109,.266,'dark')
-        plate(.104,.043,-.125,.009,.011,.242,'trim',.002)
-        plate(.105,-.073,-.125,.009,.009,.242,'trim',.002)
+        plate(-.093,-.013,-.123,.017,.109,.266,'dark')
+        plate(-.104,.043,-.125,.009,.011,.242,'trim',.002)
+        plate(-.105,-.073,-.125,.009,.009,.242,'trim',.002)
         for z in (-.225,-.165,-.105):
-            plate(.105,.009,z,.010,.028,.034,'cavity',.002)
-            plate(.111,.027,z,.006,.006,.022,'trim',.001)
+            plate(-.105,.009,z,.010,.028,.034,'cavity',.002)
+            plate(-.111,.027,z,.006,.006,.022,'trim',.001)
         for z in (-.235,-.012):
-            plate(.107,-.055,z,.008,.012,.012,'ceramic',.001)
-        plate(.083,.065,-.083,.040,.023,.16,'light')
-        plate(.091,.079,-.083,.012,.008,.115,'glow',.002)
+            plate(-.107,-.055,z,.008,.012,.012,'ceramic',.001)
+        plate(-.083,.065,-.083,.040,.023,.16,'light')
+        plate(-.091,.079,-.083,.012,.008,.115,'glow',.002)
+        # Broad rear action face is an inset machined service door, not an
+        # unbroken light-coloured cuboid. Captive latch and paired witness bars
+        # remain visible from the actual first-person normal pose.
+        plate(0,-.022,.102,.137,.125,.013,'dark',.004)
+        plate(0,-.022,.111,.112,.100,.006,'cavity',0)
+        plate(0,.024,.117,.094,.009,.006,'trim',0)
+        for x in (-.032,.032):
+            plate(x,-.035,.117,.034,.043,.007,'light',0)
+            plate(x,-.035,.122,.010,.021,.005,'dark',0)
+        plate(0,-.079,.119,.078,.007,.006,'glow',0)
         tube((0,y,tip+.15),.041,.31,'cavity','barrel-assembly')
         for side in (-1,1):
             rod((side*.097,-.018,-.67),(side*.097,-.018,-.25),.01,'trim')
@@ -304,8 +314,8 @@ def build(id, low):
         block((mg[0],mg[1]-.085,mg[2]),(width+.012,.015,depth),'light','feed')
     block((.069,-.006,-.135),(.019,.034,.13),'trim','bolt')
     if id==0:
-        block((.106,-.012,-.018),(.018,.034,.071),'trim','bolt')
-        block((.119,-.012,-.017),(.007,.015,.043),'cavity','bolt',bevel=.002)
+        block((-.106,-.012,-.018),(.018,.034,.071),'trim','bolt')
+        block((-.119,-.012,-.017),(.007,.015,.043),'cavity','bolt',bevel=.002)
     # Palm-indexed angled grip, trigger cage and unobstructed support station.
     plate(gr[0],gr[1]-.015,gr[2]+.013,.09,.165,.10,'rubber')
     for n in range(3 if not lod else 1):
@@ -317,7 +327,7 @@ def build(id, low):
     # reduces to a shared recoloured receiver.
     for i in range(2 if lod else 4):
         z=-.10-i*.043
-        plate(.071 if id in (0,2,8,9) else -.081,.026,z,.011,.028,.015,'cavity',.002)
+        plate(.071 if id in (2,8,9) else -.102 if id==0 else -.081,.026,z,.011,.028,.015,'cavity',.002)
 
 def export(id, low):
     build(id,low)

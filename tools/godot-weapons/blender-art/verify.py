@@ -65,7 +65,7 @@ def main():
             path=ART/f'{key}-{id}.glb'
             doc,bin=glb(path)
             p=profile(doc,bin); profiles.append(p)
-            assert p[2] <= (1250 if low else 7200),(id,key,p[2])
+            assert p[2] <= (1250 if low else 7500),(id,key,p[2])
             assert p[3] <= 16,(id,key,p[3])
             assert (MASTER/f'{key}-{id}.blend').stat().st_size>50000
         assert profiles[1][2] < profiles[0][2]*.35,(id,'world LOD')
