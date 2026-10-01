@@ -107,6 +107,18 @@ captured disconnect is fixed.
 
 ## Other open work
 
+Level-variety commits `f8e75e2f` and `2e49dbd0` are integrated as `9b975c2f`
+and `4d41cdef`. Eight authored workshops span three interaction families, with
+24 approach/link routes and 34 shared static solids. Lane acceptance passed
+65 source/terrain tests, eight native geometry/presentation cases and eight
+connected native interaction journeys. Parent reviewed both before/after contact
+sheets. Added explicit package closure and canonical source/native/live gates.
+Parent's combined source/terrain/package-closure run passed **70/70** after
+integration (`/tmp/opencode/targeting-variety-parent-node.log`).
+
+The owner's subsequent animation request adds two Sol lanes before combined
+export. Current resource grants and scope are in `port/animation-pass/WORKSTREAM.md`.
+
 The published Windows build passed all 67 package cases after two Crown
 disconnects; it predates this repair. Full Blackwater chain/Warden acceptance and
 the cinematic trailer refresh are still open.
