@@ -69,6 +69,13 @@ function breakwater(){
   solid(m,47,15,3,38,7,'lock-bulkhead','retaining');
   solid(m,47,60,3,24,7,'lock-bulkhead','retaining');
   for(const x of [-96,96])solid(m,x,54,5,4,3,'bollard','iron');
+  // Secondary ferry sheds, stacked pump cisterns and mechanical housings stay
+  // outside the three reserved routes but make the harbour more than three huts.
+  for(const side of [-1,1]){
+    hall(m,`ferry-office-${side}`,side*70,20,16,10,'ew',6);
+    for(const x of [side*70,side*79])solid(m,x,58,3.6,3.6,6,'cistern','iron');
+    solid(m,side*10,-61,5,5,4.5,'pump-house','rust');
+  }
   frame(m);
   m.pickups=[['health',-80,35],['health',80,35],['armor',-58,-42],['armor',58,-42],['rocket',0,40],['rail',0,-47]];
   m.art.ground=[{x:0,z:0,w:216,d:144,material:'quay'},{x:0,z:58,w:216,d:18,material:'tidal-silt'}];
@@ -109,6 +116,9 @@ function thermal(){
     {id:'alpine-ground',material:'granite',walkable:true,
       vertices:[[-92,0,-68],[-92,0,68],[92,0,68],[92,0,-68]],triangles:[[0,1,2],[0,2,3]]},
     {id:'upper-bridge',material:'iron',walkable:true,vertices,triangles}],walls:[]};
+  // Retaining piers carry the raised walk as actual source solids. Their tops
+  // stop below the deck, so they never create phantom step-up navigation.
+  for(const x of [-20,0,20])for(const z of [35.8,42.2])solid(m,x,z,1.4,1.4,3.8,'bridge-pier','basalt');
   m.art.ground=[{x:0,z:0,w:184,d:136,material:'granite'},{x:0,z:-35,w:72,d:18,material:'spillway'}];
   frame(m);m.pickups=[['health',-75,22],['health',75,22],['armor',-44,-34],['armor',44,-34],['rail',0,39],['rocket',0,15]];
   return m;
@@ -195,10 +205,10 @@ function archipelago(){
       solid(m,n.x+e*(w+8)/4,n.z+s*d/2,(w-8)/2,1,5,'bastion','limestone');
     }
   }
-  m.art.ground=[{x:0,z:0,w:240,d:160,material:'island-ground'},...[-55,0,47].map(z=>({x:0,z,w:240,d:z===0?28:16,material:'causeway'}))];
+  m.art.ground=[{x:0,z:0,w:240,d:160,material:'deep-water'}];
   // Shallow low-tide flats are walkable at the source ground height. The three
   // dry causeways remain legible; no separate unmodelled swim collider exists.
-  for(const z of [-32,24,66])piece(m,'box',0,.02,z,240,.02,13,'water');
+  for(const z of [-32,24,66])for(const x of [-94,-45,0,45,94])piece(m,'box',x,.018,z,12,.012,4,'water');
   for(const x of [-92,-68,-28,28,68,92])for(const z of [-74,69]){solid(m,x,z,4,5,3,'rock','limestone');}
   frame(m);m.pickups=[['health',-92,20],['health',92,-20],['armor',-60,36],['armor',60,-36],['rocket',0,-55],['rail',0,47]];
   for(let x=-115;x<=115;x+=5)for(let z=-74;z<=74;z+=5){if(!m.blocks.some(b=>Math.abs(x-b.x)<b.w/2+1&&Math.abs(z-b.z)<b.d/2+1))m.navNodes.push({x,z});}

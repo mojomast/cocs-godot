@@ -42,6 +42,17 @@ func _ready() -> void:
 	add_child(camera)
 	add_child(sun)
 	add_child(environment)
+	# The world scene bypasses the base viewer _ready; establish its own sun and
+	# ambient fill so geographic silhouettes and indoor thresholds remain legible.
+	sun.rotation_degrees = Vector3(-42,-28,0)
+	sun.light_energy = 1.35
+	var daylight := Environment.new()
+	daylight.background_mode = Environment.BG_COLOR
+	daylight.background_color = Color("6a8793")
+	daylight.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	daylight.ambient_light_color = Color("a4b3b3")
+	daylight.ambient_light_energy = 0.62
+	environment.environment = daylight
 	camera.far = 2000
 	camera.rotation_order = EULER_ORDER_YXZ
 	var layer := CanvasLayer.new()
@@ -271,6 +282,7 @@ func clear_world_pose() -> void:
 	release_pointer()
 
 func on_lobby(frame: Dictionary) -> void:
+	if "--world-fixture-three" in OS.get_cmdline_user_args() and phase == 12 and frame.get("players",[]).size() >= 3: call_deferred("world_start_requested")
 	if "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_LATTICE_LOBBY ",JSON.stringify({"phase":phase,"map":frame.get("mapId"),"mode":frame.get("config",{}),"players":frame.get("players",[]).size()}))
 	last_lattice_lobby = frame.duplicate(true)
 	if pose_actor_id != client.actor_id: clear_world_pose()
@@ -307,7 +319,7 @@ func on_lobby(frame: Dictionary) -> void:
 		session_flow.publish(SessionFlow.State.HOST_WAITING, "Configuration echoed")
 		world_label.text = "Host lobby · Enter to start"
 		phase = 12
-		if "--world-evidence" in OS.get_cmdline_user_args(): call_deferred("world_start_requested")
+		if "--world-evidence" in OS.get_cmdline_user_args() and "--world-fixture-three" not in OS.get_cmdline_user_args(): call_deferred("world_start_requested")
 	refresh_session_setup()
 
 func on_started(frame: Dictionary) -> void:
@@ -371,6 +383,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	refresh_world_hud()
 
 func on_results(frame: Dictionary) -> void:
+	if "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_LATTICE_RESULTS ",JSON.stringify({"map":current_id,"mode":selected_mode,"peer":client.peer_id,"cocs":frame.state.get("cocs",{}),"winner":frame.state.get("winner")}))
 	av_snapshot(frame.state)
 	av_finish(frame.state)
 	session_flow.observe_result(client.result_projection)
