@@ -13,6 +13,8 @@ const BIOMES := [
 var replacement_instances := 0
 var accent_instances := 0
 var batch_count := 0
+var surface_draws := 0
+var triangle_instances := 0
 var _asset_cache: Dictionary = {}
 
 func build(host: Node3D) -> void:
@@ -22,6 +24,8 @@ func build(host: Node3D) -> void:
 	replacement_instances = 0
 	accent_instances = 0
 	batch_count = 0
+	surface_draws = 0
+	triangle_instances = 0
 	if host == null or not host.get("recipe") is Dictionary or host.recipe.is_empty(): return
 	var index := int(host.recipe.campaign.index)
 	if index < 0 or index >= BIOMES.size(): return
@@ -38,38 +42,65 @@ func build(host: Node3D) -> void:
 	# Only touch precisely identified original scenery batches carrying the terrain
 	# builder's CPU transform mirror. Preserve horizon trees outside play bounds.
 	var bounds: Dictionary = host.recipe.arena.bounds
+	var recipe_sites: Dictionary = {}
+	for prop: Dictionary in host.recipe.art:
+		var kind := str(prop.kind)
+		if kind not in ["tree","fern","crag"]: continue
+		var p: Array = prop.position
+		recipe_sites[_site_key(Vector3(float(p[0]),float(p[1]),float(p[2])))] = "rock" if kind == "crag" else kind
 	var groups: Dictionary = {}
+	var replacements: Array[MultiMeshInstance3D] = []
 	for node in host.get_children():
-		if not node is MultiMeshInstance3D or not node.name.begins_with("Scenery_") or not node.has_meta("instance_transforms"): continue
-		var kind := str(node.name).trim_prefix("Scenery_")
-		var family := "rock" if kind.begins_with("crag-") else kind
-		if not selected.has(family): continue
+		if not node is MultiMeshInstance3D or not node.has_meta("instance_transforms"): continue
 		var origin: Vector3 = node.position
-		# Horizon silhouette belongs to the existing scenery system.
-		if origin.x < float(bounds.minX)-CHUNK or origin.x > float(bounds.maxX)+CHUNK or origin.z < float(bounds.minZ)-CHUNK or origin.z > float(bounds.maxZ)+CHUNK: continue
 		var transforms: Array = node.get_meta("instance_transforms")
+		# Godot auto-names duplicate chunk nodes @MultiMeshInstance3D@N. An
+		# exact authored recipe-site lookup identifies their ownership even when
+		# names disappear; solid blocks and off-map skyline have no matching sites.
+		var family := ""
+		var all_inside := not transforms.is_empty()
+		for transform: Transform3D in transforms:
+			var world: Vector3 = origin+transform.origin
+			var key := _site_key(world)
+			if not recipe_sites.has(key) or (family != "" and family != recipe_sites[key]) or world.x < float(bounds.minX)-3 or world.x > float(bounds.maxX)+3 or world.z < float(bounds.minZ)-3 or world.z > float(bounds.maxZ)+3:
+				all_inside = false
+				break
+			family = recipe_sites[key]
+		if not all_inside or not selected.has(family): continue
 		var asset := str(selected[family])
+		if _mesh(asset) == null: continue
 		if not groups.has(asset): groups[asset] = {}
 		var chunk_key := "%d/%d" % [floori(origin.x/CHUNK),floori(origin.z/CHUNK)]
 		if not groups[asset].has(chunk_key): groups[asset][chunk_key] = {"origin":origin,"transforms":[]}
 		for transform: Transform3D in transforms:
 			var world: Vector3 = origin + transform.origin
-			if world.x < float(bounds.minX)-3 or world.x > float(bounds.maxX)+3 or world.z < float(bounds.minZ)-3 or world.z > float(bounds.maxZ)+3: continue
-			groups[asset][chunk_key].transforms.append(Transform3D(transform.basis,world-groups[asset][chunk_key].origin))
-		# Original scenery is hidden only when its complete mirrored batch is valid.
-		if groups[asset][chunk_key].transforms.size() > 0: node.visible = false
+			var basis: Basis = transform.basis
+			# Reeds should read as a wetland canopy at person height, while scrub
+			# stays below the line of fire. Position remains recipe authoritative.
+			if family == "fern":
+				var width := 1.24 if index == 1 else 1.12
+				var height := 1.85 if index == 1 else 1.55 if index == 2 else 1.25
+				basis = basis.scaled(Vector3(width,height,width))
+			groups[asset][chunk_key].transforms.append(Transform3D(basis,world-groups[asset][chunk_key].origin))
+		replacements.append(node)
 	for asset: String in groups:
 		for group: Dictionary in groups[asset].values():
 			_batch(asset,group,false)
+	# _batch succeeds for every complete group with an imported mesh. Only then
+	# suppress the original, leaving unknown and horizon scenery untouched.
+	for node: MultiMeshInstance3D in replacements: node.visible = false
 	# Candidate sites are existing recipe scenery locations; reject mission anchors
 	# and the entire critical route with a generous radius, never create collisions.
 	var accents: Dictionary = {}
 	var candidates: Array = host.recipe.art
+	var clear_candidates := 0
 	for i in range(candidates.size()):
 		var prop: Dictionary = candidates[i]
-		if str(prop.kind) not in ["fern","crag","tree"] or i % 13 != index % 13: continue
+		if str(prop.kind) not in ["fern","crag","tree"]: continue
 		var site := Vector3(float(prop.position[0]),0,float(prop.position[2]))
-		if not _clear_site(host,site): continue
+		if not _clear_site(host,site,1.6): continue
+		clear_candidates += 1
+		if clear_candidates % (2 if index in [1,2] else 5) != index % (2 if index in [1,2] else 5): continue
 		var y: float = host.height_at(site.x,site.z)
 		if not is_finite(y): continue
 		var asset := str(selected.accent)
@@ -79,24 +110,36 @@ func build(host: Node3D) -> void:
 		if not accents[asset].has(key): accents[asset][key] = {"origin":Vector3(floorf(site.x/CHUNK)*CHUNK,0,floorf(site.z/CHUNK)*CHUNK),"transforms":[]}
 		var group: Dictionary = accents[asset][key]
 		var spin := fposmod(float(i)*2.399963, TAU)
-		var scale := Vector3(2.8,2.0,2.3) if index == 0 else Vector3(1.8,1.8,1.4) if index == 1 else Vector3(2.2,1.9,1.7)
-		var offset := Vector3(site.x,y-.08,site.z)-group.origin
+		var scale := Vector3(2.8,2.0,2.3) if index == 0 else Vector3(2.2,1.8,2.0) if index == 1 else Vector3(2.2,1.9,1.7)
+		var offset: Vector3 = Vector3(site.x,y-.08,site.z)-group.origin
 		group.transforms.append(Transform3D(Basis(Vector3.UP,spin).scaled(scale),offset))
 	for asset: String in accents:
 		for group: Dictionary in accents[asset].values(): _batch(asset,group,true)
 
-func _clear_site(host: Node3D, site: Vector3) -> bool:
+static func _site_key(point: Vector3) -> Vector3i:
+	return Vector3i(roundi(point.x*100.0),roundi(point.y*100.0),roundi(point.z*100.0))
+
+func _clear_site(host: Node3D, site: Vector3, radius: float = 1.6) -> bool:
 	var b: Dictionary = host.recipe.arena.bounds
-	if site.x < b.minX+8 or site.x > b.maxX-8 or site.z < b.minZ+8 or site.z > b.maxZ-8: return false
+	if site.x < b.minX+6+radius or site.x > b.maxX-6-radius or site.z < b.minZ+6+radius or site.z > b.maxZ-6-radius: return false
 	for anchor: Dictionary in host.recipe.campaign.anchors.values():
-		if site.distance_to(Vector3(float(anchor.x),0,float(anchor.z))) < maxf(18.0,float(anchor.radius)+8.0): return false
+		if site.distance_to(Vector3(float(anchor.x),0,float(anchor.z))) < maxf(16.0,float(anchor.radius)+5.0)+radius: return false
+	# Source navNodes include alternative/flank routes as well as direct paths.
+	for waypoint: Array in host.recipe.arena.navNodes:
+		if site.distance_to(Vector3(float(waypoint[0]),0,float(waypoint[1]))) < 2.0+radius: return false
+	for spawn: Array in host.recipe.arena.spawns:
+		if site.distance_to(Vector3(float(spawn[0]),0,float(spawn[1]))) < 4.0+radius: return false
+	for pickup: Array in host.recipe.arena.pickups:
+		if site.distance_to(Vector3(float(pickup[1]),0,float(pickup[2]))) < 4.0+radius: return false
+	for block: Dictionary in host.recipe.arena.blocks:
+		if absf(site.x-float(block.x)) < float(block.w)*.5+1.5+radius and absf(site.z-float(block.z)) < float(block.d)*.5+1.5+radius: return false
 	var path: Array = host.recipe.campaign.criticalPath
 	for j in range(1,path.size()):
 		var a := Vector2(float(path[j-1].x),float(path[j-1].z))
 		var edge := Vector2(float(path[j].x),float(path[j].z))-a
 		if edge.length_squared() < .01: continue
 		var nearest := a+edge*clampf((Vector2(site.x,site.z)-a).dot(edge)/edge.length_squared(),0,1)
-		if nearest.distance_to(Vector2(site.x,site.z)) < 13.0: return false
+		if nearest.distance_to(Vector2(site.x,site.z)) < 13.0+radius: return false
 	return true
 
 func _mesh(asset: String) -> Mesh:
@@ -105,12 +148,22 @@ func _mesh(asset: String) -> Mesh:
 	if scene == null: return null
 	var root := scene.instantiate()
 	var result: Mesh = _find_mesh(root)
+	if result:
+		for surface in range(result.get_surface_count()):
+			if result.surface_get_material(surface) == null:
+				push_error("Biome GLB lost its authored material: " + asset)
+				result = null
+				break
 	_asset_cache[asset] = result
 	root.free()
 	return result
 
 func _find_mesh(node: Node) -> Mesh:
-	if node is MeshInstance3D: return node.mesh
+	if node is MeshInstance3D:
+		if not node.transform.is_equal_approx(Transform3D.IDENTITY):
+			push_error("Biome GLB mesh has an unbaked node transform: " + node.name)
+			return null
+		return node.mesh
 	for child in node.get_children():
 		var mesh := _find_mesh(child)
 		if mesh: return mesh
@@ -142,5 +195,9 @@ func _batch(asset: String, group: Dictionary, accent: bool) -> void:
 	node.set_meta("instance_transforms",transforms.duplicate())
 	add_child(node)
 	batch_count += 1
+	surface_draws += mesh.get_surface_count()
+	for surface in range(mesh.get_surface_count()):
+		var arrays := mesh.surface_get_arrays(surface)
+		triangle_instances += int((arrays[Mesh.ARRAY_INDEX].size() if arrays[Mesh.ARRAY_INDEX].size() > 0 else arrays[Mesh.ARRAY_VERTEX].size()) / 3) * transforms.size()
 	if accent: accent_instances += transforms.size()
 	else: replacement_instances += transforms.size()

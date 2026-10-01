@@ -21,7 +21,8 @@ func run() -> void:
 		visual.build(host)
 		assert(visual.replacement_instances > 200, id + " missing authored scenery")
 		assert(visual.accent_instances > 0 and visual.accent_instances < 100, id + " accent budget")
-		assert(visual.batch_count < 180, id + " excessive batches")
+		assert(visual.batch_count < 280 and visual.surface_draws < 850, id + " excessive surface draws")
+		assert(visual.triangle_instances > visual.replacement_instances and visual.triangle_instances < 550000, id + " triangle budget")
 		var solids := 0
 		for node in host.get_children():
 			if node is StaticBody3D: solids += 1
@@ -31,10 +32,12 @@ func run() -> void:
 		for child in visual.get_children():
 			assert(child is MultiMeshInstance3D and child.multimesh.instance_count > 0)
 			assert(child.multimesh.custom_aabb.has_volume())
+			for surface in range(child.multimesh.mesh.get_surface_count()):
+				assert(child.multimesh.mesh.surface_get_material(surface) != null, id + " missing Blender material")
 			if child.name.begins_with("Accent_"):
 				for t: Transform3D in child.get_meta("instance_transforms"):
 					assert(visual._clear_site(host,child.position+t.origin),id + " accent on mission route")
-		print("BIOME_ART ",id," replaced=",visual.replacement_instances," accents=",visual.accent_instances," batches=",visual.batch_count)
+		print("BIOME_ART ",id," replaced=",visual.replacement_instances," accents=",visual.accent_instances," batches=",visual.batch_count," surface_draws=",visual.surface_draws," triangle_instances=",visual.triangle_instances)
 		host.free()
 	print("CAMPAIGN_ENVIRONMENT_ART_OK")
 	quit()
