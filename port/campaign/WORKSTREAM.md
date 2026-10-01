@@ -301,3 +301,18 @@ retained) and raw WAV are published on the development gallery release. Evidence
 `orchestral-score/audition-results-4.json`, `quiet-relay-orchestral-preview.wav.json`
 and `mp3-linear-encode.log`. Earlier parse/import/audio-server failures are retained.
 Music quality remains subject to the owner's listening feedback.
+
+Trailer tooling `7997aa0b` is integrated as `3622c734`. After focused integration
+checks, the trailer lane received the **exclusive heavy slot** and parent head
+`19884ca1` to render sample shots, repair actual capture issues and produce the
+finished MP4 plus silent menu Theora. Parent engine/build work pauses until that
+handoff. The lane owns the final media task, not only the prepared scripts.
+
+Focused integration at `bfb91314` passed Node melee/story/campaign, melee feedback,
+damage numbers and settings. Repairs in `19884ca1` fix strict GDScript typing,
+floating-point test comparison and explicit robot voice PCM import settings.
+Operator textures, story presentation and campaign session then passed; robot
+voices passed **238 checks / zero failures** after PCM import. Menu background
+contracts exposed six failures; the Sol menu lane is correcting them in isolation
+without engine work while the trailer owns the slot. All failures are retained in
+`feature-integration-bfb91314/` and `repair-1/`.
