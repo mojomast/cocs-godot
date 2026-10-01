@@ -397,3 +397,16 @@ The visible live-menu fixture is registered in the canonical verifier.
 The exclusive heavy slot is now granted to Astra for gesture motion samples and
 the revised trailer. Parent will publish the replacement only after inspecting
 the corrected motion; the original video is retained as earlier evidence.
+
+Gesture correction completed: `0bed35d4` and `bc4c61ac` integrated as `0264d488`
+and `f8d8ab45`. Parent reviewed timed Mara/Ivo motion strips showing relaxed rest,
+deliberate greeting and settled arms. Production gesture regression passed 7,615
+checks; existing story presentation passed; live-menu gesture spot passed 12/12.
+The 48-second `quiet-relay-trailer-v2.mp4` and both gesture GIFs are public on the
+gallery release. Four affected shots were recaptured (432 frames), with 720
+verified unaffected frames reused; prior master/evidence remain intact. Revised
+MP4: 15,661,031 bytes, SHA-256
+`287f501c68e6df26d86064d0eedb9c7868fba6050613905ead32e5bf05dbe939`,
+-16.03 LUFS / -2.20 dBTP, unchanged audio stream. Evidence is
+`/home/mojo/.tmp-on-disk/cocs-trailer-evidence-20260930-r2/`.
+The heavy slot has returned to parent for complete integrated verification.
