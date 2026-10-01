@@ -68,6 +68,7 @@ func _ready() -> void:
  add_child(environment)
  sun.rotation_degrees = Vector3(-44,-30,0)
  sun.light_energy = 1.25
+ sun.shadow_enabled = true
  var env := Environment.new()
  env.background_mode = Environment.BG_COLOR
  env.background_color = Color("627985")
