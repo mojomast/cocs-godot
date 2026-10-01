@@ -564,3 +564,11 @@ Environment now has the explicit exclusive Godot slot for import, tests and
 four-biome rendering. Weapon generation continues on one Blender slot; architecture
 may regenerate the refinement on the second single-thread Blender slot but awaits
 Godot permission. Parent keeps `16985275` unmerged pending that visual refinement.
+
+Architecture refinement export `09017079` is ready: distinct family forms and
+base/shaft/top profiles, forty bounded GLBs with editable sources. This is an
+export checkpoint, not rendered acceptance. Parent requested a static coverage
+check so every runtime-selected profile resolves to a GLB (relay/outpost currently
+have top-only exports) and updated tests for the new naming/budgets. Environment
+still owns Godot; weapon rendering is next, with structural-refinement checks
+afterward unless weapon generation is not ready when the slot becomes free.
