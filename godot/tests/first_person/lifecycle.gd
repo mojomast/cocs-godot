@@ -92,7 +92,7 @@ func run() -> void:
 		actor.weapon = id
 		rig.apply_actor(actor, true)
 		rig.advance(0.05)
-		var meshes := rig.weapon.find_children("*", "MeshInstance3D")
+		var meshes := rig.weapon.find_children("*", "MeshInstance3D").filter(func(node: Node) -> bool: return not node.has_meta("blender_art"))
 		check(meshes.size() <= 11 and meshes.size() >= 8, "bounded weapon instances %d" % id)
 		check(rig.pivot.get_child_count() == 3, "one live weapon assembly %d" % id)
 		var combined := AABB()

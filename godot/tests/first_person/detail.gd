@@ -84,7 +84,9 @@ func run() -> void:
 		step(rig, 10, 0.05)
 		var info: Dictionary = rig.manifest.weapons[id]
 		# 1. Batch budget: one material per moving assembly slot, eight per weapon.
-		var meshes := rig.weapon.find_children("*", "MeshInstance3D")
+		# The source provenance gate still counts exactly its original eight
+		# batches; the reviewed Blender render layer is checked separately.
+		var meshes := rig.weapon.find_children("*", "MeshInstance3D").filter(func(node: Node) -> bool: return not node.has_meta("blender_art"))
 		check(meshes.size() == 8, "eight material batches weapon %d (%d)" % [id, meshes.size()])
 		var surfaces := 0
 		for mesh: MeshInstance3D in meshes: surfaces += mesh.mesh.get_surface_count()

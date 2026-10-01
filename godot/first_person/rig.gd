@@ -3,6 +3,7 @@ extends Node
 const Catalog = preload("res://first_person/generated/catalog.gd")
 const Handling = preload("res://first_person/handling.gd")
 const Finish = preload("res://first_person/finish.gd")
+const Art = preload("res://first_person/art_adapter.gd")
 const MAX_SEEN := 4096
 var source_camera: Camera3D
 var viewport: SubViewport
@@ -247,6 +248,7 @@ func _select_weapon(id: int) -> void:
 	if not scenes.has(id): scenes[id] = load("res://first_person/generated/weapon-%d.glb" % id)
 	weapon = scenes[id].instantiate()
 	pivot.add_child(weapon)
+	Art.install(weapon, id)
 	# Imported resources are shared. Each rig gets immutable private surface overrides.
 	for node: Node in weapon.find_children("*", "MeshInstance3D"):
 		node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
@@ -332,7 +334,7 @@ func advance(delta: float) -> void:
 	# Keep the receiver below/right in hip fire, but align the *barrel axis*
 	# with the source camera ray. The old 0.22-rad yaw made the visible gun
 	# point off the crosshair even though source shots used the correct ray.
-	var hip := Transform3D(ads_pose.basis, Vector3(0.34, -0.26, -0.88))
+	var hip := Transform3D(ads_pose.basis, Vector3(0.29, -0.26, -0.75))
 	pivot.transform = hip.interpolate_with(ads_pose, aim_weight)
 	# Keep settled neutral sights exactly on the camera ray. Recoil is deliberately
 	# visible, then recovers; idle/locomotion/lag fade out as cheek weld completes.

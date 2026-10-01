@@ -6,6 +6,8 @@ const Catalog = preload("res://source_operators/generated/catalog.gd")
 const Rig = preload("res://source_operators/character_rig.gd")
 const WorldWeapons = preload("res://source_operators/generated/world_weapons/catalog.gd")
 const HandGrips = preload("res://source_operators/hand_grips.gd")
+const WeaponArt = preload("res://first_person/art_adapter.gd")
+const WeaponFinish = preload("res://first_person/finish.gd")
 const ArmorDetail = preload("res://source_operators/armor_detail.gd")
 const Locomotion = preload("res://source_operators/locomotion.gd")
 const WORLD_WEAPON_DIR := "res://source_operators/generated/world_weapons/"
@@ -27,6 +29,7 @@ var neutral_armor: Color
 var team_bars: Array[MeshInstance3D] = []
 var weapon_type: int = -1
 var world_weapon: Node3D
+var weapon_finish := WeaponFinish.new()
 var grip_error: Dictionary = {}
 var grip_clamp: Dictionary = {}
 var death_active: bool = false
@@ -57,6 +60,7 @@ func apply_identity(actor: Dictionary) -> void:
 		source.free()
 	nodes.clear(); batches.clear(); snapshot.clear(); team_bars.clear(); team_material = null
 	world_weapon = null
+	weapon_finish.clear()
 	weapon_type = -1
 	grip_error.clear()
 	grip_clamp.clear()
@@ -151,6 +155,8 @@ func set_weapon(type: int) -> void:
 	world_weapon = packed.instantiate()
 	world_weapon.name = "WorldWeapon"
 	mount.add_child(world_weapon)
+	WeaponArt.install(world_weapon, type, true)
+	weapon_finish.bind(world_weapon)
 	weapon_type = type
 
 func weapon_cost() -> Dictionary:
@@ -173,6 +179,7 @@ func apply_actor(actor: Dictionary) -> void:
 		reset_pose()
 	# The source only replaces a living actor's held weapon; corpses keep theirs.
 	if actor.has("weapon"): set_weapon(int(actor.get("weapon",0)))
+	weapon_finish.apply(actor.get("finish"))
 
 func reset_pose() -> void:
 	_clear_death_animation()
