@@ -296,9 +296,12 @@ func capture(name: String) -> void:
 	if name in ["gameplay", "long-subtitle"] and is_instance_valid(session.first_person):
 		var weapon: Image = session.first_person.rig.viewport.get_texture().get_image()
 		rig_pixels = compare_weapon_pixels(image, weapon, true)
-		if name == "long-subtitle" and rig_pixels.opaque <= 10 and rig_pixels.occluded > 100:
+		if name == "long-subtitle" and rig_pixels.opaque < 100 and rig_pixels.occluded > 100:
 			# The deliberately oversized scrolling subtitle can cover the whole
-			# narrow gun at UI150. Keep that full-UI screenshot, and separately
+			# narrow gun at UI150, leaving an unstable handful of edge pixels.
+			# Require a substantive 100-pixel sample in the supplemental view
+			# instead of grading an almost fully occluded silhouette. Keep the
+			# full-UI screenshot, and separately
 			# prove actual composition with only the occluding HUD hidden.
 			# Image readback may cross the authority's unchanged input TTL. Use
 			# the same late-frame user click path as the primary capture.

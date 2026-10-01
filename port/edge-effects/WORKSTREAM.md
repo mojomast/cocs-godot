@@ -6,6 +6,21 @@ shaders. This extends the combined targeting/variety/animation update.
 
 ## Current resource grant
 
+Runtime **`1c1f6e34607cd1935629009dcfe2a9ae9316271a`** exported successfully
+for both platforms. All 1,647 shared build inputs and generated resources match.
+Fresh Linux extraction passed 23 base + 44 expansion cases. Windows additional
+original-launcher Crown workflow `36936475680` passed 3/3 instrumented starts;
+trace teardown observations are retained. Full Windows suite `36936434712` is
+still pending. Release `quiet-relay-targeting-animation-2026-10-01` remains draft.
+
+Exported Linux Crown compact capture passed on unchanged archive attempt two.
+Attempt one's long-subtitle mask left only 14 unoccluded gun pixels (11 matches),
+too few for a stable composition comparison. The external fixture now requests
+the existing HUD-free supplemental proof below 100 unoccluded pixels, retaining
+its strict >100 opaque / >80% matching proof requirement. Parent inspected the
+gameplay, supplemental and ending images. This test-only correction does not
+change exported bytes. Both attempts remain in combined evidence `packaged-capture/`.
+
 Combined canonical acceptance finished: **333/337 initially passed**, with four
 fixture issues corrected and **4/4 focused reruns passing**. The fixes free the
 new detached interlude director, update native collision expectations to the
