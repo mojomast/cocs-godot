@@ -347,3 +347,9 @@ samples passed in that lane. The exclusive slot has returned to the trailer
 lane for final MP4 and the live-menu JSON, with Theora explicitly canceled.
 The old video-background menu contracts passed after the window-state fix; the
 replacement engine-demo component will require its own runtime verification.
+
+Live menu implementation `eb4e5b74` is integrated as `f60137bc`. Static review
+identified asynchronous build readiness, descendant processing during pause,
+story-operator visibility and camera/event fidelity issues. The Sol lane owns a
+follow-up correction and meaningful runtime fixture, still edit-only while the
+trailer has the exclusive slot. Live menu rendering is not yet accepted.
