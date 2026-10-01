@@ -26,6 +26,15 @@ func _run() -> void:
 		root.add_child(world)
 		check(world.build(id), id + " builds")
 		var node: Node3D = world.get_node("Scenery_FallenRelay" if id == "rootfall-verge" else "Scenery_CrownReceiver")
+		if id == "rootfall-verge":
+			# New optional workshops also use smaller fallen-relay silhouettes.
+			# Select the original landmark by its authored site, not auto-node order.
+			for block: Dictionary in world.recipe.arena.blocks:
+				if block.id != "landmark-1-Fallen relay": continue
+				for child: Node in world.get_children():
+					if child is Node3D and child.scale.is_equal_approx(Vector3(26,4,4)) and Vector2(child.position.x,child.position.z).distance_to(Vector2(block.x,block.z)) < 0.001:
+						node = child
+			check(node.scale.is_equal_approx(Vector3(26,4,4)), "authored original fallen relay selected")
 		var boxes: Array = []
 		var counts := [0,0]
 		_collect(node, boxes, counts)
@@ -69,7 +78,9 @@ func _run() -> void:
 					if p.distance_to(footprint) < 0.1:
 						check(bounds.position.y-float(point.y) > 9, "dish underside clears every routed player")
 		if id == "rootfall-verge": check(clearance > 2.5, "wreck clear of critical and flank routes")
-		check(world.get_node("AuthoritativeBlocks").get_child_count() == world.recipe.arena.blocks.size(), "unmodified source colliders")
+		var rocks: Array = world.recipe.arena.blocks.filter(func(b: Dictionary) -> bool: return b.material == "rock")
+		check(world.get_node("AuthoritativeBlocks").get_child_count() == rocks.size(), "exact rock cover boxes retained alongside facade triangles")
+		check(not world.get_node("StructureArt").find_children("*", "CollisionShape3D", true, false).is_empty(), "native facade contact surfaces present")
 		print("LANDMARK ",id," meshes=",counts[0]," triangles=",counts[1]," bounds=",bounds," route_clearance=",clearance)
 		world.queue_free()
 		await process_frame

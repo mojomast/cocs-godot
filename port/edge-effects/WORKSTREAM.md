@@ -6,6 +6,16 @@ shaders. This extends the combined targeting/variety/animation update.
 
 ## Current resource grant
 
+Combined canonical acceptance finished: **333/337 initially passed**, with four
+fixture issues corrected and **4/4 focused reruns passing**. The fixes free the
+new detached interlude director, update native collision expectations to the
+reviewed rock-box/facade-triangle contract, and select the original Rootfall mast
+by authored site instead of the first decorative wreck node. No runtime fix was
+needed for these failures. Initial aggregate, all logs and focused receipts are
+preserved in `/home/mojo/.tmp-on-disk/cocs-combined-update-evidence-20261001/`.
+This is not an all-green-first-run claim. Parent now owns export and platform
+acceptance; every agent has released the engine.
+
 **Implemented and integrated:** Astra `6700aac1` is parent `4d700437`.
 Astra released all engine processes. Parent owns the serialized engine for the
 combined canonical run, packaging and extracted-platform acceptance.

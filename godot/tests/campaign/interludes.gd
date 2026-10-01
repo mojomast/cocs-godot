@@ -30,13 +30,19 @@ func run() -> void:
 			map_id = fixture.mapId
 			assert(world.recipe.geometryHash == fixture.geometryHash)
 			var colliders: Node = world.get_node("AuthoritativeBlocks")
-			assert(colliders.get_child_count() == world.recipe.arena.blocks.size())
-			for i: int in world.recipe.arena.blocks.size():
-				var block: Dictionary = world.recipe.arena.blocks[i]
-				if not str(block.id).begins_with("interlude-"): continue
+			# Native weapon cover uses exact facade triangles after the edge-hit
+			# repair; only rock blocks remain boxes. Source movement keeps recipes.
+			var rocks: Array = world.recipe.arena.blocks.filter(func(b: Dictionary) -> bool: return b.material == "rock")
+			assert(colliders.get_child_count() == rocks.size())
+			for i: int in rocks.size():
+				var block: Dictionary = rocks[i]
 				var collider: CollisionShape3D = colliders.get_child(i)
 				assert(collider.shape.size.is_equal_approx(Vector3(block.w, block.h, block.d)))
 				assert(collider.position.is_equal_approx(Vector3(block.x, block.h*0.5, block.z)))
+			var facade_shapes := world.get_node("StructureArt").find_children("*", "CollisionShape3D", true, false)
+			assert(not facade_shapes.is_empty())
+			for collider: CollisionShape3D in facade_shapes:
+				assert(collider.shape is ConcavePolygonShape3D and collider.transform == Transform3D.IDENTITY)
 			for route: Dictionary in world.recipe.routes:
 				if not str(route.id).begins_with("interlude-"): continue
 				for p: Dictionary in route.points: assert(absf(world.height_at(p.x,p.z)-float(p.y)) < 0.001)

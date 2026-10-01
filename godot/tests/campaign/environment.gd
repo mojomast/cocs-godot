@@ -80,7 +80,7 @@ func run() -> void:
 	# Detached eager children are not composed by this probe's deliberately small
 	# _ready. Free those explicitly; its camera/world are owned children.
 	for node: Node in [probe.label, probe.selector, probe.combat_label, probe.pickups, probe.presentation, probe.combat,
-		probe.client, probe.ground_tells, probe.robot_voices, probe.story_director]:
+		probe.client, probe.ground_tells, probe.robot_voices, probe.story_director, probe.interlude_director]:
 		if node != probe.client: node.free()
 	# _exit_tree still needs the client; free it only after removing the probe.
 	root.remove_child(probe)
