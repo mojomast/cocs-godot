@@ -24,7 +24,9 @@ func build(host: Node3D) -> void:
 		var style := style_for(int(host.recipe.campaign.index), str(block.id))
 		var ground: float = host.height_at(float(block.x), float(block.z))
 		var exposed := minf(float(block.h) - float(block.baseY), maxf(1.0, float(block.h) - ground + 0.35))
-		var segments := maxi(1, ceili(exposed / 5.0))
+		# Forest cabins and relay pedestals have a complete pitched/saddle roof
+		# kit, not modular tower shafts. They always use one closed fitted shell.
+		var segments := 1 if style in ["relay", "outpost"] else maxi(1, ceili(exposed / 5.0))
 		for segment: int in segments:
 			var profile := "top" if segment == segments - 1 else "base" if segment == 0 else "shaft"
 			var y0: float = float(block.h) - exposed + exposed * segment / segments
