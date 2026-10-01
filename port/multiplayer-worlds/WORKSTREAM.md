@@ -56,3 +56,12 @@ the source-lock closure failed because the explicit existing derivative selectio
 was omitted. With `COCS_SOURCE_DERIVATIVE=port/contracts/lattice-catalog-derivative.json`,
 all three closure tests passed. Both logs are retained. Generated multiplayer
 derivatives and scene checks pass. This is not a full-suite or artifact result.
+
+Package verifier follow-ups `94aefa39 → 6951123e` are integrated as `cc1babfd`.
+All 43 world pairs plus Blackwater will run against extracted runtime/PCK files.
+Authority shutdown uses an explicit stdin handshake, with bounded forced cleanup
+only on failure; native exit is bounded and teardown logs are checked for errors.
+Parent also corrected the lifecycle test's file-URL conversion for Windows and
+registered this package-contract gate in the canonical verifier. Its six Node
+tests pass locally, including actual normal/hung authority subprocesses and a
+Blackwater wire/hash exchange. Actual Linux/Windows artifact runs remain pending.

@@ -5,6 +5,7 @@ import {mkdtemp,mkdir,writeFile,rm} from 'node:fs/promises';
 import {spawn} from 'node:child_process';
 import {join,dirname} from 'node:path';
 import {tmpdir} from 'node:os';
+import {fileURLToPath} from 'node:url';
 import {once} from 'node:events';
 import {WebSocket} from 'ws';
 import {coverage,gracefulAuthority,waitExit,forceStop} from './verify_expansion.mjs';
@@ -47,7 +48,7 @@ test('real Node child accepts cross-platform stdin shutdown; broken close times 
   const fixture=`import http from 'node:http'; export function createGameServer(){const server=http.createServer((req,res)=>res.end(JSON.stringify({port:server.address().port})));return {server,close:()=>new Promise(ok=>server.close(ok))};}`;
   await writeFile(entry,fixture);
   const spawnOwned=async()=>{
-    const child=spawn(process.execPath,[new URL('./verify_expansion.mjs',import.meta.url).pathname,'--authority',entry],{cwd:root,stdio:['pipe','pipe','pipe']});
+    const child=spawn(process.execPath,[fileURLToPath(new URL('./verify_expansion.mjs',import.meta.url)),'--authority',entry],{cwd:root,stdio:['pipe','pipe','pipe']});
     let text='';child.stdout.on('data',part=>{text+=String(part)});child.stderr.on('data',part=>{text+=String(part)});
     const owned={child,read:()=>text};
     for(let i=0;i<150 && !text.includes('EXPANSION_AUTHORITY_READY ');i++)await new Promise(ok=>setTimeout(ok,10));

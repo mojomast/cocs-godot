@@ -198,6 +198,7 @@ commands = [
     ("blood-live-native", ["node", "port/native-blood-fx/live.mjs", "--ci-render-budget"]),
     ("route-parity", ["node", "--test", "tools/godot-package/route_parity.test.mjs"]),
     ("multiplayer-world-options", ["node", "--test", "tools/godot-package/world_options.test.mjs"]),
+    ("multiplayer-expansion-package-contract", ["node", "--test", "tools/godot-package/expansion_verification.test.mjs"]),
     ("multiplayer-world-derivatives", ["node", "port/multiplayer-worlds/generate-derivative.mjs", "--check"]),
     ("multiplayer-world-scenes", ["node", "tools/godot-multiplayer/generate-scenes.mjs", "--check"]),
     ("multiplayer-world-source-routes", ["node", "--test", "--test-concurrency=1", "tools/godot-multiplayer/worlds/recipes.test.mjs", "tools/godot-multiplayer/worlds/vehicle-route.test.mjs"]),
