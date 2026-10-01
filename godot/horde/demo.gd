@@ -5,12 +5,17 @@ const HordeClient = preload("res://horde/client.gd")
 const HordeControls = preload("res://horde/controls.gd")
 const BloodWire = preload("res://blood_fx/wire.gd")
 const ActorVisual = preload("res://source_operators/operator_visual.gd")
+const RobotVisual = preload("res://campaign/robot_visual.gd")
+const RobotVoices = preload("res://campaign/robot_voices.gd")
+const RobotTells = preload("res://campaign/telegraphs.gd")
 const LOOK_GAIN := 0.002 # default source mouse sensitivity, app/page.tsx
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible"]
 ## Source HORDE_UPGRADES offers exactly three rows; the number keys are the
 ## desktop default here because the pointer is captured during a wave.
 const OFFER_HOTKEYS := {KEY_1:1, KEY_2:2, KEY_3:3, KEY_4:4, KEY_5:5, KEY_6:6, KEY_7:7, KEY_8:8, KEY_9:9}
 var horde := HordeModel.new()
+var robot_voices := RobotVoices.new()
+var robot_tells := RobotTells.new()
 var horde_label := Label.new()
 var waves := 10
 var evidence := false
@@ -75,9 +80,17 @@ func _ready() -> void:
 	horde_label.add_theme_constant_override("shadow_offset_y", 2)
 	horde_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	add_child(pickups)
+	presentation.actor_visual_factory = create_horde_visual
 	add_child(presentation)
 	add_child(combat)
+	add_child(robot_voices)
+	add_child(robot_tells)
 	add_child(client)
+	var voice_settings := HordeSettingsAccess.service()
+	if voice_settings != null:
+		voice_settings.audio_preferences_changed.connect(robot_voices.apply_settings)
+		robot_voices.apply_settings(voice_settings.values)
+	else: robot_voices.apply_settings({})
 	# Only rendered NPC poses interpolate; source snapshots still own positions.
 	presentation.interpolate_remote = true
 	if not open_catalog():
@@ -113,6 +126,13 @@ func _ready() -> void:
 	if not load_selected_map(selected):
 		on_error(catalog.error)
 		return
+	var tell_ground: Node3D = world
+	if not tell_ground.has_method("height_at"):
+		for child: Node in world.get_children():
+			if child is Node3D and child.has_method("height_at"):
+				tell_ground = child
+				break
+	robot_tells.bind_terrain(tell_ground)
 	av_ensure() # This composition does not call session._ready().
 	world.get_node("StaticPickupMarkers").hide()
 	client.connection_error.connect(on_error)
@@ -123,12 +143,22 @@ func _ready() -> void:
 	client.results.connect(on_results)
 	client.events.connect(func(items: Array) -> void:
 		if phase == 3:
+			robot_tells.apply_events(items)
 			combat.apply_events(items, client.actor_id)
 			apply_npc_deaths(items)
 			av_events(items))
 	connect_selected_match()
 	# Horde's source-default desktop bindings, localized to this composition.
 	call_deferred("show_controls")
+
+func create_horde_visual(actor: Dictionary, local_id: int) -> Node3D:
+	if actor.get("isNpc") == true and actor.get("npcModel") in RobotVisual.IDS:
+		var robot := RobotVisual.new()
+		robot.configure(actor, local_id)
+		return robot
+	var operator := ActorVisual.new()
+	operator.local_id = local_id
+	return operator
 
 func show_controls() -> void:
 	var hud: Node = get_node_or_null("GameHUD")
@@ -378,6 +408,8 @@ func on_lobby(frame: Dictionary) -> void:
 	super.on_lobby(frame)
 
 func on_started(frame: Dictionary) -> void:
+	robot_voices.clear_round()
+	robot_tells.clear_round()
 	release_terminal_blood()
 	clear_npc_deaths()
 	latest.clear()
@@ -390,7 +422,10 @@ func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3: return
 	remember_npcs(frame.state)
 	super.on_snapshot(frame)
+	robot_tells.apply_state(frame.state)
 	apply_horde(frame.state)
+	robot_voices.set_active(true)
+	robot_voices.apply_state(frame.state, camera.global_position)
 	record_state(frame.get("seq", -1))
 
 func apply_horde(state: Dictionary, stale: bool = false) -> void:
@@ -451,7 +486,7 @@ func apply_npc_deaths(items: Array) -> void:
 		for seen_id: int in corpse_events.keys():
 			if seen_id < event_id - 4096: corpse_events.erase(seen_id)
 		if corpses.size() >= MAX_CORPSES: retire_corpse(0)
-		var node := ActorVisual.new()
+		var node: Node3D = create_horde_visual(actor, client.actor_id)
 		node.name = "HordeCorpse_%d" % event_id
 		node.local_id = client.actor_id
 		add_child(node)
@@ -465,7 +500,11 @@ func apply_npc_deaths(items: Array) -> void:
 			origin.z = point.z
 		node.position = origin + Vector3.UP * 0.9
 		node.rotation.y = float(actor.get("bodyYaw", actor.get("yaw", 0.0)))
-		node.begin_death()
+		if node.get_script() == RobotVisual:
+			var dead := actor.duplicate(true)
+			dead.health = 0
+			node.apply_actor(dead)
+		else: node.begin_death()
 		corpses.append({"node":node, "age":0.0, "actor":id, "event":event_id})
 
 func retire_corpse(index: int) -> void:
@@ -510,6 +549,8 @@ func release_terminal_blood() -> void:
 	terminal_blood = null
 
 func on_results(frame: Dictionary) -> void:
+	robot_voices.set_active(false)
+	robot_tells.clear_round()
 	# The final NPC death may finish the wave before the next render tick.
 	# Consume already-received authoritative events before clear_round drains
 	# the shared effects pipeline; this is never a synthetic result-frame hit.
@@ -527,6 +568,8 @@ func on_results(frame: Dictionary) -> void:
 	record_state(-1)
 
 func on_error(message: String) -> void:
+	robot_voices.set_active(false)
+	robot_tells.clear_round()
 	release_terminal_blood()
 	clear_npc_deaths()
 	latest.clear()
@@ -555,6 +598,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	advance_corpses(delta)
+	for visual: Node3D in presentation.actors.values():
+		if visual.get_script() == RobotVisual: visual.advance(delta)
+	for corpse: Dictionary in corpses:
+		if corpse.node.get_script() == RobotVisual: corpse.node.advance(delta)
 	if is_instance_valid(terminal_blood) and is_finite(delta) and delta > 0.0:
 		terminal_blood_age += delta
 		if terminal_blood_age >= CORPSE_SECONDS: release_terminal_blood()

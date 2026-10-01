@@ -9,7 +9,10 @@ import {parseInputEnvelope} from '../../game/protocol.mjs';
 import {selectHordeUpgrade} from '../../game/singleplayer.mjs';
 import {validLoadout} from '../../game/data.mjs';
 import {InputBuffer} from './input-buffer.mjs';
+import {hordeRobotState} from './robot-roles.mjs';
 import {readCinderwake} from './cinderwake-schema.mjs';
+import {BLACKWATER_ID,readBlackwater} from './blackwater-schema.mjs';
+import {BlackwaterDirector} from './blackwater-director.mjs';
 import {applyDebugFrame, applyLiveOverrides, createDebugState, debugEcho, installHumanGuard,
   parseDebugFrame, reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT} from '../native-debug/debug.mjs';
 export const MAPS = ['meridian-exchange','verdant-reliquary','ember-crucible'];
@@ -41,7 +44,7 @@ export const MAPS = ['meridian-exchange','verdant-reliquary','ember-crucible'];
 // lane review. `game/core.mjs` is already in the closure.
 // ---------------------------------------------------------------------------
 export const IDENTITY_MAPS = Object.freeze(['nacre-engine']);
-export const HORDE_MAPS = Object.freeze([...MAPS, ...IDENTITY_MAPS, 'cinderwake-drydock']);
+export const HORDE_MAPS = Object.freeze([...MAPS, ...IDENTITY_MAPS, 'cinderwake-drydock', BLACKWATER_ID]);
 const hordeMapContracts = new WeakMap();
 const IDENTITY_HORDE_MODE = 'horde';
 const IDENTITY_MAP_SOURCES = Object.freeze({
@@ -197,6 +200,18 @@ export function createHordeMatch({mapId, config, random = Math.random, character
   if (typeof random !== 'function') throw Error('RNG must be a function');
   if (!config || config.mode !== 'horde' || config.botCount !== 0) throw Error('Normalized Horde config required');
   if (!validLoadout(character,harness)) throw Error('Unsupported Horde operator/harness');
+  if (mapId === BLACKWATER_ID) {
+   const data=readBlackwater();
+   class BlackwaterMatch extends Match {
+    constructor(...args){super(...args);this.blackwater=new BlackwaterDirector();}
+    step(dt,context){const result=super.step(dt,context);this.blackwater.step(this,context?.inputs?.[0]??{},dt);return result;}
+    snapshot(){const state=super.snapshot();if(this.blackwater)state.blackwater=this.blackwater.snapshot(this);return state;}
+   }
+   const match=new BlackwaterMatch(character,harness,random,mapId,{...config,humanCount:1,hordeArena:data.arena});
+   if(match.arena.id!==mapId||match.humanCount!==1||match.modeState?.stage?.stageId!=='A')throw Error('Blackwater source constructor contract');
+   hordeMapContracts.set(match,Object.freeze({version:1,geometryHash:data.geometryHash,planHash:data.planHash}));
+   return match;
+  }
   if (mapId === 'cinderwake-drydock') {
    if (typeof Match.prototype.applyHordeGateMask !== 'function') throw Error('Cinderwake requires approved source Horde-stage intake');
    const data = readCinderwake();
@@ -532,10 +547,10 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
     // Every-tick snapshots, same cadence as the native-arena and identity-zone
     // authorities (see port/native-motion-smoothness/).
     send({type:'snapshot',seq:++seq,acks:{0:inputs.applied},
-     inputEpoch:epoch,hordeInput:inputs.status(),state:active.snapshot(),...(hordeMapContracts.has(active)?{hordeMapContract:hordeMapContracts.get(active)}:{})});
+      inputEpoch:epoch,hordeInput:inputs.status(),state:hordeRobotState(active.snapshot()),...(hordeMapContracts.has(active)?{hordeMapContract:hordeMapContracts.get(active)}:{})});
     if (active.over) {
      finished=true; inputs.cancel();
-     send({type:'results',inputEpoch:epoch,hordeInput:inputs.status(),state:active.snapshot()});
+      send({type:'results',inputEpoch:epoch,hordeInput:inputs.status(),state:hordeRobotState(active.snapshot())});
     }
    }
   } catch (error) { terminate(`Authority step failed: ${error.message}`); }
