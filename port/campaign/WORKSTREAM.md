@@ -528,3 +528,17 @@ contracts stay intact. Blender export may run in parallel at **one thread/proces
 per lane**; architecture has the first exclusive Godot import/render slot.
 Environment waits for explicit Godot handoff. Parent starts no competing heavy
 verification/builds. The current public trailer and galleries predate this work.
+
+The owner added a **third Sol lane for better, more unique weapons**:
+`campaign/blender-weapons`, session `ses_f0a9d2847ffe27Qc82NglxKMXL`, worktree
+`/home/mojo/.tmp-on-disk/cocs-blender-weapons-20260930` from `78f770c0`.
+It owns original Blender weapon art for the complete player arsenal, first-person
+and world presentation, preserving IDs, gameplay, muzzle/ADS/grip/reload anchors,
+finishes and source-export provenance. It must provide actual rendered normal/
+ADS comparisons and animation checks with editable source models.
+
+Weapon work begins with inspection/design/code while the first two lanes hold
+the two single-thread Blender export slots. Parent grants weapon generation when
+one is released. Godot rendering remains serialized: architecture first,
+environment next, then weapons, unless explicitly reassigned. All three agents
+work concurrently in isolated worktrees; no parent heavy verifier/build runs.
