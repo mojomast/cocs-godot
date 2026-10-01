@@ -69,6 +69,12 @@ for name, x in [('intake', -170), ('distribution', -82), ('switchyard', 0),
         box(f'{name}-pump-bank-{side}', x + side * 22, 36, 12, 23, 4, 0, 'shell')
         box(f'{name}-transformer-{side}', x + side * 29, -48, 14, 14, 5.5, 0, 'accent')
     box(f'{name}-control-kiosk', x - 15, -112, 15, 13, 4.2, 0, 'enamel')
+    # The five pumping towers are real cover/line-of-sight structures; the
+    # Blender-exported drums, manifolds and warning crowns wrap this core.
+    box(f'{name}-central-chamber', x, 112, 13, 13,
+        13 + ['intake','distribution','switchyard','settling','spillway'].index(name)*2, 0, 'shell')
+box('spillway-boss-pylon-west', 140, 0, 2, 2, 17, 0, 'accent')
+box('spillway-boss-pylon-east', 200, 0, 2, 2, 17, 0, 'accent')
 
 # Borders include physical breaks for the northern/southern drainage bypasses.
 for x in [-216, 216]:
@@ -146,7 +152,7 @@ stage = [
     dict(id='B', arrival=dict(minX=-25, maxX=25, minZ=-25, maxZ=25),
          humanSpawns=[[-12, 1], [12, 1]], enemySpawns=[[-32, 60], [34, 64], [-32, -67], [34, -67], [0, 97]]),
     dict(id='C', arrival=dict(minX=151, maxX=193, minZ=-30, maxZ=30),
-         humanSpawns=[[166, 0], [182, 0]], enemySpawns=[[150, 55], [190, 55], [140, -65], [205, -65], [170, 105]]),
+         humanSpawns=[[166, 0], [182, 0]], enemySpawns=[[150, 55], [190, 55], [140, -65], [205, -65], [170, 96]]),
 ]
 gates = [dict(id='floodgate-west', x=-42, z=0, w=5, d=20, h=12, baseY=0, material='accent'),
          dict(id='floodgate-east', x=126, z=0, w=5, d=20, h=12, baseY=0, material='accent')]
@@ -163,7 +169,7 @@ arena = dict(id=ID, name=NAME, bounds=dict(minX=-220, maxX=220, minZ=-190, maxZ=
              blocks=blocks, terrain=dict(maxSlope=0.7, surfaces=surfaces, walls=[]),
              hordeStagePlan=plan)
 document = dict(schemaVersion=1, id=ID, name=NAME, mode='horde', arena=arena,
-                palette=['263b48', '456579', 'c9a463', 'e6e8d6'], art=[], routes=[], cameras=[],
+                palette=['263b48', '587a85', '7595a2', 'd7ad76'], art=[], routes=[], cameras=[],
                 landmarks=[], presentation={'stages':{'A':'INTAKE','B':'SWITCHYARD','C':'SPILLWAY'}},
                 provenance={'author':'Horde expansion','generator':'tools/godot-horde/blackwater.py'},
                 planHash=digest(plan), geometryHash=digest(arena))

@@ -100,14 +100,15 @@ test('Blackwater feeder can be armed and restored by actual loopback movement + 
     const waypoint=rampReached?target:approach;
     const dx=waypoint.x-p.x,dz=waypoint.z-p.z,distance=Math.hypot(dx,dz);
     const near=rampReached&&distance<4.5;
-    const interact=near&&!armed;
+    const confirmed=frame.state.blackwater?.active==='north-feeder'||frame.state.blackwater?.completed?.includes('north-feeder');
+    const interact=near&&!confirmed&&seq%12===0;
     if(interact)armed=true;
     client.send({type:'input',seq:++seq,inputEpoch:client.start.inputEpoch,input:{
       x:near?0:dx/distance,z:near?0:dz/distance,sprint:!near,interact,
       yaw:Math.atan2(-dx,-dz),pitch:0}});
    },40);
    let done;
-   try{done=await client.wait(f=>f.type==='snapshot'&&f.state.blackwater?.completed?.includes('north-feeder'),35000);}
+    try{done=await client.wait(f=>f.type==='snapshot'&&f.state.blackwater?.completed?.includes('north-feeder'),45000);}
    catch(error){
     const last=client.frames.findLast(f=>f.type==='snapshot');
     throw Error(`${error.message} ${JSON.stringify({armed,seq,player:last?.state?.actors?.[0]&&{

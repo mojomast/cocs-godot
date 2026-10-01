@@ -148,6 +148,7 @@ func _ready() -> void:
 func create_horde_visual(actor: Dictionary, local_id: int) -> Node3D:
 	if actor.get("isNpc") == true and actor.get("npcModel") in RobotVisual.IDS:
 		var robot := RobotVisual.new()
+		robot.automatic_animation = false # Horde render loop advances once; never double-step gait/death.
 		robot.configure(actor, local_id)
 		return robot
 	var operator := ActorVisual.new()

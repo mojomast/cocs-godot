@@ -3,6 +3,36 @@ const BlackwaterCatalog = preload("res://horde_maps/blackwater_catalog.gd")
 const BlackwaterMap = preload("res://horde_maps/blackwater.gd")
 const Atmosphere = preload("res://native_arenas/identity_environment.gd")
 const ID := "blackwater-reclamation"
+class BlackwaterCombat extends "res://world/combat_feedback.gd":
+	func _configure_map(state: Dictionary) -> void:
+		if not is_instance_valid(effect_camera) or not is_instance_valid(effect_session): return
+		var terrain: Node3D = effect_session.world
+		if not is_instance_valid(terrain): return
+		var id := str(state.get("mapId", ""))
+		var key := "%s/%s" % [id, terrain.get_instance_id()]
+		if map_key == key: return
+		if not map_key.is_empty(): clear_round()
+		map_key = key
+		var envelope: Dictionary = effect_session.catalog.resolve_envelope(id)
+		var arena: Dictionary = envelope.get("arena", {})
+		var bounds: Dictionary = arena.get("bounds", {})
+		if bounds.is_empty():
+			map_error = "Blackwater effects recipe has no bounds"
+			return
+		var map := {"id":id,"bounds":AABB(Vector3(bounds.minX, -32, bounds.minZ),
+			Vector3(bounds.maxX - bounds.minX, 192, bounds.maxZ - bounds.minZ)),"collision_root":terrain}
+		occlusion.configure(effect_camera, map)
+		map_error = "" if occlusion.ready else "Blackwater collision geometry unavailable"
+		if is_instance_valid(impacts):
+			impacts.configure(effect_camera, occlusion)
+			impacts.set_map(map)
+		if is_instance_valid(world_particles):
+			var result: Dictionary = world_particles.configure(effect_camera, map)
+			if not result.get("ok", false): map_error = str(result.get("error", "Blackwater particles failed"))
+		if is_instance_valid(blood_fx):
+			var result: Dictionary = blood_fx.configure(effect_camera, map)
+			if not result.get("ok", false): map_error = str(result.get("error", "Blackwater blood surfaces failed"))
+		if is_instance_valid(projectiles): projectiles.configure_occlusion(occlusion.segment_blocked)
 var builder: Node3D
 var last_serial := 0
 var mission_notice := ""
@@ -23,6 +53,8 @@ func on_blackwater_events(items: Array) -> void:
 
 func _init() -> void:
 	super()
+	combat.free()
+	combat = BlackwaterCombat.new()
 	catalog = BlackwaterCatalog.new()
 	sun.free()
 	environment.free()
