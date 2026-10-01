@@ -316,3 +316,8 @@ voices passed **238 checks / zero failures** after PCM import. Menu background
 contracts exposed six failures; the Sol menu lane is correcting them in isolation
 without engine work while the trailer owns the slot. All failures are retained in
 `feature-integration-bfb91314/` and `repair-1/`.
+
+Menu follow-up `1e55bfaa` is integrated as `c4e33142`: only the headless mock
+media seam bypasses the virtual minimized-window state. Real minimized/unfocused
+windows remain paused. The menu runtime contracts must be rerun once the trailer
+releases the slot; actual Theora-under-interface acceptance waits for its media.
